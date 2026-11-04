@@ -1,0 +1,1147 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_확률과통계.js",
+  "sourceGitBlobSha": "aa275f3f2188ac47cc91eceff54c940c1438e36f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-221-230",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "같은 것이 있는 순열",
+            "src": "stem",
+            "quote": "$a, a, b, c, c$를 일렬로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "같은 것이 있는 순열",
+            "src": "solution",
+            "quote": "가운데 세 자리는 b,c,c의 배열",
+            "evidenceType": "IMPLIED",
+            "justification": "양끝을 고정하고 중복된 c를 고려해 나머지를 배열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양끝고정",
+            "src": "stem",
+            "quote": "양 끝에 모음이 오는"
+          },
+          {
+            "term": "자리제한",
+            "src": "stem",
+            "quote": "양 끝에 모음이 오는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양 끝을 a로 고정하고 같은 문자가 있는 나머지를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "문자 배열"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "stem",
+            "quote": "4개의 영역을 서로 다른 7가지 색"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "칠하는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "사용할 4가지 색을 고르는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "일곱 색에서 네 색을 고른다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "네 색을 네 영역에 놓는 배열",
+            "evidenceType": "IMPLIED",
+            "justification": "선택한 네 색을 네 영역에 배정한다."
+          },
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "네 번의 회전은 각 배열",
+            "evidenceType": "IMPLIED",
+            "justification": "네 회전으로 일치하는 칠하기를 하나로 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 7가지 색"
+          },
+          {
+            "term": "회전이동",
+            "src": "stem",
+            "quote": "회전하여 일치하는 것은 같은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "네 색을 고르고 배정한 후 정사각형의 네 회전을 하나로 센다."
+      },
+      "steps": [],
+      "scenarioNote": "사각형 색칠"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "원탁에 둘러앉을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "남학생 네 명을 먼저 원순열로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "남학생 사이 네 자리에 여학생",
+            "evidenceType": "IMPLIED",
+            "justification": "남학생 사이에 여학생 네 명을 배열한다."
+          },
+          {
+            "term": "곱의 법칙",
+            "src": "solution",
+            "quote": "3!×4!=144",
+            "evidenceType": "IMPLIED",
+            "justification": "두 배열의 수를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교대",
+            "src": "stem",
+            "quote": "남학생과 여학생이 교대로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 집단을 원형 배열하고 사이의 자리에 다른 집단을 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생 좌석"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정방정식",
+            "src": "stem",
+            "quote": "$x+y+z=7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "양의 정수해의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "x'=x-1, y'=y-1, z'=z-1",
+            "evidenceType": "IMPLIED",
+            "justification": "각 양의 정수에서 1을 빼 음이 아닌 정수로 바꾼다."
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별과 막대의 원리에 따라",
+            "evidenceType": "IMPLIED",
+            "justification": "정수해를 별과 칸막이 배열로 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양의 정수해의 개수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "양의 정수해의 개수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 변수의 최소 1을 빼고 남은 합의 음이 아닌 정수해를 중복조합으로 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "$(2x^2-3x)^4$의 전개식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^6$의 계수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "2x^2를 두 번, -3x를 두 번",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 차수를 만드는 두 항의 선택 횟수를 정하고 조합 계수를 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "목표 차수를 만드는 항 선택과 이항계수로 계수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "문자 $a, b, c$를 일렬로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "숫자가 놓일 세 자리를 고르는",
+            "evidenceType": "IMPLIED",
+            "justification": "상대순서가 고정된 숫자의 자리를 고른다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "나머지 세 자리에 a,b,c를 배열",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 자리에 서로 다른 문자를 배치한다."
+          },
+          {
+            "term": "곱의 법칙",
+            "src": "solution",
+            "quote": "C(6,3)·3!",
+            "evidenceType": "IMPLIED",
+            "justification": "자리 선택과 문자 배열의 수를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상대순서고정",
+            "src": "stem",
+            "quote": "숫자는 크기가 작은 것부터 순서대로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "숫자의 상대순서를 고정해 자리를 선택하고 나머지 문자를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "숫자와 문자"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "혈액형을 조사하였더니 다음 표"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$A$형 또는 $B$형일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "상대도수",
+            "src": "solution",
+            "quote": "10+8=18명이고 전체는 30명",
+            "evidenceType": "IMPLIED",
+            "justification": "해당 집단의 도수 합을 전체 인원으로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "배반인 혈액형의 인원을 합해 전체로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "혈액형"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "그림과 같은 도로망"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "최단 경로의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "최단 경로의 수를 적는다",
+            "evidenceType": "IMPLIED",
+            "justification": "연결된 도로에 따라 교차점마다 최단 경로를 누적한다."
+          },
+          {
+            "term": "합의 법칙",
+            "src": "solution",
+            "quote": "바로 아래 점에서 오는 경우의 합",
+            "evidenceType": "IMPLIED",
+            "justification": "두 방향에서 들어오는 경로 수를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최단거리",
+            "src": "stem",
+            "quote": "최단 경로의 수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "실제 도로가 연결된 교차점에 왼쪽과 아래에서 오는 최단 경로 수를 누적한다."
+      },
+      "steps": [],
+      "scenarioNote": "도로망"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배열",
+            "src": "stem",
+            "quote": "정삼각형 모양의 탁자에 앉히는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "6!가지 중 정삼각형의",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 학생을 여섯 자리로 배열한다."
+          },
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "세 회전이 같은 배치를",
+            "evidenceType": "IMPLIED",
+            "justification": "정삼각형을 120도씩 돌려 일치하는 세 배열을 하나로 센다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여섯 자리 순열을 정삼각형의 세 회전으로 묶는다."
+      },
+      "steps": [],
+      "scenarioNote": "삼각형 탁자"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A, B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 보기에서"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의 성질",
+            "src": "solution",
+            "quote": "확률의 범위이므로 참이다",
+            "evidenceType": "IMPLIED",
+            "justification": "사건 확률의 범위와 전체 공집합 확률을 검토한다."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률의 범위이므로 참이다",
+            "evidenceType": "IMPLIED",
+            "justification": "사건의 확률 범위를 확인한다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "두 사건이 모두 공집합일 수 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "두 공집합을 반례로 들어 하한을 반박한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A, B$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률의 범위와 전체 및 공집합의 확률을 적용하고 반례를 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "중복을 허용하여 네 자리 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "반드시 포함하는 것의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "전체 네 자리 수열 5^4개",
+            "evidenceType": "IMPLIED",
+            "justification": "각 자리에서 다섯 숫자를 반복 선택한다."
+          },
+          {
+            "term": "포함배제의 원리",
+            "src": "solution",
+            "quote": "포함배제 원리에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "중복을 허용하여"
+          },
+          {
+            "term": "포함",
+            "src": "stem",
+            "quote": "숫자 2와 숫자 3을 반드시 포함"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 중 2 또는 3이 없는 수열을 포함배제로 빼 두 숫자를 모두 포함하게 한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "$(x-a)^5$의 전개식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "양수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "x의 계수는 C(5,1)(-a)^4",
+            "evidenceType": "IMPLIED",
+            "justification": "이항전개에서 두 차수의 계수를 각각 구한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "5a^4=10a^2",
+            "evidenceType": "IMPLIED",
+            "justification": "두 계수를 같게 두고 양수해를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 차수의 이항계수를 구해 같게 놓고 양수 a를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "중복을 허락하여 4개를 택해"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "a가 나오지 않는 배열은",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 a가 0번 또는 1번 나타나는 배열을 뺀다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "그 자리를 고르는 4가지",
+            "evidenceType": "IMPLIED",
+            "justification": "a가 한 번인 위치를 선택한다."
+          },
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "나머지 자리에 b,c를 놓는 2^3",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 각 자리에 두 문자를 반복 배치한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "중복을 허락하여"
+          },
+          {
+            "term": "최소",
+            "src": "stem",
+            "quote": "문자 $a$가 두 번 이상"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "a가 없는 배열과 한 번 나오는 배열을 전체에서 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": "문자 배열"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항계수",
+            "src": "stem",
+            "quote": "{}_{10}\\mathrm{C}_1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "각 자리의 숫자의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "9((1+9)^10-1)",
+            "evidenceType": "IMPLIED",
+            "justification": "이항계수와 9의 거듭제곱 합을 이항전개로 묶는다."
+          },
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "8+9×9+1=90",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 거듭제곱 형태에서 자릿수를 확인해 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $N$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항정리로 주어진 합을 9(10¹⁰−1)로 바꾼 뒤 각 자리 숫자를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항계수",
+            "src": "stem",
+            "quote": "{}_{15}\\mathrm{C}_x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$f(0) + f(2) + f(4)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "이항정리의 짝수 항의 합",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭",
+            "src": "solution",
+            "quote": "((p+q)^15+(q-p)^15)/2",
+            "evidenceType": "IMPLIED",
+            "justification": "양수와 음수 대입의 합으로 홀수차를 소거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$x = 0, 1, 2, \\dots, 15$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항전개에 부호를 바꾸어 대입한 두 식을 더해 짝수항만 남긴다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "여사건",
+            "src": "stem",
+            "quote": "P(A^c \\cap B) = 0.1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(B)$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "드모르간 법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의 덧셈정리",
+            "src": "solution",
+            "quote": "P(B)-P(A∩B)=0.1",
+            "evidenceType": "IMPLIED",
+            "justification": "B를 A와 겹치는 부분과 겹치지 않는 부분으로 분할한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여사건의 합에서 교사건 확률을 구하고 B를 두 배반 부분으로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2 - (a+b)x + ab + 1 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "근이 존재하지 않을 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식은 D=(a+b)^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "a=b인 6개와 |a-b|=1인 10개",
+            "evidenceType": "IMPLIED",
+            "justification": "판별식이 음수인 눈의 차를 0과 1로 분류한다."
+          },
+          {
+            "term": "수학적 확률",
+            "src": "solution",
+            "quote": "확률은 16/36=4/9",
+            "evidenceType": "IMPLIED",
+            "justification": "조건에 맞는 순서쌍을 전체 36개로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "판별식이 음수인 두 주사위 눈 차를 세어 전체 경우로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "주사위 두 번"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "집합 $Y=\\{1, 2, 3, 4\\}$로의 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "함수의 개수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "순서 있게 고르는 것이므로 4P3=24",
+            "evidenceType": "IMPLIED",
+            "justification": "일대일 함수의 서로 다른 함숫값을 순서 있게 배정한다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "크기 순으로 3개를 고르는 것",
+            "evidenceType": "IMPLIED",
+            "justification": "증가 함수의 값 3개를 선택한다."
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "중복조합과 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일대일함수",
+            "src": "stem",
+            "quote": "$f(x_1) \\ne f(x_2)$"
+          },
+          {
+            "term": "증가",
+            "src": "stem",
+            "quote": "$f(x_1) < f(x_2)$"
+          },
+          {
+            "term": "대소관계",
+            "src": "stem",
+            "quote": "$f(x_1) \\le f(x_2)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 조건을 각각 순열, 조합, 중복조합의 함수값 배정으로 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "stem",
+            "quote": "${}_3\\mathrm{H}_0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "{}_3H_k=C(k+2,2)",
+            "evidenceType": "IMPLIED",
+            "justification": "중복조합을 일반 조합으로 바꾼다."
+          },
+          {
+            "term": "하키스틱항등식",
+            "src": "solution",
+            "quote": "하키스틱 항등식으로",
+            "evidenceType": "IMPLIED",
+            "justification": "연속된 조합의 합을 하나의 조합으로 정리한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중복조합을 조합으로 바꾸고 연속 이항계수의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "사건 $C$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "의 부분집합이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "A와 배반인 사건은 A의 여집합의 부분집합이다."
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "부분집합 8개에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "8과 10을 모두 포함하지 않는",
+            "evidenceType": "IMPLIED",
+            "justification": "B와 공통 원소가 없는 부분집합을 전체에서 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "$A$와 $C$는 서로 배반사건"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A의 여집합 부분집합 중 B와 교집합이 빈 것을 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$g \\circ f: X \\to Z$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "합성함수 $g \\circ f$의 개수"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "치역이 $Z$일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "모든 이진 배열 2^3개가 가능",
+            "evidenceType": "IMPLIED",
+            "justification": "f의 세 상에 대한 g의 두 값 배정으로 합성함수를 구한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "선택된 세 점에서 g의 값이 상수",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수가 상수인 경우를 전사 g의 총수에서 뺀다."
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "확률은 12/14=6/7",
+            "evidenceType": "IMPLIED",
+            "justification": "전사 g 중 선택된 세 점에서 비상수인 비율을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일대일함수",
+            "src": "stem",
+            "quote": "$f(x_1) \\ne f(x_2)$"
+          },
+          {
+            "term": "전사함수",
+            "src": "stem",
+            "quote": "함수 $g$의 치역은 $Z$"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $g$의 치역은 $Z$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합성함수 자체의 두 값 배열과 함수쌍의 표본공간을 구분해 전사가 되는 확률을 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "stem",
+            "quote": "서로 다른 종류의 사탕 5개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "경우의 수를 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "k=0,1,2이다",
+            "evidenceType": "IMPLIED",
+            "justification": "B가 받는 사탕 수별로 분류한다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "B에게 줄 사탕을 고른 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 사탕 중 B에게 줄 k개를 선택한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "전부 C에게 가는 한 가지를 뺀다",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 A,C 배정에서 A가 아무것도 받지 않는 경우를 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 종류의 사탕 5개"
+          },
+          {
+            "term": "최소",
+            "src": "stem",
+            "quote": "적어도 하나의 사탕을 받는다"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "사탕의 개수는 2 이하"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "B에게 주는 개수와 선택으로 나누고 나머지 사탕의 A,C 배정에서 A가 빈 경우를 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "사탕 배정"
+    }
+  ],
+  "candidates": [
+    {"term":"양끝고정","en":"FIXED_END_POSITIONS","synonyms":[],"kind":"조건","parent":"자리제한","note":"배열의 양쪽 끝에 특정 대상을 놓는다.","usedIn":[1]},
+    {"term":"확률의 성질","en":"PROBABILITY_AXIOMS","synonyms":[],"kind":"방법","parent":"확률","note":"확률의 범위, 표본공간 및 공사건의 확률을 이용한다.","usedIn":[10]},
+    {"term":"전사함수","en":"SURJECTIVE_FUNCTION","synonyms":[],"kind":"조건","parent":"함수","note":"공역의 모든 원소가 치역에 속하는 함수다.","usedIn":[21]}
+  ],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 123,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,5,7,8,9,12,14,15,16,19],
+    "notes": "Q2,8,9 원문 PNG 세 개 직접 열람. Q1 양끝을 a로 고정해 중복 문자 세 개를 배열한다. Q5 목표 차수의 항 선택을 이항계수로 센다. Q7 두 혈액형 도수의 합을 전체로 나눈다. Q8 실제 도로의 왼쪽·아래 최단경로를 누적한다. Q9 정삼각형 세 회전을 묶어 여섯 자리 순열을 센다. Q12 두 계수를 이항정리로 구해 양수 a의 방정식을 푼다. Q14 이항합을 9(10¹⁰−1)로 정리해 자릿수를 합한다. Q15 이항식의 양·음 대입으로 짝수항을 분리한다. Q16 드모르간 법칙으로 교사건을 구하고 B를 분할한다. Q19 중복조합을 조합으로 바꾸고 하키스틱 항등식을 쓴다."
+  }
+}
