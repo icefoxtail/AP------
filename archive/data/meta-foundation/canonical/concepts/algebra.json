@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.22",
+  "shardVersion": "1.4.23",
   "status": "ACTIVE",
-  "conceptCount": 338,
+  "conceptCount": 342,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -12016,6 +12016,146 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ARITHMETIC_SIMPLIFICATION",
+      "canonicalLabelKo": "사칙연산을 이용한 식의 정리",
+      "definition": "수나 식에 포함된 덧셈, 뺄셈, 곱셈, 나눗셈을 연산 순서와 성질에 따라 계산하여 간단하게 나타내는 과정.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fb243474995eb695d3404dea52a6a1bfabbb86f50bfb6c91c844cec73bd14645"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fb243474995eb695d3404dea52a6a1bfabbb86f50bfb6c91c844cec73bd14645",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_ARITHMETIC_SIMPLIFICATION for PT_TRIG_RATIO/TPL_TRIG_RATIO_SPECIAL_ANGLE at M3-05/M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "sin 30°, cos 30°, tan 60°, cos 60°의 특수각 삼각비 값을 직접 대입하여 사칙연산을 수행하는 1단계 산술 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DECIMAL_ADDITION",
+      "canonicalLabelKo": "소수값의 덧셈",
+      "definition": "소수의 자릿값을 맞추어 두 개 이상의 소수를 더하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_40b40f08822339cc28f6333b90e340510a384ed5f5d807f44d308f748b9badad"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_40b40f08822339cc28f6333b90e340510a384ed5f5d807f44d308f748b9badad",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_DECIMAL_ADDITION for PT_TRIG_RATIO/TPL_TRIG_RATIO_TABLE_LOOKUP at M3-05/M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "삼각비 표에서 sin 52°와 cos 56°의 소수값을 직접 읽어 단순 덧셈을 수행하는 1단계 표 조회 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_RATIONALIZATION",
+      "canonicalLabelKo": "분모의 유리화",
+      "definition": "분모에 근호가 포함된 분수의 분자와 분모에 적절한 같은 식을 곱하여 분모를 유리수로 바꾸는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4d5f09f1edd60af1e35f651fdaef804f4bf8d8a1b0ef61e81feec3917d92b5dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4d5f09f1edd60af1e35f651fdaef804f4bf8d8a1b0ef61e81feec3917d92b5dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_RADICAL_RATIONALIZATION for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_SHARED_HEIGHT at M3-05/M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "서술형 문항으로서 두 건물 사이의 거리 10m와 올려본각, 내려본각을 각각 이용하여 건물의 윗부분 높이와 아랫부분 높이를 삼각비(tan)로 각각 구한 뒤 합산하는 실생활 모델링 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SYSTEM_OF_EQUATIONS",
+      "canonicalLabelKo": "연립방정식",
+      "definition": "두 개 이상의 방정식을 동시에 만족하는 미지수의 값을 가감법이나 대입법으로 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1ea1b0bc93c470973be91e45f9decee19b99a77c9b18103822861a2e691e3398"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1ea1b0bc93c470973be91e45f9decee19b99a77c9b18103822861a2e691e3398",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_SYSTEM_OF_EQUATIONS for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_SHARED_HEIGHT at M3-05/M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "서술형 문항으로서 밑각 45°, 60°인 삼각형에서 꼭짓점 A에서 밑변에 수선의 발을 내려 두 직각삼각형의 높이 h를 sin/cos로 설정하고 연립하여 변 AC의 길이를 도출하는 서술 단계가 요구되는 3단계 응용 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

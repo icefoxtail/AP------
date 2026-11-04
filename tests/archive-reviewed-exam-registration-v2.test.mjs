@@ -734,6 +734,9 @@ test("META_PIPELINE_AUDIT accepts the v2 atomic audit with its paired classifica
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "META_AUDIT_ATOMIC_PACKAGE_v2");
   assert.equal(receipt.metaPipelineAudit.classificationSha256, f.request.approval.metaPipelineAudit.classificationRef.sha256);
   assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(replay.replay, true);
+  assert.deepEqual(replay.plannedPaths, []);
 });
 
 test("META_PIPELINE_AUDIT v2 fails closed when a bound CrossConcept has no definition evidence", t => {
@@ -755,6 +758,7 @@ test("META_PIPELINE_AUDIT accepts the key-only v3 flat audit with its paired cla
   const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
   assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "key_only_v3");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
 });
 
 test("META_PIPELINE_AUDIT accepts sourceDriveId flat v3 with its paired ALIVE classification", t => {
@@ -769,6 +773,7 @@ test("META_PIPELINE_AUDIT accepts sourceDriveId flat v3 with its paired ALIVE cl
   assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "source_drive_flat_v3");
   assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.statistics.normalizationBasis.includes("APPROVED_CANONICAL"), true);
   assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.visualEvidence, "NOT_PROVIDED_IN_SOURCE_SCHEMA");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
 });
 
 test("META_PIPELINE_AUDIT sourceDriveId flat v3 rejects a classification tag mismatch", t => {
