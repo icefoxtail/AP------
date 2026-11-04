@@ -54,12 +54,15 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "그림의 $110^\\circ$는 큰 호에 대한 원주각이다.\n원주각이 보는 호의 크기는 원주각의 $2$배이므로 큰 호의 크기는\n$2\\times110^\\circ=220^\\circ$이다.\n\n한 원의 전체 호는 $360^\\circ$이므로 나머지 작은 호의 크기는\n$360^\\circ-220^\\circ=140^\\circ$이다.\n$x$는 이 작은 호에 대한 중심각이므로\n$x=140^\\circ$이다.\n\n정답은 ④이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q2-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원 O에서 110° 원주각이 보는 큰 호 AC와 중심각 x가 놓인 작은 호 AC를 표시한 그림.",
+    "solutionImageCaption": "원주각 110°가 보는 큰 호 AC는 220°이다. 작은 호 AC와 중심각 x는 서로 대응한다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -86,12 +89,15 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "밑변은 원의 중심 $O$를 지나므로 지름이다.\n지름을 보는 원주각은 $90^\\circ$이므로 삼각형의 위쪽 각은 $90^\\circ$이다.\n\n삼각형의 내각의 합을 이용하면\n$x+50^\\circ+90^\\circ=180^\\circ$\n$x=40^\\circ$이다.\n\n정답은 ②이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 지름 AC를 밑변으로 하는 원주각 삼각형 ABC에서 B의 직각과 C의 50°를 표시한 그림.",
+    "solutionImageCaption": "지름 AC를 보는 원주각은 90°이다. 삼각형 ABC의 내각의 합을 이용한다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -118,7 +124,10 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "같은 원에서 원주각의 크기는 그 원주각이 보는 호의 크기에 비례하고, 호의 길이도 호의 크기에 비례한다.\n따라서 두 호의 길이의 비는 두 원주각의 크기의 비와 같다.\n\n$x:8=30:60=1:2$\n\n그러므로\n$x=4\\rm\\,cm$이다.\n\n정답은 ③이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 지름 PB와 원주각 ∠APB=30°, ∠BPC=60°를 나타낸다. 파란 호 AB의 길이는 x cm, 주황 호 BC의 길이는 8 cm이며 각과 대응 호를 같은 색으로 묶었다.",
+    "solutionImageCaption": "같은 원에서 호의 길이는 그 호를 보는 원주각의 크기에 비례한다. 정답 ③, x=4cm.",
+    "solutionImageSize": "full",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -150,12 +159,15 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "$\\angle BAT=x$라 하자.\n\n$AT\\parallel BC$이므로 직선 $AB$를 가로지르는 두 평행선에서\n$\\angle ABC=x$이다.\n\n또 접선 $AT$와 현 $AB$가 이루는 각은 현 $AB$가 만드는 원주각과 같으므로\n$\\angle ACB=x$이다.\n\n삼각형 $ABC$에서\n$40^\\circ+x+x=180^\\circ$\n$2x=140^\\circ$\n$x=70^\\circ$이다.\n\n정답은 ④이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q5-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원 O에서 접선 AT와 평행한 현 BC, 그리고 삼각형 ABC의 40° 각과 대응하는 같은 각 표시.",
+    "solutionImageCaption": "AT와 BC는 평행하고, 접선-현각 관계와 삼각형 ABC의 내각의 합을 이용한다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -182,12 +194,15 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "호 $AB$의 길이는 원 둘레의 $\\dfrac15$이므로 그 호의 크기는\n$360^\\circ\\times\\dfrac15=72^\\circ$이다.\n\n호 $CD$의 길이는 원 둘레의 $\\dfrac14$이므로 그 호의 크기는\n$360^\\circ\\times\\dfrac14=90^\\circ$이다.\n\n원 안에서 두 현이 만날 때 생기는 각의 크기는 그 각과 맞꼭지각이 보는 두 호의 크기의 합의 절반이다.\n따라서\n$x=\\dfrac12(72^\\circ+90^\\circ)=81^\\circ$이다.\n\n정답은 ①이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q6-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원 안에서 교차하는 현 AC와 BD, 두 맞꼭지각이 보는 호 AB와 CD의 72°와 90° 표기.",
+    "solutionImageCaption": "호 AB는 360°의 1/5, 호 CD는 360°의 1/4이다. 교차하는 두 현이 만드는 각은 마주 보는 두 호의 크기 합의 절반이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -214,12 +229,15 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "중심각 $\\angle COD=72^\\circ$이므로 호 $CD$의 크기도 $72^\\circ$이다.\n\n$x$가 보는 호는 $A\\to E\\to D\\to C$이고,\n$y$가 보는 호는 $A\\to B\\to C\\to D$이다.\n이 두 호를 합하면 원 전체의 호 $360^\\circ$에 호 $CD$가 한 번 더 포함된다.\n\n따라서 두 호의 크기의 합은\n$360^\\circ+72^\\circ=432^\\circ$이다.\n\n원주각은 자신이 보는 호의 크기의 절반이므로\n$x+y=\\dfrac12\\times432^\\circ=216^\\circ$이다.\n\n정답은 ③이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q7-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원에 내접한 다섯 꼭짓점 A, B, C, D, E의 오각형과 중심각 COD=72°, 꼭짓점 B와 E의 원주각 x와 y.",
+    "solutionImageCaption": "중심각 COD는 호 CD의 크기를 정한다. x와 y가 보는 호의 합은 한 바퀴와 호 CD를 더한 크기이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -246,7 +264,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "점 $C$를 지나도록 원의 지름 $CE$를 그어 보자.\n\n$CE$가 지름이므로\n$\\angle CBE=90^\\circ$이다.\n또 $CD\\perp AB$이므로\n$\\angle CDA=90^\\circ$이다.\n\n점 $D$가 $AB$ 위에 있으므로\n$\\angle CAD=\\angle CAB$이고,\n$\\angle CAB$와 $\\angle CEB$는 같은 호 $CB$에 대한 원주각이므로 서로 같다.\n\n따라서\n$\\triangle ACD\\sim\\triangle ECB$이다.\n\n대응변의 비를 쓰면\n$AC:CE=CD:CB$\n$6:CE=2:3$\n\n따라서\n$CE=9\\rm\\,cm$이다.\n$CE$는 지름이므로 원래 접시의 둘레는\n$9\\pi\\rm\\,cm$이다.\n\n정답은 ③이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q8-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q8.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -259,7 +277,10 @@ window.questionBank=[
       "CC_INSCRIBED_ANGLE"
     ],
     "integrationPattern": "INTERDEPENDENT",
-    "difficultyBucket": 4
+    "difficultyBucket": 4,
+    "solutionImageAlt": "해설 그림: 깨진 접시의 원 위 점 A, B, C, E와 수선 CD, 보조지름 CE, 닮은 두 직각삼각형 및 6 cm·3 cm·2 cm·CE=9 cm 표기.",
+    "solutionImageCaption": "보조지름 CE로 △ACD와 △ECB의 닮음을 보이면 AC:CE=CD:CB이다. CE는 지름이므로 원의 둘레는 CE에 π를 곱해 구한다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -548,7 +569,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 지난달과 이번달 봉사 활동 시간의 산점도에서 y=x 기준선과 그 위 또는 위쪽의 점을 강조했다.",
+    "solutionImageCaption": "y=x 위는 지난달과 이번달의 봉사 시간이 같고, 그 위쪽은 이번달 봉사 시간이 더 많음을 나타낸다. 정답: ①, a+b=13.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -605,7 +630,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우 시력 산점도에 y=x 기준선을 그리고 두 눈 시력이 같은 여섯 점을 강조했다.",
+    "solutionImageCaption": "y=x 위의 점은 왼쪽 눈과 오른쪽 눈의 시력이 같음을 나타낸다. 정답: ④, 2/5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -627,12 +656,15 @@ window.questionBank=[
     "choices": [],
     "answer": "$60^\\circ$",
     "solution": "사각형 $ABCD$는 원에 내접하므로 서로 마주 보는 두 각의 합은 $180^\\circ$이다.\n\n$\\angle BAD=100^\\circ$이므로\n$\\angle BCD=180^\\circ-100^\\circ=80^\\circ$이다.\n\n삼각형 $BCD$에서\n$\\angle CBD=180^\\circ-80^\\circ-40^\\circ=60^\\circ$이다.\n\n점 $C$에서의 접선 $CT$와 현 $CD$가 이루는 각은 현 $CD$가 만드는 원주각과 같으므로\n$\\angle DCT=\\angle CBD=60^\\circ$이다.\n\n따라서\n$\\angle DCT=60^\\circ$이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q21-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q21.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD와 점 C의 접선 CT, 주어진 100° 및 40° 각, 대응하는 두 각 표시.",
+    "solutionImageCaption": "내접사각형에서 ∠BCD를 구하고 삼각형 BCD와 접선-현각 관계를 적용한다. 정답 60°.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -654,12 +686,15 @@ window.questionBank=[
     "choices": [],
     "answer": "$22^\\circ$",
     "solution": "호 $BD$의 크기를 $m^\\circ$, 호 $AC$의 크기를 $n^\\circ$라 하자.\n\n원 안에서 두 현 $AD$, $BC$가 만나는 점이 $E$이므로\n$\\angle BED=\\dfrac12(m+n)=80^\\circ$이다.\n따라서\n$m+n=160$이다.\n\n원 밖의 점 $P$에서 두 할선 $PAB$, $PCD$가 이루는 각은 먼 두 호와 가까운 두 호의 차의 절반이므로\n$\\angle P=\\dfrac12(m-n)=36^\\circ$이다.\n따라서\n$m-n=72$이다.\n\n두 식을 더하고 빼면\n$m=116$, $n=44$이다.\n\n$x=\\angle ABC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac12\\times44^\\circ=22^\\circ$이다.\n\n따라서\n$x=22^\\circ$이다.",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q22-solution-v2.svg",
     "image": "assets/images/23_연향중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원 밖 두 할선과 원 안에서 만나는 두 현, P의 36°와 E의 80°, 호 BD=116°와 AC=44° 표기.",
+    "solutionImageCaption": "교차현각에서 두 호의 합은 160°이고 외부 할선각에서 두 호의 차는 72°이다. 정답 22°.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

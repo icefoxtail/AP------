@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
-import {solveStatChart,statChartSize,composeStatChartFigure,FIGURE_CAPABILITY} from '../production/stat-chart-v1.mjs';
+import {solveStatChart,statChartSize,statChartSpec,composeStatChartFigure,FIGURE_CAPABILITY} from '../production/stat-chart-v1.mjs';
 import {assertAccessibleNames} from './accessible-names.mjs';
 
 const observer=fileURLToPath(new URL('../production/stat-chart-observer-worker.py',import.meta.url));
@@ -21,6 +21,35 @@ const has=(result,prefix)=>(result.errors??[result.code]).some(error=>error.star
 const POINTS=[[3,2],[3,3],[4,3],[4,6],[5,6],[5,4],[6,7],[6,8],[7,8],[7,5],[8,10],[8,9],[9,8],[9,5],[10,9]].map(([x,y])=>({x:String(x),y:String(y)}));
 const base={kind:'SCATTER',points:POINTS,xRange:['0','10'],yRange:['0','10'],xStep:'1',yStep:'1',labelEvery:2,xTitle:'읽기',yTitle:'듣기'};
 const marked={...base,refLines:[{type:'x=k',value:'8'},{type:'y=k',value:'8'}],regions:[{xMin:'8',yMin:'8',markPoints:true,countLabel:true,countUnit:'명',tone:2}]};
+
+test('scatter equalUnits is opt-in, preserves legacy geometry and uses one physical data unit',()=>{
+  const specOf=(chart,compact=false)=>statChartSpec(plan(chart),solveStatChart(chart,{compact}));
+  for(const value of [null,1,'true',{}])refuse({...base,equalUnits:value},'STAT_CHART_PLAN_INVALID');
+  refuse({kind:'DICE_TABLE',faces:2,equalUnits:true},'STAT_CHART_PLAN_INVALID');
+  assert.deepEqual(solveStatChart({...marked,equalUnits:false}),solveStatChart(marked));
+  const legacy=specOf(marked);
+  assert.deepEqual(specOf({...marked,equalUnits:false}),legacy);
+  assert.equal(legacy.prims.find(p=>p.id==='x-tick-2').x1,141.283019);
+  assert.equal(legacy.prims.find(p=>p.id==='y-tick-2').y1,274.380952);
+  for(const chart of [
+    {...marked,diagonal:true},
+    {...base,xRange:['0.8','2'],yRange:['0.8','2'],xStep:'0.1',yStep:'0.1',points:[{x:'0.8',y:'0.8'},{x:'2',y:'2'}],diagonal:true},
+    {...base,xRange:['0','20'],yRange:['0','2'],xStep:'1',yStep:'0.1',points:[{x:'0',y:'0'},{x:'20',y:'2'}],diagonal:true}
+  ])for(const compact of [false,true]){
+    const equal={...chart,equalUnits:true},model=solveStatChart(equal,{compact}),spec=specOf(equal,compact);
+    assert.equal(model.equalUnits,true);
+    assert.deepEqual(spec.size,specOf(chart,compact).size,'same canvas');
+    const {equalUnits,...unchanged}=model;
+    assert.deepEqual(unchanged,solveStatChart(chart,{compact}),'source points and derived memberships unchanged');
+    const unit=(role,coord)=>{
+      const ts=spec.prims.filter(p=>p.role===role),a=ts[0],b=ts.at(-1);
+      return Math.abs((b[coord]-a[coord])/(Number(b.data.value)-Number(a.data.value)));
+    };
+    assert.ok(Math.abs(unit('x-tick','x1')/unit('y-tick','y1')-1)<1e-7);
+    const diagonal=spec.prims.find(p=>p.id==='diagonal');
+    assert.ok(Math.abs(Math.abs(diagonal.x2-diagonal.x1)-Math.abs(diagonal.y2-diagonal.y1))<=2e-6,'y=x is physically 45 degrees');
+  }
+});
 
 test('the engine counts the points of a region from the data and keeps a plan without the new fields as it was',()=>{
   const m=solveStatChart(marked);
@@ -59,8 +88,8 @@ test('the observer passes a scatter with lines, region, rings and a count and ca
   const browser=await launchBrowser();
   try{
     let n=0;
-    const compose=async chart=>{
-      const composed=await composeStatChartFigure({plan:plan(wire(chart)),model:solveStatChart(chart),identity:assetIdentity('26_테스트|'+(8000+n++),'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
+    const compose=async(chart,identity)=>{
+      const composed=await composeStatChartFigure({plan:plan(wire(chart)),model:solveStatChart(chart),identity:identity??assetIdentity('26_테스트|'+(8000+n++),'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
       assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
       assertAccessibleNames(composed.svg);
       assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS');
@@ -89,10 +118,17 @@ test('the observer passes a scatter with lines, region, rings and a count and ca
     assert.ok(has(await audit(marked,svg.replace(/(id="region-0-count"[^>]*data-text=")4명/,'$15명')),'SC_SCATTER_COUNT_MISMATCH:0'));
     assert.ok(has(await audit(marked,svg.replace(/(id="region-0-count"[^>]*data-value=")4/,'$15')),'SC_SCATTER_COUNT_MISMATCH:0'));
     // a plain scatter plan and one with a "y=x" line (no region) pass too
-    const plain=await compose(base);
+    const legacyIdentity=assetIdentity('26_테스트|8999','SOLUTION_VISUAL','decisive-relation');
+    const plain=await compose(base,legacyIdentity);
     await pass(base,plain);
+    assert.equal(await compose({...base,equalUnits:false},legacyIdentity),plain,'false keeps every legacy rendered SVG byte');
+    assert.deepEqual((await audit({...base,equalUnits:true},plain)).errors,['SC_SCATTER_EQUAL_UNITS'],'a self-consistent unequal-scale SVG is rejected for the opt-in plan');
     assert.ok(has(await audit(base,svg),'SC_SCATTER_'),'a figure with lines for a plan that has none');
     const diag={...base,refLines:[{type:'y=x'}]};
     await pass(diag,await compose(diag));
+    const equal={...marked,equalUnits:true,diagonal:true},equalSvg=await compose(equal);
+    await pass(equal,equalSvg);
+    assert.equal((equalSvg.match(/data-role="point-ring"/g)||[]).length,4);
+    assert.equal((equalSvg.match(/data-role="point"/g)||[]).length,POINTS.length);
   }finally{await browser.close();}
 });
