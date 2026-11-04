@@ -1,0 +1,1152 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+  "sourceGitBlobSha": "10885ac35013d11a28baf5f990dd9e88276fe387",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-221-230",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=8x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $a$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선의 방정식",
+            "src": "solution",
+            "quote": "$y^2=4px$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "표준형과 계수를 비교해 초점을 구한다."
+          },
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "$y^2=4px$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선 표준형에서 초점을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "포물선 표준형의 계수를 비교하여 초점 좌표를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{16}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 초점 사이의 거리"
+          }
+        ],
+        "method": [
+          {
+            "term": "타원초점관계",
+            "src": "solution",
+            "quote": "$c^2=a^2-b^2=16-7=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "장반축과 단반축으로 초점거리를 구한다."
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "$c^2=a^2-b^2=16-7=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 반축과 초점거리 관계를 이용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "타원의 장단반축 관계로 초점거리를 구해 두 배한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "$-3\\vec a+6\\vec b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "벡터의 덧셈",
+            "src": "solution",
+            "quote": "같은 벡터끼리 모은다",
+            "evidenceType": "IMPLIED",
+            "justification": "스칼라 분배 후 같은 벡터의 계수를 합한다."
+          },
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "같은 벡터끼리 모은다",
+            "evidenceType": "IMPLIED",
+            "justification": "벡터의 선형결합을 정리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "영벡터",
+            "src": "stem",
+            "quote": "영벡터가 아니고"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "서로 평행하지 않다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "괄호를 풀고 각 벡터의 계수를 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $3x^2+y^2=9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "접선의 기울기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "타원의 접선",
+            "src": "solution",
+            "quote": "에서의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 접점에서 접선의 방정식을 구한다."
+          },
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "에서의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 접선 방정식에 접점을 대입한다."
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "$y=mx+n$ 꼴로 정리하면",
+            "evidenceType": "IMPLIED",
+            "justification": "직선식을 y에 대해 풀어 기울기를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "표준형의 접선 공식에 접점을 대입하고 기울기 형태로 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=4px$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $PF$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선의 정의",
+            "src": "solution",
+            "quote": "초점과 준선까지의 거리가 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선 위 점에서 초점과 준선까지의 거리가 같다."
+          },
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "초점과 준선까지의 거리가 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선 위 점의 정의를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "($p<0$)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "포물선의 정의에 의해 초점까지 거리는 준선까지 수선의 길이와 같다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=4px$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "초점 $F$의 $x$좌표"
+          }
+        ],
+        "method": [
+          {
+            "term": "매개변수",
+            "src": "solution",
+            "quote": "$P=(pt^2,2pt)$로 놓고",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선 위 점을 매개변수로 나타낸다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$u+4/u=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 거리 조건을 연립하여 초점의 위치를 결정한다."
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$t^2>1$을 만족한다",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 P가 초점 왼쪽인 조건으로 두 후보 중 하나를 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "($p<0$)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "매개변수로 두 거리 조건을 세우고 그림의 위치로 해를 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{a^2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "실수 $a^2$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "쌍곡선초점관계",
+            "src": "solution",
+            "quote": "$c^2=a^2+b^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "주축 반길이와 초점거리의 관계로 미지 계수를 구한다."
+          },
+          {
+            "term": "쌍곡선",
+            "src": "solution",
+            "quote": "$c^2=a^2+b^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선의 반축과 초점거리 관계를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a^2$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세로 주축 표준형에서 반축과 초점거리 관계를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{4}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선의 방정식을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "쌍곡선의 점근선",
+            "src": "solution",
+            "quote": "$y=\\pm\\dfrac ba x$",
+            "evidenceType": "IMPLIED",
+            "justification": "표준형 쌍곡선의 반축 비로 점근선을 쓴다."
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "$y=\\pm\\dfrac ba x$",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선의 점근선을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "쌍곡선 표준형에서 반축의 비를 점근선 기울기에 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 $2$인 정사각형"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "\\overrightarrow{AB}=\\vec a"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터의 크기",
+            "src": "stem",
+            "quote": "$|\\vec a-\\vec b+2\\vec c|$"
+          }
+        ],
+        "method": [
+          {
+            "term": "벡터의 덧셈",
+            "src": "solution",
+            "quote": "$\\vec c=\\vec a+\\vec b$",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 벡터를 두 변 벡터의 합으로 나타낸다."
+          },
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "$\\vec c=\\vec a+\\vec b$",
+            "evidenceType": "IMPLIED",
+            "justification": "벡터의 합을 사용한다."
+          },
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "$\\vec a\\perp\\vec b$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "수직인 두 벡터의 내적이 0이므로 길이의 제곱을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "두 변은 서로 수직이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대각선을 변 벡터의 합으로 바꾸고 수직성을 이용해 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $2x^2-3y^2=6$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=2x+k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 정수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "쌍곡선에 대입한다",
+            "evidenceType": "IMPLIED",
+            "justification": "직선을 대입하여 교점의 x에 관한 이차방정식을 얻는다."
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 음수여야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "정수 $k$는 $-3,-2,-1,0,1,2,3$",
+            "evidenceType": "IMPLIED",
+            "justification": "해당 범위에서 가장 큰 정수를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$값들"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "만나지 않도록 하는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선을 대입해 교점방정식 판별식이 음수인 범위에서 가장 큰 정수를 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $3x^2-12x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 초점 사이의 거리"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾼다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "쌍곡선초점관계",
+            "src": "solution",
+            "quote": "$c^2=a^2+b^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "표준형 계수로 중심에서 초점까지의 거리를 구한다."
+          },
+          {
+            "term": "쌍곡선",
+            "src": "solution",
+            "quote": "$c^2=a^2+b^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선의 반축과 초점거리 관계를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱으로 표준형을 얻고 초점거리를 두 배한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=-16x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "접선의 $x$절편을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선의 접선",
+            "src": "solution",
+            "quote": "접점 $(pt^2,2pt)$의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "매개변수로 접선식을 나타내고 주어진 점을 대입한다."
+          },
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "접점 $(pt^2,2pt)$의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "매개변수 접점에서 접선식을 구한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$4t^2-4t-3=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "매개변수의 이차방정식을 풀어 기울기가 양수인 해를 택한다."
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x$절편에서는 $y=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "접선에 y=0을 대입해 절편을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "기울기가 양수인 접선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "매개변수 접선이 외부 점을 지나게 한 뒤 양의 기울기를 택하고 절편을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "두 점 $F,F'$을 초점으로 하는 타원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$(\\overline{AO}+\\overline{OF})^2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "타원초점관계",
+            "src": "solution",
+            "quote": "$a^2=b^2+c^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "장반축과 단반축 및 초점거리 사이의 관계를 이용한다."
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "$a^2=b^2+c^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 반축과 초점거리 관계를 사용한다."
+          },
+          {
+            "term": "삼각형의 넓이",
+            "src": "solution",
+            "quote": "$=\\dfrac12\\cdot2c\\cdot b=bc$",
+            "evidenceType": "IMPLIED",
+            "justification": "초점 사이를 밑변으로 하는 삼각형의 넓이로 bc를 얻는다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$=\\dfrac12\\cdot2c\\cdot b=bc$",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변과 높이로 삼각형 넓이를 구한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$=b^2+c^2+2bc$",
+            "evidenceType": "IMPLIED",
+            "justification": "목표인 합의 제곱을 전개한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "타원의 반축 관계로 제곱합을, 초점 삼각형 넓이로 곱을 구해 합의 제곱을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCD$"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "\\overrightarrow{AB}+\\overrightarrow{AC}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$|\\overline{BD}|$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "2\\overrightarrow{AP}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 벡터의 합을 BC 중점까지 벡터의 두 배로 표현한다."
+          },
+          {
+            "term": "피타고라스 정리",
+            "src": "solution",
+            "quote": "$2^2+h^2=(2\\sqrt5)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변사다리꼴의 높이와 대각선을 직각삼각형으로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "변 $BC$와 평행하고"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\angle CBA=\\angle DCB$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑각이 같은 사다리꼴과 중점 벡터를 이용해 높이를 정하고 대각선을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "위치벡터",
+            "src": "stem",
+            "quote": "$\\overrightarrow{OA}=2\\vec a-3\\vec b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $k$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "벡터의 덧셈",
+            "src": "solution",
+            "quote": "\\overrightarrow{OB}-\\overrightarrow{OA}",
+            "evidenceType": "IMPLIED",
+            "justification": "위치벡터의 차로 AB와 AC를 표현한다."
+          },
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "\\overrightarrow{OB}-\\overrightarrow{OA}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 위치벡터의 차를 계산한다."
+          },
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "\\overrightarrow{AC}=t",
+            "evidenceType": "IMPLIED",
+            "justification": "세 점의 공선 조건을 두 벡터의 실수배로 나타낸다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$2=-4t$, $k+3=8t$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행하지 않은 두 벡터의 계수를 비교해 k를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 네 점"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "서로 평행하지 않다"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "AB와 AC를 위치벡터 차로 만들고 평행 조건에서 독립 벡터의 계수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $x^2-\\dfrac{y^2}{2}=1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "접선의 $y$절편을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "쌍곡선의 접선",
+            "src": "solution",
+            "quote": "점 $(3,4)$에서의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선 위 점에서 표준형 접선 방정식을 쓴다."
+          },
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "점 $(3,4)$에서의 접선은",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선 위 점에서 접선의 방정식을 구한다."
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$y$절편은 $-\\dfrac12$",
+            "evidenceType": "IMPLIED",
+            "justification": "직선식을 y에 대해 정리해 y절편을 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "쌍곡선 접선 공식에 주어진 점을 넣고 y절편을 읽는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "\\angle B=90^\\circ,\\angle C=30^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터의 크기",
+            "src": "stem",
+            "quote": "$|\\overrightarrow{PA}|^2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$P$는 $BC$의 중점이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 벡터가 서로 반대이므로 P는 BC의 중점이다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$30^\\circ$의 맞은편 변",
+            "evidenceType": "IMPLIED",
+            "justification": "30-60-90 직각삼각형의 변의 비로 BC를 구한다."
+          },
+          {
+            "term": "피타고라스 정리",
+            "src": "solution",
+            "quote": "$PA^2=AB^2+PB^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형 APB에서 PA의 제곱을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "벡터 조건으로 중점을 찾고 직각삼각형의 변의 비와 피타고라스 정리로 길이 제곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{16}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $OP$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "타원의 정의",
+            "src": "solution",
+            "quote": "$PF+PF'=2\\cdot4=8$",
+            "evidenceType": "IMPLIED",
+            "justification": "타원 위 점의 두 초점까지 거리 합을 이용한다."
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "$PF+PF'=2\\cdot4=8$",
+            "evidenceType": "IMPLIED",
+            "justification": "타원 위의 점에서 두 초점까지 거리의 합을 쓴다."
+          },
+          {
+            "term": "원점대칭",
+            "src": "solution",
+            "quote": "중심 대칭에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$O$가 $PQ$의 중점이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "제1사분면 위의 점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중심 대칭과 타원의 초점 거리 합으로 삼각형의 두 변 합을 구해 지름과 반을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{36}"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "\\overrightarrow{PF'}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $k$의 값을 구하시오"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "벡터의 덧셈",
+            "src": "solution",
+            "quote": "$=2\\overrightarrow{PO}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 초점의 위치벡터 합이 0임을 이용해 벡터합을 정리한다."
+          },
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "$=2\\overrightarrow{PO}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 벡터의 합을 정리한다."
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "긴 반축의 길이 $6$",
+            "evidenceType": "IMPLIED",
+            "justification": "타원 위 원점까지 거리의 최댓값이 긴 반축이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "초점들이 중심에 대칭이므로 벡터합을 중심까지의 벡터 두 배로 바꾸어 장반축을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$의 두 변"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "지름으로 하고 중심이 $O$인 원"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "$\\overrightarrow{BP}=\\vec b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터의 크기",
+            "src": "stem",
+            "quote": "$|\\vec a|$의 값을"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$|\\vec a+\\vec b|$의 최댓값"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "$B=(0,0)$으로 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형과 내분점을 좌표화한다."
+          },
+          {
+            "term": "내분점",
+            "src": "solution",
+            "quote": "$CQ:QD=1:4$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "비율로 Q의 좌표를 구한다."
+          },
+          {
+            "term": "벡터의 덧셈",
+            "src": "solution",
+            "quote": "\\vec a+\\vec b=",
+            "evidenceType": "IMPLIED",
+            "justification": "벡터의 합을 두 이동벡터로 정리한다."
+          },
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "\\vec a+\\vec b=",
+            "evidenceType": "IMPLIED",
+            "justification": "벡터의 합을 정리한다."
+          },
+          {
+            "term": "원의 방정식",
+            "src": "solution",
+            "quote": "원점에서 이 원까지의 가장 먼 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "벡터 끝점의 원을 평행이동하여 원점에서의 최대거리를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내분",
+            "src": "stem",
+            "quote": "$1:4$로 내분하는 점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "좌표와 내분으로 a를 구하고 P의 원 궤적과 벡터합의 평행이동으로 두 크기의 최댓값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {"term":"포물선의 방정식","en":"PARABOLA_EQUATION","synonyms":[],"kind":"방법","parent":"포물선","note":"포물선 표준형의 계수와 초점을 연결한다.","usedIn":[1]},
+    {"term":"타원초점관계","en":"ELLIPSE_FOCAL_RELATION","synonyms":[],"kind":"방법","parent":"타원","note":"타원의 장단반축과 초점거리의 제곱 관계를 사용한다.","usedIn":[2,13]},
+    {"term":"쌍곡선초점관계","en":"HYPERBOLA_FOCAL_RELATION","synonyms":[],"kind":"방법","parent":"쌍곡선","note":"쌍곡선의 반축과 초점거리의 제곱 관계를 사용한다.","usedIn":[7,11]},
+    {"term":"벡터의 덧셈","en":"VECTOR_ADDITION","synonyms":[],"kind":"방법","parent":"벡터","note":"벡터의 합과 차를 정리한다.","usedIn":[3,9,15,19,20]},
+    {"term":"타원의 접선","en":"ELLIPSE_TANGENT","synonyms":[],"kind":"방법","parent":"접선의방정식","note":"타원 위 주어진 접점에서 접선 방정식을 구한다.","usedIn":[4]},
+    {"term":"포물선의 접선","en":"PARABOLA_TANGENT","synonyms":[],"kind":"방법","parent":"접선의방정식","note":"포물선 접점의 매개변수로 접선 방정식을 나타낸다.","usedIn":[12]},
+    {"term":"쌍곡선의 접선","en":"HYPERBOLA_TANGENT","synonyms":[],"kind":"방법","parent":"접선의방정식","note":"쌍곡선 위 주어진 접점의 접선 방정식을 쓴다.","usedIn":[16]},
+    {"term":"포물선의 정의","en":"PARABOLA_FOCUS_DIRECTRIX","synonyms":[],"kind":"방법","parent":"포물선","note":"초점과 준선까지의 거리가 같은 점의 자취를 쓴다.","usedIn":[5]},
+    {"term":"쌍곡선의 점근선","en":"HYPERBOLA_ASYMPTOTES","synonyms":[],"kind":"방법","parent":"점근선","note":"표준형 반축의 비로 두 점근선을 정한다.","usedIn":[8]},
+    {"term":"삼각형의 넓이","en":"TRIANGLE_AREA_FORMULA","synonyms":[],"kind":"방법","parent":"넓이","note":"밑변과 높이의 곱의 반으로 삼각형의 넓이를 구한다.","usedIn":[13]},
+    {"term":"타원의 정의","en":"ELLIPSE_FOCAL_SUM","synonyms":[],"kind":"방법","parent":"타원","note":"두 초점까지 거리의 합이 장축 길이임을 쓴다.","usedIn":[18]}
+  ],
+  "selfCheck": {
+    "items": 20,
+    "quotesChecked": 126,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,2,3,4,5,7,8,11,16],
+    "notes": "Q5,6,9,13,14,18,20 그림 7개 직접 열람. Q5와 Q6은 동일한 PNG이며 Q6의 P는 F 왼쪽에 그려져 있다. Q1 포물선 표준형과 초점 계수를 비교한다. Q2 타원의 반축과 초점거리 관계로 두 초점 사이를 구한다. Q3 벡터의 스칼라 분배와 동류 벡터의 계수 합을 계산한다. Q4 타원 접선식에 접점을 대입해 기울기를 읽는다. Q5 포물선의 초점·준선 등거리 정의를 사용한다. Q7 세로 주축 쌍곡선의 반축과 초점거리 관계를 쓴다. Q8 쌍곡선의 반축 비로 점근선을 구한다. Q11 완전제곱식으로 쌍곡선 표준형을 얻어 초점거리를 구한다. Q16 쌍곡선의 접선식에서 y절편을 읽는다."
+  }
+}
