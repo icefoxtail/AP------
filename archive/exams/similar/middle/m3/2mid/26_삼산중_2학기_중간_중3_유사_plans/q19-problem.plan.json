@@ -1,24 +1,29 @@
 {
   "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $6$인 원",
+  "sourceQuote": "한 변의 길이가 $12$인 정삼각형",
   "sourceConditions": [
     {
       "id": "q19-c1",
-      "condition": "원 반지름 6, 정삼각형 변 12",
-      "mappedTo": "poly-ABC"
+      "condition": "equilateral triangle ABC has side 12; its incircle O has radius 2√3",
+      "mappedTo": "A,B,C,O"
     },
     {
       "id": "q19-c2",
-      "condition": "지름 AH 수직 BC",
-      "mappedTo": "seg-AH"
+      "condition": "incircle touches AB at D and BC at H; sector DOH is excluded",
+      "mappedTo": "D,H,sector DOH"
     }
   ],
   "newVisualInformation": [
-    "정삼각형 ABC와 부채꼴이 제외된 색칠 영역"
+    "the equilateral triangle, its incircle, and the 120-degree sector DOH"
   ],
-  "caption": "정삼각형 ABC와 원 O의 중심각 120도 부채꼴 영역",
+  "caption": "정삼각형 ABC의 내접원과 변 AB, BC의 접점 D, H, 제외할 부채꼴 DOH를 나타낸 그림",
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
     "nodes": [
       {
         "id": "A",
@@ -31,8 +36,24 @@
               "value": "0"
             },
             {
-              "kind": "integer",
-              "value": "10"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -78,45 +99,165 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "H",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "4"
-            }
-          ]
-        },
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenOH",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ],
-    "conditionAudits": []
+    "conditionAudits": [
+      {
+        "id": "side-ab",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "side-bc",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "side-ca",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "tangent-D",
+        "sourceConditionId": "q19-c2",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "D",
+          "lineAB"
+        ]
+      },
+      {
+        "id": "tangent-H",
+        "sourceConditionId": "q19-c2",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "H",
+          "lineBC"
+        ]
+      },
+      {
+        "id": "circle-through-D",
+        "sourceConditionId": "q19-c1",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circleO",
+          "D"
+        ]
+      }
+    ]
   },
   "displaySegments": [
     {
@@ -141,9 +282,23 @@
       ]
     },
     {
-      "id": "seg-AH",
+      "id": "seg-OA",
       "refs": [
-        "A",
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-OH",
+      "refs": [
+        "O",
         "H"
       ]
     }
@@ -152,13 +307,70 @@
     "A",
     "B",
     "C",
+    "D",
     "H",
     "O"
   ],
-  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q19.svg",
+  "displayCircles": [
+    "circleO"
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "seg-AB",
+      "prefix": "AB",
+      "unit": "cm"
+    },
+    {
+      "nodeId": "lenOH",
+      "ownerSegment": "seg-OH",
+      "prefix": "r"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle-DOH",
+        "refs": [
+          "D",
+          "O",
+          "H"
+        ],
+        "value": 120,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shaded-complement",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "D",
+              "to": "H",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q19-finalqa-20261104.svg",
   "engineEvidence": {
-    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q19-problem-result.json",
-    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q19-problem-state.json",
-    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q19-problem.svg"
+    "resultPath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사_plans/engine_evidence/q19-problem.svg"
   }
 }

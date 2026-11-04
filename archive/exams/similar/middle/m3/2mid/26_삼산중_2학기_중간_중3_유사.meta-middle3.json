@@ -3,7 +3,7 @@
   "requestId": "similar-26-samsan-m3-2mid-candidate-v1",
   "examUid": "26_삼산중_2학기_중간_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
-  "expectedSourceBlobSha1": "c3c92d3e99756dd1e8a49be8e53186f0f22cbfd5",
+  "expectedSourceBlobSha1": "6c3984198bedfecd8b19d6f6c9ad119646808890",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -11,7 +11,20 @@
     "approvedBy": null,
     "reviewStatus": "review_required",
     "reviewPassCount": 0,
-    "evidenceRefs": []
+    "evidenceRefs": [
+      {
+        "path": ".tmp/finalqa-review/samsan-q17-q19/independent-review.json",
+        "sha256": "d176f40bf48ceaa262e819244ba2df18e41df18554a4478c19d80546acbfc41c"
+      },
+      {
+        "path": ".tmp/finalqa-review/samsan-q17-q19/independent-freeze.json",
+        "sha256": "8755ec749ec992ec167a7736abf336fa34abd8206b91c42e60dd4ff8abcf75fd"
+      },
+      {
+        "path": ".tmp/finalqa-review/samsan-q17-q19/source-binding-after-link.json",
+        "sha256": "d173a25921140cc1bb10f0c9f419e209e9a5a94344442c7213b7ce6473cb5267"
+      }
+    ]
   },
   "registryChanges": [],
   "items": [
@@ -669,5 +682,35 @@
         "legacyLevelCompatibility": "NORMAL"
       }
     }
-  ]
+  ],
+  "historicalProvenance": {
+    "priorExpectedSourceBlobSha1": "465dd0c5f6e344df800c73040d26ddc8d006ab27",
+    "priorApproval": {
+      "type": "CANDIDATE_CREATION_GATE",
+      "metadataReviewed": false,
+      "approvedBy": null,
+      "reviewStatus": "review_required",
+      "reviewPassCount": 0,
+      "evidenceRefs": []
+    },
+    "priorReceiptPath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.review-receipt.json",
+    "description": "Original candidate creation gate remains preserved; no approval is inferred from the targeted math/visual review."
+  },
+  "repairScope": {
+    "status": "review_required",
+    "changedQuestionUids": [
+      17,
+      19
+    ],
+    "independentTargetedMathVisualPassQuestionUids": [
+      17,
+      19
+    ],
+    "officialArchiveQualification": "NOT_RUN / USER_DEFERRED",
+    "existingProblemTypeTemplateTaxonomyDebt": [
+      "PT_CIRCLE_TANGENT",
+      "TM_TANGENT_LENGTH"
+    ],
+    "note": "The targeted math/visual review does not approve unrelated metadata or release qualification."
+  }
 }
