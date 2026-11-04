@@ -1,0 +1,39 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 4,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        2,
+        2
+      ],
+      "B": [
+        4,
+        3
+      ]
+    },
+    "viaPoints": [
+      "P"
+    ],
+    "counts": "segments",
+    "hideTargetCount": false
+  },
+  "caption": "P에서 새로 세기: A에서 P까지 6가지, P에서 B까지 3가지",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A에서 출발해 P를 거쳐 B까지 최단 거리로 이동한다.",
+      "mappedTo": "lattice.viaPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "P를 경계로 구간별 경로 수를 독립적으로 센다."
+  ]
+}

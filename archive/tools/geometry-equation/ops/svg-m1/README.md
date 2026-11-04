@@ -24,10 +24,11 @@
 - `golden-one.mjs`: 정답지 항목 여럿을 차례로 렌더한다. `node golden-one.mjs <outDir> <항목 번호...>`. `WT` 환경변수로 트리를 바꾼다.
 
 게시·원장
-- `pubflow.py`: PASS한 그림을 게시하는 한 흐름(JS 반영 → 렌더 확인 → 게이트 테스트 → 원장 → 커밋·push). `pubflow.py "<커밋 제목>" "<본문>" <시험>:<review.json>:<rows.json> [...]`
+- `pubflow.py`: Windows에서는 복원한 `.tmp/svg-m1/`의 도구를 사용하고 `APMS_ROOT`를 작업 트리로 지정한 뒤 `python .tmp/svg-m1/pubflow.py --batch <manifest.json>`을 실행한다. manifest는 `[{"exam":"시험명","review":"review.json","rows":"rows.json","triage":"triage.json","camp":"m2-codex"}]`이며 상대 경로는 manifest 기준이다. JS 적용 → 실제 해설 화면·글자 크기 검증 → 공통 CREATE 게이트 회귀 → 원장 갱신을 수행한다. Git 커밋·push는 별도로 한다.
 - `publish-exam.py`: 검토 결과와 rows에서 시험지 하나의 게시 rows(`runs/publish-rows-<시험>.json`)를 만든다. pubflow가 부른다.
 - `publish.mjs`: 게시 rows의 SVG를 시험지 JS에 넣는다(`solutionImage*` 네 필드와 SVG 복사). `--apply` 없이는 쓰지 않는다. 따옴표 없는 `id:` 키를 쓰는 시험지도 처리한다. pubflow가 부른다.
 - `verify-published.mjs`: 게시한 시험지의 해설 페이지(mode=sol)가 오류 없이 열리고 그림이 로드되는지 확인한다. `APMS_ROOT=<트리> node verify-published.mjs <publish-report.json> <out.json>`
+- `verify-publication-fonts.mjs`: 실제 게시 화면의 SVG 응답 해시, 표시 크기 및 라벨별 글자 크기를 검사한다. `pubflow.py`가 호출하며 결과는 `runs/font-batch-result.json`에 남긴다.
 - `ledger-upsert.py`: 시험지 마감 원장(`production/exam-figure-ledger.json`)을 spec JSON으로 갱신한다. `ledger-upsert.py <spec.json>`
 
 해설 내용 수정

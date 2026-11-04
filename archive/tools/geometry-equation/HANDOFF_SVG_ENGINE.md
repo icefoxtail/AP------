@@ -1,5 +1,7 @@
 # AP Math 해설 그림 SVG — 인계 문서 (Claude Code 오케스트레이터 → 다음 작업자, 최종 갱신 2026-11-01)
 
+> **Codex 진입점(2026-11-04 사용자 지시):** [HANDOFF_SVG_CODEX.md](HANDOFF_SVG_CODEX.md)를 먼저 읽는다. Codex ROOT가 총괄하고 Terra가 시험지별 제작·수정, 별도 Sol이 독립 검수한다. 이번 Codex 라인에서는 DeepSeek·OpenCode를 사용하지 않는다. 아래 Claude·Sonnet 실행 지시와 Linux 명령은 그대로 적용하지 않으며, 공통 그림 기준과 인계 당시 현황은 계속 참고한다.
+
 다음 작업자는 이 문서 하나로 이어서 일할 수 있다. **읽는 순서: §00(최신 현황) → §0 → §1 → §2(작업 방식) → §3(도구 복원) → §6(남은 일).** 나머지는 필요할 때 찾아본다. 2026-10-26판(Codex·opencode DeepSeek 방식)은 git 이력에 있다. 지금 방식은 이 문서다.
 
 - 그림 작성 규칙 정본: `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`. 본문 `author-guide-body.md`와 계약을 `node archive/tools/geometry-equation/production/build-author-guide.mjs`로 합성한다. `tests/author-guide.test.mjs`가 동기화를 검사한다.

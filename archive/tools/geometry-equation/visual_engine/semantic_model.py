@@ -39,11 +39,15 @@ def validate(spec):
         result = validate(core)
         result["publication"] = validate_annotations(config, core, result["geometry"])
         return result
-    allowed={'id','visualType','viewport','sourceFacts','derivedFacts','displayFacts','objects','axes','title'}
+    allowed={'id','visualType','viewport','sourceFacts','derivedFacts','displayFacts','objects','axes','title','description'}
     if not isinstance(spec,dict) or set(spec)-allowed:
         raise ValueError('UNKNOWN_SPEC_FIELD')
     if not {'id','visualType','viewport','objects','sourceFacts','derivedFacts','displayFacts'} <= spec.keys():
         raise ValueError('MISSING_SPEC_FIELD')
+    if 'description' in spec:
+        description = spec['description']
+        if not isinstance(description,str) or not description.strip() or len(description)>500 or '\r' in description or '\n' in description:
+            raise ValueError('INVALID_ACCESSIBILITY_DESCRIPTION')
     axes=spec.get('axes',True)
     if not isinstance(axes,bool) and (not isinstance(axes,dict) or set(axes)!={'x','y'} or any(not isinstance(value,bool) for value in axes.values())):
         raise ValueError('INVALID_AXIS_POLICY')

@@ -964,11 +964,12 @@ function solveDice(c){
     highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:cols.length*rows.length};
 }
 function solveTree(c){
-  onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn','leafLayout'],'STAT_CHART_PLAN_INVALID');
   if(c.showPathProbability!==undefined&&typeof c.showPathProbability!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   // pathColumn (E34): the path probabilities stand in one column right of the deepest leaf instead of each beside its own leaf (for leaves of different depths, whose wide labels would meet the deeper branches)
   if(c.pathColumn!==undefined&&typeof c.pathColumn!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   if(c.pathColumn===true&&c.showPathProbability!==true)bad('STAT_TREE_PATH_NEEDS_PROBABILITIES');
+  if(c.leafLayout!==undefined&&c.leafLayout!=='COMPACT')bad('STAT_TREE_COMPACT_INVALID');
   onlyKeys(c.root,['label','children'],'STAT_TREE_INVALID');
   const nodes=[];
   const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>6||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
@@ -989,7 +990,8 @@ function solveTree(c){
   };
   walk(c.root,'n0',null,0,null);
   const leaves=nodes.filter(n=>!n.children.length);
-  if(leaves.length>12||nodes.length<3)bad(nodes.length<3?'STAT_TREE_INVALID':'STAT_TREE_TOO_LARGE');
+  if(c.leafLayout==='COMPACT'&&(nodes.some(n=>n.depth>2||n.p!==null||(n.label!==null&&n.label.length>3))||c.showPathProbability||c.pathColumn||c.highlightPaths!==undefined))bad('STAT_TREE_COMPACT_INVALID');
+  if(leaves.length>(c.leafLayout==='COMPACT'?16:12)||nodes.length<3)bad(nodes.length<3?'STAT_TREE_INVALID':'STAT_TREE_TOO_LARGE');
   const byId=new Map(nodes.map(n=>[n.id,n]));
   const withP=nodes.filter(n=>n.parent!==null);
   const hasP=withP.some(n=>n.p!==null);
@@ -1015,7 +1017,7 @@ function solveTree(c){
     }
     lit.sort((a,b)=>leaves.findIndex(n=>n.id===a)-leaves.findIndex(n=>n.id===b));
   }
-  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
+  return {schemaVersion:MODEL_VERSION,kind:'TREE',...(c.leafLayout==='COMPACT'?{leafLayout:'COMPACT'}:{}),showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
 
@@ -1371,7 +1373,7 @@ function diceSpec(m,ctx){
 }
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
-const treeRow=(m,fontPx)=>m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
+const treeRow=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
 function treeCenters(m,rowH=TREE_ROW){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
   const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};

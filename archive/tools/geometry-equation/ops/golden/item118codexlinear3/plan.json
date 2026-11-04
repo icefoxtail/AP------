@@ -1,0 +1,220 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "math": "a=1/4",
+        "text": "일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3/2",
+                "-1/4"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "formula": "3/2-x/4",
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "g",
+                "slope": "3/4",
+                "intercept": "-1/2",
+                "label": "3x-4y-2=0",
+                "color": "BLUE"
+              },
+              {
+                "id": "h",
+                "slope": "-1/4",
+                "intercept": "2",
+                "label": "y=-ax+2",
+                "color": "WARM"
+              }
+            ],
+            "points": [
+              {
+                "id": "P",
+                "x": "2",
+                "y": "1",
+                "unnamed": true,
+                "coordinates": true
+              }
+            ]
+          },
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -2,
+            6,
+            -2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "a=-3/4",
+        "text": "일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3/2",
+                "-1/4"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "formula": "3/2-x/4",
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "g",
+                "slope": "3/4",
+                "intercept": "-1/2",
+                "label": "3x-4y-2=0",
+                "color": "BLUE"
+              },
+              {
+                "id": "h",
+                "slope": "3/4",
+                "intercept": "2",
+                "label": "y=-ax+2",
+                "color": "WARM"
+              }
+            ],
+            "points": [
+              {
+                "id": "P",
+                "x": "2",
+                "y": "1",
+                "unnamed": true,
+                "coordinates": true
+              }
+            ]
+          },
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -2,
+            6,
+            -2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "a=1/2",
+        "text": "일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3/2",
+                "-1/4"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "formula": "3/2-x/4",
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "g",
+                "slope": "3/4",
+                "intercept": "-1/2",
+                "label": "3x-4y-2=0",
+                "color": "BLUE"
+              },
+              {
+                "id": "h",
+                "slope": "-1/2",
+                "intercept": "2",
+                "label": "y=-ax+2",
+                "color": "WARM"
+              }
+            ],
+            "points": [
+              {
+                "id": "P",
+                "x": "2",
+                "y": "1",
+                "unnamed": true,
+                "coordinates": true
+              }
+            ]
+          },
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -2,
+            6,
+            -2,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "셋째 직선이 첫째 또는 둘째와 평행하거나 두 직선의 교점을 지나면 삼각형을 이루지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 기울기 -1/4, 둘째 3/4, 셋째 -a; 첫째 둘째 교점 (2,1).",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각각 평행과 공점인 세 가지 경계 경우"
+  ],
+  "linearStack": true
+}

@@ -246,6 +246,8 @@
 - **독립 검수.** `lattice_path_observer.py`는 plan만 보고 시작점에서 도착점까지의 모든 최단 경로를 **하나씩 걸어서** 금지·경유 조건을 거른 뒤 교차점마다 서로 다른 앞부분 경로를 세어, **최종 SVG**에 적힌 숫자와 대조한다. 그려진 도로의 간격으로 격자 배율을 되찾아 모든 도로가 정확한 위치에 하나씩 있는지, 끊긴 길이 점선인지, 꼭 지나는 길이 더 굵은지, 이름 점과 `highlightPath`가 제 교차점에 있는지, 숨긴 최종 수가 적히지 않았는지 확인한다.
 - 오류 코드: `LATTICE_PLAN_INVALID`(허용하지 않는 키), `LATTICE_GRID_INVALID`(범위 밖), `LATTICE_POINT_INVALID`/`LATTICE_POINT_ID_INVALID`/`LATTICE_POINT_OUT_OF_GRID`/`LATTICE_POINT_POSITION_DUPLICATE`, `LATTICE_SEGMENT_INVALID`/`LATTICE_SEGMENT_NOT_ADJACENT`/`LATTICE_SEGMENT_DUPLICATE`, `LATTICE_VIA_TOO_MANY`/`LATTICE_VIA_FORBIDDEN_CONFLICT`/`LATTICE_VIA_UNREACHABLE`, `LATTICE_ENDPOINT_INVALID`(시작점·도착점 없음·같음), `LATTICE_NO_PATH`(조건을 만족하는 경로 없음), `LATTICE_COUNTS_INVALID`, `LATTICE_HIGHLIGHT_PATH_INVALID`, `LATTICE_LABEL_NO_ROOM`(숫자·이름이 들어갈 자리 없음: 칸을 줄이거나 `counts` 목록으로 일부만 쓴다).
 
+**경유점(옵트인).** `lattice.viaPoints:["P"]`는 이름 있는 점 1~3개를 순서대로 반드시 거친다. 기존 `via`는 도로 선분이며 이 필드와 혼용하지 않는다. 시작·경유·도착점은 서로 달라야 하며 전체 최단 이동 방향에서 되돌아가면 거절한다. `counts:true`/목록은 전체 시작점 기준 누적 경로 수를 유지한다. `counts:"segments"`는 각 경유점에서 다시 세는 **구간별** 누적수다. 공통 경유점에는 이전 구간의 도착 수를 한 번만 쓴다. `hideTargetCount:false`일 때 마지막 점에는 마지막 구간 수(전체 곱 아님)가 나온다. caption에 "P에서 새로 세기"처럼 수의 의미를 반드시 설명한다. 예: 4×3 도로망 A(0,0), P(2,2), B(4,3)은 P에6, B에3이며 전체18은 그림 밖 caption에만 둔다. 기본 `hideTargetCount:true`는 이 모드에서도 마지막 점의 수를 숨긴다. 관측기는 전체 경로를 독립 열거하고 경유점을 지난 경로만 남겨 구간별 prefix를 중복 제거해 다시 센다. 거절: `LATTICE_VIA_POINTS_INVALID`, `LATTICE_VIA_POINTS_ORDER_INVALID`, `LATTICE_VIA_POINTS_ROAD_MIX_UNSUPPORTED`, `LATTICE_WAYPOINT_HIGHLIGHT_INVALID`. 골든: `item117codexwaypoint`.
+
 
 ### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
 

@@ -58,7 +58,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 두 직선과 이동 후 점 (0,5).",
+    "solutionImageCaption": "y절편이 2에서 5로 변하므로 b=3이다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -176,7 +180,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=2x+4의 x절편 -2와 y절편 4.",
+    "solutionImageCaption": "a=-2, b=4이므로 a+b=2이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -296,7 +304,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 선분 AB의 양 끝점을 지나는 두 경계 직선.",
+    "solutionImageCaption": "A와 B에서 기울기가 각각 3, 1/4이므로 1/4≤a≤3이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -356,7 +368,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 제1, 2, 4사분면을 지나는 오른쪽으로 내려가는 직선.",
+    "solutionImageCaption": "예: 기울기는 음수이고 y절편은 양수이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -417,7 +433,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 점 사이의 수평 변화 6과 수직 변화 4를 나타낸 직선.",
+    "solutionImageCaption": "기울기는 -4/6=-2/3이며 y절편 b=2이다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -476,7 +496,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 직선과 점 (0,2)를 지나는 평행선.",
+    "solutionImageCaption": "기울기를 2/3으로 맞추고 절편 2를 대입하면 y=2x/3+2이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -537,7 +561,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 축과 직선이 둘러싼 삼각형의 밑변 6과 높이 4.",
+    "solutionImageCaption": "밑변은 6, x절편은 -6이므로 a=2/3이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1010,7 +1038,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": null,
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 도로가 없는 격자에 각 교점까지의 경로 수를 표시한 그림.",
+    "solutionImageCaption": "수는 A에서 각 교점까지의 최단 경로 수이다. P까지 6가지이고 P에서 B까지 2가지이므로 P를 지나는 경로는 6×2가지이다. 전체 B까지 경로는 19가지이다. 정답 ③ 12/19.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1242,7 +1274,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 점 사이 수평 변화 3과 수직 변화 2를 나타낸 직선.",
+    "solutionImageCaption": "(1) 기울기는 2/3이고 (2) 식은 y=2x/3-2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1254,7 +1290,7 @@ window.questionBank = [
     ],
     "content": "서술형 2. 세 직선 $y=2x-2$, $y=x-2$, $x=2$로 둘러싸인 삼각형의 넓이를 구하려고 한다. 다음 물음에 서술하시오.\n(1) 개략적인 그래프를 그리시오. (교점좌표 표시) (4점)\n(2) 세 직선에 의해 둘러싸인 삼각형의 넓이를 구하시오. (단답형) (2점)",
     "choices": [],
-    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "answer": "2",
     "solution": "두 직선의 교점은 $2x-2=x-2$에서 $x=0$, $y=-2$이므로 $(0,-2)$이다.\n$x=2$와 $y=2x-2$의 교점은 $(2,2)$이다.\n$x=2$와 $y=x-2$의 교점은 $(2,0)$이다.\n세 꼭짓점은 $(0,-2),(2,2),(2,0)$이다.\n세로 변의 길이는 $2$, 반대 꼭짓점에서 $x=2$까지의 수평 거리는 $2$이다.\n넓이는 $\\dfrac12\\times2\\times2=2$이다.",
     "level": "중",
@@ -1297,7 +1333,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImageAlt": "해설 그림: 두 일차함수 직선과 x=2가 둘러싸는 삼각형.",
+    "solutionImageCaption": "(1) 세 교점은 (0,-2), (2,0), (2,2)이다. (2) 밑변과 높이가 각각 2이므로 넓이는 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

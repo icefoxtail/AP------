@@ -45,7 +45,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 대응변끼리 같은 색(AB와 DE 파랑, BC와 EF 주황, CA와 FD 초록)으로 묶고 BC=24, CA=18, DE=10, EF=8, FD=6cm를 표시했다.",
     "solutionImageCaption": "닮음비 3:1이므로 EF=8cm, FD=6cm이고 △DEF의 둘레는 10+8+6=24cm이다. 정답 ③.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +86,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 보기 ②의 도형: A에서 만나는 두 직선 위에 AD=2, AB=6, AE=3, AC=9가 있다. 파랑(AD, AE)과 주황(AB, AC)은 같은 비 1:3인 대응하는 선분이고, DE와 BC에 평행 표시가 있다.",
     "solutionImageCaption": "AD:AB=AE:AC=1:3으로 두 비가 같으므로 DE∥BC이다(정답 ②).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +132,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 점 B의 수선의 발 D. 공통각 A(주황 호)와 두 직각 ∠ADB, ∠ABC(정사각 표시)로 △ABD∽△ABC를 보이고 AB=6, AD=3, AC=12를 적었다.",
     "solutionImageCaption": "AB:AC=AD:AB에서 AC=12이므로 DC=AC−AD=12−3=9이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -219,7 +219,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 사다리꼴 ABCD에서 AD∥PQ∥BC이고 같은 눈금 세 칸으로 AP:PC=1:2를 보였다. 닮은 △CPQ와 △CAD를 따로 그려 대응변을 같은 색으로 묶었다.",
     "solutionImageCaption": "△CPQ∽△CAD이고 CP:CA=2:3이므로 PQ=4×2/3=8/3 cm이어서 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -261,7 +261,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사면체를 밑면에 평행한 두 평면으로 나눈 세 층 가, 나, 다와 누적 부피비를 나타낸다.",
+    "solutionImageCaption": "꼭짓점부터 높이비가 1:2:3이면 누적 부피비는 1:8:27이고 가운데 층의 부피는 42cm³이다. 답: ⑤ 114cm³",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -307,7 +311,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 왼쪽은 △ABC의 중선 AD에서 AG(주황)와 GD(파랑, 3cm)가 2:1로 나뉘는 모습이고, 오른쪽은 △GBC의 중선 GD에서 GG'(보라, 2cm)와 G'D(초록, 1cm)가 2:1로 나뉘는 모습이다.",
     "solutionImageCaption": "GG':G'D=2:1이므로 GD=3cm이고 AG:GD=2:1이므로 AG=6cm이다. 정답 ②.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -355,7 +359,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 대각선 BD가 P, Q로 삼등분되고(초록 눈금), 같은 색 삼각형 BPM과 DQN은 넓이가 6으로 같으며 파란 오각형 PMCNQ가 나머지 부분이다.",
     "solutionImageCaption": "△BCD=72÷2=36이고 △BPM=△DQN=6이므로 오각형 PMCNQ의 넓이는 36−6−6=24이다(정답 ①).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -401,7 +405,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD의 외접원과 각 변을 지름으로 하는 네 반원. 반원이 원 밖으로 나온 어두운 네 부분(주황)과 원의 지름인 대각선 AC=17을 보여 준다.",
     "solutionImageCaption": "네 반원의 넓이의 합이 지름 17인 원의 넓이와 같으므로 어두운 부분의 넓이는 직사각형의 넓이 8×15=120 cm²이다. 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -449,7 +453,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위에 정사각형 ABDE, ACHI, BCGF를 그리고 △ACG를 색칠했다. 오른쪽에는 AB=8, BC=10, AC=6인 직각삼각형과 A에서 BC에 내린 수선 AM, CM=18/5 cm를 따로 크게 보였다.",
     "solutionImageCaption": "△ACG의 밑변 CG=10 cm에 대한 높이가 CM=18/5 cm이므로 넓이는 1/2×10×18/5=18 cm²이어서 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -489,10 +493,6 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 서로 다른 두 주사위의 눈을 가로와 세로로 놓은 6×6 표에서 두 눈의 수의 차가 2 또는 4인 칸이 색칠되어 있다. 차가 2인 8칸과 차가 4인 4칸은 서로 겹치지 않으며 대각선을 기준으로 대칭으로 놓여 있다.",
-    "solutionImageCaption": "두 눈의 수의 차가 2 또는 4인 칸을 색칠한 두 주사위의 6×6 표",
-    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -614,10 +614,6 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A, B, C, D, E를 이은 모든 선분을 변 5개(파랑)와 대각선 5개(주황)로 구분해 그렸다.",
-    "solutionImageCaption": "두 점을 이은 선분은 변 5개와 대각선 5개로 모두 10개이다. 정답 ③.",
-    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -893,7 +889,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AB의 중점, DE=EF, DG∥BC(초록)이고, 같은 색 삼각형 DGE와 FCE는 닮음비 1:1이어서 DG=CF이며 G는 AC의 중점이다. BF=18cm.",
     "solutionImageCaption": "(1) △ADG∽△ABC(AA 닮음), (2) DG=CF이고 BC=2DG이므로 BF=3DG=18cm에서 DG=6cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -936,7 +932,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "solutionImageAlt": "해설 그림: ∠A=90°인 직각삼각형 ABC에서 빗변 BC의 중점 D. 중선 AD, BD, DC가 같은 길이(파랑 눈금)이고 G는 AD를 2:1로 나누며 BC=20, AC=12를 적었다.",
     "solutionImageCaption": "(1) AD=3×GD=10 cm. (2) AD=BD=CD=10이므로 BC=20, AB²=20²−12²=256에서 AB=16 cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -972,9 +968,5 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 서웅 합격 6/7, 불합격 1/7에서 갈라지고 각각 지호 합격 1/3, 불합격 2/3로 갈라지는 네 경로의 수형도. 모두 합격하는 경로는 파란색, 모두 불합격하는 경로는 주황색, 한 사람만 합격하는 두 경로는 초록색으로 칠해져 있다.",
-    "solutionImageCaption": "(1) 모두 합격(파랑) 6/7×1/3=2/7, (2) 모두 불합격(주황) 1/7×2/3=2/21, (3) 적어도 한 사람 합격은 모두 불합격이 아닌 경우이므로 1-2/21=19/21(파랑+초록 세 경로의 합)이다. 따라서 구하는 값은 (1) 2/7, (2) 2/21, (3) 19/21이다.",
-    "solutionImageSize": "medium"
   }
 ];

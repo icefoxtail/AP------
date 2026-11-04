@@ -44,13 +44,27 @@ class Plan:
         self.forbidden = {self.edge(a, b) for a, b in self.segs(lat.get('forbidden'))}
         self.via = [self.edge(a, b) for a, b in self.segs(lat.get('via'))]
         self.counts = lat.get('counts', False)
+        self.waypoints = []
+        if 'viaPoints' in lat:
+            refs = lat['viaPoints']
+            if not isinstance(refs, list) or not 1 <= len(refs) <= 3 or any(not isinstance(r, str) or r not in self.points for r in refs): fail('LP_WAYPOINT_INVALID')
+            if self.via: fail('LP_WAYPOINT_ROAD_MIX_UNSUPPORTED')
+            self.waypoints = [self.ref(r) for r in refs]
+        if self.counts == 'segments' and not self.waypoints: fail('LP_WAYPOINT_INVALID')
         self.hide_target = lat.get('hideTargetCount') is not False
         self.start = self.target = None
         self.total = None
         self.path = [self.ref(r) for r in lat['highlightPath']] if lat.get('highlightPath') is not None else None
-        if self.counts is not False or self.via:
+        if self.counts is not False or self.via or self.waypoints:
             self.start, self.target = self.ref(lat.get('from', 'A')), self.ref(lat.get('to', 'B'))
-        self.shown_filter = None if self.counts is True else ({self.ref(r) for r in self.counts} if isinstance(self.counts, list) else set())
+        if self.waypoints:
+            stops = [self.start] + self.waypoints + [self.target]
+            for a, b in zip(stops, stops[1:]):
+                if a == b or any(not min(self.start[k], self.target[k]) <= b[k] <= max(self.start[k], self.target[k]) or (b[k]-a[k])*(self.target[k]-self.start[k]) < 0 for k in (0, 1)): fail('LP_WAYPOINT_ORDER_INVALID')
+        if self.waypoints and self.path is not None:
+            if not self.path or self.path[0] != self.start or self.path[-1] != self.target or len(self.path) != abs(self.target[0]-self.start[0])+abs(self.target[1]-self.start[1])+1 or any(p not in self.path for p in self.waypoints): fail('LP_WAYPOINT_HIGHLIGHT_INVALID')
+            if any(abs(a[0]-b[0])+abs(a[1]-b[1]) != 1 or self.edge(a, b) in self.forbidden for a, b in zip(self.path, self.path[1:])): fail('LP_WAYPOINT_HIGHLIGHT_INVALID')
+        self.shown_filter = None if self.counts is True or self.counts == 'segments' else ({self.ref(r) for r in self.counts} if isinstance(self.counts, list) else set())
 
     def ref(self, r):
         if isinstance(r, str):
@@ -76,7 +90,7 @@ class Plan:
         while stack:
             node, path, used = stack.pop()
             if node == self.target:
-                if need <= used: paths.append(path)
+                if need <= used and all(p in path for p in self.waypoints): paths.append(path)
                 continue
             for nxt in ((node[0] + dx, node[1]) if dx and node[0] != tx else None, (node[0], node[1] + dy) if dy and node[1] != ty else None):
                 if nxt is None: continue
@@ -84,6 +98,16 @@ class Plan:
                 if e in self.forbidden: continue
                 stack.append((nxt, path + (nxt,), used | ({e} if e in need else frozenset())))
         trie, per_node = {}, {}
+        if self.counts == 'segments':
+            # Independently enumerate full valid routes, then deduplicate each local prefix.
+            local = {}
+            for path in paths:
+                cuts = [0] + [path.index(p) for p in self.waypoints] + [len(path)-1]
+                for stage, (a, b) in enumerate(zip(cuts, cuts[1:])):
+                    for j in range(a if stage == 0 else a+1, b+1):
+                        local.setdefault(path[j], set()).add(tuple(path[a:j+1]))
+            self.total = len(paths)
+            return {node: len(prefixes) for node, prefixes in local.items()}
         for path in paths:
             parent = 0
             for node in path:

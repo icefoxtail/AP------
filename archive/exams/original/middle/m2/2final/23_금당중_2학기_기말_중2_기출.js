@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 점을 지나는 이동 후 직선과 이에 평행한 이동 전 직선.",
+    "solutionImageCaption": "기울기 a=-3이고 y절편 차 b=5이므로 a-b=-8이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -114,7 +118,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 점 (-1,-3), (2,3)을 지나는 일차함수 그래프.",
+    "solutionImageCaption": "기울기 a=6/3=2, y절편 b=-1이므로 b/a=-1/2이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -177,7 +185,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD와 고정점 (0,-1)에서 A와 C를 지나는 두 경계 직선.",
+    "solutionImageCaption": "기울기의 최솟값은 2/3, 최댓값은 4이므로 p+q=14/3이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -208,7 +220,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 수평선과 점 (4,2)를 지나는 수평선.",
+    "solutionImageCaption": "평행한 직선은 y=k 꼴이며 점의 y좌표가 2이므로 y=2이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -240,7 +256,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 중심 (7/2,4)과 원점을 지나는 직선.",
+    "solutionImageCaption": "중심은 (7/2,4)이므로 기울기는 4 ÷ (7/2)=8/7이다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -299,7 +319,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선의 교점과 그 점을 지나는 y축 평행선.",
+    "solutionImageCaption": "두 식을 연립하면 교점의 x좌표는 -2이므로 구하는 직선은 x=-2이다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -327,7 +351,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 검은 직선 x+4y-6=0, 파란 직선 3x-4y-2=0과 주황 직선 ax+y-2=0의 평행 또는 공점인 세 경우.",
+    "solutionImageCaption": "a=1/4, -3/4, 1/2이므로 그 합은 0이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -413,7 +441,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 15,
@@ -441,7 +469,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
   },
   {
     "id": 16,
@@ -470,7 +498,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 길을 경유점 P에서 나누어 첫 구간의 경로 6가지와 둘째 구간의 경로 3가지를 표시한다.",
+    "solutionImageCaption": "P에서 새로 세기: A에서 P까지 6가지, P에서 B까지 3가지이므로 곱의 법칙을 적용한다. 답: ③ 18가지",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -528,7 +560,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 19,
@@ -556,7 +588,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 20,
@@ -584,7 +616,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 21,
@@ -612,7 +644,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
   },
   {
     "id": 22,
@@ -661,7 +693,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 물체 A와 B의 위치 그래프를 연장한 두 직선의 교점.",
+    "solutionImageCaption": "각 관계식은 A: y=x/3+3, B: y=x/2+1이다. 두 식을 연립하면 만나는 시각은 12분 후이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -685,7 +721,7 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 25,
@@ -709,6 +745,6 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
   }
 ];
