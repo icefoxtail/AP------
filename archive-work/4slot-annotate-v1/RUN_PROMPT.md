@@ -19,6 +19,7 @@
 
 - 큐 파일: `archive-work/4slot-annotate-v1/QUEUE-original.json`의 `list`를 `order` 순서로 본다.
 - 출력 파일 `archive-work/4slot-annotate-v1/out/<path에서 .js를 .4slot.json으로>`이 **origin 브랜치에 이미 있는 시험지는 건너뛴다**(`git pull` 후 확인).
+- 단, `archive-work/4slot-annotate-v1/REVIEW-rejected.json`(검수자가 반려한 시험지 목록, JSON 배열 `{path, reason, at}`)에 `path`가 적힌 시험지는 **아직 안 한 것으로 센다.** 출력 파일이 이미 있어도 `reason`을 읽고 그 문항들을 고쳐 같은 경로에 덮어쓴다(처음부터 전부 다시 읽어도 좋다). 이 목록은 읽기만 하고 고치지 않는다(줄은 검수자가 재검수 뒤에 지운다). 이유: 반려된 파일을 건너뛰면 틀린 4칸이 그대로 남는다. 목록 파일이 없으면 반려는 없는 것이다.
 - 남은 것 중 앞에서부터 `N`개를 이번 회차 대상으로 한다. 실행 프롬프트가 `ORDER=시작-끝` 범위를 주면 그 범위 안에서만 고른다(세션 여러 개를 동시에 돌릴 때 범위를 나눠 겹치지 않게 하기 위해서다). 시작할 때 대상 목록(order·path·문항 수)을 답변에 적는다.
 
 ## 2. 참고하지 않는 것
@@ -57,7 +58,7 @@
 ## 5. 제출 (시험지마다)
 
 - 파일: `archive-work/4slot-annotate-v1/out/<path에서 .js를 .4slot.json으로>` (예: `out/original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.4slot.json`). 형식은 인계 문서 §4.
-- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`, `dictionaryVersion` = "term-dict-v1.4-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "original-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
+- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`(40자리를 큐 파일에서 그대로 복사한다. 손으로 옮겨 적지 않는다. 이유: 처음 10개 시험지 중 4개가 존재하지 않는 번호였다), `dictionaryVersion` = "term-dict-v1.4-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "original-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
 - `sourceOrdinal`은 `exam-items.cjs`가 보여 주는 `=== 번호`다(questionBank는 id, examData는 number).
 - `validate-4slot.cjs`가 FAIL 0일 때만 커밋한다. WARN은 해당 문항을 다시 보고, 그대로 두면 이유를 `selfCheck.notes`에 적는다. `selfCheck`에는 items, quotesChecked, quotesNotFound, warningsRechecked(다시 본 문항 번호), notes.
 - 커밋은 시험지마다 하나: `4slot original #<order>: <시험지 이름>`. 결과 파일만 `git add -f`(archive-work는 .gitignore 대상).
