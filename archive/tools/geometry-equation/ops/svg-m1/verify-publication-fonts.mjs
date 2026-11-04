@@ -3,6 +3,37 @@
 // per-label measured CSS px and explicit PASS/FAIL/EVIDENCE_DEBT for each question.
 import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import vm from 'node:vm';import crypto from 'node:crypto';import {pathToFileURL} from 'node:url';
 import portable from './portable-root.cjs';
+
+// A zero-label diagram is applicable only to the existing explicit E32 mode.
+// This pure decision is shared with focused policy tests; its inputs are real DOM
+// measurements in the CLI, never inferred from the absence of measured labels.
+export function evaluatePublicationFonts(measurement,sourceSvgSha,responseSha){
+  if(!/^[a-f0-9]{64}$/i.test(sourceSvgSha||'')||sourceSvgSha!==responseSha)throw Error('FAIL: response SHA mismatch or unavailable');
+  const nodes=[],all=[];
+  const collect=node=>{
+    if(!Array.isArray(node.labels)||!Array.isArray(node.embedded))throw Error('FAIL: missing font inventory');
+    nodes.push(node);all.push(...node.labels);for(const child of node.embedded)collect(child);
+  };collect(measurement);
+  const n=measurement.expectedLabelCount,measured=measurement.measuredLabelCount;
+  if(!Number.isInteger(n)||n<0||!Number.isInteger(measured)||measured!==n||all.length!==n)throw Error('FAIL: missing or unmeasurable labels');
+  if(nodes.some(node=>node.fontInspection?.rootMarked===true&&node.expectedLabelCount!==0))throw Error('FAIL: explicit text-free SVG contains labels');
+  if(!all.length){
+    const e=measurement.fontInspection;
+    // Flat E32 diagrams only. Embedded SVG measurement remains unchanged for
+    // ordinary figures; an empty embedded figure does not establish this mode.
+    if(nodes.length!==1||e?.rootMarked!==true||e.path!=='root'||e.svgSha256!==sourceSvgSha
+      ||e.runtime!=='playwright-chromium'||e.synthetic!==false||e.fontStatus!=='loaded'
+      ||e.textOrLabelElementCount!==0||e.foreignObjectCount!==0||e.embeddedImageCount!==0
+      ||!Number.isInteger(e.visibleGeometryPrimitiveCount)||e.visibleGeometryPrimitiveCount<=0)throw Error('FAIL: missing or unmeasurable labels');
+    return {fontApplicability:'NOT_APPLICABLE',minFontPx:null,explicitTextFree:{schemaVersion:'APMATH_EXPLICIT_TEXT_FREE_FONT_EVIDENCE_v1',...e,sourceSvgSha,responseSha}};
+  }
+  if(all.some(x=>!Number.isFinite(x.finalViewportCssFontPx)||x.finalViewportCssFontPx<=0))throw Error('FAIL: missing or unmeasurable labels');
+  const minFontPx=Math.min(...all.map(x=>x.finalViewportCssFontPx));
+  if(minFontPx<11)throw Error('FAIL: font below 11 CSS px');
+  return {fontApplicability:'APPLICABLE',minFontPx};
+}
+
+export async function main(){
 const ROOT=portable.repoRoot(),archive=path.join(ROOT,'archive');
 const {launchBrowser}=await import(pathToFileURL(path.join(ROOT,'archive/tools/geometry-equation/visual-browser-runtime.mjs')).href);
 const {captureAtDisplaySize,collectRenderedLayout}=await import(pathToFileURL(path.join(ROOT,'archive/tools/geometry-equation/verify-rendered-layout.mjs')).href);
@@ -30,8 +61,17 @@ async function measure(svgBytes,display,treePath,depth=0){
       for(const e of root.querySelectorAll('g[data-fragment-sha]'))if(!e.hasAttribute('data-font-px')){const a=e.parentElement?.closest('[data-font-px]');if(a){e.setAttribute('data-font-px',a.getAttribute('data-font-px'));propagated++;}}
       const after=snapshot();
       const expected=root.querySelectorAll('text, g[data-fragment-sha]').length;
+      const textOrLabelElementCount=root.querySelectorAll('text,tspan,textPath,[data-fragment-sha],[data-mml-node],[data-outline-units-per-em],[data-label-kind]').length;
+      const visibleGeometryPrimitiveCount=[...root.querySelectorAll('line,polyline,polygon,path,circle,ellipse,rect')].filter(e=>{
+        if(!['line','point','indicator','guide','region'].includes(e.getAttribute('data-role'))||e.closest('defs,clipPath,mask,pattern,symbol'))return false;
+        const r=e.getBoundingClientRect(),style=getComputedStyle(e),rootRect=root.getBoundingClientRect();
+        if(![r.x,r.y,r.width,r.height].every(Number.isFinite)||!(r.width>0||r.height>0)||r.right<rootRect.left||r.left>rootRect.right||r.bottom<rootRect.top||r.top>rootRect.bottom)return false;
+        if(!((style.stroke!=='none'&&Number.parseFloat(style.strokeOpacity)>0&&Number.parseFloat(style.strokeWidth)>0)||(style.fill!=='none'&&Number.parseFloat(style.fillOpacity)>0&&r.width>0&&r.height>0)))return false;
+        for(let p=e;p;p=p.parentElement){const s=getComputedStyle(p);if(s.display==='none'||s.visibility!=='visible'||Number.parseFloat(s.opacity)<=0||s.clipPath!=='none'||s.maskImage!=='none')return false;if(p===root)break;}
+        return true;
+      }).length;
       const images=[...root.querySelectorAll('image')].map((e,index)=>{const r=e.getBoundingClientRect(),m=e.getScreenCTM();return {index,href:e.getAttribute('href')||e.getAttributeNS('http://www.w3.org/1999/xlink','href')||'',declared:e.getAttribute('data-panel-svg-sha'),preserveAspectRatio:e.getAttribute('preserveAspectRatio')||'xMidYMid meet',rect:{x:r.x,y:r.y,width:r.width,height:r.height},matrix:m?{a:m.a,b:m.b,c:m.c,d:m.d}:null};});
-      return {geometryUnchanged:JSON.stringify(initial)===JSON.stringify(after),propagated,expected,images};
+      return {geometryUnchanged:JSON.stringify(initial)===JSON.stringify(after),propagated,expected,images,fontInspection:{rootMarked:root.getAttribute('data-text-free')==='true',textOrLabelElementCount,foreignObjectCount:root.querySelectorAll('foreignObject').length,visibleGeometryPrimitiveCount,embeddedImageCount:images.length}};
     });
     if(!before.geometryUnchanged)throw Error('EVIDENCE_DEBT: metadata changed geometry or style');
     const capture=await collectRenderedLayout(page,{width:1440,height:1000});
@@ -54,7 +94,7 @@ async function measure(svgBytes,display,treePath,depth=0){
       const childPath=treePath+'/image['+img.index+']';const child=await measure(bytes,img.rect,childPath,depth+1);
       embedded.push({path:childPath,sha256:hash,declaredSha256:img.declared,actualImageRect:img.rect,viewBox:childMeta.viewBox,imagePreserveAspectRatio:img.preserveAspectRatio,childPreserveAspectRatio:childMeta.par,...child});
     }
-    return {expectedLabelCount:before.expected+embedded.reduce((n,x)=>n+x.expectedLabelCount,0),measuredLabelCount:labels.length+embedded.reduce((n,x)=>n+x.measuredLabelCount,0),metadataPropagation:{count:before.propagated,geometryAndStylesUnchanged:before.geometryUnchanged},labels,embedded};
+    return {expectedLabelCount:before.expected+embedded.reduce((n,x)=>n+x.expectedLabelCount,0),measuredLabelCount:labels.length+embedded.reduce((n,x)=>n+x.measuredLabelCount,0),metadataPropagation:{count:before.propagated,geometryAndStylesUnchanged:before.geometryUnchanged},fontInspection:{...before.fontInspection,path:treePath,svgSha256:sha(svgBytes),runtime:capture.runtime,synthetic:capture.synthetic,fontStatus:capture.fontStatus},labels,embedded};
   }finally{await page.close();}
 }
 try{
@@ -77,13 +117,12 @@ try{
           if(targets.length!==1||!targets[0].loaded)throw Error('FAIL: published image missing or ambiguous');row.actualRect=targets[0].rect;
           const responseKey=new URL(targets[0].url).pathname;row.responseSha=await responses.get(responseKey);if(!row.responseSha||row.responseSha!==row.sourceSvgSha)throw Error('FAIL: response SHA mismatch or unavailable');
           const measurement=await measure(svg,row.actualRect,'root');Object.assign(row,measurement);
-          const all=[];const collect=x=>{all.push(...x.labels);for(const e of x.embedded)collect(e)};collect(measurement);
-          row.minFontPx=all.length?Math.min(...all.map(x=>x.finalViewportCssFontPx)):null;
-          if(!all.length||row.expectedLabelCount!==row.measuredLabelCount||all.some(x=>!Number.isFinite(x.finalViewportCssFontPx)||x.finalViewportCssFontPx<=0))throw Error('FAIL: missing or unmeasurable labels');
-          if(row.minFontPx<11)throw Error('FAIL: font below 11 CSS px');row.status='PASS';
+          Object.assign(row,evaluatePublicationFonts(measurement,row.sourceSvgSha,row.responseSha));row.status='PASS';
         }catch(e){row.error=String(e.message||e);row.status=row.error.startsWith('FAIL:')?'FAIL':'EVIDENCE_DEBT';failed=true;}
       }
     }finally{await page.close();}
   }
 }catch(e){failed=true;rows.push({status:'EVIDENCE_DEBT',error:String(e.message||e)});}finally{await browser.close();await new Promise(r=>server.close(r));}
 fs.writeFileSync(outputPath,JSON.stringify({viewport:{width:1440,height:1000},thresholdCssPx:11,rows},null,2)+'\n');if(failed||!rows.length)process.exitCode=1;
+}
+if(process.argv[1]&&pathToFileURL(path.resolve(process.argv[1])).href===import.meta.url)await main();

@@ -19,6 +19,7 @@
 - `slice.py`: `AUTHOR_GUIDE.md`를 절별로 잘라 `guide-core/plane/solid/stat/graph.md`를 만든다. `slice.py <AUTHOR_GUIDE.md> <출력 폴더>`
 
 그림 렌더·확인
+- `trace-layout-failure.py`: `APMS_LAYOUT_DIAGNOSTICS_DIR`로 보존한 실패 snapshot을 동결된 Chrome 측정값으로 재생한다. `python trace-layout-failure.py <snapshot.json> --out <trace.json>`. SVG 바이트와 전체 배치가 일치하는 경우만 `EXACT_REPLAY`이며, 이 진단은 렌더 성공이나 게시 PASS가 아니다.
 - `svg2png.cjs`: SVG를 PNG로 바꾼다(눈으로 확인용). `node svg2png.cjs <in.svg> <out.png> [css폭=600]`
 - `golden-one.sh`: 정답지 항목 하나를 렌더해 기준 SVG와 바이트 비교한다. `golden-one.sh itemNN`. `WT`(렌더할 트리)·`OUT`(결과 폴더)·`REFDIR`(기준 SVG 폴더)를 환경변수로 바꿔 쓴다.
 - `golden-one.mjs`: 정답지 항목 여럿을 차례로 렌더한다. `node golden-one.mjs <outDir> <항목 번호...>`. `WT` 환경변수로 트리를 바꾼다.

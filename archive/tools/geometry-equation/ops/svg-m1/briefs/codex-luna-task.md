@@ -27,3 +27,10 @@ ROOT가 작성해 제작 Luna high와 별도 검수 Luna xhigh에 같은 대상 
 - `.rendering` 중인 입력은 수정하지 않는다. 시도 한도를 숨기거나 새 폴더로 초기화하지 않는다.
 - 검수자는 제작자 자기보고를 PASS 근거로 삼지 않고 실제 최종 SVG와 원문을 확인한다.
 - 범위 밖 문항·메타·원본 내용·엔진·Git·배포 작업은 임의로 시작하지 않는다.
+
+## 평행선·치수선 배치에서 확인할 것
+
+- 원문 직선을 `displaySegments`로 모두 표시했다면 계산용 `LINE_THROUGH`가 자동으로 중복 표시되지 않도록 `displayLines: []`를 명시한다. 실제 무한직선이 필요한 문항은 필요한 직선만 명시한다.
+- 세로 callout은 `orientation: "VERTICAL"`과 치수 `LEFT/RIGHT`를 함께 지정한다. 가로 callout의 치수는 `ABOVE/BELOW`다. 필수 원점 마커와 owner 연결을 지우지 않는다.
+- callout도 원도형과 같은 viewport를 쓰므로 큰 배율·긴 한글 치수는 원도형을 압축할 수 있다. 같은 의미의 수식 조판과 실측 폭을 이용하고, 글자 크기를 줄여 통과시키지 않는다.
+- 배치 실패가 반복되면 추측 좌표로 재시도하지 않는다. ROOT가 `APMS_LAYOUT_DIAGNOSTICS_DIR`를 지정해 실패 snapshot을 받고 `trace-layout-failure.py`로 동결 측정의 정확 재생을 확인한다. Sol high가 충돌 대상·좌표를 근거로 한정 수리를 지시하며, 최종 판정은 새 실제 렌더와 독립 검수로 한다.

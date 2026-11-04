@@ -31,7 +31,10 @@ window.questionBank = [
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q1-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 평행선과 세 횡단선에서 각 대응 구간을 끌어내 길이를 구분한다.",
+    "solutionImageCaption": "길이의 단위는 cm이다. 대응비 16:24=2:3에서 x=12, y=15이다. 답: ③ 27",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -63,7 +66,10 @@ window.questionBank = [
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q2-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: DE와 BC가 평행한 삼각형에서 두 쌍의 대응 선분을 다른 색으로 나타내고 x=12, y=18을 표시한다.",
+    "solutionImageCaption": "길이의 단위는 cm이다. 닮음비 2:3에서 x=12, y=18을 얻는다. 답: ⑤ 6",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -95,7 +101,10 @@ window.questionBank = [
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rpm_primary_repair",
     "subUnitClassificationDepth": "complete_rpm_primary",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q3-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴의 중점 연결선 M–P–Q–N을 따로 나타내고 전체 11cm와 양 끝의 4cm를 표시한다.",
+    "solutionImageCaption": "중점 연결선 MN=11cm이고 MP=NQ=4cm이다. 답: ④ 3cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -127,7 +136,10 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q4-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 서로 평행한 세 수직선과 교점 E를 나타내고 삼각형 EBD를 색칠한다.",
+    "solutionImageCaption": "닮은 삼각형을 이용하면 밑변 BD=20cm, 높이 EF=6cm이다. 답: ③ 60cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -158,7 +170,10 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q5-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 중선이 나누는 여섯 삼각형과 무게중심의 분할비를 나타낸다.",
+    "solutionImageCaption": "세 중선이 나누는 여섯 삼각형의 넓이는 같고 AG:GQ=2:1이다. 답: ② ㄱ, ㄷ",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -190,7 +205,10 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q6-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 무게중심 G와 중점 연결선 DF를 그리고 x=3, y=9/2를 표시한다.",
+    "solutionImageCaption": "BG:GE=2:1에서 x=3, 중점 연결 정리에서 y=9/2이다. 답: ① 15/2",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -222,7 +240,10 @@ window.questionBank = [
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q7-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 대각선 AC가 G, H에서 세 등분되고 삼각형 BHG가 색칠되어 있다.",
+    "solutionImageCaption": "G와 H는 AC를 삼등분하므로 삼각형 BHG의 넓이는 삼각형 BAC의 1/3이다. 답: ④ 8cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -254,7 +275,10 @@ window.questionBank = [
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q8-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 공통 변 AC를 가진 두 직각삼각형을 색으로 구분하고 x=8cm, y=15cm를 나타낸다.",
+    "solutionImageCaption": "작은 직각삼각형에서 x=8cm, 이어서 다른 직각삼각형에서 y=15cm이다. 답: ④ 23cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -314,7 +338,10 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q10-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 세 변을 지름으로 하는 반원에서 두 초승달을 색칠하고 빗변의 중점 O를 나타낸다.",
+    "solutionImageCaption": "BO=10cm이므로 BC=20cm이고, 피타고라스 정리에서 AC=16cm이다. 두 초승달의 넓이 합은 삼각형 ABC의 넓이와 같다. 답: ① 96cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -346,7 +373,10 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q11-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 OAB에서 OA=4, OB=3, AB=5이고 OH는 AB에 수직이다.",
+    "solutionImageCaption": "삼각형 넓이 6을 밑변 AB와 높이 OH로 나타내면 5OH/2=6이므로 OH=12/5이다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -624,7 +654,10 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q21-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형에서 D가 E에 포개질 때 같은 길이 두 쌍과 직각삼각형 ABE, ECF를 표시한다.",
+    "solutionImageCaption": "접기 전후 대응변은 같고 두 직각삼각형은 AA 닮음이다. 답: (1) 8cm, (2) 2cm, (3) 삼각형 ECF, AA 닮음, (4) 10/3cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -676,6 +709,9 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q23-solution.svg"
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형의 중점 D와 무게중심 G를 나타내고 같은 높이를 가진 ABG와 DBG를 색으로 구분한다.",
+    "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. BD=DC이고 AG:GD=2:1이다. 답: (1) 18cm, (2) 135cm², (3) 45cm²",
+    "solutionImageSize": "full"
   }
 ];

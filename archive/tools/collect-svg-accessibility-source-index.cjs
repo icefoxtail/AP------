@@ -174,7 +174,7 @@ function collectSvgAccessibilitySourceIndex(options = {}) {
 
 function gitText(repoRoot, args, allowMissing = false) {
   try {
-    return execFileSync('git', ['-C', repoRoot, ...args], {
+    return execFileSync('git', ['-c', 'core.quotepath=false', '-C', repoRoot, ...args], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
       maxBuffer: 32 * 1024 * 1024

@@ -39,7 +39,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 평행선에 두 직선을 그어 왼쪽 길이를 위 2cm, 아래 4cm, 전체 6cm로 표시하고 오른쪽 위 구간 3cm를 나타낸다.",
+    "solutionImageCaption": "왼쪽 아래 길이는 6−2=4cm이고 대응변의 비는 2:4=3:x이다. 답: ③ 6cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -79,7 +83,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 변의 중점 D, E, F를 연결한 삼각형에서 각 변의 두 반을 같은 색의 눈금으로 묶고 가운데 삼각형을 나타낸다.",
+    "solutionImageCaption": "중점 연결 정리에 따라 작은 삼각형과 전체 삼각형의 닮음비는 1:2이고 넓이비는 1:4이다. 답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -119,7 +127,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 중선 AM 위에 두 무게중심 G와 G′를 나타내고 AM 36cm, AG 24cm, GG′ 8cm를 표시한다.",
+    "solutionImageCaption": "두 무게중심은 각 중선을 꼭짓점에서 2:1로 나누므로 AG는 24cm, GG′은 8cm이다. 답: ④ 32cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -199,7 +211,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 등분점 E와 G, 중점 D, 연장선 위 F를 표시하고 중점 연결로 생긴 평행선을 강조한 그림.",
+    "solutionImageCaption": "중점 연결 정리로 GC=4cm, DF=6cm이다. 답: ① 3/2",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -239,7 +255,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에 중점 연결선 DF를 추가하고 삼각형 ABE와 BPE를 서로 다른 색으로 나타낸 그림.",
+    "solutionImageCaption": "DF는 BE에 평행하고 BP:PF=2:1이므로 색칠한 두 삼각형 넓이는 각각 12cm²와 8cm²이다. 답: ⑤ 20cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -279,7 +299,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점이 아래인 원뿔 모양 그릇의 전체 높이 3분의 1까지 차 있는 물을 색으로 강조한다.",
+    "solutionImageCaption": "전체 높이를 h라 하면 물의 높이는 h/3이다. 높이비가 1:3이므로 부피비는 1:27이다. 답: ④ 78초",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -358,7 +382,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형의 꼭짓점에서 밑변에 내린 수선과 밑변의 반 6cm, 높이 8cm를 나타낸 그림.",
+    "solutionImageCaption": "밑변을 반으로 나누면 6cm이고 피타고라스 정리로 높이는 8cm이다. 답: ① 48cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -398,7 +426,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변을 지름으로 하는 세 반원을 나타낸 그림.",
+    "solutionImageCaption": "두 작은 반원의 넓이 합은 큰 반원의 넓이와 같고 큰 반원의 넓이는 18πcm²이다. 답: ② 36πcm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -438,7 +470,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에 서로 합동인 네 직각삼각형을 같은 색으로 나타내고 가운데 정사각형 EFGH를 남긴 그림.",
+    "solutionImageCaption": "직각삼각형의 나머지 변은 8이고 네 삼각형의 넓이를 빼면 가운데 정사각형 넓이는 49이다. 답: ① 28",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -478,7 +514,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형을 바탕으로 아래 한 개, 가운데 두 개, 위 네 개 정사각형을 다른 색으로 묶은 피타고라스 나무.",
+    "solutionImageCaption": "피타고라스 정리에 의해 각 단계 정사각형의 넓이 합은 225이다. 답: ③ 675",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -520,7 +560,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 붙은 두 정사각형에서 대각선 AE와 경계 CD의 교점 H를 표시하고 닮은 두 직각삼각형의 대응변을 강조한다.",
+    "solutionImageCaption": "큰 정사각형 변은 6cm, 작은 정사각형 변은 2cm이며 AE는 10cm이다. 두 직각삼각형의 닮음비는 1:4이다. 답: ⑤ 15/2cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -560,7 +604,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형을 접어 D가 P에 포개질 때 같은 길이 QD와 QP를 표시하고 삼각형 PCQ를 색칠한 그림.",
+    "solutionImageCaption": "접는 선 위의 Q에서 QD=QP이다. 피타고라스 정리로 PC=4cm, CQ=3cm를 얻는다. 답: ① 6cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -825,7 +873,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 무게중심이 세 중선을 나누어 만든 여섯 삼각형과 두 무게중심을 이용한 닮은 삼각형을 각각 표시한다.",
+    "solutionImageCaption": "① 3cm²인 삼각형을 포함하여 여섯 삼각형의 넓이는 같다. ② 두 중점과 무게중심을 연결하면 닮음비는 2:3이다. 답: ① 18cm², ② 100/3cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -860,7 +912,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔의 축을 지나는 단면에서 꼭짓점 O와 밑면 둘레의 점 A, B, 이름 없는 중심을 그리고 반지름 6cm, 높이 8cm, 모선 10cm를 나타낸다.",
+    "solutionImageCaption": "원뿔의 축을 지나는 단면에서 부피로 높이 8cm를 구하고 직각삼각형에서 모선 10cm를 얻는다. 답: ① 4cm, ② 60πcm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

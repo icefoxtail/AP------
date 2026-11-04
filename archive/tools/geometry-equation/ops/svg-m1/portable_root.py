@@ -69,4 +69,3 @@ def sha256_file(path):
 def require_hash(path, expected):
     if not isinstance(expected,str) or len(expected.removeprefix('sha256:'))!=64 or sha256_file(path)!=expected.lower().removeprefix('sha256:'):
         raise ValueError(f'digest mismatch: {path}')
-

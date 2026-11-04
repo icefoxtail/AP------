@@ -44,7 +44,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q01.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q01.png",
-      "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, 각 BAC는 60도, 각 CAD는 50도, 변 CD는 7cm, 대각선 BD는 10cm인 도형"
+      "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, 각 BAC는 60도, 각 CAD는 50도, 변 CD는 7cm, 대각선 BD는 10cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: 각 관계만 따로 나타낸 그림. 평행선 AB, CD와 횡단선 AC에서 두 엇각이 각각 60도이다.",
+      "solutionImageCaption": "각 관계만 따로 나타낸 그림: AB∥CD이므로 ∠BAC와 ∠OCD는 모두 60°이다. 답: ④",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -82,7 +86,11 @@ window.examData = {
       "questionNumber": 2,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 대각선의 교점 O에서 네 꼭짓점까지의 거리가 같은 사각형의 한 예.",
+      "solutionImageCaption": "예: OA=OC이고 OB=OD이므로 두 대각선은 서로 이등분한다. 답: ⑤",
+      "solutionImageSize": "full"
     },
     {
       "id": 3,
@@ -122,7 +130,11 @@ window.examData = {
       "questionNumber": 3,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q3-solution.svg",
+      "solutionImageAlt": "해설 그림: 서로 수직인 두 대각선이 같은 길이로 이등분되는 직사각형을 나타낸 그림.",
+      "solutionImageCaption": "예: 직사각형의 두 대각선이 수직이면 대각선의 네 반으로 만들어진 직각삼각형이 합동이다. 답: ③",
+      "solutionImageSize": "full"
     },
     {
       "id": 4,
@@ -161,7 +173,11 @@ window.examData = {
       "questionNumber": 4,
       "image": "",
       "images": [],
-      "accessibility": ""
+      "accessibility": "",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC를 수선 AD로 나눈 두 직각삼각형을 색으로 구분하고 공통 높이 12를 표시한다.",
+      "solutionImageCaption": "왼쪽 직각삼각형에서 공통 높이는 12이고 오른쪽 직각삼각형에서 피타고라스 정리를 한 번 더 쓴다. 답: ⑤ 20",
+      "solutionImageSize": "full"
     },
     {
       "id": 5,
@@ -240,7 +256,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q06.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q06.png",
-      "accessibility": "두 삼각기둥 ABC-DEF와 A 프라임 B 프라임 C 프라임-D 프라임 E 프라임 F 프라임이 서로 닮음이고, 모서리 AD는 4cm, DE는 2cm, A 프라임 D 프라임은 6cm, A 프라임 C 프라임은 5cm, 각 B 프라임 A 프라임 C 프라임은 30도인 도형"
+      "accessibility": "두 삼각기둥 ABC-DEF와 A 프라임 B 프라임 C 프라임-D 프라임 E 프라임 F 프라임이 서로 닮음이고, 모서리 AD는 4cm, DE는 2cm, A 프라임 D 프라임은 6cm, A 프라임 C 프라임은 5cm, 각 B 프라임 A 프라임 C 프라임은 30도인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각기둥의 대응 모서리와 큰 기둥의 30도 각을 나타낸다.",
+      "solutionImageCaption": "예: 대응 높이의 비는 4:6=2:3이므로 AC=10/3cm이다. 답: ②",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
@@ -281,7 +301,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q07.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q07.png",
-      "accessibility": "두 원기둥이 서로 닮음이고, 작은 원기둥의 밑면의 반지름은 6cm, 높이는 9cm이며, 큰 원기둥의 높이는 12cm인 도형"
+      "accessibility": "두 원기둥이 서로 닮음이고, 작은 원기둥의 밑면의 반지름은 6cm, 높이는 9cm이며, 큰 원기둥의 높이는 12cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 닮은 두 원기둥의 높이 9cm와 12cm, 반지름 6cm와 8cm를 비교한다.",
+      "solutionImageCaption": "높이의 비가 3:4이므로 큰 원기둥의 반지름은 8cm이다. 답: ③ 64πcm²",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -322,7 +346,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q08.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q08.png",
-      "accessibility": "직각삼각형 ABC에서 각 A가 90도, AB는 9cm, BC는 12cm이고, 변 BC의 중점 M에서 선분 BC에 수직인 직선이 선분 AB와 만나는 점 D까지의 선분 BD의 길이가 x cm인 도형"
+      "accessibility": "직각삼각형 ABC에서 각 A가 90도, AB는 9cm, BC는 12cm이고, 변 BC의 중점 M에서 선분 BC에 수직인 직선이 선분 AB와 만나는 점 D까지의 선분 BD의 길이가 x cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 BC의 중점 M에 그은 수선과 작은 직각삼각형 BDM을 나타낸다.",
+      "solutionImageCaption": "BM=6cm이고 닮음에서 BD:BC=BM:BA이다. 답: ② 8cm",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -363,7 +391,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q09.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q09.png",
-      "accessibility": "삼각형 ABC의 꼭짓점 A, B에서 대변에 내린 수선의 발 D, E와 두 수선의 교점 F를 나타낸 도형"
+      "accessibility": "삼각형 ABC의 꼭짓점 A, B에서 대변에 내린 수선의 발 D, E와 두 수선의 교점 F를 나타낸 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형의 두 수선과 교점 F를 그리고 서로 같은 예각을 같은 색의 호로 나타낸다.",
+      "solutionImageCaption": "두 수선의 직각과 같은 예각을 이용해 네 직각삼각형의 닮음을 확인한다. 답: ③",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -404,7 +436,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q10.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q10.png",
-      "accessibility": "사다리꼴 ABCD에서 AD와 BC가 평행하고, AB의 중점 M과 CD의 중점 N을 잇는 선분이 대각선 AC와 만나는 점 P에 대해 AD=x cm, PN=5cm, MP=y cm, BC=16cm인 도형"
+      "accessibility": "사다리꼴 ABCD에서 AD와 BC가 평행하고, AB의 중점 M과 CD의 중점 N을 잇는 선분이 대각선 AC와 만나는 점 P에 대해 AD=x cm, PN=5cm, MP=y cm, BC=16cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 사다리꼴의 중점 연결선을 끌어내고 AD와 PN, BC와 MP의 대응을 색으로 표시한다.",
+      "solutionImageCaption": "중점 연결 정리에서 x=10cm, y=8cm이다. 답: ② 2",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -446,7 +482,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q11_2.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q11_1.png",
-      "accessibility": "삼각형 ABC에서 각 A의 이등분선 AD가 변 BC와 만나는 점 D를 나타낸 도형 / 점 C를 지나고 선분 AD에 평행한 직선과 선분 BA의 연장선의 교점 E를 잡은 보조선 다이어그램"
+      "accessibility": "삼각형 ABC에서 각 A의 이등분선 AD가 변 BC와 만나는 점 D를 나타낸 도형 / 점 C를 지나고 선분 AD에 평행한 직선과 선분 BA의 연장선의 교점 E를 잡은 보조선 다이어그램",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 각의 이등분선 AD와 평행한 보조선 CE를 표시하고 같은 각과 같은 변을 각각 묶은 그림.",
+      "solutionImageCaption": "평행선의 동위각·엇각과 이등분선 성질로 삼각형 ACE는 이등변삼각형이다. 답: ④",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -487,7 +527,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q12.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q12.png",
-      "accessibility": "삼각형 ABC에서 점 B, F, D, A가 직선 위에 순서대로 있고, 점 E는 변 BC 위에 있으며, BF는 18cm, FD는 12cm이고 EF와 CD가 평행, DE와 AC가 평행한 도형"
+      "accessibility": "삼각형 ABC에서 점 B, F, D, A가 직선 위에 순서대로 있고, 점 E는 변 BC 위에 있으며, BF는 18cm, FD는 12cm이고 EF와 CD가 평행, DE와 AC가 평행한 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC에서 두 평행선 쌍을 색으로 구분하고 선분 B–F–D–A를 따로 나타낸다.",
+      "solutionImageCaption": "BF:FD=3:2이고 BD=30cm이므로 BD:DA도 3:2이다. 답: ④ 20cm",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -528,7 +572,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q13.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q13.png",
-      "accessibility": "사다리꼴 ABCD에서 AD와 BC가 평행하고, 두 대각선 AC와 BD의 교점 O를 지나는 선분 EF가 AD, BC와 평행하며 AE=6cm, EB=9cm, BC=15cm인 도형"
+      "accessibility": "사다리꼴 ABCD에서 AD와 BC가 평행하고, 두 대각선 AC와 BD의 교점 O를 지나는 선분 EF가 AD, BC와 평행하며 AE=6cm, EB=9cm, BC=15cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 사다리꼴의 세 평행선과 대각선 교점 O를 나타내고 EO와 OF를 따로 비교한다.",
+      "solutionImageCaption": "예: 닮음 관계에서 AD=10cm, EO=OF=6cm이다. 답: ③ 12cm",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -569,7 +617,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q14.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q14.png",
-      "accessibility": "세 평행선 l, m, n을 지나는 세 직선에서 왼쪽 직선의 분할 길이는 6cm, 8cm, 가운데 직선은 x cm, 10cm, 오른쪽 직선은 y cm, 12cm인 도형"
+      "accessibility": "세 평행선 l, m, n을 지나는 세 직선에서 왼쪽 직선의 분할 길이는 6cm, 8cm, 가운데 직선은 x cm, 10cm, 오른쪽 직선은 y cm, 12cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 평행선과 세 횡단선의 대응 구간을 각각 같은 색으로 표시한다.",
+      "solutionImageCaption": "길이의 단위는 cm이다. 대응비 6:8=3:4에서 x=7.5cm, y=9cm이다. 답: ① 3/2",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -610,7 +662,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q15.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q15.png",
-      "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 변 BC의 중점 M에 대해 BC는 14cm, BM은 y cm이며, 중선 CN에서 GC는 10cm, NG는 x cm인 도형"
+      "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 변 BC의 중점 M에 대해 BC는 14cm, BM은 y cm이며, 중선 CN에서 GC는 10cm, NG는 x cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형의 중선 위 무게중심 G와 변의 중점 M, N을 나타낸다.",
+      "solutionImageCaption": "CG:GN=2:1이므로 x=5, BM은 BC의 절반이므로 y=7이다. 답: ③ 12",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -651,7 +707,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q16.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q16.png",
-      "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 점 E, F는 각각 선분 GB, GC의 중점일 때 사각형 AEGF가 음영 처리된 도형"
+      "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 점 E, F는 각각 선분 GB, GC의 중점일 때 사각형 AEGF가 음영 처리된 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 무게중심 G를 이용해 사각형 AEGF를 넓이 8cm²인 두 삼각형으로 나눈다.",
+      "solutionImageCaption": "무게중심이 만드는 삼각형 두 개의 넓이는 각각 16cm²이며, 그 절반은 각각 8cm²이다. 답: ② 16cm²",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -921,7 +981,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q23.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q23.png",
-      "accessibility": "변 AB와 AC의 길이가 5cm이고 밑변 BC의 길이가 6cm인 이등변삼각형 ABC"
+      "accessibility": "변 AB와 AC의 길이가 5cm이고 밑변 BC의 길이가 6cm인 이등변삼각형 ABC",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 이등변삼각형에서 꼭짓점 A로부터 밑변 중점 D에 내린 수선과 BD=3cm, AD=4cm를 표시한다.",
+      "solutionImageCaption": "꼭짓점에서 내린 수선은 밑변을 이등분하므로 BD=3cm이고 피타고라스 정리로 AD=4cm이다. 답: 12cm²",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
@@ -956,7 +1020,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q24.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q24.png",
-      "accessibility": "삼각형 ABC에서 변 AB 위의 점 D에 대해 AD=4cm, BD=5cm, AC=6cm, CD=3cm인 도형"
+      "accessibility": "삼각형 ABC에서 변 AB 위의 점 D에 대해 AD=4cm, BD=5cm, AC=6cm, CD=3cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC와 ACD를 나타내고 B–D–A에서 주어진 길이와 전체 9cm를 표시한다.",
+      "solutionImageCaption": "AB=9cm이고 공통각을 낀 변의 비는 9:6=6:4이다. 답: (1) 삼각형 ABC와 ACD, SAS 닮음, (2) 9/2cm",
+      "solutionImageSize": "full"
     },
     {
       "id": 25,
@@ -991,7 +1059,11 @@ window.examData = {
         "assets/images/21_향림중_2학기_기말_중2_수학/q25.png"
       ],
       "image": "assets/images/21_향림중_2학기_기말_중2_수학/q25.png",
-      "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, BC의 중점 M과 A를 잇는 선분 AM이 대각선 BD와 만나는 점 P, BD=18cm인 도형"
+      "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, BC의 중점 M과 A를 잇는 선분 AM이 대각선 BD와 만나는 점 P, BD=18cm인 도형",
+      "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q25-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형의 대각선과 중선 AM의 교점 P를 나타내고 BD, BO를 끌어내 비교한다.",
+      "solutionImageCaption": "대각선은 서로 이등분하므로 BO=9cm이고 P는 삼각형 ABC의 무게중심이다. 답: 6cm",
+      "solutionImageSize": "full"
     },
     {
       "id": 26,

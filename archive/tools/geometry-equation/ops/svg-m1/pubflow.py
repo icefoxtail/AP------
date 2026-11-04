@@ -7,6 +7,19 @@ from portable_root import repo_root, run, validate_triage, require_hash
 ROOT=repo_root(); S=Path(__file__).resolve().parent; R=S/'runs'
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def write(p, data): Path(p).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def validate_font_row(row, expected_sha):
+    n=row.get('expectedLabelCount'); measured=row.get('measuredLabelCount'); minimum=row.get('minFontPx')
+    if row.get('status')!='PASS' or type(n) is not int or n<0 or type(measured) is not int or measured!=n or row.get('sourceSvgSha')!=expected_sha or row.get('responseSha')!=expected_sha:
+        raise ValueError('font verification failed')
+    if n==0:
+        e=row.get('explicitTextFree')
+        if not isinstance(e,dict) or row.get('fontApplicability')!='NOT_APPLICABLE' or minimum is not None or e.get('schemaVersion')!='APMATH_EXPLICIT_TEXT_FREE_FONT_EVIDENCE_v1' or e.get('rootMarked') is not True or e.get('path')!='root' or any(e.get(k)!=expected_sha for k in ('svgSha256','sourceSvgSha','responseSha')) or e.get('runtime')!='playwright-chromium' or e.get('synthetic') is not False or e.get('fontStatus')!='loaded':
+            raise ValueError('explicit text-free font evidence missing')
+        if any(type(e.get(k)) is not int or e[k]!=0 for k in ('textOrLabelElementCount','foreignObjectCount','embeddedImageCount')) or type(e.get('visibleGeometryPrimitiveCount')) is not int or e['visibleGeometryPrimitiveCount']<=0 or row.get('labels')!=[] or row.get('embedded')!=[]:
+            raise ValueError('explicit text-free font evidence invalid')
+    elif row.get('fontApplicability')!='APPLICABLE' or row.get('explicitTextFree') is not None or type(minimum) not in (int,float) or not math.isfinite(minimum) or minimum<11:
+        raise ValueError('font verification failed')
+
 def main():
     if len(sys.argv)!=3 or sys.argv[1]!='--batch': raise ValueError('usage: pubflow.py --batch manifest.json')
     manifest=Path(sys.argv[2]).resolve(); entries=read(manifest)
@@ -72,8 +85,8 @@ def main():
     actual_fonts={(r.get('src'),r.get('ord')):r for r in font_rows}
     if len(actual_fonts)!=len(font_rows) or set(actual_fonts)!=set(expected_fonts): raise ValueError('font verification coverage mismatch')
     for key,r in actual_fonts.items():
-        n=r.get('expectedLabelCount'); measured=r.get('measuredLabelCount'); minimum=r.get('minFontPx')
-        if r.get('status')!='PASS' or type(n) is not int or n<=0 or measured!=n or type(minimum) not in (int,float) or not math.isfinite(minimum) or minimum<11 or r.get('sourceSvgSha')!=expected_fonts[key] or r.get('responseSha')!=expected_fonts[key]: raise ValueError(f'font verification failed: {key}')
+        try: validate_font_row(r,expected_fonts[key])
+        except ValueError as error: raise ValueError(f'font verification failed: {key}: {error}') from error
     tests=sorted(glob.glob(str(ROOT/'tests/m2-*-create-gate-*.test.js')))
     if not tests: raise ValueError('no gate test files')
     gate=run(['node','--test','--test-reporter=tap',*tests],cwd=ROOT,timeout=600,env=env)

@@ -101,4 +101,3 @@ test('batch failure exits nonzero without Git mutation',()=>{
     assert.notEqual(result.status,0);assert.deepEqual(fs.readdirSync(path.join(x.root,'.git')),before);
   }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
 });
-

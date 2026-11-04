@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각기둥의 대응 모서리와 큰 기둥의 30도 각을 나타낸다.",
+    "solutionImageCaption": "예: 대응 높이의 비는 4:6=2:3이므로 AC=10/3cm이다. 답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 겹친 직사각형 ABCD와 DAEF에서 두 변 AD와 DF를 같은 색으로 나타낸다.",
+    "solutionImageCaption": "닮음의 대응 순서에 따라 AB:DA=AD:DF이다. 답: ④ 16cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -120,7 +128,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 삼각형 ABC와 작은 삼각형 EDC에서 대응변 AC와 EC, BC와 DC를 같은 색으로 구분한다.",
+    "solutionImageCaption": "AC=8cm이므로 두 삼각형의 닮음비는 2:1이고 BC=12cm이다. 답: ⑤ 8cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -151,7 +163,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 중심 O에서 변 AD에 수선을 내리고 두 닮은 직각삼각형 EOH, BCD를 다른 색으로 표시한다.",
+    "solutionImageCaption": "중심에서 윗변까지 OH=3cm이고 BD=10cm이므로 닮음비를 이용한다. 답: ⑤ 15/4cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -182,7 +198,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 빗변에 내린 높이 AD를 기준으로 두 직각삼각형을 다른 색으로 나누어 표시한다.",
+    "solutionImageCaption": "두 직각삼각형의 닮음에서 AD²=BD×CD이다. 답: ④ 27/2cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -213,7 +233,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 AB, EF, DC와 교점 E를 그려 두 닮은 삼각형을 색으로 구분한다.",
+    "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 닮은 두 삼각형에서 AE:EC=3:2이므로 CE:CA=2:5이다. 답: ⑤ 24/5cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -244,7 +268,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 각 변의 중점을 잇고 작은 삼각형의 세 변을 5cm, 4cm, 6cm로 표시한다.",
+    "solutionImageCaption": "중점 연결 정리로 세 변은 5cm, 4cm, 6cm이다. 답: ① 15cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -275,7 +303,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 평행선 l, m, n을 지나는 두 횡단선이 l과 m 사이에서 교차하고, 각 횡단선의 대응 구간을 끌어내 표시한다.",
+    "solutionImageCaption": "단위는 cm이다. 두 횡단선은 l과 m 사이에서 교차한다. 18:12=3:2이므로 x−8=12이다. 답: ① 20cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -306,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴의 두 옆변을 위로 연장해 만나는 P와 평행한 세 선분 AD, MN, BC를 나타낸다.",
+    "solutionImageCaption": "예: 옆변을 연장한 그림에서 닮음비로 PA=14cm, PM=24cm이며 PM:PB=6:7이다. 답: ④ 12cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -338,7 +374,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 세 중선이 나누는 여섯 개의 넓이가 같은 삼각형과 BG:GE=2:1을 나타낸 그림.",
+    "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 예: 세 중선이 만드는 여섯 삼각형은 넓이가 같고 BG:GE=2:1이다. 서로 다른 중선 위의 GE와 GF는 일반적으로 같지 않다. 답: ②, ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -369,7 +409,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 중선 위에 두 무게중심 G, G′과 밑변 중점 D를 표시하고 삼각형 G′BD를 색칠한다.",
+    "solutionImageCaption": "전체 높이를 h라 하면 G와 G′의 높이는 h/3, h/9이고 BD는 BC의 절반이다. 색칠한 5cm²는 전체의 1/18이다. 답: ③ 90cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -400,7 +444,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형에서 대각선 BD와 중선 AM의 교점 P를 표시하고 삼각형 ABP와 PBM을 다른 색으로 구분한다.",
+    "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 평행선의 닮음에서 AP:PM=2:1이고 두 색 영역은 같은 높이를 갖는다. 답: ① 8cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -431,7 +479,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴에서 D로부터 밑변 BC에 수선을 내려 밑변 차 9cm인 직각삼각형을 색칠한다.",
+    "solutionImageCaption": "두 밑변의 차는 9cm이고 높이는 12cm이다. 답: ④ 15cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -570,7 +622,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 액자의 바깥 직사각형과 안쪽 직사각형에서 가로와 세로를 각각 같은 색으로 나타낸다.",
+    "solutionImageCaption": "안쪽의 가로와 세로는 각각 24cm, 18cm이고 대응변의 비 5:4와 4:3이 다르다. 답: 닮지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -620,7 +676,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 DE와 BC가 평행하고 E를 지나는 EF가 AB에 평행하도록 보조선을 나타낸다.",
+    "solutionImageCaption": "두 평행 관계에서 대응각이 같고 사각형 DBFE는 평행사변형이다. 답: (1) EF∥AB, (2) AA 닮음, (3) EF, EC, 평행사변형, DB, DB, EC",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -645,7 +705,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형에서 삼각형 ABD를 색칠하고 대각선 BD와 수선 AE의 관계를 나타낸다.",
+    "solutionImageCaption": "BD=10cm이고 색칠한 삼각형의 넓이는 24cm²이다. 답: 24/5cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
