@@ -1,0 +1,993 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "c91136ad9443d39ca67800224c5ade0fdecdeb7b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "antigravity-gemini-3.8-flash",
+    "run": "original-51-60",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "다음 중 ${}_5P_3$의 값으로 옳은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "${}_5P_3$의 값으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "${}_5P_3=5\\times4\\times3=60$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "경우의 수는 ${}_5C_2=\\dfrac{5\\times4}{2\\times1}=10$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "두 모둠으로 나누는 모든 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "조합으로 $2$명을 선택한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "두 모둠의 인원수가 서로 다르므로 $2$명인 모둠만 정하면 나머지 $3$명은 자동으로 정해진다",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 인원수의 두 조로 분할하는 방법"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "5명의 학생을 2명, 3명의 두 모둠으로 나누는"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=x+4$, $g(x)=2x-5$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(g(1))$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수의 값은 안쪽 함수부터 차례로 계산한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$g(1)=2\\times1-5=-3$이고, $f(-3)=-3+4=1$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "안쪽 함수의 결과를 바깥 함수에 대입"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "다음 중 함수의 그래프가 아닌 것을 고르면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "함수의 그래프가 아닌 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직선판정법",
+            "src": "solution",
+            "quote": "각 보기의 그래프에 수직선을 그었을 때 교점의 개수를 확인한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일대일함수",
+            "src": "solution",
+            "quote": "하나의 $x$값에 두 개 이상의 $y$값이 대응하면 안 된다",
+            "evidenceType": "IMPLIED",
+            "justification": "함수의 정의에 따른 단일 대응 조건 판정"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=\\sqrt{1-2x}$의 정의역이"
+          },
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역이 $\\{x\\mid x\\le a\\}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "제곱근 안의 식은 $0$ 이상이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$1-2x\\ge0$에서 $-2x\\ge-1$이므로 $x\\le\\dfrac12$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "$\\dfrac1{k(k+1)}$을 두 분수의 차로 바꾸면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$\\dfrac1{1\\times2}+\\dfrac1{2\\times3}+\\dfrac1{3\\times4}+\\cdots+\\dfrac1{9\\times10}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "$\\dfrac1{k(k+1)}=\\dfrac1k-\\dfrac1{k+1}$을 이용한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "중간 항이 모두 소거되어 $1-\\dfrac1{10}=\\dfrac9{10}$이 남는다",
+            "evidenceType": "IMPLIED",
+            "justification": "부분분수 전개 후 인접 항들의 상쇄 소거"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{x+1}{1-x}$에 대한 설명으로 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명으로 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 $x=1$, $y=-1$이어서 교점은 $(1,-1)$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "원래 그래프는 $y=x-2$에 대하여 대칭이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동으로 얻는 기본 그래프는 $y=-\\dfrac2x$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=x^2-x+\\dfrac34$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수를 $g(x)$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "선분 PQ의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "증가함수와 그 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다",
+            "evidenceType": "IMPLIED",
+            "justification": "증가함수와 역함수의 교점이 직선 y=x에 놓임을 이용"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$x^2-2x+\\dfrac34=0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "따라서 $PQ=\\sqrt{1^2+1^2}=\\sqrt2$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$(x\\ge\\dfrac12)$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "정오각형의 꼭짓점 A, B, C, D, E와"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "서로 다른 점 10개 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 삼각형의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "서로 다른 세 점을 고르는 방법은 ${}_{10}C_3=120$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "세 점을 고르는 전체 경우에서 한 직선 위에 놓이는 세 점을 제외한다",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 세 점 조합에서 일직선 위의 점 조합을 제외"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "정오각형의 대각선은 $5$개이고 각 대각선 위의 $4$점 중 $3$점을 고르면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "한 직선 위에 놓이는 세 점을 제외한다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=ax+b$의"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 존재할 때"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "X=\\{x\\mid -1\\lt x\\lt4\\}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일차함수가 두 열린구간 사이의 일대일대응이 되려면",
+            "evidenceType": "IMPLIED",
+            "justification": "역함수 존재 조건인 일대일대응으로 구간 끝점 대응 판정"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$a=-1$이면 감소하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "구간의 길이 비가 기울기의 절댓값과 같다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $b$에 대하여"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=f(x)$의 그래프의"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "두 점근선의 교점이 $(2,3)$이고"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값이 $2$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(4)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선의 교점을 이용해 유리함수를 $f(x)=\\dfrac{a}{x-2}+3$의 꼴로 나타낸다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$f(x)$의 최댓값은 $x=0$에서이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(4)=\\dfrac2{4-2}+3=4$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 유리함수 식에 x=4를 대입"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "0\\le x\\le1"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사전식배열",
+            "src": "stem",
+            "quote": "사전식으로 배열할 때"
+          },
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "6개의 문자를 모두 한 번씩 사용하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사전식배열",
+            "src": "stem",
+            "quote": "278번째 오는 문자열은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사전식배열",
+            "src": "solution",
+            "quote": "사전식 배열에서는 앞 글자를 고정한 블록의 크기를 팩토리얼로 계산한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "첫 글자 하나를 고정하면 $5!=120$개씩이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수형도",
+            "src": "solution",
+            "quote": "첫째, 둘째, 셋째 글자를 차례로 정하면서 278번째의 블록을 찾는다",
+            "evidenceType": "IMPLIED",
+            "justification": "자릿수별 단계적 고정으로 후보군 축소"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "모두 한 번씩 사용하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 존재하는 함수 $f(x)$에 대하여"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=1-x$로 두면 $x=1-t$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "일차식 변수 치환으로 f(x) 식 도출"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수는 $f^{-1}(x)=1-\\dfrac x3$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형의 넓이는 $\\dfrac12\\times3\\times1=\\dfrac32$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $a$는 상수이다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$\\dfrac{a-2b-2c}{a}=\\dfrac{-2a+b-2c}{b}=\\dfrac{-2a-2b+c}{c}$가 성립할 때"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "구하는 대칭식의 값을 계산한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$a\\left(\\dfrac1b+\\dfrac1c\\right)+b\\left(\\dfrac1a+\\dfrac1c\\right)+c\\left(\\dfrac1a+\\dfrac1b\\right)$의 값으로 가능한 모든 수의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 식을 더해 $a+b+c=0$인 경우와 그렇지 않은 경우로 나누어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "이를 전개하면 $3+\\left[a(\\dfrac1b+\\dfrac1c)+b(\\dfrac1a+\\dfrac1c)+c(\\dfrac1a+\\dfrac1b)\\right]=0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭식을 전개하여 합의 값 산출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "0이 아닌 세 실수 $a,b,c$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "scenarioNote": "제주도 수학여행 체험 8개 중 각 테마별 1개 이상 총 4개를 골라 시간순으로 일정을 계획하는 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "선택한 $4$개의 체험을 시간순으로 배열하는 방법은 $4!=24$가지이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "시간순으로 일정을 계획하는 모든 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 개를 고르는 테마를 세 경우로 나누어 선택 방법을 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "레저 스포츠에서 $2$개를 고르면 ${}_2C_2{}_3C_1{}_3C_1=9$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "선택한 $4$개의 체험을 시간순으로 배열하는 방법은 $4!=24$가지이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "선택된 체험들을 시간순으로 순열 배열"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "solution",
+            "quote": "$x\\ge p$인 무리함수 부분은"
+          },
+          {
+            "term": "유리함수",
+            "src": "solution",
+            "quote": "$x<p$에서 $u=\\dfrac1x+q$의 치역을 구하고"
+          },
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "\\begin{cases}\\sqrt{x-p}&(x\\ge p)\\\\\\left|\\dfrac1x+q\\right|&(x<p)\\end{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$p-q$의 값으로 가능한 모든 수의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "$x<p$에서 $u=\\dfrac1x+q$의 치역을 구하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|u|=t$의 해가 하나인 $t$의 집합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $p,q$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "scenarioNote": "7개 영역을 3가지 색으로 인접 영역을 서로 다른 색으로 칠하는 방법",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "영역 A, B, C, D, E, F, G 7개를 서로 다른 3가지의 색으로 칠하려고 한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "인접하는 영역은 서로 다른 색으로 칠하는 모든 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 영역 $B,D,F$가 모두 같은 색인 경우는 $2$가지이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체는 $3\\times28=84$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "중앙 영역 색과 바깥 영역 배치를 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "인접하는 영역은 서로 다른 색으로 칠하는"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "함수 $(g\\circ f)(x)=2$를 만족시키는"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le4$에서 정의된 두 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "모든 $x$값들의 합을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "먼저 $g(u)=2$가 되는 입력값 $u$를 찾고, 각각에 대하여 $f(x)=u$를 푼다",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수 방정식을 단계별 역추적으로 해결"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$2x=1$이므로 $x=\\dfrac12$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "scenarioNote": "2층 3개, 1층 4개 사물함에 남학생 2명, 여학생 3명 배정",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "먼저 두 남학생이 사용할 사물함의 위치를 정한 뒤"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "사물함을 배정하는 모든 경우의 수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "남학생 두 명이 같은 층을 쓰는 경우와 서로 다른 층을 쓰는 경우로 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$4\\times2!\\times{}_4P_3=4\\times2\\times24=192$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이웃하지않음",
+            "src": "solution",
+            "quote": "남학생과 이웃하지 않는 빈 사물함이 $4$개 남으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "남학생 2명과 여학생 3명에게 각각 1개씩 배정하려고 한다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "두 함수 $y=\\sqrt{x+3}$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "$y=x+k$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$f(2)+f(3)+f(4)$의 값을 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\sqrt{x+3}\\ge0$로 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "무리식을 치환하여 음이 아닌 근을 갖는 이차방정식으로 전환"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$u^2-u+(k-3)=0$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 $1-4=-3<0$이므로 실근이 없어",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "$X$에서 $X$로의 일대일대응인 함수 $f,g,h$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$(h\\circ f)(7)+(h\\circ g)(5)$의 값을 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "조건 (나)에서 가능한 함수값을 먼저 좁히면 세 함수의 핵심 값이 차례로 결정된다",
+            "evidenceType": "IMPLIED",
+            "justification": "유한집합 일대일대응의 치역 조건을 이용해 함숫값 결정"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "(다)의 $f(h(3))+g(h(3))=10$을 조사한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유한집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{2,3,5,7\\}$에 대하여"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 21,
+    "quotesChecked": 121,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      "#1 only 2 distinct terms (단순 순열 계산)",
+      "#1 method has 1 term",
+      "#2 only 4 distinct terms",
+      "#3 only 4 distinct terms",
+      "#4 only 4 distinct terms",
+      "#6 only 3 distinct terms",
+      "#13 only 4 distinct terms",
+      "#17 only 4 distinct terms",
+      "#18 only 4 distinct terms",
+      "#21 only 4 distinct terms"
+    ],
+    "notes": "Q4, Q7은 옳지 않은 것 고르기, Q18~Q19는 단답형, Q20~Q21은 서술형 format 적용."
+  }
+}
