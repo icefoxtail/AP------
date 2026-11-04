@@ -53,6 +53,14 @@ const DEFAULT_REGISTRAR = "archive/tools/meta-foundation/register-reviewed-exam-
 const DEFAULT_REJECTED_DIR = ".archive-meta-register/rejected";
 const DEFAULT_GUARD_PATHS = "tools/ci/archive-meta-register-commit.paths";
 
+export function difficultyWriteConflicts(doc, metadata) {
+  if(doc.approval?.type!=='META_PIPELINE_AUDIT')return [];
+  const rows=new Map((metadata.records||[]).map(r=>[r.questionUid,r]));
+  return (doc.items||[]).flatMap(item=>['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','level']
+    .filter(field=>Object.hasOwn(item.after||{},field)&&JSON.stringify(item.after[field]??null)!==JSON.stringify(rows.get(item.questionUid)?.[field]??null))
+    .map(field=>`${item.questionUid}.${field}`));
+}
+
 function parseArgs(argv) {
   const opt = { root: process.cwd(), registrar: DEFAULT_REGISTRAR, rejectedDir: DEFAULT_REJECTED_DIR, guardPathsFile: DEFAULT_GUARD_PATHS,
     appliedFile: "", rejectedFile: "", summaryFile: "", reject: "", error: "", stage: "registrar", resetDerived: false, requests: [] };
@@ -144,7 +152,14 @@ export function registerRequests(opt, { log = console.log } = {}) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
     const before = fingerprint();
-    const run = spawnSync(process.execPath, [registrar, "--request", rel, "--write"], { cwd: root, encoding: "utf8", maxBuffer: 1 << 28 });
+    let conflicts=[];
+    const metadataFile=path.join(root,'archive/data/question_metadata.json');
+    try {
+      const doc=JSON.parse(fs.readFileSync(requestAbs,'utf8'));
+      if(doc.approval?.type==='META_PIPELINE_AUDIT'&&fs.existsSync(metadataFile))conflicts=difficultyWriteConflicts(doc,JSON.parse(fs.readFileSync(metadataFile,'utf8')));
+    } catch(error){if(!(error instanceof SyntaxError))throw error;}
+    const run = conflicts.length ? {status:1,stderr:'Error: PRESERVE_CURRENT_DIFFICULTY: '+conflicts.join(', '),stdout:''}
+      : spawnSync(process.execPath, [registrar, "--request", rel, "--write"], { cwd: root, encoding: "utf8", maxBuffer: 1 << 28 });
     if (run.status === 0) {
       applied.push({ request: rel, name });
       // A fixed re-submission supersedes any earlier rejection record of the same file name.

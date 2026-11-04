@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {acceptPendingSupplement,registerRequests} from '../tools/ci/register-reviewed-meta-requests.mjs';
+import {acceptPendingSupplement,registerRequests,difficultyWriteConflicts} from '../tools/ci/register-reviewed-meta-requests.mjs';
 import {verifyStudentAccess} from '../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 
 test('usable exam gets provisional metadata approval without changing difficulty or solution',()=>{
@@ -33,4 +33,12 @@ test('usable exam gets provisional metadata approval without changing difficulty
   assert.match(verifyStudentAccess(root,req).failures[0],/ASSET_MISSING/);
   assert.equal(verifyStudentAccess(root,{...req,sourceArchiveFile:'../../outside.js'}).status,'FAIL');
  }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
+test('legacy META_PIPELINE requests cannot overwrite another difficulty writer',()=>{
+ const doc={approval:{type:'META_PIPELINE_AUDIT'},items:[{questionUid:'u',after:{difficultyBucket:1,problemTypeKey:'PT_A'}}]};
+ const meta={records:[{questionUid:'u',difficultyBucket:5}]};
+ assert.deepEqual(difficultyWriteConflicts(doc,meta),['u.difficultyBucket']);
+ assert.deepEqual(difficultyWriteConflicts({...doc,approval:{type:'REVIEW2'}},meta),[]);
+ assert.deepEqual(difficultyWriteConflicts({...doc,items:[{questionUid:'u',after:{problemTypeKey:'PT_A'}}]},meta),[]);
 });
