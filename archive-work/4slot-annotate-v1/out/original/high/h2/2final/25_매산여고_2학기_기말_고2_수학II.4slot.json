@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
-  "sourceGitBlobSha": "f8df59f972b22b647fe05106ff7328994689c173",
-  "dictionaryVersion": "term-dict-v1.3-2026-11-03",
+  "sourceGitBlobSha": "7545eba7eccd5546e4e80c66de10a0fdefae9745",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Antigravity-gemini-3.8-flash",
     "run": "original-1-10",
@@ -22,7 +22,7 @@
         ],
         "goal": [
           {
-            "term": "곱의법칙",
+            "term": "곱",
             "src": "stem",
             "quote": "ab$의 값은?"
           },
@@ -81,7 +81,7 @@
           {
             "term": "정적분",
             "src": "stem",
-            "quote": "정적분 $\\displaystyle\\int_0^2\\left(\\dfrac{1}{2}x-5\\right)dx$의 값"
+            "quote": "\\int_0^2\\left(\\dfrac{1}{2}x-5\\right)dx"
           }
         ],
         "method": [
@@ -175,7 +175,7 @@
             "quote": "수직선 위를 움직이는"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "위치 $x$가"
           },
@@ -187,12 +187,18 @@
         ],
         "goal": [
           {
-            "term": "속도",
+            "term": "가속도",
             "src": "stem",
             "quote": "가속도는?"
           }
         ],
         "method": [
+          {
+            "term": "가속도",
+            "src": "solution",
+            "quote": "a(t)=v'(t)=-6t+6",
+            "evidenceType": "NAMED"
+          },
           {
             "term": "미분",
             "src": "solution",
@@ -363,7 +369,7 @@
           {
             "term": "미분계수",
             "src": "solution",
-            "quote": "f'(3)=\\displaystyle\\lim_{x\\to3}\\dfrac{f(x)-f(3)}{x-3}=1",
+            "quote": "\\lim_{x\\to3}\\dfrac{f(x)-f(3)}{x-3}=1",
             "evidenceType": "NAMED"
           },
           {
@@ -393,6 +399,11 @@
       "slots": {
         "given": [
           {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "접선의 $y$절편을 $g(t)$"
+          },
+          {
             "term": "삼차함수",
             "src": "stem",
             "quote": "f(x)=x^3-(a+3)x^2+2ax"
@@ -404,6 +415,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$의 최솟값은?"
+          },
           {
             "term": "최솟값",
             "src": "stem",
@@ -433,6 +449,11 @@
         ],
         "condition": [
           {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "열린 구간 $(0,6)$에서 증가"
+          },
+          {
             "term": "구간",
             "src": "stem",
             "quote": "열린 구간 $(0,6)$에서 증가"
@@ -456,9 +477,9 @@
             "quote": "f(x)=2x^3+ax^2+bx+3"
           },
           {
-            "term": "미정계수",
+            "term": "상수",
             "src": "stem",
-            "quote": "상수이다"
+            "quote": "$a$, $b$는 상수이다"
           }
         ],
         "goal": [
@@ -469,6 +490,12 @@
           }
         ],
         "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "evidenceType": "NAMED"
+          },
           {
             "term": "극대",
             "src": "solution",
@@ -533,7 +560,7 @@
           {
             "term": "극한",
             "src": "stem",
-            "quote": "\\lim_{x\\to2}\\dfrac{1}{x-2}\\int_2^x f(t)dt"
+            "quote": "\\lim_{x\\to2}\\dfrac{1}{x-2}"
           }
         ],
         "method": [
@@ -583,6 +610,13 @@
           }
         ],
         "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$a>2$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "a=1,2 및 a>2에서 도함수 근의 중복을 조사하고 a=4일 때도 한 번만 부호가 바뀜을 확인한다."
+          },
           {
             "term": "도함수",
             "src": "solution",
@@ -640,12 +674,31 @@
         ],
         "goal": [
           {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "f(-5)+g(1)$의 값은?"
+          },
+          {
             "term": "합",
             "src": "stem",
             "quote": "f(-5)+g(1)$의 값은?"
           }
         ],
         "method": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "두 다항식의 곱이 영다항식이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "두 다항식의 곱이 영다항식이면 한 인수가 영다항식이므로 f-g=±Q 중 하나가 모든 x에서 성립한다."
+          },
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "S(0)=-7,\\quad P(0)=-18",
+            "evidenceType": "IMPLIED",
+            "justification": "초기 함숫값으로 합과 곱의 부정적분 상수 C1,C2를 결정한다."
+          },
           {
             "term": "부정적분",
             "src": "solution",
@@ -693,7 +746,7 @@
         ],
         "goal": [
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "수직선 위의 위치는?"
           }
@@ -702,7 +755,7 @@
           {
             "term": "정적분",
             "src": "solution",
-            "quote": "x(3)-x(0)=\\displaystyle\\int_0^3(t^2-6t)dt",
+            "quote": "\\int_0^3(t^2-6t)dt",
             "evidenceType": "NAMED"
           },
           {
@@ -712,7 +765,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "solution",
             "quote": "처음 위치에 변화량을 더하면",
             "evidenceType": "IMPLIED",
@@ -720,6 +773,16 @@
           }
         ],
         "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "t\\ge0"
+          },
+          {
+            "term": "위치",
+            "src": "stem",
+            "quote": "좌표가 $1$인 점을 출발하여"
+          },
           {
             "term": "부등식",
             "src": "stem",
@@ -758,6 +821,13 @@
         ],
         "method": [
           {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "구간을 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "속도 영점 t=3을 기준으로 절댓값을 벗긴 두 정적분을 합한다."
+          },
+          {
             "term": "절댓값",
             "src": "solution",
             "quote": "이동거리는 속도의 절댓값을 적분하므로",
@@ -766,11 +836,16 @@
           {
             "term": "정적분",
             "src": "solution",
-            "quote": "S=\\displaystyle\\int_0^3(6-2t)dt+\\int_3^6(2t-6)dt",
+            "quote": "\\int_0^3(6-2t)dt+\\int_3^6(2t-6)dt",
             "evidenceType": "NAMED"
           }
         ],
         "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$t=0$부터 $t=6$까지"
+          },
           {
             "term": "부등식",
             "src": "stem",
@@ -814,6 +889,19 @@
         ],
         "method": [
           {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "왼쪽을 미분하면 $f(x)$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "위끝변수 x인 정적분을 미분하여 피적분함수 f(x)를 얻는다."
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "a=\\displaystyle\\int_1^0(-t^2+2t)dt",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "미분",
             "src": "solution",
             "quote": "주어진 등식의 양변을 $x$에 대하여 미분한다",
@@ -835,6 +923,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
           {
             "term": "항상성립",
             "src": "stem",
@@ -873,6 +966,13 @@
         ],
         "method": [
           {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$m=-2$일 때 각각 세 점과 두 점에서 만나",
+            "evidenceType": "IMPLIED",
+            "justification": "극솟값 m과 두 수평선 ±2의 위치를 나누어 교점 수 합이5가 되는 유일한 m=-2를 결정한다."
+          },
+          {
             "term": "극대",
             "src": "solution",
             "quote": "극댓값이 $30$이므로",
@@ -894,6 +994,21 @@
           }
         ],
         "condition": [
+          {
+            "term": "극대",
+            "src": "stem",
+            "quote": "$x=0$에서 극댓값 $30$"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수가"
+          },
+          {
+            "term": "최고차항",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$"
+          },
           {
             "term": "실근",
             "src": "stem",
@@ -978,6 +1093,16 @@
       "slots": {
         "given": [
           {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $APH$의 넓이"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $H$"
+          },
+          {
             "term": "삼차함수",
             "src": "stem",
             "quote": "f(x)=2x^3-6x^2+3"
@@ -989,6 +1114,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $P$의 $x$좌표는?"
+          },
           {
             "term": "최댓값",
             "src": "stem",
@@ -1017,7 +1147,18 @@
             "evidenceType": "NAMED"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제 $1$사분면에서 만나는"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "두 점 $A$, $B$ 사이를 움직이는"
+          }
+        ]
       },
       "reasons": {
         "method": "접선 방정식을 구하고 삼각형 넓이를 x의 사차함수로 나타낸 뒤 미분으로 최댓값 위치 계산"
@@ -1077,6 +1218,16 @@
         ],
         "condition": [
           {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$, $y$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$, $y$에 대하여"
+          },
+          {
             "term": "극값",
             "src": "stem",
             "quote": "극값이 존재하지 않을 때"
@@ -1127,7 +1278,7 @@
           {
             "term": "절댓값",
             "src": "solution",
-            "quote": "Q$의 이동거리는 $\\displaystyle\\int_0^2|mt-4|dt$이다",
+            "quote": "\\int_0^2|mt-4|dt",
             "evidenceType": "NAMED"
           },
           {
@@ -1139,6 +1290,21 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $m$에 대하여"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$t=0$에서 $t=2$까지"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "움직인 거리가 같도록"
+          },
           {
             "term": "거리",
             "src": "stem",
@@ -1177,6 +1343,13 @@
           }
         ],
         "method": [
+          {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "F'(x)=f(x)=x^3-3x+a",
+            "evidenceType": "IMPLIED",
+            "justification": "적분으로 정의된 F를 미분해 F'=f를 얻고 f의 부호변화와 F의 극값 개수를 연결한다."
+          },
           {
             "term": "도함수",
             "src": "solution",
@@ -1269,6 +1442,16 @@
         ],
         "condition": [
           {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 범위를"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수가"
+          },
+          {
             "term": "실근",
             "src": "stem",
             "quote": "서로 다른 실근의 개수가 $4$"
@@ -1294,10 +1477,15 @@
           {
             "term": "정적분으로정의된함수",
             "src": "stem",
-            "quote": "g(x)=x^2\\displaystyle\\int_0^x f(t)dt-\\int_0^x t^2f(t)dt"
+            "quote": "\\int_0^x f(t)dt"
           }
         ],
         "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$a$의 최댓값을 $k$"
+          },
           {
             "term": "넓이",
             "src": "stem",
@@ -1305,6 +1493,20 @@
           }
         ],
         "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "g'(x)=2xI(x)+x^2f(x)-x^2f(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "x²와 적분함수 I(x)의 곱을 미분하여 두 x²f(x)항을 소거한다."
+          },
+          {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "g'(x)=2xI(x)+x^2f(x)-x^2f(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "위끝변수 적분의 미분을 피적분함숫값으로 바꾸어 g'를 얻는다."
+          },
           {
             "term": "도함수",
             "src": "solution",
@@ -1333,6 +1535,16 @@
         ],
         "condition": [
           {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$ $(a\\gt1)$"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "a\\gt1"
+          },
+          {
             "term": "부등식",
             "src": "stem",
             "quote": "a\\gt1"
@@ -1351,31 +1563,14 @@
       "scenarioNote": ""
     }
   ],
-  "candidates": [
-    {
-      "term": "정적분으로정의된함수",
-      "en": [
-        "FUNCTION_DEFINED_BY_INTEGRAL"
-      ],
-      "synonyms": [
-        "적분으로정의된함수"
-      ],
-      "kind": "대상",
-      "parent": "정적분",
-      "note": "적분의 위끝이나 아래끝에 변수가 포함되어 정의된 함수",
-      "usedIn": [
-        10,
-        15,
-        21,
-        23
-      ]
-    }
-  ],
+  "candidates": [],
   "selfCheck": {
     "items": 23,
-    "quotesChecked": 167,
+    "quotesChecked": 201,
     "quotesNotFound": 0,
-    "warningsRechecked": [],
-    "notes": ""
+    "warningsRechecked": [
+      2
+    ],
+    "notes": "Sol High 23문항 Q/C/S 전문검수, 실제그림 없음. Q2는 일차식 원시함수의 끝값 차라는 기초문항이므로 용어수WARN 이유확인후 유지. 기존 정적분으로정의된함수 후보 제거. 동의어 추가 필요: 적분으로정의된함수 → 정적분으로정의된함수. Q4 발문은 시간범위를 명시하지 않지만 해설은 t≥0을 사용하며 음의근 -1을 제외한다는 원본 해석 한계를 receipt에 기록. 기계검사/통계는 ROOT 담당. | 2026-11-04 Codex-gpt-6.1-sol High 전 문항·그림 4칸 의미 검수. 원작성자 judgedBy 보존. 원본문항 수학 품질 승인과 별개."
   }
 }
