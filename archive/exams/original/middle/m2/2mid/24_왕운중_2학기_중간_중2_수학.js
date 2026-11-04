@@ -27,7 +27,7 @@ window.questionBank=[
       "$70^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 이등변삼각형에서는 길이가 같은 두 변의 맞은편 각, 즉 두 밑각의 크기가 같다.\n$\\angle B+\\angle C=180^\\circ-40^\\circ=140^\\circ$이다. 두 밑각의 크기가 같으므로 $\\angle C=140^\\circ\\div2=70^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "solution": " 이등변삼각형에서는 길이가 같은 두 변의 맞은편 각, 즉 두 밑각의 크기가 같다.\n$\\angle B+\\angle C=180^\\circ-40^\\circ=140^\\circ$이다. 두 밑각의 크기가 같으므로 $\\angle C=140^\\circ\\div2=70^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q01.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -60,7 +60,7 @@ window.questionBank=[
       "$35^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 외심은 세 꼭짓점에서 같은 거리에 있으므로 $OA=OB=OC$이고, 이를 이용하면 여러 이등변삼각형이 생긴다.\n$OB=OC$이므로 $\\angle OCB=25^\\circ$이고, $OA=OC$이므로 $\\angle OAC=40^\\circ$이다. 또 $OA=OB$이므로 $\\angle ABO=\\angle BAO=x$이다. 따라서 $\\angle A=x+40^\\circ$, $\\angle B=x+25^\\circ$, $\\angle C=25^\\circ+40^\\circ=65^\\circ$이다. 세 내각의 합을 이용하면 $(x+40^\\circ)+(x+25^\\circ)+65^\\circ=180^\\circ$이므로 $2x=50^\\circ$, $x=25^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": " 외심은 세 꼭짓점에서 같은 거리에 있으므로 $OA=OB=OC$이고, 이를 이용하면 여러 이등변삼각형이 생긴다.\n$OB=OC$이므로 $\\angle OCB=25^\\circ$이고, $OA=OC$이므로 $\\angle OAC=40^\\circ$이다. 또 $OA=OB$이므로 $\\angle ABO=\\angle BAO=x$이다. 따라서 $\\angle A=x+40^\\circ$, $\\angle B=x+25^\\circ$, $\\angle C=25^\\circ+40^\\circ=65^\\circ$이다. 세 내각의 합을 이용하면 $(x+40^\\circ)+(x+25^\\circ)+65^\\circ=180^\\circ$이므로 $2x=50^\\circ$, $x=25^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q02.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -93,7 +93,7 @@ window.questionBank=[
       "$40^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 내심은 삼각형의 세 내각의 이등분선이 만나는 점이다.\n$\\angle ABI=\\angle IBC$이고 $\\angle ABI=25^\\circ$이므로 $\\angle IBC=25^\\circ$이다. 주어진 $\\angle ICB=35^\\circ$는 이 문항의 정답을 구하는 데 추가로 사용할 필요가 없다.\n따라서 정답은 ②이다.",
+    "solution": " 내심은 삼각형의 세 내각의 이등분선이 만나는 점이다.\n$\\angle ABI=\\angle IBC$이고 $\\angle ABI=25^\\circ$이므로 $\\angle IBC=25^\\circ$이다. 주어진 $\\angle ICB=35^\\circ$는 이 문항의 정답을 구하는 데 추가로 사용할 필요가 없다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q03.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -126,7 +126,7 @@ window.questionBank=[
       "17"
     ],
     "answer": "②",
-    "solution": "[키포인트] 평행사변형의 두 대각선은 서로를 이등분한다.\n$O$는 대각선 $AC$의 중점이므로 $OC=AC\\div2=5$에서 $x=5$이다. 또한 $O$는 대각선 $BD$의 중점이므로 $OD=OB=7$에서 $y=7$이다. 따라서 $x+y=5+7=12$이다.\n따라서 정답은 ②이다.",
+    "solution": " 평행사변형의 두 대각선은 서로를 이등분한다.\n$O$는 대각선 $AC$의 중점이므로 $OC=AC\\div2=5$에서 $x=5$이다. 또한 $O$는 대각선 $BD$의 중점이므로 $OD=OB=7$에서 $y=7$이다. 따라서 $x+y=5+7=12$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q04.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -158,7 +158,7 @@ window.questionBank=[
       "두 평행사변형"
     ],
     "answer": "①",
-    "solution": "[키포인트] 크기와 관계없이 항상 닮으려면 대응하는 각이 같고 대응하는 길이의 비가 항상 일정해야 한다.\n모든 원은 중심에서 같은 거리에 있는 점들의 모임이며 반지름의 길이만 달라진다. 두 원의 대응하는 길이의 비는 반지름의 비와 같고 모양은 항상 같으므로 언제나 닮음이다. 마름모, 직육면체, 사다리꼴, 평행사변형은 각의 크기나 변의 비가 달라질 수 있어 항상 닮은 것은 아니다.\n따라서 정답은 ①이다.",
+    "solution": " 크기와 관계없이 항상 닮으려면 대응하는 각이 같고 대응하는 길이의 비가 항상 일정해야 한다.\n모든 원은 중심에서 같은 거리에 있는 점들의 모임이며 반지름의 길이만 달라진다. 두 원의 대응하는 길이의 비는 반지름의 비와 같고 모양은 항상 같으므로 언제나 닮음이다. 마름모, 직육면체, 사다리꼴, 평행사변형은 각의 크기나 변의 비가 달라질 수 있어 항상 닮은 것은 아니다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
@@ -190,7 +190,7 @@ window.questionBank=[
       "$120^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 평행선에서 생기는 엇각과 평행사변형의 맞은각의 성질을 함께 이용한다.\n$AD\\parallel BC$이고 $AE$가 두 평행선을 가로지르므로 $\\angle DAE=\\angle AEB=56^\\circ$이다. $AE$가 $\\angle A$의 이등분선이므로 $\\angle BAE=\\angle DAE=56^\\circ$이고, $\\angle A=112^\\circ$이다. 평행사변형의 맞은각은 같으므로 $\\angle C=\\angle A=112^\\circ$이다.\n따라서 정답은 ①이다.",
+    "solution": " 평행선에서 생기는 엇각과 평행사변형의 맞은각의 성질을 함께 이용한다.\n$AD\\parallel BC$이고 $AE$가 두 평행선을 가로지르므로 $\\angle DAE=\\angle AEB=56^\\circ$이다. $AE$가 $\\angle A$의 이등분선이므로 $\\angle BAE=\\angle DAE=56^\\circ$이고, $\\angle A=112^\\circ$이다. 평행사변형의 맞은각은 같으므로 $\\angle C=\\angle A=112^\\circ$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q06.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -223,7 +223,7 @@ window.questionBank=[
       "직각변 3, 한 예각 $50^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 직각삼각형은 빗변과 한 예각의 크기가 각각 같으면 합동이다.\n기준 삼각형의 다른 예각은 $90^\\circ-30^\\circ=60^\\circ$이다. ①은 빗변의 길이가 $5$이고 한 예각이 $60^\\circ$인 직각삼각형이므로 기준 삼각형과 빗변과 한 예각이 각각 같다. 나머지 보기는 빗변과 예각 또는 두 직각변이 기준 삼각형과 같다고 확정할 수 없다.\n따라서 정답은 ①이다.",
+    "solution": " 직각삼각형은 빗변과 한 예각의 크기가 각각 같으면 합동이다.\n기준 삼각형의 다른 예각은 $90^\\circ-30^\\circ=60^\\circ$이다. ①은 빗변의 길이가 $5$이고 한 예각이 $60^\\circ$인 직각삼각형이므로 기준 삼각형과 빗변과 한 예각이 각각 같다. 나머지 보기는 빗변과 예각 또는 두 직각변이 기준 삼각형과 같다고 확정할 수 없다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q07.png",
     "imageSize": "tall",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
@@ -257,7 +257,7 @@ window.questionBank=[
       "$8:27$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 서로 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n닮은 입체도형에서 대응하는 모든 길이의 비는 같으므로 높이의 비도 $2:3$이다. 따라서 부피의 비는 $2^3:3^3=8:27$이다.\n따라서 정답은 ⑤이다.",
+    "solution": " 서로 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n닮은 입체도형에서 대응하는 모든 길이의 비는 같으므로 높이의 비도 $2:3$이다. 따라서 부피의 비는 $2^3:3^3=8:27$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q08.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
@@ -290,7 +290,7 @@ window.questionBank=[
       "$157.5^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정팔각형의 한 내각은 $135^\\circ$이고 모든 변의 길이가 같다는 점을 이용한다.\n정팔각형의 한 내각은 $135^\\circ$이다. $AB=BC$이므로 $\\triangle ABC$에서 $\\angle BAC=(180^\\circ-135^\\circ)\\div2=22.5^\\circ$이다. 또한 $AB=AH$이고 $\\angle BAH=135^\\circ$이므로 $\\angle ABH=22.5^\\circ$이다. $P$는 $AC$, $BH$ 위에 있으므로 $\\angle BAP=22.5^\\circ$, $\\angle ABP=22.5^\\circ$이다. 따라서 $\\angle APB=180^\\circ-45^\\circ=135^\\circ$이다. $\\angle CPH$는 $\\angle APB$의 맞꼭지각이므로 $135^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": " 정팔각형의 한 내각은 $135^\\circ$이고 모든 변의 길이가 같다는 점을 이용한다.\n정팔각형의 한 내각은 $135^\\circ$이다. $AB=BC$이므로 $\\triangle ABC$에서 $\\angle BAC=(180^\\circ-135^\\circ)\\div2=22.5^\\circ$이다. 또한 $AB=AH$이고 $\\angle BAH=135^\\circ$이므로 $\\angle ABH=22.5^\\circ$이다. $P$는 $AC$, $BH$ 위에 있으므로 $\\angle BAP=22.5^\\circ$, $\\angle ABP=22.5^\\circ$이다. 따라서 $\\angle APB=180^\\circ-45^\\circ=135^\\circ$이다. $\\angle CPH$는 $\\angle APB$의 맞꼭지각이므로 $135^\\circ$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q09.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -323,7 +323,7 @@ window.questionBank=[
       "$62^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 직사각형의 네 각은 모두 직각이고, 두 직각삼각형의 합동을 이용하면 대각선이 밑변과 이루는 각이 같다.\n직사각형에서 $AB=DC$, $BC$는 공통이고 $\\angle ABC=\\angle DCB=90^\\circ$이므로 $\\triangle ABC\\cong\\triangle DCB$이다. 따라서 $\\angle DBC=\\angle ACB=38^\\circ$이다. 삼각형 $DBC$에서 $\\angle BCD=90^\\circ$이므로 $\\angle BDC=180^\\circ-90^\\circ-38^\\circ=52^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": " 직사각형의 네 각은 모두 직각이고, 두 직각삼각형의 합동을 이용하면 대각선이 밑변과 이루는 각이 같다.\n직사각형에서 $AB=DC$, $BC$는 공통이고 $\\angle ABC=\\angle DCB=90^\\circ$이므로 $\\triangle ABC\\cong\\triangle DCB$이다. 따라서 $\\angle DBC=\\angle ACB=38^\\circ$이다. 삼각형 $DBC$에서 $\\angle BCD=90^\\circ$이므로 $\\angle BDC=180^\\circ-90^\\circ-38^\\circ=52^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q10.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -356,7 +356,7 @@ window.questionBank=[
       "96"
     ],
     "answer": "①",
-    "solution": "[키포인트] 마름모의 넓이는 두 대각선의 길이의 곱의 절반이다.\n마름모의 넓이는 $\\dfrac12\\times AC\\times BD$이므로 $\\dfrac12\\times8\\times12=48$이다.\n따라서 정답은 ①이다.",
+    "solution": " 마름모의 넓이는 두 대각선의 길이의 곱의 절반이다.\n마름모의 넓이는 $\\dfrac12\\times AC\\times BD$이므로 $\\dfrac12\\times8\\times12=48$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q11.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -389,7 +389,7 @@ window.questionBank=[
       "22"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n$OF\\perp AB$이므로 $AF=FB=3$에서 $AB=6$이다. $OD\\perp BC$이므로 $BD=DC=4$에서 $BC=8$이다. $AC=8$이므로 $\\triangle ABC$의 둘레는 $6+8+8=22$이다.\n따라서 정답은 ⑤이다.",
+    "solution": " 원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n$OF\\perp AB$이므로 $AF=FB=3$에서 $AB=6$이다. $OD\\perp BC$이므로 $BD=DC=4$에서 $BC=8$이다. $AC=8$이므로 $\\triangle ABC$의 둘레는 $6+8+8=22$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q12.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -422,7 +422,7 @@ window.questionBank=[
       "$AB=DC$, $\\angle BAC=\\angle DCA$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 사각형이 평행사변형이 되는 대표 조건을 보기마다 확인한다.\n①은 합동에서 $AB=CD$, $BC=AD$가 되어 두 쌍의 대변 길이가 각각 같으므로 평행사변형이다. ②는 두 대각선이 서로를 이등분하므로 평행사변형이다. ③은 $AB\\parallel DC$이고 $\\angle A=\\angle C$이므로 나머지 한 쌍의 대변도 평행하게 된다. ⑤는 $\\angle BAC=\\angle DCA$에서 $AB\\parallel DC$이고 $AB=DC$이므로 한 쌍의 대변이 평행하고 길이도 같아 평행사변형이다. 그러나 ④의 두 쌍의 이웃한 각이 각각 같다는 조건만으로는 두 쌍의 대변이 평행하다고 할 수 없다.\n따라서 정답은 ④이다.",
+    "solution": " 사각형이 평행사변형이 되는 대표 조건을 보기마다 확인한다.\n①은 합동에서 $AB=CD$, $BC=AD$가 되어 두 쌍의 대변 길이가 각각 같으므로 평행사변형이다. ②는 두 대각선이 서로를 이등분하므로 평행사변형이다. ③은 $AB\\parallel DC$이고 $\\angle A=\\angle C$이므로 나머지 한 쌍의 대변도 평행하게 된다. ⑤는 $\\angle BAC=\\angle DCA$에서 $AB\\parallel DC$이고 $AB=DC$이므로 한 쌍의 대변이 평행하고 길이도 같아 평행사변형이다. 그러나 ④의 두 쌍의 이웃한 각이 각각 같다는 조건만으로는 두 쌍의 대변이 평행하다고 할 수 없다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q13.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -455,7 +455,7 @@ window.questionBank=[
       "60"
     ],
     "answer": "②",
-    "solution": "[키포인트] 평행선과 중점 조건으로 먼저 작은 삼각형의 합동 관계를 찾고, 넓이의 비를 연결한다.\n$AB\\parallel CE$이므로 $\\angle ABM=\\angle ECM$이고, $BM=CM$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM\\cong\\triangle ECM$이다. 따라서 $AM=ME$, $AB=CE$이다. 평행사변형에서 $AB=CD$이므로 $CD=CE$도 성립한다. 따라서 $M$은 $AE$의 중점이고 $C$는 $DE$의 중점이다. $AM=ME$이므로 $[\\triangle DMA]=[\\triangle DME]=30$, 따라서 $[\\triangle ADE]=60$이다. $C$가 $DE$의 중점이므로 $[\\triangle ADC]=30$이고 평행사변형 $ABCD$의 넓이는 그 두 배인 $60$이다. 또 $MC=\\dfrac12BC$이므로 $[\\triangle MCD]=\\dfrac14[ABCD]=15$이다. 따라서 $[ABMD]=60-15=45$이다.\n따라서 정답은 ②이다.",
+    "solution": " 평행선과 중점 조건으로 먼저 작은 삼각형의 합동 관계를 찾고, 넓이의 비를 연결한다.\n$AB\\parallel CE$이므로 $\\angle ABM=\\angle ECM$이고, $BM=CM$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM\\cong\\triangle ECM$이다. 따라서 $AM=ME$, $AB=CE$이다. 평행사변형에서 $AB=CD$이므로 $CD=CE$도 성립한다. 따라서 $M$은 $AE$의 중점이고 $C$는 $DE$의 중점이다. $AM=ME$이므로 $[\\triangle DMA]=[\\triangle DME]=30$, 따라서 $[\\triangle ADE]=60$이다. $C$가 $DE$의 중점이므로 $[\\triangle ADC]=30$이고 평행사변형 $ABCD$의 넓이는 그 두 배인 $60$이다. 또 $MC=\\dfrac12BC$이므로 $[\\triangle MCD]=\\dfrac14[ABCD]=15$이다. 따라서 $[ABMD]=60-15=45$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q14.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -488,7 +488,7 @@ window.questionBank=[
       "$9:1$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 빗금친 부분은 큰 원에서 작은 원을 뺀 고리 모양이다.\n(가)의 넓이는 $\\pi(3r)^2-\\pi r^2=8\\pi r^2$이고, (나)의 넓이는 $\\pi r^2$이다. 따라서 넓이의 비는 $8\\pi r^2:\\pi r^2=8:1$이다.\n따라서 정답은 ④이다.",
+    "solution": " 빗금친 부분은 큰 원에서 작은 원을 뺀 고리 모양이다.\n(가)의 넓이는 $\\pi(3r)^2-\\pi r^2=8\\pi r^2$이고, (나)의 넓이는 $\\pi r^2$이다. 따라서 넓이의 비는 $8\\pi r^2:\\pi r^2=8:1$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q15.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
@@ -521,7 +521,7 @@ window.questionBank=[
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 직각삼각형의 외접원 반지름은 빗변의 절반이고, 내접원 반지름은 넓이를 반둘레로 나누어 구할 수 있다.\n직각삼각형의 외심은 빗변의 중점이므로 $r_1=10\\div2=5$이다. 삼각형의 넓이는 $\\dfrac12\\times6\\times8=24$이고 반둘레는 $(6+8+10)\\div2=12$이다. 넓이 $=r_2\\times$반둘레이므로 $24=12r_2$에서 $r_2=2$이다. 따라서 $r_1-r_2=5-2=3$이다.\n따라서 정답은 ③이다.",
+    "solution": " 직각삼각형의 외접원 반지름은 빗변의 절반이고, 내접원 반지름은 넓이를 반둘레로 나누어 구할 수 있다.\n직각삼각형의 외심은 빗변의 중점이므로 $r_1=10\\div2=5$이다. 삼각형의 넓이는 $\\dfrac12\\times6\\times8=24$이고 반둘레는 $(6+8+10)\\div2=12$이다. 넓이 $=r_2\\times$반둘레이므로 $24=12r_2$에서 $r_2=2$이다. 따라서 $r_1-r_2=5-2=3$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q16.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -554,7 +554,7 @@ window.questionBank=[
       "$75^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정사각형의 대각선이 만드는 $45^\\circ$와 두 이등변삼각형의 밑각을 차례로 이용한다.\n$DP$는 $DA$와 $DB$ 사이에 있으므로 $\\angle PDA=45^\\circ-25^\\circ=20^\\circ$이다. $AP=AD$이므로 $\\angle APD=\\angle PDA=20^\\circ$이고 $\\angle PAD=140^\\circ$이다. 정사각형에서 $\\angle DAB=90^\\circ$이므로 $\\angle PAB=140^\\circ-90^\\circ=50^\\circ$이다. $AP=AB$이므로 $\\triangle APB$의 두 밑각은 같고, $\\angle PBA=(180^\\circ-50^\\circ)\\div2=65^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": " 정사각형의 대각선이 만드는 $45^\\circ$와 두 이등변삼각형의 밑각을 차례로 이용한다.\n$DP$는 $DA$와 $DB$ 사이에 있으므로 $\\angle PDA=45^\\circ-25^\\circ=20^\\circ$이다. $AP=AD$이므로 $\\angle APD=\\angle PDA=20^\\circ$이고 $\\angle PAD=140^\\circ$이다. 정사각형에서 $\\angle DAB=90^\\circ$이므로 $\\angle PAB=140^\\circ-90^\\circ=50^\\circ$이다. $AP=AB$이므로 $\\triangle APB$의 두 밑각은 같고, $\\angle PBA=(180^\\circ-50^\\circ)\\div2=65^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q17.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -587,7 +587,7 @@ window.questionBank=[
       "$7^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 이등변삼각형의 대칭축 위에는 외심과 내심이 놓이고, 내심은 각을 이등분한다.\n$OA=OC$이므로 $\\angle OCA=\\angle OAC=26^\\circ$이다. 외심 $O$는 이등변삼각형의 대칭축 위에 있으므로 $AO$는 $\\angle A$의 이등분선이고 $\\angle A=52^\\circ$이다. 따라서 두 밑각은 $(180^\\circ-52^\\circ)\\div2=64^\\circ$이다. $CI$는 $\\angle C$의 이등분선이므로 $\\angle ACI=32^\\circ$이다. 따라서 $\\angle OCI=32^\\circ-26^\\circ=6^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": " 이등변삼각형의 대칭축 위에는 외심과 내심이 놓이고, 내심은 각을 이등분한다.\n$OA=OC$이므로 $\\angle OCA=\\angle OAC=26^\\circ$이다. 외심 $O$는 이등변삼각형의 대칭축 위에 있으므로 $AO$는 $\\angle A$의 이등분선이고 $\\angle A=52^\\circ$이다. 따라서 두 밑각은 $(180^\\circ-52^\\circ)\\div2=64^\\circ$이다. $CI$는 $\\angle C$의 이등분선이므로 $\\angle ACI=32^\\circ$이다. 따라서 $\\angle OCI=32^\\circ-26^\\circ=6^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q18.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -620,7 +620,7 @@ window.questionBank=[
       "$74^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 수선은 $90^\\circ$를 만들고 평행사변형의 이웃한 두 각의 합은 $180^\\circ$이다.\n$DP\\perp CM$이고 $P$가 $CM$ 위에 있으므로 $\\angle DPC=90^\\circ$이다. 따라서 $\\triangle DCP$에서 $\\angle DCP=180^\\circ-90^\\circ-11^\\circ=79^\\circ$이다. $CP$는 $CM$과 같은 반직선이므로 $\\angle MCD=79^\\circ$이다. 따라서 $\\angle BCD=\\angle BCM+\\angle MCD=28^\\circ+79^\\circ=107^\\circ$이다. 평행사변형의 이웃한 두 각의 합은 $180^\\circ$이므로 $\\angle ABC=180^\\circ-107^\\circ=73^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": " 수선은 $90^\\circ$를 만들고 평행사변형의 이웃한 두 각의 합은 $180^\\circ$이다.\n$DP\\perp CM$이고 $P$가 $CM$ 위에 있으므로 $\\angle DPC=90^\\circ$이다. 따라서 $\\triangle DCP$에서 $\\angle DCP=180^\\circ-90^\\circ-11^\\circ=79^\\circ$이다. $CP$는 $CM$과 같은 반직선이므로 $\\angle MCD=79^\\circ$이다. 따라서 $\\angle BCD=\\angle BCM+\\angle MCD=28^\\circ+79^\\circ=107^\\circ$이다. 평행사변형의 이웃한 두 각의 합은 $180^\\circ$이므로 $\\angle ABC=180^\\circ-107^\\circ=73^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q19.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -653,7 +653,7 @@ window.questionBank=[
       "$34^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 여러 이등변삼각형의 밑각을 $x$로 나타내고 한 직선 위의 각의 합을 이용한다.\n$AB=AC$이므로 $\\angle BCA=x$, $\\angle BAC=180^\\circ-2x$이다. $AD$는 $AB$의 연장선이므로 $\\angle CAD=2x$이다. $AC=CD$이므로 $\\angle CDA=2x$, $\\angle ACD=180^\\circ-4x$이다. $CE$는 $CB$의 연장선이므로 $\\angle ACE=180^\\circ-x$이고, 따라서 $\\angle DCE=3x$이다. $CD=CE$이므로 $\\angle CDE=90^\\circ-\\dfrac32x$이다. 한편 $DE=FE$이고 $\\angle EDF=74^\\circ$이므로 $\\angle DFE=74^\\circ$이다. $DA$와 $DF$는 반대 방향이므로 $\\angle CDF=180^\\circ-2x$이고, 이는 $\\angle CDE+\\angle EDF$와 같다. 따라서 $180^\\circ-2x=(90^\\circ-\\dfrac32x)+74^\\circ$이므로 $x=32^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": " 여러 이등변삼각형의 밑각을 $x$로 나타내고 한 직선 위의 각의 합을 이용한다.\n$AB=AC$이므로 $\\angle BCA=x$, $\\angle BAC=180^\\circ-2x$이다. $AD$는 $AB$의 연장선이므로 $\\angle CAD=2x$이다. $AC=CD$이므로 $\\angle CDA=2x$, $\\angle ACD=180^\\circ-4x$이다. $CE$는 $CB$의 연장선이므로 $\\angle ACE=180^\\circ-x$이고, 따라서 $\\angle DCE=3x$이다. $CD=CE$이므로 $\\angle CDE=90^\\circ-\\dfrac32x$이다. 한편 $DE=FE$이고 $\\angle EDF=74^\\circ$이므로 $\\angle DFE=74^\\circ$이다. $DA$와 $DF$는 반대 방향이므로 $\\angle CDF=180^\\circ-2x$이고, 이는 $\\angle CDE+\\angle EDF$와 같다. 따라서 $180^\\circ-2x=(90^\\circ-\\dfrac32x)+74^\\circ$이므로 $x=32^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q20.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -680,7 +680,7 @@ window.questionBank=[
     "content": "[서술형 1] 아래 그림에서 합동인 두 도형을 찾아 합동 기호를 이용하여 표현하고 [2점], 합동인 이유를 서술하시오. [2점] [총 4점]",
     "choices": [],
     "answer": "$\\triangle ABD\\cong\\triangle CAE$",
-    "solution": "[키포인트] 두 직각삼각형에서 빗변과 한 예각이 각각 같은지 확인한다.\n$\\angle ADB=\\angle CEA=90^\\circ$이고 빗변 $AB=CA$이다. 또한 $AB\\perp AC$, $BD\\perp AE$이므로 각각의 변이 서로 수직인 각 $\\angle ABD$와 $\\angle CAE$의 크기가 같다. 따라서 빗변과 한 예각이 각각 같은 두 직각삼각형이므로 $\\triangle ABD\\cong\\triangle CAE$이다.\n따라서 합동인 두 도형은 $\\triangle ABD$와 $\\triangle CAE$이다.",
+    "solution": " 두 직각삼각형에서 빗변과 한 예각이 각각 같은지 확인한다.\n$\\angle ADB=\\angle CEA=90^\\circ$이고 빗변 $AB=CA$이다. 또한 $AB\\perp AC$, $BD\\perp AE$이므로 각각의 변이 서로 수직인 각 $\\angle ABD$와 $\\angle CAE$의 크기가 같다. 따라서 빗변과 한 예각이 각각 같은 두 직각삼각형이므로 $\\triangle ABD\\cong\\triangle CAE$이다.\n따라서 합동인 두 도형은 $\\triangle ABD$와 $\\triangle CAE$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q21.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -707,7 +707,7 @@ window.questionBank=[
     "content": "[서술형 2] $\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 $AB$, $AC$와 만나는 점을 각각 $D$, $E$라 하자. $\\triangle ABC$의 둘레가 $25$이고 $\\triangle ADE$의 둘레가 $19$일 때, $BC$의 길이를 구하고 [2점] 그 과정을 서술하시오. [3점] [총 5점]",
     "choices": [],
     "answer": "$6$",
-    "solution": "[키포인트] 내심의 각의 이등분선과 $DE\\parallel BC$를 이용하면 $BD=DI$, $CE=EI$를 얻을 수 있다.\n$BI$는 $\\angle B$의 이등분선이고 $DI\\parallel BC$이므로 $\\angle DBI=\\angle BID$이다. 따라서 $BD=DI$이다. 같은 방법으로 $CI$는 $\\angle C$의 이등분선이고 $EI\\parallel BC$이므로 $CE=EI$이다. 따라서 $DE=DI+IE=BD+CE$이다. 두 둘레의 차는 $(AB+AC+BC)-(AD+AE+DE)=BD+CE+BC-DE=BC$이다. 그러므로 $BC=25-19=6$이다.\n따라서 구하는 길이는 $6$이다.",
+    "solution": " 내심의 각의 이등분선과 $DE\\parallel BC$를 이용하면 $BD=DI$, $CE=EI$를 얻을 수 있다.\n$BI$는 $\\angle B$의 이등분선이고 $DI\\parallel BC$이므로 $\\angle DBI=\\angle BID$이다. 따라서 $BD=DI$이다. 같은 방법으로 $CI$는 $\\angle C$의 이등분선이고 $EI\\parallel BC$이므로 $CE=EI$이다. 따라서 $DE=DI+IE=BD+CE$이다. 두 둘레의 차는 $(AB+AC+BC)-(AD+AE+DE)=BD+CE+BC-DE=BC$이다. 그러므로 $BC=25-19=6$이다.\n따라서 구하는 길이는 $6$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q22.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -734,7 +734,7 @@ window.questionBank=[
     "content": "[서술형 3] 점 $I$는 $\\triangle ABC$의 내심이다. $\\angle BIC=130^\\circ$일 때, $\\angle A$의 크기인 $x$를 구하고 [2점] 그 과정을 서술하시오. [3점] [총 5점]",
     "choices": [],
     "answer": "$80^\\circ$",
-    "solution": "[키포인트] 내심에서 두 꼭짓점으로 이은 선이 만드는 각은 $\\angle BIC=90^\\circ+\\dfrac12\\angle A$이다.\n$130^\\circ=90^\\circ+\\dfrac12x$이므로 $\\dfrac12x=40^\\circ$이다. 따라서 $x=80^\\circ$이다.\n따라서 $\\angle A=80^\\circ$이다.",
+    "solution": " 내심에서 두 꼭짓점으로 이은 선이 만드는 각은 $\\angle BIC=90^\\circ+\\dfrac12\\angle A$이다.\n$130^\\circ=90^\\circ+\\dfrac12x$이므로 $\\dfrac12x=40^\\circ$이다. 따라서 $x=80^\\circ$이다.\n따라서 $\\angle A=80^\\circ$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q23.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -761,7 +761,7 @@ window.questionBank=[
     "content": "[서술형 4] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 $BC$와 만나는 점을 $D$라 하자. $AB=13$, $AC=5$이고 $\\triangle ABC$의 넓이가 $30$일 때, 직각삼각형의 합동 조건을 활용하여 $DC$의 길이를 구하고 [2점] 그 과정을 서술하시오. [4점] [총 6점]",
     "choices": [],
     "answer": "$\\dfrac{10}{3}$",
-    "solution": "[키포인트] 넓이로 $BC$를 구한 뒤, 보조 수선을 그어 두 직각삼각형의 합동을 이용한다.\n$30=\\dfrac12\\times AC\\times BC=\\dfrac12\\times5\\times BC$이므로 $BC=12$이다. 점 $D$에서 $AB$에 내린 수선의 발을 $E$라 하자. 그러면 $\\angle ACD=\\angle AED=90^\\circ$이고, $AD$는 공통인 빗변이며, $AD$가 $\\angle A$의 이등분선이므로 $\\angle CAD=\\angle DAE$이다. 따라서 빗변과 한 예각이 각각 같은 두 직각삼각형이므로 $\\triangle ACD\\cong\\triangle AED$이다. 그러므로 $AE=AC=5$, $DE=DC$이다. 따라서 $BE=AB-AE=13-5=8$이다. $DC=DE=t$라 두면 $BD=BC-DC=12-t$이다. 직각삼각형 $BDE$에서 $(12-t)^2=8^2+t^2$이므로 $144-24t+t^2=64+t^2$, $24t=80$이다. 따라서 $t=\\dfrac{10}{3}$이다.\n따라서 구하는 길이는 $\\dfrac{10}{3}$이다.",
+    "solution": " 넓이로 $BC$를 구한 뒤, 보조 수선을 그어 두 직각삼각형의 합동을 이용한다.\n$30=\\dfrac12\\times AC\\times BC=\\dfrac12\\times5\\times BC$이므로 $BC=12$이다. 점 $D$에서 $AB$에 내린 수선의 발을 $E$라 하자. 그러면 $\\angle ACD=\\angle AED=90^\\circ$이고, $AD$는 공통인 빗변이며, $AD$가 $\\angle A$의 이등분선이므로 $\\angle CAD=\\angle DAE$이다. 따라서 빗변과 한 예각이 각각 같은 두 직각삼각형이므로 $\\triangle ACD\\cong\\triangle AED$이다. 그러므로 $AE=AC=5$, $DE=DC$이다. 따라서 $BE=AB-AE=13-5=8$이다. $DC=DE=t$라 두면 $BD=BC-DC=12-t$이다. 직각삼각형 $BDE$에서 $(12-t)^2=8^2+t^2$이므로 $144-24t+t^2=64+t^2$, $24t=80$이다. 따라서 $t=\\dfrac{10}{3}$이다.\n따라서 구하는 길이는 $\\dfrac{10}{3}$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q24.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
