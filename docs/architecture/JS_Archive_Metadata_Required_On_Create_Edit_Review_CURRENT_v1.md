@@ -2,7 +2,51 @@
 
 - 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
 
-# JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 의미 판정 계약 (CURRENT v1.1)
+# JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 의미 판정 계약 (CURRENT v1.2)
+
+## 공통 작성·검토·인계 요건 — 확장 메타·4칸·기록 메타 (2026-11-04)
+
+**아카이브의 신규 결과물은 문항 JS와 함께 확장 메타, 문항별 4칸, 작성·검토·변경·출처 기록을 작성하고 같은 최종 판본에 결속한다.** 학교 기출(original), 유사문제/유사시험지(similar), ALIVE/Generated, 교과서, 문제집, 교재·평가용 문항을 모두 포함한다. 파일명·폴더·제작 모델·납품 형식이 다르다는 이유로 이 의무를 생략하지 않는다. 이유: 기존 의미 메타 규정과 4칸 시범 인계가 분리되어 신규 제작 때 기록이 빠질 수 있었다.
+
+이 절은 **작성·검토·인계의 공통 정본**이다. 4칸의 의미·용어·인용·지문 규칙은 [4칸·용어 사전 계약](JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md), 저장·제출 경계는 [소형 JSON 쓰기 계약](JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md)이 소유한다. 4칸은 `given/goal/method/condition`이며 CREATE/R1/R2/R3 네 단계나 기존 QUESTION_LAYOUT/SOLUTION_LAYOUT/META/VISUAL_SVG 네 검수 축과 다르다.
+
+### 함께 완성할 산출물
+
+| 구분 | 문항별 작성·검토 내용 | 저장·인계 위치 |
+| --- | --- | --- |
+| 문항 JS | §2의 기본 필드, 최종 발문·보기·정답·해설·실제 에셋 참조, UID/sourceQid 등 해당 스키마의 식별 정보 | 기존 source JS 또는 Generated shard |
+| 확장 의미 메타 | §3의 교육과정·표준단원/세부단원·RPM L1~L4·CrossConcept/Condition/Integration·공식 Resolver PT/TPL·level/난이도 1~5·provenance, 각각의 근거와 미적용 사유 | 현재 지원 JS 필드 및 시험지/배치별 소형 메타·기존 stage-local 패킷 |
+| 4칸 메타 | 각 문항을 직접 읽은 `given/goal/method/condition`, 필수 `format`, 용어별 `src/quote`, method의 `evidenceType`와 IMPLIED의 `justification`, 필요한 `reasons/steps/scenarioNote` | 시험지/배치별 `.4slot.json`, 현행 사전의 실제 `dictionaryVersion` 명시 |
+| 기록 메타 | 작성자·검토자·단계·시각, 검토 범위·판정·근거, 수정 전후·이유, source/메타 판본, 출처 관계, 실제 실행 검사와 미해결 사항 | 4칸의 `judgedBy/review`와 기존 소형 메타·stage ledger/receipt. 아래 최소 항목을 연결 |
+
+JS 객체에 미지원 필드를 임의로 추가하지 않는다. **JS와 동반 메타 파일을 합쳐 완성하는 계약**이며 공용 `question_metadata.json`·등록기의 허용 필드·catalog를 직접 확장하라는 지시가 아니다. 4칸 파일의 운영 저장 경로와 자동 소비는 별도 통합 사항이다. 그전에도 현재 작업의 stage-local 위치에 작성하고 인계 목록에 정확한 위치·판본을 남긴다. 등록기용 JSON에 4칸·검토 원장을 끼워 넣지 않는다.
+
+### 기록 메타의 최소 내용
+
+아래는 기록할 **정보의 최소 목록**이다. 새 공용 DB 스키마가 아니며 기존 패킷·ledger 필드를 재사용하고, 해당 문항 UID에서 근거 파일까지 따라갈 수 있게 한다.
+
+- **대상·판본:** source 파일/Generated shard, exam 또는 배치 식별자, 문항 UID·번호, 작업 범위, 최종 source의 Git blob SHA 또는 실바이트 SHA-256(종류 구분), 동반 메타 파일의 위치·SHA 또는 revision, 적용 계약·사전 버전. 4칸의 QBODY/QFULL, 해당 그림의 QASSET 및 ALIVE 지문은 4칸 계약 §12의 계산·형식으로 기록한다. UID가 아직 발급되지 않은 초안은 파일+문항 번호로 임시 결속하고 후속 UID 결속 담당과 미완료 상태를 적으며 임의 UID를 만들지 않는다.
+- **작성:** 실제 실행자·도구/모델·작성 시각·역할/단계. `judgedBy`에는 실제 판정자를 쓴다. 작성자의 자기 점검을 독립 검수로 기록하지 않는다.
+- **검토:** 검토자·시각·대상 UID/필드·검토 당시 source/메타 판본·실제 읽은 근거·판정·수정 필요 사항. 의미 메타는 기존 `KEEP/CORRECT/HOLD/EVIDENCE_DEBT` 판정을 사용하고, 4칸은 자체 점검과 검토 결과를 구별한다. 미검토는 `review.status: UNREVIEWED`로 명시한다. 독립 검수가 요구되는 역할에서는 해당 독립 검수의 실제 증거를 연결한다.
+- **변경:** 바뀐 필드의 before/after·변경 이유·영향 UID·재확인 결과. 이전 검토/freeze 기록을 덮어쓰지 않고 최종 판본으로 갱신된 근거를 연결한다. 무수정 KEEP도 현재 판본에 적용 가능한 이유를 적는다.
+- **출처:** 기출은 실제 시험 출처와 원문 위치, 교과서·문제집은 확인된 교재명·판/교육과정·권/단원·쪽/문항 번호 및 원천 파일, 유사·ALIVE는 원본 UID/sourceQid·생성 family/variant와 생성 시점 출처 지문을 보존한다. 확인할 수 없는 서지정보나 관계는 추정하지 않고 필드별 EVIDENCE_DEBT로 남긴다. `DERIVED_FROM`은 생성 출처이며 검증된 `TWIN/SIMILAR/RELATED` 판정을 대신하지 않는다(4칸 계약 §11-3~4).
+- **검사·인계:** 실제 실행한 검사/결과·대상 분모·근거 위치, 미실행 `NOT_RUN`, 미확정 필드·사유·필요 자료·후속 담당·다음 조치. 의미 메타 검토, 4칸 점검, 등록/Consumer 검증, 배포 상태를 각각 기록한다. 하나의 PASS로 나머지까지 통과했다고 하지 않는다.
+
+### 단계별 책임과 완성 기준
+
+| 단계/경로 | 해야 할 일 |
+| --- | --- |
+| CREATE / 신규 교과서·문제집 작성 / 유사·ALIVE 생성 | 최종 발문·해설 기준으로 전 대상 UID의 확장 메타·4칸·기록 메타를 함께 작성하고 자체 점검한다. 원본의 분류·4칸을 복사해 유사/Generated의 판정을 대신하지 않는다. |
+| R1 또는 해당 독립 검수 | 기존 역할에서 blind 답안 동결을 요구하는 경로는 동결을 먼저 수행한다. 해설·method·기존 메타/4칸 기록은 동결 뒤 비교 단계에서 열고 해당 역할 분모의 의미·인용·조건·근거를 검토한다. blind 입력에 method/steps/해설 인용을 섞지 않는다. 다른 경로에 새 blind 단계를 추가하지 않는다. |
+| R2 또는 해당 해설 검수 | 현재 해설의 결정 단계와 method/steps, 조건·난이도·기존 의미 메타가 맞는지 확인하고, 수정한 UID의 메타와 기록을 함께 갱신한다. 새로운 전수 blind 동결을 추가하지 않는다. |
+| R3 / 최종 인계·출고 | 대상 UID 대비 JS·확장 메타·4칸·검토 기록의 누락/중복/참조·최종 판본 결속을 확인한다. 의미 재검은 changed/open/direct-dependency 범위이며 유효한 선행 검수는 재사용한다. |
+| 기존 문항의 한정 수정 / 사후 FINAL QA | 지정 UID·필드 및 변경으로 영향을 받는 메타/4칸/기록만 갱신한다. 사후 FINAL QA의 PT/TPL 신규 검수 제외와 역할 종료조건을 유지한다. |
+| 명시적 SOURCE_ONLY 인테이크 | 원문 전사·출처·식별·작성 기록과 근거로 확정 가능한 필드만 작성한다. 정답/해설 빈 문자열 계약을 유지하고 method·난이도 등 미확정 항목을 억지로 채우지 않는다. 미작성 UID/필드·사유·후속 담당을 인계하여 후속 제작/검수 단계에서 완성한다. |
+| 기존 UID를 조합한 시험지·평가 결과물 | UID에 연결된 유효 메타/4칸/검토 기록을 참조하고 구성 목록·source 판본을 남긴다. 문항을 바꾸지 않은 조합만으로 새 분류·새 UID·복제 메타를 만들지 않는다. 변형한 문항에는 신규/수정 규칙을 적용한다. |
+
+**완료 보고에는 대상 UID 총수와 JS·확장 메타·4칸·검토 기록 각각의 작성/검토/미완료 수, 최종 파일 위치·판본, 정확한 debt를 남긴다.** 빈 4칸 파일이나 전 항목 UNREVIEWED인 기록은 작성·검토 완료가 아니다. 미완료 기록 자체는 필요한 정직한 인계지만 완성 판정을 대신하지 않는다. 필수 goal/method·근거가 빠졌으면 담당자가 보완하며, SOURCE_ONLY처럼 명시적으로 분리한 단계는 해당 단계 완료와 전체 메타 미완료를 구별한다.
+
+이 작성 의무는 기존 승인/검색/출제 자격을 소급 무효화하지 않는다. **4칸 미작성·STALE을 운영 등록/출제 차단 조건으로 추가하지 않는다.** 신규 제출물의 문서상 완성 여부와 기존 운영 게이트를 구별한다. 기존 전 아카이브 일괄 백필·새 검사기 구현·런타임 통합은 이 문서 변경만으로 실행하지 않는다.
 
 ## 적용 범위 및 문서 라우팅 (2026-10-22)
 
