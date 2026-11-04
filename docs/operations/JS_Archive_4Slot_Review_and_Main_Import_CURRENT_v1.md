@@ -6,7 +6,7 @@
 
 - 목적: 아카이브 문항 약 25,000개(원본 861개 시험지 19,733문항 + 유사·ALIVE 생성문항) 속에서 쌍둥이·비슷한 문항을 찾는 검색을 만든다. 각 문항의 given·goal·method·condition 4칸을 용어 번호로 적어 두면, 용어 겹침으로 비슷한 문항 순위를 매길 수 있다.
 - 범위: 2026-11-03 사용자 결정으로 우선 원본 기출만 한다. 이유: 유사·생성문항은 원본의 4칸을 이어받는 방안이 더 싸고 일관되다(§7 열린 결정).
-- 사전: [term-dictionary-v1.4.json](../architecture/4slot/term-dictionary-v1.4.json), 690용어. 번호는 바뀌지 않고 새 용어만 늘어난다.
+- 사전: [term-dictionary-v1.5.json](../architecture/4slot/term-dictionary-v1.5.json), 749용어. 번호는 바뀌지 않고 새 용어만 늘어난다. 동의어는 같은 개념의 다른 표기뿐이다(계약 §10 7).
 - 시범 성능: 원본 찾기 Top-1 약 78~81%, Top-5 98%. 그래서 화면은 1개를 단정하지 않고 상위 5개를 교사에게 보여 고르게 한다. 이유: 1위가 틀려도 5위 안에 거의 항상 들어 있어, 교사 선택이 가장 싸게 정확도를 올린다.
 - 1회차 검토에서 나온 문제와 조치(사칙연산 남용, 한 칸 안 중복, 후보 미선언, 보고의 거짓 진술)는 인계 문서의 "1회차 결과"에 있다. 이 문서의 검수 절차는 그 결과로 만들었다.
 - 작성은 저비용 모델(Gemini 계열 등)이 `work/4slot-annotate-v1` 브랜치에서 한다. 이 브랜치는 main에 병합하지 않는다. 이유: 근거 인용·판정 사유는 증거라서 Git 운영 데이터에 두지 않는다([git-evidence](../agents/git-evidence.md)).
@@ -27,7 +27,12 @@
 
 1. 두 브랜치를 가져온다: `git fetch origin main work/4slot-annotate-v1`. 이유: 작성 라인은 계속 push하므로 검수 시작 시점의 커밋을 기록해 두어야 한다.
 2. 아직 main에 없는 출력 파일을 찾는다. 작업 브랜치의 `archive-work/4slot-annotate-v1/out/**.4slot.json` 중 `archive/data/item-4slot/`에 같은 경로가 없는 것이다. `node tools/4slot/import-4slot.cjs --from-ref origin/work/4slot-annotate-v1 --dry-run`이 같은 목록을 보여 준다(파일은 쓰지 않는다).
-3. 검사기를 돌린다. 작업 브랜치의 파일을 임시 폴더에 꺼내 `node tools/4slot/validate-4slot.cjs <파일>`을 시험지마다 실행한다. FAIL은 0이어야 한다(import 도구도 같은 검사를 하고 FAIL이면 건너뛴다). 이유: 인용 불일치·사전 밖 용어·한 칸 안 중복은 기계가 100% 잡는다.
+3. 검사기를 돌린다. **저장소 루트에서** 시험지마다 아래 두 줄을 실행한다. 검사기는 현재 폴더 기준으로 사전과 시험지(`archive/exams/...`)를 찾기 때문이다.
+   ```
+   git show "origin/work/4slot-annotate-v1:archive-work/4slot-annotate-v1/out/<시험지 경로 .js를 .4slot.json으로>" > "$TMPDIR/<이름>.4slot.json"
+   node tools/4slot/validate-4slot.cjs "$TMPDIR/<이름>.4slot.json"
+   ```
+   예: `out/original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.4slot.json`. 출력 첫 줄에 `"fail":0`이어야 한다. FAIL은 0이어야 한다(import 도구도 같은 검사를 하고 FAIL이면 건너뛴다). 이유: 인용 불일치·사전 밖 용어·한 칸 안 중복은 기계가 100% 잡는다.
 4. 내용을 표본으로 확인한다. 시험지마다 문항 3개를 고른다. 그 시험지의 WARN 문항을 먼저 고르고, 모자라면 나머지에서 고른다. `node tools/4slot/exam-items.cjs archive/exams/<경로>.js <번호> <번호>`로 발문과 해설을 읽고 증거 파일의 4칸과 대조한다. 확인할 것은 아래 여덟 가지다. 앞 여섯은 계약 §7-1, 뒤 둘은 1회차에서 실제로 나온 문제다.
    - goal에 대입·계산·치환 같은 방법어가 없다.
    - method가 해설의 결정적 단계를 덮는다.
@@ -43,20 +48,20 @@
 
 ## 4. 반려
 
-- 반려한 시험지는 작업 브랜치의 `archive-work/4slot-annotate-v1/REVIEW-rejected.json`에 `{path, reason, at}` 한 줄을 덧붙인다. `path`는 큐의 시험지 경로(`original/.../xxx.js`), `reason`은 어느 문항이 왜 틀렸는지 문항 번호와 함께, `at`은 날짜다. 파일은 JSON 배열이다. 작업 브랜치는 `git pull`로 최신을 받은 뒤 `git add -f`로 올리고 push한다(강제 push 금지).
+- 반려한 시험지는 작업 브랜치의 `archive-work/4slot-annotate-v1/REVIEW-rejected.json`에 `{path, reason, at}` 한 줄을 덧붙인다. `path`는 큐의 시험지 경로(`original/.../xxx.js`), `reason`은 어느 문항이 왜 틀렸는지 문항 번호와 함께, `at`은 날짜다. 파일은 JSON 배열이다. 파일이 아직 없으면 `[{path, reason, at}]` 한 줄짜리 배열로 새로 만든다(대괄호를 빼먹지 않는다). 작업 브랜치는 `git pull`로 최신을 받은 뒤 `git add -f`로 올리고 push한다(강제 push 금지).
 - 출력 파일은 지우지 않는다. 이유: 반려 사유와 비교할 원본 증거가 남아야 한다.
 - 작성 라인은 `RUN_PROMPT.md` §1에 따라 반려 목록의 시험지를 "아직 안 한 것"으로 보고 다시 작성해 같은 경로에 덮어쓴다. import 도구는 반려 목록에 있는 시험지를 건너뛴다. 다시 쓴 파일을 검수해 통과시키면 검수자가 그 줄을 목록에서 지우고 push한다(이때만 줄을 지운다). 이유: 줄이 남아 있는 동안은 "아직 안 끝난 시험지"로 취급되어, 고쳐지지 않은 파일이 실수로 main에 들어가지 않는다. 작성 라인은 이 목록을 읽기만 하고 고치지 않는다.
 
 ## 5. main 반영
 
 1. 새 브랜치: `git checkout -b data/4slot-import-<날짜>-<첫 order>-<끝 order> origin/main`.
-2. 가져오기: `node tools/4slot/import-4slot.cjs --from-ref origin/work/4slot-annotate-v1 --reviewer <검수자 이름> [--only <시험지 경로>...] [--sampled <시험지 경로>=<번호,번호>]`. 이 도구는 아래를 한다.
+2. 가져오기: `node tools/4slot/import-4slot.cjs --from-ref origin/work/4slot-annotate-v1 --reviewer <검수자 이름> --only <검수를 통과한 시험지 경로>... [--sampled <시험지 경로>=<번호,번호>]`. **`--only`에는 §3 검수를 통과한 시험지만 적는다.** `--only` 없이는 실제 가져오기가 오류로 멈춘다(검수하지 않은 출력이 통째로 들어가는 것을 막기 위해서다. 아직 안 가져온 목록은 `--dry-run`으로만 본다). 이미 가져온 파일을 `--only`로 다시 가져오면 덮어쓰되, `--sampled`·`--at`를 주지 않으면 이전 검수 기록(표본 번호, 날짜)을 그대로 둔다. 이 도구는 아래를 한다.
    - 검사기를 돌려 FAIL이면 건너뛴다(`VALIDATION_FAIL`).
    - 큐의 blob 번호와 지금 main(HEAD)의 시험지 blob을 비교해 다르면 건너뛴다(`SOURCE_CHANGED`). 이유: 시험지가 바뀌었으면 문항과 4칸이 어긋날 수 있다.
    - 반려 목록의 시험지는 건너뛴다(`REJECTED`).
-   - compact 파일을 쓰고 요약 JSON(가져온 것, 건너뛴 것과 이유)을 출력한다. 이미 있는 파일은 건너뛰고, `--only`로 지정하면 덮어쓴다. 같은 입력은 같은 결과를 낸다.
+   - compact 파일을 쓰고 요약 JSON(가져온 것, 건너뛴 것과 이유)을 출력한다. 같은 입력은 같은 결과를 낸다.
    - 파일 안의 `sourceGitBlobSha`는 작업자가 손으로 옮겨 적은 값이라 틀린 것이 있다(처음 10개 시험지 중 4개가 존재하지 않는 객체 번호였다). 그래서 기준은 큐의 blob이고, 파일 값이 틀리면 요약에 `fileBlobFieldWrong`으로 알린다. compact 파일에는 실제 blob을 적는다.
-   - 용어는 사전 v1.4로 번호를 찾는다. 사전에 없는 말(후보)은 칸 배열이 아니라 `candidates` 문자열로 보낸다. 이유: 번호가 없는 말은 검색 인덱스에 넣을 수 없고, 사전 갱신 때 후보 목록으로 모아야 한다.
+   - 용어는 현행 사전(v1.5)으로 번호를 찾는다. 사전에 없는 말(후보)은 칸 배열이 아니라 `candidates` 문자열로 보낸다. 이유: 번호가 없는 말은 검색 인덱스에 넣을 수 없고, 사전 갱신 때 후보 목록으로 모아야 한다.
 3. 시험: `node tests/item-4slot-data.test.cjs`. 결함(깨진 JSON, 사전에 없거나 RETIRED인 번호, 한 칸 안 중복, 빈 goal·method, 문항 번호 불일치)이 있으면 실패한다. 시험지가 나중에 바뀌어 blob이 달라진 것은 실패가 아니라 `STALE` 안내만 나온다. 이유: 다른 세션의 정상 수정이 해시 고정값을 깨 main CI·배포가 막힌 전례가 있다.
 4. 커밋·PR: compact 파일만 커밋한다. 시험지 JS, `question_metadata.json`, 등록기, catalog는 건드리지 않는다. PR을 만들고 **PR의 CI가 전부 녹색일 때만** 병합한다([공유 데이터 고정값](../agents/common.md)). 이유: 병합 뒤 main CI가 깨지면 다른 세션의 배포가 막힌다.
 5. 이 병합은 Pages 사이트 패키지에 영향이 없다(§1). 배포 결과는 따로 기록한다.
@@ -75,5 +80,5 @@
 2. Archive 2.0 검색 연결. 교사가 쓴 말을 사전의 ko·동의어로 용어 번호로 바꾸고, compact 파일에서 만든 역색인(용어 번호 → 문항)을 만든다. 순위는 `flat-leaf-jaccard-v1`(문항 벡터 = 네 칸 용어 번호의 합집합, 점수 = 겹침/합집합)로 매기고 상위 5개를 보여 준다. 화면·검색 코드를 바꾸므로 AGENTS.md 지침대로 `node tools/check-archive2-runtime.cjs`를 통과시키고 실제 Chrome(PC·휴대폰)에서 확인한다. 이때 사이트 패키지에 넣을 인덱스 파일을 `archiveDataFiles`나 `trees`에 명시한다.
 3. 새 시험지는 등록할 때 4칸도 함께 만든다. 시험지 제작 파이프라인(`docs/agents/exam-pipeline.md`)에 단계로 붙이는 일은 따로 한다.
 4. 시험지가 바뀌었을 때 재검: `tests/item-4slot-data.test.cjs`가 `STALE`로 알려 주는 시험지는 문항 텍스트가 달라진 것이므로 다시 작성한다. 문항 번호가 달라졌으면 실패로 바뀌지 않으므로 STALE 목록을 정기적으로 확인한다. 이유: 시험을 막지 않는 대신 사람이 목록을 봐야 한다.
-5. 사전 관리: 작성 중 모인 후보 용어를 묶음 단위로 정리해 v1.5… 로 올린다(계약 §10, §17(d)). 이미 쓴 번호는 바꾸거나 지우지 않는다. 사전 버전이 올라가도 compact 파일의 번호는 그대로 유효하다.
+5. 사전 관리: 작성 중 모인 후보 용어를 묶음 단위로 정리해 v1.5… 로 올린다(계약 §10, §17(d)). 새 동의어는 같은 개념의 다른 표기일 때만 붙이고, 별개 개념이면 독립 용어로 만든다(계약 §10 7). 이미 쓴 번호는 바꾸거나 지우지 않는다. 사전 버전이 올라가도 compact 파일의 번호는 그대로 유효하다.
 6. **사용자 결정이 아직 필요한 것:** 유사시험지·ALIVE 생성문항의 4칸을 별도로 작성할지, 원본의 4칸을 이어받게 할지. 이어받으면 비용이 거의 없지만 변형으로 달라진 조건·값이 반영되지 않는다.
