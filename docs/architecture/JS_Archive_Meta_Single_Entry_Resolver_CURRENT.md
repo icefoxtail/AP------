@@ -4,6 +4,8 @@
 
 ## 0. 한 줄 권위
 
+신규 기출·유사·ALIVE/Generated·교과서·문제집·교재/평가 문항의 전체 제출 요건은 [확장 메타·4칸·기록 메타 공통 계약](JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 따른다. 이 문서의 Resolver 결과는 그중 기존 PT/TPL 투영을 담당하며 4칸 판정·검토 기록을 자동 생성하거나 대체하지 않는다. 4칸은 최종 문항·해설에서 독립 판정하고 동반 파일로 인계한다. 이유: Resolver PASS만으로 확장 메타 전체를 작성·검토했다고 오인하지 않기 위해서다.
+
 실제 원문 + 해당 학년 2022/2015 교육과정 내 학생 재현 가능 최종 풀이 → 표준단원/세부단원 → RPM Primary L1→L4 → CrossConcept/Condition/Integration → 공식 Resolver가 ACTIVE PT/TPL과 정확한 과정 바인딩을 결정한다. **AI가 PT/TPL을 별도 의미 분류로 재발명하거나 CrossConcept으로 Primary를 갈아끼우지 않는다.**
 
 권위 우선순위: 사용자 현재 지시 > 적용 역할/캠페인 정본 > `docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`(의미/증거) 및 RPM LOCKED/마스터 > 본 연결 계약(진입/프로젝션) > Git 과거 사례·crosswalk의 예전 GAP. 본 문서는 새 메타 레지스트리를 생성하지 않는다.

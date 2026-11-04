@@ -4,6 +4,8 @@
 
 ## 1. 지금까지 한 일
 
+**적용 구분(2026-11-04):** 이 문서의 회차·모델 비교·전용 작업 브랜치·`git add -f` 예외는 기존 자료의 시범/확대 배정에만 적용한다. 신규 기출·유사·ALIVE·교과서·문제집 등은 각 제작 라인에서 [공통 작성·검토·인계 요건](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)에 따라 4칸과 작성·검토 기록을 함께 작성한다. 시범 비교 완료나 이 문서의 전용 브랜치를 신규 작성의 선행조건으로 삼지 않는다. 일반 제작분은 기존 stage-local/Drive 인계와 Git 증거 보존 규칙을 따른다. 이유: 비교 시범의 운영 예외와 모든 신규 결과물의 작성 의무를 구분하기 위해서다.
+
 - 계약·사전 확정: 계약 CURRENT v1, 사전 [term-dictionary-v1.1.json](../architecture/4slot/term-dictionary-v1.1.json)(394용어), 평가 고정본 [term-dictionary-v1-frozen.json](../architecture/4slot/term-dictionary-v1-frozen.json)(393용어). PR #1265. 2026-11-03 사전 v1.2([term-dictionary-v1.2.json](../architecture/4slot/term-dictionary-v1.2.json), 401용어)와 계약 §3-1·§7-1 보강.
 - 시범 두 번(계약 §15): 24년 고1 2학기 기말 113쌍(Claude 메인), 25년 고1 2학기 기말 268문항(Sonnet 작업자 4명, 독립·블라인드). 25년 원본 찾기 Top-1 81.3%, Top-3 96.3%, Top-5 쓸 만함 30/30.
 - 운영 메타·등록기·catalog·검색 화면은 아직 4칸과 연결하지 않았다. 시범 원자료(작업자 기록, 판정 결과)는 Git에 없다(Claude 세션 작업 폴더). 이유: 증거는 Git에 두지 않는다([git-evidence](../agents/git-evidence.md)).

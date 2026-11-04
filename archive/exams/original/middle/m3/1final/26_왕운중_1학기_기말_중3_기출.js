@@ -28,7 +28,7 @@ window.questionBank = [
       "ㄴ, ㄹ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 한쪽으로 정리했을 때 이차식이 남는 등식인지 확인한다.\n\nㄱ. $x^2+6x-9=0$이 되어 이차방정식이다.\n\nㄴ. 삼차방정식이다.\n\nㄷ. 등식이 아니다.\n\nㄹ. $(2x+1)^2=0$이므로 이차방정식이다.\n\n따라서 ㄱ, ㄹ이고 정답은 ③이다.",
+    "solution": "한쪽으로 정리했을 때 이차식이 남는 등식인지 확인한다.\n\nㄱ. $x^2+6x-9=0$이 되어 이차방정식이다.\n\nㄴ. 삼차방정식이다.\n\nㄷ. 등식이 아니다.\n\nㄹ. $(2x+1)^2=0$이므로 이차방정식이다.\n\n따라서 ㄱ, ㄹ이고 정답은 ③이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -60,7 +60,7 @@ window.questionBank = [
       "$x=2$ 또는 $x=3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 좌변을 인수분해한다.\n$x^2-5x+6=(x-2)(x-3)$이므로 $x=2$ 또는 $x=3$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "좌변을 인수분해한다.\n$x^2-5x+6=(x-2)(x-3)$이므로 $x=2$ 또는 $x=3$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -92,7 +92,7 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 주어진 근을 대입해 $k$를 먼저 정한다.\n$x=-3$을 대입하면 $18-15+k=0$이므로 $k=-3$이다. 따라서 $2x^2+5x-3=(2x-1)(x+3)=0$이고 다른 한 근은 $\\dfrac12$이다.\n정답은 ①이다.",
+    "solution": "주어진 근을 대입해 $k$를 먼저 정한다.\n$x=-3$을 대입하면 $18-15+k=0$이므로 $k=-3$이다. 따라서 $2x^2+5x-3=(2x-1)(x+3)=0$이고 다른 한 근은 $\\dfrac12$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -125,7 +125,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 중근 조건을 완전제곱식으로 나타낸다.\n$x^2+2mx+16=(x+m)^2$가 되어야 하므로 $m^2=16$이다. $m>0$이므로 $m=4$이다.\n정답은 ④이다.",
+    "solution": "중근 조건을 완전제곱식으로 나타낸다.\n$x^2+2mx+16=(x+m)^2$가 되어야 하므로 $m^2=16$이다. $m>0$이므로 $m=4$이다.\n정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -157,7 +157,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 근의 공식의 제곱근 안을 비교한다.\n해는 $x=\\dfrac{-3\\pm\\sqrt{9-8k}}4$이므로 $9-8k=17$이다. 따라서 $k=-1$이고 정답은 ②이다.",
+    "solution": "근의 공식의 제곱근 안을 비교한다.\n해는 $x=\\dfrac{-3\\pm\\sqrt{9-8k}}4$이므로 $9-8k=17$이다. 따라서 $k=-1$이고 정답은 ②이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -190,7 +190,7 @@ window.questionBank = [
       "흥민, 강인"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각 풀이에서 계산 오류와 빠진 해를 확인한다.\n흥민은 $x=1,5$를 모두 얻어 옳다. 민재는 $x^2-4x-1=0$의 판별 부분을 $16+4=20$으로 계산해야 한다. 강인은 $x+1$로 나누면서 $x=-1$인 해를 잃었다.\n따라서 올바른 학생은 흥민뿐이고 정답은 ①이다.",
+    "solution": "각 풀이에서 계산 오류와 빠진 해를 확인한다.\n흥민은 $x=1,5$를 모두 얻어 옳다. 민재는 $x^2-4x-1=0$의 판별 부분을 $16+4=20$으로 계산해야 한다. 강인은 $x+1$로 나누면서 $x=-1$인 해를 잃었다.\n따라서 올바른 학생은 흥민뿐이고 정답은 ①이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -222,7 +222,7 @@ window.questionBank = [
       "$\\dfrac{5}{4}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 근을 $-1$을 중심으로 나타낸다.\n$x=-1\\pm\\sqrt{\\dfrac a3}$이고 두 근의 차가 $1$이므로 $2\\sqrt{\\dfrac a3}=1$이다. 따라서 $a=\\dfrac34$이고 정답은 ③이다.",
+    "solution": "두 근을 $-1$을 중심으로 나타낸다.\n$x=-1\\pm\\sqrt{\\dfrac a3}$이고 두 근의 차가 $1$이므로 $2\\sqrt{\\dfrac a3}=1$이다. 따라서 $a=\\dfrac34$이고 정답은 ③이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -255,7 +255,7 @@ window.questionBank = [
       "$-2&lt;k\\le10$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 이차방정식의 두 해를 부등식에 각각 대입한다.\n이차방정식의 해는 $-1,3$이다. $x=-1$이 부등식을 만족하려면 $k>-2$, $x=3$이 만족하지 않으려면 $k\\le10$이다.\n따라서 $-2<k\\le10$이고 정답은 ⑤이다.",
+    "solution": "이차방정식의 두 해를 부등식에 각각 대입한다.\n이차방정식의 해는 $-1,3$이다. $x=-1$이 부등식을 만족하려면 $k>-2$, $x=3$이 만족하지 않으려면 $k\\le10$이다.\n따라서 $-2<k\\le10$이고 정답은 ⑤이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -287,7 +287,7 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 근 사이의 정수를 직접 센다.\n정리하면 $3x^2+4x-8=0$이고 두 근은 $\\dfrac{-2\\pm2\\sqrt7}{3}$, 약 $-2.43$과 $1.10$이다. 사이의 정수는 $-2,-1,0,1$의 $4$개이다.\n정답은 ④이다.",
+    "solution": "두 근 사이의 정수를 직접 센다.\n정리하면 $3x^2+4x-8=0$이고 두 근은 $\\dfrac{-2\\pm2\\sqrt7}{3}$, 약 $-2.43$과 $1.10$이다. 사이의 정수는 $-2,-1,0,1$의 $4$개이다.\n정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -320,7 +320,7 @@ window.questionBank = [
       "$261$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 자연수 해의 중심이 $6$임을 이용한다.\n$x=6\\pm\\sqrt{\\dfrac{k+2}{3}}$이다. $t=\\sqrt{\\dfrac{k+2}{3}}$라 하면 두 해가 자연수가 되도록 하는 양의 정수 $t$는 $1,2,3,4,5$이다. $k=3t^2-2$이므로 $k$의 합은 $1+10+25+46+73=155$이다.\n정답은 ④이다.",
+    "solution": "두 자연수 해의 중심이 $6$임을 이용한다.\n$x=6\\pm\\sqrt{\\dfrac{k+2}{3}}$이다. $t=\\sqrt{\\dfrac{k+2}{3}}$라 하면 두 해가 자연수가 되도록 하는 양의 정수 $t$는 $1,2,3,4,5$이다. $k=3t^2-2$이므로 $k$의 합은 $1+10+25+46+73=155$이다.\n정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -352,7 +352,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 함숫값을 각각 계산한다.\n$f(-1)=9$, $f(2)=6$이므로 $f(-1)-f(2)=3$이다.\n정답은 ③이다.",
+    "solution": "두 함숫값을 각각 계산한다.\n$f(-1)=9$, $f(2)=6$이므로 $f(-1)-f(2)=3$이다.\n정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -384,7 +384,7 @@ window.questionBank = [
       "$x$축을 축으로 한다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $y=2x^2$의 기본 성질을 확인한다.\n꼭짓점은 $(0,0)$이고 대칭축은 $y$축이며 $(-2,8)$을 지난다. $x$축에 대칭이동하면 $y=-2x^2$가 된다.\n따라서 옳지 않은 것은 '$x$축을 축으로 한다'이고 정답은 ⑤이다.",
+    "solution": "$y=2x^2$의 기본 성질을 확인한다.\n꼭짓점은 $(0,0)$이고 대칭축은 $y$축이며 $(-2,8)$을 지난다. $x$축에 대칭이동하면 $y=-2x^2$가 된다.\n따라서 옳지 않은 것은 '$x$축을 축으로 한다'이고 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -417,7 +417,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 점 조건과 대칭 조건을 사용한다.\n$(-2,a)$가 $y=-3x^2$ 위에 있으므로 $a=-12$이다. $x$축 대칭인 그래프는 $y=3x^2$이므로 $b=3$이다. 따라서 $a-b=-15$이고 정답은 ①이다.",
+    "solution": "점 조건과 대칭 조건을 사용한다.\n$(-2,a)$가 $y=-3x^2$ 위에 있으므로 $a=-12$이다. $x$축 대칭인 그래프는 $y=3x^2$이므로 $b=3$이다. 따라서 $a-b=-15$이고 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -450,7 +450,7 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 꼭짓점이 $(3,0)$이므로 $y=a(x-3)^2$로 둔다.\n$(0,-4.5)$를 지나므로 $-4.5=9a$, 따라서 $a=-\\dfrac12$이다.\n정답은 ②이다.",
+    "solution": "꼭짓점이 $(3,0)$이므로 $y=a(x-3)^2$로 둔다.\n$(0,-4.5)$를 지나므로 $-4.5=9a$, 따라서 $a=-\\dfrac12$이다.\n정답은 ②이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q14.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -484,7 +484,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 $x$절편과 $y$절편으로 식을 정한다.\n$f(x)=a(x+2)(x-2)$이고 $f(0)=-8$이므로 $a=2$이다. 따라서 $f(3)=2(5)(1)=10$이고 정답은 ④이다.",
+    "solution": "두 $x$절편과 $y$절편으로 식을 정한다.\n$f(x)=a(x+2)(x-2)$이고 $f(0)=-8$이므로 $a=2$이다. 따라서 $f(3)=2(5)(1)=10$이고 정답은 ④이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q15.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -518,7 +518,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $y=\\dfrac23$과 만나는 네 점의 $x$좌표를 비교한다.\n첫 포물선의 교점은 $x=-1\\pm\\dfrac{\\sqrt{30}}3$, 둘째 포물선의 교점은 $x=2\\pm\\dfrac{\\sqrt{30}}3$이다. 같은 쪽 교점끼리의 거리가 각각 $3$이므로 $AC+BD=6$이다.\n정답은 ②이다.",
+    "solution": "$y=\\dfrac23$과 만나는 네 점의 $x$좌표를 비교한다.\n첫 포물선의 교점은 $x=-1\\pm\\dfrac{\\sqrt{30}}3$, 둘째 포물선의 교점은 $x=2\\pm\\dfrac{\\sqrt{30}}3$이다. 같은 쪽 교점끼리의 거리가 각각 $3$이므로 $AC+BD=6$이다.\n정답은 ②이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q16.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -552,7 +552,7 @@ window.questionBank = [
       "$70\\text{ m}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제동 거리를 $y=ax^2$로 두어 비례상수를 구한다.\n$2=16^2a$에서 $a=\\dfrac1{128}$이다. 따라서 $x=80$일 때 $y=\\dfrac{80^2}{128}=50$이다.\n정답은 ①이다.",
+    "solution": "제동 거리를 $y=ax^2$로 두어 비례상수를 구한다.\n$2=16^2a$에서 $a=\\dfrac1{128}$이다. 따라서 $x=80$일 때 $y=\\dfrac{80^2}{128}=50$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -585,7 +585,7 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 $x$좌표에서 두 그래프의 높이를 비교한다.\n$AH=t^2$, $BH=at^2$라 하면 $AB=2BH$에서 $a=\\dfrac13$이다. 또 $DE=\\dfrac13u^2=\\dfrac13$이므로 $u^2=1$, 따라서 $CE=1$이다.\n정답은 ④이다.",
+    "solution": "같은 $x$좌표에서 두 그래프의 높이를 비교한다.\n$AH=t^2$, $BH=at^2$라 하면 $AB=2BH$에서 $a=\\dfrac13$이다. 또 $DE=\\dfrac13u^2=\\dfrac13$이므로 $u^2=1$, 따라서 $CE=1$이다.\n정답은 ④이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q18.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -619,7 +619,7 @@ window.questionBank = [
       "$-\\dfrac{3}{4}&lt;a&lt;0$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 꼭짓점형과 사분면 조건을 함께 사용한다.\n$y=a(x+2)^2+3$이다. 모든 사분면을 지나려면 $a<0$이고, 제1사분면도 지나려면 $y(0)=4a+3>0$이어야 한다. 따라서 $-\\dfrac34<a<0$이고 정답은 ⑤이다.",
+    "solution": "꼭짓점형과 사분면 조건을 함께 사용한다.\n$y=a(x+2)^2+3$이다. 모든 사분면을 지나려면 $a<0$이고, 제1사분면도 지나려면 $y(0)=4a+3>0$이어야 한다. 따라서 $-\\dfrac34<a<0$이고 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -652,7 +652,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 꼭짓점으로 색칠한 직사각형의 넓이를 비교한다.\n$P=(2,5)$, $Q=(6,5)$이므로 그림 (1)의 넓이는 $5\\times4=20$이다. 둘째 그래프를 오른쪽으로 $p$만큼 옮기면 $R=(6+p,5)$이고 그림 (2)의 넓이는 $5(p+4)$이다. $5(p+4)=80$에서 $p=12$이다.\n정답은 ③이다.",
+    "solution": "두 꼭짓점으로 색칠한 직사각형의 넓이를 비교한다.\n$P=(2,5)$, $Q=(6,5)$이므로 그림 (1)의 넓이는 $5\\times4=20$이다. 둘째 그래프를 오른쪽으로 $p$만큼 옮기면 $R=(6+p,5)$이고 그림 (2)의 넓이는 $5(p+4)$이다. $5(p+4)=80$에서 $p=12$이다.\n정답은 ③이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q20.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -680,7 +680,7 @@ window.questionBank = [
     "content": "[서술형1]<br>연속하는 두 자연수의 곱이 $72$이다. 이차방정식을 이용하여 두 자연수를 구하시오. [6점]<br>(이차방정식을 이용하는 과정 4점, 두 자연수 구하는 과정 2점)",
     "choices": [],
     "answer": "8, 9",
-    "solution": "[키포인트] 연속하는 두 자연수를 $x$, $x+1$로 둔다.\n$x(x+1)=72$에서 $x^2+x-72=(x-8)(x+9)=0$이다. 자연수 해는 $x=8$이므로 두 자연수는 $8,9$이다.",
+    "solution": "연속하는 두 자연수를 $x$, $x+1$로 둔다.\n$x(x+1)=72$에서 $x^2+x-72=(x-8)(x+9)=0$이다. 자연수 해는 $x=8$이므로 두 자연수는 $8,9$이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -707,7 +707,7 @@ window.questionBank = [
     "content": "[서술형2]<br>이차함수 $y=-x^2-2x+19$ 그래프의 꼭짓점을 $A$, 그래프와 $y$축의 교점을 $B$, 원점을 $O$라고 할 때, $\\triangle ABO$의 넓이를 구하시오. [7점]<br>(꼭짓점 $A$를 구하는 과정 3점, 점 $B$를 구하는 과정 2점, $\\triangle ABO$의 넓이를 구하는 과정 2점)",
     "choices": [],
     "answer": "$\\dfrac{19}{2}$",
-    "solution": "[키포인트] 꼭짓점과 $y$절편을 구해 삼각형의 밑변과 높이를 잡는다.\n$y=-(x+1)^2+20$이므로 $A=(-1,20)$이다. $B=(0,19)$, $O=(0,0)$이므로 $OB=19$이고 $A$에서 $y$축까지 거리는 $1$이다. 넓이는 $\\dfrac12\\cdot19\\cdot1=\\dfrac{19}{2}$이다.",
+    "solution": "꼭짓점과 $y$절편을 구해 삼각형의 밑변과 높이를 잡는다.\n$y=-(x+1)^2+20$이므로 $A=(-1,20)$이다. $B=(0,19)$, $O=(0,0)$이므로 $OB=19$이고 $A$에서 $y$축까지 거리는 $1$이다. 넓이는 $\\dfrac12\\cdot19\\cdot1=\\dfrac{19}{2}$이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -734,7 +734,7 @@ window.questionBank = [
     "content": "[서술형3]<br>다음은 데카르트가 $x^2+bx=c$ (단, $b&gt;0$, $c&gt;0$) 꼴의 이차방정식의 양수인 해를 도형을 이용하여 찾는 방법을 설명하는 과정이다. 설명 과정을 완성하기 위해 (가)에 알맞은 내용을 쓰고, (나)를 구하시오. [7점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>과정</div>(1) $\\overline{AB}=\\sqrt c$인 선분 $AB$를 그린다.<br>(2) 점 $A$를 지나고 $\\overline{AB}$와 수직인 직선 위에 $\\overline{AC}=\\dfrac{b}{2}$인 점 $C$를 찾는다.<br>(3) 점 $C$를 중심으로 하고 반지름이 $\\overline{AC}$인 원을 그린다.<br>(4) 선분 $BC$와 원의 교점을 $E$라 할 때, $\\overline{BE}$가 주어진 이차방정식의 양수인 해이다.<br>(5) 위의 그림에서 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각삼각형이므로 피타고라스 정리에 의하여 다음이 성립한다.<br><div style='border:1px solid #999;padding:4px;margin:4px 0;text-align:center;'>(가)</div>$x=$ <span style='display:inline-block;border:1px solid #999;padding:2px 20px;'>(나)</span><br>(6) 한편, 원래 주어진 이차방정식을 $x^2+bx-c=0$으로 고쳐서 근의 공식에 대입하면 다음과 같다.<br>$x=\\dfrac{-b\\pm\\sqrt{b^2+4c}}{2}$<br>그러므로 데카르트의 방법은 주어진 이차방정식의 양수인 해를 도형을 이용하여 구한 것이다.</div>",
     "choices": [],
     "answer": "(가) $c+\\left(\\dfrac{b}{2}\\right)^2=\\left(x+\\dfrac{b}{2}\\right)^2$, \n(나) $\\dfrac{-b+\\sqrt{b^2+4c}}{2}$",
-    "solution": "[키포인트] 직각삼각형 $ABC$에 피타고라스 정리를 적용한다.\n$AB=\\sqrt c$, $AC=CE=\\dfrac b2$, $BE=x$이므로 $BC=x+\\dfrac b2$이다. 따라서 $c+\\left(\\dfrac b2\\right)^2=\\left(x+\\dfrac b2\\right)^2$가 (가)이다. 양수인 해를 택하면 $x=\\dfrac{-b+\\sqrt{b^2+4c}}2$이므로 이것이 (나)이다.",
+    "solution": "직각삼각형 $ABC$에 피타고라스 정리를 적용한다.\n$AB=\\sqrt c$, $AC=CE=\\dfrac b2$, $BE=x$이므로 $BC=x+\\dfrac b2$이다. 따라서 $c+\\left(\\dfrac b2\\right)^2=\\left(x+\\dfrac b2\\right)^2$가 (가)이다. 양수인 해를 택하면 $x=\\dfrac{-b+\\sqrt{b^2+4c}}2$이므로 이것이 (나)이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q23.png",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",

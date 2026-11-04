@@ -87,12 +87,19 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
   const data = await catalog();
   const auth = { canonicalAuthority: data.canonicalAuthority };
-  // Production data grows (new exams/approvals) and a changed stem legitimately leaves the strict count, so the
-  // exact totals are not pinned. The lane must never ADD to the strict metric: every strictly approved or
-  // advanced-eligible record must stay canonically approved, and the counts must not fall below the 2026-10-30 floor.
+  // Source maintenance can change the approved set. Check the live count and
+  // each approval's identity/evidence instead of freezing a production count.
   const strict = data.records.filter(row => core.basicEligibility(row, auth).ok);
   const advanced = data.records.filter(row => core.advancedEligible(row, auth));
-  assert.ok(strict.length >= 1495, String(strict.length));
+  assert.equal(data.health.automatic, strict.length, 'reported approval count must match the actual eligible set');
+  for (const row of strict) {
+    assert.equal(row.identityStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.sourceIntegrityStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.sourceStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.assignmentEvidence?.questionUid, row.questionUid, 'approval must bind the same UID');
+    assert.equal(row.assignmentEvidence?.approvalStatus, 'APPROVED', row.questionUid);
+    assert.equal(row.assignmentEvidence?.assignmentFingerprint, row.assignmentFingerprint, 'approval must bind the current problem');
+  }
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
   assert.ok(data.records.filter(row => row.curriculumKey).length >= 3206, 'canonical curriculumKey is untouched');

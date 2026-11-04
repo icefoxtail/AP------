@@ -3,6 +3,10 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## 신규 결과물 메타 인계 확인
+
+신규 결과물을 수납할 때 [확장 메타·4칸·기록 메타 공통 요건](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)에 따라 대상 UID 분모, JS·소형 메타·4칸·작성/검토 기록의 위치와 최종 판본 결속, 누락·미검토·후속 담당을 확인한다. 이유: JS만 받고 메타 파일이나 검토 기록을 놓치지 않기 위해서다. 인계 완성 여부와 등록/배포 상태를 별도로 남기고, 기존 승인 문항을 4칸 누락만으로 운영 차단하거나 전수 재검하지 않는다. 의미 재검은 변경·열린 결함·직접 의존 범위이며 기존 유효 증거를 재사용한다.
+
 ## CURRENT TOP — 사용자 지정 시험지 출고: 상태값만으로 전건 보류 금지 (2026-10-19)
 
 - 사용자가 범위·examUid를 지정해 `main` 운영병합을 명시하면, **지정 감독·출고 실행자 Codex/Work/ROOT가 실제 R3/MASTER 패킷 검토·표적 결함 수리·PR/main 병합·요청된 Drive DONE 마감까지 직접 수행**한다. `SUPERVISORY_REVIEW_REQUIRED`, `PENDING_SUPERVISOR_DECISION`, `R3_REVIEWED`, `readyForUnattendedMerge=false`, `qualityPass=false`, `NOT_RUN`이라는 상태명 **단독**으로 승인자 부재를 이유 삼아 0건 PR·전건 중단 보고하는 것은 금지한다. `readyForUnattendedMerge=false`는 사용자 승인 없는 무인 자동 병합 금지이지 사용자 직접 지정한 감독 실행 금지가 아니다.

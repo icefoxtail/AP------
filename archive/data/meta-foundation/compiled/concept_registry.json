@@ -4,13 +4,13 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.18",
-      "conceptCount": 288
+      "version": "1.4.20",
+      "conceptCount": 302
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.9",
-      "conceptCount": 105
+      "version": "1.5.11",
+      "conceptCount": 119
     },
     {
       "shardId": "LOGIC_SET",
@@ -59,11 +59,11 @@
     },
     {
       "shardId": "STATISTICS_CONCEPTS",
-      "version": "1.0.5",
-      "conceptCount": 64
+      "version": "1.0.6",
+      "conceptCount": 77
     }
   ],
-  "conceptCount": 725,
+  "conceptCount": 766,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -9531,6 +9531,722 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_ALGEBRAIC_FRACTION_SIMPLIFY",
+      "canonicalLabelKo": "분수식의 약분과 통분",
+      "definition": "분자·분모를 인수분해하거나 같은 식으로 치환하여 공통인수를 약분하고 분수식을 간단히 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION/TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$m^2 + m - 3 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EQUATION_ROOT_DEFINITION",
+      "canonicalLabelKo": "방정식의 해(근)의 정의",
+      "definition": "방정식에 수를 대입했을 때 등식이 성립하면 그 수를 방정식의 해라 하고, 이차방정식의 해를 근이라 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION/TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "③ $x=1$ 대입:\n  $$2(1)^2 - 3(1) + 1 = 2 - 3 + 1 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EQUATION_ROOT_SUBSTITUTION_IDENTITY",
+      "canonicalLabelKo": "근을 대입해 얻는 관계식",
+      "definition": "수를 방정식의 근으로 대입하면 성립하는 등식이 생기고, 그 등식을 변형해 다른 식의 값을 계산하는 데 쓴다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION/TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$m^2 + m - 3 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EQUATION_SUBSTITUTION_CHECK",
+      "canonicalLabelKo": "방정식 해 판정을 위한 대입",
+      "definition": "주어진 수를 방정식의 좌변에 대입해 등식이 성립하는지 확인하여 그 수가 해인지 판정한다. 함수값을 계산하는 대입(CC_ALGEBRAIC_SUBSTITUTION)과 목적이 다르다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION/TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "③ $x=1$ 대입:\n  $$2(1)^2 - 3(1) + 1 = 2 - 3 + 1 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTION_ADDITION_SUBTRACTION",
+      "canonicalLabelKo": "분수의 덧셈과 뺄셈",
+      "definition": "분모가 다른 분수를 통분하여 분자끼리 더하거나 빼고, 필요하면 약분하여 정리한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_132dbc1bba70649771699dd2fc9a860e4425e40827fc8f36e6a810e85d8dc904"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_132dbc1bba70649771699dd2fc9a860e4425e40827fc8f36e6a810e85d8dc904",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT/TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$k - a = \\dfrac{25}{4} - \\dfrac{5}{2} = \\dfrac{25}{4} - \\dfrac{10}{4} = \\dfrac{15}{4}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_HOMOGENEOUS_QUADRATIC_FORM",
+      "canonicalLabelKo": "동차 이차식",
+      "definition": "모든 항의 차수가 같은 이차식으로, 한 변수의 거듭제곱으로 나누면 변수 비에 대한 이차식이 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8cbd8eaea6c47d03c8fc8ca64162e0df9fe60022d45748e1427d7f9c2d75d649"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_8cbd8eaea6c47d03c8fc8ca64162e0df9fe60022d45748e1427d7f9c2d75d649",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_HOMOGENEOUS_RATIO/TPL_M3_SOLVE_VARIABLE_RATIO_FROM_HOMOGENEOUS_QUADRATIC bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$k^2 - 2k - 4 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_HOMOGENEOUS_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOGICAL_OR_CASE_SPLIT",
+      "canonicalLabelKo": "'또는' 조건의 경우 분기",
+      "definition": "A=0 또는 B=0처럼 '또는'으로 연결된 조건을 두 경우로 나누어 각각 참인 대상을 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT/TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 조건을 만족하는 순서쌍은 ㄱ, ㄹ, ㅁ의 총 $3$개입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ORDERED_PAIR_SATISFACTION_CHECK",
+      "canonicalLabelKo": "순서쌍의 조건 만족 판정",
+      "definition": "주어진 순서쌍 (a, b)를 조건식에 대입하여 조건을 만족하는지 하나씩 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT/TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 조건을 만족하는 순서쌍은 ㄱ, ㄹ, ㅁ의 총 $3$개입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_APPLIED_MODEL",
+      "canonicalLabelKo": "이차방정식·이차함수의 실생활 모델링",
+      "definition": "실생활 상황의 두 양 사이 관계를 이차식으로 세우고, 그 식을 방정식 또는 함수로 해석해 목표값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d1dc6ef71ebcca665dcbc82a6c21d1617b7356a2634c5af31f78552bfbcb5719",
+        "qid_v1_d95c453e6065ab42162bc8e34e253a6201445e778b0c84ef98cf1d13739ac1e1"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-03",
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d95c453e6065ab42162bc8e34e253a6201445e778b0c84ef98cf1d13739ac1e1",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM/TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT bound at M3-03/M3-03-QUADRATIC_EQUATION_WORD; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$(t-3)^2 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d1dc6ef71ebcca665dcbc82a6c21d1617b7356a2634c5af31f78552bfbcb5719",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM/TPL_M3_CALCULATE_MAXIMUM_BOUNCE_HEIGHT_OF_BALL_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_APPLICATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = -\\dfrac{1}{5}(80-60)(80-100) = -\\dfrac{1}{5}(20)(-20) = -\\dfrac{1}{5}(-400) = 80\\text{ cm}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+        "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03",
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EQUATIONS",
+      "canonicalLabelKo": "이차방정식(복수 표기 태깅)",
+      "definition": "이차방정식을 세우고 그 근을 구하거나 근의 존재·개수를 판정하는 개념 묶음. 감사가 부여한 복수 표기 키를 보존하기 위한 add-only 정의이며, 단수 정본 키 CC_QUADRATIC_EQUATION의 정의를 수정하거나 대체하지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d5ab005bc63a1e471d31602fbe390a3776db8666e378feb4b21535332ad9be6",
+        "qid_v1_132dbc1bba70649771699dd2fc9a860e4425e40827fc8f36e6a810e85d8dc904",
+        "qid_v1_25bba993dedb281173159e282d46b608a9097cb679978317ae01c396dbee04a5",
+        "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4",
+        "qid_v1_3d5a04a11f5c30ac70c5fc98004e97eb69cc1e6caad790301844ed79ce2e80a4",
+        "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6",
+        "qid_v1_54f26d4edb1f1b23d35848c6ac3d009db9eb2ad9658111c64ad95a5174ccbe3f",
+        "qid_v1_63e94e54cddf8c313ce94dc9f2da4bafd15740fd1979987267863a3e3763976f",
+        "qid_v1_d45a38d330be7b09e90e3c949f56bbaf5c56c3d062ae411905d76c34e111341a",
+        "qid_v1_d95c453e6065ab42162bc8e34e253a6201445e778b0c84ef98cf1d13739ac1e1"
+      ],
+      "supportingItemCount": 10,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_52dca47753bcd754945b2fd32957e2b749d6b60099ea62abd0f27090fb6c66a6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION/TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "③ $x=1$ 대입:\n  $$2(1)^2 - 3(1) + 1 = 2 - 3 + 1 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d45a38d330be7b09e90e3c949f56bbaf5c56c3d062ae411905d76c34e111341a",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT/TPL_M3_FIND_CONDITION_FOR_SQUARE_EQUATION_DOUBLE_ROOT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "식 $(x-a)^2 = b$에서 제곱하여 $b$가 되는 수가 오직 하나 존재하려면:\n  $$b = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_54f26d4edb1f1b23d35848c6ac3d009db9eb2ad9658111c64ad95a5174ccbe3f",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT/TPL_M3_IDENTIFY_EQUATION_WITHOUT_RATIONAL_ROOTS bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ④ $2x^2+3x-1=0$:\n  $$D = 3^2 - 4(2)(-1) = 9 + 8 = 17$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_25bba993dedb281173159e282d46b608a9097cb679978317ae01c396dbee04a5",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_COUNT/TPL_M3_SELECT_EQUATIONS_WITH_TWO_DISTINCT_ROOTS bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ⓑ $(x-1)(2x+3)=0 \\implies x=1, -\\dfrac{3}{2}$ (서로 다른 두 근, 2개)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63e94e54cddf8c313ce94dc9f2da4bafd15740fd1979987267863a3e3763976f",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT/TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$k^2 + 5 = 9$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_3d5a04a11f5c30ac70c5fc98004e97eb69cc1e6caad790301844ed79ce2e80a4",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD/TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$x = 2 \\pm \\dfrac{\\sqrt{30}}{3} = \\dfrac{6 \\pm \\sqrt{30}}{3}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d95c453e6065ab42162bc8e34e253a6201445e778b0c84ef98cf1d13739ac1e1",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM/TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT bound at M3-03/M3-03-QUADRATIC_EQUATION_WORD; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$(t-3)^2 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_132dbc1bba70649771699dd2fc9a860e4425e40827fc8f36e6a810e85d8dc904",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT/TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$k - a = \\dfrac{25}{4} - \\dfrac{5}{2} = \\dfrac{25}{4} - \\dfrac{10}{4} = \\dfrac{15}{4}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_2ffa3ef12b422027f73018cf9c0d625a32662adbfb4662721927746f5f02b8a4",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION/TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$m^2 + m - 3 = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_0d5ab005bc63a1e471d31602fbe390a3776db8666e378feb4b21535332ad9be6",
+          "sourceOrdinal": 23,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION/TPL_M3_FIND_PARAMETER_RANGE_FOR_ROOTS_BETWEEN_GIVEN_ROOTS_DESCRIPTIVE bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$-\\dfrac{2}{4} < a < 0 \\implies -\\dfrac{1}{2} < a < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT",
+        "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "PT_M3_QUADRATIC_EQUATION_ROOT_COUNT",
+        "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
+        "PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION",
+        "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+        "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_ROOT_CONDITION",
+      "canonicalLabelKo": "유리수 범위의 근 조건",
+      "definition": "유리수 계수 이차방정식의 해가 유리수이려면 판별식이 0 또는 유리수의 제곱수이어야 한다는 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_54f26d4edb1f1b23d35848c6ac3d009db9eb2ad9658111c64ad95a5174ccbe3f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_54f26d4edb1f1b23d35848c6ac3d009db9eb2ad9658111c64ad95a5174ccbe3f",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT/TPL_M3_IDENTIFY_EQUATION_WITHOUT_RATIONAL_ROOTS bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ④ $2x^2+3x-1=0$:\n  $$D = 3^2 - 4(2)(-1) = 9 + 8 = 17$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_EQUATION_CASE_ANALYSIS",
+      "canonicalLabelKo": "제곱꼴 방정식의 실근 개수 판정",
+      "definition": "(x-a)^2=b에서 b>0이면 서로 다른 두 실근, b=0이면 중근, b<0이면 실근이 없다는 경우 분석. b의 부호가 근의 개수를 결정한다는 관점만 다루며, 제곱근의 기본 성질(√(a^2)=|a|)과는 다른 개념이다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d45a38d330be7b09e90e3c949f56bbaf5c56c3d062ae411905d76c34e111341a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d45a38d330be7b09e90e3c949f56bbaf5c56c3d062ae411905d76c34e111341a",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT/TPL_M3_FIND_CONDITION_FOR_SQUARE_EQUATION_DOUBLE_ROOT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "식 $(x-a)^2 = b$에서 제곱하여 $b$가 되는 수가 오직 하나 존재하려면:\n  $$b = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ZERO_PRODUCT_PROPERTY",
+      "canonicalLabelKo": "영인자 성질",
+      "definition": "두 실수의 곱이 0이면 두 수 중 적어도 하나는 0이며, 역도 성립한다(AB=0 ⇔ A=0 또는 B=0).",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_6a2120a49b663f8f6b7f4118a7ba4184363ce90bfc5b50f6507c9114e42c4739",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT/TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT bound at M3-03/M3-03-QUADRATIC_EQUATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 조건을 만족하는 순서쌍은 ㄱ, ㄹ, ㅁ의 총 $3$개입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+      "canonicalLabelKo": "도형의 둘레·넓이·부피 공식",
+      "definition": "정사각형 둘레 4x, 삼각형 넓이 ½×밑변×높이, 원 넓이 πx², 정육면체 부피 x³ 등 도형 공식을 x의 식으로 쓴다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -13069,6 +13785,754 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_AXIS_OF_SYMMETRY",
+      "canonicalLabelKo": "이차함수의 축의 방정식",
+      "definition": "포물선의 증감이 바뀌는 x=p를 축의 방정식이라 하고, 꼭짓점의 x좌표와 같다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6b578ad38749c98bd9bc88365fa3e99a691df22787d2ec510324345312c33f5b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_6b578ad38749c98bd9bc88365fa3e99a691df22787d2ec510324345312c33f5b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY/TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = -\\dfrac{1}{2}(x^2 - 2x) + 1 = -\\dfrac{1}{2}(x-1)^2 + \\dfrac{1}{2} + 1 = -\\dfrac{1}{2}(x-1)^2 + \\dfrac{3}{2}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_AXIS_SYMMETRIC_INTERCEPT_DISTANCE",
+      "canonicalLabelKo": "대칭축 기준 절편까지의 거리",
+      "definition": "포물선의 대칭축에서 두 x절편까지의 거리가 서로 같고, 두 교점 사이 거리의 절반과 같다는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2052e805e57a86fb3069cc619c720b10996df01233b5379ed078ee164790cc62"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_2052e805e57a86fb3069cc619c720b10996df01233b5379ed078ee164790cc62",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE/TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$x = 2 - 3 = -1, \\quad x = 2 + 3 = 5$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_COEFFICIENT_SIGN_FROM_GRAPH",
+      "canonicalLabelKo": "그래프에서 계수 부호 읽기",
+      "definition": "볼록성으로 a의 부호를, 꼭짓점의 사분면으로 p·q의 부호를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4d8c2ae584a365104e6f4e36fc09da5762625bf669f3d959b0c8cb93a72f6642"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_4d8c2ae584a365104e6f4e36fc09da5762625bf669f3d959b0c8cb93a72f6642",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS/TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "꼭짓점 $(p, q)$가 제2사분면에 있으므로 $x$좌표인 $p < 0$, $y$좌표인 $q > 0$입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_LEADING_COEFFICIENT_SIGN_EFFECT",
+      "canonicalLabelKo": "이차항 계수의 부호와 크기 효과",
+      "definition": "이차항 계수의 부호는 볼록한 방향을, 절댓값은 그래프의 폭을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES/TPL_M3_IDENTIFY_COMMON_PROPERTY_OF_TWO_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ⑤ 두 함수 모두 $x^2$의 계수가 $4$로 같으므로 그래프의 폭이 서로 같습니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_AXIS_SYMMETRY",
+      "canonicalLabelKo": "포물선의 축 대칭",
+      "definition": "포물선은 축 x=p에 대하여 대칭이므로 같은 y좌표를 갖는 두 점은 축에서 같은 거리에 있다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_228c488ff4698afd507211a1daab90b0556bfde242c9ae9cdf08d241e1f288c0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_228c488ff4698afd507211a1daab90b0556bfde242c9ae9cdf08d241e1f288c0",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY/TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$8 = a(5-1)^2 = a \\times 16 \\implies 16a = 8 \\implies a = \\dfrac{1}{2}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PARABOLA_WIDTH_COMPARISON",
+      "canonicalLabelKo": "포물선 폭의 비교",
+      "definition": "이차항 계수의 절댓값이 같은 두 포물선은 폭과 모양이 같고, 값이 다르면 폭이 다르다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES/TPL_M3_IDENTIFY_COMMON_PROPERTY_OF_TWO_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ⑤ 두 함수 모두 $x^2$의 계수가 $4$로 같으므로 그래프의 폭이 서로 같습니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_POINT_ON_CURVE_SUBSTITUTION",
+      "canonicalLabelKo": "그래프 위의 점 좌표 대입",
+      "definition": "그래프가 점 (x0, y0)를 지난다는 조건을 식에 x=x0, y=y0를 대입한 등식으로 바꾸어 미지 계수를 결정하거나 값을 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM/TPL_M3_EVALUATE_COEFFICIENT_SUM_FROM_PARABOLA_POINT bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$f(1) = a(1)^2 + b(1) + c = a+b+c$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FUNCTION_RANGE",
+      "canonicalLabelKo": "이차함수의 치역",
+      "definition": "아래로 볼록하면 y≥q, 위로 볼록하면 y≤q로 주어지는 이차함수 함숫값의 범위.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f262b818beb8c7572ea740779049b3a3ee7d9b817e0237d79a9fa1d9b433d0cf"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_f262b818beb8c7572ea740779049b3a3ee7d9b817e0237d79a9fa1d9b433d0cf",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_RANGE/TPL_M3_DETERMINE_RANGE_OF_QUADRATIC_FUNCTION bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = \\dfrac{1}{2}(x+3)^2 - 2 \\ge -2$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_RANGE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FUNCTIONS",
+      "canonicalLabelKo": "이차함수(복수 표기 태깅)",
+      "definition": "이차함수의 식·그래프·성질을 다루는 개념 묶음. 감사가 부여한 복수 표기 키를 보존하기 위한 add-only 정의이며, 단수 정본 키 CC_QUADRATIC_FUNCTION의 정의를 수정하거나 대체하지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_15b269addf5ec18a9790cedd85ca73101015021498a07bf28ef3a123a3b39f8c",
+        "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4",
+        "qid_v1_2052e805e57a86fb3069cc619c720b10996df01233b5379ed078ee164790cc62",
+        "qid_v1_228c488ff4698afd507211a1daab90b0556bfde242c9ae9cdf08d241e1f288c0",
+        "qid_v1_30178a923845ae30af5f0434a6414640e0ebb69c9003a3ec11203945eeca5271",
+        "qid_v1_32ff4aad11dc5f98657e211cd7774d0931d5e029c62ad2fc0b8d63623704b7a7",
+        "qid_v1_4d8c2ae584a365104e6f4e36fc09da5762625bf669f3d959b0c8cb93a72f6642",
+        "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49",
+        "qid_v1_6b578ad38749c98bd9bc88365fa3e99a691df22787d2ec510324345312c33f5b",
+        "qid_v1_8a1638af38e22e0d3c151cd9bbc04abb9ac0908b2cb71e7516528243d9f126e8",
+        "qid_v1_d1dc6ef71ebcca665dcbc82a6c21d1617b7356a2634c5af31f78552bfbcb5719",
+        "qid_v1_f262b818beb8c7572ea740779049b3a3ee7d9b817e0237d79a9fa1d9b433d0cf",
+        "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541"
+      ],
+      "supportingItemCount": 13,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_fb28952f9637270e2baaae3aac6518e0ec40251d5eb4fc5d4cea19c84f729541",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES/TPL_M3_IDENTIFY_COMMON_PROPERTY_OF_TWO_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ⑤ 두 함수 모두 $x^2$의 계수가 $4$로 같으므로 그래프의 폭이 서로 같습니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_4d8c2ae584a365104e6f4e36fc09da5762625bf669f3d959b0c8cb93a72f6642",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS/TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "꼭짓점 $(p, q)$가 제2사분면에 있으므로 $x$좌표인 $p < 0$, $y$좌표인 $q > 0$입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION/TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\overline{\\text{AB}} = (t^2+3) - t^2 = 3$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM/TPL_M3_EVALUATE_COEFFICIENT_SUM_FROM_PARABOLA_POINT bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$f(1) = a(1)^2 + b(1) + c = a+b+c$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_f262b818beb8c7572ea740779049b3a3ee7d9b817e0237d79a9fa1d9b433d0cf",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_RANGE/TPL_M3_DETERMINE_RANGE_OF_QUADRATIC_FUNCTION bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = \\dfrac{1}{2}(x+3)^2 - 2 \\ge -2$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_2052e805e57a86fb3069cc619c720b10996df01233b5379ed078ee164790cc62",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE/TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$x = 2 - 3 = -1, \\quad x = 2 + 3 = 5$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_6b578ad38749c98bd9bc88365fa3e99a691df22787d2ec510324345312c33f5b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY/TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = -\\dfrac{1}{2}(x^2 - 2x) + 1 = -\\dfrac{1}{2}(x-1)^2 + \\dfrac{1}{2} + 1 = -\\dfrac{1}{2}(x-1)^2 + \\dfrac{3}{2}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_228c488ff4698afd507211a1daab90b0556bfde242c9ae9cdf08d241e1f288c0",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY/TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$8 = a(5-1)^2 = a \\times 16 \\implies 16a = 8 \\implies a = \\dfrac{1}{2}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_32ff4aad11dc5f98657e211cd7774d0931d5e029c62ad2fc0b8d63623704b7a7",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION/TPL_M3_IDENTIFY_PARABOLA_PASSING_THROUGH_THIRD_QUADRANT bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "꼭짓점은 $(-1, -6)$으로 제3사분면($x<0, y<0$)에 정확히 위치합니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_15b269addf5ec18a9790cedd85ca73101015021498a07bf28ef3a123a3b39f8c",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_EXTREMA/TPL_M3_EQUATE_MAXIMUM_AND_MINIMUM_OF_TWO_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$-\\dfrac{a}{8} = 3$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_30178a923845ae30af5f0434a6414640e0ebb69c9003a3ec11203945eeca5271",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION/TPL_M3_DETERMINE_TRANSLATION_AMOUNTS_FROM_GENERAL_FORM_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = 2(x+3)^2 - 13$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_d1dc6ef71ebcca665dcbc82a6c21d1617b7356a2634c5af31f78552bfbcb5719",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM/TPL_M3_CALCULATE_MAXIMUM_BOUNCE_HEIGHT_OF_BALL_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_APPLICATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = -\\dfrac{1}{5}(80-60)(80-100) = -\\dfrac{1}{5}(20)(-20) = -\\dfrac{1}{5}(-400) = 80\\text{ cm}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_8a1638af38e22e0d3c151cd9bbc04abb9ac0908b2cb71e7516528243d9f126e8",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_EXTREMA/TPL_M3_FIND_INTEGERS_MAKING_MAXIMUM_VALUE_NEGATIVE_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$9k^2 - 45 < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
+        "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM",
+        "PT_M3_QUADRATIC_FUNCTION_EXTREMA",
+        "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+        "PT_M3_QUADRATIC_FUNCTION_RANGE",
+        "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+        "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_TRANSLATION_VECTOR",
+      "canonicalLabelKo": "이차함수 그래프의 평행이동량",
+      "definition": "표준형 y=a(x-p)^2+q에서 p가 x축 방향, q가 y축 방향 평행이동량이 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_30178a923845ae30af5f0434a6414640e0ebb69c9003a3ec11203945eeca5271"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_30178a923845ae30af5f0434a6414640e0ebb69c9003a3ec11203945eeca5271",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION/TPL_M3_DETERMINE_TRANSLATION_AMOUNTS_FROM_GENERAL_FORM_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$y = 2(x+3)^2 - 13$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_VERTICAL_TRANSLATION",
+      "canonicalLabelKo": "이차함수 그래프의 y축 방향 평행이동",
+      "definition": "y=ax^2의 식에 상수 q를 더하면 그래프가 y축 방향으로 q만큼 평행이동한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION/TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\overline{\\text{AB}} = (t^2+3) - t^2 = 3$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_VERTICAL_SEGMENT_LENGTH",
+      "canonicalLabelKo": "y축에 평행한 선분의 길이",
+      "definition": "같은 x좌표를 갖는 두 점의 y좌표 차의 절댓값으로 수직 선분의 길이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_657d26cef5f4a9c2374851477f3feb72646d648062b953f2565b716f15526a49",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION/TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\overline{\\text{AB}} = (t^2+3) - t^2 = 3$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.audit.source.json",
+            "sha256": "9650d169453bf8954d6e560fefc9f4f8555e2eb9823a674bd6c2977170b15c2d"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-5-2b572610ff2a-20261104.corrective-review.json",
+            "sha256": "0ca6845cda6ceae2ae5cb0a8ffa73a7accf90ed811bf0bf5440ff66757599433"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_DEGREE_CLASSIFICATION",
+      "canonicalLabelKo": "관계식의 차수에 따른 함수 분류",
+      "definition": "관계식의 최고차항 차수에 따라 일차함수·이차함수·삼차함수로 분류한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GENERAL_FORM",
+      "canonicalLabelKo": "이차함수의 일반형",
+      "definition": "y=ax^2+bx+c (a≠0) 꼴로, 계수 a, b, c가 그래프의 모양과 위치를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS/TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$5a = -10 \\implies a = -2$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
       ],
       "ownerConceptShard": "FUNCTIONS"
     },
@@ -25169,6 +26633,632 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BAR_GRAPH_DISTRIBUTION",
+      "canonicalLabelKo": "막대그래프의 도수 분포",
+      "definition": "이산 범주별 도수를 막대의 높이로 나타낸 그래프에서 분포의 중심과 퍼짐을 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "대푯값",
+      "definition": "자료 전체의 특징을 하나의 값으로 나타내는 평균·중앙값·최빈값을 통틀어 이르는 말.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DEVIATION",
+      "canonicalLabelKo": "편차",
+      "definition": "변량에서 평균을 뺀 값으로, 변량이 평균보다 크면 양수·작으면 음수가 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DISPERSION_VISUAL_COMPARISON",
+      "canonicalLabelKo": "분포 그림으로 산포 비교",
+      "definition": "평균 주변에 도수가 밀집할수록 분산·표준편차가 작다는 성질로 여러 분포의 산포를 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_LINE_GRAPH_READING",
+      "canonicalLabelKo": "꺾은선그래프 읽기",
+      "definition": "가로축 값에 대한 도수를 꺾은선으로 나타낸 그래프에서 정점과 도수 분포를 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEAN_SCALING_PROPERTY",
+      "canonicalLabelKo": "변량 변환과 평균",
+      "definition": "각 변량에 k를 곱하면 평균도 k배가 되고, b를 더하면 평균도 b만큼 커진다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEAN",
+      "canonicalLabelKo": "평균",
+      "definition": "모든 변량의 합을 변량의 개수(또는 총도수)로 나눈 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_FREQUENCY_TABLE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEDIAN",
+      "canonicalLabelKo": "중앙값",
+      "definition": "변량을 작은 값부터 크기순으로 나열했을 때 한가운데 위치하는 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MODE",
+      "canonicalLabelKo": "최빈값",
+      "definition": "자료에서 가장 많이 나타나는 값, 즉 도수가 가장 큰 변량.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STANDARD_DEVIATION",
+      "canonicalLabelKo": "표준편차",
+      "definition": "분산의 음이 아닌 제곱근으로, 자료의 흩어진 정도를 원래 단위로 나타낸 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_SUM_OF_DEVIATIONS_ZERO",
+      "canonicalLabelKo": "편차의 합이 0인 성질",
+      "definition": "모든 변량의 편차를 더하면 항상 0이 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_VARIANCE_SCALING_PROPERTY",
+      "canonicalLabelKo": "변량 변환과 분산",
+      "definition": "각 변량에 k를 곱하면 분산은 k²배가 되고, 상수를 더해도 분산은 변하지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_VARIANCE",
+      "canonicalLabelKo": "분산",
+      "definition": "편차의 제곱의 평균으로, 자료가 평균 주변에 흩어진 정도를 나타내는 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+        "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
       ],
       "ownerConceptShard": "STATISTICS_CONCEPTS"
     }
