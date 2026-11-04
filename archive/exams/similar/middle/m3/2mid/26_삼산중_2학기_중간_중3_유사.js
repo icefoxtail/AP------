@@ -784,7 +784,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\overline{AD}, \\overline{BC}, \\overline{AF}$가 각각 세 점 $D, E, F$를 접점으로 하는 원 $O$의 접선이다. $\\overline{AD} = 14\\text{ cm}$, $\\overline{AC} = 10\\text{ cm}$, $\\overline{AB} = 8\\text{ cm}$, $\\angle ACB = 60^\\circ$일 때, $\\triangle ACB$의 넓이는? [4점]",
+    "content": "다음 그림에서 $\\overline{AD}, \\overline{BC}, \\overline{AF}$가 각각 세 점 $D, E, F$를 접점으로 하는 원 $O$의 접선이다. $\\overline{AD} = 15\\text{ cm}$, $\\overline{AC} = 10\\text{ cm}$, $\\overline{AB} = 10\\text{ cm}$, $\\angle ACB = 60^\\circ$일 때, $\\triangle ACB$의 넓이는? [4점]",
     "choices": [
       "$20\\sqrt{3}\\text{ cm}^2$",
       "$25\\sqrt{3}\\text{ cm}^2$",
@@ -793,8 +793,8 @@ window.questionBank = [
       "$50\\sqrt{3}\\text{ cm}^2$"
     ],
     "answer": "②",
-    "solution": "원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 서로 같다.\n점 $A$에서 그은 두 접선에 대하여 $AF = AD = 14\\text{ cm}$이다.\n점 $B$에서 그은 두 접선에 대하여 $BE = BD$이므로\n$BE = BD = AD - AB = 14 - 8 = 6\\text{ cm}$이다.\n점 $C$에서 그은 두 접선에 대하여 $CE = CF$이므로\n$CE = CF = AF - AC = 14 - 10 = 4\\text{ cm}$이다.\n따라서 선분 $BC$의 길이는\n$BC = BE + CE = 6 + 4 = 10\\text{ cm}$이다.\n이제 삼각형 $ACB$에서 $AC = 10\\text{ cm}$, $BC = 10\\text{ cm}$이고 끼인각 $\\angle ACB = 60^\\circ$이므로 넓이는\n$[\\triangle ACB] = \\dfrac{1}{2} \\times AC \\times BC \\times \\sin 60^\\circ = \\dfrac{1}{2} \\times 10 \\times 10 \\times \\dfrac{\\sqrt{3}}{2} = 25\\sqrt{3}\\text{ cm}^2$이다.\n정답은 ②이다.",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q17.svg",
+    "solution": "원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 서로 같다.\n점 $A$에서 그은 두 접선에 대하여 $AF = AD = 15\\text{ cm}$이다.\n점 $B$에서 그은 두 접선에 대하여 $BE = BD$이므로\n$BE = BD = AD - AB = 15 - 10 = 5\\text{ cm}$이다.\n점 $C$에서 그은 두 접선에 대하여 $CE = CF$이므로\n$CE = CF = AF - AC = 15 - 10 = 5\\text{ cm}$이다.\n따라서 선분 $BC$의 길이는\n$BC = BE + CE = 5 + 5 = 10\\text{ cm}$이다.\n이제 삼각형 $ACB$에서 $AC = 10\\text{ cm}$, $BC = 10\\text{ cm}$이고 끼인각 $\\angle ACB = 60^\\circ$이므로 넓이는\n$[\\triangle ACB] = \\dfrac{1}{2} \\times AC \\times BC \\times \\sin 60^\\circ = \\dfrac{1}{2} \\times 10 \\times 10 \\times \\dfrac{\\sqrt{3}}{2} = 25\\sqrt{3}\\text{ cm}^2$이다.\n정답은 ②이다.",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q17-finalqa-20261104.svg",
     "points": 4.0,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
@@ -880,17 +880,17 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $6$인 원 $O$와 한 변의 길이가 $12$인 정삼각형 $ABC$에 대하여, 지름 $AH$와 변 $BC$가 수직으로 만난다. 이때 정삼각형 내부에서 원의 부채꼴 부분을 제외한 색칠된 부분의 넓이는? [5점]",
+    "content": "다음 그림과 같이 한 변의 길이가 $12$인 정삼각형 $ABC$의 내접원 $O$의 반지름은 $2\\sqrt{3}$이다. 원 $O$는 변 $AB,BC$와 각각 점 $D,H$에서 접한다. 부채꼴 $DOH$ 부분을 제외하고 정삼각형 내부에 색칠된 부분의 넓이는? [5점]",
     "choices": [
       "$36\\sqrt{3} - 18\\pi$",
       "$32\\sqrt{3} - 12\\pi$",
       "$36\\sqrt{3} - 16\\pi$",
-      "$36\\sqrt{3} - 12\\pi$",
+      "$36\\sqrt{3} - 4\\pi$",
       "$24\\sqrt{3} - 8\\pi$"
     ],
     "answer": "④",
-    "solution": "한 변의 길이가 $a = 12$인 정삼각형 $ABC$의 넓이는\n$[\\triangle ABC] = \\dfrac{\\sqrt{3}}{4} a^2 = \\dfrac{\\sqrt{3}}{4} \\times 12^2 = \\dfrac{\\sqrt{3}}{4} \\times 144 = 36\\sqrt{3}$이다.\n원의 반지름이 $r = 6$이므로 원 전체의 넓이는 $\\pi r^2 = \\pi \\times 6^2 = 36\\pi$이다.\n정삼각형의 대칭축인 지름 $AH$ 위에 원의 중심 $O$가 위치하며, 정삼각형 내부에서 원과 겹치는 부분은 중심각이 $120^\\circ$인 부채꼴을 이룬다.\n부채꼴의 넓이는 원 넓이에 중심각의 비율을 곱하여 구하므로\n$[\\text{부채꼴}] = 36\\pi \\times \\dfrac{120^\\circ}{360^\\circ} = 36\\pi \\times \\dfrac{1}{3} = 12\\pi$이다.\n색칠된 부분의 넓이는 정삼각형의 넓이에서 이 부채꼴의 넓이를 뺀 것이므로\n$[\\text{색칠된 부분}] = 36\\sqrt{3} - 12\\pi$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q19.svg",
+    "solution": "한 변의 길이가 $12$인 정삼각형 $ABC$의 넓이는 $36\\sqrt{3}$이다. 내접원의 반지름은 $r=2\\sqrt{3}$이고, 내접원은 변 $AB,BC$에 각각 $D,H$에서 접한다. 정삼각형의 꼭짓각 $\\angle ABC=60^\\circ$이므로 두 반지름 $OD,OH$는 각각 변에 수직이고, 중심각 $\\angle DOH=120^\\circ$이다.\n부채꼴 $DOH$의 넓이는 $\\dfrac{120}{360}\\pi(2\\sqrt{3})^2=4\\pi$이다. 따라서 정삼각형 내부에서 이 부채꼴을 제외한 넓이는 $36\\sqrt{3}-4\\pi$이고 정답은 ④이다.",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q19-finalqa-20261104.svg",
     "points": 5.0,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
