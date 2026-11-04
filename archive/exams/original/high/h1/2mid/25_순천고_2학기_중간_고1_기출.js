@@ -274,7 +274,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "주어진 직선 $x-2y-2=0$의 기울기는 $\\dfrac12$이므로 수직인 직선의 기울기는 $a=-2$이다. 두 직선은 $x$축 위에서 만나므로 교점은 $(2,0)$이다.\n$y=ax+b$를 $(1,-2)$만큼 평행이동한 직선은 $y=a(x-1)+b-2=ax+b-a-2$이다. $a=-2$를 대입하면 $y=-2x+b$이고, 이 직선이 $(2,0)$을 지나므로 $b=4$이다.\n따라서 $a+b=2$이다.\n결론: 정답은 ②이다.",
+    "solution": "주어진 직선 $x-2y-2=0$의 기울기는 $\\dfrac12$이므로 수직인 직선의 기울기는 $a=-2$이다. 두 직선은 $x$축 위에서 만나므로 교점은 $(2,0)$이다.\n$y=ax+b$를 $(1,-2)$만큼 평행이동한 직선은 $y=a(x-1)+b-2=ax+b-a-2$이다. $a=-2$를 대입하면 $y=-2x+b$이고, 이 직선이 $(2,0)$을 지나므로 $b=4$이다.\n따라서 $a+b=2$이다.\n정답은 ②이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -380,7 +380,7 @@ window.questionBank = [
       "$(A-B)\\cup(A-C)$"
     ],
     "answer": "⑤",
-    "solution": "색칠한 부분은 $A$에 속하면서 $B$와 $C$에 동시에 속하는 부분만 제외한 영역, 즉 $A-(B\\cap C)$이다.\n한편 $(A-B)\\cup(A-C)=(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A-(B\\cap C)$이다.\n결론: 정답은 ⑤이다.",
+    "solution": "색칠한 부분은 $A$에 속하면서 $B$와 $C$에 동시에 속하는 부분만 제외한 영역, 즉 $A-(B\\cap C)$이다.\n한편 $(A-B)\\cup(A-C)=(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A-(B\\cap C)$이다.\n정답은 ⑤이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -493,7 +493,7 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "②",
-    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n결론: 정답은 ②이다.",
+    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n정답은 ②이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -527,7 +527,7 @@ window.questionBank = [
       "$3+\\sqrt2$"
     ],
     "answer": "①",
-    "solution": "주어진 원의 중심은 $(3,-2)$이고 반지름은 $1$이다. 평행이동한 중심은 $(3+a,-2+b)$이다.\n$x$축에 접하므로 $|-2+b|=1$에서 $b=1$ 또는 $3$이다. 직선 $y=x$에 접하므로 $\\dfrac{|(3+a)-(-2+b)|}{\\sqrt2}=1$, 즉 $a=b-5\\pm\\sqrt2$이다.\n따라서 $a+b=2b-5\\pm\\sqrt2$의 최솟값은 $b=1$이고 음의 부호일 때의 $-3-\\sqrt2$이다.\n결론: 정답은 ①이다.",
+    "solution": "주어진 원의 중심은 $(3,-2)$이고 반지름은 $1$이다. 평행이동한 중심은 $(3+a,-2+b)$이다.\n$x$축에 접하므로 $|-2+b|=1$에서 $b=1$ 또는 $3$이다. 직선 $y=x$에 접하므로 $\\dfrac{|(3+a)-(-2+b)|}{\\sqrt2}=1$, 즉 $a=b-5\\pm\\sqrt2$이다.\n따라서 $a+b=2b-5\\pm\\sqrt2$의 최솟값은 $b=1$이고 음의 부호일 때의 $-3-\\sqrt2$이다.\n정답은 ①이다.",
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q15-solution.svg",
 

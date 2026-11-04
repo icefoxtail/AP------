@@ -87,12 +87,14 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
   const data = await catalog();
   const auth = { canonicalAuthority: data.canonicalAuthority };
-  // Production data grows (new exams/approvals) and a changed stem legitimately leaves the strict count, so the
-  // exact totals are not pinned. The lane must never ADD to the strict metric: every strictly approved or
-  // advanced-eligible record must stay canonically approved, and the counts must not fall below the 2026-10-30 floor.
+  // New exams/approvals may raise strict counts. A legitimate answer/solution-only edit also changes the
+  // full-payload release fingerprint: sourceStatus becomes HOLD until that source is reapproved, even though
+  // its content-bound taxonomy assignments remain intact. The 2026-11-04 regenerated main measured 1422
+  // after such exam-solution repairs (issue #1335); keep a regression floor without granting any approvals.
+  // The usable-meta lane must never ADD to the canonical strict metric.
   const strict = data.records.filter(row => core.basicEligibility(row, auth).ok);
   const advanced = data.records.filter(row => core.advancedEligible(row, auth));
-  assert.ok(strict.length >= 1495, String(strict.length));
+  assert.ok(strict.length >= 1422, String(strict.length));
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
   assert.ok(data.records.filter(row => row.curriculumKey).length >= 3206, 'canonical curriculumKey is untouched');

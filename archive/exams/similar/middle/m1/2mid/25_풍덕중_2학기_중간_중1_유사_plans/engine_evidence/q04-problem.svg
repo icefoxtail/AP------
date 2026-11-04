@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" width="500" height="180" role="img" aria-labelledby="q04-title q04-desc">
+  <title id="q04-title">순천역과 중앙시장 사이의 거리</title>
+  <desc id="q04-desc">두 지점 A, B 사이의 직선거리 240m와 도로거리 380m</desc>
+  <rect width="500" height="180" fill="#ffffff"/>
+  <!-- 직선거리 -->
+  <line x1="80" y1="120" x2="420" y2="120" stroke="#1f5fa8" stroke-width="2.5"/>
+  <!-- 도로 곡선 경로 -->
+  <path d="M 80,120 C 130,40 220,50 250,70 C 280,90 350,30 420,120" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <circle cx="80" cy="120" r="5" fill="#222222"/>
+  <circle cx="250" cy="120" r="4.5" fill="#222222"/>
+  <circle cx="420" cy="120" r="5" fill="#222222"/>
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#111111">
+    <text x="60" y="145">A (순천역)</text>
+    <text x="250" y="145" text-anchor="middle">M</text>
+    <text x="380" y="145">B (중앙시장)</text>
+    <text x="250" y="112" font-size="14" fill="#1f5fa8" text-anchor="middle">240 m</text>
+    <text x="250" y="45" font-size="14" fill="#e67e22" text-anchor="middle">실제 도로거리 380 m</text>
+  </g>
+</svg>
