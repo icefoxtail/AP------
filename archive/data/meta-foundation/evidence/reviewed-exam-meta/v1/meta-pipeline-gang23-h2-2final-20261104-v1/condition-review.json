@@ -1,0 +1,1663 @@
+{
+  "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+  "examTitle": "23_강남여고_2학기_기말_고2_수학II",
+  "generatedAt": "2026-11-04T11:39:57.100Z",
+  "status": "READY_FOR_ROOT_REVIEW",
+  "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+  "sourceSha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+  "sourceBlobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+  "reviewer": {
+    "id": "CODEX_ROOT",
+    "role": "CODEX_META_PIPELINE_COURIER"
+  },
+  "inputFiles": {
+    "audit": {
+      "file": "gang23-audit.json",
+      "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+      "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+      "bytes": 32864
+    },
+    "manifest": {
+      "file": "gang23-manifest.json",
+      "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+      "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+      "bytes": 46680
+    },
+    "classification": {
+      "file": "gang23-classification.json",
+      "driveId": "1jhpKffVK4FOBrYGG1IAKnUY3tIzV4isY",
+      "sha256": "87bf8447d2a3db2f216f776a2822cb90df5747c77f30c2a43f27d806f76c6753",
+      "bytes": 27537
+    },
+    "source": {
+      "file": "gang23-source.js",
+      "driveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+      "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+      "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+      "bytes": 66794
+    }
+  },
+  "scope": {
+    "totalQuestions": 25,
+    "conditionCorrectionCount": 12,
+    "sourceConditionNonEmptyCount": 12,
+    "auditConditionEmptyCount": 25,
+    "manifestConditionEmptyCount": 25,
+    "integrationPatternDiffCount": 12,
+    "affectedQuestionIds": [
+      6,
+      7,
+      11,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23
+    ]
+  },
+  "records": [
+    {
+      "questionUid": "qid_v1_b0c51ed3b66bc7e496bd75a7fdd4e565a933031a42ef105f1e41d0a4845570f9",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": 6,
+      "sourceFingerprint": "eb734fca5f2117d3a6b11367791428adc52564131663fc8df3cd4ab8712c29bc",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "$t>0$에서 $0<t<3$이면 $v>0$, $t>3$이면 $v<0$이므로 $t=3$에서 진행 방향이 바뀐다.",
+      "sourceTextExcerpts": [
+        {
+          "location": "solution",
+          "text": "$t>0$에서 $0<t<3$이면 $v>0$, $t>3$이면 $v<0$이므로 $t=3$에서 진행 방향이 바뀐다.",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "6bfb5468a1d606e7912f953412d45cc72acf857e0d020fd64ee3316875fdf275"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The source solution explicitly restricts the motion analysis to t>0 before discussing the direction change. COND_RANGE is directly stated, not inferred by re-solving.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:aa0f30974e63bbffd2cadec452c350c7e7ead9d35e190c8d68e13270c5d24d08",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 6,
+          "sourceQuestionNo": 6,
+          "excerptLocation": "solution",
+          "excerptSha256": "6bfb5468a1d606e7912f953412d45cc72acf857e0d020fd64ee3316875fdf275"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 6,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 6,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:aa0f30974e63bbffd2cadec452c350c7e7ead9d35e190c8d68e13270c5d24d08",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f58e8657047bbc40548e0ae006ddd51d8184e72430362678d66474a6a8902854",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": 7,
+      "sourceFingerprint": "04e93508848a18be2dc51725a39cfbbe3ad69772d8416a094af4bdb57be66a7b",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "열린구간 $(-3, 3)$에서 연속인 함수",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "열린구간 $(-3, 3)$에서 연속인 함수",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "134a1e2c3cfc05bd35f9f6db59e1e369c2c30e4f6e4af4b7f264e4f8885c1038"
+        },
+        {
+          "location": "content",
+          "text": "(단, $-3 < a < 3$, $-3 < b < 3$)",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "3c11bb328322080e77c3d40f016918f2b1365b927938014f90a039b316fda69f"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The stem states the open interval (-3, 3) and the explicit bounds -3<a<3, -3<b<3. COND_RANGE is literal source text.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:803ac598fe4b516e46cc93a2dc799b54c90e6f85fd78471192ff6f55694686d5",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 7,
+          "sourceQuestionNo": 7,
+          "excerptLocation": "content",
+          "excerptSha256": "134a1e2c3cfc05bd35f9f6db59e1e369c2c30e4f6e4af4b7f264e4f8885c1038"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 7,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 7,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:803ac598fe4b516e46cc93a2dc799b54c90e6f85fd78471192ff6f55694686d5",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_af45375f1f36e0af80945f3b1537a0cc27ab0be96694d68d7fbf49ef585f9a84",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": 11,
+      "sourceFingerprint": "314742082f4d5d79408d5f697cd98ce4105e54435dfbfcaf0cfa464a7ec720b2",
+      "sourceConditionKeys": [
+        "COND_FUNCTION_INJECTIVE",
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "실수 전체의 집합에서 정의된 함수 $f(x)=x^3+x^2-ax+1$의 역함수가 존재하도록 하는 실수 $a$의 최댓값은?",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "실수 전체의 집합에서 정의된 함수 $f(x)=x^3+x^2-ax+1$의 역함수가 존재하도록 하는 실수 $a$의 최댓값은?",
+          "supports": [
+            "COND_FUNCTION_INJECTIVE",
+            "COND_UNIVERSAL_INPUTS"
+          ],
+          "sha256": "67147e49672180f345763ede046f3f5a6c457513b80e678f4f395e826133723d"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_FUNCTION_INJECTIVE",
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "reason": "The stem states the function is defined on the whole real set and asks for the inverse to exist. These are direct textual grounds for universal inputs and injectivity of f.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_FUNCTION_INJECTIVE",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "REINTERPRETATION"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_FUNCTION_INJECTIVE",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_FUNCTION_INJECTIVE",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_FUNCTION_INJECTIVE",
+              "COND_UNIVERSAL_INPUTS"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_FUNCTION_INJECTIVE",
+              "COND_UNIVERSAL_INPUTS"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:5375c6416eb7c7fbfc35cb7bc953c7bf34bde0e3b8c2c79078d35dbaf6049364",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 11,
+          "sourceQuestionNo": 11,
+          "excerptLocation": "content",
+          "excerptSha256": "67147e49672180f345763ede046f3f5a6c457513b80e678f4f395e826133723d"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 11,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 11,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:5375c6416eb7c7fbfc35cb7bc953c7bf34bde0e3b8c2c79078d35dbaf6049364",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": 13,
+      "sourceFingerprint": "7ff6def09581d453ce61758314202954e9a2dcabe67e91f7874aaf7b0e9bb077",
+      "sourceConditionKeys": [
+        "COND_POSITIVE",
+        "COND_EXACT_INTERSECTION_COUNT"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "함수 $y=|f(x)|$의 그래프와 직선 $y=a$가 서로 다른 세 점에서만 만날 때의 양수 $a$의 값은?",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "함수 $y=|f(x)|$의 그래프와 직선 $y=a$가 서로 다른 세 점에서만 만날 때의 양수 $a$의 값은?",
+          "supports": [
+            "COND_POSITIVE",
+            "COND_EXACT_INTERSECTION_COUNT"
+          ],
+          "sha256": "46d2e3bc4c050df4e961b5ef2b3e2c0148daa32b1aa6f99dda9d5f65338e5d34"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_POSITIVE",
+        "COND_EXACT_INTERSECTION_COUNT"
+      ],
+      "reason": "The stem says a is positive and says the intersection consists of exactly three distinct points. Both labels are literal source statements.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_POSITIVE",
+              "COND_EXACT_INTERSECTION_COUNT"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_POSITIVE",
+              "COND_EXACT_INTERSECTION_COUNT"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:bfd5d5d3c98da20acd6707692150f27b4bf57056643a7344bed8a0e6c6981ae0",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 13,
+          "sourceQuestionNo": 13,
+          "excerptLocation": "content",
+          "excerptSha256": "46d2e3bc4c050df4e961b5ef2b3e2c0148daa32b1aa6f99dda9d5f65338e5d34"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 13,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 13,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:bfd5d5d3c98da20acd6707692150f27b4bf57056643a7344bed8a0e6c6981ae0",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3134669e204dd96f17396b2c3f6a886d95d034c9f63cc72a5c392a2398742b17",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": 14,
+      "sourceFingerprint": "e8a3c022809b9812acc6b0a9c4343b0bf37dc054ecacd58e558492c0fd9b5a66",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "실제 상자가 되려면 $0<x<6$이다.",
+      "sourceTextExcerpts": [
+        {
+          "location": "solution",
+          "text": "실제 상자가 되려면 $0<x<6$이다.",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "3b2d8ec3b068b6a2bc3390db9bffce79ff4e574d19c045ea2257aeb920150338"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The source solution explicitly states the admissible interval 0<x<6 for the box model. COND_RANGE is directly stated.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:b661e6c01a25390c192dce3fc4025c9cc3597857876d44842048e4798dc94110",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 14,
+          "sourceQuestionNo": 14,
+          "excerptLocation": "solution",
+          "excerptSha256": "3b2d8ec3b068b6a2bc3390db9bffce79ff4e574d19c045ea2257aeb920150338"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 14,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 14,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:b661e6c01a25390c192dce3fc4025c9cc3597857876d44842048e4798dc94110",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f89cf382d81a5362513f88a552c020e610bf801dbb48f19ddc09a1213ead6497",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": 15,
+      "sourceFingerprint": "9f0fb66cabced232b5f1a8f3cc5e85d1d88941fdfaaa2a291d7e45a40ded48ae",
+      "sourceConditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "$x \\ge 0$인 모든 실수 $x$에 대하여",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "$x \\ge 0$인 모든 실수 $x$에 대하여",
+          "supports": [
+            "COND_UNIVERSAL_INPUTS",
+            "COND_RANGE"
+          ],
+          "sha256": "fceceb9ee0b808c63c5a448e14c4e4aafb400aa8e380a10ae270f88646bf5576"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_RANGE"
+      ],
+      "reason": "The stem requires the inequality for every real x with x>=0. Universal quantification and the restricted range are both literal.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_UNIVERSAL_INPUTS",
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_UNIVERSAL_INPUTS",
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:e5f22c4c232d8e30bf61970c916bb2b58fed11ecd073dc0808078df50a720af6",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 15,
+          "sourceQuestionNo": 15,
+          "excerptLocation": "content",
+          "excerptSha256": "fceceb9ee0b808c63c5a448e14c4e4aafb400aa8e380a10ae270f88646bf5576"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 15,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 15,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:e5f22c4c232d8e30bf61970c916bb2b58fed11ecd073dc0808078df50a720af6",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b5598531be2bfb8be7b15ee1e66c26003fa1fa2fe5cc0081adea7d26916f520f",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": 17,
+      "sourceFingerprint": "674b797a8a1f257a9409471553a1f1225d7575e5995040118389da595098cb25",
+      "sourceConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "자연수 $n$에 대하여",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "자연수 $n$에 대하여",
+          "supports": [
+            "COND_NATURAL_NUMBER"
+          ],
+          "sha256": "b1adbefd8604bc18551a3ff663c20488686b4b37ef09137bf23a2f86beec7dac"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "reason": "The stem explicitly says n is a natural number. COND_NATURAL_NUMBER is a direct source statement.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_NATURAL_NUMBER"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_NATURAL_NUMBER"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:6dd068651872f73de8316ab1a2c1fefdcec08fddfbb5cac687c8413f5a43d1ff",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 17,
+          "sourceQuestionNo": 17,
+          "excerptLocation": "content",
+          "excerptSha256": "b1adbefd8604bc18551a3ff663c20488686b4b37ef09137bf23a2f86beec7dac"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 17,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 17,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:6dd068651872f73de8316ab1a2c1fefdcec08fddfbb5cac687c8413f5a43d1ff",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": 18,
+      "sourceFingerprint": "34bb6f44a296c5ae323fa6fa2fa5f6066f506a0a3373e0bbb0d3e7324527ed2e",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "구간 $[1, a]$에서",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "구간 $[1, a]$에서",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "c66be782771e7358734819e18a726111744bfe07f12cf5b9b5ea4ddc26b99c85"
+        },
+        {
+          "location": "content",
+          "text": "$1$보다 큰 상수 $a$의 값은?",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "fcf64940af8cbf0ccfb06e2b0d9390ffd3ce33ff24bcfa4d4a2c512ba8ca8ba8"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The stem gives the interval [1, a] and explicitly requires a>1. COND_RANGE is literal source text.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:39d7d2c9ecf14bbdf7f67e6611e978a410fd73c48aff2eafc3d24910509a5f3d",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 18,
+          "sourceQuestionNo": 18,
+          "excerptLocation": "content",
+          "excerptSha256": "c66be782771e7358734819e18a726111744bfe07f12cf5b9b5ea4ddc26b99c85"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 18,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 18,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:39d7d2c9ecf14bbdf7f67e6611e978a410fd73c48aff2eafc3d24910509a5f3d",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": 19,
+      "sourceFingerprint": "3300ef019e1f5e9b6d6246fcb1c14a3de16716c2f67dff03ea5633aaad56c412",
+      "sourceConditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "함수 $f(x) = \\begin{cases} 2x(3-x) & (x < 3) \\\\ x-3 & (x \\ge 3) \\end{cases}$에 대하여",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "함수 $f(x) = \\begin{cases} 2x(3-x) & (x < 3) \\\\ x-3 & (x \\ge 3) \\end{cases}$에 대하여",
+          "supports": [
+            "COND_PIECEWISE_DOMAIN_PARTITION"
+          ],
+          "sha256": "d92b64c4fdd39c441bc079f2710d3f4f853054fa419a35290efa28f593367bbe"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ],
+      "reason": "The stem defines f by explicit piecewise branches split at x<3 and x>=3. The piecewise domain partition is directly stated.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_PIECEWISE_DOMAIN_PARTITION"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_PIECEWISE_DOMAIN_PARTITION"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:ff8c82c36344d867a3819965ca1b16f8fb123fdc8fd629827ee900eb92bd5234",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 19,
+          "sourceQuestionNo": 19,
+          "excerptLocation": "content",
+          "excerptSha256": "d92b64c4fdd39c441bc079f2710d3f4f853054fa419a35290efa28f593367bbe"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 19,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 19,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:ff8c82c36344d867a3819965ca1b16f8fb123fdc8fd629827ee900eb92bd5234",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": 20,
+      "sourceFingerprint": "849824063c00c41d6f1882a651a2b0358fd24e2ff52a3a988ab6aa621a7d93b0",
+      "sourceConditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "$v_B(t) = at$ ($a$는 양수)",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "$v_B(t) = at$ ($a$는 양수)",
+          "supports": [
+            "COND_POSITIVE"
+          ],
+          "sha256": "1fa97232008adaaa7d62b9d46b456b53d8bca57f2ada02a33562934ab6ee5067"
+        },
+        {
+          "location": "solution",
+          "text": "B의 운동 시간은 $m-2$초이며 $m>2$이다.",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "6f65bb8b96fd7cb6562243d248864bf49cfc7840f091a8c4cdd950bed6a65b4d"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "reason": "The stem explicitly says a is positive; the solution explicitly states m>2 for B's motion time. Both labels are literal source statements.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_POSITIVE",
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_POSITIVE",
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:cbde1dd12329aea4ead79eb7c497641c5a2cb05faa57368fefabab79d342dcad",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 20,
+          "sourceQuestionNo": 20,
+          "excerptLocation": "content",
+          "excerptSha256": "1fa97232008adaaa7d62b9d46b456b53d8bca57f2ada02a33562934ab6ee5067"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 20,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 20,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:cbde1dd12329aea4ead79eb7c497641c5a2cb05faa57368fefabab79d342dcad",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": 22,
+      "sourceFingerprint": "5d88783acca1032104c1bedb8262679192ccea2f2e26828b7a83944b05add293",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "(단, $a>1$)",
+      "sourceTextExcerpts": [
+        {
+          "location": "content",
+          "text": "(단, $a>1$)",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "6eb891613c91b8c4528b536d6eecfbf6548c11d34a9e782bbed4edda73534bd2"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The stem explicitly imposes a>1. COND_RANGE is literal source text.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:24bbe20777bdc1cd23dbde60d1a09540f8319317fda41f16e76022997d5f3993",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 22,
+          "sourceQuestionNo": 22,
+          "excerptLocation": "content",
+          "excerptSha256": "6eb891613c91b8c4528b536d6eecfbf6548c11d34a9e782bbed4edda73534bd2"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 22,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 22,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:24bbe20777bdc1cd23dbde60d1a09540f8319317fda41f16e76022997d5f3993",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_29242b5ac7bfa6890c5d31a3a74dab90d6be9e6981dc88a52050e1f6dbebe0dd",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": 23,
+      "sourceFingerprint": "dbe97f11e546e112d445fe0243fa35914be61fdecd1d70dda1ce0c25751b6fed",
+      "sourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "auditedConditionKeys": [],
+      "sourceTextExcerpt": "시각은 $t\\ge0$이므로 $t=2$만 가능하다.",
+      "sourceTextExcerpts": [
+        {
+          "location": "solution",
+          "text": "시각은 $t\\ge0$이므로 $t=2$만 가능하다.",
+          "supports": [
+            "COND_RANGE"
+          ],
+          "sha256": "d8deaae1eed286b013a9b2f7502a410669ffdaf64285e188a81157d1e7219f5d"
+        }
+      ],
+      "supportedConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reason": "The source solution explicitly states the time domain t>=0 before selecting t=2. COND_RANGE is directly stated.",
+      "status": "SUPPORTED_BY_EXACT_SOURCE_STATEMENT",
+      "reviewDecision": "NO_BLOCKER",
+      "sourceMetadataBefore": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "auditManifestCorrection": {
+        "audit": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        },
+        "manifest": {
+          "before": {
+            "conditionKeys": []
+          },
+          "after": {
+            "conditionKeys": [
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "correctionRef": "sha256:ff42027f8d4693c489746d36cc95324d528ad7282e525a046743e36d2d8b0662",
+      "evidenceRefs": [
+        {
+          "type": "source",
+          "file": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+          "localFile": "gang23-source.js",
+          "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+          "sha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+          "blobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+          "sourceOrdinal": 23,
+          "sourceQuestionNo": 23,
+          "excerptLocation": "solution",
+          "excerptSha256": "d8deaae1eed286b013a9b2f7502a410669ffdaf64285e188a81157d1e7219f5d"
+        },
+        {
+          "type": "audit",
+          "file": "gang23-audit.json",
+          "driveId": "1k10aV84oxWV4qSSlZTIGR9ZMVZ5hndvx",
+          "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e",
+          "sourceOrdinal": 23,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "manifest",
+          "file": "gang23-manifest.json",
+          "driveId": "1ZXoDSv09VV9MmOUG2FkKyIEiHUGwL74y",
+          "sha256": "10d506ddb4f757f511c66484aa782c1c91274cb427994b2cbc3deab7d0c40edb",
+          "sourceOrdinal": 23,
+          "field": "conditionKeys",
+          "value": []
+        },
+        {
+          "type": "correction",
+          "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+          "ref": "sha256:ff42027f8d4693c489746d36cc95324d528ad7282e525a046743e36d2d8b0662",
+          "relation": "retain exact source conditionKeys and correct only the empty audited conditionKeys"
+        }
+      ]
+    }
+  ],
+  "proposedPatch": {
+    "schemaVersion": "meta-pipeline-source-condition-corrections-v1",
+    "operation": "PATCH_EMPTY_AUDITED_CONDITION_KEYS_FROM_EXACT_SOURCE",
+    "targetFiles": [
+      "gang23-audit.json",
+      "gang23-manifest.json"
+    ],
+    "productionTarget": "archive/data/question_metadata.json",
+    "precondition": "For each listed questionUid, audited conditionKeys must still be []; never overwrite a non-empty value and never alter source, student payload, or QA status.",
+    "records": [
+      {
+        "questionUid": "qid_v1_b0c51ed3b66bc7e496bd75a7fdd4e565a933031a42ef105f1e41d0a4845570f9",
+        "sourceOrdinal": 6,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:aa0f30974e63bbffd2cadec452c350c7e7ead9d35e190c8d68e13270c5d24d08"
+      },
+      {
+        "questionUid": "qid_v1_f58e8657047bbc40548e0ae006ddd51d8184e72430362678d66474a6a8902854",
+        "sourceOrdinal": 7,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:803ac598fe4b516e46cc93a2dc799b54c90e6f85fd78471192ff6f55694686d5"
+      },
+      {
+        "questionUid": "qid_v1_af45375f1f36e0af80945f3b1537a0cc27ab0be96694d68d7fbf49ef585f9a84",
+        "sourceOrdinal": 11,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_FUNCTION_INJECTIVE",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "recordCorrectionRef": "sha256:5375c6416eb7c7fbfc35cb7bc953c7bf34bde0e3b8c2c79078d35dbaf6049364"
+      },
+      {
+        "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+        "sourceOrdinal": 13,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_POSITIVE",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "recordCorrectionRef": "sha256:bfd5d5d3c98da20acd6707692150f27b4bf57056643a7344bed8a0e6c6981ae0"
+      },
+      {
+        "questionUid": "qid_v1_3134669e204dd96f17396b2c3f6a886d95d034c9f63cc72a5c392a2398742b17",
+        "sourceOrdinal": 14,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:b661e6c01a25390c192dce3fc4025c9cc3597857876d44842048e4798dc94110"
+      },
+      {
+        "questionUid": "qid_v1_f89cf382d81a5362513f88a552c020e610bf801dbb48f19ddc09a1213ead6497",
+        "sourceOrdinal": 15,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:e5f22c4c232d8e30bf61970c916bb2b58fed11ecd073dc0808078df50a720af6"
+      },
+      {
+        "questionUid": "qid_v1_b5598531be2bfb8be7b15ee1e66c26003fa1fa2fe5cc0081adea7d26916f520f",
+        "sourceOrdinal": 17,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "recordCorrectionRef": "sha256:6dd068651872f73de8316ab1a2c1fefdcec08fddfbb5cac687c8413f5a43d1ff"
+      },
+      {
+        "questionUid": "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
+        "sourceOrdinal": 18,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:39d7d2c9ecf14bbdf7f67e6611e978a410fd73c48aff2eafc3d24910509a5f3d"
+      },
+      {
+        "questionUid": "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
+        "sourceOrdinal": 19,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "recordCorrectionRef": "sha256:ff8c82c36344d867a3819965ca1b16f8fb123fdc8fd629827ee900eb92bd5234"
+      },
+      {
+        "questionUid": "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
+        "sourceOrdinal": 20,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:cbde1dd12329aea4ead79eb7c497641c5a2cb05faa57368fefabab79d342dcad"
+      },
+      {
+        "questionUid": "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030",
+        "sourceOrdinal": 22,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:24bbe20777bdc1cd23dbde60d1a09540f8319317fda41f16e76022997d5f3993"
+      },
+      {
+        "questionUid": "qid_v1_29242b5ac7bfa6890c5d31a3a74dab90d6be9e6981dc88a52050e1f6dbebe0dd",
+        "sourceOrdinal": 23,
+        "beforeConditionKeys": [],
+        "afterConditionKeys": [
+          "COND_RANGE"
+        ],
+        "recordCorrectionRef": "sha256:ff42027f8d4693c489746d36cc95324d528ad7282e525a046743e36d2d8b0662"
+      }
+    ],
+    "sourceConditionCorrectionRef": "sha256:ae7e7d2c14f92a9e5d30e4983c77d124c37328193c96cf799389d0d5ef676ce9"
+  },
+  "proof": {
+    "auditedIntegrationPatterns": true,
+    "auditedIntegrationPatternValues": {
+      "1": "SEQUENTIAL",
+      "2": "SEQUENTIAL",
+      "3": "SEQUENTIAL",
+      "4": "SEQUENTIAL",
+      "5": "SEQUENTIAL",
+      "6": "SEQUENTIAL",
+      "7": "SEQUENTIAL",
+      "8": "SEQUENTIAL",
+      "9": "SEQUENTIAL",
+      "10": "SEQUENTIAL",
+      "11": "SEQUENTIAL",
+      "12": "SEQUENTIAL",
+      "13": "SEQUENTIAL",
+      "14": "SEQUENTIAL",
+      "15": "SEQUENTIAL",
+      "16": "SEQUENTIAL",
+      "17": "SEQUENTIAL",
+      "18": "SEQUENTIAL",
+      "19": "SEQUENTIAL",
+      "20": "SEQUENTIAL",
+      "21": "SEQUENTIAL",
+      "22": "SEQUENTIAL",
+      "23": "SEQUENTIAL",
+      "24": "SEQUENTIAL",
+      "25": "SEQUENTIAL"
+    },
+    "integrationPatternDiffs": [
+      {
+        "questionUid": "qid_v1_bc0f3ff90968dd0750c70ef9d8273c6039ad4f6996b3aeea34fab5167a644a19",
+        "sourceOrdinal": 1,
+        "sourceIntegrationPattern": "NONE",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_59dee21fa1724314ca761a3c675ba651e11b9cf63a449b175e503104cd9c73e5",
+        "sourceOrdinal": 2,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950",
+        "sourceOrdinal": 5,
+        "sourceIntegrationPattern": "NONE",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_f58e8657047bbc40548e0ae006ddd51d8184e72430362678d66474a6a8902854",
+        "sourceOrdinal": 7,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5",
+        "sourceOrdinal": 9,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_af45375f1f36e0af80945f3b1537a0cc27ab0be96694d68d7fbf49ef585f9a84",
+        "sourceOrdinal": 11,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+        "sourceOrdinal": 13,
+        "sourceIntegrationPattern": "CASE_BRANCH",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_f89cf382d81a5362513f88a552c020e610bf801dbb48f19ddc09a1213ead6497",
+        "sourceOrdinal": 15,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8",
+        "sourceOrdinal": 16,
+        "sourceIntegrationPattern": "REINTERPRETATION",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_b5598531be2bfb8be7b15ee1e66c26003fa1fa2fe5cc0081adea7d26916f520f",
+        "sourceOrdinal": 17,
+        "sourceIntegrationPattern": "CASE_BRANCH",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
+        "sourceOrdinal": 19,
+        "sourceIntegrationPattern": "CASE_BRANCH",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      },
+      {
+        "questionUid": "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
+        "sourceOrdinal": 20,
+        "sourceIntegrationPattern": "INTERDEPENDENT",
+        "auditedIntegrationPattern": "SEQUENTIAL"
+      }
+    ],
+    "sourceConditionCorrectionRef": "sha256:ae7e7d2c14f92a9e5d30e4983c77d124c37328193c96cf799389d0d5ef676ce9",
+    "correctionRefAlgorithm": "sha256 of JSON.stringify({schemaVersion, questionUid, sourceOrdinal, sourceConditionKeys, auditedConditionKeys}); global ref is sha256 of the newline-joined per-record refs.",
+    "canonicalParentProof": {
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceFileDriveId": "1RfgEJmJudFWVd0QSJ8fFgqAq_hHtZ16S",
+      "sourceSha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+      "sourceBlobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+      "expectedSourceSha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+      "sourceSha256Verified": true,
+      "uidAlgorithm": "qid_v1_ + sha256(normalizeNfc(sourceArchiveFile) + \"#\" + sourceOrdinal)",
+      "uidOrdinalBasis": "1-based original question array position",
+      "uidCount": 25,
+      "uidUniqueCount": 25,
+      "ordinalsContiguous": true,
+      "identityMapFound": true,
+      "identityMapFile": "question_identity_map.json",
+      "identityMapSha256": "dcef150825fc1603be7ffb66b7368c552b5e5cdace08659f3abb20884160c443",
+      "identityMapUidMatchCount": 25,
+      "sourceFingerprintCount": 25,
+      "verificationIndexFound": false,
+      "verificationIndexFile": null,
+      "verificationIndexSha256": null,
+      "verificationIndexUidMatchCount": 0
+    },
+    "mutationPolicy": {
+      "sourceFileMutation": false,
+      "studentPayloadMutation": false,
+      "qaStatusMutation": false,
+      "existingDefinitionMutation": false,
+      "auditedConditionKeysOnlyIfCurrentlyEmpty": true,
+      "auditedIntegrationPatternsPreserved": true
+    }
+  },
+  "guardrails": [
+    "All source exam content is unchanged; the source file is read only and its SHA-256 is verified.",
+    "No student payload, answer, solution, or source metadata is modified.",
+    "No QA status or review status is changed.",
+    "Existing definitions and semantics are not changed.",
+    "Only the 12 empty audited/manifest conditionKeys are proposed for additive source-key correction.",
+    "The 12 source condition labels were reviewed only against literal source statements; no mathematics was re-solved.",
+    "Audited integrationPattern values are preserved exactly; legacy source integrationPattern values are recorded only in sourceMetadataBefore."
+  ],
+  "blockers": []
+}

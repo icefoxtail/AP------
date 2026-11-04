@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "meta-pipeline-targeted-audit-corrections-v1",
+  "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "sourceSha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+  "sourceBlobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+  "reviewer": {
+    "id": "CODEX_ROOT",
+    "role": "CODEX_META_PIPELINE_COURIER"
+  },
+  "records": [
+    {
+      "questionUid": "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8",
+      "sourceOrdinal": 16,
+      "originalDifficultyReason": "피적분함수를 전개하거나 부분적분 구조로 합쳐 [x^2 f(x)]_1^2 구조를 도출하고 주어진 적분 등식에 연립하여 상수 a=3을 결정하는 4단계 정적분 구조 해석 문항으로 기존 난이도 Bucket 4를 불변 보존한다.",
+      "correctedDifficultyReason": "곱의 미분법으로 [(x²+x)f(x)]₁²=-12를 계산해 a=4를 얻고, 주어진 정적분을 계산한다. 원본 난이도 Bucket 4를 보존한다.",
+      "originalCrossConceptKeys": [
+        "CC_INTEGRATION_BY_PARTS_OR_EXPANSION",
+        "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING"
+      ],
+      "correctedCrossConceptKeys": [
+        "CC_INTEGRATION_BY_PARTS_OR_EXPANSION",
+        "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING"
+      ],
+      "sourceTextExcerpt": "16. 이차함수 $f(x)=x^2-(a+1)x+a$가\n$\\int_1^2 (x^2+x)f'(x)dx + \\int_1^2 (2x+1)f(x)dx = -12$\n를 만족시킬 때, $\\int_1^a f(x)dx$의 값은? (단, $a$는 상수이다.) [4.0점]",
+      "sourceSolutionExcerpt": "$\\displaystyle\\{(x^2+x)f(x)\\}'=(2x+1)f(x)+(x^2+x)f'(x)$",
+      "reason": "원본 감사의 [x²f(x)]와 a=3은 실제 해설 및 정답과 다르다. 감사 원문은 그대로 보존한다."
+    },
+    {
+      "questionUid": "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
+      "sourceOrdinal": 21,
+      "originalDifficultyReason": "대칭성 f(-x)=f(x)와 구간 덧셈 정리 int_-3^5 f(x)dx를 분할 전개하고 주어진 구간 적분 조건들을 결합하여 최종 정적분 값을 도출하는 4단계 대칭 정적분 문항으로 기존 난이도 Bucket 4를 불변 보존한다.",
+      "correctedDifficultyReason": "f(x)+f(-x)=0에서 f가 홀함수임을 확인하고, 대칭구간 적분과 구간 가법성으로 주어진 정적분을 계산한다. 원본 난이도 Bucket 4를 보존한다.",
+      "originalCrossConceptKeys": [
+        "CC_SYMMETRIC_FUNCTION_PERIODIC_INTEGRATION",
+        "CC_INTERVAL_ADDITIVITY_PROPERTY"
+      ],
+      "correctedCrossConceptKeys": [
+        "CC_ODD_EVEN_FUNCTION_INTEGRATION",
+        "CC_INTERVAL_ADDITIVITY_PROPERTY"
+      ],
+      "sourceTextExcerpt": "21. 실수 전체의 집합에서 연속인 함수 $f(x)$가 다음 조건을 만족시킬 때, $\\int_{-3}^5 \\{4x+f(x)\\}dx$의 값은? [4.5점]\n\n<조건>\n(가) 모든 실수 $x$에 대하여 $f(x)+f(-x)=0$이다.\n(나) $\\int_{-2}^3 f(x)dx = 6$\n(다) $\\int_{-5}^{-2} f(x)dx = -20$",
+      "sourceSolutionExcerpt": "(가)에서 $f(-x)=-f(x)$이므로 $f$는 홀함수이다.",
+      "reason": "원본 감사의 f(-x)=f(x)와 주기성 태그는 실제 발문에 없는 값이다. 같은 감사 9번의 미승격 홀·짝함수 정적분 키를 정확한 개념으로 재사용한다."
+    }
+  ]
+}

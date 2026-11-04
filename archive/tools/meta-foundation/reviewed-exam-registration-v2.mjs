@@ -69,6 +69,16 @@ export function isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorT
   return ["problemTypeKey", "templateKey"].includes(field) && approved(current) &&
     priorTypeStatus === "ACTIVE" && !["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType);
 }
+export function isAuditedPendingIntegrationRebindAllowed({ current, question, patch, final, auditedPattern }) {
+  return current.metadataStatus === "registration_pending_semantic_review" && !approved(current) &&
+    !["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType) &&
+    typeof auditedPattern === "string" && auditedPattern.trim().length > 0 &&
+    Object.hasOwn(patch.before || {}, "integrationPattern") &&
+    eq(patch.before.integrationPattern ?? null, current.integrationPattern ?? null) &&
+    Object.hasOwn(patch.sourceMetadataBefore || {}, "integrationPattern") &&
+    eq(patch.sourceMetadataBefore.integrationPattern ?? null, question.integrationPattern ?? null) &&
+    final.integrationPattern === auditedPattern;
+}
 export function isSopPendingSourceNamespaceCorrectionAllowed({ field, current, question, patch, final, audited, resolved }) {
   if (!["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"].includes(field) ||
       current.metadataStatus !== "registration_pending_semantic_review" ||
@@ -120,6 +130,18 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
   const priorType = field === "problemTypeKey" ? beforeTables?.pt.get(current.problemTypeKey)
     : field === "templateKey" ? beforeTables?.tpl.get(current.templateKey) : null;
   const exactAuditedTypeRebind = isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorTypeStatus: priorType?.status });
+  const sourceCrossCorrection = metaPipelineAudit?.sourceCrossConceptCorrections?.find(row => row.questionUid === current.questionUid);
+  if (field === "crossConceptKeys" && sourceCrossCorrection) {
+    return approvalType === "META_PIPELINE_AUDIT" && current.metadataStatus === "registration_pending_semantic_review" &&
+      !approved(current) && Object.hasOwn(patch.before || {}, field) && eq(patch.before[field] ?? null, current[field] ?? null) &&
+      Object.hasOwn(patch.sourceMetadataBefore || {}, field) && eq(patch.sourceMetadataBefore[field], question[field]) &&
+      eq(final[field], sourceCrossCorrection.crossConceptKeys);
+  }
+  if (field === "integrationPattern") {
+    const evidence = metaPipelineAudit?.auditedIntegrations?.find(row => row.questionUid === current.questionUid);
+    return approvalType === "META_PIPELINE_AUDIT" && Boolean(evidence) &&
+      isAuditedPendingIntegrationRebindAllowed({ current, question, patch, final, auditedPattern: evidence.pattern });
+  }
   if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit ||
       approved(current) && !fieldExplicitlyPending && !additiveApprovedConcepts && !exactAuditedTypeRebind && !exactFlatV3DifficultyRebind ||
       !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "difficultyBucket"].includes(field) ||
@@ -493,7 +515,121 @@ export function isSourceConditionEvidenceDebtAllowed({ debt, flatV3, rawRow, can
     Boolean(requireText(debt.reason, "conditionKeys EVIDENCE_DEBT reason"));
 }
 
-function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items, registryChanges }) {
+// Preserve an explicit source condition that a paired v2 audit omitted, only
+// with a separate source-bound, per-UID human correction record.
+export function validateSourceConditionCorrections({ corrections, source, sourceSha256, sourceBlobSha1, bank, items, rawAudit, manifest, ref }) {
+  if (!corrections || corrections.schemaVersion !== "meta-pipeline-source-condition-corrections-v1" ||
+      corrections.sourceArchiveFile !== source || corrections.sourceSha256 !== sourceSha256 ||
+      corrections.sourceBlobSha1 !== sourceBlobSha1 || corrections.reviewer?.role !== "CODEX_META_PIPELINE_COURIER" ||
+      !corrections.reviewer?.id || !Array.isArray(corrections.records) || !corrections.records.length)
+    fail("source Condition correction identity/reviewer mismatch");
+  const seen = new Set();
+  return corrections.records.map(row => {
+    const ordinal = Number(row.sourceOrdinal), question = bank[ordinal - 1];
+    const patch = (items || []).find(item => Number(item.sourceOrdinal) === ordinal);
+    const audited = (rawAudit.records || []).find(item => Number(item.questionId) === ordinal);
+    const manifestRow = (manifest.recordsToBind || []).find(item => Number(item.questionId) === ordinal);
+    const compact = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+    const excerpts = Array.isArray(row.sourceTextExcerpts) ? row.sourceTextExcerpts :
+      row.sourceConditionKeys?.length === 1 ? [{ text: row.sourceTextExcerpt, supports: row.sourceConditionKeys }] : [];
+    const supported = key => excerpts.some(entry => {
+      if (!entry?.text || !Array.isArray(entry.supports) || !entry.supports.includes(key) ||
+          ![undefined, "content", "solution"].includes(entry.location)) return false;
+      const values = entry.location === "content" ? [question?.content ?? question?.question] :
+        entry.location === "solution" ? [question?.solution] : [question?.content ?? question?.question, question?.solution];
+      return values.some(value => compact(value).includes(compact(entry.text)));
+    });
+    if (!Number.isInteger(ordinal) || seen.has(ordinal) || !question || !patch || !audited || !manifestRow ||
+        row.questionUid !== patch.questionUid || !Array.isArray(row.sourceConditionKeys) || !row.sourceConditionKeys.length ||
+        JSON.stringify(row.sourceConditionKeys) !== JSON.stringify(question.conditionKeys) || !eq(row.sourceConditionKeys, patch.before?.conditionKeys) ||
+        !eq(row.auditedConditionKeys, audited.conditionKeys || []) || !eq(row.auditedConditionKeys, manifestRow.conditionKeys || []) ||
+        !eq(patch.after?.conditionKeys, [...new Set([...row.auditedConditionKeys, ...row.sourceConditionKeys])]) ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256) ||
+        !row.reason || row.sourceConditionKeys.some(key => !supported(key)))
+      fail(`source Condition correction item/evidence mismatch: ${ordinal}`);
+    seen.add(ordinal);
+    return { ordinal, questionUid: row.questionUid, conditionKeys: patch.after.conditionKeys, ref };
+  });
+}
+
+export function validateSourceCrossConceptCorrections({ corrections, source, sourceSha256, sourceBlobSha1, bank, items, rawAudit, manifest, ref, targetedAuditCorrections = [] }) {
+  if (!corrections || corrections.schemaVersion !== "meta-pipeline-source-crossconcept-corrections-v1" ||
+      corrections.sourceArchiveFile !== source || corrections.sourceSha256 !== sourceSha256 ||
+      corrections.sourceBlobSha1 !== sourceBlobSha1 || corrections.reviewer?.role !== "CODEX_META_PIPELINE_COURIER" ||
+      !corrections.reviewer?.id || !Array.isArray(corrections.records) || !corrections.records.length)
+    fail("source CrossConcept correction identity/reviewer mismatch");
+  const seen = new Set();
+  return corrections.records.map(row => {
+    const ordinal = Number(row.sourceOrdinal), question = bank[ordinal - 1];
+    const patch = (items || []).find(item => Number(item.sourceOrdinal) === ordinal);
+    const audited = (rawAudit.records || []).find(item => Number(item.questionId) === ordinal);
+    const manifestRow = (manifest.recordsToBind || []).find(item => Number(item.questionId) === ordinal);
+    const compact = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+    const targeted = targetedAuditCorrections.find(entry => entry.ordinal === ordinal);
+    const effectiveAudited = targeted ? targeted.correctedCrossConceptKeys : row.auditedCrossConceptKeys;
+    const expected = [...new Set([...(effectiveAudited || []), ...(row.sourceCrossConceptKeys || [])])];
+    const excerpts = Array.isArray(row.sourceTextExcerpts) ? row.sourceTextExcerpts :
+      row.sourceCrossConceptKeys?.length === 1 ? [{ text: row.sourceTextExcerpt, supports: row.sourceCrossConceptKeys }] : [];
+    const supported = key => excerpts.some(entry => {
+      if (!entry?.text || !Array.isArray(entry.supports) || !entry.supports.includes(key) ||
+          ![undefined, "content", "solution"].includes(entry.location)) return false;
+      const values = entry.location === "content" ? [question?.content ?? question?.question] :
+        entry.location === "solution" ? [question?.solution] : [question?.content ?? question?.question, question?.solution];
+      return values.some(value => compact(value).includes(compact(entry.text)));
+    });
+    if (!Number.isInteger(ordinal) || seen.has(ordinal) || !question || !patch || !audited || !manifestRow ||
+        row.questionUid !== patch.questionUid || !Array.isArray(row.sourceCrossConceptKeys) || !row.sourceCrossConceptKeys.length ||
+        JSON.stringify(row.sourceCrossConceptKeys) !== JSON.stringify(question.crossConceptKeys) ||
+        !eq(row.sourceCrossConceptKeys, patch.before?.crossConceptKeys) ||
+        !eq(row.auditedCrossConceptKeys, audited.crossConceptKeys || []) || !eq(row.auditedCrossConceptKeys, manifestRow.crossConceptKeys || []) ||
+        (targeted && !eq(row.correctedAuditedCrossConceptKeys, effectiveAudited)) ||
+        !eq(patch.after?.crossConceptKeys, expected) || expected.length <= effectiveAudited.length ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256) ||
+        !row.reason || row.sourceCrossConceptKeys.some(key => !supported(key)))
+      fail(`source CrossConcept correction item/evidence mismatch: ${ordinal}`);
+    seen.add(ordinal);
+    return { ordinal, questionUid: row.questionUid, crossConceptKeys: expected, ref };
+  });
+}
+
+export function validateTargetedAuditCorrections({ corrections, source, sourceSha256, sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest, ref, existingConceptKeys, replayAddedConceptKeys = new Set() }) {
+  if (!corrections || corrections.schemaVersion !== "meta-pipeline-targeted-audit-corrections-v1" ||
+      corrections.sourceArchiveFile !== source || corrections.sourceSha256 !== sourceSha256 || corrections.sourceBlobSha1 !== sourceBlobSha1 ||
+      corrections.reviewer?.role !== "CODEX_META_PIPELINE_COURIER" || !corrections.reviewer?.id ||
+      !Array.isArray(corrections.records) || !corrections.records.length)
+    fail("targeted audit correction identity/reviewer mismatch");
+  const seen = new Set(), records = rawAudit.records || [];
+  return corrections.records.map(row => {
+    const ordinal = Number(row.sourceOrdinal), question = bank[ordinal - 1];
+    const patch = (items || []).find(item => Number(item.sourceOrdinal) === ordinal);
+    const audited = records.find(item => Number(item.questionId) === ordinal);
+    const candidate = (classificationPackage?.records || []).find(item => Number(item.questionId) === ordinal);
+    const manifestRow = (manifest.recordsToBind || []).find(item => Number(item.questionId) === ordinal);
+    const compact = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+    const original = row.originalCrossConceptKeys, corrected = row.correctedCrossConceptKeys;
+    if (!Number.isInteger(ordinal) || seen.has(ordinal) || !question || !patch || !audited || !candidate || !manifestRow ||
+        row.questionUid !== patch.questionUid || !Array.isArray(original) || !Array.isArray(corrected) ||
+        !eq(original, audited.crossConceptKeys) || !eq(original, candidate.crossConceptKeys) || !eq(original, manifestRow.crossConceptKeys) ||
+        row.originalDifficultyReason !== audited.difficultyReason || row.originalDifficultyReason !== candidate.difficultyReason ||
+        row.originalDifficultyReason !== manifestRow.difficultyReason || !row.correctedDifficultyReason || !row.reason ||
+        !row.sourceTextExcerpt || !row.sourceSolutionExcerpt ||
+        !compact(question.content ?? question.question).includes(compact(row.sourceTextExcerpt)) ||
+        !compact(question.solution).includes(compact(row.sourceSolutionExcerpt)) ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256) ||
+        new Set(corrected).size !== corrected.length || corrected.some(key => !/^CC_[A-Z0-9_]+$/.test(key || "")))
+      fail(`targeted audit correction item/evidence mismatch: ${ordinal}`);
+    const removed = original.filter(key => !corrected.includes(key)), added = corrected.filter(key => !original.includes(key));
+    if (removed.length !== added.length || removed.length > 1 || removed.some(key => existingConceptKeys.has(key)) ||
+        added.some(key => existingConceptKeys.has(key) && !replayAddedConceptKeys.has(key)) || removed.some(key => records.some(r => Number(r.questionId) !== ordinal && (r.crossConceptKeys || []).includes(key))) ||
+        added.some(key => !records.some(r => Number(r.questionId) !== ordinal && (r.crossConceptKeys || []).includes(key))))
+      fail(`targeted audit correction cannot merge existing meanings: ${ordinal}`);
+    seen.add(ordinal);
+    return { ordinal, questionUid: row.questionUid, originalCrossConceptKeys: original,
+      correctedCrossConceptKeys: corrected, correctedDifficultyReason: row.correctedDifficultyReason, ref };
+  });
+}
+
+function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items, registryChanges, requestId, requestSha256 }) {
   if (approval.type !== "META_PIPELINE_AUDIT") return null;
   const proof = approval.metaPipelineAudit;
   const proofV1 = proof?.schemaVersion === "meta-pipeline-audit-approval-v1";
@@ -541,6 +677,34 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     Boolean(rawAudit.records?.[0]?.difficulty) && Number.isInteger(rawAudit.totalQuestions) &&
     Number.isInteger(rawAudit.totalApproved) && Number.isInteger(rawAudit.totalHold);
   const auditV2 = rawAudit.schemaVersion === "META_AUDIT_ATOMIC_PACKAGE_v2";
+  if (proof.targetedAuditCorrectionRef && (!auditV2 || !proofV2))
+    fail("targeted audit correction requires paired atomic v2 audit");
+  const currentConcepts = proof.targetedAuditCorrectionRef ? lookup(registryPlan(root, [], () => {})).cc : new Map();
+  const previousPath = proof.targetedAuditCorrectionRef ? safePath(root, `${RECEIPTS}/${requestId}.json`) : null;
+  const previous = previousPath && fs.existsSync(previousPath) ? JSON.parse(fs.readFileSync(previousPath, "utf8")) : null;
+  const validReplay = previous?.metadataRegistrationStatus === "REGISTERED" && previous.requestSha256 === requestSha256 &&
+    previous.sourceRawSha256 === digest(sourceBytes);
+  const replayAddedConceptKeys = new Set(validReplay ? (registryChanges || []).filter(change =>
+    change.collection === "concepts" && change.before === null && change.after?.conceptKey &&
+      eq(currentConcepts.get(change.after.conceptKey), change.after)).map(change => change.after.conceptKey) : []);
+  const targetedAuditCorrections = proof.targetedAuditCorrectionRef
+    ? validateTargetedAuditCorrections({ corrections: readEvidence(proof.targetedAuditCorrectionRef, "targeted audit correction"),
+      source, sourceSha256: digest(sourceBytes), sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest,
+      ref: proof.targetedAuditCorrectionRef, existingConceptKeys: new Set(currentConcepts.keys()), replayAddedConceptKeys })
+    : [];
+  if (proof.sourceCrossConceptCorrectionRef && (!auditV2 || !proofV2))
+    fail("source CrossConcept correction requires paired atomic v2 audit");
+  const sourceCrossConceptCorrections = proof.sourceCrossConceptCorrectionRef
+    ? validateSourceCrossConceptCorrections({ corrections: readEvidence(proof.sourceCrossConceptCorrectionRef, "source CrossConcept correction"),
+      source, sourceSha256: digest(sourceBytes), sourceBlobSha1, bank, items, rawAudit, manifest,
+      ref: proof.sourceCrossConceptCorrectionRef, targetedAuditCorrections })
+    : [];
+  if (proof.sourceConditionCorrectionRef && (!auditV2 || !proofV2))
+    fail("source Condition correction requires paired atomic v2 audit");
+  const sourceConditionCorrections = proof.sourceConditionCorrectionRef
+    ? validateSourceConditionCorrections({ corrections: readEvidence(proof.sourceConditionCorrectionRef, "source Condition correction"),
+      source, sourceSha256: digest(sourceBytes), sourceBlobSha1, bank, items, rawAudit, manifest, ref: proof.sourceConditionCorrectionRef })
+    : [];
   if (proof.targetedRecoveryRef && !auditV3SourceDriveFlat)
     fail("targeted recovery supplement requires sourceDrive flat v3 audit");
   const targetedRecovery = proof.targetedRecoveryRef
@@ -592,9 +756,18 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       ? [...new Set((rawAudit.records || []).flatMap(row => row.crossConceptKeys || []))]
       : rawAudit.boundAtomicCrossConcepts;
     if (!Array.isArray(rawKeys)) fail(`META_PIPELINE_AUDIT ${auditV3SourceDriveFlat ? "sourceDrive v3" : "v2"} CrossConcept keys required`);
-    const conceptKeys = rawKeys.map(row => typeof row === "string" ? row : row?.conceptKey);
-    if (conceptKeys.some(key => !/^CC_[A-Z0-9_]+$/.test(key || "")) || new Set(conceptKeys).size !== conceptKeys.length)
+    const originalConceptKeys = rawKeys.map(row => typeof row === "string" ? row : row?.conceptKey);
+    if (originalConceptKeys.some(key => !/^CC_[A-Z0-9_]+$/.test(key || "")) || new Set(originalConceptKeys).size !== originalConceptKeys.length)
       fail(`META_PIPELINE_AUDIT ${auditV3SourceDriveFlat ? "sourceDrive v3" : "v2"} CrossConcept key list invalid`);
+    if (targetedAuditCorrections.length) {
+      const rawRecords = (rawAudit.records || []).map(row => ({ classification: { crossConceptKeys: row.crossConceptKeys } }));
+      const rawUsed = [...new Set(rawRecords.flatMap(row => row.classification.crossConceptKeys || []))].sort();
+      if (!eq([...originalConceptKeys].sort(), rawUsed) || !metaPipelineCrossConceptCountMatches(rawAudit.statistics, { records: rawRecords }))
+        fail("targeted audit correction original CrossConcept statistics mismatch");
+    }
+    const conceptKeys = targetedAuditCorrections.length
+      ? [...new Set(rawAudit.records.flatMap(row => targetedAuditCorrections.find(entry => entry.ordinal === Number(row.questionId))?.correctedCrossConceptKeys || row.crossConceptKeys || []))]
+      : originalConceptKeys;
     // The request-level evidence gate has already SHA-verified every registry
     // change before this adapter is called. Compile the current and proposed
     // states so legacy key-only audits can use an unchanged active definition
@@ -679,6 +852,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
           !["IMAGE", "SVG", "SVG_IMAGE", "NONE"].includes(readingEvidence.visualType)))
         fail(`META_PIPELINE_AUDIT v3 key-only reading evidence incomplete: ${ordinal}`);
       const normalizedReadingEvidence = flatV3 ? row.readingEvidence : readingEvidence;
+      const targetedCorrection = targetedAuditCorrections.find(entry => entry.ordinal === ordinal);
       return {
         questionId: ordinal,
         standardCourse: row.standardCourse,
@@ -691,7 +865,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
           status: "APPROVED_CANONICAL",
           problemTypeKey: row.problemTypeKey,
           templateKey: row.templateKey,
-          crossConceptKeys,
+          crossConceptKeys: targetedCorrection?.correctedCrossConceptKeys || crossConceptKeys,
           conditionKeys,
           targetPack: flatV3 ? row.pack : row.targetPack,
           assignedPack: flatV3 ? row.pack : row.assignedPack,
@@ -705,7 +879,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         } : { legacyV2Evidence: {
           sourceTextExcerpt: readingEvidence?.sourceTextExcerpt || candidate.contentSnippet,
           solutionDecisiveExcerpt: readingEvidence?.solutionDecisiveExcerpt || null,
-          difficultyReason: row.difficultyReason,
+          difficultyReason: targetedCorrection?.correctedDifficultyReason || row.difficultyReason,
           auditRemarks: row.auditRemarks,
           hasImage: candidate.hasImage,
           visualAssetChecked: readingEvidence?.visualAssetChecked ?? false,
@@ -808,6 +982,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const parityRecords = unique(sourceParity.records, "sourceOrdinal", "source parity ordinal");
   const patches = unique(items || [], "sourceOrdinal", "META_PIPELINE_AUDIT sourceOrdinal");
   const conditionDebtUids = [];
+  const auditedIntegrations = [];
+  if (proof.auditedIntegrationPatterns && (!auditV2 || proof.auditedIntegrationPatterns !== true))
+    fail("audited integration patterns require atomic v2 audit");
   if (patches.size !== expectedQuestionCount || bank.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT request denominator mismatch");
   for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
     const record = records.get(ordinal), manifestRow = manifestRecords.get(ordinal), parityRow = parityRecords.get(ordinal), patch = patches.get(ordinal);
@@ -858,8 +1035,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       const manifestUnitsMatch = !(pairedLegacyInput || auditV3SourceDriveFlat) || manifestRow?.standardUnitKey === record.standardUnitKey &&
         manifestRow?.subUnitKey === record.subUnitKey &&
         (manifestRow.targetPack || manifestRow.pack) === classification.targetPack;
+      const originalAuditedCross = targetedAuditCorrections.find(entry => entry.ordinal === ordinal)?.originalCrossConceptKeys || classification.crossConceptKeys;
       if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
-          !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, classification.crossConceptKeys) ||
+          !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, originalAuditedCross) ||
           !manifestConditionsMatch || !manifestUnitsMatch)
         fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
     }
@@ -893,6 +1071,12 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       fail(`META_PIPELINE_AUDIT SOP_v1.2 audited binding limits violated: ${ordinal}`);
     const rawRow = (rawAudit.records || []).find(row => Number(row.questionId) === ordinal);
     const candidateRow = (classificationPackage?.records || []).find(row => Number(row.questionId) === ordinal);
+    if (proof.auditedIntegrationPatterns) {
+      const pattern = requireText(rawRow?.integrationPattern, `audited integration pattern ${ordinal}`);
+      if (manifestRow?.integrationPattern !== pattern || patch?.after?.integrationPattern !== pattern)
+        fail(`audited integration pattern/manifest mismatch: ${ordinal}`);
+      auditedIntegrations.push({ questionUid: patch.questionUid, pattern });
+    }
     const conditionDebt = (proof.unreviewedFields || []).find(row => row.field === "conditionKeys" &&
       row.status === "EVIDENCE_DEBT" && Array.isArray(row.questionUids) && row.questionUids.includes(patch?.questionUid));
     const explicitConditionDebt = isSourceConditionEvidenceDebtAllowed({ debt: conditionDebt,
@@ -902,8 +1086,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
-        !eq(after.crossConceptKeys, classification.crossConceptKeys) || (!auditV4 && !eq(after.conditionKeys,
-          targetedRecovery?.ordinal === ordinal ? targetedRecovery.conditionKeys : explicitConditionDebt ? null : classification.conditionKeys || [])) ||
+        !eq(after.crossConceptKeys, sourceCrossConceptCorrections.find(row => row.ordinal === ordinal)?.crossConceptKeys || classification.crossConceptKeys) || (!auditV4 && !eq(after.conditionKeys,
+          targetedRecovery?.ordinal === ordinal ? targetedRecovery.conditionKeys : explicitConditionDebt ? null :
+            sourceConditionCorrections.find(row => row.ordinal === ordinal)?.conditionKeys || classification.conditionKeys || [])) ||
         Boolean(basicParentRef) === Boolean(targetParentRef) || !parentRef ||
         basicParentRef && !/^[a-f0-9]{64}$/.test(basicParentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
@@ -919,7 +1104,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (definition.labelKo.trim() === definition.conceptKey || definition.definition.trim() === definition.conceptKey)
       fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
   }
-  return { audit, manifest, sourceParity, parentBindingCorrection, targetedRecovery, conditionDebtUids, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
+  return { audit, manifest, sourceParity, parentBindingCorrection, targetedRecovery, targetedAuditCorrections, sourceConditionCorrections, sourceCrossConceptCorrections, conditionDebtUids, auditedIntegrations, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
     sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: audit.inputAuditSchemaVersion || rawAudit.schemaVersion,
     inputAuditVariant: auditV4 ? "sop_v12_corrective_review" : auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3"
       : auditV3SourceDriveFlat ? "source_drive_flat_v3" : "atomic_package_v2",
@@ -1634,7 +1819,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const metaPipelineAudit = validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
-    bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [] });
+    bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [],
+    requestId: req.requestId, requestSha256: digest(stable(req)) });
   const read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
   const metadata = read(META), identity = read(IDENTITY);
   const metadataByUid = unique(metadata.records, "questionUid", "metadata UID");
@@ -1856,6 +2042,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       fieldStatus.condition = "approved_r2e_targeted_recovery";
       fieldStatus.integrationPattern = "approved_r2e_targeted_recovery";
     }
+    const sourceConditionCorrection = metaPipelineAudit?.sourceConditionCorrections.find(row => row.questionUid === current.questionUid);
+    if (sourceConditionCorrection) fieldStatus.condition = "approved_source_condition_review";
+    const sourceCrossCorrection = metaPipelineAudit?.sourceCrossConceptCorrections.find(row => row.questionUid === current.questionUid);
+    if (sourceCrossCorrection) fieldStatus.crossConcept = "approved_source_and_meta_pipeline_audit";
+    const targetedAuditCorrection = metaPipelineAudit?.targetedAuditCorrections.find(row => row.questionUid === current.questionUid);
+    if (metaPipelineAudit?.auditedIntegrations.some(row => row.questionUid === current.questionUid))
+      fieldStatus.integrationPattern = "approved_meta_pipeline_audit";
     if (metaPipelineAudit?.conditionDebtUids.includes(current.questionUid)) fieldStatus.condition = "EVIDENCE_DEBT";
     const manualFieldHoldRemains = Object.values(fieldStatus).includes("manual_review_pending");
     const priorPartialHoldResolved = current.reviewStatus === "manual_review" &&
@@ -1872,6 +2065,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const approvalEvidence = metaPipelineAudit
       ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path,
         ...(targetedRecovery ? [targetedRecovery.ref.path] : []),
+        ...(sourceConditionCorrection ? [sourceConditionCorrection.ref.path] : []),
+        ...(sourceCrossCorrection ? [sourceCrossCorrection.ref.path] : []),
+        ...(targetedAuditCorrection ? [targetedAuditCorrection.ref.path] : []),
         ...(sopV12Variant ? [req.approval.metaPipelineAudit.correctiveReviewRef.path] : [])]
       : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
