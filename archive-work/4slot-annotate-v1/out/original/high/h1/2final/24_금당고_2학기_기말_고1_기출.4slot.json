@@ -1,0 +1,1025 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "212a6e99704c35b94f1e2a2e26f7d8bbb989d89f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "antigravity-gemini-2.5-pro",
+    "run": "original-51-60",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "팩토리얼",
+            "src": "stem",
+            "quote": "$n!=24$일 때, 자연수 $n$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "$n!$은 $1$부터 $n$까지의 자연수를 모두 곱한 값이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$n!=24$이므로 $n=4$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "팩토리얼 식을 만족하는 미지수 n을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "유리식 $\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$를 간단히 하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$를 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "분자와 분모를 각각 통분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "=\\dfrac{x-3}{x+3}\\quad(x\\ne0,-3)",
+            "evidenceType": "IMPLIED",
+            "justification": "분모 분자의 공통인수 x를 약분하여 식을 간단히 정리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "$x\\ne0$이다. 또한 전체 분모가 $0$이 되지 않아야 하므로 $x\\ne-3$이다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $f(x)=\\dfrac{1}{x+a}+2$의 그래프의"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선의 방정식이 $x=-2$, $y=b$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "두 상수 $a$, $b$에 대하여 $a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "분모가 $0$이 되는 $x=-a$는 수직점근선이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "또 $\\dfrac{1}{x+a}$의 값이 $0$에 가까워질 때 $y$는 $2$에 가까워지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "분수함수의 평행이동에 따른 점근선 위치 결정"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "${}_{20}C_{18}$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "${}_{20}C_{18}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$ {}_{20}C_{18}={}_{20}C_{20-18}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "$=10\\times19=190$",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 2와 분자의 20을 약분하여 계산"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\sqrt{-x+2}+3$은 $x=a$일 때, 최솟값 $b$를 갖는다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$x=a$일 때, 최솟값 $b$를 갖는다. 두 상수 $a$, $b$에 대하여 $a\\times b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "제곱근 안은 $0$ 이상이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$\\sqrt{-x+2}\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 최솟값 0을 이용해 y의 최솟값을 결정"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=x-3$에 대하여 $f^{-1}(2)=k$를 만족시키는 상수 $k$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "$f(x)=x-3$은 일대일대응이므로 역함수가 존재한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(2)=k\\ \\Longleftrightarrow\\ f(k)=2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$ {}_6P_2=\\dfrac{6!}{(6-2)!}=6\\times5=30"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$ {}_6P_2=\\dfrac{6!}{(6-2)!}=6\\times5=30",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$6\\times5=30$",
+            "evidenceType": "IMPLIED",
+            "justification": "책꽂이 각각에 꽂는 방법의 수를 곱하여 경우의 수를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 책 6권 중에서 2권을 택하여 각각 다른 책꽂이 2개에"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{bx+1}{x+a}$의 그래프의"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선의 방정식이 $x=-1$, $y=2$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$1\\le x\\le2$에서 이 함수의 최댓값과 최솟값의 합은?"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$1\\le x\\le2$에서 이 함수의 최댓값과 최솟값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수직점근선이 $x=-1$이므로 $-a=-1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$1\\le x\\le2$에서 $x+1$은 증가하므로 $\\dfrac{1}{x+1}$은 감소한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "$1\\le x\\le2$에서 이 함수의 최댓값과 최솟값"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$f$는 역함수가 존재한다"
+          },
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "$n(X)=5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "$n(Y)$의 값과 함수 $f$의 개수의 합은?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$n(Y)$의 값과 함수 $f$의 개수의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "역함수가 존재하는 함수는 서로 다른 원소를 서로 다른 원소로 대응시키고, 공역의 모든 원소에 대응되는 원소가 있어야 한다. 즉 일대일대응이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "$5!=5\\times4\\times3\\times2\\times1=120$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$f$는 역함수가 존재한다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=-\\sqrt{2-2x}$의 그래프와 직선 $y=x+k$가"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x+k$가 서로 다른 두 점에서 만나도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "상수 $k$의 값의 범위가 $a<k\\le b$일 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sqrt{2-2x}$로 놓으면 $t\\ge0$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "서로 다른 두 교점이 생기려면 두 $t$가 서로 다르고 모두 $0$ 이상이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "정의역 범위(t≥0)로 교점 개수 조건 분석"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 점에서 만나도록 하는"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=3\\sqrt{x}$의 그래프 위의 두 점 $P(a,b)$, $Q(c,d)$에 대하여"
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "직선 $PQ$의 기울기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "직선 $PQ$의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "$=\\dfrac{3(\\sqrt c-\\sqrt a)}{(\\sqrt c-\\sqrt a)(\\sqrt c+\\sqrt a)}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "단, $0<a<c$이므로 $\\sqrt c-\\sqrt a>0$이고 약분할 수 있다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "단, $0<a<c$이다"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$b+d=3$일 때"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "1학년 6명과 2학년 5명으로 구성된 고등학교 축구 대표팀에서"
+          },
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "승부차기 선수 선발 시 순서를 고려한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "1학년 3명, 2학년 2명으로 구성하는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$ {}_6C_3=\\dfrac{6\\times5\\times4}{3\\times2\\times1}=20",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "승부차기 순서도 구별하므로 $5!$을 곱해야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "승부차기 선수 선발 시 순서를 고려한다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ f)(-2)+f^{-1}(-4)=8$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "함수 $f:X\\to X$가 역함수가 존재하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$3f(0)+f(2)+2f(4)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "역함수가 존재하므로 $f$는 $X$에서 $X$로의 일대일대응이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$p=-4$이면 $f(-2)=f(4)=-4$로 일대일이 아니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 존재하고"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\begin{cases}x^2&(x\\ge0)\\\\\\sqrt{-x}&(x<0)\\end{cases}"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $x-3y+10=0$이 두 점 $A(2,4)$, $B(-4,2)$에서 만난다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "주어진 함수 $y=f(x)$의 그래프와 직선 $x-3y+10=0$으로 둘러싸인 부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "원점 중심으로 반시계 방향 $90^\\circ$ 회전하면",
+            "evidenceType": "IMPLIED",
+            "justification": "90도 회전 대칭을 이용해 왼쪽 곡선과 오른쪽 곡선의 넓이가 상쇄됨을 보임"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$S=\\dfrac12|2\\cdot2-4\\cdot(-4)|$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{1}{x}$의 그래프 위의 한 점 $P(a,b)"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "점 $Q$에서 직선 $l$에 내린 수선의 발을 $H$라 할 때, 선분 $QH$의 길이의 최댓값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "선분 $QH$의 길이의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "$QH$는 $Q$에서 직선 $l$까지의 거리이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$(a^2-1)^2\\ge0$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식의 비음성을 이용해 AM-GM형 최댓값 추출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "단, $a>0$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{2}{x}$의 그래프의 제1사분면 위의 점 $A"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "두 점 $B(-1,-2)$, $C(3,-6)$을 꼭짓점으로 하는 삼각형 $ABC$의 넓이의 최솟값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "$A$에서 이 직선까지의 거리는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$(t-\\sqrt2)^2\\ge0$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "AM-GM으로 t+2/t의 최솟값 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "제1사분면 위의 점 $A"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "함수 $f$의 역함수를 $g$라 할 때"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "원점을 지나는 일차함수 $y=f(x)$의 그래프"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $OAB$의 넓이가 $9\\sqrt{3}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "양수 $k$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan30^\\circ=\\dfrac{MH}{OH}=\\dfrac{m-1}{m+1}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수는 $g(x)=\\dfrac{x}{m}$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$\\dfrac{k^2}{2\\sqrt3}=9\\sqrt3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $k$에 대하여"
+          },
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "이루는 예각의 크기는 $30^\\circ$이다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "두 함수 $y=\\dfrac{x+1}{x-1}$"
+          },
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "$y=\\sqrt{x-k}$의 그래프가 한 점에서 만나도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "유리함수의 식을 $x$에 대해 풀면",
+            "evidenceType": "IMPLIED",
+            "justification": "유리함수를 x에 대해 풀어 역함수처럼 치환하여 k를 u의 함수로 표현"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$K(u)$는 $[0,1)$과 $(1,\\infty)$에서 각각 감소한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위를"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "scenarioNote": "두 정삼각형과 세 직사각형으로 이루어진 도형에 숫자 1~6을 중복 허용하여 채우는 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "숫자 $1,2,3,4,5,6$ 중에서 같은 수를 여러 번 사용하는 것을 허락하여 다섯 개를 택해"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "다음 조건을 만족시키는 경우의 수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 직사각형에 쓴 수의 최댓값을 $m$이라 하자",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립적선택",
+            "src": "solution",
+            "quote": "서로 다른 $m$의 경우는 겹치지 않으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "m의 각 경우는 서로 겹치지 않아 독립적으로 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "세 개의 직사각형에 적혀있는 수는 두 정삼각형에 적혀있는 수보다 작다"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "변을 공유하는 두 직사각형에 있는 수는 서로 다르다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\sqrt{ax-4}+2$ $(a\\ge2)$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$f(x)\\ge f^{-1}(x)$인 경우"
+          },
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "$f(x)\\ge f^{-1}(x)$인 경우"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "함수 $y=g(x)$의 그래프와 직선 $y=x+t$가 만나는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$g(10)$의 값을 풀이과정과 함께 상세하게 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$\\therefore\\ f^{-1}(x)=\\dfrac{(x-2)^2}{2}+2\\quad(x\\ge2)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "결정",
+            "src": "solution",
+            "quote": "따라서 $a=2$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "정의역 겹침 조건에서 상수 a를 유일하게 결정"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "$h(0)=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "교점의 개수를 경우별로 구분하여 조건 확인"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$(a\\ge2)$"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $t$ $(t\\ge0)$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "곡선 $y=-\\dfrac{2}{x}$와 직선 $y=x+k$가 제2사분면에서"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x+k$가 제2사분면에서 만나는 서로 다른 두 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $k$에 대하여 $k^2$의 값을 풀이과정과 함께 상세하게 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "$\\alpha+\\beta=-k,\\quad\\alpha\\beta=2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "$\\angle ABC=90^\\circ$이므로 직선 $BC$의 기울기는 $-1$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 조건으로 수직인 두 직선의 기울기 곱이 -1임을 이용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$k>2\\sqrt{2}$이다"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 점을 각각 $A$, $B$라 하자"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "독립적선택",
+      "en": "INDEPENDENT_CHOICE",
+      "synonyms": [
+        "독립적 선택",
+        "독립합산"
+      ],
+      "kind": "method",
+      "parent": "경우분류",
+      "note": "서로 겹치지 않는 경우로 나누어 합산하는 방법",
+      "usedIn": [
+        19
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 21,
+    "quotesChecked": 126,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      12,
+      14
+    ],
+    "notes": "Q19: '독립적선택'은 사전에 없어 candidate로 선언. Q14: 90도 회전 대칭이동(ID 209) 사용. 단답/기본 문항(Q1~Q7)은 개념 수가 3~4개로 자연스러운 구조임 확인."
+  }
+}
