@@ -101,7 +101,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주어진 근으로 계수를 정한 뒤 다른 근을 구한다.\n[풀이] $x=-2$를 대입하면 $4-4a+8=0$에서 $a=3$. 그러면 $x^2+6x+8=(x+2)(x+4)=0$이므로 다른 근 $b=-4$. 따라서 $a+b=-1$, 정답은 ②이다.",
+    "solution": "주어진 근으로 계수를 정한 뒤 다른 근을 구한다.\n\n$x=-2$를 대입하면 $4-4a+8=0$에서 $a=3$. 그러면 $x^2+6x+8=(x+2)(x+4)=0$이므로 다른 근 $b=-4$. 따라서 $a+b=-1$, 정답은 ②이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -138,7 +138,7 @@ window.questionBank = [
       "$3x^2-6x=(2x-3)^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 각 방정식의 해가 유리수인지 직접 확인한다.\n[풀이] ①은 $x=\\pm1$, ②는 $x=1,-3$, ③은 $x=3,5$, ⑤는 $x=3$으로 모두 유리수이다. ④는 $(x-3)^2=20$에서 $x=3\\pm2\\sqrt5$이므로 무리수이다. 따라서 정답은 ④이다.",
+    "solution": "각 방정식의 해가 유리수인지 직접 확인한다.\n\n①은 $x=\\pm1$, ②는 $x=1,-3$, ③은 $x=3,5$, ⑤는 $x=3$으로 모두 유리수이다. ④는 $(x-3)^2=20$에서 $x=3\\pm2\\sqrt5$이므로 무리수이다. 따라서 정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -174,7 +174,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 근의 공식 결과를 주어진 해의 형태와 비교한다.\n[풀이] $x=\\dfrac{4\\pm\\sqrt{16+20p}}{10}=\\dfrac{2\\pm\\sqrt{4+5p}}5$. 따라서 $q=2$, $4+5p=14$에서 $p=2$. 그러므로 $p+q=4$, 정답은 ④이다.",
+    "solution": "근의 공식 결과를 주어진 해의 형태와 비교한다.\n\n$x=\\dfrac{4\\pm\\sqrt{16+20p}}{10}=\\dfrac{2\\pm\\sqrt{4+5p}}5$. 따라서 $q=2$, $4+5p=14$에서 $p=2$. 그러므로 $p+q=4$, 정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -210,7 +210,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 중근 조건은 판별식이 0인 것이다.\n[풀이] $p^2-4\\cdot4\\cdot25=0$에서 $p=\\pm20$, 음수이므로 $p=-20$. 방정식은 $(2x-5)^2=0$이어서 $q=\\dfrac52$. 따라서 $p-q=-\\dfrac{45}{2}$, 정답은 ①이다.",
+    "solution": "중근 조건은 판별식이 0인 것이다.\n\n$p^2-4\\cdot4\\cdot25=0$에서 $p=\\pm20$, 음수이므로 $p=-20$. 방정식은 $(2x-5)^2=0$이어서 $q=\\dfrac52$. 따라서 $p-q=-\\dfrac{45}{2}$, 정답은 ①이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "$\\dfrac{21}{2}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 방정식을 차례로 인수분해한다.\n[풀이] 첫 식은 $x^2-9=0$이므로 큰 근 $p=3$. 둘째 식은 $3x^2-4x-7=(3x-7)(x+1)=0$이므로 두 근은 $\\dfrac73,-1$. 합은 $\\dfrac43$, 정답은 ③이다.",
+    "solution": "두 방정식을 차례로 인수분해한다.\n\n첫 식은 $x^2-9=0$이므로 큰 근 $p=3$. 둘째 식은 $3x^2-4x-7=(3x-7)(x+1)=0$이므로 두 근은 $\\dfrac73,-1$. 합은 $\\dfrac43$, 정답은 ③이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
@@ -283,7 +283,7 @@ window.questionBank = [
       "$x\\lt 0$일 때, $x$의 값이 증가하면 $y$의 값은 감소한다."
     ],
     "answer": "③",
-    "solution": "[키포인트] $y=x^2$의 기본 그래프 성질을 하나씩 확인한다.\n[풀이] 꼭짓점은 원점이고 $(-2,4)$를 지나며, $y=2x^2$보다 폭이 넓고 $x<0$에서는 $x$가 증가할수록 $y$가 감소한다. 계수가 양수인 포물선은 아래로 볼록하므로 ‘위로 볼록’이라는 ③이 틀렸다.",
+    "solution": "$y=x^2$의 기본 그래프 성질을 하나씩 확인한다.\n\n꼭짓점은 원점이고 $(-2,4)$를 지나며, $y=2x^2$보다 폭이 넓고 $x<0$에서는 $x$가 증가할수록 $y$가 감소한다. 계수가 양수인 포물선은 아래로 볼록하므로 ‘위로 볼록’이라는 ③이 틀렸다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -313,7 +313,7 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $y=2x^2$의 $y$축 대칭으로 직사각형의 두 변을 나타낸다.\n[풀이] 오른쪽 위 점의 $x$좌표를 $t>0$이라 하면 가로는 $2t$, 세로는 $2t^2$. 넓이 $4t^3=32$에서 $t=2$. 따라서 가로 4, 세로 8이고 둘레는 $24$, 정답은 ⑤이다.",
+    "solution": "$y=2x^2$의 $y$축 대칭으로 직사각형의 두 변을 나타낸다.\n\n오른쪽 위 점의 $x$좌표를 $t>0$이라 하면 가로는 $2t$, 세로는 $2t^2$. 넓이 $4t^3=32$에서 $t=2$. 따라서 가로 4, 세로 8이고 둘레는 $24$, 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -344,7 +344,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 그래프의 세로 간격은 모든 $x$에서 같다.\n[풀이] 같은 $x=t$에서 두 $y$좌표는 $-t^2$, $-t^2-5$이므로 차는 5이다. $AB$가 $y$축에 평행하므로 $AB=5$, 정답은 ④이다.",
+    "solution": "두 그래프의 세로 간격은 모든 $x$에서 같다.\n\n같은 $x=t$에서 두 $y$좌표는 $-t^2$, $-t^2-5$이므로 차는 5이다. $AB$가 $y$축에 평행하므로 $AB=5$, 정답은 ④이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q10.png",
     "imageSize": "medium",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -374,7 +374,7 @@ window.questionBank = [
       "$y=5-\\dfrac{2}{x}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정리했을 때 $x^2$항이 남는 식을 찾는다.\n[풀이] ①은 일차, ③은 삼차, ④는 $2x-1$로 일차, ⑤는 분모에 $x$가 있다. ②만 $y=x^2-3x$인 이차함수이므로 정답은 ②이다.",
+    "solution": "정리했을 때 $x^2$항이 남는 식을 찾는다.\n\n①은 일차, ③은 삼차, ④는 $2x-1$로 일차, ⑤는 분모에 $x$가 있다. ②만 $y=x^2-3x$인 이차함수이므로 정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -409,7 +409,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 그림의 대칭축을 이용하면 계수를 구하지 않아도 된다.\n[풀이] 꼭짓점이 $(-4,0)$이므로 대칭축은 $x=-4$. 그림에서 $(0,5)$를 지나고, $x=0$과 $x=-8$은 축에서 같은 거리이므로 함숫값이 같다. 따라서 $k=5$, 정답은 ④이다.",
+    "solution": "그림의 대칭축을 이용하면 계수를 구하지 않아도 된다.\n\n꼭짓점이 $(-4,0)$이므로 대칭축은 $x=-4$. 그림에서 $(0,5)$를 지나고, $x=0$과 $x=-8$은 축에서 같은 거리이므로 함숫값이 같다. 따라서 $k=5$, 정답은 ④이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q12.png",
     "imageSize": "medium",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -439,7 +439,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 축이 $x=1$이므로 꼭짓점형으로 놓는다.\n[풀이] $y=a(x-1)^2+q$라 두면 $(0,2)$에서 $a+q=2$, $(3,5)$에서 $4a+q=5$. 따라서 $a=1,q=1$. $x=4$를 대입하면 $k=10$, 정답은 ⑤이다.",
+    "solution": "축이 $x=1$이므로 꼭짓점형으로 놓는다.\n\n$y=a(x-1)^2+q$라 두면 $(0,2)$에서 $a+q=2$, $(3,5)$에서 $4a+q=5$. 따라서 $a=1,q=1$. $x=4$를 대입하면 $k=10$, 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -469,7 +469,7 @@ window.questionBank = [
     "content": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
     "choices": [],
     "answer": "①",
-    "solution": "[키포인트] 원래 그래프에서 $a,p$의 부호를 읽는다.\n[풀이] 그림이 아래로 볼록하므로 $a>0$, 꼭짓점 $(-p,0)$이 $y$축 왼쪽이므로 $p>0$. 따라서 $y=ax^2+p$는 아래로 볼록하고 꼭짓점이 $y$축의 양의 부분에 있다. 이에 해당하는 것은 ①이다.",
+    "solution": "원래 그래프에서 $a,p$의 부호를 읽는다.\n\n그림이 아래로 볼록하므로 $a>0$, 꼭짓점 $(-p,0)$이 $y$축 왼쪽이므로 $p>0$. 따라서 $y=ax^2+p$는 아래로 볼록하고 꼭짓점이 $y$축의 양의 부분에 있다. 이에 해당하는 것은 ①이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q14-choice1-corrected.svg",
     "imageSize": "tall",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -499,7 +499,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 완전제곱식으로 바꾸어 꼭짓점 좌표와 비교한다.\n[풀이] $y=(x+3a)^2-a^2+b$이므로 꼭짓점은 $(-3a,-a^2+b)=(3,1)$. 따라서 $a=-1,b=2$. 그러므로 $a+2b=3$, 정답은 ③이다.",
+    "solution": "완전제곱식으로 바꾸어 꼭짓점 좌표와 비교한다.\n\n$y=(x+3a)^2-a^2+b$이므로 꼭짓점은 $(-3a,-a^2+b)=(3,1)$. 따라서 $a=-1,b=2$. 그러므로 $a+2b=3$, 정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -535,7 +535,7 @@ window.questionBank = [
       "$x=-5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지나는 점으로 $k$를 정한 뒤 축을 구한다.\n[풀이] $(3,1)$을 대입하면 $1=-9+3k-5$에서 $k=5$. 따라서 $y=-x^2+5x-5$이고 축은 $x=-\\dfrac{5}{2(-1)}=\\dfrac52$. 정답은 ①이다.",
+    "solution": "지나는 점으로 $k$를 정한 뒤 축을 구한다.\n\n$(3,1)$을 대입하면 $1=-9+3k-5$에서 $k=5$. 따라서 $y=-x^2+5x-5$이고 축은 $x=-\\dfrac{5}{2(-1)}=\\dfrac52$. 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -571,7 +571,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 평행이동한 식을 먼저 쓴 뒤 전개한다.\n[풀이] $x$축으로 $-2$, $y$축으로 $-13$만큼 이동하면 $y=3(x+2)^2-13=3x^2+12x-1$. 따라서 $p=12,q=-1$, $p+q=11$. 정답은 ④이다.",
+    "solution": "평행이동한 식을 먼저 쓴 뒤 전개한다.\n\n$x$축으로 $-2$, $y$축으로 $-13$만큼 이동하면 $y=3(x+2)^2-13=3x^2+12x-1$. 따라서 $p=12,q=-1$, $p+q=11$. 정답은 ④이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -599,7 +599,7 @@ window.questionBank = [
       "$y=-x^2$의 그래프를 평행이동하면 완전히 포개어진다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 일반형을 꼭짓점형으로 바꾸면 그래프 성질이 드러난다.\n[풀이] $y=-x^2+8x-5=-(x-4)^2+11$. 따라서 축은 $x=4$, 꼭짓점은 $(4,11)$이고 $x<4$에서는 증가한다. $y$절편은 $-5$이며 $y=-x^2$의 평행이동이다. 틀린 설명은 ②이다.",
+    "solution": "일반형을 꼭짓점형으로 바꾸면 그래프 성질이 드러난다.\n\n$y=-x^2+8x-5=-(x-4)^2+11$. 따라서 축은 $x=4$, 꼭짓점은 $(4,11)$이고 $x<4$에서는 증가한다. $y$절편은 $-5$이며 $y=-x^2$의 평행이동이다. 틀린 설명은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -636,7 +636,7 @@ window.questionBank = [
       "$-\\dfrac{2}{9}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 $x$절편과 삼각형의 넓이로 계수를 정한다.\n[풀이] 그림에서 근이 0,6이므로 $y=ax(x-6)$. 꼭짓점의 $x$좌표는 3이고 $y_A=-9a$. $\\triangle OAB$의 밑변은 6, 넓이는 6이므로 높이는 2. A가 $x$축 아래이므로 $a=\\dfrac29$. 따라서 $b=-\\dfrac43,c=0$이고 $a+b+c=-\\dfrac{10}{9}$. 정답은 ①이다.",
+    "solution": "두 $x$절편과 삼각형의 넓이로 계수를 정한다.\n\n그림에서 근이 0,6이므로 $y=ax(x-6)$. 꼭짓점의 $x$좌표는 3이고 $y_A=-9a$. $\\triangle OAB$의 밑변은 6, 넓이는 6이므로 높이는 2. A가 $x$축 아래이므로 $a=\\dfrac29$. 따라서 $b=-\\dfrac43,c=0$이고 $a+b+c=-\\dfrac{10}{9}$. 정답은 ①이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q19.png",
     "imageSize": "medium",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -673,7 +673,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 $x$절편으로 인수분해형을 바로 만든다.\n[풀이] $x^2$의 계수가 1이고 근이 1,5이므로 $y=(x-1)(x-5)=x^2-6x+5$. 따라서 $b=-6,c=5$, 또 $k=f(4)=-3$. 그러므로 $b+c-k=2$, 정답은 ⑤이다.",
+    "solution": "두 $x$절편으로 인수분해형을 바로 만든다.\n\n$x^2$의 계수가 1이고 근이 1,5이므로 $y=(x-1)(x-5)=x^2-6x+5$. 따라서 $b=-6,c=5$, 또 $k=f(4)=-3$. 그러므로 $b+c-k=2$, 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -698,7 +698,7 @@ window.questionBank = [
     "content": "아래 그림과 같이 반지름의 길이가 6cm인 원이 있다. 이 원의 반지름의 길이를 $x$cm만큼 늘인 원의 넓이는 처음 원의 넓이의 2배가 되었다. 이때 $x$의 값을 구하시오.",
     "choices": [],
     "answer": "$6\\sqrt{2}-6$",
-    "solution": "[키포인트] 원의 넓이가 두 배라는 조건을 방정식으로 세운다.\n[풀이] 처음 넓이는 $36\\pi$, 늘어난 원의 넓이는 $\\pi(6+x)^2$. 따라서 $(6+x)^2=72$. 길이를 늘였으므로 $6+x=6\\sqrt2$, 따라서 $x=6\\sqrt2-6$이다.",
+    "solution": "원의 넓이가 두 배라는 조건을 방정식으로 세운다.\n\n처음 넓이는 $36\\pi$, 늘어난 원의 넓이는 $\\pi(6+x)^2$. 따라서 $(6+x)^2=72$. 길이를 늘였으므로 $6+x=6\\sqrt2$, 따라서 $x=6\\sqrt2-6$이다.",
     "image": "assets/images/24_연향중_1학기_기말_중3_기출/q21.png",
     "imageSize": "medium",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
@@ -730,7 +730,7 @@ window.questionBank = [
     "content": "이차함수 $f(x)=\\dfrac{1}{2}x^2-x+1$에서 $f(p)=p$를 만족시키는 모든 $p$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "$4$",
-    "solution": "[키포인트] $f(p)=p$를 이차방정식으로 바꿔 직접 푼다.\n[풀이] $\\dfrac12p^2-p+1=p$에서 $p^2-4p+2=0$, 즉 $(p-2)^2=2$. 따라서 $p=2\\pm\\sqrt2$이고 모든 값의 합은 4이다.",
+    "solution": "$f(p)=p$를 이차방정식으로 바꿔 직접 푼다.\n\n$\\dfrac12p^2-p+1=p$에서 $p^2-4p+2=0$, 즉 $(p-2)^2=2$. 따라서 $p=2\\pm\\sqrt2$이고 모든 값의 합은 4이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
