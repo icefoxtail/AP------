@@ -64,8 +64,7 @@
 
 ### 아직 정하지 않은 것 (Claude·사용자)
 
-- 4칸 파일의 저장소 내 정본 경로와 `schemaVersion` 정식 이름(계약 §17(a)). 정해질 때까지 제출물은 작업 브랜치의 작업 폴더에 둔다.
-- 기계 검사 도구의 저장소 반영. 지금은 Claude가 받은 뒤 검사한다.
+- (정했다, 2026-11-04) 4칸 파일의 main 경로와 `schemaVersion`, 기계 검사 도구의 저장소 반영: [검수와 main 반영](JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md)이 소유한다. 도구는 `tools/4slot/`, compact 파일은 `archive/data/item-4slot/`. 제출물(증거 파일)은 계속 작업 브랜치의 작업 폴더에 둔다.
 
 ## 4. 제출 형식
 

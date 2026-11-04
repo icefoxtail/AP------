@@ -232,7 +232,7 @@ method 항목의 예(IMPLIED):
 ```
 
 - 슬롯 항목은 §8의 모양이다. 저장할 때 도구가 `term`을 사전 `id`(`termId`)로 바꿔 함께 둘 수 있다.
-- `schemaVersion` 문자열은 시범 때 쓴 이름이다. 정식 이름은 §17(a) 경로와 함께 통합 때 확정한다.
+- `schemaVersion` `archive-meta-4slot-v0`은 시범·작업 브랜치 증거 파일의 이름이다. main의 compact 파일은 `archive-meta-4slot-compact-v1`을 쓴다(§17(a)).
 - 검사기가 보는 것: §9.
 - 상태(STALE 등)는 파일에 저장하지 않는다. 빌드 때 현재 지문과 비교해 계산한다. 이유: 저장하면 원본이 바뀔 때마다 4칸 파일을 고쳐야 한다.
 
@@ -440,7 +440,7 @@ method 항목의 예(IMPLIED):
 
 ## 17. 아직 정하지 않은 것
 
-(a) **시험지별 4칸 파일의 저장 경로.** 시범은 저장소 밖 작업 폴더에서 했다. 정본 위치와 `schemaVersion` 이름은 통합 승인 때 정한다.
+(a) **시험지별 4칸 파일의 저장 경로 — 정했다(2026-11-04).** 증거 파일(인용·사유 포함)은 작업 브랜치 `work/4slot-annotate-v1`에 두고 main에 병합하지 않는다. main에는 시험지마다 compact 파일 하나만 `archive/data/item-4slot/original/<시험지 경로>.4slot.json`에 둔다(`schemaVersion` `archive-meta-4slot-compact-v1`, 용어 번호만 저장). 검수·반영 절차와 도구는 [검수와 main 반영](../operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md)이 소유한다. 이유: Git에는 운영 데이터만 두고 증거는 두지 않는 원칙([git-evidence](../agents/git-evidence.md))이다.
 
 (b) **누가 채우는가(작업 라인·모델)와 비용.** 확대 단계(§16-2)의 비교 결과를 본 뒤 정한다. 지금은 시범 규칙이 Sonnet 작업자 기준으로 검증되어 있다. 2026-11-03 사용자 결정으로 작성은 GPT 라인이 맡고, 첫 단계는 같은 25년 시험지로 Sonnet과 비교한다: [4칸 GPT 인계](../operations/JS_Archive_4Slot_GPT_Handoff_CURRENT_v1.md).
 

@@ -21,6 +21,7 @@
 - 문항의 4칸(given·goal·method·condition × 용어 번호) 기록을 만들거나 검사할 때는 [4칸·용어 사전 계약](../architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md)을 먼저 읽는다.
 - 4칸은 문항의 발문과 해설을 읽고 판정한다. PT/TPL/CC/COND 키나 라벨을 보고 치환해 채우지 않는다.
 - 작성은 GPT 라인이 맡는다(2026-11-03 사용자 결정). 역할·단계·제출 형식은 [4칸 GPT 인계](../operations/JS_Archive_4Slot_GPT_Handoff_CURRENT_v1.md)를 따른다. 이유: 시범으로 규칙이 검증됐고 전체 확대는 저비용 모델로 하기로 했다.
+- 작성한 4칸 기록의 검수·main 반영(compact 파일 `archive/data/item-4slot/`, 도구 `tools/4slot/`, 반려 절차)은 [4칸 검수와 main 반영](../operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md)을 따른다. 이유: 증거는 작업 브랜치에 두고 main에는 용어 번호만 올리는 분리를 지키기 위해서다.
 - 아직 운영 메타(`question_metadata.json`)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
 
 ## CURRENT — PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙 (2026-11-02, 사용자 결정)
