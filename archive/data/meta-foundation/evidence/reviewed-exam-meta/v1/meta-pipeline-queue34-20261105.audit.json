@@ -1,0 +1,757 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "23_왕운중_2학기_중간_중2_수학",
+  "sourceFileDriveId": "1slrOnwgcZrbmVrFbhpkACkXnurcmtwrH",
+  "sourceSha256": "60f9a7d54700bd8b8a4a4ba082fe9a65751232a429dec1d52268b160d9d21283",
+  "auditedTimestamp": "2026-10-24T19:41:17.202854+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 24,
+    "approved": 24,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 24,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 45,
+    "byPack": {
+      "MIDDLE_GEOMETRY": 24
+    },
+    "byDifficultyBucket": {
+      "1": 4,
+      "2": 8,
+      "4": 10,
+      "3": 2
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    "CC_ALWAYS_SIMILAR_FIGURES",
+    "CC_ANGLE_BISECTOR_CALCULATION",
+    "CC_ANGLE_BISECTOR_EQUIDISTANCE",
+    "CC_ANNULUS_AREA_CALCULATION",
+    "CC_ARC_LENGTH_CENTRAL_ANGLE_PROPORTION",
+    "CC_CHAINED_ANGLE_RELATION",
+    "CC_CIRCUMCENTER_CENTRAL_ANGLE_RELATION",
+    "CC_CIRCUMCENTER_PROPERTIES",
+    "CC_CORRESPONDING_ANGLES_EQUALITY",
+    "CC_DESCRIPTIVE_PROOF_STEPS",
+    "CC_DIAGONAL_CONDITIONS_SPECIAL_QUADRILATERALS",
+    "CC_GEOMETRIC_STATEMENT_AUDIT",
+    "CC_INCENTER_ANGLE_BISECTION",
+    "CC_INCENTER_ANGLE_FORMULA",
+    "CC_INCENTER_PROPERTIES",
+    "CC_ISOSCELES_TRAPEZOID_COUNTEREXAMPLE",
+    "CC_ISOSCELES_TRIANGLE_AREA_DECOMPOSITION",
+    "CC_ISOSCELES_TRIANGLE_BASE_ANGLES",
+    "CC_ISOSCELES_TRIANGLE_CONVERSE",
+    "CC_ISOSCELES_TRIANGLE_EXTERIOR_ANGLE",
+    "CC_ISOSCELES_TRIANGLE_PROPERTIES",
+    "CC_LINEAR_EQUATION_SOLVING",
+    "CC_PARALLELOGRAM_CONSECUTIVE_ANGLES",
+    "CC_PARALLELOGRAM_CRITERIA",
+    "CC_PARALLELOGRAM_OPPOSITE_SIDES",
+    "CC_PARALLELOGRAM_SPECIALIZATION",
+    "CC_PARALLEL_LINES_ALTERNATE_INTERIOR_ANGLES",
+    "CC_PARALLEL_LINES_SEGMENT_RATIO",
+    "CC_PERPENDICULAR_BISECTOR_PROPERTIES",
+    "CC_POLYGON_SIMILARITY_RATIO",
+    "CC_QUADRILATERAL_HIERARCHY",
+    "CC_RATIO_SQUARE_PROPERTY",
+    "CC_REGULAR_POLYGON_SIMILARITY",
+    "CC_RHOMBUS_DETERMINATION",
+    "CC_RIGHT_TRIANGLE_ACUTE_ANGLES",
+    "CC_RIGHT_TRIANGLE_CIRCUMCENTER_MIDPOINT",
+    "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA",
+    "CC_SHARED_HEIGHT_TRIANGLE_AREA_RATIO",
+    "CC_SIMILAR_SOLIDS_AREA_RATIO",
+    "CC_SQUARE_DETERMINATION_CRITERIA",
+    "CC_TRIANGLE_ANGLE_SUM",
+    "CC_TRIANGLE_AREA_ALTITUDE_SUM",
+    "CC_TRIANGLE_CONGRUENCE_ASA",
+    "CC_TRIANGLE_INCENTER_RADIUS_FORMULA",
+    "CC_TRIANGLE_SIMILARITY_APPLICATION"
+  ],
+  "records": [
+    {
+      "questionId": 1,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "subUnit": "도형의 닮음",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 1,
+      "level": "하",
+      "difficultyReason": "닮은 입체도형의 겉넓이의 비는 닮음비의 제곱(3^2:5^2=9:25)이라는 원리를 직접 적용하여 겉넓이의 비를 산출하는 1단계 닮음 기본 문항이므로 원본 난이도 하(Bucket 1)로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_SIMILAR_SOLIDS_AREA_RATIO",
+        "CC_RATIO_SQUARE_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 두 원뿔 (가), (나)는 서로 닮은 도형이고 밑면의 반지름의 길이의 비가 $3:5$일 때, 원뿔 (가), (나)의 겉넓이의 비를 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 닮은 입체도형의 겉넓이의 비는 닮음비의 제곱이다.\n겉넓이의 비는 $3^2:5^2=9:25$이다.\n\n따라서 정답은 ②이다."
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 2,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 1,
+      "level": "하",
+      "difficultyReason": "이등변삼각형의 정의와 성질을 바탕으로 각 보기를 검토하여 밑각의 이등분선이 대변을 수직이등분하지 않음을 확인하는 1단계 이등변삼각형 개념 판별 문항이므로 원본 난이도 하(Bucket 1)로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_PROPERTIES",
+        "CC_GEOMETRIC_STATEMENT_AUDIT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 이등변삼각형에 대한 설명으로 옳지 않은 것을 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 이등변삼각형의 성질과 그 역을 구분한다.\n①, ②는 이등변삼각형의 정의와 성질이다.\n③ 정삼각형은 세 변이 같으므로 이등변삼각형의 성질도 만족한다.\n④ 두 내각이 같으면 그 대변의 길이도 같으므로 이등변"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 3,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_CONVERSE",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "각 보기에서 내각의 합과 외각의 성질을 계산하여 두 각이 같은지 확인하고 이등변삼각형이 아닌 것을 선별하는 2단계 이등변삼각형 판정 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_ISOSCELES_TRIANGLE_CONVERSE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 $\\triangle ABC$가 이등변삼각형이 아닌 것을 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 삼각형의 내각의 합과 외각의 성질로 같은 크기의 두 각이 생기는지 확인한다.\n①은 $40^\\circ+70^\\circ$이므로 나머지 각도 $70^\\circ$이다.\n②는 외각 $110^\\circ$에 대응하는"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 4,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "subUnit": "도형의 닮음",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 1,
+      "level": "하",
+      "difficultyReason": "모든 정사각형은 네 각이 90°이고 네 변의 비가 같아 항상 닮은 도형임을 정의에 따라 직관적으로 판정하는 1단계 항상 닮은 도형 판별 문항이므로 원본 난이도 하(Bucket 1)로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ALWAYS_SIMILAR_FIGURES",
+        "CC_REGULAR_POLYGON_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 항상 닮은 도형인 것을 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 모양이 항상 같고 크기만 달라질 수 있는 도형을 찾는다.\n직육면체, 마름모, 원뿔, 이등변삼각형은 변의 비나 각의 크기에 따라 모양이 달라질 수 있다.\n정사각형은 네 각이 모두 $90^\\circ$이고 네"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 5,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "평행사변형에서 대각선 길이가 같아 직사각형이 되고, 대각선이 수직이어 마름모가 되므로 두 조건을 결합해 정사각형임을 도출하는 2단계 사각형의 성질 결합 판정 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_SPECIALIZATION",
+        "CC_SQUARE_DETERMINATION_CRITERIA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같은 $\\square ABCD$가 평행사변형일 때, $AO=BO$, $AC\\perp BD$인 조건을 만족하는 사각형을 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 평행사변형의 대각선 조건으로 직사각형과 마름모의 성질을 함께 판정한다.\n$AC=2AO$, $BD=2BO$이므로 $AO=BO$에서 $AC=BD$이다.\n대각선의 길이가 같은 평행사변형은 직사각형이다.\n또한"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 6,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 1,
+      "level": "하",
+      "difficultyReason": "외심(세 꼭짓점에 이르는 거리가 같음)과 내심(세 변에 이르는 거리가 같음)의 성질을 비교하여 외심에서 세 변까지의 거리가 같다는 거짓 진술을 선별하는 1단계 삼각형의 중심 개념 문항이므로 원본 난이도 하(Bucket 1)로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_CIRCUMCENTER_PROPERTIES",
+        "CC_INCENTER_PROPERTIES",
+        "CC_GEOMETRIC_STATEMENT_AUDIT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 않은 것을 구하면? [3점]",
+        "solutionDecisiveExcerpt": "[키포인트] 외심과 내심에서 거리가 같은 대상을 구분한다.\n①~④는 각각 내심과 외심의 성질이다.\n⑤에서 내심에서 같은 거리에 있는 것은 세 꼭지점이 아니라 세 변이다.\n세 꼭지점까지의 거리가 같은 점은 외심이다."
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 7,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "원 내부 이등변삼각형과 외각 성질로 중심각의 비가 1:3임을 유도하고, 중심각에 비례하는 호의 길이 관계 3x=12pi에서 호 AC의 길이 4pi를 구하는 4단계 원과 이등변삼각형 외각 융합 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_EXTERIOR_ANGLE",
+        "CC_ARC_LENGTH_CENTRAL_ANGLE_PROPORTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림과 같은 원 $O$에서 $AB=OB$이고, 호 $BD$의 길이가 $12\\pi$ cm일 때, 호 $CE$의 길이를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 같은 원에서 호의 길이의 비는 그 호에 대한 중심각의 크기의 비와 같다.\n$\\angle BAO=\\angle AOB=\\theta$라 하자.\n$D$는 반직선 $OA$ 위에 있으므로 $\\angle BOD=\\t"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 8,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "AB=AC=CD 연쇄 이등변삼각형에서 밑각을 x라 두고 외각 2x, 평각 108° 조건을 3x=108° 방정식으로 전환하여 x=36°를 구하는 4단계 연쇄 이등변삼각형 외각 계산 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_EXTERIOR_ANGLE",
+        "CC_CHAINED_ANGLE_RELATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $AB=AC=CD$이고 $\\angle DCE=108^\\circ$일 때, $\\angle x$의 크기를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 두 이등변삼각형의 각과 일직선의 각을 차례로 연결한다.\n$AB=AC$이므로 $\\angle ABC=\\angle BCA=x$이다.\n$\\angle DCE=108^\\circ$이고 $B,C,E$가 한 직선 위에"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 9,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "내심 I에서 세 변에 이르는 거리가 같음(ID=IE=IF)과 RHA 직각삼각형 합동을 바탕으로 내심의 기본 성질을 확인하여 옳은 것을 고르는 2단계 내심 기본 성질 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_INCENTER_PROPERTIES",
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림과 같은 $\\triangle ABC$에서 세 내각의 이등분선의 교점을 $I$라고 할 때, 다음 중 옳지 않은 것을 구하면? [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 내심의 등거리 성질과 직각삼각형의 합동으로 각 보기를 확인한다.\n$\\triangle BID$와 $\\triangle BIE$는 빗변 $BI$가 공통이고 $ID=IE$이므로 합동이다.\n따라서 $BD=BE$이"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 10,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "각의 이등분선 위의 한 점에서 두 변에 이르는 거리가 같음을 RHA 직각삼각형 합동으로 입증하고 선분 PD=PE=5를 산출하는 2단계 각의 이등분선 정리 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR_EQUIDISTANCE",
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 $\\angle AOB$의 이등분선 위의 한 점 $P$에서 두 변 $OA,OB$에 내린 수선의 발을 각각 $Q,R$라고 할 때, 다음 중 옳지 않은 것을 구하면? [",
+        "solutionDecisiveExcerpt": "[키포인트] 각의 이등분선 위의 점에서 두 변까지의 거리는 같다.\n$OP$는 두 삼각형의 공통인 빗변이고, $\\angle POQ=\\angle POR$이므로 두 직각삼각형은 합동이다.\n따라서 $PQ=PR$이고 $\\an"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 11,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "평행사변형의 이웃한 두 내각의 합이 180°임을 이용해 각의 이등분선 교각이 90°임을 증명하고 엇각으로 생기는 이등변삼각형의 변의 길이를 차례로 구해 선분 EF=2를 구하는 4단계 평행사변형 각의 이등분선 융합 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_CONSECUTIVE_ANGLES",
+        "CC_PARALLEL_LINES_ALTERNATE_INTERIOR_ANGLES",
+        "CC_ISOSCELES_TRIANGLE_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\angle A$, $\\angle B$의 이등분선이 $BC$, $AD$와 만나는 점을 각각 $E,F$라고 하자. $BC=12$ cm",
+        "solutionDecisiveExcerpt": "[키포인트] 평행선과 각의 이등분선으로 생기는 이등변삼각형을 이용한다.\n$AE$는 $\\angle A$의 이등분선이고 $AD\\parallel BE$이므로 $\\angle BAE=\\angle EAD=\\angle AEB$이"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 12,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "내심 공식 angle BIC = 90° + (1/2)A = 130°로부터 각 A=80°를 구하고, 다시 직각삼각형 ABD의 내심 공식 angle AI'D = 90° + (1/2)B = 125°를 역추적 연쇄 적용하는 4단계 이중 내심 각 계산 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_INCENTER_ANGLE_FORMULA",
+        "CC_RIGHT_TRIANGLE_ACUTE_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, 점 $I'$은 $\\triangle IBC$의 내심이다. $\\angle BI'C=146^\\circ$일 때, $\\",
+        "solutionDecisiveExcerpt": "[키포인트] 삼각형의 내심에서 두 각의 이등분선이 이루는 각은 나머지 한 각의 절반과 $90^\\circ$의 합이다.\n$\\triangle IBC$에서 $\\angle BI'C=90^\\circ+\\dfrac12\\angle"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 13,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "subUnit": "도형의 닮음",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "두 닮은 사각형의 대응변의 길이로부터 닮음비 2:1을 구하고, 대응각의 크기가 같음과 대응변의 비를 적용하여 미지수를 구하는 2단계 닮은 다각형 기본 계산 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_POLYGON_SIMILARITY_RATIO",
+        "CC_CORRESPONDING_ANGLES_EQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 $\\square ABCD\\sim\\square A'B'C'D'$일 때, 다음 중 옳은 것을 구하면? [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 닮은 도형의 대응변의 비와 대응각의 크기를 확인한다.\n닮음비는 $2:1$이므로 ①은 옳지 않다.\n작은 도형의 $A'B'=4$ cm이므로 $AB=8$ cm이고 ②는 옳지 않다.\n대응각은 같으므로 $\\ang"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 14,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "subUnit": "도형의 닮음",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "평행선과 닮은 삼각형으로부터 선분의 비를 구하고, 공통 높이를 공유하는 삼각형들의 밑변 비를 통해 삼각형 넓이들의 비율 관계를 단계별로 증명하는 4단계 평행선 닮음 넓이비 융합 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_SEGMENT_RATIO",
+        "CC_SHARED_HEIGHT_TRIANGLE_AREA_RATIO",
+        "CC_TRIANGLE_SIMILARITY_APPLICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림의 평행사변형 $ABCD$에서 $BD\\parallel EF$일 때, 다음 중 $\\triangle ABE$와 넓이가 같은 삼각형을 모두 고르면? (정답 2개) [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 닮은 삼각형으로 선분의 비를 구하고, 같은 높이를 가진 삼각형의 넓이의 비를 이용한다.\n$EF\\parallel BD$이므로 $\\triangle CEF\\sim\\triangle CBD$이다.\n따라서 $\\df"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 15,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "직각삼각형의 빗변의 중점 E가 외심임을 이용하여 ED=EC=EH를 증명하고, AD=BC=2EC=2EH 및 평행사변형 대변 성질을 결합해 이등변삼각형을 구성하여 각 EHD=55°를 도출하는 4단계 외심-평행사변형 결합 기하 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CIRCUMCENTER_MIDPOINT",
+        "CC_PARALLELOGRAM_OPPOSITE_SIDES",
+        "CC_ISOSCELES_TRIANGLE_BASE_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같은 평행사변형 $ABCD$에서 $DE=CE$, $\\angle ABH=50^\\circ$, $\\angle CBH=20^\\circ$, $\\angle BCE=110^\\cir",
+        "solutionDecisiveExcerpt": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n$\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 16,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 3,
+      "level": "중",
+      "difficultyReason": "내심 I에 의해 각 B가 24°씩 이등분됨을 알고, 수선의 발 H에 의한 직각삼각형 ABH의 각 BAH=42°와 각 A의 절반 33°를 결합해 각 IAH=9°를 산출하는 3단계 내심 수선 복합 각도 문항이므로 원본 난이도 중(Bucket 3)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_INCENTER_ANGLE_BISECTION",
+        "CC_RIGHT_TRIANGLE_ACUTE_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\angle ABC=30^\\circ$, $\\angle ACB=50^\\circ$이다. 점 $A$에서 $BC$에",
+        "solutionDecisiveExcerpt": "[키포인트] 내심을 지나는 선은 꼭지각을 이등분하고, 높이로 생긴 직각삼각형의 각을 이용한다.\n$AI$가 $\\angle A$를 이등분하므로 $\\angle IAC=50^\\circ$이다.\n$AH\\perp BC$이므로 직"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 17,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "평행사변형, 직사각형, 마름모, 정사각형 사이의 포함 관계와 대각선 조건(수직, 길이 일치)을 대화 내용에서 진위 판정하는 2단계 사각형 관계 개념 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_HIERARCHY",
+        "CC_DIAGONAL_CONDITIONS_SPECIAL_QUADRILATERALS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음은 영종, 지숙, 영란, 은아 네 사람이 자신이 이해한 사각형에 관하여 대화한 내용이다. 옳게 말한 사람을 모두 구한 것은? [5점]<br><div class=\"note-box",
+        "solutionDecisiveExcerpt": "[키포인트] 평행사변형, 마름모, 직사각형, 정사각형의 포함 관계와 판정 조건을 구분한다.\n영종의 설명은 이웃한 두 변이 같은 평행사변형이 마름모가 된다는 뜻일 뿐, 네 각이 직각이라는 보장이 없어 틀리다.\n지숙의"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 18,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "직사각형 대각선의 수직이등분선에 의해 생기는 사각형 EBFD가 네 변의 길이가 같은 마름모임을 점대칭과 합동으로 증명하고, 마름모의 성질을 모두 판정하는 4단계 대칭축 마름모 판정 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR_PROPERTIES",
+        "CC_RHOMBUS_DETERMINATION",
+        "CC_TRIANGLE_CONGRUENCE_ASA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 직사각형 $ABCD$의 대각선 $BD$의 수직이등분선을 $EF$라고 할 때, 다음 중 $\\square EBFD$에 대한 설명으로 옳은 것을 구하면? [5점]",
+        "solutionDecisiveExcerpt": "[키포인트] 수직이등분선 위의 점의 성질과 직사각형의 점대칭을 함께 이용한다.\n$O$를 중심으로 $180^\\circ$ 회전하면 $B$는 $D$로, $E$는 $F$로 옮겨지므로 $EB=DF$이다.\n한편 $F$는 $BD"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 19,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "사각형이 평행사변형이 되기 위한 5가지 필요충분조건과 대조하여 한 쌍의 대변이 평행하고 다른 한 쌍의 대변의 길이가 같은 등변사다리꼴 반례를 선별하는 2단계 평행사변형 판정 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_CRITERIA",
+        "CC_ISOSCELES_TRAPEZOID_COUNTEREXAMPLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같은 사각형 $ABCD$가 평행사변형이 되기 위한 조건이 아닌 것을 구하면? [5점]",
+        "solutionDecisiveExcerpt": "[키포인트] 평행사변형이 되는 여러 판정 조건을 정확히 구분한다.\n①은 두 쌍의 대변의 길이가 각각 같으므로 평행사변형이다.\n②는 두 쌍의 대각이 각각 같아 이웃한 각의 합이 $180^\\circ$이므로 평행사변형이다"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 20,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "외심 O에서 세 꼭짓점까지의 거리가 같음을 이용해 이등변삼각형 세 개를 구성하고, 각의 이등분선 및 직각삼각형 합동을 종합하여 각 AOB=140° 및 각 ACB=70°를 산출하는 4단계 외심 꼭짓점 등거리 각 계산 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_CIRCUMCENTER_PROPERTIES",
+        "CC_CIRCUMCENTER_CENTRAL_ANGLE_RELATION",
+        "CC_ISOSCELES_TRIANGLE_BASE_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle OAB=33^\\circ$, $\\angle ABC=75^\\circ$이고 점 $D$는 점 $O$에서",
+        "solutionDecisiveExcerpt": "[키포인트] 외심의 등거리 성질과 직각삼각형의 합동을 이용한다.\n$OA=OB$이므로 $\\angle ABO=\\angle OAB=33^\\circ$이다.\n따라서 $\\angle OBC=75^\\circ-33^\\circ=42^"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 21,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyReason": "평행사변형의 두 쌍의 대변의 길이가 각각 같다는 성질을 이용하여 일차방정식 x+4=2x-1 및 2y+1=y+4를 세워 x=5, y=3을 서술하는 2단계 서술형 평행사변형 대변 계산 문항이므로 원본 난이도 중(Bucket 2)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_OPPOSITE_SIDES",
+        "CC_LINEAR_EQUATION_SOLVING",
+        "CC_DESCRIPTIVE_PROOF_STEPS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 1] 다음 그림과 같은 $\\square ABCD$가 평행사변형일 때, $x$, $y$의 값을 구하시오. [4점]",
+        "solutionDecisiveExcerpt": "[키포인트] 평행사변형의 마주 보는 두 변의 길이는 각각 같다.\n$AD=BC$이므로 $x+2=2x-3$이고, 이를 풀면 $x=5$이다.\n또한 $AB=CD$이므로 $y+1=10-2y$이고, $3y=9$에서 $y=3$이"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 22,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "AB=AC=7인 이등변삼각형 밑변 위의 점 P에서 내린 두 수선의 길이의 합을 전체 삼각형 넓이 등식 (1/2)*7*(PD+PE)=42로 수립하여 PD+PE=12를 서술하는 4단계 서술형 이등변삼각형 넓이 분할 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_AREA_DECOMPOSITION",
+        "CC_TRIANGLE_AREA_ALTITUDE_SUM",
+        "CC_DESCRIPTIVE_PROOF_STEPS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 2] 오른쪽 그림과 같이 $\\angle B=\\angle C$이고, $AB=7$ cm인 $\\triangle ABC$의 넓이가 $42$ cm$^2$이다. 변 $BC$ 위의 한",
+        "solutionDecisiveExcerpt": "[키포인트] 큰 삼각형의 넓이를 점 $P$로 나눈 두 삼각형의 넓이의 합으로 나타낸다.\n$[ABP]=\\dfrac12\\times AB\\times PM=\\dfrac72PM$이고, $[ACP]=\\dfrac12\\times"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 23,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 4,
+      "level": "상",
+      "difficultyReason": "평행사변형 대변이 평행함을 이용해 엇각과 삼각형 내각의 합으로 각 CAD=54°를 구하고, 각의 이등분선에 의해 각 EAD=27°임을 단계별로 서술하는 4단계 서술형 평행사변형 각도 추론 문항이므로 원본 난이도 상(Bucket 4)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_ALTERNATE_INTERIOR_ANGLES",
+        "CC_ANGLE_BISECTOR_CALCULATION",
+        "CC_DESCRIPTIVE_PROOF_STEPS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 3] 다음 그림과 같이 평행사변형 $ABCD$에서 $\\angle DAC$의 이등분선이 $BC$의 연장선과 만나는 점을 $E$라고 하자. $\\angle B=70^\\circ$",
+        "solutionDecisiveExcerpt": "[키포인트] 평행사변형의 각과 삼각형의 내각의 합을 이용한 뒤 각의 이등분선을 적용한다.\n$\\triangle ACD$에서 $\\angle DAC=180^\\circ-70^\\circ-56^\\circ=54^\\circ$이다."
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    },
+    {
+      "questionId": 24,
+      "targetPack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "canonicalTemplateReused": true,
+      "isNewTemplate": false,
+      "difficultyBucket": 3,
+      "level": "중",
+      "difficultyReason": "직각삼각형의 외심이 빗변의 중점임을 이용해 외접원 반지름 R=5를 구하고, 삼각형 넓이 24=(1/2)r(6+8+10)에서 내접원 반지름 r=2를 구한 뒤 원의 넓이 차 25pi-4pi=21pi를 서술하는 3단계 서술형 직각삼각형 외심-내심 복합 넓이 문항이므로 원본 난이도 중(Bucket 3)으로 정규화한다.",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CIRCUMCENTER_MIDPOINT",
+        "CC_TRIANGLE_INCENTER_RADIUS_FORMULA",
+        "CC_ANNULUS_AREA_CALCULATION",
+        "CC_DESCRIPTIVE_PROOF_STEPS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "MULTI_STEP_COUPLING",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 4] 오른쪽 그림에서 두 원 $O$와 $O'$은 각각 $\\angle B=90^\\circ$인 직각삼각형 $ABC$의 외접원과 내접원일 때, 색칠한 부분의 넓이를 구하시오.",
+        "solutionDecisiveExcerpt": "[키포인트] 직각삼각형의 외접원 반지름과 내심에서 세 변까지의 같은 거리를 이용한다.\n직각삼각형의 외심은 빗변의 중점이므로 $R=10\\div2=5$ cm이다.\n$\\triangle ABC$의 넓이는 $\\dfrac12\\"
+      },
+      "auditStatus": "APPROVED",
+      "auditRemarks": "정본 템플릿 및 분류 완전 적합 판정"
+    }
+  ]
+}

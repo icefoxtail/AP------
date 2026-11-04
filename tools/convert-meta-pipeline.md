@@ -15,7 +15,7 @@ batch.json 예시(입력 파일은 절대 경로 사용):
 {"packages":[{"requestId":"meta-example-v1","sourceArchiveFile":"original/high/h1/2final/exam.js","driveSource":"C:/input/exam.js","audit":"C:/input/audit.json","manifest":"C:/input/manifest.json","classification":"C:/input/classification.json"}]}
 ```
 
-지원: ALIVE_META_AUDIT_ATOMIC_v3의 rich/key-only/sourceDrive-flat 변형 및 META_AUDIT_ATOMIC_PACKAGE_v2. 각 변형은 기존 등록기의 승인 proof 버전으로 연결한다. SOP_v1.2 corrective audit는 이 변환기의 지원 범위가 아니다.
+지원: ALIVE_META_AUDIT_ATOMIC_v3의 rich/key-only/sourceDrive-flat 변형, META_AUDIT_ATOMIC_PACKAGE_v2, 그리고 `examId`/`sourceFileId` 계약을 사용하는 SOP_v1.2_AUDIT_ATOMIC. v1.2도 감사·매니페스트·분류 파일의 시험 식별자, Drive ID, source SHA, 전체 순번/문항 수를 각각 교차검증하고 기존 승인 proof 버전으로 연결한다. 해시·UID·문항 수가 어긋나면 변환하지 않는다.
 
 검증: 감사·매니페스트·분류와 Drive 감사본 SHA, 시험지 이름/Drive ID, N문항·ordinal 중복, metadata/identity UID 일치. production과 감사본의 SHA 및 UID별 학생 필드 차이는 각각 기록한다. 원본 JSON은 바이트 그대로 보존한다. 해설 등 production 변경은 되돌리지 않고 후보완 요청으로 만든다.
 

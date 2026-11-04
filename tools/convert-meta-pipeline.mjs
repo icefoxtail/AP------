@@ -37,11 +37,13 @@ export function convertPackage({root, spec, metadata, identities, master}) {
   const a=input.audit?.data,m=input.manifest?.data,c=input.classification?.data;
   if (!a || !m) fail('AUDIT_MANIFEST_REQUIRED');
   const title=path.basename(source,'.js');
-  if (a.examTitle!==title || m.examTitle!==title || c && c.examTitle!==title) fail('EXAM_IDENTITY_MISMATCH');
+  const auditTitle=a.examTitle??a.examId, manifestTitle=m.examTitle??m.examId, classificationTitle=c?.examTitle??c?.examId;
+  if (auditTitle!==title || manifestTitle!==title || c && classificationTitle!==title) fail('EXAM_IDENTITY_MISMATCH');
   const driveSha=sha(drive),productionSha=sha(prod),sourceVersionDrift=driveSha!==productionSha;
   if (a.sourceSha256!==driveSha || m.sourceSha256!==driveSha || c && c.sourceSha256!==driveSha) fail('AUDIT_DRIVE_SHA_MISMATCH');
-  const auditDrive=a.sourceFileDriveId||a.sourceDriveId;
-  if (!auditDrive || auditDrive!==(m.sourceFileDriveId||m.sourceDriveId) || c && auditDrive!==(c.sourceFileDriveId||c.sourceDriveId)) fail('DRIVE_ID_MISMATCH');
+  const driveId=x=>x.sourceFileDriveId||x.sourceDriveId||x.sourceFileId;
+  const auditDrive=driveId(a);
+  if (!auditDrive || auditDrive!==driveId(m) || c && auditDrive!==driveId(c)) fail('DRIVE_ID_MISMATCH');
   const b=bank(prod),d=bank(drive),n=b.length;
   if (!n || d.length!==n || a.records?.length!==n || m.recordsToBind?.length!==n || c && c.records?.length!==n) fail('QUESTION_COUNT_MISMATCH');
   const byOrdinal=rows=>{
@@ -72,7 +74,7 @@ export function convertPackage({root, spec, metadata, identities, master}) {
   const rich=Array.isArray(a.boundAtomicCrossConcepts)&&a.records[0]?.classification;
   const flat=a.sourceDriveId&&!Object.hasOwn(a,'boundAtomicCrossConcepts')&&a.records[0]?.difficulty;
   const proofVersion=rich?1:flat?3:2;
-  if(a.schemaVersion!=='ALIVE_META_AUDIT_ATOMIC_v3'&&a.schemaVersion!=='META_AUDIT_ATOMIC_PACKAGE_v2')fail('UNSUPPORTED_AUDIT_SCHEMA');
+  if(a.schemaVersion!=='ALIVE_META_AUDIT_ATOMIC_v3'&&a.schemaVersion!=='META_AUDIT_ATOMIC_PACKAGE_v2'&&a.schemaVersion!=='SOP_v1.2_AUDIT_ATOMIC')fail('UNSUPPORTED_AUDIT_SCHEMA');
   if(!rich&&!c)fail('CLASSIFICATION_REQUIRED');
   const masterPath='docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
   const masterRef={path:masterPath,sha256:sha(fs.readFileSync(inside(root,masterPath)))};refs.push(masterRef);
