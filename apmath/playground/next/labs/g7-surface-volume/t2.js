@@ -196,7 +196,7 @@
           const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
           const c0 = at(kb, centroid(A)), cs3 = centroid(L.map((idx) => at(idx, centroid(sn.net.pieces[idx].pts))));
           // 반지름: 밑면 중심에서 오른쪽 앞으로(밑면이 가려지면 점선)
-          D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r}`, { dash: !tp[kb].front, end: true });
+          D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r}`, { dash: !tp[kb].front });
           // 입체: 왼쪽 윤곽선의 모선 + 높이(점선·직각 표시)
           if (solidA > 0.02) {
             const ap = D.px(at(L[0], apex));
@@ -268,11 +268,66 @@
       const key = oneOf(s.svTri, TRI_ORDER3, 'A'), k = clamp(Math.round(s.s3K), 1, KMAX3[key]), [r0, h0, R0] = TRI[key], r = r0 * k, h = h0 * k, R = R0 * k, mode = s.svMode === 'vol' ? 'vol' : 'surf';
       s.s3K = k;
       const S = V(0, r * r), lat = V(0, r * R), tot = vadd(S, lat), vol = V(0, (r * r * h) / 3);
-      return { key, k, r, h, R, mode, S, lat, tot, vol, ans: mode === 'vol' ? vol : tot };
+      return { key, k, r, h, R, mode, started: !!s.sv23Started, S, lat, tot, vol, ans: mode === 'vol' ? vol : tot };
+    };
+    // 원래 원뿔을 같은 눈금으로 남겨 두고 옆에서 전개합니다.
+    const drawComparison = (b,s,M,C) => {
+      const e=ease(C.t), N=36, sn=solidNet(circleBase(M.r,N),M.h,0,Array(N).fill(true),18), src=scene3(b,s,C);
+      const frame=u=>{
+        const cam=G.camOf((s.svYaw==null?28:s.svYaw)*(1-u),(s.svPitch==null?20:s.svPitch)*(1-u));
+        const pose=G.netPose(sn.net,u), pts=[];
+        sn.net.pieces.forEach((pc,k)=>pc.pts.forEach(p=>pts.push(G.proj(cam,G.applyT(pose[k],p)))));
+        const box=G.bboxOf(pts);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};
+      };
+      const frames=Array.from({length:9},(_,i)=>frame(i/8));
+      const maxW=Math.max(...frames.map(f=>f.box.x1-f.box.x0)), maxH=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
+      const O=src.hx(-maxW/2-M.r-2), body=revolveMesh([[0,0],[M.r,0],[0,M.h]],{O,N:48,tags:['bot','side']});
+      const bb=G.bboxOf(body.faces.flatMap(f=>f.pts.map(src.P))), sy=-(bb.y0+bb.y1)/2;
+      src.fit([],[{x:Math.min(-maxW/2,bb.x0)-1,y:Math.min(-maxH/2,bb.y0+sy)-1},{x:maxW/2+1,y:Math.max(maxH/2,bb.y1+sy)+1}],{l:25,r:(!b.thumb&&window.innerWidth>=700&&b.W>=560?245:25),t:55,b:55});
+      const sp=src.P;src.P=p=>{const q=sp(p);return{x:q.x,y:q.y+sy};};
+      src.body({mesh:body,fill:'sky',alpha:.035,edge:'ink',edgeW:2,dashBack:edge=>edge.chain&&Math.abs(edge.a.y)<1e-6?O:null});
+      b.text({x:(bb.x0+bb.x1)/2,y:bb.y1+sy+.6},'원래 입체',{dy:12,size:src.fs(13),color:'ink',weight:700});
+      const f=frame(e), nd=scene3(b,s,C,{yaw:(s.svYaw==null?28:s.svYaw)*(1-e),pitch:(s.svPitch==null?20:s.svPitch)*(1-e)}), np=nd.P;
+      nd.P=p=>{const q=np(p);return{x:q.x-f.cx,y:q.y-f.cy};};
+      G.netDraw(nd,sn.net,f.pose,pc=>({fill:'sky',alpha:.025+.045*e,edge:'ink',ew:2}));
+      if(e>.99){
+        // 부채꼴 양쪽 모선은 펼친 뒤에도 바깥 경계로 남습니다.
+        const edges=new Map(), key=p=>`${Math.round(p.x*1e4)},${Math.round(p.y*1e4)}`;
+        sn.lat.forEach(k=>{const pts=sn.net.pieces[k].pts.map(p=>nd.P(G.applyT(f.pose[k],p)));for(let j=0;j<pts.length;j++){const p=pts[j],q=pts[(j+1)%pts.length],ka=key(p),kb=key(q),id=ka<kb?ka+'|'+kb:kb+'|'+ka,old=edges.get(id);if(old)old.n++;else edges.set(id,{p,q,n:1});}});
+        edges.forEach(v=>{if(v.n===1)b.path([v.p,v.q],{color:'ink',width:2});});
+        const bot=sn.net.pieces[sn.bot], bc=nd.P(G.applyT(f.pose[sn.bot],G.centroid(bot.pts)));
+        const rim=bot.pts.map(p=>nd.P(G.applyT(f.pose[sn.bot],p))).reduce((a,p)=>p.x>a.x?p:a);
+        b.path([bc,rim],{color:'ink',width:1.4});
+        b.text({x:(bc.x+rim.x)/2,y:bc.y-.25},String(M.r),{size:nd.fs(12),color:'ink',weight:700});
+        b.text(bc,'밑면',{dy:15,size:nd.fs(12),color:'ink',weight:700});
+        const mid=sn.lat[Math.floor(sn.lat.length/2)], face=sn.net.pieces[mid], fc=nd.P(G.applyT(f.pose[mid],G.centroid(face.pts)));
+        b.text(fc,'옆면',{size:nd.fs(13),color:'ink',weight:700});
+        const k=sn.lat[0], ap=nd.P(G.applyT(f.pose[k],sn.B[0])), edge=nd.P(G.applyT(f.pose[k],sn.A[0]));
+        b.text({x:(ap.x+edge.x)/2,y:(ap.y+edge.y)/2},`모선 ${M.R}`,{dy:-12,size:nd.fs(12),color:'ink',weight:700});
+      }
+      if(-maxW/2-bb.x1>0.3)src.arrow({x:bb.x1+.2,y:-maxH/2},{x:-maxW/2-.2,y:-maxH/2},'muted',1.5);
+    };
+    // 원뿔을 평면으로 자른 것처럼 표현하지 않고, 같은 밑면·높이의 기둥과 비교합니다.
+    const drawVolumeComparison = (b,s,M,C) => {
+      const D=scene3(b,s,C), dx=M.r*1.6, left=D.hx(-dx), right=D.hx(dx);
+      const cone=revolveMesh([[0,0],[M.r,0],[0,M.h]],{O:left,N:48,tags:['bot','side']});
+      const cylinder=revolveMesh([[0,0],[M.r,0],[M.r,M.h],[0,M.h]],{O:right,N:48,tags:['bot','side','top']});
+      const all=cone.faces.flatMap(f=>f.pts).concat(cylinder.faces.flatMap(f=>f.pts));
+      D.fit(all,[],{l:35,r:(window.innerWidth>=700&&b.W>=560?245:35),t:65,b:85});
+      D.body({mesh:cone,fill:'sky',alpha:.035,edge:'ink',edgeW:2,dashBack:e=>e.chain&&Math.abs(e.a.y)<1e-6?left:null});
+      D.body({mesh:cylinder,fill:'sky',alpha:.055,edge:'ink',edgeW:2,dashBack:e=>e.chain&&Math.abs(e.a.y)<1e-6?right:null});
+      const cb=G.bboxOf(cone.faces.flatMap(f=>f.pts.map(D.P))), pb=G.bboxOf(cylinder.faces.flatMap(f=>f.pts.map(D.P)));
+      b.text({x:(cb.x0+cb.x1)/2,y:cb.y1},'원래 원뿔',{dy:14,size:D.fs(13),color:'ink',weight:700});
+      b.text({x:(pb.x0+pb.x1)/2,y:pb.y1},'같은 밑면·높이의 기둥',{dy:14,size:D.fs(13),color:'ink',weight:700});
+      if(pb.x0-cb.x1>0.4){const y=Math.min(cb.y0,pb.y0);D.arrow({x:cb.x1+.15,y},{x:pb.x0-.15,y},'muted',1.5);b.text({x:(cb.x1+pb.x0)/2,y},'부피 3배',{dy:-12,size:D.fs(12),color:'ink',weight:700});}
+      D.height(right,add3(right,v3(0,M.h,0)),`높이 ${M.h}`,{side:{x:1,y:0},color:'ink'});
+      D.radius(left,add3(left,v3(M.r,0,0)),`반지름 ${M.r}`,{color:'ink'});
     };
     // 겉넓이 = 전개도(부채꼴 + 원), 부피 = 입체(겨냥도): 반지름·높이·모선과 밑넓이, ⅓ × 밑넓이 × 높이
     const draw = (b, s, M, C) => {
       const st = C.step, rv = C.review, surf = M.mode === 'surf';
+      if(surf && M.started && C.tab==='explore' && !b.thumb){drawComparison(b,s,M,C);return;}
+      if(!surf && M.started && C.tab==='explore' && !b.thumb){drawVolumeComparison(b,s,M,C);return;}
       const hl = !rv ? {} : surf ? (st <= 1 ? { bot: 2 } : st === 2 ? { ring: 2 } : { ring: 3, bot: 2 }) : (st <= 1 ? { bot: 2 } : st === 2 ? {} : { ring: 3, bot: 2 });
       const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: !surf ? 0 : C.problem ? 0 : rv ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
       if (!surf && !C.problem) o.fitT = 84;
@@ -286,10 +341,10 @@
     return {
       id: 'sv2-3', title: '원뿔 종합', short: '원뿔 종합',
       question: '반지름, 높이, 모선이 모두 주어진 원뿔의 겉넓이와 부피를 구할 때 어떤 길이를 어디에 쓸까?',
-      anim: { key: 's3U', dur: 5, label: '펼쳐 보기', start: 1 }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
-      ctl: (s) => (s.svMode === 'vol' ? ['s3K'] : ['s3K', 's3U']),
-      presets: (s) => TRI_ORDER3.map((k, i) => ({ group: i === 0 ? '반지름·높이·모선' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; st.s3K = Math.min(Math.round(st.s3K) || 1, KMAX3[k]); }, on: (st) => oneOf(st.svTri, TRI_ORDER3, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; st.s3U = 1; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
-      init: (s) => { s.svTri = 'A'; s.s3K = 1; s.svMode = 'surf'; s.s3U = 1; },
+      anim: { key: 's3U', dur: 2.8, label: '펼쳐 보기', start: 0, hideActions: true }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      ctl: () => [],
+      presets: (s) => TRI_ORDER3.map((k, i) => ({ group: i === 0 ? '반지름·높이·모선' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; st.s3K = 1; st.svPitch = TRI[k][1] / TRI[k][0] < 0.65 ? 8 : 20; st.sv23Started = false; st.s3U = 0; st.playing = false; }, on: (st) => oneOf(st.svTri, TRI_ORDER3, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st,lab) => { st.svMode = 'surf'; st.sv23Started = true; st.s3U = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 1 : 0; st.playing = st.s3U === 0; st.svPick=null; lab?._buildProblem?.(); }, on: (st) => st.sv23Started && st.svMode !== 'vol' }, { label: '부피', apply: (st,lab) => { st.svMode = 'vol'; st.sv23Started = true; st.playing = false; st.svPick=null; lab?._buildProblem?.(); }, on: (st) => st.sv23Started && st.svMode === 'vol' }]),
+      init: (s) => { s.svTri = 'A'; s.s3K = 1; s.svMode = 'surf'; s.sv23Started = false; s.s3U = 0; },
       reroll: (s) => { s.svTri = pick(['A', 'B', 'C'], s.svTri); s.s3K = 1; s.svMode = pick(['surf', 'vol'], s.svMode); s.s3U = 1; },
       model, draw,
       check: (s) => {
@@ -308,9 +363,10 @@
         `겉넓이에는 모선 $${M.R}$을 써요. 전개도의 부채꼴은 반지름이 모선 $${M.R}$이고 호의 길이가 밑면의 둘레 $${tx(V(0, 2 * M.r))}$이에요. 옆넓이 $=\\pi\\times${M.R}\\times${M.r}=${tx(M.lat)}\\,\\mathrm{cm}^2$예요. (높이는 쓰지 않아요.)`,
         `(겉넓이) $=$ (옆넓이) $+$ (밑넓이) $=${tx(M.lat)}+${tx(M.S)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
-      view: (M) => ({
-        guide: `칩에서 <b>반지름·높이·모선</b>의 모양과 <b>겉넓이·부피</b>를 골라 보세요. ${span('amber', '높이')}는 수직으로 내린 점선, <b>모선</b>은 비스듬한 변이에요. 겉넓이는 <b>펼치기</b> 막대로 전개도를 보며 구하고(모선을 써요), 부피는 입체에서 <b>높이</b>를 써요.`,
-        readouts: [
+      view: (M,C) => C.tab==='explore'&&!M.started ? {guide:'겉넓이나 부피를 눌러 필요한 길이를 살펴보세요.',readouts:[]} : ({
+        card: (C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?{title:'',lines:M.mode==='vol'?[{text:'밑넓이',color:'ink'},{text:`$\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$`,color:'ink'},{text:'부피',color:'ink'},{text:`$\\frac13\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$`,color:'ink'}]:[{text:'밑넓이',color:'ink'},{text:`$\\pi\\times${M.r}^2=${tx(M.S)}$`,color:'ink'},{text:'옆넓이',color:'ink'},{text:`$\\pi\\times${M.r}\\times${M.R}=${tx(M.lat)}$`,color:'ink'},{text:'겉넓이',color:'ink'},{text:`$${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$`,color:'ink'}]}:null,
+        guide: M.mode==='vol' ? '원뿔과 밑면·높이가 같은 원기둥을 비교해요. 원뿔의 부피는 원기둥 부피의 1/3이에요.' : `부채꼴의 반지름은 원뿔의 모선이고 호의 길이는 밑면의 둘레예요. 옆넓이와 밑넓이를 더해 겉넓이를 구해요.`,
+        readouts: (C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?[]:[
           rd('반지름', M.r + ' cm', 'ink'), rd('높이', M.h + ' cm', 'amber'), rd('모선', M.R + ' cm', 'sky'),
           rd('겉넓이', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted', `옆넓이 ${plainVal(M.lat)} + 밑넓이 ${plainVal(M.S)}`), rd('부피', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted', `⅓ × ${plainVal(M.S)} × ${M.h}`)
         ],
