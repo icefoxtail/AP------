@@ -142,6 +142,9 @@ const SOP_V12_AUDIT_TYPE = "META_AUDIT_ATOMIC_PACKAGE";
 const SOP_V12_MANIFEST_TYPE = "COURIER_INTAKE_MANIFEST";
 const SOP_V12_CORRECTIVE_REVIEW_SCHEMA = "archive-meta-pipeline-sop-v12-corrective-review-v1";
 const SOP_V12_REVIEWER_ROLES = new Set(["ROOT", "AUTHORIZED_REVIEWER"]);
+export function sopV12PackIncludes(primaryPack, rowPack) {
+  return typeof primaryPack === "string" && typeof rowPack === "string" && primaryPack.split("_AND_").includes(rowPack);
+}
 const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
 const textValue = value => typeof value === "string" && value.trim().length > 0;
 const compactSourceText = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
@@ -157,6 +160,55 @@ export function sourceVisualType(question) {
   if (rasterAssets.length) return "IMAGE";
   if (svgAssets.length) return "SVG";
   return "NONE";
+}
+const SOP_V12_SOURCE_CORRECTION_FIELDS = new Set(["answer", "questionType", "choicesCount", "score"]);
+export function isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid, originalValue, currentValue, reviewEntry, itemEntry }) {
+  if (!SOP_V12_SOURCE_CORRECTION_FIELDS.has(field)) return false;
+  if (!reviewEntry || typeof reviewEntry !== "object" || Array.isArray(reviewEntry) ||
+      !itemEntry || typeof itemEntry !== "object" || Array.isArray(itemEntry) || !eq(reviewEntry, itemEntry)) return false;
+  if (reviewEntry.field !== field || reviewEntry.questionUid !== questionUid ||
+      Number(reviewEntry.auditQuestionNumber ?? reviewEntry.sourceOrdinal) !== ordinal ||
+      reviewEntry.appliedToManifest !== false || !textValue(reviewEntry.reason)) return false;
+  if (!Object.hasOwn(reviewEntry, "originalManifestValue") || !Object.hasOwn(reviewEntry, "currentSourceValue")) return false;
+  if (!eq(reviewEntry.originalManifestValue, originalValue)) return false;
+  if (!eq(reviewEntry.currentSourceValue, currentValue)) return false;
+  if (eq(reviewEntry.originalManifestValue, reviewEntry.currentSourceValue)) return false;
+  return true;
+}
+function validateSopV12SourceFieldCorrections({ ordinal, questionUid, question, manifestRow, reviewed, patch }) {
+  const reviewEntries = reviewed.sourceFieldCorrections ?? [];
+  const itemEntries = patch.sourceFieldCorrections ?? [];
+  if (!Array.isArray(reviewEntries) || !Array.isArray(itemEntries))
+    fail("SOP_v1.2 source field corrections must be arrays: " + ordinal);
+  const collect = entries => {
+    const map = new Map();
+    for (const entry of entries) {
+      if (!entry || typeof entry !== "object" || Array.isArray(entry))
+        fail("SOP_v1.2 source field correction entry must be an object: " + ordinal);
+      if (typeof entry.field !== "string" || !SOP_V12_SOURCE_CORRECTION_FIELDS.has(entry.field))
+        fail("SOP_v1.2 source field correction is not permitted for field " + String(entry.field) + ": " + ordinal);
+      if (map.has(entry.field)) fail("SOP_v1.2 duplicate source field correction: " + ordinal + "." + entry.field);
+      map.set(entry.field, entry);
+    }
+    return map;
+  };
+  const reviewMap = collect(reviewEntries);
+  const itemMap = collect(itemEntries);
+  if (!eq([...reviewMap.keys()].sort(), [...itemMap.keys()].sort()))
+    fail("SOP_v1.2 corrective review/request source field correction fields differ: " + ordinal);
+  const result = new Map();
+  for (const [field, reviewEntry] of reviewMap) {
+    const itemEntry = itemMap.get(field);
+    if (!manifestRow) fail("SOP_v1.2 source field correction has no manifest row: " + ordinal + "." + field);
+    const originalValue = manifestRow[field] ?? null;
+    const currentValue = field === "choicesCount"
+      ? (Array.isArray(question?.choices) ? question.choices.length : null)
+      : question?.[field] ?? null;
+    if (!isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid, originalValue, currentValue, reviewEntry, itemEntry }))
+      fail("SOP_v1.2 invalid source field correction: " + ordinal + "." + field);
+    result.set(field, reviewEntry);
+  }
+  return result;
 }
 function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, source, sourceBytes, expectedQuestionCount, items, registryChanges }) {
   const reviewRef = proof.correctiveReviewRef;
@@ -209,6 +261,12 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
   const patches = unique(items || [], "sourceOrdinal", "SOP_v1.2 request sourceOrdinal");
   const reviewRows = unique(review.rows, "sourceOrdinal", "SOP_v1.2 corrective review sourceOrdinal");
   if (reviewRows.size !== expectedQuestionCount) fail("SOP_v1.2 corrective review row denominator mismatch");
+  const manifestRows = new Map();
+  for (const manifestRow of Array.isArray(manifest?.recordsToBind) ? manifest.recordsToBind : []) {
+    const manifestOrdinal = Number(manifestRow?.questionNumber);
+    if (Number.isInteger(manifestOrdinal)) manifestRows.set(manifestOrdinal, manifestRow);
+  }
+  const sourceFieldCorrections = new Map();
   const records = [];
   for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
     const row = auditRows.get(ordinal), reviewed = reviewRows.get(ordinal), patch = patches.get(ordinal);
@@ -219,7 +277,7 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
     const subUnitKey = row?.curriculumAlignment?.subUnitKey;
     if (!row || row.auditStatus !== "PASS" || row.packIsolationPassed !== true ||
         row.zeroHoldCompliance !== true || row.zeroStubCertified !== true ||
-        row.designatedPack !== rawAudit.primaryPack ||
+        !sopV12PackIncludes(rawAudit.primaryPack, row.designatedPack) ||
         !/^PT_[A-Z0-9_]+$/.test(row.verifiedPrimaryTaxonomy || "") ||
         !/^TPL_[A-Z0-9_]+$/.test(row.verifiedTemplatePattern || "") ||
         !textValue(unitKey) || !textValue(subUnitKey) ||
@@ -276,6 +334,9 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
       fail(`SOP_v1.2 corrective review visual evidence does not match the production source assets: ${ordinal}`);
     if (Object.keys(reviewed).some(key => /difficultyBucket|^bucket$/i.test(key)))
       fail(`SOP_v1.2 corrective review must not declare a difficulty bucket: ${ordinal}`);
+    const corrections = validateSopV12SourceFieldCorrections({ ordinal, questionUid: reviewed.questionUid,
+      question, manifestRow: manifestRows.get(ordinal), reviewed, patch });
+    if (corrections.size) sourceFieldCorrections.set(ordinal, corrections);
     records.push({
       questionId: ordinal,
       standardCourse: corrected.standardCourse,
@@ -288,8 +349,8 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
         templateKey: corrected.templateKey,
         crossConceptKeys: [...corrected.crossConceptKeys],
         conditionKeys: null,
-        targetPack: rawAudit.primaryPack,
-        assignedPack: rawAudit.primaryPack,
+        targetPack: row.designatedPack,
+        assignedPack: row.designatedPack,
       },
       readingEvidence: {
         sourceTextExcerpt: reviewed.sourceTextExcerpt,
@@ -362,6 +423,7 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
         templateInflation: "NOT_REPORTED_IN_SOURCE_SCHEMA",
       },
     },
+    sourceFieldCorrections,
   };
 }
 function safePath(root, relative) {
@@ -459,9 +521,12 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       rawAudit.handOffToCourier?.registrationProtocol !== "DIRECT_ATOMIC_METADATA_BINDING"))
     fail("META_PIPELINE_AUDIT is not an approved Courier handoff");
   let audit = rawAudit;
+  let sopSourceFieldCorrections = new Map();
   if (auditV4) {
-    audit = normalizeSopV12Audit({ root, proof, rawAudit, manifest, review: correctiveReview, bank, source, sourceBytes,
-      expectedQuestionCount, items, registryChanges }).audit;
+    const normalizedSop = normalizeSopV12Audit({ root, proof, rawAudit, manifest, review: correctiveReview, bank, source, sourceBytes,
+      expectedQuestionCount, items, registryChanges });
+    audit = normalizedSop.audit;
+    sopSourceFieldCorrections = normalizedSop.sourceFieldCorrections;
   } else if (pairedLegacyInput || auditV3SourceDriveFlat) {
     const classificationSchema = auditV3SourceDriveFlat ? "ALIVE_CANDIDATE_CLASSIFICATION_v3"
       : auditV3KeyOnly ? "CANDIDATE_CLASSIFICATION_PACKAGE_v2" : "CANDIDATE_CLASSIFICATION_v2";
@@ -708,7 +773,22 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (auditV4) {
       const bankRow = bank[ordinal - 1];
       const manifestCrossConcepts = manifestKeyList(manifestRow, "crossConcepts", "crossConceptKeys");
-      if (!manifestRow || Number(manifestRow.questionNumber) !== ordinal || Number(manifestRow.sourceQuestionId) !== ordinal ||
+      if (!manifestRow) fail("META_PIPELINE_AUDIT SOP_v1.2 manifest binding mismatch: " + ordinal);
+      const sourceChoicesCount = Array.isArray(bankRow.choices) ? bankRow.choices.length : null;
+      const correctionAllows = (field, manifestValue, sourceValue) => {
+        const correction = sopSourceFieldCorrections.get(ordinal)?.get(field);
+        return Boolean(correction) && isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid: patch.questionUid,
+          originalValue: manifestValue, currentValue: sourceValue, reviewEntry: correction, itemEntry: correction });
+      };
+      const questionTypeMatches = eq(manifestRow.questionType ?? null, bankRow.questionType ?? null) ||
+        correctionAllows("questionType", manifestRow.questionType ?? null, bankRow.questionType ?? null);
+      const answerMatches = eq(manifestRow.answer ?? null, bankRow.answer ?? null) ||
+        correctionAllows("answer", manifestRow.answer ?? null, bankRow.answer ?? null);
+      const choicesCountMatches = manifestRow.choicesCount === sourceChoicesCount ||
+        correctionAllows("choicesCount", manifestRow.choicesCount ?? null, sourceChoicesCount);
+      const scoreMatches = eq(Number(manifestRow.score), Number(bankRow.score)) ||
+        correctionAllows("score", manifestRow.score ?? null, bankRow.score ?? null);
+      if (Number(manifestRow.questionNumber) !== ordinal || Number(manifestRow.sourceQuestionId) !== ordinal ||
           manifestRow.primaryTaxonomy !== record.auditedClassification.problemTypeKey ||
           manifestRow.templatePattern !== record.auditedClassification.templateKey ||
           !manifestCrossConcepts || !eq(manifestCrossConcepts, record.auditedClassification.crossConceptKeys) ||
@@ -716,10 +796,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
           manifestRow.pack !== classification.targetPack ||
           Number(manifestRow.difficulty) !== record.auditedClassification.difficultyRank ||
           manifestRow.level !== record.auditedClassification.level ||
-          !eq(manifestRow.questionType ?? null, bankRow.questionType ?? null) ||
-          !eq(manifestRow.answer ?? null, bankRow.answer ?? null) ||
-          manifestRow.choicesCount !== (Array.isArray(bankRow.choices) ? bankRow.choices.length : null) ||
-          !eq(Number(manifestRow.score), Number(bankRow.score)))
+          !questionTypeMatches || !answerMatches || !choicesCountMatches || !scoreMatches)
         fail(`META_PIPELINE_AUDIT SOP_v1.2 manifest binding mismatch: ${ordinal}`);
     } else {
       const manifestCrossConceptKeys = manifestKeyList(manifestRow, "crossConceptKeys", "crossConcepts");
@@ -786,7 +863,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: audit.inputAuditSchemaVersion || rawAudit.schemaVersion,
     inputAuditVariant: auditV4 ? "sop_v12_corrective_review" : auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3"
       : auditV3SourceDriveFlat ? "source_drive_flat_v3" : "atomic_package_v2",
-    classificationRef: proof.classificationRef || null };
+    classificationRef: proof.classificationRef || null,
+    sourceFieldCorrections: [...sopSourceFieldCorrections.entries()].sort(([a], [b]) => a - b).flatMap(([ordinal, corrections]) =>
+      [...corrections.values()].map(entry => ({ ...entry, sourceOrdinal: ordinal }))) };
 }
 
 function validateMetaPipelineRegistry({ audit, parentBindingCorrection, parentBindingCorrectionRef, beforeTables, afterTables, registryChanges, existingConceptReviews, items, root }) {
@@ -1847,6 +1926,17 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         driveSourceSha256: metaPipelineAudit.audit.sopV12.driveSourceSha256,
         productionSourceSha256: metaPipelineAudit.audit.sopV12.productionSourceSha256,
         sourceHashDrift: metaPipelineAudit.audit.sopV12.sourceHashDrift,
+        sourceFieldCorrections: (metaPipelineAudit.sourceFieldCorrections || []).map(correction => ({
+          questionUid: correction.questionUid,
+          field: correction.field,
+          originalManifestValue: correction.originalManifestValue,
+          currentSourceValue: correction.currentSourceValue,
+          reason: correction.reason,
+          appliedToManifest: false,
+          reviewer: { id: metaPipelineAudit.audit.sopV12.reviewer.id, role: metaPipelineAudit.audit.sopV12.reviewer.role },
+          reviewedAt: metaPipelineAudit.audit.sopV12.reviewedAt,
+          sourceOrdinal: correction.sourceOrdinal,
+        })),
         sourceBytesMutation: "NONE",
         conditionEvidence: "NOT_PRESENT_IN_SOURCE_SCHEMA",
         difficultyBucketSource: "NOT_AUDITED_1_5_BUCKET",

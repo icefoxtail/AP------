@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.21",
+  "shardVersion": "1.4.22",
   "status": "ACTIVE",
-  "conceptCount": 317,
+  "conceptCount": 338,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -11078,6 +11078,944 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ALGEBRAIC_MODELING",
+      "canonicalLabelKo": "문자식을 이용한 도형 관계 모델링",
+      "definition": "도형의 넓이·높이 같은 양을 문자를 포함한 식으로 나타내고, 주어진 공식에 대입해 관계를 세우는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA/TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $h=\\frac{2(6x^2y^3-3x^2y^2)}{\\frac32x^2y}=\\frac{12x^2y^3-6x^2y^2}{\\frac32x^2y}=8y^2-4y$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ALGEBRAIC_SIMPLIFICATION",
+      "canonicalLabelKo": "식의 간단히 하기",
+      "definition": "곱셈·나눗셈과 거듭제곱을 차례로 계산해 하나의 단항식 또는 다항식으로 정리하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION/TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "②의 왼쪽은 $x^3y^2\\times(-3xy^2)^3=x^3y^2\\times(-27x^3y^6)=-27x^6y^8$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_BOUNDARY_VALUE_ANALYSIS",
+      "canonicalLabelKo": "경계값 분석",
+      "definition": "부등식의 해가 특정 값을 포함하는지 판단하기 위해 경계가 되는 값을 비교하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIRECTION_OF_INEQUALITY",
+      "canonicalLabelKo": "부등호의 방향",
+      "definition": "부등식이 나타내는 두 값의 대소 관계가 향하는 방향.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ERROR_CORRECTION",
+      "canonicalLabelKo": "오연산의 역보정",
+      "definition": "잘못 적용한 연산을 되돌려 원래의 식이나 값을 복원하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTION_ARITHMETIC",
+      "canonicalLabelKo": "분수의 사칙계산",
+      "definition": "분수의 분자와 분모를 이용해 더하기·빼기·곱하기·나누기를 계산하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK/TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $x+3\\ge18$이므로 $x\\ge15$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTION_COEFFICIENTS",
+      "canonicalLabelKo": "분수 계수",
+      "definition": "미지수나 상수에 붙은 계수가 분수로 주어진 상태.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+        "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_SOLVING/TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: ④에서 $\\frac14x-5>\\frac13$이므로 $\\frac14x>\\frac{16}{3}$, 따라서 $x>\\frac{64}{3}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "PT_M2_LINEAR_INEQUALITY_SOLVING"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INEQUALITY_IDENTIFICATION",
+      "canonicalLabelKo": "부등식의 일차성 판별",
+      "definition": "부등식을 정리한 뒤 남는 미지수 항이 일차인지 확인하여 일차부등식인지 판단하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INEQUALITY_PROPERTIES",
+      "canonicalLabelKo": "부등식의 성질",
+      "definition": "부등식의 양변에 같은 수를 더하거나 곱하고 나누어도 성립하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_INEQUALITIES",
+      "canonicalLabelKo": "일차부등식",
+      "definition": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+        "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+        "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+        "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_SOLVING/TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: ④에서 $\\frac14x-5>\\frac13$이므로 $\\frac14x>\\frac{16}{3}$, 따라서 $x>\\frac{64}{3}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED/TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\frac{x}{4}+\\frac{x}{2}+\\frac12\\le\\frac52$에서 $\\frac34x\\le2$, 따라서 $x\\le\\frac83$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK/TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $x+3\\ge18$이므로 $x\\ge15$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_MONOMIAL_DIVISION",
+      "canonicalLabelKo": "단항식의 나눗셈",
+      "definition": "단항식을 단항식으로 나눌 때 계수끼리 나누고, 같은 문자끼리 지수를 빼며, 분모로 내려간 문자는 음의 지수로 처리하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION/TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "②의 왼쪽은 $x^3y^2\\times(-3xy^2)^3=x^3y^2\\times(-27x^3y^6)=-27x^6y^8$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NATURAL_NUMBER_SUM",
+      "canonicalLabelKo": "자연수 해의 합",
+      "definition": "조건을 만족하는 자연수들을 모두 더한 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NEGATIVE_MULTIPLICATION",
+      "canonicalLabelKo": "음수 곱셈",
+      "definition": "부등식의 양변에 음수를 곱하는 연산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE",
+      "canonicalLabelKo": "수직선",
+      "definition": "수의 대소와 범위를 위치로 나타내는 직선.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_ADDITION",
+      "canonicalLabelKo": "다항식의 덧셈",
+      "definition": "동류항끼리 계수를 더해 다항식을 간단히 하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DEGREE",
+      "canonicalLabelKo": "다항식의 차수",
+      "definition": "다항식에서 문자가 곱해진 횟수가 가장 큰 항의 차수.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "canonicalLabelKo": "다항식을 단항식으로 나누기",
+      "definition": "다항식의 각 항을 같은 단항식으로 나누어 몫을 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA/TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $h=\\frac{2(6x^2y^3-3x^2y^2)}{\\frac32x^2y}=\\frac{12x^2y^3-6x^2y^2}{\\frac32x^2y}=8y^2-4y$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_MULTIPLICATION",
+      "canonicalLabelKo": "다항식의 곱셈",
+      "definition": "분배법칙을 이용해 다항식의 각 항을 서로 곱하고 동류항을 정리하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+        "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA/TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO/TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUBTRACTION",
+      "canonicalLabelKo": "다항식의 뺄셈",
+      "definition": "빼는 다항식의 각 항의 부호를 바꾼 뒤 동류항끼리 계수를 더하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIO_AND_PROPORTION",
+      "canonicalLabelKo": "비와 비례배분",
+      "definition": "주어진 비에 따라 전체 양을 나누어 각 부분의 크기를 정하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SPEED_DISTANCE_TIME",
+      "canonicalLabelKo": "속력·거리·시간 관계",
+      "definition": "속력과 시간의 곱으로 거리를 구하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED/TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\frac{x}{4}+\\frac{x}{2}+\\frac12\\le\\frac52$에서 $\\frac34x\\le2$, 따라서 $x\\le\\frac83$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

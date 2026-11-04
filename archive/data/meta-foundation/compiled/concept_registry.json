@@ -4,8 +4,8 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.21",
-      "conceptCount": 317
+      "version": "1.4.22",
+      "conceptCount": 338
     },
     {
       "shardId": "FUNCTIONS",
@@ -14,8 +14,8 @@
     },
     {
       "shardId": "LOGIC_SET",
-      "version": "1.0.5",
-      "conceptCount": 24
+      "version": "1.0.6",
+      "conceptCount": 25
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
@@ -24,8 +24,8 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.16",
-      "conceptCount": 89
+      "version": "1.3.17",
+      "conceptCount": 114
     },
     {
       "shardId": "COUNTING",
@@ -63,7 +63,7 @@
       "conceptCount": 77
     }
   ],
-  "conceptCount": 803,
+  "conceptCount": 850,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -11142,6 +11142,944 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_ALGEBRAIC_MODELING",
+      "canonicalLabelKo": "문자식을 이용한 도형 관계 모델링",
+      "definition": "도형의 넓이·높이 같은 양을 문자를 포함한 식으로 나타내고, 주어진 공식에 대입해 관계를 세우는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA/TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $h=\\frac{2(6x^2y^3-3x^2y^2)}{\\frac32x^2y}=\\frac{12x^2y^3-6x^2y^2}{\\frac32x^2y}=8y^2-4y$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ALGEBRAIC_SIMPLIFICATION",
+      "canonicalLabelKo": "식의 간단히 하기",
+      "definition": "곱셈·나눗셈과 거듭제곱을 차례로 계산해 하나의 단항식 또는 다항식으로 정리하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION/TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "②의 왼쪽은 $x^3y^2\\times(-3xy^2)^3=x^3y^2\\times(-27x^3y^6)=-27x^6y^8$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_BOUNDARY_VALUE_ANALYSIS",
+      "canonicalLabelKo": "경계값 분석",
+      "definition": "부등식의 해가 특정 값을 포함하는지 판단하기 위해 경계가 되는 값을 비교하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIRECTION_OF_INEQUALITY",
+      "canonicalLabelKo": "부등호의 방향",
+      "definition": "부등식이 나타내는 두 값의 대소 관계가 향하는 방향.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ERROR_CORRECTION",
+      "canonicalLabelKo": "오연산의 역보정",
+      "definition": "잘못 적용한 연산을 되돌려 원래의 식이나 값을 복원하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTION_ARITHMETIC",
+      "canonicalLabelKo": "분수의 사칙계산",
+      "definition": "분수의 분자와 분모를 이용해 더하기·빼기·곱하기·나누기를 계산하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK/TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $x+3\\ge18$이므로 $x\\ge15$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTION_COEFFICIENTS",
+      "canonicalLabelKo": "분수 계수",
+      "definition": "미지수나 상수에 붙은 계수가 분수로 주어진 상태.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+        "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_SOLVING/TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: ④에서 $\\frac14x-5>\\frac13$이므로 $\\frac14x>\\frac{16}{3}$, 따라서 $x>\\frac{64}{3}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "PT_M2_LINEAR_INEQUALITY_SOLVING"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INEQUALITY_IDENTIFICATION",
+      "canonicalLabelKo": "부등식의 일차성 판별",
+      "definition": "부등식을 정리한 뒤 남는 미지수 항이 일차인지 확인하여 일차부등식인지 판단하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INEQUALITY_PROPERTIES",
+      "canonicalLabelKo": "부등식의 성질",
+      "definition": "부등식의 양변에 같은 수를 더하거나 곱하고 나누어도 성립하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_INEQUALITIES",
+      "canonicalLabelKo": "일차부등식",
+      "definition": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+        "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+        "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+        "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_SOLVING/TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: ④에서 $\\frac14x-5>\\frac13$이므로 $\\frac14x>\\frac{16}{3}$, 따라서 $x>\\frac{64}{3}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED/TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\frac{x}{4}+\\frac{x}{2}+\\frac12\\le\\frac52$에서 $\\frac34x\\le2$, 따라서 $x\\le\\frac83$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK/TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $x+3\\ge18$이므로 $x\\ge15$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_MONOMIAL_DIVISION",
+      "canonicalLabelKo": "단항식의 나눗셈",
+      "definition": "단항식을 단항식으로 나눌 때 계수끼리 나누고, 같은 문자끼리 지수를 빼며, 분모로 내려간 문자는 음의 지수로 처리하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION/TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "②의 왼쪽은 $x^3y^2\\times(-3xy^2)^3=x^3y^2\\times(-27x^3y^6)=-27x^6y^8$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NATURAL_NUMBER_SUM",
+      "canonicalLabelKo": "자연수 해의 합",
+      "definition": "조건을 만족하는 자연수들을 모두 더한 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM/TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NEGATIVE_MULTIPLICATION",
+      "canonicalLabelKo": "음수 곱셈",
+      "definition": "부등식의 양변에 음수를 곱하는 연산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE",
+      "canonicalLabelKo": "수직선",
+      "definition": "수의 대소와 범위를 위치로 나타내는 직선.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+          "sourceOrdinal": 9,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS/TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_ADDITION",
+      "canonicalLabelKo": "다항식의 덧셈",
+      "definition": "동류항끼리 계수를 더해 다항식을 간단히 하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DEGREE",
+      "canonicalLabelKo": "다항식의 차수",
+      "definition": "다항식에서 문자가 곱해진 횟수가 가장 큰 항의 차수.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION/TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES bound at M2-02/M2-02-LINEAR_INEQUALITY; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "canonicalLabelKo": "다항식을 단항식으로 나누기",
+      "definition": "다항식의 각 항을 같은 단항식으로 나누어 몫을 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+          "sourceOrdinal": 2,
+          "classificationRationale": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA/TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $h=\\frac{2(6x^2y^3-3x^2y^2)}{\\frac32x^2y}=\\frac{12x^2y^3-6x^2y^2}{\\frac32x^2y}=8y^2-4y$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_MULTIPLICATION",
+      "canonicalLabelKo": "다항식의 곱셈",
+      "definition": "분배법칙을 이용해 다항식의 각 항을 서로 곱하고 동류항을 정리하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+        "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA/TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO/TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUBTRACTION",
+      "canonicalLabelKo": "다항식의 뺄셈",
+      "definition": "빼는 다항식의 각 항의 부호를 바꾼 뒤 동류항끼리 계수를 더하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+          "sourceOrdinal": 4,
+          "classificationRationale": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION/TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIO_AND_PROPORTION",
+      "canonicalLabelKo": "비와 비례배분",
+      "definition": "주어진 비에 따라 전체 양을 나누어 각 부분의 크기를 정하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SPEED_DISTANCE_TIME",
+      "canonicalLabelKo": "속력·거리·시간 관계",
+      "definition": "속력과 시간의 곱으로 거리를 구하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED/TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY bound at M2-02/M2-02-LINEAR_INEQUALITY_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\frac{x}{4}+\\frac{x}{2}+\\frac12\\le\\frac52$에서 $\\frac34x\\le2$, 따라서 $x\\le\\frac83$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -16632,6 +17570,45 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUFFICIENT_CONDITIONS",
+      "canonicalLabelKo": "충분조건",
+      "definition": "어떤 명제가 성립하기에 충분한 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
       ],
       "ownerConceptShard": "LOGIC_SET"
     },
@@ -22483,6 +23460,1219 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ALTERNATE_INTERIOR_ANGLES",
+      "canonicalLabelKo": "엇각",
+      "definition": "두 평행선과 한 직선이 만날 때 생기는, 서로 엇갈린 위치의 같은 크기 각.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ANGLE_BISECTOR_PROPERTY",
+      "canonicalLabelKo": "각의 이등분선의 성질",
+      "definition": "한 각을 크기가 같은 두 각으로 나누는 직선이 만드는 변과 각의 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+        "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE/TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ANGLE_RELATIONS",
+      "canonicalLabelKo": "각의 대소 관계",
+      "definition": "삼각형이나 사각형에서 여러 각 사이의 합·차·대소 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES/TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$\\angle x + \\angle y = 90^\\circ$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_AREA_RATIO",
+      "canonicalLabelKo": "넓이의 비",
+      "definition": "두 도형의 넓이 사이의 비율 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO/TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 삼각형 $ABD$에서 $[ABO]:[ADO]=BO:OD=3:2$이므로 $[ABO]=\\frac35\\times\\frac{70}{3}=14\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_COUNTEREXAMPLE_CONDITION",
+      "canonicalLabelKo": "반례에 의한 조건 불충분",
+      "definition": "주어진 조건을 만족하면서도 결론이 성립하지 않는 예가 존재해 그 조건이 충분하지 않음을 보이는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CYLINDER_VOLUME",
+      "canonicalLabelKo": "원기둥의 부피",
+      "definition": "밑면의 반지름과 높이를 이용해 원기둥의 부피를 구하는 공식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO/TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_DIAGONALS",
+      "canonicalLabelKo": "대각선",
+      "definition": "다각형에서 이웃하지 않는 두 꼭짓점을 잇는 선분.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH/TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_EQUAL_AREA_TRANSFORMATION",
+      "canonicalLabelKo": "등적변형",
+      "definition": "도형의 넓이를 바꾸지 않고 모양이나 위치를 옮기는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION/TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 두 삼각형 $ACD, ACE$는 밑변 $AC$를 공유하므로 $DE\\parallel AC$이면 높이가 같아서 넓이가 같다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_CONDITIONS",
+      "canonicalLabelKo": "도형의 조건",
+      "definition": "도형이 특정 종류가 되기 위해 만족해야 하는 변·각·대각선에 관한 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC/TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_FOLDING",
+      "canonicalLabelKo": "도형의 접기",
+      "definition": "종이를 한 선분을 따라 접었을 때 겹치는 부분이 합동이 되는 성질을 이용하는 기하 조작.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA/TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INTERNAL_POINT_PROPERTIES",
+      "canonicalLabelKo": "내부점과 삼각형 넓이",
+      "definition": "도형 내부의 한 점과 변들로 만든 삼각형들의 넓이 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA/TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $[CDP]=34-24=10\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ISOSCELES_TRIANGLES",
+      "canonicalLabelKo": "이등변삼각형",
+      "definition": "두 변의 길이가 같은 삼각형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+        "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_MATHEMATICAL_SYMBOLS",
+      "canonicalLabelKo": "수학 기호",
+      "definition": "평행·합동·각·선분 같은 수학적 관계를 나타내는 기호.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC/TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLEL_LINES_EQUAL_AREA",
+      "canonicalLabelKo": "평행선과 등적변형",
+      "definition": "두 삼각형이 같은 밑변을 공유할 때 밑변에 평행한 선을 이용해 높이가 같아지도록 만드는 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION/TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 두 삼각형 $ACD, ACE$는 밑변 $AC$를 공유하므로 $DE\\parallel AC$이면 높이가 같아서 넓이가 같다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLELOGRAMS",
+      "canonicalLabelKo": "평행사변형",
+      "definition": "두 쌍의 대변이 각각 평행한 사각형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+        "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+        "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+        "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+        "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA/TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $[CDP]=34-24=10\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE/TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS/TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC/TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PERIMETER",
+      "canonicalLabelKo": "둘레",
+      "definition": "도형의 가장자리를 따라 한 바퀴 돈 길이.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRILATERAL_CLASSIFICATION",
+      "canonicalLabelKo": "사각형의 분류",
+      "definition": "변·각·대각선의 성질에 따라 사각형을 평행사변형·직사각형·마름모·정사각형·등변사다리꼴 등으로 나누는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH/TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRILATERAL_HIERARCHY",
+      "canonicalLabelKo": "사각형의 포함 관계",
+      "definition": "일반 사각형에서 평행사변형·마름모·직사각형·정사각형으로 갈수록 조건이 추가되는 포함 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRILATERAL_PROPERTIES",
+      "canonicalLabelKo": "사각형의 성질",
+      "definition": "사각형의 변·각·대각선이 갖는 일반적인 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH/TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_AREA",
+      "canonicalLabelKo": "직사각형의 넓이",
+      "definition": "직사각형의 가로와 세로의 길이를 곱하여 넓이를 구하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "classificationRationale": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA/TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLES",
+      "canonicalLabelKo": "직사각형",
+      "definition": "네 내각이 모두 직각인 사각형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+        "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE/TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS/TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RHOMBUS",
+      "canonicalLabelKo": "마름모",
+      "definition": "네 변의 길이가 모두 같은 사각형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+        "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS/TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES/TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$\\angle x + \\angle y = 90^\\circ$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+        "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SQUARE_CLASSIFICATION",
+      "canonicalLabelKo": "정사각형 판별",
+      "definition": "사각형이 마름모이면서 직사각형이라는 두 조건을 함께 만족해 정사각형임을 판별하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRAPEZOID",
+      "canonicalLabelKo": "사다리꼴",
+      "definition": "한 쌍의 대변이 평행한 사각형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO/TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 삼각형 $ABD$에서 $[ABO]:[ADO]=BO:OD=3:2$이므로 $[ABO]=\\frac35\\times\\frac{70}{3}=14\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_VOLUME_RATIO",
+      "canonicalLabelKo": "부피의 비",
+      "definition": "두 입체도형의 부피 사이의 비율.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO/TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE bound at M2-01/M2-01-EXPONENT_LAW; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-01"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
