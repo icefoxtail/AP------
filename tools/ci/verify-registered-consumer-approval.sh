@@ -25,7 +25,9 @@ done
 if [[ ${#access_args[@]} -gt 0 ]]; then
   node archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs "${access_args[@]}" > "$RUNNER_TEMP/meta-student-access.json"
   cat "$RUNNER_TEMP/meta-student-access.json" >> "$summary"
-  node archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs "${access_args[@]}" --summary-file "$summary" > "$RUNNER_TEMP/meta-supplements.json" || true
+  if ! node archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs "${access_args[@]}" --summary-file "$summary" > "$RUNNER_TEMP/meta-supplements.json"; then
+    node archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs --supplement-report "$RUNNER_TEMP/meta-supplements.json"
+  fi
   printf '\nstatus=STUDENT_ACCESS_APPROVED_METADATA_SUPPLEMENT_RECORDED registered_main_sha=%s browser_rendering=NOT_RUN\n' "$sha" >> "$summary"
 fi
 if [[ "${ARCHIVE_META_SCOPED:-false}" == "true" ]]; then

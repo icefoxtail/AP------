@@ -3,6 +3,11 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 
+export function semanticFailuresAreSupplementary(report) {
+  const reasons=new Set(['NOT_APPROVED_IN_CONSUMER','METADATA_CONFLICT','META_PIPELINE_RUNTIME_MISSING','VALUE_MISMATCH','NOT_DIRECT_SELECTABLE','NOT_RETURNED_BY_PAGE_QUERY','NOT_IN_PROBLEM_BANK_INDEX','ROW_MISSING_IN_RESOLVED_CATALOG','SOURCE_BLOB_MISMATCH','SOURCE_FINGERPRINT_MISMATCH','BODY_FINGERPRINT_MISMATCH']);
+  return report?.status==='FAIL'&&Array.isArray(report.failures)&&report.failures.length>0&&report.failures.every(r=>reasons.has(r.reason));
+}
+
 // Metadata completeness is supplementary. Missing source, broken question or
 // solution content and missing local visual assets remain release failures.
 export function verifyStudentAccess(root, request) {
@@ -39,6 +44,11 @@ export function verifyStudentAccess(root, request) {
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const args=process.argv.slice(2),root=process.cwd(),files=[];
+  if(args.includes('--supplement-report')) {
+    const report=JSON.parse(fs.readFileSync(args[args.indexOf('--supplement-report')+1],'utf8'));
+    if(!semanticFailuresAreSupplementary(report)){console.error('CONSUMER_INFRASTRUCTURE_OR_IDENTITY_FAILURE');process.exit(1);}
+    process.exit(0);
+  }
   for(let i=0;i<args.length;i++)if(args[i]==='--request')files.push(args[++i]);
   const reports=files.map(f=>verifyStudentAccess(root,JSON.parse(fs.readFileSync(f,'utf8'))));
   console.log(JSON.stringify({reports},null,2));process.exitCode=reports.length&&reports.every(r=>r.status==='PASS')?0:1;

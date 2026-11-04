@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {acceptPendingSupplement,registerRequests,difficultyWriteConflicts} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {verifyStudentAccess} from '../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
+import {verifyStudentAccess,semanticFailuresAreSupplementary} from '../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 
 test('usable exam gets provisional metadata approval without changing difficulty or solution',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'student-first-'));
@@ -41,4 +41,10 @@ test('legacy META_PIPELINE requests cannot overwrite another difficulty writer',
  assert.deepEqual(difficultyWriteConflicts(doc,meta),['u.difficultyBucket']);
  assert.deepEqual(difficultyWriteConflicts({...doc,approval:{type:'REVIEW2'}},meta),[]);
  assert.deepEqual(difficultyWriteConflicts({...doc,items:[{questionUid:'u',after:{problemTypeKey:'PT_A'}}]},meta),[]);
+});
+
+test('consumer infrastructure failures are not swallowed as metadata supplements',()=>{
+ assert.equal(semanticFailuresAreSupplementary({status:'FAIL',failures:[{reason:'NOT_APPROVED_IN_CONSUMER'}]}),true);
+ for(const reason of ['CONSUMER_LOAD_FAILED','CHECKER_ERROR','UID_MISMATCH','SOURCE_UNREADABLE'])assert.equal(semanticFailuresAreSupplementary({status:'FAIL',failures:[{reason}]}),false);
+ assert.equal(semanticFailuresAreSupplementary({status:'FAIL',failures:[]}),false);
 });
