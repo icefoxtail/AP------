@@ -1300,14 +1300,31 @@
       for (const accepted of receipt.appliedRecords) {
         const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
         const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));
+        // A metadata audit approves the bound classification, not the original
+        // exam's separate review. Keep that source status intact and accept only
+        // a complete, specifically approved metadata record with this receipt.
+        const auditedMetadataOnly = receipt.approval.type === "META_PIPELINE_AUDIT" &&
+          receipt.examFinalQaStatus === "NOT_EVALUATED_BY_REGISTRAR" &&
+          accepted.metadataApprovalType === "META_PIPELINE_AUDIT" &&
+          accepted.metadataStatus === "approved_semantic_review" &&
+          meta?.metadataStatus === accepted.metadataStatus &&
+          accepted.reviewStatus === "review_required" &&
+          ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"].every(
+            field => accepted.fieldStatus?.[field] === "approved_meta_pipeline_audit" &&
+              meta?.fieldStatus?.[field] === "approved_meta_pipeline_audit"
+          ) && !Object.values(meta?.fieldStatus || {}).includes("manual_review_pending");
         if (!source || overlays.length !== 1 || normalizeFile(source.sourceFile) !== normalizeFile(receipt.sourceArchiveFile) ||
             Number(source.sourceOrdinal) !== Number(accepted.sourceOrdinal) || meta?.metadataRevision !== accepted.metadataRevision ||
             meta?.sourceFingerprint !== accepted.sourceFingerprint || source.assignmentFingerprint !== accepted.contentFingerprint ||
-            accepted.reviewStatus !== "reviewed_pass" || !text(meta?.metadataStatus).startsWith("approved_") ||
+            (accepted.reviewStatus !== "reviewed_pass" && !auditedMetadataOnly) || !text(meta?.metadataStatus).startsWith("approved_") ||
             !approvedFieldStatus(meta?.fieldStatus?.standardUnit) || !approvedFieldStatus(meta?.fieldStatus?.subUnit) ||
             !(meta?.evidenceRefs || []).includes("archive/" + path)) continue;
         const overlay = overlays[0], packId = overlay._runtimePackId, packVersion = overlay._runtimePackVersion;
-        if (packVersions.get(packId) !== packVersion || overlay.reviewStatus !== "reviewed_pass" ||
+        if (packVersions.get(packId) !== packVersion || overlay.reviewStatus !== accepted.reviewStatus ||
+            (auditedMetadataOnly && (overlay.metadataApprovalType !== "META_PIPELINE_AUDIT" || overlay.metadataStatus !== accepted.metadataStatus ||
+              ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"].some(
+                field => overlay.fieldStatus?.[field] !== "approved_meta_pipeline_audit"
+              ))) ||
             ["sourceFingerprint", "contentFingerprint", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "problemTypeKey", "templateKey", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit",
               "crossConceptKeys", "secondaryConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "curriculumApplicability", "defaultSelectable"].some(key => JSON.stringify(accepted[key]) !== JSON.stringify(overlay[key]))) continue;
         const gradeEvidence = resolveSourceGrade({ registeredGrade: examsByFile.get(normalizeFile(source.sourceFile))?.grade,
