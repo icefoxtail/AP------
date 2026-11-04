@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.17",
+  "shardVersion": "1.3.18",
   "status": "ACTIVE",
-  "conceptCount": 114,
+  "conceptCount": 120,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -4695,6 +4695,253 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CHORD_DEFINITION",
+      "canonicalLabelKo": "현의 정의",
+      "definition": "원 위의 서로 다른 두 점을 잇는 선분을 현이라 하며, 지름은 원의 중심을 지나는 가장 긴 현이다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_CHORD_DEFINITION for PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "한 원에서의 현의 정의, 지름의 성질, 중심각과 원주각의 관계 등 원의 기본 공리적 성질들의 진위를 선별하는 1단계 개념 판정 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CHORD_PERP_BISECTOR",
+      "canonicalLabelKo": "원의 중심에서 현에 내린 수선의 수직이등분 성질",
+      "definition": "원의 중심에서 현에 내린 수선은 그 현을 수직으로 이등분하고, 현의 수직이등분선은 원의 중심을 지난다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1064034be78c52c010ec58d886da29aa28ba1ed032fe41dd6d9fd0e4ac579342",
+        "qid_v1_e8e8ffa203c5e595e23fd5a270360c5f6254a6c4d1b519bde822c905dc01aa0f"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e8e8ffa203c5e595e23fd5a270360c5f6254a6c4d1b519bde822c905dc01aa0f",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_CIRCLE_CHORD_PERP_BISECTOR for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "원의 중심에서 현에 내린 수선은 그 현을 수직이등분한다는 성질과 피타고라스 정리를 결합하여 직각삼각형에서 현의 절반을 구하고 현의 전체 길이 x를 도출하는 3단계 원과 직선 응용 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1064034be78c52c010ec58d886da29aa28ba1ed032fe41dd6d9fd0e4ac579342",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_CIRCLE_CHORD_PERP_BISECTOR for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "반지름 8과 현의 길이 12가 주어졌을 때 수직이등분선 성질로 반현 6을 얻고 피타고라스 정리를 적용하여 중심에서 현까지의 거리 d = sqrt(8^2 - 6^2) = 2*sqrt(7)을 구하는 2단계 기하 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_PROPERTIES",
+      "canonicalLabelKo": "원의 기본 성질",
+      "definition": "지름과 반지름, 중심각과 원주각, 현과 접선 등 원의 구성 요소 사이의 기본 관계를 나타내는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+        "qid_v1_f7e7c257b59a76dc5207a83a532583e257c1a6e49cdd90c98f7a573372e86ab4"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_CIRCLE_PROPERTIES for PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "한 원에서의 현의 정의, 지름의 성질, 중심각과 원주각의 관계 등 원의 기본 공리적 성질들의 진위를 선별하는 1단계 개념 판정 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f7e7c257b59a76dc5207a83a532583e257c1a6e49cdd90c98f7a573372e86ab4",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_CIRCLE_PROPERTIES for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "원 밖의 한 점에서 원에 그은 두 접선의 길이는 서로 같다는 기본 정리를 직접 적용하여 접선의 길이 x를 즉시 도출하는 1단계 성질 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_ANGLE_RELATIONS",
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCUMSCRIBED_POLYGON",
+      "canonicalLabelKo": "원에 외접하는 다각형",
+      "definition": "다각형의 모든 변이 하나의 원에 접할 때 그 다각형은 원에 외접한다고 하며, 한 꼭짓점에서 그은 두 접선의 길이는 같다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_038028d96dde87fe254b6489e8b6d672d3cf13fd72cae2f6b105f9a6499f1556"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_038028d96dde87fe254b6489e8b6d672d3cf13fd72cae2f6b105f9a6499f1556",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CIRCUMSCRIBED_POLYGON for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "삼각형의 세 변이 원에 외접할 때 꼭짓점별 두 접선의 길이가 같다는 성질을 이용하여 세 변의 분할 선분 관계식을 연립하여 x를 구하는 3단계 외접다각형 응용 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_EQUAL_CHORDS_EQUAL_DISTANCE",
+      "canonicalLabelKo": "중심에서 같은 거리에 있는 현의 길이",
+      "definition": "한 원에서 중심에서 두 현에 이르는 거리가 같으면 두 현의 길이가 같고, 두 현의 길이가 같으면 중심에서의 거리도 같다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_41c403aee3a7eca734db7a632f42139e8d6abf4217478b4113a1f1693d951ee2",
+        "qid_v1_9096cae3ffb85bc6bd00b112b923f4f44cccde8c082baf4ffcbd139683c40f4f"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_41c403aee3a7eca734db7a632f42139e8d6abf4217478b4113a1f1693d951ee2",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_EQUAL_CHORDS_EQUAL_DISTANCE for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "원의 중심에서 두 현에 이르는 거리가 같으면 두 현의 길이가 같다는 정리를 적용하고 수직이등분 피타고라스 삼각형으로 현의 길이를 산출하는 2단계 중심거리-현 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9096cae3ffb85bc6bd00b112b923f4f44cccde8c082baf4ffcbd139683c40f4f",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_EQUAL_CHORDS_EQUAL_DISTANCE for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "중심에서 두 현에 이르는 거리가 같아 두 현이 같으므로 삼각형 ABC가 이등변삼각형임을 유도하고, 꼭지각으로부터 밑각을 산출하는 3단계 원과 이등변삼각형 융합 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_INSCRIBED_CIRCLE",
+      "canonicalLabelKo": "직사각형 안의 접하는 원",
+      "definition": "직사각형 내부에서 변에 접하는 원의 반지름과 접점을 이용하여 도형의 길이 관계를 다루는 상황.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_RECTANGLE_INSCRIBED_CIRCLE for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06/M3-06-CIRCLE_LINE.",
+          "decisiveEvidence": "서술형 심화 문항으로서 직사각형에 내접하는 원의 반지름을 구하고, 접선의 길이 성질로 분할 선분들을 표현한 후 직각삼각형을 형성하여 피타고라스 정리로 이차/일차 방정식을 세워 선분의 길이를 완결하는 4단계 복합 킬러 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+            "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }
