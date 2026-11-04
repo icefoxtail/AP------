@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+  "sourceAuditPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.source.json",
+  "sourceAuditSha256": "cbda3e7ca4507fdd8d6fc0a7fc32dda3efbc72db0a10640d4eb19616bcb067f0",
+  "sourceAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "targetProofSchema": "meta-pipeline-audit-approval-v1",
+  "targetAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "reason": "The Drive audit supplies per-record classification values, reading evidence and difficulty, but this lean variant omits the registrar-level statistics, CrossConcept definition objects, handoff block and per-record nested classification. The prepared audit is an additive normalization of the SAME 22 audited records; no audited unit, PT, TPL, CrossConcept, Condition, difficulty value, excerpt or verdict is changed. Both the raw audit bytes and this disclosure are SHA-bound in the request.",
+  "addedFields": [
+    "statistics: computed only from this audit's own 22 records and their audited CrossConcept tags",
+    "boundAtomicCrossConcepts: 14 labels/definitions copied verbatim from the current ACTIVE canonical shards and 29 courier-authored definitions disclosed in the definitions evidence",
+    "handOffToCourier: mirrors the audited manifest READY_FOR_COURIER_REGISTRATION handoff",
+    "records[].auditVerdict: 'APPROVED' mapped from the package-level ALL_APPROVED_CANONICAL_STANDARDIZED verdict with zero holds and zero template inflation",
+    "records[].classification: assembled from the same record's audited standardCourse/PT/TPL/CrossConcept/Condition values"
+  ],
+  "preservedFields": [
+    "records[].questionId, standardCourse, standardUnitKey, standardUnit, subUnitKey, subUnit",
+    "records[].problemTypeKey, templateKey, crossConceptKeys, conditionKeys, integrationPattern",
+    "records[].difficultyBucket, difficultyConfidence, difficultyReason, readingEvidence"
+  ],
+  "valueChanges": [],
+  "sourceAuditHasDefinitions": false,
+  "crossConceptDefinitionProvenance": {
+    "reusedActiveCanonical": [
+      "CC_AM_GM_INEQUALITY",
+      "CC_COMBINATION_ORDER",
+      "CC_CURVE_TRANSLATION_CONGRUENCE",
+      "CC_DISCRIMINANT",
+      "CC_FUNCTION_COUNTING",
+      "CC_INVERSE_FUNCTION",
+      "CC_IRRATIONAL_FUNCTION_GRAPH",
+      "CC_ITERATED_COMPOSITION",
+      "CC_PERMUTATION",
+      "CC_PIECEWISE_FUNCTION",
+      "CC_RADICAL_REAL_CONDITION",
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+      "CC_RATIONAL_FUNCTION_SYMMETRY",
+      "CC_UNDETERMINED_COEFFICIENTS"
+    ],
+    "courierAuthoredFromAuditEvidence": [
+      "CC_ADJACENCY_SPACING",
+      "CC_ADJACENT_ARRANGEMENT",
+      "CC_BLOCK_PERMUTATION",
+      "CC_CASE_BRANCHING",
+      "CC_COMBINATION_AND_PERMUTATION",
+      "CC_COMBINATION_FORMULA",
+      "CC_COMBINATION_RATIO",
+      "CC_COMPLEMENTARY_COUNTING",
+      "CC_DERANGEMENT",
+      "CC_GEOMETRIC_AREA_TRANSFORM",
+      "CC_GREATEST_COMMON_DIVISOR",
+      "CC_INCLUSION_EXCLUSION",
+      "CC_INSCRIBED_RECTANGLE",
+      "CC_INSCRIBED_RIGHT_TRIANGLE",
+      "CC_IRRATIONAL_LINE_TANGENCY",
+      "CC_LEXICOGRAPHIC_ORDER",
+      "CC_LINEAR_SYSTEM",
+      "CC_MONOTONE_SEQUENCE_COUNTING",
+      "CC_MULTIPLICATION_RULE",
+      "CC_NONZERO_DENOMINATOR",
+      "CC_PERIODICITY",
+      "CC_PERMUTATION_FORMULA",
+      "CC_RADICAL_EVALUATION",
+      "CC_RATIONALIZATION_OF_DENOMINATOR",
+      "CC_RATIONAL_EXPRESSION",
+      "CC_RATIONAL_FUNCTION_TRANSLATION",
+      "CC_RATIONAL_SYMMETRY_CENTER",
+      "CC_STANDARD_FORM_CONVERSION",
+      "CC_SUBSET_COUNTING"
+    ]
+  },
+  "packScopeCorrections": []
+}
