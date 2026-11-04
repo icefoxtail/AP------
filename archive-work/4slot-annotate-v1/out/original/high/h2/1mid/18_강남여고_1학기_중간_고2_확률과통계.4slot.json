@@ -1,0 +1,1190 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/18_강남여고_1학기_중간_고2_확률과통계.js",
+  "sourceGitBlobSha": "8a609ce98326ac9eca5472382c2b982eda53b51b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-261-270",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "${}_5\\mathrm{C}_3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "조합을 사용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "5개 중 3개를 고르는 조합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(a+b)(x+y+z)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 항의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙을 적용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 괄호의 항 선택 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "6명이 탈 수 있는 원형 놀이기구"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "한 사람의 자리를 고정하면",
+            "evidenceType": "IMPLIED",
+            "justification": "회전 중복을 제거하고 나머지 사람을 배열한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원형 좌석에서 한 사람을 고정하고 나머지를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "놀이기구"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "똑같은 4개의 쇼핑백"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정수의분할",
+            "src": "solution",
+            "quote": "9를 4개의 양의 정수로 분할",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 구별되지 않는 봉투와 옷을 양의 정수 분할에 대응한다."
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "9를 4개의 양의 정수로 분할",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "가능한 크기 분할은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "똑같은 9벌의 옷"
+          },
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "빈 쇼핑백이 없도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "9를 네 양의 정수로 분할하는 경우를 열거한다."
+      },
+      "steps": [],
+      "scenarioNote": "쇼핑백 분배"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "\\left(2x - \\frac{3}{x}\\right)^6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^4$의 계수"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "x의 지수는 $6-k-k=6-2k$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반항의 지수를 4로 두고 해당 이항계수를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일반항의 지수가 4인 항의 계수를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공 3개와 파란 공 2개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "빨간 공 1개와 파란 공 1개를 고르는",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 두 공 선택과 색별 한 공 선택을 센다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "확률은 $6/10=3/5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "색별 한 공 선택 수를 전체 두 공 선택 수로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "색 공"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "모터 5개가 독립적으로 작동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "모터 3개가 작동할 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "작동하는 3개를 고르는 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "작동하는 세 모터를 선택한다."
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "각 경우의 확률은 $(2/3)^3(1/3)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "독립된 작동과 실패 확률을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립",
+            "src": "stem",
+            "quote": "독립적으로 작동"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 모터 선택 수에 독립 작동·실패 확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "모터 작동"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "1, 2, 3, 4, 5를 모두 일렬로 배열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "일의 자리에 2 또는 4",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수인 끝자리를 먼저 정한다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "남은 네 숫자를 앞의 네 자리에",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 네 숫자를 배열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "다섯 자리 짝수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "짝수 끝자리 두 가지를 정하고 나머지 네 숫자를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "숫자 배열"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "4명을 원형의 탁자에 앉힌 후"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "네 사람을 원형의 탁자에 앉히는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "과일 5개 중 4개를 골라",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 과일을 네 사람에게 하나씩 배정한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 선택을 함께 하면",
+            "evidenceType": "IMPLIED",
+            "justification": "사람의 자리와 과일 배정 수를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "회전이동",
+            "src": "stem",
+            "quote": "회전하여 사람과 과일의 종류가 모두 일치"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 과일 5개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사람을 원형 배치한 뒤 과일 네 개를 순서 있게 배정한다."
+      },
+      "steps": [],
+      "scenarioNote": "원탁과 과일"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분배",
+            "src": "stem",
+            "quote": "서로 다른 종류의 연필 6자루"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "A가 받는 연필 수에 따라 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "나머지 5자루를 B 또는 C에게",
+            "evidenceType": "IMPLIED",
+            "justification": "A에게 줄 연필을 정하고 나머지 수령자를 각각 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "한 자루 이하로 받을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A가 0개와 1개 받는 경우를 나누고 나머지를 B,C에 배정한다."
+      },
+      "steps": [],
+      "scenarioNote": "연필 분배"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "그림과 같은 도로망"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최단경로",
+            "src": "stem",
+            "quote": "최단경로의 수는?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경로의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 번째 아래 이동은",
+            "evidenceType": "IMPLIED",
+            "justification": "연결된 세로 도로의 두 번째 하강 열별로 나눈다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "첫 번째 아래 이동의 열은",
+            "evidenceType": "IMPLIED",
+            "justification": "고정된 중간 열에 대해 첫째와 셋째 하강 열의 선택 수를 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중간 세로 도로를 지나는 열별 양쪽 하강 위치를 곱해 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "도로망"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정방정식",
+            "src": "stem",
+            "quote": "$x+y+z=5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수해의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별과 막대 방법을 쓴다",
+            "evidenceType": "IMPLIED",
+            "justification": "합이 5인 세 음이 아닌 정수해를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "음이 아닌 정수해"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "별과 막대로 세 음이 아닌 정수의 합을 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "8명을 3개의 팀으로 나눌 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$1+3+4$와 $1+2+5$",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 양의 팀 크기 분할을 나열한다."
+          },
+          {
+            "term": "분배",
+            "src": "solution",
+            "quote": "각 크기별 사람을 나누는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "팀 크기가 서로 달라 크기별로 사람을 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "각 팀의 인원을 모두 다르게"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 팀 인원수의 두 분할별로 사람을 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "팀 분배"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수의분할",
+            "src": "stem",
+            "quote": "자연수 7의 분할"
+          },
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "자연수 7의 분할"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "서로 다른 분할의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "3의 개수를 c라 두고 경우를 나눈다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "3 이하의 자연수의 합"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "3의 개수별 남은 합에서 2의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": "정수 분할"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+              "quote": "${}_{30}\\mathrm{C}_1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "(1-1)^{30}",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 교대합에서 양 끝의 빠진 항을 조정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전체 이항계수 교대합에서 처음과 마지막 두 항을 조정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "주사위를 두 번 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "성립할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "합이 10 이상인 경우는",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 순서쌍을 나열한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$6/36=1/6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a+b \\ge 10$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 주사위 결과 36개 중 합이 10 이상인 순서쌍을 센다."
+      },
+      "steps": [],
+      "scenarioNote": "주사위"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "카드 두 장을 동시에 뽑을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "짝수 1장과 홀수 1장",
+            "evidenceType": "IMPLIED",
+            "justification": "합이 홀수인 선택을 홀짝 한 장씩으로 센다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "두 장이 모두 짝수인 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수 두 장을 고른다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "두 사건은 서로 겹치지 않는다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "모두 짝수이거나"
+          },
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "수의 합이 홀수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "짝수 두 장과 홀짝 한 장씩의 배반 경우를 더해 전체 조합으로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "카드 추출"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "남자 6명, 여자 4명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "여자를 2명 이상 뽑을 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "여자가 2명인 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "여자 수를 2,3,4명으로 나누어 각 조합을 센다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$(90+24+1)/210=115/210=23/42$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "여자를 2명 이상"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "여자 수별 선택의 합을 전체 네 명 선택 수로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "동호회 선발"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "당첨제비 5개를 포함하여 제비 20개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+              "quote": "수영이와 종찬이가 모두 당첨제비를 뽑을 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+              "quote": "당첨제비 하나가 빠진 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 당첨 후 남은 당첨과 전체 제비 수로 둘째 확률을 구한다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "두 사건이 차례로 일어나므로",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 확률과 첫 결과가 주어진 두 번째 확률을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "한 번 뽑은 제비는 다시 넣지 않을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 당첨과 그 뒤의 조건부 당첨 확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "제비 추출"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "당선되었을 때 버스 노선을 개편할 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "버스 노선이 개편될 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 경우를 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "당선자별로 개편 확률을 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+              "quote": "갑의 경우는 $(3/10)(4/5)",
+            "evidenceType": "IMPLIED",
+            "justification": "각 당선 확률과 당선 시 개편 확률을 곱한 뒤 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "배타적인 당선자별 당선·개편 확률의 곱을 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "선거와 버스 노선"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "사건 $A$와 서로 독립인 사건 $B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "사건 $B$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "$P(A\\cap B)=P(A)P(B)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "A에서 2개, A의 여집합에서 1개",
+            "evidenceType": "IMPLIED",
+            "justification": "독립성과 교집합 확률로 B의 크기를 정해 각 부분을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립",
+            "src": "stem",
+              "quote": "서로 독립인 사건"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "독립성으로 B의 원소 수를 정하고 A 내부·외부 원소를 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "주사위 사건"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "같은 시행을 3번 반복"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+              "quote": "합이 홀수일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "홀수가 1개 또는 3개",
+            "evidenceType": "IMPLIED",
+            "justification": "세 수의 합이 홀수인 홀수 개수를 분류한다."
+          },
+          {
+            "term": "중복순열",
+            "src": "solution",
+              "quote": "전체는 $5^3=125$",
+            "evidenceType": "IMPLIED",
+            "justification": "복원 후 세 번의 독립 선택을 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 상자에 넣는다"
+          },
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "세 수의 합이 홀수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "홀수가 한 번 또는 세 번 나오는 경우를 더해 복원 시행의 전체와 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "공 복원 추출"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f: A \\to B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+n$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "서로 다른 네 값에 순서대로 대응",
+            "evidenceType": "IMPLIED",
+            "justification": "엄격한 증가 함수는 서로 다른 네 함수값 선택에 대응한다."
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "중복을 허용하여 네 값을 비내림차순",
+            "evidenceType": "IMPLIED",
+            "justification": "비감소 함수는 중복 선택한 함수값에 대응한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "엄격한증가",
+            "src": "stem",
+            "quote": "$f(i) < f(j)$"
+          },
+          {
+            "term": "비감소",
+            "src": "stem",
+            "quote": "$g(i) \\le g(j)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "엄격 증가 함수는 조합, 비감소 함수는 중복조합으로 세어 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "$(1+x)^4 (1+x^2)^n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일반항",
+            "src": "stem",
+            "quote": "전개식의 일반항을 구하시오"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+              "quote": "자연수 $n$의 값을 구하시오"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+              "quote": "자연수 $n$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+              "quote": "일반항은 $T_{r,s}=",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이항전개의 각 항을 곱한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$(r,s)=(2,0)$ 또는 $(r,s)=(0,1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "차수 합이 2인 두 선택을 합해 n을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 12"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+              "quote": "자연수 $n$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 이항전개의 일반항을 곱하고 2차항에 기여하는 두 경우를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이동",
+            "src": "stem",
+            "quote": "점 $\\mathrm{P}$를 오른쪽으로 2만큼"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "몇 번 나와야 하는지"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "1에 위치할 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$3k-5=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "오른쪽 이동 횟수로 총 위치 변화를 표현한다."
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "한 번 던져 약수 눈이 나올 확률",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 독립 시행 중 두 번 약수 눈이 나올 확률을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "6의 약수의 눈"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이동 횟수의 일차방정식으로 약수 눈의 횟수를 구하고 독립시행 확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "수직선과 주사위"
+    }
+  ],
+  "candidates": [
+    {"term":"정수의분할","en":"INTEGER_PARTITION","synonyms":[],"kind":"대상","parent":"분할","note":"자연수를 순서 없이 양의 정수들의 합으로 표현한다.","usedIn":[4,14]}
+  ],
+  "selfCheck": {
+    "items": 25,
+    "quotesChecked": 124,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,2,3,5,6,7,8,12,14,15,16,18,19,20,21],
+    "notes": "Q1 조합 계산, Q2 독립 항 선택 곱, Q3 원순열 고정, Q5 일반항 지수, Q6 색별 공 선택, Q7 독립 모터 선택, Q8 끝자리 짝수와 순열, Q12 별과 막대, Q14 정수 분할, Q15 이항 교대합, Q16 주사위 순서쌍 열거, Q18 여자 수별 조합, Q19 비복원 당첨 확률, Q20 당선자별 조건부 확률 합, Q21 독립성과 집합 선택을 재확인. q03·q06·q11 PNG 실제 열람."
+  }
+}
