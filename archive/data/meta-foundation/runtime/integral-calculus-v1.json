@@ -17,15 +17,16 @@
     "reviewedExam_req-similar-23125c2044a1d1d1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-23125c2044a1d1d1.json",
     "reviewedExam_req-rpmpath-92b1d189eaf50121": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-92b1d189eaf50121.json",
     "reviewedExam_req-rpmpath-1f9a56cb8af8764e": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-1f9a56cb8af8764e.json",
-    "reviewedExam_req-rpmpath-7f94c812b604136d": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-7f94c812b604136d.json"
+    "reviewedExam_req-rpmpath-7f94c812b604136d": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-7f94c812b604136d.json",
+    "reviewedExam_meta-pipeline-gang23-h2-2final-20261104-v1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json"
   },
   "counts": {
     "canonicalAssignments": 135,
-    "records": 184,
+    "records": 194,
     "taxonomyRows": 19,
-    "defaultSelectable": 183,
+    "defaultSelectable": 193,
     "supplementary": 0,
-    "automaticEligibleExpected": 101,
+    "automaticEligibleExpected": 111,
     "sourceHold": 83,
     "difficultyDeferred": 0,
     "difficultyReviewed": 135,
@@ -34,7 +35,7 @@
     "catalogUnregisteredExcluded": 0,
     "catalogSourceHoldDirect": 1,
     "crossPackPrimaryOwnershipExcluded": 9,
-    "currentCatalogUidDirectJoin": 184,
+    "currentCatalogUidDirectJoin": 194,
     "currentCatalogSourceIdentityRepairJoin": 0,
     "currentCatalogJoinMismatch": 0,
     "currentCatalogSourceHoldDirect": 83
@@ -168,7 +169,7 @@
       "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 18
+      "supportingItemCount": 20
     },
     {
       "curriculumKey": "2015",
@@ -194,7 +195,7 @@
       "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 11
+      "supportingItemCount": 12
     },
     {
       "curriculumKey": "2015",
@@ -220,7 +221,7 @@
       "templateKey": "TPL_DEFINITE_EVALUATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 15
+      "supportingItemCount": 17
     },
     {
       "curriculumKey": "2015",
@@ -233,7 +234,7 @@
       "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 15
+      "supportingItemCount": 17
     },
     {
       "curriculumKey": "2015",
@@ -285,7 +286,7 @@
       "templateKey": "TPL_INTERSECTION_SIGN_AREA",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 11
+      "supportingItemCount": 13
     },
     {
       "curriculumKey": "2015",
@@ -311,7 +312,7 @@
       "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 9
+      "supportingItemCount": 10
     }
   ],
   "records": [
@@ -1048,6 +1049,76 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "8150f6f403dd6f839add465f700d81a4325a521638fc5c7ca49bf457cf56203a",
+      "contentFingerprint": "8937365fb0275cce448314796d73cb69832647df7e65ecd0f993ba7e0f5a1665",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분의 뜻",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_ANTIDERIVATIVE",
+        "CC_FUNDAMENTAL_THEOREM_OF_CALCULUS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분의 계산과 성질",
+      "L4": "정적분 값 계산",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#5",
+      "approvedSourceFingerprint": "8150f6f403dd6f839add465f700d81a4325a521638fc5c7ca49bf457cf56203a",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_10b55d1d608296e6948d13746ffb080b5af83e838ea135746758dc41c52e5f75",
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_수학II.js",
       "sourceOrdinal": 21,
@@ -1219,6 +1290,79 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "3300ef019e1f5e9b6d6246fcb1c14a3de16716c2f67dff03ea5633aaad56c412",
+      "contentFingerprint": "a890fea4b0d190e69eda57c9e31ac51d5f42ff52b84614fee972957bd81e297a",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분과 함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_INTEGRAL_DEFINED_FUNCTION",
+        "CC_CONTINUITY_AND_EXTREMA_AUDIT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_source_condition_review",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/condition-review.json"
+      ],
+      "difficultyBucket": 5,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분과 함수",
+      "L4": "적분으로 정의된 함수의 미분",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#19",
+      "approvedSourceFingerprint": "3300ef019e1f5e9b6d6246fcb1c14a3de16716c2f67dff03ea5633aaad56c412",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_174f5821f4b87fe22d478ded76f28d0f788bbb2de1d2704b8e27c1ea6a354712",
       "sourceArchiveFile": "similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
       "sourceOrdinal": 21,
@@ -1330,6 +1474,76 @@
       "sourceQuestionNo": "6",
       "catalogIdentityRepairVerified": true,
       "catalogIdentityRepairEvidence": "INTEGRAL_CALCULUS promotion identity regeneration: exact sourceFile#sourceOrdinal parity and qid_v1 formula verified"
+    },
+    {
+      "questionUid": "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "15261b2059c46964d635a8ddadd04f14d963d79a8b836cecd5122a0724a36541",
+      "contentFingerprint": "8207f62bc7e5b4590e6fa4aab1a29c103b7ec6ccf62fb6bdaaf957154fe6287d",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-09",
+      "standardUnit": "정적분의 활용",
+      "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+      "subUnit": "넓이",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "crossConceptKeys": [
+        "CC_DEFINITE_INTEGRAL_AREA_DECOMPOSITION",
+        "CC_PIECEWISE_INTEGRAL_EVALUATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분의 활용",
+      "L3": "곡선으로 둘러싸인 도형의 넓이",
+      "L4": "교점과 부호를 이용한 넓이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#12",
+      "approvedSourceFingerprint": "15261b2059c46964d635a8ddadd04f14d963d79a8b836cecd5122a0724a36541",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_19fa82075b97c267b81d7a4fba969acad0cbe1670c1d035af4d1a410ad62a99f",
@@ -1761,6 +1975,77 @@
       "sourceQuestionNo": "22",
       "catalogIdentityRepairVerified": true,
       "catalogIdentityRepairEvidence": "INTEGRAL_CALCULUS promotion identity regeneration: exact sourceFile#sourceOrdinal parity and qid_v1 formula verified"
+    },
+    {
+      "questionUid": "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "34d40ff3cd2e6d02b00a69044c3b19c365bc38b32bf90215914ba4ed56595110",
+      "contentFingerprint": "c2cb1410175c4a087130e83fcce6970bbc3fe1e43072d23d000a1dde2267a484",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분과 함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "crossConceptKeys": [
+        "CC_INTEGRATION_BY_PARTS_OR_EXPANSION",
+        "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/targeted-audit-correction.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분과 함수",
+      "L4": "적분이 포함된 식을 미분하여 함수 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#16",
+      "approvedSourceFingerprint": "34d40ff3cd2e6d02b00a69044c3b19c365bc38b32bf90215914ba4ed56595110",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2",
@@ -5110,6 +5395,76 @@
       "catalogIdentityRepairEvidence": "INTEGRAL_CALCULUS promotion identity regeneration: exact sourceFile#sourceOrdinal parity and qid_v1 formula verified"
     },
     {
+      "questionUid": "qid_v1_75f9f359c9b5b16ca2d6538a944a6ec84b0b726e46e5b82762bba1fc47d554b1",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 25,
+      "sourceQuestionNo": "25",
+      "sourceFingerprint": "c2b07f67000215f89d308a527870388aff648e1820f999920ccd0cf9f2e47158",
+      "contentFingerprint": "58157a7caed12241244b79e9f36c77bc709c5979c0b90b1477dba3e6433bb945",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분의 뜻",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "crossConceptKeys": [
+        "CC_DEFINITE_INTEGRAL_INTERVAL_ADDITIVITY",
+        "CC_PIECEWISE_INTERVAL_SUM_DECOMPOSITION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분의 계산과 성질",
+      "L4": "정적분 값 계산",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#25",
+      "approvedSourceFingerprint": "c2b07f67000215f89d308a527870388aff648e1820f999920ccd0cf9f2e47158",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_78e53b1cac7644177ebdf39ec53b48a5467238ed2bbaad93d878a162aae9ab68",
       "sourceArchiveFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
       "sourceOrdinal": 22,
@@ -5469,6 +5824,76 @@
       "catalogIdentityRepairEvidence": "INTEGRAL_CALCULUS promotion identity regeneration: exact sourceFile#sourceOrdinal parity and qid_v1 formula verified"
     },
     {
+      "questionUid": "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "64b6fb4240091e721bd639e26049f839974f8f5a1a0393ca64282993c35d9f09",
+      "contentFingerprint": "92d21355cb9c2975f80dc0c3cbec7ca978e2d3259dbcf71ad570d430c1465629",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분의 성질",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_SYMMETRIC_INTERVAL_INTEGRATION",
+        "CC_ODD_EVEN_FUNCTION_INTEGRATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분의 계산과 성질",
+      "L4": "정적분의 성질을 이용한 식 변형",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#9",
+      "approvedSourceFingerprint": "64b6fb4240091e721bd639e26049f839974f8f5a1a0393ca64282993c35d9f09",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_7e50421e6d83b55c8af1cab58520d01645fdffd04ea48a734d0c50ea942fe866",
       "sourceArchiveFile": "similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사.js",
       "sourceOrdinal": 21,
@@ -5820,6 +6245,79 @@
       "sourceQuestionNo": "18",
       "catalogIdentityRepairVerified": true,
       "catalogIdentityRepairEvidence": "INTEGRAL_CALCULUS promotion identity regeneration: exact sourceFile#sourceOrdinal parity and qid_v1 formula verified"
+    },
+    {
+      "questionUid": "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "34bb6f44a296c5ae323fa6fa2fa5f6066f506a0a3373e0bbb0d3e7324527ed2e",
+      "contentFingerprint": "e36fbec822430b1ba6605a85327bd9467464f8e6b0cc95423ecbde730d733951",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-09",
+      "standardUnit": "정적분의 활용",
+      "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+      "subUnit": "넓이",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "crossConceptKeys": [
+        "CC_CUBIC_PARABOLA_ENCLOSED_AREA",
+        "CC_INTEGRAL_AREA_PARAMETER_BOUND"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_source_condition_review",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/condition-review.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분의 활용",
+      "L3": "곡선으로 둘러싸인 도형의 넓이",
+      "L4": "교점과 부호를 이용한 넓이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#18",
+      "approvedSourceFingerprint": "34bb6f44a296c5ae323fa6fa2fa5f6066f506a0a3373e0bbb0d3e7324527ed2e",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_891fa8f27fa3842c03b44d20dde87b64965dcb52e5f336cf138a9667453db65e",
@@ -7554,6 +8052,79 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "851c5878c30bbb3782567165711757a8ca5ac7117d374c9b7a091a8f37f0ac02",
+      "contentFingerprint": "4049c556d1d24bac94edcaa02c3fcdd3dd8ed5301d404a68b4454a7ee8217183",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분의 성질",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_ODD_EVEN_FUNCTION_INTEGRATION",
+        "CC_INTERVAL_ADDITIVITY_PROPERTY",
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_source_and_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/cross-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/targeted-audit-correction.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분의 계산과 성질",
+      "L4": "정적분의 성질을 이용한 식 변형",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#21",
+      "approvedSourceFingerprint": "851c5878c30bbb3782567165711757a8ca5ac7117d374c9b7a091a8f37f0ac02",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_ba462d72a971b9f321255f39f7a26d313da884c22ae5a034a50fc452161e011a",
       "sourceArchiveFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
       "sourceOrdinal": 13,
@@ -8987,6 +9558,80 @@
       "sourceQuestionNo": "17"
     },
     {
+      "questionUid": "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "849824063c00c41d6f1882a651a2b0358fd24e2ff52a3a988ab6aa621a7d93b0",
+      "contentFingerprint": "c2b01a814f8a5befdbb283f2b71c5b1c4aada189eaaaac5dd9b2c14bcf807b3e",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-09",
+      "standardUnit": "정적분의 활용",
+      "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+      "subUnit": "속도와 거리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "crossConceptKeys": [
+        "CC_INTEGRAL_DISPLACEMENT_AND_DISTANCE",
+        "CC_TWO_PARTICLES_MEETING_TIME"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_source_condition_review",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/condition-review.json"
+      ],
+      "difficultyBucket": 5,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분의 활용",
+      "L3": "속도와 거리",
+      "L4": "속도에서 위치·변위·이동거리 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#20",
+      "approvedSourceFingerprint": "849824063c00c41d6f1882a651a2b0358fd24e2ff52a3a988ab6aa621a7d93b0",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_e30dc8e6658a806a3dead800b8f2ed07dc2ac82d97917a35e2df111ae88bc165",
       "sourceArchiveFile": "original/high/h2/2final/24_매산여고_2학기_기말_고2_수학II.js",
       "sourceOrdinal": 20,
@@ -10162,15 +10807,88 @@
       "standardUnitOrder": 9,
       "metaFoundationCurriculumApplicability": "CORE",
       "sourceQuestionNo": "20"
+    },
+    {
+      "questionUid": "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030",
+      "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "5d88783acca1032104c1bedb8262679192ccea2f2e26828b7a83944b05add293",
+      "contentFingerprint": "cb4ce4c0558d31d1fa32b9ba9109b69fac581e391d4591bb55c857e85172e52d",
+      "standardCourse": "수학II",
+      "standardUnitKey": "H15-M2-08",
+      "standardUnit": "정적분",
+      "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+      "subUnit": "정적분과 함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "crossConceptKeys": [
+        "CC_FUNDAMENTAL_THEOREM_OF_CALCULUS_LEIBNIZ",
+        "CC_INTEGRAL_BOUNDARY_ROOT_EVALUATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_source_condition_review",
+        "integrationPattern": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:INTEGRAL_CALCULUS@1.0.0:exam-meta_pipeline_audit-v2:meta-pipeline-gang23-h2-2final-20261104-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/condition-review.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "L1": "적분",
+      "L2": "정적분",
+      "L3": "정적분과 함수",
+      "L4": "적분이 포함된 식을 미분하여 함수 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "INTEGRAL_CALCULUS",
+      "metaFoundationPackVersion": "1.0.0",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js#22",
+      "approvedSourceFingerprint": "5d88783acca1032104c1bedb8262679192ccea2f2e26828b7a83944b05add293",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     }
   ],
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 184,
+    "records": 194,
     "problemTypes": [
       {
         "key": "PT_AREA_BY_DEFINITE_INTEGRAL",
-        "count": 50,
+        "count": 52,
         "questionUids": [
           "qid_v1_0647d31d7653d97c2ee9cdde64c23bf3c1941892e082bbb15d5c22322a6966f5",
           "qid_v1_068f1cdafaf7f55bf443e785e6d538e7b0feec0d411a3620378b952da9e6b8f8",
@@ -10179,6 +10897,7 @@
           "qid_v1_0fc8ad97f888c9efcc3f8ff7e3c31aa2f860b1f662cd79fe648fad9eabb5afd6",
           "qid_v1_1192a4e0735d3f04aac727efb3cedefc30ad1e016af6e99c323572a0064d1eb1",
           "qid_v1_122fa2ce09f92b345dba5469ef247de047b95ab6969020a0bf5342abb82f3e3d",
+          "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5",
           "qid_v1_23fc9f6627aa7cb356e17b3b4c618fa284b946ec86409bf05ee4a4aca3346363",
           "qid_v1_278806a81038b250c309169f760d1aecf280180ef5a1a9ee4378e10321632ec0",
           "qid_v1_310e3b04adda2078cabfdd57dc1d3b9b59e56b3a02deee4532ab85b631a7df6e",
@@ -10204,6 +10923,7 @@
           "qid_v1_7a7b971819bcab3c720e8b358e42a3ed9a288651f05bb9e8a3f952d8fc6371c8",
           "qid_v1_7bcd0ea88fec8136d09a5e279bc7ca266445eb5b6dae4ffed65dd1639ce90da5",
           "qid_v1_855af78ad3d34e0fa67502995685b50fc4f000e8d26961a2127e6d1e655f00c7",
+          "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
           "qid_v1_891fa8f27fa3842c03b44d20dde87b64965dcb52e5f336cf138a9667453db65e",
           "qid_v1_939ef3c6355903afe1105db6082c3989a2e59fe4e1e180f04d3082a3bc2c07ac",
           "qid_v1_97bcbf91ae8b6ecd7490a087f02dd459fbe7061c5a107ac39974f7b13610254e",
@@ -10226,7 +10946,7 @@
       },
       {
         "key": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
-        "count": 52,
+        "count": 55,
         "questionUids": [
           "qid_v1_0a6a5b9dcdd4ea988876c89cc3258fcb5aba7aaf273e61c58a318e4f86051399",
           "qid_v1_0baa9e011cc1e6a022a687b9de29cb5b6fd93dbb7715bde77e0aaeabc841bfe4",
@@ -10234,9 +10954,11 @@
           "qid_v1_0f95640cda04fe03ee38576f7d574816cc1a6999d40df6274e48a0741842ec0b",
           "qid_v1_1008e1d71c9eace0633df103e1bfb404051f0a464674f26e26dfa2de98503689",
           "qid_v1_10b55d1d608296e6948d13746ffb080b5af83e838ea135746758dc41c52e5f75",
+          "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
           "qid_v1_17740f5a68cf4e6078df97905c2fa881625dc4e767a0b1c5b715955d71219504",
           "qid_v1_270ac66cc08e7941dd71c418f722164d182f5285278af46ffce06e66906625de",
           "qid_v1_27c3a44c781efbb32e3369de3fdbaa0a428de18bbdc77b77442062e5fe04f577",
+          "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8",
           "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2",
           "qid_v1_2c4ccfb12e0f24060d9c0fadc1e485666b414d872016fd20ffe880a5e5e0c187",
           "qid_v1_2e475de03d362e539bc716c28c6024e8bc616ebbb33f585692455235fcf8e9db",
@@ -10279,15 +11001,17 @@
           "qid_v1_eb04991f4b4eb2af418ea32e0b58b7e2eadc97a0b2164b4dad009b7969529f49",
           "qid_v1_f2631852648fd4c507f04d00eca5e8844b8aa71e020206f236db7d65b30973d5",
           "qid_v1_fcdcb2096cd814fc5f7e045347e9518358e6724d305bfc9da5e5b9f1b01d2c17",
-          "qid_v1_fd67a6be4ec936def773976ed5e007184fad27d5d2251803af81a4ac4030515b"
+          "qid_v1_fd67a6be4ec936def773976ed5e007184fad27d5d2251803af81a4ac4030515b",
+          "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030"
         ]
       },
       {
         "key": "PT_DEFINITE_INTEGRAL_OPERATION",
-        "count": 31,
+        "count": 35,
         "questionUids": [
           "qid_v1_084f292c1ed4b6ee3282b62b8a94cda70e7c42044d692dc01e115c69b75d72ea",
           "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
+          "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950",
           "qid_v1_19fa82075b97c267b81d7a4fba969acad0cbe1670c1d035af4d1a410ad62a99f",
           "qid_v1_2b4dda0a99c02a0156218a8bbbe58ceb71bd81c48f78b15a60ad0beb53a6038d",
           "qid_v1_2c28a78b39003d2fbf1a0d7f38836ece8c7cd1a93f533f3472c5ed5e3f400ee1",
@@ -10300,6 +11024,8 @@
           "qid_v1_5825e456bc9c09cb0fd1ec732a0df192e967e5722be0cd640bc35adeb0c69290",
           "qid_v1_67fc192a008dc6ea34e301f3b653a18301aaeb39dfc72cd04423630bd4ad8eb7",
           "qid_v1_6d3564c48227226e81487bafe4af08d0f07de4591402b5fcb305b61696f2dd8d",
+          "qid_v1_75f9f359c9b5b16ca2d6538a944a6ec84b0b726e46e5b82762bba1fc47d554b1",
+          "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5",
           "qid_v1_821e6c25944ce70579de6c4b3f65e8c3fa70238d3463e1367e4b40bb4159e202",
           "qid_v1_8a9dcca35f0516a549bc05cd76317665c817915a34cc0db958397d3ab370e506",
           "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
@@ -10307,6 +11033,7 @@
           "qid_v1_a17b25b5bcda76db2d07661eadf4c932c874d7c69753d495f3426799c5928363",
           "qid_v1_afedcda7d8992a961689b699996df1f2ff638dca9eaff7f7ab4691f84f66db33",
           "qid_v1_b6157184ac837555505dd6fcf0a813728d4cff246b235d2c6f380f681b75d0f3",
+          "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
           "qid_v1_bbadfa499d9ab2c26f427c9b034fd2efaf0b244e95dbb9b58165f053901b7023",
           "qid_v1_c1ad04b84318cf87f390053f304f46008f0d0660177f72b29cfd27a90a8a8986",
           "qid_v1_d149a28f31395945ca63d794fd2614da4963e3c58aa5fd121d6698e86ee74195",
@@ -10350,7 +11077,7 @@
       },
       {
         "key": "PT_MOTION_BY_INTEGRAL",
-        "count": 28,
+        "count": 29,
         "questionUids": [
           "qid_v1_0949b69468abd34e683277b597b0490b9ebb3065d653af3067c44e5dc38c80ff",
           "qid_v1_174f5821f4b87fe22d478ded76f28d0f788bbb2de1d2704b8e27c1ea6a354712",
@@ -10376,6 +11103,7 @@
           "qid_v1_d1041394cd56aa0a2141c7eeb5409d365e4f8233ef3d802e5dcc00e9fff5db64",
           "qid_v1_d1768adabdca91e62c36d2181455b2f595786337d443b9494d5dd6b487c6c3ca",
           "qid_v1_d52192d7358a003817e10af16ef9fb9023fb72bc0cb8eadaf709cb341435a11c",
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
           "qid_v1_e30dc8e6658a806a3dead800b8f2ed07dc2ac82d97917a35e2df111ae88bc165",
           "qid_v1_f13f2ef7227b8d8a031c8987d5986e8ec2b0c57c24fe902f49441de16e22dff9",
           "qid_v1_fdbdc3c04c56296f58ddadbb62db84955ea4c0779794d1566809361a6b594733",
@@ -10420,9 +11148,10 @@
       },
       {
         "key": "TPL_DEFINITE_EVALUATION",
-        "count": 15,
+        "count": 17,
         "questionUids": [
           "qid_v1_084f292c1ed4b6ee3282b62b8a94cda70e7c42044d692dc01e115c69b75d72ea",
+          "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950",
           "qid_v1_19fa82075b97c267b81d7a4fba969acad0cbe1670c1d035af4d1a410ad62a99f",
           "qid_v1_2b4dda0a99c02a0156218a8bbbe58ceb71bd81c48f78b15a60ad0beb53a6038d",
           "qid_v1_2c28a78b39003d2fbf1a0d7f38836ece8c7cd1a93f533f3472c5ed5e3f400ee1",
@@ -10431,6 +11160,7 @@
           "qid_v1_5442c67e94fe04fc59d1e08b8389acdb259afe85fddfe87e0b1b80ed007d017e",
           "qid_v1_67fc192a008dc6ea34e301f3b653a18301aaeb39dfc72cd04423630bd4ad8eb7",
           "qid_v1_6d3564c48227226e81487bafe4af08d0f07de4591402b5fcb305b61696f2dd8d",
+          "qid_v1_75f9f359c9b5b16ca2d6538a944a6ec84b0b726e46e5b82762bba1fc47d554b1",
           "qid_v1_821e6c25944ce70579de6c4b3f65e8c3fa70238d3463e1367e4b40bb4159e202",
           "qid_v1_8a9dcca35f0516a549bc05cd76317665c817915a34cc0db958397d3ab370e506",
           "qid_v1_a17b25b5bcda76db2d07661eadf4c932c874d7c69753d495f3426799c5928363",
@@ -10441,17 +11171,19 @@
       },
       {
         "key": "TPL_DEFINITE_PROPERTY_TRANSFORM",
-        "count": 15,
+        "count": 17,
         "questionUids": [
           "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
           "qid_v1_35b5cc0876fa7500b673f7460aa0390b2dee0eee3aa926d9dcbe2d2dfc972008",
           "qid_v1_39823ba6d0b44f13f072628188cb320a7f082bb5fd938021d2a25a77a0b76cf3",
           "qid_v1_5707c65263f67e14c5dbef91de27db84869f92a7be2e77b8c01275a6dc0838a9",
           "qid_v1_5825e456bc9c09cb0fd1ec732a0df192e967e5722be0cd640bc35adeb0c69290",
+          "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5",
           "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
           "qid_v1_9fad35f261fc729567a3dab25e39f26e8a569d0ca1e0cc9c61f2b40cf19d6fbf",
           "qid_v1_afedcda7d8992a961689b699996df1f2ff638dca9eaff7f7ab4691f84f66db33",
           "qid_v1_b6157184ac837555505dd6fcf0a813728d4cff246b235d2c6f380f681b75d0f3",
+          "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
           "qid_v1_bbadfa499d9ab2c26f427c9b034fd2efaf0b244e95dbb9b58165f053901b7023",
           "qid_v1_d149a28f31395945ca63d794fd2614da4963e3c58aa5fd121d6698e86ee74195",
           "qid_v1_de3ffcb42d74805e485f6dbbf7cdd3d24818c4b38f254d0faaffa3aca98e60e4",
@@ -10481,13 +11213,14 @@
       },
       {
         "key": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
-        "count": 18,
+        "count": 20,
         "questionUids": [
           "qid_v1_0baa9e011cc1e6a022a687b9de29cb5b6fd93dbb7715bde77e0aaeabc841bfe4",
           "qid_v1_1008e1d71c9eace0633df103e1bfb404051f0a464674f26e26dfa2de98503689",
           "qid_v1_10b55d1d608296e6948d13746ffb080b5af83e838ea135746758dc41c52e5f75",
           "qid_v1_270ac66cc08e7941dd71c418f722164d182f5285278af46ffce06e66906625de",
           "qid_v1_27c3a44c781efbb32e3369de3fdbaa0a428de18bbdc77b77442062e5fe04f577",
+          "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8",
           "qid_v1_3fd8080939764b284e5fcedb32cc6f573c6984241e7e6749316e885bef078a59",
           "qid_v1_4a9dfaf92062b0ebf8b20a4abe8ece681577de79b1674188e18f813c6d696366",
           "qid_v1_4bd18b08f75d2fc6c86d42ebbc71b0d956451b86202893d2a12fe482fdbb7207",
@@ -10500,7 +11233,8 @@
           "qid_v1_ba462d72a971b9f321255f39f7a26d313da884c22ae5a034a50fc452161e011a",
           "qid_v1_c3de6cedf8324fb85ba16915256779baa64c92825c9a6f3e7936ac94659722f5",
           "qid_v1_ea6bdb3fcbf9f13432dd8b22b2bdd0a666ad3cb531042a41018e23caf6d8cd0d",
-          "qid_v1_eb04991f4b4eb2af418ea32e0b58b7e2eadc97a0b2164b4dad009b7969529f49"
+          "qid_v1_eb04991f4b4eb2af418ea32e0b58b7e2eadc97a0b2164b4dad009b7969529f49",
+          "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030"
         ]
       },
       {
@@ -10538,9 +11272,10 @@
       },
       {
         "key": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
-        "count": 11,
+        "count": 12,
         "questionUids": [
           "qid_v1_0db731be649913bdadacf3b2f3f80426180f203ddb3fcf94dfd9f3799e390c9e",
+          "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
           "qid_v1_17740f5a68cf4e6078df97905c2fa881625dc4e767a0b1c5b715955d71219504",
           "qid_v1_3bc131c4ab68d2a9e5c670c625ff6963b00e20619365ad9e5ca50b00dc74a2f5",
           "qid_v1_3cd7d9abed115cc2f0bae4d60c88ae482cd1054e788874eeffc8d71b52de1f36",
@@ -10573,13 +11308,14 @@
       },
       {
         "key": "TPL_INTERSECTION_SIGN_AREA",
-        "count": 28,
+        "count": 30,
         "questionUids": [
           "qid_v1_0647d31d7653d97c2ee9cdde64c23bf3c1941892e082bbb15d5c22322a6966f5",
           "qid_v1_0b337c35db6c553239a2cfeca579104e2346913f4d63388439e7ee0e3049a4f1",
           "qid_v1_0fc8ad97f888c9efcc3f8ff7e3c31aa2f860b1f662cd79fe648fad9eabb5afd6",
           "qid_v1_1192a4e0735d3f04aac727efb3cedefc30ad1e016af6e99c323572a0064d1eb1",
           "qid_v1_122fa2ce09f92b345dba5469ef247de047b95ab6969020a0bf5342abb82f3e3d",
+          "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5",
           "qid_v1_35dcbf38f75b2b7f019e402846e3e9cac2a078b7bceaa049a5233a209ecb0e74",
           "qid_v1_409f6b73609352f075cb083565d9f02cf6ca4bd0ea75915458b30f6f7eb45191",
           "qid_v1_478ce66afd63669fb957624b86c1cd5bcf4653302c897fee0116472020ecbb85",
@@ -10593,6 +11329,7 @@
           "qid_v1_74eb111087c527652a7a8ec56648dbcabe4a2f690bb6415f50ebf080632a151f",
           "qid_v1_7986fc301c69be8983f6798e1fcf73dd48c5f15bdac5e43e3a5c048a856f6bfc",
           "qid_v1_7a7b971819bcab3c720e8b358e42a3ed9a288651f05bb9e8a3f952d8fc6371c8",
+          "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
           "qid_v1_939ef3c6355903afe1105db6082c3989a2e59fe4e1e180f04d3082a3bc2c07ac",
           "qid_v1_97bcbf91ae8b6ecd7490a087f02dd459fbe7061c5a107ac39974f7b13610254e",
           "qid_v1_9dc465be973730712ece8c92108f0d4d62230f0923d6dbfdd4f7324ddb0cc44f",
@@ -10626,7 +11363,7 @@
       },
       {
         "key": "TPL_VELOCITY_TO_POSITION_DISTANCE",
-        "count": 22,
+        "count": 23,
         "questionUids": [
           "qid_v1_0949b69468abd34e683277b597b0490b9ebb3065d653af3067c44e5dc38c80ff",
           "qid_v1_174f5821f4b87fe22d478ded76f28d0f788bbb2de1d2704b8e27c1ea6a354712",
@@ -10648,6 +11385,7 @@
           "qid_v1_d04cda3e6039757159626d773bf1d19d79ef1c6603d9780436b7b451ccd29ca7",
           "qid_v1_d1768adabdca91e62c36d2181455b2f595786337d443b9494d5dd6b487c6c3ca",
           "qid_v1_d52192d7358a003817e10af16ef9fb9023fb72bc0cb8eadaf709cb341435a11c",
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
           "qid_v1_f13f2ef7227b8d8a031c8987d5986e8ec2b0c57c24fe902f49441de16e22dff9",
           "qid_v1_fdbdc3c04c56296f58ddadbb62db84955ea4c0779794d1566809361a6b594733"
         ]
@@ -10697,6 +11435,13 @@
         ]
       },
       {
+        "key": "CC_CONTINUITY_AND_EXTREMA_AUDIT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0"
+        ]
+      },
+      {
         "key": "CC_CUBIC_EQUATION",
         "count": 7,
         "questionUids": [
@@ -10707,6 +11452,13 @@
           "qid_v1_6a3d1c444846a6edf872b5e2f98ec7fc6be1d5658ab06b2dfda05ccf8f64161c",
           "qid_v1_c0e0bbe1bccefdf25af668b8ded54844a09bc0f16c6531d68f479c43b0a9f92c",
           "qid_v1_fcdcb2096cd814fc5f7e045347e9518358e6724d305bfc9da5e5b9f1b01d2c17"
+        ]
+      },
+      {
+        "key": "CC_CUBIC_PARABOLA_ENCLOSED_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b"
         ]
       },
       {
@@ -10745,6 +11497,27 @@
           "qid_v1_f2631852648fd4c507f04d00eca5e8844b8aa71e020206f236db7d65b30973d5",
           "qid_v1_f9f273be06de699a247a9a2d11d8eede5103afcc7190c5cfd8af8218ebe684c8",
           "qid_v1_fdb8d9501f131cc5113110c097960cce263196eac5a15f9c166dc6d8c419a780"
+        ]
+      },
+      {
+        "key": "CC_DEFINITE_INTEGRAL_AREA_DECOMPOSITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5"
+        ]
+      },
+      {
+        "key": "CC_DEFINITE_INTEGRAL_INTERVAL_ADDITIVITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_75f9f359c9b5b16ca2d6538a944a6ec84b0b726e46e5b82762bba1fc47d554b1"
+        ]
+      },
+      {
+        "key": "CC_DEFINITE_INTEGRAL_PARAMETER_SOLVING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8"
         ]
       },
       {
@@ -10825,7 +11598,7 @@
       },
       {
         "key": "CC_FUNCTION_SYMMETRY",
-        "count": 7,
+        "count": 8,
         "questionUids": [
           "qid_v1_073a46f98e5c8a07e8829025b822000571d866b63d924a691e9fffa6eb428385",
           "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
@@ -10833,6 +11606,7 @@
           "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2",
           "qid_v1_39823ba6d0b44f13f072628188cb320a7f082bb5fd938021d2a25a77a0b76cf3",
           "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
+          "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
           "qid_v1_de3ffcb42d74805e485f6dbbf7cdd3d24818c4b38f254d0faaffa3aca98e60e4"
         ]
       },
@@ -10852,6 +11626,20 @@
         ]
       },
       {
+        "key": "CC_FUNDAMENTAL_THEOREM_OF_CALCULUS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950"
+        ]
+      },
+      {
+        "key": "CC_FUNDAMENTAL_THEOREM_OF_CALCULUS_LEIBNIZ",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030"
+        ]
+      },
+      {
         "key": "CC_INDEFINITE_INTEGRAL",
         "count": 6,
         "questionUids": [
@@ -10861,6 +11649,41 @@
           "qid_v1_8e4b93cc636a61da48fa82ad5ea6d2434dda0714d994625463ece03efcfaa3d9",
           "qid_v1_ea6bdb3fcbf9f13432dd8b22b2bdd0a666ad3cb531042a41018e23caf6d8cd0d",
           "qid_v1_f574884e89dcbe86b246591125f1a94990ac8cbf4978a7ea07d5632952a70c61"
+        ]
+      },
+      {
+        "key": "CC_INTEGRAL_AREA_PARAMETER_BOUND",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b"
+        ]
+      },
+      {
+        "key": "CC_INTEGRAL_BOUNDARY_ROOT_EVALUATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030"
+        ]
+      },
+      {
+        "key": "CC_INTEGRAL_DISPLACEMENT_AND_DISTANCE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86"
+        ]
+      },
+      {
+        "key": "CC_INTEGRATION_BY_PARTS_OR_EXPANSION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_2a78db5420fd16b23221c6825164c74f535c22cc670d53cc18ce651c190292d8"
+        ]
+      },
+      {
+        "key": "CC_INTERVAL_ADDITIVITY_PROPERTY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0"
         ]
       },
       {
@@ -10878,6 +11701,14 @@
         "count": 1,
         "questionUids": [
           "qid_v1_0fc8ad97f888c9efcc3f8ff7e3c31aa2f860b1f662cd79fe648fad9eabb5afd6"
+        ]
+      },
+      {
+        "key": "CC_ODD_EVEN_FUNCTION_INTEGRATION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5",
+          "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0"
         ]
       },
       {
@@ -10902,6 +11733,27 @@
         ]
       },
       {
+        "key": "CC_PIECEWISE_INTEGRAL_DEFINED_FUNCTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0"
+        ]
+      },
+      {
+        "key": "CC_PIECEWISE_INTEGRAL_EVALUATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1826e09ac49e588ed6d87480f7e0cdf272778587f750b8a8fd9ce85c74f701b5"
+        ]
+      },
+      {
+        "key": "CC_PIECEWISE_INTERVAL_SUM_DECOMPOSITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_75f9f359c9b5b16ca2d6538a944a6ec84b0b726e46e5b82762bba1fc47d554b1"
+        ]
+      },
+      {
         "key": "CC_PIECEWISE_MAX_FUNCTION",
         "count": 1,
         "questionUids": [
@@ -10915,6 +11767,13 @@
           "qid_v1_2c63f77ad8372a5f2b8370d4dc963af70e4e92b9232f834323606bbd884c7ddf",
           "qid_v1_31b070ab41397801de010d2519c9b2786544d23bbabd0cebe61c7e42f4eeb826",
           "qid_v1_566d1055bd12c8ddb3b3bc1eb492ec54535522f73d4e2b2aa549dfb1676f97f5"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_ANTIDERIVATIVE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_102a4d4d4940f1f8fd4ee345564de0bc524b4a39583f72ccdf3f14e49b368950"
         ]
       },
       {
@@ -10996,6 +11855,13 @@
         ]
       },
       {
+        "key": "CC_SYMMETRIC_INTERVAL_INTEGRATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7c084d80efa24c5b8b4aba2598c41f9a0124bdfad4b40c4e9d2c954c043338a5"
+        ]
+      },
+      {
         "key": "CC_TANGENCY",
         "count": 4,
         "questionUids": [
@@ -11012,6 +11878,13 @@
           "qid_v1_35dcbf38f75b2b7f019e402846e3e9cac2a078b7bceaa049a5233a209ecb0e74",
           "qid_v1_6e705e405bca4271355fcfa213c2845326486e96d96d399a536ef69e05d8e7e7",
           "qid_v1_dfafbfcad8f732d1d926814ec55dfef6176aea4e85a2adfb425020d3b6251c8c"
+        ]
+      },
+      {
+        "key": "CC_TWO_PARTICLES_MEETING_TIME",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86"
         ]
       },
       {
@@ -11081,9 +11954,10 @@
       },
       {
         "key": "COND_PIECEWISE_DOMAIN_PARTITION",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_122fa2ce09f92b345dba5469ef247de047b95ab6969020a0bf5342abb82f3e3d",
+          "qid_v1_133e7c71348f204d9a0ef7c60a2dbfca049a36aadb34fb4c078df7f18832c9d0",
           "qid_v1_2c63f77ad8372a5f2b8370d4dc963af70e4e92b9232f834323606bbd884c7ddf",
           "qid_v1_31b070ab41397801de010d2519c9b2786544d23bbabd0cebe61c7e42f4eeb826",
           "qid_v1_566d1055bd12c8ddb3b3bc1eb492ec54535522f73d4e2b2aa549dfb1676f97f5",
@@ -11096,7 +11970,7 @@
       },
       {
         "key": "COND_POSITIVE",
-        "count": 16,
+        "count": 17,
         "questionUids": [
           "qid_v1_23fc9f6627aa7cb356e17b3b4c618fa284b946ec86409bf05ee4a4aca3346363",
           "qid_v1_35b5cc0876fa7500b673f7460aa0390b2dee0eee3aa926d9dcbe2d2dfc972008",
@@ -11113,12 +11987,13 @@
           "qid_v1_b57414833a66e944d883cad854598f3bd94dea92b2b5c8dbc4d0745c400eaa1a",
           "qid_v1_c0e0bbe1bccefdf25af668b8ded54844a09bc0f16c6531d68f479c43b0a9f92c",
           "qid_v1_d1768adabdca91e62c36d2181455b2f595786337d443b9494d5dd6b487c6c3ca",
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
           "qid_v1_e30dc8e6658a806a3dead800b8f2ed07dc2ac82d97917a35e2df111ae88bc165"
         ]
       },
       {
         "key": "COND_RANGE",
-        "count": 17,
+        "count": 20,
         "questionUids": [
           "qid_v1_0a6a5b9dcdd4ea988876c89cc3258fcb5aba7aaf273e61c58a318e4f86051399",
           "qid_v1_0f95640cda04fe03ee38576f7d574816cc1a6999d40df6274e48a0741842ec0b",
@@ -11129,6 +12004,7 @@
           "qid_v1_5b03c8b1175889ff2358d0891b50862c8521f2b7e0133aab586f97f4025ab67d",
           "qid_v1_6a3d1c444846a6edf872b5e2f98ec7fc6be1d5658ab06b2dfda05ccf8f64161c",
           "qid_v1_6ef56933222ed6257c47400a1254e44a5f84ff78ad6c0dcbee04944e9b2c695b",
+          "qid_v1_888f0baa1e8f837a81485474571ae97b6edf927f963ea17a0bc0b7842c4e375b",
           "qid_v1_922bea2ef57db863340202db4ef9beb09fa3257a74766980c3484d495fa4fa80",
           "qid_v1_ab3953a0cc4e66f0cab4d53b33177917274778a5d6b15cba4c7f4e3af095072a",
           "qid_v1_ae8aad581b2e4dd5dd3c2e2cc43bcabc8c885da23f1444045196dd6224c06a67",
@@ -11136,7 +12012,9 @@
           "qid_v1_c153ec38287c741a17f2ef373820254fff37b06ab3da5b89fe231a20c2670bdd",
           "qid_v1_c3acc0cb54a2d025ef706b2bbd64fb0ebeb3841db68c83c04c1b979d8cafc159",
           "qid_v1_d149a28f31395945ca63d794fd2614da4963e3c58aa5fd121d6698e86ee74195",
-          "qid_v1_e30dc8e6658a806a3dead800b8f2ed07dc2ac82d97917a35e2df111ae88bc165"
+          "qid_v1_e10e6a9f72b2700a9131cc18a12983b1ec96e33703f5b399d2a8c6b0455e7c86",
+          "qid_v1_e30dc8e6658a806a3dead800b8f2ed07dc2ac82d97917a35e2df111ae88bc165",
+          "qid_v1_ff746756053ae11f74546f1e092846724152648755289c5c806b40910dbe4030"
         ]
       },
       {
