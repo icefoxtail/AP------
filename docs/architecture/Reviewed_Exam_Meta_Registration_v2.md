@@ -115,6 +115,21 @@ SOP v1.2의 기존 원본에 예전 단원 네임스페이스가 남아 있으�
 - Archive2 학생 검색 Consumer가 L1/L2와 PT/TPL/CC를 직접 노출하지만 `level/L3/L4`는 해당 행에 노출하지 않는 경우, 이 필드들은 source UID·ordinal·metadataRevision에 일치하는 단 하나의 ACTIVE Meta Foundation runtime row에서 확인한다. consumer 행의 미노출 `null`을 runtime의 승인값으로 덮어 PASS 처리하지 않으며, runtime 누락·중복·값 불일치는 실패다.
 - 감사 records, 매니페스트 `recordsToBind`, 등록 요청 `items`는 source ordinal별 PT/TPL/CrossConcept/단원 값이 정확히 일치해야 한다. 결정적 풀이 발췌와 시각자료 확인 필드도 qid마다 필요하다.
 
+### SOP_v1.2 sourceFieldCorrections (2026-11-04)
+
+SOP_v1.2 approval v4의 매니페스트 바인딩은 answer/questionType/choicesCount/score가 현재 production source와 다를 때 원래처럼 무조건 거부한다. 실제 풍덕중 22문항 입력처럼 원본 감사/매니페스트 값이 오래되어 현재 source와 여러 row가 다른 정상 교정 감사는, 다음 조건을 모두 만족할 때만 그 네 필드의 불일치를 등록 입력으로 인정한다.
+
+- 독립 SHA-bound correctiveReviewRef의 row와 등록 요청 item이 같은 UID/ordinal에 대해 완전히 동일한 sourceFieldCorrections 항목을 각각 가진다. 한쪽에만 있거나 값이 다르면 거부한다.
+- 항목은 field, questionUid, sourceOrdinal(또는 auditQuestionNumber), originalManifestValue, currentSourceValue, 비어 있지 않은 reason, appliedToManifest:false를 가진다.
+- originalManifestValue는 현재 매니페스트의 실제 값과 정확히 같고, currentSourceValue는 현재 production source의 실제 값과 정확히 같으며, 두 값은 서로 달라야 한다.
+- field는 answer, questionType, choicesCount, score만 허용한다. content/choices/source UID/identity 또는 PT/TPL/CC/단원/level/difficulty/assignment를 바꾸는 교정은 허용하지 않는다.
+- 기존 source parity, student payload parity, corrected canonical assignment 검증은 그대로 유지한다. 이 예외는 매니페스트 비교에만 적용된다.
+- 등록기는 원본 audit/manifest/source를 덮어쓰거나 새 값으로 만들지 않는다. appliedToManifest:false는 영수증에 그대로 남기고, 각 교정에 corrective review의 reviewer id/role과 reviewedAt을 귀속해 사람 검수 책임을 식별한다.
+- 누락, 중복, 다른 UID, 원본/현재 값 불일치, reason 없음, appliedToManifest:true, 원본과 현재가 같은 모순 교정은 fail-closed로 거부한다.
+- 기존 교정 없는 입력의 매니페스트 동등성 검사는 정확히 이전과 같다.
+
+기본 실행은 dry-run이며 실제 적용은 --write를 명시해야 한다.
+
 이 유형의 등록 receipt는 `examFinalQaStatus: NOT_EVALUATED_BY_REGISTRAR`를 유지한다. 문항 메타 provenance에는 `metadataApprovalType: META_PIPELINE_AUDIT`, `tagConfidence: meta_pipeline_audit`, `fieldStatus.*: approved_meta_pipeline_audit`를 기록해 다른 승인 경로와 구별한다.
 
 `before/after`는 승인 메타 필드 객체다. `after`의 모든 필드에 `before`를 명시하며,

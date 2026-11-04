@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": "nov04-source-master-mapping-v1",
+  "requestId": "meta-pipeline-nov04-4-31cbb3b72991-20261104",
+  "examUid": "22_풍덕중_1학기_기말_중2_수학",
+  "examKey": "nov04-4",
+  "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+  "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+  "masterSha256": "71e32dc81537aaba8012a4a9e9a9a983148710ad22c90d79fcf8aacbc663aacf",
+  "canonicalMasterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalMasterSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+  "mappings": [
+    {
+      "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+      "sourceOrdinal": 1,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "subUnitKey": "M2-02-EXPONENT_LAWS",
+        "subUnit": "단항식의 곱셈과 나눗셈",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-01",
+        "keyType": "standardUnitKey",
+        "labelKo": "수와 식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-01-EXPONENT_LAW",
+        "keyType": "subUnitKey",
+        "labelKo": "지수법칙",
+        "status": "active",
+        "parentKey": "M2-01",
+        "standardUnitKey": "M2-01"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "단항식의 계산"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "식의 계산",
+        "L2": "단항식의 계산",
+        "auditUnitKeyOriginal": "M2-02",
+        "auditSubUnitKeyOriginal": "M2-02-01",
+        "sourceUnitKeyOriginal": "M2-02",
+        "sourceSubUnitKeyOriginal": "M2-02-EXPONENT_LAWS",
+        "correctionReason": "Audit M2-02/M2-02-01 and source M2-02/M2-02-EXPONENT_LAWS both place 식의 계산 under M2-02, but canonical M2-02 is 일차부등식. Actual content is M2-01 수와 식 / M2-01-EXPONENT_LAW. Audit and source originals preserved; no answer or trace is asserted correct."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-EXPONENT_LAWS",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+      "sourceOrdinal": 2,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "subUnit": "다항식의 나눗셈과 도형의 넓이",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-01",
+        "keyType": "standardUnitKey",
+        "labelKo": "수와 식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-01-POLYNOMIAL_OPERATIONS",
+        "keyType": "subUnitKey",
+        "labelKo": "다항식의 계산",
+        "status": "active",
+        "parentKey": "M2-01",
+        "standardUnitKey": "M2-01"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "식의 계산",
+        "L2": "다항식의 계산",
+        "auditUnitKeyOriginal": "M2-02",
+        "auditSubUnitKeyOriginal": "M2-02-02",
+        "sourceUnitKeyOriginal": "M2-02",
+        "sourceSubUnitKeyOriginal": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "correctionReason": "Canonical M2-02 is 일차부등식, so the audited/source M2-02 placement of 다항식의 계산 is rejected. Actual content is M2-01 수와 식 / M2-01-POLYNOMIAL_OPERATIONS. CC_POLYNOMIAL_DIVISION is not reused because its canonical definition is a different polynomial-division concept; a distinct additive key is used."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "subUnit": "도형의 접기와 다항식의 넓이",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-01",
+        "keyType": "standardUnitKey",
+        "labelKo": "수와 식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-01-POLYNOMIAL_OPERATIONS",
+        "keyType": "subUnitKey",
+        "labelKo": "다항식의 계산",
+        "status": "active",
+        "parentKey": "M2-01",
+        "standardUnitKey": "M2-01"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "식의 계산",
+        "L2": "다항식의 계산",
+        "auditUnitKeyOriginal": "M2-02",
+        "auditSubUnitKeyOriginal": "M2-02-02",
+        "sourceUnitKeyOriginal": "M2-02",
+        "sourceSubUnitKeyOriginal": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "correctionReason": "Actual folded-area content is M2-01-POLYNOMIAL_OPERATIONS, not canonical M2-02. CC_TRIANGLE_CONGRUENCE is added because the current solution explicitly uses the congruence of triangles ADE and AFE. ROOT must visually inspect q03.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+      "sourceOrdinal": 4,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "subUnit": "다항식의 덧셈과 뺄셈의 바른 계산",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-01",
+        "keyType": "standardUnitKey",
+        "labelKo": "수와 식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-01-POLYNOMIAL_OPERATIONS",
+        "keyType": "subUnitKey",
+        "labelKo": "다항식의 계산",
+        "status": "active",
+        "parentKey": "M2-01",
+        "standardUnitKey": "M2-01"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "식의 계산",
+        "L2": "다항식의 계산",
+        "auditUnitKeyOriginal": "M2-02",
+        "auditSubUnitKeyOriginal": "M2-02-02",
+        "sourceUnitKeyOriginal": "M2-02",
+        "sourceSubUnitKeyOriginal": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "correctionReason": "Actual polynomial addition/subtraction correction is M2-01-POLYNOMIAL_OPERATIONS, not canonical M2-02. Audit answer matches the current source but the audit unit namespace is corrected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-POLYNOMIAL_ARITHMETIC",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+      "sourceOrdinal": 5,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTIES",
+        "subUnit": "일차부등식의 판별",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-INEQUALITY_PROPERTIES",
+        "correctionReason": "Audit/source M2-03 is 연립일차방정식 in canonical master; actual 일차부등식 identification belongs to M2-02-LINEAR_INEQUALITY. The audit answer ② and its ㄱ,ㅁ trace conflict with the current source, whose solution selects ㄱ,ㄷ,ㅁ (⑤); the original audit key and trace are not asserted correct."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+      "sourceOrdinal": 6,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTIES",
+        "subUnit": "부등식의 기본 성질",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-INEQUALITY_PROPERTIES",
+        "correctionReason": "Actual inequality-property true/false content belongs to M2-02-LINEAR_INEQUALITY, not canonical M2-03. Answer ③ agrees with the current source; the unit namespace is corrected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+      "sourceOrdinal": 7,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "subUnit": "일차부등식의 풀이",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-SOLVE_INEQUALITY",
+        "correctionReason": "Actual fractional/decimal inequality solving belongs to M2-02-LINEAR_INEQUALITY. The audit answer ⑤ conflicts with the current source, which selects ④; the original audit trace is not reused."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+      "sourceOrdinal": 8,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "subUnit": "복잡한 일차부등식과 자연수 해",
+        "level": "중",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-SOLVE_INEQUALITY",
+        "correctionReason": "Actual natural-solution-sum content belongs to M2-02-LINEAR_INEQUALITY. Audit answer ③/trace x<6 and sum 15 conflict with the current source x<22/7 and sum 6 (②); the original audit trace is not asserted correct."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+      "sourceOrdinal": 9,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "subUnit": "자연수 해를 갖지 않을 조건",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-SOLVE_INEQUALITY",
+        "correctionReason": "Actual no-natural-solution boundary analysis belongs to M2-02-LINEAR_INEQUALITY. Audit answer ① survives, but its (a+17)/4 trace and a≤-13 conclusion conflict with the current source denominator 10 and a≤-7; the audit trace is not reused."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SOLVE_INEQUALITY",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+      "sourceOrdinal": 10,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-INEQUALITY_APPLICATION",
+        "subUnit": "일차부등식의 활용 (거리·속력·시간)",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식의 활용",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식의 활용"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-03",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-INEQUALITY_APPLICATION",
+        "correctionReason": "Actual round-trip time-limit word problem belongs to M2-02-LINEAR_INEQUALITY_WORD. Audit answer ③ (7/3 km) conflicts with the current source x≤8/3 km (⑤); the original audit trace is not asserted correct."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-INEQUALITY_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+      "sourceOrdinal": 11,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "subUnit": "평행사변형의 대변의 길이와 비례배분",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "평행사변형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-01",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "correctionReason": "Audit MG-02 is not a canonical middle2 geometry unit; source M2-06 is canonical 도형의 닮음. Actual parallelogram side/ratio content belongs to canonical M2-05 사각형의 성질 / M2-05-QUADRILATERAL_PROPERTIES, owned by MIDDLE_GEOMETRY. Audit answer ① and 45/8 trace conflict with current source AB=9 cm (②)."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "sourceOrdinal": 12,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "subUnit": "각의 이등분선과 평행사변형의 변",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "평행사변형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-01",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "correctionReason": "Actual two-angle-bisector segment content belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_ANGLE_BISECTOR has a meta recording definition, so the distinct CC_ANGLE_BISECTOR_PROPERTY is used. Audit answer ② conflicts with current source EF=3 cm (③). ROOT must inspect q12.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+      "sourceOrdinal": 13,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "subUnit": "평행사변형이 되는 조건의 판별",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "평행사변형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-01",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "correctionReason": "Actual condition-discrimination content belongs to M2-05-QUADRILATERAL_PROPERTIES. The current solution uses alternate interior angles and an insufficiency/counterexample reading; it does not use triangle congruence. CC_TRIANGLE_CONGRUENCE is preserved only in originalCrossConcepts and replaced by precise actual concepts."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+      "sourceOrdinal": 14,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "subUnit": "평행사변형 내부의 점과 삼각형의 넓이",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "평행사변형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-01",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "correctionReason": "Actual internal-point opposite-triangle area belongs to M2-05-QUADRILATERAL_PROPERTIES. Audit answer ① survives, but its 35/2−14 trace conflicts with the current source total area 68 and ABP=24 giving 34−24=10; the audit trace is not reused."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLELOGRAM_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-RECTANGLE_PROPERTIES",
+        "subUnit": "내각의 이등분선으로 만들어진 직사각형",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-RECTANGLE_PROPERTIES",
+        "correctionReason": "Actual rectangle-from-four-bisectors content belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Canonical CC_ANGLE_BISECTOR is meta-defined, so CC_ANGLE_BISECTOR_PROPERTY is used. Answer ⑤ agrees with the current source."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-RECTANGLE_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+      "sourceOrdinal": 16,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-RECTANGLE_PROPERTIES",
+        "subUnit": "평행사변형이 직사각형이 되는 조건",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-RECTANGLE_PROPERTIES",
+        "correctionReason": "Actual rectangle-condition selection belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit answer ③,④ conflicts with current source choices, whose non-rectangle conditions are ①,⑤."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-RECTANGLE_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+      "sourceOrdinal": 17,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-RHOMBUS_PROPERTIES",
+        "subUnit": "마름모의 대각선과 각의 크기",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-RHOMBUS_PROPERTIES",
+        "correctionReason": "Actual rhombus diagonal-angle content belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit answer ④ survives, but its 85° trace conflicts with the current source 90°; the audit trace is not reused. ROOT must inspect q17.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-RHOMBUS_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "sourceOrdinal": 18,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-RHOMBUS_PROPERTIES",
+        "subUnit": "평행사변형이 마름모가 되는 조건",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-RHOMBUS_PROPERTIES",
+        "correctionReason": "The current solution does not stop at rhombus: it derives rhombus, then rectangle, then square (⑤). The audited rhombus PT/TPL is only an intermediate and is not reused as the final task type. A distinct additive square-classification PT/TPL pair and CC_SQUARE_CLASSIFICATION are used; audit keys remain recorded. ROOT must inspect q18.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-RHOMBUS_PROPERTIES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+      "sourceOrdinal": 19,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-VARIOUS_QUADRILATERALS",
+        "subUnit": "대각선의 길이가 같은 사각형",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-VARIOUS_QUADRILATERALS",
+        "correctionReason": "Actual equal-diagonal quadrilateral counting belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_CLASSIFICATION defines function classification by degree, so the distinct CC_QUADRILATERAL_CLASSIFICATION is used. Answer ③ agrees with the current source."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-VARIOUS_QUADRILATERALS",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+      "sourceOrdinal": 20,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLEL_AND_AREA",
+        "subUnit": "사다리꼴과 높이가 같은 삼각형의 넓이의 비",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLEL_AND_AREA",
+        "correctionReason": "Actual trapezoid side-triangle area ratio belongs to M2-05-QUADRILATERAL_PROPERTIES. Audit MG-02-03 is not a canonical subUnit. Answer ② (14 cm²) agrees with the current source."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_AND_AREA",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+      "sourceOrdinal": 21,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLEL_AND_AREA",
+        "subUnit": "평행선과 삼각형의 등적변형",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLEL_AND_AREA",
+        "correctionReason": "Actual equal-area transformation under a parallel condition belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_PARALLEL_LINES is coordinate-slope defined, so CC_PARALLEL_LINES_EQUAL_AREA is used. Answer ① agrees. ROOT must inspect q21.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_AND_AREA",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+      "sourceOrdinal": 22,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "subUnitKey": "M2-02-MONOMIAL_GEOMETRY",
+        "subUnit": "직사각형의 회전체 부피의 비",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-01",
+        "keyType": "standardUnitKey",
+        "labelKo": "수와 식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-01-EXPONENT_LAW",
+        "keyType": "subUnitKey",
+        "labelKo": "지수법칙",
+        "status": "active",
+        "parentKey": "M2-01",
+        "standardUnitKey": "M2-01"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "단항식의 계산"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "식의 계산",
+        "L2": "단항식의 계산",
+        "auditUnitKeyOriginal": "M2-02",
+        "auditSubUnitKeyOriginal": "M2-02-01",
+        "sourceUnitKeyOriginal": "M2-02",
+        "sourceSubUnitKeyOriginal": "M2-02-MONOMIAL_GEOMETRY",
+        "correctionReason": "Actual cylinder-volume ratio from monomial side lengths belongs to M2-01 수와 식 / M2-01-EXPONENT_LAW, not canonical M2-02. CC_EXPONENT_RULES is added because the volume simplification uses exponent laws. Answer 3b/4a agrees. ROOT must inspect q22.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-MONOMIAL_GEOMETRY",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+      "sourceOrdinal": 23,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-03-INEQUALITY_APPLICATION",
+        "subUnit": "일차부등식의 활용 (물탱크)",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-02",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차부등식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-02-LINEAR_INEQUALITY_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "일차부등식의 활용",
+        "status": "active",
+        "parentKey": "M2-02",
+        "standardUnitKey": "M2-02"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식의 활용"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-03",
+        "sourceUnitKeyOriginal": "M2-03",
+        "sourceSubUnitKeyOriginal": "M2-03-INEQUALITY_APPLICATION",
+        "correctionReason": "Actual water-tank capacity inequality belongs to M2-02-LINEAR_INEQUALITY_WORD. Audit answer 33 L and its one-third-remaining inequality conflict with the current statement/solution, which uses two-thirds remaining and x≥15 L."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-INEQUALITY_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "sourceOrdinal": 24,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "subUnit": "평행사변형이 되는 조건 5가지 기호 표현",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "평행사변형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-01",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "correctionReason": "Actual five parallelogram conditions in symbols belongs to M2-05-QUADRILATERAL_PROPERTIES under 평행사변형. Answer content agrees; only notation differs. ROOT must inspect q24.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLELOGRAM_CONDITIONS",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "sourceOrdinal": 25,
+      "sourceBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "여러 가지 사각형",
+        "subUnitKey": "M2-06-VARIOUS_QUADRILATERALS",
+        "subUnit": "여러 가지 사각형 사이의 관계 조건",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-05",
+        "keyType": "standardUnitKey",
+        "labelKo": "도형의 성질",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-05-QUADRILATERAL_PROPERTIES",
+        "keyType": "subUnitKey",
+        "labelKo": "사각형의 성질",
+        "status": "active",
+        "parentKey": "M2-05",
+        "standardUnitKey": "M2-05"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-4-definitions-root.mjs",
+        "parentRpmScope": "M2-2",
+        "L1": "사각형의 성질",
+        "L2": "여러 가지 사각형",
+        "auditUnitKeyOriginal": "MG-02",
+        "auditSubUnitKeyOriginal": "MG-02-02",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-VARIOUS_QUADRILATERALS",
+        "correctionReason": "Actual quadrilateral-hierarchy condition completion belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit blank ordering conflicts with the current source's ①~⑤ mapping; the audit sequence is preserved only as provenance. ROOT must inspect q25.png; no visual inspection is claimed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-VARIOUS_QUADRILATERALS",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    }
+  ],
+  "note": "Exact current source → exact ACTIVE tag-master/RPM mapping, with the metadata before state preserved verbatim for each UID."
+}
