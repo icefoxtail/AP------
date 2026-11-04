@@ -1,0 +1,3367 @@
+{
+  "schemaVersion": "archive-meta-pipeline-sop-v12-corrective-review-v1",
+  "sopVersion": "SOP_v1.2",
+  "examTitle": "2021학년도 순천팔마중 2학년 1학기 기말고사 수학",
+  "examSlug": "21_팔마중_1학기_기말_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+  "sourceFileDriveId": "1A4Fr7_F8vOFb1uYKEk3jRZTQD3HRg27Q",
+  "originalDeclaredSourceSha256": "26b61654709967fc92686291b62c3162a64cd30ce1b5bb429d701a94aabfa9fe",
+  "driveSourceSha256": "f304e2b183036a2c64295927bb8d57bb4deced177a078979b3c806526eda4110",
+  "productionSourceSha256": "f304e2b183036a2c64295927bb8d57bb4deced177a078979b3c806526eda4110",
+  "sourceHashDrift": true,
+  "excerptBasis": "CURRENT_PRODUCTION_SOURCE",
+  "reviewer": {
+    "id": "OPENCODE_DEEPSEEK_V4_1_FLASH",
+    "role": "AUTHORIZED_REVIEWER",
+    "model": "deepseek-v4.1-flash",
+    "provider": "opencode-go"
+  },
+  "approvalAuthority": {
+    "id": "CODEX_ROOT",
+    "role": "ROOT"
+  },
+  "attribution": {
+    "correctiveReview": "OpenCode / deepseek-v4.1-flash (nov04-drift.mjs)",
+    "excerptCorrections": "CODEX_ROOT (nov04-root-excerpt-corrections.json)",
+    "originalAudit": "NOT_ATTRIBUTABLE_TO_THIS_REVIEW; historical audit provenance unchanged",
+    "preparedBy": "nov04-four.mjs restricted child builder; not FINAL_QA and not a registration receipt"
+  },
+  "reviewedAt": "2026-11-04",
+  "questionCount": 24,
+  "auditPackageRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+    "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+  },
+  "manifestRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.manifest.source.json",
+    "sha256": "4b4ac171c0af66ddd21fc47fde70a47ef6cef56a99b99e798ffa479e494f3c94"
+  },
+  "sourceParityRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.source-parity.json",
+    "sha256": "19b6107aec2d2254fb0cdef809512fb9321f2bc29bbcaf0d8ea97848868214a6"
+  },
+  "semanticReviewRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.semantic-review.json",
+    "sha256": "0906ace31afa5c4e18b6e637be2d4c9cb5adc8589f92074337324723fd43cfc8"
+  },
+  "sourceMasterMappingRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.source-master-mapping.json",
+    "sha256": "755ae764e8a09b8cc362ab1b1d66ec5f4099a8c2b4dfb50f9663c39d3ce14990"
+  },
+  "rootVisualRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.root-visual.json",
+    "sha256": "ebb58c3d42ad8a1d4cfe8d6fb727ea65f8ad62fdc4a81de06c3f81e5ea7d0656"
+  },
+  "reviewedDefinitionsRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.reviewed-definitions.mjs",
+    "sha256": "ca4dc4e037f77c762d033c262e5c6e38e181867fa81100eddeb4f3cc79b4bbc5"
+  },
+  "rootExcerptCorrectionsRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.root-excerpt-corrections.json",
+    "sha256": "2e4391f3aaa5bb8226226408ade35994b19490cc7ff25c0bae991dd8c59ff93d"
+  },
+  "ownerPackResolution": {
+    "packs": [
+      "MIDDLE2"
+    ],
+    "mechanism": "ADDITIVE_BINDINGS_AND_PROMOTIONS_ONLY; EXISTING_CANONICAL_DEFINITIONS_IMMUTABLE",
+    "note": "Owner pack is taken from each original audit row's designatedPack. No row is re-homed and no pack is consolidated."
+  },
+  "threeShaSeparation": {
+    "originalDeclaredSourceSha256": "26b61654709967fc92686291b62c3162a64cd30ce1b5bb429d701a94aabfa9fe",
+    "driveSourceSha256": "f304e2b183036a2c64295927bb8d57bb4deced177a078979b3c806526eda4110",
+    "productionSourceSha256": "f304e2b183036a2c64295927bb8d57bb4deced177a078979b3c806526eda4110",
+    "sourceHashDrift": true,
+    "basis": "Each SHA is kept in its own field. Actual Drive bytes equal actual production bytes here; the audit declaration is preserved and is not asserted to equal them."
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4",
+      "sourceOrdinal": 1,
+      "auditQuestionNumber": 1,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_VARIABLE_ELIMINATION",
+        "CC_LEAST_COMMON_MULTIPLE"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_VARIABLE_ELIMINATION",
+          "CC_LEAST_COMMON_MULTIPLE"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_VARIABLE_ELIMINATION",
+          "CC_LEAST_COMMON_MULTIPLE"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric audit subUnit M2-03-01 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source M2-04 system namespace is rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. CrossConcept: LCM 12 of coefficients 3 and 4 is decisive.",
+      "sourceTextExcerpt": "<p>1. 연립방정식 $\\begin{cases} 3x+4y=6 & \\cdots \\text{㉠} \\\\ 4x-3y=2 & \\cdots \\text{㉡} \\end{cases}$을 가감법으로 풀 때, $x$를 소거하기 위하여 필요한 식을 고르면? [4점]</p>",
+      "solutionDecisiveExcerpt": "따라서 필요한 식은 $\\text{㉠}\\times 4 - \\text{㉡}\\times 3$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects the elimination operation for a linear system."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Required-operation-for-variable-elimination matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "LCM 12 of coefficients 3 and 4 is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "labelKo": "가감법 소거식 선택",
+        "definitionKo": "연립일차방정식을 가감법으로 풀 때 특정 미지수를 소거하기 위해 각 식에 곱할 수와 더하거나 뺄 연산을 선택하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "labelKo": "미지수 소거용 식 선택 절차",
+        "definitionKo": "소거할 미지수의 두 계수를 최소공배수로 같게 만드는 배수를 각 식에 정하고, 계수의 부호가 같으면 빼고 다르면 더하는 식을 구성한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_VARIABLE_ELIMINATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미지수 소거",
+          "definitionKo": "연립방정식의 두 식을 더하거나 빼서 한 미지수를 없애는 조작.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_LEAST_COMMON_MULTIPLE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "최소공배수",
+          "definitionKo": "두 개 이상의 자연수의 공배수 가운데 가장 작은 수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_4e6650e61093966b73c6ba71208266bc048b9a8584012d00b0a6d19bf1c2b597",
+      "sourceOrdinal": 2,
+      "auditQuestionNumber": 2,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_PARALLEL_LINES",
+        "CC_COEFFICIENT_RATIOS"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_PARALLEL_LINES",
+          "CC_COEFFICIENT_RATIOS"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_PARALLEL_LINES",
+          "CC_COEFFICIENT_RATIOS"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SPECIAL_CASES; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Coefficient-ratio condition is decisive.",
+      "sourceTextExcerpt": "<p>2. 연립방정식 $\\begin{cases} 6x-9y=7 \\\\ 6x+ay=5 \\end{cases}$의 해가 없을 때, 상수 $a$의 값을 구하면? [3점]</p>",
+      "solutionDecisiveExcerpt": "3단계: 양변에 $a$를 곱하면 $a = -9$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds the parameter making the linear system inconsistent."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Parameter-for-no-solution matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Coefficient-ratio condition is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "labelKo": "해가 없을 조건으로 계수 결정",
+        "definitionKo": "연립일차방정식이 해를 갖지 않도록 하는 미지수의 계수 값을 계수비와 상수항비의 관계로 결정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "labelKo": "해 없음 조건으로 계수 찾기 절차",
+        "definitionKo": "두 식의 같은 미지수 계수비와 상수항비를 비교하고, 계수비는 같으나 상수항비는 다르다는 조건을 세워 미지의 계수를 결정한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PARALLEL_LINES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행",
+          "definitionKo": "두 직선의 평행 조건을 이용해 기울기나 좌표 관계를 정한다.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_COEFFICIENT_RATIOS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "계수의 비",
+          "definitionKo": "두 일차방정식에서 같은 미지수의 계수끼리 만든 비.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d9fcce4a31dbe085588a3d57255dd85bd7edae0e4df99e2328b03232e7178636",
+      "sourceOrdinal": 3,
+      "auditQuestionNumber": 3,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_DECIMAL_COEFFICIENTS",
+        "CC_LINEAR_COMBINATION"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_DECIMAL_COEFFICIENTS",
+          "CC_LINEAR_COMBINATION"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_DECIMAL_COEFFICIENTS",
+          "CC_LINEAR_COMBINATION"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: All three cross concepts are exercised.",
+      "sourceTextExcerpt": "<p>3. 연립방정식 $\\begin{cases} 0.3x+0.03y=0.9 \\\\ 0.2x+0.1y=-1 \\end{cases}$의 해가 $x=a, y=b$일 때, $4a+b$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$4a + b = 4(5) + (-20) = 20 - 20 = 0$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item clears decimal coefficients and evaluates a linear combination."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Decimal system plus linear combination matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "All three cross concepts are exercised."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "labelKo": "소수 계수 연립방정식 풀이",
+        "definitionKo": "소수 계수를 가진 연립일차방정식을 정수 계수로 고쳐 해를 구한 뒤, 그 해로 일차결합의 값을 계산하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "labelKo": "소수 계수 정수화 후 일차결합 계산 절차",
+        "definitionKo": "각 식의 양변에 10의 거듭제곱을 곱해 소수 계수를 정수로 고치고 연립방정식을 푼 뒤, 구한 해를 요구된 일차결합에 대입해 값을 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_DECIMAL_COEFFICIENTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "소수 계수",
+          "definitionKo": "미지수나 상수에 붙은 계수가 소수로 주어진 상태.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_LINEAR_COMBINATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차결합",
+          "definitionKo": "구한 해를 정해진 상수배만큼 곱하여 더한 식의 값을 계산하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_5bb04d89fb97361cacd81aa924e07484759dc9e3c3d452eed0e53e0821a5ae62",
+      "sourceOrdinal": 4,
+      "auditQuestionNumber": 4,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_COMMON_SOLUTION",
+        "CC_COEFFICIENT_DETERMINATION"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_COMMON_SOLUTION",
+          "CC_COEFFICIENT_DETERMINATION"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_COMMON_SOLUTION",
+          "CC_COEFFICIENT_DETERMINATION"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Common solution and coefficient determination are decisive.",
+      "sourceTextExcerpt": "<p>4. 두 연립방정식 $\\begin{cases} -x+4y=11 \\\\ ax+2y=-5 \\end{cases}$와 $\\begin{cases} -2x-5y=-4 \\\\ 3x+by=-13 \\end{cases}$의 해가 같을 때, 수 $a, b$에 대하여 $a-b$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$a - b = 3 - (-2) = 5$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item solves two systems sharing a solution and determines a and b."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Two-system common-solution template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Common solution and coefficient determination are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "labelKo": "공통해를 이용한 미정계수 결정",
+        "definitionKo": "해가 같은 두 연립일차방정식에서 공통해를 먼저 구하고, 그 해를 다른 식에 대입하여 미정계수를 결정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "labelKo": "공통해 선계산 후 미정계수 결정 절차",
+        "definitionKo": "상수가 모두 주어진 두 식을 먼저 연립해 공통해를 구하고, 그 해를 미정계수가 포함된 나머지 식들에 차례로 대입해 계수를 결정한 뒤 요구된 식의 값을 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_COMMON_SOLUTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "공통해",
+          "definitionKo": "두 개 이상의 방정식을 동시에 만족시키는 같은 해.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_COEFFICIENT_DETERMINATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미정계수 결정",
+          "definitionKo": "주어진 해나 조건을 식에 대입하여 아직 정해지지 않은 계수의 값을 구하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e1299c17ed605b66b38360db9fca661d02fd3d41b84bdde85628052442846530",
+      "sourceOrdinal": 5,
+      "auditQuestionNumber": 5,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_APPLIED_WORD_PROBLEMS",
+        "CC_INVERSE_WIN_LOSS_RELATIONS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+        "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_INVERSE_WIN_LOSS_RELATIONS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+        "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_INVERSE_WIN_LOSS_RELATIONS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit M2-03-02 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Inverse win/loss relation is decisive.",
+      "sourceTextExcerpt": "<p>5. 광수와 하하가 가위바위보를 하여 이긴 사람은 $x$계단씩 올라가고, 진 사람은 $y$계단씩 내려가기로 했다. 그 결과 처음의 위치보다 광수는 14계단 올라가고 하하는 4계단을 올라가 있었다. 광수가 10회, 하하가 8회 이겼다고 할 때, $x, y$ 값의 합 $x+y$를 구하면? (단, 비기는 경우는 없다.) [4점]</p>",
+      "solutionDecisiveExcerpt": "$2x + 2y = 10 \\implies x + y = 5$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item models a rock-paper-scissors stair game as a linear system."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Rock-paper-scissors stair problem template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Inverse win/loss relation is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_ONLY_DRIFT: audited trace writes $8x-10y=-4$; the current solution has $8x-10y=4$. Answer ④ is unchanged.",
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+        "labelKo": "가위바위보 계단 문제",
+        "definitionKo": "이긴 사람과 진 사람의 계단 이동량이 서로 반대가 되는 게임 상황을 연립일차방정식으로 모델링하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+        "labelKo": "승패 역관계 연립방정식 절차",
+        "definitionKo": "한 사람의 이긴 횟수와 진 횟수를 다른 사람의 진 횟수와 이긴 횟수로 뒤집어, 각 사람의 계단 이동량에 대한 두 방정식을 세우고 두 식의 합과 차로 두 변수의 합을 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INVERSE_WIN_LOSS_RELATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "승패의 상호 관계",
+          "definitionKo": "비기는 경우가 없을 때 한 사람이 이긴 횟수가 상대가 진 횟수와 같아지는 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      }
+    },
+    {
+      "questionUid": "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574",
+      "sourceOrdinal": 6,
+      "auditQuestionNumber": 6,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+      "templateKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_PLACE_VALUE",
+        "CC_APPLIED_WORD_PROBLEMS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+        "templateKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_PLACE_VALUE",
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+        "templateKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_PLACE_VALUE",
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Place value is decisive.",
+      "sourceTextExcerpt": "<p>6. 어떤 세 자리의 자연수에서 일의 자리의 숫자는 백의 자리의 숫자와 십의 자리 숫자의 합 $5$와 같고, 백의 자리의 숫자와 십의 자리의 숫자를 바꾼 수는 처음 수보다 $90$만큼 크다. 이 때 처음 세 자리의 자연수를 구하면? [5점]</p>",
+      "solutionDecisiveExcerpt": "따라서 처음 세 자리의 자연수는 $235$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item reconstructs a three-digit number from digit relations."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Three-digit-number template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Place value is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+        "labelKo": "자릿수 관계로 세 자리 수 복원",
+        "definitionKo": "세 자리 자연수의 각 자리 숫자를 미지수로 놓고 자릿값과 자리 교환 조건을 연립일차방정식으로 세워 원래 수를 복원하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+        "labelKo": "자릿값 연립방정식으로 세 자리 수 복원 절차",
+        "definitionKo": "각 자리 숫자를 미지수로 놓고 수를 자릿값의 합으로 표현한 뒤, 자리 숫자 사이의 합 조건과 자리를 바꾼 수의 차 조건으로 연립방정식을 세워 각 자리 숫자를 결정한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PLACE_VALUE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "자릿값",
+          "definitionKo": "각 자리의 숫자에 그 자리의 단위를 곱하여 수 전체의 값을 이루는 값.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      }
+    },
+    {
+      "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+      "sourceOrdinal": 7,
+      "auditQuestionNumber": 7,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+      "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_VALUE",
+        "CC_PRIME_NUMBERS",
+        "CC_NUMBER_OF_ELEMENTS"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-01",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "crossConceptKeys": [
+          "CC_FUNCTION_VALUE",
+          "CC_PRIME_NUMBERS",
+          "CC_NUMBER_OF_ELEMENTS"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "crossConceptKeys": [
+          "CC_FUNCTION_VALUE",
+          "CC_PRIME_NUMBERS",
+          "CC_NUMBER_OF_ELEMENTS"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프. Numeric subUnit M2-04-01 is replaced by M2-04-LINEAR_FUNCTION_BASIC. Source M2-05 is rejected because canonical M2-05 is a geometry domain. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained.",
+      "sourceTextExcerpt": "<p>7. 함수 $f(x)= (x\\text{보다 작거나 같은 소수의 개수})$라 할 때, $f(15)$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "총 $6$개이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item evaluates a function defined by prime counting."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Prime-counting function value matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Primes up to 15 are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED: canonical M2-05 is a geometry domain; do not propagate source key.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "labelKo": "소수 개수 함숫값 계산",
+        "definitionKo": "주어진 수 이하의 소수의 개수로 정의된 함수의 함숫값을 소수를 직접 나열하여 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "parentProblemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "labelKo": "소수 나열 후 함숫값 계산 절차",
+        "definitionKo": "함수의 정의에 따라 주어진 수 이하의 소수를 모두 나열하고 그 개수를 세어 함숫값을 결정한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_FUNCTION_VALUE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "함숫값",
+          "definitionKo": "함수에 정의역의 한 값을 대입했을 때 대응하는 값.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PRIME_NUMBERS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "소수",
+          "definitionKo": "1보다 큰 자연수 가운데 1과 자기 자신만을 약수로 갖는 수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_NUMBER_OF_ELEMENTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "원소의 개수",
+          "definitionKo": "주어진 조건을 만족하는 대상의 수를 세어 얻은 값.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_f74b7bab9fed48f1366e40789907f81d07632fbd8d776ed4315b3b178cbc8a59",
+      "sourceOrdinal": 8,
+      "auditQuestionNumber": 8,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+      "crossConceptKeys": [
+        "CC_FUNCTION_DEFINITION",
+        "CC_LINEAR_FUNCTIONS",
+        "CC_CLASSIFICATION"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-01",
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_FUNCTION_DEFINITION",
+          "CC_LINEAR_FUNCTIONS",
+          "CC_CLASSIFICATION"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_FUNCTION_DEFINITION",
+          "CC_LINEAR_FUNCTIONS",
+          "CC_CLASSIFICATION"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>8. 다음 중 $y$가 $x$의 함수인 것의 개수를 $a$, $y$가 $x$의 일차함수인 것의 개수를 $b$라고 할 때, $a+b$의 값을 구하면? [4점]</p><blockquote><p>ㄱ. $1000$원짜리 샤프를 $x$개를 샀을 때의 지불해야 하는 돈은 $y$원이다.</p><p>ㄴ. 밑변의 길이가 $x\\text{ cm}$이고 높이가 $y\\text{ cm}$인 삼각형의 넓이는 $18\\text{ cm}^2$이다.</p><p>ㄷ. 자연수 $y$는 자연수 $x$의 약수이다.</p><p>ㄹ. 시속 $50\\text{ km}$로 $x$시간동안 달린 자동차가 이동한 거리는 $y\\text{ km}$이다.</p><p>ㅁ. 절댓값이 $x$인 수 $y$</p></blockquote>",
+      "solutionDecisiveExcerpt": "$a + b = 3 + 2 = 5$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item classifies function vs linear function across five relations."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Count-valid-functions-and-linear-functions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Function definition and classification are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": "TRACE_ONLY_DRIFT: audited trace says a=4, b=1; the current solution checks off ㄷ and ㅁ as non-functions, giving a=3, b=2. Sum 5 (②) is unchanged.",
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "labelKo": "함수와 일차함수 판별",
+        "definitionKo": "여러 관계식이 함수인지, 또 일차함수인지를 각각 판별하고 그 개수를 세는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "parentProblemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "labelKo": "함수·일차함수 개수 합산 절차",
+        "definitionKo": "각 관계식에 대해 입력값마다 함숫값이 하나로 정해지는지 판별해 함수의 개수를 세고, 그중 일차식 꼴로 나타나는 관계의 개수를 세어 두 개수를 더한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_FUNCTION_DEFINITION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "함수의 정의",
+          "definitionKo": "정의역의 각 원소마다 공역의 원소가 정확히 하나씩 대응하는 관계이다.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_CLASSIFICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "분류",
+          "definitionKo": "주어진 관계나 식을 정해진 기준에 따라 서로 다른 종류로 나누는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_4fcd1faec46797a9ed91544d1f4426b4932de5a0a06e586b1c8bcd101ab6154d",
+      "sourceOrdinal": 9,
+      "auditQuestionNumber": 9,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_PARALLEL_TRANSLATION",
+        "CC_POINT_SUBSTITUTION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_PARALLEL_TRANSLATION",
+          "CC_POINT_SUBSTITUTION"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_PARALLEL_TRANSLATION",
+          "CC_POINT_SUBSTITUTION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>9. 일차함수 $y=-3x+4$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동시켜 점 $(-1, 2)$를 지나게 하려고 한다. $k$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$k = 2 - 7 = -5$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds a vertical shift passing through a point."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Vertical-shift-through-point matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Point substitution is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "labelKo": "평행이동한 일차함수 결정",
+        "definitionKo": "일차함수 그래프를 y축 방향으로 평행이동한 식을 세우고, 그래프가 지나는 점의 좌표를 대입하여 이동량을 결정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "labelKo": "y축 평행이동량 결정 절차",
+        "definitionKo": "일차함수 식의 상수항에 이동량을 더한 평행이동 식을 세우고, 그래프가 지나는 점의 좌표를 대입해 이동량을 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PARALLEL_TRANSLATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행이동",
+          "definitionKo": "도형이나 그래프를 모양과 크기를 바꾸지 않고 일정한 방향으로 같은 거리만큼 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POINT_SUBSTITUTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "점의 좌표 대입",
+          "definitionKo": "그래프 위의 점이 갖는 x좌표와 y좌표를 식에 넣어 등식을 성립시키는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+      "sourceOrdinal": 10,
+      "auditQuestionNumber": 10,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+      "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_SLOPE_SIGN",
+        "CC_X_INTERCEPT"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_SLOPE_SIGN",
+          "CC_X_INTERCEPT"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_SLOPE_SIGN",
+          "CC_X_INTERCEPT"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>10. 다음 중 아래의 두 조건을 동시에 만족하는 일차함수의 식을 구하면? [4점]</p><blockquote><p>(가) 그래프가 오른쪽 아래를 향하는 직선이다.</p><p>(나) $x$절편이 음수이다.</p></blockquote>",
+      "solutionDecisiveExcerpt": "3단계: 두 조건을 모두 만족하는 일차함수는 $y = -\\dfrac{2}{3}x - 1$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects a linear function matching slope-sign and x-intercept conditions."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Slope-and-intercept condition matching."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Negative slope and negative x-intercept are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "labelKo": "기울기·절편 조건에 맞는 일차함수 선택",
+        "definitionKo": "기울기의 부호와 x절편의 부호 같은 여러 조건을 동시에 만족하는 일차함수를 보기에서 선택하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "labelKo": "기울기 부호·x절편 부호 조건 선별 절차",
+        "definitionKo": "각 보기의 기울기 부호를 먼저 확인해 조건을 만족하는 후보를 줄이고, 남은 후보의 x절편을 계산해 두 번째 부호 조건까지 만족하는 식을 선택한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SLOPE_SIGN",
+          "reviewedVerdict": "FIT",
+          "labelKo": "기울기의 부호",
+          "definitionKo": "직선이 오른쪽 위로 향하면 양수, 오른쪽 아래로 향하면 음수가 되는 기울기의 성질.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_X_INTERCEPT",
+          "reviewedVerdict": "FIT",
+          "labelKo": "x절편",
+          "definitionKo": "그래프가 x축과 만나는 점의 x좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f",
+      "sourceOrdinal": 11,
+      "auditQuestionNumber": 11,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+      "templateKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_INTERCEPTS",
+        "CC_CONE_VOLUME",
+        "CC_SOLID_OF_REVOLUTION"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+        "templateKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_INTERCEPTS",
+          "CC_CONE_VOLUME",
+          "CC_SOLID_OF_REVOLUTION"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+        "templateKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_INTERCEPTS",
+          "CC_CONE_VOLUME",
+          "CC_SOLID_OF_REVOLUTION"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>11. 일차함수 $y=-2x+6$의 그래프와 $x$축 및 $y$축으로 둘러싸인 도형을 $y$축을 회전축으로 하여 1회전 시킬 때 생기는 회전체의 부피를 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$V = \\dfrac{1}{3} \\pi \\times 3^2 \\times 6 = \\dfrac{1}{3} \\pi \\times 9 \\times 6 = 18\\pi$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item revolves the intercept triangle to form a cone."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Cone-volume-from-intercept-triangle matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Intercepts and cone volume are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+        "labelKo": "절편 삼각형을 회전한 원뿔 부피",
+        "definitionKo": "일차함수 그래프와 두 좌표축으로 둘러싸인 삼각형을 한 축 둘레로 회전시켜 생기는 원뿔의 부피를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+        "labelKo": "절편 삼각형 회전 원뿔 부피 절차",
+        "definitionKo": "일차함수의 x절편과 y절편을 구해 좌표축과 이루는 직각삼각형의 두 변을 정하고, 회전축과 수직인 변을 밑면 반지름, 회전축 방향 변을 높이로 보아 원뿔의 부피를 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERCEPTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "절편",
+          "definitionKo": "그래프가 좌표축과 만나는 점의 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_CONE_VOLUME",
+          "reviewedVerdict": "FIT",
+          "labelKo": "원뿔의 부피",
+          "definitionKo": "밑넓이와 높이의 곱의 3분의 1로 구하는 원뿔의 부피.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SOLID_OF_REVOLUTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "회전체",
+          "definitionKo": "평면도형을 한 직선을 축으로 하여 1회전시킬 때 생기는 입체도형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+      "sourceOrdinal": 12,
+      "auditQuestionNumber": 12,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+      "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_INTERCEPTS",
+        "CC_POLYGON_AREA"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_INTERCEPTS",
+          "CC_POLYGON_AREA"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_INTERCEPTS",
+          "CC_POLYGON_AREA"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>12. 두 일차함수 $y=-x+4$, $y=-2x+2$의 그래프와 $x$축 및 $y$축으로 둘러싸인 도형의 넓이를 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$8 - 1 = 7$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes an area bounded by two lines and the axes."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Area-bounded-by-two-lines-and-axes matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Intercepts and polygon area are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "labelKo": "두 일차함수와 좌표축이 둘러싼 넓이",
+        "definitionKo": "두 일차함수 그래프와 두 좌표축으로 둘러싸인 영역의 넓이를 절편과 삼각형 넓이의 차로 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "labelKo": "두 직선·좌표축 둘러싼 넓이 차감 절차",
+        "definitionKo": "두 일차함수의 절편으로 큰 직각삼각형과 작은 직각삼각형의 넓이를 각각 구하고, 구하는 영역을 두 넓이의 차로 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERCEPTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "절편",
+          "definitionKo": "그래프가 좌표축과 만나는 점의 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYGON_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다각형의 넓이",
+          "definitionKo": "다각형을 삼각형 등으로 나누거나 큰 도형에서 작은 도형을 빼서 구하는 평면도형의 넓이.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+      "sourceOrdinal": 13,
+      "auditQuestionNumber": 13,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_SLOPE_SIGN",
+        "CC_Y_INTERCEPT",
+        "CC_QUADRANTS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_SLOPE_SIGN",
+          "CC_Y_INTERCEPT",
+          "CC_QUADRANTS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_SLOPE_SIGN",
+          "CC_Y_INTERCEPT",
+          "CC_QUADRANTS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>13. 일차함수 $y=(k-2)x-(3+k)$의 그래프가 제1사분면을 지나지 않도록 하는 상수 $k$값의 범위가 $a \\le k < b$라 할 때 $a+b$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$a + b = -3 + 2 = -1$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item constrains a parameter so the line avoids quadrant I."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Parameter-range-avoiding-first-quadrant matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Slope sign and y-intercept conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "labelKo": "제1사분면을 지나지 않을 매개변수 범위",
+        "definitionKo": "일차함수 그래프가 특정 사분면을 지나지 않도록 하는 매개변수의 범위를 기울기와 y절편의 부등식으로 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "labelKo": "사분면 회피 매개변수 범위 절차",
+        "definitionKo": "그래프가 특정 사분면을 지나지 않기 위한 기울기 부호 조건과 y절편 부호 조건을 각각 부등식으로 세우고, 두 부등식의 공통 범위를 구해 경계값의 합을 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SLOPE_SIGN",
+          "reviewedVerdict": "FIT",
+          "labelKo": "기울기의 부호",
+          "definitionKo": "직선이 오른쪽 위로 향하면 양수, 오른쪽 아래로 향하면 음수가 되는 기울기의 성질.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_Y_INTERCEPT",
+          "reviewedVerdict": "FIT",
+          "labelKo": "y절편",
+          "definitionKo": "그래프가 y축과 만나는 점의 y좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRANTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사분면",
+          "definitionKo": "좌표평면을 두 좌표축이 나누는 네 영역.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf",
+      "sourceOrdinal": 14,
+      "auditQuestionNumber": 14,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_PARALLEL_LINES",
+        "CC_SLOPE_FORMULA"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-02",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_PARALLEL_LINES",
+          "CC_SLOPE_FORMULA"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_PARALLEL_LINES",
+          "CC_SLOPE_FORMULA"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>14. 두 점 $(-1, 3)$과 $(2, k)$을 지나는 일차함수의 그래프가 일차함수 $y=3x-2$의 그래프와 평행할 때, $k$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$\\dfrac{k - 3}{3} = 3 \\implies k - 3 = 9 \\implies k = 12$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item uses equal slopes to find an unknown coordinate."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Unknown-coordinate-from-parallel-slope matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Slope formula is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "labelKo": "평행 조건으로 미지의 좌표 결정",
+        "definitionKo": "두 점을 지나는 직선의 기울기와 주어진 직선의 기울기가 같다는 평행 조건으로 미지의 좌표를 결정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "labelKo": "평행 기울기로 좌표 결정 절차",
+        "definitionKo": "두 점을 지나는 직선의 기울기를 좌표의 차로 나타내고, 주어진 직선과 평행하므로 두 기울기가 같다는 방정식을 세워 미지의 좌표를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PARALLEL_LINES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행",
+          "definitionKo": "두 직선의 평행 조건을 이용해 기울기나 좌표 관계를 정한다.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SLOPE_FORMULA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "기울기 공식",
+          "definitionKo": "서로 다른 두 점의 좌표의 차를 이용해 직선의 기울기를 구하는 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15,
+      "auditQuestionNumber": 15,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+      "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+        "CC_INTERCEPTS",
+        "CC_GRAPH_MATCHING"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_INTERCEPTS",
+          "CC_GRAPH_MATCHING"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_INTERCEPTS",
+          "CC_GRAPH_MATCHING"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프, whose second subunit is M2-04-LINEAR_FUNCTION_EQUATION. Numeric M2-04-03 is replaced. Source M2-06 is rejected because canonical M2-06 is 도형의 닮음. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity). Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity).",
+      "sourceTextExcerpt": "<p>15. 다음 그림 중 일차방정식 $3x-2y+6=0$의 그래프는? [4점]</p><p><img src=\"assets/images/21_팔마중_1학기_기말_중2_수학/q15.png\" alt=\"일차방정식 3x-2y+6=0의 그래프 선택지 5종 (1번~5번)\" class=\"question-image\" /></p>",
+      "solutionDecisiveExcerpt": "3단계: 점 $(-2, 0)$과 $(0, 3)$을 지나는 직선을 찾으면 ①번 그림이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item converts a linear equation to a line and matches its graph."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Graph-from-intercepts matching matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Intercepts are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity)."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED: canonical M2-06 is 도형의 닮음.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "그래프 ①은 x절편 -2, y절편 3의 증가 직선이다.",
+        "assetRef": "assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+            "resolvedPath": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15.png",
+            "fileSha256": "fa4b5d271533f39c091189c7ccb00805d2c85cd339fcfe475fb3e76b5a81b272",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "labelKo": "일차방정식의 그래프 찾기",
+        "definitionKo": "미지수가 2개인 일차방정식을 일차함수 꼴로 변형해 절편을 구하고, 그 절편을 지나는 그래프를 선택하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+        "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "labelKo": "일차방정식 절편으로 그래프 선택 절차",
+        "definitionKo": "일차방정식을 일차함수 꼴로 변형해 x절편과 y절편을 구하고, 두 절편을 지나는 직선과 일치하는 그래프를 보기에서 찾는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미지수가 2개인 일차방정식",
+          "definitionKo": "두 미지수의 일차식으로 이루어진 방정식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERCEPTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "절편",
+          "definitionKo": "그래프가 좌표축과 만나는 점의 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_GRAPH_MATCHING",
+          "reviewedVerdict": "FIT",
+          "labelKo": "그래프 판별",
+          "definitionKo": "주어진 방정식이나 함수의 절편·기울기 성질을 이용해 대응하는 그래프를 찾는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+      "sourceOrdinal": 16,
+      "auditQuestionNumber": 16,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+        "CC_SLOPE_AND_INTERCEPT",
+        "CC_QUADRANTS"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_SLOPE_AND_INTERCEPT",
+          "CC_QUADRANTS"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_SLOPE_AND_INTERCEPT",
+          "CC_QUADRANTS"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06.",
+      "sourceTextExcerpt": "<p>16. 다음 중 일차방정식 $2x-3y+6=0$의 그래프에 대한 설명으로 옳지 않은 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "⑤ $x=0$일 때 $y=2$이므로 $y$절편은 $2$이다. 따라서 $6$이라는 설명은 옳지 않다. (거짓)",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item evaluates statements about a linear equation's graph."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Evaluate-statements-on-graph matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Slope, intercept and quadrants are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "labelKo": "일차방정식 그래프 설명 판정",
+        "definitionKo": "일차방정식의 그래프에 대한 여러 설명의 참·거짓을 기울기·절편·사분면·점의 통과 여부로 판정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "labelKo": "일차방정식 그래프 설명 검증 절차",
+        "definitionKo": "일차방정식을 일차함수 꼴로 고친 뒤 기울기, y절편, 지나는 사분면, 특정 점의 통과 여부를 각각 계산해 보기의 참·거짓을 판정한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미지수가 2개인 일차방정식",
+          "definitionKo": "두 미지수의 일차식으로 이루어진 방정식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SLOPE_AND_INTERCEPT",
+          "reviewedVerdict": "FIT",
+          "labelKo": "기울기와 절편",
+          "definitionKo": "직선의 방향을 정하는 기울기와 좌표축과 만나는 위치를 정하는 절편.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRANTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사분면",
+          "definitionKo": "좌표평면을 두 좌표축이 나누는 네 영역.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1136a42150f0c4bbe9a465dda5976fb9f4668a98787921e00cbe59620bd996d4",
+      "sourceOrdinal": 17,
+      "auditQuestionNumber": 17,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+        "CC_POINT_SUBSTITUTION",
+        "CC_ALGEBRAIC_SUM"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_POINT_SUBSTITUTION",
+          "CC_ALGEBRAIC_SUM"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_POINT_SUBSTITUTION",
+          "CC_ALGEBRAIC_SUM"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06.",
+      "sourceTextExcerpt": "<p>17. 두 점 $(-3, 1)$, $(a, 8)$이 일차방정식 $3x+by=-12$의 그래프 위에 있을 때, 두 수 $a, b$에 대하여 $a+b$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$a + b = 4 + (-3) = 1$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item substitutes two points into a line equation to determine parameters."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Unknown-coefficient-and-coordinate matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Point substitution is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "labelKo": "그래프 위의 점을 이용한 미지수 결정",
+        "definitionKo": "일차방정식의 그래프 위에 있는 두 점의 좌표를 각각 대입하여 미지의 계수와 좌표를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "labelKo": "두 점 대입으로 계수·좌표 결정 절차",
+        "definitionKo": "한 점의 좌표를 일차방정식에 대입해 미지의 계수를 먼저 구하고, 완성된 방정식에 다른 점의 좌표를 대입해 미지의 좌표를 구한 뒤 두 값을 더한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미지수가 2개인 일차방정식",
+          "definitionKo": "두 미지수의 일차식으로 이루어진 방정식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POINT_SUBSTITUTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "점의 좌표 대입",
+          "definitionKo": "그래프 위의 점이 갖는 x좌표와 y좌표를 식에 넣어 등식을 성립시키는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ALGEBRAIC_SUM",
+          "reviewedVerdict": "FIT",
+          "labelKo": "두 미지수의 합",
+          "definitionKo": "구한 두 미지수의 값을 더하여 요구된 하나의 수를 만드는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b",
+      "sourceOrdinal": 18,
+      "auditQuestionNumber": 18,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+        "CC_EQUATIONS_PARALLEL_TO_AXES"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_EQUATIONS_PARALLEL_TO_AXES"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "CC_EQUATIONS_PARALLEL_TO_AXES"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06.",
+      "sourceTextExcerpt": "<p>18. 점 $(-3, 5)$을 지나고 $y$축에 평행한 직선의 방정식을 구하면? [3점]</p>",
+      "solutionDecisiveExcerpt": "따라서 구하는 직선의 방정식은 $x = -3$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item writes the equation of a vertical line through a point."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Vertical-line-equation-from-point matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Axis-parallel equation concept is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "labelKo": "y축에 평행한 직선의 방정식",
+        "definitionKo": "한 점을 지나고 y축에 평행한 직선은 그 점의 x좌표가 일정하다는 성질로 직선의 방정식을 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "labelKo": "y축 평행 직선의 방정식 구성 절차",
+        "definitionKo": "y축에 평행한 직선 위의 모든 점은 x좌표가 같다는 성질을 이용해, 지나는 점의 x좌표를 그대로 상수로 둔 방정식을 세운다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_EQUATIONS_TWO_VARIABLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "미지수가 2개인 일차방정식",
+          "definitionKo": "두 미지수의 일차식으로 이루어진 방정식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_EQUATIONS_PARALLEL_TO_AXES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "좌표축에 평행한 직선의 방정식",
+          "definitionKo": "x축에 평행하면 y값이, y축에 평행하면 x값이 일정한 직선의 방정식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_56b755eede5cba871ec09993d68d5b94ed1f309054536ed4d571abfb92daae99",
+      "sourceOrdinal": 19,
+      "auditQuestionNumber": 19,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_INTERSECTION_OF_TWO_GRAPHS",
+        "CC_ALGEBRAIC_SUM"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_GRAPH_INTERSECTION",
+          "CC_ALGEBRAIC_SUM"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "CC_ALGEBRAIC_SUM"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Graph-intersection/equation relation belongs to canonical M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Graph intersection and algebraic sum are decisive.",
+      "sourceTextExcerpt": "<p>19. 두 일차방정식 $4x-y=3$과 $-2x+3y=1$의 그래프의 교점의 좌표가 $(a, b)$일 때, $a+b$의 값을 구하면? [4점]</p>",
+      "solutionDecisiveExcerpt": "$a + b = 1 + 1 = 2$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item solves the system for the graph intersection."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Intersection-coordinate-sum matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Graph intersection and algebraic sum are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "labelKo": "연립방정식의 해와 그래프 교점",
+        "definitionKo": "두 일차방정식의 그래프의 교점을 두 방정식을 연립한 해로 보고, 그 좌표를 이용해 요구된 값을 계산하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "labelKo": "연립 풀이로 교점 좌표 합 계산 절차",
+        "definitionKo": "두 일차방정식을 연립해 교점의 두 좌표를 구하고, 두 좌표를 더해 요구된 값을 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "두 그래프의 교점",
+          "definitionKo": "두 그래프의 식을 동시에 만족하는 점과 그 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ALGEBRAIC_SUM",
+          "reviewedVerdict": "FIT",
+          "labelKo": "두 미지수의 합",
+          "definitionKo": "구한 두 미지수의 값을 더하여 요구된 하나의 수를 만드는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c",
+      "sourceOrdinal": 20,
+      "auditQuestionNumber": 20,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+      "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_INTERSECTION_OF_TWO_GRAPHS",
+        "CC_QUADRANTS"
+      ],
+      "level": "상",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-03",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_GRAPH_INTERSECTION",
+          "CC_QUADRANTS"
+        ],
+        "level": "상"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "CC_QUADRANTS"
+        ],
+        "level": "상"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Intersection-quadrant condition belongs to M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Quadrant sign conditions are decisive.",
+      "sourceTextExcerpt": "<p>20. 두 직선 $2x+y+4=0$, $mx-y-2=0$의 교점이 제2사분면 위에 있도록 하는 상수 $m$의 값의 범위를 구하면? [5점]</p>",
+      "solutionDecisiveExcerpt": "$-2 < m < -1$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item constrains a parameter so the intersection lies in quadrant II."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Parameter-range-for-intersection-in-quadrant matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Quadrant sign conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": "TRACE_ONLY_DRIFT: audited trace states intersection coordinates $(-2/(m+2),(-4m+4)/(m+2))$ and conclusion $m>-1$; the current solution derives $y=(-4m-4)/(m+2)$ and $-2<m<-1$. Answer ④ survives but the trace must not be reused.",
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+        "labelKo": "교점의 사분면 조건으로 매개변수 범위",
+        "definitionKo": "두 직선의 교점 좌표를 매개변수로 나타내고, 그 점이 특정 사분면에 있기 위한 부호 조건으로 매개변수의 범위를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+        "labelKo": "교점 사분면 조건 매개변수 범위 절차",
+        "definitionKo": "두 직선의 방정식을 연립해 교점의 두 좌표를 매개변수로 나타내고, 해당 사분면의 두 좌표 부호 조건을 부등식으로 세워 매개변수의 공통 범위를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "두 그래프의 교점",
+          "definitionKo": "두 그래프의 식을 동시에 만족하는 점과 그 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRANTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사분면",
+          "definitionKo": "좌표평면을 두 좌표축이 나누는 네 영역.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ea068752786b026fc4090aa5b4c4f116c1bd5d548bf6f6bf76cfaa411b354ffd",
+      "sourceOrdinal": 21,
+      "auditQuestionNumber": 21,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+      "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_COEFFICIENT_SWAP",
+        "CC_SUBSTITUTION_IN_EQUATIONS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+        "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_COEFFICIENT_SWAP",
+          "CC_ALGEBRAIC_SUBSTITUTION"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+        "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_COEFFICIENT_SWAP",
+          "CC_SUBSTITUTION_IN_EQUATIONS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_SUBSTITUTION_IN_EQUATIONS because existing CC_ALGEBRAIC_SUBSTITUTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Substitution and coefficient identification are decisive.",
+      "sourceTextExcerpt": "<p>[서술형 1] 연립방정식 $\\begin{cases} ax+by=5 \\\\ bx+ay=-7 \\end{cases}$ (단, $a$와 $b$는 수이다.)에서 잘못하여 $a$와 $b$를 서로 바꾸어 놓고 풀었더니 해가 $x=-1, y=3$이었다. 이 때, 처음의 연립방정식의 해를 구하려고 합니다. 다음 물음에 답하시오. [6점]</p><p>(1) $a$와 $b$를 바꾸어 연립방정식의 해를 구하는 풀이과정과 답을 쓰시오. [3점]</p><p>(2) (1)에서 구한 $a$와 $b$를 이용하여 처음의 연립방정식의 해를 구하는 풀이과정과 답을 쓰시오. [3점]</p>",
+      "solutionDecisiveExcerpt": "따라서 처음 연립방정식의 해는 $x = 3, y = -1$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item recovers a system after swapping coefficients."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Coefficient-swap descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Substitution and coefficient identification are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+        "labelKo": "계수를 바꾼 연립방정식의 해 복원",
+        "definitionKo": "두 미지수의 계수를 잘못 바꾸어 세운 연립방정식과 그 해에서 원래 계수를 복원하고, 처음 연립방정식의 해를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+        "labelKo": "계수 교환 연립방정식 복원 서술 절차",
+        "definitionKo": "계수를 바꾼 연립방정식에 주어진 해를 대입해 원래의 두 계수를 구하고, 그 계수를 처음 연립방정식에 적용해 다시 풀어 본래의 해를 서술한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_COEFFICIENT_SWAP",
+          "reviewedVerdict": "FIT",
+          "labelKo": "계수 교환",
+          "definitionKo": "연립방정식에서 두 미지수의 계수 역할을 서로 바꾸어 놓는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SUBSTITUTION_IN_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "방정식에 대입",
+          "definitionKo": "주어진 값을 방정식의 미지수에 넣어 식의 성립 또는 다른 값을 확인하는 방법.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c523894c210ec83120cb0828335d8fcd6522fdaf4b10db428bdf11c8a3156abf",
+      "sourceOrdinal": 22,
+      "auditQuestionNumber": 22,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+        "CC_APPLIED_WORD_PROBLEMS",
+        "CC_UNIT_PRICE"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_UNIT_PRICE"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_UNIT_PRICE"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Unit price and applied modeling are decisive.",
+      "sourceTextExcerpt": "<p>[서술형 2] 재석이네 반은 학교 체육 대회를 위해 응원 도구를 구입하려고 한다. 응원 막대 10개와 나팔 5개의 가격은 14500원이고, 응원 막대 35개와 나팔 7개의 가격은 39200원일 때, 응원 막대 1개와 나팔 1개의 가격을 각각 구하려고 합니다. 다음 물음에 답하시오. [4점]</p><p>(1) 응원 막대 1개와 나팔 1개의 가격을 각각 $x$원과 $y$원으로 놓고 문제의 뜻에 맞는 연립방정식을 세우시오. [2점]</p><p>(2) (1)에서 세운 연립방정식을 풀고, 응원 막대 1개와 나팔 1개의 가격을 각각 구하는 풀이과정과 답을 쓰시오. [2점]</p>",
+      "solutionDecisiveExcerpt": "따라서 응원 막대 $1$개의 가격은 $900$원, 나팔 $1$개의 가격은 $1100$원이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a unit-price linear-system word problem."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Unit-price system descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Unit price and applied modeling are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH_INDETERMINATE",
+        "note": "Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": "REQUIRES_ROOT_DECISION",
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "labelKo": "물건 수량과 총액으로 단가 결정",
+        "definitionKo": "두 종류 물건의 수량과 총액에 대한 연립일차방정식을 세워 각 물건의 단가를 결정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "labelKo": "수량·총액 연립방정식 단가 서술 절차",
+        "definitionKo": "두 물건의 단가를 미지수로 놓고 수량과 총액 조건으로 두 방정식을 세운 뒤, 한 변수를 소거해 각 단가를 구하는 과정을 서술한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "연립일차방정식",
+          "definitionKo": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_UNIT_PRICE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "단가",
+          "definitionKo": "물건 한 개의 가격.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      }
+    },
+    {
+      "questionUid": "qid_v1_fe62e7955ce2dadfea717c48f2c728ddd6f27435d5817aa607b5e2f7a3b01431",
+      "sourceOrdinal": 23,
+      "auditQuestionNumber": 23,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+      "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_APPLIED_WORD_PROBLEMS",
+        "CC_RATE_OF_CHANGE"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-04",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_RATE_OF_CHANGE"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_RATE_OF_CHANGE"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_APPLICATION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain.",
+      "sourceTextExcerpt": "<p>[서술형 3] 지면에서 $8\\text{ km}$까지는 고도가 $100\\text{ m}$ 높아질 때마다 기온이 $0.6^\\circ\\text{C}$씩 내려간다고 한다. 지면의 기온이 $25^\\circ\\text{C}$일 때, 지면으로부터 고도가 $x\\text{ km}$인 지점의 기온을 $y^\\circ\\text{C}$라 하자. 기온이 $1^\\circ\\text{C}$일 때의 고도를 구하려고 합니다. 다음 물음에 답하시오. (단, $0 \\le x \\le 8$) [4점]</p><p>(1) $x$와 $y$ 사이의 관계식을 세우시오. [2점]</p><p>(2) 기온이 $1^\\circ\\text{C}$일 때의 고도를 구하는 풀이과정과 답을 쓰시오. [2점]</p>",
+      "solutionDecisiveExcerpt": "$6x = 24 \\implies x = 4$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item models temperature vs altitude as a linear function."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Temperature-altitude descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Rate of change is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-05 collides with canonical geometry domain."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-05_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "labelKo": "고도에 따른 기온 변화 일차함수",
+        "definitionKo": "고도가 높아질수록 기온이 일정하게 내려가는 상황을 일차함수 관계식으로 세우고, 주어진 기온에 대응하는 고도를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "labelKo": "기온·고도 일차함수 서술 절차",
+        "definitionKo": "고도 단위를 환산해 고도 증가에 따른 기온 변화율을 구하고, 이를 일차함수 관계식으로 나타낸 뒤 주어진 기온을 대입해 대응하는 고도를 계산하는 과정을 서술한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RATE_OF_CHANGE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "변화율",
+          "definitionKo": "한 양이 다른 양의 변화에 따라 일정하게 변하는 비율.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      }
+    },
+    {
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24,
+      "auditQuestionNumber": 24,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+      "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_INTERSECTION_OF_TWO_GRAPHS",
+        "CC_APPLIED_WORD_PROBLEMS"
+      ],
+      "level": "상",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-04",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_GRAPH_INTERSECTION",
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "level": "상"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "level": "상"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Two motion graphs meeting is an intersection of linear-function graphs, i.e. M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). CrossConcept: Graph intersection and applied modeling are decisive.",
+      "sourceTextExcerpt": "<p>[서술형 4] 다음 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 A와 B의 시간에 따른 위치를 나타낸 것이다. 두 물체 A와 B가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 두 물체 A와 B는 움직이기 시작한 지 몇 분 후에 만나는지 구하려고 합니다. 다음 물음에 답하시오. [6점]</p><p><img src=\"assets/images/21_팔마중_1학기_기말_중2_수학/s04.png\" alt=\"두 물체 A, B의 시간에 따른 위치를 나타내는 일차함수 그래프\" class=\"question-image\" /></p><p>(1) 물체 A에 대하여 $x$와 $y$사이의 관계식을 세우시오. [2점]</p><p>(2) 물체 B에 대하여 $x$와 $y$사이의 관계식을 세우시오. [2점]</p><p>(3) 두 물체 A와 B는 움직이기 시작한 지 몇 분 후에 만나는지 구하는 풀이과정과 답을 쓰시오. [2점]</p>",
+      "solutionDecisiveExcerpt": "$2x + 15 = 3x \\implies x = 15$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item models two motions as linear graphs and finds their intersection time."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Motion-graph intersection descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Graph intersection and applied modeling are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "SOURCE_KEY_CONFLICTS_CANONICAL",
+        "note": "Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity)."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": "SOURCE_UNIT_KEY_M2-06_REJECTED.",
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "두 거리-시간 직선 A는 (0,3),(5,5), B는 (0,0),(5,3)을 지난다.",
+        "assetRef": "assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+            "resolvedPath": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+            "fileSha256": "3284ed0043ef60c20ebf57133649585175bc1e64b2f0fdac90e85adb318175dc",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "labelKo": "두 운동 그래프의 교점으로 만나는 시각",
+        "definitionKo": "두 물체의 시간에 따른 위치를 각각 일차함수로 나타내고, 두 그래프의 교점에서 만나는 시각을 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "labelKo": "운동 그래프 교점 서술 절차",
+        "definitionKo": "각 물체의 그래프에서 두 점을 읽어 기울기와 y절편으로 일차함수 식을 세우고, 두 식을 같다고 놓아 만나는 시각을 구하는 과정을 서술한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_FUNCTIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차함수",
+          "definitionKo": "y가 x의 일차식으로 나타나고 x의 계수가 0이 아닌 함수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "두 그래프의 교점",
+          "definitionKo": "두 그래프의 식을 동시에 만족하는 점과 그 좌표.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      }
+    }
+  ],
+  "visualFieldSemantics": {
+    "rowAssetChecked": "false everywhere: ROOT visual observations for nov04-4/6/8/10 are not available. Asset references are recorded, no inspection is claimed.",
+    "reviewerVisualChecked": "false everywhere: the OpenCode reviewer did not open the images.",
+    "assetEvidence": "Each visual row records the actual source asset reference and, when the file is resolvable read-only in the repo, its SHA-256."
+  },
+  "visualEvidenceSummary": {
+    "rowsWithVisualAsset": 2,
+    "rowsWithoutVisualAsset": 22,
+    "rootObservedAssets": 2,
+    "rootCheckedAssets": 0,
+    "openCodeCheckedAssets": 0,
+    "reviewerVisualChecked": false,
+    "assetEvidenceRows": 2,
+    "assetFilesResolved": 2,
+    "checkedBy": null,
+    "countSemantics": "assetChecked is false for every row. ROOT visual observations for nov04-4/6/8/10 are not available. Asset references and any read-only file SHAs are recorded; no visual inspection is claimed."
+  },
+  "templateInflation": "NOT_REPORTED_IN_SOURCE_SCHEMA",
+  "conditionEvidence": "PRESERVED_EXISTING_ONLY_NOT_APPROVED",
+  "difficultyBucketSource": "NOT_AUDITED_1_5_BUCKET",
+  "sourceFieldCorrections": [],
+  "provenanceDiscrepancies": [],
+  "reviewGaps": [],
+  "rootExcerptCorrectionsApplied": []
+}

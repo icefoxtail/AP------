@@ -78,6 +78,8 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 
 `META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
 
+SOP v1.2의 기존 원본에 예전 단원 네임스페이스가 남아 있으면, 문항 메타가 `registration_pending_semantic_review`이고 원본과 현재 메타의 해당 값 및 `sourceMetadataBefore`가 정확히 일치하는 경우에만 SHA 결속 교정 검토의 정본 단원으로 재지정한다. 교정 사유, 정본 단원·세부단원 표시명, 원본과 대상 과목의 동일 owner pack 범위를 검증하며 FINAL_QA/REVIEW2 값을 덮지 않는다. 이유: 원본 텍스트를 바꾸지 않고 감사된 단원 네임스페이스를 바로잡기 위해서다. 발문·보기·해설 HTML에 직접 포함된 이미지와 SVG도 그림 유형 판정에 포함한다.
+
 - `approval.metaPipelineAudit.schemaVersion` is `"meta-pipeline-audit-approval-v1"` for the rich `ALIVE_META_AUDIT_ATOMIC_v3` input, `"meta-pipeline-audit-approval-v2"` for paired key-only audit/classification inputs, or `"meta-pipeline-audit-approval-v3"` for the paired `sourceDriveId` flat v3 audit and `ALIVE_CANDIDATE_CLASSIFICATION_v3` input. `"meta-pipeline-audit-approval-v4"` is the SOP_v1.2 `META_AUDIT_ATOMIC_PACKAGE` audit with its SHA-bound corrective review.
 - `approval.metaPipelineAudit.sourceFileDriveId`
 - `approval.metaPipelineAudit.auditPackageRef`, `manifestRef`, `sourceParityRef`: 정확한 Drive 산출물 JSON 바이트와 source-parity report를 저장소 evidence 경로에 보존한 `{path, sha256}` 참조. 세 참조 모두 `approval.evidenceRefs`에도 포함한다.
