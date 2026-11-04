@@ -454,6 +454,45 @@ function manifestKeyList(row, arrayField, legacyField = arrayField) {
   return null;
 }
 
+// A source-bound targeted replacement review may supply fields the Gemini
+// audit did not examine. Keep this evidence distinct from Gemini approval.
+export function validateTargetedRecoverySupplement({ recovery, source, sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest, ref }) {
+  if (!recovery || recovery.schemaVersion !== "JS_ARCHIVE_M3_ITEM_RECOVERY_META_V2_PAYLOAD_v1" ||
+      recovery.examFile !== path.basename(source) || recovery.finalArtifactSha !== sourceBlobSha1 ||
+      recovery.sourceReview2Audit !== "FRESH_INDEPENDENT_REVIEW2" || recovery.itemRecoveryQuestionCount !== 1 ||
+      !Array.isArray(recovery.itemRecoveryQuestionIds) || recovery.itemRecoveryQuestionIds.length !== 1)
+    fail("targeted recovery supplement identity/source/review mismatch");
+  const ordinal = Number(recovery.itemRecoveryQuestionIds[0]);
+  const rows = (recovery.freshMetadataRows || []).filter(row => Number(row.sourceOrdinal) === ordinal);
+  const resolutions = (recovery.itemHoldResolution || []).filter(row => Number(row.qid) === ordinal);
+  const patch = (items || []).find(row => Number(row.sourceOrdinal) === ordinal);
+  const audited = (rawAudit.records || []).find(row => Number(row.questionId) === ordinal);
+  const candidate = (classificationPackage?.records || []).find(row => Number(row.questionId) === ordinal);
+  const manifestRow = (manifest.recordsToBind || []).find(row => Number(row.questionId) === ordinal);
+  const question = bank[ordinal - 1], row = rows[0], resolution = resolutions[0];
+  if (rows.length !== 1 || resolutions.length !== 1 || !patch || !question || !audited || !candidate || !manifestRow ||
+      row.questionUid !== patch.questionUid || row.metadataReviewStatus !== "TARGETED_RECOVERY_PASS" ||
+      row.difficultyAudit !== "FRESH_INDEPENDENT_TARGETED_PASS" || row.replacementType !== "QUESTION_REPLACEMENT" ||
+      resolution.recoveryType !== "QUESTION_REPLACEMENT" || Number(resolution.replacedQid) !== ordinal ||
+      !Array.isArray(row.conditionKeys) || !row.conditionKeys.length || !row.integrationPattern ||
+      Object.hasOwn(audited, "conditionKeys") || Object.hasOwn(candidate, "conditionKeys") ||
+      Object.hasOwn(audited, "integrationPattern") || Object.hasOwn(candidate, "integrationPattern") ||
+      !eq(manifestRow.conditionKeys || [], []) ||
+      !eq(patch.after?.conditionKeys, row.conditionKeys) || patch.after?.integrationPattern !== row.integrationPattern ||
+      !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256) ||
+      ["content", "choices", "answer", "solution"].some(key =>
+        JSON.stringify(question[key] ?? null) !== JSON.stringify(resolution.replacementQuestion?.[key] ?? null)))
+    fail(`targeted recovery supplement item/evidence mismatch: ${ordinal}`);
+  return { ordinal, questionUid: row.questionUid, conditionKeys: row.conditionKeys, integrationPattern: row.integrationPattern, ref };
+}
+
+export function isSourceConditionEvidenceDebtAllowed({ debt, flatV3, rawRow, candidateRow, question, patch }) {
+  return Boolean(debt) && flatV3 && !Object.hasOwn(rawRow || {}, "conditionKeys") &&
+    !Object.hasOwn(candidateRow || {}, "conditionKeys") && !Object.hasOwn(question, "conditionKeys") &&
+    patch?.before?.conditionKeys == null && patch?.after?.conditionKeys === null &&
+    Boolean(requireText(debt.reason, "conditionKeys EVIDENCE_DEBT reason"));
+}
+
 function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items, registryChanges }) {
   if (approval.type !== "META_PIPELINE_AUDIT") return null;
   const proof = approval.metaPipelineAudit;
@@ -502,6 +541,12 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     Boolean(rawAudit.records?.[0]?.difficulty) && Number.isInteger(rawAudit.totalQuestions) &&
     Number.isInteger(rawAudit.totalApproved) && Number.isInteger(rawAudit.totalHold);
   const auditV2 = rawAudit.schemaVersion === "META_AUDIT_ATOMIC_PACKAGE_v2";
+  if (proof.targetedRecoveryRef && !auditV3SourceDriveFlat)
+    fail("targeted recovery supplement requires sourceDrive flat v3 audit");
+  const targetedRecovery = proof.targetedRecoveryRef
+    ? validateTargetedRecoverySupplement({ recovery: readEvidence(proof.targetedRecoveryRef, "targeted recovery supplement"),
+      source, sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest, ref: proof.targetedRecoveryRef })
+    : null;
   const auditV4 = rawAudit.manifestType === SOP_V12_AUDIT_TYPE && rawAudit.sopVersion === "SOP_v1.2" &&
     Array.isArray(rawAudit.auditRecords) && Boolean(rawAudit.auditRecords.length);
   const pairedLegacyInput = auditV2 || auditV3KeyOnly;
@@ -762,6 +807,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const manifestRecords = unique(manifest.recordsToBind, auditV4 ? "questionNumber" : "questionId", "manifest questionId");
   const parityRecords = unique(sourceParity.records, "sourceOrdinal", "source parity ordinal");
   const patches = unique(items || [], "sourceOrdinal", "META_PIPELINE_AUDIT sourceOrdinal");
+  const conditionDebtUids = [];
   if (patches.size !== expectedQuestionCount || bank.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT request denominator mismatch");
   for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
     const record = records.get(ordinal), manifestRow = manifestRecords.get(ordinal), parityRow = parityRecords.get(ordinal), patch = patches.get(ordinal);
@@ -845,10 +891,19 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         Object.hasOwn(patch?.after || {}, "difficultyBucket") && patch.after.difficultyBucket !== null ||
         Array.isArray(patch?.after?.conditionKeys) && !eq(patch.after.conditionKeys, patch?.before?.conditionKeys ?? null)))
       fail(`META_PIPELINE_AUDIT SOP_v1.2 audited binding limits violated: ${ordinal}`);
+    const rawRow = (rawAudit.records || []).find(row => Number(row.questionId) === ordinal);
+    const candidateRow = (classificationPackage?.records || []).find(row => Number(row.questionId) === ordinal);
+    const conditionDebt = (proof.unreviewedFields || []).find(row => row.field === "conditionKeys" &&
+      row.status === "EVIDENCE_DEBT" && Array.isArray(row.questionUids) && row.questionUids.includes(patch?.questionUid));
+    const explicitConditionDebt = isSourceConditionEvidenceDebtAllowed({ debt: conditionDebt,
+      flatV3: auditV3SourceDriveFlat, rawRow, candidateRow, question: bank[ordinal - 1], patch });
+    if (conditionDebt && !explicitConditionDebt) fail(`conditionKeys EVIDENCE_DEBT mismatch: ${ordinal}`);
+    if (explicitConditionDebt) conditionDebtUids.push(patch.questionUid);
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
-        !eq(after.crossConceptKeys, classification.crossConceptKeys) || (!auditV4 && !eq(after.conditionKeys, classification.conditionKeys || [])) ||
+        !eq(after.crossConceptKeys, classification.crossConceptKeys) || (!auditV4 && !eq(after.conditionKeys,
+          targetedRecovery?.ordinal === ordinal ? targetedRecovery.conditionKeys : explicitConditionDebt ? null : classification.conditionKeys || [])) ||
         Boolean(basicParentRef) === Boolean(targetParentRef) || !parentRef ||
         basicParentRef && !/^[a-f0-9]{64}$/.test(basicParentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
@@ -864,7 +919,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (definition.labelKo.trim() === definition.conceptKey || definition.definition.trim() === definition.conceptKey)
       fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
   }
-  return { audit, manifest, sourceParity, parentBindingCorrection, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
+  return { audit, manifest, sourceParity, parentBindingCorrection, targetedRecovery, conditionDebtUids, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
     sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: audit.inputAuditSchemaVersion || rawAudit.schemaVersion,
     inputAuditVariant: auditV4 ? "sop_v12_corrective_review" : auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3"
       : auditV3SourceDriveFlat ? "source_drive_flat_v3" : "atomic_package_v2",
@@ -1325,7 +1380,7 @@ function lookup(plan) {
   return result;
 }
 
-function resolve(row, tables) {
+function resolve(row, tables, { allowConditionDebt = false } = {}) {
   const active = (map, key, type) => {
     const r = map.get(key);
     if (!r || r.status !== "ACTIVE") fail(`inactive/missing ${type}: ${key}`);
@@ -1336,6 +1391,7 @@ function resolve(row, tables) {
   if (tpl.parentProblemTypeKey !== pt.problemTypeKey) fail(`TPL parent mismatch: ${row.templateKey}`);
   const extensionKeys = [];
   for (const [field, map] of [["crossConceptKeys", tables.cc], ["conditionKeys", tables.cond]]) {
+    if (field === "conditionKeys" && row[field] === null && allowConditionDebt) continue;
     if (!Array.isArray(row[field]) || new Set(row[field]).size !== row[field].length) fail(`invalid ${field}`);
     for (const k of row[field]) {
       // A key that is not a canonical definition at all may be a Generated extension (checked below, once
@@ -1597,7 +1653,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
     for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords) {
-      const r = resolve(record, currentTables);
+      const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob, { registeredReplay: true });
       for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
     }
@@ -1771,7 +1827,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
       integrationPatternEvidenceDebt = debt.reason;
     } else requireText(final.integrationPattern, "integrationPattern");
-    const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
+    const resolved = resolve(final, tables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(current.questionUid) }), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const use of resolved.extensions) {
       const seen = extensionUsage.get(use.key) || { ...use, questionUids: [] };
       seen.questionUids.push(current.questionUid);
@@ -1794,6 +1850,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         ...(metaPipelineAudit?.inputAuditVariant === "source_drive_flat_v3" && final.difficultyBucket !== current.difficultyBucket ? ["difficulty"] : [])]
       : ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"];
     const fieldStatus = { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) };
+    const targetedRecovery = metaPipelineAudit?.targetedRecovery?.questionUid === current.questionUid
+      ? metaPipelineAudit.targetedRecovery : null;
+    if (targetedRecovery) {
+      fieldStatus.condition = "approved_r2e_targeted_recovery";
+      fieldStatus.integrationPattern = "approved_r2e_targeted_recovery";
+    }
+    if (metaPipelineAudit?.conditionDebtUids.includes(current.questionUid)) fieldStatus.condition = "EVIDENCE_DEBT";
     const manualFieldHoldRemains = Object.values(fieldStatus).includes("manual_review_pending");
     const priorPartialHoldResolved = current.reviewStatus === "manual_review" &&
       current.metadataStatus === "approved_partial_with_explicit_holds" &&
@@ -1808,6 +1871,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       : "approved_semantic_review";
     const approvalEvidence = metaPipelineAudit
       ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path,
+        ...(targetedRecovery ? [targetedRecovery.ref.path] : []),
         ...(sopV12Variant ? [req.approval.metaPipelineAudit.correctiveReviewRef.path] : [])]
       : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
@@ -1851,6 +1915,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (integrationPatternEvidenceDebt) {
       final.fieldStatus.integrationPattern = "EVIDENCE_DEBT";
       final.integrationPatternEvidenceDebt = { field: "integrationPattern", status: "EVIDENCE_DEBT", reason: integrationPatternEvidenceDebt };
+    }
+    if (metaPipelineAudit?.conditionDebtUids.includes(current.questionUid)) {
+      const debt = req.approval.metaPipelineAudit.unreviewedFields.find(row => row.field === "conditionKeys" && row.questionUids.includes(current.questionUid));
+      final.conditionKeysEvidenceDebt = { field: "conditionKeys", status: "EVIDENCE_DEBT", reason: debt.reason };
     }
     const packId = pack.meta.packId;
     if (!runtimes.has(packId)) {
@@ -2113,7 +2181,8 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     // That is the intended "usable, never promoted" outcome. It is waived here only when the record's whole
     // classification (PT/TPL/binding/canonical keys/extension keys) re-validates through the registrar's own resolve().
     const extensionExplained = field => field === "foundationTaxonomy" && hasExtensionKey(r) &&
-      resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {})))).extensions.length > 0;
+      resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {}))),
+        { allowConditionDebt: r.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" }).extensions.length > 0;
     const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !extensionExplained(field));
     if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
     if ((c.metadataConflicts || []).includes("foundationTaxonomy") && hasExtensionKey(r)) lanes.generatedExtension = (lanes.generatedExtension || 0) + 1;

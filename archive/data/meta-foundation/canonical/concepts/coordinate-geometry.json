@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.9",
+  "shardVersion": "1.1.10",
   "status": "ACTIVE",
-  "conceptCount": 52,
+  "conceptCount": 53,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -2373,6 +2373,41 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE_COORDINATE_SHIFT",
+      "canonicalLabelKo": "수직선 위 좌표의 이동",
+      "definition": "수직선 위의 한 점에서 일정한 거리만큼 왼쪽·오른쪽으로 이동한 점의 좌표를 기준점의 좌표에 거리를 더하거나 빼서 구하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_NUMBER_LINE_COORDINATE_SHIFT for PT_M3_REAL_NUMBER_LINE/TPL_M3_NUMBER_LINE_SQUARE_ROTATION at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "모눈 위 정사각형의 대각선 길이 sqrt(5)를 구하고 기준점 1에서 좌우 이동한 두 점 P(1-sqrt5), Q(1+sqrt5)의 곱 -4를 도출하는 3단계 기하-수직선 융합 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_LINE"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }
