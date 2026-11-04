@@ -198,7 +198,7 @@ window.examData = {
         "$9(3+\\sqrt{3})\\,\\mathrm{cm}^2$"
       ],
       "answer": "4",
-      "solution": "A에서 BC에 내린 수선의 발을 H, AH=h라 하자. ∠C=45°이므로 CH=h이고, ∠B=60°이므로 BH=h/√3이다. 따라서 h/√3+h=6이다. 양변에 √3을 곱하면 h(1+√3)=6√3이므로 h=6√3/(1+√3)=3(3−√3)이다. 삼각형 ABC의 넓이는 BC×AH/2=6×3(3−√3)/2=9(3−√3) cm²이므로 ④이다.",
+      "solution": "점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하고, $\\overline{\\mathrm{AH}}=h\\,\\mathrm{cm}$라 하자.\n직각삼각형 $\\mathrm{ACH}$에서 $\\angle\\mathrm{C}=45^\\circ$이므로\n$\\overline{\\mathrm{CH}}=h$\n직각삼각형 $\\mathrm{ABH}$에서 $\\angle\\mathrm{B}=60^\\circ$이므로\n$\\overline{\\mathrm{BH}}=\\dfrac{h}{\\tan60^\\circ}=\\dfrac{h}{\\sqrt3}$\n\n$\\overline{\\mathrm{BH}}+\\overline{\\mathrm{CH}}=\\overline{\\mathrm{BC}}=6$이므로\n$\\dfrac{h}{\\sqrt3}+h=6$\n양변에 $\\sqrt3$을 곱하면\n$h(1+\\sqrt3)=6\\sqrt3$\n따라서 분모를 유리화하여\n$h=\\dfrac{6\\sqrt3}{1+\\sqrt3}=\\dfrac{6\\sqrt3(\\sqrt3-1)}{(1+\\sqrt3)(\\sqrt3-1)}=\\dfrac{18-6\\sqrt3}{2}=9-3\\sqrt3=3(3-\\sqrt3)\\,\\mathrm{cm}$\n이다.\n그러므로 삼각형 $\\mathrm{ABC}$의 넓이는\n$\\dfrac12\\times6\\times3(3-\\sqrt3)=9(3-\\sqrt3)\\,\\mathrm{cm}^2$\n이므로 정답은 ④이다.",
       "contentStatus": "AUTHORED_PENDING_INDEPENDENT_REVIEW"
     },
     {
@@ -321,7 +321,7 @@ window.examData = {
       "question": "[서술형 2] 다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$의 넓이가 8일 때, $a+b$의 값을 구하시오. (단, 풀이 과정을 자세히 써라.) [6점]<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/s02.png\" />",
       "choices": [],
       "answer": "4√6",
-      "solution": "그림에서 직각을 끼는 두 변은 a, b이고 빗변은 8이다. 넓이가 8이므로 ab/2=8에서 ab=16이다. 피타고라스 정리로 a²+b²=8²=64이다. 따라서 (a+b)²=a²+b²+2ab=64+32=96이다. a, b는 변의 길이이므로 a+b>0이고, a+b=√96=4√6이다.",
+      "solution": "직각삼각형 $\\mathrm{ABC}$에서 직각을 끼는 두 변의 길이를 $a,b$라 하자. 빗변의 길이는 $8$이다.\n\n[1단계] 넓이 조건으로 $ab$ 구하기\n넓이가 $8$이므로\n$\\dfrac12ab=8,\\qquad ab=16$\n\n[2단계] 피타고라스 정리로 $a^2+b^2$ 구하기\n$a^2+b^2=8^2=64$\n\n[3단계] 곱셈공식으로 $a+b$ 구하기\n$(a+b)^2=a^2+b^2+2ab=64+2\\times16=96$\n$a,b$는 변의 길이이므로 $a>0$, $b>0$이고 $a+b>0$이다. 따라서\n$a+b=\\sqrt{96}=4\\sqrt6$\n이다.",
       "contentStatus": "AUTHORED_PENDING_INDEPENDENT_REVIEW"
     },
     {
