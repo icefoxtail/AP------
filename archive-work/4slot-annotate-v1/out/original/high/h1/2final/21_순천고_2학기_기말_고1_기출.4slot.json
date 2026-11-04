@@ -1,0 +1,209 @@
+{
+ "schemaVersion":"archive-meta-4slot-v0",
+ "sourceArchiveFile":"original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
+ "sourceGitBlobSha":"272df4138fda052ba8c3de159d33879f49bd017a",
+ "dictionaryVersion":"term-dict-v1.5-2026-11-04",
+ "judgedBy":{"agent":"Codex-gpt-6.1-terra","run":"original-61-70","at":"2026-11-04"},
+ "items":[
+  {
+   "sourceOrdinal":1,"format":"옳지 않은 것 고르기",
+   "slots":{
+    "given":[{"term":"유리식","src":"stem","quote":"유리식 계산이 틀린 것은?"}],
+    "goal":[{"term":"판정","src":"stem","quote":"유리식 계산이 틀린 것은?"}],
+    "method":[{"term":"인수분해","src":"solution","quote":"$x^3-8=(x-2)(x^2+2x+4)$","evidenceType":"NAMED"},{"term":"약분","src":"solution","quote":"직접 약분하거나 통분하여","evidenceType":"NAMED"},{"term":"통분","src":"solution","quote":"직접 약분하거나 통분하여","evidenceType":"NAMED"}],
+    "condition":[]
+   },"reasons":{"method":"각 유리식을 인수분해·약분 또는 통분해 좌변과 우변의 등식을 판정한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":2,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"유리함수","src":"stem","quote":"유리함수 $y=\\dfrac{3x+2}{x-a}$"},{"term":"점근선","src":"stem","quote":"점근선의 방정식이 $x=2$, $y=b$"}],
+    "goal":[{"term":"매개변수","src":"stem","quote":"$ab$의 값은?"},{"term":"곱","src":"stem","quote":"$ab$의 값은?"}],
+    "method":[{"term":"점근선","src":"solution","quote":"최고차항 계수비로 점근선을 구한다","evidenceType":"NAMED"},{"term":"계수비교","src":"solution","quote":"주어진 점근선과 비교하여","evidenceType":"IMPLIED","justification":"수직·수평 점근선과 주어진 직선을 비교한다."}],
+    "condition":[]
+   },"reasons":{"method":"분모의 영점과 최고차항 계수비로 수직·수평 점근선을 구해 제시된 식과 비교한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":3,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"순열","src":"stem","quote":"순서를 정하여 놀이공원에 입장"}],
+    "goal":[{"term":"개수","src":"stem","quote":"경우의 수는?"}],
+    "method":[{"term":"묶음","src":"solution","quote":"두 여학생을 하나의 묶음으로 생각한다","evidenceType":"NAMED"},{"term":"순열","src":"solution","quote":"묶음 안의 순서를 정한다","evidenceType":"IMPLIED","justification":"묶음과 나머지 사람 및 묶음 내부를 배열한다."},{"term":"곱의법칙","src":"solution","quote":"$5!\\cdot2!=120\\cdot2=240$","evidenceType":"IMPLIED","justification":"묶음 외부와 내부 순열을 곱한다."}],
+    "condition":[{"term":"인접","src":"stem","quote":"여학생 $2$명이 연이어 입장"}]
+   },"reasons":{"method":"두 여학생을 묶어 나머지 네 사람과 배열하고 묶음 내부의 순서를 곱한다."},"steps":[],"scenarioNote":"놀이공원 입장"
+  },
+  {
+   "sourceOrdinal":4,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"순열","src":"solution","quote":"순열과 조합의 정의"},{"term":"조합","src":"solution","quote":"순열과 조합의 정의"}],
+    "goal":[{"term":"차","src":"solution","quote":"두 값을 구한 뒤 뺀다"}],
+    "method":[{"term":"순열","src":"solution","quote":"순열과 조합의 정의를 각각 계산한다","evidenceType":"NAMED"},{"term":"조합","src":"solution","quote":"순열과 조합의 정의를 각각 계산한다","evidenceType":"NAMED"}],
+    "condition":[]
+   },"reasons":{"method":"순열과 조합의 정의로 각각 값을 구해 뺀다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":5,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"조합","src":"solution","quote":"조합을 식으로 바꾸어"}],
+    "goal":[{"term":"자연수","src":"stem","quote":"자연수 $n$의 값은?"},{"term":"결정","src":"stem","quote":"자연수 $n$의 값은?"}],
+    "method":[{"term":"조합","src":"solution","quote":"조합을 식으로 바꾸어","evidenceType":"NAMED"},{"term":"이차방정식","src":"solution","quote":"이차방정식을 푼다","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"$(n-11)(n+10)=0$","evidenceType":"NAMED"}],
+    "condition":[{"term":"자연수","src":"stem","quote":"자연수 $n$의 값은?"}]
+   },"reasons":{"method":"조합을 이차식으로 바꾸어 인수분해하고 자연수인 해를 선택한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":6,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"조합","src":"stem","quote":"대의원을 $2$명 뽑는"}],
+    "goal":[{"term":"개수","src":"stem","quote":"경우의 수는?"}],
+    "method":[{"term":"조합","src":"solution","quote":"순서를 고려하지 않고 9명 중 2명을 선택","evidenceType":"IMPLIED","justification":"역할 구분 없이 두 명을 선택하는 조합을 센다."}],
+    "condition":[]
+   },"reasons":{"method":"역할 구분 없이 아홉 명 중 두 명을 선택하는 조합이다."},"steps":[],"scenarioNote":"대의원 선택"
+  },
+  {
+   "sourceOrdinal":7,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"분할","src":"stem","quote":"$3$개의 조로 나누려고 한다"}],
+    "goal":[{"term":"개수","src":"stem","quote":"나누는 경우의 수는?"}],
+    "method":[{"term":"조합","src":"solution","quote":"3명 조를 먼저 고른 뒤","evidenceType":"IMPLIED","justification":"세 명 조와 나머지 한 쌍을 차례로 고른다."},{"term":"구별불가","src":"solution","quote":"두 2명 조의 순서 중복을 제거한다","evidenceType":"IMPLIED","justification":"이름 없는 같은 크기의 두 조를 바꾼 중복을 나눈다."}],
+    "condition":[{"term":"구별불가","src":"solution","quote":"두 개의 2명 조에는 이름이나 순서가 없다"}]
+   },"reasons":{"method":"세 명 조를 먼저 선택하고 나머지 두 쌍을 선택한 뒤 이름 없는 두 조의 교환 중복을 나눈다."},"steps":[],"scenarioNote":"벽화 봉사 조 편성"
+  },
+  {
+   "sourceOrdinal":8,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $y=\\sqrt{2x+4}$"},{"term":"직선","src":"stem","quote":"직선 $y=x+k$"}],
+    "goal":[{"term":"매개변수","src":"stem","quote":"$a+2b$의 값은?"},{"term":"식의값","src":"stem","quote":"$a+2b$의 값은?"}],
+    "method":[{"term":"대입법","src":"solution","quote":"$x=y-k$를 대입하여","evidenceType":"NAMED"},{"term":"이차방정식","src":"solution","quote":"이차방정식의 두 근이 서로 다르고","evidenceType":"NAMED"},{"term":"근의분리","src":"solution","quote":"모두 0 이상이 되는 조건","evidenceType":"IMPLIED","justification":"서로 다른 두 교점을 비음수인 두 근의 조건으로 바꾼다."}],
+    "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 두 점에서 만나도록"},{"term":"실수","src":"stem","quote":"실수 $k$의 범위"}]
+   },"reasons":{"method":"교점의 y좌표로 이차방정식을 세우고 서로 다른 두 비음수 근이 생기는 범위를 구한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":9,"format":"보기(ㄱㄴㄷ) 판정",
+   "slots":{
+    "given":[{"term":"무리함수","src":"stem","quote":"함수 $y=-\\sqrt{ax}$"},{"term":"그래프","src":"stem","quote":"설명으로 보기에서 있는 대로"}],
+    "goal":[{"term":"판정","src":"stem","quote":"보기에서 있는 대로 고른 것은?"}],
+    "method":[{"term":"정의역","src":"solution","quote":"$a$의 부호에 따라 정의역","evidenceType":"NAMED"},{"term":"치역","src":"solution","quote":"함수값은 항상 $0$ 이하","evidenceType":"IMPLIED","justification":"음의 제곱근의 부호에서 치역을 얻는다."},{"term":"사분면","src":"solution","quote":"사분면을 확인한다","evidenceType":"NAMED"},{"term":"원점대칭","src":"solution","quote":"원점 대칭하면","evidenceType":"NAMED"}],
+    "condition":[{"term":"제외","src":"stem","quote":"($a\\ne0$)"}]
+   },"reasons":{"method":"상수의 부호별 근호 조건으로 정의역과 사분면을 판정하고 제곱근 부호 및 원점 대칭을 확인한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":10,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $y=\\sqrt{ax+b}+c$"},{"term":"그래프","src":"stem","quote":"그래프가 다음 그림과 같을 때"}],
+    "goal":[{"term":"매개변수","src":"stem","quote":"$a+b+c$의 값은?"},{"term":"합","src":"stem","quote":"$a+b+c$의 값은?"}],
+    "method":[{"term":"끝점","src":"solution","quote":"그래프의 끝점과 $y$절편","evidenceType":"NAMED"},{"term":"y절편","src":"solution","quote":"$y$절편을 이용하여","evidenceType":"NAMED"},{"term":"연립방정식","src":"solution","quote":"$6a+b=0$이다","evidenceType":"IMPLIED","justification":"끝점과 y절편의 계수 관계를 연립해 상수를 정한다."}],
+    "condition":[]
+   },"reasons":{"method":"그림의 끝점에서 c와 근호 안의 영점을 얻고 y절편을 대입해 a,b를 결정한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":11,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"무리함수","src":"stem","quote":"함수 $y=\\sqrt{x-3}+3$"},{"term":"역함수","src":"stem","quote":"그 역함수의 그래프"}],
+    "goal":[{"term":"거리","src":"stem","quote":"이 두 점 사이는?"}],
+    "method":[{"term":"증가감소","src":"solution","quote":"이 함수는 증가함수이므로","evidenceType":"NAMED"},{"term":"고정점","src":"solution","quote":"$y=x$ 위의 고정점","evidenceType":"NAMED"},{"term":"치환","src":"solution","quote":"$t=x-3$이라 두면","evidenceType":"IMPLIED","justification":"근호방정식을 t에 관해 푼다."},{"term":"거리","src":"solution","quote":"두 점 사이의 거리는","evidenceType":"NAMED"}],
+    "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 두 점에서 만날 때"}]
+   },"reasons":{"method":"증가함수와 역함수의 교점을 고정점으로 구하고 근호방정식을 치환하여 두 교점의 거리를 계산한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":12,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"순열","src":"stem","quote":"일렬로 배열하여 여섯 자리 자연수"}],
+    "goal":[{"term":"개수","src":"stem","quote":"자연수의 개수는?"}],
+    "method":[{"term":"자리제한","src":"solution","quote":"맨 앞자리만 확인하면 된다","evidenceType":"IMPLIED","justification":"300000 초과 여부를 첫 자리로 결정한다."},{"term":"순열","src":"solution","quote":"나머지 5개 숫자를 배열하는 방법","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$4\\cdot5!=4\\cdot120=480$","evidenceType":"IMPLIED","justification":"첫 자리 선택과 나머지 순열을 곱한다."}],
+    "condition":[{"term":"범위","src":"stem","quote":"$300000$보다 큰 자연수"}]
+   },"reasons":{"method":"첫 자리를 3~6 중에서 선택하고 남은 숫자 다섯 개의 배열 수를 곱한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":13,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"순열","src":"stem","quote":"순서를 정하는 경우의 수"}],
+    "goal":[{"term":"개수","src":"stem","quote":"경우의 수는?"}],
+    "method":[{"term":"자리제한","src":"solution","quote":"주장 $A$의 위치를 먼저 정하고","evidenceType":"IMPLIED","justification":"A의 첫째 또는 다섯째 자리 중 하나를 정한다."},{"term":"순열","src":"solution","quote":"나머지 8명 중 4명을 뽑아 배열","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$2\\cdot1680=3360$","evidenceType":"IMPLIED","justification":"A의 자리와 나머지 순열을 곱한다."}],
+    "condition":[{"term":"자리제한","src":"stem","quote":"첫째 또는 다섯째 순서"}]
+   },"reasons":{"method":"A의 첫째 또는 다섯째 자리를 정하고 남은 네 자리에 여덟 명 중 네 명을 순서 있게 배열한다."},"steps":[],"scenarioNote":"승부차기 순서"
+  },
+  {
+   "sourceOrdinal":14,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"자릿수","src":"stem","quote":"천의 자리의 수를 $a$"}],
+    "goal":[{"term":"개수","src":"stem","quote":"네 자리의 자연수의 개수"}],
+    "method":[{"term":"조합","src":"solution","quote":"사용할 숫자 4개만 선택한다","evidenceType":"IMPLIED","justification":"네 숫자를 선택하면 증가 순서가 유일하게 정해진다."}],
+    "condition":[{"term":"순서","src":"stem","quote":"$0\\lt a\\lt b\\lt c\\lt d\\lt10$"},{"term":"자연수","src":"stem","quote":"네 자리의 자연수의 개수"}]
+   },"reasons":{"method":"1부터 9까지 네 숫자를 고르면 증가하는 자리 배치가 하나이므로 조합으로 센다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":15,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"함수","src":"stem","quote":"$A$로의 함수 중에서"},{"term":"일대일대응","src":"stem","quote":"함수 $f$는 일대일대응이다"}],
+    "goal":[{"term":"개수","src":"stem","quote":"함수 $f$의 개수는?"}],
+    "method":[{"term":"일대일대응","src":"solution","quote":"한 번씩 나타나고","evidenceType":"NAMED"},{"term":"묶음","src":"solution","quote":"하나의 순서가 고정된 묶음으로","evidenceType":"NAMED"},{"term":"순열","src":"solution","quote":"총 5개 대상을 배열하면 된다","evidenceType":"IMPLIED","justification":"고정된 묶음과 네 값을 배열한다."}],
+    "condition":[{"term":"일대일대응","src":"stem","quote":"함수 $f$는 일대일대응이다"},{"term":"인접","src":"solution","quote":"연속한 두 자리의 함수값이 $6,1$"}]
+   },"reasons":{"method":"일대일대응에서 차가 5인 연속 함수값을 6,1로 고정한 순서 묶음으로 보고 나머지 네 값과 배열한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":16,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"자릿수","src":"stem","quote":"백의 자리의 수, 십의 자리의 수"}],
+    "goal":[{"term":"개수","src":"stem","quote":"모든 자연수의 개수는?"}],
+    "method":[{"term":"경우분류","src":"solution","quote":"백의 자리 $a$를 먼저 정하면","evidenceType":"IMPLIED","justification":"a의 가능한 값별로 나누어 센다."},{"term":"조합","src":"solution","quote":"가능한 $(b,c)$의 수는","evidenceType":"IMPLIED","justification":"고정 a에서 비감소 두 값을 조합 수로 나타낸다."},{"term":"합의법칙","src":"solution","quote":"6+10+15+21+28=80$","evidenceType":"IMPLIED","justification":"백의 자리별 경우를 합한다."}],
+    "condition":[{"term":"자연수","src":"stem","quote":"자연수 $a,b,c$에 대하여"},{"term":"순서","src":"stem","quote":"$c\\le b\\lt a\\lt10$"},{"term":"범위","src":"stem","quote":"$400$보다 크고 $900$보다 작은"}]
+   },"reasons":{"method":"백의 자리 4~8을 정하고 각 값마다 가능한 비감소 두 자리의 수를 세어 합한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":17,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"자릿수","src":"stem","quote":"세 자리 자연수를 만들 때"}],
+    "goal":[{"term":"개수","src":"stem","quote":"경우의 수는?"}],
+    "method":[{"term":"홀짝","src":"solution","quote":"홀수 개수가 0개 또는 2개인 경우","evidenceType":"NAMED"},{"term":"경우분류","src":"solution","quote":"홀수의 위치에 따라 나눈다","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$4\\cdot4\\cdot3=48$","evidenceType":"IMPLIED","justification":"각 자리의 선택 수를 곱한다."},{"term":"합의법칙","src":"solution","quote":"$48+80+100+100=328$","evidenceType":"IMPLIED","justification":"서로 다른 홀짝 자리 유형의 수를 합한다."}],
+    "condition":[{"term":"짝수","src":"stem","quote":"모든 자리수의 합이 짝수"},{"term":"중복불허","src":"solution","quote":"카드는 중복 사용하지 않는다"},{"term":"자리제한","src":"solution","quote":"백의 자리에는 0이 올 수 없다는"}]
+   },"reasons":{"method":"짝수 합이 되는 홀수 개수 0 또는 2로 나누고 백의 자리 0 제외를 반영해 각 자리의 선택을 곱해 합한다."},"steps":[],"scenarioNote":"숫자 카드"
+  },
+  {
+   "sourceOrdinal":18,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"원","src":"stem","quote":"원 $x^2+y^2=5$"},{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac{k}{x}$"},{"term":"비","src":"stem","quote":"$x$좌표의 비가 $1:3$"}],
+    "goal":[{"term":"매개변수","src":"stem","quote":"$k$의 값은?"},{"term":"결정","src":"stem","quote":"$k$의 값은?"}],
+    "method":[{"term":"대입법","src":"solution","quote":"교점에서 $y=\\dfrac{k}{x}$이므로","evidenceType":"IMPLIED","justification":"원의 방정식에 유리함수의 y값을 대입한다."},{"term":"치환","src":"solution","quote":"$t=x^2$로 두고","evidenceType":"NAMED"},{"term":"근과계수의관계","src":"solution","quote":"두 근의 비와 근의 합·곱","evidenceType":"NAMED"}],
+    "condition":[{"term":"양수","src":"stem","quote":"($k\\gt0$)"},{"term":"사분면","src":"stem","quote":"제$1$사분면의 두 점"}]
+   },"reasons":{"method":"원을 유리함수와 연립해 x제곱으로 치환하고 두 근의 비와 근의 합·곱으로 양수 k를 정한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":19,"format":"단일 정답",
+   "slots":{
+    "given":[{"term":"부분집합","src":"stem","quote":"원소가 $5$개이고"},{"term":"배수","src":"stem","quote":"곱은 $16$의 배수인 집합"}],
+    "goal":[{"term":"개수","src":"stem","quote":"집합의 개수는?"}],
+    "method":[{"term":"홀짝","src":"solution","quote":"홀수 원소의 개수를 나누고","evidenceType":"IMPLIED","justification":"합의 홀짝으로 홀수 원소의 수를 제한한다."},{"term":"소인수","src":"solution","quote":"짝수들의 2의 인수 개수","evidenceType":"IMPLIED","justification":"곱의 2의 지수 합으로 16의 배수 여부를 판정한다."},{"term":"경우분류","src":"solution","quote":"1개, 3개, 5개가 가능하다","evidenceType":"IMPLIED","justification":"홀수 원소 개수별로 나눈다."},{"term":"조합","src":"solution","quote":"짝수 두 개를 고르는 전체","evidenceType":"IMPLIED","justification":"각 집단의 원소를 조합으로 고른다."},{"term":"제외","src":"solution","quote":"지수 합이 4 미만인 것은","evidenceType":"IMPLIED","justification":"짝수쌍 전체에서 지수 합이 부족한 경우를 뺀다."}],
+    "condition":[{"term":"자연수","src":"stem","quote":"$20$ 이하의 자연수"},{"term":"원소의개수","src":"stem","quote":"원소가 $5$개이고"},{"term":"홀수","src":"stem","quote":"원소의 합은 홀수"},{"term":"배수","src":"stem","quote":"곱은 $16$의 배수"}]
+   },"reasons":{"method":"홀수 원소 수를 분류하고 짝수에 포함된 2의 지수 합으로 16의 배수 조건을 판정해 부족한 짝수쌍을 제외한다."},"steps":[],"scenarioNote":""
+  },
+  {
+   "sourceOrdinal":20,"format":"서술",
+   "slots":{
+    "given":[{"term":"분할","src":"solution","quote":"남은 4팀을 두 경기로 나눈다"},{"term":"배정","src":"stem","quote":"대진표를 작성하는 경우의 수"}],
+    "goal":[{"term":"개수","src":"stem","quote":"대진표를 작성하는 경우의 수"}],
+    "method":[{"term":"조합","src":"solution","quote":"부전승 팀을 고르는 방법","evidenceType":"IMPLIED","justification":"부전승 팀과 같은 쪽 경기의 두 팀을 선택한다."},{"term":"구별불가","src":"solution","quote":"남은 4팀을 두 쌍으로 나누는 방법","evidenceType":"IMPLIED","justification":"남은 두 경기쌍의 교환 중복을 나눈다."},{"term":"곱의법칙","src":"solution","quote":"$7\\cdot15\\cdot3=315$","evidenceType":"IMPLIED","justification":"각 단계의 선택 수를 곱한다."}],
+    "condition":[{"term":"구별불가","src":"solution","quote":"남은 4팀을 두 쌍으로 나누는 방법"}]
+   },"reasons":{"method":"부전승 팀과 같은 구역의 경기쌍을 정하고 나머지 네 팀을 이름 없는 두 쌍으로 분할하여 곱한다."},"steps":[],"scenarioNote":"토너먼트 대진"
+  },
+  {
+   "sourceOrdinal":21,"format":"서술",
+   "slots":{
+    "given":[{"term":"경로","src":"stem","quote":"가능한 경로의 수"}],
+    "goal":[{"term":"경로","src":"stem","quote":"가능한 경로의 수"},{"term":"개수","src":"stem","quote":"가능한 경로의 수"}],
+    "method":[{"term":"경우분류","src":"solution","quote":"가는 길을 두 경우로 나눈 뒤","evidenceType":"NAMED"},{"term":"제외","src":"solution","quote":"이미 사용한 길을 제외한다","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$3\\cdot14=42$가지","evidenceType":"IMPLIED","justification":"가는 경로와 돌아오는 경로의 선택 수를 곱한다."},{"term":"합의법칙","src":"solution","quote":"$42+108=150$","evidenceType":"IMPLIED","justification":"가는 길이 다른 경우를 더한다."}],
+    "condition":[{"term":"재방문금지","src":"stem","quote":"한 번 간 길은 다시 지날 수 없다"}]
+   },"reasons":{"method":"가는 경로를 직행과 경유로 나누고 돌아갈 때 쓴 도로를 제외해 왕복 선택 수를 곱하고 합한다."},"steps":[],"scenarioNote":"A·B·C 도로망 왕복"
+  },
+  {
+   "sourceOrdinal":22,"format":"서술",
+   "slots":{
+    "given":[{"term":"유리함수","src":"stem","quote":"함수 $f(x)=\\dfrac{x-3}{x+1}$"},{"term":"반복합성","src":"stem","quote":"$f^{n+1}=f\\circ f^n$"}],
+    "goal":[{"term":"함숫값","src":"stem","quote":"의 값을 구하는 풀이 과정과 답을"}],
+    "method":[{"term":"반복합성","src":"solution","quote":"합성함수의 반복 주기를 먼저 찾으면","evidenceType":"NAMED"},{"term":"항등함수","src":"solution","quote":"3번마다 항등함수가 된다","evidenceType":"NAMED"},{"term":"주기","src":"solution","quote":"$f^2$, $f^3$을 계산하여 주기를 확인","evidenceType":"NAMED"},{"term":"대입","src":"solution","quote":"$f^{600}$은 항등함수이다","evidenceType":"IMPLIED","justification":"600번 합성이 항등함수이므로 입력 2를 그대로 얻는다."}],
+    "condition":[{"term":"자연수","src":"stem","quote":"($n$은 자연수)으로"}]
+   },"reasons":{"method":"자기 합성 세 번이 항등함수임을 계산하여 주기 3을 찾고 합성 지수를 600으로 합쳐 입력값을 얻는다."},"steps":[],"scenarioNote":""
+  }
+ ],
+ "candidates":[],
+ "selfCheck":{"items":22,"quotesChecked":156,"quotesNotFound":0,"warningsRechecked":[4,6,7,13,14],"notes":"4번은 순열과 조합의 정의로 각각 값을 구한 뒤 차를 계산한다. 6번은 9명 중 구별 없는 두 대표를 고르는 조합 한 단계다. 7번은 3명 조와 한 쌍을 고르고 이름 없는 두 쌍의 교환 중복을 나눈다. 13번은 A의 자리 두 곳과 나머지 8명 중 4명의 순열을 곱한다. 14번은 1~9 중 네 숫자를 고르면 증가 순서가 정해져 조합 한 단계다. 수정 후 검사기는 실행하지 않았다."}
+}
