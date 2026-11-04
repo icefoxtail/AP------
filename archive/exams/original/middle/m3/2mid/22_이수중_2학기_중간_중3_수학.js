@@ -135,7 +135,7 @@ window.questionBank = [
       "$\\frac{5\\sqrt{3}}{8}$"
     ],
     "answer": "①",
-    "solution": "[풀이] 특수각의 삼각비를 대입한다.\n$\\sin30^\\circ=\\dfrac12$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$,\n$\\tan60^\\circ=\\sqrt3$, $\\cos60^\\circ=\\dfrac12$이므로\n$\\sin30^\\circ\\cdot\\cos30^\\circ+\\tan60^\\circ\\cdot\\cos60^\\circ$\n$=\\dfrac12\\cdot\\dfrac{\\sqrt3}{2}+\\sqrt3\\cdot\\dfrac12$\n$=\\dfrac{\\sqrt3}{4}+\\dfrac{2\\sqrt3}{4}=\\dfrac{3\\sqrt3}{4}$이다.\n따라서 정답은 ①이다."
+    "solution": "특수각의 삼각비를 대입한다.\n$\\sin30^\\circ=\\dfrac12$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$,\n$\\tan60^\\circ=\\sqrt3$, $\\cos60^\\circ=\\dfrac12$이므로\n$\\sin30^\\circ\\cdot\\cos30^\\circ+\\tan60^\\circ\\cdot\\cos60^\\circ$\n$=\\dfrac12\\cdot\\dfrac{\\sqrt3}{2}+\\sqrt3\\cdot\\dfrac12$\n$=\\dfrac{\\sqrt3}{4}+\\dfrac{2\\sqrt3}{4}=\\dfrac{3\\sqrt3}{4}$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 4,
