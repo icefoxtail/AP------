@@ -485,7 +485,7 @@ function clipHalfPlane(poly,val){ // Sutherland-Hodgman against the closed half 
   return out.filter((p,i)=>!out.slice(0,i).some(o=>qcmp(o[0],p[0])===0&&qcmp(o[1],p[1])===0));
 }
 function solveScatter(c,opts={}){
-  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions','pointGroups','trendArrow'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','equalUnits','refLines','regions','pointGroups','trendArrow'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
   const xr=range(c.xRange,'STAT_RANGE_INVALID'),yr=range(c.yRange,'STAT_RANGE_INVALID');
@@ -506,9 +506,9 @@ function solveScatter(c,opts={}){
     return {x,y,name:p.name??null};
   });
   const every=c.labelEvery===undefined?1:intIn(c.labelEvery,1,10,'STAT_LABEL_EVERY_INVALID');
-  for(const k of ['grid','diagonal'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
+  for(const k of ['grid','diagonal','equalUnits'])if(c[k]!==undefined&&typeof c[k]!=='boolean')bad('STAT_CHART_PLAN_INVALID');
   // reference lines and highlighted rectangles (E36); a plan without them is exactly the plan it always was
-  const extra={};
+  const extra=c.equalUnits===true?{equalUnits:true}:{};
   if(c.refLines!==undefined){
     if(!Array.isArray(c.refLines)||c.refLines.length<1||c.refLines.length>4)bad('STAT_SCATTER_GUIDE_INVALID');
     const seen=new Set();
@@ -1266,7 +1266,11 @@ function scatterSpec(m,ctx){
   const fontPx=compact?PANEL_FONT_PX:(ctx?.fontPx??DEFAULT_FONT_PX),xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
   const mapl=compact?SC_PANEL.mapl:MAPL,mapr=compact?SC_PANEL.mapr:MAPR,axisTop=compact?SC_PANEL.top:AXIS_TOP,tickRow=compact?Math.ceil(1.5*fontPx):LABEL_BELOW,titleRow=compact&&m.xTitle?Math.ceil(1.45*fontPx)+2:0;
   const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=compact?SC_PANEL.plotH:250,PT=axisTop+18,BASE=PT+PLOT_H,H=BASE+TICK+4+tickRow+titleRow+SAFE;
-  const px=u=>r6(mapl+(u-dxLo)/(dxHi-dxLo)*(mapr-mapl)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
+  // Opt in to physical equality of one data unit, including the existing padded ranges.
+  // Keep the legacy arithmetic path verbatim when absent/false (including SVG rounding).
+  const unit=m.equalUnits===true?Math.min((mapr-mapl)/(dxHi-dxLo),PLOT_H/(dyHi-dyLo)):null;
+  const px=unit===null?u=>r6(mapl+(u-dxLo)/(dxHi-dxLo)*(mapr-mapl)):u=>r6(mapl+(u-dxLo)*unit);
+  const py=unit===null?v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H):v=>r6(BASE-(v-dyLo)*unit),yAxisPx=px(dxLo);
   const prims=[],labels=[];
   const ticks=(lo,hi,s)=>{const t=[];for(let k=Math.round(lo/s);k<=Math.round(hi/s);k++)t.push({v:k*s,k,idx:k-Math.round(lo/s)});return t;};
   const xt=ticks(xlo,xhi,xs),yt=ticks(ylo,yhi,ys);

@@ -1167,6 +1167,15 @@ def scatter_marks(chart, doc, fx, fy, xr, yr):
 def audit_scatter(chart, doc):
     fx, ix, xvals = doc.axis_map('x-tick', 'x')
     fy, iy, yvals = doc.axis_map('y-tick', 'y')
+    if chart.get('equalUnits') is True:
+        xspan, yspan = float(xvals[-1] - xvals[0]), float(yvals[-1] - yvals[0])
+        xunit = abs(fx(xvals[-1]) - fx(xvals[0])) / xspan
+        yunit = abs(fy(yvals[-1]) - fy(yvals[0])) / yspan
+        # Six-decimal SVG coordinates: two endpoint roundings per axis, with a
+        # 2e-6-coordinate allowance divided by each observed data span. This is
+        # independent of producer metadata and much tighter than layout tolerance.
+        unit_tol = 2e-6 * (1 / xspan + 1 / yspan)
+        if abs(xunit - yunit) > unit_tol: doc.err('SC_SCATTER_EQUAL_UNITS')
     xr = [frac(v, 'SC_PLAN_INVALID') for v in chart['xRange']]
     yr = [frac(v, 'SC_PLAN_INVALID') for v in chart['yRange']]
     circles = {int(c.get('data-index')): c for c in doc.circles if c.get('data-index') is not None and c.get('data-role') == 'point'}
