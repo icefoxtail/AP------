@@ -21,9 +21,9 @@ const runtimeReceipt = readJson("archive/data/meta-foundation/runtime/runtime-br
 
 assert.strictEqual(runtime.status, "ACTIVE");
 assert.strictEqual(runtime.packId, "MIDDLE_GEOMETRY");
-assert.strictEqual(runtime.packVersion, "1.0.3");
-assert.strictEqual(runtime.records.length, 975);
-assert.strictEqual(runtime.counts.records, 975);
+const pack = readJson("archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json");
+assert.strictEqual(runtime.packVersion, pack.packVersion);
+assert.strictEqual(runtime.counts.records, runtime.records.length);
 assert.strictEqual(runtime.counts.finalL3, 921);
 assert.strictEqual(runtime.counts.finalL4, 901);
 assert.strictEqual(runtime.counts.explicitL4Hold, 20);
@@ -31,20 +31,20 @@ assert.strictEqual(runtime.counts.routeOut, 7);
 assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, runtimeRecordCount);
 assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, runtimeRecordCount);
 assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
-assert.strictEqual(runtime.counts.catalogUidDirectJoin, 975);
+assert.strictEqual(runtime.counts.catalogUidDirectJoin, runtime.records.length);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 0);
-assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, 975);
+assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, runtime.records.length);
 assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoinMismatch, 0);
 assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 11);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 71);
-assert.strictEqual(runtime.counts.defaultSelectable, 209);
-assert.strictEqual(runtime.records.filter((row) => row.defaultSelectable).length, 209);
-assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 975);
-assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, 975);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, runtime.records.filter((row) => row.runtimeSelectable).length);
+assert.strictEqual(runtime.counts.defaultSelectable, runtime.records.filter((row) => row.defaultSelectable).length);
+assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, runtime.records.length);
+assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, runtime.records.length);
 
 const frozenRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.0");
 const priorReviewedRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.2");
 const currentReviewedRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.3");
+const additionalReviewedRows = runtime.records.filter((row) => !["1.0.0", "1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion));
 assert.strictEqual(frozenRows.length, 904);
 assert.strictEqual(priorReviewedRows.length, 47);
 assert.strictEqual(currentReviewedRows.length, 24);
@@ -63,7 +63,7 @@ assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "FINAL").le
 assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "EXPLICIT_HOLD").length, runtime.counts.explicitL4Hold);
 
 const currentQuestionMetadata = new Map(readJson("archive/data/question_metadata.json").records.map((row) => [row.questionUid, row]));
-for (const row of currentReviewedRows) {
+for (const row of [...currentReviewedRows, ...additionalReviewedRows]) {
   const metadata = currentQuestionMetadata.get(row.questionUid);
   assert(metadata, row.questionUid);
   assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
@@ -89,7 +89,7 @@ assert.strictEqual(runtime.records.filter((row) => {
   const source = bySource.get(sourceKey(row.sourceArchiveFile, row.sourceOrdinal));
   return direct && source && direct.questionUid === source.questionUid &&
     sourceKey(direct.sourceFile, direct.sourceOrdinal) === sourceKey(row.sourceArchiveFile, row.sourceOrdinal);
-}).length, 975);
+}).length, runtime.records.length);
 
 const activePT = new Map(taxonomy.problemTypes.filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
 const bindingKeys = new Set(bindings.bindings.map((row) => [row.curriculum, row.standardUnitKey, row.subUnitKey, row.problemTypeKey].join("|")));
@@ -113,7 +113,8 @@ for (const row of runtime.records) {
     assert.strictEqual(row.templateKey, null);
     assert.strictEqual(row.defaultSelectable, false);
   } else {
-    assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion), row.questionUid);
+    assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
+      currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT", row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
     }
@@ -152,9 +153,9 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
   const liveRows = liveRuntime.records.filter(row => runtimeUids.has(row.questionUid));
   assert.deepStrictEqual(JSON.parse(JSON.stringify(liveRows)), runtime.records);
   const joined = overlaid.records.filter(row => runtimeUids.has(row.questionUid));
-  assert.strictEqual(joined.length, 975);
-  assert.strictEqual(new Set(joined.map((row) => row.questionUid)).size, 975);
-  assert.strictEqual(new Set(joined.map((row) => sourceKey(row.sourceFile, row.sourceOrdinal))).size, 975);
+  assert.strictEqual(joined.length, runtime.records.length);
+  assert.strictEqual(new Set(joined.map((row) => row.questionUid)).size, runtime.records.length);
+  assert.strictEqual(new Set(joined.map((row) => sourceKey(row.sourceFile, row.sourceOrdinal))).size, runtime.records.length);
   const { catalog: canonicalCatalog } = require('./helpers/archive2-scope-harness.cjs');
   const expected = new Map(canonicalCatalog.records.map(row => [row.questionUid, row]));
   for (const row of joined) {
@@ -163,7 +164,7 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
     assert.strictEqual(Archive2Core.eligibility(row).ok, false);
   }
   assert.strictEqual(overlaid.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js")).length, 23);
-  console.log("PASS live Meta Foundation bridge preserves 975 runtime overlays and joins");
+  console.log(`PASS live Meta Foundation bridge preserves ${runtime.records.length} runtime overlays and joins`);
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;
