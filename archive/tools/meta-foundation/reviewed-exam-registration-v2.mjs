@@ -555,9 +555,14 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     // states so legacy key-only audits can use an unchanged active definition
     // or an exact add-only definition carried by this request.
     const v2BeforeTables = lookup(registryPlan(root, [], () => {}));
-    const v2Tables = (registryChanges || []).length
-      ? lookup(registryPlan(root, registryChanges, () => {}))
-      : v2BeforeTables;
+    // On replay the additive changes are already present; applying their
+    // before:null plan again would reject an otherwise valid registration.
+    // The plan is still checked below for a new registration.
+    const v2Tables = conceptKeys.every(key => v2BeforeTables.cc.get(key)?.status === "ACTIVE")
+      ? v2BeforeTables
+      : (registryChanges || []).length
+        ? lookup(registryPlan(root, registryChanges, () => {}))
+        : v2BeforeTables;
     const boundAtomicCrossConcepts = conceptKeys.map(key => {
       const existed = v2BeforeTables.cc.has(key);
       const definition = (existed ? v2BeforeTables : v2Tables).cc.get(key);
