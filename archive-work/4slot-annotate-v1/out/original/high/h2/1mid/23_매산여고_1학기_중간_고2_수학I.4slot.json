@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_수학I.js",
+  "sourceGitBlobSha": "c6d691872f370d518f64d309b7bf27707cbffbc0",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-211-220",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "세제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt[3]{16} \\times 2^{-\\frac{1}{3}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "세제곱근을 거듭제곱으로 나타내면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "세제곱근을 유리지수로 바꾸고 같은 밑의 지수를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$\\log_2 28 - \\log_2 7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그의 뺄셈을 진수의 몫으로 바꾼다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 밑 로그의 차를 진수의 몫으로 합친다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수부등식",
+            "src": "stem",
+            "quote": "$5^{2x-3} < 5^{15}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $x$의 최댓값"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "밑 $5$가 $1$보다 크므로",
+            "evidenceType": "IMPLIED",
+            "justification": "밑이 1보다 큰 지수함수는 증가하므로 지수의 대소가 유지된다."
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "가능한 가장 큰 값은 $8$",
+            "evidenceType": "IMPLIED",
+            "justification": "일차부등식의 해 중 가장 큰 정수를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 최댓값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑 5의 단조성으로 지수의 일차부등식을 풀고 가장 큰 정수를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호도법",
+            "src": "stem",
+            "quote": "호도법으로 나타낸 각 $\\frac{\\pi}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "육십분법",
+            "src": "stem",
+            "quote": "육십분법으로 바르게 나타낸"
+          }
+        ],
+        "method": [
+          {
+            "term": "호도법",
+            "src": "solution",
+            "quote": "$2\\pi$는 $360^\\circ$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 바퀴에 해당하는 라디안과 각도의 비로 변환한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "예각삼각형 $\\mathrm{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$\\tan(B+C)=\\tan(\\pi-A)",
+            "evidenceType": "IMPLIED",
+            "justification": "보각과 여각의 사인·탄젠트 성질을 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "삼각형 내각합과 보각·여각의 삼각함수 관계로 세 보기를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$2x^2 - x\\log_3 16 + 6 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$3^{\\alpha^2\\beta + \\alpha\\beta^2}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "\\alpha\\beta(\\alpha+\\beta)",
+            "evidenceType": "IMPLIED",
+            "justification": "지수를 두 근의 곱과 합으로 인수분해한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "3^{3\\log_3 4}=4^3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 근의 합과 곱으로 지수를 바꾸고 지수·로그 관계로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=2^{x+1}$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+n$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 $m$, 위로 $n$만큼",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$y$축 대칭이동하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평행이동 뒤 y축 대칭 식을 만든 후 주어진 함수와 계수와 상수항을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "상용로그",
+            "src": "stem",
+            "quote": "$\\log\\sqrt[3]{x}$와 $\\log x^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "\\frac53\\log x$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 거듭제곱 법칙으로 두 값의 차를 한 로그량으로 나타낸다."
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "가능한 정수는 $2,3,4$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그 x의 범위에 들어가는 정수 차를 열거한다."
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "모든 $x$의 곱은",
+            "evidenceType": "IMPLIED",
+            "justification": "각 x를 10의 거듭제곱으로 표현해 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$10 < x < 1000$"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "차가 정수일 때"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$p$와 $q$는 서로소인 자연수"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$p$와 $q$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x의 로그 범위에서 로그 차가 될 정수를 세어 x들의 곱을 지수 합으로 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=2^{|x-1|}+4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값은 $|x-1|=0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$k<5$이면 교점이 없고",
+            "evidenceType": "IMPLIED",
+            "justification": "수평선의 높이를 최솟값 기준으로 세 경우로 나누어 교점 수를 센다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|x-1|=\\log_2(k-4)>0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 실근"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 지수함수의 최솟값을 기준으로 수평선의 교점 수를 분류한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "x^2 - 2x\\cos\\left"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\alpha+\\beta$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "삼각함수의 여각 관계를 쓰면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 음수여야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각부등식",
+            "src": "solution",
+            "quote": "$\\sin\\theta<\\frac12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$\\frac{1}{2}\\pi < \\theta < \\pi$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "여각을 변환하고 x에 대한 이차식의 항상 양수 판별식 조건을 각 범위에서 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일반각",
+            "src": "stem",
+            "quote": "각 $3\\theta$를 나타내는 동경"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "\\tan\\left(\\theta - \\frac{1}{2}\\pi"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반각",
+            "src": "solution",
+            "quote": "두 각의 차는 홀수배의 $\\pi$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "$\\tan\\left(\\theta-\\frac\\pi2\\right)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$\\frac{\\pi}{2} < \\theta < \\pi$"
+          },
+          {
+            "term": "일직선",
+            "src": "stem",
+            "quote": "일직선 위에 있고 방향이 반대"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반대 동경의 차를 π의 홀수배로 두고 주어진 θ구간에서 탄젠트 값을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그방정식",
+            "src": "stem",
+            "quote": "\\frac{1}{\\log_x 3} + \\frac{1}{\\log_{y^2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$xy$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "로그의 역수 관계로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$\\log_3\\frac{xy}{4}=\\log_3 8$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 밑의 로그 합차를 곱과 몫의 로그로 합친다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$1$이 아닌 양수 $x, y$"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "$1$이 아닌 양수 $x, y$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그의 역수와 밑변환으로 밑 3에 통일해 진수의 곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합집합",
+            "src": "stem",
+            "quote": "집합 $A \\cup B ="
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|\\sin\\theta| - |\\cos\\theta|"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\alpha + \\beta + \\gamma$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "제1사분면에서는 양쪽이 모두",
+            "evidenceType": "IMPLIED",
+            "justification": "사인과 코사인의 부호에 따라 절댓값 등식을 사분면별로 푼다."
+          },
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$\\cos(\\dfrac{\\pi}{2}-\\theta)=\\sin\\theta$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "$A\\cup B=[0,\\dfrac{5\\pi}{6}]",
+            "evidenceType": "IMPLIED",
+            "justification": "두 해집합을 합쳐 구간과 고립점을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "0 \\le \\theta < 2\\pi"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사분면별 부호로 절댓값 등식을 풀고 여각 변환한 부등식의 해집합과 합친다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2 + y^2 = 8$"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "\\frac{y}{x} + \\frac{x}{y}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\sin\\theta - \\cos\\theta$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$\\frac yx+\\frac xy=\\frac{x^2+y^2}{xy}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "\\frac{(y-x)^2}{8}$",
+            "evidenceType": "IMPLIED",
+            "justification": "원 위 점의 좌표를 반지름으로 나누어 사인과 코사인을 표현한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$y-x<0$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제 $4$사분면 위의 점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "좌표 비의 합에서 xy를 구하고 사인·코사인 차의 제곱과 사분면 부호를 사용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수부등식",
+            "src": "stem",
+            "quote": "$4^x + 3 \\times 2^x - 3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "상수 $k$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=2^x$라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$t>1$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "t=1을 경계로 매개변수 k의 부등식 방향과 필요성을 나눈다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$D=(u-1)^2+(7-k)u$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양수 지수를 치환해 1을 기준으로 나눈 뒤 제곱식과 경계 극한으로 k의 범위를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "g(f(x)) < 0"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$f(x) = \\log_{\\sqrt{3}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $c$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$g(t)=t^2-2t=t(t-2)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "로그함수는 증가한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "정수 $x$는 $4,5,6,7,8$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$c=4$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수 c에 따른 임계값과 정수 후보의 부등식을 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $c$의 값을"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수인 해의 개수가 $4$개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 합성부등식으로 정수 후보를 좁힌 뒤 둘째 로그의 단조성으로 임계값을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=\\left(\\frac{1}{9}\\right)^x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "$B=(t,3^{-t})$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내분",
+            "src": "solution",
+            "quote": "$AB:BC=2:1$",
+            "evidenceType": "IMPLIED",
+            "justification": "공선인 세 점의 길이비에서 y좌표비를 구한다."
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$AB=AD$이므로 $(t+1)^2=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 거리 제곱을 같게 두어 매개변수를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$BD=1$이고 A와 BD의 높이 차는 18",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변과 높이로 삼각형 넓이를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\overline{AB} : \\overline{BC} = 2 : 1$"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{AB} = \\overline{AD}$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$y$좌표는 $1$보다 크다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지수함수 위 점을 매개화하고 공선 길이비와 두 거리의 상등으로 좌표를 구해 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_2 x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+c$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "$c-a=2$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기 -1과 두 점 거리에서 좌표차의 절댓값을 구한다."
+          },
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "\\log_4(c+10)=\\frac12\\log_2(c+10)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$a^2-16a-192=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$1 < a < c$"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$\\overline{AB} = 2\\sqrt{2}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기울기와 거리로 두 교점 좌표차를 정하고 밑변환한 로그식을 연립해 이차방정식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "로그방정식",
+            "src": "stem",
+            "quote": "$(\\log_3 3x)(\\log_9 27x) = 4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "모든 실수 $x$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\log_3x$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "\\log_9(27x)=\\frac{\\log_3(27x)}2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(u-1)(u+5)=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$의 값을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그를 같은 밑의 변수로 치환하고 이차방정식을 인수분해해 x로 되돌린다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "$f(x) = \\cos^2\\left"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$m$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\cos t$라 두어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$\\cos^2(x-\\frac{3\\pi}4)=\\sin^2t$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "k+\\frac54-(u+\\frac12)^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$k+\\frac54=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "치환변수의 범위에서 최댓값 조건으로 상수 k를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 이동과 코사인을 치환해 제한된 이차식을 완전제곱하고 최대 조건에서 k를 정해 최소를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$y=a^x, y=\\log_a x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}$ 사이의 거리"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $A$의 좌표"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$y=x$ 대칭이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "$A=(p,5-p)$일 때",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "신발끈공식",
+            "src": "solution",
+            "quote": "신발끈 공식에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "$AB=\\sqrt{(4-1)^2+(1-4)^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 교점의 좌표차로 선분 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$1$보다 큰 상수 $a$"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제 $1$사분면에서 만나는 점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수 대칭과 직선의 불변성을 이용해 교점을 매개화하고 사각형 넓이로 좌표와 밑을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$y=a\\cos bx$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f\\left(\\frac{3}{2}\\pi\\right)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "그래프를 오른쪽으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "$\\frac{2\\pi}{b}=8\\pi$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$a+2=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "a가 양수이므로 이동된 코사인의 최댓값으로 진폭을 정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(\\frac32\\pi)=\\cos",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a, b$는 양의 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행이동한 식에 주기와 최대 조건을 적용해 상수를 구하고 주어진 점에 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "\\left\\{\\log_a b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$a$의 개수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$a=\\prod p_i^{e_i}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "$g=\\gcd(e_1,e_2,\\ldots)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "기약분수 r의 분모는",
+            "evidenceType": "IMPLIED",
+            "justification": "유리 지수에서 a의 소인수 지수가 모두 정수여야 b가 유리수가 된다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "제곱수는 아닌 완전거듭제곱수",
+            "evidenceType": "IMPLIED",
+            "justification": "100 이하 지수들의 공약수가 2 이상인 완전거듭제곱을 중복 없이 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a$와 유리수 $b$"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "자연수 $a$와 유리수 $b$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$2 \\le a \\le 100$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "a의 소인수 지수의 최대공약수로 유리 로그값의 간격을 정하고 100 이하 완전거듭제곱을 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 147,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      18,
+      19,
+      20,
+      22
+    ],
+    "notes": "Q17·21 그림 실제 열람: assets/images/23_매산여고_1학기_중간_고2_수학I/q17.png, q21.png. 재검토: 1번 유리지수 계산, 2번 같은 밑 로그 차, 3번 증가 지수부등식의 정수 최대, 4번 호도법 변환, 5번 내각합과 각 변환, 6번 근과 계수, 7번 함수 이동 순서, 9번 최솟값과 수평선 교점 수, 10번 이차식 항상 양수 조건, 11번 반대 동경의 각차, 12번 밑변환, 14번 좌표의 비와 사분면 부호, 18번 거리와 로그 교점, 19번 로그 치환, 20번 코사인 치환의 이차식 범위, 22번 진폭·주기·이동을 적용했다. ROOT: 기존 근거의 원문 부분 문자열만 5~40자로 단축했으며 용어·칸·format은 변경하지 않음."
+  }
+}
