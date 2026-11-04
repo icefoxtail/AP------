@@ -6,7 +6,29 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isMetaPipelineApprovedTypeRebindAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sourceVisualType, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+
+test("SOP namespace correction requires pending state, exact source and canonical labels", () => {
+  const question = { standardCourse: "중2-1", standardUnitKey: "OLD", standardUnit: "old", subUnitKey: "OLD-SUB", subUnit: "old sub" };
+  const final = { standardCourse: "중2 수학", standardUnitKey: "M2-03", standardUnit: "연립일차방정식", subUnitKey: "M2-03-EQ", subUnit: "연립일차방정식" };
+  const args = { field: "standardUnitKey", current: { ...question, metadataStatus: "registration_pending_semantic_review" }, question,
+    patch: { sourceMetadataBefore: { ...question } }, final,
+    audited: { correctedStandardUnitKey: final.standardUnitKey, correctedSubUnitKey: final.subUnitKey, assignmentCorrectionReason: "canonical namespace correction" },
+    resolved: { pack: { meta: { standardCourses: ["중2-1", "중2 수학"] } }, unit: { labelKo: final.standardUnit }, sub: { labelKo: final.subUnit } } };
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed(args), true);
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed({ ...args, current: { ...args.current, metadataStatus: "approved_semantic_review" } }), false);
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed({ ...args, patch: { sourceMetadataBefore: { ...question, standardUnitKey: "OTHER" } } }), false);
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed({ ...args, audited: { ...args.audited, assignmentCorrectionReason: "" } }), false);
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed({ ...args, final: { ...final, subUnit: "invented" } }), false);
+  assert.equal(isSopPendingSourceNamespaceCorrectionAllowed({ ...args, field: "answer" }), false);
+});
+
+test("source visual detection includes images embedded in question HTML", () => {
+  assert.equal(sourceVisualType({ content: '<p><img src="assets/images/q15.png" /></p>' }), "IMAGE");
+  assert.equal(sourceVisualType({ choices: ['<img src="assets/images/q.svg" />'] }), "SVG");
+  assert.equal(sourceVisualType({ content: '<svg></svg><img src="q.png">' }), "SVG_IMAGE");
+  assert.equal(sourceVisualType({ content: '<p>only text</p>' }), "NONE");
+});
 
 test("template reuse statistics accept exact distinct-key or item-binding counts", () => {
   const audit = {records:[{classification:{templateKey:"TPL_A"}},{classification:{templateKey:"TPL_A"}},{classification:{templateKey:"TPL_B"}}]};
