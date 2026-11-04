@@ -1,35 +1,54 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 직육면체의 한 모퉁이를 잘라내고 남은",
-  "caption": "직육면체의 한 모퉁이를 잘라낸 입체도형의 모서리와 면의 위치 관계를 나타낸 겨냥도이다.",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
-      {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
-  },
-  "assetPath": "assets/images/25_풍덕중_2학기_중간_중1_유사/q09.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사_plans/engine_evidence/q09-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사_plans/engine_evidence/q09-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사_plans/engine_evidence/q09-problem.svg"
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "EFGHARCD",
+      "cuts": [
+        {
+          "through": [
+            [
+              "AR",
+              "1/2",
+              "B"
+            ],
+            [
+              "RF",
+              "1/2",
+              "X"
+            ],
+            [
+              "RC",
+              "1/2",
+              "."
+            ]
+          ],
+          "keep": "F"
+        }
+      ]
+    }
+  ],
+  "caption": "직육면체의 한 모퉁이를 잘라내어 생긴 입체도형의 겨냥도",
+  "assetPath": "assets/images/25_풍덕중_2학기_중간_중1_유사/q09-finalqa-20261104.svg",
+  "sourceQuote": "잘라내고 남은 입체도형에 대한 설명",
+  "sourceConditions": [
+    {
+      "id": "q09-c1",
+      "condition": "a cuboid with one corner cut; the cut point on BF is X",
+      "mappedTo": "solid cut"
+    }
+  ],
+  "newVisualInformation": [
+    "The cuboid after a corner is cut, with X on the new front face boundary"
+  ],
+  "solidCaption": {
+    "text": "잘린 직육면체"
   }
 }
