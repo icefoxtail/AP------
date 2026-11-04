@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h1/2final/21_효천고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "b90c091e04f77c485d5bafcbce10730244e7683c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {"agent":"Codex-gpt-6.1-terra","run":"original-71-80","at":"2026-11-04"},
+  "items": [
+    {
+      "sourceOrdinal":1,"format":"단일 정답",
+      "slots": {
+        "given":[{"term":"직선의방정식","src":"stem","quote":"직선 $x+3y-3=0$을"}],
+        "goal":[{"term":"직선의방정식","src":"stem","quote":"대칭이동한 도형의 방정식은?"}],
+        "method":[{"term":"평행이동","src":"solution","quote":"평행이동된 직선의 방정식을 구하고","evidenceType":"NAMED"},{"term":"대칭이동","src":"solution","quote":"원점에 대하여 대칭이동하면","evidenceType":"NAMED"}],
+        "condition":[{"term":"평행이동","src":"stem","quote":"$3$만큼 평행이동 후"},{"term":"원점대칭","src":"stem","quote":"원점에 대하여 대칭이동한"}]
+      },
+      "reasons":{"method":"직선을 평행이동한 뒤 원점에 대한 대칭을 적용한다."},"steps":["평행이동","대칭이동"],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":2,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유한집합","src":"stem","quote":"두 집합 $A,B$가"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값은?"}],
+        "method":[{"term":"상등","src":"solution","quote":"두 집합은 서로 같다","evidenceType":"IMPLIED","justification":"서로가 서로의 부분집합이므로 두 집합이 같다."},{"term":"원소","src":"solution","quote":"서로의 집합에 포함되도록 $a,b$를 정한다","evidenceType":"IMPLIED","justification":"각 집합의 원소가 다른 집합에도 속하도록 대응하여 상수를 정한다."}],
+        "condition":[{"term":"포함관계","src":"stem","quote":"$A\\subseteq B$이고 $B\\subseteq A$"}]
+      },
+      "reasons":{"method":"상호 포함을 집합의 상등으로 바꾼 뒤 서로의 원소로 상수를 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":3,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"원소의개수","src":"stem","quote":"회원 $150$명 중에서"}],
+        "goal":[{"term":"원소의개수","src":"stem","quote":"소방안전교육만 받은 회원수를 구하면?"}],
+        "method":[{"term":"여집합","src":"solution","quote":"$150-27=123$명이다","evidenceType":"IMPLIED","justification":"아무 교육도 받지 않은 집합을 전체에서 빼 합집합의 크기를 구한다."},{"term":"포함배제의원리","src":"solution","quote":"포함배제를 적용한다","evidenceType":"NAMED"},{"term":"차집합","src":"solution","quote":"$83-30=53$명이다","evidenceType":"IMPLIED","justification":"첫 교육을 받은 사람에서 두 교육을 모두 받은 사람을 제외한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"여집합으로 적어도 하나를 받은 수를 구하고 포함배제와 차집합을 쓴다."},"steps":[],"scenarioNote":"안전교육 수강 회원"
+    },
+    {
+      "sourceOrdinal":4,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"이차식","src":"stem","quote":"$x^2-5x-24\\ne0$"},{"term":"필요조건","src":"stem","quote":"이기 위한 필요조건일 때"}],
+        "goal":[{"term":"상수","src":"stem","quote":"상수 $a$가 될 수 있는 모든 값의 합"},{"term":"합","src":"stem","quote":"될 수 있는 모든 값의 합은?"}],
+        "method":[{"term":"대우","src":"solution","quote":"이 명제의 대우를 이용하여","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"(x-8)(x+3)=0$","evidenceType":"IMPLIED","justification":"이차식을 두 일차인수의 곱으로 분해한다."},{"term":"해","src":"solution","quote":"$a=8$ 또는 $a=-3$","evidenceType":"IMPLIED","justification":"대우에서 a가 이차방정식의 근이어야 함을 이용한다."}],
+        "condition":[{"term":"필요조건","src":"stem","quote":"이기 위한 필요조건일 때"}]
+      },
+      "reasons":{"method":"필요조건을 명제와 대우로 바꾸어 a를 이차방정식의 근으로 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":5,"format":"옳은 것 고르기",
+      "slots":{
+        "given":[{"term":"절댓값","src":"choices","quote":"$y=|x|$"},{"term":"이차함수","src":"choices","quote":"$y=x^2+2$"},{"term":"조각함수","src":"choices","quote":"$y=\\begin{cases}0&(x\\gt0)"},{"term":"일차함수","src":"choices","quote":"$y=3x$"}],
+        "goal":[{"term":"일대일대응","src":"stem","quote":"일대일대응인 것은?"},{"term":"판정","src":"stem","quote":"다음 중 일대일대응인 것은?"}],
+        "method":[{"term":"일대일함수","src":"solution","quote":"일대일성과 치역이 실수 전체인지","evidenceType":"NAMED"},{"term":"치역","src":"solution","quote":"치역이 실수 전체인지 함께 확인한다","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"각 식의 일대일성과 실수 전체에 대한 치역을 확인한다. 발문에는 정의역과 공역이 명시되지 않아 해설의 실수 전체 가정을 따른다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":6,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"유리함수 $y=\\dfrac{-2x+1}{x-1}$"}],
+        "goal":[{"term":"점근선","src":"stem","quote":"점근선을 구하면?"}],
+        "method":[{"term":"분모","src":"solution","quote":"분모가 $0$이 되는 직선","evidenceType":"IMPLIED","justification":"분모가 0이 되는 x에서 수직점근선을 정한다."},{"term":"계수","src":"solution","quote":"최고차항 계수비를 이용한다","evidenceType":"IMPLIED","justification":"같은 차수인 분자와 분모의 최고차항 계수비로 수평점근선을 구한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"분모의 영점과 최고차항 계수비로 두 점근선을 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":7,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $y=-\\sqrt{-2x+4}+1$"}],
+        "goal":[{"term":"치역","src":"stem","quote":"의 치역은?"}],
+        "method":[{"term":"제곱근","src":"solution","quote":"제곱근은 항상 $0$ 이상이므로","evidenceType":"NAMED"},{"term":"부등식의성질","src":"solution","quote":"$-\\sqrt{-2x+4}\\le0$","evidenceType":"IMPLIED","justification":"제곱근의 비음성에 음수 부호와 상수 이동을 적용해 상한을 구한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"제곱근의 범위를 부호 반전하고 평행이동해 상한과 아래로 무한함을 확인한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":8,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"자연수","src":"stem","quote":"$360$의 양의 약수의 개수"}],
+        "goal":[{"term":"약수","src":"stem","quote":"양의 약수의 개수를 구하면?"},{"term":"개수","src":"stem","quote":"양의 약수의 개수를 구하면?"}],
+        "method":[{"term":"소인수분해","src":"solution","quote":"소인수분해한 뒤 각 소인수의 지수","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$4\\cdot3\\cdot2=24$","evidenceType":"IMPLIED","justification":"각 소인수의 지수를 고르는 수를 서로 곱한다."}],
+        "condition":[{"term":"양수","src":"stem","quote":"$360$의 양의 약수의 개수"}]
+      },
+      "reasons":{"method":"소인수 지수의 선택 수를 각각 구해 곱한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":9,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"$5$장을 일렬로 나열할 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"이웃하는 경우의 수는?"}],
+        "method":[{"term":"묶음","src":"solution","quote":"$A,R$을 한 묶음으로 센다","evidenceType":"NAMED"},{"term":"순열","src":"solution","quote":"양 끝에 $S,M$을 놓는 방법은 $2!$가지","evidenceType":"IMPLIED","justification":"끝자리와 가운데의 대상 및 묶음 내부를 각각 배열한다."},{"term":"곱의법칙","src":"solution","quote":"$2!\\cdot2!\\cdot2!=8$","evidenceType":"IMPLIED","justification":"끝자리, 가운데 묶음, 묶음 내부의 배열 수를 곱한다."}],
+        "condition":[{"term":"끝점","src":"stem","quote":"$S,M$이 양 끝에 오고"},{"term":"이웃","src":"stem","quote":"$A,R$이 이웃하는 경우"}]
+      },
+      "reasons":{"method":"양 끝을 배열하고 가운데 이웃한 두 문자를 묶어 배열한다."},"steps":[],"scenarioNote":"문자 카드"
+    },
+    {
+      "sourceOrdinal":10,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조합","src":"stem","quote":"케이크 $3$개와 음료 $2$잔을 선택"}],
+        "goal":[{"term":"개수","src":"stem","quote":"선택하는 모든 경우의 수는?"}],
+        "method":[{"term":"조합","src":"solution","quote":"각각 조합으로 센 뒤","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"곱의 법칙을 적용한다","evidenceType":"NAMED"}],
+        "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 케이크 $8$개와 서로 다른 음료"}]
+      },
+      "reasons":{"method":"두 종류에서 각각 조합으로 선택하고 독립된 선택 수를 곱한다."},"steps":[],"scenarioNote":"케이크와 음료 선택"
+    },
+    {
+      "sourceOrdinal":11,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac3{x-a}+2$"},{"term":"사분면","src":"stem","quote":"그래프가 지나는 사분면의 개수를"}],
+        "goal":[{"term":"합","src":"stem","quote":"f(5)$의 값은?"}],
+        "method":[{"term":"점근선","src":"solution","quote":"점근선 $x=a$, $y=2$","evidenceType":"NAMED"},{"term":"x절편","src":"solution","quote":"$x$절편 $a-\\dfrac32$의 위치","evidenceType":"NAMED"},{"term":"경우분류","src":"solution","quote":"$a\\le0$, $a=1$, $a\\ge2$로 나누어","evidenceType":"NAMED"},{"term":"사분면","src":"solution","quote":"네 사분면을 모두 지나므로","evidenceType":"IMPLIED","justification":"점근선과 절편 위치에 따라 지나는 사분면 수를 판정한다."}],
+        "condition":[{"term":"정수","src":"stem","quote":"$f(-5)+f(-4)+f(-3)"}]
+      },
+      "reasons":{"method":"정수 매개변수에 따라 점근선과 x절편의 위치를 나누어 지나는 사분면의 수를 합한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":12,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조각함수","src":"stem","quote":"함수 $f(x)$를 $f(x)=\\begin{cases}"},{"term":"무리함수","src":"stem","quote":"\\sqrt{x+4}-4&(x\\ge0)"},{"term":"절댓값","src":"stem","quote":"$y=|f(x)|$가 만나는 점"}],
+        "goal":[{"term":"자연수","src":"stem","quote":"$n$의 값의 합은?"},{"term":"합","src":"stem","quote":"$n$의 값의 합은?"}],
+        "method":[{"term":"축대칭","src":"solution","quote":"$|x|$에 대하여 대칭임을 이용해","evidenceType":"IMPLIED","justification":"f가 x의 절댓값에 의존하여 양과 음의 x가 대칭으로 해가 된다."},{"term":"경우분류","src":"solution","quote":"에서 두 경우를 나누고 각 경우의","evidenceType":"NAMED"},{"term":"무리방정식","src":"solution","quote":"$\\sqrt{|x|+4}=4-n$인 경우","evidenceType":"IMPLIED","justification":"제곱근의 가능한 값에 따라 해의 수를 구한다."},{"term":"절댓값","src":"solution","quote":"$|x|=0$이므로 해가 $1$개","evidenceType":"IMPLIED","justification":"절댓값이 양수인지 0인지에 따라 해의 개수를 구분한다."}],
+        "condition":[{"term":"자연수","src":"stem","quote":"자연수 $n$에 대하여"},{"term":"교점","src":"stem","quote":"만나는 점의 개수를 $g(n)$"}]
+      },
+      "reasons":{"method":"절댓값 방정식을 두 근호값으로 분류하고 x의 축대칭과 영점 여부로 교점 수를 센다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":13,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조각함수","src":"stem","quote":"함수 $f(x)=\\begin{cases}"},{"term":"무리함수","src":"stem","quote":"-\\sqrt{2x}&(x\\ge0)"},{"term":"이차함수","src":"stem","quote":"-\\dfrac12x^2&(x\\lt0)"},{"term":"직선의방정식","src":"stem","quote":"직선 $x-3y-20=0$"}],
+        "goal":[{"term":"넓이","src":"stem","quote":"둘러싸인 도형의 넓이는?"}],
+        "method":[{"term":"교점","src":"solution","quote":"두 가지는 원점 $O$에서 만난다","evidenceType":"NAMED"},{"term":"회전이동","src":"solution","quote":"반시계방향 $90^\\circ$ 회전하면","evidenceType":"NAMED"},{"term":"등적변형","src":"solution","quote":"두 곡선과 각각의 현 사이의 넓이는 같아","evidenceType":"IMPLIED","justification":"회전으로 같은 두 곡선 부분의 넓이를 상쇄하여 삼각형으로 바꾼다."},{"term":"직각삼각형","src":"solution","quote":"두 선분은 수직이고","evidenceType":"IMPLIED","justification":"두 변의 기울기로 직각을 확인해 삼각형 넓이를 구한다."}],
+        "condition":[{"term":"정의역제한","src":"stem","quote":"&(x\\ge0)\\\\-\\dfrac12x^2&(x\\lt0)"}]
+      },
+      "reasons":{"method":"두 교점을 구하고 곡선 호의 90도 회전으로 넓이를 상쇄하여 직각삼각형 넓이를 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":14,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순서쌍","src":"stem","quote":"서로 다른 두 개의 주사위를"}],
+        "goal":[{"term":"개수","src":"stem","quote":"경우의 수는?"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"합이 $2$인 경우와 $3$인 경우","evidenceType":"NAMED"},{"term":"열거","src":"solution","quote":"직접 나열한다","evidenceType":"NAMED"}],
+        "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 두 개의 주사위를"},{"term":"범위","src":"stem","quote":"합이 $3$ 이하인 경우"}]
+      },
+      "reasons":{"method":"합이 2 또는 3인 순서쌍을 직접 나열한다."},"steps":[],"scenarioNote":"서로 다른 두 주사위"
+    },
+    {
+      "sourceOrdinal":15,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"$m\\times{}_nP_5=72\\times{}_nP_3$"},{"term":"연립방정식","src":"stem","quote":"과 ${}_nP_6=m\\times{}_nP_4$"}],
+        "goal":[{"term":"차","src":"stem","quote":"$n-m$의 값은?"}],
+        "method":[{"term":"약분","src":"solution","quote":"공통인 ${}_nP_3$, ${}_nP_4$를 약분하여","evidenceType":"NAMED"},{"term":"대입법","src":"solution","quote":"이를 첫째 식에 대입하면","evidenceType":"IMPLIED","justification":"둘째 식에서 구한 m을 첫째 식에 대입해 n만의 방정식을 만든다."},{"term":"자연수","src":"solution","quote":"$n\\ge6$에서 $n=7$이면","evidenceType":"IMPLIED","justification":"정수 범위와 증가를 이용해 가능한 n을 결정한다."}],
+        "condition":[{"term":"자연수","src":"stem","quote":"자연수 $m,n$에 대하여"}]
+      },
+      "reasons":{"method":"순열을 곱으로 풀어 약분하고 한 식을 다른 식에 대입하여 자연수 해를 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":16,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"분할","src":"stem","quote":"토너먼트 방식으로 시합을 할 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"대진표를 작성하는 방법의 수는?"}],
+        "method":[{"term":"조합","src":"solution","quote":"남은 $6$개 학급 중 부전승 팀과","evidenceType":"IMPLIED","justification":"부전승 팀과 같은 쪽 경기의 두 팀을 선택한다."},{"term":"분할","src":"solution","quote":"남은 $4$개 학급을 두 쌍으로 나누는 방법","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"$7\\cdot15\\cdot3=315$","evidenceType":"IMPLIED","justification":"부전승 팀 선택, 상대 경기 선택과 남은 팀 분할 수를 곱한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"그림의 부전승 팀을 고르고 같은 쪽 한 경기와 나머지 두 경기로 나눈다."},"steps":[],"scenarioNote":"7개 학급 토너먼트"
+    },
+    {
+      "sourceOrdinal":17,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"격자점","src":"stem","quote":"$x,y$는 모두 정수이고"}],
+        "goal":[{"term":"삼각형","src":"stem","quote":"삼각형은 모두 몇 개인지 구하면?"},{"term":"개수","src":"stem","quote":"삼각형은 모두 몇 개인지 구하면?"}],
+        "method":[{"term":"조합","src":"solution","quote":"${}_{16}C_3=560$가지이다","evidenceType":"NAMED"},{"term":"일직선","src":"solution","quote":"한 직선 위에 있는 세 점의 경우를 뺀다","evidenceType":"IMPLIED","justification":"삼각형이 되지 않는 공선인 세 점을 전체 선택에서 제외한다."},{"term":"경우분류","src":"solution","quote":"가로·세로·대각선 위의 일직선 세 점","evidenceType":"IMPLIED","justification":"격자에서 직선의 방향과 격자점 수를 나눠 공선 선택을 센다."}],
+        "condition":[{"term":"정수","src":"stem","quote":"$x,y$는 모두 정수이고"},{"term":"닫힌구간","src":"stem","quote":"$-1\\le x\\le2$, $0\\le y\\le3$"}]
+      },
+      "reasons":{"method":"16개 격자점의 세 점 선택에서 방향별 공선 세 점을 제외한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":18,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"총 $6$명을 다음 조건을 만족시키며 일렬로"}],
+        "goal":[{"term":"개수","src":"stem","quote":"일렬로 세우는 경우의 수는?"}],
+        "method":[{"term":"같은것이있는순열","src":"solution","quote":"학년 배열은 $211212$, $122121$","evidenceType":"IMPLIED","justification":"각 학년의 세 명을 같은 기호로 보고 학년 패턴을 정한다."},{"term":"열거","src":"solution","quote":"학년 배열을 모두 나열한 뒤","evidenceType":"NAMED"},{"term":"자리제한","src":"solution","quote":"1학년 여학생의 위치와 2학년 남학생의 위치","evidenceType":"IMPLIED","justification":"각 학년 패턴에서 남학생 인접 조건에 맞는 성별 위치를 고른다."},{"term":"순열","src":"solution","quote":"1학년 남학생 두 명은 $2!$가지","evidenceType":"IMPLIED","justification":"성별 위치가 정해지면 같은 학년과 성별의 서로 다른 사람을 배열한다."}],
+        "condition":[{"term":"이웃","src":"stem","quote":"같은 학년 학생끼리 이웃하는 경우는 단 한번"}]
+      },
+      "reasons":{"method":"학년 패턴을 열거하고 성별 위치를 제한한 뒤 개별 학생을 배열한다."},"steps":[],"scenarioNote":"학년과 성별이 다른 학생 배열"
+    },
+    {
+      "sourceOrdinal":19,"format":"서술",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"$6$개 문자를 일렬로 나열할 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"나열하는 방법의 수를 구하시오"}],
+        "method":[{"term":"순열","src":"solution","quote":"자음 $4$개를 먼저 배열하고","evidenceType":"NAMED"},{"term":"조합","src":"solution","quote":"$5$개의 자리 중 서로 다른 두 자리를 골라","evidenceType":"IMPLIED","justification":"자음 주변 다섯 빈자리에서 두 자리를 선택한다."},{"term":"곱의법칙","src":"solution","quote":"$4!\\cdot{}_5C_2\\cdot2!","evidenceType":"IMPLIED","justification":"자음 배열, 빈자리 선택, 모음 배열 수를 곱한다."}],
+        "condition":[{"term":"이웃하지않음","src":"stem","quote":"모음끼리 이웃하지 않게 나열하는"}]
+      },
+      "reasons":{"method":"자음을 먼저 배열하고 서로 다른 빈자리 두 곳을 선택해 두 모음을 배열한다."},"steps":[],"scenarioNote":"영문 단어의 문자 배열"
+    },
+    {
+      "sourceOrdinal":20,"format":"서술",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"두 곡선 $y=2\\sqrt{x}$, $y=-\\sqrt{x}+6$"},{"term":"직선의방정식","src":"stem","quote":"직선 $x=k$로 둘러싸인 영역"}],
+        "goal":[{"term":"자연수","src":"stem","quote":"자연수 $k$의 값을 구하시오"},{"term":"결정","src":"stem","quote":"$k$의 값을 구하시오"}],
+        "method":[{"term":"교점","src":"solution","quote":"교점의 $x$좌표는 $4$이다","evidenceType":"NAMED"},{"term":"격자점","src":"solution","quote":"정수 $y$의 개수를 세어 누적한다","evidenceType":"IMPLIED","justification":"각 정수 x에 대한 정수 y의 개수를 합하여 영역의 격자점을 센다."},{"term":"가우스기호","src":"solution","quote":"\\lfloor\\sqrt n\\rfloor-5$","evidenceType":"NAMED"},{"term":"경우분류","src":"solution","quote":"이 값이 일정한 구간을 묶으면","evidenceType":"IMPLIED","justification":"제곱근의 정수부분 값이 바뀌는 구간별로 격자점 수를 합한다."}],
+        "condition":[{"term":"정수","src":"stem","quote":"$x$좌표와 $y$좌표가 모두 정수인"},{"term":"자연수","src":"stem","quote":"하는 자연수 $k$의 값을 구하시오"},{"term":"범위","src":"stem","quote":"(단, $k\\gt4$)"}]
+      },
+      "reasons":{"method":"곡선의 교점부터 정수 x별 상하한을 정수부분으로 세고 일정한 구간별로 누적한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":21,"format":"서술",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"$f(x)=\\dfrac{x}{1+x^2}$"},{"term":"무리함수","src":"stem","quote":"$g(x)=\\sqrt{x}$"},{"term":"합성함수","src":"stem","quote":"$f(g^{-1}(a))=\\dfrac12$"}],
+        "goal":[{"term":"함숫값","src":"stem","quote":"$g(f(a))$의 값을 구하시오"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$g^{-1}(a)=a^2$를 먼저 이용하여","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"$a^4-2a^2+1=(a^2-1)^2=0$","evidenceType":"IMPLIED","justification":"사차식을 완전제곱으로 인수분해해 a를 정한다."},{"term":"합성함수","src":"solution","quote":"$g(f(a))=\\sqrt{\\dfrac12}","evidenceType":"IMPLIED","justification":"정해진 a에 f를 적용하고 그 결과에 g를 적용한다."}],
+        "condition":[{"term":"정의역제한","src":"stem","quote":"정의역이 $\\{x\\mid x\\gt0\\}$인"},{"term":"양수","src":"stem","quote":"$\\{x\\mid x\\gt0\\}$인 두 함수"}]
+      },
+      "reasons":{"method":"역함수로 조건을 바꿔 양수 a를 정하고 합성함숫값을 구한다."},"steps":["역함수","합성함수"],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":22,"format":"서술",
+      "slots":{
+        "given":[{"term":"좌표","src":"stem","quote":"좌표평면 위의 점 $P$는"},{"term":"이동","src":"stem","quote":"점 $P$는 $x$축의 방향으로 $1$만큼 움직인다"}],
+        "goal":[{"term":"개수","src":"stem","quote":"경우의 수를 구하시오"}],
+        "method":[{"term":"일차방정식","src":"solution","quote":"$a+d=b+c=4$이다","evidenceType":"IMPLIED","justification":"직선 위 조건 x-y=0과 전체 횟수 8을 연립한다."},{"term":"조합","src":"solution","quote":"$A,D$가 나오는 $4$개의 위치를 고른 뒤","evidenceType":"IMPLIED","justification":"두 유형이 나올 위치를 선택한다."},{"term":"중복순열","src":"solution","quote":"각 위치에서 $A,D$ 중 하나","evidenceType":"IMPLIED","justification":"각 위치에서 두 종류의 결과를 독립적으로 반복 선택한다."},{"term":"경우분류","src":"solution","quote":"$r=0,1,2,3,4$에 대한 경우의 수","evidenceType":"IMPLIED","justification":"원점으로 돌아오는 결과를 횟수 r에 따라 나누어 센다."},{"term":"원점대칭","src":"solution","quote":"원점 대칭에 의해 제1사분면과 제3사분면","evidenceType":"NAMED"}],
+        "condition":[{"term":"원점","src":"stem","quote":"원점에서 출발한 점 $P$가"},{"term":"사분면","src":"stem","quote":"제$1$사분면에 있으며"},{"term":"일직선","src":"stem","quote":"직선 $y=x$위에 위치하는 경우"}]
+      },
+      "reasons":{"method":"직선 조건으로 이동을 두 부류로 나누어 전체를 세고 원점 복귀를 제외해 원점대칭으로 절반을 취한다."},"steps":[],"scenarioNote":"정사면체 주사위에 따른 격자 이동"
+    }
+  ],
+  "candidates":[],
+  "selfCheck":{"items":22,"quotesChecked":157,"quotesNotFound":0,"warningsRechecked":[1,3,6,7,10,16],"notes":"Q1은 직선에 평행이동 후 원점대칭을 순서대로 적용하는 두 단계로 충분하다. Q3은 여집합으로 합집합을 구한 뒤 포함배제와 차집합으로 센다. Q6은 분모 영점과 최고차항 계수비로 두 점근선을 구한다. Q7은 제곱근의 비음성과 부등식 변형으로 치역을 구한다. Q10은 각 종류에서 조합으로 선택하고 두 수를 곱한다. Q16은 부전승 팀과 같은 쪽의 두 팀을 고르고 남은 팀을 두 쌍으로 나눈 뒤 곱한다. Q5의 실수 전체 정의역·공역은 발문에 명시되지 않아 condition에 넣지 않고 해설의 가정으로 판정했다. Q18의 같은 학년과 남학생 각각의 인접 횟수는 이유에 함께 기록했다."}
+}
