@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: () => ({
           steps: `① 미분가능한 함수에서 ${tex('\\lim_{h \\to 0} \\dfrac{f(a + ph) - f(a + qh)}{h}')} 의 값은 <strong class="text-pink-300">【 ${tex('(p - q)\\times f\'(a)')} 】</strong>입니다. (분자에 ${tex('f(a)')}를 더하고 빼면 ${tex("p\\,f'(a) - q\\,f'(a)")}가 되기 때문입니다.)<br/>
 ② 이 문제에서는 ${tex('p = 3, \\; q = -2')} 이므로 ${tex('(3 - (-2))f\'(2) = 5f\'(2)')} 입니다.<br/>
-③ ${tex("f'(2) = 4.5")} 를 대입하면 <strong class="text-amber-300">${tex('5 \\times 4.5 = 22.5 \\; (45/2)')}</strong> 입니다.`,
+③ ${tex("f'(2) = 4.5")} 를 대입하면 <strong class="text-amber-300">${tex('5 \\times 4.5 = 22.5 \\; (\\frac{45}{2})')}</strong> 입니다.`,
           highlight: `💡 ${tex('f')}가 ${tex('x=a')}에서 미분가능하면 ${tex('\\lim_{h \\to 0} \\dfrac{f(a + ph) - f(a + qh)}{h} = (p - q)f\'(a)')} 입니다.`
         })
       },
@@ -679,11 +679,11 @@ window.addEventListener('DOMContentLoaded', function () {
           readouts: [
             { label: '기준점 x = a', value: fmt(a), color: 'amber', ref: 'A' },
             { label: '증분 Δx = b − a', value: fmt(dx), color: 'amber', ref: 'dx', note: `b = ${fmt(b)}` },
-            { label: '할선 기울기 Δy/Δx', value: fmt(sec), color: 'sky', ref: 'secant' },
+            { label: '할선 기울기 $\\frac{\\Delta y}{\\Delta x}$', value: fmt(sec), color: 'sky', ref: 'secant' },
             { label: "접선 기울기 f′(a)", value: fmt(tan), color: 'rose', ref: 'tangent' },
-            { label: "차이 |Δy/Δx − f′(a)|", value: fmt(err, 3), color: 'violet', ref: 'diff', wide: true, note: Math.abs(dx) <= 0.05 ? 'Δx → 0 : 할선이 접선에 포개집니다' : 'Δx를 0에 가깝게 해 보세요' }
+            { label: "차이 |$\\frac{\\Delta y}{\\Delta x}$ − f′(a)|", value: fmt(err, 3), color: 'violet', ref: 'diff', wide: true, note: Math.abs(dx) <= 0.05 ? 'Δx → 0 : 할선이 접선에 포개집니다' : 'Δx를 0에 가깝게 해 보세요' }
           ],
-          tape: s.step >= 3 ? { title: `할선 기울기 Δy/Δx = ${fmt(sec)}  →  접선 기울기 f′(a) = ${fmt(tan)}  (차이: ${fmt(err)})`,
+          tape: s.step >= 3 ? { title: `할선 기울기 $\\frac{\\Delta y}{\\Delta x}$ = ${fmt(sec)}  →  접선 기울기 f′(a) = ${fmt(tan)}  (차이: ${fmt(err)})`,
             segments: [{ text: `할선 ${fmt(sec)}`, weight: Math.max(0.2, Math.abs(sec)), color: 'sky' }, { text: `접선 ${fmt(tan)}`, weight: Math.max(0.2, Math.abs(tan)), color: 'rose' }] } : null
         };
       },
@@ -835,7 +835,7 @@ window.addEventListener('DOMContentLoaded', function () {
           readouts: [
             { label: '접점 T의 x = a', value: fmt(a), color: 'amber', ref: 'A' },
             { label: "접선 기울기 f′(a)", value: fmt(FP[4](a)), color: 'rose', ref: 'tangent', note: '직선 l의 기울기는 1' },
-            { label: '법선 기울기 −1/f′(a)', value: nm, color: 'violet', ref: 'normal', note: '접선에 수직인 직선의 기울기' },
+            { label: '법선 기울기 $-\\frac{1}{f\u2032(a)}$', value: nm, color: 'violet', ref: 'normal', note: '접선에 수직인 직선의 기울기' },
             { label: '직선까지 거리 d', value: fmt(d, 3), color: isMin ? 'amber' : 'green', ref: 'dist', note: isMin ? '★ 최단거리 √2' : 'a = 1 에서 최소' }
           ],
           tape: s.step >= 3 ? { title: `점 T${p2(a, ya)} ~ 직선 y=x−2 거리 d = ${fmt(d, 3)} (a=1 일 때 최솟값 √2 ≈ 1.414)` } : null

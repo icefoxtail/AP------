@@ -787,3 +787,7 @@ body.apl {
   .apl-main { display: block; }
   .apl-stage { position: static; height: 120mm; border: 1px solid #ccc; }
 }
+
+/* 세로 분수 프리셋: 분자·분모를 줄이지 않고 손가락으로 누를 높이 확보. */
+.apl-presets .apl-chip:has(.mfrac), .apl-actions-row .apl-btn:has(.mfrac) { min-height: 44px; padding-block: 6px; line-height: 1.4; }
+.apl-presets .apl-chip:has(.mfrac) .katex { font-size: 1.2em; }

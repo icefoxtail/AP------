@@ -105,7 +105,11 @@
       };
       el.addEventListener('pointerup', end);
       el.addEventListener('pointercancel', end);
-      el.addEventListener('click', (e) => { if (el === this.ui.edge) e.preventDefault(); });
+      el.addEventListener('click', (e) => {
+        if (el === this.ui.edge) e.preventDefault();
+        // 포인터 탭은 pointerup에서 처리하므로 키보드가 만든 click만 처리합니다.
+        if (el === this.ui.handle && e.detail === 0) this.toggle();
+      });
     }
     _setX(x) {
       if (x == null) this.ui.panel.style.removeProperty('--toc-x');
@@ -140,7 +144,7 @@
         const sp = APLab.splitFlag(sc.short || sc.title);
         const cur = i === lab.index;
         const row = h('button', {
-          class: 'apl-toc-item' + (has ? ' has-video' : ''), role: 'listitem', 'aria-current': cur ? 'true' : null, dataset: { i: String(i) },
+          class: 'apl-toc-item' + (has ? ' has-video' : ''), 'aria-current': cur ? 'true' : null, dataset: { i: String(i) },
           'aria-label': `${sp.text}${has ? `. 영상 ${Math.round(p.lengthOf(i))}초` : ''}`,
           onclick: () => this.go(i)
         },

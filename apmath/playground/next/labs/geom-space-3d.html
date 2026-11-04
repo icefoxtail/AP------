@@ -106,13 +106,13 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "두 평면이 만나는 교선 BC 및 교선의 중점 M 표시",
           "교선에 수직인 두 선분 AM ⊥ BC, DM ⊥ BC (길이 3√3)가 이루는 각이 이면각 θ",
-          "A에서 밑면에 내린 수선의 발 G(무게중심, 2:1 내분) ⇒ cos θ = GM / AM = 1/3"
+          "A에서 밑면에 내린 수선의 발 G(무게중심, 2:1 내분) ⇒ cos θ = $\\frac{GM}{AM}$ = 1/3"
         ],
         textbook: () => ({
           steps: `① 교선 ${tex('BC')}의 중점 ${tex('M')}에 대하여 ${tex('\\overline{AM} = \\overline{DM} = 3\\sqrt{3}')} 이고 ${tex('\\overline{AD} = 6')}<br/>
 ② 삼각형 ${tex('AMD')}에서 코사인법칙 적용:<br/>
 &nbsp;&nbsp;${tex('\\cos\\theta = \\dfrac{\\overline{AM}^2 + \\overline{DM}^2 - \\overline{AD}^2}{2 \\cdot \\overline{AM} \\cdot \\overline{DM}} = \\dfrac{27 + 27 - 36}{2 \\cdot 27} = \\dfrac{18}{54} = \\dfrac{1}{3}')}<br/>
-③ ${tex('\\sin\\theta = \\sqrt{1 - (1/3)^2} = \\dfrac{2\\sqrt{2}}{3}')}을 구한 뒤 ${tex('h = \\overline{AM}\\sin\\theta = 3\\sqrt{3} \\cdot \\dfrac{2\\sqrt{2}}{3} = 2\\sqrt{6}')}을 계산한다.`,
+③ ${tex('\\sin\\theta = \\sqrt{1 - (\\frac{1}{3})^2} = \\dfrac{2\\sqrt{2}}{3}')}을 구한 뒤 ${tex('h = \\overline{AM}\\sin\\theta = 3\\sqrt{3} \\cdot \\dfrac{2\\sqrt{2}}{3} = 2\\sqrt{6}')}을 계산한다.`,
           warning: "주의: 정사면체의 이면각은 코사인법칙으로도 구할 수 있지만, 무게중심의 성질을 이용하면 계산이 더 간단해집니다."
         }),
         shortcut: () => ({
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function () {
         sectionCam: { yaw: -Math.atan2(4, 3), pitch: 0 },
         steps: [
           "직육면체 외곽선 및 공간 대각선 AG (길이 √(3²+4²+5²) = 5√2)",
-          "바닥 대각선 정사영 EG (길이 5) ⇒ 대각선~밑면 각 β (cos β = EG/AG)",
+          "바닥 대각선 정사영 EG (길이 5) ⇒ 대각선~밑면 각 β (cos β = $\\frac{EG}{AG}$)",
           "직각삼각형 AEG(∠AEG=90°) ⇒ cos α = cos β · cos γ"
         ],
         textbook: () => ({
@@ -145,7 +145,7 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "주의: 꼬인 위치에 있는 두 직선이 이루는 각 α를 코사인법칙으로 직접 구하려면 삼각형을 새로 만들어 세 변의 길이를 모두 구해야 하므로 계산이 길어집니다."
         }),
         shortcut: () => ({
-          steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=EG/AG=1/\\sqrt2')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=3/5')}.<br/>
+          steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=\\frac{EG}{AG}=\\frac{1}{\\sqrt2}')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=\\frac{3}{5}')}.<br/>
 ② 화면에 그려진 각은 실제 공간에서의 각과 다르게 보일 수 있다. 각의 크기는 EG/AG, EF/EG와 같은 길이의 비(또는 벡터의 내적)로 구한다.<br/>
 ③ 두 비를 곱하면 <strong>[이 직육면체에서 성립하는 세 각 α, β, γ의 관계]</strong>:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\cos\\alpha = \\dfrac{\\overline{EF}}{\\overline{AG}} = \\underbrace{\\dfrac{\\overline{EG}}{\\overline{AG}}}_{\\cos\\beta} \\times \\underbrace{\\dfrac{\\overline{EF}}{\\overline{EG}}}_{\\cos\\gamma} = \\cos\\beta \\cdot \\cos\\gamma')}</strong><br/>
@@ -1076,7 +1076,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const names = { A: ['$AC$, $BG$는 꼬인 위치', '$AC\\parallel EG$이므로 $AC$를 $EG$로 평행이동하면 $BG$와 점 $G$에서 만납니다.', '$\\triangle BEG$의 세 변 $BE$, $EG$, $BG$는 모두 면의 대각선이므로 정삼각형 ⇒ $\\theta=60^\\circ$'],
       C: ['$AB$, $EG$는 꼬인 위치', '$AB\\parallel EF$이므로 $AB$를 $EF$로 평행이동하면 $EG$와 점 $E$에서 만납니다.', '$\\triangle EFG$는 $\\angle F=90^\\circ$인 직각이등변삼각형 ⇒ $\\theta=\\angle FEG=45^\\circ$'],
       D: ['$AB$, $CE$는 꼬인 위치', '$AB\\parallel EF$이므로 $AB$를 $EF$로 평행이동하면 $CE$와 점 $E$에서 만납니다.', '$\\triangle EFC$에서 $\\angle F=90^\\circ$, $EF=a$, $EC=\\sqrt{3}a$ ⇒ $\\cos\\theta=\\dfrac{EF}{EC}=\\dfrac{\\sqrt3}{3}$'],
-      P: ['$AB$, $CD$는 꼬인 위치', '$CD\\parallel BE$이므로 $CD$를 $BE$로 평행이동하면 $AB$와 점 $B$에서 만납니다.', `$\\triangle ABE$는 $AB=AE=${v.c[1]}$, $BE=${v.c[0]}$인 이등변삼각형 ⇒ $\\cos\\theta=\\dfrac{BE/2}{AB}=${v.ans.tex}$`] }[v.key];
+      P: ['$AB$, $CD$는 꼬인 위치', '$CD\\parallel BE$이므로 $CD$를 $BE$로 평행이동하면 $AB$와 점 $B$에서 만납니다.', `$\\triangle ABE$는 $AB=AE=${v.c[1]}$, $BE=${v.c[0]}$인 이등변삼각형 ⇒ $\\cos\\theta=\\dfrac{\\frac{BE}{2}}{AB}=${v.ans.tex}$`] }[v.key];
     return names;
   }
   function scene7() {

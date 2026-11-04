@@ -85,7 +85,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       2: {
         badge: "장면 2 · 0/0 꼴의 극한의 기하학적 의미 (= 두 접선의 기울기의 비)",
-        hint: "움직이는 점 <span class='text-amber-300 font-bold'>x</span>를 <span class='text-pink-300 font-bold'>a = 1</span> 쪽으로 끌어 보세요! 분모·분자가 동시에 0에 가까워질 때 <span class='text-sky-300 font-bold'>함숫값의 비 f(x)/g(x)는 두 접선의 기울기의 비 f′(1)/g′(1)</span>에 가까워집니다!",
+        hint: "움직이는 점 <span class='text-amber-300 font-bold'>x</span>를 <span class='text-pink-300 font-bold'>a = 1</span> 쪽으로 끌어 보세요! 분모·분자가 동시에 0에 가까워질 때 <span class='text-sky-300 font-bold'>함숫값의 비 $\\frac{f(x)}{g(x)}$는 두 접선의 기울기의 비 $\\frac{f′(1)}{g′(1)}$</span>에 가까워집니다!",
         tag: "수능 미정계수 결정 3초 컷",
         targetTime: "목표 시간: 3초",
         question: () => `두 다항함수 ${tex('f(x) = x^2 + ax - 3')}, ${tex('g(x) = x - 1')} 에 대하여 ${tex('\\lim_{x \\to 1} \\dfrac{f(x)}{g(x)} = b')} 일 때, 상수 ${tex('a, b')}의 값을 구하시오.`,
@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② <strong>[2단계: 접선의 기울기의 비(미분계수의 정의)]</strong> ${tex('f(1)=g(1)=0')} 이므로 분자·분모를 ${tex('x-1')}로 나누면<br/>
 &nbsp;&nbsp;<strong class="text-pink-300">${tex('\\lim_{x \\to 1} \\dfrac{f(x) - f(1)}{g(x) - g(1)} = \\dfrac{f\'(1)}{g\'(1)}')}</strong> 입니다.<br/>
 ③ 인수분해하지 않고 미분하여 ${tex('x=1')} 을 대입하면 <strong class="text-sky-300">${tex('b = \\dfrac{2(1) + 2}{1} = 4')}</strong> 입니다.`,
-          highlight: "💡 f(a) = g(a) = 0 이고 g′(a) ≠ 0 이면 lim(x→a) f(x)/g(x) = f′(a)/g′(a) 입니다. 즉 점 (a, 0)에서의 두 접선의 기울기의 비입니다."
+          highlight: "💡 f(a) = g(a) = 0 이고 g′(a) ≠ 0 이면 lim(x→a) $\\frac{f(x)}{g(x)}$ = $\\frac{f′(a)}{g′(a)}$ 입니다. 즉 점 (a, 0)에서의 두 접선의 기울기의 비입니다."
         })
       },
 
@@ -351,7 +351,7 @@ window.addEventListener('DOMContentLoaded', function () {
     /* ===== MODE 2 · 0/0 부정형 = 접선 기울기의 비 ===== */
     {
       id: 'zero-zero', title: '0/0 꼴의 극한과 접선의 기울기의 비', short: '0/0 꼴의 극한',
-      question: '분모와 분자가 동시에 0으로 갈 때, 함숫값의 비 f(x)/g(x)는 무엇에 가까워질까?',
+      question: '분모와 분자가 동시에 0으로 갈 때, 함숫값의 비 $\\frac{f(x)}{g(x)}$는 무엇에 가까워질까?',
       guide: guideOf(2),
       controls: ['px'],
       actions: [playAction('자동으로 x를 1에 가까이 보내기')],
@@ -368,14 +368,14 @@ window.addEventListener('DOMContentLoaded', function () {
             { k: '함수식', tex: 'f(x) = x^2 + 2x - 3, \\; g(x) = x - 1', color: 'ink' },
             { k: '극한', tex: "\\lim_{x\\to 1} \\dfrac{f(x)}{g(x)} = \\dfrac{f'(1)}{g'(1)} = 4", color: 'sky' }
           ],
-          status: Math.abs(xp - 1) <= 0.1 ? { tone: 'ok', text: `x ≈ 1 : 비율 ${fmt(ratio)} ≈ 4 (기울기의 비)` } : { tone: 'info', text: `비율 f(x)/g(x) = ${fmt(ratio)}` },
+          status: Math.abs(xp - 1) <= 0.1 ? { tone: 'ok', text: `x ≈ 1 : 비율 ${fmt(ratio)} ≈ 4 (기울기의 비)` } : { tone: 'info', text: `비율 $\\frac{f(x)}{g(x)}$ = ${fmt(ratio)}` },
           readouts: [
             { label: '움직이는 점 x', value: `x = ${fmt(xp)}`, color: 'amber', ref: 'f' },
-            { label: '비율 f(x)/g(x)', value: fmt(ratio), color: 'sky', ref: 'g' },
+            { label: '비율 $\\frac{f(x)}{g(x)}$', value: fmt(ratio), color: 'sky', ref: 'g' },
             { label: "접선 기울기 f′(1) | g′(1)", value: '4.0 | 1.0', color: 'rose', ref: 'tan' },
             { label: '극한값', value: '4.00', color: 'green' }
           ],
-          tape: s.step >= 3 ? { title: `0/0 꼴의 극한: f(${fmt(xp)})/g(${fmt(xp)}) = ${fmt(ratio)}  →  x→1 일 때 접선의 기울기의 비 f′(1)/g′(1) = 4.00 에 가까워집니다!`,
+          tape: s.step >= 3 ? { title: `0/0 꼴의 극한: $\\frac{f(${fmt(xp)})}{g(${fmt(xp)})}$ = ${fmt(ratio)}  →  x→1 일 때 접선의 기울기의 비 $\\frac{f′(1)}{g′(1)}$ = 4.00 에 가까워집니다!`,
             segments: [{ text: "f′(1) = 4", weight: 4, color: 'rose' }, { text: "g′(1) = 1", weight: 1, color: 'sky' }] } : null
         };
       },
@@ -1377,7 +1377,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.handle('p8', F1.P(0, g.k), { color: 'amber', r: 7.5, ref: 'line', label: kind === 'inf' ? `t=${nf(t, 2)}` : `t=${nf(t, 2)}`, dx: 14, dy: -12, align: 'left', priority: 2,
       drag: (w) => { const q = F1.Q(w).y; setT(kind === 'inf' ? Math.sqrt(Math.max(0, (1 + m * m) * (q + m * m / 4))) : q); } });
     if (F2) {
-      drawFrame(b, F2, s, { xn: 't', yn: false, title: `${kind === 'len0' ? '(AH−CH)/t' : kind === 'area0' ? 'S(t)/t' : 'g(t)/t²'} 의 그래프`, tc: 'sky' });
+      drawFrame(b, F2, s, { xn: 't', yn: false, title: `${kind === 'len0' ? '\\frac{AH−CH}{t}' : kind === 'area0' ? '\\frac{S(t)}{t}' : '\\frac{g(t)}{t²}'} 의 그래프`, tc: 'sky' });
       const ratio = (tt) => geo8(kind, m, tt).ratio, lim = lim8(kind, m);
       if (st >= 2) {
         clipTo(b, F2, () => fplot(b, F2, ratio, { from: Math.max(F2.x0, 0.004), color: 'sky', width: 3, glow: true, ref: 'R' }));
@@ -1402,9 +1402,9 @@ window.addEventListener('DOMContentLoaded', function () {
     tabs: { compact: true },
     controls: (s) => [s.k8 === 'inf' ? 'ti8' : 't8', 'm8'],
     presets: () => [
-      { group: '도형', label: '길이의 차 (AH−CH)/t · t→0+', color: 'amber', apply: (st) => { st.k8 = 'len0'; st.t8 = 1; }, on: (st) => st.k8 === 'len0' },
-      { group: '도형', label: '삼각형 넓이 S(t)/t · t→0+', color: 'amber', apply: (st) => { st.k8 = 'area0'; st.t8 = 1; }, on: (st) => st.k8 === 'area0' },
-      { group: '도형', label: '현의 길이 2t · g(t)/t² · t→∞', color: 'amber', apply: (st) => { st.k8 = 'inf'; st.ti8 = 1.8; }, on: (st) => st.k8 === 'inf' }
+      { group: '도형', label: '길이의 차 $\\frac{AH-CH}{t}$ · t→0+', color: 'amber', apply: (st) => { st.k8 = 'len0'; st.t8 = 1; }, on: (st) => st.k8 === 'len0' },
+      { group: '도형', label: '삼각형 넓이 $\\frac{S(t)}{t}$ · t→0+', color: 'amber', apply: (st) => { st.k8 = 'area0'; st.t8 = 1; }, on: (st) => st.k8 === 'area0' },
+      { group: '도형', label: '현의 길이 2t · $\\frac{g(t)}{t^2}$ · t→∞', color: 'amber', apply: (st) => { st.k8 = 'inf'; st.ti8 = 1.8; }, on: (st) => st.k8 === 'inf' }
     ],
     actions: [{ id: 'shrink', icon: 'play', label: (s) => (s.playing ? '일시 정지' : s.k8 === 'inf' ? '자동으로 t 키우기' : '자동으로 t→0+ 보내기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
     steps: steps8,
@@ -1427,7 +1427,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const kind = explore ? s.k8 : V.kind, m = explore ? s.m8 : V.mv;
       const kk = K8[kind], t = clamp(s[explore ? (kind === 'inf' ? 'ti8' : 't8') : 'pv8'], kk.tmin, kk.tmax);
       const g = geo8(kind, m, t), lim = lim8(kind, m);
-      const nm = kind === 'len0' ? '(AH−CH)/t' : kind === 'area0' ? 'S(t)/t' : 'g(t)/t²';
+      const nm = kind === 'len0' ? '$\\frac{AH-CH}{t}$' : kind === 'area0' ? '$\\frac{S(t)}{t}$' : '$\\frac{g(t)}{t^2}$';
       const extra = (gg) => (kind === 'len0' ? `AH−CH = ${fmt(gg.AH - gg.CH, 5)}` : kind === 'area0' ? `S = ${fmt(gg.S, 5)}` : `g(t) = ${fmt(gg.k, 1)}`);
       const rowsT = kind === 'inf' ? [10, 100, 1000] : [1, 0.1, 0.01, 0.001];
       return {
@@ -1639,7 +1639,7 @@ window.addEventListener('DOMContentLoaded', function () {
     a7: { value: 0, min: -1, max: 5, step: 0.1, color: 'sky', label: '분자의 영점 a', hint: '분모의 영점(빨간 점)에 가까이 보내 보세요', format: (v) => `a = ${fmt(v, 1)}` },
     b7: { value: 4.5, min: -1, max: 5, step: 0.1, color: 'violet', label: '분자의 영점 b', format: (v) => `b = ${fmt(v, 1)}` },
     t8: { value: 1, min: 0.02, max: 1.5, step: 0.01, color: 'amber', label: '직선의 y절편 t (t → 0+)', hint: 't를 0에 가까이 보내며 표의 값을 보세요', format: (v) => `t = ${fmt(v, 2)}` },
-    ti8: { value: 1.8, min: 0.5, max: 2.5, step: 0.05, color: 'amber', label: '현의 길이의 절반 t (AB = 2t)', hint: 't가 커질 때 g(t)/t²을 보세요', format: (v) => `t = ${fmt(v, 2)}` },
+    ti8: { value: 1.8, min: 0.5, max: 2.5, step: 0.05, color: 'amber', label: '현의 길이의 절반 t (AB = 2t)', hint: 't가 커질 때 $\\frac{g(t)}{t^2}$을 보세요', format: (v) => `t = ${fmt(v, 2)}` },
     m8: { value: 1, min: 0.5, max: 2, step: 0.25, color: 'violet', label: '직선의 기울기 m', hint: '기울기가 바뀌면 극한값도 바뀝니다', format: (v) => `m = ${fmt(v, 2)}` },
     t9: { value: -2.8, min: -3.4, max: 3.4, step: 0.05, color: 'rose', label: '창의 왼쪽 끝 t (창 = [t, t+a])', hint: '창을 밀며 g(t)가 꺾이는 곳을 찾아 보세요', format: (v) => `t = ${fmt(v, 2)}` },
     a9: { value: 2, min: 1, max: 3, step: 0.5, color: 'amber', label: '창의 길이 a', hint: 'a가 바뀌면 꺾이는 점의 위치도 바뀝니다', format: (v) => `a = ${fmt(v, 1)}` }
@@ -2010,7 +2010,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 3) {
         const fp = v.m * (v.c - v.r);
         b.line([c, 0], fp, { extent: 2.2, color: 'rose', width: 2.2, dash: true });
-        ouTop(b, `b = f′(${c}) / g′(${c}) = ${fp} / ${v.u} = ${v.bq.txt}`, { color: 'green', size: 13 });
+        ouTop(b, `b = \\frac{f′(${c})}{g′(${c})} = ${fp} / ${v.u} = ${v.bq.txt}`, { color: 'green', size: 13 });
       }
     }
   });

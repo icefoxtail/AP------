@@ -620,8 +620,8 @@
     nm(D, withC ? 'D' + co(D) : 'D', 'sky', { dx: 8, dy: 14 });
     if (st >= 3) {
       if (e.ask === 'S') card(view, `S = ½ × ${v.dk} × (${v.d1} + ${v.d2}) = ${v.S}`, '#fbbf24');
-      else if (e.ask === 'h0') card(view, `h = ${num(Math.abs(k2 - k1))}/√2,  S = Δx₁ + Δx₂ (√2 약분)`, '#fbbf24');
-      else card(view, `h = ${num(Math.abs(k2 - k1))}/√2  (y = x 는 두 밑변의 수직이등분선)`, '#fbbf24');
+      else if (e.ask === 'h0') card(view, `h = $\\frac{${num(Math.abs(k2 - k1))}}{\\sqrt2}$,  S = Δx₁ + Δx₂ (√2 약분)`, '#fbbf24');
+      else card(view, `h = $\\frac{${num(Math.abs(k2 - k1))}}{\\sqrt2}$  (y = x 는 두 밑변의 수직이등분선)`, '#fbbf24');
     }
   }
 

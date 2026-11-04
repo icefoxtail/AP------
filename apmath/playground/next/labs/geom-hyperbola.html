@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function () {
           py: 3.2
         },
         steps: [
-          "점근선 y = ±(b/a)x와 2a × 2b 직사각형(점근선은 이 직사각형의 대각선)",
+          "점근선 y = ±$\\frac{b}{a}x$와 2a × 2b 직사각형(점근선은 이 직사각형의 대각선)",
           "초점 F(c, 0)에서 점근선에 내린 수선의 발 H (직각삼각형 OFH)",
           "OH = a(3), FH = b(4), OF = c(5), 점 H는 원 x²+y²=a² 위의 점"
         ],
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 초점 ${tex('F(5, 0)')}에서 직선 ${tex('4x - 3y = 0')} 까지 점과 직선 사이의 거리 공식 대입:<br/>
 &nbsp;&nbsp;${tex('\\overline{FH} = \\dfrac{|4 \\cdot 5 - 3 \\cdot 0|}{\\sqrt{4^2 + (-3)^2}} = \\dfrac{20}{5} = 4')}<br/>
 ③ 수직인 직선 ${tex('FH : y = -\\dfrac{3}{4}(x - 5)')} 와 ${tex('y = \\dfrac{4}{3}x')} 를 연립하여<br/>
-&nbsp;&nbsp;교점 ${tex('H\\left(\\dfrac{9}{5}, \\dfrac{12}{5}\\right)')} 구한 뒤 ${tex('\\overline{OH} = \\sqrt{(9/5)^2 + (12/5)^2} = 3')}을 계산한다.`,
+&nbsp;&nbsp;교점 ${tex('H\\left(\\dfrac{9}{5}, \\dfrac{12}{5}\\right)')} 구한 뒤 ${tex('\\overline{OH} = \\sqrt{(\\frac{9}{5})^2 + (\\frac{12}{5})^2} = 3')}을 계산한다.`,
           warning: "주의: 수선의 발 H의 좌표를 구하려고 두 직선의 방정식을 연립하면 계산이 길어집니다."
         }),
         shortcut: () => ({
@@ -170,7 +170,7 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① ${tex('\\overline{PF} = 6')} 조건으로부터 점 ${tex('P')}의 ${tex('x')}좌표 ${tex('x_1 = \\dfrac{27}{5}')} 계산<br/>
 ② 접선의 방정식 ${tex('\\dfrac{x_1 x}{9} - \\dfrac{y_1 y}{16} = 1')} 에 ${tex('y = 0')} 대입하여 ${tex('x')}절편 ${tex('T')} 계산:<br/>
-&nbsp;&nbsp;${tex('x_T = \\dfrac{9}{x_1} = \\dfrac{9}{27/5} = \\dfrac{5}{3}')}<br/>
+&nbsp;&nbsp;${tex('x_T = \\dfrac{9}{x_1} = \\dfrac{9}{\\frac{27}{5}} = \\dfrac{5}{3}')}<br/>
 ③ ${tex("F'(-5, 0), \\; F(5, 0)")} 과의 거리비 계산:<br/>
 &nbsp;&nbsp;${tex("\\overline{F'T} = \\dfrac{5}{3} - (-5) = \\dfrac{20}{3}, \\; \\overline{TF} = 5 - \\dfrac{5}{3} = \\dfrac{10}{3} \\implies 2 : 1")}`,
           warning: "주의: 타원에서는 법선이 내각을 이등분하지만, 쌍곡선에서는 접선이 내각을 이등분합니다. 좌표를 구해 풀면 계산이 길어집니다."
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const scenarios = {
       1: [
         {name:'① 정의 · 거리의 차', short:'초점까지 거리의 차', steps:['두 초점과 선분 PF, PF′ 연결','2a×2b 직사각형과 점근선','거리의 차와 둘레 확인'], parts:['PF와 PF′의 거리 비교','중심 O·초점 F,F′·주축','거리의 차와 둘레가 일정'],
-         question:"쌍곡선 x²/9 − y²/16 = 1 위의 점 P가 오른쪽 곡선 위에 있고 PF′ = 11일 때 PF와 △PF′F의 둘레는?",
+         question:"쌍곡선 $\\frac{x^2}{9}$ − $\\frac{y^2}{16}$ = 1 위의 점 P가 오른쪽 곡선 위에 있고 PF′ = 11일 때 PF와 △PF′F의 둘레는?",
          answer:'PF = 5, 둘레 = 26', proof:'|PF′−PF| = 2a = 6 → PF = 11−6 = 5. 둘레 = 11+5+2c = 26.', snap:{a:3,b:4,kind:'pf',value:5}},
         {name:'② 직각삼각형 KF′F', short:'직각 · 원', steps:['지름이 F′F인 원 x²+y²=c²','직각의 교점 K와 △KF′F','K에서 넓이 b² 확인'], parts:['지름이 F′F인 원','교점 K와 직각삼각형','피타고라스 정리로 얻는 넓이 b²'],
          question:'쌍곡선 위의 점 K에서 ∠F′KF = 90°일 때 △KF′F의 넓이를 구하시오. (a=3, b=4)',
@@ -200,25 +200,25 @@ window.addEventListener('DOMContentLoaded', function () {
       ],
       2: [
         {name:'① 초점에서 점근선에 내린 수선',short:'초점과 점근선',steps:['두 점근선과 직사각형','직각삼각형 △OFH','점 P에서 점근선에 내린 수선과 길이 비교'],parts:['초점 F에서 점근선까지','H의 직각·OH=a·FH=b','움직이는 P에서 점근선까지'],
-         question:'양의 초점 F에서 점근선 y=(b/a)x로 내린 수선의 발 H일 때, OH와 FH의 길이를 구하시오.',
+         question:'양의 초점 F에서 점근선 y=$\\frac{b}{a}x$로 내린 수선의 발 H일 때, OH와 FH의 길이를 구하시오.',
          answer:'OH = a = 3, FH = b = 4',proof:'OH = |proj(F,(a,b))|=a, FH=√(OF²−OH²)=b. P에서 같은 직선에 내린 수선도 직접 비교한다.',snap:{a:3,b:4,kind:'py',value:3.2}},
         {name:'② a=b인 쌍곡선',short:'a=b / 점근선이 수직',steps:['a=b=3과 점근선 y=±x','직각이등변삼각형 △OFH','점 P의 이동과 두 점근선에 내린 수선'],parts:['서로 수직인 두 점근선','a:b:c = 1:1:√2','움직이는 점 P와 두 점근선'],
-         question:'a=b=3인 쌍곡선에서 두 점근선이 이루는 각과 이심률 e=c/a를 구하시오.',
+         question:'a=b=3인 쌍곡선에서 두 점근선이 이루는 각과 이심률 $e=\\frac{c}{a}$를 구하시오.',
          answer:'90°, e=√2',proof:'점근선 방향 (a,b),(a,−b)의 내적 a²−b²=0. c=√(a²+b²)=a√2, e=√2.',snap:{a:3,b:3,kind:'py',value:2.3}},
         {name:'③ 접선과 점근선이 만드는 삼각형',short:'접선 삼각형 · S=ab',steps:['점 P에서의 접선','접선과 두 점근선의 교점 M₁,M₂','P는 M₁M₂의 중점, 넓이 ab, OM₁·OM₂=c²'],parts:['접선·교점 M₁,M₂','선분 M₁M₂의 중점 P','삼각형의 넓이와 두 거리의 곱'],
          question:'P에서의 접선이 두 점근선과 만나는 점을 M₁,M₂라 할 때 △OM₁M₂의 넓이와 OM₁·OM₂를 구하시오.',
          answer:'넓이 ab=12, 거리의 곱 c²=25',proof:'M₁=P+v, M₂=P−v이므로 P는 중점. △OM₁M₂의 넓이는 ab, OM₁·OM₂=c².',snap:{a:3,b:4,kind:'py',value:3.2}}
       ],
       3: [
-        {name:'① 두 수선의 길이의 곱',short:'점근선까지 거리의 곱',steps:['점근선 y=±(b/a)x','수선의 발 Q₁,Q₂와 직각','l₁l₂ = a²b²/c² 확인'],parts:['점근선 두 개','P의 두 수선·직각','수선의 길이의 곱과 식'],
+        {name:'① 두 수선의 길이의 곱',short:'점근선까지 거리의 곱',steps:['점근선 y=±$\\frac{b}{a}x$','수선의 발 Q₁,Q₂와 직각','l₁l₂ = $\\frac{a^2b^2}{c^2}$ 확인'],parts:['점근선 두 개','P의 두 수선·직각','수선의 길이의 곱과 식'],
          question:'P에서 두 점근선에 내린 수선의 길이가 l₁,l₂일 때 l₁·l₂의 값을 구하시오. (a=3,b=4)',
-         answer:'a²b²/c² = 144/25',proof:'l₁=|bx−ay|/c, l₂=|bx+ay|/c. 쌍곡선 관계 b²x²−a²y²=a²b²로부터 곱은 a²b²/c².',snap:{a:3,b:4,kind:'py',value:3.6}},
-        {name:'② 평행사변형의 넓이',short:'OR₁PR₂ / 넓이 ab/2',steps:['원점과 점근선의 두 방향','점 P를 지나는 두 평행선','OR₁PR₂ 넓이 ab/2 확인'],parts:['원점과 평행한 방향','평행사변형의 네 꼭짓점','넓이가 일정함'],
+         answer:'$\\frac{a^2b^2}{c^2}$ = 144/25',proof:'l₁=|bx−ay|/c, l₂=|bx+ay|/c. 쌍곡선 관계 b²x²−a²y²=a²b²로부터 곱은 $\\frac{a^2b^2}{c^2}$.',snap:{a:3,b:4,kind:'py',value:3.6}},
+        {name:'② 평행사변형의 넓이',short:'OR₁PR₂ / 넓이 $\\frac{ab}{2}$',steps:['원점과 점근선의 두 방향','점 P를 지나는 두 평행선','OR₁PR₂ 넓이 $\\frac{ab}{2}$ 확인'],parts:['원점과 평행한 방향','평행사변형의 네 꼭짓점','넓이가 일정함'],
          question:'P를 지나 두 점근선에 평행한 직선을 그어 만든 평행사변형 OR₁PR₂의 넓이를 구하시오.',
-         answer:'S = ab/2 = 6',proof:'P = α(a,b)+β(a,−b), αβ=1/4. 따라서 S=|det(αu,βv)|=ab/2.',snap:{a:3,b:4,kind:'py',value:4.6}},
-        {name:'③ 꼭짓점 A에서의 값',short:'P=A일 때 비교',steps:['꼭짓점 A=(a,0) 표시','두 수선의 발 Q₁,Q₂','l₁=l₂=ab/c 확인'],parts:['꼭짓점 A와 움직이는 P','두 수선의 길이가 같음','꼭짓점에서 바로 계산'],
+         answer:'S = $\\frac{ab}{2}$ = 6',proof:'P = α(a,b)+β(a,−b), αβ=1/4. 따라서 S=|det(αu,βv)|=$\\frac{ab}{2}$.',snap:{a:3,b:4,kind:'py',value:4.6}},
+        {name:'③ 꼭짓점 A에서의 값',short:'P=A일 때 비교',steps:['꼭짓점 A=(a,0) 표시','두 수선의 발 Q₁,Q₂','l₁=l₂=$\\frac{ab}{c}$ 확인'],parts:['꼭짓점 A와 움직이는 P','두 수선의 길이가 같음','꼭짓점에서 바로 계산'],
          question:'꼭짓점 A(a,0)에서 두 점근선까지의 거리와 곱을 구하시오. (a=3,b=4)',
-         answer:'l₁=l₂=ab/c=12/5, 곱=144/25',proof:'P=A일 때 거리 공식에서 l₁=l₂=ab/c. P를 움직여도 곱은 같다.',snap:{a:3,b:4,kind:'py',value:0}}
+         answer:'l₁=l₂=$\\frac{ab}{c}$=12/5, 곱=144/25',proof:'P=A일 때 거리 공식에서 l₁=l₂=$\\frac{ab}{c}$. P를 움직여도 곱은 같다.',snap:{a:3,b:4,kind:'py',value:0}}
       ],
       4: [
         {name:'① 접선과 각의 이등분',short:'각의 이등분 · 길이의 비',steps:['접선과 x축의 교점 T','내각을 이등분하는 두 각의 크기','F′T:TF = PF′:PF'],parts:['점 P에서의 접선과 T','내각의 이등분','F′T:TF와 PF′:PF 비교'],
@@ -580,7 +580,7 @@ window.addEventListener('DOMContentLoaded', function () {
               markAng(g.P,g.R1,g.R2,palette.gold,`${fmt(thv,1)}°`,26,1,14);
             }
           }}
-        if(state.steps[3])drawBottomTapeBanner(`OR₁PR₂ 넓이 = ${fmt(g.parArea)} = ab/2(${fmt(g.a*g.b/2)})`,dist(g.O,g.R1),dist(g.O,g.R2),'OR₁','OR₂');
+        if(state.steps[3])drawBottomTapeBanner(`OR₁PR₂ 넓이 = ${fmt(g.parArea)} = $\\frac{ab}{2}$(${fmt(g.a*g.b/2)})`,dist(g.O,g.R1),dist(g.O,g.R2),'OR₁','OR₂');
       }else{
         if(state.steps[2]){
           glowLine(g.P,g.Q1,palette.pink,1);glowLine(g.P,g.Q2,palette.teal,1);
@@ -592,7 +592,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if(Math.abs(g.l1-g.l2)<.02*Math.max(g.l1,g.l2,1e-6)){BOARD.ticks([g.P.x,g.P.y],[g.Q1.x,g.Q1.y],{count:1,color:palette.gold});BOARD.ticks([g.P.x,g.P.y],[g.Q2.x,g.Q2.y],{count:1,color:palette.gold});}
         }
         if(s===3&&state.steps[1]){point({x:state.branch*g.a,y:0},palette.gold,state.branch===1?'꼭짓점 A':'꼭짓점 A′',{x:12,y:-19});}
-        if(state.steps[3])drawBottomTapeBanner(`l₁·l₂=${fmt(g.asymProduct,4)} = a²b²/c²(${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)})`,g.l1,g.l2,'l₁','l₂');
+        if(state.steps[3])drawBottomTapeBanner(`l₁·l₂=${fmt(g.asymProduct,4)} = $\\frac{a^2b^2}{c^2}$(${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)})`,g.l1,g.l2,'l₁','l₂');
       }
     }
     function plotMode4(g){
@@ -607,7 +607,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if(s===1){
         if(state.steps[2]){arcBetween(g);midLabel(g.Fp,g.T,`F′T=${fmt(dist(g.Fp,g.T))}`,palette.pink,{x:10,y:20});midLabel(g.T,g.F,`TF=${fmt(dist(g.F,g.T))}`,palette.teal,{x:10,y:20});}
-        if(state.steps[3])drawBottomTapeBanner(`F′T/TF=${fmt(g.baseRatio,4)} · PF′/PF=${fmt(g.focalRatio,4)} · 오차 ${fmt(Math.abs(g.baseRatio-g.focalRatio),7)}`,dist(g.Fp,g.T),dist(g.T,g.F),'F′T','TF');
+        if(state.steps[3])drawBottomTapeBanner(`$\\frac{F′T}{TF}$=${fmt(g.baseRatio,4)} · $\\frac{PF′}{PF}$=${fmt(g.focalRatio,4)} · 오차 ${fmt(Math.abs(g.baseRatio-g.focalRatio),7)}`,dist(g.Fp,g.T),dist(g.T,g.F),'F′T','TF');
       }else if(s===2){
         if(state.steps[1]||state.steps[2]){
           line(g.F,g.Fstar,palette.purple,2.4,true);
@@ -722,13 +722,13 @@ window.addEventListener('DOMContentLoaded', function () {
         formal:[
           `점 ${mtex(String.raw`P(x_1,y_1)`)}에서 접선은 ${mtex(String.raw`\dfrac{x_1x}{a^2}-\dfrac{y_1y}{b^2}=1`)}.`,
           `점근선 ${mtex(String.raw`(x,y)=t(a,b),\;(x,y)=s(a,-b)`)}를 대입해 교점 ${mtex(String.raw`M_1=(a/d_+,b/d_+),\;M_2=(a/d_-,-b/d_-)`)}를 얻는다. 단 ${mtex(String.raw`d_+=x_1/a-y_1/b,\;d_-=x_1/a+y_1/b`)}.`,
-          `${mtex(String.raw`d_+d_-=x_1^2/a^2-y_1^2/b^2=1`)}이므로 ${mtex(String.raw`S=\dfrac12|x_{M_1}y_{M_2}-x_{M_2}y_{M_1}|=ab`)}.`,
-          `${mtex(String.raw`OM_1\cdot OM_2=c^2/|d_+d_-|=c^2`)}. 이 문제에서는 넓이 ${mtex(String.raw`12`)}, OM₁·OM₂ = ${mtex(String.raw`25`)}.`
+          `${mtex(String.raw`d_+d_-=\frac{x_1^2}{a^2}-\frac{y_1^2}{b^2}=1`)}이므로 ${mtex(String.raw`S=\dfrac12|x_{M_1}y_{M_2}-x_{M_2}y_{M_1}|=ab`)}.`,
+          `${mtex(String.raw`OM_1\cdot OM_2=\frac{c^2}{|d_+d_-|}=c^2`)}. 이 문제에서는 넓이 ${mtex(String.raw`12`)}, OM₁·OM₂ = ${mtex(String.raw`25`)}.`
         ],
         shortcut:[
           `접선과 두 점근선이 만나는 M₁,M₂를 잇는다. P는 언제나 M₁M₂의 중점이다(같은 길이 표시 2개로 확인).`,
           `두 교점은 서로 다른 점근선의 고정 방향 위에 있고, ${mtex(String.raw`OM_1\cdot OM_2=c^2`)}가 유지된다.`,
-          `두 점근선 방향의 끼인각 ${mtex(String.raw`\theta`)}는 고정, ${mtex(String.raw`\sin\theta=2ab/c^2`)}이므로 ${mtex(String.raw`S=\dfrac12c^2\sin\theta=ab`)}.`
+          `두 점근선 방향의 끼인각 ${mtex(String.raw`\theta`)}는 고정, ${mtex(String.raw`\sin\theta=2$\\frac{ab}{c}$^2`)}이므로 ${mtex(String.raw`S=\dfrac12c^2\sin\theta=ab`)}.`
         ],warning:'접선 삼각형은 모양이 변해도 넓이 ab와 원점에서 두 교점까지의 거리의 곱 c²가 함께 유지됩니다.',insight:'M₁M₂의 중점 P + 고정된 끼인각 + 거리의 곱 c² → 넓이 ab.'
       },
       '3-2':{
@@ -736,25 +736,25 @@ window.addEventListener('DOMContentLoaded', function () {
           `두 점근선 방향벡터를 ${mtex(String.raw`u=(a,b),\;v=(a,-b)`)}라 한다.`,
           `점 ${mtex(String.raw`P=\alpha u+\beta v`)}에서 ${mtex(String.raw`\alpha=(x/a+y/b)/2,\;\beta=(x/a-y/b)/2`)}.`,
           `쌍곡선 식에서 ${mtex(String.raw`4\alpha\beta=x^2/a^2-y^2/b^2=1`)}.`,
-          `따라서 ${mtex(String.raw`S_{OR_1PR_2}=\alpha\beta\sqrt{|u|^2|v|^2-(u\cdot v)^2}=(1/4)(2ab)=ab/2=6`)}.`
+          `따라서 ${mtex(String.raw`S_{OR_1PR_2}=\alpha\beta\sqrt{|u|^2|v|^2-(u\cdot v)^2}=(1/4)(2ab)=$\\frac{ab}{2}$=6`)}.`
         ],
         shortcut:[
           `P를 지나는 두 점근선과 평행한 선을 그어 평행사변형 ${mtex(String.raw`OR_1PR_2`)}를 만든다.`,
           `두 방향의 평행사변형 넓이는 ${mtex(String.raw`|OR_1|\,|OR_2|\sin\theta`)}. 각도 ${mtex(String.raw`\theta`)}는 변하지 않는다.`,
-          `두 방향 배율의 곱은 쌍곡선 위에서 ${mtex(String.raw`\alpha\beta=1/4`)}로 고정 ⇒ 면적 ${mtex(String.raw`ab/2`)}.`
-        ],warning:'평행사변형의 각·변 길이는 변하지만 방향 배율 곱은 1/4로 고정입니다.',insight:'점 P를 지나 두 점근선과 평행한 직선으로 만든 평행사변형의 넓이는 언제나 ab/2.'
+          `두 방향 배율의 곱은 쌍곡선 위에서 ${mtex(String.raw`\alpha\beta=\frac{1}{4}`)}로 고정 ⇒ 면적 ${mtex(String.raw`$\\frac{ab}{2}$`)}.`
+        ],warning:'평행사변형의 각·변 길이는 변하지만 방향 배율 곱은 1/4로 고정입니다.',insight:'점 P를 지나 두 점근선과 평행한 직선으로 만든 평행사변형의 넓이는 언제나 $\\frac{ab}{2}$.'
       },
       '3-3':{
         formal:[
-          `꼭짓점 ${mtex(String.raw`A=(a,0)`)}에서 점근선 ${mtex(String.raw`bx-ay=0`)}까지 거리 ${mtex(String.raw`l_1=\dfrac{|ba|}{\sqrt{a^2+b^2}}=ab/c`)}.`,
-          `다른 점근선에도 대칭이므로 ${mtex(String.raw`l_2=ab/c`)}.`,
+          `꼭짓점 ${mtex(String.raw`A=(a,0)`)}에서 점근선 ${mtex(String.raw`bx-ay=0`)}까지 거리 ${mtex(String.raw`l_1=\dfrac{|ba|}{\sqrt{a^2+b^2}}=$\\frac{ab}{c}$`)}.`,
+          `다른 점근선에도 대칭이므로 ${mtex(String.raw`l_2=$\\frac{ab}{c}$`)}.`,
           `따라서 ${mtex(String.raw`l_1l_2=a^2b^2/c^2=144/25`)}.`,
           `일반 P에서도 곱은 ${mtex(String.raw`|b^2x^2-a^2y^2|/c^2=a^2b^2/c^2`)}.`
         ],
         shortcut:[
           `어느 P에서나 두 점근선까지 거리의 곱은 같다. 그래서 가장 간단한 꼭짓점 A에서 값을 구한다.`,
-          `A에서 두 점근선까지 내린 수선은 x축에 대하여 대칭이므로 두 길이가 모두 ${mtex(String.raw`ab/c`)}.`,
-          `하나의 길이를 제곱해 바로 ${mtex(String.raw`(ab/c)^2=144/25`)}. P가 이동하면 두 길이는 달라져도 곱은 유지된다.`
+          `A에서 두 점근선까지 내린 수선은 x축에 대하여 대칭이므로 두 길이가 모두 ${mtex(String.raw`$\\frac{ab}{c}$`)}.`,
+          `하나의 길이를 제곱해 바로 ${mtex(String.raw`($\\frac{ab}{c}$)^2=144/25`)}. P가 이동하면 두 길이는 달라져도 곱은 유지된다.`
         ],warning:'두 수선의 길이가 같다는 표시는 꼭짓점 A에서만 성립합니다. 일반적인 점 P에서는 두 길이가 다릅니다.',insight:'일정한 값은 가장 대칭적인 점(꼭짓점)에서 먼저 구하고, 다른 점 P에서도 성립하는지 식으로 확인합니다.'
       },
       '4-2':{
@@ -772,9 +772,9 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       '4-3':{
         formal:[
-          `접선 ${mtex(String.raw`\ell:(x_1/a^2)x-(y_1/b^2)y-1=0`)}의 법선벡터 길이를 ${mtex(String.raw`L=\sqrt{x_1^2/a^4+y_1^2/b^4}`)}로 둔다.`,
+          `접선 ${mtex(String.raw`\ell:\frac{x_1}{a^2}x-\frac{y_1}{b^2}y-1=0`)}의 법선벡터 길이를 ${mtex(String.raw`L=\sqrt{x_1^2/a^4+y_1^2/b^4}`)}로 둔다.`,
           `두 초점에서 접선까지의 거리 ${mtex(String.raw`d_1=|(cx_1/a^2)-1|/L,\;d_2=|-(cx_1/a^2)-1|/L`)}.`,
-          `${mtex(String.raw`d_1d_2=((c^2x_1^2/a^4)-1)/L^2`)}이며, 쌍곡선 식 ${mtex(String.raw`y_1^2/b^2=x_1^2/a^2-1`)}과 ${mtex(String.raw`c^2=a^2+b^2`)}를 대입하면 ${mtex(String.raw`d_1d_2=b^2=16`)}.`,
+          `${mtex(String.raw`d_1d_2=\frac{\frac{c^2x_1^2}{a^4}-1}{L^2}`)}이며, 쌍곡선 식 ${mtex(String.raw`y_1^2/b^2=x_1^2/a^2-1`)}과 ${mtex(String.raw`c^2=a^2+b^2`)}를 대입하면 ${mtex(String.raw`d_1d_2=b^2=16`)}.`,
           `수선의 발 H₁, H₂에 대해 ${mtex(String.raw`OH_1=OH_2=a`)}도 계산으로 확인한다.`
         ],
         shortcut:[
@@ -839,9 +839,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if(m===2&&t===1)return `OH=${fmt(dist(g.O,g.H))}, FH=${fmt(dist(g.F,g.H))}, OF=${fmt(g.c)}`;
       if(m===2&&t===2)return `두 점근선이 이루는 예각 ${fmt(g.angle,2)}° · 이심률 e=${fmt(g.c/g.a,4)} · ${Math.abs(g.a-g.b)<.012?'수직 성립':'수직 조건 해제'}`;
       if(m===2)return `△OM₁M₂ 넓이 ${fmt(g.tanArea)} (=ab ${fmt(g.a*g.b)}) · OM₁·OM₂ = ${fmt(g.OMproduct)} (=c² ${fmt(g.c*g.c)})`;
-      if(m===3&&t===2)return `평행사변형의 넓이 ${fmt(g.parArea,4)} / ab/2=${fmt(g.a*g.b/2,4)}`;
+      if(m===3&&t===2)return `평행사변형의 넓이 ${fmt(g.parArea,4)} / $\\frac{ab}{2}$=${fmt(g.a*g.b/2,4)}`;
       if(m===3&&t===3)return `현재 P의 l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱 ${fmt(g.asymProduct,4)} · ${Math.abs(g.P.y)<.025?'P=꼭짓점':'P≠꼭짓점'}`;
-      if(m===3)return `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱 ${fmt(g.asymProduct,4)} / a²b²/c² = ${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)}`;
+      if(m===3)return `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱 ${fmt(g.asymProduct,4)} / $\\frac{a^2b^2}{c^2}$ = ${fmt(g.a*g.a*g.b*g.b/g.c/g.c,4)}`;
       if(m===4&&t===1)return `F′T:TF=${fmt(g.baseRatio,3)}:1 · PF′:PF=${fmt(g.focalRatio,3)}:1 · d₁d₂=${fmt(g.tanProduct)}`;
       if(m===4&&t===2)return `F′F*=${fmt(dist(g.Fp,g.Fstar))}=2a · OH₁=${fmt(dist(g.O,g.H1))}=a`;
       return `d₁=${fmt(g.d1)}, d₂=${fmt(g.d2)}, d₁d₂=${fmt(g.tanProduct,4)} (=b² ${fmt(g.b*g.b)}) · OH₁=OH₂=a`;
@@ -912,10 +912,10 @@ window.addEventListener('DOMContentLoaded', function () {
       } else if (m === 1) t = `현재 |PF′−PF|=${fmt(g.focusDiff)} / 2a=${fmt(2 * a)} · 삼각형 둘레 ${fmt(g.focalFp + g.focalP + 2 * c)}.`;
       else if (m === 2 && sb === 3) t = `P는 M₁M₂의 중점 · 삼각형의 넓이 ${fmt(g.tanArea)} / ab=${fmt(a * b)} · OM₁·OM₂=${fmt(g.OMproduct)}.`;
       else if (m === 2) t = `OH=${fmt(dist(g.O, g.H))}, FH=${fmt(dist(g.H, g.F))}; 점 P에서 점근선까지의 거리=${fmt(g.l1)} · 두 점근선이 이루는 각=${fmt(g.angle, 2)}°.`;
-      else if (m === 3 && sb === 2) t = `평행사변형의 넓이 ${fmt(g.parArea, 4)} / ab/2=${fmt(a * b / 2, 4)}.`;
-      else if (m === 3) t = `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱=${fmt(g.asymProduct, 4)}, a²b²/c²=${fmt(a * a * b * b / c / c, 4)}.`;
+      else if (m === 3 && sb === 2) t = `평행사변형의 넓이 ${fmt(g.parArea, 4)} / $\\frac{ab}{2}$=${fmt(a * b / 2, 4)}.`;
+      else if (m === 3) t = `l₁=${fmt(g.l1)}, l₂=${fmt(g.l2)} · 곱=${fmt(g.asymProduct, 4)}, $\\frac{a^2b^2}{c^2}$=${fmt(a * a * b * b / c / c, 4)}.`;
       else if (m === 4 && sb === 2) t = `F′F*=${fmt(dist(g.Fp, g.Fstar))}, OH₁=${fmt(dist(g.O, g.H1))} · F*는 F의 접선 대칭점.`;
-      else if (m === 4 && sb === 1) t = `F′T/TF=${fmt(g.baseRatio, 4)}, PF′/PF=${fmt(g.focalRatio, 4)} · 두 비가 같습니다.`;
+      else if (m === 4 && sb === 1) t = `$\\frac{F′T}{TF}$=${fmt(g.baseRatio, 4)}, $\\frac{PF′}{PF}$=${fmt(g.focalRatio, 4)} · 두 비가 같습니다.`;
       else t = `d₁=${fmt(g.d1)}, d₂=${fmt(g.d2)}, d₁d₂=${fmt(g.tanProduct, 4)} / b²=${fmt(b * b, 4)}.`;
       return {
         chips: [
@@ -927,7 +927,7 @@ window.addEventListener('DOMContentLoaded', function () {
         readouts: [
           { label: '초점 c = √(a²+b²) / 점 P', value: `c=${fmt(c)} | (${fmt(P.x)}, ${fmt(P.y)})`, color: 'amber', wide: true },
           { label: "거리의 차 |PF' - PF| = 2a", value: `|${fmt(g.focalFp)} − ${fmt(g.focalP)}| = ${fmt(g.focusDiff)}`, color: 'rose', wide: true },
-          { label: '점근선까지의 거리의 곱 l₁×l₂ = a²b²/c²', value: `${fmt(g.l1, 3)}×${fmt(g.l2, 3)} = ${fmt(g.asymProduct, 4)}`, color: 'sky', wide: true },
+          { label: '점근선까지의 거리의 곱 l₁×l₂ = $\\frac{a^2b^2}{c^2}$', value: `${fmt(g.l1, 3)}×${fmt(g.l2, 3)} = ${fmt(g.asymProduct, 4)}`, color: 'sky', wide: true },
           { label: '접선까지의 거리의 곱 d₁×d₂ = b²', value: `${fmt(g.d1, 3)}×${fmt(g.d2, 3)} = ${fmt(g.tanProduct, 4)}`, color: 'violet', wide: true },
           { label: '측정 오차(최대)', value: `${err < 0.0005 ? err.toExponential(1) : fmt(err, 4)}%`, color: 'green', wide: true }
         ],
@@ -1287,7 +1287,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const VH6 = [{ a2: 7, un: 9, ud: 1, cn: 10, cd: 1 }, { a2: 4, un: 14, ud: 1, cn: 12, cd: 1 }, { a2: 7, un: 11, ud: 2, cn: 15, cd: 2 }, { a2: 1, un: 7, ud: 2, cn: 3, cd: 1 }];
   const varH6 = varier(VH6, (o) => { const u = o.un / o.ud, c = o.cn / o.cd, a = o.a2 / 2; return { ...o, u, c, a, g: geoH6u(a, c, u), pfp: u + o.a2, fq: 2 * u + o.a2, c2x: 2 * c }; });
   const numTex = (n, d) => frTex(n, d), numTxt = (n, d) => frTxt(n, d);
-  const textH6 = (v = varH6.cur()) => `두 초점이 ${tex(`F(${numTxt(v.cn, v.cd)},0),\\ F'(-${numTxt(v.cn, v.cd)},0)`)}이고 주축의 길이가 ${tex(String(v.a2))}인 쌍곡선 위의 제1사분면의 점 ${tex('P')}에 대하여, 직선 ${tex("PF'")} 위에 ${tex('\\overline{PQ}=\\overline{PF}')}인 점 ${tex('Q')}를 ${tex("\\overline{PF'}<\\overline{QF'}")}이 되도록 잡는다. 삼각형 ${tex("QF'F")}와 삼각형 ${tex("FF'P")}가 서로 닮음일 때, 선분 ${tex('PF')}의 길이를 구하시오.`;
+  const textH6 = (v = varH6.cur()) => `두 초점이 ${tex(`F(${numTex(v.cn, v.cd)},0),\\ F'(-${numTex(v.cn, v.cd)},0)`)}이고 주축의 길이가 ${tex(String(v.a2))}인 쌍곡선 위의 제1사분면의 점 ${tex('P')}에 대하여, 직선 ${tex("PF'")} 위에 ${tex('\\overline{PQ}=\\overline{PF}')}인 점 ${tex('Q')}를 ${tex("\\overline{PF'}<\\overline{QF'}")}이 되도록 잡는다. 삼각형 ${tex("QF'F")}와 삼각형 ${tex("FF'P")}가 서로 닮음일 때, 선분 ${tex('PF')}의 길이를 구하시오.`;
 
   function drawH6(b, s0, v, lab) {
     const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
@@ -1339,12 +1339,12 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: ['q6a', 'q6y'],
       presets: () => [{ group: '값', label: 'a = 2.5, y₁ = 3.5', apply: (st) => { st.q6a = 2.5; st.q6y = 3.5; }, on: (st) => Math.abs(st.q6a - 2.5) < 0.03 && Math.abs(st.q6y - 3.5) < 0.03 }],
       steps: () => {
-        const v = varH6.cur(), u = numTxt(v.un, v.ud);
+        const v = varH6.cur(), u = numTex(v.un, v.ud);
         return [
           `쌍곡선의 정의: $PF′-PF=${v.a2}$ 이므로 $PF=u$ 라 하면 $PF′=u+${v.a2}$.`,
           `$PQ=PF=u$ 이고 $Q$는 $F′P$의 연장선 위이므로 $F′Q=PF′+PQ=2u+${v.a2}$ (차가 합으로 바뀝니다).`,
           `$\\triangle QF′F\\sim\\triangle FF′P$ ($∠F′$ 공통) 이므로 $F′F:F′P=F′Q:F′F$, 곧 $F′F^2=F′P\\cdot F′Q$.`,
-          `$F′F=${numTxt(2 * v.cn, v.cd)}$ 이므로 $${numTxt(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})$ ⇒ $u=${u}$. 따라서 $PF=${u}$.`
+          `$F′F=${numTex(2 * v.cn, v.cd)}$ 이므로 $${numTex(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})$ ⇒ $u=${u}$. 따라서 $PF=${u}$.`
         ];
       },
       reviewTop: reviewTopOf(() => textH6()),
@@ -1352,18 +1352,18 @@ window.addEventListener('DOMContentLoaded', function () {
       solution: {
         standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 차를 합으로, 닮음비로 한 번에', quickTag: '10초 컷',
         standard: () => {
-          const v = varH6.cur(), u = numTxt(v.un, v.ud);
+          const v = varH6.cur(), u = numTex(v.un, v.ud);
           return {
             steps: `① ${tex(`PF=u`)}, ${tex(`PF'=u+${v.a2}`)}. 점 ${tex('P')}의 좌표를 ${tex('(x_1,y_1)')}로 두고 두 거리를 좌표로 쓰면 제곱근이 생깁니다.<br>
 ② ${tex('Q')}의 좌표는 직선 ${tex("PF'")}의 방향벡터를 길이 비로 나눠야 하므로 계산이 길어집니다.<br>
-③ 닮음비 ${tex("F'F^2=F'P\\cdot F'Q")}로부터 ${tex(`${numTxt(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})`)}를 얻어 풀면 ${tex(`u=${u}`)}.`,
+③ 닮음비 ${tex("F'F^2=F'P\\cdot F'Q")}로부터 ${tex(`${numTex(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})`)}를 얻어 풀면 ${tex(`u=${u}`)}.`,
             warning: '좌표로 Q를 구하지 마세요. Q는 P 뒤쪽으로 PF만큼 연장한 점이라는 것만 쓰면 됩니다.'
           };
         },
         quick: () => {
-          const v = varH6.cur(), u = numTxt(v.un, v.ud);
+          const v = varH6.cur(), u = numTex(v.un, v.ud);
           return {
-            steps: `<strong class="text-sky-300">${tex("PF'-PF=2a")}</strong>(차)를 <strong class="text-pink-300">${tex("F'Q=PF'+PF")}</strong>(합)로 바꾸고, 닮음 ${tex("F'F^2=F'P\\cdot F'Q")}에 넣습니다. ${tex(`(${numTxt(2 * v.cn, v.cd)})^2=(u+${v.a2})(2u+${v.a2})`)} ⇒ ${tex(`PF=${u}`)}.`,
+            steps: `<strong class="text-sky-300">${tex("PF'-PF=2a")}</strong>(차)를 <strong class="text-pink-300">${tex("F'Q=PF'+PF")}</strong>(합)로 바꾸고, 닮음 ${tex("F'F^2=F'P\\cdot F'Q")}에 넣습니다. ${tex(`(${numTex(2 * v.cn, v.cd)})^2=(u+${v.a2})(2u+${v.a2})`)} ⇒ ${tex(`PF=${u}`)}.`,
             highlight: 'PQ = PF 인 점 Q를 연장선 위에 잡는 것은 "PF를 F′P 위로 옮겨 놓기"입니다. 옮겨 놓으면 차(2a)는 선분 F′R, 합은 F′Q로 보입니다.'
           };
         }
@@ -1395,7 +1395,7 @@ window.addEventListener('DOMContentLoaded', function () {
      근거 기출: 2025학년도 6월 모의평가 29번
      ====================================================================== */
   Object.assign(KP, {
-    q7a: { value: 1.118, min: 1.05, max: 2.2, step: 0.01, color: 'amber', label: '곡선 $|y^2-1|=\\dfrac{x^2}{a^2}$ 의 $a$', hint: '$a=\\sqrt5/2\\approx1.118$ 일 때 $A(0,c+1)$, $c=\\tfrac12$ 인 문제의 그림이 됩니다', format: (v) => `a = ${nf(v, 3)}` },
+    q7a: { value: 1.118, min: 1.05, max: 2.2, step: 0.01, color: 'amber', label: '곡선 $|y^2-1|=\\dfrac{x^2}{a^2}$ 의 $a$', hint: '$a=\\frac{\\sqrt5}{2}\\approx1.118$ 일 때 $A(0,c+1)$, $c=\\tfrac12$ 인 문제의 그림이 됩니다', format: (v) => `a = ${nf(v, 3)}` },
     q7y: { value: 0.5, min: -3, max: 3, step: 0.02, color: 'rose', label: '곡선 위 점 P의 $y$좌표', hint: '그림의 점 P를 끌어도 됩니다 (|y| ≤ 1 이면 타원 부분, |y| ≥ 1 이면 쌍곡선 부분)', format: (v) => `y = ${nf(v, 2)}` }
   });
   Object.assign(KS, { q7a: 1.118, q7y: 0.5, q7sx: 1 });
@@ -1469,9 +1469,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneH7() {
     return baseScene({
-      id: 'q7', title: '타원과 쌍곡선이 합쳐진 곡선 |y²−1| = x²/a² — 부분마다 알맞은 정의', short: '합쳐진 곡선',
-      question: '곡선 |y²−1| = x²/a² 는 y의 범위에 따라 어떤 곡선이 될까? 각 부분의 초점은 어디일까?',
-      guide: '점 <b>P</b>를 곡선 위에서 끌어 보세요. <b>|y| ≤ 1</b> 이면 타원 x²/a² + y² = 1 위의 점이라 <b>PC + PD = 2a</b>(초점 C, D), <b>|y| ≥ 1</b> 이면 쌍곡선 y² − x²/a² = 1 위의 점이라 <b>|PA − PB| = 2</b>(초점 A, B)입니다.',
+      id: 'q7', title: '타원과 쌍곡선이 합쳐진 곡선 |y²−1| = $\\frac{x^2}{a^2}$ — 부분마다 알맞은 정의', short: '합쳐진 곡선',
+      question: '곡선 |y²−1| = $\\frac{x^2}{a^2}$ 는 y의 범위에 따라 어떤 곡선이 될까? 각 부분의 초점은 어디일까?',
+      guide: '점 <b>P</b>를 곡선 위에서 끌어 보세요. <b>|y| ≤ 1</b> 이면 타원 $\\frac{x^2}{a^2}$ + y² = 1 위의 점이라 <b>PC + PD = 2a</b>(초점 C, D), <b>|y| ≥ 1</b> 이면 쌍곡선 y² − $\\frac{x^2}{a^2}$ = 1 위의 점이라 <b>|PA − PB| = 2</b>(초점 A, B)입니다.',
       enter: (s, lab) => { s.q7a = 1.118; s.q7y = 0.5; s.q7sx = 1; if (lab) lab.__cqKey = ''; },
       controls: ['q7a', 'q7y'],
       presets: () => [{ group: '값', label: 'a = √5/2 (문제의 곡선)', apply: (st) => { st.q7a = GA; }, on: (st) => Math.abs(st.q7a - GA) < 0.006 }],
@@ -1520,7 +1520,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ];
         return out;
       },
-      formula: '<b>|y² − m²| = x²/a² 의 두 얼굴</b><br>|y| ≤ m : 타원 x²/(am)² + y²/m² = 1 (초점 (±m√(a²−1), 0), 합 2am)<br>|y| ≥ m : 쌍곡선 y²/m² − x²/(am)² = 1 (초점 (0, ±m√(a²+1)), 차 2m)',
+      formula: '<b>|y² − m²| = $\\frac{x^2}{a^2}$ 의 두 얼굴</b><br>|y| ≤ m : 타원 $\\frac{x^2}{(am)^2}$ + $\\frac{y^2}{m^2}$ = 1 (초점 (±m√(a²−1), 0), 합 2am)<br>|y| ≥ m : 쌍곡선 $\\frac{y^2}{m^2}$ − $\\frac{x^2}{(am)^2}$ = 1 (초점 (0, ±m√(a²+1)), 차 2m)',
       notes: '타원의 꼭대기 (0, m) 와 쌍곡선의 꼭짓점 (0, m) 이 같은 점에서 만납니다. 점 Q가 쌍곡선의 어느 가지(위·아래)에 있는지에 따라 QA − QB 의 부호가 바뀝니다.',
       vary: varH7,
       draw: drawH7
@@ -1775,7 +1775,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const KICE_GROUPS = [
     { id: 'q5', title: '[기출 핵심] 포물선과 쌍곡선이 초점을 공유 — PH = PF, PF′ − PF = 2a', short: '포물선+쌍곡선', scenes: [sceneH5()] },
     { id: 'q6', title: '[기출 핵심] 쌍곡선 위의 점 — PQ = PF 로 차를 합으로, 닮음', short: '차를 합으로', scenes: [sceneH6()] },
-    { id: 'q7', title: '[기출 핵심] 타원과 쌍곡선이 합쳐진 곡선 |y²−1| = x²/a²', short: '합쳐진 곡선', scenes: [sceneH7()] }
+    { id: 'q7', title: '[기출 핵심] 타원과 쌍곡선이 합쳐진 곡선 |y²−1| = $\\frac{x^2}{a^2}$', short: '합쳐진 곡선', scenes: [sceneH7()] }
   ];
 
   return { groups: KICE_GROUPS, params: KP, state: KS };
@@ -1795,7 +1795,7 @@ window.addEventListener('DOMContentLoaded', function () {
     params: {
       ...KICE.params,
       a: { value: 3, min: 2, max: 5, step: 0.05, color: 'amber', label: '주축의 길이의 절반 $a$', hint: '꼭짓점이 $(\\pm a,0)$ · 주축의 길이는 $2a$', format: (v) => `a = ${fmt(v)} (2a = ${fmt(2 * v)})` },
-      b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $b/a$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
+      b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $\\frac{b}{a}$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
       py: { value: 5, min: -7.5, max: 7.5, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmt(v)} (x₁ = ${fmt(s.branch * s.a * Math.hypot(1, v / s.b))})` }
     },
     state: { ...KICE.state, branch: 1, lens: 'all', animDir: 1 },

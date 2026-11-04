@@ -83,22 +83,22 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         textbook: () => ({
           steps: `① 경사 단면의 정사영은 반지름 ${tex('3')}인 밑면 원이므로 ${tex("S'=9\\pi")}. 평면과 밑면의 예각은 ${tex('60^\\circ')}이다.<br/>
-② 정사영 넓이 관계 ${tex("S'=S\\cos60^\\circ")}에서 ${tex('S=9\\pi/(1/2)=18\\pi')}.<br/>
-③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=6/\\cos60^\\circ=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 타원은 유한한 단면으로 성립하지 않는다.`,
+② 정사영 넓이 관계 ${tex("S'=S\\cos60^\\circ")}에서 ${tex('S=\\frac{9\\pi}{\\frac{1}{2}}=18\\pi')}.<br/>
+③ 단면 타원의 교선 평행 단축은 지름 그대로 ${tex('2b=6')}; 수직 방향은 ${tex('60^\\circ')} 경사만큼 확대되어 ${tex('2a=\\frac{6}{\\cos60^\\circ}=12')}. 따라서 반축은 ${tex('a=6,b=3')}이다. ${tex('\\theta=90^\\circ')}이면 정사영 넓이는 0이 되어 유한한 단면 넓이를 역산할 수 없고, 타원은 유한한 단면으로 성립하지 않는다.`,
           warning: "정사영 역산은 cos θ > 0일 때만 유한한 단면 넓이를 복원한다. θ=90°에서는 0으로 나누지 않는다."
         }),
         shortcut: () => ({
           steps: `① 경사 단면(넓이 ${tex('S')})을 바닥으로 정사영하면 <strong>반지름 ${tex('3')}인 밑면 원(넓이 ${tex("S' = 9\\pi")})</strong>이 된다.<br/>
 ② <strong>[정사영의 넓이 관계]</strong>: ${tex("S \\cos 60^\\circ = S' = 9\\pi")}<br/>
 ③ 양변을 ${tex('\\cos 60^\\circ = \\dfrac{1}{2}')}로 나누면 장축을 구하지 않아도 <strong class="text-amber-300">${tex('S = \\dfrac{9\\pi}{\\cos 60^\\circ} = 18\\pi')}</strong>이다.<br/>
-&nbsp;&nbsp;(교선 방향인 단축 ${tex('2b = 6')}은 변하지 않고, 수직 방향인 장축 ${tex('2a = 6 / \\cos 60^\\circ = 12')})`,
+&nbsp;&nbsp;(교선 방향인 단축 ${tex('2b = 6')}은 변하지 않고, 수직 방향인 장축 ${tex('2a = \\frac{6}{\\cos 60^\\circ} = 12')})`,
           highlight: "비스듬히 잘린 단면의 넓이 S는 정사영의 넓이 S'에서 S = S' / cos θ 로 구할 수 있습니다. 3초 컷!"
         })
       },
 
       3: {
         badge: "장면 3 · 정육면체의 단면(정삼각형 BDE)과 정사영으로 이면각 구하기",
-        hint: "보조선을 그어 이면각을 구하기 어려울 때는 <span class='text-pink-300 font-bold'>원래 도형의 넓이 S</span>와 <span class='text-sky-300 font-bold'>밑면에 정사영시킨 도형의 넓이 S'</span>를 구하여 나누면 <span class='text-amber-300 font-bold'>cos θ = S' / S = 1/√3</span>이 됩니다.",
+        hint: "보조선을 그어 이면각을 구하기 어려울 때는 <span class='text-pink-300 font-bold'>원래 도형의 넓이 S</span>와 <span class='text-sky-300 font-bold'>밑면에 정사영시킨 도형의 넓이 S'</span>를 구하여 나누면 <span class='text-amber-300 font-bold'>cos θ = $\\frac{S′}{S}$ = 1/√3</span>이 됩니다.",
         tag: "정사영의 넓이로 이면각 구하기",
         targetTime: "목표 시간: 5초",
         question: () => `한 모서리의 길이가 ${tex('4')}인 정육면체 ${tex('ABCD-EFGH')}에서 세 꼭짓점 ${tex('B, D, E')}를 지나는 평면과 밑면 ${tex('EFGH')}가 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, 정사영을 이용하여 ${tex('\\cos\\theta')}의 값을 구하시오.`,
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "정육면체의 단면 ΔBDE (한 변이 4√2인 정삼각형, S = 8√3)",
           "꼭짓점 B, D, E를 밑면 EFGH에 정사영시킨 ΔFEH (직각이등변삼각형, S' = 8)",
-          "정사영의 넓이 관계에서 cos θ = S' / S = 8 / (8√3) = 1 / √3 (보조선이 필요 없음)"
+          "정사영의 넓이 관계에서 cos θ = $\\frac{S′}{S}$ = 8 / (8√3) = 1 / √3 (보조선이 필요 없음)"
         ],
         textbook: () => ({
           steps: `① 평면 ${tex('BDE')}와 밑면 ${tex('EFGH')}의 교선은 점 ${tex('E')}를 지나고 ${tex('BD')}와 평행한 직선이다. ${tex('FH')}의 중점을 ${tex('M')}, ${tex('BD')}의 중점을 M′이라 하면 EM, EM′은 모두 교선에 수직이므로 이면각은 ∠MEM′이다.<br/>
@@ -128,11 +128,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
       4: {
         badge: "장면 4 · 비스듬한 태양 광선과 지면에 생기는 그림자의 넓이 킬러",
-        hint: "빛이 수직으로 오지 않고 비스듬히 올 때는 <span class='text-amber-300 font-bold'>광선에 수직인 평면에 정사영시킨 넓이(S cos β)</span>를 구한 뒤 지면과 이루는 각 α의 코사인으로 나누는 <span class='text-sky-300 font-bold'>S' = S cos β / cos α</span>를 씁니다.",
+        hint: "빛이 수직으로 오지 않고 비스듬히 올 때는 <span class='text-amber-300 font-bold'>광선에 수직인 평면에 정사영시킨 넓이(S cos β)</span>를 구한 뒤 지면과 이루는 각 α의 코사인으로 나누는 <span class='text-sky-300 font-bold'>S' = $\\frac{S\\cos β}{\\cos α}$</span>를 씁니다.",
         tag: "그림자의 넓이 킬러",
         targetTime: "목표 시간: 10초",
         question: () => `지면 ${tex('\\alpha')}와 ${tex('30^\\circ')}의 각을 이루는 평면 위에 넓이가 ${tex('S = 12')} 인 원판이 놓여 있다. 태양 광선이 지면과 ${tex('60^\\circ')}의 각을 이루면서 원판의 면에 수직으로 비출 때, 지면 ${tex('\\alpha')}에 생기는 그림자의 넓이 ${tex("S'")}를 구하시오.`,
-        answerBadge: () => `${tex("S' = \\dfrac{S}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}`,
+        answerBadge: () => `${tex("S' = \\dfrac{S}{\\cos 30^\\circ} = \\dfrac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}")}`,
         boardDeg: 30,
         sunDeg: 60,
         cam: { yaw: (-25 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
@@ -140,19 +140,19 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "지면과 30°를 이루는 원판(넓이 S = 12)과 지면과 60°를 이루는 태양 광선 (원판에 수직)",
           "지면 α 위에 길게 늘어나는 타원 그림자 (넓이 S')",
-          "지면의 그림자 S'를 광선에 수직인 원판 S로 정사영시키면: S' cos 30° = S ⇒ S' = S / cos 30°"
+          "지면의 그림자 S'를 광선에 수직인 원판 S로 정사영시키면: S' cos 30° = S ⇒ S' = $\\frac{S}{\\cos30^\\circ}$"
         ],
         textbook: () => ({
           steps: `① 단면 직각삼각형에서 원판의 지름을 ${tex('2r')}이라 할 때, 지면에 맺히는 그림자의 가로 길이는:<br/>
 &nbsp;&nbsp;${tex('2a = \\dfrac{2r}{\\sin 60^\\circ} = \\dfrac{2r}{\\cos 30^\\circ}')}<br/>
 ② 교선 방향의 세로 지름 ${tex('2b = 2r')}은 불변이므로<br/>
-③ 타원 그림자의 넓이 ${tex("S' = \\pi a b = \\dfrac{\\pi r^2}{\\cos 30^\\circ} = \\dfrac{12}{\\sqrt{3}/2} = 8\\sqrt{3}")}을 계산한다.`,
+③ 타원 그림자의 넓이 ${tex("S' = \\pi a b = \\dfrac{\\pi r^2}{\\cos 30^\\circ} = \\dfrac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}")}을 계산한다.`,
           warning: "주의: 광선이 원판에 수직이 아닌 경우에는 도형의 길이만으로 구하기 어렵습니다."
         }),
         shortcut: () => ({
           steps: `① 원판은 지면과 ${tex('30^\\circ')} 기울고 광선은 지면과 ${tex('60^\\circ')}를 이루므로 광선은 원판에 수직이다. 광선 방향 정사영에서 원판과 지면 사이 각은 ${tex('30^\\circ')}이다.<br/>
-② 원판의 직경 중 경사 방향 성분은 지면 그림자에서 ${tex('1/\\cos30^\\circ')}배 늘고, 교선 방향 직경은 그대로다. 따라서 그림자 넓이 배율도 ${tex('1/\\cos30^\\circ')}이다.<br/>
-③ ${tex("S'=S/\\cos30^\\circ=12/(\\sqrt3/2)=8\\sqrt3")}. 화면의 3D 투시 각 대신 주어진 실제 지면각으로 계산한다. 광선이 원판에 수직이 아니라면 배율은 일반적으로 ${tex("\\sin(\\text{원판-광선 각})/\\sin(\\text{지면-광선 각})")}이다.`,
+② 원판의 직경 중 경사 방향 성분은 지면 그림자에서 ${tex('\\frac{1}{\\cos30^\\circ}')}배 늘고, 교선 방향 직경은 그대로다. 따라서 그림자 넓이 배율도 ${tex('\\frac{1}{\\cos30^\\circ}')}이다.<br/>
+③ ${tex("S'=\\frac{S}{\\cos30^\\circ}=\\frac{12}{\\frac{\\sqrt3}{2}}=8\\sqrt3")}. 화면의 3D 투시 각 대신 주어진 실제 지면각으로 계산한다. 광선이 원판에 수직이 아니라면 배율은 일반적으로 ${tex("\\sin(\\text{원판-광선 각})/\\sin(\\text{지면-광선 각})")}이다.`,
           highlight: "광선이 원판에 수직이 아닐 때의 일반적인 관계: 지면의 그림자 S' = S × sin(원판과 광선이 이루는 각) / sin(지면과 광선이 이루는 각)"
         })
       }
@@ -640,7 +640,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: [
         'G는 △BCD의 무게중심이므로 △GBC, △GCD, △GBD의 넓이가 같다. △GCD의 넓이 S = 36√3 ÷ 3 = 12√3',
         '꼭짓점 D, G에서 평면 ABC에 내린 수선의 발 D′(= △ABC의 무게중심), G′ ⇒ 정사영 △G′CD′',
-        'BC의 중점 M에서 ∠DMD′ = θ인 직각삼각형 DMD′: cosθ = MD′/MD = 1/3 ⇒ S′ = 12√3 × 1/3 = 4√3'
+        'BC의 중점 M에서 ∠DMD′ = θ인 직각삼각형 DMD′: cosθ = $\\frac{MD′}{MD}$ = 1/3 ⇒ S′ = 12√3 × 1/3 = 4√3'
       ],
       textbook: () => ({
         steps: `① 한 모서리가 ${tex('12')}인 정삼각형 ${tex('BCD')}의 넓이는 ${tex('\\dfrac{\\sqrt3}{4}\\cdot12^2=36\\sqrt3')}. ${tex('G')}는 무게중심이므로 ${tex('\\triangle GBC,\\ \\triangle GCD,\\ \\triangle GBD')}의 넓이가 모두 같아 ${tex('\\triangle GCD=\\dfrac13\\cdot36\\sqrt3=12\\sqrt3')}.<br/>
@@ -671,7 +671,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: [
         '평면 BDN이 정육면체를 자른 단면 △BDN (N은 모서리 CG 위의 점)',
         '점 N을 밑면에 정사영한 점은 C ⇒ 밑면 위의 정사영 △BDC (넓이 18)',
-        'BD의 중점 P: CP ⊥ BD, NP ⊥ BD (삼수선의 정리) ⇒ θ = ∠NPC, tanθ = CN/CP = 3/(3√2) = 1/√2, cosθ = √6/3'
+        'BD의 중점 P: CP ⊥ BD, NP ⊥ BD (삼수선의 정리) ⇒ θ = ∠NPC, tanθ = $\\frac{CN}{CP}$ = 3/(3√2) = 1/√2, cosθ = √6/3'
       ],
       textbook: () => ({
         steps: `① ${tex('BD')}의 중점을 ${tex('P')}라 하면 ${tex('C')}에서 ${tex('BD')}까지의 거리는 ${tex('\\overline{CP}=\\dfrac12\\cdot6\\sqrt2=3\\sqrt2')}이고 ${tex('\\overline{CN}=3')}이다.<br/>
@@ -698,7 +698,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: [
         '정삼각형 ABC (한 모서리 6, 넓이 S = 9√3)',
         '평면 ABM 위로의 정사영: C에서 평면 ABM에 내린 수선의 발 C′ ⇒ △ABC′ (M이 중점이면 C′ = M)',
-        'AB의 중점 K, θ = ∠CKM: CM ⊥ KM, KC = 3√3, KM = 3√2 ⇒ cosθ = KM/KC = √6/3, S′ = 9√3 × √6/3 = 9√2'
+        'AB의 중점 K, θ = ∠CKM: CM ⊥ KM, KC = 3√3, KM = 3√2 ⇒ cosθ = $\\frac{KM}{KC}$ = √6/3, S′ = 9√3 × √6/3 = 9√2'
       ],
       textbook: () => ({
         steps: `① ${tex('AB')}의 중점을 ${tex('K')}라 하면 ${tex('\\overline{KC}=3\\sqrt3')}. ${tex('\\overline{AM}=\\overline{BM}=3\\sqrt3')}(정삼각형 ${tex('ACD,\\ BCD')}의 중선)이므로 ${tex('\\overline{KM}=\\sqrt{27-9}=3\\sqrt2')}이고 ${tex('MK\\perp AB')}.<br/>
@@ -792,15 +792,15 @@ window.addEventListener('DOMContentLoaded', function () {
       return [
         { label: '모서리 CG 위의 점 N', value: `CN = ${g.cn.toFixed(1)} (CG = 6)`, color: 'amber' },
         { label: '직각삼각형 NCP', value: `CP = 3√2 ≈ ${g.CP.toFixed(3)} | NP = ${g.NP.toFixed(3)}`, color: 'rose' },
-        { label: 'tanθ = CN / CP', value: (g.cn / g.CP).toFixed(4), color: 'sky' },
-        { label: 'cosθ = CP / NP | θ', value: `${g.cos.toFixed(4)} | ${th.toFixed(1)}°`, color: 'green' }
+        { label: 'tanθ = $\\frac{CN}{CP}$', value: (g.cn / g.CP).toFixed(4), color: 'sky' },
+        { label: 'cosθ = $\\frac{CP}{NP}$ | θ', value: `${g.cos.toFixed(4)} | ${th.toFixed(1)}°`, color: 'green' }
       ];
     }
     const g = geo7(false), th = deg(Math.acos(g.cos)), mid = near(g.t, .5);
     return [
       { label: '정삼각형 ABC 넓이 S', value: `9√3 ≈ ${g.S.toFixed(3)}`, color: 'rose' },
       { label: '점 M의 위치', value: `CM = ${(g.t * 6).toFixed(2)} | MD = ${((1 - g.t) * 6).toFixed(2)} (CD = 6)`, color: 'amber' },
-      { label: 'cosθ = KC′ / KC | θ', value: `${g.cos.toFixed(4)} | ${th.toFixed(1)}°`, color: 'sky' },
+      { label: 'cosθ = $\\frac{KC′}{KC}$ | θ', value: `${g.cos.toFixed(4)} | ${th.toFixed(1)}°`, color: 'sky' },
       { label: '정사영 △ABC′ 넓이 S′ = S cosθ', value: mid ? `9√2 ≈ ${g.Sp.toFixed(3)}` : g.Sp.toFixed(3), color: 'green' }
     ];
   }
@@ -838,7 +838,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 3) return [
       { label: '정삼각형 BDE 넓이 S', value: `8√3 ≈ ${(8 * Math.sqrt(3)).toFixed(3)}`, color: 'rose' },
       { label: '바닥 정사영 FEH 넓이 S′', value: '8.000', color: 'amber' },
-      { label: 'cosθ = S′/S', value: (1 / Math.sqrt(3)).toFixed(6), color: 'sky' },
+      { label: 'cosθ = $\\frac{S′}{S}$', value: (1 / Math.sqrt(3)).toFixed(6), color: 'sky' },
       { label: '직각삼각형 EMM′', value: 'EM = 2√2, MM′ = 4', color: 'green' }
     ];
     const b = state.boardDeg, s = state.sunDeg, normal = 12 * Math.sin(rad(b + s)), area = normal / Math.sin(rad(s));

@@ -187,7 +187,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       4: {
         badge: "장면 4 · 시점 P가 움직이는 두 벡터의 내적 (PA · PB = PM² - L²)",
-        hint: "시점 P가 움직이는 내적 <span class='text-amber-300 font-bold'>PA · PB</span>는 선분 AB의 <span class='text-emerald-300 font-bold'>중점 M</span>을 잡아 <span class='text-amber-300 font-bold'>PM² - (AB/2)²</span>으로 바꿀 수 있습니다.",
+        hint: "시점 P가 움직이는 내적 <span class='text-amber-300 font-bold'>PA · PB</span>는 선분 AB의 <span class='text-emerald-300 font-bold'>중점 M</span>을 잡아 <span class='text-amber-300 font-bold'>PM² - ($\\frac{AB}{2}$)²</span>으로 바꿀 수 있습니다.",
         tag: "시점이 움직이는 내적 킬러",
         targetTime: "목표 시간: 5초",
         question: () => `길이가 ${tex('4')}인 고정된 선분 ${tex('AB')}와 그 중점 ${tex('M')}이 있다. 점 ${tex('M')}으로부터 거리가 ${tex('5')}인 점 ${tex('C')}를 중심으로 하고 반지름이 ${tex(`r = ${state.r34.toFixed(1)}`)}인 원 위를 움직이는 점 ${tex('P')}에 대하여, 내적 ${tex('\\overrightarrow{PA} \\cdot \\overrightarrow{PB}')}의 최댓값과 최솟값을 구하시오.`,
@@ -1890,7 +1890,7 @@ window.addEventListener('DOMContentLoaded', function () {
       time: '목표 시간: 30초',
       text: (I) => I.text, answer: (I) => I.ans, figure: FIG[m], steps: (I) => I.steps,
       std: (I) => OVD.stdOf(I.steps), quick: (I) => I.quick,
-      warning: m === 1 ? '길이 |OH|만 곱하면 B가 O의 반대쪽에 있을 때 음수 부호를 잃습니다. 부호 있는 정사영 x_H를 쓰세요.' : m === 2 ? '성분이 주어지면 코사인법칙보다 성분 내적이 훨씬 간단합니다. 사잇각의 범위는 0°~180°입니다.' : m === 3 ? '원의 중심을 지나게 분해하면 고정항과 방향만 변하는 항으로 나뉩니다.' : '시점 P가 움직이는 내적은 선분 AB의 중점 M을 이용해 PM² − (AB/2)²으로 바꿉니다.',
+      warning: m === 1 ? '길이 |OH|만 곱하면 B가 O의 반대쪽에 있을 때 음수 부호를 잃습니다. 부호 있는 정사영 x_H를 쓰세요.' : m === 2 ? '성분이 주어지면 코사인법칙보다 성분 내적이 훨씬 간단합니다. 사잇각의 범위는 0°~180°입니다.' : m === 3 ? '원의 중심을 지나게 분해하면 고정항과 방향만 변하는 항으로 나뉩니다.' : '시점 P가 움직이는 내적은 선분 AB의 중점 M을 이용해 PM² − ($\\frac{AB}{2}$)²으로 바꿉니다.',
       highlight: m === 1 ? '내적은 한 벡터의 크기와 다른 벡터의 부호 있는 정사영의 곱입니다.' : m === 2 ? '내적이 0이면 수직, 양수이면 예각, 음수이면 둔각입니다.' : m === 3 ? 'u·OP의 최댓값·최솟값은 u·OC ± |u|r입니다.' : 'PA·PB = PM² − (AB의 절반)²',
       reviewChips: (I) => [{ tex: m === 1 ? `${V('OA')}\\cdot${V('OB')}=${I.val}` : m === 2 ? `\\vec a\\cdot\\vec b=${I.d},\\ \\theta=${I.th}^\\circ` : m === 3 ? `M=${I.M},\\ m=${I.m}` : `\\text{최대 }${I.hi},\\ \\text{최소 }${I.lo}`, color: 'green' }]
     });

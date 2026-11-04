@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       2: {
         badge: "장면 2 · 포물선과 직선 사이의 넓이와 넓이를 이등분하는 직선",
-        hint: "조절 막대로 직선의 기울기 <span class='text-amber-300 font-bold'>m</span>을 바꿔 보세요! <span class='text-pink-300 font-bold'>m = 3 - 3/∛2 ≈ 0.62</span> 일 때 직선이 포물선과 x축 사이의 넓이를 정확히 반으로 나눕니다!",
+        hint: "조절 막대로 직선의 기울기 <span class='text-amber-300 font-bold'>m</span>을 바꿔 보세요! <span class='text-pink-300 font-bold'>m = 3 - $\\frac{3}{\\sqrt[3]{2}}$ ≈ 0.62</span> 일 때 직선이 포물선과 x축 사이의 넓이를 정확히 반으로 나눕니다!",
         tag: "포물선과 직선으로 둘러싸인 넓이의 이등분",
         targetTime: "목표 시간: 5초",
         question: () => `곡선 ${tex('y = -x^2 + 3x')} 와 ${tex('x')}축으로 둘러싸인 부분의 넓이 ${tex('S_0')}를 구하고, 원점을 지나는 직선 ${tex('y = mx')} 가 이 넓이를 이등분할 때 상수 ${tex('(3 - m)^3')} 의 값을 구하시오.`,
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: () => ({
           steps: `① 포물선과 직선으로 둘러싸인 넓이는 두 교점의 ${tex('x')}좌표를 ${tex('\\alpha, \\beta')} (${tex('a')}는 이차항의 계수)라 할 때 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{6}(\\beta - \\alpha)^3')}</strong> 입니다. (교점 간격 ${tex('L^3')}에 비례)<br/>
 ② 원래 교점 간격은 ${tex('L_0 = 3')} 이므로 전체 넓이는 <strong class="text-amber-300">${tex('S_0 = \\dfrac{1}{6} \\times 3^3 = \\dfrac{9}{2}')}</strong> 입니다.<br/>
-③ 넓이가 절반(${tex('1/2')})이 되려면 새 교점 간격 ${tex('L_1 = 3 - m')} 의 세제곱이 원래 간격의 세제곱의 절반이어야 합니다:<br/>
+③ 넓이가 절반(${tex('\\frac{1}{2}')})이 되려면 새 교점 간격 ${tex('L_1 = 3 - m')} 의 세제곱이 원래 간격의 세제곱의 절반이어야 합니다:<br/>
 &nbsp;&nbsp;<strong class="text-sky-300">${tex('(3 - m)^3 = \\dfrac{1}{2} \\times 3^3 = \\dfrac{27}{2}')}</strong>`,
           highlight: "💡 포물선 넓이를 이등분할 때는 적분하지 마세요! 【 (새 교점 간격)³ = 1/2 × (원래 교점 간격)³ 】 공식으로 3초 컷!"
         })
@@ -164,7 +164,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: () => ({
           steps: `① 가운데 교점이 양 끝 교점 ${tex('-1, 3')} 의 한가운데이면 그래프가 점 ${tex('(\\beta, 0)')} 에 대하여 대칭이므로 <strong>${tex('S_1 = S_2')}</strong> 입니다. (이때만 ${tex('S_1 = S_2')} 가 성립함은 ${tex('\\int_{-1}^{3} f(x)\\,dx = 0')} 을 풀어 확인할 수 있습니다.)<br/>
 ② 따라서 적분 계산 없이 <strong class="text-amber-300">${tex('\\beta = \\dfrac{-1 + 3}{2} = 1')}</strong> 입니다.<br/>
-③ 교점 사이의 간격이 ${tex('d = 2')} 이므로 직접 적분하여 얻는 한쪽 넓이 공식 <strong class="text-sky-300">${tex('S_1 = \\dfrac{|a|}{4}d^4 = \\dfrac{1/2}{4} \\times 2^4 = 2')}</strong> 를 쓰면 됩니다.`,
+③ 교점 사이의 간격이 ${tex('d = 2')} 이므로 직접 적분하여 얻는 한쪽 넓이 공식 <strong class="text-sky-300">${tex('S_1 = \\dfrac{|a|}{4}d^4 = \\dfrac{\\frac{1}{2}}{4} \\times 2^4 = 2')}</strong> 를 쓰면 됩니다.`,
           highlight: "💡 삼차함수 y = a(x − α)(x − β)(x − γ) 의 그래프와 x축으로 둘러싸인 두 부분의 넓이가 같으면 β = (α + γ)/2 이고, 한쪽 넓이는 (|a|/4)·d⁴ (d = β − α) 입니다."
         })
       },
@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: () => ({
           steps: `① 두 함수의 차 <strong class="text-sky-300">${tex('h(x) = f(x) - g(x) = \\dfrac{1}{2}x^2(x - 1)')}</strong> 를 구합니다.<br/>
 ② ${tex('x = 0')} 이 제곱 인수(두 곡선이 접하는 점)이고 ${tex('x = 1')} 이 교점이므로, ${tex('h(x) = a(x-\\alpha)^2(x-\\beta)')} 꼴의 넓이 공식 ${tex('S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4')} 을 쓸 수 있습니다. (이 공식은 ${tex('\\int_{\\alpha}^{\\beta} a(x-\\alpha)^2(x-\\beta)\\,dx')} 를 계산하여 얻습니다.)<br/>
-③ 따라서 부정적분을 계산하지 않고 <strong class="text-amber-300">${tex('S = \\dfrac{|a|}{12}(1 - 0)^4 = \\dfrac{1/2}{12} \\times 1^4 = \\dfrac{1}{24}')}</strong> 입니다.`,
+③ 따라서 부정적분을 계산하지 않고 <strong class="text-amber-300">${tex('S = \\dfrac{|a|}{12}(1 - 0)^4 = \\dfrac{\\frac{1}{2}}{12} \\times 1^4 = \\dfrac{1}{24}')}</strong> 입니다.`,
           highlight: "💡 두 곡선 사이의 넓이는 h(x) = f(x) − g(x) 를 인수분해한 꼴을 보고 구합니다. 예를 들어 a(x−α)(x−β) 이면 S = (|a|/6)(β−α)³, a(x−α)²(x−β) 이면 S = (|a|/12)(β−α)⁴ 입니다."
         })
       },
@@ -202,7 +202,7 @@ window.addEventListener('DOMContentLoaded', function () {
         hint: "아래끝 <span class='text-amber-300 font-bold'>a</span>와 위끝 <span class='text-sky-300 font-bold'>b</span>를 끌어 보세요! <span class='text-pink-300 font-bold'>x축 쪽 f(x)의 정적분(분홍)</span>과 <span class='text-sky-300 font-bold'>y축 쪽 역함수의 정적분(하늘)</span>을 합치면 큰 직사각형에서 작은 직사각형을 뺀 ㄱ자 모양의 넓이가 됩니다!",
         tag: "역함수의 정적분",
         targetTime: "목표 시간: 3초",
-        question: () => `함수 ${tex('f(x) = \\dfrac{1}{4}x^3 + \\dfrac{1}{2}x')} 의 역함수를 ${tex('f^{-1}(x)')}라 할 때, 정적분의 합 ${tex('\\displaystyle\\int_{1}^{2} f(x)\\,dx + \\int_{3/4}^{3} f^{-1}(x)\\,dx')} 의 값을 구하시오.`,
+        question: () => `함수 ${tex('f(x) = \\dfrac{1}{4}x^3 + \\dfrac{1}{2}x')} 의 역함수를 ${tex('f^{-1}(x)')}라 할 때, 정적분의 합 ${tex('\\displaystyle\\int_{1}^{2} f(x)\\,dx + \\int_{\\frac{3}{4}}^{3} f^{-1}(x)\\,dx')} 의 값을 구하시오.`,
         answerBadge: () => `${tex('2 \\times 3 - 1 \\times \\dfrac{3}{4} = \\dfrac{21}{4} = 5.25')}`,
         // a = 1 => f(1) = 0.75 (3/4), b = 2 => f(2) = 2 + 1 = 3.
         // b*f(b) - a*f(a) = 2*3 - 1*0.75 = 6 - 0.75 = 5.25 (21/4)
@@ -478,11 +478,11 @@ window.addEventListener('DOMContentLoaded', function () {
           ...topInfo(s, lab, [
             { k: '함수', tex: `f(x) = -x^2 + 3x, \\; g(x) = ${num(m)}x`, color: 'ink' },
             { k: '윗부분', tex: `S_1 = \\dfrac{1}{6}(3-m)^3 = ${num(s1)}`, color: 'rose' }
-          ], half ? { tone: 'ok', text: `이등분! S₁ = ${fmt(s1)} = S₀ / 2` } : { tone: 'info', text: `S₁ = ${fmt(s1)} (전체의 ${fmt(ratio * 100, 1)}%)` }),
+          ], half ? { tone: 'ok', text: `이등분! S₁ = ${fmt(s1)} = $\\frac{S_0}{2}$` } : { tone: 'info', text: `S₁ = ${fmt(s1)} (전체의 ${fmt(ratio * 100, 1)}%)` }),
           readouts: [
             { label: '교점 구간 [0, 3−m]', value: `[0, ${fmt(L)}]`, color: 'amber', ref: 'beta', note: `L = ${fmt(L)}` },
             { label: 'S₁(윗부분) | S₀(전체)', value: `${fmt(s1)} | 4.50`, color: 'rose', ref: 'S1' },
-            { label: '비율 S₁ / S₀', value: `${fmt(ratio * 100, 1)}%`, color: 'sky', ref: 'S0' },
+            { label: '비율 $\\frac{S_1}{S_0}$', value: `${fmt(ratio * 100, 1)}%`, color: 'sky', ref: 'S0' },
             { label: '(3 − m)³', value: fmt(Math.pow(L, 3)), color: 'violet', note: '이등분이면 27/2 = 13.50' }
           ],
           tape: s.step >= 3 ? { title: `포물선과 직선 넓이 $S_1 = \\dfrac{|a|}{6}(3-m)^3$ = ${fmt(s1)}  (전체 넓이 4.50)` } : null
@@ -1248,13 +1248,13 @@ window.addEventListener('DOMContentLoaded', function () {
         chips: [{ k: '함수', tex: 'f(x) = \\dfrac{x^2}{4}', color: 'ink' }, { k: '구간', tex: '[0, 4]', color: 'amber' }, { k: '윗합', tex: 'S_n = \\dfrac{8}{3}\\left(1 + \\dfrac{1}{n}\\right)\\left(2 + \\dfrac{1}{n}\\right)', color: 'rose' }],
         status: { tone: n >= 40 ? 'ok' : 'info', text: n >= 40 ? `n = ${n}: 윗합 ${fv(up, 3)}, 아랫합 ${fv(lo, 3)} → 둘 다 16/3 ≈ ${fv(I, 3)} 에 가까워집니다` : `n = ${n}: 아랫합 ${fv(lo, 3)} ≤ 16/3 ≤ 윗합 ${fv(up, 3)}` },
         readouts: [
-          { label: '직사각형 개수 n | 가로 Δx = 4/n', value: `${n} | ${fv(dx, 3)}`, color: 'amber', ref: 'dx' },
+          { label: '직사각형 개수 n | 가로 $\\Delta x=\\frac{4}{n}$', value: `${n} | ${fv(dx, 3)}`, color: 'amber', ref: 'dx' },
           { label: '윗합 Sₙ (오른쪽 끝, 분홍)', value: fv(up, 3), color: 'rose', ref: 'up' },
           { label: '아랫합 sₙ (왼쪽 끝, 하늘)', value: fv(lo, 3), color: 'sky', ref: 'low' },
-          { label: '정적분 ∫₀⁴ x²/4 dx (n → ∞ 의 값)', value: '16/3 ≈ 5.333', color: 'green', ref: 'I' },
-          { label: '윗합 − 아랫합 = 16/n', value: fv(up - lo, 3), color: 'violet', ref: 'gap', wide: true, note: 'n 이 커질수록 0 에 가까워집니다' }
+          { label: '정적분 ∫₀⁴ $\\frac{x^2}{4}$ dx (n → ∞ 의 값)', value: '16/3 ≈ 5.333', color: 'green', ref: 'I' },
+          { label: '윗합 − 아랫합 = $\\frac{16}{n}$', value: fv(up - lo, 3), color: 'violet', ref: 'gap', wide: true, note: 'n 이 커질수록 0 에 가까워집니다' }
         ],
-        tape: { title: `윗합 = 아랫합 + 틈  (틈 16/n = ${fv(up - lo, 3)})`, segments: [{ text: `아랫합 ${fv(lo, 2)}`, weight: Math.max(0.06, lo), color: 'sky' }, { text: `틈 ${fv(up - lo, 2)}`, weight: Math.max(0.06, up - lo), color: 'rose' }] }
+        tape: { title: `윗합 = 아랫합 + 틈  (틈 $\\frac{16}{n}$ = ${fv(up - lo, 3)})`, segments: [{ text: `아랫합 ${fv(lo, 2)}`, weight: Math.max(0.06, lo), color: 'sky' }, { text: `틈 ${fv(up - lo, 2)}`, weight: Math.max(0.06, up - lo), color: 'rose' }] }
       };
     }
     const p = var8.cur(), ys = [0, p.f(p.x0), p.f(p.x1)];
@@ -1262,7 +1262,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       chips: [{ k: '함수', tex: 'f(x) = ' + p.ftex, color: 'ink' }, { k: '구간', tex: `[${p.x0}, ${p.x1}]`, color: 'amber' }],
       formula: `<b>구분구적법 → 정적분</b><br>구간 ${tex('[a, b]')} 를 ${tex('n')} 등분하면 ${tex('\\Delta x = \\dfrac{b-a}{n}')}, ${tex('x_k = a + k\\Delta x')} 이고 ${tex('\\displaystyle\\lim_{n\\to\\infty}\\sum_{k=1}^{n} f(x_k)\\Delta x = \\int_a^b f(x)\\,dx')} 입니다.<br>합의 모양을 ${tex('\\Delta x \\cdot f(x_k)')} 로 읽는 것이 풀이의 시작입니다. ${tex('\\dfrac{1}{n}')} 이 ${tex('\\Delta x')} 가 되지 않으면 상수배를 맞춥니다.`,
-      notes: '이전 교육과정(구분구적법) 내용입니다. 지금 교육과정에서는 정적분을 곧바로 정의하지만, 옛 기출을 풀 때 Σ 꼴을 정적분으로 읽는 연습이 됩니다. (b − a)/n 와 f 안의 k 앞 계수가 같아야 구간이 [a, b] 로 정해집니다.'
+      notes: '이전 교육과정(구분구적법) 내용입니다. 지금 교육과정에서는 정적분을 곧바로 정의하지만, 옛 기출을 풀 때 Σ 꼴을 정적분으로 읽는 연습이 됩니다. $\\frac{b-a}{n}$ 와 f 안의 k 앞 계수가 같아야 구간이 [a, b] 로 정해집니다.'
     };
   }
   function draw8(b, s, v, lab) {
@@ -1277,7 +1277,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.plot(F8, { color: 'ink', width: 3.2, glow: true, from: -0.5, to: 4.5 });
       b.seg([X8, 0], [X8, F8(X8)], { color: 'amber', width: 1.8, dash: [5, 5] });
       tag(b, [X8, 0], 'x = 4', { color: 'amber', dy: 36 });
-      tag(b, [3.2, F8(3.2)], 'y = x²/4', { color: 'ink', dx: -10, dy: -16, align: 'right' });
+      tag(b, [3.2, F8(3.2)], 'y = \\frac{x²}{4}', { color: 'ink', dx: -10, dy: -16, align: 'right' });
       // Δx 표시
       b.seg([0, -0.5], [dx, -0.5], { color: 'amber', width: 3 });
       tag(b, [0, -0.5], nr ? 'Δx' : `Δx = 4/${n}`, { color: 'amber', dx: 0, dy: 20, align: 'left', ref: 'dx' });
@@ -1293,7 +1293,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.plot(p.f, { color: 'ink', width: 3.2, glow: true, from: p.x0 - 0.5, to: p.x1 + 0.6 });
     [p.x0, p.x1].forEach((x) => { b.seg([x, 0], [x, p.f(x)], { color: 'amber', width: 1.8, dash: [5, 5] }); });
     tag(b, [p.x1, p.f(p.x1)], 'y = f(x)', { color: 'ink', dx: -8, dy: -16, align: 'right' });
-    if (st >= 1) { b.seg([p.x0, -0.55], [p.x0 + d, -0.55], { color: 'rose', width: 3, ref: 'up' }); tag(b, [p.x0, -0.55], nr ? 'Δx' : 'Δx = ' + (p.x1 - p.x0) + '/n', { color: 'rose', dy: 20, align: 'left', ref: 'up' }); }
+    if (st >= 1) { b.seg([p.x0, -0.55], [p.x0 + d, -0.55], { color: 'rose', width: 3, ref: 'up' }); tag(b, [p.x0, -0.55], nr ? 'Δx' : 'Δx = \\frac{' + (p.x1 - p.x0) + '}{n}', { color: 'rose', dy: 20, align: 'left', ref: 'up' }); }
     if (st >= 3) tag(b, [(p.x0 + p.x1) / 2, ymax * 0.18], `∫ = ${fracTxt(p.I)}`, { color: 'amber', size: 14, ref: 'I' });
     paneEnd(b);
   }

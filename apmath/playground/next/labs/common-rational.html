@@ -213,16 +213,16 @@ window.addEventListener('DOMContentLoaded', function () {
   function sceneR1() {
     const reset = (s) => { s.m1 = 0; s.rk = 4; s.rp = 2; s.rq = 1; s.fa = 1; s.fb = 2; s.fc = -2; };
     return baseScene({
-      id: 'r1', title: '평행이동과 점근선 — y=k/(x−p)+q', short: '평행이동·점근선',
-      question: 'y=k/x를 옮기면 식의 p, q는 그림의 어디에 나타날까?',
-      guide: '보라색 점 <b>C</b>(두 점근선의 교점)를 끌어 보세요. 점선 <b>y=k/x</b>가 <b>x방향 p, y방향 q</b>만큼 통째로 옮겨 가고, 점근선 <b>x=p</b>, <b>y=q</b>가 함께 따라갑니다. 「분수꼴」 단추를 누르면 $\\dfrac{ax+b}{x+c}$ 에서 p, q를 읽는 연습을 합니다.',
+      id: 'r1', title: '평행이동과 점근선 — $y=\\frac{k}{x-p}+q$', short: '평행이동·점근선',
+      question: '$y=\\frac{k}{x}$를 옮기면 식의 p, q는 그림의 어디에 나타날까?',
+      guide: '보라색 점 <b>C</b>(두 점근선의 교점)를 끌어 보세요. 점선 <b>$y=\\frac{k}{x}$</b>가 <b>x방향 p, y방향 q</b>만큼 통째로 옮겨 가고, 점근선 <b>x=p</b>, <b>y=q</b>가 함께 따라갑니다. 「분수꼴」 단추를 누르면 $\\dfrac{ax+b}{x+c}$ 에서 p, q를 읽는 연습을 합니다.',
       enter: (s) => reset(s),
       focus: { x: [-8, 8], y: [-6.5, 7.5] },
       controls: (s) => (s.m1 === 1 ? ['fa', 'fb', 'fc'] : ['rk', 'rp', 'rq']),
       presets: (s) => [
-        { group: '식의 모양', label: 'y=k/(x−p)+q', color: 'sky', apply: (st) => { if (st.m1 === 1) { const g = geo1(st); st.rk = clamp(g.k, -8, 8); st.rp = clamp(g.p, -6, 6); st.rq = clamp(g.q, -6, 6); } st.m1 = 0; }, on: (st) => st.m1 !== 1 },
-        { group: '식의 모양', label: '분수꼴 (ax+b)/(x+c)', color: 'violet', apply: (st) => { if (st.m1 !== 1) { st.fa = st.rq; st.fc = -st.rp; st.fb = clamp(st.rk - st.rp * st.rq, -20, 20); } st.m1 = 1; }, on: (st) => st.m1 === 1 },
-        { group: '바로 가기', label: 'p, q = 0 (y=k/x)', apply: (st) => { if (st.m1 === 1) { st.fa = 0; st.fc = 0; st.fb = st.rk; } else { st.rp = 0; st.rq = 0; } } },
+        { group: '식의 모양', label: '$y=\\frac{k}{x-p}+q$', color: 'sky', apply: (st) => { if (st.m1 === 1) { const g = geo1(st); st.rk = clamp(g.k, -8, 8); st.rp = clamp(g.p, -6, 6); st.rq = clamp(g.q, -6, 6); } st.m1 = 0; }, on: (st) => st.m1 !== 1 },
+        { group: '식의 모양', label: '분수꼴 $\\frac{ax+b}{x+c}$', color: 'violet', apply: (st) => { if (st.m1 !== 1) { st.fa = st.rq; st.fc = -st.rp; st.fb = clamp(st.rk - st.rp * st.rq, -20, 20); } st.m1 = 1; }, on: (st) => st.m1 === 1 },
+        { group: '바로 가기', label: 'p, q = 0 ($y=\\frac{k}{x}$)', apply: (st) => { if (st.m1 === 1) { st.fa = 0; st.fc = 0; st.fb = st.rk; } else { st.rp = 0; st.rq = 0; } } },
         { group: '바로 가기', label: 'k 부호 바꾸기', apply: (st) => { if (st.m1 === 1) st.fb = -(st.fb - st.fa * st.fc) + st.fa * st.fc; else st.rk = -st.rk; } }
       ],
       steps: steps1,
@@ -255,7 +255,7 @@ window.addEventListener('DOMContentLoaded', function () {
           alert: flat && s.m1 === 1 ? { tone: 'warn', text: '분자가 분모의 배수($b=ac$)이면 약분되어 <b>직선</b>이 됩니다. 이런 함수는 유리함수 그래프의 문제에서 제외됩니다.' } : undefined,
           readouts: [
             { label: '점근선', value: `x = ${mn(p)},  y = ${mn(q)}`, color: 'amber', ref: 'asym', note: '곡선이 한없이 다가가는 두 직선' },
-            { label: '옮긴 정도', value: `x방향 ${mn(p)},  y방향 ${mn(q)}`, color: 'violet', ref: 'shift', note: 'y=k/x → 점선에서 곡선으로' },
+            { label: '옮긴 정도', value: `x방향 ${mn(p)},  y방향 ${mn(q)}`, color: 'violet', ref: 'shift', note: '$y=\\frac{k}{x}$ → 점선에서 곡선으로' },
             { label: '분수꼴로 고치면', value: `$${fracTeX(a, bb, -p)}$`, color: 'sky', wide: true, ref: 'curve', note: `a = q = ${mn(a)},  c = −p = ${mn(-p)},  b = k − pq = ${mn(bb)}` },
             { label: '정의역 · 치역', value: `x ≠ ${mn(p)},  y ≠ ${mn(q)}`, color: 'ink' },
             { label: '지나는 사분면', value: flat ? '—' : `제${qd.join(', ')}사분면`, color: 'green', note: 'y절편 ' + (p === 0 ? '없음' : mn(q - k / p)) }

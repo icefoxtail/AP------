@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function () {
       '3-B':{name:'원 위의 점 P와 두 점 A, B의 중점 M',steps:['두 점 A, B와 중점 M','PA+PB=2PM','중심 C를 지나 PM=CM−CP로 분해'],formula:'\\overrightarrow{PA}+\\overrightarrow{PB}=2\\overrightarrow{PM}',q:'P가 중심 C, 반지름 r인 원을 움직일 때 |PA+PB|의 범위를 중점 M으로 나타내시오.',a:'2|CM−r| ≤ |PA+PB| ≤ 2(CM+r)',shortcut:'먼저 2PM으로 바꾸고 CM=d를 재면 최댓값 2(d+r), 최솟값 2|d−r|.'},
       '3-C':{name:'두 원 위의 점 P, Q 사이의 거리',steps:['두 원 C₁(r₁), C₂(r₂)','각 원 위의 점 P, Q와 C₁P, C₂Q','PQ=C₁C₂+C₂Q−C₁P'],formula:'\\overrightarrow{PQ}=\\overrightarrow{C_1C_2}+\\overrightarrow{C_2Q}-\\overrightarrow{C_1P}',q:'서로 다른 두 원 위 P,Q의 거리 |PQ|의 최댓값과 최솟값을 관찰하시오.',a:'최대 d+r₁+r₂, 최소 max(0, d−r₁−r₂, |r₁−r₂|−d)',shortcut:'두 원이 떨어져 있으면 최솟값 d−r₁−r₂; 한 원이 다른 원 안에 있으면 최솟값 |r₁−r₂|−d; 두 원이 만나면 0. (d는 두 중심 사이의 거리)'},
       '4-A':{name:'영벡터 합과 넓이의 비',steps:['αPA+βPB+γPC=0인 점 P','AB의 내분점 D: AD:DB=β:α','CP:PD=(α+β):γ, 세 삼각형의 넓이'],formula:'\\alpha\\overrightarrow{PA}+\\beta\\overrightarrow{PB}+\\gamma\\overrightarrow{PC}=\\vec 0',q:'2PA+3PB+5PC=0인 P에 대하여 △PBC:△PCA:△PAB를 구하시오.',a:'2:3:5 (A, B, C가 한 직선 위에 있지 않을 때)',shortcut:'꼭짓점의 좌표로 세 삼각형의 넓이를 직접 계산하여, 넓이의 비가 α:β:γ와 같은지 확인합니다.'},
-      '4-B':{name:'kAP=mAB+nAC (꼭짓점 A를 시점으로 한 벡터 등식)',steps:['kAP=mAB+nAC를 준비','BE:EC=n:m인 내분점 E','AP=(m+n)/k · AE, 넓이의 비'],formula:'k\\overrightarrow{AP}=m\\overrightarrow{AB}+n\\overrightarrow{AC}',q:'10AP=3AB+5AC일 때 P와 E의 위치 및 분할 삼각형의 넓이비를 구하시오.',a:'AP=(4/5)AE, △PBC:△PCA:△PAB=2:3:5',shortcut:'E=(mB+nC)/(m+n), P=A+((m+n)/k)(E−A). k>m+n이면 P는 삼각형 내부.'}
+      '4-B':{name:'kAP=mAB+nAC (꼭짓점 A를 시점으로 한 벡터 등식)',steps:['kAP=mAB+nAC를 준비','BE:EC=n:m인 내분점 E','AP=$\\frac{m+n}{k}$ · AE, 넓이의 비'],formula:'k\\overrightarrow{AP}=m\\overrightarrow{AB}+n\\overrightarrow{AC}',q:'10AP=3AB+5AC일 때 P와 E의 위치 및 분할 삼각형의 넓이비를 구하시오.',a:'AP=(4/5)AE, △PBC:△PCA:△PAB=2:3:5',shortcut:'E=(mB+nC)/(m+n), P=A+($\\frac{m+n}{k}$)(E−A). k>m+n이면 P는 삼각형 내부.'}
     };
     const P = (x,y)=>({x,y});
     const add=(a,b)=>P(a.x+b.x,a.y+b.y), sub=(a,b)=>P(a.x-b.x,a.y-b.y);
@@ -494,7 +494,7 @@ window.addEventListener('DOMContentLoaded', function () {
     '3-B': '<b>점 A, B</b>(중점 M), <b>중심 C</b>, <b>점 P</b>를 끌어 보세요. |PA+PB| = 2|PM|의 범위가 실시간으로 나옵니다.',
     '3-C': '<b>두 점 P, Q</b>와 <b>두 중심 C₁, C₂</b>를 끌어 보세요. 원이 떨어졌을 때·교차할 때·포함될 때 최솟값이 달라집니다.',
     '4-A': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>α, β, γ</b>를 바꿔 보세요. 측정한 넓이의 비가 α : β : γ와 같습니다.',
-    '4-B': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>m, n, k</b>를 바꿔 보세요. P는 AE를 (m+n)/k 로 줄인 점입니다.'
+    '4-B': '<b>삼각형의 꼭짓점</b>을 끌거나 계수 막대 <b>m, n, k</b>를 바꿔 보세요. P는 AE를 $\\frac{m+n}{k}$ 로 줄인 점입니다.'
   };
   const PCOL = ['sky', 'rose', 'amber', 'green'];
   const RCOL = ['sky', 'rose', 'amber', 'green'];

@@ -8,7 +8,7 @@
      2) scenes  : 장면마다 질문·안내·단계·문제·해설(데이터)과 draw(b, s, v)(수학 그림)
      3) view(s) : 실시간 값·상태·관찰 포인트 등 변하는 내용을 돌려주는 함수
    나머지(반응형 배치, 수업 모드, 판서, 공유, 단축키, URL 상태 저장)는 셸이 책임집니다.
-   [stackFractions: true] 패널·칸·칩 글 속 '1/2'·'½'·'5π/3'(숫자 분수)를 쌓은 KaTeX 분수로 바꿉니다(APLab.stackFr). 'a/2' 같은 글자 분수는 $\frac{a}{2}$ 로 직접 씁니다.
+   [stackFractions: false로 해제 가능, 기본 true] 패널·칸·칩 글 속 '1/2'·'½'·'5π/3'(숫자 분수)를 쌓은 KaTeX 분수로 바꿉니다(APLab.stackFr). 'a/2' 같은 글자 분수는 $\frac{a}{2}$ 로 직접 씁니다.
    ========================================================================== */
 (function () {
   'use strict';
@@ -42,7 +42,7 @@
       this.teach = false;
       this.list = [];
       const groups = def.groups || [{ title: '', scenes: def.scenes || [] }];
-      groups.forEach((g, gi) => g.scenes.forEach((sc) => this.list.push({ ...(def.stackFractions ? APLab.stackScene(sc) : sc), gi, group: g })));
+      groups.forEach((g, gi) => g.scenes.forEach((sc) => this.list.push({ ...(def.stackFractions !== false ? APLab.stackScene(sc) : sc), gi, group: g })));
       this.groups = groups;
       this.index = 0;
       this.ink = new Map();
@@ -82,7 +82,7 @@
         h('a', { class: 'apl-icon-btn apl-back', href: d.home || '../index.html', 'aria-label': '실험실 목록으로', title: '실험실 목록', html: icon('back') }),
         h('div', { class: 'apl-titlebox' },
           h('div', { class: 'apl-crumbs', html: `<b>${APLab.esc(d.courseName || '')}</b>${d.unit ? ' · ' + APLab.esc(d.unit) : ''}` }),
-          h('h1', { class: 'apl-title', text: d.title })),
+          h('h1', { class: 'apl-title', html: APLab.renderMath(this._sf(APLab.esc(d.title))) })),
         ui.railWrap,
         h('div', { class: 'apl-actions' },
           ui.themeBtn,
@@ -276,7 +276,7 @@
       items.forEach((it) => {
         const b = h('button', {
           class: 'apl-scene-tab', role: 'tab', 'aria-selected': String(it.on), title: APLab.stripEmoji(it.full),
-          html: `<span class="n">${it.n}</span><span class="lbl">${APLab.esc(APLab.stripEmoji(it.label))}</span>`,
+          html: `<span class="n">${it.n}</span><span class="lbl">${APLab.renderMath(this._sf(APLab.esc(APLab.stripEmoji(it.label))))}</span>`,
           onclick: it.go
         });
         rail.append(b);
@@ -321,7 +321,7 @@
         ? `${sc.gi + 1}. ${APLab.stripEmoji(g.short || g.title)}`
         : `장면 ${this.index + 1}`;
       const cnt = grouped ? `${g.scenes.indexOf(g.scenes.find((x) => x.id === sc.id)) + 1} / ${g.scenes.length}` : `${this.index + 1} / ${this.list.length}`;
-      ui.head.append(h('div', { class: 'apl-eyebrow', html: `${icon('compass')}<span>${APLab.esc(pos)}</span><span class="count">${cnt}</span>` }));
+      ui.head.append(h('div', { class: 'apl-eyebrow', html: `${icon('compass')}<span>${APLab.renderMath(this._sf(APLab.esc(pos)))}</span><span class="count">${cnt}</span>` }));
       const tt = APLab.splitFlag(sc.title);
       ui.head.append(h('h2', { class: 'apl-scene-title', html: (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.renderMath(this._sf(APLab.esc(tt.text), false)) }));
       if (grouped && g.scenes.length > 1) {
@@ -401,11 +401,14 @@
       this.tween(call(pr.snap, this.s), 360);
     }
 
-    /** 실험실이 stackFractions 를 켠 경우 칸·칩 글 속 분수를 쌓은 분수로 바꿉니다. */
-    _sf(x, tight = true) { return this.def.stackFractions ? APLab.stackFr(x, tight) : x; }
+    /** 학생용 칸·칩 글 속 숫자·π·근호 분수를 쌓은 분수로 바꿉니다. */
+    _sf(x, tight = true) { return this.def.stackFractions !== false ? APLab.stackFr(x, tight) : x; }
+    // Plain labels are escaped before math rendering; rich HTML keeps its existing trusted markup.
+    _label(x, tight = true) { return APLab.renderMath(this._sf(APLab.esc(x == null ? '' : String(x)), tight)); }
+    _rich(x) { return this._sf(x, false); }
 
     _section(title, ico, ...kids) {
-      return h('section', { class: 'apl-section' }, title ? h('h3', { class: 'apl-section-h', html: `<span>${icon(ico || 'info')}${APLab.esc(title)}</span>` }) : null, ...kids);
+      return h('section', { class: 'apl-section' }, title ? h('h3', { class: 'apl-section-h', html: `<span>${icon(ico || 'info')}${this._label(title)}</span>` }) : null, ...kids);
     }
 
     _buildExplore() {
@@ -659,13 +662,13 @@
           if (!sol[key]) return null;
           const body = h('div', { class: 'apl-acc-body' });
           const det = h('details', { class: 'apl-acc' + (open ? '' : ''), ...(open ? { open: true } : {}) },
-            h('summary', { html: `<span class="apl-tag" style="--c:var(--m-${tone})">${APLab.esc(tag)}</span><span>${APLab.esc(title)}</span>${icon('down', 'apl-ico chev')}` }), body);
+            h('summary', { html: `<span class="apl-tag" style="--c:var(--m-${tone})">${this._label(tag)}</span><span>${this._label(title)}</span>${icon('down', 'apl-ico chev')}` }), body);
           det.addEventListener('toggle', () => { if (det.open) this._fillSolution(body, sol[key]); });
           if (open) this._fillSolution(body, sol[key]);
           return det;
         };
         r.solution.append(...[
-          h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}${APLab.esc(rt.solution || '두 가지 풀이 비교')}</span>` }),
+          h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}${this._label(rt.solution || '두 가지 풀이 비교')}</span>` }),
           mk('standard', sol.standardTitle || '기본 풀이', sol.standardTag || '기본', 'sky', false),
           mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false)].filter(Boolean)); // 한쪽 풀이만 있으면 빈 칸(null)을 붙이지 않습니다
         pane.append(r.solution);
@@ -916,7 +919,7 @@
           const box = h('div', { class: 'apl-formula-chip apl-glass' });
           chips.forEach((c, i) => {
             if (i) box.append(h('span', { class: 'sep' }));
-            box.append(h('span', { html: (c.k ? `<span class="k">${APLab.esc(c.k)}</span> ` : '') + `<span style="color:${c.color ? `var(--m-${c.color})` : 'inherit'}">${c.tex ? APLab.tex(c.tex) : APLab.renderMath(c.html || '')}</span>` }));
+            box.append(h('span', { html: (c.k ? `<span class="k">${this._label(c.k)}</span> ` : '') + `<span style="color:${c.color ? `var(--m-${c.color})` : 'inherit'}">${c.tex ? APLab.tex(c.tex) : APLab.renderMath(this._rich(c.html || ''))}</span>` }));
           });
           ui.chips.append(box);
         }
@@ -930,7 +933,7 @@
         if (sk !== this._stKey) {
           this._stKey = sk;
           ui.status.dataset.tone = st.tone || 'info';
-          ui.status.innerHTML = icon(TONE_ICON[st.tone] || 'info') + `<span>${APLab.renderMath(APLab.esc(APLab.stripEmoji(st.text)))}</span>`;
+          ui.status.innerHTML = icon(TONE_ICON[st.tone] || 'info') + `<span>${this._label(APLab.stripEmoji(st.text))}</span>`;
         }
       }
       // 떠 있는 카드
@@ -945,8 +948,8 @@
           ui.card.innerHTML = '';
           const tg = h('button', { 'aria-label': '카드 접기/펴기', html: icon(min ? 'down' : 'x') });
           tg.addEventListener('click', () => { this._cardMin = !ui.card.classList.contains('min'); this._cardKey = ''; this.invalidate(); });
-          ui.card.append(h('h4', {}, h('span', { text: APLab.stripEmoji(card.title) }), tg),
-            h('ul', {}, ...(card.lines || []).map((l) => h('li', { style: { '--c': l.color ? this.board.color(l.color) : '' }, text: APLab.stripEmoji(l.text) }))));
+          ui.card.append(h('h4', {}, h('span', { html: this._label(APLab.stripEmoji(card.title)) }), tg),
+            h('ul', {}, ...(card.lines || []).map((l) => h('li', { style: { '--c': l.color ? this.board.color(l.color) : '' }, html: this._label(APLab.stripEmoji(l.text)) }))));
         }
       }
       // 테이프
@@ -957,10 +960,10 @@
         if (tk !== this._tapeKey) {
           this._tapeKey = tk;
           ui.tape.innerHTML = '';
-          ui.tape.append(h('div', { class: 'apl-tape-title', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(tape.title || ''))) }));
+          ui.tape.append(h('div', { class: 'apl-tape-title', html: this._label(APLab.stripEmoji(tape.title || '')) }));
           if (tape.segments && tape.segments.length) {
             const bar = h('div', { class: 'apl-tape-bar' });
-            tape.segments.forEach((sg) => bar.append(h('span', { style: { flexGrow: String(Math.max(0.06, sg.weight || 1)), '--c': this.board.color(sg.color) }, title: /\$/.test(sg.text) ? '' : sg.text, html: APLab.renderMath(APLab.esc(APLab.stripEmoji(sg.text))) })));
+            tape.segments.forEach((sg) => bar.append(h('span', { style: { flexGrow: String(Math.max(0.06, sg.weight || 1)), '--c': this.board.color(sg.color) }, title: /\$/.test(sg.text) ? '' : sg.text, html: this._label(APLab.stripEmoji(sg.text)) })));
             ui.tape.append(bar);
           }
           requestAnimationFrame(() => this.board.resize() && this.invalidate());
@@ -995,7 +998,7 @@
       const s = this.s;
       // 안내
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
-      APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.');
+      APLab.setHTML(r.guide, this._rich(guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.'));
       // 조작부
       if (this._buildControls()) this._placeControls();
       for (const [id, c] of Object.entries(this._ctls || {})) {
@@ -1009,7 +1012,7 @@
       for (const { a, b } of this._actionBtns || []) {
         const lbl = APLab.stripEmoji(call(a.label, s));
         const ic = call(a.icon, s);
-        const html = (ic ? icon(ic) : '') + `<span>${APLab.renderMath(APLab.esc(lbl))}</span>`;
+        const html = (ic ? icon(ic) : '') + `<span>${APLab.renderMath(this._sf(APLab.esc(lbl)))}</span>`;
         if (b.__h !== html) { b.__h = html; b.innerHTML = html; }
         if (a.on) b.classList.toggle('on', !!a.on(s));
       }
@@ -1017,7 +1020,7 @@
       const al = v.alert;
       r.alert.hidden = !al;
       if (al) {
-        const html = `<div class="apl-callout" data-tone="${al.tone || 'warn'}">${icon(TONE_ICON[al.tone || 'warn'])}<div>${APLab.renderMath(APLab.cleanLead(al.text))}</div></div>`;
+        const html = `<div class="apl-callout" data-tone="${al.tone || 'warn'}">${icon(TONE_ICON[al.tone || 'warn'])}<div>${APLab.renderMath(this._rich(APLab.cleanLead(al.text)))}</div></div>`;
         if (r.alert.__h !== html) { r.alert.__h = html; r.alert.innerHTML = html; }
       }
       // 실시간 값
@@ -1045,9 +1048,9 @@
         reads.forEach((x, i) => {
           const el = r.readouts.children[i];
           el.style.setProperty('--c', x.color ? `var(--m-${x.color})` : 'var(--text)');
-          APLab.setHTML(el.children[0], APLab.esc(APLab.stripEmoji(x.label)));
-          APLab.setHTML(el.children[1], APLab.esc(x.value == null ? '' : String(x.value)));
-          APLab.setHTML(el.children[2], APLab.esc(x.note || ''));
+          APLab.setHTML(el.children[0], this._label(APLab.stripEmoji(x.label)));
+          APLab.setHTML(el.children[1], this._label(x.value == null ? '' : String(x.value)));
+          APLab.setHTML(el.children[2], this._label(x.note || ''));
           el.children[2].hidden = !x.note;
           el.classList.toggle('hot', this._hoverRef === x.ref && !!x.ref);
         });
@@ -1063,8 +1066,8 @@
           parts.forEach((p) => {
             const b = h('button', { class: 'apl-part' + (p.ok === false ? ' bad' : ''), 'aria-pressed': String(s.part === p.id), style: { '--c': this.board.color(p.color) } },
               h('span', { class: 'dot' }),
-              h('span', {}, h('div', { class: 'nm', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.name))) }), p.desc ? h('div', { class: 'ds', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.desc))) }) : null),
-              p.value != null ? h('span', { class: 'val', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.value))) }) : h('span'));
+              h('span', {}, h('div', { class: 'nm', html: this._label(APLab.stripEmoji(p.name)) }), p.desc ? h('div', { class: 'ds', html: this._label(APLab.stripEmoji(p.desc)) }) : null),
+              p.value != null ? h('span', { class: 'val', html: this._label(APLab.stripEmoji(p.value)) }) : h('span'));
             b.addEventListener('click', () => { this.s.part = this.s.part === p.id ? null : p.id; this.invalidate(true); });
             r.parts.append(b);
           });
@@ -1072,7 +1075,7 @@
       }
       // 요약
       r.summary.hidden = !v.summary;
-      if (v.summary) APLab.setHTML(r.summary, `<small>핵심 결과</small>${APLab.esc(APLab.stripEmoji(v.summary))}`);
+      if (v.summary) APLab.setHTML(r.summary, `<small>핵심 결과</small>${this._label(APLab.stripEmoji(v.summary), false)}`);
       // 정리 탭: 단계 글이 지금 상태와 달라졌으면(슬라이더·점 이동 등) 다시 만듭니다. 단계 번호(s.step)는 유지하고 줄 수가 줄면 맞춥니다.
       const stepsNow = call(sc.steps, s);
       if (r.stepsSig !== JSON.stringify(stepsNow || null)) {
@@ -1103,19 +1106,19 @@
       }
       const formula = v.formula;
       r.formulaSec.hidden = !formula;
-      if (formula) APLab.setHTML(r.formula, formula);
+      if (formula) APLab.setHTML(r.formula, this._rich(formula));
       r.rule.hidden = !v.rule;
       if (v.rule) {
-        const html = `<div class="apl-callout" data-tone="key">${icon('spark')}<div><b>${APLab.renderMath(APLab.esc(APLab.stripEmoji(v.rule)))}</b></div></div>`;
+        const html = `<div class="apl-callout" data-tone="key">${icon('spark')}<div><b>${this._label(APLab.stripEmoji(v.rule))}</b></div></div>`;
         if (r.rule.__h !== html) { r.rule.__h = html; r.rule.innerHTML = html; }
       }
       r.notesSec.hidden = !v.notes;
-      if (v.notes) APLab.setHTML(r.notes, v.notes);
+      if (v.notes) APLab.setHTML(r.notes, this._rich(v.notes));
       // 문제 탭
-      if (r.top && sc.reviewTop) APLab.setHTML(r.top, call(sc.reviewTop, s));
+      if (r.top && sc.reviewTop) APLab.setHTML(r.top, this._rich(call(sc.reviewTop, s)));
       const pr = sc.problem;
       if (pr && r.problemText) {
-        APLab.setHTML(r.problemText, call(pr.text, s));
+        APLab.setHTML(r.problemText, this._rich(call(pr.text, s)));
       }
       this._normNewProb();
       this._syncEndStep();
@@ -1123,7 +1126,7 @@
         const open = this._answerOpen();
         r.answer.classList.toggle('open', open);
         const html = open
-          ? `<div><span class="lbl">정답</span><span class="val">${APLab.renderMath(call(pr.answer, s))}</span></div>`
+          ? `<div><span class="lbl">정답</span><span class="val">${APLab.renderMath(this._rich(call(pr.answer, s)))}</span></div>`
           : `<div style="display:flex;gap:10px;align-items:center">${icon('lock')}<div><span class="lbl">정답은 잠시 잠겨 있어요</span><span>정리 탭의 풀이 단계를 끝까지 확인하면 열립니다.</span></div></div><button class="apl-btn sm" data-reveal>지금 보기</button>`;
         if (r.answer.__h !== html) {
           r.answer.__h = html;
@@ -1411,12 +1414,12 @@
       this.list.forEach((sc, i) => {
         if (this.groups.length > 1 && sc.gi !== lastG) {
           lastG = sc.gi;
-          grid.append(h('div', { class: 'apl-group-h', text: `${sc.gi + 1}. ${APLab.stripEmoji(sc.group.title)}` }));
+          grid.append(h('div', { class: 'apl-group-h', html: APLab.renderMath(this._sf(APLab.esc(`${sc.gi + 1}. ${APLab.stripEmoji(sc.group.title)}`))) }));
         }
         const cv = h('canvas', {});
         const sp = APLab.splitFlag(sc.short || sc.title);
         const card = h('button', { class: 'apl-scene-card', 'aria-current': String(i === this.index), onclick: () => { dlg.close(); this.goScene(i); } },
-          cv, h('b', { text: sp.text }), h('small', { text: sp.flag || (sc.steps ? `${call(sc.steps, this.s).length}단계 풀이` : ' ') }));
+          cv, h('b', { html: APLab.renderMath(this._sf(APLab.esc(sp.text))) }), h('small', { text: sp.flag || (sc.steps ? `${call(sc.steps, this.s).length}단계 풀이` : ' ') }));
         grid.append(card);
         jobs.push(() => {
           const st = { ...this.s, step: 99, part: null, playing: false, dragging: false, grid: true };
@@ -1505,7 +1508,8 @@
       });
     }
     _announce(msg) {
-      this.ui.live.textContent = msg;
+      // Keep prose intact and expose formulas through KaTeX MathML, not literal TeX.
+      APLab.setHTML(this.ui.live, this._label(msg));
     }
   }
 

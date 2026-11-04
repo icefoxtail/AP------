@@ -223,7 +223,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { title: '2단계. 이등분된 각(π/3, π/3)을 이용해 두 부분 삼각형 넓이 S₁, S₂ 표현', desc: `$\\overline{AD} = x$라 하면 $\\angle BAD = \\angle CAD = \\dfrac{\\pi}{3}$이므로,<br/>$\\text{넓이}(\\triangle ABD) = \\dfrac{1}{2}\\cdot ${c}x\\sin\\dfrac{\\pi}{3} = ${sTex(c)}x$, $\\text{넓이}(\\triangle ACD) = \\dfrac{1}{2}\\cdot ${b}x\\sin\\dfrac{\\pi}{3} = ${sTex(b)}x$입니다.` },
               { title: `3단계. 넓이 합 등식 S = S₁ + S₂ 로부터 AD = ${x}를 구합니다.`, desc: `$${sTex(c)}x + ${sTex(b)}x = ${sTex(c + b)}x = ${sTex(S)}$에서 양변을 $${sTex(c + b)}$으로 나누면 **$\\mathbf{x = \\overline{AD} = ${x}}$**입니다.` }
             ],
-            alg: `<div class="font-bold text-amber-300 mb-1">📖 넓이 합 풀이 vs 코사인법칙·내분비 풀이 대조</div><div>1) <strong>넓이 분할 풀이:</strong> $\\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}(b+c)\\overline{AD}\\sin\\dfrac{A}{2}$를 사용하여 빠르게 $\\overline{AD}=${x}$를 얻습니다.</div><div>2) <strong>코사인법칙 & 내분비 대조:</strong> 코사인법칙으로 $\\overline{BC} = \\sqrt{${c * c}+${b * b}-2(${S})(-1/2)} = ${srTex(s.k, s.m)}$을 구하고, 내분비 $${s.rc}:${s.rb}$로 $\\overline{BD}=${srTex(s.BD, s.m)}, \\overline{CD}=${srTex(s.DC, s.m)}$을 구한 뒤 $\\triangle ABD$와 $\\triangle ACD$에서 $\\cos(\\angle ADB) + \\cos(\\angle ADC) = 0$을 연립해도 $\\overline{AD}^2 = ${c}\\times ${b} - ${srTex(s.BD, s.m)}\\times${srTex(s.DC, s.m)} = ${S} - ${s.BD * s.DC * s.m} = ${x * x} \\implies \\overline{AD} = ${x}$로 정확히 일치합니다.</div>`
+            alg: `<div class="font-bold text-amber-300 mb-1">📖 넓이 합 풀이 vs 코사인법칙·내분비 풀이 대조</div><div>1) <strong>넓이 분할 풀이:</strong> $\\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}(b+c)\\overline{AD}\\sin\\dfrac{A}{2}$를 사용하여 빠르게 $\\overline{AD}=${x}$를 얻습니다.</div><div>2) <strong>코사인법칙 & 내분비 대조:</strong> 코사인법칙으로 $\\overline{BC} = \\sqrt{${c * c}+${b * b}-2(${S})(-\\frac{1}{2})} = ${srTex(s.k, s.m)}$을 구하고, 내분비 $${s.rc}:${s.rb}$로 $\\overline{BD}=${srTex(s.BD, s.m)}, \\overline{CD}=${srTex(s.DC, s.m)}$을 구한 뒤 $\\triangle ABD$와 $\\triangle ACD$에서 $\\cos(\\angle ADB) + \\cos(\\angle ADC) = 0$을 연립해도 $\\overline{AD}^2 = ${c}\\times ${b} - ${srTex(s.BD, s.m)}\\times${srTex(s.DC, s.m)} = ${S} - ${s.BD * s.DC * s.m} = ${x * x} \\implies \\overline{AD} = ${x}$로 정확히 일치합니다.</div>`
           };
         }
       };
@@ -578,7 +578,7 @@ window.addEventListener('DOMContentLoaded', function () {
         alg: `
           <div class="font-bold text-amber-300 mb-1">📖 넓이 합 풀이 vs 코사인법칙·내분비 풀이 대조</div>
           <div>1) <strong>넓이 분할 풀이:</strong> $\\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}(b+c)\\overline{AD}\\sin\\dfrac{A}{2}$를 사용하여 빠르게 $\\overline{AD}=2$를 얻습니다.</div>
-          <div>2) <strong>코사인법칙 & 내분비 대조:</strong> 코사인법칙으로 $\\overline{BC} = \\sqrt{36+9-2(18)(-1/2)} = 3\\sqrt{7}$을 구하고, 내분비 $2:1$로 $\\overline{BD}=2\\sqrt{7}, \\overline{CD}=\\sqrt{7}$을 구한 뒤 $\\triangle ABD$와 $\\triangle ACD$에서 $\\cos(\\angle ADB) + \\cos(\\angle ADC) = 0$을 연립해도 $\\overline{AD}^2 = 6\\times 3 - 2\\sqrt{7}\\times\\sqrt{7} = 18 - 14 = 4 \\implies \\overline{AD} = 2$로 정확히 일치합니다.</div>
+          <div>2) <strong>코사인법칙 & 내분비 대조:</strong> 코사인법칙으로 $\\overline{BC} = \\sqrt{36+9-2(18)(-\\frac{1}{2})} = 3\\sqrt{7}$을 구하고, 내분비 $2:1$로 $\\overline{BD}=2\\sqrt{7}, \\overline{CD}=\\sqrt{7}$을 구한 뒤 $\\triangle ABD$와 $\\triangle ACD$에서 $\\cos(\\angle ADB) + \\cos(\\angle ADC) = 0$을 연립해도 $\\overline{AD}^2 = 6\\times 3 - 2\\sqrt{7}\\times\\sqrt{7} = 18 - 14 = 4 \\implies \\overline{AD} = 2$로 정확히 일치합니다.</div>
         `,
         answer: '정답: AD = 2  (S_ABD = 3√3, S_ACD = 3√3/2)'
       },
@@ -684,7 +684,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅱ-2. 삼각함수의 그래프의 대칭성과 도형의 넓이',
         badge: '🔥 심화 03 (기울기 비와 점대칭 평행사변형)',
         tabLabel: '심화 03 · 삼각함수 그래프 위의 네 교점이 이루는 평행사변형의 넓이',
-        title: '[창작 심화 3] 함수 f(x) = 3 sin(πx/6) 의 선대칭·점대칭과 평행사변형 넓이 추론',
+        title: '[창작 심화 3] 함수 f(x) = 3 sin($\\frac{\\pi x}{6}$) 의 선대칭·점대칭과 평행사변형 넓이 추론',
         solType: '⚡ 실전 10초 컷',
         dragMode: 'vertical',
         statement: `
@@ -700,12 +700,12 @@ window.addEventListener('DOMContentLoaded', function () {
           { t: 0.30, label: '🎯 k = 3/2 (x₁=1, x₂=5 ➔ 기울기 비 5:1, 넓이 = 12!)' },
           { t: 0.70, label: '높은 수평선 (x₁=2, x₂=4 ➔ 기울기 비 2:1)' }
         ],
-        aha: `두 점 $A(x_1, k), B(x_2, k)$는 **$y$좌표가 $k$로 같으므로**, 원점과 이은 기울기의 비 $\\dfrac{k/x_1}{k/x_2} = \\dfrac{x_2}{x_1} = 5 : 1$은 곧 **$x$좌표의 비 $x_1 : x_2 = 1 : 5$**를 뜻합니다! 대칭축 $x = 3$에 의해 $x_1 + x_2 = 6$이므로 계산 없이 **$x_1 = 1, x_2 = 5$**가 바로 구해집니다.`,
+        aha: `두 점 $A(x_1, k), B(x_2, k)$는 **$y$좌표가 $k$로 같으므로**, 원점과 이은 기울기의 비 $\\dfrac{\\frac{k}{x_1}}{\\frac{k}{x_2}} = \\dfrac{x_2}{x_1} = 5 : 1$은 곧 **$x$좌표의 비 $x_1 : x_2 = 1 : 5$**를 뜻합니다! 대칭축 $x = 3$에 의해 $x_1 + x_2 = 6$이므로 계산 없이 **$x_1 = 1, x_2 = 5$**가 바로 구해집니다.`,
         steps: [
           {
             step: 1,
             title: '1단계. 직선 OA, OB 의 기울기 비 5 : 1 과 선대칭(x₁ + x₂ = 6) 결합',
-            desc: `함수 $f(x) = 3\\sin\\left(\\dfrac{\\pi}{6}x\\right)$의 주기는 $12$이고 첫 봉우리의 대칭축은 $x = 3$이므로 $x_1 + x_2 = 6$입니다.<br/>또한 $\\dfrac{k/x_1}{k/x_2} = \\dfrac{x_2}{x_1} = 5 \\implies x_2 = 5x_1$을 대입하면 **$\\mathbf{x_1 = 1,\\; x_2 = 5}$**로 유일하게 결정됩니다.`
+            desc: `함수 $f(x) = 3\\sin\\left(\\dfrac{\\pi}{6}x\\right)$의 주기는 $12$이고 첫 봉우리의 대칭축은 $x = 3$이므로 $x_1 + x_2 = 6$입니다.<br/>또한 $\\dfrac{\\frac{k}{x_1}}{\\frac{k}{x_2}} = \\dfrac{x_2}{x_1} = 5 \\implies x_2 = 5x_1$을 대입하면 **$\\mathbf{x_1 = 1,\\; x_2 = 5}$**로 유일하게 결정됩니다.`
           },
           {
             step: 2,
@@ -900,7 +900,7 @@ window.addEventListener('DOMContentLoaded', function () {
           {
             step: 3,
             title: '3단계. 사인법칙으로 외접원의 반지름 R과 넓이 S_원 = 19π/3을 구합니다.',
-            desc: `$\\triangle ABC$에서 사인법칙에 의해 $2R = \\dfrac{\\overline{AC}}{\\sin B} = \\dfrac{\\sqrt{19}}{\\sqrt{3}/2} \\implies R = \\sqrt{\\dfrac{19}{3}}$입니다.<br/>외접원의 넓이는 $S_{\\text{원}} = \\pi R^2 = \\dfrac{19}{3}\\pi$이므로, $\\dfrac{3}{\\pi}S_{\\text{원}} + \\overline{DA} = 19 + 3 = \\mathbf{22}$입니다.`
+            desc: `$\\triangle ABC$에서 사인법칙에 의해 $2R = \\dfrac{\\overline{AC}}{\\sin B} = \\dfrac{\\sqrt{19}}{\\frac{\\sqrt{3}}{2}} \\implies R = \\sqrt{\\dfrac{19}{3}}$입니다.<br/>외접원의 넓이는 $S_{\\text{원}} = \\pi R^2 = \\dfrac{19}{3}\\pi$이므로, $\\dfrac{3}{\\pi}S_{\\text{원}} + \\overline{DA} = 19 + 3 = \\mathbf{22}$입니다.`
           }
         ],
         alg: `
@@ -1107,7 +1107,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (k === 0) continue;
         const radVal = k * piStep;
         const sx = BRD.toS(ox + radVal * ux, oy).x;
-        if (sx > 24 && sx < W - 24) { c.beginPath(); c.moveTo(sx, O.y - 3.5); c.lineTo(sx, O.y + 3.5); c.stroke(); c.fillText(fmtPi(radVal), sx, O.y + 17); }
+        if (sx > 24 && sx < W - 24) { c.beginPath(); c.moveTo(sx, O.y - 3.5); c.lineTo(sx, O.y + 3.5); c.stroke(); BRD._text(sx, O.y + 17, fmtPi(radVal), { size: 11.5 / (BRD.thumb ? 0.78 : BRD._ts()), weight: 700, color: BRD.colors.tick, align: c.textAlign, baseline: c.textBaseline, halo: false }, true); }
       }
       c.textAlign = 'right';
       for (let j = -6; j <= 6; j++) {

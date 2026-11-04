@@ -154,7 +154,6 @@
   }
   function card(lab) {
     const c = COURSE[lab.course];
-    const n = lab.sceneTotal || (lab.scenes || []).length;
     const pin = h('button', { class: 'hub-pin', 'aria-pressed': String(state.pins.has(lab.id)), 'aria-label': `${lab.title} 내 수업 목록에 고정`, title: '내 수업 목록에 고정', html: icon('star') });
     pin.addEventListener('click', (e) => {
       e.preventDefault();
@@ -163,24 +162,14 @@
       pin.setAttribute('aria-pressed', String(state.pins.has(lab.id)));
       renderShelf();
     });
-    const scenes = (lab.scenes || []).slice(0, 4);
-    const sceneEls = scenes.map((t, i) => (lab.next
-      ? h('a', { href: hrefOf(lab, i + 1), title: t, text: `${i + 1} ${t}`, onclick: () => remember(lab) })
-      : h('span', { title: t, text: `${i + 1} ${t}` })));
-    if ((lab.scenes || []).length > 4) sceneEls.push(h('span', { class: 'more', text: `+${lab.scenes.length - 4}` }));
     const main = h('a', { href: hrefOf(lab), text: lab.title });
     main.addEventListener('click', () => remember(lab));
-    const foot = h('div', { class: 'hub-foot' },
-      h('a', { class: 'go', href: hrefOf(lab), html: `실험실 열기${icon('next')}`, onclick: () => remember(lab) }),
-      // 카탈로그 extra(원·부채꼴 '기초판')는 옛 labs/ 실험실로 가는 링크라 그리지 않습니다. 2.0에 같은 단계가 생기면 여기서 장면 해시로 매핑합니다.
-      pin);
+    // 목록은 단원 선택에 집중합니다. 전체 제목과 대표 그림으로 열고,
+    // 상세 설명·장면 선택은 들어간 실험실에서 확인합니다.
+    const foot = h('div', { class: 'hub-foot' }, pin);
     return h('article', { class: 'hub-card', style: { '--hc': hue(c.hue) } },
-      h('div', { class: 'hub-thumb', html: glyphSVG(lab) + `<div class="hub-badges"><span>${(lab.tags || []).map((t) => `<span class="hub-badge">${esc(t)}</span>`).join('')}</span><span>${n ? `<span class="hub-badge">${n}장면</span>` : ''}</span></div>` }),
-      h('div', { class: 'hub-body' },
-        h('div', { class: 'hub-crumb', text: `${c.name} · ${lab.unit}` }),
-        h('h3', {}, main),
-        h('p', { text: lab.summary }),
-        sceneEls.length ? h('div', { class: 'hub-scenes' }, ...sceneEls) : null),
+      h('div', { class: 'hub-thumb', 'aria-hidden': 'true', html: glyphSVG(lab) }),
+      h('div', { class: 'hub-body' }, h('h3', {}, main)),
       foot);
   }
   function renderList(list) {
@@ -198,10 +187,9 @@
           h('span', { class: 'meta', text: `${labs.length}개 실험실 · ${scenes}장면` })));
       const units = [];
       labs.forEach((l) => { if (!units.includes(l.unit)) units.push(l.unit); });
-      for (const u of units) {
-        sec.append(h('div', { class: 'hub-unit', text: u }));
-        sec.append(h('div', { class: 'hub-grid' }, ...labs.filter((l) => l.unit === u).map(card)));
-      }
+      // 이전 단원 묶음의 표시 순서를 유지하되 과정마다 한 격자로 이어 놓습니다.
+      const orderedLabs = units.flatMap((u) => labs.filter((l) => l.unit === u));
+      sec.append(h('div', { class: 'hub-grid' }, ...orderedLabs.map(card)));
       content.append(sec);
     }
     if (!shown) content.append(h('div', { class: 'hub-empty', html: `<b>찾는 실험실이 없습니다</b>다른 낱말(예: 접선, 넓이, 벡터, 정다면체)로 검색해 보세요.` }));
@@ -442,12 +430,14 @@
   }
 
   function render() {
+    wrap.classList.toggle('is-list', state.view === 'list');
     const q = state.q.trim();
     const list = CAT.labs.filter((l) => matches(l, q));
     renderCourses(list);
     renderShelf();
-    // 노선도에서는 지도가 먼저, 내 수업·최근 실험실은 그 아래에 둡니다.
-    if (state.view === 'map') { content.after(shelf); renderMap(list, q); } else { content.before(shelf); renderList(list); }
+    // 선택한 단원이 먼저 보이고, 내 수업·최근 실험실은 그 아래에 둡니다.
+    content.after(shelf);
+    if (state.view === 'map') renderMap(list, q); else renderList(list);
   }
 
   let qt = 0;
