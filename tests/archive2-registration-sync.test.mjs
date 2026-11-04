@@ -141,6 +141,15 @@ test("PR registration sync persists generated identity, metadata, index, and cat
     "the persisted PR head receives a fresh registration-sync check");
 });
 
+test('registration sync records metadata debt while keeping student source and Chrome checks required',()=>{
+  const workflow=read('.github/workflows/archive-registration-sync.yml');
+  assert.match(workflow, /id: meta_v2_diagnostics\n\s+continue-on-error: true/);
+  assert.match(workflow, /name: Verify student registration and source identity\n\s+run:/);
+  assert.match(workflow, /name: Verify original exam visibility in the student search UI\n\s+id: original_search_diagnostics\n\s+continue-on-error: true/);
+  assert.match(workflow, /name: Verify original exam opens for students in actual Chrome\n\s+env:/);
+  assert.match(workflow, /META_OUTCOME.*steps\.meta_v2_diagnostics\.outcome/);
+});
+
 test("parent-link generation binds stable authority inputs instead of its own final catalog hash", () => {
   const generator = read("archive/tools/build-basic-scope-parent-links.mjs");
   assert.match(generator, /authorityInputsSha256/,

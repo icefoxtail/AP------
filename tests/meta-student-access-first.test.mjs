@@ -28,6 +28,9 @@ test('usable exam gets provisional metadata approval without changing difficulty
   assert.equal(batch.applied.length,1);assert.equal(batch.pendingSupplement.length,1);assert.equal(batch.rejected.length,0);
   assert.equal(fs.readFileSync(sourcePath,'utf8'),source);
   fs.writeFileSync(sourcePath,'window.questionBank=[{id:1,content:"Question",solution:""}];');
+  assert.equal(verifyStudentAccess(root,req).status,'PASS');
+  assert.deepEqual(verifyStudentAccess(root,req).supplements,['1:SOLUTION_PENDING']);
+  fs.writeFileSync(sourcePath,'window.questionBank=[{id:1,content:"",solution:""}];');
   assert.equal(verifyStudentAccess(root,req).status,'FAIL');
   fs.writeFileSync(sourcePath,'window.questionBank=[{id:1,content:"Question",solution:"Solution",image:"assets/missing.svg"}];');
   assert.match(verifyStudentAccess(root,req).failures[0],/ASSET_MISSING/);

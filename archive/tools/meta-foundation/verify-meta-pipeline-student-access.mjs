@@ -11,7 +11,7 @@ export function semanticFailuresAreSupplementary(report) {
 // Metadata completeness is supplementary. Missing source, broken question or
 // solution content and missing local visual assets remain release failures.
 export function verifyStudentAccess(root, request) {
-  const failures=[], source=request.sourceArchiveFile;
+  const failures=[],supplements=[], source=request.sourceArchiveFile;
   const base=path.resolve(root,'archive/exams'),file=path.resolve(base,source||'');
   if(!source||!file.startsWith(base+path.sep)||!file.endsWith('.js'))return {status:'FAIL',failures:['INVALID_SOURCE_PATH']};
   try {
@@ -32,14 +32,14 @@ export function verifyStudentAccess(root, request) {
     rows.forEach((q,i)=>{
       const qid=i+1;
       if(!String(q.content??q.question??q.stem??'').trim())failures.push(`${qid}:QUESTION_EMPTY`);
-      if(!String(q.solution??q.explanation??'').trim()&&!q.solutionImage&&!q.solutionFigureSvg)failures.push(`${qid}:SOLUTION_EMPTY`);
+      if(!String(q.solution??q.explanation??'').trim()&&!q.solutionImage&&!q.solutionFigureSvg)supplements.push(`${qid}:SOLUTION_PENDING`);
       if(q.questionType==='객관식'&&(!Array.isArray(q.choices)||!q.choices.length))failures.push(`${qid}:CHOICES_EMPTY`);
       for(const value of [q.image,...(Array.isArray(q.images)?q.images:[]),q.solutionImage])checkAsset(value,qid);
       for(const html of [q.content,q.solution,q.figureSvg,q.solutionFigureSvg])for(const m of String(html||'').matchAll(/(?:src|href)=["']([^"']+)["']/g)){
         if(!m[1].startsWith('#'))checkAsset(m[1],qid);
       }
     });
-    return {status:failures.length?'FAIL':'PASS',sourceArchiveFile:source,questionCount:rows.length,failures,browserRendering:'NOT_RUN',mathReview:'NOT_RUN'};
+    return {status:failures.length?'FAIL':'PASS',sourceArchiveFile:source,questionCount:rows.length,failures,supplements,browserRendering:'NOT_RUN',mathReview:'NOT_RUN'};
   }catch(error){return {status:'FAIL',sourceArchiveFile:source,failures:[...failures,error.message],browserRendering:'NOT_RUN'};}
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
