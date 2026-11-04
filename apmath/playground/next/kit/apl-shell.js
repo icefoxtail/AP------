@@ -117,7 +117,7 @@
       ui.penTools = h('div', { class: 'apl-pen-tools apl-glass', hidden: true });
       ui.canvasWrap = h('div', { class: 'apl-canvas-wrap' }, ui.canvas, ui.ink, ui.labels, ui.chips, ui.tr, ui.tools, ui.presenter, ui.penTools);
       ui.tape = h('div', { class: 'apl-tape', hidden: true });
-      // 넓은 화면(860px 이상)의 무대 = 위 선택 띠(세부 장면·고르기 칩) + 그림 + 아래 막대 받침(막대·버튼). 휴대폰에서는 비워 두고 숨깁니다(조작부는 패널에 그대로).
+      // 넓은 화면(860px 이상)의 무대 = 위 선택 띠(세부 장면·고르기 칩) + 그림 + 아래 막대 받침(막대·버튼). 휴대폰에서는 띠에 세부 장면 한 줄만 두고 고르기 칩·받침은 비웁니다(조작부는 패널에 그대로).
       // 키보드 초점 순서: 위 띠 → 그림 → 받침 → 패널.
       ui.topNav = h('div', { class: 'apl-top-nav', hidden: true });
       ui.topPick = h('div', { class: 'apl-top-pick', hidden: true });
@@ -435,7 +435,7 @@
 
     /* 조작부(막대·고르기 칩·버튼)는 항상 refs.controls 상자 안에 먼저 지어 두고 _placeControls 가 화면 폭에 맞는 자리로 옮깁니다.
        860px 이상: 막대 → 무대 아래 받침(.apl-dock), 버튼 → 받침 끝, 고르기 칩 → 무대 위 띠(두 줄을 넘으면 패널의 「고르기」 칸).
-       859px 이하: 예전처럼 패널 안(막대 → 칩 → 버튼). 아래 캐시·_ctls·_presetRow·_actionBtns 규칙은 그대로입니다. */
+       859px 이하: 예전처럼 패널 안(막대 → 칩 → 버튼). 세부 장면 칩은 어느 폭에서나 위 띠 첫 줄입니다. 아래 캐시·_ctls·_presetRow·_actionBtns 규칙은 그대로입니다. */
     _clearPlaced() {
       const L = this._lay;
       if (L) [...L.ctls, L.presets, L.presetsSec, L.acts].forEach((el) => el && el.remove());
@@ -543,12 +543,13 @@
       // 막대가 4개 이상인 장면의 탐구 탭: 휴대폰(859px 이하)에서 그림 무대를 낮춰 막대가 한 화면에 더 많이 보이게 합니다(apl.css의 data-many-ctl).
       // 막대 수가 장면 상태에 따라 바뀌어도(sc.controls 가 함수) 조작부를 다시 지을 때마다 이 함수가 불리므로 다시 셉니다.
       if (explore && L && L.ctls.length >= 4) ui.head.dataset.manyCtl = '1'; else delete ui.head.dataset.manyCtl;
-      // 세부 장면 칩: 넓은 화면은 위 띠 첫 줄(이동), 좁은 화면은 패널 머리말(예전 자리)
+      // 세부 장면 칩: 모든 폭에서 위 띠 첫 줄에 둡니다(2026-11-03 선생님 결정. 이유: 휴대폰에서 첫 막대가 약 60px 올라오고 지금 장면이 그림 바로 위에 보인다).
+      // 같은 요소를 다시 옮기면 가로 위치·초점이 풀리므로 이미 띠 안에 있으면 건드리지 않습니다. 띠에 줄이 있으면 head 에 data-subnav 를 달아 휴대폰 CSS가 패널의 장면 제목 카드를 뺍니다.
       if (subs) {
-        if (wide) ui.topNav.append(subs, this._subCount);
-        else { this._subCount.remove(); ui.head.insertBefore(subs, ui.head.querySelector('.apl-question')); }
-      }
-      ui.topNav.hidden = !wide || !subs;
+        if (subs.parentNode !== ui.topNav) ui.topNav.append(subs, this._subCount);
+        ui.head.dataset.subnav = '1';
+      } else delete ui.head.dataset.subnav;
+      ui.topNav.hidden = !subs;
       ui.topPick.hidden = true;
       ui.dock.hidden = true;
       if (L) {
@@ -583,8 +584,8 @@
           box.hidden = !L.any;
         }
       }
-      ui.top.hidden = !wide || (ui.topNav.hidden && ui.topPick.hidden);
-      if (wide && subs) this._centerSub();
+      ui.top.hidden = ui.topNav.hidden && ui.topPick.hidden;
+      if (subs) this._centerSub();
       this._markHints();
     }
     /** 받침에서 한 줄로 잘린 막대 도움말에만 「더보기」 표시를 붙입니다(터치 화면은 마우스 title 을 볼 수 없어서). 폭이 바뀔 때마다 다시 잽니다. */

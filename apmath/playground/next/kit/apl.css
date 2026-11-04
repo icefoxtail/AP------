@@ -381,7 +381,8 @@ body.apl {
    → 무대 = 위 선택 띠(누르는 것) + 그림 + 아래 막대 받침(끌어서 움직이는 것). 오른쪽 패널은 설명만 맡습니다.
    그림은 이 둘을 뺀 나머지(.apl-canvas-wrap flex:1)이고, 띠·받침은 그림 위에 떠 있지 않고 자기 자리를 차지합니다(도형을 가리지 않음).
    간격 리듬: 묶음 안 6~8px, 묶음 사이 8~12px, 무대 가장자리 16px. 모양은 패널과 같은 판(--panel)·선(--line)을 써서 한 틀로 읽히게 합니다.
-   859px 이하(휴대폰)에서는 둘 다 비워 숨기고 조작부는 패널 안 예전 순서 그대로입니다(셸 _placeControls). */
+   859px 이하(휴대폰·태블릿 세로)에서는 아래 막대 받침과 고르기 칩 줄은 숨기고(조작부는 패널 안 예전 순서), 위 띠는 세부 장면 한 줄만 얇게 보입니다(셸 _placeControls, 이 절 끝의 모바일 규칙).
+   2026-11-03 선생님 결정: 첫 막대가 약 60px 올라오고 지금 장면이 그림 바로 위에 보인다. */
 :root { --pick-h: 34px; --strip-pad: 10px; --strip-gap: 8px; }
 /* 태블릿 가로(860~1279px): 띠·받침의 세로 여백을 조금 줄여 그림을 더 크게 둡니다. 누르는 칩은 32px을 지킵니다. */
 @media (min-width: 860px) and (max-width: 1279px) { :root { --pick-h: 32px; --strip-pad: 8px; --strip-gap: 6px; } }
@@ -390,7 +391,7 @@ body.apl {
 /* 1줄(이동): 세부 장면. 한 줄 가로 넘기기 + 끝에 「5 / 8」. 고르기 칩보다 가볍게(테두리 없는 글자 탭, 지금 장면은 밑줄) */
 .apl-top-nav { display: flex; align-items: center; gap: 12px; min-width: 0; }
 /* 글자 탭의 안쪽 여백(2+12px)만큼 왼쪽으로 당겨, 첫 글자가 아래 칩 줄·받침의 왼쪽 선(16px)과 같은 선에 서게 합니다 */
-.apl-top-nav .apl-subscenes { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 2px; padding: 2px; margin-left: -14px; }
+.apl-top-nav .apl-subscenes { flex: 1 1 auto; order: 0; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 2px; padding: 2px; margin: 0 0 0 -14px; } /* order·margin 을 직접 줘서 휴대폰 패널 순서 규칙(.apl-subscenes order:3)이 새어 「n / N」이 앞으로 나오지 않게 */
 .apl-top-nav .apl-subscenes::-webkit-scrollbar { display: none; }
 .apl-top-nav .apl-chip {
   flex: none; position: relative; min-height: var(--pick-h); padding: 0 12px; white-space: nowrap; line-height: 1.2;
@@ -442,7 +443,20 @@ body.apl {
   .apl-dock .apl-btn { min-height: 32px; padding: 0 10px; font-size: var(--fs-xs); border-radius: var(--r-sm); gap: 5px; }
   .apl-dock .apl-btn:not(.primary) .apl-ico { display: none; }
 }
-@media (max-width: 859px) { .apl-stage-top, .apl-dock { display: none !important; } }
+@media (max-width: 859px) { .apl-dock { display: none !important; } }
+/* 휴대폰·태블릿 세로: 위 띠는 세부 장면 한 줄만(PC와 같은 글자 탭·밑줄·「n / N」). 얇게(약 44px) 하되 글자 탭은 40px을 지킵니다.
+   띠가 overflow-x:auto 라 ::before 로 넓힌 터치 영역은 잘리므로(오히려 세로 스크롤이 생김) 칩 자체 높이로 40px를 확보합니다. 고르기 칩 줄은 패널에 둡니다. */
+@media (max-width: 859px) {
+  .apl-stage-top { padding: 1px 14px 0; }
+  .apl-top-nav { gap: 8px; }
+  .apl-top-nav .apl-subscenes { padding: 1px 2px; }
+  .apl-top-nav .apl-subscenes .apl-chip { min-height: 40px; padding: 0 12px; white-space: nowrap; line-height: 1.2; }
+  .apl-top-nav .apl-chip::before { display: none; }
+  .apl-top-nav .apl-chip.on::after { bottom: 5px; }
+  /* 위 띠에 장면 줄이 있으면 패널의 장면 제목 카드는 화면에서 빼고(스크린 리더용 제목으로만 남김), 장면 이름은 띠의 지금 장면 탭이 맡습니다.
+     세부 장면이 1개뿐이라 띠에 줄이 없는 장면은 data-subnav 가 없어 제목 카드가 그대로 보입니다. */
+  .apl-scene-head[data-subnav] .apl-scene-title { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
 
 /* 수업 모드 발표 막대 */
 .apl-presenter {
