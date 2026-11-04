@@ -21,9 +21,9 @@
 <script>
 /* ==========================================================================
    중1 · 겉넓이 · 부피 (AP Math Lab 2.0) — Ⅲ-2. 입체도형의 겉넓이와 부피
-   탭(order 순): ① 기둥(10, 5장면) · ② 뿔(20, 5) · ③ 구(30, 6) · ④ 회전체(40, 4) · ⑤ 붙이고 파낸 입체(50, 6)
+   탭(order 순): ① 기둥(10, 5장면) · ② 뿔(20, 5) · ③ 구(30, 6) · ④ 회전체(40, 4) · ⑤ 붙이고 파낸 입체(50, 6) · ⑥ 기본 결합 모형(60, 1)
    이 파일은 얇은 껍데기입니다. 3차원 도구는 labs/g7-surface-volume/solid3d.js, 길이 표시(치수선·반지름·높이)는 dims.js, 수·선택지·조각 줄·장면 틀은 core.js,
-   각 탭은 t1~t5.js 모듈이 window.APL_SV_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
+   각 탭은 t1~t6.js 모듈이 window.APL_SV_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
    원칙(학생 가독성)
    - 입체는 처음부터 3차원 · 빈 곳을 끌면 시점이 제자리에서 돌아갑니다(이동이 아니라 회전) · 안 보이는 모서리는 점선
    - 전개도가 겉넓이 식의 첫 단계: 입체를 펼치면(경첩 접기·펴기) 어느 조각의 넓이를 더하는지 그림 속 길이로 보입니다
@@ -33,7 +33,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5'];
+const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
