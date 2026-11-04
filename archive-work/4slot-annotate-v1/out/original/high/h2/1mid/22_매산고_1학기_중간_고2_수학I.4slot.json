@@ -1,0 +1,1147 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_수학I.js",
+  "sourceGitBlobSha": "48bd30c0199a6456f1e48031f2ee5067b093b4c1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-221-230",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "\\log_6 4 + \\log_6 9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "같은 밑을 가진 로그의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 로그의 합을 진수의 곱의 로그로 바꾼다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "같은 밑을 가진 로그의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 합과 곱에 대한 성질을 사용한다."
+          },
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "$36=6^2$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "36을 밑의 제곱으로 나타내 로그값을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 밑의 로그 합을 합치고 지수로 바꾸어 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "\\sqrt[6]{4\\sqrt"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱근",
+            "src": "solution",
+            "quote": "안쪽부터 계산",
+            "evidenceType": "IMPLIED",
+            "justification": "중첩된 제곱근과 세제곱근을 안쪽부터 계산한다."
+          },
+          {
+            "term": "유리수지수",
+            "src": "solution",
+            "quote": "거듭제곱근을 지수로",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯제곱근을 유리수 지수로 바꿔 같은 밑의 지수를 읽는다."
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "거듭제곱근을 지수로",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯제곱근을 지수로 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중첩 근호를 안쪽부터 정리하고 2의 유리수 지수로 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=3^x$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수인 $g(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$f(2)+g(9)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "$f(2)=3^2=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "2를 주어진 지수함수에 대입한다."
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수는 입력과 출력을 맞바꿉니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "f(2)를 구하고 역함수의 입력 출력 교환으로 g(9)를 얻는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\cos(2\\pi-\\theta)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의 성질",
+            "src": "solution",
+            "quote": "각을 바꾸는 삼각함수의 성질",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 변환으로 각 삼각함수를 코사인으로 통일해 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "\\tan\\theta = \\frac{3}{4}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos\\theta$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "빗변은 $5$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트 비를 직각삼각형 변의 비로 해석한다."
+          },
+          {
+            "term": "삼각함수의 부호",
+            "src": "solution",
+            "quote": "제3사분면에서",
+            "evidenceType": "IMPLIED",
+            "justification": "제3사분면의 코사인 부호를 선택한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "제3사분면에서",
+            "evidenceType": "IMPLIED",
+            "justification": "제3사분면에서 코사인의 부호를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제3사분면의 각"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "탄젠트에서 기준 삼각형의 코사인 절댓값을 구하고 사분면 부호를 붙인다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "$n$제곱근 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱근",
+            "src": "solution",
+            "quote": "$x^n=a$의 실수해가 몇 개인지",
+            "evidenceType": "IMPLIED",
+            "justification": "지수의 홀짝과 밑의 부호별로 실수해의 개수를 판단한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$n$의 홀짝과 $a$의 부호에 따라",
+            "evidenceType": "IMPLIED",
+            "justification": "지수의 홀짝과 수의 부호를 나누어 각 보기를 판별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "2 이상의 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지수의 홀짝과 피거듭제곱수의 부호로 실수근의 존재와 개수를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$\\log_a bc = 3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$ab+c$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\log_a b$, $v=\\log_a c$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 로그를 변수로 치환한다."
+          },
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "u+v=3$, $u-v=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱과 몫의 로그를 합과 차로 바꾼다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "u+v=3$, $u-v=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 곱과 몫 성질을 사용한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$u=2$, $v=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 합과 차를 연립해 b,c를 a로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "세 양수 $a, b, c$"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "($a \\ne 1$)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그를 치환해 합과 차를 풀고 남은 로그 조건에 대입해 밑을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그방정식",
+            "src": "stem",
+            "quote": "$\\log_3 x - \\log_x 27 = 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "두 근의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\log_3 x$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "로그 항을 한 변수로 치환한다."
+          },
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "밑변환에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$t^2-2t-3=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "분수를 정리한 이차방정식을 풀고 지수식으로 원래 근을 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "진수와 밑 조건을 확인하고 로그를 치환해 이차방정식으로 바꾼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$"
+          },
+          {
+            "term": "지수부등식",
+            "src": "stem",
+            "quote": "9^{2g(x)}$을 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 자연수 $x$ 값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "밑을 모두 $3$으로 바꾸어",
+            "evidenceType": "IMPLIED",
+            "justification": "두 지수식의 밑을 통일해 지수를 비교한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$g(x)(f(x)-4)\\le0$",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프에서 두 인수의 부호를 비교한다."
+          },
+          {
+            "term": "그래프",
+            "src": "solution",
+            "quote": "그림에서 $g(5)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "교점과 그래프의 상하로 자연수 해를 구한다."
+          },
+          {
+            "term": "해석",
+            "src": "solution",
+            "quote": "그림에서 $g(5)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프의 부호 구간을 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $x$ 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지수의 밑을 통일하고 곱의 부호를 그래프에서 판정해 자연수 해를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "$a^x+a^{-x}=3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$p-q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=a^x&gt;0$으로 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "지수항을 양수 변수로 치환한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(t^2+1)^2-2t^2",
+            "evidenceType": "IMPLIED",
+            "justification": "역수 구조로 얻은 관계식을 네제곱 분모에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0$이고"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "t와 역수의 합을 이용하여 분자와 분모를 같은 t의 거듭제곱으로 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$y=a\\sin bx - c$의 그래프"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "$y=a\\sin bx - c$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "그래프의 최댓값은 $0$",
+            "evidenceType": "IMPLIED",
+            "justification": "최대와 최소로 진폭과 중심선을 구한다."
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "따라서 주기는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0, b>0, c>0$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "그래프의 최대 최소에서 진폭과 평행이동을 정하고 주기로 b를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각부등식",
+            "src": "stem",
+            "quote": "연립부등식 $\\begin{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$\\alpha \\times \\beta$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의 관계",
+            "src": "solution",
+            "quote": "$\\sin^2x=1-\\cos^2x$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인의 제곱을 코사인으로 바꾸어 이차부등식을 푼다."
+          },
+          {
+            "term": "삼각함수의 합성",
+            "src": "solution",
+            "quote": "$\\sqrt2\\sin(x-\\frac\\pi4)\\le0$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인과 코사인의 차를 하나의 사인으로 합성한다."
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "$\\sqrt2\\sin(x-\\frac\\pi4)\\le0$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인과 코사인을 하나의 사인으로 변환한다."
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "두 조건의 공통 구간은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각부등식의 해구간을 교집합으로 결합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 \\le x < 2\\pi$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 부등식을 코사인의 이차부등식으로, 둘째를 합성 사인 부등식으로 푼 뒤 공통 구간을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수방정식",
+            "src": "stem",
+            "quote": "$4^x+3^{-2y}=119"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$(\\alpha-1)^{-\\beta}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=2^x&gt;0$, $v=3^{-y}&gt;0$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 지수항을 양의 변수로 치환한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$(u-4)^2+(v-3)^2=144$",
+            "evidenceType": "IMPLIED",
+            "justification": "치환된 식을 원의 방정식으로 변형한다."
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$u$의 최댓값은 $4+12=16$",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 좌표 극값과 지수함수 단조성으로 x,y의 극값을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x, y$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지수항을 양수로 치환해 원을 만들고 좌표 극값을 지수함수의 단조성과 연결한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $\\mathrm{ABCD}$"
+          },
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AP}}=\\log_a b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "정수 $k$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle APB$와 $\\triangle CPD$는 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "\\log_c a=\\frac43$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 진수인 두 로그의 비로 밑을 변환한다."
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$k&gt;\\frac{63}{16}$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그값을 넣은 일차부등식에서 최소 정수를 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "두 변 $\\mathrm{AB, CD}$가 서로 평행"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a, c$는 1이 아닌 양수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최솟값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사다리꼴 대각선이 만드는 닮음과 길이비로 밑 변환 값을 구해 부등식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구간별 함수",
+            "src": "stem",
+            "quote": "함수 $f(x) = \\begin{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$\\frac{|K|}{10}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "두 그래프가 단위 정사각형에서",
+            "evidenceType": "IMPLIED",
+            "justification": "지수함수와 로그 역함수가 정사각형 안에서 나누는 넓이를 합한다."
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "같은 모양이 두 번 나타난다",
+            "evidenceType": "IMPLIED",
+            "justification": "길이 2인 한 구간의 넓이를 두 번 계산한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$n\\ge0$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 n에서 그래프가 x축 위 또는 아래인 경우로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "0 \\le x \\le 4"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 정수 $n$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수 대칭으로 한 주기 넓이를 구하고 정수 수직이동에 따른 위아래를 분류해 n을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "2^{3+\\sqrt{3}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "간단히 하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$(A+B)^2-(A-B)^2=4AB$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$AB=2^{3+\\sqrt3}\\cdot2^{3-\\sqrt3}",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 밑의 지수를 더하여 무리수 지수를 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 제곱의 차를 곱으로 바꾼 뒤 지수를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각방정식",
+            "src": "stem",
+            "quote": "$\\sin^2 x + 4\\cos x + k = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의 관계",
+            "src": "solution",
+            "quote": "$\\sin^2x=1-\\cos^2x$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인 제곱을 코사인으로 바꾼다."
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\cos x$로 치환한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(u-2)^2-5$",
+            "evidenceType": "IMPLIED",
+            "justification": "제한된 코사인 범위에서 k의 최대와 최소를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 \\le x < 2\\pi$"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$값의 범위"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "코사인으로 치환해 실근 존재를 제한구간의 이차함수 치역으로 바꾼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각방정식",
+            "src": "stem",
+            "quote": "$\\sin\\frac{\\pi}{8}x=t$"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 실근의 차를 $g(t)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 자연수를 $m$"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$8S$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$\\theta=\\frac\\pi8x$로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "x를 한 주기의 각도로 바꾼다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$t&gt;0$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "t의 부호별 두 근의 차를 계산한다."
+          },
+          {
+            "term": "삼각함수의 관계",
+            "src": "solution",
+            "quote": "$\\sin^2\\theta+\\cos^2\\theta=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "상보각 항을 짝지어 제곱합을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-1 < t < 1$"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 삼각방정식의 근 차를 부호별로 비교해 m과 각 항을 얻고 상보각 제곱을 짝지어 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "상용로그",
+            "src": "stem",
+            "quote": "$\\log 2=0.301, \\log 3=0.477$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$\\log 15^9$의 값을"
+          },
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "$a$의 값을 구하시오"
+          },
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a-b$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "상용로그",
+            "src": "solution",
+            "quote": "상용로그의 성질과 주어진 근삿값",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지표",
+            "src": "solution",
+            "quote": "$10^{10}&lt;15^9&lt;10^{11}$",
+            "evidenceType": "IMPLIED",
+            "justification": "상용로그의 정수 부분으로 자릿수를, 소수 부분으로 최고 자리 숫자를 정한다."
+          },
+          {
+            "term": "가수",
+            "src": "solution",
+            "quote": "$15^9=10^{10.584}",
+            "evidenceType": "IMPLIED",
+            "justification": "상용로그의 소수 부분으로 최고 자리 숫자를 찾는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 상용로그로 거듭제곱의 로그를 계산해 자릿수와 최고 자리 숫자를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=r^x, y=\\log_r x$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수 $y=g^{-1}(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$6 \\times \\left| g\\left("
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "그 역함수 $y=\\log_r x$의 교점",
+            "evidenceType": "IMPLIED",
+            "justification": "유일한 교점이 대칭축 위에 있음을 사용한다."
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "대칭축 위에 있어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "함수와 역함수의 교점은 y=x에 대해 짝을 이룬다."
+          },
+          {
+            "term": "고정점",
+            "src": "solution",
+            "quote": "$g(x)=x$인 고정점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "$\\log_r t=t$",
+            "evidenceType": "IMPLIED",
+            "justification": "r^t=t를 로그식으로 바꾸어 목표 함수값을 구한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$\\log_r t=t$",
+            "evidenceType": "IMPLIED",
+            "justification": "지수식과 로그식의 동치를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$r \\ne 1, r > 0$"
+          },
+          {
+            "term": "대소관계",
+            "src": "stem",
+            "quote": "$\\alpha < \\beta < t$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수 교점의 대칭과 지정된 교점에서 t를 정하고 감소함수의 고정점과 짝을 사용해 alpha를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {"term":"로그의 정의","en":"LOGARITHM_DEFINITION","synonyms":[],"kind":"방법","parent":"로그","note":"로그식과 지수식의 동치를 사용한다.","usedIn":[1,20]},
+    {"term":"로그의 성질","en":"LOGARITHM_LAWS","synonyms":[],"kind":"방법","parent":"로그","note":"곱과 몫의 로그를 합과 차로 바꾼다.","usedIn":[1,7]},
+    {"term":"유리수지수","en":"RATIONAL_EXPONENT","synonyms":[],"kind":"방법","parent":"지수","note":"거듭제곱근을 유리수 지수로 나타낸다.","usedIn":[2]},
+    {"term":"삼각함수의 부호","en":"TRIGONOMETRIC_SIGN","synonyms":[],"kind":"방법","parent":"부호","note":"사분면에 따라 삼각함수의 부호를 결정한다.","usedIn":[5]},
+    {"term":"삼각함수의 합성","en":"TRIGONOMETRIC_COMBINATION","synonyms":[],"kind":"방법","parent":"삼각함수","note":"사인과 코사인의 일차결합을 하나의 삼각함수로 바꾼다.","usedIn":[12]}
+  ],
+  "selfCheck": {
+    "items": 20,
+    "quotesChecked": 128,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,2,3,4,6,16],
+    "notes": "Q3,9,11,14의 원문 PNG 4개 직접 열람. Q1 로그의 곱셈법칙과 정의로 값을 구한다. Q2 중첩 근호를 안쪽에서 바깥쪽으로 정리해 유리수 지수로 바꾼다. Q3 지수함수의 함수값과 역함수의 입력·출력 관계를 쓴다. Q4 각 변환으로 모두 코사인으로 고쳐 정리한다. Q6 지수의 홀짝과 수의 부호에 따른 거듭제곱근의 실근 개수를 판별한다. Q16 제곱의 차를 곱으로 고쳐 무리수 지수를 소거한다."
+  }
+}
