@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "253b395cea3866adc138c927cf60833ec3581d3d",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {"agent":"Codex-gpt-6.1-terra","run":"original-81-90","at":"2026-11-04"},
+  "items": [
+    {"sourceOrdinal":1,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"동심원","src":"stem","quote":"점 $O$를 중심으로 하는 두 원"},{"term":"현","src":"stem","quote":"$\\overline{AB}=12\\,\\mathrm{cm}$"},{"term":"접선","src":"stem","quote":"작은 원의 접선과 큰 원의 두 교점"}],
+        "goal": [{"term":"넓이","src":"stem","quote":"색칠한 부분의 넓이는"}],
+        "method": [{"term":"수선","src":"solution","quote":"접점에서 반지름은 접선에 수직", "evidenceType":"NAMED"},{"term":"중점","src":"solution","quote":"$M$은 $AB$의 중점이다", "evidenceType":"IMPLIED","justification":"원의 중심에서 현에 내린 수선이 현을 이등분한다."},{"term":"피타고라스정리","src":"solution","quote":"$R^2=r^2+6^2$", "evidenceType":"IMPLIED","justification":"직각삼각형에서 반지름 제곱의 차를 구한다."},{"term":"차","src":"solution","quote":"두 원의 넓이의 차이이므로", "evidenceType":"NAMED"}],
+        "condition": [{"term":"접함","src":"stem","quote":"작은 원의 접선과 큰 원의 두 교점"}]
+      },"reasons":{"method":"접점에서 수직이고 큰 원의 현을 이등분하므로 직각삼각형에서 반지름 제곱의 차를 구한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":2,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"현","src":"solution","quote":"현 $AB$, $AC$까지의 거리"},{"term":"원","src":"stem","quote":"그림의 원 $O$에서"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle x$의 크기는"}],
+        "method": [{"term":"현","src":"solution","quote":"같은 거리에 있는 두 현의 길이는 같으므로", "evidenceType":"NAMED"},{"term":"이등변삼각형","src":"solution","quote":"이등변삼각형이다", "evidenceType":"NAMED"}],
+        "condition": [{"term":"수선","src":"stem","quote":"$\\overline{OM}\\perp\\overline{AB}$"},{"term":"상등","src":"stem","quote":"$\\overline{OM}=\\overline{ON}$"}]
+      },"reasons":{"method":"중심에서 같은 거리에 있는 현이 같아 이등변삼각형의 두 밑각이 같다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":3,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"이등변삼각형","src":"stem","quote":"인 이등변삼각형이고"},{"term":"현","src":"solution","quote":"현 $AB$에 내린 수선"}],
+        "goal": [{"term":"길이","src":"stem","quote":"$\\overline{OE}$의 길이는"}],
+        "method": [{"term":"중점","src":"solution","quote":"현을 이등분하므로", "evidenceType":"NAMED"},{"term":"피타고라스정리","src":"solution","quote":"피타고라스 정리를 쓰면", "evidenceType":"NAMED"}],
+        "condition": [{"term":"수선","src":"stem","quote":"$\\overline{OD}\\perp\\overline{AB}$"},{"term":"내접","src":"stem","quote":"원 $O$에 내접한다"},{"term":"상등","src":"stem","quote":"$\\overline{OA}=\\overline{AB}=6$"}]
+      },"reasons":{"method":"중심에서 현으로 내린 수선이 현을 반으로 나누고 직각삼각형에 피타고라스 정리를 적용한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":4,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"접선","src":"stem","quote":"$\\overline{PB}$는 원 $O$의 접선"},{"term":"반지름","src":"stem","quote":"$\\overline{OB}=3\\,\\mathrm{cm}$"}],
+        "goal": [{"term":"접선의길이","src":"stem","quote":"$\\overline{PA}+\\overline{PB}$의 길이"},{"term":"합","src":"stem","quote":"$\\overline{PA}+\\overline{PB}$의 길이"}],
+        "method": [{"term":"접선의길이","src":"solution","quote":"두 접선의 길이는 같으므로", "evidenceType":"NAMED"},{"term":"이등분선","src":"solution","quote":"$OP$는 $\\angle APB$를 이등분", "evidenceType":"NAMED"},{"term":"수선","src":"solution","quote":"접선 $PB$에 수직" ,"evidenceType":"IMPLIED","justification":"접점의 반지름과 접선이 수직이다."},{"term":"탄젠트","src":"solution","quote":"$\\tan30^\\circ=\\dfrac{OB}{PB}", "evidenceType":"NAMED"}],
+        "condition": [{"term":"접함","src":"stem","quote":"는 원 $O$의 접선이고"}]
+      },"reasons":{"method":"두 접선 길이와 각 이등분을 이용하고 접점의 직각삼각형에서 탄젠트로 길이를 구한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":5,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"내접","src":"stem","quote":"$\\triangle ABC$의 내접원"},{"term":"삼각형","src":"stem","quote":"$\\triangle ABC$의 내접원"},{"term":"접선의길이","src":"stem","quote":"$\\overline{AF}=5\\,\\mathrm{cm}$"}],
+        "goal": [{"term":"길이","src":"stem","quote":"$\\overline{BC}$의 길이는"}],
+        "method": [{"term":"접선의길이","src":"solution","quote":"두 접선의 길이는 같다", "evidenceType":"NAMED"},{"term":"합","src":"solution","quote":"$BC=BD+DC=4+2=6", "evidenceType":"IMPLIED","justification":"두 접선 부분의 길이를 더해 변의 길이를 구한다."}],
+        "condition": [{"term":"내접","src":"stem","quote":"$\\triangle ABC$의 내접원"}]
+      },"reasons":{"method":"삼각형의 각 꼭짓점에서 내접원에 그은 두 접선의 길이가 같음을 이용한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":6,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"원에내접하는사각형","src":"stem","quote":"$\\square ABCD$는 원에 내접"},{"term":"접선","src":"stem","quote":"$TT'$은 원의 접선이다"},{"term":"호","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"}],
+        "goal": [{"term":"접선과현이이루는각","src":"stem","quote":"$\\angle x$의 크기는"}],
+        "method": [{"term":"원주각","src":"solution","quote":"원주각이 보는 호의 크기의 절반", "evidenceType":"NAMED"},{"term":"상등","src":"solution","quote":"$\\wideparen{BC}=76^\\circ$이다", "evidenceType":"IMPLIED","justification":"길이가 같은 두 호의 각 크기가 같다."},{"term":"접선과현이이루는각","src":"solution","quote":"접선과 현 $CD$가 이루는 각", "evidenceType":"NAMED"}],
+        "condition": [{"term":"내접","src":"stem","quote":"$\\square ABCD$는 원에 내접"},{"term":"상등","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"},{"term":"접함","src":"stem","quote":"$TT'$은 원의 접선이다"}]
+      },"reasons":{"method":"원주각과 같은 호를 이용해 남은 호를 구하고 접선과 현이 이루는 각을 정한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":7,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"현","src":"solution","quote":"두 현 $AB$, $CD$가 원 안의 점"},{"term":"원주각","src":"solution","quote":"호 $AC$를 보는 원주각"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle APC$의 크기는"}],
+        "method": [{"term":"원주각","src":"solution","quote":"호 $AC$를 보는 원주각", "evidenceType":"NAMED"},{"term":"현","src":"solution","quote":"두 현 $AB$, $CD$가 원 안의 점", "evidenceType":"IMPLIED","justification":"원 안의 두 현이 교차하는 각은 마주 보는 두 호의 합의 반이다."},{"term":"두현이이루는각","src":"solution","quote":"두 현 $AB$, $CD$가 원 안의 점", "evidenceType":"IMPLIED","justification":"교차하는 현의 각을 마주 보는 호의 합의 절반으로 구한다."}],
+        "condition": [{"term":"상등","src":"stem","quote":"$\\wideparen{AC}=\\wideparen{BD}$"}]
+      },"reasons":{"method":"원주각으로 한 호를 구하고 같은 다른 호와 합하여 원 안에서 교차하는 현의 각을 구한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":8,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"중심각","src":"stem","quote":"$\\angle AOC=80^\\circ$"},{"term":"호","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"}],
+        "goal": [{"term":"원주각","src":"stem","quote":"$\\angle BQC$의 크기는"}],
+        "method": [{"term":"중심각","src":"solution","quote":"중심각이 보는 호의 크기와 같다", "evidenceType":"NAMED"},{"term":"상등","src":"solution","quote":"두 호의 크기는 각각", "evidenceType":"IMPLIED","justification":"같은 두 호가 전체 호를 이등분한다."},{"term":"원주각","src":"solution","quote":"호 $BC$를 보는 원주각", "evidenceType":"NAMED"}],
+        "condition": [{"term":"상등","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"}]
+      },"reasons":{"method":"중심각이 보는 호를 둘로 나눈 뒤 그 반 호에 대한 원주각을 정한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":9,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"원에내접하는사각형","src":"stem","quote":"$\\square ABCD$는 원 $O$에 내접"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle ADC$의 크기는"}],
+        "method": [{"term":"이등변삼각형","src":"solution","quote":"$OB=OC$이므로", "evidenceType":"IMPLIED","justification":"같은 원의 반지름으로 만든 두 이등변삼각형의 밑각을 구한다."},{"term":"차","src":"solution","quote":"$\\angle ABC=\\angle ABO-\\angle OBC$", "evidenceType":"IMPLIED","justification":"그림에서 두 각의 차로 내접사각형의 한 각을 얻는다."},{"term":"원에내접하는사각형","src":"solution","quote":"마주 보는 두 각의 합은 $180^\\circ$", "evidenceType":"NAMED"}],
+        "condition": [{"term":"내접","src":"stem","quote":"원 $O$에 내접하고"}]
+      },"reasons":{"method":"반지름으로 만든 이등변삼각형의 각 차로 사각형의 한 내각을 얻고 대각의 합을 쓴다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":10,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"원에내접하는사각형","src":"stem","quote":"$\\square ABCD$는 원 $O$에 내접"},{"term":"할선","src":"solution","quote":"두 할선이 이루는 각이 $30^\\circ$"}],
+        "goal": [{"term":"원주각","src":"solution","quote":"호 $BAD$를 보는 원주각"}],
+        "method": [{"term":"할선","src":"solution","quote":"두 할선이 이루는 각이 $30^\\circ$", "evidenceType":"IMPLIED","justification":"원의 바깥에서 두 할선이 이루는 각으로 호의 차를 구한다."},{"term":"두할선이이루는각","src":"solution","quote":"두 할선이 이루는 각이 $30^\\circ$", "evidenceType":"IMPLIED","justification":"두 할선의 바깥각은 대응하는 두 호의 차의 절반이다."},{"term":"연립방정식","src":"solution","quote":"$2(a+d)=220^\\circ$", "evidenceType":"IMPLIED","justification":"두 호의 차와 전체 호의 합을 함께 사용해 호의 합을 구한다."},{"term":"원주각","src":"solution","quote":"호 $BAD$를 보는 원주각", "evidenceType":"NAMED"}],
+        "condition": [{"term":"내접","src":"stem","quote":"원 $O$에 내접하고"}]
+      },"reasons":{"method":"두 외부 할선각에서 호의 차를 구해 전체 호의 합과 결합하고 원주각으로 옮긴다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":11,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"접선","src":"stem","quote":"$\\overline{PB}$는 원 $O$의 접선"}],
+        "goal": [{"term":"접선과현이이루는각","src":"stem","quote":"$\\angle PAC+\\angle PBC$의 값"},{"term":"합","src":"stem","quote":"$\\angle PAC+\\angle PBC$의 값"}],
+        "method": [{"term":"접선","src":"solution","quote":"작은 호 $AB$의 중심각은", "evidenceType":"IMPLIED","justification":"두 접선의 각과 접점에 대응하는 중심각의 합이 180도이다."},{"term":"접선과현이이루는각","src":"solution","quote":"접선과 현이 이루는 각의 성질", "evidenceType":"NAMED"},{"term":"합","src":"solution","quote":"$\\wideparen{AC}+\\wideparen{CB}=", "evidenceType":"IMPLIED","justification":"작은 호의 두 부분을 더하여 접현각의 합을 구한다."}],
+        "condition": [{"term":"접함","src":"stem","quote":"는 원 $O$의 접선이고"}]
+      },"reasons":{"method":"두 접선의 각으로 작은 호를 구하고 두 접현각이 보는 호의 합을 이용한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":12,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"자료","src":"stem","quote":"직원 $8$명의 키를 조사하여"}],
+        "goal": [{"term":"중앙값","src":"stem","quote":"이 자료의 중앙값은"}],
+        "method": [{"term":"중앙값","src":"solution","quote":"가운데 두 값인 $158$, $160$의 평균", "evidenceType":"NAMED"},{"term":"순서","src":"solution","quote":"자료를 작은 수부터 나열하면", "evidenceType":"IMPLIED","justification":"자료를 크기순으로 정렬해 가운데 두 값을 찾는다."}],
+        "condition": []
+      },"reasons":{"method":"여덟 자료를 크기순으로 정렬해 가운데 두 값의 평균을 구한다."},"steps":[],"scenarioNote":"직원 키"},
+    {"sourceOrdinal":13,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"자료","src":"stem","quote":"학생 $11$명이 $1$년 동안 본 영화"}],
+        "goal": [{"term":"대소비교","src":"stem","quote":"$a,b,c$의 대소 관계로 옳은 것은"}],
+        "method": [{"term":"평균","src":"solution","quote":"평균을 구하면 자료의 합이", "evidenceType":"NAMED"},{"term":"중앙값","src":"solution","quote":"가운데 값은 $4$이므로", "evidenceType":"IMPLIED","justification":"정렬한 열한 자료에서 가운데 값을 구한다."},{"term":"최빈값","src":"solution","quote":"가장 많이 나타나는 값은 $3$", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"자료의 평균과 중앙값과 최빈값을 각각 구하여 크기를 비교한다."},"steps":[],"scenarioNote":"영화 관람 횟수"},
+    {"sourceOrdinal":14,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"줄기와잎","src":"stem","quote":"다음 줄기와 잎 그림은"}],
+        "goal": [{"term":"차","src":"stem","quote":"$b-a$의 값은"}],
+        "method": [{"term":"중앙값","src":"solution","quote":"여덟 번째 값과 아홉 번째 값의 평균", "evidenceType":"NAMED"},{"term":"최빈값","src":"solution","quote":"가장 많이 나타나는 값은 $80$", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"줄기와 잎을 읽어 짝수 개 자료의 가운데 두 값의 평균과 최빈값을 구한다."},"steps":[],"scenarioNote":"수학 성적"},
+    {"sourceOrdinal":15,"format":"옳지 않은 것 고르기",
+      "slots": {
+        "given": [{"term":"자료","src":"stem","quote":"세 자료 $A$, $B$, $C$에 대한 설명"}],
+        "goal": [{"term":"판정","src":"stem","quote":"설명으로 옳지 않은 것은"}],
+        "method": [{"term":"평균","src":"solution","quote":"평균은 $42\\div7=6$", "evidenceType":"NAMED"},{"term":"중앙값","src":"solution","quote":"가운데 두 값이 $15,15$", "evidenceType":"IMPLIED","justification":"짝수 자료의 가운데 두 값의 평균으로 중앙값을 구한다."},{"term":"최빈값","src":"solution","quote":"각각 세 번씩 나타나므로 최빈값", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"세 자료의 평균, 가운데 값과 빈도가 가장 큰 값을 구하여 진술을 비교한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":16,"format":"보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [{"term":"자료","src":"stem","quote":"$3,4,5,1,5,2,5,7$의 수"}],
+        "goal": [{"term":"판정","src":"stem","quote":"옳은 것은 모두 몇 개인가"},{"term":"개수","src":"stem","quote":"옳은 것은 모두 몇 개인가"}],
+        "method": [{"term":"평균","src":"solution","quote":"평균은 $32\\div8=4$", "evidenceType":"NAMED"},{"term":"중앙값","src":"solution","quote":"이므로 중앙값은", "evidenceType":"NAMED"},{"term":"최빈값","src":"solution","quote":"최빈값은 세 번 나타나는 $5$", "evidenceType":"NAMED"},{"term":"분산","src":"solution","quote":"편차의 제곱의 합은", "evidenceType":"IMPLIED","justification":"편차 제곱의 합을 자료 수로 나눈다."},{"term":"표준편차","src":"solution","quote":"이고 표준편차는", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"평균, 중앙값, 최빈값 및 분산의 제곱근인 표준편차를 계산해 각 보기를 판정한다."},"steps":[],"scenarioNote":"정팔면체 주사위의 관측값"},
+    {"sourceOrdinal":17,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"평균","src":"stem","quote":"평균이 $7$이고 분산이 $3.8$"},{"term":"분산","src":"stem","quote":"평균이 $7$이고 분산이 $3.8$"}],
+        "goal": [{"term":"제곱합","src":"stem","quote":"$x^2+y^2$의 값은"}],
+        "method": [{"term":"평균","src":"solution","quote":"$x+y=12$", "evidenceType":"IMPLIED","justification":"평균에서 전체 합과 두 미지수의 합을 구한다."},{"term":"분산","src":"solution","quote":"편차의 제곱의 합은 $19$", "evidenceType":"IMPLIED","justification":"분산으로 편차 제곱합을 세운다."},{"term":"전개","src":"solution","quote":"$x^2+y^2-14(x+y)+98=9$", "evidenceType":"IMPLIED","justification":"편차 제곱식을 전개해 원래 값의 제곱합을 구한다."}],
+        "condition": []
+      },"reasons":{"method":"평균으로 합을 구하고 분산의 편차 제곱합을 전개하여 미지수 제곱합을 구한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":18,"format":"단일 정답",
+      "slots": {
+        "given": [{"term":"평균","src":"stem","quote":"평균을 $M$, 분산을 $S^2$"},{"term":"분산","src":"stem","quote":"평균을 $M$, 분산을 $S^2$"},{"term":"자료","src":"stem","quote":"$a+3,b+3,c+3$의 평균"}],
+        "goal": [{"term":"평균","src":"stem","quote":"$a+3,b+3,c+3$의 평균과 분산"},{"term":"분산","src":"stem","quote":"$a+3,b+3,c+3$의 평균과 분산"}],
+        "method": [{"term":"변환","src":"solution","quote":"각 변량에 같은 수 $3$을 더하면", "evidenceType":"NAMED"},{"term":"자료의일차변환","src":"solution","quote":"각 변량에 같은 수 $3$을 더하면", "evidenceType":"IMPLIED","justification":"모든 자료에 같은 수를 더했을 때 평균과 분산의 변화를 구한다."},{"term":"편차","src":"solution","quote":"편차가 모두 그대로이다", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"각 자료에 같은 수를 더하면 평균도 이동하지만 편차가 그대로여서 분산은 불변이다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":19,"format":"옳은 것 고르기",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"필기 점수와 실기 점수에 대한 산점도"}],
+        "goal": [{"term":"판정","src":"stem","quote":"옳은 것을 모두 고르면"}],
+        "method": [{"term":"최빈값","src":"solution","quote":"최빈값이 $80$점이라는 설명", "evidenceType":"IMPLIED","justification":"같은 필기 점수를 가진 점의 수를 비교한다."},{"term":"비율","src":"solution","quote":"$\\dfrac{5}{20}\\times100=25\\%$", "evidenceType":"IMPLIED","justification":"동시 조건을 만족하는 점의 수를 전체 인원으로 나눈다."},{"term":"논리합","src":"solution","quote":"적어도 하나가 $85$점 이상", "evidenceType":"IMPLIED","justification":"두 점수 중 어느 하나 이상이 조건을 만족하는 점을 센다."},{"term":"평균","src":"solution","quote":"\\dfrac{555}{6}=92.5$", "evidenceType":"IMPLIED","justification":"조건을 만족하는 점들의 필기 점수 합을 인원으로 나눈다."}],
+        "condition": []
+      },"reasons":{"method":"산점도의 도수, 두 조건의 교집합과 합집합 및 조건에 맞는 점의 평균을 확인한다."},"steps":[],"scenarioNote":"음악 필기와 실기 점수"},
+    {"sourceOrdinal":20,"format":"옳지 않은 것 고르기",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"수학 성적과 과학 성적에 대한 산점도"}],
+        "goal": [{"term":"판정","src":"stem","quote":"다음 중 옳지 않은 것은"}],
+        "method": [{"term":"좌표","src":"solution","quote":"오른쪽으로 갈수록 수학 성적이 높고", "evidenceType":"IMPLIED","justification":"각 점의 좌우와 상하 위치를 비교한다."},{"term":"상관관계","src":"solution","quote":"양의 상관관계가 있다", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"그림의 좌표 방향과 전체 점들의 추세로 각 설명을 판단한다. 축의 수치와 척도가 없어 한 학생의 두 과목 점수의 대소 판정에는 근거가 부족하다."},"steps":[],"scenarioNote":"수학과 과학 성적"},
+    {"sourceOrdinal":21,"format":"서술",
+      "slots": {
+        "given": [{"term":"원","src":"stem","quote":"다음 그림의 원 $O$에서"},{"term":"현","src":"solution","quote":"$M$은 현 $AB$의 중점"}],
+        "goal": [{"term":"넓이","src":"stem","quote":"원 $O$의 넓이를 구하시오"}],
+        "method": [{"term":"피타고라스정리","src":"solution","quote":"$CM^2=CA^2-AM^2$", "evidenceType":"IMPLIED","justification":"두 직각삼각형에서 변의 제곱 관계를 이용한다."},{"term":"수직이등분선","src":"solution","quote":"현 $AB$의 수직이등분선 위", "evidenceType":"NAMED"},{"term":"일차방정식","src":"solution","quote":"$8x=48$", "evidenceType":"IMPLIED","justification":"반지름을 미지수로 두어 세운 직각삼각형의 관계식을 푼다."},{"term":"넓이","src":"solution","quote":"$\\pi\\times10^2=100\\pi", "evidenceType":"IMPLIED","justification":"반지름의 제곱에 원주율을 곱한다."}],
+        "condition": [{"term":"수선","src":"stem","quote":"$\\overline{CM}\\perp\\overline{AB}$"},{"term":"상등","src":"stem","quote":"$\\overline{AM}=\\overline{BM}=8"}]
+      },"reasons":{"method":"현 중점의 수직이등분선을 이용해 중심을 놓고 두 직각삼각형에서 반지름을 정한 뒤 넓이를 구한다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":22,"format":"서술",
+      "slots": {
+        "given": [{"term":"호","src":"stem","quote":"$\\wideparen{AB}=6\\pi\\,\\mathrm{cm}$"},{"term":"반지름","src":"stem","quote":"반지름의 길이가 $9\\,\\mathrm{cm}$"},{"term":"할선","src":"stem","quote":"두 현 $AB$와 $CD$의 연장선"}],
+        "goal": [{"term":"호","src":"stem","quote":"$\\wideparen{AC}$의 길이를"},{"term":"길이","src":"stem","quote":"$\\wideparen{AC}$의 길이를"}],
+        "method": [{"term":"비례","src":"solution","quote":"호 $AB$의 길이가 $6\\pi$이므로", "evidenceType":"IMPLIED","justification":"원주와 호의 길이의 비로 중심각을 구한다."},{"term":"할선","src":"solution","quote":"두 할선이 이루는 각은 두 호의 차의 절반", "evidenceType":"NAMED"},{"term":"두할선이이루는각","src":"solution","quote":"두 할선이 이루는 각은 두 호의 차의 절반", "evidenceType":"NAMED"},{"term":"연립방정식","src":"solution","quote":"$x+y=180^\\circ$", "evidenceType":"IMPLIED","justification":"전체 호와 할선각에서 구한 합과 차를 연립한다."}],
+        "condition": []
+      },"reasons":{"method":"두 호의 길이를 중심각으로 바꾸고 원 전체와 두 할선각으로 호의 각을 구한 후 길이로 바꾼다."},"steps":[],"scenarioNote":""},
+    {"sourceOrdinal":23,"format":"서술",
+      "slots": {
+        "given": [{"term":"평균","src":"stem","quote":"평균이 $14$이고"},{"term":"분산","src":"stem","quote":"분산이 $\\dfrac{81}{4}$"}],
+        "goal": [{"term":"제곱합","src":"stem","quote":"$a^2+b^2+c^2+d^2$의 값"}],
+        "method": [{"term":"변환","src":"solution","quote":"각 변량을 $3$배하면 분산은", "evidenceType":"NAMED"},{"term":"자료의일차변환","src":"solution","quote":"각 변량을 $3$배하면 분산은", "evidenceType":"IMPLIED","justification":"자료를 배수와 상수의 합으로 바꿀 때 평균과 분산의 변화를 이용한다."},{"term":"평균","src":"solution","quote":"$3m+2=14$", "evidenceType":"IMPLIED","justification":"일차변환된 평균에서 원래 자료의 평균을 역산한다."},{"term":"분산","src":"solution","quote":"분산의 정의에 따라", "evidenceType":"NAMED"},{"term":"전개","src":"solution","quote":"이를 전개하면", "evidenceType":"NAMED"}],
+        "condition": []
+      },"reasons":{"method":"일차변환 전 평균과 분산을 역산하여 편차 제곱합을 전개하고 원래 자료의 제곱합을 구한다."},"steps":[],"scenarioNote":""}
+  ],
+  "candidates": [
+    {"term":"두현이이루는각","en":"ANGLE_BETWEEN_INTERSECTING_CHORDS","synonyms":[],"kind":"대상","parent":"현","note":"원 안에서 두 현이 교차하여 이루는 각과 마주 보는 두 호의 합의 관계.","usedIn":[7]},
+    {"term":"두할선이이루는각","en":"ANGLE_BETWEEN_TWO_SECANTS","synonyms":[],"kind":"대상","parent":"할선","note":"원 밖의 한 점에서 그은 두 할선이 이루는 각과 두 호의 차의 관계.","usedIn":[10,22]},
+    {"term":"자료의일차변환","en":"LINEAR_TRANSFORMATION_OF_DATA","synonyms":[],"kind":"방법","parent":"변환","note":"각 자료에 같은 배수를 곱하고 같은 수를 더할 때 평균과 분산의 변화.","usedIn":[18,23]}
+  ],
+  "selfCheck": {"items":23,"quotesChecked":161,"quotesNotFound":0,"warningsRechecked":[8,11,12,14,17,20],"notes":"그림 16개 직접 확인. 20번 그림에는 두 축의 숫자나 공통 척도가 없어 서로 다른 두 과목 점수의 절대 크기 비교를 확정하기 어렵다. 경고 재검토: 8은 중심각에 해당하는 호를 같은 두 호로 나누고 원주각을 구한다. 11은 두 접선의 각으로 접점 사이 호를 구하고 두 접현각의 합을 구한다. 12는 짝수 개 자료를 정렬해 가운데 두 값의 평균을 구하는 단순 문항이다. 14는 줄기와 잎에서 짝수 자료의 중앙값과 최빈값을 찾아 차를 구한다. 17은 평균으로 미지수의 합을 구하고 분산의 편차 제곱합을 전개해 제곱합을 구한다. 20은 좌표 방향과 산점도의 상관관계 비교로 기재했으나 위 척도 문제를 함께 보고한다. 최초 인용 수는 수작업 집계이며 ROOT가 검사했다."}
+}
