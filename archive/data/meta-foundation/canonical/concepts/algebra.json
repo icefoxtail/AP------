@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.23",
+  "shardVersion": "1.4.24",
   "status": "ACTIVE",
-  "conceptCount": 342,
+  "conceptCount": 369,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -12156,6 +12156,951 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_SQUARE_EXPANSION",
+      "canonicalLabelKo": "이항식의 제곱 전개",
+      "definition": "이항식의 제곱을 a²+2ab+b² 꼴로 전개하는 공식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3614dbd99ebcfd0d998364b1291471b46ca3501f4c7263ae3193a09b65429528"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3614dbd99ebcfd0d998364b1291471b46ca3501f4c7263ae3193a09b65429528",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_BINOMIAL_SQUARE_EXPANSION for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "(sqrt(5)+3)^2 = 14+6*sqrt(5)로 전개한 뒤 유리수 상등 조건으로 a=14, b=6을 구하여 a+b=20을 계산하는 2단계 전개-상등 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMMON_FACTOR_ALGEBRAIC_VALUE",
+      "canonicalLabelKo": "공통인수와 식의 값",
+      "definition": "다항식을 공통인수로 묶은 뒤 주어진 문자 값이나 대칭식의 값을 대입하여 전체 식의 값을 구하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ef8bafdbcf20001377e05d612d183179c807d554b886ed742ba0b5b57dc048e4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ef8bafdbcf20001377e05d612d183179c807d554b886ed742ba0b5b57dc048e4",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_COMMON_FACTOR_ALGEBRAIC_VALUE for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "x^2y-xy^2 = xy(x-y)로 묶은 뒤 xy=-1, x-y=2*sqrt(3)을 대입하여 -2*sqrt(3)을 산출하는 2단계 인수분해 식의 값 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_RADICAL_DIFFERENCE",
+      "canonicalLabelKo": "켤레근호의 차",
+      "definition": "켤레 관계인 두 근호수의 차를 이용하여 대칭식의 값을 구하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ef8bafdbcf20001377e05d612d183179c807d554b886ed742ba0b5b57dc048e4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ef8bafdbcf20001377e05d612d183179c807d554b886ed742ba0b5b57dc048e4",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_CONJUGATE_RADICAL_DIFFERENCE for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "x^2y-xy^2 = xy(x-y)로 묶은 뒤 xy=-1, x-y=2*sqrt(3)을 대입하여 -2*sqrt(3)을 산출하는 2단계 인수분해 식의 값 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DECIMAL_RADICAL_CALCULATION",
+      "canonicalLabelKo": "소수 근호의 계산",
+      "definition": "근호 안 또는 근호 앞에 소수가 포함된 식을 근호의 성질을 이용하여 간단히 하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e3ebd389ae8d095d995cbc7122bdd5d5d06814e243635ced9005d151cf8833b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0e3ebd389ae8d095d995cbc7122bdd5d5d06814e243635ced9005d151cf8833b",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_DECIMAL_RADICAL_CALCULATION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_LETTER_REPRESENTATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "sqrt(1000)=10*sqrt(10)에서 m=10, sqrt(0.1)/sqrt(10)=0.1에서 n=1/10을 구하여 곱 mn=1을 계산하는 1단계 근호 계산 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+      "canonicalLabelKo": "켤레를 이용한 분모의 유리화",
+      "definition": "분모에 근호가 포함된 분수에서 분모·분자에 켤레를 곱하여 분모를 유리수로 만드는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_DENOMINATOR_RATIONALIZATION_CONJUGATE for PT_M3_POLY_FACTORIZATION/TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "켤레식을 이용해 x=3+2*sqrt(2), y=3-2*sqrt(2)로 유리화한 뒤 x^2-y^2=(x-y)(x+y)=(4*sqrt(2))*6=24*sqrt(2)를 도출하는 3단계 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_FOURTH_POWERS",
+      "canonicalLabelKo": "네제곱의 차",
+      "definition": "x⁴-y⁴을 (x²+y²)(x²-y²)로 인수분해하는 공식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_DIFFERENCE_OF_FOURTH_POWERS for PT_M3_POLY_FACTORIZATION/TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "x^4-y^4 = (x-y)(x+y)(x^2+y^2)로 인수분해하고 x^2+y^2=5/2를 계산하여 5*sqrt(6)/2를 도출하는 4단계 대수-무리수 심화 문항으로 Bucket 4를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES_EVALUATION",
+      "canonicalLabelKo": "제곱의 차를 이용한 식의 값",
+      "definition": "x²-y²=(x+y)(x-y)를 이용하여 주어진 두 수의 합과 차로 식의 값을 계산하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_DIFFERENCE_OF_SQUARES_EVALUATION for PT_M3_POLY_FACTORIZATION/TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "켤레식을 이용해 x=3+2*sqrt(2), y=3-2*sqrt(2)로 유리화한 뒤 x^2-y^2=(x-y)(x+y)=(4*sqrt(2))*6=24*sqrt(2)를 도출하는 3단계 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES_FACTORIZATION",
+      "canonicalLabelKo": "제곱의 차 인수분해",
+      "definition": "a²-b²=(a+b)(a-b) 공식을 이용한 인수분해.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_764f53c3e94c1f92361d7b8dc0d77f0042b174c6ed8e9281542a6fe3cc177ebd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_764f53c3e94c1f92361d7b8dc0d77f0042b174c6ed8e9281542a6fe3cc177ebd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_DIFFERENCE_OF_SQUARES_FACTORIZATION for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "4(x-3)(x+3)과 (2x+3)(x-3)으로 각각 완전 인수분해한 후 공통인수 x-3을 단계별로 도출하는 3단계 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DIVISIBILITY_OF_POLYNOMIAL",
+      "canonicalLabelKo": "다항식의 나누어떨어짐",
+      "definition": "다항식이 다른 식으로 나누어떨어지는지를 인수분해를 통해 판별하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dcad1a6236334c1365d0499d4c8d2b1aa15ec5ad383d0e20a8c4d300058d054c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dcad1a6236334c1365d0499d4c8d2b1aa15ec5ad383d0e20a8c4d300058d054c",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_DIVISIBILITY_OF_POLYNOMIAL for PT_M3_POLY_FACTORIZATION/TPL_M3_COMMON_FACTOR_IDENTIFICATION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "3x^2-6xy = 3x(x-2y)로 인수분해하여 인수 목록을 점검하고 3x-2y가 인수가 아님을 선별하는 2단계 인수 판별 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NEGATIVE_SQUARE_ROOT",
+      "canonicalLabelKo": "음의 제곱근",
+      "definition": "양수 a의 제곱근 중 음수인 값으로 -근호 a로 나타내는 수.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d349e7ec1d6e0e32ac9e33bfda52a3785128f0519b295d93c24d07eb36c05e1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0d349e7ec1d6e0e32ac9e33bfda52a3785128f0519b295d93c24d07eb36c05e1",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_NEGATIVE_SQUARE_ROOT for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_POWER_DIVISION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "sqrt(81)=9, 4, (-5)^2=25의 양/음의 제곱근 a=3, b=2, c=-5를 차례로 구하여 합 0을 계산하는 2단계 제곱근 계산 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_COEFFICIENT_MATCHING",
+      "canonicalLabelKo": "다항식의 계수 비교",
+      "definition": "두 다항식이 항등식이 되도록 같은 차수 항의 계수를 비교하여 미정계수를 결정하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_723b688be8b4c7e871bd56e56e039cf7d239f492d49a4dd862a374b7938485be"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_723b688be8b4c7e871bd56e56e039cf7d239f492d49a4dd862a374b7938485be",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_POLYNOMIAL_COEFFICIENT_MATCHING for PT_M3_POLY_FACTORIZATION/TPL_M3_PERFECT_SQUARE_CONDITION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "(x+4)(x+8)+k = x^2+12x+32+k를 (x+6)^2 = x^2+12x+36과 계수 비교하여 32+k=36, k=4를 도출하는 3단계 완전제곱식 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_PRODUCT_EXPANSION",
+      "canonicalLabelKo": "다항식의 전개",
+      "definition": "분배법칙을 이용하여 두 다항식의 곱을 하나의 다항식으로 전개하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6f2d2795a3917cf47348d243f18ae186128442095c28caa7b37b89d9d5c47e2c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6f2d2795a3917cf47348d243f18ae186128442095c28caa7b37b89d9d5c47e2c",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_POLYNOMIAL_PRODUCT_EXPANSION for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "ab=24를 만족하는 정수쌍 (a, b)의 모든 합 k=a+b를 열거하여 선지 중 불가능한 값 -5를 식별하는 2단계 계수 판정 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_PRINCIPAL_SQUARE_ROOT",
+      "canonicalLabelKo": "음이 아닌 제곱근",
+      "definition": "음이 아닌 수 a에 대하여 제곱하면 a가 되는 음이 아닌 수를 √a로 나타내는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0d349e7ec1d6e0e32ac9e33bfda52a3785128f0519b295d93c24d07eb36c05e1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0d349e7ec1d6e0e32ac9e33bfda52a3785128f0519b295d93c24d07eb36c05e1",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_PRINCIPAL_SQUARE_ROOT for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_POWER_DIVISION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "sqrt(81)=9, 4, (-5)^2=25의 양/음의 제곱근 a=3, b=2, c=-5를 차례로 구하여 합 0을 계산하는 2단계 제곱근 계산 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ADDITION_SUBTRACTION",
+      "canonicalLabelKo": "근호의 덧셈과 뺄셈",
+      "definition": "근호 안의 수를 간단히 한 뒤 같은 근호를 가진 항끼리 계수를 더하거나 빼는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_RADICAL_ADDITION_SUBTRACTION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_MIXED_OPERATION at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "분배법칙으로 A=3*sqrt(15)-sqrt(3), B=-2*sqrt(3)을 각각 간단히 계산한 뒤 합 A+B=3*sqrt(15)-3*sqrt(3)을 서술하는 3단계 혼합 계산 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ALGEBRAIC_REPRESENTATION",
+      "canonicalLabelKo": "근호를 포함한 식의 문자 표현",
+      "definition": "주어진 근호 값을 문자 a, b 등을 사용하여 식으로 나타내는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_278d3c06f8b5adf11c42bcf38f09194c239cf3dcfe3ea07d976c6ed05d8ba611"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_278d3c06f8b5adf11c42bcf38f09194c239cf3dcfe3ea07d976c6ed05d8ba611",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_RADICAL_ALGEBRAIC_REPRESENTATION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_LETTER_REPRESENTATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "b=sqrt(3)에서 b^2=3임을 이용해 3*sqrt(2)를 ab^2으로 직접 표현하는 1단계 대입 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_DISTRIBUTIVE_LAW",
+      "canonicalLabelKo": "근호의 분배법칙",
+      "definition": "근호를 포함한 식에서 분배법칙을 적용하여 괄호를 풀어 정리하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_RADICAL_DISTRIBUTIVE_LAW for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_MIXED_OPERATION at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "분배법칙으로 A=3*sqrt(15)-sqrt(3), B=-2*sqrt(3)을 각각 간단히 계산한 뒤 합 A+B=3*sqrt(15)-3*sqrt(3)을 서술하는 3단계 혼합 계산 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_DIVISION_SIMPLIFICATION",
+      "canonicalLabelKo": "근호의 나눗셈 간단히 하기",
+      "definition": "근호의 나눗셈을 하나의 근호로 합친 뒤 근호 안을 간단히 하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_RADICAL_DIVISION_SIMPLIFICATION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_MIXED_OPERATION at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "분배법칙으로 A=3*sqrt(15)-sqrt(3), B=-2*sqrt(3)을 각각 간단히 계산한 뒤 합 A+B=3*sqrt(15)-3*sqrt(3)을 서술하는 3단계 혼합 계산 서술형 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_MIXED_OPERATIONS",
+      "canonicalLabelKo": "근호를 포함한 혼합 계산",
+      "definition": "근호의 곱셈·나눗셈·덧셈·뺄셈을 함께 포함한 식을 계산 순서에 따라 간단히 정리하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e593396a2f43001bcdb2cc02626dadd03832fdb8959f18f5b244035220c415df"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e593396a2f43001bcdb2cc02626dadd03832fdb8959f18f5b244035220c415df",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_RADICAL_MIXED_OPERATIONS for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_MIXED_OPERATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "각 항을 5*sqrt(3), sqrt(3), 2*sqrt(3)으로 각각 정리한 뒤 동류근호를 합산하여 8*sqrt(3)을 산출하는 1단계 기본 연산 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_MULTIPLICATION_DIVISION",
+      "canonicalLabelKo": "근호의 곱셈과 나눗셈",
+      "definition": "근호 안의 수끼리 곱하거나 나누어 하나의 근호로 정리하는 계산 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_55ad338d23a57116767956f0a44b7bb76ace6268b0b166433ef59c2721196c9d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_55ad338d23a57116767956f0a44b7bb76ace6268b0b166433ef59c2721196c9d",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_RADICAL_MULTIPLICATION_DIVISION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_POWER_DIVISION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "근호의 곱셈·나눗셈 및 거듭제곱의 기본 계산 공식을 보기별로 직접 확인하는 1단계 연산 성질 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_RATIONAL_EQUALITY",
+      "canonicalLabelKo": "유리수와 근호의 상등",
+      "definition": "a, b가 유리수이고 √c가 무리수일 때 a+b√c가 유리수와 같으면 무리수 부분의 계수 b가 0임을 이용하는 상등 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3614dbd99ebcfd0d998364b1291471b46ca3501f4c7263ae3193a09b65429528"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3614dbd99ebcfd0d998364b1291471b46ca3501f4c7263ae3193a09b65429528",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_RADICAL_RATIONAL_EQUALITY for PT_M3_POLY_MULTIPLICATION/TPL_M3_POLY_EXPANSION_COEFFICIENT at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "(sqrt(5)+3)^2 = 14+6*sqrt(5)로 전개한 뒤 유리수 상등 조건으로 a=14, b=6을 구하여 a+b=20을 계산하는 2단계 전개-상등 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_MULTIPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIGN_PROPERTIES",
+      "canonicalLabelKo": "근호와 부호",
+      "definition": "근호 앞의 부호와 근호 안 수의 부호를 구분하여 제곱근의 값이 양수·음수·0 중 무엇인지 판별하는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_aa3073e3192219ceff9626886cf46bd0c7d9017972cb9517dcd7b16f52db9308"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_aa3073e3192219ceff9626886cf46bd0c7d9017972cb9517dcd7b16f52db9308",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_RADICAL_SIGN_PROPERTIES for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "제곱근의 기본 정의와 음수·0·양수의 제곱근 개수 및 근호 표현의 참·거짓을 판별하는 1단계 개념 판별 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
+      "canonicalLabelKo": "제곱근과 절댓값",
+      "definition": "실수 a에 대하여 루트(a²)=|a|가 성립함을 이용하여 근호를 벗겨내는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7d142cadc3657e9753f620ee7b044e7915d297d6fef4bdb396574596bbec35fe"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7d142cadc3657e9753f620ee7b044e7915d297d6fef4bdb396574596bbec35fe",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_RADICAL_SQUARE_ABSOLUTE_VALUE for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_RADICAL_VARIABLE_SIMPLIFY at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "ab<0, a<b 조건에서 a<0<b를 판정하고 sqrt(9a^2)=3|a|=-3a, sqrt(4b^2)=2|b|=2b로 정리하여 -3a+2b를 얻는 2단계 부호 추론 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SQUARE_EXTRACTION",
+      "canonicalLabelKo": "완전제곱식의 근호 벗기기",
+      "definition": "완전제곱수 또는 완전제곱식에 근호를 씌운 값을 원래 수나 식으로 되돌리는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_057dbf61be41bdca88bfa620dc9b7358a7039406a3df8ddc32f9b878342f3eed"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_057dbf61be41bdca88bfa620dc9b7358a7039406a3df8ddc32f9b878342f3eed",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_RADICAL_SQUARE_EXTRACTION for PT_M3_POLY_FACTORIZATION/TPL_M3_SUBSTITUTION_FACTORIZATION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "11*12*13*14+1 = (11*14)(12*13)+1 = 154*156+1 = (155-1)(155+1)+1 = 155^2로 변형하여 근호 밖으로 155를 계산해내는 4단계 치환 완전제곱식 문항으로 Bucket 4를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SUBSTITUTION",
+      "canonicalLabelKo": "근호 값의 대입",
+      "definition": "문자에 주어진 근호 값을 대입하여 식의 값을 계산하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_278d3c06f8b5adf11c42bcf38f09194c239cf3dcfe3ea07d976c6ed05d8ba611"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_278d3c06f8b5adf11c42bcf38f09194c239cf3dcfe3ea07d976c6ed05d8ba611",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_RADICAL_SUBSTITUTION for PT_M3_RADICAL_CALCULATION/TPL_M3_RADICAL_LETTER_REPRESENTATION at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "b=sqrt(3)에서 b^2=3임을 이용해 3*sqrt(2)를 ab^2으로 직접 표현하는 1단계 대입 문항으로 Bucket 1을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_RADICAL_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIGN_DEDUCTION",
+      "canonicalLabelKo": "부호 추론",
+      "definition": "주어진 등식이나 부등식의 조건을 이용하여 수 또는 식의 부호를 판정하는 추론.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7d142cadc3657e9753f620ee7b044e7915d297d6fef4bdb396574596bbec35fe"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7d142cadc3657e9753f620ee7b044e7915d297d6fef4bdb396574596bbec35fe",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_SIGN_DEDUCTION for PT_M3_SQUARE_ROOT_PROPERTY/TPL_M3_RADICAL_VARIABLE_SIMPLIFY at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "ab<0, a<b 조건에서 a<0<b를 판정하고 sqrt(9a^2)=3|a|=-3a, sqrt(4b^2)=2|b|=2b로 정리하여 -3a+2b를 얻는 2단계 부호 추론 문항으로 Bucket 2를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_SQUARE_ROOT_PROPERTY"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SUBSTITUTION_PERFECT_SQUARE",
+      "canonicalLabelKo": "치환과 완전제곱식",
+      "definition": "공통 부분을 한 문자로 치환하여 식을 완전제곱식 꼴로 정리하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_057dbf61be41bdca88bfa620dc9b7358a7039406a3df8ddc32f9b878342f3eed"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_057dbf61be41bdca88bfa620dc9b7358a7039406a3df8ddc32f9b878342f3eed",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_SUBSTITUTION_PERFECT_SQUARE for PT_M3_POLY_FACTORIZATION/TPL_M3_SUBSTITUTION_FACTORIZATION at M3-02/M3-02-POLYNOMIAL_MULTIPLICATION.",
+          "decisiveEvidence": "11*12*13*14+1 = (11*14)(12*13)+1 = 154*156+1 = (155-1)(155+1)+1 = 155^2로 변형하여 근호 밖으로 155를 계산해내는 4단계 치환 완전제곱식 문항으로 Bucket 4를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SUM_OF_SQUARES_IDENTITY",
+      "canonicalLabelKo": "제곱의 합 변형",
+      "definition": "x²+y²=(x+y)²-2xy처럼 합과 곱을 이용하여 제곱의 합을 변형하는 항등식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_SUM_OF_SQUARES_IDENTITY for PT_M3_POLY_FACTORIZATION/TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN at M3-01/M3-01-REAL_NUMBER_OPERATIONS.",
+          "decisiveEvidence": "x^4-y^4 = (x-y)(x+y)(x^2+y^2)로 인수분해하고 x^2+y^2=5/2를 계산하여 5*sqrt(6)/2를 도출하는 4단계 대수-무리수 심화 문항으로 Bucket 4를 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_POLY_FACTORIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

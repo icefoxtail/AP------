@@ -6,7 +6,40 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateTargetedRecoverySupplement, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+
+test("missing sourceDrive Condition evidence remains debt instead of an approved empty set", () => {
+  const args = { debt: { reason: "Audit and source omit Condition evidence" }, flatV3: true,
+    rawRow: {}, candidateRow: {}, question: {}, patch: { before: { conditionKeys: null }, after: { conditionKeys: null } } };
+  assert.equal(isSourceConditionEvidenceDebtAllowed(args), true);
+  assert.equal(isSourceConditionEvidenceDebtAllowed({ ...args, patch: { ...args.patch, after: { conditionKeys: [] } } }), false);
+  assert.equal(isSourceConditionEvidenceDebtAllowed({ ...args, patch: { ...args.patch, before: { conditionKeys: ["COND_INTEGER"] } } }), false);
+  assert.equal(isSourceConditionEvidenceDebtAllowed({ ...args, question: { conditionKeys: [] } }), false);
+  assert.equal(isSourceConditionEvidenceDebtAllowed({ ...args, candidateRow: { conditionKeys: [] } }), false);
+  assert.equal(isSourceConditionEvidenceDebtAllowed({ ...args, flatV3: false }), false);
+});
+
+test("targeted replacement supplement binds exact source, review, UID and separately reviewed condition", () => {
+  const ref = { path: "archive/data/r2e-intake/item.json", sha256: "a".repeat(64) };
+  const question = { content: "정수 a", choices: ["1", "2"], answer: "1", solution: "정수 조건을 쓴다" };
+  const row = { sourceOrdinal: 1, questionUid: "qid", metadataReviewStatus: "TARGETED_RECOVERY_PASS",
+    difficultyAudit: "FRESH_INDEPENDENT_TARGETED_PASS", replacementType: "QUESTION_REPLACEMENT",
+    conditionKeys: ["COND_INTEGER"], integrationPattern: "SEQUENTIAL" };
+  const recovery = { schemaVersion: "JS_ARCHIVE_M3_ITEM_RECOVERY_META_V2_PAYLOAD_v1", examFile: "exam.js",
+    finalArtifactSha: "b".repeat(40), sourceReview2Audit: "FRESH_INDEPENDENT_REVIEW2",
+    itemRecoveryQuestionCount: 1, itemRecoveryQuestionIds: [1], freshMetadataRows: [row],
+    itemHoldResolution: [{ qid: 1, recoveryType: "QUESTION_REPLACEMENT", replacedQid: 1, replacementQuestion: question }] };
+  const args = { recovery, source: "original/exam.js", sourceBlobSha1: "b".repeat(40), bank: [question],
+    items: [{ sourceOrdinal: 1, questionUid: "qid", after: { conditionKeys: ["COND_INTEGER"], integrationPattern: "SEQUENTIAL" }, evidenceRefs: [ref] }],
+    rawAudit: { records: [{ questionId: 1 }] }, classificationPackage: { records: [{ questionId: 1 }] },
+    manifest: { recordsToBind: [{ questionId: 1, conditionKeys: [] }] }, ref };
+  assert.deepEqual(validateTargetedRecoverySupplement(args).conditionKeys, ["COND_INTEGER"]);
+  assert.throws(() => validateTargetedRecoverySupplement({ ...args, sourceBlobSha1: "c".repeat(40) }), /identity\/source\/review mismatch/);
+  assert.throws(() => validateTargetedRecoverySupplement({ ...args, bank: [{ ...question, answer: "2" }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateTargetedRecoverySupplement({ ...args, items: [{ ...args.items[0], after: { ...args.items[0].after, conditionKeys: [] } }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateTargetedRecoverySupplement({ ...args, items: [{ ...args.items[0], evidenceRefs: [] }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateTargetedRecoverySupplement({ ...args, rawAudit: { records: [{ questionId: 1, conditionKeys: [] }] } }), /item\/evidence mismatch/);
+});
 
 test("SOP mixed packs accept only exact named owner packs", () => {
   assert.equal(sopV12PackIncludes("MIDDLE2_AND_MIDDLE_GEOMETRY", "MIDDLE2"), true);
