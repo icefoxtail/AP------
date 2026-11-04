@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-04T00:43:06.505Z",
+  "updatedAt": "2026-11-04T00:47:34.488Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -32821,11 +32821,27 @@
     }
   },
   "observations": {
+    "release:41628281309:1:cbad6423177429ea5351a7383de8c4c694794e23": {
+      "key": "release:41628281309:1:cbad6423177429ea5351a7383de8c4c694794e23",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "증거 실행/차수/SHA 불일치",
+      "run": {
+        "id": 41628281309,
+        "attempt": 1,
+        "sha": "cbad6423177429ea5351a7383de8c4c694794e23",
+        "at": "2026-11-03T11:52:00Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/41628281309",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-11-04T00:52:33.609Z"
+    },
     "registration:41613603097:1:1608c4bfcddac13941b8bdd151b7ab48eb6b2ab2": {
       "key": "registration:41613603097:1:1608c4bfcddac13941b8bdd151b7ab48eb6b2ab2",
       "status": "unverified",
       "attempts": 1,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41613603097,
         "attempt": 1,
@@ -32836,14 +32852,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-11-04T00:48:00.461Z"
     },
     "release:41743640908:1:655efe9b1c70bb478c138fd78daa44b908c86869": {
       "key": "release:41743640908:1:655efe9b1c70bb478c138fd78daa44b908c86869",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 3,
-      "verifiedAt": "2026-11-04T00:43:03.985Z",
       "run": {
         "id": 41743640908,
         "attempt": 1,
@@ -32864,6 +32879,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-04T00:43:03.985Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -33727,9 +33744,7 @@
     "release:41745008835:1:8388739ee6712ccbbae34df85153f38a82aedbf3": {
       "key": "release:41745008835:1:8388739ee6712ccbbae34df85153f38a82aedbf3",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 2,
-      "verifiedAt": "2026-11-04T00:43:01.220Z",
       "run": {
         "id": 41745008835,
         "attempt": 1,
@@ -33750,6 +33765,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-04T00:43:01.220Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -181290,7 +181307,6 @@
       "key": "release:41737945250:1:1d6972a99af53c976d16512c3a09c13c77aeb682",
       "status": "unverified",
       "attempts": 4,
-      "reason": "배포 진단 증거 없음",
       "run": {
         "id": 41737945250,
         "attempt": 1,
@@ -181301,6 +181317,7 @@
         "event": "unknown",
         "branch": "main"
       },
+      "reason": "배포 진단 증거 없음",
       "retryExhausted": true
     },
     "release:41679811252:1:02dcda8c84e221f0d78a7337af08ed213f4920b3": {
@@ -181534,23 +181551,6 @@
         "sha": "da3ba0339c1ce218f0a83ecc84e68937ceb5b545",
         "at": "2026-11-03T09:29:12Z",
         "url": "https://github.com/icefoxtail/AP------/actions/runs/41608677058",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "reason": "증거 실행/차수/SHA 불일치",
-      "retryExhausted": true
-    },
-    "release:41619754236:1:c4b0af31ab05325cb926a437489f640f9e8064ef": {
-      "key": "release:41619754236:1:c4b0af31ab05325cb926a437489f640f9e8064ef",
-      "status": "unverified",
-      "attempts": 4,
-      "run": {
-        "id": 41619754236,
-        "attempt": 1,
-        "sha": "c4b0af31ab05325cb926a437489f640f9e8064ef",
-        "at": "2026-11-03T10:52:59Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/41619754236",
         "conclusion": "success",
         "event": "push",
         "branch": "main"
