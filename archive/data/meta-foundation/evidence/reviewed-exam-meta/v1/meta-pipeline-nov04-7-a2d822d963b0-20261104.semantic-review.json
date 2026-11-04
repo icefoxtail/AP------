@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "nov04-build-semantic-review-summary-v1",
+  "requestId": "meta-pipeline-nov04-7-a2d822d963b0-20261104",
+  "examKey": "nov04-7",
+  "examTitle": "2017학년도 포항대도중 3학년 1학기 기말고사 수학",
+  "examSlug": "17_경북대도중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/17_경북대도중_1학기_기말_중3_수학.js",
+  "semanticReviewPath": "C:/Users/USER/AppData/Local/Temp/MetaChild20261026/nov04-review-root.mjs",
+  "semanticReviewSha256": "5d3368ef6524d4ba87b6d9f01854724e5737f6170f7d51d74e50da7418b112a1",
+  "reviewSchemaVersion": "opencode-semantic-review-v1",
+  "reviewKind": "CORRECTIVE_META_PIPELINE_AUDIT_SEMANTIC_REVIEW_PLUS_ADDITIVE_KEY_PLAN",
+  "generatedAt": "2026-11-04",
+  "generatedBy": {
+    "agent": "OpenCode",
+    "model": "deepseek-v4.1-flash",
+    "role": "restricted child reviewer (metadata only)",
+    "attributionNote": "Original Gemini audit evidence is immutable. This corrective review must be cited as OpenCode/deepseek-v4.1-flash, not as Gemini and not as FINAL_QA."
+  },
+  "rowCount": 25,
+  "findings": [
+    {
+      "id": "F-01",
+      "code": "AUDIT_UNIT_SUBUNIT_KEYS_NOT_CANONICAL",
+      "severity": "BLOCKER",
+      "resolution": null
+    },
+    {
+      "id": "F-02",
+      "code": "AUDIT_UNIT_KEY_WRONG_FOR_STATISTICS_ROWS",
+      "severity": "BLOCKER",
+      "resolution": null
+    },
+    {
+      "id": "F-03",
+      "code": "AUDIT_PT_TPL_KEYS_ABSENT_FROM_CANONICAL",
+      "severity": "BLOCKER",
+      "resolution": null
+    },
+    {
+      "id": "F-04",
+      "code": "AUDIT_CC_KEYS_MOSTLY_ABSENT_AND_ONE_SEMANTIC_MISMATCH",
+      "severity": "BLOCKER",
+      "resolution": "부분 수정(F-13): 단수/복수 표기만 다른 CC_QUADRATIC_EQUATIONS·CC_QUADRATIC_FUNCTIONS는 감사 키를 유지하고 add-only로 정의한다. 실제 의미가 다른 CC_FACTORIZATION·CC_ALGEBRAIC_SUBSTITUTION만 교체/분리했다."
+    },
+    {
+      "id": "F-05",
+      "code": "NO_ACTIVE_OWNER_PACK_FOR_M3-03_M3-04_M3-07",
+      "severity": "RESOLVED_BY_USER_AUTHORITY (was BLOCKER_DECISION_REQUIRED)",
+      "resolution": "RESOLVED_BY_USER_AUTHORITY — 2026-11-04 additive scope expansion 승인. F-12 및 rootAcceptanceCorrections RAC-01 참조."
+    },
+    {
+      "id": "F-06",
+      "code": "STANDARD_COURSE_LABEL_NOT_IN_ACTIVE_PACK",
+      "severity": "BLOCKER",
+      "resolution": null
+    },
+    {
+      "id": "F-07",
+      "code": "PARTIAL_AUDIT_ASSIGNMENT_DRIFT_WITHIN_EXAM5",
+      "severity": "MAJOR",
+      "resolution": null
+    },
+    {
+      "id": "F-08",
+      "code": "EXAM7_ITEM_21_GRAPH_TYPE_MISMATCH",
+      "severity": "MAJOR",
+      "resolution": null
+    },
+    {
+      "id": "F-09",
+      "code": "VISUAL_EVIDENCE_DEBT_NOT_CHECKED",
+      "severity": "RESOLVED_BY_ROOT_VISUAL (was MAJOR)",
+      "resolution": "RESOLVED_BY_ROOT_VISUAL — 열람 주체는 ROOT이며 이 리뷰어가 아니다. ROOT의 관찰은 표시/구조 확인 범위다."
+    },
+    {
+      "id": "F-10",
+      "code": "EXISTING_PARTIAL_PENDING_METADATA_ROWS",
+      "severity": "INFO_REQUIRES_REGISTRAR_EXTRACTION",
+      "resolution": null
+    },
+    {
+      "id": "F-11",
+      "code": "DUPLICATE_CANONICAL_CONCEPT_KEYS",
+      "severity": "MINOR_REPORT_ONLY",
+      "resolution": null
+    },
+    {
+      "id": "F-12",
+      "code": "OWNER_PACK_SCOPE_EXPANSION_AUTHORIZED",
+      "severity": "RESOLVED_BY_USER_AUTHORITY",
+      "resolution": null
+    },
+    {
+      "id": "F-13",
+      "code": "AUDIT_CC_KEYS_PRESERVED_ADDITIVELY",
+      "severity": "CORRECTION_APPLIED",
+      "resolution": null
+    },
+    {
+      "id": "F-14",
+      "code": "CC_ALGEBRAIC_SUBSTITUTION_OVERSTRETCH_CORRECTED",
+      "severity": "CORRECTION_APPLIED",
+      "resolution": null
+    },
+    {
+      "id": "F-15",
+      "code": "ROOT_VISUAL_FACTS_RECORDED",
+      "severity": "RESOLVED_BY_ROOT_VISUAL",
+      "resolution": null
+    }
+  ],
+  "rootAcceptanceCorrections": [
+    {
+      "id": "RAC-01",
+      "target": "canonicalFacts.ownerPackCoverageGap / F-05 / B-01 / registryChangePlan.packScopeChange / 모든 ownerPack 필드",
+      "before": "M3-03/M3-04/M3-07 미소유, 등록 차단(BLOCKER_DECISION_REQUIRED), 통계 7행 미등록",
+      "after": "사용자 승인에 따른 MIDDLE3 add-only 범위 확장; M3-03/M3-04/M3-07을 ownedStandardUnitDomains에 추가하고 현재 standardCourses 표기(중3-1/M3-1/중3 수학)를 그대로 사용",
+      "reasonKo": "이번 지시가 범위 확장을 명시 승인했고, 별도 승인 요구를 남기지 말라고 했다.",
+      "stillNeeded": "packVersion 갱신과 bindings 추가는 등록 요청에서 실제 파일로 수행한다."
+    },
+    {
+      "id": "RAC-02",
+      "target": "모든 CC_QUADRATIC_EQUATIONS / CC_QUADRATIC_FUNCTIONS 행",
+      "before": "REPLACE_WITH_EXISTING → 단수형 정본 키로 교체",
+      "after": "NEW_DEFINITION_REQUIRED → 감사 키(복수형)를 add-only로 정의하여 보존",
+      "reasonKo": "단수/복수 표기 차이는 키를 바꿀 이유가 아니다(지시). 정본 정의는 수정하지 않는다.",
+      "stillNeeded": "proposedDefinitions.concepts에 두 키 정의 추가(이번에 반영)."
+    },
+    {
+      "id": "RAC-03",
+      "target": "nov04-5 Q1 CC_ALGEBRAIC_SUBSTITUTION, nov04-5 Q14 CC_POINT_SUBSTITUTION 대응, nov04-7 Q3 CC_POINT_SUBSTITUTION 대응",
+      "before": "REUSE_CANONICAL_EXACT(CC_ALGEBRAIC_SUBSTITUTION)로 방정식·그래프 점 대입까지 확장",
+      "after": "CC_EQUATION_SUBSTITUTION_CHECK / CC_POINT_ON_CURVE_SUBSTITUTION 신규 정의",
+      "reasonKo": "정본 CC_ALGEBRAIC_SUBSTITUTION은 함수값 대입 전용이므로 의미를 넓히지 않는다(지시).",
+      "stillNeeded": "해당 세 행의 ccDecisions 수정(이번에 반영)."
+    },
+    {
+      "id": "RAC-04",
+      "target": "F-09 / visualEvidenceDebt / visualEvidenceSummary",
+      "before": "13행 시각 미확인, visualChecked 전부 false(누구도 미확인 상태)",
+      "after": "ROOT(CODEX_ROOT) 열람 사실을 별도 출처로 인용, checkedByRoot=true, 관찰문 기록, 불일치 2건 보고",
+      "reasonKo": "ROOT가 실제 PNG를 열람했고 그 관찰을 nov04-root-visual.json에 기록했다.",
+      "stillNeeded": "행 단위 visualChecked는 리뷰어 기준 false로 유지(시각 검수를 대리 주장하지 않음)."
+    }
+  ],
+  "proposedDefinitionCounts": {
+    "problemTypes": 35,
+    "concepts": 41,
+    "templates": 25
+  },
+  "note": "This summary cites the OpenCode/deepseek-v4.1-flash semantic review. It does not claim FINAL_QA or registration."
+}
