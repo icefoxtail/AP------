@@ -1300,6 +1300,10 @@
       for (const accepted of receipt.appliedRecords) {
         const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
         const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));
+        const sourceCrossRef = receipt.approval?.metaPipelineAudit?.sourceCrossConceptCorrectionRef;
+        const sourceAndAuditCross = accepted.fieldStatus?.crossConcept === "approved_source_and_meta_pipeline_audit" &&
+          sourceCrossRef && SHA256.test(text(sourceCrossRef.sha256)) && text(sourceCrossRef.path).startsWith("archive/") &&
+          (accepted.approvalEvidence || []).includes(sourceCrossRef.path) && (meta?.evidenceRefs || []).includes(sourceCrossRef.path);
         // A metadata audit approves the bound classification, not the original
         // exam's separate review. Keep that source status intact and accept only
         // a complete, specifically approved metadata record with this receipt.
@@ -1309,10 +1313,12 @@
           accepted.metadataStatus === "approved_semantic_review" &&
           meta?.metadataStatus === accepted.metadataStatus &&
           accepted.reviewStatus === "review_required" &&
-          ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"].every(
+          ["standardUnit", "subUnit", "concept", "problemType", "template"].every(
             field => accepted.fieldStatus?.[field] === "approved_meta_pipeline_audit" &&
               meta?.fieldStatus?.[field] === "approved_meta_pipeline_audit"
-          ) && !Object.values(meta?.fieldStatus || {}).includes("manual_review_pending");
+          ) && (accepted.fieldStatus?.crossConcept === "approved_meta_pipeline_audit" || sourceAndAuditCross) &&
+          meta?.fieldStatus?.crossConcept === accepted.fieldStatus?.crossConcept &&
+          !Object.values(meta?.fieldStatus || {}).includes("manual_review_pending");
         if (!source || overlays.length !== 1 || normalizeFile(source.sourceFile) !== normalizeFile(receipt.sourceArchiveFile) ||
             Number(source.sourceOrdinal) !== Number(accepted.sourceOrdinal) || meta?.metadataRevision !== accepted.metadataRevision ||
             meta?.sourceFingerprint !== accepted.sourceFingerprint || source.assignmentFingerprint !== accepted.contentFingerprint ||
@@ -1323,7 +1329,7 @@
         if (packVersions.get(packId) !== packVersion || overlay.reviewStatus !== accepted.reviewStatus ||
             (auditedMetadataOnly && (overlay.metadataApprovalType !== "META_PIPELINE_AUDIT" || overlay.metadataStatus !== accepted.metadataStatus ||
               ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"].some(
-                field => overlay.fieldStatus?.[field] !== "approved_meta_pipeline_audit"
+                field => overlay.fieldStatus?.[field] !== accepted.fieldStatus?.[field]
               ))) ||
             ["sourceFingerprint", "contentFingerprint", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "problemTypeKey", "templateKey", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit",
               "crossConceptKeys", "secondaryConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "curriculumApplicability", "defaultSelectable"].some(key => JSON.stringify(accepted[key]) !== JSON.stringify(overlay[key]))) continue;

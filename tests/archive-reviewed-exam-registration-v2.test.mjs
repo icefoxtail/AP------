@@ -6,7 +6,85 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateTargetedRecoverySupplement, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+
+test("targeted audit correction preserves raw provenance and cannot merge canonical keys", () => {
+  const ref = { path: "docs/audit-correction.json", sha256: "a".repeat(64) };
+  const row = { questionUid: "uid", sourceOrdinal: 1, originalDifficultyReason: "기존 설명",
+    correctedDifficultyReason: "원본에 맞는 설명", originalCrossConceptKeys: ["CC_OLD"],
+    correctedCrossConceptKeys: ["CC_OTHER_AUDITED"], sourceTextExcerpt: "홀함수", sourceSolutionExcerpt: "대칭구간 적분", reason: "원본에 맞춤" };
+  const corrections = { schemaVersion: "meta-pipeline-targeted-audit-corrections-v1", sourceArchiveFile: "original/exam.js",
+    sourceSha256: "b".repeat(64), sourceBlobSha1: "c".repeat(40), reviewer: { role: "CODEX_META_PIPELINE_COURIER", id: "root" }, records: [row] };
+  const audited = { questionId: 1, crossConceptKeys: ["CC_OLD"], difficultyReason: "기존 설명" };
+  const args = { corrections, source: corrections.sourceArchiveFile, sourceSha256: corrections.sourceSha256, sourceBlobSha1: corrections.sourceBlobSha1,
+    bank: [{ content: "홀함수 조건", solution: "대칭구간 적분" }], items: [{ sourceOrdinal: 1, questionUid: "uid", evidenceRefs: [ref] }],
+    rawAudit: { records: [audited, { questionId: 2, crossConceptKeys: ["CC_OTHER_AUDITED"] }] },
+    classificationPackage: { records: [audited] }, manifest: { recordsToBind: [audited] }, ref, existingConceptKeys: new Set() };
+  assert.deepEqual(validateTargetedAuditCorrections(args)[0].correctedCrossConceptKeys, ["CC_OTHER_AUDITED"]);
+  assert.throws(() => validateTargetedAuditCorrections({ ...args, existingConceptKeys: new Set(["CC_OLD"]) }), /cannot merge existing meanings/);
+  assert.throws(() => validateTargetedAuditCorrections({ ...args, existingConceptKeys: new Set(["CC_OTHER_AUDITED"]) }), /cannot merge existing meanings/);
+  assert.throws(() => validateTargetedAuditCorrections({ ...args, bank: [{ content: "다른 조건", solution: "대칭구간 적분" }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateTargetedAuditCorrections({ ...args, items: [{ ...args.items[0], evidenceRefs: [] }] }), /item\/evidence mismatch/);
+});
+
+test("source CrossConcept supplement preserves distinct source and audited keys", () => {
+  const ref = { path: "docs/source-cross.json", sha256: "a".repeat(64) };
+  const row = { questionUid: "uid", sourceOrdinal: 1, sourceCrossConceptKeys: ["CC_SOURCE"],
+    auditedCrossConceptKeys: ["CC_AUDIT"], sourceTextExcerpt: "역함수가 존재", reason: "일대일 조건이 쓰인다" };
+  const corrections = { schemaVersion: "meta-pipeline-source-crossconcept-corrections-v1", sourceArchiveFile: "original/exam.js",
+    sourceSha256: "b".repeat(64), sourceBlobSha1: "c".repeat(40), reviewer: { role: "CODEX_META_PIPELINE_COURIER", id: "root" }, records: [row] };
+  const args = { corrections, source: corrections.sourceArchiveFile, sourceSha256: corrections.sourceSha256,
+    sourceBlobSha1: corrections.sourceBlobSha1, bank: [{ content: "역함수가 존재하도록", crossConceptKeys: ["CC_SOURCE"] }],
+    items: [{ questionUid: "uid", sourceOrdinal: 1, before: { crossConceptKeys: ["CC_SOURCE"] },
+      after: { crossConceptKeys: ["CC_AUDIT", "CC_SOURCE"] }, evidenceRefs: [ref] }],
+    rawAudit: { records: [{ questionId: 1, crossConceptKeys: ["CC_AUDIT"] }] },
+    manifest: { recordsToBind: [{ questionId: 1, crossConceptKeys: ["CC_AUDIT"] }] }, ref };
+  assert.deepEqual(validateSourceCrossConceptCorrections(args)[0].crossConceptKeys, ["CC_AUDIT", "CC_SOURCE"]);
+  assert.throws(() => validateSourceCrossConceptCorrections({ ...args, sourceSha256: "d".repeat(64) }), /identity\/reviewer mismatch/);
+  assert.throws(() => validateSourceCrossConceptCorrections({ ...args, bank: [{ content: "조건 없음", crossConceptKeys: ["CC_SOURCE"] }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateSourceCrossConceptCorrections({ ...args, items: [{ ...args.items[0], after: { crossConceptKeys: ["CC_AUDIT"] } }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateSourceCrossConceptCorrections({ ...args, items: [{ ...args.items[0], evidenceRefs: [] }] }), /item\/evidence mismatch/);
+});
+
+test("source Condition correction preserves only exact source-bound reviewed keys", () => {
+  const ref = { path: "docs/source-condition.json", sha256: "a".repeat(64) };
+  const row = { questionUid: "uid", sourceOrdinal: 1, sourceConditionKeys: ["COND_POSITIVE"],
+    auditedConditionKeys: [], sourceTextExcerpt: "각 항이 양수", reason: "양수 조건은 해 선택에 사용된다" };
+  const corrections = { schemaVersion: "meta-pipeline-source-condition-corrections-v1", sourceArchiveFile: "original/exam.js",
+    sourceSha256: "b".repeat(64), sourceBlobSha1: "c".repeat(40), reviewer: { role: "CODEX_META_PIPELINE_COURIER", id: "root" }, records: [row] };
+  const args = { corrections, source: corrections.sourceArchiveFile, sourceSha256: corrections.sourceSha256,
+    sourceBlobSha1: corrections.sourceBlobSha1, bank: [{ content: "각 항이 양수인 수열", conditionKeys: ["COND_POSITIVE"] }],
+    items: [{ questionUid: "uid", sourceOrdinal: 1, before: { conditionKeys: ["COND_POSITIVE"] },
+      after: { conditionKeys: ["COND_POSITIVE"] }, evidenceRefs: [ref] }],
+    rawAudit: { records: [{ questionId: 1, conditionKeys: [] }] }, manifest: { recordsToBind: [{ questionId: 1, conditionKeys: [] }] }, ref };
+  assert.deepEqual(validateSourceConditionCorrections(args)[0].conditionKeys, ["COND_POSITIVE"]);
+  assert.throws(() => validateSourceConditionCorrections({ ...args, sourceSha256: "d".repeat(64) }), /identity\/reviewer mismatch/);
+  assert.throws(() => validateSourceConditionCorrections({ ...args, bank: [{ content: "조건 없음", conditionKeys: ["COND_POSITIVE"] }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateSourceConditionCorrections({ ...args, items: [{ ...args.items[0], after: { conditionKeys: [] } }] }), /item\/evidence mismatch/);
+  assert.throws(() => validateSourceConditionCorrections({ ...args, items: [{ ...args.items[0], evidenceRefs: [] }] }), /item\/evidence mismatch/);
+  const both = ["COND_POSITIVE", "COND_RANGE"];
+  const multiRow = { ...row, sourceConditionKeys: both, sourceTextExcerpts: [
+    { location: "content", text: "각 항이 양수", supports: ["COND_POSITIVE"] },
+    { location: "solution", text: "t>0", supports: ["COND_RANGE"] },
+  ] };
+  const multi = { ...args, corrections: { ...corrections, records: [multiRow] },
+    bank: [{ content: "각 항이 양수인 수열", solution: "t>0이다", conditionKeys: both }],
+    items: [{ ...args.items[0], before: { conditionKeys: both }, after: { conditionKeys: both } }] };
+  assert.equal(validateSourceConditionCorrections(multi).length, 1);
+  assert.throws(() => validateSourceConditionCorrections({ ...multi, corrections: { ...corrections,
+    records: [{ ...multiRow, sourceTextExcerpts: multiRow.sourceTextExcerpts.slice(0, 1) }] } }), /item\/evidence mismatch/);
+});
+
+test("audited integration replaces only an exactly bound pending placeholder", () => {
+  const args = { current: { metadataStatus: "registration_pending_semantic_review", integrationPattern: "NONE" },
+    question: { integrationPattern: "NONE" }, patch: { before: { integrationPattern: "NONE" }, sourceMetadataBefore: { integrationPattern: "NONE" } },
+    final: { integrationPattern: "SEQUENTIAL" }, auditedPattern: "SEQUENTIAL" };
+  assert.equal(isAuditedPendingIntegrationRebindAllowed(args), true);
+  assert.equal(isAuditedPendingIntegrationRebindAllowed({ ...args, current: { ...args.current, metadataStatus: "approved_semantic_review" } }), false);
+  assert.equal(isAuditedPendingIntegrationRebindAllowed({ ...args, question: { integrationPattern: "MULTI_STEP_COUPLING" } }), false);
+  assert.equal(isAuditedPendingIntegrationRebindAllowed({ ...args, final: { integrationPattern: "NONE" } }), false);
+  assert.equal(isAuditedPendingIntegrationRebindAllowed({ ...args, auditedPattern: "" }), false);
+});
 
 test("missing sourceDrive Condition evidence remains debt instead of an approved empty set", () => {
   const args = { debt: { reason: "Audit and source omit Condition evidence" }, flatV3: true,
@@ -779,6 +857,15 @@ test("META_PIPELINE_AUDIT v2 fails closed when a bound CrossConcept has no defin
     change.collection !== "activeConceptShards" && !change.path.startsWith(`${CANON}/concepts/`));
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
     /META_PIPELINE_AUDIT v2 lacks an active CrossConcept definition for CC_NEW/);
+});
+
+test("atomic v2 integration opt-in rejects values not present in both audit and manifest", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditV2(f);
+  f.request.approval.metaPipelineAudit.auditedIntegrationPatterns = true;
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).status, "PASS");
+  f.request.items[0].after.integrationPattern = "SEQUENTIAL";
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /audited integration pattern\/manifest mismatch/);
 });
 
 test("META_PIPELINE_AUDIT accepts the key-only v3 flat audit with its paired classification package", t => {
