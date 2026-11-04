@@ -2,6 +2,8 @@
 
 > Scope: Gemini READ/CLASSIFY/AUDIT and GPT Courier for PT/TPL/CrossConcept metadata. **Not** CREATE/R1/R2/R3/FINAL QA.
 
+2026-11-05 사용자 출고 정책: [학생 이용 우선·선승인 후보완](META_PIPELINE_STUDENT_ACCESS_FIRST.md). 메타 미완성은 후보완 접수하고, 학생 이용 장애만 출고 실패로 처리한다. 이 정책은 아래의 과거 메타 거부 처리보다 우선하며 검증되지 않은 메타를 검수 PASS로 기록하지 않는다.
+
 ## Single authoritative SOP (Google Drive)
 - [심화 메타 예약라인 SOP v1.0](https://docs.google.com/document/d/1W0q7QSFWJF_mpPx3QNLacEsclQE_ZBYFpSRRVc9_hBI/edit)
 - [AP------ / META_PIPELINE folder](https://drive.google.com/drive/folders/1-gC4c2iQzNVhMUzSkS5WXr7Au6p5swZq) — ID `1-gC4c2iQzNVhMUzSkS5WXr7Au6p5swZq`

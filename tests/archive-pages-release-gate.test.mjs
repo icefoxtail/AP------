@@ -36,6 +36,18 @@ test("gate semantics: only success passes; skipped passes only where allowed; mi
   assert.equal(adv.rows.find(r => r.id === "c").ok, false);
 });
 
+test('Archive 2.0 release records metadata repair debt while keeping student availability required',()=>{
+  assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('metadata_integrity_tests'));
+  assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('projection_check'));
+  assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('chrome_generated_bank'));
+  assert.ok(gateRequired.includes('qid9_parity'));
+  assert.ok(gateRequired.includes('staged_site_chrome'));
+  assert.doesNotMatch(workflow.slice(workflow.indexOf('id: staged_site_chrome'),workflow.indexOf('id: worker_order')),/check-generated-bank-browser\.cjs/);
+  assert.ok(gateRequired.includes('selection_tests'));
+  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'success'},metadata_integrity_tests:{outcome:'failure'}},required:['selection_tests'],advisory:['metadata_integrity_tests']}).pass,true);
+  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'failure'},metadata_integrity_tests:{outcome:'success'}},required:['selection_tests'],advisory:['metadata_integrity_tests']}).pass,false);
+});
+
 test("gate CLI exits 1 on a failed required step, 0 on success, 1 on unreadable context; writes evidence", () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pages-gate-"));
   try {

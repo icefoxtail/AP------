@@ -1,0 +1,1781 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "meta-pipeline-queue23-20261105",
+  "examUid": "22_제일고_1학기_기말_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "6c2598ead28d9eb6ad52a49a438137dd0e210a8d",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "META_PIPELINE_AUDIT",
+    "metadataReviewed": true,
+    "approvedBy": "CODEX_META_PIPELINE_COURIER",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+        "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+        "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+        "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+        "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      }
+    ],
+    "metaPipelineAudit": {
+      "schemaVersion": "meta-pipeline-audit-approval-v2",
+      "sourceFileDriveId": "1yLRqH71aE1jjYCESwv_yTz_vVH9muA6A",
+      "auditPackageRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+        "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+      },
+      "manifestRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+        "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+      },
+      "sourceParityRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+        "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+      },
+      "classificationRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+        "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+      },
+      "existingConceptReviews": [],
+      "unreviewedFields": []
+    }
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_6ba1f4e26c2602f7772beb1e65a311081281ab2a40af1c5d7d9c21cd8b27d406",
+      "sourceOrdinal": 1,
+      "before": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "연립방정식",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식과 공통근",
+        "L4": "연립방정식의 직접 해결"
+      },
+      "after": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "연립방정식",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_POLYNOMIAL_SUBSTITUTION",
+          "CC_SYSTEM_OF_QUADRATIC_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "연립방정식",
+        "level": "상"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 방정식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_5b7de064bf59607f60996086c69e3c3a6a81e15e42dae6eb6a29be85829e52ed",
+      "sourceOrdinal": 2,
+      "before": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+        "subUnit": "방정식과 부등식의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식과 부호 조건",
+        "L4": "이차식의 근과 부호 구간"
+      },
+      "after": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+        "subUnit": "방정식과 부등식의 활용",
+        "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+        "crossConceptKeys": [
+          "CC_CONCENTRATION_SALT_CONSERVATION",
+          "CC_RATIONAL_INEQUALITY_SOLVING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+        "subUnit": "방정식과 부등식의 활용",
+        "level": "중"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_b245186c03d836c81b29616e7cac4cd94e21b2abdfc6f594ae308dbd56f43cf1",
+      "sourceOrdinal": 3,
+      "before": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식과 부호 조건",
+        "L4": "이차식의 근과 부호 구간"
+      },
+      "after": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_INEQUALITY_FACTORING",
+          "CC_SYSTEM_INEQUALITY_INTEGER_SOLUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "level": "중"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_bee7e90291cf2d12aacef810bed067c98d715392fda8233a5ce02a5670adac98",
+      "sourceOrdinal": 4,
+      "before": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식과 부호 조건",
+        "L4": "항상 성립·해 없음의 매개변수"
+      },
+      "after": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "crossConceptKeys": [
+          "CC_ALWAYS_NEGATIVE_QUADRATIC_CONDITION",
+          "CC_QUADRATIC_DISCRIMINANT_NONPOSITIVE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "level": "상"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_e257b637818829d5803f8fba355e3d84fdbc724cd0b40f058a04ad048110c138",
+      "sourceOrdinal": 5,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "직선의 방정식",
+        "L3": "두 직선의 위치 관계",
+        "L4": "수직"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "PT_COORD_CIRCUMCENTER",
+        "templateKey": "TPL_CIRCUMCENTER_COORDINATES",
+        "crossConceptKeys": [
+          "CC_CIRCUMCENTER_EQUIDISTANCE_PROPERTY",
+          "CC_COORDINATE_DISTANCE_SYSTEM_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "level": "중"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_dccb083387df8d64a7c5899ea23f7100d190323189f21f3b6243077a1ddcb1cd",
+      "sourceOrdinal": 6,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "도형의 방정식",
+        "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
+        "subUnit": "평면좌표",
+        "problemTypeKey": null,
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
+        "subUnit": "도형의 방정식",
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_EXTERNAL",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA_RATIO_TO_SEGMENT_RATIO",
+          "CC_EXTERNAL_DIVISION_COORDINATES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
+        "subUnit": "도형의 방정식",
+        "level": "상"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_c66cdea15ca290c0ec48d1ba116b1a9260203a3d8f8e73d580047d83927ee91f",
+      "sourceOrdinal": 7,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "선분의 내분·외분",
+        "L4": "외분점"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_HARMONIC",
+        "crossConceptKeys": [
+          "CC_INTERNAL_AND_EXTERNAL_DIVISION_POINTS",
+          "CC_SEGMENT_LENGTH_RATIO_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "level": "중"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_bf25434ccf18bc93891b12b91b0d9a8088635c0d1f331df6dd986ca4e18d7b46",
+      "sourceOrdinal": 8,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "선분의 내분·외분",
+        "L4": "외분점"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_INTERNAL",
+        "crossConceptKeys": [
+          "CC_SECTION_POINTS_CENTROID_INVARIANCE",
+          "CC_TRIANGLE_CENTROID_COORDINATES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "level": "상"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_fc7b2b536a9a04668ebf60d56757a4feed32b010a5edbf0a1da4343e02c0de87",
+      "sourceOrdinal": 9,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "선분의 내분·외분",
+        "L4": "내분점"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+        "crossConceptKeys": [
+          "CC_COORDINATE_DISTANCE_FORMULA",
+          "CC_ANGLE_BISECTOR_THEOREM_COORDINATES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "level": "상"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
+      "sourceOrdinal": 10,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "subUnit": "직선의 방정식",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "직선의 방정식",
+        "L3": "직선의 방정식",
+        "L4": "두 점을 지나는 직선"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "subUnit": "직선의 방정식",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "crossConceptKeys": [
+          "CC_TWO_POINTS_LINE_EQUATION",
+          "CC_SLOPE_AND_Y_INTERCEPT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "subUnit": "직선의 방정식",
+        "level": "하"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_fc11c869c6b7a3e3fe93f651d26c482557eea26c97328e8da33a3df6d00a1805",
+      "sourceOrdinal": 11,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "직선의 방정식",
+        "L3": "점과 직선 사이의 거리",
+        "L4": "거리 공식"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+        "crossConceptKeys": [
+          "CC_INTERSECTION_OF_TWO_LINES",
+          "CC_MAXIMUM_DISTANCE_PERPENDICULAR_LINE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_df4d3793348a15d8441333394508c103421d229226dd336971468b5f26cd06ae",
+      "sourceOrdinal": 12,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "직선의 방정식",
+        "L3": "점과 직선 사이의 거리",
+        "L4": "거리 공식"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE_FORMULA",
+          "CC_ABSOLUTE_VALUE_LINEAR_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "standardUnit": "직선의 방정식",
+        "subUnitKey": "H22-C2-02-RELATION",
+        "subUnit": "두 직선의 관계",
+        "level": "중"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_32655bc0ff42ee147248f4ef179a2ece6d62fcbd890495d09233898c66fc3bc6",
+      "sourceOrdinal": 13,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "중심과 반지름"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+        "crossConceptKeys": [
+          "CC_CIRCLE_GENERAL_TO_STANDARD_FORM",
+          "CC_CIRCLE_CENTER_AND_RADIUS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "level": "하"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_958eaacc070a16204f5c571815c5236e151b1895f7bdebcc47eec6aca5fb00d0",
+      "sourceOrdinal": 14,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "두 원",
+        "L4": "두 원의 위치 관계"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_AXIS_TANGENT_CIRCLE",
+          "CC_QUADRATIC_ROOTS_SUM_FOR_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
+      "sourceOrdinal": 15,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 접선",
+        "L4": "기울기가 주어진 접선"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_CIRCLE_TANGENT_SLOPE",
+        "crossConceptKeys": [
+          "CC_PERPENDICULAR_SLOPE_CONDITION",
+          "CC_CIRCLE_TANGENT_LINE_WITH_SLOPE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_5b902822d286819e4c1fd1562603fce054be0ddae33057ce012d61dd708f5a38",
+      "sourceOrdinal": 16,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원과 직선",
+        "L4": "교점 개수"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "problemTypeKey": "PT_CIRCLE_LINE_POSITION",
+        "templateKey": "TM_CIRCLE_LINE_INTERSECTION",
+        "crossConceptKeys": [
+          "CC_CIRCLE_LINE_POSITIONAL_RELATION",
+          "CC_CENTER_TO_LINE_DISTANCE_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
+      "sourceOrdinal": 17,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 접선",
+        "L4": "기울기가 주어진 접선"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_TANGENT_SEGMENT_LENGTH_FORMULA",
+          "CC_PYTHAGOREAN_RIGHT_TRIANGLE_IN_CIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "level": "중"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_767cd9d0adbe238a738d0dd8ab0e32177de56548c3104fb01c037b3347ea952d",
+      "sourceOrdinal": 18,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원과 직선",
+        "L4": "교점 개수"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_CIRCLE_TANGENT_ON_POINT",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_ON_POINT_EQUATION",
+          "CC_INTERCEPT_PRODUCT_OPTIMIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_3af7cacb2b3d89b2e6478f41d00ba0546de22e3b1c8bf27761018cd2e9a61b99",
+      "sourceOrdinal": 19,
+      "before": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "절댓값 방정식과 부등식",
+        "L4": "절댓값의 구간별 분기"
+      },
+      "after": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "crossConceptKeys": [
+          "CC_PIECEWISE_ABSOLUTE_VALUE_INEQUALITY",
+          "CC_INTERVAL_BRANCH_UNION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "level": "중"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2022",
+        "scope": "공통수학1",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b",
+      "sourceOrdinal": 20,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "일반형에서 원 찾기"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
+        "crossConceptKeys": [
+          "CC_CIRCLE_EQUATION_EXISTENCE_CRITERIA",
+          "CC_DEGENERATE_POINT_OR_IMAGINARY_CIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "level": "중"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_fae28e898bb4027cd1df44826b9f37fd512489ba9bbf4b2b1182b32a84a49027",
+      "sourceOrdinal": 21,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "일반형에서 원 찾기"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_LOCUS",
+        "crossConceptKeys": [
+          "CC_EXTERNAL_DIVISION_LOCUS_POINT",
+          "CC_CIRCLE_LOCUS_EQUATION_DERIVATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    },
+    {
+      "questionUid": "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+      "sourceOrdinal": 22,
+      "before": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "중심과 반지름"
+      },
+      "after": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_INSCRIBED",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_INSCRIBED_CIRCLE_RADIUS",
+          "CC_TANGENT_CIRCLE_CENTER_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceMetadataBefore": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "level": "상"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.audit.json",
+          "sha256": "c74c62967aea875e58a7be72412dc990b57cf49939b571901b9acffa95e37516"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.manifest.json",
+          "sha256": "a27efd1b9f6963aa36f2691088dba9bbee3ac42a153885d769dc38ab847483ba"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.classification.json",
+          "sha256": "dbdd382b9cb09dffe36b1b4a43a6c0ab58f0c5c78a42000e7eab190fbb145618"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-queue23-20261105.source-parity.json",
+          "sha256": "7d3015125910bff6582aa9f8e5ff733feaa79ca4b2e1a5c5aa5ae8dd83e2aae4"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        }
+      ],
+      "reason": "Submit supplied audit metadata; preserve current production content and difficulty."
+    }
+  ],
+  "supplements": [
+    {
+      "questionUid": "qid_v1_6ba1f4e26c2602f7772beb1e65a311081281ab2a40af1c5d7d9c21cd8b27d406",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_6ba1f4e26c2602f7772beb1e65a311081281ab2a40af1c5d7d9c21cd8b27d406",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_5b7de064bf59607f60996086c69e3c3a6a81e15e42dae6eb6a29be85829e52ed",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_5b7de064bf59607f60996086c69e3c3a6a81e15e42dae6eb6a29be85829e52ed",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_b245186c03d836c81b29616e7cac4cd94e21b2abdfc6f594ae308dbd56f43cf1",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_bee7e90291cf2d12aacef810bed067c98d715392fda8233a5ce02a5670adac98",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_bee7e90291cf2d12aacef810bed067c98d715392fda8233a5ce02a5670adac98",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_e257b637818829d5803f8fba355e3d84fdbc724cd0b40f058a04ad048110c138",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_dccb083387df8d64a7c5899ea23f7100d190323189f21f3b6243077a1ddcb1cd",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_c66cdea15ca290c0ec48d1ba116b1a9260203a3d8f8e73d580047d83927ee91f",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_bf25434ccf18bc93891b12b91b0d9a8088635c0d1f331df6dd986ca4e18d7b46",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_fc7b2b536a9a04668ebf60d56757a4feed32b010a5edbf0a1da4343e02c0de87",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_fc11c869c6b7a3e3fe93f651d26c482557eea26c97328e8da33a3df6d00a1805",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_df4d3793348a15d8441333394508c103421d229226dd336971468b5f26cd06ae",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_df4d3793348a15d8441333394508c103421d229226dd336971468b5f26cd06ae",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_32655bc0ff42ee147248f4ef179a2ece6d62fcbd890495d09233898c66fc3bc6",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_32655bc0ff42ee147248f4ef179a2ece6d62fcbd890495d09233898c66fc3bc6",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_958eaacc070a16204f5c571815c5236e151b1895f7bdebcc47eec6aca5fb00d0",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_958eaacc070a16204f5c571815c5236e151b1895f7bdebcc47eec6aca5fb00d0",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_958eaacc070a16204f5c571815c5236e151b1895f7bdebcc47eec6aca5fb00d0",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_5b902822d286819e4c1fd1562603fce054be0ddae33057ce012d61dd708f5a38",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_767cd9d0adbe238a738d0dd8ab0e32177de56548c3104fb01c037b3347ea952d",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_767cd9d0adbe238a738d0dd8ab0e32177de56548c3104fb01c037b3347ea952d",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_767cd9d0adbe238a738d0dd8ab0e32177de56548c3104fb01c037b3347ea952d",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_3af7cacb2b3d89b2e6478f41d00ba0546de22e3b1c8bf27761018cd2e9a61b99",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_fae28e898bb4027cd1df44826b9f37fd512489ba9bbf4b2b1182b32a84a49027",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_fae28e898bb4027cd1df44826b9f37fd512489ba9bbf4b2b1182b32a84a49027",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    },
+    {
+      "questionUid": "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyBucket"
+    },
+    {
+      "questionUid": "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+      "reason": "PRESERVE_CURRENT_DIFFICULTY",
+      "field": "difficultyConfidence"
+    },
+    {
+      "questionUid": "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+      "reason": "PARENT_REFERENCE_REQUIRED"
+    }
+  ],
+  "provisionalApproval": {
+    "policy": "STUDENT_ACCESS_FIRST",
+    "verificationStatus": "NOT_VERIFIED",
+    "metadataApprovalStatus": "USER_APPROVED_PENDING_SUPPLEMENT"
+  }
+}

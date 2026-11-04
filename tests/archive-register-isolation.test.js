@@ -167,7 +167,7 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
-  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-meta-register-commit.paths'])
+  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
     put(rel, read(rel));
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
@@ -194,7 +194,7 @@ if (body.behavior === 'fail') { console.error('Error: before mismatch: qid_' + n
 fs.mkdirSync('derived', { recursive: true }); fs.writeFileSync('derived/' + name + '.out', 'applied\\n'); console.log('{}');
 `);
   for (const [name, body] of Object.entries(behaviors))
-    put(`.archive-meta-register/inbox/${name}.json`, JSON.stringify({ schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', approval: { type: 'META_PIPELINE_AUDIT' }, ...(typeof body === 'string' ? { behavior: body } : body) }, null, 2) + '\n');
+    put(`.archive-meta-register/inbox/${name}.json`, JSON.stringify({ schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', approval: { type: 'FINAL_QA' }, ...(typeof body === 'string' ? { behavior: body } : body) }, null, 2) + '\n');
   git(dir, 'add', '-A'); git(dir, 'commit', '-q', '-m', 'seed');
   const exists = rel => fs.existsSync(path.join(dir, rel));
   const run = () => {
@@ -251,6 +251,20 @@ test('pass: build_db may need one re-run to reach its fixed point, then the pass
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.equal(r.builds, 2);
   assert.match(r.stdout, /build_db did not converge on the first run/);
+});
+
+test('pass: provisional META_PIPELINE approval keeps the request for student access verification', t => {
+  const f = passFixture(t, { 'pending-meta': { behavior:'fail', approval:{type:'META_PIPELINE_AUDIT'},sourceArchiveFile:'original/a.js',expectedQuestionCount:1 } });
+  fs.mkdirSync(path.join(f.dir,'archive/exams/original'),{recursive:true});
+  fs.writeFileSync(path.join(f.dir,'archive/engine.html'),'<html>engine</html>');
+  fs.writeFileSync(path.join(f.dir,'archive/exams/original/a.js'),'window.questionBank=[{id:1,content:"Question",solution:"Current solution"}];');
+  const r=f.run();
+  assert.equal(r.status,0,r.stdout+r.stderr);
+  assert.deepEqual(r.copies,['pending-meta.json']);
+  const receipt=f.readJson('.archive-meta-register/pending-supplement/pending-meta.receipt.json');
+  assert.equal(receipt.releaseStatus,'APPROVED');
+  assert.equal(receipt.metadataVerificationStatus,'NOT_VERIFIED');
+  assert.equal(r.builds,0);
 });
 
 test('pass: every request refused -> green, nothing built, rejections recorded', t => {
