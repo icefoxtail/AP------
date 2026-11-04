@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 300" width="450" height="300" role="img" aria-labelledby="q20-title q20-desc">
+  <title id="q20-title">동심원 부채꼴과 색칠한 부분</title>
+  <desc id="q20-desc">안쪽 반지름 6, 바깥쪽 반지름 9인 부채꼴 사이의 색칠한 띠</desc>
+  <rect width="450" height="300" fill="#ffffff"/>
+  <!-- O=(100,240). Angle 120 deg (from 0 to 120 deg): r1=100 (6cm), r2=150 (9cm) -->
+  <!-- 0 deg: (250,240). 120 deg: cos(120)=-0.5, sin(120)=0.866 -> (100-75, 240-130)=(25, 110) -->
+  <path d="M 200,240 L 250,240 A 150 150 0 0 0 25,110 L 50,153 A 100 100 0 0 1 200,240 Z" fill="#d0d0d0" stroke="#222222" stroke-width="2"/>
+  <line x1="100" y1="240" x2="200" y2="240" stroke="#222222" stroke-width="1.8"/>
+  <line x1="100" y1="240" x2="50" y2="153" stroke="#222222" stroke-width="1.8"/>
+  <circle cx="100" cy="240" r="4" fill="#222222"/>
+  <g font-family="sans-serif" font-size="14" font-weight="bold" fill="#111111">
+    <text x="145" y="260">6</text>
+    <text x="220" y="260">3</text>
+    <text x="115" y="100" fill="#1f5fa8">6π</text>
+  </g>
+</svg>
