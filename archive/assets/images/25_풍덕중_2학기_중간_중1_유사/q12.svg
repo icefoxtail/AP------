@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" width="450" height="250" role="img" aria-labelledby="q12-title q12-desc">
+  <title id="q12-title">삼각형의 작도</title>
+  <desc id="q12-desc">두 변과 그 끼인각을 이용한 삼각형 작도 과정</desc>
+  <rect width="450" height="250" fill="#ffffff"/>
+  <!-- 각 XAY: 꼭짓점 A=(80,180), 반직선 AX, AY -->
+  <line x1="80" y1="180" x2="380" y2="180" stroke="#222222" stroke-width="2"/>
+  <line x1="80" y1="180" x2="260" y2="40" stroke="#222222" stroke-width="2"/>
+  <!-- 컴퍼스 호 on AX (교점 B) -->
+  <path d="M 280,160 A 40 40 0 0 1 280,200" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <!-- 컴퍼스 호 on AY (교점 C) -->
+  <path d="M 180,90 A 40 40 0 0 1 210,115" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <!-- 변 BC 연결 -->
+  <line x1="280" y1="180" x2="195" y2="90" stroke="#1f5fa8" stroke-width="2.5"/>
+  <circle cx="80" cy="180" r="4.5" fill="#222222"/>
+  <circle cx="280" cy="180" r="4.5" fill="#222222"/>
+  <circle cx="195" cy="90" r="4.5" fill="#222222"/>
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#111111">
+    <text x="65" y="200">A</text>
+    <text x="280" y="205">B</text>
+    <text x="180" y="80">C</text>
+    <text x="390" y="185">X</text>
+    <text x="265" y="35">Y</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-labelledby="q25-title q25-desc">
+  <title id="q25-title">8개 팀의 대진 다이어그램</title>
+  <desc id="q25-desc">팔각형의 꼭짓점에 놓인 8개 팀과 대각선 경기 경로</desc>
+  <rect width="400" height="400" fill="#ffffff"/>
+  <!-- Regular octagon: center=(200,200), radius=130 -->
+  <!-- Vertices at 0, 45, 90, 135, 180, 225, 270, 315 deg -->
+  <!-- 1: (330,200), 2: (292,292), 3: (200,330), 4: (108,292), 5: (70,200), 6: (108,108), 7: (200,70), 8: (292,108) -->
+  <polygon points="330,200 292,292 200,330 108,292 70,200 108,108 200,70 292,108" fill="none" stroke="#222222" stroke-width="2.5"/>
+  <!-- 대각선 몇 개 예시 -->
+  <line x1="330" y1="200" x2="200" y2="330" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="330" y1="200" x2="108" y2="292" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="330" y1="200" x2="70" y2="200" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="330" y1="200" x2="108" y2="108" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="330" y1="200" x2="200" y2="70" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="330" cy="200" r="5" fill="#1f5fa8"/>
+  <circle cx="292" cy="292" r="5" fill="#1f5fa8"/>
+  <circle cx="200" cy="330" r="5" fill="#1f5fa8"/>
+  <circle cx="108" cy="292" r="5" fill="#1f5fa8"/>
+  <circle cx="70" cy="200" r="5" fill="#1f5fa8"/>
+  <circle cx="108" cy="108" r="5" fill="#1f5fa8"/>
+  <circle cx="200" cy="70" r="5" fill="#1f5fa8"/>
+  <circle cx="292" cy="108" r="5" fill="#1f5fa8"/>
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#111111">
+    <text x="345" y="205">1</text>
+    <text x="305" y="310">2</text>
+    <text x="195" y="355">3</text>
+    <text x="85" y="310">4</text>
+    <text x="45" y="205">5</text>
+    <text x="85" y="100">6</text>
+    <text x="195" y="55">7</text>
+    <text x="305" y="100">8</text>
+  </g>
+</svg>
