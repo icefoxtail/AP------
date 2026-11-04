@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "ac0a4eb09ccb9bbfd1a9d8802cdd63769e5ef136",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {"agent":"Codex-gpt-6.1-terra","run":"original-81-90","at":"2026-11-04"},
+  "items": [
+    {
+      "sourceOrdinal": 1, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"원주각","src":"solution","quote":"$50^\\circ$인 원주각"}],
+        "goal": [{"term":"중심각","src":"solution","quote":"중심각 $x$는 같은 호"}],
+        "method": [{"term":"원주각","src":"solution","quote":"같은 호를 보는 중심각은 원주각의 $2$배", "evidenceType":"NAMED"}],
+        "condition": []
+      },
+      "reasons": {"method":"같은 호에 대한 중심각이 원주각의 두 배이다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"원에내접하는사각형","src":"solution","quote":"원에 내접하는 사각형의 마주 보는 두 각"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle x-\\angle y$의 값"},{"term":"차","src":"stem","quote":"$\\angle x-\\angle y$의 값"}],
+        "method": [{"term":"원에내접하는사각형","src":"solution","quote":"마주 보는 두 각의 합은 $180^\\circ$", "evidenceType":"NAMED"}],
+        "condition": []
+      },
+      "reasons": {"method":"내접사각형의 대각의 합을 이용하여 두 각을 구한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"호","src":"solution","quote":"두 호의 길이가 각각"},{"term":"원주각","src":"solution","quote":"호를 보는 원주각이 $25^\\circ$"}],
+        "goal": [{"term":"중심각","src":"solution","quote":"오른쪽 호의 중심각도 $50^\\circ$"}],
+        "method": [{"term":"원주각","src":"solution","quote":"원주각의 크기는 같은 호에 대한 중심각의 절반", "evidenceType":"NAMED"},{"term":"상등","src":"solution","quote":"호의 길이가 각각 $3\\,\\mathrm{cm}$로 같으므로", "evidenceType":"IMPLIED","justification":"같은 원에서 길이가 같은 호에 대한 중심각이 같다."}],
+        "condition": [{"term":"상등","src":"solution","quote":"호의 길이가 각각 $3\\,\\mathrm{cm}$로 같으므로"}]
+      },
+      "reasons": {"method":"원주각으로 한 호의 중심각을 구하고 같은 길이의 다른 호에 대응하는 각을 더한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"접선","src":"stem","quote":"직선 $AT$가 원 $O$의 접선"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle x$의 크기를 구하면"}],
+        "method": [{"term":"이등변삼각형","src":"solution","quote":"이등변삼각형 $AOB$에서", "evidenceType":"NAMED"},{"term":"수선","src":"solution","quote":"반지름 $OA$와 접선 $AT$는 수직", "evidenceType":"NAMED"}],
+        "condition": [{"term":"접함","src":"stem","quote":"직선 $AT$가 원 $O$의 접선"}]
+      },
+      "reasons": {"method":"반지름으로 만든 이등변삼각형의 밑각과 접선의 수직성을 이용한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"접선","src":"stem","quote":"이 원에 그은 두 접선의 접점"},{"term":"원주각","src":"solution","quote":"호 $BC$를 보는 원주각"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle CAB$의 크기를 구하면"}],
+        "method": [{"term":"원주각","src":"solution","quote":"$\\angle BOC=2\\times63^\\circ=126^\\circ$", "evidenceType":"IMPLIED","justification":"같은 호를 보는 중심각은 원주각의 두 배이다."},{"term":"수선","src":"solution","quote":"반지름과 접선이 수직이므로", "evidenceType":"NAMED"},{"term":"사각형","src":"solution","quote":"사각형 $ABOC$의 네 각의 합", "evidenceType":"NAMED"}],
+        "condition": [{"term":"접함","src":"stem","quote":"이 원에 그은 두 접선의 접점"}]
+      },
+      "reasons": {"method":"원주각으로 중심각을 정하고 접점의 직각과 사각형 내각의 합을 이용한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"반원","src":"stem","quote":"큰 반원과 $\\overline{AB}$ 위의 한 점"},{"term":"접선","src":"stem","quote":"작은 반원에 그은 접선이 작은 반원"},{"term":"호","src":"stem","quote":"$\\wideparen{AE}=32\\,\\mathrm{cm}$"}],
+        "goal": [{"term":"호","src":"stem","quote":"$\\wideparen{BE}$의 길이는"},{"term":"길이","src":"stem","quote":"$\\wideparen{BE}$의 길이는"}],
+        "method": [{"term":"접선과현이이루는각","src":"solution","quote":"접선과 현이 이루는 각의 성질", "evidenceType":"NAMED"},{"term":"원주각","src":"solution","quote":"$\\angle BDC=90^\\circ$", "evidenceType":"IMPLIED","justification":"지름에 대한 원주각은 직각이고 중심각은 같은 호의 원주각의 두 배이다."},{"term":"삼각형","src":"solution","quote":"삼각형 $ABD$에서", "evidenceType":"IMPLIED","justification":"삼각형의 내각의 합으로 큰 반원의 원주각을 구한다."},{"term":"비례","src":"solution","quote":"호의 길이는 중심각의 크기에 비례", "evidenceType":"NAMED"}],
+        "condition": [{"term":"접함","src":"stem","quote":"작은 반원에 그은 접선이 작은 반원"}]
+      },
+      "reasons": {"method":"접현각과 지름의 원주각, 삼각형 내각의 합으로 중심각을 구하고 호 길이의 비를 쓴다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"원에내접하는사각형","src":"stem","quote":"$\\square ABCD$는 원에 내접한다"},{"term":"할선","src":"solution","quote":"두 할선이 이루는 각이 $22^\\circ$"}],
+        "goal": [{"term":"원주각","src":"solution","quote":"호 $BAD$를 보는 원주각"}],
+        "method": [{"term":"할선","src":"solution","quote":"두 할선이 이루는 각이 $22^\\circ$", "evidenceType":"IMPLIED","justification":"원 밖의 두 할선이 이루는 각은 대응하는 두 호의 차의 절반이다."},{"term":"두할선이이루는각","src":"solution","quote":"두 할선이 이루는 각이 $22^\\circ$", "evidenceType":"IMPLIED","justification":"원 밖의 두 할선각을 두 호의 차의 절반으로 나타낸다."},{"term":"연립방정식","src":"solution","quote":"$a+b+c+d=360^\\circ$", "evidenceType":"IMPLIED","justification":"호의 차와 전체 호의 합을 연립해 필요한 호의 합을 정한다."},{"term":"원주각","src":"solution","quote":"호 $BAD$를 보는 원주각", "evidenceType":"NAMED"}],
+        "condition": [{"term":"내접","src":"stem","quote":"$\\square ABCD$는 원에 내접한다"}]
+      },
+      "reasons": {"method":"두 외부 할선각으로 호의 차를 구해 전체 호의 합과 연립한 뒤 원주각을 구한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"호","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"},{"term":"원주각","src":"stem","quote":"$\\angle ADB=30^\\circ$"}],
+        "goal": [{"term":"원주각","src":"stem","quote":"$\\angle ABD$의 크기는"}],
+        "method": [{"term":"원주각","src":"solution","quote":"호 $AD$를 보는 원주각", "evidenceType":"NAMED"},{"term":"상등","src":"solution","quote":"호 $BC$도 $60^\\circ$이다", "evidenceType":"IMPLIED","justification":"같은 길이의 두 호의 크기가 같음을 쓴다."}],
+        "condition": [{"term":"상등","src":"stem","quote":"$\\wideparen{AB}=\\wideparen{BC}$"}]
+      },
+      "reasons": {"method":"원주각을 호의 크기로 바꾸고 같은 호와 전체 원을 이용해 나머지 호의 원주각을 구한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"접선","src":"stem","quote":"원 $O$의 접선이고"},{"term":"현","src":"stem","quote":"$\\overline{AC}$와 $\\overline{BD}$의 교점"}],
+        "goal": [{"term":"각","src":"stem","quote":"$\\angle BQC$의 크기는"}],
+        "method": [{"term":"접선","src":"solution","quote":"작은 호 $AD$의 크기는", "evidenceType":"IMPLIED","justification":"두 접선이 이루는 각과 작은 호의 중심각의 합은 180도이다."},{"term":"원주각","src":"solution","quote":"호 $DC$를 보는 원주각", "evidenceType":"NAMED"},{"term":"삼각형","src":"solution","quote":"삼각형 $BQC$에서", "evidenceType":"IMPLIED","justification":"두 밑각을 이용하여 삼각형의 나머지 각을 구한다."}],
+        "condition": [{"term":"상등","src":"stem","quote":"\\wideparen{BC}=\\wideparen{CD}$"},{"term":"접함","src":"stem","quote":"원 $O$의 접선이고"}]
+      },
+      "reasons": {"method":"접선각으로 작은 호를 정하고 같은 세 호를 구해 원주각과 삼각형의 내각 합을 쓴다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"다각형","src":"stem","quote":"내접하는 오각형 $ABCDE$"},{"term":"원주각","src":"stem","quote":"$\\angle A=96^\\circ$"}],
+        "goal": [{"term":"중심각","src":"solution","quote":"중심각 $x=\\angle BOC$"}],
+        "method": [{"term":"원주각","src":"solution","quote":"$2\\times96^\\circ=192^\\circ$", "evidenceType":"IMPLIED","justification":"원주각이 보는 호의 크기는 그 각의 두 배이다."},{"term":"합","src":"solution","quote":"한 원의 전체 호 $360^\\circ$에 호 $BC$가 한 번 더", "evidenceType":"IMPLIED","justification":"두 호의 합에서 원 전체를 빼면 중복된 호를 얻는다."},{"term":"중심각","src":"solution","quote":"호 $BC$의 크기와 같으므로", "evidenceType":"IMPLIED","justification":"중심각의 크기는 대응하는 호의 크기와 같다."}],
+        "condition": [{"term":"내접","src":"stem","quote":"내접하는 오각형 $ABCDE$"}]
+      },
+      "reasons": {"method":"두 원주각이 보는 호를 더해 중복 호를 구하고 중심각으로 옮긴다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"호","src":"stem","quote":"$\\wideparen{AB}=2\\wideparen{CA}$"},{"term":"비","src":"stem","quote":"$2\\wideparen{BC}=3\\wideparen{CA}$"}],
+        "goal": [{"term":"원주각","src":"solution","quote":"호 $CA$를 보는 원주각"}],
+        "method": [{"term":"비례배분","src":"solution","quote":"$2k+4k+3k=360^\\circ$", "evidenceType":"IMPLIED","justification":"전체 360도를 세 호의 주어진 비로 나눈다."},{"term":"원주각","src":"solution","quote":"호 $CA$를 보는 원주각", "evidenceType":"NAMED"}],
+        "condition": []
+      },
+      "reasons": {"method":"세 호를 비례배분하여 한 호의 크기를 구하고 원주각을 구한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12, "format": "옳은 것 고르기",
+      "slots": {
+        "given": [{"term":"자료","src":"choices","quote":"$8,12,10,9,7,9,8$의 평균"},{"term":"대푯값","src":"stem","quote":"대푯값에 대한 설명으로 옳은 것은"}],
+        "goal": [{"term":"판정","src":"stem","quote":"설명으로 옳은 것은"}],
+        "method": [{"term":"평균","src":"solution","quote":"\\dfrac{63}{7}=9$이므로 틀리다", "evidenceType":"IMPLIED","justification":"합을 자료 수로 나누어 평균을 구한다."},{"term":"중앙값","src":"solution","quote":"작은 순서로 $2,3,4,5,7,8,9$", "evidenceType":"IMPLIED","justification":"자료를 순서대로 놓아 가운데 값을 찾는다."},{"term":"최빈값","src":"solution","quote":"가장 많이 나타나는 값은 $2$와 $3$", "evidenceType":"NAMED"},{"term":"이상치","src":"solution","quote":"다른 값들과 크게 떨어진 값이 있으면", "evidenceType":"IMPLIED","justification":"극단값이 평균과 중앙값의 대표성에 미치는 영향을 비교한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"평균·중앙값·최빈값을 직접 구하고 극단값이 있을 때의 대푯값을 판단한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13, "format": "옳은 것 고르기",
+      "slots": {
+        "given": [{"term":"산포도","src":"choices","quote":"산포도에는 평균, 분산, 표준편차"},{"term":"편차","src":"choices","quote":"편차의 절댓값이 클수록"}],
+        "goal": [{"term":"판정","src":"stem","quote":"다음 설명 중 옳은 것은"}],
+        "method": [{"term":"분산","src":"solution","quote":"편차의 제곱의 평균은 분산", "evidenceType":"NAMED"},{"term":"산포도","src":"solution","quote":"분산이 작을수록 자료가 평균 가까이에", "evidenceType":"IMPLIED","justification":"분산의 크기와 자료가 흩어진 정도의 관계를 판정한다."},{"term":"대푯값","src":"solution","quote":"자료의 중심 경향을 하나의 수로", "evidenceType":"IMPLIED","justification":"중심을 나타내는 대푯값과 흩어짐을 나타내는 산포도를 구분한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"분산과 편차의 뜻 및 산포도와 대푯값의 차이로 각 설명을 판정한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"중앙값","src":"stem","quote":"중앙값은 $a$이고"},{"term":"자료","src":"stem","quote":"자료 $2,a,8,10,4$"}],
+        "goal": [{"term":"개수","src":"stem","quote":"자연수 $a$의 개수는"}],
+        "method": [{"term":"중앙값","src":"solution","quote":"$a$가 가운데에 와야 하므로", "evidenceType":"IMPLIED","justification":"다섯 자료에서 가운데 값이 되도록 각 미지수의 범위를 정한다."},{"term":"연립부등식","src":"solution","quote":"$8\\le a\\le11$", "evidenceType":"IMPLIED","justification":"두 중앙값 조건으로 얻은 범위의 공통 부분을 취한다."},{"term":"열거","src":"solution","quote":"$8,9,10,11$", "evidenceType":"NAMED"}],
+        "condition": [{"term":"자연수","src":"stem","quote":"자연수 $a$의 개수는"}]
+      },
+      "reasons": {"method":"각 자료의 중앙값 조건을 범위로 바꿔 공통인 자연수를 센다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15, "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [{"term":"그래프","src":"stem","quote":"다음 그래프는 한 종류의 컴퓨터"},{"term":"분산","src":"choices","quote":"색상의 만족도의 분산은 $1.6$"},{"term":"표준편차","src":"choices","quote":"가격의 만족도의 표준편차는 $0$점"}],
+        "goal": [{"term":"판정","src":"stem","quote":"다음 중 옳지 않은 것은"}],
+        "method": [{"term":"평균","src":"solution","quote":"세 자료의 평균은 모두 $6$", "evidenceType":"NAMED"},{"term":"편차","src":"solution","quote":"모든 자료에서 편차의 합은 $0$", "evidenceType":"NAMED"},{"term":"분산","src":"solution","quote":"반응속도의 분산은", "evidenceType":"NAMED"},{"term":"표준편차","src":"solution","quote":"표준편차가 가장 크다는 것을 알 수", "evidenceType":"IMPLIED","justification":"분산이 큰 자료의 표준편차도 크므로 비교한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"각 그래프에서 자료를 읽고 평균, 편차와 분산을 이용해 표준편차를 비교한다."}, "steps": [], "scenarioNote": "모니터 만족도"
+    },
+    {
+      "sourceOrdinal": 16, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"평균","src":"stem","quote":"자료 $x,y,6,2$의 평균이 $4$"},{"term":"분산","src":"stem","quote":"분산이 $3$일 때"}],
+        "goal": [{"term":"분산","src":"stem","quote":"자료 $x,y,5,7$의 분산은"}],
+        "method": [{"term":"평균","src":"solution","quote":"$x+y+6+2=16$", "evidenceType":"IMPLIED","justification":"기존 평균에서 두 미지수의 합을 구한다."},{"term":"분산","src":"solution","quote":"편차의 제곱의 합은 $12$", "evidenceType":"IMPLIED","justification":"기존 분산과 평균으로 제곱합을 구하고 바뀐 자료의 분산을 구한다."},{"term":"제곱합","src":"solution","quote":"$x^2+y^2=36$", "evidenceType":"NAMED"}],
+        "condition": []
+      },
+      "reasons": {"method":"기존 평균과 분산으로 미지수의 합과 제곱합을 구하고 바뀐 자료에 적용한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"평균","src":"stem","quote":"두 모둠 전체의 수학 성적의 평균"},{"term":"집단","src":"stem","quote":"A, B 두 모둠 전체의 수학 성적"}],
+        "goal": [{"term":"비","src":"stem","quote":"두 모둠의 학생 수의 비는"}],
+        "method": [{"term":"평균","src":"solution","quote":"$72a+66b=68(a+b)$", "evidenceType":"IMPLIED","justification":"각 집단의 인원과 평균으로 전체 점수의 합을 나타낸다."},{"term":"비","src":"solution","quote":"$a:b=1:2$", "evidenceType":"IMPLIED","justification":"전체 평균에서 얻은 인원 관계를 비로 정리한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"집단별 평균과 인원의 곱으로 전체 합을 세워 인원비를 구한다."}, "steps": [], "scenarioNote": "두 모둠의 수학 성적"
+    },
+    {
+      "sourceOrdinal": 18, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"산점도를 그렸을 때"}],
+        "goal": [{"term":"판정","src":"stem","quote":"다음 그림과 같은 모양이 되는 것은"}],
+        "method": [{"term":"상관관계","src":"solution","quote":"양의 상관관계이다", "evidenceType":"NAMED"},{"term":"증가감소","src":"solution","quote":"한쪽이 증가하면 다른 쪽이 감소한다", "evidenceType":"IMPLIED","justification":"변량이 함께 증가하는지 반대로 변화하는지 각 상황을 비교한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"산점도의 양의 상관관계를 읽고 각 상황의 두 변량이 변화하는 방향을 비교한다."}, "steps": [], "scenarioNote": "기온, 난방비, 에어컨 사용과 전기 요금 등"
+    },
+    {
+      "sourceOrdinal": 19, "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"다음 산점도는 민수네 반 학생"}],
+        "goal": [{"term":"판정","src":"stem","quote":"옳지 않은 것은"}],
+        "method": [{"term":"최빈값","src":"solution","quote":"$60$점인 학생이 $3$명으로 가장 많으므로", "evidenceType":"IMPLIED","justification":"각 x좌표의 도수를 비교하여 최빈값을 판정한다."},{"term":"상관관계","src":"solution","quote":"양의 상관관계가 있다", "evidenceType":"NAMED"},{"term":"비율","src":"solution","quote":"$\\dfrac{2}{10}=\\dfrac15$", "evidenceType":"IMPLIED","justification":"조건에 해당하는 점의 개수를 전체 인원으로 나눈다."},{"term":"대소비교","src":"solution","quote":"두 점수가 모두 $60$점 이상인 점", "evidenceType":"IMPLIED","justification":"각 좌표가 두 점수의 하한을 동시에 만족하는지 판별한다."}],
+        "condition": []
+      },
+      "reasons": {"method":"점의 좌표와 도수를 읽어 최빈값, 상관관계, 조건별 인원과 비율을 판정한다."}, "steps": [], "scenarioNote": "국어와 영어 점수"
+    },
+    {
+      "sourceOrdinal": 20, "format": "단일 정답",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"다음 산점도는 어느 사격 동아리"}],
+        "goal": [{"term":"비율","src":"stem","quote":"학생의 비율은"}],
+        "method": [{"term":"연립부등식","src":"solution","quote":"$y-x\\ge2$", "evidenceType":"IMPLIED","justification":"점수 차와 평균 조건을 부등식으로 나타내 동시에 만족하는 좌표를 고른다."},{"term":"비율","src":"solution","quote":"$\\dfrac{4}{30}=\\dfrac{2}{15}$", "evidenceType":"IMPLIED","justification":"조건을 만족하는 점의 수를 전체 인원으로 나눈다."}],
+        "condition": [{"term":"연립부등식","src":"solution","quote":"$y-x\\ge2$"}]
+      },
+      "reasons": {"method":"그림의 점수 향상·차와 평균 조건을 함께 만족하는 점을 세어 비율로 나타낸다."}, "steps": [], "scenarioNote": "두 차례 사격 점수"
+    },
+    {
+      "sourceOrdinal": 21, "format": "서술",
+      "slots": {
+        "given": [{"term":"정오각형","src":"stem","quote":"원 $O$에 내접하는 정오각형"},{"term":"대각선","src":"stem","quote":"그 대각선을 이어서 그린 별 모양"}],
+        "goal": [{"term":"원주각","src":"stem","quote":"$\\angle CAD$의 크기를"}],
+        "method": [{"term":"정오각형","src":"solution","quote":"이웃한 두 꼭짓점에 대한 중심각은 모두 같다", "evidenceType":"IMPLIED","justification":"정오각형의 다섯 같은 중심각으로 360도를 나눈다."},{"term":"원주각","src":"solution","quote":"같은 호를 보는 중심각이다", "evidenceType":"IMPLIED","justification":"원주각을 같은 호의 중심각의 절반으로 구한다."}],
+        "condition": [{"term":"내접","src":"stem","quote":"원 $O$에 내접하는 정오각형"}]
+      },
+      "reasons": {"method":"정오각형이 나누는 중심각과 같은 호의 원주각의 관계를 쓴다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22, "format": "서술",
+      "slots": {
+        "given": [{"term":"원","src":"stem","quote":"원 $O$의 지름이고"},{"term":"지름","src":"stem","quote":"$\\overline{AQ}$는 원 $O$의 지름"},{"term":"수선","src":"stem","quote":"$\\overline{AH}\\perp\\overline{BC}$"}],
+        "goal": [{"term":"넓이","src":"stem","quote":"원 $O$의 넓이를 구하고"}],
+        "method": [{"term":"피타고라스정리","src":"solution","quote":"$AH^2=AB^2-BH^2=6^2-2^2=32$", "evidenceType":"IMPLIED","justification":"두 직각삼각형에 빗변과 두 직각변의 제곱 관계를 적용한다."},{"term":"직각이등변삼각형","src":"solution","quote":"$AH=CH$이고, 직각삼각형 $ACH$", "evidenceType":"IMPLIED","justification":"같은 두 직각변에서 45도 각을 구한다."},{"term":"원주각","src":"solution","quote":"같은 현 $AB$를 보는 원주각", "evidenceType":"NAMED"},{"term":"지름","src":"solution","quote":"$AQ$가 지름이므로", "evidenceType":"IMPLIED","justification":"지름에 대한 원주각이 직각이므로 직각이등변삼각형에서 지름을 구한다."},{"term":"넓이","src":"solution","quote":"$\\pi(3\\sqrt2)^2=18\\pi$", "evidenceType":"IMPLIED","justification":"반지름의 제곱에 원주율을 곱한다."}],
+        "condition": [{"term":"수선","src":"stem","quote":"$\\overline{AH}\\perp\\overline{BC}$"}]
+      },
+      "reasons": {"method":"두 직각삼각형에 피타고라스 정리를 써서 45도를 정하고 원주각과 지름으로 반지름을 구해 넓이를 구한다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23, "format": "서술",
+      "slots": {
+        "given": [{"term":"중앙값","src":"stem","quote":"중앙값은 $4$, 평균은 $5$"},{"term":"평균","src":"stem","quote":"평균은 $5$, 분산은 $14$"},{"term":"분산","src":"stem","quote":"분산은 $14$일 때"}],
+        "goal": [{"term":"미지수","src":"stem","quote":"$a,b,c$의 값을 각각 구하고"},{"term":"결정","src":"stem","quote":"$a,b,c$의 값을 각각 구하고"}],
+        "method": [{"term":"중앙값","src":"solution","quote":"중앙값이 $4$이므로", "evidenceType":"NAMED"},{"term":"평균","src":"solution","quote":"$a+c=11$", "evidenceType":"IMPLIED","justification":"평균과 가운데 값에서 나머지 두 수의 합을 구한다."},{"term":"분산","src":"solution","quote":"$(a-5)^2+(c-5)^2=41$", "evidenceType":"IMPLIED","justification":"편차 제곱의 평균인 분산을 식으로 쓴다."},{"term":"인수분해","src":"solution","quote":"$(a-1)(a-10)=0$", "evidenceType":"NAMED"},{"term":"순서","src":"solution","quote":"$a<4$이므로 $a=1$", "evidenceType":"IMPLIED","justification":"주어진 대소순서를 이용하여 가능한 근을 선택한다."}],
+        "condition": [{"term":"순서","src":"stem","quote":"$a\\lt b\\lt c$"}]
+      },
+      "reasons": {"method":"중앙값으로 b를 정하고 평균과 분산을 식으로 바꾸어 이차방정식을 푼 뒤 순서로 근을 고른다."}, "steps": [], "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24, "format": "서술",
+      "slots": {
+        "given": [{"term":"산점도","src":"stem","quote":"다음 산점도는 읽기와 듣기를"},{"term":"평균","src":"stem","quote":"듣기 점수와 읽기 점수의 평균"}],
+        "goal": [{"term":"평균","src":"stem","quote":"합격한 사람들의 읽기 점수의 평균"}],
+        "method": [{"term":"비율","src":"solution","quote":"$15\\times0.6=9$", "evidenceType":"IMPLIED","justification":"전체 인원에 상위 비율을 곱해 합격 인원을 구한다."},{"term":"합","src":"solution","quote":"두 점수의 합으로 순위를 정하는 것과 같다", "evidenceType":"NAMED"},{"term":"순서","src":"solution","quote":"점수의 합이 큰 $9$명을 고른다", "evidenceType":"IMPLIED","justification":"두 점수의 합을 비교해 상위 자료를 선택한다."},{"term":"평균","src":"solution","quote":"$\\dfrac{70}{9}$", "evidenceType":"IMPLIED","justification":"선택된 읽기 점수의 합을 인원으로 나눈다."}],
+        "condition": [{"term":"비율","src":"stem","quote":"상위 $60\\%$이내에 드는 사람"}]
+      },
+      "reasons": {"method":"상위 60%의 인원을 구하고 점수 합으로 순위를 정한 다음 해당 읽기 점수의 평균을 구한다."}, "steps": [], "scenarioNote": "영어 읽기와 듣기 점수"
+    }
+  ],
+  "candidates": [{"term":"두할선이이루는각","en":"ANGLE_BETWEEN_TWO_SECANTS","synonyms":[],"kind":"대상","parent":"할선","note":"원 밖의 한 점에서 그은 두 할선이 이루는 각으로 두 호의 차의 절반에 해당한다.","usedIn":[7]}],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 158,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1, 2, 3, 8, 11, 16, 17, 18, 20, 21],
+    "notes": "그림 18개 직접 확인. 7번 그림에는 원이 표시되어 있지 않으나 발문은 원에 내접한다고 명시한다. 경고 재검토: 1은 같은 호의 중심각과 원주각 관계 한 단계로 충분하다. 2는 내접사각형의 대각의 합으로 두 각을 각각 정한 뒤 차를 구한다. 3은 같은 호 길이에 대응하는 중심각과 원주각을 쓴다. 8은 같은 호와 원 전체의 호를 이용한 원주각 관계가 핵심이다. 11은 세 호의 비례배분과 원주각을 쓴다. 16은 원래 자료의 합과 제곱합으로 바뀐 분산을 구한다. 17은 두 집단의 인원과 평균으로 전체 합을 나타내어 인원비를 정한다. 18은 그림의 양의 상관관계와 변량의 증감 방향을 비교한다. 20은 그림의 점수 차와 평균 조건을 연립부등식으로 바꿔 좌표를 세고 비율을 구한다. 21은 정오각형의 중심각과 같은 호의 원주각 관계를 쓴다. 12번 인용을 원문에 맞게 수정했다. 검사기는 ROOT가 실행했다."
+  }
+}
