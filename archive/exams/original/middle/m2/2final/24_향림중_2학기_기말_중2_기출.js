@@ -25,7 +25,7 @@ window.questionBank = [
       "$\\overline{AC}=4\\rm\\,cm,\\ \\angle OCD=30^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 마름모의 두 대각선은 서로를 이등분하고, 각 꼭짓점의 각을 이등분한다.\n그림에서 $AO=3\\rm\\,cm$이므로 $AC=2AO=6\\rm\\,cm$이다.\n또 $\\angle ABO=30^\\circ$이고 $BD$가 $\\angle ABC$를 이등분하므로 $\\angle ABC=60^\\circ$이다.\n마름모에서 이웃한 두 각의 합은 $180^\\circ$이므로 $\\angle BCD=120^\\circ$이고, $AC$가 $\\angle BCD$를 이등분하므로 $\\angle OCD=60^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "마름모의 두 대각선은 서로를 이등분하고, 각 꼭짓점의 각을 이등분한다.\n그림에서 $AO=3\\rm\\,cm$이므로 $AC=2AO=6\\rm\\,cm$이다.\n또 $\\angle ABO=30^\\circ$이고 $BD$가 $\\angle ABC$를 이등분하므로 $\\angle ABC=60^\\circ$이다.\n마름모에서 이웃한 두 각의 합은 $180^\\circ$이므로 $\\angle BCD=120^\\circ$이고, $AC$가 $\\angle BCD$를 이등분하므로 $\\angle OCD=60^\\circ$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q1-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q1.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
@@ -69,7 +69,7 @@ window.questionBank = [
       "$30\\rm\\,cm^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+    "solution": "평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
@@ -982,7 +982,7 @@ window.questionBank = [
     "content": "[서·논술형 4] 재모가 저녁 운동을 할 확률이 $20\\%$일 때, $3$일 중 하루만 저녁 운동을 할 확률을 구하고, 그 풀이과정을 쓰시오. (5점)",
     "choices": [],
     "answer": "$38.4\\%$",
-    "solution": "[키포인트] 하루에 저녁 운동을 할 확률과 하지 않을 확률을 이용해 하루만 운동하는 경우를 나눈다.\n하루에 운동을 할 확률은 $20\\%=0.2$, 운동을 하지 않을 확률은 $80\\%=0.8$이다.\n3일 중 하루만 운동하는 경우는 운동하는 날이 첫째 날, 둘째 날, 셋째 날인 $3$가지이다.\n각 경우의 확률은 $0.2\\times0.8\\times0.8=0.128$이므로, 구하는 확률은 $3\\times0.128=0.384$이다.\n따라서 구하는 확률은 $38.4\\%$이다.",
+    "solution": "하루에 저녁 운동을 할 확률과 하지 않을 확률을 이용해 하루만 운동하는 경우를 나눈다.\n하루에 운동을 할 확률은 $20\\%=0.2$, 운동을 하지 않을 확률은 $80\\%=0.8$이다.\n3일 중 하루만 운동하는 경우는 운동하는 날이 첫째 날, 둘째 날, 셋째 날인 $3$가지이다.\n각 경우의 확률은 $0.2\\times0.8\\times0.8=0.128$이므로, 구하는 확률은 $3\\times0.128=0.384$이다.\n따라서 구하는 확률은 $38.4\\%$이다.",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
