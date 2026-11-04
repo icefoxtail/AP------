@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.24",
+  "shardVersion": "1.4.25",
   "status": "ACTIVE",
-  "conceptCount": 369,
+  "conceptCount": 374,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -13101,6 +13101,181 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_SYSTEM",
+      "canonicalLabelKo": "연립일차방정식의 풀이",
+      "definition": "두 일차방정식을 연립하여 미지수를 소거하거나 대입하여 해를 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_LINEAR_SYSTEM for PT_H1_CONSECUTIVE_COMBINATION_RATIO/TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE at H15-SB-08/H15-SB-08-COMBINATION_BASIC.",
+          "decisiveEvidence": "nC(r+1)/nCr=(n-r)/(r+1)=4/5 및 (n-r-1)/(r+2)=1/2 연립하여 n=6, r=1, 2n-r=11 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_CONSECUTIVE_COMBINATION_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NONZERO_DENOMINATOR",
+      "canonicalLabelKo": "분모가 0이 아니어야 하는 조건",
+      "definition": "분수나 무리식에서 분모가 0이 되면 식이 정의되지 않으므로, 분모를 0으로 만드는 값을 제외하고 부등호의 방향에 따라 정의역을 정하는 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_NONZERO_DENOMINATOR for PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION/TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "분자 x-3>=0 및 분모 5-x>0 연립하여 3<=x<5 직접 도출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_EVALUATION",
+      "canonicalLabelKo": "근호가 포함된 식의 값 계산",
+      "definition": "근호를 포함한 식을 통분·유리화한 뒤 주어진 값을 대입하여 a+b√m 꼴의 계수를 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_RADICAL_EVALUATION for PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION/TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "켤레 분모 통분 정리 -2(x+1)/x에 x=sqrt(2) 대입하여 -2-sqrt(2), a=-2, b=-1, a+b=-3 산출 (2단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONALIZATION_OF_DENOMINATOR",
+      "canonicalLabelKo": "분모의 유리화",
+      "definition": "분모에 근호가 있을 때 분모와 분자에 같은 식을 곱하여 분모를 유리수로 만드는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_RATIONALIZATION_OF_DENOMINATOR for PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION/TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "켤레 분모 통분 정리 -2(x+1)/x에 x=sqrt(2) 대입하여 -2-sqrt(2), a=-2, b=-1, a+b=-3 산출 (2단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPRESSION",
+      "canonicalLabelKo": "유리식의 통분과 항등식",
+      "definition": "분모가 0이 아닌 범위에서 두 유리식을 통분하여 하나의 유리식으로 나타내고, 분자의 계수를 비교하여 미지수를 결정하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_RATIONAL_EXPRESSION for PT_H1_RATIONAL_EXPRESSION_IDENTITY/TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "통분 후 분자 항등식 a(x+1)+b(x-2)=5x-4에서 a=2, b=3 도출하여 ab=6 산출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_RATIONAL_EXPRESSION_IDENTITY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

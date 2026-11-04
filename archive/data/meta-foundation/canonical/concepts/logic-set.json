@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.6",
+  "shardVersion": "1.0.7",
   "status": "ACTIVE",
-  "conceptCount": 25,
+  "conceptCount": 27,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -802,6 +802,76 @@
       ],
       "curriculumRefs": [
         "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_COUNTING",
+      "canonicalLabelKo": "여사건을 이용한 경우의 수",
+      "definition": "구하려는 사건의 반대 사건 경우의 수를 전체 경우의 수에서 빼서 원하는 경우의 수를 구하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_COMPLEMENTARY_COUNTING for PT_H1_SUBSET_SELECTION_COUNTING/TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT at H15-SB-01/H15-SB-01-SET_BASIC.",
+          "decisiveEvidence": "n(A)=3, n(B)=2 전체 쌍 7C3*7C2=735에서 서로소인 쌍 7C3*4C2=210 제외하여 525 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_SUBSET_SELECTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-01"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUBSET_COUNTING",
+      "canonicalLabelKo": "부분집합의 개수 세기",
+      "definition": "집합의 원소 가운데 일부를 택하여 부분집합을 만들고, 크기와 포함 관계 조건에 따라 조합의 수를 세는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_SUBSET_COUNTING for PT_H1_SUBSET_SELECTION_COUNTING/TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT at H15-SB-01/H15-SB-01-SET_BASIC.",
+          "decisiveEvidence": "n(A)=3, n(B)=2 전체 쌍 7C3*7C2=735에서 서로소인 쌍 7C3*4C2=210 제외하여 525 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_SUBSET_SELECTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-01"
       ],
       "ownerConceptShard": "LOGIC_SET"
     }

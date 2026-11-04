@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "SETS_PROPOSITIONS@1.0.1/reviewed-exam-v2",
+  "runtimeVersion": "SETS_PROPOSITIONS@1.0.2/reviewed-exam-v2",
   "packId": "SETS_PROPOSITIONS",
-  "packVersion": "1.0.1",
+  "packVersion": "1.0.2",
   "generatedFrom": {
     "identities": [
       "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SET/metadata_candidate.json",
@@ -18,14 +18,15 @@
     "reviewedExam_meta-pipeline-high-1-b0eefadb76ed-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
     "reviewedExam_meta-pipeline-palma25-695d6bcb5cca-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.json",
     "reviewedExam_jeil-h1-2final-runtime-refresh-a011ae38": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/jeil-h1-2final-runtime-refresh-a011ae38.json",
-    "reviewedExam_req-similar-309cbc6dec7b1e3e": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-309cbc6dec7b1e3e.json"
+    "reviewedExam_req-similar-309cbc6dec7b1e3e": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-309cbc6dec7b1e3e.json",
+    "reviewedExam_meta-pipeline-palmahigh-h1-2final-22-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json"
   },
   "counts": {
     "records": 383,
-    "taxonomyRows": 138,
+    "taxonomyRows": 139,
     "defaultSelectable": 383,
     "supplementary": 0,
-    "automaticEligibleExpected": 44,
+    "automaticEligibleExpected": 45,
     "sourceHold": 0,
     "catalogUnregisteredExcluded": 9
   },
@@ -41,6 +42,12 @@
       "courseKey": "수학(하)",
       "L1": "집합과 명제",
       "L2": "집합"
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계"
     },
     {
       "curriculumKey": "2022",
@@ -1107,7 +1114,7 @@
       "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 4
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2015",
@@ -1183,6 +1190,19 @@
       "L4": "부분집합인지 판정하기",
       "problemTypeKey": "PT_SUBSET_JUDGMENT",
       "templateKey": "TPL_SUBSET_DIRECT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "두 부분집합의 경우의 수",
+      "L4": "전체 쌍에서 서로소인 쌍을 빼기",
+      "problemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+      "templateKey": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -13181,41 +13201,102 @@
       "questionUid": "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 17,
-      "curriculumKey": "2015",
-      "courseKey": "수학(하)",
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "7fb2f3e6776156960d607b7f21cbc031b605220aee43a0d9c073238218e97a98",
+      "contentFingerprint": "c450dfcf43558dde0a7f0f888f7af07963d1848c33d7c741feb556f00ca42f9d",
       "standardCourse": "수학(하)",
       "standardUnitKey": "H15-SB-01",
       "standardUnit": "집합",
-      "standardUnitOrder": 1,
       "subUnitKey": "H15-SB-01-SET_BASIC",
-      "problemTypeKey": "PT_SUBSET_COUNT",
-      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
-      "L1": "집합과 명제",
-      "L2": "집합",
-      "L3": "부분집합의 개수",
-      "L4": "포함·서로소 조건이 있는 두 부분집합의 개수",
-      "crossConceptKeys": [
-        "CC_COMBINATORICS_COUNTING"
-      ],
-      "secondaryConceptKeys": [
-        "CC_COMBINATORICS_COUNTING"
-      ],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "level": "중",
+      "subUnit": "집합의 뜻과 표현",
+      "conceptClusterKey": "H15-SB-01-SET_BASIC",
+      "problemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+      "templateKey": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
       "difficultyBucket": 3,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE",
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SET/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "두 부분집합의 경우의 수",
+      "L4": "전체 쌍에서 서로소인 쌍을 빼기",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-01",
+      "legacySubUnitKey": "H15-SB-01-SET_BASIC",
+      "legacySubUnit": "집합의 뜻과 표현",
+      "reviewStatus": "MOTHER_FINAL",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "집합과 명제",
+        "L2": "집합의 뜻과 포함 관계",
+        "L3": "부분집합",
+        "L4": "부분집합의 개수"
+      },
+      "primaryConcept": "교집합 조건을 가진 부분집합쌍",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Count all size-(3,2) subset pairs and subtract disjoint pairs; A's subset-count path is exact, while B's inclusion-relation label is not the condition being asked.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "crossConceptKeys": [
+        "CC_SUBSET_COUNTING",
+        "CC_COMPLEMENTARY_COUNTING"
+      ],
+      "conditionKeys": [],
+      "level": "중",
+      "curriculum": "2015",
+      "integrationPattern": null,
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "SETS_PROPOSITIONS",
-      "metaFoundationPackVersion": "1.0.0"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#17",
+      "approvedSourceFingerprint": "7fb2f3e6776156960d607b7f21cbc031b605220aee43a0d9c073238218e97a98",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_b53c193fa771dbc1f8e2795db5d5051a58b5a80cee6d76f244ecf98bc455c655",
@@ -17753,6 +17834,13 @@
         ]
       },
       {
+        "key": "PT_H1_SUBSET_SELECTION_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+        ]
+      },
+      {
         "key": "PT_LOGIC_CHAIN",
         "count": 6,
         "questionUids": [
@@ -18128,7 +18216,7 @@
       },
       {
         "key": "PT_SUBSET_COUNT",
-        "count": 36,
+        "count": 35,
         "questionUids": [
           "qid_v1_052dcf2740feafa0c117c64c7b836322e58cae1f8fff2735c52f260ec137fa25",
           "qid_v1_0f6fe7448b499054827d569aab272ac4f25dd8b3fc336925cb41815519f7b9f9",
@@ -18155,7 +18243,6 @@
           "qid_v1_9de242f10548c48f8817b5ab49269e6d5c58e5db5500656574b0e2f3fa486193",
           "qid_v1_a90cb66023de581360faa78718b8ad5c6d69788c7d92d519e0c91736201aa287",
           "qid_v1_b0ee1e76c75202933a54e73a17c58e98453a4e0f96f304345156e422efaeb80c",
-          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
           "qid_v1_b82db53c3ed39b3a5c90503c3819845eaf3bc4895ad723511883fc47397101dd",
           "qid_v1_c42100fec6ed607d3a0d3ff446c771c3ae10ece25dcf4f20dab16bd2b30d8216",
           "qid_v1_c533fadccdf13b5ce0c1a12c27597a6b49c4834f3fba33c42868ffba9b09950f",
@@ -18481,6 +18568,13 @@
         "questionUids": [
           "qid_v1_857525fd69692d57b783e966fab8c8d34e2f45edc69e4e04c0e3ba477a9f185c",
           "qid_v1_b32c42189b60663250a761daf434b16e25b8578258d23e7593c413685df6c10c"
+        ]
+      },
+      {
+        "key": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
         ]
       },
       {
@@ -18919,11 +19013,10 @@
       },
       {
         "key": "TPL_RELATED_SUBSET_PAIR_COUNT",
-        "count": 4,
+        "count": 3,
         "questionUids": [
           "qid_v1_361b21c21655d9e1f82c6cce682e2247b02db9b514af8b0cc3cd26fe01674618",
           "qid_v1_a90cb66023de581360faa78718b8ad5c6d69788c7d92d519e0c91736201aa287",
-          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
           "qid_v1_d95d963bc22cfdd52669da65c27efa76c9ca2399fa4f1175eba841df3359c097"
         ]
       },
@@ -19218,14 +19311,20 @@
       },
       {
         "key": "CC_COMBINATORICS_COUNTING",
-        "count": 6,
+        "count": 5,
         "questionUids": [
           "qid_v1_361b21c21655d9e1f82c6cce682e2247b02db9b514af8b0cc3cd26fe01674618",
           "qid_v1_50e590cd252da892a639624ab1b8e274ed768ea876dc5bf856ec04fccfd76343",
           "qid_v1_6b4879890fc4e6acb3606834b9bde7c9fd92f9b91321f2e70cf4173ca129de2d",
           "qid_v1_a90cb66023de581360faa78718b8ad5c6d69788c7d92d519e0c91736201aa287",
-          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
           "qid_v1_e870e2a65145cc70c78bce3363562985c58efa6983353d99ed275e0210c012c9"
+        ]
+      },
+      {
+        "key": "CC_COMPLEMENTARY_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
         ]
       },
       {
@@ -19593,6 +19692,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894"
+        ]
+      },
+      {
+        "key": "CC_SUBSET_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
         ]
       },
       {

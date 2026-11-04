@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.10",
+  "shardVersion": "1.1.11",
   "status": "ACTIVE",
-  "conceptCount": 40,
+  "conceptCount": 41,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -1377,6 +1377,41 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_GREATEST_COMMON_DIVISOR",
+      "canonicalLabelKo": "최대공약수",
+      "definition": "두 수의 공약수 가운데 가장 큰 수로, 두 수가 1 이외의 공약수를 갖는지를 판정하는 기준.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_GREATEST_COMMON_DIVISOR for PT_H1_NUMBER_THEORETIC_COUNTING/TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "2의 배수(6C2=15), 3의 배수(4C2=6), 5의 배수(2C2=1)에서 6의 배수 중복(2C2=1) 제외하여 21가지 산출 (3단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_NUMBER_THEORETIC_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }

@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 24,
-  "templateCount": 98,
+  "problemTypeCount": 25,
+  "templateCount": 99,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
@@ -698,6 +698,18 @@
       "sourceUnit": "PROPOSITION",
       "status": "ACTIVE",
       "ownerPack": "SETS_PROPOSITIONS"
+    },
+    {
+      "problemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+      "canonicalLabelKo": "두 부분집합의 경우의 수",
+      "definition": "집합의 부분집합 두 개를 택할 때 크기와 교집합 조건을 만족하는 경우의 수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ]
     }
   ],
   "templates": [
@@ -2435,6 +2447,19 @@
       "sourceUnit": "SETS",
       "status": "ACTIVE",
       "ownerPack": "SETS_PROPOSITIONS"
+    },
+    {
+      "templateKey": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
+      "parentProblemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+      "canonicalLabelKo": "전체 쌍에서 서로소인 쌍을 빼기",
+      "definition": "두 부분집합을 고르는 전체 경우에서 교집합이 공집합인 경우를 빼서 조건을 만족하는 수를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ]
     }
   ],
   "droppedTemplates": [],

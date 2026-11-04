@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "H1_FOUNDATION@1.0.5/reviewed-exam-v2",
+  "runtimeVersion": "H1_FOUNDATION@1.0.6/reviewed-exam-v2",
   "packId": "H1_FOUNDATION",
-  "packVersion": "1.0.5",
+  "packVersion": "1.0.6",
   "generatedFrom": {
     "immutableOutlierReviewHead": "70ffc893777e543989a01566d9106f9f1b76b991",
     "mergedOriginMainHead": "4be6351d3f4cd722ca12639d9e652777e51426db",
@@ -23,7 +23,8 @@
     "reviewedExam_meta-pipeline-geumdang21-final-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
     "reviewedExam_meta-pipeline-gangnam-26f5b42d1b7a-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gangnam-26f5b42d1b7a-20261027.json",
     "reviewedExam_meta-pipeline-suncheongirls-a1c3b0b45d96-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheongirls-a1c3b0b45d96-20261027.json",
-    "reviewedExam_meta-pipeline-maesan20-8c976117425d-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.json"
+    "reviewedExam_meta-pipeline-maesan20-8c976117425d-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-maesan20-8c976117425d-20261027.json",
+    "reviewedExam_meta-pipeline-palmahigh-h1-2final-22-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json"
   },
   "counts": {
     "records": 1284,
@@ -37,9 +38,9 @@
     "explicitHold": 130,
     "defaultSelectable": 999,
     "runtimeSelectable": 650,
-    "automaticEligibleExpected": 770,
+    "automaticEligibleExpected": 774,
     "catalogUidDirectJoin": 1170,
-    "taxonomyRows": 250,
+    "taxonomyRows": 259,
     "l3ProblemTypeCount": 32,
     "l4TemplateCount": 61,
     "crossConceptReferenceCount": 233,
@@ -1589,7 +1590,7 @@
       "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 7
+      "supportingItemCount": 6
     },
     {
       "curriculumKey": "2015",
@@ -1615,7 +1616,7 @@
       "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 37
+      "supportingItemCount": 36
     },
     {
       "curriculumKey": "2015",
@@ -1628,7 +1629,7 @@
       "templateKey": "TPL_COMBINATION_SELECTION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 15
+      "supportingItemCount": 14
     },
     {
       "curriculumKey": "2015",
@@ -1642,6 +1643,45 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 2
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "이웃 조건이 있는 선택과 배열",
+      "L4": "선택 인원에 따른 경우 분할 후 합산",
+      "problemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+      "templateKey": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "원 위 점으로 만드는 도형의 개수",
+      "L4": "지름을 이용한 직각삼각형·직사각형 계수",
+      "problemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+      "templateKey": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "사이 간격이 정해진 순열",
+      "L4": "사이 문자 선택 후 양 끝 교환",
+      "problemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+      "templateKey": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2015",
@@ -1667,7 +1707,7 @@
       "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 27
+      "supportingItemCount": 26
     },
     {
       "curriculumKey": "2015",
@@ -1681,6 +1721,58 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 13
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "교란순열을 이용한 경우의 수",
+      "L4": "고정점 선택 후 완전순열",
+      "problemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+      "templateKey": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "사전식 배열의 순위",
+      "L4": "앞서는 접두사별 배열 수 누적",
+      "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "공약수 조건의 경우의 수",
+      "L4": "소인수별 배수 쌍 포함배제",
+      "problemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+      "templateKey": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "대소 조건이 있는 순서쌍의 개수",
+      "L4": "기준 변수 값별 분기 후 합산",
+      "problemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+      "templateKey": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2015",
@@ -1719,7 +1811,7 @@
       "templateKey": "TPL_COMBINATION_SELECTION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 25
+      "supportingItemCount": 22
     },
     {
       "curriculumKey": "2015",
@@ -1745,7 +1837,7 @@
       "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 6
+      "supportingItemCount": 5
     },
     {
       "curriculumKey": "2015",
@@ -1791,13 +1883,39 @@
       "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "조합",
+      "L3": "연속 조합의 비율로 미지수 결정",
+      "L4": "연속 조합 비의 연립",
+      "problemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+      "templateKey": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "조합",
       "L3": "경우의 수의 합·곱 법칙",
       "L4": "합·곱의 법칙과 경우 분해",
       "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
       "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 15
+      "supportingItemCount": 14
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "조합",
+      "L3": "순열·조합 공식 계산",
+      "L4": "nPr·nCr 직접 계산 후 차",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2015",
@@ -6879,59 +6997,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": "15",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#15",
       "sourceFingerprint": "2311ce4ba5abb42954563e7e90f07f6368f936852db910e97eca42fab15a9b0c",
-      "baselineSourceFingerprint": "2311ce4ba5abb42954563e7e90f07f6368f936852db910e97eca42fab15a9b0c",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "cfa97ee8821c3c0ea3a7b3ac0aa1e94940e1174d429f4a5bed8d79190e49849e",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-07",
-      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "subUnit": "순열",
+      "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+      "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+      "difficultyBucket": 2,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "경우의 수와 순열",
-      "L3": "순열",
-      "L4": "사전식 순열 순위·역순위",
-      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-      "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "익숙한 절차(PERMUTATION_ARRANGEMENT)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "사전식 배열의 순위",
+      "L4": "앞서는 접두사별 배열 수 누적",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": true,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-07",
+      "legacySubUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "legacySubUnit": "순열",
+      "difficultyReason": "익숙한 절차(PERMUTATION_ARRANGEMENT)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "일렬 배열"
+      },
+      "primaryConcept": "순열",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_PERMUTATION",
+        "CC_LEXICOGRAPHIC_ORDER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 15,
-        "sourceQuestionNo": "15"
-      },
-      "selectabilityReasonCodes": []
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "중",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#15",
+      "approvedSourceFingerprint": "2311ce4ba5abb42954563e7e90f07f6368f936852db910e97eca42fab15a9b0c",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_0aee0b669f79a7bf4ebf653f98907480a2133324b2c09a2ac4302d693d5853da",
@@ -22150,63 +22310,103 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 22,
       "sourceQuestionNo": "22",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#22",
       "sourceFingerprint": "6cfc4d48872cce6e81e43984d43fb4b1ef161088f2ad25508d4fbf2379a43f11",
-      "baselineSourceFingerprint": "6cfc4d48872cce6e81e43984d43fb4b1ef161088f2ad25508d4fbf2379a43f11",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "12b465fc74bff5a0fcf907adb9d9837b6cc3fd2ed2fcb003f976e07aa7ef8690",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-06",
-      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "subUnit": "경우의 수의 기본 원리",
+      "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "problemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+      "templateKey": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+      "difficultyBucket": 4,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
-      "L2": "조합",
-      "L3": "조합·중복조합",
-      "L4": "조합과 선택",
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_COMBINATION_SELECTION",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [
+      "L2": "경우의 수와 순열",
+      "L3": "공약수 조건의 경우의 수",
+      "L4": "소인수별 배수 쌍 포함배제",
+      "secondaryConceptKeys": [
         "CC_NUMBER_PRIME_COPRIME"
       ],
-      "conditionKeys": [
-        "COND_RANGE"
-      ],
-      "integrationPattern": "INTERDEPENDENT",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR",
-      "difficultyReason": "풀이 중심은 정수·자연수·범위와 구조 변환·후보 선별/경우 처리의 결합이다. 조건을 재적용하는 여러 단계가 변별 요소이며 계산량만으로 상향하지 않았다.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": true,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H15-SB-06",
+      "legacySubUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "legacySubUnit": "경우의 수의 기본 원리",
+      "difficultyReason": "풀이 중심은 정수·자연수·범위와 구조 변환·후보 선별/경우 처리의 결합이다. 조건을 재적용하는 여러 단계가 변별 요소이며 계산량만으로 상향하지 않았다.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 활용",
+        "L4": "선택 조건"
+      },
+      "primaryConcept": "공약수 조건을 만족하는 두 수의 선택",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source is explicitly a two-card selection subject to a number-theoretic selection condition; B's `선택 조건` path represents the actual counting contract better than A's no-fit, while the combination mechanism remains visible in the L2/L3 path.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_GREATEST_COMMON_DIVISOR",
+        "CC_INCLUSION_EXCLUSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 22,
-        "sourceQuestionNo": "22"
-      },
-      "selectabilityReasonCodes": []
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR",
+      "level": "상",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#22",
+      "approvedSourceFingerprint": "6cfc4d48872cce6e81e43984d43fb4b1ef161088f2ad25508d4fbf2379a43f11",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_3ccc9002ca2edb41b9977520b809515cd3b3be8eeae03853b1ef019749a09825",
@@ -22461,61 +22661,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 5,
       "sourceQuestionNo": "5",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#5",
       "sourceFingerprint": "6faecbf023c747caced7ded4afda69f7109e8542eff959807b27dfe5f238900f",
-      "baselineSourceFingerprint": "6faecbf023c747caced7ded4afda69f7109e8542eff959807b27dfe5f238900f",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "72a589496bbb2cf94e07332e38701f8d715adefdfbe979c9634a4091c743aba0",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-06",
-      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "subUnit": "경우의 수의 기본 원리",
+      "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "problemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+      "templateKey": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+      "difficultyBucket": 3,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "경우의 수와 순열",
-      "L3": "조합·중복조합",
-      "L4": "조합과 선택",
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_COMBINATION_SELECTION",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "Choose the fixed-point student, then count derangements of four remaining labels through cycle cases.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "교란순열을 이용한 경우의 수",
+      "L4": "고정점 선택 후 완전순열",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": false,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H15-SB-06",
+      "legacySubUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "legacySubUnit": "경우의 수의 기본 원리",
+      "difficultyReason": "Choose the fixed-point student, then count derangements of four remaining labels through cycle cases.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열"
+      },
+      "primaryConcept": "순열",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_DERANGEMENT",
+        "CC_MULTIPLICATION_RULE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 5,
-        "sourceQuestionNo": "5"
-      },
-      "selectabilityReasonCodes": [
-        "difficulty"
-      ]
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "상",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#5",
+      "approvedSourceFingerprint": "6faecbf023c747caced7ded4afda69f7109e8542eff959807b27dfe5f238900f",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_3e07979f3850c108419f4f4748d7c38cb3ffe5e2b4586d299987195345494b50",
@@ -26598,64 +26838,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 19,
       "sourceQuestionNo": "19",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#19",
       "sourceFingerprint": "2152f6fcf015bf5a56c24f616b15aec1d3e075cfa0752bb65ce41f44faa636d9",
-      "baselineSourceFingerprint": "2152f6fcf015bf5a56c24f616b15aec1d3e075cfa0752bb65ce41f44faa636d9",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "3969d13ce53f87fafdf82d43895db39988de8b58fbfc805bf6f08d659897be0a",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-06",
-      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "subUnit": "경우의 수의 기본 원리",
-      "L1": "경우의 수",
-      "L2": "조합",
-      "L3": "경우의 수의 합·곱 법칙",
-      "L4": "합·곱의 법칙과 경우 분해",
-      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
-      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [
-        "COND_NATURAL_NUMBER",
-        "COND_RANGE"
-      ],
-      "integrationPattern": "CASE_BRANCH",
+      "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "problemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+      "templateKey": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
       "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "풀이가 '$d$를 먼저 정하면 $e$의 선택 수와 $a\\le b\\le c<d$의 경우의 수를 각각 계산할 수 있다.'의 연결을 요구해 조건·관계 해석과 표준 전략 선택이 필요하지만, 학습된 유형 안의 단계적 처리로 진행된다. 정수·자연수·범위.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
+      "L1": "경우의 수",
+      "L2": "경우의 수와 순열",
+      "L3": "대소 조건이 있는 순서쌍의 개수",
+      "L4": "기준 변수 값별 분기 후 합산",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": false,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H15-SB-06",
+      "legacySubUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "legacySubUnit": "경우의 수의 기본 원리",
+      "difficultyReason": "풀이가 '$d$를 먼저 정하면 $e$의 선택 수와 $a\\le b\\le c<d$의 경우의 수를 각각 계산할 수 있다.'의 연결을 요구해 조건·관계 해석과 표준 전략 선택이 필요하지만, 학습된 유형 안의 단계적 처리로 진행된다. 정수·자연수·범위.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "분할·분배",
+        "L4": "조합을 이용한 경우의 수"
+      },
+      "primaryConcept": "순서 제한 정수 분배",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source counts positive integer allocations with a≤b≤c<d<e by cases in d; A's constrained distribution path is valid and B is UNKNOWN.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_CASE_BRANCHING",
+        "CC_MONOTONE_SEQUENCE_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 19,
-        "sourceQuestionNo": "19"
-      },
-      "selectabilityReasonCodes": [
-        "difficulty"
-      ]
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "상",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#19",
+      "approvedSourceFingerprint": "2152f6fcf015bf5a56c24f616b15aec1d3e075cfa0752bb65ce41f44faa636d9",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
@@ -27341,61 +27618,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 3,
       "sourceQuestionNo": "3",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#3",
       "sourceFingerprint": "a4c2ba76327e59662378e6e421208f0918b218a5d3ffb86ae33652b590265821",
-      "baselineSourceFingerprint": "a4c2ba76327e59662378e6e421208f0918b218a5d3ffb86ae33652b590265821",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "928a9d0841925958216bd633b04dc77f12ec856e88e05bcbc3d698dc934313ac",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-08",
-      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
       "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
       "subUnit": "조합",
+      "conceptClusterKey": "H15-SB-08-COMBINATION_BASIC",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+      "difficultyBucket": 2,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-08/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "조합",
-      "L3": "조합·중복조합",
-      "L4": "조합과 선택",
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_COMBINATION_SELECTION",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "익숙한 절차(COMBINATION_SELECTION)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "순열·조합 공식 계산",
+      "L4": "nPr·nCr 직접 계산 후 차",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": false,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H15-SB-08",
+      "legacySubUnitKey": "H15-SB-08-COMBINATION_BASIC",
+      "legacySubUnit": "조합",
+      "difficultyReason": "익숙한 절차(COMBINATION_SELECTION)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 뜻과 계산",
+        "L4": "순열과 조합 구별"
+      },
+      "primaryConcept": "조합의 뜻과 계산",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_COMBINATION_FORMULA",
+        "CC_PERMUTATION_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 3,
-        "sourceQuestionNo": "3"
-      },
-      "selectabilityReasonCodes": [
-        "difficulty"
-      ]
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "하",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#3",
+      "approvedSourceFingerprint": "a4c2ba76327e59662378e6e421208f0918b218a5d3ffb86ae33652b590265821",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_5022b4b8c8181c1c35476312ac274877ec7a6cb99469f9f844deda123c593fcb",
@@ -32165,62 +32482,104 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 14,
       "sourceQuestionNo": "14",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#14",
       "sourceFingerprint": "4c2df9f90c9de433a0366daa00d22e78b3a1cb67e66558f0e16c6c1234aa05d1",
-      "baselineSourceFingerprint": "4c2df9f90c9de433a0366daa00d22e78b3a1cb67e66558f0e16c6c1234aa05d1",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "1890b876dbc36bde21a4b551cacaf00a41fd60782a76a83aded68ee75169abf7",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-06",
-      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
       "subUnit": "경우의 수의 기본 원리",
+      "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "problemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+      "templateKey": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+      "difficultyBucket": 3,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-06/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
-      "L2": "조합",
-      "L3": "조합·중복조합",
-      "L4": "조합과 선택",
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_COMBINATION_SELECTION",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [
+      "L2": "경우의 수와 순열",
+      "L3": "원 위 점으로 만드는 도형의 개수",
+      "L4": "지름을 이용한 직각삼각형·직사각형 계수",
+      "secondaryConceptKeys": [
         "CC_DIAMETER",
         "CC_INSCRIBED_ANGLE"
       ],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "Subtract the five diameter-based right triangles from all triples and count rectangles from pairs of diameters.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": true,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-06",
+      "legacySubUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "legacySubUnit": "경우의 수의 기본 원리",
+      "difficultyReason": "Subtract the five diameter-based right triangles from all triples and count rectangles from pairs of diameters.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 활용",
+        "L4": "도형에서의 선택"
+      },
+      "primaryConcept": "원 위 점 선택으로 도형 개수 세기",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source selects points from ten equally spaced points on a circle and excludes right triangles; the semantic operation is constrained combinatorial selection. B's combination/application path is more honest than A's circle no-fit.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_RIGHT_TRIANGLE",
+        "CC_INSCRIBED_RECTANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 14,
-        "sourceQuestionNo": "14"
-      },
-      "selectabilityReasonCodes": []
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "중",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#14",
+      "approvedSourceFingerprint": "4c2df9f90c9de433a0366daa00d22e78b3a1cb67e66558f0e16c6c1234aa05d1",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_605f150cb827a9f1bc7e3ea2ee5b4f23ca360fd327f83740bf4a504f092d6687",
@@ -40699,62 +41058,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 13,
       "sourceQuestionNo": "13",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#13",
       "sourceFingerprint": "c52ce3c18bf8b6a7f3bf2b7e1604d838073745eafc34c8cdc1226132c269351f",
-      "baselineSourceFingerprint": "c52ce3c18bf8b6a7f3bf2b7e1604d838073745eafc34c8cdc1226132c269351f",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "0795d65910faeedb6d606aef2523e9e8c179c2626305fc72934b5bc368b26e8d",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-08",
-      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
       "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
       "subUnit": "조합",
+      "conceptClusterKey": "H15-SB-08-COMBINATION_BASIC",
+      "problemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+      "templateKey": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+      "difficultyBucket": 3,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-08/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "조합",
-      "L3": "조합·중복조합",
-      "L4": "순열·조합 관계로 매개변수 결정",
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [
-        "COND_NATURAL_NUMBER",
-        "COND_RANGE"
-      ],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "Compare adjacent binomial coefficients twice to obtain a linear system for n,r.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "연속 조합의 비율로 미지수 결정",
+      "L4": "연속 조합 비의 연립",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": true,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-08",
+      "legacySubUnitKey": "H15-SB-08-COMBINATION_BASIC",
+      "legacySubUnit": "조합",
+      "difficultyReason": "Compare adjacent binomial coefficients twice to obtain a linear system for n,r.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 뜻과 계산",
+        "L4": "조합 계산"
+      },
+      "primaryConcept": "조합의 뜻과 계산",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_COMBINATION_RATIO",
+        "CC_LINEAR_SYSTEM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 13,
-        "sourceQuestionNo": "13"
-      },
-      "selectabilityReasonCodes": []
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "중",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#13",
+      "approvedSourceFingerprint": "c52ce3c18bf8b6a7f3bf2b7e1604d838073745eafc34c8cdc1226132c269351f",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_7b4c9c8c26350bccf20c835d01ddc36c4fb54b340dff2a23189e4256d6383750",
@@ -52703,59 +53101,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 7,
       "sourceQuestionNo": "7",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#7",
       "sourceFingerprint": "9a5d04b9b59df993ba5f3c03bb148eac4756b712a089d0e3e04dd1d892c38382",
-      "baselineSourceFingerprint": "9a5d04b9b59df993ba5f3c03bb148eac4756b712a089d0e3e04dd1d892c38382",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "2d1874dc9219ad5064da19f35eaff9820018b1601b081d1fff6492d72565bcee",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-07",
-      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "subUnit": "순열",
+      "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+      "problemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+      "templateKey": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+      "difficultyBucket": 2,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "경우의 수와 순열",
-      "L3": "경우의 수의 합·곱 법칙",
-      "L4": "합·곱의 법칙과 경우 분해",
-      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
-      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR",
-      "difficultyReason": "익숙한 절차(COUNTING_PRINCIPLE_CASE_DECOMPOSITION)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "사이 간격이 정해진 순열",
+      "L4": "사이 문자 선택 후 양 끝 교환",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": true,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-07",
+      "legacySubUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "legacySubUnit": "순열",
+      "difficultyReason": "익숙한 절차(COUNTING_PRINCIPLE_CASE_DECOMPOSITION)에 한 번의 해석·변형을 적용한 뒤 목표값을 얻는다. 별도 제한 조건 없음; 독립적인 복합 분기나 역추론이 풀이 중심은 아니다.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열"
+      },
+      "primaryConcept": "순열",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The positions of a and f are fixed at distance four, then the two orders and remaining permutation are counted; A's difficulty 2 matches the short direct calculation.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_BLOCK_PERMUTATION",
+        "CC_ADJACENCY_SPACING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 7,
-        "sourceQuestionNo": "7"
-      },
-      "selectabilityReasonCodes": []
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR",
+      "level": "중",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#7",
+      "approvedSourceFingerprint": "9a5d04b9b59df993ba5f3c03bb148eac4756b712a089d0e3e04dd1d892c38382",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_a02b84f0496cfe03cd37e02d341ab1919b84af4619b1242d6d0c6fa713b5e9d8",
@@ -73872,63 +74312,101 @@
       "sourceArchiveFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 10,
       "sourceQuestionNo": "10",
-      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#10",
       "sourceFingerprint": "6a9d38ec23d5e1b677d2330a4eb53910008c4c3661281268a2e73368a653d4d5",
-      "baselineSourceFingerprint": "6a9d38ec23d5e1b677d2330a4eb53910008c4c3661281268a2e73368a653d4d5",
-      "curriculum": "2015",
-      "curriculumKey": "2015",
+      "contentFingerprint": "a9c11ca5d3f497d948e236ae7a043e53f4ebd081d86a651e869dae40904dfe34",
       "standardCourse": "수학(하)",
-      "courseKey": "수학(하)",
       "standardUnitKey": "H15-SB-07",
-      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
       "subUnit": "순열",
+      "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+      "problemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+      "templateKey": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+      "difficultyBucket": 4,
+      "tagConfidence": "h1_meta_foundation_accepted_baseline",
+      "tagStatus": "meta_foundation_final",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-palmahigh-h1-2final-22-20261104",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H15-SB-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json",
+        "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+        "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.source-parity.json"
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)",
       "L1": "경우의 수",
       "L2": "경우의 수와 순열",
-      "L3": "순열",
-      "L4": "일반 순열·조건 배열",
-      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-      "l3Disposition": "ASSIGNED",
-      "l4Disposition": "ASSIGNED",
-      "crossConceptKeys": [],
-      "conditionKeys": [
-        "COND_RANGE"
-      ],
-      "integrationPattern": "CASE_BRANCH",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
-      "difficultyReason": "풀이 중심은 범위와 구조 변환·후보 선별/경우 처리의 결합이다. 조건을 재적용하는 여러 단계가 변별 요소이며 계산량만으로 상향하지 않았다.",
-      "reviewTargetReason": null,
-      "outlierDisposition": null,
-      "independentDifficultyBucket": null,
-      "sourceIssue": "NONE",
-      "sourceIssueHold": false,
-      "sourceHoldReason": null,
-      "metaFoundationHoldReason": null,
-      "holdReasons": [],
-      "semanticDisposition": "CONFIRMED",
-      "taxonomyStatus": "CONFIRMED",
-      "foundationTaxonomyStatus": "CONFIRMED",
-      "reviewStatus": "reviewed_pass",
+      "L3": "이웃 조건이 있는 선택과 배열",
+      "L4": "선택 인원에 따른 경우 분할 후 합산",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "runtimeSelectable": false,
-      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.0",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "reviewed_pass",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H15-SB-07",
+      "legacySubUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "legacySubUnit": "순열",
+      "difficultyReason": "풀이 중심은 범위와 구조 변환·후보 선별/경우 처리의 결합이다. 조건을 재적용하는 여러 단계가 변별 요소이며 계산량만으로 상향하지 않았다.",
+      "canonicalRaw": {
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열"
+      },
+      "primaryConcept": "학생 블록을 포함한 조건 배열",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source splits into two- and three-student cases, treats the students as a contiguous block, and arranges internal order; A's permutation/case path is more faithful than B's generic selection label.",
+      "sourceMetadataVerification": "ARCHIVE2_CURRENT_SOURCE_FINGERPRINT_SYNCED",
+      "curriculum": "2015",
+      "crossConceptKeys": [
+        "CC_COMBINATION_AND_PERMUTATION",
+        "CC_ADJACENT_ARRANGEMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "semanticDisposition": "CONFIRMED",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "H1_FOUNDATION",
-      "metaFoundationPackVersion": "1.0.0",
-      "catalogSeed": {
-        "sourceFile": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js",
-        "sourceOrdinal": 10,
-        "sourceQuestionNo": "10"
-      },
-      "selectabilityReasonCodes": [
-        "difficulty"
-      ]
+      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationHoldReason": null,
+      "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING",
+      "level": "중",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "projectionStatus": "REUSE",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#10",
+      "approvedSourceFingerprint": "6a9d38ec23d5e1b677d2330a4eb53910008c4c3661281268a2e73368a653d4d5",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_dc9a7d5351e51bf766d6347d1d6a5c99baa6f5f5457b5315222367a6e95bfc61",
@@ -85039,11 +85517,10 @@
       },
       {
         "key": "PT_COUNTING_ARRANGEMENT",
-        "count": 81,
+        "count": 79,
         "questionUids": [
           "qid_v1_018a3eb8cd75dafba1845f47d3c92be4b1880949c0b6922ab82df8a55462fc87",
           "qid_v1_085ca414aaac6cc58804f3417430bcb06d930330721b5c33d102d269af41799f",
-          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67",
           "qid_v1_1292424a1b13f86f35c9e4cab52ae7c7a414077d038a4e7bf100ee4ce589749a",
           "qid_v1_184d7d37db19dfb1eee07aded6eceb330a3f543ff236f4a59946f9c44bdb800d",
           "qid_v1_1a4ec439b87cbfdc9cd5e77e490ca5106ac7248701d44c60f49a8b83f3be2e31",
@@ -85112,7 +85589,6 @@
           "qid_v1_ce0e0b7c6ac56889e8700fa163c59146432546a2a7d7b1d77e23a35d8a52757a",
           "qid_v1_d1a2fb141ef768e74a77a8e03c4b132182ff1c425cdb91270e419a9249cc8ac2",
           "qid_v1_dad3ba6197ec6bc34802e5b7eb28714d46610c95ca6d67415c3831363e583b16",
-          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d",
           "qid_v1_dfef5fd94ac2e86cbf2925fc45090b7fe575752a96c3ebaaa0ee2a71051f40c4",
           "qid_v1_e4b9d65fd12487b9e1a3cd3539a757d216beec078420203fe7dc06e25f03bf1d",
           "qid_v1_e61ec17face6442d436d9c5bbecdb21292bcd756ecd5a622968fcd7402338cac",
@@ -85134,7 +85610,7 @@
       },
       {
         "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
-        "count": 97,
+        "count": 92,
         "questionUids": [
           "qid_v1_036b4f1ec1e668b62c5f5256d4e89406d7f6b33cbefb90889a8a9da34c16e8ea",
           "qid_v1_0440f2a373a963b0d16faeb159ff1af94d3fd89120b51ef549b974d6d27242ee",
@@ -85159,19 +85635,15 @@
           "qid_v1_33779b05671353b8d329bbc091f2b87a1af777cb9f13a5849de453b3dc22aebf",
           "qid_v1_35ea381268d8bafb77b79c8494087091d88ac02659a876ee88fd88e541954081",
           "qid_v1_3ab6d704838f7ba4df305548d7871f2a89560d9a775350d93c758d9474d8aaf4",
-          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
           "qid_v1_3d11423a8a71c6fd1255373de4e6659f5fab02abd2ed8e66e7144e14ae71c009",
-          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95",
           "qid_v1_43ee69bf22fa5fb1f7301125df75da40e5a2eb79e9b2177e5ca86dafa4d221cc",
           "qid_v1_48d1c7f662da6415fba287a31d8b0d9a2b8af5b6448037969937d13e9c1b56fa",
           "qid_v1_48ec9b0d102f638a13a0e19e08dec3863c2d6fa2052136df70165c6c99955e49",
           "qid_v1_49a34fee5160f6722741ced7b5090203e373a82e1034d93f4ad29c8cab67bd92",
           "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
-          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2",
           "qid_v1_53d8cf1aaa261e8b5df44bd1634c30d497c1ee472147259f71948088e85f915d",
           "qid_v1_5bb50a06c829a4fd50562d6d74650caee149e113e6e7cd7664ba459d64c7d296",
           "qid_v1_5e0c0424f01fa41620c592a1561717d607480afbfc31b7b6d352f3dc85a3e9ff",
-          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b",
           "qid_v1_64475543ce247a674c91917971d608e20991dc6be16395f1654dd10f6dfc2ac2",
           "qid_v1_65e984e6c481c77b69fbfff6ecdf0c5bd89894ce8dca1302a82059e3c575cca6",
           "qid_v1_6b3c045cc2228c53ba5f94658346bb0324bcd5128599a47320647e0b000850f5",
@@ -85180,7 +85652,6 @@
           "qid_v1_716f0664049ec7ec179c7cd77fa6d0ce8af45cebe7879b76e41e92f60374dba3",
           "qid_v1_74c67a1a859fb282e9461cb221fc944b2682546397327a182eb81bfefed43a04",
           "qid_v1_774cf7186ee628cfee92688511586c4f662b91b20da815509a2c8f04a9b1c533",
-          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
           "qid_v1_802cb82c5602ab40c357794b1db98049ce42f0e102bddcc6efba8d1df673584e",
           "qid_v1_8178aeb581833a2603f4dae9ecbdf35172e6f183d72ded2c907abdf913b30cf7",
           "qid_v1_85d5f71f8a111b7bdcea0e28cabf5ccff139942c883f31aefdc36c7d4ce2874b",
@@ -85291,6 +85762,20 @@
           "qid_v1_ef99ee9cc536c029a8361ff26e7c7f80d149e2c39f3477309b2fe99cbac22448",
           "qid_v1_f486a85f544a1ff979e29bb63bcbd0f904d6e2f50ea291eb8c94a4db1f3af5ed",
           "qid_v1_ff801ad2de59f6558d04b7f8b8bcd527891e3a131c9dce8705cf15ae1825130d"
+        ]
+      },
+      {
+        "key": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+        ]
+      },
+      {
+        "key": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
         ]
       },
       {
@@ -85454,8 +85939,22 @@
         ]
       },
       {
+        "key": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+        ]
+      },
+      {
+        "key": "PT_H1_CONSTRAINED_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+        ]
+      },
+      {
         "key": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
-        "count": 105,
+        "count": 103,
         "questionUids": [
           "qid_v1_08aeb18b0f39593fbc702850f05bbc48ebd43235781ae6e4e1939f4508bdf7de",
           "qid_v1_1371cb740113b778186ccefaed412a57254a4b70b2509e7e7e31b903a3ff8347",
@@ -85481,7 +85980,6 @@
           "qid_v1_486d500a3b1aae0e135cb841dc4054a06ebe10056438ff94b327809034197027",
           "qid_v1_4b3baee020fbee8782bda67aedddcd56bb1890b5e836c3d0d5cc0e26637e735b",
           "qid_v1_4c1816fe8a1a35958a1ebbb374e45cfebe0883aec651ac46d9a0de76fce35f39",
-          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
           "qid_v1_522de92e92bae37ec4e3e68ebfe745e2e3420372c2868109678f748c782ee0dd",
           "qid_v1_526cc6bf64e3d3a72983949fb33f641bb44ca18984c73e196f4b1e87edc6be32",
           "qid_v1_541575da2a60b1df297670dc524ea3077c4f33e50e99d7ee80a6e73fd85c0f73",
@@ -85524,7 +86022,6 @@
           "qid_v1_95f4e022efb04d6575693f0dff5fba9611f3163b804f6814fce32e8ec66324b8",
           "qid_v1_9a69c6a7456ae666739b161635457d445392431e363bd2d828ee20087ad8b40a",
           "qid_v1_9a908c5cb3812827cf48c9769392b5b5bfd28c78b5148725a112ed85e2d42e9a",
-          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2",
           "qid_v1_a45f4b36c986a16433e807f93e53c6df6a7c9ae786708b9e11356b9c731731c4",
           "qid_v1_a71e54ce46277a96f67409a79800e5af47dcc515da097bb5b186e6823ebf3cab",
           "qid_v1_a8996bb17501be9c521ca786476a682a8147856ac6219eca89f1d701a4eacc45",
@@ -85562,6 +86059,20 @@
           "qid_v1_f719ac2500d269ec95e30d27c3dc9f6a13a8685dc1d8b6808f6b01eebd33b7d3",
           "qid_v1_f9ecb683a252464ea1f85fc7da492acad0d2da3249aa9293fd96aa421c8821cf",
           "qid_v1_fe069dc9e6f7c1d3dc2fcb3d9af8cdb6f712c84ccc3a6dca00e9e798ac095893"
+        ]
+      },
+      {
+        "key": "PT_H1_DERANGEMENT_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
+        ]
+      },
+      {
+        "key": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
         ]
       },
       {
@@ -85799,6 +86310,27 @@
           "qid_v1_a2b780fdd96be53750c8047277e19f43aed321b3eb0e92fe6363e502904fa5ce",
           "qid_v1_ab7a12daf378888c5dc3efc046fbf2adfd2351e69605af7fa4ed07e25c028d4b",
           "qid_v1_dff7b867626a8b76ed59e074c64f27e2e0127c9a17f3fe8dbc87dafd2532906a"
+        ]
+      },
+      {
+        "key": "PT_H1_NUMBER_THEORETIC_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+        ]
+      },
+      {
+        "key": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+        ]
+      },
+      {
+        "key": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
         ]
       },
       {
@@ -86518,7 +87050,7 @@
       },
       {
         "key": "TPL_COMBINATION_SELECTION",
-        "count": 68,
+        "count": 64,
         "questionUids": [
           "qid_v1_0440f2a373a963b0d16faeb159ff1af94d3fd89120b51ef549b974d6d27242ee",
           "qid_v1_048aa9a335cd0d7ca74f51793e125760c180583b512d5b50db052114fa0b6b3f",
@@ -86537,18 +87069,14 @@
           "qid_v1_2f51b84f1e9454dfadc670bb7982dcd06f85d3b8278e7d7d8cedc78d281a2b99",
           "qid_v1_3355e5ca07e71a6f3085fca333b390c03515b8556c617ebf99d29f59f8ebeee3",
           "qid_v1_35ea381268d8bafb77b79c8494087091d88ac02659a876ee88fd88e541954081",
-          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
           "qid_v1_3d11423a8a71c6fd1255373de4e6659f5fab02abd2ed8e66e7144e14ae71c009",
-          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95",
           "qid_v1_43ee69bf22fa5fb1f7301125df75da40e5a2eb79e9b2177e5ca86dafa4d221cc",
           "qid_v1_48d1c7f662da6415fba287a31d8b0d9a2b8af5b6448037969937d13e9c1b56fa",
           "qid_v1_48ec9b0d102f638a13a0e19e08dec3863c2d6fa2052136df70165c6c99955e49",
           "qid_v1_49a34fee5160f6722741ced7b5090203e373a82e1034d93f4ad29c8cab67bd92",
           "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
-          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2",
           "qid_v1_53d8cf1aaa261e8b5df44bd1634c30d497c1ee472147259f71948088e85f915d",
           "qid_v1_5bb50a06c829a4fd50562d6d74650caee149e113e6e7cd7664ba459d64c7d296",
-          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b",
           "qid_v1_64475543ce247a674c91917971d608e20991dc6be16395f1654dd10f6dfc2ac2",
           "qid_v1_65e984e6c481c77b69fbfff6ecdf0c5bd89894ce8dca1302a82059e3c575cca6",
           "qid_v1_6b3c045cc2228c53ba5f94658346bb0324bcd5128599a47320647e0b000850f5",
@@ -86648,9 +87176,8 @@
       },
       {
         "key": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
-        "count": 7,
+        "count": 6,
         "questionUids": [
-          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67",
           "qid_v1_1d0a9543c4ccddd5e61152c80169c8a0b0767cf51b472131afe6f4b819da36ba",
           "qid_v1_61b67d7ac3dfdb00112f86db4853e641b048d8142736f6b99ab052b650fdcb07",
           "qid_v1_66d8ac0da7627d50fe1c77d78c2d20b1f9da5ffa836263faa0f7ec9c430d5cf8",
@@ -86671,12 +87198,11 @@
       },
       {
         "key": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
-        "count": 11,
+        "count": 10,
         "questionUids": [
           "qid_v1_0c6cb501085cafa62ba3cbb5d3a1ad65d45646689252a6de0c93d155b3af70bd",
           "qid_v1_33779b05671353b8d329bbc091f2b87a1af777cb9f13a5849de453b3dc22aebf",
           "qid_v1_3ab6d704838f7ba4df305548d7871f2a89560d9a775350d93c758d9474d8aaf4",
-          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
           "qid_v1_8178aeb581833a2603f4dae9ecbdf35172e6f183d72ded2c907abdf913b30cf7",
           "qid_v1_ae3c97d113e5dc29a17b914f5284bda32e515ca4a9812565e4b6445356cc5e64",
           "qid_v1_b83d12101f598e465b04313719d960dccf68db72995832ade0fc00a8c3ccd582",
@@ -86684,6 +87210,13 @@
           "qid_v1_c78057417e16607f80b6a155b9425fa7971e79ab94d7c5f370fae0769f288f1f",
           "qid_v1_ea79a8205233c7c1c10911463d1a374e03692836abca4917293a29dd8ace8d50",
           "qid_v1_fda5f330d846ab951bd2a8cd18c414dd57541b70142f88f104b9d6c04b6c8c28"
+        ]
+      },
+      {
+        "key": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
         ]
       },
       {
@@ -86866,7 +87399,7 @@
       },
       {
         "key": "TPL_H1_COUNTING_DIRECT_CASE",
-        "count": 76,
+        "count": 74,
         "questionUids": [
           "qid_v1_08aeb18b0f39593fbc702850f05bbc48ebd43235781ae6e4e1939f4508bdf7de",
           "qid_v1_1371cb740113b778186ccefaed412a57254a4b70b2509e7e7e31b903a3ff8347",
@@ -86886,7 +87419,6 @@
           "qid_v1_3e8568f8e89a55e24ef5d53b2b60ac4f86f5caad9f71c3d8bcbf48258f059ef3",
           "qid_v1_486d500a3b1aae0e135cb841dc4054a06ebe10056438ff94b327809034197027",
           "qid_v1_4c1816fe8a1a35958a1ebbb374e45cfebe0883aec651ac46d9a0de76fce35f39",
-          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
           "qid_v1_522de92e92bae37ec4e3e68ebfe745e2e3420372c2868109678f748c782ee0dd",
           "qid_v1_541575da2a60b1df297670dc524ea3077c4f33e50e99d7ee80a6e73fd85c0f73",
           "qid_v1_5523dead2399659451a6484c884860e2b229c10736273f79a0e0975ff539a926",
@@ -86920,7 +87452,6 @@
           "qid_v1_956305bb080750925dc9489c00db9db0b00bba7166e3dd57ada383c9d959a151",
           "qid_v1_95f4e022efb04d6575693f0dff5fba9611f3163b804f6814fce32e8ec66324b8",
           "qid_v1_9a69c6a7456ae666739b161635457d445392431e363bd2d828ee20087ad8b40a",
-          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2",
           "qid_v1_a45f4b36c986a16433e807f93e53c6df6a7c9ae786708b9e11356b9c731731c4",
           "qid_v1_ab555557acf7bde9f4a63fcf1d5ccec27a6d2f0050be0c2989f14c242b18b50c",
           "qid_v1_b196e3e9121fa25a83dd0a2523ce86b8763caca870523d569526cdf7f23510cb",
@@ -86973,6 +87504,13 @@
           "qid_v1_eed945a85d2ea6d3073bb4d4d31a2e5dec6eb26185a551b440e552c7b15f4650",
           "qid_v1_f6942b7870784f4eba686a5f27bb0843710301437c36a335304dcc0146ab1b2f",
           "qid_v1_f719ac2500d269ec95e30d27c3dc9f6a13a8685dc1d8b6808f6b01eebd33b7d3"
+        ]
+      },
+      {
+        "key": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
         ]
       },
       {
@@ -87107,6 +87645,13 @@
         ]
       },
       {
+        "key": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+        ]
+      },
+      {
         "key": "TPL_H1_FORMULA_SYMMETRIC",
         "count": 29,
         "questionUids": [
@@ -87238,6 +87783,13 @@
           "qid_v1_6e9c9eb4fb999a24aa4d80579647db2323896c622a8391c4cc290f328ce94917",
           "qid_v1_8a78678038a93bcd90e970f050d7823aa08b8bbf584b30e5768fc7c09413da41",
           "qid_v1_c44b033b9b2d5a118ff1371f371b3985f6ee6c2e65819328118067799c264c17"
+        ]
+      },
+      {
+        "key": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
         ]
       },
       {
@@ -87415,6 +87967,20 @@
           "qid_v1_87905137e9398b8aa9f2f6b3e5a7f6ae0b9fb16969ed70474b1219771cdee0fd",
           "qid_v1_b7a660cf8f1e34344c4ab6598120d0d078143a958da2784efa48db719133b75d",
           "qid_v1_d9d876114d129201f55c17d7efeaf6051d2722c5bbcbeb4e28d5d4d4708415c1"
+        ]
+      },
+      {
+        "key": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+        ]
+      },
+      {
+        "key": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
         ]
       },
       {
@@ -87752,6 +88318,13 @@
         ]
       },
       {
+        "key": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+        ]
+      },
+      {
         "key": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
         "count": 17,
         "questionUids": [
@@ -87794,6 +88367,13 @@
           "qid_v1_b277f6aa10deedbc893e2aace264873c4ea02a54dca62fdc736b9d9c8a00d5ac",
           "qid_v1_d67d0b2fdf7cdbef33980cb30ebab8badee05068c3718395121d55bf091271b5",
           "qid_v1_f430ce8faf8b50fe42178f50921fd09d017fd5c8fc559fe011dcace3714d1b4f"
+        ]
+      },
+      {
+        "key": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
         ]
       },
       {
@@ -87935,6 +88515,13 @@
         ]
       },
       {
+        "key": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+        ]
+      },
+      {
         "key": "TPL_IDENTICAL_OBJECT_PERMUTATION",
         "count": 1,
         "questionUids": [
@@ -87943,7 +88530,7 @@
       },
       {
         "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-        "count": 73,
+        "count": 72,
         "questionUids": [
           "qid_v1_018a3eb8cd75dafba1845f47d3c92be4b1880949c0b6922ab82df8a55462fc87",
           "qid_v1_085ca414aaac6cc58804f3417430bcb06d930330721b5c33d102d269af41799f",
@@ -88008,7 +88595,6 @@
           "qid_v1_ce0e0b7c6ac56889e8700fa163c59146432546a2a7d7b1d77e23a35d8a52757a",
           "qid_v1_d1a2fb141ef768e74a77a8e03c4b132182ff1c425cdb91270e419a9249cc8ac2",
           "qid_v1_dad3ba6197ec6bc34802e5b7eb28714d46610c95ca6d67415c3831363e583b16",
-          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d",
           "qid_v1_dfef5fd94ac2e86cbf2925fc45090b7fe575752a96c3ebaaa0ee2a71051f40c4",
           "qid_v1_e4b9d65fd12487b9e1a3cd3539a757d216beec078420203fe7dc06e25f03bf1d",
           "qid_v1_e61ec17face6442d436d9c5bbecdb21292bcd756ecd5a622968fcd7402338cac",
@@ -88068,6 +88654,20 @@
         ]
       },
       {
+        "key": "CC_ADJACENCY_SPACING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+        ]
+      },
+      {
+        "key": "CC_ADJACENT_ARRANGEMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+        ]
+      },
+      {
         "key": "CC_ALGEBRAIC_POLYNOMIAL_SUBSTITUTION",
         "count": 1,
         "questionUids": [
@@ -88119,10 +88719,24 @@
         ]
       },
       {
+        "key": "CC_BLOCK_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+        ]
+      },
+      {
         "key": "CC_BOUNDED_INEQUALITY_SEARCH",
         "count": 1,
         "questionUids": [
           "qid_v1_046b45fac97cc283c007b448e8d80af0a03c011ccc0306cd45067526a67feeac"
+        ]
+      },
+      {
+        "key": "CC_CASE_BRANCHING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
         ]
       },
       {
@@ -88159,6 +88773,27 @@
         "count": 1,
         "questionUids": [
           "qid_v1_cbeaae94ad6fd5be69325003b38be6a653f75048bbb1afa70a5b9f6b5416d99d"
+        ]
+      },
+      {
+        "key": "CC_COMBINATION_AND_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+        ]
+      },
+      {
+        "key": "CC_COMBINATION_FORMULA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
+        ]
+      },
+      {
+        "key": "CC_COMBINATION_RATIO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
         ]
       },
       {
@@ -88501,10 +89136,10 @@
         ]
       },
       {
-        "key": "CC_DIAMETER",
+        "key": "CC_DERANGEMENT",
         "count": 1,
         "questionUids": [
-          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
         ]
       },
       {
@@ -88775,6 +89410,13 @@
         ]
       },
       {
+        "key": "CC_GREATEST_COMMON_DIVISOR",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+        ]
+      },
+      {
         "key": "CC_GREATEST_INTEGER_FUNCTION",
         "count": 2,
         "questionUids": [
@@ -88839,6 +89481,13 @@
         ]
       },
       {
+        "key": "CC_INCLUSION_EXCLUSION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+        ]
+      },
+      {
         "key": "CC_INDEPENDENT_VARIABLE_IDENTITY",
         "count": 2,
         "questionUids": [
@@ -88873,7 +89522,7 @@
         ]
       },
       {
-        "key": "CC_INSCRIBED_ANGLE",
+        "key": "CC_INSCRIBED_RECTANGLE",
         "count": 1,
         "questionUids": [
           "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
@@ -88885,6 +89534,13 @@
         "questionUids": [
           "qid_v1_773c8f758719ee8715df34d71ccf1703b106f07f431ad208f9f06bc7238fd2f1",
           "qid_v1_91875643ba0bd2dd53d8aed55d29d26524f759168e48f46260ca09852b2abab4"
+        ]
+      },
+      {
+        "key": "CC_INSCRIBED_RIGHT_TRIANGLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
         ]
       },
       {
@@ -88944,6 +89600,13 @@
         ]
       },
       {
+        "key": "CC_LEXICOGRAPHIC_ORDER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
+        ]
+      },
+      {
         "key": "CC_LIKE_TERMS",
         "count": 1,
         "questionUids": [
@@ -88987,6 +89650,13 @@
         ]
       },
       {
+        "key": "CC_LINEAR_SYSTEM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+        ]
+      },
+      {
         "key": "CC_LINEAR_SYSTEM_INEQUALITY",
         "count": 1,
         "questionUids": [
@@ -89015,6 +89685,13 @@
         ]
       },
       {
+        "key": "CC_MONOTONE_SEQUENCE_COUNTING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+        ]
+      },
+      {
         "key": "CC_MOVING_AXIS_PIECEWISE_ANALYSIS",
         "count": 1,
         "questionUids": [
@@ -89026,6 +89703,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_ea01606d2a44bb0ee0be34a392be74f1827e0022227d0f1f16651ad4f8eb6026"
+        ]
+      },
+      {
+        "key": "CC_MULTIPLICATION_RULE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
         ]
       },
       {
@@ -89104,10 +89788,9 @@
       },
       {
         "key": "CC_NUMBER_PRIME_COPRIME",
-        "count": 8,
+        "count": 7,
         "questionUids": [
           "qid_v1_3a98d670ffdbaa5bb9685e4d571607b622c251141714b5528e6d79125b134ef7",
-          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
           "qid_v1_5523dead2399659451a6484c884860e2b229c10736273f79a0e0975ff539a926",
           "qid_v1_6c679cd9d04f8abf3ec87bd51cc1c4c07e628694ac4a039c56d77d7fda145b36",
           "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
@@ -89207,6 +89890,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_a3149d44f83e65aa9ccd9fdd31deee24ab72e1a8283131291fa82f75e6eeb7b9"
+        ]
+      },
+      {
+        "key": "CC_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
+        ]
+      },
+      {
+        "key": "CC_PERMUTATION_FORMULA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
         ]
       },
       {
@@ -90333,7 +91030,7 @@
       },
       {
         "key": "COND_NATURAL_NUMBER",
-        "count": 113,
+        "count": 111,
         "questionUids": [
           "qid_v1_043dfcf4899c69f665dd7961825775cbc49f3c25cf5a0ff03bc71bd965cf15d0",
           "qid_v1_057d0484edf04d9862c111926987ce7100eb516a9fb7778edbee3e7d38489622",
@@ -90362,7 +91059,6 @@
           "qid_v1_43ee69bf22fa5fb1f7301125df75da40e5a2eb79e9b2177e5ca86dafa4d221cc",
           "qid_v1_4c10c08bc03e4e7c7accf0a13dd715cb44320aa28874a6fabf01387d8480be3a",
           "qid_v1_4c1816fe8a1a35958a1ebbb374e45cfebe0883aec651ac46d9a0de76fce35f39",
-          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
           "qid_v1_5104696ee5a9cc1cde77b4fe85e83a597bc96d98d9d4e328c88c3da6501cdff4",
           "qid_v1_510b973e8067645a7828f612f02d2fa355c879eed6771c56274926ca3759c6db",
           "qid_v1_53ac4415f8ac6abc2cf108847140694619989d214165da818412ab2abbd0c65a",
@@ -90382,7 +91078,6 @@
           "qid_v1_716f0664049ec7ec179c7cd77fa6d0ce8af45cebe7879b76e41e92f60374dba3",
           "qid_v1_72cb8ccaf24e54de9b544ce339e7ac7355e5aa3576b87c78137edde41754ef5e",
           "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
-          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
           "qid_v1_7b5e5b44500f6940d6c7cc48ec6e8091d7c71833031cc270cca6ba8eda90c10b",
           "qid_v1_7b715d7001a5ce4f23046ace2b88dc9acae82d5a5e2bf2b21b4e7e095d5a39fc",
           "qid_v1_7c00bae04ed35a5d5820de70773f41ff8a378dea9907cb3d017681cd0b4790af",
@@ -90589,7 +91284,7 @@
       },
       {
         "key": "COND_RANGE",
-        "count": 246,
+        "count": 242,
         "questionUids": [
           "qid_v1_01b2b5125e35efc02c32155fcca176d22836bcf0c567568d959aa0756366517f",
           "qid_v1_0338aa3027352d1e280cccb9649bf68b3e86422cf6ffe538567efd357139ce0e",
@@ -90644,7 +91339,6 @@
           "qid_v1_3bb9e02fc884bd3789370f12ec9706713e9fde49b943052c488d0d9185bb05e5",
           "qid_v1_3c301382694072797edb75eac337b9838cbdb0e1cb21fa803dcabb5679458aff",
           "qid_v1_3c5284957317cae67f7cad116520912a9745ff8e78b8db5cc09ae43a2cecf01d",
-          "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
           "qid_v1_3d11423a8a71c6fd1255373de4e6659f5fab02abd2ed8e66e7144e14ae71c009",
           "qid_v1_3e9915e5abe1c431cc61b873716bae949dc8c54747648e6467851b553983d71b",
           "qid_v1_3fd6edc8d78a2f2ac2ae5bd051831b647a754f259b3d3b881cf0a108b8e9918e",
@@ -90655,7 +91349,6 @@
           "qid_v1_49adf2a372e5739d2db02e5b79abe5b4d808c5a1b32a2f40c0f813e2c8ec9077",
           "qid_v1_49d53faaa2e3e278fbdb677ee6ab76cd9074bed8cc29ebcffad5dda5ef3f5310",
           "qid_v1_4a115d6f89085d4299625ae448fc03542824f0e2e43518e7f9fc8b9b030a278b",
-          "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
           "qid_v1_4e142864d5a9370b30f66e1db181f04fac89f618e0bde446a42de7c53ab06791",
           "qid_v1_5104696ee5a9cc1cde77b4fe85e83a597bc96d98d9d4e328c88c3da6501cdff4",
           "qid_v1_510615a80a8a8cb42b92b0eef2e48654658d49129ebaa9d57b5e4bc8c3959ed1",
@@ -90694,7 +91387,6 @@
           "qid_v1_74784ce0d619b781f09f558e9d19b447462fcee86a0689e339cabc23c4cbcb92",
           "qid_v1_775cc8a1c0036b271485133065633332a4d124d78612268b432ee8e353c7a0bb",
           "qid_v1_779e2243dd574128fbf4f57410c034bb182ffa56bfadd3722a2d3158be9630f7",
-          "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
           "qid_v1_7b5e5b44500f6940d6c7cc48ec6e8091d7c71833031cc270cca6ba8eda90c10b",
           "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
           "qid_v1_7fb9738d6a07acf4fc8d447371188ce14fdb53f0d7a1e2cf5512a2bc9feb5a64",
@@ -90800,7 +91492,6 @@
           "qid_v1_dad3ba6197ec6bc34802e5b7eb28714d46610c95ca6d67415c3831363e583b16",
           "qid_v1_db148e92ffb4ba1c4fc61a76d2fa314d7777c81bd66b825e838565848464aac0",
           "qid_v1_db7ebe256e776a57305a566ffa456fcfa4ebd14ca123d214311505affc292e95",
-          "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d",
           "qid_v1_ddb05a1f0759ee6774faab58d5a808a8b4f33cbe0a871b711305d587c0bdab90",
           "qid_v1_ddc1dae4ad037a832a27a97b4a9d4354b7d285784babfa3fba54ee7fc21259f7",
           "qid_v1_dfef5fd94ac2e86cbf2925fc45090b7fe575752a96c3ebaaa0ee2a71051f40c4",

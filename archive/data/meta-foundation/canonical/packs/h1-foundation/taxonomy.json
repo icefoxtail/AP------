@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 27,
-  "templateCount": 54,
+  "problemTypeCount": 36,
+  "templateCount": 63,
   "problemTypes": [
     {
       "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
@@ -1603,6 +1603,114 @@
           "semanticLedger": "accepted H1 L3 baseline",
           "definitionSource": "H1_STAGE3_L3_SYNTHESIS_CHECKPOINT_1170"
         }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "canonicalLabelKo": "순열·조합 공식 계산",
+      "definition": "nPr과 nCr의 정의를 이용해 각 값을 계산하고 그 차나 합을 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+      "canonicalLabelKo": "교란순열을 이용한 경우의 수",
+      "definition": "일부만 원래 자리를 지키는 조건에서 고정점을 선택하고 나머지의 완전순열 수를 곱하여 경우의 수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+      "canonicalLabelKo": "사이 간격이 정해진 순열",
+      "definition": "두 문자의 사이에 정해진 수의 문자가 들어가도록 배열하는 방법의 수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+      "canonicalLabelKo": "이웃 조건이 있는 선택과 배열",
+      "definition": "일부를 선택한 뒤 특정 원소들이 모두 이웃하도록 배열하는 경우의 수를 경우별로 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+      "canonicalLabelKo": "연속 조합의 비율로 미지수 결정",
+      "definition": "연속한 조합의 비가 주어질 때 조합의 성질로 연립하여 n과 r을 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+      "canonicalLabelKo": "원 위 점으로 만드는 도형의 개수",
+      "definition": "원 위에 같은 간격으로 놓인 점들로 직각삼각형과 직사각형의 개수를 세는 조합 기하 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "canonicalLabelKo": "사전식 배열의 순위",
+      "definition": "주어진 문자열이 사전식으로 몇 번째에 오는지 앞서는 배열의 수를 세어 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+      "canonicalLabelKo": "대소 조건이 있는 순서쌍의 개수",
+      "definition": "변수들이 정해진 범위에 있고 대소 관계를 만족하는 순서쌍의 개수를 경우를 나누어 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+      "canonicalLabelKo": "공약수 조건의 경우의 수",
+      "definition": "연속된 자연수 카드에서 두 수가 1 이외의 공약수를 갖는 쌍을 포함배제로 세는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
       ]
     }
   ],
@@ -3982,6 +4090,123 @@
         "qid_v1_f61484aedcdac891b5755d5a8c935ffa25f238ca1d826e542b995635180e55f4"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+      "parentProblemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "canonicalLabelKo": "nPr·nCr 직접 계산 후 차",
+      "definition": "두 순열·조합 공식을 각각 계산하여 그 차를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+      "parentProblemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+      "canonicalLabelKo": "고정점 선택 후 완전순열",
+      "definition": "원래 자리를 지키는 원소를 먼저 선택하고 나머지 원소의 교란순열 수를 곱하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+      "parentProblemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+      "canonicalLabelKo": "사이 문자 선택 후 양 끝 교환",
+      "definition": "두 문자 사이에 들어갈 문자를 선택·나열하고 두 문자의 순서를 바꾼 뒤 나머지를 묶어 배열하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+      "parentProblemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+      "canonicalLabelKo": "선택 인원에 따른 경우 분할 후 합산",
+      "definition": "선택되는 인원 수에 따라 경우를 나누어 선택·묶음·배열의 수를 각각 계산하고 합하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+      "parentProblemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+      "canonicalLabelKo": "연속 조합 비의 연립",
+      "definition": "nC(r+1)/nCr 등의 비를 (n-r)/(r+1)로 바꾸어 두 식을 연립하고 n과 r을 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+      "parentProblemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+      "canonicalLabelKo": "지름을 이용한 직각삼각형·직사각형 계수",
+      "definition": "전체 삼각형 수에서 지름을 한 변으로 하는 직각삼각형을 빼고, 지름의 쌍으로 직사각형 수를 세는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+      "parentProblemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "canonicalLabelKo": "앞서는 접두사별 배열 수 누적",
+      "definition": "주어진 문자열보다 사전에서 앞서는 접두사마다 남은 문자의 배열 수를 누적하여 순위를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
+      "parentProblemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+      "canonicalLabelKo": "기준 변수 값별 분기 후 합산",
+      "definition": "기준 변수의 값에 따라 경우를 나누어 a≤b≤c<d를 만족하는 조합 수와 나머지 조건을 곱해 합산하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+      "parentProblemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+      "canonicalLabelKo": "소인수별 배수 쌍 포함배제",
+      "definition": "2·3·5의 배수 쌍을 각각 세고 6의 배수처럼 겹치는 쌍을 빼는 포함배제 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+      ]
     }
   ],
   "ownerPack": "H1_FOUNDATION"

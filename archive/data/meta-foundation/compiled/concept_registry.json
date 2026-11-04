@@ -4,18 +4,18 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.24",
-      "conceptCount": 369
+      "version": "1.4.25",
+      "conceptCount": 374
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.13",
-      "conceptCount": 128
+      "version": "1.5.14",
+      "conceptCount": 133
     },
     {
       "shardId": "LOGIC_SET",
-      "version": "1.0.6",
-      "conceptCount": 25
+      "version": "1.0.7",
+      "conceptCount": 27
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
@@ -24,18 +24,18 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.19",
-      "conceptCount": 123
+      "version": "1.3.20",
+      "conceptCount": 126
     },
     {
       "shardId": "COUNTING",
-      "version": "1.0.7",
-      "conceptCount": 46
+      "version": "1.0.8",
+      "conceptCount": 59
     },
     {
       "shardId": "NUMBER_THEORY",
-      "version": "1.1.10",
-      "conceptCount": 40
+      "version": "1.1.11",
+      "conceptCount": 41
     },
     {
       "shardId": "CALCULUS",
@@ -63,7 +63,7 @@
       "conceptCount": 77
     }
   ],
-  "conceptCount": 956,
+  "conceptCount": 985,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -13165,6 +13165,181 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_LINEAR_SYSTEM",
+      "canonicalLabelKo": "연립일차방정식의 풀이",
+      "definition": "두 일차방정식을 연립하여 미지수를 소거하거나 대입하여 해를 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_LINEAR_SYSTEM for PT_H1_CONSECUTIVE_COMBINATION_RATIO/TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE at H15-SB-08/H15-SB-08-COMBINATION_BASIC.",
+          "decisiveEvidence": "nC(r+1)/nCr=(n-r)/(r+1)=4/5 및 (n-r-1)/(r+2)=1/2 연립하여 n=6, r=1, 2n-r=11 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_CONSECUTIVE_COMBINATION_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_NONZERO_DENOMINATOR",
+      "canonicalLabelKo": "분모가 0이 아니어야 하는 조건",
+      "definition": "분수나 무리식에서 분모가 0이 되면 식이 정의되지 않으므로, 분모를 0으로 만드는 값을 제외하고 부등호의 방향에 따라 정의역을 정하는 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_NONZERO_DENOMINATOR for PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION/TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "분자 x-3>=0 및 분모 5-x>0 연립하여 3<=x<5 직접 도출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_EVALUATION",
+      "canonicalLabelKo": "근호가 포함된 식의 값 계산",
+      "definition": "근호를 포함한 식을 통분·유리화한 뒤 주어진 값을 대입하여 a+b√m 꼴의 계수를 구하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_RADICAL_EVALUATION for PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION/TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "켤레 분모 통분 정리 -2(x+1)/x에 x=sqrt(2) 대입하여 -2-sqrt(2), a=-2, b=-1, a+b=-3 산출 (2단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONALIZATION_OF_DENOMINATOR",
+      "canonicalLabelKo": "분모의 유리화",
+      "definition": "분모에 근호가 있을 때 분모와 분자에 같은 식을 곱하여 분모를 유리수로 만드는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_RATIONALIZATION_OF_DENOMINATOR for PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION/TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "켤레 분모 통분 정리 -2(x+1)/x에 x=sqrt(2) 대입하여 -2-sqrt(2), a=-2, b=-1, a+b=-3 산출 (2단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPRESSION",
+      "canonicalLabelKo": "유리식의 통분과 항등식",
+      "definition": "분모가 0이 아닌 범위에서 두 유리식을 통분하여 하나의 유리식으로 나타내고, 분자의 계수를 비교하여 미지수를 결정하는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_RATIONAL_EXPRESSION for PT_H1_RATIONAL_EXPRESSION_IDENTITY/TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "통분 후 분자 항등식 a(x+1)+b(x-2)=5x-4에서 a=2, b=3 도출하여 ab=6 산출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_RATIONAL_EXPRESSION_IDENTITY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -17968,6 +18143,181 @@
       "ownerConceptShard": "FUNCTIONS"
     },
     {
+      "conceptKey": "CC_IRRATIONAL_LINE_TANGENCY",
+      "canonicalLabelKo": "무리함수와 직선의 접선 조건",
+      "definition": "무리함수 그래프와 직선이 한 점에서 만나는(접하는) 조건을 제곱하여 얻은 이차방정식의 판별식 또는 최솟값으로 처리하는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_IRRATIONAL_LINE_TANGENCY for PT_H1_IRRATIONAL_LINE_INTERSECTION/TPL_H1_IRRATIONAL_CURVE_LINE_TANGENCY_PARAMETER at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "무리함수와 기울기 -1 직선이 접할 때 판별식 D=0에서 k=19/4 최솟값 도출 (3단계, SVG_IMAGE)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_LINE_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PERIODICITY",
+      "canonicalLabelKo": "합성함수의 주기성",
+      "definition": "함수를 반복하여 합성했을 때 일정 횟수마다 값이 되풀이되는 성질을 이용하여 큰 지수의 함숫값을 구하는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_PERIODICITY for PT_H1_ITERATED_COMPOSITE_FUNCTION/TPL_H1_RATIONAL_FUNCTION_PERIODIC_ITERATION at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "f^2(x)=x 주기 2 성질 확인 후 홀수·짝수 거듭 합성값 대입하여 8/3 산출 (2단계 단답형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ITERATED_COMPOSITE_FUNCTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_TRANSLATION",
+      "canonicalLabelKo": "유리함수 그래프의 평행이동",
+      "definition": "y = k/(x-p) + q 꼴의 표준형에서 분수항의 계수 k가 같으면 평행이동만으로 두 그래프가 겹쳐지는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_RATIONAL_FUNCTION_TRANSLATION for PT_H1_RATIONAL_FUNCTION_TRANSLATION/TPL_H1_RATIONAL_FUNCTION_SUPERIMPOSITION_K_MATCH at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "각 보기를 표준형 y=k/(x-p)+q로 변형하여 k=3과 일치하는 ㄴ, ㄷ 선별 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_RATIONAL_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_SYMMETRY_CENTER",
+      "canonicalLabelKo": "유리함수의 대칭 중심",
+      "definition": "유리함수 y = (ax+b)/(x+c)의 그래프가 두 점근선의 교점 (-c, a)에 대하여 점대칭이 되는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_RATIONAL_SYMMETRY_CENTER for PT_H1_RATIONAL_FUNCTION_SYMMETRY/TPL_H1_RATIONAL_SYMMETRY_CENTER_POINT_PARAMETER at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "대칭 중심 (-1,1)에서 c=1, a=1 구하고 f(2)=1/3 대입하여 b=-1, a^2+b^2+c^2=3 산출 (2단계, SVG_IMAGE)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_RATIONAL_FUNCTION_SYMMETRY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_STANDARD_FORM_CONVERSION",
+      "canonicalLabelKo": "유리함수의 표준형 변형",
+      "definition": "유리함수 y = (ax+b)/(cx+d)를 나눗셈하여 y = k/(x-p) + q의 표준형으로 바꾸고 점근선과 평행이동을 읽는 변형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_STANDARD_FORM_CONVERSION for PT_H1_RATIONAL_FUNCTION_TRANSLATION/TPL_H1_RATIONAL_FUNCTION_SUPERIMPOSITION_K_MATCH at H15-SB-04/H15-SB-04-RATIONAL_BASIC.",
+          "decisiveEvidence": "각 보기를 표준형 y=k/(x-p)+q로 변형하여 k=3과 일치하는 ㄴ, ㄷ 선별 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_RATIONAL_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
       "conceptKey": "CC_COUNTEREXAMPLE",
       "canonicalLabelKo": "반례",
       "definition": "반례이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
@@ -18764,6 +19114,76 @@
       ],
       "curriculumRefs": [
         "2015:중2-2:M2-05"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_COUNTING",
+      "canonicalLabelKo": "여사건을 이용한 경우의 수",
+      "definition": "구하려는 사건의 반대 사건 경우의 수를 전체 경우의 수에서 빼서 원하는 경우의 수를 구하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_COMPLEMENTARY_COUNTING for PT_H1_SUBSET_SELECTION_COUNTING/TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT at H15-SB-01/H15-SB-01-SET_BASIC.",
+          "decisiveEvidence": "n(A)=3, n(B)=2 전체 쌍 7C3*7C2=735에서 서로소인 쌍 7C3*4C2=210 제외하여 525 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_SUBSET_SELECTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-01"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUBSET_COUNTING",
+      "canonicalLabelKo": "부분집합의 개수 세기",
+      "definition": "집합의 원소 가운데 일부를 택하여 부분집합을 만들고, 크기와 포함 관계 조건에 따라 조합의 수를 세는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_SUBSET_COUNTING for PT_H1_SUBSET_SELECTION_COUNTING/TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT at H15-SB-01/H15-SB-01-SET_BASIC.",
+          "decisiveEvidence": "n(A)=3, n(B)=2 전체 쌍 7C3*7C2=735에서 서로소인 쌍 7C3*4C2=210 제외하여 525 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_SUBSET_SELECTION_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-01"
       ],
       "ownerConceptShard": "LOGIC_SET"
     },
@@ -26219,6 +26639,111 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_GEOMETRIC_AREA_TRANSFORM",
+      "canonicalLabelKo": "등적변형을 이용한 넓이",
+      "definition": "합동이거나 넓이가 같은 도형으로 잘라 옮겨 복잡한 도형의 넓이를 단순한 직사각형 등의 넓이로 바꾸어 구하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_GEOMETRIC_AREA_TRANSFORM for PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY/TPL_H1_CUT_AND_PASTE_CONGRUENT_CURVE_AREA at H15-SB-05/H15-SB-05-IRRATIONAL_BASIC.",
+          "decisiveEvidence": "두 무리함수 곡선의 대칭 이동 합동성을 이용해 직사각형 넓이 4*10=40으로 등적변형 산출 (3단계, SVG_IMAGE)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_RECTANGLE",
+      "canonicalLabelKo": "원에 내접하는 직사각형",
+      "definition": "원 위의 점을 꼭짓점으로 하는 사각형이 직사각형이 되려면 두 대각선이 모두 지름이어야 하므로 지름의 쌍을 세는 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_INSCRIBED_RECTANGLE for PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE/TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "전체 삼각형 120에서 직각삼각형 40 제외한 p=80, 직사각형 5C2=10인 q=10에서 p+q=90 산출 (3단계, SVG_IMAGE)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_RIGHT_TRIANGLE",
+      "canonicalLabelKo": "원에 내접하는 직각삼각형",
+      "definition": "원 위의 점을 꼭짓점으로 하는 삼각형에서 지름을 한 변으로 하면 원주각이 직각이 되는 성질과 그 개수를 세는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_602fdc7a138d0907e55ba3298779979ae53fafa81950ff3d06cfa69ba797ed4b",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_INSCRIBED_RIGHT_TRIANGLE for PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE/TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "전체 삼각형 120에서 직각삼각형 40 제외한 p=80, 직사각형 5C2=10인 q=10에서 p+q=90 산출 (3단계, SVG_IMAGE)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -27589,6 +28114,461 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_ADJACENCY_SPACING",
+      "canonicalLabelKo": "이웃 조건과 사이 간격 조건",
+      "definition": "특정 두 문자가 이웃하거나 그 사이에 정해진 수의 문자가 들어가도록 배열할 때, 사이에 들어갈 문자를 먼저 선택·나열하고 양 끝 문자의 순서를 함께 고려하는 조건 처리.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_ADJACENCY_SPACING for PT_H1_CONSTRAINED_PERMUTATION/TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION at H15-SB-07/H15-SB-07-PERMUTATION_BASIC.",
+          "decisiveEvidence": "a와 f 사이 3개 문자 선택·나열(5P3=60), a·f 자리교환(2), 묶음과 나머지 2문자 배열(3!=6) 곱하여 720 산출 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_CONSTRAINED_PERMUTATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_ADJACENT_ARRANGEMENT",
+      "canonicalLabelKo": "이웃 배열",
+      "definition": "선택된 원소 가운데 특정 원소들이 모두 서로 이웃하도록 하나의 묶음으로 배열하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_ADJACENT_ARRANGEMENT for PT_H1_ADJACENT_GROUP_PERMUTATION/TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES at H15-SB-07/H15-SB-07-PERMUTATION_BASIC.",
+          "decisiveEvidence": "학생 2명·교사 2명 뽑아 학생 이웃(3C2*5C2*3!*2!=360)과 학생 3명·교사 1명(3C3*5C1*2!*3!=60) 합산 420 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ADJACENT_GROUP_PERMUTATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BLOCK_PERMUTATION",
+      "canonicalLabelKo": "묶음 순열",
+      "definition": "이웃해야 하는 원소들을 하나의 묶음으로 보고, 묶음 내부의 배열 수와 묶음 사이의 배열 수를 곱하여 경우의 수를 구하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f8039c01e5dced88bf77c64b52499eb43b6ccbfcc78052ded9e13f60d0907f2",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_BLOCK_PERMUTATION for PT_H1_CONSTRAINED_PERMUTATION/TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION at H15-SB-07/H15-SB-07-PERMUTATION_BASIC.",
+          "decisiveEvidence": "a와 f 사이 3개 문자 선택·나열(5P3=60), a·f 자리교환(2), 묶음과 나머지 2문자 배열(3!=6) 곱하여 720 산출 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_CONSTRAINED_PERMUTATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CASE_BRANCHING",
+      "canonicalLabelKo": "경우 나누기",
+      "definition": "조건을 만족하는 값이나 상태에 따라 경우를 나누어 각 경우의 수를 구한 뒤 모두 합하는 방법.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_CASE_BRANCHING for PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING/TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "d값(2~7) 기준 분기하여 a<=b<=c<d 순서쌍 개수와 e<d 조건 결합 합산으로 126 산출 (4단계 단답형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_AND_PERMUTATION",
+      "canonicalLabelKo": "조합 후 순열 배열",
+      "definition": "먼저 뽑을 원소를 조합으로 선택한 뒤 선택된 원소를 일렬로 배열하는 두 단계 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dc74bfa751356ae8274426f77f878425f7be9239ade2dd2c7e6ae7384214f30d",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_COMBINATION_AND_PERMUTATION for PT_H1_ADJACENT_GROUP_PERMUTATION/TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES at H15-SB-07/H15-SB-07-PERMUTATION_BASIC.",
+          "decisiveEvidence": "학생 2명·교사 2명 뽑아 학생 이웃(3C2*5C2*3!*2!=360)과 학생 3명·교사 1명(3C3*5C1*2!*3!=60) 합산 420 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ADJACENT_GROUP_PERMUTATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_FORMULA",
+      "canonicalLabelKo": "조합의 계산 공식",
+      "definition": "서로 다른 n개에서 순서를 고려하지 않고 r개를 택하는 경우의 수를 nCr = n!/(r!(n-r)!)로 계산하는 공식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_COMBINATION_FORMULA for PT_H1_PERMUTATION_COMBINATION_CALCULATION/TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE at H15-SB-08/H15-SB-08-COMBINATION_BASIC.",
+          "decisiveEvidence": "8C3=56과 5P2=20을 각각 계산하여 차 36 직접 산출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_PERMUTATION_COMBINATION_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-08"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_RATIO",
+      "canonicalLabelKo": "이웃한 조합의 비율 관계",
+      "definition": "이웃한 조합 nCr, nC(r+1), nC(r+2) 사이의 비를 (n-r)/(r+1) 꼴로 나타내어 미지수를 구하는 관계.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_COMBINATION_RATIO for PT_H1_CONSECUTIVE_COMBINATION_RATIO/TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE at H15-SB-08/H15-SB-08-COMBINATION_BASIC.",
+          "decisiveEvidence": "nC(r+1)/nCr=(n-r)/(r+1)=4/5 및 (n-r-1)/(r+2)=1/2 연립하여 n=6, r=1, 2n-r=11 산출 (3단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_CONSECUTIVE_COMBINATION_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-08"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_DERANGEMENT",
+      "canonicalLabelKo": "교란순열",
+      "definition": "n개의 원소를 모두 원래 위치가 아닌 자리에 놓는 배열의 수로, 일부 원소만 원래 자리를 지키는 경우에도 고정점 선택과 함께 사용하는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_DERANGEMENT for PT_H1_DERANGEMENT_COUNTING/TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "자기 폰 가져가는 1명 선택(5가지) 후 나머지 4명 완전순열(9가지) 곱하여 45가지 산출 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_DERANGEMENT_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_INCLUSION_EXCLUSION",
+      "canonicalLabelKo": "포함배제 원리",
+      "definition": "여러 조건의 합집합을 셀 때 겹치는 부분을 빼고 다시 더하는 방식으로 중복을 조정하는 경우의 수 원리.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_INCLUSION_EXCLUSION for PT_H1_NUMBER_THEORETIC_COUNTING/TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "2의 배수(6C2=15), 3의 배수(4C2=6), 5의 배수(2C2=1)에서 6의 배수 중복(2C2=1) 제외하여 21가지 산출 (3단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_NUMBER_THEORETIC_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_LEXICOGRAPHIC_ORDER",
+      "canonicalLabelKo": "사전식 순서",
+      "definition": "문자열을 사전에서 앞에 오는 순서대로 나열하고, 특정 배열보다 앞서는 배열의 수를 세어 그 순위를 구하는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0adbb223e5cf30397b7699dd6ae832ead8d25c486033364141683b1b43506b67",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_LEXICOGRAPHIC_ORDER for PT_H1_DICTIONARY_ORDER_PERMUTATION/TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION at H15-SB-07/H15-SB-07-PERMUTATION_BASIC.",
+          "decisiveEvidence": "A, E 시작 48개, KA, KE, KO 시작 18개, KRA, KRE 시작 4개 합산 후 KROAE 71번째 도출 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_DICTIONARY_ORDER_PERMUTATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-07"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_MONOTONE_SEQUENCE_COUNTING",
+      "canonicalLabelKo": "단조 순서쌍의 개수 세기",
+      "definition": "a≤b≤c<d와 같이 크기 순서가 정해진 변수들의 순서쌍을 조합으로 세는 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4c8da592de231e4beeb1e39ba8525bcb7dd5efb5b383032c09eb5e3067ae2447",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_MONOTONE_SEQUENCE_COUNTING for PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING/TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "d값(2~7) 기준 분기하여 a<=b<=c<d 순서쌍 개수와 e<d 조건 결합 합산으로 126 산출 (4단계 단답형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_RULE",
+      "canonicalLabelKo": "곱의 법칙",
+      "definition": "두 사건이 연이어 일어날 때 각 단계에서 가능한 경우의 수를 곱하여 전체 경우의 수를 구하는 기본 원리.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3db039526e659810a4f0f585cf7746e401aa819d967f71fbcf31ec5bfaad7f95",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_MULTIPLICATION_RULE for PT_H1_DERANGEMENT_COUNTING/TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "자기 폰 가져가는 1명 선택(5가지) 후 나머지 4명 완전순열(9가지) 곱하여 45가지 산출 (2단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_DERANGEMENT_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_PERMUTATION_FORMULA",
+      "canonicalLabelKo": "순열의 계산 공식",
+      "definition": "서로 다른 n개에서 r개를 택하여 일렬로 나열하는 경우의 수를 nPr = n!/(n-r)!로 계산하는 공식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_50096427b0abc3b79e63e4fe9054b5f32d980712c92d8c92762b76dbf2017ff2",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_PERMUTATION_FORMULA for PT_H1_PERMUTATION_COMBINATION_CALCULATION/TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE at H15-SB-08/H15-SB-08-COMBINATION_BASIC.",
+          "decisiveEvidence": "8C3=56과 5P2=20을 각각 계산하여 차 36 직접 산출 (1단계)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_PERMUTATION_COMBINATION_CALCULATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-08"
       ],
       "ownerConceptShard": "COUNTING"
     },
@@ -28964,6 +29944,41 @@
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-02"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_GREATEST_COMMON_DIVISOR",
+      "canonicalLabelKo": "최대공약수",
+      "definition": "두 수의 공약수 가운데 가장 큰 수로, 두 수가 1 이외의 공약수를 갖는지를 판정하는 기준.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-SB-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_GREATEST_COMMON_DIVISOR for PT_H1_NUMBER_THEORETIC_COUNTING/TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION at H15-SB-06/H15-SB-06-COUNTING_PRINCIPLE.",
+          "decisiveEvidence": "2의 배수(6C2=15), 3의 배수(4C2=6), 5의 배수(2C2=1)에서 6의 배수 중복(2C2=1) 제외하여 21가지 산출 (3단계 서술형)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.audit.json",
+            "sha256": "ef1ed4697ff92a4f6fca69a973f0619ee3cbe77714ff8643a55c8e1a0739875f"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_NUMBER_THEORETIC_COUNTING"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-06"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     },

@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 29,
-  "templateCount": 104,
+  "problemTypeCount": 41,
+  "templateCount": 116,
   "problemTypes": [
     {
       "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
@@ -1041,6 +1041,150 @@
       ],
       "internalDescription": "항등함수·상수함수 등 여러 가지 함수의 성질을 이용해 함수값이나 조건을 결정하는 문제 유형.",
       "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+      "canonicalLabelKo": "유리식 항등식의 미정계수 결정",
+      "definition": "분모가 0이 아닌 모든 x에서 성립하는 유리식 항등식의 분자 계수를 비교하여 미지의 상수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
+      "canonicalLabelKo": "무리식이 실수가 되는 조건",
+      "definition": "근호 안이 0 이상이고 분모가 0이 아니라는 조건을 연립하여 x의 값의 범위를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_TRANSLATION",
+      "canonicalLabelKo": "유리함수 그래프의 평행이동 판별",
+      "definition": "여러 유리함수의 식을 표준형으로 변형하여 주어진 그래프와 평행이동 관계에 있는 것을 판별하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_SYMMETRY",
+      "canonicalLabelKo": "유리함수의 대칭 중심과 미지수 결정",
+      "definition": "유리함수 그래프의 대칭 중심과 함숫값 조건을 이용하여 계수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_RATIONAL_LINE_INTERSECTION_DISTANCE",
+      "canonicalLabelKo": "유리함수와 직선의 교점 거리 최솟값",
+      "definition": "유리함수 그래프와 직선의 두 교점 사이 거리의 최솟값을 근과 계수의 관계로 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c3fd7e9b90e9fcb0f190e68f3be8f092c43cb3ce1db8581bbc3a1a0110e5e040"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_COMPOSITE_INVERSE_FUNCTION",
+      "canonicalLabelKo": "합성함수와 역함수의 값 계산",
+      "definition": "합성함수와 역함수의 정의를 이용하여 방정식을 만족하는 값을 순차적으로 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_1c6dfef14512ffffcee2f5e01fd248bdbc645fca0839692dbaaed100553b5148"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_FUNCTION_COUNTING_CONDITIONS",
+      "canonicalLabelKo": "조건을 만족하는 함수의 개수",
+      "definition": "정의역과 공역의 제한 및 대소 조건을 만족하는 함수의 개수를 조합으로 세는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_948a489a2aa99567cc9dc26164478eb6265aebc96fdf5454f74afb7731318946"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_IRRATIONAL_LINE_INTERSECTION",
+      "canonicalLabelKo": "무리함수와 직선의 접선 조건",
+      "definition": "무리함수와 직선이 한 점에서 만나는 조건에서 판별식 또는 최솟값을 이용하여 매개변수를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY",
+      "canonicalLabelKo": "무리함수 그래프로 둘러싸인 넓이",
+      "definition": "두 무리함수 그래프의 대칭과 합동성을 이용하여 둘러싸인 도형의 넓이를 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_ITERATED_COMPOSITE_FUNCTION",
+      "canonicalLabelKo": "반복 합성함수의 값",
+      "definition": "함수를 여러 번 합성한 f^n의 주기성이나 규칙을 이용하여 함숫값을 구하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION",
+      "canonicalLabelKo": "무리식의 통분과 유리화",
+      "definition": "근호를 포함한 분수식을 통분하고 유리화하여 a+b√m 꼴로 정리하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_FUNCTION_COEFFICIENT_SIGNS",
+      "canonicalLabelKo": "그래프에서 함수의 계수 부호 판정",
+      "definition": "무리함수 그래프의 시작점과 방향에서 계수의 부호를 정하고, 유리함수 그래프의 점근선과 절편으로 지나는 사분면을 판정하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+      ]
     }
   ],
   "templates": [
@@ -3986,6 +4130,162 @@
         "26_매산고_2학기_중간_고2_미적분I#21"
       ],
       "sourceUnit": "2022_미적분I_매산고_2026_2중간"
+    },
+    {
+      "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS",
+      "parentProblemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+      "canonicalLabelKo": "부분분수 통분 후 계수 비교",
+      "definition": "우변을 공통분모로 통분하여 분자 항등식을 만들고 x의 계수와 상수항을 비교하여 미정계수를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN",
+      "parentProblemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
+      "canonicalLabelKo": "근호 분수식의 정의역 연립",
+      "definition": "분자의 근호 조건과 분모의 양수 조건을 연립하여 x의 값의 범위를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_RATIONAL_FUNCTION_SUPERIMPOSITION_K_MATCH",
+      "parentProblemTypeKey": "PT_H1_RATIONAL_FUNCTION_TRANSLATION",
+      "canonicalLabelKo": "표준형 계수 비교로 평행이동 판별",
+      "definition": "각 보기를 y = k/(x-p) + q로 변형하여 k가 같은 것을 골라 평행이동 관계를 판별하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_RATIONAL_SYMMETRY_CENTER_POINT_PARAMETER",
+      "parentProblemTypeKey": "PT_H1_RATIONAL_FUNCTION_SYMMETRY",
+      "canonicalLabelKo": "대칭 중심과 함숫값으로 계수 결정",
+      "definition": "점근선의 교점에서 계수를 읽고 주어진 함숫값을 대입하여 나머지 계수를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_HYPERBOLA_CHORD_MINIMUM_DISTANCE",
+      "parentProblemTypeKey": "PT_H1_RATIONAL_LINE_INTERSECTION_DISTANCE",
+      "canonicalLabelKo": "교점 거리 제곱의 최솟값",
+      "definition": "교점을 근으로 하는 이차방정식의 근과 계수의 관계로 두 교점 거리의 제곱을 매개변수의 식으로 만들어 최솟값을 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c3fd7e9b90e9fcb0f190e68f3be8f092c43cb3ce1db8581bbc3a1a0110e5e040"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_PIECEWISE_ITERATED_INVERSE_EVALUATION",
+      "parentProblemTypeKey": "PT_H1_COMPOSITE_INVERSE_FUNCTION",
+      "canonicalLabelKo": "역함수 합성값의 순차 대입",
+      "definition": "합성식에서 바깥 함수의 값을 먼저 구한 뒤 역함수를 차례로 적용하여 미지수를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_1c6dfef14512ffffcee2f5e01fd248bdbc645fca0839692dbaaed100553b5148"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_RESTRICTED_CODOMAIN_ORDER_FUNCTION_COUNT",
+      "parentProblemTypeKey": "PT_H1_FUNCTION_COUNTING_CONDITIONS",
+      "canonicalLabelKo": "치역 후보 축소 후 대소 선택",
+      "definition": "조건으로 제외되는 값을 걸러 치역 후보를 정하고, 대소 조건을 조합으로, 나머지 대응을 곱으로 세는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_948a489a2aa99567cc9dc26164478eb6265aebc96fdf5454f74afb7731318946"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_IRRATIONAL_CURVE_LINE_TANGENCY_PARAMETER",
+      "parentProblemTypeKey": "PT_H1_IRRATIONAL_LINE_INTERSECTION",
+      "canonicalLabelKo": "제곱 후 판별식 0으로 접선 매개변수",
+      "definition": "무리함수 식을 제곱하여 이차방정식으로 만들고 접하는 조건 D=0을 풀어 매개변수를 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_CUT_AND_PASTE_CONGRUENT_CURVE_AREA",
+      "parentProblemTypeKey": "PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY",
+      "canonicalLabelKo": "합동 조각 이동으로 직사각형 등적변형",
+      "definition": "곡선 사이의 넓이가 같은 부분을 잘라 옮겨 가로와 세로가 정해진 직사각형의 넓이로 바꾸는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_RATIONAL_FUNCTION_PERIODIC_ITERATION",
+      "parentProblemTypeKey": "PT_H1_ITERATED_COMPOSITE_FUNCTION",
+      "canonicalLabelKo": "f²=x 주기 확인 후 지수 축소",
+      "definition": "합성 두 번이 항등식이 되는 주기를 확인하고 지수를 주기로 나누어 함숫값을 구하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION",
+      "parentProblemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION",
+      "canonicalLabelKo": "켤레를 이용한 통분과 유리화",
+      "definition": "분모가 다른 두 분수를 통분한 뒤 켤레를 곱해 유리화하고 주어진 값을 대입하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_IRRATIONAL_TO_RATIONAL_GRAPH_QUADRANTS",
+      "parentProblemTypeKey": "PT_H1_FUNCTION_COEFFICIENT_SIGNS",
+      "canonicalLabelKo": "무리함수 계수 부호로 유리함수 사분면 판정",
+      "definition": "무리함수 그래프의 시작점과 방향으로 계수 부호를 정하고 유리함수의 점근선과 절편으로 지나는 사분면을 판정하는 풀이 구조.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+      ]
     }
   ],
   "foundationPack": "FUNCTIONS_GRAPHS",
