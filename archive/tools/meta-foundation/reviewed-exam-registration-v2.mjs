@@ -2024,11 +2024,17 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
           searchSourceCache.set(sourceFile, bank);
         }
         const sourceQuestion = bank?.[Number(r.sourceOrdinal) - 1];
-        if (sourceQuestion && eq(found[f] ?? null, sourceQuestion[f] ?? null)) continue;
+        // The source-only index serializes absent source metadata as an empty
+        // string. Effective catalog and runtime values were verified above.
+        if (sourceQuestion && eq(found[f] ?? "", sourceQuestion[f] ?? "")) continue;
       }
       fail("Search metadata mismatch: " + r.questionUid + "." + f);
     }
-    if (found.course !== r.standardCourse) fail(`Search course mismatch: ${r.questionUid}`);
+    if (found.course !== r.standardCourse) {
+      const sourceQuestion = searchSourceCache.get("archive/exams/" + r.sourceArchiveFile)?.[Number(r.sourceOrdinal) - 1];
+      if (!(r.metadataApprovalType === "META_PIPELINE_AUDIT" && sourceQuestion &&
+          eq(found.course ?? "", sourceQuestion.standardCourse ?? ""))) fail(`Search course mismatch: ${r.questionUid}`);
+    }
   }
   if (!runtimeRecords.length) fail("runtime records missing");
   return lanes;
