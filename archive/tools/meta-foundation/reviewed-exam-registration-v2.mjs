@@ -69,6 +69,20 @@ export function isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorT
   return ["problemTypeKey", "templateKey"].includes(field) && approved(current) &&
     priorTypeStatus === "ACTIVE" && !["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType);
 }
+export function isSopPendingSourceNamespaceCorrectionAllowed({ field, current, question, patch, final, audited, resolved }) {
+  if (!["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"].includes(field) ||
+      current.metadataStatus !== "registration_pending_semantic_review" ||
+      ["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType) ||
+      !audited?.assignmentCorrectionReason || !patch.sourceMetadataBefore ||
+      !Object.hasOwn(patch.sourceMetadataBefore, field) ||
+      !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null) ||
+      !eq(current[field] ?? null, question[field] ?? null) ||
+      final.standardUnitKey !== audited.correctedStandardUnitKey || final.subUnitKey !== audited.correctedSubUnitKey)
+    return false;
+  const courses = resolved?.pack?.meta?.standardCourses || [];
+  return courses.includes(question.standardCourse) && courses.includes(final.standardCourse) &&
+    final.standardUnit === resolved?.unit?.labelKo && final.subUnit === resolved?.sub?.labelKo;
+}
 const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, beforeTables, current, question, patch, final, ordinal, field }) => {
   const pendingStatusKeys = {
     standardUnitKey: ["standardUnit"], subUnitKey: ["subUnit"], problemTypeKey: ["problemType"],
@@ -132,11 +146,13 @@ const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
 const textValue = value => typeof value === "string" && value.trim().length > 0;
 const compactSourceText = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
 const isSvgAsset = value => /\.svg(?:$|[?#])/i.test(String(value ?? ""));
-function sourceVisualType(question) {
+export function sourceVisualType(question) {
   const asset = value => typeof value === "string" ? value.trim() : "";
   const images = Array.isArray(question?.images) ? question.images.filter(textValue) : [];
-  const svgAssets = [asset(question?.figureSvg), asset(question?.solutionFigureSvg), ...images.filter(isSvgAsset)].filter(Boolean);
-  const rasterAssets = [asset(question?.image), asset(question?.solutionImage), ...images.filter(name => !isSvgAsset(name))].filter(Boolean);
+  const html = [question?.content, question?.solution, ...(Array.isArray(question?.choices) ? question.choices : [])].filter(value => typeof value === "string").join("\n");
+  const inlineImages = [...html.matchAll(/<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/gi)].map(match => match[1]);
+  const svgAssets = [asset(question?.figureSvg), asset(question?.solutionFigureSvg), ...images.filter(isSvgAsset), ...inlineImages.filter(isSvgAsset), /<svg\b/i.test(html) ? "inline-svg" : ""].filter(Boolean);
+  const rasterAssets = [asset(question?.image), asset(question?.solutionImage), ...images.filter(name => !isSvgAsset(name)), ...inlineImages.filter(name => !isSvgAsset(name))].filter(Boolean);
   if (rasterAssets.length && svgAssets.length) return "SVG_IMAGE";
   if (rasterAssets.length) return "IMAGE";
   if (svgAssets.length) return "SVG";
@@ -1632,7 +1648,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const sopAssignmentRebind = Boolean(sopAuditedRecord) && ["standardUnitKey", "subUnitKey"].includes(f) &&
         eq(q[f] ?? null, sopAuditedRecord.auditedClassification[f]) &&
         eq(final[f], sopAuditedRecord.auditedClassification[f === "standardUnitKey" ? "correctedStandardUnitKey" : "correctedSubUnitKey"]);
-      if (!preservesApprovedAuditValue && !sopAssignmentRebind && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
+      const pendingNamespaceCorrection = Boolean(sopAuditedRecord) &&
+        isSopPendingSourceNamespaceCorrectionAllowed({ field: f, current, question: q, patch, final,
+          audited: sopAuditedRecord.auditedClassification, resolved: resolve(final, tables) });
+      if (!preservesApprovedAuditValue && !sopAssignmentRebind && !pendingNamespaceCorrection && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
           !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, beforeTables, current, question: q, patch, final, ordinal: i + 1, field: f }))
         fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     }
