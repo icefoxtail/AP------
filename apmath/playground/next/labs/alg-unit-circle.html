@@ -1708,7 +1708,7 @@ function htmlApprox(){
       const V = var5.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3);
       if (V.type === 1) {
         drawSinus(b, {
-          a: V.a, bb: V.b, c: V.c, grid: s.grid, levels: true, period: '주기 ' + piTxt(2, V.b) + (st >= 3 ? ' = 2π/b' : ''),
+          a: V.a, bb: V.b, c: V.c, grid: s.grid, levels: true, period: '주기 ' + piTxt(2, V.b) + (st >= 3 ? ' = \\frac{2π}{b}' : ''),
           mid: st >= 1, amp: st >= 2
         });
       } else {
@@ -1724,7 +1724,7 @@ function htmlApprox(){
       return baseScene({
         id: 'sinus', title: '[필수] y = a sin bx + c — a·b·c로 주기·진폭·이동 읽기', short: 'a·b·c 읽기',
         question: '$y=a\\sin bx+c$에서 a, b, c는 그래프의 무엇을 바꿀까? 그래프의 최고점·최저점·한 주기로 계수를 어떻게 정할까?',
-        guide: '<b>a</b>(진폭)는 높이만, <b>b</b>는 가로 폭(주기 $2\\pi/b$)만, <b>c</b>는 위아래 이동만 바꿉니다. 슬라이더를 움직이며 <b>최고점·최저점·한 주기</b>가 어떻게 변하는지 보세요. <b>노란 점 t</b>를 끌면 구간 $[0,t]$에서의 <b>최댓값·최솟값 위치</b>가 바뀝니다.',
+        guide: '<b>a</b>(진폭)는 높이만, <b>b</b>는 가로 폭(주기 $\\frac{2\\pi}{b}$)만, <b>c</b>는 위아래 이동만 바꿉니다. 슬라이더를 움직이며 <b>최고점·최저점·한 주기</b>가 어떻게 변하는지 보세요. <b>노란 점 t</b>를 끌면 구간 $[0,t]$에서의 <b>최댓값·최솟값 위치</b>가 바뀝니다.',
         focus: SIN_BOX,
         enter: (s) => { s.sna = 2; s.snb = 2; s.snc = 1; s.snt = 3 * PI / 4; },
         controls: ['sna', 'snb', 'snc', 'snt'],
@@ -1732,9 +1732,9 @@ function htmlApprox(){
           { group: '예시로 맞추기', label: '$y=\\sin x$', set: { sna: 1, snb: 1, snc: 0 }, ms: 400, on: (st) => st.sna === 1 && st.snb === 1 && st.snc === 0 },
           { group: '예시로 맞추기', label: '$y=2\\sin 2x+1$', set: { sna: 2, snb: 2, snc: 1 }, ms: 400, on: (st) => st.sna === 2 && st.snb === 2 && st.snc === 1 },
           { group: '예시로 맞추기', label: '$y=2\\sin 3x-1$', set: { sna: 2, snb: 3, snc: -1 }, ms: 400, on: (st) => st.sna === 2 && st.snb === 3 && st.snc === -1 },
-          { group: '구간 [0, t]', label: '$t=\\pi/2$', set: { snt: PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - PI / 2) < 0.01 },
+          { group: '구간 [0, t]', label: '$t=\\frac{\\pi}{2}$', set: { snt: PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - PI / 2) < 0.01 },
           { group: '구간 [0, t]', label: '$t=\\pi$', set: { snt: PI }, ms: 400, on: (st) => Math.abs(st.snt - PI) < 0.01 },
-          { group: '구간 [0, t]', label: '$t=3\\pi/2$', set: { snt: 3 * PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - 3 * PI / 2) < 0.01 }
+          { group: '구간 [0, t]', label: '$t=\\frac{3\\pi}{2}$', set: { snt: 3 * PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - 3 * PI / 2) < 0.01 }
         ],
         steps: () => steps5(var5.cur()),
         reviewTop: reviewTopOf(() => text5(var5.cur())),
@@ -1749,7 +1749,7 @@ function htmlApprox(){
               : { steps: steps5(v).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '구간의 끝값을 빠뜨리지 마세요. 구간이 한 주기보다 짧으면 최댓값이 1(또는 최솟값이 −1)에 닿지 않을 수 있습니다.' };
           },
           quick: () => (var5.cur().type === 1
-            ? { steps: '그래프에서 <strong class="text-amber-300">최고점 M, 최저점 m, 한 주기 P</strong>를 읽고 <strong>c=(M+m)/2, a=(M−m)/2, b=2π/P</strong> 세 줄로 끝냅니다.', highlight: '진폭은 "전체 높이의 절반", 중심선은 "최고·최저의 한가운데"입니다. 식을 세우기 전에 그림에서 세 값부터 읽으세요.' }
+            ? { steps: '그래프에서 <strong class="text-amber-300">최고점 M, 최저점 m, 한 주기 P</strong>를 읽고 <strong>$c=\\frac{M+m}{2},\\ a=\\frac{M-m}{2},\\ b=\\frac{2\\pi}{P}$</strong> 세 줄로 끝냅니다.', highlight: '진폭은 "전체 높이의 절반", 중심선은 "최고·최저의 한가운데"입니다. 식을 세우기 전에 그림에서 세 값부터 읽으세요.' }
             : { steps: '구간 안에서 <strong class="text-amber-300">끝점 두 곳과 sin bx=±1인 곳</strong>만 후보입니다. 이 값들 중 큰 값이 M, 작은 값이 m입니다.', highlight: '구간 끝 α에서 bx=bα가 π/2를 지났는지(최댓값 도달), 3π/2를 지났는지(최솟값 도달)부터 확인하세요.' })
         },
         view: (s, l) => {
@@ -1765,12 +1765,12 @@ function htmlApprox(){
             status: { tone: 'info', text: `구간 [0, t]에서 최대 ${num(E.M)} · 최소 ${num(E.m)}` },
             readouts: [
               { label: '진폭 (높이의 절반) a', value: num(a), color: 'sky' },
-              { label: '주기 $2\\pi/b$', value: `$${per}$`, color: 'violet' },
+              { label: '주기 $\\frac{2\\pi}{b}$', value: `$${per}$`, color: 'violet' },
               { label: '중심선 y = c', value: num(c), color: 'amber' },
               { label: '최댓값 c + a / 최솟값 c − a', value: `${num(c + a)} / ${num(c - a)}`, color: 'sky' },
               { label: '구간 [0, t]에서의 최댓값 · 최솟값', value: `최대 ${num(E.M)} · 최소 ${num(E.m)}`, color: 'green', wide: true }
             ],
-            notes: '<b>탐구 참고</b> · b가 커지면 그래프가 가로로 압축되어 주기가 짧아집니다. a와 c는 주기를 바꾸지 못하고, a는 높이(최고점과 최저점의 간격)만, c는 전체를 위아래로 옮깁니다. 구간 끝 t를 키우다 $bt$가 $\\pi/2$를 지나는 순간 최댓값이 <b>c + a</b>에 닿습니다.'
+            notes: '<b>탐구 참고</b> · b가 커지면 그래프가 가로로 압축되어 주기가 짧아집니다. a와 c는 주기를 바꾸지 못하고, a는 높이(최고점과 최저점의 간격)만, c는 전체를 위아래로 옮깁니다. 구간 끝 t를 키우다 $bt$가 $\\frac{\\pi}{2}$를 지나는 순간 최댓값이 <b>c + a</b>에 닿습니다.'
           };
         },
         draw: draw5
@@ -1986,7 +1986,7 @@ function htmlApprox(){
       return baseScene({
         id: 'conv', title: '[필수] 단위원에서 π±θ, π/2±θ 변환 — 대칭점의 좌표로 읽기', short: 'π±θ 변환',
         question: 'sin(π−θ), cos(π+θ), sin(π/2+θ)… 같은 값은 단위원에서 어떤 점의 좌표일까? 공식을 외우지 않고 그림에서 읽을 수 있을까?',
-        guide: '<b>점 P</b>를 끌어 각 θ를 바꿔 보세요. 칩에서 변환($-\\theta$, $\\pi\\pm\\theta$, $\\pi/2\\pm\\theta$)을 고르면 <b>대칭점 Q</b>가 나타납니다. Q의 <b>x좌표가 cos, y좌표가 sin</b>이므로 P와 비교하면 <b>부호가 바뀌는지, sin과 cos가 서로 바뀌는지</b>가 바로 보입니다.',
+        guide: '<b>점 P</b>를 끌어 각 θ를 바꿔 보세요. 칩에서 변환($-\\theta$, $\\pi\\pm\\theta$, $\\frac{\\pi}{2}\\pm\\theta$)을 고르면 <b>대칭점 Q</b>가 나타납니다. Q의 <b>x좌표가 cos, y좌표가 sin</b>이므로 P와 비교하면 <b>부호가 바뀌는지, sin과 cos가 서로 바뀌는지</b>가 바로 보입니다.',
         focus: CV_BOX,
         enter: (s) => { s.cvt = PI / 3; s.cvm = 'pi-'; },
         controls: ['cvt'],
@@ -2126,7 +2126,7 @@ function htmlApprox(){
       return baseScene({
         id: 'twocurve', title: '[기출 킬러] 두 삼각함수 곡선과 평행선의 교점 — 사각형의 넓이', short: '곡선·평행선 사각형',
         question: '곡선 $y=\\sin x$, $y=\\cos x$가 두 평행선 $y=k$, $y=-k$와 만나는 네 점 A, B, C, D는 어떤 사각형을 만들까? 길이와 넓이는 대칭과 평행이동으로 읽을 수 있을까?',
-        guide: '평행선의 높이 <b>k</b>를 바꿔 보세요. 위쪽 두 점 <b>A, B</b>는 항상 직선 <b>x = π/4</b>에 대칭이고, 아래쪽 두 점 <b>C, D</b> 사이의 거리는 k가 변해도 <b>π/2로 일정</b>합니다($\\cos x=\\sin(x+\\pi/2)$이므로 두 곡선은 π/2만큼 평행이동한 관계). 그래서 사각형은 <b>사다리꼴</b>입니다.',
+        guide: '평행선의 높이 <b>k</b>를 바꿔 보세요. 위쪽 두 점 <b>A, B</b>는 항상 직선 <b>x = π/4</b>에 대칭이고, 아래쪽 두 점 <b>C, D</b> 사이의 거리는 k가 변해도 <b>π/2로 일정</b>합니다($\\cos x=\\sin(x+\\frac{\\pi}{2})$이므로 두 곡선은 π/2만큼 평행이동한 관계). 그래서 사각형은 <b>사다리꼴</b>입니다.',
         focus: TW_BOX,
         enter: (s) => { s.twk = 0.5; },
         controls: ['twk'],
@@ -2292,7 +2292,7 @@ function htmlApprox(){
       return baseScene({
         id: 'rootsum', title: '[기출 킬러] 삼각방정식의 근의 개수와 합 — 대칭축으로 읽기', short: '근의 개수·합',
         question: '$(\\sin x-t)(\\cos x-t)=0$의 근은 모두 몇 개이고 합은 얼마일까? 근을 하나씩 구하지 않고 그래프의 대칭축으로 합을 읽을 수 있을까?',
-        guide: '수평선 <b>y = t</b>(오른쪽 노란 점)를 끌어 보세요. <b>sin 곡선과의 교점</b>(초록)은 직선 $x=\\pi/2$(t&lt;0이면 $x=3\\pi/2$), <b>cos 곡선과의 교점</b>(노랑)은 직선 $x=\\pi$에 대칭이라 <b>두 근의 합이 각각 π(3π), 2π</b>로 정해집니다. 두 곡선이 같은 높이를 가지면(보라 고리) 근이 겹쳐 <b>개수가 3개</b>가 됩니다.',
+        guide: '수평선 <b>y = t</b>(오른쪽 노란 점)를 끌어 보세요. <b>sin 곡선과의 교점</b>(초록)은 직선 $x=\\frac{\\pi}{2}$(t&lt;0이면 $x=\\frac{3\\pi}{2}$), <b>cos 곡선과의 교점</b>(노랑)은 직선 $x=\\pi$에 대칭이라 <b>두 근의 합이 각각 π(3π), 2π</b>로 정해집니다. 두 곡선이 같은 높이를 가지면(보라 고리) 근이 겹쳐 <b>개수가 3개</b>가 됩니다.',
         focus: RS_BOX,
         enter: (s) => { s.rst = 0.5; },
         controls: ['rst'],
@@ -2304,7 +2304,7 @@ function htmlApprox(){
         solution: {
           standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 대칭축 합', quickTag: '10초 컷',
           standard: () => ({ steps: steps8(var8.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '두 식이 같은 근을 가지면 그 근은 한 번만 셉니다. "서로 다른 근의 합"에서 겹친 근을 두 번 더하지 마세요.' }),
-          quick: () => ({ steps: '<strong class="text-amber-300">sin x = t의 두 근은 x = π/2(t<0이면 3π/2)에 대칭, cos x = t의 두 근은 x = π에 대칭</strong>이므로 합은 곧바로 π 또는 3π, 2π입니다. 겹친 근만 빼면 끝입니다.', highlight: 't의 부호부터 보세요. t>0이면 3π, t<0이면 5π(겹침이 없을 때). 겹침은 두 곡선이 교점을 갖는 높이 ±√2/2에서만 생깁니다.' })
+          quick: () => ({ steps: '<strong class="text-amber-300">sin x = t의 두 근은 x = π/2(t&lt;0이면 3π/2)에 대칭, cos x = t의 두 근은 x = π에 대칭</strong>이므로 합은 곧바로 π 또는 3π, 2π입니다. 겹친 근만 빼면 끝입니다.', highlight: 't의 부호부터 보세요. t&gt;0이면 3π, t&lt;0이면 5π(겹침이 없을 때). 겹침은 두 곡선이 교점을 갖는 높이 ±√2/2에서만 생깁니다.' })
         },
         view: (s, l) => {
           const tab = l ? l.tab : 'explore';
@@ -2385,9 +2385,9 @@ function htmlApprox(){
         if (NARROW.matches) viewChips();
         add('각도 탐구 방식', '특수각 탐구', (st) => st.mode === 'special', () => setMode('special'));
         add('각도 탐구 방식', '연속 탐구', (st) => st.mode === 'continuous', () => setMode('continuous'));
-        if (s.mode === 'special') SP.forEach((a, i) => add('특수각 (눌러서 이동)', a[0] + (s.showDeg ? ' · ' + a[2] + '°' : ''), (st) => st.mode === 'special' && st.si === i, () => selectSpecial(i)));
+        if (s.mode === 'special') SP.forEach((a, i) => add('특수각 (눌러서 이동)', '$' + texFromDisplay(a[0]) + '$' + (s.showDeg ? ' · ' + a[2] + '°' : ''), (st) => st.mode === 'special' && st.si === i, () => selectSpecial(i)));
         if (act !== 'motion') {
-          K.forEach((kv, i) => add('k 값 (자주 쓰는 값)', kv[1], (st) => Math.abs(st.k - kv[0]) < 1e-6, () => setK(kv[0])));
+          K.forEach((kv, i) => add('k 값 (자주 쓰는 값)', '$' + texFromDisplay(kv[1]) + '$', (st) => Math.abs(st.k - kv[0]) < 1e-6, () => setK(kv[0])));
           add('해의 정의역', '[0, 2π)', (st) => st.domain === 'one', () => { S.domain = 'one'; S.revealedRoot = null; redraw(); });
           add('해의 정의역', '현재 보이는 범위', (st) => st.domain === 'view', () => { S.domain = 'view'; S.revealedRoot = null; redraw(); });
           if (act === 'inequality') Object.keys(OPSYM).forEach((o) => add('부등호', OPSYM[o], (st) => st.op === o, () => { S.op = o; redraw(); }));
@@ -2399,7 +2399,7 @@ function htmlApprox(){
         if (act === 'equation') {
           const [lo, hi] = S.domain === 'one' ? [0, TAU] : [S.x0, S.x1];
           for (const f of active()) for (const r of roots(f, s.k, lo, hi)) {
-            add('해 확인 (누르면 단위원과 그래프에 표시)', f + ' · ' + piFormatInfo(r).text + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
+            add('해 확인 (누르면 단위원과 그래프에 표시)', f + ' · $' + texFromDisplay(piFormatInfo(r).text) + '$' + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
           }
         }
         add('표시 설정', '각도(°) 병기', (st) => st.showDeg, () => { S.showDeg = !S.showDeg; redraw(); });
@@ -2487,7 +2487,7 @@ function htmlApprox(){
       },
       /* 기출 확장 장면 5~8의 조작 막대 (장면 1~4는 쓰지 않음) */
       sna: { value: 2, min: .5, max: 2, step: .5, color: 'sky', label: '$a$ (진폭 · 높이)', hint: '그래프의 높이만 바뀝니다', format: (v) => 'a = ' + String(v).replace('-', '−') },
-      snb: { value: 2, min: 1, max: 4, step: .5, color: 'violet', label: '$b$ (가로 폭 · 주기 $2\\pi/b$)', hint: '가로로 압축될수록 주기가 짧아집니다', format: (v) => 'b = ' + String(v).replace('-', '−') },
+      snb: { value: 2, min: 1, max: 4, step: .5, color: 'violet', label: '$b$ (가로 폭 · 주기 $\\frac{2\\pi}{b}$)', hint: '가로로 압축될수록 주기가 짧아집니다', format: (v) => 'b = ' + String(v).replace('-', '−') },
       snc: { value: 1, min: -1, max: 1, step: .5, color: 'amber', label: '$c$ (위아래 이동)', hint: '중심선 $y=c$가 움직입니다', format: (v) => 'c = ' + String(v).replace('-', '−') },
       snt: { value: 3 * PI / 4, min: .2, max: TAU - .1, step: .01, color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't = ' + (Math.abs(v / (PI / 12) - Math.round(v / (PI / 12))) < .02 ? piTextOf(v) : v.toFixed(2)) },
       cvt: { value: PI / 3, min: 0, max: TAU - .001, step: .005, color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ = ' + Math.round(v * 180 / PI) + '°' },

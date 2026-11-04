@@ -207,3 +207,46 @@
   .hub-sec-h h2 { font-size: var(--fs-xl); }
   .hub-sec-h .meta { display: none; }
 }
+
+/* 목록: 모든 학년에서 단원을 한눈에 고릅니다. 노선도에는 적용하지 않습니다. */
+.hub-wrap.is-list { padding-bottom: 32px; }
+.is-list .hub-intro { padding: 12px 0 0; grid-template-columns: minmax(0, 1fr); }
+.is-list .hub-intro p,
+.is-list .hub-stats,
+.is-list .hub-cta,
+.is-list .hub-sec-h p,
+.is-list .hub-sec-h .meta { display: none; }
+.is-list .hub-sec { margin-top: 8px; }
+.is-list .hub-sec-h { padding: 0 0 6px; margin-bottom: 8px; }
+.is-list .hub-sec-h h2 { font-size: var(--fs-lg); }
+.is-list .hub-unit { margin: 10px 0 6px; }
+.is-list .hub-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.is-list .hub-card {
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 36px minmax(44px, auto);
+  min-height: 96px; padding: 7px 10px; gap: 2px; border-radius: var(--r-md);
+}
+.is-list .hub-card:hover { transform: translateY(-2px); }
+.is-list .hub-thumb { height: 36px; min-height: 0; border: 0; background: none; overflow: visible; }
+.is-list .hub-thumb svg { width: 44px; height: 36px; filter: none; }
+.is-list .hub-body { min-width: 0; padding: 0; display: grid; align-content: center; text-align: center; }
+.is-list .hub-card h3 { font-size: 16px; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.is-list .hub-card h3 a:focus-visible { outline: 2px solid var(--hc); outline-offset: 3px; }
+.is-list .hub-foot { position: absolute; top: 2px; right: 2px; grid-column: auto; padding: 0; }
+.is-list .hub-pin { width: 40px; height: 40px; }
+.is-list .hub-shelf { margin-top: 22px; }
+@media (min-width: 721px) and (max-width: 900px) {
+  .is-list .hub-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .is-list .hub-intro { display: none; }
+  .is-list .hub-unit { margin: 8px 0 4px; }
+  .is-list .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  /* 고정 버튼의 44px 터치 영역을 별도 열로 예약해 제목 링크를 덮지 않습니다. */
+  .is-list .hub-card { grid-template-columns: minmax(0, 1fr) 44px; grid-template-rows: 22px minmax(41px, auto); min-height: 74px; padding: 4px 8px; gap: 1px; }
+  .is-list .hub-thumb { grid-column: 1; height: 22px; }
+  .is-list .hub-thumb svg { width: 30px; height: 22px; }
+  .is-list .hub-body { grid-column: 1; }
+  .is-list .hub-card h3 { font-size: 15px; }
+  .is-list .hub-foot { top: 0; right: 0; }
+  .is-list .hub-pin { width: 44px; height: 44px; }
+}

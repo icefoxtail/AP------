@@ -643,7 +643,7 @@ window.addEventListener('DOMContentLoaded', function () {
           },
           {
             step: 3,
-            title: '3단계. 대응변의 비로 AD / BC 구하기',
+            title: '3단계. 대응변의 비로 $\\frac{AD}{BC}$ 구하기',
             desc: `$\\triangle PAD \\sim \\triangle PCB$의 닮음비는 $\\overline{PA} : \\overline{PC} = 3 : 4$이므로<br/>$\\therefore \\mathbf{\\dfrac{\\overline{AD}}{\\overline{BC}} = \\dfrac{\\overline{PA}}{\\overline{PC}} = \\dfrac{3}{4}}$`
           }
         ],
@@ -652,7 +652,7 @@ window.addEventListener('DOMContentLoaded', function () {
           <div>1) $\\overline{PA} \\times \\overline{AB}$가 아니라 원 밖의 점 $P$에서부터 잰 **$\\overline{PA} \\times \\overline{PB} = \\overline{PC} \\times \\overline{PD}$**입니다.</div>
           <div>2) $\\triangle PAD$와 $\\triangle PCB$는 $A \\leftrightarrow C$, $D \\leftrightarrow B$가 엇갈려 대응하므로 $\\overline{AD} : \\overline{BC}$는 $\\overline{PA} : \\overline{PB}$가 아니라 **$\\overline{PA} : \\overline{PC} = 3 : 4$**(또는 $\\overline{PD} : \\overline{PB} = 6 : 8 = 3 : 4$)입니다.</div>
         `,
-        answer: 'PD = 6, AD / BC = 3/4'
+        answer: 'PD = 6, $\\frac{AD}{BC}$ = 3/4'
       },
       {
         id: 'adv-5',
@@ -1315,8 +1315,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 3) {
           const badgeTxt = isTarget
-            ? '조건 만족 (sin B / sin D = 3/4): R₁ = R₂ × (4/3) = 3 × (4/3) = 4'
-            : `현재 R₁ = ${r1.toFixed(2)} (sin B / sin D ≈ ${ratioSin.toFixed(2)})  |  조건 sin B / sin D = 3/4일 때 R₁ = 4`;
+            ? '조건 만족 ($\\frac{\\sin B}{\\sin D}$ = 3/4): R₁ = R₂ × (4/3) = 3 × (4/3) = 4'
+            : `현재 R₁ = ${r1.toFixed(2)} ($\\frac{\\sin B}{\\sin D}$ ≈ ${ratioSin.toFixed(2)})  |  조건 $\\frac{\\sin B}{\\sin D}$ = 3/4일 때 R₁ = 4`;
           dBadge(ox, Cpt.y + 54, badgeTxt, C.gold);
         }
 
@@ -1333,8 +1333,8 @@ window.addEventListener('DOMContentLoaded', function () {
         });
 
         setMetric(
-          `현재 R₁ = ${r1.toFixed(2)}, R₂ = 3.00 | sin B / sin D = R₂ / R₁ ≈ ${ratioSin.toFixed(2)} (조건: 3/4 = 0.75 ➔ R₁ = 4)`,
-          `현재 R₁ = ${r1.toFixed(2)}, R₂ = 3.00 | 사인 비 sin B / sin D ≈ ${ratioSin.toFixed(2)}`
+          `현재 R₁ = ${r1.toFixed(2)}, R₂ = 3.00 | $\\frac{\\sin B}{\\sin D}$ = R₂ / R₁ ≈ ${ratioSin.toFixed(2)} (조건: 3/4 = 0.75 ➔ R₁ = 4)`,
+          `현재 R₁ = ${r1.toFixed(2)}, R₂ = 3.00 | 사인 비 $\\frac{\\sin B}{\\sin D}$ ≈ ${ratioSin.toFixed(2)}`
         );
         return;
       }
@@ -2014,8 +2014,8 @@ window.addEventListener('DOMContentLoaded', function () {
         });
 
         setMetric(
-          `PA = 3, PB = 8 | 현재 PC = ${pc.toFixed(2)}, PD = ${pd.toFixed(2)} (조건: PC = 4일 때 PD = 6, AD/BC = 3/4)`,
-          `PA = 3, PB = 8 | 현재 PC = ${pc.toFixed(2)}, PD = ${pd.toFixed(2)}, AD/BC = ${(3 / pc).toFixed(2)}`
+          `PA = 3, PB = 8 | 현재 PC = ${pc.toFixed(2)}, PD = ${pd.toFixed(2)} (조건: PC = 4일 때 PD = 6, $\\frac{AD}{BC}$ = 3/4)`,
+          `PA = 3, PB = 8 | 현재 PC = ${pc.toFixed(2)}, PD = ${pd.toFixed(2)}, $\\frac{AD}{BC}$ = ${(3 / pc).toFixed(2)}`
         );
         return;
       }
@@ -2481,9 +2481,9 @@ window.addEventListener('DOMContentLoaded', function () {
             const m = toMath(sPos.x, sPos.y, ox, oy, sc);
             onExtT(phiToT(G, Math.atan2(m.y, m.x)));
           });
-          dBadge(ox, oy + G.R * sc + 40, `a / sin A = ${G.a} / ${sinA.toFixed(3)} = ${(G.a / sinA).toFixed(2)} = 2R`, C.gold);
+          dBadge(ox, oy + G.R * sc + 40, `$\\frac{a}{\\sin A}$ = ${G.a} / ${sinA.toFixed(3)} = ${(G.a / sinA).toFixed(2)} = 2R`, C.gold);
           if (!major) dBadge(ox, oy - G.R * sc - 30, `작은 호 위: ∠A = 180° − ${degL(Math.PI - angA).toFixed(1)}° = ${degL(angA).toFixed(1)}° (둔각), sin A는 같다`, C.cyan);
-          metric(`∠A = ${degL(angA).toFixed(1)}° (노랑 호), sin A = ${sinA.toFixed(3)} | a / sin A = ${(G.a / sinA).toFixed(2)} = 2R (점 A가 어디에 있어도 같음)${major ? ` | 중심각 ∠BOC = 2∠A = ${degL(2 * angA).toFixed(1)}°` : ''}`);
+          metric(`∠A = ${degL(angA).toFixed(1)}° (노랑 호), sin A = ${sinA.toFixed(3)} | $\\frac{a}{\\sin A}$ = ${(G.a / sinA).toFixed(2)} = 2R (점 A가 어디에 있어도 같음)${major ? ` | 중심각 ∠BOC = 2∠A = ${degL(2 * angA).toFixed(1)}°` : ''}`);
         } else {
           dVertex(A, 'A', C.white, outv(Am));
           drawDimension(B, Cp, (V.obtuse || st >= 3) ? -28 : 28, `BC = ${G.a}`, C.red);
@@ -2561,11 +2561,11 @@ window.addEventListener('DOMContentLoaded', function () {
       const t0 = (() => { const G = geomL(5, 6); return phiToT(G, E1 ? 2 * Math.PI / 3 : 150 * Math.PI / 180); })();
       return {
         id,
-        title: E1 ? '[기출 1] 외접원 위의 점 A 이동 — 원주각이 같으면 a/sin A = 2R' : '[기출 2] 외접원 위의 점 P — 삼각형 PBC 넓이의 최댓값 (4점)',
+        title: E1 ? '[기출 1] 외접원 위의 점 A 이동 — 원주각이 같으면 $\\frac{a}{\\sin A}=2R$' : '[기출 2] 외접원 위의 점 P — 삼각형 PBC 넓이의 최댓값 (4점)',
         short: E1 ? '[기출1] 점 A 이동' : '[기출2] 점 P 최대 넓이',
         question: E1 ? rm('외접원 위의 점 $A$를 호 $BC$ 위에서 움직이면 $\\angle A$와 $\\sin A$는 어떻게 변할까? 사인법칙 $\\dfrac{a}{\\sin A}=2R$ 은 언제나 성립할까?')
           : rm('외접원 위의 점 $P$가 움직이면 삼각형 $PBC$의 넓이는 어떻게 바뀔까? 넓이가 가장 클 때 $P$는 어디에 있을까?'),
-        guide: E1 ? `<b>${label}</b> — 노랑 점 A를 원 위에서 끌어 보세요. 큰 호 위(밑변 BC 위쪽)에서는 <b>∠A가 늘 같고</b>(원주각, 중심각 ∠BOC의 절반), 작은 호 위로 넘어가면 <b>둔각</b>이 되지만 <b>sin A는 그대로</b>입니다. 그래서 <b>a / sin A = 2R</b>이 어디서나 같은 값입니다.`
+        guide: E1 ? `<b>${label}</b> — 노랑 점 A를 원 위에서 끌어 보세요. 큰 호 위(밑변 BC 위쪽)에서는 <b>∠A가 늘 같고</b>(원주각, 중심각 ∠BOC의 절반), 작은 호 위로 넘어가면 <b>둔각</b>이 되지만 <b>sin A는 그대로</b>입니다. 그래서 <b>$\\frac{a}{\\sin A}$ = 2R</b>이 어디서나 같은 값입니다.`
           : `<b>${label}</b> — 노랑 점 P를 원 위에서 끌어 보세요. 밑변 BC는 그대로이므로 넓이는 <b>높이(점 P에서 BC까지의 거리)</b>가 정합니다. 높이가 가장 큰 곳은 <b>원의 중심에서 BC에 내린 수선을 위로 연장한 곳</b>(P가 BC의 수직이등분선 위)입니다. 그 근처에서 점이 달라붙습니다.`,
         startStep: 0,
         controls: ['t'],
@@ -2590,7 +2590,7 @@ window.addEventListener('DOMContentLoaded', function () {
           standardTitle: APLab.stripEmoji('교과서식 풀이'), standardTag: '단계별', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷',
           standard: () => ({ steps: stepsL(kind, varr.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: E1 ? '둔각이라고 해서 sin A가 달라지지 않습니다. 사인법칙의 sin A는 각 A가 예각이든 둔각이든 같은 식에 그대로 넣습니다.' : '높이가 최대인 곳은 "BC에서 가장 먼 원 위의 점"입니다. O에서 BC까지의 거리를 반지름에 더하는 것(R + OM)을 잊지 마세요.' }),
           quick: () => (E1
-            ? { steps: '<strong class="text-amber-300">변과 그 대각의 sin의 비가 지름</strong>: a / sin A = 2R. 호 BC에 대한 원주각은 어디서나 같거나 서로 보각이라 sin 값이 같습니다.', highlight: 'R을 구하는 문제에서는 각 A가 예각인지 둔각인지 걱정하지 말고 sin A만 대입하세요. 각 A의 종류는 cos A의 부호에서만 중요합니다.' }
+            ? { steps: '<strong class="text-amber-300">변과 그 대각의 sin의 비가 지름</strong>: $\\frac{a}{\\sin A}$ = 2R. 호 BC에 대한 원주각은 어디서나 같거나 서로 보각이라 sin 값이 같습니다.', highlight: 'R을 구하는 문제에서는 각 A가 예각인지 둔각인지 걱정하지 말고 sin A만 대입하세요. 각 A의 종류는 cos A의 부호에서만 중요합니다.' }
             : { steps: '밑변 BC가 정해지면 넓이는 높이가 정합니다. <strong class="text-amber-300">BC = 2R sin A</strong>, 최대 높이 = <strong>R + (O에서 BC까지의 거리)</strong>.', highlight: '원 위의 점에서 직선까지의 거리의 최댓값은 (중심에서 직선까지의 거리) + 반지름입니다. 이 한 줄이 4점 문제의 핵심입니다.' })
         },
         view: (s, lab) => {
@@ -2823,7 +2823,7 @@ window.addEventListener('DOMContentLoaded', function () {
         BRD.point(O1, { color: C.green, r: 3.5 }); BRD.point(O2, { color: C.cyan, r: 3.5 });
         dBadge((O1.x + r1p.x) / 2 - 4, (O1.y + r1p.y) / 2 + 14, 'R₁', C.green);
         dBadge((O2.x + r2p.x) / 2 + 6, (O2.y + r2p.y) / 2 + 14, `R₂ = ${R2}`, C.cyan);
-        dBadge(rect.width / 2, 20, `sin B / sin D = ${p}/${qq}`, C.gold);
+        dBadge(rect.width / 2, 20, `$\\frac{\\sin B}{\\sin D}$ = ${p}/${qq}`, C.gold);
         if (st >= 1) dBadge(A.x, Cp.y + 26, '공통현 AC', C.red);
         if (st >= 2) {
           dArcAngle(B, Cp, A, '', C.green, 26);
@@ -3215,7 +3215,7 @@ window.addEventListener('DOMContentLoaded', function () {
           `대응변의 길이의 비가 같으므로 $\\overline{PA} \\cdot \\overline{PB} = \\overline{PC} \\cdot \\overline{PD}$입니다.<br/>$${PA} \\times ${PB} = ${PC} \\times \\overline{PD} \\implies \\mathbf{\\overline{PD} = ${PD}}$입니다.`,
           `$\\triangle PAD \\sim \\triangle PCB$의 닮음비는 $\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$이므로<br/>$\\therefore \\mathbf{\\dfrac{\\overline{AD}}{\\overline{BC}} = \\dfrac{\\overline{PA}}{\\overline{PC}} = ${rt}}$`
         ];
-        V.ans = `PD = ${PD}, AD / BC = ${frP(PA, PC)}`;
+        V.ans = `PD = ${PD}, $\\frac{AD}{BC}$ = ${frP(PA, PC)}`;
         V.alg = `<div class="font-bold text-amber-300 mb-1">오답 함정 분석 (닮음 대응점 순서 주의)</div><div>1) $\\overline{PA} \\times \\overline{AB}$가 아니라 원 밖의 점 $P$에서부터 잰 **$\\overline{PA} \\times \\overline{PB} = \\overline{PC} \\times \\overline{PD}$**입니다.</div><div>2) $\\triangle PAD$와 $\\triangle PCB$는 $A \\leftrightarrow C$, $D \\leftrightarrow B$가 엇갈려 대응하므로 $\\overline{AD} : \\overline{BC}$는 $\\overline{PA} : \\overline{PB}$가 아니라 **$\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$**입니다.</div>`;
         V.aha = `사각형 $ABDC$가 원에 내접하므로 내대각 성질에 의해 **$\\angle PAD = \\angle PCB$**입니다. 따라서 공통각 $\\angle P$를 공유하는 **$\\triangle PAD$와 $\\triangle PCB$는 뒤집힌 AA 닮음**이며, 닮음비는 $\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$입니다.`;
         return V;

@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ],
       2: [
         { id: 'movingAxisMin', label: '🎛️ [킬러 1] 고정된 구간 [0,2]와 움직이는 대칭축 x=p일 때 최솟값 (3가지 경우)' },
-        { id: 'movingAxisMaxJump', label: '⚖️ 최댓값을 갖는 점이 바뀌는 경계: 구간의 중점 p = (α+β)/2' },
+        { id: 'movingAxisMaxJump', label: '⚖️ 최댓값을 갖는 점이 바뀌는 경계: 구간의 중점 p = $\\frac{α+β}{2}$' },
         { id: 'movingWindowInterval', label: '🪟 고정된 포물선과 움직이는 구간 [t, t+2]' },
         { id: 'substitution2Stage', label: '🪤 [주의] 치환 t = x²-2x 를 이용한 합성함수의 두 단계 범위' },
         { id: 'inscribedRectParabola', label: '🏛️ 포물선 내접 직사각형 둘레·넓이 최댓값 (대칭축 기준!)' }
@@ -233,7 +233,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'tangentDiscriminant') {
           return {
             badge: `탐구 1-B · ⚡ 직선 y = x + k 의 상하 이동과 판별식 (D > 0 두 점 · D = 0 접선 · D < 0 만나지 않음)`,
-            hint: `포물선 $y = x^2 - x$ 와 기울기가 $1$인 직선 $y = x + k$ 의 위치 관계는 방정식 $x^2 - 2x - k = 0$ 의 판별식 $D/4 = 1 + k$ 부호로 결정됩니다! <strong class="text-amber-300">$k = -1$ 일 때($D = 0$) 점 $(1, 0)$에서 정확히 접합니다!</strong>`,
+            hint: `포물선 $y = x^2 - x$ 와 기울기가 $1$인 직선 $y = x + k$ 의 위치 관계는 방정식 $x^2 - 2x - k = 0$ 의 판별식 $\\frac{D}{4} = 1 + k$ 부호로 결정됩니다! <strong class="text-amber-300">$k = -1$ 일 때($D = 0$) 점 $(1, 0)$에서 정확히 접합니다!</strong>`,
             actionTxt: state.fold > 0.5 ? '🎬 두 점 교차(D>0) 보기' : '🎬 직선 평행이동 & 접하는 순간(D=0, k=-1)',
             dim1Name: '접할 조건 (D = 0)', dim2Name: '접점의 x좌표 공식',
             val1Txt: '1 + k = 0 ➔ k = -1!', val2Txt: '중근 x = 1 (접점 (1, 0))',
@@ -242,8 +242,8 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 1, name: `🟡 k = -1 (D = 0): 한 점에서 접한다! [접선 y = x - 1]`, desc: `x² - 2x + 1 = (x - 1)² = 0 ➔ 접점의 x좌표는 중근 x = 1!`, val: `D = 0 (접선 ⭕)`, color: '#fbbf24', ok: true },
               { id: 2, name: `🩷 k < -1 (D < 0): 만나지 않는다 (교점 0개, 허근)`, desc: `직선이 포물선보다 아래에 있어 실근이 존재하지 않음`, val: `D < 0 (0점)`, color: '#f472b6', ok: true }
             ],
-            totalRes: `x² - 2x - k = 0 에서 D/4 = 1 + k ➔ k > -1(2점), k = -1(접함), k < -1(0점)`,
-            rule: '접점의 x좌표는 판별식 D=0 을 풀기 전에 이미 h(x)의 대칭축(중근 x = -b/2a)으로 정해져 있다!',
+            totalRes: `x² - 2x - k = 0 에서 $\\frac{D}{4}$ = 1 + k ➔ k > -1(2점), k = -1(접함), k < -1(0점)`,
+            rule: '접점의 x좌표는 판별식 D=0 을 풀기 전에 이미 h(x)의 대칭축(중근 x = -$\\frac{b}{2a}$)으로 정해져 있다!',
             formulaHTML: `• $ax^2 + bx + c = mx + n \\iff ax^2 + (b-m)x + (c-n) = 0$<br/>• 접할 때는 완전제곱식이 되므로, <strong>접점의 $x$좌표는 계산할 필요도 없이 중근인 ${tex('\\mathbf{x = -\\dfrac{b - m}{2a}}')}</strong> 입니다!`,
             notes: `• 기울기 $m$이 주어졌을 때 접점을 먼저 $x = -\\frac{b-m}{2a}$ 로 구해서 포물선에 대입하면 판별식을 전개하지 않고도 접선의 방정식을 구할 수 있습니다!`,
             tapeTitle: `판별식 부호와 교점 개수: D > 0 (서로 다른 2점)  |  D = 0 (접함, 1점)  |  D < 0 (만나지 않음, 0점)`,
@@ -258,11 +258,11 @@ window.addEventListener('DOMContentLoaded', function () {
             dim1Name: '가로 거리 |α - β|', dim2Name: '빗변 선분 AB의 길이',
             val1Txt: '|α - β| = √17', val2Txt: '√17 × √(1 + 1²) = √34!',
             parts: [
-              { id: 0, name: `🟡 1단계: 방정식 x² - 3x - 2 = 0 에서 |α - β| 구하기`, desc: `판별식 D = 9 + 8 = 17이므로 두 근의 차는 √D/|1| = √17입니다. 두 근을 각각 계산할 필요는 없습니다.`, val: `Δx = |α - β| = √17`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 1단계: 방정식 x² - 3x - 2 = 0 에서 |α - β| 구하기`, desc: `판별식 D = 9 + 8 = 17이므로 두 근의 차는 $\\frac{\\sqrt{D}}{|1|}$ = √17입니다. 두 근을 각각 계산할 필요는 없습니다.`, val: `Δx = |α - β| = √17`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 2단계: 직선의 기울기가 m 이므로 세로 길이 Δy = |m| · |α - β|`, desc: `가로 : 세로 : 빗변 = 1 : m : √(1 + m²) 피타고라스 직각삼각형!`, val: `Δy = m|α - β|`, color: '#38bdf8', ok: true },
               { id: 2, name: `🩷 3단계 [완성]: 선분 AB = √(1 + m²) × |α - β| = √34!`, desc: `두 점은 기울기 1인 같은 직선 위에 있으므로 Δy=Δx=√17이고, 피타고라스 정리로 AB=√(17+17)=√34입니다.`, val: `AB = √34 ⭕`, color: '#f472b6', ok: true }
             ],
-            totalRes: `선분 AB의 길이 = √(1 + m²) · |α - β| = √(1 + m²) · (√D / |a|)`,
+            totalRes: `선분 AB의 길이 = √(1 + m²) · |α - β| = √(1 + m²) · ($\\frac{\\sqrt{D}}{|a|}$)`,
             rule: '기울기가 m인 직선 위의 두 점 사이의 거리는 (x좌표의 차 |α-β|) × √(1 + m²) 로 구할 수 있다!',
             formulaHTML: `• <strong>두 근의 차</strong>: ${tex('|\\alpha - \\beta| = \\sqrt{(\\alpha+\\beta)^2 - 4\\alpha\\beta} = \\mathbf{\\dfrac{\\sqrt{D}}{|a|}}')}<br/>• <strong>선분 AB의 길이</strong>: ${tex('\\mathbf{\\overline{AB} = \\sqrt{1 + m^2}\\cdot |\\alpha - \\beta|}')}!`,
             notes: `• 기울기 $m = 1$ (45°)이면 가로 길이의 **$\\sqrt{2}$배**, 기울기 $m = 2$ 이면 **$\\sqrt{5}$배**, 기울기 $m = \\frac{3}{4}$ 이면 **$\\frac{5}{4}$배**입니다!`,
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function () {
             hint: `이 탐구의 기준 직선은 포물선 아래에 있어 교점이 없습니다. 이 직선을 평행이동해 포물선에 가까이 가져오면 두 곡선 사이 간격은 접할 때($D=0$) 가장 작아집니다. 직선이 포물선과 만나면 최단거리는 그 교점에서 $0$이므로, 접선 결론은 이처럼 만나지 않는 설정에서 적용합니다.`,
             actionTxt: state.fold > 0.5 ? '🎬 일반 점 P 보기' : '🎬 평행한 접선(D=0)을 긋고 접점 P에서 최대 넓이 확인',
             dim1Name: '핵심 전략', dim2Name: '최적점 P의 정체',
-            val1Txt: '같은 기울기 m인 접선(D=0)', val2Txt: '접점 x = (m - b) / 2a!',
+            val1Txt: '같은 기울기 m인 접선(D=0)', val2Txt: '접점 x = $\\frac{m-b}{2a}$!',
             parts: [
               { id: 0, name: `🟡 평행한 접선 y = mx + k' (판별식 D = 0 일 때!)`, desc: `직선 l과 기울기 m이 같으면서 포물선에 접하는 직선을 먼저 구함`, val: `접선 D = 0 ⭕`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 접점 P: 직선까지의 수직거리 d가 최소 (교점 삼각형에서는 높이 최대!)`, desc: `평행선 등적변형 원리에 의해 접점 P에서 높이가 극값 달성!`, val: `접점 P ⭕`, color: '#f472b6', ok: true }
@@ -344,7 +344,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'movingAxisMaxJump') {
           const isLeftMax = curP > 1.0;
           return {
-            badge: `탐구 2-B · ⚖️ 최댓값을 갖는 점이 바뀌는 경계 — 구간의 중점 p = (0 + 2)/2 = 1`,
+            badge: `탐구 2-B · ⚖️ 최댓값을 갖는 점이 바뀌는 경계 — 구간의 중점 p = $\\frac{0+2}{2}$ = 1`,
             hint: `아래로 볼록할 때 <strong>최댓값은 대칭축 $x = p$ 로부터 더 멀리 떨어진 구간의 끝점</strong>에서 나옵니다! 따라서 최댓값은 3구간이 아니라 <strong>구간의 정중앙 $x = 1$ 딱 하나를 경계</strong>로 <strong class="text-amber-300">$p < 1$ 이면 $f(2)$가 최대</strong>, <strong class="text-pink-300">$p > 1$ 이면 $f(0)$이 최대</strong>가 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 p < 1 (오른쪽 끝 최대) 보기' : '🎬 대칭축이 구간의 중점(p=1)을 넘을 때 최댓값을 갖는 점이 바뀌는 모습 보기',
             dim1Name: '최댓값 분할 경계선', dim2Name: `현재(p=${fmtNum(curP)}) 최댓값 위치`,
@@ -512,17 +512,17 @@ window.addEventListener('DOMContentLoaded', function () {
           badge: `탐구 3-E · 📈 두 함수 중 크지 않은 함수 h(x) = min(f(x), g(x)) 그래프와 최댓값 찾기!`,
           hint: `“$f(x)$와 $g(x)$ 중 크지 않은 값(작거나 같은 값)”이라는 말은, 두 그래프를 함께 그려놓고 **교점을 경계로 더 아래쪽에 있는 곡선만 골라서 색칠**하라는 뜻입니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 min(f, g) 아래쪽 테두리 보기' : '🎬 max(f, g) 위쪽 테두리와 min(f, g) 아래쪽 테두리 바꿔 보기',
-          dim1Name: '기호 번역: (a+b - |a-b|)/2', dim2Name: 'h(x) = min(f, g) 의 최댓값',
+          dim1Name: '기호 번역: $\\frac{a+b-|a-b|}{2}$', dim2Name: 'h(x) = min(f, g) 의 최댓값',
           val1Txt: '더 아래쪽 그래프 선택!', val2Txt: '오른쪽 교점(또는 위로볼록 꼭짓점)!',
           parts: [
             { id: 0, name: `🟡 min(f(x), g(x)): 두 그래프 중 더 아래쪽(낮은 쪽) 테두리 선택!`, desc: `교점 안쪽에서는 직선(또는 위로 볼록 곡선), 바깥쪽에서는 내려가는 곡선 따라감`, val: `아래쪽 테두리 ⭕`, color: '#fbbf24', ok: true },
-            { id: 1, name: `🔵 기호 표현 번역: min(A, B) = (A + B - |A - B|) / 2`, desc: `max(A, B) = (A + B + |A - B|) / 2 로 나타낼 수 있다!`, val: `절댓값 식 번역`, color: '#38bdf8', ok: true }
+            { id: 1, name: `🔵 기호 표현 번역: min(A, B) = $\\frac{A+B-|A-B|}{2}$`, desc: `max(A, B) = $\\frac{A+B+|A-B|}{2}$ 로 나타낼 수 있다!`, val: `절댓값 식 번역`, color: '#38bdf8', ok: true }
           ],
           totalRes: `크지 않은 함수 min(f, g) = 교점을 기준으로 더 아래쪽에 위치한 그래프 조각들의 합체!`,
           rule: '두 그래프를 겹쳐 그린 뒤, min 이면 각 x에서 "아래쪽 선"만 형광펜으로 따라 그리면 끝난다!',
           formulaHTML: `• 문제에서 ${tex('h(x) = \\dfrac{f(x) + g(x) - |f(x) - g(x)|}{2}')} 로 주어지면:<br/>&nbsp;&nbsp;- $f(x) \\ge g(x)$ 일 때 $h(x) = g(x)$ 이고, $f(x) < g(x)$ 일 때 $h(x) = f(x)$ 이므로 곧 **더 작은 함수 $\\min(f, g)$** 를 뜻합니다!`,
           notes: `• 형광펜으로 따라 그린 최종 굵은 실선 위에서 가장 높은 봉우리(교점 또는 꼭짓점)의 $y$좌표를 읽으면 최댓값이 됩니다!`,
-          tapeTitle: `기호의 뜻: (f + g + |f - g|)/2 = 큰 함수 max(f, g)  |  (f + g - |f - g|)/2 = 작은 함수 min(f, g)`,
+          tapeTitle: `기호의 뜻: $\\frac{f+g+|f-g|}{2}$ = 큰 함수 max(f, g)  |  $\\frac{f+g-|f-g|}{2}$ = 작은 함수 min(f, g)`,
           tapeSegs: []
         };
       }
@@ -539,7 +539,7 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟢 잠금장치 ① [경계 함숫값]: f(p) > 0 (x = p 에서 x축 위에 있음)`, desc: `만약 f(p) ≤ 0 이면 한 근이 p 이하로 넘어가 버림!`, val: `① f(p) > 0 ⭕`, color: '#34d399', ok: true },
               { id: 1, name: `🟡 잠금장치 ② [판별식]: D ≥ 0 (서로 다른 두 근이면 D > 0)`, desc: `⚠️ f(p)>0 이고 축>p 여도, D<0 이면 포물선이 x축 위쪽에 있어서 실근이 없음(반례 ①)!`, val: `② D ≥ 0 필수!`, color: '#fbbf24', ok: true },
-              { id: 2, name: `🔵 잠금장치 ③ [대칭축 위치]: (대칭축 -b/2a) > p`, desc: `⚠️ f(p)>0 이고 D≥0 이어도, 축<p 이면 두 근이 모두 p 왼쪽에 생김(반례 ②)!`, val: `③ 대칭축 > p 필수!`, color: '#38bdf8', ok: true }
+              { id: 2, name: `🔵 잠금장치 ③ [대칭축 위치]: (대칭축 -$\\frac{b}{2a}$) > p`, desc: `⚠️ f(p)>0 이고 D≥0 이어도, 축<p 이면 두 근이 모두 p 왼쪽에 생김(반례 ②)!`, val: `③ 대칭축 > p 필수!`, color: '#38bdf8', ok: true }
             ],
             totalRes: `두 근이 모두 p보다 클 조건 = [① f(p) > 0] ∩ [② D ≥ 0] ∩ [③ 대칭축 > p] 교집합!`,
             rule: '두 근이 모두 p의 한쪽(오른쪽 또는 왼쪽)에 있을 때는 [f(p)의 부호 · 판별식 · 축의 위치] 세 조건을 모두 써야 한다!',
@@ -579,7 +579,7 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟢 양쪽 벽 함숫값: f(-1) > 0  그리고  f(3) > 0`, desc: `양쪽 경계선에서 모두 그래프가 x축 위에 올라와 있어야 함!`, val: `f(p)>0, f(q)>0`, color: '#34d399', ok: true },
               { id: 1, name: `🟡 바닥 닿기 [판별식]: D ≥ 0 (서로 다른 두 근이면 D > 0)`, desc: `그래프 꼭짓점이 x축 이하로 내려와야 실근이 존재함!`, val: `D ≥ 0`, color: '#fbbf24', ok: true },
-              { id: 2, name: `🔵 중심 가두기 [대칭축]: -1 < (대칭축 -b/2a) < 3`, desc: `대칭축이 구간 (-1, 3) 안에 들어와야 두 근이 그 안에서 생김!`, val: `p < 대칭축 < q`, color: '#38bdf8', ok: true }
+              { id: 2, name: `🔵 중심 가두기 [대칭축]: -1 < (대칭축 -$\\frac{b}{2a}$) < 3`, desc: `대칭축이 구간 (-1, 3) 안에 들어와야 두 근이 그 안에서 생김!`, val: `p < 대칭축 < q`, color: '#38bdf8', ok: true }
             ],
             totalRes: `두 근이 모두 (p, q) 안에 있을 조건 = [f(p)>0] ∩ [f(q)>0] ∩ [D≥0] ∩ [p < 대칭축 < q]`,
             rule: '구간 (p, q) 안에 두 근 가두기 = [함(양끝 2개) · 판(D≥0) · 축(p<축<q)] 연립부등식!',
@@ -616,9 +616,9 @@ window.addEventListener('DOMContentLoaded', function () {
           dim1Name: '두 양근 조건 (3개)', dim2Name: '서로 다른 부호 조건 (단 1개!)',
           val1Txt: 'D ≥ 0, α+β > 0, αβ > 0', val2Txt: 'αβ < 0 (오직 두 근의 곱만!)',
           parts: [
-            { id: 0, name: `🟡 [두 근이 모두 양수] ⟺ 두 근이 0보다 큼: D ≥ 0, α+β > 0, αβ > 0`, desc: `근의 합은 −b/a, 근의 곱은 c/a입니다. 따라서 두 근이 모두 양수이려면 D≥0, −b/a>0, c/a>0을 확인합니다.`, val: `3조건 모두 ⭕`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🟡 [두 근이 모두 양수] ⟺ 두 근이 0보다 큼: D ≥ 0, α+β > 0, αβ > 0`, desc: `근의 합은 −$\\frac{b}{a}$, 근의 곱은 $\\frac{c}{a}$입니다. 따라서 두 근이 모두 양수이려면 D≥0, −$\\frac{b}{a}$>0, $\\frac{c}{a}$>0을 확인합니다.`, val: `3조건 모두 ⭕`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 [두 근이 모두 음수] ⟺ 두 근이 0보다 작음: D ≥ 0, α+β < 0, αβ > 0`, desc: `두 음수를 곱해도 양수(αβ > 0)이고, 합만 음수(α+β < 0)!`, val: `합만 음수 ⭕`, color: '#38bdf8', ok: true },
-            { id: 2, name: `🩷 [서로 다른 부호] ⟺ 두 근 사이에 0이 있음: 오직 αβ < 0 단 1개!`, desc: `근의 곱 αβ=c/a<0이면 두 근의 부호가 다릅니다. 그림은 a>0인 예이므로 이때는 f(0)=c<0과 같습니다.`, val: `αβ < 0 단 1개!`, color: '#f472b6', ok: true }
+            { id: 2, name: `🩷 [서로 다른 부호] ⟺ 두 근 사이에 0이 있음: 오직 αβ < 0 단 1개!`, desc: `근의 곱 αβ=$\\frac{c}{a}$<0이면 두 근의 부호가 다릅니다. 그림은 a>0인 예이므로 이때는 f(0)=c<0과 같습니다.`, val: `αβ < 0 단 1개!`, color: '#f472b6', ok: true }
           ],
           totalRes: `두 양근: D≥0, 합>0, 곱>0 | 두 음근: D≥0, 합<0, 곱>0 | 다른 부호: 곱(αβ) < 0 단 1개!`,
           rule: '서로 다른 부호의 근일 때: "절댓값이 같다" ➔ α+β=0 추가 | "양근의 절댓값이 더 크다" ➔ α+β>0 추가!',
@@ -716,16 +716,16 @@ window.addEventListener('DOMContentLoaded', function () {
           hint: `$f(x) < 0$ 의 해가 $-2 < x < 4$ 라고 주어졌을 때, $f(x) = a(x+2)(x-4)$ 식을 세워 $2x-1$을 대입해 전개할 필요가 전혀 없습니다! <strong>그냥 $f(\\;\\square\\;) < 0$ 의 빈칸 $\\square$ 자리에 들어간 <span class="text-amber-300">$(2x - 1)$ 통째로 $-2$ 와 $4$ 사이에 넣으면</span></strong> 바로 구할 수 있습니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 원래 f(x) 보기' : '🎬 빈칸 치환(-2 < 2x - 1 < 4)으로 해 구하기',
           dim1Name: '원래 부등식 f( □ ) < 0 의 해', dim2Name: '합성 부등식 f(2x - 1) < 0 의 해',
-          val1Txt: '-2 < □ < 4', val2Txt: '-2 < 2x - 1 < 4 ➔ -1/2 < x < 5/2!',
+          val1Txt: '-2 < □ < 4', val2Txt: '-2 < 2x - 1 < 4 ➔ $-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$!',
           parts: [
             { id: 0, name: `🔵 기준 틀: f( □ ) < 0 이 성립하는 빈칸 □ 의 범위 = (-2 < □ < 4)`, desc: `f라는 함수 기계가 음수를 뱉어내는 입력값의 범위는 항상 -2와 4 사이!`, val: `-2 < □ < 4`, color: '#38bdf8', ok: true },
-            { id: 1, name: `🟡 빈칸에 (2x - 1) 그대로 대입: -2 < 2x - 1 < 4`, desc: `양변에 1을 더하면 -1 < 2x < 5 ➔ 2로 나누면 -1/2 < x < 5/2 끝!`, val: `-1/2 < x < 5/2 ⭕`, color: '#fbbf24', ok: true }
+            { id: 1, name: `🟡 빈칸에 (2x - 1) 그대로 대입: -2 < 2x - 1 < 4`, desc: `양변에 1을 더하면 -1 < 2x < 5 ➔ 2로 나누면 $-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$ 끝!`, val: `$-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$ ⭕`, color: '#fbbf24', ok: true }
           ],
-          totalRes: `f(x) < 0 해가 -2 < x < 4 ➔ f(2x - 1) < 0 은 -2 < 2x - 1 < 4 ➔ -1/2 < x < 5/2!`,
+          totalRes: `f(x) < 0 해가 -2 < x < 4 ➔ f(2x - 1) < 0 은 -2 < 2x - 1 < 4 ➔ $-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$!`,
           rule: 'f(ax + b) < 0 꼴의 부등식은 식을 전개하지 말고, 괄호 안의 (ax + b)를 통째로 원래 해의 x 자리에 집어넣어라!',
           formulaHTML: `• 주의: 만약 $f(2x - 1) < 0$ 이 아니라 **$f(2x - 1) > 0$** (부등호 반대!)의 해를 물었다면?<br/>&nbsp;&nbsp;$\\implies$ 원래 $f(\\square) > 0$ 의 해가 바깥 범위($\\square < -2$ 또는 $\\square > 4$)이므로,<br/>&nbsp;&nbsp;${tex('2x - 1 < -2\\text{ 또는 }2x - 1 > 4 \\implies \\mathbf{x < -\\dfrac{1}{2}\\text{ 또는 }x > \\dfrac{5}{2}}')}!`,
           notes: `• 이 빈칸($\\square$) 치환법은 이차방정식에서 $f(x)=0$ 의 두 근의 합이 $\\alpha+\\beta=6$ 일 때 $f(2x-1)=0$ 의 두 근을 $2x-1 = \\alpha, \\beta$ 로 푸는 것과 같은 원리입니다!`,
-          tapeTitle: `치환 과정: [-2 < □ < 4] ──(□ = 2x - 1 대입)──▶ [-1 < 2x < 5] ──(÷2)──▶ [-1/2 < x < 5/2]`,
+          tapeTitle: `치환 과정: [-2 < □ < 4] ──(□ = 2x - 1 대입)──▶ [-1 < 2x < 5] ──(÷2)──▶ [$-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$]`,
           tapeSegs: []
         };
       }
@@ -739,7 +739,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dim1Name: '"이차부등식" 일 때 (k ≠ 0)', dim2Name: '그냥 "부등식" 일 때 (k = 0 체크!)',
           val1Txt: '0 < k < 3 (등호 없음)', val2Txt: '0 ≤ k < 3 (k = 0 포함! ⭕)',
           parts: [
-            { id: 0, name: `🔵 1단계 [k ≠ 0 일 때]: 아래로 볼록(k > 0) 이고 판별식 D/4 = k² - 3k < 0`, desc: `k(k - 3) < 0 이므로 0 < k < 3 ("이차부등식"이면 여기서 끝!)`, val: `0 < k < 3`, color: '#38bdf8', ok: true },
+            { id: 0, name: `🔵 1단계 [k ≠ 0 일 때]: 아래로 볼록(k > 0) 이고 판별식 $\\frac{D}{4}$ = k² - 3k < 0`, desc: `k(k - 3) < 0 이므로 0 < k < 3 ("이차부등식"이면 여기서 끝!)`, val: `0 < k < 3`, color: '#38bdf8', ok: true },
             { id: 1, name: `🩷 2단계 [k = 0 일 때 대입 테스트!]: 0·x² - 0·x + 3 > 0 ➔ 3 > 0 (참!)`, desc: `k = 0 이면 직선 y = 3 이 되어 모든 실수 x에서 0보다 크므로 성립!`, val: `k = 0 성립 ⭕!`, color: '#f472b6', ok: true },
             { id: 2, name: `❌ 만약 상수항이 -3 이어서 k=0 대입 시 "-3 > 0 (거짓)" 이면?`, desc: `그때는 그냥 "부등식"이라고 나와 있어도 k = 0 은 성립하지 않으므로 제외!`, val: `대입 확인 필수`, color: '#f43f5e', ok: false }
           ],
@@ -778,12 +778,12 @@ window.addEventListener('DOMContentLoaded', function () {
           dim1Name: '먼저 할 일 (조건부터!)', dim2Name: '2순위 작업 (k 항등식 정리!)',
           val1Txt: '이차방정식 판별식 D = 0 작성', val2Txt: '( )k + ( ) = 0 으로 계수 비교!',
           parts: [
-            { id: 0, name: `🟡 1단계 [먼저!]: x에 대한 이차방정식의 판별식 D/4 = 0 세우기`, desc: `(k + a)² - (k² + 2k + b) = 0 ➔ k² 이 없어져서 (2a - 2)k + (a² - b) = 0 이 됨!`, val: `① 판별식 D = 0`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🟡 1단계 [먼저!]: x에 대한 이차방정식의 판별식 $\\frac{D}{4}$ = 0 세우기`, desc: `(k + a)² - (k² + 2k + b) = 0 ➔ k² 이 없어져서 (2a - 2)k + (a² - b) = 0 이 됨!`, val: `① 판별식 D = 0`, color: '#fbbf24', ok: true },
             { id: 1, name: `🟢 2단계 [그 다음!]: D = 0 식을 k에 대하여 정리하여 항등식 풀기`, desc: `2a - 2 = 0 이고 a² - b = 0 ➔ a = 1, b = 1 완성!`, val: `② k 항등식 정리`, color: '#34d399', ok: true }
           ],
           totalRes: `"k에 관계없이 중근" ➔ ① 판별식 D = 0 을 먼저 세운다 ➔ ② 그 식을 k에 관한 항등식으로 푼다!`,
           rule: '문장의 순서는 "k에 관계없이(②) 중근을 가진다(①)"이지만, 풀이 순서는 "① D=0 ➔ ② k에 대한 항등식"으로 거꾸로이다!',
-          formulaHTML: `• 예: $x^2 - 2(k+a)x + k^2 + 2k + b = 0$ 이 $k$값에 관계없이 중근을 가질 때:<br/>&nbsp;&nbsp;① ${tex('D/4 = (k+a)^2 - (k^2+2k+b) = (2a-2)k + (a^2-b) = 0')}<br/>&nbsp;&nbsp;② $k$에 관한 항등식이므로 ${tex('2a-2=0,\\; a^2-b=0 \\implies \\mathbf{a=1,\\; b=1}')}!`,
+          formulaHTML: `• 예: $x^2 - 2(k+a)x + k^2 + 2k + b = 0$ 이 $k$값에 관계없이 중근을 가질 때:<br/>&nbsp;&nbsp;① ${tex('\\frac{D}{4} = (k+a)^2 - (k^2+2k+b) = (2a-2)k + (a^2-b) = 0')}<br/>&nbsp;&nbsp;② $k$에 관한 항등식이므로 ${tex('2a-2=0,\\; a^2-b=0 \\implies \\mathbf{a=1,\\; b=1}')}!`,
           notes: `• 마찬가지로 **“$k$값에 관계없이 항상 일정한 직선에 접할 때”**라는 문제도 $y = mx + n$ 과 연립한 뒤 **① $D = 0$ 을 먼저 세우고 ② $k$에 관한 항등식**으로 풀면 접선 $y = mx + n$ 이 구해집니다!`,
           tapeTitle: `풀이 순서 고정: [조건: 중근을 가진다 (① 판별식 D = 0 작성)] ──▶ [전제: k에 관계없이 (② k 항등식 계수 = 0)]`,
           tapeSegs: []
@@ -884,8 +884,8 @@ window.addEventListener('DOMContentLoaded', function () {
           qline(pH, pB, QCOL.cyan, 3.4, [5, 4], true, 1, 'aux');
           qline(pA, pB, QCOL.pink, 4.2, [], true, 2);
 
-          qdot(pA, 'A(α = (3-√17)/2)', QCOL.white, -72, -12);
-          qdot(pB, 'B(β = (3+√17)/2)', QCOL.white, 12, -12);
+          qdot(pA, 'A(α = \\frac{3-√17}{2})', QCOL.white, -72, -12);
+          qdot(pB, 'B(β = \\frac{3+√17}{2})', QCOL.white, 12, -12);
           qdot(pH, '가로차 |α-β| = √17 ➔ AB = √34', QCOL.gold, -40, 22);
         } else if (sub === 'minDistMaxArea') {
           const fn = (x) => 0.5 * x * x - x + 0.5;
@@ -1140,7 +1140,7 @@ window.addEventListener('DOMContentLoaded', function () {
           qdot(S(4, 0), '4(제외❌)', QCOL.red, -10, 24);
           qdot(S(curK, 0), `경계 k (3 ≤ k < 4)`, QCOL.pink, -20, -16);
         } else {
-          // compIneqTransform: f(x) < 0 (-2 < x < 4) -> f(2x - 1) < 0 (-1/2 < x < 5/2)
+          // compIneqTransform: f(x) < 0 (-2 < x < 4) -> f(2x - 1) < 0 ($-\\frac{1}{2} \\lt x \\lt \\frac{5}{2}$)
           drawFuncCurve((x) => 0.35 * (x + 2) * (x - 4), -3.8, 5.8, ox, oy, unit, 'rgba(56, 189, 248, 0.45)', 2.4, [5, 4], 0);
           drawFuncCurve((x) => 0.35 * (2 * x - 1 + 2) * (2 * x - 1 - 4), -2.5, 4.5, ox, oy, unit, QCOL.gold, 3.8, [], 1);
 

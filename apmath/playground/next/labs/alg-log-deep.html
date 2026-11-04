@@ -103,7 +103,7 @@ stepDescs: [
 '2단계: 반면 $y = \\log_2(x^2)$은 진수 조건이 **$x^2 > 0 \\iff x \\neq 0$**이고 $\\log_2(x^2) = 2\\log_2|x|$이므로, **$y$축에 대하여 대칭인 왼쪽 부분($x \\lt 0$)이 더해집니다.**',
 '3단계: 직선이나 원과의 교점의 개수를 구할 때 진수의 짝수 거듭제곱($x^2$)의 지수를 함부로 앞으로 내리면 $x$가 음수인 쪽의 실근을 놓치게 됨을 확인합니다.'
 ],
-trapWarning: '주의: 방정식 $\\log_2 x^2 = k$의 해는 $1$개가 아니라 $x = \\pm 2^{k/2}$ **2개(합 $= 0$)**입니다. 지수 $2$를 앞으로 내릴 때에는 반드시 **절댓값 $2\\log_2|x|$**로 써야 합니다.',
+trapWarning: '주의: 방정식 $\\log_2 x^2 = k$의 해는 $1$개가 아니라 $x = \\pm 2^{\\frac{k}{2}}$ **2개(합 $= 0$)**입니다. 지수 $2$를 앞으로 내릴 때에는 반드시 **절댓값 $2\\log_2|x|$**로 써야 합니다.',
 scenarios: [
 {
 chip: '문제 A (log₂(x²)의 그래프와 교점의 개수)',
@@ -164,7 +164,7 @@ textbookTitle: 'x₁ = 2⁻ᵗ, x₂ = 2ᵗ을 대입하고 산술평균과 기�
 textbookSteps: [
 '1) [ㄱ] $x_1 = 2^{-t}, x_2 = 2^t$이므로 $x_1 x_2 = 1$ (참).',
 '2) [ㄴ] $t > 0$이므로 $x_1 \\neq x_2$이고 산술·기하평균에 의해 $x_1 + x_2 > 2\\sqrt{x_1 x_2} = 2$ (참).',
-'3) [ㄷ] $t=2$이면 $x_1 = \\frac{1}{4}, x_2 = 4$이므로 중점은 $\\frac{4 + 1/4}{2} = \\frac{17}{8}$ (참).'
+'3) [ㄷ] $t=2$이면 $x_1 = \\frac{1}{4}, x_2 = 4$이므로 중점은 $\\frac{4 + \\frac{1}{4}}{2} = \\frac{17}{8}$ (참).'
 ],
 secretTitle: '두 교점의 성질: ① x₁x₂ = 1 (서로 역수), ② 중점 > 1',
 secretSteps: [
@@ -543,7 +543,7 @@ return x;
   function hudOf(mId, p) {
     let cards = [];
     let eq = '';
-    
+
 
 if (mId === 'type1') {
 const dy = Math.log2(p.multK);
@@ -569,7 +569,7 @@ cards = [
 { title: '정의역 (진수 조건)', val: isBoth ? 'x ≠ 0 (양쪽 모두)' : 'x > 0 (오른쪽만)', sub: isBoth ? 'x² > 0이므로 x가 음수여도 됨' : 'x가 음수이면 안 됨' },
 { title: '수평선 y=k와 교점 개수', val: isBoth ? '2개 (±대칭)' : '1개 (양수만)', sub: isBoth ? '두 실근의 합 = 0.000' : '음수인 실근을 놓치지 않도록 주의' },
 { title: '수평선과의 두 교점의 x좌표의 합', val: isBoth ? '0.000' : `+${Math.pow(2, p.lineYInt/2).toFixed(2)}`, sub: '두 근이 y축에 대하여 대칭' },
-{ title: '수평선과의 두 교점의 x좌표의 곱', val: isBoth ? `-${Math.pow(2, p.lineYInt).toFixed(2)}` : '단일근', sub: `-2^k = -(2^(k/2))²` }
+{ title: '수평선과의 두 교점의 x좌표의 곱', val: isBoth ? `-${Math.pow(2, p.lineYInt).toFixed(2)}` : '단일근', sub: `-2^k = -($2^{\\frac{k}{2}}$)²` }
 ];
 } else if (mId === 'type3') {
 const d1 = Math.pow(2, -p.lineT);
@@ -636,7 +636,7 @@ eq = (
 );
 cards = [
 { title: '등변사다리꼴 넓이 S', val: areaTrap.toFixed(3), sub: '½·|k₂-k₁|·(Δx₁+Δx₂)' },
-{ title: '두 평행선 사이 높이 h', val: hDist.toFixed(3), sub: `|k₂ - k₁| / √2` },
+{ title: '두 평행선 사이 높이 h', val: hDist.toFixed(3), sub: `$\\frac{|k_2-k_1|}{\\sqrt2}$` },
 { title: '윗변 AB / 아랫변 CD', val: `${(dx1*Math.SQRT2).toFixed(2)}, ${(dx2*Math.SQRT2).toFixed(2)}`, sub: '√2가 약분되는 구조' },
 { title: '두 직선이 이루는 각', val: '90.00°', sub: '기울기의 곱 (+1) × (−1) = −1' }
 ];
@@ -814,8 +814,8 @@ scen.problem = `**[숫자를 바꾼 문제]** $1 \\le x \\le ${mx},\\; 1 \\le y 
       drawMathLine(p.lineSlope, p.lineYInt, '#fbbf24', [], 2.3);
       if (Math.abs(p.lineSlope) < 0.01) {
         const rx = Math.pow(2, p.lineYInt / 2);
-        drawMathPoint(rx, p.lineYInt, `+2^(k/2) = ${rx.toFixed(2)}`, '#34d399', 6.5);
-        if (isBoth) drawMathPoint(-rx, p.lineYInt, `−2^(k/2) = −${rx.toFixed(2)} (음수인 실근)`, '#fb7185', 7);
+        drawMathPoint(rx, p.lineYInt, `+2^{\\frac{k}{2}} = ${rx.toFixed(2)}`, '#34d399', 6.5);
+        if (isBoth) drawMathPoint(-rx, p.lineYInt, `−2^{\\frac{k}{2}} = −${rx.toFixed(2)} (음수인 실근)`, '#fb7185', 7);
       }
       if (st(3)) badge(isBoth ? 'y = log₂(x²) = 2log₂|x| : y축에 대하여 대칭 (음수인 실근도 있음)' : 'y = 2log₂x : 진수 조건 x > 0 (오른쪽 부분만 있음)', isBoth ? '#fb7185' : '#38bdf8');
       drawMathPoint(0, p.lineYInt, `절편 k=${p.lineYInt.toFixed(1)}`, '#fbbf24', 8, true, (w) => { p.lineYInt = clamp(Math.round(w.y * 4) / 4, 0.5, 3.5); });

@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { id: 'paradoxPointVsFig', label: '🔄 왜 점은 (x+a, y+b)인데 도형은 f(x-a, y-b)=0 일까?' },
         { id: 'symmetry4Basic', label: '🪞 4대 기본 대칭이동 (x축 · y축 · 원점 · 직선 y=x)' },
         { id: 'symPointAndLine', label: '🎯 임의의 점(a,b) 대칭(2a-x) & 직선 y=mx+n 대칭' },
-        { id: 'lineSlideSame', label: '📐 x축으로 a 이동 = y축으로 b 이동 일치 (기울기 m=-b/a)' }
+        { id: 'lineSlideSame', label: '📐 x축으로 a 이동 = y축으로 b 이동 일치 (기울기 $m=-\\frac{b}{a}$)' }
       ],
       5: [
         { id: 'reflectTriPerim', label: '🔺 x축과 직선 y=x 위의 점 P, Q로 만든 △APQ의 둘레의 최솟값' },
@@ -452,8 +452,8 @@ window.addEventListener('DOMContentLoaded', function () {
             dim1Name: '분할 비율 (m : n)', dim2Name: '점 Q의 위치 방향',
             val1Txt: `${M} : ${N}`, val2Txt: dirStr,
             parts: [
-              { id: 0, name: `🟢 내분점 P (${M}:${N} 안쪽 분할) ➔ x = ${px}`, desc: `P = (mx₂ + nx₁) / (m + n) = (${M}×4 + ${N}×(-2)) / ${M + N} = ${px}`, val: `P(${px}, 0)`, color: '#34d399', ok: true },
-              { id: 1, name: `🩷 연장선 위의 점 Q (AQ : BQ = ${M} : ${N}) ➔ x = ${qx}`, desc: `Q = (mx₂ - nx₁) / (m - n) = (${M}×4 - ${N}×(-2)) / (${M}-${N}) = ${qx}`, val: `Q(${qx}, 0)`, color: '#f472b6', ok: true },
+              { id: 0, name: `🟢 내분점 P (${M}:${N} 안쪽 분할) ➔ x = ${px}`, desc: `P = $\\frac{mx_2+nx_1}{m+n}$ = (${M}×4 + ${N}×(-2)) / ${M + N} = ${px}`, val: `P(${px}, 0)`, color: '#34d399', ok: true },
+              { id: 1, name: `🩷 연장선 위의 점 Q (AQ : BQ = ${M} : ${N}) ➔ x = ${qx}`, desc: `Q = $\\frac{mx_2-nx_1}{m-n}$ = (${M}×4 - ${N}×(-2)) / (${M}-${N}) = ${qx}`, val: `Q(${qx}, 0)`, color: '#f472b6', ok: true },
               { id: 2, name: `🟡 점 Q의 위치: AQ : BQ = ${M} : ${N}`, desc: M > N ? `A에서 더 멀고(${M}) B에 가까우므로(${N}) 당연히 B 오른쪽!` : `A에 더 가깝고(${M}) B에서 멀므로(${N}) 당연히 A 왼쪽!`, val: dirStr, color: '#fbbf24', ok: true }
             ],
             totalRes: `A(-2), B(4)를 ${M}:${N} 분할 ➔ 내분점 P(${px}) | 연장선 위의 점 Q(${qx}, ${dirStr})`,
@@ -524,7 +524,7 @@ window.addEventListener('DOMContentLoaded', function () {
             hint: `① 삼각형 세 변을 같은 비율 $m:n$으로 내분한 점 $D, E, F$를 이어도 <strong>새 삼각형의 무게중심은 원래 무게중심 $G$와 일치</strong>합니다! ② 평행사변형 $ABCD$에서는 대각선 중점이 일치하므로 <strong class="text-amber-300">(A + C) = (B + D)</strong> 가 성립합니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 평행사변형 제4꼭짓점 보기' : '🎬 내분 삼각형 △DEF 무게중심 G 불변 확인!',
             dim1Name: '무게중심 G 좌표', dim2Name: '평행사변형 대각선 합',
-            val1Txt: 'G = (A + B + C) / 3', val2Txt: 'A + C = B + D (중점 일치!)',
+            val1Txt: 'G = $\\frac{A+B+C}{3}$', val2Txt: 'A + C = B + D (중점 일치!)',
             parts: [
               { id: 0, name: `🟡 원래 △ABC의 무게중심 G = 새 내분삼각형 △DEF의 무게중심!`, desc: `세 변을 똑같이 ${M}:${N}으로 내분해도 평균 좌표 G(1, 1)은 변하지 않음!`, val: `G(1, 1) 불변 ⭕`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 평행사변형 ABCD 꼭짓점 공식: x_A + x_C = x_B + x_D`, desc: `두 대각선 AC와 BD의 중점이 일치하므로 양끝 좌표의 합이 같다!`, val: `D = A + C - B`, color: '#38bdf8', ok: true }
@@ -543,7 +543,7 @@ window.addEventListener('DOMContentLoaded', function () {
           hint: `거리에 <strong>제곱이 없을 때($PA+PB$)</strong>는 점 $P$가 <strong>선분 $AB$ 위</strong>에 있을 때 최소이지만, <strong>제곱이 붙어 있을 때($PA^2+PB^2+PC^2$)</strong>는 이차함수 완전제곱식에 의해 점 $P$가 <strong class="text-amber-300">삼각형 $\\triangle ABC$의 무게중심 $G$</strong>에 올 때 최소가 됩니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 선분 AB 위 최솟값 보기' : '🎬 점 P를 무게중심 G로 옮겨 보기',
           dim1Name: 'PA + PB 최소 위치', dim2Name: 'PA² + PB² + PC² 최소 위치',
-          val1Txt: '선분 AB 위의 점 P', val2Txt: '무게중심 G((x₁+x₂+x₃)/3)!',
+          val1Txt: '선분 AB 위의 점 P', val2Txt: '무게중심 G($\\frac{x_1+x_2+x_3}{3}$)!',
           parts: [
             { id: 0, name: `🟡 [제곱 있음] PA² + PB² + PC² 이 최소가 되는 점 P = 무게중심 G!`, desc: `3(x - x_G)² + 3(y - y_G)² + k 꼴로 묶이므로 P = G 일 때 최소!`, val: `P = 무게중심 G ⭕`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 [제곱 없음] PA + PB 가 최소가 되는 점 P = 선분 AB 위의 모든 점`, desc: `삼각형 결정조건 PA + PB ≥ AB 에 의해 일직선 선분 AB 위에서 최소!`, val: `최솟값 = 선분 AB`, color: '#38bdf8', ok: true }
@@ -609,7 +609,7 @@ window.addEventListener('DOMContentLoaded', function () {
             dim1Name: '① 이등분(중점 M)', dim2Name: '② 수직(기울기 m\')',
             val1Txt: 'M(1, 1) 통과', val2Txt: 'm=1 ➔ m\'=-1 (y=-x+2)',
             parts: [
-              { id: 0, name: `🟡 조건 ① [이등분]: 선분 AB의 중점 M(1, 1) 통과`, desc: `((-1+3)/2, (-1+3)/2) = (1, 1)`, val: `중점 M(1, 1)`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 조건 ① [이등분]: 선분 AB의 중점 M(1, 1) 통과`, desc: `($\\frac{-1+3}{2}$, $\\frac{-1+3}{2}$) = (1, 1)`, val: `중점 M(1, 1)`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 조건 ② [수직]: AB 기울기(1) × 수직선 기울기(m') = -1`, desc: `따라서 수직이등분선 방정식: y - 1 = -1(x - 1) ⇒ y = -x + 2!`, val: `y = -x + 2 ⭕`, color: '#f472b6', ok: true },
               { id: 2, name: `🔵 자취 성질: 수직이등분선 위의 모든 점 P는 PA = PB!`, desc: `△PAM ≡ △PBM (SAS 합동) 이므로 두 정점 A, B에서 같은 거리!`, val: `PA = PB 등거리`, color: '#38bdf8', ok: true }
             ],
@@ -697,9 +697,9 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟡 점 P(3, 4)에서 직선 3x+4y-5=0 에 내린 수선 PH (거리 d = 4)`, desc: `점과 직선 사이의 거리는 언제나 90° 수직거리(최단거리)!`, val: `수직거리 d = 4`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 수선의 발 H(3/5, 4/5) 구하기: 법선 방향으로 4만큼 이동`, desc: `P를 직선식에 대입한 값은 20입니다. 법선벡터의 길이 제곱이 3²+4²=25이므로 H=P-(20/25)(3,4)=(3-12/5, 4-16/5)=(3/5,4/5)입니다. 실제로 3(3/5)+4(4/5)-5=0입니다.`, val: `수선의 발 H(3/5, 4/5)`, color: '#f472b6', ok: true },
-              { id: 2, name: `🔵 왜 분모가 √(a²+b²) 일까? (직각삼각형 빗변 비율 보정!)`, desc: `세로 거리(|ax₁+by₁+c|/b)에 cos θ = b/√(a²+b²) 를 곱한 수직 높이!`, val: `닮음비 보정 ⭕`, color: '#38bdf8', ok: true }
+              { id: 2, name: `🔵 왜 분모가 √(a²+b²) 일까? (직각삼각형 빗변 비율 보정!)`, desc: `세로 거리($\\frac{|ax_1+by_1+c|}{b}$)에 cos θ = $\\frac{b}{\\sqrt{a^2+b^2}}$ 를 곱한 수직 높이!`, val: `닮음비 보정 ⭕`, color: '#38bdf8', ok: true }
             ],
-            totalRes: `P(3, 4)와 3x + 4y - 5 = 0 사이 거리 d = |3(3)+4(4)-5| / √(3²+4²) = 20 / 5 = 4`,
+            totalRes: `P(3, 4)와 3x + 4y - 5 = 0 사이 거리 d = $\\frac{|3(3)+4(4)-5|}{\\sqrt{3^2+4^2}}$ = 20 / 5 = 4`,
             rule: '점과 직선 거리 공식 주의사항: 반드시 직선을 "= 0" (일반형 ax+by+c=0)으로 정리한 뒤 대입하라!',
             formulaHTML: `• ${tex('d = \\dfrac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}} = \\dfrac{|3(3) + 4(4) - 5|}{\\sqrt{3^2 + 4^2}} = \\dfrac{20}{5} = \\mathbf{4}')}`,
             notes: `• <strong>[주의]</strong>: 분모의 $\\sqrt{a^2+b^2}$ 에 점의 좌표 $(x_1, y_1)$을 넣으면 안 됩니다! 분모에는 **직선의 $x, y$의 계수 $(a, b)$**가 들어갑니다!`,
@@ -713,12 +713,12 @@ window.addEventListener('DOMContentLoaded', function () {
             hint: `평행한 두 직선 $2x - y + 5 = 0$ 과 $2x - y - 5 = 0$ 사이의 거리는 $y$절편의 차이($5 - (-5) = 10$)가 아닙니다! $10$은 비스듬한 세로 빗변이고, 실제 수직거리는 <strong>한 직선 위의 계산하기 쉬운 점 $(0, 5)$를 잡아 다른 직선까지 잰 수선 길이 <span class="text-amber-300">$d = \\frac{10}{\\sqrt{5}} = 2\\sqrt{5}$</span></strong>입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 수직거리 보기' : '🎬 y절편의 차(10)와 두 직선 사이의 거리(2√5)를 직각삼각형으로 비교',
             dim1Name: '세로 절편 차이 (빗변)', dim2Name: '진짜 수직거리 d (높이)',
-            val1Txt: '|5 - (-5)| = 10 (❌)', val2Txt: '10 / √(2²+1²) = 2√5 (⭕)',
+            val1Txt: '|5 - (-5)| = 10 (❌)', val2Txt: '$\\frac{10}{\\sqrt{2^2+1^2}}$ = 2√5 (⭕)',
             parts: [
-              { id: 0, name: `🟡 진짜 수직거리 d = |c - c'| / √(a² + b²) = 10 / √5 = 2√5`, desc: `첫 직선 위의 점 A(0, 5)에서 둘째 직선 2x-y-5=0 까지의 수선 길이!`, val: `d = 2√5 (약 4.47)`, color: '#fbbf24', ok: true },
+              { id: 0, name: `🟡 진짜 수직거리 d = $\\frac{|c-c′|}{\\sqrt{a^2+b^2}}$ = 10 / √5 = 2√5`, desc: `첫 직선 위의 점 A(0, 5)에서 둘째 직선 2x-y-5=0 까지의 수선 길이!`, val: `d = 2√5 (약 4.47)`, color: '#fbbf24', ok: true },
               { id: 1, name: `❌ [착시 함정] y절편의 차 |5 - (-5)| = 10 은 두 직선 사이의 거리가 아님!`, desc: `직선이 기울어져 있으므로 y축 방향 거리는 빗변이라 항상 더 긺!`, val: `절편차 10 ❌`, color: '#f43f5e', ok: false }
             ],
-            totalRes: `2x - y + 5 = 0 과 2x - y - 5 = 0 사이 거리 d = |5 - (-5)| / √(2² + (-1)²) = 2√5`,
+            totalRes: `2x - y + 5 = 0 과 2x - y - 5 = 0 사이 거리 d = $\\frac{|5-(-5)|}{\\sqrt{2^2+(-1)^2}}$ = 2√5`,
             rule: '평행선 거리 구하기: ① 한 직선에서 계산하기 제일 쉬운 점(절편) 1개를 뽑아 ② 다른 직선과의 거리를 구한다!',
             formulaHTML: `• <strong>공식 쓰기 전에 계수 통일 필수!</strong><br/>&nbsp;&nbsp;만약 $2x - y + 5 = 0$ 과 $4x - 2y - 10 = 0$ 이 주어지면, 먼저 $a, b$ 계수를 똑같이 맞춘 뒤 ${tex('\\mathbf{d = \\dfrac{|c - c\'|}{\\sqrt{a^2+b^2}}}')} 공식을 써야 합니다!`,
             notes: `• 공식을 따로 외우지 말고 첫 번째 직선에 $x=0$ (또는 $y=0$)을 넣어 **가장 간단한 점 하나를 뽑은 뒤 점과 직선 거리 공식**을 쓰는 것이 실수가 가장 적습니다!`,
@@ -737,7 +737,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 0, name: `🟡 점 P(x, y)에서 두 직선까지의 수선 길이 일치 (PH₁ = PH₂)`, desc: `△POH₁ ≡ △POH₂ (RHA 합동) ⟺ d₁ = d₂!`, val: `d₁ = d₂ ⭕`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 절댓값 풀기(|A| = |B| ➔ A = ±B): 직선 2개 탄생!`, desc: `+부호는 예각 이등분선, -부호는 둔각 이등분선 (둘은 항상 90° 수직!)`, val: `2개 직선 수직⊥`, color: '#f472b6', ok: true }
             ],
-            totalRes: `각의 이등분선 자취: |a₁x+b₁y+c₁|/√(a₁²+b₁²) = |a₂x+b₂y+c₂|/√(a₂²+b₂²)`,
+            totalRes: `각의 이등분선 자취: $\\frac{|a_1x+b_1y+c_1|}{\\sqrt{a_1^2+b_1^2}}$ = $\\frac{|a_2x+b_2y+c_2|}{\\sqrt{a_2^2+b_2^2}}$`,
             rule: '두 직선으로부터 같은 거리에 있는 점 P(x,y)의 자취 = 두 직선이 이루는 각의 이등분선 (2개)!',
             formulaHTML: `• 예: $2x - y - 1 = 0$ 과 $x + 2y - 1 = 0$ 의 각의 이등분선:<br/>&nbsp;&nbsp;${tex('\\dfrac{|2x - y - 1|}{\\sqrt{2^2+(-1)^2}} = \\dfrac{|x + 2y - 1|}{\\sqrt{1^2+2^2}} \\implies 2x - y - 1 = \\pm(x + 2y - 1)')}<br/>&nbsp;&nbsp;(이 예에서는 양쪽 분모 $\\sqrt{5}$ 가 같아서 약분됩니다!)`,
             notes: `• 구한 두 각의 이등분선의 기울기를 곱해보면 언제나 **$-1$ ($90^\\circ$ 수직)**이 됩니다! (이웃한 두 각의 합 $180^\\circ$의 절반씩이므로 $\\bullet + \\times = 90^\\circ$)`,
@@ -842,7 +842,7 @@ window.addEventListener('DOMContentLoaded', function () {
             val1Txt: '(2a - x, 2b - y)!', val2Txt: '①중점이 l 위 + ②기울기 수직!',
             parts: [
               { id: 0, name: `🟡 점 M(a, b)에 대한 점대칭 공식: P'(2a - x, 2b - y)`, desc: `기준점 M의 좌표를 2배 한 뒤 원래 좌표를 빼면 대칭점의 좌표!`, val: `(2a-x, 2b-y)`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🔵 일반 직선 l에 대한 선대칭 조건 ① [중점 조건]`, desc: `PP'의 중점 M((x+x')/2, (y+y')/2)이 대칭축 직선 l 위에 있다!`, val: `중점 ∈ 직선 l`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🔵 일반 직선 l에 대한 선대칭 조건 ① [중점 조건]`, desc: `PP'의 중점 M($\\frac{x+x′}{2}$, $\\frac{y+y′}{2}$)이 대칭축 직선 l 위에 있다!`, val: `중점 ∈ 직선 l`, color: '#38bdf8', ok: true },
               { id: 2, name: `🩷 일반 직선 l에 대한 선대칭 조건 ② [수직 조건]`, desc: `선분 PP'의 기울기 × 직선 l의 기울기(m) = -1 이다!`, val: `m · m' = -1 ⊥`, color: '#f472b6', ok: true }
             ],
             totalRes: `점 (a,b) 대칭 = (2a-x, 2b-y) | 직선 대칭 = [중점 조건 + 수직 조건] 연립!`,
@@ -866,9 +866,9 @@ window.addEventListener('DOMContentLoaded', function () {
             { id: 1, name: `🟡 y축으로 -${b}만큼 평행이동한 식: y = mx + n - ${b}`, desc: `두 직선이 일치하므로 -${a}m = -${b} ⇒ 기울기 m = ${b}/${a}!`, val: `m = ${b}/${a} ⭕`, color: '#fbbf24', ok: true }
           ],
           totalRes: `x축으로 +${a} 이동 = y축으로 -${b} 이동 일치 ⟺ 직선의 기울기 m = ${b}/${a}!`,
-          rule: 'x축으로 +a 이동한 직선과 y축으로 -b 이동한 직선이 일치할 조건은 기울기 m = b/a 이다.',
+          rule: 'x축으로 +a 이동한 직선과 y축으로 -b 이동한 직선이 일치할 조건은 기울기 $m=\\frac{b}{a}$ 이다.',
           formulaHTML: `• $x$축으로 $+${a}$ 이동한 직선 $y = m(x-${a})+n$ 과 $y$축으로 $-${b}$ 이동한 직선 $y = mx+n-${b}$ 가 일치하려면:<br/>&nbsp;&nbsp;${tex('-ma = -b \\implies \\mathbf{m = \\dfrac{b}{a}}')}!`,
-          notes: `• 두 이동은 점을 같은 방식으로 옮기는 것이 아니라 직선 전체를 옮깁니다. 식을 비교하면 두 이동 뒤의 $y$절편이 각각 $n-${a}m$과 $n-${b}$이고, 두 $y$절편이 같아야 하므로 $m=${b}/${a}$입니다.`,
+          notes: `• 두 이동은 점을 같은 방식으로 옮기는 것이 아니라 직선 전체를 옮깁니다. 식을 비교하면 두 이동 뒤의 $y$절편이 각각 $n-${a}m$과 $n-${b}$이고, 두 $y$절편이 같아야 하므로 $m=\\frac{${b}}{${a}}$입니다.`,
           tapeTitle: `직선 평행이동 일치 조건: y = m(x - ${a}) + n  ≡  y = mx + n - ${b}  ⟺  기울기 m = ${b}/${a}`,
           tapeSegs: []
         };
@@ -1011,8 +1011,8 @@ window.addEventListener('DOMContentLoaded', function () {
           dim1Name: '항상 지나는 점 P', dim2Name: '선분 AB와 만나는 m 범위',
           val1Txt: 'P(0, -1)', val2Txt: '1/2 ≤ m ≤ 4 (양 끝점 포함!)',
           parts: [
-            { id: 0, name: `🟡 경계 ①: 점 B(4, 1)을 지날 때의 최소 기울기 m = 1/2`, desc: `P(0, -1)과 B(4, 1)을 잇는 기울기 = (1 - (-1)) / (4 - 0) = 2/4 = 1/2`, val: `m = 1/2`, color: '#fbbf24', ok: true },
-            { id: 1, name: `🩷 경계 ②: 점 A(1, 3)을 지날 때의 최대 기울기 m = 4`, desc: `P(0, -1)과 A(1, 3)을 잇는 기울기 = (3 - (-1)) / (1 - 0) = 4`, val: `m = 4`, color: '#f472b6', ok: true },
+            { id: 0, name: `🟡 경계 ①: 점 B(4, 1)을 지날 때의 최소 기울기 m = 1/2`, desc: `P(0, -1)과 B(4, 1)을 잇는 기울기 = $\\frac{1-(-1)}{4-0}$ = 2/4 = 1/2`, val: `m = 1/2`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 경계 ②: 점 A(1, 3)을 지날 때의 최대 기울기 m = 4`, desc: `P(0, -1)과 A(1, 3)을 잇는 기울기 = $\\frac{3-(-1)}{1-0}$ = 4`, val: `m = 4`, color: '#f472b6', ok: true },
             { id: 2, name: `🟢 다른 풀이 [부등식 이용]: A와 B를 직선에 대입한 부호가 반대(≤ 0)!`, desc: `f(1, 3) · f(4, 1) ≤ 0 ➔ (m - 4)(4m - 2) ≤ 0 ➔ 1/2 ≤ m ≤ 4!`, val: `1/2 ≤ m ≤ 4 ⭕`, color: '#34d399', ok: true }
           ],
           totalRes: `점 P(0, -1)을 중심으로 직선을 회전 ➔ 점 B 통과(m=1/2) ~ 점 A 통과(m=4) ➔ 1/2 ≤ m ≤ 4`,
@@ -1031,7 +1031,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dim1Name: '직선 ① (절편 a = 6 ≠ 0)', dim2Name: '직선 ② [빠뜨리기 쉬움! 절편 = 0]',
           val1Txt: 'x + y = 6 (기울기 -1)', val2Txt: 'y = 2x (원점 통과 직선!)',
           parts: [
-            { id: 0, name: `🔵 직선 ① [a ≠ 0 일 때]: x/a + y/a = 1 에 (2, 4) 대입 ➔ x + y = 6`, desc: `x절편 = 6, y절편 = 6 으로 같은 직선 (기울기 = -1)`, val: `x + y - 6 = 0 ⭕`, color: '#38bdf8', ok: true },
+            { id: 0, name: `🔵 직선 ① [a ≠ 0 일 때]: $\\frac{x}{a}+\\frac{y}{a}$ = 1 에 (2, 4) 대입 ➔ x + y = 6`, desc: `x절편 = 6, y절편 = 6 으로 같은 직선 (기울기 = -1)`, val: `x + y - 6 = 0 ⭕`, color: '#38bdf8', ok: true },
             { id: 1, name: `🩷 직선 ② [절편 = 0 일 때]: 원점 O(0, 0)과 P(2, 4)를 지나는 직선!`, desc: `x절편 = 0, y절편 = 0 이므로 두 절편이 0으로 똑같음! (y = 2x)`, val: `y = 2x (누락주의!)`, color: '#f472b6', ok: true }
           ],
           totalRes: `점 (2, 4)를 지나고 두 절편이 같은 직선 = ① x + y = 6  ② y = 2x (총 2개!)`,
@@ -2258,7 +2258,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: [`직선 $l$이 $x$축, $y$축과 만나는 점 $(${a},\\ 0)$, $(0,\\ ${b})$과 원점으로 직각삼각형을 만듭니다. 빗변의 길이는 $\\sqrt{${a}^2+${b}^2}=${nt(c)}$입니다.`, `원점에서 빗변에 내린 수선의 길이가 구하는 거리 $d$입니다(높이).`, `삼각형의 넓이를 두 가지로 쓰면 $\\dfrac12\\cdot${a}\\cdot${b}=\\dfrac12\\cdot${nt(c)}\\cdot d$ 이므로 $d=\\dfrac{${a * b}}{${nt(c)}}=${frT(a * b, c)}$`, `정석 확인: $${b}x+${a}y-${a * b}=0$에 공식을 쓰면 $\\dfrac{${a * b}}{\\sqrt{${b}^2+${a}^2}}$로 같습니다.`],
       std: `① ${tex(`l:\\ ${b}x+${a}y-${a * b}=0`)}으로 고칩니다.<br/>② ${tex(`d=\\dfrac{|-${a * b}|}{\\sqrt{${b}^2+${a}^2}}=\\dfrac{${a * b}}{${nt(c)}}=${frT(a * b, c)}`)}`,
       quick: `절편이 ${tex(`${a},\\ ${b}`)}인 직선과 원점 사이의 거리는 직각삼각형의 높이입니다. 두 변의 곱을 빗변으로 나누어 ${tex(`d=\\dfrac{ab}{\\sqrt{a^2+b^2}}=\\dfrac{${a * b}}{${nt(c)}}`)}입니다. 서술형에는 「직각삼각형의 넓이를 두 가지로 나타내면」이라고 씁니다.`,
-      hl: '절편이 주어진 직선은 직각삼각형을 그리고 넓이를 두 가지로 쓰면 공식이 필요 없습니다.', warn: '절편이 (a, 0), (0, b)일 때 거리는 a·b/√(a²+b²)입니다. ½은 양변에서 지워집니다.'
+      hl: '절편이 주어진 직선은 직각삼각형을 그리고 넓이를 두 가지로 쓰면 공식이 필요 없습니다.', warn: '절편이 (a, 0), (0, b)일 때 거리는 a·$\\frac{b}{\\sqrt{a^2+b^2}}$입니다. ½은 양변에서 지워집니다.'
     };
   }
   defProb('pointLineDist', { tag: '2022학년도 9월 학평(인천) 14번 유형 · 점과 직선 사이의 거리', time: '목표 시간: 30초', quickTitle: '10초 컷 · 수선의 길이(직각삼각형)' }, [

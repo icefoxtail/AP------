@@ -95,7 +95,7 @@ id: 'type2',
 code: '유형 2',
 shortTitle: '합 Sₙ의 그래프 (원점을 지나는 포물선)',
 icon: 'fa-bezier-curve',
-stepLabels: ['원점 (0, 0)을 지나는 포물선', '대칭축 x = (p+q)/2', 'x절편 S_(p+q) = 0'],
+stepLabels: ['원점 (0, 0)을 지나는 포물선', '대칭축 x = $\\frac{p+q}{2}$', 'x절편 S_(p+q) = 0'],
 stepDescs: [
 '1단계: 등차수열의 합 $S_n = \\frac{d}{2}n^2 + \\left(a_1 - \\frac{d}{2}\\right)n$은 상수항이 $0$이므로 **그래프는 항상 원점 $(0, 0)$을 지나는 포물선**입니다.',
 '2단계: $S_p = S_q$ ($p \\neq q$)이면 두 점의 높이가 같으므로 포물선의 **대칭축은 $x = \\frac{p+q}{2}$**입니다.',
@@ -115,7 +115,7 @@ textbookSteps: [
 '2) $2a_1 + 9d = 0 \\implies a_1 = -4.5d$ ($d < 0$).',
 '3) $S_n = \\frac{n(2a_1 + (n-1)d)}{2} = \\frac{d}{2}n(n - 10)$이므로 $n=5$에서 최대이고 $k=10$에서 $S_{10}=0$이다.'
 ],
-secretTitle: 'S_p = S_q이면 대칭축은 (p+q)/2, S_(p+q) = 0',
+secretTitle: 'S_p = S_q이면 대칭축은 $\\frac{p+q}{2}$, S_(p+q) = 0',
 secretSteps: [
 '$S_0 = 0$이고 $S_3 = S_7$이므로 **대칭축은 $\\frac{3+7}{2} = 5$**입니다 (따라서 $n=5$에서 최댓값).',
 '원점 $(0, 0)$과 대칭축 $5$에 대하여 대칭인 점이 $x$절편이므로 $(3+7, 0) = (10, 0)$입니다. 즉 **$S_{10} = 0$ ($k=10$)**입니다. 3초 컷!'
@@ -295,7 +295,7 @@ id: 'type6',
 code: '유형 6',
 shortTitle: '시그마와 부분분수 (이웃한 항이 소거되는 합)',
 icon: 'fa-wand-sparkles',
-stepLabels: ['부분분수로 나누기', '이웃한 항끼리 소거', '남는 두 항: n/(a₁a_{n+1})'],
+stepLabels: ['부분분수로 나누기', '이웃한 항끼리 소거', '남는 두 항: $\\frac{n}{a_1a_{n+1}}$'],
 stepDescs: [
 '1단계: 각 항 $\\frac{1}{a_k a_{k+1}}$을 부분분수 $\\frac{1}{d}\\left(\\frac{1}{a_k} - \\frac{1}{a_{k+1}}\\right)$로 나누어 차례로 씁니다.',
 '2단계: 이웃한 항의 뒷부분($-\\frac{1}{a_{k+1}}$)과 다음 항의 앞부분($+\\frac{1}{a_{k+1}}$)은 서로 소거됩니다. 소거되는 쌍을 선으로 이어 보여 줍니다.',
@@ -453,7 +453,7 @@ secretSteps: [
   ];
   const GUIDE = [
     '금색 점을 좌우로 끌어 항이 0이 되는 번호 m을 바꿔 보세요. 그 번호를 중심으로 양쪽 항의 합이 서로 소거됩니다.',
-    '금색 점 S_q를 좌우로 끌어 q를 바꿔 보세요. 대칭축은 (p+q)/2 이고 S_(p+q) = 0 입니다.',
+    '금색 점 S_q를 좌우로 끌어 q를 바꿔 보세요. 대칭축은 $\\frac{p+q}{2}$ 이고 S_(p+q) = 0 입니다.',
     '금색 점을 끌어 합산 상한 n을 바꿔 보세요. 꼭짓점에서 접어 올린 금색 곡선이 Σ|a_k| 입니다.',
     '금색 점 a₁을 위아래로 끌어 상수항 C를 바꿔 보세요. 첫째항만 직선에서 벗어납니다.',
     '금색 점(둘째 막대 꼭대기)을 위아래로 끌어 공비 R을 바꿔 보세요. 세 조각의 높이가 같은 비로 커집니다.',
@@ -580,7 +580,7 @@ eq = (
 `$a_n = ${p.dSlope.toFixed(1)}(n - ${p.zeroN.toFixed(1)}), \\quad a_1 = ${a1.toFixed(1)}, \\quad \\text{대칭 중심 } m = ${p.zeroN.toFixed(1)}$`
 );
 cards = [
-{ title: '기울기 = 공차 d', val: p.dSlope.toFixed(2), sub: '(a_q − a_p) / (q − p)로 일정' },
+{ title: '기울기 = 공차 d', val: p.dSlope.toFixed(2), sub: '$\\frac{a_q-a_p}{q-p}$로 일정' },
 { title: '항이 0이 되는 번호', val: `${p.zeroN.toFixed(1)}번`, sub: `a_${p.zeroN.toFixed(1)} = 0` },
 { title: `대칭 구간 합 S_${symEnd}`, val: '0.000', sub: '양쪽 항이 서로 소거되어 0' },
 { title: '제10항 a₁₀ 값', val: (p.dSlope * (10 - p.zeroN)).toFixed(2), sub: 'a_m = 0에서 (10 − m)·d만큼 증가' }
@@ -594,7 +594,7 @@ eq = (
 `$S_{${p.pIdx}} = S_{${p.qIdx}} = ${sp} \\implies S(n) = -n(n - ${zeroIdx}), \\quad \\text{대칭축 } x = ${symAxis.toFixed(1)}$`
 );
 cards = [
-{ title: '포물선 대칭축 (p+q)/2', val: `${symAxis.toFixed(1)}`, sub: Number.isInteger(symAxis) ? `n=${symAxis} 단독 최대` : `n=${Math.floor(symAxis)}, ${Math.ceil(symAxis)} 동시 최대` },
+{ title: '포물선 대칭축 $\\frac{p+q}{2}$', val: `${symAxis.toFixed(1)}`, sub: Number.isInteger(symAxis) ? `n=${symAxis} 단독 최대` : `n=${Math.floor(symAxis)}, ${Math.ceil(symAxis)} 동시 최대` },
 { title: `x절편 S_${zeroIdx}`, val: '0.000', sub: '항상 S_(p+q) = 0' },
 { title: '원점을 지나는 점 S₀', val: '0.000', sub: '상수항이 0인 이차함수' },
 { title: '꼭짓점 최댓값', val: maxVal.toFixed(2), sub: `S(${symAxis.toFixed(1)})의 값` }
@@ -642,7 +642,7 @@ cards = [
 { title: '3구간 누적합 S_3n', val: S3n.toFixed(2), sub: `${P1.toFixed(1)} + ${P2.toFixed(1)} + ${P3.toFixed(1)}` },
 { title: '등비중항 P₂² − P₁P₃의 값', val: '0', sub: `${(P2*P2).toFixed(1)} = ${(P1*P3).toFixed(1)}` },
 { title: '2구간 누적합 S_2n', val: S2n.toFixed(2), sub: `P₁ + P₂` },
-{ title: '블록 공비 R (= rⁿ)', val: `${R.toFixed(2)}배`, sub: 'P₂/P₁ = P₃/P₂' }
+{ title: '블록 공비 R (= rⁿ)', val: `${R.toFixed(2)}배`, sub: '$\\frac{P_2}{P_1}$ = $\\frac{P_3}{P_2}$' }
 ];
 } else if (mId === 'type6') {
 const n = Math.round(p.termCountN);
@@ -655,7 +655,7 @@ eq = (
 `$\\sum_{k=1}^{${n}} \\frac{1}{a_k a_{k+1}} = \\frac{1}{${d}}\\left(\\frac{1}{${a1}} - \\frac{1}{${anPlus1}}\\right) = \\frac{${num}}{${a1} \\times ${anPlus1}} = \\frac{${num}}{${den}}$`
 );
 cards = [
-{ title: '분수 n ÷ (맨 앞 × 맨 뒤)의 값', val: `${num} / ${den}`, sub: `소수값 ${(num/den).toFixed(4)}` },
+{ title: '분수 n ÷ (맨 앞 × 맨 뒤)의 값', val: `$\\frac{${num}}{${den}}$`, sub: `소수값 ${(num/den).toFixed(4)}` },
 { title: '부분분수로 나눈 식과의 차', val: '0', sub: '두 식이 같음' },
 { title: '맨 앞 생존 인수 a₁', val: `${a1}`, sub: '첫 항의 작은 분모' },
 { title: `맨 뒤 생존 인수 a_${n+1}`, val: `${anPlus1}`, sub: `마지막 항의 큰 분모` }
@@ -806,7 +806,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const c = b.ctx, q = D.P(x, y), sp = b.toS(q[0], q[1]), size = 12 * b.fs;
     c.save();
     c.font = `800 ${size}px ${b.font}`;
-    const w = c.measureText(text).width + 16, hh = 24 * b.fs;
+    const fractions = b._fracSplit(String(text));
+    const w = (fractions ? fractions.reduce((sum, part) => sum + (part.t !== undefined ? c.measureText(part.t).width : Math.max(c.measureText(part.n).width, c.measureText(part.d).width) * 0.78 + 5), 0) : c.measureText(text).width) + 16, hh = (fractions ? 38 : 24) * b.fs;
     c.beginPath();
     c.roundRect(sp.x - w / 2, sp.y - hh / 2, w, hh, 6);
     c.fillStyle = bg || b.color('halo', 0.9);
@@ -818,7 +819,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     c.fillStyle = b.color(color);
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    c.fillText(text, sp.x, sp.y);
+    b.stext(sp.x, sp.y, text, { size: 12, weight: 800, color, align: 'center', baseline: 'middle' });
     c.restore();
   }
 
@@ -959,8 +960,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const idx = (k === showCount && n > 6) ? n : k;
         const ak = a1 + (idx - 1) * d, ak1 = ak + d;
         const cy = startY + (k - 0.5) * rowH, xLeft = w * 0.36, xRight = w * 0.62;
-        chip(b, D, xLeft, cy, `+ 1 / ${ak}`, idx === 1 ? '#fbbf24' : '#34d399');
-        chip(b, D, xRight, cy, `- 1 / ${ak1}`, idx === n ? '#fbbf24' : '#38bdf8');
+        chip(b, D, xLeft, cy, `+ \\frac{1}{${ak}}`, idx === 1 ? '#fbbf24' : '#34d399');
+        chip(b, D, xRight, cy, `- \\frac{1}{${ak1}}`, idx === n ? '#fbbf24' : '#38bdf8');
         if (st(2) && k < showCount) b.seg(P(xRight - 30, cy - 8), P(xLeft + 30, cy + rowH + 8), { color: '#fb7185', width: 2.6 });
       }
       if (st(3)) {
@@ -1505,7 +1506,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const cy = startY + (i + 0.5) * rowH;
         if (!k) { b.text(D.P(w * 0.5, cy), '⋮', { color: 'muted', size: 18, weight: 800 }); return; }
         b.text(D.P(w * 0.1, cy), `k = ${k}`, { color: 'muted', size: 12, weight: 800, align: 'left', baseline: 'middle' });
-        chip(b, D, w * 0.56, cy, `1 / (${a(k)} × ${a(k + 1)})`, k === 1 ? '#fbbf24' : k === n ? '#fbbf24' : '#34d399');
+        chip(b, D, w * 0.56, cy, `\\frac{1}{${a(k)} × ${a(k + 1)}}`, k === 1 ? '#fbbf24' : k === n ? '#fbbf24' : '#34d399');
       });
       b.text(D.P(w * 0.5, h * 0.9), `Σ = ?  (첫째항 ${g.a1}, 공차 ${g.d})`, { color: '#fb7185', size: 15, weight: 800 });
     } else if (id === 'type7') {
@@ -2115,8 +2116,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     if (s.grid) b.grid();
     b.axes();
     b.plot((x) => (x * x) / 16, { color: 'ink', width: 2.4, glow: true, from: 0, to: 13.6 });
-    if (tab === 'explore' || (tab === 'review' && stepN >= 2)) b.text([12.7, 10.0], 'y = x²/16', { color: 'ink', size: 12, weight: 800, align: 'right', baseline: 'middle' });
-    else b.text([3.6, 4.7], 'y = x²/16', { color: 'ink', size: 12, weight: 800, align: 'center', baseline: 'middle' });
+    if (tab === 'explore' || (tab === 'review' && stepN >= 2)) b.text([12.7, 10.0], 'y = \\frac{x²}{16}', { color: 'ink', size: 12, weight: 800, align: 'right', baseline: 'middle' });
+    else b.text([3.6, 4.7], 'y = \\frac{x²}{16}', { color: 'ink', size: 12, weight: 800, align: 'center', baseline: 'middle' });
     const showRings = tab === 'explore' ? true : tab === 'review' && stepN >= 2;
     const upto = tab === 'explore' ? n : N;
     if (showRings) {

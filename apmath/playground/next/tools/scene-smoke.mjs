@@ -47,7 +47,7 @@ const RUNS = runsArg ? ALL_RUNS.filter((r) => r.name.includes(runsArg)) : ALL_RU
 if (onlyTest && !pages.length) { console.error(`--only ${onlyArg}: 맞는 실험실이 없습니다`); process.exit(2); }
 if (!RUNS.length) { console.error(`--runs ${runsArg}: 맞는 환경이 없습니다`); process.exit(2); }
 
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 let failed = 0;
 for (const file of pages) {
   for (const run of RUNS) {

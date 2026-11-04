@@ -149,8 +149,8 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       2: {
-        badge: "장면 2 · 초점을 지나는 현의 두 부분의 길이 a, b: 1/a + 1/b = 1/p 와 cosθ",
-        hint: "초점을 지나는 현의 끝점 A 또는 B를 끌어 돌려 보며(a = AF, b = BF), <span class='text-sky-300 font-bold'>1/a + 1/b = 1/p</span>가 항상 성립함과 직각삼각형 ABE에서 <span class='text-amber-300 font-bold'>cosθ = (a-b)/(a+b)</span>임을 확인하세요.",
+        badge: "장면 2 · 초점을 지나는 현의 두 부분의 길이 a, b: $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 와 cosθ",
+        hint: "초점을 지나는 현의 끝점 A 또는 B를 끌어 돌려 보며(a = AF, b = BF), <span class='text-sky-300 font-bold'>$\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$</span>가 항상 성립함과 직각삼각형 ABE에서 <span class='text-amber-300 font-bold'>$\\cos θ=\\frac{a-b}{a+b}$</span>임을 확인하세요.",
         subTitles: ["① 길이비 3:1 (θ=60°)", "② 길이비 2:1 (cosθ=1/3)", "③ 축에 수직인 현 (θ=90°)"],
         subData: {
           1: {
@@ -162,7 +162,7 @@ window.addEventListener('DOMContentLoaded', function () {
             steps: [
               "준선 x = -p 및 수선의 발 A', B' 연결 (AA' = a, BB' = b)",
               "점 B에서 AA'에 내린 수선의 발 E, 직각삼각형 ABE (한 변 a - b, 빗변 a + b)",
-              "1/a + 1/b = 1/p 와 cosθ = (a-b)/(a+b)"
+              "$\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 와 $\\cos θ=\\frac{a-b}{a+b}$"
             ],
             textbook: () => ({
               steps: `① ${tex('\\overline{AF} = x_A + 2 = 8 \\implies x_A = 6, \\; y_A = \\sqrt{48} = 4\\sqrt{3}')}<br/>
@@ -176,7 +176,7 @@ window.addEventListener('DOMContentLoaded', function () {
               steps: `① 초점을 지나는 현의 두 부분의 길이 ${tex('a, b')} 사이에는 <strong class="text-sky-300">${tex('\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{1}{p}')}</strong>이 성립하므로 ${tex('p = 2, a = 8')}을 대입한다:<br/>
 &nbsp;&nbsp;${tex('\\dfrac{1}{8} + \\dfrac{1}{b} = \\dfrac{1}{2} \\implies \\dfrac{1}{b} = \\dfrac{3}{8} \\implies')} <strong class="text-amber-300">${tex('b = \\dfrac{8}{3}')}</strong><br/>
 ② 길이비가 ${tex('a : b = 3 : 1')} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-emerald-300">${tex('\\cos\\theta = \\dfrac{3-1}{3+1} = \\dfrac{1}{2} \\implies \\theta = 60^\\circ, \\; m = \\sqrt{3}')}</strong>이다.`,
-              highlight: "초점을 지나는 현에서 a = AF, b = BF라 하면 1/a + 1/b = 1/p 이고, 직각삼각형 ABE에서 cosθ = (a-b)/(a+b) 입니다. 두 관계 1/a + 1/b = 1/p 와 cosθ = (a-b)/(a+b)로 연립방정식 없이 b와 기울기를 구할 수 있습니다."
+              highlight: "초점을 지나는 현에서 a = AF, b = BF라 하면 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 이고, 직각삼각형 ABE에서 $\\cos θ=\\frac{a-b}{a+b}$ 입니다. 두 관계 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 와 $\\cos θ=\\frac{a-b}{a+b}$로 연립방정식 없이 b와 기울기를 구할 수 있습니다."
             })
           },
           2: {
@@ -188,7 +188,7 @@ window.addEventListener('DOMContentLoaded', function () {
             steps: [
               "준선 x = -p 및 수선의 발 A', B' 연결 (a : b = 2 : 1)",
               "직각삼각형 ABE: 빗변 AB = 3k, 한 변 AE = 2k - k = k",
-              "cosθ = (2-1)/(2+1) = 1/3 및 1/(2b) + 1/b = 1/2 ⇒ b=3, a=6"
+              "$\\cos θ=\\frac{2-1}{2+1}=\\frac{1}{3}$ 및 $\\frac{1}{2b}+\\frac{1}{b}=\\frac{1}{2}$ ⇒ b=3, a=6"
             ],
             textbook: () => ({
               steps: `① 직선의 방정식을 ${tex('x = my + 2')} 라 하고 ${tex('y^2 = 8x')} 에 대입:<br/>
@@ -199,8 +199,8 @@ window.addEventListener('DOMContentLoaded', function () {
             }),
             shortcut: () => ({
               steps: `① ${tex('a : b = 2 : 1')} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-amber-300">${tex('\\cos\\theta = \\dfrac{2 - 1}{2 + 1} = \\dfrac{1}{3}')}</strong> (1초 컷)!<br/>
-② ${tex('a = 2b')}를 1/a + 1/b = 1/p 에 대입하면 ${tex('\\dfrac{1}{2b} + \\dfrac{1}{b} = \\dfrac{1}{2}')}에 대입하면 ${tex('\\dfrac{3}{2b} = \\dfrac{1}{2} \\implies')} <strong class="text-sky-300">${tex('b = 3, \\; a = 6')}</strong>이다.`,
-              highlight: "초점이 현을 m : n (m > n)으로 나누면 직각삼각형 ABE에서 cosθ = (m - n) / (m + n) 입니다."
+② ${tex('a = 2b')}를 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 에 대입하면 ${tex('\\dfrac{1}{2b} + \\dfrac{1}{b} = \\dfrac{1}{2}')}에 대입하면 ${tex('\\dfrac{3}{2b} = \\dfrac{1}{2} \\implies')} <strong class="text-sky-300">${tex('b = 3, \\; a = 6')}</strong>이다.`,
+              highlight: "초점이 현을 m : n (m > n)으로 나누면 직각삼각형 ABE에서 $\\cos θ=\\frac{m-n}{m+n}$ 입니다."
             })
           },
           3: {
@@ -244,7 +244,7 @@ window.addEventListener('DOMContentLoaded', function () {
             steps: [
               "준선 x = -p와, 초점을 지나는 현 AB를 지름으로 하는 원 C",
               "사다리꼴 AA'B'B에서 평행하지 않은 두 변 AB, A'B'의 중점 M, H_M을 이은 선분 MH_M",
-              "d = (a+b)/2 = R (원은 준선에 접한다), 두 접선은 H_M에서 수직"
+              "d = $\\frac{a+b}{2}$ = R (원은 준선에 접한다), 두 접선은 H_M에서 수직"
             ],
             textbook: () => ({
               steps: `① 두 교점 ${tex('A(6, 4\\sqrt{3})')} 와 ${tex('B\\left(\\dfrac{2}{3}, -\\dfrac{4\\sqrt{3}}{3}\\right)')} 좌표 각각 계산<br/>
@@ -257,7 +257,7 @@ window.addEventListener('DOMContentLoaded', function () {
               steps: `① 포물선의 정의에 의해 사다리꼴 ${tex("AA'B'B")}의 윗변은 ${tex("\\overline{AA'} = a")}, 아랫변은 ${tex("\\overline{BB'} = b")}이다.<br/>
 ② 사다리꼴에서 평행하지 않은 두 변의 중점을 이은 선분의 길이는 (윗변 + 아랫변) ÷ 2 이므로, 중심 ${tex('M')}에서 준선까지의 거리는 <strong class="text-amber-300">${tex('d = \\dfrac{a + b}{2}')}</strong>.<br/>
 ③ 현 ${tex('AB')}의 길이 ${tex('a + b')}가 원의 지름이므로 반지름은 <strong class="text-sky-300">${tex('R = \\dfrac{a + b}{2}')}</strong> ⇒ <strong class="text-emerald-300">${tex('d = R')}, 즉 원은 준선에 접한다.</strong>`,
-              highlight: "초점을 지나는 현을 지름으로 하는 원은 항상 준선에 접합니다 (d = R = (a+b)/2)."
+              highlight: "초점을 지나는 현을 지름으로 하는 원은 항상 준선에 접합니다 (d = R = $\\frac{a+b}{2}$)."
             })
           },
           2: {
@@ -280,7 +280,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }),
             shortcut: () => ({
               steps: `① 초점을 지나는 현 ${tex('AB')}의 양 끝점에서 그은 두 접선은 <strong>준선 ${tex('x = -p')} 위의 점 ${tex('Q(=H_M)')}에서 서로 수직(${tex('90^\\circ')})으로 만난다.</strong><br/>
-② ${tex('y_Q = \\dfrac{y_A + y_B}{2} = \\dfrac{4\\sqrt{3} - 4\\sqrt{3}/3}{2} = \\dfrac{4\\sqrt{3}}{3}')} 이므로 <strong class="text-amber-300">${tex('Q\\left(-2, \\dfrac{4\\sqrt{3}}{3}\\right)')}</strong>이다.<br/>
+② ${tex('y_Q = \\dfrac{y_A + y_B}{2} = \\dfrac{4\\sqrt{3} - \\frac{4\\sqrt{3}}{3}}{2} = \\dfrac{4\\sqrt{3}}{3}')} 이므로 <strong class="text-amber-300">${tex('Q\\left(-2, \\dfrac{4\\sqrt{3}}{3}\\right)')}</strong>이다.<br/>
 ③ 또한 선분 ${tex('QF')}는 현 ${tex('AB')}와 수직이다: <strong class="text-purple-300">${tex('QF \\perp AB \\; (90^\\circ)')}</strong>`,
               highlight: "준선 위의 한 점에서 포물선에 그은 두 접선은 서로 수직이고, 두 접점을 잇는 현은 초점 F를 지납니다."
             })
@@ -294,7 +294,7 @@ window.addEventListener('DOMContentLoaded', function () {
             steps: [
               "초점을 지나는 기울기 1(θ = 45°)인 현 AB를 지름으로 하는 원 C",
               "중심 M에서 준선 x = -2에 내린 수선의 발 H_M 연결",
-              "AB = 4p / sin²45° = 8p = 16 ⇒ 반지름 R = d = 4p = 8"
+              "AB = $\\frac{4p}{\\sin^2 45^\\circ}$ = 8p = 16 ⇒ 반지름 R = d = 4p = 8"
             ],
             textbook: () => ({
               steps: `① 직선 ${tex('y = x - 2')} 와 ${tex('y^2 = 8x')} 연립: ${tex('(x - 2)^2 = 8x \\implies x^2 - 12x + 4 = 0')}<br/>
@@ -305,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }),
             shortcut: () => ({
               steps: `① 현 ${tex('AB')}의 길이는 <strong class="text-sky-300">${tex('\\overline{AB} = a + b = \\dfrac{4p}{\\sin^2\\theta}')}</strong>이다. ${tex('\\left(a = \\dfrac{2p}{1 - \\cos\\theta}, \\; b = \\dfrac{2p}{1 + \\cos\\theta}\\right)')}<br/>
-② ${tex('p = 2, \\; \\theta = 45^\\circ')} (${tex('\\sin^2 45^\\circ = \\dfrac{1}{2}')}) 을 대입하면 ${tex('\\overline{AB} = \\dfrac{8}{1/2} = 16')}이다.<br/>
+② ${tex('p = 2, \\; \\theta = 45^\\circ')} (${tex('\\sin^2 45^\\circ = \\dfrac{1}{2}')}) 을 대입하면 ${tex('\\overline{AB} = \\dfrac{8}{\\frac{1}{2}} = 16')}이다.<br/>
 ③ 따라서 반지름과 중심에서 준선까지의 거리는 <strong class="text-amber-300">${tex('R = d = \\dfrac{16}{2} = 8')}</strong>이다.`,
               highlight: "초점을 지나는 현 AB가 x축과 이루는 각이 θ이면 |AB| = a + b = 4p / sin²θ 이고, AB를 지름으로 하는 원의 반지름은 R = 2p / sin²θ 입니다. 3초 컷!"
             })
@@ -315,7 +315,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       4: {
         badge: "장면 4 · 포물선의 접선과 마름모 TFPH, 초점에서 접선에 내린 수선의 발",
-        hint: "접점 P를 옮겨도 <span class='text-purple-300 font-bold'>접선의 x절편은 -x₁</span>이고, 초점 F에서 접선에 내린 수선의 발 <span class='text-amber-300 font-bold'>K(0, y₁/2)는 항상 y축 위</span>에 놓입니다!",
+        hint: "접점 P를 옮겨도 <span class='text-purple-300 font-bold'>접선의 x절편은 -x₁</span>이고, 초점 F에서 접선에 내린 수선의 발 <span class='text-amber-300 font-bold'>K(0, $\\frac{y_1}{2}$)는 항상 y축 위</span>에 놓입니다!",
         subTitles: ["① 마름모 둘레 20 (x₁=3)", "② 정사각형 TFPH (x₁=p)", "③ 직각삼각형의 닮음"],
         subData: {
           1: {
@@ -327,7 +327,7 @@ window.addEventListener('DOMContentLoaded', function () {
             steps: [
               "접점 P(x₁, y₁)에서의 접선과 x절편 T(-x₁, 0) 및 수선의 발 H",
               "네 변의 길이가 모두 (x₁ + p)로 같은 마름모 TFPH 완성",
-              "두 대각선 TP, FH는 서로 수직이등분하고 교점은 K(0, y₁/2), 직각삼각형 OFK"
+              "두 대각선 TP, FH는 서로 수직이등분하고 교점은 K(0, $\\frac{y_1}{2}$), 직각삼각형 OFK"
             ],
             textbook: () => ({
               steps: `① 접점 ${tex('P(3, 2\\sqrt{6})')}에서의 접선의 방정식 공식 대입:<br/>
@@ -376,7 +376,7 @@ window.addEventListener('DOMContentLoaded', function () {
             answerBadge: () => `${tex('K(0, 2\\sqrt{3}), \\; \\overline{FK} = 4, \\; \\overline{FK}^2 = 16')}`,
             snap: { p: 2.0, py: Math.sqrt(48), theta: Math.PI / 3 },
             steps: [
-              "접선 위의 선분 TP의 중점 K(0, y₁/2)가 항상 y축(꼭짓점에서의 접선) 위에 있음을 확인",
+              "접선 위의 선분 TP의 중점 K(0, $\\frac{y_1}{2}$)가 항상 y축(꼭짓점에서의 접선) 위에 있음을 확인",
               "마름모의 두 대각선이 수직이므로 ∠FKP = 90° (K는 F에서 접선에 내린 수선의 발)",
               "직각삼각형의 닮음 △OFK ∽ △KFP ⇒ FK² = FO · FP = p(x₁ + p)"
             ],
@@ -391,7 +391,7 @@ window.addEventListener('DOMContentLoaded', function () {
               steps: `① 마름모 ${tex('TFPH')}에서 초점 ${tex('F')}에서 접선 ${tex('TP')}에 내린 수선의 발 ${tex('K')}는 선분 ${tex('TP')}의 중점이다.<br/>
 ② ${tex('T(-x_1, 0), P(x_1, y_1)')}의 중점이므로 점 ${tex('K')}는 항상 <strong>${tex('y')}축 위의 점 <span class="text-amber-300">${tex('K\\left(0, \\dfrac{y_1}{2}\\right) = K(0, 2\\sqrt{3})')}</span></strong>이다.<br/>
 ③ 직각삼각형의 닮음(${tex('\\triangle OFK \\sim \\triangle KFP')})에 의해 <strong class="text-sky-300">${tex('\\overline{FK}^2 = p(x_1 + p) = 2 \\times 8 = 16')}</strong>이다.`,
-              highlight: "초점 F에서 접선에 내린 수선의 발 K는 항상 y축 위의 점 (0, y₁/2)이며, FK² = p · PF 입니다."
+              highlight: "초점 F에서 접선에 내린 수선의 발 K는 항상 y축 위의 점 (0, $\\frac{y_1}{2}$)이며, FK² = p · PF 입니다."
             })
           }
         }
@@ -696,7 +696,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     // =========================================================================
-    // [모드 2 렌더링] 기출 1 - 초점현 역수합 (1/a + 1/b = 1/p) & 직각삼각형 cosθ
+    // [모드 2 렌더링] 기출 1 - 초점현 역수합 ($\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$) & 직각삼각형 cosθ
     // =========================================================================
     function renderMode2(p, F, rect) {
       const chord = getFocalChordPoints(p, state.theta);
@@ -755,7 +755,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(-p, 0, p, 0, '#fbbf24', 2.2, true, false, 1, 'sim');
       }
 
-      // Step 3 (partIdx = 2): 역수합 1/a + 1/b = 1/p 및 cosθ = (a-b)/(a+b) 비율 줄자 배너
+      // Step 3 (partIdx = 2): 역수합 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 및 $\\cos θ=\\frac{a-b}{a+b}$ 비율 줄자 배너
       if (state.steps[3]) {
         withAlpha(lensAlpha('all'), () => {
           BOARD.text(NODRAG ? [F.x + 0.66 * (A.x - F.x), F.y + 0.66 * (A.y - F.y)] : [(A.x + F.x) / 2, (A.y + F.y) / 2], `a = ${fmtNum(a)}`, { color: '#f9a8d4', size: 12, align: 'left', dx: 12, part: 2 });
@@ -767,7 +767,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         drawBottomTapeBanner(
           rect,
-          `1/a(1/${fmtNum(a)}) + 1/b(1/${fmtNum(b)}) = 1/p(${fmtNum(invSum, 3)}) | cosθ = (a-b)/(a+b) = ${fmtNum(cosVal, 3)}`,
+          `$\\frac{1}{a}=\\frac{1}{${fmtNum(a)}}$, $\\frac{1}{b}=\\frac{1}{${fmtNum(b)}}$ → $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}=${fmtNum(invSum, 3)}$ | $\\cos θ=\\frac{a-b}{a+b}$ = ${fmtNum(cosVal, 3)}`,
           [
             { val: a, label: `AF = a = ${fmtNum(a)}`, color: '#f472b6', bg: 'rgba(244, 114, 182, 0.32)' },
             { val: b, label: `BF = b = ${fmtNum(b)}`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.32)' }
@@ -852,7 +852,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         drawBottomTapeBanner(
           rect,
-          `중심~준선 거리 d(${fmtNum(realD)}) = 반지름 R(${fmtNum(realR)}) = (a+b)/2 | 두 접선 ∠AQB = 90° & QF ⊥ AB`,
+          `중심~준선 거리 d(${fmtNum(realD)}) = 반지름 R(${fmtNum(realR)}) = $\\frac{a+b}{2}$ | 두 접선 ∠AQB = 90° & QF ⊥ AB`,
           [
             { val: realR, label: `반지름 R = ${fmtNum(realR)}`, color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.32)' },
             { val: realR, label: `반지름 R = ${fmtNum(realR)}`, color: '#fbbf24', bg: 'rgba(251, 191, 36, 0.32)' }
@@ -998,7 +998,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const cosVal = Math.cos(safeTheta);
       const ratioCos = (a - b) / (a + b);
       r = [['현의 두 부분의 길이 a(AF), b(BF)', `a = ${fmtNum(a)} | b = ${fmtNum(b)}`], ['현 AB의 길이 |AB| = a + b', `|AB| = ${fmtNum(a + b)}`],
-        ['1/a + 1/b 와 1/p', `${sumInv.toFixed(4)} = ${invP.toFixed(4)}`], ['직각삼각형 cosθ = (a-b)/(a+b)', `cosθ = ${fmtNum(cosVal, 3)} (${fmtNum(ratioCos, 3)})`]];
+        ['$\\frac{1}{a}+\\frac{1}{b}$ 와 $\\frac{1}{p}$', `${sumInv.toFixed(4)} = ${invP.toFixed(4)}`], ['직각삼각형 $\\cos θ=\\frac{a-b}{a+b}$', `cosθ = ${fmtNum(cosVal, 3)} (${fmtNum(ratioCos, 3)})`]];
     } else if (m === 3) {
       const M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 };
       const realD = Math.abs(M.x - (-p));
@@ -1217,7 +1217,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ④ ${tex(`x_B = \\dfrac{${p * p}}{${xA}} = ${frG(p * p, xA)} \\implies b = x_B + ${p} = ${bT}`)} 도출.`, warning: '주의: 직선의 방정식을 세워 포물선의 방정식과 연립하고 이차방정식의 근을 구하면 계산이 매우 길어집니다.' };
       V.shortcut = { steps: `① 초점을 지나는 현의 두 부분의 길이 ${tex('a, b')} 사이에는 <strong class="text-sky-300">${tex('\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{1}{p}')}</strong>이 성립하므로 ${tex(`p = ${p}, a = ${a}`)}을 대입한다:<br/>
 &nbsp;&nbsp;${tex(`\\dfrac{1}{${a}} + \\dfrac{1}{b} = \\dfrac{1}{${p}} \\implies \\dfrac{1}{b} = ${frG(a - p, a * p)} \\implies`)} <strong class="text-amber-300">${tex(`b = ${bT}`)}</strong><br/>
-② 길이비가 ${tex(`a : b = ${k} : 1`)} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-emerald-300">${tex(`\\cos\\theta = \\dfrac{${k}-1}{${k}+1} = ${frG(cn, cd)} \\implies m = ${tn}`)}</strong>이다.`, highlight: '초점을 지나는 현에서 a = AF, b = BF라 하면 1/a + 1/b = 1/p 이고, 직각삼각형 ABE에서 cosθ = (a-b)/(a+b) 입니다. 두 관계로 연립방정식 없이 b와 기울기를 구할 수 있습니다.' };
+② 길이비가 ${tex(`a : b = ${k} : 1`)} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-emerald-300">${tex(`\\cos\\theta = \\dfrac{${k}-1}{${k}+1} = ${frG(cn, cd)} \\implies m = ${tn}`)}</strong>이다.`, highlight: '초점을 지나는 현에서 a = AF, b = BF라 하면 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 이고, 직각삼각형 ABE에서 $\\cos θ=\\frac{a-b}{a+b}$ 입니다. 두 관계로 연립방정식 없이 b와 기울기를 구할 수 있습니다.' };
       return V;
     }
   };
@@ -1234,14 +1234,14 @@ window.addEventListener('DOMContentLoaded', function () {
       V.steps = examData[2].subData[2].steps.slice();
       V.steps[0] = `준선 x = -p 및 수선의 발 A', B' 연결 (a : b = ${r} : 1)`;
       V.steps[1] = `직각삼각형 ABE: 빗변 AB = ${r + 1}k, 한 변 AE = ${r}k - k = ${r - 1}k`;
-      V.steps[2] = `cosθ = (${r}-1)/(${r}+1) = ${frGp(cn, cd)} 및 1/(${r}b) + 1/b = 1/${p} ⇒ b=${b}, a=${a}`;
+      V.steps[2] = `$\\cos θ=\\frac{${r}-1}{${r}+1}=${frG(cn, cd)}$ 및 $\\frac{1}{${r}b}+\\frac{1}{b}=\\frac{1}{${p}}$ ⇒ b=${b}, a=${a}`;
       const a2 = (4 * p * p) / r;
       V.textbook = { steps: `① 직선의 방정식을 ${tex(`x = my + ${p}`)} 라 하고 ${tex(`y^2 = ${4 * p}x`)} 에 대입:<br/>
 &nbsp;&nbsp;${tex(`y^2 - ${4 * p}my - ${4 * p * p} = 0`)} 의 두 근을 ${tex(`y_A = ${r}\\alpha, \; y_B = -\\alpha \; (\\alpha > 0)`)} 라 설정<br/>
 ② 근과 계수의 관계에서 ${tex(`${r}\\alpha(-\\alpha) = -${4 * p * p} \\implies \\alpha^2 = ${a2} \\implies \\alpha = ${rtG(a2)}`)}<br/>
 ③ ${tex(`${r}\\alpha - \\alpha = ${4 * p}m \\implies m = ${mTexR(r)} \\implies \\cos\\theta = \\dfrac{m}{\\sqrt{1 + m^2}} = ${frG(cn, cd)}`)}이다.`, warning: '주의: 근과 계수의 관계로 y좌표의 비를 세워 풀면 부호를 틀리기 쉽고 계산이 깁니다.' };
       V.shortcut = { steps: `① ${tex(`a : b = ${r} : 1`)} 이므로 직각삼각형 ${tex('\\triangle ABE')}에서 <strong class="text-amber-300">${tex(`\\cos\\theta = \\dfrac{${r} - 1}{${r} + 1} = ${frG(cn, cd)}`)}</strong> (1초 컷)!<br/>
-② ${tex(`a = ${r}b`)}를 1/a + 1/b = 1/p 에 대입하면 ${tex(`\\dfrac{1}{${r}b} + \\dfrac{1}{b} = \\dfrac{1}{${p}}`)}에서 ${tex(`\\dfrac{${r + 1}}{${r}b} = \\dfrac{1}{${p}} \\implies`)} <strong class="text-sky-300">${tex(`b = ${b}, \; a = ${a}`)}</strong>이다.`, highlight: '초점이 현을 m : n (m > n)으로 나누면 직각삼각형 ABE에서 cosθ = (m - n) / (m + n) 입니다.' };
+② ${tex(`a = ${r}b`)}를 $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{p}$ 에 대입하면 ${tex(`\\dfrac{1}{${r}b} + \\dfrac{1}{b} = \\dfrac{1}{${p}}`)}에서 ${tex(`\\dfrac{${r + 1}}{${r}b} = \\dfrac{1}{${p}} \\implies`)} <strong class="text-sky-300">${tex(`b = ${b}, \; a = ${a}`)}</strong>이다.`, highlight: '초점이 현을 m : n (m > n)으로 나누면 직각삼각형 ABE에서 $\\cos θ=\\frac{m-n}{m+n}$ 입니다.' };
       return V;
     }
   };
@@ -1282,7 +1282,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ④ 중심 ${tex('M')}과 준선 ${tex(`x = -${p}`)} 사이 거리 ${tex(`d = x_M + ${p} = ${RT} = R`)} 비교.`, warning: '주의: 교점의 좌표, 중점, 반지름을 일일이 계산하면 풀이가 매우 길어집니다. 포물선의 정의와 사다리꼴의 성질을 이용하면 간단히 확인할 수 있습니다.' };
       V.shortcut = { steps: `① 포물선의 정의에 의해 사다리꼴 ${tex("AA'B'B")}의 윗변은 ${tex(`\\overline{AA'} = a = ${a}`)}, 아랫변은 ${tex(`\\overline{BB'} = b = ${bT}`)}이다.<br/>
 ② 사다리꼴에서 평행하지 않은 두 변의 중점을 이은 선분의 길이는 (윗변 + 아랫변) ÷ 2 이므로, 중심 ${tex('M')}에서 준선까지의 거리는 <strong class="text-amber-300">${tex(`d = \\dfrac{a + b}{2} = ${RT}`)}</strong>.<br/>
-③ 현 ${tex('AB')}의 길이 ${tex('a + b')}가 원의 지름이므로 반지름은 <strong class="text-sky-300">${tex(`R = \\dfrac{a + b}{2} = ${RT}`)}</strong> ⇒ <strong class="text-emerald-300">${tex('d = R')}, 즉 원은 준선에 접한다.</strong>`, highlight: '초점을 지나는 현을 지름으로 하는 원은 항상 준선에 접합니다 (d = R = (a+b)/2).' };
+③ 현 ${tex('AB')}의 길이 ${tex('a + b')}가 원의 지름이므로 반지름은 <strong class="text-sky-300">${tex(`R = \\dfrac{a + b}{2} = ${RT}`)}</strong> ⇒ <strong class="text-emerald-300">${tex('d = R')}, 즉 원은 준선에 접한다.</strong>`, highlight: '초점을 지나는 현을 지름으로 하는 원은 항상 준선에 접합니다 (d = R = $\\frac{a+b}{2}$).' };
       return V;
     }
   };
@@ -1322,7 +1322,7 @@ window.addEventListener('DOMContentLoaded', function () {
       V.steps = examData[3].subData[3].steps.slice();
       V.steps[0] = `초점을 지나는 기울기 ${deg === 45 ? '1' : deg === 60 ? '√3' : '√3/3'}(θ = ${deg}°)인 현 AB를 지름으로 하는 원 C`;
       V.steps[1] = `중심 M에서 준선 x = -${p}에 내린 수선의 발 H_M 연결`;
-      V.steps[2] = `AB = 4p / sin²${deg}° = ${frGp(Math.round(ab * 3), 3)} ⇒ 반지름 R = d = ${r.t}`;
+      V.steps[2] = `$AB=\\frac{4p}{\\sin^2 ${deg}^\\circ}$ = ${frGp(Math.round(ab * 3), 3)} ⇒ 반지름 R = d = ${r.t}`;
       V.textbook = { steps: `① 직선과 ${tex(`y^2 = ${4 * p}x`)} 를 연립하면 ${tex('x')}에 대한 이차방정식을 얻는다. 두 근을 ${tex('x_A, x_B')}라 하자.<br/>
 ② 근과 계수의 관계로 ${tex('x_A + x_B')}를 구한다 (${tex(`x_A + x_B = ${2 * p} + \\dfrac{${4 * p}}{\\tan^2 ${deg}^\\circ}`)}).<br/>
 ③ 현의 길이 ${tex(`\\overline{AB} = (x_A + ${p}) + (x_B + ${p}) = (x_A + x_B) + ${2 * p} = ${frG(Math.round(ab * 3), 3)}`)}<br/>
@@ -1395,7 +1395,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ③ 수선의 발 ${tex('K')}를 구하려면 ${tex('F')}를 지나고 접선에 수직인 직선의 방정식을 세워 접선의 방정식과 연립해야 한다.`, warning: '주의: 수선의 발 K의 좌표를 구하려고 두 직선의 방정식을 연립하면 계산이 길어집니다.' };
       V.shortcut = { steps: `① 마름모 ${tex('TFPH')}에서 초점 ${tex('F')}에서 접선 ${tex('TP')}에 내린 수선의 발 ${tex('K')}는 선분 ${tex('TP')}의 중점이다.<br/>
 ② ${tex('T(-x_1, 0), P(x_1, y_1)')}의 중점이므로 점 ${tex('K')}는 항상 <strong>${tex('y')}축 위의 점 <span class="text-amber-300">${tex(`K\\left(0, \\dfrac{y_1}{2}\\right) = K(0, ${kT})`)}</span></strong>이다.<br/>
-③ 직각삼각형의 닮음(${tex('\\triangle OFK \\sim \\triangle KFP')})에 의해 <strong class="text-sky-300">${tex(`\\overline{FK}^2 = p(x_1 + p) = ${p} \\times ${x1 + p} = ${fk2}`)}</strong>이다.`, highlight: '초점 F에서 접선에 내린 수선의 발 K는 항상 y축 위의 점 (0, y₁/2)이며, FK² = p · PF 입니다.' };
+③ 직각삼각형의 닮음(${tex('\\triangle OFK \\sim \\triangle KFP')})에 의해 <strong class="text-sky-300">${tex(`\\overline{FK}^2 = p(x_1 + p) = ${p} \\times ${x1 + p} = ${fk2}`)}</strong>이다.`, highlight: '초점 F에서 접선에 내린 수선의 발 K는 항상 y축 위의 점 (0, $\\frac{y_1}{2}$)이며, FK² = p · PF 입니다.' };
       return V;
     }
   };
@@ -1490,7 +1490,7 @@ window.addEventListener('DOMContentLoaded', function () {
     '1-1': '포물선 위의 점 P에서 초점 F까지의 거리와 준선까지의 거리는 어떤 관계일까?',
     '1-2': '삼각형 PFH가 정삼각형이 되려면 점 P는 어디에 있어야 할까?',
     '1-3': '포물선 위의 점 P에서 점 A까지의 거리와 초점 F까지의 거리의 합 PA + PF가 가장 작아지는 점 P는 어디일까?',
-    '2-1': '초점을 지나는 현이 초점을 a : b로 나눌 때 1/a + 1/b 는 무엇과 같을까?',
+    '2-1': '초점을 지나는 현이 초점을 a : b로 나눌 때 $\\frac{1}{a}+\\frac{1}{b}$ 는 무엇과 같을까?',
     '2-2': '현이 초점을 2 : 1로 나누려면 현의 기울기 각 θ의 cosθ 는 얼마여야 할까?',
     '2-3': '초점을 지나 축에 수직인 현의 길이는 얼마일까?',
     '3-1': '초점을 지나는 현 AB를 지름으로 하는 원은 준선과 어떤 위치 관계일까?',
@@ -1773,7 +1773,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return [
           '포물선의 정의: 포물선 위의 점 $P$에서 초점 $F$까지의 거리와 준선까지의 거리는 같습니다. $PQ=PF$.',
           `타원의 정의와 (나): $PF+PF′=${2 * v.a}$, $PF′=FF′=2c$ ⇒ $PF=${2 * v.a}-2c$.`,
-          `이등변삼각형 $F′FP$($F′P=F′F$)에서 $F′$에서 $PF$에 내린 수선의 발 $M$은 $PF$의 중점입니다. $\\cos\\theta=\\dfrac{PF/2}{FF′}=\\dfrac{${v.a}-c}{2c}=${frTex(v.n, v.d)}$ ⇒ $c=${nf(v.c, 0)}$, $PF=${nf(v.PF, 0)}$.`,
+          `이등변삼각형 $F′FP$($F′P=F′F$)에서 $F′$에서 $PF$에 내린 수선의 발 $M$은 $PF$의 중점입니다. $\\cos\\theta=\\dfrac{\\frac{PF}{2}}{FF′}=\\dfrac{${v.a}-c}{2c}=${frTex(v.n, v.d)}$ ⇒ $c=${nf(v.c, 0)}$, $PF=${nf(v.PF, 0)}$.`,
           `$P$의 $x$좌표는 $c-PF\\cos\\theta=${nf(v.xP, 0)}$. $PQ=x_P+k=PF=${nf(v.PF, 0)}$ ⇒ $k=${nf(v.k, 0)}$, 따라서 $c+k=${nf(v.ans, 0)}$.`
         ];
       },

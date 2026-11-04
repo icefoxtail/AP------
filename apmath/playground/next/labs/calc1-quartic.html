@@ -125,10 +125,10 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "⚠️ 식이 (x−α)³(x−q) 꼴로 주어졌는데 이를 다시 전개하여 미분하고 인수분해하면 계산이 길어집니다. 아래 빠른 풀이를 함께 보세요."
         }),
         shortcut: () => ({
-          steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 삼중근인 접점 이외의 극점은 ${tex('x=(\\alpha+3q)/4')}에 있다. 여기서는 ${tex('a>0')}라 극소점이다.<br/>
+          steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 삼중근인 접점 이외의 극점은 ${tex('x=\\frac{\\alpha+3q}{4}')}에 있다. 여기서는 ${tex('a>0')}라 극소점이다.<br/>
 ② 따라서 미분하지 않고도 극소점은 <strong class="text-amber-300">${tex('\\beta = \\dfrac{0 + 3 \\times 4}{4} = 3')}</strong> 이다.<br/>
 ③ 한 칸 간격을 ${tex('h = 1')} 이라 하면 극소점과 접선 ${tex('y=2')} 사이의 높이 차는 <strong class="text-sky-300">${tex('\\Delta y = 27|a|h^4 = \\dfrac{27}{4} = 6.75')}</strong> 이다.<br/>
-&nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-19/4)')} 이다.`,
+&nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-\\frac{19}{4})')} 이다.`,
           highlight: "💡 f(x) = a(x − α)³(x − q) + c 꼴에서 삼중근인 접점의 x좌표 α, 극소점의 x좌표 β, 교점 Q의 x좌표 q 사이에는 (β − α) : (q − β) = 3 : 1 이 성립합니다. 이 비율로 5초 컷 하세요!"
         })
       },
@@ -174,7 +174,7 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "1단계 · 접선(삼중근인 접점에서의 접선, 또는 두 극소점에서 접하는 직선)과 곡선으로 둘러싸인 부분을 색칠합니다.",
           "2단계 · 적분 구간의 길이 L = |β − α| 를 표시합니다.",
-          "3단계 · 넓이 공식 (|a|/20)·L⁵ (삼중근인 접점)과 (|a|/30)·L⁵ (두 점에서 접하는 직선)을 비교합니다."
+          "3단계 · 넓이 공식 ($\\frac{|a|}{20}$)·L⁵ (삼중근인 접점)과 ($\\frac{|a|}{30}$)·L⁵ (두 점에서 접하는 직선)을 비교합니다."
         ],
         textbook: () => ({
           steps: `① 피적분함수 작성: ${tex('f(x) - (-2) = \\dfrac{1}{4}(x+1)^2(x-3)^2')}<br/>
@@ -182,15 +182,15 @@ window.addEventListener('DOMContentLoaded', function () {
 ③ 구간 ${tex('[-1, 3]')} 에서 정적분 계산:<br/>
 &nbsp;&nbsp;${tex('S = \\dfrac{1}{4}\\left[ \\dfrac{1}{5}x^5 - x^4 - \\dfrac{2}{3}x^3 + 6x^2 + 9x \\right]_{-1}^{3}')}<br/>
 ④ 더 간단히 ${tex('u=x-1')}로 치환하면 ${tex('f(x)+2=\\dfrac14(u^2-4)^2')}이고 적분 구간은 ${tex('[-2,2]')}이다.
-&nbsp;&nbsp;${tex('S=\\dfrac14\\int_{-2}^{2}(u^4-8u^2+16)du=\\dfrac14[2(32/5)-8(16/3)+64]=128/15')}이다.`,
+&nbsp;&nbsp;${tex('S=\\dfrac14\\int_{-2}^{2}(u^4-8u^2+16)du=\\dfrac14[2(\\frac{32}{5})-8(\\frac{16}{3})+64]=\\frac{128}{15}')}이다.`,
           warning: "⚠️ 사차식을 전개하여 5차식인 부정적분에 위끝·아래끝을 대입하면 계산 실수가 생기기 쉽습니다."
         }),
         shortcut: () => ({
           steps: `① 두 접점 ${tex('\\alpha = -1, \\; \\beta = 3')} 사이의 간격은 <strong class="text-amber-300">${tex('L = 3 - (-1) = 4')}</strong> 입니다.<br/>
 ② 두 점에서 접하는 직선(곡선과의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)^2')} 꼴)과 곡선으로 둘러싸인 넓이는 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{30}(\\beta - \\alpha)^5')}</strong> 입니다. (${tex('\\int_{\\alpha}^{\\beta} a(x-\\alpha)^2(x-\\beta)^2\\,dx')} 를 계산하여 얻습니다.)<br/>
-③ ${tex('a = \\dfrac{1}{4}, \\; L = 4')} 를 대입하면 <strong class="text-amber-300">${tex('S = \\dfrac{1/4}{30} \\times 4^5 = \\dfrac{256}{30} = \\dfrac{128}{15} \\; (8.533)')}</strong> 입니다.<br/>
+③ ${tex('a = \\dfrac{1}{4}, \\; L = 4')} 를 대입하면 <strong class="text-amber-300">${tex('S = \\dfrac{\\frac{1}{4}}{30} \\times 4^5 = \\dfrac{256}{30} = \\dfrac{128}{15} \\; (8.533)')}</strong> 입니다.<br/>
 &nbsp;&nbsp;(참고: 삼중근인 접점에서의 접선과 곡선으로 둘러싸인 넓이는 <strong class="text-sky-300">${tex('S = \\dfrac{|a|}{20}L^5')}</strong> 입니다.)`,
-          highlight: "💡 사차함수와 접선으로 둘러싸인 넓이: 삼중근인 접점에서의 접선은 (|a|/20)·L⁵, 두 점에서 접하는 직선은 (|a|/30)·L⁵ 입니다."
+          highlight: "💡 사차함수와 접선으로 둘러싸인 넓이: 삼중근인 접점에서의 접선은 ($\\frac{|a|}{20}$)·L⁵, 두 점에서 접하는 직선은 ($\\frac{|a|}{30}$)·L⁵ 입니다."
         })
       },
 
@@ -212,13 +212,13 @@ window.addEventListener('DOMContentLoaded', function () {
           steps: `① 도함수 ${tex("f'(x) = (x+1)(x-0.2)(x-3)")} 을 전개:<br/>
 &nbsp;&nbsp;${tex("f'(x) = x^3 - 2.2x^2 - 2.6x + 0.6")}<br/>
 ② 부정적분을 분수로 쓰면 ${tex('F(x)=x^4/4-11x^3/15-13x^2/10+3x/5+C')}이다.<br/>
-③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
+③ ${tex("f(3)-f(-1)=\\int_{-1}^{\\frac{1}{5}}f'(x)dx+\\int_{\\frac{1}{5}}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
           warning: "⚠️ 도함수의 근이 주어졌을 때 부정적분을 구해 대입하면 계산이 매우 길어집니다."
         }),
         shortcut: () => ({
           steps: `① ${tex('\\alpha = -1, \\; \\gamma = 0.2, \\; \\beta = 3')} 에서 왼쪽 간격은 ${tex('1.2')}, 오른쪽 간격은 ${tex('2.8')} 입니다.<br/>
-② 구간의 폭만으로 넓이를 비교할 수는 없다. 이 고정된 도함수의 부정적분으로 계산하면 ${tex('S_1=612/625')}와 ${tex('S_2=17836/1875')}이어서 ${tex('S_1<S_2')}이다.<br/>
-③ ${tex("f(3)-f(-1)=\\int_{-1}^{1/5}f'(x)dx+\\int_{1/5}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
+② 구간의 폭만으로 넓이를 비교할 수는 없다. 이 고정된 도함수의 부정적분으로 계산하면 ${tex('S_1=\\frac{612}{625}')}와 ${tex('S_2=\\frac{17836}{1875}')}이어서 ${tex('S_1<S_2')}이다.<br/>
+③ ${tex("f(3)-f(-1)=\\int_{-1}^{\\frac{1}{5}}f'(x)dx+\\int_{\\frac{1}{5}}^{3}f'(x)dx=S_1-S_2<0")}이므로 <strong class="text-amber-300">${tex('f(-1)>f(3)')}</strong>이다.`,
           highlight: "💡 사차함수의 두 극솟값의 높이 차 = 삼차 도함수의 그래프와 x축 사이의 두 부분의 넓이의 차 |S₁ − S₂| 입니다. γ가 α, β의 한가운데(λ=0.5)일 때만 두 극솟값이 같습니다."
         })
       },
@@ -240,13 +240,13 @@ window.addEventListener('DOMContentLoaded', function () {
           steps: `① ${tex('g(x) = |f(x) - k|')} 가 ${tex('f(x) = k')} 인 교점 ${tex('x = c')} 에서 미분가능하려면<br/>
 &nbsp;&nbsp;우미분계수 ${tex("|f'(c)|")} 와 좌미분계수 ${tex("-|f'(c)|")} 가 같아야 하므로 ${tex("f'(c) = 0")} 이어야 함<br/>
 ② 주어진 함수는 ${tex('f(x)-2=\\dfrac14x^3(x-4)')}이다. ${tex('k=2')}에서는 ${tex('x=0')}이 삼중근이고 ${tex('x=4')}는 중근이 아닌 근이다. 삼중근에서는 ${tex('|f(x)-2|')}의 좌미분계수와 우미분계수가 모두 ${tex('0')}이어서 미분가능하지만, 중근이 아닌 근 ${tex('x=4')}에서는 기울기 부호가 뒤집혀 미분가능하지 않다.<br/>
-③ 극솟값은 ${tex('f(3)=-19/4')}이다. ${tex('k<-19/4')}에서는 교점이 없고, ${tex('k=-19/4')}에서는 극소점의 중근만 있어 미분가능하지 않은 점이 없으며, ${tex('-19/4<k<2')} 또는 ${tex('k>2')}에서는 중근이 아닌 서로 다른 두 근이 생겨 미분가능하지 않은 점이 두 개다. 따라서 조건을 만족하는 값은 ${tex('k=2')}뿐이다.`,
+③ 극솟값은 ${tex('f(3)=-\\frac{19}{4}')}이다. ${tex('k<-\\frac{19}{4}')}에서는 교점이 없고, ${tex('k=-\\frac{19}{4}')}에서는 극소점의 중근만 있어 미분가능하지 않은 점이 없으며, ${tex('-\\frac{19}{4}<k<2')} 또는 ${tex('k>2')}에서는 중근이 아닌 서로 다른 두 근이 생겨 미분가능하지 않은 점이 두 개다. 따라서 조건을 만족하는 값은 ${tex('k=2')}뿐이다.`,
           warning: "⚠️ '|f(x) − k|가 오직 한 점에서만 미분가능하지 않다'는 조건이 나오면, 수평선 y = k 와 곡선의 교점에서 f′의 값이 0인지를 먼저 확인하여 그래프의 개형을 정합니다."
         }),
         shortcut: () => ({
           steps: `① ${tex('|f(x) - k|')} 에서 ${tex('f(x)=k')} 인 점의 기울기가 <strong>${tex("f' \\ne 0")} 이면(중근이 아닌 근) 접어 올린 그래프가 꺾여 미분가능하지 않고</strong>, <strong>삼중근처럼 ${tex("f' = 0")} 이면 접어 올려도 미분가능</strong>합니다.<br/>
 ② 이 특정 함수에서는 ${tex('k=2')}일 때 ${tex('f(x)-k=\\dfrac14x^3(x-4)')}: 삼중근 ${tex('x=0')}의 절댓값은 미분가능하고 중근이 아닌 근 ${tex('x=4')}에서만 미분가능하지 않은 점이 생긴다.<br/>
-③ ${tex('f(3)=-19/4')}와 사차함수의 양끝이 위로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 중근이 아닌 근이 2개(미분가능하지 않은 점 2개)다. 그러므로 유일한 값은 ${tex('k=2')}이다.`,
+③ ${tex('f(3)=-\\frac{19}{4}')}와 사차함수의 양끝이 위로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 중근이 아닌 근이 2개(미분가능하지 않은 점 2개)다. 그러므로 유일한 값은 ${tex('k=2')}이다.`,
           highlight: "'k=2일 때만 미분가능하지 않은 점이 1개'라는 결론은 이 문항의 사차함수 f(x) = ¼x³(x − 4) + 2 에 대한 것이다. 일반 사차함수에서는 수평선과의 교점 및 각 근의 중복도를 따로 확인한다."
         })
       }
@@ -454,16 +454,16 @@ window.addEventListener('DOMContentLoaded', function () {
         status = { tone: 'warn', text: `λ = ${lam} ≠ 0.5 (비대칭 · 1:√2 비율이 성립하지 않음)` };
         alert = { tone: 'bad', text: '현재 좌우 비대칭인 사차함수(λ ≠ 0.5)이므로 극대점의 수평인 접선에서 1 : √2 비율이 성립하지 않습니다!' };
       } else {
-        status = { tone: 'ok', text: left || right ? '삼중근 개형 (3 : 1 비율, 넓이 |a|/20·L⁵)' : sym ? '좌우 대칭 개형 (1 : √2 비율, 넓이 |a|/30·L⁵)' : "좌우 비대칭 개형 (도함수의 S₁, S₂ 비교)" };
+        status = { tone: 'ok', text: left || right ? '삼중근 개형 (3 : 1 비율, 넓이 $\\frac{|a|}{20}$·L⁵)' : sym ? '좌우 대칭 개형 (1 : √2 비율, 넓이 $\\frac{|a|}{30}$·L⁵)' : "좌우 비대칭 개형 (도함수의 S₁, S₂ 비교)" };
       }
       let v2, v4;
       if (left || right) {
         const q = left ? alpha + (4 / 3) * s.spanL : beta - (4 / 3) * s.spanL;
         v2 = `3 : 1 성립 (교점 q=${fmt(q)})`;
-        v4 = `S = |a|/20·L⁵ = ${fmt((Math.abs(s.a) / 20) * Math.pow((4 / 3) * s.spanL, 5))}`;
+        v4 = `S = $\\frac{|a|}{20}$·L⁵ = ${fmt((Math.abs(s.a) / 20) * Math.pow((4 / 3) * s.spanL, 5))}`;
       } else if (sym) {
         v2 = `1 : √2 성립 (√2h=${fmt(Math.sqrt(2) * (s.spanL / 2))})`;
-        v4 = `S = |a|/30·L⁵ = ${fmt((Math.abs(s.a) / 30) * Math.pow(s.spanL, 5))}`;
+        v4 = `S = $\\frac{|a|}{30}$·L⁵ = ${fmt((Math.abs(s.a) / 30) * Math.pow(s.spanL, 5))}`;
       } else {
         v2 = `좌우 비대칭 (λ=${lam})`;
         v4 = `극솟값 차 = ${fmt(Math.abs(s1 - s2))}`;
@@ -738,7 +738,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if (s.step >= 2) {
         b.seg([x1, yLine], [x2, yLine], { color: 'amber', width: 2, ref: 'S', dash: true });
-        b.text([(x1 + x2) / 2, (yLine + evalF(s, left ? beta : alpha)) / 2], `S = |a|/20 · L⁵ = ${num(area20)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
+        b.text([(x1 + x2) / 2, (yLine + evalF(s, left ? beta : alpha)) / 2], `S = \\frac{|a|}{20} · L⁵ = ${num(area20)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
         b.text([(x1 + x2) / 2, yLine], `L = ${num(L)}`, { color: 'amber', dy: -12, size: 12.5, ref: 'S' });
       }
     } else if (sym) {
@@ -750,7 +750,7 @@ window.addEventListener('DOMContentLoaded', function () {
         b.seg([alpha - 0.8, yLine], [beta + 0.8, yLine], { color: 'sky', width: 2.5, glow: true, ref: 'tan' });
       }
       if (s.step >= 2) {
-        b.text([(alpha + beta) / 2, (yLine + evalF(s, (alpha + beta) / 2)) / 2], `S = |a|/30 · L⁵ = ${num(area30)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
+        b.text([(alpha + beta) / 2, (yLine + evalF(s, (alpha + beta) / 2)) / 2], `S = \\frac{|a|}{30} · L⁵ = ${num(area30)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
         b.text([(alpha + beta) / 2, yLine], `L = β−α = ${num(L)}`, { color: 'amber', dy: -12, size: 12.5, ref: 'S' });
       }
     }
@@ -993,7 +993,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const quick1 = (v) => {
     if (v.first) return examData[1].shortcut();
     return {
-      steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 삼중근인 접점 이외의 극점은 ${tex('x=(\\alpha+3q)/4')}에 있다. 여기서는 ${tex(v.up ? 'a>0' : 'a<0')}라 ${v.up ? '극소점' : '극대점'}이다.<br/>
+      steps: `① 이 문항의 형태는 ${tex('f(x)=a(x-\\alpha)^3(x-q)+c')}이다. 미분하면 ${tex('f\'(x)=a(x-\\alpha)^2(4x-\\alpha-3q)')}이므로 삼중근인 접점 이외의 극점은 ${tex('x=\\frac{\\alpha+3q}{4}')}에 있다. 여기서는 ${tex(v.up ? 'a>0' : 'a<0')}라 ${v.up ? '극소점' : '극대점'}이다.<br/>
 ② 따라서 미분하지 않고도 ${v.up ? '극소점' : '극대점'}은 <strong class="text-amber-300">${tex(`\\beta = \\dfrac{${v.al} + 3 \\times ${v.q}}{4} = ${v.be}`)}</strong> 이다.<br/>
 ③ 한 칸 간격을 ${tex('h = 1')} 이라 하면 극점과 접선 ${tex(`y=${v.y0}`)} 사이의 높이 차는 <strong class="text-sky-300">${tex(`\\Delta y = 27|a|h^4 = ${cxNum(27 * Math.abs(v.a))}`)}</strong> 이다.<br/>
 &nbsp;&nbsp;따라서 ${v.up ? '극솟값' : '극댓값'}은 ${tex(`${v.y0} ${v.up ? '-' : '+'} ${cxNum(27 * Math.abs(v.a))} = ${cxNum(v.yMin)}`)} 이다.`,
@@ -1170,7 +1170,7 @@ window.addEventListener('DOMContentLoaded', function () {
       cxTag(b, [(x1 + x2) / 2, yl], `L = ${sym ? 'β−α' : 'q−α'} = ${L}`, { color: 'amber', dy: sym || v.up ? -12 : 20, size: 12.5, ref: 'S' });
     }
     if (st >= 3) {
-      const txt = `S = ${sym ? '|a|/30' : '|a|/20'} · L⁵ = ${cxNum(area3(v)).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`;
+      const txt = `S = ${sym ? '\\frac{|a|}{30}' : '\\frac{|a|}{20}'} · L⁵ = ${cxNum(area3(v)).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`;
       const my = sym ? (yl + v.yc) / 2 : (yl + v.yMin) / 2;
       cxTag(b, [(x1 + x2) / 2, my], txt, { color: 'amber', size: 13.5, weight: 850, ref: 'S' });
     }

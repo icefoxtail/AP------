@@ -91,12 +91,12 @@
       ui.end = h('div', { class: 'apl-vend', hidden: true },
         h('div', { class: 'apl-vend-h' }, h('span', { class: 'ttl', html: icon('check') + '<span>한 줄 정리</span>' }), ui.endX),
         ui.endSum, ui.endTask, h('div', { class: 'apl-vend-btns' }, ui.endGo, ui.endAgain));
-      // 제목: 재생이 시작되면 그림 위쪽에 크게(tBig) 떴다가 약 2초 뒤 무대 맨 위 머리글 줄(tbar)로 줄어듭니다. 머리글 줄은 그림 위 별도 줄이라 칩·도형을 가리지 않습니다.
+      // 큰 제목과 작은 제목 모두 무대 위 별도 줄을 써 칩·도형을 가리지 않습니다.
       ui.tText = h('span', { class: 'tt' });
       ui.tbar = h('div', { class: 'apl-vtbar', 'aria-hidden': 'true' }, ui.tText);
       ui.tBig = h('div', { class: 'apl-vtbig', 'aria-hidden': 'true' });
       this.lab.ui.stage.insertBefore(ui.tbar, this.lab.ui.canvasWrap);
-      this.lab.ui.canvasWrap.append(ui.tBig);
+      ui.tbar.append(ui.tBig);
       ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.cap, ui.prog, ui.live, ui.end);
       this.lab.ui.stage.append(ui.bar);
       // 진행 막대는 0~1000 정수 위치로 다룹니다
@@ -119,6 +119,11 @@
         return orig(i, o);
       };
       this._goScene = orig;
+      const setTab = lab.setTab.bind(lab);
+      lab.setTab = (id) => {
+        if (!this._internal && this.state !== 'idle' && id !== lab.tab && lab._tabAvailable(id)) this._leave(false);
+        return setTab(id);
+      };
     }
 
     _bind() {
@@ -133,8 +138,18 @@
         if (this.state !== 'playing' && this.state !== 'paused') return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         const k = e.key;
+        // 목차의 Escape와 실제 폼 컨트롤의 기본 키 동작을 보존하면서 셸 단축키는 막습니다.
+        if (this.lab.toc && this.lab.toc.isOpen && k === 'Escape') return;
+        const target = e.target;
+        if (target && (target.matches('input, textarea, select, button, [contenteditable="true"]'))) {
+          if (k !== 'Escape') {
+            // document 캡처 단계에서 바로 중단하면 컨트롤 자체가 이벤트를 받지 못합니다.
+            target.addEventListener('keydown', (event) => event.stopPropagation(), { once: true });
+            return;
+          }
+        }
         let handled = true;
-        if (k === ' ' || k === 'k' || k === 'K') { if (e.target && e.target.tagName === 'BUTTON') return; this.toggle(); }
+        if (k === ' ' || k === 'k' || k === 'K') this.toggle();
         else if (k === 'ArrowRight' || k === 'PageDown') this.skip(1);
         else if (k === 'ArrowLeft' || k === 'PageUp') this.skip(-1);
         else if (k === 'r' || k === 'R') this.replay();
@@ -295,6 +310,7 @@
       ui.range.value = String(Math.round((this.t / cs.length) * 1000));
       ui.range.style.setProperty('--p', (this.t / cs.length) * 100 + '%');
       ui.time.textContent = `${mmss(this.t)} / ${mmss(cs.length)}`;
+      ui.range.setAttribute('aria-valuetext', `${mmss(this.t)} / ${mmss(cs.length)}`);
       const playing = this.state === 'playing';
       if (this.stepMode) {
         ui.play.innerHTML = icon('next') + '<span>다음 자막</span>';
@@ -317,6 +333,7 @@
       this._hideTitle(); // 끝 카드가 나오면 제목은 숨김(머리글 줄은 영상 화면이 풀리며 함께 사라짐)
       const lab = this.lab, cs = this.cs;
       this._layout(false); // 탐구 화면(패널)으로 돌아옴. 그림은 끝난 상태 그대로
+      if (lab.ui.main.classList.contains('panel-off')) lab.togglePanel();
       lab.tab = 'explore';
       lab._buildPanel();
       lab.invalidate(true);
@@ -325,8 +342,9 @@
       this.ui.endSum.innerHTML = richHtml(cs.summary);
       this.ui.endTask.innerHTML = `<b>이제 직접 해 보세요</b><span>${richHtml(cs.task)}</span>`;
       this.ui.end.hidden = false;
-      document.body.classList.add('apl-vend-on'); // 휴대폰: 끝 카드만큼 그림 무대를 키움
-      this._taskNote(cs.task);
+      document.body.classList.add('apl-vend-on');
+      // 끝 카드를 탐구 패널에 두어 복구된 조작부와 함께 그림 높이를 줄이지 않습니다.
+      lab.ui.panelInner.prepend(this.ui.bar);
     }
     /** 영상 상태를 끝내고 화면을 원래대로 되돌립니다(rebuild: 패널을 다시 만들지 여부). */
     _leave(rebuild) {
@@ -338,6 +356,7 @@
       this._hideTitle();
       this.ui.bar.hidden = true;
       this.ui.end.hidden = true;
+      this.lab.ui.stage.append(this.ui.bar); // 패널 재구성 전에 재생 막대를 보존
       document.body.classList.remove('apl-vend-on');
       this._layout(false);
       if (rebuild && was !== 'idle') { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
@@ -347,7 +366,9 @@
       this._leave(true);
     }
     _dismissEnd() {
+      const task = this.cs && this.cs.task;
       this._leave(false);
+      if (task) this._taskNote(task); // 같은 안내를 끝 카드와 동시에 두 번 보이지 않음
     }
     _taskNote(task) {
       this._clearTaskNote();

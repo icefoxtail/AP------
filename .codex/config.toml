@@ -23,3 +23,35 @@ config_file = "./agents/archive-r3.toml"
 [agents.archive_master]
 description = "별도 명시적 기술 작업 전용 MASTER: 시험지 run 자동 투입 금지"
 config_file = "./agents/archive-master.toml"
+
+[agents.g7_polygons_worker]
+description = "중1 다각형 대응표·장면"
+config_file = "./agents/g7-polygons-worker.toml"
+
+[agents.g7_circle_worker]
+description = "중1 원과 부채꼴 대응표·영상"
+config_file = "./agents/g7-circle-worker.toml"
+
+[agents.g7_solids_worker]
+description = "중1 다면체·회전체 대응표·장면"
+config_file = "./agents/g7-solids-worker.toml"
+
+[agents.g7_surface_volume_worker]
+description = "중1 겉넓이·부피 대응표·영상"
+config_file = "./agents/g7-surface-volume-worker.toml"
+
+[agents.g7_video_worker]
+description = "중1 공용 개념영상 재생·목차"
+config_file = "./agents/g7-video-worker.toml"
+
+[agents.g7_independent_reviewer]
+description = "중1 수학·화면 독립 검수"
+config_file = "./agents/g7-independent-reviewer.toml"
+
+[agents.lab_fraction_typesetter]
+description = "운영 수학실험실 분수 세로 조판 수리"
+config_file = "./agents/lab-fraction-typesetter.toml"
+
+[agents.student_design_learning_reviewer]
+description = "학생 관점 디자인·학습 흐름 독립 검수 보고"
+config_file = "./agents/student-design-learning-reviewer.toml"
