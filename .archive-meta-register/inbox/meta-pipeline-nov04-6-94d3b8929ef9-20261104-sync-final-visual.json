@@ -1,6 +1,6 @@
 {
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-  "requestId": "meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final",
+  "requestId": "meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual",
   "examUid": "21_팔마중_1학기_기말_중2_수학",
   "sourceArchiveFile": "original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
   "expectedSourceBlobSha1": "535e870de2279b7664ce4558259c04a77e067e31",
@@ -69,6 +69,10 @@
       {
         "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
         "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+        "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
       }
     ],
     "metaPipelineAudit": {
@@ -87,8 +91,8 @@
         "sha256": "19b6107aec2d2254fb0cdef809512fb9321f2bc29bbcaf0d8ea97848868214a6"
       },
       "correctiveReviewRef": {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
-        "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+        "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
       },
       "parentEvidenceRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.parent-evidence.json",
@@ -357,7 +361,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric audit subUnit M2-03-01 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source M2-04 system namespace is rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. CrossConcept: LCM 12 of coefficients 3 and 4 is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric audit subUnit M2-03-01 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source M2-04 system namespace is rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding, so neither key can be certified; requires ROOT decision. CrossConcept: LCM 12 of coefficients 3 and 4 is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -418,6 +422,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -495,7 +503,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SPECIAL_CASES; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Coefficient-ratio condition is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SPECIAL_CASES; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Coefficient-ratio condition is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -556,6 +564,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -633,7 +645,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: All three cross concepts are exercised. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: All three cross concepts are exercised. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -694,6 +706,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -771,7 +787,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Common solution and coefficient determination are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Common solution and coefficient determination are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -832,6 +848,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -909,7 +929,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식의 활용"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit M2-03-02 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Inverse win/loss relation is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit M2-03-02 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Inverse win/loss relation is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -970,6 +990,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1047,7 +1071,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식의 활용"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Place value is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding. CrossConcept: Place value is decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1108,6 +1132,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1185,7 +1213,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프. Numeric subUnit M2-04-01 is replaced by M2-04-LINEAR_FUNCTION_BASIC. Source M2-05 is rejected because canonical M2-05 is a geometry domain. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프. Numeric subUnit M2-04-01 is replaced by M2-04-LINEAR_FUNCTION_BASIC. Source M2-05 is rejected because canonical M2-05 is a geometry domain. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical MIDDLE_GEOMETRY M2-05 (quadrilateral properties). Audit key retained. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1246,6 +1274,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1323,7 +1355,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-01 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-FUNCTION_CONCEPT; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1384,6 +1416,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1461,7 +1497,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1522,6 +1558,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1599,7 +1639,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1660,6 +1700,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1739,7 +1783,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1800,6 +1844,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -1877,7 +1925,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -1938,6 +1986,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2017,7 +2069,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2078,6 +2130,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2155,7 +2211,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-02 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2216,6 +2272,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2293,7 +2353,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프, whose second subunit is M2-04-LINEAR_FUNCTION_EQUATION. Numeric M2-04-03 is replaced. Source M2-06 is rejected because canonical M2-06 is 도형의 닮음. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity). Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity). Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical 일차함수와 그래프, whose second subunit is M2-04-LINEAR_FUNCTION_EQUATION. Numeric M2-04-03 is replaced. Source M2-06 is rejected because canonical M2-06 is 도형의 닮음. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity). Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical MIDDLE_GEOMETRY M2-06 (similarity). Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2354,6 +2414,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2431,7 +2495,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected (canonical geometry collision). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2492,6 +2556,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2569,7 +2637,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2630,6 +2698,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2705,7 +2777,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-EQUATION_AND_FUNCTION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2766,6 +2838,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2843,7 +2919,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Graph-intersection/equation relation belongs to canonical M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Graph intersection and algebraic sum are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Graph-intersection/equation relation belongs to canonical M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Graph intersection and algebraic sum are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -2904,6 +2980,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -2981,7 +3061,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Intersection-quadrant condition belongs to M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Quadrant sign conditions are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Intersection-quadrant condition belongs to M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06. Original M2-04/M2-04-03 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06. CrossConcept: Quadrant sign conditions are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -3042,6 +3122,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -3119,7 +3203,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_SUBSTITUTION_IN_EQUATIONS because existing CC_ALGEBRAIC_SUBSTITUTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Substitution and coefficient identification are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_SUBSTITUTION_IN_EQUATIONS because existing CC_ALGEBRAIC_SUBSTITUTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-01 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source metadata: the current production source declares M2-04/M2-04-SOLVE_SYSTEM; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Substitution and coefficient identification are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -3180,6 +3264,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -3257,7 +3345,7 @@
         "majorUnit": "일차부등식과 연립일차방정식",
         "midUnit": "연립일차방정식의 활용"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Unit price and applied modeling are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. Original M2-03/M2-03-02 → corrected M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD. Source metadata: the current production source declares M2-04/M2-04-SYSTEM_APPLICATION; the reviewed correction binds M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD because Audit M2-03 vs source M2-04. Canonical has no M2-03/M2-04 binding; requires ROOT decision. CrossConcept: Unit price and applied modeling are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -3318,6 +3406,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -3395,7 +3487,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 그 그래프"
       },
-      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_APPLICATION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-05 collides with canonical geometry domain. Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_BASIC. Source metadata: the current production source declares M2-05/M2-05-LINEAR_FUNCTION_APPLICATION; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_BASIC because Audit M2-04; source M2-05 collides with canonical geometry domain. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -3456,6 +3548,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     },
@@ -3533,7 +3629,7 @@
         "majorUnit": "일차함수",
         "midUnit": "일차함수와 일차방정식의 관계"
       },
-      "reason": "Reviewed definitions: Two motion graphs meeting is an intersection of linear-function graphs, i.e. M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). CrossConcept: Graph intersection and applied modeling are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input.",
+      "reason": "Reviewed definitions: Two motion graphs meeting is an intersection of linear-function graphs, i.e. M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). Original M2-04/M2-04-04 → corrected M2-04/M2-04-LINEAR_FUNCTION_EQUATION. Source metadata: the current production source declares M2-06/M2-06-SYSTEM_AND_GRAPH; the reviewed correction binds M2-04/M2-04-LINEAR_FUNCTION_EQUATION because Audit M2-04; source M2-06 collides with canonical geometry M2-06 (similarity). CrossConcept: Graph intersection and applied modeling are decisive. Rebound after official parent-link regeneration; classification and student content unchanged. Exact canonical master parent reference is authoritative; generated basic-parent file is not an input. Visual evidence summary corrected to match directly observed assets; metadata and source unchanged.",
       "evidenceRefs": [
         {
           "path": "archive/data/master_tables/js_archive_tag_master.json",
@@ -3594,6 +3690,10 @@
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
           "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final-visual-correction.json",
+          "sha256": "891ab2a31fbd8424114f65ad9630364245d6ed23b79b02fb6f45b8340d235a59"
         }
       ]
     }
@@ -3744,7 +3844,7 @@
     }
   },
   "provenanceCorrection": {
-    "supersedesRequestId": "meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync",
-    "reason": "Remove unused generated parent-link file reference; retain exact canonical master parent evidence."
+    "supersedesRequestId": "meta-pipeline-nov04-6-94d3b8929ef9-20261104-sync-final",
+    "reason": "Correct visual summary while retaining original immutable evidence."
   }
 }
