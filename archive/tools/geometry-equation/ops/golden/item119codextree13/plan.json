@@ -1,0 +1,76 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "0",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "2"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "4"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "4"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "2"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        }
+      ]
+    },
+    "leafLayout": "COMPACT"
+  },
+  "caption": "일의 자리를 먼저 정하고 가능한 십의 자리를 고른다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0부터 5까지 각 한 장씩인 카드로 두 자리 짝수를 만든다",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "0은 십의 자리에 놓지 않고 같은 카드를 중복하지 않는다"
+  ]
+}

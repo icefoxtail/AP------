@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 무게중심 G, 변의 중점 M과 N을 표시하고 중선의 분할과 밑변 이등분을 나타낸다.",
+    "solutionImageCaption": "길이의 단위는 cm이다. CG:GN=2:1이므로 x=10, BM은 BC의 절반이므로 y=14이다. 답: ⑤ 24",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형에서 가운데 오각형과 양쪽에 같은 넓이 8을 갖는 두 삼각형을 구분한다.",
+    "solutionImageCaption": "삼각형 BCD의 넓이 48에서 주황색 두 삼각형의 넓이 8씩을 뺀다. 답: ④ 32cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -92,7 +100,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 무게중심과 중점 D, E, 평행선 DF를 그리고 삼각형 FDC를 색칠한다.",
+    "solutionImageCaption": "CF:CA=1:4이고 CD:CB=1:2이므로 색칠한 삼각형은 전체의 1/8이다. 답: ⑤ 64cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -123,7 +135,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형에서 D와 E가 중점이고 두 중선의 교점 F가 CD를 2:1로 나누는 모습을 나타낸다.",
+    "solutionImageCaption": "F는 무게중심이므로 CF:FD=2:1이고 CD=24cm이다. 답: ③ 8cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -154,7 +170,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형에서 밑변의 중점 H에 수선을 내리고 BH=8, AH=15를 표시한다.",
+    "solutionImageCaption": "밑변의 반은 8이고 피타고라스 정리로 높이는 15이다. 답: ④ 120",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -185,7 +205,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 높이를 갖는 두 직각삼각형에서 먼저 구한 높이 x=16과 전체 빗변 y=34를 표시한다.",
+    "solutionImageCaption": "안쪽 직각삼각형에서 x=16, 전체 직각삼각형에서 y=34이다. 답: ⑤ 50",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -216,7 +240,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 세 변을 지름으로 하는 반원과 두 초승달을 표시하고 AC=15cm를 나타낸다.",
+    "solutionImageCaption": "AC=15cm이며 두 초승달의 넓이 합은 직각삼각형 ABC의 넓이와 같다. 답: ① 150cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -247,7 +275,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 12인 정사각형 ABCD에서 E는 DC 위에 있고, BE와 AD의 연장선의 교점은 F이다. BE=15인 직각삼각형 BCE와 FDE가 닮아 CE=9와 DE=3, BC와 DF가 각각 대응한다.",
+    "solutionImageCaption": "EC=9, DE=3이므로 닮음에서 DF=4이다. 답: ② 6",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -306,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 도형을 완성한 직사각형과 왼쪽 위에 추가한 직각삼각형을 다른 색으로 구분한다.",
+    "solutionImageCaption": "가로 차는 8이고 빗변 10인 삼각형의 높이는 6이다. 전체 높이는 12이다. 답: ② 312",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -564,7 +600,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=2x-4 위의 주사위 눈 좌표 (3,2), (4,4), (5,6).",
+    "solutionImageCaption": "가능한 좌표는 세 개이고 전체는 36가지이므로 확률은 1/12이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -618,7 +658,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형의 빗변 중점 D와 무게중심 G를 나타내고 AD, BD, CD의 같은 길이를 표시한다.",
+    "solutionImageCaption": "GD=10cm이므로 AD=30cm이고 빗변의 중점 D에서 세 꼭짓점까지의 거리는 모두 30cm이다. 답: 48cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -644,7 +688,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형에서 삼각형 ABD를 색칠하고 BD=15cm, 넓이 54cm² 및 수선 AE를 나타낸다.",
+    "solutionImageCaption": "BD=15cm이고 색칠한 삼각형의 넓이는 54cm²이다. 답: 36/5cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

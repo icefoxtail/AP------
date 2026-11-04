@@ -54,6 +54,34 @@ function spy(intercept={}){
   return {worker,calls,of:kind=>calls.filter(entry=>entry.kind===kind)};
 }
 const compose=(overrides={})=>composeConstructionCandidate({plan:basePlan,model:baseModel,identity:idOf(1),typographyPolicy:policy,browser:shared,...overrides});
+test('accessibilityDescription is opt-in, XML escaped, and leaves default SVG bytes unchanged',async()=>{
+  // This metadata test needs only a triangle, not the midpoint fixture's coordinate-label layout.
+  const graph={schemaVersion:'construction-spike-v1',nodes:[pointNode('A',0,0),pointNode('B',4,0),pointNode('C',0,3)]};
+  const plan={capability:'construction-spike-v1',caption:'삼각형 ABC',mathPlan:graph,displaySegments:[{id:'sAB',refs:['A','B']},{id:'sBC',refs:['B','C']},{id:'sCA',refs:['C','A']}],coordinateLabels:[]};
+  const model=await modelOf(graph);
+  const baselineSpy=spy(),baseline=await compose({plan,model,worker:baselineSpy.worker});
+  assert.equal(baseline.status,'COMPOSED',JSON.stringify(baseline.detail));
+  for(const kind of ['prepare','build'])assert.equal(Object.hasOwn(baselineSpy.of(kind)[0].payload.spec,'description'),false);
+  assert.match(baseline.svg,/<desc id="visual-desc">점과 도형의 관계를 확인한다\.<\/desc>/);
+  const description='선분 AB와 AC는 점 A에서 직각으로 만난다. A < B & "관계"';
+  const customSpy=spy(),custom=await compose({plan:{...plan,accessibilityDescription:description},model,worker:customSpy.worker});
+  assert.equal(custom.status,'COMPOSED',JSON.stringify(custom.detail));
+  for(const kind of ['prepare','build'])assert.equal(customSpy.of(kind)[0].payload.spec.description,description);
+  const page=await shared.newPage();
+  try{
+    await page.setContent(custom.svg);
+    assert.equal(await page.locator('desc#visual-desc').textContent(),description);
+  }finally{await page.close();}
+  assert.match(custom.svg,/A &lt; B &amp;/);
+  // The only changed output bytes are the opted-in description; no visible geometry or style changes.
+  const desc=/<desc id="visual-desc">[\s\S]*?<\/desc>/;
+  assert.equal(custom.svg.replace(desc,baseline.svg.match(desc)[0]),baseline.svg);
+  for(const invalid of ['', '   ', 7, '첫 줄\n둘째 줄', '가'.repeat(501)]){
+    const rejected=await compose({plan:{...plan,accessibilityDescription:invalid},model});
+    assert.equal(rejected.status,'SPEC_ERROR');
+    assert.equal(rejected.detail.code,'INVALID_ACCESSIBILITY_DESCRIPTION');
+  }
+});
 function assertNotRun(result){
   assert.equal(result.schemaVersion,'construction-candidate-svg-v1');
   assert.equal(result.typographyPolicyProvenance,'CALLER_SUPPLIED_UNVERIFIED');

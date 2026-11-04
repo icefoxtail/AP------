@@ -284,6 +284,10 @@ def expand_callouts(p,elements,inverse,errors,observations):
         else:
             path=[row.get('vertex')]+list(row.get('rays') or []);piece_pairs=[(path[0],ray) for ray in path[1:]];piece_prefix='r'
         if len(path)<2 or len(set(path))!=len(path) or any((not isinstance(r,str)) or r not in p['points'] for r in path):errors.append('CALLOUT_PATH_INVALID:'+cid);continue
+        unnamed=row.get('nameMode')=='HIDDEN'
+        source_names=row.get('nameMode')=='SOURCE'
+        if 'nameMode' in row and (row.get('nameMode') not in ('HIDDEN','SOURCE') or kind!='SEGMENT'):errors.append('CALLOUT_NAME_MODE_INVALID:'+cid)
+        if (unnamed or source_names) and row.get('link')!='ENDS':errors.append('CALLOUT_UNNAMED_NEEDS_LINK:'+cid)
         seen={};complete=True
         for pid in path:
             node=elements.get(prefix+pid)
@@ -291,7 +295,13 @@ def expand_callouts(p,elements,inverse,errors,observations):
             seen[pid]=inverse(float(node.get('cx')),float(node.get('cy')))
             copy_label=elements.get(prefix+pid+'-name');main_label=elements.get(pid+'-name')
             # the copy carries the same name as the point it copies (the same glyphs as that point's own name label)
-            if copy_label is None or main_label is None or not codes(copy_label) or codes(copy_label)!=codes(main_label):errors.append('CALLOUT_NAME_MISMATCH:'+cid+':'+pid)
+            if unnamed or (source_names and pid in p.get('hiddenPointNames',[])):
+                if pid not in p.get('hiddenPointNames',[]):errors.append('CALLOUT_UNNAMED_POINT_HAS_NAME:'+cid+':'+pid)
+                if copy_label is not None or main_label is not None:errors.append('CALLOUT_UNNAMED_NAME_SHOWN:'+cid+':'+pid)
+                owner=elements.get(pid)
+                if pid in p.get('unmarkedPoints',[]) or owner is None or tag(owner)!='circle' or owner.get('data-role')!='point':errors.append('CALLOUT_SOURCE_POINT_UNDRAWN:'+cid+':'+pid)
+                elif norm(sub(inverse(float(owner.get('cx')),float(owner.get('cy'))),p['points'][pid]))>1e-6:errors.append('CALLOUT_SOURCE_POINT_MISMATCH:'+cid+':'+pid)
+            elif copy_label is None or main_label is None or not codes(copy_label) or codes(copy_label)!=codes(main_label):errors.append('CALLOUT_NAME_MISMATCH:'+cid+':'+pid)
         if not complete:continue
         P={r:tuple(p['points'][r]) for r in path};Q=seen;scale=None
         if kind=='SEGMENT':

@@ -126,3 +126,32 @@ test('renderPlan draws the figure end to end and refuses a plan the engine canno
   const none=await renderPlan({item:{sourcePath:'archive/exams/original/high/h2/1mid/18_금당고_1학기_중간_고2_확률과통계.js',ordinal:12,dir:'t'},plan:plan(grid(3,3,{forbidden:[[[0,0],[1,0]],[[0,0],[0,1]]],counts:true})),outDir:out});
   assert.equal(none.status,'FAILED');assert.match(String(none.detail),/LATTICE_NO_PATH/);
 });
+
+const waypoint={grid:{cols:4,rows:3},points:{A:[0,0],P:[2,2],B:[4,3]},viaPoints:['P'],counts:'segments',hideTargetCount:false};
+test('waypoint local counts preserve six and three while the complete route count is eighteen',()=>{
+  const m=solveLattice(waypoint);
+  assert.equal(m.total,18);assert.equal(countAt(m,2,2),6);assert.equal(countAt(m,4,3),3);
+  assert.equal(countAt(m,0,3),undefined);
+  assert.equal(countAt(solveLattice({...waypoint,counts:true}),4,3),18);
+  assert.equal(solveLattice({...waypoint,from:'B',to:'A'}).total,18);
+  assert.equal(solveLattice({...waypoint,counts:false}).shown.length,0);
+  assert.deepEqual(solveLattice({...waypoint,counts:['P','B']}).shown,[[2,2,6],[4,3,18]]);
+  assert.equal(solveLattice({...waypoint,forbidden:[[[0,0],[1,0]]]}).total,9);
+  const twice=solveLattice({...waypoint,points:{...waypoint.points,Q:[3,2]},viaPoints:['P','Q']});
+  assert.equal(twice.total,12);assert.equal(countAt(twice,4,3),2);
+
+  assert.ok(!solveLattice({...waypoint,hideTargetCount:true}).shown.some(c=>c[0]===4&&c[1]===3));
+  for(const refs of [[],['Z'],['P','P'],['A'],['B']])refuse({...waypoint,viaPoints:refs},refs.length===0||refs[0]==='Z'?'LATTICE_VIA_POINTS_INVALID':'LATTICE_VIA_POINTS_ORDER_INVALID');
+  refuse({...waypoint,via:[[[0,0],[1,0]]]},'LATTICE_VIA_POINTS_ROAD_MIX_UNSUPPORTED');
+  refuse({...waypoint,forbidden:[[[0,0],[1,0]],[[0,0],[0,1]]]},'LATTICE_NO_PATH');
+});
+test('waypoint observer rejects cumulative eighteen substituted for local three and a moved P',async()=>{
+  const composed=await composeLatticePathFigure({plan:plan(waypoint),model:solveLattice(waypoint),identity:assetIdentity('23_테스트|16','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const audit=async(svg)=>(await pythonWorker({lattice:waypoint,svg},{script:observer})).result;
+  assert.equal((await audit(composed.svg)).status,'PASS');
+  const wrong=composed.svg.replace(/<g id="count-4-3"[^>]*>/,tag=>tag.replace('data-tex="3"','data-tex="18"').replace('data-count="3"','data-count="18"'));
+  assert.notEqual(wrong,composed.svg);assert.ok(has(await audit(wrong),'LP_COUNT_MISMATCH:4,3'));
+  const moved=composed.svg.replace(/<circle id="point-P"[^>]*>/,tag=>tag.replace(/cx="[^"]+"/,'cx="40"'));
+  assert.ok(has(await audit(moved),'LP_POINT_MISPLACED:P'));
+});

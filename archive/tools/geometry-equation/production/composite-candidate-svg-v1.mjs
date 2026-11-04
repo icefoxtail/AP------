@@ -74,6 +74,12 @@ export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
   if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels))bad('PANELS');
   // Venn panels (set-diagram-figure-v1) form their own grid: all of them, 2 to 4, and nothing else. Codes carry the full name so a failed render shows them.
+  const linearStack=plan.linearStack===true;
+  if(plan.linearStack!==undefined&&plan.linearStack!==true)bad('LINEAR_STACK_INVALID');
+  if(linearStack&&(plan.chain!==undefined||plan.panels.length!==3||!plan.panels.every(p=>{
+    const g=p?.plan?.graphPlan,c=g?.pieces?.[0]?.coefficients;
+    return p?.plan?.capability==='piecewise-polynomial-spike-v1'&&g?.family==='piecewise-polynomial'&&g.pieces.length===1&&Array.isArray(c)&&c.length===2&&c[1]!=='0'&&!(g.breakpoints?.length)&&g.overviewCanvasHeight===undefined&&g.compositeHeader===undefined;
+  })))bad('LINEAR_STACK_INVALID');
   const setPanels=plan.panels.map(panel=>isSetPanel(panel?.plan)),setGrid=setPanels.some(Boolean);
   if(setGrid){
     if(plan.chain!==undefined)bad('CHAIN');
@@ -160,7 +166,7 @@ export function compositePanels(plan){
     if(numberLine||solid)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);
-    if(three){
+    if(three&&!linearStack){
       const coefficients=panel.plan.graphPlan.coefficients,lines=panel.plan.graphPlan.lines??[];
       const degree=Array.isArray(coefficients)?coefficients.reduce((highest,value,k)=>value==='0'?highest:k,0):-1;
       if(degree!==2||panel.plan.graphPlan.overviewCanvasHeight!==undefined||!Array.isArray(lines)||lines.some(line=>typeof line?.id!=='string'))bad('PANEL_NOT_THREE_PANEL_COMPATIBLE_'+index);
@@ -168,7 +174,7 @@ export function compositePanels(plan){
     return {index,plan:panel.plan,caption};
   });
   if(grid||setGrid||statGrid)return checked;
-  const sharedLines=three?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
+  const sharedLines=three&&!linearStack?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
   // Two cubic/quartic cases: their long formula has no room inside the panel beside the y-axis, so each panel keeps its own plot and gains
   // an 80 px header band above it where the formula is written (overviewHeaderBand -> phase2 CUBIC_COMPOSITE_PANEL_CANVAS).
   const degreeOf=item=>{const coefficients=item.plan?.graphPlan?.coefficients;return Array.isArray(coefficients)?coefficients.reduce((highest,value,k)=>value==='0'?highest:k,0):-1;};
@@ -180,7 +186,7 @@ export function compositePanels(plan){
   return checked.map(item=>{
     if(isNumberLinePanel(item.plan)||isSolidPanel(item.plan))return item;
     const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
-    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
+    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three&&!linearStack?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
 /** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) and normal-curve panels (G19) stay one column; plane, solid, Venn, dot and scatter panels become a grid. */

@@ -19,15 +19,18 @@
 - `slice.py`: `AUTHOR_GUIDE.md`를 절별로 잘라 `guide-core/plane/solid/stat/graph.md`를 만든다. `slice.py <AUTHOR_GUIDE.md> <출력 폴더>`
 
 그림 렌더·확인
+- `upgrade-svg-accessibility.mjs`: 이미 검수된 엔진 SVG의 누락된 루트 title/desc를 보완한다. `--manifest <검수된 문구/입력 SHA 목록> --audit-dir <새 .tmp 폴더>`. 원본·새 SVG·인증서를 보존하고 가시 본문과 비접근성 루트 속성의 바이트 불변을 검증한다. 기존 렌더/검수 해시를 고치지 않으며 새 메타데이터 문구의 독립 검수와 게시 SHA 확인은 별도다.
+- `trace-layout-failure.py`: `APMS_LAYOUT_DIAGNOSTICS_DIR`로 보존한 실패 snapshot을 동결된 Chrome 측정값으로 재생한다. `python trace-layout-failure.py <snapshot.json> --out <trace.json>`. SVG 바이트와 전체 배치가 일치하는 경우만 `EXACT_REPLAY`이며, 이 진단은 렌더 성공이나 게시 PASS가 아니다.
 - `svg2png.cjs`: SVG를 PNG로 바꾼다(눈으로 확인용). `node svg2png.cjs <in.svg> <out.png> [css폭=600]`
 - `golden-one.sh`: 정답지 항목 하나를 렌더해 기준 SVG와 바이트 비교한다. `golden-one.sh itemNN`. `WT`(렌더할 트리)·`OUT`(결과 폴더)·`REFDIR`(기준 SVG 폴더)를 환경변수로 바꿔 쓴다.
 - `golden-one.mjs`: 정답지 항목 여럿을 차례로 렌더한다. `node golden-one.mjs <outDir> <항목 번호...>`. `WT` 환경변수로 트리를 바꾼다.
 
 게시·원장
-- `pubflow.py`: PASS한 그림을 게시하는 한 흐름(JS 반영 → 렌더 확인 → 게이트 테스트 → 원장 → 커밋·push). `pubflow.py "<커밋 제목>" "<본문>" <시험>:<review.json>:<rows.json> [...]`
+- `pubflow.py`: Windows에서는 복원한 `.tmp/svg-m1/`의 도구를 사용하고 `APMS_ROOT`를 작업 트리로 지정한 뒤 `python .tmp/svg-m1/pubflow.py --batch <manifest.json>`을 실행한다. manifest는 `[{"exam":"시험명","review":"review.json","rows":"rows.json","triage":"triage.json","camp":"m2-codex"}]`이며 상대 경로는 manifest 기준이다. JS 적용 → 실제 해설 화면·글자 크기 검증 → 공통 CREATE 게이트 회귀 → 원장 갱신을 수행한다. Git 커밋·push는 별도로 한다.
 - `publish-exam.py`: 검토 결과와 rows에서 시험지 하나의 게시 rows(`runs/publish-rows-<시험>.json`)를 만든다. pubflow가 부른다.
 - `publish.mjs`: 게시 rows의 SVG를 시험지 JS에 넣는다(`solutionImage*` 네 필드와 SVG 복사). `--apply` 없이는 쓰지 않는다. 따옴표 없는 `id:` 키를 쓰는 시험지도 처리한다. pubflow가 부른다.
 - `verify-published.mjs`: 게시한 시험지의 해설 페이지(mode=sol)가 오류 없이 열리고 그림이 로드되는지 확인한다. `APMS_ROOT=<트리> node verify-published.mjs <publish-report.json> <out.json>`
+- `verify-publication-fonts.mjs`: 실제 게시 화면의 SVG 응답 해시, 표시 크기 및 라벨별 글자 크기를 검사한다. `pubflow.py`가 호출하며 결과는 `runs/font-batch-result.json`에 남긴다.
 - `ledger-upsert.py`: 시험지 마감 원장(`production/exam-figure-ledger.json`)을 spec JSON으로 갱신한다. `ledger-upsert.py <spec.json>`
 
 해설 내용 수정

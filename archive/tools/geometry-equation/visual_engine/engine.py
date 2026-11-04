@@ -1305,6 +1305,8 @@ def prepare(spec):
         if len(matches)!=1 or not isinstance(center,list) or len(center)!=2:raise ValueError('INVALID_EQUATION_LABEL_CENTER')
         matches[0]['candidateCenters']=[[finite(value) for value in center]]
     prepared = {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))}
+    if 'description' in spec:
+        prepared['description'] = spec['description']
     if 'publication' in semantic:
         from .publication import decorate
         decorate(prepared, labels, obstacles, vp, semantic)
