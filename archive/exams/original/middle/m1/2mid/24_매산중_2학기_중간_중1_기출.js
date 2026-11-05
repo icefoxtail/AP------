@@ -400,7 +400,13 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음은 $\\angle XOY$와 크기가 같은 각을, 반직선 $PQ$를 한 변으로 하는 각으로 작도하는 과정을 나타낸 그림이다. 순서대로 배열했을 때, 3번째 과정에 해당하는 것은? (4점)",
-    "choices": [],
+    "choices": [
+      "그림 ①",
+      "그림 ②",
+      "그림 ③",
+      "그림 ④",
+      "그림 ⑤"
+    ],
     "answer": "②",
     "solution": "같은 크기의 각을 옮기는 작도 순서는\n\n④ $\\rightarrow$ ⑤ $\\rightarrow$ ② $\\rightarrow$ ① $\\rightarrow$ ③\n\n따라서 세 번째 과정은\n②\n\n정답은 ②이다.",
     "image": "assets/images/24_매산중_2학기_중간_중1_기출/q10.png",
