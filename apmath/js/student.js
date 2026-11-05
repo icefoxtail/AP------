@@ -2780,12 +2780,19 @@ async function handleSaveConsultation(sid) {
         if (btn) { btn.disabled = false; btn.textContent = origText || '저장'; }
         return;
     }
-    const clientRequestId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+    const requestIdField = document.getElementById('cns-content');
+    let clientRequestId = (typeof crypto !== 'undefined' && crypto.randomUUID)
         ? crypto.randomUUID()
         : `cnsreq_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    if (requestIdField?.dataset.clientRequestId) clientRequestId = requestIdField.dataset.clientRequestId;
+    if (requestIdField) requestIdField.dataset.clientRequestId = clientRequestId;
 
     try {
         const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction, clientRequestId });
+        if (r?.offline && r?.queued) {
+            toast('상담 내용은 이 기기에 보관되었습니다. 서버 저장 대기 중입니다.', 'warn');
+            return;
+        }
         if (r?.success) {
             toast('상담 기록이 저장되었습니다.', 'success');
             if (inline) {

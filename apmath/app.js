@@ -6,11 +6,12 @@
         if (started) return;
         started = true;
         await loadData(true);
-        if (navigator.onLine) await processSyncQueue();
+        await processSyncQueue();
     }
     if (document.readyState === 'complete') startApp();
     else {
         document.addEventListener('DOMContentLoaded', startApp, { once: true });
         window.addEventListener('load', startApp, { once: true });
     }
+    window.addEventListener('online', () => { processSyncQueue(); });
 })();

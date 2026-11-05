@@ -133,6 +133,7 @@ let state = {
 };
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
+let syncQueueInFlight = false;
 
 function normalizeStudentStatus(value) {
     const raw = String(value || '').trim();
@@ -502,8 +503,8 @@ function notifyApiFailure(res, err) {
         __apiFailureToastAt = now;
         const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
         const msg = offline
-            ? '오프라인 상태입니다. 네트워크 연결을 확인해 주세요.'
-            : '서버 연결에 실패했습니다. 표시된 데이터가 최신이 아닐 수 있습니다.';
+            ? '서버 요청에 실패했습니다. 브라우저가 오프라인으로 표시하고 있습니다.'
+            : '서버 연결 요청에 실패했습니다. 표시된 데이터가 최신이 아닐 수 있습니다.';
         if (typeof window !== 'undefined' && typeof window.toast === 'function') window.toast(msg, 'error');
     } catch (e) { /* 알림 실패가 호출 흐름을 깨지 않도록 무시 */ }
 }
@@ -519,19 +520,21 @@ const api = {
         }
     },
     async patch(res, d) {
-        if (!navigator.onLine) return addToSyncQueue('PATCH', res, d);
-        const r = await fetch(`${CONFIG.API_BASE}/${res}`, { method: 'PATCH', body: JSON.stringify(d), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await parseApiResponse(r);
+        return requestWrite('PATCH', res, d);
     },
     async delete(res, id) {
-        if (!navigator.onLine) return addToSyncQueue('DELETE', `${res}/${id}`, {});
-        const r = await fetch(`${CONFIG.API_BASE}/${res}/${id}`, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await parseApiResponse(r);
+        return requestWrite('DELETE', `${res}/${id}`, {});
     },
     async post(res, d) {
-        if (!navigator.onLine) return addToSyncQueue('POST', res, d);
-        const r = await fetch(`${CONFIG.API_BASE}/${res}`, { method: 'POST', body: JSON.stringify(d), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await parseApiResponse(r);
+        return requestWrite('POST', res, d);
+    },
+    async checkConnectivity() {
+        try {
+            const r = await fetch(`${CONFIG.API_BASE}/students`, { headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
+            return { reachable: r.status !== 500 && r.status !== 502 && r.status !== 503 && r.status !== 504, status: r.status };
+        } catch (error) {
+            return { reachable: false, error };
+        }
     },
     getPlannerOverview(classId, date) {
         return this.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
@@ -574,7 +577,28 @@ const api = {
     }
 };
 
-const SYNC_QUEUE_TERMINAL_STATUSES = new Set([400, 401, 403, 404, 409, 422]);
+function currentQueueAccountId() {
+    const session = getSession();
+    const id = session?.id ?? session?.login_id;
+    return id == null || id === '' ? '' : String(id);
+}
+
+async function requestWrite(method, resource, data) {
+    try {
+        const options = { method, headers: { 'Content-Type': 'application/json', ...getAuthHeader() } };
+        if (method !== 'DELETE') options.body = JSON.stringify(data);
+        const response = await fetch(`${CONFIG.API_BASE}/${resource}`, options);
+        const result = await parseApiResponse(response);
+        return result && typeof result === 'object' ? { ...result, status: result.status ?? response.status } : result;
+    } catch (error) {
+        // A POST with no server-recognized idempotency key may have committed before
+        // the connection failed. Keep the user's form intact and require explicit retry.
+        const idempotentPost = method !== 'POST' || Boolean(data?.clientRequestId || data?.client_request_id);
+        if (idempotentPost) return addToSyncQueue(method, resource, data);
+        notifyApiFailure(resource, error);
+        throw error;
+    }
+}
 
 function persistSyncQueue() {
     localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
@@ -2333,54 +2357,71 @@ async function openClinicWorksheet(contextKey = '') {
 }
 
 function addToSyncQueue(method, resource, data) {
-    syncQueue.push({ id: Date.now(), method, resource, data });
+    const accountId = currentQueueAccountId();
+    if (!accountId) return { success: false, offline: true, queued: false, error: 'account_required' };
+    const requestId = data?.clientRequestId || data?.client_request_id;
+    const existing = requestId && syncQueue.find(task => task.accountId === accountId && (task.data?.clientRequestId || task.data?.client_request_id) === requestId);
+    if (existing) return { success: false, offline: true, queued: true, queueId: existing.id };
+    const task = { id: `sync_${Date.now()}_${Math.random().toString(36).slice(2)}`, accountId, method, resource, data };
+    syncQueue.push(task);
     persistSyncQueue();
     toast('오프라인: 대기열 저장', 'warn');
-    return { success: true, offline: true };
+    return { success: false, offline: true, queued: true, queueId: task.id };
 }
 
 async function processSyncQueue() {
-    if (!navigator.onLine || syncQueue.length === 0) return;
+    if (syncQueueInFlight || syncQueue.length === 0) return { synced: 0, pending: syncQueue.length, skipped: true };
+    syncQueueInFlight = true;
 
     let syncedCount = 0;
     let failedCount = 0;
+    let authFailure = false;
+    const accountId = currentQueueAccountId();
+    if (!accountId) { syncQueueInFlight = false; return { synced: 0, pending: syncQueue.length, reason: 'account_required' }; }
 
-    for (const task of [...syncQueue]) {
+    try { for (const task of [...syncQueue]) {
+        // Legacy rows without an owner and rows owned by another account are held
+        // untouched; never silently assign or send them under the current session.
+        if (!task.accountId || task.accountId !== accountId) continue;
         try {
-            const r = await fetch(`${CONFIG.API_BASE}/${task.resource}`, {
+            const options = {
                 method: task.method,
-                body: JSON.stringify(task.data),
                 headers: { 'Content-Type': 'application/json', ...getAuthHeader() }
-            });
+            };
+            if (task.method !== 'DELETE') options.body = JSON.stringify(task.data);
+            const r = await fetch(`${CONFIG.API_BASE}/${task.resource}`, options);
+            const data = await r.json().catch(() => ({}));
 
-            if (!r.ok) {
+            if (!r.ok || data?.success === false) {
                 failedCount += 1;
-                console.warn('[AP Math OS] syncQueue server rejected task:', task, r.status);
-                if (SYNC_QUEUE_TERMINAL_STATUSES.has(r.status)) {
-                    removeSyncQueueTask(task);
-                    continue;
+                authFailure ||= r.status === 401 || r.status === 403;
+                console.warn('[AP Math OS] syncQueue server rejected task:', task.id, r.status);
+                if (r.status === 401 && typeof handleUnauthorizedResponse === 'function') {
+                    handleUnauthorizedResponse();
+                    break;
                 }
-                break;
+                continue;
             }
 
             removeSyncQueueTask(task);
             syncedCount += 1;
         } catch (e) {
             failedCount += 1;
-            console.warn('[AP Math OS] syncQueue failed and preserved:', task, e);
-            break;
+            console.warn('[AP Math OS] syncQueue failed and preserved:', task.id, e);
+            continue;
         }
-    }
+    } } finally { syncQueueInFlight = false; }
 
     if (syncedCount > 0 && failedCount === 0) {
         toast('동기화 완료', 'info');
         await loadData();
     } else if (syncedCount > 0 && failedCount > 0) {
-        toast(`일부 동기화 완료 / ${syncQueue.length}건 대기 유지`, 'warn');
+        toast(authFailure ? `일부 동기화 완료 / 로그인 또는 권한 문제로 ${syncQueue.length}건 보존했습니다.` : `일부 동기화 완료 / ${syncQueue.length}건 대기 유지`, 'warn');
         await loadData();
     } else if (failedCount > 0) {
-        toast('동기화 실패: 대기열 보존', 'warn');
+        toast(authFailure ? '로그인 또는 권한을 확인해 주세요. 미전송 데이터는 보존했습니다.' : '동기화 실패: 대기열을 보존했습니다.', 'warn');
     }
+    return { synced: syncedCount, failed: failedCount, pending: syncQueue.length, authFailure };
 }
 
 async function goHome() { 
