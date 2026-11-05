@@ -31,7 +31,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
       'layout-materializer': '20261102\\.2',
       'solution-render-executor': '20261029-sections-1',
       'exam-render-executor': '20261029-sections-1',
-      'question-image-readiness': '20261030-s11-1',
+      'question-image-readiness': '20261105-choice-images-1',
       'layout-authority': '20261009\\.1',
       'screen-runtime-adapter': '20261101\\.1',
       'screen-runtime': '20260922\\.2',

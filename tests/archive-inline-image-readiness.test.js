@@ -105,15 +105,28 @@ test('question image source normalization targets q-content and q-image-wrap wit
   assert.equal(second.getAttribute('src'), 'data:image/png;base64,abc');
 });
 
+test('picture choices use the same source resolution and readiness gate as question figures', async () => {
+  const choice = image({ decode: () => Promise.resolve() });
+  choice.setAttribute('src', 'assets/images/exam/q16_1.png');
+  const rootNode = { querySelectorAll: selector => selector.includes('.choices img') ? [choice] : [] };
+  const images = readiness.normalizeQuestionImageSources(rootNode, src =>
+    'https://img.wangjiedu.com/exams/images/' + src.slice('assets/images/'.length));
+  assert.equal(images.length, 1, 'choice images must not be omitted from normalization');
+  assert.equal(choice.getAttribute('src'), 'https://img.wangjiedu.com/exams/images/exam/q16_1.png');
+  assert.equal((await readiness.waitForImages(images)).summary.loaded, 1);
+  choice.naturalWidth = 0;
+  await assert.rejects(readiness.waitForImages(images), /IMAGE_READINESS_INCOMPLETE/);
+});
+
 test('inline image policy is wired through shared, legacy, layout-authority, Screen Runtime, and mixer paths', () => {
-  assert.match(engine, /question-image-readiness\.js\?v=20261030-s11-1/);
+  assert.match(engine, /question-image-readiness\.js\?v=20261105-choice-images-1/);
   assert.match(engine, /s = s\.split\(mathSegmentRe\)\.map/);
   assert.doesNotMatch(engine, /protectedSegmentRe/);
   assert.match(engine, /await prepareQuestionImages\(root\)/);
   assert.match(engine, /\.q-content img, \.q-image-wrap img/);
   assert.match(engine, /QUESTION_IMAGE_LOAD_FAILED/);
   assert.match(engine, /finish\(document\.getElementById\('print-area'\), undefined, outcome\?\.ok === true\)/);
-  assert.match(mixed, /question-image-readiness\.js\?v=20261030-s11-1/);
+  assert.match(mixed, /question-image-readiness\.js\?v=20261105-choice-images-1/);
   assert.match(mixed, /await prepareQuestionImages\(root\)/);
   assert.match(examExecutor, /normalizeQuestionImageSources/);
   assert.match(solutionExecutor, /normalizeQuestionImageSources/);
