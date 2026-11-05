@@ -17,6 +17,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
+const BUILDER_SHA = sha(fs.readFileSync(__filename));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -132,7 +133,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const sf=safe(root,'archive/exams/'+d.sourceArchiveFile), sourceRaw=fs.readFileSync(sf), sourceBlob=blob(sourceRaw);
       const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank);
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
-      const inputHash=sha(stable([file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       observed.push(['archive/exams/'+d.sourceArchiveFile,sha(sourceRaw)],[dict.path,dict.sha256]);
@@ -159,7 +160,13 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         if(errors.length){fail(errors.join('|'),it.ordinal);continue;}
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
-        if((id.status!=null&&id.status!=='VERIFIED')||id.sourceFingerprint!==identityHash(cur.q)||(cur.q.questionUid&&cur.q.questionUid!==id.questionUid)||id.sourceQuestionNo!=null&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_SOURCE_MISMATCH',it.ordinal);continue;}
+        if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
+        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
+        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
+        // Identity maps own stable UID/path/ordinal, not current content freshness. Their native writer
+        // intentionally preserves historical fingerprints for existing rows. Compact source-blob +
+        // per-question baseline below proves 4slot freshness; do not mutate or approve global identity.
+        const identityFingerprintStatus=id.sourceFingerprint===identityHash(cur.q)?'CURRENT':'HISTORICAL';
         const currentPayload=payloadHash(cur.q), past=historical?.get(it.ordinal);
         const baseline=sourceBlob===d.sourceGitBlobSha?currentPayload:past?payloadHash(past.q):oldSame?old.baselinePayloadHashes?.[it.ordinal]:null;
         if(baseline)baselineHashes[it.ordinal]=baseline;
@@ -168,7 +175,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:String(it.ordinal),compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:String(it.ordinal),compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
       for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);
@@ -184,7 +191,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
     const ids=new Set(records.filter(r=>r.dictionaryVersion===version).flatMap(r=>SLOTS.flatMap(s=>r[s])));
     terms[version]=[...ids].sort((a,b)=>a-b).map(id=>{const t=dicts.get(version).terms.get(id);return {id,ko:t.ko,status:t.status||'ACTIVE',...(t.aliasOf?{aliasOf:t.aliasOf}:{})};});
   }
-  const result={schemaVersion:SCHEMA,authority:'MAIN_MERGED_REVIEWED_COMPACT',sourceMutation:0,semanticApprovalMutation:0,counts:{files:files.length,items:files.reduce((n,f)=>n+(f.itemCount||0),0),registered:records.length,pending:pending.length,withCandidates:records.filter(r=>r.candidates.length).length},files,records,pending,terms};
+  const result={schemaVersion:SCHEMA,builderSha256:BUILDER_SHA,authority:'MAIN_MERGED_REVIEWED_COMPACT',sourceMutation:0,semanticApprovalMutation:0,counts:{files:files.length,items:files.reduce((n,f)=>n+(f.itemCount||0),0),registered:records.length,pending:pending.length,withCandidates:records.filter(r=>r.candidates.length).length,identityFingerprintHistorical:records.filter(r=>r.identityFingerprintStatus==='HISTORICAL').length},files,records,pending,terms};
   result.inputDigest=sha(stable([files.map(f=>[f.path,f.inputHash||f.compactSha256]),pending]));
   return {index:result,observed,stats};
 }
