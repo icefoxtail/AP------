@@ -34,7 +34,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q1-solution-v2.svg",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 원 O에서 호 AB를 보는 원주각 APB=50도는 주황색이고, 같은 호를 보는 중심각 AOB=x와 호 AB는 파란색이다.",
-    "solutionImageCaption": "같은 호를 보는 중심각은 원주각의 2배이므로 x=2×50°=100°이다. 정답은 ⑤이다."
+    "solutionImageCaption": "같은 호를 보는 중심각은 원주각의 2배이므로 x=2×50°=100°이다. 정답은 ⑤이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
   },
   {
     "id": 2,

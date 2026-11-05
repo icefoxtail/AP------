@@ -761,7 +761,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 수영반 수강생 20명의 나이를 줄기와 잎 그림으로 나타내고, 빈칸 a, b, c 자리에 들어가는 잎 5(줄기 2), 8(줄기 3), 7(줄기 4)을 동그라미로 표시한 그림",
     "solutionImageCaption": "자료를 작은 수부터 비교해 빈칸 a, b, c에 들어갈 잎을 동그라미로 나타낸 줄기와 잎 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+    "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE"
   },
   {
     "id": 18,
