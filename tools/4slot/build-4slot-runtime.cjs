@@ -47,11 +47,21 @@ function git(root,args) {
   try { return execFileSync('git',['-C',root,...args],{encoding:'utf8',maxBuffer:32*1024*1024,timeout:15000,stdio:['ignore','pipe','pipe']}); }
   catch { return null; }
 }
+// Existing compact ordinal is a printed numeric question number. Named source labels
+// use an explicit sourceQuestionNo and a physical ordinal, so q01/s01 never become NaN.
+function numberKey(value) {
+  if (typeof value !== 'number' && typeof value !== 'string') throw Error('SOURCE_NUMBER_INVALID');
+  const label=String(value).trim();
+  if (!label || label.length>80 || /[\x00-\x1f]/.test(label)) throw Error('SOURCE_NUMBER_INVALID');
+  if (/^\d+$/.test(label)) { const n=Number(label); if(!Number.isSafeInteger(n)||n<1)throw Error('SOURCE_NUMBER_INVALID'); return String(n); }
+  if (typeof value !== 'string') throw Error('SOURCE_NUMBER_INVALID');
+  return label;
+}
 function sourceNumbers(bank) {
   const map=new Map();
   for (let i=0;i<bank.length;i++) {
-    const q=bank[i], n=Number(q.id??q.number);
-    if (!Number.isInteger(n)||n<1||map.has(n)) throw Error('AMBIGUOUS_SOURCE_NUMBER');
+    const q=bank[i], n=numberKey(q.id??q.number);
+    if (map.has(n)) throw Error('AMBIGUOUS_SOURCE_NUMBER');
     map.set(n,{q,ordinal:i+1});
   }
   return map;
@@ -70,6 +80,7 @@ function validateCompact(d, rel, dict) {
 function validateItem(it, dict) {
   const errors=[];
   if(!Number.isInteger(it.ordinal)||it.ordinal<1)errors.push('ORDINAL_INVALID');
+  if(own(it,'sourceQuestionNo')){try{numberKey(it.sourceQuestionNo);}catch{errors.push('SOURCE_QUESTION_NO_INVALID');}}
   if(!FORMATS.has(it.format))errors.push('FORMAT_INVALID');
   for(const s of SLOTS) {
     const ids=it[s]; if(!Array.isArray(ids)){errors.push('SLOT_ARRAY_REQUIRED:'+s);continue;}
@@ -152,22 +163,31 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const baselineAssets=oldSame?(old.baselineAssetDigests||old.assetDigests):assetDigests;
       file.baselineAssetDigests=baselineAssets;
       file.assetVerification='LOCAL_CHANGE_MONITORING_ONLY_NOT_VISUAL_QA';
-      const seen=new Map();for(const it of d.items)seen.set(it.ordinal,(seen.get(it.ordinal)||0)+1);
+      const seen=new Map(),ordinals=new Map();for(const it of d.items){let k;try{k=numberKey(it.sourceQuestionNo??it.ordinal);}catch{k='INVALID';}seen.set(k,(seen.get(k)||0)+1);ordinals.set(it.ordinal,(ordinals.get(it.ordinal)||0)+1);}
       for(const it of d.items){
-        const errors=validateItem(it,dict);if(seen.get(it.ordinal)!==1)errors.push('DUPLICATE_ORDINAL');
-        const cur=byNumber.get(it.ordinal);
+        const errors=validateItem(it,dict);let n;try{n=numberKey(it.sourceQuestionNo??it.ordinal);}catch{n='INVALID';}
+        if(seen.get(n)!==1||ordinals.get(it.ordinal)!==1)errors.push('DUPLICATE_ORDINAL');
+        const cur=byNumber.get(n);
+        if(cur&&own(it,'sourceQuestionNo')&&it.ordinal!==cur.ordinal)errors.push('NAMED_ORDINAL_MISMATCH');
         if(!cur)errors.push('SOURCE_NUMBER_MISSING');
         if(errors.length){fail(errors.join('|'),it.ordinal);continue;}
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
         if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
-        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
-        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
+        let sourceUidReconciled=false;
+        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){
+          // Only an explicit, source-bound compact reconciliation can resolve an unused author UID.
+          // Known canonical UID collisions and any fingerprint drift remain hard failures.
+          const a=it.uidReconciliation;
+          sourceUidReconciled=Boolean(a&&a.basis==='EXACT_IDENTITY_SOURCE_FINGERPRINT'&&a.legacyUid===cur.q.questionUid&&a.canonicalUid===id.questionUid&&!uidUses.has(a.legacyUid)&&a.sourceFingerprint===id.sourceFingerprint&&id.sourceFingerprint===identityHash(cur.q));
+          if(!sourceUidReconciled){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
+        }
+        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&numberKey(id.sourceQuestionNo)!==n){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
         // Identity maps own stable UID/path/ordinal, not current content freshness. Their native writer
         // intentionally preserves historical fingerprints for existing rows. Compact source-blob +
         // per-question baseline below proves 4slot freshness; do not mutate or approve global identity.
         const identityFingerprintStatus=id.sourceFingerprint===identityHash(cur.q)?'CURRENT':'HISTORICAL';
-        const currentPayload=payloadHash(cur.q), past=historical?.get(it.ordinal);
+        const currentPayload=payloadHash(cur.q), past=historical?.get(n);
         const baseline=sourceBlob===d.sourceGitBlobSha?currentPayload:past?payloadHash(past.q):oldSame?old.baselinePayloadHashes?.[it.ordinal]:null;
         if(baseline)baselineHashes[it.ordinal]=baseline;
         if(!baseline){fail('SOURCE_BASELINE_UNAVAILABLE',it.ordinal);continue;}
@@ -175,7 +195,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:String(it.ordinal),compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:n,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,...(sourceUidReconciled?{uidReconciliation:it.uidReconciliation}:{}),identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
       for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);
@@ -213,5 +233,5 @@ function run(root=ROOT,{write=false,check=false,report}={}) {
   if(report){fs.mkdirSync(path.dirname(path.resolve(report)),{recursive:true});fs.writeFileSync(report,JSON.stringify(result,null,2)+'\n');}
   return result;
 }
-module.exports={build,run,verify,loadBank,blob,sha,payloadHash,identityHash,validateItem,validateCompact,safe,OUTPUT,SCHEMA,SLOTS};
+module.exports={build,run,verify,loadBank,blob,sha,payloadHash,identityHash,validateItem,validateCompact,safe,OUTPUT,SCHEMA,SLOTS,numberKey,sourceNumbers};
 if(require.main===module){try{const args=process.argv.slice(2),opt={};let root=ROOT;for(let i=0;i<args.length;i++){const a=args[i];if(a==='--write')opt.write=true;else if(a==='--check')opt.check=true;else if(a==='--report')opt.report=args[++i];else if(a==='--root')root=path.resolve(args[++i]);else throw Error('UNKNOWN_ARGUMENT:'+a);}if(opt.write&&opt.check)throw Error('WRITE_CHECK_MUTUALLY_EXCLUSIVE');console.log(JSON.stringify(run(root,opt),null,2));}catch(e){console.error(e.message);process.exitCode=1;}}

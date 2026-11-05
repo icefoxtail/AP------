@@ -71,8 +71,11 @@ function readQueue(ref) {
 }
 
 // 슬롯 항목 → 용어 번호. 사전 용어는 번호 배열, 사전에 없는 말(후보)은 candidates로 보낸다.
-function compactItem(it, lut) {
-  const out = { ordinal: Number(it.sourceOrdinal), format: it.format };
+function compactItem(it, lut, { sourcePosition, sourceQuestionNo = it.sourceOrdinal } = {}) {
+  const numeric = Number(sourceQuestionNo);
+  const named = !Number.isSafeInteger(numeric) || numeric < 1;
+  if (named && (!Number.isSafeInteger(sourcePosition) || sourcePosition < 1)) throw new Error('NAMED_SOURCE_POSITION_REQUIRED');
+  const out = { ordinal: named ? sourcePosition : numeric, ...(named ? { sourceQuestionNo: String(sourceQuestionNo) } : {}), format: it.format };
   const cands = [];
   for (const s of SLOTS) {
     const ids = [];
@@ -149,6 +152,8 @@ function main() {
     try { prev = JSON.parse(fs.readFileSync(dest, 'utf8')).reviewedBy || null; } catch { /* 새 파일 */ }
     const at = o.at || (prev && prev.at) || today;
     const sampled = (o.sampled.has(key) ? o.sampled.get(key) : (prev && Array.isArray(prev.sampled) ? prev.sampled : [])).slice().sort((a, b) => a - b);
+    const positions = new Map(require('./exam-items.cjs').loadExam(path.join(REPO_ROOT, examFile)).map((q, i) => [String(q.ordinal), i + 1]));
+    const sourceBank = require('./build-4slot-runtime.cjs').loadBank(fs.readFileSync(path.join(REPO_ROOT, examFile), 'utf8'));
     const compact = {
       schemaVersion: SCHEMA,
       sourceArchiveFile: examPath,
@@ -156,7 +161,7 @@ function main() {
       dictionaryVersion: dict.dictionaryVersion,
       evidence: { branch, commit, path: outPath },
       reviewedBy: { agent: o.reviewer || '(dry-run)', at, sampled },
-      items: (d.items || []).map(it => compactItem(it, lut)).sort((a, b) => a.ordinal - b.ordinal)
+      items: (d.items || []).map(it => compactItem(it, lut, { sourcePosition: positions.get(String(it.sourceOrdinal)), sourceQuestionNo: (sourceBank[positions.get(String(it.sourceOrdinal)) - 1] || {}).id ?? (sourceBank[positions.get(String(it.sourceOrdinal)) - 1] || {}).number })).sort((a, b) => a.ordinal - b.ordinal)
     };
     const text = serialize(compact);
     JSON.parse(text);
