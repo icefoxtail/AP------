@@ -835,7 +835,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
     "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_SERIES_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 5,
