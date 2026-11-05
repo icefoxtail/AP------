@@ -4,7 +4,7 @@
 // 한 칸 안에 같은 용어(동의어를 풀어 같은 번호)가 두 번 있으면 FAIL. dictionaryVersion은 v1.3·v1.4·v1.5만 허용(작성 파일이 선언한 버전; 검사는 항상 기본 사전 v1.5로 한다).
 // 경고(종료코드 0, 다시 보기): goal 방법어, 용어 4개 이하, method 1개, 같은 4칸 문항, method의 사칙연산.
 const fs = require('fs'), path = require('path');
-const { loadExam } = require('./exam-items.cjs');
+const { loadExam, itemLookup } = require('./exam-items.cjs');
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const DEFAULT_DICT = 'docs/architecture/4slot/term-dictionary-v1.5.json';
@@ -46,7 +46,7 @@ function validateData(d, opts = {}) {
     const blob = require('crypto').createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${buf.length}\0`), buf])).digest('hex');
     if (d.sourceGitBlobSha && d.sourceGitBlobSha !== blob) warn.push(`sourceGitBlobSha ${d.sourceGitBlobSha} != current exam blob ${blob}`);
   } catch { /* 시험지를 읽지 못하면 위에서 이미 FAIL */ }
-  const byOrd = new Map(exam.map(q => [String(q.ordinal), q]));
+  let byOrd; try { byOrd = itemLookup(exam); } catch(e) { return { fail:[e.message], warn, stats:{items:(d.items||[]).length,examItems:exam.length,quotes:0} }; }
   const cand = new Map((d.candidates || []).map(c => [norm(c.term), c]));
   for (const c of d.candidates || []) for (const k of ['term', 'en', 'synonyms', 'kind', 'parent', 'note', 'usedIn']) if (!(k in c)) fail.push(`candidate ${c.term} missing ${k}`);
   for (const c of d.candidates || []) if (lut.has(norm(c.term))) warn.push(`candidate ${c.term} is already in dictionary (${lut.get(norm(c.term)).ko})`);
@@ -54,7 +54,7 @@ function validateData(d, opts = {}) {
   for (const it of d.items || []) {
     const o = String(it.sourceOrdinal), q = byOrd.get(o);
     if (!q) { fail.push(`#${o} not in exam`); continue; }
-    if (seen.has(o)) fail.push(`#${o} duplicated`); seen.add(o);
+    if (seen.has(String(q.ordinal))) fail.push(`#${o} duplicated`); seen.add(String(q.ordinal));
     if (!FORMATS.includes(it.format)) fail.push(`#${o} bad format ${it.format}`);
     const sl = it.slots || {};
     if (!(sl.goal || []).length) fail.push(`#${o} empty goal`);
