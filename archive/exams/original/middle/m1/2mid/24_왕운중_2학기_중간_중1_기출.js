@@ -765,7 +765,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE",
+    "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
