@@ -4,6 +4,7 @@
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
 const consumer = require('../../archive/item-4slot.js');
+const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
 const OUTPUT = 'archive/data/item-4slot-index.json';
@@ -50,7 +51,7 @@ function git(root,args) {
 function sourceNumbers(bank) {
   const map=new Map();
   for (let i=0;i<bank.length;i++) {
-    const q=bank[i], n=Number(q.id??q.number);
+    const q=bank[i], n=sourceNumber(q);
     if (!Number.isInteger(n)||n<1||map.has(n)) throw Error('AMBIGUOUS_SOURCE_NUMBER');
     map.set(n,{q,ordinal:i+1});
   }
@@ -161,8 +162,21 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
         if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
-        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
-        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
+        let sourceUidBinding='CANONICAL_SOURCE_TUPLE';
+        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){
+          // An orphan embedded UID is NOT silently ignored. A compact may carry an explicit,
+          // content-bound reconciliation to the already-existing canonical tuple. It never mints a UID.
+          const rec=d.identityReconciliation;
+          const matches=(rec?.records||[]).filter(r=>r.sourceOrdinal===cur.ordinal);
+          const proof=matches[0], fp=identityHash(cur.q);
+          if(rec?.schemaVersion!=='4slot-orphan-uid-reconciliation-v1'||matches.length!==1||
+             rec.sourceGitBlobSha!==sourceBlob||uidUses.has(cur.q.questionUid)||
+             proof.embeddedQuestionUid!==cur.q.questionUid||proof.questionUid!==id.questionUid||
+             proof.sourceQuestionNo!==sourceIdentityNumber(cur.q)||proof.sourceFingerprint!==fp||
+             id.sourceFingerprint!==fp){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
+          sourceUidBinding='VERIFIED_ORPHAN_UID_RECONCILIATION';
+        }
+        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==sourceIdentityNumber(cur.q)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
         // Identity maps own stable UID/path/ordinal, not current content freshness. Their native writer
         // intentionally preserves historical fingerprints for existing rows. Compact source-blob +
         // per-question baseline below proves 4slot freshness; do not mutate or approve global identity.
@@ -175,7 +189,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:String(it.ordinal),compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
       for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);

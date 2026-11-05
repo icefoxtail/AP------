@@ -15,6 +15,7 @@ const OUT_PREFIX = WORK_DIR + '/out/';
 const DEST_DIR = 'archive/data/item-4slot';
 const SCHEMA = 'archive-meta-4slot-compact-v1';
 const SLOTS = ['given', 'goal', 'method', 'condition'];
+const { loadExam, itemLookup } = require('./exam-items.cjs');
 
 function git(args, opts = {}) {
   return execFileSync('git', ['-C', REPO_ROOT, '-c', 'core.quotepath=false', ...args], { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'], ...opts });
@@ -71,8 +72,10 @@ function readQueue(ref) {
 }
 
 // 슬롯 항목 → 용어 번호. 사전 용어는 번호 배열, 사전에 없는 말(후보)은 candidates로 보낸다.
-function compactItem(it, lut) {
-  const out = { ordinal: Number(it.sourceOrdinal), format: it.format };
+function compactItem(it, lut, sourceLookup) {
+  const ordinal = sourceLookup ? sourceLookup.get(String(it.sourceOrdinal))?.ordinal : Number(it.sourceOrdinal);
+  if (!Number.isInteger(ordinal) || ordinal < 1) throw new Error('UNRESOLVED_SOURCE_ORDINAL ' + it.sourceOrdinal);
+  const out = { ordinal, format: it.format };
   const cands = [];
   for (const s of SLOTS) {
     const ids = [];
@@ -90,6 +93,7 @@ function compactItem(it, lut) {
 
 function serialize(c) {
   const head = ['schemaVersion', 'sourceArchiveFile', 'sourceGitBlobSha', 'dictionaryVersion', 'evidence', 'reviewedBy'];
+  if (c.identityReconciliation) head.push('identityReconciliation');
   const lines = head.map(k => `  ${JSON.stringify(k)}: ${JSON.stringify(c[k])}`);
   lines.push('  "items": [\n' + c.items.map(i => '    ' + JSON.stringify(i)).join(',\n') + '\n  ]');
   return '{\n' + lines.join(',\n') + '\n}\n';
@@ -156,7 +160,7 @@ function main() {
       dictionaryVersion: dict.dictionaryVersion,
       evidence: { branch, commit, path: outPath },
       reviewedBy: { agent: o.reviewer || '(dry-run)', at, sampled },
-      items: (d.items || []).map(it => compactItem(it, lut)).sort((a, b) => a.ordinal - b.ordinal)
+      items: (d.items || []).map(it => compactItem(it, lut, itemLookup(loadExam(path.join(REPO_ROOT, 'archive/exams', d.sourceArchiveFile))))).sort((a, b) => a.ordinal - b.ordinal)
     };
     const text = serialize(compact);
     JSON.parse(text);
