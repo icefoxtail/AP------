@@ -159,7 +159,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         if(errors.length){fail(errors.join('|'),it.ordinal);continue;}
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
-        if(id.status!=='VERIFIED'||id.sourceFingerprint!==identityHash(cur.q)||(cur.q.questionUid&&cur.q.questionUid!==id.questionUid)||id.sourceQuestionNo!=null&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_SOURCE_MISMATCH',it.ordinal);continue;}
+        if((id.status!=null&&id.status!=='VERIFIED')||id.sourceFingerprint!==identityHash(cur.q)||(cur.q.questionUid&&cur.q.questionUid!==id.questionUid)||id.sourceQuestionNo!=null&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_SOURCE_MISMATCH',it.ordinal);continue;}
         const currentPayload=payloadHash(cur.q), past=historical?.get(it.ordinal);
         const baseline=sourceBlob===d.sourceGitBlobSha?currentPayload:past?payloadHash(past.q):oldSame?old.baselinePayloadHashes?.[it.ordinal]:null;
         if(baseline)baselineHashes[it.ordinal]=baseline;
