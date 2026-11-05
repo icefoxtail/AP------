@@ -923,7 +923,13 @@ window.questionBank = [
     "content": "일차부등식 $3x+8\\ge5x+4$의 해를 수직선 위에 나타낸 것으로 옳은 것은? [4점]",
     "image": "assets/images/26_동산중_1학기_중간_중2_기출/q19-options.svg",
     "solutionImage": "assets/images/26_동산중_1학기_중간_중2_기출/q19-solution.svg",
-    "choices": [],
+    "choices": [
+      "그림 ①",
+      "그림 ②",
+      "그림 ③",
+      "그림 ④",
+      "그림 ⑤"
+    ],
     "answer": "③",
     "solution": "$3x+8\\ge5x+4$\n양변에서 $3x$를 빼면 $8\\ge2x+4$이다.\n양변에서 $4$를 빼면 $4\\ge2x$이다.\n양변을 양수 $2$로 나누면 $2\\ge x$, 즉 $x\\le2$이다.\n따라서 $2$를 포함하고 왼쪽으로 이어지는 해를 나타낸 ③이 옳다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
