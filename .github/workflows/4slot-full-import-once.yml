@@ -17,52 +17,39 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Freeze inputs and validate every authored file
+      - name: Collect exact historical source objects without changing input
         env:
           AUTHOR_SHA: e7aab2467ecad89b07442f3e2889ddaa889f5eb1
-          MAIN_SHA: 5a5fc87f21a78d014956d1f959f9d60ab08d7763
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/4slot-inputs"
+          mkdir -p "$RUNNER_TEMP/4slot-history"
           node <<'JS'
-          const fs=require('fs'),path=require('path'),cp=require('child_process');
-          const {validateData,loadDict,buildLookup,DEFAULT_DICT}=require('./tools/4slot/validate-4slot.cjs');
-          const root=process.cwd(),out=process.env.RUNNER_TEMP+'/4slot-inputs',ref=process.env.AUTHOR_SHA;
-          const git=(...a)=>cp.execFileSync('git',a,{encoding:'utf8',maxBuffer:128*1024*1024});
-          const prefix='archive-work/4slot-annotate-v1/out/';
-          const names=git('ls-tree','-rz','--name-only',ref,'--',prefix).split('\0').filter(p=>p.endsWith('.4slot.json'));
-          const dict=loadDict(root,DEFAULT_DICT),lut=buildLookup(dict);
-          const save=(p,s)=>{const f=path.join(out,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,s);};
+          const fs=require('fs'),path=require('path'),cp=require('child_process'),vm=require('vm');
+          const out=process.env.RUNNER_TEMP+'/4slot-history',ref=process.env.AUTHOR_SHA;
+          const git=(...a)=>cp.execFileSync('git',a,{encoding:'utf8',maxBuffer:128*1024*1024,stdio:['ignore','pipe','pipe']});
           const queue=JSON.parse(git('show',ref+':archive-work/4slot-annotate-v1/QUEUE-original.json'));
-          save('author/QUEUE-original.json',JSON.stringify(queue));
-          let rejected=null;try{rejected=JSON.parse(git('show',ref+':archive-work/4slot-annotate-v1/REVIEW-rejected.json'));}catch{}
+          const qmap=new Map(queue.list.map(r=>[r.path,r]));
+          const prefix='archive-work/4slot-annotate-v1/out/';
+          const files=git('ls-tree','-rz','--name-only',ref,'--',prefix).split('\0').filter(p=>p.endsWith('.4slot.json'));
+          const load=s=>{const ctx={window:{}};vm.createContext(ctx);vm.runInContext(s,ctx,{timeout:3000});return ctx.window.questionBank||ctx.window.examData?.questions||ctx.window.questions;};
           const rows=[];
-          for(const p of names){
-            const raw=git('show',ref+':'+p),rel=p.slice(prefix.length),source=rel.replace(/\.4slot\.json$/,'.js');
-            save('author/out/'+rel,raw);
-            const row={path:p,source};
-            try{
-              const d=JSON.parse(raw);row.items=d.items?.length;row.dictionaryVersion=d.dictionaryVersion;row.keys=Object.keys(d);
-              const src='archive/exams/'+source;
-              if(fs.existsSync(src)){
-                save(src,fs.readFileSync(src));row.currentBlob=git('hash-object',src).trim();
-                const v=validateData(d,{root,dict,lut});row.fail=v.fail;row.warn=v.warn;row.sourceGitBlobSha=d.sourceGitBlobSha;
-                row.evidenceCommit=git('log','-1','--format=%H',ref,'--',p).trim();
-              }else row.fail=['SOURCE_MISSING'];
-            }catch(e){row.fail=[String(e.message)];}
-            rows.push(row);
+          for(const f of files){
+            const source=f.slice(prefix.length).replace(/\.4slot\.json$/,'.js'),current='archive/exams/'+source;
+            const authored=JSON.parse(git('show',ref+':'+f)),baseline=qmap.get(source)?.blob||authored.sourceGitBlobSha;
+            const now=git('hash-object',current).trim();if(now===baseline)continue;
+            const row={source,baseline,current:now};
+            try{const old=git('cat-file','blob',baseline);const p=path.join(out,'historical',source);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,old);
+              const a=load(old),b=load(fs.readFileSync(current,'utf8'));
+              const fields=['content','question','choices','answer','solution','image','images','figureSvg','solutionImage','solutionFigureSvg'];row.changed=[];
+              for(let i=0;i<Math.max(a.length,b.length);i++){const changed=fields.filter(k=>JSON.stringify(a[i]?.[k]??null)!==JSON.stringify(b[i]?.[k]??null));if(changed.length)row.changed.push({ordinal:i+1,no:b[i]?.id??b[i]?.number,fields:changed,before:Object.fromEntries(changed.map(k=>[k,a[i]?.[k]??null])),after:Object.fromEntries(changed.map(k=>[k,b[i]?.[k]??null]))});}
+            }catch(e){row.error=String(e.message);}rows.push(row);
           }
-          for(const p of ['tools/4slot','docs/architecture/4slot'])fs.cpSync(p,path.join(out,p),{recursive:true});
-          for(const p of ['archive/data/question_identity_map.json','tools/4slot/build-4slot-runtime.cjs','archive/item-4slot.js','tests/item-4slot-data.test.cjs','tools/ci/archive-four-slot-pass.sh','docs/operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md','docs/architecture/Archive_4Slot_Auto_Registration_CURRENT.md'])if(fs.existsSync(p))save(p,fs.readFileSync(p));
-          fs.cpSync('archive/data/item-4slot',path.join(out,'archive/data/item-4slot'),{recursive:true});
-          const summary={authorSha:ref,mainSha:process.env.MAIN_SHA,files:rows.length,items:rows.reduce((n,r)=>n+(r.items||0),0),valid:rows.filter(r=>!r.fail?.length).length,invalid:rows.filter(r=>r.fail?.length).length,rejected,rows};
-          save('inspection.json',JSON.stringify(summary,null,2));
-          console.log(JSON.stringify({authorSha:ref,files:summary.files,items:summary.items,valid:summary.valid,invalid:summary.invalid,failSamples:rows.filter(r=>r.fail?.length).slice(0,12).map(r=>({source:r.source,fail:r.fail.slice(0,4)}))},null,2));
+          fs.writeFileSync(out+'/deltas.json',JSON.stringify(rows,null,2));console.log(JSON.stringify(rows.map(r=>({source:r.source,changed:r.changed?.map(x=>({ordinal:x.ordinal,fields:x.fields})),error:r.error})),null,2));
           JS
-          tar -czf "$RUNNER_TEMP/4slot-inputs.tgz" -C "$RUNNER_TEMP/4slot-inputs" .
+          tar -czf "$RUNNER_TEMP/4slot-history.tgz" -C "$RUNNER_TEMP/4slot-history" .
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: 4slot-full-inputs
-          path: ${{ runner.temp }}/4slot-inputs.tgz
+          name: 4slot-history
+          path: ${{ runner.temp }}/4slot-history.tgz
           retention-days: 7
