@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-05T15:03:59.204Z",
+  "updatedAt": "2026-11-05T15:08:23.013Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
     "oldestObservedAt": "2026-11-03T09:45:22Z",
-    "seenRegistrationRuns": 10,
+    "seenRegistrationRuns": 11,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
   },
@@ -33805,11 +33805,27 @@
     }
   },
   "observations": {
+    "registration:42039517436:1:e53f27a3ddfb9362af0617872ee58ebd36f36d49": {
+      "key": "registration:42039517436:1:e53f27a3ddfb9362af0617872ee58ebd36f36d49",
+      "status": "unverified",
+      "attempts": 3,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 42039517436,
+        "attempt": 1,
+        "sha": "e53f27a3ddfb9362af0617872ee58ebd36f36d49",
+        "at": "2026-11-05T13:57:03Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/42039517436",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-11-05T15:28:22.015Z"
+    },
     "registration:41944735165:1:d26fa02f3ff70b83c8ba068de9fbdc93a8c9b977": {
       "key": "registration:41944735165:1:d26fa02f3ff70b83c8ba068de9fbdc93a8c9b977",
       "status": "unverified",
       "attempts": 3,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41944735165,
         "attempt": 1,
@@ -33820,6 +33836,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-11-05T15:23:51.946Z"
     },
     "release:41959512687:1:89e6a5db19d106a725769c5f4b6e2f1d21dd7784": {
@@ -33877,7 +33894,6 @@
       "key": "registration:41973177691:1:48eb7ef71fde5dbd9e5caecde23c6eb19fdd1167",
       "status": "unverified",
       "attempts": 2,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41973177691,
         "attempt": 1,
@@ -33888,6 +33904,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-11-05T15:13:49.965Z"
     },
     "registration:41906872070:1:15c79f7f7068e087bd2d6e5ff5656dcce8e78b2b": {
@@ -33924,29 +33941,10 @@
       "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-11-05T15:08:48.958Z"
     },
-    "registration:42039517436:1:e53f27a3ddfb9362af0617872ee58ebd36f36d49": {
-      "key": "registration:42039517436:1:e53f27a3ddfb9362af0617872ee58ebd36f36d49",
-      "status": "unverified",
-      "attempts": 2,
-      "run": {
-        "id": 42039517436,
-        "attempt": 1,
-        "sha": "e53f27a3ddfb9362af0617872ee58ebd36f36d49",
-        "at": "2026-11-05T13:57:03Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/42039517436",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "reason": "현재 실행 차수 증거 없음",
-      "nextRetryAt": "2026-11-05T15:04:13.942Z"
-    },
     "release:42040197551:1:48834a6cc7295178bcf619e1f621b3c124f3dac1": {
       "key": "release:42040197551:1:48834a6cc7295178bcf619e1f621b3c124f3dac1",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 4,
-      "verifiedAt": "2026-11-05T15:03:56.167Z",
       "run": {
         "id": 42040197551,
         "attempt": 1,
@@ -33967,6 +33965,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-05T15:03:56.167Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -34853,9 +34853,7 @@
     "release:42048336347:1:81aaf134644f0e0834e54290c47fc9a40eb84268": {
       "key": "release:42048336347:1:81aaf134644f0e0834e54290c47fc9a40eb84268",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 2,
-      "verifiedAt": "2026-11-05T15:03:52.845Z",
       "run": {
         "id": 42048336347,
         "attempt": 1,
@@ -34876,6 +34874,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-05T15:03:52.845Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -202342,7 +202342,6 @@
       "key": "registration:41953697690:1:2c76d96e2576195ea316f582ece3b681e04b6fa6",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41953697690,
         "attempt": 1,
@@ -202353,6 +202352,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     }
   }
