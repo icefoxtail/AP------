@@ -3,10 +3,10 @@
 const fs = require('fs'), vm = require('vm');
 function loadExam(file) {
   const ctx = { window: {} }; vm.createContext(ctx);
-  vm.runInContext(fs.readFileSync(file, 'utf8'), ctx);
+  vm.runInContext(fs.readFileSync(file, 'utf8'), ctx, { timeout: 3000 });
   const w = ctx.window;
-  if (Array.isArray(w.questionBank)) return w.questionBank.map(q => ({ ordinal: q.id, stem: q.content || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
-  if (w.examData && Array.isArray(w.examData.questions)) return w.examData.questions.map(q => ({ ordinal: q.number, stem: q.question || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
+  if (Array.isArray(w.questionBank)) return w.questionBank.map(q => ({ ordinal: q.id ?? q.number, stem: q.content || q.question || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
+  if (w.examData && Array.isArray(w.examData.questions)) return w.examData.questions.map(q => ({ ordinal: q.number ?? q.id, stem: q.question || q.content || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
   throw new Error('UNKNOWN_EXAM_SCHEMA ' + file);
 }
 module.exports = { loadExam };

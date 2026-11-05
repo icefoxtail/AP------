@@ -9,6 +9,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { loadExam } = require('../tools/4slot/exam-items.cjs');
+const { numberKey, loadBank } = require('../tools/4slot/build-4slot-runtime.cjs');
 
 const root = path.resolve(__dirname, '..');
 const dataDir = path.join(root, 'archive/data/item-4slot');
@@ -72,12 +73,13 @@ for (const file of files) {
   if (!dict) { bad('unknown dictionaryVersion ' + d.dictionaryVersion); continue; }
   if (!Array.isArray(d.items) || !d.items.length) { bad('items empty'); continue; }
 
-  const ords = new Set();
+  const ords = new Set(), positions = new Set();
   for (const it of d.items) {
     const at = `#${it.ordinal}`;
     if (!Number.isInteger(it.ordinal)) { bad(`${at}: ordinal is not an integer`); continue; }
-    if (ords.has(it.ordinal)) bad(`${at}: duplicate ordinal`);
-    ords.add(it.ordinal);
+    let label;try { label=numberKey(it.sourceQuestionNo??it.ordinal); } catch { bad(`${at}: invalid source question number`); continue; }
+    if (ords.has(label)||positions.has(it.ordinal)) bad(`${at}: duplicate ordinal`);
+    ords.add(label);positions.add(it.ordinal);
     if (!FORMATS.includes(it.format)) bad(`${at}: bad format ${it.format}`);
     for (const s of SLOTS) {
       const ids = it[s];
@@ -102,7 +104,8 @@ for (const file of files) {
   const isStale = gitBlob(examFile) !== d.sourceGitBlobSha;
   let exam;
   try { exam = loadExam(examFile); } catch (e) { bad('cannot load exam: ' + e.message); continue; }
-  const examOrds = exam.map(q => Number(q.ordinal));
+  const examOrds = loadBank(fs.readFileSync(examFile, 'utf8')).map(q => numberKey(q.id ?? q.number));
+  for(const it of d.items)if(Object.hasOwn(it,'sourceQuestionNo')&&examOrds[it.ordinal-1]!==numberKey(it.sourceQuestionNo))bad(`#${it.ordinal}: named ordinal does not match source`);
   const missing = examOrds.filter(o => !ords.has(o));
   const extra = [...ords].filter(o => !examOrds.includes(o));
   if (missing.length || extra.length) {

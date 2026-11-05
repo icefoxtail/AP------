@@ -1,4 +1,5 @@
 'use strict';
+require('./item-4slot-import-compat.test.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {execFileSync}=require('node:child_process');
