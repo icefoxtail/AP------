@@ -7,6 +7,7 @@
 
     const QUESTION_IMAGE_SELECTOR = '.q-content img, [data-semantic-content="1"] img, .q-image-wrap img, .choices img';
     const DEFAULT_TIMEOUT_MS = 1200;
+    const now = () => typeof performance !== 'undefined' && typeof performance.now === 'function' ? performance.now() : Date.now();
 
     function asList(value) {
         return Array.from(value || []);
@@ -75,25 +76,33 @@
         } catch (error) {
             return { status: 'error', reason: 'DECODE_ERROR', message: String(error?.message || error) };
         }
-        const decoded = await Promise.race([
-            decodePromise.then(() => ({ status: 'decoded' })).catch(error => ({
-                status: 'error', reason: 'DECODE_ERROR', message: String(error?.message || error)
-            })),
-            new Promise(resolve => setTimeout(() => resolve({ status: 'timeout', reason: 'DECODE_TIMEOUT' }), timeoutMs))
-        ]);
+        let timer;
+        let decoded;
+        try {
+            decoded = await Promise.race([
+                decodePromise.then(() => ({ status: 'decoded' })).catch(error => ({
+                    status: 'error', reason: 'DECODE_ERROR', message: String(error?.message || error)
+                })),
+                new Promise(resolve => { timer = setTimeout(() => resolve({ status: 'timeout', reason: 'DECODE_TIMEOUT' }), timeoutMs); })
+            ]);
+        } finally {
+            clearTimeout(timer);
+        }
         if (decoded.status !== 'decoded') return { ...decoded, src: imageSource(image) };
         return inspectImage(image);
     }
 
     async function waitForImage(image, timeoutMs = DEFAULT_TIMEOUT_MS) {
+        const budget = Number.isFinite(Number(timeoutMs)) ? Math.max(0, Number(timeoutMs)) : DEFAULT_TIMEOUT_MS;
+        const deadline = now() + budget;
         const immediate = inspectImage(image);
-        if (immediate.status === 'loaded') return waitForDecode(image, timeoutMs);
+        if (immediate.status === 'loaded') return waitForDecode(image, budget);
         if (immediate.status === 'error') return immediate;
         if (!image?.addEventListener) return { status: 'timeout', reason: 'LOAD_TIMEOUT' };
 
         const eventResult = await new Promise(resolve => {
             let settled = false;
-            const timer = setTimeout(() => finish({ status: 'timeout', reason: 'LOAD_TIMEOUT', src: imageSource(image) }), timeoutMs);
+            const timer = setTimeout(() => finish({ status: 'timeout', reason: 'LOAD_TIMEOUT', src: imageSource(image) }), budget);
             const cleanup = () => {
                 clearTimeout(timer);
                 image.removeEventListener?.('load', onLoad);
@@ -114,9 +123,11 @@
             const onError = () => finish({ status: 'error', reason: 'LOAD_ERROR', src: imageSource(image) });
             image.addEventListener('load', onLoad, { once: true });
             image.addEventListener('error', onError, { once: true });
+            // A cached image can finish between the initial check and listener registration.
+            if (image.complete === true) onLoad();
         });
         if (eventResult.status !== 'loaded') return eventResult;
-        return waitForDecode(image, timeoutMs);
+        return waitForDecode(image, Math.max(0, deadline - now()));
     }
 
     function summarize(results) {

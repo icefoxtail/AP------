@@ -163,7 +163,7 @@ function makeDependencies(staging, calls) {
   };
 }
 
-test('pending solution images keep the default timeout when rendered through Array.map', async () => {
+test('pending solution images share the initial asset budget without receiving Array.map indexes', async () => {
   const staging = new FakeElement('div');
   const calls = [];
   const deps = makeDependencies(staging, calls);
@@ -177,7 +177,7 @@ test('pending solution images keep the default timeout when rendered through Arr
   assert.deepEqual(calls.map(call => call.image.complete), [false, false, false]);
   assert.deepEqual(
     calls.map(call => call.timeoutMs),
-    [DEFAULT_TIMEOUT_MS, DEFAULT_TIMEOUT_MS, DEFAULT_TIMEOUT_MS],
+    [15000, 15000, 15000],
     'Array.map indexes must not become timeoutMs values'
   );
 
@@ -185,7 +185,7 @@ test('pending solution images keep the default timeout when rendered through Arr
   await renderPromise;
 });
 
-test('archive solution image map call sites use explicit one-argument callbacks', () => {
+test('archive solution image map call sites do not pass Array.map indexes as timeouts', () => {
   const root = path.resolve(__dirname, '..');
   const files = [
     'archive/engine.html',

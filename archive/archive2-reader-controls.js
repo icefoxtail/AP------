@@ -113,20 +113,43 @@
     if (newWindowButton) newWindowButton.disabled = !ready;
   }
 
+  let modeChangeGeneration = 0;
   async function changeMode(mode) {
+    const generation = ++modeChangeGeneration;
     const select = document.getElementById("archive2-reader-mode");
     const requested = modes.some(([value]) => value === mode) ? mode : "exam";
     if (select) select.disabled = true;
     try {
       if (typeof root.switchMode !== "function") throw new Error("출력 종류를 바꿀 수 없습니다.");
-      await root.switchMode(requested);
+      const outcome = await root.switchMode(requested);
+      if (generation !== modeChangeGeneration) return { ok: false, code: "DISCARDED_STALE" };
+      if (outcome?.ok === false) {
+        if (outcome.code === "DISCARDED_STALE") return outcome;
+        const error = new Error("출력 종류를 바꾸지 못했습니다.");
+        error.code = outcome.code;
+        throw error;
+      }
       syncMode(requested);
+      return outcome || { ok: true, mode: requested };
     } catch (error) {
+      if (generation !== modeChangeGeneration) return { ok: false, code: "DISCARDED_STALE" };
       syncMode(selectedMode());
-      root.alert?.(error?.message || "출력 종류를 바꾸지 못했습니다.");
+      const outcome = { ok: false, code: error?.code || error?.message || "MODE_CHANGE_FAILED" };
+      if (outcome.code !== "DISCARDED_STALE") {
+        if (root.APArchiveRenderFeedback?.track) {
+          root.APArchiveRenderFeedback.track(Promise.resolve(outcome), {
+            mode: requested,
+            questionCount: envelope()?.questionCount,
+            retry: () => changeMode(requested),
+          });
+        } else root.alert?.("출력 종류를 바꾸지 못했습니다. 다시 시도해 주세요.");
+      }
+      return outcome;
     } finally {
-      const controls = document.getElementById("archive2-reader-controls");
-      setReady(controls?.dataset.ready === "true", selectedMode());
+      if (generation === modeChangeGeneration) {
+        const controls = document.getElementById("archive2-reader-controls");
+        setReady(controls?.dataset.ready === "true", selectedMode());
+      }
     }
   }
 

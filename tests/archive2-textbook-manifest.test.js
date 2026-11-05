@@ -275,7 +275,7 @@ test('textbook figures beside the source JS resolve at render time without touch
   for (const page of ['engine.html', 'mixed_engine.html']) {
     const html = fs.readFileSync(path.join(archiveDir, page), 'utf8');
     assert.match(html, /readiness\.resolveSourceRelativeImage\(src, readiness\.sourceFileOfImage\(image\)/, page);
-    assert.match(html, /question-image-readiness\.js\?v=20261105-choice-images-1/, page);
+    assert.match(html, /question-image-readiness\.js\?v=20261106-solution-loading-1/, page);
   }
   // Every figure the registered textbook sources reference by bare file name exists beside its JS.
   let figures = 0;

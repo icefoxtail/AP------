@@ -57,7 +57,7 @@
                         sourceArchiveFile: policy.name, canonicalDataFingerprint: N.semanticDigest((policy.renderIdentity || policy.sourceIdentity)(state)),
                         businessData: policy.sourceIdentity(input.state) },
                     state, environment: { url: input.url },
-                    fingerprints: { engine: 'common-fast-v1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
+                    fingerprints: { engine: 'common-fast-solution-loading-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
             },
             async build(ctx) {
                 check(ctx);
@@ -205,7 +205,20 @@
                 if (ctx.snapshot?.rootNode === document.getElementById('print-area'))
                     ctx.snapshot.geometry = geometry(ctx.snapshot.rootNode);
             },
-            onRequest(promise) { cancelWarm(); root.__AP_RENDER_READY__ = promise; policy.onRequest?.(promise); },
+            onRequest(promise, ctx) {
+                cancelWarm();
+                root.__AP_RENDER_READY__ = promise;
+                const mode = ctx.input.mode;
+                const retryModeChange = runtime.currentSession && runtime.currentSession.activeMode !== mode;
+                ctx.feedback = root.APArchiveRenderFeedback?.track(promise, {
+                    mode,
+                    questionCount: ctx.input.state?.data?.length,
+                    retry: retryModeChange && typeof root.switchMode === 'function'
+                        ? () => root.switchMode(mode)
+                        : () => root.location.reload()
+                });
+                policy.onRequest?.(promise);
+            },
             observe(event, ctx) {
                 if (ctx.background) return;
                 document.documentElement.dataset.apCommonFastRuntime = JSON.stringify({ adapter: policy.name, event, generation: ctx.requestGeneration, cache: ctx.cacheStatus, error: ctx.error || null });

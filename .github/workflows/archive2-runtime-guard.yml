@@ -7,6 +7,8 @@ on:
       - 'AGENTS.md'
       - 'archive/**'
       - 'tests/archive2-*'
+      - 'tests/archive-solution-loading.test.cjs'
+      - 'tests/archive-render-feedback.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
       - 'tools/run-tests.js'
@@ -18,12 +20,20 @@ on:
       - 'AGENTS.md'
       - 'archive/**'
       - 'tests/archive2-*'
+      - 'tests/archive-solution-loading.test.cjs'
+      - 'tests/archive-render-feedback.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
       - 'tools/run-tests.js'
       - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
       - '.github/workflows/archive2-runtime-guard.yml'
   workflow_dispatch:
+    inputs:
+      solution_baseline_sha:
+        description: 'Exact baseline for the 50-question Chrome comparison (defaults to the loading-fix baseline).'
+        required: false
+        default: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+        type: string
 
 permissions:
   contents: read
@@ -52,3 +62,49 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-archive2-finder-filter-browser.cjs
+
+  solution-loading:
+    name: Archive2 50-question solution Chrome
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify image deadlines and render feedback regressions
+        run: >-
+          node --test
+          tests/archive-solution-loading.test.cjs
+          tests/archive-render-feedback.test.cjs
+          tests/archive-inline-image-readiness.test.js
+          tests/archive-question-image-map-regression.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Compare 50 real solutions and verify asset failures in actual Chrome
+        timeout-minutes: 8
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_SOLUTION_BASE_SHA: ${{ inputs.solution_baseline_sha || 'f446e62a29f90d6d30a76b295e5c226f5ead72d2' }}
+          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
+          ARCHIVE_SOLUTION_REPEATS: '2'
+        run: node tests/archive2-solution-loading-browser.cjs
+      - name: Upload solution loading metadata, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-solution-loading-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-solution-loading-evidence/
+          if-no-files-found: warn
+          retention-days: 14

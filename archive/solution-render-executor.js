@@ -10,6 +10,10 @@
     // only the split boundary moves earlier when the trailing fragment is tiny.
     const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
     const MIN_LEADING_CONTINUATION_CHUNKS = 2;
+    const SOLUTION_TYPESET_BATCH_SIZE = 8;
+    // Initial loading can transfer several MB across 50 solutions. Allow one
+    // bounded load+decode budget, then keep the final print readiness gate.
+    const SOLUTION_IMAGE_TIMEOUT_MS = 15000;
 
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
@@ -17,6 +21,7 @@
         await deps.raf();
         records.forEach(record => { record.tight = deps.measureSolutionOuterFootprint(record.box); });
         boxes.forEach(box => box.classList.remove('fit-tight'));
+        if (deps.collectSolutionDecisionDetails === false && deps.layoutPlannerMode?.() !== 'authority') return records;
         const hosts = [];
         try {
             records.forEach((record, index) => {
@@ -99,6 +104,9 @@
             && deps.measurementMode?.() === 'batch'
             && deps.layoutPlannerMode?.() === 'authority'
             && deps.renderAuthorityDualRun?.() !== true;
+        const observedMeasurementsOnly = deps.measurementMode?.() === 'batch'
+            && deps.layoutPlannerMode?.() !== 'authority'
+            && deps.collectSolutionDecisionDetails === false;
 
         const markSolutionPlacement = (node, continuation = false) => {
             const sourceRef = String(node?.getAttribute?.('data-source-ref') || '').trim();
@@ -161,6 +169,10 @@
         const renderSplitSolutionBox = async (sourceBox, qNo) => {
             const originalExp = sourceBox.querySelector('.sol-exp');
             const chunks = deps.makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+            if (observedMeasurementsOnly) {
+                const block = solutionDecisionBlocks.find(item => item.blockId === sourceBox.dataset.solutionDecisionBlockId);
+                if (block) block.actualChunkCount = chunks.length;
+            }
             const preparedChunks = chunks.map(chunkHtml => {
                 const chunk = document.createElement('span');
                 chunk.className = 'sol-chunk';
@@ -270,8 +282,24 @@
             staging.appendChild(box);
             return box;
         });
-        await Promise.all(Array.from(staging.querySelectorAll('img')).map(img => deps.waitForQuestionImage(img)));
-        if (deps.rendererMode() === 'batch') await deps.typesetMath('solution-staging', [staging]);
+        const solutionImages = Array.from(staging.querySelectorAll('img'));
+        let readyImages = 0;
+        deps.onSolutionProgress?.({ phase: 'images', completed: 0, total: solutionImages.length });
+        await Promise.all(solutionImages.map(async img => {
+            await deps.waitForQuestionImage(img, SOLUTION_IMAGE_TIMEOUT_MS);
+            deps.onSolutionProgress?.({ phase: 'images', completed: ++readyImages, total: solutionImages.length });
+        }));
+        if (deps.rendererMode() === 'batch') {
+            // MathJax owns a single document. Keep calls serial and give input,
+            // cancellation and the progress display a turn between small batches.
+            for (let start = 0; start < solutionBoxes.length; start += SOLUTION_TYPESET_BATCH_SIZE) {
+                const batch = solutionBoxes.slice(start, start + SOLUTION_TYPESET_BATCH_SIZE);
+                await deps.typesetMath('solution-staging', batch);
+                deps.onSolutionProgress?.({ phase: 'math', completed: start + batch.length, total: solutionBoxes.length });
+                await deps.raf();
+            }
+        }
+        deps.onSolutionProgress?.({ phase: 'layout', completed: 0, total: solutionBoxes.length });
         if (deps.measurementMode?.() === 'batch' && deferredAuthorityMeasurements) {
             // The authority materializer measures each box in the selected
             // output column before it plans placement. Defer measurements and
@@ -297,10 +325,11 @@
                 solutionMeasurementBySource.set(sourceRef, measurements);
                 const blockId = `solution-block:${index + 1}:primary`;
                 record.box.dataset.solutionDecisionBlockId = blockId;
-                const chunks = record.chunks.map(({ chunkId, measuredHeight, tight }) => ({ chunkId, measuredHeight, tight }));
+                const chunks = (record.chunks || []).map(({ chunkId, measuredHeight, tight }) => ({ chunkId, measuredHeight, tight }));
                 solutionDecisionBlocks.push({ blockId, questionKey: `solution-block:${index + 1}`, measuredHeight: record.raw, measurements,
                     fullWidth: record.box.dataset.solutionFullWidth === 'true',
-                    shellOverhead: Math.max(1, record.raw - chunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0)),
+                    deferredChunkCount: observedMeasurementsOnly,
+                    shellOverhead: observedMeasurementsOnly ? undefined : Math.max(1, record.raw - chunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0)),
                     continuationShellOverhead: record.continuationShellOverhead, chunks });
             });
         } else for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
@@ -367,8 +396,12 @@
             planned.placements.forEach(item => solutionPlacementMap.set(item.blockId, item));
         } else {
             ({ cols } = makeGridPage());
-            for (let i = 0; i < solutionBoxes.length; i++) await placeSolutionBox(solutionBoxes[i], i + 1);
+            for (let i = 0; i < solutionBoxes.length; i++) {
+                await placeSolutionBox(solutionBoxes[i], i + 1);
+                deps.onSolutionProgress?.({ phase: 'layout', completed: i + 1, total: solutionBoxes.length });
+            }
         }
+        deps.onSolutionProgress?.({ phase: 'layout', completed: solutionBoxes.length, total: solutionBoxes.length });
 
         if (appState) {
             const chunkCounts = solutionDecisionBlocks.map(block => Number.isInteger(block.actualChunkCount)
@@ -376,20 +409,25 @@
                 : block.chunks.length);
             appState.solutionDecisionLedger = {
                 mode: 'solution',
-                schemaVersion: deferredAuthorityMeasurements ? 'SOLUTION_LAYOUT_ROSTER_V1' : 'SOLUTION_DECISION_DETAIL_V1',
+                schemaVersion: deferredAuthorityMeasurements || observedMeasurementsOnly ? 'SOLUTION_LAYOUT_ROSTER_V1' : 'SOLUTION_DECISION_DETAIL_V1',
                 measurementSource: deferredAuthorityMeasurements
                     ? 'actual-output-column-flowHeight'
-                    : (deps.measurementMode?.() === 'batch' ? 'solution-decision-batch' : 'solution-per-question-legacy'),
+                    : (observedMeasurementsOnly ? 'solution-full-box-batch' : (deps.measurementMode?.() === 'batch' ? 'solution-decision-batch' : 'solution-per-question-legacy')),
                 questionDenominator: solutionDecisionBlocks.length,
                 fullBoxMeasurementCount: solutionDecisionBlocks.length,
                 chunksGeneratedQuestionCount: solutionDecisionBlocks.filter(block => Number.isInteger(block.actualChunkCount) || block.chunks.length > 0).length,
                 splitCandidateCount: chunkCounts.filter(count => count > 1).length,
                 measuredChunkRangeCount: solutionDecisionBlocks.reduce((sum, block) => sum + Number(block.measuredRangeCount || 0), 0),
-                measuredChunkCount: chunkCounts.reduce((sum, count) => sum + count, 0),
+                measuredChunkCount: observedMeasurementsOnly ? 0 : chunkCounts.reduce((sum, count) => sum + count, 0),
                 measurementPolicy: deferredAuthorityMeasurements ? Object.freeze({
                     fullBox: 'raw+tight actual selected-column flowHeight for every question',
                     chunks: 'materialize only after both full-box measurements exceed selected-column capacity',
                     chunkRangeMeasurements: 'planner-requested ranges measured on demand',
+                    sourceQuestionCount: solutionDecisionBlocks.length
+                }) : observedMeasurementsOnly ? Object.freeze({
+                    fullBox: 'raw+tight staging footprint for every question',
+                    chunks: 'created only when observed placement needs a split; no diagnostic clone pass',
+                    chunkRangeMeasurements: 'not collected',
                     sourceQuestionCount: solutionDecisionBlocks.length
                 }) : null,
                 usableHeight: Math.max(1, solutionUsableHeight),

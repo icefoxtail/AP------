@@ -284,12 +284,12 @@ function createArchiveScreenRuntime() {
         cancelPrewarm(event?.type || 'user-input');
         if (candidate && prewarmEligible(candidate)) schedulePrewarm({ candidate });
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-solution-upgrade-20261010.4', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-layout-roster-20261010.2', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v2' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-solution-loading-20261106.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-loading-20261106.1', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v2' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
         await document.fonts.ready;
-        await new Promise(resolve => requestAnimationFrame(resolve));
+        await raf();
     }
 
     function captureInput(intent, desired, committed) {
@@ -556,6 +556,7 @@ function createArchiveScreenRuntime() {
                 ctx.diagnostics.apLayoutAuthorityProduction = JSON.stringify({ mode: evidence.mode, planner: evidence.planner, pages: evidence.pages, measuredBeforePlacement: evidence.measuredBeforePlacement, canonicalCloneCount: evidence.canonicalCloneCount });
             },
             clearMath: elements => window.MathJax?.typesetClear?.(elements),
+            onSolutionProgress: progress => ctx.feedback?.progress(progress),
             typesetMath: async (label, elements) => {
                 if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
                 if (ctx.background && label === 'solution-staging') {
@@ -730,7 +731,20 @@ function createArchiveScreenRuntime() {
         cleanup(root) { if (!root) return; window.MathJax?.typesetClear?.([root]); root.remove(); },
         release(ctx) { if (ctx.stagingHost) { window.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
         visible: async () => { updateScreenFitScale(); await raf(); },
-        onRequest(promise) { cancelPrewarm('foreground-request'); window.__AP_RENDER_READY__ = promise; },
+        onRequest(promise, ctx) {
+            cancelPrewarm('foreground-request');
+            window.__AP_RENDER_READY__ = promise;
+            const mode = ctx.input.mode;
+            const headerOptions = ctx.intent.payload?.printHeaderOptions;
+            const retryModeChange = Boolean(runtime.currentSession && ctx.intentType === 'MODE_CHANGE');
+            ctx.feedback = window.APArchiveRenderFeedback?.track(promise, {
+                mode,
+                questionCount: AppState.data?.length,
+                retry: retryModeChange
+                    ? () => headerOptions ? switchOutputEnvelopeMode(mode, headerOptions) : switchMode(mode)
+                    : () => window.location.reload()
+            });
+        },
         observe(event, ctx) {
             if (ctx.background) {
                 window.__AP_PREWARM_METRICS__ = ctx.metrics;
