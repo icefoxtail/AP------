@@ -1,0 +1,55 @@
+name: 4slot Bulk Live Verification
+on:
+  push:
+    branches: ['ops/4slot-bulk-live-verify-20261105']
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+jobs:
+  public-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify merged PR, completed Pages deployment, and exact public 8129-row consumer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPORT_DIR: ${{ runner.temp }}/live-4slot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$REPORT_DIR"
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';import crypto from 'node:crypto';import vm from 'node:vm';
+          const base='https://icefoxtail.github.io/AP------/',repo='icefoxtail/AP------',dir=process.env.REPORT_DIR;
+          const want='73d8aed43ede8c3fb8ca1bc2bd654e3c9001445b4134111ed9790c13d1711069',moduleWant='4b0b097b8da5034290984108d4aa6064ddca491e943ac3444fe5c38d18e6f032';
+          const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+          const get=async(url,auth=false)=>{const r=await fetch(url,{headers:auth?{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json'}:{'Cache-Control':'no-cache'},signal:AbortSignal.timeout(25000)});if(!r.ok)throw Error('HTTP_'+r.status);return {response:r,bytes:Buffer.from(await r.arrayBuffer())};};
+          const api=async p=>JSON.parse((await get('https://api.github.com/repos/'+repo+'/'+p,true)).bytes);
+          const begin=Date.now();let attempts=0,lastError='NOT_STARTED';
+          while(Date.now()-begin<35*60*1000){attempts++;try{
+            const pr=await api('pulls/1407');if(!pr.merged)throw Error('PR_NOT_YET_MERGED');
+            const runs=await api('actions/workflows/archive-pages-release.yml/runs?branch=main&per_page=10');
+            const run=runs.workflow_runs.find(r=>r.status==='completed'&&r.conclusion==='success'&&Date.parse(r.created_at)>=Date.parse(pr.merged_at));if(!run)throw Error('NEW_PAGES_DEPLOY_NOT_YET_COMPLETE');
+            const jobs=await api('actions/runs/'+run.id+'/jobs?per_page=100');if(!jobs.jobs.some(j=>j.name==='Deploy the verified student release'&&j.conclusion==='success'))throw Error('DEPLOY_JOB_NOT_SUCCESS');
+            const suffix='?verify='+Date.now(),data=await get(base+'archive/data/item-4slot-index.json'+suffix),code=await get(base+'archive/item-4slot.js'+suffix);
+            if(sha(data.bytes)!==want)throw Error('PUBLIC_INDEX_SHA_NOT_EXPECTED:'+sha(data.bytes));if(sha(code.bytes)!==moduleWant)throw Error('PUBLIC_CONSUMER_CODE_SHA_MISMATCH');
+            const index=JSON.parse(data.bytes);if(index.counts.registered!==8129||index.counts.pending!==0||index.counts.files!==358)throw Error('PUBLIC_COUNT_MISMATCH');
+            const ctx=vm.createContext({});vm.runInContext(code.bytes.toString('utf8'),ctx,{timeout:3000});const consumer=ctx.ArchiveItem4Slot.createIndex(index);if(consumer.size!==8129)throw Error('PUBLIC_CONSUMER_COUNT');
+            let termChecks=0;for(const row of index.records){if(JSON.stringify(consumer.get(row.questionUid))!==JSON.stringify(row))throw Error('UID_VALUE_MISMATCH');for(const slot of ['given','goal','method','condition'])for(const id of row[slot]){if(!consumer.hasTerm(row.questionUid,slot,id,row.dictionaryVersion))throw Error('SLOT_POSTING_MISMATCH');termChecks++;}}
+            const result={schemaVersion:'4slot-bulk-live-deployment-verification-v1',status:'PASS',pr:1407,mergeCommit:pr.merge_commit_sha,pagesRun:run.id,pagesHead:run.head_sha,pagesConclusion:run.conclusion,deployJob:'SUCCESS',publicBase:base,indexSha256:want,consumerModuleSha256:moduleWant,counts:index.counts,uidConsumerVerified:consumer.size,termPostingChecks:termChecks,indexBytes:data.bytes.length,attempts,verifiedAt:new Date().toISOString(),browserUIReview:'NOT_RUN_DATA_AND_NATIVE_RELEASE_GATES_ONLY'};
+            fs.writeFileSync(dir+'/live-verification.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));process.exit(0);
+          }catch(e){lastError=e.message;if(attempts%6===1)console.log('LIVE_VERIFICATION_PENDING',lastError);await new Promise(r=>setTimeout(r,20000));}}
+          fs.writeFileSync(dir+'/live-verification.json',JSON.stringify({status:'NOT_VERIFIED',lastError,attempts}));throw Error(lastError);
+          JS
+      - name: Upload final public deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: four-slot-bulk-live-${{ github.run_id }}
+          path: ${{ runner.temp }}/live-4slot/
+          retention-days: 14
+          if-no-files-found: error
