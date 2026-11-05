@@ -54,7 +54,18 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
     const contentEqual = source.contentFingerprint === row.assignmentFingerprint;
     const exact = source.sourceFingerprint === row.sourceFingerprint && contentEqual;
     assert.equal(row.metaBinding || '', exact ? 'exact' : contentEqual ? 'content' : '', row.questionUid);
-    if (!row.metaBinding) { assert.equal(hasHint, false, 'unbound rows carry no hint: ' + row.questionUid); stats.unbound++; continue; }
+    if (!row.metaBinding) {
+      assert.equal(hasHint, false, 'unbound rows carry no hint: ' + row.questionUid);
+      // Check every unbound record, including newly restored SOURCE_ONLY bodies.
+      // A stored classification must never become a usable facet without its content binding.
+      assert.equal(core.metaFacetsOf(row), null, 'unbound metadata is not a usable facet: ' + row.questionUid);
+      assert.equal(core.metaFacetMatches(row, { metaPT: source.problemTypeKey || 'PT_ANY' }), false,
+        'unbound metadata cannot match a type filter: ' + row.questionUid);
+      assert.equal(core.metaFacetMatches(row, { metaTPL: source.templateKey || 'TPL_ANY' }), false,
+        'unbound metadata cannot match a template filter: ' + row.questionUid);
+      stats.unbound++;
+      continue;
+    }
     stats[row.metaBinding]++;
     if (!hasHint) continue;
     stats.hint++;
@@ -81,7 +92,9 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
   }
   // measured on the production catalog (before: 549 PT / 546 TPL / 197 L3 reachable, 195 filterable)
   assert.ok(stats.pt >= 7900 && stats.tpl >= 7600 && stats.l3 >= 5400, JSON.stringify(stats));
-  assert.ok(stats.content >= 4700 && stats.unbound >= 800 && stats.unbound <= 900, JSON.stringify(stats));
+  // Restoration can legitimately reveal more stale, unverified assignments. The
+  // integrity contract above covers all of them; their growing count is not a cap.
+  assert.ok(stats.content >= 4700 && stats.unbound >= 800, JSON.stringify(stats));
 });
 
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
