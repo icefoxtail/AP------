@@ -53,7 +53,13 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)",
-    "choices": [],
+    "choices": [
+      "그림 ①",
+      "그림 ②",
+      "그림 ③",
+      "그림 ④",
+      "그림 ⑤"
+    ],
     "answer": "③, ④",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\n① AM=AB/2이므로 옳다.\n② CN=CD/2이므로 옳다.\n③ AB=CD에서 먼저 얻는 것은 AM=CN이다. 결론인 OM=ON을 먼저 쓸 수 없으므로 옳지 않다.\n④ OA와 같은 길이는 같은 원의 반지름 OC이므로 OA=CN은 옳지 않다.\n⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.\n따라서 정답은 ③, ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png",

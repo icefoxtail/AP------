@@ -1,0 +1,529 @@
+{
+  "schemaVersion": "SOP_v1.2_COURIER_INTAKE",
+  "generatedAt": "2026-04-04T20:05:00+09:00",
+  "workerLine": "Middle1-2 Meta Worker",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "examId": "23_금당중_2학기_중간_중1_기출",
+  "sourceFileName": "23_금당중_2학기_중간_중1_기출.js",
+  "sourceFileId": "1NhPxg9OMBjSR5g0Q8pOxE7XBP2bPQVPa",
+  "sourceFolderId": "1swbkTpLnKE4wp8puNgqwq-_7gJa4faVk",
+  "sourceSha256": "64ffa47b399fd1016dd818327b7792d66652ed1c0f2c10892d35fcab9f147640",
+  "totalQuestions": 24,
+  "recordsToBindCount": 24,
+  "totalHoldCount": 0,
+  "packDistribution": {
+    "MIDDLE1": 24
+  },
+  "difficultyDistribution": {
+    "1": 2,
+    "2": 11,
+    "3": 7,
+    "4": 4
+  },
+  "recordsToBind": [
+    {
+      "questionNo": 1,
+      "questionId": 1,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-COORDINATE_PLANE",
+      "level4": "좌표평면",
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+      "crossConcepts": [
+        "CC_COORDINATE_PLANE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "좌표평면의 격자 눈금에서 다섯 점 A, B, C, D, E의 x좌표와 y좌표를 직접 읽는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 2,
+      "questionId": 2,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-COORDINATE_PLANE",
+      "level4": "좌표평면",
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_ORDERED_PAIR_EQUALITY",
+      "crossConcepts": [
+        "CC_COORDINATE_PLANE",
+        "CC_ORDERED_PAIR_EQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 순서쌍의 x성분과 y성분을 각각 같다고 놓아 일차방정식 2개를 풀고 곱 ab를 구하는 2단계 연산 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 3,
+      "questionId": 3,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-COORDINATE_PLANE",
+      "level4": "좌표평면",
+      "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+      "crossConcepts": [
+        "CC_COORDINATE_PLANE",
+        "CC_POINTS_ON_COORDINATE_AXES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x축 위의 점(y좌표=0)과 y축 위의 점(x좌표=0) 조건을 각각 적용해 a, b를 구하고 합산하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 4,
+      "questionId": 4,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-COORDINATE_PLANE",
+      "level4": "좌표평면",
+      "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+      "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+      "crossConcepts": [
+        "CC_QUADRANT_SIGN",
+        "CC_SIGN_PRODUCT_QUOTIENT"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "제4사분면 점 (a, b)의 부호(a>0, b<0)를 판정한 뒤 유리수 나눗셈 부호 규칙으로 (a, -a/b)의 사분면을 추론하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 5,
+      "questionId": 5,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-GRAPH_RELATION",
+      "level4": "그래프와 관계",
+      "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+      "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+      "crossConcepts": [
+        "CC_GRAPH_INTERPRETATION",
+        "CC_CONTAINER_CROSS_SECTION_RATE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "시간에 따른 물의 높이 그래프에서 두 구간의 직선 기울기(일정하다가 더 급해짐)를 그릇의 단면적 변화(넓은 원기둥 위에 좁은 원기둥 결합)로 재해석해야 하므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 6,
+      "questionId": 6,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-GRAPH_RELATION",
+      "level4": "그래프와 관계",
+      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
+      "crossConcepts": [
+        "CC_GRAPH_INTERPRETATION",
+        "CC_DISTANCE_TIME_INTERSECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "토끼와 거북이의 시간-거리 그래프에서 두 동물이 만나는 시각이 두 그래프 교점의 x좌표임을 해석하여 2개의 시각을 모두 찾는 문항이므로 원본 난이도 Bucket 2를 보존한다. (원본 PT/TPL의 고등 함수 교점 키를 중1 정본으로 격리 보정)",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 7,
+      "questionId": 7,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-GRAPH_RELATION",
+      "level4": "그래프와 관계",
+      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_TIME_SERIES_FACT_AUDIT",
+      "crossConcepts": [
+        "CC_GRAPH_INTERPRETATION",
+        "CC_TIME_SERIES_GRAPH_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "시간대별 기온 변화 그래프에서 각 시각의 기온과 최고·최저 기온 차이를 읽어 보기의 진위를 판별하는 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 8,
+      "questionId": 8,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+      "crossConcepts": [
+        "CC_LINE_RAY_SEGMENT_DEFINITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "한 직선 위의 네 점 A, B, C, D로 만들어지는 선분, 반직선, 직선의 시작점·방향 일치 조건을 비교하는 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 9,
+      "questionId": 9,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+      "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+      "crossConcepts": [
+        "CC_SEGMENT_MIDPOINT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이중 중점(AB의 중점 M, AM의 중점 N)과 길이 비(AB=2BC) 조건을 순차적으로 역산하여 전체 선분 AC의 길이를 구하는 3단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 10,
+      "questionId": 10,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+      "crossConcepts": [
+        "CC_VERTICAL_ANGLES",
+        "CC_STRAIGHT_RIGHT_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "교차하는 두 직선과 반직선이 이루는 직각(90°) 및 30°의 합과 맞꼭지각이 같음을 직접 적용하는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 11,
+      "questionId": 11,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+      "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+      "crossConcepts": [
+        "CC_TRIANGLE_INEQUALITY"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각형의 두 변(5cm, 8cm)이 주어졌을 때 나머지 한 변 x의 범위(8-5 < x < 8+5)를 구하여 가능한 값의 개수를 세는 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 12,
+      "questionId": 12,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-07",
+      "level3": "M1-07-SOLID_FIGURE",
+      "level4": "입체도형",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+      "crossConcepts": [
+        "CC_SPACE_LINE_PLANE_POSITION",
+        "CC_SKEW_LINES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "윗면이 대각선으로 잘린 오각기둥(또는 직육면체 절단 입체/직육면체)에서 모서리 간 꼬인 위치 개수, 수직 모서리, 점과 면 사이의 거리를 종합 판별하는 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 13,
+      "questionId": 13,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+      "crossConcepts": [
+        "CC_PARALLEL_ALTERNATE_CORRESPONDING_ANGLES",
+        "CC_PARALLEL_AUXILIARY_LINE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행선 l, m 사이의 두 번 꺾인 선에서 평행 보조선을 그어 엇각·동위각을 차례로 이동시켜 ∠x를 구하는 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 14,
+      "questionId": 14,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-POSITION_RELATION",
+      "level4": "위치 관계",
+      "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+      "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+      "crossConcepts": [
+        "CC_SPACE_LINE_PLANE_POSITION",
+        "CC_SKEW_LINES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "공간에서 세 직선 l, m, n과 평면 P의 평행·수직 관계에 대한 4개 명제의 참·거짓과 반례(꼬인 위치 등)를 판별하는 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 15,
+      "questionId": 15,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+      "crossConcepts": [
+        "CC_PAPER_FOLDING_ANGLE",
+        "CC_PARALLEL_ALTERNATE_CORRESPONDING_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직사각형 종이를 두 선분 HE, EF를 접는 선으로 하여 양쪽에서 접었을 때 평행선의 엇각과 접은 각의 등각 성질을 복합 적용하는 고난도 문항이므로 원본 난이도 Bucket 4를 보존한다. (원본 PT의 고등 도형의 이동 키를 중1 정본으로 격리 보정)",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 16,
+      "questionId": 16,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-POSITION_RELATION",
+      "level4": "위치 관계",
+      "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+      "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+      "crossConcepts": [
+        "CC_COMPASS_STRAIGHTEDGE_CONSTRUCTION",
+        "CC_PARALLEL_ALTERNATE_CORRESPONDING_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "점 P를 지나고 직선 l에 평행한 직선을 엇각 작도로 그리는 과정에서 같은 반지름의 선분, 각의 크기, 작도 순서, 평행선 성질을 종합 판단하는 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 17,
+      "questionId": 17,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+      "crossConcepts": [
+        "CC_TRIANGLE_DETERMINATION",
+        "CC_TRIANGLE_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각형의 결정조건(SSS, SAS, ASA)뿐만 아니라 삼각형 부등식 위배 여부와 끼인각 아닌 두 변·한 각 조건의 반례까지 모두 검증해야 하므로 원본 난이도 Bucket 4를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 18,
+      "questionId": 18,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+      "crossConcepts": [
+        "CC_TRIANGLE_CONGRUENCE_SAS_ASA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 삼각형에서 한 변(BC=EF)이 같을 때 두 조건을 추가하여 SSS, SAS, ASA 합동이 되는 경우와 끼인각이 아니어서 합동이 되지 않는 경우를 가려내는 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 19,
+      "questionId": 19,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+      "crossConcepts": [
+        "CC_SQUARE",
+        "CC_TRIANGLE_CONGRUENCE_SAS_ASA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "정사각형 ABCD 내부에서 SAS 합동인 두 직각삼각형(△EBC ≡ △FCD)을 찾아 대응각을 옮긴 뒤 여각을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 20,
+      "questionId": 20,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+      "crossConcepts": [
+        "CC_EQUILATERAL_TRIANGLE_ROTATION_CONGRUENCE",
+        "CC_TRIANGLE_CONGRUENCE_SAS_ASA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "점 C를 공유하는 두 정삼각형 ABC, CDE에서 회전 대칭에 의한 SAS 합동(△ACD ≡ △BCE)을 증명하고 미지각 α가 소거되는 삼각형 내각 합 식을 세워야 하는 심화 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 21,
+      "questionId": 21,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-04",
+      "level3": "M1-04-COORDINATE_PLANE",
+      "level4": "좌표평면",
+      "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+      "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA",
+      "crossConcepts": [
+        "CC_COORDINATE_PLANE",
+        "CC_COORDINATE_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "좌표평면 위의 세 점 A(-1, 4), B(-1, -1), C(3, 0)을 꼭짓점으로 하는 삼각형의 밑변(축에 평행한 선분 AB)과 높이를 좌표 차로 구해 넓이를 산출하는 서술형 문항이므로 원본 난이도 Bucket 2를 보존한다. (원본 PT/TPL의 고등 평면좌표 키를 중1 정본으로 격리 보정)",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 22,
+      "questionId": 22,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+      "crossConcepts": [
+        "CC_VERTICAL_ANGLES",
+        "CC_STRAIGHT_RIGHT_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "맞꼭지각의 이동과 평각(180°) 일차방정식으로 x를 구한 뒤 직각(90°) 조건으로 ∠a를 구하는 2단계 서술형 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 23,
+      "questionId": 23,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-05",
+      "level3": "M1-05-BASIC_FIGURE",
+      "level4": "점·선·면과 각",
+      "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+      "crossConcepts": [
+        "CC_STRAIGHT_RIGHT_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "수직 조건(∠AOC=90°)과 두 개의 각의 배수 조건(∠AOD=4∠COD, ∠DOB=6∠DOE)을 순차 연립하여 부분각을 구하는 3단계 서술형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    },
+    {
+      "questionNo": 24,
+      "questionId": 24,
+      "pack": "MIDDLE1",
+      "level1": "중1 수학",
+      "level2": "M1-06",
+      "level3": "M1-06-PLANE_FIGURE_MEASURE",
+      "level4": "평면도형의 측정",
+      "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+      "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE",
+      "crossConcepts": [
+        "CC_TRIANGLE_CONGRUENCE_SAS_ASA",
+        "CC_PARALLEL_ALTERNATE_CORRESPONDING_ANGLES",
+        "CC_TRAPEZOID_AREA_BY_CONGRUENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행선의 엇각·맞꼭지각을 이용해 △AFD ≡ △EFC (ASA 합동)를 증명하고, 대응변 AD=EC 이동으로 사다리꼴의 (윗변+아랫변) 합을 구해 넓이를 계산하는 복합 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "courierAction": "BIND_METADATA_ONLY"
+    }
+  ]
+}
