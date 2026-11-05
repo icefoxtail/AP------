@@ -1,8 +1,10 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.0)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.0.1)
 
 **적용:** 이미 Git `main`에 있는 시험지 1건의 GPT 사후 검수·결함 수리·필요한 시험지별 메타 입력·운영병합. **사용자 최신 명시 지시와 이 카드가 현재 실행 권위**다. 신규 CREATE/R1/R2/R3/ALIVE, 예약·공통 Actions 유지보수의 품질·작업 규칙을 변경하지 않는다.
 
 **문서 진입:** 이 카드만 먼저 읽고 정확한 `examUid`/source/기존 증거로 이동한다. [Notion FINAL QA 작업 라우트](https://app.notion.com/p/4010e68bd69f81569b84fb85e8645590)는 필요할 때만 경로·예외 문서를 찾는 목차다. Notion 전체 생명주기·과거 v2.1·기존 FAST ROUTER·AGENTS를 전부 선열람하지 않는다.
+
+**2026-11-05 자동 등록 연결:** 소스에 명시된 변경 메타는 main 병합 뒤 [자동 메타 등록 CURRENT](../architecture/Archive_Main_Merge_Auto_Metadata_CURRENT.md)의 시스템 담당이 등록·소비자 반영·재시도를 책임진다. 작업자에게 별도 등록 요청서 작성이나 정상 문항 재검수를 다시 요구하지 않는다. 실제 의미 보완이 필요한 필드는 해당 UID의 별도 보완으로 남기며 이미 완료한 코드 수리·병합과 구별한다.
 
 ## 1. 입력과 기존 검증 재사용
 
@@ -14,13 +16,13 @@
 
 4. 위 분모의 발문·정답/선지·학생 해설·교육과정·수식·이미지/SVG·실제 필요한 L1~L4/RPM/CC/Condition/Integration·`level`·`difficultyBucket`만 대조하고 확정 결함은 해당 부분을 직접 수리한다. 정상 문항과 기존 자산을 보존하고 바뀐 곳·직접 영향만 재검한다. 실제 확정 수학·해설·시각·메타 HARD FAIL을 방치한 채 품질 PASS를 선언하지 않는다.
 5. **기본 제외:** 원본 PDF/HWP 전수 대조(사용자 별도 요청 예외), PT/TPL 조회·신규 수리/등록·PT/TPL parity, 정상 문항 전수 재풀이, 신규 R1/R2/R3 실행, 무관한 시험지/공용 시스템 수정.
-6. 메타 변경이 **실제로 필요한 경우에만** 대상 시험지 소형 `.archive-meta-register/inbox/*.json` 요청 또는 현행 승인된 해당 경로의 stage-local 입력을 작성한다. 공용 `question_metadata.json`/대형 catalog/compiled 파생 JSON 전체 직접 수정·업로드 금지. 등록기 미지원은 정확한 `TOOLING_GAP`으로 분리하고 허위 승인 금지. 이미 승인·등록된 동일 판본에 중복 요청을 만들지 않는다.
+6. 소스 JS에 명시되어 main에 병합되는 메타 변경은 자동 등록기가 UID별 소형 요청·영수증을 생성한다. **작업자는 같은 변경을 `.archive-meta-register/inbox/*.json`으로 중복 제출하지 않는다.** 소스 밖의 별도 의미 메타 보완은 기존 승인된 시험지별 소형 JSON/stage-local 입력 경로를 유지한다. 공용 `question_metadata.json`/대형 catalog/compiled 파생 JSON 전체 직접 수정·업로드 금지. 등록기 미지원·빈 메타는 정확한 보완 사유로 분리하고 허위 승인 금지. 이미 승인·등록된 동일 판본에 중복 요청을 만들지 않는다.
 
 ## 3. Git main 운영병합 후 GPT 종료
 
 7. 대상 JS/자산/필요한 소형 메타 입력만 변경한 PR을 생성해 GitHub가 허용하는 범위에서 `main`에 병합한다. 범위 밖 stage·commit·도구/CI·전체 인덱스 수정, `git add .`, 브랜치 보호 해제/강제 push 금지. CI 대기/무관한 실패로 병합을 불필요하게 지연하지 않는다.
 8. **원격 `main` commit SHA와 대상 변경 파일 blob을 한 번 readback하면 GPT 종료:** `MAIN_DONE`. 변경 필요가 없고 이미 현행 `main` 실물이 확인되면 `NO_CHANGE_MAIN_DONE`. 미병합은 `BLOCKED/OPEN`으로 남기고 `firstMissingStep` 하나를 적는다. Notion 기록이 불가능하면 `RECORD_PENDING`으로 분리하며 실제 Git 병합 결과를 부정하지 않는다.
-9. **GPT 완료조건에서 제외:** 병합 후 CI/Actions 반복 polling, Consumer/Search 화면의 N/N 수동 parity, DB/index/catalog/런타임 재생성·검증, Chrome/Pages 최종 배포 검사 및 기다림. 메타 자동 승인·등록과 검색/배포는 GitHub Actions 별도 owner의 책임이며, **Actions가 실제로 성공했는지 확인하지 않았다면 성공이라고 주장하지 않는다.**
+9. **GPT 완료조건에서 제외:** 병합 후 CI/Actions 반복 polling, Consumer/Search 화면의 N/N 수동 parity, DB/index/catalog/런타임 재생성·검증, Chrome/Pages 최종 배포 검사 및 기다림. 자동 등록·후보완 기록·소비자 검증·실패 재시도는 GitHub Actions 담당이며, **Actions가 실제로 성공했는지 확인하지 않았다면 성공이라고 주장하지 않는다.** 자동화 구현·시범운영을 사용자가 별도로 지시한 작업만 실제 실행 결과를 추가 검증한다.
 
 ## 4. 상태·예외·인계
 
