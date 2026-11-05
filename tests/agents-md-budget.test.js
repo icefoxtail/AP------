@@ -3,10 +3,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-// The root AGENTS.md is loaded into every agent session, so it stays a short router: area rules live in
-// docs/agents/*.md and are read only for that task. This guards the budget, keeps dated directive sections
-// out of the root, and checks both directions of the routing (every route exists, every area doc is routed).
-// Raise the budget only on an explicit user decision; add new directives to the matching area doc instead.
+// The root AGENTS.md is loaded into every agent session, so it stays a short router: area-specific directions
+// and campaign rules live in docs/agents/*.md; concise cross-line priorities may live in its common section.
+// This guards the budget, keeps dated directive sections out of the root, and checks both directions of the
+// routing (every route exists, every area doc is routed). Raise the budget only on an explicit user decision.
 
 const repo = path.join(__dirname, '..');
 const agentsText = fs.readFileSync(path.join(repo, 'AGENTS.md'), 'utf8');
