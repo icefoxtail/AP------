@@ -1533,7 +1533,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림은 한 변의 길이가 $8\\mathrm{cm}$인 정사각형 $ABCD$에서 두 점 $A,B$를 중심으로 하는 부채꼴을 각각 그린 것이다. 이때 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 과정을 서술하시오. (5점)",
     "choices": [],
     "answer": "둘레 $8+\\dfrac{16\\pi}{3}\\mathrm{cm}$, 넓이 $\\dfrac{64\\pi}{3}-16\\sqrt3\\mathrm{cm}^2$",
-    "solution": "따라서 $\\angle BAE=\\angle ABE=60^\\circ$입니다. 색칠한 부분의 경계는 길이 $8$인 선분 $AB$와 중심 $A,B$, 반지름 $8$, 중심각 $60^\\circ$인 두 원호로 이루어집니다. 원호 하나의 길이는 $2\\pi\\times8\\times\\frac{60}{360}=\\frac{8\\pi}{3}$이므로 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$입니다.\n\n색칠한 부분의 넓이는 반지름 $8$, 중심각 $60^\\circ$인 부채꼴 두 개의 넓이에서 정삼각형 $ABE$의 넓이를 뺀 것입니다.\n\n$2\\times\\pi\\times8^2\\times\\frac{60}{360}-\\frac12\\times8\\times8\\times\\frac{\\sqrt3}{2}=\\frac{64\\pi}{3}-16\\sqrt3$.\n\n따라서 구하는 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$이고 넓이는 $(\\frac{64\\pi}{3}-16\\sqrt3)\\mathrm{cm}^2$이다.",
+    "solution": "점 E는 중심이 A와 B이고 반지름이 8cm인 두 호의 교점이므로 $AE=BE=8\\mathrm{cm}$입니다. 정사각형의 한 변 $AB=8\\mathrm{cm}$이므로 $AB=AE=BE=8\\mathrm{cm}$이고, $\\triangle ABE$는 정삼각형입니다. 따라서 $\\angle BAE=\\angle ABE=60^\\circ$입니다. 색칠한 부분의 경계는 길이 $8$인 선분 $AB$와 중심 $A,B$, 반지름 $8$, 중심각 $60^\\circ$인 두 원호로 이루어집니다. 원호 하나의 길이는 $2\\pi\\times8\\times\\frac{60}{360}=\\frac{8\\pi}{3}$이므로 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$입니다.\n\n색칠한 부분의 넓이는 반지름 $8$, 중심각 $60^\\circ$인 부채꼴 두 개의 넓이에서 정삼각형 $ABE$의 넓이를 뺀 것입니다.\n\n$2\\times\\pi\\times8^2\\times\\frac{60}{360}-\\frac12\\times8\\times8\\times\\frac{\\sqrt3}{2}=\\frac{64\\pi}{3}-16\\sqrt3$.\n\n따라서 구하는 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$이고 넓이는 $(\\frac{64\\pi}{3}-16\\sqrt3)\\mathrm{cm}^2$이다.",
     "score": 5,
     "difficultyBucket": 5,
     "sourceQuestionNo": "3",
