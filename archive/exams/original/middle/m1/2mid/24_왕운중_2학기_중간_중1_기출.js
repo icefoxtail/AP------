@@ -320,7 +320,13 @@ window.questionBank = [
     "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q8.png",
     "imageSize": "tall",
     "content": "다음 중 두 직선 $l$, $m$에 대해 $l\\parallel m$인 것은? (4점)",
-    "choices": [],
+    "choices": [
+      "그림 ①",
+      "그림 ②",
+      "그림 ③",
+      "그림 ④",
+      "그림 ⑤"
+    ],
     "answer": "③",
     "solution": "평행선이면 같은 쪽 내각의 합이 $180^\\circ$이다.\n\n③에서\n$118^\\circ+62^\\circ=180^\\circ$\n\n따라서 ③의 두 직선이 평행하다.\n정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
