@@ -5,7 +5,7 @@
 }(typeof globalThis === 'undefined' ? this : globalThis, function createQuestionImageReadiness() {
     'use strict';
 
-    const QUESTION_IMAGE_SELECTOR = '.q-content img, [data-semantic-content="1"] img, .q-image-wrap img';
+    const QUESTION_IMAGE_SELECTOR = '.q-content img, [data-semantic-content="1"] img, .q-image-wrap img, .choices img';
     const DEFAULT_TIMEOUT_MS = 1200;
 
     function asList(value) {
