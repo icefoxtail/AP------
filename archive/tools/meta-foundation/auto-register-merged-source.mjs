@@ -60,15 +60,20 @@ export function planQuestion({question:q, previous, current, identity, registry,
   if (identity.status && identity.status!=='VERIFIED') return reject('UID_NOT_VERIFIED');
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if (identity.sourceQuestionNo!=null && String(identity.sourceQuestionNo)!==questionNo) return reject('SOURCE_ORDINAL_CHANGED');
+  if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
   if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
   if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous))) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
   const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
+  if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
+  const studentChanged=Boolean(previous&&!equal(pick(previous,STUDENT),pick(q,STUDENT)));
   const candidate={...current};
   // Absent source fields do not erase reviewed sidecars. Explicit changes are authoritative only for this UID.
   for(const k of FIELDS) if(Object.hasOwn(q,k)) {
     const changed=!previous||!equal(previous[k],q[k]);
+    const approved=current.reviewStatus==='reviewed_pass'||String(current.metadataStatus||'').startsWith('approved_');
+    if(changed&&approved&&candidate[k]!=null&&candidate[k]!==''&&!equal(candidate[k],previous?.[k])&&!equal(candidate[k],q[k]))return reject('FIELD_AUTHORITY_CONFLICT:'+k);
     if(changed || candidate[k]==null || candidate[k]==='') candidate[k]=structuredClone(q[k]);
   }
   if(!candidate.problemTypeKey||!candidate.templateKey) return reject('DECLARED_PT_TPL_MISSING');
@@ -89,7 +94,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
     metaFoundationPackId:pt.ownerPack,metaFoundationPackVersion:pack.version,
     metadataRegistrationStatus:'REGISTERED',metadataRegistrationBasis:'MAIN_MERGED_EXPLICIT_METADATA',
-    independentMathReviewStatus:current.independentMathReviewStatus||'NOT_PERFORMED_BY_AUTO_REGISTRAR',
+    independentMathReviewStatus:studentChanged?'NOT_PERFORMED_BY_AUTO_REGISTRAR':current.independentMathReviewStatus||'NOT_PERFORMED_BY_AUTO_REGISTRAR',
     l3Disposition:'ASSIGNED',l4Disposition:'ASSIGNED',curriculumApplicability:current.curriculumApplicability||'DEFAULT_SCOPE',
     defaultSelectable:current.defaultSelectable!==false};
   // Do not manufacture FINAL_QA/REVIEW2. Unchanged reviewed metadata retains its original authority.
@@ -100,7 +105,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
     final.tagStatus='review_required';
     final.metadataApprovalType='MAIN_MERGE';
     final.fieldStatus={...current.fieldStatus};
-    for(const f of ['standardUnit','subUnit','concept','problemType','template','crossConcept','condition','integrationPattern','difficulty']) final.fieldStatus[f]='registered_main_merge';
+    const groups={standardUnit:['standardCourse','standardUnitKey','standardUnit'],subUnit:['subUnitKey','subUnit'],concept:['L1','L2','L3','L4'],problemType:['problemTypeKey'],template:['templateKey'],crossConcept:['crossConceptKeys'],condition:['conditionKeys'],integrationPattern:['integrationPattern'],difficulty:['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility']};
+    for(const [field,keys] of Object.entries(groups))if(keys.some(k=>!equal(current[k],final[k])))final.fieldStatus[field]='registered_main_merge';
   }
   const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha});
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
@@ -167,12 +173,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const max=config.maxQuestionsPerRun||100;
   if(!Number.isInteger(max)||max<1||max>500)throw Error('BATCH_LIMIT_INVALID');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
+  let acted=0;
   for(let ti=0;ti<targets.length;ti++) {
     const [key,target]=targets[ti];
-    if(ti>=max){nextState.pending[key]=target;continue;}
+    if(acted>=max){nextState.pending[key]=target;continue;}
     const source=sourcePath(target.sourceArchiveFile),ordinal=Number(target.sourceOrdinal),rel=`archive/exams/${source}`;
     if(!Number.isInteger(ordinal)||ordinal<1)throw Error('INVALID_TARGET_ORDINAL');
-    let result;
+    let result,attempted=false;
     try {
       if(!banks.has(source)){
         const bytes=fs.readFileSync(path.join(root,rel));sourceHashes.set(rel,sha256(bytes));
@@ -190,7 +197,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         continue;
       }
-      target.attemptSignature=attemptSignature;
+      acted++;attempted=true;target.attemptSignature=attemptSignature;
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner:c.owners.get(id?.questionUid),priorReceipt:prior});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
@@ -224,11 +231,11 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         delete nextState.pending[key];
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
       } else nextState.pending[key]={...target,lastReasons:result.reasons};
-    }catch(e) { result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...target,lastReasons:result.reasons}; }
+    }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...target,lastReasons:result.reasons}; }
     report.results.push(result);
   }
   // A queued batch is durable in the SAME commit as its cursor. Missed events are caught up from this cursor.
-  if(sourceDelta||touched.size||targets.some(([,t])=>t.pilot&&!state.completedPilots?.includes(`${t.sourceArchiveFile}#${t.sourceOrdinal}`)))nextState.lastProcessedCommit=head;
+  if(sourceDelta||touched.size||acted&&targets.some(([,t])=>t.pilot&&!state.completedPilots?.includes(`${t.sourceArchiveFile}#${t.sourceOrdinal}`)))nextState.lastProcessedCommit=head;
   for(const row of c.metadata.records)if(!touched.has(row.questionUid)&&beforeRows.get(row.questionUid)!==hash(row))throw Error('UNRELATED_UID_MUTATION');
   for(const [rel,sha]of sourceHashes)if(sha256(fs.readFileSync(path.join(root,rel)))!==sha)throw Error('STUDENT_SOURCE_MUTATION');
   if(touched.size) {
