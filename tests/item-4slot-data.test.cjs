@@ -11,6 +11,13 @@ const path = require('path');
 const { loadExam } = require('../tools/4slot/exam-items.cjs');
 
 const root = path.resolve(__dirname, '..');
+
+// The legacy examData.questions source also exposes the same objects as questionBank.
+// Its stem field is `question`, not `content`; ensure the adapter preserves those stems.
+const yeonhyangSource = path.join(root, 'archive/exams/original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js');
+const yeonhyangItems = loadExam(yeonhyangSource);
+assert.strictEqual(yeonhyangItems.length, 24, 'Yeonhyang source denominator');
+assert.ok(yeonhyangItems.every(q => typeof q.stem === 'string' && q.stem.trim()), 'questionBank alias must load question stems from `question`');
 const dataDir = path.join(root, 'archive/data/item-4slot');
 const SCHEMA = 'archive-meta-4slot-compact-v1';
 const SLOTS = ['given', 'goal', 'method', 'condition'];
