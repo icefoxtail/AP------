@@ -14,7 +14,7 @@ function fixture(t){
  const dict={dictionaryVersion:'term-dict-v1.5-2026-11-04',terms:[{id:1,ko:'x'},{id:2,ko:'y'},{id:3,ko:'method'}]};
  const data={schemaVersion:'archive-meta-4slot-compact-v1',sourceArchiveFile:source,sourceGitBlobSha:mod.blob(js()),dictionaryVersion:dict.dictionaryVersion,evidence:{branch:'work/4slot',commit:'a'.repeat(40),path:'out/fixture.4slot.json'},reviewedBy:{agent:'existing-reviewer',at:'2026-11-05',sampled:[1]},items:bank.map(q=>({ordinal:q.id,format:'단일 정답',given:[1],goal:[2],method:[3],condition:[],candidates:[]}))};
  let identity={records:[]};
- function sync(){identity.records=bank.map((q,i)=>({questionUid:uid(i+1),sourceArchiveFile:source,sourceOrdinal:i+1,sourceQuestionNo:String(q.id),sourceFingerprint:mod.identityHash(q),status:'VERIFIED'}));save('archive/data/question_identity_map.json',identity);save('archive/exams/'+source,js());}
+ function sync(){identity.records=bank.map((q,i)=>({questionUid:uid(i+1),sourceArchiveFile:source,sourceOrdinal:i+1,sourceQuestionNo:String(q.id),sourceFingerprint:mod.identityHash(q)}));save('archive/data/question_identity_map.json',identity);save('archive/exams/'+source,js());}
  const write=()=>{save(rel,data);save('docs/architecture/4slot/term-dictionary-v1.5.json',dict);sync();};write();
  return {root,save,bank,data,dict,js,sync,write,get identity(){return identity;}};
 }
@@ -47,3 +47,5 @@ test('Git historical blob comparison works with a real local commit',t=>{const f
 
 test('independent check detects corrupt cached output instead of verifying itself',t=>{const f=fixture(t);mod.run(f.root,{write:true});const p=path.join(f.root,mod.OUTPUT),index=JSON.parse(fs.readFileSync(p));index.records[0].method=[1];f.save(mod.OUTPUT,index);assert.throws(()=>mod.run(f.root,{check:true}),/FOUR_SLOT_RUNTIME_DRIFT/);});
 test('a registered subset with stale rows is reported as supplementation, not full PASS',t=>{const f=fixture(t);f.data.items[0].method=[999];f.write();assert.equal(mod.run(f.root).status,'PASS_WITH_SUPPLEMENTS');});
+
+test('explicit invalid identity state is not treated as native unstated state',t=>{const f=fixture(t);f.identity.records[0].status='INVALID';f.save('archive/data/question_identity_map.json',f.identity);assert.equal(mod.build(f.root).index.counts.registered,1);});
