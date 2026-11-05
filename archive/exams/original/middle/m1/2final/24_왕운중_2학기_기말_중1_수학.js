@@ -46,7 +46,7 @@ window.questionBank = [
     "conceptClusterKey": "POLYGON_CIRCLE",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_VERTICAL_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
