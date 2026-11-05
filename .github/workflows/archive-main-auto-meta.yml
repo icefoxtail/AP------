@@ -1,0 +1,105 @@
+name: Archive Main Auto Metadata
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'archive/exams/**/*.js'
+      - 'archive/data/meta-foundation/canonical/**'
+      - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
+      - 'tools/ci/archive-main-auto-meta-pass.sh'
+      - '.archive-meta-register/auto/config.json'
+      - '.github/workflows/archive-main-auto-meta.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
+      - 'tools/ci/archive-main-auto-meta-pass.sh'
+      - 'tests/archive-main-merge-meta.test.mjs'
+      - '.archive-meta-register/auto/config.json'
+      - '.github/workflows/archive-main-auto-meta.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '43 * * * *'
+permissions:
+  contents: read
+jobs:
+  test:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tests/archive-main-merge-meta.test.mjs
+      - run: bash -n tools/ci/archive-main-auto-meta-pass.sh
+      - name: Real production dry-run (no writes)
+        run: node archive/tools/meta-foundation/auto-register-merged-source.mjs --report "${RUNNER_TEMP}/auto-meta-preview.json"
+  register:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      actions: write
+      issues: write
+    concurrency:
+      # Same lock as the existing reviewed registrar; no concurrent semantic writers.
+      # A durable cursor plus hourly catch-up also covers coalesced/cancelled pending events.
+      group: archive-reviewed-exam-meta-register-main
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regression checks
+        run: node --test tests/archive-main-merge-meta.test.mjs
+      - name: Register changed UIDs and verify actual consumer
+        run: bash tools/ci/archive-main-auto-meta-pass.sh
+      - name: Persist verified registration with race-safe regeneration
+        id: persist
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          node tools/ci/git-push-derived-with-retry.mjs \
+            --paths-file "${RUNNER_TEMP}/archive-main-auto-meta/commit.paths" \
+            --message 'chore(archive): auto-register merged metadata [skip ci]' \
+            --regenerate 'bash tools/ci/archive-main-auto-meta-pass.sh' \
+            --remote origin --branch main --max-attempts 3 \
+            --summary-file "$GITHUB_STEP_SUMMARY" --label 'main automatic metadata'
+      - name: Explicitly dispatch student release after bot persistence
+        if: steps.persist.outputs.result == 'PUSHED'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run archive-pages-release.yml --ref main
+      - name: Upload execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-auto-metadata-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-main-auto-meta/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Record unresolved infrastructure failure without changing source
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title='Archive main automatic metadata: recovery required';
+            const {owner,repo}=context.repo;
+            const body=`Automatic registration failed. No success is inferred.\n\nRun: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n\nThe hourly catch-up will retry from the last durable cursor. Student source files are never rewritten by this worker.`;
+            const all=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const old=all.find(i=>!i.pull_request&&i.title===title);
+            if(old) await github.rest.issues.createComment({owner,repo,issue_number:old.number,body});
+            else await github.rest.issues.create({owner,repo,title,body});
