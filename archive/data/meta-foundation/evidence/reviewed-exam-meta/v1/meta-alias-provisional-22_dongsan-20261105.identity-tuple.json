@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "SOURCE_INTAKE_IDENTITY_TUPLE_RECONCILIATION_v1",
+  "contractPath": ".agents/skills/apmath-source-intake-pipeline/references/school-normalization.md",
+  "contractSha256": "80f470d03a455530a2c83b3ce81458f138df9ca9812f4b077af2cdcebfa413c1",
+  "contractExcerpt": {
+    "identity": "Identity = (Year, NormalizedSchool, Grade, Term/Exam)",
+    "suffixRule": "Archive filenames may contain trailing `_c`, `c`, `기출`, `수학`, or minor spacing variants; these do NOT alter the identity tuple."
+  },
+  "record": {
+    "legacy": {
+      "filename": "22_동산중_1학기_중간_중3_수학.js",
+      "examDataId": "22_동산중_1학기_중간_중3_수학",
+      "title": "2022학년도 동산중학교 3학년 1학기 중간고사 수학",
+      "sha256": "521be814b410189013eb9a992ef3c2297c503fb592d25f7e3b4e299699d4aebc",
+      "bytes": 8802
+    },
+    "currentCanonical": {
+      "filename": "22_동산중_1학기_중간_중3_기출.js",
+      "windowExamTitle": "22_동산중_1학기_중간_중3_기출",
+      "sourceArchiveFile": "original/middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js",
+      "sha256": "8d5bc5e5174eb838eb8a5273b020d10ddcb86cd705ec7a985be91244611091b5",
+      "blobSha1": "57b8802ef08f378c82ef9886ec5b383ab37ec08f",
+      "bytes": 63400,
+      "questionCount": 25,
+      "uniqueFilesMatchingIdentityStem": [
+        "22_동산중_1학기_중간_중3_기출.js"
+      ],
+      "canonicalFileCount": 1,
+      "metadataRows": 25,
+      "identityRows": 25,
+      "uidRowsMatch": true,
+      "uniqueFilesMatchingTupleInEntireArchive": [
+        "middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js"
+      ],
+      "metadataStatusCounts": {
+        "registration_pending_semantic_review": 25
+      }
+    },
+    "identityTuple": {
+      "year": 2022,
+      "normalizedSchool": "동산중",
+      "sourceHeaderSchoolText": "동산중학교",
+      "grade": "m3",
+      "termExam": "1mid",
+      "legacyFilenameSuffix": "수학",
+      "currentCanonicalFilenameSuffix": "기출",
+      "suffixInvariantContract": ".agents/skills/apmath-source-intake-pipeline/references/school-normalization.md §4; `기출` and `수학` suffixes do not alter tuple",
+      "tupleMatch": true
+    },
+    "exactSourceExamId": {
+      "legacyCaseId": "22_동산중_1학기_중간_중3_수학",
+      "currentQ1SourceExamId": "22_동산중_1학기_중간_중3_수학",
+      "match": true
+    },
+    "changedQuestionContentOrChoices": [
+      {
+        "ordinal": 1,
+        "contentMatch": false,
+        "choicesMatch": false,
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "sourceExamId": "22_동산중_1학기_중간_중3_수학"
+      }
+    ],
+    "sourceVersionAndMetadata": {
+      "legacySourceSha256": "521be814b410189013eb9a992ef3c2297c503fb592d25f7e3b4e299699d4aebc",
+      "currentSourceSha256": "8d5bc5e5174eb838eb8a5273b020d10ddcb86cd705ec7a985be91244611091b5",
+      "sourceShaEqual": false,
+      "fullStudentFieldParity": "FALSE: legacy source-only answer/solution fields are blank while current canonical source contains answers and solutions.",
+      "legacyAuditMetadataCarryForward": "NOT_VERIFIED; original audit remains a legacy reference only."
+    },
+    "studentFieldParity": {
+      "status": "FALSE_OR_UNVERIFIED",
+      "detail": "legacy source-only answer/solution fields are blank while current canonical source carries answers/solutions; family tuple match is not full student-field parity",
+      "metadataCarryForward": "NOT_VERIFIED"
+    }
+  }
+}

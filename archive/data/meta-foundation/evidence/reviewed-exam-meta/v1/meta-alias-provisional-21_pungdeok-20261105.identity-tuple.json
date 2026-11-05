@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "SOURCE_INTAKE_IDENTITY_TUPLE_RECONCILIATION_v1",
+  "contractPath": ".agents/skills/apmath-source-intake-pipeline/references/school-normalization.md",
+  "contractSha256": "80f470d03a455530a2c83b3ce81458f138df9ca9812f4b077af2cdcebfa413c1",
+  "contractExcerpt": {
+    "identity": "Identity = (Year, NormalizedSchool, Grade, Term/Exam)",
+    "suffixRule": "Archive filenames may contain trailing `_c`, `c`, `기출`, `수학`, or minor spacing variants; these do NOT alter the identity tuple."
+  },
+  "record": {
+    "legacy": {
+      "filename": "21_풍덕중_1학기_중간_중3_수학.js",
+      "examDataId": "21_풍덕중_1학기_중간_중3_수학",
+      "title": "2021학년도 풍덕중학교 3학년 1학기 중간고사 수학",
+      "sha256": "2205083e9190ff78c28d398a69eff56fe6690dd6c7553d4c457a2763268bcf8b",
+      "bytes": 12377
+    },
+    "currentCanonical": {
+      "filename": "21_풍덕중_1학기_중간_중3_기출.js",
+      "windowExamTitle": "21_풍덕중_1학기_중간_중3_기출",
+      "sourceArchiveFile": "original/middle/m3/1mid/21_풍덕중_1학기_중간_중3_기출.js",
+      "sha256": "c1ddd4e9045efc7553afdf77060da9781e84f1778dd8e92ff057e7468c3daa06",
+      "blobSha1": "a88b2897c73e9efb813b5174dc5d17e058e6d196",
+      "bytes": 40492,
+      "questionCount": 25,
+      "uniqueFilesMatchingIdentityStem": [
+        "21_풍덕중_1학기_중간_중3_기출.js"
+      ],
+      "canonicalFileCount": 1,
+      "metadataRows": 25,
+      "identityRows": 25,
+      "uidRowsMatch": true,
+      "uniqueFilesMatchingTupleInEntireArchive": [
+        "middle/m3/1mid/21_풍덕중_1학기_중간_중3_기출.js"
+      ],
+      "metadataStatusCounts": {
+        "registration_pending_semantic_review": 25
+      }
+    },
+    "identityTuple": {
+      "year": 2021,
+      "normalizedSchool": "풍덕중",
+      "sourceHeaderSchoolText": "풍덕중학교",
+      "grade": "m3",
+      "termExam": "1mid",
+      "legacyFilenameSuffix": "수학",
+      "currentCanonicalFilenameSuffix": "기출",
+      "suffixInvariantContract": ".agents/skills/apmath-source-intake-pipeline/references/school-normalization.md §4; `기출` and `수학` suffixes do not alter tuple",
+      "tupleMatch": true
+    },
+    "exactSourceExamId": {
+      "legacyCaseId": "21_풍덕중_1학기_중간_중3_수학",
+      "currentQ1SourceExamId": null,
+      "match": false
+    },
+    "changedQuestionContentOrChoices": [
+      {
+        "ordinal": 9,
+        "contentMatch": false,
+        "choicesMatch": false,
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "sourceExamId": null
+      },
+      {
+        "ordinal": 10,
+        "contentMatch": false,
+        "choicesMatch": true,
+        "sourceMode": "AUDITED_REPAIR",
+        "sourceExamId": null
+      },
+      {
+        "ordinal": 19,
+        "contentMatch": false,
+        "choicesMatch": true,
+        "sourceMode": "AUDITED_REPAIR",
+        "sourceExamId": null
+      },
+      {
+        "ordinal": 20,
+        "contentMatch": false,
+        "choicesMatch": true,
+        "sourceMode": "AUDITED_REPAIR",
+        "sourceExamId": null
+      }
+    ],
+    "sourceVersionAndMetadata": {
+      "legacySourceSha256": "2205083e9190ff78c28d398a69eff56fe6690dd6c7553d4c457a2763268bcf8b",
+      "currentSourceSha256": "c1ddd4e9045efc7553afdf77060da9781e84f1778dd8e92ff057e7468c3daa06",
+      "sourceShaEqual": false,
+      "fullStudentFieldParity": "FALSE: legacy source-only answer/solution fields are blank while current canonical source contains answers and solutions.",
+      "legacyAuditMetadataCarryForward": "NOT_VERIFIED; original audit remains a legacy reference only."
+    },
+    "studentFieldParity": {
+      "status": "FALSE_OR_UNVERIFIED",
+      "detail": "legacy source-only answer/solution fields are blank while current canonical source carries answers/solutions; family tuple match is not full student-field parity",
+      "metadataCarryForward": "NOT_VERIFIED"
+    }
+  }
+}
