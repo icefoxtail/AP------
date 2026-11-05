@@ -4,52 +4,81 @@ on:
     branches: ['ops/4slot-full-import-20261105']
     paths: ['.github/workflows/4slot-full-import-once.yml']
 permissions:
-  contents: read
+  contents: write
 jobs:
   inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Collect exact historical source objects without changing input
+      - name: Import pinned authored results on latest main without merging author history
         env:
-          AUTHOR_SHA: e7aab2467ecad89b07442f3e2889ddaa889f5eb1
+          RELEASE_BRANCH: data/4slot-full-import-e7aab246-20261105
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/4slot-history"
-          node <<'JS'
-          const fs=require('fs'),path=require('path'),cp=require('child_process'),vm=require('vm');
-          const out=process.env.RUNNER_TEMP+'/4slot-history',ref=process.env.AUTHOR_SHA;
-          const git=(...a)=>cp.execFileSync('git',a,{encoding:'utf8',maxBuffer:128*1024*1024,stdio:['ignore','pipe','pipe']});
-          const queue=JSON.parse(git('show',ref+':archive-work/4slot-annotate-v1/QUEUE-original.json'));
-          const qmap=new Map(queue.list.map(r=>[r.path,r]));
-          const prefix='archive-work/4slot-annotate-v1/out/';
-          const files=git('ls-tree','-rz','--name-only',ref,'--',prefix).split('\0').filter(p=>p.endsWith('.4slot.json'));
-          const load=s=>{const ctx={window:{}};vm.createContext(ctx);vm.runInContext(s,ctx,{timeout:3000});return ctx.window.questionBank||ctx.window.examData?.questions||ctx.window.questions;};
-          const rows=[];
-          for(const f of files){
-            const source=f.slice(prefix.length).replace(/\.4slot\.json$/,'.js'),current='archive/exams/'+source;
-            const authored=JSON.parse(git('show',ref+':'+f)),baseline=qmap.get(source)?.blob||authored.sourceGitBlobSha;
-            const now=git('hash-object',current).trim();if(now===baseline)continue;
-            const row={source,baseline,current:now};
-            try{const old=git('cat-file','blob',baseline);const p=path.join(out,'historical',source);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,old);
-              const a=load(old),b=load(fs.readFileSync(current,'utf8'));
-              const fields=['content','question','choices','answer','solution','image','images','figureSvg','solutionImage','solutionFigureSvg'];row.changed=[];
-              for(let i=0;i<Math.max(a.length,b.length);i++){const changed=fields.filter(k=>JSON.stringify(a[i]?.[k]??null)!==JSON.stringify(b[i]?.[k]??null));if(changed.length)row.changed.push({ordinal:i+1,no:b[i]?.id??b[i]?.number,fields:changed,before:Object.fromEntries(changed.map(k=>[k,a[i]?.[k]??null])),after:Object.fromEntries(changed.map(k=>[k,b[i]?.[k]??null]))});}
-            }catch(e){row.error=String(e.message);}rows.push(row);
-          }
-          fs.writeFileSync(out+'/deltas.json',JSON.stringify(rows,null,2));console.log(JSON.stringify(rows.map(r=>({source:r.source,changed:r.changed?.map(x=>({ordinal:x.ordinal,fields:x.fields})),error:r.error})),null,2));
+          export RELEASE_EVIDENCE_DIR="$RUNNER_TEMP/4slot-full-release"
+          mkdir -p "$RELEASE_EVIDENCE_DIR"
+          cp .github/4slot-release.patch.b64 "$RUNNER_TEMP/4slot-release.patch.b64"
+          cp .github/4slot-full-release.cjs "$RUNNER_TEMP/4slot-full-release.cjs"
+          python - <<'PY'
+          import os,base64,zlib,hashlib
+          p=os.environ['RUNNER_TEMP']
+          s=open(p+'/4slot-release.patch.b64').read().strip()
+          s=s.replace('aKeKp3q2i29','aKeKp3qWIxTq2i29')
+          b=zlib.decompress(base64.b64decode(s,validate=True))
+          assert hashlib.sha256(b).hexdigest()=='71eb97aefc4a3eb812408e42884212516dedcf040d3c8d28becf4d1eee7d8d2a','PATCH_TRANSFER_HASH_MISMATCH'
+          open(p+'/4slot-release.patch','wb').write(b)
+          PY
+          git fetch origin main
+          if git ls-remote --exit-code --heads origin "$RELEASE_BRANCH" >/dev/null; then
+            echo 'Release branch already exists; refusing to overwrite.' >&2
+            exit 1
+          fi
+          git switch -c "$RELEASE_BRANCH" origin/main
+          git apply --check "$RUNNER_TEMP/4slot-release.patch"
+          git apply "$RUNNER_TEMP/4slot-release.patch"
+          node "$RUNNER_TEMP/4slot-full-release.cjs" | tee "$RELEASE_EVIDENCE_DIR/prepare.log"
+          node --test tests/item-4slot-runtime.test.cjs > "$RELEASE_EVIDENCE_DIR/regression.log"
+          node tests/item-4slot-data.test.cjs | tee "$RELEASE_EVIDENCE_DIR/data-test.log"
+          node tools/4slot/build-4slot-runtime.cjs --write --report "$RELEASE_EVIDENCE_DIR/register.json" > "$RELEASE_EVIDENCE_DIR/register.log"
+          node tools/4slot/build-4slot-runtime.cjs --check --report "$RELEASE_EVIDENCE_DIR/check.json" > "$RELEASE_EVIDENCE_DIR/check.log"
+          node tools/4slot/build-4slot-runtime.cjs --write --report "$RELEASE_EVIDENCE_DIR/replay.json" > "$RELEASE_EVIDENCE_DIR/replay.log"
+          node - "$RELEASE_EVIDENCE_DIR" <<'JS'
+          const fs=require('fs'),p=process.argv[2];
+          const read=n=>JSON.parse(fs.readFileSync(p+'/'+n+'.json'));
+          for(const n of ['register','check','replay']){const x=read(n);if(x.counts.registered!==8129||x.counts.pending!==0||x.counts.files!==358)throw Error('FULL_IMPORT_INCOMPLETE:'+n);}
+          if(read('replay').changed!==false)throw Error('NON_IDEMPOTENT_IMPORT');
+          console.log('ALL_8129_REGISTERED_CONSUMER_VERIFIED_NO_DUPLICATE');
           JS
-          tar -czf "$RUNNER_TEMP/4slot-history.tgz" -C "$RUNNER_TEMP/4slot-history" .
+          # The official main automation owns generated runtime/index. Publish only compact inputs and compatibility code.
+          git restore -- archive/data/item-4slot-index.json
+          git diff --exit-code -- archive/exams archive/data/question_metadata.json archive/data/question_identity_map.json
+          git diff --check
+          git add -- archive/data/item-4slot tools/4slot/exam-items.cjs tools/4slot/build-4slot-runtime.cjs tools/4slot/import-4slot.cjs tests/item-4slot-data.test.cjs tests/item-4slot-import-compat.test.cjs tests/item-4slot-runtime.test.cjs
+          git diff --cached --name-only > "$RELEASE_EVIDENCE_DIR/changed-files.txt"
+          git diff --cached --stat > "$RELEASE_EVIDENCE_DIR/diff-stat.txt"
+          python - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')
+          code={'tools/4slot/exam-items.cjs','tools/4slot/build-4slot-runtime.cjs','tools/4slot/import-4slot.cjs','tests/item-4slot-data.test.cjs','tests/item-4slot-import-compat.test.cjs','tests/item-4slot-runtime.test.cjs'}
+          bad=[p for p in paths if p and not(p.startswith('archive/data/item-4slot/') and p.endswith('.4slot.json')) and p not in code]
+          assert not bad,bad
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat(4slot): import all 358 authored exams with source-bound compact metadata'
+          git push origin "HEAD:refs/heads/$RELEASE_BRANCH"
+          git rev-parse HEAD > "$RELEASE_EVIDENCE_DIR/release-head.txt"
+          git ls-remote origin "refs/heads/$RELEASE_BRANCH" > "$RELEASE_EVIDENCE_DIR/remote-head.txt"
+          test "$(cut -f1 "$RELEASE_EVIDENCE_DIR/remote-head.txt")" = "$(cat "$RELEASE_EVIDENCE_DIR/release-head.txt")"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: 4slot-history
-          path: ${{ runner.temp }}/4slot-history.tgz
-          retention-days: 7
+          name: 4slot-full-release
+          path: ${{ runner.temp }}/4slot-full-release/
+          retention-days: 14
