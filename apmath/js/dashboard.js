@@ -995,20 +995,43 @@ function openGlobalExamGradeView() {
 }
 
 function openOperationMenu() {
-    const isOnline = navigator.onLine;
     const qLen = typeof syncQueue !== 'undefined' ? syncQueue.length : 0;
     const syncStatusText = qLen > 0 ? `대기 ${qLen}건` : '대기 없음';
-    const onlineStatusText = isOnline ? '연결됨' : '오프라인';
 
     showModal('시스템·동기화 상태', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><span style="color:${isOnline ? 'var(--success)' : 'var(--error)'}; font-weight:500;">${onlineStatusText}</span></div>
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><span style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}; font-weight:500;">${syncStatusText}</span></div>
-                <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:500; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>서버 연결</span><span id="sync-connection-status" style="font-weight:500;">확인 중</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>미전송 데이터</span><span id="sync-queue-count" style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}; font-weight:500;">${syncStatusText}</span></div>
+                <div id="sync-result" style="font-size:12px; margin-bottom:12px; color:var(--secondary);"></div>
+                <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:500; padding:12px; border-radius:10px;" onclick="syncQueueFromStatus()">지금 동기화 시도</button>
             </div>
         </div>
     `);
+    refreshOperationConnectionStatus();
+}
+
+async function refreshOperationConnectionStatus() {
+    const node = document.getElementById('sync-connection-status');
+    if (!node) return;
+    const result = await api.checkConnectivity();
+    if (!document.getElementById('sync-connection-status')) return;
+    node.textContent = result.reachable ? '서버 응답 확인' : '연결 확인 실패';
+    node.style.color = result.reachable ? 'var(--success)' : 'var(--error)';
+}
+
+async function syncQueueFromStatus() {
+    const resultNode = document.getElementById('sync-result');
+    if (resultNode) resultNode.textContent = '동기화 중…';
+    const result = await processSyncQueue();
+    const countNode = document.getElementById('sync-queue-count');
+    if (countNode) countNode.textContent = result?.pending ? `대기 ${result.pending}건` : '대기 없음';
+    if (resultNode) resultNode.textContent = result?.synced
+        ? `${result.synced}건 동기화 완료${result.pending ? ` · ${result.pending}건 보류` : ''}`
+        : result?.authFailure ? '로그인 또는 권한을 확인해 주세요. 대기 데이터는 보존했습니다.'
+        : result?.pending ? `${result.pending}건 대기 중 · 연결 후 다시 시도할 수 있습니다.`
+        : '동기화할 데이터가 없습니다.';
+    await refreshOperationConnectionStatus();
 }
 
 function getClassGradeRank(grade) {
