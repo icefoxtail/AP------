@@ -32,7 +32,11 @@ jobs:
           s=s.replace('aKeKp3q2i29','aKeKp3qWIxTq2i29')
           b=zlib.decompress(base64.b64decode(s,validate=True))
           assert hashlib.sha256(b).hexdigest()=='71eb97aefc4a3eb812408e42884212516dedcf040d3c8d28becf4d1eee7d8d2a','PATCH_TRANSFER_HASH_MISMATCH'
-          open(p+'/4slot-release.patch','wb').write(b)
+          marker=b'--- a/tests/item-4slot-runtime.test.cjs\n'
+          assert b.count(marker)==1,'TEST_INCLUDE_PATCH_NOT_UNIQUE'
+          body,tail=b.split(marker)
+          assert tail==b"+++ b/tests/item-4slot-runtime.test.cjs\n@@ -1,1 +1,2 @@\n 'use strict';\n+require('./item-4slot-import-compat.test.cjs');\n",'UNEXPECTED_TEST_PATCH'
+          open(p+'/4slot-release.patch','wb').write(body)
           PY
           git fetch origin main
           if git ls-remote --exit-code --heads origin "$RELEASE_BRANCH" >/dev/null; then
@@ -42,6 +46,14 @@ jobs:
           git switch -c "$RELEASE_BRANCH" origin/main
           git apply --check "$RUNNER_TEMP/4slot-release.patch"
           git apply "$RUNNER_TEMP/4slot-release.patch"
+          python - <<'PY'
+          p='tests/item-4slot-runtime.test.cjs'
+          b=open(p,'rb').read()
+          head=b"'use strict';\n"
+          include=b"require('./item-4slot-import-compat.test.cjs');\n"
+          assert b.startswith(head) and include not in b,'TEST_ENTRYPOINT_CHANGED'
+          open(p,'wb').write(head+include+b[len(head):])
+          PY
           node "$RUNNER_TEMP/4slot-full-release.cjs" | tee "$RELEASE_EVIDENCE_DIR/prepare.log"
           node --test tests/item-4slot-runtime.test.cjs > "$RELEASE_EVIDENCE_DIR/regression.log"
           node tests/item-4slot-data.test.cjs | tee "$RELEASE_EVIDENCE_DIR/data-test.log"
@@ -55,7 +67,6 @@ jobs:
           if(read('replay').changed!==false)throw Error('NON_IDEMPOTENT_IMPORT');
           console.log('ALL_8129_REGISTERED_CONSUMER_VERIFIED_NO_DUPLICATE');
           JS
-          # The official main automation owns generated runtime/index. Publish only compact inputs and compatibility code.
           git restore -- archive/data/item-4slot-index.json
           git diff --exit-code -- archive/exams archive/data/question_metadata.json archive/data/question_identity_map.json
           git diff --check
