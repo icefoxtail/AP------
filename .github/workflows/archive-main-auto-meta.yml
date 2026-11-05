@@ -12,6 +12,7 @@ on:
       - 'archive/item-4slot.js'
       - 'tools/4slot/build-4slot-runtime.cjs'
       - 'tools/ci/archive-four-slot-pass.sh'
+      - 'tools/ci/main-meta-input-scope.mjs'
       - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
       - 'tools/ci/archive-main-auto-meta-pass.sh'
       - '.archive-meta-register/auto/config.json'
@@ -24,7 +25,9 @@ on:
       - 'archive/item-4slot.js'
       - 'tools/4slot/build-4slot-runtime.cjs'
       - 'tools/ci/archive-four-slot-pass.sh'
+      - 'tools/ci/main-meta-input-scope.mjs'
       - 'tests/item-4slot-runtime.test.cjs'
+      - 'tests/main-meta-input-scope.test.mjs'
       - 'tests/item-4slot-data.test.cjs'
       - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
       - 'tools/ci/archive-main-auto-meta-pass.sh'
@@ -48,7 +51,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs
+      - run: node --test tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs tests/main-meta-input-scope.test.mjs
       - run: node tests/item-4slot-data.test.cjs
       - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/archive-four-slot-pass.sh
       - name: Real production dry-run (no writes)
@@ -86,15 +89,7 @@ jobs:
           node-version: 22
       - name: Detect semantic inputs from the triggering event
         id: scope
-        run: |
-          node --input-type=module <<'JS'
-          import fs from 'node:fs';
-          import {pushTouchesPaths} from './tools/ci/push-touches-paths.mjs';
-          let event=null;try{event=JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,'utf8'));}catch{}
-          const patterns=[/^archive\/exams\/.*\.js$/, /^archive\/data\/meta-foundation\/canonical\//, /^archive\/tools\/meta-foundation\/auto-register-merged-source\.mjs$/, /^tools\/ci\/archive-main-auto-meta-pass\.sh$/, /^\.archive-meta-register\/auto\/config\.json$/, /^\.github\/workflows\/archive-main-auto-meta\.yml$/];
-          const needed=process.env.GITHUB_EVENT_NAME==='push'&&!event?true:pushTouchesPaths({event,eventName:process.env.GITHUB_EVENT_NAME,patterns,uncertain:true,nonPush:true});
-          fs.appendFileSync(process.env.GITHUB_OUTPUT,`needed=${needed}\n`);
-          JS
+        run: node tools/ci/main-meta-input-scope.mjs
       - uses: actions/setup-python@v5
         if: steps.scope.outputs.needed == 'true'
         with:
