@@ -25,7 +25,15 @@ var examData = window.examData = {
       "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q1-solution.svg",
       "solutionImageAlt": "단위원에서 sin x=-1/2인 점은 직선 y=-1/2 위의 제3사분면의 점 P(x=7π/6)와 제4사분면의 점 Q(x=11π/6)이다.",
       "solutionImageCaption": "단위원에서 sin x=-1/2인 점은 직선 y=-1/2 위의 제3사분면의 점 P(x=7π/6)와 제4사분면의 점 Q(x=11π/6)이다.",
-      "solutionImageSize": "full"
+      "solutionImageSize": "full",
+      "standardCourse": "수학I",
+      "standardUnitKey": "H15-M1-07",
+      "standardUnit": "삼각함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "subUnit": "삼각방정식",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS"
     },
     {
       "id": 2,

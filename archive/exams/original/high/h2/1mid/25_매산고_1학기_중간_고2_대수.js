@@ -7,9 +7,9 @@ window.questionBank = [
     "category": "부채꼴의 호의 길이와 넓이",
     "originalCategory": "삼각함수",
     "standardCourse": "대수",
-    "standardUnitKey": "H15-M1-05",
-    "standardUnit": "삼각함수의 뜻과 값",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "H22-A-04",
+    "standardUnit": "삼각함수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -33,10 +33,12 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "부채꼴의 호의 길이와 넓이 공식을 이용한다.\n\n- 호의 길이 $l = \\pi$\n- 넓이 $S = 4\\pi$\n\n부채꼴의 넓이 공식 $S = \\frac{1}{2}rl$에 주어진 값을 대입한다.\n$4\\pi = \\frac{1}{2}r(\\pi)$\n양변을 $\\pi$로 나누고 $2$를 곱하면 $r = 8$이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
-    "subUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+    "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+    "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096"
   },
   {
     "id": 2,
