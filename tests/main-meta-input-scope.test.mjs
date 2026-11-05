@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {needsSemanticRegistration as needs} from '../tools/ci/main-meta-input-scope.mjs';
+const event={before:'a'.repeat(40),after:'b'.repeat(40),commits:[{id:'b'.repeat(40)}]};
+test('omitted per-commit file arrays use real push diff',()=>assert.equal(needs({event,eventName:'push',gitDiff:()=>['archive/exams/original/a.js']}),true));
+test('compact-only diff skips semantic pass',()=>assert.equal(needs({event,eventName:'push',gitDiff:()=>['archive/data/item-4slot/original/a.4slot.json']}),false));
+test('configuration and workflow updates run semantic checks',()=>{for(const p of ['.github/workflows/archive-main-auto-meta.yml','.archive-meta-register/auto/config.json','tools/ci/main-meta-input-scope.mjs'])assert.equal(needs({event,eventName:'push',gitDiff:()=>[p]}),true);});
+test('mixed compact and source edits cannot drop semantic update',()=>assert.equal(needs({event,eventName:'push',gitDiff:()=>['archive/data/item-4slot/a.json','archive/exams/a.js']}),true));
+test('unavailable diff and partial payload fail open to a safe pass',()=>assert.equal(needs({event,eventName:'push',gitDiff:()=>null}),true));
+test('complete non-semantic payload can prove a skip when diff unavailable',()=>assert.equal(needs({event:{commits:[{added:['archive/data/item-4slot/a.json'],modified:[],removed:[]}]},eventName:'push',gitDiff:()=>null}),false));
+test('scheduled and manual recovery never skip semantic catch-up',()=>{for(const eventName of ['schedule','workflow_dispatch'])assert.equal(needs({event,eventName,gitDiff:()=>[]}),true);});
+test('forced or truncated push payload is never treated as complete',()=>{for(const e of [{forced:true,commits:[{added:[],modified:[],removed:[]}]},{commits:Array.from({length:20},()=>({added:[],modified:[],removed:[]}))}])assert.equal(needs({event:e,eventName:'push',gitDiff:()=>null}),true);});
