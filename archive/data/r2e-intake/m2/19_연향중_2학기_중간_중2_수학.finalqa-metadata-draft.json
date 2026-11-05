@@ -1,0 +1,3631 @@
+{
+  "schemaVersion": "archive-meta-finalqa-review-draft-v1",
+  "sourceArchiveFile": "original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "57c2e51b7dfd66365a016de3dbf0299003c9a97d",
+  "sourceReportDriveId": "1OXfbx0yJ3osYHrNWJnxTpfDmFF5UCxkOSPTPH3fw8D0",
+  "questionCount": 24,
+  "writer": {
+    "agent": "gpt-6-luna",
+    "at": "2026-11-05"
+  },
+  "reviewer": {
+    "agent": "codex-root",
+    "at": "2026-11-05",
+    "status": "REPAIRED_AWAITING_FINAL_QA",
+    "scope": "24/24 current question, answer, solution, visual map, and metadata; changed QIDs explicitly listed in correctionRationale",
+    "evidence": "Current JS/assets directly reviewed; source scan used only where a clipped asset omitted needed labels. Targeted calculation and source/asset binding recorded per correctionRationale."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": 1,
+      "questionUid": "qid_v1_d65cf23f05d8ce08128c0dba9f90da2d25ac791801a06d49acd3c350a21d36c3",
+      "identityQuestionUid": "qid_v1_d65cf23f05d8ce08128c0dba9f90da2d25ac791801a06d49acd3c350a21d36c3",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "d9cdedaad5aa442fe179da77b8f143dbc8bc5de663aaf171453c869ad80ccb3c",
+        "contentFingerprint": "98681a98180962e8abddba95040e763567235df4d4bfe5e455a07ad4b6035017",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "98681a98180962e8abddba95040e763567235df4d4bfe5e455a07ad4b6035017"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d9cdedaad5aa442fe179da77b8f143dbc8bc5de663aaf171453c869ad80ccb3c"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q01.png",
+            "sha256": "69e1759cbc494023caa6fa8946a5e80c6c2ce3ecba1f6f6263ea3d5c6b6b400a"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "이등변삼각형",
+          "L3": "이등변삼각형의 성질",
+          "L4": "꼭짓각의 이등분선",
+          "parentChain": [
+            "삼각형의 성질",
+            "이등변삼각형",
+            "이등변삼각형의 성질",
+            "꼭짓각의 이등분선"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-061"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_ISOSCELES_TRIANGLE → TPL_ISOSCELES_VERTEX_BISECTOR. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q1: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-061"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "이등변삼각형",
+          "L3": "이등변삼각형의 성질",
+          "L4": "꼭짓각의 이등분선"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+          "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+          "evidenceSha": "sha256:6fbdaba04b08f8d844bc5f4b0407fbf62dc933676f7f279614162f04aa1f3315",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 1,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 1
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": 2,
+      "questionUid": "qid_v1_6d8197c750a9569c2c4a6775c41372c1711f943f11a93af73d5966f3324de1a6",
+      "identityQuestionUid": "qid_v1_6d8197c750a9569c2c4a6775c41372c1711f943f11a93af73d5966f3324de1a6",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "47b0c6ba13de361d967d5a43fcfeee45bc10287b28025e51fb20f7aaaceb684d",
+        "contentFingerprint": "3a8e42a0cd62cb21646a863bfeeb6b0c2d069276a12f2fe173780a4a2ef86d16",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a8e42a0cd62cb21646a863bfeeb6b0c2d069276a12f2fe173780a4a2ef86d16"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "47b0c6ba13de361d967d5a43fcfeee45bc10287b28025e51fb20f7aaaceb684d"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q03.png",
+            "sha256": "fed7867de23c243ddbe4dc2f7b495e1dd84e0271f3635200750cfe1209544050"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "이등변삼각형",
+          "L3": "이등변삼각형의 성질",
+          "L4": "밑각",
+          "parentChain": [
+            "삼각형의 성질",
+            "이등변삼각형",
+            "이등변삼각형의 성질",
+            "밑각"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-060"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_ISOSCELES_TRIANGLE → TPL_ISOSCELES_BASE_ANGLES. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q2: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-060"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "이등변삼각형",
+          "L3": "이등변삼각형의 성질",
+          "L4": "밑각"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+          "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+          "evidenceSha": "sha256:cecd0586aea04d86d56d5064d498188ad7fbb2bcaccc97726f2d87bda0575801",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 1,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 1
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": 3,
+      "questionUid": "qid_v1_f4b142a01ef59435a010c62a905a551bdbef849de5ce2fe9f44a6b34060b159b",
+      "identityQuestionUid": "qid_v1_f4b142a01ef59435a010c62a905a551bdbef849de5ce2fe9f44a6b34060b159b",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "50270ced5774fc7d8f7d4c6c773ecd635a6aa8a7e66c50b6c920f1095aef0f12",
+        "contentFingerprint": "7eb89a20771a6bb74e978d87e6e8e98290ed18e5483c192e0fd73095c9244f87",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7eb89a20771a6bb74e978d87e6e8e98290ed18e5483c192e0fd73095c9244f87"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "50270ced5774fc7d8f7d4c6c773ecd635a6aa8a7e66c50b6c920f1095aef0f12"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q04.png",
+            "sha256": "79f698e2f3ea5debe49360993408c14276f2a610fb91e29046ee9023e086dd27"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외심",
+          "L4": "외심의 위치·각",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "외심",
+            "외심의 위치·각"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-065"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_CIRCUMCENTER. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q3: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-065"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외심",
+          "L4": "외심의 위치·각"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+          "evidenceSha": "sha256:0be108c4ffeb6dd79a23cc818865378758b9ad1bd7c6e50bfb7e7fc38df6b496",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 1,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 1
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": 4,
+      "questionUid": "qid_v1_b98276d57e40d8c7e78ac5b097116774f6ae98ecc4e1fe39d9a2f8596fcce147",
+      "identityQuestionUid": "qid_v1_b98276d57e40d8c7e78ac5b097116774f6ae98ecc4e1fe39d9a2f8596fcce147",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "d87ac97e9061ed2759303792c40651009b2be406127857319bd9bd5823882747",
+        "contentFingerprint": "6d449b5cfaa780582d81b39cd9f94f9854727246a31fbe4ce4a0b6e470e9d269",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d449b5cfaa780582d81b39cd9f94f9854727246a31fbe4ce4a0b6e470e9d269"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d87ac97e9061ed2759303792c40651009b2be406127857319bd9bd5823882747"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q05.png",
+            "sha256": "00401d7c298e156d037ab4f1a332baf10895c947d8a0e18bd62946158969cc56"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외심",
+          "L4": "외심의 위치·각",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "외심",
+            "외심의 위치·각"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-065"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_CIRCUMCENTER. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q4: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-065"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외심",
+          "L4": "외심의 위치·각"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+          "evidenceSha": "sha256:d156a95cef2f0055a1770c078e19453ba4e7c00c4dd99045dd6267fdf74ae0d3",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 1,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 1
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": 5,
+      "questionUid": "qid_v1_0a4400f6dd3fcd891031d398e635b1644629d85abeb3a4a926556bc5eaef06c3",
+      "identityQuestionUid": "qid_v1_0a4400f6dd3fcd891031d398e635b1644629d85abeb3a4a926556bc5eaef06c3",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "4d8bc88309296b76f6819ebca031c7afd44d80ea04d64ad66a84a6d46f427f40",
+        "contentFingerprint": "9fdab1b79f945c9ed6a925ad739259f33a3b1eec0b5de5dbaca6dc61f80f7dd7",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9fdab1b79f945c9ed6a925ad739259f33a3b1eec0b5de5dbaca6dc61f80f7dd7"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d8bc88309296b76f6819ebca031c7afd44d80ea04d64ad66a84a6d46f427f40"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q05_incenter.png",
+            "sha256": "ec8c7bada0fb707d8fc00fec148d6f52c7cebffe91d882376ebe0c0233340aac"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "내심",
+          "L4": "내심과 거리",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "내심",
+            "내심과 거리"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-067"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_NONE",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_INCENTER. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q5: no distinct active secondary concept or condition-registry key is required by the reviewed solution. NONE records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-067"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "내심",
+          "L4": "내심과 거리"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_INCENTER",
+          "evidenceSha": "sha256:3d49f14ad2fabfd8fb607d50056d72c692b73b201b6664e2c4b5cbefd2520159",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 2,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 2
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": 6,
+      "questionUid": "qid_v1_379b4a9e0a0ac9a5dca48fd1d7f65fed1025d63e6505e3f9e8d24448183b1ca7",
+      "identityQuestionUid": "qid_v1_379b4a9e0a0ac9a5dca48fd1d7f65fed1025d63e6505e3f9e8d24448183b1ca7",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "f1ada053e2d5c6beec3b6058277446aa09fc9a1601c8e3b69c77bcd15568234a",
+        "contentFingerprint": "53a5ae39f62079c994cd8aa54c90ab4b466a181d3482be96a7d9eaefe6754042",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53a5ae39f62079c994cd8aa54c90ab4b466a181d3482be96a7d9eaefe6754042"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1ada053e2d5c6beec3b6058277446aa09fc9a1601c8e3b69c77bcd15568234a"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q06.png",
+            "sha256": "7fe134dd7eeeca2ccef1ef822f7c276b5f7b97f982f51b049d0f2b1fb844ffdb"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외접원·내접원 활용",
+          "L4": "반지름·각 계산",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "외접원·내접원 활용",
+            "반지름·각 계산"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-068"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_CENTERS_SEMANTIC. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q6: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "FAMILY_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-068"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외접원·내접원 활용",
+          "L4": "반지름·각 계산"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+          "evidenceSha": "sha256:fc65c50b829a7c80125b03727e236a405afc3f205a22f2903134567f54e48304",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 2,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 2
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": 7,
+      "questionUid": "qid_v1_2cc6e4f7725550e11974f58df20235ecbb906a2b48d127857c1366ec53056d09",
+      "identityQuestionUid": "qid_v1_2cc6e4f7725550e11974f58df20235ecbb906a2b48d127857c1366ec53056d09",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "704ed8c63deffeb0b118a5fa70a38c54ec3c6753eb39327e88d61383ec79ffcb",
+        "contentFingerprint": "28eb17f2f0c8c5c5f08f32d64f9787214caeaff9343a2a6174e5f80d0e923f1e",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "28eb17f2f0c8c5c5f08f32d64f9787214caeaff9343a2a6174e5f80d0e923f1e"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "704ed8c63deffeb0b118a5fa70a38c54ec3c6753eb39327e88d61383ec79ffcb"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q07.png",
+            "sha256": "134e14a4282cfc6cf559ea5d2938d971aa6dbf90aa8cc5b8e6c6f055846890d7"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외접원·내접원 활용",
+          "L4": "외심·내심을 이용한 복합도형",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "외접원·내접원 활용",
+            "외심·내심을 이용한 복합도형"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-069"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_CENTERS_COMBINED. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q7: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "FAMILY_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-069"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "외접원·내접원 활용",
+          "L4": "외심·내심을 이용한 복합도형"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+          "evidenceSha": "sha256:3b6844bdf50e9e4e716a5c8250b1f7c32f0521f75ed61346d911616a11eecc03",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 2,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 2
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": 8,
+      "questionUid": "qid_v1_c0065690c62063783160f07f59106d3b7dbabac6539128b8d23bee090eeb4d92",
+      "identityQuestionUid": "qid_v1_c0065690c62063783160f07f59106d3b7dbabac6539128b8d23bee090eeb4d92",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "b8b223952fa6905252fad812f625b8add7ad77a1e1910ff177935cbf75907698",
+        "contentFingerprint": "e0878d9a4aacfa2365d0483d318e580a157526a3e674bbcbde0433614b9db8c8",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e0878d9a4aacfa2365d0483d318e580a157526a3e674bbcbde0433614b9db8c8"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8b223952fa6905252fad812f625b8add7ad77a1e1910ff177935cbf75907698"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q08.png",
+            "sha256": "7cfcbaf165a06a88f769082fedc9f5876311cd6ed14ad1f9567f02819ea5d5e8"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "평행사변형",
+          "L3": "평행사변형의 성질",
+          "L4": "변·각의 성질",
+          "parentChain": [
+            "사각형의 성질",
+            "평행사변형",
+            "평행사변형의 성질",
+            "변·각의 성질"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-072"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_QUADRILATERAL_PROPERTIES. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q8: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-072"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "평행사변형",
+          "L3": "평행사변형의 성질",
+          "L4": "변·각의 성질"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+          "evidenceSha": "sha256:737cfdfb43af80141812de81da5ebcf23e392a5ba9070a834961517caab87974",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "OPEN_SOLUTION_DETAIL",
+        "sourcePdfPage": 2,
+        "summary": "The source image has overlapping dimension/angle callouts; current solution only asserts x+y+z=73 and does not show derivation. Exact x/y/z referents could not be resolved from the scan with enough confidence. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 2
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": 9,
+      "questionUid": "qid_v1_a77e52bd98df71bfc0683d8dedfedc4e1a0212dc96b4a320c1920ba244971186",
+      "identityQuestionUid": "qid_v1_a77e52bd98df71bfc0683d8dedfedc4e1a0212dc96b4a320c1920ba244971186",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "a163aa9f615a4414745b29a17d842018a820c246261faad4b98852690af935af",
+        "contentFingerprint": "0c33a58c9bff2f90136ee1c3a1041c43a35092fb65f25ebf01438355983b64a2",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0c33a58c9bff2f90136ee1c3a1041c43a35092fb65f25ebf01438355983b64a2"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a163aa9f615a4414745b29a17d842018a820c246261faad4b98852690af935af"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q09.png",
+            "sha256": "2f383e43cc44e5d65d75edb473571be8027b3cb3f275f5800292aadcb64931c0"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "평행사변형",
+          "L3": "평행사변형의 판정",
+          "L4": "변·각 조건",
+          "parentChain": [
+            "사각형의 성질",
+            "평행사변형",
+            "평행사변형의 판정",
+            "변·각 조건"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-074"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_NONE",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_QUADRILATERAL_CRITERIA. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q9: no distinct active secondary concept or condition-registry key is required by the reviewed solution. NONE records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-074"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "평행사변형",
+          "L3": "평행사변형의 판정",
+          "L4": "변·각 조건"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+          "evidenceSha": "sha256:cc25e5c9ff525a2ee9bbd87b2c501068a56752b498bf0f0cbfd0d456c53c653a",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 2,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 2
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": 10,
+      "questionUid": "qid_v1_8241e7bf0a2ec3b4baa5cd47057ec337f00e2a081631b7f75531fd11be8fdfa5",
+      "identityQuestionUid": "qid_v1_8241e7bf0a2ec3b4baa5cd47057ec337f00e2a081631b7f75531fd11be8fdfa5",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "424b8ede200ce5db162d8d2af37c44666c36b920f8a61b66a30ed81fc5954c8f",
+        "contentFingerprint": "f0bbaa71373513062df3eacda1c1ede2be3ca8dd6210fadf403f62e5795cbc17",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0bbaa71373513062df3eacda1c1ede2be3ca8dd6210fadf403f62e5795cbc17"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "424b8ede200ce5db162d8d2af37c44666c36b920f8a61b66a30ed81fc5954c8f"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q10.png",
+            "sha256": "5b44dcf223082266d0aa3be7c1a3b1d2702d90dc1b2e46ac3464c2d44d8d6a60"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질",
+          "parentChain": [
+            "사각형의 성질",
+            "여러 가지 사각형",
+            "직사각형·마름모·정사각형",
+            "특수 사각형의 대각선 성질"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-079"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_SPECIAL_QUADRILATERALS. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q10: CC_CIRCLE_CIRCUMFERENCE is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-079"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "evidenceSha": "sha256:3245f5a54b90b8f8b97b82168b11fe28189f9a59d363bcebb0018db4bcb07aca",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 3,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 3
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": 11,
+      "questionUid": "qid_v1_268f3d06d0cf08ef47a042ac3ceab4c1165de0c59c66ff22279fdee0180899ee",
+      "identityQuestionUid": "qid_v1_268f3d06d0cf08ef47a042ac3ceab4c1165de0c59c66ff22279fdee0180899ee",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "aff7091d6157631ea58af341cf3ae2649c3e7f881dbeb297964c646971788b92",
+        "contentFingerprint": "2b9c447eb9c9989ce2f3d97636d2ad6505c38f05dc11770f9c863820018df439",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2b9c447eb9c9989ce2f3d97636d2ad6505c38f05dc11770f9c863820018df439"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aff7091d6157631ea58af341cf3ae2649c3e7f881dbeb297964c646971788b92"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q11.png",
+            "sha256": "8fd6592b5f17b970833a87705e39dd41b971e3f2ea793669b857d0ef58b0b547"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질",
+          "parentChain": [
+            "사각형의 성질",
+            "여러 가지 사각형",
+            "직사각형·마름모·정사각형",
+            "특수 사각형의 대각선 성질"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-079"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_SPECIAL_QUADRILATERALS. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q11: CC_TRIANGLE_AREA is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-079"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "evidenceSha": "sha256:a8595ff6c9b3a2cf4fcebca876bb282e8c70d01e401eaee8797f4ca4dd5d503e",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 3,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 3
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": 12,
+      "questionUid": "qid_v1_0d542338555606ab32112deb6db82a58f95c034b5a170b898c0f5f32b1c77f7c",
+      "identityQuestionUid": "qid_v1_0d542338555606ab32112deb6db82a58f95c034b5a170b898c0f5f32b1c77f7c",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "abdde2d6d2bb8c0134034a5172398ffc80cab824f580221f6e2ed9d0daa2be76",
+        "contentFingerprint": "3ce08750e3d02921cca5607c421eb42f3af943f60e8b857cac1466d049f0b4a7",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ce08750e3d02921cca5607c421eb42f3af943f60e8b857cac1466d049f0b4a7"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "abdde2d6d2bb8c0134034a5172398ffc80cab824f580221f6e2ed9d0daa2be76"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q12.png",
+            "sha256": "e6ac0812cce16e03a324e9da17907c58f1da24849e6ab19f4e3a763d4fadef38"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질",
+          "parentChain": [
+            "사각형의 성질",
+            "여러 가지 사각형",
+            "직사각형·마름모·정사각형",
+            "특수 사각형의 대각선 성질"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-079"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_SPECIAL_QUADRILATERALS. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q12: CC_SQUARE_AREA is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-079"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "직사각형·마름모·정사각형",
+          "L4": "특수 사각형의 대각선 성질"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "evidenceSha": "sha256:e5d82bfae6db3393c1521f5eaf52c3e419e3f23b3b8971ecbc9a1946be9ee615",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 3,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 3
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": 13,
+      "questionUid": "qid_v1_6a75ff1e91e1b51fae282daca4c049de7622c6678b40459719b814b9e89580c7",
+      "identityQuestionUid": "qid_v1_6a75ff1e91e1b51fae282daca4c049de7622c6678b40459719b814b9e89580c7",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "9ad8cc0d2e8e72469c1a21cc20d024929be2ee3300c43609043706d67bc5583e",
+        "contentFingerprint": "117aebf53f4dc2deb66c708239bda107b5bbabc0762dbc4e8822831ba81dd4b7",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "117aebf53f4dc2deb66c708239bda107b5bbabc0762dbc4e8822831ba81dd4b7"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9ad8cc0d2e8e72469c1a21cc20d024929be2ee3300c43609043706d67bc5583e"
+        },
+        "qassets": [],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "사각형의 포함 관계",
+          "L4": "성질 비교",
+          "parentChain": [
+            "사각형의 성질",
+            "여러 가지 사각형",
+            "사각형의 포함 관계",
+            "성질 비교"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-083"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_NONE",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_SPECIAL_QUADRILATERALS. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q13: no distinct active secondary concept or condition-registry key is required by the reviewed solution. NONE records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-083"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "사각형의 포함 관계",
+          "L4": "성질 비교"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "evidenceSha": "sha256:753950cb993664ced21bf51930d3cc7a73c849edc63b96fc88cc0623a7f617c2",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 3,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 3
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": 14,
+      "questionUid": "qid_v1_2c970591160f679919cc407189615ce033bddf3d0f2f241ffc0c2af03dfb6ac4",
+      "identityQuestionUid": "qid_v1_2c970591160f679919cc407189615ce033bddf3d0f2f241ffc0c2af03dfb6ac4",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_FIGURE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "8ad1f66caa8a289db7782feb6a25d41d77ec2750f1a11e0705d8766031aa59dc",
+        "contentFingerprint": "310314996f5b3f1cd3d159765ee7a286f90d98454a6cd8fe72d7115eb92ae914",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "310314996f5b3f1cd3d159765ee7a286f90d98454a6cd8fe72d7115eb92ae914"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ad1f66caa8a289db7782feb6a25d41d77ec2750f1a11e0705d8766031aa59dc"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q14.png",
+            "sha256": "2d5e33349fd0f9b11535c392428f727331764102efd1eedb519233896b73bc72"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "길이",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "도형의 닮음",
+            "닮음의 활용",
+            "길이"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-089"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "도형의 닮음",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_SIMILARITY → TPL_TRIANGLE_SIMILARITY_APPLICATION. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q14: CC_TRIANGLE_ANGLE_SUM is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_FIGURE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-089"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "길이"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+          "evidenceSha": "sha256:834d94a8858cac597e012e2ceca53d0d278130654a147f2a31be27099a3e5bcf",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 4,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 4
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": 15,
+      "questionUid": "qid_v1_28aa821c0244d696e3bbb5cd21adf3deec7234732aaaee50de5acde54ac47202",
+      "identityQuestionUid": "qid_v1_28aa821c0244d696e3bbb5cd21adf3deec7234732aaaee50de5acde54ac47202",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [
+          "CC_CYLINDER_VOLUME"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "ec45d0cb2086e8f07722cf985f780b5392555967ad879f3118043c6201b5eddb",
+        "contentFingerprint": "a5099821189b5ee962c49c78cbc6342a41fcaa696abcf46fa37d1ef7f573cd71",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a5099821189b5ee962c49c78cbc6342a41fcaa696abcf46fa37d1ef7f573cd71"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec45d0cb2086e8f07722cf985f780b5392555967ad879f3118043c6201b5eddb"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q15.png",
+            "sha256": "7aa677e1785862a8b8231cd6453c346f094a0dd6a6fd9b1928e5aa1e513de370"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "넓이·부피 비",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "도형의 닮음",
+            "닮음의 활용",
+            "넓이·부피 비"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-237"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "도형의 닮음",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_SIMILAR_FIGURES → TPL_SIMILAR_FIGURES_AREA_VOLUME. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q15: CC_CYLINDER_VOLUME is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [
+          "CC_CYLINDER_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-237"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "넓이·부피 비"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+          "evidenceSha": "sha256:f2b6df4017a6bc9fa204e251c40cdfa280b8be92c4a20a9656f4efea82917b39",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 4,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 4
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": 16,
+      "questionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+      "identityQuestionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "M2-06-TRIANGLE_SIMILARITY",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "6b72454988b5b6c62c93063aeaf59440f303b24c08e5f97d68ce1327cceeddaf",
+        "contentFingerprint": "6245805b2792763b9a019e3b3eb9253c1f89cf6df05f749242dcd207eada584c",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6245805b2792763b9a019e3b3eb9253c1f89cf6df05f749242dcd207eada584c"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b72454988b5b6c62c93063aeaf59440f303b24c08e5f97d68ce1327cceeddaf"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q16.png",
+            "sha256": "d120ad9fba21dda69a70df9bb74d922b1e2381f5dd0ce0e9ae089755aaefe792"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "길이",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "도형의 닮음",
+            "닮음의 활용",
+            "길이"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-238"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "도형의 닮음",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_SIMILARITY → TPL_TRIANGLE_SIMILARITY_APPLICATION. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q16: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "M2-06-TRIANGLE_SIMILARITY",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-238"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "닮음의 활용",
+          "L4": "길이"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+          "evidenceSha": "sha256:8e423189867f8552c92213ae7a8baf655325c21d37541ab54af04e2fea3fddb3",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 4,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 4
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": 17,
+      "questionUid": "qid_v1_001c4c4c79c9eb18f41f339472ed5bba3d04a5da415a18a600ef605b178369c2",
+      "identityQuestionUid": "qid_v1_001c4c4c79c9eb18f41f339472ed5bba3d04a5da415a18a600ef605b178369c2",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "f3a01eaff62ee70a7b0433e4cf1a68bc80ca4bf499f9d32b8653b393bc66008c",
+        "contentFingerprint": "5d4ff11c4d564ae1ed74e7f1b19bd4a9a7c8c988625896624c0de8cf3e84d8c5",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d4ff11c4d564ae1ed74e7f1b19bd4a9a7c8c988625896624c0de8cf3e84d8c5"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f3a01eaff62ee70a7b0433e4cf1a68bc80ca4bf499f9d32b8653b393bc66008c"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q17.png",
+            "sha256": "0f148884481c025c59448fb8fef39ab8e9abdb4db2752a37c9f22d9e57a1cf91"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "비례 활용",
+          "L4": "미지 길이",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "평행선과 선분의 길이의 비",
+            "비례 활용",
+            "미지 길이"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-095"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "평행선과 선분의 길이의 비",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_PARALLEL_SEGMENT_RATIO → TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q17: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-095"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "비례 활용",
+          "L4": "미지 길이"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+          "evidenceSha": "sha256:51202fbc729ff58bfbc1029ca3839d4a0290b7cbbd4d3a7e57a52f6ed7e56b0c",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 4,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 4
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": 18,
+      "questionUid": "qid_v1_5fe417174bb7089e162c286a5197de0e0d6a5139592406ec23a8e10aed48f15a",
+      "identityQuestionUid": "qid_v1_5fe417174bb7089e162c286a5197de0e0d6a5139592406ec23a8e10aed48f15a",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "185c17bbde550bd2a2486df91905ae8f11f977bd6470e70504879bac39ac0d07",
+        "contentFingerprint": "378e865bd3262e7d5a6f47dbeb2fd96aeb8ff584733b5ab5a3d5935fe07e9587",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "378e865bd3262e7d5a6f47dbeb2fd96aeb8ff584733b5ab5a3d5935fe07e9587"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "185c17bbde550bd2a2486df91905ae8f11f977bd6470e70504879bac39ac0d07"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q18.png",
+            "sha256": "4369cb192ccc1a05c951e105a30cf6c4760d5029a2ff05a469dfe66cf5d139c7"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "평행선 사이 선분비",
+          "L4": "사다리꼴",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "평행선과 선분의 길이의 비",
+            "평행선 사이 선분비",
+            "사다리꼴"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-094"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "평행선과 선분의 길이의 비",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_PARALLEL_SEGMENT_RATIO → TPL_PARALLEL_SEGMENT_RATIO_GENERAL. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q18: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-094"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "평행선 사이 선분비",
+          "L4": "사다리꼴"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "evidenceSha": "sha256:9cad6ed4b1e52d496e676735aa4be1e8cd908d6c51747dd507a1fb7667fea08e",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 5,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 5
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": 19,
+      "questionUid": "qid_v1_8d83c28910a9b83c24e960f06425b6b56c0ead345f1f68dde8724009802e6b00",
+      "identityQuestionUid": "qid_v1_8d83c28910a9b83c24e960f06425b6b56c0ead345f1f68dde8724009802e6b00",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceFingerprint": "d901113a3ebce3307c86919b7774460c6dfb1835ebb60aea60af094dc05cad8a",
+        "contentFingerprint": "e23de81ea5daf78ba92390eae0f834d52713dc0ac2b079911fc73378735fdb95",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e23de81ea5daf78ba92390eae0f834d52713dc0ac2b079911fc73378735fdb95"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d901113a3ebce3307c86919b7774460c6dfb1835ebb60aea60af094dc05cad8a"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q19.png",
+            "sha256": "679872ae7f25f9075a48d92023be2a17868a0b456d59fd90d2b71ab02ae17400"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "평행선 사이 선분비",
+          "L4": "여러 평행선",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "평행선과 선분의 길이의 비",
+            "평행선 사이 선분비",
+            "여러 평행선"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-093"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "평행선과 선분의 길이의 비",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_PARALLEL_SEGMENT_RATIO → TPL_PARALLEL_SEGMENT_RATIO_GENERAL. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q19: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-093"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "평행선 사이 선분비",
+          "L4": "여러 평행선"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "evidenceSha": "sha256:c2c3d58d9829d57f50fa2aefb1b5ebc53eba9671623cf516f3878ed98d32e04e",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 5,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 5
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": 20,
+      "questionUid": "qid_v1_ff39433b1b11e9b1fd0f7c434576538a4d2480258efa540e9c26f51db6d1f3d2",
+      "identityQuestionUid": "qid_v1_ff39433b1b11e9b1fd0f7c434576538a4d2480258efa540e9c26f51db6d1f3d2",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [
+          "CC_AREA_RATIO"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "d4fb813dc453fcba10c1c5a9f92d8f8b5eaaaa32e2c745aad7ba64ab9f22ba7d",
+        "contentFingerprint": "01522e1a0ce0a32084769f1e0d7be649ef48f19ae761184e521b2b62b043cede",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "01522e1a0ce0a32084769f1e0d7be649ef48f19ae761184e521b2b62b043cede"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4fb813dc453fcba10c1c5a9f92d8f8b5eaaaa32e2c745aad7ba64ab9f22ba7d"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/q20.png",
+            "sha256": "72a65b2ff169ad50d110dcc63e2d12c884f0edeb1875ad87fcac2022b71e861e"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "비례 활용",
+          "L4": "선분비를 이용한 복합도형",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "평행선과 선분의 길이의 비",
+            "비례 활용",
+            "선분비를 이용한 복합도형"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-096"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "평행선과 선분의 길이의 비",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_PARALLEL_SEGMENT_RATIO → TPL_PARALLEL_SEGMENT_RATIO_GENERAL. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q20: CC_AREA_RATIO is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [
+          "CC_AREA_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-096"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "평행선과 선분의 길이의 비",
+          "L3": "비례 활용",
+          "L4": "선분비를 이용한 복합도형"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "evidenceSha": "sha256:68121349336d5a48e4af3b9b2de2535e434c302b6c5e93657aaff4103f81ca66",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 5,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 5
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": 21,
+      "questionUid": "qid_v1_a308be0ed169c9d7deeef96bc6637483fbd73700cb589af0a006b24baae1f432",
+      "identityQuestionUid": "qid_v1_a308be0ed169c9d7deeef96bc6637483fbd73700cb589af0a006b24baae1f432",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "b8b7d787a4454c25a8e0e768385f032d89b42db1df801141447a58bfa0e8b68b",
+        "contentFingerprint": "eae18e4fc73598441462d54f94311d381aafc3afa7e657c4bc46a419a72f1a34",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eae18e4fc73598441462d54f94311d381aafc3afa7e657c4bc46a419a72f1a34"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8b7d787a4454c25a8e0e768385f032d89b42db1df801141447a58bfa0e8b68b"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/s01.png",
+            "sha256": "431181b34e081a553b697614a6f11b4d28b22604b1627336b9749e938db120a2"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 성질",
+          "L3": "직각삼각형의 합동",
+          "L4": "RHA",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 성질",
+            "직각삼각형의 합동",
+            "RHA"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-071"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_RIGHT_TRIANGLE_CONGRUENCE → TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q21: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-071"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 성질",
+          "L3": "직각삼각형의 합동",
+          "L4": "RHA"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+          "evidenceSha": "sha256:c1eb1143888cdbed219fa894ec922903305d7b3be69ca0c20e7f77854b26b4cc",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 6,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 6
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": 22,
+      "questionUid": "qid_v1_aa75b9f3ac77977fed48b8302f423ce346296885926286f560a7264bdea94700",
+      "identityQuestionUid": "qid_v1_aa75b9f3ac77977fed48b8302f423ce346296885926286f560a7264bdea94700",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "916e6c2770bda89ad1861e271015bcfe2c795a3a7c32ccb4e869fe0f35fff199",
+        "contentFingerprint": "4c58917b136b257c208e44d4225422ff270700c0bf5709314689b7d9cce29be0",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4c58917b136b257c208e44d4225422ff270700c0bf5709314689b7d9cce29be0"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "916e6c2770bda89ad1861e271015bcfe2c795a3a7c32ccb4e869fe0f35fff199"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/s02.png",
+            "sha256": "2188af3b1f100e2c5d2b3738027920fdee4270bc789817ea98a4e02315b80864"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "내심",
+          "L4": "내심과 거리",
+          "parentChain": [
+            "삼각형의 성질",
+            "삼각형의 외심과 내심",
+            "내심",
+            "내심과 거리"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-067"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "삼각형의 성질"
+        },
+        "rpmL2Prompt": "삼각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_CENTERS → TPL_TRIANGLE_INCENTER. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q22: CC_TRIANGLE_AREA is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-067"
+        ],
+        "path": {
+          "L1": "삼각형의 성질",
+          "L2": "삼각형의 외심과 내심",
+          "L3": "내심",
+          "L4": "내심과 거리"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "templateKey": "TPL_TRIANGLE_INCENTER",
+          "evidenceSha": "sha256:0d9bf6127c782d4fb9c11b081c7adaa5c0099f9b55df49808cbc22d92625c354",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 6,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 6
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": 23,
+      "questionUid": "qid_v1_2a6d94eb9c997352d5867bdb59f07f8b403f401b67933661628b2223812abb05",
+      "identityQuestionUid": "qid_v1_2a6d94eb9c997352d5867bdb59f07f8b403f401b67933661628b2223812abb05",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRAPEZOID"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "7ed23db882e7e1e58b5b598332dad6c344c41e2b24bffb4449158de7a1f2c125",
+        "contentFingerprint": "fe578b1326287d3cd36672038ed733ffa687f7ecb13e8e13ec3a7a2ad33380f5",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe578b1326287d3cd36672038ed733ffa687f7ecb13e8e13ec3a7a2ad33380f5"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7ed23db882e7e1e58b5b598332dad6c344c41e2b24bffb4449158de7a1f2c125"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/s03.png",
+            "sha256": "7f2c3cfa86571381117e198db013e930ba3431ab61d3d196357e7f472366a1d7"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "사다리꼴",
+          "L4": "등변사다리꼴",
+          "parentChain": [
+            "사각형의 성질",
+            "여러 가지 사각형",
+            "사다리꼴",
+            "등변사다리꼴"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-080"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "ASSIGNED_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REVIEWED",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Source scan and current item directly compared; active metadata fields validated."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "사각형의 성질"
+        },
+        "rpmL2Prompt": "사각형의 성질",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_QUADRILATERAL_PROPERTIES → TPL_SPECIAL_QUADRILATERALS. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q23: CC_ISOSCELES_TRAPEZOID is used as a distinct secondary concept in the final solution; no condition-registry key is needed. SEQUENTIAL records the visible step dependency.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRAPEZOID"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-080"
+        ],
+        "path": {
+          "L1": "사각형의 성질",
+          "L2": "여러 가지 사각형",
+          "L3": "사다리꼴",
+          "L4": "등변사다리꼴"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "evidenceSha": "sha256:ec684fa7607bddb89f233b30d37fa1a2136e6914aac2e846f831341b9bc2f60b",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 6,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 6
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": 24,
+      "questionUid": "qid_v1_a73d84f67b94c72975118a2cf36a090403c32a1fed2eff3766d0760bcca1fc73",
+      "identityQuestionUid": "qid_v1_a73d84f67b94c72975118a2cf36a090403c32a1fed2eff3766d0760bcca1fc73",
+      "current": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "M2-06-TRIANGLE_SIMILARITY",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceFingerprint": "8d21ccbb9eba77f476731fae5f3b29ff74ff9bcb8183a46c10fd9a27fb9ac424",
+        "contentFingerprint": "2541d3b764e5b998b9ece26caa55351a591ebebfc810ed3f7085459c9d1a625f",
+        "qbody": {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2541d3b764e5b998b9ece26caa55351a591ebebfc810ed3f7085459c9d1a625f"
+        },
+        "qfull": {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8d21ccbb9eba77f476731fae5f3b29ff74ff9bcb8183a46c10fd9a27fb9ac424"
+        },
+        "qassets": [
+          {
+            "path": "archive/assets/images/19_연향중_2학기_중간_중2_수학/s04.png",
+            "sha256": "46aac752886bf422b3a6793ec985031bce515fbbdf0626e99429eadf4d87d3ac"
+          }
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "삼각형의 닮음",
+          "L4": "SAS",
+          "parentChain": [
+            "도형의 닮음과 피타고라스 정리",
+            "도형의 닮음",
+            "삼각형의 닮음",
+            "SAS"
+          ],
+          "crosswalkRecordIds": [
+            "M2-RPM-239"
+          ]
+        }
+      },
+      "assessment": {
+        "standardUnit": "CORRECT_ACTIVE_MASTER_REALIGN",
+        "subUnit": "CORRECT_ACTIVE_MASTER_SUBUNIT",
+        "concept": "CORRECT_ACTIVE_MASTER_CLUSTER",
+        "problemType": "CORRECT_EXISTING_ACTIVE_TYPE",
+        "template": "CORRECT_EXISTING_ACTIVE_TEMPLATE",
+        "crossConcept": "REVIEWED_NO_SECONDARY_ACTIVE_CONCEPT",
+        "condition": "REVIEWED_NONE",
+        "integrationPattern": "REVIEWED_SEQUENTIAL",
+        "difficulty": "REVIEWED_BUCKET_RETAINED_WITH_MEDIUM_CONFIDENCE"
+      },
+      "fourSlotReview": "UNREVIEWED",
+      "review": {
+        "status": "REPAIR_APPLIED_AWAITING_FINAL_QA",
+        "reviewer": "codex-root",
+        "at": "2026-11-05",
+        "reason": "Current student-facing repair is in correctionRationale; final validation/render pending."
+      },
+      "curriculumEvidence": {
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "l1": "도형의 닮음"
+        },
+        "rpmL2Prompt": "도형의 닮음",
+        "rpmSource": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "activeResolution": "ACTIVE_CANONICAL_PT_UNIT_SUBUNIT_BINDING; official resolver confirms projection reuse."
+      },
+      "fieldEvidence": {
+        "standardUnitKey_standardUnit_standardUnitOrder": "Active 2015 middle-school master confirms M2-05=도형의 성질 (order 5) and M2-06=도형의 닮음 (order 6); current source had noncanonical M2-07..10 keys. Classification: Q1–13,21–23 M2-05; Q14–20,24 M2-06.",
+        "subUnitKey_subUnit_conceptClusterKey": "Exact active keys and labels from archive/data/master_tables/js_archive_tag_master.json, matched to triangle, quadrilateral, similar-figure, triangle-similarity, and parallel-segment content.",
+        "problemTypeKey_templateKey": "Grounded in this item’s prompt/solution and existing ACTIVE MIDDLE_GEOMETRY taxonomy: PT_TRIANGLE_SIMILARITY → TPL_TRIANGLE_SIMILARITY_CRITERIA. No new registry key.",
+        "crossConceptKeys_conditionKeys_integrationPattern": "Q24: no distinct active secondary concept or condition-registry key is required by the reviewed solution. SEQUENTIAL records the step structure.",
+        "difficultyBucket": "Retained the source bucket after reading the item and solution against the five-stage definition; confidence medium because this pass was not an independent difficulty adjudication. The existing level and bucket both map to middle-school “중”, so legacy compatibility NORMAL; no boundary signal was identified."
+      },
+      "proposed": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "M2-06-TRIANGLE_SIMILARITY",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPrimaryPath": {
+        "status": "DIRECT_ACTIVE_RESOLVER_PASS",
+        "crosswalkRecordIds": [
+          "M2-RPM-239"
+        ],
+        "path": {
+          "L1": "도형의 닮음과 피타고라스 정리",
+          "L2": "도형의 닮음",
+          "L3": "삼각형의 닮음",
+          "L4": "SAS"
+        },
+        "resolver": {
+          "stage": "CREATE",
+          "metaStatus": "RESOLVER_ONLY",
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+          "evidenceSha": "sha256:568e001a2ce09cf280d8f1385fdc724cc5b06989f74410cc503837e8efeb5885",
+          "validation": "PASS"
+        }
+      },
+      "semanticReview": {
+        "status": "REVIEWED",
+        "sourcePdfPage": 6,
+        "summary": "Compared current prompt/answer/solution and figure against the corresponding source scan page; answer and stated conditions align, with changes to Q2–Q5 image mapping and Q15 scaling derivation. Student-facing repair supersedes the prior wording for this item; see correctionRationale.",
+        "reviewer": "codex-root",
+        "at": "2026-11-05"
+      },
+      "page": 6
+    }
+  ],
+  "sourceEvidence": {
+    "reportDriveId": "1OXfbx0yJ3osYHrNWJnxTpfDmFF5UCxkOSPTPH3fw8D0",
+    "originalPdfDriveId": "1ZR3mChdm3t32Avjm3f0ckW75tSmnGvzt",
+    "originalPdfTitle": "2019_연향중2_수학_2중간.pdf",
+    "originalPdfSha256": "d0008a00cdff379353fc94a194389d354075b75da82c564d34e5b1565975e5db",
+    "page": 1,
+    "pageDate": "2019-10-15",
+    "pages": "1-6"
+  },
+  "resolverAudit": {
+    "standardUnitRegistry": "archive/data/master_tables/js_archive_tag_master.json",
+    "rpmScope": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+    "activeSubUnitEvidence": "Active M2-05/M2-06 subunit keys in archive/data/master_tables/js_archive_tag_master.json",
+    "toolingGap": "tools/main_merge_master.py find_exam_files searches archive/exams/similar/** only. The older register-reviewed-exam-meta-source.mjs hard-codes 2022 group labels and cannot register this 2015 M2-2 original. No direct shared projection changes or registry changes made.",
+    "scopeRule": "FINAL QA v2.0.1 excludes PT/TPL lookup/new registration/parity; those fields remain OPEN.",
+    "supportedSourceMetadata": "Source declares current ACTIVE master standard unit/subunit/concept-cluster keys and existing ACTIVE MIDDLE_GEOMETRY PT/TPL pairs. No registryChanges or shared projection edits.",
+    "rpmPathSummary": {
+      "directActiveCrosswalkQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "openExactCrosswalkQids": [
+        6,
+        7,
+        15,
+        16,
+        24
+      ]
+    },
+    "difficultyConfidence": "medium for all 24 after direct review; source legacy level/bucket alignment is NORMAL; no B12-B45 boundary identified",
+    "crossConceptConditionIntegration": "Reviewed all 24 solution paths; assigned only active secondary concepts where distinct and used; all conditionKeys empty; integration patterns source-declared per item. Exact Active validator pass 24/24.",
+    "qaOpen": "Q8 solution derivation remains OPEN; do not mark whole exam semantic QA PASS or merge until resolved."
+  },
+  "correctionRationale": {
+    "authorizedBy": "User explicitly approved all Yeonhyang repairs and current-material-first validation; later instruction specifically permits correcting answer/choices when required and asks exact correction rationale.",
+    "basis": "Use current student-facing JS/assets/SVG for coherence and solvability; source scan only to restore missing visual data or resolve absent measurements.",
+    "entries": [
+      {
+        "qid": 1,
+        "fields": [
+          "image"
+        ],
+        "reason": "q01 기존 연결 asset이 삼각형 D와 하단 변을 자르고 증명 텍스트와 섞여 학생이 보조도형을 읽기 어려웠다.",
+        "result": "ABC 전체와 AD를 보이도록 도형을 다시 자름."
+      },
+      {
+        "qid": 3,
+        "fields": [
+          "image"
+        ],
+        "reason": "q04의 B 꼭짓점과 ∠OBC의 변이 잘려 30° 귀속을 확인할 수 없었다.",
+        "result": "B,O,A,C와 30°,50°,x가 모두 보이도록 도형을 다시 자름."
+      },
+      {
+        "qid": 7,
+        "fields": [
+          "image"
+        ],
+        "reason": "q07이 삼각형 밑변과 B,C를 잘랐다.",
+        "result": "ABC 및 O,I를 포함하는 전체 도형으로 교체."
+      },
+      {
+        "qid": 8,
+        "fields": [
+          "question",
+          "choices",
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "현행 그림에서 x,y,z 및 2·3·4cm 표시의 대상이 분명하지 않아 기존 합 73을 재현할 수 없었다. 기존 값을 임의 추정하지 않았다.",
+        "basis": "최신 사용자 지시는 현재 학생용 JS/그림의 풀이 가능성을 우선하고, 필요한 때에만 원본을 쓴다.",
+        "result": "문항을 명시적인 대각선 길이 문제로 재구성: AC=6cm, BD=4cm, x=AO, y=BO, z=OC. AO=OC=3, BO=2이므로 합 8cm; 선택지/정답/그림을 같이 맞춤."
+      },
+      {
+        "qid": 11,
+        "fields": [
+          "question",
+          "solution",
+          "image"
+        ],
+        "reason": "기존 풀이에서 △AGF+△DEF=△ADE라고 한 등식은 일반적으로 성립하지 않았다.",
+        "result": "E∈DC,G∈AB,E,F,G collinear를 발문에 명시. △BFG~△DFE이고 BF=DF이므로 두 넓이가 같으며 △AGF+△BFG=△ABF. 대각선이 마름모를 넓이 같은 네 삼각형으로 나눠 전체 넓이 80cm²."
+      },
+      {
+        "qid": 12,
+        "fields": [
+          "question",
+          "solution",
+          "image"
+        ],
+        "reason": "내부 IJKL의 교점 정의 및 정사각형 판정 근거가 명확하지 않았다.",
+        "result": "E,F,G,H의 변 위치와 연결선 AH/BE/CF/DG의 연속 교점 I,J,K,L을 명시하고 IJKL이 정사각형임을 문제 조건에 명시. JL=8에서 넓이 32cm²를 대각선 공식으로 계산."
+      },
+      {
+        "qid": 14,
+        "fields": [
+          "question",
+          "solution",
+          "image"
+        ],
+        "reason": "q14 asset이 삼각형과 수치 대부분을 잘라 x,y,z를 계산할 수 없었다. 질문 TeX escape도 런타임 tab으로 표시됐다.",
+        "basis": "필요한 수치 복구를 위해 원본 그림을 확인함.",
+        "result": "전체 도형 복구 및 TeX escape 수정. AB=4, DE=6에서 x=3; A=120°, E=B=30°에서 y=AC=4, z=F=30°, 합 37."
+      },
+      {
+        "qid": 16,
+        "fields": [
+          "solution",
+          "image"
+        ],
+        "reason": "q16 asset이 꼭짓점 A, AD=4, CD=6, x=AB를 잘라 보였다.",
+        "basis": "누락된 시각 정보 복구를 위해 원본 그림을 확인함.",
+        "result": "전체 도형 복구. △ACD~△CBD에서 CD²=AD·DB, DB=9, AB=13."
+      },
+      {
+        "qid": 17,
+        "fields": [
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "현행 답 9가 제공 그림의 값과 일치하지 않았다.",
+        "basis": "누락된 그림 값을 확인하기 위해 원본 그림을 확인함.",
+        "result": "AC=4, CE=6, AE=10, AB=5, AD=8에서 △ABC~△AED; ED=x=12이므로 정답 ①."
+      },
+      {
+        "qid": 18,
+        "fields": [
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "풀이가 x,y를 유도하지 않았고, 복구한 그림의 수치로 다시 검산해야 했다.",
+        "basis": "잘린 수치·교점 관계 복구를 위해 원본 그림을 확인함.",
+        "result": "x=4; OC=1, CE=3이므로 OE=4; y=8; xy=32, 정답 ④."
+      },
+      {
+        "qid": 19,
+        "fields": [
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "현행 답 10은 대응 선분 비례식과 맞지 않았다.",
+        "basis": "잘린 수치·선분 구간 복구를 위해 원본 그림을 확인함.",
+        "result": "대응 구간 (x,3,6)/(6,y,4), 비 2:3에서 x=9,y=2, 합 11, 정답 ②."
+      },
+      {
+        "qid": 20,
+        "fields": [
+          "question",
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "현행 발문에 깨진 TeX escape가 있고, 풀이가 넓이비에서 x를 도출하지 않았다.",
+        "basis": "잘린 그림의 midsegment/data 위치 확인에 원본 그림을 사용함.",
+        "result": "TeX escape 수정 및 넓이의 비 1:2를 명시. FG=4, GH=8, BC=4, 정답 ①."
+      },
+      {
+        "qid": 21,
+        "fields": [
+          "answer",
+          "solution",
+          "accessibility"
+        ],
+        "reason": "풀이의 6cm/4cm는 현재 학생용 그림의 3cm/5cm와 달랐다.",
+        "result": "현재 제공 그림의 AB=3, CD=5에 맞춰 합동과 대응변을 검산: BE=5, EC=3, BC=8cm."
+      },
+      {
+        "qid": 24,
+        "fields": [
+          "answer",
+          "solution",
+          "image"
+        ],
+        "reason": "s04는 △ABC의 왼쪽/라벨이 잘려 기존 △ABC~△DFE, SAS 주장을 확인할 수 없었고 해설에 대응 비도 없었다.",
+        "basis": "잘린 도형 복구를 위해 원본 그림을 확인함.",
+        "result": "전체 삼각형 배열 복구. △ABC 변 5,6,3과 △JKL 변 10,12,6의 세 비가 모두 1:2이므로 △ABC~△JKL, SSS."
+      }
+    ]
+  }
+}
