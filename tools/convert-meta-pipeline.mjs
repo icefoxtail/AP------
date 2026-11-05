@@ -13,7 +13,7 @@ const fail = m => { throw new Error(m); };
 function bank(bytes) {
   const ctx = vm.createContext({window:{}}, {codeGeneration:{strings:false,wasm:false}});
   vm.runInContext(bytes.toString('utf8'),ctx,{timeout:3000});
-  const rows = ctx.window.questionBank || ctx.window.questions;
+  const rows = ctx.window.questionBank || ctx.window.questions || ctx.window.examData?.questions;
   if (!Array.isArray(rows)) fail('SOURCE_BANK_MISSING');
   return rows;
 }

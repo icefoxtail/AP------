@@ -1,0 +1,649 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T05:57:38.031833+00:00",
+  "examTitle": "23_금당중_1학기_중간_중2_수학",
+  "sourceDriveId": "1MqNwcm-WpN76HcI4ck6hocL1BxXDTV_C",
+  "sourceSha256": "8fb3a33e9b890740e57af4e7063f1faf38be876ede060aed5f78e7068ff72a96",
+  "totalQuestions": 24,
+  "totalApproved": 24,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 순환소수의 표현으로 옳은 것은?",
+        "solutionDecisiveExcerpt": "순환소수 표기 시 순환마디의 양 끝 숫자 위에 점을 찍는다. $0.070707\\cdots$의 순환마디는 07이므로 $0.\\dot{0}\\dot{7}$로 바르게 나타내었다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_NOTATION",
+      "templateKey": "TPL_REPEATING_PERIOD_DOT_NOTATION_AUDIT",
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_NOTATION",
+        "CC_REPEATING_PERIOD"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "순환마디 07의 양 끝 숫자 위에 점을 찍은 0.070707...=0.0(dot)7(dot)의 올바른 표기를 선별하는 1단계 기본 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\frac{a}{140}$를 약분하면 $\\frac{1}{b}$이 되고, 이것을 소수로 나타내면 유한소수가 된다. 이때 $a-b$의 값은? (단, $25 < a < 30$)",
+        "solutionDecisiveExcerpt": "$140 = 2^2 \\times 5 \\times 7$이므로 유한소수가 되려면 $a$는 7의 배수이다. $25 < a < 30$이므로 $a = 28$이다. $\\frac{28}{140} = \\frac{1}{5}$이므로 $b = 5$이다. 따라서 $a - b = 28 - 5 = 23$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL_CONDITION",
+        "CC_IRREDUCIBLE_FRACTION",
+        "CC_PRIME_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 소인수분해 140=2^2*5*7에서 a가 7의 배수임을 도출하고 범위 25<a<30에서 a=28, b=5를 구하여 a-b=23을 산출하는 2단계 복합 연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음은 분수 $\\frac{21}{60}$을 유한소수로 나타내는 과정이다. $a+b+c$의 값은?<div class=\"box\">$\\frac{21}{60} = \\frac{a}{2^2 \\times 5}",
+        "solutionDecisiveExcerpt": "$\\frac{21}{60} = \\frac{7}{2^2 \\times 5}$에서 $a = 7$이다. 분모를 10의 거듭제곱으로 만들기 위해 분자·분모에 $b = 5$를 곱하면 $\\frac{35}{100} = 0.35$이므로 $c = 0.35$이다. 따라서 $a+b+c = 7+5+0.35 = 12.35$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL",
+        "CC_POWER_OF_10_DENOMINATOR",
+        "CC_IRREDUCIBLE_FRACTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "기약분수로 약분하여 a=7을 구하고 분모를 100으로 만들기 위해 b=5를 곱해 소수 c=0.35를 얻은 뒤 a+b+c=12.35를 계산하는 2단계 과정 추론 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "순환소수를 분수로 나타내는 과정에서 주어진 순환소수를 $x$라 할 때, $1000x - 10x$를 이용하는 것이 가장 편리한 것은?",
+        "solutionDecisiveExcerpt": "$x = 4.3\\dot{2}\\dot{4} = 4.32424\\cdots$일 때 $1000x = 4324.2424\\cdots$, $10x = 43.2424\\cdots$이므로 $1000x - 10x$를 빼면 순환마디가 소거된다. 따라서 ⑤이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_FRACTION_CONVERSION",
+      "templateKey": "TPL_REPEATING_DECIMAL_EQUATION_CONVERSION",
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_TO_FRACTION",
+        "CC_POWER_OF_10_SUBTRACTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "1000x-10x는 소수점 아래 첫째 자리가 비순환이고 둘째·셋째 자리가 순환마디인 수에 적용되므로 4.3(dot)2(dot)4를 선별하는 2단계 개념 검증 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "분수 $\\frac{5}{7} = 0.\\dot{7}1428\\dot{5}$ 이다. 소수점 아래 2023번째 자리의 숫자를 $a$, 소수점 아래 2023번째 자리까지의 숫자 중 7이 나오는 횟수를 $b$라 할 때,",
+        "solutionDecisiveExcerpt": "순환마디가 6자리이므로 $2023 = 6 \\times 337 + 1$이다. 따라서 2023번째 숫자는 순환마디의 첫 번째 숫자인 $a = 7$이다. 7은 주기당 1번씩 337번 나오고 나머지 1자리에서 1번 더 나오므로 $b = 338$이다. 따라서 $a+b = 7+338 = 345$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_NOTATION",
+      "templateKey": "TPL_REPEATING_PERIOD_NTH_DIGIT",
+      "crossConceptKeys": [
+        "CC_REPEATING_PERIODICITY",
+        "CC_MODULO_ARITHMETIC",
+        "CC_FREQUENCY_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "순환마디 길이 6으로 2023을 나누어 몫 337과 나머지 1을 구하고, 2023번째 숫자 a=7과 7의 출현 횟수 b=338을 합산하여 a+b=345를 산출하는 3단계 주기성 심화 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$3^3 = A$라고 할 때, $243^3 = A^\\Box$이다. 이때 $\\Box$ 안에 알맞은 수를 구하면?",
+        "solutionDecisiveExcerpt": "$243 = 3^5$이므로 $243^3 = (3^5)^3 = 3^{15} = (3^3)^5 = A^5$이다. 따라서 빈칸에 알맞은 수는 5이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_EXPONENT_LAWS_APPLICATION",
+      "templateKey": "TPL_POWER_OF_QUOTIENT_EXPONENT_EQUATION",
+      "crossConceptKeys": [
+        "CC_EXPONENT_BASE_CONVERSION",
+        "CC_POWER_OF_POWER",
+        "CC_VARIABLE_SUBSTITUTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "소인수분해 243=3^5를 적용하여 243^3=3^15=(3^3)^5=A^5로 밑을 변환하고 지수 5를 도출하는 2단계 지수 치환 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 계산 결과가 가장 큰 것은?",
+        "solutionDecisiveExcerpt": "① $2^7$, ② $2^{12-5}=2^7$, ③ $2^{2-1+3}=2^4$, ④ $2^{12-3-3}=2^6$, ⑤ $2^6 \\times 2^3 = 2^9$이다. 따라서 계산 결과가 가장 큰 것은 ⑤ $2^9$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_EXPONENT_LAWS_EVALUATION",
+      "templateKey": "TPL_EXPONENT_LAW_VALIDITY_AUDIT",
+      "crossConceptKeys": [
+        "CC_EXPONENT_PRODUCT_RULE",
+        "CC_EXPONENT_QUOTIENT_RULE",
+        "CC_VALUE_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "각 선지에 지수의 곱셈과 나눗셈 법칙을 적용하여 지수를 각각 7, 7, 4, 6, 9로 계산하고 가장 큰 값 2^9인 5번을 선별하는 2단계 연산 비교 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2^7 \\times 3 \\times 5^9$을 $a \\times 10^n$ (단, $1 \\le a < 10$, $n$은 자연수)의 꼴로 나타낼 때, 두 수 $a+n$의 값은?",
+        "solutionDecisiveExcerpt": "$2^7 \\times 3 \\times 5^9 = 3 \\times 5^2 \\times (2\\times5)^7 = 75 \\times 10^7 = 7.5 \\times 10^8$이다. $a = 7.5, n = 8$이므로 $a+n = 7.5+8 = 15.5$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_EXPONENT_LAWS_APPLICATION",
+      "templateKey": "TPL_POWER_BASE_MATCHING_DIGIT_COUNT",
+      "crossConceptKeys": [
+        "CC_POWER_BASE_MATCHING_10",
+        "CC_SCIENTIFIC_NOTATION",
+        "CC_EXPONENT_RULES"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "2와 5의 지수를 맞추어 75*10^7로 묶은 뒤 조건 1<=a<10에 맞게 7.5*10^8로 정규화하여 a+n=7.5+8=15.5를 산출하는 3단계 지수 변형 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 않은 것은?",
+        "solutionDecisiveExcerpt": "$(-3xy)^2 = 9x^2y^2$이므로 $4x^3 \\times 9x^2y^2 = 36x^5y^2$이다. 따라서 부호가 $-36x^5y^2$로 잘못 표기된 ②가 옳지 않다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_MONOMIAL_OPERATION",
+      "templateKey": "TPL_MONOMIAL_MULTIPLICATION_DIVISION_CHAIN",
+      "crossConceptKeys": [
+        "CC_MONOMIAL_MULTIPLICATION",
+        "CC_POWER_OF_NEGATIVE_INTEGER",
+        "CC_EXPONENT_RULES"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "거듭제곱 (-3xy)^2 = 9x^2y^2에서 음수의 제곱은 양수이므로 결과가 +36x^5y^2이어야 함을 확인하여 오류 선지 2를 선별하는 2단계 단항식 부호 판별 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 등식을 만족시키는 세 자연수 $a$, $b$, $c$에 대하여 $a+b+c$의 값은?<div class=\"box\">$$16x^7y^6 \\div (-2xy^2)^3 \\div \\frac{1}{4}",
+        "solutionDecisiveExcerpt": "$16x^7y^6 \\times \\left(-\\frac{1}{8x^3y^6}\\right) \\times \\frac{4}{xy^2} = -\\frac{8x^3}{y^2}$이다. 따라서 $a = 2, b = 8, c = 3$이므로 $a+b+c = 2+8+3 = 13$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_MONOMIAL_OPERATION",
+      "templateKey": "TPL_MONOMIAL_MULTIPLICATION_DIVISION_CHAIN",
+      "crossConceptKeys": [
+        "CC_MONOMIAL_DIVISION",
+        "CC_EXPONENT_RULES",
+        "CC_FRACTION_RECIPROCAL_MULTIPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "거듭제곱 전개와 역수 곱셈을 순차 적용하여 식 -8x^3/y^2을 유도하고 계수 및 지수 a=2, b=8, c=3을 매칭하여 a+b+c=13을 산출하는 3단계 단항식 나눗셈 심화 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle x = 130^\\circ$일 때, $\\angle x$의 크기는",
+        "solutionDecisiveExcerpt": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이므로 두 밑각의 크기가 같다. 외각의 성질에 의해 두 밑각의 합이 $130^\\circ$이므로 $\\angle x = 130^\\circ / 2 = 65^\\circ$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE_ANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLE_FIND",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_BASE_ANGLES",
+        "CC_EXTERIOR_ANGLE_THEOREM"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "이등변삼각형의 두 밑각의 크기가 같다는 성질과 외각의 성질을 적용하여 2*angle(x) = 130도 -> angle(x) = 65도를 도출하는 2단계 기본 각도 계산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mat",
+        "solutionDecisiveExcerpt": "$\\triangle BDE$에서 외각 $50^\\circ$, $\\triangle ADE$를 거쳐 $\\triangle AEC$의 밑각이 $75^\\circ$임을 구한 후 꼭지각 $\\angle x = 180^\\circ - 2(75^\\circ) = 30^\\circ$를 산출한다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE_ANGLE",
+      "templateKey": "TPL_CHAIN_ISOSCELES_EXTERIOR_ANGLE",
+      "crossConceptKeys": [
+        "CC_CHAIN_ISOSCELES_ANGLES",
+        "CC_EXTERIOR_ANGLE_THEOREM"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "연쇄된 이등변삼각형에서 외각의 성질을 연속 적용하여 각도를 추적하고 꼭지각 angle(x) = 30도를 도출하는 3단계 기하 추론 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\ang",
+        "solutionDecisiveExcerpt": "내각의 이등분선과 외각의 이등분선이 이루는 교각의 크기는 $\\angle x = \\frac{1}{2}\\angle \\mathrm{A} = \\frac{1}{2} \\times 36^\\circ = 18^\\circ$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE_ANGLE",
+      "templateKey": "TPL_ANGLE_BISECTOR_INTERSECTION_ANGLE",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR_EXTERIOR_ANGLE",
+        "CC_EXTERIOR_ANGLE_THEOREM"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "삼각형의 한 내각의 이등분선과 다른 외각의 이등분선의 교각 공식 angle(x) = 1/2*angle(A)를 적용하여 18도를 도출하는 2단계 기하 공식 적용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?<img src=\"assets/images/23_금당중_1학기_중간_중",
+        "solutionDecisiveExcerpt": "직각삼각형의 합동 조건은 RHS 또는 RHA로 빗변의 길이가 같아야 한다. ①은 세 각의 크기만 같은 경우로 합동 조건이 될 수 없다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CONDITIONS",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS_RHA",
+        "CC_TRIANGLE_CONGRUENCE_CONDITIONS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "빗변의 길이가 주어지지 않고 각만 같은 AAA 조건은 합동이 아닌 닮음 조건임을 식별하여 오답 선지 1을 판별하는 2단계 개념 검증 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?<img src=\"assets/images/23_금당중_1학기_중간_중2",
+        "solutionDecisiveExcerpt": "직각삼각형의 두 예각의 합이 $90^\\circ$임을 이용하여 주어진 각도를 차감해 $x=40^\\circ$를 도출한다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_ANGLE_FIND",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_PROPERTIES",
+        "CC_COMPLEMENTARY_ANGLES"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "직각삼각형의 직각 및 내각의 성질을 적용하여 여각 관계로부터 미지각 x=40도를 산출하는 2단계 각도 계산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)<img src=\"assets/images/",
+        "solutionDecisiveExcerpt": "외심은 세 꼭짓점에 이르는 거리가 같으므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$(④)이고, 변의 수직이등분선에 의해 $\\triangle \\mathrm{OBN} \\equiv \\triangle \\mathrm{OCN}$(③)이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_CIRCUMCENTER_PROPERTIES",
+      "templateKey": "TPL_CIRCUMCENTER_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_CIRCUMCENTER_PROPERTIES",
+        "CC_CIRCUMCIRCLE_RADIUS",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "외심에서 세 꼭짓점까지의 거리가 같다는 성질과 세 변의 수직이등분선 분할 삼각형의 합동(3, 4)을 내심의 성질과 구분하여 선별하는 2단계 개념 검증 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때",
+        "solutionDecisiveExcerpt": "외심의 성질에 의해 $24^\\circ + 26^\\circ + \\angle \\mathrm{BCO} = 90^\\circ$이다. 따라서 $\\angle \\mathrm{BCO} = 90^\\circ - 50^\\circ = 40^\\circ$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_CIRCUMCENTER_PROPERTIES",
+      "templateKey": "TPL_CIRCUMCENTER_ANGLE_FIND",
+      "crossConceptKeys": [
+        "CC_CIRCUMCENTER_ANGLE_SUM_90",
+        "CC_ISOSCELES_TRIANGLE_CIRCUMCENTER"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "외심에서 세 꼭짓점을 연결한 세 이등변삼각형 밑각의 합 공식 angle(BAO) + angle(ACO) + angle(BCO) = 90도로부터 angle(BCO) = 90도 - 50도 = 40도를 도출하는 2단계 외심 각도 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\math",
+        "solutionDecisiveExcerpt": "$\\angle \\mathrm{BOC} = 2 \\times 80^\\circ = 160^\\circ$이고, $\\angle \\mathrm{BIC} = 90^\\circ + \\frac{1}{2} \\times 80^\\circ = 130^\\circ$이다. 따라서 $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC} = 160^\\circ - 130^\\circ = 30^\\circ$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_CIRCUMCENTER_PROPERTIES",
+      "templateKey": "TPL_CIRCUMCENTER_INCENTER_ANGLE_RELATION",
+      "crossConceptKeys": [
+        "CC_CIRCUMCENTER_CENTRAL_ANGLE_2A",
+        "CC_INCENTER_CENTRAL_ANGLE_90_HALF_A"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "외심 각 공식 angle(BOC) = 2*angle(A) = 160도와 내심 각 공식 angle(BIC) = 90도 + 1/2*angle(A) = 130도를 적용하여 두 각의 차 30도를 산출하는 2단계 외심·내심 각도 융합 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{",
+        "solutionDecisiveExcerpt": "접선의 길이가 같으므로 $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BD}} = 4\\text{ cm}$이고, $\\overline{\\mathrm{CE}} = 10 - 4 = 6\\text{ cm}$이므로 $\\overline{\\mathrm{CF}} = 6\\text{ cm}$이다. 따라서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AF}} + \\overline{\\mathrm{CF}} = 2 + 6 = 8\\text{ cm}$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_INCENTER_PROPERTIES",
+      "templateKey": "TPL_INCENTER_TANGENT_SEGMENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_TANGENT_SEGMENTS_EQUALITY",
+        "CC_INCENTER_SIDE_SEGMENTS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "원 밖의 점에서 그은 두 접선의 길이가 같다는 성질을 이용하여 BE=4, CE=6, CF=6을 구하고 AC=2+6=8cm를 도출하는 2단계 내접원 접선 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 점 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내심이다. $\\triangle \\mathrm{ABC}$의 둘레의 길이가 $24\\text{ cm}$, 넓이가 $48\\tex",
+        "solutionDecisiveExcerpt": "$S = \\frac{1}{2}r(a+b+c)$이므로 $48 = \\frac{1}{2} \\times r \\times 24 = 12r$이다. 따라서 $r = 4\\text{ cm}$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_INCENTER_PROPERTIES",
+      "templateKey": "TPL_INCENTER_AREA_PERIMETER_RELATION",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_CIRCLE_AREA_PERIMETER_FORMULA",
+        "CC_LINEAR_EQUATION_SOLVE"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "삼각형의 넓이 공식 S = 1/2*r*(둘레)에 S=48, 둘레=24를 대입하여 48 = 12r -> r=4cm를 산출하는 2단계 내심 공식 적용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "【서술형 1】 어떤 기약분수를 순환소수로 나타내는데, 동현이는 분모를 잘못 보아서 $0.\\dot{4}\\dot{5}$이라 하였고 재열이는 분자를 잘못 보아서 $0.58\\dot{3}$라고 하였다. 다음 물음에 답하",
+        "solutionDecisiveExcerpt": "(1) $100x-x=99x=45 \\implies x=5/11$. (2) $1000y-100y=900y=525 \\implies y=7/12$. (3) 올바른 분수는 $5/12$이고 순환소수로 나타내면 $0.41\\dot{6}$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_ERRONEOUS_OPERATION_REVERSAL",
+      "templateKey": "TPL_ERRONEOUS_REPEATING_FRACTION_RECOVERY",
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_EQUATION_CONVERSION",
+        "CC_IRREDUCIBLE_FRACTION",
+        "CC_FRACTION_TO_REPEATING_DECIMAL"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "순환소수 방정식 변환법으로 5/11과 7/12를 각각 구하고 올바른 분수 5/12를 복원하여 순환소수 0.41(dot)6으로 표현하는 3단계 서술형 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\math",
+        "solutionDecisiveExcerpt": "(1) $V_1 = \\pi(3ab^3)^2(5a^3b^2) = 45\\pi a^5b^8$. (2) $V_2 = \\pi(5a^3b^2)^2(3ab^3) = 75\\pi a^7b^7$. (3) $\\frac{V_2}{V_1} = \\frac{75\\pi a^7b^7}{45\\pi a^5b^8} = \\frac{5a^2}{3b}$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_POLYNOMIAL_GEOMETRY_APPLICATION",
+      "templateKey": "TPL_MONOMIAL_GEOMETRY_VOLUME_RATIO",
+      "crossConceptKeys": [
+        "CC_ROTATION_SOLID_CYLINDER_VOLUME",
+        "CC_MONOMIAL_MULTIPLICATION",
+        "CC_MONOMIAL_DIVISION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "회전체 원기둥의 반지름과 높이를 단항식으로 설정하여 각각 V1=45*pi*a^5*b^8, V2=75*pi*a^7*b^7을 계산하고 나눗셈으로 5a^2/(3b)를 산출하는 3단계 서술형 기하 융합 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]<img src=\"assets/images/23_금당중_1학기_중간_중2_수학",
+        "solutionDecisiveExcerpt": "빗변의 길이와 한 예각의 크기(또는 다른 한 변의 길이)가 같은 두 삼각형을 찾아 $\\equiv$ 기호로 나타내고 RHS(또는 RHA) 합동 조건을 서술한다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CONDITIONS",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS_RHA",
+        "CC_CONGRUENCE_SYMBOLIC_NOTATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "직각삼각형의 빗변과 다른 한 변 또는 한 예각이 같음을 확인하여 합동 기호와 조건(RHS 또는 RHA)을 서술하는 1단계 기본 서술형 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "readingEvidence": {
+        "sourceTextExcerpt": "【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4",
+        "solutionDecisiveExcerpt": "(1) 비례배분에 의해 $\\angle \\mathrm{A}=80^\\circ, \\angle \\mathrm{B}=40^\\circ, \\angle \\mathrm{C}=60^\\circ$이다. (2) 외심의 성질에서 $x+y+z=90^\\circ$이므로 $\\angle \\mathrm{OBA}=90^\\circ-60^\\circ=30^\\circ$, $\\angle \\mathrm{OBC}=90^\\circ-80^\\circ=10^\\circ$이다. 따라서 $30^\\circ:10^\\circ = 3:1$이다."
+      },
+      "pack": "MIDDLE_GEOMETRY",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-03-TRIANGLE_CENTERS",
+      "subUnit": "외심과 내심",
+      "problemTypeKey": "PT_TRIANGLE_CIRCUMCENTER_PROPERTIES",
+      "templateKey": "TPL_CIRCUMCENTER_ANGLE_FIND",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_PROPORTIONAL_DISTRIBUTION",
+        "CC_CIRCUMCENTER_ANGLE_SYSTEM",
+        "CC_RATIO_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "비례배분으로 세 내각 80도, 40도, 60도를 구하고 외심 이등변삼각형 각 연립방정식 x+y+z=90도로부터 angle(OBA)=30도, angle(OBC)=10도를 도출하여 3:1을 산출하는 3단계 서술형 기하 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

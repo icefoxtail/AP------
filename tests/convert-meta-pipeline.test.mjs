@@ -43,5 +43,20 @@ test('batch conversion preserves source bytes, isolates SHA failures, and writes
  for(const pth of ['audit.json','manifest.json','classification.json']){const obj=JSON.parse(fs.readFileSync(path.join(root,pth),'utf8'));obj.sourceSha256=solutionSha;fs.writeFileSync(path.join(root,pth),JSON.stringify(obj));}
  const afterSolution=runBatch({root,out,batch:{packages:[{...spec,requestId:'solution-drift',driveSource:solutionSource}]}});
  assert.equal(afterSolution[0].status,'DRY_RUN');
+ const examDataSource='window.examData={questions:[{id:1,content:"x?",choices:["1"],answer:"1",solution:"x=1"}]};';
+ const examDataPath=put('archive/exams/original/exam-data.js',examDataSource),examDataDrive=put('drive-exam-data.js',examDataSource);
+ const examDataSha=crypto.createHash('sha256').update(examDataSource).digest('hex');
+ put('archive/data/question_metadata.json',{records:[{questionUid:'uid-data',sourceOrdinal:1,sourceArchiveFile:'original/exam-data.js',standardCourse:'수학',curriculum:'2015',L1:'단원',L2:'소단원'}]});
+ put('archive/data/question_identity_map.json',{records:[{questionUid:'uid-data',sourceOrdinal:1,sourceArchiveFile:'original/exam-data.js'}]});
+ const examDataAudit=put('exam-data-audit.json',{schemaVersion:'ALIVE_META_AUDIT_ATOMIC_v3',examTitle:'exam-data',sourceFileDriveId:'drive-data',sourceSha256:examDataSha,boundAtomicCrossConcepts:[],records:[{questionId:1,classification:{standardCourse:'수학',level:1}}]});
+ const examDataManifest=put('exam-data-manifest.json',{examTitle:'exam-data',sourceFileDriveId:'drive-data',sourceSha256:examDataSha,recordsToBind:[{questionId:1}]});
+ const examDataClassification=put('exam-data-classification.json',{examTitle:'exam-data',sourceFileDriveId:'drive-data',sourceSha256:examDataSha,records:[{questionId:1}]});
+ const examDataSpec={requestId:'exam-data-shape',sourceArchiveFile:'original/exam-data.js',driveSource:examDataDrive,audit:examDataAudit,manifest:examDataManifest,classification:examDataClassification};
+ const examDataResult=runBatch({root,out,batch:{packages:[examDataSpec]}});
+ assert.equal(examDataResult[0].status,'DRY_RUN',JSON.stringify(examDataResult));
+ const examDataWritten=runBatch({root,out,write:true,batch:{packages:[examDataSpec]}});
+ assert.equal(examDataWritten[0].status,'CONVERTED',JSON.stringify(examDataWritten));
+ assert.equal(JSON.parse(fs.readFileSync(path.join(out,'.archive-meta-register/inbox/exam-data-shape.json'),'utf8')).expectedQuestionCount,1);
+ assert.equal(fs.readFileSync(examDataPath,'utf8'),examDataSource);
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
