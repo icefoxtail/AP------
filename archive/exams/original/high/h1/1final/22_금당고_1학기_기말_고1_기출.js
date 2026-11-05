@@ -67,7 +67,9 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
     "subUnit": "부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL"
   },
   {
     "id": 3,
