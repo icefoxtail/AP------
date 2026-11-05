@@ -98,7 +98,9 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+    "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
   },
   {
     "id": 4,
@@ -131,7 +133,9 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+    "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER"
   },
   {
     "id": 5,
@@ -472,7 +476,9 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_CENTER_RADIUS"
   },
   {
     "id": 14,
@@ -660,7 +666,9 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE"
   },
   {
     "id": 20,

@@ -29,7 +29,9 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+    "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS"
   },
   {
     "id": 2,
