@@ -1,0 +1,323 @@
+{
+  "recordType": "archive-reviewed-exam-meta-add-only-registry-changes-draft-v1",
+  "status": "PROPOSED_ADD_ONLY_PENDING_REGISTRATION",
+  "sourceArchiveFile": "archive/exams/original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+  "examUid": "21_이수중_2학기_중간_중2_수학",
+  "questionUid": "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6",
+  "sourceOrdinal": 8,
+  "questionCount": 26,
+  "sourceCurrentSha256": "6631cfb8f8e046d3c8dd4bb01aef40854df595617f7d15984b7394b39c3281d8",
+  "originalAuditDeclaredSha256": "5635c5a0772514fbdcb4a0f58529f1fefaad40f916e1d5ecd1b4c6fe7a5a9919",
+  "originalAuditReference": "https://drive.google.com/file/d/1Hy4Xaalblhqm6JVTj4gl3QJlPrpIFtMu/view",
+  "sourceTextExcerpt": "<p>8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)</p><p><img src=\"assets/images/21_이수중_2학기_중간_중2_수학/q08.png\" alt=\"각A가 90도인 직각삼각형 ABC에서 AC=EC이고 DE가 BC에 수직인 도형 그림\" /></p>",
+  "solutionDecisiveExcerpt": "$\\overline{\\mathrm{BD}}^2 = \\overline{\\mathrm{BE}}^2 + \\overline{\\mathrm{DE}}^2 = 3^2 + 4^2 = 9 + 16 = 25$",
+  "independentSemanticBasis": {
+    "method": "현재 production 발문·보기·답·풀이를 직접 대조하고 q8의 두 피타고라스 적용을 독립 계산 확인",
+    "calculations": [
+      "AB=9, AC=12, ∠A=90° → BC=15",
+      "EC=AC=12, BC=15 → BE=3",
+      "DE⊥BC, DE=4, ∠BED=90° → BD=√(3²+4²)=5"
+    ],
+    "classification": "Pythagorean length calculation is the decisive method; RHS congruence is absent."
+  },
+  "existingCanonicalSearch": {
+    "searchedCanonicalSources": [
+      "archive/data/meta-foundation/canonical/packs/**/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/**/bindings.json",
+      "archive/data/meta-foundation/canonical/concepts/*.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json"
+    ],
+    "reusedExistingPTTPL": false,
+    "reason": "The only relevant existing right-triangle PT/TPL found is explicitly RHS/RHA congruence; q8 does not use congruence. The 2015 crosswalk row M2-RPM-105 for this Pythagorean application is RPM_ONLY with NO_ACTIVE_MAPPING. No exact ACTIVE Pythagorean PT/TPL pair exists.",
+    "existingActiveCrossConcept": {
+      "key": "CC_PYTHAGOREAN_THEOREM",
+      "definition": "직각삼각형의 빗변 길이 계산",
+      "status": "ACTIVE",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json"
+    },
+    "rejectedExistingPair": {
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKeys": [
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+      ],
+      "reason": "Definitions require congruence conditions; q8 applies Pythagorean theorem only."
+    }
+  },
+  "canonicalUnitEvidence": {
+    "sourceCurrentFields": {
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질"
+    },
+    "proposedFields": {
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용"
+    },
+    "source": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "canonicalMasterRows": [
+      "M2-07 | M2-07-PYTHAGOREAN_THEOREM | 피타고라스 정리",
+      "M2-07 | M2-07-PYTHAGOREAN_APPLICATION | 피타고라스 정리의 활용"
+    ],
+    "courseAndOwnerPackEvidence": {
+      "curriculum": "2015",
+      "standardCourse": "중2-2",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "packCanonicalStatus": "ACTIVE",
+      "packCurrentVersion": "1.0.4",
+      "packCurrentlyOwnsM2_07": false,
+      "packStandardCourses": [
+        "중2 수학",
+        "중3 수학",
+        "M3-2",
+        "M2-2",
+        "중2-2"
+      ],
+      "proposal": "Adding an ACTIVE binding for M2-07 would trigger the registrar’s add-only ownedStandardUnitDomains expansion for MIDDLE_GEOMETRY; no separate manual pack-domain patch is proposed."
+    }
+  },
+  "rpmPathEvidence": {
+    "source": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+    "pathStatus": "L2 RPM_VERIFIED; L3/L4 CANONICAL_DRAFT",
+    "crosswalkSource": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "existingRowId": "M2-RPM-105",
+    "existingRowStatus": "RPM_ONLY",
+    "existingBindingStatus": "NO_ACTIVE_MAPPING",
+    "existingStandardUnitKey": "M2-07",
+    "existingSubUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "proposedAddOnlyRow": {
+      "id": "M2-RPM-237",
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "rpmPath": {
+        "majorUnit": "도형의 닮음과 피타고라스 정리",
+        "midUnit": "피타고라스 정리",
+        "l3": "도형에의 활용",
+        "l4": "평면도형 길이"
+      },
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION",
+      "problemTypeLabelKo": "피타고라스 정리를 이용한 평면도형 선분 길이",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "templateKey": "TPL_MG_CHAINED_PYTHAGOREAN_LENGTH_CALCULATION",
+      "templateLabelKo": "연결된 직각삼각형의 피타고라스 길이 연쇄 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    },
+    "proposedCrosswalkSummary": {
+      "recordCount": 237,
+      "DIRECT_ACTIVE": 32,
+      "FAMILY_ACTIVE": 2,
+      "DIRECT_BINDING_GAP": 67,
+      "FAMILY_BINDING_GAP": 14,
+      "RPM_ONLY": 122
+    }
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION",
+        "canonicalLabelKo": "피타고라스 정리를 이용한 평면도형 선분 길이",
+        "definition": "평면도형 안의 직각삼각형에서 두 변의 길이 관계에 피타고라스 정리를 적용하여 목표 선분의 길이를 결정하는 유형.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6"
+        ],
+        "sourceUnits": [
+          "M2-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_SUPPLEMENTAL_AUDIT_CURRENT_SOURCE_Q8",
+            "questionUid": "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6",
+            "sourceOrdinal": 8,
+            "classificationRationale": "현재 발문과 풀이에서 ABC의 다리 길이로 빗변 BC를 구하고, EC=AC로 BE를 결정한 다음 BDE 직각삼각형에 다시 피타고라스 정리를 적용해 목표 BD를 구한다.",
+            "decisiveEvidence": "$\\overline{\\mathrm{BD}}^2 = \\overline{\\mathrm{BE}}^2 + \\overline{\\mathrm{DE}}^2 = 3^2 + 4^2 = 9 + 16 = 25$",
+            "sourceArchiveFile": "archive/exams/original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+            "sourceSha256": "6631cfb8f8e046d3c8dd4bb01aef40854df595617f7d15984b7394b39c3281d8",
+            "currentSourceExcerpt": "<p>8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)</p><p><img src=\"assets/images/21_이수중_2학기_중간_중2_수학/q08.png\" alt=\"각A가 90도인 직각삼각형 ABC에서 AC=EC이고 DE가 BC에 수직인 도형 그림\" /></p>",
+            "currentSolutionExcerpt": "$\\overline{\\mathrm{BD}}^2 = \\overline{\\mathrm{BE}}^2 + \\overline{\\mathrm{DE}}^2 = 3^2 + 4^2 = 9 + 16 = 25$"
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\apmath-meta-pinpoint-20261105\\sop-repair\\sop-isu-audit\\21-isu-supplemental-audit-current-source-20261105.json",
+          "sha256": "7bb13522ae8efa76c7700a4fbbe1397d6a82d4e9a0347e58f43e0be80e968803"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_MG_CHAINED_PYTHAGOREAN_LENGTH_CALCULATION"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_MG_CHAINED_PYTHAGOREAN_LENGTH_CALCULATION",
+        "parentProblemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION",
+        "canonicalLabelKo": "연결된 직각삼각형의 피타고라스 길이 연쇄 계산",
+        "definition": "연결된 평면도형에서 한 직각삼각형의 두 변으로 피타고라스 정리를 적용해 중간 빗변을 구하고, 주어진 점·부분선분 관계로 다음 직각삼각형의 한 변을 정한 뒤 다시 피타고라스 정리를 적용해 목표 길이를 구하는 풀이 구조.",
+        "internalSkeleton": "첫 직각삼각형에서 피타고라스 정리로 중간 빗변을 구한다 → 점의 위치와 동일·부분 선분 조건으로 다음 직각삼각형의 한 변을 정한다 → 둘째 직각삼각형에서 피타고라스 정리로 목표 선분을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6"
+        ],
+        "sourceUnits": [
+          "M2-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_SUPPLEMENTAL_AUDIT_CURRENT_SOURCE_Q8",
+            "questionUid": "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6",
+            "sourceOrdinal": 8,
+            "classificationRationale": "q8의 실제 풀이가 ABC에서 BC를 구한 뒤 EC=AC 및 BC 분할로 BE를 얻고, 별도 직각삼각형 BDE에서 BD를 구하는 두 단계 피타고라스 구조를 요구한다.",
+            "decisiveEvidence": "$\\overline{\\mathrm{BD}}^2 = \\overline{\\mathrm{BE}}^2 + \\overline{\\mathrm{DE}}^2 = 3^2 + 4^2 = 9 + 16 = 25$",
+            "evidenceRef": {
+              "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\apmath-meta-pinpoint-20261105\\sop-repair\\sop-isu-audit\\21-isu-supplemental-audit-current-source-20261105.json",
+              "sha256": "7bb13522ae8efa76c7700a4fbbe1397d6a82d4e9a0347e58f43e0be80e968803"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\apmath-meta-pinpoint-20261105\\sop-repair\\sop-isu-audit\\21-isu-supplemental-audit-current-source-20261105.json",
+          "sha256": "7bb13522ae8efa76c7700a4fbbe1397d6a82d4e9a0347e58f43e0be80e968803"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnitLabelKo": "피타고라스 정리의 활용",
+        "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION",
+        "supportingItemCount": 1,
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "L1": "도형의 닮음과 피타고라스 정리",
+        "L2": "피타고라스 정리",
+        "supportingQuestionUids": [
+          "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\apmath-meta-pinpoint-20261105\\sop-repair\\sop-isu-audit\\21-isu-supplemental-audit-current-source-20261105.json",
+          "sha256": "7bb13522ae8efa76c7700a4fbbe1397d6a82d4e9a0347e58f43e0be80e968803"
+        }
+      ]
+    }
+  ],
+  "proposedClassification": {
+    "problemTypeKey": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION",
+    "templateKey": "TPL_MG_CHAINED_PYTHAGOREAN_LENGTH_CALCULATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "canonicalStatus": "PROPOSAL_NOT_ACTIVE",
+    "newProblemTypesProposed": 1,
+    "newTemplatesProposed": 1,
+    "newProblemTypesRegistered": 0,
+    "newTemplatesRegistered": 0,
+    "sourceAuditDeclaredNewTemplatesCreated": 0,
+    "sourceAuditCountPreservedWithoutRetroactiveEdit": true
+  },
+  "metadataCorrectionProposal": {
+    "unitRealign": true,
+    "standardCourse": {
+      "before": "중2-2",
+      "after": "중2-2"
+    },
+    "standardUnitKey": {
+      "before": "M2-05",
+      "after": "M2-07"
+    },
+    "subUnitKey": {
+      "before": "M2-05-TRIANGLE_PROPERTIES",
+      "after": "M2-07-PYTHAGOREAN_APPLICATION"
+    },
+    "problemTypeKey": {
+      "before": "PT_MG_RIGHT_TRIANGLE_RHS_CONGRUENCE_APPLICATION",
+      "after": "PT_MG_PYTHAGOREAN_PLANE_LENGTH_APPLICATION"
+    },
+    "templateKey": {
+      "before": "TPL_MG_FIND_SEGMENT_LENGTH_VIA_RHS_CONGRUENCE",
+      "after": "TPL_MG_CHAINED_PYTHAGOREAN_LENGTH_CALCULATION"
+    },
+    "crossConceptKeys": {
+      "before": [
+        "CC_RIGHT_TRIANGLES",
+        "CC_RHS_CONGRUENCE",
+        "CC_TRIANGLE_CONGRUENCE"
+      ],
+      "after": [
+        "CC_PYTHAGOREAN_THEOREM"
+      ]
+    }
+  },
+  "nonPassStatus": {
+    "registered": false,
+    "activeBinding": false,
+    "officialResolver": "NOT_RUN",
+    "converterEligible": false,
+    "studentApproval": "NOT_CLAIMED",
+    "allApprovedManifest": "NOT_CREATED"
+  },
+  "safety": {
+    "repositoryFilesWritten": false,
+    "existingCanonicalDefinitionsModified": false,
+    "existingCrosswalkRowsModified": false,
+    "originalAuditModified": false,
+    "productionSourceModified": false
+  },
+  "sourceEvidence": {
+    "sourceArchiveFile": "archive/exams/original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+    "sourceSha256": "6631cfb8f8e046d3c8dd4bb01aef40854df595617f7d15984b7394b39c3281d8",
+    "questionUid": "qid_v1_9e5899c5a906fa463be42828cd5d8d7ba5fb4e1ab37650d15d9525c4acf3fed6",
+    "sourceOrdinal": 8,
+    "sourceTextExcerpt": "<p>8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점)</p><p><img src=\"assets/images/21_이수중_2학기_중간_중2_수학/q08.png\" alt=\"각A가 90도인 직각삼각형 ABC에서 AC=EC이고 DE가 BC에 수직인 도형 그림\" /></p>",
+    "solutionDecisiveExcerpt": "$\\overline{\\mathrm{BD}}^2 = \\overline{\\mathrm{BE}}^2 + \\overline{\\mathrm{DE}}^2 = 3^2 + 4^2 = 9 + 16 = 25$"
+  },
+  "registryChangesEvidencePath": "Source-bound snippets are embedded in each proposed definition and in the supplemental audit; root must preserve them under a repository-relative evidence path before any strict write."
+}

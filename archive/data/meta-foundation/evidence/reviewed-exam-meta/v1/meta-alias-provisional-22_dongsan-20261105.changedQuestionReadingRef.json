@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "CURRENT_ALIAS_CHANGED_QUESTION_READING_v1",
+  "recordedAt": "2026-11-05T00:46:12.544Z",
+  "executorTask": "/root/meta_proof_repair",
+  "requestedModel": "gpt-6-luna",
+  "configuredModel": "NOT_INTROSPECTED",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js",
+  "canonicalSourceSha256": "8d5bc5e5174eb838eb8a5273b020d10ddcb86cd705ec7a985be91244611091b5",
+  "legacyExamUid": "22_동산중_1학기_중간_중3_수학",
+  "questions": [
+    {
+      "questionId": 1,
+      "legacy": {
+        "content": "다음 중 틀린 것을 찾으면? (3점)",
+        "choices": [
+          "모든 양수의 제곱근은 $2$개다.",
+          "$\\sqrt{64}$의 제곱근은 $\\pm 2\\sqrt{2}$이다.",
+          "$\\sqrt{81}$은 $\\pm 9$이다.",
+          "제곱근 $16$은 $4$이다.",
+          "$5$는 $25$의 제곱근이다."
+        ],
+        "answer": "",
+        "solution": ""
+      },
+      "currentCanonical": {
+        "content": "다음 중 옳지 않은 것은? (3점)",
+        "choices": [
+          "$\\sqrt{49}=7$이다.",
+          "$36$의 제곱근은 $6$, $-6$이다.",
+          "$\\sqrt{16}=\\pm4$이다.",
+          "$\\sqrt{100}$의 제곱근은 $\\pm\\sqrt{10}$이다.",
+          "$8$은 $64$의 제곱근이다."
+        ],
+        "answer": "③",
+        "solution": "① $\\sqrt{49}=7$이므로 참이다.<br>② $6^2=(-6)^2=36$이므로 $36$의 제곱근은 $6$과 $-6$이다.<br>③ 기호 $\\sqrt{16}$은 음수가 아닌 제곱근 하나를 뜻하므로 $\\sqrt{16}=4$이다. 따라서 $\\sqrt{16}=\\pm4$라는 주장은 옳지 않다.<br>④ $\\sqrt{100}=10$이고 $10$의 제곱근은 $\\pm\\sqrt{10}$이다.<br>⑤ $8^2=64$이므로 $8$은 $64$의 제곱근 중 하나이다.<br>따라서 옳지 않은 것은 ③이다.",
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "sourceExamId": "22_동산중_1학기_중간_중3_수학",
+        "provenance": "ALIVE_REPLACEMENT",
+        "assets": []
+      },
+      "directReadNote": "Solution correctly identifies statement ③ as false: √16 denotes the nonnegative root 4, so it is not ±4.",
+      "answerCheck": "③ consistent with the supplied current-source solution; not a metadata approval.",
+      "metadataJudgment": "NOT_RUN",
+      "legacyAuditStatus": "NOT_CARRIED_TO_CURRENT_ALIAS"
+    }
+  ],
+  "scopeNote": "Read current prompt/choices/solution and referenced assets for changed ordinal(s). This source/solution consistency note does not reapprove existing audit tags or resolve the source alias.",
+  "metadataReviewed": false
+}
