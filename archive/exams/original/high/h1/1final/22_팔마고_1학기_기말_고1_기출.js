@@ -32,7 +32,9 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
     "subUnit": "연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL"
   },
   {
     "id": 2,

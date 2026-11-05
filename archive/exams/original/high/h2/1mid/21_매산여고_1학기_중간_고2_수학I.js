@@ -588,7 +588,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "동경의 각은 $2\\pi$의 정수배만큼 달라도 같은 방향을 나타낸다. 따라서 대칭 관계를 각의 합으로 나타낸다.\n$y$축에 대하여 대칭인 두 동경의 각의 합은 $\\pi$에 $2\\pi$의 정수배를 더한 값이다.\n$\\theta+5\\theta=\\pi+2k\\pi$ ($k$는 정수)\n$6\\theta=\\pi+2k\\pi$이다.\n또 직선 $y=x$에 대하여 대칭인 두 동경의 각의 합은 $\\frac\\pi2$에 $2\\pi$의 정수배를 더한 값이다.\n$\\theta+2\\theta=\\frac\\pi2+2m\\pi$ ($m$은 정수)\n$3\\theta=\\frac\\pi2+2m\\pi$\n$\\theta=\\frac\\pi6+\\frac{2m\\pi}{3}$이다.\n이 식에 $6$을 곱하면 $6\\theta=\\pi+4m\\pi$이므로 첫째 대칭 조건도 자동으로 만족한다.\n따라서 보기의 각을 둘째 식에 차례로 대입한다.\nㄱ. $\\theta=\\frac\\pi6$은 $m=0$이므로 가능하다.\nㄴ. $\\theta=\\frac\\pi2$는 $m=\\frac12$이므로 불가능하다.\nㄷ. $\\theta=\\frac{5\\pi}6$은 $m=1$이므로 가능하다.\nㄹ. $\\theta=\\frac{7\\pi}6$은 $m=\\frac32$이므로 불가능하다.\nㅁ. $\\theta=\\frac{3\\pi}2$는 $m=2$이므로 가능하다.\n그러므로 ㄱ, ㄷ, ㅁ이 옳고 정답은 ⑤이다.",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q16-solution.svg"
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+    "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+    "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM"
   },
   {
     "id": 17,
