@@ -1,6 +1,8 @@
-# Main 병합 후 자동 메타 등록 — CURRENT v1
+# Main 병합 후 자동 메타 등록 — CURRENT v1.1
 
 2026-11-05 사용자 결정. 원본/메타 핀포인트 수정 작업자는 표적 검증과 main 병합으로 마감한다. 등록 JSON 작성·파생 데이터 갱신·재시도를 작업자에게 다시 요구하지 않는다.
+
+**4slot 연결:** 이미 작성·검수되어 `archive/data/item-4slot/`에 병합된 compact는 같은 workflow의 독립 4slot 단계가 UID 결속·검증·색인·등록 영수증 저장을 수행한다. [4slot 자동 등록 CURRENT](Archive_4Slot_Auto_Registration_CURRENT.md)를 따른다. 작성 브랜치의 대량 결과물을 다시 작성하거나 승인 없이 일괄 가져오지 않는다. 기존 의미 메타 오류가 정상 4slot 처리를 취소하지 않으며 4slot-only 변경에는 무관한 의미 메타 전체 빌드를 요구하지 않는다.
 
 ## 실행과 책임
 
@@ -26,4 +28,4 @@
 
 ## 롤백
 
-`auto/config.json`의 `enabled`를 false로 바꾸면 신규 자동 적용을 멈춘다. 이미 등록한 원본 및 기존 검토 증거는 지우지 않는다. 오등록 수리는 해당 UID의 before/after 소형 요청으로 수행하고 공용 JSON 전체를 과거 판본으로 되돌리지 않는다. 최종 제출 전 dry-run에는 write가 없고 PR job은 읽기 권한만 갖는다.
+`auto/config.json`의 `enabled`를 false로 바꾸면 의미 메타 자동 적용을 멈춘다. 4slot 단계는 `fourSlotEnabled:false`로 별도 중단한다. 이미 등록한 원본 및 기존 검토 증거는 지우지 않는다. 오등록 수리는 해당 UID의 before/after 소형 요청으로 수행하고 공용 JSON 전체를 과거 판본으로 되돌리지 않는다. 최종 제출 전 dry-run에는 write가 없고 PR job은 읽기 권한만 갖는다.
