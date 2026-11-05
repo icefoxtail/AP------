@@ -1,0 +1,197 @@
+--- a/tools/4slot/exam-items.cjs
++++ b/tools/4slot/exam-items.cjs
+@@ -1,21 +1,33 @@
+-// 시험지 JS에서 4칸 판정에 쓰는 필드만 꺼낸다. 메타 필드는 꺼내지 않는다.
+-// node exam-items.cjs <archive/exams/... .js> [from] [to]   → 문항별 Q/C/S/IMG 출력
++// Read source schemas without changing their raw IDs or inventing display numbers.
+ const fs = require('fs'), vm = require('vm');
++function sourceNumber(q) {
++  const positive = v => (typeof v === 'number' || (typeof v === 'string' && /^\d+$/.test(v))) && Number.isInteger(Number(v)) && Number(v) > 0 ? Number(v) : null;
++  const id = positive(q.id), number = positive(q.number);
++  if (id !== null && number !== null && id !== number) throw Error('AMBIGUOUS_SOURCE_NUMBER');
++  const n = id ?? number;
++  if (n === null) throw Error('SOURCE_NUMBER_MISSING');
++  return n;
++}
++function sourceIdentityNumber(q) { return String(q.id ?? q.number ?? ''); }
+ function loadExam(file) {
+-  const ctx = { window: {} }; vm.createContext(ctx);
+-  vm.runInContext(fs.readFileSync(file, 'utf8'), ctx);
+-  const w = ctx.window;
+-  if (Array.isArray(w.questionBank)) return w.questionBank.map(q => ({ ordinal: q.id, stem: q.content || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
+-  if (w.examData && Array.isArray(w.examData.questions)) return w.examData.questions.map(q => ({ ordinal: q.number, stem: q.question || '', choices: Array.isArray(q.choices) ? q.choices : [], solution: q.solution || '', image: q.image || null }));
+-  throw new Error('UNKNOWN_EXAM_SCHEMA ' + file);
++  const ctx = { window: {}, console: { log(){},warn(){},error(){} } };ctx.globalThis=ctx;
++  vm.createContext(ctx,{codeGeneration:{strings:false,wasm:false}});
++  vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file,timeout:3000});
++  const w=ctx.window, bank=w.questionBank||w.questions||ctx.questionBank||ctx.questions||w.examData?.questions;
++  if(!Array.isArray(bank))throw Error('UNKNOWN_EXAM_SCHEMA '+file);
++  const seen=new Set();
++  return bank.map(q=>{
++    const ordinal=sourceNumber(q);if(seen.has(ordinal))throw Error('DUPLICATE_SOURCE_NUMBER');seen.add(ordinal);
++    return {ordinal,sourceId:sourceIdentityNumber(q),aliases:[...new Set([ordinal,q.id,q.number].filter(x=>x!=null).map(String))],stem:q.content||q.question||'',choices:Array.isArray(q.choices)?q.choices:[],solution:q.solution||'',image:q.image||null};
++  });
+ }
+-module.exports = { loadExam };
+-if (require.main === module) {
+-  const [f, a, b] = process.argv.slice(2);
+-  for (const q of loadExam(f)) {
+-    if (a && q.ordinal < +a) continue; if (b && q.ordinal > +b) continue;
+-    console.log(`=== ${q.ordinal}`); console.log('Q: ' + q.stem);
+-    if (q.choices.length) console.log('C: ' + q.choices.map((c, i) => `${i + 1}) ${c}`).join(' | '));
+-    console.log('S: ' + q.solution); if (q.image) console.log('IMG: ' + JSON.stringify(q.image));
++function itemLookup(exam) {
++  const map=new Map();
++  for(const q of exam)for(const key of q.aliases||[String(q.ordinal)]) {
++    if(map.has(String(key))&&map.get(String(key))!==q)throw Error('AMBIGUOUS_SOURCE_ALIAS:'+key);
++    map.set(String(key),q);
+   }
++  return map;
+ }
++module.exports={loadExam,sourceNumber,sourceIdentityNumber,itemLookup};
++if(require.main===module){const[f,a,b]=process.argv.slice(2);for(const q of loadExam(f)){if(a&&q.ordinal<+a)continue;if(b&&q.ordinal>+b)continue;console.log(`=== ${q.ordinal}`);console.log('Q: '+q.stem);if(q.choices.length)console.log('C: '+q.choices.map((c,i)=>`${i+1}) ${c}`).join(' | '));console.log('S: '+q.solution);if(q.image)console.log('IMG: '+JSON.stringify(q.image));}}
+--- a/tools/4slot/validate-4slot.cjs
++++ b/tools/4slot/validate-4slot.cjs
+@@ -4,7 +4,7 @@
+ // 한 칸 안에 같은 용어(동의어를 풀어 같은 번호)가 두 번 있으면 FAIL. dictionaryVersion은 v1.3·v1.4·v1.5만 허용(작성 파일이 선언한 버전; 검사는 항상 기본 사전 v1.5로 한다).
+ // 경고(종료코드 0, 다시 보기): goal 방법어, 용어 4개 이하, method 1개, 같은 4칸 문항, method의 사칙연산.
+ const fs = require('fs'), path = require('path');
+-const { loadExam } = require('./exam-items.cjs');
++const { loadExam, itemLookup } = require('./exam-items.cjs');
+ 
+ const REPO_ROOT = path.resolve(__dirname, '..', '..');
+ const DEFAULT_DICT = 'docs/architecture/4slot/term-dictionary-v1.5.json';
+@@ -46,7 +46,7 @@
+     const blob = require('crypto').createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${buf.length}\0`), buf])).digest('hex');
+     if (d.sourceGitBlobSha && d.sourceGitBlobSha !== blob) warn.push(`sourceGitBlobSha ${d.sourceGitBlobSha} != current exam blob ${blob}`);
+   } catch { /* 시험지를 읽지 못하면 위에서 이미 FAIL */ }
+-  const byOrd = new Map(exam.map(q => [String(q.ordinal), q]));
++  let byOrd; try { byOrd = itemLookup(exam); } catch(e) { return { fail:[e.message], warn, stats:{items:(d.items||[]).length,examItems:exam.length,quotes:0} }; }
+   const cand = new Map((d.candidates || []).map(c => [norm(c.term), c]));
+   for (const c of d.candidates || []) for (const k of ['term', 'en', 'synonyms', 'kind', 'parent', 'note', 'usedIn']) if (!(k in c)) fail.push(`candidate ${c.term} missing ${k}`);
+   for (const c of d.candidates || []) if (lut.has(norm(c.term))) warn.push(`candidate ${c.term} is already in dictionary (${lut.get(norm(c.term)).ko})`);
+@@ -54,7 +54,7 @@
+   for (const it of d.items || []) {
+     const o = String(it.sourceOrdinal), q = byOrd.get(o);
+     if (!q) { fail.push(`#${o} not in exam`); continue; }
+-    if (seen.has(o)) fail.push(`#${o} duplicated`); seen.add(o);
++    if (seen.has(String(q.ordinal))) fail.push(`#${o} duplicated`); seen.add(String(q.ordinal));
+     if (!FORMATS.includes(it.format)) fail.push(`#${o} bad format ${it.format}`);
+     const sl = it.slots || {};
+     if (!(sl.goal || []).length) fail.push(`#${o} empty goal`);
+--- a/tools/4slot/import-4slot.cjs
++++ b/tools/4slot/import-4slot.cjs
+@@ -15,6 +15,7 @@
+ const DEST_DIR = 'archive/data/item-4slot';
+ const SCHEMA = 'archive-meta-4slot-compact-v1';
+ const SLOTS = ['given', 'goal', 'method', 'condition'];
++const { loadExam, itemLookup } = require('./exam-items.cjs');
+ 
+ function git(args, opts = {}) {
+   return execFileSync('git', ['-C', REPO_ROOT, '-c', 'core.quotepath=false', ...args], { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'], ...opts });
+@@ -71,8 +72,10 @@
+ }
+ 
+ // 슬롯 항목 → 용어 번호. 사전 용어는 번호 배열, 사전에 없는 말(후보)은 candidates로 보낸다.
+-function compactItem(it, lut) {
+-  const out = { ordinal: Number(it.sourceOrdinal), format: it.format };
++function compactItem(it, lut, sourceLookup) {
++  const ordinal = sourceLookup ? sourceLookup.get(String(it.sourceOrdinal))?.ordinal : Number(it.sourceOrdinal);
++  if (!Number.isInteger(ordinal) || ordinal < 1) throw new Error('UNRESOLVED_SOURCE_ORDINAL ' + it.sourceOrdinal);
++  const out = { ordinal, format: it.format };
+   const cands = [];
+   for (const s of SLOTS) {
+     const ids = [];
+@@ -90,6 +93,7 @@
+ 
+ function serialize(c) {
+   const head = ['schemaVersion', 'sourceArchiveFile', 'sourceGitBlobSha', 'dictionaryVersion', 'evidence', 'reviewedBy'];
++  if (c.identityReconciliation) head.push('identityReconciliation');
+   const lines = head.map(k => `  ${JSON.stringify(k)}: ${JSON.stringify(c[k])}`);
+   lines.push('  "items": [\n' + c.items.map(i => '    ' + JSON.stringify(i)).join(',\n') + '\n  ]');
+   return '{\n' + lines.join(',\n') + '\n}\n';
+@@ -156,7 +160,7 @@
+       dictionaryVersion: dict.dictionaryVersion,
+       evidence: { branch, commit, path: outPath },
+       reviewedBy: { agent: o.reviewer || '(dry-run)', at, sampled },
+-      items: (d.items || []).map(it => compactItem(it, lut)).sort((a, b) => a.ordinal - b.ordinal)
++      items: (d.items || []).map(it => compactItem(it, lut, itemLookup(loadExam(path.join(REPO_ROOT, 'archive/exams', d.sourceArchiveFile))))).sort((a, b) => a.ordinal - b.ordinal)
+     };
+     const text = serialize(compact);
+     JSON.parse(text);
+--- a/tools/4slot/build-4slot-runtime.cjs
++++ b/tools/4slot/build-4slot-runtime.cjs
+@@ -4,6 +4,7 @@
+ const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
+ const crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
+ const consumer = require('../../archive/item-4slot.js');
++const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
+ const ROOT = path.resolve(__dirname, '../..');
+ const INPUT = 'archive/data/item-4slot/';
+ const OUTPUT = 'archive/data/item-4slot-index.json';
+@@ -50,7 +51,7 @@
+ function sourceNumbers(bank) {
+   const map=new Map();
+   for (let i=0;i<bank.length;i++) {
+-    const q=bank[i], n=Number(q.id??q.number);
++    const q=bank[i], n=sourceNumber(q);
+     if (!Number.isInteger(n)||n<1||map.has(n)) throw Error('AMBIGUOUS_SOURCE_NUMBER');
+     map.set(n,{q,ordinal:i+1});
+   }
+@@ -161,8 +162,21 @@
+         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
+         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
+         if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
+-        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
+-        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==String(it.ordinal)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
++        let sourceUidBinding='CANONICAL_SOURCE_TUPLE';
++        if(cur.q.questionUid&&cur.q.questionUid!==id.questionUid){
++          // An orphan embedded UID is NOT silently ignored. A compact may carry an explicit,
++          // content-bound reconciliation to the already-existing canonical tuple. It never mints a UID.
++          const rec=d.identityReconciliation;
++          const matches=(rec?.records||[]).filter(r=>r.sourceOrdinal===cur.ordinal);
++          const proof=matches[0], fp=identityHash(cur.q);
++          if(rec?.schemaVersion!=='4slot-orphan-uid-reconciliation-v1'||matches.length!==1||
++             rec.sourceGitBlobSha!==sourceBlob||uidUses.has(cur.q.questionUid)||
++             proof.embeddedQuestionUid!==cur.q.questionUid||proof.questionUid!==id.questionUid||
++             proof.sourceQuestionNo!==sourceIdentityNumber(cur.q)||proof.sourceFingerprint!==fp||
++             id.sourceFingerprint!==fp){fail('SOURCE_UID_CONFLICT',it.ordinal);continue;}
++          sourceUidBinding='VERIFIED_ORPHAN_UID_RECONCILIATION';
++        }
++        if(id.sourceQuestionNo!=null&&String(id.sourceQuestionNo).trim()&&String(id.sourceQuestionNo)!==sourceIdentityNumber(cur.q)){fail('IDENTITY_NUMBER_MISMATCH',it.ordinal);continue;}
+         // Identity maps own stable UID/path/ordinal, not current content freshness. Their native writer
+         // intentionally preserves historical fingerprints for existing rows. Compact source-blob +
+         // per-question baseline below proves 4slot freshness; do not mutate or approve global identity.
+@@ -175,7 +189,7 @@
+         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
+         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
+         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
+-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:String(it.ordinal),compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
++        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
+         records.push(row);
+       }
+       for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);
+--- a/tests/item-4slot-runtime.test.cjs
++++ b/tests/item-4slot-runtime.test.cjs
+@@ -53,3 +53,21 @@
+ test('historical identity cannot waive changed compact student payload',t=>{const f=fixture(t),old=f.js();f.bank[0].solution='Changed';f.sync();f.identity.records[0].sourceFingerprint='0'.repeat(64);f.save('archive/data/question_identity_map.json',f.identity);assert.equal(mod.build(f.root,{readBlob:()=>old}).index.counts.registered,1);});
+ test('native numbered schema supports unstated legacy printed number',t=>{const f=fixture(t);delete f.bank[0].id;f.bank[0].number=10;f.data.items[0].ordinal=10;f.data.sourceGitBlobSha=mod.blob(f.js());f.write();f.identity.records[0].sourceQuestionNo='';f.save('archive/data/question_identity_map.json',f.identity);const x=mod.build(f.root).index;assert.equal(x.counts.registered,2);assert.equal(x.records[0].sourceOrdinal,1);assert.equal(x.records[0].sourceQuestionNo,'10');});
+ test('explicit wrong printed number remains a hard join defect',t=>{const f=fixture(t);f.identity.records[0].sourceQuestionNo='9';f.save('archive/data/question_identity_map.json',f.identity);assert.equal(mod.build(f.root).index.pending[0].reason,'IDENTITY_NUMBER_MISMATCH');});
++
++test('string source IDs use explicit printed numbers while retaining canonical raw ID',t=>{const f=fixture(t);f.bank[0].id='q01';f.bank[0].number=1;f.bank[1].id='s01';f.bank[1].number=2;f.data.sourceGitBlobSha=mod.blob(f.js());f.write();const x=mod.build(f.root).index;assert.equal(x.counts.registered,2);assert.equal(x.records[0].sourceOrdinal,1);assert.equal(x.records[0].sourceQuestionNo,'q01');assert.equal(x.records[1].sourceDisplayNumber,2);assert.equal(x.records[1].sourceQuestionNo,'s01');});
++test('string source ID mismatch is not waived by matching printed number',t=>{const f=fixture(t);f.bank[0].id='q01';f.bank[0].number=1;f.data.sourceGitBlobSha=mod.blob(f.js());f.write();f.identity.records[0].sourceQuestionNo='wrong';f.save('archive/data/question_identity_map.json',f.identity);assert.equal(mod.build(f.root).index.pending[0].reason,'IDENTITY_NUMBER_MISMATCH');});
++test('conflicting numeric id and number remain ambiguous',t=>{const f=fixture(t);f.bank[0].number=99;f.data.sourceGitBlobSha=mod.blob(f.js());f.write();assert.match(mod.build(f.root).index.pending[0].reason,/AMBIGUOUS_SOURCE_NUMBER/);});
++test('string identifier without explicit printed number is not guessed',t=>{const f=fixture(t);f.bank[0].id='q01';f.data.sourceGitBlobSha=mod.blob(f.js());f.write();assert.match(mod.build(f.root).index.pending[0].reason,/SOURCE_NUMBER_MISSING/);});
++
++function reconcileFixture(f){
++ f.bank[0].questionUid=uid(77);f.data.sourceGitBlobSha=mod.blob(f.js());f.write();
++ f.data.identityReconciliation={schemaVersion:'4slot-orphan-uid-reconciliation-v1',sourceGitBlobSha:f.data.sourceGitBlobSha,records:[{sourceOrdinal:1,sourceQuestionNo:'1',embeddedQuestionUid:uid(77),questionUid:uid(1),sourceFingerprint:mod.identityHash(f.bank[0])}]};f.save(rel,f.data);
++}
++test('orphan embedded UID without exact reconciliation stays pending',t=>{const f=fixture(t);f.bank[0].questionUid=uid(77);f.data.sourceGitBlobSha=mod.blob(f.js());f.write();assert.equal(mod.build(f.root).index.pending[0].reason,'SOURCE_UID_CONFLICT');});
++test('explicit reconciliation binds unchanged fingerprint to existing canonical UID',t=>{const f=fixture(t);reconcileFixture(f);const r=mod.build(f.root).index;assert.equal(r.counts.registered,2);assert.equal(r.records[0].questionUid,uid(1));assert.equal(r.records[0].sourceUidBinding,'VERIFIED_ORPHAN_UID_RECONCILIATION');});
++for(const fault of ['fingerprint','blob','canonical','used','duplicate','number'])test('orphan reconciliation rejects '+fault,t=>{const f=fixture(t);reconcileFixture(f);const p=f.data.identityReconciliation.records[0];if(fault==='fingerprint')p.sourceFingerprint='0'.repeat(64);if(fault==='blob')f.data.identityReconciliation.sourceGitBlobSha='a'.repeat(40);if(fault==='canonical')p.questionUid=uid(2);if(fault==='number')p.sourceQuestionNo='2';if(fault==='duplicate')f.data.identityReconciliation.records.push({...p});if(fault==='used'){f.identity.records.push({...f.identity.records[0],questionUid:uid(77),sourceArchiveFile:'other.js'});f.save('archive/data/question_identity_map.json',f.identity);}f.save(rel,f.data);assert.equal(mod.build(f.root).index.counts.registered,1);});
++
++test('extractor supports native questionBank question text and string-ID aliases',t=>{const f=fixture(t),E=require('../tools/4slot/exam-items.cjs');f.bank[0]={id:'q01',number:1,question:'native text',solution:'native solution',choices:[]};f.save('archive/exams/'+source,f.js());const rows=E.loadExam(path.join(f.root,'archive/exams/'+source));assert.equal(rows[0].stem,'native text');assert.equal(E.itemLookup(rows).get('q01').ordinal,1);assert.equal(E.itemLookup(rows).get('1').sourceId,'q01');});
++test('extractor supports examData questions with id and no number',t=>{const f=fixture(t),E=require('../tools/4slot/exam-items.cjs');f.save('archive/exams/'+source,'window.examData={questions:[{id:7,content:"native",solution:"proof"}]};');const rows=E.loadExam(path.join(f.root,'archive/exams/'+source));assert.equal(rows[0].ordinal,7);assert.equal(rows[0].stem,'native');});
++test('source alias collisions are rejected rather than first-matched',()=>{const E=require('../tools/4slot/exam-items.cjs');assert.throws(()=>E.itemLookup([{ordinal:1,aliases:['same']},{ordinal:2,aliases:['same']}]),/AMBIGUOUS_SOURCE_ALIAS/);});
++test('compact conversion requires explicit alias mapping for string IDs',()=>{const I=require('../tools/4slot/import-4slot.cjs');const it={sourceOrdinal:'s01',format:'서술',slots:{}};assert.throws(()=>I.compactItem(it,new Map()),/UNRESOLVED_SOURCE_ORDINAL/);assert.equal(I.compactItem(it,new Map(),new Map([['s01',{ordinal:21}]] )).ordinal,21);});

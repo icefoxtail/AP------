@@ -1,0 +1,71 @@
+name: 4slot Bulk Publish Executor
+on:
+  push:
+    branches: ['ops/4slot-bulk-publish-20261105']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: driver
+          fetch-depth: 1
+          sparse-checkout: tools/4slot
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: repo
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Import the exact reviewed authoring snapshot and targeted fixes
+        working-directory: repo
+        env:
+          OPS_COMMIT: ${{ github.sha }}
+          REPORT_DIR: ${{ runner.temp }}/bulk-import
+        run: |
+          set -euo pipefail
+          git fetch origin e7aab2467ecad89b07442f3e2889ddaa889f5eb1
+          git checkout -b data/4slot-authoring-358-20261105
+          node ../driver/tools/4slot/publish-reviewed-bulk.cjs
+      - name: Validate full compact set and actual runtime with independent replay
+        working-directory: repo
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/bulk-import"
+          node --test tests/item-4slot-runtime.test.cjs > "$work/runtime-tests.log"
+          node tests/item-4slot-data.test.cjs | tee "$work/compact-tests.log"
+          node tools/4slot/build-4slot-runtime.cjs --write --report "$work/preflight.json" > "$work/preflight.log"
+          node tools/4slot/build-4slot-runtime.cjs --check --report "$work/independent-check.json" > "$work/independent-check.log"
+          node tools/4slot/build-4slot-runtime.cjs --write --report "$work/replay.json" > "$work/replay.log"
+          node -e 'const f=require("fs"),p=process.env.RUNNER_TEMP+"/bulk-import/";for(const n of ["preflight","independent-check","replay"]){const r=JSON.parse(f.readFileSync(p+n+".json"));if(r.counts.registered!==8129||r.counts.pending!==0||r.counts.files!==358)throw Error("INCOMPLETE_RUNTIME");if(n!=="preflight"&&r.changed)throw Error("REPLAY_DRIFT");}'
+          cp archive/data/item-4slot-index.json "$work/preflight-index.json"
+          git restore -- archive/data/item-4slot-index.json
+      - name: Push only compact files and direct compatibility dependencies
+        working-directory: repo
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/bulk-import"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          node -e 'const f=require("fs"),c=require("child_process"),p=JSON.parse(f.readFileSync(process.env.RUNNER_TEMP+"/bulk-import/commit-paths.json"));c.execFileSync("git",["add","--",...p]);const x=c.execFileSync("git",["diff","--cached","--name-only","-z"],{encoding:"utf8"}).split("\0").filter(Boolean);if(x.length!==358||x.some(x=>!p.includes(x)))throw Error("STAGED_SCOPE");'
+          git diff --cached --check
+          git diff --exit-code -- archive/exams archive/data/question_metadata.json archive/data/question_identity_map.json
+          git commit -m 'feat(4slot): import authored snapshot 358 exams with exact source binding'
+          git push origin HEAD:refs/heads/data/4slot-authoring-358-20261105
+          git rev-parse HEAD > "$work/published-head.txt"
+          git ls-remote origin refs/heads/data/4slot-authoring-358-20261105 > "$work/remote-readback.txt"
+          git diff --stat HEAD^ HEAD > "$work/diff-stat.txt"
+      - name: Persist evidence even on a failed attempt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: four-slot-bulk-publish-${{ github.run_id }}
+          path: ${{ runner.temp }}/bulk-import/
+          retention-days: 14
+          if-no-files-found: error

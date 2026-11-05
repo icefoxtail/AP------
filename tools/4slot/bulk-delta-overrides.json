@@ -1,0 +1,32 @@
+{
+ "schemaVersion":"four-slot-bulk-targeted-delta-review-v1",
+ "authoringCommit":"e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+ "baseMain":"5a5fc87f21a78d014956d1f959f9d60ab08d7763",
+ "reviewer":"GPT6_CHAT",
+ "scope":"Current-source quote corrections and affected slot terms only; no source/answer/solution writes",
+ "independentFullExamReview":false,
+ "operations":[
+  {"order":185,"ordinal":22,"op":"replaceQuote","slot":"method","term":"거듭제곱","quote":"모든 원소는 $a_1$의 거듭제곱이다.","src":"solution"},
+  {"order":185,"ordinal":22,"op":"replaceQuote","slot":"method","term":"집합","quote":"거듭 나누면 $S$에 속하는 더 작은 자연수","src":"solution"},
+  {"order":185,"ordinal":22,"op":"replaceQuote","slot":"method","term":"로그","quote":"로그값의 합은","src":"solution"},
+  {"order":185,"ordinal":22,"op":"replaceQuote","slot":"method","term":"등차수열","quote":"$=2+3+\\cdots+12$","src":"solution"},
+  {"order":190,"ordinal":19,"op":"replaceQuote","slot":"method","term":"경우분류","quote":"$D$가 볼펜 1개를 받는 경우","src":"solution","evidenceType":"IMPLIED","justification":"D가 볼펜을 받는 경우와 연필을 받는 경우를 분리한다."},
+  {"order":191,"ordinal":24,"op":"replaceQuote","slot":"method","term":"주기","quote":"그래프의 주기는 $\\dfrac\\pi2$","src":"solution"},
+  {"order":191,"ordinal":24,"op":"replaceQuote","slot":"method","term":"근의개수","quote":"교점 8개의 $x$좌표 합을 구한다.","src":"solution"},
+  {"order":191,"ordinal":24,"op":"replaceQuote","slot":"method","term":"개수","quote":"교점 8개의 $x$좌표 합을 구한다.","src":"solution"},
+  {"order":191,"ordinal":24,"op":"replaceQuote","slot":"method","term":"축대칭","quote":"양수와 음수가 각각 쌍을 이루므로","src":"solution","justification":"각 k 구간에서 나열한 해를 쌍으로 묶는다. 전체 구간을 한 축에 대해 무조건 대칭으로 보지 않는다."},
+  {"order":191,"ordinal":24,"op":"add","slot":"method","term":"경우분류","quote":"(ⅰ) $\\dfrac12<k<1$일 때","src":"solution","evidenceType":"IMPLIED","justification":"k가 1보다 작은 경우와 큰 경우의 근 배치와 합을 분리한다."},
+  {"order":191,"ordinal":24,"op":"add","slot":"method","term":"치환","quote":"$u=2\\left(x-\\dfrac\\pi6\\right)$","src":"solution","evidenceType":"IMPLIED","justification":"u로 치환해 절댓값 코사인의 해를 열거한다."},
+  {"order":172,"ordinal":24,"op":"removeTerms","terms":["일반각","사분면","홀짝"],"format":"서술","methodReason":"서로 다른 소수의 지수가 정수가 되도록 n의 최소공배수 조건을 구한다. 삭제된 반각 소문항의 용어는 제거한다."},
+  {"order":176,"ordinal":22,"op":"replaceQuote","slot":"method","term":"접선의방정식","quote":"\\dfrac{x_1x}{a^2}+\\dfrac{y_1y}{b^2}=1","src":"solution"},
+  {"order":176,"ordinal":22,"op":"replaceQuote","slot":"method","term":"수선","quote":"접선에 수직인 법선의 기울기는","src":"solution"},
+  {"order":176,"ordinal":22,"op":"replaceQuote","slot":"method","term":"x절편","quote":"접선과 $x$축이 만나는 점 $Q$를 구한다.","src":"solution"},
+  {"order":176,"ordinal":22,"op":"replaceQuote","slot":"method","term":"소거","quote":"$=|a^2-b^2|$이다.","src":"solution","evidenceType":"IMPLIED","justification":"두 절편으로 표현한 길이를 곱하면 접점의 x좌표가 소거된다."},
+  {"order":176,"ordinal":22,"op":"add","slot":"method","term":"절댓값","quote":"좌표가 아니라 선분의 길이이므로 절댓값","src":"solution","evidenceType":"IMPLIED","justification":"길이를 좌표의 절댓값으로 표현한 뒤 곱의 일정성을 계산한다."},
+  {"order":130,"ordinal":1,"op":"replaceQuote","slot":"method","term":"평행선과선분의길이의비","quote":"세 평행선 사이의 대응하는 선분의 길이의 비","src":"solution"},
+  {"order":130,"ordinal":1,"op":"replaceQuote","slot":"method","term":"비례식","quote":"\\dfrac{2}{4}=\\dfrac{3}{x}","src":"solution"},
+  {"order":92,"ordinal":21,"op":"replaceQuote","slot":"method","term":"넓이","quote":"\\dfrac{1}{2}\\times12\\times5","src":"solution"}
+ ],
+ "reviewedNonpresentationChanges":[{"order":182,"ordinal":14},{"order":185,"ordinal":8},{"order":185,"ordinal":15},{"order":185,"ordinal":16},{"order":185,"ordinal":17},{"order":185,"ordinal":19},{"order":185,"ordinal":22},{"order":190,"ordinal":19},{"order":191,"ordinal":24},{"order":172,"ordinal":24},{"order":176,"ordinal":5},{"order":176,"ordinal":22},{"order":157,"ordinal":18},{"order":159,"ordinal":10},{"order":130,"ordinal":1},{"order":95,"ordinal":2},{"order":92,"ordinal":8},{"order":92,"ordinal":9},{"order":92,"ordinal":17},{"order":92,"ordinal":20},{"order":92,"ordinal":21},{"order":92,"ordinal":23},{"order":81,"ordinal":18}],
+ "reviewedUpdatedExistingSamples":[{"order":1,"ordinals":[1,13,25]},{"order":2,"ordinals":[1,12,24]},{"order":3,"ordinals":[1,10,20]},{"order":4,"ordinals":[1,11,22]},{"order":5,"ordinals":[1,12,23]}]
+}
