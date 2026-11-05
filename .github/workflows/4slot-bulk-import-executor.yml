@@ -1,0 +1,42 @@
+name: 4slot Bulk Import Executor
+on:
+  push:
+    branches: ['ops/4slot-bulk-import-20261105']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: driver
+          fetch-depth: 1
+          sparse-checkout: tools/4slot
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: repo
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Freeze authoring input and compare every existing output
+        working-directory: repo
+        env:
+          AUTHOR_SHA: e7aab2467ecad89b07442f3e2889ddaa889f5eb1
+          REPORT_DIR: ${{ runner.temp }}/four-slot-bulk
+        run: |
+          set -euo pipefail
+          git fetch origin "$AUTHOR_SHA"
+          node ../driver/tools/4slot/bulk-compare-existing.cjs
+      - name: Upload exact inventory, validation, and source reference bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: four-slot-bulk-compare-${{ github.run_id }}
+          path: ${{ runner.temp }}/four-slot-bulk/
+          retention-days: 14
+          if-no-files-found: error
