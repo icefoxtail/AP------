@@ -5,6 +5,13 @@ on:
     paths:
       - 'archive/exams/**/*.js'
       - 'archive/data/meta-foundation/canonical/**'
+      - 'archive/data/item-4slot/**'
+      - 'archive/data/question_identity_map.json'
+      - 'archive/assets/**'
+      - 'docs/architecture/4slot/term-dictionary*.json'
+      - 'archive/item-4slot.js'
+      - 'tools/4slot/build-4slot-runtime.cjs'
+      - 'tools/ci/archive-four-slot-pass.sh'
       - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
       - 'tools/ci/archive-main-auto-meta-pass.sh'
       - '.archive-meta-register/auto/config.json'
@@ -12,6 +19,13 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'archive/data/item-4slot/**'
+      - 'docs/architecture/4slot/term-dictionary*.json'
+      - 'archive/item-4slot.js'
+      - 'tools/4slot/build-4slot-runtime.cjs'
+      - 'tools/ci/archive-four-slot-pass.sh'
+      - 'tests/item-4slot-runtime.test.cjs'
+      - 'tests/item-4slot-data.test.cjs'
       - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
       - 'tools/ci/archive-main-auto-meta-pass.sh'
       - 'tests/archive-main-merge-meta.test.mjs'
@@ -34,10 +48,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test tests/archive-main-merge-meta.test.mjs
-      - run: bash -n tools/ci/archive-main-auto-meta-pass.sh
+      - run: node --test tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs
+      - run: node tests/item-4slot-data.test.cjs
+      - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/archive-four-slot-pass.sh
       - name: Real production dry-run (no writes)
-        run: node archive/tools/meta-foundation/auto-register-merged-source.mjs --report "${RUNNER_TEMP}/auto-meta-preview.json"
+        run: |
+          mkdir -p "${RUNNER_TEMP}/auto-meta-preview"
+          node archive/tools/meta-foundation/auto-register-merged-source.mjs --report "${RUNNER_TEMP}/auto-meta-preview/semantic.json"
+          node tools/4slot/build-4slot-runtime.cjs --report "${RUNNER_TEMP}/auto-meta-preview/4slot.json"
+          git diff --exit-code
+      - name: Upload exact read-only inventory and validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-meta-preview-${{ github.run_id }}
+          path: ${{ runner.temp }}/auto-meta-preview/
+          if-no-files-found: warn
+          retention-days: 14
   register:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -47,8 +74,6 @@ jobs:
       actions: write
       issues: write
     concurrency:
-      # Same lock as the existing reviewed registrar; no concurrent semantic writers.
-      # A durable cursor plus hourly catch-up also covers coalesced/cancelled pending events.
       group: archive-reviewed-exam-meta-register-main
       cancel-in-progress: false
     steps:
@@ -59,15 +84,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Detect semantic inputs from the triggering event
+        id: scope
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import {pushTouchesPaths} from './tools/ci/push-touches-paths.mjs';
+          let event=null;try{event=JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,'utf8'));}catch{}
+          const patterns=[/^archive\/exams\/.*\.js$/, /^archive\/data\/meta-foundation\/canonical\//, /^archive\/tools\/meta-foundation\/auto-register-merged-source\.mjs$/, /^tools\/ci\/archive-main-auto-meta-pass\.sh$/, /^\.archive-meta-register\/auto\/config\.json$/, /^\.github\/workflows\/archive-main-auto-meta\.yml$/];
+          const needed=process.env.GITHUB_EVENT_NAME==='push'&&!event?true:pushTouchesPaths({event,eventName:process.env.GITHUB_EVENT_NAME,patterns,uncertain:true,nonPush:true});
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`needed=${needed}\n`);
+          JS
       - uses: actions/setup-python@v5
+        if: steps.scope.outputs.needed == 'true'
         with:
           python-version: '3.12'
       - name: Regression checks
+        if: steps.scope.outputs.needed == 'true'
         run: node --test tests/archive-main-merge-meta.test.mjs
       - name: Register changed UIDs and verify actual consumer
+        if: steps.scope.outputs.needed == 'true'
         run: bash tools/ci/archive-main-auto-meta-pass.sh
       - name: Persist verified registration with race-safe regeneration
         id: persist
+        if: steps.scope.outputs.needed == 'true'
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
@@ -84,7 +124,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run archive-pages-release.yml --ref main
       - name: Upload execution evidence
-        if: always()
+        if: always() && steps.scope.outputs.needed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: main-auto-metadata-${{ github.run_id }}-${{ github.run_attempt }}
@@ -99,6 +139,68 @@ jobs:
             const title='Archive main automatic metadata: recovery required';
             const {owner,repo}=context.repo;
             const body=`Automatic registration failed. No success is inferred.\n\nRun: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n\nThe hourly catch-up will retry from the last durable cursor. Student source files are never rewritten by this worker.`;
+            const all=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const old=all.find(i=>!i.pull_request&&i.title===title);
+            if(old) await github.rest.issues.createComment({owner,repo,issue_number:old.number,body});
+            else await github.rest.issues.create({owner,repo,title,body});
+  four-slot:
+    # Isolate registration lanes: semantic debt/failure must not discard already-authored 4slot work.
+    needs: register
+    if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      actions: write
+      issues: write
+    concurrency:
+      group: archive-four-slot-register-main
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 4slot regression checks
+        run: node --test tests/item-4slot-runtime.test.cjs
+      - name: Register existing compact files, verify UID lookup, and replay
+        run: bash tools/ci/archive-four-slot-pass.sh
+      - name: Persist only verified 4slot derived artifacts
+        id: persist
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          node tools/ci/git-push-derived-with-retry.mjs \
+            --paths-file "${RUNNER_TEMP}/archive-four-slot/commit.paths" \
+            --message 'chore(archive): register existing 4slot metadata [skip ci]' \
+            --regenerate 'bash tools/ci/archive-four-slot-pass.sh' \
+            --remote origin --branch main --max-attempts 3 \
+            --summary-file "$GITHUB_STEP_SUMMARY" --label 'main 4slot metadata'
+      - name: Dispatch student package after persisted 4slot update
+        if: steps.persist.outputs.result == 'PUSHED'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run archive-pages-release.yml --ref main
+      - name: Upload 4slot execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: four-slot-registration-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-four-slot/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Record isolated 4slot infrastructure failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title='Archive 4slot automatic registration: recovery required';
+            const {owner,repo}=context.repo;
+            const body=`4slot registration failed. Existing authored compact files are unchanged.\n\nRun: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n\nHourly reconciliation retries current source/compact/dictionary inputs.`;
             const all=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
             const old=all.find(i=>!i.pull_request&&i.title===title);
             if(old) await github.rest.issues.createComment({owner,repo,issue_number:old.number,body});
