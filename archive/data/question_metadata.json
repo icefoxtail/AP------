@@ -490,8 +490,8 @@
     "uidUnique": true,
     "sourceJoinUnique": true,
     "semanticallyReviewed": 4569,
-    "explicitProblemTypeHolds": 22031,
-    "explicitTemplateHolds": 22064,
+    "explicitProblemTypeHolds": 22029,
+    "explicitTemplateHolds": 22062,
     "explicitDifficultyHolds": 5044,
     "m3FoundationV2AppliedRecords": 1644,
     "m3Direct2HFinalized": 700,
@@ -223610,8 +223610,8 @@
       "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
       "subUnit": "제곱근과 실수",
       "conceptClusterKey": "",
-      "problemTypeKey": "",
-      "templateKey": "",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+      "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
       "crossConceptKeys": [
         "CC_PYTHAGOREAN"
       ],
@@ -223621,20 +223621,49 @@
       "tagConfidence": "review_required",
       "tagStatus": "review_required",
       "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "metadataStatus": "registered_merged_source",
       "fieldStatus": {
         "standardUnit": "approved_source",
         "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "concept": "registered_main_merge",
+        "problemType": "registered_main_merge",
+        "template": "registered_main_merge",
+        "difficulty": "registered_main_merge"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "archive-main-merge-meta-v1:main-28d90ec37aa5b5b3-83c3693567b4f36f8b2556f2",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "level": "중",
+      "primaryMethod": "정사각형의 대각선에 피타고라스 정리를 적용한 뒤 같은 길이를 수직선 위로 옮겨 좌표 결정",
+      "decisiveStep": "AC=√(1²+1²)=√2, CP=AC이므로 C의 좌표 1에서 오른쪽으로 √2만큼 이동하여 P=1+√2",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "중3 수학",
+      "L1": "실수와 그 연산",
+      "L2": "제곱근과 실수",
+      "L3": "수직선 위 실수의 위치 결정",
+      "L4": "피타고라스 길이로 수직선 점 찾기",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE3",
+      "metaFoundationPackVersion": "1.0.6",
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "metadataApprovalType": "MAIN_MERGE",
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-28d90ec37aa5b5b3-83c3693567b4f36f8b2556f2.json"
+      ]
     },
     {
       "questionUid": "qid_v1_28de336343d70f363fcc4dfe528e1ce840504c06023511fe22aed2bb14e2c3c9",
@@ -1420196,8 +1420225,8 @@
       "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
       "subUnit": "제곱근과 실수",
       "conceptClusterKey": "",
-      "problemTypeKey": "",
-      "templateKey": "",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
@@ -1420205,20 +1420234,49 @@
       "tagConfidence": "review_required",
       "tagStatus": "review_required",
       "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "metadataStatus": "registered_merged_source",
       "fieldStatus": {
         "standardUnit": "approved_source",
         "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "concept": "registered_main_merge",
+        "problemType": "registered_main_merge",
+        "template": "registered_main_merge",
+        "difficulty": "registered_main_merge"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "archive-main-merge-meta-v1:main-fbc495eaf1cb7d17-08122299f5ab6a7e4d1591bc",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "level": "중",
+      "primaryMethod": "제곱근의 정의와 음수의 실수 제곱근 존재 여부를 선택지별로 확인",
+      "decisiveStep": "(-√7)²=7은 참이고, 나머지 선택지는 0의 제곱근·양의 제곱근·음수·분수 제곱근 성질에 위배",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "중3 수학",
+      "L1": "실수와 그 연산",
+      "L2": "제곱근과 실수",
+      "L3": "제곱근의 성질 판별",
+      "L4": "제곱근 명제의 참·거짓 판별",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE3",
+      "metaFoundationPackVersion": "1.0.6",
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "metadataApprovalType": "MAIN_MERGE",
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-fbc495eaf1cb7d17-08122299f5ab6a7e4d1591bc.json"
+      ]
     },
     {
       "questionUid": "qid_v1_fbcb8b0dc39b823f0145c30312b737d7f79b7663acfd653f67ebdaf8e76dcd00",
@@ -1443713,5 +1443771,5 @@
       "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json"
     ]
   },
-  "digest": "30a7284a24f12f1339f6207b90170e3c07efcff4b5a994609caffdc690c1b553"
+  "digest": "c5fb4f894a11d5960435f2fd2f30e97a29341b8c1093dbfa941d8a6719dd06ee"
 }
