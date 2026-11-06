@@ -13,18 +13,18 @@
   const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, sshuffle, esc, span, jo, piT, bboxOf } = G;
 
   const PARAMS = {
-    soT: P('돌리는 각도', 0, 1, 0.005, 0.4, { color: 'amber', hint: '오른쪽으로 끌면 평면도형이 축을 따라 한 바퀴 돌아요', format: (v) => Math.round(v * 360) + '°' }),
+    soT: P('돌리는 각도', 0, 1, 0.005, 0.4, { color: 'amber', hint: '오른쪽으로 끌면 평면도형이 축을 따라 한 바퀴 돌아요', format: (v) => G.measureN(v * 360) + '°' }),
     soR: P('반지름 r', 1, 15, 1, 3, { color: 'sky', hint: '그림의 노란 점을 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
     soH1: P('높이 h', 2, 20, 1, 5, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soA: P('밑변 BC', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soB: P('높이 AB', 2, 20, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soRB: P('아랫변', 2, 15, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soRT: P('윗변', 1, 14, 1, 2, { color: 'amber', hint: '아랫변보다 짧아야 사다리꼴이에요', format: (v) => Math.round(v) + ' cm' }),
+    soRB: P('아랫변', 2, 15, 1, 4, { onInput: (st) => G.keepSmaller(st, 'soRT', 'soRB'), color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soRT: P('윗변', 1, 14, 1, 2, { onInput: (st) => G.keepSmaller(st, 'soRT', 'soRB'), color: 'amber', hint: '아랫변보다 짧아야 사다리꼴이에요', format: (v) => Math.round(v) + ' cm' }),
     soW: P('직사각형의 너비', 1, 15, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soD: P('축에서 떨어진 거리', 0, 15, 1, 2, { color: 'rose', hint: '그림의 노란 점을 가로로 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
     soK: P('삼각형의 크기', 1, 2, 1, 1, { color: 'sky', format: (v) => (Math.round(v) === 1 ? '3-4-5 (1배)' : '6-8-10 (2배)') }),
-    soVR: P('큰 반지름', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soVr: P('작은 반지름', 1, 14, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soVR: P('큰 반지름', 2, 15, 1, 3, { onInput: (st) => G.keepSmaller(st, 'soVr', 'soVR'), color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soVr: P('작은 반지름', 1, 14, 1, 2, { onInput: (st) => G.keepSmaller(st, 'soVr', 'soVR'), color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soV1: P('아래 부분의 높이', 2, 20, 1, 3, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soV2: P('위 부분의 높이', 1, 20, 1, 2, { color: 'rose', format: (v) => Math.round(v) + ' cm' }),
     soRot: P('세로 축 둘레로 돌려 보기', 0, 360, 5, 40, { color: 'amber', hint: '돌려도 모양이 그대로인지 보세요', format: (v) => Math.round(v) + '°' })
@@ -150,7 +150,7 @@
     view: (M, C) => ({
       guide: turnGuide + ' 노란 점을 끌어 가로(반지름)·세로(높이)를 바꿔 보세요.',
       readouts: [rd('평면도형', `직사각형 ${M.R} × ${M.h}`, AMB), rd('회전축', '세로 변', ROSE), rd('회전체', M.sol.name, SKY), rd('밑면의 반지름', cmv(M.R), AMB, '축에 수직인 변'), rd('높이', cmv(M.h), AMB, '축과 나란한 변')],
-      status: C.t >= 0.999 ? { tone: 'ok', text: '한 바퀴 → 원기둥 완성' } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: '한 바퀴 → 원기둥 완성' } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: `<p>직사각형을 한 변을 축으로 1회전 → <b>원기둥</b></p><p>(밑면의 반지름) = 축에 수직인 변 = ${M.R} cm</p><p>(높이) = 축과 나란한 변 = ${M.h} cm</p>`,
       rule: '직사각형의 한 변을 축으로 1회전시키면 원기둥이 된다',
       notes: notes('축으로 삼은 변은 입체의 <b>안쪽 중심선</b>이에요. 이 변은 높이가 되고, 축에 수직인 변이 반지름이에요.', '같은 직사각형도 <b>어느 변을 축으로 삼느냐</b>에 따라 반지름과 높이가 서로 바뀌어요.')
@@ -217,7 +217,7 @@
     view: (M, C) => ({
       guide: turnGuide + ' 칩으로 <b>축으로 삼는 변</b>을 바꿔 보세요. 같은 삼각형인데 다른 원뿔이 나와요.',
       readouts: [rd('회전축', `변 ${M.ax}`, ROSE), rd('높이 (축으로 삼은 변)', cmv(M.h), AMB), rd('밑면의 반지름', cmv(M.r), AMB, '축에 수직인 변'), rd('회전체', M.sol.name, SKY)],
-      status: C.t >= 0.999 ? { tone: 'ok', text: `원뿔 완성 (반지름 ${M.r}, 높이 ${M.h})` } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: `원뿔 완성 (반지름 ${M.r}, 높이 ${M.h})` } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: `<p>변 ${M.ax}를 축으로 1회전 → 원뿔</p><p>(높이) = ${M.h} cm · (밑면의 반지름) = ${M.r} cm</p><p>다른 변을 축으로 하면 → (높이) = ${M.r} cm · (반지름) = ${M.h} cm</p>`,
       rule: '직각삼각형의 직각을 낀 한 변을 축으로 1회전시키면 원뿔이 된다',
       notes: notes('같은 직각삼각형이라도 <b>축으로 삼은 변이 높이</b>, 나머지 변이 반지름이에요.', '축을 바꾸면 반지름과 높이가 서로 바뀐 <b>다른 원뿔</b>이 돼요(두 변의 길이가 같지 않으면).')
@@ -279,7 +279,7 @@
     view: (M, C) => ({
       guide: turnGuide + ' 노란 점을 끌면 윗변과 높이가 바뀌어요.',
       readouts: [rd('윗면의 반지름', cmv(M.r), AMB, '사다리꼴의 윗변'), rd('아랫면의 반지름', cmv(M.R), AMB, '사다리꼴의 아랫변'), rd('높이', cmv(M.h), AMB, '축에 놓인 변'), rd('회전체', M.sol.name, SKY)],
-      status: C.t >= 0.999 ? { tone: 'ok', text: '한 바퀴 → 원뿔대 완성' } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: '한 바퀴 → 원뿔대 완성' } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: `<p>사다리꼴의 높이가 되는 변을 축으로 1회전 → <b>원뿔대</b></p><p>윗면의 반지름 = 윗변 = ${M.r} cm, 아랫면의 반지름 = 아랫변 = ${M.R} cm</p>`,
       rule: '직각이 있는 사다리꼴을 높이가 되는 변을 축으로 1회전시키면 원뿔대가 된다',
       notes: notes('두 밑면은 서로 <b>평행하고 크기가 달라요</b>(반지름이 다른 원).', '비스듬한 변(옆변)은 돌면서 원뿔대의 <b>옆면(모선)</b>을 만들어요.')
@@ -336,7 +336,7 @@
     view: (M, C) => ({
       guide: turnGuide + ' 반지름 막대를 바꿔 보세요.',
       readouts: [rd('반원의 지름', cmv(2 * M.R), AMB, '회전축 위'), rd('반원의 반지름', cmv(M.R), AMB), rd('회전체', '구', SKY), rd('구의 반지름', cmv(M.R), GRN, '반원의 반지름과 같음')],
-      status: C.t >= 0.999 ? { tone: 'ok', text: `구 완성 (반지름 ${M.R} cm)` } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: `구 완성 (반지름 ${M.R} cm)` } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: `<p>반원을 지름을 축으로 1회전 → <b>구</b></p><p>(구의 반지름) = (반원의 반지름) = ${M.R} cm</p>`,
       rule: '반원을 지름을 회전축으로 1회전시키면 구가 된다',
       notes: notes('구는 반지름만 있으면 정해져요. <b>밑면과 높이가 없어요</b>.', '회전축은 반드시 <b>지름</b>이어야 해요. 호가 아니라 곧은 변(지름)이 축이에요.')
@@ -422,7 +422,7 @@
     view: (M, C) => ({
       guide: (M.kind === 'tri' ? '직각삼각형의 <b>빗변</b>을 축으로 돌려 보세요. 두 개의 원뿔이 붙은 모양이 만들어져요.' : '노란 점을 <b>가로로</b> 끌어(또는 막대로) 도형을 축에서 떼어 보세요. 거리가 0이면 속이 찬 원기둥, 떨어지면 속이 빈 입체예요.') + ' ' + '돌리는 각도 막대로 자취도 확인해 보세요.',
       readouts: M.kind === 'tri' ? [rd('회전축', '빗변', ROSE), rd('공통 밑면의 반지름', cmv(M.r), AMB, '꼭짓점 B에서 축까지'), rd('회전체', M.name, SKY, '원뿔 두 개', null, true)] : [rd('축에서 떨어진 거리 d', cmv(M.d), ROSE), rd('도형의 너비', cmv(M.w), AMB), rd('회전체', M.name, SKY, M.d === 0 ? '속이 찬 입체' : `구멍의 반지름 ${M.d} cm`)],
-      status: C.t >= 0.999 ? { tone: 'ok', text: M.name } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: M.name } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: M.kind === 'tri' ? '<p>직각삼각형을 빗변을 축으로 1회전 → 원뿔 두 개를 붙인 입체</p>' : `<p>직사각형이 축에서 ${M.d} cm 떨어져 있으면 ${M.d === 0 ? '→ 원기둥' : '→ 속이 빈 원기둥'}</p>`,
       rule: '평면도형이 회전축에 붙어 있어야 속이 찬 회전체가 되고, 떨어져 있으면 속이 빈 회전체가 된다',
       notes: notes('축이 도형과 <b>떨어져 있는지·붙어 있는지</b> 먼저 확인해요.', '삼각형은 <b>어느 변이 축인지</b>에 따라 원뿔, 두 원뿔을 붙인 입체 등으로 달라져요.')
@@ -443,7 +443,7 @@
   const dims6 = (s) => { const R = clamp(Math.round(s.soVR), 2, 15); return { R, r: clamp(Math.min(Math.round(s.soVr), R - 1), 1, 14), h1: clamp(Math.round(s.soV1), 2, 20), h2: clamp(Math.round(s.soV2), 1, 20) }; };
   S.push({
     id: 's1-6', title: '[핵심] 회전체를 보고 평면도형 찾기', short: '[핵심] 입체→평면도형',
-    question: '회전체를 축을 따라 반으로 자른 한쪽 단면이 회전하기 전의 평면도형이야. 그림의 회전체는 어떤 평면도형을 돌린 것일까?',
+    question: '회전체는 축을 따라 자른 한쪽 단면을 돌려서 만들 수 있어. 축의 한쪽에 놓인 평면도형 중 어떤 것을 돌린 것일까?',
     ctl: (s) => ({ frus: ['soVR', 'soVr', 'soV1'], pencil: ['soVR', 'soV1', 'soV2'], dbl: ['soVR', 'soV1', 'soV2'], stairs: ['soVR', 'soVr', 'soV1', 'soV2'] }[s.soK6 || 'frus']).concat(['soT']),
     anim: { key: 'soT', dur: 5, label: '거꾸로 풀어 보기', start: 1 },
     presets: () => [{ group: '회전체', label: '원뿔대', apply: (st) => { st.soK6 = 'frus'; }, on: (st) => (st.soK6 || 'frus') === 'frus' }, { label: '원기둥+원뿔', apply: (st) => { st.soK6 = 'pencil'; }, on: (st) => st.soK6 === 'pencil' }, { label: '두 원뿔', apply: (st) => { st.soK6 = 'dbl'; }, on: (st) => st.soK6 === 'dbl' }, { label: '두 원기둥', apply: (st) => { st.soK6 = 'stairs'; }, on: (st) => st.soK6 === 'stairs' }],
@@ -475,17 +475,17 @@
       guide: '분홍 점선이 회전축 $l$이에요. <b>돌리는 각도</b>를 줄이면 완성된 입체가 노란 평면도형으로 돌아가요. 입체를 반으로 잘랐을 때 <b>한쪽 단면</b>이 처음 도형이에요.',
       readouts: [rd('회전체', M.sol.name, SKY, null, null, true), rd('평면도형', '축의 한쪽 단면', AMB, '축은 도형의 가장자리'), rd('입체의 높이', cmv(M.sol.ymax - M.sol.ymin), AMB)],
       status: { tone: 'info', text: M.sol.name },
-      formula: '<p>회전체의 평면도형 = 회전축을 지나는 평면으로 자른 <b>한쪽</b> 단면</p><p>축을 가운데 두고 양쪽에 그린 그림은 한 쪽만 돌려도 되는 도형을 <b>두 번</b> 그린 것이에요.</p>',
-      rule: '회전체를 회전축을 포함하는 평면으로 자른 한쪽 단면이 회전하기 전의 평면도형이다',
-      notes: notes('축의 <b>한쪽만</b> 그려요. 양쪽이 대칭으로 그려진 도형은 틀려요.', '입체에 보이는 <b>꺾이는 곳(고리)</b>이 평면도형의 꼭짓점이에요.')
+      formula: '<p>회전체를 만드는 한 가지 평면도형 = 회전축을 지나는 평면으로 자른 <b>한쪽</b> 단면</p><p>양쪽에 대칭인 도형을 돌려도 같은 입체를 만들 수 있어요. 이 문제에서는 <b>축의 한쪽에 놓인 도형</b>을 찾아요.</p>',
+      rule: '회전체를 회전축을 포함하는 평면으로 자른 한쪽 단면을 돌리면 같은 회전체가 된다',
+      notes: notes('이 문제의 조건은 <b>축의 한쪽에 놓인 도형</b>이에요. 양쪽에 대칭인 도형도 같은 입체를 만들 수 있지만 이 조건에는 맞지 않아요.', '입체에 보이는 <b>꺾이는 곳(고리)</b>이 평면도형의 꼭짓점이에요.')
     }),
     prob: (M, s) => {
       const d = M.d, correct = S3.solid(M.kind, d).poly, sd = 's1-6|' + M.kind + JSON.stringify(d) + '|' + ((s && s.soSeed) || 0);
       const others = sshuffle(KINDS6.filter((k) => k !== M.kind), sd + 'o').slice(0, 3);
-      const items = [{ svg: S3.planeSvg(correct, { w: 150, h: 130 }), ok: true, hint: '' }, { svg: S3.planeSvg(correct, { mirror: true, w: 150, h: 130 }), ok: false, hint: '축 양쪽에 대칭으로 그린 도형은 아니에요. 한쪽 단면만 돌려요.' }];
+      const items = [{ svg: S3.planeSvg(correct, { w: 150, h: 130 }), ok: true, hint: '' }, { svg: S3.planeSvg(correct, { mirror: true, w: 150, h: 130 }), ok: false, hint: '같은 입체를 만들 수 있지만, 축의 한쪽에만 놓여 있어야 한다는 문제 조건에는 맞지 않아요.' }];
       others.forEach((k) => items.push({ svg: S3.planeSvg(S3.solid(k, d).poly, { w: 150, h: 130 }), ok: false, hint: '이 도형을 돌리면 다른 모양의 입체가 돼요. 꺾이는 곳을 비교해 보세요.' }));
       const list = sshuffle(items, sd);
-      return { tag: '회전체의 평면도형 (핵심)', key: M.kind + JSON.stringify(d), fig: true, stem: '그림의 회전체는 어떤 평면도형을 직선 l을 축으로 1회전시킨 것인가?', choices: list.map((x) => ({ h: x.svg, p: '평면도형 그림', ok: x.ok, hint: x.hint })) };
+      return { tag: '회전체의 평면도형 (핵심)', key: M.kind + JSON.stringify(d), fig: true, stem: '다음 중 직선 l의 한쪽에 놓여 있고, l을 축으로 1회전시켰을 때 그림의 회전체가 되는 평면도형은?', choices: list.map((x) => ({ h: x.svg, p: '평면도형 그림', ok: x.ok, hint: x.hint })) };
     }
   });
 
@@ -576,9 +576,9 @@
       guide: '입체 칩을 눌러 고르고 <b>돌려 보기</b> 막대를 움직여 보세요. 노란 점선은 처음 모양이에요. 위에서 본 모양도 함께 비교해요.',
       readouts: [rd('입체', M.name, SKY), rd('둥근 곡면', M.rev ? '있어요' : '없어요', M.rev ? GRN : 'rose'), rd('회전체인가요?', M.rev ? '예' : '아니요', M.rev ? GRN : 'rose', M.rev ? '위에서 보면 원' : '위에서 보면 다각형')],
       status: { tone: M.rev ? 'ok' : 'warn', text: `${M.name}: ${M.rev ? '회전체' : '회전체가 아니에요'}` },
-      formula: '<p>회전체: 평면도형을 한 직선(회전축)을 중심으로 1회전시켜 만든 입체</p><p>회전체는 축을 중심으로 돌려도 모양이 그대로이고, 위에서 본 모양(축에 수직인 단면)이 원이에요.</p>',
+      formula: '<p>회전체: 평면도형을 한 직선(회전축)을 중심으로 1회전시켜 만든 입체</p><p>회전체는 축을 중심으로 어느 각도만큼 돌려도 모양이 그대로예요. 여기서 살펴본 네 회전체는 위에서 본 바깥 윤곽이 원이에요.</p>',
       rule: '다각형으로만 둘러싸인 입체(다면체)는 회전체가 아니다',
-      notes: notes('<b>원기둥·원뿔·원뿔대·구</b>는 회전체예요.', '<b>각기둥·각뿔·각뿔대</b>는 다면체라서 회전체가 아니에요.')
+      notes: notes('<b>원기둥·원뿔·원뿔대·구</b>는 회전체예요.', '<b>각기둥·각뿔·각뿔대</b>는 다면체라서 회전체가 아니에요.', '위에서 본 바깥 윤곽과 특정 높이의 단면은 구별해요. 속이 빈 원기둥의 축에 수직인 단면은 <b>고리 모양</b>이에요.')
     }),
     prob: (M) => {
       const items = M.list.map((k) => ({ k, rev: K7[k].rev }));

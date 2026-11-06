@@ -13,33 +13,37 @@
   if (!G || !G.S3) return;
   const S3 = G.S3;
   const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, sshuffle, jo, bboxOf } = G;
-  const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
+  const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green', RED = 'red';
   const cmv = (v) => fmtN(v) + ' cm';
   // s2-6: 작은 원뿔의 반지름 R·c/4와 높이 H·c/4가 모두 자연수가 되는 (R, H, c)만 허용해요.
   // 막대를 끌면 끈 막대를 우선해 가장 가까운 허용값으로 맞춰요(다른 장면의 R·H 막대는 그대로 아무 정수나 돼요).
   const OK6 = (R, H, c) => (R * c) % 4 === 0 && (H * c) % 4 === 0;
   const ALL6 = (() => { const o = []; for (let R = 2; R <= 15; R++) for (let H = 3; H <= 20; H++) for (let c = 1; c <= 3; c++) if (OK6(R, H, c)) o.push([R, H, c]); return o; })();
   const tri6 = (s, first) => {
-    const R = clamp(Math.round(s.soSR), 2, 15), H = clamp(Math.round(s.soSH), 3, 20), c = clamp(Math.round(s.soC), 1, 3);
+    const R = clamp(Math.round(s.soCutR), 2, 14), H = clamp(Math.round(s.soCutH), 4, 20), c = clamp(Math.round(s.soC), 1, 3);
     if (OK6(R, H, c)) return [R, H, c];
     const w = { R: first === 'R' ? 1e6 : 1000, H: first === 'H' ? 1e6 : 1000, c: first === 'c' ? 1e6 : 1 };
     let best = ALL6[0], bd = Infinity;
     ALL6.forEach((p) => { const d = Math.abs(p[0] - R) * w.R + Math.abs(p[1] - H) * w.H + Math.abs(p[2] - c) * w.c; if (d < bd) { bd = d; best = p; } });
     return best;
   };
-  const fix6 = (st, lab, first) => { if (!lab || !lab.scene || lab.scene.id !== 's2-6') return; const p = tri6(st, first); st.soSR = p[0]; st.soSH = p[1]; st.soC = p[2]; };
+  const fix6 = (st, lab, first) => { if (!lab || !lab.scene || lab.scene.id !== 's2-6') return; const p = tri6(st, first); st.soCutR = p[0]; st.soCutH = p[1]; st.soC = p[2]; };
   const P6 = (() => { const o = []; [2, 4, 6, 8].forEach((R) => [4, 6, 8, 12].forEach((H) => [1, 2, 3].forEach((c) => { if (OK6(R, H, c)) o.push([R, H, c]); }))); return o; })();
 
   const PARAMS = {
-    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => fix6(st, lab, 'R') }),
-    soSr: P('윗면의 반지름', 1, 14, 1, 2, { color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
-    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => fix6(st, lab, 'H') }),
-    soU: P('자르는 높이', 0.04, 0.96, 0.01, 0.4, { color: 'rose', hint: '평면의 높이를 정해요(칼날은 이 높이에서 가로로 지나가요)', format: (v) => Math.round(v * 100) + '%' }),
-    soE: P('칼날 밀어 넣기', 0, 1, 0.005, 1, { color: 'rose', hint: '오른쪽으로 끌면 판이 왼쪽에서 들어와 가로로 지나가요', format: (v) => Math.round(v * 100) + '%' }),
+    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => G.keepSmaller(st, 'soSr', 'soSR') }),
+    soSr: P('윗면의 반지름', 1, 14, 1, 2, { onInput: (st) => G.keepSmaller(st, 'soSr', 'soSR'), color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
+    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    // 이 장면에서 홀수 R·H는 어떤 c/4로 잘라도 작은 원뿔의 치수가 자연수가 될 수 없어요.
+    // 별도 막대에서 짝수만 고릅니다. 선택한 치수는 유지하고 자르는 위치를 함께 맞춰요.
+    soCutR: P('큰 원뿔의 반지름 R', 2, 14, 2, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm', hint: '2 cm씩 바꿔요. 작은 원뿔의 치수가 자연수가 되도록 자르는 위치도 함께 맞춰요', onInput: (st, lab) => fix6(st, lab, 'R') }),
+    soCutH: P('큰 원뿔의 높이 H', 4, 20, 2, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm', hint: '2 cm씩 바꿔요. 작은 원뿔의 치수가 자연수가 되도록 자르는 위치도 함께 맞춰요', onInput: (st, lab) => fix6(st, lab, 'H') }),
+    soU: P('자르는 높이', 0.04, 0.96, 0.01, 0.4, { color: 'rose', hint: '평면의 높이를 정해요(칼날은 이 높이에서 가로로 지나가요)', format: (v) => G.measureN(v * 100) + '%' }),
+    soE: P('칼날 밀어 넣기', 0, 1, 0.005, 1, { color: 'rose', hint: '오른쪽으로 끌면 판이 왼쪽에서 들어와 가로로 지나가요', format: (v) => G.measureN(v * 100) + '%' }),
     soPsi: P('단면판 돌리기', 0, 90, 1, 0, { color: 'rose', hint: '축을 포함한 채 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
-    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4. 길이가 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + '/4', onInput: (st, lab) => fix6(st, lab, 'c') }),
-    soG: P('작은 원뿔 떼어 내기', 0, 1, 0.01, 0.7, { color: 'rose', hint: '작은 원뿔이 오른쪽으로 밀려 나가요', format: (v) => Math.round(v * 100) + '%' }),
-    soFold: P('왼쪽 반을 접기', 0, 1, 0.005, 0.5, { color: 'rose', hint: '회전축을 접는 선으로 접어요', format: (v) => Math.round(v * 180) + '°' })
+    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4. 길이가 자연수가 되도록 필요하면 큰 원뿔의 치수도 함께 맞춰요', format: (v) => Math.round(v) + '/4', onInput: (st, lab) => fix6(st, lab, 'c') }),
+    soG: P('작은 원뿔 떼어 내기', 0, 1, 0.01, 0.7, { color: 'rose', hint: '작은 원뿔이 오른쪽으로 밀려 나가요', format: (v) => G.measureN(v * 100) + '%' }),
+    soFold: P('왼쪽 반을 접기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '회전축을 접는 선으로 접어요', format: (v) => G.measureN(v * 180) + '°' })
   };
 
   /* ------------------------------------------------------------------ 입체·단면 계산 */
@@ -80,14 +84,13 @@
 
   /* ------------------------------------------------------------------ 그림 틀: 똑바로 세운 입체 + 단면의 실제 모양(작은 그림) */
   const union = (a, c) => ({ x0: Math.min(a.x0, c.x0), x1: Math.max(a.x1, c.x1), y0: Math.min(a.y0, c.y0), y1: Math.max(a.y1, c.y1) });
-  function placeInset(b, sb, side0) {
+  function placeInset(b, sb, side0, mainLabelPad = 0) {
     if (b.W < 560 && !b.thumb) {
-      // 휴대폰: 입체를 위에 크게 놓고, 단면 그림은 읽을 만큼만(고정 크기 px) 아래에 둡니다. 입체의 맞춤을 여기서 함께 합니다.
-      // (입체를 키우려고 단면 그림은 84px로 줄였습니다. 길이 글씨는 그대로 14px 이상.)
-      const px = 84, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
-      fit(b, sb, { t: 30, b: blockH + 12, l: 22, r: 22 });
+      // 휴대폰: 입체와 단면을 위아래로 놓습니다. 실제 단면도 약 98px 이상으로 확보해 치수를 읽을 수 있게 해요.
+      const px = 144, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
+      fit(b, sb, { t: 30, b: blockH + 12 + mainLabelPad, l: 22, r: 22 });
       const c = b.toW((b.W + il - ir) / 2, b.H - ib - 10 - blockH / 2), side = px / b.k;
-      return { cx: c.x, cy: c.y, side, narrow: true, fitted: true, capUp: 12 / b.k, secK: 0.52, box: { x0: c.x - side / 2, x1: c.x + side / 2, y0: c.y - side / 2, y1: c.y + side / 2 } };
+      return { cx: c.x, cy: c.y, side, narrow: true, fitted: true, capUp: 12 / b.k, secK: 0.68, box: { x0: c.x - side / 2, x1: c.x + side / 2, y0: c.y - side / 2, y1: c.y + side / 2 } };
     }
     const side = side0;
     const gap = side * 0.12, W = Math.max(60, b.W - 90), H = Math.max(60, b.H - 90);
@@ -120,7 +123,7 @@
     D.line({ x: x1, y: u, z: -Rs }, { x: x1, y: u, z: Rs }, col, 4.2);
     const circ = []; for (let i = 0; i < 72; i++) circ.push([ru * Math.cos(2 * PI * i / 72), ru * Math.sin(2 * PI * i / 72)]);
     const sec = clipPoly(clipPoly(circ, (p) => x1 - p[0]), (p) => p[0] - x0);
-    if (sec.length >= 3) D.poly3(sec.map((p) => ({ x: p[0], y: u, z: p[1] })), { close: true, fill: AMB, fillAlpha: 0.34, color: AMB, width: 3.4 });
+    if (sec.length >= 3) D.poly3(sec.map((p) => ({ x: p[0], y: u, z: p[1] })), { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: 3.4 });
   }
   // (b) 축을 포함하는(세로) 판: 방위각 psi, 판 위 가로 좌표 v 의 오른쪽 가장자리 e
   const axCorners = (D, sol, psi, Rs, e = 0.4) => [[-Rs, sol.ymin - e], [Rs, sol.ymin - e], [Rs, sol.ymax + e], [-Rs, sol.ymax + e]].map((q) => D.P(D.pol(q[0], q[1], psi)));
@@ -130,7 +133,7 @@
     D.line(q(v1, y0), q(v1, y1), col, 4.2);
     const sp = secPoly(sol).map((p) => [p[1], p[0]]);   // [v, u]
     const sec = clipPoly(clipPoly(sp, (p) => v1 - p[0]), (p) => p[0] - v0);
-    if (sec.length >= 3) D.poly3(sec.map((p) => D.pol(p[0], p[1], psi)), { close: true, fill: AMB, fillAlpha: 0.34, color: AMB, width: 3.4 });
+    if (sec.length >= 3) D.poly3(sec.map((p) => D.pol(p[0], p[1], psi)), { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: 3.4 });
   }
 
   // 단면 2차원 그림(회전축은 세로): 척도와 좌표 변환
@@ -143,7 +146,7 @@
   function drawSection(b, C, ins, sol, o = {}) {
     const { k, f } = secFrame(ins, sol), px = (n) => n / b.k;
     const poly = secPoly(sol).map((p) => f(p[0], p[1]));
-    b.path(poly, { close: true, fill: o.fill || AMB, fillAlpha: o.fa == null ? 0.3 : o.fa, color: o.color || AMB, width: o.width || 3.4 });
+    b.path(poly, { close: true, fill: o.fill || RED, fillAlpha: o.fa == null ? 0.2 : o.fa, color: o.color || RED, width: o.width || 3.4 });
     b.seg(f(sol.ymin - 0.35, 0), f(sol.ymax + 0.35, 0), { color: ROSE, width: 2.2, dash: [7, 5] });
     if (C.txt && !o.noDims) {
       const d = sol.d, hiW = o.hiW ? 5 : 3, top = sol.ymax, bot = sol.ymin;
@@ -229,12 +232,13 @@
           const cx = ins.cx, cy = ins.cy, K = ins.side * 0.34 / m.sol.rmax, rr = Math.max(0.04, m.ru) * K;
           const circ = (R2) => { const q = []; for (let i = 0; i <= 56; i++) q.push({ x: cx + R2 * Math.cos(2 * PI * i / 56), y: cy + R2 * Math.sin(2 * PI * i / 56) }); return q; };
           b.path(circ(m.sol.rmax * K), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
-          b.path(circ(rr), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: c.review && c.step === 2 ? 5.5 : 3.4 });
+          b.path(circ(rr), { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: c.review && c.step === 2 ? 5.5 : 3.4 });
           if (c.txt) {
             T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '단면(실제 모양)', 'ink', { size: 15 });
             if (m.kind !== 'sphere') {
-              b.seg({ x: cx, y: cy }, { x: cx + rr, y: cy }, { color: AMB, width: 2.8 });
-              T(b, { x: cx, y: cy - ins.side * 0.46 }, `반지름 r = ${fmtN(m.ru)} cm`, AMB, { size: 17 });
+              b.seg({ x: cx, y: cy }, { x: cx + rr, y: cy }, { color: ROSE, width: 2.8 });
+              const radius = G.measureN(m.ru);
+              T(b, { x: cx, y: cy - ins.side * 0.46 }, `반지름 r ${radius.startsWith('≈') ? '' : '= '}${radius} cm`, ROSE, { size: 17 });
             } else T(b, { x: cx, y: cy - ins.side * 0.46 }, '가운데에서 가장 커요', AMB, { size: 16 });
           }
         }
@@ -242,16 +246,16 @@
     },
     steps: (M) => [
       '회전축에 <b>수직인 평면</b>(분홍)이 정한 높이에서 왼쪽에서 오른쪽으로 가로로 밀려 지나가요.',
-      '잘린 면(단면)은 어느 높이에서든 <b>원</b>이에요. (구도 마찬가지예요.)',
+      '이 실험에서 선택한 높이의 잘린 면(단면)은 <b>원</b>이에요. 두 끝은 제외하고 살펴봐요.',
       M.kind === 'cyl' ? '원기둥은 어디를 잘라도 원의 크기가 <b>같아요</b>.' : M.kind === 'sphere' ? '구는 가운데를 자를 때 원이 가장 크고, 위·아래 끝으로 갈수록 작아져요.' : '원뿔(대)은 꼭짓점 쪽으로 갈수록 원이 <b>작아져요</b>.'
     ],
     view: (M) => ({
-      guide: '<b>자르는 높이</b>를 정하고 <b>칼날 밀어 넣기</b> 막대를 오른쪽으로 끌어(또는 ▶) 보세요. 분홍 판이 정한 높이에서 왼쪽→오른쪽으로 지나가며 단면(노랑)이 나타나요. 오른쪽(또는 아래)에 단면의 실제 모양이 나와요.',
-      readouts: [rd('회전체', M.sol.name, SKY), rd('단면의 모양', '원', AMB, '축에 수직인 평면'), rd('단면의 반지름', M.kind === 'sphere' ? '그림에서 확인' : cmv(M.ru), GRN, M.kind === 'cyl' ? '어디서나 같아요' : '높이에 따라 달라요')],
-      status: { tone: 'ok', text: '축에 수직으로 자르면 항상 원' },
-      formula: '<p>회전축에 수직인 평면으로 자른 단면 → <b>원</b></p><p>원기둥: 반지름이 일정 · 원뿔(대): 높이에 따라 반지름이 변함 · 구: 가운데에서 가장 큼</p>',
-      rule: '회전체를 회전축에 수직인 평면으로 자른 단면은 항상 원이다',
-      notes: notes('축에 <b>수직</b>이면 원이에요. 축을 <b>포함</b>하는 평면으로 자르면 원이 아니에요(다음 장면).', '원뿔·원뿔대는 자르는 높이에 따라 원의 <b>크기</b>가 달라져도 모양은 항상 원이에요.')
+      guide: '<b>자르는 높이</b>를 정하고 <b>칼날 밀어 넣기</b> 막대를 오른쪽으로 끌어(또는 ▶) 보세요. 분홍 판이 정한 높이에서 왼쪽→오른쪽으로 지나가며 단면(빨강)이 나타나요. 오른쪽(또는 아래)에 단면의 실제 모양이 나와요.',
+      readouts: [rd('회전체', M.sol.name, SKY), rd('단면의 모양', '원', RED, '축에 수직인 평면'), rd('단면의 반지름', M.kind === 'sphere' ? '그림에서 확인' : G.measureN(M.ru) + ' cm', GRN, M.kind === 'cyl' ? '어디서나 같아요' : '높이에 따라 달라요')],
+      status: { tone: 'ok', text: `${M.sol.name}: 두 끝 사이를 축에 수직으로 자르면 원` },
+      formula: '<p>이 네 입체의 두 끝 사이에서 축에 수직인 단면 → <b>원</b></p><p>원기둥: 반지름이 일정 · 원뿔(대): 높이에 따라 반지름이 변함 · 구: 가운데에서 가장 큼</p>',
+      rule: '원기둥·원뿔·원뿔대·구의 두 끝 사이를 회전축에 수직인 평면으로 자른 단면은 원이다',
+      notes: notes('여기서 살펴본 네 입체는 축에 <b>수직</b>으로 자르면 원이에요. 축을 <b>포함</b>하는 단면은 입체마다 다르고, 구는 그때도 원이에요.', '원뿔·원뿔대는 높이에 따라 단면 원의 <b>크기</b>가 달라져요. 구의 위·아래 끝이나 원뿔의 꼭짓점에서는 한 점이 돼요.', '축에서 떨어진 직사각형을 돌린 <b>속이 빈 원기둥</b>은 수직 단면이 고리 모양이에요. 모든 회전체의 단면이 원인 것은 아니에요.')
     }),
     prob: (M) => {
       if (M.kindP === 2) {
@@ -266,7 +270,7 @@
       return {
         tag: '단면의 모양', key: 'shape' + M.kind,
         stem: `그림과 같이 ${M.sol.name}${jo(M.sol.name, 'eul')} 회전축에 수직인 평면으로 자를 때 생기는 단면의 모양은?`,
-        choices: mkText(names.map((n, i) => ({ h: n, ok: i === 0, hint: '회전축에 수직인 단면은 항상 원이에요. 축을 포함할 때와 헷갈리지 않았나요?' })))
+        choices: mkText(names.map((n, i) => ({ h: n, ok: i === 0, hint: '이 입체의 두 끝 사이를 축에 수직으로 자르면 원이에요. 축을 포함하는 단면과 구별해 보세요.' })))
       };
     }
   });
@@ -342,7 +346,7 @@
           after: (D, m, c, ins, Rs) => {
             axSheet(D, sol, 0, Rs, 2 * Rs, Rs);
             D.line({ x: 0, y: 0, z: 0 }, { x: d.R, y: 0, z: 0 }, AMB, 2.6, { dash: [5, 4] });
-            S3.rLabel(b, D, d.R, `r = ${d.R}`, AMB, 16);
+            S3.rLabel(b, D, d.R, `${M.pk === 'frus' ? 'R' : 'r'} = ${d.R}`, AMB, 16);
             if (M.pk === 'frus') { D.line({ x: 0, y: d.h1, z: 0 }, { x: d.r, y: d.h1, z: 0 }, AMB, 2.6, { dash: [5, 4] }); S3.rLabel(b, D, d.r, `r = ${d.r}`, AMB, 16, d.h1); }
             const bx = -sol.rmax - 1;
             D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: d.h1, z: 0 }, AMB, 2.6);
@@ -357,11 +361,12 @@
           axSheet(D, m.sol, 0, Rs, 2 * Rs, Rs);
           if (!ins) return;
           const { k, f } = drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 2 });
-          // 함정: 반지름만 쓴 오른쪽 반(r × h)
+          // 실제 오른쪽 반의 넓이: 원기둥에서만 r×h이고, 삼각형·사다리꼴은 각각의 넓이 공식을 씁니다.
           if (c.txt && (c.review ? c.step >= 4 : true)) {
             const half = secPoly(m.sol).filter((p) => p[1] >= 0).map((p) => f(p[0], p[1]));
             b.path(half, { close: true, fill: ROSE, fillAlpha: 0.2, color: null });
-            T(b, f(m.sol.ymax * 0.5, m.d.R * 0.5), b.W < 560 ? `${m.d.R * m.d.h1}` : `r × h = ${m.d.R * m.d.h1}`, ROSE, { size: 15 }); // 휴대폰은 작은 그림이라 값만
+            const halfArea = fmtN(m.area / 2);
+            T(b, f(m.sol.ymax * 0.5, m.d.R * 0.5), b.W < 560 ? halfArea : m.kind === 'cyl' ? `r × h = ${halfArea}` : `단면의 반쪽 = ${halfArea}`, ROSE, { size: 15 });
             T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, `단면의 넓이 = ${m.kind === 'cyl' ? `2r × h = ${2 * m.d.R} × ${m.d.h1}` : m.kind === 'cone' ? `½ × 2r × h = ½ × ${2 * m.d.R} × ${m.d.h1}` : `(${2 * m.d.R} + ${2 * m.d.r}) × ${m.d.h1} ÷ 2`} = ${m.area}`, GRN, { size: 15 });
           }
         }
@@ -371,17 +376,17 @@
       const d = M.d;
       return [
         `축을 포함하는 평면으로 자른 단면은 ${M.kind === 'cyl' ? '직사각형' : M.kind === 'cone' ? '이등변삼각형' : '사다리꼴'}이에요.`,
-        `가로(밑변)는 <b>지름 2r</b>이에요. 반지름 r=${d.R}이 아니라 2r=${2 * d.R}을 써요.` + (M.kind === 'frus' ? ` 윗변은 2r=${2 * d.r}이에요.` : ''),
+        M.kind === 'frus' ? `아랫변은 큰 밑면의 지름 2R=${2 * d.R}, 윗변은 작은 밑면의 지름 2r=${2 * d.r}이에요.` : `가로(밑변)는 <b>지름 2r</b>이에요. 반지름 r=${d.R}이 아니라 2r=${2 * d.R}을 써요.`,
         `세로(높이)는 입체의 높이 h=${d.h1}이에요.`,
         M.kind === 'cyl' ? `(넓이) = 가로 × 세로 = ${2 * d.R} × ${d.h1} = <b>${M.area}</b> (cm²)` : M.kind === 'cone' ? `(넓이) = ½ × 밑변 × 높이 = ½ × ${2 * d.R} × ${d.h1} = <b>${M.area}</b> (cm²)` : `(넓이) = (윗변 + 아랫변) × 높이 ÷ 2 = (${2 * d.r} + ${2 * d.R}) × ${d.h1} ÷ 2 = <b>${M.area}</b> (cm²)`
       ];
     },
     view: (M) => ({
-      guide: '반지름 r와 높이 h를 바꿔 보세요. 단면 그림의 <b>가로는 지름 2r</b>이에요. 분홍색은 반지름만 쓴 <b>반쪽(r×h)</b>이라 넓이의 절반밖에 안 돼요.',
-      readouts: [rd('단면의 가로', `2r = ${2 * M.d.R} cm`, AMB, '반지름이 아니라 지름'), rd('단면의 세로', `h = ${M.d.h1} cm`, AMB), rd('단면의 넓이', `${M.area} cm²`, GRN, null, null, true)],
-      status: { tone: 'warn', text: `가로는 2r = ${2 * M.d.R}` },
+      guide: '반지름과 높이를 바꿔 보세요. 단면의 밑변에는 <b>반지름의 두 배인 지름</b>을 써요. 분홍색은 단면의 반쪽이고, 넓이도 전체의 절반이에요. 직사각형·삼각형·사다리꼴의 넓이 공식을 구별해 보세요.',
+      readouts: [rd(M.kind === 'frus' ? '단면의 아랫변' : '단면의 가로', `${M.kind === 'frus' ? '2R' : '2r'} = ${2 * M.d.R} cm`, AMB, '반지름이 아니라 지름'), rd('단면의 세로', `h = ${M.d.h1} cm`, AMB), rd('단면의 넓이', `${M.area} cm²`, GRN, null, null, true)],
+      status: { tone: 'warn', text: `가로는 ${M.kind === 'frus' ? '2R' : '2r'} = ${2 * M.d.R}` },
       formula: M.kind === 'cyl' ? `<p>직사각형: 가로 × 세로 = $2r \\times h$ = ${2 * M.d.R} × ${M.d.h1} = <b>${M.area}</b></p>` : M.kind === 'cone' ? `<p>삼각형: $\\dfrac12 \\times 2r \\times h$ = ½ × ${2 * M.d.R} × ${M.d.h1} = <b>${M.area}</b></p>` : `<p>사다리꼴: $(2r_1 + 2r_2) \\times h \\div 2$ = (${2 * M.d.r} + ${2 * M.d.R}) × ${M.d.h1} ÷ 2 = <b>${M.area}</b></p>`,
-      rule: '축을 포함한 단면의 가로 길이는 반지름이 아니라 지름(2r)이다',
+      rule: '축을 포함한 단면의 밑변에는 원의 반지름이 아니라 지름을 쓴다',
       notes: notes('가로에 <b>반지름 r</b>을 넣으면 넓이가 절반이 돼요. 꼭 <b>지름 2r</b>을 쓰세요.', '원뿔의 단면은 삼각형이라 <b>½</b>을 곱해요. 원기둥은 직사각형이라 곱하지 않아요.')
     }),
     prob: (M) => {
@@ -439,7 +444,7 @@
     view: (M, C) => ({
       guide: '왼쪽은 단면의 <b>반쪽(노랑)</b>을 축 둘레로 제자리에서 돌려 만드는 회전체, 오른쪽(또는 아래)은 그 회전체의 <b>축을 포함한 단면</b>이에요. 돌리는 각도 막대를 움직여 보세요.',
       readouts: [rd('단면의 모양', SEC_NAME[M.kind], AMB), rd('회전체', M.sol.name, SKY, null, null, true)],
-      status: C.t >= 0.999 ? { tone: 'ok', text: `${M.sol.name} 완성` } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
+      status: G.complete(C.t) ? { tone: 'ok', text: `${M.sol.name} 완성` } : { tone: 'info', text: `${G.measureN(C.t * 360)}° 돌린 자취` },
       formula: '<p>단면의 반쪽 = 회전하기 전의 평면도형 → 한 바퀴 돌리면 회전체</p>',
       rule: '회전체의 축을 포함하는 단면의 반쪽을 축 둘레로 1회전시키면 처음 회전체가 된다',
       notes: notes('단면은 <b>양쪽이 대칭</b>이에요. 반쪽만 돌리면 돼요.', '단면이 같은 모양이어도 <b>안이 비었는지</b>(구멍)는 단면에 구멍이 있는지 보고 판단해요.')
@@ -475,13 +480,13 @@
       const sf = secFrame(ins, sol), phi = PI * clamp(C.t, 0, 1);
       fit(b, { x0: -side * 0.6, x1: side * 0.6, y0: -side * 0.58, y1: side * 0.58 }, { l: 40, r: 40, t: 50, b: 50 });
       const rt = sol.poly.map((p) => sf.f(p[1], p[0])), lf = sol.poly.map((p) => sf.f(p[1], -p[0] * Math.cos(phi)));
-      b.path(rt, { close: true, fill: AMB, fillAlpha: 0.34, color: AMB, width: 3.4 });
-      b.path(lf, { close: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 3.4 });
+      b.path(rt, { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: 3.4 });
+      b.path(lf, { close: true, fill: AMB, fillAlpha: 0.24, color: AMB, width: 3.4 });
       b.seg(sf.f(sol.ymin - 0.35, 0), sf.f(sol.ymax + 0.35, 0), { color: ROSE, width: 2.6, dash: [7, 5] });
       if (C.txt) {
         T(b, sf.f(sol.ymax + 0.35, 0), '대칭축 = 회전축 l', ROSE, { dy: -16, size: 16 });
-        const done = phi > PI - 0.04;
-        T(b, sf.f(sol.ymin - 0.35, 0), done ? '두 반쪽이 꼭 겹쳐져요' : `${Math.round(phi / DEG)}° 접는 중`, done ? GRN : 'ink', { dy: 20, size: 17 });
+        const done = G.complete(C.t);
+        T(b, sf.f(sol.ymin - 0.35, 0), done ? '두 반쪽이 꼭 겹쳐져요' : `${G.measureN(phi / DEG)}° 접는 중`, done ? GRN : 'ink', { dy: 20, size: 17 });
         T(b, sf.f(sol.ymin - 0.35, 0), SEC_NAME[M.kind], 'ink', { dy: 42, size: 16 });
       }
       void hs;
@@ -493,20 +498,20 @@
       '그러므로 회전체의 축을 포함한 단면은 회전축을 대칭축으로 하는 선대칭도형이에요.'
     ],
     view: (M, C) => ({
-      guide: '막대로 <b>왼쪽 반(분홍)</b>을 접어 오른쪽으로 넘겨 보세요. 단면의 모양이 달라도 접으면 항상 겹쳐져요.',
-      readouts: [rd('단면의 모양', SEC_NAME[M.kind], AMB), rd('접는 선', '회전축', ROSE), rd('겹치나요?', C.t > 0.99 ? '예 (선대칭도형)' : '접는 중', GRN)],
-      status: C.t > 0.99 ? { tone: 'ok', text: '두 반쪽이 겹쳐져요: 선대칭도형' } : { tone: 'info', text: `${Math.round(C.t * 180)}° 접었어요` },
+      guide: '막대로 <b>왼쪽 반(노랑)</b>을 접어 오른쪽으로 넘겨 보세요. 단면의 모양이 달라도 접으면 항상 겹쳐져요.',
+      readouts: [rd('단면의 모양', SEC_NAME[M.kind], AMB), rd('접는 선', '회전축', ROSE), rd('겹치나요?', G.complete(C.t) ? '예 (선대칭도형)' : '접는 중', GRN)],
+      status: G.complete(C.t) ? { tone: 'ok', text: '두 반쪽이 겹쳐져요: 선대칭도형' } : { tone: 'info', text: `${G.measureN(C.t * 180)}° 접었어요` },
       formula: '<p>접었을 때 완전히 겹치는 도형 = <b>선대칭도형</b> · 접는 선 = <b>대칭축</b></p><p>회전체의 축을 포함한 단면 → 대칭축은 회전축</p>',
       rule: '회전체를 회전축을 포함하는 평면으로 자른 단면은 선대칭도형이다',
-      notes: notes('대칭축은 <b>회전축</b>이에요. 회전축에 수직인 선이 아니에요.', '회전축에 <b>수직</b>인 단면(원)과 헷갈리지 않게 해요.')
+      notes: notes('<b>회전축</b>은 언제나 이 단면의 대칭축이에요. 원이나 직사각형에는 다른 대칭축도 있어요.', '회전축에 <b>수직</b>인 평면으로 자르는 경우와 구별해요.')
     }),
     prob: (M, s) => {
       const nm = { sphere: '구', cyl: '원기둥', cone: '원뿔', frus: '원뿔대' }[M.pk];
       const items = [
-        { h: '선대칭도형이고, 대칭축은 회전축이다.', ok: true },
+        { h: '회전축을 대칭축으로 하는 선대칭도형이다.', ok: true },
         { h: '모양이 어느 방향으로 자르느냐에 따라 달라진다.', hint: '축을 포함하면 어느 방향으로 잘라도 합동이에요.' },
-        { h: '대칭축은 회전축에 수직인 직선이다.', hint: '대칭축은 회전축 자체예요.' },
-        { h: '항상 원이다.', hint: '원은 축에 수직인 단면(또는 구)일 때예요.' },
+        { h: '회전축은 단면의 한쪽 가장자리에 놓인다.', hint: '회전축은 단면의 안쪽을 지나 양쪽을 대칭으로 나눠요.' },
+        { h: '회전체의 종류에 관계없이 단면은 항상 원이다.', hint: '구의 단면은 원이지만, 원기둥은 직사각형이고 원뿔은 이등변삼각형이에요.' },
         { h: '선대칭도형이 아니다.', hint: '접으면 겹치므로 선대칭도형이에요.' }
       ];
       const list = sshuffle(items.map((x) => ({ h: x.h, ok: !!x.ok, hint: x.hint || '' })), 's2-5|' + M.pk + M.ps + '|' + ((s && s.soSeed) || 0));
@@ -518,8 +523,8 @@
   S.push({
     id: 's2-6', pitchOnly: true, title: '원뿔대는 원뿔에서 원뿔을 뺀 것', short: '원뿔대 = 뿔 − 뿔',
     question: '원뿔을 밑면에 평행하게 잘라 윗부분을 떼어 내면 무엇이 남을까? 떼어 낸 부분과 남은 부분은 어떤 입체일까?',
-    ctl: ['soSR', 'soSH', 'soC', 'soG'],
-    init: (s) => { s.soSR = 4; s.soSH = 6; s.soC = 2; s.soG = 0.7; },
+    ctl: ['soCutR', 'soCutH', 'soC', 'soG'],
+    init: (s) => { s.soCutR = 4; s.soCutH = 6; s.soC = 2; s.soG = 0.7; },
     reroll: (s) => { const t = P6[pick(P6.map((p, i) => i), s.soP6i)]; s.soP6i = P6.indexOf(t); s.soPR = t[0]; s.soPH = t[1]; s.soPc = t[2]; },
     model: (s) => {
       const [R, H, c4] = tri6(s, 'R'), c = c4 / 4;
@@ -537,14 +542,14 @@
       if (prob) pts.push(D.P({ x: -R - 1.4, y: 0, z: 0 }), D.P({ x: R + 1.6, y: 0, z: 0 }));
       const sb = S3.boxOf(D, big, pts);
       const side = Math.max(2 * R, 4) * 1.1;
-      const ins = prob ? null : placeInset(b, unionB(sb, { x0: sb.x0, x1: sb.x1, y0: sb.y0, y1: sb.y1 }), side);
+      const ins = prob ? null : placeInset(b, unionB(sb, { x0: sb.x0, x1: sb.x1, y0: sb.y0, y1: sb.y1 }), side, 24);
       if (!(ins && ins.fitted)) fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: prob ? 96 : 44, r: prob ? 100 : 44 });
       // 큰 원뿔의 윤곽(점선)
       if (g > 0.02 || prob) S3.tangents(S3.ringP(D, R, 0), S3.ringP(D, 0, H)).lines.forEach((ln) => D.g.path([ln[0], ln[1]], { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.8 }));
       S3.drawBands(D, frus.bands, {});
       // 작은 원뿔: 위치는 그대로 높이만 유지하고 가로로 shift 만큼 이동(밑면 높이 H-hs)
       const Ds = S3.ctx(b, s, { k: 1, ox: D.P({ x: shift, y: 0, z: 0 }).x - D.P({ x: 0, y: 0, z: 0 }).x, oy: 0 });
-      S3.drawBands(Ds, [{ y0: H - hs, y1: H, r0: rs, r1: 0 }], { color: AMB, fillAlpha: 0.2 });
+      S3.drawBands(Ds, [{ y0: H - hs, y1: H, r0: rs, r1: 0 }], { color: RED, fillAlpha: 0.2 });
       S3.drawAxis(D, 0, H, { ext, label: '회전축 l' });
       if (C.txt) {
         D.line({ x: 0, y: 0, z: 0 }, { x: R, y: 0, z: 0 }, SKY, 2.4, { dash: [5, 4] });
@@ -563,11 +568,11 @@
         const cx = ins.cx, cy = ins.cy, K = ins.side * 0.36 / R;
         const circ = (R2) => { const q = []; for (let i = 0; i <= 56; i++) q.push({ x: cx + R2 * Math.cos(2 * PI * i / 56), y: cy + R2 * Math.sin(2 * PI * i / 56) }); return q; };
         b.path(circ(R * K), { close: true, fill: SKY, fillAlpha: 0.18, color: SKY, width: 3.2 });
-        b.path(circ(rs * K), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.2 });
+        b.path(circ(rs * K), { close: true, fill: RED, fillAlpha: 0.2, color: RED, width: 3.2 });
         T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '두 밑면(원)', 'ink', { size: 15 });
         T(b, { x: cx, y: cy }, `${fmtN(rs)}`, AMB, { size: 16 });
         T(b, { x: cx + R * K * 0.72, y: cy + R * K * 0.72 }, `${fmtN(R)}`, SKY, { dx: 6, size: 16 });
-        T(b, { x: cx, y: cy - ins.side * 0.46 }, `원뿔대의 높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)}`, GRN, { size: 15 });
+        if (!C.review || C.step >= 4) T(b, { x: cx, y: cy - ins.side * 0.46 }, `원뿔대의 높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)}`, GRN, { size: 15 });
       }
     },
     steps: (M) => [
@@ -577,8 +582,8 @@
       `원뿔대의 높이 = ${M.H} − ${fmtN(M.hs)} = <b>${fmtN(M.hf)} cm</b>예요.`
     ],
     view: (M) => ({
-      guide: '<b>떼어 내기</b> 막대를 움직이면 노란 작은 원뿔이 같은 높이에서 <b>오른쪽으로(가로로)</b> 밀려 나가요. 남은 하늘색 입체가 원뿔대예요. 높이와 자르는 위치도 바꿔 보세요.',
-      readouts: [rd('큰 원뿔', `R ${M.R} · 높이 ${M.H}`, SKY), rd('작은 원뿔', `r ${fmtN(M.rs)} · 높이 ${fmtN(M.hs)}`, AMB), rd('원뿔대의 높이', cmv(M.hf), GRN, `${M.H} − ${fmtN(M.hs)}`)],
+      guide: '<b>떼어 내기</b> 막대를 움직이면 떼어 낸 작은 원뿔(빨강)이 같은 높이에서 <b>오른쪽으로(가로로)</b> 밀려 나가요. 남은 하늘색 입체가 원뿔대예요. 높이와 자르는 위치도 바꿔 보세요.',
+      readouts: [rd('큰 원뿔', `R ${M.R} · 높이 ${M.H}`, SKY), rd('떼어 낸 작은 원뿔', `r ${fmtN(M.rs)} · 높이 ${fmtN(M.hs)}`, RED), rd('원뿔대의 높이', cmv(M.hf), GRN, `${M.H} − ${fmtN(M.hs)}`)],
       status: { tone: 'info', text: '원뿔대 = 큰 원뿔 − 작은 원뿔' },
       formula: `<p>(원뿔대) = (큰 원뿔) − (작은 원뿔)</p><p>(원뿔대의 높이) = ${M.H} − ${fmtN(M.hs)} = ${fmtN(M.hf)}</p>`,
       rule: '원뿔대는 원뿔을 밑면에 평행한 평면으로 자르고 윗부분(작은 원뿔)을 떼어 낸 나머지이다',
