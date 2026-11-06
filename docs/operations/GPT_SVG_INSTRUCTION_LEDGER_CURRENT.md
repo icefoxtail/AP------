@@ -16,7 +16,14 @@
 | 2023 금당고 2학기 기말 고1 Q11 | 유리함수 | 작성·전달 | Luna high 유리함수 묶음 | 계획 중 | 대기 | 미반영 |
 | 2023 매산여고 2학기 기말 고1 Q7 | 유리함수 | 작성·전달 | Luna high 유리함수 묶음 | 계획 중 | 대기 | 미반영 |
 
-지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`.
+| 2023 강남여고 2학기 기말 고1 Q12 | 합성 그래프 | 초안 작성, PNG 픽셀 확인 필요 | 미배정 | 미착수 | 미착수 | 미반영 |
+| 2023 강남여고 2학기 기말 고1 Q17 | 대응·역함수 | 작성·전달 | Luna high 대응 묶음 | 계획 중 | 대기 | 미반영 |
+| 2023 강남여고 2학기 기말 고1 Q18 | 반복 합성 | 초안 작성, PNG 픽셀 확인 필요 | 미배정 | 미착수 | 미착수 | 미반영 |
+| 2023 금당고 2학기 기말 고1 Q18 | 합성 방정식 | 초안 작성, PNG 픽셀 확인 필요 | 미배정 | 미착수 | 미착수 | 미반영 |
+| 2023 금당고 2학기 기말 고1 Q21 | 일대일대응 | 작성·전달 | Luna high 대응 묶음 | 계획 중 | 대기 | 미반영 |
+| 2023 매산여고 2학기 기말 고1 Q3 | 합성·역함수 | 초안 작성, PNG 픽셀 확인 필요 | 미배정 | 미착수 | 미착수 | 미반영 |
+
+지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
 
