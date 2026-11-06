@@ -1,0 +1,55 @@
+name: META B04 Residual Derived Sync (temporary)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/meta-b04-residual-derived-sync.yml'
+      - 'archive/data/meta-foundation/canonical/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: meta-b04-residual-derived-${{ github.head_ref }}
+  cancel-in-progress: false
+
+jobs:
+  compile:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'fix/meta-1397-b04-residual-41-42-47'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact PR source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Compile authoritative canonical changes
+        run: |
+          set -euo pipefail
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --write
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --check
+          git diff --check
+      - name: Commit only official compiler-derived files
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD" || exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            archive/data/meta-foundation/canonical/registry_index.json \
+            archive/data/meta-foundation/compiled \
+            archive/data/meta-foundation/runtime/geometry-equations-v1.json \
+            archive/data/meta-foundation/evidence/geometry-equations/v1
+          if git diff --cached --quiet; then
+            echo "Canonical derived files already current."
+            exit 0
+          fi
+          git commit -m "chore(meta): compile B04 residual derived state"
+          git push origin "HEAD:refs/heads/${{ github.head_ref }}"

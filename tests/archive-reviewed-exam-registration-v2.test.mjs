@@ -850,6 +850,28 @@ test("META_PIPELINE_AUDIT accepts the v2 atomic audit with its paired classifica
   assert.deepEqual(replay.plannedPaths, []);
 });
 
+test("META_PIPELINE_AUDIT atomic v2 accepts both SHA-bound classification v2 envelope spellings", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditV2(f);
+  const ref = f.request.approval.metaPipelineAudit.classificationRef;
+  const updateClassification = mutate => {
+    const classification = f.read(ref.path);
+    mutate(classification);
+    f.put(ref.path, classification);
+    const sha = hash(fs.readFileSync(path.join(f.root, ref.path)));
+    ref.sha256 = sha;
+    for (const rows of [f.request.approval.evidenceRefs, ...f.request.items.map(item => item.evidenceRefs)]) {
+      const row = rows.find(entry => entry.path === ref.path);
+      assert.ok(row);
+      row.sha256 = sha;
+    }
+  };
+  updateClassification(p => { p.schemaVersion = "CANDIDATE_CLASSIFICATION_PACKAGE_v2"; });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).status, "PASS");
+  updateClassification(p => { p.examTitle = "OTHER_EXAM"; });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /classification identity\/schema mismatch/);
+});
+
 test("META_PIPELINE_AUDIT v2 fails closed when a bound CrossConcept has no definition evidence", t => {
   const f = fixture(t);
   attachMetaPipelineAuditV2(f);
