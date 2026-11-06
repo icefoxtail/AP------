@@ -431,7 +431,8 @@
   // 문제 그림: 접기 전 전개도에 점 이름을 모두 보이고, 묻는 점만 노랑으로 표시합니다.
   function vertexProblemDraw(o, b, s, M, C) {
     const net = landscapeNet(M.qnet), k = M.qk;
-    fitNow(b, s, net, C, { t: 56, b: 30, l: 40, r: 40 }, camFold, 0);
+    // 큰 화면의 하단 도구막대 위에도 전개도 꼭짓점 이름이 남도록 여백을 둡니다.
+    fitNow(b, s, net, C, { t: 56, b: b.W >= 560 ? 64 : 30, l: 40, r: 40 }, camFold, 0);
     const D = scene3(b, camFold(s, 0), C);
     const faces = drawFaces(D, net, 0, () => ({ c: 'green', a: 0.1, ec: 'ink', ew: 1.8 }));
     const cc = cen3(faces.flat());

@@ -177,7 +177,8 @@
         return { n, S, c, name: nameOf(kind, n), Q: s.phQ };
       },
       draw(b, s, M, C) {
-        const D = scene3(b, s, C), { S, n } = M, st = stepOf(C), c = M.c;
+        const D = scene3(b, s, C), st = stepOf(C);
+        const n = C.problem ? M.Q.n : M.n, S = C.problem ? solid(n) : M.S, c = C.problem ? countsOf(kind, n) : M.c;
         const W = (isP ? 2.8 : 3.0) - (b.W < 560 ? 0.4 : 0);
         const split = C.problem ? 0 : C.review ? (st === 1 ? 1 : 0) : s.phSplit;
         const bi = baseIdx(S), si = sideIdx(S);
@@ -266,7 +267,8 @@
       return { n, k, S: frustumS(n, k, 1.5, 2.4), T: topPyrS(n, k, 1.5, 2.4), c, name: nameOf('fr', n), Q: s.phQ };
     },
     draw(b, s, M, C) {
-      const D = scene3(b, s, C), { S, T, n, k, c } = M, st = stepOf(C);
+      const D = scene3(b, s, C), st = stepOf(C), n = C.problem ? M.Q.n : M.n, k = C.problem ? 0.5 : M.k;
+      const S = C.problem ? frustumS(n, k, 1.5, 2.4) : M.S, T = M.T, c = C.problem ? countsOf('fr', n) : M.c;
       const sep = C.problem ? 0 : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
       const W = 2 * k * 1.5 + 0.9, off = hxOf(s, W * sep);
       const showTop = !C.problem && sep > 0.01;

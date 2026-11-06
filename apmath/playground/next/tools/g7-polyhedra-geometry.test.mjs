@@ -20,6 +20,35 @@ const scene = id => scenes.find(sc => sc.id === id);
 const state = sc => { const s = { ...defaults }; sc.enter(s); return s; };
 const close = (a, b) => Math.hypot(...a.map((v, i) => v - b[i])) < 1e-8;
 
+test('current-question solution math survives HTML escaping and production KaTeX rendering', t => {
+  const renderContext = vm.createContext({ window: {}, document: { ...document, documentElement: { setAttribute() {}, getAttribute() { return 'paper'; } } },
+    URLSearchParams, location: { search: '' }, localStorage: { getItem() { return null; }, setItem() {} } });
+  vm.runInContext(fs.readFileSync(new URL('../kit/vendor/katex/katex.min.js', import.meta.url), 'utf8'), renderContext);
+  renderContext.window.katex = renderContext.katex;
+  vm.runInContext(fs.readFileSync(new URL('../kit/apl-core.js', import.meta.url), 'utf8'), renderContext);
+  const A = renderContext.window.APLab;
+  let formulas = 0;
+  for (const sc of scenes) {
+    const variants = sc.id === 'p2-6' ? [{ p: 3 }, { p: 4 }, { p: 5 }] : [null];
+    for (const question of variants) {
+      const s = state(sc), lab = { tab: 'problem', scene: sc, s };
+      sc.enter(s, lab);
+      if (question) s.phQ = question;
+      sc.view(s, lab); lab.tab = 'review'; sc.view(s, lab);
+      for (const line of sc.steps(s)) {
+        // The shell escapes step prose before passing it to the shared math renderer.
+        const html = A.renderMath(A.esc(String(line)).replace(/&amp;/g, '&'));
+        assert.doesNotMatch(html, /class="katex-error"/, `${sc.id}: ${line}`);
+        if (String(line).includes('$')) {
+          assert.match(html, /class="katex"/, `${sc.id}: math was rendered`);
+          formulas++;
+        }
+      }
+    }
+  }
+  t.diagnostic(`${formulas} mathematical solution lines rendered with the vendored KaTeX`);
+});
+
 // An independent oracle solves the plane equation along each coordinate axis,
 // fixing the other two coordinates to cube faces. It does not use scene edges.
 function sectionPoints(a, b, fraction) {
@@ -258,4 +287,48 @@ test('three-vertex section review follows the problem, then follows the selected
   lab.tab = 'explore'; sc.view(s, lab);
   lab.tab = 'review'; sc.view(s, lab);
   assert.match(sc.steps(s).at(-1), /정삼각형/);
+});
+
+test('count-question solids render the question polygon in problem and review, then restore inquiry', t => {
+  const c = vm.createContext({ window: { APLab: { clamp: (x, a, b) => Math.max(a, Math.min(b, x)) } }, document });
+  vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js', import.meta.url), 'utf8'), c);
+  for (const name of ['core', 'geo', 'cubesec']) {
+    vm.runInContext(fs.readFileSync(new URL('../labs/g7-polyhedra/' + name + '.js', import.meta.url), 'utf8'), c);
+  }
+  const rendered = [], drawPoly = c.window.APL_PH.drawPoly;
+  c.window.APL_PH.drawPoly = (D, S, options) => {
+    rendered.push({ V: S.V.length, E: S.E.length, F: S.F.length });
+    return drawPoly(D, S, options);
+  };
+  vm.runInContext(fs.readFileSync(new URL('../labs/g7-polyhedra/t1.js', import.meta.url), 'utf8'), c);
+  const group = c.window.APL_PH_GROUPS[0];
+  const board = () => {
+    const b = Object.create(c.window.APLab.Board.prototype);
+    Object.assign(b, { W: 1039, H: 787, pad: .02, kind: 'figure', aspect: '1:1',
+      insets: { left: 0, right: 0, top: 0, bottom: 0 }, zoom: 1, panX: 0, panY: 0,
+      fs: 1, thumb: false, focus: { x: [-5, 5], y: [-4, 4] }, panes: null, paneId: null });
+    b.ctx = new Proxy({}, { get: () => () => {} }); b.color = x => x;
+    for (const method of ['path', 'point', 'handle', 'text', 'stext']) b[method] = () => {};
+    return b;
+  };
+  let frames = 0;
+  for (const id of ['p1-1', 'p1-2', 'p1-3']) for (const n of [3, 7, 12]) {
+    const sc = group.scenes.find(x => x.id === id), s = { ...defaults };
+    const lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); Object.assign(s, { phN: 5, phN8: 4, phQ: { n, given: 'E', ask: 'F' } });
+    sc.view(s, lab);
+    const expected = id === 'p1-2' ? { V: n + 1, E: 2 * n, F: n + 1 } : { V: 2 * n, E: 3 * n, F: n + 2 };
+    for (const [tab, step] of [['problem', 0], ['review', 0], ['review', 3]]) {
+      lab.tab = tab; sc.view(s, lab); s.step = step; rendered.length = 0;
+      sc.draw(board(), s, {}, lab);
+      assert.ok(rendered.length, `${id}: a solid was drawn`);
+      for (const solid of rendered) assert.deepEqual(solid, expected, `${id} n=${n} ${tab} step ${step}`);
+      frames++;
+    }
+    lab.tab = 'explore'; sc.view(s, lab); rendered.length = 0; sc.draw(board(), s, {}, lab);
+    const inquiry = id === 'p1-2' ? { V: 6, E: 10, F: 6 } : id === 'p1-1' ? { V: 10, E: 15, F: 7 } : { V: 8, E: 12, F: 6 };
+    assert.ok(rendered.some(solid => JSON.stringify(solid) === JSON.stringify(inquiry)), `${id}: inquiry polygon restored`);
+    assert.equal(s.phN, 5); assert.equal(s.phN8, 4);
+  }
+  t.diagnostic(`${frames} actual draw calls checked with independent vertex/edge/face counts; 9 inquiry restorations`);
 });

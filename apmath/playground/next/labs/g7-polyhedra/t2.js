@@ -534,7 +534,7 @@
     }
     const angle = 180 - 360 / q.p, max = Math.ceil(360 / angle) - 1;
     return [`${PNAME[q.p]}의 한 내각은 $${angle}^\\circ$예요. 꼭짓점을 만들려면 면이 3개 이상 모여야 해요.`,
-      `면이 ${max}개 모이면 $${angle}^\\circ\\times${max}=${angle * max}^\\circ<360^\\circ$예요. ${max + 1}개면 $${angle * (max + 1)}^\\circ$로 360° 이상이 되어 입체가 되지 않아요.`,
+      `면이 ${max}개 모이면 $${angle}^\\circ\\times${max}=${angle * max}^\\circ\\lt360^\\circ$예요. ${max + 1}개면 $${angle * (max + 1)}^\\circ$로 360° 이상이 되어 입체가 되지 않아요.`,
       `따라서 한 꼭짓점에 모일 수 있는 면은 최대 ${max}개예요.`];
   }
   const scenes = [P1, P2, P3, P4, P5, P6];
