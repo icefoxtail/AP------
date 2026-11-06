@@ -15,7 +15,10 @@ const { inspectPdf } = require('./archive2-output-pdf-evidence.cjs');
 const root = path.resolve(__dirname, '..');
 const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a';
 const profileOnly = process.env.ARCHIVE_PERFORMANCE_PROFILE_ONLY === '1';
-const repeats = profileOnly ? 1 : Number(process.env.ARCHIVE_PERFORMANCE_REPEATS || 3);
+const pdfOnly = process.env.ARCHIVE_PERFORMANCE_PDF_ONLY === '1';
+const skipPdf = process.env.ARCHIVE_PERFORMANCE_SKIP_PDF === '1';
+const phase = pdfOnly ? 'pdf' : skipPdf ? 'performance' : 'all';
+const repeats = pdfOnly || profileOnly ? 1 : Number(process.env.ARCHIVE_PERFORMANCE_REPEATS || 3);
 const reportDir = path.resolve(process.env.ARCHIVE_PERFORMANCE_REPORT_DIR || path.join(os.tmpdir(), 'archive-output-performance'));
 const suiteDeadline = Date.now() + 15 * 60 * 1000;
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
@@ -24,10 +27,11 @@ const fixtures = [
   { id: 'envelope50', kind: 'envelope', sources: H.sourceFiles },
   { id: 'images24', kind: 'original', sources: [H.sourceFiles[1]] },
   { id: 'long23', kind: 'original', sources: ['archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js'] },
-  { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] }
+  { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] },
+  { id: 'envelope8', kind: 'envelope', limit: 8, sources: [H.sourceFiles[0]] }
 ];
 const report = { schema: 'ARCHIVE_OUTPUT_PERFORMANCE_CHROME_V1', baselineSha: baseSha,
-  profileOnly, repeats, rows: [], comparisons: [], failures: [], cycles: [], summaries: [],
+  profileOnly, phase, repeats, rows: [], comparisons: [], pdfRows: [], pdfComparisons: [], failures: [], cycles: [], summaries: [],
   conditions: { viewport: { width: 1440, height: 1000 }, cpuThrottleRate: 1,
     networkCachePolicy: 'no-store', warmMeaning: 'same-document initialized assets and mode snapshots',
     p95Method: 'nearest rank; for fewer than 20 samples this is the observed maximum, not a population tail estimate',
@@ -150,15 +154,38 @@ async function documentEvidence(page) {
         (['hidden', 'clip'].includes(style.overflowY) && node.scrollHeight > node.clientHeight + 3);
     });
     const pages = [...area.querySelectorAll('.page')];
-    const clippingEvidence = clipping.map(node => {
+    const clippingEvidence = await Promise.all(clipping.map(async node => {
       const style = getComputedStyle(node), rect = node.getBoundingClientRect();
+      // Only numeric geometry and source identities leave Chrome. Math source
+      // strings remain in the page and are reduced to digests before capture.
+      const descendants = [...node.querySelectorAll('*')].filter(child => {
+        const box = child.getBoundingClientRect();
+        return box.width > 0 && box.height > 0 && (box.right > rect.right + 3 || box.left < rect.left - 3 ||
+          box.bottom > rect.bottom + 3 || box.top < rect.top - 3);
+      });
+      let mathItems = [];
+      try { mathItems = window.MathJax?.startup?.document?.getMathItemsWithin?.([node]) || []; } catch (_) {}
+      const overflowingDescendants = await Promise.all(descendants.slice(0, 48).map(async child => {
+        const childStyle = getComputedStyle(child), box = child.getBoundingClientRect();
+        const mathRoot = child.closest('mjx-container');
+        const mathItem = mathRoot && mathItems.find(item => item.typesetRoot === mathRoot);
+        const source = mathItem?.math || mathRoot?.querySelector('annotation[encoding="application/x-tex"]')?.textContent;
+        return { tag: child.tagName, classes: [...child.classList].filter(name => /^[A-Za-z0-9_-]+$/.test(name)),
+          sourceRef: child.closest('[data-source-ref]')?.dataset.sourceRef || '',
+          x: box.x - rect.x, y: box.y - rect.y, width: box.width, height: box.height,
+          clientWidth: child.clientWidth, scrollWidth: child.scrollWidth, clientHeight: child.clientHeight, scrollHeight: child.scrollHeight,
+          display: childStyle.display, overflowX: childStyle.overflowX, overflowY: childStyle.overflowY,
+          fontSize: childStyle.fontSize, lineHeight: childStyle.lineHeight, whiteSpace: childStyle.whiteSpace,
+          mathSourceSha256: source ? await digest(String(source)) : null };
+      }));
       return { tag: node.tagName, classes: [...node.classList].filter(name => /^[A-Za-z0-9_-]+$/.test(name)),
         sourceRef: node.closest('[data-source-ref]')?.dataset.sourceRef || '', page: pages.indexOf(node.closest('.page')) + 1,
         clientWidth: node.clientWidth, clientHeight: node.clientHeight, scrollWidth: node.scrollWidth, scrollHeight: node.scrollHeight,
         rectWidth: rect.width, rectHeight: rect.height, overflowX: style.overflowX, overflowY: style.overflowY,
         display: style.display, fontSize: style.fontSize, lineHeight: style.lineHeight, whiteSpace: style.whiteSpace,
-        insideMath: !!node.closest('mjx-container'), insideSolution: !!node.closest('.sol-box') };
-    });
+        insideMath: !!node.closest('mjx-container'), insideSolution: !!node.closest('.sol-box'),
+        overflowingDescendantCount: descendants.length, overflowingDescendants };
+    }));
     return {
       inputHash: await digest(JSON.stringify((state.data || []).map(q => ({ id: q.id,
         uid: q._sourceQuestionUid || q.sourceQuestionUid || q.questionUid || q.source_question_uid || '',
@@ -194,13 +221,14 @@ async function documentEvidence(page) {
 }
 
 async function awaitInitialOutcome(page, strictEnvelope) {
-  await page.waitForFunction(strict => {
+  try { await page.waitForFunction(strict => {
     if (window.__AP_OUTPUT_RENDER_ERROR__) return true;
     const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
     const attempt = runtime?.inspect().attempts.at(-1);
     if (!runtime || runtime.busy || !['SUCCEEDED', 'FAILED'].includes(attempt?.state)) return false;
     return !strict || attempt.state === 'FAILED' || !!window.__AP_OUTPUT_RENDER_READY__;
-  }, strictEnvelope, { timeout: timeLeft(), polling: 25 });
+  }, strictEnvelope, { timeout: timeLeft(), polling: 25 }); }
+  catch (error) { if (error.name === 'TimeoutError') error.code = 'OUTPUT_READY_TIMEOUT'; throw error; }
   return page.evaluate(async () => {
     if (window.__AP_OUTPUT_RENDER_ERROR__) {
       const error = await window.__outputPerformance.classifyError({ message: window.__AP_OUTPUT_RENDER_ERROR__ });
@@ -308,12 +336,13 @@ async function openSession(browser, server, fixture, initialMode, slow) {
   } catch (error) { await context.close(); throw error; }
 }
 
-async function measureOperation(session, operation, label, repeat, network, first) {
+async function measureOperation(session, operation, label, repeat, network, first, purpose = 'performance') {
   const { page, fixture } = session;
   const before = await session.metrics();
   let outcome, publicMs, alreadyVisible = false, previousAttempts = 0;
   if (first) {
-    await page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: timeLeft() });
+    try { await page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: timeLeft() }); }
+    catch (error) { if (error.name === 'TimeoutError') error.code = 'OUTPUT_NAVIGATION_TIMEOUT'; throw error; }
     outcome = await awaitInitialOutcome(page, fixture.kind === 'envelope');
   } else {
     const result = await bounded(page.evaluate(async mode => {
@@ -354,7 +383,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
   if (first) publicMs = (fixture.kind === 'envelope' ? evidence.envelopeReadyAt : evidence.runtimeReadyAt) ?? row.engineElapsedMs;
   if (alreadyVisible) row.firstBoxMs = 0; // Same DOM was visible for the entire no-op; no new paint is claimed.
   Object.assign(row, { name: `${fixture.id}-${label}-${repeat}-${network}-${operation.id}`, fixture: fixture.id,
-    label, repeat, network, operation: operation.id, initial: first, publicMs: round(publicMs),
+    label, repeat, network, purpose, operation: operation.id, initial: first, publicMs: round(publicMs),
     alreadyVisible, previousAttempts, ...evidence,
     cdp: Object.fromEntries(['LayoutCount', 'RecalcStyleCount', 'LayoutDuration', 'RecalcStyleDuration', 'ScriptDuration', 'TaskDuration'].map(key =>
       [key.endsWith('Duration') ? key + 'Ms' : key, round(((after[key] || 0) - (before[key] || 0)) * (key.endsWith('Duration') ? 1000 : 1))])),
@@ -365,7 +394,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
     row.typeset = { maxConcurrent: 0, calls: [] };
   }
   row.pass = false;
-  report.rows.push(row);
+  (purpose === 'pdf' ? report.pdfRows : report.rows).push(row);
   writeReport();
   H.assertReady(row, fixture.questions.length, row.name);
   requireThat(session.errors.length === 0, 'UNEXPECTED_BROWSER_ERROR', { errors: session.errors });
@@ -376,11 +405,10 @@ async function measureOperation(session, operation, label, repeat, network, firs
   row.printPreflightMs = round(row.printPreflight.elapsedMs);
   if (fixture.id === 'continuation-golden' && operation.mode === 'sol')
     requireThat(row.continuationCount > 0, 'GOLDEN_CONTINUATION_NOT_EXERCISED');
-  if (repeat === 1 && network === 'normal' && ['cold-exam', 'exam-sol', 'sol-ans', 'cold-sol'].includes(operation.id))
-    row.pdf = await printPdfMetadata(session, row);
+  if (purpose === 'pdf') row.pdf = await printPdfMetadata(session, row);
   row.pass = true;
   writeReport();
-  console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, operation: operation.id, pass: true,
+  console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, purpose, operation: operation.id, pass: true,
     publicMs: row.publicMs, firstBoxMs: round(row.firstBoxMs), cache: row.cacheStatus, mathMs: round(row.operationMath.totalMs),
     mathCalls: row.operationMath.calls, layoutMs: row.cdp.LayoutDurationMs, pages: row.pageCount,
     printMs: row.printPreflightMs, phases: row.phases,
@@ -388,21 +416,23 @@ async function measureOperation(session, operation, label, repeat, network, firs
   return row;
 }
 
-async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, continuation = false } = {}) {
+async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, continuation = false, pdf = false } = {}) {
   const network = slow ? 'slow' : 'normal';
-  const operations = continuation ? [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-sol-warm', mode: 'sol' }] : coldSolution ? [{ id: 'cold-sol', mode: 'sol' }] : [
+  const purpose = pdf ? 'pdf' : 'performance';
+  const operations = pdf ? [{ id: 'pdf-exam', mode: 'exam' }, { id: 'pdf-sol', mode: 'sol' }, { id: 'pdf-ans', mode: 'ans' }] :
+    continuation ? [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-sol-warm', mode: 'sol' }] : coldSolution ? [{ id: 'cold-sol', mode: 'sol' }] : [
     { id: 'cold-exam', mode: 'exam' }, { id: 'exam-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' },
     { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
     { id: 'same-ans', mode: 'ans' }
   ];
-  const planned = { fixture: fixture.id, label, repeat, network, operations: operations.map(item => item.id), pass: false, completed: 0 };
+  const planned = { fixture: fixture.id, label, repeat, network, purpose, operations: operations.map(item => item.id), pass: false, completed: 0 };
   report.cycles.push(planned);
   const rows = [];
   let session;
   try {
     session = await openSession(browser, server, fixture, operations[0].mode, slow);
     for (let index = 0; index < operations.length; index += 1) {
-      const row = await measureOperation(session, operations[index], label, repeat, network, index === 0);
+      const row = await measureOperation(session, operations[index], label, repeat, network, index === 0, purpose);
       rows.push(row);
       planned.completed += 1;
     }
@@ -410,11 +440,31 @@ async function cycle(browser, server, fixture, label, repeat, { coldSolution = f
   } catch (error) {
     planned.failedOperation = operations[planned.completed]?.id || 'session-open';
     planned.error = safeError(error);
-    const failedRow = report.rows.findLast(row => row.fixture === fixture.id && row.label === label && row.repeat === repeat &&
+    if (session) {
+      try { planned.browserAtFailure = await session.page.evaluate(() => {
+        const navigation = performance.getEntriesByType('navigation')[0];
+        const resources = performance.getEntriesByType('resource');
+        const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+        return { elapsedMs: performance.now(), documentReadyState: document.readyState,
+          mathJaxLoaded: typeof window.MathJax?.typesetPromise === 'function', runtimePresent: !!runtime,
+          runtimeBusy: runtime?.busy || false,
+          latestAttemptState: runtime?.inspect().attempts.at(-1)?.state || null,
+          outputErrorPresent: !!window.__AP_OUTPUT_RENDER_ERROR__, outputReadyPresent: !!window.__AP_OUTPUT_RENDER_READY__,
+          visiblePageCount: document.querySelectorAll('#print-area .page').length,
+          navigation: navigation ? { responseEndMs: navigation.responseEnd,
+            domContentLoadedMs: navigation.domContentLoadedEventEnd, loadMs: navigation.loadEventEnd,
+            encodedBodyBytes: navigation.encodedBodySize, transferBytes: navigation.transferSize } : null,
+          resources: { count: resources.length, transferBytes: resources.reduce((sum, item) => sum + item.transferSize, 0),
+            encodedBodyBytes: resources.reduce((sum, item) => sum + item.encodedBodySize, 0),
+            maxDurationMs: Math.max(0, ...resources.map(item => item.duration)),
+            byType: resources.reduce((counts, item) => { counts[item.initiatorType] = (counts[item.initiatorType] || 0) + 1; return counts; }, {}) } };
+      }); } catch (captureError) { planned.failureDiagnosticsError = safeError(captureError); }
+    }
+    const failedRow = (pdf ? report.pdfRows : report.rows).findLast(row => row.fixture === fixture.id && row.label === label && row.repeat === repeat &&
       row.network === network && row.operation === planned.failedOperation);
     if (failedRow && !rows.includes(failedRow)) { failedRow.error = planned.error; rows.push(failedRow); }
-    report.failures.push({ fixture: fixture.id, label, repeat, network, operation: planned.failedOperation, error: planned.error });
-    console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, operation: planned.failedOperation,
+    report.failures.push({ fixture: fixture.id, label, repeat, network, purpose, operation: planned.failedOperation, error: planned.error });
+    console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, purpose, operation: planned.failedOperation,
       pass: false, code: planned.error.code, publicFailure: failedRow?.outcome?.error || null,
       clipping: failedRow?.clippingEvidence || [], stateMode: failedRow?.mode, snapshotMode: failedRow?.snapshotMode,
       completed: planned.completed, planned: operations.length }));
@@ -441,15 +491,15 @@ function compare(before, after) {
   return { ...parity, fixture: before.fixture, operation: before.operation, repeat: before.repeat, network: before.network, pass: true };
 }
 
-function compareCycles(before, after) {
+function compareCycles(before, after, target = report.comparisons) {
   const keys = [...new Set([...before, ...after].map(row => row.operation))];
   for (const operation of keys) {
     const baseline = before.find(row => row.operation === operation);
     const current = after.find(row => row.operation === operation);
-    try { report.comparisons.push(compare(baseline, current)); }
+    try { target.push(compare(baseline, current)); }
     catch (error) {
       const row = baseline || current;
-      report.comparisons.push({ fixture: row?.fixture, operation, repeat: row?.repeat, network: row?.network, pass: false, error: safeError(error) });
+      target.push({ fixture: row?.fixture, operation, repeat: row?.repeat, network: row?.network, pass: false, error: safeError(error) });
     }
   }
 }
@@ -486,14 +536,22 @@ function summarize() {
 async function main() {
   requireThat(/^[a-f0-9]{40}$/i.test(baseSha), 'EXACT_BASELINE_SHA_REQUIRED');
   requireThat(Number.isInteger(repeats) && repeats >= 1 && repeats <= 5, 'INVALID_REPEAT_COUNT');
+  requireThat(!(pdfOnly && skipPdf), 'CONFLICTING_PDF_PHASE_FLAGS');
   const chrome = process.env.CHROME_BIN;
   requireThat(chrome && fs.existsSync(chrome), 'REAL_CHROME_BIN_REQUIRED');
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.playwrightVersion = require('playwright/package.json').version;
-  for (const fixture of fixtures) fixture.questions = fixture.kind === 'envelope' ? H.realFixture(root) : H.loadBank(root, fixture.sources[0]);
+  for (const fixture of fixtures) fixture.questions = fixture.kind === 'envelope' ? H.realFixture(root).slice(0, fixture.limit || 50) : H.loadBank(root, fixture.sources[0]);
   report.fixtures = fixtures.map(fixture => ({ id: fixture.id, kind: fixture.kind, questions: fixture.questions.length,
     inputSha256: hash(JSON.stringify(fixture.questions)), sources: fixture.sources.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file))) })) }));
   requireThat(fixtures[0].questions.length === 50, 'REAL_50_QUESTION_FIXTURE_CHANGED');
+  const legacy = { ...fixtures[0], id: 'legacy50', kind: 'legacy' };
+  const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
+  const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
+  report.fixtures.push({ id: legacy.id, kind: legacy.kind, questions: legacy.questions.length,
+    inputSha256: hash(JSON.stringify(legacy.questions)), sources: report.fixtures[0].sources });
+  report.fixtures.push({ id: golden.id, kind: golden.kind, questions: golden.questions.length,
+    inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-output-performance-'));
   const baselineRoot = path.join(temp, 'baseline');
   let baselineServer, currentServer, browser, worktree = false;
@@ -506,7 +564,7 @@ async function main() {
     currentServer = await H.serve(root);
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
-    for (let repeat = 1; repeat <= repeats; repeat += 1) {
+    if (!pdfOnly) for (let repeat = 1; repeat <= repeats; repeat += 1) {
       for (const fixture of fixtures) {
         const outputs = {};
         const labels = profileOnly ? ['current'] : repeat % 2 ? ['baseline', 'current'] : ['current', 'baseline'];
@@ -521,40 +579,59 @@ async function main() {
     }
     // A separate legacy session detects repeated clicks that never enter the
     // strict Archive2 wrapper. It is not substituted for the envelope benchmark.
-    const legacy = { ...fixtures[0], id: 'legacy50', kind: 'legacy' };
-    const legacyOutputs = {};
-    for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
-      legacyOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, legacy, label, 1);
-    if (!profileOnly) compareCycles(legacyOutputs.baseline, legacyOutputs.current);
-    const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
-    const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
-    report.fixtures.push({ id: golden.id, kind: golden.kind, questions: golden.questions.length,
-      inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
-    const goldenOutputs = {};
-    for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
-      goldenOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, golden, label, 1, { continuation: true });
-    if (!profileOnly) compareCycles(goldenOutputs.baseline, goldenOutputs.current);
-    // Throttle actual first-page resources separately. One paired sample is
-    // useful failure evidence, but cannot establish a reliable network P95.
-    const slowOutputs = {};
-    for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
-      slowOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixtures[0], label, 1, { coldSolution: true, slow: true });
-    if (!profileOnly) compareCycles(slowOutputs.baseline, slowOutputs.current);
-    report.outputParity = profileOnly ? 'NOT_RUN' : report.failures.length === 0 && report.comparisons.every(row => row.pass) ? 'PASS' : 'FAIL';
-    report.pass = report.failures.length === 0 && report.cycles.every(cycle => cycle.pass) && report.rows.length > 0 &&
-      report.rows.every(row => row.pass) && (profileOnly || report.comparisons.every(row => row.pass));
+    if (!pdfOnly) {
+      const legacyOutputs = {};
+      for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
+        legacyOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, legacy, label, 1);
+      if (!profileOnly) compareCycles(legacyOutputs.baseline, legacyOutputs.current);
+      const goldenOutputs = {};
+      for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
+        goldenOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, golden, label, 1, { continuation: true });
+      if (!profileOnly) compareCycles(goldenOutputs.baseline, goldenOutputs.current);
+      // Keep the real-50 slow-network failure visible, and measure the smaller
+      // valid envelope independently. Neither sample estimates network P95.
+      for (const fixture of [fixtures[0], fixtures.find(item => item.id === 'envelope8')]) {
+        const slowOutputs = {};
+        for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
+          slowOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixture, label, 1, { coldSolution: true, slow: true });
+        if (!profileOnly) compareCycles(slowOutputs.baseline, slowOutputs.current);
+      }
+    }
+    if (!skipPdf) {
+      // Printing can load extra fonts and trigger FONT_INVALIDATION. Dedicated
+      // contexts keep those real print effects out of warm mode-switch timing.
+      for (const fixture of [...fixtures, legacy, golden]) {
+        const pdfOutputs = {};
+        for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
+          pdfOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixture, label, 1, { pdf: true });
+        if (!profileOnly) compareCycles(pdfOutputs.baseline, pdfOutputs.current, report.pdfComparisons);
+      }
+    }
+    const phaseParity = (purpose, rows) => profileOnly ? 'NOT_RUN_PROFILE_ONLY' :
+      !report.cycles.some(item => item.purpose === purpose) ? 'NOT_RUN_IN_THIS_PHASE' :
+        report.cycles.filter(item => item.purpose === purpose).every(item => item.pass) && rows.length > 0 && rows.every(item => item.pass) ? 'PASS' : 'FAIL';
+    report.performanceParity = phaseParity('performance', report.comparisons);
+    report.pdfParity = phaseParity('pdf', report.pdfComparisons);
+    report.outputParity = profileOnly ? 'NOT_RUN_PROFILE_ONLY' : report.failures.length === 0 &&
+      [...report.comparisons, ...report.pdfComparisons].every(row => row.pass) ? 'PASS' : 'FAIL';
+    report.pass = report.failures.length === 0 && report.cycles.every(cycle => cycle.pass) &&
+      [...report.rows, ...report.pdfRows].length > 0 && [...report.rows, ...report.pdfRows].every(row => row.pass) &&
+      (profileOnly || [...report.comparisons, ...report.pdfComparisons].every(row => row.pass));
   } finally {
     await browser?.close(); await baselineServer?.close(); await currentServer?.close();
     if (worktree) execFileSync('git', ['worktree', 'remove', '--force', baselineRoot], { cwd: root, stdio: 'pipe', timeout: 30000 });
     fs.rmSync(temp, { recursive: true, force: true });
     report.summaries = summarize(); writeReport();
   }
-  console.log(JSON.stringify({ schema: report.schema, pass: report.pass, profileOnly, cases: report.rows.length,
-    comparisons: report.comparisons.length, outputParity: report.outputParity, chrome: report.chromeVersion }));
+  console.log(JSON.stringify({ schema: report.schema, pass: report.pass, profileOnly, phase, cases: report.rows.length,
+    pdfCases: report.pdfRows.length, comparisons: report.comparisons.length, pdfComparisons: report.pdfComparisons.length,
+    outputParity: report.outputParity, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;
 }
 
-main().catch(error => {
+module.exports = { openSession, awaitInitialOutcome, documentEvidence, printPreflight, safeError };
+
+if (require.main === module) main().catch(error => {
   report.pass = false; report.failures.push(safeError(error)); report.summaries = summarize(); writeReport();
   console.error(JSON.stringify({ pass: false, failure: safeError(error) })); process.exitCode = 1;
 });

@@ -32,8 +32,11 @@
                 }
                 url.searchParams.set('mode', state.mode);
                 if (state.qpp) url.searchParams.set('qpp', String(state.qpp));
+                // Transport identity is committed with the view, but is not a
+                // rendering input. The source policy validates any supplied URL.
+                const transport = policy.captureTransport?.(intent, state, url.href) || null;
                 const sourceRequestId = N.semanticDigest(policy.sourceIdentity(state));
-                return N.copy({ state, mode: state.mode, sourceRequestId, url: url.href,
+                return N.copy({ state, mode: state.mode, sourceRequestId, url: transport?.url || url.href, transport,
                     revision: intent.type.endsWith('INVALIDATION') ? ++revisionSerial : (desired?.revision || committed?.input.revision || 0) });
             },
             async prepare(input, ctx, committed) {
@@ -56,8 +59,8 @@
                     source: { targetSessionId: ctx.requestedTargetSessionId, sourceRequestId: input.sourceRequestId,
                         sourceArchiveFile: policy.name, canonicalDataFingerprint: N.semanticDigest((policy.renderIdentity || policy.sourceIdentity)(state)),
                         businessData: policy.sourceIdentity(input.state) },
-                    state, environment: { url: input.url },
-                    fingerprints: { engine: 'common-fast-solution-loading-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
+                    state, environment: { url: policy.renderUrl?.(input.url) || input.url },
+                    fingerprints: { engine: 'common-fast-output-performance-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
             },
             async build(ctx) {
                 check(ctx);

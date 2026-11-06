@@ -79,6 +79,16 @@
         await withTimeout(image.decode(), options.decodeTimeoutMs || 5_000, `required image ${index + 1} decode timed out.`);
     }));
 
+    const layout = assertLayoutReady({ ...options, document, window });
+    return { pageCount: layout.pageCount, imageCount: images.length };
+  }
+
+  // Synchronous so a renderer can reject attached geometry inside its existing
+  // DOM/state/history transaction and restore the previous view on failure.
+  function assertLayoutReady(options = {}) {
+    const document = options.document || root.document;
+    const window = options.window || root.window || root;
+    if (!document) fail("document is unavailable.");
     const pages = Array.from(document.querySelectorAll("#print-area .page"));
     if (!pages.length) fail("rendered exam has no pages.");
     const tolerance = options.layoutTolerancePx ?? 3;
@@ -97,8 +107,8 @@
     });
     if (clippingAncestors.length)
       fail(`content clipped inside ${clippingAncestors.length} element(s).`);
-    return { pageCount: pages.length, imageCount: images.length };
+    return { pageCount: pages.length };
   }
 
-  return { assertReady };
+  return { assertReady, assertLayoutReady };
 });

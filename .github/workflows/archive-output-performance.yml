@@ -7,6 +7,8 @@ on:
       - 'archive/**'
       - 'tests/archive2-output-performance-browser.cjs'
       - 'tests/archive2-output-pdf-evidence.cjs'
+      - 'tests/archive2-output-cache-browser.cjs'
+      - 'tests/archive-mixed-envelope-cache.test.cjs'
       - 'tests/archive2-solution-loading-browser.cjs'
       - '.github/workflows/archive-output-performance.yml'
   pull_request:
@@ -21,6 +23,8 @@ on:
       - 'archive/engine.html'
       - 'tests/archive2-output-performance-browser.cjs'
       - 'tests/archive2-output-pdf-evidence.cjs'
+      - 'tests/archive2-output-cache-browser.cjs'
+      - 'tests/archive-mixed-envelope-cache.test.cjs'
       - '.github/workflows/archive-output-performance.yml'
   workflow_dispatch:
     inputs:
@@ -59,16 +63,13 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
-      - name: Install the PDF raster inspector
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq poppler-utils
       - name: Measure real output routes in actual Chrome
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
           ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
-          ARCHIVE_PERFORMANCE_PROFILE_ONLY: '1'
+          ARCHIVE_PERFORMANCE_PROFILE_ONLY: '0'
+          ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
           ARCHIVE_PERFORMANCE_REPEATS: '3'
           ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-performance
         run: node tests/archive2-output-performance-browser.cjs
@@ -78,5 +79,95 @@ jobs:
         with:
           name: archive-output-performance-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/archive-output-performance/
+          if-no-files-found: warn
+          retention-days: 14
+
+  cache-regressions:
+    name: Archive snapshot recovery in Chrome
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify snapshot binding, image placement, and readiness contracts
+        run: >-
+          node --test
+          tests/archive-mixed-envelope-cache.test.cjs
+          tests/archive-question-image-map-regression.test.js
+          tests/archive2-pdf-readiness.test.cjs
+          tests/archive-font-invalidation.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-cache-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Verify real cache reuse, rollback, retry, and printing
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
+          ARCHIVE_CACHE_REPORT_DIR: ${{ runner.temp }}/archive-output-cache
+        run: node tests/archive2-output-cache-browser.cjs
+      - name: Upload snapshot recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-cache-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-cache/
+          if-no-files-found: warn
+          retention-days: 14
+
+  printed-output:
+    name: Archive printed pixel parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch only the comparison baseline
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-pdf-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Install the PDF raster inspector
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+      - name: Compare actual Chrome PDFs in an isolated print session
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-pdf-browser/node_modules
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_PDF_ONLY: '1'
+          ARCHIVE_PERFORMANCE_REPEATS: '1'
+          ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-pdf
+        run: node tests/archive2-output-performance-browser.cjs
+      - name: Upload printed output evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-pdf-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-pdf/
           if-no-files-found: warn
           retention-days: 14

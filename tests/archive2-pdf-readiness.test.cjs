@@ -49,3 +49,8 @@ test("PDF readiness accepts question containers with no hidden overflow", async 
   const result = await readiness.assertReady(null, { document, window });
   assert.equal(result.pageCount, 1);
 });
+
+test("the synchronous commit gate enforces the same attached layout checks", () => {
+  assert.throws(() => readiness.assertLayoutReady(fakePage({ clipped: true })), /content clipped inside 1 element/);
+  assert.deepEqual(readiness.assertLayoutReady(fakePage()), { pageCount: 1 });
+});
