@@ -31,15 +31,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+    "crossConceptKeys": ["CC_REPEATED_COMBINATION"],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "중복순열과 중복조합의 수를 각각 공식으로 계산하여 합산",
+    "decisiveStep": "5³=125, ₃H₅=C(7,5)=21이므로 125+21=146"
   },
   {
     "id": 2,
