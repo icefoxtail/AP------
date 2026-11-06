@@ -84,10 +84,11 @@
       }
     },
     steps: (M) => [
-      `접으면 D가 E에 겹쳐져요. 접은 부분은 모양과 크기가 같으므로 $AE=AD=${M.w}$, $FE=FD$예요.`,
-      `직각삼각형 ABE에서 $BE^2=AE^2-AB^2=${M.w}^2-${M.h}^2=${M.w * M.w - M.h * M.h}$, $BE=${M.be}$예요. 그러므로 $EC=${M.w}-${M.be}=${M.ec}$예요.`,
-      `$FD=FE=x$라 하면 $FC=${M.h}-x$. 직각삼각형 FEC에서 $x^2=(${M.h}-x)^2+${M.ec}^2$ ⟹ $x=\\frac{${M.h}^2+${M.ec}^2}{2\\times${M.h}}=${f(M.x)}$.`,
-      `따라서 $FC=${M.h}-${f(M.x)}=${f(M.fc)}$이고, $FD=FE=${f(M.x)}$예요.`
+      `$AB=${M.h}$, $AD=BC=${M.w}$예요. D를 E에 겹치도록 접었고, 구하는 선분은 ${M.kind === 0 ? 'FC' : M.kind === 1 ? 'FE' : 'BE'}예요.`,
+      `접어도 길이는 같으므로 $AE=AD=${M.w}$, $FE=FD$예요. 직각삼각형 ABE를 먼저 찾아요.`,
+      `$BE^2=AE^2-AB^2=${M.w}^2-${M.h}^2=${M.be * M.be}$이므로 $BE=${M.be}$예요.${M.kind === 2 ? '' : ` 또한 $EC=${M.w}-${M.be}=${M.ec}$예요.`}`,
+      M.kind === 2 ? `BE는 밑변 BC의 일부이며, EC가 아니라 BE를 물었는지 확인해요.` : `$FE=FD=y$라 하면 $FC=${M.h}-y$예요. 직각삼각형 FEC에서 $y^2=(${M.h}-y)^2+${M.ec}^2$이므로 $y=${f(M.x)}$예요.`,
+      M.kind === 0 ? `$FC=x=${M.h}-${f(M.x)}=${f(M.fc)}$예요.` : M.kind === 1 ? `$FE=x=${f(M.x)}$예요.` : `$BE=x=${M.be}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>직사각형</b>을 고르고 <b>접기</b> 막대를 끌어 보세요. 접힌 부분(삼각형 ADF)은 접는 선 AF를 축으로 돌아요. 접으면 <b>같은 길이</b>(AE=AD, FE=FD)가 생겨요.',
@@ -150,10 +151,11 @@
       }
     },
     steps: (M) => [
-      `B를 A에 포개도록 접으면 접는 선 DE는 AB의 <b>수직이등분선</b>이에요. 그래서 $AE=BE$예요.`,
-      `$AE=BE=y$라 하면 $CE=${M.a}-y$예요. 직각삼각형 ACE에서 $y^2=(${M.a}-y)^2+${M.b}^2$.`,
-      `풀면 $y=\\frac{${M.a}^2+${M.b}^2}{2\\times${M.a}}=\\frac{${M.c2}}{${2 * M.a}}=${f(M.y)}$이므로 $CE=${M.a}-${f(M.y)}=${f(M.ce)}$예요.`,
-      M.de != null ? `DE는 닮음(삼각형 BDE∽BCA)으로 구해요: $DE=\\frac{BD\\times AC}{BC}=\\frac{${f(M.ci / 2)}\\times${M.b}}{${M.a}}=${f(M.de)}$.` : `DE는 닮음으로 구해요: $DE=\\frac{BD\\times AC}{BC}$.`
+      `$BC=${M.a}$, $CA=${M.b}$, $\\angle C=90^\\circ$예요. B를 A에 겹치도록 접고 ${M.kind === 0 ? 'CE' : M.kind === 1 ? 'AE' : '접는 선 DE'}의 길이를 구해요.`,
+      `접는 선 DE는 AB의 수직이등분선이에요. 따라서 $AE=BE$이고 $AD=BD$예요.`,
+      M.kind === 2 ? `$AB^2=${M.a}^2+${M.b}^2=${M.c2}$이므로 $AB=${M.ci}$, $BD=\\frac{${M.ci}}{2}$예요.` : `$AE=BE=y$로 놓으면 $CE=${M.a}-y$예요. 직각삼각형 ACE에서 $y^2=(${M.a}-y)^2+${M.b}^2$예요.`,
+      M.kind === 2 ? `$\\triangle BDE\\sim\\triangle BCA$이므로 $DE:CA=BD:BC$예요. 따라서 $DE=\\frac{${f(M.ci / 2)}\\times${M.b}}{${M.a}}$예요.` : `식을 정리하면 $2\\times${M.a}y=${M.a}^2+${M.b}^2=${M.c2}$이므로 $y=${f(M.y)}$예요.`,
+      M.kind === 0 ? `$CE=x=${M.a}-${f(M.y)}=${f(M.ce)}$예요.` : M.kind === 1 ? `$AE=x=${f(M.y)}$예요.` : `$DE=x=${f(M.de)}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>BC, CA</b>를 바꾸고 <b>접기</b> 막대를 끌어 보세요. B가 A에 포개지면 접는 선 DE는 AB의 <b>수직이등분선</b>이에요. (CA < BC일 때 접는 선이 BC와 만나요)',

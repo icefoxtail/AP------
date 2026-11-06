@@ -64,9 +64,11 @@
       if (!prob && st(3) && area != null) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 15, color: 'ink' });
     },
     steps: (M) => [
-      `꼭짓점 A에서 밑변 BC에 수선 AH를 내려요. 이등변삼각형에서 수선의 발 H는 밑변을 반으로 나눠요: $BH=HC=\\frac{${M.bc}}{2}=${M.half}$.`,
-      `직각삼각형 ABH에서 $AH^2=AB^2-BH^2=${M.leg}^2-${M.half}^2=${M.leg * M.leg}-${M.half * M.half}=${M.h2}$${M.hi ? `, $AH=${M.hi}$` : ''}예요.`,
-      M.hi ? `넓이 $=\\frac{1}{2}\\times BC\\times AH=\\frac{1}{2}\\times${M.bc}\\times${M.hi}=${M.area}$예요.` : `$AH^2=${M.h2}$이고 정수가 아니에요. 높이가 정수가 되는 값(칩)을 골라 보세요.`
+      M.kind === 0 ? `$AB=AC=${M.leg}$, $BC=${M.bc}$인 이등변삼각형이에요. 높이 $AH=x$를 구해요.` : `밑변 $BC=${M.bc}$, 넓이 $${M.area}$인 이등변삼각형이에요. 같은 변 $AB=AC=x$를 구해요.`,
+      `꼭짓점 A에서 밑변에 수선 AH를 내려요. 이등변삼각형이므로 $BH=HC=${M.bc}\\div2=${M.half}$예요.`,
+      M.kind === 0 ? `직각삼각형 ABH의 빗변은 AB예요. $x^2=AB^2-BH^2=${M.leg}^2-${M.half}^2$예요.` : `넓이 $${M.area}=\\frac{1}{2}\\times${M.bc}\\times AH$에서 $AH=${M.area}\\times2\\div${M.bc}=${M.hi}$예요.`,
+      M.kind === 0 ? `$x^2=${M.leg * M.leg}-${M.half * M.half}=${M.h2}$예요.` : `직각삼각형 ABH에서 $x^2=AH^2+BH^2=${M.hi}^2+${M.half}^2=${M.leg * M.leg}$예요.`,
+      `따라서 ${M.kind === 0 ? '높이 AH' : '같은 변 AB'}의 길이는 $x=${M.kind === 0 ? M.hi : M.leg}$예요.`
     ],
     view: (M) => ({
       guide: '막대나 칩으로 <b>밑변</b>과 <b>같은 두 변</b>을 바꿔 보세요. 수선 AH는 밑변을 <b>반으로</b> 나누고, 직각삼각형 ABH로 높이를 구해요.',
@@ -134,10 +136,11 @@
       }
     },
     steps: (M) => [
-      `윗변의 양 끝 A, D에서 아랫변 BC에 수선을 내려요(수선의 발 H, I). 높이 $AH=DI$이고 직각삼각형 ABH, DIC가 생겨요.`,
-      `아랫변을 나눠요: $BC=BH+HI+IC$, $HI=AD=${M.u}$이므로 $BH+IC=${M.v}-${M.u}=${M.d1 + M.d2}$ ($BH=${M.d1}$, $IC=${M.d2}$).`,
-      `직각삼각형 ABH에서 $AB^2=AH^2+BH^2=${M.h}^2+${M.d1}^2=${M.l1}$${M.l1i ? `, $AB=${M.l1i}$` : ''}. 같은 방법으로 $CD^2=${M.l2}$${M.l2i ? `, $CD=${M.l2i}$` : ''}예요.`,
-      M.per != null ? `둘레 $=${M.u}+${M.v}+${M.l1i}+${M.l2i}=${M.per}$, 넓이 $=\\frac{1}{2}(${M.u}+${M.v})\\times${M.h}=${G.texRat(M.area)}$예요.` : `넓이 $=\\frac{1}{2}(${M.u}+${M.v})\\times${M.h}=${G.texRat(M.area)}$예요.`
+      M.kind === 1 ? `이등변사다리꼴에서 $AD=${M.u}$, $BC=${M.v}$, 높이 $${M.h}$예요. 네 변의 길이를 더해 둘레를 구해요.` : `$AB=${M.l1i}$, $BH=${M.d1}$이고 $AH\\perp BC$예요. 구하는 높이는 $AH=x$예요.`,
+      `A와 D에서 BC에 수선 AH, DI를 내려요. 가운데 AHID는 직사각형이고 양옆은 직각삼각형이에요.`,
+      M.kind === 1 ? `양쪽 삼각형은 합동이므로 $BH=IC=\\frac{BC-AD}{2}=\\frac{${M.v}-${M.u}}{2}=${M.d1}$예요.` : `직각삼각형 ABH에서 빗변은 AB이므로 $x^2=AB^2-BH^2=${M.l1i}^2-${M.d1}^2$예요.`,
+      M.kind === 1 ? `$AB^2=${M.h}^2+${M.d1}^2=${M.l1}$이므로 $AB=CD=${M.l1i}$예요.` : `$x^2=${M.l1}-${M.d1 * M.d1}=${M.h * M.h}$예요.`,
+      M.kind === 1 ? `둘레 $=${M.u}+${M.v}+${M.l1i}+${M.l1i}=${M.per}$예요.` : `따라서 높이는 $x=${M.h}$예요. 다리 AB와 높이 AH를 구별해요.`
     ],
     view: (M) => ({
       guide: '막대나 칩으로 <b>윗변, 높이, BH, IC</b>를 바꿔 보세요. 수선 두 개를 내리면 <b>직각삼각형 두 개</b>와 <b>직사각형</b>(AHID)으로 나뉘어요.',
@@ -197,10 +200,12 @@
       if (!prob && st(3)) T(b, mid(Pf, Qf), `PQ=${f(M.PQ)}`, { dx: 8, dy: 22, size: 14, color: 'amber' });
     },
     steps: (M) => M.d ? [
-      `대각선 $BD^2=AB^2+BC^2=${M.h}^2+${M.w}^2=${M.d2}$이므로 $BD=${M.d}$예요. (점 P, Q는 A, C에서 BD에 내린 수선의 발)`,
-      `삼각형 ABD의 넓이를 두 가지로 나타내요: $\\frac{1}{2}\\times AB\\times AD=\\frac{1}{2}\\times BD\\times AP$. 그래서 $AP=\\frac{${M.h}\\times${M.w}}{${M.d}}=${f(M.AP)}$이고 $CQ=AP$예요(AP + CQ = $${f(M.sum)}$).`,
-      `삼각형 ABP에서 $BP^2=AB^2-AP^2$, 또는 닮음으로 $BP=\\frac{AB^2}{BD}=\\frac{${M.h * M.h}}{${M.d}}=${f(M.BP)}$예요. $DQ=BP$이므로 $PQ=BD-2BP=${M.d}-${f(2 * M.BP)}=${f(M.PQ)}$예요.`
-    ] : ['대각선의 길이가 정수가 되는 값(칩)을 골라 보세요. 그렇지 않으면 BD² 까지만 구해요.'],
+      `$AB=${M.h}$, $BC=AD=${M.w}$인 직사각형이에요. 구하는 것은 ${M.kind === 0 ? '$AP+CQ$' : M.kind === 1 ? '$PQ=x$' : '$AP=x$'}예요.`,
+      `직각삼각형 ABD에서 $BD^2=${M.h}^2+${M.w}^2=${M.d2}$이므로 $BD=${M.d}$예요.`,
+      M.kind === 1 ? `닮음 $\\triangle ABP\\sim\\triangle DBA$에서 $BP=\\frac{AB^2}{BD}=\\frac{${M.h * M.h}}{${M.d}}=${f(M.BP)}$이고 $DQ=BP$예요.` : `삼각형 ABD의 넓이는 $\\frac{AB\\times AD}{2}=\\frac{BD\\times AP}{2}$이므로 $AP=\\frac{${M.h}\\times${M.w}}{${M.d}}=${f(M.AP)}$예요.`,
+      M.kind === 1 ? `B에서 잰 두 수선의 발의 위치는 $BP=${f(M.BP)}$, $BQ=BD-DQ=${f(M.d - M.BP)}$예요. P와 Q의 순서에 관계없이 두 위치의 차의 절댓값이 PQ예요.` : M.kind === 0 ? `대각선 양쪽의 합동인 삼각형 ABD, CDB의 높이가 같으므로 $CQ=AP=${f(M.AP)}$예요.` : `구한 AP는 대각선 BD에 수직인 높이예요. 삼각형의 넓이에 다시 대입해 확인해요.`,
+      M.kind === 1 ? `$PQ=|${f(M.BP)}-${f(M.d - M.BP)}|=${f(M.PQ)}$예요.` : M.kind === 0 ? `$AP+CQ=${f(M.AP)}+${f(M.AP)}=${f(M.sum)}$예요.` : `$AP=x=${f(M.AP)}$예요.`
+    ] : ['대각선의 제곱은 주어진 두 변의 제곱의 합이에요.'],
     view: (M) => M.d ? ({
       guide: '막대나 칩으로 <b>가로, 세로</b>를 바꿔 보세요. 삼각형의 넓이를 두 가지로 나타내 <b>AP</b>를 구하고, <b>BP</b>를 빼서 <b>PQ</b>를 구해요.',
       readouts: [rd('대각선 BD', `${M.d}`, 'sky', `${M.h}² + ${M.w}² = ${M.d2}`), rd('AP = CQ', `$${f(M.AP)}$`, 'rose', `${M.h} × ${M.w} ÷ ${M.d}`), rd('AP + CQ', `$${f(M.sum)}$`, 'amber'), rd('BP = DQ', `$${f(M.BP)}$`, 'green', `${M.h}² ÷ ${M.d}`), rd('PQ', `$${f(M.PQ)}$`, 'amber', `${M.d} − 2 × BP`)],
