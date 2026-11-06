@@ -39,9 +39,11 @@ jobs:
       run:
         shell: bash
     env:
-      RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
       REGISTERED_MAIN_SHA: ${{ inputs.registered_main_sha || github.sha }}
     steps:
+      - name: Initialize runner evidence paths
+        run: |
+          printf 'RELEASE_EVIDENCE_DIR=%s/archive-pages-release-evidence\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0

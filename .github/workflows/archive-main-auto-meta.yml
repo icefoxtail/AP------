@@ -77,9 +77,10 @@ jobs:
       # Retain the former reviewed/AutoMeta lock while retiring their other entrypoints.
       group: archive-reviewed-exam-meta-register-main
       cancel-in-progress: false
-    env:
-      WRITER_WORK_DIR: ${{ runner.temp }}/archive-registration-writer
     steps:
+      - name: Initialize runner evidence paths
+        run: |
+          printf 'WRITER_WORK_DIR=%s/archive-registration-writer\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0

@@ -226,3 +226,20 @@ test('one main push entrypoint and periodic reconciliation preserve interrupted-
   assert.doesNotMatch(compatibility, /^  (?:push|schedule):/m);
   assert.match(legacy, /^      - "archive-apply\/\*\*"/m);
 });
+
+test('runner-dependent evidence paths are initialized in executing steps, not unsupported job env contexts', t => {
+  const f = fixture(t);
+  const envFile = path.join(f.dir, 'github-env');
+  const temp = path.join(f.dir, 'runner-temp');
+  for (const [workflowText, id, variable, suffix] of [
+    [writer, 'register', 'WRITER_WORK_DIR', 'archive-registration-writer'],
+    [pages, 'build', 'RELEASE_EVIDENCE_DIR', 'archive-pages-release-evidence'],
+  ]) {
+    const block = job(workflowText, id);
+    assert.doesNotMatch(block.split('    steps:')[0], /\$\{\{[^}]*runner\./);
+    fs.writeFileSync(envFile, '');
+    const result = f.run(shell(step(block, /name: Initialize runner evidence paths/)), { RUNNER_TEMP: temp, GITHUB_ENV: envFile });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(fs.readFileSync(envFile, 'utf8'), `${variable}=${temp}/${suffix}\n`);
+  }
+});
