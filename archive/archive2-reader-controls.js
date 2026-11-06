@@ -140,7 +140,9 @@
           root.APArchiveRenderFeedback.track(Promise.resolve(outcome), {
             mode: requested,
             questionCount: envelope()?.questionCount,
-            retry: () => changeMode(requested),
+            // A committed mode can still fail PDF readiness. Re-enter initialization
+            // because the public mode switch returns early for the active mode.
+            retry: () => selectedMode() === requested ? root.location.reload() : changeMode(requested),
           });
         } else root.alert?.("출력 종류를 바꾸지 못했습니다. 다시 시도해 주세요.");
       }

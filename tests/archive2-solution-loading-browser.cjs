@@ -158,12 +158,25 @@ async function serve(directory, sharedSourceRoot = directory) {
 
 function installInstrumentation({ suppressRaf }) {
   const qa = window.__solutionLoadingQA = { firstBoxMs: null, operationStart: 0, previousArea: null, targetMode: new URLSearchParams(location.search).get('mode') || 'sol',
-    calls: [], active: 0, maxActive: 0, rafExecuted: 0, turns: 0, longTasks: [], prints: 0, alerts: 0 };
+    calls: [], active: 0, maxActive: 0, rafExecuted: 0, turns: 0, longTasks: [], prints: 0, printEvents: [], alerts: 0 };
   setInterval(() => { qa.turns += 1; }, 8);
   const nativeRaf = window.requestAnimationFrame.bind(window);
   window.requestAnimationFrame = suppressRaf ? () => 1 : callback => nativeRaf(time => { qa.rafExecuted += 1; callback(time); });
   if (suppressRaf) window.cancelAnimationFrame = () => {};
-  window.print = () => { qa.prints += 1; setTimeout(() => window.dispatchEvent(new Event('afterprint')), 0); };
+  window.print = () => {
+    qa.prints += 1;
+    const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+    const state = typeof AppState !== 'undefined' ? AppState : window.AppState;
+    const attempt = runtime?.inspect().attempts.at(-1);
+    const event = { atMs: performance.now(), mode: state?.mode, candidateMode: runtime?.committedCandidate?.mode,
+      snapshotId: runtime?.activeSnapshot?.snapshotId, requestGeneration: runtime?.requestGeneration,
+      lastAttempt: attempt ? { state: attempt.state, intentType: attempt.intentType, requestGeneration: attempt.requestGeneration, committed: attempt.committed } : null };
+    qa.printEvents.push(event);
+    Promise.resolve(window.__AP_RENDER_READY__).then(result => {
+      event.readyOutcome = { ok: result?.ok === true, code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(result?.code || '') ? result.code : null, transactionId: result?.transactionId || null };
+    }, () => { event.readyOutcome = { ok: false, rejected: true }; });
+    setTimeout(() => window.dispatchEvent(new Event('afterprint')), 0);
+  };
   window.alert = () => { qa.alerts += 1; };
   window.confirm = () => false;
   let loop;
@@ -216,8 +229,20 @@ async function capture(page, outcome) {
     const area = document.getElementById('print-area');
     const selector = '.q-box,.ans-cell:not(.ans-cell-empty)';
     const blocks = [...area.querySelectorAll(selector)];
-    const order = blocks.map(node => node.dataset.sourceRef || '').filter(Boolean);
+    const domSourceOrder = blocks.map(node => node.dataset.sourceRef || '');
+    const order = domSourceOrder.filter(Boolean);
     const uniqueOrder = order.filter((ref, index) => order.indexOf(ref) === index);
+    const pageNodes = [...area.querySelectorAll('.page')];
+    // Answer cells are deliberately interleaved across two desktop columns.
+    // The executor's explicit ordinal also drives mobile's one-column order.
+    // Do not infer an ordinal by looking up a UID in the expected input list.
+    const answerCells = state.mode === 'ans' ? blocks.map(node => {
+      const marker = node.style.getPropertyValue('--archive2-mobile-answer-order').trim();
+      const number = /^\s*(\d+)\.\s*$/.exec(node.querySelector('.ans-n')?.textContent || '');
+      return { sourceRef: node.dataset.sourceRef || '', page: pageNodes.indexOf(node.closest('.page')) + 1,
+        orderIndex: /^\d+$/.test(marker) ? Number(marker) : null, displayNumber: number ? Number(number[1]) : null };
+    }) : null;
+    const sourceOrder = answerCells ? answerCells.slice().sort((left, right) => left.orderIndex - right.orderIndex).map(cell => cell.sourceRef) : uniqueOrder;
     const ref = window.getMixedQuestionSourceRef || window.getArchiveQuestionSourceRef;
     const expectedOrder = (state.data || []).map((question, index) => ref(question, index));
     const imageInfo = async node => {
@@ -225,7 +250,7 @@ async function capture(page, outcome) {
       return { sourceHash: await digest(normalized(url.href)), loaded: node.complete && node.naturalWidth > 0 && node.naturalHeight > 0,
         width: node.naturalWidth, height: node.naturalHeight };
     };
-    const pages = await Promise.all([...area.querySelectorAll('.page')].map(async node => {
+    const pages = await Promise.all(pageNodes.map(async node => {
       const pageRect = node.getBoundingClientRect(); const scale = pageRect.width / node.offsetWidth || 1;
       return { width: node.offsetWidth, height: node.offsetHeight, textHash: await digest(normalized(node.textContent)),
         blocks: await Promise.all([...node.querySelectorAll(selector)].map(async block => {
@@ -239,7 +264,7 @@ async function capture(page, outcome) {
     const calls = qa.calls.filter(call => call.generation === (metrics.requestGeneration || null));
     const feedback = document.getElementById('ap-archive-render-feedback');
     return { outcome, mode: state.mode, qpp: state.qpp, questionCount: state.data?.length || 0,
-      sourceOrder: uniqueOrder, expectedOrder, inputUids: (state.data || []).map(question => String(question._sourceQuestionUid || question.sourceQuestionUid || question.questionUid || '')),
+      sourceOrder, domSourceOrder, answerCells, expectedOrder, inputUids: (state.data || []).map(question => String(question._sourceQuestionUid || question.sourceQuestionUid || question.questionUid || '')),
       blockCount: blocks.length, pageCount: pages.length, pages, bodyHash: await digest(normalized(area.textContent)),
       images: await Promise.all([...area.querySelectorAll('img')].map(imageInfo)),
       mathCount: area.querySelectorAll('mjx-container').length, mathErrors: area.querySelectorAll('mjx-merror,[data-mjx-error]').length,
@@ -250,18 +275,43 @@ async function capture(page, outcome) {
       typeset: { maxConcurrent: qa.maxActive, calls }, longTasks: { count: qa.longTasks.length, maxMs: Math.max(0, ...qa.longTasks) },
       attempts: attempts.map(item => ({ state: item.state, intentType: item.intentType, committed: item.committed, code: safeCode(item.error) })),
       feedback: { state: feedback?.dataset.state || null, visible: !!feedback && !feedback.hidden, code: safeCode(feedback?.dataset.errorCode), retry: !!feedback?.querySelector('button:not([hidden]):not([disabled])') },
-      prints: qa.prints };
+      prints: qa.prints, printEvents: qa.printEvents };
   }, outcome), 15000, 'OUTPUT_METADATA_CAPTURE_TIMEOUT');
 }
 
-function assertReady(row, count) {
-  requireThat(row.outcome.ok, 'EXPECTED_RENDER_READY', { code: row.outcome.code });
-  requireThat(row.questionCount === count && row.sourceOrder.length === count, 'QUESTION_DENOMINATOR_MISMATCH', { expected: count, questions: row.questionCount, rendered: row.sourceOrder.length });
-  requireThat(JSON.stringify(row.sourceOrder) === JSON.stringify(row.expectedOrder), 'SOURCE_ORDER_CHANGED');
-  requireThat(row.pageCount > 0 && row.blockCount >= count, 'OUTPUT_DOCUMENT_INCOMPLETE');
-  requireThat(row.images.every(image => image.loaded), 'OUTPUT_IMAGE_NOT_READY');
-  requireThat(row.mathErrors === 0 && row.unrenderedMath === 0, 'OUTPUT_MATH_NOT_READY', { mathErrors: row.mathErrors, unrenderedMath: row.unrenderedMath });
-  requireThat(Number.isFinite(row.firstBoxMs), 'VISIBLE_OUTPUT_NOT_OBSERVED');
+function assertReady(row, count, stage = 'render-ready') {
+  const context = { stage, mode: row.mode, qpp: row.qpp, expected: count, questions: row.questionCount,
+    expectedOrder: row.expectedOrder, actualOrder: row.sourceOrder, domSourceOrder: row.domSourceOrder };
+  try {
+    requireThat(row.outcome.ok, 'EXPECTED_RENDER_READY', { ...context, code: row.outcome.code });
+    requireThat(row.questionCount === count && row.sourceOrder.length === count, 'QUESTION_DENOMINATOR_MISMATCH', context);
+    requireThat(row.expectedOrder.length === count && new Set(row.expectedOrder).size === count, 'INPUT_SOURCE_IDENTITIES_NOT_UNIQUE', context);
+    if (row.mode === 'ans') {
+      const cells = row.answerCells || [];
+      const semantic = cells.slice().sort((left, right) => left.orderIndex - right.orderIndex);
+      requireThat(cells.length === count && row.blockCount === count && semantic.every((cell, index) => cell.orderIndex === index), 'ANSWER_ORDINAL_MISSING_OR_DUPLICATED', { ...context, cells });
+      requireThat(semantic.every((cell, index) => cell.displayNumber === index + 1 && cell.sourceRef === row.expectedOrder[index]), 'ANSWER_NUMBER_OR_SOURCE_MISMATCH', { ...context, cells });
+      const expectedDomIndices = [];
+      let pageStart = 0;
+      for (let page = 1; page <= row.pageCount; page += 1) {
+        const pageCount = cells.filter(cell => cell.page === page).length;
+        const columnCount = Math.ceil(Math.ceil(pageCount / 2) / 4) * 4;
+        for (let index = 0; index < columnCount; index += 1) for (const offset of [index, columnCount + index]) {
+          if (offset < pageCount) expectedDomIndices.push(pageStart + offset);
+        }
+        pageStart += pageCount;
+      }
+      requireThat(JSON.stringify(cells.map(cell => cell.orderIndex)) === JSON.stringify(expectedDomIndices), 'ANSWER_COLUMN_ORDER_CHANGED', { ...context, expectedDomIndices, cells });
+    }
+    requireThat(JSON.stringify(row.sourceOrder) === JSON.stringify(row.expectedOrder), 'SOURCE_ORDER_CHANGED', context);
+    requireThat(row.pageCount > 0 && row.blockCount >= count, 'OUTPUT_DOCUMENT_INCOMPLETE', context);
+    requireThat(row.images.every(image => image.loaded), 'OUTPUT_IMAGE_NOT_READY', { stage, mode: row.mode });
+    requireThat(row.mathErrors === 0 && row.unrenderedMath === 0, 'OUTPUT_MATH_NOT_READY', { stage, mode: row.mode, mathErrors: row.mathErrors, unrenderedMath: row.unrenderedMath });
+    requireThat(Number.isFinite(row.firstBoxMs), 'VISIBLE_OUTPUT_NOT_OBSERVED', { stage, mode: row.mode });
+  } catch (error) {
+    error.qaEvidence = { stage, ...row };
+    throw error;
+  }
 }
 function assertBatched(row) {
   const calls = row.typeset.calls.filter(call => call.label === 'solution-staging');
@@ -307,13 +357,30 @@ async function verifiedPreflight(page, before) {
   const parity = compareRows({ ...before, pass: true, name: 'before-preflight' }, { ...after, pass: true, name: 'after-preflight' });
   return { ...result, outputParity: parity, attemptsBefore: before.attempts.length, attemptsAfter: after.attempts.length };
 }
-async function assertPrintBlocked(page) {
+async function assertPrintBlocked(page, stage = 'failed-render') {
   const result = await bounded(page.evaluate(async () => {
-    const before = window.__solutionLoadingQA.prints;
+    const inspect = async () => {
+      const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+      const state = typeof AppState !== 'undefined' ? AppState : window.AppState;
+      const safeCode = code => /^[A-Z][A-Z0-9_:-]{2,160}$/.test(code || '') ? code : code ? 'RENDER_FAILED' : null;
+      let timer;
+      let readyOutcome;
+      try {
+        readyOutcome = await Promise.race([Promise.resolve(window.__AP_RENDER_READY__).then(result => ({ ok: result?.ok === true, code: safeCode(result?.code), transactionId: result?.transactionId || null }), () => ({ ok: false, rejected: true })),
+          new Promise(resolve => { timer = setTimeout(() => resolve({ pending: true }), 500); })]);
+      } finally { clearTimeout(timer); }
+      return { printCalls: window.__solutionLoadingQA.prints, mode: state?.mode, candidateMode: runtime?.committedCandidate?.mode,
+        requestGeneration: runtime?.requestGeneration, snapshotId: runtime?.activeSnapshot?.snapshotId, pages: document.querySelectorAll('#print-area .page').length,
+        readyOutcome, attempts: (runtime?.inspect().attempts || []).slice(-4).map(attempt => ({ state: attempt.state, intentType: attempt.intentType,
+          requestGeneration: attempt.requestGeneration, committed: attempt.committed, code: safeCode(attempt.error) })) };
+    };
+    const before = await inspect();
+    const eventStart = window.__solutionLoadingQA.printEvents.length;
     await window.safePrint('vector');
-    return { before, after: window.__solutionLoadingQA.prints };
+    return { before, after: await inspect(), printEvents: window.__solutionLoadingQA.printEvents.slice(eventStart) };
   }), 25000, 'FAILED_RENDER_PRINT_PROBE_TIMEOUT');
-  requireThat(result.after === result.before, 'FAILED_RENDER_REACHED_PRINT');
+  result.stage = stage;
+  requireThat(result.after.printCalls === result.before.printCalls, 'FAILED_RENDER_REACHED_PRINT', result);
   return result;
 }
 
@@ -420,7 +487,7 @@ async function main() {
       const session = await openSession(label, options);
       let row;
       try {
-        row = await session.snapshot(); assertReady(row, session.expectedCount);
+        row = await session.snapshot(); assertReady(row, session.expectedCount, `${label}-${options.original ? 'original' : options.variant || 'actual'}-${options.mode || 'sol'}`);
         requireThat(row.pageErrors.length === 0, 'UNEXPECTED_BROWSER_ERROR', { errors: row.pageErrors });
         if (!options.original && (options.variant || 'actual') === 'actual') {
           requireThat(JSON.stringify(row.inputUids) === JSON.stringify(actual.map(question => question._sourceQuestionUid)), 'INPUT_UID_ORDER_CHANGED');
@@ -476,7 +543,7 @@ async function main() {
         requireThat(row.attempts.at(-1)?.state === 'FAILED' && !row.attempts.at(-1)?.committed, 'FAILED_IMAGE_WAS_COMMITTED');
         requireThat(row.pageCount === 0, 'PARTIAL_SOLUTION_BECAME_VISIBLE');
         requireThat(row.feedback.visible && row.feedback.state === 'failed' && row.feedback.retry, 'RENDER_ERROR_RECOVERY_UI_MISSING');
-        row.printProbe = await assertPrintBlocked(session.page);
+        row.printProbe = await assertPrintBlocked(session.page, `initial-${variant}-failure`);
         return row;
       } finally { await session.close(); }
     });
@@ -484,12 +551,12 @@ async function main() {
       currentServer.state.retryRecovered = false;
       const session = await openSession('current', { variant: 'retry', mode: 'exam' });
       try {
-        const exam = await session.snapshot(); assertReady(exam, 50);
+        const exam = await session.snapshot(); assertReady(exam, 50, 'mixed-before-image-failure-exam');
         const failed = await session.transition('sol');
         requireThat(!failed.outcome.ok && /IMAGE/.test(failed.outcome.code), 'MODE_CHANGE_IMAGE_FAILURE_MISSING');
         requireThat(failed.mode === 'exam' && failed.bodyHash === exam.bodyHash, 'MODE_FAILURE_REPLACED_PREVIOUS_OUTPUT');
         requireThat(failed.feedback.visible && failed.feedback.state === 'failed' && failed.feedback.retry, 'MODE_FAILURE_RETRY_MISSING');
-        const printProbe = await assertPrintBlocked(session.page);
+        const printProbe = await assertPrintBlocked(session.page, 'mixed-after-solution-image-failure');
         currentServer.state.retryRecovered = true;
         const previous = await session.page.evaluate(() => {
           const count = window.mixedScreenRuntime.inspect().attempts.length;
@@ -498,11 +565,11 @@ async function main() {
           return count;
         });
         session.outcome = await waitForOutcome(session.page, previous);
-        const recovered = await session.snapshot(); assertReady(recovered, 50);
+        const recovered = await session.snapshot(); assertReady(recovered, 50, 'mixed-recovered-sol');
         requireThat(recovered.mode === 'sol' && !recovered.feedback.visible, 'RETRY_DID_NOT_RESTORE_REQUESTED_MODE');
         assertBatched(recovered);
-        const answer = await session.transition('ans'); assertReady(answer, 50);
-        const returned = await session.transition('exam'); assertReady(returned, 50);
+        const answer = await session.transition('ans'); assertReady(answer, 50, 'mixed-after-retry-ans');
+        const returned = await session.transition('exam'); assertReady(returned, 50, 'mixed-after-retry-exam');
         requireThat(returned.bodyHash === exam.bodyHash, 'MODE_ROUNDTRIP_CONTENT_CHANGED');
         return { exam, failed, printProbe, recovered, answer, returned, recoveredImageRequests: currentServer.state.faults.retry };
       } finally { await session.close(); }
@@ -514,9 +581,9 @@ async function main() {
     await record('original-real-modes-with-raf-suppressed', async () => {
       const session = await openSession('current', { original: true, suppressRaf: true });
       try {
-        const solution = await session.snapshot(); assertReady(solution, originalCount);
-        const answer = await session.transition('ans'); assertReady(answer, originalCount);
-        const exam = await session.transition('exam'); assertReady(exam, originalCount);
+        const solution = await session.snapshot(); assertReady(solution, originalCount, 'original-raf-suppressed-sol');
+        const answer = await session.transition('ans'); assertReady(answer, originalCount, 'original-raf-suppressed-ans');
+        const exam = await session.transition('exam'); assertReady(exam, originalCount, 'original-raf-suppressed-exam');
         const printPreflight = await verifiedPreflight(session.page, exam);
         requireThat(session.errors.length === 0, 'UNEXPECTED_BROWSER_ERROR', { errors: session.errors });
         return { solution, answer, exam, printPreflight, suppressedRequestAnimationFrame: true };

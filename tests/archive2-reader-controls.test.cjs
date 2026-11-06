@@ -39,7 +39,12 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {
   assert.match(controls, /root\.parent !== root \|\| params\.get\("preview"\) === "1"/);
-  assert.doesNotMatch(controls, /iframe\.src|location\.reload|fetch\(/);
+  assert.doesNotMatch(controls, /iframe\.src|fetch\(/);
+  const changeModeStart = controls.indexOf('async function changeMode(mode)');
+  const failureStart = controls.indexOf('} catch (error)', changeModeStart);
+  assert.ok(changeModeStart >= 0 && failureStart > changeModeStart);
+  assert.doesNotMatch(controls.slice(changeModeStart, failureStart), /location\.reload/,
+    'normal mode changes stay in place; only an explicit failed-output retry may reload');
   assert.doesNotMatch(mixed, /archive2-output-envelope \.mode-tabs\s*\{\s*display:\s*none/);
   assert.match(mixed, /publishOutputEnvelopeMode\(current, mode\)/);
   assert.match(engine, /meta: \{ \.\.\.current\.meta, printHeaderOptions \}/);

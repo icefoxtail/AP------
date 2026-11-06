@@ -284,6 +284,43 @@ test('reader checks a resolved failure, restores the active mode, and retries th
     h.preserved();
 });
 
+test('reader reloads the same output when PDF readiness fails after its mode committed', async () => {
+    const h = fixture(true);
+    const select = h.doc.getElementById('archive2-reader-mode');
+    const controls = h.doc.getElementById('archive2-reader-controls');
+    let switchCalls = 0;
+    const reloadedUrls = [];
+    h.root.location.search = '?mode=exam&archive2Context=archive2&outputRequestId=committed-output&outputOwnerId=owner';
+    h.root.location.reload = () => { reloadedUrls.push(h.root.location.href); };
+    h.root.switchMode = async mode => {
+        switchCalls += 1;
+        h.root.location.searchParams.set('mode', mode);
+        h.root.AppState.mode = mode;
+        h.root.__AP_OUTPUT_RENDER_READY__ = null;
+        h.root.__AP_OUTPUT_RENDER_ERROR__ = 'PDF_READINESS_FAILED';
+        h.root.Archive2ReaderControls.setReady(false, mode);
+        return { ok: false, code: 'PDF_READINESS_FAILED' };
+    };
+
+    select.value = 'sol';
+    await select.dispatch('change');
+    await tick();
+    const committedUrl = h.root.location.href;
+    assert.equal(select.value, 'sol');
+    assert.equal(controls.dataset.ready, 'false');
+    assert.equal(h.panel().dataset.state, 'failed');
+    assert.equal(h.retry().hidden, false);
+
+    await h.retry().dispatch('click');
+    await tick();
+    assert.deepEqual(reloadedUrls, [committedUrl], 'retry preserves the committed output identity');
+    assert.equal(switchCalls, 1, 'retry must not take the already-active mode shortcut');
+    assert.equal(controls.dataset.ready, 'false');
+    assert.equal(h.root.__AP_OUTPUT_RENDER_READY__, null);
+    assert.equal(h.root.__AP_OUTPUT_RENDER_ERROR__, 'PDF_READINESS_FAILED');
+    h.preserved();
+});
+
 test('reader treats DISCARDED_STALE as cancellation rather than an error', async () => {
     const h = fixture(true);
     const select = h.doc.getElementById('archive2-reader-mode');
