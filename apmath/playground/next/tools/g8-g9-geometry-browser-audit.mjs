@@ -236,7 +236,10 @@ try {
             await actualCanvas.scrollIntoViewIfNeeded(); await settle();
             const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
             const attempts = []; let passed = false;
-            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64]]) {
+            // Integer-snapped handles can require more than 64px to cross a
+            // half-step on a large board (sm4-conv quarters of AB). Keep the
+            // same native acquisition/state-change gate and try a longer drag.
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64],[128,0],[-128,0],[0,128],[0,-128]]) {
               const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
               if (!fresh) break;
               const rect = await actualCanvas.boundingBox();
