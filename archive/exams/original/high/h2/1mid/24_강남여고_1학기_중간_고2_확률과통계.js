@@ -423,7 +423,7 @@ window.questionBank = [
   {
     "id": 10,
     "questionType": "객관식",
-    "content": "다음 조건을 만족하는 값 $\\mathrm{A}, \\mathrm{B}$에 대하여 $\\mathrm{A}+\\mathrm{B}$의 값은? [4점]\n\n$${_{10}\\mathrm{C}_0} + {_{10}\\mathrm{C}_2} + {_{10}\\mathrm{C}_4} + {_{10}\\mathrm{C}_6} + {_{10}\\mathrm{C}_8} + {_{10}\\mathrm{C}_{10}} = \\mathrm{A}$$\n$${_{11}\\mathrm{C}_1} + {_{11}\\mathrm{C}_3} + {_{11}\\mathrm{C}_5} + {_{11}\\mathrm{C}_7} + {_{11}\\mathrm{C}_9} + {_{11}\\mathrm{C}_{11}} = \\mathrm{B}$$",
+    "content": "다음 조건을 만족하는 값 $\\mathrm{A}, \\mathrm{B}$에 대하여 $\\mathrm{A}+\\mathrm{B}$의 값은? [4점]\n\n${_{10}\\mathrm{C}_0} + {_{10}\\mathrm{C}_2} + {_{10}\\mathrm{C}_4} + {_{10}\\mathrm{C}_6} + {_{10}\\mathrm{C}_8} + {_{10}\\mathrm{C}_{10}} = \\mathrm{A}$\n${_{11}\\mathrm{C}_1} + {_{11}\\mathrm{C}_3} + {_{11}\\mathrm{C}_5} + {_{11}\\mathrm{C}_7} + {_{11}\\mathrm{C}_9} + {_{11}\\mathrm{C}_{11}} = \\mathrm{B}$",
     "choices": [
       "$1430$",
       "$1436$",
@@ -465,7 +465,9 @@ window.questionBank = [
     "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "primaryMethod": "이항정리에서 짝수 차수와 홀수 차수의 이항계수 합을 $(1+1)^n$과 $(1-1)^n$의 합·차로 계산한다.",
+    "decisiveStep": "$A=2^9=512$, $B=2^{10}=1024$이므로 $A+B=1536$이다."
   },
   {
     "id": 11,
@@ -884,7 +886,9 @@ window.questionBank = [
     "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "상하좌우 이동 횟수를 정수 조건으로 정리한 다음 가능한 경우를 분기해 중복순열로 센다.",
+    "decisiveStep": "$(R,D)=(1,1)$은 $6!/(1!1!4!)=30$, $(R,D)=(2,0)$은 $6!/(2!1!3!)=60$이므로 합은 $90$이다."
   },
   {
     "id": 20,
