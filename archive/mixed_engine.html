@@ -431,11 +431,11 @@
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
     <script src="render-state-normalizer.js?v=20261009.1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-1"></script>
-    <script src="question-image-readiness.js?v=20261106-solution-loading-1"></script>
+    <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
     <script src="common-fast-runtime.js?v=20261106-output-performance-1"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261029-sections-1"></script>
+    <script src="exam-render-executor.js?v=20261106-output-performance-1"></script>
     <script src="solution-render-executor.js?v=20261106-output-performance-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
@@ -2104,18 +2104,18 @@ function validateQuestionImageReadiness(root) {
     });
 }
 
-async function waitForQuestionImages(root, timeoutMs = 1200) {
+async function waitForQuestionImages(root, timeoutMs = 1200, signal) {
     const images = normalizeQuestionImageSources(root);
     const result = await window.APQuestionImageReadiness.waitForImages(images, {
-        timeoutMs,
+        timeoutMs, signal,
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
         throwOnFailure: true
     });
     return result.summary;
 }
 
-async function prepareQuestionImages(root, timeoutMs = 1200) {
-    return waitForQuestionImages(root, timeoutMs);
+async function prepareQuestionImages(root, timeoutMs = 1200, signal) {
+    return waitForQuestionImages(root, timeoutMs, signal);
 }
 
 async function waitForQuestionImage(img, timeoutMs = 1200) {
@@ -2128,8 +2128,8 @@ async function waitForQuestionImage(img, timeoutMs = 1200) {
     return result;
 }
 
-async function applyAutoImageSizeClasses(root) {
-    await prepareQuestionImages(root);
+async function applyAutoImageSizeClasses(root, timeoutMs = 1200, signal) {
+    await prepareQuestionImages(root, timeoutMs, signal);
     const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
     await Promise.all(wraps.map(async wrap => {
         if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
@@ -3777,7 +3777,7 @@ if (!buildContext) window.onload = () => {
 };
 
 function mixedExecutorDeps() {
-    return { document, Node, appState: AppState, stagingHost: buildContext.stagingHost,
+    return { document, Node, appState: AppState, stagingHost: buildContext.stagingHost, abortSignal: buildContext.abortSignal,
         makePage, applyAutoImageSizeClasses, typesetMath, raf,
         getArchiveQuestionSourceRef: getMixedQuestionSourceRef,
         stripInlineImagesFromContent, sanitizeProtectedSegments, normalizeQuestionNotes,

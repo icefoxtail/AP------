@@ -261,6 +261,127 @@ async function reuseAndPrint(session, initial) {
   return { initialMiss: true, modeHits: ['exam', 'sol', 'ans'], sameModeNoBuild: true, print, corruptedSnapshotRebuilt: true };
 }
 
+async function solutionQrEvidence(page) {
+  return page.evaluate(async () => {
+    const fail = code => { throw new Error(code); };
+    const digest = async bytes => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), byte => byte.toString(16).padStart(2, '0')).join('');
+    const area = document.getElementById('print-area');
+    const wraps = [...area.querySelectorAll('.page-qr')];
+    const canvases = [...area.querySelectorAll('.page-qr canvas')];
+    if (wraps.length !== 1 || canvases.length !== 1 || area.querySelector('.page-submit-qr')) fail('SOLUTION_QR_CANVAS_MISSING_OR_DUPLICATED');
+    const canvas = canvases[0], pageNode = canvas.closest('.page');
+    if (!pageNode || !canvas.width || canvas.width !== canvas.height || typeof QRious !== 'function') fail('SOLUTION_QR_CANVAS_NOT_READY');
+    const expected = new URL(location.href);
+    expected.searchParams.set('mode', 'sol'); expected.searchParams.set('qr', '1');
+    expected.searchParams.set('key', window.AppState.key);
+    if (!expected.searchParams.has('qpp')) expected.searchParams.set('qpp', String(window.AppState.qpp));
+    const target = new URL(wraps[0].dataset.qrTarget, location.href);
+    const envelope = window.__AP_OUTPUT_ENVELOPE__;
+    const currentIdentityMatches = target.href === expected.href &&
+      target.searchParams.get('outputRequestId') === envelope.outputRequestId &&
+      target.searchParams.get('outputOwnerId') === envelope.ownerId &&
+      target.searchParams.get('archive2OutputContract') === envelope.contractVersion &&
+      Number(target.searchParams.get('qpp')) === window.AppState.qpp;
+    if (!currentIdentityMatches) fail('SOLUTION_QR_TARGET_HAS_STALE_OUTPUT_IDENTITY');
+
+    // Compare actual pixels with an independent canvas encoding the expected
+    // current URL. An updated data attribute alone cannot satisfy this check.
+    const reference = document.createElement('canvas');
+    new QRious({ element: reference, value: expected.href, size: canvas.width,
+      level: 'M', background: 'white', foreground: 'black', padding: 0 });
+    const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+    const expectedPixels = reference.getContext('2d').getImageData(0, 0, reference.width, reference.height).data;
+    const pixelSha256 = await digest(pixels), expectedPixelSha256 = await digest(expectedPixels);
+    if (pixelSha256 !== expectedPixelSha256) fail('SOLUTION_QR_PIXELS_DO_NOT_ENCODE_CURRENT_REQUEST');
+    let blackPixels = 0, whitePixels = 0, opaquePixels = 0;
+    for (let index = 0; index < pixels.length; index += 4) {
+      if (pixels[index + 3] === 255) opaquePixels += 1;
+      if (pixels[index] === 0 && pixels[index + 1] === 0 && pixels[index + 2] === 0) blackPixels += 1;
+      if (pixels[index] === 255 && pixels[index + 1] === 255 && pixels[index + 2] === 255) whitePixels += 1;
+    }
+    if (!blackPixels || !whitePixels || opaquePixels !== canvas.width * canvas.height) fail('SOLUTION_QR_CANVAS_BLANK_OR_TRANSPARENT');
+    const box = canvas.getBoundingClientRect(), pageBox = pageNode.getBoundingClientRect();
+    let unclipped = box.width > 0 && box.height > 0 && box.left >= pageBox.left - 1 &&
+      box.top >= pageBox.top - 1 && box.right <= pageBox.right + 1 && box.bottom <= pageBox.bottom + 1;
+    for (let node = canvas; node && node !== area; node = node.parentElement) {
+      const style = getComputedStyle(node), boundary = node.getBoundingClientRect();
+      if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) unclipped = false;
+      if (['hidden', 'clip'].includes(style.overflowX) && (box.left < boundary.left - 1 || box.right > boundary.right + 1)) unclipped = false;
+      if (['hidden', 'clip'].includes(style.overflowY) && (box.top < boundary.top - 1 || box.bottom > boundary.bottom + 1)) unclipped = false;
+    }
+    if (!unclipped) fail('SOLUTION_QR_CANVAS_CLIPPED_OR_HIDDEN');
+    return { requestId: target.searchParams.get('outputRequestId'), currentIdentityMatches,
+      targetMode: target.searchParams.get('mode'), qrFlag: target.searchParams.get('qr'),
+      sourceKeyHash: await digest(new TextEncoder().encode(target.searchParams.get('key') || '')),
+      pixelSha256, expectedPixelSha256, width: canvas.width, height: canvas.height,
+      blackPixels, whitePixels, opaquePixels, unclipped,
+      page: [...area.querySelectorAll('.page')].indexOf(pageNode) + 1,
+      x: Math.round(box.x - pageBox.x), y: Math.round(box.y - pageBox.y),
+      displayWidth: Math.round(box.width), displayHeight: Math.round(box.height) };
+  });
+}
+
+async function solutionQrRefresh(session, initial) {
+  requireThat(await session.page.evaluate(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('solQr') === '1' && params.get('portalQr') !== '1' &&
+      !params.has('submitQr') && !params.has('osqr') && window.APOutputMetadataLoader?.mode === 'frozen-source';
+  }), 'SOLUTION_QR_FIXTURE_OPTIONS_CHANGED');
+  const examProofs = [], parity = [];
+  const observeExam = async row => {
+    assertReady(row, 8, true);
+    const buildCalls = row.adapters.filter(item => item.method === 'build').length;
+    requireThat(row.mode === 'exam' && row.cacheStatus === 'MISS' && buildCalls > 0, 'REQUEST_BOUND_EXAM_QR_WAS_REUSED');
+    const previous = examProofs.at(-1);
+    const nodes = await session.page.evaluate(() => {
+      const qa = window.__outputCacheQA, area = document.getElementById('print-area');
+      return { newRoot: qa.roots.exam ? qa.roots.exam !== area : null,
+        newCanvas: qa.lastQrCanvas ? qa.lastQrCanvas !== area.querySelector('.page-qr canvas') : null };
+    });
+    const qr = await solutionQrEvidence(session.page);
+    if (previous) {
+      requireThat(nodes.newRoot && nodes.newCanvas && row.snapshotId !== previous.snapshotId, 'REQUEST_BOUND_QR_DID_NOT_REBUILD_DOM');
+      requireThat(row.binding.outputRequestId !== previous.outputRequestId && qr.pixelSha256 !== previous.qr.pixelSha256,
+        'REQUEST_BOUND_QR_RETAINED_PREVIOUS_PIXELS');
+      requireThat(qr.sourceKeyHash === previous.qr.sourceKeyHash, 'QR_REBUILD_CHANGED_SOURCE_KEY');
+      requireThat(JSON.stringify(initial.inputUids) === JSON.stringify(row.inputUids), 'QR_REBUILD_CHANGED_QUESTION_UIDS');
+      parity.push(compareVisible(initial, row));
+    }
+    examProofs.push({ rowName: row.name, outputRequestId: row.binding.outputRequestId, snapshotId: row.snapshotId,
+      cacheStatus: row.cacheStatus, buildCalls, ...nodes, qr });
+    await remember(session.page, 'exam');
+    await session.page.evaluate(() => { window.__outputCacheQA.lastQrCanvas = document.querySelector('#print-area .page-qr canvas'); });
+  };
+  await observeExam(initial);
+  const sol = await operation(session, 'qr-first-solution-miss', 'sol');
+  assertReady(sol, 8, true); requireThat(sol.cacheStatus === 'MISS' && sol.binding.qr.canvases === 0, 'QR_FIRST_SOLUTION_NOT_CLEAN_MISS');
+  await remember(session.page, 'sol');
+  await observeExam(await operation(session, 'qr-exam-after-solution-rebuilt', 'exam'));
+  const ans = await operation(session, 'qr-first-answer-miss', 'ans');
+  assertReady(ans, 8, true); requireThat(ans.cacheStatus === 'MISS' && ans.binding.qr.canvases === 0, 'QR_FIRST_ANSWER_NOT_CLEAN_MISS');
+  await remember(session.page, 'ans');
+  const exam = await operation(session, 'qr-exam-after-answer-rebuilt', 'exam');
+  await observeExam(exam);
+  requireThat(new Set(examProofs.map(proof => proof.outputRequestId)).size === 3 &&
+    new Set(examProofs.map(proof => proof.qr.pixelSha256)).size === 3, 'QR_EXAM_REQUEST_OR_PIXELS_REPEATED');
+  const print = await printCheck(session, exam, true, 'qr-exam-safe-print-vector');
+  const printedQr = await solutionQrEvidence(session.page);
+  requireThat(printedQr.pixelSha256 === examProofs.at(-1).qr.pixelSha256, 'SAFE_PRINT_CHANGED_SOLUTION_QR_PIXELS');
+  print.qrPixelSha256 = printedQr.pixelSha256;
+  const solHit = await operation(session, 'qr-solution-cache-hit', 'sol');
+  assertReady(solHit, 8, true); await assertHit(session, sol, solHit);
+  const ansHit = await operation(session, 'qr-answer-cache-hit', 'ans');
+  assertReady(ansHit, 8, true); await assertHit(session, ans, ansHit);
+  requireThat(solHit.binding.qr.canvases === 0 && ansHit.binding.qr.canvases === 0, 'EXAM_QR_LEAKED_INTO_OTHER_MODE');
+  return { examRequestTokenChanged: true, examCanvasPixelsChanged: true, examCacheMiss: true,
+    examNewRoot: true, examBuildObserved: true, sourceAndGeometryParity: true, freshEnvelopeBinding: true,
+    solutionCacheHit: true, answerCacheHit: true, examProofs, parity, print,
+    modeHits: [solHit, ansHit].map(row => ({ rowName: row.name, mode: row.mode, snapshotId: row.snapshotId,
+      cacheStatus: row.cacheStatus, mathCalls: row.operationMath.calls,
+      buildCalls: row.adapters.filter(item => item.method === 'build').length,
+      outputRequestId: row.binding.outputRequestId })) };
+}
+
 async function invalidation(session, initial) {
   const changed = await operation(session, 'same-uid-source-change', 'exam', 'source');
   assertReady(changed, 8, false);
@@ -525,6 +646,133 @@ async function abortPendingDecode(session, initial) {
     previousViewRestoredBeforeLatestCommit: result.rollback, noOverwriteAfterNativeDecodeSettled: true };
 }
 
+async function abortPendingExamImage(session, initial) {
+  requireThat(initial.mode === 'ans' && initial.qpp === 1, 'EXAM_IMAGE_CANCELLATION_FIXTURE_CHANGED');
+  await remember(session.page, 'ans');
+  await beginOperation(session.page, 'exam');
+  await session.page.evaluate(() => {
+    const qa = window.__outputCacheQA;
+    qa.fault = { entered: false, calls: 0 };
+    qa.decodeReleased = false; qa.decodeSettled = false; qa.geometryReads = 0;
+    qa.oldRoot = document.getElementById('print-area'); qa.oldSnapshot = window.mixedScreenRuntime.activeSnapshot;
+    qa.unexpectedVisibleRoot = false;
+    qa.observer = new MutationObserver(() => {
+      if (document.getElementById('print-area') !== qa.oldRoot) qa.unexpectedVisibleRoot = true;
+    });
+    qa.observer.observe(document, { childList: true, subtree: true });
+    const uncommittedQuestion = node => !!node.closest?.('.q-box') && !node.closest('#print-area');
+    const restorers = [];
+    for (const [prototype, name] of [[Element.prototype, 'scrollHeight'], [Element.prototype, 'clientHeight'], [HTMLElement.prototype, 'offsetHeight']]) {
+      const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+      if (!descriptor?.get || !descriptor.configurable) throw new Error('QA_LAYOUT_GETTER_UNAVAILABLE');
+      Object.defineProperty(prototype, name, { ...descriptor, get() {
+        if (uncommittedQuestion(this)) qa.geometryReads += 1;
+        return descriptor.get.call(this);
+      } });
+      restorers.push(() => Object.defineProperty(prototype, name, descriptor));
+    }
+    const rect = Element.prototype.getBoundingClientRect;
+    Element.prototype.getBoundingClientRect = function (...args) {
+      if (uncommittedQuestion(this)) qa.geometryReads += 1;
+      return rect.apply(this, args);
+    };
+    restorers.push(() => { Element.prototype.getBoundingClientRect = rect; });
+    const originalDecode = HTMLImageElement.prototype.decode;
+    if (typeof originalDecode !== 'function') throw new Error('QA_IMAGE_DECODE_UNAVAILABLE');
+    let release;
+    const held = new Promise(resolve => { release = resolve; });
+    qa.releaseDecode = () => { qa.decodeReleased = true; release(); };
+    HTMLImageElement.prototype.decode = function (...args) {
+      if (!qa.fault.entered && uncommittedQuestion(this)) {
+        qa.fault.entered = true; qa.fault.calls += 1;
+        qa.heldDecode = held.then(() => originalDecode.apply(this, args));
+        qa.heldDecode.then(() => { qa.decodeSettled = true; }, () => { qa.decodeSettled = true; qa.lateNativeDecodeRejected = true; });
+        return qa.heldDecode;
+      }
+      return originalDecode.apply(this, args);
+    };
+    restorers.push(() => { HTMLImageElement.prototype.decode = originalDecode; });
+    qa.restoreImageObservation = () => { restorers.forEach(restore => restore()); qa.observer.disconnect(); };
+    qa.first = Promise.resolve(window.switchMode('exam')).then(value => ({ ok: value?.ok === true,
+      code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(value?.code || '') ? value.code : value?.code ? 'RENDER_FAILED' : null }),
+      async error => { const classified = await window.__outputPerformance.classifyError(error); return { ok: false, code: classified.code, error: classified }; });
+  });
+  await session.page.waitForFunction(() => window.__outputCacheQA.fault.entered, null, { timeout: remaining(20000), polling: 20 });
+  const pending = await collect(session, 'exam-staging-decode-pending', { ok: false, code: 'QA_EXAM_IMAGE_PENDING' });
+  compareVisible(initial, pending);
+  const observedPending = await session.page.evaluate(() => {
+    const qa = window.__outputCacheQA;
+    return { rootPreserved: document.getElementById('print-area') === qa.oldRoot,
+      snapshotPreserved: window.mixedScreenRuntime.activeSnapshot === qa.oldSnapshot,
+      unexpectedVisibleRoot: qa.unexpectedVisibleRoot, geometryReads: qa.geometryReads,
+      candidatePages: [...document.querySelectorAll('[data-fast-build]')].filter(root => root.id !== 'print-area')
+        .reduce((count, root) => count + root.querySelectorAll('.page').length, 0),
+      decodeReleased: qa.decodeReleased, decodeSettled: qa.decodeSettled };
+  });
+  const bindingFields = ['mode', 'qpp', 'snapshotId', 'sessionId', 'snapshotMode', 'candidateMode', 'keyHash',
+    'inputControlsHash', 'headerOptionsHash', 'outputRequestId', 'payloadHash', 'envelopeMode', 'urlMode', 'urlRequestId',
+    'verifiedIdentityMatches', 'renderedIdentityMatches'];
+  for (const field of bindingFields) requireThat(initial.binding[field] === pending.binding[field],
+    'PENDING_EXAM_IMAGE_CHANGED_OLD_STATE', { field });
+  requireThat(observedPending.rootPreserved && observedPending.snapshotPreserved && !observedPending.unexpectedVisibleRoot &&
+    observedPending.geometryReads === 0 && observedPending.candidatePages === 0 && pending.operationMath.calls === 0 &&
+    !observedPending.decodeReleased && !observedPending.decodeSettled && pending.binding.runtimeBusy,
+    'PENDING_EXAM_IMAGE_MEASURED_OR_REPLACED_OLD_VIEW', observedPending);
+  const pendingEvidence = { ...observedPending, mathCalls: pending.operationMath.calls, mode: pending.mode,
+    snapshotId: pending.snapshotId, outputRequestId: pending.binding.outputRequestId,
+    inputAndBindingPreserved: true };
+  await beginOperation(session.page, 'ans');
+  const result = await bounded(session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA, started = performance.now();
+    // The visible mode is already ans, but the pending exam must be canceled;
+    // returning through the same-mode no-op would leave this promise blocked.
+    const latest = Promise.resolve(window.switchMode('ans')).then(value => ({ ok: value?.ok === true,
+      code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(value?.code || '') ? value.code : value?.code ? 'RENDER_FAILED' : null }),
+      async error => { const classified = await window.__outputPerformance.classifyError(error); return { ok: false, code: classified.code, error: classified }; });
+    const [first, last] = await Promise.all([qa.first, latest]);
+    const elapsedMs = performance.now() - started;
+    await window.mixedScreenRuntime.whenIdle();
+    return { first, last, elapsedMs, decodeReleased: qa.decodeReleased, decodeSettled: qa.decodeSettled,
+      geometryReads: qa.geometryReads, unexpectedVisibleRoot: qa.unexpectedVisibleRoot };
+  }), 10000);
+  const after = await collect(session, 'latest-answer-cancels-exam-image', result.last, result.elapsedMs);
+  assertReady(after, 8, true); await assertHit(session, initial, after);
+  requireThat(!result.first.ok && result.first.code === 'DISCARDED_STALE' && result.last.ok &&
+    !result.decodeReleased && !result.decodeSettled && result.elapsedMs < 3000,
+    'LATEST_ANSWER_WAITED_FOR_OLD_EXAM_IMAGE', result);
+  requireThat(result.geometryReads === 0 && !result.unexpectedVisibleRoot && after.attemptCount === initial.attemptCount + 2 &&
+    after.attempts.some(attempt => !attempt.committed && (attempt.state === 'DISCARDED_STALE' || attempt.code === 'DISCARDED_STALE')),
+    'CANCELED_EXAM_IMAGE_WAS_MEASURED_OR_COMMITTED');
+  requireThat(initial.binding.inputControlsHash === after.binding.inputControlsHash, 'EXAM_IMAGE_CANCELLATION_LOST_USER_INPUT');
+  const latestEvidence = { mode: after.mode, cacheStatus: after.cacheStatus, snapshotId: after.snapshotId,
+    outputRequestId: after.binding.outputRequestId, attemptCount: after.attemptCount,
+    decodeReleased: result.decodeReleased, decodeSettled: result.decodeSettled, geometryReads: result.geometryReads,
+    rootPreserved: true, inputPreserved: true };
+  const released = await bounded(session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA;
+    qa.releaseDecode(); await qa.heldDecode.catch(() => {});
+    await window.mixedScreenRuntime.whenIdle();
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const observed = { decodeSettled: qa.decodeSettled, lateNativeDecodeRejected: !!qa.lateNativeDecodeRejected,
+      geometryReads: qa.geometryReads, unexpectedVisibleRoot: qa.unexpectedVisibleRoot };
+    qa.restoreImageObservation(); window.__solutionLoadingQA.firstBoxMs = 0;
+    return observed;
+  }), 10000);
+  const settled = await collect(session, 'released-exam-image-cannot-overwrite-answer', result.last);
+  assertReady(settled, 8, true); compareVisible(after, settled);
+  requireThat(released.decodeSettled && released.geometryReads === 0 && !released.unexpectedVisibleRoot &&
+    after.attemptCount === settled.attemptCount, 'RELEASED_EXAM_IMAGE_RESUMED_CANCELED_LAYOUT');
+  for (const field of ['snapshotId', 'outputRequestId', 'payloadHash', 'mode', 'urlMode', 'urlRequestId'])
+    requireThat(after.binding[field] === settled.binding[field], 'RELEASED_EXAM_IMAGE_OVERWROTE_LATEST_BINDING', { field });
+  const printed = await printCheck(session, settled, true, 'exam-image-cancellation-safe-print');
+  return { first: result.first, latest: result.last, latestReadyMs: round(result.elapsedMs), maxLatestReadyMs: 3000,
+    heldDecodeStillPendingAtLatestReady: true, oldDocumentPreservedWhilePending: true,
+    inputAndBindingPreservedWhilePending: true, noGeometryBeforeImages: true, restoredAnswerSnapshotHit: true,
+    noOverwriteAfterNativeDecodeSettled: true, printed, pendingEvidence, latestEvidence,
+    settledEvidence: { ...released, mode: settled.mode, snapshotId: settled.snapshotId,
+      outputRequestId: settled.binding.outputRequestId, attemptCount: settled.attemptCount } };
+}
+
 async function knownReal50Clipping(session, initial) {
   const question = session.fixture.questions[16];
   const expectedUid = question._sourceQuestionUid || question.sourceQuestionUid;
@@ -633,11 +881,14 @@ async function knownReal50Clipping(session, initial) {
     knownIssue: { ...report.knownIssue, status: 'UNRESOLVED', guardPass: true } };
 }
 
-async function runCase(browser, server, fixture, name, work) {
+async function runCase(browser, server, fixture, name, work, params = {}, initialMode = 'exam') {
   let session;
   try {
-    session = await bounded(P.openSession(browser, server, fixture, 'exam', false));
+    session = await bounded(P.openSession(browser, server, fixture, initialMode, false));
     session.page.setDefaultTimeout(remaining());
+    const url = new URL(session.url);
+    for (const [key, value] of Object.entries(params)) url.searchParams.set(key, value);
+    session.url = url.href;
     await session.page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: remaining() });
     const outcome = await bounded(P.awaitInitialOutcome(session.page, fixture.kind === 'envelope'));
     await session.page.evaluate(() => { window.__outputCacheQA = { roots: {} }; });
@@ -686,7 +937,10 @@ async function main() {
     await runCase(browser, server, envelope, 'final-readiness-failure-and-retry', finalReadinessFailure);
     await runCase(browser, server, envelope, 'pending-finalizer-decode-cancellation', abortPendingDecode);
     await runCase(browser, server, real50, 'known-real50-qpp4-clipping-preservation', knownReal50Clipping);
-    report.pass = report.cases.length === 8 && report.cases.every(row => row.pass);
+    await runCase(browser, server, envelope, 'solution-qr-refreshes-request-canvas', solutionQrRefresh, { solQr: '1' });
+    await runCase(browser, server, { ...envelope, id: 'cache-image-wait-real8-qpp1', qpp: 1 },
+      'pending-exam-image-cancellation', abortPendingExamImage, {}, 'ans');
+    report.pass = report.cases.length === 10 && report.cases.every(row => row.pass);
   } finally { await browser?.close(); await server?.close(); writeReport(); }
   console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.cases.length, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;

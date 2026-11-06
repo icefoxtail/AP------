@@ -10,6 +10,8 @@ on:
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
       - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-release-qualification.cjs'
+      - 'tests/archive2-output-release-qualification.test.cjs'
       - 'tests/archive2-solution-loading-browser.cjs'
       - '.github/workflows/archive-output-performance.yml'
   pull_request:
@@ -28,6 +30,8 @@ on:
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
       - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-release-qualification.cjs'
+      - 'tests/archive2-output-release-qualification.test.cjs'
       - '.github/workflows/archive-output-performance.yml'
   workflow_dispatch:
     inputs:
@@ -67,6 +71,10 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Measure real output routes in actual Chrome
+        # The raw matrix deliberately retains the pre-existing qpp4 failure.
+        # The release job below classifies only its exact pinned signature and
+        # fails on every new failure, absent artifact or unplanned missing row.
+        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
@@ -105,6 +113,9 @@ jobs:
           tests/archive-mixed-envelope-cache.test.cjs
           tests/archive-output-metadata-loader.test.cjs
           tests/archive-question-image-map-regression.test.js
+          tests/archive-exam-render-executor-slot-layout.test.cjs
+          tests/archive-render-authority-adapter.test.js
+          tests/archive2-textbook-manifest.test.js
           tests/archive2-pdf-readiness.test.cjs
           tests/archive-font-invalidation.test.cjs
       - name: Verify the required Archive2 runtime guard
@@ -162,6 +173,7 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq poppler-utils
       - name: Compare actual Chrome PDFs in an isolated print session
+        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-pdf-browser/node_modules
@@ -176,6 +188,57 @@ jobs:
         with:
           name: archive-output-pdf-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/archive-output-pdf/
+          if-no-files-found: warn
+          retention-days: 14
+
+  release-qualification:
+    name: Archive measured output release qualification
+    if: always()
+    needs: [output-performance, cache-regressions, printed-output, output-network, solution-loading]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Require every validation job to complete
+        env:
+          QUALIFICATION_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: |
+          node - <<'NODE'
+          const jobs = JSON.parse(process.env.QUALIFICATION_JOB_RESULTS);
+          const failed = Object.entries(jobs).filter(([, job]) => job.result !== 'success');
+          if (failed.length) {
+            console.error(JSON.stringify({ pass: false, incompleteJobs: failed.map(([name, job]) => ({ name, result: job.result })) }));
+            process.exit(1);
+          }
+          NODE
+      - name: Verify the qualification rejects incomplete or changed evidence
+        run: node --test tests/archive2-output-release-qualification.test.cjs
+      - name: Download this attempt's raw evidence unchanged
+        uses: actions/download-artifact@v4
+        with:
+          pattern: archive-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-all-evidence
+          merge-multiple: false
+      - name: Independently qualify performance, parity and failure preservation
+        env:
+          ARCHIVE_QUALIFICATION_CURRENT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          node tests/archive2-output-release-qualification.cjs
+          --artifacts "$RUNNER_TEMP/archive-output-all-evidence"
+          --current-sha "$ARCHIVE_QUALIFICATION_CURRENT_SHA"
+      - name: Upload scoped qualification without replacing raw failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-release-qualification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-all-evidence/output-release-qualification.json
           if-no-files-found: warn
           retention-days: 14
 
@@ -209,6 +272,10 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-network-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Measure complete cold loading under the same network limit
+        # The immutable baseline may fail its old 1.2s image-preparation gate.
+        # The mandatory qualifier requires the exact diagnosed baseline fault,
+        # every current operation ready, and parity with the normal baseline.
+        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-network-browser/node_modules

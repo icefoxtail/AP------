@@ -148,9 +148,70 @@ async function bounded(work, cap = operationTimeoutMs) {
   })]); } finally { clearTimeout(timer); }
 }
 
-function installProfile() {
+function installProfile({ observeImageWaits = false } = {}) {
   const profile = window.__outputPerformance = { adapters: [], runtimeReadyAt: null, envelopeReadyAt: null, operation: 0,
-    metadata: { promisePresent: false, settled: false, fulfilled: null } };
+    metadata: { promisePresent: false, settled: false, fulfilled: null }, imageBuildFailures: [] };
+  const imageWaitErrors = new WeakMap(), imageWaitResults = new WeakMap();
+  if (observeImageWaits) {
+    let readiness;
+    Object.defineProperty(window, 'APQuestionImageReadiness', { configurable: true, get: () => readiness, set(value) {
+      const observed = { ...value };
+      for (const method of ['waitForImages', 'waitForImage']) {
+        observed[method] = function (...args) {
+          const suppliedTimeout = method === 'waitForImages' ? args[1]?.timeoutMs : args[1];
+          const requested = Number(suppliedTimeout ?? value.DEFAULT_TIMEOUT_MS);
+          const wait = { method, timeoutMs: Number.isFinite(requested) ? Math.max(0, requested) : value.DEFAULT_TIMEOUT_MS,
+            startedAtMs: performance.now(),
+            images: method === 'waitForImage' ? [args[0]] : Array.isArray(args[0]) ? args[0].slice() : null };
+          // Observe the real wait and return its exact value/error. No image,
+          // timeout, listener, decoding operation or product decision changes.
+          return value[method].apply(this, args).then(result => {
+            const results = method === 'waitForImages' ? result.results : [result];
+            for (const item of results || []) if (item && typeof item === 'object') imageWaitResults.set(item, wait);
+            return result;
+          }, error => {
+            if (error && typeof error === 'object') imageWaitErrors.set(error, wait);
+            throw error;
+          });
+        };
+      }
+      readiness = Object.freeze(observed);
+    } });
+  }
+  const observeBuildImageFailure = (error, ctx, startedAtMs, operation) => {
+    if (!observeImageWaits || !['QUESTION_IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'IMAGE_READINESS_INCOMPLETE'].includes(error?.code)) return;
+    try {
+      const results = error.details?.results;
+      if (!Array.isArray(results)) return;
+      const firstUnreadyIndex = results.findIndex(item => item.status !== 'loaded');
+      const wait = imageWaitErrors.get(error) || imageWaitResults.get(results[firstUnreadyIndex]);
+      const candidates = [...(ctx?.stagingHost?.querySelectorAll('img') || []), ...(ctx?.targetArea?.querySelectorAll('img') || [])];
+      const capturedAtMs = performance.now();
+      profile.imageBuildFailures.push({ operation, attemptedMode: ctx?.input?.mode || ctx?.candidate?.mode || null,
+        qpp: ctx?.buildState?.qpp || null, code: error.code, buildElapsedMs: capturedAtMs - startedAtMs,
+        wait: wait ? { method: wait.method, timeoutMs: wait.timeoutMs, elapsedMs: capturedAtMs - wait.startedAtMs } : null,
+        summary: Object.fromEntries(['images', 'loaded', 'errors', 'timeouts'].map(key => [key, Number(error.details.summary?.[key])])),
+        firstUnreadyIndex,
+        results: results.map((result, index) => {
+          const source = String(result.src || '');
+          const image = wait?.images?.[index] || candidates.find(node => String(node.currentSrc || node.src || '') === source);
+          return { index, status: ['loaded', 'pending', 'timeout', 'error'].includes(result.status) ? result.status : 'OTHER',
+            reason: /^[A-Z][A-Z0-9_]+$/.test(result.reason || '') ? result.reason : null,
+            sourceRef: image?.closest('[data-source-ref]')?.dataset.sourceRef || null,
+            // URL remains only in this page; documentEvidence hashes it before
+            // exporting, after the runtime has preserved its previous output.
+            imageSourceValue: source || String(image?.currentSrc || image?.src || ''),
+            naturalWidth: Number(result.naturalWidth ?? image?.naturalWidth) || 0,
+            naturalHeight: Number(result.naturalHeight ?? image?.naturalHeight) || 0,
+            completeAtFailure: image ? image.complete === true : null,
+            inStagingHost: !!image && !!ctx.stagingHost?.contains(image),
+            inTargetArea: !!image && !!ctx.targetArea?.contains(image) };
+        }) });
+    } catch (_) {
+      // A diagnostic must not replace the real exception or turn it into PASS.
+      profile.imageBuildFailures.push({ operation, code: error.code, diagnosticCaptureFailed: true });
+    }
+  };
   profile.classifyError = async error => {
     const message = String(error?.message || '');
     const messageSha256 = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(message))), byte => byte.toString(16).padStart(2, '0')).join('');
@@ -214,9 +275,16 @@ function installProfile() {
           }
           try {
             const result = adapter[key].apply(this, parameters);
+            if (key === 'build' && result?.then) return result.then(value => { finish(); return value; }, error => {
+              finish(); observeBuildImageFailure(error, parameters[0], start, operation); throw error;
+            });
             if (result?.then) return result.finally(finish);
             finish(); return result;
-          } catch (error) { finish(); throw error; }
+          } catch (error) {
+            finish();
+            if (key === 'build') observeBuildImageFailure(error, parameters[0], start, operation);
+            throw error;
+          }
         };
       }
       return value.create(timed, ...args);
@@ -232,6 +300,14 @@ async function documentEvidence(page) {
     const area = document.getElementById('print-area');
     const attempt = runtime.inspect().attempts.at(-1);
     const profile = window.__outputPerformance;
+    const imageBuildFailures = await Promise.all(profile.imageBuildFailures.filter(item => item.operation === profile.operation).map(async item => ({
+      ...item, results: item.results ? await Promise.all(item.results.map(async ({ imageSourceValue, ...result }) => {
+        let normalizedSource = imageSourceValue;
+        try { const url = new URL(imageSourceValue, location.href); url.searchParams.delete('v'); normalizedSource = url.href; } catch (_) {}
+        normalizedSource = String(normalizedSource || '').replace(/https?:\/\/127\.0\.0\.1:\d+/g, 'LOCAL').replace(/\s+/g, ' ').trim();
+        return { ...result, imageUrlSha256: await digest(normalizedSource) };
+      })) : []
+    })));
     const envelope = window.__AP_OUTPUT_ENVELOPE__;
     const ready = window.__AP_OUTPUT_RENDER_READY__;
     const verified = window.__AP_OUTPUT_ENVELOPE_READY__;
@@ -293,6 +369,7 @@ async function documentEvidence(page) {
       operationMath: { calls: operationMath.length,
         totalMs: operationMath.reduce((total, call) => total + (call.endMs - call.startMs), 0),
         labels: operationMath.map(call => ({ label: call.label, elapsedMs: call.endMs - call.startMs })) },
+      imageBuildFailures,
       continuationCount: solutionSources.length - new Set(solutionSources).size,
       clippingCount: clipping.length, clippingEvidence,
       pageOverflowCount: pages.filter(node => node.scrollHeight > node.clientHeight + 3 || node.scrollWidth > node.clientWidth + 3).length,
@@ -377,12 +454,47 @@ async function printPdfMetadata(session, before) {
     .map(match => match.slice(1).map(value => round(Number(value))));
   requireThat(pageCount === before.pageCount, 'PDF_PAGE_COUNT_CHANGED', { screenPages: before.pageCount, pdfPages: pageCount });
   requireThat(mediaBoxes.length > 0 && mediaBoxes.every(box => box[2] > box[0] && box[3] > box[1]), 'PDF_PAGE_GEOMETRY_MISSING');
-  const after = await H.capture(session.page, before.outcome);
-  const screenParity = H.compareRows({ ...before, pass: true, name: 'before-pdf' }, { ...after, pass: true, name: 'after-pdf' });
+  const raster = inspectPdf(bytes, pageCount);
+  // Chrome can load print fonts and legitimately replace the screen snapshot
+  // while the offline PDF inspector runs. Observe its actual completed state
+  // before the next mode request, so rollback is checked against the right ID.
+  const stable = await bounded(session.page.evaluate(async () => {
+    const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+    const frames = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    for (;;) {
+      await document.fonts?.ready;
+      await frames();
+      await runtime.whenIdle();
+      const pending = window.__AP_RENDER_READY__;
+      const outcome = await pending;
+      await frames();
+      if (runtime.busy || pending !== window.__AP_RENDER_READY__ || document.fonts?.status !== 'loaded') continue;
+      return { snapshotId: runtime.activeSnapshot?.snapshotId || null, attemptCount: runtime.inspect().attempts.length,
+        runtimeBusy: runtime.busy, fontsStatus: document.fonts.status,
+        activeRootMatches: runtime.activeSnapshot?.rootNode === document.getElementById('print-area'),
+        outcome: { ok: outcome?.ok === true, code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(outcome?.code || '') ? outcome.code : null } };
+    }
+  }), 45000);
+  requireThat(stable.outcome.ok && stable.activeRootMatches, 'POST_PDF_OUTPUT_NOT_READY', stable);
+  const after = await H.capture(session.page, stable.outcome);
+  const afterEvidence = await documentEvidence(session.page);
+  H.assertReady(after, before.questionCount, 'after-pdf');
+  requireThat(after.mode === before.mode && after.qpp === before.qpp && afterEvidence.snapshotId === stable.snapshotId &&
+    afterEvidence.attemptCount === stable.attemptCount && afterEvidence.snapshotMode === after.mode &&
+    afterEvidence.committedMode === after.mode, 'POST_PDF_BINDING_NOT_STABLE');
+  if (afterEvidence.envelope.present) requireThat(afterEvidence.envelope.mode === after.mode &&
+    afterEvidence.envelope.verifiedIdentityMatches && afterEvidence.envelope.renderedIdentityMatches &&
+    afterEvidence.envelope.urlIdentityMatches && !afterEvidence.envelope.errorPresent, 'POST_PDF_ENVELOPE_NOT_READY');
+  const screenParity = compare({ ...before, pass: true, name: 'before-pdf' },
+    { ...after, ...afterEvidence, pass: true, name: 'after-pdf' });
+  const afterPrintState = { snapshotId: afterEvidence.snapshotId, snapshotMode: afterEvidence.snapshotMode,
+    committedMode: afterEvidence.committedMode, mode: after.mode, attemptCount: afterEvidence.attemptCount,
+    runtimeBusy: stable.runtimeBusy, fontsStatus: stable.fontsStatus, renderOutcomeOk: stable.outcome.ok,
+    activeRootMatches: stable.activeRootMatches, envelope: afterEvidence.envelope };
   // PDF timestamps/object identities are allowed to differ. Compare page count
   // and physical geometry, while retaining the generated byte hash as evidence.
   return { generated: true, elapsedMs, bytes: bytes.length, sha256: hash(bytes), pageCount, mediaBoxes,
-    fontObjects: (text.match(/\/Type\s*\/Font\b/g) || []).length, screenParity, raster: inspectPdf(bytes, pageCount) };
+    fontObjects: (text.match(/\/Type\s*\/Font\b/g) || []).length, screenParity, afterPrintState, raster };
 }
 
 async function openSession(browser, server, fixture, initialMode, slow) {
@@ -391,7 +503,7 @@ async function openSession(browser, server, fixture, initialMode, slow) {
   try {
     await context.route('**/api/**', route => route.fulfill({ contentType: 'application/json', body: '{"success":true}' }));
     await context.addInitScript(H.installInstrumentation, { suppressRaf: false });
-    await context.addInitScript(installProfile);
+    await context.addInitScript(installProfile, { observeImageWaits: !!slow });
     const page = await context.newPage();
     page.setDefaultTimeout(timeLeft());
     page.on('pageerror', error => errors.push({ name: error.name, messageSha256: hash(error.message) }));

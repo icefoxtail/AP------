@@ -9,6 +9,14 @@
     const DEFAULT_TIMEOUT_MS = 1200;
     const now = () => typeof performance !== 'undefined' && typeof performance.now === 'function' ? performance.now() : Date.now();
 
+    function abortedError() {
+        return Object.assign(new Error('DISCARDED_STALE'), { code: 'DISCARDED_STALE' });
+    }
+
+    function checkAbort(signal) {
+        if (signal?.aborted) throw abortedError();
+    }
+
     function asList(value) {
         return Array.from(value || []);
     }
@@ -68,51 +76,63 @@
         return { status: 'loaded', naturalWidth, naturalHeight, src: imageSource(image) };
     }
 
-    async function waitForDecode(image, timeoutMs) {
+    async function waitForDecode(image, timeoutMs, signal) {
+        checkAbort(signal);
         if (typeof image?.decode !== 'function') return inspectImage(image);
         let decodePromise;
         try {
             decodePromise = Promise.resolve(image.decode());
         } catch (error) {
+            checkAbort(signal);
             return { status: 'error', reason: 'DECODE_ERROR', message: String(error?.message || error) };
         }
-        let timer;
+        let timer, onAbort;
         let decoded;
         try {
             decoded = await Promise.race([
+                new Promise((resolve, reject) => {
+                    timer = setTimeout(() => resolve({ status: 'timeout', reason: 'DECODE_TIMEOUT' }), timeoutMs);
+                    onAbort = () => reject(abortedError());
+                    signal?.addEventListener('abort', onAbort, { once: true });
+                    if (signal?.aborted) onAbort();
+                }),
                 decodePromise.then(() => ({ status: 'decoded' })).catch(error => ({
                     status: 'error', reason: 'DECODE_ERROR', message: String(error?.message || error)
-                })),
-                new Promise(resolve => { timer = setTimeout(() => resolve({ status: 'timeout', reason: 'DECODE_TIMEOUT' }), timeoutMs); })
+                }))
             ]);
         } finally {
             clearTimeout(timer);
+            if (onAbort) signal?.removeEventListener('abort', onAbort);
         }
+        checkAbort(signal);
         if (decoded.status !== 'decoded') return { ...decoded, src: imageSource(image) };
         return inspectImage(image);
     }
 
-    async function waitForImage(image, timeoutMs = DEFAULT_TIMEOUT_MS) {
+    async function waitForImage(image, timeoutMs = DEFAULT_TIMEOUT_MS, signal) {
+        checkAbort(signal);
         const budget = Number.isFinite(Number(timeoutMs)) ? Math.max(0, Number(timeoutMs)) : DEFAULT_TIMEOUT_MS;
         const deadline = now() + budget;
         const immediate = inspectImage(image);
-        if (immediate.status === 'loaded') return waitForDecode(image, budget);
+        if (immediate.status === 'loaded') return waitForDecode(image, budget, signal);
         if (immediate.status === 'error') return immediate;
         if (!image?.addEventListener) return { status: 'timeout', reason: 'LOAD_TIMEOUT' };
 
-        const eventResult = await new Promise(resolve => {
+        const eventResult = await new Promise((resolve, reject) => {
             let settled = false;
             const timer = setTimeout(() => finish({ status: 'timeout', reason: 'LOAD_TIMEOUT', src: imageSource(image) }), budget);
             const cleanup = () => {
                 clearTimeout(timer);
                 image.removeEventListener?.('load', onLoad);
                 image.removeEventListener?.('error', onError);
+                signal?.removeEventListener('abort', onAbort);
             };
-            const finish = result => {
+            const finish = (result, error) => {
                 if (settled) return;
                 settled = true;
                 cleanup();
-                resolve(result);
+                if (error) reject(error);
+                else resolve(result);
             };
             const onLoad = () => {
                 const loaded = inspectImage(image);
@@ -121,13 +141,17 @@
                 });
             };
             const onError = () => finish({ status: 'error', reason: 'LOAD_ERROR', src: imageSource(image) });
+            const onAbort = () => finish(null, abortedError());
             image.addEventListener('load', onLoad, { once: true });
             image.addEventListener('error', onError, { once: true });
+            signal?.addEventListener('abort', onAbort, { once: true });
+            if (signal?.aborted) return onAbort();
             // A cached image can finish between the initial check and listener registration.
             if (image.complete === true) onLoad();
         });
+        checkAbort(signal);
         if (eventResult.status !== 'loaded') return eventResult;
-        return waitForDecode(image, Math.max(0, deadline - now()));
+        return waitForDecode(image, Math.max(0, deadline - now()), signal);
     }
 
     function summarize(results) {
@@ -153,9 +177,11 @@
     }
 
     async function waitForImages(images, options = {}) {
+        checkAbort(options.signal);
         const list = asList(images);
         const timeoutMs = Number(options.timeoutMs ?? DEFAULT_TIMEOUT_MS);
-        const results = await Promise.all(list.map(image => waitForImage(image, timeoutMs)));
+        const results = await Promise.all(list.map(image => waitForImage(image, timeoutMs, options.signal)));
+        checkAbort(options.signal);
         const summary = summarize(results);
         if (options.throwOnFailure !== false && results.some(result => result?.status !== 'loaded')) {
             throw createReadinessError(results, options.failureCodes);
