@@ -30,6 +30,13 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "중심에서 두 현까지의 거리가 같다는 조건으로 두 현의 길이가 같음을 보이고 이등변삼각형의 각을 계산한다.",
+    "decisiveStep": "밑각이 각각 50°이므로 x=180°-50°-50°=80°이다.",
     "solutionImage": "assets/images/23_향림중_2학기_기말_중3_기출/q1-solution.svg"
   },
   {
