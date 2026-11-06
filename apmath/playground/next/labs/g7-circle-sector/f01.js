@@ -198,6 +198,7 @@
   function makeScene(sp) {
     const K = (k) => PFX + '_' + sp.id + '_' + k;
     const kt = K('t'), kmode = K('mode'), kseed = K('seed'), kpick = K('pick');
+    const kstudy = K('study'), kqkey = K('questionKey'), ksaved = K('problemProgress'), kprinciple = K('principleStep');
     const NAMES = sp.phaseNames || ['전체 도형', '파낼 부분 찾기', '옆으로 꺼내기', '남은 부분', '완성'];
     const phaseName = (t) => (t < 0.12 ? NAMES[0] : t < 0.3 ? NAMES[1] : t < 0.74 ? NAMES[2] : t < 0.96 ? NAMES[3] : NAMES[4]);
     const onInput = (s, lab) => {
@@ -232,9 +233,16 @@
       const seed = s[kseed] || 0;
       const V = getV(s);
       const M = modelOf(V);
-      const mode = M.edges ? (s[kmode] | 0) : 0;
-      const t = clamp(+s[kt] || 0, 0, 1);
-      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0 }, phaseOf(t), {
+      let mode = M.edges ? (s[kmode] | 0) : 0, step = s.step || 0;
+      if (s[kstudy]) {
+        mode = sp.id === 'ss2' && step <= M.stepsP.length ? 1 : 0;
+        if (sp.id === 'ss2' && !mode) step -= M.stepsP.length;
+      }
+      const timeline = sp.stepT || STEP_T;
+      // 앞서 끝까지 재생했어도 정리의 앞 단계에서는 결과를 먼저 그리지 않습니다.
+      const limit = tab === 'review' ? timeline[clamp(step, 0, timeline.length - 1)] : 1;
+      const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
+      return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
           s[K(k)] = clamp(val, v.min, v.max);
@@ -271,7 +279,32 @@
       return h;
     }
 
-    const stepsOf = (s) => { const c = ctxOf(s, null); return c.mode ? c.M.stepsP : c.M.steps; };
+    function syncStudy(s, lab) {
+      if (!lab || lab.s !== s || !lab.scene || lab.scene.id !== PFX + '-' + sp.id) return;
+      const M = modelOf(getV(s));
+      if (!M.edges) return;
+      const key = JSON.stringify(getV(s)) + '|' + (s[kseed] || 0);
+      if (s[kqkey] != null && s[kqkey] !== key) {
+        s[ksaved] = null;
+        if (s[kstudy]) { s.step = 1; s.revealed = false; }
+      }
+      s[kqkey] = key;
+      if (lab.tab === 'problem' && !s[kstudy]) {
+        s[kprinciple] = s.step || 1;
+        const progress = s[ksaved];
+        s.step = progress ? progress.step : (s[kmode] || sp.id === 'ss2' ? 1 : s.step || 1);
+        s.revealed = !!s.revealed || !!(progress && progress.revealed);
+        s[kstudy] = true;
+      } else if (lab.tab === 'explore' && s[kstudy]) {
+        s[ksaved] = { step: s.step || 1, revealed: !!s.revealed };
+        s.step = s[kprinciple] || 1; s.revealed = false; s[kstudy] = false;
+      }
+    }
+    const stepsOf = (s) => {
+      const c = ctxOf(s, null);
+      if (s[kstudy] && sp.id === 'ss2') return c.M.stepsP.concat(c.M.steps);
+      return c.mode ? c.M.stepsP : c.M.steps;
+    };
     const sc = {
       id: PFX + '-' + sp.id, title: sp.title, short: sp.short, question: sp.question, csSpec: sp, csPfx: PFX,
       controls: () => [kt].concat(sp.vars.map((v) => K(v.k))),
@@ -306,6 +339,7 @@
         ensureParams(lab);
         sp.vars.forEach((v) => { s[K(v.k)] = v.value; });
         s[kt] = 0; s[kmode] = 0; s[kseed] = 0; s[kpick] = null; s.playing = false;
+        s[kstudy] = false; s[kqkey] = null; s[ksaved] = null; s[kprinciple] = 1;
       },
       focus: () => ({ x: [0, 10], y: [0, 10] }),
       tick: (s, dt, lab) => {
@@ -314,13 +348,14 @@
         if (s.playing) { s[kt] = Math.min(1, (+s[kt] || 0) + dt / DUR); if (s[kt] >= 1) s.playing = false; again = true; }
         else if (lab && lab.tab === 'review' && !mode) {
           const st = sp.stepT || STEP_T;
-          const tg = st[clamp(s.step || 0, 0, st.length - 1)];
+          const tg = st[clamp(ctxOf(s, lab).step, 0, st.length - 1)];
           const d = tg - (+s[kt] || 0);
           if (Math.abs(d) > 0.0008) { s[kt] = (+s[kt] || 0) + clamp(d, -0.5 * dt, 0.5 * dt); again = true; }
         }
         return again;
       },
       view: (s, lab) => {
+        syncStudy(s, lab);
         const c = ctxOf(s, lab), M = c.M;
         const v = {};
         const gd = c.mode ? M.guideP : M.guide;
@@ -331,7 +366,8 @@
         const stp = c.mode ? M.stepsP : M.steps;
         const STAT = sp.stepStatus || ['전체 도형', '파낼 부분 찾기', '파낸 부분 꺼내기', '색칠한 부분 = 전체 − 파낸 부분'];
         if (c.review && c.step > 0) v.status = { tone: c.step >= stp.length ? 'ok' : 'info', text: c.mode ? `둘레 ${c.step} / ${stp.length}` : STAT[Math.min(STAT.length, c.step) - 1] };
-        else if (!c.problem) v.status = { tone: c.res >= 0.999 && !c.mode ? 'ok' : 'info', text: c.mode ? M.modeText || '둘레 보기' : phaseName(c.t) };
+        if (c.review && s[kstudy] && sp.id === 'ss2') v.status = { tone: s.step >= stepsOf(s).length ? 'ok' : 'info', text: `${c.mode ? '둘레' : '넓이'} · 풀이 ${s.step} / ${stepsOf(s).length}` };
+        else if (!c.problem && !c.review) v.status = { tone: c.res >= 0.999 && !c.mode ? 'ok' : 'info', text: c.mode ? M.modeText || '둘레 보기' : phaseName(c.t) };
         v.formula = c.mode ? M.formulaP : M.formula;
         v.rule = c.mode ? M.ruleP : M.rule;
         v.notes = M.notes;
@@ -454,6 +490,25 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   }
   const whenA = (c, w) => (w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? seg01(c.res, 0.2, 0.8) : 1);
 
+  function drawFig(b, c, givensOnly = false) {
+    const fig = c.M.fig, outer = fig.find((it) => it.radiusLabel === 'outer'), inner = fig.find((it) => it.radiusLabel === 'inner');
+    let offsets = null;
+    if (outer && inner) {
+      const a = b.toS(P(outer.p[0], outer.p[1])), z = b.toS(P(inner.p[0], inner.p[1]));
+      const ay = a.y + (outer.dy || 0), zy = z.y + (inner.dy || 0), gap = 22 * b.fs;
+      // 얇은 고리에서는 두 끝점이 가까워요. 글자는 별도 행으로 나누되 실제 손잡이·치수점은 유지합니다.
+      if (Math.abs(a.x - z.x) < 64 * b.fs && Math.abs(ay - zy) < gap) {
+        const move = (gap - Math.abs(ay - zy)) / 2, dir = ay <= zy ? -1 : 1;
+        offsets = new Map([[outer, dir * move], [inner, -dir * move]]);
+      }
+    }
+    fig.forEach((it) => {
+      if (givensOnly && it.when !== 'g') return;
+      const shift = offsets && offsets.get(it);
+      drawItem(b, shift ? { ...it, dy: (it.dy || 0) + shift } : it, 0, givensOnly ? 1 : whenA(c, it.when));
+    });
+  }
+
   function renderRem(b, c, outlineOnly = false) {
     const M = c.M, [x0, y0, x1, y1] = M.box, w = x1 - x0, dx = w * GAPK, cx = (x0 + x1) / 2;
     const flat = [].concat(...M.cuts.map((g) => g.polys));
@@ -465,7 +520,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       outline(b, M.outer, 'ink', 2.6);
       flat.forEach((p) => outline(b, p, 'ink', 2.4));
       drawCtx(0, 0.9);
-      M.fig.forEach((it) => { if (it.when === 'g') drawItem(b, it, 0, 1); });
+      drawFig(b, c, true);
       return;
     }
     if (c.mode) { renderPeri(b, c, outlineOnly); return; }
@@ -483,7 +538,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     drawCtx(0, 0.9);
     if (mv > 0.02) flat.forEach((p) => outline(b, p, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi }));
     M.cuts.forEach((g) => g.polys.forEach((p) => outline(b, shiftP(p, ox), 'amber', 2.4, { alpha: hi })));
-    M.fig.forEach((it) => drawItem(b, it, 0, whenA(c, it.when)));
+    drawFig(b, c);
     M.part.forEach((it) => drawItem(b, it, ox, whenA(c, it.when)));
     const cp = M.cap;
     caption(b, cx, y0, cp.whole.l, cp.whole.v, 'ink', 1 - seg01(res, 0, 0.5));
@@ -505,7 +560,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       b.path(e.pts, { color: e.color, width: cur ? 6.5 : 5, alpha: cur || !c.review ? 1 : 0.7, glow: cur });
       if (e.lstep <= n) b.text(P(e.at[0], e.at[1]), e.text, { color: e.color, size: 15, weight: 800, baseline: 'middle', dx: e.dx || 0, dy: e.dy || 0, align: e.align || 'center' });
     });
-    M.fig.forEach((it) => { if (it.when === 'g') drawItem(b, it, 0, 1); });
+    drawFig(b, c, true);
     const done = !c.review || n >= M.stepsP.length;
     caption(b, cx, y0, '색칠한 부분의 둘레', done ? M.periV + ' cm' : '…', 'sky', 1);
   }
@@ -533,10 +588,10 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       ];
       const part = [T([a / 2, a / 2], '사분원 4개', { when: 'm', color: 'amber', size: 13.5, dy: -10 }), T([a / 2, a / 2], '= 원 1개', { when: 'm', color: 'amber', size: 13.5, dy: 10 })];
       const edges = [
-        { pts: arcP(0, 0, r, 0, 90), at: [r * 0.707, r * 0.707], ...away(0.7, 0.7, 15), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
-        { pts: arcP(a, 0, r, 90, 180), at: [a - r * 0.707, r * 0.707], ...away(-0.7, 0.7, 15), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
-        { pts: arcP(a, a, r, 180, 270), at: [a - r * 0.707, a - r * 0.707], ...away(-0.7, -0.7, 15), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
-        { pts: arcP(0, a, r, 270, 360), at: [r * 0.707, a - r * 0.707], ...away(0.7, -0.7, 15), text: xs(arcX), color: 'sky', step: 1, lstep: 2 }
+        { pts: arcP(0, 0, r, 0, 90), at: [r * 0.707, r * 0.707], ...away(-0.7, -0.7, 16), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
+        { pts: arcP(a, 0, r, 90, 180), at: [a - r * 0.707, r * 0.707], ...away(0.7, -0.7, 16), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
+        { pts: arcP(a, a, r, 180, 270), at: [a - r * 0.707, a - r * 0.707], ...away(0.7, 0.7, 16), text: xs(arcX), color: 'sky', step: 1, lstep: 2 },
+        { pts: arcP(0, a, r, 270, 360), at: [r * 0.707, a - r * 0.707], ...away(-0.7, 0.7, 16), text: xs(arcX), color: 'sky', step: 1, lstep: 2 }
       ];
       const periX = X(0, 2 * r);
       return rem({
@@ -743,9 +798,11 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const nx = Math.cos(aR - PI / 2), ny = Math.sin(aR - PI / 2);
       const fig = [{ k: 'dot', p: [0, 0], when: 's' }];
       if (!full) {
-        fig.push({ k: 'ang', v: P(0, 0), d0: a0, d1: a1, text: `${fn(th)}°`, when: 's', r: 24 });
-        fig.push(T([R * ux, R * uy], `R=${fn(R)}`, { ...away(nx, ny, 22), color: 'ink', when: 'g' }));
-        fig.push(T([r * ux, r * uy], `r=${fn(r)}`, { ...away(nx, ny, 22), color: 'amber', when: 'g' }));
+        fig.push({ k: 'ang', v: P(0, 0), d0: a0, d1: a1, when: 's', r: 24 });
+        // 작은 반지름 손잡이와 중심각 문자를 서로 다른 쪽에 놓습니다.
+        fig.push(T([0, 0], `${fn(th)}°`, { dx: -36, color: 'amber', when: 's' }));
+        fig.push(T([R * ux, R * uy], `R=${fn(R)}`, { ...away(nx, ny, 22), color: 'ink', when: 'g', radiusLabel: 'outer' }));
+        fig.push(T([r * ux, r * uy], `r=${fn(r)}`, { ...away(nx, ny, 22), color: 'amber', when: 'g', radiusLabel: 'inner' }));
         fig.push({ k: 'dot', p: [R * ux, R * uy], when: 'g', r: 3 }, { k: 'dot', p: [r * ux, r * uy], when: 'g', r: 3, color: 'amber' });
       } else {
         fig.push({ k: 'seg', p: [0, 0], q: [0, R], color: 'ink', w: 1.8, when: 'g' });
@@ -769,7 +826,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         : [`바깥쪽 호: $2\\pi\\times${R}\\times\\dfrac{${th}}{360}=${xt(outArc)}$ (cm)`, `안쪽 호: $2\\pi\\times${r}\\times\\dfrac{${th}}{360}=${xt(inArc)}$ (cm)`, `곧은 선 두 개: $(${R}-${r})\\times2=${2 * (R - r)}$ (cm)`, `둘레 $=${xt(outArc)}+${xt(inArc)}+${2 * (R - r)}=${xt(periX)}$ (cm)`];
       return rem({
         outer, cuts: [{ polys: [cut] }], fig, part: [], edges, wholeX, partX, resX, periV: xs(periX),
-        handles: [{ id: 'r', label: '작은 반지름 r', p: [0, r], drag: (w, c) => c.set('r', clamp(Math.round(w.y), 1, R - 1)) }].filter(() => !full),
+        handles: [{ id: 'r', label: '작은 반지름 r', p: [r * ux, r * uy], drag: (w, c) => c.set('r', clamp(Math.round(Math.hypot(w.x, w.y)), 1, R - 1)) }].filter(() => !full),
         tx: { whole: full ? `반지름이 ${R} cm인 원` : `반지름 ${R} cm, 중심각 ${th}°인 부채꼴`, part: full ? `같은 중심의 반지름 ${r} cm인 작은 원` : `같은 중심의 반지름 ${r} cm, 중심각 ${th}°인 작은 부채꼴` },
         cap: { whole: { l: full ? '전체 (큰 원)' : '전체 (큰 부채꼴)', v: cm2(wholeX) }, part: { l: full ? '파낸 부분 (작은 원)' : '파낸 부분 (작은 부채꼴)', v: cm2(partX) } },
         wholeTex: `\\pi\\times${R}^2${full ? '' : `\\times\\dfrac{${th}}{360}`}=${xt(wholeX)}`, partTex: `\\pi\\times${r}^2${full ? '' : `\\times\\dfrac{${th}}{360}`}=${xt(partX)}`,
@@ -939,7 +996,13 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   SPECS.forEach((sp) => { sp.layout = layoutRem; sp.render = renderRem; sp.chips = chipsRem; });
   function chipsRem(c) {
     const M = c.M, ct = M.chipTex;
-    if (c.mode) return c.review && c.step < 1 ? [] : [{ k: '둘레', tex: M.periEq, color: 'sky' }];
+    if (c.mode) {
+      if (c.review && c.step < M.stepsP.length) {
+        const current = c.step >= 1 && M.stepsP[c.step - 1].match(/\$([^$]+)\$/);
+        return current ? [{ k: '현재 경계', tex: current[1], color: 'sky' }] : [];
+      }
+      return [{ k: '둘레', tex: M.periEq, color: 'sky' }];
+    }
     if (c.res > 0.5) return [{ k: '색칠한 부분', tex: ct.eq, color: 'sky' }];
     if (c.hi > 0.5) return [{ k: '전체', tex: ct.whole, color: 'ink' }, { k: '파낸 부분', tex: ct.part, color: 'amber' }];
     return [{ k: '전체', tex: ct.whole, color: 'ink' }];

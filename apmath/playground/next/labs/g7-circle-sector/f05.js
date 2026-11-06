@@ -67,7 +67,7 @@
   const A_ = (c, R, a0, a1, ccw) => ({ t: 'A', c, R, a0, a1, ccw: !!ccw });
 
   // 맞춤: 도형의 경계 상자(bb)와 화면 가장자리 여백(px)으로 보이는 범위를 정합니다. 글자는 화면 크기라 여백을 따로 줍니다.
-  function fitFocus(b, bb, m) {
+  function fitFocus(b, bb, m, footerExtra = 0) {
     m = m || {};
     const aw = Math.max(10, b.W - (b.panes ? 0 : b.insets.left + b.insets.right));
     const ah = Math.max(10, b.H - (b.panes ? 0 : b.insets.top + b.insets.bottom));
@@ -76,7 +76,7 @@
     const narrow = aw < 560;
     const mx = m.x != null ? m.x : (narrow ? 56 : 66);
     const mt = m.t != null ? m.t : (narrow ? 30 : 38);
-    const mb = m.b != null ? m.b : (narrow ? 88 : 96);
+    const mb = (m.b != null ? m.b : (narrow ? 88 : 96)) + footerExtra;
     const bw = Math.max(1e-6, bb.x1 - bb.x0), bh = Math.max(1e-6, bb.y1 - bb.y0);
     const k = Math.max(2, Math.min((W - 2 * mx) / bw, (H - mt - mb) / bh));
     b.focus = { x: [bb.x0 - mx / k, bb.x1 + mx / k], y: [bb.y0 - mt / k, bb.y1 + mb / k] };
@@ -84,9 +84,9 @@
   }
 
   // 화면 아래 설명 두 줄(그림 영역의 가운데)
-  function caption(b, l1, l2, c1, c2) {
+  function caption(b, l1, l2, c1, c2, bottom = b.insets.bottom) {
     const ins = b.insets, x = ins.left + (b.W - ins.left - ins.right) / 2;
-    const y2 = b.H - ins.bottom - 16;
+    const y2 = b.H - bottom - 16;
     b.stext(x, y2 - 22, l1, { color: c1 || 'ink', size: 15, weight: 800 });
     if (l2) b.stext(x, y2, l2, { color: c2 || 'ink', size: 15, weight: 750 });
   }
@@ -185,7 +185,12 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const M = D.model(s);
     const st = stateOf(M, s, tab, thumb);
-    fitFocus(b, D.bbox(s, M), thumb ? { x: 10, t: 10, b: 10 } : D.fit);
+    // 넓은 화면의 우하단 도구는 쉘의 bottom inset에 포함되지 않아요.
+    // 합계가 긴 경우에도 도구에 덮이지 않도록 설명 두 줄과 도형을 함께 올립니다.
+    const toolsHeight = lab && lab.ui && lab.ui.tools && lab.ui.tools.offsetHeight;
+    const captionBottom = Math.max(b.insets.bottom, (toolsHeight || 44) + 14);
+    const footerExtra = thumb || st.plain ? 0 : captionBottom - b.insets.bottom;
+    fitFocus(b, D.bbox(s, M), thumb ? { x: 10, t: 10, b: 10 } : D.fit, footerExtra);
     D.drawBase(b, s, M, st, lab, thumb);
     const G = M.groups;
     const groupOf = {};
@@ -215,9 +220,9 @@
       });
       // 4) 아래 설명
       if (!st.plain) {
-        if (st.sum) caption(b, '둘레 = 조각의 길이의 합', M.sumText, 'ink', 'amber');
-        else if (st.cur >= 0) caption(b, NUM[st.cur] + ' ' + G[st.cur].name, G[st.cur].cap, M.P[G[st.cur].idx[0]].color, 'ink');
-        else caption(b, '경계를 호와 선분으로 나누어요', '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted');
+        if (st.sum) caption(b, '둘레 = 조각의 길이의 합', M.sumText, 'ink', 'amber', captionBottom);
+        else if (st.cur >= 0) caption(b, NUM[st.cur] + ' ' + G[st.cur].name, G[st.cur].cap, M.P[G[st.cur].idx[0]].color, 'ink', captionBottom);
+        else caption(b, '경계를 호와 선분으로 나누어요', '▶ 재생하면 조각마다 길이를 구해요', 'ink', 'muted', captionBottom);
       }
       if (tab === 'explore' && D.handles) D.handles(b, s, M, st, lab);
     }
@@ -561,7 +566,7 @@
   /* ---------- 16-11 : 고리에서 부채꼴 모양을 뺀 둘레 ---------- */
   const RING240 = {
     id: 'f5-ring240', short: '뺀 고리', title: '고리에서 부채꼴을 뺀 둘레',
-    question: '안쪽 반지름 4 cm인 원과 폭이 4 cm인 고리에서, 중심각 120°인 부분을 잘라 냈어. 남은 부분의 호는 중심각이 몇 도일까?',
+    question: '고리에서 부채꼴 모양의 부분을 잘라 냈어. 잘라 낸 중심각을 바꾸면 남은 호의 중심각은 어떻게 달라질까?',
     slots: {
       f5A: { label: '안쪽 반지름', min: 1, max: 10, step: 1, value: 4, color: 'violet', format: (v) => v + ' cm' },
       f5B: { label: '고리의 폭', min: 1, max: 10, step: 1, value: 4, color: 'sky', format: (v) => v + ' cm' },
@@ -617,7 +622,7 @@
     guide0: '남은 부분의 중심각은 360° − 잘라 낸 각이에요.',
     formula: (M) => '<p>남은 중심각 = 360° − ' + M.g.phi + '° = ' + M.g.rem + '°. 선분: ' + M.g.w + ' × 2 = ' + 2 * M.g.w + ' cm</p>',
     quick: (M) => '중심각이 ' + M.g.rem + '°인 호의 길이는 반지름 합 (' + M.g.R + '+' + M.g.r + ')으로 한 번에: $2\\pi\\times' + (M.g.R + M.g.r) + '\\times\\dfrac{' + M.g.rem + '}{360}=' + texPi(sumL([M.P[0].len, M.P[2].len])) + '$.<br>선분 2개: $' + 2 * M.g.w + '$ → $' + texSum(M.total) + '$ (cm)',
-    notes: ['남은 호의 중심각은 360°에서 잘라 낸 각 ' + '을 뺀 값이에요. 잘라 낸 각(120°)을 그대로 쓰지 않아요.', '고리의 폭은 직선 부분 한 개의 길이예요. 직선 부분은 두 곳이라 2배를 해요.'],
+    notes: ['남은 호의 중심각은 360°에서 잘라 낸 각을 뺀 값이에요. 잘라 낸 각을 그대로 쓰지 않아요.', '고리의 폭은 직선 부분 한 개의 길이예요. 직선 부분은 두 곳이라 2배를 해요.'],
     warn: '남은 호의 중심각은 360° − 잘라 낸 각이에요. 잘라 낸 각 그대로 계산하지 않도록 주의해요.'
   };
 

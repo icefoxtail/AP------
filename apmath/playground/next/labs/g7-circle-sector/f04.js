@@ -230,7 +230,9 @@
       const V = getV(s);
       const M = modelOf(V);
       const mode = M.edges ? (s[kmode] | 0) : 0;
-      const t = clamp(+s[kt] || 0, 0, 1);
+      const timeline = sp.stepT || STEP_T;
+      const limit = tab === 'review' ? timeline[clamp(s.step || 0, 0, timeline.length - 1)] : 1;
+      const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
       return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0 }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);
@@ -426,8 +428,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       bb: { x0: bb.x0 - pad, y0: bb.y0, x1: bb.x1 + pad, y1: bb.y1 },
       readouts: [
         { label: '옮기기 전', value: o.startShort || '곡선이 섞인 모양', color: 'ink', note: o.startStr },
-        { label: '옮긴 뒤 모양', value: o.shapeShort, color: 'amber', note: o.shapeStr },
-        { label: '색칠한 부분의 넓이', value: resStr, color: 'sky', wide: true }
+        { label: '옮긴 뒤 모양', value: o.shapeShort, color: 'green', note: o.shapeStr },
+        { label: '색칠한 부분의 넓이', value: resStr, color: 'green', wide: true }
       ],
       guide: guide4(o.g),
       formula: `<p><b>색칠한 부분</b> = (옮긴 뒤의 간단한 도형)</p><p>${o.formulaLine} = <b>${xs(o.resX)}</b> (cm²)</p>`,
@@ -448,9 +450,9 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   function renderMove(b, c) {
     const M = c.M, { hi, mv, res } = c, bb = M.bb, cx = (bb.x0 + bb.x1) / 2;
     const pieces = M.pieces, n = pieces.length;
-    const drawBase = (al, rs = 0) => M.base.forEach((e) => b.path(e.pts, { close: e.close !== false, color: e.color || 'ink', width: e.w || 2.2, dash: e.dash, alpha: (e.alpha == null ? 1 : e.alpha) * al * (1 - (e.fade || 0) * rs) }));
+    const drawBase = (al, rs = 0) => M.base.forEach((e) => b.path(e.pts, { close: e.close !== false, color: e.color || 'sky', width: e.w || 2.2, dash: e.dash, alpha: (e.alpha == null ? 1 : e.alpha) * al * (1 - (e.fade || 0) * rs) }));
     if (c.problem) {
-      fillEO(b, M.shade0, 'sky', 0.5);
+      fillEO(b, M.shade0, 'green', 0.2);
       drawBase(1);
       M.fig.forEach((it) => { if (it.when === 'g') drawItem(b, it, 0, 1); });
       return;
@@ -459,29 +461,29 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     const fillPieces = pieces.filter((p) => p.fill !== false);
     const src = [].concat(...fillPieces.map((p) => p.polys));
     if (M.crossfade) {
-      fillEO(b, M.shade0, 'sky', 0.46 * (1 - res));
-      fillEO(b, M.target, 'sky', 0.46 * res);
+      fillEO(b, M.shade0, 'green', 0.2 * (1 - res));
+      fillEO(b, M.target, 'green', 0.2 * res);
     } else {
-      fillEO(b, M.shade0.concat(src), 'sky', 0.46);
+      fillEO(b, M.shade0.concat(src), 'green', 0.2);
     }
     pieces.forEach((pc, i) => {
       const p = prog(i), polys = pc.polys.map((q) => tfPoly(q, pc, p));
       if (pc.fill === false) fillEO(b, polys, 'amber', 0.22 * hi * (1 - res));
-      else { fillEO(b, polys, 'sky', 0.46 * (1 - hi * (1 - res))); fillEO(b, polys, 'amber', 0.6 * hi * (1 - res)); }
+      else { fillEO(b, polys, 'green', 0.2 * (1 - hi * (1 - res))); fillEO(b, polys, 'amber', 0.26 * hi * (1 - res)); }
     });
     drawBase(1, res);
     pieces.forEach((pc) => pc.dst.forEach((q) => outline(b, q, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi * (1 - res) })));
     pieces.forEach((pc, i) => { const p = prog(i); pc.polys.forEach((q) => outline(b, tfPoly(q, pc, p), 'amber', 2.4, { alpha: hi * (1 - 0.85 * res) })); });
-    M.target.forEach((q) => outline(b, q, 'sky', 3.4, { alpha: res }));
+    M.target.forEach((q) => outline(b, q, 'green', 3.4, { alpha: res }));
     M.fig.forEach((it) => drawItem(b, it, 0, whenA(c, it.when)));
     pieces.forEach((pc, i) => { const p = prog(i); (pc.items || []).forEach((it) => drawItem(b, Object.assign({}, it, { p: tfPt(it.p, pc, p) }), 0, whenA(c, it.when))); });
     caption(b, cx, bb.y0, M.cap.start.l, M.cap.start.v, 'ink', 1 - seg01(res, 0, 0.5));
-    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'sky', seg01(res, 0.5, 1));
+    caption(b, cx, bb.y0, M.cap.res.l, M.cap.res.v, 'green', seg01(res, 0.5, 1));
     if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
   function chipsMove(c) {
     const M = c.M;
-    if (c.res > 0.5) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'sky' }];
+    if (c.res > 0.5) return [{ k: '색칠한 부분', tex: M.eqTex, color: 'green' }];
     if (c.mv > 0.5) return [{ k: '옮기면', html: esc(M.shapeShort), color: 'amber' }];
     return [];
   }

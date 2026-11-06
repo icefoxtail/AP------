@@ -1,0 +1,625 @@
+[
+  {
+    "id": "z0-center",
+    "tab": "explore",
+    "params": {
+      "csR": 6,
+      "csQ": 104.25
+    },
+    "label": "risk-0"
+  },
+  {
+    "id": "z0-diameter",
+    "tab": "explore",
+    "params": {
+      "csR": 6,
+      "csD": 30.25
+    },
+    "label": "risk-1"
+  },
+  {
+    "id": "z2-semi",
+    "tab": "explore",
+    "params": {
+      "csR": 6,
+      "csP": 33
+    },
+    "label": "risk-2"
+  },
+  {
+    "id": "z2-sector",
+    "tab": "problem",
+    "params": {
+      "csR": 6,
+      "csA": 90,
+      "csP": 100
+    },
+    "label": "risk-3"
+  },
+  {
+    "id": "z2-sector",
+    "tab": "review",
+    "params": {
+      "csR": 6,
+      "csA": 90,
+      "csP": 100
+    },
+    "step": 1,
+    "label": "risk-4-step1"
+  },
+  {
+    "id": "z2-sector",
+    "tab": "review",
+    "params": {
+      "csR": 6,
+      "csA": 90,
+      "csP": 100
+    },
+    "step": 2,
+    "label": "risk-4-step2"
+  },
+  {
+    "id": "z2-sector",
+    "tab": "review",
+    "params": {
+      "csR": 6,
+      "csA": 90,
+      "csP": 100
+    },
+    "step": 4,
+    "label": "risk-4-step4"
+  },
+  {
+    "id": "z3-circleProof",
+    "tab": "problem",
+    "params": {
+      "csR": 6,
+      "csT": 100
+    },
+    "label": "risk-5"
+  },
+  {
+    "id": "z3-sectorProof",
+    "tab": "problem",
+    "params": {
+      "csR": 6,
+      "csS": 90,
+      "csT": 100
+    },
+    "label": "risk-6"
+  },
+  {
+    "id": "f3-leaf-len",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f3a": 6
+    },
+    "label": "risk-7"
+  },
+  {
+    "id": "f4-sq12",
+    "tab": "explore",
+    "params": {
+      "f4_sq12_a": 12,
+      "f4_sq12_t": 0
+    },
+    "label": "risk-8-move0"
+  },
+  {
+    "id": "f4-sq12",
+    "tab": "explore",
+    "params": {
+      "f4_sq12_a": 12,
+      "f4_sq12_t": 0.55
+    },
+    "label": "risk-8-move0.55"
+  },
+  {
+    "id": "f4-sq12",
+    "tab": "explore",
+    "params": {
+      "f4_sq12_a": 12,
+      "f4_sq12_t": 1
+    },
+    "label": "risk-8-move1"
+  },
+  {
+    "id": "f4-slide",
+    "tab": "explore",
+    "params": {
+      "f4_slide_W": 10,
+      "f4_slide_r": 3,
+      "f4_slide_t": 0
+    },
+    "label": "risk-9-move0"
+  },
+  {
+    "id": "f4-slide",
+    "tab": "explore",
+    "params": {
+      "f4_slide_W": 10,
+      "f4_slide_r": 3,
+      "f4_slide_t": 0.55
+    },
+    "label": "risk-9-move0.55"
+  },
+  {
+    "id": "f4-slide",
+    "tab": "explore",
+    "params": {
+      "f4_slide_W": 10,
+      "f4_slide_r": 3,
+      "f4_slide_t": 1
+    },
+    "label": "risk-9-move1"
+  },
+  {
+    "id": "rl-rect",
+    "tab": "review",
+    "step": "final",
+    "label": "risk-10"
+  },
+  {
+    "id": "rl-semi",
+    "tab": "review",
+    "step": "final",
+    "label": "risk-11"
+  },
+  {
+    "id": "f1-star",
+    "label": "question-area-after-perimeter-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "Area exercise returns to area derivation; formula remains hidden; perimeter completion is a different target."
+  },
+  {
+    "id": "f1-star",
+    "label": "question-area-after-perimeter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "The last result is the current area, in cm², using the same givens."
+  },
+  {
+    "id": "f1-ring",
+    "label": "question-area-after-perimeter-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "Area exercise returns to area derivation; formula remains hidden; perimeter completion is a different target."
+  },
+  {
+    "id": "f1-ring",
+    "label": "question-area-after-perimeter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "The last result is the current area, in cm², using the same givens."
+  },
+  {
+    "id": "f1-star",
+    "label": "principle-perimeter-preserved",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "The original perimeter principle still ends at10π cm."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage4",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 4,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage5",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 5,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage8",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 8,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f4-sq12",
+    "label": "completed-motion-return-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f4_sq12_a": 12,
+      "f4_sq12_t": 1
+    },
+    "check": "No final72 result or final result chip atstep1 even after completed exploration."
+  },
+  {
+    "id": "rl-square",
+    "label": "question-fallback-c-1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Exploration pointA has symbolic diagonal; current problem and review must use base pointC, distance4π, while cfg itself remains the exploration configuration."
+  },
+  {
+    "id": "rl-square",
+    "label": "question-fallback-c-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Exploration pointA has symbolic diagonal; current problem and review must use base pointC, distance4π, while cfg itself remains the exploration configuration."
+  },
+  {
+    "id": "rl-square",
+    "label": "principle-point-a-preserved",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Explore principle still followsA with symbolic diagonalx; it is not silently overwritten by the fallback problem."
+  },
+  {
+    "id": "rl-rtri",
+    "label": "question-stationary-c-1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "cfg": {
+        "a": 3,
+        "beta": 60,
+        "track": 1,
+        "rolls": 1
+      },
+      "rlRa": 3,
+      "rlRb": 60,
+      "rlT": 1
+    },
+    "check": "Tracked pointC is the one-turn pivot: the problem namesC, has five finite choices including0, and final review says0cm."
+  },
+  {
+    "id": "rl-rtri",
+    "label": "question-stationary-c-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 3,
+        "beta": 60,
+        "track": 1,
+        "rolls": 1
+      },
+      "rlRa": 3,
+      "rlRb": 60,
+      "rlT": 1
+    },
+    "check": "Tracked pointC is the one-turn pivot: the problem namesC, has five finite choices including0, and final review says0cm."
+  },
+  {
+    "id": "rl-turn60",
+    "label": "question-point-a-fallback",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "d": 12,
+        "at": "C",
+        "deg": 60,
+        "track": 0,
+        "rolls": 1
+      },
+      "rlTd": 12,
+      "rlTc": 60,
+      "rlT": 1
+    },
+    "check": "The exercise specifies pointA baseAC9/angle60 and6π; fallback note explains the changed tracked point, not a false irrational-diagonal claim."
+  },
+  {
+    "id": "f1-ring",
+    "label": "angle-handle-extreme-30",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 12,
+      "f1_ring_r": 11,
+      "f1_ring_th": 30,
+      "f1_ring_mode": 0,
+      "f1_ring_t": 0
+    },
+    "check": "Angle label, inner-radius handle and area caption remain separate."
+  },
+  {
+    "id": "f1-ring",
+    "label": "angle-handle-extreme-300",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 12,
+      "f1_ring_r": 11,
+      "f1_ring_th": 300,
+      "f1_ring_mode": 0,
+      "f1_ring_t": 0
+    },
+    "check": "Angle label, inner-radius handle and area caption remain separate."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-locked-small",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f3q": 6,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Notes retain diameter and equal-area principles; x=45 is absent before the final step."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-locked-penultimate",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 4,
+    "params": {
+      "f3q": 12,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Current intermediate equation is shown, but final numeric angle remains absent from notes."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-final-large",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 5,
+    "params": {
+      "f3q": 18,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Final equation and notes agree on x=45 degrees for diameter18."
+  },
+  {
+    "id": "f5-ring240",
+    "label": "notes-cut60",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f5A": 6,
+      "f5B": 3,
+      "f5C": 60,
+      "f5T": 0
+    },
+    "check": "Notes do not describe the current 60-degree cut as120degrees."
+  },
+  {
+    "id": "gt-spiral",
+    "label": "notes-side5",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "gtP": 5,
+      "gtK": 3,
+      "gtT": 0
+    },
+    "check": "The radii sequence in notes is5,10,15, matching the current side5."
+  },
+  {
+    "id": "z0-center",
+    "label": "concept-diameter-ratio-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csQ": 90
+    },
+    "check": "The final explanation answers the current conceptual question: diameter is twice the radius (12 cm for r=6)."
+  },
+  {
+    "id": "z0-arc",
+    "label": "concept-chord-shorter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csS": 60
+    },
+    "check": "The final explanation states chord AB is shorter than arc AB; 60° chord length6 and arc2π are consistent."
+  },
+  {
+    "id": "z0-sector",
+    "label": "concept-angle-proportions-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csA": 90
+    },
+    "check": "Final explanation says equal-radius sectors with central-angle ratio2 have arc-length and area ratio2; chord is not proportional."
+  },
+  {
+    "id": "f1-star",
+    "label": "perimeter-chip-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "No10π perimeter sum in the canvas chip or current formula at step1."
+  },
+  {
+    "id": "f1-star",
+    "label": "perimeter-chip-stage2",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 2,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "Current chip computes one arc5π/2; the four labels stay separate, and total10π is not disclosed yet."
+  },
+  {
+    "id": "f1-ring",
+    "label": "perimeter-chip-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "Current chip is the outer arc3π; complete perimeter9π/2+6 is not disclosed."
+  },
+  {
+    "id": "1102",
+    "label": "variable-givens-question",
+    "tab": "explore",
+    "params": {
+      "b1102_u": 1.5,
+      "b1102_t1": 40,
+      "b1102_t2": 60,
+      "b1102_y": 100
+    },
+    "check": "Exploration question makes a proportionality request without stale default6cm/30°/45°/15cm; the drawing uses the current conditions."
+  },
+  {
+    "id": "rl-tri",
+    "label": "variable-point-question",
+    "tab": "explore",
+    "params": {
+      "cfg": {
+        "a": 5,
+        "track": 2,
+        "rolls": 2
+      },
+      "rlA": 5,
+      "rlT": 1
+    },
+    "check": "Exploration question asks about the selected point and variable side, without stale3cm or forced pointA."
+  },
+  {
+    "id": "f5-ring240",
+    "label": "notes-cut60-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f5A": 6,
+      "f5B": 3,
+      "f5C": 60,
+      "f5T": 0
+    },
+    "check": "Remaining angle 300°, perimeter 15π + 3 + 10π + 3 = 25π + 6. Both caption rows and the complete sum stay above the toolbar while the full ring remains visible."
+  }
+]
