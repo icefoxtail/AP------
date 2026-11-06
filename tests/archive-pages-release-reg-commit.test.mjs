@@ -30,6 +30,8 @@ function sandbox(t) {
   git("init", "-q", "-b", "main");
   fs.writeFileSync(path.join(root, "source.js"), "window.example = 1;\n");
   fs.writeFileSync(path.join(root, ".gitignore"), "evidence/\n");
+  fs.mkdirSync(path.join(root, ".github/workflows"), { recursive: true });
+  fs.writeFileSync(path.join(root, ".github/workflows/archive-pages-release.yml"), workflow);
   fs.mkdirSync(path.join(root, "tools/ci"), { recursive: true });
   fs.writeFileSync(path.join(root, "tools/ci/archive-registration-writer.mjs"), `
     import fs from 'node:fs';
@@ -47,7 +49,7 @@ function sandbox(t) {
   const evidence = path.join(root, "evidence"); fs.mkdirSync(evidence);
   const run = (id, extra = {}) => spawnSync("bash", ["-e", "-o", "pipefail", "-c", blockScript(step(id))], {
     cwd: root, encoding: "utf8", env: { ...process.env, REGISTERED_MAIN_SHA: sha,
-      GITHUB_EVENT_NAME: "workflow_dispatch", GITHUB_RUN_ID: "fixture", GITHUB_RUN_ATTEMPT: "1",
+      GITHUB_EVENT_NAME: "workflow_dispatch", GITHUB_RUN_ID: "fixture", GITHUB_RUN_ATTEMPT: "1", GITHUB_WORKFLOW_SHA: sha,
       GITHUB_WORKFLOW_REF: "o/r/.github/workflows/archive-pages-release.yml@refs/heads/main", GITHUB_SERVER_URL: "https://github.com", GITHUB_REPOSITORY: "o/r",
       RELEASE_EVIDENCE_DIR: evidence, GITHUB_STEP_SUMMARY: path.join(evidence, "summary.md"),
       GITHUB_OUTPUT: path.join(evidence, "outputs.txt"), REQUESTED_REGISTERED_SHA: "", ...extra }
@@ -101,11 +103,12 @@ test("context binds an exact main ancestor while unrelated newer main does not i
   f.git("update-ref", "refs/remotes/origin/main", newer);
   assert.notEqual(f.run("context").status, 0, "wrong checked-out commit is rejected");
   f.git("checkout", "-q", "--detach", f.sha);
-  const fixed = f.run("context");
+  const fixed = f.run("context", { GITHUB_WORKFLOW_SHA: newer });
   assert.equal(fixed.status, 0, `exact registered ancestor remains valid despite unrelated main movement: ${fixed.stderr}`);
   assert.equal(f.run("snapshot_guard").status, 0);
   const evidence = fs.readFileSync(path.join(f.evidence, "context.txt"), "utf8");
   assert.match(evidence, new RegExp(`source_sha=${f.sha}`));
+  assert.match(evidence, new RegExp(`workflow_sha=${newer}`));
   assert.doesNotMatch(evidence, new RegExp(`source_sha=${newer}`));
   assert.notEqual(f.run("context", { REGISTERED_MAIN_SHA: "main" }).status, 0, "moving refs are not valid release identities");
 });

@@ -4,7 +4,7 @@
 
 ## 입력과 자동 처리
 
-입력 정본은 `archive/data/item-4slot/**/*.4slot.json`의 기존 `archive-meta-4slot-compact-v1`이다. 별도 inbox 제출 없이 main 병합, 원본/사전 변경, 시간별 누락 복구 때 `Archive Main Auto Metadata`의 4slot 단계가 처리한다. 기존 의미 메타 단계가 실패해도 4slot 단계는 독립 실행한다.
+입력 정본은 `archive/data/item-4slot/**/*.4slot.json`의 기존 `archive-meta-4slot-compact-v1`이다. 별도 inbox 제출 없이 main 병합, 원본/사전 변경, 시간별 누락 복구 때 `Archive Main Auto Metadata`의 4slot 단계가 처리한다. 기존 의미 메타 단계가 실패해도 4slot 처리는 보존한다. 2026-11-06부터 별도 Git writer/job이 아니라 단일 등록 transaction의 마지막 native 단계로 실행하며, 공유 등록 실패 시 보존된 기존 UID 기준으로 독립 결과를 처리한다.
 
 `tools/4slot/build-4slot-runtime.cjs`가 compact 값·사전·검토/근거 참조를 읽고, 실제 source의 문항번호를 배열 순번으로 변환하여 `question_identity_map.json`의 기존 UID에 결속한다. UID를 새로 발명하지 않는다. 사전의 given/goal/method/condition 용어 번호, format, candidates, reviewedBy, evidence를 보존한다. 실제 문항을 다시 읽고 분류하는 AI 호출은 없다.
 
@@ -19,7 +19,7 @@ UID의 권위는 기존 identity 계약의 고유 UID + source 경로 + 배열 �
 - 로컬 에셋은 첫 등록 이후 바이트 변경을 감시한다. 원격 R2·시각 품질 검수나 최초 에셋의 과거 판본 검증을 했다고 표시하지 않는다.
 - 기존 검수자·표본·근거를 그대로 참조하며 자동 실행을 독립 수학검수로 기록하지 않는다. 사전에 없는 후보는 candidates로 보존하며 임의 번호를 만들지 않는다.
 - 문항별 오류는 pending 목록에 남기고 해당 문항만 활성 인덱스에서 제외한다. 정상 문항은 계속 등록한다. `PASS_WITH_SUPPLEMENTS`는 등록된 부분의 기계 검증 성공이고 전체 의미 품질 PASS가 아니다. 4slot 누락/STALE 때문에 학생 문제 접근을 막지 않는다.
-- 동일 입력은 바이트 단위 동일 출력이다. 누락·신규·삭제 compact를 매번 직접 목록에서 확인하므로 이벤트 누락 후에도 복구한다. 변경 없는 파일은 재분류하지 않는다. 검증 단계는 캐시를 무조건 신뢰하지 않고 입력으로 재계산한다. builder 바이트 판본도 캐시 키에 포함한다.
+- 동일 입력은 바이트 단위 동일 출력이다. writer가 현재 Git의 compact 목록과 입력·builder·출력 digest를 비교하므로 이벤트 누락 후에도 복구한다. 같은 유효 입력은 native 생성·검사를 반복하지 않으며, 변경 또는 미완료가 있으면 기존 builder로 다시 계산·검증한다.
 - 파생 인덱스·검증 영수증은 같은 원격 커밋에 저장한다. main 경합 시 기존 non-force push helper가 최신 main에서 다시 만들고 검증한다. 같은 index SHA의 영수증은 덮어쓰지 않는다.
 
 ## 운영 경계와 롤백

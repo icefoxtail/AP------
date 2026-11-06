@@ -84,9 +84,11 @@ test('PR validation jobs do not retain checkout credentials or inherit the main 
   for (const [name, text] of [['writer fixtures', pr], ['registration preview', sync],
     ['QID9 validation', workflow('auto-register-approved-qid9.yml')]]) {
     assert.match(text, /persist-credentials: false/, name);
-    assert.doesNotMatch(text, /(?:contents|actions|id-token|pages|pull-requests): write|(?:GH_TOKEN|GITHUB_TOKEN):|secrets\.|git\s+(?:commit|push)\b|gh workflow run/, name);
+    assert.doesNotMatch(text, /(?:contents|actions|id-token|pages|pull-requests): write|GH_TOKEN:|secrets\.|git\s+(?:commit|push)\b|gh workflow run/, name);
   }
-  assert.match(sync, /^permissions:\n  contents: read/m);
+  assert.match(sync, /^permissions:\n  contents: read\n  actions: read/m);
+  assert.match(sync, /GITHUB_TOKEN: \$\{\{ github\.token \}\}/);
+  assert.match(sync, /archive-pr-registration-proof\.mjs consume/);
 });
 
 test('the publication handoff consumes only the push helper registered SHA and has one dispatch', () => {
@@ -241,5 +243,92 @@ test('runner-dependent evidence paths are initialized in executing steps, not un
     const result = f.run(shell(step(block, /name: Initialize runner evidence paths/)), { RUNNER_TEMP: temp, GITHUB_ENV: envFile });
     assert.equal(result.status, 0, result.stderr);
     assert.equal(fs.readFileSync(envFile, 'utf8'), `${variable}=${temp}/${suffix}\n`);
+  }
+});
+
+function pagesContextFixture(t) {
+  const f = fixture(t), workflowPath = '.github/workflows/archive-pages-release.yml';
+  git(f.dir, 'init', '-q', '-b', 'main');
+  git(f.dir, 'config', 'user.name', 'Workflow fixture');
+  git(f.dir, 'config', 'user.email', 'workflow-fixture@example.invalid');
+  git(f.dir, 'config', 'commit.gpgsign', 'false');
+  f.put('.gitignore', 'context-evidence/\noutput\nsummary\nwriter/\ncommand-trace\n');
+  f.put('source.txt', 'fixed registered input\n');
+  f.put(workflowPath, pages);
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'registered snapshot with its workflow');
+  const registered = git(f.dir, 'rev-parse', 'HEAD');
+  git(f.dir, 'update-ref', 'refs/remotes/origin/main', registered);
+  const command = shell(step(job(pages, 'build'), /^        id: context$/m));
+  const snapshot = () => ({
+    head: git(f.dir, 'rev-parse', 'HEAD'),
+    refs: git(f.dir, 'for-each-ref', '--format=%(refname) %(objectname)', 'refs/heads', 'refs/remotes'),
+    index: git(f.dir, 'write-tree'),
+    status: git(f.dir, 'status', '--porcelain'),
+    source: f.read('source.txt'),
+    workflow: f.read(workflowPath),
+  });
+  const runContext = (workflowSHA, extra = {}) => {
+    const before = snapshot();
+    const result = f.run(command, {
+      REGISTERED_MAIN_SHA: registered, GITHUB_WORKFLOW_SHA: workflowSHA,
+      GITHUB_WORKFLOW_REF: `o/r/${workflowPath}@refs/heads/main`,
+      GITHUB_EVENT_NAME: 'workflow_dispatch', GITHUB_RUN_ID: 'fixture', GITHUB_RUN_ATTEMPT: '1',
+      GITHUB_SERVER_URL: 'https://github.com', GITHUB_REPOSITORY: 'o/r',
+      RELEASE_EVIDENCE_DIR: path.join(f.dir, 'context-evidence'), ...extra,
+    });
+    assert.deepEqual(snapshot(), before, 'the context check must not change HEAD, refs, index or input files');
+    return result;
+  };
+  const advanceMain = (changeWorkflow = false) => {
+    if (changeWorkflow) f.put(workflowPath, pages + '\n# different workflow definition fixture\n');
+    else f.put('unrelated.txt', 'an unrelated main change\n');
+    git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'main advanced');
+    const newer = git(f.dir, 'rev-parse', 'HEAD');
+    git(f.dir, 'update-ref', 'refs/remotes/origin/main', newer);
+    git(f.dir, 'checkout', '-q', '--detach', registered);
+    return newer;
+  };
+  return { ...f, registered, workflowPath, runContext, advanceMain };
+}
+
+test('actual Pages context binds the executing workflow blob to the registered snapshot', t => {
+  const f = pagesContextFixture(t);
+  const result = f.runContext(f.registered);
+  assert.equal(result.status, 0, result.stderr);
+  const evidence = f.read('context-evidence/context.txt');
+  assert.match(evidence, new RegExp(`^source_sha=${f.registered}$`, 'm'));
+  assert.match(evidence, new RegExp(`^workflow_sha=${f.registered}$`, 'm'));
+  assert.match(evidence, new RegExp(`^workflow_blob=${git(f.dir, 'rev-parse', `${f.registered}:${f.workflowPath}`)}$`, 'm'));
+  assert.equal(f.read('output'), `registered_main_sha=${f.registered}\n`);
+});
+
+test('actual Pages context accepts unrelated later main when its executing workflow blob is identical', t => {
+  const f = pagesContextFixture(t), newer = f.advanceMain();
+  assert.notEqual(newer, f.registered);
+  const result = f.runContext(newer);
+  assert.equal(result.status, 0, result.stderr);
+  const evidence = f.read('context-evidence/context.txt');
+  assert.match(evidence, new RegExp(`^source_sha=${f.registered}$`, 'm'));
+  assert.match(evidence, new RegExp(`^workflow_sha=${newer}$`, 'm'));
+  assert.match(evidence, new RegExp(`^workflow_blob=${git(f.dir, 'rev-parse', `${f.registered}:${f.workflowPath}`)}$`, 'm'));
+});
+
+test('actual Pages context rejects a newer workflow definition even with an exact registered checkout', t => {
+  const f = pagesContextFixture(t), newer = f.advanceMain(true);
+  assert.equal(git(f.dir, 'rev-parse', 'HEAD'), f.registered);
+  const result = f.runContext(newer);
+  assert.notEqual(result.status, 0, 'the executing definition must be the one represented by validatorDigest');
+  assert.match(result.stdout + result.stderr, /workflow version differs from the registered snapshot/);
+  assert.equal(f.read('output'), '', 'no registration handoff output is emitted after a workflow mismatch');
+  assert.equal(f.read('context-evidence/context.txt'), '', 'no bound context claim is issued for a different workflow');
+});
+
+test('actual Pages context refuses missing, malformed or unavailable workflow SHAs without changing refs or inputs', t => {
+  const f = pagesContextFixture(t);
+  for (const invalid of [undefined, '', 'main', 'refs/heads/main', 'a'.repeat(39), `${f.registered}0`, '0'.repeat(40)]) {
+    const result = f.runContext(invalid);
+    assert.notEqual(result.status, 0, `invalid or unavailable workflow SHA: ${String(invalid)}`);
+    assert.equal(f.read('output'), '');
+    assert.equal(f.read('context-evidence/context.txt'), '');
   }
 });

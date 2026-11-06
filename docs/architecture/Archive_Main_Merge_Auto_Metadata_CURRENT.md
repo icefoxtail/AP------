@@ -22,14 +22,16 @@
 
 ## PR 기술검사와 게시 경계
 
-- PR의 `Archive Registration Sync`는 읽기 권한으로 격리된 임시 projection을 검사하고 summary/artifact를 남긴다. PR branch commit/push와 main repair PR 생성은 하지 않는다. 고정 event base와 실제 checkout을 검사하며 이후 무관한 main 이동은 그 결과를 무효화하지 않는다. 실제 merge 충돌과 보호 규칙은 병합 시 별도로 확인한다.
+- CI가 PR의 임시 projection과 등록 기술검사를 한 번 수행하고 metadata proof artifact를 남긴다. `Archive Registration Sync`는 같은 PR/base/head/checkout·입력·검사기·성공한 CI 실행/attempt에 결속된 proof만 읽기 권한으로 재사용하며 기존 필수 direct Chrome 검사를 수행한다. 만료·변조·실패·판본 차이는 통과시키지 않는다. META_V2·검색 보완 진단은 실제 임시 projection이 있는 CI에서 기존 advisory 정책으로 실행한다. PR branch commit/push와 main repair PR 생성은 하지 않는다. 고정 event base와 실제 checkout을 검사하며 이후 무관한 main 이동은 그 결과를 무효화하지 않는다. 실제 merge 충돌과 보호 규칙은 병합 시 별도로 확인한다.
 - `.archive-meta-register/auto/writer-state.json`은 기존 단계의 입력·직접 의존성·검사기·출력 digest와 미완료 상태를 저장하는 작은 실행 cursor다. 새로운 승인 기록이 아니다. 입력이 달라지면 실제 native 검사/생성을 다시 수행하고 이전 PASS에 새 digest만 붙이지 않는다. 동일 유효 입력은 commit 없이 NO_OP다.
-- Pages는 정확한 등록 SHA를 checkout하고 `--check`로 해당 snapshot의 등록 상태를 읽는다. 공유 등록 데이터를 생성하거나 Git에 commit/push하지 않는다. `build-archive2-catalog --package-only`는 등록된 manifest/index와 일치하는 미추적 패키지 shard만 만든다.
+- Pages는 정확한 등록 SHA를 checkout하고 `--check`로 해당 snapshot의 등록 상태를 읽는다. 실행 YAML도 `GITHUB_WORKFLOW_SHA`의 실제 Git blob을 등록 snapshot과 대조한다. 무관한 main 이동은 허용하지만 YAML 판본이 다르면 게시 전에 중단한다. 공유 등록 데이터를 생성하거나 Git에 commit/push하지 않는다. `build-archive2-catalog --package-only`는 등록된 manifest/index와 일치하는 미추적 패키지 shard만 만든다.
 - 실제 학생 패키지 bytes와 외부 R2 이미지·Worker 입력이 게시 receipt와 같으면 NO_OP다. 검사기·비게시 입력이 달라졌으면 이전 검증 PASS를 재사용하거나 새 receipt를 발행하지 않는다. 새 등록 SHA가 이미 게시된 SHA의 과거이면 SUPERSEDED로 끝내며 새 검증 PASS로 표현하지 않는다. 유효한 게시 SHA와 판본 관계가 불명확하면 게시하지 않는다. 게시 receipt가 없거나 조회되지 않으면 checkout 때 고정한 원격 main과 정확히 같은 snapshot만 전체 기술검사 뒤 게시할 수 있다.
 - 기존 package manifest/용량 상한, 필요한 Chrome 출력, Worker 준비, R2 이미지의 정확한 bytes(첫 전환에는 legacy 존재 확인을 재사용하지 않음), 실제 step outcome을 읽는 release gate를 유지한다. gate 뒤 `_archive-release.json`을 패키지에 기록해 등록 SHA와 실제 게시본을 연결한다. 실패 시 이전 정상 사이트를 유지한다.
 - 시간별 등록 복구와 3시간 주기 Pages 복구는 유지한다. 고정 snapshot이 아직 등록되지 않은 scheduled release는 DEFERRED이며, 정확한 등록 SHA dispatch가 불일치하면 실패다.
 - Git 공백 검사는 유지한다. 기존 QID9 SVG는 공식 import manifest의 source와 현재 normalizer로 구한 전체 bytes가 staged 출력과 같고, 지적된 줄도 source에서 그대로 상속됐을 때만 `INHERITED_SOURCE_WHITESPACE`로 구분한다. 원시 Git exit·파일·줄 수를 summary/증거에 남기며 raw `git diff --check` 성공으로 기록하지 않는다. 새 공백·다른 경로·충돌 표식·기존의 더 엄격한 Git 공백 규칙은 계속 차단한다.
 - 구 Reviewed workflow의 수동 실행은 단일 writer로 전달한다. 봉인 legacy Apply의 non-main 복구는 유지하지만 main 직접 쓰기는 차단한다. main 입력은 기존 PR/inbox 경로로 전달한다.
+
+- CI의 Pages/Reviewed 종료 `workflow_run`에 따른 이동 main 전체 재검은 퇴역했다. 원래의 plan/test 체크 이름, 고정 PR/push/manual snapshot 검사와 writer의 매 candidate Git footprint 검사는 유지한다. 메타·출력·등록 도구는 직접 Consumer 검사만 선택하고, 미분류 또는 공통 의존 변경은 기존 전체 기술검사를 유지한다. 제외는 NOT_APPLICABLE이며 PASS로 합산하지 않는다.
 
 ## 시범 및 운영 경계
 

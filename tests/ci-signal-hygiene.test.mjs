@@ -5,120 +5,112 @@ import path from "node:path";
 import os from "node:os";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { planCiRun, hasVerdictOrIsRunning, testJobRan } from "../tools/ci/ci-tip-plan.mjs";
+import { planCiRun } from "../tools/ci/ci-tip-plan.mjs";
 
-// S16 - CI signal hygiene. These tests pin the behaviour that makes a red CI mean something:
-//  * the untested tip of main (bot commit pushed with GITHUB_TOKEN, never triggers `push`) gets a CI run,
-//  * that extra run is loop-free and never duplicates an existing verdict,
-//  * the derived Meta Foundation artifacts are refreshed by the same pipeline that refreshes the receipts.
+// Ordinary CI uses the fixed event snapshot. The single writer validates each
+// derived candidate before push; completion events must not re-test moving main.
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const read = file => fs.readFileSync(path.join(repo, file), "utf8");
 const ci = read(".github/workflows/ci.yml");
-
 const TIP = "a".repeat(40);
 const OLD = "b".repeat(40);
 const PARENT = "c".repeat(40);
-const run = (id, over = {}) => ({ id, head_sha: TIP, status: "completed", conclusion: "success", event: "push", ...over });
-const fakeGet = ({ tip = TIP, runs = [], jobs = {}, parent = PARENT, fail = null } = {}) => {
-  const calls = [];
-  const get = async route => {
-    calls.push(route);
-    if (fail && route.includes(fail)) throw new Error("GitHub 500 " + route);
-    if (route.includes("/git/ref/heads/main")) return { object: { sha: tip } };
-    if (route.includes("/actions/workflows/ci.yml/runs")) return { workflow_runs: runs };
-    const jobsMatch = /\/actions\/runs\/(\d+)\/jobs/.exec(route);
-    if (jobsMatch) return { jobs: jobs[jobsMatch[1]] || [] };
-    if (route.includes("/commits/")) return { parents: [{ sha: parent }] };
-    throw new Error("unexpected route " + route);
-  };
-  return { get, calls };
-};
-const plan = (fake, extra = {}) => planCiRun({ get: fake.get, repo: "o/r", eventName: "workflow_run", runHeadSha: OLD, currentRunId: "900", ...extra });
+const eventFor = (name, base = OLD) => name === "pull_request"
+  ? { pull_request: { base: { sha: base }, head: { sha: PARENT } } }
+  : name === "push" ? { before: base, after: TIP } : { inputs: { base_sha: base } };
 
-test("non-workflow_run events always run and override nothing", async () => {
+test("ordinary events bind the exact checkout and their own immutable base without API discovery", async () => {
   for (const eventName of ["push", "pull_request", "workflow_dispatch"]) {
-    const fake = fakeGet();
-    const result = await planCiRun({ get: fake.get, repo: "o/r", eventName, runHeadSha: "", currentRunId: "1" });
-    assert.deepEqual([result.run, result.checkoutRef, result.baseSha], [true, "", ""]);
-    assert.equal(fake.calls.length, 0, "no API traffic for normal events");
+    const event = eventFor(eventName);
+    const options = { eventName, sha: TIP, event, get: () => { throw Error("no main or API lookup is allowed"); } };
+    const result = await planCiRun(options);
+    assert.deepEqual([result.run, result.checkoutRef, result.baseSha], [true, TIP, OLD]);
+    // Old workflow_run fields and a later moving-main observation are not inputs.
+    assert.deepEqual(await planCiRun({ ...options, runHeadSha: PARENT, latestMainSha: PARENT }), result);
+    assert.deepEqual(event, eventFor(eventName), "planning does not rewrite the event");
   }
 });
 
-test("the bot-committed tip has no CI run -> re-test it, auditing the commit range since the finished pipeline", async () => {
-  const result = await plan(fakeGet({ runs: [] }));
-  assert.equal(result.run, true);
+test("PR planning keeps the tested merge SHA rather than substituting its source head", async () => {
+  const result = await planCiRun({ eventName: "pull_request", sha: TIP.toUpperCase(), event: eventFor("pull_request", OLD.toUpperCase()) });
   assert.equal(result.checkoutRef, TIP);
+  assert.notEqual(result.checkoutRef, PARENT);
   assert.equal(result.baseSha, OLD);
 });
 
-test("a tip that already has a push verdict (success or failure) is not tested twice", async () => {
-  for (const conclusion of ["success", "failure", "timed_out"]) {
-    const result = await plan(fakeGet({ runs: [run(1, { conclusion })] }));
-    assert.equal(result.run, false, conclusion);
+test("retired workflow_run and unknown events fail instead of creating another main-tip verdict", async () => {
+  for (const eventName of ["workflow_run", "schedule", "repository_dispatch", "", undefined]) {
+    await assert.rejects(planCiRun({ eventName, sha: TIP, event: eventFor("push") }), /unsupported CI event/);
   }
 });
 
-test("a queued or running CI run for the tip also counts (no duplicate, no loop)", async () => {
-  for (const status of ["queued", "in_progress", "waiting", "pending"]) {
-    const result = await plan(fakeGet({ runs: [run(1, { status, conclusion: null })] }));
-    assert.equal(result.run, false, status);
+test("missing or malformed checkout/base identities fail without a first-parent or latest-main fallback", async () => {
+  for (const value of [undefined, "", "main", "origin/main", "0".repeat(40), "f".repeat(39), TIP + "\n", null]) {
+    await assert.rejects(planCiRun({ eventName: "push", sha: value, event: eventFor("push") }), /CI checkout requires/);
+    for (const eventName of ["push", "pull_request", "workflow_dispatch"]) {
+      const event = eventFor(eventName, value === undefined ? "" : value);
+      await assert.rejects(planCiRun({ eventName, sha: TIP, event }), /event base requires/);
+    }
+  }
+  for (const event of [undefined, null, [], "not a payload"]) {
+    await assert.rejects(planCiRun({ eventName: "push", sha: TIP, event }), /event payload/);
   }
 });
 
-test("cancelled, skipped, stale and startup-failed runs never produced a verdict", async () => {
-  for (const conclusion of ["cancelled", "skipped", "stale", "startup_failure", "neutral", null]) {
-    const result = await plan(fakeGet({ runs: [run(1, { conclusion })] }));
-    assert.equal(result.run, true, String(conclusion));
+function plannerFixture(t) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ci-fixed-plan-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const eventPath = path.join(dir, "event.json"), output = path.join(dir, "output"), summary = path.join(dir, "summary.md");
+  const run = ({ event = eventFor("push"), eventName = "push", sha = TIP, extra = {}, raw } = {}) => {
+    fs.writeFileSync(eventPath, raw ?? JSON.stringify(event));
+    fs.rmSync(output, { force: true }); fs.rmSync(summary, { force: true });
+    const result = spawnSync(process.execPath, [path.join(repo, "tools/ci/ci-tip-plan.mjs")], { cwd: dir, encoding: "utf8",
+      env: { PATH: process.env.PATH, EVENT_NAME: eventName, GITHUB_SHA: sha, GITHUB_EVENT_PATH: eventPath,
+        GITHUB_OUTPUT: output, GITHUB_STEP_SUMMARY: summary, ...extra } });
+    return { ...result, output: fs.existsSync(output) ? fs.readFileSync(output, "utf8") : "",
+      summary: fs.existsSync(summary) ? fs.readFileSync(summary, "utf8") : "" };
+  };
+  return { run };
+}
+
+test("planner CLI emits fixed refs from the event file and supports GITHUB_EVENT_NAME without credentials", t => {
+  const f = plannerFixture(t);
+  const r = f.run({ event: eventFor("pull_request"), eventName: "", extra: { GITHUB_EVENT_NAME: "pull_request" } });
+  assert.equal(r.status, 0, r.stderr);
+  const plan = JSON.parse(r.stdout);
+  assert.deepEqual([plan.run, plan.checkoutRef, plan.baseSha], [true, TIP, OLD]);
+  assert.match(r.output, new RegExp(`^run=true\\ncheckout_ref=${TIP}\\nbase_sha=${OLD}\\nreason=`, "m"));
+  assert.match(r.summary, /CI plan: fixed pull_request snapshot/);
+  assert.equal(f.run({ extra: { GITHUB_EVENT_NAME: "workflow_run" } }).status, 0, "explicit EVENT_NAME takes precedence");
+});
+
+test("planner CLI publishes no success outputs for retired events, malformed JSON or unavailable identities", t => {
+  const f = plannerFixture(t);
+  for (const options of [{ eventName: "workflow_run" }, { raw: "{" }, { sha: "main" },
+    { event: {} }, { extra: { GITHUB_EVENT_PATH: "" } }]) {
+    const r = f.run(options);
+    assert.notEqual(r.status, 0, JSON.stringify(options));
+    assert.equal(r.output, ""); assert.equal(r.summary, "");
   }
 });
 
-test("the planning run itself and runs for other SHAs are ignored", async () => {
-  const runs = [run(900, { status: "in_progress", conclusion: null }), run(2, { head_sha: OLD })];
-  assert.equal((await plan(fakeGet({ runs }))).run, true);
-});
-
-test("a finished workflow_run CI run counts only when its test job really ran", async () => {
-  const noop = run(5, { event: "workflow_run", conclusion: "success" });
-  const skipped = fakeGet({ runs: [noop], jobs: { 5: [{ name: "plan", conclusion: "success" }, { name: "test", conclusion: "skipped" }] } });
-  assert.equal((await plan(skipped)).run, true, "a green no-op run must not hide an untested tip");
-  const tested = fakeGet({ runs: [noop], jobs: { 5: [{ name: "plan", conclusion: "success" }, { name: "test", conclusion: "failure" }] } });
-  assert.equal((await plan(tested)).run, false, "a real re-test verdict (even red) is a verdict");
-  assert.equal(await testJobRan(async () => ({ jobs: [] }), noop), false);
-});
-
-test("when the finished pipeline ran on the tip itself the footprint base is the tip's parent", async () => {
-  const result = await plan(fakeGet(), { runHeadSha: TIP });
-  assert.equal(result.run, true);
-  assert.equal(result.baseSha, PARENT);
-});
-
-test("probe failures fail open: CI runs rather than silently skipping the only verdict", async () => {
-  for (const fail of ["/git/ref/heads/main", "/actions/workflows/ci.yml/runs", "/commits/"]) {
-    const result = await plan(fakeGet({ fail }), fail === "/commits/" ? { runHeadSha: TIP } : {});
-    assert.equal(result.run, true, fail);
-    assert.equal(result.checkoutRef, "");
+test("ci.yml: fixed event planning retains check names and never starts a derived-tip workflow_run", () => {
+  const header = ci.slice(0, ci.indexOf("\njobs:\n"));
+  assert.doesNotMatch(header, /^\s+workflow_run:/m);
+  assert.match(header, /group: .*github\.run_id/);
+  assert.match(header, /\n  cancel-in-progress: false\n/);
+  const planner = ci.slice(ci.indexOf("\n  plan:\n"), ci.indexOf("\n  test:\n"));
+  assert.match(planner, /sparse-checkout: tools\/ci/);
+  assert.match(planner, /persist-credentials: false/);
+  const plannerRef = /^\s+ref: (.+)$/m.exec(planner)?.[1];
+  assert.ok(plannerRef === undefined || plannerRef === "${{ github.sha }}", "planner comes from the fixed event checkout");
+  assert.doesNotMatch(planner, /GITHUB_TOKEN:|GH_TOKEN:|WORKFLOW_RUN_HEAD_SHA:|actions: read/);
+  for (const name of ["run", "checkout_ref", "base_sha"]) {
+    assert.ok(planner.includes(`${name}: ` + '${{ steps.plan.outputs.' + name + ' }}'));
   }
-});
-
-test("hasVerdictOrIsRunning is case-insensitive on SHAs and tolerates junk", async () => {
-  assert.equal(await hasVerdictOrIsRunning([null, undefined, run(1, { head_sha: TIP.toUpperCase() })], { tipSha: TIP, currentRunId: "9" }), true);
-  assert.equal(await hasVerdictOrIsRunning(undefined, { tipSha: TIP, currentRunId: "9" }), false);
-});
-
-test("ci.yml: loop-free workflow_run trigger, planned checkout, unique non-cancelling groups for normal events", () => {
-  assert.match(ci, /workflow_run:\s*\n\s+workflows: \[Archive Pages Release, Archive Reviewed Exam Meta Register\]\s*\n\s+types: \[completed\]\s*\n\s+branches: \[main\]/);
-  // CI must never be a trigger source of itself.
-  assert.doesNotMatch(/workflows:\s*\[[^\]]*\bCI\b[^\]]*\]/.exec(ci)?.[0] || "", /\bCI\b/);
-  assert.match(ci, /group: \$\{\{ github\.event_name == 'workflow_run' && 'ci-main-tip' \|\| format\('ci-\{0\}-\{1\}', github\.event_name, github\.run_id\) \}\}/);
-  // A second workflow_run for the same tip must never cancel an in-flight re-test: the planner counts that run as
-  // "the tip is being tested", so cancelling it could leave the tip untested.
-  assert.match(ci, /\n  cancel-in-progress: false\n/);
-  assert.doesNotMatch(ci, /cancel-in-progress: (?!false\b)/);
-  assert.match(ci, /\n  plan:\n/);
   assert.match(ci, /needs: plan\n\s+if: needs\.plan\.outputs\.run == 'true'/);
   assert.match(ci, /ref: \$\{\{ needs\.plan\.outputs\.checkout_ref \}\}\n\s+fetch-depth: 0/);
-  assert.match(ci, /PLAN_BASE_SHA: \$\{\{ needs\.plan\.outputs\.base_sha \}\}/);
-  assert.match(ci, /github\.event_name == 'workflow_run'\n/);
+  assert.doesNotMatch(ci, /ci-main-tip|PLAN_BASE_SHA|WORKFLOW_RUN_HEAD_SHA/);
 });
 
 test("ci.yml: scoped execution retains the existing blocking gates for their affected inputs", () => {
@@ -168,7 +160,7 @@ test("Native registration keeps compiled-artifact isolation; Pages never regener
     "canonical sources stay outside the shared output allowlist");
 });
 
-// ---- Guard changed Git objects: a transient planner failure must not be a false red -------------------------------
+// ---- Run the real ordinary-event footprint shell against isolated Git history. -------------------------------
 const guardStep = (() => {
   const from = ci.indexOf("      - name: Guard changed Git objects against footprint growth");
   const to = ci.indexOf("      - name: Run tests");
@@ -200,11 +192,14 @@ function guardFixture(t, commits = 3) {
   return { shas, run };
 }
 
-test("guard step: workflow_run uses the planned base when it is a reachable commit", t => {
+test("guard step: retired workflow_run and unknown events stop before any footprint claim", t => {
   const f = guardFixture(t);
-  const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: f.shas[0] });
-  assert.equal(r.status, 0, r.stderr);
-  assert.equal(r.args, `--base ${f.shas[0]} --head HEAD`);
+  for (const eventName of ["workflow_run", "schedule", "repository_dispatch", ""]) {
+    const r = f.run({ EVENT_NAME: eventName, PLAN_BASE_SHA: f.shas[0], BEFORE_SHA: f.shas[0],
+      PR_BASE_SHA: f.shas[0], MANUAL_BASE_SHA: f.shas[0] });
+    assert.equal(r.status, 2, r.stderr);
+    assert.equal(r.args, null, "a retired event cannot be converted to a manual or first-parent audit");
+  }
 });
 
 test("guard step: a PR audits its event base, independent of a later remote-main move", t => {
@@ -252,26 +247,15 @@ test("skills: later unrelated main commits reproduce the old failure but do not 
   assert.equal(invalid.status, 1, invalid.stdout); assert.match(invalid.stdout, /skill name mismatch/);
 });
 
-test("guard step: workflow_run with an empty planned base (probe failed) falls back to the tip's first parent", t => {
+test("guard step: unusable fixed bases never fall back to the first parent or moving main", t => {
   const f = guardFixture(t);
-  const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: "" });
-  assert.equal(r.status, 0, r.stderr);
-  assert.equal(r.args, `--base ${f.shas[1]} --head HEAD`);
-  assert.match(r.stdout, /::warning title=CI re-test footprint base::/);
-});
-
-test("guard step: a malformed or unreachable planned base also falls back to the first parent; a root tip stays fail-closed", t => {
-  const f = guardFixture(t);
-  for (const base of ["not-a-sha", "f".repeat(40)]) {
-    const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: base });
-    assert.equal(r.status, 0, r.stderr);
-    assert.equal(r.args, `--base ${f.shas[1]} --head HEAD`, base);
+  for (const eventName of ["pull_request", "push", "workflow_dispatch"]) {
+    for (const base of ["", "not-a-sha", "0".repeat(40), "f".repeat(40)]) {
+      const r = f.run({ EVENT_NAME: eventName, PR_BASE_SHA: base, BEFORE_SHA: base, MANUAL_BASE_SHA: base });
+      assert.equal(r.status, 2, `${eventName} ${base}: ${r.stderr}`);
+      assert.equal(r.args, null, "no complete event-bound audit can run without its base");
+    }
   }
-  const root = guardFixture(t, 1);
-  const r = root.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: "" });
-  assert.equal(r.status, 2);
-  assert.equal(r.args, null, "no audit ran");
-  assert.match(r.stderr, /no usable footprint base SHA/);
 });
 
 test("guard step: push / dispatch fail-closed semantics are unchanged", t => {
@@ -279,5 +263,57 @@ test("guard step: push / dispatch fail-closed semantics are unchanged", t => {
   assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: "0".repeat(40) }).status, 2);
   assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: f.shas[0] }).args, `--base ${f.shas[0]} --head HEAD`);
   assert.equal(f.run({ EVENT_NAME: "workflow_dispatch", MANUAL_BASE_SHA: "" }).status, 2);
+  assert.equal(f.run({ EVENT_NAME: "workflow_dispatch", MANUAL_BASE_SHA: f.shas[0] }).args, `--base ${f.shas[0]} --head HEAD`);
+  assert.equal(f.run({ EVENT_NAME: "workflow_dispatch", MANUAL_BASE_SHA: f.shas[0], GITHUB_REF: "refs/heads/other" }).status, 2);
   assert.equal(f.run({ EVENT_NAME: "push", BEFORE_SHA: "e".repeat(40) }).status, 2, "an unavailable push base still refuses");
+});
+
+test("writer persistence runs the real candidate footprint command before the local-remote push", async t => {
+  const workflow = read(".github/workflows/archive-main-auto-meta.yml");
+  const step = workflow.split(/(?=^      - )/m).find(block => /^        id: persist$/m.test(block));
+  assert.ok(step?.includes("        run: |\n"), "the writer persistence script must be present");
+  const script = step.slice(step.indexOf("        run: |\n") + "        run: |\n".length)
+    .split("\n").map(line => line.replace(/^ {10}/, "")).join("\n");
+  for (const failure of [false, true]) {
+    await t.test(failure ? "failed footprint refuses the push" : "successful footprint binds the candidate's parent and head", sub => {
+      const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ci-writer-footprint-"));
+      sub.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+      const runner = path.join(dir, "runner"), origin = path.join(dir, "origin.git"), work = path.join(dir, "writer-work");
+      fs.mkdirSync(runner); fs.mkdirSync(work);
+      const git = (cwd, ...args) => {
+        const r = spawnSync("git", args, { cwd, encoding: "utf8" });
+        assert.equal(r.status, 0, r.stderr); return r.stdout.trim();
+      };
+      git(dir, "init", "-q", "--bare", "--initial-branch=main", origin);
+      git(runner, "init", "-q", "--initial-branch=main");
+      for (const [key, value] of [["user.name", "fixture"], ["user.email", "fixture@example.invalid"], ["commit.gpgsign", "false"]]) {
+        git(runner, "config", key, value);
+      }
+      git(runner, "remote", "add", "origin", origin);
+      fs.mkdirSync(path.join(runner, "tools/ci"), { recursive: true });
+      fs.writeFileSync(path.join(runner, "tools/ci/git-push-derived-with-retry.mjs"), read("tools/ci/git-push-derived-with-retry.mjs"));
+      // The real workflow and push helper call this probe. Size policy itself is
+      // covered by git-growth.test.mjs; here the failure and exact range must reach the push gate.
+      fs.writeFileSync(path.join(runner, "tools/check-git-growth.mjs"),
+        "import fs from 'node:fs'; fs.writeFileSync(process.env.FOOTPRINT_TRACE, JSON.stringify(process.argv.slice(2))); process.exit(Number(process.env.FOOTPRINT_EXIT));\n");
+      fs.writeFileSync(path.join(runner, "derived.json"), '{"version":0}\n');
+      git(runner, "add", "-A"); git(runner, "commit", "-qm", "seed"); git(runner, "push", "-q", "origin", "HEAD:main");
+      const base = git(runner, "rev-parse", "HEAD");
+      fs.writeFileSync(path.join(runner, "derived.json"), '{"version":1}\n');
+      fs.writeFileSync(path.join(work, "commit.paths"), "derived.json\n");
+      const output = path.join(work, "outputs"), trace = path.join(work, "footprint.json");
+      const result = spawnSync("bash", ["-c", script], { cwd: runner, encoding: "utf8", env: {
+        PATH: process.env.PATH, WRITER_WORK_DIR: work, GITHUB_OUTPUT: output, GITHUB_STEP_SUMMARY: path.join(work, "summary.md"),
+        FOOTPRINT_TRACE: trace, FOOTPRINT_EXIT: failure ? "7" : "0"
+      } });
+      const candidate = git(runner, "rev-parse", "HEAD");
+      assert.notEqual(candidate, base, "the helper created a candidate to verify");
+      assert.deepEqual(JSON.parse(fs.readFileSync(trace, "utf8")), ["--base", base, "--head", candidate]);
+      const published = git(origin, "rev-parse", "main"), outputs = fs.readFileSync(output, "utf8");
+      assert.equal(result.status, failure ? 1 : 0, result.stdout + result.stderr);
+      assert.equal(published, failure ? base : candidate);
+      assert.ok(outputs.includes(`result=${failure ? "VERIFICATION_FAILED" : "PUSHED"}\n`));
+      assert.ok(outputs.includes(`registered_sha=${failure ? "" : candidate}\n`));
+    });
+  }
 });

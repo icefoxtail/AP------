@@ -62,6 +62,16 @@ jobs:
           [[ "$REGISTERED_MAIN_SHA" =~ ^[a-f0-9]{40}$ ]]
           [[ "$(git rev-parse HEAD)" == "$REGISTERED_MAIN_SHA" ]]
           git merge-base --is-ancestor "$REGISTERED_MAIN_SHA" origin/main
+          # The dispatch ref chooses the executing YAML before checkout. Bind
+          # its actual blob as well, while allowing unrelated main commits.
+          [[ "${GITHUB_WORKFLOW_SHA:-}" =~ ^[a-f0-9]{40}$ ]]
+          workflow_path='.github/workflows/archive-pages-release.yml'
+          workflow_blob="$(git rev-parse --verify "$GITHUB_WORKFLOW_SHA:$workflow_path")"
+          registered_workflow_blob="$(git rev-parse --verify "$REGISTERED_MAIN_SHA:$workflow_path")"
+          if [[ "$workflow_blob" != "$registered_workflow_blob" ]]; then
+            echo '::error::Pages workflow version differs from the registered snapshot; register and publish the current workflow before retrying.'
+            exit 1
+          fi
           mkdir -p "$RELEASE_EVIDENCE_DIR"
           {
             printf 'source_sha=%s\n' "$REGISTERED_MAIN_SHA"
@@ -69,6 +79,8 @@ jobs:
             printf 'run_id=%s\n' "$GITHUB_RUN_ID"
             printf 'run_attempt=%s\n' "$GITHUB_RUN_ATTEMPT"
             printf 'workflow_ref=%s\n' "$GITHUB_WORKFLOW_REF"
+            printf 'workflow_sha=%s\n' "$GITHUB_WORKFLOW_SHA"
+            printf 'workflow_blob=%s\n' "$workflow_blob"
             printf 'workflow_run_url=%s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
           } > "$RELEASE_EVIDENCE_DIR/context.txt"
           printf 'registered_main_sha=%s\n' "$REGISTERED_MAIN_SHA" >> "$GITHUB_OUTPUT"
