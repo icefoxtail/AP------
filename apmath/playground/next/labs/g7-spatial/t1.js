@@ -2,20 +2,20 @@
    중1 · 위치 관계 — 탭 ① 「꼬인 위치」 (t1.js, order 10) — 장면 7개
    · s1-1 직육면체 · s1-2 삼각기둥 · s1-3 사다리꼴기둥[함정] · s1-4 육각기둥[함정] · s1-5 사각뿔 · s1-6 사면체
    · s1-7 n각기둥 — n 을 바꾸면 모서리 수와 꼬인 모서리 수가 어떻게 달라지는지, 두 모서리를 골라 위치 관계 알아보기
-   기준 모서리 하나를 정하면 나머지 모서리를 「만나는(빨강) · 평행한(파랑) · 꼬인 위치(초록)」로 자동 분류합니다.
+   기준 모서리 하나를 정하면 나머지 모서리를 「만나는(분홍) · 평행한(하늘) · 꼬인 위치(초록)」로 자동 분류합니다.
    모든 글자·색·개수·정답은 지금의 입체와 기준 모서리로 다시 계산됩니다.
    ========================================================================== */
 (function () {
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { jo, clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, bestYaw, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
+  const { jo, clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, bestYaw, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, caption, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
 
   const PARAMS = {
     spExt: P('모서리 늘이기', 0, 1, 0.01, 1, { color: 'violet', hint: '두 모서리를 쭉 늘이면 한 점에서 만나는 것이 있어요', format: (v) => Math.round(v * 100) + '%' }),
     spN: P('밑면의 변의 수 n', 3, 8, 1, 6, { color: 'amber', hint: '막대를 움직여 n각기둥을 바꿔 보세요', format: (v) => `${Math.round(v)}각기둥` })
   };
-  const RED = 'red', BLUE = 'sky', GREEN = 'green', AMB = 'amber', VIO = 'violet';
+  const ROSE = 'rose', BLUE = 'sky', GREEN = 'green', AMB = 'amber', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
 
   /* 장면 정의 공통 틀 */
@@ -91,8 +91,10 @@
         const r = e.rel;
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };
         if (st === 0) return { color: 'ink', width: 3.2 };
+        // 선택 강조도 같은 가림·교차 처리 안에서 그려 뒤 모서리의 점선을 보존합니다.
+        if (M.tgt && e.key === M.tgt.key && !C.review) return { color: r === 'skew' ? GREEN : r === 'par' ? BLUE : ROSE, width: 5.8, glow: true };
         // 이미 지운 모서리도 입체의 윤곽이 보이도록 흐리게만 남깁니다(너무 연하면 모양이 사라져요).
-        if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4, dash: r === 'ext' ? [7, 5] : undefined } : { color: RED, width: 2, alpha: 0.42, dash: r === 'ext' ? [7, 5] : undefined };
+        if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: ROSE, width: st === 1 ? 5 : 4, dash: r === 'ext' ? [7, 5] : undefined } : { color: ROSE, width: 2, alpha: 0.42, dash: r === 'ext' ? [7, 5] : undefined };
         if (r === 'par') return st === 4 || st === 2 ? { color: BLUE, width: st === 2 ? 5 : 4 } : st > 2 ? { color: BLUE, width: 2, alpha: 0.42 } : { color: 'ink', width: 3 };
         if (r === 'skew') return st === 4 || st === 3 ? { color: GREEN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
         return { color: 'ink', width: 3 };
@@ -124,9 +126,7 @@
       if (C.txt) D.label(mid3(A, B), `기준 ${ref.name}`, { color: AMB, size: 16, dir: D.out(mid3(A, B), sol.ctr), gap: 14 });
       // 두 모서리 판별(s1-7): 고른 둘째 모서리
       if (M.tgt && M.tgt.key !== ref.key && !C.problem && !C.review) {
-        const t = M.tgt, col = M.tgtRel === 'skew' ? GREEN : M.tgtRel === 'par' ? BLUE : RED;
-        D.line(sol.verts[t.u], sol.verts[t.v], VIO, 7, { alpha: 0.55 });
-        D.line(sol.verts[t.u], sol.verts[t.v], col, 4, {});
+        const t = M.tgt;
         D.label(mid3(sol.verts[t.u], sol.verts[t.v]), `고른 ${t.name}`, { color: VIO, size: 16, dir: D.out(mid3(sol.verts[t.u], sol.verts[t.v]), sol.ctr), gap: 14 });
       }
       // 맨 위 설명 한 줄
@@ -134,7 +134,7 @@
         // 번호 대신 색과 이름으로: 꼬인 모서리는 이름을 나열하고 개수를 붙입니다(5개 넘으면 개수만, 이름은 풀이 문장에)
         const names = g.skew.map((e) => e.name);
         const cap = C.problem ? null : st === 1 ? `만나는 모서리 ${M.nMeet + M.nExt}개 지우기` : st === 2 ? `평행한 모서리 ${M.nPar}개 지우기` : st === 3 ? (names.length <= 5 ? `꼬인 위치: ${names.join(', ')} → ${M.nSkew}개` : `남은 ${M.nSkew}개 = 꼬인 위치`) : null;
-        if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? RED : st === 2 ? BLUE : GREEN, size: 17, weight: 800, align: 'center', baseline: 'middle' });
+        if (cap) caption(b, cap, { color: st === 1 ? ROSE : st === 2 ? BLUE : GREEN });
       }
       D.flush();
       // 손잡이: 기준 모서리(노랑), 둘째 모서리(보라)
@@ -163,20 +163,20 @@
       const r = ov(ref.name);
       const readouts = [
         rd('기준 모서리', ref.name, AMB),
-        rd('만나는 모서리', `${nMeet + nExt}개`, RED, nExt ? `끝점 ${nMeet} + 늘이면 ${nExt}` : '끝점에서 만남'),
+        rd('만나는 모서리', `${nMeet + nExt}개`, ROSE, nExt ? `끝점 ${nMeet} + 늘이면 ${nExt}` : '끝점에서 만남'),
         rd('평행한 모서리', `${nPar}개`, BLUE),
         rd('꼬인 위치', `${nSkew}개`, GREEN, `${total} − 1 − ${nMeet + nExt} − ${nPar}`)
       ];
       if (M.tgt) {
         const t = M.tgt, rel = M.tgtRel;
-        readouts.push(rd(`${ref.name}${jo(ref.name, 'wa')} ${t.name}`, rel === 'ref' ? '같은 모서리' : rel === 'skew' ? '꼬인 위치' : rel === 'par' ? '평행' : '만남', rel === 'skew' ? GREEN : rel === 'par' ? BLUE : RED, rel === 'ext' ? '늘이면 만나요' : rel === 'meet' ? '끝점에서 만나요' : '', null, true));
+        readouts.push(rd(`${ref.name}${jo(ref.name, 'wa')} ${t.name}`, rel === 'ref' ? '같은 모서리' : rel === 'skew' ? '꼬인 위치' : rel === 'par' ? '평행' : '만남', rel === 'skew' ? GREEN : rel === 'par' ? BLUE : ROSE, rel === 'ext' ? '늘이면 만나요' : rel === 'meet' ? '끝점에서 만나요' : '', null, true));
       }
       return {
-        guide: `<b>노란 손잡이</b>를 끌어 <b>기준 모서리</b>를 바꿔 보세요.${M.tgt ? ' <b>보라 손잡이</b>로는 둘째 모서리를 골라 둘의 관계를 확인해요.' : ''} 빈 곳을 끌면 입체가 돌아가요. 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 안 보이는 모서리는 점선이에요.${nExt ? ' 막대로 모서리를 늘이면 한 점에서 만나는 것이 보여요.' : ''}`,
+        guide: `<b>노란 손잡이</b>를 끌어 <b>기준 모서리</b>를 바꿔 보세요.${M.tgt ? ' <b>보라 손잡이</b>로는 둘째 모서리를 골라 둘의 관계를 확인해요.' : ''} 빈 곳을 끌면 입체가 돌아가요. 나머지 모서리는 ${span('rose', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 안 보이는 모서리는 점선이에요.${nExt ? ' 막대로 모서리를 늘이면 한 점에서 만나는 것이 보여요.' : ''}`,
         readouts,
         formula: `<p>(꼬인 위치의 개수) $=${total}-1-${nMeet + nExt}-${nPar}=${nSkew}$ (개)</p>`,
         rule: '꼬인 위치 = 만나지도 않고 평행하지도 않은 두 직선 (한 평면 위에 없다)',
-        notes: cfg.notes(M) + notes(`두 모서리가 한 평면 위에 있으면 ${span('red', '만나거나')} ${span('sky', '평행해요')}. 꼬인 위치는 그 두 가지가 아니에요.`)
+        notes: cfg.notes(M) + notes(`두 모서리가 한 평면 위에 있으면 ${span('rose', '만나거나')} ${span('sky', '평행해요')}. 꼬인 위치는 그 두 가지가 아니에요.`)
       };
     }
 

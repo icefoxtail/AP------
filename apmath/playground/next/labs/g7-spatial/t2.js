@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G || !G.stmt) return;
-  const { NUM, pick, shuffle, VIEW, rd, notes, mkText, scene3, buildSolid, drawSolid, drawVerts } = G;
+  const { NUM, pick, shuffle, VIEW, rd, notes, mkText, scene3, buildSolid, drawSolid, drawVerts, caption } = G;
   const { STM, PARAMS, render, ab, abAt, setAB } = G.stmt;
   const WORD = { same: '일치', parallel: '평행', meet: '만나는 위치', skew: '꼬인 위치', perp: '수직', sub: '평면에 포함' };
   const cop = (w) => { const c = w.charCodeAt(w.length - 1) - 0xac00; return c >= 0 && c % 28 !== 0 ? '이에요' : '예요'; }; // 받침 있으면 이에요, 없으면 예요
@@ -19,7 +19,13 @@
     p2: '평면 P와 평행한 두 직선도 꼬인 위치이거나 한 점에서 만날 수 있어요.',
     p4: '바닥에 수직인 두 벽 Q, R은 교선에서 만날 수 있어요.',
     p6: '직선 m이 평면 P 위에 놓일 수도 있어요. 그러면 평행이 아니에요.',
-    perp: '평면 위의 한 직선과만 수직이면 l이 기울어질 수 있어요. 서로 다른 두 직선과 모두 수직이어야 해요.'
+    perp: '평면 위의 한 직선과만 수직이면 l이 기울어질 수 있어요. 한 점에서 만나는 서로 다른 두 직선과 모두 수직이어야 해요.'
+  };
+  const PROOF = {
+    p3: '한 평면에 수직인 직선의 방향은 하나로 정해져요. 서로 다른 두 직선 l, m의 방향이 같으므로 평행해요.',
+    p5: '한 직선에 수직인 평면의 방향은 하나로 정해져요. 서로 다른 두 평면 P, Q는 기울기가 같고 만나지 않으므로 평행해요.',
+    door: '평면 Q는 P에 수직인 직선 l을 포함해요. 평면에 수직인 직선을 포함하는 평면은 그 평면과 수직이에요.',
+    planes: '두 교선은 한 평면 R 위에 있고, P와 Q가 평행하므로 만나지 않아요. 한 평면 위에서 만나지 않는 두 직선은 평행해요.'
   };
   // 문제 탭의 참고 그림: 글로 된 설명을 직육면체의 모서리·면에 대 보며 반례를 찾아볼 수 있어요.
   function refCuboid(b, s, C) {
@@ -27,7 +33,7 @@
     D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 52, b: 56, l: 44, r: 44 });
     drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.06 });
     drawVerts(D, sol, {});
-    if (C.txt) b.stext(14, b.insets.top + 24, '참고 그림: 직육면체의 모서리와 면으로 반례를 찾아보세요', { color: 'amber', size: b.W < 560 ? 13 : 15, weight: 800, align: 'left', baseline: 'middle' });
+    if (C.txt) caption(b, '참고 그림: 직육면체의 모서리와 면으로 반례를 찾아보세요');
     D.flush();
   }
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
@@ -75,7 +81,7 @@
         return [
           o.given,
           o.cex(M, rel),
-          S.truth ? `반례를 찾을 수 없어요. 그러므로 이 설명은 항상 옳아요(참).` : `조건은 그대로인데 결론이 틀려요. 반례가 있으니 이 설명은 거짓이에요.`
+          S.truth ? PROOF[S.id] + ' 따라서 항상 옳은 설명이에요.' : `조건은 그대로인데 결론이 틀려요. 반례가 있으니 이 설명은 거짓이에요.`
         ];
       },
       view: (M, C, s) => {
@@ -84,7 +90,7 @@
         return {
           guide: `${o.guide} 그림 맨 위에 지금의 위치 관계가 나와요. 조건은 그대로 두고 <b>결론이 깨지는 모양</b>(반례)을 만들 수 있는지 살펴보세요. ▶를 누르면 자동으로 보여 줘요.`,
           readouts: rows,
-          formula: `<p>설명: ${S.text}</p><p>${S.truth ? span('green', '참') + ' — 반례가 없어요.' : span('red', '거짓') + ' — ' + WHY[o.stm]}</p>`,
+          formula: `<p>설명: ${S.text}</p><p>${S.truth ? span('green', '참') + ' — ' + PROOF[S.id] : span('red', '거짓') + ' — ' + WHY[o.stm]}</p>`,
           rule: o.rule,
           notes: notes.apply(null, o.tips)
         };
@@ -189,7 +195,7 @@
       return [
         '보기를 하나씩 그림으로 그려요. 설명의 조건을 모두 지키는 그림이어야 해요.',
         `각 보기에서 결론이 깨지는 반례를 찾아요. 반례가 있는 보기는 ${falses}이에요. 이 보기들은 거짓이에요.`,
-        `반례를 찾을 수 없는 보기 ${NUM[M.ok]}만 항상 옳아요.`
+        `보기 ${NUM[M.ok]}: ${PROOF[M.bank[M.ok]]} 따라서 이 보기만 항상 옳아요.`
       ];
     },
     view: (M) => {
@@ -198,8 +204,8 @@
         guide: `위의 <b>보기 그림 보기</b> 칩으로 보기 ①~⑤를 바꿔 가며 그림을 확인해요. 막대로 조건은 그대로 두고 결론을 깨 보세요. 반례를 만들 수 있으면 그 보기는 거짓이에요.<br><b>보기 ${NUM[sel]}</b> ${st.text}`,
         readouts: [rd('조건', cur.given ? '모두 지켜요' : '깨졌어요', cur.given ? 'green' : 'rose'), rd('결론', cur.holds ? '성립해요' : '성립하지 않아요', cur.holds ? 'green' : 'red', cur.given && !cur.holds ? '반례예요' : ''), rd('지금 두 대상', cur.relText.replace(/^[^:]*: ?/, ''), 'amber', null, null, true)],
         formula: bank.map((k, i) => `<p>${NUM[i]} ${STM[k].text} → ${STM[k].truth ? span('green', '참') : span('red', '거짓')}</p>`).join(''),
-        rule: '반례를 하나라도 찾으면 그 설명은 거짓, 아무리 해도 반례가 없으면 참이다',
-        notes: notes('“항상” 성립해야 참이에요. 반례가 한 번이라도 나오면 거짓이에요.', '직선에 수직인 평면과 평면에 수직인 직선(기둥)이 가장 많이 헷갈려요.', '평면에 수직인 두 직선은 평행(참), 평면에 수직인 두 평면은 평행하지 않을 수 있어요(거짓).')
+        rule: '반례가 하나라도 있으면 거짓이다. 참인 설명은 조건에서 결론이 항상 성립하는 이유를 확인한다',
+        notes: notes('반례를 아직 못 찾았다는 것만으로 참이라고 할 수는 없어요. 공간도형의 성질로 항상 성립하는 이유를 확인해요.', '직선에 수직인 평면과 평면에 수직인 직선(기둥)이 가장 많이 헷갈려요.', '평면에 수직인 두 직선은 평행(참), 평면에 수직인 두 평면은 평행하지 않을 수 있어요(거짓).')
       };
     },
     prob: (M) => bankProb(M.bank, 's2-7', '탐구 탭의 보기 그림으로 반례를 찾아 확인해 보세요.')

@@ -58,8 +58,14 @@
   const drawSolidFace = (D, b, M, C, hl) => {
     const { sol, q } = M, f = sol.faces[q.face % sol.faces.length];
     D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 46, b: 56, l: 44, r: 44 });
-    drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
-    if (hl) { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), 'amber', 0.28); else D.path(f.v.map((k) => sol.verts[k]), 'amber', 3, { close: true, dash: [6, 5] }); D.path(f.v.map((k) => sol.verts[k]), 'amber', 4.4, { close: true }); }
+    const { vis } = drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
+    if (hl) {
+      if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), 'amber', 0.17);
+      f.v.forEach((a, i) => {
+        const c = f.v[(i + 1) % f.v.length], edge = sol.edges.find(e => (e.u === a && e.v === c) || (e.u === c && e.v === a));
+        D.line(sol.verts[a], sol.verts[c], 'amber', 4.4, { dash: edge && vis(edge) ? undefined : [6, 5] });
+      });
+    }
     drawVerts(D, sol, { hot: (k) => hl && f.v.includes(k) });
     if (C.txt && hl) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: 17, at: [[0, 0], [0, 22], [0, -22]] });
     D.flush();
@@ -71,10 +77,10 @@
     question: '직선 $l$이 평면 $P$ 위의 한 직선과 수직이면 $l\\perp P$일까? 어떤 조건이 있어야 평면과 수직일까?',
     q0: { kind: 'prism', n: 3, face: 0 }, cases: CASES.slice(0, 4).concat([CASES[4]]),
     guide: '평면 $P$ 위의 두 직선 $m$, $n$이 한 점 $O$에서 만나요. 막대로 직선 $l$을 <b>세우거나 쓰러뜨려</b> 보세요. 기울어진 $l$은 $m$과는 수직이지만 $n$과는 아니에요.',
-    steps: () => ['직선 $l$이 평면 $P$ 위의 직선 $m$과 수직이에요. 그런데 $l$은 $m$을 축으로 앞뒤로 쓰러질 수 있어요.', '평면 $P$ 위의 다른 직선 $n$과도 수직인지 살펴요. 기울어진 $l$은 $n$과 90°가 아니에요. 한 직선과만 수직이면 $l\\perp P$라고 할 수 없어요.', '점 $O$에서 만나는 서로 다른 두 직선 $m$, $n$과 모두 수직이면 $l$이 똑바로 서요. 그러면 $l\\perp P$이고 $P$ 위의 모든 직선과 수직이에요.'],
+    steps: () => ['직선 $l$이 평면 $P$ 위의 직선 $m$과 수직이에요. 그런데 $l$은 $m$을 축으로 앞뒤로 쓰러질 수 있어요.', '평면 $P$ 위의 다른 직선 $n$과도 수직인지 살펴요. 기울어진 $l$은 $n$과 90°가 아니에요. 한 직선과만 수직이면 $l\\perp P$라고 할 수 없어요.', '점 $O$에서 만나는 서로 다른 두 직선 $m$, $n$과 모두 수직이면 $l$이 똑바로 서요. 그러면 $l\\perp P$이고 $P$ 위에서 $O$를 지나는 모든 직선과 수직이에요.'],
     formula: () => '<p>$l\\perp m,\\ l\\perp n$ ($m$, $n$은 점 $O$에서 만나는 평면 $P$ 위의 두 직선) $\\Rightarrow$ $l\\perp P$</p>',
-    rule: '직선이 평면 위의 서로 다른 두 직선과 수직이면 그 평면과 수직이다',
-    tips: ['평면 위의 <b>한 직선</b>과만 수직인 것은 부족해요. 서로 다른 <b>두 직선</b>과 수직이어야 해요.', '직선이 평면에 수직이면 평면 위의 모든 직선과 수직이에요. 거꾸로 두 직선만 확인하면 돼요.'],
+    rule: '직선이 평면 위에서 한 점에 만나는 서로 다른 두 직선과 모두 수직이면 그 평면과 수직이다',
+    tips: ['평면 위의 <b>한 직선</b>과만 수직인 것은 부족해요. <b>한 점에서 만나는 서로 다른 두 직선</b>과 수직인지 확인해요.', '직선이 평면에 수직이면 수선의 발을 지나는 평면 위의 모든 직선과 수직이에요. 그 점에서 만나는 두 직선으로 확인할 수 있어요.'],
     drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true),
     prob: (M) => {
       const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], ans = perpEdges(sol, fi).length;

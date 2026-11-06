@@ -4,7 +4,7 @@
      전역은 APL_SP(도구)와 APL_SP_GROUPS(탭 묶음) 둘뿐입니다.
    - 장면 하나 = 탐구(조절·돌려 보기·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
    - 입체는 평행투영(원근 없음)이라 평행한 모서리는 화면에서도 평행하게 보입니다. 안 보이는 모서리는 점선입니다.
-   - 색의 역할(이 실험실 전체): 노랑 = 기준 모서리·구하는 것·끌 수 있는 점 · 빨강 = 만나는 · 파랑 = 평행한 · 초록 = 꼬인 위치·평면 ·
+   - 색의 역할(이 실험실 전체): 노랑 = 기준 모서리·구하는 것·끌 수 있는 점 · 분홍 = 비교하는 모서리 · 하늘 = 기본 도형·평행한 선 · 초록 = 판별 결과 ·
      보라 = 연장선·보조 · 기본 = 입체의 모서리.
    - 같은 크기의 각은 같은 표시, 직각은 네모, 평행한 선에는 화살표.
    - 입체의 시점 돌리기(제자리 회전)는 이동이 아니므로 허용합니다. 위치 이동은 쓰지 않습니다.
@@ -207,8 +207,10 @@
       edges = [E('A', 'B'), E('B', 'C'), E('C', 'D'), E('D', 'A'), E('V', 'A'), E('V', 'B'), E('V', 'C'), E('V', 'D')];
       faces = [['A', 'B', 'C', 'D'], ['V', 'A', 'B'], ['V', 'B', 'C'], ['V', 'C', 'D'], ['V', 'D', 'A']];
     } else { // tetra
-      const r = 1.75;
-      verts = { V: v3(0, 0, 1.45), A: v3(-r, -0.95, -0.95), B: v3(r, -0.95, -0.95), C: v3(0, 1.55, -0.95) };
+      // 한 변 a인 정삼각형 밑면의 외접반지름 a/√3, 정사면체의 높이 a√(2/3).
+      // 무게중심을 원점에 두고 밑면을 아래에 놓으면 여섯 모서리가 모두 정확히 a예요.
+      const a = 3.5, r = a / Math.sqrt(3), h = a * Math.sqrt(2 / 3), z = -h / 4;
+      verts = { V: v3(0, 0, 3 * h / 4), A: v3(-a / 2, -r / 2, z), B: v3(a / 2, -r / 2, z), C: v3(0, r, z) };
       edges = [E('A', 'B'), E('B', 'C'), E('C', 'A'), E('V', 'A'), E('V', 'B'), E('V', 'C')];
       faces = [['A', 'B', 'C'], ['V', 'A', 'B'], ['V', 'B', 'C'], ['V', 'C', 'A']];
     }
@@ -241,6 +243,22 @@
 
   /* ------------------------------------------------------------------ 그리기 도우미 */
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
+  // 관계 설명은 글자를 줄이지 않고 무대의 실제 폭에 맞춰 줄을 나눕니다.
+  function caption(b, text, o = {}) {
+    const size = o.size || (b.W < 560 ? 14.5 : 17), left = b.insets.left + 12, right = b.W - b.insets.right - 12;
+    const px = size * (b.fs || 1) * (b.thumb ? 0.78 : b._ts ? b._ts() : 1), ctx = b.ctx;
+    if (ctx) { ctx.save(); ctx.font = `800 ${px}px ${b.font}`; }
+    const width = (str) => ctx ? ctx.measureText(str).width : textW(str, px);
+    const lines = []; let line = '';
+    for (const ch of String(text)) {
+      if (line && width(line + ch) > right - left) { lines.push(line.trim()); line = ''; }
+      line += ch;
+    }
+    if (ctx) ctx.restore();
+    if (line.trim()) lines.push(line.trim());
+    lines.forEach((str, i) => b.stext((left + right) / 2, b.insets.top + (o.top || 20) + i * (px + 4), str, { color: o.color || 'amber', size, weight: 800, align: 'center', baseline: 'middle' }));
+    return lines.length;
+  }
   const bboxOf = (pts, pad = 0) => {
     let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
     pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
@@ -390,7 +408,7 @@
   function drawSolid(D, sol, style, o = {}) {
     const { b } = D;
     const vis = (e) => (sol.edgeFaces[e.key] || []).some((fi) => D.facing(sol.faces[fi].n));
-    if (o.fillFaces !== false) sol.faces.forEach((f) => { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), o.faceColor || 'green', o.faceAlpha == null ? 0.07 : o.faceAlpha); });
+    if (o.fillFaces !== false) sol.faces.forEach((f) => { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), o.faceColor || 'sky', o.faceAlpha == null ? 0.07 : o.faceAlpha); });
     const hid = sol.edges.filter((e) => !vis(e)), shown = sol.edges.filter((e) => vis(e));
     const kk = b.k || 60;
     const dr = (e, hidden) => {
@@ -678,6 +696,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN, jo,
     v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, proj, facing, lineRel, lineMeetPoint,
     buildSolid, relEdges, classify, edgeByKey, ov, nm, SHAPE_NAME, PRISM_NAME,
-    textW, bboxOf, fit, scene3, drawSolid, drawVerts, vertVisible, P, VIEW_PARAMS, VIEW, orbit, bestYaw, safeYaw, yawOk, viewQ, PITCH_MIN, PITCH_MAX, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
+    textW, caption, bboxOf, fit, scene3, drawSolid, drawVerts, vertVisible, P, VIEW_PARAMS, VIEW, orbit, bestYaw, safeYaw, yawOk, viewQ, PITCH_MIN, PITCH_MAX, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
   };
 })();
