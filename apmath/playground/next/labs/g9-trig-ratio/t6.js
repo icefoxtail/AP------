@@ -29,17 +29,21 @@
   function geoAC(b0, c0, A) { return { A: pt(0, 0), B: pt(c0, 0), C: pt(b0 * Math.cos(A * DEG), -b0 * Math.sin(A * DEG)) }; }
   function drawAC(b, g, o = {}) {
     const { A, B, C } = g, Hh = pt(C.x, 0), st = o.step == null ? 99 : o.step, obt = C.x < 0, cen = centroid([A, B, C]);
-    fit(b, bboxOf([A, B, C, Hh]), { t: 52, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
+    fit(b, bboxOf([A, B, C, Hh]), { t: obt ? 88 : 52, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: obt && o.h ? 104 : 56, r: 56 });
     fillPoly(b, [A, B, C], obt ? 'rose' : 'sky', 0.14);
     poly(b, [A, B, C], 'ink', 3.4);
-    if (st >= 1) { line(b, C, Hh, 'violet', 3.2, { dash: dashed }); if (obt) line(b, Hh, A, 'violet', 2.6, { dash: dashed }); ang(b, Hh, C, B, { color: 'violet', r: 16 }); }
+    if (st >= 1) { line(b, C, Hh, 'violet', 3.2, { dash: dashed }); if (obt) line(b, Hh, A, 'violet', 2.6, { dash: dashed }); else if (Hh.x > B.x) line(b, B, Hh, 'violet', 2.6, { dash: dashed }); ang(b, Hh, C, B, { color: 'violet', r: 16 }); }
     ang(b, A, B, C, { color: 'amber', r: 34, label: o.angL, size: 16 });
-    if (obt && st >= 1) ang(b, A, Hh, C, { color: 'rose', r: 30, label: o.outL, size: 15, rings: 2, labelDist: 50 });
+    if (obt && st >= 1) {
+      ang(b, A, Hh, C, { color: 'rose', r: 24, rings: 2 });
+      // The exterior 30° label must not concatenate with the short CH = 1 label.
+      if (o.outL) T(b, A, `∠CAH = ${o.outL}`, { dy: -78, size: 15, color: 'rose' });
+    }
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(Hh, { color: 'violet', r: 4 }); T(b, Hh, 'H', { dy: 20, size: 17, color: 'violet' }); }
     if (o.b) sideTag(b, A, C, cen, o.b, { color: 'sky', size: 17, f: obt ? 0.7 : 0.5 });
     if (o.c) sideTag(b, A, B, cen, o.c, { color: 'green', size: 17, flip: false, gap: 22 });
-    if (o.h && st >= 1) T(b, mid(C, Hh), o.h, { dx: obt ? -8 : 10, size: 15, color: 'violet', align: obt ? 'right' : 'left' });
+    if (o.h && st >= 1) T(b, mid(C, Hh), `CH = ${String(o.h).replace(/^h\s*=\s*/, '')}`, { dx: obt ? -16 : 10, size: 15, color: 'violet', align: obt ? 'right' : 'left' });
     (o.rows || []).forEach((r, i) => T(b, pt((Math.min(A.x, C.x) + B.x) / 2, 0), r.t, { dy: 64 + i * 26, size: r.size || 16, color: r.c }));
   }
   function areaScene(id, title, short, obtuse) {
@@ -78,9 +82,15 @@
           stem: `△ABC에서 $\\overline{AB}=${c0}$, $\\overline{AC}=${b0}$, $\\angle A=${A}^{\\circ}$ 일 때, △ABC의 넓이는?`,
           choices: mkChoices(S, wr), fig: { b0, c0, A }, given: [`${b0}`, `${c0}`, `${A}°`], ans: [vcan(S)]
         };
-        return checkQ(q);
+        q.fig.h = vcan(vmul(vi(b0), sinD(w))); q.fig.area = vcan(S);
+        return checkQ(q, [
+          `두 변은 $AB=${c0}$, $AC=${b0}$, 끼인각은 $${A}^{\\circ}$입니다. 꼭짓점 $C$에서 직선 $AB$에 수선 $CH$를 내려요.`,
+          obtuse ? `수선의 발은 변의 연장선에 있습니다. $\\angle CAH=180^{\\circ}-${A}^{\\circ}=${w}^{\\circ}$입니다.` : `직각삼각형 $ACH$에서 기준각 $A=${A}^{\\circ}$의 대변이 높이 $CH$입니다.`,
+          `$CH=${b0}\\sin ${w}^{\\circ}=${vtex(vmul(vi(b0), sinD(w)))}$입니다.`,
+          `삼각형의 넓이는 $S=\\frac{1}{2}\\times AB\\times CH=\\frac{1}{2}\\times${c0}\\times${vtex(vmul(vi(b0), sinD(w)))}$입니다.`
+        ], { kind: 'triangle-area', b: b0, c: c0, angle: A, answer: S.v });
       },
-      pdraw: (b, q) => { const f = q.fig; drawAC(b, geoAC(f.b0, f.c0, f.A), { step: 0, angL: `${f.A}°`, b: `${f.b0}`, c: `${f.c0}`, rows: [{ t: '△ABC의 넓이 = x', c: 'amber', size: 18 }] }); }
+      pdraw: (b, q, C) => { const f = q.fig; drawAC(b, geoAC(f.b0, f.c0, f.A), { step: C.review ? C.step : 0, angL: `${f.A}°`, outL: `${180 - f.A}°`, b: `${f.b0}`, c: `${f.c0}`, h: C.review && C.step >= 3 ? f.h : '', rows: [{ t: C.last ? `△ABC의 넓이 = ${f.area}` : '△ABC의 넓이 = x', c: 'amber', size: 18 }] }); }
     };
   }
   const aAcute = areaScene('areaAcute', '예각삼각형의 넓이 — 두 변과 끼인각', '예각삼각형 넓이', false);
@@ -126,9 +136,15 @@
       else if (kind === 'h') { ans = h; stem = `한 변의 길이가 $${vtex(a)}$ 인 정삼각형의 높이는?`; wr = [[S, '넓이를 구했어요. 높이는 $\\frac{\\sqrt{3}}{2}a$ 예요.'], [vmul(vdiv(vsq(3), vi(4)), a), '높이의 분모는 2예요.'], [vdiv(a, vi(2)), '$a$ 의 반이에요.'], [vmul(a, vsq(3)), '$\\sqrt{3}a$ 예요. $\\frac{\\sqrt{3}}{2}a$ 가 아니에요.'], [vmul(vdiv(vi(1), vsq(3)), a), '']]; L = { a: vcan(a), h: 'x', hx: true }; }
       else { ans = a; stem = `넓이가 $${vtex(S)}$ 인 정삼각형의 한 변의 길이 $x$ 는?`; wr = [[vmul(a, vsq(3)), '$S=\\frac{\\sqrt{3}}{4}a^2$ 을 거꾸로 풀 때 계산을 다시 확인해요.'], [vmul(a, vi(2)), ''], [vdiv(a, vi(2)), ''], [vmul(a, vmul(a, vi(1))), ''], [vdiv(a, vsq(3)), '']]; rows = [{ t: `넓이 = ${vcan(S)}`, c: 'sky', size: 18 }]; L = { a: 'x', ax: true }; }
       const q = { tag: kind === 'a' ? '정삼각형의 넓이로 한 변 구하기' : '정삼각형의 높이와 넓이', key: ['eq', kind, vtex(a)].join('|'), stem, choices: mkChoices(ans, wr.filter((w) => !vsame(w[0], ans))), fig: { a: a.v, rows, L }, given: kind === 'a' ? [vcan(S)] : [vcan(a)], ans: [vcan(ans)] };
-      return checkQ(q);
+      q.fig.kind = kind; q.fig.work = { a: vcan(a), h: vcan(h), S: vcan(S) };
+      return checkQ(q, [
+        kind === 'a' ? `주어진 정삼각형의 넓이는 $${vtex(S)}$입니다. 구하는 한 변을 $a=x$라 해요.` : `한 변은 $a=${vtex(a)}$입니다. 구하는 것은 ${kind === 'h' ? '높이' : '넓이'}입니다.`,
+        '꼭짓점에서 수선을 내리면 $30^{\\circ},60^{\\circ},90^{\\circ}$인 직각삼각형이 생깁니다. 높이는 $h=a\\sin60^{\\circ}=\\frac{\\sqrt{3}}{2}a$입니다.',
+        kind === 'a' ? `넓이 공식에 넣으면 $${vtex(S)}=\\frac{\\sqrt{3}}{4}a^2$입니다.` : `$h=\\frac{\\sqrt{3}}{2}\\times${vtex(a)}=${vtex(h)}$입니다.`,
+        kind === 'a' ? `$a^2=\\frac{4\\times${vtex(S)}}{\\sqrt{3}}=${vtex(vpow2(a))}$이므로 양의 제곱근을 택해요.` : kind === 'S' ? `$S=\\frac{1}{2}\\times${vtex(a)}\\times${vtex(h)}$를 계산해요.` : '높이를 묻고 있으므로 구한 수선의 길이를 답으로 써요. 넓이와 구별해요.'
+      ], { kind: 'equilateral', side: a.v, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q) => drawEq(b, q.fig.a, { step: 0, L: q.fig.L, rows: q.fig.rows })
+    pdraw: (b, q, C) => drawEq(b, q.fig.a, { step: C.review ? C.step : 0, L: { ...q.fig.L, ...(C.review && C.step >= 3 && q.fig.kind === 'S' ? { h: q.fig.work.h } : {}), ...(C.last ? { a: q.fig.work.a, h: q.fig.work.h, hx: false, ax: false } : {}) }, rows: C.last && q.fig.kind === 'S' ? [{ t: `넓이 = ${q.fig.work.S}`, c: 'amber' }] : q.fig.rows })
   };
 
   /* ====================================================================== r6-1 넓이로 변 구하기 */
@@ -166,9 +182,14 @@
         stem: `△ABC에서 $\\overline{AB}=${c0}$, $\\angle A=${A}^{\\circ}$ 이고 넓이가 $${vtex(S)}$ 일 때, $\\overline{AC}$ 의 길이는?`,
         choices: mkChoices(vi(b0), wr), fig: { b0, c0, A, S: vcan(S) }, given: [`${c0}`, `${A}°`, vcan(S)], ans: [`${b0}`]
       };
-      return checkQ(q);
+      return checkQ(q, [
+        `주어진 넓이는 $${vtex(S)}$, 변 $AB=${c0}$, 끼인각 $A=${A}^{\\circ}$입니다. 구하는 변은 $AC=x$입니다.`,
+        `$S=\\frac{1}{2}\\times AB\\times AC\\times\\sin ${w}^{\\circ}$를 사용해요.${A > 90 ? ` 둔각의 바깥각은 $${w}^{\\circ}$입니다.` : ''}`,
+        `$${vtex(S)}=\\frac{1}{2}\\times${c0}\\times x\\times${vtex(sinD(w))}$입니다.`,
+        `양변에 2를 곱하고 나누면 $x=\\frac{2\\times${vtex(S)}}{${c0}\\times${vtex(sinD(w))}}$입니다.`
+      ], { kind: 'area-side', area: S.v, c: c0, angle: A, answer: b0 });
     },
-    pdraw: (b, q) => { const f = q.fig; drawAC(b, geoAC(f.b0, f.c0, f.A), { step: 0, angL: `${f.A}°`, b: 'x', c: `${f.c0}`, rows: [{ t: `넓이 = ${f.S}`, c: 'amber', size: 18 }] }); }
+    pdraw: (b, q, C) => { const f = q.fig; drawAC(b, geoAC(f.b0, f.c0, f.A), { step: C.review ? C.step : 0, angL: `${f.A}°`, outL: `${180 - f.A}°`, b: C.last ? `${f.b0}` : 'x', c: `${f.c0}`, rows: [{ t: `넓이 = ${f.S}`, c: 'amber', size: 18 }] }); }
   };
 
   /* ====================================================================== 각의 이등분선의 길이 */
@@ -214,9 +235,15 @@
         stem: `△ABC에서 $\\overline{AB}=${c0}$, $\\overline{AC}=${b0}$, $\\angle A=${A}^{\\circ}$ 이고 $\\angle A$ 의 이등분선이 변 $BC$ 와 만나는 점을 $D$ 라 할 때, $\\overline{AD}=x$ 의 길이는?`,
         choices: mkChoices(x, wr.filter((w) => !vsame(w[0], x))), fig: { b0, c0, A, x: x.v }, given: [`${b0}`, `${c0}`, `${A}°`], ans: [vcan(x)]
       };
-      return checkQ(q);
+      q.fig.answer = vcan(x);
+      return checkQ(q, [
+        `주어진 두 변은 $AB=${c0}$, $AC=${b0}$이고 $\\angle A=${A}^{\\circ}$입니다. 이등분선 $AD=x$가 만드는 두 각은 각각 $${M.half}^{\\circ}$입니다.`,
+        `전체 넓이는 $S=\\frac{1}{2}\\times${b0}\\times${c0}\\sin ${A}^{\\circ}$입니다.`,
+        `나뉜 넓이의 합은 $\\frac{1}{2}\\times${c0}\\times x\\sin ${M.half}^{\\circ}+\\frac{1}{2}\\times${b0}\\times x\\sin ${M.half}^{\\circ}$입니다.`,
+        `두 식을 같게 두면 $x=\\frac{${b0}\\times${c0}\\times${vtex(sinD(A))}}{(${b0}+${c0})\\times${vtex(sinD(M.half))}}$입니다. 특수각의 값을 넣어 계산해요.`
+      ], { kind: 'angle-bisector', b: b0, c: c0, angle: A, answer: x.v });
     },
-    pdraw: (b, q) => { const f = q.fig; drawBis(b, geoBis(f.b0, f.c0, f.A, f.x), f.A, { step: 0, b: `${f.b0}`, c: `${f.c0}`, al: `${f.A}°`, hl: '', x: 'x', xs: 21, xc: 'amber' }); }
+    pdraw: (b, q, C) => { const f = q.fig; drawBis(b, geoBis(f.b0, f.c0, f.A, f.x), f.A, { step: C.review ? C.step : 0, b: `${f.b0}`, c: `${f.c0}`, al: `${f.A}°`, hl: C.review ? `${f.A / 2}°` : '', x: C.last ? f.answer : 'x', xs: 21, xc: 'amber' }); }
   };
 
   /* ====================================================================== [심화] 정다각형의 넓이 */
@@ -261,9 +288,15 @@
         stem: `반지름의 길이가 $${R}$ 인 원에 내접하는 정${n}각형의 넓이는?`,
         choices: mkChoices(tot, wr), fig: { n, R }, given: [`${R}`], ans: [vcan(tot)]
       };
-      return checkQ(q);
+      q.fig.answer = vcan(tot);
+      return checkQ(q, [
+        `반지름 $R=${R}$인 원에 내접하는 정${n}각형입니다. 중심과 꼭짓점을 이어 합동인 이등변삼각형 ${n}개로 나누어요.`,
+        `한 삼각형의 두 변은 모두 $${R}$이고, 끼인 중심각은 $360^{\\circ}\\div${n}=${th}^{\\circ}$입니다.`,
+        `삼각형 하나의 넓이는 $\\frac{1}{2}\\times${R}^2\\times\\sin ${th}^{\\circ}=\\frac{1}{2}\\times${R * R}\\times${vtex(sinD(th))}$입니다.`,
+        `전체 넓이는 이 값의 $${n}$배이므로 $S=${n}\\times\\frac{1}{2}\\times${R * R}\\times${vtex(sinD(th))}$입니다.`
+      ], { kind: 'regular-area', n, radius: R, answer: tot.v });
     },
-    pdraw: (b, q) => drawReg(b, q.fig.n, q.fig.R, { step: 0, R: `${q.fig.R}`, rows: [{ t: `정${q.fig.n}각형의 넓이 = x`, c: 'amber', size: 18 }] })
+    pdraw: (b, q, C) => drawReg(b, q.fig.n, q.fig.R, { step: C.review ? C.step : 0, R: `${q.fig.R}`, ang: C.review && C.step >= 2 ? `${360 / q.fig.n}°` : '', rows: [{ t: C.last ? `정${q.fig.n}각형의 넓이 = ${q.fig.answer}` : `정${q.fig.n}각형의 넓이 = x`, c: 'amber', size: 18 }] })
   };
 
   G.register(60, 't6', '⑥ 삼각형의 넓이', '삼각형의 넓이', PARAMS, [aAcute, aObt, eq, r61, bis, reg]);

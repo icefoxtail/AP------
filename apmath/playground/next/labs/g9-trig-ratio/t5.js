@@ -85,12 +85,25 @@
       stem: same ? `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $C$, $H$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, $${nameAsk}=x$ 의 값은?` : `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $H$, $C$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, $${nameAsk}=x$ 의 값은?`,
       choices: mkChoices(ans, wr), fig: { pair, a0, same, ask, R: { h: R.h.v, bh: R.bh.v, ch: R.ch.v }, L }, given: [`${pair[0]}°`, `${pair[1]}°`, `${a0}`], ans: [vcan(ans)]
     };
-    return checkQ(q);
+    q.fig.work = { h: vcan(R.h), bh: vcan(R.bh), ch: vcan(R.ch) };
+    return checkQ(q, [
+      `두 관측점의 각은 $${pair[0]}^{\\circ}$, $${pair[1]}^{\\circ}$이고 $BC=${a0}$입니다. ${same ? '$B,C$는 수선의 발 $H$의 같은 쪽에 있어요.' : '수선의 발 $H$가 $B,C$ 사이에 있어요.'}`,
+      `높이를 $h$라 두면 $BH=\\frac{h}{\\tan ${pair[0]}^{\\circ}}$, $CH=\\frac{h}{\\tan ${pair[1]}^{\\circ}}$입니다.`,
+      `$BC=BH${same ? '-' : '+'}CH$이므로 $h\\left(${vtex(R.cb)}${same ? '-' : '+'}${vtex(R.cc)}\\right)=${a0}$입니다.`,
+      ask === 'h' ? `$h=\\frac{${a0}}{${vtex(R.den)}}$를 계산해요.` : `먼저 $h=${vtex(R.h)}$를 구한 뒤, $${ask.toUpperCase()}=\\frac{${vtex(R.h)}}{\\tan ${pair[ask === 'bh' ? 0 : 1]}^{\\circ}}$로 거리를 구해요.`
+    ], { kind: 'height', angles: pair, distance: a0, same, ask, answer: ans.v });
   }
-  function pdrawTower(b, q) {
+  function pdrawTower(b, q, C) {
     const f = q.fig;
     // 보기 좋게 그리기: 그림의 높이·거리는 비율만 맞춰요(값은 그리지 않음)
-    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: 1, mountain: f.mount, L: { ...f.L, hx: f.ask === 'h' } });
+    const L = { ...f.L, hx: f.ask === 'h' && !C.last };
+    if (C.review && C.step >= 2) {
+      if (f.ask !== 'h') L.h = C.step >= 4 ? f.work.h : 'h';
+      if (f.ask !== 'bh') L.BH = C.last ? f.work.bh : 'BH';
+      if (f.ask !== 'ch') L.CH = C.last ? f.work.ch : 'CH';
+    }
+    if (C.last) L[{ h: 'h', bh: 'BH', ch: 'CH' }[f.ask]] = f.work[f.ask];
+    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: C.review ? C.step - 1 : 0, mountain: f.mount, L });
   }
 
   /* ====================================================================== 1. 두 지점에서 올려본 각 */
@@ -257,9 +270,15 @@
         stem: `눈높이가 $${e}$ 인 사람이 나무에서 $${d}$ 만큼 떨어진 곳에서 나무의 꼭대기를 올려본 각이 $${th}^{\\circ}$ 일 때, 나무의 높이 $x$ 는? (단, 땅은 평평하고 나무는 땅과 수직이다.)`,
         choices: mkChoices(H, wr), fig: { d, e, th }, given: [`${d}`, `${e}`, `${th}°`], ans: [vcan(H)]
       };
-      return checkQ(q);
+      q.fig.up = vcan(up); q.fig.height = vcan(H);
+      return checkQ(q, [
+        `나무까지 수평 거리는 $${d}$, 눈높이는 $${e}$, 올려본 각은 $${th}^{\\circ}$입니다. 눈높이에서 나무까지 수평 보조선을 그어요.`,
+        `보조선 위쪽 높이를 $h$라고 하면 $\\tan ${th}^{\\circ}=\\frac{h}{${d}}$입니다.`,
+        `$h=${d}\\tan ${th}^{\\circ}=${d}\\times${vtex(tanD(th))}=${vtex(up)}$입니다.`,
+        `문제는 나무 전체 높이를 묻습니다. 따라서 $x=h+${e}=${vtex(up)}+${e}$입니다.`
+      ], { kind: 'tree', distance: d, angle: th, eye: e, answer: H.v });
     },
-    pdraw: (b, q) => { const f = q.fig, H = f.d * Math.tan(f.th * DEG) + f.e; drawTree(b, { d: f.d, e: f.e, th: f.th, H, step: 0, L: { e: `${f.e}`, d: `${f.d}`, H: 'x', Hx: true } }); }
+    pdraw: (b, q, C) => { const f = q.fig, H = f.d * Math.tan(f.th * DEG) + f.e; drawTree(b, { d: f.d, e: f.e, th: f.th, H, step: C.review ? C.step : 0, L: { e: `${f.e}`, d: `${f.d}`, up: C.review && C.step >= 3 ? f.up : '', H: C.last ? f.height : 'x', Hx: !C.last } }); }
   };
 
   /* ====================================================================== 6. 흔들리는 추 */
@@ -308,9 +327,15 @@
         stem: `길이가 $${L}$ 인 줄에 매달린 추가 수직선과 $${th}^{\\circ}$ 의 각을 이루도록 흔들렸다. 추가 가장 낮은 곳에 있을 때보다 올라간 높이 $x$ 는?`,
         choices: mkChoices(h, wr, { valid: (v) => v.v > 0 }), fig: { L, th }, given: [`${L}`, `${th}°`], ans: [vcan(h)]
       };
-      return checkQ(q);
+      q.fig.drop = vcan(vmul(vi(L), cosD(th))); q.fig.height = vcan(h);
+      return checkQ(q, [
+        `줄의 길이는 $L=${L}$, 수직선과 줄이 이루는 각은 $${th}^{\\circ}$입니다. 가장 낮은 위치를 점선으로 표시해요.`,
+        `추에서 수직선에 수선을 내리면, 걸이부터 추 높이까지의 수직 거리는 $${L}\\cos ${th}^{\\circ}$입니다.`,
+        `그 수직 거리는 $${L}\\times${vtex(cosD(th))}=${vtex(vmul(vi(L), cosD(th)))}$입니다.`,
+        `올라간 높이는 전체 줄 길이에서 이 거리를 빼므로 $x=${L}-${vtex(vmul(vi(L), cosD(th)))}$입니다.`
+      ], { kind: 'pendulum', length: L, angle: th, answer: h.v });
     },
-    pdraw: (b, q) => drawPend(b, q.fig.L, q.fig.th, { ht: 'x', hx: true })
+    pdraw: (b, q, C) => drawPend(b, q.fig.L, q.fig.th, { ht: C.last ? q.fig.height : 'x', hx: !C.last, drop: C.review && C.step >= 3 ? q.fig.drop : '' })
   };
 
   /* ====================================================================== 7. 부러진 나무 */
@@ -361,9 +386,15 @@
         stem: `나무가 부러져 꼭대기가 뿌리에서 $${d}$ 떨어진 땅에 닿았고, 부러진 부분이 땅과 이루는 각이 $${th}^{\\circ}$ 이다. ${ask} $x$ 는? (단, 땅은 평평하고 나무는 땅과 수직이다.)`,
         choices: mkChoices(ans, wr), fig: { d, th, L }, given: [`${d}`, `${th}°`], ans: [vcan(ans)]
       };
-      return checkQ(q);
+      q.fig.kind = kind; q.fig.work = { h: vcan(h), L: vcan(Lb), H: vcan(vadd(h, Lb)) };
+      return checkQ(q, [
+        `뿌리에서 꼭대기가 닿은 점까지는 $d=${d}$, 땅과 부러진 부분의 각은 $${th}^{\\circ}$입니다. 이번에는 ${ask}를 구해요.`,
+        `남은 줄기를 $h$, 부러진 부분을 $L$이라 하면 직각삼각형에서 $h=d\\tan ${th}^{\\circ}$, $L=\\frac{d}{\\cos ${th}^{\\circ}}$입니다.`,
+        `$h=${d}\\times${vtex(tanD(th))}=${vtex(h)}$, $L=\\frac{${d}}{${vtex(cosD(th))}}=${vtex(Lb)}$입니다.`,
+        kind === 'H' ? `부러지기 전 높이는 두 부분의 합 $h+L=${vtex(h)}+${vtex(Lb)}$입니다.` : `문제에서 요구한 부분은 ${kind === 'h' ? '남은 줄기 $h$' : '부러진 부분 $L$'}입니다. 전체 높이와 구별해요.`
+      ], { kind: 'broken-tree', distance: d, angle: th, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q) => drawBroken(b, q.fig.d, q.fig.th, { L: q.fig.L })
+    pdraw: (b, q, C) => drawBroken(b, q.fig.d, q.fig.th, { L: { ...q.fig.L, ...(C.review && C.step >= 3 ? Object.fromEntries(['h', 'L'].filter((k) => k !== q.fig.kind).map((k) => [k, q.fig.work[k]])) : {}), ...(C.last ? { [q.fig.kind]: q.fig.work[q.fig.kind], hx: false, Lx: false } : {}) } })
   };
 
   G.register(50, 't5', '⑤ 높이·거리', '높이·거리', PARAMS, [r51, r52, r53, r54, tree, pend, broken]);
