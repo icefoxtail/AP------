@@ -385,3 +385,89 @@ await test('mobile cone-removal radius label stays separate from the comparison 
   assert.ok(radius && heading);
   assert.ok(heading.y - radius.y >= 28, 'the main solid radius and two-base comparison heading need their own lines');
 });
+
+await test('returning from a practice question reviews that question and keeps principle completion from revealing a new exercise', async () => {
+  const lab = await load();
+  lab.go('s2-6'); lab.tab = 'review'; lab.s.step = 4; lab.draw();
+  lab.tab = 'problem'; lab.draw();
+  assert.equal(lab._answerOpen(), false, 'finishing the principle example must not reveal the independent practice answer');
+  lab.tab = 'review';
+  let steps = call(lab.scene.steps, lab.s);
+  assert.match(steps.join(' '), /8/);
+  assert.match(steps.at(-1), /8.*4.*4\s*cm/);
+  const result = lab.draw();
+  assert.ok(result.texts.some((t) => t.includes('큰 원뿔 높이 8')), 'review keeps the actual problem figure');
+  assert.ok(!result.texts.some((t) => t.includes('높이 = 6 − 3')));
+  lab.s.step = steps.length; lab.s.revealed = true;
+  lab.tab = 'explore'; lab.draw();
+  assert.match(call(lab.scene.steps, lab.s).at(-1), /6.*3.*3/);
+  lab.tab = 'problem'; lab.draw();
+  assert.equal(lab.s.revealed, true, 'returning to the same solved exercise preserves its reveal');
+  lab.scene.so.reroll(lab.s); lab.s.soSeed++;
+  lab.draw(); assert.equal(lab._answerOpen(), false, 'new exercise resets the saved practice progress');
+  lab.go('s3-4'); lab.tab = 'problem'; lab.draw(); lab.tab = 'review';
+  steps = call(lab.scene.steps, lab.s);
+  assert.match(steps.at(-1), /14π/, 'the exercise asks for total surface area: 4π + 10π, not the example lateral area 12π');
+  assert.equal(lab.draw().value.formula, '', 'the formula section does not expose the final calculation at step 1');
+  lab.s.step = steps.length;
+  assert.match(lab.draw().value.formula, /14π/);
+  for (const scene of lab.list) {
+    lab.go(scene.id); lab.tab = 'problem'; lab.draw(); lab.tab = 'review';
+    assert.ok(scene.so.problemSteps, `${scene.id} has an explicit problem-specific derivation`);
+    assert.ok(call(scene.steps, lab.s).length >= 3);
+    for (let step = 1; step < call(scene.steps, lab.s).length; step++) {
+      lab.s.step = step; assert.equal(lab._answerOpen(), false);
+      assert.equal(lab.draw().value.formula, '', `${scene.id} hides its formula until the last problem step`);
+    }
+    lab.go(scene.id); lab.tab = 'review'; lab.s.step = 1;
+    assert.equal(lab.draw().value.formula, '', `${scene.id} also stages the principle example formula`);
+  }
+});
+
+
+await test('each current practice drawing and answer survive the move into its own review', async () => {
+  const lab = await load();
+  for (const scene of lab.list) {
+    for (let turn = 0; turn < 10; turn++) {
+      lab.go(scene.id);
+      for (let n = 0; n < turn; n++) scene.so.reroll(lab.s);
+      lab.tab = 'problem';
+      const problem = lab.draw(), Q = scene.so.prob(scene.so.model(lab.s), lab.s);
+      lab.tab = 'review'; lab.s.step = 1;
+      const review = lab.draw(), steps = call(scene.steps, lab.s);
+      assert.deepEqual(review.texts, problem.texts, `${scene.id} keeps actual problem labels in review`);
+      assert.deepEqual(review.paths, problem.paths, `${scene.id} keeps actual problem geometry in review`);
+      const answer = Q.choices.find((choice) => choice.ok).p.replace(/\s/g, '');
+      if (!['s1-6', 's1-7'].includes(scene.id)) assert.ok(steps.at(-1).replace(/\s/g, '').includes(answer), `${scene.id}: last derivation ${steps.at(-1)} must contain current answer ${answer}`);
+      if (scene.id === 's1-7') {
+        const nonRotating = scene.so.model(lab.s).list.find((kind) => ['cuboid', 'pyr', 'tri'].includes(kind));
+        assert.ok(steps.at(-1).includes({ cuboid: '직육면체', pyr: '사각뿔', tri: '삼각기둥' }[nonRotating]));
+      }
+      assert.equal(lab.s.step, 1);
+      assert.equal(review.value.formula, '');
+    }
+  }
+});
+
+
+await test('manual problem reveal and the A shortcut are distinct from completing a principle example', async () => {
+  const lab = await load();
+  for (const id of ['s2-6', 's3-2', 's3-4']) {
+    const scene = lab.go(id);
+    lab.tab = 'review'; lab.s.step = call(scene.steps, lab.s).length; lab.draw();
+    assert.equal(lab.s.revealed, false, 'the shell All Steps control changes step only');
+    lab.tab = 'problem'; lab.draw();
+    assert.equal(lab._answerOpen(), false, 'a completed principle does not open its independent exercise');
+    lab.s.revealed = true; lab.draw(); // real problem panel Show Now action
+    lab.tab = 'explore'; lab.draw();
+    assert.equal(lab.s.revealed, false, 'returning to the principle clears its live reveal flag');
+    lab.tab = 'problem'; lab.draw();
+    assert.equal(lab.s.revealed, true, 'the same explicitly opened exercise remains open');
+    scene.so.reroll(lab.s); lab.s.soSeed++; lab.draw();
+    assert.equal(lab._answerOpen(), false, 'new exercise clears the saved reveal');
+    lab.go(id); lab.tab = 'review'; lab.draw();
+    // The production shell A-key handler sets revealed before switching to problem.
+    lab.s.revealed = true; lab.tab = 'problem'; lab.draw();
+    assert.equal(lab._answerOpen(), true, 'an explicit keyboard answer request survives the first problem render');
+  }
+});
