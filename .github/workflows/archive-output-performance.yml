@@ -1,0 +1,72 @@
+name: Archive Output Performance
+
+on:
+  push:
+    branches: ['perf/archive-output-*']
+    paths:
+      - 'archive/**'
+      - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-solution-loading-browser.cjs'
+      - '.github/workflows/archive-output-performance.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/common-fast-runtime.js'
+      - 'archive/screen-runtime.js'
+      - 'archive/screen-runtime-adapter.js'
+      - 'archive/solution-render-executor.js'
+      - 'archive/layout-materializer.js'
+      - 'archive/mixed_engine.html'
+      - 'archive/engine.html'
+      - 'tests/archive2-output-performance-browser.cjs'
+      - '.github/workflows/archive-output-performance.yml'
+  workflow_dispatch:
+    inputs:
+      baseline_sha:
+        description: 'Exact baseline commit for the same-input Chrome comparison'
+        type: string
+        default: '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  output-performance:
+    name: Archive output performance and parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Measure real output routes in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_PROFILE_ONLY: '1'
+          ARCHIVE_PERFORMANCE_REPEATS: '3'
+          ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-performance
+        run: node tests/archive2-output-performance-browser.cjs
+      - name: Upload bounded performance and output parity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-performance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-performance/
+          if-no-files-found: warn
+          retention-days: 14
