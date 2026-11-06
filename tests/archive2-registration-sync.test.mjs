@@ -114,22 +114,18 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
     "the refreshed readiness receipt must pass its unchanged stale check");
 });
 
-test("PR registration verification is read-only and preserves the exact main repair snapshot", () => {
+test("PR registration verification is read-only and keeps a snapshot artifact without the retired main repair writer", () => {
   const workflow = read(".github/workflows/archive-registration-sync.yml");
-  const sync = workflow.slice(workflow.indexOf("  sync:"), workflow.indexOf("  repair:"));
-  const repair = workflow.slice(workflow.indexOf("  repair:"));
+  const sync = workflow.slice(workflow.indexOf("  sync:"));
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(sync, /persist-credentials: false/);
-  assert.doesNotMatch(sync, /(?:contents|actions|pull-requests): write|git commit|git push|workflow.*dispatches/);
-  assert.doesNotMatch(workflow, /PR_HEAD_REF|Persist generated registration outputs on PR branch/);
+  assert.match(workflow, /^on:\n  pull_request:/m);
+  assert.doesNotMatch(workflow, /^  (?:push|schedule|workflow_dispatch|repair):/m);
+  assert.doesNotMatch(sync, /(?:contents|actions|pull-requests): write|git commit|git push|workflow.*dispatches|gh workflow run/);
+  assert.doesNotMatch(workflow, /PR_HEAD_REF|Persist generated registration outputs on PR branch|git apply --index|create-pull-request/);
   assert.ok(sync.indexOf("Guard generated scope") < sync.indexOf("git diff --binary --full-index HEAD"));
   assert.match(sync, /git rev-parse HEAD > \"?\$preview\/source\.sha/);
   assert.match(sync, /actions\/upload-artifact@v4/);
-  assert.match(repair, /needs: sync/);
-  assert.match(repair, /if: \(github\.event_name == 'push' \|\| github\.event_name == 'workflow_dispatch'\) && github\.ref == 'refs\/heads\/main'/);
-  assert.match(repair, /ref: \$\{\{ needs\.sync\.outputs\.source_sha \}\}/);
-  assert.match(repair, /test "\$\(cat "\$preview\/source\.sha"\)" = "\$\(git rev-parse HEAD\)"/);
-  assert.match(repair, /git apply --index/);
 });
 
 test('registration sync records metadata debt while keeping student source and Chrome checks required',()=>{

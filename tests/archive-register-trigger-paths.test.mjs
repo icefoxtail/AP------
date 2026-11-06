@@ -6,6 +6,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { globToRegExp, loadPatterns, pushTouchesPaths } from "../tools/ci/push-touches-paths.mjs";
+import { nativeLanes, matches } from "../tools/ci/archive-registration-writer.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const triggerFile = path.join(repo, "tools/ci/archive-meta-register-trigger-paths.txt");
@@ -13,44 +14,53 @@ const read = rel => fs.readFileSync(path.join(repo, rel), "utf8");
 const SCOPED = "archive/data/meta-foundation/exam-scoped/25_금당고_2학기_중간_고2_확률과통계.parent-links.json";
 const entries = read("tools/ci/archive-meta-register-trigger-paths.txt").split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#"));
 
-test("the register workflow's on.push.paths is exactly the shared trigger path list", () => {
-  const yaml = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
-  const block = /^ {4}paths:\n((?: {6}- .*\n)+)/m.exec(yaml);
-  assert.ok(block, "on.push.paths block present");
-  const declared = block[1].trim().split("\n").map(l => l.replace(/^ *- /, "").replace(/^"|"$/g, ""));
-  assert.deepEqual(declared.sort(), [...entries].sort());
-});
-
-test("workflows route every main write through the race-safe helper and share one trigger list", () => {
-  const register = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
-  const pages = read(".github/workflows/archive-pages-release.yml");
-  for (const [name, text] of [["register", register], ["pages", pages]]) {
-    assert.ok(text.includes("tools/ci/git-push-derived-with-retry.mjs"), `${name} uses the push helper`);
-    assert.ok(!/git push origin HEAD:main/.test(text), `${name} has no bare git push`);
-    assert.ok(!/--force|HEAD\^ HEAD/.test(text), `${name} neither forces nor reads HEAD^ of a moving checkout`);
-    assert.ok(text.includes("tools/ci/push-touches-paths.mjs"), `${name} detects touched paths from the push event`);
-    assert.ok(text.includes("archive-meta-register-trigger-paths.txt"), `${name} reads the shared trigger list`);
+test("the main writer receives every main push and retains all native reviewed input dependencies", () => {
+  const yaml = read(".github/workflows/archive-main-auto-meta.yml");
+  const push = /^  push:\n([\s\S]*?)(?=^  \S|^\S)/m.exec(yaml)?.[1];
+  assert.ok(push, "the single main writer has a push entrypoint");
+  assert.match(push, /branches: \[main\]/);
+  assert.doesNotMatch(push, /paths(?:-ignore)?:/, "input fingerprints, not incomplete event filters, select native work");
+  const reviewed = nativeLanes(repo).find(lane => lane.id === "reviewed");
+  for (const entry of entries) {
+    assert.ok(matches(entry.replaceAll("*", "request"), reviewed.inputs), `${entry} remains a reviewed lane dependency`);
   }
-  assert.ok(register.includes("bash tools/ci/reviewed-meta-register-pass.sh"), "retries re-run the full registration pass");
-  assert.ok(pages.includes("tools/ci/archive-pages-registration-derive.sh all"), "Pages retries re-derive and re-verify");
+  const compatibility = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
+  assert.match(compatibility, /^on:\n  workflow_dispatch:\n/m);
+  assert.doesNotMatch(compatibility, /^  (?:push|schedule|pull_request):/m);
+  assert.match(compatibility, /gh workflow run archive-main-auto-meta\.yml/);
 });
 
-test("changed-UID approval runs after the push, never inside the pass that consumes the inbox", () => {
-  const register = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
+test("one writer retries the complete native transaction while Pages and compatibility dispatch do not write Git", () => {
+  const register = read(".github/workflows/archive-main-auto-meta.yml");
+  const compatibility = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
+  const pages = read(".github/workflows/archive-pages-release.yml");
+  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
+  assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
+  assert.doesNotMatch(register, /git push origin HEAD:main|--force|HEAD\^ HEAD/);
+  for (const [name, text] of [["compatibility", compatibility], ["pages", pages]]) {
+    assert.doesNotMatch(text, /git-push-derived-with-retry|git\s+(?:commit|push)\b|contents: write/, `${name} cannot persist shared registration output`);
+    assert.doesNotMatch(text, /archive-pages-registration-derive\.sh|reviewed-meta-register-pass\.sh|archive\/build_db\.py/);
+  }
+  assert.deepEqual(nativeLanes(repo).find(lane => lane.id === "reviewed").commands,
+    [{ program: "bash", args: ["tools/ci/reviewed-meta-register-pass.sh"] }]);
+});
+
+test("the writer reuses preserved request copies for its final Consumer check before the atomic commit", t => {
   const pass = read("tools/ci/reviewed-meta-register-pass.sh");
-  assert.ok(!pass.includes("verify-changed-uid-consumer-approval"), "a failing approval must not block consuming the request");
+  assert.ok(!pass.includes("verify-changed-uid-consumer-approval"), "the native per-request pass retains its isolation contract");
   assert.ok(pass.includes('work="$RUNNER_TEMP/archive-meta-register-pass"') && pass.includes('cp -- "$request" "$work/requests/'), "request copies are still saved for the later check");
-  assert.ok(read("tools/ci/verify-registered-consumer-approval.sh").includes("archive-meta-register-pass/requests/*.json"), "the post-push gate reads the same copies");
-  const push = register.indexOf("id: push"), verify = register.indexOf("name: Verify changed-UID approval in the effective student consumer");
-  assert.ok(push > 0 && verify > push, "verification step follows the push step");
-  const verifyStep = register.slice(verify);
-  assert.match(verifyStep, /steps\.push\.outcome == 'success'/);
-  assert.match(verifyStep, /steps\.req\.outputs\.count != '0' \|\| steps\.req\.outputs\.scoped == 'true'/);
-  assert.ok(verifyStep.includes("bash tools/ci/verify-registered-consumer-approval.sh"));
-  assert.ok(!register.slice(push, verify).includes("status="), "the push step records only registered_main_sha");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "writer-request-copies-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const reviewed = nativeLanes(repo).find(lane => lane.id === "reviewed");
+  const env = { RUNNER_TEMP: dir };
+  assert.deepEqual(reviewed.finalCommands({ env }), [], "no invented request proof when the native pass has not run");
+  fs.mkdirSync(path.join(dir, "archive-meta-register-pass/requests"), { recursive: true });
+  fs.writeFileSync(path.join(dir, "archive-meta-register-pass/requests/fixture.json"), "{}\n");
+  assert.equal(reviewed.alwaysFinal, true, "the final Consumer check cannot be omitted merely because this pass converged");
+  assert.deepEqual(reviewed.finalCommands({ env }), [{ program: "bash", args: ["tools/ci/verify-registered-consumer-approval.sh"],
+    env: { GITHUB_STEP_SUMMARY: "/dev/null" } }], "reuse the real gate without emitting its obsolete pre-commit registered SHA summary");
   const gate = read("tools/ci/verify-registered-consumer-approval.sh");
-  for (const needle of ["status=POST_MERGE_VERIFIED", "status=REGISTERED_CONSUMER_APPROVAL_FAIL", "verify-changed-uid-consumer-approval.mjs", "--summary-file", "exit 1",
-    "dispatch Archive Pages Release or wait for the next main push", "archive-meta-register-trigger-paths.txt"])
+  for (const needle of ["archive-meta-register-pass/requests/*.json", "verify-changed-uid-consumer-approval.mjs", "--summary-file", "exit 1", "archive-meta-register-trigger-paths.txt"])
     assert.ok(gate.includes(needle), needle);
 });
 
@@ -70,7 +80,7 @@ test("push event detection uses the pushed commits, not HEAD^", () => {
   assert.equal(touches(push([{ added: [".archive-meta-register/inbox/x.json"], modified: [], removed: [] }])), true);
   assert.equal(touches(push([{ added: [], modified: [SCOPED], removed: [] }])), true);
   assert.equal(touches(push([{ added: [], modified: [], removed: [SCOPED.normalize("NFD")] }])), true, "NFD/NFC file names compare equal");
-  // The inbox glob is a trigger for Pages deferral but not a "scoped" input for the register workflow.
+  // Native literal-only scope detection excludes the request glob; inbox consumption has its own path.
   const inboxOnly = push([{ added: [".archive-meta-register/inbox/x.json"], modified: [], removed: [] }]);
   assert.equal(touches(inboxOnly, { literalOnly: true }), false);
   assert.equal(touches(push([{ added: [], modified: [SCOPED], removed: [] }]), { literalOnly: true }), true);

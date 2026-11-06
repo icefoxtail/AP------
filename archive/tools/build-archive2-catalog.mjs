@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
+import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
 import {
   buildMixedSourceShard,
@@ -19,7 +20,10 @@ const root = path.resolve(
 const read = (file) =>
   fs.readFileSync(path.join(root, file), "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
+const packageOnly = process.argv.includes("--package-only");
 const refreshingCanonicalProjection = process.argv.includes("--refresh-canonical-projection");
+if (packageOnly && (refreshingCanonicalProjection || process.argv.includes("--check")))
+  throw new Error("--package-only cannot be combined with --check or --refresh-canonical-projection");
 if (refreshingCanonicalProjection && process.argv.includes("--check"))
   throw new Error("--refresh-canonical-projection is a write path and cannot be combined with --check");
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
@@ -1040,7 +1044,23 @@ const manifest = {
   files: manifestFilesWithSourceIndex,
 };
 const manifestTarget = path.join(root, "archive/data/archive2-canonical-input-manifest.json");
-if (process.argv.includes("--check")) {
+if (packageOnly) {
+  const relative = file => path.relative(root, file).split(path.sep).join('/');
+  materializePackageShards({
+    root,
+    registeredFiles: [
+      [relative(target), packedText],
+      [relative(overrideIndexTarget), overrideIndexText],
+      [relative(sourceIndexTarget), sourceIndexText],
+      [relative(manifestTarget), JSON.stringify(manifest) + "\n"],
+      ...[...shardTexts].map(([file, text]) => ['archive/' + file, text]),
+    ],
+    packageFiles: [
+      [relative(mixedContextTarget), mixedContextText],
+      ...[...mixedSourceShardTexts, ...mixedUidBucketTexts].map(([file, text]) => ['archive/' + file, text]),
+    ],
+  });
+} else if (process.argv.includes("--check")) {
   const actual = fs.existsSync(target)
     ? fs.readFileSync(target, "utf8").replace(/\r\n/g, "\n")
     : null;

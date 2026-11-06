@@ -1,39 +1,37 @@
 name: Archive Main Auto Metadata
+# Single serialized main registration writer. Existing native producers keep their schemas and
+# lane-specific policies; one verified transaction is committed, then its exact SHA is published.
 on:
   push:
     branches: [main]
-    paths:
-      - 'archive/exams/**/*.js'
-      - 'archive/data/meta-foundation/canonical/**'
-      - 'archive/data/item-4slot/**'
-      - 'archive/data/question_identity_map.json'
-      - 'archive/assets/**'
-      - 'docs/architecture/4slot/term-dictionary*.json'
-      - 'archive/item-4slot.js'
-      - 'tools/4slot/build-4slot-runtime.cjs'
-      - 'tools/ci/archive-four-slot-pass.sh'
-      - 'tools/ci/main-meta-input-scope.mjs'
-      - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
-      - 'tools/ci/archive-main-auto-meta-pass.sh'
-      - '.archive-meta-register/auto/config.json'
-      - '.github/workflows/archive-main-auto-meta.yml'
   pull_request:
     branches: [main]
     paths:
+      - 'tools/ci/archive-registration-writer.mjs'
+      - 'tools/ci/git-push-derived-with-retry.mjs'
+      - 'tools/ci/archive-main-auto-meta-pass.sh'
+      - 'tools/ci/reviewed-meta-register-pass.sh'
+      - 'tools/ci/archive-four-slot-pass.sh'
+      - 'tools/ci/archive-pages-registration-derive.sh'
+      - 'tools/ci/*register*.paths'
+      - 'tools/ci/archive-pages-registration.paths'
+      - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
+      - 'archive/tools/generated-meta/**'
       - 'archive/data/item-4slot/**'
       - 'docs/architecture/4slot/term-dictionary*.json'
       - 'archive/item-4slot.js'
-      - 'tools/4slot/build-4slot-runtime.cjs'
-      - 'tools/ci/archive-four-slot-pass.sh'
-      - 'tools/ci/main-meta-input-scope.mjs'
-      - 'tests/item-4slot-runtime.test.cjs'
-      - 'tests/main-meta-input-scope.test.mjs'
-      - 'tests/item-4slot-data.test.cjs'
-      - 'archive/tools/meta-foundation/auto-register-merged-source.mjs'
-      - 'tools/ci/archive-main-auto-meta-pass.sh'
+      - 'tools/4slot/**'
+      - 'tests/archive-registration-writer.test.mjs'
+      - 'tests/git-push-derived-with-retry.test.mjs'
+      - 'tests/archive-single-writer-workflows.test.mjs'
       - 'tests/archive-main-merge-meta.test.mjs'
+      - 'tests/item-4slot-runtime.test.cjs'
       - '.archive-meta-register/auto/config.json'
       - '.github/workflows/archive-main-auto-meta.yml'
+      - '.github/workflows/archive-reviewed-exam-meta-register.yml'
+      - '.github/workflows/archive-reviewed-apply.yml'
+      - '.github/workflows/archive-registration-sync.yml'
+      - '.github/workflows/archive-pages-release.yml'
   workflow_dispatch:
   schedule:
     - cron: '43 * * * *'
@@ -43,6 +41,7 @@ jobs:
   test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,15 +50,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs tests/main-meta-input-scope.test.mjs
-      - run: node tests/item-4slot-data.test.cjs
-      - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/archive-four-slot-pass.sh
-      - name: Real production dry-run (no writes)
+      - run: node --test tests/archive-registration-writer.test.mjs tests/git-push-derived-with-retry.test.mjs tests/archive-single-writer-workflows.test.mjs tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs
+      - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/reviewed-meta-register-pass.sh tools/ci/archive-four-slot-pass.sh tools/ci/archive-pages-registration-derive.sh
+      - name: Real production inventory (no writes or mathematical review)
         run: |
           mkdir -p "${RUNNER_TEMP}/auto-meta-preview"
           node archive/tools/meta-foundation/auto-register-merged-source.mjs --report "${RUNNER_TEMP}/auto-meta-preview/semantic.json"
           node tools/4slot/build-4slot-runtime.cjs --report "${RUNNER_TEMP}/auto-meta-preview/4slot.json"
-          git diff --exit-code
+          git diff --exit-code HEAD --
       - name: Upload exact read-only inventory and validation
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,14 +69,16 @@ jobs:
   register:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     permissions:
       contents: write
       actions: write
-      issues: write
     concurrency:
+      # Retain the former reviewed/AutoMeta lock while retiring their other entrypoints.
       group: archive-reviewed-exam-meta-register-main
       cancel-in-progress: false
+    env:
+      WRITER_WORK_DIR: ${{ runner.temp }}/archive-registration-writer
     steps:
       - uses: actions/checkout@v4
         with:
@@ -87,116 +87,59 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Detect semantic inputs from the triggering event
-        id: scope
-        run: node tools/ci/main-meta-input-scope.mjs
       - uses: actions/setup-python@v5
-        if: steps.scope.outputs.needed == 'true'
         with:
           python-version: '3.12'
-      - name: Regression checks
-        if: steps.scope.outputs.needed == 'true'
-        run: node --test tests/archive-main-merge-meta.test.mjs
-      - name: Register changed UIDs and verify actual consumer
-        if: steps.scope.outputs.needed == 'true'
-        run: bash tools/ci/archive-main-auto-meta-pass.sh
-      - name: Persist verified registration with race-safe regeneration
+      - name: Prepare only changed native registration lanes in one transaction
+        id: prepare
+        timeout-minutes: 35
+        run: node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"
+      - name: Persist verified lanes, native cursors and receipts once with race-safe regeneration
         id: persist
-        if: steps.scope.outputs.needed == 'true'
+        if: steps.prepare.outputs.safe_to_persist == 'true'
+        timeout-minutes: 45
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           node tools/ci/git-push-derived-with-retry.mjs \
-            --paths-file "${RUNNER_TEMP}/archive-main-auto-meta/commit.paths" \
-            --message 'chore(archive): auto-register merged metadata [skip ci]' \
-            --regenerate 'bash tools/ci/archive-main-auto-meta-pass.sh' \
+            --paths-file "$WRITER_WORK_DIR/commit.paths" \
+            --message 'chore(archive): register main snapshot [skip ci]' \
+            --regenerate 'node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"' \
+            --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
             --remote origin --branch main --max-attempts 3 \
-            --summary-file "$GITHUB_STEP_SUMMARY" --label 'main automatic metadata'
-      - name: Explicitly dispatch student release after bot persistence
-        if: steps.persist.outputs.result == 'PUSHED'
+            --summary-file "$GITHUB_STEP_SUMMARY" --label 'single Archive registration writer'
+      - name: Bind the persisted snapshot before any publication handoff
+        id: registered
+        if: steps.persist.outcome == 'success'
+        timeout-minutes: 5
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run archive-pages-release.yml --ref main
-      - name: Upload execution evidence
-        if: always() && steps.scope.outputs.needed == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: main-auto-metadata-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/archive-main-auto-meta/
-          if-no-files-found: warn
-          retention-days: 14
-      - name: Record unresolved infrastructure failure without changing source
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const title='Archive main automatic metadata: recovery required';
-            const {owner,repo}=context.repo;
-            const body=`Automatic registration failed. No success is inferred.\n\nRun: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n\nThe hourly catch-up will retry from the last durable cursor. Student source files are never rewritten by this worker.`;
-            const all=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
-            const old=all.find(i=>!i.pull_request&&i.title===title);
-            if(old) await github.rest.issues.createComment({owner,repo,issue_number:old.number,body});
-            else await github.rest.issues.create({owner,repo,title,body});
-  four-slot:
-    # Isolate registration lanes: semantic debt/failure must not discard already-authored 4slot work.
-    needs: register
-    if: always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    permissions:
-      contents: write
-      actions: write
-      issues: write
-    concurrency:
-      group: archive-four-slot-register-main
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: main
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: 4slot regression checks
-        run: node --test tests/item-4slot-runtime.test.cjs
-      - name: Register existing compact files, verify UID lookup, and replay
-        run: bash tools/ci/archive-four-slot-pass.sh
-      - name: Persist only verified 4slot derived artifacts
-        id: persist
+          REGISTERED_MAIN_SHA: ${{ steps.persist.outputs.registered_sha }}
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          node tools/ci/git-push-derived-with-retry.mjs \
-            --paths-file "${RUNNER_TEMP}/archive-four-slot/commit.paths" \
-            --message 'chore(archive): register existing 4slot metadata [skip ci]' \
-            --regenerate 'bash tools/ci/archive-four-slot-pass.sh' \
-            --remote origin --branch main --max-attempts 3 \
-            --summary-file "$GITHUB_STEP_SUMMARY" --label 'main 4slot metadata'
-      - name: Dispatch student package after persisted 4slot update
-        if: steps.persist.outputs.result == 'PUSHED'
+          [[ "$REGISTERED_MAIN_SHA" =~ ^[a-f0-9]{40}$ ]]
+          git checkout --detach "$REGISTERED_MAIN_SHA"
+          [[ "$(git rev-parse HEAD)" == "$REGISTERED_MAIN_SHA" ]]
+          node tools/ci/archive-registration-writer.mjs --check --work-dir "$WRITER_WORK_DIR/persisted"
+          printf 'registered_main_sha=%s\n' "$REGISTERED_MAIN_SHA" >> "$GITHUB_STEP_SUMMARY"
+      - name: Dispatch the exact registered snapshot through the single Pages entrypoint
+        if: steps.registered.outputs.publishable == 'true' && (steps.persist.outputs.result == 'PUSHED' || github.event_name != 'schedule')
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run archive-pages-release.yml --ref main
-      - name: Upload 4slot execution evidence
+          REGISTERED_MAIN_SHA: ${{ steps.persist.outputs.registered_sha }}
+        run: |
+          [[ "$REGISTERED_MAIN_SHA" =~ ^[a-f0-9]{40}$ ]]
+          gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$REGISTERED_MAIN_SHA"
+      - name: Report incomplete required registration without publishing
+        if: steps.persist.outcome == 'success' && steps.registered.outputs.publishable != 'true'
+        run: |
+          echo '::error::Required registration remains incomplete; verified independent lanes were persisted, and the existing student site remains live. See per-lane evidence; hourly reconciliation resumes the remaining inputs.'
+          exit 1
+      - name: Upload registration evidence including isolated failures and no-op decisions
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: four-slot-registration-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/archive-four-slot/
+          name: archive-main-registration-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-registration-writer/
           if-no-files-found: warn
-          retention-days: 14
-      - name: Record isolated 4slot infrastructure failure
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const title='Archive 4slot automatic registration: recovery required';
-            const {owner,repo}=context.repo;
-            const body=`4slot registration failed. Existing authored compact files are unchanged.\n\nRun: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n\nHourly reconciliation retries current source/compact/dictionary inputs.`;
-            const all=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
-            const old=all.find(i=>!i.pull_request&&i.title===title);
-            if(old) await github.rest.issues.createComment({owner,repo,issue_number:old.number,body});
-            else await github.rest.issues.create({owner,repo,title,body});
+          retention-days: 30

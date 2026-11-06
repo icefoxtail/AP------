@@ -47,6 +47,12 @@ jobs:
           target_ref="$(jq -r '.targetRef' <<<"$inspection")"
           review_base_sha="$(jq -r '.targetBaseSha' <<<"$inspection")"
           apply_id="$(jq -r '.applyId' <<<"$inspection")"
+          # Sealed legacy recovery remains available on its non-main recovery branch.
+          # Main content now enters through the existing reviewed PR/inbox path and single writer.
+          if [[ "$target_ref" == "main" ]]; then
+            echo "LEGACY_MAIN_WRITER_RETIRED: submit the reviewed inputs through the existing main PR/inbox path; Archive Main Auto Metadata owns shared registration." >&2
+            exit 1
+          fi
           echo "packet=$packet" >> "$GITHUB_OUTPUT"
           echo "target_ref=$target_ref" >> "$GITHUB_OUTPUT"
           echo "review_base_sha=$review_base_sha" >> "$GITHUB_OUTPUT"

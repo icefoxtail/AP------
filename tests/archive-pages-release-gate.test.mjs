@@ -6,7 +6,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { evaluateGate } from "../tools/ci/archive-pages-release-gate.mjs";
-import { decideDeployNeeded, probe, SYNC_SUBJECT } from "../tools/ci/archive-pages-deploy-needed.mjs";
+import { probe } from "../tools/ci/archive-pages-deploy-needed.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const workflow = fs.readFileSync(path.join(repo, ".github/workflows/archive-pages-release.yml"), "utf8");
@@ -36,16 +36,15 @@ test("gate semantics: only success passes; skipped passes only where allowed; mi
   assert.equal(adv.rows.find(r => r.id === "c").ok, false);
 });
 
-test('Archive 2.0 release records metadata repair debt while keeping student availability required',()=>{
-  assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('metadata_integrity_tests'));
-  assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('projection_check'));
+test('Pages consumes verified registration and keeps student availability required',()=>{
   assert.ok((/--advisory (\S+)/.exec(workflow)||[])[1]?.split(',').includes('chrome_generated_bank'));
-  assert.ok(gateRequired.includes('qid9_parity'));
+  assert.ok(gateRequired.includes('registered'));
+  assert.match(steps.find(step => step.id === 'registered').text, /archive-registration-writer\.mjs --check/);
   assert.ok(gateRequired.includes('staged_site_chrome'));
   assert.doesNotMatch(workflow.slice(workflow.indexOf('id: staged_site_chrome'),workflow.indexOf('id: worker_order')),/check-generated-bank-browser\.cjs/);
   assert.ok(gateRequired.includes('selection_tests'));
-  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'success'},metadata_integrity_tests:{outcome:'failure'}},required:['selection_tests'],advisory:['metadata_integrity_tests']}).pass,true);
-  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'failure'},metadata_integrity_tests:{outcome:'success'}},required:['selection_tests'],advisory:['metadata_integrity_tests']}).pass,false);
+  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'success'},chrome_generated_bank:{outcome:'failure'}},required:['selection_tests'],advisory:['chrome_generated_bank']}).pass,true);
+  assert.equal(evaluateGate({steps:{selection_tests:{outcome:'failure'},chrome_generated_bank:{outcome:'success'}},required:['selection_tests'],advisory:['chrome_generated_bank']}).pass,false);
 });
 
 test("gate CLI exits 1 on a failed required step, 0 on success, 1 on unreadable context; writes evidence", () => {
@@ -66,18 +65,14 @@ test("gate CLI exits 1 on a failed required step, 0 on success, 1 on unreadable 
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
-test("workflow: every gate-required id is a real continue-on-error step with a timeout, nothing is skipped silently", () => {
-  assert.ok(gateRequired.length >= 16);
+test("workflow: every required verification has a bounded real outcome; continued failures reach the gate", () => {
+  assert.deepEqual(gateRequired, ["registered", "package_shards", "identity", "selection_tests", "chrome_geumdang", "chrome_qid9_student",
+    "mock_qa", "archive2_runtime", "pages_build", "staged_site_chrome", "worker_order", "image_order", "snapshot_guard"]);
   for (const id of gateRequired) {
     const step = steps.find(s => s.id === id);
     assert.ok(step, `required step id ${id} exists`);
-    assert.ok(step.continueOnError, `${id} keeps continue-on-error so diagnostics still run`);
     assert.ok(step.timeout > 0 && step.timeout <= 15, `${id} has a bounded step timeout`);
   }
-  for (const id of ["reg_materialize", "reg_verify", "reg_commit", "archive2_runtime", "staged_site_chrome", "mock_qa", "selection_tests"]) {
-    assert.ok(gateRequired.includes(id), `${id} is required`);
-  }
-  assert.match(workflow, /--skip-ok reg_commit/);
   // Any other continue-on-error step must be explicitly classified: required, or advisory.
   const advisory = (/--advisory (\S+)/.exec(workflow) || [])[1].split(",");
   for (const step of steps.filter(s => s.continueOnError)) {
@@ -88,11 +83,12 @@ test("workflow: every gate-required id is a real continue-on-error step with a t
 
 test("workflow: the gate follows every verification, precedes the Pages artifact, and evidence upload stays always()", () => {
   const index = id => steps.findIndex(s => s.id === id);
-  for (const id of [...gateRequired, "main_sha_confirm", "pages_build"]) assert.ok(index(id) >= 0 && index(id) < index("release_gate"), `${id} runs before the gate`);
+  for (const id of gateRequired) assert.ok(index(id) >= 0 && index(id) < index("release_gate"), `${id} runs before the gate`);
   assert.ok(gateStep && !gateStep.continueOnError, "the gate itself must be able to fail the job");
   const evidence = steps.findIndex(s => /upload-artifact@/.test(s.text));
   const pages = steps.findIndex(s => /upload-pages-artifact@/.test(s.text));
   assert.ok(index("release_gate") < pages, "no Pages artifact is uploaded before the gate passed");
+  assert.ok(index("release_gate") < index("release_receipt") && index("release_receipt") < pages, "exact receipt is sealed after the gate and before upload");
   assert.match(steps[evidence].text, /if: always\(\)/);
   assert.ok(!/continue-on-error/.test(steps[pages].text));
   assert.match(workflow, /\n {4}needs: build\n/, "deploy requires the whole build job");
@@ -102,96 +98,88 @@ test("workflow: the gate follows every verification, precedes the Pages artifact
 test("workflow: timeouts, schedule self-heal and permissions", () => {
   assert.match(workflow, /\n {2}schedule:\n {4}- cron: '17 \*\/3 \* \* \*'/);
   assert.match(workflow, /\n {2}deployments: read\n/);
-  assert.match(workflow, /needs\.registration-ready\.outputs\.needed == 'true'/);
+  assert.match(workflow, /needs\.build\.outputs\.ready == 'true' && needs\.build\.outputs\.needed == 'true'/);
   assert.match(workflow, /node tools\/ci\/archive-pages-deploy-needed\.mjs/);
   assert.match(workflow, /\n {4}timeout-minutes: 45\n/);
   assert.match(workflow, /fetch-depth: 0/, "full history stays: runtime diff and historic blob reads need it");
+  assert.match(workflow, /\n {2}contents: read\n/);
+  assert.doesNotMatch(buildJob, /pages: write|id-token: write|contents: write|git (?:commit|push)|git-push-derived-with-retry/);
+  assert.match(buildJob, /persist-credentials: false/);
+  assert.match(buildJob, /ref: \$\{\{ inputs\.registered_main_sha \|\| github\.sha \}\}/);
+  assert.doesNotMatch(buildJob, /ref: main|git fetch/);
 });
 
-const SHA_D = "d".repeat(40), SHA_M = "e".repeat(40);
-const syncCommit = { commit: { message: "chore(archive): sync registration artifacts [skip ci]\n\nbody", author: { name: "github-actions[bot]" } } };
-const fakeGet = ({ deployments = [{ id: 1, sha: SHA_D }], state = "success", cmp = null, fail = false } = {}) => async route => {
-  if (fail) throw new Error("HTTP 500");
-  if (route.includes("/deployments?")) return deployments;
-  if (route.includes("/statuses")) return [{ state }];
-  if (route.includes("/compare/")) return cmp;
-  throw new Error("unexpected " + route);
-};
-
-test("self-heal probe: only scheduled runs may skip, and only when the live site already serves main", async () => {
-  const base = { repo: "o/r", mainSha: SHA_M };
-  for (const eventName of ["push", "workflow_run", "workflow_dispatch"]) {
-    assert.equal((await decideDeployNeeded({ ...base, eventName, get: fakeGet({ deployments: [{ id: 1, sha: SHA_M }] }) })).needed, true, eventName);
+function blockScript(text) {
+  const lines = text.split("\n"), start = lines.indexOf("        run: |");
+  assert.ok(start >= 0, "workflow step uses an inspectable shell block");
+  const body = [];
+  for (const line of lines.slice(start + 1)) {
+    if (line.trim() && !line.startsWith("          ")) break;
+    body.push(line.slice(10));
   }
-  const sched = { ...base, eventName: "schedule" };
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ deployments: [{ id: 1, sha: SHA_M }] }) })).needed, false);
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ state: "failure" }) })).needed, true, "a failed deployment is not a live site");
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ deployments: [] }) })).needed, true);
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ fail: true }) })).needed, true, "API trouble builds to be safe");
-  const onlySync = { status: "ahead", total_commits: 1, commits: [syncCommit] };
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: onlySync }) })).needed, false, "registration sync commits after the deployed SHA are already served");
-  const foreign = { status: "ahead", total_commits: 2, commits: [syncCommit, { commit: { message: "feat: new exam", author: { name: "someone" } } }] };
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: foreign }) })).needed, true, "an undeployed content commit forces a build");
-  const spoof = { status: "ahead", total_commits: 1, commits: [{ commit: { message: "chore(archive): sync registration artifacts [skip ci]", author: { name: "human" } } }] };
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: spoof }) })).needed, true, "only the bot's sync commits count");
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: { status: "diverged", total_commits: 1, commits: [syncCommit] } }) })).needed, true);
-  assert.equal((await decideDeployNeeded({ ...sched, get: fakeGet({ cmp: { status: "ahead", total_commits: 150, commits: [syncCommit] } }) })).needed, true, "truncated compare is not trusted");
-  assert.ok(SYNC_SUBJECT.test("chore(archive): sync registration artifacts [skip ci]"));
+  return body.join("\n");
+}
+
+test("real workflow gate only accepts Archive skips with explicit matching proof; any failed outcome still blocks", t => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "pages-real-gate-"));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const reused = ["selection_tests", "chrome_geumdang", "chrome_qid9_student", "mock_qa", "archive2_runtime"];
+  const base = Object.fromEntries(gateRequired.map(id => [id, { outcome: "success", conclusion: "success" }]));
+  const run = (archiveNeeded, outcomes) => spawnSync("bash", ["-e", "-o", "pipefail", "-c", blockScript(gateStep.text)], {
+    cwd: repo, encoding: "utf8", env: { ...process.env, STEPS_JSON: JSON.stringify(outcomes), ARCHIVE_NEEDED: archiveNeeded,
+      RELEASE_EVIDENCE_DIR: directory, GITHUB_STEP_SUMMARY: path.join(directory, "summary.md") }
+  });
+  const skipped = { ...base, ...Object.fromEntries(reused.map(id => [id, { outcome: "skipped" }])) };
+  assert.equal(run("false", skipped).status, 0, "verified identical Archive inputs permit only declared skips");
+  for (const uncertain of ["true", "", "unknown"]) assert.equal(run(uncertain, skipped).status, 1, `no proof for ${uncertain}`);
+  for (const failed of ["identity", "registered", "image_order", "worker_order", "snapshot_guard", "selection_tests"]) {
+    const result = run("false", { ...base, [failed]: { outcome: "failure", conclusion: "success" } });
+    assert.equal(result.status, 1, `${failed}: continue-on-error conclusion cannot mask the failed outcome`);
+  }
+  for (const id of reused) assert.match(steps.find(step => step.id === id).text, /steps\.identity\.outputs\.archive_needed != 'false'/);
+  for (const id of ["pages_build", "staged_site_chrome", "worker_order", "image_order", "snapshot_guard"])
+    assert.doesNotMatch(steps.find(step => step.id === id).text, /archive_needed/, `${id} is never bypassed by Archive-only reuse`);
 });
 
-// ---- the probe can never skip a push build by crashing --------------------------------------------------------
+test("identity process crashes still collect diagnostics, and its real failure stays required at the final gate", () => {
+  const identity = steps.find(step => step.id === "identity");
+  assert.equal(identity.continueOnError, true);
+  assert.ok(gateRequired.includes("identity"));
+  assert.match(workflow, /needed: \$\{\{ steps\.identity\.outputs\.needed \|\| 'true' \}\}/);
+  assert.match(steps.find(step => step.id === "pages_build").text, /steps\.identity\.outputs\.needed != 'false'/);
+});
+
+// Probe failures request validation on every event; reusable content identities are exercised in
+// archive-pages-release-identity.test.mjs, including exact Git/packaged-byte fixtures.
 const probeScript = path.join(repo, "tools/ci/archive-pages-deploy-needed.mjs");
 const runProbeScript = (t, eventName, extraEnv = {}) => {
-  // A directory that is not a git checkout and has no network credentials: any git/network access would fail.
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "deploy-needed-"));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
   const out = path.join(dir, "output.txt");
-  const r = spawnSync(process.execPath, [probeScript], { cwd: dir, encoding: "utf8",
+  const result = spawnSync(process.execPath, [probeScript], { cwd: dir, encoding: "utf8",
     env: { PATH: process.env.PATH, GITHUB_EVENT_NAME: eventName, GITHUB_OUTPUT: out, GIT_CEILING_DIRECTORIES: path.dirname(dir), ...extraEnv } });
-  return { ...r, output: fs.existsSync(out) ? fs.readFileSync(out, "utf8") : "" };
+  return { ...result, output: fs.existsSync(out) ? fs.readFileSync(out, "utf8") : "" };
 };
 
-test("probe: non-schedule events answer needed=true before touching git or the network", async () => {
-  const boom = () => { throw new Error("must not be called"); };
-  for (const eventName of ["push", "workflow_run", "workflow_dispatch", "pull_request", ""]) {
-    const result = await probe({ env: { GITHUB_EVENT_NAME: eventName }, headSha: boom, makeGetFn: boom });
+test("probe: failed input discovery never skips checks on any event", async () => {
+  for (const eventName of ["push", "schedule", "workflow_run", "workflow_dispatch", ""]) {
+    const result = await probe({ env: { GITHUB_EVENT_NAME: eventName }, headSha: () => { throw new Error("not a git repository"); } });
     assert.equal(result.needed, true, eventName);
+    assert.equal(result.archiveNeeded, true, eventName);
+    assert.match(result.reason, /probe crashed.*not a git repository/);
   }
+  const unknown = await probe({ args: ["--unknown", "x"] });
+  assert.equal(unknown.needed, true);
+  assert.equal(unknown.archiveNeeded, true);
 });
 
-test("probe: every error path fails open (needed=true) and never throws", async () => {
-  const sched = { GITHUB_EVENT_NAME: "schedule", GITHUB_REPOSITORY: "o/r" };
-  const gitFails = await probe({ env: sched, headSha: () => { throw new Error("fatal: not a git repository"); }, makeGetFn: () => { throw new Error("no network"); } });
-  assert.equal(gitFails.needed, true);
-  assert.match(gitFails.reason, /probe crashed.*not a git repository/);
-  const getFactoryFails = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => { throw new Error("no network"); } });
-  assert.equal(getFactoryFails.needed, true);
-  const apiFails = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => fakeGet({ fail: true }) });
-  assert.equal(apiFails.needed, true);
-  const nonError = await probe({ env: sched, headSha: () => { throw "plain string"; } });
-  assert.equal(nonError.needed, true);
-  // And the one legitimate skip still works through the same entry point.
-  const served = await probe({ env: sched, args: ["--main-sha", SHA_M], makeGetFn: () => fakeGet({ deployments: [{ id: 1, sha: SHA_M }] }) });
-  assert.equal(served.needed, false);
-});
-
-test("probe script: push builds with exit 0 outside any git checkout; a crashing scheduled run still writes needed=true", t => {
-  const push = runProbeScript(t, "push");
-  assert.equal(push.status, 0, push.stderr);
-  assert.match(push.output, /^needed=true\n/);
-  const sched = runProbeScript(t, "schedule", { GITHUB_REPOSITORY: "o/r" });
-  assert.equal(sched.status, 0, sched.stderr);
-  assert.match(sched.output, /^needed=true\n/, "git rev-parse failing outside a checkout fails open");
-  assert.match(sched.output, /reason=probe crashed/);
+test("probe CLI: missing checkout or unwritable output cannot become a skipped build", t => {
+  for (const eventName of ["push", "schedule", "workflow_dispatch"]) {
+    const result = runProbeScript(t, eventName, { GITHUB_REPOSITORY: "o/r" });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.output, /^needed=true\narchive_needed=true\n/);
+    assert.match(result.output, /reason=probe crashed/);
+  }
   const unwritable = runProbeScript(t, "push", { GITHUB_OUTPUT: path.join(os.tmpdir(), "does-not-exist-dir", "x", "out.txt") });
-  assert.equal(unwritable.status, 0, "an unwritable GITHUB_OUTPUT does not fail the step");
-});
-
-test("workflow: a crash of the probe step cannot turn into a skipped build", () => {
-  const job = workflow.slice(workflow.indexOf("\n  registration-ready:\n"), workflow.indexOf("\n  build:\n"));
-  assert.match(job, /needed: \$\{\{ steps\.deployed\.outputs\.needed \|\| 'true' \}\}/);
-  const step = job.slice(job.indexOf("      - id: deployed"));
-  assert.match(step, /continue-on-error: true/);
-  assert.match(step, /run: node tools\/ci\/archive-pages-deploy-needed\.mjs/);
-  assert.match(workflow, /needs\.registration-ready\.outputs\.needed == 'true'/);
+  assert.equal(unwritable.status, 0, "workflow must also treat a missing output as validation needed");
 });

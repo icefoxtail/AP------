@@ -43,6 +43,14 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
   },
   {
+    label: 'tests/archive-single-writer-workflows.test.mjs',
+    args: ['--test', 'tests/archive-single-writer-workflows.test.mjs']
+  },
+  {
+    label: 'tests/archive-pages-release-identity.test.mjs',
+    args: ['--test', 'tests/archive-pages-release-identity.test.mjs']
+  },
+  {
     label: 'tests/archive2-preview-feedback.test.cjs',
     args: ['--test', 'tests/archive2-preview-feedback.test.cjs']
   },

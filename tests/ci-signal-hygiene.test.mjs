@@ -137,7 +137,7 @@ test("ci.yml: skills verification uses the exact PR event base while non-PR runs
   assert.doesNotMatch(ci, /base_ref=origin\/main/);
 });
 
-test("Pages derive refreshes Meta Foundation compiled artifacts first, never blocking the release on a canonical defect", () => {
+test("Native registration keeps compiled-artifact isolation; Pages never regenerates shared outputs", () => {
   const derive = read("tools/ci/archive-pages-registration-derive.sh");
   const order = [derive.indexOf("refresh_meta_foundation_compiled\n  node archive/tools/meta-foundation/materialize"),
     derive.indexOf("python archive/build_db.py")];
@@ -151,15 +151,21 @@ test("Pages derive refreshes Meta Foundation compiled artifacts first, never blo
     assert.ok(paths.includes(entry), entry);
   }
   const release = read(".github/workflows/archive-pages-release.yml");
-  const allowed = /allowed='([^']+)'/.exec(release)[1];
-  const regex = new RegExp(allowed);
+  assert.doesNotMatch(release, /archive-pages-registration-derive\.sh|git commit|git push|reg_commit/);
+  assert.match(release, /archive-registration-writer\.mjs --check/);
+  assert.match(release, /build-archive2-catalog\.mjs --package-only/);
+  const writer = read("tools/ci/archive-registration-writer.mjs");
+  assert.match(writer, /specs\(root,'tools\/ci\/archive-pages-registration\.paths'\)/);
+  assert.match(writer, /archive-pages-registration-derive\.sh','materialize'/);
+  const pattern = glob => new RegExp('^' + glob.split('*').map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*') + '$');
   for (const file of [
     "archive/data/meta-foundation/compiled/curriculum_bindings.json",
     "archive/data/meta-foundation/canonical/registry_index.json",
     "archive/data/meta-foundation/evidence/geometry-equations/v1/promotion_receipt.json",
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
-  ]) assert.ok(regex.test(file), file);
-  assert.equal(regex.test("archive/data/meta-foundation/canonical/packs/derivative/pack.json"), false, "canonical sources stay human-owned");
+  ]) assert.ok(paths.some(entry => pattern(entry).test(file)), file);
+  assert.equal(paths.some(entry => pattern(entry).test("archive/data/meta-foundation/canonical/packs/derivative/pack.json")), false,
+    "canonical sources stay outside the shared output allowlist");
 });
 
 // ---- Guard changed Git objects: a transient planner failure must not be a false red -------------------------------

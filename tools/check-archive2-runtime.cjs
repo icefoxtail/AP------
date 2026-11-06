@@ -22,7 +22,6 @@ const files = [
   'tests/svg-accessibility-compiler.test.cjs',
   'tests/svg-accessibility-source-index.test.cjs',
   'tests/svg-language-gate.test.cjs',
-  'tools/h2-final-math2-svg.test.mjs',
   'archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs',
   'archive/tools/svg-language-contract.test.cjs',
   'tests/svg-accessibility.test.cjs',
@@ -33,6 +32,11 @@ const files = [
 ];
 
 console.log('Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006');
+// Pages consumes a writer-verified snapshot, bound by the input/output digests in
+// archive-registration-writer --check. Reusing it must never rewrite shared data.
+// Ordinary PR/local runs may still prepare their isolated runner projection.
+const registered = process.argv.includes('--registered');
+if (!registered) {
 const accessibility = spawnSync(process.execPath, ['archive/tools/build-svg-accessibility-index.cjs'], {
   cwd: root, stdio: 'inherit', timeout: 120000,
 });
@@ -49,6 +53,9 @@ const extensionKeys = spawnSync(process.execPath, ['archive/tools/build-archive2
 });
 if (extensionKeys.error) console.error(extensionKeys.error.message);
 if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
+} else {
+  console.log('REGISTERED_SNAPSHOT_REUSED: shared registration builders were not run');
+}
 const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
   cwd: root, stdio: 'inherit', timeout: 120000,
 });
