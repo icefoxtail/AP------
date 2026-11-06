@@ -73,7 +73,7 @@
 
 | 2022 금당고 2학기 기말 고1 Q15 | 유리식 부등식 범위 | 작성·전달 | Luna high 2022 금당고 시험지 전담 | 엔진의 4/t³ 미지원 | OPEN, 타입 확장 검토 | 미반영 |
 
-| 2022 금당고 2학기 기말 고1 Q21 | 유리함수 두 접원 | 작성·전달 | Luna high 2022 금당고 시험지 전담 | 계획 중 | 대기 | 미반영 |
+| 2022 금당고 2학기 기말 고1 Q21 | 유리함수 두 접원 | 작성·전달 | Luna high 2022 금당고 시험지 전담 | 두 접점 엔진 검증 미지원 가능성 | OPEN, 로컬 렌더 미실행 | 미반영 |
 
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
