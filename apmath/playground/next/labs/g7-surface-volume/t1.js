@@ -91,11 +91,78 @@
     const model = (s) => {
       const shape = SHAPE_ORDER.includes(s.svShape) ? s.svShape : 'rect', bm = baseModel(shape, s), h = clamp(Math.round(s.sH), 2, 20);
       const L = vmul(bm.per, h), S2 = vmul(bm.area, 2), tot = vadd(S2, L);
-      return { shape, bm, h, S: bm.area, S2, P: bm.per, L, tot };
+      return { shape, bm, h, S: bm.area, S2, P: bm.per, L, tot, vol: vmul(bm.area,h), mode: s.sv11Mode === 'vol' ? 'vol' : 'surf', started: !!s.sv11Started };
     };
     // 밑면의 변 ↔ 옆면에서 맞붙는 변은 같은 색(원 밑면은 한 색): 전개도에서 어느 변끼리 붙는지 보입니다
     const glueColor = (bm, k) => (bm.shape === 'circ' ? 'violet' : G.pairColor(k));
+    // 원래 입체와 전개도를 같은 눈금으로 나란히 두고, 실제 면을 펼칩니다.
+    const drawArea = (b,s,M,C) => {
+      const bm=M.bm,sc=5.2/Math.max(bm.ex,bm.ez,M.h),poly=scaledPoly(bm,sc),h=M.h*sc;
+      if(!s.sv11Started){
+        const D=scene3(b,s,C),mesh=prismMesh(poly,0,h,{simple:true,smooth:bm.smooth}),pts=[];
+        for(const x of [-bm.ex*sc/2,bm.ex*sc/2])for(const z of [-bm.ez*sc/2,bm.ez*sc/2])for(const y of [0,h])pts.push(v3(x,y,z));
+        D.fit(pts,[],{l:b.W<500?22:45,r:b.W<500?22:45,t:25,b:38});
+        D.body({mesh,fill:'sky',alpha:.035,edge:'ink',edgeW:2});
+        const left=poly.reduce((a,p)=>D.P(v3(p[0],0,p[1])).x<D.P(v3(a[0],0,a[1])).x?p:a,poly[0]);
+        D.curveDim(v3(left[0],0,left[1]),v3(left[0],h,left[1]),`높이 ${M.h}`,{side:{x:-1,y:0},size:13});
+        if(bm.shape==='circ'){
+          const centre=v3(0,h,0),rim=add3(centre,D.hx(bm.r*sc));
+          D.radius(centre,rim,`반지름 ${bm.r}`,{size:13});
+        }
+        if(bm.shape==='rect'){
+          const sides=poly.map((p,i)=>{const q=poly[(i+1)%poly.length],a=v3(p[0],0,p[1]),z=v3(q[0],0,q[1]);return{i,a,z,y:(D.P(a).y+D.P(z).y)/2};}).sort((a,b)=>b.y-a.y).slice(0,2);
+          sides.forEach(x=>D.curveDim(x.a,x.z,String(bm.sides[x.i]),{side:{x:0,y:1},size:13}));
+        }
+        return;
+      }
+      const sn=solidNet(poly,h,1,bm.smooth,bm.root),e=G.ease(C.t),yaw=s.svYaw==null?28:s.svYaw,pitch=s.svPitch==null?22:s.svPitch;
+      const frame=u=>{const cam=G.camOf(yaw*(1-u),pitch*(1-u)),pose=G.netPose(sn.net,u),p=[];sn.net.pieces.forEach((f,k)=>f.pts.forEach(v=>p.push(G.proj(cam,G.applyT(pose[k],v)))));const box=G.bboxOf(p);return {pose,box,cx:(box.x0+box.x1)/2,cy:(box.y0+box.y1)/2};};
+      const frames=Array.from({length:9},(_,i)=>frame(i/8)),W=Math.max(...frames.map(f=>f.box.x1-f.box.x0)),H=Math.max(...frames.map(f=>f.box.y1-f.box.y0));
+      const src=scene3(b,s,C),extent=Math.max(bm.ex,bm.ez)*sc/2,off=src.hx(-W/2-extent-3),base=prismMesh(poly,0,h,{simple:true,smooth:bm.smooth});
+      const srcPts=[];for(const x of [-extent,extent])for(const z of [-extent,extent])for(const y of [0,h])srcPts.push(src.P(add3(off,v3(x,y,z))));
+      const sb=G.bboxOf(srcPts),sy=-(sb.y0+sb.y1)/2, pair=b.W>=1000;
+      src.fit([],[{x:(pair?Math.min(sb.x0,-W/2):-W/2)-1,y:(pair?Math.min(sb.y0+sy,-H/2):-H/2)-1},{x:W/2+1,y:(pair?Math.max(sb.y1+sy,H/2):H/2)+1.5}],{l:20,r:(window.innerWidth>=700&&b.W>=560?245:20),t:pair?58:20,b:pair?60:20});
+      const sp=src.P;src.P=p=>{const q=sp(p);return{x:q.x,y:q.y+sy};};if(pair){src.body({mesh:xfMesh(base,G.shiftT(off)),fill:'sky',alpha:.035,edge:'ink',edgeW:1.8});
+      const p0=src.P(off);b.text({x:p0.x,y:sb.y1+sy+1},'원래 입체',{size:src.fs(13),color:'ink',weight:700});}
+      const f=frame(e),D=scene3(b,s,C,{yaw:yaw*(1-e),pitch:pitch*(1-e)}),dp=D.P;D.P=p=>{const q=dp(p);return{x:q.x-f.cx,y:q.y-f.cy};};
+      G.netDraw(D,sn.net,f.pose,pc=>({fill:pc.tag==='lat'?'green':'sky',alpha:.07,edge:'ink',ew:2}));
+      if(e>.99){
+        if(bm.shape==='circ'){
+          const side=sn.lat.flatMap(k=>sn.net.pieces[k].pts.map(p=>D.P(G.applyT(f.pose[k],p)))),box=G.bboxOf(side);
+          b.path([{x:box.x0,y:box.y0},{x:box.x0,y:box.y1}],{color:'ink',width:2});
+          b.path([{x:box.x1,y:box.y0},{x:box.x1,y:box.y1}],{color:'ink',width:2});
+        }
+        [sn.top,sn.bot].forEach(k=>{if(k<0)return;const piece=sn.net.pieces[k],p=D.P(G.applyT(f.pose[k],G.centroid(piece.pts)));b.text(p,'밑면',{size:D.fs(12),color:'ink',weight:700});});
+        const k=sn.lat[Math.floor(sn.lat.length/2)],piece=sn.net.pieces[k],p=D.P(G.applyT(f.pose[k],G.centroid(piece.pts)));
+        b.text(p,'옆면',{size:D.fs(12),color:'ink',weight:700});
+      }
+      const nx=-W/2;if(pair&&nx-sb.x1>.3)src.arrow({x:sb.x1+.1,y:-H/2-.5},{x:nx-.1,y:-H/2-.5},'muted',1.4);
+    };
+    const drawVol = (b,s,M,C) => {
+      const bm=M.bm, sc=4.6/Math.max(bm.ex,bm.ez,M.h), poly=scaledPoly(bm,sc), h=M.h*sc;
+      const D=scene3(b,s,C), width=Math.max(bm.ex,bm.ez)*sc, src=D.hx(-width*1.6), smooth=bm.smooth, pair=!C.problem && b.W>=1000;
+      if(C.problem){const mesh=prismMesh(poly,-h/2,h/2,{simple:true,smooth});D.fit(mesh.faces.flatMap(f=>f.pts),[],{l:12,r:12,t:12,b:12});D.body({mesh,fill:'sky',alpha:.035,edge:'ink',edgeW:2});return;}
+      const open=G.ease(C.problem?0:C.t), gap=(0.45+0.35*width)*open, pts=[];
+      for(const x of [-width/2,width/2])for(const z of [-width/2,width/2])for(const y of [-h/2,h/2+2*gap]) {pts.push(v3(x,y,z));if(pair)pts.push(add3(v3(x,y,z),src));}
+      D.fit(pts,[],{l:25,r:(!C.problem&&!b.thumb&&window.innerWidth>=700&&b.W>=560?245:25),t:pair?65:25,b:pair?65:25});
+      const ref=xfMesh(prismMesh(poly,-h/2,h/2,{simple:true,smooth}),G.shiftT(src));
+      if(pair) D.body({mesh:ref,fill:'sky',alpha:.035,edge:'ink',edgeW:2});
+      if(pair&&!b.thumb){
+        const left=poly.reduce((a,p)=>D.P(add3(src,v3(p[0],0,p[1]))).x<D.P(add3(src,v3(a[0],0,a[1]))).x?p:a,poly[0]);
+        D.curveDim(add3(src,v3(left[0],-h/2,left[1])),add3(src,v3(left[0],h/2,left[1])),`높이 ${M.h}`,{side:{x:-1,y:0},size:12});
+        if(bm.shape==='circ'){const c=add3(src,v3(0,h/2,0));D.radius(c,add3(c,D.hx(bm.r*sc)),`반지름 ${bm.r}`,{size:12});}
+      }
+      if(pair){const b0=D.P(add3(src,v3(0,-h/2,0)));b.text({x:b0.x,y:b0.y+width*.55+0.4},'원래 입체',{size:D.fs(13),color:'ink',weight:700});}
+      for(let i=0;i<3;i++){
+        const y0=-h/2+i*h/3+i*gap,y1=y0+h/3;
+        D.body({mesh:prismMesh(poly,y0,y1,{simple:true,smooth}),fill:'sky',alpha:.06,edge:'ink',edgeW:1.7});
+      }
+      const a=D.P(src),q=D.P(v3(0,0,0)),y=Math.min(D.P(v3(0,h/2+2*gap,0)).y,D.P(add3(src,v3(0,h/2,0))).y)-.8;
+      if(pair&&q.x-a.x>width+1)D.arrow({x:a.x+width/2+.1,y},{x:q.x-width/2-.1,y},'muted',1.4);
+    };
     const draw = (b, s, M, C) => {
+      if(M.mode==='vol')return drawVol(b,s,M,C);
+      if(C.tab==='explore'&&!C.problem&&!b.thumb)return drawArea(b,s,M,C);
       const bm = M.bm, sc = 5.2 / Math.max(bm.ex, bm.ez, M.h), hu = M.h * sc, poly = scaledPoly(bm, sc);
       const sn = solidNet(poly, hu, 1, bm.smooth, bm.root);
       const n = poly.length, st = C.step;
@@ -170,12 +237,14 @@
       });
     };
     return {
-      id: 'sv1-1', title: '전개도로 보는 겉넓이', short: '전개도 겉넓이',
-      question: '기둥을 펼쳐 보면 어떤 조각들이 나올까? 옆면은 어떤 모양이고, 가로 길이는 밑면의 무엇과 같을까?',
-      anim: { key: 'sT', dur: 5, label: '펼쳐 보기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0,
-      ctl: (s) => ({ rect: ['sA', 'sB'], tri: ['sK'], trap: ['sU'], circ: ['sR'] }[s.svShape || 'rect'].concat(['sH', 'sT'])),
-      presets: () => SHAPE_ORDER.map((k, i) => ({ group: i === 0 ? '밑면 모양' : '', label: SHAPE_LABEL[k], apply: (st) => { st.svShape = k; }, on: (st) => (st.svShape || 'rect') === k })),
-      init: (s) => { s.svShape = 'rect'; s.sA = 4; s.sB = 3; s.sK = 1; s.sU = 3; s.sR = 3; s.sH = 5; s.sT = 0; },
+      id: 'sv1-1', title: '기둥의 겉넓이와 부피', short: '기둥의 겉넓이·부피',
+      question: '기둥의 겉넓이와 부피는 각각 무엇을 구하는 걸까요?',
+      anim: { key: 'sT', dur: 2.8, label: '펼쳐 보기', hideActions: true }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      ctl: (s) => ({ rect: ['sA', 'sB'], tri: ['sK'], trap: ['sU'], circ: ['sR'] }[s.svShape || 'rect'].concat(['sH'])),
+      presets: () => SHAPE_ORDER.map((k, i) => ({ group: i === 0 ? '밑면 모양' : '', label: SHAPE_LABEL[k], apply: (st,lab) => { st.svShape = k; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => (st.svShape || 'rect') === k })).concat([
+        {group:'구하는 것',label:'겉넓이',apply:(st,lab)=>{st.sv11Mode='surf';st.sv11Started=true;st.sT=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?1:0;st.svPick=null;st.revealed=false;st.step=0;lab?._buildProblem?.();st.playing=st.sT===0;},on:st=>st.sv11Started&&st.sv11Mode!=='vol'},
+        {label:'부피',apply:(st,lab)=>{st.sv11Mode='vol';st.sv11Started=true;st.sT=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?1:0;st.svPick=null;st.revealed=false;st.step=0;lab?._buildProblem?.();st.playing=st.sT===0;},on:st=>st.sv11Started&&st.sv11Mode==='vol'}]),
+      init: (s) => { s.sv11Mode = 'surf'; s.sv11Started = false; s.svShape = 'rect'; s.sA = 4; s.sB = 3; s.sK = 1; s.sU = 3; s.sR = 3; s.sH = 5; s.sT = 0; },
       reroll: (s) => {
         s.svShape = pick(SHAPE_ORDER, s.svShape);
         s.sA = rint(2, 7); s.sB = pick([2, 3, 4, 5, 6, 7], s.sA); s.sK = rint(1, 2); s.sU = rint(1, 5); s.sR = rint(2, 5); s.sH = rint(2, 8); s.sT = 0;
@@ -185,21 +254,29 @@
         const M = model(s), poly = M.shape === 'circ' ? circleBase(M.bm.r, 4000) : M.bm.poly;
         let A2 = 0, Pm = 0;
         poly.forEach((p, i) => { const q = poly[(i + 1) % poly.length]; A2 += p[0] * q[1] - q[0] * p[1]; Pm += Math.hypot(q[0] - p[0], q[1] - p[1]); });
-        return { ans: Math.abs(A2) + Pm * M.h, model: vnum(M.tot) };
+        return M.mode==='vol' ? {ans:Math.abs(A2)*M.h/2,model:vnum(M.vol)} : { ans: Math.abs(A2) + Pm * M.h, model: vnum(M.tot) };
       },
       steps: (M) => {
         const { bm, h } = M;
+        if(M.mode==='vol')return [`밑면은 ${bm.name}이고 밑넓이는 $${bm.areaTex}=${tx(M.S)}$예요.`, `같은 밑면이 높이 $${h}$만큼 쌓인 입체예요.`, `(부피) $=${tx(M.S)}\\times${h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`];
         return [
           `밑면은 ${bm.name}이고 2개예요. 밑넓이 $=${bm.areaTex}=${tx(M.S)}$이므로 밑면 2개의 넓이는 $${tx(M.S)}\\times2=${tx(M.S2)}\\,\\mathrm{cm}^2$예요.`,
-          `전개도에서 옆면은 직사각형 하나예요. 가로는 밑면의 둘레 전체 $${bm.perTex}=${tx(M.P)}$, 세로는 높이 $${h}$이므로 옆넓이는 $${tx(M.P)}\\times${h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
+          `전개도에서 옆면을 이어 보면 하나의 직사각형 띠예요. 띠의 가로는 밑면의 둘레 전체 $${bm.perTex}=${tx(M.P)}$, 세로는 높이 $${h}$이므로 옆넓이는 $${tx(M.P)}\\times${h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
           `(겉넓이) $=$ (밑넓이)$\\times2+$(옆넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
         ];
       },
       view: (M, C) => {
         const { bm, h } = M;
+        if(C.tab==='explore' && !M.started) return {guide:'겉넓이를 누르면 전개도로, 부피를 누르면 나누어진 입체로 살펴볼 수 있어요. 밑면 모양과 길이를 바꾸거나 입체를 돌려 보세요.',readouts:[],notes:notes('겉넓이는 바깥 면의 넓이, 부피는 입체가 차지하는 양이에요.')};
+        if(M.mode==='vol'){
+          const card=(C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?{title:'',lines:[{text:'밑넓이',color:'ink'},{text:`$${bm.areaTex}=${tx(M.S)}\\,\\mathrm{cm}^2$`,color:'ink'},{text:'부피',color:'ink'},{text:`$${tx(M.S)}\\times${h}=${tx(M.vol)}\\,\\mathrm{cm}^3$`,color:'ink'}]}:null;
+          return {card,tip:C.tab==='explore'?'부피는 같은 밑면이 높이만큼 쌓인 양이에요.':null,guide:'나누어진 조각을 보며 기둥의 부피가 밑넓이에 높이를 곱한 값임을 살펴보세요.',readouts:card?[]:[rd('밑넓이',plainVal(M.S)+' cm²','ink'),rd('부피',plainVal(M.vol)+' cm³','ink')],formula:`<p>부피 $=${tx(M.S)}\\times${h}=${tx(M.vol)}\\,\\mathrm{cm}^3$</p>`,notes:notes('부피는 면의 넓이가 아니라 입체가 차지하는 양이에요.')};
+        }
+        const areaCard=(C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?{title:'',lines:[{text:'밑넓이',color:'ink'},{text:`$${bm.areaTex}=${tx(M.S)}\\,\\mathrm{cm}^2$`,color:'ink'},{text:'옆넓이',color:'ink'},{text:`$(${bm.perTex})\\times${h}=${tx(M.L)}\\,\\mathrm{cm}^2$`,color:'ink'},{text:'겉넓이',color:'ink'},{text:`$${tx(M.S)}\\times2+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$`,color:'ink'}]}:null;
         return {
-          guide: `<b>펼치기</b> 막대를 끌거나 ▶를 눌러 ${bm.solid}를 펼쳐 보세요. <b>밑면 모양 칩</b>과 <b>길이 막대</b>로 값을 바꿀 수 있고, 빈 곳을 끌면 입체가 돌아가요. 펼치면 ${span('sky', '밑면 2개')}와 ${span('green', '옆면 직사각형 1개')}가 나오고, 맞붙는 변은 같은 색으로 칠해져요.`,
-          readouts: [
+          card:areaCard, tip:C.tab==='explore'?'기둥은 밑면 두 개와 옆면으로 둘러싸여 있어요.':null,
+          guide: `<b>겉넓이</b>를 누르면 선택한 입체가 전개도로 펼쳐져요. <b>밑면 모양 칩</b>과 <b>길이 막대</b>로 값을 바꿀 수 있고, 빈 곳을 끌면 입체가 돌아가요. 펼치면 ${span('sky', '밑면 2개')}와 ${span('green', '이어진 옆면의 띠')}가 나와요.`,
+          readouts: areaCard ? [] : [
             rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', bm.areaTex.replace(/\\frac\{1\}\{2\}/g, '½').replace(/\\times/g, '×').replace(/\\pi/g, 'π')),
             rd('밑면의 둘레', plainVal(M.P) + ' cm', 'amber', '옆면의 가로'),
             rd('옆넓이', plainVal(M.L) + ' cm²', 'green', `${plainVal(M.P)} × ${h}`),
@@ -212,6 +289,7 @@
       },
       prob: (M) => {
         const { bm, h } = M, one = vmul(bm.one, h);
+        if(M.mode==='vol') return {tag:'기둥의 부피',key:`vol|${M.shape}|${bm.given}|${h}`,stem:`밑넓이가 $${tx(M.S)}\\,\\mathrm{cm}^2$이고 높이가 $${h}\\,\\mathrm{cm}$인 기둥의 부피는?`,choices:mkV(M.vol,[[M.S,'높이를 곱해요.'],[M.tot,'겉넓이가 아닌 부피를 구해요.'],[vmul(M.vol,2),'밑넓이 하나에 높이를 곱해요.'],[vmul(M.vol,1/2),'기둥의 부피는 밑넓이 곱하기 높이예요.'],[M.L,'옆넓이가 아닌 부피예요.']],{dim:3})};
         const wrongs = [
           [vadd(M.S, M.L), '밑면은 위·아래 2개예요. 밑넓이를 두 번 더해야 해요.'],
           [M.L, '옆넓이만 구했어요. 밑넓이 2개도 더해야 해요.'],
@@ -245,23 +323,38 @@
       // 옆면 번호 → 밑면의 어느 변과 맞붙는가: 0 = 반지름 한 쪽, 1 = 호, 2 = 반지름 다른 쪽
       const grp = (k) => (k === 0 ? 0 : k === n - 1 ? 2 : 1);
       netScene(b, s, C, {
-        sn, t, fitOpt: { l: 84, r: 40, t: 40, b: 132 },
+        sn, t, fitOpt: { l: 30, r: (C.tab === 'explore' && !b.thumb && window.innerWidth >= 700 && b.W >= 560 ? 235 : 30), t: 25, b: 30 },
         style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
+          fill: (pc.tag === 'lat' ? lvL : lvB) === 2 ? 'amber' : (pc.tag === 'lat' ? 'green' : 'violet'),
+          alpha: C.problem ? 0.025 : (C.review ? 0.10 : (eNow < 0.03 ? 0.025 : 0.10)),
           edgeStyle: (e, p) => {
             if (!glue) return null;
             const k = p.tag === 'lat' ? (e.i === 0 || e.i === 2 ? p.k : -1) : e.nb;
-            return k != null && k >= 0 ? { color: G.pairColor(grp(k)), width: 3.6 } : null;
+            return k != null && k >= 0 ? { color: 'ink', width: 1.6 } : null;
           }
         }),
         labels: (ctx) => {
-          if (b.thumb) return;
+          if (b.thumb || C.review || (C.tab === 'explore' && ctx.e > 0.5)) return;
           const { D, tp, e } = ctx, vw = D.vw, L = sn.lat, at = ctx.at;
+          const outside = (p, q, center) => { const A = D.px(p), B = D.px(q), C = D.px(center); return { x: (A.x+B.x)/2-C.x, y: (A.y+B.y)/2-C.y }; };
           const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
+          // 교재식 곡선 치수 표시: 양 끝이 실제 변에 닿고 중앙이 바깥으로 살짝 휩니다.
+          const curveDim = (p, q, label, outward) => {
+            const A2 = D.px(p), B2 = D.px(q), dx = B2.x - A2.x, dy = B2.y - A2.y, L2 = Math.hypot(dx, dy);
+            if (L2 < 18) return;
+            let nx = -dy / L2, ny = dx / L2;
+            if (nx * outward.x + ny * outward.y < 0) { nx = -nx; ny = -ny; }
+            const bow = Math.max(8, Math.min(18, L2 * 0.09));
+            const point = (t) => ({ x: A2.x + dx*t + nx * 4*bow*t*(1-t), y: A2.y + dy*t + ny * 4*bow*t*(1-t) });
+            const pts = Array.from({length: 25}, (_, i) => { const p = point(i/24); return b.toW(p.x, p.y); });
+            b.path(pts, { color: 'ink', width: 1.5 });
+            const m = point(0.5); b.text(b.toW(m.x + nx*12, m.y + ny*12), label, { color: 'ink', size: D.fs(14), weight: 700, align: 'center', baseline: 'middle' });
+          };
           const cen = at(sn.root, add3(G.centroid(A), v3(0, hu / 2, 0)));
           // 높이: 가장 왼쪽 세로 모서리 바깥에 세로 치수선
           let hk = null, xL = 1e9;
           L.forEach((idx, k) => [k, (k + 1) % n].forEach((j) => { const x = D.px(at(idx, A[j])).x; if (x < xL - 0.5) { xL = x; hk = { idx, j }; } }));
-          D.dim(at(hk.idx, A[hk.j]), at(hk.idx, B[hk.j]), `높이 ${h}`, { side: { x: -1, y: 0 }, off: 18, color: 'amber' });
+          curveDim(at(hk.idx, A[hk.j]), at(hk.idx, B[hk.j]), String(h), { x: -1, y: 0 });
           // 밑면(부채꼴): 반지름 두 변, 중심각, 넓이 이름표. 반지름 글자는 처음 보이는 밑면에만
           let first = true;
           const angleJobs = []; // 중심각 글자는 다른 글자를 모두 놓은 뒤 남은 자리에 놓아요
@@ -269,21 +362,27 @@
             if (k < 0 || !tp[k].front) return;
             const pts = k === sn.top ? B : A, O3 = at(k, pts[0]), M3 = at(k, pts[mid]), c3 = at(k, G.centroid(pts));
             const Rpx = Math.hypot(D.px(O3).x - D.px(M3).x, D.px(O3).y - D.px(M3).y);
-            const arcPts = [];
-            for (let i = 1; i < n; i++) arcPts.push(at(k, lerp3(pts[0], pts[i], 0.3)));
-            D.path(arcPts, 'amber', 2.4);
+            // 90도는 모서리에서 작은 직각 표시로, 그 밖의 각은 짧은 호로 표시합니다.
+            if (th === 90) {
+              const u = mul3(sub3(pts[1], pts[0]), 0.14), v = mul3(sub3(pts[n - 1], pts[0]), 0.14);
+              D.path([at(k, add3(pts[0], u)), at(k, add3(add3(pts[0], u), v)), at(k, add3(pts[0], v))], 'ink', 1.8);
+            } else {
+              const arcPts = [];
+              for (let i = 1; i < n; i++) arcPts.push(at(k, lerp3(pts[0], pts[i], 0.16)));
+              D.path(arcPts, 'ink', 1.8);
+            }
             // 반지름 두 변: 중심각이 크면 두 글자가 겹치므로 한 번만 쓰고 두 변에 같은 길이 표시(눈금)
             if (first) {
               first = false;
-              D.edgeLab(at(k, pts[0]), at(k, pts[1]), `반지름 ${r}`, { from: c3, size: 14 });
-              if (th <= 180) D.edgeLab(at(k, pts[0]), at(k, pts[n - 1]), `반지름 ${r}`, { from: c3, size: 14 });
+              curveDim(at(k, pts[0]), at(k, pts[1]), String(r), outside(at(k, pts[0]), at(k, pts[1]), c3));
+              if (th <= 180) curveDim(at(k, pts[0]), at(k, pts[n - 1]), String(r), outside(at(k, pts[0]), at(k, pts[n - 1]), c3));
               else { D.tick(at(k, pts[0]), at(k, pts[1]), 1, 'ink'); D.tick(at(k, pts[0]), at(k, pts[n - 1]), 1, 'ink'); }
             }
-            if (!C.problem) aLab(D, lerp3(O3, M3, th > 180 ? 0.66 : 0.68), '밑넓이', plainVal(M.S), { maxW: Math.max(40, 1.1 * Rpx * Math.sin((Math.min(th, 180) * DEG) / 2)), size: 14 });
+            if (!C.problem && C.t > 0.78) aLab(D, lerp3(O3, M3, th > 180 ? 0.66 : 0.68), '밑넓이', plainVal(M.S), { maxW: Math.max(40, 1.1 * Rpx * Math.sin((Math.min(th, 180) * DEG) / 2)), size: 14 });
             // 중심각 글자: 좁거나(90° 이하) 180°가 넘는 부채꼴은 꼭짓점 바깥(호의 반대쪽)에 둬요
             angleJobs.push(() => {
               if (th > 180 || th <= 90) { const o2 = D.px(O3), m2 = D.px(M3), dl = Math.hypot(o2.x - m2.x, o2.y - m2.y) || 1; D.label(O3, `${th}°`, { dir: { x: (o2.x - m2.x) / dl, y: (o2.y - m2.y) / dl }, gap: 4, size: 14, color: 'amber' }); }
-              else D.label(lerp3(O3, M3, 0.34), `${th}°`, { dir: { x: 0, y: -1 }, gap: 3, size: 14, color: 'amber' });
+              else D.label(lerp3(O3, M3, 0.34), `${th}°`, { dir: { x: 0, y: 1 }, gap: 8, size: 14, color: 'ink' });
             });
           });
           // 전개도: 옆면 조각 아래 치수선(반지름 · 호 · 반지름) + 둘레 괄호 + 옆넓이 + 합
@@ -307,11 +406,11 @@
       });
     };
     return {
-      id: 'sv1-2', title: '부채꼴기둥', short: '부채꼴기둥 [함정]',
+      view3: false, id: 'sv1-2', title: '부채꼴기둥', short: '부채꼴기둥',
       question: '밑면이 부채꼴인 기둥을 펼치면 옆면의 가로는 얼마일까? 호의 길이만 곱하면 될까?',
-      anim: { key: 'sT2', dur: 5, label: '펼쳐 보기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      anim: { key: 'sT2', dur: 1.5, label: '펼쳐 보기' }, cam0: { yaw: 78, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0,
       ctl: () => ['sTh', 'sR2', 'sH2', 'sT2'],
-      init: (s) => { s.sTh = 120; s.sR2 = 6; s.sH2 = 5; s.sT2 = 0; },
+      init: (s) => { s.sTh = 90; s.sR2 = 4; s.sH2 = 7; s.sT2 = 0; },
       reroll: (s) => {
         const th = pick([60, 90, 120, 180, 240, 270, 300], s.sTh);
         const rs = { 60: [3, 6], 90: [2, 4, 6, 8], 120: [3, 6], 180: [2, 4, 6, 8], 240: [3, 6], 270: [2, 4, 6, 8], 300: [3, 6] }[th];
@@ -326,12 +425,23 @@
       },
       steps: (M) => [
         `밑면은 반지름 $${M.r}$, 중심각 $${M.th}^\\circ$인 부채꼴이 2개예요. 밑넓이 $=\\pi\\times${M.r}^2\\times\\frac{${M.th}}{360}=${tx(M.S)}$이므로 밑면 2개의 넓이는 $${tx(M.S)}\\times2=${tx(M.S2)}\\,\\mathrm{cm}^2$예요.`,
-        `옆면은 직사각형 하나이고 가로는 밑면의 둘레 전체예요. 호의 길이는 $2\\pi\\times${M.r}\\times\\frac{${M.th}}{360}=${tx(M.arc)}$이고 반지름 2개($2\\times${M.r}$)도 더해야 해요. 옆면의 가로 $=${tx(M.arc)}+${2 * M.r}=${tx(M.P)}$, 옆넓이 $=${tx(M.P)}\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
+        `옆면은 직사각형 하나이고 가로는 밑면의 둘레 전체예요. 호의 길이는 $2\\pi\\times${M.r}\\times\\frac{${M.th}}{360}=${tx(M.arc)}$이고 반지름 2개($2\\times${M.r}$)도 더해야 해요. 옆면의 가로 $=${tx(M.arc)}+${2 * M.r}=${tx(M.P)}$, 옆넓이 $=(${tx(M.P)})\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
         `(겉넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
-      view: (M) => ({
+      view: (M, C, s) => ({
+        tip: C.tab !== 'explore' ? null : s.sT2 > 0.75
+          ? '옆면의 가로에는 호의 길이와 반지름 두 개가 모두 들어가요.'
+          : '잘라서 새로 생긴 두 평평한 면도 바깥에 드러나요.',
+        card: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? { title: '', lines: [
+          { text: '밑넓이', color: 'ink' },
+          { text: `$\\pi\\times${M.r}^{2}\\times\\frac{${M.th}}{360}=${tx(M.S)}\\,\\mathrm{cm}^{2}$`, color: 'ink' },
+          { text: '옆넓이', color: 'ink' },
+          { text: `$(${tx(M.P)})\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^{2}$`, color: 'ink' },
+          { text: '겉넓이', color: 'ink' },
+          { text: `$2\\times${tx(M.S)}+(${tx(M.L)})=${tx(M.tot)}\\,\\mathrm{cm}^{2}$`, color: 'ink' }
+        ] } : null,
         guide: `<b>중심각·반지름·높이 막대</b>를 움직이고 <b>펼치기</b>를 끌어 보세요. 부채꼴기둥의 옆면은 ${span('green', '곡면 1개 + 평평한 직사각형 2개')}가 한 줄로 이어진 직사각형이에요.`,
-        readouts: [
+        readouts: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? [] : [
           rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', `π×${M.r}×${M.r}×${M.th}/360`),
           rd('호의 길이', plainVal(M.arc) + ' cm', 'amber', `2π×${M.r}×${M.th}/360`),
           rd('옆면의 가로', plainVal(M.P) + ' cm', 'amber', '호 + 반지름 2개'),
@@ -339,7 +449,7 @@
         ],
         formula: `<p>(옆면의 가로) $=$ (호의 길이) $+$ (반지름)$\\times2$ &nbsp;→&nbsp; (겉넓이) $=$ (밑넓이)$\\times2+$(옆면의 가로)$\\times$(높이)</p>`,
         rule: '부채꼴기둥: 옆면의 가로 = 호 + 반지름 2개 (밑면의 둘레 전체)',
-        notes: notes('<b>함정</b>: 호의 길이만 곱하면 안 돼요. 부채꼴의 두 <b>반지름</b> 위에도 옆면(직사각형)이 있어요.', '중심각이 $180^\\circ$를 넘어도 같아요. 넘으면 부채꼴이 오목하게 보일 뿐이에요.')
+        notes: notes('<b>함정</b>: 호의 길이만 곱하면 안 돼요. 부채꼴의 두 <b>반지름</b> 위에도 잘라서 생긴 평평한 옆면이 있어요.', 'π가 붙은 항과 붙지 않은 항은 동류항이 아니므로 각각 정리해 더한 채로 써요.', '중심각이 $180^\\circ$를 넘어도 같은 원리예요.')
       }),
       prob: (M) => {
         const wrongs = [
@@ -349,7 +459,7 @@
           [vadd(M.S2, vmul(V(2 * M.r, 2 * M.r), M.h)), '호가 아니라 원 전체의 둘레를 썼어요. 부채꼴의 호는 중심각만큼만이에요.'],
           [vmul(M.S, M.h), '부피를 구했어요.']
         ];
-        return { tag: '부채꼴기둥의 겉넓이 (함정: 호만 곱함)', key: `${M.th}|${M.r}|${M.h}`, stem: `그림과 같이 밑면이 반지름 $${M.r}\\,\\mathrm{cm}$, 중심각 $${M.th}^\\circ$인 부채꼴이고 높이가 $${M.h}\\,\\mathrm{cm}$인 기둥의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
+        return { tag: '부채꼴기둥의 겉넓이', key: `${M.th}|${M.r}|${M.h}`, stem: `그림과 같이 밑면이 반지름 $${M.r}\\,\\mathrm{cm}$, 중심각 $${M.th}^\\circ$인 부채꼴이고 높이가 $${M.h}\\,\\mathrm{cm}$인 기둥의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
       }
     };
   }
@@ -370,7 +480,7 @@
       // 지금 보이는 원기둥을 무대 폭의 약 절반(폰 60%)으로 크게 잡고(굴러 가는 동안 화면이 따라가요), 전개도 조각은 입체 아래 한 줄로 화면 폭에 맞춰요
       const isN = !b.thumb, capV = D.narrow ? 0.6 : 0.5, ccn = [-1, 1].flatMap((i) => [-1, 1].map((j) => [-1, 1].map((k2) => v3(xc + i * ru, j * ru, k2 * hu / 2)))).flat();
       let wvN = 0;
-      if (isN) wvN = D.fitCore(ccn, [], { l: 30, r: 30, t: 30, b: 30 }, { floor: 0.6, cap: capV }).wv;
+      if (isN) wvN = D.fitCore(ccn, [], { l: 30, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 30, b: 30 }, { floor: 0.6, cap: capV }).wv;
       // 마지막 구간(진행 80~100%): 굴러간 옆면 띠 전체(출발선~원기둥)가 보이도록 화면이 부드럽게 물러나요
       const wz = isN && !C.problem ? ease(lin01(C.t, 0.8, 1)) : 0, lerpN = (p, q) => p + (q - p) * wz;
       const bbC = G.bboxOf(ccn.map(D.P)), fullPts = [xs - ru, -xs + ru].flatMap((xx) => [-1, 1].flatMap((j) => [-1, 1].map((k2) => v3(xx, j * ru, k2 * hu / 2)))), bbF = G.bboxOf(fullPts.map(D.P));
@@ -378,21 +488,19 @@
       const fullW = 2 * PI * ru + 2 * ru, rowW = isN ? lerpN(Math.min(fullW, wvN * 0.9), fullW) : fullW;
       // 전개도 조각: 밑면(원) · 옆면(직사각형) · 밑면(원). 이름·넓이는 아래에서 직접 씁니다
       const gapT = Math.max(0.5, 0.35 * r);
-      const row = C.problem ? null : layoutTiles([
-        { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky', hl: lvC },
-        { w: 2 * PI * r, h: h, shape: 'rect', fill: 'green', hl: lvR },
-        { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky', hl: lvC }
-      ], rowW, 2.6, gapT);
+      const row = null; // 전개도 조각과 계산의 중복은 덜고 굴러가는 모형에 집중합니다.
+
       const xe = C.problem ? 0 : -xs, xb = C.problem ? 0 : xs;
       const bb = isN ? LB : G.bboxOf([v3(xb - ru, -ru, -hu / 2), v3(xe + ru, -ru, -hu / 2), v3(xb - ru, ru, hu / 2), v3(xe + ru, ru, hu / 2)].map(D.P));
       const ccx = (bb.x0 + bb.x1) / 2, rowGap = lerpN(0.9, 1.9);
       const extra = row ? [{ x: ccx - row.total / 2, y: bb.y1 + rowGap }, { x: ccx + row.total / 2, y: bb.y1 + rowGap + row.height + 0.9 }] : [];
-      if (isN) D.fitCore(ccn, extra.concat(wz > 0 ? [{ x: LB.x0, y: LB.y0 }, { x: LB.x1, y: LB.y1 }] : []), { l: 30, r: 30, t: 30, b: row ? 70 : 30 }, { floor: wz > 0 ? 0 : 0.6, cap: capV });
+      if (isN && C.problem) D.fit(ccn, [], { l: 35, r: 35, t: 25, b: 35 });
+      else if (isN) D.fitCore(ccn, extra.concat(wz > 0 ? [{ x: LB.x0, y: LB.y0 }, { x: LB.x1, y: LB.y1 }] : []), { l: 30, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 30, b: 30 }, { floor: wz > 0 ? 0 : 0.6, cap: capV });
       else D.fit(ccn, extra, { l: 36, r: 36, t: 36, b: 36 });
       // 굴러간 자리(옆면이 펼쳐진 직사각형)
-      if (!C.problem && xc > xs + 1e-3) D.panel([v3(xs, -ru, -hu / 2), v3(xc, -ru, -hu / 2), v3(xc, -ru, hu / 2), v3(xs, -ru, hu / 2)], 'green', lvR === 2 ? 0.5 : 0.3, lvR === 2 ? 'amber' : 'green', 2.4);
+      if (!C.problem && xc > xs + 1e-3) D.panel([v3(xs, -ru, -hu / 2), v3(xc, -ru, -hu / 2), v3(xc, -ru, hu / 2), v3(xs, -ru, hu / 2)], 'green', lvR === 2 ? 0.14 : 0.08, lvR === 2 ? 'amber' : 'green', 2.4);
       if (!C.problem) { D.line(v3(xs - ru * 1.2, -ru, -hu / 2), v3(-xs + ru * 1.2, -ru, -hu / 2), 'muted', 1.4, { alpha: 0.5 }); D.line(v3(xs - ru * 1.2, -ru, hu / 2), v3(-xs + ru * 1.2, -ru, hu / 2), 'muted', 1.4, { alpha: 0.5 }); }
-      D.body({ mesh: cylM, fill: 'sky', alpha: 0.2, faceStyle: (f) => (f.tag === 'front' && lvC === 2 ? { fill: 'amber', alpha: 0.42 } : f.tag === 'back' && lvC === 2 ? { fill: 'amber', alpha: 0.3 } : f.tag === 'side' && lvR === 2 ? { fill: 'amber', alpha: 0.3 } : {}) });
+      D.body({ mesh: cylM, fill: 'sky', alpha: 0.045, faceStyle: (f) => (f.tag === 'front' && lvC === 2 ? { fill: 'amber', alpha: 0.42 } : f.tag === 'back' && lvC === 2 ? { fill: 'amber', alpha: 0.3 } : f.tag === 'side' && lvR === 2 ? { fill: 'amber', alpha: 0.3 } : {}) });
       // 출발선과 지금 닿는 선(옆면 위의 같은 자리)
       if (!C.problem) {
         D.line(v3(xs, -ru, -hu / 2), v3(xs, -ru, hu / 2), 'amber', 4);
@@ -404,14 +512,13 @@
       const fc = v3(xc, 0, hu / 2);
       D.radius(fc, add3(fc, v3(ru, 0, 0)), `반지름 ${r}`, {});
       const phS = Math.atan2(-D.cam.sy * D.cam.cp, D.cam.sp), sx0 = xc + ru * Math.cos(phS), sy0 = ru * Math.sin(phS);
-      D.dim(v3(sx0, sy0, -hu / 2), v3(sx0, sy0, hu / 2), `높이 ${h}`, { side: { x: Math.cos(phS), y: -Math.sin(phS) * 0.6 }, off: 12, color: 'amber' });
+      D.dim(v3(sx0, sy0, -hu / 2), v3(sx0, sy0, hu / 2), `높이 ${h}`, { side: { x: Math.cos(phS), y: -Math.sin(phS) * 0.6 }, off: 12, color: 'ink' });
       if (!C.problem) {
         const done = t > 0.985, rollA = lin01(t, 0.02, 0.1);
         // 굴러 간 길이 = 원의 둘레 (옆면의 가로): 바닥의 치수선
         // 굴러 가는 동안 화면이 원기둥을 따라가므로 진행률은 닿는 자리 아래에 쓰고, 한 바퀴를 다 굴러 화면이 물러난 뒤에 전체 길이 치수선을 그려요
         if (t > 0.02 && t <= 0.8) D.tag(v3(xc, -ru, hu / 2), `한 바퀴의 ${Math.round(t * 100)}%`, { dy: 22, size: 15, color: 'orange', alpha: rollA });
-        if (t > 0.8) D.dim(v3(xs, -ru, hu / 2), v3(xc, -ru, hu / 2), done ? `원의 둘레 2×π×${r} = ${plainVal(M.per)}` : `한 바퀴의 ${Math.round(t * 100)}%`, { side: { x: 0, y: 1 }, off: 14, color: 'orange', alpha: lin01(t, 0.8, 0.9) });
-        if (t > 0.8) D.dim(v3(xs, -ru, -hu / 2), v3(xs, -ru, hu / 2), `높이 ${h}`, { side: { x: -1, y: 0 }, off: 12, color: 'amber', alpha: lin01(t, 0.85, 0.95) });
+        if (t > 0.8) D.dim(v3(xs, -ru, hu / 2), v3(xc, -ru, hu / 2), done ? `원의 둘레 = 지름 × π = ${plainVal(M.per)}` : `한 바퀴의 ${Math.round(t * 100)}%`, { side: { x: 0, y: 1 }, off: 14, color: 'ink', alpha: lin01(t, 0.8, 0.9) });
         if (row) {
           drawTiles(D, row, ccx, bb.y1 + rowGap);
           const base = bb.y1 + rowGap + row.height, kpx = b.k;
@@ -428,7 +535,7 @@
     return {
       id: 'sv1-3', title: '원기둥 굴리기', short: '원기둥 굴리기',
       question: '원기둥을 한 바퀴 굴리면 옆면이 어떤 모양으로 펼쳐질까? 가로의 길이는 얼마일까?',
-      anim: { key: 'sT3', dur: 6, label: '굴려 보기' }, cam0: { yaw: 42, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      anim: { key: 'sT3', dur: 2.5, label: '굴려 보기' }, cam0: { yaw: 42, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
       ctl: () => ['sR3', 'sH3', 'sT3'],
       init: (s) => { s.sR3 = 3; s.sH3 = 5; s.sT3 = 0; },
       reroll: (s) => { s.sR3 = rint(1, 6); s.sH3 = rint(2, 10); s.sT3 = 0; },
@@ -439,9 +546,14 @@
         `한 바퀴 굴러 간 길이는 원의 둘레 $2\\pi\\times${M.r}=${tx(M.per)}$예요. 옆면은 가로 $${tx(M.per)}$, 세로 $${M.h}$인 직사각형이므로 옆넓이는 $${tx(M.per)}\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
         `(겉넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$ &nbsp;($=2\\pi r(r+h)$)`
       ],
-      view: (M) => ({
-        guide: `<b>굴러 가기</b> 막대를 끌거나 ▶를 눌러 보세요. 노란 선이 바닥에 한 바퀴 닿아 ${span('green', '옆면')}이 펼쳐져요. 아래 줄은 전개도 조각(${span('sky', '밑면 2개')} + ${span('green', '옆면')})이에요.`,
-        readouts: [
+      view: (M, C) => ({
+        card: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? { title: '', lines: [
+          {text:'밑면의 둘레 = 지름 × 원주율',color:'ink'}, {text:`$${2*M.r}\\times\\pi=${tx(M.per)}\\,\\mathrm{cm}$`,color:'ink'},
+          {text:'옆넓이',color:'ink'}, {text:`$${tx(M.per)}\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^{2}$`,color:'ink'},
+          {text:'겉넓이',color:'ink'}, {text:`$2\\times${tx(M.S)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^{2}$`,color:'ink'}
+        ] } : null,
+        guide: `<b>굴려 보기</b>를 누르면 한 바퀴 굴러간 길이가 ${span('green', '밑면의 둘레')}와 같다는 것을 볼 수 있어요.`,
+        readouts: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? [] : [
           rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', `π × ${M.r} × ${M.r}`),
           rd('옆면의 가로', plainVal(M.per) + ' cm', 'amber', `원의 둘레 2 × π × ${M.r}`),
           rd('옆넓이', plainVal(M.L) + ' cm²', 'green', `${plainVal(M.per)} × ${M.h}`),
@@ -487,12 +599,22 @@
       // 쌓인 기둥을 크게(판이 날아 들어올 자리는 따로 확보하지 않고, 판은 화면 가장자리에서 들어와요)
       const colPts = [-1, 1].flatMap((i) => [0, 1].flatMap((j) => [-1, 1].map((k2) => v3(i * ext / 2, y0 + j * H, k2 * ext / 2))));
       if (D.narrow && !b.thumb) D.fitCore(colPts, [], { l: 40, r: 60, t: 34, b: 40 }, { floor: 0.64, cap: 0.64 });
-      else if (!b.thumb) D.fitCore(colPts.concat([pts[pts.length - 1]]), [], { l: 56, r: 84, t: 46, b: 56 }, { cap: 0.8 });
+      else if (!b.thumb) D.fitCore(colPts.concat([pts[pts.length - 1]]), [], { l: 35, r: (C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 45), t: 30, b: 40 }, { cap: 0.9 });
       else D.fit(pts, [], { l: 40, r: 70, t: 36, b: 40 });
       const hlS = !C.review ? 1 : st === 1 ? 2 : 1, hlH = !C.review ? 1 : st === 2 ? 2 : 1;
       const poly = bm.shape === 'circ' ? G.circleBase(bm.r * sc, 32) : scaledPoly(bm, sc);
-      if (!C.problem) D.body({ mesh: prismMesh(poly, y0, y0 + H), fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true });
-      plates.forEach((p) => D.body({ mesh: p.mesh, fill: hlH === 2 ? 'amber' : 'sky', alpha: p.fly ? 0.34 : 0.2, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (p.k === 0 && f.tag === 'bot' ? {} : f.tag === 'top' && p.k === h - 1 && hlS === 2 ? { fill: 'amber', alpha: 0.5 } : {}) }));
+      if (!C.problem && nDone < h) D.body({ mesh: prismMesh(poly, y0, y0 + H, { simple: true, smooth: bm.shape === 'circ' ? Array(poly.length).fill(true) : null }), fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true });
+      if (C.problem || nDone === h) {
+        const whole = slab(bm, sc, y0, y0 + H);
+        D.body({ mesh: whole, fill: hlH === 2 ? 'amber' : 'sky', alpha: 0.06, edge: 'ink', edgeW: 2 });
+        if (!C.problem && bm.shape === 'circ') {
+          const facing = Math.atan2(D.vw.z, D.vw.x);
+          for (let k = 1; k < h; k++) D.path(D.circ(v3(0, y0 + k * sc, 0), v3(1, 0, 0), v3(0, 0, 1), bm.r * sc, facing - PI / 2, facing + PI / 2), 'muted', 1.4);
+        } else if (!C.problem) {
+          const visible = whole.faces.filter(f => f.tag === 'side' && dot3(f.n, D.vw) > 0);
+          for (let k = 1; k < h; k++) visible.forEach(f => D.line(v3(f.pts[0].x, y0 + k * sc, f.pts[0].z), v3(f.pts[1].x, y0 + k * sc, f.pts[1].z), 'muted', 1.4));
+        }
+      } else plates.forEach((p) => D.body({ mesh: p.mesh, fill: hlH === 2 ? 'amber' : 'sky', alpha: p.fly ? 0.34 : 0.2, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (p.k === 0 && f.tag === 'bot' ? {} : f.tag === 'top' && p.k === h - 1 && hlS === 2 ? { fill: 'amber', alpha: 0.5 } : {}) }));
       if (b.thumb) return;
       // ---- 길이 표시: 밑면의 변은 입체 바깥 치수선, 반지름은 윗면에, 높이는 오른쪽 윤곽을 따라 쌓인 만큼
       const topY = y0 + H, full = prismMesh(poly, y0, topY), cenB = v3(0, y0 + H / 2, 0), nShow = C.problem ? h : nDone;
@@ -508,14 +630,14 @@
       const xsP = topP.map((p3) => D.px(p3).x), faceW = Math.max(...xsP) - Math.min(...xsP);
       if (bm.shape === 'circ') {
         const rim = D.rimPick(cTop, topP);
-        D.radius(cTop, rim, `반지름 ${bm.r}`, { end: true });
+        D.radius(cTop, rim, `${bm.r}`, { end: true });
       } else if (bm.shape === 'tri') D.right(topP[0], sub3(topP[1], topP[0]), sub3(topP[2], topP[0]), 0.2 * sc, 'amber');
       else if (bm.shape === 'trap') {
         const dir = unit3(sub3(topP[1], topP[0])), foot = add3(topP[0], mul3(dir, dot3(sub3(topP[2], topP[0]), dir)));
         D.height(foot, topP[2], '높이 4', { a: dir, side: { x: 1, y: 0 }, size: 14, alongFrac: 0.3 });
       }
       const topDone = C.problem || nDone === h || t >= 0.999;
-      if (!C.problem && topDone) {
+      if (!C.problem && topDone && !(C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560)) {
         const dxa = bm.shape === 'circ' ? -0.12 * faceW : bm.shape === 'trap' ? 0.2 * faceW : bm.shape === 'tri' ? 0.1 * faceW : -0.2 * faceW;
         aLab(D, cTop, '밑넓이', plainVal(M.S), { dx: dxa, dy: bm.shape === 'circ' ? -0.06 * faceW : 0, maxW: faceW * (bm.shape === 'tri' ? 0.5 : 0.8), size: 15, small: faceW * 0.8 });
       }
@@ -532,11 +654,11 @@
       }
     };
     return {
-      id: 'sv1-4', title: '기둥의 부피 V=Sh', short: '기둥의 부피',
+      id: 'sv1-4', title: '기둥의 부피', short: '기둥의 부피',
       question: '밑면과 같은 모양의 얇은 판을 한 장씩 쌓으면 기둥이 만들어져. 판이 쌓일수록 부피는 어떻게 늘어날까?',
-      anim: { key: 'sT4', dur: 6, label: '판 쌓기', start: 1 }, cam0: { yaw: 28, pitch: 22 }, stepT: (st) => 1, thumbT: 1, problemT: 1,
+      anim: { key: 'sT4', dur: 2.5, label: '판 쌓기', start: 1 }, cam0: { yaw: 28, pitch: 22 }, stepT: (st) => 1, thumbT: 1, problemT: 1,
       ctl: (s) => ({ rect: ['sA', 'sB'], tri: ['sK'], trap: ['sU'], circ: ['sR'] }[s.svShape || 'rect'].concat(['sH', 'sT4'])),
-      presets: () => SHAPE_ORDER.map((k, i) => ({ group: i === 0 ? '밑면 모양' : '', label: SHAPE_LABEL[k], apply: (st) => { st.svShape = k; }, on: (st) => (st.svShape || 'rect') === k })),
+      presets: () => SHAPE_ORDER.map((k, i) => ({ group: i === 0 ? '밑면 모양' : '', label: SHAPE_LABEL[k], apply: (st) => { st.svShape = k; st.revealed = false; st.step = 1; }, on: (st) => (st.svShape || 'rect') === k })),
       init: (s) => { s.svShape = 'rect'; s.sA = 4; s.sB = 3; s.sK = 1; s.sU = 3; s.sR = 3; s.sH = 5; s.sT4 = 1; },
       reroll: (s) => {
         s.svShape = pick(SHAPE_ORDER, s.svShape);
@@ -554,9 +676,13 @@
         `높이가 $h=${M.h}$이면 판이 $${M.h}$장 쌓여요. 판 한 장의 부피가 $${tx(M.S)}\\times1$이므로 $${M.h}$장이면 $${tx(M.S)}\\times${M.h}$예요.`,
         `(부피) $=S\\times h=${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
       ],
-      view: (M) => ({
+      view: (M, C) => ({
+        card: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? {title:'',lines:[
+          {text:'밑넓이',color:'ink'}, {text:`$${M.bm.areaTex}=${tx(M.S)}\\,\\mathrm{cm}^{2}$`,color:'ink'},
+          {text:'부피 = 밑넓이 × 높이',color:'ink'}, {text:`$${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^{3}$`,color:'ink'}
+        ]} : null,
         guide: `<b>판 쌓기</b> 막대를 끌거나 ▶를 눌러 보세요. 같은 모양의 판이 왼쪽에서 가로로 들어와 ${span('sky', '높이')}만큼 위로 쌓여요. 밑면 모양 칩과 길이 막대로 바꿔 보세요.`,
-        readouts: [
+        readouts: (C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? [] : [
           rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', M.bm.areaTex.replace(/\\frac\{1\}\{2\}/g, '½').replace(/\\times/g, '×').replace(/\\pi/g, 'π')),
           rd('높이', M.h + ' cm', 'amber', `판 ${M.h}장`),
           rd('부피', plainVal(M.vol) + ' cm³', 'green', `${plainVal(M.S)} × ${M.h}`)
@@ -588,7 +714,7 @@
     const model = (s) => {
       const w = clamp(Math.round(s.sW), 2, 15), r = clamp(Math.round(s.sRr), 1, 15), h = clamp(Math.round(s.sH5), 2, 20), mode = s.svMode === 'vol' ? 'vol' : 'surf';
       const S = V(2 * w * r, (r * r) / 2), Pm = V(2 * w + 2 * r, r), L = vmul(Pm, h), S2 = vmul(S, 2), tot = vadd(S2, L), vol = vmul(S, h);
-      return { w, r, h, mode, S, P: Pm, L, S2, tot, vol, ans: mode === 'vol' ? vol : tot };
+      return { w, r, h, mode, started: !!s.sv15Started, S, P: Pm, L, S2, tot, vol, ans: mode === 'vol' ? vol : tot };
     };
     const polyOf = (w, r) => {
       const poly = [[0, -r], [w, -r]], sm = [false, false], N = 14;
@@ -610,16 +736,16 @@
         const sn = solidNet(poly, hu, 1, sm, 8), A = sn.A, B = sn.B, eNow = ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
         const grp = (k) => (k === 0 ? 0 : k === 15 ? 2 : k === 16 ? 3 : 1);
         netScene(b, s, C, {
-          sn, t, fitOpt: { l: 84, r: 40, t: 40, b: 132 },
+          sn, t, fitOpt: { l: 30, r: (M.started && C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 25, b: 30 },
           style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
             edgeStyle: (e, p) => {
               if (!glue) return null;
               const k = p.tag === 'lat' ? (e.i === 0 || e.i === 2 ? p.k : -1) : e.nb;
-              return k != null && k >= 0 ? { color: G.pairColor(grp(k)), width: 3.6 } : null;
+              return k != null && k >= 0 ? { color: 'ink', width: 1.6 } : null;
             }
           }),
           labels: (ctx) => {
-            if (b.thumb) return;
+            if (b.thumb || C.review || (C.tab === 'explore' && ctx.e > 0.5)) return;
             const { D, tp, e } = ctx, vw = D.vw, L = sn.lat, at = ctx.at;
             const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
             const cen = at(sn.root, add3(G.centroid(A), v3(0, hu / 2, 0)));
@@ -644,7 +770,7 @@
               if (k < 0 || !tp[k].front) return;
               const pts = k === sn.top ? B : A, rc = G.centroid([pts[0], pts[1], pts[15], pts[16]]), c3 = at(k, rc);
               const xs = pts.map((p3) => D.px(at(k, p3)).x), faceW = Math.max(...xs) - Math.min(...xs);
-              if (!C.problem) aLab(D, at(k, lerp3(rc, G.centroid([pts[0], pts[16]]), 0.2)), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
+              if (!C.problem && C.review) aLab(D, at(k, lerp3(rc, G.centroid([pts[0], pts[16]]), 0.2)), '밑넓이', plainVal(M.S), { maxW: faceW * 0.5, size: 14, small: faceW * 0.5 });
               if (!first) return;
               first = false;
               const ctr = at(k, mid3(pts[1], pts[15]));
@@ -670,7 +796,19 @@
         });
         return;
       }
-      // 부피: 겨냥도(밑면이 아래인 기둥) + 높이를 1칸씩 나눈 층 + 「부피 = 밑넓이 × 높이」
+      // 부피: 직육면체와 반원기둥을 실제 붙은 면에서 분리합니다.
+      if (M.started && C.tab === 'explore' && !C.problem && !b.thumb) {
+        const D = scene3(b, s, C), cx = (w + r) * sc / 2, e = ease(clamp(s.sT5 || 0, 0, 1));
+        const box = [[-cx,-r*sc],[w*sc-cx,-r*sc],[w*sc-cx,r*sc],[-cx,r*sc]];
+        const half = poly.slice(1,16).map(q => [q[0]-cx,q[1]]);
+        const offsets = [D.hx(-0.7*e),D.hx(0.7*e)], shapes = [box,half];
+        const meshes = shapes.map((q,i) => xfMesh(prismMesh(q,0,hu,{simple:true,smooth:i ? Array(q.length).fill(true).map((v,k)=>k<q.length-1) : null}),G.shiftT(offsets[i])));
+        const points = meshes.flatMap(m => m.faces.flatMap(f => f.pts));
+        D.fit(points,[],{l:30,r:(window.innerWidth>=700&&b.W>=560?245:30),t:30,b:45});
+        meshes.forEach(m => D.body({mesh:m,fill:'sky',alpha:0.06,edge:'ink',edgeW:2}));
+        return;
+      }
+      // 문제·정리에서는 원래의 기둥을 보여 줍니다.
       const D = scene3(b, s, C), cxm = ((w + r) * sc) / 2, pc = poly.map((q) => [q[0] - cxm, q[1]]), ctr = v3(0, hu / 2, 0);
       const mesh = prismMesh(pc, 0, hu, { smooth: sm, ctr });
       const pts = []; pc.forEach((q) => { pts.push(v3(q[0], 0, q[1])); pts.push(v3(q[0], hu, q[1])); });
@@ -700,10 +838,10 @@
     return {
       id: 'sv1-5', title: '기둥 종합 문제', short: '기둥 종합',
       question: '밑면이 직사각형에 반원을 붙인 모양이어도 같은 방법으로 풀 수 있을까? 겉넓이와 부피를 각각 구해 보자.',
-      cam0: { yaw: 28, pitch: 22 }, problemT: 1,
-      ctl: (s) => (s.svMode === 'vol' ? ['sW', 'sRr', 'sH5'] : ['sW', 'sRr', 'sH5', 'sT5']),
-      presets: () => [{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }],
-      init: (s) => { s.sW = 4; s.sRr = 2; s.sH5 = 5; s.sT5 = 0; s.svMode = 'surf'; },
+      anim: { key: 'sT5', dur: 1.5, label: '다시 보기' }, cam0: { yaw: 28, pitch: 22 }, problemT: 1,
+      ctl: () => ['sW', 'sRr', 'sH5'],
+      presets: () => [{ group: '구하는 것', label: '겉넓이', apply: (st, lab) => { st.svMode = 'surf'; st.sv15Started = true; st.sT5 = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 1 : 0; st.revealed = false; st.step = 0; lab?._buildProblem?.(); st.playing = st.sT5 === 0; }, on: (st) => st.sv15Started && st.svMode !== 'vol' }, { label: '부피', apply: (st, lab) => { st.svMode = 'vol'; st.sv15Started = true; st.sT5 = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 1 : 0; st.revealed = false; st.step = 0; lab?._buildProblem?.(); st.playing = st.sT5 === 0; }, on: (st) => st.sv15Started && st.svMode === 'vol' }],
+      init: (s) => { s.sW = 4; s.sRr = 2; s.sH5 = 5; s.sT5 = 0; s.svMode = 'surf'; s.sv15Started = false; },
       reroll: (s) => { s.sW = rint(2, 8); s.sRr = rint(1, 4); s.sH5 = rint(2, 8); s.sT5 = 0; s.svMode = pick(['surf', 'vol'], s.svMode); },
       model, draw,
       check: (s) => {
@@ -721,9 +859,13 @@
         `밑면의 둘레(붙인 변은 뺌): $${M.w}+${M.w}+${2 * M.r}+\\pi\\times${M.r}=${tx(M.P)}$. 옆넓이 $=${tx(M.P)}\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
         `(겉넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
-      view: (M) => ({
-        guide: `<b>길이 막대</b>로 값을 바꾸고 칩에서 <b>겉넓이·부피</b>를 골라 보세요. 아래 줄은 전개도 조각(밑면 2개 + 옆면)이에요. 반원의 호 $\\pi r$가 둘레에 들어가는 것에 주의해요.`,
-        readouts: [
+      view: (M, C) => ({
+        card: (M.started && C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? {title:'',lines:[
+          {text:'밑넓이',color:'ink'}, {text:`$${M.w}\\times${2*M.r}+\\frac{1}{2}\\pi\\times${M.r}^{2}=${tx(M.S)}\\,\\mathrm{cm}^{2}$`,color:'ink'},
+          {text:M.mode === 'vol' ? '부피' : '겉넓이',color:'ink'}, {text:M.mode === 'vol' ? `$(${tx(M.S)})\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^{3}$` : `$2\\times(${tx(M.S)})+(${tx(M.P)})\\times${M.h}=${tx(M.tot)}\\,\\mathrm{cm}^{2}$`,color:'ink'}
+        ]} : null,
+        guide: `<b>겉넓이</b>와 <b>부피</b>를 눌러 살펴보세요. 밑면의 둘레에는 반원의 호가 포함돼요.`,
+        readouts: (M.started && C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560) ? [] : [
           rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', `${2 * M.w * M.r} + ${plainVal(V(0, M.r * M.r / 2))}`),
           rd('밑면의 둘레', plainVal(M.P) + ' cm', 'amber', `${M.w} + ${M.w} + ${2 * M.r} + π × ${M.r}`),
           rd('겉넓이', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted'),
@@ -756,7 +898,7 @@
           void half;
           stem = `그림과 같이 밑면이 직사각형($${M.w}\\,\\mathrm{cm}\\times${2 * M.r}\\,\\mathrm{cm}$)에 반원(반지름 $${M.r}\\,\\mathrm{cm}$)을 붙인 모양이고 높이가 $${M.h}\\,\\mathrm{cm}$인 기둥의 겉넓이는?`;
         }
-        return { tag: M.mode === 'vol' ? '기둥의 부피 (종합)' : '기둥의 겉넓이 (종합·킬러)', key: `${M.mode}|${M.w}|${M.r}|${M.h}`, stem, choices: mkV(M.ans, wrongs, { dim: M.mode === 'vol' ? 3 : 2 }) };
+        return { tag: M.mode === 'vol' ? '기둥의 부피 (종합)' : '기둥의 겉넓이 (종합)', key: `${M.mode}|${M.w}|${M.r}|${M.h}`, stem, choices: mkV(M.ans, wrongs, { dim: M.mode === 'vol' ? 3 : 2 }) };
       }
     };
   }

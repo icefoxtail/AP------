@@ -791,3 +791,7 @@ body.apl {
 /* 세로 분수 프리셋: 분자·분모를 줄이지 않고 손가락으로 누를 높이 확보. */
 .apl-presets .apl-chip:has(.mfrac), .apl-actions-row .apl-btn:has(.mfrac) { min-height: 44px; padding-block: 6px; line-height: 1.4; }
 .apl-presets .apl-chip:has(.mfrac) .katex { font-size: 1.2em; }
+/* 장면별 핵심 힌트는 필요할 때만 펼칩니다. */
+.sv-student-tip{position:absolute;top:12px;left:14px;max-width:230px;padding:9px 12px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);color:var(--text);font-size:13px;line-height:1.45;z-index:4;pointer-events:auto;box-shadow:0 2px 8px #0000000b}
+.sv-student-tip[hidden]{display:none}.sv-student-tip summary{cursor:pointer;font-weight:700}.sv-student-tip span{display:block;margin-top:6px}
+@media(max-width:599px){.sv-student-tip{position:static;max-width:none;margin:6px 12px}}

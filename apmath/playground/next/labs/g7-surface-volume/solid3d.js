@@ -264,19 +264,29 @@
     const phi = Math.atan2(vx, ux);
     const inRange = (th) => { if (R.full) return true; let x = (th - R.a0) % TAU; if (x < 0) x += TAU; return x <= R.a1 - R.a0 + 1e-9; };
     R.segs.forEach((sg) => {
-      for (const br of [1, -1]) {
-        const ps = [];
-        for (let e = 0; e < 2; e++) {
-          const nn = sg.nE[e], r = e ? sg.r1 : sg.r0, y = e ? sg.y1 : sg.y0;
-          if (r < 1e-9) { if (Math.abs(nn.nr) < 0.15) { ps.length = 0; break; } ps.push(R.pt(0, y, 0)); continue; } // 구의 극은 윤곽 위의 점이 아니에요(원뿔의 꼭짓점과 달라요)
-          if (Math.abs(nn.nr) < 1e-6) { ps.length = 0; break; }
-          const kap = (-nn.ny * aw) / (nn.nr * A2);
-          if (Math.abs(kap) > 1) { ps.length = 0; break; }
-          const th = phi + br * Math.acos(kap);
-          if (!inRange(th)) { ps.length = 0; break; }
-          ps.push(R.pt(r, y, th));
+      // 보간 법선의 윤곽 조건이 구간 중간에서 끝나는 경우, 경계점을 찾아
+      // 둥근 면의 윤곽이 꼭대기 부근에서 끊기지 않도록 합니다.
+      const candidate = (t, branch) => {
+        const n0 = sg.nE[0], n1 = sg.nE[1];
+        const nr = n0.nr + (n1.nr - n0.nr) * t, ny = n0.ny + (n1.ny - n0.ny) * t;
+        const r = sg.r0 + (sg.r1 - sg.r0) * t, y = sg.y0 + (sg.y1 - sg.y0) * t;
+        if (r < 1e-9) return Math.abs(nr) < 0.15 ? null : R.pt(0, y, 0);
+        if (Math.abs(nr) < 1e-6) return null;
+        const kap = (-ny * aw) / (nr * A2);
+        if (Math.abs(kap) > 1 + 1e-9) return null;
+        const th = phi + branch * Math.acos(clamp(kap, -1, 1));
+        return inRange(th) ? R.pt(r, y, th) : null;
+      };
+      for (const branch of [1, -1]) {
+        let t0 = 0, t1 = 1, p0 = candidate(t0, branch), p1 = candidate(t1, branch);
+        if (!p0 && !p1) continue;
+        if (!p0 || !p1) {
+          let good = p0 ? 0 : 1, bad = p0 ? 1 : 0;
+          for (let i = 0; i < 28; i++) { const mid = (good + bad) / 2; if (candidate(mid, branch)) good = mid; else bad = mid; }
+          if (!p0) { t0 = good; p0 = candidate(t0, branch); }
+          else { t1 = good; p1 = candidate(t1, branch); }
         }
-        if (ps.length === 2 && len3(sub3(ps[0], ps[1])) > 1e-6) out.push(ps);
+        if (p0 && p1 && len3(sub3(p0, p1)) > 1e-6) out.push([p0, p1]);
       }
     });
     return out;
@@ -405,7 +415,10 @@
         const f = m.faces[i], st = (bd.faceStyle && bd.faceStyle(f, i)) || {}, fill = st.fill || bd.fill;
         if (!fill || st.skip) return;
         const base = st.alpha != null ? st.alpha : bd.alpha == null ? 0.2 : bd.alpha, q = Math.min(4, Math.floor(clamp(fr[i], 0, 0.999) * 5));
-        const alpha = bd.flat ? base : base * (0.72 + 0.1 * q);
+        // 학생이 처음 만나는 입체는 선 중심으로 두고, 조작 중 필요한 면을 옅게 강조합니다.
+        const maxFill = C.problem ? 0.025 : C.tab === 'explore' ? ((C.t || 0) > 0.03 ? 0.10 : 0.025) : 0.14;
+        const calm = Math.min(base, maxFill);
+        const alpha = bd.flat ? calm : calm * (0.72 + 0.1 * q);
         if (f.holes) { flush(); fillPolys(b, [f.pts.map(P)].concat(f.holes.map((h) => h.map(P))), fill, alpha, true); return; }
         const key = fill + '|' + alpha.toFixed(3);
         if (!cur || cur.key !== key) { flush(); cur = { key, fill, alpha }; }
@@ -536,7 +549,7 @@
     order.forEach((q) => {
       const st = (style && style(q.pc, q.k)) || {};
       if (st.skip) return;
-      const fill = st.fill || 'sky', alpha = (st.alpha == null ? 0.22 : st.alpha) * (q.front ? 1 : 0.35);
+      const fill = st.fill || 'sky', alpha = Math.min(st.alpha == null ? 0.06 : st.alpha, 0.1) * (q.front ? 1 : 0.35);
       if (!q.front && st.back === false) return;
       const key = fill + '|' + alpha.toFixed(3) + '|' + (q.front ? 1 : 0);
       if (!groups.has(key)) groups.set(key, { fill, alpha, polys: [] });
@@ -672,30 +685,64 @@
      입체(t=0)에는 반지름·모선·높이, 펼친 모습(t=1)에는 모선 길이(큰 것·작은 것·원뿔대), 호의 길이 = 밑면 둘레, 면마다 넓이 이름표, 위쪽에 「겉넓이 = 옆넓이 + 밑넓이」 합을 씁니다.
      dims.js 가 scene3 에 붙이는 D.dim·D.radius·D.height·D.edgeLab·D.areaLab 을 호출 시점에 씁니다. */
   function coneNet(b, s, C, o) {
+    const show = (v) => o.exactFractions ? G.plainVal(G.V(v)) : v;
     const { r2, r1, hf, R2, R1 } = o, cone = !(r1 > 0), Rf = R2 - R1, V0 = o.vals || {}, hl = o.hl || {};
     const sc = 4.6 / Math.max(R2, 2 * r2), N = 36, scale = cone ? 0 : r1 / r2;
     const sn = solidNet(circleBase(r2 * sc, N), hf * sc, scale, Array(N).fill(true), 18);
     const e = ease(o.t), thumb = !!b.thumb, glue = e > 0.3 && !o.problem && !thumb;
     const yaw = (s.svYaw == null ? 28 : s.svYaw) * (1 - e), pitch = (s.svPitch == null ? 22 : s.svPitch) * (1 - e);
     const D = G.scene3(b, s, C, { yaw, pitch });
-    const poses = netPose(sn.net, e), A = sn.A, B = sn.B, at = (k, p) => applyT(poses[k], p);
+    const showOriginal = o.showOriginal && C.tab === 'explore' && !thumb && b.W >= 600 && e > 0.02;
+    let reference = null;
+    if (showOriginal) {
+      const shift = 3.6 * ease(lin01(e, 0.02, 0.25)), baseP = D.P;
+      D.P = p => { const q = baseP(p); return { x: q.x + shift, y: q.y }; };
+      const R = G.scene3(b, s, C, { yaw: s.svYaw == null ? 28 : s.svYaw, pitch: s.svPitch == null ? 20 : s.svPitch }), refP = R.P;
+      R.P = p => { const q = refP(p); return { x: q.x - shift, y: q.y }; };
+      const mesh = revolveMesh([[0,0],[r2*sc,0],[r1*sc,hf*sc],[0,hf*sc]], { N: 44, tags: ['bot','side','top'] });
+      reference = { R, mesh };
+    }
+    const poses = netPose(sn.net, e), A = sn.A, B = sn.B;
+    if (o.cleanFrustum && !cone && !o.problem && !thumb) {
+      poses[sn.top] = compose(shiftT(v3(6 * lin01(e, 0.72, 1), 0, 0)), poses[sn.top]);
+    }
+    const at = (k, p) => applyT(poses[k], p);
     const apexLocal = cone ? B[0] : add3(A[1], mul3(sub3(B[1], A[1]), 1 / (1 - scale)));
     const all = [];
     sn.net.pieces.forEach((pc, k) => pc.pts.forEach((p) => all.push(at(k, p))));
     if (e > 0.4 && !cone) all.push(at(1, apexLocal));
     const nar = D.narrow;
-    D.fit(all, [], { l: o.fitL == null ? (nar ? 36 : 64) : o.fitL, r: o.fitR == null ? (nar ? 36 : 64) : o.fitR, t: o.fitT == null ? (o.problem ? 44 : 44 + (nar ? 34 : 52) * e) : o.fitT, b: o.fitB == null ? (o.problem ? 48 : 48 + (nar ? 46 : 50) * e) : o.fitB });
-    const BIG = 'violet', SMALL = 'orange';
+    D.fit(all, reference ? reference.mesh.faces.flatMap(f => f.pts.map(reference.R.P)) : [], { l: o.fitL == null ? (reference && b.W < 900 ? 18 : (nar ? 36 : 64)) : o.fitL, r: o.fitR == null ? (reference && b.W < 900 ? 18 : (nar ? 36 : 64)) : o.fitR, t: o.fitT == null ? (reference && b.W < 900 ? 28 : (o.problem ? 44 : 44 + (nar ? 34 : 52) * e)) : o.fitT, b: o.fitB == null ? (reference && b.W < 900 ? 28 : (o.problem ? 48 : 48 + (nar ? 46 : 50) * e)) : o.fitB });
+    const BIG = (o.textbookReview && C.review) || o.cleanFrustum || o.simpleNet ? 'ink' : 'violet', SMALL = o.cleanFrustum ? 'ink' : 'orange';
     const style = (pc) => {
       const tag = pc.tag, lv = tag === 'lat' ? (hl.ring == null ? 1 : hl.ring) : tag === 'bot' ? (hl.bot == null ? 1 : hl.bot) : (hl.top == null ? 1 : hl.top);
       const st = G.roleStyle(tag === 'lat' ? 'lat' : 'base', lv);
       if (lv !== 2) st.fill = tag === 'bot' ? BIG : tag === 'top' ? SMALL : st.fill;
       if (lv === 1 || lv === 3) st.alpha = tag === 'lat' ? 0.3 : 0.22;
+      if (C.tab === 'explore' && !b.thumb) st.alpha = Math.min(st.alpha, 0.015 + 0.065 * e);
+      if (C.problem && o.problemAlpha != null) st.alpha = Math.min(st.alpha, o.problemAlpha);
+      if (C.review && o.reviewAlpha != null) st.alpha = Math.min(st.alpha, o.reviewAlpha);
+      if (o.cleanFrustum && !o.problem) st.alpha = Math.min(st.alpha, 0.07);
       st.edgeStyle = (ed, p) => (glue && ((p.tag === 'lat' && ed.i === 0) || p.tag === 'bot') ? { color: BIG, width: 3.6 } : glue && !cone && ((p.tag === 'lat' && ed.i === 2) || p.tag === 'top') ? { color: SMALL, width: 3.6 } : null);
       return st;
     };
+    if (reference) {
+      reference.R.body({ mesh: reference.mesh, fill: 'sky', alpha: 0.035, edge: 'ink', edgeW: 2, dashBack: () => v3(0,0,0) });
+      const rb = bboxOf(reference.mesh.faces.flatMap(f => f.pts.map(reference.R.P)));
+      b.text({ x: (rb.x0 + rb.x1) / 2, y: rb.y1 }, '원래 입체', { dy: 14, size: reference.R.fs(13), color: 'ink', weight: 700 });
+      const nb = bboxOf(all.map(D.P));
+      if (nb.x0 - rb.x1 > 0.45) D.arrow({ x: rb.x1 + 0.12, y: (rb.y0 + rb.y1) / 2 }, { x: nb.x0 - 0.12, y: (rb.y0 + rb.y1) / 2 }, 'muted', 1.5);
+    }
     const tp = netDraw(D, sn.net, poses, style);
-    if (thumb) return { D, tp, sn, e };
+    if (((o.textbookReview && C.review) || o.simpleNet) && cone && e > 0.99) {
+      D.line(at(sn.lat[0], apexLocal), at(sn.lat[0], A[1]), 'ink', 2);
+      D.line(at(sn.lat[1], apexLocal), at(sn.lat[1], A[1]), 'ink', 2);
+    }
+    if (o.cleanFrustum && !cone && e > 0.99 && !o.problem) {
+      D.line(at(sn.lat[0], A[1]), at(sn.lat[0], B[1]), 'ink', 2);
+      D.line(at(sn.lat[1], A[1]), at(sn.lat[1], B[1]), 'ink', 2);
+    }
+    if (thumb || o.simpleNet) return { D, tp, sn, e };
     const solidA = 1 - lin01(e, 0.05, 0.45), flatA = lin01(e, 0.78, 0.98), kb = sn.bot, kt = sn.top, L = sn.lat;
     const c0 = at(kb, centroid(A)), c1 = cone ? null : at(kt, centroid(B)), px = D.px;
     const apexF = at(1, apexLocal), apexPx = px(apexF);
@@ -707,46 +754,48 @@
     const circR = (k, pts, ctr) => Math.hypot(px(at(k, pts[0])).x - px(ctr).x, px(at(k, pts[0])).y - px(ctr).y);
     // 반지름: 입체에서도 펼친 모습에서도 같은 방향(오른쪽 앞)
     const rB = circR(kb, A, c0);
-    D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r2}`, { dash: !tp[kb].front, end: true });
+    D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r2}`, { dash: !tp[kb].front, end: e >= 0.5 && !(o.textbookReview && C.review) });
     const r1pxAll = cone ? 0 : circR(kt, B, c1), smallTop = !cone && r1pxAll < 46;
-    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p)), smallTop && e > 0.6 ? { x: -0.82, y: -0.57 } : undefined), `반지름 ${r1}`, { dash: !tp[kt].front, end: true });
+    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p)), smallTop && e > 0.6 ? { x: -0.82, y: -0.57 } : undefined), o.cleanFrustum && e > 0.5 ? String(r1) : `반지름 ${r1}`, { dash: !tp[kt].front, end: e >= 0.5 && !o.cleanFrustum, size: o.cleanFrustum ? 12 : 14 });
     // 입체: 모서리 모선 + 높이
     if (solidA > 0.02) {
       let kl = 0, bx = 1e9;
       A.forEach((p, k) => { const q = px(at(L[k], p)); if (q.x < bx) { bx = q.x; kl = k; } });
       D.edgeLab(at(L[kl], A[kl]), at(L[kl], cone ? B[0] : B[kl]), `모선 ${cone ? R2 : Rf}`, { from: c0, alpha: solidA });
-      if (o.hText !== false) D.height(c0, cone ? at(L[0], B[0]) : c1, o.hText || `높이 ${hf}`, { alpha: solidA, side: cone ? { x: 1, y: 0 } : { x: -1, y: 0 }, alongFrac: cone ? 0 : 0.1 });
+      if (o.hText !== false) D.height(c0, cone ? at(L[0], B[0]) : c1, o.hText || `높이 ${hf}`, { alpha: solidA, side: o.hSide || (cone ? { x: 1, y: 0 } : { x: -1, y: 0 }), alongFrac: o.hAlongFrac == null ? (cone ? 0 : 0.1) : o.hAlongFrac, color: o.hColor || 'amber' });
     }
     if (flatA > 0.02) {
       const toApex = (q) => ({ x: apexPx.x - q.x, y: apexPx.y - q.y }), neg = (v) => ({ x: -v.x, y: -v.y });
       // 직선 변: 화면의 왼쪽·오른쪽 끝 조각
       const aL = px(at(1, A[1])), aR = px(at(0, A[1])), leftK = aL.x <= aR.x ? 1 : 0, rightK = leftK === 1 ? 0 : 1;
       const nr = D.narrow || (!cone && 360 * r2 / R2 > 250), eA = px(at(rightK, A[1])), flatEdge = Math.abs(eA.y - apexPx.y) < 0.6 * Math.hypot(eA.x - apexPx.x, eA.y - apexPx.y);
-      D.dim(apexF, at(leftK, A[1]), cone ? `모선 ${R2}` : (nr ? `${R2}` : `큰 모선 ${R2}`), { from: ccen, off: 22, alpha: flatA });
-      if (!cone) {
-        D.dim(apexF, at(rightK, B[1]), nr ? `${R1}` : `작은 모선 ${R1}`, { from: ccen, off: 22, alpha: flatA, color: SMALL });
-        D.dim(at(rightK, B[1]), at(rightK, A[1]), nr ? `${Rf}` : `원뿔대의 모선 ${Rf}`, Object.assign({ color: 'green', off: 20, alpha: flatA }, flatEdge ? { side: { x: px(ccen).x - px(at(rightK, A[1])).x, y: px(ccen).y - px(at(rightK, A[1])).y } } : { from: ccen }));
+      if (!reference && !(o.cleanFrustum && (hl.small || (C.review && (C.step || 0) >= 3)))) D.dim(apexF, at(leftK, A[1]), cone ? `모선 ${show(R2)}` : (nr ? `${show(R2)}` : `큰 모선 ${show(R2)}`), { from: ccen, off: 22, alpha: flatA });
+      if (o.cleanFrustum && hl.small) D.dim(apexF, at(rightK, B[1]), `작은 모선 ${show(R1)}`, { from: ccen, off: 16, alpha: flatA, color: 'ink' });
+      if (!cone && !o.cleanFrustum) {
+        D.dim(apexF, at(rightK, B[1]), nr ? `${show(R1)}` : `작은 모선 ${show(R1)}`, { from: ccen, off: 22, alpha: flatA, color: SMALL });
+        D.dim(at(rightK, B[1]), at(rightK, A[1]), nr ? `${show(Rf)}` : `원뿔대의 모선 ${show(Rf)}`, Object.assign({ color: 'green', off: 20, alpha: flatA }, flatEdge ? { side: { x: px(ccen).x - px(at(rightK, A[1])).x, y: px(ccen).y - px(at(rightK, A[1])).y } } : { from: ccen }));
       }
       if (!o.problem) {
         // 호의 길이 = 밑면의 둘레(같은 색)
         const kq = 27;
-        D.edgeLab(at(kq, A[kq]), at(kq, A[(kq + 1) % N]), `${cone ? '호의 길이' : (D.narrow ? '큰 호' : '큰 호의 길이')} ${V0.arcBig}`, { from: apexF, color: BIG, alpha: flatA });
-        D.areaLab(c0, cone ? '밑넓이' : '아랫면', V0.bot, { dx: -0.4 * rB, dy: -0.04 * rB, maxW: rB * 1.05, alpha: flatA });
+        if (reference) b.text(D.P(apexF), `큰 호의 길이 ${V0.arcBig}`, { dy: b.W < 560 ? -16 : -45, size: D.fs(13), color: 'ink', weight: 700, alpha: flatA });
+        else D.edgeLab(at(kq, A[kq]), at(kq, A[(kq + 1) % N]), `${cone ? '호의 길이' : (D.narrow ? '큰 호' : '큰 호의 길이')} ${V0.arcBig}`, { from: apexF, color: BIG, alpha: flatA });
+        if (!(o.textbookReview && C.review) && !o.cleanFrustum) D.areaLab(c0, cone ? '밑넓이' : '아랫면', V0.bot, { dx: -0.4 * rB, dy: -0.04 * rB, maxW: rB * 1.05, alpha: flatA });
         const bandAt = (kk) => { const qa = px(at(kk, mid3(A[kk], A[(kk + 1) % N]))), qb = px(at(kk, mid3(B[kk], B[(kk + 1) % N]))); return Math.hypot(qa.x - qb.x, qa.y - qb.y); };
         const thin = !cone && bandAt(18) < 50, kr = thin ? 27 : 18, bandPx = bandAt(kr);
-        D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), thin ? '' : '옆넓이', V0.ring, { alpha: flatA, size: thin ? 13 : 15 });
+        if (!(o.textbookReview && C.review) && !o.cleanFrustum) D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), thin ? '' : '옆넓이', V0.ring, { alpha: flatA, size: thin ? 13 : 15 });
         if (!cone) {
           const c1p = px(c1), r1p = circR(kt, B, c1);
-          D.areaLab(c1, '윗면', V0.top, { dx: (smallTop ? 0.3 : -0.4) * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
+          D.areaLab(c1, '윗면', o.cleanFrustum ? '' : V0.top, o.cleanFrustum ? { dy: -r1p - 15, alpha: flatA } : { dx: (smallTop ? 0.3 : -0.4) * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
         }
         // 합: 겉넓이 = 옆넓이 + 밑넓이
-        if (V0.tot) {
+        if (V0.tot && !(o.textbookReview && C.review) && !o.cleanFrustum) {
           const parts = cone ? [['옆넓이', V0.ring, 'green'], ['밑넓이', V0.bot, BIG]] : [['옆넓이', V0.ring, 'green'], ['윗면', V0.top, SMALL], ['아랫면', V0.bot, BIG]];
           const r1s = [{ t: '겉넓이 = ' }]; parts.forEach((p, i) => { if (i) r1s.push({ t: ' + ' }); r1s.push({ t: p[0], c: p[2] }); });
           const r2s = [{ t: '= ' }]; parts.forEach((p, i) => { if (i) r2s.push({ t: ' + ' }); r2s.push({ t: p[1], c: p[2] }); }); r2s.push({ t: ` = ${V0.tot}` });
           sumRows(D, [r1s, r2s], flatA);
-          const secRow = hl.big ? [[{ t: `${cone ? '부채꼴' : '큰 부채꼴'}의 넓이 = π × ${r2} × ${R2} = ${V0.big}`, c: 'amber' }]] : hl.small ? [[{ t: `작은 부채꼴의 넓이 = π × ${r1} × ${R1} = ${V0.small}`, c: SMALL }]] : null;
-          sumRows(D, secRow || (cone ? [[{ t: `호의 길이 = 밑면의 둘레 ${V0.arcBig}`, c: BIG }]] : [[{ t: `큰 모선 ${R2} − 작은 모선 `, c: 'ink' }, { t: `${R1}`, c: SMALL }, { t: ` = 원뿔대의 모선 `, c: 'ink' }, { t: `${Rf}`, c: 'green' }], [{ t: `큰 호의 길이 = 아랫면의 둘레 ${V0.arcBig}`, c: BIG }], [{ t: `작은 호의 길이 = 윗면의 둘레 ${V0.arcSmall}`, c: SMALL }]]), flatA, true);
+          const secRow = hl.big ? [[{ t: `${cone ? '부채꼴' : '큰 부채꼴'}의 넓이 = π × ${r2} × ${show(R2)} = ${V0.big}`, c: 'amber' }]] : hl.small ? [[{ t: `작은 부채꼴의 넓이 = π × ${r1} × ${show(R1)} = ${V0.small}`, c: SMALL }]] : null;
+          sumRows(D, secRow || (cone ? [[{ t: `호의 길이 = 밑면의 둘레 ${V0.arcBig}`, c: BIG }]] : [[{ t: `큰 모선 ${show(R2)} − 작은 모선 `, c: 'ink' }, { t: `${show(R1)}`, c: SMALL }, { t: ` = 원뿔대의 모선 `, c: 'ink' }, { t: `${show(Rf)}`, c: 'green' }], [{ t: `큰 호의 길이 = 아랫면의 둘레 ${V0.arcBig}`, c: BIG }], [{ t: `작은 호의 길이 = 윗면의 둘레 ${V0.arcSmall}`, c: SMALL }]]), flatA, true);
         }
       }
       // 점선: 잘라 낸 작은 부채꼴(원뿔대) / 강조 단계의 부채꼴
@@ -759,8 +808,8 @@
           else b.path(pts(0, 1), { color: 'muted', width: 1.8, dash: [5, 4], alpha: 0.7 * flatA });
         });
       }
-      if (hl.big) b.path(sectorPts(outer), { close: true, fill: 'amber', fillAlpha: 0.2 * flatA, color: 'amber', width: 2.4, dash: [6, 5], alpha: flatA });
-      if (hl.small && !cone) b.path(sectorPts(inner), { close: true, fill: SMALL, fillAlpha: 0.25 * flatA, color: SMALL, width: 2.4, alpha: flatA });
+      if (hl.big) b.path(sectorPts(outer), { close: true, fill: 'amber', fillAlpha: (o.cleanFrustum ? 0.06 : 0.2) * flatA, color: o.cleanFrustum ? 'ink' : 'amber', width: 2.4, dash: [6, 5], alpha: flatA });
+      if (hl.small && !cone) b.path(sectorPts(inner), { close: true, fill: SMALL, fillAlpha: (o.cleanFrustum ? 0.06 : 0.25) * flatA, color: SMALL, width: 2.4, alpha: flatA });
     }
     return { D, tp, sn, e };
   }
@@ -768,6 +817,7 @@
   /* ------------------------------------------------------------ 원뿔대의 부피 겨냥도: 큰 원뿔 − 작은 원뿔 (작은 원뿔이 가로로 빠져나감)
      o: { r2, r1, h2(큰 원뿔의 높이), h1(작은 원뿔의 높이), t 빼내기(0~1), problem, review, step, vals:{v2,v1,vol} } */
   function frustumVol(b, s, C, o) {
+    const show = (v) => o.exactFractions ? G.plainVal(G.V(v)) : v;
     const sc = 4.8 / Math.max(o.h2, 2.2 * o.r2), r2 = o.r2 * sc, r1 = o.r1 * sc, h2 = o.h2 * sc, h1 = o.h1 * sc, hf = h2 - h1, st = o.step || 0, V0 = o.vals || {};
     const t = o.t, D = G.scene3(b, s, C), thumb = !!b.thumb;
     const slide = ease(t) * (r1 * 2.4 + 0.5), sh = D.hx(slide);
@@ -775,27 +825,40 @@
     const y0 = -h2 / 2, yc = y0 + hf, apexBig = v3(0, y0 + h2, 0), cb = v3(0, y0, 0), ct = v3(0, yc, 0);
     const frM = revolveMesh([[0, 0], [r2, 0], [r1, hf], [0, hf]], { O: v3(0, y0, 0), N: 44, tags: ['bot', 'side', 'top'] });
     const smM = xfMesh(revolveMesh([[0, 0], [r1, 0], [0, h1]], { O: v3(0, yc, 0), N: 44, tags: ['bot', 'side'] }), shiftT(sh));
-    D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], [], { l: 52, r: 52, t: thumb ? 5 : (o.problem ? 40 : 84), b: thumb ? 5 : (o.problem ? 52 : 76) });
-    const rv = o.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
-    if (t < 0.98) {
-      D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
-      D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
+    let reference = null;
+    if (o.showOriginal && C.tab === 'explore' && !thumb && b.W >= 600 && t > 0.02) {
+      const offset = 3.5 * ease(lin01(t, 0.02, 0.25)), baseP = D.P;
+      D.P = p => { const q = baseP(p); return { x: q.x + offset, y: q.y }; };
+      const R = G.scene3(b, s, C), refP = R.P;
+      R.P = p => { const q = refP(p); return { x: q.x - offset, y: q.y }; };
+      reference = { R, mesh: frM };
     }
-    D.body({ mesh: frM, fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.42 : 0.24 } : {}) });
-    D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm || big ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
-    if (thumb) return D;
+    D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], reference ? reference.mesh.faces.flatMap(f => f.pts.map(reference.R.P)) : [], { l: o.minimal && b.W < 560 ? 18 : 52, r: o.fitR == null ? (o.minimal && b.W < 560 ? 18 : 52) : o.fitR, t: thumb ? 5 : (o.problem && b.W < 560 ? 12 : (o.minimal && b.W < 560 ? 24 : (o.problem ? 40 : 84))), b: thumb ? 5 : (o.problem && b.W < 560 ? 12 : (o.minimal && b.W < 560 ? 38 : (o.problem ? 52 : 76))) });
+    const rv = o.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
+    if (t < 0.98 || o.simpleLabels) {
+      D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: o.simpleLabels ? 0.6 : 0.7 * (1 - ease(t)) });
+      D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: o.simpleLabels ? 0.6 : 0.7 * (1 - ease(t)) });
+    }
+    if (reference) {
+      reference.R.body({ mesh: reference.mesh, fill: 'sky', alpha: 0.035, edge: 'ink', edgeW: 2, dashBack: () => v3(0,0,0) });
+      const rb = bboxOf(reference.mesh.faces.flatMap(f => f.pts.map(reference.R.P)));
+      b.text({ x: (rb.x0 + rb.x1) / 2, y: rb.y1 }, '원래 입체', { dy: 14, size: reference.R.fs(13), color: 'ink', weight: 700 });
+    }
+    D.body({ mesh: frM, fill: fr || big ? 'amber' : 'sky', alpha: o.minimal ? 0.05 : (fr || big ? 0.34 : 0.22), edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: fr || big ? 'amber' : 'sky', alpha: o.minimal ? 0.06 : (fr || big ? 0.42 : 0.24) } : {}) });
+    D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: o.minimal ? 0.05 : (sm || big ? 0.42 : 0.24), edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
+    if (thumb || o.simpleLabels) return D;
     // 길이: 반지름은 오른쪽 앞으로, 높이는 점선 + 직각 표시
     const rf = D.rightFront(35), aBig = 1 - ease(lin01(t, 0, 0.35)), aSm = ease(lin01(t, 0.25, 0.6));
-    D.radius(cb, add3(cb, mul3(rf, r2)), `반지름 ${o.r2}`, { dash: true, end: true });
-    D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), `반지름 ${o.r1}`, { dash: slide < 1e-3, end: true });
-    D.height(cb, apexBig, `높이 ${o.h2}`, { alpha: aBig, side: { x: 1, y: 0 } });
-    D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), `높이 ${o.h1}`, { alpha: aSm, color: 'violet', side: { x: 1, y: 0 } });
+    D.radius(cb, add3(cb, mul3(rf, r2)), reference && b.W < 560 ? '' : `반지름 ${o.r2}`, { dash: true, end: !o.minimal });
+    D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), (reference || (o.minimal && b.W < 560)) ? '' : `반지름 ${o.r1}`, { dash: slide < 1e-3, end: !o.minimal, alpha: o.review && o.minimal ? aSm : 1 });
+    D.height(cb, apexBig, `높이 ${show(o.h2)}`, { alpha: aBig, color: o.minimal ? 'ink' : 'amber', side: { x: 1, y: 0 } });
+    D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), (reference || (o.minimal && b.W < 560)) ? '' : `높이 ${show(o.h1)}`, { alpha: aSm, color: o.minimal ? 'ink' : 'violet', side: { x: 1, y: 0 } });
     if (!o.problem) {
       const k = b.k || 40, ey = (D.P(v3(0, y0, r2)).y - D.P(cb).y) * k, ey1 = (D.P(v3(0, yc, r1)).y - D.P(ct).y) * k, a3 = ease(lin01(t, 0.55, 0.95));
-      D.areaLab(cb, '큰 원뿔', V0.v2, { dy: ey + 24 });
-      D.areaLab(add3(ct, sh), '작은 원뿔', V0.v1, { dy: ey1 + 24, alpha: aSm, color: 'violet' });
-      D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', V0.vol, { alpha: a3, maxW: r2 * k * 1.2, color: 'green' });
-      sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: V0.v2, c: 'sky' }, { t: ' − ' }, { t: V0.v1, c: 'violet' }, { t: ` = ${V0.vol}` }]], 1);
+      D.areaLab(cb, '큰 원뿔', o.minimal ? '' : V0.v2, { dy: ey + 24, alpha: aBig });
+      D.areaLab(add3(ct, sh), '작은 원뿔', o.minimal ? '' : V0.v1, { dy: ey1 + 24, alpha: aSm, color: o.minimal ? 'ink' : 'violet' });
+      D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', o.minimal ? '' : V0.vol, { alpha: a3, maxW: r2 * k * 1.2, color: o.minimal ? 'ink' : 'green' });
+      if (!(o.minimal && (o.review || b.W < 560))) sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: V0.v2, c: 'sky' }, { t: ' − ' }, { t: V0.v1, c: 'violet' }, { t: ` = ${V0.vol}` }]], 1);
     }
     return D;
   }
