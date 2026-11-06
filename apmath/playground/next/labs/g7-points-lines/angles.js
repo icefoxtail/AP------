@@ -547,7 +547,10 @@
         if (step >= 4) L1.push([`직선 ${n}개 → ${n}×${n - 1} = ${n * (n - 1)}쌍`, 'green', ['n']]);
       }
       const keep = rev ? L1.slice(-3) : L1;
-      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], l[2] ? { ref: l[2] } : {}));
+      const footerLift = g.b.W >= 560 && g.b.W < 900 && (g.b.insets?.bottom || 0) < 40 ? 20 : 0;
+      // 글을 올린 만큼 자동 맞춤이 다시 아래로 당기지 않도록 기존 아래 여유를 유지해요.
+      if (footerLift) g.box(0, -1.72 - g.u(94), 0, -1.72);
+      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], { ...(l[2] ? { ref: l[2] } : {}), dy: 30 + i * 27 - footerLift }));
     },
     problem: (q) => {
       const th = q.th;

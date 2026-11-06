@@ -197,10 +197,14 @@
       pointsRow(b, M.xs, LET.split('').slice(0, 4), y[0], M.xs.map((_, i) => (i === S ? 'violet' : 'ink')));
       b.point({ x: M.xs[S], y: 0 }, { color: 'violet', r: 7 });
       guide(b, M.xs, y[0], y[2] + 0.3);
-      rowLabel(b, y[1], M.R.length ? `${M.R.map((n) => '반직선 ' + n).join(' = ')}  (→)` : '→ 방향: 이름 붙일 점 없음', 'violet', st, st === 2);
-      if (M.R.length) ray(b, y[1], M.xs[S], 1, 'violet', al(st, st === 2));
-      rowLabel(b, y[2], M.L.length ? `${M.L.map((n) => '반직선 ' + n).join(' = ')}  (←)` : '← 방향: 이름 붙일 점 없음', 'rose', st, st === 3);
-      if (M.L.length) ray(b, y[2], M.xs[S], -1, 'rose', al(st, st === 3));
+      if (st >= 2) {
+        rowLabel(b, y[1], M.R.length ? `${M.R.map((n) => '반직선 ' + n).join(' = ')}  (→)` : '→ 방향: 이름 붙일 점 없음', 'violet', st, true);
+        if (M.R.length) ray(b, y[1], M.xs[S], 1, 'violet', 1);
+      }
+      if (st >= 3) {
+        rowLabel(b, y[2], M.L.length ? `${M.L.map((n) => '반직선 ' + n).join(' = ')}  (←)` : '← 방향: 이름 붙일 점 없음', 'rose', st, true);
+        if (M.L.length) ray(b, y[2], M.xs[S], -1, 'rose', 1);
+      }
       if (st === 1 || st >= 99) T(b, { x: M.xs[S], y: 0 }, '시작점', { dy: -24, color: 'violet', size: 15 });
       M.xs.forEach((x, i) => b.handle('P' + i, { x, y: 0 }, { color: 'amber', r: i === S ? 6.5 : 6, ariaLabel: `점 ${LET[i]}`, drag: (w) => move4(s, i, w.x) }));
     },
