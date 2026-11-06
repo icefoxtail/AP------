@@ -87,6 +87,8 @@
 
 | 2022 순천여고 2학기 기말 고1 Q16 | 무리함수 직선 교점 최솟값 | 작성·전달 | Luna high 순천여고 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 순천여고 2학기 기말 고1 Q22 | 거리 자취·대칭축 | 작성·전달 | Luna high 순천여고 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
