@@ -214,7 +214,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, S } = M, st = cx.step, sq = [A, B, C, D], O = pt(S / 2, -S / 2);
-      fit(b, { x0: -0.4, x1: 6.4, y0: -6.4, y1: 0.4 }, { t: 30, b: 74, l: 50, r: 50 });
+      fit(b, bboxOf(sq), { t: 50, b: 94, l: 50, r: 50 });
       fillPoly(b, sq, 'sky', 0.08); poly(b, sq, 'ink', 3.4);
       fillPoly(b, [E, B, C], 'green', 0.18); poly(b, [E, B, C], 'green', 3.4);
       line(b, A, E, 'ink', 3); line(b, D, E, 'ink', 3);
@@ -268,9 +268,9 @@
     question: '정사각형 ABCD에서 BE=CF가 되도록 변 BC, CD 위에 점 E, F를 잡으면 두 선분 AE와 BF는 어떤 관계일까?',
     ctl: ['qfSp', 'qfE'],
     init: (s) => { s.qfSp = 6; s.qfE = 2; s.qfK = 0; s.qfThA = 30; },
-    reroll: (s) => { s.qfSp = pick([4, 6, 8], s.qfSp); s.qfE = rint(1, s.qfSp - 1); s.qfK = rint(0, 1); s.qfThA = rint(20, 65); },
+    reroll: (s) => { s.qfSp = pick([4, 6, 8], s.qfSp); s.qfE = rint(1, s.qfSp - 1); s.qfK = rint(0, 1); s.qfThA = rint(20, 44); },
     model: (s) => {
-      const S = ci(s.qfSp, 4, 8), e = clamp(ci(s.qfE, 1, 7), 1, S - 1), th = ci(s.qfThA || 30, 20, 65);
+      const S = ci(s.qfSp, 4, 8), e = clamp(ci(s.qfE, 1, 7), 1, S - 1), th = ci(s.qfThA || 30, 20, 44);
       const mk = (S0, e0) => { const A = pt(0, -S0), B = pt(0, 0), C = pt(S0, 0), D = pt(S0, -S0), E = pt(e0, 0), F = pt(S0, -e0); return { A, B, C, D, E, F, Pp: inter(A, E, B, F) }; };
       const g = mk(S, e), g2 = mk(6, 6 * tanD(th));
       return { S, e, th, ...g, g2, fd: S - e, K: s.qfK || 0 };

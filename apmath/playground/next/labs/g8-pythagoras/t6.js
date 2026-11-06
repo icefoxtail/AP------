@@ -53,24 +53,26 @@
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       // 길이 (그림 안): 문제 kind=0 은 BC, AB 를 주고 높이 x, kind=1 은 BC 와 넓이를 주고 AB 를 구함
       T(b, mid(Bp, Cp), `${bc}`, { dy: 36, size: 17, color: 'sky' });
-      if (!prob || kind === 0) { sideTag(b, Ap, Bp, Cp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Ap, Cp, Bp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); }
+      if (C.full || kind === 0 || C.answer) { sideTag(b, Ap, Bp, Cp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Ap, Cp, Bp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); }
       else sideTag(b, Ap, Bp, Cp, 'x', { color: 'amber', size: 18, gap: 12 });
       if (st(1) || prob) {
-        if (!prob) T(b, lerp(Ap, H, 0.5), hi ? `${hi}` : `h²=${h2}`, { dx: hi ? 14 : 34, size: 17, color: 'rose' });
+        if (C.full || C.answer || C.review && kind === 1 && C.step >= 3) T(b, lerp(Ap, H, 0.5), hi ? `${hi}` : `h²=${h2}`, { dx: hi ? 14 : 34, size: 17, color: 'rose' });
       }
-      if (prob && kind === 0) T(b, lerp(Ap, H, 0.5), 'x', { dx: 14, size: 18, color: 'rose' });
-      if (kind === 1 && prob) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 16, color: 'ink' });
+      if (!C.answer && kind === 0) T(b, lerp(Ap, H, 0.5), 'x', { dx: 14, size: 18, color: 'rose' });
+      if (kind === 1 && C.givens) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 16, color: 'ink' });
       if (!prob && st(2)) { T(b, lerp(Bp, H, 0.5), `${half}`, { dy: 16, size: 15, color: 'sky' }); T(b, lerp(H, Cp, 0.5), `${half}`, { dy: 16, size: 15, color: 'sky' }); }
-      if (!prob && st(3) && area != null) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 15, color: 'ink' });
+      if (C.full && area != null) T(b, centroid([Ap, Bp, Cp]), `넓이 ${area}`, { dy: 30, size: 15, color: 'ink' });
     },
     steps: (M) => [
-      `꼭짓점 A에서 밑변 BC에 수선 AH를 내려요. 이등변삼각형에서 수선의 발 H는 밑변을 반으로 나눠요: $BH=HC=\\frac{${M.bc}}{2}=${M.half}$.`,
-      `직각삼각형 ABH에서 $AH^2=AB^2-BH^2=${M.leg}^2-${M.half}^2=${M.leg * M.leg}-${M.half * M.half}=${M.h2}$${M.hi ? `, $AH=${M.hi}$` : ''}예요.`,
-      M.hi ? `넓이 $=\\frac{1}{2}\\times BC\\times AH=\\frac{1}{2}\\times${M.bc}\\times${M.hi}=${M.area}$예요.` : `$AH^2=${M.h2}$이고 정수가 아니에요. 높이가 정수가 되는 값(칩)을 골라 보세요.`
+      M.kind === 0 ? `$AB=AC=${M.leg}$, $BC=${M.bc}$인 이등변삼각형이에요. 높이 $AH=x$를 구해요.` : `밑변 $BC=${M.bc}$, 넓이 $${M.area}$인 이등변삼각형이에요. 같은 변 $AB=AC=x$를 구해요.`,
+      `꼭짓점 A에서 밑변에 수선 AH를 내려요. 이등변삼각형이므로 $BH=HC=${M.bc}\\div2=${M.half}$예요.`,
+      M.kind === 0 ? `직각삼각형 ABH의 빗변은 AB예요. $x^2=AB^2-BH^2=${M.leg}^2-${M.half}^2$예요.` : `넓이 $${M.area}=\\frac{1}{2}\\times${M.bc}\\times AH$에서 $AH=${M.area}\\times2\\div${M.bc}=${M.hi}$예요.`,
+      M.kind === 0 ? `$x^2=${M.leg * M.leg}-${M.half * M.half}=${M.h2}$예요.` : `직각삼각형 ABH에서 $x^2=AH^2+BH^2=${M.hi}^2+${M.half}^2=${M.leg * M.leg}$예요.`,
+      `따라서 ${M.kind === 0 ? '높이 AH' : '같은 변 AB'}의 길이는 $x=${M.kind === 0 ? M.hi : M.leg}$예요.`
     ],
     view: (M) => ({
       guide: '막대나 칩으로 <b>밑변</b>과 <b>같은 두 변</b>을 바꿔 보세요. 수선 AH는 밑변을 <b>반으로</b> 나누고, 직각삼각형 ABH로 높이를 구해요.',
-      readouts: [rd('BH = HC', `${M.half}`, 'sky', `${M.bc} ÷ 2`), rd('높이 AH', M.hi ? `${M.hi}` : `AH²=${M.h2}`, 'rose', `${M.leg}² − ${M.half}²`), rd('넓이', M.area != null ? `${M.area}` : '구할 수 없어요', 'green', M.hi ? `½ × ${M.bc} × ${M.hi}` : '')],
+      readouts: [rd('BH = HC', `${M.half}`, 'sky', `${M.bc} ÷ 2`), rd('높이 AH', M.hi ? `${M.hi}` : `AH²=${M.h2}`, 'rose', `${M.leg}² − ${M.half}²`), rd('넓이', M.area != null ? `${M.area}` : `넓이²=${M.half * M.half * M.h2}`, 'green', M.hi ? `½ × ${M.bc} × ${M.hi}` : '정수가 아니므로 제곱으로 나타내요')],
       formula: `<p>$AH^2=AB^2-BH^2=${M.leg}^2-${M.half}^2=${M.h2}$</p>${M.hi ? `<p>$S=\\frac{1}{2}\\times${M.bc}\\times${M.hi}=${M.area}$</p>` : ''}`,
       rule: '이등변삼각형의 꼭짓점에서 밑변에 내린 수선은 밑변을 이등분 → 직각삼각형 ABH에서 높이',
       notes: notes('밑변이 아니라 <b>밑변의 반</b>이 직각삼각형의 한 변이에요.', '넓이의 높이는 <b>수선 AH</b>예요. 같은 변 AB가 아니에요.')
@@ -120,13 +122,15 @@
       [[Ap, 'A', -1, -1], [Dp, 'D', 1, -1], [Cp, 'C', 1, 1], [Bp, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       if (st(1)) { T(b, H, 'H', { dx: -4, dy: 17, size: 15, color: 'rose' }); T(b, I, 'I', { dx: 4, dy: 17, size: 15, color: 'rose' }); }
       T(b, mid(Ap, Dp), `${u}`, { dy: -14, size: 17, color: 'sky' });
-      if (!prob || kind === 0) T(b, mid(Bp, Cp), `${v}`, { dy: 34, size: 16, color: 'sky' });
+      if (C.full || kind === 0) T(b, mid(Bp, Cp), `${v}`, { dy: 34, size: 16, color: 'sky' });
       // 문제 kind=0 : AD, BC, AB, BH 를 주고 높이 x (AH) / kind=1 : 이등변사다리꼴 AD, BC, 높이를 주고 둘레
-      if (prob && kind === 0) {
+      if (C.givens && kind === 0) {
         sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 16, color: 'green' });
-        T(b, lerp(Ap, H, 0.5), 'x', { dx: 14, size: 18, color: 'rose' });
-      } else if (prob && kind === 1) {
+        T(b, lerp(Ap, H, 0.5), C.answer ? `x=${h}` : 'x', { dx: C.answer ? 26 : 14, size: 18, color: 'rose' });
+      } else if (C.givens && kind === 1) {
         T(b, mid(Bp, Cp), `${v}`, { dy: 34, size: 16, color: 'sky' }); T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
+        if (C.review && C.step >= 3) { T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(I, Cp), `${d2}`, { dy: 16, size: 15, color: 'green' }); }
+        if (C.review && C.step >= 4) { sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Cp, Dp, Bp, `${l2i}`, { color: 'amber', size: 17, gap: 12 }); }
       } else if (!prob) {
         sideTag(b, Bp, Ap, Cp, l1i ? `${l1i}` : `AB²=${l1}`, { color: 'amber', size: 16, gap: 12 }); sideTag(b, Cp, Dp, Bp, l2i ? `${l2i}` : `CD²=${l2}`, { color: 'amber', size: 16, gap: 12 });
         T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
@@ -134,10 +138,11 @@
       }
     },
     steps: (M) => [
-      `윗변의 양 끝 A, D에서 아랫변 BC에 수선을 내려요(수선의 발 H, I). 높이 $AH=DI$이고 직각삼각형 ABH, DIC가 생겨요.`,
-      `아랫변을 나눠요: $BC=BH+HI+IC$, $HI=AD=${M.u}$이므로 $BH+IC=${M.v}-${M.u}=${M.d1 + M.d2}$ ($BH=${M.d1}$, $IC=${M.d2}$).`,
-      `직각삼각형 ABH에서 $AB^2=AH^2+BH^2=${M.h}^2+${M.d1}^2=${M.l1}$${M.l1i ? `, $AB=${M.l1i}$` : ''}. 같은 방법으로 $CD^2=${M.l2}$${M.l2i ? `, $CD=${M.l2i}$` : ''}예요.`,
-      M.per != null ? `둘레 $=${M.u}+${M.v}+${M.l1i}+${M.l2i}=${M.per}$, 넓이 $=\\frac{1}{2}(${M.u}+${M.v})\\times${M.h}=${G.texRat(M.area)}$예요.` : `넓이 $=\\frac{1}{2}(${M.u}+${M.v})\\times${M.h}=${G.texRat(M.area)}$예요.`
+      M.kind === 1 ? `이등변사다리꼴에서 $AD=${M.u}$, $BC=${M.v}$, 높이 $${M.h}$예요. 네 변의 길이를 더해 둘레를 구해요.` : `$AB=${M.l1i}$, $BH=${M.d1}$이고 $AH\\perp BC$예요. 구하는 높이는 $AH=x$예요.`,
+      `A와 D에서 BC에 수선 AH, DI를 내려요. 가운데 AHID는 직사각형이고 양옆은 직각삼각형이에요.`,
+      M.kind === 1 ? `양쪽 삼각형은 합동이므로 $BH=IC=\\frac{BC-AD}{2}=\\frac{${M.v}-${M.u}}{2}=${M.d1}$예요.` : `직각삼각형 ABH에서 빗변은 AB이므로 $x^2=AB^2-BH^2=${M.l1i}^2-${M.d1}^2$예요.`,
+      M.kind === 1 ? `$AB^2=${M.h}^2+${M.d1}^2=${M.l1}$이므로 $AB=CD=${M.l1i}$예요.` : `$x^2=${M.l1}-${M.d1 * M.d1}=${M.h * M.h}$예요.`,
+      M.kind === 1 ? `둘레 $=${M.u}+${M.v}+${M.l1i}+${M.l1i}=${M.per}$예요.` : `따라서 높이는 $x=${M.h}$예요. 다리 AB와 높이 AH를 구별해요.`
     ],
     view: (M) => ({
       guide: '막대나 칩으로 <b>윗변, 높이, BH, IC</b>를 바꿔 보세요. 수선 두 개를 내리면 <b>직각삼각형 두 개</b>와 <b>직사각형</b>(AHID)으로 나뉘어요.',
@@ -181,7 +186,7 @@
       if (!d) { T(b, pt(w / 2, -h / 2), `BD²=${d2}`, { size: 18, color: 'amber' }); T(b, pt(w / 2, 0), '대각선이 정수가 되는 값을 골라 보세요', { dy: 34, size: 14, color: 'rose' }); return; }
       const dv = unit(sub(D, Bp)), Pf = add(Bp, mul(dv, M.BP)), Qf = add(D, mul(dv, -M.BP));
       if (st(1)) {
-        const mAP = kind === 0 && prob, mPQ = kind === 1 && prob, mAP1 = kind === 2 && prob;
+        const mAP = kind === 0 && C.givens, mPQ = kind === 1 && C.givens, mAP1 = kind === 2 && C.givens;
         line(b, A, Pf, (mAP || mAP1) ? 'amber' : 'rose', (mAP || mAP1) ? 4.2 : 2.8); line(b, Cp, Qf, mAP ? 'amber' : 'rose', mAP ? 4.2 : 2.8);
         b.right(Pf, Bp, A, { size: 10, color: 'rose' }); b.right(Qf, D, Cp, { size: 10, color: 'rose' });
         b.point(Pf, { color: 'rose', r: 4 }); b.point(Qf, { color: 'rose', r: 4 });
@@ -190,23 +195,25 @@
       }
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cp, 'C', 1, 1], [Bp, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       T(b, mid(Bp, Cp), `${w}`, { dy: 18, size: 17, color: 'sky' }); sideTag(b, A, Bp, Cp, `${h}`, { color: 'green', size: 17, gap: 12 });
-      if (!prob) T(b, lerp(Bp, D, 0.2), `BD=${d}`, { dx: -4, dy: 20, size: 15, color: 'sky' });
-      if (prob && kind === 2) T(b, mid(A, Pf), 'x', { dx: -10, dy: -10, size: 18, color: 'amber' });
-      if (prob && kind === 1) T(b, mid(Pf, Qf), 'x', { dx: 6, dy: -14, size: 18, color: 'amber' });
-      if (!prob && st(2)) { T(b, mid(A, Pf), `AP=${f(M.AP)}`, { dx: -6, dy: -16, size: 14, color: 'rose' }); }
-      if (!prob && st(3)) T(b, mid(Pf, Qf), `PQ=${f(M.PQ)}`, { dx: 8, dy: 22, size: 14, color: 'amber' });
+      if (C.full || C.review && C.step >= 2) T(b, mid(Bp, D), `BD=${d}`, { dy: -24, size: 15, color: 'sky' });
+      if (!C.answer && kind === 2) T(b, mid(A, Pf), 'x', { dx: -10, dy: -10, size: 18, color: 'amber' });
+      if (!C.answer && kind === 1) T(b, mid(Pf, Qf), 'x', { dx: 6, dy: -14, size: 18, color: 'amber' });
+      if (C.full || C.review && kind !== 1 && C.step >= 3) T(b, mid(A, Pf), `AP=${f(M.AP)}`, { dx: -6, dy: -16, size: 14, color: 'rose' });
+      if (C.full || C.answer && kind === 1) T(b, mid(Pf, Qf), `PQ=${f(M.PQ)}`, { dx: 8, dy: 22, size: 14, color: 'amber' });
     },
     steps: (M) => M.d ? [
-      `대각선 $BD^2=AB^2+BC^2=${M.h}^2+${M.w}^2=${M.d2}$이므로 $BD=${M.d}$예요. (점 P, Q는 A, C에서 BD에 내린 수선의 발)`,
-      `삼각형 ABD의 넓이를 두 가지로 나타내요: $\\frac{1}{2}\\times AB\\times AD=\\frac{1}{2}\\times BD\\times AP$. 그래서 $AP=\\frac{${M.h}\\times${M.w}}{${M.d}}=${f(M.AP)}$이고 $CQ=AP$예요(AP + CQ = $${f(M.sum)}$).`,
-      `삼각형 ABP에서 $BP^2=AB^2-AP^2$, 또는 닮음으로 $BP=\\frac{AB^2}{BD}=\\frac{${M.h * M.h}}{${M.d}}=${f(M.BP)}$예요. $DQ=BP$이므로 $PQ=BD-2BP=${M.d}-${f(2 * M.BP)}=${f(M.PQ)}$예요.`
-    ] : ['대각선의 길이가 정수가 되는 값(칩)을 골라 보세요. 그렇지 않으면 BD² 까지만 구해요.'],
+      `$AB=${M.h}$, $BC=AD=${M.w}$인 직사각형이에요. 구하는 것은 ${M.kind === 0 ? '$AP+CQ$' : M.kind === 1 ? '$PQ=x$' : '$AP=x$'}예요.`,
+      `직각삼각형 ABD에서 $BD^2=${M.h}^2+${M.w}^2=${M.d2}$이므로 $BD=${M.d}$예요.`,
+      M.kind === 1 ? `닮음 $\\triangle ABP\\sim\\triangle DBA$에서 $BP=\\frac{AB^2}{BD}=\\frac{${M.h * M.h}}{${M.d}}=${f(M.BP)}$이고 $DQ=BP$예요.` : `삼각형 ABD의 넓이는 $\\frac{AB\\times AD}{2}=\\frac{BD\\times AP}{2}$이므로 $AP=\\frac{${M.h}\\times${M.w}}{${M.d}}=${f(M.AP)}$예요.`,
+      M.kind === 1 ? `B에서 잰 두 수선의 발의 위치는 $BP=${f(M.BP)}$, $BQ=BD-DQ=${f(M.d - M.BP)}$예요. P와 Q의 순서에 관계없이 두 위치의 차의 절댓값이 PQ예요.` : M.kind === 0 ? `대각선 양쪽의 합동인 삼각형 ABD, CDB의 높이가 같으므로 $CQ=AP=${f(M.AP)}$예요.` : `구한 AP는 대각선 BD에 수직인 높이예요. 삼각형의 넓이에 다시 대입해 확인해요.`,
+      M.kind === 1 ? `$PQ=|${f(M.BP)}-${f(M.d - M.BP)}|=${f(M.PQ)}$예요.` : M.kind === 0 ? `$AP+CQ=${f(M.AP)}+${f(M.AP)}=${f(M.sum)}$예요.` : `$AP=x=${f(M.AP)}$예요.`
+    ] : ['대각선의 제곱은 주어진 두 변의 제곱의 합이에요.'],
     view: (M) => M.d ? ({
-      guide: '막대나 칩으로 <b>가로, 세로</b>를 바꿔 보세요. 삼각형의 넓이를 두 가지로 나타내 <b>AP</b>를 구하고, <b>BP</b>를 빼서 <b>PQ</b>를 구해요.',
-      readouts: [rd('대각선 BD', `${M.d}`, 'sky', `${M.h}² + ${M.w}² = ${M.d2}`), rd('AP = CQ', `$${f(M.AP)}$`, 'rose', `${M.h} × ${M.w} ÷ ${M.d}`), rd('AP + CQ', `$${f(M.sum)}$`, 'amber'), rd('BP = DQ', `$${f(M.BP)}$`, 'green', `${M.h}² ÷ ${M.d}`), rd('PQ', `$${f(M.PQ)}$`, 'amber', `${M.d} − 2 × BP`)],
-      formula: `<p>$AP=\\frac{AB\\times AD}{BD}=${f(M.AP)}$, $BP=\\frac{AB^2}{BD}=${f(M.BP)}$</p><p>$PQ=BD-2BP=${f(M.PQ)}$</p>`,
-      rule: '직사각형의 대각선에 내린 수선: AP = (AB×AD)÷BD, BP = AB²÷BD, PQ = BD − 2BP',
-      notes: notes('$AP\\times BD=AB\\times AD$ (삼각형의 넓이를 두 가지로) 는 자주 쓰여요.', '$PQ$는 $BD-BP-DQ$예요. $BD$에서 한 번만 빼지 않아요.')
+      guide: '막대나 칩으로 <b>가로, 세로</b>를 바꿔 보세요. 삼각형의 넓이를 두 가지로 나타내 <b>AP</b>를 구하고, B에서 잰 두 수선의 발의 <b>위치 차</b>로 PQ를 구해요.',
+      readouts: [rd('대각선 BD', `${M.d}`, 'sky', `${M.h}² + ${M.w}² = ${M.d2}`), rd('AP = CQ', `$${f(M.AP)}$`, 'rose', `${M.h} × ${M.w} ÷ ${M.d}`), rd('AP + CQ', `$${f(M.sum)}$`, 'amber'), rd('BP = DQ', `$${f(M.BP)}$`, 'green', `${M.h}² ÷ ${M.d}`), rd('PQ', `$${f(M.PQ)}$`, 'amber', `|${M.d} − 2 × BP|`)],
+      formula: `<p>$AP=\\frac{AB\\times AD}{BD}=${f(M.AP)}$, $BP=\\frac{AB^2}{BD}=${f(M.BP)}$</p><p>$PQ=|BD-2BP|=${f(M.PQ)}$</p>`,
+      rule: '직사각형의 대각선에 내린 수선: AP = (AB×AD)÷BD, BP = AB²÷BD, PQ = |BD − 2BP|',
+      notes: notes('$AP\\times BD=AB\\times AD$ (삼각형의 넓이를 두 가지로) 는 자주 쓰여요.', '가로와 세로의 크기가 바뀌면 <b>P, Q의 순서도 바뀌어요</b>. $PQ=|BP-BQ|=|BD-2BP|$로 양수인 거리를 구해요.')
     }) : ({ guide: '대각선이 정수가 되는 칩을 눌러 보세요.', readouts: [rd('대각선²', `${M.d2}`, 'amber', `${M.h}² + ${M.w}²`)], rule: '직사각형의 대각선 BD²=AB²+BC²' }),
     prob: (M) => {
       const { w, h, d, kind } = M;
@@ -216,7 +223,7 @@
           : { ans: M.AP, tag: '[높이] AP의 길이', stem: `다음 그림의 직사각형 ABCD에서 $\\overline{AP}\\perp\\overline{BD}$이다. $\\overline{AB}=${h}$, $\\overline{BC}=${w}$일 때, $\\overline{AP}$의 길이 $x$는?` };
       const ans = mine.ans;
       const wrong = kind === 0 ? [[M.AP, 'AP 하나만 구했어요. CQ도 더해요.'], [(w * h) / d / 2, '다시 계산해 보세요.'], [d, '대각선의 길이예요.'], [M.PQ, 'PQ의 길이예요.'], [(w + h) * 2 / d + 0, '다시 계산해 보세요.'], [(w * h) / 2, '삼각형 ABD의 넓이예요.']]
-        : kind === 1 ? [[M.BP, 'BP의 길이예요. PQ는 BD에서 BP와 DQ를 빼요.'], [d - M.BP, 'BD에서 BP를 한 번만 뺐어요. DQ도 빼요.'], [M.AP, 'AP의 길이예요.'], [d - 2 * M.AP, '다시 계산해 보세요.'], [M.BP * 2, '다시 계산해 보세요.'], [ans + 1 / d, '다시 계산해 보세요.']]
+        : kind === 1 ? [[M.BP, 'BP의 길이예요. PQ는 B에서 잰 P와 Q의 위치 차의 절댓값이에요.'], [d - M.BP, 'BQ의 길이예요. PQ는 |BP−BQ|로 구해요.'], [M.AP, 'AP의 길이예요.'], [d - 2 * M.AP, '다시 계산해 보세요.'], [M.BP * 2, '다시 계산해 보세요.'], [ans + 1 / d, '다시 계산해 보세요.']]
           : [[M.sum, 'AP와 CQ의 합이에요. 구하는 것은 AP 하나예요.'], [(w * h) / 2, '삼각형 ABD의 넓이예요. BD로 나누어야 해요.'], [(w * h) / d * 2, '다시 계산해 보세요.'], [h, 'AB의 길이예요.'], [w * h / (d + 1), '다시 계산해 보세요.'], [ans + 1 / d, '다시 계산해 보세요.']];
       return { tag: mine.tag, key: `${kind}-${w}-${h}`, stem: mine.stem, choices: mkChoices(ans, wrong, cf) };
     }

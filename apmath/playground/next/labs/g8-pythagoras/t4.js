@@ -80,35 +80,36 @@
       // 위: 삼각형 / 아래: 가로 막대 두 개(a²+b² 와 c²)
       const scale = Math.max(sum, sum + 2 * a * bb * 0.9) ;
       const barW = a + bb + 1.2;
-      fit(b, { x0: -bb - 0.5, x1: a + 0.8, y0: -bb - 0.4, y1: 3.6 }, { t: 30, b: 34, l: 30, r: 30 });
+      const shape = bboxOf([O, A, B]), barLeft = C.full ? -bb : shape.x0, barRight = a;
+      fit(b, { x0: barLeft - 0.5, x1: a + 0.8, y0: C.full ? -bb - 0.4 : shape.y0 - 0.4, y1: prob ? 0.3 : 4.2 }, { t: 30, b: 34, l: 30, r: 30 });
       const st = (n) => !C.review || C.step >= n;
-      fillPoly(b, [O, B, A], prob ? 'ink' : TYC[type], prob ? 0.06 : st(2) ? 0.16 : 0.08);
+      fillPoly(b, [O, B, A], C.answer ? TYC[type] : 'ink', C.answer ? 0.14 : 0.06);
       line(b, O, B, 'sky', 4); line(b, O, A, 'green', 4);
-      line(b, A, B, !prob && st(2) ? TYC[type] : 'amber', 4);
-      ang(b, O, B, A, { color: prob ? 'amber' : TYC[type], r: 26, label: prob ? '' : `${Math.round(th)}°`, rings: 1, noRight: prob });
-      [[O, 'C', -1, 1], [B, 'B', 1, 1], [A, 'A', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
+      line(b, A, B, 'amber', 4);
+      ang(b, O, B, A, { color: C.answer ? TYC[type] : 'rose', r: 26, label: C.answer ? `${Math.round(th)}°` : '', rings: 1, noRight: !C.answer });
+      [[O, 'C', -1, -1], [B, 'B', 1, 1], [A, 'A', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       T(b, mid(O, B), `${a}`, { dy: 18, size: 17, color: 'sky' });
       sideTag(b, O, A, B, `${bb}`, { color: 'green', size: 17, gap: 11 });
-      if (!prob || kind === 1) sideTag(b, A, B, O, prob ? `AB²=${c2}` : `c²${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'}${fmtN(c2)}`, { color: 'amber', size: 16, gap: 12 });
+      if (C.full || C.review && C.step >= 2 || kind === 1) sideTag(b, A, B, O, prob ? `AB²=${c2}` : `c²${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'}${fmtN(c2)}`, { color: 'amber', size: 16, gap: 12 });
       else sideTag(b, A, B, O, `${Math.round(Math.sqrt(c2))}`, { color: 'amber', size: 16, gap: 12 });
       if (!prob && !C.review && C.txt) b.handle('th', A, { color: 'amber', r: 8, ariaLabel: '꼭짓점 A 끌기', drag: (w) => { s.pyHang = clamp(Math.round(Math.atan2(-w.y, w.x) / DEG), 30, 150); } });
       if (prob) return;
       // 두 막대: a²+b² (파랑+초록) / c² (노랑)  — 길이는 넓이(제곱)에 비례
-      const U = (a + bb + 0.6) / Math.max(sum, c2);
-      const y1 = 1.4, y2 = 2.7, h = 0.8, x0 = -bb;
+      const U = (barRight - barLeft) / Math.max(sum, c2);
+      const y1 = 1.5, y2 = 3.3, h = 0.65, x0 = barLeft;
       if (st(2)) {
-        fillPoly(b, [pt(x0, y1), pt(x0 + a * a * U, y1), pt(x0 + a * a * U, y1 + h), pt(x0, y1 + h)], 'sky', 0.55);
-        fillPoly(b, [pt(x0 + a * a * U, y1), pt(x0 + sum * U, y1), pt(x0 + sum * U, y1 + h), pt(x0 + a * a * U, y1 + h)], 'green', 0.55);
-        fillPoly(b, [pt(x0, y2), pt(x0 + c2 * U, y2), pt(x0 + c2 * U, y2 + h), pt(x0, y2 + h)], 'amber', 0.55);
+        fillPoly(b, [pt(x0, y1), pt(x0 + a * a * U, y1), pt(x0 + a * a * U, y1 + h), pt(x0, y1 + h)], 'sky', 0.3);
+        fillPoly(b, [pt(x0 + a * a * U, y1), pt(x0 + sum * U, y1), pt(x0 + sum * U, y1 + h), pt(x0 + a * a * U, y1 + h)], 'green', 0.3);
+        fillPoly(b, [pt(x0, y2), pt(x0 + c2 * U, y2), pt(x0 + c2 * U, y2 + h), pt(x0, y2 + h)], 'amber', 0.3);
         poly(b, [pt(x0, y1), pt(x0 + sum * U, y1), pt(x0 + sum * U, y1 + h), pt(x0, y1 + h)], 'ink', 2); poly(b, [pt(x0, y2), pt(x0 + c2 * U, y2), pt(x0 + c2 * U, y2 + h), pt(x0, y2 + h)], 'ink', 2);
-        T(b, pt(x0 + sum * U / 2, y1 + h / 2), `a²+b²=${a * a}+${bb * bb}=${sum}`, { size: 15, color: 'ink' });
-        T(b, pt(x0 + c2 * U / 2, y2 + h / 2), `c² ${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'} ${fmtN(c2)}`, { size: 15, color: 'ink' });
+        T(b, pt(x0, y1), `a²+b²=${a * a}+${bb * bb}=${sum}`, { dy: -12, align: 'left', size: 15, color: 'ink' });
+        T(b, pt(x0, y2), `c² ${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'} ${fmtN(c2)}`, { dy: -12, align: 'left', size: 15, color: 'amber' });
       }
     },
     steps: (M) => [
-      `두 변 $a=${M.a}$, $b=${M.b}$는 그대로 두고 ∠C를 바꾸면 변 AB($c$)의 길이가 달라져요. 지금 $\\angle C=${Math.round(M.th)}^\\circ$예요.`,
-      `$a^2+b^2=${M.a * M.a}+${M.b * M.b}=${M.sum}$과 $c^2$을 비교해요. (파랑+초록 막대와 노랑 막대의 길이 비교)`,
-      M.type === 'right' ? `$c^2=a^2+b^2$이므로 ∠C는 <b>직각</b>이에요.` : M.type === 'acute' ? `$c^2\\lt a^2+b^2$이므로 ∠C는 <b>예각</b>이에요. (노랑 막대가 더 짧아요)` : `$c^2\\gt a^2+b^2$이므로 ∠C는 <b>둔각</b>이에요. (노랑 막대가 더 길어요)`
+      `$BC=${M.a}$, $CA=${M.b}$${M.kind === 1 ? `, $AB^2=${M.c2}$` : `, $AB=${Math.round(Math.sqrt(M.c2))}$`}예요. 비교할 각은 AB의 맞은편 $\\angle C$예요.`,
+      `$BC^2+CA^2=${M.a}^2+${M.b}^2=${M.sum}$을 하늘색·초록색 막대로, $AB^2=${M.c2}$을 노란 막대로 나타내요.`,
+      `$AB^2${M.type === 'acute' ? '\\lt' : M.type === 'right' ? '=' : '\\gt'} BC^2+CA^2$이므로 $\\angle C$는 ${TY[M.type]}이에요. 삼각형 전체의 종류가 아니라 지정된 각을 판별해요.`
     ],
     view: (M) => ({
       guide: '막대나 <b>노란 점</b>을 끌어 ∠C를 바꿔 보세요. 파랑+초록 막대는 $a^2+b^2$, 노랑 막대는 $c^2$이에요. 노랑이 짧으면 예각, 같으면 직각, 길면 둔각이에요.',
@@ -165,7 +166,8 @@
         if (!ok) {
           fit(b, { x0: 0, x1: 10, y0: -3, y1: 0 }, { t: 30, b: 30 });
           T(b, pt(5, -1.5), `${srt[0]}+${srt[1]} ≤ ${srt[2]}`, { size: 22, color: 'rose' });
-          T(b, pt(5, -0.4), '삼각형이 만들어지지 않아요 (가장 긴 변 ≥ 나머지 두 변의 합)', { size: 15, color: 'rose' });
+          T(b, pt(5, -0.4), '삼각형이 만들어지지 않아요', { size: 16, color: 'rose' });
+          T(b, pt(5, -0.4), '가장 긴 변 ≥ 나머지 두 변의 합', { dy: 24, size: 14, color: 'ink' });
           return;
         }
         const [m1, m2, L] = srt;
@@ -175,15 +177,15 @@
         fit(b, { x0: box.x0, x1: box.x1, y0: box.y0, y1: box.y1 + 1.8 }, { t: 40, b: 74, l: 36, r: 36 });
         const st = (n) => !C.review || C.step >= n;
         const ty = M.type;
-        fillPoly(b, Tr, prob ? 'ink' : TYC[ty], prob ? 0.06 : st(3) ? 0.2 : 0.08);
+        fillPoly(b, Tr, C.answer ? TYC[ty] : 'ink', C.answer ? 0.16 : 0.06);
         poly(b, Tr, 'ink', 3.4);
         line(b, A, B, 'amber', 6, { alpha: st(1) ? 0.9 : 0 });
-        ang(b, Cc, A, B, { color: prob ? 'amber' : TYC[ty], r: 28, rings: 1, noRight: prob });
+        ang(b, Cc, A, B, { color: C.answer ? TYC[ty] : 'rose', r: 28, rings: 1, noRight: !C.answer });
         [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
         sideTag(b, A, B, Cc, `${L}`, { color: 'amber', size: 17, gap: 12 });
         sideTag(b, Cc, A, B, `${m1}`, { color: 'green', size: 17, gap: 12 });
         sideTag(b, B, Cc, A, `${m2}`, { color: 'sky', size: 17, gap: 12 });
-        if (!prob && C.txt && st(2)) T(b, pt(L / 2, 0), `${L}²=${L * L}  ${cmpTxt(M.zz, M.sum)}  ${m1}²+${m2}²=${M.sum}`, { dy: 58, size: 16, color: TYC[ty] });
+        if (!prob && C.txt && st(2)) { T(b, pt(L / 2, 0), `가장 긴 변의 제곱 ${L}²=${L * L}`, { dy: 46, size: 15, color: 'amber' }); T(b, pt(L / 2, 0), `나머지 제곱의 합 ${m1}²+${m2}²=${M.sum}`, { dy: 68, size: 15, color: 'ink' }); }
       },
       steps: (M) => M.ok ? [
         `세 변 중 가장 긴 변은 $${M.L}$이에요. 가장 긴 변의 맞은편 각이 가장 큰 각이에요.`,
@@ -233,6 +235,15 @@
       model: (s) => ({ ...rangeOf(s), ask: o.ask }),
       draw(b, s, M, C) {
         const { p, q, xs, n1, n2, x, cur, ask } = M, prob = C.problem;
+        if (C.full && !cur.ok) {
+          const [u, v, longest] = [p, q, x].sort((a, z) => a - z);
+          fit(b, { x0: 0, x1: longest, y0: -3, y1: 1 }, { t: 40, b: 50, l: 34, r: 34 });
+          line(b, pt(0, -2), pt(u, -2), 'sky', 5); line(b, pt(u, -2), pt(u + v, -2), 'green', 5);
+          line(b, pt(0, 0), pt(longest, 0), 'amber', 5);
+          T(b, pt(longest / 2, -2), `${u}+${v} ≤ ${longest}`, { dy: -24, size: 18, color: 'ink' });
+          T(b, pt(longest / 2, 0), `x=${x}: 삼각형이 만들어지지 않아요`, { dy: 28, size: 15, color: 'rose' });
+          return;
+        }
         const xm = prob ? Math.round((n1 + n2) / 2) : clamp(x, n1, n2), tr = classify(p, q, xm);
         const sides = tr.ok ? tr.s : [p, q, Math.max(1, n1)];
         const Tr = triSSS(sides[1], sides[0], sides[2]);
@@ -241,9 +252,9 @@
         fit(b, { x0: bx.x0, x1: bx.x0 + W, y0: bx.y0, y1: bx.y1 + 3.4 }, { t: 36, b: 38, l: 26, r: 26 });
         const st = (n) => !C.review || C.step >= n;
         const [A, B, Cc] = Tr;
-        fillPoly(b, Tr, tr.ok && !prob ? TYC[tr.type] : 'ink', prob ? 0.06 : 0.16);
+        fillPoly(b, Tr, C.answer && tr.ok ? TYC[tr.type] : 'ink', C.answer ? 0.14 : 0.06);
         poly(b, Tr, 'ink', 3.4);
-        if (tr.ok) ang(b, Tr[2], A, B, { color: prob ? 'amber' : TYC[tr.type], r: 26, noRight: prob });
+        if (tr.ok) ang(b, Tr[2], A, B, { color: C.answer ? TYC[tr.type] : 'rose', r: 26, noRight: !C.answer });
         [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', 0, -1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
         // 변 길이: 주어진 p, q 는 값, x 는 문제에서 문자
         const lens = [[A, B, sides[2]], [Cc, A, sides[0]], [B, Cc, sides[1]]];
@@ -253,7 +264,7 @@
         lens.forEach(([P1, P2, len], i) => {
           let t = `${len}`;
           const idxUsed = used.indexOf(len);
-          if (idxUsed >= 0) used.splice(idxUsed, 1); else if (!xUsed) { t = prob ? 'x' : `x=${len}`; xUsed = true; }
+          if (idxUsed >= 0) used.splice(idxUsed, 1); else if (!xUsed) { t = C.givens ? 'x' : `x=${len}`; xUsed = true; }
           sideTag(b, P1, P2, centroid(Tr), t, { color: t[0] === 'x' ? 'amber' : (i === 0 ? 'amber' : i === 1 ? 'green' : 'sky'), size: 17, gap: 12 });
         });
         if (prob) return;
@@ -262,12 +273,13 @@
         line(b, pt(bx.x0, y), pt(bx.x0 + W, y), 'muted', 2);
         xs.forEach((r, i) => {
           const px = pt(x0 + i * step, y);
-          const hit = r.type === ask;
-          b.point(px, { color: TYC[r.type], r: r.x === x ? 12 : 9, hollow: !hit });
-          T(b, px, `${r.x}`, { size: 13, color: r.x === x ? 'ink' : TYC[r.type] });
+          const classified = C.full || C.step >= (r.x > q ? 2 : 3), col = classified ? TYC[r.type] : 'muted';
+          const hit = C.answer && r.type === ask;
+          b.point(px, { color: col, r: r.x === x && C.full ? 12 : 9, hollow: !hit });
+          T(b, px, `${r.x}`, { size: 13, color: 'ink' });
         });
-        b.handle('xh', pt(x0 + Math.max(0, Math.min(nn - 1, x - n1)) * step, y), { color: 'amber', r: 7, ariaLabel: 'x 고르기', drag: (w) => { const i = clamp(Math.round((w.x - x0) / step), 0, nn - 1); s.pyRx = n1 + i; } });
-        if (C.txt) T(b, pt(bx.x0 + W / 2, y), `${TY[ask]}삼각형이 되는 x: ${listTxt(M[ask])}`, { dy: 30, size: 15, color: TYC[ask] });
+        if (C.full) b.handle('xh', pt(x0 + Math.max(0, Math.min(nn - 1, x - n1)) * step, y), { color: 'amber', r: 7, ariaLabel: 'x 고르기', drag: (w) => { const i = clamp(Math.round((w.x - x0) / step), 0, nn - 1); s.pyRx = n1 + i; } });
+        if (C.txt && C.answer) { T(b, pt(bx.x0 + W / 2, y), `${TY[ask]}삼각형이 되는 x`, { dy: 26, size: 14, color: TYC[ask] }); T(b, pt(bx.x0 + W / 2, y), listTxt(M[ask]), { dy: 46, size: 14, color: 'ink' }); }
       },
       steps: (M) => [
         `삼각형이 되려면 $|${M.q}-${M.p}|\\lt x\\lt ${M.q}+${M.p}$, 즉 $${M.n1}\\le x\\le ${M.n2}$인 자연수예요.`,
@@ -278,7 +290,7 @@
       view: (M) => ({
         guide: `막대나 수직선의 숫자로 <b>x</b>를 바꿔 보세요. 점의 색은 <b>하늘=예각, 초록=직각, 분홍=둔각</b>이고, 속이 찬 점이 지금 찾는 ${TY[M.ask]}삼각형이에요.`,
         readouts: [rd('가능한 자연수 x', `${M.n1} ~ ${M.n2}`, 'ink', `${M.q}−${M.p}\u2009<\u2009x\u2009<\u2009${M.q}+${M.p}`), rd(`${TY[M.ask]}이 되는 x`, listTxt(M[M.ask]), TYC[M.ask], `${M[M.ask].length}개`, null, true), rd('지금의 x', M.cur.ok ? `${M.x}: ${TY[M.cur.type]}` : `${M.x}: 삼각형이 안 돼요`, M.cur.ok ? TYC[M.cur.type] : 'rose')],
-        formula: `<p>$x^2\\gt ${M.p * M.p + M.q * M.q}$ (x가 가장 긴 변) 또는 $x^2\\lt ${M.q * M.q - M.p * M.p}$ ($${M.q}$가 가장 긴 변) → 둔각</p>`,
+        formula: `<p>$x^2${M.ask === 'obtuse' ? '\\gt ' : '\\lt '}${M.p * M.p + M.q * M.q}$ (x가 가장 긴 변) 또는 $x^2${M.ask === 'obtuse' ? '\\lt ' : '\\gt '}${M.q * M.q - M.p * M.p}$ ($${M.q}$가 가장 긴 변) → ${TY[M.ask]}</p>`,
         rule: '가장 긴 변이 정해지지 않으면 두 경우로 나누어 제곱을 비교하고, 삼각형이 되는 범위를 먼저 구한다',
         notes: notes('먼저 <b>삼각형이 되는 범위</b>(두 변의 차 < x < 합)를 구해요.', '$x$가 가장 긴 변일 때와 $' + M.q + '$가 가장 긴 변일 때를 <b>따로</b> 따져요.')
       }),

@@ -96,7 +96,8 @@
     const items = condItems(pk.wantTrue, force, pk);
     const stem = pk.wantTrue ? '다음 중 사각형 ABCD가 평행사변형이 되는 조건인 것은? (단, 점 O는 두 대각선 AC, BD의 교점이다.)' : '다음 중 사각형 ABCD가 평행사변형이 되는 조건이 <u>아닌</u> 것은? (단, 점 O는 두 대각선 AC, BD의 교점이다.)';
     const key = (pk.wantTrue ? 'T' : 'F') + items.map((x) => x.h.length).join('');
-    return { tag, key: key + (pk.t != null ? pk.t : '') + (pk.f || []).join('') + (pk.ts || []).join(''), html: stem, choices: mkTextChoices(items, s.qdOrd), wide: true };
+    const selected = pk.wantTrue ? TRUE_C[pk.t] : FALSE_C[pk.f[0]];
+    return { tag, key: key + (pk.t != null ? pk.t : '') + (pk.f || []).join('') + (pk.ts || []).join(''), html: stem, choices: mkTextChoices(items, s.qdOrd), wide: true, conditionId: selected.id, answerReason: selected.hint, wantTrue: pk.wantTrue };
   }
   // 문제 그림(일반 사각형 + 대각선 + O)
   function drawCondProb(b) {
