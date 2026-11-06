@@ -26,7 +26,7 @@
   /* ====================================================================== 1. 직사각형 */
   const rect = {
     id: 'a1-rect', title: '직사각형의 넓이', short: '직사각형',
-    question: '가로 6칸, 세로 4칸인 직사각형은 한 칸(1cm²)이 모두 몇 개일까? 넓이를 구하는 식은 무엇일까?',
+    question: (s) => { const M = rect.model(s); return `가로 ${M.W}칸, 세로 ${M.H}칸인 직사각형은 한 칸(1cm²)이 모두 몇 개일까? 넓이를 구하는 식은 무엇일까?`; },
     ctl: ['a1W', 'a1H', 'a1T'], anim: { key: 'a1T', dur: 6, label: '한 줄씩 세어 보기', start: 1 },
     init: (s) => { s.a1W = 6; s.a1H = 4; s.a1T = 1; },
     reroll: (s) => { s.a1W = rpick(range(3, 10), s.a1W); s.a1H = rpick(range(2, 7).filter((v) => v !== s.a1W), s.a1H); s.a1T = 1; },
@@ -34,13 +34,13 @@
     draw(b, s, M, C) {
       const { W, H, A } = M;
       FIT(b, { x0: 0, x1: W, y0: -H, y1: 0 }, { b: 92, l: 68 });
-      const kp = C.problem ? 0 : C.review ? (C.step >= 3 ? W : 0) : C.t * W; // 세어 본 줄 수(소수)
+      const kp = C.problem ? 0 : C.review ? (C.step >= 3 ? H : 0) : C.t * H; // 가로 W칸인 줄을 세로로 H줄 셉니다.
       if (!C.problem) {
-        for (let i = 0; i < W; i++) {
-          const f = clamp(kp - i, 0, 1);
-          for (let j = 0; j < H; j++) {
+        for (let j = 0; j < H; j++) {
+          const f = clamp(kp - j, 0, 1);
+          for (let i = 0; i < W; i++) {
             const cell = [pt(i, -H + j), pt(i + 1, -H + j), pt(i + 1, -H + j + 1), pt(i, -H + j + 1)];
-            if (f > 0) fillPoly(b, cell, 'sky', 0.1 + 0.28 * f);
+            if (f > 0) fillPoly(b, cell, 'green', 0.08 + 0.14 * f);
           }
         }
         for (let i = 0; i <= W; i++) line(b, pt(i, -H), pt(i, 0), 'muted', 1.3, { alpha: 0.55 });
@@ -58,8 +58,8 @@
       if (C.problem) { T(b, c0, '넓이 ?', { size: 22, color: 'amber' }); return; }
       if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');
       else if (C.review && C.step === 2) foot(b, pt(W / 2, 0), `한 줄에 ${W}칸 × ${H}줄`, 'amber');
-      else if (C.review || kp >= W - 1e-9) foot(b, pt(W / 2, 0), `${W}칸 × ${H}줄 = ${A}칸 = ${A}cm²`, 'green');
-      else foot(b, pt(W / 2, 0), `${Math.floor(kp + 1e-9)}줄 × ${H}칸 = ${Math.floor(kp + 1e-9) * H}칸`, 'sky');
+      else if (C.review || kp >= H - 1e-9) foot(b, pt(W / 2, 0), `${W}칸 × ${H}줄 = ${A}칸 = ${A}cm²`, 'green');
+      else foot(b, pt(W / 2, 0), `${Math.floor(kp + 1e-9)}줄 × ${W}칸 = ${Math.floor(kp + 1e-9) * W}칸`, 'green');
     },
     steps: (M) => [
       '작은 정사각형 한 칸은 가로 1cm, 세로 1cm이므로 넓이가 1cm²예요.',

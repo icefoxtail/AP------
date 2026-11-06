@@ -25,6 +25,16 @@
   const eqs = (v) => (isInt(v * 10) ? '=' : '≈'); // 소수 첫째 자리에서 딱 떨어지지 않으면 ≈
   const tx = (v) => fmtN(v).replace('−', '-');
   const texDeg = (v) => tx(v) + '^{\\circ}';
+  // 문제의 유리수는 반올림한 소수로 정답을 바꾸지 않습니다. 한 자리 유한소수는 유지합니다.
+  function exactN(v) {
+    if (isInt(v * 10)) return fmtN(v);
+    for (let d = 2; d <= 1000; d++) {
+      const n = Math.round(v * d);
+      if (Math.abs(v - n / d) < 1e-10) return `${n}/${d}`.replace('-', '−');
+    }
+    return `≈ ${fmtN(v)}`;
+  }
+  const exactTex = (v) => exactN(v).replace('−', '-').replace(/^(-?\d+)\/(\d+)$/, '\\frac{$1}{$2}').replace('≈ ', '\\approx ');
 
   /* ------------------------------------------------------------------ 기하 (figure: y 아래쪽) */
   const pt = (x, y) => ({ x, y });
@@ -177,9 +187,17 @@
   const showAt = (C, n) => C.step >= n;
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  function syncProblem(D, s, Q = D.prob(D.model(s), s)) {
+    const key = D.id + '|' + Q.key + '|' + (s.arSeed || 0);
+    if (s.arProblemKey != null && s.arProblemKey !== key) {
+      s.arPick = null; s.revealed = false; s.step = 1;
+    }
+    s.arProblemKey = key;
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.arSeed || 0);
+    const key = syncProblem(D, s, Q);
     const pk = s.arPick && s.arPick.key === key ? s.arPick : null;
     let h = `<div class="ar-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += '<div class="ar-choices">';
@@ -282,6 +300,8 @@
       enter: (s, lab) => {
         D.init(s);
         s.arSeed = 0; s.arPick = null; s.playing = false;
+        s.arProblemKey = null;
+        syncProblem(D, s);
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -299,8 +319,9 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        if (lab && lab.scene && lab.scene.ar === D && lab.s === s) syncProblem(D, s, D.prob(M, s));
+        const C = baseCtx(s, lab, false);
         // 단계 문장은 키트가 장면에 들어올 때 한 번만 만들어서, 막대로 값을 바꾸면 정리 탭의 숫자가 옛 값으로 남습니다 → 문장이 달라지면 정리 탭을 다시 만듭니다.
         if (lab && lab.scene && lab.scene.ar === D && lab.s === s && lab.refs && lab.refs.steps) {
           const key = JSON.stringify(D.steps(M));
@@ -331,8 +352,8 @@
   /* ------------------------------------------------------------------ 넓이 실험실 도우미 */
   // 그림 속 글자에 쓰는 ½: 키트가 \\frac{1}{2} 를 위·아래로 쌓은 분수로 그립니다.
   const HALF = '\\frac{1}{2}';
-  const cm2 = { tex: (v) => tx(v) + '\\text{cm}^2', plain: (v) => fmtN(v) + 'cm²' };
-  const cm1 = { tex: (v) => tx(v) + '\\text{cm}', plain: (v) => fmtN(v) + 'cm' };
+  const cm2 = { tex: (v) => exactTex(v) + '\\text{cm}^2', plain: (v) => exactN(v) + 'cm²' };
+  const cm1 = { tex: (v) => exactTex(v) + '\\text{cm}', plain: (v) => exactN(v) + 'cm' };
   const rotAbout = (p, q, th) => { const c = Math.cos(th), sn = Math.sin(th), dx = p.x - q.x, dy = p.y - q.y; return pt(q.x + dx * c - dy * sn, q.y + dx * sn + dy * c); };
   const rpick = (list, cur) => { const pool = list.filter((x) => x !== cur); return pool[Math.floor(Math.random() * pool.length)]; };
   const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
@@ -369,7 +390,7 @@
   const area2 = (P) => Math.abs(polyArea(P));
 
   window.APL_AR = {
-    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg,
+    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg, exactN, exactTex,
     pt, add, sub, mul, len, unit, mid, lerp, polar, dirDeg, angBetween, cross, inter, regPoly, regUp, polyArea, centroid, gcd, pick, rint, bboxOf, unionBox,
     textW, T, tagOut, vtx, ang, tick, par, fillPoly, line, poly, fit, P, degF, mkChoices, baseCtx, showAt, makeScene, register, notes, rd,
     HALF, cm2, cm1, rotAbout, rpick, range, dim, hgtTo, area2

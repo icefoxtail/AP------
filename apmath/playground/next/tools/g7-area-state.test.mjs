@@ -1,0 +1,190 @@
+// Production scene/Board regression checks. This VM checks math and drawing commands;
+// it does not replace a real browser, layout audit, or physical-device review.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const labs = path.join(root, 'labs');
+const call = (value, ...args) => typeof value === 'function' ? value(...args) : value;
+const numericArgs = { moveTo: [0, 1], lineTo: [0, 1], rect: [0, 1, 2, 3], fillRect: [0, 1, 2, 3], clearRect: [0, 1, 2, 3], arc: [0, 1, 2, 3, 4], ellipse: [0, 1, 2, 3, 4, 5, 6], fillText: [1, 2], strokeText: [1, 2], bezierCurveTo: [0, 1, 2, 3, 4, 5], quadraticCurveTo: [0, 1, 2, 3], setTransform: [0, 1, 2, 3, 4, 5] };
+function canvas() {
+  const context = new Proxy({ measureText: (text) => ({ width: String(text).length * 8 }) }, {
+    get(target, key) {
+      if (key in target) return target[key];
+      return (...args) => {
+        for (const index of numericArgs[key] || []) assert.ok(Number.isFinite(args[index]), `${String(key)} coordinate ${index} must be finite; got ${String(args[index])}`);
+      };
+    },
+    set(target, key, value) { target[key] = value; return true; }
+  });
+  return { width: 1000, height: 650, getContext: () => context };
+}
+
+async function load() {
+  let context;
+  const ready = [];
+  const element = (tag) => tag === 'canvas' ? canvas() : { tagName: tag.toUpperCase(), dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {}, toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; }, append() {} };
+  const document = { getElementById() { return null; }, querySelector() { return null; }, createElement: element, createTextNode: (text) => ({ textContent: text }), addEventListener() {}, documentElement: element('html'), body: element('body'), head: element('head') };
+  document.head.append = (el) => {
+    if (el.tagName !== 'SCRIPT') return;
+    vm.runInContext(fs.readFileSync(path.join(labs, el.src), 'utf8'), context, { filename: el.src });
+    el.onload?.();
+  };
+  const sandbox = { document, console, Math, URLSearchParams, performance, setTimeout, clearTimeout, requestAnimationFrame: () => 0, cancelAnimationFrame() {}, devicePixelRatio: 1, location: { hash: '', search: '', pathname: '/labs/g7-area.html' }, history: { replaceState() {} }, localStorage: { getItem() { return null; }, setItem() {} }, getComputedStyle: () => ({ getPropertyValue: (key) => key === '--font-ui' ? 'sans-serif' : key === '--m-glow' ? '0' : '#ffffff' }), matchMedia: () => ({ matches: false }), addEventListener: (event, fn) => { if (event === 'DOMContentLoaded') ready.push(fn); } };
+  sandbox.window = sandbox;
+  context = vm.createContext(sandbox);
+  for (const filename of ['apl-core.js', 'apl-board.js']) vm.runInContext(fs.readFileSync(path.join(root, 'kit', filename), 'utf8'), context, { filename });
+  let definition;
+  context.APLab.createLab = (def) => { definition = def; };
+  const html = fs.readFileSync(path.join(labs, 'g7-area.html'), 'utf8');
+  const script = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((x) => x[1]).find((x) => x.includes('const MODULES ='));
+  vm.runInContext(script, context, { filename: 'g7-area.html' });
+  ready.forEach((fn) => fn());
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.ok(definition, 'production module loader creates the lab');
+  // The real shell clones scene definitions while adding group metadata.
+  const list = definition.groups.flatMap((group) => group.scenes.map((scene) => ({ ...scene })));
+  const board = new context.APLab.Board(canvas(), { ...definition.board, interactive: false });
+  board.resize(1000, 650);
+  const lab = { def: definition, list, board, index: 0, tab: 'explore', s: { ...definition.state }, params: { ...definition.params }, refs: {}, invalidate() {}, _buildReview() {}, get scene() { return this.list[this.index]; } };
+  for (const [key, param] of Object.entries(lab.params)) lab.s[key] = param.value;
+  context.lab = lab;
+  lab._answerOpen = () => lab.s.revealed || lab.s.step >= call(lab.scene.steps, lab.s).length;
+  lab._measureFocus = (scene) => {
+    const box = board.measure(() => scene.draw(board, lab.s, call(scene.view, lab.s, lab), lab));
+    return box ? board.fitBox(box, { margin: 0.08, px: 12 }) : null;
+  };
+  lab.go = (id) => {
+    lab.index = list.findIndex((scene) => scene.id === id);
+    assert.ok(lab.index >= 0, `scene ${id} exists`);
+    lab.tab = 'explore';
+    Object.assign(lab.s, { step: lab.scene.startStep ?? (lab.scene.steps ? 1 : 0), revealed: false, playing: false });
+    board.kind = lab.scene.boardKind || definition.board.kind;
+    definition.enter?.(lab.s, lab.scene, lab);
+    lab.scene.enter?.(lab.s, lab);
+    board.setFocus(call(lab.scene.focus, lab.s) || { x: [-10, 40], y: [-20, 15] }, true);
+    return lab.scene;
+  };
+  lab.draw = () => {
+    const texts = [], paths = [], original = board._text, originalPath = board.path;
+    board.path = function (points, options = {}) { paths.push({ points: points.map((p) => ({ x: p.x ?? p[0], y: p.y ?? p[1] })), options }); return originalPath.call(this, points, options); };
+    board._text = function (x, y, text, ...args) { if (text != null) texts.push(String(text)); return original.call(this, x, y, text, ...args); };
+    try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, paths, value }; }
+    finally { board._text = original; board.path = originalPath; }
+  };
+  lab.api = context.APL_AR;
+  return lab;
+}
+
+const area = (points) => Math.abs(points.reduce((sum, p, i) => { const q = points[(i + 1) % points.length]; return sum + p.x * q.y - p.y * q.x; }, 0) / 2);
+function exactValue(tex) {
+  const str = tex.replace(/\\text\{cm\}(?:\^2)?/, '').trim();
+  const fraction = /^\\frac\{(-?\d+)\}\{(\d+)\}$/.exec(str);
+  return fraction ? Number(fraction[1]) / Number(fraction[2]) : Number(str);
+}
+
+await test('changed problem givens close manually opened answers in every area scene; presentation alone preserves them', async () => {
+  const lab = await load();
+  for (const scene of lab.list) {
+    lab.go(scene.id); lab.tab = 'problem';
+    call(scene.view, lab.s, lab);
+    lab.s.revealed = true; lab.s.step = call(scene.steps, lab.s).length;
+    const numeric = call(scene.controls, lab.s).find((key) => key !== scene.ar.anim?.key);
+    const param = lab.params[numeric];
+    lab.s[numeric] += lab.s[numeric] < param.max ? param.step : -param.step;
+    call(scene.view, lab.s, lab);
+    assert.equal(lab.s.revealed, false, scene.id);
+    assert.equal(lab.s.step, 1, `${scene.id} completed steps reset`);
+    if (scene.ar.anim) {
+      call(scene.view, lab.s, lab);
+      lab.s.revealed = true; lab.s.step = call(scene.steps, lab.s).length;
+      lab.s[scene.ar.anim.key] = 0.57;
+      call(scene.view, lab.s, lab);
+      assert.equal(lab.s.revealed, true, `${scene.id} animation does not create a new question`);
+    }
+  }
+  lab.go('b2-para'); call(lab.scene.view, lab.s, lab); lab.s.revealed = true; lab.s.step = 3;
+  lab.s.b2Mode = 0; call(lab.scene.view, lab.s, lab);
+  assert.equal(lab.s.revealed, true, 'changing the visible base preserves the solved question');
+  lab.s.b2K = 1; call(lab.scene.view, lab.s, lab);
+  assert.equal(lab.s.revealed, false, 'a numeric shape preset creates a new question');
+  lab.go('c1-trap'); call(lab.scene.view, lab.s, lab); lab.s.revealed = true; lab.s.step = 3;
+  lab.s.c1Mode = 0; call(lab.scene.view, lab.s, lab);
+  assert.equal(lab.s.revealed, true, 'changing proof method preserves the question');
+  lab.s.c1H += 1; call(lab.scene.view, lab.s, lab);
+  assert.equal(lab.s.revealed, false, 'changing a stated height resets even a base-length question');
+});
+
+await test('trapezoid wing answers and solution arithmetic preserve exact fractions throughout slider ranges', async () => {
+  const lab = await load();
+  const scene = lab.go('b4-wing');
+  for (let B = 6; B <= 12; B++) for (let d = 2; d <= 8; d++) for (let H = 3; H <= 8; H++) {
+    Object.assign(lab.s, { b4B: B, b4D: d, b4H: H });
+    const M = scene.ar.model(lab.s), geometry = scene.ar.geo(M), Q = scene.ar.prob(M, lab.s), correct = Q.choices.filter((choice) => choice.ok);
+    assert.equal(correct.length, 1);
+    const independent = area([geometry.Av, geometry.Bv, geometry.O]);
+    assert.ok(Math.abs(exactValue(correct[0].t) - independent) < 1e-9, `${B}, ${d}, ${H}`);
+    assert.ok(Math.abs(M.X - M.Y - exactValue(correct[0].t)) < 1e-9);
+  }
+  Object.assign(lab.s, { b4B: 10, b4D: 6, b4H: 6 });
+  assert.match(scene.problem.answer(lab.s), /\\frac\{45\}\{4\}/);
+  assert.match(scene.steps(lab.s).at(-1), /30 − 75\/4 = 45\/4/);
+  lab.tab = 'problem';
+  assert.ok(lab.draw().texts.some((text) => text.includes('75}{4')));
+});
+
+await test('rectangle counts actual horizontal rows and keeps its inquiry synchronized with size', async () => {
+  const lab = await load();
+  lab.go('a1-rect'); Object.assign(lab.s, { a1W: 6, a1H: 4, a1T: 0.5 });
+  const result = lab.draw();
+  const cells = result.paths.filter((p) => p.options.fill && p.points.length === 4 && Math.abs(area(p.points) - 1) < 1e-9);
+  assert.equal(cells.length, 12);
+  assert.equal(new Set(cells.map((p) => Math.min(...p.points.map((v) => v.y)))).size, 2, 'two full horizontal rows');
+  assert.ok(result.texts.includes('2줄 × 6칸 = 12칸'));
+  Object.assign(lab.s, { a1W: 7, a1H: 5 });
+  assert.match(call(lab.scene.question, lab.s), /가로 7칸, 세로 5칸/);
+});
+
+// Convex clipping of drawn pieces: a separate geometry calculation verifies that
+// final packing neither overlaps pieces nor loses area, including slanted roads.
+function intersection(subject, clip) {
+  const signed = clip.reduce((sum, p, i) => { const q = clip[(i + 1) % clip.length]; return sum + p.x * q.y - p.y * q.x; }, 0), sign = Math.sign(signed);
+  let out = subject;
+  for (let i = 0; i < clip.length && out.length; i++) {
+    const a = clip[i], b = clip[(i + 1) % clip.length], input = out;
+    const side = (p) => sign * ((b.x - a.x) * (p.y - a.y) - (b.y - a.y) * (p.x - a.x));
+    out = [];
+    for (let j = 0; j < input.length; j++) {
+      const p = input[j], q = input[(j + 1) % input.length], sp = side(p), sq = side(q);
+      if (sp >= -1e-9) out.push(p);
+      if ((sp >= -1e-9) !== (sq >= -1e-9)) { const t = sp / (sp - sq); out.push({ x: p.x + t * (q.x - p.x), y: p.y + t * (q.y - p.y) }); }
+    }
+  }
+  return out;
+}
+
+await test('grass reassembly preserves disjoint area and finishes as a rectangle for straight and slanted roads', async () => {
+  const lab = await load();
+  lab.go('c3-road');
+  for (const W of [10, 14, 18]) for (const H of [6, 8, 10]) for (const x of [1, 2, 4]) for (const mode of [0, 1]) for (const progress of [0, 0.2, 0.55, 0.85, 1]) {
+    Object.assign(lab.s, { c3W: W, c3H: H, c3X: x, c3Mode: mode, c3T: progress });
+    const pieces = lab.draw().paths.filter((p) => ['green', 'amber'].includes(p.options.fill)).map((p) => p.points);
+    assert.equal(pieces.length, 4);
+    const expected = (W - x) * (H - x);
+    assert.ok(Math.abs(pieces.reduce((sum, p) => sum + area(p), 0) - expected) < 1e-8);
+    for (let i = 0; i < pieces.length; i++) for (let j = i + 1; j < pieces.length; j++) assert.ok(area(intersection(pieces[i], pieces[j])) < 1e-8, `${W}/${H}/${x}/${mode}/${progress} pieces stay disjoint`);
+    if (progress === 1) {
+      const all = pieces.flat(), width = Math.max(...all.map((p) => p.x)) - Math.min(...all.map((p) => p.x)), height = Math.max(...all.map((p) => p.y)) - Math.min(...all.map((p) => p.y));
+      assert.ok(Math.abs(width * height - expected) < 1e-8, 'packed pieces fill the resulting rectangle');
+    }
+  }
+  Object.assign(lab.s, { c3W: 14, c3H: 8, c3X: 2, c3T: 1 });
+  lab.board.resize(390, 410);
+  const result = lab.draw(), pieces = result.paths.filter((p) => p.options.fill === 'green').flatMap((p) => p.points), ys = pieces.map((p) => lab.board.toS(p).y);
+  assert.ok(Math.max(...ys) - Math.min(...ys) >= 210, 'mobile result uses meaningful stage height');
+  assert.ok(result.texts.includes('12 × 6 = 72m²'));
+});

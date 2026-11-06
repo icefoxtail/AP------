@@ -236,9 +236,17 @@ try {
         for (const c of cases.filter(x => String(x.id) === scene.id && (x.params || x.tab || x.step != null))) {
           await page.evaluate(({ index, tab }) => { lab.goScene(index); if (tab) lab.setTab(tab); }, { index: scene.index, tab: c.tab });
           await page.waitForFunction(() => !lab._tween);
-          await page.evaluate(c => { if (c.params) lab.set(c.params); if (c.step != null) lab.setStep(c.step); }, c);
+          await page.evaluate(c => { if (c.params) lab.set(c.params); }, c); await settle();
+          if (c.inputKey) {
+            const p = await page.evaluate(k => ({ label: APLab.stripEmoji(lab.params[k].label), value: lab.s[k] }), c.inputKey);
+            await page.getByRole('slider', { name: p.label, exact: true }).fill(String(p.value)); await settle();
+          }
+          // Changing numerical conditions may correctly relock a previous solution.
+          // Select the requested review step after that state transition completes.
+          if (c.step != null) { await page.evaluate(n => { const x = lab.scene.steps; lab.setStep(n === 'final' ? (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0 : n); }, c.step); await settle(); }
           const label = 'target-' + (c.label || c.tab || 'fixed');
-          await measure(scene, label);
+          const targetObservation = await measure(scene, label);
+          targetObservation.target = { requested: c, actual: await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, lab.s[k]])), Object.keys(c.params || {})) };
           const filename = `${unit}--${scene.id}--${run.name}--${label}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await page.screenshot({ path: path.join(out, filename), fullPage: true }); dest.captures.push(filename);
         }

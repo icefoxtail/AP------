@@ -95,7 +95,7 @@
     }),
     prob: (M) => {
       const { a, B, H, S, T2, q } = M, w = a + B;
-      if (q === 0) return { tag: '사다리꼴을 돌려 붙인 평행사변형의 밑변', key: `0-${a}-${B}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴 2개를 거꾸로 맞붙여 평행사변형을 만들었다. 이 평행사변형의 밑변의 길이는?`, choices: mkChoices(w, [[B, '아랫변 옆에 뒤집힌 윗변이 붙어서 밑변이 더 길어져요.'], [w / 2, '두 변의 평균은 사다리꼴 한 개의 넓이에 쓰는 값이에요.'], [a * B, '더하지 않고 곱했어요.'], [w * H, '밑변은 길이예요. 넓이가 아니에요.']], { tex: (v) => `${G.tx(v)}\\text{cm}`, plain: (v) => num(v) + 'cm', pad: 1 }) };
+      if (q === 0) return { tag: '사다리꼴을 돌려 붙인 평행사변형의 밑변', key: `0-${a}-${B}-${H}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴 2개를 거꾸로 맞붙여 평행사변형을 만들었다. 이 평행사변형의 밑변의 길이는?`, choices: mkChoices(w, [[B, '아랫변 옆에 뒤집힌 윗변이 붙어서 밑변이 더 길어져요.'], [w / 2, '두 변의 평균은 사다리꼴 한 개의 넓이에 쓰는 값이에요.'], [a * B, '더하지 않고 곱했어요.'], [w * H, '밑변은 길이예요. 넓이가 아니에요.']], { tex: (v) => `${G.tx(v)}\\text{cm}`, plain: (v) => num(v) + 'cm', pad: 1 }) };
       if (q === 1) return { tag: '사다리꼴의 넓이 (돌려 붙이기)', key: `1-${a}-${B}-${H}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴의 넓이는?`, choices: mkChoices(S, [[w * H, '2로 나누지 않았어요. 사다리꼴은 평행사변형의 절반이에요.'], [(B * H) / 2, '윗변을 빼먹었어요.'], [w / 2, '높이를 곱하지 않았어요.'], [a * B * H / 2, '윗변과 아랫변은 곱하지 않고 더해요.']], { ...cm2, pad: pad8(S) }) };
       return { tag: '사다리꼴을 대각선으로 나눈 삼각형의 넓이', key: `2-${a}-${B}-${H}`, stem: `AD ∥ BC인 사다리꼴 ABCD에서 AD = ${a} cm, BC = ${B} cm이고 높이는 ${H} cm이다. 대각선 AC로 나눈 삼각형 ACD의 넓이는?`, choices: mkChoices(T2, [[(B * H) / 2, '아랫변 BC를 밑변으로 한 삼각형 ABC의 넓이예요. 삼각형 ACD의 밑변은 AD예요.'], [S, '사다리꼴 전체의 넓이예요.'], [a * H, '2로 나누지 않았어요.'], [(a + B) * H / 4, '삼각형의 밑변은 윗변 AD 하나예요.']], { ...cm2, pad: pad8(T2) }) };
     },
@@ -186,15 +186,29 @@
       };
     },
     draw(b, s, M, C) {
-      const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2), R = Math.hypot(W, H) / 2;
-      FIT(b, { x0: C0.x - R, x1: C0.x + R, y0: C0.y - R, y1: C0.y + R }, { b: C.problem ? 78 : 96, t: 34, l: 60, r: 116 });
+      const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2);
       const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : 1) : C.t;
       const s1 = ease(seg01(t, 0, 0.4)), phi = (Math.PI / 2) * ease(seg01(t, 0.4, 0.7)), s3 = ease(seg01(t, 0.7, 1));
       const tf = (q) => rotAbout(q, C0, phi), sh = (P3, dx, dy) => P3.map((q) => pt(q.x + dx, q.y + dy)), out = (P3) => P3.map(tf);
       const field = [pt(0, 0), pt(W, 0), pt(W, H), pt(0, H)];
-      fillPoly(b, out(field), 'rose', 0.22); poly(b, out(field), 'rose', 2.6, { dash: [7, 6] });
+      const box = G.bboxOf(out(field)), narrow = b.W < 560;
+      // 현재 회전한 도형에 맞춥니다. 대각선 길이의 정사각형 여백이 결과 직사각형을 작게 만들지 않게 합니다.
+      FIT(b, box, { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 });
+      poly(b, out(field), 'sky', 2.2, { dash: [7, 6], alpha: 0.45 });
+      if (t < 0.4) {
+        const e = pc.e, roadParts = [
+          [pt(e(0), 0), pt(e(0) + x, 0), pt(e(H) + x, H), pt(e(H), H)],
+          [pt(0, h1), pt(e(h1), h1), pt(e(h1 + x), h1 + x), pt(0, h1 + x)],
+          [pt(e(h1) + x, h1), pt(W, h1), pt(W, h1 + x), pt(e(h1 + x) + x, h1 + x)]
+        ];
+        roadParts.forEach((q) => fillPoly(b, out(q), 'red', 0.16 * (1 - s1)));
+      }
       const parts = [sh(pc.UL, x * s1, 0), pc.UR, sh(pc.LL, x * s1, -x * s3), sh(pc.LR, 0, -x * s3)];
-      parts.forEach((q) => { fillPoly(b, out(q), 'green', 0.34); poly(b, out(q), 'green', 3.2); });
+      parts.forEach((q, i) => {
+        const moving = (t > 0 && t < 0.4 && (i === 0 || i === 2)) || (t > 0.7 && t < 1 && i >= 2);
+        const color = moving ? 'amber' : 'green';
+        fillPoly(b, out(q), color, moving ? 0.24 : 0.2); poly(b, out(q), color, 3.2);
+      });
       if (t < 0.02) {
         // 길의 폭 x 와 땅의 가로·세로 표시
         const ey = (y) => pc.e(y);
@@ -205,10 +219,13 @@
         T(b, pt(ey(H * 0.5) + x / 2, H * 0.3), '길', { size: 16, color: 'rose' });
       }
       if (C.problem) { foot(b, pt(W / 2, H), '잔디밭의 넓이 = ? m²', 'amber', 56); return; }
-      const cy = C0.y + R;
+      const cy = box.y1, cx = (box.x0 + box.x1) / 2;
       if (t < 0.4) foot(b, pt(W / 2, H), `땅 ${W}×${H}, 길의 폭 ${x}`, 'amber', 56);
-      else if (t < 0.999) foot(b, pt(W / 2, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
-      else foot(b, pt(W / 2, cy), `(${W}−${x}) × (${H}−${x}) = ${W - x} × ${H - x} = ${A}m²`, 'green', 36);
+      else if (t < 0.999) foot(b, pt(cx, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
+      else if (narrow) {
+        foot(b, pt(cx, cy), `(${W}−${x}) × (${H}−${x})`, 'green', 36);
+        foot(b, pt(cx, cy), `${W - x} × ${H - x} = ${A}m²`, 'green', 64);
+      } else foot(b, pt(cx, cy), `(${W}−${x}) × (${H}−${x}) = ${W - x} × ${H - x} = ${A}m²`, 'green', 36);
     },
     stepT: (n) => (n <= 1 ? 0.4 : 1),
     steps: (M) => [
@@ -217,11 +234,11 @@
       `잔디밭은 가로 ${M.W - M.x}m, 세로 ${M.H - M.x}m인 직사각형 한 개가 되므로 넓이는 ${M.W - M.x}×${M.H - M.x}=${M.A}m²예요.`
     ],
     view: (M) => ({
-      guide: '▶를 누르면 잔디밭 조각이 <b>가로로 밀려 붙고</b>, 도형이 <b>제자리에서 90° 돌아</b> 한 번 더 붙어요. 칩으로 비스듬한 길도 볼 수 있어요.',
-      readouts: [rd('땅', `${M.W}m × ${M.H}m`, 'sky'), rd('길의 폭', `${M.x}m`, 'rose'), rd('잔디밭', `${M.W - M.x} × ${M.H - M.x}`, 'green', `${M.A}m²`, null, true)],
+      guide: '▶를 누르면 잔디밭 조각이 <b>가로로 밀려 붙고</b>, 도형이 <b>제자리에서 90° 돌아</b> 한 번 더 붙어요. <b>노랑</b>은 움직이는 조각, <b>초록</b>은 남은 잔디밭이에요.',
+      readouts: [rd('땅', `${M.W}m × ${M.H}m`, 'sky'), rd(M.mode ? '길의 가로·세로 폭' : '길의 폭', `${M.x}m`, 'rose'), rd('잔디밭', `${M.W - M.x} × ${M.H - M.x}`, 'green', `${M.A}m²`, null, true)],
       formula: `<p>(잔디밭의 넓이) $=(${M.W}-${M.x})\\times(${M.H}-${M.x})=${M.W - M.x}\\times${M.H - M.x}=${M.A}\\ (\\text{m}^2)$</p>`,
-      rule: '길의 폭이 일정하면 잔디밭의 넓이 = (가로 − 길의 폭) × (세로 − 길의 폭)',
-      notes: notes('길이 가운데서 만나는 곳(교차로)을 두 번 빼지 않도록 조각을 밀어 붙이는 방법이 안전해요.', '길이 곧든 비스듬하든 폭이 같으면 넓이는 같아요.')
+      rule: '세로 길의 가로 폭과 가로 길의 세로 폭이 x이면, 잔디밭의 넓이 = (가로 − x) × (세로 − x)',
+      notes: notes('길이 가운데서 만나는 곳(교차로)을 두 번 빼지 않도록 조각을 밀어 붙이는 방법이 안전해요.', '비스듬한 세로 길의 폭은 <b>가로로 잰 길이</b>예요. 이 가로 폭과 가로 길의 세로 폭을 각각 빼요.')
     }),
     prob: (M) => {
       const { W, H, x, mode, A } = M;

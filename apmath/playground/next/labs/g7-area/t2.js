@@ -186,7 +186,7 @@
     prob: (M) => {
       const { B, A } = M;
       return {
-        tag: '함정 · 꼭짓점을 옮겨도 넓이가 같은 삼각형', key: `${B}-${A}-${fmtN(M.x)}-${fmtN(M.x2)}`,
+        tag: '함정 · 꼭짓점을 옮겨도 넓이가 같은 삼각형', key: `${B}-${A}`,
         stem: `직선 l과 m은 평행하고, m 위의 선분 BC의 길이는 ${B} cm이다. l 위의 두 점 A, A′에 대하여 삼각형 ABC의 넓이가 ${A} cm²일 때, 삼각형 A′BC의 넓이는?`,
         choices: mkChoices(A, [[A * 2, '넓이가 두 배가 되지 않아요. 밑변과 높이가 그대로예요.'], [A / 2, '넓이가 반이 되지 않아요. 평행선 사이의 거리는 일정해요.'], [A + B, '점의 위치가 달라도 밑변과 높이가 같으면 넓이가 같아요.'], [B, '밑변의 길이는 넓이가 아니에요.']], { ...cm2, pad: pad8(A) })
       };
@@ -227,27 +227,27 @@
       const cen = (P3) => centroid(P3);
       if (C.problem) {
         T(b, cen([Av, Bv, O]), 'S₁=?', { size: 20, color: 'amber' });
-        foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${Y} cm²`, 'green', 62);
+        foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${G.exactTex(Y)} cm²`, 'green', 62);
         return;
       }
       if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
       dim(b, Bv, Cv, `${B}`, { ref: c0, color: 'sky' });
       let r = 0;
-      if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${num(X)}`, 'sky', 58 + 26 * r++);
-      if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${num(Y)}`, 'green', 58 + 26 * r++);
-      if (t > 0.9) foot(b, pt(B / 2, 0), `S₁ = S₂ = ${num(X)} − ${num(Y)} = ${num(w)}`, 'amber', 58 + 26 * r++);
+      if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${G.exactTex(X)}`, 'sky', 58 + 26 * r++);
+      if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${G.exactTex(Y)}`, 'green', 58 + 26 * r++);
+      if (t > 0.9) foot(b, pt(B / 2, 0), `S₁ = S₂ = ${G.exactTex(X)} − ${G.exactTex(Y)} = ${G.exactTex(w)}`, 'amber', 58 + 26 * r++);
       handle(b, C, 'a', Av, '윗변을 가로로 끌기', (q) => { s.b4P = clamp(Math.round(q.x), 0, 4); });
     },
     stepT: (n) => (n <= 1 ? 0.4 : n === 2 ? 0.8 : 1),
     steps: (M) => [
-      `△ABC와 △DBC는 밑변 BC가 같고, 높이(두 평행선 사이의 거리)도 같으므로 넓이가 같아요. 둘 다 ${num(M.X)}예요.`,
-      `두 삼각형에 공통인 △OBC(${num(M.Y)})가 있어요. 양쪽에서 이 부분을 빼면 남는 것이 양옆 삼각형이에요.`,
-      `△ABO = △ABC − △OBC = ${num(M.X)} − ${num(M.Y)} = ${num(M.w)}, △DCO = △DBC − △OBC = ${num(M.w)}. 따라서 △ABO = △DCO예요.`
+      `△ABC와 △DBC는 밑변 BC가 같고, 높이(두 평행선 사이의 거리)도 같으므로 넓이가 같아요. 둘 다 ${G.exactN(M.X)}예요.`,
+      `두 삼각형에 공통인 △OBC(${G.exactN(M.Y)})가 있어요. 양쪽에서 이 부분을 빼면 남는 것이 양옆 삼각형이에요.`,
+      `△ABO = △ABC − △OBC = ${G.exactN(M.X)} − ${G.exactN(M.Y)} = ${G.exactN(M.w)}, △DCO = △DBC − △OBC = ${G.exactN(M.w)}. 따라서 △ABO = △DCO예요.`
     ],
     view: (M) => ({
       guide: '▶를 눌러 <b>△ABC</b>(하늘)와 <b>△DBC</b>(분홍)를 비교하고, 공통 부분(초록)을 빼면 <b>노란 양옆 삼각형</b>이 남아요. 길이는 막대로 바꿔요.',
-      readouts: [rd('△ABC = △DBC', num(M.X), 'sky', `${M.B} × ${M.H} ÷ 2`), rd('공통 △OBC', num(M.Y), 'green'), rd('△ABO = △DCO', num(M.w), 'amber', `${num(M.X)} − ${num(M.Y)}`, null, true)],
-      formula: `<p>$\\triangle ABO=\\triangle ABC-\\triangle OBC=${tx(M.X)}-${tx(M.Y)}=${tx(M.w)}$</p><p>$\\triangle DCO=\\triangle DBC-\\triangle OBC=${tx(M.w)}$</p>`,
+      readouts: [rd('△ABC = △DBC', G.exactN(M.X), 'sky', `${M.B} × ${M.H} ÷ 2`), rd('공통 △OBC', G.exactN(M.Y), 'green'), rd('△ABO = △DCO', G.exactN(M.w), 'amber', `${G.exactN(M.X)} − ${G.exactN(M.Y)}`, null, true)],
+      formula: `<p>$\\triangle ABO=\\triangle ABC-\\triangle OBC=${G.exactTex(M.X)}-${G.exactTex(M.Y)}=${G.exactTex(M.w)}$</p><p>$\\triangle DCO=\\triangle DBC-\\triangle OBC=${G.exactTex(M.w)}$</p>`,
       rule: 'AD ∥ BC인 사다리꼴에서 대각선의 교점 O를 잡으면 △ABO = △DCO',
       notes: notes('밑변이 BC로 같고 평행선 사이에 있으니 △ABC=△DBC예요.', '공통 부분 △OBC를 빼는 것이 핵심이에요. 대각선으로 나뉜 위·아래 삼각형(△AOD, △OBC)은 같지 않아요.')
     }),
@@ -255,7 +255,7 @@
       const { X, Y, w } = M;
       return {
         tag: '사다리꼴에서 대각선이 만든 삼각형의 넓이', key: `${M.B}-${M.d}-${M.H}`,
-        stem: `AD ∥ BC인 사다리꼴 ABCD에서 두 대각선의 교점을 O라 하자. 삼각형 ABC의 넓이가 ${X} cm², 삼각형 OBC의 넓이가 ${Y} cm²일 때, 삼각형 ABO의 넓이는?`,
+        stem: `AD ∥ BC인 사다리꼴 ABCD에서 두 대각선의 교점을 O라 하자. 삼각형 ABC의 넓이가 ${X} cm², 삼각형 OBC의 넓이가 ${G.exactN(Y)} cm²일 때, 삼각형 ABO의 넓이는?`,
         choices: mkChoices(w, [[X, '△ABC 전체의 넓이예요. 공통 부분 △OBC를 빼야 해요.'], [Y, '공통 부분 △OBC의 넓이예요.'], [X + Y, '공통 부분을 더하지 않고 빼요.'], [2 * w, '△ABO와 △DCO의 합이에요.']], { ...cm2, pad: pad8(w) })
       };
     },
