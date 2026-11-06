@@ -32,6 +32,12 @@ test('angle-bisector and extension questions no longer receive unrelated theory'
 test('square points E and F remain on the specified segments for every generated angle',()=>{
  const s=state('q6-5');for(let i=0;i<200;i++){const{D}=get('q6-5',s);D.reroll(s);s.qfK=0;const{m}=get('q6-5',s);assert.ok(m.g2.E.x>m.g2.B.x&&m.g2.E.x<m.g2.C.x);assert.ok(m.g2.F.y>m.g2.D.y&&m.g2.F.y<m.g2.C.y);close(angle(m.g2.B,m.g2.A,m.g2.E),m.th,'given angle');}
 });
+test('parallel-equal-side perimeter uses the stated AB=4, independent of exploration height or AD',()=>{
+ for(const h of [3,5])for(const ad of [4,7]){
+  const s=state('q2-2',{qbK:1,qbLen:ad,qbBc:7,qbH:h});const{m,q}=get('q2-2',s),steps=by('q2-2').steps(s).join(' ');
+  assert.match(q.stem,/AB=4/);assert.ok(steps.includes(`2×(${m.bc}+4)=${2*(m.bc+4)}`));
+ }
+});
 test('32 scenes retain five distinct choices and target-specific solutions over 120 variants each',()=>{
  assert.equal(scenes.length,32);const keyCounts={};for(const sc of scenes){const s=state(sc.id),seen=new Set();for(let i=0;i<120;i++){const{D,m,q,answer}=get(sc.id,s);assert.ok(finite(m),sc.id);assert.equal(q.choices.length,5);assert.equal(q.choices.filter(c=>c.ok).length,1);assert.equal(new Set(q.choices.map(c=>c.p)).size,5);assert.equal(typeof D.solve,'function',sc.id);const steps=sc.steps(s);assert.ok(steps.length>=4);assert.match(steps.at(-1),/따라서/);assert.ok(steps.at(-1).includes(answer.t??answer.h??answer.p));assert.doesNotMatch(steps.join(' '),/undefined|NaN|Infinity|√|\\sqrt/);seen.add(q.key);D.reroll(s);}keyCounts[sc.id]=seen.size;assert.ok(seen.size>=2,sc.id);}console.log('3840 current questions; scene/key coverage',JSON.stringify(keyCounts));
 });
