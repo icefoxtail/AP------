@@ -246,7 +246,7 @@
       const hi1 = isStep(C, 2), hi2 = isStep(C, 3);
       if (hi1) fillP(b, [sectorPts(BR, a, 180, 270)], CB, 0.2);
       if (hi2) fillP(b, [sectorPts(TL, a, 0, 90)], CA, 0.2);
-      fillP(b, [leaf], CS, C.plain ? 0.5 : 0.42, { ref: 'leaf' });
+      fillP(b, [leaf], 'green', 0.2, { ref: 'leaf' });
       b.poly([TL, TR, BR, BL], { color: 'ink', width: 2.4, alpha: 0.85 });
       b.path(arc1, { color: C.plain ? 'ink' : CB, width: C.plain ? 3 : 5.5, ref: 'arc1' });
       b.path(arc2, { color: C.plain ? 'ink' : CA, width: C.plain ? 3 : 5.5, ref: 'arc2' });
@@ -259,8 +259,9 @@
         b.right(BL, TL, BR, { size: 10, color: 'muted' });
         if (hi1) tx(b, C, pt(a / 2, a), 'r = ' + fmtN(a), CB, { dy: -14, size: 15 });
         if (hi2) tx(b, C, pt(0, a / 2), 'r = ' + fmtN(a), CA, { dx: 8, align: 'left' });
-        if (C.review && C.step >= 2) tx(b, C, polar(BR, a, 225), '① ' + piP(M.arc) + ' cm', CB, { dx: -22, dy: -26, size: 15, ref: 'arc1' });
-        if (C.review && C.step >= 3) tx(b, C, polar(TL, a, 45), '② ' + piP(M.arc) + ' cm', CA, { dx: 26, dy: 26, size: 15, ref: 'arc2' });
+        // 조각을 옆에 펼쳐 원래 그림이 작아져도 꼭짓점의 90°와 호 길이가 겹치지 않게 잎 안쪽에 둡니다.
+        if (C.review && C.step >= 2) tx(b, C, polar(BR, a, 225), '① ' + piP(M.arc) + ' cm', CB, { dx: 12, dy: 14, size: 15, ref: 'arc1' });
+        if (C.review && C.step >= 3) tx(b, C, polar(TL, a, 45), '② ' + piP(M.arc) + ' cm', CA, { dx: -12, dy: -14, size: 15, ref: 'arc2' });
       }
       if (row && LY.row) {
         const Cf = pt(LY.row.x + 2.3 * a, LY.row.y + a);

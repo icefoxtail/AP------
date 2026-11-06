@@ -31,7 +31,7 @@
    이 파일이 직접 가진 탭은 ① ③ ④ 입니다(10·20·30). 나머지는 labs/g7-circle-sector/*.js 모듈이
    window.APL_CS_GROUPS 에 { order, id, title, short, params?, scenes } 묶음을 등록하면 order 순으로 붙습니다.
    원칙(학생 가독성)
-   - 그림은 무대 가득(autoFit) · 숫자는 모두 정확한 π 표기(소수 근삿값 없음) · 라벨은 화면 기준 15px 이상
+   - 그림은 무대 가득(autoFit) · 정해진 조건은 정확한 π 표기, 연속 이동의 중간값은 ≈ 표시 · 라벨은 화면 기준 15px 이상
    - 색의 역할: 하늘=호(굽은 선) · 분홍=곧은 선(반지름·지름·현) · 노랑=각·점 P·지나간 자취 · 초록=색칠한 면
    - 모든 도형은 막대 또는 손잡이로 조절되고, 라벨·자취·식·정리 단계·정답이 그 값으로 다시 계산됩니다.
    - 움직임은 가로로만(굴리기·밀기). 세로 이동 없음.
@@ -60,6 +60,13 @@ const plain = (e) => {
 };
 const cmOf = (e) => (e ? plain(e) + ' cm' : '');
 const cm2Of = (e) => (e ? plain(e) + ' cm²' : '');
+const whole = (v) => Math.abs(v - Math.round(v)) < 1e-8;
+const approx = (v) => String(+v.toFixed(2));
+const angleText = (v) => (whole(v) ? Math.round(v) : '≈ ' + approx(v)) + '°';
+const motionCm = (e, n) => e ? cmOf(e) : n == null ? '계산 안 함' : `≈ ${approx(n)} cm`;
+const motionLabel = (label, e, n) => `${label} ${e ? '= ' : ''}${motionCm(e, n)}`;
+const angleLength = (r, deg) => ({ exact: whole(deg) ? ex(r * Math.round(deg), 180) : null, distance: r * rad(deg) });
+const rollLength = (r, percent) => ({ exact: whole(percent) ? ex(2 * r * Math.round(percent), 100) : null, distance: 2 * PI * r * percent / 100 });
 const rl = ([n, d], pi) => { if (n === 0) return ''; const s = n < 0 ? '-' : '', m = Math.abs(n), nu = pi ? (m === 1 ? '\\pi' : `${m}\\pi`) : String(m); return s + (d === 1 ? nu : `\\dfrac{${nu}}{${d}}`); };
 const texOf = (e) => { const a = rl(e.pi, true), b = rl(e.c, false); return (a && b ? (b[0] === '-' ? a + b : a + '+' + b) : a || b) || '0'; };
 const M = (s) => APLab.renderMath(APLab.esc(s));
@@ -120,10 +127,12 @@ function boundary(sh, r) {
 }
 const NUMS = ['①', '②', '③', '④'];
 
-/* 점 P 가 경계를 따라 지나온 만큼(0~1) → 지나간 구간과 정확한 길이 (호는 15° 단위, 선은 1 cm 단위로 내림) */
+/* 점 P가 실제로 지나온 거리. 정수 %와 경계의 끝에서는 정확한 값을,
+   연속 재생의 중간에서는 같은 위치에 대응하는 근삿값을 씁니다. */
 function tracePlan(segs, f) {
   const total = segs.reduce((a, g) => a + g.len, 0);
-  let dist = clamp(f, 0, 1) * total, e = ex(), known = true, P = segs[0].at(0);
+  const progress = clamp(f, 0, 1), allKnown = segs.every((g) => g.exact);
+  let dist = progress * total, e = ex(), exactParts = true, P = segs[0].at(0);
   const done = [];
   for (let i = 0; i < segs.length; i++) {
     const g = segs[i], fs = Math.min(1, dist / g.len);
@@ -131,28 +140,25 @@ function tracePlan(segs, f) {
     done.push({ g, f: fs });
     P = g.at(fs);
     let part = null;
-    if (g.exact) {
-      if (fs >= 0.9999) part = g.exact;
-      else {
-        const N = g.kind === 'arc' ? g.deg : Math.round(g.exact.c[0] / g.exact.c[1]);
-        const q = g.kind === 'arc' && N % 15 === 0 ? Math.floor(fs * N / 15) * 15 : Math.floor(fs * N + 1e-9);
-        part = scaleEx(g.exact, q, N);
-      }
-    }
-    if (part) e = plus(e, part); else known = false;
+    if (g.exact && fs >= 1 - 1e-9) part = g.exact;
+    if (part) e = plus(e, part); else exactParts = false;
     dist -= g.len;
     if (dist <= 1e-9) break;
   }
-  return { done, P, ex: known ? e : null, total };
+  if (allKnown && whole(progress * 100)) {
+    e = scaleEx(segs.reduce((a, g) => plus(a, g.exact), ex()), Math.round(progress * 100), 100);
+    exactParts = true;
+  }
+  return { done, P, ex: exactParts ? e : null, distance: allKnown ? progress * total : null, total };
 }
 const cumTarget = (segs, k) => { const total = segs.reduce((a, g) => a + g.len, 0); let acc = 0; for (let i = 0; i < k && i < segs.length; i++) acc += segs[i].len; return acc / total; };
 
 /* ---------- 공통 조작: 재생 · 장면 상태 ---------- */
 const playAction = (key, max, label) => ({
   id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
-  label: (s) => (s.playing ? '일시 정지' : s[key] >= max - 0.5 ? '다시 재생' : label),
+  label: (s) => (s.playing ? '일시 정지' : s[key] >= max - 1e-8 ? '다시 재생' : label),
   on: (s) => s.playing,
-  run: (s) => { if (s.playing) s.playing = false; else { if (s[key] >= max - 0.5) s[key] = 0; s.playing = true; } }
+  run: (s) => { if (s.playing) s.playing = false; else { if (s[key] >= max - 1e-8) s[key] = 0; s.playing = true; } }
 });
 const resetAction = (key) => ({ id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[key] = 0; } });
 const mkTick = (key, max, dur, reviewTarget) => (s, dt, lab) => {
@@ -200,9 +206,9 @@ const sCenter = {
   ],
   problem: problemOf('생각해 보기', '원의 지름은 반지름의 몇 배일까요?', '2배입니다. 지름은 원의 중심 O를 지나는 가장 긴 현이며 길이는 2r입니다.'),
   view: (s) => {
-    const r = s.csR, deg = Math.floor(s.csQ / 15) * 15, run = ex(r * deg, 180);
+    const r = s.csR, run = angleLength(r, s.csQ);
     return {
-      readouts: [{ label: '반지름 r', value: r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '점 P가 지나간 길이', value: s.csQ >= 359 ? cmOf(ex(2 * r)) : cmOf(run), color: 'amber', note: `중심각 ${Math.round(s.csQ)}°만큼` }],
+      readouts: [{ label: '반지름 r', value: r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '점 P가 지나간 길이', value: motionCm(run.exact, run.distance), color: 'amber', note: `중심각 ${angleText(s.csQ)}만큼` }],
       formula: RICH(M('원주 $l=2\\pi r$ , 원의 넓이 $S=\\pi r^2$'), M(`지금: $l=2\\pi\\times${r}=${texOf(ex(2 * r))}\\ \\text{cm}$`))
     };
   },
@@ -211,7 +217,7 @@ const sCenter = {
     bbox(b, -1, -1, 1, 1.0);
     b.circle(O0, 1, { fill: 'green', fillAlpha: 0.035, color: 'sky', width: 2.4 });
     if (st >= 2) for (let i = 1; i < 4; i++) { const Q = pt(0, 0, 1, a + i * PI / 2); b.seg(O0, Q, { color: 'rose', width: 1.4, alpha: 0.35 }); b.ticks(O0, Q, { color: 'amber' }); }
-    if ((lab && lab.tab === 'review' && s.step >= 3) || s.csQ >= 359) b.circle(O0, 1, { color: 'sky', width: 7, glow: true });
+    if ((lab && lab.tab === 'review' && s.step >= 3) || s.csQ >= 360 - 1e-8) b.circle(O0, 1, { color: 'sky', width: 7, glow: true });
     if (s.csQ > 0) b.arc(O0, 1, -PI / 2, a, { color: 'amber', width: 4.5, alpha: 0.8 });
     if (st >= 1) { b.seg(O0, P, { color: 'rose', width: 2.8 }); b.ticks(O0, P, { color: 'amber' }); }
     b.handle('P', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => { s.playing = false; s.csQ = clamp(Math.round((((Math.atan2(w.y, w.x) + PI / 2) * 180 / PI) + 720) % 360 / 15) * 15, 0, 360); } });
@@ -221,7 +227,7 @@ const sCenter = {
     if (n.y > 1e-6 || (Math.abs(n.y) <= 1e-6 && n.x < 0)) n = { x: -n.x, y: -n.y }; // 반지름 위쪽에 라벨
     tagN(b, lerp(O0, P, 0.5), n.x, n.y, `r = ${r} cm`, { color: 'rose', size: 17 });
     T(b, { x: 0, y: 1 }, `원주 2πr = ${cmOf(ex(2 * r))}`, { dy: 36, color: 'sky', size: 17 });
-    if (s.csQ > 0) T(b, { x: 0, y: 1 }, `점 P가 지나간 길이 = ${cmOf(s.csQ >= 359 ? ex(2 * r) : ex(r * Math.floor(s.csQ / 15) * 15, 180))}`, { dy: 64, color: 'amber', size: 16 });
+    if (s.csQ > 0) { const run = angleLength(r, s.csQ); T(b, { x: 0, y: 1 }, motionLabel('점 P가 지나간 길이', run.exact, run.distance), { dy: 64, color: 'amber', size: 16 }); }
   }
 };
 
@@ -237,9 +243,9 @@ const sDiameter = {
   ],
   problem: problemOf('생각해 보기', '원주를 지름으로 나눈 값은 무엇일까요?', '원의 크기와 관계없이 원주율 π입니다.'),
   view: (s) => {
-    const r = s.csR, progress = Math.round(s.csD);
+    const r = s.csR, run = rollLength(r, s.csD);
     return {
-      readouts: [{ label: '지름 2r', value: 2 * r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '굴러간 거리', value: s.csD >= 99.5 ? cmOf(ex(2 * r)) : cmOf(ex(2 * r * progress, 100)), color: 'amber', note: `${Math.round(s.csD * 3.6)}°만큼 굴림` }],
+      readouts: [{ label: '지름 2r', value: 2 * r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '굴러간 거리', value: motionCm(run.exact, run.distance), color: 'amber', note: `${angleText(s.csD * 3.6)}만큼 굴림` }],
       formula: RICH(M('원주율 $\\pi=\\dfrac{\\text{원주}}{\\text{지름}}$ , 원주 $l=\\pi\\times\\text{지름}=2\\pi r$'), M(`지금: $\\pi\\times${2 * r}=${texOf(ex(2 * r))}\\ \\text{cm}$`))
     };
   },
@@ -258,8 +264,9 @@ const sDiameter = {
     b.handle('roll', C, { color: 'amber', ariaLabel: '원 굴리기', drag: (w) => { s.playing = false; s.csD = clamp(w.x / TAU * 100, 0, 100); } });
     b.point(P, { color: 'amber', r: 7 });
     T(b, { x: C.x, y: -1 }, `지름 2r = ${2 * r} cm`, { dy: -26, color: 'rose', size: 17 });
-    T(b, { x: TAU / 2, y: gy }, s.csD >= 99.5 ? `한 바퀴 굴러간 거리 = 원주 = ${cmOf(ex(2 * r))}` : (th > 0 ? `굴러간 거리 = ${cmOf(ex(2 * r * Math.round(s.csD), 100))}` : '원을 굴려 보세요 →'), { dy: 36, color: 'amber', size: 17 });
-    if (s.csD >= 99.5) T(b, { x: TAU / 2, y: gy }, `원주 ÷ 지름 = ${plain(ex(2 * r))} ÷ ${2 * r} = π`, { dy: 66, color: 'ink', size: 16 });
+    const run = rollLength(r, s.csD), fullTurn = s.csD >= 100 - 1e-8, problem = lab && lab.tab === 'problem';
+    T(b, { x: TAU / 2, y: gy }, fullTurn ? `한 바퀴 굴러간 거리 = 원주 = ${cmOf(ex(2 * r))}` : (th > 0 ? motionLabel('굴러간 거리', run.exact, run.distance) : '원을 굴려 보세요 →'), { dy: 36, color: 'amber', size: 17 });
+    if (fullTurn && !problem) T(b, { x: TAU / 2, y: gy }, `원주 ÷ 지름 = ${plain(ex(2 * r))} ÷ ${2 * r} = π`, { dy: 66, color: 'ink', size: 16 });
   }
 };
 
@@ -373,17 +380,24 @@ function periScene(type) {
       },
       answer: (s) => APLab.esc(`③ ${plain(plus(ex(s.csR * s.csA, 180), ex(0, 1, 2 * s.csR)))} cm`)
     } : problemOf('생각해 보기', meta.q[0], meta.q[1]),
-    view: (s) => {
+    view: (s, lab) => {
       const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, s.csP / 100);
       const known = segs.every((g) => g.exact), tot = segs.reduce((a, g) => plus(a, g.exact || ex()), ex());
-      const rd = [{ label: '둘레', value: known ? cmOf(tot) : '호 + 현 (현은 계산 안 함)', color: 'sky' }];
+      const problem = lab && lab.tab === 'problem', review = lab && lab.tab === 'review';
+      const complete = !review || s.step >= segs.length + 1;
+      const traceReady = !review || s.csP <= 100 * cumTarget(segs, Math.max(0, (s.step || 1) - 1)) + 1e-6;
+      if (problem) return { readouts: [{ label: '반지름 r', value: r + ' cm', color: 'rose' }, { label: '중심각', value: sh.deg + '°', color: 'amber' }] };
+      const rd = [{ label: '둘레', value: !complete ? '마지막 단계에서 확인' : known ? cmOf(tot) : '호 + 현 (현은 계산 안 함)', color: 'sky' }];
       if (type !== 'segment') rd.push({ label: '넓이', value: cm2Of(type === 'semi' ? ex(r * r, 2) : ex(r * r * sh.deg, 360)), color: 'green' });
-      rd.push({ label: '점 P가 지나간 길이', value: s.csP > 0 ? (tp.ex ? cmOf(tp.ex) : '계산 안 함') : '0', color: 'amber' });
+      rd.push({ label: '점 P가 지나간 길이', value: traceReady ? motionCm(tp.ex, tp.distance) : '현재 단계로 이동 중', color: 'amber' });
       const f = { semi: `반원 둘레 = πr + 2r = π × ${r} + 2 × ${r} = ${plain(tot)} cm`, quarter: `사분원 둘레 = $\\frac{\\pi r}{2}$ + 2r = π × ${r}/2 + 2 × ${r} = ${plain(tot)} cm`, sector: `부채꼴 둘레 = 호 AB + 2r = 2π × ${r} × ${sh.deg}/360 + 2 × ${r} = ${plain(tot)} cm`, segment: `활꼴 둘레 = 호 AB + 현 AB = 2π × ${r} × ${sh.deg}/360 + ${known ? plain(segs[1].exact) + ' = ' + plain(tot) : '현 AB'} cm` }[type];
-      return { readouts: rd, formula: RICH(esc2(f), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '이 조건에서 현의 길이를 계산하는 방법은 중1 과정에서 배우지 않습니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
+      return { readouts: rd, formula: RICH(esc2(complete ? f : '둘레는 경계를 이루는 선의 길이를 하나씩 더해서 구합니다.'), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '이 조건에서 현의 길이를 계산하는 방법은 중1 과정에서 배우지 않습니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
     },
-    draw: (b, s) => {
+    draw: (b, s, v, lab) => {
       const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, s.csP / 100), a0 = sh.a0, a1 = sh.a1, am = (a0 + a1) / 2;
+      const problem = lab && lab.tab === 'problem', review = lab && lab.tab === 'review';
+      const revealed = problem ? 0 : review ? Math.max(0, (s.step || 1) - 1) : segs.length;
+      const traceReady = !review || s.csP <= 100 * cumTarget(segs, revealed) + 1e-6;
       segs.forEach((g) => { if (g.kind === 'arc') b.path(arcPts(0, 0, 1, g.a0, g.a1, 12), { color: null }); });
       if (type === 'sector' || type === 'segment') { bbox(b, -1, -1, 1, 1); ghost(b); }
       if (type === 'segment') fillSegment(b, a0, a1); else fillWedge(b, a0, a1);
@@ -392,7 +406,7 @@ function periScene(type) {
       segs.forEach((g) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a1, { color: 'sky', width: 2.8 }); else b.seg(g.P, g.Q, { color: 'rose', width: 2.8 }); });
       if (type === 'quarter' || type === 'sector') { b.ticks(O0, pt(0, 0, 1, a0), { color: 'amber' }); b.ticks(O0, pt(0, 0, 1, a1), { color: 'amber' }); }
       // 자취
-      if (s.csP > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
+      if (!problem && s.csP > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
       angleMark(b, a0, a1, `${sh.deg}°`, { r: type === 'segment' ? 22 : 30 });
       if (var_) angleHandle(b, s, key, a0, 30, type === 'sector' ? 300 : 180);
       dot(b, O0, 'ink', 5);
@@ -401,9 +415,10 @@ function periScene(type) {
       const cen = (() => { let x = 0, y = 0, n = 0; segs.forEach((g) => { for (let i = 0; i <= 4; i++) { const p = g.at(i / 4); x += p.x; y += p.y; n++; } }); return { x: x / n, y: y / n }; })();
       segs.forEach((g, i) => {
         const nm = type === 'sector' && g.kind === 'arc' ? '호 AB' : g.name;
-        const txt = `${NUMS[i]} ${nm}${g.exact ? ' ' + cmOf(g.exact) : ''}`;
+        const given = g.kind === 'line' && type !== 'segment';
+        const txt = `${NUMS[i]} ${nm}${g.exact && (given || i < revealed) ? ' ' + cmOf(g.exact) : ''}`;
         if (g.kind === 'arc') { if (type !== 'segment') { const m = g.at(0.5); const dx = m.x, dy = m.y, l = Math.hypot(dx, dy) || 1; tagN(b, m, dx / l, dy / l, txt, { color: 'sky', size: 16, gap: 10 }); } }
-        else if (type === 'segment') tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, [{ t: `${NUMS[0]} ${segs[0].name} ${cmOf(segs[0].exact)}`, color: 'sky' }, { t: txt, color: 'rose' }], { size: 16, gap: 10 });
+        else if (type === 'segment') tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, [{ t: `${NUMS[0]} ${segs[0].name}${revealed > 0 ? ' ' + cmOf(segs[0].exact) : ''}`, color: 'sky' }, { t: txt, color: 'rose' }], { size: 16, gap: 10 });
         else {
           const m = g.at(0.5), dx = g.Q.x - g.P.x, dy = g.Q.y - g.P.y, l = Math.hypot(dx, dy) || 1;
           let nx = -dy / l, ny = dx / l; if ((m.x - cen.x) * nx + (m.y - cen.y) * ny < 0) { nx = -nx; ny = -ny; }
@@ -411,26 +426,30 @@ function periScene(type) {
         }
       });
       T(b, O0, 'O', { dx: -bis.x * 18 - 4, dy: type === 'semi' ? 18 : -bis.y * 18 + 14, size: 16 });
+      // 문제는 주어진 도형과 치수만 제시합니다. 펼친 띠와 계산 결과는 탐구·정리에서 확인합니다.
+      if (problem) return;
       // 펼친 둘레 띠 (가로)
       let ymax = 0; segs.forEach((g) => { for (let i = 0; i <= 8; i++) ymax = Math.max(ymax, g.at(i / 8).y); });
       let x0 = Infinity, x1 = -Infinity; segs.forEach((g) => { for (let i = 0; i <= 8; i++) { const p = g.at(i / 8); x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); } });
       const Wt = type === 'sector' || type === 'segment' ? 2.2 : Math.max(2.2, x1 - x0), xl = (type === 'sector' || type === 'segment' ? 0 : (x0 + x1) / 2) - Wt / 2, yt = type === 'sector' || type === 'segment' ? 1.8 : ymax + 0.95;
       const total = segs.reduce((a, g) => a + g.len, 0); let acc = 0;
-      T(b, { x: xl, y: yt }, '펼친 둘레', { dx: 0, dy: -26, color: 'amber', size: 15, align: 'left' });
+      const known = segs.every((g) => g.exact), tot = segs.reduce((a, g) => plus(a, g.exact || ex()), ex());
+      const totalLabel = revealed < segs.length ? '둘레 = ?' : known ? `합계 ${cmOf(tot)}` : '현의 길이는 계산 안 함';
+      // 좁은 무대에서는 보조 제목을 덜어 합계와 겹치지 않게 합니다.
+      if (textW('펼친 둘레', 15) + textW(totalLabel, 15) + 18 < Wt * (b.k || 100)) T(b, { x: xl, y: yt }, '펼친 둘레', { dx: 0, dy: -26, color: 'amber', size: 15, align: 'left' });
       segs.forEach((g, i) => {
         const xa = xl + Wt * acc / total, xb = xl + Wt * (acc + g.len) / total; acc += g.len;
         b.seg({ x: xa, y: yt }, { x: xb, y: yt }, { color: g.color, width: 8 });
         dot(b, { x: xa, y: yt }, 'ink', 4);
-        const t = `${NUMS[i]} ${g.exact ? cmOf(g.exact) : ''}`.trim();
+        const t = `${NUMS[i]} ${g.exact && i < revealed ? cmOf(g.exact) : ''}`.trim();
         T(b, { x: (xa + xb) / 2, y: yt }, textW(t, 15) < (xb - xa) * (b.k || 100) - 4 ? t : NUMS[i], { dy: 24, color: g.color, size: 15 });
       });
       dot(b, { x: xl + Wt, y: yt }, 'ink', 4);
-      const known = segs.every((g) => g.exact), tot = segs.reduce((a, g) => plus(a, g.exact || ex()), ex());
-      T(b, { x: xl + Wt, y: yt }, known ? `합계 ${cmOf(tot)}` : '현의 길이는 계산 안 함', { dy: -26, color: 'amber', size: 15, align: 'right' });
+      T(b, { x: xl + Wt, y: yt }, totalLabel, { dy: -26, color: 'amber', size: 15, align: 'right' });
       if (s.csP > 0) b.seg({ x: xl, y: yt }, { x: xl + Wt * s.csP / 100, y: yt }, { color: 'amber', width: 8, alpha: 0.95 });
       const px = xl + Wt * s.csP / 100;
       b.handle('P', { x: px, y: yt }, { color: 'amber', ariaLabel: '점 P (끌어서 이동)', drag: (w) => { s.playing = false; s.csP = clamp(Math.round((w.x - xl) / Wt * 100), 0, 100); } });
-      if (s.csP > 0) T(b, { x: clamp(px, xl + 20 / (b.k || 100), xl + Wt - 20 / (b.k || 100)), y: yt }, tp.ex ? cmOf(tp.ex) : '', { dy: -52, color: 'amber', size: 16 });
+      if (s.csP > 0 && traceReady) T(b, { x: clamp(px, xl + 20 / (b.k || 100), xl + Wt - 20 / (b.k || 100)), y: yt }, motionCm(tp.ex, tp.distance), { dy: -52, color: 'amber', size: 16 });
       if (s.csP > 0) b.point(tp.P, { color: 'amber', r: 7 });
     }
   };
@@ -460,13 +479,15 @@ function proofScene(type) {
       return [`반지름 ${r} cm, 중심각 ${s.csS}°인 부채꼴을 관찰합니다.`, `부채꼴을 크기가 같은 ${Kof(s)}조각으로 나누어 위·아래 방향을 번갈아 가로로 늘어놓습니다.`, '가로로 밀어 서로 맞물리게 합니다. 가로는 호의 길이의 절반에 가까워집니다.', `호의 길이 l = ${plain(arc)} cm, 가로 = l ÷ 2, 세로 = r 이므로 넓이 = ½ × ${r} × ${plain(arc)} = ${plain(ex(r * r * s.csS, 360))} cm² (직사각형에 가까운 모양을 관찰한 것입니다)`];
     },
     problem: problemOf('생각해 보기', meta.q[0], meta.q[1]),
-    view: (s) => {
+    view: (s, lab) => {
       const r = s.csR;
+      if (lab && lab.tab === 'problem') return { readouts: [{ label: '반지름 r', value: r + ' cm', color: 'rose' }] };
       if (circ) return { readouts: [{ label: '가로 (원주의 절반)', value: cmOf(ex(r)), color: 'amber' }, { label: '세로 (반지름)', value: r + ' cm', color: 'rose' }, { label: '원의 넓이', value: cm2Of(ex(r * r)), color: 'green', note: '가로 × 세로 = πr × r' }], formula: RICH(M('원의 넓이 $S=\\pi r\\times r=\\pi r^2$'), M(`지금: $S=${texOf(ex(r))}\\times${r}=${texOf(ex(r * r))}\\ \\text{cm}^2$`)) };
       const arc = ex(r * s.csS, 180);
       return { readouts: [{ label: '호의 길이 l', value: cmOf(arc), color: 'sky' }, { label: '가로 (l ÷ 2)', value: cmOf(ex(r * s.csS, 360)), color: 'amber' }, { label: '부채꼴의 넓이', value: cm2Of(ex(r * r * s.csS, 360)), color: 'green', note: '½ × r × l' }], formula: RICH(M('부채꼴의 넓이 $S=\\pi r^2\\times\\dfrac{\\theta}{360}=\\dfrac{1}{2}rl$'), M(`지금: $S=\\dfrac{1}{2}\\times${r}\\times${texOf(arc)}=${texOf(ex(r * r * s.csS, 360))}\\ \\text{cm}^2$`)) };
     },
-    draw: (b, s) => {
+    draw: (b, s, v, lab) => {
+      const problem = lab && lab.tab === 'problem';
       // 두 그림은 같은 축척을 사용합니다. 넓은 무대는 나란히, 좁은 무대는 위아래로 배치합니다.
       // 현재 중심각의 시작/완성 상태만 함께 맞춰 재생 중 확대가 흔들리지 않게 합니다.
       const paint = (st) => {
@@ -497,7 +518,7 @@ function proofScene(type) {
           tagN(b, lerp(O0, Pr, 0.5), Math.sin(-PI / 6), -Math.cos(-PI / 6), `r = ${r} cm`, { color: 'amber', size: 16, gap: 6 });
         }
         dot(b, O0, 'ink', 4.5);
-        T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
+        if (!problem) T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
         for (let i = 0; i < N; i++) {
           const down = i % 2 === 0, j = Math.floor(i / 2);
           const px = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px - xc) * spread;
@@ -507,7 +528,7 @@ function proofScene(type) {
           b.path([c, ...arcPts(c.x, c.y, 1, mid - d / 2, mid + d / 2, 12)], { color: null });
           b.arc(c, 1, mid - d / 2, mid + d / 2, { sector: true, fill: color, fillAlpha: 0.28, color, width: N > 32 ? 0.8 : 1.4 });
         }
-        if (st.csT >= 55) {
+        if (st.csT >= 55 && !problem) {
           const al = clamp((st.csT - 55) / 35, 0, 1), xl = x0, xr = x0 + W;
           b.seg({ x: xl, y: Yt - 0.12 }, { x: xr, y: Yt - 0.12 }, { color: 'amber', width: 2.5, alpha: al });
           // 유한한 조각은 곡선 경계가 남습니다. 극한 길이를 등호로 단정하지 않습니다.
@@ -526,7 +547,7 @@ function proofScene(type) {
         }
       };
       if (!b._bbox && !b.thumb && b.W > 80 && b.H > 80) {
-        const key = [meta.id, s.csR, s.csS, s.csN, b.W, b.H, b.fs, ...Object.values(b.insets)].join('|');
+        const key = [meta.id, problem, s.csR, s.csS, s.csN, b.W, b.H, b.fs, ...Object.values(b.insets)].join('|');
         const cached = b._csProofLayout;
         if (!cached || cached.key !== key || cached.focus !== b.focus) {
           // 라벨은 픽셀 크기이므로 맞춘 배율에서 한 번 더 측정합니다.
@@ -563,8 +584,8 @@ const PARAMS = {
   csA: { value: 90, min: 30, max: 300, step: 15, color: 'amber', label: '중심각', hint: '그림의 노란 손잡이를 끌어도 됩니다', format: (v) => `${v}°` },
   csS: { value: 60, min: 30, max: 180, step: 15, color: 'amber', label: '중심각', hint: '그림의 노란 손잡이를 끌어도 됩니다', format: (v) => `${v}°` },
   csP: { value: 0, min: 0, max: 100, step: 1, color: 'amber', label: '점 P의 위치', hint: '펼친 둘레 띠의 노란 점을 끌어도 됩니다', format: (v) => `${Math.round(v)}%` },
-  csQ: { value: 90, min: 0, max: 360, step: 15, color: 'amber', label: '점 P의 위치(각)', hint: '그림의 노란 점 P를 끌어도 됩니다', format: (v) => `${Math.round(v)}°` },
-  csD: { value: 30, min: 0, max: 100, step: 1, color: 'amber', label: '원 굴리기', hint: '그림의 노란 점(원의 중심)을 가로로 끌어도 됩니다', format: (v) => `${Math.round(v * 3.6)}° 굴림` },
+  csQ: { value: 90, min: 0, max: 360, step: 15, color: 'amber', label: '점 P의 위치(각)', hint: '그림의 노란 점 P를 끌어도 됩니다', format: angleText },
+  csD: { value: 30, min: 0, max: 100, step: 1, color: 'amber', label: '원 굴리기', hint: '그림의 노란 점(원의 중심)을 가로로 끌어도 됩니다', format: (v) => `${angleText(v * 3.6)} 굴림` },
   csT: { value: 0, min: 0, max: 100, step: 1, color: 'green', label: '조각 가로로 밀기', hint: '맞물릴 때까지 오른쪽으로 당겨 보세요', format: (v) => `${Math.round(v)}%` }
 };
 // 장면에 들어올 때 기본값(교과서 숫자)
@@ -675,6 +696,24 @@ function start() {
   }
   const params = { ...PARAMS };
   mods.forEach((g) => Object.assign(params, g.params || {}));
+  // 보기 선택 없이 '지금 보기'로 연 답도, 문제의 수치 조건이 바뀌면 다시 잠급니다.
+  // 조각 이동·굴리기·모으기 진행은 같은 문제를 살펴보는 조작이므로 공개 상태를 유지합니다.
+  const motionKeys = new Set(['csQ', 'csD', 'csP', 'csT', 'f3t', 'f5T', 'rlT', 'swT', 'gtT', 'bx01_t']);
+  const motionKey = (key) => motionKeys.has(key) || /^f[14]_.+_t$/.test(key) || /^f02_.+_(u|sw)$/.test(key);
+  const problemStates = new WeakMap();
+  groups.forEach((group) => group.scenes.forEach((sc) => {
+    const view = sc.view;
+    sc.view = (s, lab) => {
+      if (lab && lab.s === s && lab.scene && lab.scene.id === sc.id) {
+        const controls = typeof sc.controls === 'function' ? sc.controls(s) : sc.controls || [];
+        const key = JSON.stringify(controls.filter((id) => !motionKey(id)).map((id) => [id, s[id]]));
+        const previous = problemStates.get(s);
+        if (previous && previous.id === sc.id && previous.key !== key) { s.revealed = false; s.step = sc.startStep || 1; }
+        problemStates.set(s, { id: sc.id, key });
+      }
+      return typeof view === 'function' ? view(s, lab) : view;
+    };
+  }));
   APLab.createLab({
     id: 'g7-circle-sector',
     stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)

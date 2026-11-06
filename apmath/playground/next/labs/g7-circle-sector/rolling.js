@@ -378,7 +378,8 @@
   function paint(b, sc, spec, st) {
     const M = sc.M, sh = M.sh, N = M.N, n = M.nOut, T = M.T;
     const FIG = b.kind === 'figure';
-    const P = (p) => (FIG ? [p.x, -p.y] : [p.x, p.y]);
+    // Board.toS는 {x, y}를 받습니다. 배열을 넘기면 화살촉·중심각·직선 l의 화면 좌표가 NaN이 됩니다.
+    const P = (p) => ({ x: p.x, y: FIG ? -p.y : p.y });
     const thumb = !!b.thumb;
     const ctx = b.ctx;
     const kpx = b.k;
