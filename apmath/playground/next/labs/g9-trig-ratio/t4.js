@@ -56,7 +56,7 @@
       notes: notes('빗변이 주어지면 sin, cos 를 곱해요. $\\tan$ 은 쓰지 않아요.', '대변에는 sin, 이웃변에는 cos 예요. 바꿔 곱하지 않도록 해요.')
     }),
     gen: () => G.specialProblem([30, 45, 60], 't4h', { given: ['c'], ask: ['a', 'b'] }),
-    pdraw: (b, q) => G.pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => G.pdrawRT(b, q.fig, C)
   };
   const fBase = {
     id: 'findFromBase', title: '밑변과 한 각으로 변의 길이 구하기', short: '밑변과 각',
@@ -77,7 +77,7 @@
       notes: notes('빗변을 구할 때는 곱하지 않고 $\\cos A$ 로 <b>나눠요</b>.', '구하는 변과 아는 변이 각 A에 대해 어떤 위치인지로 sin, cos, tan 을 골라요.')
     }),
     gen: () => G.specialProblem([30, 45, 60], 't4b', { given: ['a', 'b'], ask: ['a', 'b', 'c'] }),
-    pdraw: (b, q) => G.pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => G.pdrawRT(b, q.fig, C)
   };
 
   /* ====================================================================== 3·4. 두 변과 끼인각 (수선) */
@@ -85,28 +85,37 @@
   function sasGeom(a, c, beta) { const A = pt(c * Math.cos(beta * DEG), -c * Math.sin(beta * DEG)); return { B: pt(0, 0), C: pt(a, 0), A, H: pt(A.x, 0) }; }
   function drawSas(b, g, L, o = {}) {
     const { A, B, C, H } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C]), obt = H.x < 0;
-    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 64, l: 54, r: 54 });
+    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 });
     fillPoly(b, [A, B, C], 'sky', 0.08);
     if (st >= 1) { fillPoly(b, [A, B, H], 'rose', 0.14); fillPoly(b, [A, H, C], 'green', 0.12); }
     poly(b, [A, B, C], 'ink', 3.4);
-    if (st >= 1) { line(b, A, H, 'violet', 3.2, { dash: dashed }); if (obt) line(b, H, B, 'violet', 2.6, { dash: dashed }); ang(b, H, A, C, { color: 'violet', r: 18 }); }
+    if (st >= 1) { line(b, A, H, 'violet', 3.2, { dash: dashed }); if (obt) line(b, H, B, 'violet', 2.6, { dash: dashed }); else if (H.x > C.x) line(b, C, H, 'violet', 2.6, { dash: dashed }); ang(b, H, A, C, { color: 'violet', r: 18 }); }
     if (L.angB !== false) ang(b, B, C, A, { color: 'amber', r: 34, label: L.angB, size: 16 });
     if (obt && st >= 2) ang(b, B, H, A, { color: 'rose', r: 30, label: L.angOut, size: 16, rings: 2 });
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(H, { color: 'violet', r: 4 }); T(b, H, 'H', { dy: 20, size: 17, color: 'violet' }); }
     if (L.c) sideTag(b, A, B, cen, L.c.t, { color: L.c.c || 'sky', size: L.c.size || 17 });
-    if (L.a) sideTag(b, B, C, cen, L.a.t, { color: L.a.c || 'green', size: L.a.size || 17, flip: false, gap: 24 });
+    // Whole BC and the two auxiliary distances use separate dimension rows.
+    // A bare 6 beside a bare 5 is ambiguous when BC and HC almost coincide.
+    const dimension = (P0, Q0, value, name, dy, color) => {
+      const k = b.k || 60, P1 = pt(P0.x, P0.y + dy / k), Q1 = pt(Q0.x, Q0.y + dy / k);
+      line(b, P1, Q1, color, 1.4, { alpha: .7 });
+      for (const p0 of [P1, Q1]) line(b, pt(p0.x, p0.y - 4 / k), pt(p0.x, p0.y + 4 / k), color, 1.4);
+      const text = String(value).includes('=') ? String(value) : `${name} = ${value}`;
+      T(b, mid(P0, Q0), text, { dy: dy + 12, size: 14, color });
+    };
+    if (L.a) dimension(B, C, L.a.t, 'BC', 32, L.a.c || 'green');
     if (L.AC) sideTag(b, A, C, cen, L.AC.t, { color: L.AC.c || 'amber', size: L.AC.size || 17, f: obt ? 0.88 : 0.5 });
     if (L.AH && st >= 1) T(b, mid(A, H), L.AH, { dx: obt ? 22 : -4, size: 15, color: 'violet', align: obt ? 'left' : 'right' });
-    if (L.BH && st >= 1) T(b, mid(B, H), L.BH, { dy: 38, size: 15, color: 'rose' });
-    if (L.HC && st >= 1) T(b, mid(H, C), L.HC, { dy: 38, size: 15, color: 'green' });
-    (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 64 + i * 26, size: 16, color: r.c }));
+    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', 62, 'rose');
+    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', 92, 'green');
+    (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 138 + i * 26, size: 16, color: r.c }));
   }
   function sasModel(a, c, beta) {
     const obt = beta > 90, w = obt ? 180 - beta : beta, A = vi(a), Cc = vi(c);
-    const ah = vmul(Cc, sinD(w)), bh = vmul(Cc, cosD(w)), hc = obt ? vadd(A, bh) : vsub(A, bh);
+    const ah = vmul(Cc, sinD(w)), bh = vmul(Cc, cosD(w)), past = !obt && bh.v > a, hc = obt ? vadd(A, bh) : past ? vsub(bh, A) : vsub(A, bh);
     const ac = vsqrt(vadd(vpow2(ah), vpow2(hc)));
-    return { a, c, beta, obt, w, ah, bh, hc, ac };
+    return { a, c, beta, obt, past, w, ah, bh, hc, ac };
   }
   const sasScene = (id, title, short, obtuse) => ({
     id, title, short, question: obtuse ? '끼인각이 둔각이면 수선은 어디에 내려야 할까? 변의 연장선에 수선을 내려 AC를 구해 보자.' : '두 변 AB, BC와 그 끼인각 B를 알 때 AC의 길이는? 꼭짓점 A에서 BC에 수선을 내려 직각삼각형으로 나누어 보자.',
@@ -122,15 +131,15 @@
       }, { step: st });
     },
     steps: (M) => [
-      M.obt ? `$\\angle B=${M.beta}^{\\circ}$ 가 둔각이므로 변 $CB$ 의 <b>연장선</b>에 꼭짓점 $A$ 에서 수선 $AH$ 를 내려요. $\\angle ABH=180^{\\circ}-${M.beta}^{\\circ}=${M.w}^{\\circ}$` : `꼭짓점 $A$ 에서 $BC$ 에 수선 $AH$ 를 내려 직각삼각형 $ABH$, $AHC$ 로 나눠요. $\\angle B=${M.beta}^{\\circ}$ 는 그대로 남아요.`,
+      M.obt ? `$\\angle B=${M.beta}^{\\circ}$ 가 둔각이므로 변 $CB$ 의 <b>연장선</b>에 꼭짓점 $A$ 에서 수선 $AH$ 를 내려요. $\\angle ABH=180^{\\circ}-${M.beta}^{\\circ}=${M.w}^{\\circ}$` : `꼭짓점 $A$에서 직선 $BC$에 수선 $AH$를 내려요.${M.past ? ' 수선의 발 $H$는 $C$ 너머 연장선에 있습니다.' : ' 직각삼각형 $ABH$, $AHC$로 나뉩니다.'} $\\angle B=${M.beta}^{\\circ}$ 는 그대로 남아요.`,
       `$\\triangle ABH$ 에서 $AH=${M.c}\\sin ${M.w}^{\\circ}=${vtex(M.ah)}$, $BH=${M.c}\\cos ${M.w}^{\\circ}=${vtex(M.bh)}$ ${M.ah.x ? '' : '(근삿값)'}`,
-      `$HC=${M.obt ? `BC+BH=${M.a}+${vtex(M.bh)}` : `BC-BH=${M.a}-${vtex(M.bh)}`}=${vtex(M.hc)}$ 를 구하고, $\\triangle AHC$ 에서 피타고라스 정리로 $AC=\\sqrt{AH^2+HC^2}=${vtex(M.ac)}$`
+      `$HC=${M.obt ? `BC+BH=${M.a}+${vtex(M.bh)}` : M.past ? `BH-BC=${vtex(M.bh)}-${M.a}` : `BC-BH=${M.a}-${vtex(M.bh)}`}=${vtex(M.hc)}$ 를 구하고, $\\triangle AHC$ 에서 피타고라스 정리로 $AC=\\sqrt{AH^2+HC^2}=${vtex(M.ac)}$`
     ],
     view: (M) => ({
       guide: `<b>두 변</b>과 <b>끼인각 B</b>를 바꿔 보세요. 보라색 점선 AH가 수선이에요.${obtuse ? ' 끼인각이 둔각이라 수선의 발 H는 변 BC 밖에 생겨요.' : ''}`,
       readouts: [rd('$AH$', `$${vtex(M.ah)}$`, 'violet'), rd('$HC$', `$${vtex(M.hc)}$`, 'green'), rd('$AC$', `$${vtex(M.ac)}$`, 'amber')],
       rule: obtuse ? '끼인각이 둔각이면 연장선에 수선 → 외각 $180^{\\circ}-B$ 로 직각삼각형 → $AC^2=(BC+BH)^2+AH^2$' : '두 변과 끼인각 → 수선으로 직각삼각형 둘 → $AC^2=(BC-BH)^2+AH^2$',
-      notes: obtuse ? notes('수선은 변 위가 아니라 <b>연장선</b>에 내려요. 그래서 $HC=BC+BH$ 예요.', `$\\sin(180^{\\circ}-B)=\\sin B$ 이므로 $AH=c\\sin B$ 로 써도 같아요.`) : notes('수선의 발 H는 BC의 중점이 아니에요. $HC=BC-BH$ 를 잊지 마세요.', '끼인각 B를 나누지 않는 꼭짓점 A에서 수선을 내려요.')
+      notes: obtuse ? notes('수선은 변 위가 아니라 <b>연장선</b>에 내려요. 그래서 $HC=BC+BH$ 예요.', `$\\sin(180^{\\circ}-B)=\\sin B$ 이므로 $AH=c\\sin B$ 로 써도 같아요.`) : notes(M.past ? '수선의 발 H가 C 너머에 있으므로 $HC=BH-BC$입니다. 길이는 양수예요.' : '수선의 발 H는 BC의 중점이 아니에요. $HC=BC-BH$를 확인해요.', '끼인각 B를 나누지 않는 꼭짓점 A에서 수선을 내려요.')
     }),
     gen: function g() {
       const betas = obtuse ? [120, 135, 150] : [30, 45, 60], beta = pick(betas), w = obtuse ? 180 - beta : beta;
@@ -145,9 +154,15 @@
         stem: `△ABC에서 $\\overline{AB}=${vtex(cV)}$, $\\overline{BC}=${a}$, $\\angle B=${beta}^{\\circ}$ 일 때, $\\overline{AC}$ 의 길이는?`,
         choices: mkChoices(ac, wr), fig: { a, c: cV.v, cl: vcan(cV), beta }, given: [`${beta}°`, vcan(cV), `${a}`], ans: [vcan(ac)]
       };
-      return checkQ(q);
+      q.fig.work = { ah: vcan(ahv), bh: vcan(bhv), hc: vcan(hc), ac: vcan(ac), w };
+      return checkQ(q, [
+        `주어진 조건은 $AB=${vtex(cV)}$, $BC=${a}$, $\\angle B=${beta}^{\\circ}$입니다. $A$에서 ${obtuse ? '$CB$의 연장선' : '$BC$'}에 수선 $AH$를 내려요.`,
+        `$\\angle ABH=${w}^{\\circ}$이므로 $AH=${vtex(cV)}\\sin ${w}^{\\circ}=${vtex(ahv)}$, $BH=${vtex(cV)}\\cos ${w}^{\\circ}=${vtex(bhv)}$입니다.`,
+        `수선의 발의 위치를 확인하면 $HC=${obtuse ? 'BC+BH' : 'BC-BH'}=${a}${obtuse ? '+' : '-'}${vtex(bhv)}=${vtex(hc)}$입니다.`,
+        `직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=${vtex(vpow2(ahv))}+${vtex(vpow2(hc))}$입니다. 양의 제곱근을 구해요.`
+      ], { kind: 'sas', a, c: cV.v, angle: beta, answer: ac.v });
     },
-    pdraw: (b, q) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: 'x', c: 'amber', size: 21 } }, { step: 0 }); }
+    pdraw: (b, q, C) => { const f = q.fig, g = sasGeom(f.a, f.c, f.beta); drawSas(b, g, { angB: `${f.beta}°`, c: { t: f.cl, c: 'sky' }, a: { t: `${f.a}`, c: 'green' }, AC: { t: C.last ? f.work.ac : 'x', c: 'amber', size: 21 }, angOut: `${f.work.w}°`, AH: C.review && C.step >= 2 ? f.work.ah : null, BH: C.review && C.step >= 2 ? f.work.bh : null, HC: C.review && C.step >= 3 ? f.work.hc : null }, { step: C.review ? C.step : 0 }); }
   });
   const sasA = sasScene('sasAcuteLen', '두 변과 끼인각으로 길이 구하기', '두 변과 끼인각', false);
   const sasO = sasScene('sasObtuseLen', '[심화] 끼인각이 둔각일 때', '[심화] 끼인각이 둔각', true);
@@ -202,7 +217,7 @@
       notes: notes('45°, 60°인 꼭짓점에서 수선을 내리면 특수각이 아닌 각이 생겨 풀기 어려워요.')
     }),
     gen: () => chainLike(),
-    pdraw: (b, q) => { const f = q.fig, M = G.chainModel(vf(f.hv), [45, 60], true); drawSplit(b, M, { step: 0, labels: pLabels(f, M) }); }
+    pdraw: (b, q, C) => { const f = q.fig, M = f.exact, labels = pLabels(f, M); if (C.review && C.step >= 3) labels.AH = vcan(M.h); if (C.last) labels[f.askK.toUpperCase()].t = vcan(M[f.askK]); drawSplit(b, M, { step: C.review ? C.step : 0, labels }); }
   };
   // 문제: 45°·60° 삼각형에서 주어진 변으로 다른 변 구하기
   function pLabels(f, M) { const l = {}; const key = { ab: 'AB', ac: 'AC', bc: 'BC' }; l[key[f.givenK]] = { t: f.g, c: 'sky' }; l[key[f.askK]] = { t: 'x', c: 'amber', size: 21 }; return l; }
@@ -216,7 +231,13 @@
       stem: `△ABC에서 $\\angle B=45^{\\circ}$, $\\angle C=60^{\\circ}$, $${nm[givenK]}=${vtex(gv)}$ 일 때, $${nm[askK]}$ 의 길이는?`,
       choices: mkChoices(ans, wr), fig: { hv: hv.v, givenK, askK, g: vcan(gv) }, given: [vcan(gv), '45°', '60°'], ans: [vcan(ans)]
     };
-    return checkQ(q);
+    q.fig.exact = M;
+    return checkQ(q, [
+      `삼각형 $ABC$의 밑각은 $45^{\\circ}$, $60^{\\circ}$입니다. 나머지 $75^{\\circ}$인 꼭짓점 $A$에서 $BC$에 수선 $AH$를 내려요.`,
+      '$\\angle BAH=45^{\\circ}$, $\\angle CAH=30^{\\circ}$이므로 두 직각삼각형 모두 특수각을 갖습니다. $BH=AH$, $CH=AH/\\sqrt{3}$입니다.',
+      givenK === 'ac' ? `$AH=AC\\sin60^{\\circ}=${vtex(gv)}\\times\\frac{\\sqrt{3}}{2}=${vtex(M.h)}$입니다.` : `$BC=AH+AH/\\sqrt{3}=${vtex(gv)}$이므로 $AH=${vtex(M.h)}$입니다.`,
+      `$AB=\\sqrt{2}\\,AH$, $AC=2AH/\\sqrt{3}$, $BC=AH+AH/\\sqrt{3}$ 중 구하는 $${askK.toUpperCase()}$의 식에 $AH=${vtex(M.h)}$를 넣어요.`
+    ], { kind: 'chain', pair: [45, 60], height: hv.v, givenSide: givenK, askedSide: askK, answer: ans.v });
   }
 
   /* ====================================================================== 8. [함정] 어느 꼭짓점에서 수선을? */
@@ -249,7 +270,12 @@
         stem: `△ABC에서 $\\angle B=${pair[0]}^{\\circ}$, $\\angle C=${pair[1]}^{\\circ}$ 이고 $\\overline{AH}\\perp\\overline{BC}$ 일 때, $\\angle ${askB ? 'BAH' : 'CAH'}=x$ 의 크기는?`,
         choices: degChoices(ans, wr), fig: { pair, askB }, given: [`${pair[0]}°`, `${pair[1]}°`], ans: [`${ans}°`]
       };
-      return checkQ(q);
+      return checkQ(q, [
+        `현재 밑각은 $\\angle B=${pair[0]}^{\\circ}$, $\\angle C=${pair[1]}^{\\circ}$입니다. 구하는 각은 $\\angle ${askB ? 'BAH' : 'CAH'}=x$입니다.`,
+        `$AH\\perp BC$이므로 $\\triangle ${askB ? 'ABH' : 'ACH'}$의 $H$에서의 각은 $90^{\\circ}$입니다.`,
+        `이 직각삼각형의 나머지 예각은 $${askB ? pair[0] : pair[1]}^{\\circ}$이므로 $x+${askB ? pair[0] : pair[1]}^{\\circ}=90^{\\circ}$입니다.`,
+        `$x=90^{\\circ}-${askB ? pair[0] : pair[1]}^{\\circ}$를 계산해요. 다른 쪽 직각삼각형의 밑각과 바꾸지 않아요.`
+      ], { kind: 'complement', angle: askB ? pair[0] : pair[1], answer: ans });
     },
     pdraw: (b, q) => { const M = G.chainModel(vi(6), q.fig.pair, true); drawSplit(b, M, { step: 2, xl: q.fig.askB ? 'B' : 'C' }); }
   };
@@ -303,9 +329,15 @@
       else if (kind === 't75') { ans = t75v; stem = '그림에서 $\\tan75^{\\circ}$ 의 값은? (단, $\\angle CAD=75^{\\circ}$)'; wr = [[t15v, '$15^{\\circ}$ 의 탄젠트예요. 기준각이 어느 각인지 확인해요.'], [vsq(3), '$\\tan60^{\\circ}$ 예요.'], [vadd(vi(2), vdiv(vsq(3), vi(3))), ''], [vsub(vsq(3), vi(2)), ''], [vadd(vsq(3), vi(1)), '']]; }
       else { ans = vmul(vi(k), vadd(vsq(3), vi(2))); stem = '그림에서 $\\overline{CD}=x$ 의 값은?'; wr = [[vmul(vi(k), vsq(3)), '$BC$ 의 길이예요. $BD$ 도 더해야 해요.'], [vmul(vi(2 * k), vsq(3)), ''], [vmul(vi(k), vadd(vsq(3), vi(1))), '$BD=2k$ 예요. $k$ 가 아니에요.'], [vmul(vi(k), vsub(vi(2), vsq(3))), '부호가 반대예요.'], [vi(4 * k), '']]; L.CD = 'x'; }
       const q = { tag: '[심화] 15°·75°', key: ['t15', kind, k].join('|'), stem: `그림에서 $\\angle C=90^{\\circ}$, $\\angle ABC=30^{\\circ}$, $\\overline{AC}=${k}$, $\\overline{AB}=\\overline{BD}$ 일 때, ` + stem.replace(/^그림에서 /, ''), choices: mkChoices(ans, wr), fig: { k, L, dl, kind }, given: [`${k}`, '30°'], ans: [vcan(ans)] };
-      return checkQ(q);
+      q.fig.work = { AC: `${k}`, CB: vcan(vmul(vsq(3), vi(k))), AB: `${2 * k}`, BD: `${2 * k}`, CD: vcan(cd) };
+      return checkQ(q, [
+        `직각삼각형 $ABC$에서 $AC=${k}$, $\\angle ABC=30^{\\circ}$이므로 $AB=${2 * k}$, $BC=${vtex(vmul(vsq(3), vi(k)))}$입니다.`,
+        `$AB=BD$이므로 $BD=${2 * k}$입니다. 이등변삼각형 $ABD$의 외각 $30^{\\circ}$를 이용하면 $\\angle ADB=15^{\\circ}$입니다.`,
+        `$CD=CB+BD=${vtex(vmul(vsq(3), vi(k)))}+${2 * k}=${vtex(cd)}$입니다.`,
+        kind === 'cd' ? '구하는 선분은 $CD$입니다. 두 선분의 합을 같은 근호끼리 정리해요.' : kind === 't15' ? `$\\tan15^{\\circ}=\\frac{AC}{CD}=\\frac{${k}}{${vtex(cd)}}$를 약분하고 분모를 유리화해요.` : `$\\angle CAD=75^{\\circ}$이므로 $\\tan75^{\\circ}=\\frac{CD}{AC}=\\frac{${vtex(cd)}}{${k}}$입니다.`
+      ], { kind: 'tan15', scale: k, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q) => draw15(b, q.fig.k, { step: 1, L: q.fig.L, dl: q.fig.kind === 't15' ? '15°' : null, a75: q.fig.kind === 't75' })
+    pdraw: (b, q, C) => draw15(b, q.fig.k, { step: 1, L: C.review && C.step >= 2 ? { ...q.fig.work, CD: C.last || q.fig.kind !== 'cd' && C.step >= 3 ? q.fig.work.CD : q.fig.L.CD || '' } : q.fig.L, dl: q.fig.kind === 't15' ? '15°' : null, a75: q.fig.kind === 't75' })
   };
 
   /* ====================================================================== 7. 종이테이프 */
@@ -327,7 +359,7 @@
     // 폭 w: 테이프 1 의 폭(세로)과 테이프 2 의 폭(수직)
     const Hh = pt(B.x + g.s * 0.35, 0); line(b, Hh, pt(Hh.x, -w), 'sky', 3); ang(b, Hh, pt(Hh.x - 1, 0), pt(Hh.x, -1), { color: 'ink', r: 12 }); T(b, mid(Hh, pt(Hh.x, -w)), o.wL || `${w}`, { dx: 14, size: 16, color: 'sky', align: 'left' });
     const foot = G.projOn(D, A, B), dpt = D; // D 에서 AB 에 내린 수선은 변 AB 에 수직인 높이 w
-    line(b, D, pt(D.x, 0), 'violet', 2.6, { dash: dashed }); ang(b, pt(D.x, 0), pt(D.x + 1, 0), D, { color: 'violet', r: 12 });
+    if (st >= 1) { line(b, D, pt(D.x, 0), 'violet', 2.6, { dash: dashed }); ang(b, pt(D.x, 0), pt(D.x + 1, 0), D, { color: 'violet', r: 12 }); }
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.sideL) sideTag(b, A, B, cen, o.sideL, { color: o.sideC || 'green', size: o.sideSize || 17, flip: false, gap: 22 });
     if (o.inL) T(b, cen, o.inL, { size: 20, color: 'amber' });
@@ -360,9 +392,15 @@
         stem: kind === 'side' ? `그림과 같이 폭이 $${w}$ 로 같은 두 종이테이프가 $\\angle A=${th}^{\\circ}$ 로 겹쳐 있을 때, 겹친 사각형 $ABCD$ 의 한 변 $\\overline{AB}=x$ 의 길이는?` : `그림과 같이 폭이 $${w}$ 로 같은 두 종이테이프가 $\\angle A=${th}^{\\circ}$ 로 겹쳐 있을 때, 겹친 사각형 $ABCD$ 의 넓이는?`,
         choices: mkChoices(ans, wr), fig: { w, th, kind }, given: [`${w}`, `${th}°`], ans: [vcan(ans)]
       };
-      return checkQ(q);
+      q.fig.side = vcan(sd); q.fig.area = vcan(area);
+      return checkQ(q, [
+        `테이프의 폭은 $${w}$, 겹친 각은 $${th}^{\\circ}$입니다. 폭이 같은 두 띠의 겹친 부분은 마름모입니다.`,
+        `마름모 한 변을 $s$라 하고 높이를 그으면 높이는 폭 $${w}$와 같습니다. $\\sin ${th}^{\\circ}=\\frac{${w}}{s}$입니다.`,
+        `$s=\\frac{${w}}{\\sin ${th}^{\\circ}}=\\frac{${w}}{${vtex(sinD(th))}}=${vtex(sd)}$입니다.`,
+        kind === 'area' ? `넓이는 한 변 × 높이이므로 $S=${vtex(sd)}\\times${w}$입니다. 마름모의 두 변을 곱하는 것이 아니에요.` : '구하는 것은 마름모의 한 변입니다. 폭을 삼각비로 나눈 값을 약분해요.'
+      ], { kind: 'tape', width: w, angle: th, ask: kind, answer: ans.v });
     },
-    pdraw: (b, q) => drawTape(b, q.fig.w, q.fig.th, q.fig.kind === 'side' ? { step: 0, sideL: 'x', sideC: 'amber', sideSize: 21 } : { step: 0, rows: [{ t: '□ABCD의 넓이 = x', c: 'amber' }] })
+    pdraw: (b, q, C) => drawTape(b, q.fig.w, q.fig.th, q.fig.kind === 'side' ? { step: C.review ? C.step : 0, sideL: C.last ? q.fig.side : 'x', sideC: 'amber', sideSize: 21 } : { step: C.review ? C.step : 0, sideL: C.review && C.step >= 3 ? q.fig.side : '', rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.fig.area}` : '□ABCD의 넓이 = x', c: 'amber' }] })
   };
 
   G.register(40, 't4', '④ 변의 길이', '변의 길이', PARAMS, [fHyp, fBase, sasA, sasO, asa, t15, tape, trap]);
