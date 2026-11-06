@@ -932,7 +932,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
-    "templateKey": null
+    "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "primaryMethod": "제수 (x-1)²에 맞추어 x²⁰-1=(x-1)S(x)로 묶고 S(x)의 x=1에서의 값을 이용한다.",
+    "decisiveStep": "S(1)=20이므로 R(x)=20(x-1)이며 R(2)=20이다."
   },
   {
     "id": 17,
