@@ -3,7 +3,7 @@
    - 색칠한 부분 = 전체 − 파낸 부분. 전체 도형 → 파낼 부분(주황) → 가로로 꺼내기 → 남은 부분(파랑)의 넓이.
    - 모든 도형은 길이·각을 막대(또는 점)로 바꿀 수 있고, 그림 속 길이·각·식·정리 단계·문제 보기가 그대로 다시 계산됩니다.
    - 교과서 문제 그대로: 13번(정사각형 − 사분원 4개), 서술형 2(부채꼴 − 반원, 둘레와 넓이), 연습 2-1(잎 모양), 연습 2-2.
-     이어서 같은 생각의 장면(고리 부채꼴·원 안의 작은 원, 반원 둘, 활꼴, 반원 − 직각삼각형)이 있습니다.
+     이어서 같은 생각의 장면(고리 부채꼴·원 안의 작은 원, 반원 둘, 반원 − 직각삼각형)이 있습니다.
    - 움직임은 가로 이동뿐입니다(파낸 조각을 옆으로 꺼냄). 세로 이동은 없습니다.
    - 이 파일은 APL_CS_GROUPS 에 묶음 하나를 등록할 뿐, 다른 전역은 만들지 않습니다.
      동작 변수(f1_*)는 쪽이 params 를 합쳐 주지 않아도 장면에 들어올 때 스스로 등록합니다.
@@ -340,8 +340,9 @@
       draw: (b, s, v, lab) => {
         const c = ctxOf(s, lab);
         const L = sp.layout(c);
+        if (['star', 'ss2', 'lens', 'ex22'].includes(sp.id) && c.problem) L.marg.b = 100;
         fitPx(b, L.bb, L.marg);
-        sp.render(b, c);
+        sp.render(b, c, ['star', 'ss2', 'ring'].includes(sp.id));
       },
       csModel: (s) => modelOf(getV(s)),
       csChoices: (s, lab) => { const c = ctxOf(s, lab); return choicesOf(c.V, c.seed); },
@@ -451,7 +452,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   }
   const whenA = (c, w) => (w === 'h' ? seg01(c.hi, 0.4, 1) : w === 'm' ? seg01(c.mv, 0.5, 1) : w === 'r' ? seg01(c.res, 0.2, 0.8) : 1);
 
-  function renderRem(b, c) {
+  function renderRem(b, c, outlineOnly = false) {
     const M = c.M, [x0, y0, x1, y1] = M.box, w = x1 - x0, dx = w * GAPK, cx = (x0 + x1) / 2;
     const flat = [].concat(...M.cuts.map((g) => g.polys));
     const remPolys = [M.outer].concat(flat);
@@ -465,7 +466,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       M.fig.forEach((it) => { if (it.when === 'g') drawItem(b, it, 0, 1); });
       return;
     }
-    if (c.mode) { renderPeri(b, c); return; }
+    if (c.mode) { renderPeri(b, c, outlineOnly); return; }
     const ox = dx * mv;
     if (mv > 0.01) { outline(b, shiftP(M.outer, dx), 'muted', 1.8, { dash: [6, 5], alpha: 0.75 * mv }); drawCtx(dx, 0.45 * mv); }
     fillEO(b, [M.outer], 'ink', 0.1 * (1 - hi));
@@ -488,10 +489,10 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     caption(b, cx + dx, y0, cp.part.l, cp.part.v, 'amber', seg01(mv, 0.6, 1));
     if (M.handles) M.handles.forEach((h) => b.handle(h.id, P(h.p[0], h.p[1]), { color: 'amber', ariaLabel: h.label, drag: (wp) => h.drag(wp, c) }));
   }
-  function renderPeri(b, c) {
+  function renderPeri(b, c, outlineOnly = false) {
     const M = c.M, [x0, y0, x1] = M.box, cx = (x0 + x1) / 2;
     const flat = [].concat(...M.cuts.map((g) => g.polys));
-    fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
+    if (!outlineOnly) fillEO(b, [M.outer].concat(flat), 'sky', 0.2);
     outline(b, M.outer, 'ink', 1.6, { alpha: 0.5 });
     flat.forEach((p) => outline(b, p, 'ink', 1.4, { alpha: 0.5 }));
     M.ctx.forEach((p) => outline(b, p, 'ink', 1.5, { alpha: 0.7 }));
@@ -668,7 +669,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠하지 않은 부분의 넓이를 빼서 넓이를 구하는 경우 · 연습 2-1 [6점]', unit: 'cm²',
-      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
+      stem: (V) => `한 변의 길이가 ${V.a} cm인 정사각형에서 서로 마주 보는 두 꼭짓점을 중심으로 다른 두 꼭짓점을 지나는 사분원을 그렸다. 그림에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
       answer: (V) => `$${xt(X(2 * V.a * V.a, Q(-V.a * V.a, 2)))}$ cm²`,
       std: (V, M) => `<b>풀이</b><br>(잎 모양의 넓이)=(사분원 2개의 넓이)−(정사각형의 넓이)<br>$=2\\times\\left(\\pi\\times${V.a}^2\\times\\dfrac14\\right)-${V.a * V.a}=${xt(M.partX)}$ (cm²)<br>(색칠한 부분의 넓이)=(정사각형의 넓이)−(잎 모양의 넓이)<br>$=${V.a * V.a}-${xtp(M.partX)}=${xt(M.resX)}$ (cm²)`,
       quick: (V, M) => `잎 모양 $=2\\times\\frac{\\pi a^2}{4}-a^2$ → 색칠 $=2a^2-\\frac{\\pi a^2}{2}=${xt(M.resX)}$`
@@ -711,7 +712,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠하지 않은 부분의 넓이를 빼서 넓이를 구하는 경우 · 연습 2-2 [6점]', unit: 'cm²',
-      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
+      stem: (V) => `한 변의 길이가 ${V.a} cm인 정사각형에서 한 꼭짓점을 중심으로 이웃한 두 꼭짓점을 지나는 사분원과 한 변을 지름으로 하는 반원을 그림과 같이 그렸다. 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
       answer: (V) => `$${xt(X(V.a * V.a, Q(-V.a * V.a, 8)))}$ cm²`,
       std: (V, M) => `<b>풀이</b><br>(흰 부분의 넓이)=(사분원의 넓이)−(반원의 넓이)<br>$=\\pi\\times${V.a}^2\\times\\dfrac14-\\pi\\times${fn(V.a / 2)}^2\\times\\dfrac12=${xt(M.partX)}$ (cm²)<br>(색칠한 부분의 넓이)=(정사각형의 넓이)−(흰 부분의 넓이)<br>$=${V.a * V.a}-${xtp(M.partX)}=${xt(M.resX)}$ (cm²)`,
       quick: (V, M) => `$a^2-\\left(\\frac{\\pi a^2}{4}-\\frac{\\pi a^2}{8}\\right)=${xt(M.resX)}$`
@@ -865,65 +866,6 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     }
   });
 
-  /* ⑦ 활꼴 : 부채꼴 − 삼각형 */
-  SPECS.push({
-    id: 'seg', title: '부채꼴에서 삼각형 파내 활꼴 만들기', short: '활꼴',
-    question: '부채꼴에서 두 반지름과 현으로 이루어진 삼각형을 파내면 활꼴이 남아요. 중심각을 바꾸면 활꼴은 어떻게 변할까요?',
-    vars: [
-      { k: 'R', sym: 'R', label: '부채꼴의 반지름 R', min: 4, max: 12, step: 2, value: 6 },
-      { k: 'th', sym: '중심각', label: '중심각', min: 30, max: 150, step: 60, value: 90, fmt: (v) => `중심각 ${fn(v)}°` } // 30°·90°·150°: sin 값이 1/2·1·1/2 라서 √ 없이 넓이가 정확히 나옵니다(60°·120°는 √3 이 필요해 중3 내용)
-    ],
-    pool: [{ R: 4, th: 90 }, { R: 8, th: 90 }, { R: 10, th: 90 }, { R: 12, th: 90 }, { R: 6, th: 30 }, { R: 6, th: 150 }],
-    model: (V) => {
-      const R = V.R, th = V.th, a0 = 90 - th / 2, a1 = 90 + th / 2;
-      const B = P(R * Math.cos(rad(a0)), R * Math.sin(rad(a0))), A = P(R * Math.cos(rad(a1)), R * Math.sin(rad(a1)));
-      const outer = sectorP(0, 0, R, a0, a1), tri = [P(0, 0), A, B];
-      const wholeX = X(0, Q(R * R * th, 360));
-      const rt = th === 90;
-      const partX = rt ? X(Q(R * R, 2)) : X(Q(R * R, 4)); // sin30°=sin150°=1/2
-      const resX = xsub(wholeX, partX);
-      const nx = Math.cos(rad(a0) - PI / 2), ny = Math.sin(rad(a0) - PI / 2);
-      const fig = [
-        { k: 'dot', p: [0, 0], when: 's' },
-        T([A.x * 0.5, A.y * 0.5], `${fn(R)}`, { ...away(-nx, ny, 16), color: 'ink', when: 'g' }),
-        T([B.x * 0.5, B.y * 0.5], `${fn(R)}`, { ...away(nx, ny, 16), color: 'ink', when: 'g' }),
-        { k: 'seg', p: [A.x, A.y], q: [B.x, B.y], color: 'rose', w: 1.6, dash: [5, 4], when: 's' },
-        T([0, A.y], '현 AB', { dy: 14, color: 'rose', when: 's', size: 13 }),
-        T([A.x, A.y], 'A', { dx: -12, dy: -10, when: 'g', color: 'ink' }), T([B.x, B.y], 'B', { dx: 12, dy: -10, when: 'g', color: 'ink' }), T([0, 0], 'O', { dy: 14, when: 'g', color: 'ink' })
-      ];
-      if (rt) fig.push({ k: 'right', v: [0, 0], p: [A.x, A.y], q: [B.x, B.y], when: 'g', size: 12 });
-      else fig.push({ k: 'ang', v: P(0, 0), d0: a0, d1: a1, text: `${th}°`, when: 'g', r: 26 });
-      if (th === 60) fig.push(TICK([0, 0], [A.x, A.y], { n: 1 }), TICK([0, 0], [B.x, B.y], { n: 1 }), TICK([A.x, A.y], [B.x, B.y], { n: 1 }));
-      const triTex = rt ? `\\dfrac12\\times${R}\\times${R}=${xt(partX)}` : `\\dfrac12\\times${R}\\times${R}\\times\\sin${th}^\\circ=${xt(partX)}`;
-      return rem({
-        outer, cuts: [{ polys: [tri] }], fig, part: [], wholeX, partX, resX,
-        tx: { whole: `반지름 ${R} cm, 중심각 ${th}°인 부채꼴 OAB`, part: `삼각형 OAB(두 반지름과 현 AB로 이루어진 삼각형)` },
-        cap: { whole: { l: '전체 (부채꼴)', v: cm2(wholeX) }, part: { l: '파낸 부분 (삼각형)', v: cm2(partX) } },
-        wholeTex: `\\pi\\times${R}^2\\times\\dfrac{${th}}{360}=${xt(wholeX)}`, partTex: triTex,
-        steps: [
-          `부채꼴의 넓이: $\\pi\\times${R}^2\\times\\dfrac{${th}}{360}=${xt(wholeX)}$ (cm²)`,
-          '파낼 부분은 두 반지름과 현으로 이루어진 삼각형 OAB예요',
-          rt ? `삼각형의 넓이(직각삼각형): $\\dfrac12\\times${R}\\times${R}=${xt(partX)}$ (cm²)` : `삼각형의 넓이: $\\dfrac12\\times${R}\\times${R}\\times\\sin${th}^\\circ=${xt(partX)}$ (cm²)`,
-          `활꼴 = 부채꼴 − 삼각형 ${sub(wholeX, partX, resX)} (cm²)`
-        ],
-        guide: guide4({ whole: `반지름 ${R} cm, 중심각 ${th}°인 부채꼴`, part: '삼각형 OAB' }, xs(resX) + ' cm²'),
-        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>활꼴(현과 호로 이루어진 도형)은 <b>부채꼴 − 삼각형</b>으로 구해요.</li><li>중심각이 90°이면 삼각형은 직각삼각형이라 넓이가 $\\frac12R^2$이에요.</li></ul>'
-      });
-    },
-    problem: {
-      tag: '활꼴의 넓이', unit: 'cm²', textbook: false,
-      stem: (V) => `그림은 반지름의 길이가 ${V.R} cm이고 중심각의 크기가 ${V.th}°인 부채꼴 OAB이다. 현 AB와 호 AB로 이루어진 활꼴(색칠한 부분)의 넓이는?`,
-      choices: (V) => {
-        const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(Q(V.R * V.R, 4));
-        const A = xsub(S, T0);
-        return ascending(A, [xadd(S, T0), S, xsub(S, xmul(T0, 2)), xmul(S, 2), X(0, 1)].map((v) => v), X(0, 1));
-      },
-      hint: () => '부채꼴의 넓이에서 삼각형 OAB의 넓이를 빼요.',
-      std: (V, M) => `<b>해결 전략</b> (활꼴) = (부채꼴) − (삼각형)<br>(부채꼴의 넓이) $=\\pi\\times${V.R}^2\\times\\dfrac{${V.th}}{360}=${xt(M.wholeX)}$<br>(삼각형의 넓이) $=${xt(M.partX)}$<br>따라서 활꼴의 넓이는 $${xt(M.resX)}$ (cm²)`,
-      quick: (V, M) => `$${xt(M.wholeX)}-${xtp(M.partX)}=${xt(M.resX)}$`
-    }
-  });
-
   /* 반원 − 직각삼각형: 빗변(지름) AB 가 자연수가 되는 (AC, BC) 만 씁니다(제곱근은 중3 내용) */
   const TRI_PAIRS = [[3, 4], [4, 3], [5, 12], [12, 5], [6, 8], [8, 6], [8, 15], [15, 8], [9, 12], [12, 9]];
   const triNearest = (ac, bc) => TRI_PAIRS.reduce((b, z) => (Math.abs(z[0] - ac) + Math.abs(z[1] - bc) < Math.abs(b[0] - ac) + Math.abs(b[1] - bc) ? z : b), TRI_PAIRS[0]);
@@ -1015,8 +957,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
     order: 61,
     id: 'f01',
-    title: 'F01 넣기·파내기',
-    short: 'F01 넣기·파내기',
+    title: '넣기·파내기',
+    short: '넣기·파내기',
     params: PARAMS,
     scenes: GROUP_SCENES
   });

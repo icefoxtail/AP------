@@ -211,6 +211,7 @@
       })),
       steps: (s) => spec.steps(sv(s)),
       problem: {
+        autoSnap: ['1102', '1103', '1106', '1210', '1609', '1610', '1719', '1808', '1209'].includes(spec.id) ? false : undefined,
         tag: spec.tag || '교재 문제',
         text: (s) => spec.problem(sv(s)).text,
         answer: (s) => spec.problem(sv(s)).answer,
@@ -343,15 +344,16 @@
       g.reserve([-R - 8, -R - 8], [R + 8, R + 8]);
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const P = g.pol(O, R, pa), Q = g.pol(O, R, qa), half = Math.abs(th - 180) < 0.5;
-      g.arc(O, R, pa, qa, { sector: true, fill: 'amber', fillAlpha: 0.2, stroke: false, ref: [3, 5] });
-      g.path(g.arcPts(O, R, pa, qa), { close: true, fill: 'green', fillAlpha: 0.3, stroke: false, ref: [3, 4] });
+      g.arc(O, R, pa, qa, { sector: true, fill: 'amber', fillAlpha: 0.06, stroke: false, ref: [3, 5] });
+      g.path(g.arcPts(O, R, pa, qa), { close: true, fill: 'green', fillAlpha: 0.10, stroke: false, ref: [3, 4] });
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       if (sel === 1 || half) g.seg(g.pol(O, R, pa), g.pol(O, R, pa + 180), { color: 'rose', width: 3, dash: [7, 5], ref: 1 });
       g.seg(O, P, { color: 'amber', width: 2.6, ref: [3, 5] });
       g.seg(O, Q, { color: 'amber', width: 2.6, ref: [3, 5] });
-      g.seg(P, Q, { color: 'sky', width: 3.6, ref: [1, 2, 3, 4] });
-      g.arc(O, R, pa, qa, { color: 'rose', width: 4.8, ref: [2, 3, 4, 5] });
-      g.ang(O, pa, qa, { r: 20, color: 'amber', label: q.th + '°', lr: 38, ref: [3, 5] });
+      g.seg(P, Q, { color: 'sky', width: 2.8, ref: [1, 2, 3, 4] });
+      g.arc(O, R, pa, qa, { color: 'rose', width: 3, ref: [2, 3, 4, 5] });
+      if (q.th === 90) { g.right(O, P, Q, { size: 13, color: 'amber', ref: [3, 5] }); g.text(g.pol(O, 30, m), '90°', { color: 'amber', size: 15, ref: [3, 5] }); }
+      else g.ang(O, pa, qa, { r: 14, color: 'amber', label: q.th + '°', lr: 30, ref: [3, 5] });
       if (sel === 0 || sel === 2 || sel === 5) g.out(g.pol(O, R, m), m, '호 PQ', { color: 'rose', ref: [2, 4, 5] }, 28);
       const M = [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
       if (sel <= 2) g.text(M, '현 PQ', { color: 'sky', ref: [1, 2, 3, 4], dx: Math.cos(m * D2R) * 30, dy: -Math.sin(m * D2R) * 30 });
@@ -406,7 +408,7 @@
       return [
         `① 현 중에서 중심을 지나는 것이 <b>지름</b>이고 가장 깁니다. 분홍 현 ≤ 지름 ${2 * q.r} cm. <b>옳음</b>`,
         `② 중심각이 ${num(k)}배 → 호의 길이도 ${num(k)}배 (${piS((q.r * q.al) / 180)} : ${piS((q.r * q.be) / 180)}). <b>옳음</b>`,
-        `③ 중심각이 ${num(k)}배인데 현은 ${num(k)}배가 되지 않고 ${cB / cA < k ? '그보다 작게' : '그보다 크게'} 달라져서 <b>비례하지 않습니다</b>. <b>옳지 않음</b>`,
+        Math.abs(cB / cA - k) < 0.005 ? '③ 지금은 두 중심각이 같아 현의 길이도 같습니다. 중심각을 다르게 바꿔 보면 현의 길이는 중심각에 정비례하지 않습니다. <b>옳지 않음</b>' : `③ 중심각이 ${num(k)}배인데 현은 ${num(k)}배가 되지 않고 ${cB / cA < k ? '그보다 작게' : '그보다 크게'} 달라져서 <b>비례하지 않습니다</b>. <b>옳지 않음</b>`,
         '④ 중심각이 같으면 두 반지름 사이의 현도 같은 길이입니다(합동인 이등변삼각형). <b>옳음</b>',
         '⑤ 중심각이 같으면 부채꼴이 포개어져 넓이도 같습니다. <b>옳음</b>'
       ];
@@ -442,8 +444,8 @@
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const a0 = 20, b0 = 200, a1 = a0 + q.al, b1 = b0 + q.be;
       const cA = chordLen(q.r, q.al), cB = chordLen(q.r, q.be);
-      g.arc(O, R, a0, a1, { sector: true, fill: 'amber', fillAlpha: 0.22, stroke: false, ref: 5 });
-      g.arc(O, R, b0, b1, { sector: true, fill: 'rose', fillAlpha: 0.22, stroke: false, ref: 5 });
+      g.arc(O, R, a0, a1, { sector: true, fill: 'amber', fillAlpha: 0.08, stroke: false, ref: 5 });
+      g.arc(O, R, b0, b1, { sector: true, fill: 'rose', fillAlpha: 0.08, stroke: false, ref: 5 });
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       if (sel === 1 || q.be === 180) g.seg(g.pol(O, R, b0), g.pol(O, R, b0 + 180), { color: 'rose', width: 3, dash: [7, 5], ref: 1 });
       [[a0, a1, 'amber'], [b0, b1, 'rose']].forEach(([s0, s1, col]) => {
@@ -451,13 +453,17 @@
         g.seg(O, g.pol(O, R, s1), { color: col, width: 2.6 });
       });
       const PA = [g.pol(O, R, a0), g.pol(O, R, a1)], PB = [g.pol(O, R, b0), g.pol(O, R, b1)];
-      g.seg(PA[0], PA[1], { color: 'sky', width: 3.4, ref: [1, 3, 4] });
-      g.seg(PB[0], PB[1], { color: 'sky', width: 3.4, ref: [1, 3, 4] });
-      g.arc(O, R, a0, a1, { color: 'amber', width: 4.8, ref: 2 });
-      g.arc(O, R, b0, b1, { color: 'rose', width: 4.8, ref: 2 });
+      g.seg(PA[0], PA[1], { color: 'sky', width: 2.8, ref: [1, 3, 4] });
+      g.seg(PB[0], PB[1], { color: 'sky', width: 2.8, ref: [1, 3, 4] });
+      g.arc(O, R, a0, a1, { color: 'amber', width: 3, ref: 2 });
+      g.arc(O, R, b0, b1, { color: 'rose', width: 3, ref: 2 });
       if (q.al === q.be) { g.tick(PA[0], PA[1], { color: 'amber' }); g.tick(PB[0], PB[1], { color: 'amber' }); }
-      g.ang(O, a0, a1, { r: 20, color: 'amber', label: q.al + '°', lr: 40 });
-      g.ang(O, b0, b1, { r: 20, color: 'rose', label: q.be + '°', lr: 40 });
+      const markAngle = (start, end, value, color) => {
+        if (value === 90) { g.right(O, g.pol(O, R, start), g.pol(O, R, end), { size: 13, color }); g.text(g.pol(O, 30, (start + end) / 2), '90°', { color, size: 15 }); }
+        else g.ang(O, start, end, { r: 14, color, label: value + '°', lr: 30 });
+      };
+      markAngle(a0, a1, q.al, 'amber');
+      markAngle(b0, b1, q.be, 'rose');
       const mA = (a0 + a1) / 2, mB = (b0 + b1) / 2;
       if (sel === 0 || sel === 2) {
         g.out(g.pol(O, R, mA), mA, '호 ' + piS((q.r * q.al) / 180), { color: 'amber', ref: 2 }, 36);
@@ -506,7 +512,7 @@
       return [
         `① 중심각이 같으면 현도 같습니다. $\\overline{AB}=\\overline{BC}$. <b>옳음</b>`,
         `② $\\angle AOC=2\\angle BOC$ 이므로 호도 2배: $\\widehat{AC}$ = ${piS((q.r * 2 * q.ph) / 180)}, $\\widehat{BC}$ = ${piS((q.r * q.ph) / 180)}. <b>옳음</b>`,
-        `③ 현은 중심각에 정비례하지 않습니다. $\\overline{AC}<2\\overline{BC}$ (삼각형 ABC에서 AB+BC > AC) → 같지 않습니다. <b>옳지 않음</b>`,
+        `③ 현은 중심각에 정비례하지 않습니다. $\\overline{AC}\\lt 2\\overline{BC}$ (삼각형 ABC에서 AB+BC > AC) → 같지 않습니다. <b>옳지 않음</b>`,
         '④ 중심각이 같으므로 호도 같습니다. <b>옳음</b>',
         `⑤ 부채꼴의 넓이는 중심각에 정비례하므로 AOC = 2×BOC (${piS((q.r * q.r * 2 * q.ph) / 360)} cm² = 2×${piS((q.r * q.r * q.ph) / 360)} cm²). <b>옳음</b>`
       ];
@@ -541,19 +547,19 @@
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const A = g.pol(O, R, a0), B = g.pol(O, R, a0 + ph), C = g.pol(O, R, a0 + 2 * ph);
       const bc = chordLen(q.r, ph), ac = chordLen(q.r, 2 * ph);
-      g.arc(O, R, a0, a0 + 2 * ph, { sector: true, fill: 'sky', fillAlpha: 0.12, stroke: false, ref: 5 });
-      g.arc(O, R, a0 + ph, a0 + 2 * ph, { sector: true, fill: 'rose', fillAlpha: 0.2, stroke: false, ref: 5 });
-      g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
-      [A, B, C].forEach((p) => g.seg(O, p, { color: 'sky', width: 2.4 }));
-      g.seg(A, B, { color: 'amber', width: 3.4, ref: [1, 3] });
-      g.seg(B, C, { color: 'amber', width: 3.4, ref: [1, 3] });
-      g.seg(A, C, { color: 'rose', width: 3.4, ref: 3 });
+      g.arc(O, R, a0, a0 + 2 * ph, { sector: true, fill: 'sky', fillAlpha: 0.055, stroke: false, ref: 5 });
+      g.arc(O, R, a0 + ph, a0 + 2 * ph, { sector: true, fill: 'rose', fillAlpha: 0.075, stroke: false, ref: 5 });
+      g.circle(O, R, { color: 'ink', alpha: 0.82, width: 1.8 });
+      [A, B, C].forEach((p) => g.seg(O, p, { color: 'sky', width: 1.7 }));
+      g.seg(A, B, { color: 'amber', width: 2.2, ref: [1, 3] });
+      g.seg(B, C, { color: 'amber', width: 2.2, ref: [1, 3] });
+      g.seg(A, C, { color: 'rose', width: 2.2, ref: 3 });
       g.tick(A, B, { color: 'amber' }); g.tick(B, C, { color: 'amber' });
-      g.arc(O, R, a0, a0 + ph, { color: 'amber', width: 4.8, ref: [2, 4] });
-      g.arc(O, R, a0 + ph, a0 + 2 * ph, { color: 'amber', width: 4.8, ref: [2, 4] });
-      g.arc(O, R + 9, a0, a0 + 2 * ph, { color: 'rose', width: 3, ref: 2 });
-      g.ang(O, a0, a0 + ph, { r: 22, color: 'amber', label: ph + '°', lr: 44 });
-      g.ang(O, a0 + ph, a0 + 2 * ph, { r: 22, color: 'amber', label: ph + '°', lr: 44 });
+      g.arc(O, R, a0, a0 + ph, { color: 'amber', width: 2.6, ref: [2, 4] });
+      g.arc(O, R, a0 + ph, a0 + 2 * ph, { color: 'amber', width: 2.6, ref: [2, 4] });
+      g.arc(O, R + 9, a0, a0 + 2 * ph, { color: 'rose', width: 2, ref: 2 });
+      g.ang(O, a0, a0 + ph, { r: 15, color: 'amber', label: ph + '°', lr: 44 });
+      g.ang(O, a0 + ph, a0 + 2 * ph, { r: 15, color: 'amber', label: ph + '°', lr: 44 });
       const mid = (P, Q) => [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
       if (sel === 1 || sel === 3) {
         g.text(mid(A, B), 'AB', { color: 'amber', ref: [1, 3], dx: -14, dy: -16, align: 'center' });
@@ -567,10 +573,6 @@
       if (sel === 4) {
         g.out(g.pol(O, R, a0 + 0.5 * ph), a0 + 0.5 * ph, '호 AB ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
         g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);
-      }
-      if (sel === 5) {
-        g.text(g.pol(O, R * 0.62, a0 + 0.5 * ph), 'BOC ×1', { color: 'rose', ref: 5, size: 14 });
-        g.text(g.pol(O, R * 0.8, a0 + ph), 'AOC = ×2', { color: 'sky', ref: 5, size: 14, dx: 0, dy: -24 });
       }
       if (mode === 'explore') g.handle('C', C, { label: 'C', toward: O, drag: (w) => { q.ph = clamp(snap(mod(dirOf(O, w) - a0, 360) / 2, 5), 10, 85); } });
       else g.dot(C, { color: 'ink', label: 'C', toward: O });
@@ -644,16 +646,19 @@
         g.reserve(box[0], box[1]);
         // 원 전체(흐리게)와 부채꼴
         if (th < thMax) g.arc(O, R, th, thMax >= 350 ? 360 : thMax, { color: 'muted', alpha: 0.6, width: 1.8, dash: [5, 6] });
-        g.arc(O, R, 0, th, { sector: true, fill: 'sky', fillAlpha: 0.3, stroke: false });
+        g.arc(O, R, 0, th, { sector: true, fill: 'sky', fillAlpha: ['1210', '1609', '1610'].includes(o.id) ? 0.08 : 0.3, stroke: false });
         g.seg(O, [R, 0], { color: 'ink', width: 2.8 });
         g.seg(O, g.pol(O, R, th), { color: 'ink', width: 2.8 });
         g.tick(O, [R, 0], { color: 'ink' });
         g.tick(O, g.pol(O, R, th), { color: 'ink' });
         const stL = stateOf('l', mode, step);
-        g.arc(O, R, 0, th, { color: stL.s === 'hide' ? 'sky' : stL.c === 'ink' ? 'sky' : stL.c, width: 5 });
-        const ar = Math.min(R * 0.34, 30);
+        g.arc(O, R, 0, th, { color: stL.s === 'hide' ? 'sky' : stL.c === 'ink' ? 'sky' : stL.c, width: ['1210', '1609', '1610'].includes(o.id) ? 3 : 5 });
+        const ar = Math.min(R * 0.34, ['1210', '1609', '1610'].includes(o.id) ? 14 : 30);
         const stT = stateOf('th', mode, step);
-        if (stT.s !== 'hide') g.ang(O, 0, th, { r: ar, color: stT.c === 'ink' ? 'amber' : stT.c, label: stT.s === 'ask' ? '?°' : SLAB.th(v.th), lr: ar + 15, size: 16, mid: th > 180 ? m : Math.min(m, 30) });
+        if (stT.s !== 'hide') {
+          if (['1210', '1609', '1610'].includes(o.id) && th === 90 && stT.s === 'val') { g.right(O, [R, 0], g.pol(O, R, th), { size: 13, color: 'amber' }); g.text(g.pol(O, 30, 45), '90°', { color: 'amber', size: 15 }); }
+          else g.ang(O, 0, th, { r: ar, color: stT.c === 'ink' ? 'amber' : stT.c, label: stT.s === 'ask' ? '?°' : SLAB.th(v.th), lr: ar + 15, size: 16, mid: th > 180 ? m : Math.min(m, 30) });
+        }
         const stR = stateOf('r', mode, step);
         if (stR.s !== 'hide') g.text(g.pol(O, R * 0.52, 0), stR.s === 'ask' ? 'r = ? cm' : SLAB.r(v.r), { color: stR.c === 'ink' ? 'sky' : stR.c, dy: th > 180 ? -18 : 20, size: 16 });
         if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16 }, 32);
@@ -707,8 +712,8 @@
     id: '1210', title: '넓이와 호의 길이 사이의 관계', short: '넓이로 호의 길이',
     question: '부채꼴의 넓이를 알면 호의 길이는 어떻게 구할까? 넓이 ÷ 호의 길이를 계산해 보자.',
     guide: '<b>중심각 θ</b>를 바꿔 보세요. 호의 길이와 넓이가 같이 변해도 <b>S ÷ l</b> 은 늘 같은 값(= r÷2)입니다.',
-    presets: sp([[9, 320], [6, 300], [10, 216], [8, 135], [12, 180]]),
-    given: ['r', 'S'], ask: ['l'], reveal: { l: 2 }, def: { r: 9, th: 320 }, thMax: 350,
+    presets: sp([[9, 120], [9, 320], [6, 300], [10, 216], [8, 135], [12, 180]]),
+    given: ['r', 'S'], ask: ['l'], reveal: { l: 2 }, def: { r: 9, th: 120 }, thMax: 350,
     steps: (q) => {
       const v = sQ(q);
       return [`① 부채꼴의 넓이 S = ½ × r × l 에 넣기 : ${piS(v.S)} = ½ × ${q.r} × l`, `② l = ${piS(v.l)} cm`];
@@ -872,7 +877,7 @@
       const O = [0, 0], R = 100, k = q.u / 5;
       g.reserve([-R - 10, -R - 10], [R + 10, R + 10]);
       const a1 = 180 - q.t1, a2 = q.t2, b0 = 270 - q.y / 2, b1 = 270 + q.y / 2;
-      const hi = (n) => (mode !== 'review' ? 0.18 : step === 3 ? 0.26 : n === 'L' ? 0.28 : step === 1 && n === 'R' ? 0.28 : step === 2 && n === 'B' ? 0.28 : 0.06);
+      const hi = (n) => (mode !== 'review' ? 0.07 : step === 3 ? 0.12 : n === 'L' ? 0.12 : step === 1 && n === 'R' ? 0.12 : step === 2 && n === 'B' ? 0.12 : 0.03);
       g.arc(O, R, a1, 180, { sector: true, fill: 'amber', fillAlpha: hi('L'), stroke: false });
       g.arc(O, R, 0, a2, { sector: true, fill: 'rose', fillAlpha: hi('R'), stroke: false });
       g.arc(O, R, b0, b1, { sector: true, fill: 'rose', fillAlpha: hi('B'), stroke: false });
@@ -881,12 +886,13 @@
       [a1, a2, b0, b1].forEach((a) => g.seg(O, g.pol(O, R, a), { color: 'ink', width: 2.4 }));
       const showX = mode === 'explore' || (mode === 'review' && step >= 1);
       const showY = mode === 'explore' || (mode === 'review' && step >= 2);
-      g.arc(O, R, a1, 180, { color: 'amber', width: 5 });
-      g.arc(O, R, 0, a2, { color: 'rose', width: 5 });
-      g.arc(O, R, b0, b1, { color: 'amber', width: 5 });
-      g.ang(O, a1, 180, { r: 22, color: 'amber', label: q.t1 + '°', lr: 46 });
-      g.ang(O, 0, a2, { r: 22, color: 'amber', label: q.t2 + '°', lr: 46 });
-      g.ang(O, b0, b1, { r: 22, color: 'rose', label: showY ? q.y + '°' : 'y°', lr: 44, dy: 4 });
+      g.arc(O, R, a1, 180, { color: 'amber', width: 3 });
+      g.arc(O, R, 0, a2, { color: 'rose', width: 3 });
+      g.arc(O, R, b0, b1, { color: 'amber', width: 3 });
+      g.ang(O, a1, 180, { r: 14, color: 'amber', label: q.t1 + '°', lr: 30 });
+      g.ang(O, 0, a2, { r: 14, color: 'amber', label: q.t2 + '°', lr: 30 });
+      if (q.y === 90) { g.right(O, g.pol(O, R, b0), g.pol(O, R, b1), { size: 13, color: 'rose' }); g.text(g.pol(O, 30, 270), showY ? '90°' : 'y°', { color: 'rose', size: 15 }); }
+      else g.ang(O, b0, b1, { r: 14, color: 'rose', label: showY ? q.y + '°' : 'y°', lr: 30, dy: 4 });
       g.out(g.pol(O, R, (a1 + 180) / 2), (a1 + 180) / 2, numF(k * q.t1) + ' cm', { color: 'amber' }, 30);
       g.out(g.pol(O, R, a2 / 2), a2 / 2, showX ? 'x = ' + numF(k * q.t2) + ' cm' : 'x cm', { color: 'rose' }, 34);
       g.out(g.pol(O, R, 270), 270, numF(k * q.y) + ' cm', { color: 'amber' }, 28);
@@ -921,7 +927,7 @@
   /* ---------- 11-03 호의 길이의 비 AB : BC : CA = 3 : 5 : 7 → ∠AOB ---------- */
   build({
     id: '1103', title: '호의 길이의 비로 중심각 구하기', short: '호의 길이의 비',
-    question: '원을 호의 길이의 비 3 : 5 : 7 로 나누면, 각 호에 대한 중심각은 얼마일까?',
+    question: '원을 호의 길이의 비로 나누면, 각 호에 대한 중심각은 얼마일까?',
     guide: '막대로 <b>호의 비</b>를 바꿔 보세요. 원을 비의 합만큼 똑같이 나눈 <b>한 칸</b>이 중심각 몇 도인지 눈금으로 확인합니다. (각이 정수로 떨어지도록 비의 합이 360의 약수가 되는 값만 골라져요.)',
     box: { x: [-130, 130], y: [-130, 130] },
     params: {
@@ -981,16 +987,17 @@
       const O = [0, 0], R = 100, tot = q.a + q.b + q.c, u = 360 / tot;
       g.reserve([-R - 14, -R - 14], [R + 14, R + 14]);
       const A0 = 125, B0 = A0 + u * q.a, C0 = B0 + u * q.b, E0 = A0 + 360;
-      g.arc(O, R, A0, B0, { sector: true, fill: 'rose', fillAlpha: 0.24, stroke: false });
+      g.arc(O, R, A0, B0, { sector: true, fill: 'rose', fillAlpha: 0.08, stroke: false });
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       const showTicks = mode === 'explore' || (mode === 'review' && step === 1);
-      if (showTicks) for (let i = 0; i < tot; i++) { const a = A0 + u * i; g.seg(g.pol(O, R - 7, a), g.pol(O, R + 7, a), { color: 'green', width: 2.4 }); }
-      g.arc(O, R, A0, B0, { color: 'rose', width: 5.2 });
-      g.arc(O, R, B0, C0, { color: 'sky', width: 5.2 });
-      g.arc(O, R, C0, E0, { color: 'sky', width: 5.2 });
+      if (showTicks) for (let i = 0; i < tot; i++) { const a = A0 + u * i; g.seg(g.pol(O, R - 7, a), g.pol(O, R + 7, a), { color: 'green', width: 1.6 }); }
+      g.arc(O, R, A0, B0, { color: 'rose', width: 3 });
+      g.arc(O, R, B0, C0, { color: 'sky', width: 3 });
+      g.arc(O, R, C0, E0, { color: 'sky', width: 3 });
       [A0, B0, C0].forEach((a) => g.seg(O, g.pol(O, R, a), { color: 'ink', width: 2.4 }));
       const showAng = mode === 'explore' || (mode === 'review' && step >= 2);
-      g.ang(O, A0, B0, { r: 24, color: 'rose', label: showAng ? angD(u * q.a) + '°' : '?°', lr: 52, size: 17 });
+      if (showAng && Math.abs(u * q.a - 90) < 1e-9) { g.right(O, g.pol(O, R, A0), g.pol(O, R, B0), { size: 13, color: 'rose' }); g.text(g.pol(O, 30, (A0 + B0) / 2), '90°', { color: 'rose', size: 15 }); }
+      else g.ang(O, A0, B0, { r: 14, color: 'rose', label: showAng ? angD(u * q.a) + '°' : '?°', lr: 32, size: 15 });
       const rl = (a0, a1, n) => g.out(g.pol(O, R, (a0 + a1) / 2), (a0 + a1) / 2, String(n), { color: 'amber', size: 19 }, 24);
       rl(A0, B0, q.a); rl(B0, C0, q.b); rl(C0, E0, q.c);
       if (showTicks) g.text(O, '한 칸 ' + angD(u) + '°', { color: 'green', size: 15, dy: 48 });
@@ -1004,7 +1011,7 @@
   /* ---------- 11-06 중심각과 부채꼴의 넓이 ---------- */
   build({
     id: '1106', title: '중심각과 부채꼴의 넓이', short: '중심각과 넓이',
-    question: '한 원에서 부채꼴의 넓이는 중심각과 어떤 관계일까? 120°일 때 넓이를 알면 40°일 때는?',
+    question: '한 원에서 중심각을 바꾸면 부채꼴의 넓이는 어떻게 달라질까?',
     guide: '두 부채꼴의 <b>중심각</b>을 손잡이로 끌어 바꿔 보세요. 넓이의 비가 <b>중심각의 비</b>와 같습니다.',
     box: { x: [-135, 135], y: [-135, 135] },
     params: {
@@ -1052,15 +1059,18 @@
       g.reserve([-R - 10, -R - 10], [R + 10, R + 10]);
       const a = (q.S * q.al) / 360, x = (q.S * q.be) / 360;
       const A0 = 180 - q.al / 2, A1 = 180 + q.al / 2, D0 = -q.be / 2, D1 = q.be / 2;
-      const hi = mode === 'review' && step === 1 ? 0.34 : 0.26;
+      const hi = mode === 'review' && step === 1 ? 0.12 : 0.08;
       g.arc(O, R, A0, A1, { sector: true, fill: 'amber', fillAlpha: hi, stroke: false });
       g.arc(O, R, D0, D1, { sector: true, fill: 'rose', fillAlpha: hi, stroke: false });
       g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
       [A0, A1, D0, D1].forEach((t) => g.seg(O, g.pol(O, R, t), { color: 'ink', width: 2.4 }));
-      g.arc(O, R, A0, A1, { color: 'amber', width: 4.6 });
-      g.arc(O, R, D0, D1, { color: 'rose', width: 4.6 });
-      g.ang(O, A0, A1, { r: 22, color: 'amber', label: q.al + '°', lr: 46, mid: 180, dy: 0 });
-      g.ang(O, D0, D1, { r: 24, color: 'rose', label: q.be + '°', lr: 56, mid: 0 });
+      g.arc(O, R, A0, A1, { color: 'amber', width: 3 });
+      g.arc(O, R, D0, D1, { color: 'rose', width: 3 });
+      const angle = (start, end, value, color, mid) => {
+        if (value === 90) { g.right(O, g.pol(O, R, start), g.pol(O, R, end), { size: 13, color }); g.text(g.pol(O, 30, mid), '90°', { color, size: 15 }); }
+        else g.ang(O, start, end, { r: 14, color, label: value + '°', lr: 30, mid });
+      };
+      angle(A0, A1, q.al, 'amber', 180); angle(D0, D1, q.be, 'rose', 0);
       const showX = mode === 'explore' || (mode === 'review' && step >= 2);
       g.text(g.pol(O, R * 0.62, 180), '넓이 ' + piS(a) + ' cm²', { color: 'amber', size: 16, dy: -34, dx: -10 });
       g.text(g.pol(O, R * 0.56, 0), showX ? '넓이 ' + piS(x) + ' cm²' : '넓이 ? cm²', { color: 'rose', size: 16, dy: -30 });
@@ -1135,26 +1145,31 @@
       const A = [-R, 0], B = [R, 0], C = g.pol(O, R, ph);
       const s1 = mode === 'explore' || (mode === 'review' && step >= 1);
       const s2 = mode === 'explore' || (mode === 'review' && step >= 2);
-      g.circle(O, R, { color: 'ink', alpha: 0.9, width: 2.4 });
-      g.poly([O, A, C], { color: null, fill: 'amber', fillAlpha: 0.12, stroke: false });
-      g.seg(A, B, { color: 'ink', width: 2.6 });
-      g.seg(O, C, { color: 'ink', width: 2.6 });
-      g.seg(A, C, { color: 'ink', width: 2.6 });
+      g.circle(O, R, { color: 'ink', alpha: 0.85, width: 1.8 });
+      g.poly([O, A, C], { color: null, fill: 'amber', fillAlpha: 0.06, stroke: false });
+      g.seg(A, B, { color: 'ink', width: 1.8 });
+      g.seg(O, C, { color: 'ink', width: 1.8 });
+      g.seg(A, C, { color: 'ink', width: 1.8 });
       g.tick(O, A, { color: 'amber' }); g.tick(O, C, { color: 'amber' }); g.tick(O, B, { color: 'amber' });
-      g.arc(O, R, 0, ph, { color: 'sky', width: 5 });
-      g.arc(O, R, ph, 180, { color: 'amber', width: 5 });
+      g.arc(O, R, 0, ph, { color: 'sky', width: 2.6 });
+      g.arc(O, R, ph, 180, { color: 'amber', width: 2.6 });
       g.out(g.pol(O, R, ph / 2), ph / 2, '1', { color: 'sky', size: 19 }, 22);
       g.out(g.pol(O, R, (ph + 180) / 2), (ph + 180) / 2, String(q.n), { color: 'amber', size: 19 }, 22);
       // ∠x 는 A에서
-      g.ang(A, 0, x, { r: 34, color: 'rose', label: s2 ? num(x) + '°' : 'x', lr: 62, mid: Math.min(x / 2, 14), size: 17, dy: -8 });
+      g.ang(A, 0, x, { r: 17, color: 'rose', label: s2 ? num(x) + '°' : 'x', lr: 62, mid: Math.min(x / 2, 14), size: 17, dy: -8 });
       if (s1) {
-        g.ang(O, 0, ph, { r: 24, color: 'sky', label: num(ph) + '°', lr: 52, size: 15, mid: Math.min(ph / 2, 24) });
-        g.ang(O, ph, 180, { r: 20, color: 'amber', label: num(180 - ph) + '°', lr: 40, size: 15, mid: (ph + 180) / 2 });
+        if (ph === 90) {
+          g.right(O, B, C, { size: 12, color: 'sky' });
+          g.right(O, C, A, { size: 12, color: 'amber' });
+        } else {
+          g.ang(O, 0, ph, { r: 14, color: 'sky', label: num(ph) + '°', lr: 52, size: 15, mid: Math.min(ph / 2, 24) });
+          g.ang(O, ph, 180, { r: 14, color: 'amber', label: num(180 - ph) + '°', lr: 40, size: 15, mid: (ph + 180) / 2 });
+        }
       }
       if (s2) {
         // C에서의 밑각: 변 CO 방향과 변 CA 방향 사이
         const dCO = Math.atan2(-C[1], -C[0]) / D2R, dCA = Math.atan2(A[1] - C[1], A[0] - C[0]) / D2R;
-        g.ang(C, Math.min(dCO, dCA), Math.max(dCO, dCA), { r: 28, color: 'rose', label: '', fa: 0.22 });
+        g.ang(C, Math.min(dCO, dCA), Math.max(dCO, dCA), { r: 14, color: 'rose', label: '', fa: 0.22 });
       }
       if (mode === 'explore') g.handle('C', C, { color: 'amber', label: 'C', toward: O, drag: (w) => { const a = clamp(dirOf(O, w), 5, 175); q.n = clamp(Math.round(180 / a - 1), 1, 9); } });
       else g.dot(C, { color: 'ink', label: 'C', toward: O });

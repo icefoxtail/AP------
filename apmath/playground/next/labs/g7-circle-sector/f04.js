@@ -897,8 +897,8 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
     order: 64,
     id: 'f04',
-    title: 'F04 잘라서 채우기',
-    short: 'F04 잘라서 채우기',
+    title: '잘라서 채우기',
+    short: '잘라서 채우기',
     params: PARAMS,
     scenes: GROUP_SCENES
   });

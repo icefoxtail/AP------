@@ -306,7 +306,7 @@
       measure(G, [p, 0], [2 * p, 0], -15, `${p} cm`, A, { dash: [5, 4] });
       measure(G, [2 * p, 0], [2 * p + q, 0], -15, `${q} cm`, A, { dash: [5, 4] });
     };
-    m.handles = (G, s, set) => [{ id: 'cut', p: [2 * p, 0], label: '', drag: (w) => { const pp = clamp(Math.round(w.x / 2), 1, R - 1); set({ p: pp, q: R - pp }); } }];
+    m.handles = (G, s, set) => [{ id: 'cut', p: [2 * p, 0], label: '', drag: (w) => { const pp = clamp(Math.round(w.x / 2), Math.max(1, R - 8), Math.min(8, R - 1)); set({ p: pp, q: R - pp }); } }];
     return finish(m);
   }
 
@@ -529,8 +529,8 @@
     // 1) 합쳐진 모양(색칠한 부분)
     if (compA > 0.01) {
       const quiet = !!(st.flags && (st.flags.parts || st.flags.sector));
-      paintOps(b, G, m.ops, b.color('sky', 0.46 * compA * (mode === 'arc' ? 0.5 : 1) * (quiet ? 0.2 : 1)));
-      if (mode !== 'arc') for (const pts of m.outline) G.path(pts, { color: 'sky', width: 3.2, alpha: compA });
+      paintOps(b, G, m.ops, b.color('sky', (m.kind === 'YY' ? (mode === 'arc' ? 0 : 0.10) : 0.46) * compA * (mode === 'arc' ? 0.5 : 1) * (quiet ? 0.2 : 1)));
+      if (mode !== 'arc') for (const pts of m.outline) G.path(pts, { color: 'sky', width: m.kind === 'YY' ? 2 : 3.2, alpha: compA });
     }
     // 2) 조각(넓이) 또는 호(둘레)
     const order = m.order;
@@ -540,18 +540,18 @@
         const it = m.byId[id], dx = u * m.dx[id];
         const col = it.sign > 0 ? PIECE.plus : PIECE.minus;
         const fa = faded(id) * (fadeSet.has(id) ? 0.28 : 1) * pieceA;
-        G.path(shiftPts(it.pts, dx), { close: true, fill: col, fillAlpha: 0.46 * fa, color: col, alpha: fa, width: hot === id ? 4.2 : 2.8, dash: it.sign < 0 ? [8, 5] : undefined });
+        G.path(shiftPts(it.pts, dx), { close: true, fill: col, fillAlpha: (m.kind === 'YY' ? 0.14 : 0.46) * fa, color: col, alpha: fa, width: m.kind === 'YY' ? (hot === id ? 2.8 : 2) : (hot === id ? 4.2 : 2.8), dash: it.sign < 0 ? [8, 5] : undefined });
       });
     }
     if (mode !== 'arc' && hot != null && m.byId[hot] && pieceA < 0.6) {
       const it = m.byId[hot], col = it.sign > 0 ? PIECE.plus : PIECE.minus;
-      G.path(shiftPts(it.pts, u * m.dx[hot]), { close: true, fill: col, fillAlpha: 0.4 * (1 - pieceA), color: col, width: 4.2, alpha: 1 - pieceA, dash: it.sign < 0 ? [8, 5] : undefined });
+      G.path(shiftPts(it.pts, u * m.dx[hot]), { close: true, fill: col, fillAlpha: (m.kind === 'YY' ? 0.14 : 0.4) * (1 - pieceA), color: col, width: m.kind === 'YY' ? 2.8 : 4.2, alpha: 1 - pieceA, dash: it.sign < 0 ? [8, 5] : undefined });
     }
     if (mode === 'arc') {
       order.forEach((id) => {
         const it = m.byId[id];
         if (!it.arc) return;
-        G.path(shiftPts(it.arc.pts, u * m.dx[id]), { color: 'sky', width: hot === id ? 5.4 : 4, alpha: faded(id) });
+        G.path(shiftPts(it.arc.pts, u * m.dx[id]), { color: 'sky', width: m.kind === 'YY' ? (hot === id ? 3 : 2.3) : (hot === id ? 5.4 : 4), alpha: faded(id) });
       });
     }
     // 3) 보조 표시(단계별)
@@ -644,7 +644,7 @@
   const rerollBtn = `<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="apl-btn sm" data-f02-reroll>숫자 바꾸기</button><span style="font-size:.85em;opacity:.75">그림의 길이·각도는 ‘탐구’ 탭의 막대로도 바꿀 수 있어요.</span></div>`;
 
   /* ======================= 장면 공장 ======================= */
-  const GROUP = { order: 62, id: 'f02', title: 'F02 나누기·합치기', short: 'F02 나누기·합치기', scenes: [] };
+  const GROUP = { order: 62, id: 'f02', title: '나누기·합치기', short: '나누기·합치기', scenes: [] };
   let LAB = null, CUR = null;
 
   function makeScene(spec) {
@@ -696,6 +696,13 @@
           if (pane && !pane.__f02) {
             pane.__f02 = true;
             pane.addEventListener('click', (e) => {
+              const choice = e.target.closest && e.target.closest('[data-f02-y12-choice]');
+              if (choice) {
+                const group = choice.closest('[data-f02-y12-choices]');
+                const feedback = group && group.querySelector('[data-f02-y12-feedback]');
+                if (feedback) feedback.textContent = choice.dataset.correct === '1' ? '정답이에요! 두 반원의 넓이를 큰 반원에서 빼요.' : '다시 생각해 볼까요? 작은 반원 두 개의 넓이를 빼 보세요.';
+                return;
+              }
               const bt = e.target.closest && e.target.closest('[data-f02-reroll]');
               if (bt && CUR && LAB) { CUR.reroll(LAB.s, LAB); }
             });
@@ -746,6 +753,7 @@
       },
       steps: (s) => spec.steps(spec.read(s), modelOf(s)).map((x) => x.t.replace(/<\/?b>/g, '')),
       problem: {
+        autoSnap: ['sj1', 'y12'].includes(spec.id) ? false : undefined,
         tag: spec.tag,
         text: (s) => spec.problem(spec.read(s), modelOf(s)).text + rerollBtn,
         answer: (s) => spec.problem(spec.read(s), modelOf(s)).answer,
@@ -866,17 +874,17 @@
     const sj = variant === 'sj1';
     return {
       id: sj ? 'sj1' : 'y11',
-      title: sj ? '지름 6 cm 원의 색칠한 부분' : '지름 14 cm 원의 색칠한 부분',
+      title: sj ? '지름 위 세 반원' : '지름 14 cm 원의 색칠한 부분',
       short: sj ? '지름 위의 세 반원' : '반원 빼고 더하기',
       tag: sj ? '교재 서술형 1 [6점]' : '교재 연습 1-1 [6점]',
       question: sj ? '지름 위의 나눈 점을 움직여도 색칠한 부분의 둘레는 그대로일까요? 넓이는요?' : '지름을 나눈 점을 움직이면 둘레와 넓이는 각각 어떻게 달라질까요?',
       params: sj
-        ? [{ k: 'a', label: '작은 반원의 지름 (아래)', min: 1, max: 8, step: 1, value: 2, color: 'green', unit: ' cm', hint: '그림의 노란 점(나눈 점)을 끌어도 됩니다' }, { k: 'b', label: '중간 반원의 지름 (위)', min: 1, max: 8, step: 1, value: 4, color: 'rose', unit: ' cm' }]
+        ? [{ k: 'a', label: '아래쪽 반원의 지름', min: 1, max: 8, step: 1, value: 2, color: 'green', unit: ' cm', hint: '그림의 노란 점(나눈 점)을 끌어도 됩니다' }, { k: 'b', label: '위쪽 반원의 지름', min: 1, max: 8, step: 1, value: 4, color: 'rose', unit: ' cm' }]
         : [{ k: 'a', label: '왼쪽 반원의 지름 (빼는 반원)', min: 1, max: 8, step: 1, value: 8, color: 'rose', unit: ' cm', hint: '그림의 노란 점(나눈 점)을 끌어도 됩니다' }, { k: 'b', label: '오른쪽 반원의 지름 (더하는 반원)', min: 1, max: 8, step: 1, value: 6, color: 'green', unit: ' cm' }],
       hasArc: true,
       snap: sj ? { a: 2, b: 4 } : { a: 8, b: 6 },
       rolls: sj ? [{ a: 2, b: 4 }, { a: 4, b: 6 }, { a: 2, b: 6 }, { a: 6, b: 4 }, { a: 4, b: 4 }, { a: 2, b: 8 }, { a: 4, b: 8 }] : [{ a: 8, b: 6 }, { a: 6, b: 4 }, { a: 4, b: 8 }, { a: 6, b: 6 }, { a: 8, b: 4 }, { a: 4, b: 6 }],
-      examples: sj ? [{ label: '2 + 4 (교재)', set: { a: 2, b: 4 } }, { label: '3 + 3', set: { a: 3, b: 3 } }, { label: '1 + 5', set: { a: 1, b: 5 } }, { label: '5 + 1', set: { a: 5, b: 1 } }] : [{ label: '8 + 6 (교재)', set: { a: 8, b: 6 } }, { label: '7 + 7', set: { a: 7, b: 7 } }, { label: '4 + 10', set: { a: 4, b: 8 } }],
+      examples: sj ? [{ label: '2 + 4 (교재)', set: { a: 2, b: 4 } }, { label: '6 + 8 (교재)', set: { a: 6, b: 8 } }, { label: '3 + 3', set: { a: 3, b: 3 } }, { label: '1 + 5', set: { a: 1, b: 5 } }, { label: '5 + 1', set: { a: 5, b: 1 } }] : [{ label: '8 + 6 (교재)', set: { a: 8, b: 6 } }, { label: '7 + 7', set: { a: 7, b: 7 } }, { label: '4 + 10', set: { a: 4, b: 8 } }],
       buildRaw: (P) => buildYY(P, variant),
       view: (P, m, st) => {
         const d = m.d, pI = vplain(m.perim), aR = vplain(m.area);
@@ -903,7 +911,7 @@
         if (sj) {
           return {
             text: `<div>그림과 같이 지름의 길이가 ${d} cm인 원에 대하여 다음 물음에 답하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px">(1) 색칠한 부분의 둘레의 길이를 구하시오. (3점)<br>(2) 색칠한 부분의 넓이를 구하시오. (3점)</div>`,
-            answer: `(1) $${vtex(m.perim)}\\text{ cm}$ &nbsp; (2) $${vtex(m.area)}\\text{ cm}^2$ — 둘레는 세 반원의 호의 합, 넓이는 (큰 반원) + (작은 반원) − (중간 반원)`
+            answer: `(1) $${vtex(m.perim)}\\text{ cm}$ &nbsp; (2) $${vtex(m.area)}\\text{ cm}^2$ — 둘레는 세 반원의 호의 합, 넓이는 (큰 반원) + (아래 반원) − (위 반원)`
           };
         }
         return {
@@ -923,8 +931,8 @@
     id: 'y12', title: '반원에서 두 반원 빼기', short: '반원 안의 두 반원', tag: '교재 문제',
     question: '큰 반원에서 두 작은 반원을 빼면, 둘레와 넓이는 어떻게 구할까요?',
     params: [
-      { k: 'p', label: '왼쪽 작은 반원의 반지름', min: 1, max: 6, step: 1, value: 2, color: 'rose', unit: ' cm', hint: '그림의 노란 점(맞닿은 점)을 끌어도 됩니다' },
-      { k: 'q', label: '오른쪽 작은 반원의 반지름', min: 1, max: 6, step: 1, value: 3, color: 'rose', unit: ' cm' }
+      { k: 'p', label: '왼쪽 작은 반원의 반지름', min: 1, max: 8, step: 1, value: 2, color: 'rose', unit: ' cm', hint: '그림의 노란 점(맞닿은 점)을 끌어도 됩니다' },
+      { k: 'q', label: '오른쪽 작은 반원의 반지름', min: 1, max: 8, step: 1, value: 3, color: 'rose', unit: ' cm' }
     ],
     hasArc: true,
     snap: { p: 2, q: 3 },
@@ -947,8 +955,8 @@
     steps: (P, m) => arcAreaSteps(m),
     formulaLines: (m) => solLinesArcArea(m),
     problem: (P, m) => ({
-      text: `<div>그림과 같은 반원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px;font-size:.9em;opacity:.8">(그림의 ${P.p} cm, ${P.q} cm는 작은 반원의 반지름)</div>`,
-      answer: `둘레 $${vtex(m.perim)}\\text{ cm}$ &nbsp; 넓이 $${vtex(m.area)}\\text{ cm}^2$ — 큰 반원의 반지름 ${m.R} cm`
+      text: `<div>그림과 같은 반원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px;font-size:.9em;opacity:.8">(그림의 ${P.p} cm, ${P.q} cm는 작은 반원의 반지름)</div><div style="margin-top:12px"><b>넓이 확인 문제</b><br>색칠한 부분의 넓이는?<br><div data-f02-y12-choices style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${['①', '②', '③', '④', '⑤'].map((n, i) => `<button type="button" class="apl-btn sm" data-f02-y12-choice data-correct="${i === (P.p + P.q) % 5 ? 1 : 0}">${n} ${P.p * P.q + (i - (P.p + P.q) % 5 + 5) % 5}π cm²</button>`).join('')}<div data-f02-y12-feedback style="width:100%" aria-live="polite"></div></div></div>`,
+      answer: `둘레 $${vtex(m.perim)}\\text{ cm}$ &nbsp; 넓이 $${vtex(m.area)}\\text{ cm}^2$ — 큰 반원의 반지름 ${m.R} cm. 넓이 확인 문제 정답 ${['①', '②', '③', '④', '⑤'][(P.p + P.q) % 5]}`
     }),
     solution: {
       standard: (P, m) => ({ steps: solHTML(solLinesArcArea(m), 6) }),
@@ -1164,7 +1172,7 @@
     return scene;
   }
 
-  [rotSpec, yySpec('sj1'), yySpec('y11'), sj3Spec, ccSpec, luneSpec, petalSpec, nsSpec('circle'), nsSpec('semi')].forEach((spec) => {
+  [rotSpec, yySpec('sj1'), sj3Spec, ccSpec, luneSpec, petalSpec, nsSpec('circle'), nsSpec('semi')].forEach((spec) => {
     GROUP.scenes.push(attachFormula(makeScene(spec), spec));
   });
 
