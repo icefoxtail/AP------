@@ -290,7 +290,8 @@
       const { g, R, r, q } = M, { A, B, M: Mm } = g, st = C.step, pr = C.problem, ex = C.tab === 'explore';
       FIT(b, M.Rfit);
       circle(b, O, R, 'ink', 3.6);
-      if (pr || ex || st >= 3) fillRing(b, O, R, r, 'rose', 0.24);
+      if (pr && q.kind === 2) circle(b, O, r, 'ink', 0, { fill: 'rose', fa: 0.18 });
+      else if (pr || ex || st >= 3) fillRing(b, O, R, r, 'rose', 0.18);
       circle(b, O, r, 'green', 3.2, { fill: 'green', fa: 0.06 });
       line(b, A, B, 'ink', 3.6); line(b, O, A, 'ink', 2.6); line(b, O, Mm, 'green', 3);
       b.right(Mm, O, B, { size: 13, color: 'amber' });
@@ -400,7 +401,7 @@
         if (q.kind === 1) segTag(b, O, F.A, 'x', { away: Mm, ...X(b) });
         if (q.kind === 2) segTag(b, O, Mm, 'x', { toward: F.B, ...X(b) });
         if (q.kind === 3) { segTag(b, O, F.A, String(R), { away: Mm, color: 'sky', size: S(b) }); }
-        T(b, Mm, q.kind === 0 || q.kind === 3 ? 'AB=x' : q.kind === 1 ? `AB=${cv(Math.sqrt(3) * q.k)}` : '', { dy: 42, size: S(b) + (q.kind === 0 || q.kind === 3 ? 3 : 0), color: q.kind === 1 ? 'sky' : 'rose' });
+        T(b, Mm, q.kind === 0 ? 'AB=x' : q.kind === 1 ? `AB=${cv(Math.sqrt(3) * q.k)}` : '', { dy: 42, size: S(b) + (q.kind === 0 ? 3 : 0), color: q.kind === 1 ? 'sky' : 'rose' });
         if (q.kind === 3) { ang(b, O, F.A, F.B, { color: 'rose', r: 34, label: 'x', size: S(b) + 3 }); }
         return;
       }

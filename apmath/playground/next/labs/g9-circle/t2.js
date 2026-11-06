@@ -256,7 +256,7 @@
       if (ex || st >= 3) { segTag(b, Pp, Cc, 'PC=' + f(pc), { away: Dd, color: 'rose', size: S(b) - 2, gap: 12 }); segTag(b, Pp, Dd, 'PD=' + f(pd), { away: Cc, color: 'rose', size: S(b) - 2, gap: 12 }); segTag(b, Cc, Dd, 'CD=' + f(cd), { toward: Pp, color: 'rose', size: S(b) - 2, gap: 12 }); }
     },
     steps: (M) => {
-      const pc = dist(M.g.P, M.g.C), pd = dist(M.g.P, M.g.D), cd = dist(M.g.C, M.g.D);
+      const pc = dist(M.g.P, M.g.C), pd = dist(M.g.P, M.g.Dd), cd = dist(M.g.C, M.g.Dd);
       return [
         '점 C에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{CA}=\\overline{CE}$ (표시 ‘|’). 점 D에서도 $\\overline{DB}=\\overline{DE}$ (표시 ‘||’).',
         '삼각형 PCD의 둘레는 $\\overline{PC}+\\overline{CD}+\\overline{DP}$이고, $\\overline{CD}=\\overline{CE}+\\overline{ED}$로 나눌 수 있어요.',
@@ -265,7 +265,7 @@
       ];
     },
     view: (M) => {
-      const pc = dist(M.g.P, M.g.C), pd = dist(M.g.P, M.g.D), cd = dist(M.g.C, M.g.D);
+      const pc = dist(M.g.P, M.g.C), pd = dist(M.g.P, M.g.Dd), cd = dist(M.g.C, M.g.Dd);
       return {
         guide: '막대로 <b>점 E의 위치</b>를 바꿔 보세요. PC, CD, DP는 따로 변하지만 <b>세 변의 합(둘레)은 늘 2PA</b>로 같아요.',
         readouts: [rd('PA = PB', ntD(M.a), 'green'), rd('PC + CD + DP', `$${nt(pc + pd + cd)}$`, 'rose', '둘레'), rd('2·PA', ntD(2 * M.a), 'green', '늘 같아요')],
@@ -500,7 +500,7 @@
       tagOut(b, g.A, g.Op, 'A', { size: 17, gap: 12 }); tagOut(b, g.B, O, 'B', { size: 17, gap: 12 });
       const up = pt(g.O.x, g.O.y), dn = g.Op;
       if (pr) {
-        segTag(b, g.P, g.A, q.kind === 0 ? 'PA=x' : `PA=${cv(g.pa)}`, { toward: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
+        if (q.kind !== 2) segTag(b, g.P, g.A, q.kind === 0 ? 'PA=x' : `PA=${cv(g.pa)}`, { toward: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
         segTag(b, g.A, g.B, q.kind === 2 ? 'x' : '', { toward: g.O, f: 0.6, color: 'rose', size: S(b), gap: 18 });
         segTag(b, g.P, g.B, q.kind === 1 ? 'PB=x' : `PB=${q.pbFull}`, { away: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
         T(b, pt(-R * 0.1, R * 0.62), `R=${R}, r=${r}`, { size: S(b), color: 'sky' });
@@ -622,7 +622,7 @@
       const q = s.ciPk, key = q.key + '#' + (s.ciSeed || 0), g = M.g, ex = q.mode === 'ext', kn = ex ? '공통외접선' : '공통내접선';
       let stem, ans, wr, meas, tag;
       const dd = ex ? Math.abs(q.r1 - q.r2) : q.r1 + q.r2;
-      const pre = `반지름이 ${q.r1} cm, ${q.r2} cm인 두 원 O, O′이 떨어져 있고, 직선 AB는 두 원의 ${kn}이다(A, B는 접점).`;
+      const pre = `반지름이 ${q.r1} cm, ${q.r2} cm인 두 원 O, O′에 대하여 직선 AB는 두 원의 ${kn}이다(A, B는 접점).`;
       if (q.kind <= 1) {
         tag = `[심화] ${kn}의 길이`; ans = q.len; meas = g.len;
         stem = `${pre} 두 원의 중심 사이의 거리가 ${q.d} cm일 때, $\\overline{AB}$의 길이 $x$는?`;

@@ -91,9 +91,9 @@
       fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 84, l: 44, r: 44 });
       let secF = false, triF = false, segF = false;
       if (pr) { secF = q.kind === 2; triF = q.kind === 1; segF = q.kind === 0; } else if (ex) { secF = true; triF = true; } else { secF = true; triF = st >= 1; segF = st >= 2; }
-      if (secF) fillSector(b, O0, R, g.a0, g.a1, 'rose', 0.24);
-      if (triF) fillPoly(b, [O0, A, B], 'sky', 0.36);
-      if (segF) fillSeg(b, O0, R, g.a0, g.a1, 'amber', 0.5);
+      if (secF) fillSector(b, O0, R, g.a0, g.a1, 'rose', 0.14);
+      if (triF) fillPoly(b, [O0, A, B], 'sky', 0.14);
+      if (segF) fillSeg(b, O0, R, g.a0, g.a1, 'amber', 0.22);
       circle(b, O0, R, 'ink', 3.6);
       line(b, O0, A, 'ink', 3.2); line(b, O0, B, 'ink', 3.2); line(b, A, B, 'ink', 3.2);
       tick(b, O0, A, 1, 'amber'); tick(b, O0, B, 1, 'amber');
@@ -163,12 +163,12 @@
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { R, f, C: Cc, D, arc, farc } = g;
       if (pr) fit(b, { x0: -R, x1: R, y0: -R, y1: 0.55 * R }, { t: 62, b: 84, l: 44, r: 44 }); else fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 44, l: 44, r: 44 });
       // 접은 뒤에 보이는 도형(큰 쪽)
-      if (pr && q.kind === 2) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'rose', fillAlpha: 0.26, color: null });
+      if (pr && q.kind === 2) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'rose', fillAlpha: 0.18, color: null });
       else if (!pr && (ex || st >= 3)) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'sky', fillAlpha: 0.08, color: null });
       arcD(b, O0, R, 330, 570, 'ink', 3.6);
       if (f < 0.999 && !pr) { b.path(arc, { color: 'ink', width: 2.4, dash: [6, 6], alpha: 0.45 }); }
       const showFold = pr ? q.kind === 1 : true;
-      if (showFold) b.path(farc, { close: true, fill: 'amber', fillAlpha: 0.42, color: null });
+      if (showFold) b.path(farc, { close: true, fill: 'amber', fillAlpha: 0.22, color: null });
       b.path(farc, { color: 'ink', width: 3.4 });
       line(b, Cc, D, 'ink', 3.4);
       line(b, O0, Cc, 'ink', 2.8); line(b, O0, D, 'ink', 2.8);
@@ -202,7 +202,7 @@
         guide: '막대로 <b>반지름 R</b>과 <b>접는 정도</b>를 바꿔 보세요. 호가 중심 O를 지나게 접으면 <b>OM = R÷2</b>이고 <b>∠COD = 120°</b>예요. 접힌 부분은 활꼴 그대로 겹쳐져요.',
         readouts: [rd('OM', $$(nt(R / 2)), 'green', 'R÷2'), rd('CD', $$(nt(R * Math.sqrt(3))), 'sky', '√3 × R'), rd('접힌 활꼴', $$(arTex(seg)), 'amber', '부채꼴 − 삼각형'), rd('접은 뒤 도형', $$(arTex({ pi: PIc(2 * R * R, 3), rt: tri, s: 1 })), 'rose', '원 − 활꼴')],
         rule: '호가 중심을 지나게 접으면 $\\overline{OM}=\\frac{1}{2}R$, $\\angle COD=120^{\\circ}$이고 접힌 부분의 넓이는 활꼴의 넓이와 같다',
-        notes: notes('접은 호는 원래 호와 <b>반지름이 같아요</b>. 접힌 호 위의 점도 중심 O에서 R만큼이에요.', '접은 뒤 도형의 넓이는 겹친 부분을 <b>한 번만</b> 세어요.')
+        notes: notes('접은 호의 반지름도 R이에요. 다만 그 중심은 O를 접는 선에 대칭이동한 <b>O′</b>이고, 접힌 호 위의 점은 O′에서 R만큼 떨어져 있어요.', '접은 뒤 도형의 넓이는 겹친 부분을 <b>한 번만</b> 세어요.')
       };
     },
     prob(M, s) {
@@ -246,14 +246,14 @@
       fit(b, { x0: -R, x1: R, y0: -R, y1: 0 }, { t: 62, b: 84, l: 44, r: 44 });
       const d0 = 180 - phi;
       if (pr) {
-        if (q.kind === 0) fillSeg(b, O0, R, d0, 180, 'amber', 0.5);
-        else if (q.kind === 1) fillSector(b, O0, R, d0, 180, 'rose', 0.3);
-        else { fillSeg(b, O0, R, d0, 180, 'amber', 0.5); fillSeg(b, O0, R, 0, d0, 'amber', 0.5); }
-      } else if (ex) { fillSeg(b, O0, R, d0, 180, 'amber', 0.5); fillPoly(b, [O0, A, Cc], 'sky', 0.24); }
+        if (q.kind === 0) fillSeg(b, O0, R, d0, 180, 'amber', 0.22);
+        else if (q.kind === 1) fillSector(b, O0, R, d0, 180, 'rose', 0.18);
+        else { fillSeg(b, O0, R, d0, 180, 'amber', 0.22); fillSeg(b, O0, R, 0, d0, 'amber', 0.22); }
+      } else if (ex) { fillSeg(b, O0, R, d0, 180, 'amber', 0.22); fillPoly(b, [O0, A, Cc], 'sky', 0.12); }
       else {
-        if (st >= 1) fillSector(b, O0, R, d0, 180, 'rose', 0.24);
-        if (st >= 2) fillPoly(b, [O0, A, Cc], 'sky', 0.36);
-        if (st >= 3) fillSeg(b, O0, R, d0, 180, 'amber', 0.5);
+        if (st >= 1) fillSector(b, O0, R, d0, 180, 'rose', 0.14);
+        if (st >= 2) fillPoly(b, [O0, A, Cc], 'sky', 0.14);
+        if (st >= 3) fillSeg(b, O0, R, d0, 180, 'amber', 0.22);
       }
       arcD(b, O0, R, 0, 180, 'ink', 3.6);
       line(b, A, B, 'ink', 3.4); line(b, A, Cc, 'ink', 3.2); line(b, Cc, B, 'ink', 3.2);

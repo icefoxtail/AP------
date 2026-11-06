@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>원의 성질 · AP Math 실험실</title>
-<meta name="description" content="중3 원의 성질: 현의 수직이등분과 원 접기, 접선과 직사각형·반원 속 접선, 삼각형의 내접원과 외접사각형, 원주각과 중심각, 내접사각형, 접선과 현이 이루는 각, 원 속 색칠한 넓이를 도형을 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.">
+<meta name="description" content="중3 원의 성질 45개 장면: 도형을 직접 조절해 탐구하고, 현재 문제의 조건을 유지한 단계별 풀이 그림으로 현·접선·원주각·넓이의 원리를 이해합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -26,12 +26,12 @@
    window.APL_CI_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
    원칙(학생 가독성)
    - 그림은 무대 가득 · 길이와 각은 그림 안에 크게(화면 기준 14px 이상) · 모든 도형은 막대나 손잡이로 조절
-   - 움직임은 가로로만(제자리 회전·접기는 허용). 탐구 → 정리(교과서 해결 전략 순서) → 문제(5지선다 + 숫자 바꾸기)
+   - 움직임은 가로로만(제자리 회전·접기는 허용). 탐구 → 문제(5지선다 + 숫자 바꾸기) → 현재 문항의 풀이
    - 중3은 제곱근(√)을 배웠으므로 √ 표기를 씁니다. 할선·방멱, 두 원의 공통접선은 [심화]로 표시합니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 't1', 't2', 't3', 't4', 't5', 't6', 't7'];
+const MODULES = ['core', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 'solutions'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
