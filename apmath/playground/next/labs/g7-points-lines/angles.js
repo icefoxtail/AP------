@@ -211,6 +211,10 @@
         const q = sv(s), mode = modeOf(lab);
         const questionKey = spec.problem(q).key + '|' + q.seed;
         if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
+        if (!measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
+          const current = spec.currentFocus(q, mode);
+          lab.board.setFocus(current || sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
+        }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
         if (lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
           const sig = spec.steps(q).join('\u0001');
@@ -878,6 +882,12 @@
     question: '평각 AOB 안에 반직선 OC를 긋고, 각 AOC와 각 COB를 각각 이등분하면 두 이등분선 사이의 각은 얼마일까?',
     guide: '<b>반직선 OC의 끝(노랑 점)</b>을 끌어 보세요. OM은 ∠AOC를, ON은 ∠COB를 이등분해요. ∠AOB를 고정하면 OC를 어디로 옮겨도 <b>∠MON = ∠AOB ÷ 2</b>예요. ∠AOB가 평각(180°)일 때에는 ∠MON이 언제나 <b>90°</b>(직각)예요.',
     box: { x: [-1.8, 1.8], y: [-3.2, 1.8] },
+    currentFocus: (q, mode) => {
+      if (mode !== 'problem') return null;
+      // 문제에는 아래 계산줄이 없으므로 현재 반직선과 이름만 크게 맞춥니다.
+      const pts = [[0, 0], ...Object.values(bisAng(q)).map((a) => [1.6 * Math.cos(a * D2R), 1.6 * Math.sin(a * D2R)])];
+      return { x: [Math.min(...pts.map((p) => p[0])) - 0.26, Math.max(...pts.map((p) => p[0])) + 0.26], y: [-Math.max(...pts.map((p) => p[1])) - 0.28, 0.34] };
+    },
     params: {
       g: { value: 70, min: 15, max: 165, step: 5, color: 'amber', label: '∠AOC', hint: '그림의 점 C를 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.g = Math.min(q.g, q.T - 15); } },
       T: { value: 180, min: 60, max: 180, step: 10, color: 'sky', label: '∠AOB (180°이면 평각)', hint: '점 B를 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.g = Math.min(q.g, q.T - 15); } }
@@ -923,6 +933,7 @@
       }
       g.dot(O, { color: 'ink', r: 5 });
       [['A', a.aA, 'sky'], ['B', a.aB, 'sky'], ['C', a.aC, 'ink'], ['M', a.aM, 'green'], ['N', a.aN, 'green']].forEach(([nm, ang, col]) => g.out(g.pol(O, L, ang), ang, nm, { size: 19, color: col }, 17));
+      g.text(O, 'O', { dy: 21, size: 18, color: 'ink' });
       const rel = (w) => { const ang = w.y < 0 ? (w.x < 0 ? 180 : 0) : Math.atan2(w.y, w.x) / D2R; return ang; };
       g.handle('C', g.pol(O, L, a.aC), { color: 'amber', ariaLabel: '반직선 OC 끝', drag: (w) => { q.g = clamp(rr5(180 - rel(w)), 15, q.T - 15); } });
       g.handle('B', g.pol(O, L, a.aB), { color: 'sky', ariaLabel: '반직선 OB 끝', drag: (w) => { q.T = clamp(Math.round((180 - rel(w)) / 10) * 10, 60, 180); q.g = Math.min(q.g, q.T - 15); } });
