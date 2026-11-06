@@ -887,6 +887,7 @@
     rlT: {
       value: 0, min: 0, max: 1, step: 0.001, color: 'amber', label: '굴러간 정도',
       hint: '막대를 끌거나, 그림 아래쪽 손잡이를 끌어서 도형을 굴려 보세요',
+      onInput: (s) => { s.playing = false; s.rlHold = 0; }, // 직접 정한 위치가 다음 자동 재생 프레임에 밀리지 않게 합니다.
       format: (v, s) => {
         const N = (s && s.cfg && s.cfg.rolls) || 1, u = v * N;
         if (u <= 0.001) return '굴리기 전';

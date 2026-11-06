@@ -78,6 +78,12 @@ try {
         };
       });
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g7Labels = []; lab.render(); });
+      const capture = async filename => {
+        await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+        await settle();
+        await page.screenshot({ path: path.join(out, filename), fullPage: true });
+        dest.captures.push(filename);
+      };
       const measure = async (scene, state) => {
         await settle();
         const obs = await page.evaluate(() => {
@@ -122,7 +128,7 @@ try {
         await measure(scene, 'initial');
         if (targets.has(scene.id)) {
           const filename = `${unit}--${scene.id}--${run.name}--initial.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
-          await page.screenshot({ path: path.join(out, filename), fullPage: true }); dest.captures.push(filename);
+          await capture(filename);
         }
         const hasReview = await page.evaluate(() => lab._tabAvailable('review'));
         if (hasReview) {
@@ -139,7 +145,7 @@ try {
           await measure(scene, 'review-final');
           if (targets.has(scene.id)) {
             const filename = `${unit}--${scene.id}--${run.name}--review-final.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
-            await page.screenshot({ path: path.join(out, filename), fullPage: true }); dest.captures.push(filename);
+            await capture(filename);
           }
         }
         if (targets.has(scene.id)) {
@@ -248,7 +254,7 @@ try {
           const targetObservation = await measure(scene, label);
           targetObservation.target = { requested: c, actual: await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, lab.s[k]])), Object.keys(c.params || {})) };
           const filename = `${unit}--${scene.id}--${run.name}--${label}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
-          await page.screenshot({ path: path.join(out, filename), fullPage: true }); dest.captures.push(filename);
+          await capture(filename);
         }
       }
       if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });

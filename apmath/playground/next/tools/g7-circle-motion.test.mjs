@@ -55,24 +55,29 @@ async function load() {
   context.lab = lab;
   lab._answerOpen = () => lab.s.revealed || lab.s.step >= call(lab.scene.steps, lab.s).length;
   lab._measureFocus = (scene) => {
-    const box = board.measure(() => scene.draw(board, lab.s, call(scene.view, lab.s, lab), lab));
-    return box ? board.fitBox(box, { margin: 0.08, px: 12 }) : null;
+    const value = call(scene.view, lab.s, lab), run = () => board.measure(() => scene.draw(board, lab.s, value, lab));
+    let box = run(); if (!box) return null;
+    const options = { margin: 0.08, px: 12 }, keep = { focus: board.focus, zoom: board.zoom, panX: board.panX, panY: board.panY };
+    Object.assign(board, { focus: board.fitBox(box, options), zoom: 1, panX: 0, panY: 0 });
+    box = run() || box; Object.assign(board, keep);
+    return board.fitBox(box, options);
   };
   lab.go = (id) => {
     lab.index = list.findIndex((scene) => scene.id === id);
     assert.ok(lab.index >= 0, `scene ${id} exists`);
-    lab.tab = 'explore';
+    // Real shell keeps the previous tab through enter/focus, then switches to explore.
     Object.assign(lab.s, { step: lab.scene.startStep ?? (lab.scene.steps ? 1 : 0), revealed: false, playing: false });
     board.kind = lab.scene.boardKind || definition.board.kind;
     definition.enter?.(lab.s, lab.scene, lab);
     lab.scene.enter?.(lab.s, lab);
     board.setFocus(call(lab.scene.focus, lab.s) || { x: [-10, 40], y: [-20, 15] }, true);
+    lab.tab = 'explore';
     return lab.scene;
   };
   lab.draw = () => {
-    const texts = [], original = board._text;
-    board._text = function (x, y, text, ...args) { if (text != null) texts.push(String(text)); return original.call(this, x, y, text, ...args); };
-    try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, value }; }
+    const texts = [], textItems = [], original = board._text;
+    board._text = function (x, y, text, options, screen) { if (text != null) { texts.push(String(text)); textItems.push({ x, y, text: String(text), options, screen }); } return original.call(this, x, y, text, options, screen); };
+    try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, textItems, value }; }
     finally { board._text = original; }
   };
   return lab;
@@ -206,5 +211,50 @@ await test('manual answer reveal resets on changed numeric givens and survives p
       call(scene.view, lab.s, lab);
       assert.equal(lab.s.revealed, true, `${scene.id} preserves reveal when only motion changes`);
     }
+  }
+});
+
+await test('perimeter focus includes the strip after entering from a hidden-answer problem tab', async () => {
+  const lab = await load();
+  // Drawing-surface sizes exercise desktop/tablet/mobile proportions; real browser
+  // viewport layout remains the separate Playwright gate.
+  for (const [width, height] of [[1039, 612], [820, 470], [623, 455], [390, 410]]) {
+    lab.board.resize(width, height);
+    for (const id of ['z2-semi', 'z2-quarter', 'z2-sector', 'z2-segment']) {
+      lab.tab = 'explore'; lab.go(id);
+      const fromExplore = JSON.stringify(lab.board.focus);
+      lab.tab = 'problem'; lab.go(id);
+      assert.equal(JSON.stringify(lab.board.focus), fromExplore, `${id} ${width}×${height}: prior tab cannot remove the strip from the fit`);
+      for (const progress of [1, 33, 100]) {
+        lab.s.csP = progress;
+        const { textItems } = lab.draw();
+        assert.ok(textItems.some((item) => item.text.startsWith('합계') || item.text.startsWith('현의 길이')));
+        for (const item of textItems) {
+          const half = (item.options.size || 13) / 2;
+          assert.ok(item.y - half >= 0 && item.y + half <= height, `${id} ${width}×${height} p=${progress}: ${item.text} at y=${item.y}`);
+        }
+      }
+      lab.tab = 'review'; lab.s.step = 1; lab.s.csP = 100;
+      const { texts, textItems } = lab.draw();
+      assert.ok(!texts.some((text) => text.startsWith('합계')), 'keeping layout does not reveal an answer');
+      for (const item of textItems) assert.ok(item.y >= 0 && item.y <= height, `${id} returning to step1 retains a visible strip`);
+    }
+  }
+});
+
+await test('manual rolling slider input pauses automatic motion in all seven rolling scenes', async () => {
+  const lab = await load();
+  for (const id of ['rl-rect', 'rl-tri', 'rl-rtri', 'rl-turn60', 'rl-turn45', 'rl-semi', 'rl-square']) {
+    const scene = lab.go(id);
+    assert.equal(lab.s.playing, true, `${id} entry starts its established demonstration`);
+    lab.s.rlT = 0.007;
+    lab.params.rlT.onInput?.(lab.s, lab);
+    scene.tick(lab.s, 1 / 60, lab);
+    assert.equal(lab.s.rlT, 0.007, `${id} manual value survives the following animation frame`);
+    assert.equal(lab.s.playing, false);
+    assert.equal(lab.s.rlHold, 0);
+    call(scene.actions, lab.s).find((action) => action.id === 'play').run(lab.s, lab);
+    scene.tick(lab.s, 1 / 60, lab);
+    assert.ok(lab.s.rlT > 0.007, 'explicit replay still continues motion');
   }
 });

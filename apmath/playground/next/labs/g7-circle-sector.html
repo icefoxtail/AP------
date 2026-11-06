@@ -449,7 +449,11 @@ function periScene(type) {
       if (s.csP > 0) b.seg({ x: xl, y: yt }, { x: xl + Wt * s.csP / 100, y: yt }, { color: 'amber', width: 8, alpha: 0.95 });
       const px = xl + Wt * s.csP / 100;
       b.handle('P', { x: px, y: yt }, { color: 'amber', ariaLabel: '점 P (끌어서 이동)', drag: (w) => { s.playing = false; s.csP = clamp(Math.round((w.x - xl) / Wt * 100), 0, 100); } });
-      if (s.csP > 0 && traceReady) T(b, { x: clamp(px, xl + 20 / (b.k || 100), xl + Wt - 20 / (b.k || 100)), y: yt }, motionCm(tp.ex, tp.distance), { dy: -52, color: 'amber', size: 16 });
+      if (s.csP > 0 && traceReady) {
+        const distanceLabel = motionCm(tp.ex, tp.distance), half = (textW(distanceLabel, 16) / 2 + 8) / (b.k || 100);
+        const labelX = half * 2 < Wt ? clamp(px, xl + half, xl + Wt - half) : xl + Wt / 2;
+        T(b, { x: labelX, y: yt }, distanceLabel, { dy: -52, color: 'amber', size: 16 });
+      }
       if (s.csP > 0) b.point(tp.P, { color: 'amber', r: 7 });
     }
   };
@@ -597,7 +601,7 @@ const ENTER = {
 // 장면에 들어올 때 값을 되돌리고, 값이 달라져도 그림이 무대 밖으로 나가지 않도록 여러 상태의 맞춤 범위를 합쳐 둡니다.
 const FIT = {
   'z0-center': [{ csQ: 90 }, { csQ: 270 }], 'z0-diameter': [{ csD: 0 }, { csD: 100 }], 'z0-arc': [{ csS: 30 }, { csS: 60 }, { csS: 120 }, { csS: 180 }], 'z0-sector': [{ csA: 30 }, { csA: 90 }, { csA: 150 }, { csA: 210 }, { csA: 300 }], 'z0-segment': [{ csS: 30 }, { csS: 60 }, { csS: 120 }, { csS: 180 }],
-  'z2-semi': [{ csP: 0 }], 'z2-quarter': [{ csP: 0 }], 'z2-sector': [{ csA: 30 }, { csA: 90 }, { csA: 150 }, { csA: 210 }, { csA: 300 }], 'z2-segment': [{ csS: 30 }, { csS: 60 }, { csS: 120 }, { csS: 180 }],
+  'z2-semi': [{ csP: 0 }, { csP: 100 }], 'z2-quarter': [{ csP: 0 }, { csP: 100 }], 'z2-sector': [30, 90, 150, 210, 300].flatMap((csA) => [{ csA, csP: 0 }, { csA, csP: 100 }]), 'z2-segment': [30, 60, 120, 180].flatMap((csS) => [{ csS, csP: 0 }, { csS, csP: 100 }]),
   'z3-circleProof': [{ csT: 0, csN: 8 }, { csT: 100, csN: 8 }, { csT: 100, csN: 64 }], 'z3-sectorProof': [{ csT: 0, csS: 180 }, { csT: 0, csS: 60 }, { csT: 100, csS: 30 }, { csT: 100, csS: 90 }, { csT: 100, csS: 180 }]
 };
 const CANON_VIEW = { x: [-5, 5], y: [-4, 4] }; // 처음 열 때의 기본 범위
@@ -609,11 +613,14 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
     s.playing = false;
     sc._focus = null;
     if (lab && lab.board && FIT[sc.id] && !sc.id.startsWith('z3-')) {
-      const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
+      const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY }, tab = lab.tab;
       b.setFocus(CANON_VIEW, true); // 앞 장면의 확대·위치가 남은 채로 재면 그림이 작게 맞춰집니다 → 항상 같은 처음 상태에서 잽니다
       let uni = null;
-      for (const st of FIT[sc.id]) { Object.assign(s, st); const f = lab._measureFocus(sc); if (f) uni = unionFocus(uni, f); }
-      Object.assign(s, keep);
+      // 쉘은 enter/맞춤 뒤에 탭을 탐구로 바꿉니다. 이전 문제 탭의 답 숨김 상태로 재면 둘레 띠가 맞춤 범위에서 빠져요.
+      try {
+        lab.tab = 'explore';
+        for (const st of FIT[sc.id]) { Object.assign(s, st); const f = lab._measureFocus(sc); if (f) uni = unionFocus(uni, f); }
+      } finally { lab.tab = tab; Object.assign(s, keep); }
       sc._focus = uni;
       if (s !== lab.s) Object.assign(b, view); // 장면 목록의 작은 그림을 만드는 중이면 지금 보는 화면은 그대로 둡니다
     }
