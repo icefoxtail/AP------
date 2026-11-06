@@ -20,24 +20,28 @@
   const OK6 = (R, H, c) => (R * c) % 4 === 0 && (H * c) % 4 === 0;
   const ALL6 = (() => { const o = []; for (let R = 2; R <= 15; R++) for (let H = 3; H <= 20; H++) for (let c = 1; c <= 3; c++) if (OK6(R, H, c)) o.push([R, H, c]); return o; })();
   const tri6 = (s, first) => {
-    const R = clamp(Math.round(s.soSR), 2, 15), H = clamp(Math.round(s.soSH), 3, 20), c = clamp(Math.round(s.soC), 1, 3);
+    const R = clamp(Math.round(s.soCutR), 2, 14), H = clamp(Math.round(s.soCutH), 4, 20), c = clamp(Math.round(s.soC), 1, 3);
     if (OK6(R, H, c)) return [R, H, c];
     const w = { R: first === 'R' ? 1e6 : 1000, H: first === 'H' ? 1e6 : 1000, c: first === 'c' ? 1e6 : 1 };
     let best = ALL6[0], bd = Infinity;
     ALL6.forEach((p) => { const d = Math.abs(p[0] - R) * w.R + Math.abs(p[1] - H) * w.H + Math.abs(p[2] - c) * w.c; if (d < bd) { bd = d; best = p; } });
     return best;
   };
-  const fix6 = (st, lab, first) => { if (!lab || !lab.scene || lab.scene.id !== 's2-6') return; const p = tri6(st, first); st.soSR = p[0]; st.soSH = p[1]; st.soC = p[2]; };
+  const fix6 = (st, lab, first) => { if (!lab || !lab.scene || lab.scene.id !== 's2-6') return; const p = tri6(st, first); st.soCutR = p[0]; st.soCutH = p[1]; st.soC = p[2]; };
   const P6 = (() => { const o = []; [2, 4, 6, 8].forEach((R) => [4, 6, 8, 12].forEach((H) => [1, 2, 3].forEach((c) => { if (OK6(R, H, c)) o.push([R, H, c]); }))); return o; })();
 
   const PARAMS = {
-    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => { fix6(st, lab, 'R'); G.keepSmaller(st, 'soSr', 'soSR'); } }),
+    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => G.keepSmaller(st, 'soSr', 'soSR') }),
     soSr: P('윗면의 반지름', 1, 14, 1, 2, { onInput: (st) => G.keepSmaller(st, 'soSr', 'soSR'), color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
-    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => fix6(st, lab, 'H') }),
+    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    // 이 장면에서 홀수 R·H는 어떤 c/4로 잘라도 작은 원뿔의 치수가 자연수가 될 수 없어요.
+    // 별도 막대에서 짝수만 고릅니다. 선택한 치수는 유지하고 자르는 위치를 함께 맞춰요.
+    soCutR: P('큰 원뿔의 반지름 R', 2, 14, 2, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm', hint: '2 cm씩 바꿔요. 작은 원뿔의 치수가 자연수가 되도록 자르는 위치도 함께 맞춰요', onInput: (st, lab) => fix6(st, lab, 'R') }),
+    soCutH: P('큰 원뿔의 높이 H', 4, 20, 2, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm', hint: '2 cm씩 바꿔요. 작은 원뿔의 치수가 자연수가 되도록 자르는 위치도 함께 맞춰요', onInput: (st, lab) => fix6(st, lab, 'H') }),
     soU: P('자르는 높이', 0.04, 0.96, 0.01, 0.4, { color: 'rose', hint: '평면의 높이를 정해요(칼날은 이 높이에서 가로로 지나가요)', format: (v) => G.measureN(v * 100) + '%' }),
     soE: P('칼날 밀어 넣기', 0, 1, 0.005, 1, { color: 'rose', hint: '오른쪽으로 끌면 판이 왼쪽에서 들어와 가로로 지나가요', format: (v) => G.measureN(v * 100) + '%' }),
     soPsi: P('단면판 돌리기', 0, 90, 1, 0, { color: 'rose', hint: '축을 포함한 채 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
-    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4. 길이가 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + '/4', onInput: (st, lab) => fix6(st, lab, 'c') }),
+    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4. 길이가 자연수가 되도록 필요하면 큰 원뿔의 치수도 함께 맞춰요', format: (v) => Math.round(v) + '/4', onInput: (st, lab) => fix6(st, lab, 'c') }),
     soG: P('작은 원뿔 떼어 내기', 0, 1, 0.01, 0.7, { color: 'rose', hint: '작은 원뿔이 오른쪽으로 밀려 나가요', format: (v) => G.measureN(v * 100) + '%' }),
     soFold: P('왼쪽 반을 접기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '회전축을 접는 선으로 접어요', format: (v) => G.measureN(v * 180) + '°' })
   };
@@ -80,11 +84,11 @@
 
   /* ------------------------------------------------------------------ 그림 틀: 똑바로 세운 입체 + 단면의 실제 모양(작은 그림) */
   const union = (a, c) => ({ x0: Math.min(a.x0, c.x0), x1: Math.max(a.x1, c.x1), y0: Math.min(a.y0, c.y0), y1: Math.max(a.y1, c.y1) });
-  function placeInset(b, sb, side0) {
+  function placeInset(b, sb, side0, mainLabelPad = 0) {
     if (b.W < 560 && !b.thumb) {
       // 휴대폰: 입체와 단면을 위아래로 놓습니다. 실제 단면도 약 98px 이상으로 확보해 치수를 읽을 수 있게 해요.
       const px = 144, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
-      fit(b, sb, { t: 30, b: blockH + 12, l: 22, r: 22 });
+      fit(b, sb, { t: 30, b: blockH + 12 + mainLabelPad, l: 22, r: 22 });
       const c = b.toW((b.W + il - ir) / 2, b.H - ib - 10 - blockH / 2), side = px / b.k;
       return { cx: c.x, cy: c.y, side, narrow: true, fitted: true, capUp: 12 / b.k, secK: 0.68, box: { x0: c.x - side / 2, x1: c.x + side / 2, y0: c.y - side / 2, y1: c.y + side / 2 } };
     }
@@ -519,8 +523,8 @@
   S.push({
     id: 's2-6', pitchOnly: true, title: '원뿔대는 원뿔에서 원뿔을 뺀 것', short: '원뿔대 = 뿔 − 뿔',
     question: '원뿔을 밑면에 평행하게 잘라 윗부분을 떼어 내면 무엇이 남을까? 떼어 낸 부분과 남은 부분은 어떤 입체일까?',
-    ctl: ['soSR', 'soSH', 'soC', 'soG'],
-    init: (s) => { s.soSR = 4; s.soSH = 6; s.soC = 2; s.soG = 0.7; },
+    ctl: ['soCutR', 'soCutH', 'soC', 'soG'],
+    init: (s) => { s.soCutR = 4; s.soCutH = 6; s.soC = 2; s.soG = 0.7; },
     reroll: (s) => { const t = P6[pick(P6.map((p, i) => i), s.soP6i)]; s.soP6i = P6.indexOf(t); s.soPR = t[0]; s.soPH = t[1]; s.soPc = t[2]; },
     model: (s) => {
       const [R, H, c4] = tri6(s, 'R'), c = c4 / 4;
@@ -538,7 +542,7 @@
       if (prob) pts.push(D.P({ x: -R - 1.4, y: 0, z: 0 }), D.P({ x: R + 1.6, y: 0, z: 0 }));
       const sb = S3.boxOf(D, big, pts);
       const side = Math.max(2 * R, 4) * 1.1;
-      const ins = prob ? null : placeInset(b, unionB(sb, { x0: sb.x0, x1: sb.x1, y0: sb.y0, y1: sb.y1 }), side);
+      const ins = prob ? null : placeInset(b, unionB(sb, { x0: sb.x0, x1: sb.x1, y0: sb.y0, y1: sb.y1 }), side, 24);
       if (!(ins && ins.fitted)) fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: prob ? 96 : 44, r: prob ? 100 : 44 });
       // 큰 원뿔의 윤곽(점선)
       if (g > 0.02 || prob) S3.tangents(S3.ringP(D, R, 0), S3.ringP(D, 0, H)).lines.forEach((ln) => D.g.path([ln[0], ln[1]], { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.8 }));

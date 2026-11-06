@@ -339,3 +339,49 @@ await test('inverse construction and symmetry questions explicitly exclude only 
   }
 });
 
+
+
+await test('cone-removal sliders expose only attainable dimensions and preserve each selected legal value', async () => {
+  const lab = await load();
+  const scene = lab.go('s2-6');
+  const dimensionKeys = call(scene.controls, lab.s).slice(0, 2);
+  for (const key of dimensionKeys) {
+    const param = lab.params[key];
+    for (const ratio of [1, 2, 3]) for (let value = param.min; value <= param.max; value += param.step) {
+      lab.go('s2-6'); lab.s.soC = ratio; lab.params.soC.onInput(lab.s, lab);
+      lab.s[key] = value; param.onInput(lab.s, lab);
+      assert.equal(lab.s[key], value, `${key} must accept its advertised ${value}`);
+      const m = scene.so.model(lab.s);
+      assert.ok(Number.isInteger(m.rs) && Number.isInteger(m.hs), 'cut radius and height remain natural numbers');
+      assert.equal(key === dimensionKeys[0] ? m.R : m.H, value, 'model and displayed input agree');
+      for (const dimensionKey of dimensionKeys) {
+        const definition = lab.params[dimensionKey], v = lab.s[dimensionKey];
+        assert.ok(v >= definition.min && v <= definition.max);
+        assert.equal((v - definition.min) % definition.step, 0);
+      }
+    }
+  }
+  for (let R = 2; R <= 14; R += 2) for (let H = 4; H <= 20; H += 2) for (const ratio of [1, 2, 3]) {
+    lab.go('s2-6');
+    lab.s[dimensionKeys[0]] = R; lab.s[dimensionKeys[1]] = H; lab.s.soC = ratio;
+    lab.params.soC.onInput(lab.s, lab);
+    const m = scene.so.model(lab.s);
+    assert.equal(lab.s.soC, ratio, 'every advertised cutting ratio remains selectable');
+    assert.ok(Number.isInteger(m.rs) && Number.isInteger(m.hs));
+    assert.equal(m.R, lab.s[dimensionKeys[0]]);
+    assert.equal(m.H, lab.s[dimensionKeys[1]]);
+  }
+  lab.go('s2-1'); lab.s.soSR = 5; lab.params.soSR.onInput?.(lab.s, lab);
+  assert.equal(lab.params.soSR.step, 1, 'other sections retain integer radius controls');
+  assert.equal(lab.scene.so.model(lab.s).d.R, 5, 'odd radii remain available in other scenes');
+});
+
+await test('mobile cone-removal radius label stays separate from the comparison heading', async () => {
+  const lab = await load(); lab.go('s2-6');
+  lab.board.resize(390, 414); lab.board.setInsets({ top: 0, right: 0, bottom: 64, left: 0 });
+  const result = lab.draw();
+  const radius = result.textItems.find((item) => item.text === 'R = 4');
+  const heading = result.textItems.find((item) => item.text === '두 밑면(원)');
+  assert.ok(radius && heading);
+  assert.ok(heading.y - radius.y >= 28, 'the main solid radius and two-base comparison heading need their own lines');
+});
