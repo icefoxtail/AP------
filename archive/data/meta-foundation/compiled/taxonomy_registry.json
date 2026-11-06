@@ -12,7 +12,7 @@
     },
     {
       "packId": "FUNCTIONS_GRAPHS",
-      "version": "1.0.10"
+      "version": "1.0.11"
     },
     {
       "packId": "LIMIT_CONTINUITY",
@@ -36,7 +36,7 @@
     },
     {
       "packId": "MIDDLE1",
-      "version": "1.0.3"
+      "version": "1.0.4"
     },
     {
       "packId": "H1_FOUNDATION",
@@ -48,11 +48,11 @@
     },
     {
       "packId": "EXPONENTS_LOGARITHMS",
-      "version": "1.0.2"
+      "version": "1.0.3"
     },
     {
       "packId": "TRIGONOMETRY",
-      "version": "1.0.3"
+      "version": "1.0.4"
     },
     {
       "packId": "ALGEBRA_2022",
@@ -72,7 +72,7 @@
     }
   ],
   "problemTypeCount": 424,
-  "templateCount": 978,
+  "templateCount": 981,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -32462,6 +32462,23 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE",
+      "canonicalLabelKo": "맞꼭지각을 이용한 두 삼각형 각 추적",
+      "definition": "첫 삼각형의 내각합으로 교점각을 구해 맞꼭지각을 통해 다른 삼각형에 적용한 다음 내각합으로 미지각을 결정하는 풀이 구조.",
+      "aliases": [],
+      "internalSkeleton": "삼각형 내각합 → 맞꼭지각 대응 → 두 번째 삼각형 내각합",
+      "parentProblemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "ownerPack": "MIDDLE1",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_2e86456060a73a45ed0061dc60dbb030d73c60a5c082267f8a35fff483dd09f1"
+      ],
+      "supportingSourceQuestionRefs": [
+        "24_왕운중_2학기_기말_중1_수학:q01"
+      ]
+    },
+    {
       "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
       "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
       "canonicalLabelKo": "절댓값의 직접 구간 변환",
@@ -35535,6 +35552,23 @@
       "supportingItemCount": 1
     },
     {
+      "templateKey": "TPL_LOG_PH_CONCENTRATION_RATIO_SHIFT",
+      "canonicalLabelKo": "농도 변화에 따른 pH 차이 계산",
+      "definition": "수소 이온 농도의 일정 비율 변화를 상용로그의 차로 변환하여 pH 증가·감소량을 계산한다.",
+      "aliases": [],
+      "internalSkeleton": "수소 이온 농도의 일정 비율 변화를 상용로그의 차로 변환하여 pH 증가·감소량을 계산한다.",
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_169a6ff0fbaf3907dc055833dfeb22b86e8e27cc0e27d1f22d153e7f43141944"
+      ],
+      "supportingSourceQuestionRefs": [
+        "21_순천고_1학기_중간_고2_수학I:q06"
+      ]
+    },
+    {
       "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
       "canonicalLabelKo": "호 길이와 넓이로 부채꼴 반지름 구하기",
       "definition": "'호도법과 부채꼴의 관계' 유형에서 '호 길이와 넓이로 부채꼴 반지름 구하기'을 실풀이 결정 단계로 사용하는 풀이 골격.",
@@ -35757,6 +35791,23 @@
         "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA",
+      "canonicalLabelKo": "둘레 고정 부채꼴 넓이 최댓값",
+      "definition": "부채꼴의 일정한 둘레를 호의 길이와 반지름의 관계식으로 나타낸 다음 넓이의 이차식 최댓값으로 중심각을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "부채꼴의 일정한 둘레를 호의 길이와 반지름의 관계식으로 나타낸 다음 넓이의 이차식 최댓값으로 중심각을 구한다.",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_1ba2727e71f941d74f8ad2388c726be25c13b157258d801378d141b6c0961abc"
+      ],
+      "supportingSourceQuestionRefs": [
+        "21_순천고_1학기_중간_고2_수학I:q16"
+      ]
     },
     {
       "templateKey": "TPL_H22A_01_ROOT_REAL_067",
