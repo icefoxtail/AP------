@@ -176,6 +176,11 @@
       `밑변 BC=${M.B}도 그대로예요.`,
       `그러므로 넓이 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.A)}는 변하지 않아요. (둘레는 변해요. 넓이가 같다고 둘레가 같은 것은 아니에요.)`
     ],
+    problemSteps: (M) => [
+      'A와 A′는 직선 l 위에 있고, 밑변 BC는 l과 평행한 직선 m 위에 있어요. 두 삼각형의 높이는 두 평행선 사이의 거리로 같아요.',
+      `△ABC와 △A′BC는 밑변 BC=${M.B}cm도 공유하므로 넓이가 같아요. 높이의 수치를 따로 구할 필요가 없어요.`,
+      `따라서 △A′BC의 넓이 = △ABC의 넓이 = ${G.exactN(M.A)}cm²예요.`
+    ],
     view: (M) => ({
       guide: '<b>노란 점 A</b>를 평행선 위에서 가로로 끌거나 ▶를 눌러 보세요. 밑변과 높이가 그대로이면 <b>넓이는 그대로</b>예요. 그런데 둘레는 어떻게 될까요?',
       readouts: [rd('밑변 BC', `${M.B}`, 'sky'), rd('두 평행선 사이의 거리', `${M.H}`, 'amber'), rd('넓이', `${num(M.A)}`, 'green', `${M.B} × ${M.H} ÷ 2`), rd('둘레(어림)', `≈ ${fmtN(M.per)}`, 'rose', 'A가 한가운데일 때 가장 짧아요')],
@@ -209,7 +214,10 @@
     geo: (M) => { const Bv = pt(0, 0), Cv = pt(M.B, 0), Av = pt(M.p, -M.H), Dv = pt(M.p + M.d, -M.H), O = inter(Av, Cv, Bv, Dv); return { Av, Bv, Cv, Dv, O }; },
     draw(b, s, M, C) {
       const { B, d, H, p, X, Y, w } = M, { Av, Bv, Cv, Dv, O } = wing.geo(M);
-      FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
+      // The question uses only one trapezoid and two given areas. Reserve their
+      // actual label space instead of the three-line animated proof below it.
+      if (C.problem) FIT(b, bboxOf([Av, Bv, Cv, Dv]), { t: 28, b: 84, l: 32, r: 32 });
+      else FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
       const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
       const c0 = centroid([Av, Bv, Cv, Dv]);
       if (C.problem) { fillPoly(b, [Bv, Cv, O], 'green', 0.3); fillPoly(b, [Av, Bv, O], 'amber', 0.3); }
@@ -282,8 +290,8 @@
         if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: `h = ${h}`, side: 1, gap: 8 });
       }
       const cc = centroid(g.left.concat(g.right));
-      dim(b, Bv, D, `${m}`, { ref: cc, color: 'sky' });
-      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), `${n}`, { ref: cc, color: 'rose' });
+      dim(b, Bv, D, C.problem ? `${m}k` : `${m}`, { ref: cc, color: 'sky' });
+      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem ? `${n}k` : `${n}`, { ref: cc, color: 'rose' });
       if (C.problem) {
         T(b, M.q ? pt((Av.x + D.x + Cv.x) / 3, -h / 3) : pt((Av.x + Bv.x + D.x) / 3, -h / 3), '?', { size: 20, color: 'amber' });
         foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 58); return;
@@ -297,6 +305,11 @@
       `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이 h=${M.h}가 같아요.`,
       `넓이는 S₁=$\\frac{1}{2}$×${M.m}×${M.h}=${M.S1}, S₂=$\\frac{1}{2}$×${M.n}×${M.h}=${M.S2}예요.`,
       `S₁ : S₂ = ${M.S1} : ${M.S2} = ${M.m} : ${M.n}이에요. 높이가 같으면 넓이의 비는 밑변의 길이의 비와 같아요.`
+    ],
+    problemSteps: (M) => [
+      `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이가 같아요. BD=${M.m}k, DC=${M.n}k (k>0)로 나타내면 넓이의 비는 밑변의 비와 같아요.`,
+      `△ABD : △ADC = BD : DC = ${M.m} : ${M.n}이에요. 전체 넓이 ${M.S}cm²를 ${M.m}+${M.n}=${M.m + M.n}등분한 몫으로 나누어요.`,
+      `구하는 △${M.q ? 'ADC' : 'ABD'}의 넓이 = ${M.S}×$\\frac{${M.q ? M.n : M.m}}{${M.m}+${M.n}}$ = ${G.exactN(M.q ? M.S2 : M.S1)}cm²예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>BD</b>와 <b>DC</b>의 길이를 바꿔 보세요. ▶를 누르면 두 삼각형이 가로로 떼어져요. 두 삼각형의 <b>높이(점선)</b>는 같아요.',

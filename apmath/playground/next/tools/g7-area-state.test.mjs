@@ -70,10 +70,10 @@ async function load() {
     return lab.scene;
   };
   lab.draw = () => {
-    const texts = [], paths = [], original = board._text, originalPath = board.path;
+    const texts = [], labels = [], paths = [], original = board._text, originalPath = board.path;
     board.path = function (points, options = {}) { paths.push({ points: points.map((p) => ({ x: p.x ?? p[0], y: p.y ?? p[1] })), options }); return originalPath.call(this, points, options); };
-    board._text = function (x, y, text, ...args) { if (text != null) texts.push(String(text)); return original.call(this, x, y, text, ...args); };
-    try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, paths, value }; }
+    board._text = function (x, y, text, ...args) { if (text != null) { texts.push(String(text)); labels.push({ text: String(text), x, y, size: (args[0]?.size || 13) * board.fs * board._ts() }); } return original.call(this, x, y, text, ...args); };
+    try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, labels, paths, value }; }
     finally { board._text = original; board.path = originalPath; }
   };
   lab.api = context.APL_AR;
@@ -86,6 +86,22 @@ function exactValue(tex) {
   const fraction = /^\\frac\{(-?\d+)\}\{(\d+)\}$/.exec(str);
   return fraction ? Number(fraction[1]) / Number(fraction[2]) : Number(str);
 }
+
+await test('numeric formula results stay hidden until the last review step in all area scenes', async () => {
+  const lab = await load();
+  for (const scene of lab.list) {
+    lab.go(scene.id);
+    const inquiry = call(scene.view, lab.s, lab), count = call(scene.steps, lab.s).length;
+    assert.ok(inquiry.formula, `${scene.id}: inquiry retains its principle`);
+    lab.tab = 'review';
+    for (let step = 0; step < count; step++) {
+      lab.s.step = step;
+      assert.equal(call(scene.view, lab.s, lab).formula, null, `${scene.id}: no future calculation at step ${step}`);
+    }
+    lab.s.step = count;
+    assert.equal(call(scene.view, lab.s, lab).formula, inquiry.formula, `${scene.id}: final step reveals the current calculation`);
+  }
+});
 
 await test('changed problem givens close manually opened answers in every area scene; presentation alone preserves them', async () => {
   const lab = await load();
@@ -209,4 +225,86 @@ await test('completed grass reassembly uses the mobile stage below the HUD and r
   assert.ok(result.texts.includes('12 × 6 = 72m²'));
   assert.equal(result.paths.some((p) => p.options.dash && p.options.color === 'sky'), false, 'the unused original field no longer reserves space after assembly');
   assert.ok(Math.min(...ys) >= 12 && Math.max(...ys) <= 410 - 70 - 78, 'shape and two-line caption leave room for the real mobile tools');
+});
+
+await test('landscape-tablet road captions clear the floating bottom tools without exposing step-two area', async () => {
+  const lab = await load();
+  lab.go('c3-road');
+  Object.assign(lab.s, { c3W: 14, c3H: 8, c3X: 2, c3Mode: 1 });
+  // 1024×768 Chromium: 683×438 canvas, with the toolbar in its bottom 48px.
+  lab.board.resize(683, 438);
+  lab.board.setInsets({ top: 0, right: 16, bottom: 0, left: 0 });
+  for (const progress of [0.85, 1]) {
+    lab.s.c3T = progress;
+    const result = lab.draw(), caption = result.labels.find((v) => v.text.includes('(돌려서)') || v.text.includes('72m²'));
+    assert.ok(caption, 'the current calculation is present');
+    assert.ok(caption.y + caption.size / 2 <= 438 - 52, 'caption stays above the real toolbar with a 4px gap');
+  }
+  lab.tab = 'review'; lab.s.step = 2;
+  const second = lab.draw();
+  assert.equal(second.texts.some((text) => text.includes('72m²')), false);
+  lab.s.step = 3;
+  const third = lab.draw(), answer = third.labels.find((v) => v.text.includes('72m²'));
+  assert.ok(answer && answer.y + answer.size / 2 <= 438 - 52);
+});
+
+await test('area question review preserves its givens and answers the requested part, not a different inquiry result', async () => {
+  const lab = await load();
+  const cases = [];
+  for (const [B, H] of [[4, 3], [8, 5], [12, 8]]) cases.push(['b3-rail', { b3B: B, b3H: H }, B * H / 2, 'cm²']);
+  for (const [m, n, h] of [[1, 6, 2], [3, 2, 8], [6, 1, 4]]) for (const q of [0, 1]) cases.push(['b5-ratio', { b5M: m, b5N: n, b5H: h, b5Q: q }, (q ? n : m) * h / 2, 'cm²']);
+  for (const [a, B, H] of [[2, 6, 3], [4, 10, 6], [6, 12, 7]]) for (const q of [0, 1, 2]) cases.push(['c1-trap', { c1A: a, c1B: B, c1H: H, c1Q: q, c1Mode: 1 - (q % 2) }, q === 0 ? a + B : q === 1 ? (a + B) * H / 2 : a * H / 2, q === 0 ? 'cm' : 'cm²']);
+  for (const [id, params, answer, unit] of cases) {
+    const scene = lab.go(id); Object.assign(lab.s, params);
+    lab.tab = 'problem'; const questionDrawing = lab.draw();
+    const Q = scene.ar.prob(scene.ar.model(lab.s), lab.s);
+    assert.equal(exactValue(Q.choices.find((choice) => choice.ok).t), answer, `${id}: independently calculated answer`);
+    lab.tab = 'review'; lab.s.step = 1;
+    const reviewDrawing = lab.draw(), steps = call(scene.steps, lab.s);
+    assert.deepEqual(reviewDrawing.paths, questionDrawing.paths, `${id}: review keeps the question diagram`);
+    assert.deepEqual(reviewDrawing.texts, questionDrawing.texts, `${id}: no unrelated height or inquiry labels`);
+    assert.equal(reviewDrawing.value.formula, null);
+    assert.ok(steps.at(-1).includes(`= ${lab.api.exactN(answer)}${unit}`), `${id}: final step answers the requested quantity (${answer}${unit}), got ${steps.at(-1)}`);
+    if (id === 'b5-ratio') {
+      assert.ok(steps.at(-1).includes(params.b5Q ? 'ADC' : 'ABD'));
+      assert.ok(questionDrawing.texts.includes(`${params.b5M}k`) && questionDrawing.texts.includes(`${params.b5N}k`), 'a ratio does not pretend to give lengths in cm');
+      assert.equal(steps.join(' ').includes(`h=${params.b5H}`), false, 'the problem never supplies a numeric height');
+    }
+    lab.s.step = steps.length;
+    assert.ok(call(scene.view, lab.s, lab).formula.includes(steps.at(-1)), 'final formula explains the current question');
+  }
+});
+
+await test('inquiry completion does not unlock independent area questions and each flow retains its progress', async () => {
+  const lab = await load();
+  for (const id of ['b3-rail', 'b5-ratio', 'c1-trap']) {
+    const scene = lab.go(id), inquirySteps = call(scene.steps, lab.s);
+    lab.tab = 'review'; lab.s.step = inquirySteps.length;
+    call(scene.view, lab.s, lab);
+    lab.tab = 'problem'; call(scene.view, lab.s, lab);
+    assert.equal(lab.s.step, 1, `${id}: new question starts at its first step`);
+    assert.equal(lab._answerOpen(), false, `${id}: inquiry completion is not question completion`);
+    lab.tab = 'review'; lab.s.step = 2; call(scene.view, lab.s, lab);
+    lab.tab = 'explore'; call(scene.view, lab.s, lab);
+    assert.deepEqual(call(scene.steps, lab.s), inquirySteps);
+    assert.equal(lab.s.step, inquirySteps.length, 'returning to inquiry preserves its progress');
+    lab.tab = 'problem'; call(scene.view, lab.s, lab);
+    assert.equal(lab.s.step, 2, 'returning to the same question preserves its progress');
+    const numeric = call(scene.controls, lab.s).find((key) => key !== scene.ar.anim?.key);
+    lab.s[numeric] += lab.params[numeric].step;
+    call(scene.view, lab.s, lab);
+    assert.equal(lab.s.step, 1, 'new givens reset question progress');
+    assert.equal(lab._answerOpen(), false);
+  }
+});
+
+await test('trapezoid wings keep the mobile question large and all given labels above its toolbar', async () => {
+  const lab = await load();
+  lab.go('b4-wing'); lab.tab = 'problem';
+  lab.board.resize(390, 310);
+  lab.board.setInsets({ top: 0, right: 0, bottom: 70, left: 0 });
+  const result = lab.draw(), g = lab.scene.ar.geo(lab.scene.ar.model(lab.s));
+  const vertices = [g.Av, g.Bv, g.Cv, g.Dv].map((p) => lab.board.toS(p));
+  assert.ok(Math.max(...vertices.map((p) => p.x)) - Math.min(...vertices.map((p) => p.x)) >= 190, 'default trapezoid is at least 190px wide in the actual mobile canvas');
+  for (const label of result.labels) assert.ok(label.x >= 20 && label.x <= 370 && label.y - label.size / 2 >= 0 && label.y + label.size / 2 <= 240, `${label.text} stays in the usable stage`);
 });

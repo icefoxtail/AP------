@@ -86,6 +86,19 @@
       `두 삼각형의 높이는 모두 ${M.H}cm예요. ① 아랫변을 밑변으로 하면 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.T1)}, ② 윗변을 밑변으로 하면 $\\frac{1}{2}$×${M.a}×${M.H}=${num(M.T2)}예요.`,
       `사다리꼴의 넓이는 두 삼각형의 합 ${num(M.T1)}+${num(M.T2)}=${num(M.S)}cm²예요. 식으로 묶으면 $\\frac{1}{2}$×(${M.a}+${M.B})×${M.H}예요.`
     ]),
+    problemSteps: (M) => M.q === 0 ? [
+      '같은 사다리꼴 한 개를 180° 돌려 다른 사다리꼴 옆에 맞붙여요.',
+      `평행사변형의 한 밑변에는 원래 아랫변 ${M.B}cm와 뒤집힌 윗변 ${M.a}cm가 이어져요.`,
+      `따라서 평행사변형의 밑변 = ${M.B}+${M.a} = ${M.a + M.B}cm예요. 높이는 밑변의 길이에 더하지 않아요.`
+    ] : M.q === 1 ? [
+      `같은 사다리꼴 두 개를 붙이면 밑변 ${M.a}+${M.B}=${M.a + M.B}cm, 높이 ${M.H}cm인 평행사변형이 돼요.`,
+      `사다리꼴 한 개는 이 평행사변형 넓이의 절반이에요.`,
+      `사다리꼴의 넓이 = (${M.a}+${M.B})×${M.H}÷2 = ${G.exactN(M.S)}cm²예요.`
+    ] : [
+      `구하는 부분은 △ACD예요. 밑변으로 윗변 AD=${M.a}cm를 골라요.`,
+      `AD와 BC가 평행하므로 점 C에서 AD까지의 높이는 사다리꼴의 높이 ${M.H}cm와 같아요.`,
+      `△ACD의 넓이 = ${M.a}×${M.H}÷2 = ${G.exactN(M.T2)}cm²예요.`
+    ],
     view: (M) => ({
       guide: M.mode ? '▶를 누르면 <b>초록 복사본</b>이 제자리에서 180° 돌아 붙어요. 칩으로 <b>삼각형 둘로 나누기</b> 방법도 살펴보세요.' : '▶를 누르면 <b>윗변 쪽 삼각형</b>이 가로로 떼어져요. 두 삼각형은 높이가 같아요. 칩으로 <b>돌려 붙이기</b> 방법도 살펴보세요.',
       readouts: [rd('윗변 · 아랫변', `${M.a} · ${M.B}`, 'sky'), rd('높이', mm(M.H), 'amber'), rd('넓이', `${num(M.S)}cm²`, 'green', `(${M.a}+${M.B}) × ${M.H} ÷ 2`)],
@@ -196,7 +209,9 @@
       const box = Object.fromEntries(Object.keys(fieldBox).map((key) => [key, fieldBox[key] + (partBox[key] - fieldBox[key]) * focusT]));
       // 첫 붙이기가 끝나면 원래 땅의 외곽은 물리고, 회전 중에 실제 조각 범위로 부드럽게 맞춥니다.
       // 초기 치수용 여백을 끝까지 예약하지 않아, 하단 도구가 있는 모바일에서도 결과를 크게 봅니다.
-      const initialPad = { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 }, packedPad = { b: narrow ? 82 : 78 - 20 * seg01(t, 0.4, 0.55), t: 22, l: 28, r: 28 }, padT = seg01(t, 0.02, 0.15);
+      // 가로 태블릿은 도구막대 높이를 보드가 예약하지 않습니다. 긴 하단 계산식이 그 위에 남도록 합니다.
+      const footerRoom = !narrow && b.W < 900 && b.insets.bottom < 40 ? 30 : 0;
+      const initialPad = { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 }, packedPad = { b: narrow ? 82 : 78 - 20 * seg01(t, 0.4, 0.55) + footerRoom, t: 22, l: 28, r: 28 }, padT = seg01(t, 0.02, 0.15);
       FIT(b, box, Object.fromEntries(Object.keys(initialPad).map((key) => [key, initialPad[key] + (packedPad[key] - initialPad[key]) * padT])));
       if (t < 0.4) poly(b, out(field), 'sky', 2.2, { dash: [7, 6], alpha: 0.45 * (1 - s1) });
       if (t < 0.4) {
