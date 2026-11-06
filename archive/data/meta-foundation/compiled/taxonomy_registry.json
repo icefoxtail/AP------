@@ -71,8 +71,8 @@
       "version": "1.0.1"
     }
   ],
-  "problemTypeCount": 424,
-  "templateCount": 978,
+  "problemTypeCount": 426,
+  "templateCount": 983,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -4774,6 +4774,30 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "canonicalLabelKo": "합의 법칙으로 경우의 수 나누어 세기",
+      "definition": "서로 겹치지 않는 여러 조건의 경우를 독립적으로 열거한 다음 합의 법칙으로 전체 경우의 수를 구하는 중등 유형.",
+      "aliases": [],
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043"
+      ],
+      "sourceUnits": [
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "META_BATCH_03_REASSIGN_20261106",
+          "examUid": "23_매산중_2학기_기말_중2_기출",
+          "questionOrdinals": [
+            15
+          ]
+        }
+      ]
+    },
+    {
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "canonicalLabelKo": "원주각·중심각과 원의 각 관계",
       "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
@@ -6164,6 +6188,42 @@
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
             "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
           }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "피타고라스 정리·역 및 도형 활용",
+      "definition": "직각삼각형에서 세 변 길이의 제곱 관계 또는 역을 이용하여 길이·직각 여부·관련 도형의 넓이를 구하는 유형. RHS/RHA 합동 유형과 구별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242",
+        "qid_v1_ad48d56e65cb85964c2a3a2d1514742e5448d514b4d7d023ae9606115e0da684",
+        "qid_v1_8a0068702a4af6330e9e273ad42ed036f83f0f668dcba055e9bcd6cfb72b50fd",
+        "qid_v1_b6ce198672dc125c871b98fb73ded547f807074e6fc9763c4ae4f52cabdbafc0",
+        "qid_v1_54b0a4ed33d7c6f5103ef3fe7f1b6f502d725848fa4e37b2b461875c6c73dd44",
+        "qid_v1_12113dfd5d30b16e9fd1d1aee2b5a69329e06d9c146900b2cd8a342a125273ac",
+        "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547"
+      ],
+      "sourceUnits": [
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "META_BATCH_03_REASSIGN_20261106",
+          "examUid": "23_매산중_2학기_기말_중2_기출",
+          "questionOrdinals": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            22
+          ]
         }
       ]
     },
@@ -24783,6 +24843,25 @@
       "supportingItemCount": 1
     },
     {
+      "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+      "canonicalLabelKo": "서로 배타적인 경우를 나누어 합산",
+      "definition": "주사위의 눈 합처럼 서로 겹치지 않는 조건별 순서쌍을 열거하고 경우의 수를 더한다.",
+      "aliases": [],
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "parentProblemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          15
+        ]
+      }
+    },
+    {
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "canonicalLabelKo": "원주각과 중심각",
@@ -26486,6 +26565,92 @@
           }
         }
       ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "canonicalLabelKo": "피타고라스 정리로 변 길이",
+      "definition": "직각삼각형의 두 변을 사용하여 나머지 한 변이나 높이를 제곱 관계로 구한다.",
+      "aliases": [],
+      "internalSkeleton": "문항 조건에서 직각삼각형 확인 → a²+b²=c² 또는 역 적용 → 목표 길이·넓이 확정",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ad48d56e65cb85964c2a3a2d1514742e5448d514b4d7d023ae9606115e0da684"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          9
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "canonicalLabelKo": "피타고라스 정리의 역으로 직각 판정",
+      "definition": "가장 긴 변의 제곱을 다른 두 변의 제곱의 합과 비교하여 직각삼각형 여부를 판정한다.",
+      "aliases": [],
+      "internalSkeleton": "문항 조건에서 직각삼각형 확인 → a²+b²=c² 또는 역 적용 → 목표 길이·넓이 확정",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          8
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "canonicalLabelKo": "피타고라스 넓이 관계의 활용",
+      "definition": "직각삼각형 세 변의 제곱 관계를 반원·정사각형 등 도형의 넓이 관계로 옮겨 계산한다.",
+      "aliases": [],
+      "internalSkeleton": "문항 조건에서 직각삼각형 확인 → a²+b²=c² 또는 역 적용 → 목표 길이·넓이 확정",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_8a0068702a4af6330e9e273ad42ed036f83f0f668dcba055e9bcd6cfb72b50fd",
+        "qid_v1_b6ce198672dc125c871b98fb73ded547f807074e6fc9763c4ae4f52cabdbafc0",
+        "qid_v1_54b0a4ed33d7c6f5103ef3fe7f1b6f502d725848fa4e37b2b461875c6c73dd44"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "canonicalLabelKo": "접기·입체도형과 피타고라스",
+      "definition": "접기 대칭이나 입체도형의 길이·겉넓이 계산에 직각삼각형의 제곱 관계를 적용한다.",
+      "aliases": [],
+      "internalSkeleton": "문항 조건에서 직각삼각형 확인 → a²+b²=c² 또는 역 적용 → 목표 길이·넓이 확정",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_12113dfd5d30b16e9fd1d1aee2b5a69329e06d9c146900b2cd8a342a125273ac",
+        "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          14,
+          22
+        ]
+      }
     },
     {
       "templateKey": "TPL_ABSOLUTE_VALUE_SIGN_EXTREMES_CORE",
