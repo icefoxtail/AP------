@@ -174,6 +174,9 @@ try {
         cases.push(c);
       }
       dest.targets = cases;
+      // A native-drag fixture promises a real draggable scene. A missing handle
+      // is a failed observation, never an empty 0/0 interaction pass.
+      const requiredNative = new Set(cases.filter(c => String(c.label || '').startsWith('native-drag-')).map(c => String(c.id)));
       const sceneIds = new Set(scenes.map(scene => scene.id));
       for (const c of cases) {
         if (!sceneIds.has(String(c.id))) report.failures.push({ unit, run: run.name, reason: 'unknown-target-scene', id: String(c.id), label: c.label });
@@ -236,7 +239,10 @@ try {
             await actualCanvas.scrollIntoViewIfNeeded(); await settle();
             const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
             const attempts = []; let passed = false;
-            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64]]) {
+            // Integer-snapped handles can require more than 64px to cross a
+            // half-step on a large board (sm4-conv quarters of AB). Keep the
+            // same native acquisition/state-change gate and try a longer drag.
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64],[128,0],[-128,0],[0,128],[0,-128]]) {
               const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
               if (!fresh) break;
               const rect = await actualCanvas.boundingBox();
@@ -252,6 +258,9 @@ try {
             }
             dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
             if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
+          } else if (requiredNative.has(scene.id)) {
+            dest.interactions.push({ id:scene.id, run:run.name, control:'pointer-drag', executed:false, stateChanged:false, pass:false, attempts:[], pointer:'mouse', reason:'required-handle-missing' });
+            report.failures.push({ unit, id:scene.id, run:run.name, reason:'required-native-drag-handle-missing' });
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {

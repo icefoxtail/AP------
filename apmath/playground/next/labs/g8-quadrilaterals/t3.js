@@ -409,7 +409,7 @@
     prob: (M, s) => {
       const pk = s.qcPk || (s.qcPk = { t: shuffle(MEM_T.map((_, i) => i), Math.random).slice(0, 4), f: shuffle(MEM_F.map((_, i) => i), Math.random).slice(0, 4), a: Math.floor(Math.random() * MEM_T.length), b: Math.floor(Math.random() * MEM_F.length) });
       if (M.K === 0) {
-        const items = [{ h: MEM_F[pk.b].h, ok: true }].concat(pk.t.map((i) => ({ h: MEM_T[i].h, ok: false, hint: '이 문장은 옳아요. 포함 관계 그림을 다시 보세요.' })));
+        const items = [{ h: MEM_F[pk.b].h, ok: true, hint: MEM_F[pk.b].hint }].concat(pk.t.map((i) => ({ h: MEM_T[i].h, ok: false, hint: '이 문장은 옳아요. 포함 관계 그림을 다시 보세요.' })));
         return { tag: '포함 관계', key: `i0_${pk.b}${pk.t.join('')}`, html: '다음 중 사각형 사이의 포함 관계로 옳지 <u>않은</u> 것은? (그림은 사각형 사이의 포함 관계예요.)', choices: mkTextChoices(items, s.qdOrd), wide: true };
       }
       const items = [{ h: MEM_T[pk.a].h, ok: true }].concat(pk.f.map((i) => ({ h: MEM_F[i].h, ok: false, hint: MEM_F[i].hint })));
