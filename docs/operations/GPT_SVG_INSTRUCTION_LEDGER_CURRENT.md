@@ -69,6 +69,8 @@
 
 | 2022 매산고 2학기 기말 고1 Q13 | 유리·무리 조각 역함수 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 제일고 2학기 기말 고1 Q10 | 감소함수 역함수 반례 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
@@ -83,3 +85,5 @@
 - 시각적 정돈: 식·정의역·치역과 좌표는 의미별로 가지런히 정렬하고, 곡선과 충분히 떨어뜨려 잘림·겹침과 모바일 가독성을 확인한다. 필요한 정보는 삭제하지 않는다.
 
 - 작업자는 유형별 결과를 문항별로 구분해 모아 제출한다. 같은 페이지나 브랜치에 동시 쓰기하지 않도록 제출 순서를 조율한다.
+
+- 새 제작은 시험지별 단일 담당을 우선한다. 기존에 나뉘어 진행 중인 문항은 격리 산출물을 보존하고, 같은 시험지 JS의 수정·통합은 한 담당자만 한다.
