@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { jo, DEG, PI, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, scene3, classify, ov, P, VIEW, mkChoices, mkText, rd, notes, LET, NUM } = G;
+  const { jo, DEG, PI, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, scene3, classify, ov, caption, P, VIEW, mkChoices, mkText, rd, notes, LET, NUM } = G;
 
   const PARAMS = {
     spFold: P('접기', 0, 1, 0.005, 0, { color: 'amber', hint: '막대를 끌거나 ▶를 눌러 전개도를 접어 보세요', format: (v) => (v < 0.01 ? '펼친 전개도' : v > 0.99 ? '다 접음' : Math.round(v * 100) + '%') }),
@@ -173,14 +173,14 @@
     order.forEach(({ i }) => {
       if (!fvis[i]) return;
       const col = o.faceColor ? o.faceColor(i) : null;
-      if (col) D.panel(faces[i], col.c, col.a, col.c, 2.4); else D.panel(faces[i], 'green', 0.09, 'ink', 1.4, { alpha: 0.5 });
+      if (col) D.panel(faces[i], col.c, col.a, col.c, 2.4); else D.panel(faces[i], 'sky', 0.09, 'sky', 1.4, { alpha: 0.5 });
     });
     // 모서리: 기준 모서리와의 관계로 색칠
     const sty = (e) => {
       const r = e.rel;
       if (r === 'ref') return { color: 'amber', width: 6.4, glow: true };
       if (st === 0) return { color: 'ink', width: 3 };
-      if (r === 'meet') return st === 4 || st === 1 ? { color: 'red', width: st === 1 ? 5 : 4 } : { color: 'red', width: 2, alpha: 0.42 };
+      if (r === 'meet') return st === 4 || st === 1 ? { color: 'rose', width: st === 1 ? 5 : 4 } : { color: 'rose', width: 2, alpha: 0.42 };
       if (r === 'par') return st === 4 || st === 2 ? { color: 'sky', width: st === 2 ? 5 : 4 } : st > 2 ? { color: 'sky', width: 2, alpha: 0.42 } : { color: 'ink', width: 3 };
       if (r === 'skew' || r === 'ext') return st === 4 || st === 3 ? { color: 'green', width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
       return { color: 'ink', width: 3 };
@@ -231,7 +231,7 @@
         if (C.txt && !C.problem) {
           const nm = M.c.g.skew.map((e) => e.name);
           const cap = C.review ? (st === 1 ? `접으면 만나는 모서리 ${M.c.nMeet}개 지우기` : st === 2 ? `평행한 모서리 ${M.c.nPar}개 지우기` : st === 3 ? (nm.length <= 5 ? `꼬인 위치: ${nm.join(', ')} → ${M.c.nSkew}개` : `남은 ${M.c.nSkew}개 = 꼬인 위치`) : '') : '';
-          if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? 'red' : st === 2 ? 'sky' : 'green', size: 17, weight: 800, align: 'center', baseline: 'middle' });
+          if (cap) caption(b, cap, { color: st === 1 ? 'rose' : st === 2 ? 'sky' : 'green' });
         }
         Dr.flush();
         if (C.tab === 'explore' && C.txt && !C.thumb) {
@@ -248,7 +248,7 @@
         const { ref, c } = M, r = ov(ref.name);
         return {
           guide: `${o.guide} <b>노란 손잡이</b>를 끌어 기준 모서리를 바꿔 보세요. 같은 문자는 접으면 한 점으로 모이는 꼭짓점이에요.`,
-          readouts: [rd('기준 모서리', ref.name, 'amber'), rd('만나는 모서리', `${c.nMeet + c.nExt}개`, 'red'), rd('평행한 모서리', `${c.nPar}개`, 'sky'), rd('꼬인 위치', `${c.nSkew}개`, 'green', `${c.total} − 1 − ${c.nMeet + c.nExt} − ${c.nPar}`)].concat(o.extraRead ? o.extraRead(M) : []),
+          readouts: [rd('기준 모서리', ref.name, 'amber'), rd('만나는 모서리', `${c.nMeet + c.nExt}개`, 'rose'), rd('평행한 모서리', `${c.nPar}개`, 'sky'), rd('꼬인 위치', `${c.nSkew}개`, 'green', `${c.total} − 1 − ${c.nMeet + c.nExt} − ${c.nPar}`)].concat(o.extraRead ? o.extraRead(M) : []),
           formula: `<p>(꼬인 위치의 개수) $=${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$ (개)</p>`,
           rule: '전개도를 접어 입체를 그린 뒤, 같은 문자를 찾아 위치 관계를 판별한다',
           notes: o.notes(M)
