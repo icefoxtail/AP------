@@ -342,6 +342,11 @@
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D) {
     const A = D.anim;
+    // Some questions have their own generated conditions. Their review must use
+    // those same conditions while the exploration keeps its adjustable example.
+    const modelFor = (s, review) => { const M = D.model(s); return review && D.reviewModel ? D.reviewModel(M, s) : M; };
+    const reviewSteps = (s) => (D.reviewSteps || D.steps)(modelFor(s, true), s);
+    const keyOf = (s, M = D.model(s)) => D.prob ? D.id + '|' + D.prob(M, s).key + '|' + (s.cnSeed || 0) : '';
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -357,7 +362,7 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      steps: (s) => reviewSteps(s).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -368,6 +373,7 @@
         D.init(s);
         s.cnSeed = 0; s.cnPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
+        s.cnQuestionKey = keyOf(s);
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
@@ -377,26 +383,32 @@
           if (s[A.key] >= 1) s.playing = false;
           again = true;
         } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
-          const tg = D.stepT(s.step || 0, D.model(s)), d = tg - s[A.key];
+          const tg = D.stepT(s.step || 0, modelFor(s, true)), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
         return again;
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (lab && lab.s === s && document.body) document.body.dataset.cnScene = D.id;
+        const key = keyOf(s);
+        if (s.cnQuestionKey !== key) { s.cnQuestionKey = key; s.cnPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);
-        const M = D.model(s);
+        // Review selects a complete construction stage; exploration keeps continuous playback.
+        if (C.review && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step, modelFor(s, true)), 0, 1); s.playing = false; }
+        const M = modelFor(s, C.review);
         const v = D.view(M, C, s) || {};
+        if (C.review && C.step < reviewSteps(s).length && v.formula) v.formula = '';
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') { const n = reviewSteps(s).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        const M = modelFor(s, C.review);
+        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step, M), 0, 1) : 1)) : 1;
         D.draw(b, s, M, C);
       }
     };

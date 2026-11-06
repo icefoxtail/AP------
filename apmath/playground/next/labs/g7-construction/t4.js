@@ -13,6 +13,11 @@
   const pctF = (v) => Math.round(v * 100) + '%';
   const lenF = (v) => fmtN(v) + ' cm';
   const degF = G.degF;
+  const ratioText = (n, d) => {
+    const gcd = (a, b) => b ? gcd(b, a % b) : a;
+    const g = gcd(n, d);
+    return d / g === 1 ? String(n / g) : `${n / g}/${d / g}`;
+  };
   const VCOL = ['sky', 'rose', 'green']; // 꼭짓점 A·D / B·E / C·F 의 색
 
   const PARAMS = {
@@ -58,8 +63,9 @@
     init: (s) => { s.cnPt = 0; s.cnPmode = 'rot'; s.cnCx = 2.4; s.cnCy = 3.6; s.cnPk = { q: 0, p: [1, 2, 0], k: 0 }; },
     reroll: (s) => { const perms = [[1, 2, 0], [2, 0, 1], [1, 0, 2], [2, 1, 0], [0, 2, 1]]; s.cnPk = { q: rint(0, 2), p: pick(perms, null), k: ((s.cnPk && s.cnPk.k) || 0) + 1, kind: rint(0, 2) }; },
     model: (s) => ({ Cx: s.cnCx, Cy: s.cnCy, mode: s.cnPmode || 'rot', pk: s.cnPk || { q: 0, p: [1, 2, 0], k: 0 } }),
+    reviewModel: (M) => ({ ...M, Cx: 2.4, Cy: 3.6, mode: 'rot', imageNames: M.pk.p.map((i) => 'DEF'[i]).join('') }),
     draw(b, s, M, C) {
-      const Tr = triOf(M.Cx, M.Cy);
+      const Tr = triOf(M.Cx, M.Cy), imageNames = M.imageNames || 'DEF';
       if (C.problem) { drawCorrProblem(b, M); return; }
       const mode = M.mode, w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3.2;
       const bb = pairBox(Tr, mode, X0);
@@ -79,22 +85,27 @@
       Tr.forEach((p, i) => { b.point(p, { color: col(VCOL[i]), r: 5.2 }); });
       img.forEach((p, i) => { b.point(p, { color: col(VCOL[i]), r: 5.2 }); });
       if (C.txt) {
-        if (done) { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i] + '=' + 'DEF'[i], { size: 15, gap: 14, color: st >= 2 ? VCOL[i] : 'ink' })); }
-        else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); img.forEach((p, i) => tagOut(b, p, cB, 'DEF'[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); }
-        const cap = done ? '꼭 포개어져요 → 합동 (△ABC ≡ △DEF)' : t <= 0 ? '▶를 눌러 오른쪽 삼각형을 가로로 밀어 포개 보세요' : mode === 'slide' ? '가로로 밀어 포개요' : t < 0.5 ? (mode === 'rot' ? '제자리에서 돌려요' : '제자리에서 뒤집어요') : '가로로 밀어 포개요';
+        if (done) { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i] + '=' + imageNames[i], { size: 15, gap: 14, color: st >= 2 ? VCOL[i] : 'ink' })); }
+        else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); img.forEach((p, i) => tagOut(b, p, cB, imageNames[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); }
+        const cap = done ? `꼭 포개어져요 → 합동 (△ABC ≡ △${imageNames})`
+          : C.review ? (st >= 3 ? '같은 표시의 변·각이 서로 대응해요.' : st >= 2 ? '같은 색의 점은 서로 대응해요.' : '어떤 점·변·각이 대응할지 살펴보세요.')
+            : t <= 0 ? '▶를 눌러 오른쪽 삼각형을 가로로 밀어 포개 보세요' : mode === 'slide' ? '가로로 밀어 포개요' : t < 0.5 ? (mode === 'rot' ? '제자리에서 돌려요' : '제자리에서 뒤집어요') : '가로로 밀어 포개요';
         T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 22, size: b.W < 560 ? 14 : 17, color: done ? 'green' : 'amber' });
       }
       if (!C.review && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(모양 바꾸기)', drag: (w2) => { s.cnCx = clamp(w2.x, 0.8, 5.2); s.cnCy = clamp(-w2.y, 2.6, 5.4); } });
     },
     stepT: (n) => (n === 1 ? 1 : 0),
-    steps: () => [
-      '한 도형을 움직여(밀기·돌리기·뒤집기) 다른 도형에 꼭 포갤 수 있으면 두 도형은 합동이에요.',
-      '포개었을 때 겹치는 꼭짓점을 대응점이라고 해요. 점 A와 D, 점 B와 E, 점 C와 F가 대응점이에요.',
-      '겹치는 변을 대응변, 겹치는 각을 대응각이라고 해요. 대응변의 길이는 같고 대응각의 크기도 같아요. AB=DE, BC=EF, CA=FD, ∠A=∠D, ∠B=∠E, ∠C=∠F'
-    ],
+    steps: (M) => {
+      const im = M.imageNames || M.pk.p.map((i) => 'DEF'[i]).join('');
+      return [
+        `현재 문제의 합동식은 △ABC ≡ △${im}예요. 같은 순서의 꼭짓점이 서로 대응해요.`,
+        `포갰을 때 점 A와 ${im[0]}, 점 B와 ${im[1]}, 점 C와 ${im[2]}가 겹쳐요. 이것이 대응점이에요.`,
+        `대응변은 AB=${im[0]}${im[1]}, BC=${im[1]}${im[2]}, CA=${im[2]}${im[0]}이고, 대응각은 ∠A=∠${im[0]}, ∠B=∠${im[1]}, ∠C=∠${im[2]}예요.`
+      ];
+    },
     view: (M) => ({
       guide: '<b>포개는 방법</b>을 고르고 ▶를 눌러 보세요. 오른쪽 삼각형이 <b>제자리에서 돌거나 뒤집힌 뒤 가로로</b> 와서 포개져요. <b>노란 점</b> C를 끌어 삼각형의 모양도 바꿔 볼 수 있어요.',
-      readouts: [rd('대응점', 'A↔D · B↔E · C↔F', 'sky', '', null, true), rd('대응변', 'AB=DE · BC=EF · CA=FD', 'amber', '길이가 같아요', null, true), rd('대응각', '∠A=∠D · ∠B=∠E · ∠C=∠F', 'green', '크기가 같아요', null, true)],
+      readouts: [rd('대응점', ['A', 'B', 'C'].map((p, i) => `${p}↔${(M.imageNames || 'DEF')[i]}`).join(' · '), 'sky', '', null, true), rd('대응변', ['AB', 'BC', 'CA'].map((p, i) => `${p}=${(M.imageNames || 'DEF')[i]}${(M.imageNames || 'DEF')[(i + 1) % 3]}`).join(' · '), 'amber', '길이가 같아요', null, true), rd('대응각', ['A', 'B', 'C'].map((p, i) => `∠${p}=∠${(M.imageNames || 'DEF')[i]}`).join(' · '), 'green', '크기가 같아요', null, true)],
       rule: '합동인 두 도형은 대응변의 길이와 대응각의 크기가 각각 같다',
       notes: notes('합동은 <b>모양과 크기가 모두 같아야</b> 해요. 모양만 같으면 합동이 아니에요(닮음).', '뒤집어서 포개어지는 도형도 합동이에요.')
     }),
@@ -160,8 +171,13 @@
     init: (s) => { s.cnOmode = 'order'; s.cnOa = 6; s.cnOb = 7; s.cnOc = 8; s.cnOs = 3; s.cnOpick = null; s.cnRw = 6; s.cnRh = 4; s.cnRw2 = 8; s.cnPk = { s: 0, k: 0, f: 0, tt: [0, 1, 2, 3] }; },
     reroll: (s) => { s.cnOs = pick([0, 1, 2, 3, 4, 5], s.cnOs); s.cnOpick = null; s.cnPk = { k: ((s.cnPk && s.cnPk.k) || 0) + 1, t: [0, 1, 2, 3, 4, 5, 6, 7], f: rint(0, 6), tt: shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8], Math.random).slice(0, 4), sg: pick([0, 1, 2, 3, 4, 5], null) }; },
     model: (s) => ({ mode: s.cnOmode || 'order', g: ordGeo(s), pick: s.cnOpick, Rw: s.cnRw, Rh: s.cnRh, Rw2: s.cnRw2, pk: s.cnPk || { k: 0 } }),
+    reviewSteps: (M) => {
+      const q = ordScene.prob(M), wrong = q.choices.find((c) => c.ok), f = (M.pk.f || 0) % 7;
+      const why = ['넓이가 같아도 모양이 다를 수 있어요.', '둘레가 같아도 변의 길이와 모양이 다를 수 있어요.', '세 각만 같으면 크기가 달라도 되므로 합동이라고 할 수 없어요.', '모양뿐 아니라 크기도 같아야 합동이에요.', '한 각만 같다는 조건으로는 변의 길이와 나머지 각을 정할 수 없어요.', 'AB의 대응변은 DE예요. EF는 BC의 대응변이에요.', 'A의 대응점은 D이므로 ∠A의 대응각은 ∠D예요.'];
+      return ['이 문제에서는 A↔D, B↔E, C↔F예요. 합동 기호의 순서대로 대응점을 확인해요.', '합동이면 대응변의 길이와 대응각의 크기가 각각 같고, 모양·크기·넓이도 같아요.', `옳지 않은 설명은 ${wrong.h}입니다. ${why[f]}`];
+    },
     draw(b, s, M, C) {
-      if (C.problem) { drawOrderProblem(b, M); return; }
+      if (C.problem || C.review) { drawOrderProblem(b, M, C.review ? C.step : 0); return; }
       const mode = C.review ? (C.step >= 3 ? 'area' : 'order') : M.mode;
       if (mode === 'area') {
         const w1 = M.Rw, h1 = M.Rh, area = w1 * h1, w2 = M.Rw2, h2 = area / w2, same = w2 === w1 || w2 === h1;
@@ -171,7 +187,7 @@
         fillPoly(b, r1, 'sky', 0.14); poly(b, r1, 'ink', 3.4); fillPoly(b, r2, same ? 'green' : 'rose', 0.14); poly(b, r2, 'ink', 3.4);
         T(b, pt(w1 / 2, -h1 / 2), `넓이 ${area}`, { size: 17, color: 'sky' }); T(b, pt(X + w2 / 2, -h2 / 2), `넓이 ${fmtN(area)}`, { size: 17, color: same ? 'green' : 'rose' });
         T(b, pt(w1 / 2, 0), `${w1}`, { dy: 18, size: 16, color: 'sky' }); T(b, pt(0, -h1 / 2), `${h1}`, { dx: -14, size: 16, color: 'sky' });
-        T(b, pt(X + w2 / 2, 0), `${w2}`, { dy: 18, size: 16, color: same ? 'green' : 'rose' }); T(b, pt(X + w2, -h2 / 2), `${fmtN(h2)}`, { dx: 16, size: 16, color: same ? 'green' : 'rose' });
+        T(b, pt(X + w2 / 2, 0), `${w2}`, { dy: 18, size: 16, color: same ? 'green' : 'rose' }); T(b, pt(X + w2, -h2 / 2), ratioText(area, w2), { dx: 16, size: 16, color: same ? 'green' : 'rose' });
         if (C.txt) T(b, pt((X + w2 + 0) / 2, 0), same ? '넓이도 같고 모양·크기도 같아서 합동이에요 ✓' : '넓이는 같지만 합동이 아니에요 ✗ (모양이 달라요)', { dy: 46, size: b.W < 560 ? 14 : 17, color: same ? 'green' : 'rose' });
         return;
       }
@@ -231,10 +247,11 @@
       return { tag: '합동의 성질 · 옳지 않은 것', key, stem: '다음 중 옳지 않은 것은? (△ABC와 △DEF는 그림과 같이 꼭짓점 A, B, C가 각각 D, E, F에 대응한다.)', choices: mkTextChoices(items, key), wide: true };
     }
   };
-  function drawOrderProblem(b, M) {
+  function drawOrderProblem(b, M, step = 0) {
     const Tr = triSSS(6, 7, 8), img = imageAt(Tr, 'rot', 0, 12), cA = centroid(Tr), cB = centroid(img), bb = unionBox(bboxOf(Tr, 0.4), bboxOf(img, 0.4));
     fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 }, { t: 40, b: 44 });
     fillPoly(b, Tr, 'sky', 0.1); poly(b, Tr, 'ink', 3.4); fillPoly(b, img, 'sky', 0.1); poly(b, img, 'ink', 3.4);
+    if (step >= 2) { drawTri(b, Tr, { color: null, ticks: edgeTicks, angs: angMarks() }); drawTri(b, img, { color: null, ticks: edgeTicks, angs: angMarks() }); }
     Tr.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cA, 'ABC'[i], { size: 17 }); });
     img.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cB, 'DEF'[i], { size: 17 }); });
   }
@@ -256,10 +273,19 @@
       s.cnPk = pk;
     },
     model: (s) => ({ mode: s.cnQmode || 'side', a: s.cnQa, b: s.cnQb, c: s.cnQc, A: s.cnQA, B: s.cnQB, pk: s.cnPk || { kind: 0, x: 4, k: 2, m: 1, n: 9, b: 6, c: 7 } }),
+    reviewModel: (M) => ({ ...M, mode: M.pk.kind ? 'ang' : 'side', a: M.pk.n || M.a, b: M.pk.b || M.b, c: M.pk.c || M.c, A: M.pk.A || 60, B: M.pk.r || 60 }),
+    reviewSteps: (M) => {
+      const p = M.pk, side = !p.kind, a = side ? p.k : p.p, c = side ? p.m : p.q, n = side ? p.n : p.r, ex = `${a}x${c >= 0 ? '+' : '−'}${Math.abs(c)}`;
+      return [
+        `△ABC ≡ △DEF이므로 ${side ? '대응변 BC와 EF의 길이' : '대응각 ∠B와 ∠E의 크기'}가 같아요.`,
+        `문제의 식을 대입하면 ${ex} = ${n}이에요. 상수항을 옮기면 ${a}x = ${n} − (${c}) = ${n - c}예요.`,
+        `양변을 ${a}로 나누면 x = ${n - c} ÷ ${a} = ${p.x}예요. 대입해 보면 ${ex.replace('x', `×${p.x}`)} = ${n}으로 같아요.`
+      ];
+    },
     draw(b, s, M, C) {
-      const mode = C.review ? (C.step >= 3 ? 'ang' : 'side') : M.mode;
+      const solving = C.problem || C.review, mode = C.review ? (M.pk.kind ? 'ang' : 'side') : M.mode;
       let Tr;
-      if (C.problem) {
+      if (solving) {
         const pk = M.pk;
         Tr = (pk.kind || 0) === 0 ? triSSS(pk.n, pk.b || 6, pk.c || 7) : triASA(6, pk.A || 60, pk.r || 60);
       } else Tr = mode === 'side' ? triSSS(M.a, M.b, M.c) : triASA(6, M.A, M.B);
@@ -269,15 +295,15 @@
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.6 }, { t: 40, b: 58 });
       const img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999, cA = centroid(Tr), cB = centroid(img), st = C.review ? C.step : 3;
       fillPoly(b, Tr, 'sky', 0.1); poly(b, Tr, 'ink', 3.4); fillPoly(b, img, 'green', 0.1); poly(b, img, 'ink', 3.4);
-      const sideNum = C.problem ? null : mode === 'side' ? { c: M.c, a: M.a, b: M.b } : null;
-      const angNum = C.problem ? null : mode === 'ang' ? { A: M.A, B: M.B, C: 180 - M.A - M.B } : null;
-      const showTick = !C.problem && st >= 2, showRing = !C.problem && st >= 3;
+      const sideNum = solving ? null : mode === 'side' ? { c: M.c, a: M.a, b: M.b } : null;
+      const angNum = solving ? null : mode === 'ang' ? { A: M.A, B: M.B, C: 180 - M.A - M.B } : null;
+      const showTick = !C.problem && st >= 2, showRing = !solving && st >= 3;
       const S = [[0, 1, 'c'], [1, 2, 'a'], [2, 0, 'b']];
       if (!C.problem && (mode === 'side' ? st >= 2 : true)) {
         S.forEach(([i, j, k]) => { if (sideNum) { sideTag(b, Tr[i], Tr[j], cA, `${sideNum[k]}`, { size: 16, color: 'sky' }); if (!done) sideTag(b, img[i], img[j], cB, `${sideNum[k]}`, { size: 16, color: 'sky' }); } });
       }
       if (showTick) S.forEach(([i, j, k], idx) => { tick(b, Tr[i], Tr[j], idx + 1, 'amber'); tick(b, img[i], img[j], idx + 1, 'amber'); });
-      if (!C.problem && (mode === 'ang' ? st >= 2 : true)) {
+      if (!solving && (mode === 'ang' ? st >= 2 : true)) {
         [0, 1, 2].forEach((i) => {
           if (!(showRing || mode === 'ang')) return;
           const k = 'ABC'[i], v = Tr[i], q1 = Tr[(i + 1) % 3], q2 = Tr[(i + 2) % 3], w = img[i], r1 = img[(i + 1) % 3], r2 = img[(i + 2) % 3];
@@ -285,10 +311,10 @@
           ang(b, w, r1, r2, { color: VCOL[i], rings: i + 1, label: angNum && !done ? dg(angNum[k]) : '', r: 24 });
         });
       }
-      if (C.problem) drawProblemLabels(b, M, Tr, img, cA, cB);
+      if (solving) drawProblemLabels(b, M, Tr, img, cA, cB);
       Tr.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cA, 'ABC'[i], { size: 17 }); });
       img.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (!done) tagOut(b, p, cB, 'DEF'[i], { size: 17 }); });
-      if (C.txt && !C.problem) T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), done ? '포개어져요 → 대응하는 값이 모두 같아요' : mode === 'side' ? '대응변: AB=DE, BC=EF, CA=FD (길이가 같아요)' : '대응각: ∠A=∠D, ∠B=∠E, ∠C=∠F (크기가 같아요)', { dy: 24, size: b.W < 560 ? 13 : 16, color: 'amber' });
+      if (C.txt && !C.problem) T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), C.review && st >= 3 ? `대응하는 값이 같으므로 x = ${M.pk.x}` : done ? '포개어져요 → 대응하는 값이 모두 같아요' : mode === 'side' ? '대응변: AB=DE, BC=EF, CA=FD (길이가 같아요)' : '대응각: ∠A=∠D, ∠B=∠E, ∠C=∠F (크기가 같아요)', { dy: 24, size: b.W < 560 ? 13 : 16, color: 'amber' });
     },
     stepT: () => 0,
     steps: (M) => [
@@ -296,12 +322,12 @@
       `대응변의 길이는 같아요. $\\overline{AB}=\\overline{DE}=${M.c}$, $\\overline{BC}=\\overline{EF}=${M.a}$, $\\overline{CA}=\\overline{FD}=${M.b}$ (cm)`,
       `대응각의 크기도 같아요. $\\angle A=\\angle D=${M.A}^{\\circ}$, $\\angle B=\\angle E=${M.B}^{\\circ}$, $\\angle C=\\angle F=${180 - M.A - M.B}^{\\circ}$ (삼각형의 세 내각의 합 $180^{\\circ}$)`
     ],
-    view: (M) => {
+    view: (M, C) => {
       const side = M.mode === 'side';
       return {
         guide: `<b>살펴볼 것</b>을 골라 막대로 값을 바꿔 보세요. 삼각형 ABC와 DEF는 합동이라서 대응하는 ${side ? '변의 길이' : '각의 크기'}가 늘 같아요. ▶를 누르면 오른쪽 삼각형이 제자리에서 돌고 가로로 와서 포개져요.`,
         readouts: side ? [rd('AB = DE', `${M.c} cm`, 'amber'), rd('BC = EF', `${M.a} cm`, 'sky'), rd('CA = FD', `${M.b} cm`, 'green')] : [rd('∠A = ∠D', dg(M.A), 'sky'), rd('∠B = ∠E', dg(M.B), 'rose'), rd('∠C = ∠F', dg(180 - M.A - M.B), 'green', `180° − ${M.A + M.B}°`)],
-        formula: side ? `<p>$\\overline{AB}=\\overline{DE}=${M.c}$, $\\overline{BC}=\\overline{EF}=${M.a}$, $\\overline{CA}=\\overline{FD}=${M.b}$</p>` : `<p>$\\angle A=\\angle D=${M.A}^{\\circ}$, $\\angle B=\\angle E=${M.B}^{\\circ}$, $\\angle C=\\angle F=${180 - M.A - M.B}^{\\circ}$</p>`,
+        formula: C.review ? `<p>${M.pk.kind ? '∠B=∠E' : 'BC=EF'}이므로 $${M.pk.kind ? M.pk.p : M.pk.k}x${(M.pk.kind ? M.pk.q : M.pk.m) >= 0 ? '+' : '-'}${Math.abs(M.pk.kind ? M.pk.q : M.pk.m)}=${M.pk.kind ? M.pk.r : M.pk.n}$ → $x=${M.pk.x}$</p>` : side ? `<p>$\\overline{AB}=\\overline{DE}=${M.c}$, $\\overline{BC}=\\overline{EF}=${M.a}$, $\\overline{CA}=\\overline{FD}=${M.b}$</p>` : `<p>$\\angle A=\\angle D=${M.A}^{\\circ}$, $\\angle B=\\angle E=${M.B}^{\\circ}$, $\\angle C=\\angle F=${180 - M.A - M.B}^{\\circ}$</p>`,
         rule: '합동인 두 도형에서 대응변의 길이는 같고, 대응각의 크기는 같다',
         notes: notes('같은 알파벳 위치가 아니라 <b>합동 기호의 순서</b>가 대응을 정해요.', '대응변을 쓸 때는 대응점끼리 짝지어 써요. 예: $\\overline{BC}$의 대응변은 $\\overline{EF}$.')
       };

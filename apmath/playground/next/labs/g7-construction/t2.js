@@ -37,10 +37,10 @@
   function hinge(b, items, tt, o = {}) {
     const srt = items.slice().sort((x, y) => x.v - y.v), p = srt[0], q = srt[1], Lb = srt[2];
     const sc = o.sc || 1, ox = o.ox || 0, oy = o.oy || 0;
-    const ok = Lb.v < p.v + q.v;
+    const ok = Lb.v < p.v + q.v, flat = Lb.v === p.v + q.v;
     const A = pt(ox, oy), B = pt(ox + Lb.v * sc, oy);
-    const al = ok ? Math.acos(clamp((p.v * p.v + Lb.v * Lb.v - q.v * q.v) / (2 * p.v * Lb.v), -1, 1)) / DEG : 38;
-    const be = ok ? Math.acos(clamp((q.v * q.v + Lb.v * Lb.v - p.v * p.v) / (2 * q.v * Lb.v), -1, 1)) / DEG : 38;
+    const al = ok ? Math.acos(clamp((p.v * p.v + Lb.v * Lb.v - q.v * q.v) / (2 * p.v * Lb.v), -1, 1)) / DEG : flat ? 0 : 38;
+    const be = ok ? Math.acos(clamp((q.v * q.v + Lb.v * Lb.v - p.v * p.v) / (2 * q.v * Lb.v), -1, 1)) / DEG : flat ? 0 : 38;
     const tp = polar(A, p.v * sc, -al * tt), tq = polar(B, q.v * sc, -180 + be * tt);
     const w = o.w || 7;
     line(b, A, B, Lb.c || 'amber', w, { alpha: 0.95 });
@@ -59,7 +59,7 @@
         sideTag(b, A, tp, cen, lab(p), { color: p.c || 'sky', size: sz, gap: 12 });
         sideTag(b, B, tq, cen, lab(q), { color: q.c || 'green', size: sz, gap: 12 });
       }
-      T(b, mid(A, B), lab(Lb), { dy: 18, size: sz, color: Lb.c || 'amber' });
+      T(b, mid(A, B), lab(Lb), { dy: o.baseDy == null ? 18 : o.baseDy, size: sz, color: Lb.c || 'amber' });
     }
     return { p, q, L: Lb, ok, A, B, tp, tq };
   }
@@ -78,15 +78,30 @@
       const srt = it.slice().sort((x, y) => x.v - y.v), L = srt[2].v, sum = srt[0].v + srt[1].v;
       return { it, srt, L, sum, ok: L < sum, pk: s.cnPk || { a: 5, b: 7, kind: 0 } };
     },
+    reviewModel: (M) => {
+      const { a, b } = M.pk, x = parseFloat(sticks.prob(M).choices.find((c) => c.ok).p);
+      const it = [{ n: 'a', v: a, c: 'sky' }, { n: 'b', v: b, c: 'green' }, { n: 'c', v: x, c: 'amber' }], srt = it.slice().sort((u, v) => u.v - v.v);
+      const L = srt[2].v, sum = srt[0].v + srt[1].v;
+      return { ...M, it, srt, L, sum, ok: L < sum };
+    },
+    reviewSteps: (M) => {
+      const { a, b, kind } = M.pk, lo = Math.abs(a - b), hi = a + b, q = sticks.prob(M), correct = q.choices.find((c) => c.ok).p;
+      return [
+        `주어진 두 막대는 ${a} cm, ${b} cm예요. 세 번째 막대의 길이를 x cm라 해요.`,
+        `삼각형이 만들어질 조건은 두 변의 차보다 크고 합보다 작은 것: ${lo} < x < ${hi}예요. 양 끝값은 포함하지 않아요.`,
+        `보기의 길이를 이 범위와 비교하면 삼각형을 만들 수 ${kind === 0 ? '없는' : '있는'} 것은 ${correct}예요. ${q.choices.map((c) => `${c.p}: ${parseFloat(c.p) > lo && parseFloat(c.p) < hi ? '가능' : '불가능'}`).join(' · ')}`
+      ];
+    },
     draw(b, s, M, C) {
       const { L, sum, ok } = M;
-      if (C.problem) { drawStickProblem(b, M); return; }
-      const cx = L / 2;
-      fit(b, { x0: cx - 6.6, x1: cx + 6.6, y0: -6.1, y1: 3.4 }, { t: 34, b: 34 });
+      if (C.problem || (C.review && C.step < 3)) { drawStickProblem(b, M); return; }
+      const cx = L / 2, tri = ok ? triSSS(M.srt[0].v, M.srt[1].v, L) : null;
+      const top = Math.min(-6.1, tri ? tri[2].y - 0.8 : -M.srt[1].v * Math.sin(38 * DEG) - 0.8);
+      fit(b, { x0: Math.min(cx - 6.6, -0.7), x1: Math.max(cx + 6.6, L + 0.7, sum + 0.7), y0: top, y1: 3.4 }, { t: 34, b: 34 });
       const tt = C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       // 밑변 강조(1단계) 후 경첩
       const items = M.srt.map((x) => ({ ...x, c: x === M.srt[2] ? 'amber' : x.c }));
-      const h = hinge(b, items, C.review ? (C.step >= 3 ? 1 : 0.0) : tt, { nums: true, name: true });
+      const h = hinge(b, items, C.review ? (C.step >= 3 ? 1 : 0.0) : tt, { nums: true, name: true, baseDy: -18 });
       // 길이 비교 줄 (작은 두 막대를 이어 붙이기)
       const y0 = 1.7, p = M.srt[0], q = M.srt[1];
       if (!C.review || C.step >= 2) {
@@ -97,8 +112,8 @@
         T(b, pt(sum / 2, y0), `나머지 두 막대의 합 = ${fmtN(p.v)}+${fmtN(q.v)} = ${fmtN(sum)}`, { dy: 24, size: b.W < 560 ? 14 : 16, color: ok ? 'green' : 'rose' });
         T(b, pt(sum / 2, y0), `가장 긴 막대 = ${fmtN(L)}  ${ok ? '<' : '≥'}  ${fmtN(sum)}`, { dy: 48, size: b.W < 560 ? 14 : 16, color: ok ? 'green' : 'rose' });
       }
-      if (C.txt && (!C.review || C.step >= 3)) T(b, pt(cx, -6.1), ok ? verdictText(true) + ' ✓' : verdictText(false) + ' ✗', { dy: 4, size: 18, color: ok ? 'green' : 'rose' });
-      else if (C.txt && C.review && C.step === 1) T(b, pt(cx, -6.1), `가장 긴 막대: ${M.srt[2].n} = ${fmtN(L)}`, { dy: 4, size: 18, color: 'amber' });
+      if (C.txt && (!C.review || C.step >= 3)) T(b, pt(cx, top), ok ? verdictText(true) + ' ✓' : verdictText(false) + ' ✗', { dy: 4, size: 18, color: ok ? 'green' : 'rose' });
+      else if (C.txt && C.review && C.step === 1) T(b, pt(cx, top), `가장 긴 막대: ${M.srt[2].n} = ${fmtN(L)}`, { dy: 4, size: 18, color: 'amber' });
     },
     stepT: (n) => (n >= 3 ? 1 : 0),
     steps: (M) => [
@@ -158,11 +173,15 @@
     init: (s) => { s.cnXa = 7; s.cnXb = 4; s.cnXx = 6; s.cnPk = { a: 3, b: 7, kind: 0 }; },
     reroll: (s) => { s.cnPk = { a: rint(3, 9), b: rint(3, 9), kind: ((s.cnPk && s.cnPk.kind) + 1) % 3 }; if (s.cnPk.a === s.cnPk.b) s.cnPk.b += 1; },
     model: (s) => { const a = s.cnXa, b2 = s.cnXb, r = xr(a, b2), x = s.cnXx; return { a, b: b2, ...r, x, ok: x > r.lo && x < r.hi, cnt: r.hi - r.lo - 1, pk: s.cnPk || { a: 3, b: 7, kind: 0 } }; },
+    reviewModel: (M) => { const { a, b } = M.pk, r = xr(a, b), x = clamp(M.x, r.lo + 1, r.hi - 1); return { ...M, a, b, ...r, x, cnt: r.hi - r.lo - 1, ok: true }; },
     draw(b, s, M, C) {
       if (C.problem) { drawXProblem(b, M); return; }
-      const { a, b: b2, lo, hi, mx, mn, x } = M, span = hi + 2;
+      const { a, b: b2, lo, hi, mx, mn, x } = M, span = Math.max(hi + 2, x + 1);
       fit(b, { x0: -1, x1: span + 0.6, y0: -6.2, y1: 1.6 }, { t: 24, b: 40 });
-      const ts = tickStep(b, span), st = C.review ? C.step : 3, rows = [[-4.9, 'sky'], [-3.3, 'rose'], [-1.7, 'green']];
+      // A long number line must not compress the row labels onto the preceding bar.
+      const rowGap = Math.max(1.6, 40 / b.k), rows = [-1.7 - 2 * rowGap, -1.7 - rowGap, -1.7];
+      if (rowGap > 1.6) fit(b, { x0: -1, x1: span + 0.6, y0: rows[0] - 1.3, y1: 1.6 }, { t: 24, b: 40 });
+      const ts = tickStep(b, span), st = C.review ? C.step : 3;
       // 수직선
       line(b, pt(-0.6, 0), pt(span + 0.2, 0), 'ink', 2.6);
       for (let v = 0; v <= span; v += ts) { line(b, pt(v, -0.12), pt(v, 0.12), 'ink', 2); T(b, pt(v, 0), String(v), { dy: 18, size: 13, color: 'muted' }); }
@@ -174,27 +193,27 @@
       const sz = b.W < 560 ? 13 : 15;
       // 경우 ① : x 가 가장 긴 변
       if (st >= 1) {
-        bar(-4.9, mx, hi, 'sky', false, true, st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
-        bar(-3.3, lo, mx, 'rose', true, true, st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
+        bar(rows[0], mx, hi, 'sky', false, true, st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
+        bar(rows[1], lo, mx, 'rose', true, true, st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
       }
       if (st >= 3) {
-        bar(-1.7, lo, hi, 'green', true, true, `x의 범위: ${lo} < x < ${hi}`, '');
-        for (let v = lo + 1; v < hi; v++) b.point(pt(v, -1.7), { color: 'ink', r: 2.6 });
+        bar(rows[2], lo, hi, 'green', true, true, `x의 범위: ${lo} < x < ${hi}`, '');
+        for (let v = lo + 1; v < hi; v++) b.point(pt(v, rows[2]), { color: 'ink', r: 2.6 });
       }
       // 점 x
       if (!C.review) {
         const col = M.ok ? 'green' : 'rose';
-        line(b, pt(x, -5.4), pt(x, 0), col, 1.8, { dash: [4, 5] });
+        line(b, pt(x, rows[2]), pt(x, 0), col, 1.8, { dash: [4, 5] });
         b.handle('x', pt(x, 0), { color: 'rose', r: 8, ariaLabel: 'x 끌기', drag: (w) => { s.cnXx = clamp(Math.round(w.x), 1, 20); } });
         if (C.txt) T(b, pt((span - 1) / 2, 0), M.ok ? `x = ${x} 이면 삼각형이 만들어져요 ✓` : `x = ${x} 이면 삼각형이 안 만들어져요 ✗`, { dy: 44, size: 16, color: col });
       } else if (C.txt) {
-        T(b, pt((span - 1) / 2, 0), st >= 3 ? `정수 x는 ${M.cnt}개` : '', { dy: 44, size: 17, color: 'green' });
+        T(b, pt((span - 1) / 2, 0), st >= 3 ? M.pk.kind === 1 ? `정수 x의 최댓값은 ${M.hi - 1}` : M.pk.kind === 2 ? `정수 x의 최솟값은 ${M.lo + 1}` : `정수 x는 ${M.cnt}개` : '', { dy: 44, size: 17, color: 'green' });
       }
     },
     steps: (M) => [
       `x가 가장 긴 변인 경우와 아닌 경우로 나눠요. (아니라면 ${fmtN(M.mx)}${jos(M.mx, '이', '가')} 가장 긴 변이에요.)`,
       `① x가 가장 긴 변: 가장 긴 변 < 나머지 두 변의 합이므로 $x<${M.a}+${M.b}=${M.hi}$ ($x\\ge ${fmtN(M.mx)}$) ② 아닐 때: $${fmtN(M.mx)}<${fmtN(M.mn)}+x$, 즉 $x>${M.lo}$`,
-      `두 경우를 합치면 $${M.lo}<x<${M.hi}$예요. 이 범위의 정수 x는 ${M.lo + 1}부터 ${M.hi - 1}까지 $${M.cnt}$개예요.`
+      `두 경우를 합치면 $${M.lo}<x<${M.hi}$예요. 이 범위의 정수 x는 ${M.lo + 1}부터 ${M.hi - 1}까지 $${M.cnt}$개예요.` + (M.pk.kind === 1 ? ` 따라서 최댓값은 ${M.hi - 1}이에요.` : M.pk.kind === 2 ? ` 따라서 최솟값은 ${M.lo + 1}이에요.` : '')
     ],
     view: (M, C) => ({
       guide: `변 <b>a, b</b>를 바꾸고, 수직선의 <b>분홍 점</b> x를 끌어 보세요. 색칠한 구간 안에 x가 있으면 삼각형이 만들어져요. 구간 끝의 <b>빈 동그라미</b>는 그 값이 들어가지 않는다는 뜻이에요.`,
@@ -242,10 +261,12 @@
       const cards = COMBO.map((c) => { const t = c.map((i) => v[i]).sort((x, y) => x - y); return { idx: c, t, ok: can(t[0], t[1], t[2]), sum: t[0] + t[1] }; });
       return { v, cards, n: cards.filter((c) => c.ok).length, pk: s.cnPk || { v: [2, 4, 5, 9] } };
     },
+    reviewModel: (M) => { const v = M.pk.v, cards = COMBO.map((c) => { const t = c.map((i) => v[i]).sort((a, b) => a - b); return { idx: c, t, ok: can(...t), sum: t[0] + t[1] }; }); return { ...M, v, cards, n: cards.filter((c) => c.ok).length }; },
     draw(b, s, M, C) {
       if (C.problem) { drawFourProblem(b, M); return; }
-      const colsN = 2, Wc = 7.6, Hc = 6.6, Hi = Hc - 0.5;
-      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: 44 });
+      const colsN = 2, Wc = 7.6, Hc = 8.2, Hi = Hc - 0.5;
+      const bottomPad = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 76 : 44;
+      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: bottomPad, l: b.W < 560 ? 14 : 46, r: b.W < 560 ? 14 : 46 });
       const tt = C.review ? (C.step >= 3 ? 1 : 1) : C.t, st = C.review ? C.step : 3;
       M.cards.forEach((cd, i) => {
         const col = i % 2, row = Math.floor(i / 2), x0 = col * Wc + 0.2, y0 = -(2 - row) * Hc + 0.4;
@@ -254,8 +275,8 @@
         const c = cd.ok ? 'green' : 'rose';
         b.path([pt(x0, y0), pt(x0 + Wc - 0.4, y0), pt(x0 + Wc - 0.4, y0 + Hi), pt(x0, y0 + Hi)], { close: true, fill: show ? c : 'muted', fillAlpha: show ? 0.1 : 0.05, color: show ? c : 'muted', width: 1.6, alpha: 0.9 });
         const items = cd.t.map((v, k) => ({ v, n: '', c: k === 2 ? 'amber' : k === 0 ? 'sky' : 'green' }));
-        hinge(b, items, tt, { ox: x0 + 0.9, oy: y0 + Hi - 3, sc: sc * 0.9, w: 5, nums: true, numSize: 14 });
-        if (show) T(b, pt(x0 + (Wc - 0.4) / 2, y0 + Hi), `${fmtN(cd.t[0])}+${fmtN(cd.t[1])}=${fmtN(cd.sum)} ${cd.ok ? '>' : '≤'} ${fmtN(cd.t[2])}`, { dy: -16, size: 15, color: c });
+        hinge(b, items, tt, { ox: x0 + 0.9, oy: y0 + Hi - 2.7, sc: sc * 0.9, w: 5, nums: true, numSize: 14 });
+        if (show) T(b, pt(x0 + (Wc - 0.4) / 2, y0 + Hi), `${fmtN(cd.t[0])}+${fmtN(cd.t[1])}=${fmtN(cd.sum)} ${cd.ok ? '>' : '≤'} ${fmtN(cd.t[2])}`, { dy: -8, size: 15, color: c });
         if (st >= 3) T(b, pt(x0 + Wc - 0.4, y0), cd.ok ? '✓' : '✗', { dx: -16, dy: 18, size: 20, color: c });
       });
       if (C.txt && st >= 3) T(b, pt(Wc, 0), `삼각형을 만들 수 있는 경우: ${M.n}가지`, { dy: 20, size: 17, color: 'green' });
