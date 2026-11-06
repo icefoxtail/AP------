@@ -28,7 +28,9 @@
 
   // 길이 글자: 조각이 좁으면 위아래로 번갈아 놓아 겹치지 않게
   const lenLabels = (b, X, y, list) => list.forEach((q, i) => {
-    const w = X(q.c) - X(q.a), lv = w < 1.9 ? i % 2 : 0;
+    const w = (X(q.c) - X(q.a)) * (b.k || 30), size = q.size || 15;
+    const labelWidth = Array.from(q.text).reduce((n, c) => n + (c.charCodeAt(0) >= 0x1100 ? size : size * 0.62), 0);
+    const lv = w < labelWidth + 12 ? i % 2 : 0;
     T(b, { x: (X(q.a) + X(q.c)) / 2, y }, q.text, { dy: -(24 + lv * 20), color: q.color || 'ink', size: q.size || 15 });
   });
   const bar = (b, X, y, a, c, color, o = {}) => {
@@ -38,7 +40,7 @@
   // 칸(셀) 그리기: from~to 칸 번호, 높이 0.9
   const cell = (b, X, y, i, color, alpha = 1, label = '1칸') => {
     const x0 = X(i) + 0.04, x1 = X(i + 1) - 0.04, h = 0.46;
-    b.poly([{ x: x0, y: y - h }, { x: x1, y: y - h }, { x: x1, y: y + h }, { x: x0, y: y + h }], { fill: color, fillAlpha: 0.3 * alpha, color, width: 2.4, alpha });
+    b.poly([{ x: x0, y: y - h }, { x: x1, y: y - h }, { x: x1, y: y + h }, { x: x0, y: y + h }], { fill: color, fillAlpha: 0.16 * alpha, color, width: 2.4, alpha });
     if (label) T(b, { x: (x0 + x1) / 2, y }, label, { color, size: 14 });
   };
   const hl = (st, on) => (st >= 99 || on ? 1 : 0.3);
@@ -58,8 +60,12 @@
       { label: 'CN = NB (△)', value: `${half(M.q)} cm`, color: 'rose' },
       { label: 'MN = ○ + △', value: `${half(M.mn)} cm`, color: 'green', note: `AB ${M.L} cm의 절반` }
     ],
-    steps: (M) => [
-      `M은 AC의 중점이므로 AM = MC = ○ = ${half(M.p)} cm, N은 CB의 중점이므로 CN = NB = △ = ${half(M.q)} cm`,
+    steps: (M, s) => (s.plSeed || 0) % 2 ? [
+      `M, N이 각각 중점이므로 AM = MC = ○, CN = NB = △입니다. MN = ○ + △ = ${half(M.mn)} cm`,
+      'AB = AM + MC + CN + NB = 2○ + 2△ = 2 × MN 입니다.',
+      `AB = 2 × ${half(M.mn)} = ${M.L} cm`
+    ] : [
+      'M은 AC의 중점이므로 AM = MC = ○, N은 CB의 중점이므로 CN = NB = △입니다.',
       `AB = ○ + ○ + △ + △ = ${M.L} cm 이므로 ○ + △ = ${M.L} ÷ 2 = ${half(M.mn)} cm`,
       `MN = MC + CN = ○ + △ = ${half(M.mn)} cm (점 C가 어디에 있어도 같습니다)`
     ],
@@ -73,14 +79,17 @@
       b.ticks({ x: X(0), y: 0 }, { x: X(M.M), y: 0 }, { color: 'ink' }); b.ticks({ x: X(M.M), y: 0 }, { x: X(M.a), y: 0 }, { color: 'ink' });
       b.ticks({ x: X(M.a), y: 0 }, { x: X(M.N), y: 0 }, { color: 'ink', count: 2 }); b.ticks({ x: X(M.N), y: 0 }, { x: X(M.L), y: 0 }, { color: 'ink', count: 2 });
       [[0, 'A'], [M.M, 'M'], [M.a, 'C'], [M.N, 'N'], [M.L, 'B']].forEach(([c, n]) => pt(b, X(c), 0, n, { color: n === 'C' ? 'amber' : n === 'M' || n === 'N' ? 'green' : 'ink' }));
-      if (!C.hide) lenLabels(b, X, 0, [{ a: 0, c: M.M, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.M, c: M.a, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.a, c: M.N, text: `△ ${half(M.q)}`, color: 'rose' }, { a: M.N, c: M.L, text: `△ ${half(M.q)}`, color: 'rose' }]);
+      if (C.tab === 'explore') lenLabels(b, X, 0, [{ a: 0, c: M.M, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.M, c: M.a, text: `○ ${half(M.p)}`, color: 'sky' }, { a: M.a, c: M.N, text: `△ ${half(M.q)}`, color: 'rose' }, { a: M.N, c: M.L, text: `△ ${half(M.q)}`, color: 'rose' }]);
       else lenLabels(b, X, 0, [{ a: 0, c: M.M, text: '○', color: 'sky' }, { a: M.M, c: M.a, text: '○', color: 'sky' }, { a: M.a, c: M.N, text: '△', color: 'rose' }, { a: M.N, c: M.L, text: '△', color: 'rose' }]);
-      PL.dim(b, { x: X(0), y: -2.0 }, { x: X(M.L), y: -2.0 }, C.hide ? 'AB' : `AB = ${M.L} cm`, { color: 'ink', dy: -16, alpha: hl(st, st === 2) });
-      if (!C.hide) {
+      const reverse = (s.plSeed || 0) % 2 === 1;
+      const showAB = C.tab === 'explore' || !reverse || (C.tab === 'review' && st >= 3);
+      PL.dim(b, { x: X(0), y: -2.0 }, { x: X(M.L), y: -2.0 }, showAB ? `AB = ${M.L} cm` : 'AB = ?', { color: 'ink', dy: -16 });
+      if (C.tab === 'explore') {
         PL.dim(b, { x: X(0), y: 2.4 }, { x: X(M.a), y: 2.4 }, `AC = ${M.a} cm`, { color: 'sky', dy: 18, width: 2.6 });
         PL.dim(b, { x: X(M.a), y: 2.4 }, { x: X(M.L), y: 2.4 }, `CB = ${M.b} cm`, { color: 'rose', dy: 18, width: 2.6 });
-        PL.dim(b, { x: X(M.M), y: 3.9 }, { x: X(M.N), y: 3.9 }, `MN = ${half(M.mn)} cm`, { color: 'green', dy: 18, width: st >= 3 || st >= 99 ? 6 : 3.4 });
       }
+      const showMN = C.tab === 'explore' || reverse || (C.tab === 'review' && st >= 2);
+      PL.dim(b, { x: X(M.M), y: 3.9 }, { x: X(M.N), y: 3.9 }, showMN ? `MN = ${half(M.mn)} cm` : 'MN = ?', { color: C.hide ? 'rose' : 'green', dy: 18, width: st >= 3 ? 5 : 3.4 });
       b.handle('C', { x: X(M.a), y: 0 }, { color: 'amber', ariaLabel: '점 C', drag: (w) => { s.mC = clamp(Math.round(((w.x * M.L) / W) / 2) * 2, 2, M.L - 2); } });
     },
     quiz: (M, s, rng) => {
@@ -106,26 +115,38 @@
     model: (s) => { const L = s.dL, q = L / 4; return { L, q, AM: 2 * q, AN: 3 * q }; },
     guide: (M) => `M은 AB의 중점, N은 MB의 중점입니다. 가장 작은 조각(MN, NB)을 <b>1칸</b>이라 하면 전체 AB는 <b>4칸</b>이고 1칸은 ${M.q} cm예요. 막대로 AB의 길이를 바꿔 보세요.`,
     readouts: (M) => [{ label: '1칸', value: `${M.q} cm`, color: 'rose', note: `AB ${M.L} cm의 ¼` }, { label: 'AM', value: `2칸 = ${M.AM} cm`, color: 'sky' }, { label: 'AN', value: `3칸 = ${M.AN} cm`, color: 'green', note: 'AB의 ¾' }],
-    steps: (M) => [
+    steps: (M, s) => (s.plSeed || 0) % 3 === 1 ? [
+      `N은 MB의 중점이므로 MN = NB = ${M.q} cm, MB = 2 × ${M.q} = ${M.AM} cm`,
+      `M은 AB의 중점이므로 AM = MB = ${M.AM} cm입니다.`,
+      `AB = AM + MB = 2 × ${M.AM} = ${M.L} cm`
+    ] : (s.plSeed || 0) % 3 === 2 ? [
+      `MN = NB를 1칸이라 하면 MB와 AM은 각각 2칸, AN은 3칸입니다. AN = ${M.AN} cm`,
+      `1칸 = AN ÷ 3 = ${M.AN} ÷ 3 = ${M.q} cm`,
+      `AB는 4칸이므로 AB = 4 × ${M.q} = ${M.L} cm`
+    ] : [
       `M은 AB의 중점이므로 AM = MB = 전체의 절반입니다. AM = ${M.AM} cm`,
       `N은 MB의 중점이므로 MN = NB = MB의 절반입니다. 가장 작은 조각을 1칸이라 하면 AB는 4칸, 1칸은 ${M.L} ÷ 4 = ${M.q} cm`,
       `AN = AM + MN = 2칸 + 1칸 = 3칸 = ${M.q} × 3 = ${M.AN} cm`
     ],
-    formula: (M) => `<p>$\\overline{MN}=\\dfrac14\\overline{AB}=${M.q}$ cm, $\\overline{AN}=\\dfrac34\\overline{AB}=${M.AN}$ cm</p>`,
+    formula: (M, s) => (s.plSeed || 0) % 3 ? `<p>$\\overline{AB}=4\\overline{MN}=\\dfrac43\\overline{AN}=${M.L}$ cm</p>` : `<p>$\\overline{MN}=\\dfrac14\\overline{AB}=${M.q}$ cm, $\\overline{AN}=\\dfrac34\\overline{AB}=${M.AN}$ cm</p>`,
     rule: () => '중점을 두 번 잡으면 전체가 똑같은 4칸',
     notes: () => note(['분수 계산(½ + ¼) 대신 <b>가장 작은 조각을 1칸</b>으로 놓고 칸 수를 세면 쉽습니다.']),
     draw: (b, s, M, C) => {
-      const st = C.step, X = (c) => (c * W) / 4; // 칸 번호 → x
-      const col = [['sky', 1], ['sky', 1], ['rose', 3], ['rose', 3]];
+      const st = C.step, X = (c) => (c * W) / 4, kind = (s.plSeed || 0) % 3; // 칸 번호 → x
       for (let i = 0; i < 4; i++) cell(b, X, 0, i, i < 2 ? 'sky' : 'rose', i < 2 ? hl(st, st === 1) : hl(st, st >= 2));
       [[0, 'A'], [2, 'M'], [3, 'N'], [4, 'B']].forEach(([c, n]) => pt(b, X(c), 0.46, n, { color: n === 'M' || n === 'N' ? 'green' : 'ink', dy: 22 }));
       if (!C.hide) {
-        PL.dim(b, { x: X(0), y: -1.9 }, { x: X(2), y: -1.9 }, `AM = ${M.AM} cm`, { color: 'sky', dy: -16, width: 3 });
-        PL.dim(b, { x: X(2), y: -1.9 }, { x: X(4), y: -1.9 }, `MB = ${M.AM} cm`, { color: 'sky', dy: -16, width: 3 });
-        PL.dim(b, { x: X(2), y: 2.0 }, { x: X(3), y: 2.0 }, `MN = 1칸 = ${M.q} cm`, { color: 'rose', dy: 18, width: 3 });
-        PL.dim(b, { x: X(0), y: 3.4 }, { x: X(3), y: 3.4 }, `AN = 3칸 = ${M.AN} cm`, { color: 'green', dy: 18, width: st >= 3 || st >= 99 ? 6 : 3.4 });
+        const amShown = C.tab === 'explore' || st >= (kind === 0 ? 1 : kind === 1 ? 2 : 3);
+        const mbShown = C.tab === 'explore' || st >= (kind === 2 ? 3 : 1);
+        PL.dim(b, { x: X(0), y: -1.9 }, { x: X(2), y: -1.9 }, amShown ? `AM = ${M.AM} cm` : 'AM = 2칸', { color: 'sky', dy: -16, width: 3 });
+        PL.dim(b, { x: X(2), y: -1.9 }, { x: X(4), y: -1.9 }, mbShown ? `MB = ${M.AM} cm` : 'MB = 2칸', { color: 'sky', dy: -16, width: 3 });
+        PL.dim(b, { x: X(2), y: 2.0 }, { x: X(3), y: 2.0 }, kind === 1 || st >= 2 ? `MN = 1칸 = ${M.q} cm` : 'MN = 1칸', { color: 'rose', dy: 18, width: 3 });
+        const end = kind === 0 || C.tab === 'explore' ? 3 : 4, label = end === 3 ? `AN = 3칸 = ${M.AN} cm` : `AB = 4칸 = ${M.L} cm`;
+        if (st >= 3) PL.dim(b, { x: X(0), y: 3.4 }, { x: X(end), y: 3.4 }, label, { color: 'green', dy: 18, width: 6 });
+        else if (kind === 2) PL.dim(b, { x: X(0), y: 3.4 }, { x: X(3), y: 3.4 }, `AN = ${M.AN} cm`, { color: 'rose', dy: 18 });
       } else {
-        PL.dim(b, { x: X(0), y: -1.9 }, { x: X(4), y: -1.9 }, `AB = ${M.L} cm`, { color: 'ink', dy: -16 });
+        const given = kind === 0 ? [0, 4, `AB = ${M.L} cm`] : kind === 1 ? [2, 3, `MN = ${M.q} cm`] : [0, 3, `AN = ${M.AN} cm`];
+        PL.dim(b, { x: X(given[0]), y: -1.9 }, { x: X(given[1]), y: -1.9 }, given[2], { color: 'rose', dy: -16 });
       }
     },
     quiz: (M, s, rng) => {
@@ -148,25 +169,30 @@
     model: (s) => { const L = s.tL, q = L / 6; return { L, q, AP: 2 * q, PM: q }; },
     guide: (M) => `P, Q는 AB의 <b>삼등분점</b>, M은 <b>중점</b>입니다. 3등분과 2등분이 섞이면 <b>전체를 6칸</b>으로 놓으세요(2와 3의 최소공배수). 1칸은 ${M.q} cm예요.`,
     readouts: (M) => [{ label: '1칸', value: `${M.q} cm`, color: 'green', note: `AB ${M.L} cm의 ⅙` }, { label: 'P, Q 위치', value: '2칸, 4칸', color: 'sky' }, { label: 'M 위치', value: '3칸', color: 'amber' }, { label: 'PM', value: `${M.q} cm`, color: 'green', note: '3칸 − 2칸 = 1칸' }],
-    steps: (M) => [
+    steps: (M, s) => (s.plSeed || 0) % 3 === 1 ? [
+      'P, Q는 삼등분점이고 M은 중점이므로 AB를 똑같은 6칸으로 나눠 생각합니다. A, P, M, Q, B는 각각 0, 2, 3, 4, 6칸째입니다.',
+      `PM = 3칸 − 2칸 = 1칸이고, 주어진 PM의 길이는 ${M.q} cm입니다.`,
+      `AB는 6칸이므로 AB = 6 × PM = 6 × ${M.q} = ${M.L} cm`
+    ] : [
       `삼등분점 P, Q: AB를 3등분하면 AP = PQ = QB = ${M.L} ÷ 3 = ${M.AP} cm (각각 2칸)`,
       `중점 M: AB를 2등분하면 AM = MB = ${M.L} ÷ 2 = ${3 * M.q} cm (각각 3칸)`,
-      `PM = AM − AP = 3칸 − 2칸 = 1칸 = ${M.q} cm`
+      (s.plSeed || 0) % 3 === 2 ? `MQ = AQ − AM = 4칸 − 3칸 = 1칸 = ${M.q} cm` : `PM = AM − AP = 3칸 − 2칸 = 1칸 = ${M.q} cm`
     ],
-    formula: (M) => `<p>$\\overline{PM}=\\overline{AM}-\\overline{AP}=\\dfrac12\\overline{AB}-\\dfrac13\\overline{AB}=\\dfrac16\\overline{AB}=${M.q}$ cm</p>`,
+    formula: (M, s) => (s.plSeed || 0) % 3 === 1 ? `<p>$\\overline{AB}=6\\overline{PM}=6\\times${M.q}=${M.L}$ cm</p>` : (s.plSeed || 0) % 3 === 2 ? `<p>$\\overline{MQ}=\\overline{AQ}-\\overline{AM}=\\dfrac23\\overline{AB}-\\dfrac12\\overline{AB}=\\dfrac16\\overline{AB}=${M.q}$ cm</p>` : `<p>$\\overline{PM}=\\overline{AM}-\\overline{AP}=\\dfrac12\\overline{AB}-\\dfrac13\\overline{AB}=\\dfrac16\\overline{AB}=${M.q}$ cm</p>`,
     rule: () => '2등분과 3등분이 함께 나오면 6칸',
     notes: () => note(['통분 대신 <b>눈금 번호(A 0칸, P 2칸, M 3칸, Q 4칸, B 6칸)</b>를 빼면 어떤 구간이든 바로 구할 수 있습니다.']),
     draw: (b, s, M, C) => {
-      const st = C.step, X = (c) => (c * W) / 6;
-      for (let i = 0; i < 6; i++) { const g = i === 2 || i === 3; cell(b, X, 0, i, g ? 'green' : 'sky', hl(st, st === 3 ? g : true), g ? '1칸' : '1칸'); }
+      const st = C.step, X = (c) => (c * W) / 6, kind = (s.plSeed || 0) % 3, target = kind === 2 ? 3 : 2;
+      for (let i = 0; i < 6; i++) { const result = !C.hide && st >= 3 && (kind === 1 || i === target); cell(b, X, 0, i, result ? 'green' : 'sky', 1); }
       [[0, 'A', 'ink'], [2, 'P', 'sky'], [3, 'M', 'amber'], [4, 'Q', 'sky'], [6, 'B', 'ink']].forEach(([c, n, col]) => pt(b, X(c), 0.46, n, { color: col, dy: 22 }));
-      if (!C.hide) {
+      if (!C.hide && (kind !== 1 || st >= 3)) {
         PL.dim(b, { x: X(0), y: -1.9 }, { x: X(2), y: -1.9 }, `AP = ${M.AP} cm`, { color: 'sky', dy: -16, width: 3, size: 14 });
         PL.dim(b, { x: X(2), y: -1.9 }, { x: X(4), y: -1.9 }, `PQ = ${M.AP} cm`, { color: 'sky', dy: -16, width: 3, size: 14 });
         PL.dim(b, { x: X(4), y: -1.9 }, { x: X(6), y: -1.9 }, `QB = ${M.AP} cm`, { color: 'sky', dy: -16, width: 3, size: 14 });
-        PL.dim(b, { x: X(0), y: 2.0 }, { x: X(3), y: 2.0 }, `AM = 3칸 = ${3 * M.q} cm`, { color: 'amber', dy: 18, width: 3 });
-        PL.dim(b, { x: X(2), y: 3.4 }, { x: X(3), y: 3.4 }, `PM = 1칸 = ${M.q} cm`, { color: 'green', dy: 18, width: st >= 3 || st >= 99 ? 6 : 3.4 });
-      } else PL.dim(b, { x: X(0), y: -1.9 }, { x: X(6), y: -1.9 }, `AB = ${M.L} cm`, { color: 'ink', dy: -16 });
+        if (st >= 2) PL.dim(b, { x: X(0), y: 2.0 }, { x: X(3), y: 2.0 }, `AM = 3칸 = ${3 * M.q} cm`, { color: 'rose', dy: 18, width: 3 });
+        if (st >= 3) PL.dim(b, { x: X(kind === 1 ? 0 : target), y: 3.4 }, { x: X(kind === 1 ? 6 : target + 1), y: 3.4 }, kind === 1 ? `AB = 6칸 = ${M.L} cm` : `${kind === 2 ? 'MQ' : 'PM'} = 1칸 = ${M.q} cm`, { color: 'green', dy: 18, width: 6 });
+      } else if (kind === 1) PL.dim(b, { x: X(2), y: -1.9 }, { x: X(3), y: -1.9 }, `PM = ${M.q} cm`, { color: 'rose', dy: -16 });
+      else PL.dim(b, { x: X(0), y: -1.9 }, { x: X(6), y: -1.9 }, `AB = ${M.L} cm`, { color: 'rose', dy: -16 });
     },
     quiz: (M, s, rng) => {
       const kind = (s.plSeed || 0) % 3, q = M.q;
@@ -187,7 +213,11 @@
     model: (s) => { const k = s.rK, u = s.rU, n = k + 1; return { k, u, n, AB: n * u, AC: k * u, mc: (k / 2) * u, MB: (k / 2 + 1) * u }; },
     guide: (M) => `<b>AC = ${M.k}CB</b>에서 숫자가 곱해지지 않은 짧은 쪽 <b>CB를 1칸</b>으로 놓으면 AC는 <b>${M.k}칸</b>입니다. M이 AC의 중점이면 AM = MC = <b>${M.k / 2}칸</b>이에요. 막대로 비와 1칸의 길이를 바꿔 보세요.`,
     readouts: (M) => [{ label: 'CB', value: `1칸 = ${M.u} cm`, color: 'rose' }, { label: 'AC', value: `${M.k}칸 = ${M.AC} cm`, color: 'sky' }, { label: 'AB', value: `${M.n}칸 = ${M.AB} cm`, color: 'ink' }, { label: 'MB', value: `${M.k / 2 + 1}칸 = ${M.MB} cm`, color: 'green' }],
-    steps: (M) => [
+    steps: (M, s) => (s.plSeed || 0) % 2 ? [
+      `M은 AC의 중점이므로 AC = 2 × MC = 2 × ${M.mc} = ${M.AC} cm`,
+      `AC = ${M.k}CB 이므로 CB = AC ÷ ${M.k} = ${M.AC} ÷ ${M.k} = ${M.u} cm`,
+      `AB = AC + CB = ${M.AC} + ${M.u} = ${M.AB} cm`
+    ] : [
       `AC = ${M.k}CB 이므로 CB를 1칸이라 하면 AC는 ${M.k}칸입니다. AB = ${M.n}칸 = ${M.AB} cm 이므로 1칸 = ${M.u} cm`,
       `M은 AC의 중점이므로 AM = MC = ${M.k}칸 ÷ 2 = ${M.k / 2}칸 = ${M.mc} cm`,
       `MB = MC + CB = ${M.k / 2}칸 + 1칸 = ${M.k / 2 + 1}칸 = ${M.u} × ${M.k / 2 + 1} = ${M.MB} cm`
@@ -196,16 +226,16 @@
     rule: () => 'AC = k·CB 이면 CB = 1칸, AC = k칸',
     notes: () => note(['식에서 <b>곱해지지 않은 쪽(짧은 쪽)</b>을 1칸으로 놓으면 나머지가 자연수 칸이 됩니다.', '"AB = 3BC"라면 전체 AB가 3칸, BC가 1칸이므로 AC는 2칸입니다.']),
     draw: (b, s, M, C) => {
-      const st = C.step, X = (c) => (c * W) / M.n;
+      const st = C.step, X = (c) => (c * W) / M.n, reverse = (s.plSeed || 0) % 2 === 1;
       for (let i = 0; i < M.n; i++) { const isCB = i === M.n - 1; cell(b, X, 0, i, isCB ? 'rose' : 'sky', hl(st, st === 1 ? true : st === 2 ? !isCB : true), '1칸'); }
       [[0, 'A', 'ink'], [M.k / 2, 'M', 'green'], [M.k, 'C', 'amber'], [M.n, 'B', 'ink']].forEach(([c, n, col]) => pt(b, X(c), 0.46, n, { color: col, dy: 22 }));
       if (!C.hide) {
         PL.dim(b, { x: X(0), y: -1.9 }, { x: X(M.k), y: -1.9 }, `AC = ${M.k}칸 = ${M.AC} cm`, { color: 'sky', dy: -16, width: 3 });
         PL.dim(b, { x: X(M.k), y: -1.9 }, { x: X(M.n), y: -1.9 }, `CB = 1칸`, { color: 'rose', dy: -16, width: 3 });
-        PL.dim(b, { x: X(M.k / 2), y: 2.0 }, { x: X(M.n), y: 2.0 }, `MB = ${M.k / 2 + 1}칸 = ${M.MB} cm`, { color: 'green', dy: 18, width: st >= 3 || st >= 99 ? 6 : 3.4 });
-        PL.dim(b, { x: X(0), y: 3.4 }, { x: X(M.n), y: 3.4 }, `AB = ${M.n}칸 = ${M.AB} cm`, { color: 'ink', dy: 18, width: 2.6 });
+        if (st >= 3 && (!reverse || C.tab === 'explore')) PL.dim(b, { x: X(M.k / 2), y: 2.0 }, { x: X(M.n), y: 2.0 }, `MB = ${M.k / 2 + 1}칸 = ${M.MB} cm`, { color: 'green', dy: 18, width: 6 });
+        if (!reverse || st >= 3) PL.dim(b, { x: X(0), y: 3.4 }, { x: X(M.n), y: 3.4 }, `AB = ${M.n}칸 = ${M.AB} cm`, { color: reverse ? 'green' : 'ink', dy: 18, width: 2.6 });
       } else {
-        PL.dim(b, { x: X(0), y: -1.9 }, { x: X(M.n), y: -1.9 }, 'AB', { color: 'ink', dy: -16 });
+        PL.dim(b, { x: X(reverse ? M.k / 2 : 0), y: -1.9 }, { x: X(reverse ? M.k : M.n), y: -1.9 }, reverse ? `MC = ${M.mc} cm` : `AB = ${M.AB} cm`, { color: 'rose', dy: -16 });
       }
     },
     quiz: (M, s, rng) => {
@@ -248,7 +278,7 @@
     rule: () => '중점이면 두 조각의 길이가 같다: AM = MB',
     notes: () => note(['풀이가 끝나면 <b>x를 식에 넣어 AM, MB가 정말 같은지</b> 확인하세요.', 'AB의 길이를 물으면 x만 구하고 끝내지 말고 <b>AM + MB</b>(= 2AM)까지 계산합니다.']),
     draw: (b, s, M, C) => {
-      const st = C.step, showTruth = (C.tab === 'review' && st >= 3), hide = C.hide;
+      const st = C.step, showTruth = C.tab === 'review', hide = C.hide || (showTruth && st < 3);
       const x = showTruth ? M.x0 : M.x, am = M.a * x + M.bb, mb = M.c * x + M.d, tot = am + mb, X = (c) => (c * W) / tot;
       const same = hide ? true : am === mb;
       const mpos = hide ? W / 2 : X(am);
