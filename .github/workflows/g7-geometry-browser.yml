@@ -8,6 +8,7 @@ on:
       - 'apmath/playground/next/labs/g7-*.html'
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/g7-geometry-*'
+      - 'apmath/playground/next/tools/g7-*.test.mjs'
       - '.github/workflows/g7-geometry-browser.yml'
   workflow_dispatch:
 
@@ -28,6 +29,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Independent geometry and catalog regressions
+        shell: bash
+        run: |
+          shopt -s nullglob
+          node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/cube-section.test.mjs apmath/playground/next/tools/polyhedra-names.test.mjs apmath/playground/next/tools/polyhedra-dual.test.mjs apmath/playground/next/tools/g7-*.test.mjs
       - name: Install Chromium test runtime
         run: |
           npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1

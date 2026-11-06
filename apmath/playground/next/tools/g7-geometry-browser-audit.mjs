@@ -160,6 +160,39 @@ try {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
           }
+          const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
+          if (handle) {
+            // Exercise native browser pointer events; do not invoke the drag callback.
+            const actualCanvas = page.locator('canvas').filter({ visible: true }).first();
+            await actualCanvas.scrollIntoViewIfNeeded();
+            const rect = await actualCanvas.boundingBox();
+            const before = await page.evaluate(() => JSON.stringify(lab.s));
+            const start = { x: rect.x + handle.x, y: rect.y + handle.y };
+            const dx = handle.x < rect.width / 2 ? 48 : -48, dy = handle.y < rect.height / 2 ? 24 : -24;
+            await page.mouse.move(start.x, start.y); await page.mouse.down();
+            await page.mouse.move(start.x + dx, start.y + dy, { steps: 8 }); await page.mouse.up(); await settle();
+            const after = await page.evaluate(() => JSON.stringify(lab.s));
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: handle.id, executed: true, stateChanged: before !== after, pointer: 'mouse' });
+          }
+          const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
+          if (play >= 0) {
+            const before = await page.evaluate(() => JSON.stringify(lab.s));
+            const buttons = page.locator('.apl-actions-row button');
+            await buttons.nth(play).click(); await page.waitForTimeout(250);
+            const during = await page.evaluate(() => ({ playing: !!lab.s.playing, state: JSON.stringify(lab.s) }));
+            if (during.playing) await buttons.nth(play).click();
+            const paused = await page.evaluate(() => !lab.s.playing);
+            const pass = during.state !== before && paused;
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'play-pause', executed: true, pass });
+            if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'play-pause-state' });
+          }
+          const reset = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => a.id === 'reset' && b.checkVisibility()));
+          if (reset >= 0) {
+            await page.locator('.apl-actions-row button').nth(reset).click(); await settle();
+            const stopped = await page.evaluate(() => !lab.s.playing);
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'reset', executed: true, stopped });
+            if (!stopped) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'reset-left-playing' });
+          }
         }
         for (const c of cases.filter(x => String(x.id) === scene.id && (x.params || x.tab || x.step != null))) {
           await page.evaluate(({ index, tab }) => { lab.goScene(index); if (tab) lab.setTab(tab); }, { index: scene.index, tab: c.tab });
