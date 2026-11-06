@@ -428,7 +428,8 @@
       }
       [A, Bp, Cc, Dp].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, A, cen, 'A', { size: 18 }); tagOut(b, Bp, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); tagOut(b, Dp, cen, 'D', { size: 18 });
-      if (!C.thumb && !C.problem && (C.review || b.W >= 560)) {
+      // Exploration guidance stays in the guide panel, clear of D and the floating toolbar.
+      if (!C.thumb && !C.problem && C.review) {
         let row, col = 'sky';
         if (C.review && st === 1) row = `∠B=∠D=90° (R), AB=AD=${m} cm`;
         else if (C.review && st === 2) { row = 'AC는 공통 (H) → RHS 합동'; col = 'amber'; }
