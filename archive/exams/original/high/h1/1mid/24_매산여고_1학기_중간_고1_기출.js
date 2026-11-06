@@ -73,7 +73,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
-    "templateKey": null,
+    "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

@@ -94,9 +94,9 @@
 | content | 1521 |
 | choices(배열) | 5 |
 | level | 2667 |
-| standardUnit | 2496 |
+| standardUnit | 2495 |
 | standardUnitKey | 2323 |
-| standardCourse | 2248 |
+| standardCourse | 2247 |
 | tags | 2772 |
 | undefined/비객체(skip) | 0 |
 
