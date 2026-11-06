@@ -55,9 +55,9 @@
     };
   }
   const caseKey = (q) => `${q.kind}${q.n || ''}f${q.face}`;
-  const drawSolidFace = (D, b, M, C, hl) => {
+  const drawSolidFace = (D, b, M, C, hl, opt = {}) => {
     const { sol, q } = M, f = sol.faces[q.face % sol.faces.length];
-    D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 46, b: 56, l: 44, r: 44 });
+    D.fitPts(sol.order.map((k) => sol.verts[k]), opt.fit || { t: 46, b: 56, l: 44, r: 44 });
     const { vis } = drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
     if (hl) {
       if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), 'amber', 0.17);
@@ -67,7 +67,7 @@
       });
     }
     drawVerts(D, sol, { hot: (k) => hl && f.v.includes(k) });
-    if (C.txt && hl) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: 17, at: [[0, 0], [0, 22], [0, -22]] });
+    if (C.txt && hl) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: opt.faceSize || 17, at: [[0, 0], [0, 22], [0, -22]] });
     D.flush();
   };
 
@@ -81,7 +81,17 @@
     formula: () => '<p>$l\\perp m,\\ l\\perp n$ ($m$, $n$은 점 $O$에서 만나는 평면 $P$ 위의 두 직선) $\\Rightarrow$ $l\\perp P$</p>',
     rule: '직선이 평면 위에서 한 점에 만나는 서로 다른 두 직선과 모두 수직이면 그 평면과 수직이다',
     tips: ['평면 위의 <b>한 직선</b>과만 수직인 것은 부족해요. <b>한 점에서 만나는 서로 다른 두 직선</b>과 수직인지 확인해요.', '직선이 평면에 수직이면 수선의 발을 지나는 평면 위의 모든 직선과 수직이에요. 그 점에서 만나는 두 직선으로 확인할 수 있어요.'],
-    drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true),
+    tune: (D) => {
+      // 바닥 이름은 판 안쪽에 둡니다. 앞 모서리 바깥에 놓으면 낮은 무대의 우하단 도구막대에 가려져요.
+      const label0 = D.label;
+      D.label = (p, str, op = {}) => {
+        if (str !== '평면 P') return label0(p, str, op);
+        const d = D.out(p, v3(0, 0, p.z));
+        return label0(p, str, Object.assign({}, op, { at: [32, 44, 56].map((r) => [-d.x * r, -d.y * r]) }));
+      };
+    },
+    // 휴대폰의 짧은 문제 무대에서는 실제 투영된 입체 둘레에 꼭짓점 이름 자리만 남겨 핵심 그림을 키웁니다.
+    drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true, b.W < 560 && M.q.kind === 'prism' && M.q.n === 3 && M.q.face === 0 ? { fit: { t: 24, b: 26, l: 30, r: 30 }, faceSize: 16 } : undefined),
     prob: (M) => {
       const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], ans = perpEdges(sol, fi).length;
       return {

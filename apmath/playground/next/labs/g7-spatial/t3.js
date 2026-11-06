@@ -101,7 +101,7 @@
     // 시험 평면이 지나지 못하는 직선: 평면을 뚫는 점
     if (o.pierce && F.objs[0].k === 'ln' && !ok) {
       const ob = F.objs[0], n = cross3(U, wdir(theta)), den = dot3(n, ob.d);
-      if (Math.abs(den) > 0.03) { const t = -dot3(n, ob.p) / den, X = add3(ob.p, mul3(ob.d, t)); if (len3(X) < 4) { b.point(D.P(X), { color: 'rose', r: 6 }); D.obstacle(X, 8); if (C.txt && F.type === 'skew') D.label(X, '한 점에서만 만나요', { color: 'rose', size: 15, dir: { x: 0, y: -1 }, gap: 12, leader: true }); } }
+      if (Math.abs(den) > 0.03) { const t = -dot3(n, ob.p) / den, X = add3(ob.p, mul3(ob.d, t)); if (len3(X) < 4) { b.point(D.P(X), { color: 'rose', r: 6 }); D.obstacle(X, 8); if (C.txt && F.type === 'skew') D.label(X, '평면과 m의 교점', { color: 'rose', size: 15, dir: { x: 0, y: -1 }, gap: 12, leader: true }); } }
     }
     // 글자
     if (C.txt) {
