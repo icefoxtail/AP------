@@ -59,7 +59,7 @@
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
-    <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+    <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
@@ -520,6 +520,7 @@
 function createMixerSourceAdapter(buildContext = null) {
 // Each transaction owns this helper scope, AppState, staging and target DOM.
 // The default scope alone installs UI/boot and performs post-commit registration.
+const outputMetadataLoader = window.APOutputMetadataLoader;
 /**
  * Stage E Mixed Engine v1.6.2 (Rulebook v1.9 Final Fix + Image Field + Sol Reverted)
  */
@@ -2147,8 +2148,9 @@ let outputModeTransitionGeneration = 0;
 let activeOutputModeTransition = null;
 
 function normalizeMixedSourceQuestions(questions) {
-    return questions.map((question, index) => window.mergeArchiveQuestionMetadata
-        ? window.mergeArchiveQuestionMetadata(question, {
+    const normalize = outputMetadataLoader?.normalizeQuestion || window.mergeArchiveQuestionMetadata;
+    return questions.map((question, index) => normalize
+        ? normalize(question, {
             questionUid: question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid,
             sourceArchiveFile: question?.sourceArchiveFile || question?._sourceFile,
             sourceOrdinal: question?.sourceOrdinal || question?._sourceQuestionOrdinal || question?.source_question_ordinal || index + 1
@@ -3533,7 +3535,11 @@ if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
 }
 
 async function init() {
-    if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
+    if (!outputMetadataLoader) throw Object.assign(
+        new Error('출력 준비 모듈을 불러오지 못했습니다. 새로고침하여 다시 시도해 주세요.'),
+        { code: 'OUTPUT_METADATA_LOADER_UNAVAILABLE' }
+    );
+    await outputMetadataLoader.ready;
     const p = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
     const strictOutput = p.get('archive2Context') === 'archive2' || p.has('archive2OutputContract') || p.has('outputRequestId');
     const outputRequestId = p.get('outputRequestId') || '';
@@ -3743,7 +3749,7 @@ if (!buildContext) window.onload = () => {
     init().catch(error => {
         console.error('[mixed-engine] output render failed', error);
         const params = new URLSearchParams(window.location.search);
-        if (params.get('archive2Context') !== 'archive2') return;
+        if (params.get('archive2Context') !== 'archive2' && error?.code !== 'OUTPUT_METADATA_LOADER_UNAVAILABLE') return;
         document.documentElement.dataset.archive2OutputFailure = 'true';
         const host = document.getElementById('print-area') || document.body;
         host.replaceChildren();
@@ -3758,6 +3764,13 @@ if (!buildContext) window.onload = () => {
         reopen.href = 'workspace.html?view=saved';
         reopen.textContent = '저장한 시험지 목록에서 다시 열기';
         panel.append(title, detail, reopen);
+        if (error?.code === 'OUTPUT_METADATA_LOADER_UNAVAILABLE') {
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.textContent = '새로고침하여 다시 시도';
+            retry.addEventListener('click', () => window.location.reload());
+            panel.append(retry);
+        }
         host.append(panel);
         window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
     });

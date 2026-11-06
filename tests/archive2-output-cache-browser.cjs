@@ -1,8 +1,8 @@
 'use strict';
 
 // Real Chrome contract checks for snapshot reuse and failure recovery. The
-// existing 50-question benchmark covers performance; these independent contexts
-// use eight unchanged real questions to make fault injection quick and bounded.
+// existing 50-question benchmark covers performance; injected faults use eight
+// unchanged real questions, and the existing clipping guard uses all real 50.
 // Persist only identities, hashes, geometry, outcome codes and timings.
 const fs = require('node:fs');
 const os = require('node:os');
@@ -20,7 +20,7 @@ const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const round = value => Number(Number(value).toFixed(2));
 const report = { schema: 'ARCHIVE_OUTPUT_CACHE_CHROME_V1', rows: [], cases: [],
   conditions: { viewport: { width: 1440, height: 1000 }, network: 'unthrottled', prewarm: false,
-    fixturePurpose: 'focused fault and invalidation contracts; full-input timings remain in the performance suite',
+    fixturePurpose: 'focused fault/invalidation contracts plus real-50 existing-clipping preservation; performance timings remain in the benchmark',
     rowPassMeaning: 'render readiness only; intentionally failed requests remain false, while case.pass validates their failure behavior' } };
 
 function requireThat(value, code, details = {}) {
@@ -215,7 +215,7 @@ async function printCheck(session, before, expectedSuccess, name) {
 }
 
 function assertFailurePreserved(before, after) {
-  requireThat(!after.outcome.ok, 'INJECTED_FAILURE_WAS_HIDDEN');
+  requireThat(!after.outcome.ok, 'FAILED_REQUEST_WAS_HIDDEN');
   requireThat(after.attempts.at(-1)?.state === 'FAILED' && !after.attempts.at(-1)?.committed,
     'FAILED_RENDER_WAS_COMMITTED');
   requireThat(after.feedback.state === 'failed' && after.feedback.visible && after.feedback.retry,
@@ -525,6 +525,114 @@ async function abortPendingDecode(session, initial) {
     previousViewRestoredBeforeLatestCommit: result.rollback, noOverwriteAfterNativeDecodeSettled: true };
 }
 
+async function knownReal50Clipping(session, initial) {
+  const question = session.fixture.questions[16];
+  const expectedUid = question._sourceQuestionUid || question.sourceQuestionUid;
+  const expectedSourceRef = question.sourceArchiveFile + '#' + expectedUid;
+  requireThat(session.fixture.questions.length === 50 && initial.qpp === 4, 'KNOWN_CLIP_FIXTURE_CHANGED');
+  await remember(session.page, 'exam');
+  await session.page.evaluate(() => {
+    const qa = window.__outputCacheQA;
+    document.getElementById('print-header-title-input').value = 'Input retained across existing qpp4 failure';
+    qa.knownClippingCalls = [];
+    const original = window.Archive2PdfReadiness.assertLayoutReady;
+    qa.restoreLayoutObservation = () => { window.Archive2PdfReadiness.assertLayoutReady = original; };
+    window.Archive2PdfReadiness.assertLayoutReady = function (...args) {
+      if (window.AppState.mode === 'sol') {
+        // Observe the actual candidate immediately before the unchanged product
+        // gate runs. This hook does not change data, CSS, geometry or outcomes.
+        const pages = [...document.querySelectorAll('#print-area .page')];
+        const causes = [];
+        for (const column of document.querySelectorAll('#print-area .grid-col.sol-grid-col')) {
+          const style = getComputedStyle(column);
+          if (!['hidden', 'clip'].includes(style.overflowX) || column.scrollWidth <= column.clientWidth + 3) continue;
+          const boundary = column.getBoundingClientRect();
+          for (const image of column.querySelectorAll('[data-semantic-content="1"] img')) {
+            const box = image.getBoundingClientRect();
+            if (box.right <= boundary.right + 3 && box.left >= boundary.left - 3) continue;
+            causes.push({ page: pages.indexOf(column.closest('.page')) + 1,
+              sourceRef: image.closest('[data-source-ref]')?.dataset.sourceRef || '',
+              tag: image.tagName, classes: [...image.classList].filter(value => /^[A-Za-z0-9_-]+$/.test(value)),
+              columnClasses: [...column.classList].filter(value => /^[A-Za-z0-9_-]+$/.test(value)),
+              columnClientWidth: column.clientWidth, columnScrollWidth: column.scrollWidth,
+              columnClientHeight: column.clientHeight, columnScrollHeight: column.scrollHeight,
+              columnOverflowX: style.overflowX,
+              imageX: box.x - boundary.x, imageY: box.y - boundary.y, imageWidth: box.width, imageHeight: box.height,
+              imageNaturalWidth: image.naturalWidth, imageNaturalHeight: image.naturalHeight,
+              imageLoaded: image.complete && image.naturalWidth > 0 && image.naturalHeight > 0,
+              // This value stays in Chrome and is hashed before export below.
+              imageSourceValue: image.getAttribute('src') || '' });
+          }
+        }
+        qa.knownClippingCalls.push({ attemptedMode: window.AppState.mode, qpp: window.AppState.qpp,
+          attemptedRequestId: window.__AP_OUTPUT_ENVELOPE__?.outputRequestId || null,
+          candidatePageCount: pages.length, causes });
+      }
+      return original.apply(this, args);
+    };
+  });
+  const before = await collect(session, 'real50-qpp4-before-known-clipping', initial.outcome);
+  assertReady(before, 50, true);
+  const failures = [];
+  const blockedPrints = [];
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const failed = await operation(session, `real50-qpp4-clipping-attempt-${attempt}`, 'sol');
+    requireThat(failed.outcome.code === 'PDF_CONTENT_CLIPPED' && failed.outcome.error?.count === 1,
+      'KNOWN_CLIP_GUARD_REJECTED_FOR_DIFFERENT_CAUSE', { code: failed.outcome.code, count: failed.outcome.error?.count });
+    assertFailurePreserved(before, failed);
+    requireThat(!failed.binding.renderOutcomeOk && failed.binding.renderedIdentityMatches,
+      'KNOWN_CLIPPED_REQUEST_WAS_FALSELY_SEALED_READY');
+    requireThat(await session.page.evaluate(() => window.__outputCacheQA.roots.exam === document.getElementById('print-area')),
+      'KNOWN_CLIP_DID_NOT_PRESERVE_ORIGINAL_DOM');
+    const observed = await session.page.evaluate(async () => {
+      const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
+      return Promise.all(window.__outputCacheQA.knownClippingCalls.map(async call => ({ ...call,
+        causes: await Promise.all(call.causes.map(async ({ imageSourceValue, ...cause }) => ({ ...cause,
+          imageUrlSha256: await digest(imageSourceValue) }))) })));
+    });
+    report.knownIssue.observedCauses = observed;
+    writeReport();
+    requireThat(observed.length === attempt, 'KNOWN_CLIP_ATTEMPT_NOT_OBSERVED');
+    const call = observed.at(-1);
+    const cause = call.causes[0];
+    requireThat(call.causes.length === 1 && call.qpp === 4 && call.attemptedMode === 'sol' &&
+      cause?.sourceRef === expectedSourceRef && cause.tag === 'IMG' && cause.page === 8 &&
+      cause.columnClientWidth === 340 && cause.columnScrollWidth === 432 &&
+      Math.abs(cause.imageX - 12) <= 1 && Math.abs(cause.imageWidth - 420) <= 1 && Math.abs(cause.imageHeight - 300) <= 1 &&
+      cause.imageNaturalWidth === 420 && cause.imageNaturalHeight === 300 && cause.imageLoaded,
+      'KNOWN_CLIPPING_CAUSE_CHANGED', { attemptedMode: call.attemptedMode, qpp: call.qpp, causes: call.causes });
+    requireThat(call.attemptedRequestId && call.attemptedRequestId !== before.binding.outputRequestId &&
+      failed.binding.outputRequestId !== call.attemptedRequestId,
+      'FAILED_CLIPPING_REQUEST_REPLACED_HEALTHY_IDENTITY');
+    failures.push({ attempt, code: failed.outcome.code, committed: failed.attempts.at(-1).committed,
+      previousSnapshotPreserved: failed.snapshotId === before.snapshotId,
+      inputPreserved: failed.binding.inputControlsHash === before.binding.inputControlsHash,
+      failedRequestSealedReady: false });
+    blockedPrints.push(await printCheck(session, failed, false, `real50-qpp4-failed-print-${attempt}`));
+  }
+  const answer = await operation(session, 'real50-qpp4-answer-after-failed-retry', 'ans');
+  assertReady(answer, 50, true);
+  const exam = await operation(session, 'real50-qpp4-exam-after-failed-retry', 'exam');
+  assertReady(exam, 50, true);
+  const examParity = await assertHit(session, before, exam);
+  await bounded(session.page.evaluate(async () => {
+    await window.mixedScreenRuntime.whenIdle();
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    window.__solutionLoadingQA.firstBoxMs = 0;
+    window.__outputCacheQA.restoreLayoutObservation();
+  }), 10000);
+  const settled = await collect(session, 'real50-qpp4-no-late-overwrite', exam.outcome);
+  assertReady(settled, 50, true);
+  compareVisible(exam, settled);
+  requireThat(exam.attemptCount === settled.attemptCount && exam.snapshotId === settled.snapshotId &&
+    exam.binding.outputRequestId === settled.binding.outputRequestId && exam.binding.urlRequestId === settled.binding.urlRequestId,
+    'KNOWN_CLIP_LATE_COMPLETION_OVERWROTE_RECOVERY');
+  return { guardMeaning: 'Existing qpp4 clipping remains unresolved; PASS verifies failure preservation, not solution output quality.',
+    failedOperationQualityPass: false, failures, blockedPrints, subsequentAnswerReady: true,
+    subsequentExamReady: true, examParity, noLateOverwrite: true,
+    knownIssue: { ...report.knownIssue, status: 'UNRESOLVED', guardPass: true } };
+}
+
 async function runCase(browser, server, fixture, name, work) {
   let session;
   try {
@@ -537,6 +645,7 @@ async function runCase(browser, server, fixture, name, work) {
     assertReady(initial, fixture.questions.length, fixture.kind === 'envelope');
     const evidence = await work(session, initial);
     requireThat(session.errors.length === 0, 'UNEXPECTED_BROWSER_ERROR', { errors: session.errors });
+    if (evidence.knownIssue) report.knownIssue = evidence.knownIssue;
     report.cases.push({ name, pass: true, ...evidence });
     console.log(JSON.stringify({ name, pass: true }));
   } catch (error) {
@@ -556,6 +665,14 @@ async function main() {
     sources: [H.sourceFiles[0]], modifiedOnlyInBrowser: ['same-uid-source-change'] };
   const envelope = { id: 'cache-real8', kind: 'envelope', questions, sources: [H.sourceFiles[0]] };
   const legacy = { ...envelope, id: 'cache-editor-real8', kind: 'legacy' };
+  const real50 = { id: 'known-clipping-real50-qpp4', kind: 'envelope', qpp: 4,
+    questions: H.realFixture(root), sources: H.sourceFiles };
+  report.knownIssue = { id: 'REAL50_QPP4_REMINDER_IMAGE_CLIPPING', status: 'UNRESOLVED', guardPass: false,
+    qualityPass: false, fixture: real50.id, questionCount: real50.questions.length, qpp: real50.qpp,
+    inputSha256: hash(JSON.stringify(real50.questions)), sourceFile: H.sourceFiles[0],
+    sourceSha256: hash(fs.readFileSync(path.join(root, H.sourceFiles[0]))),
+    sourceUid: real50.questions[16]._sourceQuestionUid || real50.questions[16].sourceQuestionUid,
+    expectedFailureCode: 'PDF_CONTENT_CLIPPED', observedCauses: [] };
   let browser, server;
   try {
     server = await H.serve(root);
@@ -568,7 +685,8 @@ async function main() {
     await runCase(browser, server, envelope, 'latest-public-request-wins', latestRequest);
     await runCase(browser, server, envelope, 'final-readiness-failure-and-retry', finalReadinessFailure);
     await runCase(browser, server, envelope, 'pending-finalizer-decode-cancellation', abortPendingDecode);
-    report.pass = report.cases.length === 7 && report.cases.every(row => row.pass);
+    await runCase(browser, server, real50, 'known-real50-qpp4-clipping-preservation', knownReal50Clipping);
+    report.pass = report.cases.length === 8 && report.cases.every(row => row.pass);
   } finally { await browser?.close(); await server?.close(); writeReport(); }
   console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.cases.length, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;

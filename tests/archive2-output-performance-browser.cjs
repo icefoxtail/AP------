@@ -17,10 +17,13 @@ const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || '87d7a554448d8ecf9ab
 const profileOnly = process.env.ARCHIVE_PERFORMANCE_PROFILE_ONLY === '1';
 const pdfOnly = process.env.ARCHIVE_PERFORMANCE_PDF_ONLY === '1';
 const skipPdf = process.env.ARCHIVE_PERFORMANCE_SKIP_PDF === '1';
-const phase = pdfOnly ? 'pdf' : skipPdf ? 'performance' : 'all';
-const repeats = pdfOnly || profileOnly ? 1 : Number(process.env.ARCHIVE_PERFORMANCE_REPEATS || 3);
+const networkOnly = process.env.ARCHIVE_PERFORMANCE_NETWORK_ONLY === '1';
+const networkFixtureId = process.env.ARCHIVE_PERFORMANCE_NETWORK_FIXTURE || null;
+const phase = networkOnly ? 'network-completion' : pdfOnly ? 'pdf' : skipPdf ? 'performance' : 'all';
+const repeats = networkOnly || pdfOnly || profileOnly ? 1 : Number(process.env.ARCHIVE_PERFORMANCE_REPEATS || 3);
 const reportDir = path.resolve(process.env.ARCHIVE_PERFORMANCE_REPORT_DIR || path.join(os.tmpdir(), 'archive-output-performance'));
-const suiteBudgetMinutes = pdfOnly ? 15 : 25;
+const suiteBudgetMinutes = networkOnly ? 20 : 25;
+const operationTimeoutMs = networkOnly ? 480000 : 90000;
 const suiteDeadline = Date.now() + suiteBudgetMinutes * 60 * 1000;
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const round = value => Number(Number(value).toFixed(2));
@@ -32,10 +35,25 @@ const fixtures = [
   { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] },
   { id: 'envelope8', kind: 'envelope', limit: 8, sources: [H.sourceFiles[0]] }
 ];
+const operationsByCycle = {
+  performance: [{ id: 'cold-exam', mode: 'exam' }, { id: 'exam-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' },
+    { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
+    { id: 'same-ans', mode: 'ans' }],
+  coldSolution: [{ id: 'cold-sol', mode: 'sol' }],
+  continuation: [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-sol-warm', mode: 'sol' }],
+  pdf: [{ id: 'pdf-exam', mode: 'exam' }, { id: 'pdf-sol', mode: 'sol' }, { id: 'pdf-ans', mode: 'ans' }],
+  network: [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-exam', mode: 'exam' },
+    { id: 'exam-sol-warm', mode: 'sol' }, { id: 'same-sol', mode: 'sol' }]
+};
 const report = { schema: 'ARCHIVE_OUTPUT_PERFORMANCE_CHROME_V1', baselineSha: baseSha,
-  profileOnly, phase, repeats, rows: [], comparisons: [], pdfRows: [], pdfComparisons: [], failures: [], cycles: [], summaries: [],
+  profileOnly, phase, repeats, networkFixtureId, rows: [], comparisons: [], networkComparisons: [], pdfRows: [], pdfComparisons: [], failures: [], cycles: [], summaries: [],
   conditions: { viewport: { width: 1440, height: 1000 }, cpuThrottleRate: 1,
-    suiteBudgetMinutes, operationTimeoutMs: 90000,
+    suiteBudgetMinutes, operationTimeoutMs,
+    timeoutScope: networkOnly ? '480s total cold navigation plus render observation, and per warm public operation; product gates unchanged' : '90s per existing navigation/readiness wait; product gates unchanged',
+    networkCompletionPurpose: networkOnly ? 'one paired complete cold solution load followed by warm mode switches; not a network P95 estimate' : null,
+    networkTransport: networkOnly ? 'identity/no-store stress' : 'identity/no-store unthrottled',
+    responseEncoding: 'local static server without compression; production gzip transfer is a separate observation',
+    slowNetworkCoverage: 'Dedicated NETWORK_ONLY jobs cover envelope50-qpp1 and envelope8. Normal performance and PDF phases contain no slow-network experiments; historical 90s timeout artifacts remain separate evidence.',
     networkCachePolicy: 'no-store', warmMeaning: 'same-document initialized assets and mode snapshots',
     p95Method: 'nearest rank; for fewer than 20 samples this is the observed maximum, not a population tail estimate',
     coordinateTolerancePx: 1, slowNetwork: { latencyMs: 100, downloadBytesPerSecond: 187500, uploadBytesPerSecond: 93750 } } };
@@ -56,15 +74,74 @@ function safeError(error) {
     ...(Object.keys(details).length ? { details } : {}) };
 }
 function writeReport() {
+  updateCoverage();
   fs.mkdirSync(reportDir, { recursive: true });
   fs.writeFileSync(path.join(reportDir, 'output-performance.json'), JSON.stringify(report, null, 2));
 }
-function timeLeft(cap = 90000) {
+function planCoverage(legacy, golden) {
+  const labels = profileOnly ? ['current'] : ['baseline', 'current'];
+  const measurements = [];
+  const add = (fixture, repeat, purpose, network, operations) => {
+    for (const operation of operations) measurements.push({ purpose, fixture: fixture.id, qpp: fixture.qpp || 4,
+      repeat, network, operation: operation.id, mode: operation.mode, labels });
+  };
+  if (networkOnly) add(fixtures.find(item => item.id === networkFixtureId), 1, 'network', 'slow-complete', operationsByCycle.network);
+  if (!pdfOnly && !networkOnly) {
+    for (let repeat = 1; repeat <= repeats; repeat += 1) for (const fixture of fixtures) {
+      add(fixture, repeat, 'performance', 'normal', operationsByCycle.performance);
+      if (fixture.kind === 'envelope') add(fixture, repeat, 'performance', 'normal', operationsByCycle.coldSolution);
+    }
+    add(legacy, 1, 'performance', 'normal', operationsByCycle.performance);
+    add(golden, 1, 'performance', 'normal', operationsByCycle.continuation);
+  }
+  if (!skipPdf && !networkOnly) for (const fixture of [...fixtures, legacy, golden])
+    add(fixture, 1, 'pdf', 'normal', operationsByCycle.pdf);
+  report.coverage = { schema: 'ARCHIVE_OUTPUT_PERFORMANCE_COVERAGE_V1', phase,
+    networkTransport: report.conditions.networkTransport, measurements,
+    plannedRows: measurements.reduce((sum, item) => sum + item.labels.length, 0),
+    plannedPairs: profileOnly ? 0 : measurements.length,
+    explanation: 'A captured failure is observed coverage, never a passing result. Missing operations after a failed mode remain listed as blocked; they are not treated as passed.' };
+  updateCoverage();
+}
+function updateCoverage() {
+  if (!report.coverage) return;
+  const rows = [...report.rows, ...report.pdfRows];
+  const comparisons = { performance: report.comparisons, network: report.networkComparisons, pdf: report.pdfComparisons };
+  const matches = (observed, expected) => observed.fixture === expected.fixture && observed.repeat === expected.repeat &&
+    observed.network === expected.network && observed.operation === expected.operation;
+  const missingRows = [], missingPairs = [], duplicateRows = [], duplicatePairs = [];
+  for (const expected of report.coverage.measurements) {
+    for (const label of expected.labels) {
+      const observed = rows.filter(row => row.purpose === expected.purpose && row.label === label && matches(row, expected));
+      const identity = { purpose: expected.purpose, fixture: expected.fixture, repeat: expected.repeat,
+        network: expected.network, operation: expected.operation, label };
+      if (!observed.length) {
+        const failedCycle = report.cycles.find(cycle => cycle.fixture === expected.fixture && cycle.repeat === expected.repeat &&
+          cycle.network === expected.network && cycle.purpose === expected.purpose && cycle.label === label &&
+          cycle.operations.includes(expected.operation) && cycle.failedOperation);
+        missingRows.push({ ...identity, status: failedCycle ? 'BLOCKED_OR_FAILED_BEFORE_CAPTURE' : 'NOT_OBSERVED',
+          ...(failedCycle ? { precedingFailure: { operation: failedCycle.failedOperation, code: failedCycle.error?.code } } : {}) });
+      } else if (observed.length !== 1) duplicateRows.push({ ...identity, count: observed.length });
+    }
+    if (!profileOnly) {
+      const observed = comparisons[expected.purpose].filter(row => matches(row, expected));
+      const identity = { purpose: expected.purpose, fixture: expected.fixture, repeat: expected.repeat,
+        network: expected.network, operation: expected.operation };
+      if (!observed.length) missingPairs.push(identity);
+      else if (observed.length !== 1) duplicatePairs.push({ ...identity, count: observed.length });
+    }
+  }
+  Object.assign(report.coverage, { observedRows: rows.length,
+    observedPairs: Object.values(comparisons).reduce((sum, items) => sum + items.length, 0),
+    missingRows, missingPairs, duplicateRows, duplicatePairs,
+    complete: !missingRows.length && !missingPairs.length && !duplicateRows.length && !duplicatePairs.length });
+}
+function timeLeft(cap = operationTimeoutMs) {
   const remaining = Math.min(cap, suiteDeadline - Date.now());
   requireThat(remaining > 0, 'PERFORMANCE_SUITE_TIME_BUDGET_EXCEEDED');
   return remaining;
 }
-async function bounded(work, cap = 90000) {
+async function bounded(work, cap = operationTimeoutMs) {
   let timer;
   try { return await Promise.race([work, new Promise((_, reject) => {
     timer = setTimeout(() => reject(Object.assign(new Error('PERFORMANCE_OPERATION_TIMEOUT'), { code: 'PERFORMANCE_OPERATION_TIMEOUT' })), timeLeft(cap));
@@ -72,7 +149,8 @@ async function bounded(work, cap = 90000) {
 }
 
 function installProfile() {
-  const profile = window.__outputPerformance = { adapters: [], runtimeReadyAt: null, envelopeReadyAt: null, operation: 0 };
+  const profile = window.__outputPerformance = { adapters: [], runtimeReadyAt: null, envelopeReadyAt: null, operation: 0,
+    metadata: { promisePresent: false, settled: false, fulfilled: null } };
   profile.classifyError = async error => {
     const message = String(error?.message || '');
     const messageSha256 = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(message))), byte => byte.toString(16).padStart(2, '0')).join('');
@@ -96,7 +174,19 @@ function installProfile() {
     }
     return { code, name: String(error?.name || 'Error'), messageSha256, ...(count === undefined ? {} : { count }) };
   };
-  let api, envelopeReady;
+  let api, envelopeReady, metadataReady;
+  Object.defineProperty(window, '__ARCHIVE_METADATA_READY__', { configurable: true, get: () => metadataReady, set(value) {
+    metadataReady = value;
+    const observation = profile.metadata = { promisePresent: !!value?.then, settled: false, fulfilled: null,
+      assignedAtMs: performance.now() };
+    Promise.resolve(value).then(result => {
+      Object.assign(observation, { settled: true, fulfilled: true, resolvedNull: result == null,
+        settledAtMs: performance.now(), recordsCount: Array.isArray(result?.records) ? result.records.length : 0 });
+    }, error => {
+      Object.assign(observation, { settled: true, fulfilled: false, settledAtMs: performance.now(),
+        rejectionName: /^[A-Za-z][A-Za-z0-9]*$/.test(error?.name || '') ? error.name : 'Error' });
+    });
+  } });
   Object.defineProperty(window, '__AP_OUTPUT_RENDER_READY__', { configurable: true, get: () => envelopeReady, set(value) {
     envelopeReady = value;
     if (value?.pageCount) profile.envelopeReadyAt = performance.now();
@@ -221,7 +311,11 @@ async function documentEvidence(page) {
       runtimeReadyAt: profile.runtimeReadyAt, envelopeReadyAt: profile.envelopeReadyAt,
       adapters: profile.adapters.filter(item => item.operation === profile.operation),
       navigation: (() => { const item = performance.getEntriesByType('navigation')[0]; return item ? {
-        domContentLoadedMs: item.domContentLoadedEventEnd, loadMs: item.loadEventEnd, responseEndMs: item.responseEnd } : null; })()
+        domContentLoadedMs: item.domContentLoadedEventEnd, loadMs: item.loadEventEnd, responseEndMs: item.responseEnd } : null; })(),
+      startup: { metadata: { ...profile.metadata },
+        metadataLoaderMode: ['frozen-source', 'sidecar'].includes(window.APOutputMetadataLoader?.mode) ? window.APOutputMetadataLoader.mode : null,
+        metadataRecordsCount: Array.isArray(window.ARCHIVE_QUESTION_METADATA?.records) ? window.ARCHIVE_QUESTION_METADATA.records.length : 0,
+        appDataCount: Array.isArray(state?.data) ? state.data.length : 0, appKeyPresent: !!state?.key }
     };
   });
 }
@@ -288,7 +382,7 @@ async function printPdfMetadata(session, before) {
   // PDF timestamps/object identities are allowed to differ. Compare page count
   // and physical geometry, while retaining the generated byte hash as evidence.
   return { generated: true, elapsedMs, bytes: bytes.length, sha256: hash(bytes), pageCount, mediaBoxes,
-    fontObjects: (text.match(/\/Type\s*\/Font\b/g) || []).length, screenParity, raster: inspectPdf(bytes) };
+    fontObjects: (text.match(/\/Type\s*\/Font\b/g) || []).length, screenParity, raster: inspectPdf(bytes, pageCount) };
 }
 
 async function openSession(browser, server, fixture, initialMode, slow) {
@@ -303,6 +397,46 @@ async function openSession(browser, server, fixture, initialMode, slow) {
     page.on('pageerror', error => errors.push({ name: error.name, messageSha256: hash(error.message) }));
     const cdp = await context.newCDPSession(page);
     await cdp.send('Performance.enable');
+    const metadataNetwork = [];
+    if (slow) {
+      const requests = new Map();
+      cdp.on('Network.requestWillBeSent', event => {
+        let pathname;
+        try { pathname = new URL(event.request.url).pathname; } catch (_) { return; }
+        if (!pathname.endsWith('/data/question_metadata.json')) return;
+        const record = { resource: 'question_metadata.json', state: 'REQUESTED', finished: false, failed: false,
+          decodedDataBytes: 0, encodedDataBytes: 0, chunks: 0 };
+        requests.set(event.requestId, { record, start: event.timestamp }); metadataNetwork.push(record);
+      });
+      cdp.on('Network.responseReceived', event => {
+        const request = requests.get(event.requestId); if (!request) return;
+        const headers = Object.fromEntries(Object.entries(event.response.headers || {}).map(([key, value]) => [key.toLowerCase(), value]));
+        const encoding = String(headers['content-encoding'] || 'identity').toLowerCase();
+        Object.assign(request.record, { state: 'RECEIVING', httpStatus: event.response.status,
+          headersAfterMs: round((event.timestamp - request.start) * 1000),
+          contentEncoding: ['identity', 'gzip', 'br', 'deflate', 'zstd'].includes(encoding) ? encoding : 'OTHER',
+          contentLength: /^\d+$/.test(String(headers['content-length'] || '')) ? Number(headers['content-length']) : null,
+          responseEncodedBytes: event.response.encodedDataLength });
+      });
+      cdp.on('Network.dataReceived', event => {
+        const request = requests.get(event.requestId); if (!request) return;
+        request.record.decodedDataBytes += event.dataLength;
+        request.record.encodedDataBytes += event.encodedDataLength;
+        request.record.chunks += 1;
+        request.record.lastChunkAfterMs = round((event.timestamp - request.start) * 1000);
+      });
+      cdp.on('Network.loadingFinished', event => {
+        const request = requests.get(event.requestId); if (!request) return;
+        Object.assign(request.record, { state: 'FINISHED', finished: true,
+          finishedAfterMs: round((event.timestamp - request.start) * 1000), encodedBytesTotal: event.encodedDataLength });
+      });
+      cdp.on('Network.loadingFailed', event => {
+        const request = requests.get(event.requestId); if (!request) return;
+        Object.assign(request.record, { state: 'FAILED', failed: true, canceled: !!event.canceled,
+          failedAfterMs: round((event.timestamp - request.start) * 1000),
+          code: /^net::ERR_[A-Z0-9_]+$/.test(event.errorText || '') ? event.errorText : 'NETWORK_FAILED' });
+      });
+    }
     const metrics = async () => Object.fromEntries((await cdp.send('Performance.getMetrics')).metrics.map(item => [item.name, item.value]));
     await page.goto(server.origin + '/__loading/seed.html', { waitUntil: 'domcontentloaded', timeout: timeLeft() });
     let url;
@@ -337,7 +471,7 @@ async function openSession(browser, server, fixture, initialMode, slow) {
         downloadThroughput: report.conditions.slowNetwork.downloadBytesPerSecond,
         uploadThroughput: report.conditions.slowNetwork.uploadBytesPerSecond, connectionType: 'cellular3g' });
     }
-    return { context, page, cdp, metrics, errors, url: url.href, fixture,
+    return { context, page, cdp, metrics, errors, url: url.href, fixture, metadataNetwork,
       async close() { await context.close(); } };
   } catch (error) { await context.close(); throw error; }
 }
@@ -347,9 +481,14 @@ async function measureOperation(session, operation, label, repeat, network, firs
   const before = await session.metrics();
   let outcome, publicMs, alreadyVisible = false, previousAttempts = 0;
   if (first) {
-    try { await page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: timeLeft() }); }
-    catch (error) { if (error.name === 'TimeoutError') error.code = 'OUTPUT_NAVIGATION_TIMEOUT'; throw error; }
-    outcome = await awaitInitialOutcome(page, fixture.kind === 'envelope');
+    const initial = async () => {
+      try { await page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: timeLeft() }); }
+      catch (error) { if (error.name === 'TimeoutError') error.code = 'OUTPUT_NAVIGATION_TIMEOUT'; throw error; }
+      return awaitInitialOutcome(page, fixture.kind === 'envelope');
+    };
+    // The separate slow-network experiment observes actual completion, with
+    // one total cap including navigation. Existing suite wait caps stay intact.
+    outcome = networkOnly ? await bounded(initial(), operationTimeoutMs) : await initial();
   } else {
     const result = await bounded(page.evaluate(async mode => {
       const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
@@ -394,6 +533,14 @@ async function measureOperation(session, operation, label, repeat, network, firs
     cdp: Object.fromEntries(['LayoutCount', 'RecalcStyleCount', 'LayoutDuration', 'RecalcStyleDuration', 'ScriptDuration', 'TaskDuration'].map(key =>
       [key.endsWith('Duration') ? key + 'Ms' : key, round(((after[key] || 0) - (before[key] || 0)) * (key.endsWith('Duration') ? 1000 : 1))])),
     pageErrors: session.errors.slice() });
+  if (network !== 'normal') {
+    const transfers = session.metadataNetwork.map(record => ({ ...record }));
+    row.metadataTransfer = { state: !transfers.length ? 'NOT_REQUESTED' : transfers.some(item => item.failed) ? 'FAILED' :
+      transfers.every(item => item.finished) ? 'COMPLETE' : 'PENDING', requests: transfers,
+      loaderMode: row.startup.metadataLoaderMode,
+      notRequestedUnderFrozenSourcePolicy: transfers.length === 0 && row.startup.metadataLoaderMode === 'frozen-source',
+      renderCompletedWithoutMetadataRequest: outcome.ok === true && transfers.length === 0 };
+  }
   if (alreadyVisible) {
     row.cacheStatus = 'UNCHANGED_ACTIVE'; row.phases = {}; row.visibleReadyMs = null;
     row.metrics = { renderReadyMs: 0, mathJaxTotalMs: 0, mathJaxCalls: 0, rafCount: 0, calls: [] };
@@ -423,21 +570,19 @@ async function measureOperation(session, operation, label, repeat, network, firs
   return row;
 }
 
-async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, continuation = false, pdf = false } = {}) {
-  const network = slow ? 'slow' : 'normal';
-  const purpose = pdf ? 'pdf' : 'performance';
-  const operations = pdf ? [{ id: 'pdf-exam', mode: 'exam' }, { id: 'pdf-sol', mode: 'sol' }, { id: 'pdf-ans', mode: 'ans' }] :
-    continuation ? [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-sol-warm', mode: 'sol' }] : coldSolution ? [{ id: 'cold-sol', mode: 'sol' }] : [
-    { id: 'cold-exam', mode: 'exam' }, { id: 'exam-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' },
-    { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
-    { id: 'same-ans', mode: 'ans' }
-  ];
-  const planned = { fixture: fixture.id, qpp: fixture.qpp || 4, label, repeat, network, purpose, operations: operations.map(item => item.id), pass: false, completed: 0 };
+async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, continuation = false, pdf = false, pdfAnswerOnly = false, networkCompletion = false } = {}) {
+  const network = networkCompletion ? 'slow-complete' : slow ? 'slow' : 'normal';
+  const purpose = networkCompletion ? 'network' : pdf ? 'pdf' : 'performance';
+  const operations = networkCompletion ? operationsByCycle.network : pdf ? (pdfAnswerOnly ? operationsByCycle.pdf.slice(2) : operationsByCycle.pdf) :
+    continuation ? operationsByCycle.continuation : coldSolution ? operationsByCycle.coldSolution : operationsByCycle.performance;
+  const planned = { fixture: fixture.id, qpp: fixture.qpp || 4, label, repeat, network, purpose,
+    context: pdfAnswerOnly ? 'isolated-direct-answer-after-blocked-solution' : 'mode-sequence',
+    operations: operations.map(item => item.id), pass: false, completed: 0 };
   report.cycles.push(planned);
   const rows = [];
   let session;
   try {
-    session = await openSession(browser, server, fixture, operations[0].mode, slow);
+    session = await openSession(browser, server, fixture, operations[0].mode, slow || networkCompletion);
     for (let index = 0; index < operations.length; index += 1) {
       const row = await measureOperation(session, operations[index], label, repeat, network, index === 0, purpose);
       rows.push(row);
@@ -448,11 +593,17 @@ async function cycle(browser, server, fixture, label, repeat, { coldSolution = f
     planned.failedOperation = operations[planned.completed]?.id || 'session-open';
     planned.error = safeError(error);
     if (session) {
+      planned.metadataNetworkAtFailure = session.metadataNetwork.map(record => ({ ...record }));
       try { planned.browserAtFailure = await session.page.evaluate(() => {
         const navigation = performance.getEntriesByType('navigation')[0];
         const resources = performance.getEntriesByType('resource');
         const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+        const state = window.AppState;
         return { elapsedMs: performance.now(), documentReadyState: document.readyState,
+          metadata: { ...(window.__outputPerformance?.metadata || { promisePresent: false, settled: false, fulfilled: null }) },
+          metadataLoaderMode: ['frozen-source', 'sidecar'].includes(window.APOutputMetadataLoader?.mode) ? window.APOutputMetadataLoader.mode : null,
+          metadataRecordsCount: Array.isArray(window.ARCHIVE_QUESTION_METADATA?.records) ? window.ARCHIVE_QUESTION_METADATA.records.length : 0,
+          appDataCount: Array.isArray(state?.data) ? state.data.length : 0, appKeyPresent: !!state?.key,
           mathJaxLoaded: typeof window.MathJax?.typesetPromise === 'function', runtimePresent: !!runtime,
           runtimeBusy: runtime?.busy || false,
           latestAttemptState: runtime?.inspect().attempts.at(-1)?.state || null,
@@ -492,10 +643,13 @@ function compare(before, after) {
   if (before.pdf || after.pdf) requireThat(before.pdf?.generated && after.pdf?.generated &&
     before.pdf.pageCount === after.pdf.pageCount && JSON.stringify(before.pdf.mediaBoxes) === JSON.stringify(after.pdf.mediaBoxes),
     'PDF_GEOMETRY_PARITY_FAILED', { fixture: before.fixture, operation: before.operation });
-  if (before.pdf || after.pdf) requireThat(before.pdf?.raster && after.pdf?.raster &&
-    JSON.stringify(before.pdf.raster) === JSON.stringify(after.pdf.raster),
-    'PDF_PAINTED_OUTPUT_PARITY_FAILED', { fixture: before.fixture, operation: before.operation });
-  return { ...parity, fixture: before.fixture, operation: before.operation, repeat: before.repeat, network: before.network, pass: true };
+  if (before.pdf || after.pdf) {
+    const { inspectionElapsedMs: beforeInspectionMs, ...beforeRaster } = before.pdf?.raster || {};
+    const { inspectionElapsedMs: afterInspectionMs, ...afterRaster } = after.pdf?.raster || {};
+    requireThat(before.pdf?.raster && after.pdf?.raster && JSON.stringify(beforeRaster) === JSON.stringify(afterRaster),
+      'PDF_PAINTED_OUTPUT_PARITY_FAILED', { fixture: before.fixture, operation: before.operation });
+  }
+  return { ...parity, fixture: before.fixture, qpp: before.qpp, operation: before.operation, repeat: before.repeat, network: before.network, purpose: before.purpose, pass: true };
 }
 
 function compareCycles(before, after, target = report.comparisons) {
@@ -506,7 +660,7 @@ function compareCycles(before, after, target = report.comparisons) {
     try { target.push(compare(baseline, current)); }
     catch (error) {
       const row = baseline || current;
-      target.push({ fixture: row?.fixture, operation, repeat: row?.repeat, network: row?.network, pass: false, error: safeError(error) });
+      target.push({ fixture: row?.fixture, qpp: row?.qpp, operation, repeat: row?.repeat, network: row?.network, purpose: row?.purpose, pass: false, error: safeError(error) });
     }
   }
 }
@@ -544,23 +698,29 @@ async function main() {
   requireThat(/^[a-f0-9]{40}$/i.test(baseSha), 'EXACT_BASELINE_SHA_REQUIRED');
   requireThat(Number.isInteger(repeats) && repeats >= 1 && repeats <= 5, 'INVALID_REPEAT_COUNT');
   requireThat(!(pdfOnly && skipPdf), 'CONFLICTING_PDF_PHASE_FLAGS');
+  requireThat(!(networkOnly && (pdfOnly || profileOnly)), 'NETWORK_COMPLETION_REQUIRES_PAIRED_NON_PDF_RUN');
+  if (networkOnly) requireThat(['envelope50-qpp1', 'envelope8'].includes(networkFixtureId), 'NETWORK_FIXTURE_REQUIRED');
   const chrome = process.env.CHROME_BIN;
   requireThat(chrome && fs.existsSync(chrome), 'REAL_CHROME_BIN_REQUIRED');
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.playwrightVersion = require('playwright/package.json').version;
   for (const fixture of fixtures) fixture.questions = fixture.kind === 'envelope' ? H.realFixture(root).slice(0, fixture.limit || 50) : H.loadBank(root, fixture.sources[0]);
-  report.fixtures = fixtures.map(fixture => ({ id: fixture.id, kind: fixture.kind, qpp: fixture.qpp || 4, questions: fixture.questions.length,
+  report.fixtures = fixtures.filter(fixture => !networkOnly || fixture.id === networkFixtureId).map(fixture => ({ id: fixture.id, kind: fixture.kind, qpp: fixture.qpp || 4, questions: fixture.questions.length,
     inputSha256: hash(JSON.stringify(fixture.questions)), sources: fixture.sources.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file))) })) }));
   requireThat(fixtures[0].questions.length === 50, 'REAL_50_QUESTION_FIXTURE_CHANGED');
-  requireThat(hash(JSON.stringify(fixtures.find(item => item.id === 'envelope50-qpp1').questions)) === report.fixtures[0].inputSha256,
+  requireThat(hash(JSON.stringify(fixtures.find(item => item.id === 'envelope50-qpp1').questions)) === hash(JSON.stringify(fixtures[0].questions)),
     'QPP_VARIANT_CHANGED_REAL_50_QUESTION_BYTES');
   const legacy = { ...fixtures[0], id: 'legacy50', kind: 'legacy' };
   const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
   const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
-  report.fixtures.push({ id: legacy.id, kind: legacy.kind, qpp: legacy.qpp || 4, questions: legacy.questions.length,
-    inputSha256: hash(JSON.stringify(legacy.questions)), sources: report.fixtures[0].sources });
-  report.fixtures.push({ id: golden.id, kind: golden.kind, qpp: golden.qpp || 4, questions: golden.questions.length,
-    inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
+  if (!networkOnly) {
+    report.fixtures.push({ id: legacy.id, kind: legacy.kind, qpp: legacy.qpp || 4, questions: legacy.questions.length,
+      inputSha256: hash(JSON.stringify(legacy.questions)), sources: report.fixtures[0].sources });
+    report.fixtures.push({ id: golden.id, kind: golden.kind, qpp: golden.qpp || 4, questions: golden.questions.length,
+      inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
+  }
+  planCoverage(legacy, golden);
+  writeReport();
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-output-performance-'));
   const baselineRoot = path.join(temp, 'baseline');
   let baselineServer, currentServer, browser, worktree = false;
@@ -573,7 +733,14 @@ async function main() {
     currentServer = await H.serve(root);
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
-    if (!pdfOnly) for (let repeat = 1; repeat <= repeats; repeat += 1) {
+    if (networkOnly) {
+      const fixture = fixtures.find(item => item.id === networkFixtureId);
+      const outputs = {};
+      for (const label of ['baseline', 'current'])
+        outputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixture, label, 1, { networkCompletion: true });
+      compareCycles(outputs.baseline, outputs.current, report.networkComparisons);
+    }
+    if (!pdfOnly && !networkOnly) for (let repeat = 1; repeat <= repeats; repeat += 1) {
       for (const fixture of fixtures) {
         const outputs = {};
         const labels = profileOnly ? ['current'] : repeat % 2 ? ['baseline', 'current'] : ['current', 'baseline'];
@@ -588,7 +755,7 @@ async function main() {
     }
     // A separate legacy session detects repeated clicks that never enter the
     // strict Archive2 wrapper. It is not substituted for the envelope benchmark.
-    if (!pdfOnly) {
+    if (!pdfOnly && !networkOnly) {
       const legacyOutputs = {};
       for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
         legacyOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, legacy, label, 1);
@@ -597,22 +764,24 @@ async function main() {
       for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
         goldenOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, golden, label, 1, { continuation: true });
       if (!profileOnly) compareCycles(goldenOutputs.baseline, goldenOutputs.current);
-      // Keep the real-50 slow-network failure visible, and measure the smaller
-      // valid envelope independently. Neither sample estimates network P95.
-      for (const fixture of [fixtures[0], fixtures.find(item => item.id === 'envelope8')]) {
-        const slowOutputs = {};
-        for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
-          slowOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixture, label, 1, { coldSolution: true, slow: true });
-        if (!profileOnly) compareCycles(slowOutputs.baseline, slowOutputs.current);
-      }
+      // Slow transport completion now has its own NETWORK_ONLY phase and
+      // explicit coverage manifest. Earlier timeout reports are retained as
+      // historical failures; they are not reclassified as successful loads.
     }
-    if (!skipPdf) {
+    if (!skipPdf && !networkOnly) {
       // Printing can load extra fonts and trigger FONT_INVALIDATION. Dedicated
       // contexts keep those real print effects out of warm mode-switch timing.
       for (const fixture of [...fixtures, legacy, golden]) {
         const pdfOutputs = {};
-        for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
-          pdfOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixture, label, 1, { pdf: true });
+        for (const label of profileOnly ? ['current'] : ['baseline', 'current']) {
+          const server = label === 'baseline' ? baselineServer : currentServer;
+          pdfOutputs[label] = await cycle(browser, server, fixture, label, 1, { pdf: true });
+          // The unchanged qpp4 solution has a real clipping failure. Keep that
+          // failure, then measure its otherwise unreachable answer output in a
+          // fresh strict context with the identical 50-question bytes/options.
+          if (fixture.id === 'envelope50' && !pdfOutputs[label].some(row => row.operation === 'pdf-ans'))
+            pdfOutputs[label].push(...await cycle(browser, server, fixture, label, 1, { pdf: true, pdfAnswerOnly: true }));
+        }
         if (!profileOnly) compareCycles(pdfOutputs.baseline, pdfOutputs.current, report.pdfComparisons);
       }
     }
@@ -620,12 +789,14 @@ async function main() {
       !report.cycles.some(item => item.purpose === purpose) ? 'NOT_RUN_IN_THIS_PHASE' :
         report.cycles.filter(item => item.purpose === purpose).every(item => item.pass) && rows.length > 0 && rows.every(item => item.pass) ? 'PASS' : 'FAIL';
     report.performanceParity = phaseParity('performance', report.comparisons);
+    report.networkParity = phaseParity('network', report.networkComparisons);
     report.pdfParity = phaseParity('pdf', report.pdfComparisons);
     report.outputParity = profileOnly ? 'NOT_RUN_PROFILE_ONLY' : report.failures.length === 0 &&
-      [...report.comparisons, ...report.pdfComparisons].every(row => row.pass) ? 'PASS' : 'FAIL';
-    report.pass = report.failures.length === 0 && report.cycles.every(cycle => cycle.pass) &&
+      [...report.comparisons, ...report.networkComparisons, ...report.pdfComparisons].every(row => row.pass) ? 'PASS' : 'FAIL';
+    updateCoverage();
+    report.pass = report.coverage.complete && report.failures.length === 0 && report.cycles.every(cycle => cycle.pass) &&
       [...report.rows, ...report.pdfRows].length > 0 && [...report.rows, ...report.pdfRows].every(row => row.pass) &&
-      (profileOnly || [...report.comparisons, ...report.pdfComparisons].every(row => row.pass));
+      (profileOnly || [...report.comparisons, ...report.networkComparisons, ...report.pdfComparisons].every(row => row.pass));
   } finally {
     await browser?.close(); await baselineServer?.close(); await currentServer?.close();
     if (worktree) execFileSync('git', ['worktree', 'remove', '--force', baselineRoot], { cwd: root, stdio: 'pipe', timeout: 30000 });
@@ -634,6 +805,7 @@ async function main() {
   }
   console.log(JSON.stringify({ schema: report.schema, pass: report.pass, profileOnly, phase, cases: report.rows.length,
     pdfCases: report.pdfRows.length, comparisons: report.comparisons.length, pdfComparisons: report.pdfComparisons.length,
+    networkComparisons: report.networkComparisons.length,
     outputParity: report.outputParity, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;
 }

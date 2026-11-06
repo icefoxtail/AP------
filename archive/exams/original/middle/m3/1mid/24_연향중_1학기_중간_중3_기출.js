@@ -50,8 +50,8 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE"
@@ -383,8 +383,8 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+    "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],

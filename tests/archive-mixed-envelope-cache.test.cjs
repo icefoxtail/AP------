@@ -14,7 +14,7 @@ const factoryScript = mixed.slice(factoryStart, mixed.indexOf('</script>', facto
 // These are binding/transaction unit tests, not a substitute for the Chrome
 // suite. Execute the production adapter factory and common input/key logic;
 // a recording renderer supplies no claims about layout or rendered content.
-function fixture() {
+function fixture({ frozenMetadata = false } = {}) {
     const context = vm.createContext({ URL, URLSearchParams, setTimeout, clearTimeout, AbortController, console, performance });
     const run = source => vm.runInContext(source, context);
     run(`
@@ -75,6 +75,10 @@ function fixture() {
             }; return runtime;
         } };
     `);
+    if (frozenMetadata) {
+        run('Archive2OutputContract = { CONTRACT_VERSION: "contract" }; document.baseURI = location.href;');
+        run(read('output-metadata-loader.js'));
+    }
     run(read('render-state-normalizer.js'));
     run(read('common-fast-runtime.js'));
     run(factoryScript);
@@ -109,6 +113,17 @@ test('fresh transport IDs preserve exact render keys and publish current binding
     assert.equal(h.run('inputs.at(-1).transport.envelope'), h.run('__AP_OUTPUT_ENVELOPE__'));
     assert.equal(h.run('Object.isFrozen(inputs.at(-1).transport.envelope.questions[0])'), true);
     assert.deepEqual(h.json('published.map(value => value.questionUids)'), [['uid-1'], ['uid-1'], ['uid-1']]);
+});
+
+test('frozen reader mode switches preserve exact source despite a late metadata helper', async () => {
+    const h = fixture({ frozenMetadata: true });
+    const before = h.json('AppState.data');
+    h.run('mergeCalls = 0; mergeArchiveQuestionMetadata = question => { mergeCalls++; return { ...question, metadataRevision: "late" }; };');
+    for (const mode of ['sol', 'ans', 'exam']) assert.equal((await h.run(`switchMode("${mode}")`)).ok, true);
+    assert.equal(h.run('mergeCalls'), 0);
+    assert.deepEqual(h.json('AppState.data'), before);
+    assert.deepEqual(h.json('__AP_OUTPUT_ENVELOPE__.questions'), before);
+    assert.equal(h.run('__AP_OUTPUT_RENDER_READY__.outputRequestId'), 'request-3');
 });
 
 test('transport validation rejects wrong content, owner, options and stale editor inputs', async () => {
