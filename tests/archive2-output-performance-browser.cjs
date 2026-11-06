@@ -20,7 +20,8 @@ const skipPdf = process.env.ARCHIVE_PERFORMANCE_SKIP_PDF === '1';
 const phase = pdfOnly ? 'pdf' : skipPdf ? 'performance' : 'all';
 const repeats = pdfOnly || profileOnly ? 1 : Number(process.env.ARCHIVE_PERFORMANCE_REPEATS || 3);
 const reportDir = path.resolve(process.env.ARCHIVE_PERFORMANCE_REPORT_DIR || path.join(os.tmpdir(), 'archive-output-performance'));
-const suiteDeadline = Date.now() + 15 * 60 * 1000;
+const suiteBudgetMinutes = pdfOnly ? 15 : 25;
+const suiteDeadline = Date.now() + suiteBudgetMinutes * 60 * 1000;
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const round = value => Number(Number(value).toFixed(2));
 const fixtures = [
@@ -34,6 +35,7 @@ const fixtures = [
 const report = { schema: 'ARCHIVE_OUTPUT_PERFORMANCE_CHROME_V1', baselineSha: baseSha,
   profileOnly, phase, repeats, rows: [], comparisons: [], pdfRows: [], pdfComparisons: [], failures: [], cycles: [], summaries: [],
   conditions: { viewport: { width: 1440, height: 1000 }, cpuThrottleRate: 1,
+    suiteBudgetMinutes, operationTimeoutMs: 90000,
     networkCachePolicy: 'no-store', warmMeaning: 'same-document initialized assets and mode snapshots',
     p95Method: 'nearest rank; for fewer than 20 samples this is the observed maximum, not a population tail estimate',
     coordinateTolerancePx: 1, slowNetwork: { latencyMs: 100, downloadBytesPerSecond: 187500, uploadBytesPerSecond: 93750 } } };

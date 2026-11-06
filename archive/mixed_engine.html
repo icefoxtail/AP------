@@ -3972,6 +3972,7 @@ return { AppState,
             outputRequestId: envelope.outputRequestId,
             payloadHash: envelope.payloadHash
         }, {
+            signal: ctx.abortSignal,
             renderOutcome: { ok: ctx.state === 'SUCCEEDED' && ctx.result.sessionId === ctx.requestedTargetSessionId,
                 pages: ctx.result.pageCount }
         });

@@ -8,12 +8,28 @@
     throw new Error(`PDF readiness failed: ${message}`);
   }
 
-  function withTimeout(promise, timeoutMs, message) {
-    let timer;
+  function cancelled() {
+    return Object.assign(new Error("DISCARDED_STALE"), { code: "DISCARDED_STALE" });
+  }
+
+  function assertNotAborted(signal) {
+    if (signal?.aborted) throw cancelled();
+  }
+
+  function withTimeout(promise, timeoutMs, message, signal) {
+    let timer, onAbort;
     const timeout = new Promise((_, reject) => {
+      onAbort = () => reject(cancelled());
+      if (signal?.aborted) { onAbort(); return; }
       timer = setTimeout(() => reject(new Error(message)), timeoutMs);
+      signal?.addEventListener("abort", onAbort, { once: true });
     });
-    return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+    // Observe the native promise even after cancellation so a late rejection
+    // cannot escape as an unhandled failure of an already discarded render.
+    return Promise.race([timeout, promise]).finally(() => {
+      clearTimeout(timer);
+      signal?.removeEventListener("abort", onAbort);
+    });
   }
 
   function assertIdentity(actual, expected, label) {
@@ -26,6 +42,8 @@
   async function assertReady(expectedEnvelope = null, options = {}) {
     const document = options.document || root.document;
     const window = options.window || root.window || root;
+    const signal = options.signal;
+    assertNotAborted(signal);
     if (!document) fail("document is unavailable.");
 
     if (window.__AP_OUTPUT_RENDER_ERROR__)
@@ -39,6 +57,7 @@
         Promise.resolve(hasRenderOutcome ? options.renderOutcome : window.__AP_RENDER_READY__),
         options.renderTimeoutMs || 45_000,
         "render readiness timed out.",
+        signal,
       );
       if (render?.ok !== true || !Number(render.pages))
         fail(render?.message || render?.code || "render did not complete.");
@@ -52,17 +71,18 @@
     }
 
     if (document.fonts?.ready)
-      await withTimeout(document.fonts.ready, options.fontTimeoutMs || 10_000, "font readiness timed out.");
+      await withTimeout(document.fonts.ready, options.fontTimeoutMs || 10_000, "font readiness timed out.", signal);
     if (window.__AP_MATHJAX_READY__) {
       const mathReady = await withTimeout(
         Promise.resolve(window.__AP_MATHJAX_READY__),
         options.mathTimeoutMs || 15_000,
         "MathJax readiness timed out.",
+        signal,
       );
       if (mathReady === false) fail("MathJax did not become ready.");
     }
     if (window.MathJax?.startup?.promise)
-      await withTimeout(window.MathJax.startup.promise, options.mathTimeoutMs || 15_000, "MathJax startup timed out.");
+      await withTimeout(window.MathJax.startup.promise, options.mathTimeoutMs || 15_000, "MathJax startup timed out.", signal);
     const printArea = document.getElementById("print-area");
     if (window.APRenderLoop?.unrenderedMathCount &&
         window.APRenderLoop.unrenderedMathCount(printArea))
@@ -70,19 +90,30 @@
 
     const images = Array.from(document.querySelectorAll("#print-area img"));
     await Promise.all(images.map(async (image, index) => {
+      assertNotAborted(signal);
       const imageTimeoutMs = options.imageTimeoutMs || 10_000;
       if (!image.complete) {
-        await withTimeout(new Promise((resolve, reject) => {
-          image.addEventListener("load", resolve, { once: true });
-          image.addEventListener("error", () => reject(new Error(`required image ${index + 1} failed to load.`)), { once: true });
-        }), imageTimeoutMs, `required image ${index + 1} timed out.`);
+        let onLoad, onError;
+        try {
+          await withTimeout(new Promise((resolve, reject) => {
+            onLoad = resolve;
+            onError = () => reject(new Error(`required image ${index + 1} failed to load.`));
+            image.addEventListener("load", onLoad, { once: true });
+            image.addEventListener("error", onError, { once: true });
+          }), imageTimeoutMs, `required image ${index + 1} timed out.`, signal);
+        } finally {
+          image.removeEventListener?.("load", onLoad);
+          image.removeEventListener?.("error", onError);
+        }
       }
+      assertNotAborted(signal);
       if (!image.complete || image.naturalWidth <= 0 || image.naturalHeight <= 0)
         fail(`required image ${index + 1} is unavailable.`);
       if (typeof image.decode === "function")
-        await withTimeout(image.decode(), options.decodeTimeoutMs || 5_000, `required image ${index + 1} decode timed out.`);
+        await withTimeout(image.decode(), options.decodeTimeoutMs || 5_000, `required image ${index + 1} decode timed out.`, signal);
     }));
 
+    assertNotAborted(signal);
     const layout = assertLayoutReady({ ...options, document, window });
     return { pageCount: layout.pageCount, imageCount: images.length };
   }

@@ -415,6 +415,116 @@ async function finalReadinessFailure(session, initial) {
   return { failureVisible: true, previousDocumentAndBindingPreserved: true, targetModeRetry: true, blocked, printed };
 }
 
+async function abortPendingDecode(session, initial) {
+  await beginOperation(session.page, 'sol');
+  await session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA;
+    const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
+    qa.oldRoot = document.getElementById('print-area');
+    qa.oldSnapshot = window.mixedScreenRuntime.activeSnapshot;
+    qa.oldRootHash = await digest(qa.oldRoot.innerHTML);
+    qa.oldRequestId = window.__AP_OUTPUT_ENVELOPE__.outputRequestId;
+    qa.decodeReleased = false; qa.decodeSettled = false; qa.latestRequested = false;
+    qa.fault = { entered: false, calls: 0 };
+    qa.rollbackObservation = null;
+    qa.observer = new MutationObserver(() => {
+      if (!qa.latestRequested || document.getElementById('print-area') !== qa.oldRoot) return;
+      const runtime = window.mixedScreenRuntime;
+      const params = new URLSearchParams(location.search);
+      qa.rollbackObservation = { oldRootRestored: true,
+        oldSnapshotRestored: runtime.activeSnapshot === qa.oldSnapshot,
+        mode: window.AppState.mode, candidateMode: runtime.committedCandidate?.mode,
+        oldEnvelopeRestored: window.__AP_OUTPUT_ENVELOPE__?.outputRequestId === qa.oldRequestId,
+        oldUrlRestored: params.get('outputRequestId') === qa.oldRequestId && params.get('mode') === 'exam' };
+    });
+    qa.observer.observe(document, { childList: true, subtree: true });
+    const originalAssertReady = window.Archive2PdfReadiness.assertReady;
+    let release;
+    const held = new Promise(resolve => { release = resolve; });
+    qa.releaseDecode = () => { qa.decodeReleased = true; release(); };
+    window.Archive2PdfReadiness.assertReady = async function (...args) {
+      if (!qa.fault.installed && window.mixedScreenRuntime.activeSnapshot?.mode === 'sol') {
+        qa.fault.installed = true;
+        const image = document.querySelector('#print-area img');
+        if (!image || typeof image.decode !== 'function') throw new Error('QA_DECODE_IMAGE_MISSING');
+        const originalDecode = image.decode;
+        image.decode = function () {
+          if (qa.fault.entered) return originalDecode.call(this);
+          qa.fault.entered = true; qa.fault.calls += 1; qa.decodeStartedAt = performance.now();
+          qa.heldDecode = held.then(() => originalDecode.call(image)).then(() => { qa.decodeSettled = true; });
+          return qa.heldDecode;
+        };
+        // The normal build has already waited for its images. Only this real
+        // finalizer's decode is held; later candidate images are untouched.
+        try { return await originalAssertReady.apply(this, args); }
+        finally { image.decode = originalDecode; window.Archive2PdfReadiness.assertReady = originalAssertReady; }
+      }
+      return originalAssertReady.apply(this, args);
+    };
+    qa.first = Promise.resolve(window.switchMode('sol')).then(value => ({ ok: value?.ok === true,
+      code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(value?.code || '') ? value.code : value?.code ? 'RENDER_FAILED' : null }),
+      async error => ({ ok: false, error: await window.__outputPerformance.classifyError(error) }));
+  });
+  await session.page.waitForFunction(() => window.__outputCacheQA.fault.entered, null, { timeout: remaining(20000), polling: 20 });
+  const pending = await collect(session, 'full-finalizer-decode-pending', { ok: false, code: 'QA_DECODE_PENDING' });
+  const oldRoot = await session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA;
+    const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
+    return { unchanged: await digest(qa.oldRoot.innerHTML) === qa.oldRootHash,
+      retainedBySnapshot: qa.oldSnapshot.rootNode === qa.oldRoot,
+      pages: qa.oldRoot.querySelectorAll('.page').length,
+      visibleModeWhileFinalizing: window.AppState.mode, decodeReleased: qa.decodeReleased };
+  });
+  requireThat(oldRoot.unchanged && oldRoot.retainedBySnapshot && oldRoot.pages === initial.pageCount &&
+    !oldRoot.decodeReleased && pending.binding.fault?.entered, 'PENDING_FINALIZER_DESTROYED_PREVIOUS_DOCUMENT');
+  await beginOperation(session.page, 'ans');
+  const result = await bounded(session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA;
+    qa.latestRequested = true;
+    const started = performance.now();
+    const latest = Promise.resolve(window.switchMode('ans')).then(value => ({ ok: value?.ok === true,
+      code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(value?.code || '') ? value.code : value?.code ? 'RENDER_FAILED' : null }),
+      async error => ({ ok: false, error: await window.__outputPerformance.classifyError(error) }));
+    const [first, last] = await Promise.all([qa.first, latest]);
+    const elapsedMs = performance.now() - started;
+    await window.mixedScreenRuntime.whenIdle();
+    return { first, last, elapsedMs, decodeReleased: qa.decodeReleased, decodeSettled: qa.decodeSettled,
+      elapsedSinceDecodeStartMs: performance.now() - qa.decodeStartedAt, rollback: qa.rollbackObservation };
+  }), 10000);
+  const after = await collect(session, 'latest-answer-cancels-held-decode', result.last, result.elapsedMs);
+  assertReady(after, 8, true);
+  requireThat(!result.first.ok && result.last.ok && after.mode === 'ans', 'HELD_DECODE_PREVENTED_LATEST_REQUEST', result);
+  requireThat(!result.decodeReleased && !result.decodeSettled && result.elapsedMs < 3000,
+    'LATEST_REQUEST_WAITED_FOR_OLD_DECODE_TIMEOUT', { elapsedMs: round(result.elapsedMs), maxMs: 3000,
+      decodeReleased: result.decodeReleased, decodeSettled: result.decodeSettled });
+  requireThat(after.attempts.some(attempt => !attempt.committed &&
+    (attempt.state === 'DISCARDED_STALE' || attempt.code === 'DISCARDED_STALE')),
+    'HELD_DECODE_REQUEST_WAS_NOT_DISCARDED');
+  requireThat(result.rollback?.oldRootRestored && result.rollback.oldSnapshotRestored &&
+    result.rollback.mode === 'exam' && result.rollback.candidateMode === 'exam' &&
+    result.rollback.oldEnvelopeRestored && result.rollback.oldUrlRestored,
+    'CANCELED_FINALIZER_DID_NOT_RESTORE_PREVIOUS_VIEW', { rollback: result.rollback });
+  await bounded(session.page.evaluate(async () => {
+    const qa = window.__outputCacheQA;
+    qa.releaseDecode();
+    await qa.heldDecode;
+    await window.mixedScreenRuntime.whenIdle();
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    qa.observer.disconnect();
+    if (!qa.decodeSettled) throw new Error('QA_HELD_DECODE_DID_NOT_SETTLE');
+    window.__solutionLoadingQA.firstBoxMs = 0;
+  }), 10000);
+  const settled = await collect(session, 'released-old-decode-cannot-overwrite-answer', result.last);
+  assertReady(settled, 8, true);
+  compareVisible(after, settled);
+  for (const key of ['snapshotId', 'outputRequestId', 'payloadHash', 'mode', 'urlMode', 'urlRequestId'])
+    requireThat(after.binding[key] === settled.binding[key], 'LATE_DECODE_OVERWROTE_LATEST_OUTPUT', { field: key });
+  requireThat(after.attemptCount === settled.attemptCount, 'LATE_DECODE_STARTED_UNEXPECTED_RENDER');
+  return { first: result.first, latest: result.last, latestReadyMs: round(result.elapsedMs), maxLatestReadyMs: 3000,
+    heldDecodeStillPendingAtLatestReady: true, previousDocumentRetainedWhilePending: oldRoot,
+    previousViewRestoredBeforeLatestCommit: result.rollback, noOverwriteAfterNativeDecodeSettled: true };
+}
+
 async function runCase(browser, server, fixture, name, work) {
   let session;
   try {
@@ -457,7 +567,8 @@ async function main() {
     await runCase(browser, server, envelope, 'actual-layout-failure-and-rollback', layoutFailure);
     await runCase(browser, server, envelope, 'latest-public-request-wins', latestRequest);
     await runCase(browser, server, envelope, 'final-readiness-failure-and-retry', finalReadinessFailure);
-    report.pass = report.cases.length === 6 && report.cases.every(row => row.pass);
+    await runCase(browser, server, envelope, 'pending-finalizer-decode-cancellation', abortPendingDecode);
+    report.pass = report.cases.length === 7 && report.cases.every(row => row.pass);
   } finally { await browser?.close(); await server?.close(); writeReport(); }
   console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.cases.length, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;

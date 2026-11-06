@@ -6,6 +6,7 @@ const N = require('../archive/render-state-normalizer.js');
 const R = require('../archive/screen-runtime.js');
 const L = require('../archive/side-effect-ledger.js');
 const M = require('../archive/mathjax_render_loop.js');
+const PdfReadiness = require('../archive/archive2-pdf-readiness.js');
 const screenRuntimeAdapter = fs.readFileSync(path.join(__dirname, '..', 'archive', 'screen-runtime-adapter.js'), 'utf8');
 
 function candidate(targetSessionId, mode = 'exam', input = {}) {
@@ -268,6 +269,32 @@ test('cached foreground reuse still finalizes; background prewarm never publishe
     assert.equal(f.state().visible, visible);
     assert.equal(cached.status, 'READY');
     assert.deepEqual(finalized, ['exam', 'sol']);
+});
+
+test('a newer mode leaves a stalled finalizer decode without waiting for native completion', async () => {
+    const f = fixture();
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let entered;
+    const started = new Promise(resolve => { entered = resolve; });
+    const image = { complete: true, naturalWidth: 10, naturalHeight: 10,
+        decode() { entered(); return new Promise(() => {}); } };
+    const document = { getElementById: () => ({}), querySelectorAll: selector => selector.endsWith(' img') ? [image] : [] };
+    f.adapter.finalize = ctx => ctx.candidate.mode === 'sol' ? PdfReadiness.assertReady(null, {
+        document, window: {}, signal: ctx.abortSignal, renderOutcome: { ok: true, pages: ctx.result.pageCount }
+    }) : undefined;
+    const old = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    await started;
+    const next = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    let timer;
+    try {
+        const outcomes = await Promise.race([Promise.all([old, next]), new Promise((_, reject) => {
+            timer = setTimeout(() => reject(Error('FINALIZER_CANCELLATION_HELD_FOREGROUND')), 500);
+        })]);
+        assert.equal(outcomes[0].code, 'DISCARDED_STALE');
+        assert.equal(outcomes[1].ok, true);
+    } finally { clearTimeout(timer); }
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    assert.equal(f.runtime.inspect().attempts.find(item => item.requestGeneration === 2).committed, false);
 });
 
 test('background and invalid enums cannot execute builds or effects', async () => {
