@@ -723,7 +723,28 @@ async function abortPendingExamImage(session, initial) {
     inputAndBindingPreserved: true };
   await beginOperation(session.page, 'ans');
   const result = await bounded(session.page.evaluate(async () => {
-    const qa = window.__outputCacheQA, started = performance.now();
+    const qa = window.__outputCacheQA, observation = window.__solutionLoadingQA;
+    const oldCell = qa.oldRoot.querySelector('.ans-cell');
+    const observeRetainedAnswer = () => {
+      const area = document.getElementById('print-area'), cell = area?.querySelector('.ans-cell');
+      const box = cell?.getBoundingClientRect();
+      let visible = !!cell?.isConnected;
+      for (let node = cell; node; node = node.parentElement) {
+        const style = getComputedStyle(node);
+        if (style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) === 0) visible = false;
+      }
+      return { mode: window.AppState.mode, rootPreserved: area === qa.oldRoot,
+        snapshotPreserved: window.mixedScreenRuntime.activeSnapshot === qa.oldSnapshot,
+        cellPreserved: !!cell && cell === oldCell, visible,
+        width: box?.width || 0, height: box?.height || 0,
+        inViewport: !!box && box.right > 0 && box.bottom > 0 && box.left < innerWidth && box.top < innerHeight };
+    };
+    const isVisibleAnswer = value => value.mode === 'ans' && value.rootPreserved && value.snapshotPreserved &&
+      value.cellPreserved && value.visible && value.inViewport && value.width > 0 && value.height > 0;
+    const before = observeRetainedAnswer();
+    if (!isVisibleAnswer(before)) throw new Error('RETAINED_ANSWER_NOT_VISIBLE_BEFORE_CANCEL');
+    const observedAtOperationMs = performance.now() - observation.operationStart;
+    const started = performance.now();
     // The visible mode is already ans, but the pending exam must be canceled;
     // returning through the same-mode no-op would leave this promise blocked.
     const latest = Promise.resolve(window.switchMode('ans')).then(value => ({ ok: value?.ok === true,
@@ -732,10 +753,19 @@ async function abortPendingExamImage(session, initial) {
     const [first, last] = await Promise.all([qa.first, latest]);
     const elapsedMs = performance.now() - started;
     await window.mixedScreenRuntime.whenIdle();
+    const after = observeRetainedAnswer();
+    if (!isVisibleAnswer(after) || qa.unexpectedVisibleRoot || Math.abs(after.width - before.width) > 1 ||
+      Math.abs(after.height - before.height) > 1) throw new Error('RETAINED_ANSWER_NOT_VISIBLE_AFTER_CANCEL');
+    // The general observer waits for a new root. The same answer was already
+    // visible before this request and stayed visible, so use the harness's
+    // retained-view convention (zero wait), not a fabricated new-paint time.
+    observation.firstBoxMs = 0;
     return { first, last, elapsedMs, decodeReleased: qa.decodeReleased, decodeSettled: qa.decodeSettled,
-      geometryReads: qa.geometryReads, unexpectedVisibleRoot: qa.unexpectedVisibleRoot };
+      geometryReads: qa.geometryReads, unexpectedVisibleRoot: qa.unexpectedVisibleRoot,
+      retainedVisibility: { kind: 'retained-answer', alreadyVisible: true, observedAtOperationMs, before, after } };
   }), 10000);
   const after = await collect(session, 'latest-answer-cancels-exam-image', result.last, result.elapsedMs);
+  after.retainedVisibility = result.retainedVisibility;
   assertReady(after, 8, true); await assertHit(session, initial, after);
   requireThat(!result.first.ok && result.first.code === 'DISCARDED_STALE' && result.last.ok &&
     !result.decodeReleased && !result.decodeSettled && result.elapsedMs < 3000,
@@ -768,7 +798,7 @@ async function abortPendingExamImage(session, initial) {
   return { first: result.first, latest: result.last, latestReadyMs: round(result.elapsedMs), maxLatestReadyMs: 3000,
     heldDecodeStillPendingAtLatestReady: true, oldDocumentPreservedWhilePending: true,
     inputAndBindingPreservedWhilePending: true, noGeometryBeforeImages: true, restoredAnswerSnapshotHit: true,
-    noOverwriteAfterNativeDecodeSettled: true, printed, pendingEvidence, latestEvidence,
+    noOverwriteAfterNativeDecodeSettled: true, printed, pendingEvidence, latestEvidence, retainedVisibility: result.retainedVisibility,
     settledEvidence: { ...released, mode: settled.mode, snapshotId: settled.snapshotId,
       outputRequestId: settled.binding.outputRequestId, attemptCount: settled.attemptCount } };
 }
