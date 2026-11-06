@@ -12,6 +12,7 @@ on:
       - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
+      - 'tools/check-archive2-finder-filter-browser.cjs'
       - 'tools/check-archive-content-browser.mjs'
       - 'tools/ci/archive-ci-scope.mjs'
       - 'tools/ci/run-scoped-tests.mjs'
@@ -32,6 +33,7 @@ on:
       - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
+      - 'tools/check-archive2-finder-filter-browser.cjs'
       - 'tools/check-archive-content-browser.mjs'
       - 'tools/ci/archive-ci-scope.mjs'
       - 'tools/ci/run-scoped-tests.mjs'
@@ -69,22 +71,24 @@ jobs:
         id: scope
         run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
       - name: Record unchanged shared runtime scope
-        if: steps.scope.outputs.mode != 'full'
+        if: steps.scope.outputs.runtime_contract != 'true'
+        env:
+          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
         run: |
-          echo 'Shared runtime regression: NOT_APPLICABLE; no engine, selector, metadata, generator, or test dependency changed.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'CI checks affected data bindings. The output job loads and prints the affected original sources.' >> "$GITHUB_STEP_SUMMARY"
+          printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
+          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta and registration-preview Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
       - name: Verify original routes, response budgets, and storage failures
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.runtime_contract == 'true'
         env:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: node tools/check-archive2-runtime.cjs
       - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.runtime_chrome == 'true'
         id: chrome
         with:
           chrome-version: stable
       - name: Verify finder desktop single row and mobile exam period in actual Chrome
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.runtime_chrome == 'true'
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-archive2-finder-filter-browser.cjs
@@ -107,7 +111,7 @@ jobs:
         id: scope
         run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
       - name: Verify image deadlines and render feedback regressions
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.solution_browser == 'true'
         run: >-
           node --test
           tests/archive-solution-loading.test.cjs
@@ -117,17 +121,17 @@ jobs:
           tests/archive-question-image-map-regression.test.js
           tests/archive2-output-strict-gate.test.cjs
       - uses: browser-actions/setup-chrome@v1
-        if: steps.scope.outputs.mode != 'playground'
+        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
         id: chrome
         with:
           chrome-version: stable
       - name: Install the pinned browser driver outside the checkout
-        if: steps.scope.outputs.mode != 'playground'
+        if: steps.scope.outputs.solution_browser == 'true' || steps.scope.outputs.mode == 'archive-content' || steps.scope.outputs.scoped_browser_changed == 'true'
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Compare 50 real solutions and verify asset failures in actual Chrome
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.solution_browser == 'true'
         timeout-minutes: 8
         # The test's checked-in reference applies only the shared image-fit fix
         # to the old engine. Never accept the old overflow as output parity,
@@ -147,16 +151,18 @@ jobs:
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
         run: node tools/check-archive-content-browser.mjs --scope "$RUNNER_TEMP/archive-ci-scope.json"
       - name: Verify the changed scoped browser checker on one existing original
-        if: steps.scope.outputs.mode == 'full' && steps.scope.outputs.scoped_browser_changed == 'true'
+        if: steps.scope.outputs.scoped_browser_changed == 'true'
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
         run: |
           node tests/archive-original-exam-access.browser.cjs
           ARCHIVE_OUTPUT_MODE=sol node tests/archive-original-exam-access.browser.cjs
-      - name: Record unrelated project scope
-        if: steps.scope.outputs.mode == 'playground'
-        run: echo 'Archive output regression NOT_APPLICABLE; only playground files changed. Playground checks run in CI.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Record unchanged common output scope
+        if: steps.scope.outputs.solution_browser != 'true' && steps.scope.outputs.mode != 'archive-content'
+        env:
+          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
+        run: printf '50-question output comparison NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload solution loading metadata, including failures
         if: always()
         uses: actions/upload-artifact@v4

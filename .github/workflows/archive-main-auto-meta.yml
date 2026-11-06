@@ -52,7 +52,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test tests/archive-registration-writer.test.mjs tests/git-push-derived-with-retry.test.mjs tests/archive-single-writer-workflows.test.mjs tests/archive-main-merge-meta.test.mjs tests/item-4slot-runtime.test.cjs
+      # Automation fixtures run once in CI; this existing check retains the native read-only inventory.
       - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/reviewed-meta-register-pass.sh tools/ci/archive-four-slot-pass.sh tools/ci/archive-pages-registration-derive.sh
       - name: Real production inventory (no writes or mathematical review)
         run: |
