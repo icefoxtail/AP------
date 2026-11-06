@@ -855,13 +855,14 @@
       init: (s) => { s.phEdge = 8; s.phAnt = 0.3; s.phFold = 0; s.phQ = rollQ(); },
       reroll: (s) => { s.phQ = rollQ(); },
       model: (s) => {
-        const a = Math.round(s.phEdge / 2) * 2, r = clamp(s.phAnt, 0.1, 0.9), ep = r * a;
+        const a = clamp(Math.round(s.phEdge / 2) * 2, 4, 14), r = Math.round(clamp(s.phAnt, 0.1, 0.9) * 100) / 100, ep = r * a;
+        s.phEdge = a; s.phAnt = r; // 손잡이와 1% 간격 막대가 같은 위치를 가리키게 합니다.
         const len = (rr) => Math.hypot(rr * a, a) + Math.hypot((1 - rr) * a, a);
-        return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 0.02, Q: s.phQ };
+        return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 1e-9, Q: s.phQ };
       },
       draw(b, s, M, C) {
         const st = stepOf(C), t = C.problem ? 1 : C.review ? 0 : (C.thumb ? 0 : s.phFold), phi = (PI / 2) * t;
-        const r = C.problem ? 0.5 : C.review ? (st === 1 ? M.r : 0.5) : M.r;
+        const r = C.problem || (C.review && st >= 2) ? 0.5 : M.r;
         const D0 = scene3(b, Object.assign({}, s, { phYaw: s.phYaw, phPitch: s.phPitch }), C);
         const D = D0;
         const A = fr(0, 0), Bp = fr(L, 0), E = fr(0, L), F = fr(L, L), Pp = fr(r * L, L), G = topPt(L, L, phi), H = topPt(0, L, phi);
@@ -891,9 +892,9 @@
         [[A, 'A'], [Bp, 'B'], [E, 'E'], [F, 'F'], [G, 'G'], [H, 'H']].forEach(([p, nm]) => { D.dot(p, nm === 'A' || nm === 'G' ? AMB : 'ink', nm === 'A' || nm === 'G' ? 6.5 : 3.6); if (C.txt) D.label(p, nm, { color: nm === 'A' || nm === 'G' ? AMB : 'ink', size: 18, dir: D.out(p, v3(0, 0, 0)), gap: 10 }); });
         if (C.txt && !C.problem) {
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
-          const ep = st === 3 || st === 2 ? M.a / 2 : M.ep, pf = M.a - ep;
-          D.label(mid3(E, Pp), `${fmt1(ep)}`, { color: SKY, size: 15, at: [[0, -18]] });
-          D.label(mid3(Pp, F), `${fmt1(pf)}`, { color: SKY, size: 15, at: [[0, -18]] });
+          const ep = r * M.a, pf = M.a - ep;
+          D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -18]] });
+          D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -18]] });
           const L1 = [{ t: `한 모서리 a = ${M.a}`, c: 'ink', size: 15 }];
           if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
           else if (M.mid && t < 0.05) L1.push({ t: 'AP와 PG가 한 직선이에요 → 가장 짧아요!', c: GRN, size: 15 });
@@ -909,13 +910,16 @@
         `펼친 그림에서 $\\text{A}$와 $\\text{G}$를 직선으로 이어요. 직선이 가장 짧아요.`,
         `이 직선은 $\\overline{\\text{EF}}$의 가운데를 지나요. 따라서 $\\overline{\\text{EP}}=\\dfrac{${M.a}}{2}=${M.a / 2}$예요.`
       ],
-      view: (M) => ({
+      view: (M, C) => {
+        const r = C.review && C.step >= 2 ? 0.5 : M.r;
+        const ep = r * M.a, length = Math.hypot(ep, M.a) + Math.hypot(M.a - ep, M.a), mid = Math.abs(r - 0.5) < 1e-9;
+        return {
         guide: `<b>노란 손잡이</b>를 끌어 점 P를 모서리 EF 위에서 옮겨 보세요. 경로 A→P→G의 길이가 달라져요. 두 면을 펼치면(접기 0%) ${span('amber', '직선')}일 때 가장 짧아요.`,
-        readouts: [rd('한 모서리 a', `${M.a}`, SKY), rd('EP', `${fmt1(M.ep)}`, AMB, `a의 ${Math.round(M.r * 100)}%`), rd('경로의 길이', `≈ ${fmt1(M.len)}`, M.mid ? GRN : AMB), rd('가장 짧은 경로', `≈ ${fmt1(M.minLen)}`, GRN, 'P가 EF의 가운데일 때')],
+        readouts: [rd('한 모서리 a', `${M.a}`, SKY), rd('EP', fmt2(ep), 'rose', `a의 ${Math.round(r * 100)}%`), rd('경로의 길이', `≈ ${fmt1(length)}`, mid ? GRN : AMB), rd('가장 짧은 경로', `≈ ${fmt1(M.minLen)}`, GRN, 'P가 EF의 가운데일 때')],
         formula: `<p>최단 경로는 두 면을 펼쳤을 때의 직선이에요. $\\overline{\\text{EP}}=\\dfrac{a}{2}=${M.a / 2}$</p>`,
         rule: '겉면 위의 최단 경로: 두 면을 한 평면 위에 펼쳤을 때 두 점을 잇는 직선',
-        notes: notes('펼치면 가로가 $2a$, 세로가 $a$인 직사각형이 돼요. 대각선이 $\\overline{\\text{EF}}$의 가운데를 지나요.', '입체에서는 꺾인 선이지만 펼치면 곧은 선이에요.')
-      }),
+        notes: notes('펼치면 두 변의 길이가 $a$와 $2a$인 직사각형이 돼요. 대각선이 $\\overline{\\text{EF}}$의 가운데를 지나요.', '입체에서는 꺾인 선이지만 펼치면 곧은 선이에요.')
+      }; },
       prob: (M) => {
         const a = M.Q.a, ans = a / 2;
         return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: (() => {
@@ -927,6 +931,7 @@
     };
   })();
   function fmt1(v) { const x = Math.round(v * 10) / 10; return Number.isInteger(x) ? String(x) : x.toFixed(1); }
+  function fmt2(v) { return String(Math.round(v * 100) / 100); }
 
   /* ------------------------------------------------------------------ p3-8 주사위의 전개도 */
   const PIPS = { 1: [[0.5, 0.5]], 2: [[0.28, 0.28], [0.72, 0.72]], 3: [[0.28, 0.28], [0.5, 0.5], [0.72, 0.72]], 4: [[0.28, 0.28], [0.72, 0.28], [0.28, 0.72], [0.72, 0.72]], 5: [[0.28, 0.28], [0.72, 0.28], [0.5, 0.5], [0.28, 0.72], [0.72, 0.72]], 6: [[0.28, 0.25], [0.72, 0.25], [0.28, 0.5], [0.72, 0.5], [0.28, 0.75], [0.72, 0.75]] };

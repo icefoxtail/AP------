@@ -1,11 +1,11 @@
 /* ==========================================================================
    중1 · 다면체와 정다면체 — 공용 도구 (core.js)
-   - 다섯 개 탭 모듈(t1~t5.js)과 stmt.js(공간 명제 그림)가 함께 쓰는 도구 모음입니다.
+   - 네 개 탭 모듈(t1~t4.js)이 함께 쓰는 도구 모음입니다.
      전역은 APL_PH(도구)와 APL_PH_GROUPS(탭 묶음) 둘뿐입니다.
    - 장면 하나 = 탐구(조절·돌려 보기·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
    - 입체는 평행투영(원근 없음)이라 평행한 모서리는 화면에서도 평행하게 보입니다. 안 보이는 모서리는 점선입니다.
-   - 색의 역할(이 실험실 전체): 노랑 = 기준 모서리·구하는 것·끌 수 있는 점 · 빨강 = 만나는 · 파랑 = 평행한 · 초록 = 꼬인 위치·평면 ·
-     보라 = 연장선·보조 · 기본 = 입체의 모서리.
+   - 의미색: sky = 기본 도형 · amber = 주목할 대상·움직이는 점 · green = 넓이·남은 면·결과 · rose = 길이 · red = 실제 단면·제거 부분·경고.
+     전개도의 모서리 관계는 색과 함께 실선·점선·문자·관계 설명으로 구분합니다.
    - 같은 크기의 각은 같은 표시, 직각은 네모, 평행한 선에는 화살표.
    - 입체의 시점 돌리기(제자리 회전)는 이동이 아니므로 허용합니다. 위치 이동은 쓰지 않습니다.
    - 좌표: 수학 3차원(x 오른쪽, y 안쪽, z 위쪽). 화면은 figure 좌표(y 아래쪽)로 투영해 그립니다.
@@ -299,13 +299,25 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  // 선택을 누르지 않고 '지금 보기'로 공개한 경우도 새 문항에서는 닫습니다.
+  // 시점·접기처럼 문항을 바꾸지 않는 조작은 진행 상태를 보존합니다.
+  const questionKeys = new WeakMap();
+  function syncQuestion(D, s, Q) {
+    const key = D.id + '|' + Q.key + '|' + (s.phSeed || 0);
+    const previous = questionKeys.get(s);
+    if (previous != null && previous !== key) {
+      s.phPick = null; s.revealed = false; s.step = 0;
+    }
+    questionKeys.set(s, key);
+    return Q;
+  }
   // 같은 문제(s.phQ)는 한 번만 만들어 두고 다시 씁니다. 보기를 만들 때 무작위를 써도, 보기를 누른 뒤 보기가 바뀌지 않게 하기 위해서입니다.
   function probOf(D, s) {
     const c = s.phPC, seed = s.phSeed || 0;
-    if (c && c.id === D.id && c.q === s.phQ && c.seed === seed) return c.Q;
+    if (c && c.id === D.id && c.q === s.phQ && c.seed === seed) return syncQuestion(D, s, c.Q);
     const Q = D.prob(D.model(s), s);
     s.phPC = { id: D.id, q: s.phQ, seed, Q };
-    return Q;
+    return syncQuestion(D, s, Q);
   }
   function problemHTML(D, s) {
     const Q = probOf(D, s);
@@ -346,6 +358,7 @@
       if (hit.hasAttribute('data-ph-new')) {
         D.reroll(s);
         s.phSeed = (s.phSeed || 0) + 1; s.phPick = null; s.revealed = false; s.playing = false;
+        probOf(D, s); // 새 문항을 먼저 기록한 뒤 기존의 첫 풀이 단계로 이동합니다.
         lab.setStep(1);
         try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
         lab.invalidate(true);
@@ -420,7 +433,9 @@
         const c0 = D.cam0 || { yaw: -30, pitch: 24 };
         s.phYaw = c0.yaw; s.phPitch = c0.pitch; s.phSpin = false; s.phPmin = D.pmin == null ? 8 : D.pmin;
         D.init(s);
-        s.phSeed = 0; s.phPick = null; s.playing = false;
+        s.phSeed = 0; s.phPick = null; s.phPC = null; s.playing = false; s.revealed = false; s.step = 0;
+        questionKeys.delete(s);
+        probOf(D, s);
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -441,6 +456,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        probOf(D, s); // 이전 문항의 공개 단계가 새 그림에 적용되기 전에 동기화합니다.
         // 막대를 움직이면 정리 단계의 글(숫자)도 달라지므로, 글이 바뀌면 정리 칸을 다시 만듭니다.
         if (lab && lab.scene && lab.scene.ph === D) {
           let sig = '';
