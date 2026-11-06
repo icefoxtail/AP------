@@ -227,3 +227,23 @@ test('kite folding guidance does not cover the lower vertex on mobile and remain
     assert.match(guide, /이등분/);
   }
 });
+
+test('kite folding guidance clears the floating toolbar on landscape tablets', () => {
+  const sc = get('t3-6');
+  // Actual 1024×768 capture: 683×474 canvas, with the floating controls at
+  // x=408..674, y=426..470 in canvas coordinates.
+  const toolbar = { l: 408, r: 674, t: 426, b: 470 };
+  for (const trKa of [20, 40, 70]) for (const trKt of [0, .5, 1]) {
+    const s = Object.assign(state(sc), { trKa, trKt });
+    const b = board(683, 474, { right: 16 }); sc.draw(b, s, {}, { tab: 'explore' });
+    for (const label of b.trLabels.filter(item => /접으면|이등분돼요/.test(item.text))) {
+      const overlap = label.l < toolbar.r && label.r > toolbar.l && label.t < toolbar.b && label.b > toolbar.t;
+      assert.equal(overlap, false, `${trKa}°, fold ${trKt}: floating controls cover the folding conclusion`);
+    }
+    const guide = sc.view(s, { tab: 'explore' }).guide;
+    assert.match(guide, /CB=CD/);
+    assert.match(guide, /RHS/);
+    assert.match(guide, /AC는 ∠A와 ∠C를 이등분/);
+    assert.ok(b.items.some(item => item.type === 'text' && item.str === 'D'), 'the fold preserves the lower vertex name');
+  }
+});
