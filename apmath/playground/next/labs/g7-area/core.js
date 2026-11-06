@@ -25,6 +25,16 @@
   const eqs = (v) => (isInt(v * 10) ? '=' : '≈'); // 소수 첫째 자리에서 딱 떨어지지 않으면 ≈
   const tx = (v) => fmtN(v).replace('−', '-');
   const texDeg = (v) => tx(v) + '^{\\circ}';
+  // 문제의 유리수는 반올림한 소수로 정답을 바꾸지 않습니다. 한 자리 유한소수는 유지합니다.
+  function exactN(v) {
+    if (isInt(v * 10)) return fmtN(v);
+    for (let d = 2; d <= 1000; d++) {
+      const n = Math.round(v * d);
+      if (Math.abs(v - n / d) < 1e-10) return `${n}/${d}`.replace('-', '−');
+    }
+    return `≈ ${fmtN(v)}`;
+  }
+  const exactTex = (v) => exactN(v).replace('−', '-').replace(/^(-?\d+)\/(\d+)$/, '\\frac{$1}{$2}').replace('≈ ', '\\approx ');
 
   /* ------------------------------------------------------------------ 기하 (figure: y 아래쪽) */
   const pt = (x, y) => ({ x, y });
@@ -177,9 +187,18 @@
   const showAt = (C, n) => C.step >= n;
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  function syncProblem(D, s, Q = D.prob(D.model(s), s)) {
+    const key = D.id + '|' + Q.key + '|' + (s.arSeed || 0);
+    if (s.arProblemKey != null && s.arProblemKey !== key) {
+      s.arPick = null; s.revealed = false; s.step = 1;
+      s.arProblemStep = 1; s.arProblemReveal = false;
+    }
+    s.arProblemKey = key;
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.arSeed || 0);
+    const key = syncProblem(D, s, Q);
     const pk = s.arPick && s.arPick.key === key ? s.arPick : null;
     let h = `<div class="ar-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += '<div class="ar-choices">';
@@ -257,6 +276,26 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label}, stepT?(n), verify?(s)→[기하로 잰 값, 식으로 구한 값] } */
   function makeScene(D) {
     const A = D.anim;
+    // Some questions ask for a different part of the inquiry figure. Keep that
+    // question's givens and proof together, with progress separate from inquiry.
+    function studyContext(s, lab) {
+      if (!D.problemSteps || !lab || lab.s !== s || !lab.scene || lab.scene.id !== D.id) return;
+      if (lab.tab === 'problem' && !s.arReviewQuestion) {
+        s.arPrincipleStep = s.step ?? 1;
+        s.step = s.arProblemStep ?? 1;
+        // A is an explicit answer-reveal shortcut immediately before setTab.
+        s.revealed = !!s.revealed || !!s.arProblemReveal;
+        s.arReviewQuestion = true;
+        s.playing = false;
+      } else if (lab.tab === 'explore' && s.arReviewQuestion) {
+        s.arProblemStep = s.step ?? 1;
+        s.arProblemReveal = !!s.revealed;
+        s.step = s.arPrincipleStep ?? 1;
+        s.revealed = false;
+        s.arReviewQuestion = false;
+      }
+    }
+    const studySteps = (s, M = D.model(s)) => s.arReviewQuestion && D.problemSteps ? D.problemSteps(M, s) : D.steps(M);
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -272,7 +311,7 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: () => (D.presets ? D.presets() : []),
       actions,
-      steps: (s) => D.steps(D.model(s)),
+      steps: (s) => { studyContext(s, curLab); return studySteps(s); },
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -282,6 +321,9 @@
       enter: (s, lab) => {
         D.init(s);
         s.arSeed = 0; s.arPick = null; s.playing = false;
+        s.arProblemKey = null;
+        s.arReviewQuestion = false; s.arPrincipleStep = 1; s.arProblemStep = 1; s.arProblemReveal = false;
+        syncProblem(D, s);
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -291,7 +333,7 @@
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.arReviewQuestion && !s.dragging) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
@@ -299,20 +341,35 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        if (lab && lab.scene && lab.scene.id === D.id && lab.s === s) syncProblem(D, s, D.prob(M, s));
+        studyContext(s, lab);
+        const C = baseCtx(s, lab, false);
+        const steps = studySteps(s, M);
         // 단계 문장은 키트가 장면에 들어올 때 한 번만 만들어서, 막대로 값을 바꾸면 정리 탭의 숫자가 옛 값으로 남습니다 → 문장이 달라지면 정리 탭을 다시 만듭니다.
         if (lab && lab.scene && lab.scene.ar === D && lab.s === s && lab.refs && lab.refs.steps) {
-          const key = JSON.stringify(D.steps(M));
+          const key = JSON.stringify(steps);
           if (lab.refs.steps.__ak !== key) { try { lab._buildReview(); } catch (e) { /* 그림은 그대로 */ } if (lab.refs.steps) lab.refs.steps.__ak = key; }
         }
         const v = D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = steps.length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if (s.arReviewQuestion && D.problemSteps) {
+            v.guide = '현재 문제의 도형을 보며 단계별로 풀이를 확인해 보세요.';
+            v.formula = `<p>${esc(steps[n - 1])}</p>`;
+            v.rule = null;
+          }
+          // 이 단원의 공식에는 현재 수치와 계산 결과가 들어 있습니다. 마지막 단계에서 함께 공개합니다.
+          if ((s.step || 0) < n) v.formula = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
+        if (!b.thumb) studyContext(s, lab);
         const C = baseCtx(s, lab, !!b.thumb);
+        if (!b.thumb && C.review && s.arReviewQuestion && D.problemSteps) C.problem = true;
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
@@ -331,8 +388,8 @@
   /* ------------------------------------------------------------------ 넓이 실험실 도우미 */
   // 그림 속 글자에 쓰는 ½: 키트가 \\frac{1}{2} 를 위·아래로 쌓은 분수로 그립니다.
   const HALF = '\\frac{1}{2}';
-  const cm2 = { tex: (v) => tx(v) + '\\text{cm}^2', plain: (v) => fmtN(v) + 'cm²' };
-  const cm1 = { tex: (v) => tx(v) + '\\text{cm}', plain: (v) => fmtN(v) + 'cm' };
+  const cm2 = { tex: (v) => exactTex(v) + '\\text{cm}^2', plain: (v) => exactN(v) + 'cm²' };
+  const cm1 = { tex: (v) => exactTex(v) + '\\text{cm}', plain: (v) => exactN(v) + 'cm' };
   const rotAbout = (p, q, th) => { const c = Math.cos(th), sn = Math.sin(th), dx = p.x - q.x, dy = p.y - q.y; return pt(q.x + dx * c - dy * sn, q.y + dx * sn + dy * c); };
   const rpick = (list, cur) => { const pool = list.filter((x) => x !== cur); return pool[Math.floor(Math.random() * pool.length)]; };
   const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
@@ -369,7 +426,7 @@
   const area2 = (P) => Math.abs(polyArea(P));
 
   window.APL_AR = {
-    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg,
+    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg, exactN, exactTex,
     pt, add, sub, mul, len, unit, mid, lerp, polar, dirDeg, angBetween, cross, inter, regPoly, regUp, polyArea, centroid, gcd, pick, rint, bboxOf, unionBox,
     textW, T, tagOut, vtx, ang, tick, par, fillPoly, line, poly, fit, P, degF, mkChoices, baseCtx, showAt, makeScene, register, notes, rd,
     HALF, cm2, cm1, rotAbout, rpick, range, dim, hgtTo, area2

@@ -44,7 +44,7 @@
       }
       const hot1 = C.review && C.step === 1, hot2 = C.review && C.step >= 2;
       b.right(Av, Bv, Cv, { size: 16, color: 'sky' });
-      hgtTo(b, Av, Bv, Cv, { label: C.problem ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
+      hgtTo(b, Av, Bv, Cv, { label: C.problem || (C.review && C.step < 3) ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
       dim(b, Bv, Av, `${a}`, { ref: Cv, color: 'sky', width: 3 });
       dim(b, Av, Cv, `${bb}`, { ref: Bv, color: 'sky' });
       dim(b, Bv, Cv, `${c}`, { ref: Av, color: 'green' });
@@ -52,7 +52,7 @@
       if (hot1) { line(b, Bv, Av, 'sky', 6, { alpha: 0.6 }); line(b, Av, Cv, 'sky', 6, { alpha: 0.6 }); }
       if (hot2) line(b, Bv, Cv, 'green', 6, { alpha: 0.6 });
       if (C.problem) { foot(b, Mh, '빗변에 내린 수선의 길이 h = ?', 'amber', 58); return; }
-      if (C.review) foot(b, Mh, C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
+      if (C.review) foot(b, Mh, C.step < 1 ? '같은 넓이를 두 방법으로 나타내요' : C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
       else foot(b, Mh, t > 0.999 ? `직사각형 ${a}×${bb}=${a * bb}의 절반 = ${S}` : `넓이 = ${HALF}×${a}×${bb} = ${S}`, 'green', 58);
     },
     stepT: (n) => (n === 1 ? 1 : 0),
@@ -94,7 +94,7 @@
     geo: (M) => { const B = pt(0, 0), Cc = pt(M.a, 0), D = pt(M.a + M.S, -M.h1), A = pt(M.S, -M.h1); return { pg: [B, Cc, D, A] }; },
     draw(b, s, M, C) {
       const { a, S, h1, c, h2, A: ar } = M, [Bp, Cp, Dp, Ap] = para2.geo(M).pg;
-      const mode = C.review ? (C.step === 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
+      const mode = C.review ? (C.step <= 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
       const u = mul(sub(Dp, Cp), 1 / c), tt = (sub(Ap, Cp).x * u.x + sub(Ap, Cp).y * u.y), Fp = add(Cp, mul(u, tt));
       const bb = bboxOf([Bp, Cp, Dp, Ap, Fp, pt(S, 0)]);
       FIT(b, bb, { b: 92, r: 54 });
@@ -104,15 +104,16 @@
       const show1 = mode === 0 || mode === 2, show2 = mode === 1 || mode === 2;
       if (show1) line(b, Bp, Cp, 'sky', 6, { alpha: 0.65 });
       if (show2) line(b, Cp, Dp, 'green', 6, { alpha: 0.65 });
-      if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1 });
-      if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
+      if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1, at: show2 ? 0 : 0.5, dy: show2 ? -26 : 0 });
+      if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem || (C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
       dim(b, Bp, Cp, `BC = ${a}`, { ref: c0, color: 'sky' });
       dim(b, Cp, Dp, `CD = ${c}`, { ref: c0, color: 'green', off: 26 });
       [[Ap, 'A'], [Bp, 'B'], [Cp, 'C'], [Dp, 'D']].forEach(([p, n]) => tagOut(b, p, c0, n, { size: 17, gap: 10 }));
       const fx = (a + S) / 2;
       if (C.problem) { foot(b, pt(fx, 0), '평행사변형의 넓이를 두 가지로 나타내 보세요', 'amber', 58); return; }
+      if (C.review && C.step < 1) { foot(b, pt(fx, 0), '같은 넓이를 두 방법으로 나타내요', 'amber', 58); return; }
       if (mode === 0) foot(b, pt(fx, 0), `넓이 = ${a} × ${h1} = ${ar}`, 'sky', 58);
-      else if (mode === 1) foot(b, pt(fx, 0), `넓이 = ${c} × ${num(h2)} = ${ar}`, 'green', 58);
+      else if (mode === 1) foot(b, pt(fx, 0), `넓이 = ${c} × ${C.review && C.step < 3 ? 'h₂' : num(h2)} = ${ar}`, 'green', 58);
       else foot(b, pt(fx, 0), `${a}×${h1} = ${c}×${num(h2)} = ${ar}`, 'amber', 58);
     },
     steps: (M) => [
@@ -176,6 +177,11 @@
       `밑변 BC=${M.B}도 그대로예요.`,
       `그러므로 넓이 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.A)}는 변하지 않아요. (둘레는 변해요. 넓이가 같다고 둘레가 같은 것은 아니에요.)`
     ],
+    problemSteps: (M) => [
+      'A와 A′는 직선 l 위에 있고, 밑변 BC는 l과 평행한 직선 m 위에 있어요. 두 삼각형의 높이는 두 평행선 사이의 거리로 같아요.',
+      `△ABC와 △A′BC는 밑변 BC=${M.B}cm도 공유하므로 넓이가 같아요. 높이의 수치를 따로 구할 필요가 없어요.`,
+      `따라서 △A′BC의 넓이 = △ABC의 넓이 = ${G.exactN(M.A)}cm²예요.`
+    ],
     view: (M) => ({
       guide: '<b>노란 점 A</b>를 평행선 위에서 가로로 끌거나 ▶를 눌러 보세요. 밑변과 높이가 그대로이면 <b>넓이는 그대로</b>예요. 그런데 둘레는 어떻게 될까요?',
       readouts: [rd('밑변 BC', `${M.B}`, 'sky'), rd('두 평행선 사이의 거리', `${M.H}`, 'amber'), rd('넓이', `${num(M.A)}`, 'green', `${M.B} × ${M.H} ÷ 2`), rd('둘레(어림)', `≈ ${fmtN(M.per)}`, 'rose', 'A가 한가운데일 때 가장 짧아요')],
@@ -186,7 +192,7 @@
     prob: (M) => {
       const { B, A } = M;
       return {
-        tag: '함정 · 꼭짓점을 옮겨도 넓이가 같은 삼각형', key: `${B}-${A}-${fmtN(M.x)}-${fmtN(M.x2)}`,
+        tag: '함정 · 꼭짓점을 옮겨도 넓이가 같은 삼각형', key: `${B}-${A}`,
         stem: `직선 l과 m은 평행하고, m 위의 선분 BC의 길이는 ${B} cm이다. l 위의 두 점 A, A′에 대하여 삼각형 ABC의 넓이가 ${A} cm²일 때, 삼각형 A′BC의 넓이는?`,
         choices: mkChoices(A, [[A * 2, '넓이가 두 배가 되지 않아요. 밑변과 높이가 그대로예요.'], [A / 2, '넓이가 반이 되지 않아요. 평행선 사이의 거리는 일정해요.'], [A + B, '점의 위치가 달라도 밑변과 높이가 같으면 넓이가 같아요.'], [B, '밑변의 길이는 넓이가 아니에요.']], { ...cm2, pad: pad8(A) })
       };
@@ -209,8 +215,11 @@
     geo: (M) => { const Bv = pt(0, 0), Cv = pt(M.B, 0), Av = pt(M.p, -M.H), Dv = pt(M.p + M.d, -M.H), O = inter(Av, Cv, Bv, Dv); return { Av, Bv, Cv, Dv, O }; },
     draw(b, s, M, C) {
       const { B, d, H, p, X, Y, w } = M, { Av, Bv, Cv, Dv, O } = wing.geo(M);
-      FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
-      const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
+      // The question uses only one trapezoid and two given areas. Reserve their
+      // actual label space instead of the three-line animated proof below it.
+      if (C.problem) FIT(b, bboxOf([Av, Bv, Cv, Dv]), { t: 28, b: 84, l: 32, r: 32 });
+      else FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
+      const t = C.problem ? 0 : C.review ? (C.step < 1 ? 0 : C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
       const c0 = centroid([Av, Bv, Cv, Dv]);
       if (C.problem) { fillPoly(b, [Bv, Cv, O], 'green', 0.3); fillPoly(b, [Av, Bv, O], 'amber', 0.3); }
       else {
@@ -227,27 +236,27 @@
       const cen = (P3) => centroid(P3);
       if (C.problem) {
         T(b, cen([Av, Bv, O]), 'S₁=?', { size: 20, color: 'amber' });
-        foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${Y} cm²`, 'green', 62);
+        foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${G.exactTex(Y)} cm²`, 'green', 62);
         return;
       }
       if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
-      dim(b, Bv, Cv, `${B}`, { ref: c0, color: 'sky' });
+      dim(b, Bv, Cv, C.review ? 'BC' : `${B}`, { ref: c0, color: 'sky' });
       let r = 0;
-      if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${num(X)}`, 'sky', 58 + 26 * r++);
-      if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${num(Y)}`, 'green', 58 + 26 * r++);
-      if (t > 0.9) foot(b, pt(B / 2, 0), `S₁ = S₂ = ${num(X)} − ${num(Y)} = ${num(w)}`, 'amber', 58 + 26 * r++);
+      if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${G.exactTex(X)}`, 'sky', 58 + 26 * r++);
+      if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${G.exactTex(Y)}`, 'green', 58 + 26 * r++);
+      if (t > 0.9) foot(b, pt(B / 2, 0), `S₁ = S₂ = ${G.exactTex(X)} − ${G.exactTex(Y)} = ${G.exactTex(w)}`, 'amber', 58 + 26 * r++);
       handle(b, C, 'a', Av, '윗변을 가로로 끌기', (q) => { s.b4P = clamp(Math.round(q.x), 0, 4); });
     },
     stepT: (n) => (n <= 1 ? 0.4 : n === 2 ? 0.8 : 1),
     steps: (M) => [
-      `△ABC와 △DBC는 밑변 BC가 같고, 높이(두 평행선 사이의 거리)도 같으므로 넓이가 같아요. 둘 다 ${num(M.X)}예요.`,
-      `두 삼각형에 공통인 △OBC(${num(M.Y)})가 있어요. 양쪽에서 이 부분을 빼면 남는 것이 양옆 삼각형이에요.`,
-      `△ABO = △ABC − △OBC = ${num(M.X)} − ${num(M.Y)} = ${num(M.w)}, △DCO = △DBC − △OBC = ${num(M.w)}. 따라서 △ABO = △DCO예요.`
+      `△ABC와 △DBC는 밑변 BC가 같고, 높이(두 평행선 사이의 거리)도 같으므로 넓이가 같아요. 둘 다 ${G.exactN(M.X)}예요.`,
+      `두 삼각형에 공통인 △OBC(${G.exactN(M.Y)})가 있어요. 양쪽에서 이 부분을 빼면 남는 것이 양옆 삼각형이에요.`,
+      `△ABO = △ABC − △OBC = ${G.exactN(M.X)} − ${G.exactN(M.Y)} = ${G.exactN(M.w)}, △DCO = △DBC − △OBC = ${G.exactN(M.w)}. 따라서 △ABO = △DCO예요.`
     ],
     view: (M) => ({
       guide: '▶를 눌러 <b>△ABC</b>(하늘)와 <b>△DBC</b>(분홍)를 비교하고, 공통 부분(초록)을 빼면 <b>노란 양옆 삼각형</b>이 남아요. 길이는 막대로 바꿔요.',
-      readouts: [rd('△ABC = △DBC', num(M.X), 'sky', `${M.B} × ${M.H} ÷ 2`), rd('공통 △OBC', num(M.Y), 'green'), rd('△ABO = △DCO', num(M.w), 'amber', `${num(M.X)} − ${num(M.Y)}`, null, true)],
-      formula: `<p>$\\triangle ABO=\\triangle ABC-\\triangle OBC=${tx(M.X)}-${tx(M.Y)}=${tx(M.w)}$</p><p>$\\triangle DCO=\\triangle DBC-\\triangle OBC=${tx(M.w)}$</p>`,
+      readouts: [rd('△ABC = △DBC', G.exactN(M.X), 'sky', `${M.B} × ${M.H} ÷ 2`), rd('공통 △OBC', G.exactN(M.Y), 'green'), rd('△ABO = △DCO', G.exactN(M.w), 'amber', `${G.exactN(M.X)} − ${G.exactN(M.Y)}`, null, true)],
+      formula: `<p>$\\triangle ABO=\\triangle ABC-\\triangle OBC=${G.exactTex(M.X)}-${G.exactTex(M.Y)}=${G.exactTex(M.w)}$</p><p>$\\triangle DCO=\\triangle DBC-\\triangle OBC=${G.exactTex(M.w)}$</p>`,
       rule: 'AD ∥ BC인 사다리꼴에서 대각선의 교점 O를 잡으면 △ABO = △DCO',
       notes: notes('밑변이 BC로 같고 평행선 사이에 있으니 △ABC=△DBC예요.', '공통 부분 △OBC를 빼는 것이 핵심이에요. 대각선으로 나뉜 위·아래 삼각형(△AOD, △OBC)은 같지 않아요.')
     }),
@@ -255,7 +264,7 @@
       const { X, Y, w } = M;
       return {
         tag: '사다리꼴에서 대각선이 만든 삼각형의 넓이', key: `${M.B}-${M.d}-${M.H}`,
-        stem: `AD ∥ BC인 사다리꼴 ABCD에서 두 대각선의 교점을 O라 하자. 삼각형 ABC의 넓이가 ${X} cm², 삼각형 OBC의 넓이가 ${Y} cm²일 때, 삼각형 ABO의 넓이는?`,
+        stem: `AD ∥ BC인 사다리꼴 ABCD에서 두 대각선의 교점을 O라 하자. 삼각형 ABC의 넓이가 ${X} cm², 삼각형 OBC의 넓이가 ${G.exactN(Y)} cm²일 때, 삼각형 ABO의 넓이는?`,
         choices: mkChoices(w, [[X, '△ABC 전체의 넓이예요. 공통 부분 △OBC를 빼야 해요.'], [Y, '공통 부분 △OBC의 넓이예요.'], [X + Y, '공통 부분을 더하지 않고 빼요.'], [2 * w, '△ABO와 △DCO의 합이에요.']], { ...cm2, pad: pad8(w) })
       };
     },
@@ -273,7 +282,10 @@
     geo: (M, gap = 0) => { const xA = (M.m + M.n) * 0.4, Bv = pt(0, 0), D = pt(M.m, 0), Cv = pt(M.m + M.n, 0), Av = pt(xA, -M.h); return { Bv, D, Cv, Av, left: [Av, Bv, D], right: [Av, D, Cv].map((p) => pt(p.x + gap, p.y)) }; },
     draw(b, s, M, C) {
       const { m, n, h, S1, S2, S } = M, t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.7 : 0.7) : C.t, gap = 1.6 * ease(t), g = ratio.geo(M, gap), { Bv, D, Cv, Av } = g;
-      FIT(b, { x0: 0, x1: m + n + 1.6, y0: -h, y1: 0 }, { b: 130 });
+      // The narrow desktop stage has floating tools at its bottom right.
+      // Keep the given area/ratio caption above that row without shrinking mobile or PC views.
+      const questionBottom = b.W >= 560 && b.W < 800 && b.insets.bottom < 40 ? 134 : 100;
+      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? questionBottom : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
       [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 ? -12 : i === 3 ? 12 : 0, size: 17 }));
@@ -282,21 +294,26 @@
         if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: `h = ${h}`, side: 1, gap: 8 });
       }
       const cc = centroid(g.left.concat(g.right));
-      dim(b, Bv, D, `${m}`, { ref: cc, color: 'sky' });
-      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), `${n}`, { ref: cc, color: 'rose' });
+      dim(b, Bv, D, C.problem ? `${m}k` : `${m}`, { ref: cc, color: 'sky', off: C.problem ? 42 : 38 });
+      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem ? `${n}k` : `${n}`, { ref: cc, color: 'rose', off: C.problem ? 42 : 38 });
       if (C.problem) {
         T(b, M.q ? pt((Av.x + D.x + Cv.x) / 3, -h / 3) : pt((Av.x + Bv.x + D.x) / 3, -h / 3), '?', { size: 20, color: 'amber' });
-        foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 58); return;
+        foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 82); return;
       }
       T(b, pt((Av.x + Bv.x + D.x) / 3, -h / 3), 'S₁', { size: 16, color: 'sky' }); T(b, pt((Av.x + D.x + Cv.x) / 3 + gap, -h / 3), 'S₂', { size: 16, color: 'rose' });
       const x0 = (m + n) / 2;
-      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 58); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 84); }
-      if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 110);
+      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 88); }
+      if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);
     },
     steps: (M) => [
       `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이 h=${M.h}가 같아요.`,
       `넓이는 S₁=$\\frac{1}{2}$×${M.m}×${M.h}=${M.S1}, S₂=$\\frac{1}{2}$×${M.n}×${M.h}=${M.S2}예요.`,
       `S₁ : S₂ = ${M.S1} : ${M.S2} = ${M.m} : ${M.n}이에요. 높이가 같으면 넓이의 비는 밑변의 길이의 비와 같아요.`
+    ],
+    problemSteps: (M) => [
+      `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이가 같아요. BD=${M.m}k, DC=${M.n}k (k>0)로 나타내면 넓이의 비는 밑변의 비와 같아요.`,
+      `△ABD : △ADC = BD : DC = ${M.m} : ${M.n}이에요. 전체 넓이 ${M.S}cm²를 ${M.m}+${M.n}=${M.m + M.n}등분한 몫으로 나누어요.`,
+      `구하는 △${M.q ? 'ADC' : 'ABD'}의 넓이 = ${M.S}×$\\frac{${M.q ? M.n : M.m}}{${M.m}+${M.n}}$ = ${G.exactN(M.q ? M.S2 : M.S1)}cm²예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>BD</b>와 <b>DC</b>의 길이를 바꿔 보세요. ▶를 누르면 두 삼각형이 가로로 떼어져요. 두 삼각형의 <b>높이(점선)</b>는 같아요.',

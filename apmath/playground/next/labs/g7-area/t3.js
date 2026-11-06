@@ -38,7 +38,8 @@
       if (mode === 1) {
         // 같은 사다리꼴(복사본)을 만들고, 붙을 자리에서 제자리 180° 회전
         const Mp = mid(BR, TR), cF = pt(2 * Mp.x - c0.x, 2 * Mp.y - c0.y), off = pt(2 * (Mp.x - c0.x), 2 * (Mp.y - c0.y));
-        FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, { b: C.problem ? 80 : 118, t: 24 });
+        if (C.problem) FIT(b, { x0: 0, x1: B, y0: -H, y1: 0 }, { b: 76, t: 40 });
+        else FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, { b: 118, t: 24 });
         fillPoly(b, g.trap, 'sky', 0.22); poly(b, g.trap, 'ink', 3.6);
         if (!C.problem) {
           const al = seg01(t, 0, 0.1), ang = Math.PI * seg01(t, 0.1, 1);
@@ -51,7 +52,7 @@
         dim(b, TL, TR, `윗변 ${a}cm`, { ref: c0, color: 'sky' });
         dim(b, BL, BR, fin ? `${B}` : `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
         if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
-        if (C.problem) { foot(b, pt((B + a) / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
+        if (C.problem) { foot(b, pt(B / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
         const fx = (B + a) / 2;
         if (C.review ? C.step >= 3 : t > 0.999) foot(b, pt(fx, 0), `평행사변형의 절반: ${HALF}×${a + B}×${H} = ${num(S)}cm²`, 'green', 92);
         else foot(b, pt(fx, 0), C.review && C.step >= 2 ? '돌려서 붙여요' : '사다리꼴의 넓이 = ?', 'amber', C.review && C.step >= 2 ? 92 : 64);
@@ -59,7 +60,7 @@
       }
       // 대각선 TL-BR 로 나누기: 윗변 쪽 삼각형이 가로로 떼어짐
       const gap = 1.6 * ease(C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : t);
-      FIT(b, { x0: 0, x1: Math.max(B, p + a) + 1.6, y0: -H, y1: 0 }, { b: C.problem ? 84 : 122 });
+      FIT(b, { x0: 0, x1: Math.max(B, p + a) + (C.problem ? 0 : 1.6), y0: -H, y1: 0 }, { b: C.problem ? 76 : 122 });
       const t1 = [BL, BR, TL], t2 = [TL, TR, BR].map((q) => pt(q.x + gap, q.y));
       fillPoly(b, t1, 'sky', 0.26); poly(b, t1, 'ink', 3.6);
       fillPoly(b, t2, C.problem && M.q === 2 ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);
@@ -86,6 +87,19 @@
       `두 삼각형의 높이는 모두 ${M.H}cm예요. ① 아랫변을 밑변으로 하면 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.T1)}, ② 윗변을 밑변으로 하면 $\\frac{1}{2}$×${M.a}×${M.H}=${num(M.T2)}예요.`,
       `사다리꼴의 넓이는 두 삼각형의 합 ${num(M.T1)}+${num(M.T2)}=${num(M.S)}cm²예요. 식으로 묶으면 $\\frac{1}{2}$×(${M.a}+${M.B})×${M.H}예요.`
     ]),
+    problemSteps: (M) => M.q === 0 ? [
+      '같은 사다리꼴 한 개를 180° 돌려 다른 사다리꼴 옆에 맞붙여요.',
+      `평행사변형의 한 밑변에는 원래 아랫변 ${M.B}cm와 뒤집힌 윗변 ${M.a}cm가 이어져요.`,
+      `따라서 평행사변형의 밑변 = ${M.B}+${M.a} = ${M.a + M.B}cm예요. 높이는 밑변의 길이에 더하지 않아요.`
+    ] : M.q === 1 ? [
+      `같은 사다리꼴 두 개를 붙이면 밑변 ${M.a}+${M.B}=${M.a + M.B}cm, 높이 ${M.H}cm인 평행사변형이 돼요.`,
+      `사다리꼴 한 개는 이 평행사변형 넓이의 절반이에요.`,
+      `사다리꼴의 넓이 = (${M.a}+${M.B})×${M.H}÷2 = ${G.exactN(M.S)}cm²예요.`
+    ] : [
+      `구하는 부분은 △ACD예요. 밑변으로 윗변 AD=${M.a}cm를 골라요.`,
+      `AD와 BC가 평행하므로 점 C에서 AD까지의 높이는 사다리꼴의 높이 ${M.H}cm와 같아요.`,
+      `△ACD의 넓이 = ${M.a}×${M.H}÷2 = ${G.exactN(M.T2)}cm²예요.`
+    ],
     view: (M) => ({
       guide: M.mode ? '▶를 누르면 <b>초록 복사본</b>이 제자리에서 180° 돌아 붙어요. 칩으로 <b>삼각형 둘로 나누기</b> 방법도 살펴보세요.' : '▶를 누르면 <b>윗변 쪽 삼각형</b>이 가로로 떼어져요. 두 삼각형은 높이가 같아요. 칩으로 <b>돌려 붙이기</b> 방법도 살펴보세요.',
       readouts: [rd('윗변 · 아랫변', `${M.a} · ${M.B}`, 'sky'), rd('높이', mm(M.H), 'amber'), rd('넓이', `${num(M.S)}cm²`, 'green', `(${M.a}+${M.B}) × ${M.H} ÷ 2`)],
@@ -95,7 +109,7 @@
     }),
     prob: (M) => {
       const { a, B, H, S, T2, q } = M, w = a + B;
-      if (q === 0) return { tag: '사다리꼴을 돌려 붙인 평행사변형의 밑변', key: `0-${a}-${B}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴 2개를 거꾸로 맞붙여 평행사변형을 만들었다. 이 평행사변형의 밑변의 길이는?`, choices: mkChoices(w, [[B, '아랫변 옆에 뒤집힌 윗변이 붙어서 밑변이 더 길어져요.'], [w / 2, '두 변의 평균은 사다리꼴 한 개의 넓이에 쓰는 값이에요.'], [a * B, '더하지 않고 곱했어요.'], [w * H, '밑변은 길이예요. 넓이가 아니에요.']], { tex: (v) => `${G.tx(v)}\\text{cm}`, plain: (v) => num(v) + 'cm', pad: 1 }) };
+      if (q === 0) return { tag: '사다리꼴을 돌려 붙인 평행사변형의 밑변', key: `0-${a}-${B}-${H}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴 2개를 거꾸로 맞붙여 평행사변형을 만들었다. 이 평행사변형의 밑변의 길이는?`, choices: mkChoices(w, [[B, '아랫변 옆에 뒤집힌 윗변이 붙어서 밑변이 더 길어져요.'], [w / 2, '두 변의 평균은 사다리꼴 한 개의 넓이에 쓰는 값이에요.'], [a * B, '더하지 않고 곱했어요.'], [w * H, '밑변은 길이예요. 넓이가 아니에요.']], { tex: (v) => `${G.tx(v)}\\text{cm}`, plain: (v) => num(v) + 'cm', pad: 1 }) };
       if (q === 1) return { tag: '사다리꼴의 넓이 (돌려 붙이기)', key: `1-${a}-${B}-${H}`, stem: `윗변이 ${a} cm, 아랫변이 ${B} cm, 높이가 ${H} cm인 사다리꼴의 넓이는?`, choices: mkChoices(S, [[w * H, '2로 나누지 않았어요. 사다리꼴은 평행사변형의 절반이에요.'], [(B * H) / 2, '윗변을 빼먹었어요.'], [w / 2, '높이를 곱하지 않았어요.'], [a * B * H / 2, '윗변과 아랫변은 곱하지 않고 더해요.']], { ...cm2, pad: pad8(S) }) };
       return { tag: '사다리꼴을 대각선으로 나눈 삼각형의 넓이', key: `2-${a}-${B}-${H}`, stem: `AD ∥ BC인 사다리꼴 ABCD에서 AD = ${a} cm, BC = ${B} cm이고 높이는 ${H} cm이다. 대각선 AC로 나눈 삼각형 ACD의 넓이는?`, choices: mkChoices(T2, [[(B * H) / 2, '아랫변 BC를 밑변으로 한 삼각형 ABC의 넓이예요. 삼각형 ACD의 밑변은 AD예요.'], [S, '사다리꼴 전체의 넓이예요.'], [a * H, '2로 나누지 않았어요.'], [(a + B) * H / 4, '삼각형의 밑변은 윗변 AD 하나예요.']], { ...cm2, pad: pad8(T2) }) };
     },
@@ -130,7 +144,8 @@
       if (C.problem) { foot(b, pt(W / 2, H), '모눈 한 칸 = 1cm²   △ABC = ? cm²', 'amber', 88); return; }
       const f = (str, col, i) => foot(b, pt(W / 2, H), str, col, 84 + 26 * i);
       if (C.review) {
-        if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
+        if (C.step < 1) f('바깥 직사각형과 세 귀퉁이를 찾아요', 'amber', 0);
+        else if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
         else if (C.step === 2) { f(`① ${HALF}×${W}×${a} = ${num(t1)}  ② ${HALF}×${x}×${H - a} = ${num(t2)}`, 'rose', 0); f(`③ ${HALF}×${W - x}×${H} = ${num(t3)}`, 'rose', 1); }
         else { f(`${R} − (${num(t1)}+${num(t2)}+${num(t3)}) = ${num(A)}`, 'green', 0); }
       } else {
@@ -186,15 +201,34 @@
       };
     },
     draw(b, s, M, C) {
-      const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2), R = Math.hypot(W, H) / 2;
-      FIT(b, { x0: C0.x - R, x1: C0.x + R, y0: C0.y - R, y1: C0.y + R }, { b: C.problem ? 78 : 96, t: 34, l: 60, r: 116 });
+      const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2);
       const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : 1) : C.t;
       const s1 = ease(seg01(t, 0, 0.4)), phi = (Math.PI / 2) * ease(seg01(t, 0.4, 0.7)), s3 = ease(seg01(t, 0.7, 1));
       const tf = (q) => rotAbout(q, C0, phi), sh = (P3, dx, dy) => P3.map((q) => pt(q.x + dx, q.y + dy)), out = (P3) => P3.map(tf);
       const field = [pt(0, 0), pt(W, 0), pt(W, H), pt(0, H)];
-      fillPoly(b, out(field), 'rose', 0.22); poly(b, out(field), 'rose', 2.6, { dash: [7, 6] });
       const parts = [sh(pc.UL, x * s1, 0), pc.UR, sh(pc.LL, x * s1, -x * s3), sh(pc.LR, 0, -x * s3)];
-      parts.forEach((q) => { fillPoly(b, out(q), 'green', 0.34); poly(b, out(q), 'green', 3.2); });
+      const fieldBox = G.bboxOf(out(field)), partBox = G.bboxOf(parts.flatMap(out)), focusT = seg01(t, 0.4, 0.7), narrow = b.W < 560;
+      const box = Object.fromEntries(Object.keys(fieldBox).map((key) => [key, fieldBox[key] + (partBox[key] - fieldBox[key]) * focusT]));
+      // 첫 붙이기가 끝나면 원래 땅의 외곽은 물리고, 회전 중에 실제 조각 범위로 부드럽게 맞춥니다.
+      // 초기 치수용 여백을 끝까지 예약하지 않아, 하단 도구가 있는 모바일에서도 결과를 크게 봅니다.
+      // 가로 태블릿은 도구막대 높이를 보드가 예약하지 않습니다. 긴 하단 계산식이 그 위에 남도록 합니다.
+      const footerRoom = !narrow && b.W < 900 && b.insets.bottom < 40 ? 30 : 0;
+      const initialPad = { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 }, packedPad = { b: narrow ? 82 : 78 - 20 * seg01(t, 0.4, 0.55) + footerRoom, t: 22, l: 28, r: 28 }, padT = seg01(t, 0.02, 0.15);
+      FIT(b, box, Object.fromEntries(Object.keys(initialPad).map((key) => [key, initialPad[key] + (packedPad[key] - initialPad[key]) * padT])));
+      if (t < 0.4) poly(b, out(field), 'sky', 2.2, { dash: [7, 6], alpha: 0.45 * (1 - s1) });
+      if (t < 0.4) {
+        const e = pc.e, roadParts = [
+          [pt(e(0), 0), pt(e(0) + x, 0), pt(e(H) + x, H), pt(e(H), H)],
+          [pt(0, h1), pt(e(h1), h1), pt(e(h1 + x), h1 + x), pt(0, h1 + x)],
+          [pt(e(h1) + x, h1), pt(W, h1), pt(W, h1 + x), pt(e(h1 + x) + x, h1 + x)]
+        ];
+        roadParts.forEach((q) => fillPoly(b, out(q), 'red', 0.16 * (1 - s1)));
+      }
+      parts.forEach((q, i) => {
+        const moving = (t > 0 && t < 0.4 && (i === 0 || i === 2)) || (t > 0.7 && t < 1 && i >= 2);
+        const color = moving ? 'amber' : 'green';
+        fillPoly(b, out(q), color, moving ? 0.24 : 0.2); poly(b, out(q), color, 3.2);
+      });
       if (t < 0.02) {
         // 길의 폭 x 와 땅의 가로·세로 표시
         const ey = (y) => pc.e(y);
@@ -205,10 +239,14 @@
         T(b, pt(ey(H * 0.5) + x / 2, H * 0.3), '길', { size: 16, color: 'rose' });
       }
       if (C.problem) { foot(b, pt(W / 2, H), '잔디밭의 넓이 = ? m²', 'amber', 56); return; }
-      const cy = C0.y + R;
+      const cy = box.y1, cx = (box.x0 + box.x1) / 2;
       if (t < 0.4) foot(b, pt(W / 2, H), `땅 ${W}×${H}, 길의 폭 ${x}`, 'amber', 56);
-      else if (t < 0.999) foot(b, pt(W / 2, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
-      else foot(b, pt(W / 2, cy), `(${W}−${x}) × (${H}−${x}) = ${W - x} × ${H - x} = ${A}m²`, 'green', 36);
+      else if (t < 0.999) foot(b, pt(cx, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
+      else if (C.review && C.step < 3) foot(b, pt(cx, cy), `직사각형 ${W - x}m × ${H - x}m`, 'green', 36);
+      else if (narrow) {
+        foot(b, pt(cx, cy), `(${W}−${x}) × (${H}−${x})`, 'green', 36);
+        foot(b, pt(cx, cy), `${W - x} × ${H - x} = ${A}m²`, 'green', 64);
+      } else foot(b, pt(cx, cy), `(${W}−${x}) × (${H}−${x}) = ${W - x} × ${H - x} = ${A}m²`, 'green', 36);
     },
     stepT: (n) => (n <= 1 ? 0.4 : 1),
     steps: (M) => [
@@ -217,11 +255,11 @@
       `잔디밭은 가로 ${M.W - M.x}m, 세로 ${M.H - M.x}m인 직사각형 한 개가 되므로 넓이는 ${M.W - M.x}×${M.H - M.x}=${M.A}m²예요.`
     ],
     view: (M) => ({
-      guide: '▶를 누르면 잔디밭 조각이 <b>가로로 밀려 붙고</b>, 도형이 <b>제자리에서 90° 돌아</b> 한 번 더 붙어요. 칩으로 비스듬한 길도 볼 수 있어요.',
-      readouts: [rd('땅', `${M.W}m × ${M.H}m`, 'sky'), rd('길의 폭', `${M.x}m`, 'rose'), rd('잔디밭', `${M.W - M.x} × ${M.H - M.x}`, 'green', `${M.A}m²`, null, true)],
+      guide: '▶를 누르면 잔디밭 조각이 <b>가로로 밀려 붙고</b>, 도형이 <b>제자리에서 90° 돌아</b> 한 번 더 붙어요. <b>노랑</b>은 움직이는 조각, <b>초록</b>은 남은 잔디밭이에요.',
+      readouts: [rd('땅', `${M.W}m × ${M.H}m`, 'sky'), rd(M.mode ? '길의 가로·세로 폭' : '길의 폭', `${M.x}m`, 'rose'), rd('잔디밭', `${M.W - M.x} × ${M.H - M.x}`, 'green', `${M.A}m²`, null, true)],
       formula: `<p>(잔디밭의 넓이) $=(${M.W}-${M.x})\\times(${M.H}-${M.x})=${M.W - M.x}\\times${M.H - M.x}=${M.A}\\ (\\text{m}^2)$</p>`,
-      rule: '길의 폭이 일정하면 잔디밭의 넓이 = (가로 − 길의 폭) × (세로 − 길의 폭)',
-      notes: notes('길이 가운데서 만나는 곳(교차로)을 두 번 빼지 않도록 조각을 밀어 붙이는 방법이 안전해요.', '길이 곧든 비스듬하든 폭이 같으면 넓이는 같아요.')
+      rule: '세로 길의 가로 폭과 가로 길의 세로 폭이 x이면, 잔디밭의 넓이 = (가로 − x) × (세로 − x)',
+      notes: notes('길이 가운데서 만나는 곳(교차로)을 두 번 빼지 않도록 조각을 밀어 붙이는 방법이 안전해요.', '비스듬한 세로 길의 폭은 <b>가로로 잰 길이</b>예요. 이 가로 폭과 가로 길의 세로 폭을 각각 빼요.')
     }),
     prob: (M) => {
       const { W, H, x, mode, A } = M;
