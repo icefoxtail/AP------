@@ -33,6 +33,8 @@ window.questionBank = [
     "solution": "[키포인트] 다항식을 전개하여 특정한 차수의 항의 계수를 구한다.\n주어진 식을 전개하면 다음과 같다.\n$x(x+3)(x^2-ax+a) = (x^2+3x)(x^2-ax+a)$\n$= x^4 - ax^3 + ax^2 + 3x^3 - 3ax^2 + 3ax$\n$= x^4 + (3-a)x^3 - 2ax^2 + 3ax$\n$x^3$ 의 계수는 $3-a$ 이고, $x^2$ 의 계수는 $-2a$ 이다.\n문제의 조건에서 두 계수가 서로 같으므로\n$3-a = -2a \\implies a = -3$\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -68,6 +70,8 @@ window.questionBank = [
     "solution": "[키포인트] 나머지정리를 이용하여 다항식의 값을 구한다.\n다항식 $f(x)$를 $x+2$로 나눈 나머지가 $3$이므로 나머지정리에 의해 $f(-2) = 3$이다.\n다항식 $x^2f(x)$를 $x+2$로 나눈 나머지는 $x=-2$를 대입한 값이므로 다음과 같이 계산된다.\n$(-2)^2 f(-2) = 4 \\times 3 = 12$\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
+    "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -102,6 +106,8 @@ window.questionBank = [
     "solution": "[키포인트] 임의의 실수 $k$에 대하여 성립하는 등식은 $k$에 대한 항등식이다.\n주어진 등식이 $k$에 대한 항등식이므로 양변의 계수와 상수항이 같아야 한다.\n$k$의 계수를 비교하면 $a+1 = 2 \\implies a = 1$ 이다.\n상수항을 비교하면 $-2 = b \\implies b = -2$ 이다.\n따라서 $a-b = 1 - (-2) = 3$ 이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
+    "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+    "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -137,6 +143,8 @@ window.questionBank = [
     "solution": "[키포인트] 여러 가지 인수분해 공식을 정확히 숙지하고 있는지 확인한다.\n① $(a-2)^3 = a^3 - 3a^2(2) + 3a(2^2) - 2^3 = a^3 - 6a^2 + 12a - 8$ 이므로 옳다.\n② 세제곱의 합 공식이므로 옳다.\n③ $(a-2b+c)^2 = a^2 + (-2b)^2 + c^2 + 2a(-2b) + 2(-2b)c + 2ca = a^2 + 4b^2 + c^2 - 4ab - 4bc + 2ca$ 이므로 옳다.\n④ $(x^2+x+1)(x^2-x+1) = (x^2+1)^2 - x^2 = x^4 + 2x^2 + 1 - x^2 = x^4 + x^2 + 1$ 이므로 우변을 전개한 값이 좌변과 다르다.\n⑤ 세제곱의 합 인수분해 공식이므로 옳다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-03-FACTORIZATION",
     "subUnit": "인수분해",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -171,6 +179,8 @@ window.questionBank = [
     "solution": "[키포인트] 복소수 $a+bi$ (단, $a, b$는 실수)에서 실수부분은 $a$, 허수부분은 $b$이다.\n복소수 $z = 4+3i$ 의 실수부분은 $4$이고, 허수부분은 $3$이다.\n두 부분의 합은 $4 + 3 = 7$ 이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

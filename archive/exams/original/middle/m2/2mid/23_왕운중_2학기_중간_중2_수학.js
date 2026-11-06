@@ -30,6 +30,8 @@ window.questionBank = [
     "solution": "[키포인트] 닮은 입체도형의 겉넓이의 비는 닮음비의 제곱이다.\n겉넓이의 비는 $3^2:5^2=9:25$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -60,6 +62,8 @@ window.questionBank = [
     "solution": "[키포인트] 이등변삼각형의 성질과 그 역을 구분한다.\n①, ②는 이등변삼각형의 정의와 성질이다.\n③ 정삼각형은 세 변이 같으므로 이등변삼각형의 성질도 만족한다.\n④ 두 내각이 같으면 그 대변의 길이도 같으므로 이등변삼각형이다.\n그러나 두 밑각의 이등분선이 각각 대변을 수직이등분한다는 성질은 일반적으로 성립하지 않는다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -92,6 +96,8 @@ window.questionBank = [
     "solution": "[키포인트] 삼각형의 내각의 합과 외각의 성질로 같은 크기의 두 각이 생기는지 확인한다.\n①은 $40^\\circ+70^\\circ$이므로 나머지 각도 $70^\\circ$이다.\n②는 외각 $110^\\circ$에 대응하는 내각이 $70^\\circ$이고 다른 각이 $45^\\circ$이므로 세 각이 서로 다르다.\n③은 두 각이 $104^\\circ$, $38^\\circ$이므로 나머지 각도 $38^\\circ$이다.\n④는 꼭지각이 $70^\\circ$이고 한 밑각이 $55^\\circ$이므로 다른 밑각도 $55^\\circ$이다.\n⑤는 외각이 $128^\\circ$이므로 한 밑각은 $52^\\circ$이고, 꼭지각이 $64^\\circ$이므로 나머지 밑각도 $64^\\circ$이다.\n따라서 이등변삼각형이 아닌 것은 ②이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
+    "templateKey": "TPL_ISOSCELES_CONVERSE",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -154,6 +160,8 @@ window.questionBank = [
     "solution": "[키포인트] 평행사변형의 대각선 조건으로 직사각형과 마름모의 성질을 함께 판정한다.\n$AC=2AO$, $BD=2BO$이므로 $AO=BO$에서 $AC=BD$이다.\n대각선의 길이가 같은 평행사변형은 직사각형이다.\n또한 대각선이 서로 수직인 평행사변형은 마름모이다.\n직사각형이면서 마름모인 사각형은 정사각형이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
