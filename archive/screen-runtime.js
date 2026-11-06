@@ -114,7 +114,9 @@
                     ctx.pendingSession.preparedSnapshots[snapshot.mode] = snapshot;
                     nextSession = promotePendingSession({ pending: ctx.pendingSession, candidate: ctx.candidate, promotedSnapshot: snapshot, committedAt: Date.now() });
                 }
-                // Capture all throw-prone materialization before the synchronous commit.
+                // Keep the previous view until attached-view readiness has also
+                // passed. The foreground lane owns this journal until finalize
+                // settles; queued requests can abort it but cannot attach yet.
                 const journal = adapter.capture(ctx);
                 const oldCandidate = committedCandidate;
                 const oldSessionFields = oldSession && { ...oldSession, modeSnapshots: { ...oldSession.modeSnapshots } };
@@ -133,6 +135,10 @@
                     committedCandidate = ctx.candidate;
                     if (ctx.pendingSession) { ctx.pendingSession.status = 'PROMOTED'; ctx.pendingSession.promotedSessionId = nextSession.sessionId; }
                     adapter.commit(ctx, journal); // synchronous DOM/state/controls/history only
+                    if (adapter.finalize) {
+                        await adapter.finalize(ctx, journal);
+                        if (!isLatest(ctx)) throw new Error('DISCARDED_STALE');
+                    }
                     ctx.committed = true;
                 } catch (error) {
                     if (oldSnapshot) oldSnapshot.status = oldStatus;

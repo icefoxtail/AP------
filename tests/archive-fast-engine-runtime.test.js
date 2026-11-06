@@ -208,6 +208,68 @@ test('latest wins serializes builds and never commits stale work', async () => {
     assert.equal(f.runtime.inspect().attempts.find(a => a.requestGeneration === 2).committed, false);
 });
 
+test('full readiness failure inside finalize restores the old view, session and snapshot before retry', async () => {
+    const f = fixture();
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const before = { ...f.state(), session: f.runtime.currentSession, snapshot: f.runtime.activeSnapshot, candidate: f.runtime.committedCandidate };
+    f.adapter.finalize = async () => { throw Error('PDF_DECODE_FAILED'); };
+    const failed = await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    assert.equal(failed.code, 'PDF_DECODE_FAILED');
+    assert.equal(f.runtime.currentSession, before.session);
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.committedCandidate, before.candidate);
+    assert.equal(f.runtime.activeSnapshot.status, 'ACTIVE');
+    assert.equal(f.state().visible, before.visible);
+    assert.equal(f.state().committed, before.committed);
+    assert.equal(f.state().effectCount, before.effectCount, 'no post-commit effects occur before full readiness');
+    assert.equal(f.runtime.inspect().attempts.at(-1).committed, false);
+    f.adapter.finalize = async () => {};
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' })).ok, true);
+});
+
+test('a newer foreground request aborts finalization and rolls back before the next transaction attaches', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const oldVisible = f.state().visible;
+    let enter, release;
+    const entered = new Promise(resolve => { enter = resolve; });
+    const hold = new Promise(resolve => { release = resolve; });
+    f.adapter.finalize = async ctx => { if (ctx.candidate.mode === 'sol') { enter(); await hold; } };
+    const capture = f.adapter.capture;
+    let nextPreviousView;
+    f.adapter.capture = ctx => { if (ctx.candidate.mode === 'ans') nextPreviousView = f.state().visible; return capture(ctx); };
+    const old = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    await entered;
+    assert.equal((await f.runtime.prewarm('ans')).code, 'PREWARM_NOT_IDLE');
+    const next = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    release();
+    assert.equal((await old).code, 'DISCARDED_STALE');
+    assert.equal((await next).ok, true);
+    assert.equal(nextPreviousView, oldVisible, 'the next transaction captures the restored healthy view');
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    assert.equal(f.runtime.inspect().attempts.find(item => item.requestGeneration === 2).committed, false);
+});
+
+test('cached foreground reuse still finalizes; background prewarm never publishes or finalizes a view', async () => {
+    const finalized = [];
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'],
+        canReuse: () => true,
+        reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount }),
+        finalize: async ctx => { finalized.push(ctx.candidate.mode); if (ctx.candidate.mode === 'sol') throw Error('CACHED_DECODE_FAILED'); }
+    });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const active = f.runtime.activeSnapshot, visible = f.state().visible;
+    assert.equal((await f.runtime.prewarm('sol')).prewarmed, true);
+    assert.deepEqual(finalized, ['exam']);
+    const cached = f.runtime.currentSession.modeSnapshots.sol;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' })).code, 'CACHED_DECODE_FAILED');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.state().visible, visible);
+    assert.equal(cached.status, 'READY');
+    assert.deepEqual(finalized, ['exam', 'sol']);
+});
+
 test('background and invalid enums cannot execute builds or effects', async () => {
     const f = fixture();
     assert.equal((await f.runtime.request({ type: 'FORCED_REBUILD', foreground: false })).code, 'BACKGROUND_NOT_ENABLED');

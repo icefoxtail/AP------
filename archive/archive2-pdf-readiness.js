@@ -30,9 +30,13 @@
 
     if (window.__AP_OUTPUT_RENDER_ERROR__)
       fail(String(window.__AP_OUTPUT_RENDER_ERROR__));
-    if (window.__AP_RENDER_READY__) {
+    // A runtime finalizer is part of the pending render transaction. It supplies
+    // that transaction's validated result to avoid awaiting its own public
+    // promise; all envelope, font, math, image/decode and layout gates still run.
+    const hasRenderOutcome = Object.prototype.hasOwnProperty.call(options, "renderOutcome");
+    if (hasRenderOutcome || window.__AP_RENDER_READY__) {
       const render = await withTimeout(
-        Promise.resolve(window.__AP_RENDER_READY__),
+        Promise.resolve(hasRenderOutcome ? options.renderOutcome : window.__AP_RENDER_READY__),
         options.renderTimeoutMs || 45_000,
         "render readiness timed out.",
       );
@@ -43,7 +47,7 @@
       assertIdentity(window.__AP_OUTPUT_ENVELOPE_READY__, expectedEnvelope, "verified envelope");
       if (window.__AP_OUTPUT_RENDER_READY__)
         assertIdentity(window.__AP_OUTPUT_RENDER_READY__, expectedEnvelope, "rendered output");
-      else if (!window.__AP_RENDER_READY__)
+      else if (!hasRenderOutcome && !window.__AP_RENDER_READY__)
         fail("render has not started for the requested envelope.");
     }
 

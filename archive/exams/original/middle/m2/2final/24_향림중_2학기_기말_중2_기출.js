@@ -78,7 +78,7 @@ window.questionBank = [
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",

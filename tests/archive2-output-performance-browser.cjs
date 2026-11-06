@@ -25,6 +25,7 @@ const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const round = value => Number(Number(value).toFixed(2));
 const fixtures = [
   { id: 'envelope50', kind: 'envelope', sources: H.sourceFiles },
+  { id: 'envelope50-qpp1', kind: 'envelope', qpp: 1, sources: H.sourceFiles },
   { id: 'images24', kind: 'original', sources: [H.sourceFiles[1]] },
   { id: 'long23', kind: 'original', sources: ['archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js'] },
   { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] },
@@ -164,7 +165,7 @@ async function documentEvidence(page) {
           box.bottom > rect.bottom + 3 || box.top < rect.top - 3);
       });
       let mathItems = [];
-      try { mathItems = window.MathJax?.startup?.document?.getMathItemsWithin?.([node]) || []; } catch (_) {}
+      try { mathItems = Array.from(window.MathJax?.startup?.document?.getMathItemsWithin?.([node]) || []); } catch (_) {}
       const overflowingDescendants = await Promise.all(descendants.slice(0, 48).map(async child => {
         const childStyle = getComputedStyle(child), box = child.getBoundingClientRect();
         const mathRoot = child.closest('mjx-container');
@@ -176,7 +177,10 @@ async function documentEvidence(page) {
           clientWidth: child.clientWidth, scrollWidth: child.scrollWidth, clientHeight: child.clientHeight, scrollHeight: child.scrollHeight,
           display: childStyle.display, overflowX: childStyle.overflowX, overflowY: childStyle.overflowY,
           fontSize: childStyle.fontSize, lineHeight: childStyle.lineHeight, whiteSpace: childStyle.whiteSpace,
-          mathSourceSha256: source ? await digest(String(source)) : null };
+          mathSourceSha256: source ? await digest(String(source)) : null,
+          ...(child.tagName === 'IMG' ? { imageNaturalWidth: child.naturalWidth, imageNaturalHeight: child.naturalHeight,
+            imageLoaded: child.complete && child.naturalWidth > 0,
+            imageUrlSha256: await digest(child.getAttribute('src') || '') } : {}) };
       }));
       return { tag: node.tagName, classes: [...node.classList].filter(name => /^[A-Za-z0-9_-]+$/.test(name)),
         sourceRef: node.closest('[data-source-ref]')?.dataset.sourceRef || '', page: pages.indexOf(node.closest('.page')) + 1,
@@ -303,24 +307,24 @@ async function openSession(browser, server, fixture, initialMode, slow) {
     if (fixture.kind === 'envelope') {
       await page.addScriptTag({ url: server.origin + '/archive/archive2-output-contract.js' });
       await page.addScriptTag({ url: server.origin + '/archive/archive2-output.js' });
-      url = await page.evaluate(async ({ questions, mode }) => {
+      url = await page.evaluate(async ({ questions, mode, qpp }) => {
         const questionUids = questions.map(q => q.questionUid || q.source_question_uid || q._sourceQuestionUid || null);
         const envelope = await window.Archive2Output.publishOutputEnvelope({ sourceKind: 'archive2-mixed', sourceId: 'performance-real-50',
           mode, questionCount: questions.length, questionUids,
-          meta: { title: '50문항 해설 로딩 검증', qpp: 4, includeQr: false, questionUids,
+          meta: { title: '50문항 해설 로딩 검증', qpp, includeQr: false, questionUids,
             printHeaderOptions: { title: '50문항 해설 로딩 검증' } }, questions });
         return window.Archive2Output.outputEnvelopeUrl('mixed_engine.html', new URL('/archive/workspace.html', location.href).href, envelope, { studio: true }).href;
-      }, { questions: fixture.questions, mode: initialMode });
+      }, { questions: fixture.questions, mode: initialMode, qpp: fixture.qpp || 4 });
     } else if (fixture.kind === 'legacy') {
-      await page.evaluate(questions => {
+      await page.evaluate(({ questions, qpp }) => {
         localStorage.setItem('mixedQuestions_performance', JSON.stringify(questions));
-        localStorage.setItem('mixedMeta_performance', JSON.stringify({ title: '50문항 해설 로딩 검증', qpp: 4, count: questions.length }));
-      }, fixture.questions);
-      url = `${server.origin}/archive/mixed_engine.html?key=performance&mode=${initialMode}&qpp=4`;
+        localStorage.setItem('mixedMeta_performance', JSON.stringify({ title: '50문항 해설 로딩 검증', qpp, count: questions.length }));
+      }, { questions: fixture.questions, qpp: fixture.qpp || 4 });
+      url = `${server.origin}/archive/mixed_engine.html?key=performance&mode=${initialMode}&qpp=${fixture.qpp || 4}`;
     } else {
       url = new URL('/archive/engine.html', server.origin);
       url.searchParams.set('data', fixture.sources[0].slice('archive/'.length));
-      url.searchParams.set('mode', initialMode); url.searchParams.set('qpp', '4');
+      url.searchParams.set('mode', initialMode); url.searchParams.set('qpp', String(fixture.qpp || 4));
     }
     url = new URL(url);
     url.searchParams.set('assetBase', 'off'); url.searchParams.set('prewarm', '0');
@@ -397,6 +401,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
   (purpose === 'pdf' ? report.pdfRows : report.rows).push(row);
   writeReport();
   H.assertReady(row, fixture.questions.length, row.name);
+  requireThat(row.qpp === (fixture.qpp || 4), 'FIXTURE_OUTPUT_OPTION_CHANGED', { fixture: fixture.id, expectedQpp: fixture.qpp || 4, actualQpp: row.qpp });
   requireThat(session.errors.length === 0, 'UNEXPECTED_BROWSER_ERROR', { errors: session.errors });
   if (row.envelope.present) requireThat(row.envelope.mode === operation.mode && row.envelope.verifiedIdentityMatches &&
     row.envelope.renderedIdentityMatches && row.envelope.urlIdentityMatches && !row.envelope.errorPresent,
@@ -425,7 +430,7 @@ async function cycle(browser, server, fixture, label, repeat, { coldSolution = f
     { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
     { id: 'same-ans', mode: 'ans' }
   ];
-  const planned = { fixture: fixture.id, label, repeat, network, purpose, operations: operations.map(item => item.id), pass: false, completed: 0 };
+  const planned = { fixture: fixture.id, qpp: fixture.qpp || 4, label, repeat, network, purpose, operations: operations.map(item => item.id), pass: false, completed: 0 };
   report.cycles.push(planned);
   const rows = [];
   let session;
@@ -542,15 +547,17 @@ async function main() {
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.playwrightVersion = require('playwright/package.json').version;
   for (const fixture of fixtures) fixture.questions = fixture.kind === 'envelope' ? H.realFixture(root).slice(0, fixture.limit || 50) : H.loadBank(root, fixture.sources[0]);
-  report.fixtures = fixtures.map(fixture => ({ id: fixture.id, kind: fixture.kind, questions: fixture.questions.length,
+  report.fixtures = fixtures.map(fixture => ({ id: fixture.id, kind: fixture.kind, qpp: fixture.qpp || 4, questions: fixture.questions.length,
     inputSha256: hash(JSON.stringify(fixture.questions)), sources: fixture.sources.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file))) })) }));
   requireThat(fixtures[0].questions.length === 50, 'REAL_50_QUESTION_FIXTURE_CHANGED');
+  requireThat(hash(JSON.stringify(fixtures.find(item => item.id === 'envelope50-qpp1').questions)) === report.fixtures[0].inputSha256,
+    'QPP_VARIANT_CHANGED_REAL_50_QUESTION_BYTES');
   const legacy = { ...fixtures[0], id: 'legacy50', kind: 'legacy' };
   const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
   const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
-  report.fixtures.push({ id: legacy.id, kind: legacy.kind, questions: legacy.questions.length,
+  report.fixtures.push({ id: legacy.id, kind: legacy.kind, qpp: legacy.qpp || 4, questions: legacy.questions.length,
     inputSha256: hash(JSON.stringify(legacy.questions)), sources: report.fixtures[0].sources });
-  report.fixtures.push({ id: golden.id, kind: golden.kind, questions: golden.questions.length,
+  report.fixtures.push({ id: golden.id, kind: golden.kind, qpp: golden.qpp || 4, questions: golden.questions.length,
     inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-output-performance-'));
   const baselineRoot = path.join(temp, 'baseline');

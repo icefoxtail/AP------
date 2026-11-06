@@ -430,7 +430,7 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
     <script src="render-state-normalizer.js?v=20261009.1"></script>
-    <script src="screen-runtime.js?v=20260922.2"></script>
+    <script src="screen-runtime.js?v=20261106-output-performance-1"></script>
     <script src="question-image-readiness.js?v=20261106-solution-loading-1"></script>
     <script src="common-fast-runtime.js?v=20261106-output-performance-1"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
@@ -2318,9 +2318,21 @@ async function switchOutputEnvelopeMode(mode) {
     if (!window.mixedFastHost) return switchLegacyOutputEnvelopeMode(mode);
     const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
     const ready = window.__AP_OUTPUT_RENDER_READY__;
-    if (!activeOutputModeTransition && !window.__AP_OUTPUT_RENDER_ERROR__ && AppState.mode === mode &&
-        ((!current) || (current.mode === mode && ready?.outputRequestId === current.outputRequestId && ready?.payloadHash === current.payloadHash)))
-        return { ok: true, mode, pages: ready?.pageCount };
+    if (!activeOutputModeTransition && !window.mixedFastHost.runtime.busy && !window.__AP_OUTPUT_RENDER_ERROR__ && AppState.mode === mode &&
+        ((!current) || (current.mode === mode && ready?.outputRequestId === current.outputRequestId && ready?.payloadHash === current.payloadHash))) {
+        const pending = window.__AP_RENDER_READY__;
+        const generation = outputModeTransitionGeneration;
+        let rendered;
+        try { rendered = await pending; } catch (_) { /* Retry a rejected latest render below. */ }
+        if (pending !== window.__AP_RENDER_READY__ || generation !== outputModeTransitionGeneration ||
+            activeOutputModeTransition || window.mixedFastHost.runtime.busy || AppState.mode !== mode ||
+            current !== (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__) || ready !== window.__AP_OUTPUT_RENDER_READY__)
+            return { ok: false, code: 'DISCARDED_STALE' };
+        if (!window.__AP_OUTPUT_RENDER_ERROR__ && rendered?.ok === true && rendered.mode === mode && Number(rendered.pages) > 0 &&
+            (!current || rendered.pages === ready.pageCount)) return { ok: true, mode, pages: rendered.pages };
+        // A failed transition can restore this healthy view while leaving the
+        // latest public promise failed. Re-enter the runtime to recover printing.
+    }
     if (!current && (!Array.isArray(AppState.data) || !AppState.data.length)) return null;
     const N = window.APRenderStateNormalizer;
     const source = N.copy({ key: AppState.key, data: AppState.data, meta: AppState.meta,
@@ -2380,23 +2392,11 @@ async function switchOutputEnvelopeMode(mode) {
         if (!isLatest()) { await cleanupUncommittedEnvelope(); return discarded(); }
         if (!rendered?.ok || !rendered.pages)
             throw new Error(rendered?.message || rendered?.code || '출력 렌더링이 완료되지 않았습니다.');
-        const pageCount = document.querySelectorAll('#print-area .page').length;
-        if (!pageCount) throw new Error('렌더링된 시험지 페이지가 없습니다.');
-        const readiness = await window.Archive2PdfReadiness.assertReady({
-            contractVersion: envelope.contractVersion,
-            outputRequestId: envelope.outputRequestId,
-            payloadHash: envelope.payloadHash,
-        });
-        if (!isLatest()) return discarded();
-        window.__AP_OUTPUT_RENDER_READY__ = {
-            contractVersion: envelope.contractVersion,
-            outputRequestId: envelope.outputRequestId,
-            payloadHash: envelope.payloadHash,
-            pageCount: readiness.pageCount || pageCount,
-        };
+        // Full PDF readiness and its identity seal already passed inside the
+        // runtime transaction, while the previous view was still recoverable.
         window.Archive2ReaderControls?.setReady(true, mode);
         completed = true;
-        return { ...rendered, ok: true, mode, pages: pageCount, outputRequestId: envelope.outputRequestId };
+        return { ...rendered, ok: true, mode, outputRequestId: envelope.outputRequestId };
     } catch (error) {
         if (!runtimeCommitted) await cleanupUncommittedEnvelope();
         if (!isLatest()) return discarded();
@@ -3708,17 +3708,19 @@ async function init() {
             window.__AP_OUTPUT_RENDER_ERROR__ = message;
             throw new Error(message);
         }
-        const readiness = await window.Archive2PdfReadiness.assertReady({
-            contractVersion: outputEnvelope.contractVersion,
-            outputRequestId: outputEnvelope.outputRequestId,
-            payloadHash: outputEnvelope.payloadHash,
-        });
-        window.__AP_OUTPUT_RENDER_READY__ = {
-            contractVersion: outputEnvelope.contractVersion,
-            outputRequestId: outputEnvelope.outputRequestId,
-            payloadHash: outputEnvelope.payloadHash,
-            pageCount: readiness.pageCount,
-        };
+        if (!window.mixedFastHost) {
+            const readiness = await window.Archive2PdfReadiness.assertReady({
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+            });
+            window.__AP_OUTPUT_RENDER_READY__ = {
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+                pageCount: readiness.pageCount,
+            };
+        }
         window.Archive2ReaderControls?.setReady(true, outputEnvelope.mode);
     }
 }
@@ -3961,6 +3963,28 @@ return { AppState,
         // synchronous rollback boundary, on both cache misses and hits.
         if (envelope) window.Archive2PdfReadiness.assertLayoutReady();
     },
+    async finalizeState(ctx) {
+        const transport = ctx.input.transport;
+        const envelope = transport?.envelope || AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+        if (!envelope) return;
+        const readiness = await window.Archive2PdfReadiness.assertReady({
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash
+        }, {
+            renderOutcome: { ok: ctx.state === 'SUCCEEDED' && ctx.result.sessionId === ctx.requestedTargetSessionId,
+                pages: ctx.result.pageCount }
+        });
+        if (ctx.abortSignal.aborted || (transport && transport.generation !== outputModeTransitionGeneration))
+            throw new Error('DISCARDED_STALE');
+        if (readiness.pageCount !== ctx.result.pageCount) throw new Error('OUTPUT_PAGE_COUNT_MISMATCH');
+        window.__AP_OUTPUT_RENDER_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+            pageCount: readiness.pageCount
+        };
+    },
     captureOutputTransport,
     outputRenderUrl };
 }
@@ -3986,6 +4010,7 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
         prepareState(state) { if (!Array.isArray(state.data) || !state.data.length) throw Error('INVALID_MIXED_SOURCE'); },
         createBuild: createMixerSourceAdapter,
         commit: mixerSourceAdapter.commitState,
+        finalize: mixerSourceAdapter.finalizeState,
         restoreState: mixerSourceAdapter.restoreState,
         bindReadiness: mixerSourceAdapter.bindReadiness,
         getReadiness: mixerSourceAdapter.getReadiness, captureState: mixerSourceAdapter.captureState,

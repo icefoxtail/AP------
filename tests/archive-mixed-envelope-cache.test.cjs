@@ -58,13 +58,14 @@ function fixture() {
                     const pending = Promise.resolve().then(async () => {
                         if (requestFailure) { const code = requestFailure; requestFailure = null; desired = null; return { ok: false, code }; }
                         const ctx = { input, intent, intentType: intent.type, abortSignal: new AbortController().signal,
-                            requestedTargetSessionId: 'session', diagnostics: {}, metrics: {}, readinessTracker: { snapshot() { return {}; } } };
+                            requestedTargetSessionId: 'session', state: 'SUCCEEDED', result: { sessionId: 'session', pageCount: 1 },
+                            targetArea: { isConnected: false, removeAttribute() {} }, diagnostics: {}, metrics: {}, readinessTracker: { snapshot() { return {}; } } };
                         ctx.candidate = await adapter.prepare(input, ctx, committed);
                         ctx.buildState = JSON.parse(JSON.stringify(ctx.candidate.state));
                         candidates.push(ctx.candidate);
-                        const journal = mixerSourceAdapter.captureState();
-                        try { adapter.commit(ctx); }
-                        catch (error) { mixerSourceAdapter.restoreState(journal); desired = null; return { ok: false, code: error.message }; }
+                        const journal = adapter.capture(ctx);
+                        try { adapter.commit(ctx); await adapter.finalize?.(ctx); }
+                        catch (error) { adapter.rollback(ctx, journal); desired = null; return { ok: false, code: error.message }; }
                         committed = ctx.candidate; runtime.currentSession.activeMode = input.mode;
                         return { ok: true, mode: input.mode, pages: 1 };
                     });
@@ -87,7 +88,7 @@ function fixture() {
         AppState.outputEnvelope = __AP_OUTPUT_ENVELOPE__;
         __AP_OUTPUT_ENVELOPE_READY__ = { contractVersion: 'contract', outputRequestId: 'initial', payloadHash: 'initial-hash' };
         __AP_OUTPUT_RENDER_READY__ = { ...__AP_OUTPUT_ENVELOPE_READY__, pageCount: 1 };
-        __AP_RENDER_READY__ = Promise.resolve({ ok: true, pages: 1 });
+        __AP_RENDER_READY__ = Promise.resolve({ ok: true, mode: 'exam', pages: 1 });
         __AP_OUTPUT_RENDER_ERROR__ = null;
     `);
     return { run, context, json(source) { return JSON.parse(run(`JSON.stringify(${source})`)); } };
@@ -147,7 +148,7 @@ test('a real source or editor change is carried into the next envelope without c
     assert.equal(h.run('originalEnvelope.questions[0].content'), 'source');
 });
 
-test('layout failure rolls binding back; late readiness failure keeps coherent identity and retries same mode', async () => {
+test('layout and full readiness failures restore the old binding and history before retry', async () => {
     const h = fixture();
     const oldUrl = h.run('location.href');
     h.run('layoutFailure = true');
@@ -159,12 +160,12 @@ test('layout failure rolls binding back; late readiness failure keeps coherent i
     assert.deepEqual(h.json('cleaned'), [['owner', 'request-1']]);
     h.run('layoutFailure = false; lateFailure = true');
     await assert.rejects(h.run('switchMode("sol")'), /LATE_READINESS_REJECTED/);
-    assert.equal(h.run('AppState.mode'), 'sol');
-    assert.equal(h.run('__AP_OUTPUT_ENVELOPE__.outputRequestId'), 'request-2');
-    assert.equal(h.run('new URL(location).searchParams.get("outputRequestId")'), 'request-2');
-    assert.equal(h.run('__AP_OUTPUT_RENDER_READY__'), null);
-    assert.equal(h.run('__AP_OUTPUT_RENDER_ERROR__'), 'LATE_READINESS_REJECTED');
-    assert.equal(h.run('reader.ready'), false);
+    assert.equal(h.run('AppState.mode'), 'exam');
+    assert.equal(h.run('__AP_OUTPUT_ENVELOPE__.outputRequestId'), 'initial');
+    assert.equal(h.run('location.href'), oldUrl);
+    assert.equal(h.run('__AP_OUTPUT_RENDER_READY__.outputRequestId'), 'initial');
+    assert.equal(h.run('__AP_OUTPUT_RENDER_ERROR__'), null);
+    assert.deepEqual(h.json('cleaned'), [['owner', 'request-1'], ['owner', 'request-2']]);
     h.run('lateFailure = false');
     assert.equal((await h.run('switchMode("sol")')).ok, true);
     assert.equal(h.run('__AP_OUTPUT_RENDER_READY__.outputRequestId'), 'request-3');
@@ -180,6 +181,31 @@ test('rollback restores an observed readiness value as well as its property desc
     await assert.rejects(h.run('switchMode("sol")'), /LAYOUT_REJECTED/);
     assert.equal(h.run('__AP_OUTPUT_RENDER_READY__.outputRequestId'), 'initial');
     assert.equal(h.run('typeof Object.getOwnPropertyDescriptor(window, "__AP_OUTPUT_RENDER_READY__").set'), 'function');
+});
+
+test('selecting the restored old mode after failure recovers actual render readiness', async () => {
+    const h = fixture();
+    h.run('lateFailure = true');
+    await assert.rejects(h.run('switchMode("sol")'), /LATE_READINESS_REJECTED/);
+    assert.equal(h.run('AppState.mode'), 'exam');
+    assert.equal((await h.run('__AP_RENDER_READY__')).ok, false);
+    h.run('lateFailure = false');
+    assert.equal((await h.run('switchMode("exam")')).ok, true);
+    assert.equal((await h.run('__AP_RENDER_READY__')).ok, true);
+    assert.equal(h.run('__AP_OUTPUT_RENDER_READY__.outputRequestId'), 'request-2');
+    assert.equal(h.run('reader.ready'), true);
+    assert.deepEqual(h.json('inputs.map(value => value.mode)'), ['sol', 'exam']);
+});
+
+test('a same-mode readiness check cannot supersede a newer mode request while awaiting', async () => {
+    const h = fixture();
+    h.run('let releaseSameMode; __AP_RENDER_READY__ = new Promise(resolve => { releaseSameMode = resolve; }); sameMode = switchMode("exam");');
+    const next = h.run('switchMode("ans")');
+    h.run('releaseSameMode({ ok: true, mode: "exam", pages: 1 })');
+    assert.equal((await h.run('sameMode')).code, 'DISCARDED_STALE');
+    assert.equal((await next).ok, true);
+    assert.equal(h.run('AppState.mode'), 'ans');
+    assert.deepEqual(h.json('inputs.map(value => value.mode)'), ['ans']);
 });
 
 test('out-of-order envelope publishing cannot request or seal an older mode', async () => {

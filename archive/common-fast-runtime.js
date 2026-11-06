@@ -149,7 +149,7 @@
                 return { area: document.getElementById('print-area'), state: policy.captureState?.() || policy.getState(), tracker: policy.getReadiness?.(),
                     metrics: root.__AP_RENDER_METRICS__, scale: document.documentElement.style.getPropertyValue('--screen-page-scale'),
                     controls: [...document.querySelectorAll('#mode-ctrl button,#mode-ctrl input,#mode-ctrl select,#ctrl-title')].map(node => ({ node, value: node.value, checked: node.checked, className: node.className, text: node.tagName === 'BUTTON' || node.id === 'ctrl-title' ? node.textContent : null })),
-                    dataset: { ...document.documentElement.dataset }, url: location.href };
+                    dataset: { ...document.documentElement.dataset }, url: location.href, historyState: history.state };
             },
             attach(ctx, journal) {
                 journal.area.removeAttribute('id');
@@ -167,6 +167,7 @@
                 root.__AP_RENDER_METRICS__ = ctx.metrics;
                 history.replaceState(history.state, '', ctx.input.url);
             },
+            ...(policy.finalize ? { async finalize(ctx) { check(ctx); await policy.finalize(ctx); check(ctx); } } : {}),
             rollback(ctx, journal) {
                 if (ctx.targetArea.isConnected) ctx.targetArea.replaceWith(journal.area);
                 ctx.targetArea.removeAttribute('id'); journal.area.id = 'print-area';
@@ -177,6 +178,7 @@
                 for (const item of journal.controls) { Object.assign(item.node, { value: item.value, checked: item.checked, className: item.className }); if (item.text !== null) item.node.textContent = item.text; }
                 for (const key of Object.keys(document.documentElement.dataset)) delete document.documentElement.dataset[key];
                 Object.assign(document.documentElement.dataset, journal.dataset);
+                history.replaceState(journal.historyState, '', journal.url);
             },
             afterCommit(ctx) { policy.afterCommit?.(ctx); },
             freezeSnapshot(snapshot, ctx) {

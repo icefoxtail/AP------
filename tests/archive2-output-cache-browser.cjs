@@ -218,6 +218,8 @@ function assertFailurePreserved(before, after) {
   requireThat(!after.outcome.ok, 'INJECTED_FAILURE_WAS_HIDDEN');
   requireThat(after.attempts.at(-1)?.state === 'FAILED' && !after.attempts.at(-1)?.committed,
     'FAILED_RENDER_WAS_COMMITTED');
+  requireThat(after.feedback.state === 'failed' && after.feedback.visible && after.feedback.retry,
+    'FAILED_RENDER_FEEDBACK_OR_RETRY_MISSING');
   compareVisible(before, after);
   for (const key of ['mode', 'qpp', 'snapshotId', 'sessionId', 'snapshotMode', 'candidateMode', 'keyHash',
     'inputControlsHash', 'headerOptionsHash', 'outputRequestId', 'payloadHash', 'envelopeMode', 'urlMode', 'urlRequestId', 'verifiedIdentityMatches'])
@@ -379,13 +381,15 @@ async function latestRequest(session, initial) {
   assertReady(after, 8, true);
   requireThat(!result.first.ok && result.last.ok && after.mode === 'ans' && after.binding.envelopeMode === 'ans',
     'LATEST_PUBLIC_REQUEST_DID_NOT_WIN', result);
-  requireThat(after.attempts.some(attempt => attempt.state === 'DISCARDED_STALE' && !attempt.committed),
+  requireThat(after.attempts.some(attempt => !attempt.committed &&
+    (attempt.state === 'DISCARDED_STALE' || attempt.code === 'DISCARDED_STALE')),
     'SUPERSEDED_BUILD_WAS_NOT_DISCARDED');
   return { first: result.first, latest: result.last, finalMode: after.mode, oldDocumentPreservedWhilePending: true };
 }
 
-async function finalReadinessFailure(session) {
+async function finalReadinessFailure(session, initial) {
   await session.page.evaluate(() => {
+    document.getElementById('print-header-title-input').value = 'Unsubmitted final-readiness QA input';
     const original = window.Archive2PdfReadiness.assertReady;
     window.__outputCacheQA.fault = { entered: false, calls: 0 };
     window.Archive2PdfReadiness.assertReady = async function (...args) {
@@ -398,19 +402,17 @@ async function finalReadinessFailure(session) {
       return result;
     };
   });
+  const before = await collect(session, 'before-final-readiness-failure', initial.outcome);
+  assertReady(before, 8, true);
   const failed = await operation(session, 'final-pdf-readiness-failure', 'sol');
   requireThat(!failed.outcome.ok && failed.outcome.code === 'QA_FINAL_PDF_FAILURE' && failed.binding.fault?.entered,
     'FINAL_PDF_FAULT_NOT_OBSERVED');
-  const b = failed.binding;
-  requireThat(b.activeRootMatches && b.mode === 'sol' && b.snapshotMode === 'sol' && b.candidateMode === 'sol' &&
-    b.envelopeMode === 'sol' && b.urlMode === 'sol' && b.outputRequestId === b.urlRequestId && b.verifiedIdentityMatches,
-    'FINAL_PDF_FAILURE_LEFT_INCONSISTENT_BINDINGS');
-  requireThat(b.renderErrorPresent && !b.renderReadyPresent, 'FINAL_PDF_FAILURE_WAS_SEALED_READY');
+  assertFailurePreserved(before, failed);
   const blocked = await printCheck(session, failed, false, 'final-pdf-failure-print-blocked');
-  const retry = await operation(session, 'same-mode-final-pdf-retry', 'sol');
+  const retry = await operation(session, 'final-pdf-retry-preserved-target-mode', 'sol');
   assertReady(retry, 8, true);
   const printed = await printCheck(session, retry, true, 'final-pdf-recovered-print');
-  return { errorVisible: true, coherentBinding: true, sameModeRetry: true, blocked, printed };
+  return { failureVisible: true, previousDocumentAndBindingPreserved: true, targetModeRetry: true, blocked, printed };
 }
 
 async function runCase(browser, server, fixture, name, work) {

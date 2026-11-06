@@ -54,3 +54,28 @@ test("the synchronous commit gate enforces the same attached layout checks", () 
   assert.throws(() => readiness.assertLayoutReady(fakePage({ clipped: true })), /content clipped inside 1 element/);
   assert.deepEqual(readiness.assertLayoutReady(fakePage()), { pageCount: 1 });
 });
+
+test("a finalizer uses its validated result without waiting on its own pending public promise", async () => {
+  const h = fakePage();
+  const identity = { contractVersion: 'contract', outputRequestId: 'request', payloadHash: 'hash' };
+  h.window.__AP_RENDER_READY__ = new Promise(() => {});
+  h.window.__AP_OUTPUT_ENVELOPE_READY__ = identity;
+  const options = { ...h, renderOutcome: { ok: true, pages: 1 }, renderTimeoutMs: 5 };
+  assert.equal((await readiness.assertReady(identity, options)).pageCount, 1);
+  await assert.rejects(readiness.assertReady(identity, { ...options, renderOutcome: { ok: false, pages: 1 } }), /render did not complete/);
+  await assert.rejects(readiness.assertReady({ ...identity, outputRequestId: 'wrong' }, options), /verified envelope does not match/);
+});
+
+test("the internal render result still runs font, image decode and clipping gates", async () => {
+  const clipped = fakePage({ clipped: true });
+  await assert.rejects(readiness.assertReady(null, { ...clipped, renderOutcome: { ok: true, pages: 1 } }), /content clipped/);
+  const fonts = fakePage();
+  fonts.document.fonts.ready = Promise.reject(new Error('FONT_FAILED'));
+  await assert.rejects(readiness.assertReady(null, { ...fonts, renderOutcome: { ok: true, pages: 1 } }), /FONT_FAILED/);
+  const image = fakePage();
+  const query = image.document.querySelectorAll;
+  image.document.querySelectorAll = selector => selector.endsWith(' img')
+    ? [{ complete: true, naturalWidth: 10, naturalHeight: 10, decode: async () => { throw new Error('DECODE_FAILED'); } }]
+    : query(selector);
+  await assert.rejects(readiness.assertReady(null, { ...image, renderOutcome: { ok: true, pages: 1 } }), /DECODE_FAILED/);
+});

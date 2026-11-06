@@ -98,10 +98,13 @@ jobs:
       - name: Verify snapshot binding, image placement, and readiness contracts
         run: >-
           node --test
+          tests/archive-fast-engine-runtime.test.js
           tests/archive-mixed-envelope-cache.test.cjs
           tests/archive-question-image-map-regression.test.js
           tests/archive2-pdf-readiness.test.cjs
           tests/archive-font-invalidation.test.cjs
+      - name: Verify the required Archive2 runtime guard
+        run: node tools/check-archive2-runtime.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
