@@ -20,6 +20,15 @@
   const ok180 = (v) => v > 0 && v < 180 && Math.abs(v - Math.round(v)) < 1e-9;
   const mkDeg = (ans, wr, pad = 5) => mkChoices(ans, wr, { pad, valid: ok180 });
   const angAt = (V, X, Y) => { const u = sub(X, V), v = sub(Y, V); return Math.acos(clamp((u.x * v.x + u.y * v.y) / (Math.hypot(u.x, u.y) * Math.hypot(v.x, v.y)), -1, 1)) / DEG; };
+  // 대각쌍의 비교색과 등각 표식은 구분합니다. 실제로 같은 각만 같은 호 개수를 씁니다.
+  const angleRings = (values) => {
+    const seen = [];
+    return values.map(value => {
+      let i = seen.findIndex(x => Math.abs(x - value) < 1e-7);
+      if (i < 0) { i = seen.length; seen.push(value); }
+      return i + 1;
+    });
+  };
   const FIT = (b, o = {}) => fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 44, l: 44, r: 44, ...o });
 
   const TYN = ['직사각형', '정사각형', '등변사다리꼴', '평행사변형', '마름모', '등변이 아닌 사다리꼴'];
@@ -41,7 +50,7 @@
     const lo = Math.max(20, 2 * A0 + 2 * B0 - 340), hi = Math.min(2 * A0, 2 * B0) - 20, gam = lo <= hi ? Math.round((lo + hi) / 4) * 2 : Math.max(20, lo);
     const be = 2 * A0 - gam, de = 2 * B0 - gam, al = 360 - be - gam - de, a0 = 150;
     const A = pp(a0), B = pp(a0 - al), C = pp(a0 - al - be), D = pp(a0 - al - be - gam);
-    return { A0, B0, C0: 180 - A0, D0: 180 - B0, arcs: [al, be, gam, de], A, B, C, D };
+    return { A0, B0, C0: 180 - A0, D0: 180 - B0, arcs: [al, be, gam, de], angleRings: angleRings([A0, B0, 180 - A0, 180 - B0]), A, B, C, D };
   }
   const setAB = (s) => { s.c5A = clamp(Math.round(s.c5A / 5) * 5, 50, 130); s.c5B = clamp(Math.round(s.c5B / 5) * 5, 50, 130); };
   const qgen = (rnd) => { const a = pickR(rnd, [60, 65, 70, 75, 80, 85, 95, 100, 105, 110]), b = pickR(rnd, [60, 70, 75, 80, 85, 95, 100, 110, 115]); return [a, b]; };
@@ -67,13 +76,13 @@
       FIT(b); drawQuad(b, g);
       if (!C.txt) return;
       if (pr) {
-        if (q.kind === 0) { ang(b, B, A, Cc, { color: 'sky', rings: 2, label: dgx(q.b), r: 28, size: S(b) }); ang(b, D, A, Cc, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); }
-        if (q.kind === 1) { ang(b, A, B, D, { color: 'sky', rings: 1, label: dgx(q.a), r: 28, size: S(b) }); ang(b, Cc, B, D, { color: 'rose', rings: 1, label: 'x', r: 28, size: S(b) + 3 }); }
-        if (q.kind === 2) { ang(b, A, B, D, { color: 'sky', rings: 1, label: `(x+${q.a1})°`, r: 26, size: S(b) - 1 }); ang(b, Cc, B, D, { color: 'sky', rings: 1, label: `(${q.c1 >= 0 ? '2x+' + q.c1 : '2x−' + (-q.c1)})°`, r: 26, size: S(b) - 1 }); }
+        if (q.kind === 0) { ang(b, B, A, Cc, { color: 'sky', rings: g.angleRings[1], label: dgx(q.b), r: 28, size: S(b) }); ang(b, D, A, Cc, { color: 'rose', rings: g.angleRings[3], label: 'x', r: 28, size: S(b) + 3 }); }
+        if (q.kind === 1) { ang(b, A, B, D, { color: 'sky', rings: g.angleRings[0], label: dgx(q.a), r: 28, size: S(b) }); ang(b, Cc, B, D, { color: 'rose', rings: g.angleRings[2], label: 'x', r: 28, size: S(b) + 3 }); }
+        if (q.kind === 2) { ang(b, A, B, D, { color: 'sky', rings: g.angleRings[0], label: `(x+${q.a1})°`, r: 26, size: S(b) - 1 }); ang(b, Cc, B, D, { color: 'sky', rings: g.angleRings[2], label: `(${q.c1 >= 0 ? '2x+' + q.c1 : '2x−' + (-q.c1)})°`, r: 26, size: S(b) - 1 }); }
         return;
       }
-      if (ex || st >= 1) { ang(b, A, B, D, { color: 'sky', rings: 1, label: dgx(g.A0), r: 28, size: S(b) }); ang(b, Cc, B, D, { color: 'sky', rings: 1, label: dgx(g.C0), r: 28, size: S(b) }); }
-      if (ex || st >= 2) { ang(b, B, A, Cc, { color: 'rose', rings: 2, label: dgx(g.B0), r: 28, size: S(b) }); ang(b, D, A, Cc, { color: 'rose', rings: 2, label: dgx(g.D0), r: 28, size: S(b) }); }
+      if (ex || st >= 1) { ang(b, A, B, D, { color: 'sky', rings: g.angleRings[0], label: dgx(g.A0), r: 28, size: S(b) }); ang(b, Cc, B, D, { color: 'sky', rings: g.angleRings[2], label: dgx(g.C0), r: 28, size: S(b) }); }
+      if (ex || st >= 2) { ang(b, B, A, Cc, { color: 'rose', rings: g.angleRings[1], label: dgx(g.B0), r: 28, size: S(b) }); ang(b, D, A, Cc, { color: 'rose', rings: g.angleRings[3], label: dgx(g.D0), r: 28, size: S(b) }); }
     },
     steps: (M) => [
       `대각선 BD를 그어요. ∠A는 호 BCD에 대한 원주각이고 ∠C는 호 DAB에 대한 원주각이에요.`,
@@ -427,7 +436,7 @@
     const uy = ((A.x ** 2 + A.y ** 2) * (C.x - B.x) + (B.x ** 2 + B.y ** 2) * (A.x - C.x) + (C.x ** 2 + C.y ** 2) * (B.x - A.x)) / dd;
     const c = pt(ux, uy), r = dist(c, A), cyc = Math.abs(dist(c, D) - r) < 1e-6;
     const a = Math.round(angAt(A, B, D)), b2 = Math.round(angAt(B, A, C)), c2 = Math.round(angAt(C, B, D)), d2 = Math.round(angAt(D, A, C));
-    return { ty, th, A, B, C, D, c, r, cyc, a, b: b2, cc: c2, d: d2, name: TYN[ty] };
+    return { ty, th, A, B, C, D, c, r, cyc, a, b: b2, cc: c2, d: d2, angleRings: angleRings([a, b2, c2, d2]), name: TYN[ty] };
   };
   const trap = {
     id: 'c5-6', title: '[함정] 항상 원에 내접하는 사각형은?', short: '[함정] 내접하는 사각형',
@@ -453,8 +462,8 @@
       pname(b, A, cen, 'A'); pname(b, B, cen, 'B'); pname(b, Cc, cen, 'C'); pname(b, D, cen, 'D');
       if (!C.txt) return;
       const sa = S(b) - 1, show1 = pr || ex || st >= 0, show2 = pr || ex || st >= 1;
-      if (show1) { ang(b, A, B, D, { color: 'rose', rings: 1, label: dgx(g.a), r: 26, size: sa }); ang(b, Cc, B, D, { color: 'rose', rings: 1, label: dgx(g.cc), r: 26, size: sa }); }
-      if (show2) { ang(b, B, A, Cc, { color: 'sky', rings: 2, label: dgx(g.b), r: 26, size: sa }); ang(b, D, A, Cc, { color: 'sky', rings: 2, label: dgx(g.d), r: 26, size: sa }); }
+      if (show1) { ang(b, A, B, D, { color: 'rose', rings: g.angleRings[0], label: dgx(g.a), r: 26, size: sa }); ang(b, Cc, B, D, { color: 'rose', rings: g.angleRings[2], label: dgx(g.cc), r: 26, size: sa }); }
+      if (show2) { ang(b, B, A, Cc, { color: 'sky', rings: g.angleRings[1], label: dgx(g.b), r: 26, size: sa }); ang(b, D, A, Cc, { color: 'sky', rings: g.angleRings[3], label: dgx(g.d), r: 26, size: sa }); }
     },
     steps: (M) => { const g = M.g; return [
       `마주 보는 두 각 ∠A와 ∠C의 합: $${g.a}^{\\circ}+${g.cc}^{\\circ}=${g.a + g.cc}^{\\circ}$.`,

@@ -256,3 +256,50 @@ test('equal-length marks and right-angle marks describe the actual solution geom
   }
   t.diagnostic(`${frames} staged drawing frames independently checked for equal lengths and perpendicular rays`);
 });
+
+test('angle arc patterns denote equal angles rather than merely opposite comparison pairs', t => {
+  const same = (a, c) => G.dist(a, c) < 1e-8;
+  function check(b, label) {
+    const angles = [];
+    let sector;
+    for (const item of b.items.filter(x => x.type === 'arc')) {
+      const o = item.options || {};
+      if (o.sector && o.fill && !o.color) { sector = item; continue; }
+      if (o.color && o.width === 2.4 && sector && same(item.p, sector.p) && Math.abs(item.a - sector.a) < 1e-8 && Math.abs(item.z - sector.z) < 1e-8) {
+        angles.push({ p: item.p, a: item.a, z: item.z, degrees: Math.abs(item.z - item.a) / G.DEG, color: o.color, rings: 1 });
+        sector = null;
+      } else if (o.color && o.width === 2.2) {
+        const last = angles.at(-1);
+        if (last && same(item.p, last.p) && Math.abs(item.a - last.a) < 1e-8 && Math.abs(item.z - last.z) < 1e-8) last.rings++;
+      }
+    }
+    const groups = new Map();
+    for (const a of angles) {
+      const key = `${a.color}:${a.rings}`;
+      if (groups.has(key)) close(a.degrees, groups.get(key), `${label}: equal arc pattern ${key}`);
+      else groups.set(key, a.degrees);
+    }
+  }
+  let frames = 0;
+  for (const sc of scenes) {
+    const s = state(sc);
+    for (let seed = 0; seed < 24; seed++) {
+      s.ciPk = sc.ci.gen(G.seeded(`arc-audit|${sc.id}|${seed}`), seed);
+      for (let step = 1; step <= 5; step++) {
+        s.step = step; const b = board(); sc.draw(b, s, {}, { tab: 'review' });
+        check(b, `${sc.id}/${s.ciPk.key}/step${step}`); frames++;
+      }
+    }
+  }
+  for (const id of ['c5-1', 'c5-6']) {
+    const sc = scenes.find(x => x.id === id), s = state(sc);
+    const cases = id === 'c5-1'
+      ? [50, 70, 90, 110, 130].flatMap(c5A => [50, 90, 130].map(c5B => ({ c5A, c5B })))
+      : [0, 1, 2, 3, 4, 5].flatMap(c5ty => [55, 60, 65, 70, 75, 80].map(c5th => ({ c5ty, c5th })));
+    for (const params of cases) {
+      Object.assign(s, params); const b = board(); sc.draw(b, s, {}, { tab: 'explore' });
+      check(b, `${id}/explore/${JSON.stringify(params)}`); frames++;
+    }
+  }
+  t.diagnostic(`${frames} question-stage and exploration frames checked against their actual angle measures`);
+});
