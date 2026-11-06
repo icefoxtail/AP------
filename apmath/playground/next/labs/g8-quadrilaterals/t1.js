@@ -50,7 +50,7 @@
       const t = cx.review ? (st >= 2 ? 1 : 0) : cx.t;
       const R = !cx.problem && t > 0.001 && st >= 1 ? [A, B, C].map((q) => rotP(q, O, 180 * t)) : null;
       const frame = R ? bboxOf([...pts, ...R]) : bx;
-      fit(b, frame, { t: 58, b: b.W < 560 ? 108 : 76, l: 58, r: 58 });
+      fit(b, frame, { t: 58, b: b.W < 560 ? 108 : cx.problem ? 76 : 112, l: 58, r: 58 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       if (cx.problem) { drawProb1(b, M); return; }
       if (st >= 1) line(b, A, C, 'green', 3, { dash: [8, 5] });

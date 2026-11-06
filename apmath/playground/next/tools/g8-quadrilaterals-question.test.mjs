@@ -49,6 +49,14 @@ test('the rotating triangle remains entirely visible between its start and finis
   for(const p of polygon.args[0]){const x=b.W/2+(p.x-(b.focus.x[0]+b.focus.x[1])/2)*b.k,y=b.H/2+(p.y-(b.focus.y[0]+b.focus.y[1])/2)*b.k;assert.ok(x>=0&&x<=W&&y>=0&&y<=H,`rotation ${t} at ${W}×${H}: ${x},${y}`);}
  }
 });
+test('rotation guidance clears the floating toolbar in landscape and desktop stages',()=>{
+ // The landscape PNG showed the last words behind the 48px bottom toolbar.
+ for(const [W,H] of [[1030,610],[684,450],[684,420]])for(const t of [0,.25,.5,.75,1]){
+  const b=draw('q1-1',state('q1-1',{qaT:t}),'explore',W,H);
+  const captions=labels(b).filter(l=>/포개|돌려/.test(l.text));assert.ok(captions.length);
+  for(const l of captions)assert.ok(l.y1<=H-60,`rotation ${t} at ${W}×${H}: caption bottom ${l.y1} enters the toolbar region ${H-60}`);
+ }
+});
 test('diagonal targets and small trapezoid angles stay separate from adjacent labels',()=>{
  const a=labels(draw('q1-5',state('q1-5'),'explore')),caption=a.find(l=>l.text.includes('같은 표시의 각')),width=a.find(l=>l.text==='10');
  assert.ok(caption&&width&&!overlap(caption,width),'equal-angle caption overlaps the upper side length');
