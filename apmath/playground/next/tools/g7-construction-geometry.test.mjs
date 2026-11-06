@@ -452,3 +452,91 @@ test('third-angle review keeps the actually given BC and EF side marks', () => {
     assert.equal(m.args[2].count, 2);
   }
 });
+
+test('the SAS third-side caption stays inside narrow stages for generated questions and slider extrema', () => {
+  const cases = [];
+  for (let k = 0; k < 64; k++) cases.push({ tab: 'review', patch: { cnPk: { k }, step: 3 } });
+  for (const b of [4, 9]) for (const c of [4, 9]) for (let A = 25; A <= 120; A += 5) cases.push({ tab: 'explore', patch: { cnMb: b, cnMc: c, cnMA: A, cnMmode: 'inc' } });
+  for (const h of [310, 412, 498]) for (const { tab, patch } of cases) {
+    const { labels } = screenRender('c3-2', patch, tab, 390, h, 58);
+    const caption = labels.find((l) => /^BC|^변 BC$/.test(l.text));
+    assert.ok(caption, 'the third side remains identified');
+    assert.ok(caption.x0 >= 8 && caption.x1 <= 382, `${tab}/${JSON.stringify(patch)}/${h}: clipped caption ${caption.x0}..${caption.x1}`);
+    for (const label of labels.filter((l) => l !== caption)) assert.ok(!overlap(caption, label), `third-side caption overlaps ${label.text}`);
+  }
+});
+
+test('correspondence review captions describe the shown stage without requesting hidden play controls', () => {
+  const sc = by('c4-1'), s = state(sc.id);
+  render(sc.id, s, 'problem');
+  for (let step = 0; step <= sc.steps(s).length; step++) {
+    s.step = step;
+    const { texts } = render(sc.id, s, 'review');
+    assert.ok(!texts.some((t) => /▶/.test(t)), 'review must not ask for its unavailable play control');
+    if (step === 2) assert.ok(texts.includes('같은 색의 점은 서로 대응해요.'));
+    if (step === 3) assert.ok(texts.includes('같은 표시의 변·각이 서로 대응해요.'));
+  }
+  const explore = render(sc.id, state(sc.id), 'explore');
+  assert.ok(explore.texts.some((t) => /▶/.test(t)), 'exploration retains its actual play instruction');
+});
+
+test('the completed third-angle review centers and enlarges the overlaid triangle', () => {
+  const initial = screenRender('c5-2', { step: 3 }, 'review', 390, 412, 58);
+  const vertices = initial.b.calls.filter((c) => c.method === 'point').slice(0, 3).map((c) => initial.toS(c.args[0]));
+  const left = Math.min(...vertices.map((p) => p.x)), right = Math.max(...vertices.map((p) => p.x));
+  assert.ok(right - left >= 180, 'the completed mobile triangle must use the empty space left by its overlapping copy');
+  close((left + right) / 2, 195, 'the completed triangle is horizontally centered');
+  for (const [w, h, inset] of [[1024, 700, 0], [820, 430, 58], [684, 500, 0], [684, 612, 0], [390, 310, 58], [390, 412, 58]]) {
+    for (let A = 30; A <= 80; A += 5) for (let B = 30; B <= 80; B += 5) {
+      const { labels } = screenRender('c5-2', { cnEA: A, cnEB: B, step: 3 }, 'review', w, h, inset);
+      for (const label of labels) assert.ok(label.x0 >= 0 && label.x1 <= w && label.y0 >= 0 && label.y1 <= h - inset, `${A}/${B}/${w}: clipped ${label.text}`);
+      for (let i = 0; i < labels.length; i++) for (let j = i + 1; j < labels.length; j++) assert.ok(!overlap(labels[i], labels[j]), `${A}/${B}/${w}: ${labels[i].text} overlaps ${labels[j].text}`);
+      if (w >= 560 && w < 900 && inset === 0) assert.ok(labels.find((l) => /ASA 합동$/.test(l.text)).y1 <= h - 52, `${A}/${B}/${w}/${h}: the enlarged final caption clears the landscape toolbar`);
+    }
+  }
+});
+
+test('interval labels never cross another interval bar when larger numbers compress the number line', () => {
+  const cases = [];
+  for (let a = 3; a <= 9; a++) for (let b = 3; b <= 10; b++) for (const kind of [0, 1, 2]) cases.push({ tab: 'review', patch: { cnPk: { a, b, kind }, step: 3 } });
+  for (const a of [2, 12]) for (const b of [2, 12]) for (const x of [1, 20]) cases.push({ tab: 'explore', patch: { cnXa: a, cnXb: b, cnXx: x } });
+  for (const [w, h, inset] of [[1024, 700, 0], [820, 430, 58], [684, 500, 0], [390, 310, 58], [390, 412, 58]]) {
+    for (const { tab, patch } of cases) {
+      const { b, labels, toS } = screenRender('c2-2', patch, tab, w, h, inset);
+      const bars = b.calls.filter((c) => c.method === 'path' && c.args[1]?.width === 8).map(({ args: [[p, q]] }) => {
+        const a = toS(p), z = toS(q); return { x0: Math.min(a.x, z.x) - 5.5, x1: Math.max(a.x, z.x) + 5.5, y0: a.y - 5.5, y1: a.y + 5.5 };
+      });
+      const guides = b.calls.filter((c) => c.method === 'path' && c.args[1]?.width === 1.8 && c.args[1]?.dash).map(({ args: [[p, q]] }) => {
+        const a = toS(p), z = toS(q); return { x0: a.x - .9, x1: a.x + .9, y0: Math.min(a.y, z.y), y1: Math.max(a.y, z.y) };
+      });
+      assert.equal(bars.length, 3);
+      for (const label of labels) {
+        assert.ok(label.x0 >= 0 && label.x1 <= w && label.y0 >= 0 && label.y1 <= h - inset, `${w}/${JSON.stringify(patch)} clipped ${label.text}`);
+        for (const bar of [...bars, ...guides]) assert.ok(!overlap(label, bar), `${w}/${JSON.stringify(patch)} ${label.text} crosses an interval bar or guide`);
+      }
+    }
+  }
+});
+
+test('the four-stick review count clears the bottom toolbar on landscape tablet stages', () => {
+  for (const w of [672, 684, 720]) for (const h of [500, 612, 624]) {
+    const { labels } = screenRender('c2-3', { step: 3 }, 'review', w, h);
+    const count = labels.find((l) => /^삼각형을 만들 수 있는 경우:/.test(l.text));
+    assert.ok(count);
+    assert.ok(count.y1 <= h - 52, `${w}/${h}: final count must clear the 46px toolbar by at least 6px`);
+    for (const label of labels) assert.ok(label.x0 >= 0 && label.x1 <= w && label.y0 >= 0 && label.y1 <= h, `${w}/${h}: clipped ${label.text}`);
+    for (const label of labels.filter((l) => l !== count)) assert.ok(!overlap(count, label), 'final count does not overlap a card label');
+  }
+});
+
+test('generated long-stick reviews retain both endpoints and the full comparison guide', () => {
+  for (const [w, h, inset] of [[1040, 788, 0], [820, 516, 58], [684, 612, 0], [390, 412, 58]]) {
+    for (let a = 3; a <= 7; a++) for (let b = 3; b <= 7; b++) for (const kind of [0, 1]) {
+      const r = screenRender('c2-1', { cnPk: { a, b, kind }, step: 3 }, 'review', w, h, inset);
+      for (const p of points(r.b.calls)) {
+        const at = r.toS(p);
+        assert.ok(at.x >= 8 && at.x <= w - 8 && at.y >= 8 && at.y <= h - inset - 8, `${a}/${b}/${kind}/${w}: geometry outside the drawing stage ${at.x},${at.y}`);
+      }
+    }
+  }
+});

@@ -87,7 +87,9 @@
       if (C.txt) {
         if (done) { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i] + '=' + imageNames[i], { size: 15, gap: 14, color: st >= 2 ? VCOL[i] : 'ink' })); }
         else { Tr.forEach((p, i) => tagOut(b, p, cA, 'ABC'[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); img.forEach((p, i) => tagOut(b, p, cB, imageNames[i], { size: 17, color: st >= 2 ? VCOL[i] : 'ink' })); }
-        const cap = done ? `꼭 포개어져요 → 합동 (△ABC ≡ △${imageNames})` : t <= 0 ? '▶를 눌러 오른쪽 삼각형을 가로로 밀어 포개 보세요' : mode === 'slide' ? '가로로 밀어 포개요' : t < 0.5 ? (mode === 'rot' ? '제자리에서 돌려요' : '제자리에서 뒤집어요') : '가로로 밀어 포개요';
+        const cap = done ? `꼭 포개어져요 → 합동 (△ABC ≡ △${imageNames})`
+          : C.review ? (st >= 3 ? '같은 표시의 변·각이 서로 대응해요.' : st >= 2 ? '같은 색의 점은 서로 대응해요.' : '어떤 점·변·각이 대응할지 살펴보세요.')
+            : t <= 0 ? '▶를 눌러 오른쪽 삼각형을 가로로 밀어 포개 보세요' : mode === 'slide' ? '가로로 밀어 포개요' : t < 0.5 ? (mode === 'rot' ? '제자리에서 돌려요' : '제자리에서 뒤집어요') : '가로로 밀어 포개요';
         T(b, pt((bb.x0 + bb.x1) / 2, bb.y1 + 0.2), cap, { dy: 22, size: b.W < 560 ? 14 : 17, color: done ? 'green' : 'amber' });
       }
       if (!C.review && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(모양 바꾸기)', drag: (w2) => { s.cnCx = clamp(w2.x, 0.8, 5.2); s.cnCy = clamp(-w2.y, 2.6, 5.4); } });

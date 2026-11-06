@@ -214,7 +214,8 @@
         [A, B, Cc].forEach((q) => b.point(q, { color: 'ink', r: 4.8 }));
         tagOut(b, A, cen, 'A', { size: 17 }); tagOut(b, B, cen, 'B', { size: 17 }); tagOut(b, Cc, cen, 'C', { size: 17 });
         sideTag(b, A, B, cen, `${M.c}`, { color: 'sky', size: 17 }); sideTag(b, Cc, A, cen, `${M.b}`, { color: 'sky', size: 17 });
-        sideTag(b, B, Cc, cen, 'BC는 저절로 정해져요', { color: 'muted', size: 13, gap: 10 });
+        // Keep the side label compact on a phone; the full SAS explanation is below the figure.
+        sideTag(b, B, Cc, cen, b.W < 560 ? '변 BC' : 'BC는 저절로 정해져요', { color: 'muted', size: 13, gap: 10 });
         if (C.txt) {
           if (b.W < 560) {
             T(b, pt(M.c / 2, 0), '끼인각 ∠A를 바꾸면 BC도 변해요.', { dy: 48, size: 13, color: 'amber' });

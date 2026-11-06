@@ -97,7 +97,7 @@
       if (C.problem || (C.review && C.step < 3)) { drawStickProblem(b, M); return; }
       const cx = L / 2, tri = ok ? triSSS(M.srt[0].v, M.srt[1].v, L) : null;
       const top = Math.min(-6.1, tri ? tri[2].y - 0.8 : -M.srt[1].v * Math.sin(38 * DEG) - 0.8);
-      fit(b, { x0: Math.min(cx - 6.6, -0.7), x1: Math.max(cx + 6.6, sum + 0.7), y0: top, y1: 3.4 }, { t: 34, b: 34 });
+      fit(b, { x0: Math.min(cx - 6.6, -0.7), x1: Math.max(cx + 6.6, L + 0.7, sum + 0.7), y0: top, y1: 3.4 }, { t: 34, b: 34 });
       const tt = C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       // 밑변 강조(1단계) 후 경첩
       const items = M.srt.map((x) => ({ ...x, c: x === M.srt[2] ? 'amber' : x.c }));
@@ -178,7 +178,10 @@
       if (C.problem) { drawXProblem(b, M); return; }
       const { a, b: b2, lo, hi, mx, mn, x } = M, span = Math.max(hi + 2, x + 1);
       fit(b, { x0: -1, x1: span + 0.6, y0: -6.2, y1: 1.6 }, { t: 24, b: 40 });
-      const ts = tickStep(b, span), st = C.review ? C.step : 3, rows = [[-4.9, 'sky'], [-3.3, 'rose'], [-1.7, 'green']];
+      // A long number line must not compress the row labels onto the preceding bar.
+      const rowGap = Math.max(1.6, 40 / b.k), rows = [-1.7 - 2 * rowGap, -1.7 - rowGap, -1.7];
+      if (rowGap > 1.6) fit(b, { x0: -1, x1: span + 0.6, y0: rows[0] - 1.3, y1: 1.6 }, { t: 24, b: 40 });
+      const ts = tickStep(b, span), st = C.review ? C.step : 3;
       // 수직선
       line(b, pt(-0.6, 0), pt(span + 0.2, 0), 'ink', 2.6);
       for (let v = 0; v <= span; v += ts) { line(b, pt(v, -0.12), pt(v, 0.12), 'ink', 2); T(b, pt(v, 0), String(v), { dy: 18, size: 13, color: 'muted' }); }
@@ -190,17 +193,17 @@
       const sz = b.W < 560 ? 13 : 15;
       // 경우 ① : x 가 가장 긴 변
       if (st >= 1) {
-        bar(-4.9, mx, hi, 'sky', false, true, st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
-        bar(-3.3, lo, mx, 'rose', true, true, st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
+        bar(rows[0], mx, hi, 'sky', false, true, st >= 2 ? `① x가 가장 긴 변 → ${fmtN(mx)} ≤ x < ${hi}` : '① x가 가장 긴 변일 때', '');
+        bar(rows[1], lo, mx, 'rose', true, true, st >= 2 ? `② 아닐 때 → ${lo} < x < ${fmtN(mx)}` : '② x가 가장 긴 변이 아닐 때', '');
       }
       if (st >= 3) {
-        bar(-1.7, lo, hi, 'green', true, true, `x의 범위: ${lo} < x < ${hi}`, '');
-        for (let v = lo + 1; v < hi; v++) b.point(pt(v, -1.7), { color: 'ink', r: 2.6 });
+        bar(rows[2], lo, hi, 'green', true, true, `x의 범위: ${lo} < x < ${hi}`, '');
+        for (let v = lo + 1; v < hi; v++) b.point(pt(v, rows[2]), { color: 'ink', r: 2.6 });
       }
       // 점 x
       if (!C.review) {
         const col = M.ok ? 'green' : 'rose';
-        line(b, pt(x, -5.4), pt(x, 0), col, 1.8, { dash: [4, 5] });
+        line(b, pt(x, rows[2]), pt(x, 0), col, 1.8, { dash: [4, 5] });
         b.handle('x', pt(x, 0), { color: 'rose', r: 8, ariaLabel: 'x 끌기', drag: (w) => { s.cnXx = clamp(Math.round(w.x), 1, 20); } });
         if (C.txt) T(b, pt((span - 1) / 2, 0), M.ok ? `x = ${x} 이면 삼각형이 만들어져요 ✓` : `x = ${x} 이면 삼각형이 안 만들어져요 ✗`, { dy: 44, size: 16, color: col });
       } else if (C.txt) {
@@ -262,7 +265,8 @@
     draw(b, s, M, C) {
       if (C.problem) { drawFourProblem(b, M); return; }
       const colsN = 2, Wc = 7.6, Hc = 8.2, Hi = Hc - 0.5;
-      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: 44, l: b.W < 560 ? 14 : 46, r: b.W < 560 ? 14 : 46 });
+      const bottomPad = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 76 : 44;
+      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: bottomPad, l: b.W < 560 ? 14 : 46, r: b.W < 560 ? 14 : 46 });
       const tt = C.review ? (C.step >= 3 ? 1 : 1) : C.t, st = C.review ? C.step : 3;
       M.cards.forEach((cd, i) => {
         const col = i % 2, row = Math.floor(i / 2), x0 = col * Wc + 0.2, y0 = -(2 - row) * Hc + 0.4;

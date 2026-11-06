@@ -111,7 +111,8 @@
       const labelGap = 108, scale = Math.max(3, Math.min((aw - pp - margins.l - margins.r - labelGap) / (2 * w + 0.8), (ah - pp - margins.t - margins.b) / (h + 1.2)));
       const X0 = w + Math.max(3, labelGap / scale), t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       const img = shiftPts(Tr, X0 * (1 - seg01(t, 0, 1))), done = t >= 0.999;
-      const bb = unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
+      const bb = C.review && done ? bboxOf(Tr, 0.4) : unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
+      if (C.review && done && b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40) margins.b += 40;
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.4 }, margins);
       const st = C.problem ? 0 : C.review ? C.step : 3;
       const mk = (T3, nms, tag) => {
@@ -133,7 +134,7 @@
       if (C.txt && !C.problem) {
         const cx = (bb.x0 + bb.x1) / 2;
         const cap = st >= 3 ? (done ? '한 변까지 같아서 포개어져요 → ASA 합동' : `∠F = ∠C = ${Cc}°, BC = EF → ASA 합동`) : st >= 2 ? `셋째 각: ∠C = 180° − (${A}° + ${B}°) = ${Cc}°  ∠F도 ${Cc}°` : `두 각이 각각 같아요: ∠A=∠D=${A}°, ∠B=∠E=${B}°`;
-        T(b, pt(cx, bb.y1 + 0.2), cap, { dy: 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
+        T(b, pt(cx, bb.y1 + 0.2), cap, { dy: C.review && done ? 44 : 26, size: b.W < 560 ? 13 : 16, color: st >= 3 ? 'green' : 'amber' });
       }
       if (!C.review && !C.problem && C.txt && t <= 0) b.handle('C', Tr[2], { color: 'amber', r: 8, ariaLabel: '꼭짓점 C 끌기(∠A, ∠B 바꾸기)', drag: (w2) => { s.cnEA = clamp(Math.round(-dirDeg(Tr[0], w2) / 5) * 5, 30, 80); s.cnEB = clamp(Math.round((180 + dirDeg(Tr[1], w2)) / 5) * 5, 30, 80); } });
     },
