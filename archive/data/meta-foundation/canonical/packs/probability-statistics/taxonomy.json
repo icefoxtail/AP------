@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 14,
-  "templateCount": 29,
+  "problemTypeCount": 15,
+  "templateCount": 30,
   "foundationPack": "PROBABILITY_STATISTICS",
   "ownerPack": "PROBABILITY_STATISTICS",
   "problemTypes": [
@@ -847,6 +847,30 @@
         "qid_v1_73c4759dd53a789fb80b8ce27a9bace455a1ec848332b5910feddfb4e273c280",
         "qid_v1_e81018cbf9ee0927231217a9b479f1c44bc587fce266a79b9930d71ecec93d7f",
         "qid_v1_b0b5130283dd3c419a3d588f649f46750be05e807e71c9dafa647278c867c054"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "canonicalLabelKo": "합의 법칙으로 경우의 수 나누어 세기",
+      "definition": "서로 겹치지 않는 여러 조건의 경우를 독립적으로 열거한 다음 합의 법칙으로 전체 경우의 수를 구하는 중등 유형.",
+      "aliases": [],
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043"
+      ],
+      "sourceUnits": [
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "META_BATCH_03_REASSIGN_20261106",
+          "examUid": "23_매산중_2학기_기말_중2_기출",
+          "questionOrdinals": [
+            15
+          ]
+        }
       ]
     }
   ],
@@ -1887,6 +1911,25 @@
         "qid_v1_bcc3cd914a0f5a1c0133c62e3bcf4e4c0a30c30aa4ec38c1690d2bba48eeffe3"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+      "canonicalLabelKo": "서로 배타적인 경우를 나누어 합산",
+      "definition": "주사위의 눈 합처럼 서로 겹치지 않는 조건별 순서쌍을 열거하고 경우의 수를 더한다.",
+      "aliases": [],
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "parentProblemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043"
+      ],
+      "evidenceProvenance": {
+        "source": "META_BATCH_03_REASSIGN_20261106",
+        "questionOrdinals": [
+          15
+        ]
+      }
     }
   ],
   "externalReferences": {
