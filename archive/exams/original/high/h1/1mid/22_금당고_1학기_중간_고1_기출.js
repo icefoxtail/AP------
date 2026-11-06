@@ -15,7 +15,7 @@ window.questionBank = [
     "subUnitConfidence": "source_solution_semantic_resolved",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
