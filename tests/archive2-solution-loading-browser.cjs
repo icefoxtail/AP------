@@ -602,7 +602,11 @@ async function main() {
   if (!report.pass) process.exitCode = 1;
 }
 
-main().catch(error => {
+module.exports = { serve, realFixture, loadBank, sourceFiles, installInstrumentation,
+  waitForOutcome, capture, assertReady, compareRows, verifiedPreflight,
+  assertPrintBlocked, faultFixture };
+
+if (require.main === module) main().catch(error => {
   report.pass = false; report.fatal = safeError(error); writeReport();
   console.error(JSON.stringify({ pass: false, error: report.fatal })); process.exitCode = 1;
 });

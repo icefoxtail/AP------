@@ -539,7 +539,7 @@ function createArchiveScreenRuntime() {
         };
         ctx.deps = {
             ...archiveExamDeps, ...archiveSolutionDeps, ...archiveAnswerDeps,
-            appState: ctx.buildState, stagingHost: ctx.stagingHost,
+            appState: ctx.buildState, stagingHost: ctx.stagingHost, abortSignal: ctx.abortSignal,
             renderQuestionImageHTML: question => renderQuestionImageHTML(question, ctx.buildState),
             renderSolutionImageHTML: question => renderSolutionImageHTML(question, ctx.buildState),
             normalizeQuestionImageSources: root => normalizeQuestionImageSources(root, ctx.buildState),
