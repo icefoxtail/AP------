@@ -16,12 +16,12 @@ const server=http.createServer((req,res)=>{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
  try{
   browser=await chromium.launch(process.env.CHROME_BIN?{executablePath:process.env.CHROME_BIN,headless:true}:{channel:'chrome',headless:true});
-  const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=await browser.newPage(),errors=[],failed=[];page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>failed.push(`${r.url()} ${r.failure()?.errorText||''}`));
   const url=`http://127.0.0.1:${server.address().port}/archive/engine.html?data=${encodeURIComponent('exams/'+source)}&mode=exam`;
-  await page.goto(url);await page.waitForFunction(()=>{
+  await page.goto(url);try{await page.waitForFunction(()=>{
    const ready=JSON.parse(document.documentElement.dataset.apPrintReadiness||'{}');
    return ready.state==='RENDER_READY'&&typeof AppState!=='undefined'&&AppState.mode==='exam'&&AppState.data.length>0;
-  },undefined,{timeout:60000});
+  },undefined,{timeout:60000});}catch(error){const state=await page.evaluate(()=>({title:document.title,url:location.href,readiness:document.documentElement.dataset.apPrintReadiness||null,appMode:typeof AppState!=='undefined'?AppState.mode:null,dataLength:typeof AppState!=='undefined'?AppState.data?.length:null,error:document.querySelector('.error-message')?.textContent||null,text:document.body.innerText.slice(0,500)})).catch(()=>null);throw Error(`exam access render timeout: ${JSON.stringify({state,pageErrors:errors,requestFailures:failed})}`);}
   const result=await page.evaluate(()=>({questions:AppState.data.length,pages:document.querySelectorAll('#print-area .page').length,
    visibleText:document.querySelector('#print-area')?.innerText?.length||0,images:[...document.querySelectorAll('#print-area img')].every(img=>img.complete&&img.naturalWidth>0)}));
   assert(result.questions>0&&result.pages>0&&result.visibleText>100&&result.images,'original exam must render usable questions and images');
