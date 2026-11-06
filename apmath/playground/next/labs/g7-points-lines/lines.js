@@ -189,20 +189,29 @@
     draw: (b, s, M, C) => {
       const st = C.step, S = M.S, y = [0, 2.8, 5.0];
       mainLine(b, y[0]);
+      if (C.hide) {
+        pointsRow(b, M.xs, ['A', 'B', 'C', 'D'], y[0]);
+        M.xs.forEach((x, i) => b.handle('P' + i, { x, y: 0 }, { color: 'amber', ariaLabel: `점 ${LET[i]}`, drag: (w) => move4(s, i, w.x) }));
+        return;
+      }
       pointsRow(b, M.xs, LET.split('').slice(0, 4), y[0], M.xs.map((_, i) => (i === S ? 'violet' : 'ink')));
       b.point({ x: M.xs[S], y: 0 }, { color: 'violet', r: 7 });
       guide(b, M.xs, y[0], y[2] + 0.3);
-      rowLabel(b, y[1], M.R.length ? `${M.R.map((n) => '반직선 ' + n).join(' = ')}  (→)` : '→ 방향: 이름 붙일 점 없음', 'violet', st, st === 2);
-      if (M.R.length) ray(b, y[1], M.xs[S], 1, 'violet', al(st, st === 2));
-      rowLabel(b, y[2], M.L.length ? `${M.L.map((n) => '반직선 ' + n).join(' = ')}  (←)` : '← 방향: 이름 붙일 점 없음', 'rose', st, st === 3);
-      if (M.L.length) ray(b, y[2], M.xs[S], -1, 'rose', al(st, st === 3));
+      if (st >= 2) {
+        rowLabel(b, y[1], M.R.length ? `${M.R.map((n) => '반직선 ' + n).join(' = ')}  (→)` : '→ 방향: 이름 붙일 점 없음', 'violet', st, true);
+        if (M.R.length) ray(b, y[1], M.xs[S], 1, 'violet', 1);
+      }
+      if (st >= 3) {
+        rowLabel(b, y[2], M.L.length ? `${M.L.map((n) => '반직선 ' + n).join(' = ')}  (←)` : '← 방향: 이름 붙일 점 없음', 'rose', st, true);
+        if (M.L.length) ray(b, y[2], M.xs[S], -1, 'rose', 1);
+      }
       if (st === 1 || st >= 99) T(b, { x: M.xs[S], y: 0 }, '시작점', { dy: -24, color: 'violet', size: 15 });
       M.xs.forEach((x, i) => b.handle('P' + i, { x, y: 0 }, { color: 'amber', r: i === S ? 6.5 : 6, ariaLabel: `점 ${LET[i]}`, drag: (w) => move4(s, i, w.x) }));
     },
     quiz: (M, s, rng) => {
       const cls = [];
       for (let a = 0; a < 4; a++) for (const d of [1, -1]) { const nm = rayNames(a, d, 4); if (nm.length >= 2) cls.push({ a, d, nm }); }
-      const tgt = PL.pick(rng, cls), names = tgt.nm, pickN = PL.shuffle(rng, names);
+      const tgt = PL.pick(rng, cls.filter((c) => c.a === M.S)), names = tgt.nm, pickN = PL.shuffle(rng, names);
       const asked = pickN[0], right = pickN[1];
       const all = [];
       for (let a = 0; a < 4; a++) for (const d of [1, -1]) rayNames(a, d, 4).forEach((n) => all.push({ a, d, n }));
@@ -265,7 +274,7 @@
       rowLabel(b, y[2], M.n2, 'rose', st, st === 2);
       ray(b, y[2], M.xs[M.r2.s], M.r2.d, 'rose', al(st, st === 2));
       const sh = M.sh, xs = M.xs, a3 = al(st, st === 3);
-      if (!C.hide || st < 99) {
+      if (!C.hide && (C.tab !== 'review' || st >= 3)) {
         if (sh.kind === 'none') { rowLabel(b, y[3], '공통부분: 없다', 'muted', st, st === 3); }
         else {
           const label = shapeText(sh);
@@ -278,10 +287,7 @@
       M.xs.forEach((x, i) => b.handle('P' + i, { x, y: 0 }, { color: 'amber', ariaLabel: `점 ${LET[i]}`, drag: (w) => move4(s, i, w.x) }));
     },
     quiz: (M, s, rng) => {
-      const rays = [];
-      for (let a = 0; a < 4; a++) for (const d of [1, -1]) if (rayNames(a, d, 4).length) rays.push({ s: a, d });
-      let r1, r2, sh;
-      for (let t = 0; t < 40; t++) { r1 = PL.pick(rng, rays); r2 = PL.pick(rng, rays); sh = interName(r1, r2); if (!(r1.s === r2.s && r1.d === r2.d)) break; }
+      const { r1, r2, sh } = M;
       const key = (x) => (x.kind === 'none' ? 'n' : x.kind === 'point' ? 'p' + x.p : x.kind === 'seg' ? 's' + x.a + x.c : 'r' + x.s + x.d);
       const cand = [{ kind: 'none' }];
       for (let i = 0; i < 4; i++) cand.push({ kind: 'point', p: i });
@@ -438,7 +444,7 @@
     rule: () => '세 점이 일직선이 아닐 때: 직선·선분 n(n−1)÷2, 반직선 n(n−1)',
     notes: () => '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>반직선은 방향이 있어서 <b>2로 나누지 않습니다</b>. 직선·선분은 나눕니다.</li><li>점이 한 직선 위에 모두 있을 때(앞 장면)는 반직선이 2(n−1)개로 규칙이 달라요.</li></ul>',
     draw: (b, s, M, C) => {
-      const st = C.step, P = M.pts, nm = names(M.n), mm = C.hide ? M.n : M.m; // 문제 탭에서는 문제의 점 n개를 모두 이어 보입니다
+      const st = C.step, P = M.pts, nm = names(M.n), mm = M.m;
       b.circle({ x: 0, y: 0 }, 3.4, { color: 'muted', width: 1.4, alpha: 0.35, dash: [4, 6] });
       for (let i = 0; i < mm; i++) for (let j = i + 1; j < mm; j++) {
         const fresh = !C.hide && j === mm - 1;
@@ -450,6 +456,7 @@
         }
       }
       P.forEach((p, i) => {
+        if (C.hide && i >= mm) return;
         const on = i < mm, nx = p.x / 3.4, ny = p.y / 3.4;
         b.point(p, { color: on ? 'ink' : 'muted', r: on ? 5.5 : 4.5, hollow: !on });
         T(b, p, nm[i], { dx: nx * 20, dy: ny * 20, size: 17, color: on ? 'ink' : 'muted' });
@@ -461,7 +468,7 @@
       b.handle('A', P[0], { color: 'amber', ariaLabel: '점들을 돌리기', drag: (w) => { s.lgr = Math.atan2(-w.y, w.x); } });
     },
     quiz: (M, s, rng) => {
-      const n = M.n, kind = (s.plSeed || 0) % 3;
+      const n = M.m, kind = (s.plSeed || 0) % 3;
       let right, wrongs, word;
       if (kind === 0) { right = C2(n); word = '서로 다른 직선'; wrongs = [{ v: n * (n - 1), hint: '직선 AB와 BA는 같은 직선이에요. 2번 센 것을 2로 나누세요.' }, { v: n - 1, hint: '한 점에서 그은 직선만 센 거예요.' }, { v: C2(n) + 1, hint: '더할 것이 없어요.' }, { v: n, hint: '점의 개수와 직선의 개수는 달라요.' }]; }
       else if (kind === 1) { right = n * (n - 1); word = '서로 다른 반직선'; wrongs = [{ v: C2(n), hint: '반직선 AB와 BA는 방향이 달라서 서로 다른 반직선이에요. 나누지 않아요.' }, { v: n - 1, hint: '한 점에서 시작하는 반직선만 센 거예요.' }, { v: 2 * (n - 1), hint: '이 식은 점이 한 직선 위에 있을 때의 개수예요.' }, { v: n * n, hint: '자기 자신으로 가는 반직선은 없어요.' }]; }
