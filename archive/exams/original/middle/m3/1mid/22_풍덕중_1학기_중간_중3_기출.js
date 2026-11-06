@@ -31,10 +31,17 @@ window.questionBank = [
     "answer": "3",
     "solution": "① 25를 제곱하면 625이므로 25는 5의 양의 제곱근이 아니다.\n② 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$의 두 수이다.\n③ $\\sqrt{(-3)^2}=|-3|=3$이므로 옳다.\n④ $\\sqrt{36}=6$이고, 6의 제곱근은 $\\pm\\sqrt{6}$이다.\n⑤ 제곱근 7은 $\\sqrt{7}$이다.\n$\\therefore$ ③",
     "level": "중",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "각 선택지에 제곱근의 정의와 √(a²)=|a|를 적용하여 옳은 진술을 고른다.",
+    "decisiveStep": "√((-3)²)=3이므로 세 번째 진술이 옳다."
   },
   {
     "id": 2,
