@@ -209,3 +209,21 @@ test('the circumcenter angle problem uses the available short canvas and keeps e
     }
   }
 });
+
+test('kite folding guidance does not cover the lower vertex on mobile and remains available in the guide', () => {
+  const sc = get('t3-6');
+  for (const H of [310, 410, 440]) for (const trKa of [20, 40, 70]) for (const trKt of [0, .5, 1]) {
+    const s = Object.assign(state(sc), { trKa, trKt });
+    const b = board(390, H, { bottom: 58 }); sc.draw(b, s, {}, { tab: 'explore' });
+    const d = b.items.find(item => item.type === 'text' && item.str === 'D');
+    assert.ok(d, 'the original lower vertex name is retained during the fold');
+    const vertex = b.toS(d.p), dBox = b.trLabels.find(item => item.text === 'D');
+    for (const label of b.trLabels.filter(item => /접으면|이등분돼요/.test(item.text))) {
+      assert.ok(label.t > vertex.y + 24 && label.t > dBox.b + 6, `${H}px, ${trKa}°, fold ${trKt}: guidance overlaps the lower vertex or its name`);
+    }
+    const guide = sc.view(s, { tab: 'explore' }).guide;
+    assert.match(guide, /CB=CD/, 'the equal-side conclusion remains in the visible guide');
+    assert.match(guide, /RHS/);
+    assert.match(guide, /이등분/);
+  }
+});

@@ -428,7 +428,7 @@
       }
       [A, Bp, Cc, Dp].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, A, cen, 'A', { size: 18 }); tagOut(b, Bp, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); tagOut(b, Dp, cen, 'D', { size: 18 });
-      if (!C.thumb && !C.problem) {
+      if (!C.thumb && !C.problem && (C.review || b.W >= 560)) {
         let row, col = 'sky';
         if (C.review && st === 1) row = `∠B=∠D=90° (R), AB=AD=${m} cm`;
         else if (C.review && st === 2) { row = 'AC는 공통 (H) → RHS 합동'; col = 'amber'; }
@@ -444,7 +444,7 @@
       `대응변·대응각이 같으므로 $\\overline{CB}=\\overline{CD}$, $\\angle BAC=\\angle DAC=${M.a}^{\\circ}$, $\\angle BCA=\\angle DCA=${M.c}^{\\circ}$. 즉 AC는 ∠A와 ∠C를 이등분해요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>AB=AD</b>와 <b>∠BAC</b>를 바꿔 보세요. ▶를 누르면 AC를 따라 아래쪽 삼각형이 접혀 올라와 위쪽 삼각형과 <b>포개어져요</b>. 두 삼각형은 RHS 합동이에요.',
+      guide: '막대로 <b>AB=AD</b>와 <b>∠BAC</b>를 바꿔 보세요. ▶를 누르면 AC를 따라 아래쪽 삼각형이 접혀 올라와 위쪽 삼각형과 <b>포개어져요</b>. 두 삼각형은 RHS 합동이므로 <b>CB=CD</b>이고, AC는 ∠A와 ∠C를 이등분해요.',
       readouts: [rd('∠BAC = ∠DAC', `${M.a}°`, 'sky'), rd('∠BCA = ∠DCA', `${M.c}°`, 'green', '90° − ∠BAC'), rd('∠BAD', `${2 * M.a}°`, 'amber', null, null, true)],
       formula: `<p>△ABC≡△ADC (RHS)</p><p>$\\angle BAD=2\\times${M.a}^{\\circ}=${2 * M.a}^{\\circ},\\ \\angle BCD=2\\times${M.c}^{\\circ}=${2 * M.c}^{\\circ}$</p>`,
       rule: '빗변을 공유하는 두 직각삼각형에서 다른 한 변이 같으면 RHS 합동이고, 공통인 빗변은 각을 이등분한다.',
