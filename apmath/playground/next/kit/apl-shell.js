@@ -99,6 +99,8 @@
       ui.chips = h('div', { class: 'apl-float tl' });
       ui.status = h('div', { class: 'apl-status', hidden: true, role: 'status' });
       ui.card = h('div', { class: 'apl-card-float apl-glass', hidden: true });
+      ui.studentTipBody = h('span');
+      ui.studentTip = h('details', { class: 'sv-student-tip', hidden: true }, h('summary', {}, '힌트 보기'), ui.studentTipBody);
       ui.tr = h('div', { class: 'apl-float tr' }, ui.status, ui.card);
       ui.gridBtn = h('button', { class: 'apl-icon-btn on', 'aria-label': '격자 켜기/끄기 (G)', title: '격자 (G)', html: icon('grid'), onclick: () => this.set({ grid: !this.s.grid }) });
       ui.penBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '판서 (D)', title: '판서 펜 (D)', html: icon('pen'), onclick: () => this.setPen(!this.pen.on) });
@@ -115,7 +117,7 @@
       ui.gridBtn.classList.add('apl-hide-sm');
       ui.presenter = h('div', { class: 'apl-presenter apl-glass', hidden: true });
       ui.penTools = h('div', { class: 'apl-pen-tools apl-glass', hidden: true });
-      ui.canvasWrap = h('div', { class: 'apl-canvas-wrap' }, ui.canvas, ui.ink, ui.labels, ui.chips, ui.tr, ui.tools, ui.presenter, ui.penTools);
+      ui.canvasWrap = h('div', { class: 'apl-canvas-wrap' }, ui.canvas, ui.ink, ui.labels, ui.chips, ui.studentTip, ui.tr, ui.tools, ui.presenter, ui.penTools);
       ui.tape = h('div', { class: 'apl-tape', hidden: true });
       // 넓은 화면(860px 이상)의 무대 = 위 선택 띠(세부 장면·고르기 칩) + 그림 + 아래 막대 받침(막대·버튼). 휴대폰에서는 띠에 세부 장면 한 줄만 두고 고르기 칩·받침은 비웁니다(조작부는 패널에 그대로).
       // 키보드 초점 순서: 위 띠 → 그림 → 받침 → 패널.
@@ -162,11 +164,10 @@
       this.s.grid = bd.grid !== false;
       this._bindInk();
       window.addEventListener('apl:theme', () => { this.board.readTheme(); this.invalidate(true); });
-      window.addEventListener('resize', () => this._sizeInk());
+      window.addEventListener('resize', () => { this._sizeInk(); this.invalidate(true); });
       // 화면 폭이 859/860px 경계를 넘거나 무대 폭이 바뀌면(패널 접기 포함) 조작부를 알맞은 자리로 다시 옮깁니다.
       const replace = () => requestAnimationFrame(() => this._placeControls());
       if (NARROW.addEventListener) NARROW.addEventListener('change', replace); else if (NARROW.addListener) NARROW.addListener(replace);
-      this._orientHint();
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(replace); // 글꼴이 늦게 바뀌어 칩 폭이 달라져도 다시 잽니다
       if (window.ResizeObserver) {
         this._stageW = 0;
@@ -175,6 +176,7 @@
           if (w === this._stageW) return;
           this._stageW = w;
           replace();
+          this.invalidate(true);
         }).observe(ui.stage);
       }
     }
@@ -936,6 +938,9 @@
           ui.status.innerHTML = icon(TONE_ICON[st.tone] || 'info') + `<span>${this._label(APLab.stripEmoji(st.text))}</span>`;
         }
       }
+      // 장면별로 학생이 먼저 볼 핵심 팁을 짧게 보여줍니다.
+      ui.studentTip.hidden = !v.tip;
+      if (v.tip && ui.studentTipBody.textContent !== v.tip) { ui.studentTip.open = false; ui.studentTipBody.textContent = v.tip; }
       // 떠 있는 카드
       const card = v.card;
       ui.card.hidden = !card;

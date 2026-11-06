@@ -264,19 +264,29 @@
     const phi = Math.atan2(vx, ux);
     const inRange = (th) => { if (R.full) return true; let x = (th - R.a0) % TAU; if (x < 0) x += TAU; return x <= R.a1 - R.a0 + 1e-9; };
     R.segs.forEach((sg) => {
-      for (const br of [1, -1]) {
-        const ps = [];
-        for (let e = 0; e < 2; e++) {
-          const nn = sg.nE[e], r = e ? sg.r1 : sg.r0, y = e ? sg.y1 : sg.y0;
-          if (r < 1e-9) { if (Math.abs(nn.nr) < 0.15) { ps.length = 0; break; } ps.push(R.pt(0, y, 0)); continue; } // 구의 극은 윤곽 위의 점이 아니에요(원뿔의 꼭짓점과 달라요)
-          if (Math.abs(nn.nr) < 1e-6) { ps.length = 0; break; }
-          const kap = (-nn.ny * aw) / (nn.nr * A2);
-          if (Math.abs(kap) > 1) { ps.length = 0; break; }
-          const th = phi + br * Math.acos(kap);
-          if (!inRange(th)) { ps.length = 0; break; }
-          ps.push(R.pt(r, y, th));
+      // 보간 법선의 윤곽 조건이 구간 중간에서 끝나는 경우, 경계점을 찾아
+      // 둥근 면의 윤곽이 꼭대기 부근에서 끊기지 않도록 합니다.
+      const candidate = (t, branch) => {
+        const n0 = sg.nE[0], n1 = sg.nE[1];
+        const nr = n0.nr + (n1.nr - n0.nr) * t, ny = n0.ny + (n1.ny - n0.ny) * t;
+        const r = sg.r0 + (sg.r1 - sg.r0) * t, y = sg.y0 + (sg.y1 - sg.y0) * t;
+        if (r < 1e-9) return Math.abs(nr) < 0.15 ? null : R.pt(0, y, 0);
+        if (Math.abs(nr) < 1e-6) return null;
+        const kap = (-ny * aw) / (nr * A2);
+        if (Math.abs(kap) > 1 + 1e-9) return null;
+        const th = phi + branch * Math.acos(clamp(kap, -1, 1));
+        return inRange(th) ? R.pt(r, y, th) : null;
+      };
+      for (const branch of [1, -1]) {
+        let t0 = 0, t1 = 1, p0 = candidate(t0, branch), p1 = candidate(t1, branch);
+        if (!p0 && !p1) continue;
+        if (!p0 || !p1) {
+          let good = p0 ? 0 : 1, bad = p0 ? 1 : 0;
+          for (let i = 0; i < 28; i++) { const mid = (good + bad) / 2; if (candidate(mid, branch)) good = mid; else bad = mid; }
+          if (!p0) { t0 = good; p0 = candidate(t0, branch); }
+          else { t1 = good; p1 = candidate(t1, branch); }
         }
-        if (ps.length === 2 && len3(sub3(ps[0], ps[1])) > 1e-6) out.push(ps);
+        if (p0 && p1 && len3(sub3(p0, p1)) > 1e-6) out.push([p0, p1]);
       }
     });
     return out;
@@ -405,7 +415,10 @@
         const f = m.faces[i], st = (bd.faceStyle && bd.faceStyle(f, i)) || {}, fill = st.fill || bd.fill;
         if (!fill || st.skip) return;
         const base = st.alpha != null ? st.alpha : bd.alpha == null ? 0.2 : bd.alpha, q = Math.min(4, Math.floor(clamp(fr[i], 0, 0.999) * 5));
-        const alpha = bd.flat ? base : base * (0.72 + 0.1 * q);
+        // 학생이 처음 만나는 입체는 선 중심으로 두고, 조작 중 필요한 면을 옅게 강조합니다.
+        const maxFill = C.problem ? 0.025 : C.tab === 'explore' ? ((C.t || 0) > 0.03 ? 0.10 : 0.025) : 0.14;
+        const calm = Math.min(base, maxFill);
+        const alpha = bd.flat ? calm : calm * (0.72 + 0.1 * q);
         if (f.holes) { flush(); fillPolys(b, [f.pts.map(P)].concat(f.holes.map((h) => h.map(P))), fill, alpha, true); return; }
         const key = fill + '|' + alpha.toFixed(3);
         if (!cur || cur.key !== key) { flush(); cur = { key, fill, alpha }; }
@@ -536,7 +549,7 @@
     order.forEach((q) => {
       const st = (style && style(q.pc, q.k)) || {};
       if (st.skip) return;
-      const fill = st.fill || 'sky', alpha = (st.alpha == null ? 0.22 : st.alpha) * (q.front ? 1 : 0.35);
+      const fill = st.fill || 'sky', alpha = Math.min(st.alpha == null ? 0.06 : st.alpha, 0.1) * (q.front ? 1 : 0.35);
       if (!q.front && st.back === false) return;
       const key = fill + '|' + alpha.toFixed(3) + '|' + (q.front ? 1 : 0);
       if (!groups.has(key)) groups.set(key, { fill, alpha, polys: [] });
@@ -691,6 +704,7 @@
       const st = G.roleStyle(tag === 'lat' ? 'lat' : 'base', lv);
       if (lv !== 2) st.fill = tag === 'bot' ? BIG : tag === 'top' ? SMALL : st.fill;
       if (lv === 1 || lv === 3) st.alpha = tag === 'lat' ? 0.3 : 0.22;
+      if (C.tab === 'explore' && !b.thumb) st.alpha = Math.min(st.alpha, 0.015 + 0.065 * e);
       st.edgeStyle = (ed, p) => (glue && ((p.tag === 'lat' && ed.i === 0) || p.tag === 'bot') ? { color: BIG, width: 3.6 } : glue && !cone && ((p.tag === 'lat' && ed.i === 2) || p.tag === 'top') ? { color: SMALL, width: 3.6 } : null);
       return st;
     };
@@ -707,9 +721,9 @@
     const circR = (k, pts, ctr) => Math.hypot(px(at(k, pts[0])).x - px(ctr).x, px(at(k, pts[0])).y - px(ctr).y);
     // 반지름: 입체에서도 펼친 모습에서도 같은 방향(오른쪽 앞)
     const rB = circR(kb, A, c0);
-    D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r2}`, { dash: !tp[kb].front, end: true });
+    D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r2}`, { dash: !tp[kb].front, end: e >= 0.5 });
     const r1pxAll = cone ? 0 : circR(kt, B, c1), smallTop = !cone && r1pxAll < 46;
-    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p)), smallTop && e > 0.6 ? { x: -0.82, y: -0.57 } : undefined), `반지름 ${r1}`, { dash: !tp[kt].front, end: true });
+    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p)), smallTop && e > 0.6 ? { x: -0.82, y: -0.57 } : undefined), `반지름 ${r1}`, { dash: !tp[kt].front, end: e >= 0.5 });
     // 입체: 모서리 모선 + 높이
     if (solidA > 0.02) {
       let kl = 0, bx = 1e9;

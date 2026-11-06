@@ -13,7 +13,7 @@
 
   const PARAMS = {
     s6R: P('구의 반지름', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s6T: P('껍질 펼치기', 0, 1, 0.01, 0, { color: 'green', hint: '구의 껍질이 원 4개로 가로로 늘어서요', format: (v) => (v < 0.02 ? '구' : v > 0.98 ? '원 4개' : Math.round(v * 100) + '%') }),
+    s6T: P('넓이 비교', 0, 1, 0.01, 0, { color: 'green', hint: '구의 겉넓이와 같은 반지름의 원 넓이를 비교해요', format: (v) => (v < 0.02 ? '구' : v > 0.98 ? '원 4개' : Math.round(v * 100) + '%') }),
     s7R: P('구의 반지름', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
     s7T: P('자르고 · 가르고 · 돌리고 · 합치기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.02 ? '구' : v < 0.3 ? '레이저로 자르는 중' : v < 0.55 ? '가로로 갈라지는 중' : v < 0.8 ? '단면이 돌아서 보이는 중' : v > 0.99 ? '합치기 완료' : '막대로 합치는 중') }),
     s8R: P('수조의 반지름', 2, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
@@ -79,9 +79,9 @@
       const pts = cube8(v3(0, 0, 0), R);
       const bbS = bboxOf([D.P(v3(-R, -R, -R)), D.P(v3(R, R, R)), D.P(v3(R, -R, -R)), D.P(v3(-R, R, R))]);
       const ext = [{ x: -rowW / 2, y: rowTop }, { x: rowW / 2, y: rowTop + rows * 2 * dR + (rows - 1) * 0.55 + 0.6 }];
-      // 원은 구 바로 아래에서 작게 나와 제자리로 커지며 이동해요(껍질이 펼쳐지는 모습). 지금 프레임의 원 위치만으로 맞춰요
+      // 구면 전개가 아닌 넓이 비교: 원 네 개가 제자리에 나타납니다.
       const pc0 = D.P(v3(0, 0, 0)), cb0 = { x0: pc0.x - R, y0: pc0.y - R, x1: pc0.x + R, y1: pc0.y + R };
-      const cur = finals.map((f) => { const ee = C.problem ? 0 : e, rr = dR * (0.3 + 0.7 * ee); return { x: ee > 0 ? 0 + (f.x - 0) * ee : 0, y: rowTop + dR * 0.3 + (f.y - rowTop - dR * 0.3) * ee, r: rr }; });
+      const cur = finals.map((f) => ({ x:f.x, y:f.y, r:dR }));
       const showC = !C.problem && (e > 0.02 || b.thumb);
       if (b.thumb) D.fit(pts, C.problem ? [] : ext, { l: 30, r: 30, t: 40, b: 36 });
       else D.fitCore([{ x: cb0.x0, y: cb0.y0 }, { x: cb0.x1, y: cb0.y1 }], showC ? cur.flatMap((c) => [{ x: c.x - c.r, y: c.y - c.r }, { x: c.x + c.r, y: c.y + c.r + 0.3 * e }]).concat(e > 0.9 ? [{ x: 0, y: rowTop - 0.7 }] : []) : [], { l: 30, r: 30, t: 26, b: 26 }, { cap: D.narrow ? 0.6 : 0.4 });
@@ -91,22 +91,22 @@
         // 구를 가운데로 자른 단면(큰 원) 하나가 껍질의 1/4: 그 넓이 9π
         if (e < 0.5) {
           const fa = 1 - lin01(e, 0, 0.5);
-          D.disc(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 'sky', 0.3 * fa, 'sky', 3, { alpha: fa });
+          D.disc(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 'sky', 0.07 * fa, 'ink', 2, { alpha: fa });
           aLab(D, v3(-0.25 * R, 0, 0.62 * R), '큰 원의 넓이', plainVal(M.one), { alpha: fa, maxW: R * b.k * 1.2, size: 14 });
         }
         for (let i = 0; i < 4 && showC; i++) {
           const f = finals[i], cc = b.thumb ? { x: f.x, y: f.y, r: dR } : cur[i], x = cc.x, ry = cc.y;
-          const al = 0.12 + 0.28 * e, hl = lvD, ec = hl === 2 ? 'amber' : 'sky';
+          const al = 0.08 * e, hl = lvD, ec = hl === 2 ? 'amber' : 'sky';
           b.circle({ x, y: ry }, cc.r, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.4 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 3.2 : 2.4, alpha: 0.5 + 0.5 * e });
           if (e > 0.55) aLab(D, { x, y: ry }, '원의 넓이', plainVal(M.one), { fig: true, maxW: cc.r * b.k * 1.5, size: 14 });
         }
-        if (e > 0.9) b.text({ x: 0, y: rowTop - 0.35 }, `구의 겉넓이 = ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
+        if (e > 0.9) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
       }
     };
     return {
       id: 'sv3-1', title: '구의 겉넓이 4πr²', short: '구의 겉넓이',
-      question: '구의 겉넓이는 구를 꼭 맞게 감싸는 껍질의 넓이야. 이 껍질을 평평하게 펴면 반지름이 같은 원 몇 개의 넓이와 같을까?',
-      anim: { key: 's6T', dur: 5, label: '껍질 펼치기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0, view3: false,
+      question: '구의 겉넓이는 반지름이 같은 원 몇 개의 넓이와 같을까요?',
+      anim: { key: 's6T', dur: 5, label: '넓이 비교하기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0, view3: false,
       ctl: () => ['s6R', 's6T'],
       init: (s) => { s.s6R = 3; s.s6T = 0; },
       reroll: (s) => { s.s6R = rint(1, 8); s.s6T = 0; },
@@ -114,11 +114,11 @@
       check: (s) => { const M = model(s); let a = 0; const n = 4000; for (let i = 0; i < n; i++) { const th0 = (PI * i) / n, th1 = (PI * (i + 1)) / n; a += PI * (M.r * Math.sin(th0) + M.r * Math.sin(th1)) * Math.hypot(M.r * (Math.cos(th1) - Math.cos(th0)), M.r * (Math.sin(th1) - Math.sin(th0))); } return { ans: a, model: vnum(M.tot) }; },
       steps: (M) => [
         `구를 반으로 자른 단면은 반지름 $${M.r}$인 원이에요. 그 넓이는 $\\pi r^2=\\pi\\times${M.r}^2=${tx(M.one)}\\,\\mathrm{cm}^2$예요.`,
-        `구의 껍질을 펼치면 이 원 $4$개의 넓이와 같아요. 그래서 겉넓이는 $4\\times\\pi r^2$이에요.`,
+        `구의 겉넓이는 이 원 $4$개의 넓이의 합과 같아요. 구면은 평면 전개도로 펼칠 수 없어요. 그래서 겉넓이는 $4\\times\\pi r^2$이에요.`,
         `(구의 겉넓이) $=4\\pi r^2=4\\pi\\times${M.r}^2=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>껍질 펼치기</b> 막대를 끌거나 ▶를 눌러 보세요. 구의 껍질이 ${span('sky', '반지름이 같은 원 4개')}로 가로로 늘어서요. 막대로 반지름을 바꾸면 원의 넓이와 겉넓이가 같이 바뀌어요.`,
+        guide: `<b>넓이 비교</b> 막대를 끌거나 ▶를 눌러 보세요. 구의 겉넓이는 ${span('sky', '반지름이 같은 원 4개')}의 넓이 합과 같아요. 이 원들은 넓이를 비교하기 위한 그림이며 구의 전개도는 아니에요. 막대로 반지름을 바꾸면 원의 넓이와 겉넓이가 같이 바뀌어요.`,
         readouts: [rd('원 하나의 넓이', plainVal(M.one) + ' cm²', 'sky', `π × ${M.r} × ${M.r}`), rd('원의 개수', '4개', 'amber'), rd('구의 겉넓이', plainVal(M.tot) + ' cm²', 'green', `4 × ${plainVal(M.one)}`)],
         formula: `<p>(구의 겉넓이) $=4\\pi r^2$ &nbsp; ($r$ 구의 반지름)</p>`,
         rule: '구의 겉넓이 = 반지름이 같은 원 4개의 넓이 = 4πr²',

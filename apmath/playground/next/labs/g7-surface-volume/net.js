@@ -26,7 +26,12 @@
     const all = [];
     spec.sn.net.pieces.forEach((pc, k) => pc.pts.forEach((p) => all.push(G.applyT(poses[k], p))));
     D.fit(all, spec.extra || [], spec.fitOpt || {});
-    const tp = G.netDraw(D, spec.sn.net, poses, spec.style);
+    const tp = G.netDraw(D, spec.sn.net, poses, (pc, k) => {
+      const st = spec.style ? spec.style(pc, k) : {};
+      // 처음에는 교과서처럼 흰 입체로, 펼칠 때만 면 구분을 부드럽게 나타냅니다.
+      if (!C.review && !C.problem) st.alpha = Math.min(st.alpha == null ? 0.06 : st.alpha, 0.015 + 0.065 * e);
+      return st;
+    });
     const ctx = { D, tp, poses, e, all, at: (k, p) => G.applyT(poses[k], p), front: (k) => tp[k].front };
     if (spec.labels) spec.labels(ctx);
     return ctx;

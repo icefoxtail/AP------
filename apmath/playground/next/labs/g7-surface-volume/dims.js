@@ -50,6 +50,21 @@
       return { u, n, L };
     }
 
+    /* ---- 곡선 치수: 호출자가 정확한 바깥 윤곽의 양 끝을 지정합니다. */
+    D.curveDim = (p, q, str, o = {}) => {
+      const al = o.alpha == null ? 1 : o.alpha;
+      if (al < 0.02) return null;
+      const A = pt(p, o), B = pt(q, o), fr = frame(A, B, o);
+      if (!fr) return null;
+      const { n, L } = fr, bow = Math.max(8, Math.min(18, L * 0.09));
+      const at = (t) => ({ x: A.x + (B.x-A.x)*t + n.x*4*bow*t*(1-t), y: A.y + (B.y-A.y)*t + n.y*4*bow*t*(1-t) });
+      poly(Array.from({length: 25}, (_, i) => at(i/24)), 'ink', 1.5, al);
+      if (!str) return null;
+      const d = dims(String(str), o.size || 14), c = beside(at(0.5), n, d.w, d.h, o.gap == null ? 5 : o.gap);
+      text(c.x, c.y, String(str), 'ink', o.size || 14, al);
+      return { box: reg(c.x, c.y, d.w, d.h) };
+    };
+
     /* ---- 치수선 */
     D.dim = (p, q, str, o = {}) => {
       const al = o.alpha == null ? 1 : o.alpha;
@@ -144,6 +159,7 @@
         let n = { x: -(B.y - A.y) / L, y: (B.x - A.x) / L };
         if (n.x * side.x + n.y * side.y < 0) n = { x: -n.x, y: -n.y };
         const f = 0.5 + (o.alongFrac || 0) / 2, c = beside({ x: A.x + (B.x - A.x) * f, y: A.y + (B.y - A.y) * f }, n, w, h, o.gap == null ? 5 : o.gap); // alongFrac: 점선 위 글자 위치(0 가운데, +1 꼭대기, -1 발)
+        if (o.backdrop) b.path([sp(c.x-w/2-2,c.y-h/2-1),sp(c.x+w/2+2,c.y-h/2-1),sp(c.x+w/2+2,c.y+h/2+1),sp(c.x-w/2-2,c.y+h/2+1)], {close:true,fill:'stageHi',fillAlpha:0.96,color:null});
         text(c.x, c.y, str, o.tcolor || col, o.size || 15, al);
         box = reg(c.x, c.y, w, h);
       }
