@@ -88,7 +88,7 @@
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: segG(q.R, q.phi) }; } return { g: segG(clamp(Math.round(s.c7R), 2, 12), clamp(Math.round(s.c7th / 30) * 30, 30, 150)) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { R, phi, A, B } = g;
-      fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 84, l: 44, r: 44 });
+      fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 84 + Math.max(0, 60 - b.insets.bottom), l: 44, r: 44 });
       let secF = false, triF = false, segF = false;
       if (pr) { secF = q.kind === 2; triF = q.kind === 1; segF = q.kind === 0; } else if (ex) { secF = true; triF = true; } else { secF = true; triF = st >= 1; segF = st >= 2; }
       if (secF) fillSector(b, O0, R, g.a0, g.a1, 'rose', 0.14);
@@ -161,7 +161,7 @@
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: foldG(q.R, 1) }; } return { g: foldG(clamp(Math.round(s.c7R), 2, 12), C.tab === 'explore' ? clamp(s.c7f, 0, 1) : 1) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { R, f, C: Cc, D, arc, farc } = g;
-      if (pr) fit(b, { x0: -R, x1: R, y0: -R, y1: 0.55 * R }, { t: 62, b: 84, l: 44, r: 44 }); else fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 44, l: 44, r: 44 });
+      if (pr) fit(b, { x0: -R, x1: R, y0: -R, y1: 0.55 * R }, { t: 62, b: 84 + Math.max(0, 60 - b.insets.bottom), l: 44, r: 44 }); else fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 62, b: 44, l: 44, r: 44 });
       // 접은 뒤에 보이는 도형(큰 쪽)
       if (pr && q.kind === 2) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'rose', fillAlpha: 0.18, color: null });
       else if (!pr && (ex || st >= 3)) b.path(arcPts(O0, R, 330, 570, 96), { close: true, fill: 'sky', fillAlpha: 0.08, color: null });
@@ -243,7 +243,7 @@
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: semG(q.R, q.th) }; } return { g: semG(clamp(Math.round(s.c7R), 2, 12), clamp(Math.round(s.c7a / 15) * 15, 15, 75)) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { R, th, phi, A, B, C: Cc } = g;
-      fit(b, { x0: -R, x1: R, y0: -R, y1: 0 }, { t: 62, b: 84, l: 44, r: 44 });
+      fit(b, { x0: -R, x1: R, y0: -R, y1: 0 }, { t: 62, b: 84 + Math.max(0, 60 - b.insets.bottom), l: 44, r: 44 });
       const d0 = 180 - phi;
       if (pr) {
         if (q.kind === 0) fillSeg(b, O0, R, d0, 180, 'amber', 0.22);

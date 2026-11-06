@@ -184,6 +184,7 @@
     if (o.away && n.x * (m.x - o.away.x) + n.y * (m.y - o.away.y) < 0) n = mul(n, -1);
     const w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
+    if (str && o.leader) line(b, m, add(m, mul(n, g / (b.k || 60))), o.color || 'sky', 1.2, { alpha: .7 });
     T(b, m, str, { color: o.color || 'sky', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
   }
   const sz = (b, a = 16) => (b.W < 560 ? a - 1 : a);
@@ -399,10 +400,11 @@
     for (const item of queue) {
       const { p, str, o } = item, anchor = b.toS(p), x0 = anchor.x + (o.dx || 0), y0 = anchor.y + (o.dy || 0);
       const size = Math.max(14, o.size || 16), width = Math.min(b.W - 24, textW(str, size) + 8), height = size * (hasFrac(str) ? 1.65 : 1.15) + 6;
+      const toolbar = Math.max(60, b.insets && b.insets.bottom || 0);
       const shifts = [[0, 0], [0, -14], [0, 14], [-16, 0], [16, 0], [0, -28], [0, 28], [-28, -14], [28, -14], [-28, 14], [28, 14], [-40, 0], [40, 0], [0, -44], [0, 44], [-44, -28], [44, -28], [-44, 28], [44, 28]];
       let best;
       for (const [dx, dy] of shifts) {
-        const x = clamp(x0 + dx, 12 + width / 2, b.W - 12 - width / 2), y = clamp(y0 + dy, 48 + height / 2, b.H - 14 - height / 2);
+        const x = clamp(x0 + dx, 12 + width / 2, b.W - 12 - width / 2), y = clamp(y0 + dy, 48 + height / 2, b.H - toolbar - 14 - height / 2);
         const box = { l: x - width / 2, r: x + width / 2, t: y - height / 2, b: y + height / 2 };
         const score = placed.reduce((n, a) => n + overlap(a, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
         if (!best || score < best.score) best = { x, y, box, score };
@@ -451,7 +453,9 @@
       reviewTitles: { steps: '현재 문제의 풀이', solution: '답 확인' },
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
-        tag: (s) => D.prob(D.model(s, PC), s).tag,
+        // 배지는 장면 진입 때 만들어집니다. 새 문항에서 구하는 선분이
+        // 바뀌어도 처음 선분명이 남지 않도록 장면의 주제로 표시합니다.
+        tag: () => D.title,
         text: (s) => problemHTML(D, s),
         answer: (s) => answerText(D, s)
       } : undefined,

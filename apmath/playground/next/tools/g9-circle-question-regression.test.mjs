@@ -133,7 +133,7 @@ test('c4-1 center position and presets agree with geometric angle containment', 
 test('answer leaks and unrelated unknowns stay absent in repaired question variants', () => {
   for (const [id, q, forbidden, required] of [
     ['c1-5', { kind: 3, R: 8, k: 4, key: 'angle-only' }, 'AB=x', 'x'],
-    ['c2-6', { kind: 2, R: 9, r: 3, pbFull: 15, key: 'no-derived-PA' }, 'PA=5', 'x'],
+    ['c2-6', { kind: 2, R: 9, r: 3, pbFull: 15, key: 'no-derived-PA' }, 'PA=5', 'AB=x'],
     ['c3-3', { kind: 2, a: 13, b: 14, c: 15, r: 4, key: 'unknown-radius' }, '4', 'x'],
     ['c3-6', { kind: 2, a: 4, b: 9, ab: 12, key: 'unknown-AD' }, '4', 'x']
   ]) {
@@ -142,6 +142,57 @@ test('answer leaks and unrelated unknowns stay absent in repaired question varia
     const texts = b.items.filter(x => x.type === 'text').map(x => x.str);
     assert.ok(!texts.includes(forbidden), `${id}: leaked ${forbidden}`);
     assert.ok(texts.includes(required), `${id}: missing ${required}`);
+  }
+});
+
+test('the inner circle chord unknown names AB and has a leader anchored to that segment', () => {
+  const sc = scenes.find(sc => sc.id === 'c2-6'), s = state(sc);
+  s.ciPk = { kind: 2, R: 9, r: 3, pbFull: 15, key: 'inner-chord-label' };
+  const b = board(390, 310); sc.draw(b, s, {}, { tab: 'problem' });
+  const labels = b.items.filter(item => item.type === 'text').map(item => item.str);
+  assert.ok(labels.includes('AB=x'), 'the short chord target remains named when a label must move');
+  assert.ok(!labels.includes('x') && !labels.includes('PA=5'), 'the problem neither assigns x to another radius nor reveals derived PA');
+  const g = sc.ci.model(s, PC).g, midpoint = G.mid(g.A, g.B);
+  const leader = b.items.find(item => item.type === 'path' && item.options.color === 'rose' && item.options.width === 1.2 && G.dist(item.points[0], midpoint) < 1e-9);
+  assert.ok(leader, 'the callout starts on AB, not OB');
+  const towardCenter = G.sub(g.O, midpoint), towardLabel = G.sub(leader.points[1], midpoint);
+  assert.ok(towardCenter.x * towardLabel.x + towardCenter.y * towardLabel.y < 0, 'the leader goes away from the radius and toward the outside of AB');
+});
+
+test('a scene badge remains correct when a new question changes the unknown segment', () => {
+  for (const sc of scenes) {
+    const s = state(sc);
+    for (let variant = 0; variant < 6; variant++) {
+      s.ciPk = sc.ci.gen(G.seeded(`badge|${sc.id}|${variant}`), variant);
+      assert.equal(sc.problem.tag(s), sc.title, `${sc.id}: an initially rendered badge identifies the scene, not a stale target`);
+    }
+  }
+});
+
+test('the folded-circle angle marker stays above the chord and the target is explicitly named', () => {
+  const sc = scenes.find(sc => sc.id === 'c1-5'), s = state(sc);
+  s.ciPk = { kind: 3, R: 8, k: 4, key: 'angle-label-in-sector' };
+  const b = board(390, 252); sc.draw(b, s, {}, { tab: 'problem' });
+  const x = b.items.find(item => item.type === 'text' && item.str === 'x');
+  assert.ok(x, 'the unknown angle is marked near O');
+  const p = b.toS(x.p), y = p.y + (x.o.dy || 0), chordY = b.toS({ x: 0, y: 4 }).y;
+  assert.ok(y + (x.o.size || 16) / 2 < chordY, `the angle label at ${y} cannot look like a chord length below ${chordY}`);
+  assert.ok(b.items.some(item => item.type === 'text' && item.str === '∠AOB=x'), 'the full angle name disambiguates the target');
+});
+
+test('circle-area answers remain above the bottom toolbar on landscape tablet canvases', () => {
+  for (const [id, q] of [
+    ['c7-1', { kind: 0, R: 4, phi: 150, key: 'area-caption-toolbar' }],
+    ['c7-2', { kind: 2, R: 6, key: 'fold-caption-toolbar' }],
+    ['c7-3', null]
+  ]) {
+    const sc = scenes.find(sc => sc.id === id), s = state(sc);
+    if (q) s.ciPk = q;
+    s.step = 5;
+    const b = board(683, 614); sc.draw(b, s, {}, { tab: 'review' });
+    const captions = b.ciLabels.filter(label => /넓이/.test(label.text));
+    assert.ok(captions.length, id + ': the target-area caption is retained');
+    for (const label of captions) assert.ok(label.b <= b.H - 74, `${id}: answer ends at ${label.b}, inside the toolbar zone`);
   }
 });
 

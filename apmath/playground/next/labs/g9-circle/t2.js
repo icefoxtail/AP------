@@ -501,7 +501,7 @@
       const up = pt(g.O.x, g.O.y), dn = g.Op;
       if (pr) {
         if (q.kind !== 2) segTag(b, g.P, g.A, q.kind === 0 ? 'PA=x' : `PA=${cv(g.pa)}`, { toward: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
-        segTag(b, g.A, g.B, q.kind === 2 ? 'x' : '', { toward: g.O, f: 0.6, color: 'rose', size: S(b), gap: 18 });
+        segTag(b, g.A, g.B, q.kind === 2 ? 'AB=x' : '', { away: g.O, color: 'rose', size: S(b), gap: 22, leader: true });
         segTag(b, g.P, g.B, q.kind === 1 ? 'PB=x' : `PB=${q.pbFull}`, { away: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
         T(b, pt(-R * 0.1, R * 0.62), `R=${R}, r=${r}`, { size: S(b), color: 'sky' });
         return;

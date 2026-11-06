@@ -402,7 +402,11 @@
         if (q.kind === 2) segTag(b, O, Mm, 'x', { toward: F.B, ...X(b) });
         if (q.kind === 3) { segTag(b, O, F.A, String(R), { away: Mm, color: 'sky', size: S(b) }); }
         T(b, Mm, q.kind === 0 ? 'AB=x' : q.kind === 1 ? `AB=${cv(Math.sqrt(3) * q.k)}` : '', { dy: 42, size: S(b) + (q.kind === 0 ? 3 : 0), color: q.kind === 1 ? 'sky' : 'rose' });
-        if (q.kind === 3) { ang(b, O, F.A, F.B, { color: 'rose', r: 34, label: 'x', size: S(b) + 3 }); }
+        if (q.kind === 3) {
+          const radiusPx = R * b.k;
+          ang(b, O, F.A, F.B, { color: 'rose', r: clamp(radiusPx * .14, 10, 28), label: 'x', labelDist: clamp(radiusPx * .28, 18, 42), size: S(b) + 3 });
+          T(b, Mm, '∠AOB=x', { dy: 56, size: S(b), color: 'rose' });
+        }
         return;
       }
       segTag(b, O, F.A, cv(R), { away: Mm, color: 'sky', size: S(b) });
