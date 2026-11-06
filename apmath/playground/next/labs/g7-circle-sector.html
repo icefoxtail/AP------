@@ -710,6 +710,7 @@ function start() {
   const problemStates = new WeakMap();
   groups.forEach((group) => group.scenes.forEach((sc) => {
     const view = sc.view;
+    const stagedFormula = sourceBasic && sourceBasic.scenes.includes(sc); // 중심각 모듈은 이미 현재 단계까지만 식을 만듭니다.
     sc.view = (s, lab) => {
       if (lab && lab.s === s && lab.scene && lab.scene.id === sc.id) {
         const controls = typeof sc.controls === 'function' ? sc.controls(s) : sc.controls || [];
@@ -718,7 +719,11 @@ function start() {
         if (previous && previous.id === sc.id && previous.key !== key) { s.revealed = false; s.step = sc.startStep || 1; }
         problemStates.set(s, { id: sc.id, key });
       }
-      return typeof view === 'function' ? view(s, lab) : view;
+      const value = (typeof view === 'function' ? view(s, lab) : view) || {};
+      const steps = typeof sc.steps === 'function' ? sc.steps(s) : sc.steps;
+      // 계산식에도 최종 답이 들어 있으므로 단계별 풀이와 같은 공개 시점을 지킵니다.
+      if (!stagedFormula && lab && lab.tab === 'review' && !s.revealed && steps && s.step < steps.length) return { ...value, formula: '', summary: null };
+      return value;
     };
   }));
   APLab.createLab({

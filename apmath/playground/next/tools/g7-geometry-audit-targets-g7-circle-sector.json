@@ -165,5 +165,277 @@
     "tab": "review",
     "step": "final",
     "label": "risk-11"
+  },
+  {
+    "id": "f1-star",
+    "label": "question-area-after-perimeter-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "Area exercise returns to area derivation; formula remains hidden; perimeter completion is a different target."
+  },
+  {
+    "id": "f1-star",
+    "label": "question-area-after-perimeter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "The last result is the current area, in cm², using the same givens."
+  },
+  {
+    "id": "f1-ring",
+    "label": "question-area-after-perimeter-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "Area exercise returns to area derivation; formula remains hidden; perimeter completion is a different target."
+  },
+  {
+    "id": "f1-ring",
+    "label": "question-area-after-perimeter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "The last result is the current area, in cm², using the same givens."
+  },
+  {
+    "id": "f1-star",
+    "label": "principle-perimeter-preserved",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "The original perimeter principle still ends at10π cm."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage4",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 4,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage5",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 5,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f1-ss2",
+    "label": "question-both-stage8",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 8,
+    "params": {
+      "f1_ss2_a": 6,
+      "f1_ss2_mode": 1,
+      "f1_ss2_t": 1
+    },
+    "check": "Current question asks both: perimeter6π+6 atstep4, then area9π/2 atstep8; final summary remains locked beforestep8."
+  },
+  {
+    "id": "f4-sq12",
+    "label": "completed-motion-return-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f4_sq12_a": 12,
+      "f4_sq12_t": 1
+    },
+    "check": "No final72 result or final result chip atstep1 even after completed exploration."
+  },
+  {
+    "id": "rl-square",
+    "label": "question-fallback-c-1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Exploration pointA has symbolic diagonal; current problem and review must use base pointC, distance4π, while cfg itself remains the exploration configuration."
+  },
+  {
+    "id": "rl-square",
+    "label": "question-fallback-c-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Exploration pointA has symbolic diagonal; current problem and review must use base pointC, distance4π, while cfg itself remains the exploration configuration."
+  },
+  {
+    "id": "rl-square",
+    "label": "principle-point-a-preserved",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 4,
+        "track": 0,
+        "rolls": 3
+      },
+      "rlS": 4,
+      "rlT": 1
+    },
+    "check": "Explore principle still followsA with symbolic diagonalx; it is not silently overwritten by the fallback problem."
+  },
+  {
+    "id": "rl-rtri",
+    "label": "question-stationary-c-1",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "cfg": {
+        "a": 3,
+        "beta": 60,
+        "track": 1,
+        "rolls": 1
+      },
+      "rlRa": 3,
+      "rlRb": 60,
+      "rlT": 1
+    },
+    "check": "Tracked pointC is the one-turn pivot: the problem namesC, has five finite choices including0, and final review says0cm."
+  },
+  {
+    "id": "rl-rtri",
+    "label": "question-stationary-c-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "a": 3,
+        "beta": 60,
+        "track": 1,
+        "rolls": 1
+      },
+      "rlRa": 3,
+      "rlRb": 60,
+      "rlT": 1
+    },
+    "check": "Tracked pointC is the one-turn pivot: the problem namesC, has five finite choices including0, and final review says0cm."
+  },
+  {
+    "id": "rl-turn60",
+    "label": "question-point-a-fallback",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "cfg": {
+        "d": 12,
+        "at": "C",
+        "deg": 60,
+        "track": 0,
+        "rolls": 1
+      },
+      "rlTd": 12,
+      "rlTc": 60,
+      "rlT": 1
+    },
+    "check": "The exercise specifies pointA baseAC9/angle60 and6π; fallback note explains the changed tracked point, not a false irrational-diagonal claim."
+  },
+  {
+    "id": "f1-ring",
+    "label": "angle-handle-extreme-30",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 12,
+      "f1_ring_r": 11,
+      "f1_ring_th": 30,
+      "f1_ring_mode": 0,
+      "f1_ring_t": 0
+    },
+    "check": "Angle label, inner-radius handle and area caption remain separate."
+  },
+  {
+    "id": "f1-ring",
+    "label": "angle-handle-extreme-300",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 12,
+      "f1_ring_r": 11,
+      "f1_ring_th": 300,
+      "f1_ring_mode": 0,
+      "f1_ring_t": 0
+    },
+    "check": "Angle label, inner-radius handle and area caption remain separate."
   }
 ]

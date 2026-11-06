@@ -230,7 +230,9 @@
       const V = getV(s);
       const M = modelOf(V);
       const mode = M.edges ? (s[kmode] | 0) : 0;
-      const t = clamp(+s[kt] || 0, 0, 1);
+      const timeline = sp.stepT || STEP_T;
+      const limit = tab === 'review' ? timeline[clamp(s.step || 0, 0, timeline.length - 1)] : 1;
+      const t = Math.min(clamp(+s[kt] || 0, 0, 1), limit);
       return Object.assign({ s, lab, V, M, tab, problem, review: tab === 'review', mode, t, seed, step: s.step || 0 }, phaseOf(t), {
         set: (k, val, quiet) => {
           const v = sp.vars.find((x) => x.k === k);

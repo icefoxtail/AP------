@@ -258,3 +258,97 @@ await test('manual rolling slider input pauses automatic motion in all seven rol
     assert.ok(lab.s.rlT > 0.007, 'explicit replay still continues motion');
   }
 });
+
+
+await test('review formulas stay staged across all 86 scenes, including a completed exploration animation', async () => {
+  const lab = await load();
+  assert.equal(lab.list.length, 86);
+  const alreadyStaged = new Set(lab.def.groups.filter((group) => ['basic', 'basic-advanced'].includes(group.id)).flatMap((group) => group.scenes.map((scene) => scene.id)).concat('1101'));
+  for (const scene of lab.list) {
+    lab.go(scene.id); lab.tab = 'review'; lab.s.step = 1; lab.s.revealed = false;
+    const value = call(scene.view, lab.s, lab);
+    if (!alreadyStaged.has(scene.id)) assert.equal(value.formula || '', '', `${scene.id}: no complete formula before the last step`);
+  }
+  for (const id of ['f1-star', 'f1-ring', 'f4-sq12', 'f4-circ2']) {
+    const scene = lab.go(id);
+    lab.s[scene.csKeys.kt] = 1;
+    lab.tab = 'review'; lab.s.step = 1;
+    const { texts } = lab.draw();
+    assert.ok(!texts.includes(id.startsWith('f4-') ? scene.csModel(lab.s).cap.res.l : '색칠한 부분의 넓이'), `${id}: completed explore progress must not reveal the final result in review step 1`);
+  }
+});
+
+await test('area questions recover their own solution after perimeter exploration and the mixed question explains both quantities', async () => {
+  const lab = await load();
+  for (const id of ['f1-star', 'f1-ring']) {
+    const scene = lab.go(id);
+    call(scene.presets, lab.s).find((preset) => preset.label === '둘레').apply(lab.s, lab);
+    lab.tab = 'review'; lab.s.step = call(scene.steps, lab.s).length;
+    assert.match(call(scene.steps, lab.s).at(-1), /둘레/);
+    lab.draw(); lab.tab = 'problem'; lab.draw(); lab.tab = 'review'; lab.draw();
+    assert.equal(lab._answerOpen(), false, 'finishing a perimeter proof cannot open an area answer');
+    assert.match(call(scene.steps, lab.s).at(-1), /색칠한 부분/);
+    assert.match(call(scene.steps, lab.s).at(-1), /cm²/);
+    lab.tab = 'explore'; lab.draw();
+    assert.match(call(scene.steps, lab.s).at(-1), /둘레/, 'returning to explore preserves the chosen perimeter principle');
+  }
+  const mixed = lab.go('f1-ss2'); lab.tab = 'problem'; lab.draw(); lab.tab = 'review'; lab.draw();
+  const steps = call(mixed.steps, lab.s);
+  assert.equal(steps.length, 8, 'four perimeter steps then four area steps');
+  assert.match(steps[3], /둘레/); assert.match(steps[7], /색칠한 부분/);
+  for (let step = 1; step < steps.length; step++) {
+    lab.s.step = step; assert.equal(lab._answerOpen(), false, 'both requested quantities must be completed');
+    lab.draw();
+  }
+});
+
+await test('rolling fallback questions keep the same point and conditions in review, including a stationary point', async () => {
+  const lab = await load(), square = lab.go('rl-square');
+  lab.s.cfg = { a: 4, track: 0, rolls: 3 }; lab.s.rlS = 4;
+  lab.tab = 'review'; lab.s.step = call(square.steps, lab.s).length; lab.draw();
+  assert.match(call(square.steps, lab.s).at(-1), /점 A/);
+  lab.tab = 'problem'; lab.draw();
+  assert.match(call(square.problem.text, lab.s), /점 C/);
+  assert.equal(lab._answerOpen(), false, 'a fallback is a different question, not a solved exploration');
+  lab.tab = 'review'; lab.draw();
+  assert.match(call(square.steps, lab.s).at(-1), /점 C/);
+  assert.ok(!call(square.steps, lab.s).at(-1).includes('대각선의 길이'));
+  lab.tab = 'explore'; lab.draw();
+  assert.match(call(square.steps, lab.s).at(-1), /점 A/);
+  const turn = lab.go('rl-turn60');
+  lab.s.cfg = { d: 12, at: 'C', deg: 60, track: 0, rolls: 1 };
+  lab.s.rlTd = 12; lab.s.rlTc = 60;
+  lab.tab = 'problem'; lab.draw();
+  assert.match(call(turn.problem.text, lab.s), /점 A가 움직인 거리를 묻는 기본 조건/);
+  assert.ok(!call(turn.problem.text, lab.s).includes('대각선이 정수가 아니'), 'the alternate-point fallback is not falsely explained as an irrational diagonal');
+  const triangle = lab.go('rl-rtri');
+  lab.s.cfg = { a: 3, beta: 60, track: 1, rolls: 1 };
+  lab.tab = 'problem'; lab.draw();
+  assert.match(call(triangle.problem.text, lab.s), /점 C가 움직인/);
+  assert.ok(!call(triangle.problem.text, lab.s).includes('NaN'));
+  assert.match(call(triangle.problem.answer, lab.s), /0/);
+  lab.tab = 'review'; lab.draw();
+  assert.match(call(triangle.steps, lab.s).at(-1), /점 C.*0/);
+});
+
+
+await test('the ring angle label stays clear of its radius handle and dragging still controls the true radius', async () => {
+  const lab = await load(), scene = lab.go('f1-ring'); lab.board.resize(390, 410);
+  lab.board.setInsets({ top: 0, right: 0, bottom: 64, left: 0 });
+  for (const angle of [30, 60, 90, 180, 210, 300, 345]) for (const [R, r] of [[4, 1], [6, 3], [12, 1], [12, 11]]) {
+    lab.s[scene.csKeys.K('R')] = R; lab.s[scene.csKeys.K('r')] = r; lab.s[scene.csKeys.K('th')] = angle;
+    const handles = [], original = lab.board.handle;
+    lab.board.handle = function (id, point, options) { handles.push({ id, point, options }); return original.call(this, id, point, options); };
+    let drawing;
+    try { drawing = lab.draw(); } finally { lab.board.handle = original; }
+    const label = drawing.textItems.find((item) => item.text === `${angle}°`), handle = handles.find((item) => item.id === 'r');
+    assert.ok(label && handle);
+    const hp = lab.board.toS(handle.point);
+    assert.ok(Math.hypot(hp.x - label.x, hp.y - label.y) >= 28, `${angle}°, R${R}, r${r}: angle must remain readable beside the handle`);
+    const caption = drawing.textItems.find((item) => item.text.startsWith('전체 ('));
+    if (caption) assert.ok(Math.abs(caption.y - label.y) >= 26, 'the angle does not move into the area caption');
+    const chosen = (R - 1) / Math.sqrt(2);
+    handle.options.drag({ x: chosen, y: chosen });
+    assert.equal(lab.s[scene.csKeys.K('r')], R - 1, 'radial drag reads distance from the actual centre');
+  }
+});

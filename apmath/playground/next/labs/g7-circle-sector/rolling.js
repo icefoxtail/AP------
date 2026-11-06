@@ -107,8 +107,8 @@
     const a = sp.n ? coefPlain(sp.n) : '';
     return (a && sp.k ? a + ' + ' : a) + (sp.k ? symPlain(sp.k) : '') || '0';
   };
-  const sumTex = (coefs) => coefs.map(coefTex).join('+') + (coefs.length > 1 ? '=' + totalTex(coefs) : (!isSym(coefs[0]) && toFrac(coefs[0]) !== null ? '=' + coefTex(coefs[0]) : ''));
-  const sumPlain = (coefs) => coefs.map(coefPlain).join(' + ') + (coefs.length > 1 || (coefs.length === 1 && !isSym(coefs[0])) ? ' = ' + totalPlain(coefs) : '');
+  const sumTex = (coefs) => !coefs.length ? '0' : coefs.map(coefTex).join('+') + (coefs.length > 1 ? '=' + totalTex(coefs) : (!isSym(coefs[0]) && toFrac(coefs[0]) !== null ? '=' + coefTex(coefs[0]) : ''));
+  const sumPlain = (coefs) => !coefs.length ? '0' : coefs.map(coefPlain).join(' + ') + (coefs.length > 1 || (coefs.length === 1 && !isSym(coefs[0])) ? ' = ' + totalPlain(coefs) : '');
   const rOf = (rt) => (rt.sym ? 'x' : rTxt(rt.r));
   const rollPhrase = (N) => (N === 1 ? '한 번' : `${N}번`);
 
@@ -293,8 +293,11 @@
     const L = [];
     const arcs = M.arcs;
     const names = arcs.map((a) => JAMO[a.arc]);
-    const list = names.length === 1 ? `${names[0]}의 길이와 같다.` : `${names.join(', ')}의 길이의 합과 같다.`;
-    const ov = spec.overview ? spec.overview(M) : [
+    const list = !names.length ? '0 cm이다.' : names.length === 1 ? `${names[0]}의 길이와 같다.` : `${names.join(', ')}의 길이의 합과 같다.`;
+    const ov = !arcs.length ? [
+      `해결 전략 ① 회전의 중심과 움직임을 살펴볼 점이 모두 점 ${T}인지 확인한다.`,
+      `해결 전략 ② 점 ${T}는 회전의 중심이므로 제자리에 있다. 거리 계산에 포함할 호가 생기는지 살펴본다.`
+    ] : spec.overview ? spec.overview(M) : [
       `해결 전략 ① 점 ${T}가 움직인 자취를 실제로 그려 본다. 이때 점이 움직인 거리는 모두 부채꼴의 호의 길이이다.`,
       `해결 전략 ② 부채꼴의 반지름의 길이와 중심각의 크기를 구한 후 점 ${T}가 움직인 거리를 구한다. 점 ${T}가 움직인 거리는 ${list}`
     ];
@@ -329,13 +332,13 @@
         L.push({ type: 'still', rot: rt.i, text: `(참고) 점 ${P}를 중심으로 회전할 때는 점 ${T}가 회전의 중심이라 움직이지 않는다. 호가 생기지 않으니 더하지 않는다.` });
       }
     });
-    L.push({ type: 'total', text: `따라서 점 ${T}가 움직인 거리는 ${names.join(' + ')} = $${sumTex(arcs.map((a) => a.coef))}$ (cm)` + (arcs.some((a) => a.sym) ? ' (x: 대각선의 길이)' : '') });
+    L.push({ type: 'total', text: !arcs.length ? `따라서 점 ${T}가 움직인 거리는 0 cm이다.` : `따라서 점 ${T}가 움직인 거리는 ${names.join(' + ')} = $${sumTex(arcs.map((a) => a.coef))}$ (cm)` + (arcs.some((a) => a.sym) ? ' (x: 대각선의 길이)' : '') });
     return L;
   }
 
   function scenario(spec, s, lab, thumb) {
     const tab = thumb ? 'thumb' : (lab && lab.tab) || 'explore';
-    const cfg = tab === 'problem' ? probCfg(spec, s) : s.cfg;
+    const cfg = tab === 'problem' || (tab === 'review' && s.rlReviewQuestion && s.rlQuestionScene === spec.id) ? probCfg(spec, s) : cfgOf(spec, s);
     const M = buildModel(spec, cfg);
     const N = M.N;
     const sc = { spec, tab, M, plain: false, hl: null, outline: false, u: N, item: null, shown: null };
@@ -633,8 +636,8 @@
   const numOpt = (c) => ({ tex: coefTex(c), v: c });
   /** 문제 탭에서 쓰는 조건: 지금 그림이 '깔끔한 수'(π 꼴)로 떨어지면 그대로, 아니면 기본 문제. */
   function probCfg(spec, s) {
-    const M = buildModel(spec, s.cfg);
-    return M.valid && (!spec.probOK || spec.probOK(s.cfg)) ? s.cfg : spec.base;
+    const current = cfgOf(spec, s), M = buildModel(spec, current);
+    return M.valid && (!spec.probOK || spec.probOK(current)) ? current : spec.base;
   }
 
   /** 보기 5개(작은 것부터). 기본 그림은 교과서 보기, 조절한 그림은 같은 모양으로 새로 만듭니다. */
@@ -650,7 +653,7 @@
         const rng = rngOf(hash(key));
         const c = M.total, f = toFrac(c);
         const step = f.q === 2 ? 0.5 : pick(rng, [1, 1, 2]);
-        const p = pick(rng, [0, 1, 2, 3, 4].filter((q) => c - q * step > 1e-9));
+        const p = pick(rng, [0, 1, 2, 3, 4].filter((q) => c - q * step >= -1e-9));
         opts = [0, 1, 2, 3, 4].map((j) => numOpt(c + (j - p) * step));
       }
     }
@@ -666,7 +669,12 @@
     const ch = choicesOf(spec, s);
     const A = window.APLab;
     let html = '<div class="rl-prob">';
-    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(대각선이 정수가 아니에요), 기본 그림으로 문제를 보여 줘요. 새 문제를 눌러 다른 문제를 만들 수도 있어요.</div></div>';
+    if (cfg !== s.cfg) {
+      const reason = spec.probOK && !spec.probOK(s.cfg)
+        ? `이 확인 문제는 점 ${M.names[M.T]}가 움직인 거리를 묻는 기본 조건으로 제시해요. 탐구에서 고른 다른 점의 움직임은 탐구 탭에서 계속 살펴볼 수 있어요.`
+        : '현재 탐구의 일부 길이는 중1에서 배운 값으로 바로 계산하기 어려워서, 여기서는 기본 조건으로 문제를 보여 줘요.';
+      html += `<div class="apl-callout" data-tone="info"><div>${reason} 정리 탭에서도 이 문제의 조건으로 풉니다.</div></div>`;
+    }
     html += `<p class="rl-stmt">${spec.statement(cfg, M)}</p>`;
     if (ch.opts) {
       html += '<div class="rl-choices">';
@@ -710,7 +718,7 @@
   })();
 
   /** 그림 조건(크기·각)이 바뀌면 정답 잠금·고른 보기·풀이 단계를 처음으로 되돌립니다(풀이·문제는 바뀐 그림으로 다시 계산). */
-  const cfgChanged = (s) => { s.rlPick = -1; s.revealed = false; s.step = 1; };
+  const cfgChanged = (s) => { s.rlPick = -1; s.revealed = false; s.step = 1; s.rlQuestionProgress = null; };
   const syncSliders = (spec, s) => (spec.sliders || []).forEach((sl) => { s[sl.param] = s.cfg[sl.key]; });
 
   document.addEventListener('click', (e) => {
@@ -836,7 +844,7 @@
       hdls: [{ i: 1, patch: (x) => ({ a: clamp(Math.round(x), 2, 6) }) }],
       question: '직각삼각형은 꼭짓점마다 내각이 달라요. 돌아가는 각(중심각)도 달라질까?',
       guide: (M) => `직각삼각형은 꼭짓점마다 내각이 달라서 돌아가는 각도 달라요. ` + M.names.map((nm, i) => `점 ${nm}를 중심으로는 ${rTxt(M.ext[i])}°`).join(', ') + ` 돌아가요. 조건: ∠ABC = 60° (빗변 AB = 2×BC)예요. BC의 길이를 바꾸면 반지름과 중심각이 바로 다시 계산돼요.` + GUIDE_TAIL,
-      statement: (c) => `다음 그림과 같이 직각삼각형 ABC를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', rTxt(c.a / Math.cos(c.beta * D2R)))}, ${len('B', 'C', c.a)}, $\\angle \\mathrm{ABC}=${c.beta}^\\circ$일 때, 점 B가 움직인 거리는?`,
+      statement: (c) => `다음 그림과 같이 직각삼각형 ABC를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', rTxt(c.a / Math.cos(c.beta * D2R)))}, ${len('B', 'C', c.a)}, $\\angle \\mathrm{ABC}=${c.beta}^\\circ$일 때, 점 ${'BCA'[c.track]}가 움직인 거리는?`,
       reroll: (cur, rng) => ({ a: pick(rng, [2, 3, 4, 6].filter((x) => x !== cur.a)), beta: 60, track: 0, rolls: 2 }),
       chips: () => [], trackChips: true, rollChips: 3,
       notes: '<ul><li><b>중심각은 꼭짓점마다 달라요.</b> 돌아간 각 = 180° − (회전의 중심이 되는 꼭짓점의 내각)이에요. 점 C에서는 180° − 90° = 90°, 점 A에서는 180° − 30° = 150°예요.</li><li>회전의 중심이 되는 점의 호는 없어요. 점 B가 중심일 때는 B가 움직이지 않아요.</li></ul>'
@@ -924,6 +932,28 @@
   /** 다른 장면의 상태가 섞여 들어와도(모든 장면 미리보기 등) 이 장면 조건이 아니면 기본 조건을 씁니다. */
   const cfgOf = (spec, s) => (s && s.cfg && Object.keys(spec.base).every((k) => k in s.cfg) ? s.cfg : spec.base);
 
+  // π 꼴이 되는 기본 문제로 바뀐 경우에도 문제에서 돌아온 정리는 그 조건을 씁니다.
+  function syncQuestionStudy(spec, s, lab) {
+    if (!lab || lab.s !== s || !lab.scene || lab.scene.id !== spec.id) return;
+    const key = JSON.stringify(probCfg(spec, s)) + '|' + (s.rlSeed || 0);
+    if (s.rlQuestionKey != null && s.rlQuestionKey !== key) {
+      s.rlQuestionProgress = null;
+      if (s.rlReviewQuestion) { s.step = 1; s.revealed = false; }
+    }
+    s.rlQuestionKey = key;
+    if (lab.tab === 'problem' && !s.rlReviewQuestion) {
+      s.rlPrincipleStep = s.step || 1;
+      const saved = s.rlQuestionProgress;
+      s.step = saved ? saved.step : (probCfg(spec, s) !== s.cfg ? 1 : s.step || 1);
+      s.revealed = !!s.revealed || !!(saved && saved.revealed);
+      s.rlReviewQuestion = true;
+    } else if (lab.tab === 'explore' && s.rlReviewQuestion) {
+      s.rlQuestionProgress = { step: s.step || 1, revealed: !!s.revealed };
+      s.step = s.rlPrincipleStep || 1; s.revealed = false; s.rlReviewQuestion = false;
+    }
+  }
+  const studyCfg = (spec, s) => s.rlReviewQuestion && s.rlQuestionScene === spec.id ? probCfg(spec, s) : cfgOf(spec, s);
+
   function buildScene(spec) {
     const resetRun = (s, play) => { s.rlT = 0; s.rlHold = 0; s.playing = !!play; s.part = null; };
     const setCfg = (s, lab, patch) => {
@@ -935,12 +965,13 @@
     };
     return {
       id: spec.id, title: spec.title, short: spec.short, rl: spec,
-      question: spec.question,
-      focus: (s) => focusOf(buildModel(spec, cfgOf(spec, s))),
+      question: (s) => s.rlReviewQuestion && s.rlQuestionScene === spec.id ? spec.statement(probCfg(spec, s)) : spec.question,
+      focus: (s) => focusOf(buildModel(spec, studyCfg(spec, s))),
       enter: (s, lab) => {
         ensureParams(lab);
         s.cfg = { ...spec.base };
         s.rlSeed = 1; s.rlPick = -1;
+        s.rlReviewQuestion = false; s.rlQuestionScene = spec.id; s.rlQuestionKey = null; s.rlQuestionProgress = null; s.rlPrincipleStep = 1;
         resetRun(s, !!(lab && s === lab.s));
         syncSliders(spec, s);
       },
@@ -984,8 +1015,9 @@
         s.rlT = u / N;
         return true;
       },
-      steps: (s) => stepList(spec, buildModel(spec, cfgOf(spec, s))).map((x) => x.text),
+      steps: (s) => stepList(spec, buildModel(spec, studyCfg(spec, s))).map((x) => x.text),
       view: (s, lab) => {
+        syncQuestionStudy(spec, s, lab);
         const sc = scenario(spec, s, lab, false);
         const M = sc.M, N = M.N, T = M.names[M.T];
         const arcFr = (rt) => sc.fracs[rt.i];
