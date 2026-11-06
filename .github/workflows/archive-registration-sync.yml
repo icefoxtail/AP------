@@ -1,42 +1,7 @@
 name: Archive Registration Sync
+# Read-only PR preview. Main drift recovery belongs exclusively to Archive Main Auto Metadata.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "archive/exams/**/*.js"
-      - "archive/db.js"
-      - "archive/data/archive2-catalog.json"
-      - "archive/data/question_identity_map.json"
-      - "archive/data/question_metadata.json"
-      - "archive/data/generated-lite-consumer/v1/index.json"
-      - "archive/data/archive2-canonical-input-manifest.json"
-      - "archive/data/archive2-canonical-projection-policy.json"
-      - "archive/data/meta-foundation/canonical/**"
-      - "archive/data/meta-foundation/compiled/**"
-      - "archive/question-index.js"
-      - "archive/build_db.py"
-      - "archive/archive2-core.js"
-      - "archive/archive2-canonical.js"
-      - "archive/problem-bank-meta.js"
-      - "archive/problem-bank-search.html"
-      - "archive/tools/build-question-index.mjs"
-      - "archive/tools/build-archive2-catalog.mjs"
-      - "archive/tools/build-basic-scope-parent-links.mjs"
-      - "archive/data/basic-scope-source-links.json"
-      - "archive/data/basic-scope-parent-groups.json"
-      - "archive/data/meta-foundation/runtime/**"
-      - "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/**"
-      - "archive/tools/build-archive2-crosswalk-inventory.mjs"
-      - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
-      - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      - "archive/tools/meta-foundation/sync-runtime-source-path-renames.mjs"
-      - "archive/data/r2e-intake/**/*.meta-review2.meta-v2.payload.json"
-      - "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs"
-      - "archive/tools/verify-archive-registration.mjs"
-      - "tests/archive2-meta-v2-semantic-authority.test.cjs"
-      - "tests/archive-original-search-exposure.browser.cjs"
-      - ".github/workflows/archive-registration-sync.yml"
   pull_request:
     branches: [main]
     paths:
@@ -73,14 +38,13 @@ on:
       - "tests/archive2-meta-v2-semantic-authority.test.cjs"
       - "tests/archive-original-search-exposure.browser.cjs"
       - ".github/workflows/archive-registration-sync.yml"
-  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('archive-registration-pr-{0}', github.event.pull_request.number) || 'archive-registration-sync-main' }}
-  cancel-in-progress: false
+  group: archive-registration-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   sync:
@@ -264,132 +228,3 @@ jobs:
           path: ${{ runner.temp }}/registration-preview/
           if-no-files-found: error
           retention-days: 7
-
-  repair:
-    # Temporary legacy main repair lane; PR validation never receives write permissions.
-    # Reuse the verified patch instead of rebuilding the same snapshot in a second job.
-    needs: sync
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      actions: write
-      contents: write
-      pull-requests: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.sync.outputs.source_sha }}
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - uses: actions/download-artifact@v4
-        with:
-          name: archive-registration-preview-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/registration-preview/
-      - name: Apply the exact verified registration preview
-        shell: bash
-        run: |
-          set -euo pipefail
-          preview="$RUNNER_TEMP/registration-preview"
-          test "$(cat "$preview/source.sha")" = "$(git rev-parse HEAD)"
-          if [[ -s "$preview/registration.patch" ]]; then
-            git apply --index "$preview/registration.patch"
-          fi
-
-      - name: Open a repair PR for registration drift found after main updates
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          paths=(
-            archive/db.js
-            archive/data/question_identity_map.json
-            archive/data/question_metadata.json
-            archive/question-identity.js
-            archive/question-index.js
-            archive/question-index-report.md
-            archive/question-index-audit.md
-            archive/data/archive2-catalog.json
-            archive/data/archive2-source-verification-index.json
-            archive/data/archive2-source-verification/v1
-            archive/data/archive2-crosswalk-inventory.json
-            archive/data/archive2-canonical-input-manifest.json
-            archive/data/archive2-canonical-projection-policy.json
-            archive/data/archive2-item-review-overrides.json
-            archive/data/basic-scope-parent-links.json
-            archive/data/meta-foundation/runtime
-          )
-          git add -- "${paths[@]}"
-          if git diff --cached --quiet; then
-            echo "No registration drift found on main; no repair PR is needed."
-            exit 0
-          fi
-
-          # archive-pages-release.yml may already have committed the same outputs
-          # to main ([skip ci]); never open a repair PR for drift main already has.
-          git fetch origin main
-          if git diff --cached --quiet origin/main -- "${paths[@]}"; then
-            echo "ALREADY_REGISTERED_IN_MAIN"
-            exit 0
-          fi
-          if [[ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]]; then
-            echo "origin/main moved ahead of ${GITHUB_SHA}; regenerating registration outputs on the latest main."
-            git reset --hard origin/main
-            git clean -fd -- "${paths[@]}"
-            node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write
-            python archive/build_db.py
-            node tests/archive-meta-v2-materializer.test.mjs
-            node tests/archive2-meta-v2-semantic-authority.test.cjs
-            node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
-            node tests/archive-question-identity-contract.test.mjs
-            node tests/archive-question-identity-runtime.test.mjs
-            node archive/tools/verify-archive-registration.mjs
-            git diff --check
-            git add -- "${paths[@]}"
-            if git diff --cached --quiet origin/main -- "${paths[@]}"; then
-              echo "ALREADY_REGISTERED_IN_MAIN"
-              exit 0
-            fi
-          fi
-
-          base_sha="$(git rev-parse HEAD)"
-          branch="codex/archive-registration-repair-${base_sha:0:12}"
-          existing_pr="$(gh pr list --state open --head "$branch" --json number --jq '.[0].number // empty')"
-          if [[ -n "$existing_pr" ]]; then
-            echo "Registration repair PR #${existing_pr} already exists for ${base_sha}."
-            repair_ref="$branch"
-          else
-            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
-              branch="${branch}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-            fi
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git switch --create "$branch"
-            git commit -m "chore: repair archive registration drift"
-            git push origin "HEAD:refs/heads/${branch}"
-            body="$(cat <<EOF
-          Automated registration repair generated from main commit ${base_sha}.
-
-          This PR contains only outputs regenerated by archive/build_db.py and the existing registration pipeline.
-
-          Workflow run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
-          EOF
-          )"
-            gh pr create --base main --head "$branch" --title "chore: repair archive registration drift" --body "$body"
-            repair_ref="$branch"
-          fi
-
-          curl --fail --silent --show-error --request POST \
-            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-            --header "Accept: application/vnd.github+json" \
-            --header "X-GitHub-Api-Version: 2022-11-28" \
-            --data "$(jq -n --arg ref "$repair_ref" '{ref: $ref}')" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/archive-registration-sync.yml/dispatches"

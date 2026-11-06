@@ -1,62 +1,24 @@
 name: Archive Pages Release
 
-# Release contract (AGENTS.md 2026-10-10; user decision 2026-10-29): the student Pages site is only replaced
-# by a VERIFIED build. A failed required verification fails the build job at the "Pages release gate" step,
-# so `deploy` (needs: build) never runs and the existing good site stays live. Git main merges stay
-# independent of this workflow (MAIN_FIRST / CI_DEFERRED): only the deploy is gated.
-#
-# Verification steps keep `continue-on-error: true` so that every diagnostic still runs and is uploaded in
-# the evidence artifact; the gate reads each step's real `outcome` and decides. Step ids and classes:
-#   REQUIRED (gate fails the build): reg_materialize, reg_verify, reg_guard, reg_commit (push events only; a lost
-#     push race or main moving after the push is a warning, not a failure),
-#     qid9_source, projection_write, projection_check, main_source_projection, qid9_parity, selection_tests,
-#     chrome_generated_bank, chrome_geumdang, chrome_qid9_student, mock_qa,
-#     archive2_runtime (Archive 2.0 runtime contract), staged_site_chrome (staged-site Chrome smoke),
-#     worker_order (APMS Worker deploy ordering, below), image_order (R2 exam image ordering, below).
-#     The manifest test and `pages_build` carry no continue-on-error and fail the job directly.
-#   ADVISORY (warning only, never blocks): main_sha_confirm (main advancing during the run is expected).
-# Every verification step has a step-level timeout sized from normal durations (runs 819-831) with margin, so a
-# hung browser check fails fast instead of consuming the job budget (cancelled runs 720, 792, 828).
-#
-# Worker ordering (owner decision 2026-10-30): when the release range (latest successful github-pages deployment ..
-# HEAD) changes the APMS Worker or a module it bundles (tools/ci/apms-worker-bundle-paths.txt), the new data may
-# use rows an old Worker cannot read, so the Worker must be deployed first. Step `worker_order` waits (bounded,
-# 14 minutes, inside the 15-minute step cap) for a successful apms-worker-deploy.yml run on a SHA containing
-# those changes; a failed/cancelled run or a timeout fails the gate, so the existing site stays live. With no
-# Worker-bundled change nothing waits. It runs after the long verifications so the deploy usually finished
-# already, and it only gates the Pages deploy, never the Git merge.
-#
-# R2 image ordering (2026-11-01): the Pages package does not contain archive/assets/images (about 478 MB, see
-# tools/archive-pages-release-manifest.json); exam images are served from Cloudflare R2 (img.wangjiedu.com), copied there by
-# r2-archive-assets-copy.yml on the same push. Step `image_order` (tools/ci/archive-pages-image-r2-gate.mjs) takes the
-# images added/changed since the latest successful github-pages deployment, HEAD-checks each on R2 and retries (bounded,
-# 14 minutes inside the 15-minute step cap) while the copy runs. Still missing => the gate fails and the existing site stays
-# live. With no image change it passes at once. It only gates the Pages deploy, never the Git merge.
-#
-# Self-heal: a cancelled run's `[skip ci]` registration commit is never deployed by any later event, so a
-# scheduled run re-checks every 3 hours. It builds only when the latest successful github-pages deployment
-# does not already serve main (tools/ci/archive-pages-deploy-needed.mjs).
-#
-# Checkout depth: fetch-depth 0 is kept on purpose. check-archive2-runtime diffs against github.event.before
-# (an arbitrary older commit), the generated-meta tools read historic blobs (git cat-file blob, rev-parse
-# HEAD:<path>) and the SVG accessibility index falls back to HEAD^/merge-base; none of these is proven safe
-# on a shallow or blob-filtered clone, so only the job timeout was raised.
+# Publish one exact writer-verified main snapshot. No shared-data generation or Git writes.
+# The existing scheduled recovery remains; stale registration is explicitly deferred.
+# Identical student package and external asset bytes are a content NO_OP; a changed checker does
+# not receive a reused PASS or new receipt. Unknown live versions only allow the fixed main tip. Required outcomes reach
+# the gate even with continue-on-error; a failed build never replaces the previous student site.
 
 on:
-  push:
-    branches: [main]
   schedule:
     - cron: '17 */3 * * *'
   workflow_dispatch:
-  workflow_run:
-    workflows: [Archive Reviewed Exam Meta Register]
-    types: [completed]
-    branches: [main]
+    inputs:
+      registered_main_sha:
+        description: 'Exact verified registration commit. Empty uses the fixed event SHA for recovery.'
+        required: false
+        default: ''
+        type: string
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
   deployments: read
   actions: read
 
@@ -65,228 +27,101 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  registration-ready:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      ready: ${{ steps.inbox.outputs.ready }}
-      # Fail open: a probe that crashed before writing its output must never skip a build.
-      needed: ${{ steps.deployed.outputs.needed || 'true' }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          sparse-checkout: |
-            .archive-meta-register/inbox
-            tools/ci
-          sparse-checkout-cone-mode: false
-      - id: inbox
-        shell: bash
-        run: |
-          set -euo pipefail
-          # The register workflow is the single derived-data writer for pushes that touch its trigger
-          # paths. Decide from the triggering push itself (event payload), not from the moving main
-          # checkout. If the event cannot prove it, do not defer: a deferral waits for a register run
-          # that may never have started.
-          touched="$(node tools/ci/push-touches-paths.mjs --paths-file tools/ci/archive-meta-register-trigger-paths.txt --uncertain false)"
-          if [[ "$touched" == "true" ]]; then
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "The push touched reviewed-meta registration inputs; the register workflow is the single writer and its completion event will resume release."
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
-      - id: deployed
-        # Scheduled self-heal runs build only when the live site does not already serve main; all other
-        # events always build (answered before any git/network access). The probe fails open (needed=true) on any
-        # doubt; continue-on-error + the `|| 'true'` default above keep even a crash of node itself from skipping a build.
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        shell: bash
-        run: node tools/ci/archive-pages-deploy-needed.mjs
   build:
-    needs: registration-ready
-    if: needs.registration-ready.outputs.ready == 'true' && needs.registration-ready.outputs.needed == 'true'
     name: Build and verify the student release
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    outputs:
+      ready: ${{ steps.registered.outputs.publishable }}
+      needed: ${{ steps.identity.outputs.needed || 'true' }}
+      registered_main_sha: ${{ steps.context.outputs.registered_main_sha }}
     defaults:
       run:
         shell: bash
+    env:
+      REGISTERED_MAIN_SHA: ${{ inputs.registered_main_sha || github.sha }}
     steps:
+      - name: Initialize runner evidence paths
+        run: |
+          printf 'RELEASE_EVIDENCE_DIR=%s/archive-pages-release-evidence\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
+          ref: ${{ inputs.registered_main_sha || github.sha }}
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Verify the explicit Pages package manifest and safeguards
-        timeout-minutes: 5
-        run: node --test tests/archive-pages-site-package.test.mjs
-
-      - name: Create release evidence context
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+      - name: Bind release evidence to the exact main snapshot
+        id: context
+        timeout-minutes: 2
         run: |
+          set -euo pipefail
+          [[ "$REGISTERED_MAIN_SHA" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$(git rev-parse HEAD)" == "$REGISTERED_MAIN_SHA" ]]
+          git merge-base --is-ancestor "$REGISTERED_MAIN_SHA" origin/main
           mkdir -p "$RELEASE_EVIDENCE_DIR"
           {
-            printf 'source_sha='; git rev-parse HEAD
+            printf 'source_sha=%s\n' "$REGISTERED_MAIN_SHA"
             printf 'event=%s\n' "$GITHUB_EVENT_NAME"
             printf 'run_id=%s\n' "$GITHUB_RUN_ID"
             printf 'run_attempt=%s\n' "$GITHUB_RUN_ATTEMPT"
             printf 'workflow_ref=%s\n' "$GITHUB_WORKFLOW_REF"
             printf 'workflow_run_url=%s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
           } > "$RELEASE_EVIDENCE_DIR/context.txt"
+          printf 'registered_main_sha=%s\n' "$REGISTERED_MAIN_SHA" >> "$GITHUB_OUTPUT"
 
-      - name: Materialize reviewed META_V2 and register Archive sources
-        id: reg_materialize
-        timeout-minutes: 15
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: bash tools/ci/archive-pages-registration-derive.sh materialize
-
-      - name: Verify Archive DB, UID, Meta, index, and catalog registration
-        id: reg_verify
-        timeout-minutes: 10
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: bash tools/ci/archive-pages-registration-derive.sh verify
-
-      - name: Guard generated Archive registration scope
-        id: reg_guard
+      - name: Check registered inputs, outputs and validator versions without writes
+        id: registered
         timeout-minutes: 5
-        continue-on-error: true
-        shell: bash
+        env:
+          REQUESTED_REGISTERED_SHA: ${{ inputs.registered_main_sha }}
         run: |
           set -euo pipefail
-          mapfile -t changed < <(
-            {
-              git diff --name-only
-              git ls-files --others --exclude-standard
-            } | sort -u
-          )
-          allowed='^(archive/db\.js|archive/data/question_identity_map\.json|archive/data/question_metadata\.json|archive/question-identity\.js|archive/question-index\.js|archive/question-index-report\.md|archive/question-index-audit\.md|archive/data/archive2-catalog\.json|archive/data/archive2-source-verification-index\.json|archive/data/archive2-source-verification/v1/[^/]+\.json|archive/data/archive2-crosswalk-inventory\.json|archive/data/archive2-canonical-input-manifest\.json|archive/data/archive2-canonical-projection-policy\.json|archive/data/archive2-item-review-overrides\.json|archive/data/basic-scope-parent-links\.json|archive/data/meta-foundation/runtime/[^/]+\.json|archive/data/meta-foundation/compiled/[^/]+\.json|archive/data/meta-foundation/canonical/registry_index\.json|archive/data/meta-foundation/evidence/geometry-equations/v1/[^/]+\.json)$'
-          for file in "${changed[@]}"; do
-            if [[ -n "$file" && ! "$file" =~ $allowed ]]; then
-              echo "Unexpected generated Archive registration file: $file"
-              exit 1
-            fi
-          done
-          printf '%s\n' "${changed[@]}"
+          node tools/ci/archive-registration-writer.mjs --check --work-dir "$RELEASE_EVIDENCE_DIR/registration-check"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync(`${process.env.RELEASE_EVIDENCE_DIR}/registration-check/report.json`, 'utf8'));
+          if (!report.publishable) {
+            const message = `DEFERRED_REGISTRATION: ${report.status}; the hourly writer must finish before publication.`;
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, message + '\n');
+            if (process.env.REQUESTED_REGISTERED_SHA) throw new Error(message);
+          }
+          NODE
 
-      - name: Commit generated Archive registration artifacts
-        id: reg_commit
-        timeout-minutes: 15
-        continue-on-error: true
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Never force-pushes. If another writer moved main first, the helper resets to the new tip,
-          # re-derives and re-verifies there (same script as the steps above), and pushes the fresh
-          # result (max 3 attempts); an identical tree already on main is success.
-          # Losing that race (RETRY_EXHAUSTED) or main moving again after the push is not a verification
-          # failure: every later verification step still checks this tree, and the newer main has its own
-          # queued run that commits and releases it. Both are warnings so busy merge periods do not freeze
-          # the student site (2026-10-30). Any other helper failure still fails this required step.
-          helper_log="$RELEASE_EVIDENCE_DIR/registration-sync.log"
-          set +e
-          node tools/ci/git-push-derived-with-retry.mjs \
-            --paths-file tools/ci/archive-pages-registration.paths \
-            --message "chore(archive): sync registration artifacts [skip ci]" \
-            --regenerate "bash tools/ci/archive-pages-registration-derive.sh all" \
-            --remote origin --branch main --max-attempts 3 \
-            --label "Pages registration sync" --summary-file "$GITHUB_STEP_SUMMARY" 2>&1 | tee "$helper_log"
-          helper_status=${PIPESTATUS[0]}
-          set -e
-          if [[ "$helper_status" -ne 0 ]]; then
-            if grep -q 'result=RETRY_EXHAUSTED' "$helper_log"; then
-              echo "::warning title=Registration commit deferred::main kept advancing during this run; the newer main's queued release commits the registration artifacts. This verified tree is still released."
-              printf 'registration_commit=deferred_race\n' >> "$RELEASE_EVIDENCE_DIR/context.txt"
-              exit 0
-            fi
-            exit "$helper_status"
-          fi
-          git fetch --no-tags origin main
-          registered_sha="$(git rev-parse HEAD)"
-          remote_sha="$(git rev-parse origin/main)"
-          if [[ "$registered_sha" != "$remote_sha" ]]; then
-            echo "::warning title=main advanced after registration::registered=$registered_sha remote=$remote_sha; the newer main is released by its own queued run."
-          fi
-          {
-            printf 'registration_input_sha=%s\n' "$GITHUB_SHA"
-            printf 'registration_commit_sha=%s\n' "$registered_sha"
-            printf 'registration_remote_main_sha=%s\n' "$remote_sha"
-          } >> "$RELEASE_EVIDENCE_DIR/context.txt"
+      - name: Materialize only untracked package shards from the registered catalog
+        id: package_shards
+        if: steps.registered.outputs.publishable == 'true'
+        timeout-minutes: 5
+        run: node archive/tools/build-archive2-catalog.mjs --package-only
 
-      - name: Materialize main-resident QID9 source formats through common converter
-        id: qid9_source
-        timeout-minutes: 10
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: |
-          node archive/tools/generated-meta/compile-qid9-main-source.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-source-write.log"
-          node archive/tools/generated-meta/compile-qid9-main-source.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-source-check.log"
-
-      - name: Compile student projection from approved production sources
-        id: projection_write
-        timeout-minutes: 10
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/projection-write.log"
-
-      - name: Check approved UID completeness and projection parity
-        id: projection_check
+      - name: Compare effective package and external dependency content with the live receipt
+        id: identity
+        if: steps.registered.outputs.publishable == 'true'
         timeout-minutes: 5
         continue-on-error: true
         env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/projection-check.log"
-
-      - name: Derive and check all main-resident Generated source rows
-        id: main_source_projection
-        timeout-minutes: 10
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-write.log"
-          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-check.log"
+          node tools/ci/archive-pages-deploy-needed.mjs \
+            --registered-main-sha "$REGISTERED_MAIN_SHA" \
+            --identity-file "$RELEASE_EVIDENCE_DIR/release-identity.json"
 
-      - name: Verify exact QID9 source to student Consumer parity
-        id: qid9_parity
+      - name: Record the content no-op or superseded snapshot
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed == 'false'
+        env:
+          NO_OP_REASON: ${{ steps.identity.outputs.reason }}
+        run: printf '%s\n' "$NO_OP_REASON" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify the explicit Pages package manifest and safeguards
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         timeout-minutes: 5
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node archive/tools/generated-meta/verify-qid9-main-source-projection.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-consumer-parity.log"
-
-      - name: Record metadata completeness diagnostics for later repair
-        id: metadata_integrity_tests
-        timeout-minutes: 10
-        continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs archive/tools/generated-meta/auto-register-source-rebind.test.mjs tests/generated-meta-retention.test.cjs tests/problem-bank-meta.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/metadata-integrity-tests.log"
+        run: node --test tests/archive-pages-site-package.test.mjs
 
       - name: Verify student source visuals and exam selection contracts
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: selection_tests
         timeout-minutes: 10
         continue-on-error: true
@@ -295,11 +130,13 @@ jobs:
         run: node --test tests/generated-source-svg-namespace.test.cjs tests/generated-main-source-consumer-sync.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
 
       - uses: browser-actions/setup-chrome@v1
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         id: chrome
         with:
           chrome-version: stable
 
       - name: Verify actual generated-bank lookup, preview, and print
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: chrome_generated_bank
         timeout-minutes: 8
         continue-on-error: true
@@ -309,6 +146,7 @@ jobs:
         run: node tools/check-generated-bank-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-bank-chrome.log"
 
       - name: Verify main-resident Geumdang source output
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: chrome_geumdang
         timeout-minutes: 8
         continue-on-error: true
@@ -318,6 +156,7 @@ jobs:
         run: node tools/check-geumdang-qid9-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/geumdang-source-chrome.log"
 
       - name: Verify imported QID9 student lookup selection exam answer and solution in actual Chrome
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: chrome_qid9_student
         timeout-minutes: 10
         continue-on-error: true
@@ -330,6 +169,7 @@ jobs:
           QID9_SOURCE_ROOT_INDEX=2 QID9_SAMPLE_QID=23 node tools/check-qid9-main-source-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-hyochen-student-chrome.log"
 
       - name: Verify complete generated mock selection, preview, print, answer, and solution flow
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: mock_qa
         timeout-minutes: 5
         continue-on-error: true
@@ -339,19 +179,21 @@ jobs:
         run: node tools/check-generated-mock-qa.cjs --out-dir "$RELEASE_EVIDENCE_DIR/mock-qa" 2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-mock-qa.log"
 
       - name: Verify Archive 2.0 runtime contract
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false' && steps.identity.outputs.archive_needed != 'false'
         id: archive2_runtime
         timeout-minutes: 12
         continue-on-error: true
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
-        run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
+        run: node tools/check-archive2-runtime.cjs --registered 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
 
       # The builder prints the largest directories/files and the remaining headroom below the fixed 1,000,000,000-byte
       # Pages limit, and emits a ::warning annotation (never a failure) when less than 50 MB remain. Size reductions
       # (compact mixed verification rows, whitespace-only JSON compaction, digest-verified inputs that no page fetches)
       # are declared in tools/archive-pages-release-manifest.json; maxBytes is never raised.
+
       - name: Build the explicit student Pages file set
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         id: pages_build
         timeout-minutes: 10
         env:
@@ -365,6 +207,7 @@ jobs:
             2>&1 | tee "$RELEASE_EVIDENCE_DIR/pages-site-package-build.log"
 
       - name: Verify the staged Pages frontend and archive output in real Chrome
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         id: staged_site_chrome
         timeout-minutes: 12
         continue-on-error: true
@@ -381,6 +224,7 @@ jobs:
             2>&1 | tee "$RELEASE_EVIDENCE_DIR/pages-site-browser-smoke.log"
 
       - name: Wait for the APMS Worker deploy when this release changes Worker-bundled files
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         id: worker_order
         timeout-minutes: 15
         continue-on-error: true
@@ -393,7 +237,8 @@ jobs:
             --evidence-file "$RELEASE_EVIDENCE_DIR/context.txt" --summary-file "$GITHUB_STEP_SUMMARY" \
             2>&1 | tee "$RELEASE_EVIDENCE_DIR/worker-order.log"
 
-      - name: Wait for the R2 exam images this release adds or changes (they are not in the Pages package)
+      - name: Wait for the exact R2 image bytes in this registered release
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         id: image_order
         timeout-minutes: 15
         continue-on-error: true
@@ -402,42 +247,52 @@ jobs:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: |
           node tools/ci/archive-pages-image-r2-gate.mjs \
-            --fallback-base "${{ github.event.before }}" \
             --timeout-minutes 14 --interval-seconds 30 \
             --evidence-file "$RELEASE_EVIDENCE_DIR/context.txt" --summary-file "$GITHUB_STEP_SUMMARY" \
             2>&1 | tee "$RELEASE_EVIDENCE_DIR/image-order.log"
 
-      - name: Confirm deployment is built from current registered main
-        id: main_sha_confirm
-        timeout-minutes: 5
+      - name: Guard the unchanged registered tree after all checks
+        id: snapshot_guard
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
+        timeout-minutes: 2
         continue-on-error: true
-        env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: |
-          set -euo pipefail
-          git fetch --no-tags origin main
-          release_sha="$(git rev-parse HEAD)"
-          remote_sha="$(git rev-parse origin/main)"
-          if [[ "$release_sha" != "$remote_sha" ]]; then
-            echo "::warning::main advanced during Pages verification: release=$release_sha remote=$remote_sha" >&2
-          fi
-          printf 'verified_release_main_sha=%s\n' "$release_sha" >> "$RELEASE_EVIDENCE_DIR/context.txt"
+          [[ "$(git rev-parse HEAD)" == "$REGISTERED_MAIN_SHA" ]]
+          git diff --exit-code HEAD --
+          printf 'verified_release_main_sha=%s\n' "$REGISTERED_MAIN_SHA" >> "$RELEASE_EVIDENCE_DIR/context.txt"
 
       - name: Pages release gate
         id: release_gate
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         timeout-minutes: 2
         env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
           STEPS_JSON: ${{ toJSON(steps) }}
+          ARCHIVE_NEEDED: ${{ steps.identity.outputs.archive_needed }}
         run: |
+          skip_ok=''
+          if [[ "$ARCHIVE_NEEDED" == 'false' ]]; then
+            skip_ok='selection_tests,chrome_geumdang,chrome_qid9_student,mock_qa,archive2_runtime'
+            printf 'archive_validation=reused_matching_input_dependency_validator_digest\n' >> "$RELEASE_EVIDENCE_DIR/context.txt"
+          fi
           node tools/ci/archive-pages-release-gate.mjs \
-            --required reg_materialize,reg_verify,reg_guard,reg_commit,qid9_source,projection_write,main_source_projection,qid9_parity,selection_tests,chrome_geumdang,chrome_qid9_student,mock_qa,archive2_runtime,staged_site_chrome,worker_order,image_order \
-            --skip-ok reg_commit \
-            --advisory main_sha_confirm,metadata_integrity_tests,projection_check,chrome_generated_bank \
+            --required registered,package_shards,identity,selection_tests,chrome_geumdang,chrome_qid9_student,mock_qa,archive2_runtime,pages_build,staged_site_chrome,worker_order,image_order,snapshot_guard \
+            --skip-ok "$skip_ok" \
+            --advisory chrome_generated_bank \
             --evidence-file "$RELEASE_EVIDENCE_DIR/context.txt" \
             --summary-file "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload release diagnostics, including failed runs
+      - name: Seal the exact registered and verified package receipt
+        id: release_receipt
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
+        timeout-minutes: 5
+        run: |
+          node tools/ci/archive-pages-release-identity.mjs \
+            --registered-main-sha "$REGISTERED_MAIN_SHA" \
+            --identity-file "$RELEASE_EVIDENCE_DIR/release-identity.json" \
+            --package-report "$RELEASE_EVIDENCE_DIR/pages-site-package.json" \
+            --gate-evidence "$RELEASE_EVIDENCE_DIR/context.txt"
+
+      - name: Upload release diagnostics, including failed and deferred runs
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -447,6 +302,7 @@ jobs:
           retention-days: 30
 
       - name: Upload the verified student site
+        if: steps.registered.outputs.publishable == 'true' && steps.identity.outputs.needed != 'false'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -454,8 +310,12 @@ jobs:
   deploy:
     name: Deploy the verified student release
     needs: build
+    if: needs.build.outputs.ready == 'true' && needs.build.outputs.needed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

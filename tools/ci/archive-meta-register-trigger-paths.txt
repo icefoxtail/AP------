@@ -1,6 +1,6 @@
-# Paths whose push triggers .github/workflows/archive-reviewed-exam-meta-register.yml.
-# The workflow's on.push.paths must list exactly these entries (tests/archive-register-trigger-paths.test.mjs
-# enforces it). Entries containing '*' are request globs; the others are scoped exam inputs for which
-# that workflow is the single writer of derived registration data.
+# Native reviewed-registration input scope, consumed by the single main writer.
+# Entries containing '*' are request globs; literal entries require the existing scoped
+# Consumer check when their input bytes change. The former reviewed workflow is a manual
+# forwarding entrypoint; it no longer owns main push triggers or shared output writes.
 .archive-meta-register/inbox/*.json
 archive/data/meta-foundation/exam-scoped/25_금당고_2학기_중간_고2_확률과통계.parent-links.json

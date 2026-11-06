@@ -8,11 +8,13 @@
 // reference is already on R2. Otherwise students would see broken figures (the same-origin fallback has nothing to load).
 //
 // What it does:
-//   1. release range = latest successful github-pages deployment .. HEAD (same base as worker_order); fallback
-//      --fallback-base (the push's `before` SHA). The images added, copied, modified or renamed in that range
+//   1. release range = exact successful live registered receipt .. HEAD. The first byte-verified
+//      release has no trusted image base: a legacy deployment only proved URL existence. The images
+//      added, copied, modified or renamed in a confirmed range
 //      (git diff --diff-filter=ACMR, deletions are ignored) are the ones to verify.
 //      Base unknown or not in the checkout => uncertain: verify EVERY image in HEAD (fail closed, never skip).
-//   2. HEAD-request each one on the R2 host (200 = present). 404/403/5xx/network errors are "not yet".
+//   2. GET the exact canonical URL and compare SHA-256 with the image bytes in this registered Git
+//      snapshot. An old image at the same key, 404/403/5xx or a network error is "not yet".
 //   3. Retry the missing ones every --interval-seconds up to --timeout-minutes (R2 copy still running), then fail.
 //      A failed step keeps the previously published (verified) site live; Git main is not affected.
 //   With no image change the gate passes at once without any network request.
@@ -21,8 +23,9 @@
 //     [--image-prefix archive/assets/images] [--r2-base https://img.wangjiedu.com] [--fallback-base <sha>] \
 //     [--timeout-minutes 14] [--interval-seconds 30] [--concurrency 16] [--all] [--evidence-file <path>] [--summary-file <md>]
 //
-// Presence only: the gate does not compare bytes. Changed files keep their R2 key, so a modified image that is already
-// on R2 counts as present until the copy overwrites it (the copy runs on the same push; edge caching is not purged here).
+// No invented version query or alternate URL is used. A stale cache entry stays pending until the
+// canonical student URL actually serves the registered bytes.
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -98,11 +101,35 @@ export function planImageCheck({ bases = [], changedSince, all, forceAll = false
   return { files: whole.files, uncertain: true, reason: `release range unknown (no usable deployed SHA); verifying every exam image in HEAD (${whole.files.length})` };
 }
 
-// One HEAD request. "present" = HTTP 200. Anything else is "pending" (the copy may still be running) with a short reason.
-export async function headCheck(url, { fetchImpl = fetch, timeoutMs = 20000 } = {}) {
+export function gitImageIdentity({ file, head = "HEAD", cwd = process.cwd() }) {
+  if (typeof file !== "string" || file.startsWith("/") || file.includes("\\") || file.split("/").some(part => !part || part === "." || part === ".."))
+    throw new Error(`unsafe image path: ${file}`);
+  const bytes = execFileSync("git", ["cat-file", "blob", `${head}:${file}`], {
+    cwd, maxBuffer: 256 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"]
+  });
+  return { expectedSha256: crypto.createHash("sha256").update(bytes).digest("hex"), expectedBytes: bytes.length };
+}
+
+// HTTP success alone cannot distinguish an old image from a same-path replacement.
+export async function contentCheck(url, { expectedSha256, expectedBytes, fetchImpl = fetch, timeoutMs = 20000 } = {}) {
+  if (!/^[a-f0-9]{64}$/.test(String(expectedSha256 || "")) || !Number.isSafeInteger(expectedBytes) || expectedBytes < 0)
+    return { present: false, detail: "expected registered image digest is missing or invalid" };
   try {
-    const response = await fetchImpl(url, { method: "HEAD", redirect: "manual", signal: AbortSignal.timeout(timeoutMs) });
-    return response.status === 200 ? { present: true } : { present: false, detail: `HTTP ${response.status}` };
+    const response = await fetchImpl(url, { method: "GET", redirect: "manual", cache: "no-store",
+      headers: { "Cache-Control": "no-cache" }, signal: AbortSignal.timeout(Math.max(1, Math.ceil(timeoutMs))) });
+    if (response.status !== 200) return { present: false, detail: `HTTP ${response.status}` };
+    const hash = crypto.createHash("sha256");
+    let bytes = 0;
+    if (!response.body) return { present: false, detail: "image response has no body" };
+    for await (const chunk of response.body) {
+      bytes += chunk.length;
+      if (bytes > expectedBytes) return { present: false, detail: `byte length mismatch: more than ${expectedBytes}` };
+      hash.update(chunk);
+    }
+    if (bytes !== expectedBytes) return { present: false, detail: `byte length mismatch: expected ${expectedBytes}, received ${bytes}` };
+    const actual = hash.digest("hex");
+    return actual === expectedSha256 ? { present: true, sha256: actual }
+      : { present: false, detail: `SHA-256 mismatch: expected ${expectedSha256}, received ${actual}` };
   } catch (error) {
     return { present: false, detail: `request failed: ${String(error?.cause?.code || error?.message || error).slice(0, 80)}` };
   }
@@ -123,14 +150,16 @@ async function mapPool(items, concurrency, worker) {
 }
 
 // Bounded wait: checks `files` (repo paths) until all are present on R2 or the deadline passes.
-// check(url) -> { present, detail }.  Returns { verdict: pass|timeout, checked, missing:[{file,url,detail}], rounds }.
+// check(url, file, remainingMs) -> { present, detail }. Returns pass only for exact registered bytes.
 export async function waitForImages({ files, urlFor, check, sleep, now, timeoutMs, intervalMs, concurrency = 16, log = () => {} }) {
   const deadline = now() + timeoutMs;
   let pending = files.map(file => ({ file, url: urlFor(file), detail: "not checked" }));
   let rounds = 0;
   for (;;) {
     rounds += 1;
-    const results = await mapPool(pending, concurrency, async item => ({ item, result: await check(item.url) }));
+    const results = await mapPool(pending, concurrency, async item => ({ item, result: now() >= deadline
+      ? { present: false, detail: "image check deadline reached" }
+      : await check(item.url, item.file, deadline - now()) }));
     pending = results.filter(r => !r.result.present).map(r => ({ ...r.item, detail: r.result.detail || "missing" }));
     log(`round ${rounds}: ${files.length - pending.length}/${files.length} present on R2${pending.length ? `, ${pending.length} missing (e.g. ${pending[0].file}: ${pending[0].detail})` : ""}`);
     if (!pending.length) return { verdict: "pass", checked: files.length, missing: [], rounds };
@@ -168,12 +197,15 @@ async function main() {
   if (!opt.all && repo && process.env.GITHUB_TOKEN) {
     const get = makeGet(process.env.GITHUB_TOKEN);
     for (let attempt = 1; attempt <= 3 && !deployed; attempt += 1) {
-      try { deployed = await latestSuccessfulDeploymentSha(get, repo); }
+      try { deployed = await latestSuccessfulDeploymentSha(get, repo, { allowLegacy: false }); }
       catch (error) { console.log(`deployed-SHA lookup attempt ${attempt} failed: ${String(error?.message || error).slice(0, 120)}`); if (attempt < 3) await new Promise(r => setTimeout(r, 2000 * attempt)); }
     }
   }
   const plan = planImageCheck({
-    bases: [deployed, opt.fallbackBase], forceAll: opt.all,
+    // A push's `before` can itself be undeployed. When a repository release has no confirmed live
+    // base, check all images rather than silently omit images from an earlier failed release.
+    // The explicit fallback remains useful for isolated/manual fixtures without repository context.
+    bases: [deployed, ...(!repo ? [opt.fallbackBase] : [])], forceAll: opt.all,
     changedSince: base => gitChangedImages({ base, prefix: opt.imagePrefix, cwd }),
     all: () => gitAllImages({ prefix: opt.imagePrefix, cwd })
   });
@@ -183,8 +215,10 @@ async function main() {
   let verdict = "IMAGE_ORDER_NOT_NEEDED", detail = plan.reason, failed = false;
   if (plan.failed) { verdict = "IMAGE_ORDER_FAIL"; failed = true; }
   else if (plan.files.length) {
+    const expected = new Map(plan.files.map(file => [file, gitImageIdentity({ file, cwd })]));
     const result = await waitForImages({
-      files: plan.files, urlFor, check: url => headCheck(url),
+      files: plan.files, urlFor,
+      check: (url, file, remainingMs) => contentCheck(url, { ...expected.get(file), timeoutMs: Math.min(20000, remainingMs) }),
       sleep: ms => new Promise(r => setTimeout(r, ms)), now: Date.now,
       timeoutMs: opt.timeoutMinutes * 60000, intervalMs: opt.intervalSeconds * 1000, concurrency: opt.concurrency,
       log: m => console.log(`image_order ${m}`)
@@ -193,7 +227,7 @@ async function main() {
     verdict = failed ? "IMAGE_ORDER_FAIL" : "IMAGE_ORDER_PASS";
     detail = failed
       ? `${plan.reason}. ${result.missing.length} of ${result.checked} still missing on ${opt.r2Base} after ${opt.timeoutMinutes} min: ${result.missing.slice(0, 5).map(m => `${m.file} (${m.detail})`).join("; ")}${result.missing.length > 5 ? "; ..." : ""}`
-      : `${plan.reason}. All ${result.checked} are on ${opt.r2Base}`;
+      : `${plan.reason}. All ${result.checked} canonical URLs serve the exact registered SHA-256 bytes on ${opt.r2Base}`;
   }
   console.log(`${verdict}: ${detail}`);
   if (failed) {

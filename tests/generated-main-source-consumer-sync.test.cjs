@@ -103,37 +103,69 @@ test('main source rebuild registers new UIDs, refreshes existing payload and has
  const checked=run(root,'--check');assert.equal(checked.status,'PASS');assert.equal(checked.diagnosticCount,0);
 });
 
-test('Pages release derives the complete source projection atomically without a bot projection PR loop',()=>{
+test('single writer owns complete source projection; Pages requires its exact verified snapshot without a bot projection loop',async()=>{
  const registration=fs.readFileSync(path.join(repo,'.github/workflows/auto-register-approved-qid9.yml'),'utf8');
+ const writerWorkflow=fs.readFileSync(path.join(repo,'.github/workflows/archive-main-auto-meta.yml'),'utf8');
  const release=fs.readFileSync(path.join(repo,'.github/workflows/archive-pages-release.yml'),'utf8');
+ const {pathToFileURL}=require('node:url');
+ const {nativeLanes,matches}=await import(pathToFileURL(path.join(repo,'tools/ci/archive-registration-writer.mjs')).href);
+ const generated=nativeLanes(repo).find(lane=>lane.id==='generated');
+ assert.ok(generated&&generated.required,'Generated source/Consumer proof is a required registration lane');
+ assert.deepEqual(generated.commands.map(command=>[command.program,...command.args]),[
+  ['node','archive/tools/generated-meta/compile-qid9-main-source.mjs','--write'],
+  ['node','archive/tools/generated-meta/compile-qid9-main-source.mjs','--check'],
+  ['node','archive/tools/generated-meta/auto-register-approved-qid9.mjs','--write'],
+  ['node','archive/tools/generated-meta/auto-register-approved-qid9.mjs','--check'],
+  ['node','archive/tools/generated-meta/rebuild-main-source-consumer.mjs','--write'],
+  ['node','archive/tools/generated-meta/rebuild-main-source-consumer.mjs','--check'],
+  ['node','archive/tools/generated-meta/verify-qid9-main-source-projection.mjs'],
+ ],'native producers preserve source → approved projection → complete Consumer → parity order');
+ assert.equal(generated.commands[3].advisory,true,'existing optional advanced metadata completeness policy is retained');
+ for(const index of [0,1,2,4,5,6])assert.notEqual(generated.commands[index].advisory,true,'required source/Consumer failures cannot be advisory');
+ assert.deepEqual(generated.finalCommands.map(command=>[command.program,...command.args]),[
+  ['node','archive/tools/generated-meta/rebuild-main-source-consumer.mjs','--check'],
+  ['node','archive/tools/generated-meta/verify-qid9-main-source-projection.mjs'],
+ ],'the transaction rechecks the final Consumer and source parity before recording its proof');
+ for(const input of ['archive/exams/example.js','archive/generated/lite/v1/fixture.js',
+  'archive/data/generated-lite-consumer/v1/index.json','alive/06_EXECUTION/H1_SCHOOL_EXPANSION/fixture/GPT_QID9_EXAM_MANIFEST.json',
+  'archive/tools/generated-meta/verify-qid9-main-source-projection.mjs','tools/ci/archive-registration-writer.mjs'])
+  assert.ok(matches(input,generated.inputs),`registration proof binds direct input/verifier ${input}`);
+ for(const output of ['archive/generated/lite/v1/fixture.js','archive/data/generated-lite-consumer/v1/index.json',
+  'archive/assets/generated-lite/fixture.svg','archive/data/meta-foundation/crosswalks/sealed-digests.v1.json'])
+  assert.ok(matches(output,generated.outputs),`registration proof binds output ${output}`);
+
  assert.match(registration,/contents: read/);
- assert.doesNotMatch(registration,/^  push:/m,'main pushes are handled by the atomic Pages release');
+ assert.doesNotMatch(registration,/^  push:/m,'main source registration belongs to the serialized writer');
  assert.doesNotMatch(registration,/contents:\s*write|pull-requests:\s*write|gh pr (?:create|merge)|git push/);
- const approvedWrite=release.indexOf('auto-register-approved-qid9.mjs --write');
- const approvedCheck=release.indexOf('auto-register-approved-qid9.mjs --check');
- const sourceWrite=release.indexOf('rebuild-main-source-consumer.mjs --write');
- const sourceCheck=release.indexOf('rebuild-main-source-consumer.mjs --check');
+ const prepare=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --work-dir');
+ const persist=writerWorkflow.indexOf('node tools/ci/git-push-derived-with-retry.mjs');
+ const persistedCheck=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --check');
+ const dispatch=writerWorkflow.indexOf('gh workflow run archive-pages-release.yml');
+ assert.ok(prepare>=0&&prepare<persist&&persist<persistedCheck&&persistedCheck<dispatch,
+  'only the writer prepares, commits, verifies the persisted snapshot and then dispatches publication');
+ assert.equal((writerWorkflow.match(/git-push-derived-with-retry\.mjs \\/g)||[]).length,1,'one controlled persistence path');
+ assert.match(writerWorkflow,/registered_main_sha="\$REGISTERED_MAIN_SHA"/,'Pages receives the persisted SHA explicitly');
+
+ const build=release.slice(release.indexOf('\n  build:\n'),release.indexOf('\n  deploy:\n'));
+ const steps=build.split(/\n(?=      - )/).slice(1);
+ const proof=steps.find(text=>/id: registered\b/.test(text));
+ assert.ok(proof,'Pages requires the registered snapshot proof');
+ assert.match(proof,/archive-registration-writer\.mjs --check/);
+ assert.match(proof,/if \(!report\.publishable\)/,'stale exact-dispatch registration cannot be published');
+ assert.ok((/--required (\S+)/.exec(release)||[])[1].split(',').includes('registered'),'registration proof remains required at the release gate');
+ assert.match(build,/ready: \$\{\{ steps\.registered\.outputs\.publishable \}\}/);
+ assert.match(build,/ref: \$\{\{ inputs\.registered_main_sha \|\| github\.sha \}\}/,'Pages checks out the exact registered or fixed recovery SHA');
  const sourceTests=release.indexOf('tests/generated-main-source-consumer-sync.test.cjs');
  const palmaChrome=release.indexOf('node tools/check-generated-bank-browser.cjs');
  const geumdangChrome=release.indexOf('node tools/check-geumdang-qid9-browser.cjs');
  const artifactUpload=release.indexOf('actions/upload-pages-artifact@v3');
- assert.ok(approvedWrite>=0&&approvedWrite<approvedCheck,'approved source is compiled and checked');
- assert.ok(approvedCheck<sourceWrite&&sourceWrite<sourceCheck,'the complete main source projection follows the approved QID9 compiler');
- assert.ok(sourceCheck<sourceTests&&sourceTests<palmaChrome&&palmaChrome<geumdangChrome&&geumdangChrome<artifactUpload,
-  'source, tests, and student browser checks finish before the Pages artifact is uploaded');
- assert.match(release,/branches: \[main\]/);
+ assert.ok(sourceTests>=0&&sourceTests<palmaChrome&&palmaChrome<geumdangChrome&&geumdangChrome<artifactUpload,
+  'necessary source/Consumer tests and student browser checks precede the Pages artifact');
  assert.match(release,/needs: build/,'deployment requires the complete build job');
- assert.doesNotMatch(release,/gh pr (?:create|merge)/,'Pages release must not create a projection PR loop');
- const registrationCommit=release.indexOf('Commit generated Archive registration artifacts');
- // The single controlled push is the race-safe helper (never force, reset+regenerate on a lost race).
- const pushIndex=release.indexOf('tools/ci/git-push-derived-with-retry.mjs');
- assert.ok(registrationCommit>=0&&pushIndex>registrationCommit&&pushIndex<sourceWrite,
-  'only the inline registration step may push derived artifacts before compiling the projection');
- assert.equal((release.match(/git-push-derived-with-retry\.mjs/g)||[]).length,1,
-  'Pages release has one controlled registration push, not a projection loop');
- assert.doesNotMatch(release,/git push|--force/,'no bare or forced push in the Pages release');
- assert.ok(release.includes('chore(archive): sync registration artifacts [skip ci]'),
-  'registration push must avoid recursive CI release loops');
+ assert.doesNotMatch(release,/(?:compile-qid9-main-source|auto-register-approved-qid9|rebuild-main-source-consumer)\.mjs --write/,
+  'Pages does not regenerate shared QID9/Consumer files');
+ assert.doesNotMatch(release,/gh pr (?:create|merge)|git-push-derived-with-retry|git (?:commit|push)|contents:\s*write|--force/,
+  'Pages has no Git writer or projection PR loop');
 });
 
 test('Windows CRLF source worktrees project the canonical Git blob SHA into Consumer rows',t=>{

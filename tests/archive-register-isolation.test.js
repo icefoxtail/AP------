@@ -134,9 +134,13 @@ test('the pass and workflow wiring use the isolating registrar and keep the sing
   const paths = read('tools/ci/archive-meta-register-commit.paths').split(/\r?\n/);
   assert.ok(paths.includes('.archive-meta-register/rejected/'), 'rejection records are committed by the single writer');
   const trigger = read('tools/ci/archive-meta-register-trigger-paths.txt');
-  assert.ok(!trigger.includes('rejected'), 'rejections must not retrigger the register workflow');
-  const workflow = read('.github/workflows/archive-reviewed-exam-meta-register.yml');
-  assert.ok(workflow.includes('bash tools/ci/reviewed-meta-register-pass.sh') && workflow.includes('tools/ci/git-push-derived-with-retry.mjs'));
+  assert.ok(!trigger.includes('rejected'), 'a rejection record is not a new native registration request');
+  const writer = read('tools/ci/archive-registration-writer.mjs');
+  assert.match(writer, /cmd\('bash','tools\/ci\/reviewed-meta-register-pass\.sh'\)/);
+  assert.match(writer, /cmd\('bash','tools\/ci\/verify-registered-consumer-approval\.sh'\)/);
+  const workflow = read('.github/workflows/archive-main-auto-meta.yml');
+  assert.ok(workflow.includes('node tools/ci/archive-registration-writer.mjs') && workflow.includes('tools/ci/git-push-derived-with-retry.mjs'));
+  assert.ok(!read('.github/workflows/archive-reviewed-exam-meta-register.yml').includes('reviewed-meta-register-pass.sh'), 'compatibility dispatch cannot become a second request consumer');
 });
 
 // ---- reject / reset modes ---------------------------------------------------------------------------------
@@ -209,7 +213,7 @@ fs.mkdirSync('derived', { recursive: true }); fs.writeFileSync('derived/' + name
   return { dir, run, exists, readJson: rel => JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) };
 }
 
-test('pass: registrar refusals are isolated and the rest is built once, consumed and kept for the post-push check', t => {
+test('pass: registrar refusals are isolated and the rest is built once, consumed and kept for the final Consumer check', t => {
   const f = passFixture(t, { '16-first-bad': 'fail', '17-good': 'ok', '19-good': 'ok' });
   const r = f.run();
   assert.equal(r.status, 0, r.stdout + r.stderr);
