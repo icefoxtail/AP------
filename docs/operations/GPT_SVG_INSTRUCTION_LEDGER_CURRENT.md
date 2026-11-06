@@ -45,6 +45,8 @@
 
 | 2022 강남여고 2학기 기말 고1 Q3 | 유리함수 점근선·절편 | 작성·전달 | Luna high 유리함수 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 제일고 2학기 기말 고1 Q15 | 유리함수 절편·일직선 | 작성·전달 | Luna high 유리함수 묶음 | 계획 대기 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
