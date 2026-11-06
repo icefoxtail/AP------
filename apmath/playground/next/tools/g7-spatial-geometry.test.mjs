@@ -243,7 +243,9 @@ test('independent questions retain their own drawing and solution when opening r
     }
     for (let step = 0; step < sc.steps(s).length; step++) {
       s.step = step;
-      assert.equal(sc.view(s, lab).formula, null, `${sc.id}: no formula answer at step ${step}`);
+      const value = sc.view(s, lab);
+      assert.equal(value.formula, null, `${sc.id}: no formula answer at step ${step}`);
+      assert.equal(value.notes, null, `${sc.id}: answer-bearing tips wait for the final step`);
     }
     lab.tab = 'explore'; sc.view(s, lab);
     assert.equal(JSON.stringify(sc.steps(s)), inquirySteps, sc.id + ': inquiry remains available');

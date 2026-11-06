@@ -695,7 +695,11 @@
         else if (C.tab === 'review') {
           const n = stepsOf(s).length;
           v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
-          if ((s.step || 0) < n) v.formula = null;
+          if ((s.step || 0) < n) {
+            v.formula = null;
+            // 예: 직육면체의 주의 글에 '꼬인 모서리 4개'가 적혀 있어 풀이 전에는 함께 감춥니다.
+            if (fromQuestion) v.notes = null;
+          }
         }
         return v;
       },
