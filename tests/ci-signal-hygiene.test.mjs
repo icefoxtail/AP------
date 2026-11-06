@@ -121,7 +121,7 @@ test("ci.yml: loop-free workflow_run trigger, planned checkout, unique non-cance
   assert.match(ci, /github\.event_name == 'workflow_run'\n/);
 });
 
-test("ci.yml: the unchanged gates are still all present (no test, guard or step was removed)", () => {
+test("ci.yml: scoped execution retains the existing blocking gates for their affected inputs", () => {
   for (const needle of [
     "node --check", "node tools/skills/verify-skills.mjs --json", "node --test tests/git-growth.test.mjs",
     "node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs",

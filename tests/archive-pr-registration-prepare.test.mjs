@@ -68,11 +68,20 @@ test('source PR prepares the official materializer and builder without changing 
   assert.deepEqual(result.generatedPaths, ['archive/db.js']);
 });
 
-test('workflow-only PR and non-PR events do not run registration', t => {
+test('workflow-only PR and non-source events do not run registration', t => {
   const f = fixture(t, '.github/workflows/ci.yml');
   assert.equal(f.prepare().state, 'NO_OP');
-  assert.equal(f.prepare({ eventName: 'push' }).state, 'NO_OP');
+  assert.equal(f.prepare({ eventName: 'workflow_run' }).state, 'NO_OP');
   assert.equal(f.commands.length, 0);
+});
+
+test('source push uses its fixed before/after snapshot for temporary generation', t => {
+  const f = fixture(t);
+  const result = f.prepare({ eventName: 'push', event: { before: f.baseSha, after: f.headSha } });
+  assert.equal(result.state, 'PREPARED');
+  assert.equal(result.inputHeadSha, f.headSha);
+  assert.equal(f.git('rev-parse', 'HEAD'), f.headSha);
+  assert.equal(f.commands.length, 2);
 });
 
 test('an unrelated main move does not change the PR event input', t => {

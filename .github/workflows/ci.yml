@@ -81,10 +81,19 @@ jobs:
         with:
           node-version: 22
 
+      - name: Classify the fixed snapshot impact
+        id: scope
+        env:
+          CI_CHECKOUT_SHA: ${{ needs.plan.outputs.checkout_ref || github.sha }}
+          CI_SCOPE_BASE_SHA: ${{ needs.plan.outputs.base_sha || inputs.base_sha }}
+        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
+
       - name: Install Worker test dependencies
+        if: steps.scope.outputs.mode == 'full'
         run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
 
       - name: Syntax check (node --check)
+        if: steps.scope.outputs.mode == 'full'
         shell: bash
         run: |
           set -euo pipefail
@@ -133,10 +142,11 @@ jobs:
         run: node --test tests/git-growth.test.mjs
 
       - name: Offline evidence authority and recovery regression
+        if: steps.scope.outputs.mode == 'full'
         run: node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs
 
-      - name: Prepare temporary PR registration projection
-        if: github.event_name == 'pull_request'
+      - name: Prepare temporary registration projection
+        if: github.event_name == 'pull_request' || (github.event_name == 'push' && steps.scope.outputs.mode == 'archive-content')
         run: |
           node --test tests/archive-pr-registration-prepare.test.mjs
           node tools/ci/archive-pr-registration-prepare.mjs
@@ -198,4 +208,4 @@ jobs:
           node tools/check-git-growth.mjs --base "$base_ref" --head HEAD
 
       - name: Run tests
-        run: node tools/run-tests.js
+        run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json"

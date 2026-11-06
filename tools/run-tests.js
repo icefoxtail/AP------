@@ -4,6 +4,13 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
+async function main() {
+const args = process.argv.slice(2);
+if (args.length) {
+  if (args.length !== 2 || args[0] !== '--ci-scope') throw new Error('usage: run-tests.js [--ci-scope <plan>]');
+  const { runScopedTests } = await import('./ci/run-scoped-tests.mjs');
+  if (runScopedTests({ root, scopeFile: args[1] })) return;
+}
 const testsDir = path.join(root, 'tests');
 
 const quarantined = new Map([
@@ -142,6 +149,14 @@ const requiredCommands = [
   {
     label: 'tests/ci-signal-hygiene.test.mjs',
     args: ['--test', 'tests/ci-signal-hygiene.test.mjs']
+  },
+  {
+    label: 'tests/archive-ci-scope.test.mjs',
+    args: ['--test', 'tests/archive-ci-scope.test.mjs']
+  },
+  {
+    label: 'tests/archive-content-scope.test.mjs',
+    args: ['--test', 'tests/archive-content-scope.test.mjs']
   },
   {
     label: 'tests/archive-progress-observer-bounded.test.mjs',
@@ -420,3 +435,5 @@ if (failed.length > 0) {
   console.error(`${failed.length} test file(s) failed`);
   process.exit(1);
 }
+}
+main().catch(error => { console.error(error.message); process.exitCode = 1; });
