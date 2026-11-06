@@ -61,6 +61,7 @@ test("3a: competitor already pushed the identical derived tree -> ALREADY_REFLEC
   const r = f.run(["--regenerate", `${q(node)} ${q(path.join(f.tools, "derive.mjs"))} .`]);
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.output, /result=ALREADY_REFLECTED/);
+  assert.match(r.output, new RegExp(`registered_sha=${git(f.origin, "rev-parse", "main")}`));
   assert.equal(f.originLog().length, before, "no extra commit may be pushed");
   assert.equal(git(f.runner, "rev-parse", "HEAD"), git(f.origin, "rev-parse", "main"));
   assert.equal(git(f.runner, "status", "--porcelain"), "");
@@ -76,6 +77,7 @@ test("3b: unrelated competitor input change -> reset, regenerate on the new base
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.output, /result=PUSHED/);
   assert.match(r.output, /attempts=2/);
+  assert.match(r.output, new RegExp(`registered_sha=${git(f.origin, "rev-parse", "main")}`));
   assert.equal(f.originFile("out.txt"), "derived:v2", "origin must hold the derivation of the LATEST input");
   assert.equal(f.originFile("input.txt"), "v2");
   assert.ok(f.originLog().includes("competitor input v2"), "competitor commit preserved");
@@ -122,6 +124,7 @@ test("regenerate failure on the new base -> REGENERATE_FAILED immediately, no re
   const r = f.run(["--regenerate", `${q(node)} -e "process.exit(3)"`]);
   assert.equal(r.status, 1, r.stdout + r.stderr);
   assert.match(r.output, /result=REGENERATE_FAILED/);
+  assert.match(r.output, /^registered_sha=$/m, "failed regeneration never certifies the unregistered remote tip");
   assert.match(r.output, /attempts=1/);
   assert.match(r.summary, /next action: Regeneration\/validation failed on the new main base/);
   assert.equal(f.originFile("out.txt"), "derived:v0", "nothing stale was pushed");
@@ -148,4 +151,68 @@ test("nothing to commit and local HEAD equals remote -> ALREADY_CURRENT", t => {
   const r = f.run([]);
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.output, /result=ALREADY_CURRENT/);
+  assert.match(r.output, new RegExp(`registered_sha=${git(f.origin, "rev-parse", "main")}`));
+});
+
+test("main advances after a successful push: registered_sha remains the verified commit, not the new tip", t => {
+  const f = fixture(t), hook = path.join(f.origin, "hooks", "post-receive");
+  const hookIndex = path.join(f.dir, "hook-index");
+  // Advance the bare remote inside post-receive, before the push helper's readback fetch.
+  // The new tip changes the source, so substituting it for our verified commit would publish mixed versions.
+  fs.writeFileSync(hook, `#!${node}\nconst fs=require('node:fs'),{execFileSync}=require('node:child_process');
+const [,pushed,ref]=fs.readFileSync(0,'utf8').trim().split(/\\s+/);
+if(ref!=='refs/heads/main')process.exit(0);
+const env={...process.env,GIT_INDEX_FILE:${JSON.stringify(hookIndex)}};
+const g=(args,input)=>execFileSync('git',args,{encoding:'utf8',env,input}).trim();
+g(['read-tree',pushed]);
+const blob=g(['hash-object','-w','--stdin'],'v2-after-push\\n');
+g(['update-index','--cacheinfo','100644',blob,'input.txt']);
+const tree=g(['write-tree']);
+const next=g(['-c','user.name=competitor','-c','user.email=competitor@example.invalid','commit-tree',tree,'-p',pushed], 'competitor immediately after push\\n');
+g(['update-ref',ref,next,pushed]);\n`, {mode:0o755});
+  f.derive(f.runner);
+  const result=f.run([]);
+  assert.equal(result.status,0,result.stdout+result.stderr);
+  const outputs=Object.fromEntries(result.output.trim().split('\n').map(line=>line.split('=')));
+  assert.equal(outputs.result,'PUSHED');
+  assert.equal(outputs.registered_sha,git(f.runner,'rev-parse','HEAD'));
+  assert.equal(outputs.main_sha,git(f.origin,'rev-parse','main'));
+  assert.notEqual(outputs.registered_sha,outputs.main_sha);
+  assert.equal(git(f.origin,'show',`${outputs.registered_sha}:input.txt`),'v1');
+  assert.equal(f.originFile('input.txt'),'v2-after-push');
+  assert.match(result.summary,/another writer advanced the branch afterwards/);
+  assert.ok(result.summary.includes(`exact registered commit: \`${outputs.registered_sha}\``));
+});
+
+test('candidate technical check failure refuses every remote write and returns no registered SHA', t=>{
+  const f=fixture(t),verify=path.join(f.tools,'refuse-candidate.mjs'),proof=path.join(f.dir,'candidate.json');
+  fs.writeFileSync(verify,`import fs from 'node:fs';
+fs.writeFileSync(${JSON.stringify(proof)},JSON.stringify({base:process.env.DERIVED_BASE_SHA,head:process.env.DERIVED_HEAD_SHA}));
+console.error('FIXTURE_GROWTH_LIMIT_EXCEEDED');process.exit(23);\n`);
+  const before=git(f.origin,'rev-parse','main');f.derive(f.runner);
+  const result=f.run(['--verify-command',`${q(node)} ${q(verify)}`]);
+  assert.equal(result.status,1,result.stdout+result.stderr);assert.match(result.output,/result=VERIFICATION_FAILED/);
+  assert.match(result.output,/^registered_sha=$/m);assert.equal(git(f.origin,'rev-parse','main'),before);
+  const candidate=JSON.parse(fs.readFileSync(proof,'utf8'));
+  assert.equal(candidate.base,before);assert.equal(candidate.head,git(f.runner,'rev-parse','HEAD'));
+  assert.equal(git(f.runner,'rev-parse',candidate.head+'^'),candidate.base);assert.equal(f.originLog().length,1);
+  assert.match(result.summary,/candidate failed its pre-push technical check/);
+});
+
+test('race regeneration rechecks each candidate against its own exact parent and head before push',t=>{
+  const f=fixture(t),verify=path.join(f.tools,'verify-candidate.mjs'),proof=path.join(f.dir,'candidates.jsonl');
+  fs.writeFileSync(verify,`import fs from 'node:fs';import {execFileSync} from 'node:child_process';
+const base=process.env.DERIVED_BASE_SHA,head=process.env.DERIVED_HEAD_SHA;
+const g=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+if(g('rev-parse',head+'^')!==base)throw Error('EXACT_CANDIDATE_PARENT_REQUIRED');
+fs.appendFileSync(${JSON.stringify(proof)},JSON.stringify({base,head,input:g('show',head+':input.txt')})+'\\n');\n`);
+  const initial=git(f.runner,'rev-parse','HEAD');
+  f.competitorPush('competitor input v2',()=>fs.writeFileSync(path.join(f.competitor,'input.txt'),'v2\n'));
+  const competitor=git(f.origin,'rev-parse','main');f.derive(f.runner);
+  const result=f.run(['--verify-command',`${q(node)} ${q(verify)}`,'--regenerate',`${q(node)} ${q(path.join(f.tools,'derive.mjs'))} .`]);
+  assert.equal(result.status,0,result.stdout+result.stderr);
+  const rows=fs.readFileSync(proof,'utf8').trim().split('\n').map(JSON.parse);
+  assert.equal(rows.length,2);assert.equal(rows[0].base,initial);assert.equal(rows[0].input,'v1');
+  assert.equal(rows[1].base,competitor);assert.equal(rows[1].input,'v2');
+  assert.equal(rows[1].head,git(f.origin,'rev-parse','main'));assert.match(result.output,new RegExp(`registered_sha=${rows[1].head}`));
 });
