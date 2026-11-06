@@ -152,3 +152,24 @@ test('manual answer reveal relocks on a new question but not on a visual-only ch
   s.tX += .1; sc.view(s, { tab: 'explore' });
   assert.equal(s.revealed, true); assert.equal(s.step, 3);
 });
+
+test('judgement problem review follows every current option and restores exploration', () => {
+  const sc = get('p1-3');
+  for (let sample = 0; sample < 40; sample++) {
+    const s = state(sc, { rA: 53, rB: 127, rMode: 'alt', step: 0 }); sc.pa.reroll(s);
+    const before = [s.rA, s.rB, s.rMode], list = sc.pa.model(s).list;
+    const lab = { s, scene: { ...sc }, tab: 'problem', invalidate() {}, _buildReview() {} };
+    sc.view(s, lab); lab.tab = 'review'; sc.view(s, lab);
+    assert.equal(sc.steps(s).length, 6, 'five current choices and a final conclusion');
+    for (let i = 0; i < 6; i++) {
+      s.step = i + 1; sc.view(s, lab); const M = sc.pa.model(s), idx = i < 5 ? i : list.findIndex(x => x.ok), choice = list[idx];
+      assert.equal(M.vP, choice.vP); assert.equal(M.vQ, choice.vQ); assert.equal(M.kind, choice.kind);
+      if (i < 5) { assert.ok(sc.steps(s)[i].includes(choice.vP + '°')); assert.ok(sc.steps(s)[i].includes(choice.vQ + '°')); }
+      else assert.equal(M.eq, true);
+    }
+    lab.tab = 'explore'; sc.view(s, lab);
+    assert.deepEqual([s.rA, s.rB, s.rMode], before);
+    assert.equal(sc.pa.model(s).vP, before[0]); assert.equal(sc.pa.model(s).vQ, before[1]);
+    assert.equal(sc.steps(s).length, 3, 'principle exploration retains its original three steps');
+  }
+});

@@ -213,6 +213,7 @@
       tick: D.tick || null,
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (D.syncContext && lab && lab.s === s && lab.scene && lab.scene.id === D.id) D.syncContext(s, lab);
         const M = D.model(s);
         const questionKey = keyOf(D, D.prob(M, s), s);
         if (s.paQuestionKey !== questionKey) { s.paQuestionKey = questionKey; s.papick = null; s.revealed = false; s.step = 0; }
