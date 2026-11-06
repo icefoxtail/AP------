@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 88,
-  "templateCount": 200,
+  "templateCount": 201,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -8856,6 +8856,23 @@
           "source": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
           "reason": "Preserve the existing M1 direct-area skeleton under its grade-scoped PT identity; high-school TPL_AREA_DIRECT remains unchanged."
         }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE",
+      "canonicalLabelKo": "맞꼭지각을 이용한 두 삼각형 각 추적",
+      "definition": "첫 삼각형의 내각합으로 교점각을 구해 맞꼭지각을 통해 다른 삼각형에 적용한 다음 내각합으로 미지각을 결정하는 풀이 구조.",
+      "aliases": [],
+      "internalSkeleton": "삼각형 내각합 → 맞꼭지각 대응 → 두 번째 삼각형 내각합",
+      "parentProblemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "ownerPack": "MIDDLE1",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_2e86456060a73a45ed0061dc60dbb030d73c60a5c082267f8a35fff483dd09f1"
+      ],
+      "supportingSourceQuestionRefs": [
+        "24_왕운중_2학기_기말_중1_수학:q01"
       ]
     }
   ],

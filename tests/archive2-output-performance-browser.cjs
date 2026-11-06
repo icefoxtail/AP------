@@ -292,6 +292,63 @@ function installProfile({ observeImageWaits = false } = {}) {
   } });
 }
 
+function installRetainedVisibilityObservation() {
+  // Observe the existing view only for same-mode requests. This supplements
+  // the new-root observer; it never changes rendering or readiness decisions.
+  window.__observeRetainedOutputVisibility = mode => {
+    const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
+    const oldArea = document.getElementById('print-area');
+    const oldSnapshot = runtime?.activeSnapshot;
+    const oldCell = oldArea?.querySelector('.q-box,.ans-cell:not(.ans-cell-empty)');
+    const currentMode = () => (typeof AppState !== 'undefined' ? AppState : window.AppState)?.mode;
+    if (currentMode() !== mode || !oldArea || !oldCell || oldSnapshot?.rootNode !== oldArea) return null;
+    const observedAtOperationMs = performance.now() - window.__solutionLoadingQA.operationStart;
+    let observations = 0, frameObservations = 0, mutationObservations = 0;
+    let allObservedVisible = true, preservedIdentity = true, firstFailure = null;
+    const sample = phase => {
+      const area = document.getElementById('print-area');
+      const cell = area?.querySelector('.q-box,.ans-cell:not(.ans-cell-empty)');
+      const box = cell?.getBoundingClientRect();
+      let visible = !!cell?.isConnected && !!area?.isConnected;
+      for (let node = cell; node; node = node.parentElement) {
+        const style = getComputedStyle(node);
+        if (style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) === 0 ||
+          style.contentVisibility === 'hidden') visible = false;
+      }
+      const value = { mode: currentMode(), rootPreserved: area === oldArea,
+        snapshotPreserved: runtime.activeSnapshot === oldSnapshot && oldSnapshot.rootNode === area,
+        cellPreserved: !!cell && cell === oldCell, visible,
+        x: box?.x || 0, y: box?.y || 0, width: box?.width || 0, height: box?.height || 0,
+        inViewport: !!box && box.right > 0 && box.bottom > 0 && box.left < innerWidth && box.top < innerHeight };
+      const identity = value.mode === mode && value.rootPreserved && value.snapshotPreserved && value.cellPreserved;
+      const pixels = value.visible && value.inViewport && value.width > 0 && value.height > 0;
+      observations += 1;
+      if (phase === 'frame') frameObservations += 1;
+      if (phase === 'mutation') mutationObservations += 1;
+      allObservedVisible &&= pixels;
+      preservedIdentity &&= identity;
+      if ((!identity || !pixels) && !firstFailure) firstFailure = { phase, ...value };
+      return value;
+    };
+    const before = sample('before');
+    const observer = new MutationObserver(() => sample('mutation'));
+    observer.observe(document, { subtree: true, childList: true, attributes: true,
+      attributeFilter: ['id', 'class', 'style', 'hidden', 'aria-hidden'] });
+    let frame;
+    const observeFrame = () => { sample('frame'); frame = requestAnimationFrame(observeFrame); };
+    frame = requestAnimationFrame(observeFrame);
+    return { finish() {
+      if (observer.takeRecords().length) sample('mutation');
+      observer.disconnect(); cancelAnimationFrame(frame);
+      const after = sample('after');
+      const geometryPreserved = ['x', 'y', 'width', 'height'].every(key => Math.abs(after[key] - before[key]) <= 1);
+      return { kind: 'retained-output', observedAtOperationMs, before, after, observations,
+        frameObservations, mutationObservations, allObservedVisible, preservedIdentity, geometryPreserved,
+        retained: allObservedVisible && preservedIdentity && geometryPreserved, firstFailure };
+    } };
+  };
+}
+
 async function documentEvidence(page) {
   return page.evaluate(async () => {
     const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
@@ -504,6 +561,7 @@ async function openSession(browser, server, fixture, initialMode, slow) {
     await context.route('**/api/**', route => route.fulfill({ contentType: 'application/json', body: '{"success":true}' }));
     await context.addInitScript(H.installInstrumentation, { suppressRaf: false });
     await context.addInitScript(installProfile, { observeImageWaits: !!slow });
+    await context.addInitScript(installRetainedVisibilityObservation);
     const page = await context.newPage();
     page.setDefaultTimeout(timeLeft());
     page.on('pageerror', error => errors.push({ name: error.name, messageSha256: hash(error.message) }));
@@ -591,7 +649,7 @@ async function openSession(browser, server, fixture, initialMode, slow) {
 async function measureOperation(session, operation, label, repeat, network, first, purpose = 'performance') {
   const { page, fixture } = session;
   const before = await session.metrics();
-  let outcome, publicMs, alreadyVisible = false, previousAttempts = 0;
+  let outcome, publicMs, alreadyVisible = false, previousAttempts = 0, retainedVisibility = null;
   if (first) {
     const initial = async () => {
       try { await page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: timeLeft() }); }
@@ -613,6 +671,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
       const previousMode = state.mode;
       profile.operation += 1; profile.runtimeReadyAt = null; profile.envelopeReadyAt = null;
       Object.assign(qa, { operationStart: performance.now(), targetMode: mode, firstBoxMs: null, previousArea: oldArea });
+      const retainedObservation = previousMode === mode ? window.__observeRetainedOutputVisibility(mode) : null;
       const started = performance.now();
       let result;
       let elapsed;
@@ -626,22 +685,26 @@ async function measureOperation(session, operation, label, repeat, network, firs
         const classified = await profile.classifyError({ code: result?.code, message: result?.message || result?.code || '' });
         result = { ok: false, code: classified.code, error: classified };
       }
+      const retainedVisibility = retainedObservation?.finish() || null;
       const newAttempts = runtime.inspect().attempts.length;
       const alreadyVisible = previousMode === mode && oldArea === document.getElementById('print-area') &&
-        oldSnapshot === runtime.activeSnapshot && previousAttempts === newAttempts;
+        oldSnapshot === runtime.activeSnapshot && previousAttempts === newAttempts && retainedVisibility?.retained === true;
       return { outcome: { ok: result?.ok === true, code: result?.ok ? null : result.code, ...(result?.error ? { error: result.error } : {}) },
-        publicMs: elapsed, alreadyVisible, previousAttempts };
+        publicMs: elapsed, alreadyVisible, previousAttempts, retainedVisibility };
     }, operation.mode));
-    ({ outcome, publicMs, alreadyVisible, previousAttempts } = result);
+    ({ outcome, publicMs, alreadyVisible, previousAttempts, retainedVisibility } = result);
   }
   const after = await session.metrics();
   const row = await H.capture(page, outcome);
   const evidence = await documentEvidence(page);
   if (first) publicMs = (fixture.kind === 'envelope' ? evidence.envelopeReadyAt : evidence.runtimeReadyAt) ?? row.engineElapsedMs;
-  if (alreadyVisible) row.firstBoxMs = 0; // Same DOM was visible for the entire no-op; no new paint is claimed.
+  // A same-mode cache HIT may create a real transaction while retaining the
+  // active DOM. Zero means observed existing output, not a newly painted view.
+  // Keep that HIT's actual wall time, attempt, adapter and MathJax metrics.
+  if (retainedVisibility?.retained) row.firstBoxMs = 0;
   Object.assign(row, { name: `${fixture.id}-${label}-${repeat}-${network}-${operation.id}`, fixture: fixture.id,
     label, repeat, network, purpose, operation: operation.id, initial: first, publicMs: round(publicMs),
-    alreadyVisible, previousAttempts, ...evidence,
+    alreadyVisible, previousAttempts, retainedVisibility, ...evidence,
     cdp: Object.fromEntries(['LayoutCount', 'RecalcStyleCount', 'LayoutDuration', 'RecalcStyleDuration', 'ScriptDuration', 'TaskDuration'].map(key =>
       [key.endsWith('Duration') ? key + 'Ms' : key, round(((after[key] || 0) - (before[key] || 0)) * (key.endsWith('Duration') ? 1000 : 1))])),
     pageErrors: session.errors.slice() });
