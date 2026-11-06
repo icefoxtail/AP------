@@ -471,8 +471,10 @@
         }
         case 'sm3-par': case 'sm3-sas': case 'sm4-conv': case 'sm4-mid':
           pair(b, g, ['A', 'D', 'E'], ['A', 'B', 'C'], stage);
-          equal(b, g.D, g.A, g.E); equal(b, g.B, g.A, g.C);
-          if (stage >= 3) { equal(b, g.E, g.A, g.D, 2); equal(b, g.C, g.A, g.B, 2); }
+          // SAS already marks the common included angle A with one rose arc.
+          // Different angle pairs must not reuse that equality mark.
+          equal(b, g.D, g.A, g.E, D.id === 'sm3-sas' ? 2 : 1); equal(b, g.B, g.A, g.C, D.id === 'sm3-sas' ? 2 : 1);
+          if (stage >= 3) { equal(b, g.E, g.A, g.D, D.id === 'sm3-sas' ? 3 : 2); equal(b, g.C, g.A, g.B, D.id === 'sm3-sas' ? 3 : 2); }
           break;
         case 'sm3-ssa': {
           const q = G.geo.ssaGeo(p.kind === 0 ? p.a : p.c * .75, p.c, 30), h = mul(q.u, p.c * Math.cos(Math.PI / 6));
@@ -510,8 +512,8 @@
           break;
         case 'sm4-x':
           pair(b, g, ['O', 'A', 'D'], ['O', 'C', 'B'], stage);
-          equal(b, g.O, g.A, g.D); equal(b, g.O, g.C, g.B);
-          if (stage >= 3) { equal(b, g.A, g.O, g.D, 2); equal(b, g.C, g.O, g.B, 2); }
+          // The original diagram uses rose/one for A↔C and violet/two for D↔B.
+          equal(b, g.O, g.A, g.D, 3); equal(b, g.O, g.C, g.B, 3);
           break;
         case 'sm4-ef':
           if (stage === 2) pair(b, g, ['A', 'O', 'D'], ['C', 'O', 'B'], 3);
@@ -523,7 +525,7 @@
           if (stage >= 3) { line(b, g.E, g.F, 'green', 4); line(b, g.A, g.B, 'green', 4); tri(b, [g.D, g.E, g.F], 'amber'); }
           break;
         case 'sm4-vari':
-          line(b, g.A, g.C, 'sky', 3, { dash: [6, 5] }); line(b, g.E, g.F, 'sky', 4); line(b, g.H, g.G, 'sky', 4);
+          line(b, g.A, g.C, 'sky', 3, { dash: [6, 5] }); line(b, g.E, g.F, 'sky', 4); line(b, g.H, g.Gp, 'sky', 4);
           if (stage >= 3) { line(b, g.B, g.D, 'green', 3, { dash: [6, 5] }); line(b, g.F, g.Gp, 'green', 4); line(b, g.E, g.H, 'green', 4); }
           break;
         case 'sm4-bis':

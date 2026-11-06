@@ -76,6 +76,10 @@ function checkText(t, why) {
 function board(width = 390, height = 460) {
   const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, thumb: false, insets: { left: 0, right: 0, top: 0, bottom: 0 }, log, toS(p) { return { x: width / 2 + p.x * this.k, y: height / 2 + p.y * this.k }; } };
   for (const name of ['text', 'path', 'circle', 'arc', 'point', 'ticks', 'right', 'handle']) b[name] = (...args) => {
+    const point = p => assert.ok(p && Number.isFinite(p.x) && Number.isFinite(p.y), `${name}: missing/non-finite endpoint`);
+    if (name === 'path') { assert.ok(Array.isArray(args[0])); args[0].forEach(point); }
+    else if (name === 'handle') point(args[1]);
+    else { point(args[0]); if (name === 'ticks' || name === 'right') point(args[1]); if (name === 'right') point(args[2]); }
     const inspect = x => { if (typeof x === 'number') assert.ok(Number.isFinite(x), `${name}: non-finite`); else if (x && typeof x === 'object') Object.values(x).forEach(inspect); };
     args.forEach(inspect); log.push({ name, args }); return b;
   };
@@ -155,4 +159,47 @@ test('coordinate area identities, bisector construction, distinct midpoint ticks
   const sc = get('sm4-vari'), s = {}; sc.enter(s); const b = board(); sc.draw(b, s, {}, { tab: 'problem' });
   const ticks = b.log.filter(x => x.name === 'ticks').map(x => x.args[2].count); assert.deepEqual(ticks, [1, 1, 2, 2, 3, 3, 4, 4]);
   assert.ok(G.labelMetrics('\\frac{1234}{5}', 16).width > G.labelMetrics('\\frac{1}{5}', 16).width); assert.ok(G.labelMetrics('\\frac{1}{18}', 16).height > 30);
+});
+
+test('midpoint-quadrilateral overlays use both actual diagonal-corresponding segments', () => {
+  const sc = get('sm4-vari'), s = {}; sc.enter(s); s.step = 3;
+  const p = s.smPk, g = G.geo.vGeo(p.a, p.bb, p.th), b = board();
+  sc.draw(b, s, {}, { tab: 'review' });
+  const match = (a, c) => Math.abs(a.x - c.x) < 1e-9 && Math.abs(a.y - c.y) < 1e-9;
+  assert.ok(b.log.some(x => x.name === 'path' && x.args[1]?.color === 'sky' && x.args[0].length === 2 && match(x.args[0][0], g.H) && match(x.args[0][1], g.Gp)), 'HG must highlight the real fourth midpoint');
+  assert.throws(() => board().path([g.H, undefined], {}), /missing\/non-finite endpoint/);
+});
+
+test('SAS and X-shaped similarity reserve different arc marks for unequal angle groups', () => {
+  for (const id of ['sm3-sas', 'sm4-x']) for (const seed of [63, 3102, 17, 997]) {
+    const sc = get(id), s = {}; sc.enter(s); s.smPk = sc.sm.gen(seed);
+    for (const tab of ['problem', 'explore', 'review']) for (const step of tab === 'review' ? [2, 3, 5] : [0]) {
+      s.step = step; const b = board(); sc.draw(b, s, {}, { tab });
+      const angles = [];
+      for (const x of b.log) if (x.name === 'arc') {
+        const [v, r, from, to, o] = x.args;
+        if (o.color && o.width === 2.4) angles.push({ color: o.color, rings: 1, value: Math.abs(to - from), v, from, to });
+        else if (o.color && o.width === 2.2) { const a = angles.at(-1); if (a && a.v.x === v.x && a.v.y === v.y && a.from === from && a.to === to) a.rings++; }
+      }
+      const groups = new Map();
+      for (const a of angles) { const key = a.color + ':' + a.rings; if (groups.has(key)) close(a.value, groups.get(key), `${id}|${seed}|${tab}|${step}: false equality mark ${key}`); else groups.set(key, a.value); }
+    }
+  }
+});
+
+test('rhombus similarity allows a cyclic change of corresponding vertices', () => {
+  const sc = get('sm1-always'), s = {}; sc.enter(s);
+  for (const k of [1, 2, 3]) for (let angle = 30; angle <= 130; angle += 10) {
+    Object.assign(s, { smFam: 'rho', smK2: k, smAq: angle }); const m = sc.sm.model(s);
+    const a = G.geo.famPts('rho', 1, 0, m.q1), b = G.geo.famPts('rho', k, 10, angle);
+    const matches = [0, 1, 2, 3].some(shift => a.every((p, i) => {
+      const j = (i + shift) % 4;
+      return Math.abs(G.dist(p, a[(i + 1) % 4]) * k - G.dist(b[j], b[(j + 1) % 4])) < 1e-8 && Math.abs(G.angBetween(p, a[(i + 1) % 4], a[(i + 3) % 4]) - G.angBetween(b[j], b[(j + 1) % 4], b[(j + 3) % 4])) < 1e-8;
+    }));
+    assert.equal(m.ok, matches, `rhombus ${angle}° at scale ${k}`);
+  }
+  Object.assign(s, { smFam: 'rho', smK2: 2, smAq: 80 });
+  const b = board(); sc.draw(b, s, {}, { tab: 'explore' });
+  const marked = b.log.filter(x => x.name === 'arc' && x.args[4]?.color === 'rose' && x.args[4].width === 2.4);
+  assert.equal(marked.length, 2); marked.forEach(x => close(Math.abs(x.args[3] - x.args[2]) * 180 / Math.PI, 100, 'corresponding obtuse corners'));
 });

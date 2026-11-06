@@ -342,7 +342,7 @@
     return reg(4, k);
   }
   const DEGR = Math.PI / 180;
-  const same = (t, q1, q2) => (FAM[t].always ? true : t === 'rec' ? q1 === q2 : q1 === q2);
+  const same = (t, q1, q2) => FAM[t].always || q1 === q2 || (t === 'rho' && q1 + q2 === 180);
   const sim = {
     id: 'sm1-always', title: '항상 닮은 도형', short: '항상 닮은 도형',
     question: '두 도형이 항상 닮은 도형이 되려면 어떤 조건이어야 할까? 어떤 도형이 항상 닮고, 어떤 도형은 닮지 않을 수 있을까?',
@@ -360,7 +360,7 @@
       const f = s.smFam || 'tri', k = clamp(Math.round(s.smK2), 1, 3), q = f === 'rec' ? s.smRq : f === 'rho' ? s.smAq : f === 'iso' ? s.smAq : 0;
       // 왼쪽 도형의 기준 변수: 직사각형 q=0, 마름모 100°, 이등변삼각형 80°
       const q1 = f === 'rec' ? 0 : f === 'rho' ? 100 : f === 'iso' ? 80 : 0;
-      return { f, k, q, q1, always: FAM[f].always, ok: FAM[f].always || q === q1 };
+      return { f, k, q, q1, always: FAM[f].always, ok: same(f, q1, q) };
     },
     draw(b, s, M, C) {
       if (C.problem) { drawAlwaysProblem(b, M); return; }
@@ -381,8 +381,15 @@
         if (f === 'pent') sideTag(b, Pt[0], Pt[1], c, '', {});
         if (f === 'rti') { sideTag(b, Pt[0], Pt[1], c, String(2 * kk), { color: col }); }
         if (f === 'rec') { sideTag(b, Pt[0], Pt[1], c, String(3 * kk), { color: col }); sideTag(b, Pt[1], Pt[2], c, String((2 + qq) * kk), { color: col }); }
-        if (f === 'rho') { Pt.forEach((p, i) => tick(b, p, Pt[(i + 1) % 4], 1, col)); ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose', label: qq + '°', r: 20, size: 14 }); }
-        if (f === 'iso') { tick(b, Pt[0], Pt[2], 1, col); tick(b, Pt[1], Pt[2], 1, col); ang(b, Pt[2], Pt[0], Pt[1], { color: 'rose', label: qq + '°', r: 22, size: 14 }); }
+        if (f === 'rho') {
+          Pt.forEach((p, i) => tick(b, p, Pt[(i + 1) % 4], 1, col));
+          // A rhombus with 80° at one corner is similar to the 100° example:
+          // start the correspondence at the neighbouring corner instead.
+          const shifted = M.ok && nm === 1 && M.q !== M.q1, i = shifted ? 1 : 0;
+          ang(b, Pt[i], Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: M.ok ? 'rose' : col, label: (shifted ? 180 - qq : qq) + '°', r: 20, size: 14 });
+          if (shifted) ang(b, Pt[0], Pt[1], Pt[3], { noMark: true, label: qq + '°', labelColor: col, r: 20, size: 14 });
+        }
+        if (f === 'iso') { tick(b, Pt[0], Pt[2], 1, col); tick(b, Pt[1], Pt[2], 1, col); ang(b, Pt[2], Pt[0], Pt[1], { color: M.ok ? 'rose' : col, label: qq + '°', r: 22, size: 14 }); }
         if (f === 'tri') Pt.forEach((p, i) => { tick(b, p, Pt[(i + 1) % 3], 1, col); ang(b, p, Pt[(i + 1) % 3], Pt[(i + 2) % 3], { color: 'rose', r: 16 }); });
         if (f === 'sq') Pt.forEach((p, i) => ang(b, p, Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: 'rose', r: 14 }));
         if (f === 'rec') Pt.forEach((p, i) => ang(b, p, Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: 'rose', r: 14 }));
@@ -393,7 +400,7 @@
       draw1(x2, k2, M.q, 'green', 1);
       if (C.txt) {
         const msg = M.always ? '항상 닮은 도형이에요 ○' : M.ok ? '지금 두 도형은 닮음이에요 ○' : '지금 두 도형은 닮음이 아니에요 ×';
-        const why = M.always ? '모든 대응변의 비와 대응각이 같아요' : f === 'rec' ? (M.ok ? '가로의 비와 세로의 비가 같을 때만 닮음' : `가로의 비와 세로의 비가 달라요`) : (M.ok ? '각이 같을 때만 닮음' : '대응하는 각의 크기가 달라요');
+        const why = M.always ? '모든 대응변의 비와 대응각이 같아요' : f === 'rec' ? (M.ok ? '가로의 비와 세로의 비가 같을 때만 닮음' : `가로의 비와 세로의 비가 달라요`) : (M.ok ? f === 'rho' && M.q !== M.q1 ? '이웃한 꼭짓점부터 대응하면 각이 같아요' : '대응하는 각이 같아요' : '대응하는 각의 크기가 달라요');
         T(b, pt(x2 / 2, 0), msg, { dy: 38, size: capSize(b), color: M.ok ? 'green' : 'rose' });
         T(b, pt(x2 / 2, 0), why, { dy: 62, size: phone(b) ? 13 : 15, color: 'amber' });
       }
