@@ -692,7 +692,8 @@
       const topY=0, lowY=-(a+gap*2), x0=-width/2;
       const rect=(x,y,w,h)=>D.panel([v3(x,y,0),v3(x+w,y,0),v3(x+w,y+h,0),v3(x,y+h,0)],'sky',0.06,'ink',2);
       const r2w=M.top==='cyl'?2*PI*r:2*secR, r2h=M.top==='cyl'?M.z:secR*1.8, lowLeft=-Math.max(r2w+2*r+gap,width)/2;
-      D.fit([v3(x0,topY,0),v3(x0+width,topY+a,0),v3(lowLeft,lowY-r2h,0),v3(lowLeft+r2w+2*r+gap,lowY,0)],[],{l:16,r:(window.innerWidth>=700&&b.W>=560?245:16),t:20,b:30});
+      const topHeight=Math.max(a,h), lowerDepth=M.top==='cyl'?Math.max(r2h,M.z/2+r):r2h;
+      D.fit([v3(x0,topY,0),v3(x0+width,topY+topHeight,0),v3(lowLeft,lowY-lowerDepth,0),v3(lowLeft+r2w+2*r+gap,lowY,0)],[],{l:16,r:(window.innerWidth>=700&&b.W>=560?245:16),t:20,b:30});
       rect(x0,topY,a,a); D.path(D.circ(v3(x0+a/2,topY+a/2,0),v3(1,0,0),v3(0,1,0),r,0,TAU,64),'ink',2,{});
       rect(x0+a+gap,topY,a,a); rect(x0+2*(a+gap),topY,a,h);
       D.areaLab(v3(x0+a/2,topY+a/2,0),'윗면','',{size:11,dy: a*b.k*0.6}); D.areaLab(v3(x0+a+gap+a/2,topY+a/2,0),'아랫면','',{size:11}); D.areaLab(v3(x0+2*(a+gap)+a/2,topY+h/2,0),'옆면 ×4','',{size:11});
@@ -730,8 +731,19 @@
       const volParts = !C.problem && !surfMode && C.tab !== 'explore' ? [{ v: vnum(M.vBox), fill: 'sky', label: `상자 ${plainVal(M.vBox)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(M.vTop), fill: 'green', label: `${TOP56[M.top]} ${plainVal(M.vTop)}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }] : null;
       const rowTop = bbx.y1 + 0.8, rowsReg = rows ? [{ x: -rows.total / 2, y: rowTop }, { x: rows.total / 2, y: rowTop + rows.height + (C.tab === 'explore' ? 0.5 : 3.0) }] : volParts ? [{ x: -3, y: rowTop }, { x: 3, y: rowTop + 2.4 }] : [];
       const blend = (narrow || C.tab === 'explore') && rows ? ease(lin01(te, 0, 0.15)) : 0, showSolid = !((narrow || C.tab === 'explore') && rows && te > 0.15);
-      if (blend > 0) { const mix = (p0, q0) => p0 + (q0 - p0) * blend; D.fit([], [{ x: mix(bbx.x0, rowsReg[0].x), y: mix(bbx.y0, rowTop) }, { x: mix(bbx.x1, rowsReg[1].x), y: mix(bbx.y1, rowsReg[1].y) }], { l: 26, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 26), t: 30, b: 30 }); }
-      else D.fit(pts, narrow && rows ? [] : rowsReg, { l: 30, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 30, b: 30 });
+      const fitPad=blend>0?26:30, fitOpt={l:fitPad,r:(C.tab==='explore'&&window.innerWidth>=700&&b.W>=560?245:fitPad),t:30,b:30};
+      const fitPts=blend>0?[]:pts, mix=(p0,q0)=>p0+(q0-p0)*blend;
+      const fitExtra=blend>0?[{x:mix(bbx.x0,rowsReg[0].x),y:mix(bbx.y0,rowTop)},{x:mix(bbx.x1,rowsReg[1].x),y:mix(bbx.y1,rowsReg[1].y)}]:narrow&&rows?[]:rowsReg;
+      D.fit(fitPts,fitExtra,fitOpt);
+      if(showSolid&&!C.thumb){
+        // 바깥 높이 치수선(18px)과 글자 폭까지 확보합니다. 이미 들어가는 장면은 원래 배치를 유지합니다.
+        const labelW=G.textW(`높이 ${M.H}`,D.fs(15)*b.fs*b._ts())+6;
+        for(let pass=0;pass<2;pass++){
+          const left=D.px(v3(-a/2,0,a/2)).x-18-5-labelW;
+          if(left>=8)break;
+          fitOpt.l+=(pass?2:1)*(8-left);D.fit(fitPts,fitExtra,fitOpt);
+        }
+      }
       if (rows) spaceRows(D, rows, narrow ? 4.6 : 6.4);
       const lvC = !C.review || !surfMode ? 1 : st === 2 ? 2 : 1, lvT = !C.review ? 1 : surfMode ? (st === 3 ? 2 : 1) : (st === 2 ? 2 : 1);
       if (showSolid) {

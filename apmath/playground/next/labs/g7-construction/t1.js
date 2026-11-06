@@ -62,14 +62,14 @@
       const t = C.problem ? 1 : C.t;
       if (tool === 'ruler') {
         const f1 = ease(clamp(t / 0.35, 0, 1)), f2 = seg01(t, 0.3, 1);
-        const x0 = -6.4 - 9 * (1 - f1);
-        b.path([pt(x0, 0.18), pt(x0 + 9, 0.18), pt(x0 + 9, 0.95), pt(x0, 0.95)], { close: true, fill: 'muted', fillAlpha: 0.25, color: 'muted', width: 2 });
+        const x0 = -6.4;
+        b.path([pt(x0, 0.18), pt(x0 + 9, 0.18), pt(x0 + 9, 0.95), pt(x0, 0.95)], { close: true, fill: 'muted', fillAlpha: 0.12, color: 'muted', width: 2, alpha: 0.35 + 0.65 * f1 });
         if (C.txt) T(b, pt(x0 + 4.5, 0.57), '눈금 없는 자', { size: 14, color: 'ink' });
         line(b, pt(lerpX(A.x, -6.3, f2), 0), pt(lerpX(B.x, 6.3, f2), 0), 'green', 3.4);
         b.point(A, { color: 'sky', r: 5 }); b.point(B, { color: 'sky', r: 5 });
         T(b, A, 'A', { dy: -18, size: 17 }); T(b, B, 'B', { dy: -18, size: 17 });
         if (C.txt && f2 > 0.7) T(b, pt(6.3, 0), '직선 AB', { dx: -34, dy: -18, size: 15, color: 'green' });
-        if (C.txt) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자가 들어와 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
+        if (C.txt) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자를 따라 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
         if (C.txt) T(b, pt(0, 0), '눈금이 없어서 길이는 잴 수 없어요', { dy: 92, size: 15, color: 'rose' });
         if (!C.problem && !C.review && C.txt) b.handle('B', B, { color: 'amber', r: 8, ariaLabel: '점 B 끌기', drag: (w) => { s.cnL = clamp(Math.round((w.x - A.x) * 2) / 2, 2, 4); } });
         return;
@@ -95,7 +95,7 @@
         b.point(Q, { color: 'green', r: 5.5 });
         T(b, Q, 'Q', { dx: -16, dy: -14, size: 17 });
         if (!C.problem) { tick(b, A, B, 1, 'amber'); tick(b, Pp, Q, 1, 'amber'); }
-        if (C.txt && !C.problem) T(b, mid(Pp, Q), `PQ = ${fmtN(L)} cm`, { dx: 4, dy: 30, size: 16, color: 'green' });
+        if (C.txt && !C.problem) T(b, pt(mid(Pp, Q).x, Pp.y), `PQ = ${fmtN(L)} cm`, { dy: 50, size: 16, color: 'green' });
       }
       if (C.txt && !C.problem) caption(b, f1 <= 0 ? '컴퍼스를 AB의 길이만큼 벌려요' : f2 <= 0 ? '벌린 그대로 점 P로 옮겨요' : f2 < 1 ? '점 P에 바늘을 꽂고 호를 그려요' : '반직선과 만나는 점 Q → PQ = AB', 'amber', 0.2, 0, 84);
       if (!C.problem && !C.review && C.txt) {
@@ -192,6 +192,7 @@
     init: (s) => { s.cnTh = 55; s.cnR = 2; s.cnT2 = 0; s.cnS = 0; s.cnPk = { th: 40, f: 0, t: [0, 1, 2, 3] }; },
     reroll: (s) => { s.cnTh = pick([35, 40, 50, 70, 80, 100], s.cnTh); s.cnR = pick([1.8, 2, 2.2, 2.4], s.cnR); s.cnPk = { th: s.cnTh, f: rint(0, 4), t: shuffle([0, 1, 2, 3, 4, 5, 6], Math.random).slice(0, 4) }; s.cnT2 = 1; s.cnS = 0; },
     model: (s) => ({ th: clamp(Math.round(s.cnTh), 20, 110), r: clamp(s.cnR, 1.4, 2.6), S: clamp(s.cnS, 0, 1), T: s.cnS > 0.001 ? 1 : clamp(s.cnT2, 0, 1), pk: s.cnPk || { th: 40, f: 0, t: [0, 1, 2, 3] } }),
+    reviewModel: (M) => ({ ...M, th: M.pk.th, S: 0 }),
     draw(b, s, M, C) {
       fit(b, { x0: -1.6, x1: D2 + LR + 0.3, y0: -3.9, y1: 0.6 }, { t: 24, b: 66 });
       const tt = C.problem ? 1 : C.review ? C.t : M.S > 0.001 ? 1 : C.t;
@@ -281,8 +282,9 @@
     T(b, Pp, 'P', { dx: wv.x * 18, dy: wv.y * 18, size: 17 });
     const lab = (p, c, a1, name) => { const e = unit(sub(polar(c, r, a1), p)); T(b, p, name, { dx: e.x * 30, dy: e.y * 30, size: 16 }); }; // 호가 점을 지나 뻗은 쪽 끝 너머
     const Qa = dirDeg(Q, A), Qb = dirDeg(Q, B);
-    if (fs[1] >= 1) { b.point(A, { color: 'sky', r: 4.2 }); b.point(B, { color: 'sky', r: 4.2 }); lab(A, Q, Qa + 5, 'A'); lab(B, Q, Qb - 5, 'B'); }
-    if (fs[2] >= 1) { b.point(Cc, { color: 'sky', r: 4.2 }); lab(Cc, Pp, ac - 5, 'C'); }
+    const compactAlt = b.W < 560 && M.mode === 'alt', letterOffset = pt(-22, 18);
+    if (fs[1] >= 1) { b.point(A, { color: 'sky', r: 4.2 }); b.point(B, { color: 'sky', r: 4.2 }); lab(A, Q, Qa + 5, 'A'); if (compactAlt) T(b, B, 'B', { dx: letterOffset.x, dy: letterOffset.y, size: 16 }); else lab(B, Q, Qb - 5, 'B'); }
+    if (fs[2] >= 1) { b.point(Cc, { color: 'sky', r: 4.2 }); if (compactAlt) T(b, Cc, 'C', { dx: -letterOffset.x, dy: -letterOffset.y, size: 16 }); else lab(Cc, Pp, ac - 5, 'C'); }
     if (fs[4] >= 1) { b.point(Dd, { color: 'sky', r: 4.2 }); lab(Dd, Pp, ad + 5, 'D'); }
     return g;
   }
@@ -309,6 +311,7 @@
         s.cnPk = { px, ph, al, f: rint(0, 3), t: shuffle([0, 1, 2, 3, 4, 5, 6], Math.random).slice(0, 4) };
       },
       model: (s) => ({ px: clamp(s.cnPx, PX_RANGE[0], PX_RANGE[1]), ph: clamp(s.cnPh, PH_RANGE[0], PH_RANGE[1]), al: clamp(s.cnPAl, -20, 20), r: clamp(s.cnPR, 1.1, 1.6), T: clamp(s.cnPT, 0, 1), mode, pmode: s.cnPm || mode, pk: s.cnPk || { px: 1.6, ph: 3.6, al: 0, f: 0, t: [0, 1, 2, 3] } }),
+      reviewModel: (M) => ({ ...M, mode: M.pmode, px: M.pk.px, ph: M.pk.ph, al: M.pk.al }),
       draw(b, s, M, C) {
         fit(b, PBOX, { t: 20, b: 58 });
         const MM = C.problem ? { ...M, mode: M.pmode, px: M.pk.px, ph: M.pk.ph, al: M.pk.al } : M;
@@ -316,8 +319,8 @@
         const stage = C.review ? C.step : parStage(C.t);
         const g = drawPar(b, MM, C, fs, { ticks: !C.problem, marks: C.problem || !C.review || C.step >= 2, arrows: !C.problem && (C.review ? C.step >= 3 : fs[5] >= 0.999) });
         if (C.txt && !C.problem) {
-          if (C.review) caption(b, C.step === 1 ? `같은 크기의 ${nameOf(mode)}을 작도해요` : C.step === 2 ? `${nameOf(mode)}의 크기가 같아요: ${dg(g.th)}` : `${nameOf(mode)}의 크기가 같으니까 l ∥ m`, 'amber', 2.2);
-          else caption(b, stage <= 0 ? '▶를 누르거나 막대를 끌어 작도를 시작해요' : fs[5] >= 0.999 ? `${nameOf(mode)}이 같아서 l ∥ m` : PAR_CAP[stage - 1], 'amber', 2.2);
+          if (C.review) caption(b, C.step === 1 ? `같은 크기의 ${nameOf(M.mode)}을 작도해요` : C.step === 2 ? `${nameOf(M.mode)}의 크기가 같아요: ${dg(g.th)}` : `${nameOf(M.mode)}의 크기가 같으니까 l ∥ m`, 'amber', 2.2);
+          else caption(b, stage <= 0 ? '▶를 누르거나 막대를 끌어 작도를 시작해요' : fs[5] >= 0.999 ? `${nameOf(M.mode)}이 같아서 l ∥ m` : PAR_CAP[stage - 1], 'amber', 2.2);
         }
         if (!C.problem && !C.review && C.txt) b.handle('P', g.Pp, { color: 'amber', r: 8, ariaLabel: '점 P 끌기', drag: dragP(s, g) });
       },
@@ -325,19 +328,19 @@
       steps: (M) => {
         const th = parGeo(M.px, M.ph, M.al, M.r, M.mode).th;
         return [
-          `점 P를 지나는 직선 PQ를 긋고, 크기가 같은 각을 작도해요. $\\angle AQB$와 같은 크기의 $\\angle ${alt ? 'QPD' : 'CPD'}$를 점 P에 그려요. ($${ol('QA')}=${ol('QB')}=${ol('PC')}=${ol('PD')}$, $${ol('AB')}=${ol('CD')}$)`,
-          `작도한 두 ${nameOf(mode)}의 크기가 같아요: $\\angle AQB=\\angle ${alt ? 'QPD' : 'CPD'}=${fmtN(th)}^{\\circ}$`,
-          `${nameOf(mode)}의 크기가 같으면 두 직선은 평행해요. 그러므로 $l\\parallel m$ (직선 $PD$)이에요.`
+          `점 P를 지나는 직선 PQ를 긋고, 크기가 같은 각을 작도해요. $\\angle AQB$와 같은 크기의 $\\angle ${M.mode === 'alt' ? 'QPD' : 'CPD'}$를 점 P에 그려요. ($${ol('QA')}=${ol('QB')}=${ol('PC')}=${ol('PD')}$, $${ol('AB')}=${ol('CD')}$)`,
+          `작도한 두 ${nameOf(M.mode)}의 크기가 같아요: $\\angle AQB=\\angle ${M.mode === 'alt' ? 'QPD' : 'CPD'}=${fmtN(th)}^{\\circ}$`,
+          `${nameOf(M.mode)}의 크기가 같으면 두 직선은 평행해요. 그러므로 $l\\parallel m$ (직선 $PD$)이에요.`
         ];
       },
       view: (M, C) => {
         const g = parGeo(M.px, M.ph, M.al, M.r, M.mode);
         return {
           guide: `<b>노란 점</b> P를 끌어 위치를, 막대로 직선 l의 기울기를 바꿔 보세요. ▶를 누르거나 <b>작도 단계</b> 막대를 끌면 6단계가 차례로 그려져요. 같은 길이는 눈금, 같은 크기의 각은 같은 호로 표시해요.`,
-          readouts: [rd(`${nameOf(mode)} ∠AQB`, dg(g.th), 'sky'), rd(`작도한 ${nameOf(mode)}`, M.T >= 1 ? dg(g.th) : '작도 중', 'green', '크기가 같아요'), rd('결론', M.T >= 1 ? 'l ∥ m' : '작도가 끝나면', 'green')],
-          formula: `<p>$\\angle AQB=\\angle ${alt ? 'QPD' : 'CPD'}=${fmtN(g.th)}^{\\circ}$ → ${nameOf(mode)}이 같다</p><p>$l\\parallel m$</p>`,
-          rule: `${nameOf(mode)}의 크기가 같도록 크기가 같은 각을 작도하면 평행선이 된다`,
-          notes: notes(alt ? '엇각은 한 직선(PQ)의 <b>양쪽</b>에 어긋나게 놓인 각이에요. 점 C는 P에서 Q 쪽, 점 D는 l과 반대 방향에 있어요.' : '동위각은 <b>같은 위치</b>에 있는 각이에요. 점 C는 P에서 Q의 반대쪽(직선 PQ의 연장선) 위에 있어요.', '컴퍼스의 벌림은 두 번 모두 같고, 마지막 호만 반지름이 $\\overline{AB}$예요.')
+          readouts: [rd(`${nameOf(M.mode)} ∠AQB`, dg(g.th), 'sky'), rd(`작도한 ${nameOf(M.mode)}`, M.T >= 1 ? dg(g.th) : '작도 중', 'green', '크기가 같아요'), rd('결론', M.T >= 1 ? 'l ∥ m' : '작도가 끝나면', 'green')],
+          formula: `<p>$\\angle AQB=\\angle ${M.mode === 'alt' ? 'QPD' : 'CPD'}=${fmtN(g.th)}^{\\circ}$ → ${nameOf(M.mode)}이 같다</p><p>$l\\parallel m$</p>`,
+          rule: `${nameOf(M.mode)}의 크기가 같도록 크기가 같은 각을 작도하면 평행선이 된다`,
+          notes: notes(M.mode === 'alt' ? '엇각은 한 직선(PQ)의 <b>양쪽</b>에 어긋나게 놓인 각이에요. 점 C는 P에서 Q 쪽, 점 D는 l과 반대 방향에 있어요.' : '동위각은 <b>같은 위치</b>에 있는 각이에요. 점 C는 P에서 Q의 반대쪽(직선 PQ의 연장선) 위에 있어요.', '컴퍼스의 벌림은 두 번 모두 같고, 마지막 호만 반지름이 $\\overline{AB}$예요.')
         };
       },
       prob: (M) => {
@@ -399,6 +402,7 @@
       s.cnOrd = []; s.cnMsg = null; s.cnPerm = perm;
     },
     model: (s) => ({ perm: s.cnPerm || [0, 1, 2, 3, 4, 5], ord: s.cnOrd || [], msg: s.cnMsg || null, pk: s.cnPk || {}, px: clamp(s.cnPx == null ? 1.4 : s.cnPx, PX_RANGE[0], PX_RANGE[1]), ph: clamp(s.cnPh == null ? 3.8 : s.cnPh, PH_RANGE[0], PH_RANGE[1]) }),
+    reviewModel: (M) => ({ ...M, px: M.pk.px ?? M.px, ph: M.pk.ph ?? M.ph, perm: M.pk.perm || M.perm }),
     draw(b, s, M, C) {
       fit(b, PBOX, { t: 20, b: 58 });
       const done = C.problem ? [0, 1, 2, 3, 4, 5] : C.review ? [0, 1, 2, 3, 4, 5].slice(0, C.step) : M.ord;

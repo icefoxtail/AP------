@@ -503,5 +503,109 @@
       "gtT": 0
     },
     "check": "The radii sequence in notes is5,10,15, matching the current side5."
+  },
+  {
+    "id": "z0-center",
+    "label": "concept-diameter-ratio-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csQ": 90
+    },
+    "check": "The final explanation answers the current conceptual question: diameter is twice the radius (12 cm for r=6)."
+  },
+  {
+    "id": "z0-arc",
+    "label": "concept-chord-shorter-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csS": 60
+    },
+    "check": "The final explanation states chord AB is shorter than arc AB; 60° chord length6 and arc2π are consistent."
+  },
+  {
+    "id": "z0-sector",
+    "label": "concept-angle-proportions-final",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": "final",
+    "params": {
+      "csR": 6,
+      "csA": 90
+    },
+    "check": "Final explanation says equal-radius sectors with central-angle ratio2 have arc-length and area ratio2; chord is not proportional."
+  },
+  {
+    "id": "f1-star",
+    "label": "perimeter-chip-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "No10π perimeter sum in the canvas chip or current formula at step1."
+  },
+  {
+    "id": "f1-star",
+    "label": "perimeter-chip-stage2",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 2,
+    "params": {
+      "f1_star_a": 10,
+      "f1_star_mode": 1,
+      "f1_star_t": 1
+    },
+    "check": "Current chip computes one arc5π/2; the four labels stay separate, and total10π is not disclosed yet."
+  },
+  {
+    "id": "f1-ring",
+    "label": "perimeter-chip-stage1",
+    "fromTab": "explore",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f1_ring_R": 6,
+      "f1_ring_r": 3,
+      "f1_ring_th": 90,
+      "f1_ring_mode": 1,
+      "f1_ring_t": 1
+    },
+    "check": "Current chip is the outer arc3π; complete perimeter9π/2+6 is not disclosed."
+  },
+  {
+    "id": "1102",
+    "label": "variable-givens-question",
+    "tab": "explore",
+    "params": {
+      "b1102_u": 1.5,
+      "b1102_t1": 40,
+      "b1102_t2": 60,
+      "b1102_y": 100
+    },
+    "check": "Exploration question makes a proportionality request without stale default6cm/30°/45°/15cm; the drawing uses the current conditions."
+  },
+  {
+    "id": "rl-tri",
+    "label": "variable-point-question",
+    "tab": "explore",
+    "params": {
+      "cfg": {
+        "a": 5,
+        "track": 2,
+        "rolls": 2
+      },
+      "rlA": 5,
+      "rlT": 1
+    },
+    "check": "Exploration question asks about the selected point and variable side, without stale3cm or forced pointA."
   }
 ]

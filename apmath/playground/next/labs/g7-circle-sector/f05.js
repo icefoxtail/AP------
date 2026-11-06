@@ -561,7 +561,7 @@
   /* ---------- 16-11 : 고리에서 부채꼴 모양을 뺀 둘레 ---------- */
   const RING240 = {
     id: 'f5-ring240', short: '뺀 고리', title: '고리에서 부채꼴을 뺀 둘레',
-    question: '안쪽 반지름 4 cm인 원과 폭이 4 cm인 고리에서, 중심각 120°인 부분을 잘라 냈어. 남은 부분의 호는 중심각이 몇 도일까?',
+    question: '고리에서 부채꼴 모양의 부분을 잘라 냈어. 잘라 낸 중심각을 바꾸면 남은 호의 중심각은 어떻게 달라질까?',
     slots: {
       f5A: { label: '안쪽 반지름', min: 1, max: 10, step: 1, value: 4, color: 'violet', format: (v) => v + ' cm' },
       f5B: { label: '고리의 폭', min: 1, max: 10, step: 1, value: 4, color: 'sky', format: (v) => v + ' cm' },

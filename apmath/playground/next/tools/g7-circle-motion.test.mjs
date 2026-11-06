@@ -385,3 +385,58 @@ await test('variable-angle and spiral notes stay consistent with the current giv
     assert.match(notes, /바깥각 60°/, 'the valid exterior-angle principle remains');
   }
 });
+
+await test('perimeter chips disclose only the current boundary until its sum step', async () => {
+  const lab = await load();
+  for (const [id, total] of [['f1-star', '10\\pi'], ['f1-ss2', '6\\pi+6'], ['f1-ring', '\\dfrac{9\\pi}{2}+6']]) {
+    const scene = lab.go(id);
+    lab.s[scene.csKeys.kt] = 1;
+    call(scene.presets, lab.s).find((preset) => preset.label === '둘레').apply(lab.s, lab);
+    if (id === 'f1-ss2') { lab.tab = 'problem'; lab.draw(); }
+    lab.tab = 'review';
+    const lastPerimeterStep = id === 'f1-star' ? 3 : 4;
+    for (let step = 1; step < lastPerimeterStep; step++) {
+      lab.s.step = step;
+      const chips = lab.draw().value.chips || [];
+      assert.ok(!chips.map((chip) => chip.tex).join(' ').includes(total), `${id} step ${step}: no perimeter total in the diagram badge`);
+    }
+    lab.s.step = lastPerimeterStep;
+    assert.ok(lab.draw().value.chips.map((chip) => chip.tex).join(' ').includes(total), `${id}: the completed sum is shown`);
+    if (id === 'f1-ss2') {
+      lab.s.step = 5;
+      assert.ok(!lab.draw().value.chips.map((chip) => chip.tex).join(' ').includes('\\dfrac{9\\pi}{2}'), 'the area answer remains hidden in its first step');
+      lab.s.step = 8;
+      assert.ok(lab.draw().value.chips.map((chip) => chip.tex).join(' ').includes('\\dfrac{9\\pi}{2}'), 'the area sum appears in its own last step');
+    }
+  }
+});
+
+await test('mobile perimeter and thin-ring dimension labels remain separated', async () => {
+  const lab = await load(); lab.board.resize(390, 410);
+  const star = lab.go('f1-star');
+  lab.board.setInsets({ top: 60, right: 0, bottom: 58, left: 0 });
+  call(star.presets, lab.s).find((preset) => preset.label === '둘레').apply(lab.s, lab);
+  lab.tab = 'review'; lab.s.step = 3;
+  const arcLabels = lab.draw().textItems.filter((item) => item.text === '5π/2');
+  assert.equal(arcLabels.length, 4);
+  const arcBox = (item) => {
+    const left = item.x - (item.options.align === 'left' ? 0 : item.options.align === 'right' ? 44 : 22);
+    return { left, right: left + 44, top: item.y - 14, bottom: item.y + 14 };
+  };
+  for (let i = 0; i < arcLabels.length; i++) for (let j = i + 1; j < arcLabels.length; j++) {
+    const a = arcBox(arcLabels[i]), b = arcBox(arcLabels[j]);
+    assert.ok(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top, 'four fraction labels must not form a pile at the star centre');
+  }
+  const ring = lab.go('f1-ring');
+  lab.board.setInsets({ top: 60, right: 0, bottom: 58, left: 0 });
+  for (const angle of [30, 60, 90, 180, 210, 300, 345]) {
+    Object.assign(lab.s, { [ring.csKeys.K('R')]: 12, [ring.csKeys.K('r')]: 11, [ring.csKeys.K('th')]: angle });
+    for (const tab of ['explore', 'problem', 'review']) {
+      lab.tab = tab; lab.s.step = 1;
+      const items = lab.draw().textItems;
+      const outer = items.find((item) => item.text === 'R=12'), inner = items.find((item) => item.text === 'r=11');
+      assert.ok(outer && inner);
+      assert.ok(Math.abs(outer.x - inner.x) >= 44 || Math.abs(outer.y - inner.y) >= 21, `${angle}° ${tab}: R and r remain separately readable`);
+    }
+  }
+});

@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const G=window.APL_SV;if(!G)return;
-const {PI,P,V,vadd,vnum,tx,plainVal,clamp,rint,mkV,rd,notes,scene3,v3,revolveMesh,sphereProfile,cube8}=G;
+const {PI,P,V,vadd,vnum,tx,plainVal,clamp,rint,mkV,rd,notes,span,scene3,v3,revolveMesh,sphereProfile,cube8}=G;
 const PARAMS={remR:P('구의 반지름',1,12,1,3,{color:'ink',format:v=>v+' cm'}),remT:P('잘라 보기',0,1,.01,1,{color:'ink'})};
 const model=s=>{
  const r=clamp(Math.round(s.remR||3),1,12), oct=s.remKind==='seven', vol=s.remMode==='vol';
@@ -25,22 +25,27 @@ const draw=(b,s,M,C)=>{
  }
  if(e<.99){const full=G.xfMesh(revolveMesh(sphereProfile(R,-90,90,48),{N:64}),G.shiftT(right));D.body({mesh:full,fill:'sky',alpha:.03*(1-e),edge:'ink',edgeW:2,edgeFn:()=>({alpha:1-e})});}
  const eq=e=>Math.abs(e.a.y)<1e-6&&Math.abs(e.b.y)<1e-6;
+ let cutFaces=[];
  if(!M.oct){
   const m=G.xfMesh(revolveMesh(sphereProfile(R,-90,90,48),{N:64,a0:start,a1:end}),G.shiftT(right));
-  D.body({mesh:m,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:()=>({alpha:e}),faceStyle:f=>f.cut?{fill:f.tag==='cut0'?'sky':'amber',alpha:.1*e}:{}});
+  cutFaces=m.faces.filter(f=>f.cut);
+  D.body({mesh:m,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>({alpha:e,color:m.faces[edge.f1]?.cut||m.faces[edge.f2]?.cut?'red':'ink'}),faceStyle:f=>f.cut?{fill:'red',alpha:.1*e}:{}});
  }else{
   const lower=G.xfMesh(revolveMesh(sphereProfile(R,-90,0,32),{N:64}),G.shiftT(right));
   const upper=G.xfMesh(revolveMesh([[0,0],...sphereProfile(R,0,90,32)],{N:64,a0:start,a1:end,tags:['cap']}),G.shiftT(right));
   D.body({mesh:lower,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>eq(edge)?{skip:true}:{alpha:e}});
-  D.body({mesh:upper,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>eq(edge)?{skip:true}:{alpha:e},faceStyle:f=>f.tag==='cap'?{skip:true}:f.cut?{fill:f.tag==='cut0'?'sky':'amber',alpha:.1*e}:{}});
+  cutFaces=upper.faces.filter(f=>f.cut);
+  D.body({mesh:upper,fill:'sky',alpha:.04*e,edge:'ink',edgeW:2.2,edgeFn:edge=>eq(edge)?{skip:true}:{alpha:e,color:upper.faces[edge.f1]?.cut||upper.faces[edge.f2]?.cut?'red':'ink'},faceStyle:f=>f.tag==='cap'?{skip:true}:f.cut?{fill:'red',alpha:.1*e}:{}});
   // 떼어 낸 1/8 자리에 드러나는 수평 사분원 단면.
   const arc=[right];for(let i=0;i<=36;i++){const th=end+(PI/2)*i/36;arc.push(G.add3(right,v3(R*Math.cos(th),0,R*Math.sin(th))));}
-  D.path(arc,'ink',2,{close:true,fill:'green',fillAlpha:.08*e,alpha:e});
+  D.path(arc,'red',2,{close:true,fill:'red',fillAlpha:.08*e,alpha:e});
  }
  const center=right, ends=[start,end].map(a=>G.add3(right,v3(R*Math.cos(a),0,R*Math.sin(a))));
  if(e>.95) D.right(center,G.sub3(ends[0],center),G.sub3(ends[1],center),R*0.11,'ink');
  const rim=ends.reduce((best,p)=>Math.abs(D.px(p).x-D.px(center).x)>Math.abs(D.px(best).x-D.px(center).x)?p:best);
- if(e>.95) D.radius(center,rim,String(M.r),{color:'ink',gap:5});
+ if(e>.95) D.radius(center,rim,String(M.r),{color:'rose',gap:5});
+ const frontCut=cutFaces.filter(f=>D.facing(f.n)).sort((a,b)=>D.depth(b.c)-D.depth(a.c))[0];
+ if(C.txt&&!C.problem&&e>.95&&frontCut) D.label(frontCut.c,'새 단면',{color:'red',at:[[0,0],[0,20],[0,-20]],size:14});
 };
 G.register(31,'t7','남은 구','남은 구',PARAMS,[{
  id:'sv3-7',title:'잘라 내고 남은 구',short:'3/4·7/8 남은 구',
@@ -66,21 +71,21 @@ G.register(31,'t7','남은 구','남은 구',PARAMS,[{
  view:(M,C)=>({
   card:(C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?{title:'',lines:M.vol?[
    {text:'전체 구의 부피',color:'ink'}, {text:`$\\frac43\\pi\\times${M.r}^3\\,\\mathrm{cm}^3$`,color:'ink'},
-   {text:'남은 부피',color:'ink'}, {text:`$\\frac43\\pi\\times${M.r}^3\\times${M.oct?'\\frac78':'\\frac34'}=${tx(M.volume)}\\,\\mathrm{cm}^3$`,color:'ink'}
+   {text:'남은 부피',color:'green'}, {text:`$\\frac43\\pi\\times${M.r}^3\\times${M.oct?'\\frac78':'\\frac34'}=${tx(M.volume)}\\,\\mathrm{cm}^3$`,color:'green'}
   ]:[
-   {text:'남은 곡면',color:'ink'}, {text:`$4\\pi\\times${M.r}^2\\times${M.oct?'\\frac78':'\\frac34'}=${tx(M.curve)}\\,\\mathrm{cm}^2$`,color:'ink'},
-   {text:M.oct?'새 단면: 사분원 3개':'새 단면: 반원 2개',color:'ink'},
-   {text:`$${M.oct?'\\frac14':'\\frac12'}\\pi\\times${M.r}^2\\times${M.oct?3:2}=${tx(M.flat)}\\,\\mathrm{cm}^2$`,color:'ink'},
-   {text:'겉넓이',color:'ink'}, {text:`$${tx(M.curve)}+${tx(M.flat)}=${tx(M.area)}\\,\\mathrm{cm}^2$`,color:'ink'}
+   {text:'남은 곡면',color:'sky'}, {text:`$4\\pi\\times${M.r}^2\\times${M.oct?'\\frac78':'\\frac34'}=${tx(M.curve)}\\,\\mathrm{cm}^2$`,color:'sky'},
+   {text:M.oct?'새 단면: 사분원 3개':'새 단면: 반원 2개',color:'red'},
+   {text:`$${M.oct?'\\frac14':'\\frac12'}\\pi\\times${M.r}^2\\times${M.oct?3:2}=${tx(M.flat)}\\,\\mathrm{cm}^2$`,color:'red'},
+   {text:'겉넓이',color:'green'}, {text:`$${tx(M.curve)}+${tx(M.flat)}=${tx(M.area)}\\,\\mathrm{cm}^2$`,color:'green'}
   ]}:null,
   tip:C.tab==='explore'?(M.vol?'부피는 남은 비율만큼 구 전체 부피에 곱해요.':'남은 곡면뿐 아니라 잘라서 새로 생긴 단면도 더해요.'):null,
-  guide:`서로 수직이고 구의 중심을 지나는 평면으로 ${M.oct?'1/8':'1/4'}을 잘라 냈어요. 남은 입체는 구의 ${M.fraction}입니다. ${M.vol?'전체 부피에 남은 비율을 곱해요.':'새로 생긴 평평한 면도 겉넓이에 더해요.'}`,
-  readouts:(C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?[]:M.vol?[rd('남은 부피',plainVal(M.volume)+' cm³','ink')]:[rd('남은 곡면',plainVal(M.curve)+' cm²','ink'),rd('새 단면',plainVal(M.flat)+' cm²','ink'),rd('전체 겉넓이',plainVal(M.area)+' cm²','ink')],
+  guide:`서로 수직이고 구의 중심을 지나는 평면으로 ${M.oct?'1/8':'1/4'}을 잘라 냈어요. 남은 입체는 구의 ${M.fraction}입니다. ${M.vol?'전체 부피에 남은 비율을 곱해요.':`${span('sky','남은 곡면')}과 ${span('red','새 단면')}을 더해 겉넓이를 구해요.`}`,
+  readouts:(C.tab==='explore'&&window.innerWidth>=700&&document.querySelector('.apl-canvas-wrap')?.clientWidth>=560)?[]:M.vol?[rd('남은 부피',plainVal(M.volume)+' cm³','green')]:[rd('남은 곡면',plainVal(M.curve)+' cm²','sky'),rd('새 단면',plainVal(M.flat)+' cm²','red'),rd('전체 겉넓이',plainVal(M.area)+' cm²','green')],
   formula:M.vol?`<p>남은 부피 $=\\frac43\\pi r^3\\times${M.oct?'\\frac78':'\\frac34'}$</p>`:`<p>겉넓이 $=$ 남은 곡면 $+$ 새 단면</p>`,
   notes:notes('잘라 낸 비율과 남은 비율을 구분해요.','겉넓이는 새로 생긴 단면도 더해요. 부피는 남은 비율을 곱해요.')
  }),
  prob:M=>({tag:`${M.fraction} 남은 구`,key:`${M.fraction}|${M.vol}|${M.r}`,
   stem:`반지름이 $${M.r}\\,\\mathrm{cm}$인 구를 중심을 지나는 서로 수직인 ${M.oct?'세':'두'} 평면으로 잘라 얻은 ${M.oct?'여덟':'네'} 조각 중 하나를 제거했다. 남은 입체의 ${M.vol?'부피':'겉넓이'}는?`,
-  choices:mkV(M.ans,M.vol?[[V(0,4*M.r**3/3),'전체 구의 부피예요.'],[V(0,M.r**3/3),'잘라 낸 부분을 구했어요.'],[V(0,M.r**3/2),'반구와 구분해요.'],[V(0,2*M.r**3),'남은 비율을 확인해요.']]:[[M.curve,'새로 생긴 단면을 더해야 해요.'],[V(0,4*M.r*M.r),'단면을 빠뜨리거나 남은 곡면을 확인해요.'],[V(0,5*M.r*M.r),'남은 비율과 단면 수를 확인해요.'],[V(0,2*M.r*M.r),'남은 곡면을 확인해요.']],{dim:M.vol?3:2})})
+  choices:mkV(M.ans,M.vol?[[V(0,4*M.r**3/3),'전체 구의 부피예요.'],[V(0,M.r**3/(M.oct?6:3)),'잘라 낸 부분을 구했어요.'],[V(0,2*M.r**3/3),'반구의 부피예요. 남은 비율을 확인해요.'],[V(0,2*M.r**3),'남은 비율을 확인해요.']]:[[M.curve,'새로 생긴 단면을 더해야 해요.'],[V(0,4*M.r*M.r),'전체 구의 겉넓이예요. 남은 곡면과 새 단면을 더해요.'],[V(0,5*M.r*M.r),'남은 비율과 단면 수를 확인해요.'],[V(0,2*M.r*M.r),'남은 곡면을 확인해요.']],{dim:M.vol?3:2})})
 }]);
 })();

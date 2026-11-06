@@ -808,7 +808,7 @@
         return { ...nc, ...best };
       },
       hdls: [{ i: 2, patch: (x, y) => ({ w: clamp(Math.round(x), 2, 8), h: clamp(Math.round(y), 2, 8) }) }],
-      question: '직사각형 ABCD를 직선 l 위에서 회전시키면 점 A는 어떤 길을 따라 움직일까? 그 길이는 얼마일까?',
+      question: '직사각형 ABCD를 직선 l 위에서 회전시키면 선택한 점은 어떤 길을 따라 움직일까? 그 길이는 얼마일까?',
       guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)이 자연수가 되는 직사각형만 골라져요.` + GUIDE_TAIL,
       statement: (c) => `그림과 같이 직사각형 ABCD를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', c.w)}, ${len('A', 'D', c.h)}, ${len('B', 'D', Math.hypot(c.w, c.h))}일 때, 점 ${'ABCD'[c.track]}가 움직인 거리를 구하시오.`,
       reroll: (cur, rng) => {
@@ -825,7 +825,7 @@
       base: { a: 3, track: 0, rolls: 2 }, baseChoices: [2, 3, 4, 5, 6].map(numOpt),
       sliders: [{ param: 'rlA', key: 'a', min: 2, max: 8, step: 1, label: '한 변의 길이', fmt: (v) => `${Math.round(v)} cm` }],
       hdls: [{ i: 1, patch: (x) => ({ a: clamp(Math.round(x), 2, 8) }) }],
-      question: '한 변의 길이가 3 cm인 정삼각형 ABC를 직선 l 위에서 회전시키면 점 A가 지나간 길은 어떤 모양일까?',
+      question: '정삼각형 ABC를 직선 l 위에서 회전시키면 선택한 점이 지나간 길은 어떤 모양일까? 한 변의 길이도 바꾸어 보자.',
       guide: (M) => `정삼각형은 한 번 회전할 때마다 한 꼭짓점을 중심으로 <b>120°</b>씩 돌아가요. (정삼각형의 한 각은 60°이므로 돌아가는 각은 180° − 60° = 120°) 점 ${M.names[M.T]}가 그리는 호의 중심각이 모두 120°인지 확인하고, 한 변의 길이를 바꿔 보세요.` + GUIDE_TAIL,
       statement: (c) => `다음 그림과 같이 한 변의 길이가 ${c.a} cm인 정삼각형 ABC를 직선 $l$ 위에서 회전시켰을 때, 점 ${'ABC'[c.track]}가 움직인 거리는?`,
       reroll: (cur, rng) => ({ a: pick(rng, [2, 3, 4, 5, 6].filter((x) => x !== cur.a)), track: pick(rng, [0, 0, 1, 2]), rolls: 2 }),
