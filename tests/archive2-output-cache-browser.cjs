@@ -803,7 +803,45 @@ async function abortPendingExamImage(session, initial) {
       outputRequestId: settled.binding.outputRequestId, attemptCount: settled.attemptCount } };
 }
 
+async function real50ReminderFit(session, initial) {
+  assertReady(initial, 50, true);
+  await remember(session.page, 'exam');
+  const solution = await operation(session, 'real50-qpp4-repaired-solution', 'sol');
+  assertReady(solution, 50, true);
+  requireThat(solution.inputHash === initial.inputHash, 'REMINDER_FIT_MUTATED_SOURCE');
+  const fit = await session.page.evaluate(() => {
+    const box = [...document.querySelectorAll('#print-area .sol-box')].find(node => node.dataset.sourceRef?.endsWith(':17'));
+    const image = box?.querySelector('[data-semantic-content="1"] img');
+    const column = image?.closest('.grid-col');
+    const bounds = image?.getBoundingClientRect(), container = column?.getBoundingClientRect();
+    return { found:!!image, loaded:!!image?.complete && image.naturalWidth > 0,
+      naturalWidth:image?.naturalWidth, naturalHeight:image?.naturalHeight,
+      width:bounds?.width, height:bounds?.height, columnWidth:container?.width,
+      inside:!!bounds && bounds.right <= container.right + 1 && bounds.left >= container.left - 1,
+      stylePresent:!!document.getElementById('ap-solution-reminder-image-fit') };
+  });
+  requireThat(fit.found && fit.loaded && fit.stylePresent && fit.inside && fit.naturalWidth === 420 && fit.naturalHeight === 300 &&
+    fit.width > 0 && Math.abs(fit.width / fit.height - 420 / 300) < .01, 'REMINDER_IMAGE_FIT_OR_ASPECT_FAILED', fit);
+  await remember(session.page, 'sol');
+  const printed = await printCheck(session, solution, true, 'real50-qpp4-repaired-print');
+  const answer = await operation(session, 'real50-qpp4-repaired-answer', 'ans'); assertReady(answer,50,true);
+  const returned = await operation(session, 'real50-qpp4-repaired-exam', 'exam'); assertReady(returned,50,true);
+  await assertHit(session,initial,returned);
+  const warm = await operation(session, 'real50-qpp4-repaired-solution-hit', 'sol'); assertReady(warm,50,true);
+  await assertHit(session,solution,warm);
+  report.repairedIssue={id:'REAL50_QPP4_REMINDER_IMAGE_CLIPPING',status:'FIXED',qualityPass:true,questionCount:50,qpp:4,
+    inputHash:solution.inputHash,sourceBytesUnchanged:true,fit,printed,solutionPages:solution.pageCount,warmCacheStatus:warm.cacheStatus};
+  return {repairedIssue:report.repairedIssue};
+}
+
 async function knownReal50Clipping(session, initial) {
+  // Reproduce the old real defect by removing only the new shared rule. The
+  // original failure/rollback/retry assertions remain intact as a negative test.
+  await session.page.evaluate(() => {
+    const style=document.getElementById('ap-solution-reminder-image-fit');
+    if (!style) throw new Error('REMINDER_FIT_REQUIRED_BEFORE_FAULT_INJECTION');
+    style.remove();
+  });
   const question = session.fixture.questions[16];
   const expectedUid = question._sourceQuestionUid || question.sourceQuestionUid;
   const expectedSourceRef = question.sourceArchiveFile + '#' + expectedUid;
@@ -905,10 +943,10 @@ async function knownReal50Clipping(session, initial) {
   requireThat(exam.attemptCount === settled.attemptCount && exam.snapshotId === settled.snapshotId &&
     exam.binding.outputRequestId === settled.binding.outputRequestId && exam.binding.urlRequestId === settled.binding.urlRequestId,
     'KNOWN_CLIP_LATE_COMPLETION_OVERWROTE_RECOVERY');
-  return { guardMeaning: 'Existing qpp4 clipping remains unresolved; PASS verifies failure preservation, not solution output quality.',
+  return { guardMeaning: 'Baseline clipping is explicitly fault-injected; this case verifies failure preservation. Default output has a separate positive repair case.',
     failedOperationQualityPass: false, failures, blockedPrints, subsequentAnswerReady: true,
     subsequentExamReady: true, examParity, noLateOverwrite: true,
-    knownIssue: { ...report.knownIssue, status: 'UNRESOLVED', guardPass: true } };
+    knownIssue: { ...report.knownIssue, status: 'INJECTED_BASELINE_FAULT', guardPass: true, currentProductionStatus: 'FIXED' } };
 }
 
 async function runCase(browser, server, fixture, name, work, params = {}, initialMode = 'exam') {
@@ -969,12 +1007,13 @@ async function main() {
     await runCase(browser, server, envelope, 'latest-public-request-wins', latestRequest);
     await runCase(browser, server, envelope, 'final-readiness-failure-and-retry', finalReadinessFailure);
     await runCase(browser, server, envelope, 'pending-finalizer-decode-cancellation', abortPendingDecode);
+    await runCase(browser, server, real50, 'real50-qpp4-reminder-image-fit', real50ReminderFit);
     await runCase(browser, server, real50, 'known-real50-qpp4-clipping-preservation', knownReal50Clipping);
     await runCase(browser, server, envelope, 'solution-qr-refreshes-request-canvas', solutionQrRefresh,
       { solQr: '1', portalQr: '0', submitQr: null, osqr: null });
     await runCase(browser, server, { ...envelope, id: 'cache-image-wait-real8-qpp1', qpp: 1 },
       'pending-exam-image-cancellation', abortPendingExamImage, {}, 'ans');
-    report.pass = report.cases.length === 10 && report.cases.every(row => row.pass);
+    report.pass = report.cases.length === 11 && report.cases.every(row => row.pass);
   } finally { await browser?.close(); await server?.close(); writeReport(); }
   console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.cases.length, chrome: report.chromeVersion }));
   if (!report.pass) process.exitCode = 1;

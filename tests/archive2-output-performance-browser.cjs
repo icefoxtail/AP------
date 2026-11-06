@@ -13,7 +13,7 @@ const H = require('./archive2-solution-loading-browser.cjs');
 const { inspectPdf } = require('./archive2-output-pdf-evidence.cjs');
 
 const root = path.resolve(__dirname, '..');
-const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a';
+const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || require('./archive2-output-comparison-references.json').performanceReference;
 const profileOnly = process.env.ARCHIVE_PERFORMANCE_PROFILE_ONLY === '1';
 const pdfOnly = process.env.ARCHIVE_PERFORMANCE_PDF_ONLY === '1';
 const skipPdf = process.env.ARCHIVE_PERFORMANCE_SKIP_PDF === '1';

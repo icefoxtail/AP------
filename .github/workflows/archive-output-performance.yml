@@ -10,6 +10,8 @@ on:
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
       - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-strict-gate.cjs'
+      - 'tests/archive2-output-comparison-references.json'
       - 'tests/archive2-output-release-qualification.cjs'
       - 'tests/archive2-output-release-qualification.test.cjs'
       - 'tests/archive2-solution-loading-browser.cjs'
@@ -30,6 +32,8 @@ on:
       - 'tests/archive2-output-cache-browser.cjs'
       - 'tests/archive-mixed-envelope-cache.test.cjs'
       - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-strict-gate.cjs'
+      - 'tests/archive2-output-comparison-references.json'
       - 'tests/archive2-output-release-qualification.cjs'
       - 'tests/archive2-output-release-qualification.test.cjs'
       - '.github/workflows/archive-output-performance.yml'
@@ -38,7 +42,7 @@ on:
       baseline_sha:
         description: 'Exact baseline commit for the same-input Chrome comparison'
         type: string
-        default: '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a'
+        default: '4a262850e4574f9e006ba0bd69a5f2aa31b84019'
         required: true
 
 permissions:
@@ -57,7 +61,7 @@ jobs:
           persist-credentials: false
       - name: Fetch only the comparison baseline
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -71,14 +75,12 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Measure real output routes in actual Chrome
-        # The raw matrix deliberately retains the pre-existing qpp4 failure.
-        # The release job below classifies only its exact pinned signature and
-        # fails on every new failure, absent artifact or unplanned missing row.
-        continue-on-error: true
+        # Compare immutable correctness-only reference and optimized code.
+        # Every planned real output must now pass; no known-failure allowance.
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
           ARCHIVE_PERFORMANCE_PROFILE_ONLY: '0'
           ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
           ARCHIVE_PERFORMANCE_REPEATS: '3'
@@ -101,11 +103,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          # The required SVG/runtime guard resolves the PR merge-base with main.
           fetch-depth: 0
           persist-credentials: false
-      - name: Refresh upstream main for the required runtime guard
-        run: git fetch --no-tags origin main
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -159,7 +158,7 @@ jobs:
           persist-credentials: false
       - name: Fetch only the comparison baseline
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -177,11 +176,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq poppler-utils
       - name: Compare actual Chrome PDFs in an isolated print session
-        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-pdf-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
           ARCHIVE_PERFORMANCE_PDF_ONLY: '1'
           ARCHIVE_PERFORMANCE_REPEATS: '1'
           ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-pdf
@@ -233,11 +231,9 @@ jobs:
       - name: Independently qualify performance, parity and failure preservation
         env:
           ARCHIVE_QUALIFICATION_CURRENT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: >-
-          node tests/archive2-output-release-qualification.cjs
-          --artifacts "$RUNNER_TEMP/archive-output-all-evidence"
-          --current-sha "$ARCHIVE_QUALIFICATION_CURRENT_SHA"
-      - name: Upload scoped qualification without replacing raw failures
+          ARCHIVE_QUALIFICATION_ARTIFACTS: ${{ runner.temp }}/archive-output-all-evidence
+        run: node tests/archive2-output-strict-gate.cjs
+      - name: Upload strict complete-matrix qualification
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -262,7 +258,7 @@ jobs:
           persist-credentials: false
       - name: Fetch only the comparison baseline
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -276,14 +272,11 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-network-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Measure complete cold loading under the same network limit
-        # The immutable baseline may fail its old 1.2s image-preparation gate.
-        # The mandatory qualifier requires the exact diagnosed baseline fault,
-        # every current operation ready, and parity with the normal baseline.
-        continue-on-error: true
+        # Both references use the validated cold-image preparation budget.
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-network-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '4a262850e4574f9e006ba0bd69a5f2aa31b84019' }}
           ARCHIVE_PERFORMANCE_NETWORK_ONLY: '1'
           ARCHIVE_PERFORMANCE_NETWORK_FIXTURE: ${{ matrix.fixture }}
           ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
@@ -311,7 +304,7 @@ jobs:
           persist-credentials: false
       - name: Fetch the original regression suite baseline
         env:
-          ARCHIVE_SOLUTION_BASE_SHA: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+          ARCHIVE_SOLUTION_BASE_SHA: '6f30f21e0b4e20ae40e0bde9a3acadb534bd52e7'
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_SOLUTION_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -337,7 +330,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+          ARCHIVE_SOLUTION_BASE_SHA: '6f30f21e0b4e20ae40e0bde9a3acadb534bd52e7'
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs

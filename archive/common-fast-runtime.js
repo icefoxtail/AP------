@@ -60,7 +60,7 @@
                         sourceArchiveFile: policy.name, canonicalDataFingerprint: N.semanticDigest((policy.renderIdentity || policy.sourceIdentity)(state)),
                         businessData: policy.sourceIdentity(input.state) },
                     state, environment: { url: policy.renderUrl?.(input.url) || input.url },
-                    fingerprints: { engine: 'common-fast-output-performance-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
+                    fingerprints: { engine: 'common-fast-output-performance-20261106.2', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
             },
             async build(ctx) {
                 check(ctx);
