@@ -614,7 +614,7 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA"
   },
   {
     "id": 20,
