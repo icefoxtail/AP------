@@ -1663,7 +1663,7 @@
         parts: M.secs.map((x, i) => ({ id: 'S' + i, name: `꼭짓점 ${x.id} 중심`, desc: `반지름 ${num(x.R)}, 중심각 60°`, value: ratPi(x.area), color: x.col })),
         chips: done ? [{ k: '색칠한 부분', html: `$${M.secs.map((x) => ratPiTex(x.area)).join('+')}=${ratPiTex(M.area)}$ cm²`, color: 'rose' }] : [],
         formula: `<p><b>색칠한 부분의 넓이</b> = (부채꼴들의 합)</p><p>정육각형의 한 바깥각은 360° ÷ 6 = 60°이므로 모든 부채꼴의 중심각이 60°예요.</p><p>반지름: ${M.secs.map((x) => num(x.R)).join(', ')} (한 변씩 늘어요)</p>`,
-        notes: '<p>• 중심각은 정육각형의 <b>안쪽 각 120°</b>가 아니라 <b>바깥각 60°</b>예요.</p><p>• 반지름은 꼭짓점이 바뀔 때마다 <b>한 변의 길이만큼</b> 늘어나요 (3, 6, 9 …).</p>',
+        notes: `<p>• 중심각은 정육각형의 <b>안쪽 각 120°</b>가 아니라 <b>바깥각 60°</b>예요.</p><p>• 반지름은 꼭짓점이 바뀔 때마다 <b>한 변의 길이만큼</b> 늘어나요 (${num(M.p)}, ${num(2 * M.p)}, ${num(3 * M.p)} …).</p>`,
         summary: done ? `색칠한 부분의 넓이 = ${ratPi(M.area)} cm²` : null
       };
     },

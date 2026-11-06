@@ -1049,7 +1049,8 @@
         ],
         formula: `<p>(가)=(나) ⟺ (반원) = (부채꼴)</p><p>$${piT(M.hdK)}=\\pi\\times${M.dia}^2\\times\\dfrac{x}{360}\\ \\Rightarrow\\ x=45$</p>`,
         rule: '(가)=(나) 이면, 같은 공통 부분을 더한 두 도형의 넓이도 같다.',
-        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>부채꼴의 반지름은 반원의 <b>지름</b>(' + M.dia + ' cm)이에요. 반지름이 2배면 넓이는 4배!</li><li>반지름이 지름과 같은 부채꼴에서는 반원의 크기와 상관없이 항상 x = 45° 예요.</li></ul>'
+        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>부채꼴의 반지름은 반원의 <b>지름</b>(' + M.dia + ' cm)이에요. 반지름이 2배면 넓이는 4배!</li>'
+          + ((s.revealed || (C.review && C.step >= 5)) ? '<li>반지름이 지름과 같은 부채꼴에서는 반원의 크기와 상관없이 항상 x = 45° 예요.</li>' : '') + '</ul>'
       };
     },
     std: (M) => ({

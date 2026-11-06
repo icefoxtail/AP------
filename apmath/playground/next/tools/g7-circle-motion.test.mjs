@@ -352,3 +352,36 @@ await test('the ring angle label stays clear of its radius handle and dragging s
     assert.equal(lab.s[scene.csKeys.K('r')], R - 1, 'radial drag reads distance from the actual centre');
   }
 });
+
+await test('notes preserve the circle equality principle without disclosing the unknown angle before the final step', async () => {
+  const lab = await load();
+  for (const diameter of [6, 12, 18]) {
+    const scene = lab.go('f3-half-sector'); lab.s.f3q = diameter;
+    lab.tab = 'problem'; lab.draw(); lab.tab = 'review';
+    const finalStep = call(scene.steps, lab.s).length;
+    for (let step = 0; step < finalStep; step++) {
+      lab.s.step = step; lab.s.revealed = false;
+      const { value } = lab.draw();
+      assert.doesNotMatch(value.notes, /x\s*=\s*45/, `diameter ${diameter}, step ${step}: the unknown angle is not a prior hint`);
+      assert.match(value.notes, /지름/, 'the useful radius-versus-diameter warning remains');
+      assert.match(value.rule, /공통 부분/, 'the equality principle remains');
+    }
+    lab.s.step = finalStep;
+    assert.match(lab.draw().value.notes, /x\s*=\s*45/);
+    lab.s.step = 1; lab.s.revealed = true;
+    assert.match(lab.draw().value.notes, /x\s*=\s*45/, 'an explicit answer reveal remains respected');
+  }
+});
+
+await test('variable-angle and spiral notes stay consistent with the current givens', async () => {
+  const lab = await load();
+  lab.go('f5-ring240'); lab.s.f5C = 60; lab.tab = 'review'; lab.s.step = 1;
+  assert.doesNotMatch(lab.draw().value.notes, /잘라 낸 각\(120°\)/, 'a 60° cut is not described as a 120° cut');
+  lab.go('gt-spiral'); lab.tab = 'review';
+  for (const side of [2, 3, 4, 5]) {
+    lab.s.gtP = side; lab.s.step = 1;
+    const notes = lab.draw().value.notes;
+    assert.ok(notes.includes(`${side}, ${2 * side}, ${3 * side}`), `the increasing radii agree with side ${side}`);
+    assert.match(notes, /바깥각 60°/, 'the valid exterior-angle principle remains');
+  }
+});

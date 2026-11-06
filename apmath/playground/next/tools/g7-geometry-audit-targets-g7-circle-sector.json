@@ -437,5 +437,71 @@
       "f1_ring_t": 0
     },
     "check": "Angle label, inner-radius handle and area caption remain separate."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-locked-small",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f3q": 6,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Notes retain diameter and equal-area principles; x=45 is absent before the final step."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-locked-penultimate",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 4,
+    "params": {
+      "f3q": 12,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Current intermediate equation is shown, but final numeric angle remains absent from notes."
+  },
+  {
+    "id": "f3-half-sector",
+    "label": "notes-angle-final-large",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 5,
+    "params": {
+      "f3q": 18,
+      "f3x": 30,
+      "f3t": 1
+    },
+    "check": "Final equation and notes agree on x=45 degrees for diameter18."
+  },
+  {
+    "id": "f5-ring240",
+    "label": "notes-cut60",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "f5A": 6,
+      "f5B": 3,
+      "f5C": 60,
+      "f5T": 0
+    },
+    "check": "Notes do not describe the current 60-degree cut as120degrees."
+  },
+  {
+    "id": "gt-spiral",
+    "label": "notes-side5",
+    "fromTab": "problem",
+    "tab": "review",
+    "step": 1,
+    "params": {
+      "gtP": 5,
+      "gtK": 3,
+      "gtT": 0
+    },
+    "check": "The radii sequence in notes is5,10,15, matching the current side5."
   }
 ]
