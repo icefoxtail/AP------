@@ -62,7 +62,7 @@ export function summarizeArchiveMetaBacklog({requests, provisionalReceipts={}, a
       oldProvisionalStatus:old?.metadataApprovalStatus||null,
       oldVerifiedStatus:old?.metadataVerificationStatus||null,
       oldProjectionStatus:old?.canonicalProjectionStatus||null,
-      nextAction, registrationProven:false,
+      nextAction, registrationEvidenceStatus:'NOT_EVALUATED',
     };
   });
   if(new Set(rows.map(r=>r.requestId)).size!==rows.length)throw Error('DUPLICATE_REQUEST_ID');
@@ -79,7 +79,7 @@ export function summarizeArchiveMetaBacklog({requests, provisionalReceipts={}, a
       oldProvisionalNotVerified:rows.filter(r=>r.oldVerifiedStatus==='NOT_VERIFIED').length,
       byNextAction:countBy(rows,r=>r.nextAction),
       globalPendingReasonOccurrences:countBy(allReasons,x=>x),
-      registrationProven:0,
+      registrationEvidenceStatus:'NOT_EVALUATED',
     },
     requests:rows,
   };
