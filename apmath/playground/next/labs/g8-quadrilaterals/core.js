@@ -1,7 +1,7 @@
 /* ==========================================================================
    중2 · 사각형의 성질 — 공용 도구 (core.js)
    - 여섯 개 탭 모듈(t1~t6.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_QD(도구)와 APL_QD_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 풀이 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 문제(5지선다 + 숫자 바꾸기) → 현재 문제 풀이(단계별 그림).
    - 색의 역할(이 실험실 전체): 하늘 = 주어진 각·변 · 분홍 = 구하는 값 x · 노랑 = 끌 수 있는 점·같은 길이 눈금 · 초록 = 보조선·완성한 도형·합동/평행 · 기본 = 도형의 변.
    - 같은 크기의 각은 같은 표시(호 1개, 2개, 3개), 직각은 네모, 같은 길이는 눈금, 평행선은 화살표.
    - 움직임은 가로 이동만(세로 이동 없음). 제자리 회전·접기·서서히 나타남은 허용.
@@ -314,7 +314,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="qd-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="qd-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="qd-fb ok"><b>정답이에요!</b> 풀이 탭에서 현재 문제의 풀이 과정을 확인해 보세요.</div>' : `<div class="qd-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="qd-tools"><button type="button" class="apl-btn sm" data-qd-new>숫자 바꾸기</button>${Q.note ? `<span class="qd-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -408,6 +408,7 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, qd: D,
+      tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
       question: (s) => { const Q = D.prob(D.model(s), s); return Q.stem || Q.html; },
       reviewTop: (s) => { const Q = D.prob(D.model(s), s); return `<div class="qd-q"><b>현재 문제</b><br>${Q.html || esc(Q.stem)}</div>`; },
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
