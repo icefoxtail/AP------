@@ -154,7 +154,7 @@ window.APLab.catalog = {
    "short": "원과 부채꼴",
    "summary": "원의 각 부분, 호의 길이, 둘레, 넓이 원리를 도형을 직접 조절하며 탐구하고, 도형을 굴리거나 밀어 점이 움직인 거리와 도형 변환(넣기·파내기, 나누기·합치기, 겹치기, 잘라서 채우기, 복합 원호·끈의 최소 길이, 점의 이동)을 경험합니다.",
    "keywords": "원 부채꼴 호 현 중심각 활꼴 반원 사분원 호의 길이 둘레 넓이 굴리기 점이 움직인 거리 끈의 최소 길이 원이 지나간 자리 묶인 동물 중1",
-   "badge": "12탭",
+   "badge": "13탭",
    "scenes": [
     "원 알아보기",
     "중심각과 호·넓이",
@@ -167,12 +167,13 @@ window.APLab.catalog = {
     "복합 원호",
     "점의 이동 — 굴리기",
     "원이 지나간 자리",
-    "묶인 동물의 영역"
+    "묶인 동물의 영역",
+    "각과 호의 응용"
    ],
    "legacy": "labs/g7/원과_부채꼴_통합_마스터_스튜디오.html?v=20261027-circlelab-26",
    "next": "next/labs/g7-circle-sector.html",
    "glyph": "<circle cx=\"40\" cy=\"38\" r=\"28\"/><path d=\"M40 38 L40 10 A28 28 0 0 1 64 52 Z\" fill=\"currentColor\" fill-opacity=\".15\"/><path d=\"M40 38 L40 10 M40 38 L64 52\"/>",
-   "sceneTotal": 92,
+   "sceneTotal": 86,
    "extra": [
     {
      "label": "기초판",

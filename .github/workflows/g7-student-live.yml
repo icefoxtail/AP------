@@ -1,0 +1,50 @@
+name: G7 student live smoke
+
+# Read-only observation of the published site. The triggering event SHA is not
+# assumed to be its source SHA: Archive Pages Release checks out current main.
+# Release context and exact served-file hashes remain separate evidence.
+on:
+  workflow_run:
+    workflows: [Archive Pages Release]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g7-student-live-smoke
+  cancel-in-progress: true
+
+jobs:
+  published-site:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          sparse-checkout: apmath/playground/next
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Read the published labs on desktop and mobile viewports
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          RELEASE_RUN_ID: ${{ github.event.workflow_run.id }}
+          RELEASE_EVENT_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          LIVE_SMOKE_RUN_ID: ${{ github.run_id }}
+        run: node apmath/playground/next/tools/g7-student-live-smoke.mjs --out "$RUNNER_TEMP/g7-student-live"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g7-student-live-${{ github.run_id }}
+          path: ${{ runner.temp }}/g7-student-live/
+          retention-days: 14

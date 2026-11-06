@@ -6,6 +6,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
+import { probeSpatialSelection, probePolyhedronCell } from './g7-geometry-selection-probes.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
@@ -79,6 +80,8 @@ try {
       });
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g7Labels = []; lab.render(); });
       const capture = async filename => {
+        // Full-page screenshots of a scrolled sticky stage can contain an artificial
+        // blank strip. Capture from the actual page top after real interactions.
         await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
         await settle();
         await page.screenshot({ path: path.join(out, filename), fullPage: true });
@@ -98,13 +101,25 @@ try {
           const want = get(lab.scene.controls).filter(k => lab.params[k]).length + get(lab.scene.presets).length + get(lab.scene.actions).length;
           const have = [...document.querySelectorAll('.apl-ctl, .apl-presets .apl-chip, .apl-actions-row button')].filter(e => e.checkVisibility()).length;
           const clipped = window.__g7Labels.filter(q => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2);
-          return { ink, sampledInk, clipped, labels: window.__g7Labels, want, have, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
+          const reviewSteps = Array.from(lab.refs.steps?.children || []).map((el, i) => ({ index: i + 1, open: i < lab.s.step, text: el.children[1]?.textContent.trim() || '', expanded: el.getAttribute('aria-expanded') }));
+          const futureStepText = reviewSteps.filter(x => !x.open && x.text !== '선택하면 이 단계의 풀이가 열립니다.');
+          const hint = document.querySelector('.apl-orient-hint'), hr = hint?.checkVisibility() ? hint.getBoundingClientRect() : null, cr = c.getBoundingClientRect();
+          const orientationHintOverlap = hr ? Math.max(0, Math.min(hr.right, cr.right) - Math.max(hr.left, cr.left)) * Math.max(0, Math.min(hr.bottom, cr.bottom) - Math.max(hr.top, cr.top)) : 0;
+          const question = lab.scene.question, expectedQuestion = document.createElement('div');
+          expectedQuestion.innerHTML = question ? APLab.renderMath(typeof question === 'function' ? question(lab.s, lab) : question) : '';
+          const normalize = text => (text || '').replace(/\s+/g, ' ').trim();
+          const questionText = normalize(lab.ui.head.querySelector('.apl-question .q')?.textContent);
+          const questionMatches = questionText === normalize(expectedQuestion.textContent);
+          return { ink, sampledInk, clipped, labels: window.__g7Labels, want, have, reviewSteps, futureStepText, orientationHintOverlap, questionText, questionMatches, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
         });
         const issues = [];
         if (obs.ink < 200) issues.push('blank-canvas');
         if (obs.clipped.length) issues.push('clipped-label');
         if (obs.overflow) issues.push('horizontal-overflow');
         if (obs.katexErrors.length) issues.push('katex-error');
+        if (obs.tab === 'review' && obs.futureStepText.length) issues.push('future-step-disclosure');
+        if (obs.orientationHintOverlap > 0) issues.push('orientation-hint-covers-canvas');
+        if (!obs.questionMatches) issues.push('question-text-state-mismatch');
         if (!obs.guide) issues.push('missing-guide');
         if (state === 'initial' && obs.want !== obs.have) issues.push('missing-control');
         const nSteps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
@@ -120,9 +135,29 @@ try {
       const targetDir = path.dirname(new URL(import.meta.url).pathname);
       const unitTargetFile = path.join(targetDir, `g7-geometry-audit-targets-${unit}.json`);
       const targetFile = path.join(targetDir, 'g7-geometry-audit-targets.json');
-      const rawCases = fs.existsSync(unitTargetFile) ? JSON.parse(fs.readFileSync(unitTargetFile, 'utf8')) : fs.existsSync(targetFile) ? JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || [] : [];
-      const cases = rawCases.map(x => typeof x === 'string' ? { id: x } : x);
-      for (const c of cases) targets.add(String(c.id));
+      const normalize = x => typeof x === 'string' ? { id: x } : x;
+      const unitCases = fs.existsSync(unitTargetFile) ? JSON.parse(fs.readFileSync(unitTargetFile, 'utf8')).map(normalize) : [];
+      const commonCases = (fs.existsSync(targetFile) ? JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || [] : []).map(normalize);
+      // Named per-unit cases replace their earlier shared revision. Otherwise keep
+      // both sources: adding a unit manifest must not silently remove old risks.
+      const named = new Set(unitCases.filter(x => x.label).map(x => x.id + '|' + x.label));
+      const stable = x => Array.isArray(x) ? x.map(stable) : x && typeof x === 'object' ? Object.fromEntries(Object.keys(x).sort().map(k => [k, stable(x[k])])) : x;
+      const seen = new Set(), filenames = new Set(), cases = [];
+      for (const x of [...unitCases, ...commonCases.filter(x => !x.label || !named.has(x.id + '|' + x.label))]) {
+        const key = JSON.stringify(stable({ id: x.id, tab: x.tab || 'explore', step: x.step ?? 0, params: x.params || {}, inputKey: x.inputKey || '', fromTab: x.fromTab || '' }));
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const c = { ...x }, name = c.id + '|' + (c.label || c.tab || 'fixed');
+        if (filenames.has(name)) c.label = (c.label || c.tab || 'fixed') + '-case-' + cases.length;
+        filenames.add(c.id + '|' + (c.label || c.tab || 'fixed'));
+        cases.push(c);
+      }
+      dest.targets = cases;
+      const sceneIds = new Set(scenes.map(scene => scene.id));
+      for (const c of cases) {
+        if (!sceneIds.has(String(c.id))) report.failures.push({ unit, run: run.name, reason: 'unknown-target-scene', id: String(c.id), label: c.label });
+        targets.add(String(c.id));
+      }
       for (const scene of scenes) {
         await page.evaluate(i => lab.goScene(i), scene.index);
         await measure(scene, 'initial');
@@ -272,6 +307,22 @@ try {
           targetObservation.target = { requested: c, actual: await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, lab.s[k]])), [...new Set([...Object.keys(c.params || {}), ...Object.keys(c.waitFor?.values || {})])]) };
           const filename = `${unit}--${scene.id}--${run.name}--${label}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await capture(filename);
+        }
+      }
+      // A small movement can correctly remain in one snap region. Demonstrate
+      // a different legal selection with native pointer events on desktop.
+      if (run.name === 'pc' && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
+        const probes = unit === 'g7-spatial'
+          ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' })], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' })]]
+          : [['regular-solid-cell', () => probePolyhedronCell(page)]];
+        for (const [label, execute] of probes) {
+          try {
+            dest.interactions.push({ run: run.name, label, ...await execute() });
+            await capture(`${unit}--${run.name}--selection-${label}.png`);
+          } catch (error) {
+            dest.interactions.push({ run: run.name, control: 'pointer-selection', label, pass: false, error: error.message });
+            report.failures.push({ unit, run: run.name, reason: 'different-selection-not-demonstrated', label, error: error.message });
+          }
         }
       }
       if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });

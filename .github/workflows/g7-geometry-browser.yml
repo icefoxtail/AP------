@@ -9,7 +9,10 @@ on:
       - 'apmath/playground/next/kit/**'
       - 'apmath/playground/next/tools/g7-geometry-*'
       - 'apmath/playground/next/tools/g7-*.test.mjs'
+      - 'apmath/playground/next/tools/apl-shell-disclosure-browser.mjs'
+      - 'apmath/playground/next/tools/g7-student-live-smoke.mjs'
       - '.github/workflows/g7-geometry-browser.yml'
+      - '.github/workflows/g7-student-live.yml'
   workflow_dispatch:
 
 permissions:
@@ -17,6 +20,10 @@ permissions:
 
 jobs:
   browser:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -42,6 +49,7 @@ jobs:
         id: scope
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          SHARD: ${{ matrix.shard }}
         run: |
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           git worktree add --detach "$RUNNER_TEMP/g7-baseline" "$BASE_SHA"
@@ -51,23 +59,46 @@ jobs:
           const all = ['g7-points-lines','g7-parallel','g7-spatial','g7-construction','g7-area','g7-polygons','g7-circle-sector','g7-polyhedra','g7-surface-volume','g7-solids'];
           const changed = execFileSync('git',['diff','--name-only',process.env.BASE_SHA,'HEAD'],{encoding:'utf8'}).trim().split('\n');
           const picked = new Set(changed.map(p => /^apmath\/playground\/next\/labs\/(g7-[\w-]+)(?:\/|\.html$)/.exec(p)?.[1]).filter(x => all.includes(x)));
-          const shared = changed.some(p => /\/kit\//.test(p));
-          const units = shared || !picked.size ? all : [...picked];
+          for (const p of changed) {
+            const unit = /g7-geometry-audit-targets-(g7-[\w-]+)\.json$/.exec(p)?.[1];
+            if (all.includes(unit)) picked.add(unit);
+          }
+          const shared = changed.some(p => /\/kit\//.test(p) || /g7-geometry-(?:browser-audit|selection-probes)\.mjs$|g7-student-live-smoke\.mjs$|g7-student-live\.yml$|g7-geometry-audit-targets\.json$|g7-[^/]+\.test\.mjs$|apl-shell-disclosure-browser\.mjs$|g7-geometry-browser\.yml$/.test(p));
+          const affected = shared || !picked.size ? all : [...picked];
+          const units = all.filter((unit, i) => affected.includes(unit) && i === Number(process.env.SHARD));
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`units=${units.join(',')}\n`);
           JS
       - name: Observe baseline at the same viewports
+        if: steps.scope.outputs.units != ''
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_UNITS: ${{ steps.scope.outputs.units }}
         run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root "$RUNNER_TEMP/g7-baseline" --out "$RUNNER_TEMP/g7-evidence/before" --units "$G7_UNITS" --baseline-observe
       - name: Validate candidate at four viewports
+        if: steps.scope.outputs.units != ''
         env:
           NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
           G7_UNITS: ${{ steps.scope.outputs.units }}
         run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root . --out "$RUNNER_TEMP/g7-evidence/after" --units "$G7_UNITS"
+      - name: Shared review controls outside G7
+        if: matrix.shard == 0
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+        run: node apmath/playground/next/tools/apl-shell-disclosure-browser.mjs --root . --out "$RUNNER_TEMP/g7-evidence/shared-shell"
+      - name: Validate the live-smoke contract against the candidate files
+        if: matrix.shard == 0
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/g7-smoke-http.log" 2>&1 &
+          g7_smoke_server_pid=$!
+          trap 'kill "$g7_smoke_server_pid"' EXIT
+          curl --retry 10 --retry-connrefused --retry-delay 1 --max-time 5 --silent --fail http://127.0.0.1:8765/apmath/playground/next/labs/g7-points-lines.html > /dev/null
+          node apmath/playground/next/tools/g7-student-live-smoke.mjs --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/g7-evidence/local-http-smoke"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: g7-geometry-browser-${{ github.run_id }}
+          name: g7-geometry-browser-${{ github.run_id }}-${{ matrix.shard }}
           path: ${{ runner.temp }}/g7-evidence/
           retention-days: 14
