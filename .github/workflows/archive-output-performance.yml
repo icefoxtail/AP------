@@ -6,6 +6,7 @@ on:
     paths:
       - 'archive/**'
       - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-output-pdf-evidence.cjs'
       - 'tests/archive2-solution-loading-browser.cjs'
       - '.github/workflows/archive-output-performance.yml'
   pull_request:
@@ -19,6 +20,7 @@ on:
       - 'archive/mixed_engine.html'
       - 'archive/engine.html'
       - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-output-pdf-evidence.cjs'
       - '.github/workflows/archive-output-performance.yml'
   workflow_dispatch:
     inputs:
@@ -40,8 +42,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
+      - name: Fetch only the comparison baseline
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -53,6 +59,10 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Install the PDF raster inspector
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
       - name: Measure real output routes in actual Chrome
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}

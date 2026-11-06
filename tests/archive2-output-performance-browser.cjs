@@ -10,6 +10,7 @@ const crypto = require('node:crypto');
 const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const H = require('./archive2-solution-loading-browser.cjs');
+const { inspectPdf } = require('./archive2-output-pdf-evidence.cjs');
 
 const root = path.resolve(__dirname, '..');
 const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a';
@@ -26,7 +27,7 @@ const fixtures = [
   { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] }
 ];
 const report = { schema: 'ARCHIVE_OUTPUT_PERFORMANCE_CHROME_V1', baselineSha: baseSha,
-  profileOnly, repeats, rows: [], comparisons: [], failures: [], summaries: [],
+  profileOnly, repeats, rows: [], comparisons: [], failures: [], cycles: [], summaries: [],
   conditions: { viewport: { width: 1440, height: 1000 }, cpuThrottleRate: 1,
     networkCachePolicy: 'no-store', warmMeaning: 'same-document initialized assets and mode snapshots',
     p95Method: 'nearest rank; for fewer than 20 samples this is the observed maximum, not a population tail estimate',
@@ -36,9 +37,16 @@ function requireThat(value, code, details = {}) {
   if (!value) throw Object.assign(new Error(code), { code, details });
 }
 function safeError(error) {
+  const details = {};
+  if (error?.code && error.message === error.code) for (const [key, value] of Object.entries(error.details || {})) {
+    if (Array.isArray(value)) {
+      details[key + 'Count'] = value.length;
+      details[key + 'Sha256'] = hash(JSON.stringify(value));
+    } else details[key] = value;
+  }
   return { code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(error?.code || '') ? error.code : 'OUTPUT_PERFORMANCE_FAILED',
     name: String(error?.name || 'Error'), messageSha256: hash(String(error?.message || '')),
-    ...(error?.code && error.message === error.code ? { details: error.details || {} } : {}) };
+    ...(Object.keys(details).length ? { details } : {}) };
 }
 function writeReport() {
   fs.mkdirSync(reportDir, { recursive: true });
@@ -58,6 +66,29 @@ async function bounded(work, cap = 90000) {
 
 function installProfile() {
   const profile = window.__outputPerformance = { adapters: [], runtimeReadyAt: null, envelopeReadyAt: null, operation: 0 };
+  profile.classifyError = async error => {
+    const message = String(error?.message || '');
+    const messageSha256 = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(message))), byte => byte.toString(16).padStart(2, '0')).join('');
+    const known = [
+      [/^PDF readiness failed: content clipped inside (\d+) element\(s\)\.$/, 'PDF_CONTENT_CLIPPED'],
+      [/^PDF readiness failed: layout overflow detected on (\d+) page\(s\)\.$/, 'PDF_LAYOUT_OVERFLOW'],
+      [/^PDF readiness failed: (?:verified envelope|rendered output) does not match the requested envelope\.$/, 'PDF_ENVELOPE_IDENTITY_MISMATCH'],
+      [/^(?:PDF readiness failed: )?required image (\d+) (?:is unavailable|failed to load)\.$/, 'PDF_IMAGE_UNAVAILABLE'],
+      [/^(?:PDF readiness failed: )?(?:render|font|MathJax|MathJax startup|image) readiness timed out\.$/, 'PDF_READINESS_TIMEOUT'],
+      [/^PDF readiness failed: math typesetting is incomplete\.$/, 'PDF_MATH_INCOMPLETE']
+    ];
+    let code = /^[A-Z][A-Z0-9_:-]{2,160}$/.test(error?.code || '') ? error.code :
+      /^[A-Z][A-Z0-9_:-]{2,160}$/.test(message) ? message : 'PUBLIC_MODE_SWITCH_FAILED';
+    let count;
+    for (const [pattern, classified] of known) {
+      const match = pattern.exec(message);
+      if (!match) continue;
+      code = classified;
+      if (match[1] && /^\d+$/.test(match[1])) count = Number(match[1]);
+      break;
+    }
+    return { code, name: String(error?.name || 'Error'), messageSha256, ...(count === undefined ? {} : { count }) };
+  };
   let api, envelopeReady;
   Object.defineProperty(window, '__AP_OUTPUT_RENDER_READY__', { configurable: true, get: () => envelopeReady, set(value) {
     envelopeReady = value;
@@ -111,12 +142,23 @@ async function documentEvidence(page) {
       value.payloadHash === envelope?.payloadHash && value.contractVersion === envelope?.contractVersion;
     const math = [...area.querySelectorAll('mjx-container')];
     const mathMarkup = math.map(node => node.innerHTML.replace(/MJX-\d+/g, 'MJX-N'));
+    const operationMath = window.__solutionLoadingQA.calls.filter(call => call.startMs >= window.__solutionLoadingQA.operationStart);
+    const solutionSources = [...area.querySelectorAll('.sol-box')].map(node => node.dataset.sourceRef || '');
     const clipping = [...area.querySelectorAll('.page *')].filter(node => {
       const style = getComputedStyle(node);
       return (['hidden', 'clip'].includes(style.overflowX) && node.scrollWidth > node.clientWidth + 3) ||
         (['hidden', 'clip'].includes(style.overflowY) && node.scrollHeight > node.clientHeight + 3);
     });
     const pages = [...area.querySelectorAll('.page')];
+    const clippingEvidence = clipping.map(node => {
+      const style = getComputedStyle(node), rect = node.getBoundingClientRect();
+      return { tag: node.tagName, classes: [...node.classList].filter(name => /^[A-Za-z0-9_-]+$/.test(name)),
+        sourceRef: node.closest('[data-source-ref]')?.dataset.sourceRef || '', page: pages.indexOf(node.closest('.page')) + 1,
+        clientWidth: node.clientWidth, clientHeight: node.clientHeight, scrollWidth: node.scrollWidth, scrollHeight: node.scrollHeight,
+        rectWidth: rect.width, rectHeight: rect.height, overflowX: style.overflowX, overflowY: style.overflowY,
+        display: style.display, fontSize: style.fontSize, lineHeight: style.lineHeight, whiteSpace: style.whiteSpace,
+        insideMath: !!node.closest('mjx-container'), insideSolution: !!node.closest('.sol-box') };
+    });
     return {
       inputHash: await digest(JSON.stringify((state.data || []).map(q => ({ id: q.id,
         uid: q._sourceQuestionUid || q.sourceQuestionUid || q.questionUid || q.source_question_uid || '',
@@ -125,14 +167,22 @@ async function documentEvidence(page) {
         solutionImage: q.solutionImage || '', solutionImageLayout: q.solutionImageLayout || '' })))),
       mathMarkupHash: await digest(JSON.stringify(mathMarkup)),
       mathGeometry: math.map(node => ({ width: Math.round(node.getBoundingClientRect().width), height: Math.round(node.getBoundingClientRect().height) })),
-      continuationCount: area.querySelectorAll('[data-continuation-of], [data-solution-trailing-rebalance]').length,
-      clippingCount: clipping.length,
+      operationMath: { calls: operationMath.length,
+        totalMs: operationMath.reduce((total, call) => total + (call.endMs - call.startMs), 0),
+        labels: operationMath.map(call => ({ label: call.label, elapsedMs: call.endMs - call.startMs })) },
+      continuationCount: solutionSources.length - new Set(solutionSources).size,
+      clippingCount: clipping.length, clippingEvidence,
       pageOverflowCount: pages.filter(node => node.scrollHeight > node.clientHeight + 3 || node.scrollWidth > node.clientWidth + 3).length,
       envelope: envelope ? { present: true, mode: envelope.mode, questionCount: envelope.questionCount,
         verifiedIdentityMatches: expectedEnvelopeIdentity(verified), renderedIdentityMatches: expectedEnvelopeIdentity(ready),
         urlIdentityMatches: new URLSearchParams(location.search).get('outputRequestId') === envelope.outputRequestId,
         errorPresent: !!window.__AP_OUTPUT_RENDER_ERROR__ } : { present: false },
       cacheStatus: attempt?.cacheStatus || null, snapshotId: runtime.activeSnapshot?.snapshotId || null,
+      committedMode: runtime.committedCandidate?.mode || null, snapshotMode: runtime.activeSnapshot?.mode || null,
+      urlMode: new URLSearchParams(location.search).get('mode'),
+      visibleKinds: { solutionBoxes: area.querySelectorAll('.sol-box').length,
+        answerCells: area.querySelectorAll('.ans-cell:not(.ans-cell-empty)').length,
+        examBoxes: area.querySelectorAll('.q-box:not(.sol-box)').length },
       attemptCount: runtime.inspect().attempts.length,
       phases: attempt?.metrics?.phases || {}, visibleReadyMs: attempt?.visibleReadyMs || null,
       runtimeReadyAt: profile.runtimeReadyAt, envelopeReadyAt: profile.envelopeReadyAt,
@@ -152,10 +202,59 @@ async function awaitInitialOutcome(page, strictEnvelope) {
     return !strict || attempt.state === 'FAILED' || !!window.__AP_OUTPUT_RENDER_READY__;
   }, strictEnvelope, { timeout: timeLeft(), polling: 25 });
   return page.evaluate(async () => {
-    if (window.__AP_OUTPUT_RENDER_ERROR__) return { ok: false, code: 'ENVELOPE_RENDER_FAILED' };
+    if (window.__AP_OUTPUT_RENDER_ERROR__) {
+      const error = await window.__outputPerformance.classifyError({ message: window.__AP_OUTPUT_RENDER_ERROR__ });
+      return { ok: false, code: error.code, error };
+    }
     const result = await window.__AP_RENDER_READY__;
     return { ok: result?.ok === true, code: result?.ok ? null : /^[A-Z][A-Z0-9_:-]{2,160}$/.test(result?.code || '') ? result.code : 'RENDER_FAILED' };
   });
+}
+
+async function printPreflight(page, before) {
+  const measured = await bounded(page.evaluate(async () => {
+    const started = performance.now();
+    try {
+      if (window.mixedFastHost) {
+        const result = await window.mixedFastHost.preflight();
+        return { ok: result.ok, pages: result.pages, elapsedMs: performance.now() - started };
+      }
+      const runtime = window.archiveScreenRuntime;
+      const result = window.APArchiveSnapshotContract.preflight(runtime.activeSnapshot, runtime.committedCandidate);
+      if (result.pass) window.bindArchiveRuntimePrintReadiness();
+      return { ok: result.pass, failedGates: Object.keys(result.gates).filter(key => !result.gates[key]), elapsedMs: performance.now() - started };
+    } catch (error) {
+      return { ok: false, code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(error?.code || error?.message || '') ? error.code || error.message : 'PRINT_PREFLIGHT_FAILED',
+        elapsedMs: performance.now() - started };
+    } finally { window.mixedFastHost?.unlockPrint(); }
+  }), 45000);
+  requireThat(measured.ok, 'SUCCESSFUL_RENDER_PRINT_PREFLIGHT_FAILED', measured);
+  // Capture and parity verification are deliberately outside the timed gate.
+  const after = await H.capture(page, before.outcome);
+  const parity = H.compareRows({ ...before, pass: true, name: 'before-preflight' }, { ...after, pass: true, name: 'after-preflight' });
+  return { ...measured, outputParity: parity, attemptsBefore: before.attempts.length, attemptsAfter: after.attempts.length };
+}
+
+async function printPdfMetadata(session, before) {
+  const started = performance.now();
+  const pdf = await bounded(session.cdp.send('Page.printToPDF', {
+    printBackground: true, preferCSSPageSize: true, displayHeaderFooter: false
+  }), 60000);
+  const elapsedMs = round(performance.now() - started);
+  const bytes = Buffer.from(pdf.data, 'base64');
+  const text = bytes.toString('latin1');
+  requireThat(bytes.subarray(0, 5).toString() === '%PDF-', 'CHROME_PDF_NOT_PRODUCED');
+  const pageCount = (text.match(/\/Type\s*\/Page\b/g) || []).length;
+  const mediaBoxes = [...text.matchAll(/\/MediaBox\s*\[\s*([-+\d.eE]+)\s+([-+\d.eE]+)\s+([-+\d.eE]+)\s+([-+\d.eE]+)\s*\]/g)]
+    .map(match => match.slice(1).map(value => round(Number(value))));
+  requireThat(pageCount === before.pageCount, 'PDF_PAGE_COUNT_CHANGED', { screenPages: before.pageCount, pdfPages: pageCount });
+  requireThat(mediaBoxes.length > 0 && mediaBoxes.every(box => box[2] > box[0] && box[3] > box[1]), 'PDF_PAGE_GEOMETRY_MISSING');
+  const after = await H.capture(session.page, before.outcome);
+  const screenParity = H.compareRows({ ...before, pass: true, name: 'before-pdf' }, { ...after, pass: true, name: 'after-pdf' });
+  // PDF timestamps/object identities are allowed to differ. Compare page count
+  // and physical geometry, while retaining the generated byte hash as evidence.
+  return { generated: true, elapsedMs, bytes: bytes.length, sha256: hash(bytes), pageCount, mediaBoxes,
+    fontObjects: (text.match(/\/Type\s*\/Font\b/g) || []).length, screenParity, raster: inspectPdf(bytes) };
 }
 
 async function openSession(browser, server, fixture, initialMode, slow) {
@@ -230,13 +329,21 @@ async function measureOperation(session, operation, label, repeat, network, firs
       Object.assign(qa, { operationStart: performance.now(), targetMode: mode, firstBoxMs: null, previousArea: oldArea });
       const started = performance.now();
       let result;
-      try { result = await window.switchMode(mode); }
-      catch (error) { result = { ok: false, code: /^[A-Z][A-Z0-9_:-]{2,160}$/.test(error?.code || '') ? error.code : 'PUBLIC_MODE_SWITCH_FAILED' }; }
-      const elapsed = performance.now() - started;
+      let elapsed;
+      try { result = await window.switchMode(mode); elapsed = performance.now() - started; }
+      catch (error) {
+        elapsed = performance.now() - started;
+        const classified = await profile.classifyError(error);
+        result = { ok: false, code: classified.code, error: classified };
+      }
+      if (result?.ok !== true && !result?.error) {
+        const classified = await profile.classifyError({ code: result?.code, message: result?.message || result?.code || '' });
+        result = { ok: false, code: classified.code, error: classified };
+      }
       const newAttempts = runtime.inspect().attempts.length;
       const alreadyVisible = previousMode === mode && oldArea === document.getElementById('print-area') &&
         oldSnapshot === runtime.activeSnapshot && previousAttempts === newAttempts;
-      return { outcome: { ok: result?.ok === true, code: result?.ok ? null : /^[A-Z][A-Z0-9_:-]{2,160}$/.test(result?.code || '') ? result.code : 'PUBLIC_MODE_SWITCH_FAILED' },
+      return { outcome: { ok: result?.ok === true, code: result?.ok ? null : result.code, ...(result?.error ? { error: result.error } : {}) },
         publicMs: elapsed, alreadyVisible, previousAttempts };
     }, operation.mode));
     ({ outcome, publicMs, alreadyVisible, previousAttempts } = result);
@@ -252,7 +359,11 @@ async function measureOperation(session, operation, label, repeat, network, firs
     cdp: Object.fromEntries(['LayoutCount', 'RecalcStyleCount', 'LayoutDuration', 'RecalcStyleDuration', 'ScriptDuration', 'TaskDuration'].map(key =>
       [key.endsWith('Duration') ? key + 'Ms' : key, round(((after[key] || 0) - (before[key] || 0)) * (key.endsWith('Duration') ? 1000 : 1))])),
     pageErrors: session.errors.slice() });
-  if (alreadyVisible) row.cacheStatus = 'UNCHANGED_ACTIVE';
+  if (alreadyVisible) {
+    row.cacheStatus = 'UNCHANGED_ACTIVE'; row.phases = {}; row.visibleReadyMs = null;
+    row.metrics = { renderReadyMs: 0, mathJaxTotalMs: 0, mathJaxCalls: 0, rafCount: 0, calls: [] };
+    row.typeset = { maxConcurrent: 0, calls: [] };
+  }
   row.pass = false;
   report.rows.push(row);
   writeReport();
@@ -261,34 +372,55 @@ async function measureOperation(session, operation, label, repeat, network, firs
   if (row.envelope.present) requireThat(row.envelope.mode === operation.mode && row.envelope.verifiedIdentityMatches &&
     row.envelope.renderedIdentityMatches && row.envelope.urlIdentityMatches && !row.envelope.errorPresent,
     'ENVELOPE_IDENTITY_NOT_READY', { fixture: fixture.id, operation: operation.id, identity: row.envelope });
-  const printStart = performance.now();
-  row.printPreflight = await H.verifiedPreflight(page, row);
-  row.printPreflightMs = round(performance.now() - printStart);
+  row.printPreflight = await printPreflight(page, row);
+  row.printPreflightMs = round(row.printPreflight.elapsedMs);
+  if (fixture.id === 'continuation-golden' && operation.mode === 'sol')
+    requireThat(row.continuationCount > 0, 'GOLDEN_CONTINUATION_NOT_EXERCISED');
+  if (repeat === 1 && network === 'normal' && ['cold-exam', 'exam-sol', 'sol-ans', 'cold-sol'].includes(operation.id))
+    row.pdf = await printPdfMetadata(session, row);
   row.pass = true;
   writeReport();
   console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, operation: operation.id, pass: true,
-    publicMs: row.publicMs, firstBoxMs: round(row.firstBoxMs), cache: row.cacheStatus, mathMs: row.metrics.mathJaxTotalMs,
-    mathCalls: row.metrics.mathJaxCalls, layoutMs: row.cdp.LayoutDurationMs, pages: row.pageCount,
+    publicMs: row.publicMs, firstBoxMs: round(row.firstBoxMs), cache: row.cacheStatus, mathMs: round(row.operationMath.totalMs),
+    mathCalls: row.operationMath.calls, layoutMs: row.cdp.LayoutDurationMs, pages: row.pageCount,
     printMs: row.printPreflightMs, phases: row.phases,
     adaptersMs: row.adapters.reduce((total, item) => { total[item.method] = round((total[item.method] || 0) + item.ms); return total; }, {}) }));
   return row;
 }
 
-async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, legacy = false } = {}) {
+async function cycle(browser, server, fixture, label, repeat, { coldSolution = false, slow = false, continuation = false } = {}) {
   const network = slow ? 'slow' : 'normal';
-  const operations = coldSolution ? [{ id: 'cold-sol', mode: 'sol' }] : [
+  const operations = continuation ? [{ id: 'cold-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' }, { id: 'ans-sol-warm', mode: 'sol' }] : coldSolution ? [{ id: 'cold-sol', mode: 'sol' }] : [
     { id: 'cold-exam', mode: 'exam' }, { id: 'exam-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' },
     { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
     { id: 'same-ans', mode: 'ans' }
   ];
-  const session = await openSession(browser, server, fixture, operations[0].mode, slow);
+  const planned = { fixture: fixture.id, label, repeat, network, operations: operations.map(item => item.id), pass: false, completed: 0 };
+  report.cycles.push(planned);
   const rows = [];
+  let session;
   try {
+    session = await openSession(browser, server, fixture, operations[0].mode, slow);
     for (let index = 0; index < operations.length; index += 1) {
       const row = await measureOperation(session, operations[index], label, repeat, network, index === 0);
       rows.push(row);
+      planned.completed += 1;
     }
-  } finally { await session.close(); }
+    planned.pass = true;
+  } catch (error) {
+    planned.failedOperation = operations[planned.completed]?.id || 'session-open';
+    planned.error = safeError(error);
+    const failedRow = report.rows.findLast(row => row.fixture === fixture.id && row.label === label && row.repeat === repeat &&
+      row.network === network && row.operation === planned.failedOperation);
+    if (failedRow && !rows.includes(failedRow)) { failedRow.error = planned.error; rows.push(failedRow); }
+    report.failures.push({ fixture: fixture.id, label, repeat, network, operation: planned.failedOperation, error: planned.error });
+    console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, operation: planned.failedOperation,
+      pass: false, code: planned.error.code, publicFailure: failedRow?.outcome?.error || null,
+      clipping: failedRow?.clippingEvidence || [], stateMode: failedRow?.mode, snapshotMode: failedRow?.snapshotMode,
+      completed: planned.completed, planned: operations.length }));
+    // A failure poisons this mode sequence. Independent fresh contexts still
+    // run, and the aggregate result remains FAIL; no missing operation passes.
+  } finally { await session?.close(); writeReport(); }
   return rows;
 }
 
@@ -300,7 +432,26 @@ function compare(before, after) {
   for (let index = 0; index < before.mathGeometry.length; index += 1) for (const axis of ['width', 'height'])
     requireThat(Math.abs(before.mathGeometry[index][axis] - after.mathGeometry[index][axis]) <= 1,
       'MATH_GEOMETRY_CHANGED', { fixture: before.fixture, operation: before.operation, index, axis });
+  if (before.pdf || after.pdf) requireThat(before.pdf?.generated && after.pdf?.generated &&
+    before.pdf.pageCount === after.pdf.pageCount && JSON.stringify(before.pdf.mediaBoxes) === JSON.stringify(after.pdf.mediaBoxes),
+    'PDF_GEOMETRY_PARITY_FAILED', { fixture: before.fixture, operation: before.operation });
+  if (before.pdf || after.pdf) requireThat(before.pdf?.raster && after.pdf?.raster &&
+    JSON.stringify(before.pdf.raster) === JSON.stringify(after.pdf.raster),
+    'PDF_PAINTED_OUTPUT_PARITY_FAILED', { fixture: before.fixture, operation: before.operation });
   return { ...parity, fixture: before.fixture, operation: before.operation, repeat: before.repeat, network: before.network, pass: true };
+}
+
+function compareCycles(before, after) {
+  const keys = [...new Set([...before, ...after].map(row => row.operation))];
+  for (const operation of keys) {
+    const baseline = before.find(row => row.operation === operation);
+    const current = after.find(row => row.operation === operation);
+    try { report.comparisons.push(compare(baseline, current)); }
+    catch (error) {
+      const row = baseline || current;
+      report.comparisons.push({ fixture: row?.fixture, operation, repeat: row?.repeat, network: row?.network, pass: false, error: safeError(error) });
+    }
+  }
 }
 
 function summary(values) {
@@ -320,7 +471,7 @@ function summarize() {
   return [...groups.values()].map(group => {
     const metrics = {};
     for (const [name, getter] of Object.entries({ publicMs: row => row.publicMs, firstVisibleMs: row => row.firstBoxMs,
-      mathMs: row => row.alreadyVisible ? 0 : row.metrics.mathJaxTotalMs,
+      mathMs: row => row.operationMath.totalMs,
       layoutMs: row => row.cdp.LayoutDurationMs, printPreflightMs: row => row.printPreflightMs })) {
       const baseline = summary(group.baseline.map(getter)), current = summary(group.current.map(getter));
       metrics[name] = { baseline, current,
@@ -364,8 +515,7 @@ async function main() {
           outputs[label] = await cycle(browser, server, fixture, label, repeat);
           if (fixture.kind === 'envelope') outputs[label].push(...await cycle(browser, server, fixture, label, repeat, { coldSolution: true }));
         }
-        if (!profileOnly) for (let index = 0; index < outputs.baseline.length; index += 1)
-          report.comparisons.push(compare(outputs.baseline[index], outputs.current[index]));
+        if (!profileOnly) compareCycles(outputs.baseline, outputs.current);
         writeReport();
       }
     }
@@ -375,16 +525,24 @@ async function main() {
     const legacyOutputs = {};
     for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
       legacyOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, legacy, label, 1);
-    if (!profileOnly) for (let index = 0; index < legacyOutputs.baseline.length; index += 1)
-      report.comparisons.push(compare(legacyOutputs.baseline[index], legacyOutputs.current[index]));
+    if (!profileOnly) compareCycles(legacyOutputs.baseline, legacyOutputs.current);
+    const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
+    const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
+    report.fixtures.push({ id: golden.id, kind: golden.kind, questions: golden.questions.length,
+      inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
+    const goldenOutputs = {};
+    for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
+      goldenOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, golden, label, 1, { continuation: true });
+    if (!profileOnly) compareCycles(goldenOutputs.baseline, goldenOutputs.current);
     // Throttle actual first-page resources separately. One paired sample is
     // useful failure evidence, but cannot establish a reliable network P95.
     const slowOutputs = {};
     for (const label of profileOnly ? ['current'] : ['baseline', 'current'])
       slowOutputs[label] = await cycle(browser, label === 'baseline' ? baselineServer : currentServer, fixtures[0], label, 1, { coldSolution: true, slow: true });
-    if (!profileOnly) report.comparisons.push(compare(slowOutputs.baseline[0], slowOutputs.current[0]));
-    report.outputParity = profileOnly ? 'NOT_RUN' : 'PASS';
-    report.pass = report.rows.length > 0 && report.rows.every(row => row.pass) && (profileOnly || report.comparisons.every(row => row.pass));
+    if (!profileOnly) compareCycles(slowOutputs.baseline, slowOutputs.current);
+    report.outputParity = profileOnly ? 'NOT_RUN' : report.failures.length === 0 && report.comparisons.every(row => row.pass) ? 'PASS' : 'FAIL';
+    report.pass = report.failures.length === 0 && report.cycles.every(cycle => cycle.pass) && report.rows.length > 0 &&
+      report.rows.every(row => row.pass) && (profileOnly || report.comparisons.every(row => row.pass));
   } finally {
     await browser?.close(); await baselineServer?.close(); await currentServer?.close();
     if (worktree) execFileSync('git', ['worktree', 'remove', '--force', baselineRoot], { cwd: root, stdio: 'pipe', timeout: 30000 });
