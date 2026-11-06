@@ -1,0 +1,583 @@
+[
+  {
+    "id": "sm1-len",
+    "label": "current-generated-width",
+    "tab": "review",
+    "step": 1,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 17,
+        "m": 2,
+        "n": 4,
+        "p": 2,
+        "q": 3,
+        "ask": 1
+      }
+    }
+  },
+  {
+    "id": "sm1-len",
+    "label": "current-generated-width-final",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 17,
+        "m": 2,
+        "n": 4,
+        "p": 2,
+        "q": 3,
+        "ask": 1
+      }
+    }
+  },
+  {
+    "id": "sm1-solid",
+    "label": "current-tet-correspondence",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "type": "tet",
+        "m": 3,
+        "n": 5,
+        "given": 0,
+        "ask": 1,
+        "ne": 3
+      }
+    }
+  },
+  {
+    "id": "sm1-solid",
+    "label": "current-box-correspondence",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 2,
+        "type": "box",
+        "m": 3,
+        "n": 4,
+        "given": 1,
+        "ask": 2,
+        "ne": 3
+      }
+    }
+  },
+  {
+    "id": "sm1-solid",
+    "label": "current-cyl-correspondence",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 9,
+        "type": "cyl",
+        "m": 3,
+        "n": 4,
+        "given": 1,
+        "ask": 0,
+        "ne": 2
+      }
+    }
+  },
+  {
+    "id": "sm1-always",
+    "label": "rectangle-same-proportions",
+    "tab": "explore",
+    "params": {
+      "smFam": "rec",
+      "smK2": 3,
+      "smRq": 0
+    }
+  },
+  {
+    "id": "sm1-always",
+    "label": "true-rhombus-small-angle",
+    "tab": "explore",
+    "params": {
+      "smFam": "rho",
+      "smK2": 2,
+      "smAq": 30
+    }
+  },
+  {
+    "id": "sm1-always",
+    "label": "five-families-mobile-grid",
+    "tab": "review",
+    "step": 1,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 2,
+        "askAlways": true,
+        "items": [
+          "rtr",
+          "sq",
+          "rec",
+          "trp",
+          "rho"
+        ]
+      }
+    }
+  },
+  {
+    "id": "sm2-tile",
+    "label": "physical-one-to-four-area-scale",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 32,
+        "kind": 0,
+        "p": 1,
+        "q": 4,
+        "c": 5
+      }
+    }
+  },
+  {
+    "id": "sm2-cone",
+    "label": "successive-cone-subtraction",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "kind": 1,
+        "h1": 2,
+        "h2": 1,
+        "h3": 1,
+        "c": 2
+      }
+    }
+  },
+  {
+    "id": "sm3-flip",
+    "label": "reversed-correspondence",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 3,
+        "n": 6,
+        "r": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm3-rot",
+    "label": "same-question-before-rotation",
+    "tab": "review",
+    "step": 1,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 1,
+        "n": 3,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm3-rot",
+    "label": "same-question-aligned-rotation",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 1,
+        "n": 3,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm3-ssa",
+    "label": "ssa-two-actual-intersections",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 4,
+        "kind": 0,
+        "c": 6,
+        "a": 4,
+        "aDeg": 30
+      }
+    }
+  },
+  {
+    "id": "sm3-ssa",
+    "label": "ssa-integer-boundary-fraction",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 2,
+        "kind": 1,
+        "c": 13,
+        "aDeg": 30
+      }
+    }
+  },
+  {
+    "id": "sm3-foldrect",
+    "label": "folded-corresponding-right-triangles",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 6,
+        "typ": "b",
+        "j": 2,
+        "kind": 1
+      }
+    }
+  },
+  {
+    "id": "sm3-foldequi",
+    "label": "mirrored-equilateral-fold",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 6,
+        "flip": 1,
+        "kind": 1
+      }
+    }
+  },
+  {
+    "id": "sm4-conv",
+    "label": "distinct-x-plus-y-lengths",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "d": 1,
+        "kind": 2,
+        "N": 3,
+        "p": 3,
+        "q": 3,
+        "rr": 4
+      }
+    }
+  },
+  {
+    "id": "sm4-four",
+    "label": "correct-medial-correspondence",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 8,
+        "t": 3,
+        "kind": 1
+      }
+    }
+  },
+  {
+    "id": "sm4-bis",
+    "label": "external-auxiliary-visible",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 2,
+        "n": 4,
+        "kind": 2
+      }
+    }
+  },
+  {
+    "id": "sm4-vari",
+    "label": "four-distinct-midpoint-ticks",
+    "tab": "review",
+    "step": 1,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 2,
+        "a": 12,
+        "bb": 4,
+        "th": 60,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm5-lmn",
+    "label": "long-parallel-auxiliary-fit",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 16,
+        "a": 4,
+        "bb": 4,
+        "u": 3,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm6-ah2",
+    "label": "integer-square-proportion",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 70,
+        "b": 9,
+        "c": 8,
+        "t": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm7-shadow",
+    "label": "long-shadow-mobile-fit",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 118,
+        "h": 1,
+        "s": 4,
+        "k": 5,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm8-six",
+    "label": "single-target-region-label",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 34,
+        "u": 8,
+        "kind": 2
+      }
+    }
+  },
+  {
+    "id": "sm8-gg",
+    "label": "centroid-corresponding-triangles",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 3,
+        "k": 5,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm8-chain",
+    "label": "successive-centroid-exact-fractions",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 2,
+        "c": 4,
+        "kind": 1
+      }
+    }
+  },
+  {
+    "id": "sm4-x",
+    "label": "inverse-scale-colors",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 63,
+        "m": 3,
+        "n": 1,
+        "r": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm3-sas",
+    "label": "distinct-angle-groups",
+    "tab": "review",
+    "step": 3,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 63,
+        "m": 1,
+        "n": 6,
+        "q": 2,
+        "a": 50,
+        "kind": 1
+      }
+    }
+  },
+  {
+    "id": "sm1-always",
+    "label": "rhombus-cyclic-correspondence",
+    "tab": "explore",
+    "params": {
+      "smFam": "rho",
+      "smK2": 2,
+      "smAq": 80
+    }
+  },
+  {
+    "id": "sm3-rot",
+    "label": "shared-vertex-outside-initial",
+    "tab": "explore",
+    "params": {
+      "smOm": 1,
+      "smOn": 3,
+      "smOrot": 210,
+      "smOt": 0
+    }
+  },
+  {
+    "id": "sm3-rot",
+    "label": "shared-vertex-outside-aligned",
+    "tab": "explore",
+    "params": {
+      "smOm": 1,
+      "smOn": 3,
+      "smOrot": 210,
+      "smOt": 1
+    }
+  },
+  {
+    "id": "sm8-proof",
+    "label": "centroid-copy-names-initial",
+    "tab": "explore",
+    "params": {
+      "smGt": 2,
+      "smGs": 2,
+      "smGa": 90,
+      "smGr": 0
+    }
+  },
+  {
+    "id": "sm8-proof",
+    "label": "centroid-copy-names-aligned",
+    "tab": "explore",
+    "params": {
+      "smGt": 2,
+      "smGs": 2,
+      "smGa": 90,
+      "smGr": 1
+    }
+  },
+  {
+    "id": "sm5-lmn",
+    "label": "auxiliary-m-length-separated",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "a": 4,
+        "bb": 2,
+        "u": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm4-ef",
+    "label": "inverse-ef-pair-colors",
+    "tab": "review",
+    "step": 2,
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 3,
+        "n": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm4-ef",
+    "label": "inverse-ef-final-pair",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 3,
+        "n": 2,
+        "kind": 0
+      }
+    }
+  },
+  {
+    "id": "sm7-river",
+    "label": "river-larger-triangle-initial",
+    "tab": "explore",
+    "params": {
+      "smRm": 2,
+      "smRn": 1,
+      "smRu": 2,
+      "smRw": 2
+    }
+  },
+  {
+    "id": "sm7-river",
+    "label": "river-larger-triangle-final",
+    "tab": "review",
+    "step": "final",
+    "fromTab": "problem",
+    "params": {
+      "smPk": {
+        "seed": 1,
+        "m": 3,
+        "n": 1,
+        "u": 2,
+        "w": 3,
+        "kind": 0
+      }
+    }
+  }
+]

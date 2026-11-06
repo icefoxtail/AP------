@@ -165,7 +165,7 @@
       const w = BASE.box[0] * k, d = BASE.box[1] * k, h = BASE.box[2] * k;
       const p = (x, y, z) => P3(ox, x, y, z);
       const f = [p(0, 0, 0), p(w, 0, 0), p(w, h, 0), p(0, h, 0)], bk = [p(0, 0, d), p(w, 0, d), p(w, h, d), p(0, h, d)];
-      fillPoly(b, [f[3], f[2], bk[2], bk[3]], 'sky', 0.1); fillPoly(b, [f[1], bk[1], bk[2], f[2]], 'sky', 0.06); fillPoly(b, f, 'sky', 0.08);
+      fillPoly(b, [f[3], f[2], bk[2], bk[3]], o.fill || 'sky', 0.1); fillPoly(b, [f[1], bk[1], bk[2], f[2]], o.fill || 'sky', 0.06); fillPoly(b, f, o.fill || 'sky', 0.08);
       [[bk[0], bk[1]], [bk[0], bk[3]], [bk[0], f[0]]].forEach(([u, v]) => line(b, u, v, col, 2.2, { dash: [6, 5] }));
       line(b, bk[3], bk[2], col, 3.2); line(b, bk[2], bk[1], col, 3.2); line(b, f[2], bk[2], col, 3.2); line(b, f[3], bk[3], col, 3.2);
       poly(b, f, col, 3.4);
@@ -177,7 +177,7 @@
       const r = BASE.cyl[0] * k, h = BASE.cyl[1] * k, ry = 0.3 * r, cx = ox + r;
       const ell = (cy, a0, a1) => Array.from({ length: 33 }, (_, i) => { const a = a0 + ((a1 - a0) * i) / 32; return pt(cx + r * Math.cos(a), cy + ry * Math.sin(a)); });
       const top = -h;
-      fillPoly(b, [pt(cx - r, 0), pt(cx - r, top), pt(cx + r, top), pt(cx + r, 0)].concat(ell(0, 0, Math.PI).reverse().slice(0)), 'sky', 0.08);
+      fillPoly(b, [pt(cx - r, 0), pt(cx - r, top), pt(cx + r, top), pt(cx + r, 0)].concat(ell(0, 0, Math.PI).reverse().slice(0)), o.fill || 'sky', 0.08);
       b.path(ell(0, Math.PI, 2 * Math.PI), { color: col, width: 2.2, dash: [6, 5] });
       b.path(ell(0, 0, Math.PI), { color: col, width: 3.4 });
       line(b, pt(cx - r, 0), pt(cx - r, top), col, 3.4); line(b, pt(cx + r, 0), pt(cx + r, top), col, 3.4);
@@ -221,8 +221,8 @@
         return st >= 1 ? fmtN(base[i] * k) : null;
       };
       const names1 = type === 'tet' ? ['A', 'B', 'C', 'D'] : null, names2 = type === 'tet' ? ['E', 'F', 'G', 'H'] : null;
-      drawSolid(b, type, 0, m, { names: names1, lab: labFor(m, 0), lc: (i) => (prob ? 'sky' : ECOL[i]), edgeCol: shown && !prob, fill: 'sky' });
-      drawSolid(b, type, X2, n, { names: names2, lab: labFor(n, 1), lc: (i) => (prob ? (i === pk.ask ? 'amber' : (type === 'tet' && i !== pk.given ? 'amber' : 'green')) : ECOL[i]), edgeCol: shown && !prob, fill: 'green' });
+      drawSolid(b, type, 0, m, { col: C.solution && C.solStep >= 2 ? 'sky' : 'ink', names: names1, lab: labFor(m, 0), lc: (i) => (prob ? 'sky' : ECOL[i]), edgeCol: shown && !prob, fill: 'sky' });
+      drawSolid(b, type, X2, n, { col: C.solution && C.solStep >= 3 ? 'green' : 'ink', names: names2, lab: labFor(n, 1), lc: (i) => (prob ? (i === pk.ask ? 'amber' : (type === 'tet' && i !== pk.given ? 'amber' : 'green')) : ECOL[i]), edgeCol: shown && !prob, fill: 'green' });
       if (C.txt && !prob) {
         const cap = st >= 2 ? `대응하는 모서리의 비 모두 ${m} : ${n}` + (G.gcd(m, n) > 1 ? ` (= ${m / G.gcd(m, n)} : ${n / G.gcd(m, n)})` : '') : st >= 1 ? '같은 색 모서리가 서로 대응해요' : '두 입체는 닮은 도형이에요';
         T(b, pt((X2 + e2.w) / 2, yb), cap, { dy: 44, size: capSize(b), color: 'amber' });
@@ -335,14 +335,14 @@
     if (t === 'tri') { const a = 2 * k; return [pt(cx - a / 2, 0), pt(cx + a / 2, 0), pt(cx, -a * 0.866)]; }
     if (t === 'sq') return [pt(cx - k, 0), pt(cx + k, 0), pt(cx + k, -2 * k), pt(cx - k, -2 * k)];
     if (t === 'pent') { const R = 1.15 * k; const pts = Array.from({ length: 5 }, (_, i) => polar(pt(cx, -R * 0.809), R, -90 + 72 * i)); return pts; }
-    if (t === 'rti') return [pt(cx - k * 1.2, 0), pt(cx + k * 1.2, 0), pt(cx - k * 1.2, -2.4 * k)];
-    if (t === 'rec') return [pt(cx - 1.5 * k, 0), pt(cx + 1.5 * k, 0), pt(cx + 1.5 * k, -(2 * k + q)), pt(cx - 1.5 * k, -(2 * k + q))];
-    if (t === 'rho') { const th = q * DEGR, hw = 1.4 * k, sd = 2.0 * k, dx = sd * Math.cos(th), dy = sd * Math.sin(th); return [pt(cx - hw - dx / 2, 0), pt(cx + hw - dx / 2, 0), pt(cx + hw + dx / 2, -dy), pt(cx - hw + dx / 2, -dy)].map((p) => pt(p.x, p.y)); }
-    if (t === 'iso') { const a = 2 * k, th = (q / 2) * DEGR, h = (a / 2) / Math.tan(th) ; return [pt(cx - a / 2, 0), pt(cx + a / 2, 0), pt(cx, -clamp(h, 0.5 * k, 3.4 * k))]; }
+    if (t === 'rti') return [pt(cx - k, 0), pt(cx + k, 0), pt(cx - k, -2 * k)];
+    if (t === 'rec') return [pt(cx - 1.5 * k, 0), pt(cx + 1.5 * k, 0), pt(cx + 1.5 * k, -(2 + q) * k), pt(cx - 1.5 * k, -(2 + q) * k)];
+    if (t === 'rho') { const th = q * DEGR, hw = 1.4 * k, sd = 2.8 * k, dx = sd * Math.cos(th), dy = sd * Math.sin(th); return [pt(cx - hw - dx / 2, 0), pt(cx + hw - dx / 2, 0), pt(cx + hw + dx / 2, -dy), pt(cx - hw + dx / 2, -dy)].map((p) => pt(p.x, p.y)); }
+    if (t === 'iso') { const a = 2 * k, th = (q / 2) * DEGR, h = (a / 2) / Math.tan(th) ; return [pt(cx - a / 2, 0), pt(cx + a / 2, 0), pt(cx, -h)]; }
     return reg(4, k);
   }
   const DEGR = Math.PI / 180;
-  const same = (t, q1, q2) => (FAM[t].always ? true : t === 'rec' ? q1 === q2 : q1 === q2);
+  const same = (t, q1, q2) => FAM[t].always || q1 === q2 || (t === 'rho' && q1 + q2 === 180);
   const sim = {
     id: 'sm1-always', title: '항상 닮은 도형', short: '항상 닮은 도형',
     question: '두 도형이 항상 닮은 도형이 되려면 어떤 조건이어야 할까? 어떤 도형이 항상 닮고, 어떤 도형은 닮지 않을 수 있을까?',
@@ -358,17 +358,17 @@
     },
     model: (s) => {
       const f = s.smFam || 'tri', k = clamp(Math.round(s.smK2), 1, 3), q = f === 'rec' ? s.smRq : f === 'rho' ? s.smAq : f === 'iso' ? s.smAq : 0;
-      // 왼쪽 도형의 기준 변수: 직사각형 q=1, 마름모 100°, 이등변삼각형 80°
-      const q1 = f === 'rec' ? 1 : f === 'rho' ? 100 : f === 'iso' ? 80 : 0;
-      return { f, k, q, q1, always: FAM[f].always, ok: FAM[f].always || q === q1 };
+      // 왼쪽 도형의 기준 변수: 직사각형 q=0, 마름모 100°, 이등변삼각형 80°
+      const q1 = f === 'rec' ? 0 : f === 'rho' ? 100 : f === 'iso' ? 80 : 0;
+      return { f, k, q, q1, always: FAM[f].always, ok: same(f, q1, q) };
     },
     draw(b, s, M, C) {
       if (C.problem) { drawAlwaysProblem(b, M); return; }
       const f = M.f, k1 = 1, k2 = M.k, gap = 1.6;
       const circ = f === 'circ';
-      const w = (kk) => (f === 'rec' ? 3 * kk : f === 'rti' ? 2.4 * kk : f === 'rho' ? 2.8 * kk + 2 * kk : 2 * kk);
+      const w = (kk) => (f === 'rec' ? 3 * kk : f === 'rti' ? 2 * kk : f === 'rho' ? 5.6 * kk : 2 * kk);
       const x2 = w(k1) / 2 + gap + w(k2) / 2, W = w(k1) / 2 + gap + w(k2);
-      const hh = 2.4 * Math.max(k1, k2) + 1.6;
+      const hh = circ ? 2 * k2 : Math.max(...famPts(f, k1, 0, M.q1).concat(famPts(f, k2, x2, M.q)).map(p => -p.y)) + .2;
       fit(b, { x0: -w(k1) / 2 - 0.2, x1: x2 + w(k2) / 2 + 0.2, y0: -hh, y1: 0.4 }, { t: 40, b: 70, l: 36, r: 36 });
       const draw1 = (cx, kk, qq, col, nm) => {
         if (circ) { b.circle(pt(cx, -kk), kk, { color: 'ink', width: 3.6, fill: col, fillAlpha: 0.12 }); b.point(pt(cx, -kk), { color: 'ink', r: 3.6 }); line(b, pt(cx, -kk), pt(cx + kk, -kk), col, 3.4); T(b, pt(cx + kk / 2, -kk), String(kk), { dy: -14, size: 16, color: col }); return; }
@@ -379,10 +379,17 @@
         if (f === 'tri') sideTag(b, Pt[0], Pt[1], c, String(2 * kk), { color: col, gap: 12 });
         if (f === 'sq') { sideTag(b, Pt[0], Pt[1], c, String(2 * kk), { color: col }); sideTag(b, Pt[1], Pt[2], c, String(2 * kk), { color: col }); }
         if (f === 'pent') sideTag(b, Pt[0], Pt[1], c, '', {});
-        if (f === 'rti') { sideTag(b, Pt[0], Pt[1], c, String(kk * 12 / 5 | 0 || ''), { color: col }); }
-        if (f === 'rec') { sideTag(b, Pt[0], Pt[1], c, String(3 * kk), { color: col }); sideTag(b, Pt[1], Pt[2], c, String(2 * kk + qq), { color: col }); }
-        if (f === 'rho') { Pt.forEach((p, i) => tick(b, p, Pt[(i + 1) % 4], 1, col)); ang(b, Pt[0], Pt[1], Pt[3], { color: 'rose', label: qq + '°', r: 20, size: 14 }); }
-        if (f === 'iso') { tick(b, Pt[0], Pt[2], 1, col); tick(b, Pt[1], Pt[2], 1, col); ang(b, Pt[2], Pt[0], Pt[1], { color: 'rose', label: qq + '°', r: 22, size: 14 }); }
+        if (f === 'rti') { sideTag(b, Pt[0], Pt[1], c, String(2 * kk), { color: col }); }
+        if (f === 'rec') { sideTag(b, Pt[0], Pt[1], c, String(3 * kk), { color: col }); sideTag(b, Pt[1], Pt[2], c, String((2 + qq) * kk), { color: col }); }
+        if (f === 'rho') {
+          Pt.forEach((p, i) => tick(b, p, Pt[(i + 1) % 4], 1, col));
+          // A rhombus with 80° at one corner is similar to the 100° example:
+          // start the correspondence at the neighbouring corner instead.
+          const shifted = M.ok && nm === 1 && M.q !== M.q1, i = shifted ? 1 : 0;
+          ang(b, Pt[i], Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: M.ok ? 'rose' : col, label: (shifted ? 180 - qq : qq) + '°', r: 20, size: 14 });
+          if (shifted) ang(b, Pt[0], Pt[1], Pt[3], { noMark: true, label: qq + '°', labelColor: col, r: 20, size: 14 });
+        }
+        if (f === 'iso') { tick(b, Pt[0], Pt[2], 1, col); tick(b, Pt[1], Pt[2], 1, col); ang(b, Pt[2], Pt[0], Pt[1], { color: M.ok ? 'rose' : col, label: qq + '°', r: 22, size: 14 }); }
         if (f === 'tri') Pt.forEach((p, i) => { tick(b, p, Pt[(i + 1) % 3], 1, col); ang(b, p, Pt[(i + 1) % 3], Pt[(i + 2) % 3], { color: 'rose', r: 16 }); });
         if (f === 'sq') Pt.forEach((p, i) => ang(b, p, Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: 'rose', r: 14 }));
         if (f === 'rec') Pt.forEach((p, i) => ang(b, p, Pt[(i + 1) % 4], Pt[(i + 3) % 4], { color: 'rose', r: 14 }));
@@ -392,8 +399,8 @@
       draw1(0, k1, f === 'rec' ? M.q1 : M.q1, 'sky', 0);
       draw1(x2, k2, M.q, 'green', 1);
       if (C.txt) {
-        const msg = M.ok ? '항상 닮은 도형이에요 ○' : '이 모양은 닮은 도형이 아니에요 ×';
-        const why = M.always ? '모든 대응변의 비와 대응각이 같아요' : f === 'rec' ? (M.ok ? '가로의 비와 세로의 비가 같을 때만 닮음' : `가로의 비와 세로의 비가 달라요`) : (M.ok ? '각이 같을 때만 닮음' : '대응하는 각의 크기가 달라요');
+        const msg = M.always ? '항상 닮은 도형이에요 ○' : M.ok ? '지금 두 도형은 닮음이에요 ○' : '지금 두 도형은 닮음이 아니에요 ×';
+        const why = M.always ? '모든 대응변의 비와 대응각이 같아요' : f === 'rec' ? (M.ok ? '가로의 비와 세로의 비가 같을 때만 닮음' : `가로의 비와 세로의 비가 달라요`) : (M.ok ? f === 'rho' && M.q !== M.q1 ? '이웃한 꼭짓점부터 대응하면 각이 같아요' : '대응하는 각이 같아요' : '대응하는 각의 크기가 달라요');
         T(b, pt(x2 / 2, 0), msg, { dy: 38, size: capSize(b), color: M.ok ? 'green' : 'rose' });
         T(b, pt(x2 / 2, 0), why, { dy: 62, size: phone(b) ? 13 : 15, color: 'amber' });
       }
@@ -406,7 +413,7 @@
     view: (M) => ({
       guide: '칩으로 도형을 고르고 <b>오른쪽 도형의 크기</b>를 바꿔 보세요. 직사각형·마름모·이등변삼각형은 <b>모양 바꾸기</b> 막대도 움직여 닮은지 살펴보세요.',
       readouts: [rd('두 도형', M.ok ? '닮음 ○' : '닮음 아님 ×', M.ok ? 'green' : 'rose', FAM[M.f].name), rd('오른쪽 크기', `${M.k}배`, 'amber', '왼쪽 도형 기준')],
-      formula: M.always ? '<p>변의 비 $=1:k$ (모두 같아요), 각은 그대로</p>' : M.f === 'rec' ? `<p>가로의 비 $=1:${M.k}$, 세로의 비 $=${2 + M.q1 - 1}:${2 * M.k + M.q}$ 처럼 같지 않을 수 있어요</p>` : '<p>대응하는 각의 크기가 달라지면 닮음이 아니에요</p>',
+      formula: M.always ? '<p>변의 비 $=1:k$ (모두 같아요), 각은 그대로</p>' : M.f === 'rec' ? `<p>가로의 비 $=1:${M.k}$, 세로의 비 $=${2 + M.q1}:${(2 + M.q) * M.k}$ 처럼 같지 않을 수 있어요</p>` : '<p>대응하는 각의 크기가 달라지면 닮음이 아니에요</p>',
       rule: '정다각형·원·직각이등변삼각형은 항상 닮은 도형이지만, 직사각형·마름모·이등변삼각형은 항상 닮은 것은 아니다',
       notes: notes('<b>[함정]</b> 직각이등변삼각형은 항상 닮은 도형이지만 직각삼각형·이등변삼각형은 항상 닮지는 않아요.', '직사각형은 가로의 비와 세로의 비가 같아야 닮아요.')
     }),
@@ -421,29 +428,30 @@
   };
   // 문제 그림: 보기의 도형 다섯 개를 ①~⑤ 번호와 함께 가로로 나란히
   function drawAlwaysProblem(b, M) {
-    const items = M.pk.items, n = items.length, step = 3.4;
-    fit(b, { x0: -1.4, x1: step * (n - 1) + 1.4, y0: -3.2, y1: 1.2 }, { t: 30, b: 40, l: 24, r: 24 });
+    const items = M.pk.items, n = items.length, step = 3.4, cols = phone(b) ? 2 : n;
+    fit(b, { x0: -1.4, x1: step * (cols - 1) + 1.4, y0: -3.2, y1: 4 * (Math.ceil(n / cols) - 1) + .7 }, { t: 26, b: 36, l: 24, r: 24 });
     items.forEach((t, i) => {
-      const cx = step * i;
+      const cx = step * (i % cols), dy = 4 * Math.floor(i / cols);
+      const point = G.pt; const shifted = (x, y) => point(x, y + dy);
       let Pt;
-      if (t === 'circ') { b.circle(pt(cx, -1.2), 1.2, { color: 'ink', width: 3.4, fill: 'sky', fillAlpha: 0.12 }); }
+      if (t === 'circ') { b.circle(shifted(cx, -1.2), 1.2, { color: 'ink', width: 3.4, fill: 'sky', fillAlpha: 0.12 }); }
       else {
-        if (t === 'par') Pt = [pt(cx - 1.4, 0), pt(cx + 0.7, 0), pt(cx + 1.4, -1.8), pt(cx - 0.7, -1.8)];
-        else if (t === 'trp') Pt = [pt(cx - 1.4, 0), pt(cx + 1.4, 0), pt(cx + 0.6, -1.8), pt(cx - 0.6, -1.8)];
-        else if (t === 'rtr') Pt = [pt(cx - 1.2, 0), pt(cx + 1.4, 0), pt(cx - 1.2, -1.8)];
-        else if (t === 'rec') Pt = [pt(cx - 1.4, 0), pt(cx + 1.4, 0), pt(cx + 1.4, -1.9), pt(cx - 1.4, -1.9)];
-        else if (t === 'rho') Pt = [pt(cx - 1.1, 0), pt(cx + 0.9, 0), pt(cx + 1.4, -1.9), pt(cx - 0.6, -1.9)];
-        else if (t === 'iso') Pt = [pt(cx - 1.1, 0), pt(cx + 1.1, 0), pt(cx, -2.2)];
-        else if (t === 'tri') Pt = [pt(cx - 1.2, 0), pt(cx + 1.2, 0), pt(cx, -2.08)];
-        else if (t === 'sq') Pt = [pt(cx - 1.1, 0), pt(cx + 1.1, 0), pt(cx + 1.1, -2.2), pt(cx - 1.1, -2.2)];
-        else if (t === 'pent') Pt = Array.from({ length: 5 }, (_, j) => polar(pt(cx, -1.2), 1.3, -90 + 72 * j));
-        else if (t === 'rti') Pt = [pt(cx - 1.2, 0), pt(cx + 1.2, 0), pt(cx - 1.2, -2.4)];
+        if (t === 'par') Pt = [shifted(cx - 1.4, 0), shifted(cx + 0.7, 0), shifted(cx + 1.4, -1.8), shifted(cx - 0.7, -1.8)];
+        else if (t === 'trp') Pt = [shifted(cx - 1.4, 0), shifted(cx + 1.4, 0), shifted(cx + 0.6, -1.8), shifted(cx - 0.6, -1.8)];
+        else if (t === 'rtr') Pt = [shifted(cx - 1.2, 0), shifted(cx + 1.4, 0), shifted(cx - 1.2, -1.8)];
+        else if (t === 'rec') Pt = [shifted(cx - 1.4, 0), shifted(cx + 1.4, 0), shifted(cx + 1.4, -1.9), shifted(cx - 1.4, -1.9)];
+        else if (t === 'rho') Pt = [shifted(cx - 1.1, 0), shifted(cx + 0.9, 0), shifted(cx + 1.4, -Math.sqrt(3.75)), shifted(cx - 0.6, -Math.sqrt(3.75))];
+        else if (t === 'iso') Pt = [shifted(cx - 1.1, 0), shifted(cx + 1.1, 0), shifted(cx, -2.2)];
+        else if (t === 'tri') Pt = [shifted(cx - 1.2, 0), shifted(cx + 1.2, 0), shifted(cx, -2.08)];
+        else if (t === 'sq') Pt = [shifted(cx - 1.1, 0), shifted(cx + 1.1, 0), shifted(cx + 1.1, -2.2), shifted(cx - 1.1, -2.2)];
+        else if (t === 'pent') Pt = Array.from({ length: 5 }, (_, j) => polar(shifted(cx, -1.2), 1.3, -90 + 72 * j));
+        else if (t === 'rti') Pt = [shifted(cx - 1.2, 0), shifted(cx + 1.2, 0), shifted(cx - 1.2, -2.4)];
         fillPoly(b, Pt, 'sky', 0.12); poly(b, Pt, 'ink', 3.4);
       }
-      T(b, pt(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
+      T(b, shifted(cx, 0), G.NUM[i], { dy: 26, size: 26, color: 'amber' });
     });
   }
 
-  G.geo = Object.assign(G.geo || {}, { trap, famPts });
+  G.geo = Object.assign(G.geo || {}, { trap, famPts, drawSolid, solidBase: BASE, solidExtent: extent });
   G.register(10, 't1', '① 닮은 도형', '닮은 도형', PARAMS, [corr, solid, rect, sim]);
 })();
