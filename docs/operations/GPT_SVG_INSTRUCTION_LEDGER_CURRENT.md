@@ -61,6 +61,8 @@
 
 | 2022 제일고 2학기 기말 고1 Q3 | 그래프 역합성 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 매산고 2학기 기말 고1 Q11 | 순열·합성 | 작성·전달 | Luna high 대응 묶음 | 계획 대기 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
