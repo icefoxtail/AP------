@@ -160,3 +160,102 @@ test('truncated solids retain exact topology through every allowed cutting-depth
     assert.ok(cut.E.every(e => e.f.length === 2), key + ': every edge borders two faces');
   }
 });
+
+test('all 26 independent questions retain their drawing and solution until returning to inquiry', t => {
+  let stepsChecked = 0;
+  for (const sc of scenes) {
+    const s = state(sc), lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); sc.view(s, lab);
+    const original = JSON.stringify(sc.steps(s));
+    lab.tab = 'problem'; sc.view(s, lab);
+    const Q = s.phPC.Q, choices = JSON.stringify(Q.choices), question = s.phQ;
+    lab.tab = 'review'; sc.view(s, lab);
+    assert.ok(sc.ph.problemSteps, sc.id + ': has a current-question solution');
+    assert.equal(s.phQ, question, sc.id + ': preserves the question conditions');
+    assert.equal(JSON.stringify(s.phPC.Q.choices), choices, sc.id + ': choices do not reshuffle');
+    assert.ok(sc.reviewTop(s).includes(G.esc(Q.stem)), sc.id + ': repeats the current question');
+    assert.doesNotMatch(sc.reviewTop(s), /class="ph-ch (?:ok|bad)"|class="ph-fb/, sc.id + ': neutral review choices');
+    let seen;
+    const draw = sc.ph.draw;
+    sc.ph.draw = (_b, _s, M, C) => { seen = { M, C }; };
+    try { sc.draw({ thumb: false }, s, {}, lab); } finally { sc.ph.draw = draw; }
+    assert.equal(seen.M.Q, question, sc.id);
+    assert.equal(seen.C.questionReview, true, sc.id);
+    assert.equal(seen.C.problem, !sc.ph.questionReviewDraw, sc.id + ': current-question diagram branch');
+    const steps = sc.steps(s);
+    assert.ok(steps.length >= 3, sc.id);
+    assert.doesNotMatch(steps.join(' '), /undefined|NaN|\[object Object\]/, sc.id);
+    for (let step = 0; step < steps.length; step++) {
+      s.step = step;
+      assert.equal(sc.view(s, lab).formula, null, `${sc.id}: calculated answer hidden at step ${step}`);
+      stepsChecked++;
+    }
+    lab.tab = 'explore'; sc.view(s, lab);
+    assert.equal(JSON.stringify(sc.steps(s)), original, sc.id + ': inquiry explanation restored');
+    assert.equal(sc.reviewTop(s), '', sc.id);
+  }
+  assert.equal(scenes.length, 26);
+  t.diagnostic(`${stepsChecked} pre-final stages; 26 complete question-review-inquiry transitions`);
+});
+
+test('count, Euler, regular-solid and truncation solutions use the independent question values', t => {
+  const solve = (id, question, extra = {}) => {
+    const sc = scene(id), s = state(sc), lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); Object.assign(s, extra, { phQ: question }); sc.view(s, lab);
+    lab.tab = 'problem'; sc.view(s, lab);
+    lab.tab = 'review'; sc.view(s, lab);
+    return { steps: Array.from(sc.steps(s)), Q: s.phPC.Q };
+  };
+  let count = 0;
+  for (const [id, pyramid] of [['p1-1', false], ['p1-2', true], ['p1-3', false]]) {
+    for (let n = 4; n <= 12; n++) {
+      const values = pyramid ? { F: n + 1, V: n + 1, E: 2 * n } : { F: n + 2, V: 2 * n, E: 3 * n };
+      for (const given of ['F', 'E', 'V']) for (const ask of ['F', 'E', 'V'].filter(k => k !== given)) {
+        const { steps, Q } = solve(id, { n, given, ask });
+        assert.ok(steps[1].includes(`=${n}$`), `${id} n=${n}: recover the question's base polygon`);
+        assert.ok(steps.at(-1).includes(`=${values[ask]}$`), `${id} ${ask}`);
+        assert.equal(Q.choices.find(c => c.ok).p, `${values[ask]}개`);
+        count++;
+      }
+    }
+  }
+  const regular = { tetra: [4, 6, 4], cube: [8, 12, 6], octa: [6, 12, 8], dodeca: [20, 30, 12], icosa: [12, 30, 20] };
+  for (const [k, [V, E, F]] of Object.entries(regular)) {
+    for (const ask of ['V', 'E', 'F']) {
+      const val = { V, E, F }[ask];
+      assert.ok(solve('p1-7', { id: k, n: 0, ask }).steps.at(-1).includes(`=${val}$`));
+      const cut = { V: 2 * E, E: 3 * E, F: F + V }[ask];
+      assert.ok(solve('p4-2', { k, ask }).steps.at(-1).includes(`=${cut}$`));
+      count += 2;
+    }
+    for (const ask of ['V', 'E']) {
+      const val = { V, E }[ask];
+      assert.ok(solve('p2-4', { k, ask }).steps.at(-1).includes(`=${val}$`)); count++;
+    }
+  }
+  const impossible = solve('p2-1', { p: 4, q: 5 });
+  assert.match(impossible.steps[1], /90\^\\circ\\times5=450/);
+  assert.match(impossible.steps.at(-1), /만들 수 없/);
+  for (const [p, max] of [[3, 5], [4, 3], [5, 3]]) assert.match(solve('p2-6', { p }).steps.at(-1), new RegExp(`최대 ${max}개`));
+  for (const a of [4, 6, 8, 10, 12]) {
+    const { steps } = solve('p3-7', { a }, { phEdge: a === 8 ? 14 : 8 });
+    assert.match(steps[0], new RegExp(`한 모서리가 ${a}`));
+    assert.ok(steps.at(-1).includes(`\\dfrac{${a}}{2}=${a / 2}`)); count++;
+  }
+  t.diagnostic(`${count} independent numerical cases plus angle/max-face cases`);
+});
+
+test('three-vertex section review follows the problem, then follows the selected inquiry vertices', () => {
+  const sc = scene('p4-3'), s = state(sc), lab = { tab: 'explore', scene: sc, s };
+  sc.enter(s, lab);
+  s.phC3 = ['B', 'D', 'E']; s.phQ = { tri: ['A', 'G', 'H'] };
+  sc.view(s, lab);
+  assert.match(sc.steps(s).at(-1), /정삼각형/);
+  lab.tab = 'problem'; sc.view(s, lab);
+  lab.tab = 'review'; sc.view(s, lab);
+  assert.match(sc.steps(s).at(-1), /직사각형/);
+  assert.doesNotMatch(sc.steps(s).at(-1), /단면은.*정삼각형/);
+  lab.tab = 'explore'; sc.view(s, lab);
+  lab.tab = 'review'; sc.view(s, lab);
+  assert.match(sc.steps(s).at(-1), /정삼각형/);
+});

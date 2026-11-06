@@ -850,6 +850,7 @@
     const rollQ = () => ({ a: [4, 6, 8, 10, 12][rint(0, 4)] });
     return {
       id: 'p3-7', title: '겉면 위의 최단 경로', short: '최단 경로',
+      questionReviewDraw: true,
       question: '정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 길은 어디를 지날까? 두 면을 펼쳐서 보자.',
       cam0: { yaw: -28, pitch: 24 }, ctl: () => ['phEdge', 'phAnt', 'phFold'].concat(VIEW), anim: { key: 'phFold', dur: 4, label: '접어 보기', start: 0 }, stepT: (n) => (n >= 3 ? 0 : 0),
       init: (s) => { s.phEdge = 8; s.phAnt = 0.3; s.phFold = 0; s.phQ = rollQ(); },
@@ -861,6 +862,11 @@
         return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 1e-9, Q: s.phQ };
       },
       draw(b, s, M, C) {
+        if (C.questionReview) {
+          const a = M.Q.a, length = a * Math.sqrt(5);
+          M = { ...M, a, r: 0.5, ep: a / 2, len: length, minLen: length, mid: true };
+          if (C.step < 2) C = { ...C, tab: 'problem', problem: true, review: false };
+        }
         const st = stepOf(C), t = C.problem ? 1 : C.review ? 0 : (C.thumb ? 0 : s.phFold), phi = (PI / 2) * t;
         const r = C.problem || (C.review && st >= 2) ? 0.5 : M.r;
         const D0 = scene3(b, Object.assign({}, s, { phYaw: s.phYaw, phPitch: s.phPitch }), C);
@@ -870,7 +876,7 @@
         // 지금 그려지는 모양만 화면에 맞춥니다(접은 정육면체가 펼친 모양의 자리까지 잡아 작아지지 않게)
         const fitp = [A, Bp, E, F, G, H];
         if (t > 0.02) fitp.push(v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2));
-        const compact = b.W < 560 && !C.problem, thirdLine = C.review && st === 3;
+        const compact = b.W < 560 && !C.problem, thirdLine = C.review && (C.questionReview ? st >= 4 : st === 3);
         // 휴대폰은 보드가 도구막대 높이를 이미 비워 둡니다. 줄글 높이만 남겨 펼친 두 면을 읽을 만큼 키웁니다.
         D.fitPts(fitp, { t: C.problem ? 46 : compact ? (thirdLine ? 86 : 58) : 92, b: compact ? 12 : 52, l: 46, r: 46 });
         D.top = C.problem ? 42 : compact ? (thirdLine ? 78 : 52) : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
@@ -901,13 +907,15 @@
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
           const ep = r * M.a, pf = M.a - ep;
           D.obstacle(Pp, 12);
-          D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -20], [0, -38], [-18, -24], [0, 26]] });
-          D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -20], [0, 26], [18, -24], [0, -38]] });
+          if (!C.questionReview || st >= 4) {
+            D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -20], [0, -38], [-18, -24], [0, 26]] });
+            D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -20], [0, 26], [18, -24], [0, -38]] });
+          }
           const L1 = [{ t: `한 모서리 a = ${M.a}`, c: 'ink', size: 15 }];
           if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
           else if (M.mid && t < 0.05) L1.push({ t: 'AP와 PG가 한 직선이에요 → 가장 짧아요!', c: GRN, size: 15 });
           else L1.push({ t: `경로 A→P→G 의 길이 ≈ ${fmt1(M.len)}`, c: AMB, size: 15 });
-          if (st === 3) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
+          if (C.questionReview ? st >= 4 : st === 3) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
           banner(b, L1, C);
         } else if (C.problem && C.txt) banner(b, [{ t: `정육면체의 한 모서리의 길이 a = ${M.Q.a}`, c: 'ink', size: 16 }], C);
         D.flush();
@@ -1017,7 +1025,51 @@
     }
   };
 
-  G.register(30, 't3', '③ 정다면체의 전개도와 꼬인 위치', '전개도·꼬인 위치', PARAMS, [A1, A2, A3, A4, A5, A6, A7, A8]);
+  function problemSteps(id, M, Q) {
+    const answer = Q.choices.find((c) => c.ok).p;
+    if (id === 'p3-1') {
+      const wrong = M.Q.items.map((it, i) => ({ it, i })).filter(({ it }) => !it.ok);
+      const why = (list) => list.map(({ it, i }) => `${G.NUM[i]} ${why31(it.cells)}`).join(' ');
+      const correct = M.Q.items.findIndex((it) => it.ok);
+      return ['정육면체의 전개도는 여섯 면이 접힌 뒤 모두 다른 자리를 차지하고, 한 꼭짓점에 세 면씩 모여야 해요.',
+        why(wrong.slice(0, 2)), why(wrong.slice(2)),
+        `${G.NUM[correct]}번은 여섯 면이 겹치지 않고 정육면체의 여섯 방향을 채워요. 따라서 이 전개도로 정육면체를 만들 수 있어요.`];
+    }
+    if (['p3-2', 'p3-5', 'p3-6'].includes(id)) {
+      const name = ptName(M.qnet, M.qk), partners = M.qT.map((k) => ptName(M.qnet, k)).sort();
+      return [`문제의 전개도에서 기준 점 ${name}이 있는 면을 먼저 확인해요. 점 이름은 현재 문제에 적힌 이름을 그대로 써요.`,
+        '이웃한 면을 공통 모서리를 축으로 접고, 같은 입체의 꼭짓점에 닿는 점들을 따라가요. 종이에서 가까운 점이라고 겹치는 것은 아니에요.',
+        `접었을 때 점 ${name}과 같은 꼭짓점으로 모이는 다른 점은 ${partners.join(', ')}이에요.`,
+        `따라서 고를 보기는 ${answer}이에요. 기준 점 ${name} 자신은 다시 세지 않아요.`];
+    }
+    if (id === 'p3-3') {
+      const base = fLet(M.qn, M.qf), opposite = fLet(M.qn, M.qopp);
+      return [`문제의 전개도에서 면 ${base}를 기준으로 나머지 면을 접어요.`,
+        '접은 정육면체에서 기준 면과 모서리를 공유하는 네 면은 수직이에요. 기준 면과 마주 보는 면 한 개만 평행해요.',
+        `이 전개도에서는 면 ${base}와 면 ${opposite}가 서로 마주 보므로, 답은 면 ${opposite}예요.`];
+    }
+    if (id === 'p3-4') {
+      const { ref, c } = M.qM;
+      return [`문제의 전개도를 접어 ${M.qsd.name}를 만들어요. 같은 이름의 점은 한 꼭짓점으로 모이고, 기준 모서리는 ${ref.name}이에요.`,
+        `기준 모서리와 만나는 모서리 ${c.nMeet + c.nExt}개와 평행한 모서리 ${c.nPar}개는 꼬인 위치가 아니에요.`,
+        `남은 ${c.nSkew}개(${skewNames(c).join(', ')})는 만나지도 평행하지도 않아 꼬인 위치예요.`,
+        `문제의 보기 중 여기에 해당하는 것은 모서리 ${answer}예요.`];
+    }
+    if (id === 'p3-7') {
+      const a = M.Q.a;
+      return [`문제의 정육면체는 한 모서리가 ${a}예요. 경로가 지나는 두 면을 모서리 EF를 축으로 펼쳐요.`,
+        `펼친 두 면은 가로 ${2 * a}, 세로 ${a}인 직사각형이에요. 평면에서 A와 G를 잇는 직선이 가장 짧은 경로예요.`,
+        '두 합동인 정사각형의 경계 EF는 직사각형의 한가운데를 지나므로, 대각선과 EF가 만나는 P는 EF의 중점이에요.',
+        `따라서 $\\overline{EP}=\\dfrac{${a}}{2}=${a / 2}$예요.`];
+    }
+    const opposite = M.qn.opposite[M.hid], given = M.qv[opposite];
+    return ['문제의 전개도를 접어 ?가 쓰인 면과 마주 보는 면을 찾아요. 옆에서 맞닿는 면은 수직이므로 제외해요.',
+      `?와 마주 보는 면의 눈은 ${given}이에요. 주사위에서 마주 보는 두 면의 눈의 합은 7이에요.`,
+      `따라서 $?=7-${given}=${7 - given}$이에요.`];
+  }
+  const scenes = [A1, A2, A3, A4, A5, A6, A7, A8];
+  scenes.forEach((D) => { D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(30, 't3', '③ 정다면체의 전개도와 꼬인 위치', '전개도·꼬인 위치', PARAMS, scenes);
   // 문제 탭(휴대폰): 그림 아래에서 질문이 스크롤 없이 보이도록 이 탭의 '탐구 질문' 카드는 접습니다(탐구 탭에서 이미 읽은 글입니다).
   // 셸의 장면 선택 사항 sc.tabs 를 켜면 머리말에 data-tab 이 달려, 아래 CSS 가 문제 탭에서만 적용됩니다.
   (function () {

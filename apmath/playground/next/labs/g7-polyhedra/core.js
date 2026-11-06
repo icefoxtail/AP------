@@ -401,6 +401,22 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n), cam0?:{yaw,pitch}, spin?:false } */
   function makeScene(D) {
     const A = D.anim;
+    const questionReview = new WeakSet();
+    const syncReview = (s, lab) => {
+      if (lab && lab.tab === 'problem') {
+        if (!questionReview.has(s)) s.step = 0;
+        questionReview.add(s);
+      } else if (lab && lab.tab === 'explore') {
+        if (questionReview.has(s)) s.step = 0;
+        questionReview.delete(s);
+      }
+      return questionReview.has(s);
+    };
+    const stepsOf = (s) => {
+      if (curLab && curLab.scene && curLab.scene.ph === D) syncReview(s, curLab);
+      const M = D.model(s);
+      return questionReview.has(s) && D.problemSteps ? D.problemSteps(M, probOf(D, s), s) : D.steps(M);
+    };
     const actions = (s) => {
       const out = [];
       if (A) {
@@ -422,7 +438,12 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)),
+      steps: stepsOf,
+      reviewTop: (s) => {
+        if (!questionReview.has(s)) return '';
+        const Q = probOf(D, s);
+        return `<p>${esc(Q.stem)}</p><details><summary>보기 다시 확인하기</summary><div class="ph-choices${Q.wide ? ' wide' : ''}">${Q.choices.map((o, i) => `<div class="ph-ch"><span class="n">${NUM[i]}</span><span class="v">${o.h}</span></div>`).join('')}</div></details>`;
+      },
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => probOf(D, s).tag,
@@ -430,6 +451,7 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
+        questionReview.delete(s);
         const c0 = D.cam0 || { yaw: -30, pitch: 24 };
         s.phYaw = c0.yaw; s.phPitch = c0.pitch; s.phSpin = false; s.phPmin = D.pmin == null ? 8 : D.pmin;
         D.init(s);
@@ -441,14 +463,14 @@
       },
       tick: (s, dt, lab) => {
         let again = false;
-        if (D.viewTick && lab && D.viewTick(s, dt, lab)) again = true; // 장면이 시점을 스스로 부드럽게 돌릴 때(예: 세 꼭짓점 단면)
+        if (D.viewTick && lab && D.viewTick(s, dt, questionReview.has(s) ? { ...lab, tab: 'problem' } : lab)) again = true; // 현재 문항 또는 탐구에서 고른 단면을 바라봅니다.
         if (s.phSpin && lab && lab.tab === 'explore' && !s.dragging) { s.phYaw += 26 * dt; if (s.phYaw > 180) s.phYaw -= 360; again = true; }
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           if (D.onAnim && lab && lab.tab === 'explore') D.onAnim(s, s[A.key]); // 막대 값이 움직임을 따라가게
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && (!questionReview.has(s) || D.questionReviewDraw) && !s.dragging) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -1 * dt, 1 * dt); again = true; }
         }
@@ -457,21 +479,34 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         probOf(D, s); // 이전 문항의 공개 단계가 새 그림에 적용되기 전에 동기화합니다.
+        const fromQuestion = syncReview(s, lab);
         // 막대를 움직이면 정리 단계의 글(숫자)도 달라지므로, 글이 바뀌면 정리 칸을 다시 만듭니다.
         if (lab && lab.scene && lab.scene.ph === D) {
           let sig = '';
-          try { sig = D.id + JSON.stringify(D.steps(D.model(s))); } catch (e) { sig = ''; }
+          try { sig = D.id + JSON.stringify(stepsOf(s)); } catch (e) { sig = ''; }
           if (lab._phSig !== sig) { lab._phSig = sig; if (lab.refs && lab.ui && lab.ui.panes) { try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } } }
         }
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
-        const v = D.view(M, C, s) || {};
+        const v = C.review && fromQuestion ? {
+          guide: '문제의 그림과 조건을 그대로 두고, 다음 단계에서 풀이를 차례로 확인해요.',
+          readouts: [], notes: '', rule: '', formula: null
+        } : D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = stepsOf(s).length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if ((s.step || 0) < n) v.formula = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
+        if (C.review && syncReview(s, lab)) {
+          C.questionReview = true;
+          C.solutionStep = s.step || 0;
+          if (!D.questionReviewDraw) { C.tab = 'problem'; C.problem = true; C.review = false; C.step = 99; }
+        }
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;

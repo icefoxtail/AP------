@@ -247,6 +247,10 @@ try {
             const p = await page.evaluate(k => ({ label: APLab.stripEmoji(lab.params[k].label), value: lab.s[k] }), c.inputKey);
             await page.getByRole('slider', { name: p.label, exact: true }).fill(String(p.value)); await settle();
           }
+          if (c.fromTab) {
+            await page.evaluate(tab => lab.setTab(tab), c.fromTab); await page.waitForFunction(() => !lab._tween); await settle();
+            await page.evaluate(tab => lab.setTab(tab || 'review'), c.tab); await settle();
+          }
           // Changing numerical conditions may correctly relock a previous solution.
           // Select the requested review step after that state transition completes.
           if (c.step != null) { await page.evaluate(n => { const x = lab.scene.steps; lab.setStep(n === 'final' ? (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0 : n); }, c.step); await settle(); }

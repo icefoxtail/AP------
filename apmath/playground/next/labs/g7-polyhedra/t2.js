@@ -501,5 +501,43 @@
     }
   };
 
-  G.register(20, 't2', '② 정다면체', '정다면체', PARAMS, [P1, P2, P3, P4, P5, P6]);
+  function problemSteps(id, M, Q) {
+    const q = M.Q, answer = Q.choices.find((c) => c.ok).p;
+    if (id === 'p2-1') {
+      const angle = 180 - 360 / q.p, sum = angle * q.q;
+      return [
+        `${PNAME[q.p]}의 한 내각은 $180^\\circ-360^\\circ\\div${q.p}=${angle}^\\circ$예요.`,
+        `한 꼭짓점에 ${q.q}개가 모이면 각의 합은 $${angle}^\\circ\\times${q.q}=${sum}^\\circ$예요.`,
+        sum < 360 ? `각의 합이 $360^\\circ$보다 작아요. ${PNAME[q.p]}이 한 꼭짓점에 ${q.q}개씩 모이는 정다면체는 ${answer}예요.` : `각의 합이 $360^\\circ$${sum === 360 ? '와 같아 평평해지므로' : '보다 커서 면이 겹치므로'} 정다면체를 만들 수 없어요.`
+      ];
+    }
+    if (id === 'p2-2') return [
+      '정다면체는 모든 면이 합동인 정다각형이에요. 입체 이름에 들어 있는 수는 면의 개수예요.',
+      '정사면체·정팔면체·정이십면체의 면은 정삼각형, 정육면체의 면은 정사각형, 정십이면체의 면은 정오각형이에요.',
+      `문제의 보기와 대조하면 옳게 짝지어진 것은 “${answer}”이에요.`
+    ];
+    if (id === 'p2-3') {
+      if (q.t === 'count') return ['정사면체 하나의 면은 4개이므로 두 개의 면을 합하면 8개예요.', '붙인 면은 정사면체마다 하나씩, 모두 2개가 내부로 들어가 겉면이 아니에요.', '따라서 겉에 남은 면은 $4+4-2=6$개예요.'];
+      return ['두 정사면체가 붙은 삼각형의 세 꼭짓점과, 양 끝의 두 꼭짓점을 구별해요.', '양 끝의 두 꼭짓점에는 면이 3개씩 모여요. 붙인 삼각형의 세 꼭짓점에는 면이 4개씩 모여요.', q.t === 'four' ? '따라서 면이 4개씩 모이는 꼭짓점은 3개예요.' : '모든 면이 합동인 정삼각형이어도 각 꼭짓점에 모인 면의 수가 서로 달라 정다면체가 아니에요.'];
+    }
+    if (id === 'p2-4') {
+      const I = PLAT[q.k], divisor = q.ask === 'E' ? 2 : I.q, name = q.ask === 'E' ? '모서리' : '꼭짓점';
+      return [`${I.name}는 ${I.face} ${I.F}개로 이루어져요. 각 면에 ${name}가 ${I.p}개씩 있어요.`,
+        `면마다 센 수는 $${I.p}\\times${I.F}=${I.p * I.F}$예요. 같은 ${name}를 ${divisor}개의 면이 함께 가지므로 ${divisor}번씩 중복하여 세었어요.`,
+        `따라서 ${name}는 $${I.p}\\times${I.F}\\div${divisor}=${I[q.ask]}$개예요.`];
+    }
+    if (id === 'p2-5') {
+      const I = PLAT[q.k], J = PLAT[DUAL[q.k]];
+      return [`${I.name}의 면 ${I.F}개에 중심을 하나씩 표시하므로 새 입체의 꼭짓점은 ${I.F}개예요.`,
+        `원래 꼭짓점마다 둘레의 ${I.q}개 면의 중심을 이으면 정${I.q}각형인 새 면이 생겨요. 새 면은 ${I.V}개예요.`,
+        `따라서 면 ${J.F}개, 꼭짓점 ${J.V}개인 ${J.name}가 돼요.`];
+    }
+    const angle = 180 - 360 / q.p, max = Math.ceil(360 / angle) - 1;
+    return [`${PNAME[q.p]}의 한 내각은 $${angle}^\\circ$예요. 꼭짓점을 만들려면 면이 3개 이상 모여야 해요.`,
+      `면이 ${max}개 모이면 $${angle}^\\circ\\times${max}=${angle * max}^\\circ<360^\\circ$예요. ${max + 1}개면 $${angle * (max + 1)}^\\circ$로 360° 이상이 되어 입체가 되지 않아요.`,
+      `따라서 한 꼭짓점에 모일 수 있는 면은 최대 ${max}개예요.`];
+  }
+  const scenes = [P1, P2, P3, P4, P5, P6];
+  scenes.forEach((D) => { D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(20, 't2', '② 정다면체', '정다면체', PARAMS, scenes);
 })();
