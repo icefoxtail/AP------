@@ -79,6 +79,8 @@
 
 | 2022 매산고 2학기 기말 고1 Q14 | 두 무리함수 교점 | 작성·전달 | Luna high 무리함수 묶음 | PNG 제작 | ROOT 시각 확인, 최종 검증 대기 | 미반영 |
 
+| 2022 순천여고 2학기 기말 고1 Q19 | 합성함수 구간 최대·최소 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
