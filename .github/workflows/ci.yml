@@ -63,7 +63,10 @@ jobs:
     needs: plan
     if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # Source PRs now generate their temporary projection before running the unchanged tests.
+    timeout-minutes: 15
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -71,9 +74,7 @@ jobs:
           # Empty for push / pull_request / dispatch (default ref); the exact main tip for a workflow_run re-test.
           ref: ${{ needs.plan.outputs.checkout_ref }}
           fetch-depth: 0
-
-      - name: Refresh upstream main ref
-        run: git fetch --no-tags origin main
+          persist-credentials: false
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -112,17 +113,20 @@ jobs:
         shell: bash
         env:
           EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
-          # On push / re-test runs the commit under test is the reference: comparing it with a freshly fetched
-          # origin/main made the check fail whenever main advanced while the job ran ("main is not
-          # synchronized with origin/main (ahead=0, behind=2)", runs 40695834952 and 40660740398), i.e.
-          # it reported a race, not a defect of the tested commit. Pull requests still must contain the
-          # latest origin/main.
-          if [[ "$EVENT_NAME" == "push" || "$EVENT_NAME" == "workflow_run" || "$EVENT_NAME" == "workflow_dispatch" ]]; then
-            node tools/skills/verify-skills.mjs --json --upstream HEAD
+          # Validate the merge snapshot against the base carried by this PR event, not a main ref
+          # that another PR can move while this job runs. GitHub separately checks mergeability
+          # and branch protection at merge time. Local verify-skills defaults remain unchanged.
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            if [[ ! "$PR_BASE_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+              echo "PR event has no exact base SHA; refusing an unbound skills check." >&2
+              exit 2
+            fi
+            node tools/skills/verify-skills.mjs --json --upstream "$PR_BASE_SHA"
           else
-            node tools/skills/verify-skills.mjs --json
+            node tools/skills/verify-skills.mjs --json --upstream HEAD
           fi
 
       - name: Git footprint regression
@@ -130,6 +134,12 @@ jobs:
 
       - name: Offline evidence authority and recovery regression
         run: node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs
+
+      - name: Prepare temporary PR registration projection
+        if: github.event_name == 'pull_request'
+        run: |
+          node --test tests/archive-pr-registration-prepare.test.mjs
+          node tools/ci/archive-pr-registration-prepare.mjs
 
       - name: Guard changed Git objects against footprint growth
         if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_run'
@@ -139,10 +149,15 @@ jobs:
           BEFORE_SHA: ${{ github.event.before }}
           MANUAL_BASE_SHA: ${{ github.event.inputs.base_sha }}
           PLAN_BASE_SHA: ${{ needs.plan.outputs.base_sha }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
           if [[ "$EVENT_NAME" == "pull_request" ]]; then
-            base_ref=origin/main
+            base_ref="$PR_BASE_SHA"
+            if [[ ! "$base_ref" =~ ^[0-9a-fA-F]{40}$ ]]; then
+              echo "PR footprint audit requires the exact event base SHA." >&2
+              exit 2
+            fi
           elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
             # The planner chose the commit the finished pipeline ran on (or the tip's parent): audit only what
             # the bot added on top of it.

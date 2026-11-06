@@ -125,15 +125,16 @@ test("ci.yml: the unchanged gates are still all present (no test, guard or step 
   for (const needle of [
     "node --check", "node tools/skills/verify-skills.mjs --json", "node --test tests/git-growth.test.mjs",
     "node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs",
-    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 10"
+    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 15"
   ]) assert.ok(ci.includes(needle), needle);
 });
 
-test("ci.yml: skills verification on push / re-test compares with the tested commit, not a moving origin/main", () => {
-  assert.match(ci, /\[\[ "\$EVENT_NAME" == "push" \|\| "\$EVENT_NAME" == "workflow_run" \|\| "\$EVENT_NAME" == "workflow_dispatch" \]\]/);
+test("ci.yml: skills verification uses the exact PR event base while non-PR runs check their tested commit", () => {
+  assert.match(ci, /PR_BASE_SHA: \$\{\{ github\.event\.pull_request\.base\.sha \}\}/);
+  assert.match(ci, /node tools\/skills\/verify-skills\.mjs --json --upstream "\$PR_BASE_SHA"/);
   assert.match(ci, /node tools\/skills\/verify-skills\.mjs --json --upstream HEAD/);
-  // Pull requests keep the strict "contains latest origin/main" comparison.
-  assert.match(ci, /else\n\s+node tools\/skills\/verify-skills\.mjs --json\n/);
+  assert.doesNotMatch(ci, /git fetch --no-tags origin main/);
+  assert.doesNotMatch(ci, /base_ref=origin\/main/);
 });
 
 test("Pages derive refreshes Meta Foundation compiled artifacts first, never blocking the release on a canonical defect", () => {
@@ -198,6 +199,51 @@ test("guard step: workflow_run uses the planned base when it is a reachable comm
   const r = f.run({ EVENT_NAME: "workflow_run", PLAN_BASE_SHA: f.shas[0] });
   assert.equal(r.status, 0, r.stderr);
   assert.equal(r.args, `--base ${f.shas[0]} --head HEAD`);
+});
+
+test("guard step: a PR audits its event base, independent of a later remote-main move", t => {
+  const f = guardFixture(t);
+  const r = f.run({ EVENT_NAME: "pull_request", PR_BASE_SHA: f.shas[0] });
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(r.args, `--base ${f.shas[0]} --head HEAD`);
+  for (const base of ['', 'origin/main', 'f'.repeat(40)]) {
+    const invalid = f.run({ EVENT_NAME: "pull_request", PR_BASE_SHA: base });
+    assert.notEqual(invalid.status, 0, base);
+    assert.equal(invalid.args, null, "no audit can claim an unavailable event base");
+  }
+});
+
+test("skills: later unrelated main commits reproduce the old failure but do not invalidate the fixed PR base", t => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "ci-skills-base-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const git = (...args) => {
+    const r = spawnSync('git', args, { cwd: dir, encoding: 'utf8' });
+    assert.equal(r.status, 0, r.stderr); return r.stdout.trim();
+  };
+  const write = (file, text) => { fs.mkdirSync(path.dirname(path.join(dir, file)), { recursive: true }); fs.writeFileSync(path.join(dir, file), text); };
+  git('init', '-q', '--initial-branch=main');
+  git('config', 'user.name', 'fixture'); git('config', 'user.email', 'fixture@example.invalid'); git('config', 'commit.gpgsign', 'false');
+  write('tools/skills/verify-skills.mjs', read('tools/skills/verify-skills.mjs'));
+  write('tools/skills/manifest.json', JSON.stringify({ schemaVersion: 1, source: 'repository', upstream: 'origin/main', canonicalRoots: ['.agents/skills'], skills: [
+    { name: 'demo', path: '.agents/skills/demo', scope: 'fixture', status: 'active', requiredFiles: ['SKILL.md'] }
+  ] }));
+  write('.agents/skills/demo/SKILL.md', '---\nname: demo\ndescription: fixture\n---\n');
+  git('add', '--', 'tools/skills', '.agents/skills'); git('commit', '-qm', 'base');
+  const base = git('rev-parse', 'HEAD');
+  git('switch', '-qc', 'pr'); write('source.js', 'void 0;\n'); git('add', '--', 'source.js'); git('commit', '-qm', 'PR');
+  git('switch', '-q', 'main'); write('unrelated.txt', 'later merge'); git('add', '--', 'unrelated.txt'); git('commit', '-qm', 'main moved');
+  const later = git('rev-parse', 'HEAD');
+  git('update-ref', 'refs/remotes/origin/main', later); git('switch', '-q', 'pr');
+  const verify = (...args) => spawnSync(process.execPath, ['tools/skills/verify-skills.mjs', '--json', ...args], { cwd: dir, encoding: 'utf8' });
+  const moving = verify();
+  assert.equal(moving.status, 1, moving.stdout); assert.match(moving.stdout, /branch does not contain the latest origin\/main/);
+  const pinned = verify('--upstream', base);
+  assert.equal(pinned.status, 0, pinned.stdout); assert.equal(JSON.parse(pinned.stdout).upstream.commit, base);
+  assert.equal(verify('--upstream', later).status, 1, 'a base outside the checked snapshot still fails');
+  write('.agents/skills/demo/SKILL.md', '---\nname: wrong\ndescription: broken fixture\n---\n');
+  git('add', '--', '.agents/skills/demo/SKILL.md'); git('commit', '-qm', 'invalid skill');
+  const invalid = verify('--upstream', base);
+  assert.equal(invalid.status, 1, invalid.stdout); assert.match(invalid.stdout, /skill name mismatch/);
 });
 
 test("guard step: workflow_run with an empty planned base (probe failed) falls back to the tip's first parent", t => {
