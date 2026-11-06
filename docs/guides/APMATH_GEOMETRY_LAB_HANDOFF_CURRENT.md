@@ -1,6 +1,6 @@
 # 중1 도형 실험실 통합 인수인계 · 핸드오프
 
-> 기준: `origin/main` `aa936fc7e950bd16ba75773e01eda64bf73cb4f8` (2026-11-06 UTC). 이 문서는 중1 도형실험실의 현재 반영 상태와 재개 순서를 한곳에 둔다. 체크한 작업본 장면은 담당자가 기록한 1차 확인이며, 단원 전체 완료나 학생 배포 승인을 뜻하지 않는다.
+> 기준: `origin/main` `b3b7e0272fe9bf399c2aaa2783d65d3fa5bda1d3` (2026-11-06 UTC). 앞선 `aa936fc7e950bd16ba75773e01eda64bf73cb4f8` 대조 뒤 main에 metadata-only 커밋이 들어왔으며, 그 범위에 도형 실험실 변경은 없다. 체크한 작업본 장면은 담당자가 기록한 1차 확인이며, 단원 전체 완료나 학생 배포 승인을 뜻하지 않는다.
 
 ## 현재 상태
 
@@ -48,7 +48,7 @@
 - 원과 부채꼴 패치 `libfile_8341795dbe4c81918b33977f47b1fa88` v39, 점검표 `libfile_86a70b9f066081919eb3c6da4f8accf9` v45. 기준 커밋은 `a7bcbd3f317df86ec9b84b2d8095abafdc9442f9`의 해당 main 파일과 `g7-circle-sector` 모듈.
 - 겉넓이·부피 작업 패치 `libfile_699790cc04848191bc8a8b4f146dd876` v92 (`원뿔_전개_비교_작업중.patch`), 점검표 `libfile_e7bdd83812788191b702c8a242a81121` v67. 별도 main 기준 통합 패치 `libfile_3122b4cf7e2c8191b5b7d697846f7d93` v1 (`중1_겉넓이_부피_main_기준_통합안.patch`), 작업본 tar `libfile_6f34162976cc81919e2ec4d51bc1d11a` (`중1_겉넓이_부피_작업본_20261106.tar.gz`).
 - 최신 main에 바로 앞선 `pt-middle-lab-ux-20261105` 기반 PR #1381과 결합 입체 PR #1356은 오래된 초안이고 현재 main SHA와 충돌한다. #1381의 변경에는 공유 `apl-shell.js`, `apl.css`, 카탈로그가 들어 있다. 이를 통째로 합치면 최신 Library 결과를 빠뜨리거나 새 main의 다른 작업을 덮을 수 있다. 변경 경로별로 최신 패치와 최신 main을 비교하고 이미 반영된 변경·다른 작성자 변경을 보존한다. 원격 main 이력이 바뀐 상태이므로 [Git 증거·이력 지침](../agents/git-evidence.md)에 따라 과거 브랜치 전체 이력은 합치지 않는다.
-- 이 인계 작성 시 새 main 기반 작업 브랜치는 `integrate/geometry-handoff-20261106`, 기준 SHA `aa936fc7e950bd16ba75773e01eda64bf73cb4f8`. 저장소 main 코드에 이 인계 작성 단계의 신규 도형 변경은 아직 없다.
+- 이 인계 작성 시 새 main 기반 작업 브랜치는 `integrate/geometry-handoff-20261106`, 기준 SHA `b3b7e0272fe9bf399c2aaa2783d65d3fa5bda1d3`. 저장소 main 코드에 이 인계 작성 단계의 신규 도형 변경은 아직 없다.
 
 ## 재개 순서
 
