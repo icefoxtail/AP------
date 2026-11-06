@@ -166,7 +166,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION"
   },
   {
     "id": 6,

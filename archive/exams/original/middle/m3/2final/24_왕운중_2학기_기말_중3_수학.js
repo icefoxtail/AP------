@@ -187,7 +187,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "conceptClusterKey": "TRIG_RATIO",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
