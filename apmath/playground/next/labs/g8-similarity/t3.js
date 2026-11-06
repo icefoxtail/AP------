@@ -197,7 +197,7 @@
     model: (s) => { const m = clamp(Math.round(s.smOm), 1, 2), n = clamp(Math.round(s.smOn), 3, 4); return { m, n, rho: s.smOrot, t: s.smOt || 0, ...rotGeo(m, n, s.smOrot, s.smOt || 0) }; },
     draw(b, s, M, C) {
       const prob = C.problem, st = C.step, pk = M.pk;
-      const g = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, C.t);
+      const g = prob ? rotGeo(pk.m, pk.n, 210, C.solution && C.solStep >= 3 ? 1 : 0) : rotGeo(M.m, M.n, M.rho, C.t);
       const all = [g.A, g.B, g.C, g.D, g.E], bb0 = bboxOf(all);
       const full = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, 0);
       const bbU = unionBox(bboxOf([full.A, full.B, full.C, full.D, full.E]), bb0);
@@ -401,7 +401,7 @@
       if (!prob || pk.kind === 0) arcIn(g.B, g.a, arcLo, arcHi, { color: 'amber', width: 2.4, dash: [6, 5] });
       const cA = [g.C1, g.C2].filter(Boolean);
       const col = ['amber', 'green'];
-      const showT = !prob;
+      const showT = !prob || (C.solution && C.solStep >= 3 && pk.kind === 0);
       if (showT) [g.C1, g.C2].forEach((Cp, i) => { if (Cp) { fillPoly(b, [g.A, g.B, Cp], col[i], 0.15); line(b, g.B, Cp, col[i], 3.6); line(b, g.A, Cp, col[i], 3.6); b.point(Cp, { color: col[i], r: 5.6 }); T(b, Cp, i === 0 || cA.length === 1 ? 'C' : 'C′', { dy: -16, dx: i === 0 ? -6 : 6, size: 17, color: col[i] }); } });
       if (prob && pk.kind === 0) { const Cp = g.C2 || g.C1; if (Cp && g.cnt >= 1) { /* 문제에서는 점 C 의 위치를 그리지 않음(몇 개인지가 질문) */ } }
       /* kind 1(BC 가 정수인 경우의 개수)은 점 C 의 위치를 그리지 않는다: 반직선 AX 와 AB, ∠A 만 주어진다 */
@@ -594,7 +594,7 @@
 
   /* ====================================================================== 9. [심화] 사다리꼴 대각선 4분할 */
   function trapGeo(a, bb, c) {
-    const t = 2, ADl = a * t, BCl = bb * t, h = 4, ox = (BCl - ADl) / 2, B = pt(0, 0), Cp = pt(BCl, 0), A = pt(ox, -h), Dp = pt(ox + ADl, -h);
+    const t = 2, ADl = a * t, BCl = bb * t, h = c * (a + bb), ox = (BCl - ADl) / 2, B = pt(0, 0), Cp = pt(BCl, 0), A = pt(ox, -h), Dp = pt(ox + ADl, -h);
     const O = inter(A, Cp, B, Dp);
     return { a, bb, c, AD: ADl, BC: BCl, A, B, C: Cp, D: Dp, O, S1: a * a * c, S2: a * bb * c, S3: a * bb * c, S4: bb * bb * c };
   }

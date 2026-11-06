@@ -17,7 +17,7 @@
     smGt: P('AD의 3분의 1 (t)', 1, 4, 1, 2, { color: 'sky', format: (v) => `AD = ${3 * v}` }),
     smGs: P('BE의 3분의 1 (s)', 1, 4, 1, 2, { color: 'green', format: (v) => `BE = ${3 * v}` }),
     smGa: P('두 중선이 이루는 각', 60, 120, 10, 90, { color: 'rose', format: (v) => v + '°' }),
-    smGr: P('회전해서 포개기', 0, 1, 0.01, 0, { color: 'rose', hint: '▶를 누르거나 막대를 끌면 작은 삼각형이 점 G를 중심으로 제자리에서 반 바퀴 돌아 큰 삼각형과 포개져요', format: (v) => (v >= 0.999 ? '포개짐' : Math.round(v * 100) + '%') }),
+    smGr: P('회전해서 포개기', 0, 1, 0.01, 0, { color: 'rose', hint: '▶를 누르거나 막대를 끌면 작은 삼각형이 점 G를 중심으로 제자리에서 반 바퀴 돌아 큰 삼각형과 대응변의 방향이 나란해져요', format: (v) => (v >= 0.999 ? '포개짐' : Math.round(v * 100) + '%') }),
     smGu: P('작은 삼각형 하나의 넓이 σ', 1, 8, 1, 3, { color: 'amber', format: (v) => `${v}` }),
     smGk: P('BC의 길이 (6의 배수)', 1, 5, 1, 2, { color: 'sky', format: (v) => `${6 * v} cm` }),
     smGc: P('넓이의 단위 σ', 1, 3, 1, 1, { color: 'amber', format: (v) => `${v}` })
@@ -61,7 +61,7 @@
       b.point(g.G, { color: 'amber', r: 5.4 }); T(b, g.G, 'G', { dx: -14, dy: -13, size: 17, color: 'amber' });
       if (withCopy) {
         // 오른쪽 복사본(가로로만 옮김): 큰 삼각형 GBA 와 작은 삼각형 GED (G 를 중심으로 제자리에서 돌려 포개기)
-        const sh = (p) => pt(p.x + off, p.y), rot = 180 * (1 - (C.t >= 0 ? C.t : 0));
+        const sh = (p) => pt(p.x + off, p.y), rot = 180 * (C.t >= 0 ? C.t : 0);
         const G2 = sh(g.G), A2 = sh(g.A), B2 = sh(g.B), E2 = rotP(sh(g.E), G2, rot), D2 = rotP(sh(g.D), G2, rot);
         fillPoly(b, [G2, B2, A2], 'green', 0.14); poly(b, [G2, B2, A2], 'green', 3.4);
         fillPoly(b, [G2, E2, D2], 'sky', 0.3); poly(b, [G2, E2, D2], 'sky', 3.4);
@@ -78,11 +78,11 @@
     },
     steps: (M) => [
       '점 D, E는 BC, AC의 중점이므로 중점연결정리에 의해 $\\overline{DE}\\parallel\\overline{AB}$이고 $\\overline{DE}=\\dfrac{1}{2}\\overline{AB}$예요.',
-      'DE ∥ AB이므로 엇각이 같고 맞꼭지각도 같아서 $\\triangle GED\\sim\\triangle GBA$ (AA 닮음)이에요. 닮음비는 $\\overline{DE}:\\overline{AB}=1:2$예요. (작은 삼각형을 G를 중심으로 반 바퀴 돌리면 큰 삼각형과 포개어져요)',
+      'DE ∥ AB이므로 엇각이 같고 맞꼭지각도 같아서 $\\triangle GED\\sim\\triangle GBA$ (AA 닮음)이에요. 닮음비는 $\\overline{DE}:\\overline{AB}=1:2$예요. (작은 삼각형을 G를 중심으로 반 바퀴 돌리면 대응변의 방향이 나란해져요)',
       `대응변: $\\overline{GD}:\\overline{GA}=\\overline{GE}:\\overline{GB}=1:2$ → $\\overline{GD}=${M.GD}$, $\\overline{GA}=${M.AG}$이므로 $\\overline{AG}:\\overline{GD}=2:1$, $\\overline{BG}:\\overline{GE}=${M.BG}:${M.GE}=2:1$예요.`
     ],
     view: (M) => ({
-      guide: '<b>t, s</b>로 두 중선의 길이를, <b>각</b>으로 모양을 바꿔 보세요. 무게중심 G는 항상 각 중선을 꼭짓점 쪽에서 <b>2 : 1</b>로 나눠요. ▶를 누르면 작은 삼각형이 G를 중심으로 제자리에서 돌아 큰 삼각형과 포개져요.',
+      guide: '<b>t, s</b>로 두 중선의 길이를, <b>각</b>으로 모양을 바꿔 보세요. 무게중심 G는 항상 각 중선을 꼭짓점 쪽에서 <b>2 : 1</b>로 나눠요. ▶를 누르면 작은 삼각형이 G를 중심으로 제자리에서 돌아 큰 삼각형과 대응변의 방향이 나란해져요.',
       readouts: [rd('AG : GD', `${M.AG} : ${M.GD}`, 'green', '= 2 : 1'), rd('BG : GE', `${M.BG} : ${M.GE}`, 'sky', '= 2 : 1'), rd('중선 AD, BE', `${M.AD}, ${M.BE}`, 'amber')],
       formula: `<p>$\\overline{AG}=\\dfrac{2}{3}\\overline{AD}=\\dfrac{2}{3}\\times${M.AD}=${M.AG}$, $\\overline{GD}=\\dfrac{1}{3}\\overline{AD}=${M.GD}$</p>`,
       rule: '삼각형의 무게중심은 세 중선의 교점이고, 각 중선을 꼭짓점으로부터 2 : 1로 나눈다',
@@ -130,7 +130,7 @@
         const k = pk.kind, u = pk.u;
         if (k === 0) { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 50 }); T(b, centroid(T6[2]), 'x', { size: 18, color: 'amber' }); }
         else if (k === 1) { T(b, centroid(T6[2]), String(u), { size: 17, color: 'sky' }); T(b, pt((g.B.x + g.C.x) / 2, 0), '△ABC의 넓이 x', { size: phone(b) ? 13 : 15, color: 'amber', dy: 50 }); }
-        else { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 50 }); fillPoly(b, [g.A, g.F, g.G, g.E], 'amber', 0.34); T(b, centroid([g.A, g.F, g.G, g.E]), 'x', { size: 18, color: 'amber' }); }
+        else { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 50 }); fillPoly(b, [g.A, g.F, g.G, g.E], 'amber', 0.16); T(b, centroid([g.A, g.F, g.G, g.E]), 'x', { size: 18, color: 'amber' }); }
         if (k === 2) { /* 사각형 AFGE 의 넓이 */ }
       } else if (!C.review || st >= 3) T6.forEach((Tr, i) => T(b, centroid(Tr), String(M.u), { size: sz, color: i % 2 ? 'green' : 'sky' }));
       [[g.A, 'A'], [g.B, 'B'], [g.C, 'C'], [g.D, 'D'], [g.E, 'E'], [g.F, 'F']].forEach(([p, nm]) => vtx(b, p, cen, nm, { size: 17, gap: 12 }));
@@ -160,12 +160,7 @@
       return { tag: '무게중심: 사각형의 넓이', key: `x2${u}`, stem: '점 G가 △ABC의 무게중심이고 점 D, E, F가 각 변의 중점일 때, 사각형 AFGE의 넓이 $x$를 구하시오. (단위: cm²)', choices: mkChoices(2 * u, [[u, '삼각형 하나의 넓이예요. 사각형은 두 개예요.'], [3 * u, ''], [S / 3 - 1 === 2 * u ? 4 * u : 4 * u, ''], [S / 2, ''], [2 * u + 1, '']], { pad: 1 }) };
     }
   };
-  // kind 2: 사각형 AFGE 안에 x 를 표시
-  const sixDraw = six.draw;
-  six.draw = function (b, s, M, C) {
-    sixDraw(b, s, M, C);
-    if (C.problem && M.pk.kind === 2) { const g = sixGeo(s, true, M.pk.u); T(b, centroid([g.A, g.F, g.G, g.E]), 'x', { size: 20, color: 'amber', dy: 2 }); }
-  };
+  // The queried region already receives one x label in six.draw.
 
   /* ====================================================================== 3. GG′ = BC의 3분의 1 */
   function ggGeo(s, prob, k) {
@@ -184,7 +179,7 @@
     model: (s) => ({ k: clamp(Math.round(s.smGk), 1, 5), BC: 6 * clamp(Math.round(s.smGk), 1, 5), GGq: 2 * clamp(Math.round(s.smGk), 1, 5), PQ: 3 * clamp(Math.round(s.smGk), 1, 5) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = ggGeo(s, prob, prob ? pk.k : M.k);
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 148, l: 54, r: 54 });
+      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: prob ? 80 : 148, l: 54, r: 54 });
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.A, g.B, g.D], 'sky', 0.14); fillPoly(b, [g.A, g.D, g.C], 'green', 0.12);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.A, g.D, 'ink', 3);
@@ -247,7 +242,7 @@
       const cen = centroid([g.A, g.B, g.C]);
       const show3 = prob || !C.review || st >= 1, show9 = !prob && (!C.review || st >= 2), show18 = prob || !C.review || st >= 3;
       fillPoly(b, [g.G, g.B, g.C], 'sky', show3 && !prob ? 0.2 : 0.1); if (show9) fillPoly(b, [g.Gq, g.B, g.C], 'green', 0.22);
-      if (show18) fillPoly(b, [g.Gq, g.B, g.D], 'amber', 0.5);
+      if (show18) fillPoly(b, [g.Gq, g.B, g.D], 'amber', 0.16);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.A, g.D, 'ink', 3); line(b, g.G, g.B, 'ink', 2.4); line(b, g.G, g.C, 'ink', 2.4); line(b, g.Gq, g.B, 'green', 2.4); line(b, g.Gq, g.C, 'green', 2.4);
       tick(b, g.B, g.D, 1, 'amber'); tick(b, g.D, g.C, 1, 'amber');
       const sz = 15;

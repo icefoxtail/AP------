@@ -1,0 +1,158 @@
+/** Current-question math regression; drawing commands do not replace real browser review.
+ * node tools/g8-similarity-current-question.test.mjs [--baseline SHA]
+ */
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { execFileSync } from 'node:child_process';
+import { test } from 'node:test';
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+const require = createRequire(import.meta.url), here = path.dirname(fileURLToPath(import.meta.url)), root = path.resolve(here, '../../../..');
+const unit = 'apmath/playground/next/labs/g8-similarity', baselineAt = process.argv.indexOf('--baseline'), baseline = baselineAt < 0 ? null : process.argv[baselineAt + 1];
+const katex = require(path.join(root, 'apmath/playground/next/kit/vendor/katex/katex.min.js'));
+const context = { window: {}, console, document: { documentElement: { dataset: {} }, getElementById: () => true, addEventListener() {} } };
+vm.createContext(context);
+for (const f of ['core', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 'solutions']) {
+  let code;
+  if (baseline) { try { code = execFileSync('git', ['show', `${baseline}:${unit}/${f}.js`], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch (e) { if (f === 'solutions') continue; throw e; } }
+  else code = fs.readFileSync(path.join(root, unit, f + '.js'), 'utf8');
+  vm.runInContext(code, context, { filename: f + '.js' });
+}
+const G = context.window.APL_SM, groups = context.window.APL_SM_GROUPS, scenes = groups.flatMap(x => x.scenes), get = id => scenes.find(s => s.id === id);
+const close = (a, b, why, tol = 1e-8) => assert.ok(Number.isFinite(a) && Math.abs(a - b) < tol * Math.max(1, Math.abs(b)), `${why}: ${a} != ${b}`);
+const gcd = (a, b) => b ? gcd(b, a % b) : Math.abs(a), ratio = (a, b) => { const d = gcd(a, b); return `${a / d}:${b / d}`; };
+function oracle(id, p) {
+  switch (id) {
+    case 'sm1-corr': return (p.kind === 2 ? 16 : [6, 5, 2, 3][p.ask]) * p.n;
+    case 'sm1-solid': { const b = { tet: [4, 3, 2], box: [3, 2, 2], cyl: [2, 4] }[p.type]; return p.type === 'tet' ? b.reduce((s, v, i) => s + (i === p.given ? 0 : v * p.n), 0) : b[p.ask] * p.n; }
+    case 'sm1-len': return (p.ask === 0 ? p.p : p.q) * p.n;
+    case 'sm1-always': { const a = ['tri', 'sq', 'circ', 'pent', 'rti'], t = p.items.find(t => p.askAlways ? a.includes(t) : !a.includes(t)); return { tri: '정삼각형', sq: '정사각형', circ: '원', pent: '정오각형', rti: '직각이등변삼각형', rec: '직사각형', rho: '마름모', iso: '이등변삼각형', par: '평행사변형', trp: '사다리꼴', rtr: '직각삼각형' }[t]; }
+    case 'sm2-tile': return p.kind === 0 ? p.q ** 2 * p.c : p.kind === 1 ? ratio(p.p ** 2, p.q ** 2) : ratio(p.p, p.q);
+    case 'sm2-cube': return p.kind === 0 ? p.k ** 3 : ratio(p.p ** 2, p.q ** 2);
+    case 'sm2-solid': return [22 * p.n ** 2, 6 * p.n ** 3, ratio(p.m ** 3, p.n ** 3), ratio(p.m ** 2, p.n ** 2)][p.kind];
+    case 'sm2-cone': { const [a, b, c] = [p.h1 ** 3, (p.h1 + p.h2) ** 3 - p.h1 ** 3, (p.h1 + p.h2 + p.h3) ** 3 - (p.h1 + p.h2) ** 3]; const d = gcd(gcd(a, b), c); return p.kind === 0 ? [a, b, c].map(x => x / d).join(':') : b * p.c; }
+    case 'sm3-par': return p.kind === 0 ? p.r * p.m : p.kind === 2 ? 3 * p.k : p.r * (p.m + p.k);
+    case 'sm3-flip': return p.kind === 0 ? 3 * p.n - 2 * p.m : p.r * p.n;
+    case 'sm3-rot': return p.kind === 0 ? 4 * p.m : 5 * p.n;
+    case 'sm3-sas': return p.kind === 0 ? 'SAS' : p.q * (p.n - p.m);
+    case 'sm3-multi': return p.r * [p.a, p.a + p.bb, p.a + p.bb + p.c][p.kind];
+    case 'sm3-ssa': { if (p.kind === 1) return Array.from({ length: p.c + 1 }, (_, n) => n).filter(n => n > p.c / 2 && n < p.c).length; const disc = p.a ** 2 - (p.c * .5) ** 2, proj = p.c * Math.sqrt(3) / 2; if (disc < 0) return 0; return [...new Set([proj - Math.sqrt(disc), proj + Math.sqrt(disc)])].filter(x => x > 1e-8).length; }
+    case 'sm3-foldrect': { const [w, h, bf] = (p.typ === 'a' ? [8, 10, 6] : [9, 15, 12]).map(v => v * p.j); const ce = bf * (h - bf) / w; return p.kind === 0 ? ce : w - ce; }
+    case 'sm3-foldequi': { const [bd, bf] = p.flip ? [9, 24] : [16, 6]; const ce = bf * (30 - bf) / bd; return p.kind === 0 ? ce : 30 - ce; }
+    case 'sm3-trap': return p.kind === 0 ? p.a * p.bb * p.c : p.bb ** 2 * p.c;
+    case 'sm4-conv': { const d = G.ri(G.seeded('f1d' + p.seed), 1, p.N - 1); return [p.q * (p.N - d), p.rr * d, (p.q + p.rr) * d][p.kind]; }
+    case 'sm4-x': return p.kind === 0 ? p.r * p.n : 2 * p.m;
+    case 'sm4-ef': { const a = p.m * (p.m + p.n), b = p.n * (p.m + p.n); return a * b / (a + b) * (p.kind === 0 ? 2 : 1); }
+    case 'sm4-mid': return [p.r, 2 * p.r, p.p + p.q + p.r][p.kind];
+    case 'sm4-four': return p.kind === 0 ? (6 + 8 + 10) * p.t / 2 : (6 * p.t) * (8 * p.t) / 2 / 4;
+    case 'sm4-vari': return p.kind === 0 ? p.a + p.bb : p.bb;
+    case 'sm4-bis': return p.kind === 0 ? p.m : p.kind === 1 ? p.n : ratio(p.m, p.n);
+    case 'sm4-bisx': return p.kind === 0 ? 2 * p.n : 2 * (p.n + p.g0);
+    case 'sm5-lmn': return [p.bb * p.u, p.bb, p.a * p.u][p.kind];
+    case 'sm5-trap': return p.kind === 0 ? p.a + p.m * p.t : p.a + (p.m + p.n) * p.t;
+    case 'sm5-tmid': return [p.a0 + p.b0, 2 * p.b0, p.b0 - p.a0][p.kind];
+    case 'sm6-trio': return p.kind === 0 ? 'angle C' : 'CH';
+    case 'sm6-ab2': return p.kind === 0 ? p.b ** 2 + p.b * p.c : (15 * p.t) ** 2 / (25 * p.t);
+    case 'sm6-ac2': return p.kind === 0 ? p.c ** 2 + p.b * p.c : (20 * p.t) ** 2 / (25 * p.t);
+    case 'sm6-ah2': return p.kind === 0 ? p.b * p.c : (12 * p.t) ** 2 / (9 * p.t);
+    case 'sm6-area': return (15 * p.t) * (20 * p.t) / ((p.kind === 0 ? 25 : 12) * p.t);
+    case 'sm7-shadow': return p.kind === 0 ? p.h * p.k : p.s;
+    case 'sm7-river': return p.kind === 0 ? p.m * p.w : p.n * p.u;
+    case 'sm8-proof': return p.kind === 1 ? p.s : p.t;
+    case 'sm8-six': return [p.u, 6 * p.u, 2 * p.u][p.kind];
+    case 'sm8-gg': return p.kind === 0 ? 2 * p.k : 6 * p.k;
+    case 'sm8-chain': return p.kind === 0 ? p.c : 18 * p.c;
+    default: assert.fail(id);
+  }
+}
+function checkText(t, why) {
+  if (!t) return;
+  assert.doesNotMatch(t, /undefined|NaN|Infinity|\[object Object\]|\\sqrt|√/, why);
+  assert.equal((t.match(/\$/g) || []).length % 2, 0, why + ' delimiters');
+  for (const m of t.matchAll(/\$([^$]+)\$/g)) assert.doesNotThrow(() => katex.renderToString(m[1], { throwOnError: true, strict: false }), why + ': ' + m[1]);
+}
+function board(width = 390, height = 460) {
+  const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, thumb: false, insets: { left: 0, right: 0, top: 0, bottom: 0 }, log, toS(p) { return { x: width / 2 + p.x * this.k, y: height / 2 + p.y * this.k }; } };
+  for (const name of ['text', 'path', 'circle', 'arc', 'point', 'ticks', 'right', 'handle']) b[name] = (...args) => {
+    const inspect = x => { if (typeof x === 'number') assert.ok(Number.isFinite(x), `${name}: non-finite`); else if (x && typeof x === 'object') Object.values(x).forEach(inspect); };
+    args.forEach(inspect); log.push({ name, args }); return b;
+  };
+  return b;
+}
+
+test('current rectangle problem survives exploration changes (baseline regression)', () => {
+  const sc = get('sm1-len'), s = {}; sc.enter(s); s.smPk = sc.sm.gen(17);
+  const before = JSON.stringify(sc.steps(s)); Object.assign(s, { smM2: 1, smN2: 5, smP: 4, smQ: 3 });
+  assert.equal(JSON.stringify(sc.steps(s)), before, 'solution must read the generated problem, not exploration sliders');
+  assert.equal(sc.sm.solution(s).answer, oracle(sc.id, s.smPk));
+});
+
+test('all 39 scenes: 64 generated questions, independent answers, exact text, state isolation', () => {
+  assert.equal(scenes.length, 39);
+  for (const sc of scenes) for (let seed = 1; seed <= 64; seed++) {
+    const s = {}; sc.enter(s); s.smPk = sc.sm.gen(seed * 997); const q = sc.sm.questionOf(s), sol = sc.sm.solution(s), expected = oracle(sc.id, s.smPk);
+    assert.equal(sol.answer, expected, `${sc.id}|${seed}: solution arithmetic`); assert.equal(sol.key, q.key); assert.ok(sol.steps.length >= 5, sc.id);
+    assert.equal(q.choices.length, 5, sc.id); assert.equal(q.choices.filter(x => x.ok).length, 1, sc.id);
+    const normalized = q.choices.map(c => {
+      const t = String(c.t ?? c.h).replace(/\$|\s/g, '');
+      if (/^\d+(?::\d+)+$/.test(t)) { const ns = t.split(':').map(Number), d = ns.reduce(gcd); return ns.map(x => x / d).join(':'); }
+      return t;
+    });
+    assert.equal(new Set(normalized).size, 5, sc.id + ': equivalent duplicate choices');
+    const right = q.choices.find(x => x.ok);
+    if (typeof expected === 'number') close(Number(right.t ?? right.h?.replace('개', '')), expected, sc.id + ': answer choice');
+    else if (/^\d+(?::\d+)+$/.test(expected)) assert.equal((right.h || right.t).replace(/\$|\s/g, ''), expected, sc.id);
+    else if (expected === 'SAS') assert.match(right.h || right.p, /SAS/);
+    else if (expected === 'angle C') assert.match(right.h, /\\angle C/);
+    else if (expected === 'CH') assert.match(right.h, /\\overline\{CH\}/);
+    else assert.equal(right.h, expected, sc.id);
+    for (const text of [q.stem, q.html, ...sol.steps, ...q.choices.flatMap(x => [x.h, x.t && '$' + x.t + '$', x.hint])]) checkText(text, `${sc.id}|${seed}`);
+    const original = JSON.stringify(sc.steps(s)), saved = JSON.stringify(s.smPk);
+    for (const key of Object.keys(s)) if (key.startsWith('sm') && key !== 'smSeed' && typeof s[key] === 'number') s[key] += .13;
+    assert.equal(JSON.stringify(sc.steps(s)), original, sc.id + ': exploration contamination');
+    for (const tab of ['problem', 'review']) { const v = sc.view(s, { tab }); assert.equal(v.formula, ''); assert.equal(v.readouts.length, 0); }
+    assert.equal(JSON.stringify(s.smPk), saved, sc.id + ': current question mutation');
+  }
+});
+
+test('all drawing commands: first step equals the problem; all steps finite at four sizes', () => {
+  for (const sc of scenes) for (const seed of [1, 17, 83, 997]) {
+    const s = {}; sc.enter(s); s.smPk = sc.sm.gen(seed); s.step = 1;
+    for (const [w, h] of [[1000, 650], [820, 740], [750, 510], [390, 460]]) {
+      const problem = board(w, h), first = board(w, h); sc.draw(problem, s, {}, { tab: 'problem' }); sc.draw(first, s, {}, { tab: 'review' });
+      assert.equal(JSON.stringify(first.log), JSON.stringify(problem.log), `${sc.id}|${seed}: first drawing changed the givens`);
+      for (let step = 2; step <= sc.steps(s).length; step++) { s.step = step; const b = board(w, h); assert.doesNotThrow(() => sc.draw(b, s, {}, { tab: 'review' }), `${sc.id}|${seed}|${step}`); assert.ok(b.log.length > 5); }
+      s.step = 1;
+    }
+    const b = board(); assert.doesNotThrow(() => sc.draw(b, s, {}, { tab: 'explore' }), sc.id);
+  }
+});
+
+test('exploration geometry: rectangle similarity, true rhombus, apex angle, medial correspondence, SSA', () => {
+  const sc = get('sm1-always'), s = {}; sc.enter(s);
+  for (let k = 1; k <= 3; k++) for (let q = -1; q <= 2; q++) {
+    Object.assign(s, { smFam: 'rec', smK2: k, smRq: q }); const m = sc.sm.model(s), left = G.geo.famPts('rec', 1, 0, m.q1), right = G.geo.famPts('rec', k, 6, q);
+    const ar = G.dist(left[0], left[1]) / G.dist(left[1], left[2]), br = G.dist(right[0], right[1]) / G.dist(right[1], right[2]);
+    assert.equal(m.ok, Math.abs(ar - br) < 1e-9, 'rectangle actual ratios vs status');
+  }
+  for (const angle of [30, 60, 100, 130]) {
+    const rho = G.geo.famPts('rho', 2, 0, angle), side = G.dist(rho[0], rho[1]); rho.forEach((p, i) => close(G.dist(p, rho[(i + 1) % 4]), side, 'rhombus four equal sides'));
+    const iso = G.geo.famPts('iso', 2, 0, angle); close(G.angBetween(iso[2], iso[0], iso[1]), angle, 'isosceles actual apex angle');
+  }
+  const g = G.geo.fourGeo(2); close(G.dist(g.D, g.E), G.dist(g.A, g.C) / 2, 'DE corresponds AC'); close(G.dist(g.E, g.F), G.dist(g.A, g.B) / 2, 'EF corresponds AB');
+  for (const c of [6, 7, 10, 13]) for (const a of [c / 2 - .1, c / 2, c / 2 + .1, c - .1, c, c + .1]) assert.equal(G.geo.ssaGeo(a, c, 30).cnt, a < c / 2 ? 0 : a === c / 2 || a >= c ? 1 : 2);
+});
+
+test('coordinate area identities, bisector construction, distinct midpoint ticks, fraction bounds', () => {
+  for (let seed = 1; seed <= 40; seed++) {
+    const p = get('sm3-trap').sm.gen(seed), g = G.geo.trapGeo(p.a, p.bb, p.c);
+    close(G.polyArea([g.A, g.O, g.D]), g.S1, 'top triangle actual area'); close(G.polyArea([g.B, g.O, g.C]), g.S4, 'bottom triangle actual area');
+    const z = get('sm4-bis').sm.gen(seed), h = G.geo.bisGeo(z.m, z.n);
+    close(G.dist(h.A, h.E), G.dist(h.A, h.C), 'bisector proof AE = AC'); close(G.cross(G.sub(h.E, h.C), G.sub(h.D, h.A)), 0, 'CE parallel AD');
+  }
+  const sc = get('sm4-vari'), s = {}; sc.enter(s); const b = board(); sc.draw(b, s, {}, { tab: 'problem' });
+  const ticks = b.log.filter(x => x.name === 'ticks').map(x => x.args[2].count); assert.deepEqual(ticks, [1, 1, 2, 2, 3, 3, 4, 4]);
+  assert.ok(G.labelMetrics('\\frac{1234}{5}', 16).width > G.labelMetrics('\\frac{1}{5}', 16).width); assert.ok(G.labelMetrics('\\frac{1}{18}', 16).height > 30);
+});
