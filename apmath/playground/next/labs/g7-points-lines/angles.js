@@ -488,7 +488,7 @@
   function sgnTxt(v) { return v < 0 ? '−' + (-v) : String(v); }
 
   /* ---- 5-1 맞꼭지각의 성질과 쌍의 개수 ---- */
-  const nEffV = (q, mode) => (mode === 'problem' ? (q.seed % 2 === 1 ? Math.max(3, q.n) : 2) : q.n);
+  const nEffV = (q, mode) => (mode === 'explore' ? q.n : q.seed % 2 === 1 ? Math.max(3, q.n) : 2);
   const sVert = build({
     id: 'vt', title: '맞꼭지각은 크기가 같다', short: '맞꼭지각의 성질',
     question: '두 직선이 한 점에서 만나면 네 개의 각이 생겨요. 서로 마주 보는 각(맞꼭지각)의 크기는 어떤 관계일까?',
@@ -502,18 +502,18 @@
     presets: [30, 55, 90, 120, 150].map((a, i) => ({ group: i === 0 ? '∠a' : '', label: a + '°', apply: (q) => { q.th = a; }, on: (q) => q.th === a })),
     fit: [{ th: 55, n: 2 }, { th: 30, n: 6 }, { th: 150, n: 4 }],
     partOfStep: (st) => ['', 'ab', 'cb', 'v', 'n'][st] || null,
-    steps: (q) => [
+    steps: (q) => { const n = nEffV(q, 'review'); return [
       `두 직선이 만나 생긴 ∠a와 ∠b는 한 직선 위에 있으므로 ∠a + ∠b = 180° → ∠b = 180° − ${q.th}° = ${180 - q.th}°`,
       `∠c와 ∠b도 한 직선 위에 있으므로 ∠c + ∠b = 180° → ∠c = 180° − ${180 - q.th}° = ${q.th}°. 따라서 ∠a = ∠c`,
       `마주 보는 각 ∠a와 ∠c, ∠b와 ∠d를 맞꼭지각이라 해요. 맞꼭지각의 크기는 같아요: ∠a = ∠c = ${q.th}°, ∠b = ∠d = ${180 - q.th}°`,
-      `직선 ${q.n}개가 한 점에서 만날 때, 직선 2개를 고르는 방법은 ${q.n}×${q.n - 1}÷2 = ${q.n * (q.n - 1) / 2}가지이고 한 번에 맞꼭지각이 2쌍씩 생겨요. 모두 ${q.n}×${q.n - 1} = ${q.n * (q.n - 1)}쌍`
-    ],
+      `직선 ${n}개가 한 점에서 만날 때, 직선 2개를 고르는 방법은 ${n}×${n - 1}÷2 = ${n * (n - 1) / 2}가지이고 한 번에 맞꼭지각이 2쌍씩 생겨요. 모두 ${n}×${n - 1} = ${n * (n - 1)}쌍`
+    ]; },
     work: () => RICH(M('맞꼭지각의 크기는 같다'), M('직선 n개가 한 점에서 만날 때 맞꼭지각 = n × (n − 1) 쌍')),
-    view: (q) => ({
+    view: (q, mode) => { const n = nEffV(q, mode); return {
       status: stat('ok', `∠a = ∠c = ${q.th}° · ∠b = ∠d = ${180 - q.th}°`),
-      readouts: [rd('∠a = ∠c', q.th + '°', 'amber', '맞꼭지각', 'a'), rd('∠b = ∠d', 180 - q.th + '°', 'rose', '맞꼭지각', 'b'), rd(`직선 ${q.n}개의 맞꼭지각`, q.n * (q.n - 1) + '쌍', 'green', `${q.n} × ${q.n - 1}`, 'n', true)],
+      readouts: [rd('∠a = ∠c', q.th + '°', 'amber', '맞꼭지각', 'a'), rd('∠b = ∠d', 180 - q.th + '°', 'rose', '맞꼭지각', 'b'), rd(`직선 ${n}개의 맞꼭지각`, n * (n - 1) + '쌍', 'green', `${n} × ${n - 1}`, 'n', true)],
       alert: { tone: 'key', text: '∠a + ∠b = 180°이고 ∠c + ∠b = 180°이므로 ∠a = ∠c. 맞꼭지각은 크기가 같아요.' }
-    }),
+    }; },
     draw: (g, q, mode, step) => {
       const th = q.th, n = nEffV(q, mode), O = [0, 0], L = 1.55, rev = mode === 'review', r = wedgeR(g), kind = q.seed % 2;
       g.box(-1.7, -1.7, 1.7, 1.7);
@@ -547,7 +547,10 @@
         if (step >= 4) L1.push([`직선 ${n}개 → ${n}×${n - 1} = ${n * (n - 1)}쌍`, 'green', ['n']]);
       }
       const keep = rev ? L1.slice(-3) : L1;
-      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], l[2] ? { ref: l[2] } : {}));
+      const footerLift = g.b.W >= 560 && g.b.W < 900 && (g.b.insets?.bottom || 0) < 40 ? 20 : 0;
+      // 글을 올린 만큼 자동 맞춤이 다시 아래로 당기지 않도록 기존 아래 여유를 유지해요.
+      if (footerLift) g.box(0, -1.72 - g.u(94), 0, -1.72);
+      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], { ...(l[2] ? { ref: l[2] } : {}), dy: 30 + i * 27 - footerLift }));
     },
     problem: (q) => {
       const th = q.th;
