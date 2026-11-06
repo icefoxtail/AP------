@@ -32,8 +32,11 @@
                 }
                 url.searchParams.set('mode', state.mode);
                 if (state.qpp) url.searchParams.set('qpp', String(state.qpp));
+                // Transport identity is committed with the view, but is not a
+                // rendering input. The source policy validates any supplied URL.
+                const transport = policy.captureTransport?.(intent, state, url.href) || null;
                 const sourceRequestId = N.semanticDigest(policy.sourceIdentity(state));
-                return N.copy({ state, mode: state.mode, sourceRequestId, url: url.href,
+                return N.copy({ state, mode: state.mode, sourceRequestId, url: transport?.url || url.href, transport,
                     revision: intent.type.endsWith('INVALIDATION') ? ++revisionSerial : (desired?.revision || committed?.input.revision || 0) });
             },
             async prepare(input, ctx, committed) {
@@ -56,8 +59,8 @@
                     source: { targetSessionId: ctx.requestedTargetSessionId, sourceRequestId: input.sourceRequestId,
                         sourceArchiveFile: policy.name, canonicalDataFingerprint: N.semanticDigest((policy.renderIdentity || policy.sourceIdentity)(state)),
                         businessData: policy.sourceIdentity(input.state) },
-                    state, environment: { url: input.url },
-                    fingerprints: { engine: 'common-fast-solution-loading-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
+                    state, environment: { url: policy.renderUrl?.(input.url) || input.url },
+                    fingerprints: { engine: 'common-fast-output-performance-20261106.1', pageLayout: policy.name, font: 'Nanum-Myeongjo/MathJax', asset: '20260828.1', revision: input.revision } });
             },
             async build(ctx) {
                 check(ctx);
@@ -146,7 +149,7 @@
                 return { area: document.getElementById('print-area'), state: policy.captureState?.() || policy.getState(), tracker: policy.getReadiness?.(),
                     metrics: root.__AP_RENDER_METRICS__, scale: document.documentElement.style.getPropertyValue('--screen-page-scale'),
                     controls: [...document.querySelectorAll('#mode-ctrl button,#mode-ctrl input,#mode-ctrl select,#ctrl-title')].map(node => ({ node, value: node.value, checked: node.checked, className: node.className, text: node.tagName === 'BUTTON' || node.id === 'ctrl-title' ? node.textContent : null })),
-                    dataset: { ...document.documentElement.dataset }, url: location.href };
+                    dataset: { ...document.documentElement.dataset }, url: location.href, historyState: history.state };
             },
             attach(ctx, journal) {
                 journal.area.removeAttribute('id');
@@ -164,6 +167,7 @@
                 root.__AP_RENDER_METRICS__ = ctx.metrics;
                 history.replaceState(history.state, '', ctx.input.url);
             },
+            ...(policy.finalize ? { async finalize(ctx) { check(ctx); await policy.finalize(ctx); check(ctx); } } : {}),
             rollback(ctx, journal) {
                 if (ctx.targetArea.isConnected) ctx.targetArea.replaceWith(journal.area);
                 ctx.targetArea.removeAttribute('id'); journal.area.id = 'print-area';
@@ -174,6 +178,7 @@
                 for (const item of journal.controls) { Object.assign(item.node, { value: item.value, checked: item.checked, className: item.className }); if (item.text !== null) item.node.textContent = item.text; }
                 for (const key of Object.keys(document.documentElement.dataset)) delete document.documentElement.dataset[key];
                 Object.assign(document.documentElement.dataset, journal.dataset);
+                history.replaceState(journal.historyState, '', journal.url);
             },
             afterCommit(ctx) { policy.afterCommit?.(ctx); },
             freezeSnapshot(snapshot, ctx) {

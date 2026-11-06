@@ -5,6 +5,11 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createExamRenderExecutor(root) {
     'use strict';
 
+    // Size and paginate only after every question figure has loaded/decoded.
+    // Share the existing solution asset budget; a 1.2s staging wait can reject
+    // valid cold images before MathJax or any page measurement begins.
+    const EXAM_IMAGE_TIMEOUT_MS = 15000;
+
     function usesEqualSlots(qpp, questions, deps) {
         const url = deps.engineUrl || root.location?.href || 'https://ap.invalid/';
         const params = new URL(url, 'https://ap.invalid/').searchParams;
@@ -106,6 +111,7 @@
 
         const staging = deps.stagingHost || document.getElementById('staging');
         if (!staging) throw new Error('EXAM_STAGING_MISSING');
+        const prepareImageSizes = target => deps.applyAutoImageSizeClasses(target, EXAM_IMAGE_TIMEOUT_MS, deps.abortSignal);
         staging.style.width = '83mm';
         staging.innerHTML = '';
         let pNum = 1;
@@ -138,10 +144,11 @@
         if (usesEqualSlots(appState.qpp, data, deps)) {
             appState.layoutMeasurementLedger = null;
             return root.APEqualSlotEngine.render({ area, items, deps: {
-                ...deps, deferFinalize: true, makePage: (target, number) => { const page = deps.makePage(target, 'exam', number); return { page, body: page.body }; }
+                ...deps, applyAutoImageSizeClasses: prepareImageSizes, deferFinalize: true,
+                makePage: (target, number) => { const page = deps.makePage(target, 'exam', number); return { page, body: page.body }; }
             } });
         }
-        await deps.applyAutoImageSizeClasses(staging);
+        await prepareImageSizes(staging);
         await deps.typesetMath('exam-staging', [staging]);
         await deps.raf();
         await measureProfiles(items, deps);

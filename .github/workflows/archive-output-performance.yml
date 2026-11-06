@@ -1,0 +1,351 @@
+name: Archive Output Performance
+
+on:
+  push:
+    branches: ['perf/archive-output-*']
+    paths:
+      - 'archive/**'
+      - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-output-pdf-evidence.cjs'
+      - 'tests/archive2-output-cache-browser.cjs'
+      - 'tests/archive-mixed-envelope-cache.test.cjs'
+      - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-release-qualification.cjs'
+      - 'tests/archive2-output-release-qualification.test.cjs'
+      - 'tests/archive2-solution-loading-browser.cjs'
+      - '.github/workflows/archive-output-performance.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/common-fast-runtime.js'
+      - 'archive/screen-runtime.js'
+      - 'archive/screen-runtime-adapter.js'
+      - 'archive/solution-render-executor.js'
+      - 'archive/layout-materializer.js'
+      - 'archive/output-metadata-loader.js'
+      - 'archive/mixed_engine.html'
+      - 'archive/engine.html'
+      - 'tests/archive2-output-performance-browser.cjs'
+      - 'tests/archive2-output-pdf-evidence.cjs'
+      - 'tests/archive2-output-cache-browser.cjs'
+      - 'tests/archive-mixed-envelope-cache.test.cjs'
+      - 'tests/archive-output-metadata-loader.test.cjs'
+      - 'tests/archive2-output-release-qualification.cjs'
+      - 'tests/archive2-output-release-qualification.test.cjs'
+      - '.github/workflows/archive-output-performance.yml'
+  workflow_dispatch:
+    inputs:
+      baseline_sha:
+        description: 'Exact baseline commit for the same-input Chrome comparison'
+        type: string
+        default: '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  output-performance:
+    name: Archive output performance and parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch only the comparison baseline
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-performance-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Measure real output routes in actual Chrome
+        # The raw matrix deliberately retains the pre-existing qpp4 failure.
+        # The release job below classifies only its exact pinned signature and
+        # fails on every new failure, absent artifact or unplanned missing row.
+        continue-on-error: true
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_PROFILE_ONLY: '0'
+          ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
+          ARCHIVE_PERFORMANCE_REPEATS: '3'
+          ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-performance
+        run: node tests/archive2-output-performance-browser.cjs
+      - name: Upload bounded performance and output parity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-performance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-performance/
+          if-no-files-found: warn
+          retention-days: 14
+
+  cache-regressions:
+    name: Archive snapshot recovery in Chrome
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          # The required SVG/runtime guard resolves the PR merge-base with main.
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Refresh upstream main for the required runtime guard
+        run: git fetch --no-tags origin main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify snapshot binding, image placement, and readiness contracts
+        run: >-
+          node --test
+          tests/archive-fast-engine-runtime.test.js
+          tests/archive-mixed-envelope-cache.test.cjs
+          tests/archive2-output-visibility-observation.test.cjs
+          tests/archive-output-metadata-loader.test.cjs
+          tests/archive-question-image-map-regression.test.js
+          tests/archive-exam-render-executor-slot-layout.test.cjs
+          tests/archive-render-authority-adapter.test.js
+          tests/archive2-textbook-manifest.test.js
+          tests/archive2-pdf-readiness.test.cjs
+          tests/archive-font-invalidation.test.cjs
+      - name: Verify the required Archive2 runtime guard
+        run: node tools/check-archive2-runtime.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-cache-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Verify real cache reuse, rollback, retry, and printing
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-cache-browser/node_modules
+          ARCHIVE_CACHE_REPORT_DIR: ${{ runner.temp }}/archive-output-cache
+        run: node tests/archive2-output-cache-browser.cjs
+      - name: Upload snapshot recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-cache-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-cache/
+          if-no-files-found: warn
+          retention-days: 14
+
+  printed-output:
+    name: Archive printed pixel parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch only the comparison baseline
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-pdf-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Install the PDF raster inspector
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+      - name: Compare actual Chrome PDFs in an isolated print session
+        continue-on-error: true
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-pdf-browser/node_modules
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_PDF_ONLY: '1'
+          ARCHIVE_PERFORMANCE_REPEATS: '1'
+          ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-pdf
+        run: node tests/archive2-output-performance-browser.cjs
+      - name: Upload printed output evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-pdf-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-pdf/
+          if-no-files-found: warn
+          retention-days: 14
+
+  release-qualification:
+    name: Archive measured output release qualification
+    if: always()
+    needs: [output-performance, cache-regressions, printed-output, output-network, solution-loading]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Require every validation job to complete
+        env:
+          QUALIFICATION_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: |
+          node - <<'NODE'
+          const jobs = JSON.parse(process.env.QUALIFICATION_JOB_RESULTS);
+          const failed = Object.entries(jobs).filter(([, job]) => job.result !== 'success');
+          if (failed.length) {
+            console.error(JSON.stringify({ pass: false, incompleteJobs: failed.map(([name, job]) => ({ name, result: job.result })) }));
+            process.exit(1);
+          }
+          NODE
+      - name: Verify the qualification rejects incomplete or changed evidence
+        run: node --test tests/archive2-output-release-qualification.test.cjs
+      - name: Download this attempt's raw evidence unchanged
+        uses: actions/download-artifact@v4
+        with:
+          pattern: archive-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-all-evidence
+          merge-multiple: false
+      - name: Independently qualify performance, parity and failure preservation
+        env:
+          ARCHIVE_QUALIFICATION_CURRENT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          node tests/archive2-output-release-qualification.cjs
+          --artifacts "$RUNNER_TEMP/archive-output-all-evidence"
+          --current-sha "$ARCHIVE_QUALIFICATION_CURRENT_SHA"
+      - name: Upload scoped qualification without replacing raw failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-release-qualification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-all-evidence/output-release-qualification.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  output-network:
+    name: Archive cold network (${{ matrix.fixture }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture: ['envelope50-qpp1', 'envelope8']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch only the comparison baseline
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-network-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Measure complete cold loading under the same network limit
+        # The immutable baseline may fail its old 1.2s image-preparation gate.
+        # The mandatory qualifier requires the exact diagnosed baseline fault,
+        # every current operation ready, and parity with the normal baseline.
+        continue-on-error: true
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-network-browser/node_modules
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '87d7a554448d8ecf9ab5a535f2ff5541b0c79a0a' }}
+          ARCHIVE_PERFORMANCE_NETWORK_ONLY: '1'
+          ARCHIVE_PERFORMANCE_NETWORK_FIXTURE: ${{ matrix.fixture }}
+          ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
+          ARCHIVE_PERFORMANCE_REPEATS: '1'
+          ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-network
+        run: node tests/archive2-output-performance-browser.cjs
+      - name: Upload cold network evidence including pending transfers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-network-${{ matrix.fixture }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-output-network/
+          if-no-files-found: warn
+          retention-days: 14
+
+  solution-loading:
+    name: Archive existing 50-question loading regressions
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch the original regression suite baseline
+        env:
+          ARCHIVE_SOLUTION_BASE_SHA: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_SOLUTION_BASE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify existing image deadlines and feedback contracts
+        run: >-
+          node --test
+          tests/archive-solution-loading.test.cjs
+          tests/archive-render-feedback.test.cjs
+          tests/archive-font-invalidation.test.cjs
+          tests/archive-inline-image-readiness.test.js
+          tests/archive-question-image-map-regression.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Run the original Chrome suite without changing its cases
+        timeout-minutes: 8
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_SOLUTION_BASE_SHA: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
+          ARCHIVE_SOLUTION_REPEATS: '2'
+        run: node tests/archive2-solution-loading-browser.cjs
+      - name: Upload the original loading regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-solution-loading-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-solution-loading-evidence/
+          if-no-files-found: warn
+          retention-days: 14
