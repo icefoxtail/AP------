@@ -121,6 +121,21 @@ function layoutBoard(width = 390, height = 324) {
 }
 const labelCenter = (b, entry) => { const [p, , o] = entry.args, s = b.toS(p); return { x: s.x + (o.dx || 0), y: s.y + (o.dy || 0) }; };
 
+test('rotating comparison explanations remain readable outside the landscape toolbar', () => {
+  for (const id of ['sm3-rot', 'sm8-proof']) for (const [width, height] of [[683, 476], [1040, 606]]) for (const progress of [0, .5, 1]) {
+    const sc = get(id), s = {}; sc.enter(s); s.smOt = s.smGr = progress;
+    const b = layoutBoard(width, height); b.insets.bottom = 0; b.insets.right = 16; sc.draw(b, s, {}, { tab: 'explore' });
+    for (const label of b.log.filter(x => x.name === 'text')) {
+      const center = labelCenter(b, label), metrics = G.labelMetrics(label.args[1], label.args[2].size);
+      const intersectsToolbar = center.x + metrics.width / 2 > width - 280 && center.y + metrics.height / 2 > height - 54;
+      assert.ok(!intersectsToolbar, `${id}|${width}|${progress}: ${label.args[1]} hidden by toolbar`);
+    }
+    const view = sc.view(s, { tab: 'explore' });
+    if (id === 'sm3-rot') { assert.match(view.guide, /AA 닮음/); for (const pair of ['AD↔AB', 'AE↔AC', 'DE↔BC']) assert.ok(view.guide.includes(pair)); }
+    else { assert.ok(view.guide.includes('△GED ∽ △GBA')); assert.ok(view.guide.includes('GD : GA = GE : GB = 1 : 2')); }
+  }
+});
+
 test('mobile rotated shared vertices and centroid-copy point names stay outside the small figures', () => {
   const sc = get('sm3-rot'), s = {}; sc.enter(s);
   const inside = (p, a, c, d) => { const sign = (u, v, w) => (v.x - u.x) * (w.y - u.y) - (v.y - u.y) * (w.x - u.x); const x = [sign(a, c, p), sign(c, d, p), sign(d, a, p)]; return x.every(v => v > 1e-8) || x.every(v => v < -1e-8); };

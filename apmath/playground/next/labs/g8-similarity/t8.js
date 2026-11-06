@@ -70,12 +70,9 @@
         G.tagOut(b, E2, G2, 'E', { size: 16, gap: 12, color: 'sky' });
         G.tagOut(b, D2, G2, 'D', { size: 16, gap: 12, color: 'sky' });
         if (C.t >= 0.999) { par(b, E2, D2, 1, 'amber'); par(b, B2, A2, 1, 'amber'); }
-        T(b, pt(G2.x, tri.y1), '△GBA와 △GED (G를 중심으로 반 바퀴 돌린 모양)', { dy: 68, size: phone(b) ? 12 : 14, color: 'amber' });
       }
-      if (C.txt && !prob) {
-        const msg = st >= 3 ? `GD : GA = GE : GB = 1 : 2` : st >= 2 ? '△GED ∽ △GBA (닮음비 1 : 2)' : st >= 1 ? 'DE ∥ AB, DE는 AB의 절반 (중점연결정리)' : '두 중선 AD, BE가 만나는 점 G';
-        T(b, pt(tri.x0 + W / 2, tri.y1), msg, { dy: 40, size: phone(b) ? 13 : 16, color: 'amber' });
-      }
+      // Put the copy's explanation and ratios in the exploration card, where
+      // they stay visible when the floating toolbar occupies the lower corner.
     },
     steps: (M) => [
       '점 D, E는 BC, AC의 중점이므로 중점연결정리에 의해 $\\overline{DE}\\parallel\\overline{AB}$이고 $\\overline{DE}=\\dfrac{1}{2}\\overline{AB}$예요.',
@@ -83,7 +80,7 @@
       `대응변: $\\overline{GD}:\\overline{GA}=\\overline{GE}:\\overline{GB}=1:2$ → $\\overline{GD}=${M.GD}$, $\\overline{GA}=${M.AG}$이므로 $\\overline{AG}:\\overline{GD}=2:1$, $\\overline{BG}:\\overline{GE}=${M.BG}:${M.GE}=2:1$예요.`
     ],
     view: (M) => ({
-      guide: '<b>t, s</b>로 두 중선의 길이를, <b>각</b>으로 모양을 바꿔 보세요. 무게중심 G는 항상 각 중선을 꼭짓점 쪽에서 <b>2 : 1</b>로 나눠요. ▶를 누르면 작은 삼각형이 G를 중심으로 제자리에서 돌아 큰 삼각형과 대응변의 방향이 나란해져요.',
+      guide: '<b>t, s</b>로 두 중선의 길이를, <b>각</b>으로 모양을 바꿔 보세요. 무게중심 G는 항상 각 중선을 꼭짓점 쪽에서 <b>2 : 1</b>로 나눠요. ▶를 누르면 작은 삼각형이 G를 중심으로 제자리에서 돌아 큰 삼각형과 대응변의 방향이 나란해져요.<br><b>DE ∥ AB, DE : AB = 1 : 2</b>이므로 △GED ∽ △GBA이고, 대응변은 <b>GD : GA = GE : GB = 1 : 2</b>입니다.',
       readouts: [rd('AG : GD', `${M.AG} : ${M.GD}`, 'green', '= 2 : 1'), rd('BG : GE', `${M.BG} : ${M.GE}`, 'sky', '= 2 : 1'), rd('중선 AD, BE', `${M.AD}, ${M.BE}`, 'amber')],
       formula: `<p>$\\overline{AG}=\\dfrac{2}{3}\\overline{AD}=\\dfrac{2}{3}\\times${M.AD}=${M.AG}$, $\\overline{GD}=\\dfrac{1}{3}\\overline{AD}=${M.GD}$</p>`,
       rule: '삼각형의 무게중심은 세 중선의 교점이고, 각 중선을 꼭짓점으로부터 2 : 1로 나눈다',

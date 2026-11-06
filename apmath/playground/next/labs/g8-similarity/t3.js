@@ -231,10 +231,8 @@
       T(b, g.A, 'A', { dx: au.x * 35, dy: au.y * 35, size: 17 });
       [[g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, cB, nm, { size: 17, gap: 12 }));
       [[g.D, 'D'], [g.E, 'E']].forEach(([p, nm]) => vtx(b, p, cS, nm, { size: 17, gap: 12 }));
-      if (C.txt && !prob && !phone(b)) {
-        const cap = done ? '포개면 대응변이 보여요: AD↔AB, AE↔AC, DE↔BC' : st >= 1 ? '∠BAC=∠DAE, ∠ABC=∠ADE → AA 닮음' : `닮음비 ${M.m} : ${M.n}`;
-        T(b, pt((bbU.x0 + bbU.x1) / 2, bbU.y1), cap, { dy: 56, size: capSize(b), color: 'amber' });
-      }
+      // The correspondence is in the exploration card. Long canvas sentences
+      // at this lower edge would run behind the landscape floating toolbar.
     },
     steps: (M) => [
       '∠BAC=∠DAE이고 ∠ABC=∠ADE이므로 $\\triangle ADE\\sim\\triangle ABC$ (AA 닮음)예요. 두 삼각형은 돌아가 있을 뿐 모양은 같아요.',
@@ -242,7 +240,7 @@
       `$\\overline{AD}:\\overline{AB}=\\overline{AE}:\\overline{AC}=\\overline{DE}:\\overline{BC}$ → $${M.AD}:${M.AB}=${M.AE}:${M.AC}=${M.DE}:${M.BC}$ (닮음비 ${M.m} : ${M.n})`
     ],
     view: (M) => ({
-      guide: '<b>m, n</b>으로 닮음비를, <b>회전 각도</b>로 작은 삼각형이 놓인 방향을 바꿔 보세요. ▶를 누르면 작은 삼각형이 점 A를 중심으로 <b>제자리에서 돌아</b> 큰 삼각형에 포개져요.',
+      guide: '<b>m, n</b>으로 닮음비를, <b>회전 각도</b>로 작은 삼각형이 놓인 방향을 바꿔 보세요. ▶를 누르면 작은 삼각형이 점 A를 중심으로 <b>제자리에서 돌아</b> 큰 삼각형에 포개져요.<br>두 각의 크기가 같으므로 <b>AA 닮음</b>이에요. 대응변은 <b>AD↔AB, AE↔AC, DE↔BC</b>입니다.',
       readouts: [rd('AD : AB', `${M.AD} : ${M.AB}`, 'sky', `= ${M.m} : ${M.n}`), rd('AE : AC', `${M.AE} : ${M.AC}`, 'green', `= ${M.m} : ${M.n}`), rd('DE : BC', `${M.DE} : ${M.BC}`, 'amber', `= ${M.m} : ${M.n}`)],
       formula: `<p>$\\overline{AD}:\\overline{AB}=\\overline{DE}:\\overline{BC}$ → $${M.AD}:${M.AB}=${M.DE}:${M.BC}$</p>`,
       rule: '돌아가 있는 닮은 삼각형은 같은 각의 표시를 따라 돌려 포개면 대응변이 보인다',
