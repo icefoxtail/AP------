@@ -34,24 +34,24 @@ function execute(command, args, root, inherit = false) {
 }
 
 export function preparePrRegistration({ root = process.cwd(), eventName, event, expectedSha = '', run = execute }) {
-  if (eventName !== 'pull_request') return { state: 'NO_OP', reason: 'not a pull request; no temporary PR projection requested' };
-  const baseSha = event?.pull_request?.base?.sha;
-  const prHeadSha = event?.pull_request?.head?.sha;
-  if (!SHA.test(baseSha || '') || !SHA.test(prHeadSha || '')) throw new Error('PR event must identify exact base and head commit SHAs');
+  if (!['pull_request', 'push'].includes(eventName)) return { state: 'NO_OP', reason: 'no source event; no temporary projection requested' };
+  const baseSha = eventName === 'pull_request' ? event?.pull_request?.base?.sha : event?.before;
+  const inputHeadSha = eventName === 'pull_request' ? event?.pull_request?.head?.sha : event?.after;
+  if (!SHA.test(baseSha || '') || !SHA.test(inputHeadSha || '')) throw new Error('source event must identify exact base and head commit SHAs');
   const git = args => run('git', args, root);
   const headSha = git(['rev-parse', '--verify', 'HEAD']).trim();
   if (!SHA.test(headSha)) throw new Error('checkout has no exact commit SHA');
   if (expectedSha && (!SHA.test(expectedSha) || headSha.toLowerCase() !== expectedSha.toLowerCase())) {
-    throw new Error('checkout does not match the PR event snapshot SHA');
+    throw new Error('checkout does not match the source event snapshot SHA');
   }
   git(['merge-base', '--is-ancestor', baseSha, headSha]);
-  git(['merge-base', '--is-ancestor', prHeadSha, headSha]);
+  git(['merge-base', '--is-ancestor', inputHeadSha, headSha]);
   let paths;
   try { paths = git(['diff', '--name-only', '--no-renames', '-z', baseSha, headSha, '--']).split('\0').filter(Boolean); }
   catch { paths = null; }
-  const report = { baseSha, prHeadSha, headSha, changedPathCount: paths?.length ?? null };
+  const report = { baseSha, inputHeadSha, headSha, changedPathCount: paths?.length ?? null };
   if (!registrationInputsChanged(paths)) {
-    return { ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed PR snapshot' };
+    return { ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed source snapshot' };
   }
   // This command is for a disposable CI checkout. Never overwrite local unfinished work.
   if (git(['status', '--porcelain', '-z', '--untracked-files=all']).length) throw new Error('temporary registration preparation requires a clean CI checkout');
@@ -70,11 +70,11 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
 
 function main() {
   let event = null;
-  if (process.env.GITHUB_EVENT_NAME === 'pull_request') event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+  if (['pull_request', 'push'].includes(process.env.GITHUB_EVENT_NAME)) event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
   const result = preparePrRegistration({ eventName: process.env.GITHUB_EVENT_NAME, event, expectedSha: process.env.GITHUB_SHA });
   console.log(JSON.stringify(result, null, 2));
   if (process.env.GITHUB_STEP_SUMMARY) {
-    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `PR registration preparation: **${result.state}** — ${result.reason}\n` +
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `Temporary registration preparation: **${result.state}** — ${result.reason}\n` +
       (result.headSha ? `Snapshot \`${result.headSha}\`; base \`${result.baseSha}\`. This is temporary generation; tests supply the technical verdict.\n` : ''));
   }
 }
