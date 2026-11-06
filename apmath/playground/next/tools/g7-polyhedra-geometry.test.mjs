@@ -332,3 +332,56 @@ test('count-question solids render the question polygon in problem and review, t
   }
   t.diagnostic(`${frames} actual draw calls checked with independent vertex/edge/face counts; 9 inquiry restorations`);
 });
+
+test('maximum-face review reveals the current polygon fan only at the final step', t => {
+  const c = vm.createContext({ window: { APLab: { clamp: (x, a, b) => Math.max(a, Math.min(b, x)) } }, document });
+  vm.runInContext(fs.readFileSync(new URL('../kit/apl-board.js', import.meta.url), 'utf8'), c);
+  for (const name of ['core', 'geo', 'cubesec', 't2']) {
+    vm.runInContext(fs.readFileSync(new URL('../labs/g7-polyhedra/' + name + '.js', import.meta.url), 'utf8'), c);
+  }
+  const sc = c.window.APL_PH_GROUPS[0].scenes.find(x => x.id === 'p2-6');
+  const polygons = [], labels = [];
+  const board = () => {
+    const b = Object.create(c.window.APLab.Board.prototype);
+    Object.assign(b, { W: 390, H: 412, pad: .02, kind: 'figure', aspect: '1:1',
+      insets: { left: 0, right: 0, top: 0, bottom: 58 }, zoom: 1, panX: 0, panY: 0,
+      fs: 1, thumb: false, focus: { x: [-5, 5], y: [-4, 4] }, panes: null, paneId: null });
+    b.ctx = new Proxy({}, { get: () => () => {} }); b.color = x => x;
+    b.path = (pts, options = {}) => { if (options.close && options.fill) polygons.push(pts); };
+    b.text = (_p, text) => labels.push(String(text));
+    b.stext = (_x, _y, text) => labels.push(String(text));
+    b.point = b.handle = () => {};
+    return b;
+  };
+  let frames = 0;
+  for (const p of [3, 4, 5]) {
+    const s = { ...defaults }, lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); Object.assign(s, { phPp: 6, phQq: 6, phQ: { p } });
+    const angle = 180 - 360 / p, max = Math.ceil(360 / angle) - 1;
+    for (const [tab, step] of [['problem', 0], ['review', 0], ['review', 1], ['review', 2], ['review', 3]]) {
+      lab.tab = tab; sc.view(s, lab); s.step = step;
+      polygons.length = labels.length = 0; sc.draw(board(), s, {}, lab);
+      const final = tab === 'review' && step === 3;
+      assert.equal(polygons.length, final ? max : 1, `p=${p}, ${tab}, step=${step}`);
+      for (const polygon of polygons) {
+        assert.equal(polygon.length, p, 'the drawn face follows the current question');
+        assert.ok(Math.hypot(polygon[0].x, polygon[0].y) < 1e-10, 'every face shares point O');
+        for (let i = 0; i < p; i++) {
+          const a = polygon[i], b = polygon[(i + 1) % p];
+          assert.ok(Math.abs(Math.hypot(a.x - b.x, a.y - b.y) - 1) < 1e-10, 'each face is regular');
+        }
+      }
+      if (!final) assert.doesNotMatch(labels.join(' '), /최대|360|개를 점 O에 모았/);
+      else {
+        assert.ok(max * angle < 360 && (max + 1) * angle >= 360, 'fan is the independent maximum');
+        assert.match(labels.join(' '), new RegExp(`${max}개`));
+      }
+      frames++;
+    }
+    lab.tab = 'explore'; sc.view(s, lab); polygons.length = labels.length = 0;
+    sc.draw(board(), s, {}, lab);
+    assert.ok(labels.includes('정육각형'), 'inquiry returns to its own table and chosen polygon');
+    assert.equal(s.phPp, 6); assert.equal(s.phQq, 6);
+  }
+  t.diagnostic(`${frames} question/step drawings, three independent maximum-angle calculations, three inquiry restorations`);
+});

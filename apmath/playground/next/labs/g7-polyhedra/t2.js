@@ -447,12 +447,20 @@
     draw(b, s, M, C) {
       const st = stepOf(C);
       if (C.problem) {
-        // 문제: 면 하나(정p각형)와 모을 꼭짓점 O 만 보여 줍니다
-        const pp = M.Q.p, pl = fan(pp, 1)[0], R = pp === 6 ? 2.05 : pp === 5 ? 1.75 : pp === 4 ? 1.45 : 1.05;
-        fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 70, b: 50, l: 40, r: 40 });
-        b.path(pl.pts, { close: true, fill: SKY, fillAlpha: 0.25, color: 'ink', width: 2.6 });
+        // 최대 개수는 마지막 풀이에서만 그림으로 완성합니다. 그전에는 문제의 면 하나를 유지합니다.
+        const pp = M.Q.p, final = C.questionReview && C.solutionStep >= 3;
+        const q = final ? (pp === 3 ? 5 : 3) : 1, polys = fan(pp, q), pts = polys.flatMap((pl) => pl.pts);
+        const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
+        fit(b, { x0: Math.min(...xs) - 0.12, x1: Math.max(...xs) + 0.12, y0: Math.min(...ys) - 0.12, y1: Math.max(...ys) + 0.12 }, { t: final ? 90 : 70, b: 64, l: 40, r: 40 });
+        polys.forEach((pl) => b.path(pl.pts, { close: true, fill: final ? GRN : SKY, fillAlpha: 0.25, color: 'ink', width: 2.6 }));
         b.point({ x: 0, y: 0 }, { color: AMB, r: 7 });
-        if (C.txt) banner(b, [{ t: `${PNAME[pp]}을 한 꼭짓점 O에 여러 개 모아요`, c: 'ink', size: 16 }], C);
+        if (C.txt) {
+          b.text({ x: 0, y: 0 }, 'O', { color: AMB, size: 15, weight: 800, dx: -13, dy: 17 });
+          banner(b, final ? [
+            { t: `${PNAME[pp]} ${q}개를 점 O에 모았어요`, c: GRN, size: 16 },
+            { t: `${Math.round(interior(pp))}° × ${q} = ${Math.round(interior(pp) * q)}° < 360°`, c: 'ink', size: 15 }
+          ] : [{ t: `${PNAME[pp]}을 한 꼭짓점 O에 여러 개 모아요`, c: 'ink', size: 16 }], C);
+        }
         return;
       }
       b.focus = { x: [0, 1], y: [0, 1] }; // 그림 좌표는 쓰지 않고 화면 좌표로 그립니다
