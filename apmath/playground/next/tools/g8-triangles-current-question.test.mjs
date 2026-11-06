@@ -26,12 +26,13 @@ function checkMath(text, label) {
   for (const [, tex] of text.matchAll(/\$([^$]+)\$/g)) katex.renderToString(tex, { throwOnError: true, strict: 'ignore' });
   assert.doesNotMatch(text.replace(/\$[^$]*\$/g, ''), /\\[A-Za-z]+/, label + ': no TeX commands outside math delimiters');
 }
-function board(W = 390, H = 440) {
-  const items = [], b = { W, H, fs: 1, pad: .02, insets: { top: 0, bottom: 0, left: 0, right: 0 }, focus: { x: [-6, 6], y: [-6, 6] }, items, _P: p => p };
-  Object.defineProperty(b, 'k', { get() { return Math.min((W - .04 * Math.min(W, H)) / (this.focus.x[1] - this.focus.x[0]), (H - .04 * Math.min(W, H)) / (this.focus.y[1] - this.focus.y[0])); } });
+function board(W = 390, H = 440, insets = {}) {
+  const items = [], b = { W, H, fs: 1, pad: .02, insets: { top: 0, bottom: 0, left: 0, right: 0, ...insets }, focus: { x: [-6, 6], y: [-6, 6] }, items, _P: p => p };
+  const area = () => ({ W: W - b.insets.left - b.insets.right, H: H - b.insets.top - b.insets.bottom });
+  Object.defineProperty(b, 'k', { get() { const a = area(); return Math.min((a.W - .04 * Math.min(a.W, a.H)) / (this.focus.x[1] - this.focus.x[0]), (a.H - .04 * Math.min(a.W, a.H)) / (this.focus.y[1] - this.focus.y[0])); } });
   const point = p => assert.ok(p && Number.isFinite(p.x) && Number.isFinite(p.y), `invalid point ${JSON.stringify(p)}`);
-  b.toS = p => { point(p); return { x: W / 2 + (p.x - (b.focus.x[0] + b.focus.x[1]) / 2) * b.k, y: H / 2 + (p.y - (b.focus.y[0] + b.focus.y[1]) / 2) * b.k }; };
-  b.toW = (x, y) => ({ x: (x - W / 2) / b.k + (b.focus.x[0] + b.focus.x[1]) / 2, y: (y - H / 2) / b.k + (b.focus.y[0] + b.focus.y[1]) / 2 });
+  b.toS = p => { point(p); const a = area(); return { x: b.insets.left + a.W / 2 + (p.x - (b.focus.x[0] + b.focus.x[1]) / 2) * b.k, y: b.insets.top + a.H / 2 + (p.y - (b.focus.y[0] + b.focus.y[1]) / 2) * b.k }; };
+  b.toW = (x, y) => { const a = area(); return { x: (x - b.insets.left - a.W / 2) / b.k + (b.focus.x[0] + b.focus.x[1]) / 2, y: (y - b.insets.top - a.H / 2) / b.k + (b.focus.y[0] + b.focus.y[1]) / 2 }; };
   b.path = (points, options = {}) => { points.forEach(point); items.push({ type: 'path', points, options }); return b; };
   b.circle = (p, r, options) => { point(p); assert.ok(Number.isFinite(r) && r >= 0); items.push({ type: 'circle', p, r, options }); return b; };
   b.arc = (p, r, a, z, options) => { point(p); assert.ok([r, a, z].every(Number.isFinite)); items.push({ type: 'arc', p, r, a, z, options }); return b; };
@@ -183,4 +184,28 @@ test('right-triangle congruence and bisector diagrams give equal-length ticks on
     }
   }
   t.diagnostic(`${frames} problem/stage frames and ${marks} geometric equal-length marks`);
+});
+
+test('the circumcenter angle problem uses the available short canvas and keeps each given angle beside its vertex', () => {
+  const sc = get('t5-4');
+  for (const [W, H] of [[390, 310], [820, 380]]) {
+    const s = Object.assign(state(sc), { trOa: 60, trOb: 65, trV: 0 });
+    for (const tab of ['problem', 'review']) {
+      s.step = sc.steps(s).length;
+      const b = board(W, tab === 'review' ? H + 100 : H, { bottom: 58 });
+      sc.draw(b, s, {}, { tab });
+      const circle = b.items.find(item => item.type === 'circle' && item.r === 1);
+      assert.ok(circle, 'the circumcircle remains visible');
+      assert.ok(2 * circle.r * b.k >= 180, `${W} ${tab}: circumcircle diameter ${2 * circle.r * b.k} px is too small for the three given/unknown angles`);
+      const M = sc.tr.model(s);
+      for (const [label, vertex, other] of [['30°', 'B', 'C'], ['25°', 'C', 'A']]) {
+        const item = b.items.find(item => item.type === 'text' && item.str === label);
+        assert.ok(item, `${tab}: current angle ${label} is drawn`);
+        const anchor = b.toS(item.p), center = { x: anchor.x + (item.options.dx || 0), y: anchor.y + (item.options.dy || 0) };
+        const vertexDistance = G.dist(center, b.toS(M.g[vertex]));
+        assert.ok(vertexDistance < G.dist(center, b.toS(M.g[other])), `${W} ${tab}: ${label} must belong visually to vertex ${vertex}, not ${other}`);
+        assert.ok(vertexDistance <= .7 * b.k, `${W} ${tab}: ${label} cannot travel across the circumradius to another vertex`);
+      }
+    }
+  }
 });
