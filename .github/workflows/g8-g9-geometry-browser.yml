@@ -1,0 +1,94 @@
+name: G8 G9 geometry browser
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/g8-*/**'
+      - 'apmath/playground/next/labs/g8-*.html'
+      - 'apmath/playground/next/labs/g9-*/**'
+      - 'apmath/playground/next/labs/g9-*.html'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/g8-*'
+      - 'apmath/playground/next/tools/g9-*'
+      - '.github/workflows/g8-g9-geometry-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: [g8-triangles, g8-quadrilaterals, g8-similarity, g8-pythagoras, g9-trig-ratio, g9-circle]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Select affected units and fixed baseline
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          UNIT: ${{ matrix.unit }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          node --input-type=module <<'JS'
+          import {execFileSync} from 'node:child_process';
+          import fs from 'node:fs';
+          const all = ['g8-triangles','g8-quadrilaterals','g8-similarity','g8-pythagoras','g9-trig-ratio','g9-circle'];
+          const changed = execFileSync('git',['diff','--name-only',process.env.BASE_SHA,'HEAD'],{encoding:'utf8'}).trim().split('\n');
+          const picked = new Set(changed.map(p => /^apmath\/playground\/next\/labs\/(g[89]-[\w-]+)(?:\/|\.html$)/.exec(p)?.[1]).filter(x => all.includes(x)));
+          for (const p of changed) {
+            const unit = /(?:g8-g9-geometry-audit-targets-)?(g[89]-[\w-]+)(?:\.json|-.*\.test\.mjs)$/.exec(p)?.[1];
+            if (all.includes(unit)) picked.add(unit);
+          }
+          // A unit implementation PR includes its full scene inventory. Shared-kit
+          // changes or a harness-only PR test every unit; no scene sampling gate.
+          const affected = changed.some(p => /\/kit\//.test(p)) || !picked.size ? all : [...picked];
+          const active = affected.includes(process.env.UNIT);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`active=${active}\n`);
+          if (active) execFileSync('git',['worktree','add','--detach',`${process.env.RUNNER_TEMP}/g89-baseline`,process.env.BASE_SHA]);
+          JS
+      - name: Current-question mathematical regressions
+        if: steps.scope.outputs.active == 'true'
+        shell: bash
+        env:
+          UNIT: ${{ matrix.unit }}
+        run: |
+          shopt -s nullglob
+          tests=(apmath/playground/next/tools/"$UNIT"-*.test.mjs)
+          if (( ${#tests[@]} )); then node --test "${tests[@]}"; else echo "No unit-specific mathematical regression supplied yet"; fi
+          node --test apmath/playground/next/tools/catalog.test.mjs
+      - name: Install Chromium test runtime
+        if: steps.scope.outputs.active == 'true'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g89-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g89-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Observe baseline at four viewports and both themes
+        if: steps.scope.outputs.active == 'true'
+        env:
+          NODE_PATH: ${{ runner.temp }}/g89-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: node apmath/playground/next/tools/g8-g9-geometry-browser-audit.mjs --root "$RUNNER_TEMP/g89-baseline" --out "$RUNNER_TEMP/g89-evidence/before" --units "$UNIT" --baseline-observe
+      - name: Validate every candidate scene and generated variants
+        if: steps.scope.outputs.active == 'true'
+        env:
+          NODE_PATH: ${{ runner.temp }}/g89-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: node apmath/playground/next/tools/g8-g9-geometry-browser-audit.mjs --root . --out "$RUNNER_TEMP/g89-evidence/after" --units "$UNIT"
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.scope.outputs.active == 'true'
+        with:
+          name: g8-g9-geometry-${{ github.run_id }}-${{ matrix.unit }}
+          path: ${{ runner.temp }}/g89-evidence/
+          retention-days: 14

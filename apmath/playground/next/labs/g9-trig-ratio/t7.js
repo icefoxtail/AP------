@@ -41,16 +41,17 @@
     const wide = [pt(A.x + (B.x - Pp.x), A.y + (B.y - Pp.y)), pt(C.x + (B.x - Pp.x), C.y + (B.y - Pp.y)), pt(C.x + (D.x - Pp.x), C.y + (D.y - Pp.y)), pt(A.x + (D.x - Pp.x), A.y + (D.y - Pp.y))];
     const k2 = o.k2 || 0;
     const rowsD = [...(o.th ? [{ t: `두 대각선이 이루는 각 = ${o.th}`, c: 'amber' }] : []), ...(o.rows || [])];
-    fit(b, bboxOf([A, B, C, D, ...wide]), { t: 54, b: 58 + rowsD.length * 26, l: 56, r: 56 });
+    const visible = [A, B, C, D, ...(o.reserveWide || k2 > 0 ? wide : [])];
+    fit(b, bboxOf(visible), { t: 54, b: 58 + rowsD.length * 26, l: 56, r: 56 });
     if (k2 > 0) { b.path(wide, { close: true, color: 'amber', width: 2.6, fill: 'amber', fillAlpha: 0.1 * k2, alpha: k2, dash: dashed }); }
-    fillPoly(b, [A, B, C, D], 'sky', 0.2); poly(b, [A, B, C, D], 'ink', 3.4);
+    fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [A, B, C, D], 'ink', 3.4);
     line(b, A, C, 'violet', 3, { dash: dashed }); line(b, B, D, 'violet', 3, { dash: dashed });
     ang(b, Pp, C, B, { color: 'amber', r: 28 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
     if (o.p) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
     if (o.q) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
-    rowsD.forEach((r, i) => T(b, pt(0, Math.max(A.y, B.y, C.y, D.y, ...wide.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
+    rowsD.forEach((r, i) => T(b, pt(0, Math.max(...visible.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
   const diagM = (p, q, th) => { const S = vdiv(vmul(vi(p * q), sinD(th)), vi(2)); return { p, q, th, S, dbl: vmul(vi(p * q), sinD(th)) }; };
 
@@ -62,7 +63,7 @@
     model: (s) => ({ ...diagM(Math.round(s.t71p), Math.round(s.t71q), Math.round(s.t71t)), k: s.t71k }),
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99;
-      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.t, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, rows: show(3) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
+      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.t, reserveWide: true, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, rows: show(3) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       '사각형 $ABCD$ 의 네 꼭짓점에서 각각 다른 대각선에 평행한 직선을 그어요. 겹치는 부분 없이 평행사변형이 만들어져요. 이 평행사변형의 넓이는 사각형의 <b>2배</b>예요.',
@@ -76,7 +77,7 @@
       notes: notes('$\\theta$ 는 두 대각선이 이루는 각이에요. 두 변이 이루는 각이 아니에요.', '$\\theta$ 가 예각이든 둔각이든 $\\sin\\theta=\\sin(180^{\\circ}-\\theta)$ 라 넓이는 같아요.')
     }),
     gen: () => diagProblem('uf', false),
-    pdraw: (b, q) => diagPdraw(b, q)
+    pdraw: (b, q, C) => diagPdraw(b, q, C)
   };
   function diagProblem(tag, askQ) {
     const th = pick(TH), p = pick([4, 6, 8, 10, 12]), q = pick([3, 4, 5, 6, 8]);
@@ -84,16 +85,24 @@
       const S = diagM(p, q, th).S, bc = vi(p * q);
       const wr = [[vmul(bc, sinD(th)), '$\\frac{1}{2}$ 을 곱하지 않았어요.'], [vdiv(vmul(bc, cosD(th)), vi(2)), '$\\sin$ 대신 $\\cos$ 을 썼어요.'], [vdiv(bc, vi(2)), '$\\sin\\theta$ 를 곱하지 않았어요.'], [vdiv(vmul(bc, tanS(th)), vi(2)), '$\\sin$ 대신 $\\tan$ 을 썼어요.'], [vdiv(vmul(bc, sinD(th)), vi(4)), '$\\frac{1}{2}$ 을 두 번 곱했어요.']].filter((w) => w[0].x && !vsame(w[0], S));
       if (vsame(S, vi(p)) || vsame(S, vi(q))) return diagProblem(tag, askQ);
-      return checkQ({ tag: '두 대각선으로 사각형의 넓이', key: [tag, th, p, q].join('|'), stem: `사각형 $ABCD$ 에서 두 대각선 $AC$, $BD$ 의 길이가 각각 $${p}$, $${q}$ 이고 두 대각선이 이루는 각의 크기가 $${th}^{\\circ}$ 일 때, 사각형 $ABCD$ 의 넓이는?`, choices: mkChoices(S, wr), fig: { p, q, th, ask: 'area' }, given: [`${p}`, `${q}`, `${th}°`], ans: [vcan(S)] });
+      return checkQ({ tag: '두 대각선으로 사각형의 넓이', key: [tag, th, p, q].join('|'), stem: `사각형 $ABCD$ 에서 두 대각선 $AC$, $BD$ 의 길이가 각각 $${p}$, $${q}$ 이고 두 대각선이 이루는 각의 크기가 $${th}^{\\circ}$ 일 때, 사각형 $ABCD$ 의 넓이는?`, choices: mkChoices(S, wr), fig: { p, q, th, ask: 'area' }, given: [`${p}`, `${q}`, `${th}°`], ans: [vcan(S)] }, diagonalWork(p, q, th, S, false), { kind: 'diagonal-area', p, q, angle: th, answer: S.v });
     }
     const S = diagM(p, q, th).S, bc = vi(p * 1);
     const ans = vi(q), wr = [[vmul(vi(q), vi(2)), '넓이 공식 $S=\\frac{1}{2}pq\\sin\\theta$ 에서 $q$ 를 다시 구해요.'], [vdiv(vi(q), vi(2)), ''], [vmul(vi(q), sinD(th)), ''], [vi(p), ''], [vdiv(vmul(vi(q), vi(p)), vi(2)), '']];
     if (vsame(S, vi(p)) || vsame(S, vi(q)) || p === q) return diagProblem(tag, askQ);
-    return checkQ({ tag: '넓이로 대각선의 길이 구하기', key: [tag, 'q', th, p, q].join('|'), stem: `사각형 $ABCD$ 의 두 대각선이 이루는 각의 크기가 $${th}^{\\circ}$ 이고 대각선 $\\overline{AC}=${p}$, 넓이가 $${vtex(S)}$ 일 때, 대각선 $\\overline{BD}$ 의 길이는?`, choices: mkChoices(ans, wr.filter((w) => !vsame(w[0], ans))), fig: { p, q, th, ask: 'q', S: vcan(S) }, given: [`${p}`, `${th}°`, vcan(S)], ans: [`${q}`] });
+    return checkQ({ tag: '넓이로 대각선의 길이 구하기', key: [tag, 'q', th, p, q].join('|'), stem: `사각형 $ABCD$ 의 두 대각선이 이루는 각의 크기가 $${th}^{\\circ}$ 이고 대각선 $\\overline{AC}=${p}$, 넓이가 $${vtex(S)}$ 일 때, 대각선 $\\overline{BD}$ 의 길이는?`, choices: mkChoices(ans, wr.filter((w) => !vsame(w[0], ans))), fig: { p, q, th, ask: 'q', S: vcan(S) }, given: [`${p}`, `${th}°`, vcan(S)], ans: [`${q}`] }, diagonalWork(p, q, th, S, true), { kind: 'diagonal-side', p, area: S.v, angle: th, answer: q });
   }
-  function diagPdraw(b, qq) {
-    const f = qq.fig, rows = f.ask === 'area' ? [{ t: '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
-    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' ? 'BD = x' : `BD = ${f.q}`, rows });
+  function diagonalWork(p, q, th, S, askQ) {
+    return [
+      askQ ? `대각선 $AC=${p}$, 두 대각선의 사잇각 $${th}^{\\circ}$, 넓이 $${vtex(S)}$가 주어졌습니다. 구하는 대각선을 $BD=x$라 해요.` : `두 대각선은 $AC=${p}$, $BD=${q}$이고 그 사잇각은 $${th}^{\\circ}$입니다.`,
+      '각 꼭짓점에서 다른 대각선에 평행한 선을 그으면 원래 사각형의 넓이의 2배인 평행사변형을 만들 수 있어요.',
+      askQ ? `따라서 $${vtex(S)}=\\frac{1}{2}\\times${p}\\times x\\times\\sin ${th}^{\\circ}$입니다.` : `사각형의 넓이는 $S=\\frac{1}{2}\\times${p}\\times${q}\\times\\sin ${th}^{\\circ}$입니다.`,
+      askQ ? `$x=\\frac{2\\times${vtex(S)}}{${p}\\times${vtex(sinD(th))}}$를 계산해요.` : `$\\sin ${th}^{\\circ}=${vtex(sinD(th))}$를 대입해요. 이 각은 두 변의 끼인각이 아니라 두 대각선의 사잇각입니다.`
+    ];
+  }
+  function diagPdraw(b, qq, C) {
+    const f = qq.fig, rows = f.ask === 'area' ? [{ t: C.last ? `□ABCD의 넓이 = ${qq.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
+    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: C.review ? C.step : 0, k2: C.review && C.step >= 2 ? 1 : 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' && !C.last ? 'BD = x' : `BD = ${f.q}`, rows });
   }
 
   /* ====================================================================== 평행사변형 */
@@ -101,8 +110,8 @@
   function drawPara(b, g, o = {}) {
     const { A, B, C, D } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]), Hh = pt(D.x, 0);
     fit(b, bboxOf([A, B, C, D, Hh]), { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
-    fillPoly(b, [A, B, C, D], 'sky', 0.2); poly(b, [A, B, C, D], 'ink', 3.4);
-    if (st >= 1) { line(b, D, Hh, 'violet', 3, { dash: dashed }); if (D.x < 0) line(b, Hh, A, 'violet', 2.4, { dash: dashed }); ang(b, Hh, D, B, { color: 'violet', r: 14 }); }
+    fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [A, B, C, D], 'ink', 3.4);
+    if (st >= 1) { line(b, D, Hh, 'violet', 3, { dash: dashed }); if (D.x < 0) line(b, Hh, A, 'violet', 2.4, { dash: dashed }); else if (D.x > B.x) line(b, B, Hh, 'violet', 2.4, { dash: dashed }); ang(b, Hh, D, B, { color: 'violet', r: 14 }); }
     ang(b, A, B, D, { color: 'amber', r: 32, label: o.th, size: 16 });
     tick(b, A, B, 1, 'sky'); tick(b, D, C, 1, 'sky'); tick(b, A, D, 2, 'green'); tick(b, B, C, 2, 'green');
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
@@ -135,9 +144,15 @@
       let q;
       if (kind === 'area') { const wr = [[vdiv(vmul(ab, sinD(th)), vi(2)), '삼각형의 넓이예요. 평행사변형은 $\\frac{1}{2}$ 을 곱하지 않아요.'], [vmul(ab, cosD(th)), '$\\sin$ 대신 $\\cos$ 을 썼어요.'], [ab, '$\\sin\\theta$ 를 곱하지 않았어요.'], [vmul(ab, tanS(th)), '$\\sin$ 대신 $\\tan$ 을 썼어요.'], [vmul(vmul(vi(a), vi(a)), sinD(th)), '']]; q = { tag: '평행사변형의 넓이', key: ['pa', th, a, b0].join('|'), stem: `평행사변형 $ABCD$ 에서 $\\overline{AB}=${a}$, $\\overline{AD}=${b0}$, $\\angle A=${th}^{\\circ}$ 일 때, 평행사변형 $ABCD$ 의 넓이는?`, choices: mkChoices(S, wr.filter((w) => w[0].x && !vsame(w[0], S))), fig: { a, b0, th, ask: 'area' }, given: [`${a}`, `${b0}`, `${th}°`], ans: [vcan(S)] }; }
       else { const wr = [[vmul(vi(b0), vi(2)), ''], [vdiv(vi(b0), vi(2)), ''], [vdiv(vmul(vi(2), S), vi(a)), '넓이 공식에서 $\\sin\\theta$ 로 나누는 것을 빠뜨렸어요.'], [vi(a), ''], [vmul(vi(b0), sinD(th)), '']]; q = { tag: '평행사변형의 넓이로 변 구하기', key: ['pa', 'side', th, a, b0].join('|'), stem: `평행사변형 $ABCD$ 에서 $\\overline{AB}=${a}$, $\\angle A=${th}^{\\circ}$ 이고 넓이가 $${vtex(S)}$ 일 때, $\\overline{AD}$ 의 길이는?`, choices: mkChoices(vi(b0), wr.filter((w) => !vsame(w[0], vi(b0)))), fig: { a, b0, th, ask: 'side', S: vcan(S) }, given: [`${a}`, `${th}°`, vcan(S)], ans: [`${b0}`] }; }
-      return checkQ(q);
+      q.fig.h = vcan(vmul(vi(b0), sinD(th))); q.fig.area = vcan(S);
+      return checkQ(q, [
+        kind === 'area' ? `평행사변형의 이웃한 두 변은 $AB=${a}$, $AD=${b0}$, 끼인각은 $${th}^{\\circ}$입니다.` : `평행사변형의 밑변 $AB=${a}$, 끼인각 $${th}^{\\circ}$, 넓이 $${vtex(S)}$가 주어졌습니다. $AD=x$라 해요.`,
+        `꼭짓점 $D$에서 직선 $AB$에 수선을 내리면 높이는 $AD\\sin ${th}^{\\circ}$입니다.`,
+        kind === 'area' ? `$h=${b0}\\times${vtex(sinD(th))}=${vtex(vmul(vi(b0), sinD(th)))}$입니다.` : `$${vtex(S)}=${a}\\times x\\times${vtex(sinD(th))}$입니다.`,
+        kind === 'area' ? `넓이는 $S=${a}\\times${vtex(vmul(vi(b0), sinD(th)))}$입니다. 평행사변형이므로 $\\frac{1}{2}$를 곱하지 않아요.` : `$x=\\frac{${vtex(S)}}{${a}\\times${vtex(sinD(th))}}$를 계산해요.`
+      ], { kind: 'parallelogram', base: a, side: b0, angle: th, ask: kind, area: S.v, answer: kind === 'area' ? S.v : b0 });
     },
-    pdraw: (b, q) => { const f = q.fig; drawPara(b, paraGeo(f.a, f.b0, f.th), { step: 0, th: `${f.th}°`, a: `${f.a}`, b: f.ask === 'side' ? 'x' : `${f.b0}`, bs: f.ask === 'side' ? 21 : 17, rows: [{ t: f.ask === 'side' ? `□ABCD의 넓이 = ${f.S}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
+    pdraw: (b, q, C) => { const f = q.fig; drawPara(b, paraGeo(f.a, f.b0, f.th), { step: C.review ? C.step : 0, th: `${f.th}°`, a: `${f.a}`, b: f.ask === 'side' && !C.last ? 'x' : `${f.b0}`, h: C.review && C.step >= 3 && f.ask === 'area' ? f.h : '', bs: f.ask === 'side' ? 21 : 17, rows: [{ t: f.ask === 'side' ? `□ABCD의 넓이 = ${f.S}` : C.last ? `□ABCD의 넓이 = ${f.area}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
   };
 
   /* ====================================================================== 마름모 */
@@ -145,7 +160,7 @@
   function drawRh(b, a, th, o = {}) {
     const g = rhGeo(a, th), { A, B, C, D, O } = g, cen = O;
     fit(b, bboxOf([A, B, C, D]), { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
-    fillPoly(b, [A, B, C, D], 'sky', 0.2); poly(b, [B, C, D, A], 'ink', 3.4);
+    fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [B, C, D, A], 'ink', 3.4);
     if (o.diag !== false) { line(b, A, C, 'violet', 2.6, { dash: dashed }); line(b, B, D, 'violet', 2.6, { dash: dashed }); ang(b, O, C, B, { color: 'ink', r: 14 }); }
     if (o.th) ang(b, A, B, D, { color: 'amber', r: 34, label: o.th, size: 16 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
@@ -179,19 +194,29 @@
         const th = pick(TH), a = pick([2, 3, 4, 5, 6, 8]), S = vmul(vi(a * a), sinD(th));
         if (vsame(S, vi(a))) return g();
         const wr = [[vdiv(S, vi(2)), '마름모는 $\\frac{1}{2}$ 을 곱하지 않아요. ($a^2\\sin\\theta$)'], [vmul(vi(a * a), cosD(th)), '$\\sin$ 대신 $\\cos$ 을 썼어요.'], [vi(a * a), '$\\sin\\theta$ 를 곱하지 않았어요.'], [vmul(vi(a * 2), sinD(th)), '$a$ 를 한 번만 곱했어요.'], [vmul(vi(a * a), tanS(th)), '']].filter((w) => w[0].x && !vsame(w[0], S));
-        return checkQ({ tag: '마름모의 넓이', key: ['rh', 'sa', th, a].join('|'), stem: `한 변의 길이가 $${a}$ 이고 한 내각의 크기가 $${th}^{\\circ}$ 인 마름모 $ABCD$ 의 넓이는?`, choices: mkChoices(S, wr), fig: { a, th, ask: 'sa' }, given: [`${a}`, `${th}°`], ans: [vcan(S)] });
+        return checkQ({ tag: '마름모의 넓이', key: ['rh', 'sa', th, a].join('|'), stem: `한 변의 길이가 $${a}$ 이고 한 내각의 크기가 $${th}^{\\circ}$ 인 마름모 $ABCD$ 의 넓이는?`, choices: mkChoices(S, wr), fig: { a, th, ask: 'sa' }, given: [`${a}`, `${th}°`], ans: [vcan(S)] }, [
+          `마름모의 네 변은 모두 $${a}$이고, 한 내각은 $${th}^{\\circ}$입니다.`,
+          '마름모는 평행사변형이므로 넓이는 밑변 × 높이입니다. 한 변과 그에 수직인 높이를 구별해요.',
+          `높이는 $h=${a}\\sin ${th}^{\\circ}$입니다.`,
+          `$S=${a}\\times${a}\\times${vtex(sinD(th))}$를 계산해요.`
+        ], { kind: 'rhombus-side', side: a, angle: th, answer: S.v });
       }
       const p = pick([4, 6, 8, 10, 12]), q = pick([3, 5, 6, 8, 9]);
       if (p === q) return g();
       const S = vi((p * q) / 2 === Math.round((p * q) / 2) ? (p * q) / 2 : 0);
       if (!Number.isInteger((p * q) / 2)) return g();
       const wr = [[vi(p * q), '$\\frac{1}{2}$ 을 곱하지 않았어요.'], [vi(p + q), '합을 구했어요.'], [vi((p * q) / 4 === Math.round((p * q) / 4) ? (p * q) / 4 : p * q * 2), ''], [vdiv(vi(p * q), vi(3)), ''], [vi(p * q * 2), '']].filter((w) => !vsame(w[0], S));
-      return checkQ({ tag: '마름모의 넓이(두 대각선)', key: ['rh', 'pq', p, q].join('|'), stem: `두 대각선의 길이가 $${p}$, $${q}$ 인 마름모의 넓이는?`, choices: mkChoices(S, wr), fig: { p, q, ask: 'pq' }, given: [`${p}`, `${q}`], ans: [vcan(S)] });
+      return checkQ({ tag: '마름모의 넓이(두 대각선)', key: ['rh', 'pq', p, q].join('|'), stem: `두 대각선의 길이가 $${p}$, $${q}$ 인 마름모의 넓이는?`, choices: mkChoices(S, wr), fig: { p, q, ask: 'pq' }, given: [`${p}`, `${q}`], ans: [vcan(S)] }, [
+        `두 대각선의 전체 길이는 $${p}$, $${q}$입니다.`,
+        '마름모의 두 대각선은 서로를 이등분하고 직각으로 만납니다. 네 직각삼각형으로 나누어요.',
+        `작은 삼각형 하나의 넓이는 $\\frac{1}{2}\\times\\frac{${p}}{2}\\times\\frac{${q}}{2}$입니다.`,
+        `네 개의 합은 $S=\\frac{1}{2}\\times${p}\\times${q}$입니다. 주어진 값이 대각선의 전체 길이라는 점을 확인해요.`
+      ], { kind: 'rhombus-diagonals', p, q, answer: S.v });
     },
-    pdraw: (b, q) => {
+    pdraw: (b, q, C) => {
       const f = q.fig;
-      if (f.ask === 'sa') drawRh(b, f.a, f.th, { diag: false, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
-      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { p: `${f.p}`, q: `${f.q}`, rows: [{ t: '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
+      if (f.ask === 'sa') drawRh(b, f.a, f.th, { diag: C.review && C.step >= 2, th: `${f.th}°`, a: `${f.a}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] });
+      else { const a = Math.sqrt(f.p * f.p + f.q * f.q) / 2, th = 2 * Math.atan2(f.p / 2, f.q / 2) / DEG; drawRh(b, a, th, { p: `${f.p}`, q: `${f.q}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${q.ans[0]}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
     }
   };
 
@@ -219,7 +244,7 @@
       notes: notes('대각선이 서로 수직이면 $\\sin90^{\\circ}=1$ 이라 $S=\\frac{1}{2}pq$ 예요.')
     }),
     gen: () => diagProblem('dh', true),
-    pdraw: (b, q) => diagPdraw(b, q)
+    pdraw: (b, q, C) => diagPdraw(b, q, C)
   };
 
   /* ====================================================================== 대각선으로 나누어 넓이의 합 */
@@ -228,7 +253,7 @@
     const { A, B, C, D } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]);
     const rowsS = [{ t: `∠ABD = ${o.be}`, c: 'sky' }, { t: `∠CBD = ${o.de}`, c: 'green' }, ...(o.rows || [])];
     fit(b, bboxOf([A, B, C, D]), { t: 54, b: 58 + rowsS.length * 26, l: 56, r: 56 });
-    fillPoly(b, [A, B, D], 'sky', 0.2); fillPoly(b, [C, B, D], 'green', 0.2); poly(b, [A, B, C, D], 'ink', 3.4);
+    fillPoly(b, [A, B, D], 'sky', st >= 2 ? 0.14 : 0.05); fillPoly(b, [C, B, D], 'green', st >= 3 ? 0.14 : 0.05); poly(b, [A, B, C, D], 'ink', 3.4);
     line(b, B, D, 'violet', 3, { dash: dashed });
     ang(b, B, D, A, { color: 'sky', r: 34 }); ang(b, B, D, C, { color: 'green', r: 34 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
@@ -269,9 +294,15 @@
         stem: `사각형 $ABCD$ 에서 $\\overline{BD}=${p}$, $\\overline{BA}=${a}$, $\\overline{BC}=${c}$, $\\angle ABD=${be}^{\\circ}$, $\\angle CBD=${de}^{\\circ}$ 일 때, 사각형 $ABCD$ 의 넓이는?`,
         choices: mkChoices(S, wr), fig: { p, a, c, be, de }, given: [`${p}`, `${a}`, `${c}`, `${be}°`, `${de}°`], ans: [vcan(S)]
       };
-      return checkQ(q);
+      q.fig.work = { s1: vcan(S1), s2: vcan(S2), total: vcan(S) };
+      return checkQ(q, [
+        `대각선 $BD=${p}$로 사각형을 $\\triangle ABD$, $\\triangle CBD$로 나눕니다. 각 삼각형의 끼인각은 각각 $${be}^{\\circ}$, $${de}^{\\circ}$입니다.`,
+        `위쪽 삼각형의 넓이 $S_1=\\frac{1}{2}\\times${p}\\times${a}\\times\\sin ${be}^{\\circ}=${vtex(S1)}$입니다.`,
+        `아래쪽 삼각형의 넓이 $S_2=\\frac{1}{2}\\times${p}\\times${c}\\times\\sin ${de}^{\\circ}=${vtex(S2)}$입니다.`,
+        `두 삼각형은 대각선의 반대쪽에 있으므로 넓이를 더해요. $S=S_1+S_2=${vtex(S1)}+${vtex(S2)}$입니다.`
+      ], { kind: 'split-area', diagonal: p, a, c, angles: [be, de], answer: S.v });
     },
-    pdraw: (b, q) => { const f = q.fig; drawSplit2(b, splitGeo(f.p, f.a, f.c, f.be, f.de), { step: 0, be: `${f.be}°`, de: `${f.de}°`, p: `${f.p}`, a: `${f.a}`, c: `${f.c}`, rows: [{ t: '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
+    pdraw: (b, q, C) => { const f = q.fig; drawSplit2(b, splitGeo(f.p, f.a, f.c, f.be, f.de), { step: C.review ? C.step : 0, be: `${f.be}°`, de: `${f.de}°`, p: `${f.p}`, a: `${f.a}`, c: `${f.c}`, rows: [{ t: C.last ? `□ABCD의 넓이 = ${f.work.total}` : C.review && C.step >= 3 ? `S₁ = ${f.work.s1}, S₂ = ${f.work.s2}` : C.review && C.step >= 2 ? `S₁ = ${f.work.s1}` : '□ABCD의 넓이 = x', c: 'amber', size: 18 }] }); }
   };
 
   G.register(70, 't7', '⑦ 사각형의 넓이', '사각형의 넓이', PARAMS, [uf, pa, rh, dh, sp]);

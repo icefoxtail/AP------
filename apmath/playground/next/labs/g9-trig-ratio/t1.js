@@ -45,11 +45,18 @@
 
   /* ---- 문제 그림: 직각삼각형(공용) ---- */
   // f = { a, b(모양용 실수), mirror, rot, names, side:{a,b,c:{t,c}}, angA:{t,c}, angB:{t,c}, ticks, notes:[{t,c}] }
-  function pdrawRT(b, f) {
+  function pdrawRT(b, f, C = {}) {
     const g = rtGeo(f.a, f.b, { mirror: f.mirror, rot: f.rot });
     const nn = (f.notes || []).length;
     fit(b, rtBox(g), { t: 44, b: 52 + nn * 28, l: 60, r: 60 });
-    drawRT(b, g, { names: f.names, side: f.side, angA: f.angA, angB: f.angB, ticks: f.ticks, fill: 'sky', fa: 0.08 });
+    const base = f.swap && C.review && C.step >= 3 ? 'B' : f.reference || 'A';
+    const roles = roleFor(base), col = colFor(base), showRole = C.review && C.step >= 2;
+    const side = Object.fromEntries(Object.entries(f.side || {}).map(([k, v]) => [k, { ...v }]));
+    if (C.review && C.step >= 3 && f.solutionSide) Object.entries(f.solutionSide).forEach(([k, t]) => {
+      if (!side[k] || side[k].t !== 'x' || C.last) side[k] = { t, c: col[k] };
+    });
+    if (showRole) Object.entries(side).forEach(([k, v]) => { v.c = col[k]; v.t = `${roles[k]} ${v.t}`; });
+    drawRT(b, g, { names: f.names, side, angA: f.angA, angB: f.angB, ticks: f.ticks, fill: 'sky', fa: 0.08, col: showRole ? col : null });
     const yb = Math.max(g.A.y, g.B.y, g.C.y), cx = (Math.min(g.A.x, g.B.x, g.C.x) + Math.max(g.A.x, g.B.x, g.C.x)) / 2;
     (f.notes || []).forEach((n, i) => T(b, pt(cx, yb), n.t, { dy: 54 + i * 28, size: 17, color: n.c || 'sky' }));
   }
@@ -112,7 +119,7 @@
     gen: (prev) => ratioProblem(prev, false, 'r11')
   };
   function vame(M) { return M.sA.x && Math.abs(M.deg - Math.round(M.deg)) < 1e-6 && [30, 45, 60].includes(Math.round(M.deg)) ? '' : '≈'; }
-  r11.pdraw = (b, q) => pdrawRT(b, q.fig);
+  r11.pdraw = (b, q, C) => pdrawRT(b, q.fig, C);
 
   /* 공용 문제: 두 변이 주어진 직각삼각형에서 삼각비 구하기 (기울어짐 선택) */
   const TRI = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [6, 8, 10], [7, 24, 25], [9, 12, 15], [4, 3, 5], [12, 5, 13], [15, 8, 17], [10, 24, 26]];
@@ -152,12 +159,21 @@
     if (given.c) gtxt.push(`$${sideTex(nm, 'c')}=${vtex(given.c)}$`);
     const q = {
       tag: tilt ? '기울어진 직각삼각형의 삼각비' : '삼각비의 값', key: [tagKey, kind, fn, atB, a.v, b.v, nm.A + nm.B + nm.C, rot, mirror].join('|'),
-      stem: `∠${nm.C}$=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 ${gtxt.join(', ')}일 때, $${FN[fn]} ${vname}$의 값은?`,
+      stem: `$\\angle ${nm.C}=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 ${gtxt.join(', ')}일 때, $${FN[fn]} ${vname}$의 값은?`,
       choices: mkChoices(val, wrongs, {}),
       fig: { a: a.v, b: b.v, mirror, rot, names: nm, side, angA: atB ? null : { t: '', c: 'amber' }, angB: atB ? { t: '', c: 'amber' } : null },
       given: Object.values(side).map((x) => x.t)
     };
-    return checkQ(q);
+    q.fig.reference = atB ? 'B' : 'A';
+    q.fig.solutionSide = { a: vcan(a), b: vcan(b), c: vcan(c) };
+    const opp = atB ? 'b' : 'a', adj = atB ? 'a' : 'b';
+    const num = fn === 'c' ? adj : opp, den = fn === 't' ? adj : 'c';
+    return checkQ(q, [
+      `직각은 $\\angle ${nm.C}$, 기준각은 $\\angle ${vname}$입니다. 주어진 길이 ${gtxt.join(', ')}를 그림에서 확인해요.`,
+      `기준각 $${vname}$의 대변은 $${sideTex(nm, opp)}$, 이웃변은 $${sideTex(nm, adj)}$, 빗변은 $${sideTex(nm, 'c')}$입니다.`,
+      kind === 'legs' ? `피타고라스 정리로 빗변은 $\\sqrt{${vtex(vpow2(a))}+${vtex(vpow2(b))}}=${vtex(c)}$입니다.` : `피타고라스 정리로 나머지 변은 $\\sqrt{${vtex(vpow2(c))}-${vtex(vpow2(a))}}=${vtex(b)}$입니다.`,
+      `$${FN[fn]} ${vname}=\\frac{${sideTex(nm, num)}}{${sideTex(nm, den)}}=\\frac{${vtex(rv[num])}}{${vtex(rv[den])}}$를 계산해요.`
+    ], { kind: 'ratio', a: a.v, b: b.v, c: c.v, ref: atB ? 'B' : 'A', fn, answer: val.v });
   }
 
   /* ====================================================================== 2. 기준각 A ↔ B */
@@ -201,14 +217,21 @@
       const f = pick(forms), mirror = Math.random() < 0.4;
       const q = {
         tag: '기준각이 바뀌면', key: ['sw', f.s, t.join(','), A + B].join('|'),
-        stem: `∠${nm.C}$=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${sideTex(nm, 'a')}=${t[0]}$, $${sideTex(nm, 'b')}=${t[1]}$일 때, $${f.s}$의 값은?`,
+        stem: `$\\angle ${nm.C}=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${sideTex(nm, 'a')}=${t[0]}$, $${sideTex(nm, 'b')}=${t[1]}$일 때, $${f.s}$의 값은?`,
         choices: mkChoices(f.v, f.w),
         fig: { a: t[0], b: t[1], mirror, rot: 0, names: nm, side: { a: { t: String(t[0]), c: 'sky' }, b: { t: String(t[1]), c: 'sky' } }, angA: { t: '', c: 'amber', rings: 1 }, angB: { t: '', c: 'rose', rings: 2 } },
         given: [String(t[0]), String(t[1])]
       };
-      return checkQ(q);
+      q.fig.reference = 'A'; q.fig.swap = true;
+      q.fig.solutionSide = { a: vcan(a), b: vcan(b), c: vcan(c) };
+      return checkQ(q, [
+        `주어진 두 변은 $${sideTex(nm, 'a')}=${vtex(a)}$, $${sideTex(nm, 'b')}=${vtex(b)}$입니다. $${f.s}$를 구해요.`,
+        `피타고라스 정리로 빗변 $${sideTex(nm, 'c')}=\\sqrt{${t[0]}^2+${t[1]}^2}=${vtex(c)}$입니다.`,
+        `기준각이 $${A}$에서 $${B}$로 바뀌면 대변과 이웃변이 바뀝니다. $\\sin ${A}=\\cos ${B}=${vtex(rv.sA)}$, $\\cos ${A}=\\sin ${B}=${vtex(rv.cA)}$입니다.`,
+        `$\\tan ${A}=${vtex(rv.tA)}$, $\\tan ${B}=${vtex(rv.tB)}$도 확인한 뒤, 문제의 식 $${f.s}$에 해당하는 값만 넣어 계산해요.`
+      ], { kind: 'swap', a: a.v, b: b.v, expression: f.s, answer: f.v.v });
     },
-    pdraw: (b, q) => pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => pdrawRT(b, q.fig, C)
   };
 
   /* ====================================================================== 3. 한 삼각비로 나머지 구하기 */
@@ -262,11 +285,18 @@
         wr.push([{ s: rv.sB, c: rv.cB, t: rv.tB }[ask], '기준각이 ∠B 로 바뀌었어요.']);
         q = {
           tag: '삼각비 하나로 나머지 구하기', key: ['r12', 'ratio', fn, ask, t.join(','), nm.A + nm.B + nm.C, mirror].join('|'),
-          stem: `∠${nm.C}$=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${gtex}$일 때, $${FN[ask]} ${nm.A}$의 값은?`,
+          stem: `$\\angle ${nm.C}=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${gtex}$일 때, $${FN[ask]} ${nm.A}$의 값은?`,
           choices: mkChoices(val, wr),
           fig: { a: aa, b: bb, mirror, rot: 0, names: nm, side: {}, angA: { t: '', c: 'amber' }, notes: [{ t: gcan, c: 'sky' }] },
           given: [gcan]
         };
+        q.fig.reference = 'A'; q.fig.solutionSide = { a: vcan(a), b: vcan(b), c: vcan(c) };
+        checkQ(q, [
+          `주어진 비는 $${gtex}$이고, 구하는 것은 $${FN[ask]} ${nm.A}$입니다.`,
+          `삼각비는 크기가 아닌 비이므로 대변·이웃변·빗변의 비가 $${aa}:${bb}:${cc}$인 닮은 직각삼각형을 사용할 수 있어요.`,
+          `피타고라스 정리 $${aa}^2+${bb}^2=${cc}^2$로 세 변의 관계를 확인해요.`,
+          `$\\sin ${nm.A}=\\frac{${aa}}{${cc}}$, $\\cos ${nm.A}=\\frac{${bb}}{${cc}}$, $\\tan ${nm.A}=\\frac{${aa}}{${bb}}$ 중 $${FN[ask]} ${nm.A}$를 골라 약분해요.`
+        ], { kind: 'ratio', a: aa, b: bb, c: cc, ref: 'A', fn: ask, answer: val.v });
       } else {
         // 빗변 L 이 주어지고 한 변 x 를 구함
         const k = rint(1, 3), L = cc * k, askAdj = Math.random() < 0.5;
@@ -277,16 +307,23 @@
         side[askAdj ? 'b' : 'a'] = { t: 'x', c: 'amber', size: 21 };
         q = {
           tag: '삼각비 하나로 변의 길이 구하기', key: ['r12', 'len', fn, askAdj, t.join(','), k, nm.A + nm.B + nm.C, mirror].join('|'),
-          stem: `∠${nm.C}$=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${gtex}$, $${sideTex(nm, 'c')}=${L}$일 때, $${sideTex(nm, askAdj ? 'b' : 'a')}$의 길이는?`,
+          stem: `$\\angle ${nm.C}=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${gtex}$, $${sideTex(nm, 'c')}=${L}$일 때, $${sideTex(nm, askAdj ? 'b' : 'a')}$의 길이는?`,
           choices: mkChoices(ans, wr),
           fig: { a: aa, b: bb, mirror, rot: 0, names: nm, side, angA: { t: '', c: 'amber' }, notes: [{ t: gcan, c: 'sky' }] },
           given: [String(L), gcan]
         };
+        q.fig.reference = 'A'; q.fig.solutionSide = { a: String(aa * k), b: String(bb * k), c: String(L) };
+        checkQ(q, [
+          `주어진 비는 $${gtex}$이고 빗변 $${sideTex(nm, 'c')}=${L}$입니다. 기준각은 $${nm.A}$입니다.`,
+          `주어진 비와 피타고라스 정리로 대변 : 이웃변 : 빗변 $=${aa}:${bb}:${cc}$입니다.`,
+          `빗변이 $${cc}$에서 $${L}$로 $${k}$배가 되었으므로 같은 삼각형의 다른 변도 $${k}$배가 됩니다.`,
+          `구하는 $${sideTex(nm, askAdj ? 'b' : 'a')}$는 ${askAdj ? '이웃변' : '대변'}이므로 $x=${L}\\times\\frac{${mine}}{${cc}}$를 계산해요.`
+        ], { kind: 'ratio-length', a: aa * k, b: bb * k, c: L, ask: askAdj ? 'b' : 'a', answer: ans.v });
         // tan 이 주어지고 빗변이 주어지는 경우도 같은 삼각형(두 비는 같은 각) — 정답은 위에서 정수
       }
       return checkQ(q);
     },
-    pdraw: (b, q) => pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => pdrawRT(b, q.fig, C)
   };
 
   /* ====================================================================== 4. ∠A 가 공통인 닮은 직각삼각형 */
@@ -379,9 +416,14 @@
         choices: mkTextChoices(items, 'r13' + th + us.join('') + askWrong + items.map((x) => x.h).join('')), wide: true,
         fig: { th, us }, given: []
       };
-      return checkQ(q);
+      return checkQ(q, [
+        '세 삼각형은 직각을 하나씩 갖고 $\\angle A$를 공유하므로 AA 닮음입니다.',
+        '같은 삼각형 안에서 대변은 $BC,DE,FG$, 이웃변은 $AB,AD,AF$, 빗변은 $AC,AE,AG$입니다. 각 열의 대응 순서를 지켜요.',
+        '$\\sin A=\\frac{BC}{AC}=\\frac{DE}{AE}=\\frac{FG}{AG}$, $\\cos A=\\frac{AB}{AC}=\\frac{AD}{AE}=\\frac{AF}{AG}$입니다.',
+        `$\\tan A=\\frac{BC}{AB}=\\frac{DE}{AD}=\\frac{FG}{AF}$입니다. 서로 다른 크기의 삼각형에서 분자와 분모를 하나씩 섞지 않으며, 이번 문제는 ${askWrong ? '옳지 않은' : '옳은'} 식을 고릅니다.`
+      ], { kind: 'nested', askWrong, angle: th, lengths: us });
     },
-    pdraw: (b, q) => drawNest(b, nestOf(q.fig.th, q.fig.us), { step: 99 })
+    pdraw: (b, q, C) => drawNest(b, nestOf(q.fig.th, q.fig.us), { step: C.review ? C.step - 1 : 0 })
   };
 
   /* ====================================================================== 5. 빗변에 수선을 내린 닮은 삼각형 */
@@ -461,11 +503,16 @@
         choices: mkChoices(ans, wr),
         fig: { p, q, x }, given: [String(p), String(q)]
       };
-      return checkQ(q0);
+      return checkQ(q0, [
+        `직각삼각형 $ABC$에서 $AB=${p}$, $AC=${q}$이고, $AH$는 빗변에 내린 수선입니다. 구하는 기준각은 $\\angle ${x}=x$입니다.`,
+        `$\\angle ${x}=\\angle ${x === 'BAH' ? 'C' : 'B'}$입니다. 직각삼각형의 두 예각의 합이 $90^{\\circ}$이므로 같은 각을 찾을 수 있어요.`,
+        `피타고라스 정리로 $BC=\\sqrt{${p}^2+${q}^2}=${vtex(V.c)}$입니다.`,
+        `$${FN[fn]} x=${FN[fn]} ${x === 'BAH' ? 'C' : 'B'}$이므로 큰 삼각형의 ${fn === 's' ? '대변과 빗변' : fn === 'c' ? '이웃변과 빗변' : '대변과 이웃변'}의 비를 이용해요.`
+      ], { kind: 'altitude-ratio', p, q, ref: x, fn, answer: ans.v });
     },
-    pdraw: (b, qq) => {
+    pdraw: (b, qq, C) => {
       const f = qq.fig, S = sim(f.p, f.q);
-      drawSim(b, S, { step: 1, side: { AB: { t: String(f.p), c: 'sky' }, AC: { t: String(f.q), c: 'sky' } } });
+      drawSim(b, S, { step: C.review ? Math.min(C.step, 2) : 1, side: { AB: { t: String(f.p), c: 'sky' }, AC: { t: String(f.q), c: 'sky' } } });
       // x 표시: ∠BAH 또는 ∠HAC (주황 호 + x)
       if (f.x === 'BAH') ang(b, S.A, S.B, S.H, { color: 'amber', r: 38, label: 'x', size: 20, labelDist: 56 });
       else ang(b, S.A, S.H, S.C, { color: 'amber', r: 38, label: 'x', size: 20, labelDist: 56 });
@@ -498,7 +545,7 @@
       notes: notes('가로·세로로 놓인 변이 대변·이웃변이라고 정해져 있지 않아요. 기준각이 어디인지로 정해져요.')
     }),
     gen: (prev) => ratioProblem(prev, true, 'r14'),
-    pdraw: (b, q) => pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => pdrawRT(b, q.fig, C)
   };
 
   G.register(10, 't1', '① 삼각비의 뜻', '삼각비의 뜻', PARAMS, [r11, swap, r12, r13, simR, r14]);

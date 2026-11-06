@@ -173,7 +173,24 @@
     // 글자가 무대 밖으로 나가거나 다른 글자와 겹치면 가까운 빈 곳으로 밀어 놓는다(휴대폰에서 잘림·겹침 방지)
     if (!b.thumb && b.W && b.toS && b._P) {
       try {
-        const sp = b.toS(b._P(p)), size = o.size || 16, k = b._ts ? b._ts() : 1, w = textW2(str, size) * (/\\frac/.test(str) ? 0.66 : 0.98) * k, h = size * k * 1.02, al = o.align || 'center';
+        const sp = b.toS(b._P(p)), size = o.size || 16, k = (b.fs || 1) * (b._ts ? b._ts() : 1), al = o.align || 'center';
+        let w = textW2(str, size) * k, h = size * k * 1.1;
+        // Match the board's actual stacked-fraction metrics. A fraction is taller
+        // than one text line; multiplying the entire label width by .66 hid overlaps.
+        if (b.ctx && b._fracSplit) {
+          const c = b.ctx, px = size * k, segs = b._fracSplit(str);
+          c.save(); c.font = `800 ${px}px ${b.font}`;
+          if (segs) {
+            const fs = Math.max(px * 0.72, Math.min(px * 0.9, 9.5));
+            w = segs.reduce((sum, part) => {
+              c.font = `800 ${part.t !== undefined ? px : fs}px ${b.font}`;
+              return sum + (part.t !== undefined ? c.measureText(part.t).width : Math.max(c.measureText(part.n).width, c.measureText(part.d).width) + fs * 0.34);
+            }, 0);
+            h = Math.max(h, fs * 2.3);
+          } else w = c.measureText(str).width;
+          c.restore();
+        }
+        w += 4; h += 4;
         const ax = al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0;
         const inStage = (x, y) => x + ax >= 4 && x + ax + w <= b.W - 4 && y - h / 2 >= 3 && y + h / 2 <= b.H - 3;
         let x = sp.x + dx, y = sp.y + dy;
@@ -353,12 +370,20 @@
     return list.map((x) => ({ h: x.h, p: x.p || String(x.h).replace(/\$/g, '').replace(/\\/g, ''), ok: !!x.ok, hint: x.hint || '' }));
   }
   // 한 문제가 올바른 틀(보기 5개, 정답 하나, 같은 보기 없음)인지 확인합니다(어긋나면 예외 → 즉시 눈에 띔)
-  function checkQ(q) {
+  function checkQ(q, work, math) {
     if (!q.choices || q.choices.length !== 5) throw new Error('보기 5개가 아님: ' + q.tag);
     if (q.choices.filter((c) => c.ok).length !== 1) throw new Error('정답이 하나가 아님: ' + q.tag);
     const seen = new Set();
     q.choices.forEach((c) => { const k = c.h != null ? c.h : c.t; if (k == null || String(k).trim() === '' || /undefined|NaN|Infinity/.test(String(k))) throw new Error('나쁜 보기: ' + q.tag); if (seen.has(k)) throw new Error('같은 보기: ' + q.tag); seen.add(k); });
     if (/undefined|NaN/.test(q.stem || q.html || '')) throw new Error('나쁜 발문: ' + q.tag);
+    if (work) {
+      const answer = q.choices.find((c) => c.ok);
+      q.solution = {
+        key: q.key,
+        steps: [...work, `따라서 정답은 ${answer.h != null ? answer.h : '$' + answer.t + '$'}입니다.`],
+        math: math || null
+      };
+    }
     return q;
   }
 
@@ -406,7 +431,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="tg-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="tg-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="tg-fb ok"><b>정답이에요!</b> 풀이 탭에서 이 문제의 풀이 과정을 확인해 보세요.</div>' : `<div class="tg-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="tg-tools"><button type="button" class="apl-btn sm" data-tg-new>숫자 바꾸기</button>${Q.note ? `<span class="tg-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -448,6 +473,9 @@
     st.id = 'tg-css';
     st.textContent = `
 .tg-q{font-size:var(--fs-md);line-height:1.85}
+.tg-current{padding:12px 14px;margin-bottom:12px;border-left:3px solid var(--m-amber);border-radius:var(--r-md);background:var(--card-2)}
+.tg-current b{display:block;margin-bottom:4px;color:var(--m-amber)}
+.tg-current .tg-q{font-size:var(--fs-sm)}
 .tg-q ol,.tg-q ul{margin:8px 0 0;padding-left:0;list-style:none;display:grid;gap:3px}
 .tg-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:12px 0 4px}
 .tg-choices.wide{grid-template-columns:1fr}
@@ -490,11 +518,14 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, tg: D,
+      tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
       question: D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      // 탐구와 문항은 독립 상태다. 풀이에서는 생성된 문항의 조건만 읽는다.
+      steps: (s) => s.q.solution.steps.map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      reviewTop: (s) => `<div class="tg-current"><b>지금 푸는 문제</b><div class="tg-q">${texSafe(s.q.html != null ? s.q.html : s.q.stem)}</div></div>`,
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => (s.q ? s.q.tag : ''),
@@ -504,26 +535,29 @@
       enter: (s, lab) => {
         D.init(s);
         s.q = D.gen();
-        s.tgSeed = 0; s.tgPick = null; s.playing = false;
+        s.tgSeed = 0; s.tgPick = null; s.playing = false; s.step = 1; s.revealed = false;
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
         let again = false;
         if (A && s.playing) { s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6)); if (s[A.key] >= 1) s.playing = false; again = true; }
-        else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
-          const tg = D.stepT(s.step || 0, D.model(s)), d = tg - s[A.key];
-          if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
-        }
         return again;
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false), M = D.model(s);
+        const C = baseCtx(s, lab, false);
+        if (C.problem || C.review) {
+          const n = s.q.solution.steps.length, st = Math.max(1, Math.min(s.step || 1, n));
+          return {
+            guide: C.problem ? '현재 문제의 조건을 그림에서 찾아 먼저 풀어 보세요. 풀이 탭에서도 같은 문항이 이어져요.' : '한 단계씩 펼치며 현재 문제의 조건, 보조선, 계산을 연결해 보세요.',
+            readouts: [], formula: '', rule: '', notes: '',
+            status: { tone: C.review && st >= n ? 'ok' : 'info', text: C.problem ? '먼저 문제 풀기' : `풀이 ${st} / ${n}단계` }
+          };
+        }
+        const M = D.model(s);
         const v = D.view(M, C, s) || {};
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
-        if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         if (v.formula && /tg-tt/.test(v.formula)) scrollTable();
         return v;
       },
@@ -531,10 +565,14 @@
         b._tgBoxes = [];
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
+        G_STATE.problem = !!(C.problem || C.review);
+        if (C.problem || C.review) {
+          C.last = C.review && C.step >= s.q.solution.steps.length;
+          if (s.q) D.pdraw(b, s.q, C, s);
+          return;
+        }
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        G_STATE.problem = !!C.problem;
-        if (C.problem) { if (s.q) D.pdraw(b, s.q, C, s); return; }
+        C.t = A ? (s[A.key] || 0) : 1;
         D.draw(b, s, M, C);
       }
     };
