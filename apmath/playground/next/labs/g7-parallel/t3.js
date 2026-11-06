@@ -128,13 +128,24 @@
   const aFrom = (n, k, t) => { const I = interior(n), lo = 6, hi = (k === 1 ? I : 2 * I - 180) - 6; return Math.round(lo + (clamp(t, 0, 100) / 100) * (hi - lo)); };
   function drawPoly(b, G, o = {}) {
     const { V, n, k, c } = G;
+    const tools = !b._bbox && !b.thumb && b.canvas?.parentElement?.querySelector('.apl-tools');
+    const toolRect = tools && tools.getBoundingClientRect(), canvasRect = toolRect && b.canvas.getBoundingClientRect();
     b.path(V, { close: true, fill: 'sky', fillAlpha: 0.1, color: 'sky', width: 2, alpha: 0.5 });
     b.path(V.slice(0, G.end + 1), { color: 'rose', width: 3.8 });
     for (let i = 0; i < n; i++) ticks(b, V[i], V[(i + 1) % n], 1, 'rose');
     V.forEach((p, i) => {
       dot(b, p, i === 0 || i === G.end ? 'rose' : 'ink', i === 0 || i === G.end ? 5 : 4.5);
       const ux = p.x - c.x, uy = p.y - c.y, l = Math.hypot(ux, uy) || 1;
-      T(b, p, LET[i], { dx: (ux / l) * 19, dy: (uy / l) * 19, size: 16 });
+      let dx = (ux / l) * 19, dy = (uy / l) * 19;
+      if (toolRect?.width) {
+        const P = b.toS(p), left = toolRect.left - canvasRect.left, right = toolRect.right - canvasRect.left;
+        const top = toolRect.top - canvasRect.top, bottom = toolRect.bottom - canvasRect.top;
+        if (P.x + dx + 9 > left && P.x + dx - 9 < right && P.y + dy + 10 > top && P.y + dy - 10 < bottom) {
+          // 도구막대와 닿는 이름만 도형 안쪽으로 옮기고, 도형의 크기는 유지합니다.
+          dx = -dx; dy = Math.min(-dy, top - P.y - 16);
+        }
+      }
+      T(b, p, LET[i], { dx, dy, size: 16 });
     });
   }
   // 정다각형 기울이기 손잡이: 꼭짓점 B 를 끌면 A→B 방향(= ∠a)이 바뀝니다.
