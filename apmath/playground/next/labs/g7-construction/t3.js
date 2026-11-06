@@ -49,14 +49,14 @@
     s2: '두 변만으로는 삼각형이 정해지지 않아요. 끼인각이나 나머지 한 변이 더 필요해요.',
     sa: '한 변과 한 각만으로는 삼각형이 정해지지 않아요.'
   };
-  function condText(kind, rnd) {
-    const r = Math.floor(rnd() * 3), V = LET[r], W1 = LET[(r + 1) % 3], W2 = LET[(r + 2) % 3];
+  function condText(kind, rnd, info) {
+    const pickV = Math.floor(rnd() * 3), r = info ? 0 : pickV, V = LET[r], W1 = LET[(r + 1) % 3], W2 = LET[(r + 2) % 3];
     const L = (m, n) => Math.floor(rnd() * (n - m + 1)) + m;
     const cm = (v) => `${v}\\text{ cm}`;
-    if (kind === 'sss') { const x = L(4, 7), y = L(5, 8), z = L(Math.abs(x - y) + 1, x + y - 1); return `$${nm('A', 'B')}=${cm(x)},\\ ${nm('B', 'C')}=${cm(y)},\\ ${nm('C', 'A')}=${cm(z)}$`; }
+    if (kind === 'sss') { const x = L(4, 7), y = L(5, 8), z = L(Math.abs(x - y) + 1, x + y - 1); if (info) Object.assign(info, { kind, a: y, b: z, c: x }); return `$${nm('A', 'B')}=${cm(x)},\\ ${nm('B', 'C')}=${cm(y)},\\ ${nm('C', 'A')}=${cm(z)}$`; }
     if (kind === 'sssx') { const x = L(3, 5), y = L(3, 5), z = L(x + y, x + y + 4); return `$${nm('A', 'B')}=${cm(x)},\\ ${nm('B', 'C')}=${cm(y)},\\ ${nm('C', 'A')}=${cm(z)}$`; }
-    if (kind === 'sas') { const x = L(4, 8), y = L(4, 8), t = 10 * L(3, 9); return `$${nm(V, W1)}=${cm(x)},\\ ${nm(V, W2)}=${cm(y)},\\ \\angle ${V}=${t}^{\\circ}$`; }
-    if (kind === 'asa') { const x = L(4, 9), t1 = 10 * L(3, 8), t2 = 10 * L(3, 8); return `$${nm(V, W1)}=${cm(x)},\\ \\angle ${V}=${t1}^{\\circ},\\ \\angle ${W1}=${t2}^{\\circ}$`; }
+    if (kind === 'sas') { const x = L(4, 8), y = L(4, 8), t = 10 * L(3, 9); if (info) Object.assign(info, { kind, b: y, c: x, A: t }); return `$${nm(V, W1)}=${cm(x)},\\ ${nm(V, W2)}=${cm(y)},\\ \\angle ${V}=${t}^{\\circ}$`; }
+    if (kind === 'asa') { const x = L(4, 9), t1 = 10 * L(3, 8), t2 = 10 * L(3, 8); if (info) Object.assign(info, { kind, c: x, A: t1, B: t2 }); return `$${nm(V, W1)}=${cm(x)},\\ \\angle ${V}=${t1}^{\\circ},\\ \\angle ${W1}=${t2}^{\\circ}$`; }
     if (kind === 'ssa') {
       for (let k = 0; k < 40; k++) { const x = L(6, 9), t = [30, 40, 45, 50][L(0, 3)], y = L(2, x - 1); if (triCnt.ssa(x, y, t) === 2) return `$${nm(V, W1)}=${cm(x)},\\ ${nm(W1, W2)}=${cm(y)},\\ \\angle ${V}=${t}^{\\circ}$`; }
       return `$${nm(V, W1)}=${cm(8)},\\ ${nm(W1, W2)}=${cm(6)},\\ \\angle ${V}=${40}^{\\circ}$`;
@@ -67,10 +67,11 @@
   }
   const WRONG_KINDS = ['sssx', 'ssa', 'aaa', 's2', 'sa'];
   function uniqProb(good, key0) {
-    const rnd = seeded('u|' + good + '|' + key0), wr = shuffle(WRONG_KINDS, rnd).slice(0, 4);
-    const items = [{ h: condText(good, rnd), ok: true }].concat(wr.map((k) => ({ h: condText(k, rnd), hint: KIND_HINT[k] })));
+    const rnd = seeded('u|' + good + '|' + key0), wr = shuffle(WRONG_KINDS, rnd).slice(0, 4), solution = {};
+    const goodText = condText(good, rnd, solution);
+    const items = [{ h: goodText, ok: true }].concat(wr.map((k) => ({ h: condText(k, rnd), hint: KIND_HINT[k] })));
     const key = `${good}${key0}`;
-    return { tag: '삼각형이 하나로 정해지는 조건', key, stem: '삼각형 ABC가 하나로 정해지는 것은?', choices: mkTextChoices(items, key), wide: true };
+    return { tag: '삼각형이 하나로 정해지는 조건', key, solution: { ...solution, text: goodText }, stem: '삼각형 ABC가 하나로 정해지는 것은?', choices: mkTextChoices(items, key), wide: true };
   }
   function drawGeneric(b) {
     const Tr = triSSS(5.4, 4.4, 6);
@@ -93,15 +94,18 @@
       return { a, b: b2, c, Tr, phi0, phi: match ? phi0 : s.cnSphi, match };
     },
     model: (s) => ({ ...sss.geo(s), pk: s.cnPk || { k: 0 } }),
+    reviewModel: (M) => { const q = uniqProb('sss', M.pk.k).solution, Tr = triSSS(q.a, q.b, q.c), phi0 = angBetween(Tr[0], Tr[1], Tr[2]); return { ...M, ...q, Tr, phi0, phi: phi0, match: true }; },
     draw(b, s, M, C) {
       if (C.problem) { drawGeneric(b); return; }
       const { a, b: b2, c, Tr, phi0 } = M, A = Tr[0], B = Tr[1];
       const phi = C.review ? (C.step <= 1 ? Math.min(175, phi0 + 24) : phi0) : M.phi;
       const match = Math.abs(phi - phi0) < 2, ph = match ? phi0 : phi;
       const H = polar(A, b2, -ph), E = add(B, mul(unit(sub(H, B)), a)), gap = dist(B, H) - a;
-      fit(b, { x0: Math.min(-1, H.x - 1, E.x - 1), x1: Math.max(c + 1, H.x + 1, E.x + 1), y0: -Math.max(8.2, b2 + 0.6), y1: 1.6 }, { t: 30, b: 62 });
+      const complete = C.review && C.step >= 3;
+      if (complete) fit(b, bboxOf([A, B, H, E], 0.2), { t: 40, b: 76, l: 48, r: 48 });
+      else fit(b, { x0: Math.min(-1, H.x - 1, E.x - 1), x1: Math.max(c + 1, H.x + 1, E.x + 1), y0: -Math.max(8.2, b2 + 0.6), y1: 1.6 }, { t: 30, b: 62 });
       // 두 원(반지름 b, a)이 만나는 곳 = 꼭짓점
-      if (!C.review || C.step >= 2) {
+      if (!C.review || C.step === 2) {
         const dA = dirDeg(A, Tr[2]), dB = dirDeg(B, Tr[2]);
         arcPart(b, A, b2, dA - 26, dA + 26, 1, 'muted', { pen: false, width: 1.8, dash: [6, 6], alpha: 0.85 });
         arcPart(b, B, a, dB - 26, dB + 26, 1, 'muted', { pen: false, width: 1.8, dash: [6, 6], alpha: 0.85 });
@@ -196,9 +200,10 @@
     init: (s) => { s.cnMb = 6; s.cnMc = 7; s.cnMA = 50; s.cnMp = 0; s.cnMmode = 'inc'; s.cnPk = { k: 0 }; },
     reroll: newKey,
     model: (s) => ({ b: s.cnMb, c: s.cnMc, A: s.cnMA, p: clamp(s.cnMp, 0, 1), mode: s.cnMmode || 'inc', pk: s.cnPk || { k: 0 } }),
+    reviewModel: (M) => ({ ...M, ...uniqProb('sas', M.pk.k).solution, mode: 'inc', p: 0 }),
     draw(b, s, M, C) {
       if (C.problem) { drawGeneric(b); return; }
-      const mode = C.review ? (C.step <= 1 ? 'inc' : 'non') : M.mode;
+      const mode = C.review ? (C.step === 2 ? 'non' : 'inc') : M.mode;
       if (mode === 'inc') {
         const Tr = triSAS(M.b, M.c, M.A), [A, B, Cc] = Tr, cen = centroid(Tr);
         fit(b, { x0: Math.min(-1, Cc.x - 1), x1: Math.max(M.c + 1, Cc.x + 1), y0: -(Math.max(M.b * Math.sin(M.A * DEG), 2) + 1.2), y1: 1.4 }, { t: 30, b: 64 });
@@ -258,6 +263,7 @@
     init: (s) => { s.cnAA = 55; s.cnAB = 65; s.cnAc = 6; s.cnPk = { k: 0 }; },
     reroll: newKey,
     model: (s) => { const A = s.cnAA, B = s.cnAB, c = s.cnAc, Tr = triASA(c, A, B), ref = triASA(6, A, B); return { A, B, c, Cc: 180 - A - B, Tr, ref, same: c === 6, pk: s.cnPk || { k: 0 } }; },
+    reviewModel: (M) => { const q = uniqProb('asa', M.pk.k).solution, Tr = triASA(q.c, q.A, q.B); return { ...M, ...q, Tr, ref: Tr, Cc: 180 - q.A - q.B, same: true, reviewing: true }; },
     draw(b, s, M, C) {
       if (C.problem) { drawGeneric(b); return; }
       const { Tr, ref, A, B, c, Cc } = M, ghost = !C.review || C.step >= 3;
@@ -268,8 +274,10 @@
       fillPoly(b, Tr, M.same ? 'green' : 'sky', 0.1);
       poly(b, Tr, 'ink', 3.4);
       line(b, Tr[0], Tr[1], 'amber', 6, { alpha: 0.95 });
-      ang(b, Tr[0], Tr[1], Tr[2], { color: 'sky', rings: 1, label: dg(A), r: 30, labelDist: 56 });
-      ang(b, Tr[1], Tr[2], Tr[0], { color: 'green', rings: 2, label: dg(B), r: 30, labelDist: 56 });
+      const outside = b.W < 560;
+      ang(b, Tr[0], Tr[1], Tr[2], { color: 'sky', rings: 1, label: outside ? '' : dg(A), r: 30, labelDist: 56 });
+      ang(b, Tr[1], Tr[2], Tr[0], { color: 'green', rings: 2, label: outside ? '' : dg(B), r: 30, labelDist: 56 });
+      if (outside) { T(b, Tr[0], dg(A), { dx: -30, dy: -16, color: 'sky', size: 15 }); T(b, Tr[1], dg(B), { dx: 30, dy: -16, color: 'green', size: 15 }); }
       if (st >= 2) ang(b, Tr[2], Tr[0], Tr[1], { color: 'rose', rings: 3, label: dg(Cc), r: 26, labelDist: 46 });
       Tr.forEach((q) => b.point(q, { color: 'ink', r: 4.8 }));
       const cen = centroid(Tr);
@@ -281,7 +289,7 @@
     steps: (M) => [
       `한 변 AB의 길이($${M.c}$ cm)와 양 끝각 $\\angle A=${M.A}^{\\circ}$, $\\angle B=${M.B}^{\\circ}$가 주어졌어요.`,
       `A와 B에서 각의 크기만큼 반직선을 그으면 만나는 점 C가 하나로 정해져요. 나머지 각 $\\angle C=180^{\\circ}-(${M.A}^{\\circ}+${M.B}^{\\circ})=${M.Cc}^{\\circ}$예요.`,
-      M.same ? `기준 삼각형(AB=6)과 정확히 겹쳐요. 한 변과 양 끝각이 같으면 합동이에요 (ASA).` : `각이 같아도 AB의 길이가 다르면(${M.c} ≠ 6) 크기가 달라서 합동이 아니에요. <b>한 변의 길이</b>도 꼭 필요해요.`
+      M.same ? `기준 삼각형(AB=${M.reviewing ? M.c : 6})과 정확히 겹쳐요. 한 변과 양 끝각이 같으면 합동이에요 (ASA).` : `각이 같아도 AB의 길이가 다르면(${M.c} ≠ 6) 크기가 달라서 합동이 아니에요. <b>한 변의 길이</b>도 꼭 필요해요.`
     ],
     view: (M) => ({
       guide: '<b>∠A, ∠B</b>를 바꾸고 <b>노란 점 B</b>를 끌어 AB의 길이를 바꿔 보세요. 회색 점선은 <b>AB = 6</b>인 기준 삼각형이에요. AB가 6일 때만 꼭 겹쳐요.',
@@ -305,8 +313,14 @@
     init: (s) => { s.cnKmode = 'aaa'; s.cnAA = 55; s.cnAB = 65; s.cnKp = 1; s.cnMb = 5; s.cnMc = 7; s.cnMA = 40; s.cnMp = 0; s.cnLa = 3; s.cnLb = 4; s.cnLd = 1; s.cnLt = 1; s.cnPk = { k: 0, g: 'sss' }; },
     reroll: (s) => { s.cnPk = { k: ((s.cnPk && s.cnPk.k) || 0) + 1 + rint(0, 5), g: pick(['sss', 'sas', 'asa'], s.cnPk && s.cnPk.g) }; },
     model: (s) => ({ mode: s.cnKmode || 'aaa', A: s.cnAA, B: s.cnAB, p: clamp(s.cnKp, 0, 1), sb: s.cnMb, sc: s.cnMc, sA: s.cnMA, sp: clamp(s.cnMp, 0, 1), la: s.cnLa, lb: s.cnLb, ld: s.cnLd, lt: clamp(s.cnLt, 0, 1), pk: s.cnPk || { k: 0, g: 'sss' } }),
+    reviewModel: (M) => ({ ...M, solution: uniqProb(M.pk.g || 'sss', M.pk.k).solution }),
     draw(b, s, M, C) {
       if (C.problem) { drawGeneric(b); return; }
+      if (C.review && C.step >= 4) {
+        const q = M.solution, def = q.kind === 'sss' ? sss : q.kind === 'sas' ? sas : asa, solved = def.reviewModel({ ...M, pk: M.pk });
+        def.draw(b, s, solved, { ...C, step: q.kind === 'sas' ? 1 : 3 });
+        return;
+      }
       const mode = C.review ? ['aaa', 'ssa', 'long'][Math.min(2, Math.max(0, C.step - 1))] : M.mode;
       if (mode === 'aaa') {
         const A = M.A, B = M.B, Cc = 180 - A - B, p = C.review ? 1 : M.p;
@@ -345,7 +359,8 @@
     steps: (M) => [
       `<b>세 각만</b> 같은 삼각형은 크기가 다를 수 있어요. 모양은 같지만 합동이 아니에요 (AAA는 합동 조건이 아니에요).`,
       `<b>끼인각이 아닌 각</b>을 주면 같은 조건으로 서로 다른 삼각형이 두 개 만들어질 수 있어요 (SSA는 합동 조건이 아니에요).`,
-      `가장 긴 변이 나머지 두 변의 합보다 <b>크거나 같으면</b> 삼각형이 만들어지지 않아요.`
+      `가장 긴 변이 나머지 두 변의 합보다 <b>크거나 같으면</b> 삼각형이 만들어지지 않아요.`,
+      `현재 보기에서 ${M.solution ? M.solution.text : uniqProb(M.pk.g || 'sss', M.pk.k).solution.text}는 ${(M.pk.g || 'sss').toUpperCase()} 조건이므로 삼각형이 하나로 정해져요.`
     ],
     view: (M) => {
       const mode = M.mode, g = ssaGeo(M.sb, M.sc, M.sA), n = g.Cs.length;
@@ -386,10 +401,20 @@
       const g = s.cnGv || 0, add0 = (s.cnAdd || []).filter((p) => addable(g).includes(p)), set = new Set([...GIVEN[g], ...add0]);
       return { g, add: add0, set, kind: congKind(set), Cx: s.cnCx, Cy: s.cnCy, pk: s.cnPk || { g: 0, rot: 0, k: 0 } };
     },
+    reviewSteps: (M) => {
+      const { g, rot } = M.pk, cands = addable(g), adds = cands.filter((p) => congKind(new Set([...GIVEN[g], p]))), no = cands.filter((p) => !adds.includes(p));
+      const label = (p) => '$' + partTex(p, rot) + '$';
+      return [
+        `현재 문제에서 알려진 조건은 ${GIVEN[g].map(label).join(', ')}예요.`,
+        '네 후보를 하나씩 더해 SSS, SAS, ASA가 되는지 확인해요. 두 각이 같으면 나머지 한 각도 같아요.',
+        `더해서 합동이 되는 조건은 ${adds.map(label).join(', ') || '없음'} (${adds.length}개)예요.` + (no.length ? ` ${no.map(label).join(', ')}만 더해서는 합동이라고 할 수 없어요.` : '')
+      ];
+    },
     draw(b, s, M, C) {
-      if (C.problem) {
-        fit(b, { x0: -0.3, x1: 14.3, y0: -4.8, y1: 0.4 }, { t: 40, b: 50 });
-        const T1 = [pt(0, 0), pt(6, 0), pt(2.6, -3.7)], T2 = shiftPts(T1, 7.6), rot = M.pk.rot || 0;
+      if (C.problem || C.review) {
+        const shift = b.W < 560 ? 9.8 : 7.6;
+        fit(b, { x0: -0.3, x1: shift + 6.7, y0: -4.8, y1: 0.4 }, { t: 40, b: 50 });
+        const T1 = [pt(0, 0), pt(6, 0), pt(2.6, -3.7)], T2 = shiftPts(T1, shift), rot = M.pk.rot || 0;
         // 문제에서 주어진 두 조건을 두 삼각형에 같은 표시로 그립니다 (이름이 한 칸씩 돌아간 만큼 부분도 돌려서)
         const mp = (i) => (i < 3 ? (i + rot) % 3 : 3 + ((i - 3 + rot) % 3)), ticksP = {}, angsP = {}, SKp = ['c', 'a', 'b'];
         GIVEN[M.pk.g || 0].map(mp).forEach((i, n) => { if (i < 3) ticksP[SKp[i]] = { n: n + 1, color: 'sky' }; else angsP['ABC'[i - 3]] = { c: 'sky', rings: n + 1, t: '', r: 24 }; });

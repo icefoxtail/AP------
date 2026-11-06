@@ -285,3 +285,170 @@ test('formulas and answer feedback follow the current stage and question', () =>
   manual.revealed = true; manual.step = 2; manual.cnCt = .7;
   render(id, manual, 'explore'); assert.equal(manual.revealed, true); assert.equal(manual.step, 2);
 });
+
+// Read actual drawing anchors, independently of the model adapter used by a scene.
+const named = (r, label) => {
+  const call = r.b.calls.find((c) => c.method === 'text' && c.args[1] === label);
+  assert.ok(call, 'missing drawn vertex ' + label); return call.args[0];
+};
+const angleAt = (v, a, b) => {
+  const ux = a.x - v.x, uy = a.y - v.y, vx = b.x - v.x, vy = b.y - v.y;
+  return Math.acos(Math.max(-1, Math.min(1, (ux * vx + uy * vy) / Math.hypot(ux, uy) / Math.hypot(vx, vy)))) * 180 / Math.PI;
+};
+const finalReview = (id, s) => { render(id, s, 'problem'); s.step = by(id).steps(s).length; return render(id, s, 'review'); };
+
+test('review uses the drawn current construction instead of a separate exploration angle or point', () => {
+  for (const id of ['c1-2', 'c1-3', 'c1-4', 'c1-5']) {
+    const sc = by(id), s = state(id);
+    for (let n = 0; n < 24; n++) {
+      const p = render(id, s, 'problem'), r = finalReview(id, s);
+      const labels = p.texts.filter((x) => /^[OPQXYABCD]$/.test(x) && r.texts.includes(x));
+      assert.ok(labels.length >= 2, id + ' reference vertices');
+      for (const name of labels) close(distance(named(p, name), named(r, name)), 0, id + '/' + name);
+      const th = model(id, s).pk.th;
+      if (id === 'c1-2') assert.ok(sc.steps(s).at(-1).includes(String(th)), 'copy-angle explanation uses current given');
+      if (id === 'c1-4') assert.ok(sc.steps(s).at(-1).includes(s.cnPm === 'alt' ? '엇각' : '동위각'));
+      sc.cn.reroll(s);
+    }
+  }
+});
+
+test('integer-range and four-stick reviews solve the same generated numbers as their questions', () => {
+  for (let a = 3; a <= 9; a++) for (let b = 3; b <= 9; b++) for (let kind = 0; kind < 3; kind++) {
+    const s = state('c2-2', { cnPk: { a, b, kind } }), r = finalReview('c2-2', s);
+    const integers = Array.from({ length: 25 }, (_, i) => i + 1).filter((x) => a + b > x && a + x > b && b + x > a);
+    const result = kind === 0 ? integers.length : kind === 1 ? Math.max(...integers) : Math.min(...integers);
+    assert.ok(r.texts.includes(kind === 0 ? `정수 x는 ${result}개` : `정수 x의 ${kind === 1 ? '최댓값' : '최솟값'}은 ${result}`));
+    assert.ok(r.v.formula.includes(`${Math.abs(a - b)}\\lt x\\lt ${a + b}`));
+    assert.equal(parseFloat(answer('c2-2', s).p), result);
+  }
+  const sc = by('c2-3'), s = state(sc.id);
+  for (let n = 0; n < 64; n++) {
+    const values = [...model(sc.id, s).pk.v], r = finalReview(sc.id, s);
+    let count = 0;
+    for (let omitted = 0; omitted < 4; omitted++) {
+      const triple = values.filter((_, i) => i !== omitted).sort((a, b) => a - b);
+      if (triple[0] + triple[1] > triple[2]) count++;
+      assert.ok(r.v.formula.includes(triple.join(', ')), 'each reviewed candidate uses the question rods');
+    }
+    assert.ok(r.texts.includes(`삼각형을 만들 수 있는 경우: ${count}가지`));
+    assert.equal(parseFloat(answer(sc.id, s).p), count); sc.cn.reroll(s);
+  }
+});
+
+test('SSS, SAS and ASA review drawings reproduce the actual correct option dimensions', () => {
+  for (const id of ['c3-1', 'c3-2', 'c3-3', 'c3-4']) {
+    const sc = by(id), s = state(id);
+    for (let n = 0; n < 48; n++) {
+      const text = answer(id, s).h, r = finalReview(id, s);
+      const sides = [...text.matchAll(/\\overline\{([ABC]{2})\}=([0-9]+)/g)];
+      const angles = [...text.matchAll(/\\angle ([ABC])=([0-9]+)/g)];
+      assert.ok(sides.length + angles.length >= 3, 'three given dimensions');
+      for (const [, edge, value] of sides) close(distance(named(r, edge[0]), named(r, edge[1])), +value, id + '/' + edge);
+      for (const [, vertex, value] of angles) {
+        const others = [...'ABC'].filter((x) => x !== vertex);
+        close(angleAt(named(r, vertex), named(r, others[0]), named(r, others[1])), +value, id + '/' + vertex);
+      }
+      sc.cn.reroll(s);
+    }
+  }
+});
+
+test('congruence reviews keep the question correspondence and solve its actual linear equation', () => {
+  const sc = by('c4-1'), s = state(sc.id);
+  for (let n = 0; n < 48; n++) {
+    const pk = model(sc.id, s).pk, r = finalReview(sc.id, s), im = pk.p.map((i) => 'DEF'[i]);
+    for (let i = 0; i < 3; i++) close(distance(named(r, 'ABC'[i]), named(r, 'ABC'[(i + 1) % 3])), distance(named(r, im[i]), named(r, im[(i + 1) % 3])), 'corresponding side');
+    assert.ok(sc.steps(s)[0].includes(im.join(''))); sc.cn.reroll(s);
+  }
+  for (const id of ['c4-3', 'c6-3']) {
+    const sc = by(id), s = state(id);
+    for (let n = 0; n < 64; n++) {
+      const pk = model(id, s).pk, r = finalReview(id, s), coefficient = pk.kind ? pk.p : pk.k, constant = pk.kind ? pk.q : pk.m, right = pk.kind ? (id === 'c4-3' ? pk.r : pk.th) : pk.n;
+      close((right - constant) / coefficient, pk.x, 'equation solution');
+      if (id === 'c4-3') {
+        if (pk.kind) close(angleAt(named(r, 'B'), named(r, 'A'), named(r, 'C')), right, 'given angle');
+        else close(distance(named(r, 'B'), named(r, 'C')), right, 'given side');
+      } else if (pk.kind) close(angleAt(named(r, 'A'), named(r, 'B'), named(r, 'E')), right, 'square angle');
+      else close(distance(named(r, 'D'), named(r, 'G')), right, 'square connecting length');
+      assert.ok(r.v.formula.includes(`x=${pk.x}`), 'final formula answers current x');
+      assert.ok(sc.steps(s).at(-1).includes(String(pk.x)), 'last step solves current x'); sc.cn.reroll(s);
+    }
+  }
+});
+
+test('hidden congruence reviews retain generated lengths, requested angles and inside/outside placement', () => {
+  for (const id of ['c6-1', 'c6-2', 'c6-4']) {
+    const sc = by(id), s = state(id);
+    for (let n = 0; n < 64; n++) {
+      const pk = model(id, s).pk, r = finalReview(id, s), p = Object.fromEntries([...new Set(r.texts.filter((t) => /^[A-GP]$/.test(t)))].map((x) => [x, named(r, x)]));
+      let actual, expected;
+      if (id === 'c6-1') {
+        if (pk.kind === 0) { close(angleAt(p.D, p.B, p.C), pk.y, 'given BDC'); actual = angleAt(p.E, p.D, p.A); expected = 60 - pk.y; }
+        else { const pair = [['A', 'B'], ['B', 'E'], ['E', 'D'], ['D', 'A']][pk.q]; actual = angleAt(p.P, p[pair[0]], p[pair[1]]); expected = pk.q % 2 ? 120 : 60; }
+      } else if (id === 'c6-2') {
+        if (pk.kind === 2) { actual = angleAt(p.C, p.D, p.E); expected = 120; }
+        else { close(distance(p.B, p.C), pk.L, 'given BC'); close(pk.kind === 0 ? distance(p.C, p.D) : distance(p.C, p.E), pk.c, 'given CD/CE'); actual = pk.kind === 0 ? distance(p.C, p.E) : distance(p.C, p.D); expected = pk.L - pk.c; }
+      } else {
+        const [v, a, b] = [['A', 'B', 'E'], ['E', 'A', 'D'], ['A', 'E', 'D'], ['E', 'A', 'B']][pk.q]; actual = angleAt(p[v], p[a], p[b]); expected = (pk.m === 'in' ? [75, 150, 15, 75] : [15, 30, 75, 15])[pk.q];
+        assert.equal(p.E.x < p.B.x, pk.m === 'in', 'E is on the requested side of BC');
+      }
+      close(actual, expected, id + ' reviewed answer'); close(parseFloat(answer(id, s).p), expected, 'question answer');
+      assert.ok(r.v.formula.includes(String(expected)), 'final formula matches current answer'); sc.cn.reroll(s);
+    }
+  }
+});
+
+test('every generated review stage keeps question identity and withholds its final formula until completion', () => {
+  for (const sc of scenes) {
+    const s = state(sc.id);
+    for (let n = 0; n < 8; n++) {
+      render(sc.id, s, 'problem'); const before = JSON.stringify(question(sc.id, s)), count = sc.steps(s).length;
+      for (let step = 0; step <= count; step++) {
+        s.step = step; const r = render(sc.id, s, 'review');
+        assert.equal(s.step, step, 'review must retain chosen stage');
+        assert.ok(finite(r.b.calls), sc.id + ' finite generated review');
+        assert.ok(!/undefined|NaN/.test(JSON.stringify(r.texts)), sc.id + ' visible drawing text');
+        if (step < count) assert.ok(!r.v.formula, sc.id + ' hides final formula at ' + step);
+        assert.equal(JSON.stringify(question(sc.id, s)), before, sc.id + ' keeps generated question');
+      }
+      sc.cn.reroll(s);
+    }
+  }
+});
+
+test('compact current-question labels and completed triangles retain readable space', () => {
+  for (const th of [50, 65, 75, 105, 120, 130]) for (const radius of [3.8, 4, 4.2]) for (const al of [-12, -6, 0, 6, 12]) {
+    const px = radius * Math.cos(th * Math.PI / 180), ph = radius * Math.sin(th * Math.PI / 180);
+    const { labels } = screenRender('c1-4', { cnPm: 'alt', cnPk: { px, ph, al, f: 0, t: [0, 1, 2, 3] }, step: 3 }, 'review', 390, 310, 58);
+    for (const name of labels.filter((l) => l.text === 'B' || l.text === 'C')) for (const angle of labels.filter((l) => /°$/.test(l.text))) assert.ok(!overlap(name, angle), `${th}/${al}: ${name.text} and ${angle.text}`);
+  }
+  for (let A = 30; A <= 80; A += 5) for (let B = 30; B <= 80; B += 5) {
+    const { labels } = screenRender('c3-3', { cnAA: A, cnAB: B, cnAc: 5 }, 'explore', 390, 310, 58), marks = labels.filter((l) => /°$/.test(l.text));
+    for (let i = 0; i < marks.length; i++) for (let j = i + 1; j < marks.length; j++) assert.ok(!overlap(marks[i], marks[j]), `${A}/${B}: angle labels`);
+  }
+  for (let g = 0; g < 4; g++) for (let rot = 0; rot < 3; rot++) {
+    const { labels } = screenRender('c3-5', { cnPk: { g, rot, k: 0 }, step: 3 }, 'review', 390, 310, 58);
+    assert.ok(!overlap(labels.find((l) => l.text === 'B'), labels.find((l) => l.text === 'D')));
+  }
+  for (const coefficient of [2, 3, 4]) for (let x = 4; x <= 12; x++) for (let th = 25; th <= 75; th += 5) {
+    const q = th - coefficient * x; if (q === 0 || Math.abs(q) > 20) continue;
+    const { labels } = screenRender('c6-3', { cnPk: { kind: 1, p: coefficient, x, q, th }, step: 4 }, 'review', 390, 310, 58), expression = labels.find((l) => /x/.test(l.text) && /°/.test(l.text));
+    for (const label of labels.filter((l) => l !== expression)) assert.ok(!overlap(expression, label), `${coefficient}/${x}/${th}: expression and ${label.text}`);
+  }
+  const complete = screenRender('c5-1', { step: 2 }, 'review', 390, 310, 58);
+  for (const l of complete.labels) assert.ok(l.x0 >= 0 && l.x1 <= 390 && l.y0 >= 0 && l.y1 <= 252, 'complete congruence label fits: ' + l.text);
+  const small = screenRender('c3-1', { cnPk: { k: 10 }, step: 3 }, 'review', 390, 310, 58);
+  const verts = small.labels.filter((l) => /^[ABC]$/.test(l.text));
+  assert.ok(Math.max(...verts.map((l) => l.x1)) - Math.min(...verts.map((l) => l.x0)) > 160, 'the thin 7,7,1 SSS triangle uses the available width');
+});
+
+test('third-angle review keeps the actually given BC and EF side marks', () => {
+  const r = finalReview('c5-2', state('c5-2')), B = named(r, 'B'), C = named(r, 'C');
+  const marks = r.b.calls.filter((c) => c.method === 'ticks');
+  assert.equal(marks.length, 2);
+  for (const m of marks) {
+    close(distance(m.args[0], B) + distance(m.args[1], C), 0, 'the given side is BC, overlaid with EF');
+    assert.equal(m.args[2].count, 2);
+  }
+});
