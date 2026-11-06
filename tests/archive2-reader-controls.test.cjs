@@ -21,25 +21,30 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261003-student-return-s4-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261003-student-return-s4-1/);
+  assert.match(engine, /archive2-reader-controls\.js\?v=20261106-solution-loading-1/);
+  assert.match(mixed, /archive2-reader-controls\.js\?v=20261106-solution-loading-1/);
   assert.match(controls, /studentReview/);
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261029-sections-1/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261029-sections-1/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261106-solution-loading-1/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261106-solution-loading-1/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
-  assert.match(mixed, /common-fast-runtime\.js\?v=20261010-q19-typeset-diagnostic-2/);
+  assert.match(mixed, /common-fast-runtime\.js\?v=20261106-solution-loading-1/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-navigation-s5-3/);
   assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261031-recorded-use-1/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {
   assert.match(controls, /root\.parent !== root \|\| params\.get\("preview"\) === "1"/);
-  assert.doesNotMatch(controls, /iframe\.src|location\.reload|fetch\(/);
+  assert.doesNotMatch(controls, /iframe\.src|fetch\(/);
+  const changeModeStart = controls.indexOf('async function changeMode(mode)');
+  const failureStart = controls.indexOf('} catch (error)', changeModeStart);
+  assert.ok(changeModeStart >= 0 && failureStart > changeModeStart);
+  assert.doesNotMatch(controls.slice(changeModeStart, failureStart), /location\.reload/,
+    'normal mode changes stay in place; only an explicit failed-output retry may reload');
   assert.doesNotMatch(mixed, /archive2-output-envelope \.mode-tabs\s*\{\s*display:\s*none/);
   assert.match(mixed, /publishOutputEnvelopeMode\(current, mode\)/);
   assert.match(engine, /meta: \{ \.\.\.current\.meta, printHeaderOptions \}/);
