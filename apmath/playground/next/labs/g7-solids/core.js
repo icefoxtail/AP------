@@ -77,6 +77,11 @@
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)), onInput: o.onInput });
+  // 연속 조작 중 반올림한 값에는 ≈를 붙이고, 두 자리까지 정확한 유한소수는 그대로 씁니다.
+  const measureN = (v) => Math.abs(v * 100 - Math.round(v * 100)) < 1e-8 ? String(Math.round(v * 100) / 100) : '≈ ' + fmtN(v, 2);
+  const complete = (t) => t >= 1 - 1e-12;
+  // 서로 연결된 두 길이는 입력 막대와 그림이 같은 값을 가리키게 합니다.
+  const keepSmaller = (s, small, large) => { s[small] = clamp(Math.round(s[small] || 1), 1, Math.max(1, Math.round(s[large] || 2) - 1)); };
   const cm = (v) => fmtN(v) + ' cm';
   const VIEW_PARAMS = {
     soYaw: P('좌우로 돌려 보기', -180, 180, 1, 0, { color: 'muted', format: (v) => Math.round(v) + '°' }),
@@ -119,9 +124,17 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  function syncProblem(D, s, Q = D.prob(D.model(s), s)) {
+    const key = D.id + '|' + Q.key + '|' + (s.soSeed || 0);
+    if (s.soProblemKey != null && s.soProblemKey !== key) {
+      s.soPick = null; s.revealed = false; s.step = 1;
+    }
+    s.soProblemKey = key;
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.soSeed || 0);
+    const key = syncProblem(D, s, Q);
     const pk = s.soPick && s.soPick.key === key ? s.soPick : null;
     let h = `<div class="so-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += `<div class="so-choices${Q.wide ? ' wide' : ''}${Q.fig ? ' fig' : ''}">`;
@@ -208,9 +221,9 @@
       if (!A) return undefined;
       return [{
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
-        label: (s) => (s.playing ? '일시 정지' : s[A.key] >= 0.999 ? '다시 재생' : A.label || '움직여 보기'),
+        label: (s) => (s.playing ? '일시 정지' : complete(s[A.key]) ? '다시 재생' : A.label || '움직여 보기'),
         on: (s) => s.playing,
-        run: (s) => { if (s.playing) s.playing = false; else { if (s[A.key] >= 0.999) { s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } s.playing = true; } }
+        run: (s) => { if (s.playing) s.playing = false; else { if (complete(s[A.key])) { s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } s.playing = true; } }
       }, { id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } }];
     };
     return {
@@ -233,6 +246,7 @@
         D.init(s);
         s.soSeed = 0; s.soPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
+        s.soProblemKey = null; syncProblem(D, s);
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
@@ -250,9 +264,11 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        const M = D.model(s);
+        // 쉘은 장면 객체를 복제하므로 원본 정의 참조로 현재 장면을 확인합니다.
+        if (lab && lab.scene && lab.scene.so === D && lab.s === s) syncProblem(D, s, D.prob(M, s));
         const C = baseCtx(s, lab, false);
         C.t = A ? (C.tab === 'explore' ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
-        const M = D.model(s);
         // 슬라이더·손잡이로 값이 바뀌면 정리 탭의 풀이 단계 글도 새 값으로 다시 만듭니다.
         if (lab && lab.scene && lab.scene.so === D && s === lab.s && lab.refs) {
           const sig = D.id + '|' + JSON.stringify(D.steps(M));
@@ -288,6 +304,6 @@
   window.APL_SO = {
     angPairs, snapAng,
     PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
-    textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, measureN, complete, keepSmaller, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };
 })();
