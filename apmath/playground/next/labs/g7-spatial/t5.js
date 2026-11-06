@@ -44,6 +44,7 @@
         render(D, st, v, C, { caption: true });
       },
       steps: (M) => o.steps(M),
+      problemSteps: (M) => solidProblemSteps(o.id, M),
       view: (M) => ({
         guide: o.guide,
         readouts: [rd('조건', M.cur.given ? '모두 지켜요' : '깨졌어요', M.cur.given ? 'green' : 'rose'), rd(`결론 ${st.geo(0, 0).conc}`, M.cur.holds ? '성립해요' : '성립하지 않아요', M.cur.holds ? 'green' : 'red'), rd('지금의 상태', M.cur.relText, 'amber', null, null, true)].concat(o.extraRead ? o.extraRead(M) : []),
@@ -55,6 +56,37 @@
     };
   }
   const caseKey = (q) => `${q.kind}${q.n || ''}f${q.face}`;
+  function solidProblemSteps(id, M) {
+    const { sol, q } = M, fi = q.face % sol.faces.length, name = faceName(sol.faces[fi]);
+    if (id === 's5-1') {
+      const edges = perpEdges(sol, fi);
+      return [
+        `${sol.name}에서 문제의 기준 면 ${name}을 확인해요.`,
+        '그 면 위의 한 직선과만 수직인 것으로는 부족해요. 면과 만나는 점에서, 면 위의 서로 다른 두 직선에 모두 수직인 모서리를 찾아요.',
+        edges.length ? `조건을 만족하는 모서리는 ${edges.map((e) => e.name).join(', ')}이에요. 면 위에 놓인 모서리와 비스듬한 모서리는 제외해요.` : '면 위에 놓인 모서리와 비스듬한 모서리를 제외하면 조건을 만족하는 모서리가 없어요.',
+        `따라서 면 ${name}에 수직인 모서리는 ${edges.length}개예요.`
+      ];
+    }
+    if (id === 's5-2') {
+      const faces = perpFaces(sol, fi);
+      return [
+        `${sol.name}에서 기준 면 ${name}을 확인해요. 기준 면 자신은 세지 않아요.`,
+        '기준 면과 다른 면이 이루는 각이 직각인지 살펴요. 평행한 면과 비스듬히 만나는 면은 제외해요.',
+        faces.length ? `직각으로 만나는 면은 ${faces.map((i) => faceName(sol.faces[i])).join(', ')}이에요.` : '기준 면과 직각으로 만나는 면이 없어요.',
+        `따라서 면 ${name}에 수직인 면은 ${faces.length}개예요.`
+      ];
+    }
+    const pairs = [];
+    for (let i = 0; i < sol.faces.length; i++) for (let j = i + 1; j < sol.faces.length; j++) {
+      if (dot3(sol.faces[i].n, sol.faces[j].n) < -0.999999) pairs.push(`${faceName(sol.faces[i])}와 ${faceName(sol.faces[j])}`);
+    }
+    return [
+      `${sol.name}의 면들을 한 쌍씩 비교해요. 같은 두 면은 순서를 바꾸어도 같은 쌍이에요.`,
+      '끝없이 넓혀도 만나지 않는 두 평면이 평행해요. 이웃하여 모서리를 공유하는 두 면은 제외해요.',
+      pairs.length ? `평행한 면의 쌍은 ${pairs.join('; ')}이에요.` : '평행한 면의 쌍이 없어요.',
+      `따라서 평행한 두 면은 모두 ${pairs.length}쌍이에요.`
+    ];
+  }
   const drawSolidFace = (D, b, M, C, hl, opt = {}) => {
     const { sol, q } = M, f = sol.faces[q.face % sol.faces.length];
     D.fitPts(sol.order.map((k) => sol.verts[k]), opt.fit || { t: 46, b: 56, l: 44, r: 44 });

@@ -52,6 +52,16 @@
     const items = bank.map((k) => ({ h: STM[k].text, p: STM[k].text.replace(/\$/g, ''), ok: STM[k].truth, hint: WHY[k] || '' }));
     return { tag: '공간에서의 옳은 설명', key: key + '|' + bank.join(','), stem: '다음 중 옳은 것은? (서로 다른 직선은 $l, m, n$, 서로 다른 평면은 $P, Q, R$이다.)', choices: mkText(items), wide: true, note: noteTxt };
   };
+  const bankSteps = (bank) => {
+    const wrong = bank.filter((id) => !STM[id].truth), correct = bank.find((id) => STM[id].truth);
+    const explain = (ids) => ids.map((id) => `${NUM[bank.indexOf(id)]} ${STM[id].text} — ${WHY[id]}`).join(' ');
+    return [
+      '문제의 다섯 설명은 서로 다른 직선·평면에 관한 것이에요. 조건을 지키면서 결론이 깨지는 반례가 하나라도 있으면 그 설명은 거짓이에요.',
+      explain(wrong.slice(0, 2)),
+      explain(wrong.slice(2)),
+      `${NUM[bank.indexOf(correct)]} ${STM[correct].text} — ${PROOF[correct]} 따라서 이 보기가 옳아요.`
+    ];
+  };
 
   /* ---------------- 설명 하나짜리 장면 */
   function propScene(o) {
@@ -84,6 +94,7 @@
           S.truth ? PROOF[S.id] + ' 따라서 항상 옳은 설명이에요.' : `조건은 그대로인데 결론이 틀려요. 반례가 있으니 이 설명은 거짓이에요.`
         ];
       },
+      problemSteps: (M) => bankSteps(M.bank),
       view: (M, C, s) => {
         const { st: S, cur } = M;
         const rows = [rd('조건', cur.given ? '모두 지켜요' : '깨졌어요', cur.given ? 'green' : 'rose'), rd(`결론 ${S.geo(0, 0).conc}`, cur.holds ? '성립해요' : '성립하지 않아요', cur.holds ? 'green' : 'red', cur.given && !cur.holds ? '반례예요' : ''), rd('지금 두 대상', cur.relText.replace(/^[^:]*: ?/, ''), 'amber', null, null, true)];
@@ -166,6 +177,7 @@
   const five = {
     id: 's2-7', title: '옳은 설명 찾기 (보기 5개)', short: '옳은 설명 찾기',
     question: '다섯 가지 설명 중 옳은 것은 몇 번일까? 설명마다 그림으로 반례를 찾아보자.',
+    problemSteps: (M) => bankSteps(M.bank),
     ctl: (s) => STM[(s.spBank || makeBank(null))[s.spSel || 0]].ctl.concat(VIEW),
     anim: { key: 'spT', dur: 5, label: '반례 만들어 보기', start: 0 },
     onAnim: (s, t) => { const st = STM[s.spBank[s.spSel || 0]]; setAB(st, s, abAt(st, t)); },

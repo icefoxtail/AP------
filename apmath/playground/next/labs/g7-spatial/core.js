@@ -591,6 +591,23 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n), cam0?:{yaw,pitch}, spin?:false } */
   function makeScene(D) {
     const A = D.anim;
+    // 문제를 본 뒤의 정리는 그 문항을 풉니다. 탐구를 다시 열면 원래 원리 정리로 돌아갑니다.
+    const questionReview = new WeakSet();
+    const syncReview = (s, lab) => {
+      if (lab && lab.tab === 'problem') {
+        if (!questionReview.has(s)) s.step = 0;
+        questionReview.add(s);
+      } else if (lab && lab.tab === 'explore') {
+        if (questionReview.has(s)) s.step = 0;
+        questionReview.delete(s);
+      }
+      return questionReview.has(s);
+    };
+    const stepsOf = (s) => {
+      if (curLab && curLab.scene && curLab.scene.sp === D) syncReview(s, curLab);
+      const M = D.model(s);
+      return questionReview.has(s) && D.problemSteps ? D.problemSteps(M, D.prob(M, s), s) : D.steps(M);
+    };
     const pitchKey = D.pitchKey || 'spPitch', pitchRange = D.pitchRange || [PITCH_MIN, PITCH_MAX], yawOff = D.yawOff || 0;
     // 이 장면에서 시점 검사에 쓸 입체: 객체 → 그 입체로 · undefined → 좌표축 기준 · false → 검사 안 함
     const solOf = (s, M) => (D.safeSol ? D.safeSol(s, M) : M && M.sol && M.sol.order && M.sol.edges ? M.sol : undefined);
@@ -625,7 +642,8 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)),
+      steps: stepsOf,
+      reviewTop: (s) => questionReview.has(s) ? esc(D.prob(D.model(s), s).stem) : '',
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -633,6 +651,7 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
+        questionReview.delete(s);
         s.spSpin = false;
         D.init(s);
         const c0 = (typeof D.cam0 === 'function' ? D.cam0(s) : D.cam0) || { yaw: -30, pitch: 24 };
@@ -650,7 +669,7 @@
           if (s[A.key] >= 1) s.playing = false;
           if (D.onAnim && lab && lab.tab === 'explore') D.onAnim(s, s[A.key]); // 막대 값이 움직임을 따라가게
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !questionReview.has(s) && !s.dragging) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -1 * dt, 1 * dt); again = true; }
         }
@@ -661,14 +680,23 @@
         const M = D.model(s);
         syncQuestion(D, s, D.prob(M, s));
         const C = baseCtx(s, lab, false);
+        const fromQuestion = syncReview(s, lab);
         normView(s, M, !!s.spSpin && C.tab === 'explore');
-        const v = D.view(M, C, s) || {};
+        const v = C.review && fromQuestion && D.problemSteps ? {
+          guide: '문제의 그림과 조건을 그대로 두고, 다음 단계에서 풀이를 차례로 확인해요.',
+          readouts: [], notes: '', rule: '', formula: null
+        } : D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = stepsOf(s).length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if ((s.step || 0) < n) v.formula = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
+        if (C.review && syncReview(s, lab) && D.problemSteps) { C.tab = 'problem'; C.problem = true; C.review = false; C.step = 99; }
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         // 그림 한 장 한 장도 시점 검사를 거칩니다(작은 미리보기·저장된 시점 포함). 상태 자체는 건드리지 않고 그리는 동안만 바꿉니다.

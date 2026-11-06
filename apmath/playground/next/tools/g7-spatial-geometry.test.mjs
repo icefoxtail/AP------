@@ -218,3 +218,59 @@ test('camera and unchanged-problem animation preserve progress; a new question s
     assert.equal(s.spPick, null, sc.id);
   }
 });
+
+test('independent questions retain their own drawing and solution when opening review', t => {
+  let checked = 0;
+  for (const sc of scenes) {
+    const s = state(sc.id), lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); sc.view(s, lab);
+    const inquirySteps = JSON.stringify(sc.steps(s));
+    lab.tab = 'problem'; sc.view(s, lab);
+    const q = sc.sp.prob(sc.sp.model(s), s);
+    lab.tab = 'review'; sc.view(s, lab);
+    assert.equal(sc.sp.prob(sc.sp.model(s), s).key, q.key, sc.id);
+    assert.ok(sc.reviewTop(s).includes(G.esc(q.stem)), sc.id + ': current question is shown above the solution');
+    if (sc.sp.problemSteps) {
+      let seen;
+      const draw = sc.sp.draw;
+      sc.sp.draw = (_b, _s, _m, C) => { seen = C; };
+      try { sc.draw({ thumb: false }, s, {}, lab); } finally { sc.sp.draw = draw; }
+      assert.equal(seen.problem, true, sc.id + ': retain the current question diagram');
+      assert.equal(seen.review, false, sc.id + ': do not draw the unrelated inquiry example');
+      checked++;
+    }
+    for (let step = 0; step < sc.steps(s).length; step++) {
+      s.step = step;
+      assert.equal(sc.view(s, lab).formula, null, `${sc.id}: no formula answer at step ${step}`);
+    }
+    lab.tab = 'explore'; sc.view(s, lab);
+    assert.equal(JSON.stringify(sc.steps(s)), inquirySteps, sc.id + ': inquiry remains available');
+    assert.equal(sc.reviewTop(s), '', sc.id + ': question review clears on returning to inquiry');
+  }
+  assert.equal(checked, 15, 'seven statement banks, five plane questions and three solid questions');
+  t.diagnostic('27 question-to-review-to-inquiry transitions; 15 independent question diagrams');
+});
+
+test('plane-count and perpendicular-face reviews solve the selected problem rather than the inquiry example', () => {
+  const review = (id, changes) => {
+    const sc = scene(id), s = state(id), lab = { tab: 'explore', scene: sc, s };
+    sc.enter(s, lab); Object.assign(s, changes); sc.view(s, lab);
+    lab.tab = 'problem'; sc.view(s, lab);
+    lab.tab = 'review'; sc.view(s, lab);
+    return { sc, s, steps: Array.from(sc.steps(s)) };
+  };
+  for (const id of ['s3-3', 's3-4']) {
+    const { steps } = review(id, { spPq: { k: 5 } });
+    assert.match(steps[0], /직선은 5개/);
+    assert.match(steps.at(-1), /5\\times4\\div2=10/);
+  }
+  assert.match(review('s3-1', { spPq: { col: true }, spCd: 1.2 }).steps.at(-1), /무수히/);
+  assert.match(review('s3-2', { spPq: { on: false }, spPo: 0 }).steps.at(-1), /1개/);
+  assert.match(review('s5-1', { spQ: { kind: 'prism', n: 5, face: 0 } }).steps.at(-1), /모서리는 5개/);
+  assert.match(review('s5-2', { spQ: { kind: 'prism', n: 5, face: 2 } }).steps.at(-1), /면은 2개/);
+  assert.match(review('s5-3', { spQ: { kind: 'prism', n: 6, face: 0 } }).steps.at(-1), /4쌍/);
+  const statement = review('s2-1', { spBank: ['p1', 'p2', 'p4', 'p6', 'p3'] });
+  assert.match(statement.steps.at(-1), /⑤/);
+  assert.match(statement.steps.at(-1), /평행/);
+  assert.doesNotMatch(statement.steps.at(-1), /따라서.*거짓/);
+});
