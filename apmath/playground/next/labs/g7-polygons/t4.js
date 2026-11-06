@@ -77,6 +77,7 @@
       const yb = Math.max(...Pn.map((p) => p.y));
       let r1, r2 = '', c1 = 'rose';
       if (C.problem) r1 = `정${n}각형의 한 내각 x의 크기는?`;
+      else if (C.review && C.step === 0) r1 = `정${n}각형의 내각과 외각을 확인해요`;
       else if (C.review && C.step === 1) r1 = `한 외각 = 360° ÷ ${n} = ${fmtN(e)}${eq(e) === '≈' ? '' : ''}°`;
       else if (C.review && C.step === 2) { r1 = `한 외각 ${fmtN(e)}°`; r2 = `한 내각 = 180° − ${fmtN(e)}° ${eq(I)} ${fmtN(I)}°`; }
       else if (C.review) { r1 = `한 내각 ${fmtN(I)}° × ${n} ${eq(I * n)} ${fmtN(I * n)}°`; r2 = `= 180° × (${n}−2) = ${M.sum}°`; }
@@ -133,8 +134,9 @@
       poly(b, [pt(x0, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(x0, y + h)], 'ink', 2.6);
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
       if (C.txt) {
-        T(b, pt((x0 + xm) / 2, y), C.problem ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
-        T(b, pt((xm + x0 + W) / 2, y), C.problem ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        const showRatio = C.problem || (C.review && st === 0);
+        T(b, pt((x0 + xm) / 2, y), showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
+        T(b, pt((xm + x0 + W) / 2, y), showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
         T(b, pt(0, y), `${a} : ${bb}`, { dy: h * K + 18, color: 'ink', size: 17 });
         if (!C.problem) T(b, pt(0, y), '(내각 + 외각 = 180°)', { dy: h * K + 40, color: 'muted', size: 14 });
       }
@@ -156,6 +158,7 @@
       if (!C.txt) return;
       let r1, r2 = '', col = 'amber';
       if (C.problem) { r1 = `한 내각 : 한 외각 = ${a} : ${bb}`; r2 = '이 비를 만족하는 정다각형이 있을까요?'; }
+      else if (C.review && st === 0) r1 = '내각과 외각의 비를 확인해요';
       else if (C.review && st === 1) { r1 = `한 외각 = 180° × ${bb}/${a + bb} = ${fmtN(eps)}°`; col = 'rose'; }
       else if (valid) { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${Math.round(nn)}`; r2 = `→ 정${Math.round(nn)}각형`; }
       else { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${fmtN(nn)}`; r2 = '자연수가 아니라서 정다각형이 없어요'; col = 'rose'; }
@@ -234,6 +237,7 @@
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
         if (C.problem) r1 = `∠APB = x 의 크기는?`;
+        else if (C.review && st === 0) r1 = '두 대각선과 구할 각 x를 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `△ABC: 밑각 = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
         else if (C.review && st === 3) { r1 = `∠ABD = ${fmtN(I)}° − ${fmtN(h)}° ${eq(M.ab)} ${fmtN(M.ab)}°`; r2 = `∠APB = 180° − ${fmtN(h)}° − ${fmtN(M.ab)}° ${eq(x)} ${fmtN(x)}°`; }
@@ -324,6 +328,7 @@
       const gapRow = `A 둘레 남는 각: 360°−${fmtN(In)}°−${fmtN(Im)}°=${fmtN(gap)}°`;
       const apexRow = gap > 180 ? `△APQ의 안쪽 각: 360°−${fmtN(gap)}°=${fmtN(x)}°` : `∠PAQ = ${fmtN(x)}°`;
       if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = valid ? `AP = AQ 일 때, ∠APQ = x 의 크기는?` : '세 점 P, A, Q의 위치는 어떨까요?'; }
+      else if (C.review && st === 0) r1 = '두 정다각형과 구할 각을 확인해요';
       else if (!done) { r1 = '오른쪽 도형을 가로로 밀어 붙여 보세요'; c1 = 'green'; }
       else if (C.review && st === 1) { r1 = `정${n}각형의 한 내각 ${fmtN(In)}°`; r2 = `정${m}각형의 한 내각 ${fmtN(Im)}°`; c1 = 'sky'; }
       else if (C.review && st === 2) { r1 = gapRow; r2 = gap > 180 ? apexRow : ''; }
@@ -398,6 +403,7 @@
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
         if (C.problem) r1 = `∠BA${LET[k + 1]} = x 의 크기는?`;
+        else if (C.review && st === 0) r1 = '대각선으로 나뉜 각을 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `∠BAC = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
         else if (C.review && st === 3) { r1 = `같은 각이 ${n - 2}개 → ${fmtN(h)}° × ${n - 2} ${eq(I)} ${fmtN(I)}°`; r2 = `∠BA${LET[k + 1]} = ${fmtN(h)}° × ${k} = ${fmtN(kk)}°`; c1 = 'amber'; }

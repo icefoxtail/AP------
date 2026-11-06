@@ -159,7 +159,9 @@
       // 좁은 가로 화면의 툴바는 캔버스 오른쪽 아래에 겹쳐 놓입니다.
       // 이미 하단 inset을 둔 세로 화면은 그대로 두고, 이 경우만 설명줄을 올립니다.
       const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
-      fit(b, shape, { t: 36, b: (C.problem ? 64 : 92) + footerReserve, l: 72, r: 108 });
+      // 탐구의 긴 상태 배지도 오른쪽 위 꼭짓점의 각도 이름을 가리지 않게 합니다.
+      const statusReserve = footerReserve && !C.problem && !C.review && !C.thumb ? 34 : 0;
+      fit(b, shape, { t: 36 + statusReserve, b: (C.problem ? 64 : 92) + footerReserve, l: 72, r: 108 });
       const concaveNow = gg.concave, st = C.step;
       fillPoly(b, V, 'sky', 0.1);
       // 보조선: 오목한 꼭짓점 P(=V0)에서 이웃하지 않는 꼭짓점으로 (n−3개)
@@ -187,6 +189,7 @@
         const yb = shape.y1, cx = (b.focus.x[0] + b.focus.x[1]) / 2;
         let r1, r2 = '', c1 = 'sky', c2 = 'amber';
         if (C.problem) { r1 = gg.flat ? 'P에서 두 변이 이루는 각 x는?' : `내각의 합 = 180°×(${n}−2) = ${M.S}°`; r2 = ''; }
+        else if (C.review && st === 0) r1 = '주어진 각과 점 P를 확인해요';
         else if (gg.flat) { r1 = 'P에서 두 변이 한 직선을 이뤄요'; r2 = st >= 3 ? '평각 = 180°' : ''; }
         else if (st === 1) { r1 = `P에서 대각선 ${n - 3}개 → 삼각형 ${n - 2}개`; c1 = 'green'; }
         else if (st === 2) { r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°`; }
@@ -267,6 +270,7 @@
       const yb = 1.1;
       let r1, r2 = '', c1 = 'rose';
       if (C.problem) r1 = '다각형의 외각의 크기의 합은?';
+      else if (C.review && C.step === 0) r1 = '각 꼭짓점의 외각을 확인해요';
       else if (C.review && C.step === 1) r1 = `꼭짓점마다 외각이 하나씩 있어요 (${n}개)`;
       else if (t < 0.95) r1 = n <= 6 ? `외각의 합 = ${eps.join('° + ')}° = 360°` : `외각 ${n}개의 합 = ${eps.reduce((a, c) => a + c, 0)}°`;
       else { r1 = '한 점에 모인 외각 = 한 바퀴'; r2 = `${n}개의 외각의 합 = 360°`; c1 = 'amber'; }
@@ -352,6 +356,7 @@
         let r1, r2 = '', c1 = 'sky';
         const sumE = M.sum4;
         if (C.problem) r1 = '∠E = x 의 크기는?';
+        else if (C.review && st === 0) r1 = '주어진 내각과 외각을 확인해요';
         else if (st === 1) { r1 = '내각 → 외각 : 180° − 내각'; c1 = 'rose'; }
         else if (st === 2) { r1 = `외각 5개의 합 = 360°`; r2 = `${sumE}° + (E의 외각) = 360°`; c1 = 'rose'; }
         else if (st === 3) { r1 = `E의 외각 = 360° − ${sumE}° = ${M.ex}°`; r2 = `x = 180° − ${M.ex}° = ${M.x}°`; c1 = 'rose'; }

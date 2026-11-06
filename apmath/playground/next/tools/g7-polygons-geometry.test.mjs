@@ -220,3 +220,78 @@ test('concave captions stay above the observed narrow-landscape toolbar area', (
     for (const label of labels) assert.ok(!(label.x1 > width - 276 && label.x0 < width && label.y1 > height - 60 && label.y0 < height), `${n}/${j}/${height}/${tab}: toolbar covers ${label.text}`);
   }
 });
+
+test('concave explore labels avoid the observed narrow-landscape status badge', () => {
+  for (const height of [492, 500, 626]) for (const n of [4, 5, 6]) {
+    const flat = (Math.cos(2 * Math.PI / n) + .5) / 1.5;
+    for (const f of [flat, ...Array.from({ length: 101 }, (_, j) => j / 100)]) {
+      const width = 684, { labels } = concaveScreen(n, f, 'explore', 0, width, height, 0);
+      // Actual 1024×768 Chromium capture: the long straight-boundary badge
+      // covers x=418..671 and y=14..43 in the 684px-wide stage.
+      for (const label of labels) assert.ok(!(label.x1 > 418 && label.x0 < 671 && label.y1 > 14 && label.y0 < 43), `${n}/${f}/${height}: status covers ${label.text}`);
+    }
+  }
+});
+
+test('initial review captions keep current givens without falling through to solved results', () => {
+  const prompts = {
+    'p2-star': '주어진 네 각과 x를 확인해요',
+    'p3-concave': '주어진 각과 점 P를 확인해요',
+    'p3-ext360': '각 꼭짓점의 외각을 확인해요',
+    'p3-given': '주어진 내각과 외각을 확인해요',
+    'p3-mixed': '주어진 내각과 외각을 확인해요',
+    'p4-ratio': '내각과 외각의 비를 확인해요',
+    'p4-diag': '두 대각선과 구할 각 x를 확인해요',
+    'p4-join': '두 정다각형과 구할 각을 확인해요',
+    'p4-fan': '대각선으로 나뉜 각을 확인해요'
+  };
+  for (const sc of scenes) for (let sample = 0; sample < 8; sample++) {
+    const s = state(sc.id); sc.pg.reroll(s); render(sc.id, s, 'problem');
+    const before = JSON.stringify(question(sc.id, s)), last = sc.steps(s).length;
+    for (let step = 0; step <= last; step++) {
+      s.step = step; const r = render(sc.id, s, 'review');
+      assert.equal(JSON.stringify(question(sc.id, s)), before, sc.id + ' retains current problem');
+      if (step < last) assert.ok(!r.v.formula, sc.id + ' formula waits for completion');
+      if (step !== 0) continue;
+      if (prompts[sc.id]) assert.ok(r.texts.includes(prompts[sc.id]), sc.id + ' initial prompt');
+      if (sc.id === 'p4-reg') assert.ok(r.texts.includes(`정${model(sc.id, s).n}각형의 내각과 외각을 확인해요`));
+      if (['p3-concave', 'p3-given', 'p3-mixed'].includes(sc.id)) assert.ok(!r.texts.some((t) => /^x\s*=\s*\d/.test(t)));
+      if (sc.id === 'p4-ratio') assert.ok(!r.texts.some((t) => /^n\s*=/.test(t)));
+      if (sc.id === 'p4-reg') assert.ok(!r.texts.some((t) => /^한 내각 \d/.test(t)));
+      if (sc.id === 'p4-diag') assert.ok(!r.texts.some((t) => /^∠APB =/.test(t)));
+      if (sc.id === 'p4-join') assert.ok(!r.texts.some((t) => /^∠APQ =/.test(t)));
+      if (sc.id === 'p4-fan') assert.ok(!r.texts.some((t) => /^∠BA[A-Z] =/.test(t)));
+    }
+  }
+});
+
+test('star, chained and attached isosceles targets stay symbolic until their solving step', () => {
+  for (let sample = 0; sample < 12; sample++) {
+    const star = state('p2-star'); by('p2-star').pg.reroll(star); render('p2-star', star, 'problem');
+    const sm = model('p2-star', star);
+    for (let step = 0; step < 3; step++) {
+      star.step = step; const r = render('p2-star', star, 'review');
+      assert.ok(r.texts.includes('E x')); assert.ok(!r.texts.includes(`E ${sm.e}°`));
+      assert.ok(!r.texts.some((t) => /^c\+e=/.test(t)), 'unknown sum cannot be numerically assumed');
+    }
+    star.step = 3; assert.ok(render('p2-star', star, 'review').texts.includes(`E ${sm.e}°`));
+  }
+  for (let x = 14; x <= 20; x++) {
+    const s = state('p2-chain', { pgCx: x });
+    for (let step = 0; step < 4; step++) {
+      s.step = step; const r = render('p2-chain', s, 'review');
+      assert.ok(!r.texts.some((t) => t.includes(`${x}°`)), 'x value stays unknown');
+      assert.ok(!by('p2-chain').steps(s).slice(0, step).join(' ').includes(`${x}°`), 'opened proof steps stay symbolic');
+    }
+    s.step = 4; assert.ok(render('p2-chain', s, 'review').texts.some((t) => t.includes(`x = ${4 * x}° ÷ 4 = ${x}°`)));
+  }
+  for (let bb = 40; bb <= 70; bb += 2) {
+    const s = state('p2-iso', { pgIb: bb }), m = model('p2-iso', s);
+    for (let step = 0; step < 3; step++) {
+      s.step = step; const r = render('p2-iso', s, 'review');
+      const targetLabels = r.b.calls.filter((c) => c.method === 'text' && Math.hypot(c.args[0].x - m.D.x, c.args[0].y - m.D.y) < 1e-8).map((c) => c.args[1]);
+      assert.ok(!targetLabels.includes(G.dg(m.d)), 'D remains unknown before halving the given angle');
+    }
+    s.step = 3; assert.ok(render('p2-iso', s, 'review').texts.includes(G.dg(m.d)));
+  }
+});
