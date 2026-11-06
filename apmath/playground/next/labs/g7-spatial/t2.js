@@ -30,7 +30,8 @@
   // 문제 탭의 참고 그림: 글로 된 설명을 직육면체의 모서리·면에 대 보며 반례를 찾아볼 수 있어요.
   function refCuboid(b, s, C) {
     const D = scene3(b, s, C), sol = buildSolid('cuboid');
-    D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 52, b: 56, l: 44, r: 44 });
+    const bottom = b.W >= 560 && b.W < 800 ? 76 : 56; // 가로 태블릿의 도구막대 위로 아래 꼭짓점 이름을 띄웁니다.
+    D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 52, b: bottom, l: 44, r: 44 });
     drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.06 });
     drawVerts(D, sol, {});
     if (C.txt) caption(b, '참고 그림: 직육면체의 모서리와 면으로 반례를 찾아보세요');
