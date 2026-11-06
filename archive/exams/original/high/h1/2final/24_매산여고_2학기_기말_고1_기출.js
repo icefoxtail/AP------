@@ -144,7 +144,7 @@ window.questionBank = [
     "solutionImageCaption": "끝점 (1,1)에서 근호 안의 값이 0이고 점 (0,-1)을 지나므로 a=-2, b=4, c=1이다. 따라서 a+b+c=3이고 정답은 ⑤이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_FUNCTION_RECOVERY",
-    "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH"
+    "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE"
   },
   {
     "id": 5,
