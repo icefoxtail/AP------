@@ -402,3 +402,13 @@ await test('a static trapezoid question uses the stage for its actual shape and 
     assert.ok(caption.x0>=0 && caption.x1<=390 && caption.y1<=240, `q${q}: current question caption fits`);
   }
 });
+
+await test('ratio current-question captions clear the landscape toolbar', async () => {
+  const lab=await load();
+  for (const [W,H,bottom] of [[683,438,0],[683,570,0],[667,612,0]]) for (const [m,n] of [[1,6],[3,2],[6,1]]) for (const h of [2,8]) {
+    lab.go('b5-ratio'); Object.assign(lab.s,{b5M:m,b5N:n,b5H:h,b5Q:0}); lab.tab='problem';
+    lab.board.resize(W,H);lab.board.setInsets({top:0,right:0,left:0,bottom});const result=lab.draw();
+    const caption=labelBox(result.labels.find(x=>x.text.startsWith('△ABC =')));
+    assert.ok(caption.y1<=H-50, `${m}:${n}/h${h}: given area and ratio stay above the actual toolbar row`);
+  }
+});

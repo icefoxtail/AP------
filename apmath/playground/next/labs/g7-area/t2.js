@@ -282,7 +282,10 @@
     geo: (M, gap = 0) => { const xA = (M.m + M.n) * 0.4, Bv = pt(0, 0), D = pt(M.m, 0), Cv = pt(M.m + M.n, 0), Av = pt(xA, -M.h); return { Bv, D, Cv, Av, left: [Av, Bv, D], right: [Av, D, Cv].map((p) => pt(p.x + gap, p.y)) }; },
     draw(b, s, M, C) {
       const { m, n, h, S1, S2, S } = M, t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.7 : 0.7) : C.t, gap = 1.6 * ease(t), g = ratio.geo(M, gap), { Bv, D, Cv, Av } = g;
-      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? 100 : 130 });
+      // The narrow desktop stage has floating tools at its bottom right.
+      // Keep the given area/ratio caption above that row without shrinking mobile or PC views.
+      const questionBottom = b.W >= 560 && b.W < 800 && b.insets.bottom < 40 ? 134 : 100;
+      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? questionBottom : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
       [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 ? -12 : i === 3 ? 12 : 0, size: 17 }));

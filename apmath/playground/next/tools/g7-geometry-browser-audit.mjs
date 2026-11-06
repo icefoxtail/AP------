@@ -221,8 +221,10 @@ try {
                 const places = Math.max(0, String(ctlInfo.step).split('.')[1]?.length || 0, String(ctlInfo.min).split('.')[1]?.length || 0);
                 const value = Number((ctlInfo.value + ctlInfo.step <= ctlInfo.max ? ctlInfo.value + ctlInfo.step : ctlInfo.value - ctlInfo.step).toFixed(Math.min(12, places)));
                 await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(String(value)); await settle();
-                const changed = questionBefore !== await signature();
                 await page.evaluate(() => lab.setTab('problem')); await page.waitForFunction(() => !lab._tween); await settle();
+                // Compare question content in the same tab: exploration can hide
+                // reveal buttons or answer styles without changing the question.
+                const changed = questionBefore !== await signature();
                 const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
                 dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, problemChanged: changed, locked });
                 if (opened && changed && !locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-values-retain-open-answer', parameter: ctlInfo.key });

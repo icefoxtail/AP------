@@ -77,6 +77,11 @@
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)), onInput: o.onInput });
+  // 연속 조작 중 반올림한 값에는 ≈를 붙이고, 두 자리까지 정확한 유한소수는 그대로 씁니다.
+  const measureN = (v) => Math.abs(v * 100 - Math.round(v * 100)) < 1e-8 ? String(Math.round(v * 100) / 100) : '≈ ' + fmtN(v, 2);
+  const complete = (t) => t >= 1 - 1e-12;
+  // 서로 연결된 두 길이는 입력 막대와 그림이 같은 값을 가리키게 합니다.
+  const keepSmaller = (s, small, large) => { s[small] = clamp(Math.round(s[small] || 1), 1, Math.max(1, Math.round(s[large] || 2) - 1)); };
   const cm = (v) => fmtN(v) + ' cm';
   const VIEW_PARAMS = {
     soYaw: P('좌우로 돌려 보기', -180, 180, 1, 0, { color: 'muted', format: (v) => Math.round(v) + '°' }),
@@ -119,9 +124,35 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  function syncProblem(D, s, Q = D.prob(D.model(s), s)) {
+    const key = D.id + '|' + Q.key + '|' + (s.soSeed || 0);
+    if (s.soProblemKey != null && s.soProblemKey !== key) {
+      s.soPick = null; s.revealed = false; s.step = 1;
+      s.soProblemStep = 1; s.soProblemReveal = false;
+    }
+    s.soProblemKey = key;
+    return key;
+  }
+  // 원리 예시와 연습문제는 서로 다른 수치를 가질 수 있어요. 문제에서 정리로 돌아오면
+  // 그 문제의 그림·단계 풀이를 유지하고, 탐구로 돌아오면 원리 예시로 돌아갑니다.
+  function studyContext(s, lab) {
+    if (lab.tab === 'problem' && !s.soReviewQuestion) {
+      s.soPrincipleStep = s.step || 1;
+      s.step = s.soProblemStep || 1; s.revealed = !!s.revealed || !!s.soProblemReveal;
+      s.soReviewQuestion = true;
+    } else if (lab.tab === 'explore' && s.soReviewQuestion) {
+      s.soProblemStep = s.step || 1; s.soProblemReveal = !!s.revealed;
+      s.step = s.soPrincipleStep || 1; s.revealed = false;
+      s.soReviewQuestion = false;
+    }
+  }
+  const studySteps = (D, s) => {
+    const M = D.model(s);
+    return s.soReviewQuestion && D.problemSteps ? D.problemSteps(M, s, D.prob(M, s)) : D.steps(M);
+  };
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.soSeed || 0);
+    const key = syncProblem(D, s, Q);
     const pk = s.soPick && s.soPick.key === key ? s.soPick : null;
     let h = `<div class="so-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += `<div class="so-choices${Q.wide ? ' wide' : ''}${Q.fig ? ' fig' : ''}">`;
@@ -208,18 +239,18 @@
       if (!A) return undefined;
       return [{
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
-        label: (s) => (s.playing ? '일시 정지' : s[A.key] >= 0.999 ? '다시 재생' : A.label || '움직여 보기'),
+        label: (s) => (s.playing ? '일시 정지' : complete(s[A.key]) ? '다시 재생' : A.label || '움직여 보기'),
         on: (s) => s.playing,
-        run: (s) => { if (s.playing) s.playing = false; else { if (s[A.key] >= 0.999) { s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } s.playing = true; } }
+        run: (s) => { if (s.playing) s.playing = false; else { if (complete(s[A.key])) { s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } s.playing = true; } }
       }, { id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } }];
     };
     return {
       id: D.id, title: D.title, short: D.short || D.title, so: D,
-      question: D.question,
+      question: (s) => s.soReviewQuestion && D.problemSteps ? D.prob(D.model(s), s).stem : (typeof D.question === 'function' ? D.question(s) : D.question),
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl).concat(D.noView ? [] : D.pitchOnly ? ['soPitch'] : D.lay ? ['soYawL'] : VIEW),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((x) => texFix(String(x).replace(/<\/?b>/g, ''))),
+      steps: (s) => studySteps(D, s).map((x) => texFix(String(x).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -232,7 +263,9 @@
         Object.keys(s).forEach((k) => { if (/^so[PQ]/.test(k) && k !== 'soPitch' && k !== 'soPsi') delete s[k]; }); // 문제용 상태는 장면마다 새로
         D.init(s);
         s.soSeed = 0; s.soPick = null; s.playing = false;
+        s.soReviewQuestion = false; s.soProblemStep = 1; s.soProblemReveal = false; s.soPrincipleStep = 1;
         if (A) s[A.key] = A.start || 0;
+        s.soProblemKey = null; syncProblem(D, s);
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
@@ -250,23 +283,33 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        const M = D.model(s);
+        // 쉘은 장면 객체를 복제하므로 원본 정의 참조로 현재 장면을 확인합니다.
+        if (lab && lab.scene && lab.scene.so === D && lab.s === s) { syncProblem(D, s, D.prob(M, s)); studyContext(s, lab); }
         const C = baseCtx(s, lab, false);
         C.t = A ? (C.tab === 'explore' ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
-        const M = D.model(s);
         // 슬라이더·손잡이로 값이 바뀌면 정리 탭의 풀이 단계 글도 새 값으로 다시 만듭니다.
         if (lab && lab.scene && lab.scene.so === D && s === lab.s && lab.refs) {
-          const sig = D.id + '|' + JSON.stringify(D.steps(M));
+          const sig = D.id + '|' + JSON.stringify(studySteps(D, s));
           if (lab._soSig !== sig) { lab._soSig = sig; try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } }
         }
-        const v = D.view(M, C, s) || {};
+        const practice = s.soReviewQuestion && D.problemSteps;
+        const Q = practice ? D.prob(M, s) : null;
+        const v = practice ? {
+          guide: '현재 문제의 조건으로 차례대로 풀어요. ' + esc(Q.stem),
+          readouts: [],
+          formula: '<p>' + esc(D.problemSteps(M, s, Q).at(-1)) + '</p>'
+        } : (D.view(M, C, s) || {});
+        if (C.review && !s.revealed && s.step < studySteps(D, s).length) v.formula = '';
         ['formula', 'guide', 'notes', 'rule'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texFix(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') { const n = studySteps(D, s).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `${practice ? '문제 풀이' : '풀이'} ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
+        if (!b.thumb && C.review && s.soReviewQuestion && D.problemSteps) C.problem = true;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         D.draw(b, s, M, C);
@@ -288,6 +331,6 @@
   window.APL_SO = {
     angPairs, snapAng,
     PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
-    textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, measureN, complete, keepSmaller, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };
 })();
