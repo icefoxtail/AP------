@@ -274,7 +274,8 @@
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.A, g.D, g.E], 'sky', 0.22); fillPoly(b, [g.D, g.B, g.C, g.E], 'green', 0.07);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.D, g.E, 'ink', 3.4);
-      ang(b, g.A, g.B, g.C, { color: 'rose', r: 28, label: prob ? undefined : `${g.a}°`, size: 15 });
+      const includedRadius = Math.min(28, Math.min(g.AD, g.AE) * (b.k || 60) * .4);
+      ang(b, g.A, g.B, g.C, { color: 'rose', r: includedRadius, label: prob ? undefined : `${g.a}°`, size: 15 });
       const lb = (p, q, c, t, col) => sideTag(b, p, q, c, t, { color: col, size: 16, gap: 10 });
       const cl = centroid([g.D, g.B, g.C, g.E]);
       if (prob) {

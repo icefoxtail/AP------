@@ -149,6 +149,30 @@ test('parallel-line auxiliary names stay separate from the given segment lengths
   assert.ok(G.dist(labelCenter(b, m), labelCenter(b, length)) >= 28, 'M and 8 cannot form one apparent M8 label');
 });
 
+test('small SAS triangles emphasize only their included angle without overlapping corner arcs', () => {
+  const sc = get('sm3-sas'), s = {}; sc.enter(s); s.smPk = { seed: 63, m: 1, n: 6, q: 2, a: 50, kind: 1 };
+  const g = G.geo.sasGeo(1, 6, 2, 50);
+  for (const step of [1, 2, 3, 4, 5]) {
+    s.step = step; const b = layoutBoard(390, 412); sc.draw(b, s, {}, { tab: 'review' });
+    const marks = b.log.filter(x => x.name === 'arc' && x.args[4]?.color === 'rose' && x.args[4]?.width);
+    assert.equal(marks.length, 1, `step ${step}: SAS needs one common included-angle mark`);
+    assert.ok(G.dist(marks[0].args[0], g.A) < 1e-9);
+    assert.ok(marks[0].args[1] <= .41 * Math.min(g.AD, g.AE), `step ${step}: angle arc must fit inside the small triangle`);
+  }
+});
+
+test('X-shaped upper vertex names clear the status badge at normal and inverse ratios', () => {
+  const sc = get('sm4-x');
+  for (const [width, height] of [[1064, 746], [820, 520], [683, 614], [390, 412], [390, 324]]) for (const [m, n] of [[1, 3], [2, 3], [3, 1], [3, 2]]) for (const r of [2, 4]) for (const [tab, step] of [['explore', 0], ['problem', 0], ['review', 1], ['review', 5]]) {
+    const s = {}; sc.enter(s); Object.assign(s, { smXm: m, smXn: n, smXr: r, step, smPk: { seed: 1, m, n, r, kind: 0 } });
+    const b = layoutBoard(width, height); sc.draw(b, s, {}, { tab });
+    for (const name of ['A', 'D']) {
+      const label = b.log.find(x => x.name === 'text' && x.args[1] === name);
+      assert.ok(labelCenter(b, label).y - label.args[2].size * .55 >= 48, `${width}x${height}|${m}:${n}|${r}|${tab}|${step}: ${name} below badge`);
+    }
+  }
+});
+
 test('EF and river inverse ratios keep active smaller triangles sky and larger triangles green', () => {
   for (const id of ['sm4-ef', 'sm7-river']) for (const [m, n] of [[1, 3], [2, 3], [3, 1], [3, 2]]) for (const kind of [0, 1]) for (const [tab, step] of [['problem', 0], ['explore', 0], ['review', 2], ['review', 3], ['review', 4], ['review', 5]]) {
     const sc = get(id), s = {}; sc.enter(s); s.smPk = { ...sc.sm.gen(1), m, n, u: 2, w: 3, kind };

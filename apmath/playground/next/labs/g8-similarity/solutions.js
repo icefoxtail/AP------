@@ -469,12 +469,16 @@
           if (stage >= 3) { const h = heights[0]; line(b, pt(-h / 2, h), pt(h / 2, h), 'rose', 3); }
           break;
         }
-        case 'sm3-par': case 'sm3-sas': case 'sm4-conv': case 'sm4-mid':
+        case 'sm3-sas':
+          // SAS uses the two side ratios and the single common included angle.
+          // Adding all later corresponding angles crowds a small nested triangle
+          // and obscures the condition that this stage is actually explaining.
           pair(b, g, ['A', 'D', 'E'], ['A', 'B', 'C'], stage);
-          // SAS already marks the common included angle A with one rose arc.
-          // Different angle pairs must not reuse that equality mark.
-          equal(b, g.D, g.A, g.E, D.id === 'sm3-sas' ? 2 : 1); equal(b, g.B, g.A, g.C, D.id === 'sm3-sas' ? 2 : 1);
-          if (stage >= 3) { equal(b, g.E, g.A, g.D, D.id === 'sm3-sas' ? 3 : 2); equal(b, g.C, g.A, g.B, D.id === 'sm3-sas' ? 3 : 2); }
+          break;
+        case 'sm3-par': case 'sm4-conv': case 'sm4-mid':
+          pair(b, g, ['A', 'D', 'E'], ['A', 'B', 'C'], stage);
+          equal(b, g.D, g.A, g.E, 1); equal(b, g.B, g.A, g.C, 1);
+          if (stage >= 3) { equal(b, g.E, g.A, g.D, 2); equal(b, g.C, g.A, g.B, 2); }
           break;
         case 'sm3-ssa': {
           const q = G.geo.ssaGeo(p.kind === 0 ? p.a : p.c * .75, p.c, 30), h = mul(q.u, p.c * Math.cos(Math.PI / 6));

@@ -128,7 +128,9 @@
     model: (s) => ({ ...xGeo(clamp(Math.round(s.smXm), 1, 3), clamp(Math.round(s.smXn), 1, 4), clamp(Math.round(s.smXr), 2, 4)), g: gcd(clamp(Math.round(s.smXm), 1, 3), clamp(Math.round(s.smXn), 1, 4)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? xGeo(pk.m, pk.n, pk.r) : M;
-      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 44, b: 66, l: 52, r: 52 });
+      // Keep the outward A/D names below the board's upper status badge.
+      // Inverse ratios place the large top triangle directly beneath that badge.
+      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 74, b: 66, l: 52, r: 52 });
       const cen = g.O, upperColor = g.m <= g.n ? 'sky' : 'green', lowerColor = g.m <= g.n ? 'green' : 'sky';
       fillPoly(b, [g.O, g.A, g.D], upperColor, 0.18); fillPoly(b, [g.O, g.B, g.C], lowerColor, 0.18);
       line(b, g.A, g.D, 'ink', 3.6); line(b, g.B, g.C, 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.6); line(b, g.D, g.B, 'ink', 3.6);
