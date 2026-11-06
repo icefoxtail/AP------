@@ -475,6 +475,8 @@
   const angNames = (b, g, withQ) => { [g.P, g.E, g.F].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, g.P, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, g.E, 'E', { dx: 4, dy: -14, size: 18 }); T(b, g.F, 'F', { dx: 4, dy: 16, size: 18 }); if (withQ) { b.point(withQ, { color: 'ink', r: 4.5 }); T(b, withQ, 'Q', { dx: 6, dy: -14, size: 18 }); } };
 
   /* ---- t4-1 각의 이등분선 위의 점 · v0: PE → PF · v1: ∠XOP → ∠EPF · v2: OE → OF ---- */
+  // 한 눈금은 OE=OF, 두 눈금은 PE=PF, 세 눈금은 공통 빗변 OP를 나타낸다.
+  // OP는 직각변보다 길므로 수선과 같은 눈금을 사용하지 않는다.
   const b1Plan = (M, s) => {
     const { h, d, g } = M, { O, P: Pp, E, F, X, Y } = g, v = (s.trV || 0) % 3, m = 3 + ((h + d) % 6), steps = [], items = [], rest = 90 - h;
     const head = '점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이에요.';
@@ -490,7 +492,7 @@
     items.push(SK.seg(O, Pp, { at: 'given', col: 'green', dash: [7, 5], w: 3.2 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
       SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
       SK.ang(O, X, Pp, { r: 40, cut: [0, 7], on: ['given', 'A'], col: 'sky', cols: { A: 'green' }, label: v === 1 ? dg(h) : '', ld: 66, gl: true, glTo: 'eq' }), SK.ang(O, Pp, Y, { r: 40, cut: [7, 0], on: ['given', 'A'], col: 'sky', cols: { A: 'green' } }),
-      SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }), SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
+      SK.tick(O, Pp, 3, { at: 'H', col: 'rose' }), SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
     if (v === 0) items.push(SK.len(Pp, E, pt(-50, 0), `${d} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(Pp, F, pt(-50, 0), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${d} cm` } }), SK.tick(Pp, E, 2, { at: 'eq', col: 'rose' }), SK.tick(Pp, F, 2, { at: 'eq', col: 'rose' }));
     else if (v === 1) items.push(SK.ang(Pp, E, F, { r: 34, ld: 52, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${180 - 2 * h}°` }, gl: true }), SK.ang(Pp, O, E, { r: 24, at: 'eq', col: 'green', label: dg(rest), size: 14, ld: 38 }));
     else items.push(SK.len(O, E, Pp, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8 }), SK.len(O, F, Pp, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 8, labels: { ans: `x=${m} cm` } }), SK.tick(O, E, 1, { at: 'eq', col: 'rose' }), SK.tick(O, F, 1, { at: 'eq', col: 'rose' }));
@@ -514,7 +516,7 @@
     steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(h)}$`, cap: `x = ${h}°` });
     items.push(SK.seg(O, Pp, { at: 'given', to: 'S', col: 'ink', dash: [7, 5], w: 3 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
       SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
-      SK.tick(Pp, E, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Pp, F, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }),
+      SK.tick(Pp, E, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Pp, F, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(O, Pp, 3, { at: 'H', col: 'rose' }),
       SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
     if (v === 0) items.push(SK.ang(O, X, Y, { r: 66, ld: 94, lr: 0, on: ['given'], col: 'sky', fa: 0.05, label: dg(2 * h), gl: true, glTo: 'cong' }), SK.ang(O, E, Pp, { r: 34, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }), SK.ang(O, Pp, F, { r: 34, ld: 54, at: 'eq', col: 'green', label: dg(h), size: 14 }));
     else items.push(SK.ang(O, X, Pp, { r: 34, ld: 56, on: ['given', 'eq'], col: 'sky', label: dg(h), gl: true }), SK.ang(O, Pp, Y, { r: 34, ld: 56, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }));

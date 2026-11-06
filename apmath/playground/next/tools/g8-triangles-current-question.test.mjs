@@ -160,3 +160,27 @@ test('known mobile angle, length and center labels stay separated at the same fi
     assert.ok(a.r <= z.l || z.r <= a.l || a.b <= z.t || z.b <= a.t, `${c.id}: ${c.labels.join(' and ')} overlap`);
   }
 });
+
+test('right-triangle congruence and bisector diagrams give equal-length ticks only to equal segments', t => {
+  let frames = 0, marks = 0;
+  for (const sc of scenes.filter(sc => /^t[34]-/.test(sc.id))) {
+    const s = state(sc);
+    for (let variant = 0; variant < 30; variant++) {
+      if (variant) sc.tr.reroll(s);
+      for (let step = 0; step <= sc.steps(s).length; step++) {
+        s.step = step; const b = board();
+        sc.draw(b, s, {}, { tab: step ? 'review' : 'problem' });
+        const groups = new Map();
+        for (const item of b.items.filter(x => x.type === 'ticks')) {
+          const [p, q, options] = item.args, key = `${options.count}:${options.color}`;
+          const length = G.dist(p, q);
+          if (groups.has(key)) close(length, groups.get(key), `${sc.id}, variant ${variant}, step ${step}: ${key} ticks identify equal lengths`);
+          else groups.set(key, length);
+          marks++;
+        }
+        frames++;
+      }
+    }
+  }
+  t.diagnostic(`${frames} problem/stage frames and ${marks} geometric equal-length marks`);
+});
