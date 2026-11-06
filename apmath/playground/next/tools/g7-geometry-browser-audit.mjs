@@ -49,6 +49,15 @@ try {
       await page.goto(`${base}${unit}.html?theme=board`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
+      const measurementControl = await page.evaluate(() => {
+        const c = document.createElement('canvas'); c.width = 600; c.height = 400;
+        const x = c.getContext('2d');
+        const count = () => { const d = x.getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 30) n++; return n; };
+        const blank = count(); x.fillRect(20, 200, 500, 1); const thinLine = count();
+        return { blank, thinLine, threshold: 200, pass: blank < 200 && thinLine >= 200 };
+      });
+      (dest.measurementControls ||= []).push({ run: run.name, ...measurementControl });
+      if (!measurementControl.pass) throw Error('Canvas measurement positive/negative control failed');
       const scenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
       if (!dest.scenes.length) dest.scenes = scenes;
       if (new Set(scenes.map(s => s.id)).size !== scenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
@@ -73,13 +82,17 @@ try {
         await settle();
         const obs = await page.evaluate(() => {
           const b = lab.board, c = b.canvas, data = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
-          let ink = 0; const stride = Math.min(31, Math.max(1, Math.round(c.width * c.height / 20360)));
-          for (let k = 3; k < data.length; k += 4 * stride) if (data[k] > 30) ink++;
+          // Count actual occupied pixels. Stride sampling aliases thin horizontal
+          // diagrams, so a valid long line could be reported as a blank canvas.
+          // Keep the 200-pixel blank threshold; retain sampledInk as diagnostics.
+          let ink = 0, sampledInk = 0;
+          const stride = Math.min(31, Math.max(1, Math.round(c.width * c.height / 20360)));
+          for (let k = 3; k < data.length; k += 4) if (data[k] > 30) { ink++; if (((k - 3) / 4) % stride === 0) sampledInk++; }
           const get = x => (typeof x === 'function' ? x(lab.s, lab) : x) || [];
           const want = get(lab.scene.controls).filter(k => lab.params[k]).length + get(lab.scene.presets).length + get(lab.scene.actions).length;
           const have = [...document.querySelectorAll('.apl-ctl, .apl-presets .apl-chip, .apl-actions-row button')].filter(e => e.checkVisibility()).length;
           const clipped = window.__g7Labels.filter(q => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2);
-          return { ink, clipped, labels: window.__g7Labels, want, have, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
+          return { ink, sampledInk, clipped, labels: window.__g7Labels, want, have, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
         });
         const issues = [];
         if (obs.ink < 200) issues.push('blank-canvas');
