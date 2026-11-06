@@ -344,9 +344,9 @@ body.apl {
   .apl-tools hr { width: 1px; height: 20px; margin: 0 3px; }
 }
 
-/* 태블릿 세로 안내(셸 _orientHint): 무대 위쪽 가장자리의 작은 토스트. 닫기 버튼은 32px 이상입니다. */
+/* 태블릿 세로 안내(셸 _orientHint): 그림을 덮지 않는 별도 행. 닫기 버튼은 32px 이상입니다. */
 .apl-orient-hint {
-  position: absolute; z-index: 6; top: 8px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 24px);
+  position: relative; flex: none; align-self: center; max-width: calc(100% - 24px); margin: 6px 12px;
   display: flex; align-items: center; gap: 4px; padding: 4px 4px 4px 14px; border-radius: 999px;
   background: var(--text); color: var(--bg); font-size: var(--fs-sm); font-weight: 700; box-shadow: var(--shadow);
   animation: apl-pop .2s var(--ease);

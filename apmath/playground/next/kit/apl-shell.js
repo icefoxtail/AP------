@@ -181,7 +181,7 @@
         }).observe(ui.stage);
       }
     }
-    /** 태블릿 세로(폭 700~859px, 세로 방향): 처음 열 때 「가로로 돌리면…」 한 줄 안내를 무대 위쪽 가장자리에 띄웁니다.
+    /** 태블릿 세로(폭 700~859px, 세로 방향): 처음 열 때 「가로로 돌리면…」 한 줄 안내를 그림 바깥의 독립 행에 표시합니다.
      *  닫으면 localStorage 에 기억해 다시 띄우지 않고(저장이 막혀도 이번 화면에서는 닫힌 채), 가로로 돌리면 저절로 사라집니다. 휴대폰(700px 미만)·PC에는 나오지 않습니다. */
     _orientHint() {
       const mq = window.matchMedia('(min-width: 700px) and (max-width: 859px) and (orientation: portrait)');
@@ -197,7 +197,7 @@
       };
       const onChange = () => { if (!mq.matches) close(false); }; // 가로로 돌렸거나 다른 크기가 되면 사라집니다(기억은 하지 않음)
       if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
-      this.ui.canvasWrap.append(el);
+      this.ui.stage.insertBefore(el, this.ui.canvasWrap);
     }
     _syncThemeIcon() {
       this.ui.themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun');
@@ -339,13 +339,15 @@
         this._subs = subs;
         this._subCount = h('span', { class: 'apl-sub-count', 'aria-hidden': 'true', text: cnt }); // 넓은 화면의 위 띠 끝에 붙는 「5 / 8」 위치 표시
       }
+      this._questionText = null;
       if (sc.question) {
         // 휴대폰(859px 이하)에서는 제목 바로 아래 한 줄로 접혀 있다가 누르면 펼칩니다(apl.css). 넓은 화면은 예전처럼 카드입니다.
-        const qe = h('div', { class: 'apl-question', html: `<small>탐구 질문</small><span class="q">${APLab.renderMath(sc.question)}</span>` });
+        const qe = h('div', { class: 'apl-question', html: `<small>탐구 질문</small><span class="q">${APLab.renderMath(call(sc.question, this.s))}</span>` });
         const flipQ = () => { if (NARROW.matches) qe.setAttribute('aria-expanded', String(qe.classList.toggle('open'))); };
         qe.addEventListener('click', flipQ);
         qe.addEventListener('keydown', (e) => { if (e.target === qe && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); flipQ(); } });
         ui.head.append(qe);
+        this._questionText = qe.querySelector('.q');
       }
       // 탭
       ui.tabs.innerHTML = '';
@@ -631,11 +633,16 @@
     _buildReview() {
       const sc = this.scene;
       const pane = this.ui.panes.review;
-      const openSol = Array.from(pane.querySelectorAll('details.apl-acc')).map((d) => d.open); // 다시 만들어도 펼친 풀이는 그대로
-      pane.innerHTML = '';
       const r = this.refs;
       const steps = call(sc.steps, this.s);
-      r.stepsSig = JSON.stringify(steps || null); // 마지막으로 만든 단계 글: _renderPanel이 현재 글과 비교해 달라졌을 때만 다시 만듭니다
+      const stepsSig = JSON.stringify(steps || null);
+      this._syncSolutionDisclosure();
+      // Preserve an explicitly opened explanation only while its content is unchanged.
+      // New numerical givens must not inherit the previous question's reveal action.
+      const keepOpen = r.stepsSig === stepsSig;
+      const openSol = Array.from(pane.querySelectorAll('details.apl-acc')).map((d) => keepOpen && d.open);
+      pane.innerHTML = '';
+      r.stepsSig = stepsSig;
       const rt = sc.reviewTitles || {}; // 선택 사항: { steps, solution } 소제목 바꾸기
       r.top = null;
       if (sc.reviewTop) { r.top = h('div', { class: 'apl-section apl-review-top' }); r.top.__h = null; pane.append(r.top); } // 선택 사항: 풀이 탭 맨 위에 문제 다시 보기
@@ -650,7 +657,9 @@
         r.nextMode = 'step';
         pane.append(this._section(rt.steps || '단계별로 그림에 나타내기', 'layers', r.steps, r.stepCtl));
         steps.forEach((t, i) => {
-          const b = h('button', { class: 'apl-step', html: `<span class="n">${i + 1}</span><span>${APLab.renderMath(APLab.esc(String(t).replace(/^Step\s*\d+\s*·\s*/, '')).replace(/&amp;/g, '&'))}</span>`, onclick: () => this.setStep(i + 1) });
+          // A future step is an explicit reveal action; its conclusion must not be in the visible or accessible button text yet.
+          const b = h('button', { class: 'apl-step', html: `<span class="n">${i + 1}</span><span class="apl-step-body"></span>`, onclick: () => this.setStep(i + 1) });
+          b.__stepHTML = APLab.renderMath(APLab.esc(String(t).replace(/^Step\s*\d+\s*·\s*/, '')).replace(/&amp;/g, '&'));
           r.steps.append(b);
         });
       } else { r.steps = null; r.stepCtl = r.stepNew = null; }
@@ -680,9 +689,39 @@
       r.notes = h('div', { class: 'apl-rich' });
       r.notesSec = this._section(sc.notesTitle || this.def.notesTitle || '시험에서 자주 틀리는 부분', 'alert', h('div', { class: 'apl-card soft' }, r.notes));
       pane.append(r.notesSec);
+      this._syncReviewSteps();
+    }
+    _syncReviewSteps() {
+      const r = this.refs;
+      if (!r.steps) return;
+      Array.from(r.steps.children).forEach((el, i) => {
+        const open = i < this.s.step;
+        el.classList.toggle('done', open);
+        el.classList.toggle('cur', i === this.s.step - 1);
+        el.setAttribute('aria-expanded', String(open));
+        if (open) el.removeAttribute('aria-label');
+        else el.setAttribute('aria-label', `${i + 1}단계 열기`);
+        APLab.setHTML(el.children[1], open ? el.__stepHTML : '선택하면 이 단계의 풀이가 열립니다.');
+      });
+    }
+    _syncSolutionDisclosure() {
+      const section = this.refs.solution;
+      if (!section) return;
+      section.querySelectorAll('details.apl-acc[open]').forEach((detail) => {
+        const body = detail.querySelector('.apl-acc-body');
+        if (!body || !body.__solutionSource) return;
+        // Evaluate only an explanation the student already chose to open.
+        const current = JSON.stringify(call(body.__solutionSource, this.s) || {});
+        if (current !== body.__solutionSig) {
+          detail.open = false;
+          body.innerHTML = '';
+        }
+      });
     }
     _fillSolution(body, src) {
       const v = call(src, this.s) || {};
+      body.__solutionSource = src;
+      body.__solutionSig = JSON.stringify(v);
       body.innerHTML = '';
       if (v.steps) body.append(h('div', { class: 'apl-rich', html: APLab.renderMath(this._sf(v.steps, false)) }));
       const note = v.warning || v.highlight || v.note;
@@ -1002,6 +1041,7 @@
       const sc = this.scene;
       const r = this.refs;
       const s = this.s;
+      if (this._questionText && typeof sc.question === 'function') APLab.setHTML(this._questionText, APLab.renderMath(call(sc.question, s)));
       // 안내
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
       APLab.setHTML(r.guide, this._rich(guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.'));
@@ -1092,10 +1132,7 @@
       }
       if (r.steps) {
         const steps = stepsNow;
-        Array.from(r.steps.children).forEach((el, i) => {
-          el.classList.toggle('done', i < s.step);
-          el.classList.toggle('cur', i === s.step - 1);
-        });
+        this._syncReviewSteps();
         r.stepPrev.disabled = s.step <= 0;
         r.stepNext.disabled = s.step >= steps.length && !this._tabAvailable('problem');
         // 선택 사항(sc.reviewTop 을 쓰는 풀이 흐름): 단계가 바뀌면 지금 단계가 화면 안에 보이도록 페이지를 조금 옮깁니다
@@ -1110,6 +1147,7 @@
           }
         }
       }
+      this._syncSolutionDisclosure();
       const formula = v.formula;
       r.formulaSec.hidden = !formula;
       if (formula) APLab.setHTML(r.formula, this._rich(formula));
