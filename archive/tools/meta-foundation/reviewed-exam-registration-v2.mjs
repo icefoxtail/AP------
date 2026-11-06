@@ -740,7 +740,11 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     const classificationSchema = auditV3SourceDriveFlat ? "ALIVE_CANDIDATE_CLASSIFICATION_v3"
       : auditV3KeyOnly ? "CANDIDATE_CLASSIFICATION_PACKAGE_v2" : "CANDIDATE_CLASSIFICATION_v2";
     const classificationSourceId = classificationPackage?.sourceFileDriveId || classificationPackage?.sourceDriveId;
-    if (classificationPackage?.schemaVersion !== classificationSchema ||
+    // Atomic v2 Courier evidence used both v2 classification envelope names.
+    // Retain all existing source, exam, SHA, denominator and row-level parity checks.
+    const classificationSchemaMatches = classificationPackage?.schemaVersion === classificationSchema ||
+      (auditV2 && classificationPackage?.schemaVersion === "CANDIDATE_CLASSIFICATION_PACKAGE_v2");
+    if (!classificationSchemaMatches ||
         classificationPackage.examTitle !== expectedTitle ||
         (!auditV3SourceDriveFlat && ![expectedTitle, `${expectedTitle}.js`, path.basename(source)].includes(classificationPackage.sourceFileName)) ||
         classificationSourceId !== proof.sourceFileDriveId ||

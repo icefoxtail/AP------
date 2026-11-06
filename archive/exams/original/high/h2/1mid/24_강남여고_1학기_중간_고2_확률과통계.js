@@ -423,7 +423,7 @@ window.questionBank = [
   {
     "id": 10,
     "questionType": "객관식",
-    "content": "다음 조건을 만족하는 값 $\\mathrm{A}, \\mathrm{B}$에 대하여 $\\mathrm{A}+\\mathrm{B}$의 값은? [4점]\n\n${_{10}\\mathrm{C}_0} + {_{10}\\mathrm{C}_2} + {_{10}\\mathrm{C}_4} + {_{10}\\mathrm{C}_6} + {_{10}\\mathrm{C}_8} + {_{10}\\mathrm{C}_{10}} = \\mathrm{A}$\n${_{11}\\mathrm{C}_1} + {_{11}\\mathrm{C}_3} + {_{11}\\mathrm{C}_5} + {_{11}\\mathrm{C}_7} + {_{11}\\mathrm{C}_9} + {_{11}\\mathrm{C}_{11}} = \\mathrm{B}$",
+    "content": "다음 조건을 만족하는 값 $\\mathrm{A}, \\mathrm{B}$에 대하여 $\\mathrm{A}+\\mathrm{B}$의 값은? [4점]\n\n$${_{10}\\mathrm{C}_0} + {_{10}\\mathrm{C}_2} + {_{10}\\mathrm{C}_4} + {_{10}\\mathrm{C}_6} + {_{10}\\mathrm{C}_8} + {_{10}\\mathrm{C}_{10}} = \\mathrm{A}$$\n$${_{11}\\mathrm{C}_1} + {_{11}\\mathrm{C}_3} + {_{11}\\mathrm{C}_5} + {_{11}\\mathrm{C}_7} + {_{11}\\mathrm{C}_9} + {_{11}\\mathrm{C}_{11}} = \\mathrm{B}$$",
     "choices": [
       "$1430$",
       "$1436$",

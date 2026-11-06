@@ -6,6 +6,7 @@ const N = require('../archive/render-state-normalizer.js');
 const R = require('../archive/screen-runtime.js');
 const L = require('../archive/side-effect-ledger.js');
 const M = require('../archive/mathjax_render_loop.js');
+const PdfReadiness = require('../archive/archive2-pdf-readiness.js');
 const screenRuntimeAdapter = fs.readFileSync(path.join(__dirname, '..', 'archive', 'screen-runtime-adapter.js'), 'utf8');
 
 function candidate(targetSessionId, mode = 'exam', input = {}) {
@@ -206,6 +207,201 @@ test('latest wins serializes builds and never commits stale work', async () => {
     assert.equal((await next).ok, true);
     assert.equal(f.runtime.activeSnapshot.mode, 'ans');
     assert.equal(f.runtime.inspect().attempts.find(a => a.requestGeneration === 2).committed, false);
+});
+
+test('full readiness failure inside finalize restores the old view, session and snapshot before retry', async () => {
+    const f = fixture();
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const before = { ...f.state(), session: f.runtime.currentSession, snapshot: f.runtime.activeSnapshot, candidate: f.runtime.committedCandidate };
+    f.adapter.finalize = async () => { throw Error('PDF_DECODE_FAILED'); };
+    const failed = await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    assert.equal(failed.code, 'PDF_DECODE_FAILED');
+    assert.equal(f.runtime.currentSession, before.session);
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.committedCandidate, before.candidate);
+    assert.equal(f.runtime.activeSnapshot.status, 'ACTIVE');
+    assert.equal(f.state().visible, before.visible);
+    assert.equal(f.state().committed, before.committed);
+    assert.equal(f.state().effectCount, before.effectCount, 'no post-commit effects occur before full readiness');
+    assert.equal(f.runtime.inspect().attempts.at(-1).committed, false);
+    f.adapter.finalize = async () => {};
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' })).ok, true);
+});
+
+test('a newer foreground request aborts finalization and rolls back before the next transaction attaches', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const oldVisible = f.state().visible;
+    let enter, release;
+    const entered = new Promise(resolve => { enter = resolve; });
+    const hold = new Promise(resolve => { release = resolve; });
+    f.adapter.finalize = async ctx => { if (ctx.candidate.mode === 'sol') { enter(); await hold; } };
+    const capture = f.adapter.capture;
+    let nextPreviousView;
+    f.adapter.capture = ctx => { if (ctx.candidate.mode === 'ans') nextPreviousView = f.state().visible; return capture(ctx); };
+    const old = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    await entered;
+    assert.equal((await f.runtime.prewarm('ans')).code, 'PREWARM_NOT_IDLE');
+    const next = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    release();
+    assert.equal((await old).code, 'DISCARDED_STALE');
+    assert.equal((await next).ok, true);
+    assert.equal(nextPreviousView, oldVisible, 'the next transaction captures the restored healthy view');
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    assert.equal(f.runtime.inspect().attempts.find(item => item.requestGeneration === 2).committed, false);
+});
+
+test('cached foreground reuse still finalizes; background prewarm never publishes or finalizes a view', async () => {
+    const finalized = [];
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'],
+        canReuse: () => true,
+        reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount }),
+        finalize: async ctx => { finalized.push(ctx.candidate.mode); if (ctx.candidate.mode === 'sol') throw Error('CACHED_DECODE_FAILED'); }
+    });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const active = f.runtime.activeSnapshot, visible = f.state().visible;
+    assert.equal((await f.runtime.prewarm('sol')).prewarmed, true);
+    assert.deepEqual(finalized, ['exam']);
+    const cached = f.runtime.currentSession.modeSnapshots.sol;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' })).code, 'CACHED_DECODE_FAILED');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.state().visible, visible);
+    assert.equal(cached.status, 'READY');
+    assert.deepEqual(finalized, ['exam', 'sol']);
+});
+
+test('returning to the active answer cancels a pending build and revalidates the same snapshot without rebuilding', async () => {
+    const built = [], reused = [], finalized = [], cleaned = [];
+    const f = fixture({ cacheModes: ['exam', 'sol', 'ans'],
+        canReuse: snapshot => snapshot.rootNode.mode === snapshot.mode,
+        reuse: async (ctx, snapshot) => {
+            reused.push(snapshot);
+            return { rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount };
+        },
+        finalize: async ctx => { finalized.push(ctx.candidate.mode); },
+        cleanup: root => { cleaned.push(root); }
+    });
+    const build = f.adapter.build;
+    f.adapter.build = async ctx => { built.push(ctx.candidate.mode); return build(ctx); };
+    await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+    const active = f.runtime.activeSnapshot, visible = f.state().visible, session = f.runtime.currentSession;
+    let enter;
+    const entered = new Promise(resolve => { enter = resolve; });
+    f.adapter.build = async ctx => {
+        built.push(ctx.candidate.mode);
+        if (ctx.candidate.mode === 'exam') {
+            enter();
+            await new Promise((_, reject) => ctx.abortSignal.addEventListener('abort', () => reject(Error('DISCARDED_STALE')), { once: true }));
+        }
+        return build(ctx);
+    };
+    const pending = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'exam' });
+    await entered;
+    const latest = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    let timer;
+    try {
+        const result = await Promise.race([Promise.all([pending, latest]), new Promise((_, reject) => {
+            timer = setTimeout(() => reject(Error('ACTIVE_RETURN_WAITED_FOR_STALE_BUILD')), 500);
+        })]);
+        assert.equal(result[0].code, 'DISCARDED_STALE');
+        assert.equal(result[1].ok, true);
+    } finally { clearTimeout(timer); }
+    assert.deepEqual(built, ['ans', 'exam']);
+    assert.deepEqual(reused, [active]);
+    assert.deepEqual(finalized, ['ans', 'ans'], 'full readiness still runs for the reused current view');
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.runtime.currentSession, session);
+    assert.equal(f.state().visible, visible);
+    assert.equal(active.status, 'ACTIVE');
+    assert.equal(cleaned.includes(visible), false, 'self reuse cannot retire the visible root');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.inspect().attempts.at(-2).committed, false);
+});
+
+test('failed active-snapshot finalization restores ACTIVE status and retries without losing the healthy root', async () => {
+    let builds = 0, fail = false;
+    const f = fixture({ cacheModes: ['exam', 'sol', 'ans'], canReuse: () => true,
+        reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount }),
+        finalize: async () => { if (fail) throw Error('ACTIVE_PDF_DECODE_FAILED'); }
+    });
+    const build = f.adapter.build;
+    f.adapter.build = async ctx => { builds++; return build(ctx); };
+    await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+    const before = { ...f.state(), session: f.runtime.currentSession, snapshot: f.runtime.activeSnapshot, candidate: f.runtime.committedCandidate };
+    fail = true;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' })).code, 'ACTIVE_PDF_DECODE_FAILED');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.inspect().attempts.at(-1).committed, false);
+    assert.equal(f.runtime.currentSession, before.session);
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.currentSession.modeSnapshots.ans, before.snapshot);
+    assert.equal(before.snapshot.status, 'ACTIVE');
+    assert.equal(f.runtime.committedCandidate, before.candidate);
+    assert.equal(f.state().visible, before.visible);
+    assert.equal(f.state().committed, before.committed);
+    assert.equal(f.state().effectCount, before.effectCount);
+    fail = false;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' })).ok, true);
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.activeSnapshot.status, 'ACTIVE');
+    assert.equal(builds, 1);
+});
+
+for (const reason of ['changed-key', 'corrupt-root', 'font-invalidation']) {
+    test(`active snapshot reuse still rebuilds for ${reason}`, async () => {
+        let builds = 0;
+        const f = fixture({ cacheModes: ['exam', 'sol', 'ans'],
+            prepare: async (input, ctx) => {
+                const value = candidate(ctx.requestedTargetSessionId, input.mode, input);
+                return N.createCandidate({ ...value, fingerprints: { ...value.fingerprints, engine: input.engineRevision || '1' } });
+            },
+            canReuse: snapshot => !snapshot.rootNode.corrupt,
+            reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount })
+        });
+        const build = f.adapter.build;
+        f.adapter.build = async ctx => { builds++; return build(ctx); };
+        await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+        const old = f.runtime.activeSnapshot;
+        if (reason === 'corrupt-root') old.rootNode.corrupt = true;
+        const intent = reason === 'font-invalidation' ? req('FONT_INVALIDATION') : {
+            type: 'MODE_CHANGE', requestedMode: 'ans', ...(reason === 'changed-key' ? { payload: { engineRevision: '2' } } : {})
+        };
+        assert.equal((await f.runtime.request(intent)).ok, true);
+        assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'MISS');
+        assert.notEqual(f.runtime.activeSnapshot, old);
+        assert.equal(old.status, 'EVICTED');
+        assert.equal(builds, 2);
+        if (reason === 'font-invalidation') assert.equal(old.key, f.runtime.activeSnapshot.key,
+            'an invalidation intent must rebuild even if the adapter emits the same key');
+    });
+}
+
+test('a newer mode leaves a stalled finalizer decode without waiting for native completion', async () => {
+    const f = fixture();
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let entered;
+    const started = new Promise(resolve => { entered = resolve; });
+    const image = { complete: true, naturalWidth: 10, naturalHeight: 10,
+        decode() { entered(); return new Promise(() => {}); } };
+    const document = { getElementById: () => ({}), querySelectorAll: selector => selector.endsWith(' img') ? [image] : [] };
+    f.adapter.finalize = ctx => ctx.candidate.mode === 'sol' ? PdfReadiness.assertReady(null, {
+        document, window: {}, signal: ctx.abortSignal, renderOutcome: { ok: true, pages: ctx.result.pageCount }
+    }) : undefined;
+    const old = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    await started;
+    const next = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    let timer;
+    try {
+        const outcomes = await Promise.race([Promise.all([old, next]), new Promise((_, reject) => {
+            timer = setTimeout(() => reject(Error('FINALIZER_CANCELLATION_HELD_FOREGROUND')), 500);
+        })]);
+        assert.equal(outcomes[0].code, 'DISCARDED_STALE');
+        assert.equal(outcomes[1].ok, true);
+    } finally { clearTimeout(timer); }
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    assert.equal(f.runtime.inspect().attempts.find(item => item.requestGeneration === 2).committed, false);
 });
 
 test('background and invalid enums cannot execute builds or effects', async () => {

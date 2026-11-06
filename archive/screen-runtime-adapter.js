@@ -284,7 +284,7 @@ function createArchiveScreenRuntime() {
         cancelPrewarm(event?.type || 'user-input');
         if (candidate && prewarmEligible(candidate)) schedulePrewarm({ candidate });
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-solution-loading-20261106.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-loading-20261106.1', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v2' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-output-reminder-fit-20261106.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-reminder-fit-20261106.1', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v2' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
@@ -539,7 +539,7 @@ function createArchiveScreenRuntime() {
         };
         ctx.deps = {
             ...archiveExamDeps, ...archiveSolutionDeps, ...archiveAnswerDeps,
-            appState: ctx.buildState, stagingHost: ctx.stagingHost,
+            appState: ctx.buildState, stagingHost: ctx.stagingHost, abortSignal: ctx.abortSignal,
             renderQuestionImageHTML: question => renderQuestionImageHTML(question, ctx.buildState),
             renderSolutionImageHTML: question => renderSolutionImageHTML(question, ctx.buildState),
             normalizeQuestionImageSources: root => normalizeQuestionImageSources(root, ctx.buildState),

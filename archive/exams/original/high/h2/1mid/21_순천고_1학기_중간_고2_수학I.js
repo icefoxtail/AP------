@@ -13,7 +13,14 @@ window.questionBank = [
       "$\\sqrt{-16}=-4$"
     ],
     "answer": "②",
-    "solution": "짝수 제곱근은 양의 실수인 주값을 뜻하고, 홀수 제곱근은 음수도 가질 수 있습니다.\n① $\\sqrt[4]{81}=3$이므로 $-\\sqrt[4]{81}=-3$입니다. $\\pm3$이 아닙니다.\n② $(-2)^5=-32$이므로 $\\sqrt[5]{-32}=-2$입니다.\n③ $\\sqrt[3]{-27}=-3$이므로 $-\\sqrt[3]{-27}=3$입니다.\n④ $\\sqrt[6]{64}=2$로 한 값이며 $\\pm2$가 아닙니다.\n⑤ $\\sqrt{-16}$은 실수 범위에서 정의되지 않습니다.\n따라서 옳은 것은 ②입니다."
+    "solution": "짝수 제곱근은 양의 실수인 주값을 뜻하고, 홀수 제곱근은 음수도 가질 수 있습니다.\n① $\\sqrt[4]{81}=3$이므로 $-\\sqrt[4]{81}=-3$입니다. $\\pm3$이 아닙니다.\n② $(-2)^5=-32$이므로 $\\sqrt[5]{-32}=-2$입니다.\n③ $\\sqrt[3]{-27}=-3$이므로 $-\\sqrt[3]{-27}=3$입니다.\n④ $\\sqrt[6]{64}=2$로 한 값이며 $\\pm2$가 아닙니다.\n⑤ $\\sqrt{-16}$은 실수 범위에서 정의되지 않습니다.\n따라서 옳은 것은 ②입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-01",
+    "standardUnit": "지수의 뜻과 성질",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "subUnit": "지수의 뜻과 성질",
+    "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+    "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT"
   },
   {
     "id": 2,
@@ -27,7 +34,14 @@ window.questionBank = [
       "$\\sqrt[3]{8}\\times \\sqrt[3]{9}-\\sqrt{\\sqrt[3]{81}}=3^{\\frac{2}{3}}$"
     ],
     "answer": "④",
-    "solution": "① $\\sqrt{-2}\\sqrt{-3}=(i\\sqrt2)(i\\sqrt3)=-\\sqrt6$입니다(복소수 범위).\n② $\\sqrt{5^6}=5^3=125$, $\\sqrt[3]{125}=5$입니다.\n③ $\\sqrt[3]{-4}\\sqrt[3]{-2}=\\sqrt[3]{8}=2$입니다.\n④ 좌변은 $\\sqrt{(-3)^6}=\\sqrt{729}=27$입니다. 반면 우변은 $\\bigl(\\sqrt{(-3)^3}\\bigr)^2=-27$로 복소수 범위에서도 다릅니다. 실수 범위라면 우변 자체가 정의되지 않습니다.\n⑤ $\\sqrt[3]{8}\\sqrt[3]{9}-\\sqrt{\\sqrt[3]{81}}=2\\cdot3^{2/3}-3^{2/3}=3^{2/3}$입니다.\n따라서 옳지 않은 것은 ④입니다."
+    "solution": "① $\\sqrt{-2}\\sqrt{-3}=(i\\sqrt2)(i\\sqrt3)=-\\sqrt6$입니다(복소수 범위).\n② $\\sqrt{5^6}=5^3=125$, $\\sqrt[3]{125}=5$입니다.\n③ $\\sqrt[3]{-4}\\sqrt[3]{-2}=\\sqrt[3]{8}=2$입니다.\n④ 좌변은 $\\sqrt{(-3)^6}=\\sqrt{729}=27$입니다. 반면 우변은 $\\bigl(\\sqrt{(-3)^3}\\bigr)^2=-27$로 복소수 범위에서도 다릅니다. 실수 범위라면 우변 자체가 정의되지 않습니다.\n⑤ $\\sqrt[3]{8}\\sqrt[3]{9}-\\sqrt{\\sqrt[3]{81}}=2\\cdot3^{2/3}-3^{2/3}=3^{2/3}$입니다.\n따라서 옳지 않은 것은 ④입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-01",
+    "standardUnit": "지수의 뜻과 성질",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "subUnit": "지수의 뜻과 성질",
+    "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+    "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT"
   },
   {
     "id": 3,
@@ -41,7 +55,14 @@ window.questionBank = [
       "$\\log_6 3+\\log_6 2=1$"
     ],
     "answer": "④",
-    "solution": "① $5^3=125$이므로 $\\log_5 125=3$입니다.\n② $(\\tfrac12)^{-4}=16$이므로 $\\log_{1/2}16=-4$입니다.\n③ $2^{-6}=\\tfrac1{64}$이므로 $\\log_2\\tfrac1{64}=-6$입니다.\n④ $\\log_4 2=\\tfrac12$, $\\log_4 32=\\tfrac52$이므로 곱은 $\\tfrac12\\cdot\\tfrac52=\\tfrac54\\ne3$입니다.\n⑤ $\\log_6 3+\\log_6 2=\\log_6(3\\cdot2)=\\log_6 6=1$입니다.\n따라서 ④가 옳지 않습니다."
+    "solution": "① $5^3=125$이므로 $\\log_5 125=3$입니다.\n② $(\\tfrac12)^{-4}=16$이므로 $\\log_{1/2}16=-4$입니다.\n③ $2^{-6}=\\tfrac1{64}$이므로 $\\log_2\\tfrac1{64}=-6$입니다.\n④ $\\log_4 2=\\tfrac12$, $\\log_4 32=\\tfrac52$이므로 곱은 $\\tfrac12\\cdot\\tfrac52=\\tfrac54\\ne3$입니다.\n⑤ $\\log_6 3+\\log_6 2=\\log_6(3\\cdot2)=\\log_6 6=1$입니다.\n따라서 ④가 옳지 않습니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-02",
+    "standardUnit": "로그의 뜻과 성질",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "subUnit": "로그의 뜻과 성질",
+    "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+    "templateKey": "TPL_LOG_PROPERTY_JUDGMENT"
   },
   {
     "id": 4,
@@ -55,7 +76,14 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "ㄱ. 밑 $\\tfrac14$는 $0$과 $1$ 사이이므로 지수함수는 감소합니다. $-2\\le x\\le-1$에서 $x=-2$일 때 $y=(\\tfrac14)^{-1}+1=5$로 최대입니다. 따라서 '최댓값 2'는 거짓입니다.\nㄴ. $x=3$이면 $x-2=1$이므로 $y=\\log_a1+2=0+2=2$입니다. 밑의 조건을 만족하는 모든 $a$에 대해 참입니다.\nㄷ. $x+10$은 $1$부터 $100$까지이므로 $\\log(x+10)$은 $0$ 이상입니다. $x=-9$에서 $y=\\log1-4=-4$로 최소입니다.\nㄹ. $\\log x^2$는 $x\\ne0$에서 정의되지만 $2\\log x$는 $x>0$에서만 정의됩니다. 정의역이 달라 두 그래프는 같지 않습니다.\n참인 것은 ㄴ, ㄷ이므로 ②입니다."
+    "solution": "ㄱ. 밑 $\\tfrac14$는 $0$과 $1$ 사이이므로 지수함수는 감소합니다. $-2\\le x\\le-1$에서 $x=-2$일 때 $y=(\\tfrac14)^{-1}+1=5$로 최대입니다. 따라서 '최댓값 2'는 거짓입니다.\nㄴ. $x=3$이면 $x-2=1$이므로 $y=\\log_a1+2=0+2=2$입니다. 밑의 조건을 만족하는 모든 $a$에 대해 참입니다.\nㄷ. $x+10$은 $1$부터 $100$까지이므로 $\\log(x+10)$은 $0$ 이상입니다. $x=-9$에서 $y=\\log1-4=-4$로 최소입니다.\nㄹ. $\\log x^2$는 $x\\ne0$에서 정의되지만 $2\\log x$는 $x>0$에서만 정의됩니다. 정의역이 달라 두 그래프는 같지 않습니다.\n참인 것은 ㄴ, ㄷ이므로 ②입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-04",
+    "standardUnit": "로그함수",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+    "subUnit": "로그함수의 그래프",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
   },
   {
     "id": 5,
@@ -69,7 +97,14 @@ window.questionBank = [
       "$f(x^n)=\\{f(x)\\}^n$"
     ],
     "answer": "③",
-    "solution": "$f(x)=\\log_2x$의 정의역은 $x>0$입니다.\n① $f(1)=\\log_2 1=0$이므로 거짓입니다.\n② 로그에는 덧셈을 곱으로 바꾸는 법칙이 없습니다. 예를 들어 $x=y=2$이면 $f(4)=2$이지만 $f(2)f(2)=1$입니다.\n③ $x,y>0$일 때 $f(xy)=\\log_2(xy)=\\log_2x+\\log_2y=f(x)+f(y)$로 항상 참입니다.\n④ $f(1/x)=-f(x)$이지 $1/f(x)$가 아닙니다.\n⑤ $f(x^n)=n f(x)$이지 $f(x)^n$이 아닙니다(정의되는 범위).\n따라서 ③입니다."
+    "solution": "$f(x)=\\log_2x$의 정의역은 $x>0$입니다.\n① $f(1)=\\log_2 1=0$이므로 거짓입니다.\n② 로그에는 덧셈을 곱으로 바꾸는 법칙이 없습니다. 예를 들어 $x=y=2$이면 $f(4)=2$이지만 $f(2)f(2)=1$입니다.\n③ $x,y>0$일 때 $f(xy)=\\log_2(xy)=\\log_2x+\\log_2y=f(x)+f(y)$로 항상 참입니다.\n④ $f(1/x)=-f(x)$이지 $1/f(x)$가 아닙니다.\n⑤ $f(x^n)=n f(x)$이지 $f(x)^n$이 아닙니다(정의되는 범위).\n따라서 ③입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-02",
+    "standardUnit": "로그의 뜻과 성질",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "subUnit": "로그의 뜻과 성질",
+    "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+    "templateKey": "TPL_LOG_PROPERTY_JUDGMENT"
   },
   {
     "id": 6,
@@ -83,7 +118,14 @@ window.questionBank = [
       "5.8"
     ],
     "answer": "①",
-    "solution": "올해의 수소 이온 농도를 $H$라 하면 $4.7=-\\log H$입니다.\n10년 뒤 농도는 $H/2$이므로\n$\\mathrm{pH}_{10}=-\\log(H/2)=-\\log H+\\log2$입니다.\n$=4.7+0.3=5.0$입니다.\n농도가 절반으로 감소하면 pH는 $0.3$만큼 증가하므로 ①입니다."
+    "solution": "올해의 수소 이온 농도를 $H$라 하면 $4.7=-\\log H$입니다.\n10년 뒤 농도는 $H/2$이므로\n$\\mathrm{pH}_{10}=-\\log(H/2)=-\\log H+\\log2$입니다.\n$=4.7+0.3=5.0$입니다.\n농도가 절반으로 감소하면 pH는 $0.3$만큼 증가하므로 ①입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-02",
+    "standardUnit": "로그의 뜻과 성질",
+    "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+    "subUnit": "지수와 로그의 활용",
+    "problemTypeKey": "PT_LOG_APPLICATION",
+    "templateKey": "TPL_LOG_PH_CONCENTRATION_RATIO_SHIFT"
   },
   {
     "id": 7,
@@ -97,7 +139,14 @@ window.questionBank = [
       "$-\\frac{11}{6}\\pi$"
     ],
     "answer": "③",
-    "solution": "동경의 위치는 $360^\\circ$의 정수배를 더하거나 빼도 같습니다.\n① $-690^\\circ+720^\\circ=30^\\circ$입니다.\n② $750^\\circ-720^\\circ=30^\\circ$입니다.\n③ $330^\\circ$는 그대로 $330^\\circ$입니다.\n④ $\\frac{13\\pi}{6}=390^\\circ$, $390^\\circ-360^\\circ=30^\\circ$입니다.\n⑤ $-\\frac{11\\pi}{6}=-330^\\circ$, $-330^\\circ+360^\\circ=30^\\circ$입니다.\n다른 위치는 ③입니다."
+    "solution": "동경의 위치는 $360^\\circ$의 정수배를 더하거나 빼도 같습니다.\n① $-690^\\circ+720^\\circ=30^\\circ$입니다.\n② $750^\\circ-720^\\circ=30^\\circ$입니다.\n③ $330^\\circ$는 그대로 $330^\\circ$입니다.\n④ $\\frac{13\\pi}{6}=390^\\circ$, $390^\\circ-360^\\circ=30^\\circ$입니다.\n⑤ $-\\frac{11\\pi}{6}=-330^\\circ$, $-330^\\circ+360^\\circ=30^\\circ$입니다.\n다른 위치는 ③입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "standardUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT"
   },
   {
     "id": 8,
@@ -111,7 +160,14 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "$s=\\sin\\theta$, $c=\\cos\\theta$라 두면 $s+c=\\tfrac12$입니다.\n$(s+c)^2=s^2+c^2+2sc$에서 $\\tfrac14=1+2sc$, 따라서 $sc=-\\tfrac38$입니다.\n$(s-c)^2=s^2+c^2-2sc=1+\\tfrac34=\\tfrac74$입니다.\n$\\frac{3\\pi}{2}<\\theta<2\\pi$이므로 $s<0<c$이고 $s-c=-\\tfrac{\\sqrt7}{2}$입니다.\n$s^3-c^3=(s-c)(s^2+sc+c^2)=(s-c)(1+sc)$\n$=-\\tfrac{\\sqrt7}{2}(1-\\tfrac38)=-\\tfrac{5\\sqrt7}{16}$입니다.\n따라서 $a=-5$, $b=7$, $a+b=2$이므로 ①입니다."
+    "solution": "$s=\\sin\\theta$, $c=\\cos\\theta$라 두면 $s+c=\\tfrac12$입니다.\n$(s+c)^2=s^2+c^2+2sc$에서 $\\tfrac14=1+2sc$, 따라서 $sc=-\\tfrac38$입니다.\n$(s-c)^2=s^2+c^2-2sc=1+\\tfrac34=\\tfrac74$입니다.\n$\\frac{3\\pi}{2}<\\theta<2\\pi$이므로 $s<0<c$이고 $s-c=-\\tfrac{\\sqrt7}{2}$입니다.\n$s^3-c^3=(s-c)(s^2+sc+c^2)=(s-c)(1+sc)$\n$=-\\tfrac{\\sqrt7}{2}(1-\\tfrac38)=-\\tfrac{5\\sqrt7}{16}$입니다.\n따라서 $a=-5$, $b=7$, $a+b=2$이므로 ①입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "standardUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+    "subUnit": "삼각함수의 관계",
+    "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+    "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY"
   },
   {
     "id": 9,
@@ -125,7 +181,14 @@ window.questionBank = [
       "-2"
     ],
     "answer": "④",
-    "solution": "삼각함수의 각 변환을 하나씩 적용합니다.\n$\\sin(\\pi-\\theta)=\\sin\\theta$,\n$\\cos(\\tfrac{3\\pi}{2}-\\theta)=-\\sin\\theta$,\n$\\cos(\\pi+\\theta)=-\\cos\\theta$,\n$\\sin(\\tfrac\\pi2-\\theta)=\\cos\\theta$입니다.\n따라서 원래 식은\n$\\sin\\theta(-\\sin\\theta)+(-\\cos\\theta)\\cos\\theta$\n$=-\\sin^2\\theta-\\cos^2\\theta=-1$입니다.\n정답은 ④입니다."
+    "solution": "삼각함수의 각 변환을 하나씩 적용합니다.\n$\\sin(\\pi-\\theta)=\\sin\\theta$,\n$\\cos(\\tfrac{3\\pi}{2}-\\theta)=-\\sin\\theta$,\n$\\cos(\\pi+\\theta)=-\\cos\\theta$,\n$\\sin(\\tfrac\\pi2-\\theta)=\\cos\\theta$입니다.\n따라서 원래 식은\n$\\sin\\theta(-\\sin\\theta)+(-\\cos\\theta)\\cos\\theta$\n$=-\\sin^2\\theta-\\cos^2\\theta=-1$입니다.\n정답은 ④입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "standardUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+    "subUnit": "삼각함수의 관계",
+    "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+    "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION"
   },
   {
     "id": 10,
@@ -139,7 +202,14 @@ window.questionBank = [
       "$5\\pi$"
     ],
     "answer": "③",
-    "solution": "$t=2x$라 두면 $0\\le t<4\\pi$이고 $\\sin t=\\tfrac34$입니다.\n$0<\\alpha<\\tfrac\\pi2$, $\\sin\\alpha=\\tfrac34$라 하면 한 주기의 해는 $t=\\alpha,\\pi-\\alpha$입니다.\n두 주기에 걸친 네 해는 $\\alpha,\\pi-\\alpha,2\\pi+\\alpha,3\\pi-\\alpha$입니다.\n$t$의 합은 $6\\pi$이므로 $x$의 합은 $\\tfrac{6\\pi}{2}=3\\pi$입니다.\n정답은 ③입니다."
+    "solution": "$t=2x$라 두면 $0\\le t<4\\pi$이고 $\\sin t=\\tfrac34$입니다.\n$0<\\alpha<\\tfrac\\pi2$, $\\sin\\alpha=\\tfrac34$라 하면 한 주기의 해는 $t=\\alpha,\\pi-\\alpha$입니다.\n두 주기에 걸친 네 해는 $\\alpha,\\pi-\\alpha,2\\pi+\\alpha,3\\pi-\\alpha$입니다.\n$t$의 합은 $6\\pi$이므로 $x$의 합은 $\\tfrac{6\\pi}{2}=3\\pi$입니다.\n정답은 ③입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-07",
+    "standardUnit": "삼각방정식과 삼각부등식",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+    "subUnit": "삼각방정식",
+    "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+    "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS"
   },
   {
     "id": 11,
@@ -153,7 +223,14 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "$\\sqrt[n]{x^m}=x^{m/n}$을 모든 정수 $m$과 $n\\ge2$에 대해 실수로 정의하려면 $x>0$이어야 합니다.\n$x>0$에서는 실수 지수의 성질에 따라 두 식이 같습니다.\n$a=0$이면 $x>a$가 바로 $x>0$이므로 성립하고, $a=1,2,3$도 성립합니다.\n그러나 $a=-1$이면 $x=-\\tfrac12$도 $x>a$를 만족합니다. 이때 $m=1,n=2$를 택하면 $\\sqrt{x}$는 실수가 아닙니다.\n따라서 적절하지 않은 것은 ①입니다."
+    "solution": "$\\sqrt[n]{x^m}=x^{m/n}$을 모든 정수 $m$과 $n\\ge2$에 대해 실수로 정의하려면 $x>0$이어야 합니다.\n$x>0$에서는 실수 지수의 성질에 따라 두 식이 같습니다.\n$a=0$이면 $x>a$가 바로 $x>0$이므로 성립하고, $a=1,2,3$도 성립합니다.\n그러나 $a=-1$이면 $x=-\\tfrac12$도 $x>a$를 만족합니다. 이때 $m=1,n=2$를 택하면 $\\sqrt{x}$는 실수가 아닙니다.\n따라서 적절하지 않은 것은 ①입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-01",
+    "standardUnit": "지수의 뜻과 성질",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "subUnit": "지수의 뜻과 성질",
+    "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+    "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT"
   },
   {
     "id": 12,
@@ -167,7 +244,14 @@ window.questionBank = [
       "$-2 < a \\le 2$"
     ],
     "answer": "⑤",
-    "solution": "로그의 진수 조건은 $2x^2-8>0$, $x+a>0$입니다.\n$\\log_4(2x^2-8)=\\log_2(x+a)$에서\n$\\tfrac12\\log_2(2x^2-8)=\\log_2(x+a)$이므로\n$\\sqrt{2x^2-8}=x+a$입니다.\n양변을 제곱하면 $2x^2-8=(x+a)^2$, 즉 $x^2-2ax-a^2-8=0$입니다.\n따라서 후보는 $x=a\\pm\\sqrt{2a^2+8}$입니다.\n$+$ 후보의 $x+a=2a+\\sqrt{2a^2+8}>0$ 조건은 $a>-2$일 때 성립합니다.\n$-$ 후보의 $x+a=2a-\\sqrt{2a^2+8}>0$ 조건은 $a>2$일 때만 성립합니다.\n$a=-2$ 또는 $a=2$의 경계에서 해당 후보는 $x+a=0$이므로 제외합니다.\n따라서 실근이 정확히 하나인 범위는 $-2<a\\le2$이고, 정답은 ⑤입니다."
+    "solution": "로그의 진수 조건은 $2x^2-8>0$, $x+a>0$입니다.\n$\\log_4(2x^2-8)=\\log_2(x+a)$에서\n$\\tfrac12\\log_2(2x^2-8)=\\log_2(x+a)$이므로\n$\\sqrt{2x^2-8}=x+a$입니다.\n양변을 제곱하면 $2x^2-8=(x+a)^2$, 즉 $x^2-2ax-a^2-8=0$입니다.\n따라서 후보는 $x=a\\pm\\sqrt{2a^2+8}$입니다.\n$+$ 후보의 $x+a=2a+\\sqrt{2a^2+8}>0$ 조건은 $a>-2$일 때 성립합니다.\n$-$ 후보의 $x+a=2a-\\sqrt{2a^2+8}>0$ 조건은 $a>2$일 때만 성립합니다.\n$a=-2$ 또는 $a=2$의 경계에서 해당 후보는 $x+a=0$이므로 제외합니다.\n따라서 실근이 정확히 하나인 범위는 $-2<a\\le2$이고, 정답은 ⑤입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-04",
+    "standardUnit": "로그함수",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+    "subUnit": "로그함수의 활용",
+    "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+    "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER"
   },
   {
     "id": 13,
@@ -181,7 +265,14 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "거듭제곱의 지수를 자연수 $r$이라 두어 $a=12^r$로 나타냅니다. $b$는 $36$의 양의 거듭제곱근이므로 어떤 자연수 $s\\ge2$에 대하여 $b=\\sqrt[s]{36}=36^{1/s}$입니다. 또한 $c=3^n$입니다.\n$12=2^2\\cdot3$, $36=2^2\\cdot3^2$, $64=2^6$이므로\n$ab^2=(12^r)(36^{1/s})^2=2^{2r}3^r\\cdot2^{4/s}3^{4/s}=2^{2r+4/s}3^{r+4/s}=2^6\\cdot3^n$입니다.\n양변을 알맞게 거듭제곱하여 소인수분해를 비교하면 $2r+\\frac4s=6$, $r+\\frac4s=n$을 얻습니다.\n첫째 식에서 $2rs+4=6s$, 즉 $(3-r)s=2$입니다. $r$은 자연수이고 $s\\ge2$이므로 $3-r=1$, $s=2$, $r=2$입니다.\n따라서 $n=r+\\frac4s=2+\\frac42=4$이므로 정답은 ③입니다."
+    "solution": "거듭제곱의 지수를 자연수 $r$이라 두어 $a=12^r$로 나타냅니다. $b$는 $36$의 양의 거듭제곱근이므로 어떤 자연수 $s\\ge2$에 대하여 $b=\\sqrt[s]{36}=36^{1/s}$입니다. 또한 $c=3^n$입니다.\n$12=2^2\\cdot3$, $36=2^2\\cdot3^2$, $64=2^6$이므로\n$ab^2=(12^r)(36^{1/s})^2=2^{2r}3^r\\cdot2^{4/s}3^{4/s}=2^{2r+4/s}3^{r+4/s}=2^6\\cdot3^n$입니다.\n양변을 알맞게 거듭제곱하여 소인수분해를 비교하면 $2r+\\frac4s=6$, $r+\\frac4s=n$을 얻습니다.\n첫째 식에서 $2rs+4=6s$, 즉 $(3-r)s=2$입니다. $r$은 자연수이고 $s\\ge2$이므로 $3-r=1$, $s=2$, $r=2$입니다.\n따라서 $n=r+\\frac4s=2+\\frac42=4$이므로 정답은 ③입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-01",
+    "standardUnit": "지수의 뜻과 성질",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "subUnit": "지수의 뜻과 성질",
+    "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+    "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT"
   },
   {
     "id": 14,
@@ -195,7 +286,14 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": "$y=2^x-3$은 $x=\\log_2 3$에서 $x$축과 만납니다.\n$y=-\\log(x-3)+1$의 수직점근선은 $x=3$입니다. 이 점근선과 $x$축, 곡선 $y=2^x-3$이 만드는 닫힌 영역을 셉니다.\n$\\log_2 3\\approx1.585$이므로 정수 $x$는 $2$ 또는 $3$입니다.\n$x=2$일 때 $0\\le y\\le2^2-3=1$이므로 정수 $y=0,1$의 2개입니다.\n$x=3$일 때 $0\\le y\\le2^3-3=5$이므로 정수 $y=0,1,2,3,4,5$의 6개입니다.\n합하면 $2+6=8$개이므로 ②입니다."
+    "solution": "$y=2^x-3$은 $x=\\log_2 3$에서 $x$축과 만납니다.\n$y=-\\log(x-3)+1$의 수직점근선은 $x=3$입니다. 이 점근선과 $x$축, 곡선 $y=2^x-3$이 만드는 닫힌 영역을 셉니다.\n$\\log_2 3\\approx1.585$이므로 정수 $x$는 $2$ 또는 $3$입니다.\n$x=2$일 때 $0\\le y\\le2^2-3=1$이므로 정수 $y=0,1$의 2개입니다.\n$x=3$일 때 $0\\le y\\le2^3-3=5$이므로 정수 $y=0,1,2,3,4,5$의 6개입니다.\n합하면 $2+6=8$개이므로 ②입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-03",
+    "standardUnit": "지수함수",
+    "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+    "subUnit": "지수함수의 활용",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE"
   },
   {
     "id": 15,
@@ -209,7 +307,14 @@ window.questionBank = [
       "12"
     ],
     "answer": "①",
-    "solution": "$t=3^x$로 놓으면 실수 $x$에 대해 $t>0$이고, $9^x=t^2$, $2\\times3^{x+1}=6t$입니다.\n$t^2-6t+k+10=0$, 즉 $(t-3)^2=-k-1$이므로\n$t=3\\pm\\sqrt{-k-1}$입니다.\n서로 다른 두 실근 $x$가 있으려면 서로 다른 두 양의 $t$가 있어야 합니다.\n따라서 $0<\\sqrt{-k-1}<3$이고, 이를 제곱하면 $0<-k-1<9$입니다.\n즉 $-10<k<-1$이므로 정수 $k$는 $-9,-8,-7,-6,-5,-4,-3,-2$의 8개입니다. 정답은 ①입니다."
+    "solution": "$t=3^x$로 놓으면 실수 $x$에 대해 $t>0$이고, $9^x=t^2$, $2\\times3^{x+1}=6t$입니다.\n$t^2-6t+k+10=0$, 즉 $(t-3)^2=-k-1$이므로\n$t=3\\pm\\sqrt{-k-1}$입니다.\n서로 다른 두 실근 $x$가 있으려면 서로 다른 두 양의 $t$가 있어야 합니다.\n따라서 $0<\\sqrt{-k-1}<3$이고, 이를 제곱하면 $0<-k-1<9$입니다.\n즉 $-10<k<-1$이므로 정수 $k$는 $-9,-8,-7,-6,-5,-4,-3,-2$의 8개입니다. 정답은 ①입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-03",
+    "standardUnit": "지수함수",
+    "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+    "subUnit": "지수함수의 활용",
+    "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+    "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS"
   },
   {
     "id": 16,
@@ -227,7 +332,14 @@ window.questionBank = [
     "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q16-solution.svg",
     "solutionImageAlt": "반지름 r에 대한 넓이 S=5r-r^2의 그래프: r=5/2에서 최댓값 25/4",
     "solutionImageCaption": "반지름 r에 대한 넓이 S=5r-r^2의 그래프: r=5/2에서 최댓값 25/4",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "standardUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+    "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA"
   },
   {
     "id": 17,
@@ -241,12 +353,19 @@ window.questionBank = [
       "$\\frac{26}{3}$"
     ],
     "answer": "②",
-    "solution": "원본 그래프에서 최댓값은 $6$, 최솟값은 $2$입니다.\n$a>0$이므로 진폭 $a=\\tfrac{6-2}{2}=2$, 중심선 $c=\\tfrac{6+2}{2}=4$입니다.\n최대점 $x=0$에서 다음 최대점 $x=6\\pi$까지가 한 주기이므로 $T=6\\pi$입니다.\n$T=\\tfrac{2\\pi}{|b|}$에서 $|b|=\\tfrac13$이고 $b=\\pm\\tfrac13$입니다.\n$ac+b=2\\cdot4+b=8+b$이므로 작은 값을 주는 $b=-\\tfrac13$을 택합니다.\n최솟값은 $8-\\tfrac13=\\tfrac{23}{3}$이므로 ②입니다."
+    "solution": "원본 그래프에서 최댓값은 $6$, 최솟값은 $2$입니다.\n$a>0$이므로 진폭 $a=\\tfrac{6-2}{2}=2$, 중심선 $c=\\tfrac{6+2}{2}=4$입니다.\n최대점 $x=0$에서 다음 최대점 $x=6\\pi$까지가 한 주기이므로 $T=6\\pi$입니다.\n$T=\\tfrac{2\\pi}{|b|}$에서 $|b|=\\tfrac13$이고 $b=\\pm\\tfrac13$입니다.\n$ac+b=2\\cdot4+b=8+b$이므로 작은 값을 주는 $b=-\\tfrac13$을 택합니다.\n최솟값은 $8-\\tfrac13=\\tfrac{23}{3}$이므로 ②입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "standardUnit": "삼각함수의 그래프",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH"
   },
   {
     "id": 18,
     "questionType": "객관식",
-    "content": "좌표평면 위에 중심이 원점 $\\mathrm{O}$이고 반지름의 길이가 $2$인 원이 있다. 각 $\\theta$가 나타내는 동경과 원이 만나는 점의 좌표를 $\\mathrm{A}(a, b)$라 하자.\n$$\\tan\\left(\\frac{3}{2}\\pi+\\theta\\right)=\\frac{3}{4},\\ \\cos(-\\theta)>0$$\n일 때, $a-b$의 값은? [4.6점]",
+    "content": "좌표평면 위에 중심이 원점 $\\mathrm{O}$이고 반지름의 길이가 $2$인 원이 있다. 각 $\\theta$가 나타내는 동경과 원이 만나는 점의 좌표를 $\\mathrm{A}(a, b)$라 하자.\n$\\tan\\left(\\frac{3}{2}\\pi+\\theta\\right)=\\frac{3}{4},\\ \\cos(-\\theta)>0$\n일 때, $a-b$의 값은? [4.6점]",
     "choices": [
       "$-\\frac{2}{5}$",
       "$\\frac{2}{5}$",
@@ -255,12 +374,19 @@ window.questionBank = [
       "$\\frac{14}{5}$"
     ],
     "answer": "⑤",
-    "solution": "$\\tan(\\tfrac{3\\pi}{2}+\\theta)=\\tan(\\tfrac\\pi2+\\theta)=-\\cot\\theta=\\tfrac34$입니다.\n따라서 $\\tan\\theta=-\\tfrac43$입니다.\n$\\cos(-\\theta)=\\cos\\theta>0$이고 탄젠트가 음수이므로 $\\theta$의 동경은 제4사분면입니다.\n$3:4:5$ 직각삼각형 비로 $\\cos\\theta=\\tfrac35$, $\\sin\\theta=-\\tfrac45$입니다.\n반지름이 $2$이므로 $a=2\\cos\\theta=\\tfrac65$, $b=2\\sin\\theta=-\\tfrac85$입니다.\n$a-b=\\tfrac65-(-\\tfrac85)=\\tfrac{14}{5}$이므로 ⑤입니다."
+    "solution": "$\\tan(\\tfrac{3\\pi}{2}+\\theta)=\\tan(\\tfrac\\pi2+\\theta)=-\\cot\\theta=\\tfrac34$입니다.\n따라서 $\\tan\\theta=-\\tfrac43$입니다.\n$\\cos(-\\theta)=\\cos\\theta>0$이고 탄젠트가 음수이므로 $\\theta$의 동경은 제4사분면입니다.\n$3:4:5$ 직각삼각형 비로 $\\cos\\theta=\\tfrac35$, $\\sin\\theta=-\\tfrac45$입니다.\n반지름이 $2$이므로 $a=2\\cos\\theta=\\tfrac65$, $b=2\\sin\\theta=-\\tfrac85$입니다.\n$a-b=\\tfrac65-(-\\tfrac85)=\\tfrac{14}{5}$이므로 ⑤입니다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "standardUnit": "삼각함수의 뜻과 값",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "subUnit": "삼각함수의 뜻과 값",
+    "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+    "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
   },
   {
     "id": 19,
     "questionType": "객관식",
-    "content": "보기에서 임의의 실수 $x$에 대하여\n$$f(x)=f(-x),\\ f(2+x)=f(2-x)$$\n를 만족시키는 함수만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)$\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)$\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{1}{2}\\pi\\right)\\right|$ [4.8점]",
+    "content": "보기에서 임의의 실수 $x$에 대하여\n$f(x)=f(-x),\\ f(2+x)=f(2-x)$\n를 만족시키는 함수만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)$\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)$\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{1}{2}\\pi\\right)\\right|$ [4.8점]",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -269,7 +395,14 @@ window.questionBank = [
       "ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "조건은 임의의 실수 $x$에 대하여 두 등식이 성립해야 한다는 뜻이다. 먼저 $f(x)=f(-x)$는 짝함수 조건이고, $f(2+x)=f(2-x)$는 직선 $x=2$에 대한 대칭 조건이다.\n\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)=-\\sin\\frac{\\pi x}{2}$이다.\n$f(-x)=\\sin\\frac{\\pi x}{2}$이므로 일반적으로 $f(-x)\\ne f(x)$이다. 따라서 ㄱ은 아니다.\n\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)=-2\\cos\\pi x$이다.\n$f(-x)=-2\\cos(-\\pi x)=-2\\cos\\pi x=f(x)$이다.\n또한 $f(2+x)=-2\\cos(2\\pi+\\pi x)=-2\\cos\\pi x$,\n$f(2-x)=-2\\cos(2\\pi-\\pi x)=-2\\cos\\pi x$이므로 두 조건을 모두 만족한다.\n\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{\\pi}{2}\\right)\\right|$는 $x$가 정수이면 탄젠트가 정의되지 않는다. 따라서 임의의 실수 $x$ 전체에 대해 값을 갖는 함수로서 주어진 조건을 만족한다고 할 수 없다.\n\n그러므로 ㄴ만 옳아 정답은 ②이다."
+    "solution": "조건은 임의의 실수 $x$에 대하여 두 등식이 성립해야 한다는 뜻이다. 먼저 $f(x)=f(-x)$는 짝함수 조건이고, $f(2+x)=f(2-x)$는 직선 $x=2$에 대한 대칭 조건이다.\n\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)=-\\sin\\frac{\\pi x}{2}$이다.\n$f(-x)=\\sin\\frac{\\pi x}{2}$이므로 일반적으로 $f(-x)\\ne f(x)$이다. 따라서 ㄱ은 아니다.\n\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)=-2\\cos\\pi x$이다.\n$f(-x)=-2\\cos(-\\pi x)=-2\\cos\\pi x=f(x)$이다.\n또한 $f(2+x)=-2\\cos(2\\pi+\\pi x)=-2\\cos\\pi x$,\n$f(2-x)=-2\\cos(2\\pi-\\pi x)=-2\\cos\\pi x$이므로 두 조건을 모두 만족한다.\n\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{\\pi}{2}\\right)\\right|$는 $x$가 정수이면 탄젠트가 정의되지 않는다. 따라서 임의의 실수 $x$ 전체에 대해 값을 갖는 함수로서 주어진 조건을 만족한다고 할 수 없다.\n\n그러므로 ㄴ만 옳아 정답은 ②이다.",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "standardUnit": "삼각함수의 그래프",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY"
   },
   {
     "id": 20,
@@ -282,7 +415,7 @@ window.questionBank = [
     "level": "중",
     "category": "삼각함수의 그래프",
     "originalCategory": "삼각함수의 그래프",
-    "standardCourse": "수학Ⅰ",
+    "standardCourse": "수학I",
     "standardUnitKey": "H15-M1-06",
     "standardUnit": "삼각함수의 그래프",
     "standardUnitOrder": 6,
@@ -297,7 +430,9 @@ window.questionBank = [
     ],
     "wide": false,
     "solutionImageAlt": "함수 y=2cos(x/2-π)+1의 실제 x축(y=0), 최댓값 3, 최솟값 -1과 주기 4π를 나타낸 그래프",
-    "solutionImageCaption": "x축은 y=0이며 x=0,π,2π,3π,4π에서의 함숫값은 차례로 -1,1,3,1,-1이다."
+    "solutionImageCaption": "x축은 y=0이며 x=0,π,2π,3π,4π에서의 함숫값은 차례로 -1,1,3,1,-1이다.",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
   },
   {
     "id": 21,
@@ -309,7 +444,7 @@ window.questionBank = [
     "level": "중",
     "category": "로그의 뜻과 성질",
     "originalCategory": "로그의 뜻과 성질",
-    "standardCourse": "수학Ⅰ",
+    "standardCourse": "수학I",
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
@@ -321,6 +456,8 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "wide": false
+    "wide": false,
+    "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+    "templateKey": "TPL_LOG_PROPERTY_JUDGMENT"
   }
 ];

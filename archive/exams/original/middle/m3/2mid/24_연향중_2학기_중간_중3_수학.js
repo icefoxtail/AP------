@@ -31,7 +31,12 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "primaryMethod": "직각삼각형에서 각 C의 이웃변과 빗변을 확인하여 코사인 정의 적용",
+    "decisiveStep": "BC=3은 이웃변이고 AC=5는 빗변이므로 cos C=3/5"
   },
   {
     "id": 2,
@@ -61,7 +66,12 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "primaryMethod": "특수각 삼각비의 정확한 값을 선택지별로 대입해 참·거짓을 판정",
+    "decisiveStep": "②의 두 항이 각각 1/2이므로 합이 1이며 다른 선택지의 등식은 성립하지 않음"
   },
   {
     "id": 3,

@@ -55,8 +55,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "primaryMethod": "제곱근의 정의와 제곱 성질로 주어진 명제들의 참·거짓을 판별한다.",
-    "decisiveStep": "음수의 실수 제곱근은 없고, 제곱근의 제곱 성질로 $(-\\sqrt{7})^2=7$이므로 ⑤만 참이다."
+    "primaryMethod": "제곱근의 정의와 음수의 실수 제곱근 존재 여부를 선택지별로 확인",
+    "decisiveStep": "(-√7)²=7은 참이고, 나머지 선택지는 0의 제곱근·양의 제곱근·음수·분수 제곱근 성질에 위배"
   },
   {
     "id": 2,
@@ -393,8 +393,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png",
-    "primaryMethod": "피타고라스 정리로 정사각형의 대각선 길이를 구하여 수직선 위의 점에 대응하는 수를 결정한다.",
-    "decisiveStep": "한 변이 1인 정사각형에서 $AC=\\sqrt{1^2+1^2}=\\sqrt2$이고 $CP=AC$이므로 $P$는 $1+\\sqrt2$에 대응한다."
+    "primaryMethod": "정사각형의 대각선에 피타고라스 정리를 적용한 뒤 같은 길이를 수직선 위로 옮겨 좌표 결정",
+    "decisiveStep": "AC=√(1²+1²)=√2, CP=AC이므로 C의 좌표 1에서 오른쪽으로 √2만큼 이동하여 P=1+√2"
   },
   {
     "id": 8,
