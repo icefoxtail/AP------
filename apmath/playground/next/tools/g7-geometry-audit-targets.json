@@ -1,0 +1,464 @@
+{
+  "g7-points-lines": [
+    {
+      "id": "l-common",
+      "params": {
+        "lcs": 0
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "rays-0"
+    },
+    {
+      "id": "l-common",
+      "params": {
+        "lcs": 1
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "rays-1"
+    },
+    {
+      "id": "l-common",
+      "params": {
+        "lcs": 2
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "rays-2"
+    },
+    {
+      "id": "l-common",
+      "params": {
+        "lcs": 3
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "rays-3"
+    },
+    {
+      "id": "l-same",
+      "tab": "problem",
+      "step": 0
+    },
+    {
+      "id": "m-dbl",
+      "params": {
+        "dL": 12,
+        "plSeed": 1
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "inverse-midpoint"
+    },
+    {
+      "id": "m-tri",
+      "params": {
+        "tL": 18,
+        "plSeed": 1
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "inverse-thirds"
+    },
+    {
+      "id": "ve",
+      "params": {
+        "ve_x": 8,
+        "ve_seed": 0
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "vertical-angles"
+    },
+    {
+      "id": "vt",
+      "params": {
+        "vt_n": 6,
+        "vt_seed": 2
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "two-lines"
+    },
+    {
+      "id": "bs",
+      "params": {
+        "bs_T": 120,
+        "bs_g": 45
+      },
+      "tab": "problem",
+      "step": 0
+    },
+    {
+      "id": "pd",
+      "params": {
+        "pd_px": 2,
+        "pd_q": 4,
+        "pd_d": 5
+      },
+      "tab": "explore",
+      "label": "perpendicular"
+    },
+    {
+      "id": "ck2",
+      "params": {
+        "ck2_h": 9,
+        "ck2_m": 0
+      },
+      "tab": "explore",
+      "label": "clock"
+    }
+  ],
+  "g7-spatial": [
+    {
+      "id": "s1-6",
+      "params": {
+        "spRef": "AB",
+        "spYaw": -30,
+        "spPitch": 24
+      },
+      "tab": "explore",
+      "label": "fixed-0"
+    },
+    {
+      "id": "s1-7",
+      "params": {
+        "spN": 8,
+        "spRef": "t0",
+        "spTgt": "s3",
+        "spYaw": -30,
+        "spPitch": 24
+      },
+      "tab": "explore",
+      "label": "fixed-1"
+    },
+    {
+      "id": "s2-1",
+      "params": {
+        "spP1a": 0,
+        "spP1b": 0.5
+      },
+      "tab": "explore",
+      "label": "fixed-2"
+    },
+    {
+      "id": "s2-3",
+      "params": {
+        "spP3a": 0.5,
+        "spP3b": 0.01
+      },
+      "tab": "explore",
+      "label": "fixed-3"
+    },
+    {
+      "id": "s2-5",
+      "params": {
+        "spP5a": 0.5,
+        "spP5b": 0.01
+      },
+      "tab": "explore",
+      "label": "fixed-4"
+    },
+    {
+      "id": "s2-6",
+      "params": {
+        "spP6a": 0.01,
+        "spP6b": 0.2
+      },
+      "tab": "explore",
+      "label": "fixed-5"
+    },
+    {
+      "id": "s3-1",
+      "params": {
+        "spCd": 0.05,
+        "spTh": 0
+      },
+      "tab": "explore",
+      "label": "fixed-6"
+    },
+    {
+      "id": "s3-1",
+      "params": {
+        "spCd": 0,
+        "spTh": 75
+      },
+      "tab": "explore",
+      "label": "fixed-7"
+    },
+    {
+      "id": "s3-5",
+      "params": {
+        "spDs": 0.05,
+        "spGm": 55,
+        "spTl": 1,
+        "spTh": 75
+      },
+      "tab": "explore",
+      "label": "fixed-8"
+    },
+    {
+      "id": "s3-5",
+      "params": {
+        "spDs": 0,
+        "spGm": 0,
+        "spTl": 1,
+        "spTh": 90
+      },
+      "tab": "explore",
+      "label": "fixed-9"
+    },
+    {
+      "id": "s4-2",
+      "params": {
+        "spFold": 1,
+        "spNet": "stair",
+        "spBase": 0
+      },
+      "tab": "explore",
+      "label": "fixed-10"
+    },
+    {
+      "id": "s5-1",
+      "params": {
+        "spPerp": 0.99
+      },
+      "tab": "explore",
+      "label": "fixed-11"
+    },
+    {
+      "id": "s5-2",
+      "params": {
+        "spDoor": 0.15
+      },
+      "tab": "explore",
+      "label": "fixed-12"
+    },
+    {
+      "id": "s5-1",
+      "params": {
+        "spQ": {
+          "kind": "prism",
+          "n": 3,
+          "face": 0
+        }
+      },
+      "tab": "problem",
+      "label": "fixed-13"
+    },
+    {
+      "id": "s3-2",
+      "tab": "problem",
+      "label": "one-line-point"
+    }
+  ],
+  "g7-circle-sector": [
+    {
+      "id": "z0-center",
+      "params": {
+        "csR": 6,
+        "csQ": 104.25
+      }
+    },
+    {
+      "id": "z0-diameter",
+      "params": {
+        "csR": 6,
+        "csD": 30.25
+      }
+    },
+    {
+      "id": "z2-semi",
+      "params": {
+        "csR": 6,
+        "csP": 33
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "problem0"
+    },
+    {
+      "id": "z2-semi",
+      "params": {
+        "csR": 6,
+        "csP": 33
+      },
+      "tab": "review",
+      "step": 1,
+      "label": "review1"
+    },
+    {
+      "id": "z2-semi",
+      "params": {
+        "csR": 6,
+        "csP": 33
+      },
+      "tab": "review",
+      "step": 4,
+      "label": "review4"
+    },
+    {
+      "id": "z2-sector",
+      "params": {
+        "csR": 6,
+        "csA": 90,
+        "csP": 0
+      },
+      "tab": "problem",
+      "step": 0,
+      "label": "problem0"
+    },
+    {
+      "id": "z2-sector",
+      "params": {
+        "csR": 6,
+        "csA": 90,
+        "csP": 0
+      },
+      "tab": "review",
+      "step": 1,
+      "label": "review1"
+    },
+    {
+      "id": "z2-sector",
+      "params": {
+        "csR": 6,
+        "csA": 90,
+        "csP": 0
+      },
+      "tab": "review",
+      "step": 4,
+      "label": "review4"
+    },
+    {
+      "id": "f4-sq12",
+      "params": {
+        "f4_sq12_a": 12,
+        "f4_sq12_t": 0
+      },
+      "label": "move-0"
+    },
+    {
+      "id": "f4-sq12",
+      "params": {
+        "f4_sq12_a": 12,
+        "f4_sq12_t": 0.55
+      },
+      "label": "move-0.55"
+    },
+    {
+      "id": "f4-sq12",
+      "params": {
+        "f4_sq12_a": 12,
+        "f4_sq12_t": 1
+      },
+      "label": "move-1"
+    },
+    {
+      "id": "f4-slide",
+      "params": {
+        "f4_slide_W": 10,
+        "f4_slide_r": 3,
+        "f4_slide_t": 0
+      },
+      "label": "move-0"
+    },
+    {
+      "id": "f4-slide",
+      "params": {
+        "f4_slide_W": 10,
+        "f4_slide_r": 3,
+        "f4_slide_t": 0.55
+      },
+      "label": "move-0.55"
+    },
+    {
+      "id": "f4-slide",
+      "params": {
+        "f4_slide_W": 10,
+        "f4_slide_r": 3,
+        "f4_slide_t": 1
+      },
+      "label": "move-1"
+    },
+    {
+      "id": "rl-rect"
+    },
+    {
+      "id": "rl-semi"
+    },
+    {
+      "id": "f3-leaf-len"
+    },
+    {
+      "id": "z3-circleProof",
+      "tab": "problem",
+      "params": {
+        "csT": 100
+      },
+      "label": "answer-hidden"
+    },
+    {
+      "id": "z3-sectorProof",
+      "tab": "problem",
+      "params": {
+        "csT": 100
+      },
+      "label": "answer-hidden"
+    }
+  ],
+  "g7-parallel": [
+    {
+      "id": "p1-3",
+      "tab": "problem",
+      "label": "neutral-choices"
+    },
+    {
+      "id": "p1-3",
+      "params": {
+        "rA": 90,
+        "rB": 90
+      },
+      "label": "right-angle-criterion"
+    },
+    {
+      "id": "p3-1",
+      "params": {
+        "tA": 10,
+        "tX": 0.6
+      },
+      "label": "triangle-limit"
+    },
+    {
+      "id": "p3-2",
+      "params": {
+        "gN": 6,
+        "gT": 0
+      },
+      "label": "hexagon-limit"
+    },
+    {
+      "id": "p3-3",
+      "params": {
+        "hN": 8,
+        "hT": 100
+      },
+      "label": "octagon-limit"
+    },
+    {
+      "id": "p3-3",
+      "tab": "review",
+      "step": 1,
+      "label": "angle-hidden"
+    },
+    {
+      "id": "p4-1",
+      "params": {
+        "fA": 70,
+        "fX": -2.4
+      },
+      "label": "fold-limit"
+    }
+  ]
+}

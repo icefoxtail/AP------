@@ -14,6 +14,8 @@
 
   const XR = 3.6, YL = -1.7, YM = 1.7, H = YM - YL;
   const FOCUS = { x: [-3.85, 3.85], y: [-3.0, 3.0] };
+  // Fit all vertices at the current angle while retaining room for the parallel lines and solution labels.
+  const fitPoly = (M, bottom = 3) => { const P = M.V || [M.A, M.B, M.C]; return { x: [Math.min(-3.85, ...P.map(p => p.x - 0.65)), Math.max(3.85, ...P.map(p => p.x + 0.65))], y: [Math.min(-3.0, ...P.map(p => p.y - 0.6)), Math.max(bottom, ...P.map(p => p.y + 0.65))] }; };
   const wdeg = (d1, d2) => { let w = norm(d2 - d1); if (w > 180) w = 360 - w; return Math.round(w * 1000) / 1000; };
   const lines = (b) => {
     parLine(b, { x: 0, y: YL }, 0, { e0: -XR, e1: XR, arrows: [-2.6, 2.3], name: 'l', nameAt: XR - 0.3 });
@@ -43,7 +45,7 @@
   const D31 = {
     id: 'p3-1', title: '평행선 사이의 정삼각형', short: '정삼각형',
     question: '정삼각형의 꼭짓점 B는 직선 l 위에, 꼭짓점 C는 직선 m 위에 있어요. 정삼각형의 한 각 60°는 a, b와 어떤 관계일까요?',
-    focus: FOCUS, ctl: ['tA', 'tX'],
+    focus: (M) => fitPoly(M), ctl: ['tA', 'tX'],
     init: (s) => { s.tA = 30; s.tX = -1.0; s.tAux = 0; },
     reroll: (s) => { s.tA = pick([12, 16, 20, 24, 28, 32, 36, 40, 44], s.tA); s.tX = pick([-1.8, -1.0, -0.4, 0.2], s.tX); },
     actions: () => [{ id: 'aux', primary: true, icon: 'layers', label: (s) => (s.tAux ? '보조선 지우기' : '보조선 긋기 (A를 지나 l에 평행)'), on: (s) => !!s.tAux, run: (s) => { s.tAux = s.tAux ? 0 : 1; } }],
@@ -51,20 +53,20 @@
     draw(b, s, M, C) {
       const G = M, { A, B, C: Cc } = G, st = C.mode === 'review' ? C.step : 99, prob = C.mode === 'problem';
       lines(b);
-      b.path([A, B, Cc], { close: true, fill: 'amber', fillAlpha: 0.1, color: 'rose', width: 3.6 });
+      b.path([A, B, Cc], { close: true, fill: 'sky', fillAlpha: 0.1, color: 'sky', width: 3.6 });
       ticks(b, A, B, 1, 'rose'); ticks(b, B, Cc, 1, 'rose'); ticks(b, Cc, A, 1, 'rose');
       dot(b, B, 'rose', 5); dot(b, Cc, 'rose', 5); dot(b, A, 'ink', 5.5);
       T(b, B, 'B', { dy: -17, size: 17 }); T(b, Cc, 'C', { dy: 18, size: 17 }); T(b, A, 'A', { dx: 18, size: 17 });
       // B, C 에서의 각 a, b
       const aT = prob ? G.a + '°' : 'a=' + G.a + '°';
       wedge(b, B, 0, angOf(B, A), { color: 'amber', rings: 1, text: aT, r: 26, size: 17, flip: true });
-      wedge(b, Cc, 0, angOf(Cc, A), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, Cc, 0, angOf(Cc, A), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       // A 에서: 보조선과 옮긴 각, 60°
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
       if (auxOn) dashAt(b, A);
       if (!prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
         wedge(b, A, 180, angOf(A, B), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, A, 180, angOf(A, Cc), { color: 'violet', rings: 2, text: G.b + '°', r: 22, size: 15 });
+        wedge(b, A, 180, angOf(A, Cc), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
       const auxCopies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
       const show60 = prob || C.mode === 'explore' || st !== 2;
@@ -77,7 +79,7 @@
     },
     steps: (M) => [
       '정삼각형의 한 내각은 60°예요. 그래서 ∠BAC = 60°예요.',
-      `꼭짓점 A를 지나고 l에 평행한 보조선을 그어요. 엇각이 같으므로 ∠a = ${M.a}°, ∠b = ${M.b}°를 점 A로 옮겨 표시해요.`,
+      `꼭짓점 A를 지나고 l에 평행한 보조선을 그어요. 엇각이 같으므로 ∠a = ${M.a}°와 아직 구하지 않은 ∠b를 점 A로 옮겨 표시해요.`,
       `60° = ∠a + ∠b 이므로 ∠b = 60° − ${M.a}° = ${M.b}°`
     ],
     view(M, C, s) {
@@ -126,7 +128,7 @@
   const aFrom = (n, k, t) => { const I = interior(n), lo = 6, hi = (k === 1 ? I : 2 * I - 180) - 6; return Math.round(lo + (clamp(t, 0, 100) / 100) * (hi - lo)); };
   function drawPoly(b, G, o = {}) {
     const { V, n, k, c } = G;
-    b.path(V, { close: true, fill: 'amber', fillAlpha: 0.08, color: 'ink', width: 2, alpha: 0.5 });
+    b.path(V, { close: true, fill: 'sky', fillAlpha: 0.1, color: 'sky', width: 2, alpha: 0.5 });
     b.path(V.slice(0, G.end + 1), { color: 'rose', width: 3.8 });
     for (let i = 0; i < n; i++) ticks(b, V[i], V[(i + 1) % n], 1, 'rose');
     V.forEach((p, i) => {
@@ -155,7 +157,7 @@
   const D32 = {
     id: 'p3-2', title: '정다각형의 꼭짓점이 꺾인 점', short: '정다각형 꼭짓점 하나',
     question: '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 C는 m 위에 있어요. 정다각형의 내각 ∠ABC는 a, b와 어떤 관계일까요?',
-    focus: { x: [-3.85, 3.85], y: [-3.15, 3.4] },
+    focus: (M) => fitPoly(M, 3.4),
     ctl: ['gN', 'gT'],
     presets: () => [4, 5, 6].map((n, i) => ({ group: i === 0 ? '정다각형' : '', label: POLY[n], apply: (s) => { s.gN = n; }, on: (s) => s.gN === n })),
     actions: () => [{ id: 'aux', primary: true, icon: 'layers', label: (s) => (s.gAux ? '보조선 지우기' : '보조선 긋기 (B를 지나 l에 평행)'), on: (s) => !!s.gAux, run: (s) => { s.gAux = s.gAux ? 0 : 1; } }],
@@ -168,12 +170,12 @@
       drawPoly(b, G);
       const [A, B, Cc] = G.V;
       wedge(b, A, 0, angOf(A, B), { color: 'amber', rings: 1, text: prob ? G.a + '°' : 'a=' + G.a + '°', r: 26, size: 17, flip: true });
-      wedge(b, Cc, 0, angOf(Cc, B), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, Cc, 0, angOf(Cc, B), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
       if (auxOn) dashAt(b, B);
       if (!prob && (C.mode === 'review' ? st >= 2 : G.aux)) {
         wedge(b, B, 180, angOf(B, A), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, B, 180, angOf(B, Cc), { color: 'violet', rings: 2, text: G.b + '°', r: 22, size: 15 });
+        wedge(b, B, 180, angOf(B, Cc), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
       const copies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
       if (prob || C.mode === 'explore' || st === 1 || st >= 3) wedge(b, B, angOf(B, A), angOf(B, Cc), { color: prob ? 'ink' : 'green', rings: 3, text: copies ? '' : (prob ? '' : '∠B=') + G.I + '°', r: copies ? 90 : 44, fa: 0.1, size: 17, tcolor: prob ? 'ink' : 'green' });
@@ -182,7 +184,7 @@
     },
     steps: (M) => [
       `${POLY[M.n]}의 한 내각은 ${M.I}°예요. 그래서 ∠ABC = ${M.I}°예요.`,
-      `꼭짓점 B를 지나고 l에 평행한 보조선을 그어요. 엇각이 같으므로 ∠a = ${M.a}°, ∠b = ${M.b}°를 점 B로 옮겨 표시해요.`,
+      `꼭짓점 B를 지나고 l에 평행한 보조선을 그어요. 엇각이 같으므로 ∠a = ${M.a}°와 아직 구하지 않은 ∠b를 점 B로 옮겨 표시해요.`,
       `${M.I}° = ∠a + ∠b 이므로 ∠b = ${M.I}° − ${M.a}° = ${M.b}°`
     ],
     view(M, C, s) {
@@ -216,8 +218,8 @@
   const D33 = {
     id: 'p3-3', title: '정다각형의 두 꼭짓점이 꺾인 점', short: '정다각형 꼭짓점 둘',
     question: '정다각형의 꼭짓점 A는 l 위에, 꼭짓점 D는 m 위에 있어요. 꼭짓점 B, C가 두 선 사이에 있을 때 a, b는 어떤 관계일까요?',
-    focus: { x: [-3.85, 3.85], y: [-3.15, 3.8] },
-    ctl: ['hN', 'hT'],
+    focus: (M) => fitPoly(M, 3.8),
+    ctl: ['hT'],
     presets: () => [5, 6, 8].map((n, i) => ({ group: i === 0 ? '정다각형' : '', label: POLY[n], apply: (s) => { s.hN = n; }, on: (s) => s.hN === n })),
     actions: () => [{ id: 'aux', primary: true, icon: 'layers', label: (s) => (s.hAux ? '보조선 지우기' : '보조선 긋기 (B, C를 지나 l에 평행)'), on: (s) => !!s.hAux, run: (s) => { s.hAux = s.hAux ? 0 : 1; } }],
     init: (s) => { s.hN = 6; s.hT = 40; s.hAux = 0; },
@@ -229,13 +231,13 @@
       drawPoly(b, G);
       const [A, B, Cc, D] = G.V;
       wedge(b, A, 0, angOf(A, B), { color: 'amber', rings: 1, text: prob ? G.a + '°' : 'a=' + G.a + '°', r: 26, size: 17, flip: true });
-      wedge(b, D, 0, angOf(D, Cc), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
+      wedge(b, D, 0, angOf(D, Cc), { color: prob ? 'green' : 'violet', rings: 2, text: prob ? 'x' : C.mode === 'review' && st < 3 ? 'b' : 'b=' + G.b + '°', r: 26, size: prob ? 20 : 17, flip: true });
       const auxOn = prob ? false : C.mode === 'review' ? st >= 1 : G.aux;
       if (auxOn) { dashAt(b, B); dashAt(b, Cc); }
       const copies = !prob && (C.mode === 'review' ? st >= 2 : G.aux);
       if (copies) {
         wedge(b, B, 180, angOf(B, A), { color: 'amber', rings: 1, text: G.a + '°', r: 22, size: 15 });
-        wedge(b, Cc, 180, angOf(Cc, D), { color: 'violet', rings: 2, text: G.b + '°', r: 22, size: 15 });
+        wedge(b, Cc, 180, angOf(Cc, D), { color: 'violet', rings: 2, text: C.mode === 'review' && st < 3 ? 'b' : G.b + '°', r: 22, size: 15 });
       }
       const mid = !prob && (C.mode === 'review' ? st >= 3 : G.aux);
       if (mid) {
@@ -255,12 +257,12 @@
     },
     steps: (M) => [
       `꼭짓점 B, C를 지나고 l에 평행한 보조선을 각각 그어요.`,
-      `엇각이 같으므로 B에서 ∠a = ${M.a}°, C에서 ∠b = ${M.b}°를 보조선 쪽으로 옮겨 표시해요.`,
-      `${POLY[M.n]}의 한 내각은 ${M.I}°이므로 a + c = ${M.I}°, d + b = ${M.I}°이고, 두 보조선 사이에서 c + d = 180°예요. 따라서 a + b = ${M.I}° + ${M.I}° − 180° = ${M.a + M.b}°`
+      `엇각이 같으므로 B에서 ∠a = ${M.a}°, C에서 아직 구하지 않은 ∠b를 보조선 쪽으로 옮겨 표시해요.`,
+      `${POLY[M.n]}의 한 내각은 ${M.I}°이므로 a + c = ${M.I}°, d + b = ${M.I}°이고, 두 보조선 사이에서 c + d = 180°예요. 따라서 a + b = ${M.I}° + ${M.I}° − 180° = ${M.a + M.b}°이고, b = ${M.a + M.b}° − ${M.a}° = ${M.b}°예요.`
     ],
     view(M, C, s) {
       return {
-        guide: `<b>${POLY[M.n]}</b>의 꼭짓점 A는 l 위, D는 m 위에 있어요. 막대로 변의 수와 기울기를 바꿔 보세요. a가 커지면 b는 어떻게 변할까요? <b>보조선 긋기</b>를 누르면 이유가 단계별로 보여요.`,
+        guide: `<b>${POLY[M.n]}</b>의 꼭짓점 A는 l 위, D는 m 위에 있어요. 정다각형 버튼으로 변의 수를, 막대로 기울기를 바꿔 보세요. a가 커지면 b는 어떻게 변할까요? <b>보조선 긋기</b>를 누르면 이유가 단계별로 보여요.`,
         readouts: [
           { label: `${POLY[M.n]}의 한 내각`, value: M.I + '°', color: 'green', note: `(${M.n}−2)×180°÷${M.n}` },
           { label: '∠a (A에서)', value: M.a + '°', color: 'amber' }, { label: '∠b (D에서)', value: M.b + '°', color: 'violet' },

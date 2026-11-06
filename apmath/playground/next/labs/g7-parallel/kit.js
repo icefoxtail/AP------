@@ -203,7 +203,7 @@
         text: (s) => problemHTML(D, s),
         answer: (s) => answerText(D, s)
       },
-      focus: () => D.focus,
+      focus: (s) => typeof D.focus === 'function' ? D.focus(D.model(s)) : D.focus,
       enter: (s, lab) => {
         D.init(s);
         s.paseed = 0; s.papick = null; s.playing = false; s.pat = D.t0 == null ? 0 : D.t0;
@@ -225,12 +225,14 @@
           }
         }
         if (C.mode === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; v.chips = null; }
-        else if (C.mode === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.mode === 'review') { const n = D.steps(M).length; if (s.step < n) v.formula = ''; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
-        D.draw(b, s, D.model(s), C);
+        const M = D.model(s);
+        if (typeof D.focus === 'function' && !b._bbox) b.setFocus(D.focus(M), false);
+        D.draw(b, s, M, C);
       }
     };
   }

@@ -1,0 +1,73 @@
+name: G7 geometry browser
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/g7-*/**'
+      - 'apmath/playground/next/labs/g7-*.html'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/g7-geometry-*'
+      - 'apmath/playground/next/tools/g7-*.test.mjs'
+      - '.github/workflows/g7-geometry-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent geometry and catalog regressions
+        shell: bash
+        run: |
+          shopt -s nullglob
+          node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/cube-section.test.mjs apmath/playground/next/tools/polyhedra-names.test.mjs apmath/playground/next/tools/polyhedra-dual.test.mjs apmath/playground/next/tools/g7-*.test.mjs
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Select affected G7 units and fixed baseline
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git worktree add --detach "$RUNNER_TEMP/g7-baseline" "$BASE_SHA"
+          node --input-type=module <<'JS'
+          import {execFileSync} from 'node:child_process';
+          import fs from 'node:fs';
+          const all = ['g7-points-lines','g7-parallel','g7-spatial','g7-construction','g7-area','g7-polygons','g7-circle-sector','g7-polyhedra','g7-surface-volume','g7-solids'];
+          const changed = execFileSync('git',['diff','--name-only',process.env.BASE_SHA,'HEAD'],{encoding:'utf8'}).trim().split('\n');
+          const picked = new Set(changed.map(p => /^apmath\/playground\/next\/labs\/(g7-[\w-]+)(?:\/|\.html$)/.exec(p)?.[1]).filter(x => all.includes(x)));
+          const shared = changed.some(p => /\/kit\//.test(p));
+          const units = shared || !picked.size ? all : [...picked];
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`units=${units.join(',')}\n`);
+          JS
+      - name: Observe baseline at the same viewports
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          G7_UNITS: ${{ steps.scope.outputs.units }}
+        run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root "$RUNNER_TEMP/g7-baseline" --out "$RUNNER_TEMP/g7-evidence/before" --units "$G7_UNITS" --baseline-observe
+      - name: Validate candidate at four viewports
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          G7_UNITS: ${{ steps.scope.outputs.units }}
+        run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root . --out "$RUNNER_TEMP/g7-evidence/after" --units "$G7_UNITS"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g7-geometry-browser-${{ github.run_id }}
+          path: ${{ runner.temp }}/g7-evidence/
+          retention-days: 14
