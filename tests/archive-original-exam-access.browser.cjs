@@ -25,8 +25,11 @@ const server=http.createServer((req,res)=>{
    return ready.state==='RENDER_READY'&&typeof AppState!=='undefined'&&AppState.mode===targetMode&&AppState.data.length>0;
   },mode,{timeout:60000});
   const result=await page.evaluate(()=>({questions:AppState.data.length,pages:document.querySelectorAll('#print-area .page').length,
-   visibleText:document.querySelector('#print-area')?.innerText?.length||0,images:[...document.querySelectorAll('#print-area img')].every(img=>img.complete&&img.naturalWidth>0)}));
+   visibleText:document.querySelector('#print-area')?.innerText?.length||0,images:[...document.querySelectorAll('#print-area img')].every(img=>img.complete&&img.naturalWidth>0),
+   mathErrors:document.querySelectorAll('#print-area mjx-merror,#print-area [data-mjx-error]').length,
+   unrenderedMath:window.APRenderLoop?.unrenderedMathCount(document.querySelector('#print-area'))}));
   assert(result.questions>0&&result.pages>0&&result.visibleText>100&&result.images,'original output must render usable questions and images');
+  assert(result.mathErrors===0&&result.unrenderedMath===0,'MathJax output must finish without render errors or unrendered formulas');
   assert.deepEqual(errors,[]);
   const pdf=await page.pdf({printBackground:true,preferCSSPageSize:true});
   assert(pdf.subarray(0,5).toString()==='%PDF-'&&pdf.length>1000,'Chrome must produce a nonempty PDF');
