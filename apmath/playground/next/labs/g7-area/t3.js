@@ -143,7 +143,8 @@
       if (C.problem) { foot(b, pt(W / 2, H), '모눈 한 칸 = 1cm²   △ABC = ? cm²', 'amber', 88); return; }
       const f = (str, col, i) => foot(b, pt(W / 2, H), str, col, 84 + 26 * i);
       if (C.review) {
-        if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
+        if (C.step < 1) f('바깥 직사각형과 세 귀퉁이를 찾아요', 'amber', 0);
+        else if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
         else if (C.step === 2) { f(`① ${HALF}×${W}×${a} = ${num(t1)}  ② ${HALF}×${x}×${H - a} = ${num(t2)}`, 'rose', 0); f(`③ ${HALF}×${W - x}×${H} = ${num(t3)}`, 'rose', 1); }
         else { f(`${R} − (${num(t1)}+${num(t2)}+${num(t3)}) = ${num(A)}`, 'green', 0); }
       } else {

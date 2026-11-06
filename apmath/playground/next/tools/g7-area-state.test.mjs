@@ -308,3 +308,39 @@ await test('trapezoid wings keep the mobile question large and all given labels 
   assert.ok(Math.max(...vertices.map((p) => p.x)) - Math.min(...vertices.map((p) => p.x)) >= 190, 'default trapezoid is at least 190px wide in the actual mobile canvas');
   for (const label of result.labels) assert.ok(label.x >= 20 && label.x <= 370 && label.y - label.size / 2 >= 0 && label.y + label.size / 2 <= 240, `${label.text} stays in the usable stage`);
 });
+
+await test('unknown altitudes remain symbolic in the diagram until their solving step', async () => {
+  const lab = await load();
+  for (const id of ['b1-rt', 'b2-para']) for (const size of [1, 2, 3]) {
+    lab.go(id);
+    if (id === 'b1-rt') Object.assign(lab.s, { b1K: size, b1T: 1 });
+    else Object.assign(lab.s, { b2K: size - 1, b2A: 6 + size });
+    const model = lab.scene.ar.model(lab.s), unknown = id === 'b1-rt' ? 'h' : 'h₂';
+    const numericLabel = `${unknown} = ${lab.api.fmtN(id === 'b1-rt' ? model.h : model.h2)}`;
+    lab.tab = 'review';
+    for (const step of [0, 1, 2]) {
+      lab.s.step = step;
+      const draw = lab.draw();
+      assert.equal(draw.texts.some(text => text.includes(numericLabel)), false, `${id}: ${numericLabel} is not available at step ${step}`);
+      if (id === 'b2-para' && step === 2) {
+        assert.ok(draw.texts.includes('h₂ = ?'));
+        assert.ok(draw.texts.includes(`넓이 = ${model.c} × h₂ = ${model.A}`), 'second-base equation keeps the unknown symbolic');
+      }
+    }
+    lab.s.step = 3;
+    assert.ok(lab.draw().texts.some(text => text.includes(numericLabel)), `${id}: solving step reveals its current height`);
+  }
+});
+
+await test('returning before the first area step removes final result captions', async () => {
+  const lab = await load();
+  for (const [id, pattern] of [['a1-rect', /24cm²/], ['b4-wing', /S₁ = S₂ =/], ['c2-frame', /48 − \(8\+6\+15\) = 19/]]) {
+    lab.go(id); lab.tab = 'review'; lab.s.step = call(lab.scene.steps, lab.s).length;
+    assert.ok(lab.draw().texts.some(text => pattern.test(text)), `${id}: final result is available after solving`);
+    lab.s.step = 0;
+    const start = lab.draw();
+    assert.equal(start.texts.some(text => pattern.test(text)), false, `${id}: previous-to-start relocks the final result`);
+    assert.equal(start.value.formula, null);
+    if (id === 'b4-wing') assert.equal(start.texts.includes('10'), false, 'the area-only proof does not invent a given base length');
+  }
+});

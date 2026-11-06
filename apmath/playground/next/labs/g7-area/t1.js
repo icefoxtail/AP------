@@ -56,7 +56,8 @@
       dim(b, pt(0, 0), pt(W, 0), `가로 ${W}cm`, { ref: c0, color: 'sky' });
       dim(b, pt(0, 0), pt(0, -H), `세로 ${H}cm`, { ref: c0, color: 'sky' });
       if (C.problem) { T(b, c0, '넓이 ?', { size: 22, color: 'amber' }); return; }
-      if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');
+      if (C.review && C.step < 1) foot(b, pt(W / 2, 0), '한 칸부터 차례로 세어 보세요', 'amber');
+      else if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');
       else if (C.review && C.step === 2) foot(b, pt(W / 2, 0), `한 줄에 ${W}칸 × ${H}줄`, 'amber');
       else if (C.review || kp >= H - 1e-9) foot(b, pt(W / 2, 0), `${W}칸 × ${H}줄 = ${A}칸 = ${A}cm²`, 'green');
       else foot(b, pt(W / 2, 0), `${Math.floor(kp + 1e-9)}줄 × ${W}칸 = ${Math.floor(kp + 1e-9) * W}칸`, 'green');

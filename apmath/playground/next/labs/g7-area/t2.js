@@ -44,7 +44,7 @@
       }
       const hot1 = C.review && C.step === 1, hot2 = C.review && C.step >= 2;
       b.right(Av, Bv, Cv, { size: 16, color: 'sky' });
-      hgtTo(b, Av, Bv, Cv, { label: C.problem ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
+      hgtTo(b, Av, Bv, Cv, { label: C.problem || (C.review && C.step < 3) ? 'h = ?' : `h = ${num(h)}`, side: Av.x > c / 2 ? -1 : 1 });
       dim(b, Bv, Av, `${a}`, { ref: Cv, color: 'sky', width: 3 });
       dim(b, Av, Cv, `${bb}`, { ref: Bv, color: 'sky' });
       dim(b, Bv, Cv, `${c}`, { ref: Av, color: 'green' });
@@ -52,7 +52,7 @@
       if (hot1) { line(b, Bv, Av, 'sky', 6, { alpha: 0.6 }); line(b, Av, Cv, 'sky', 6, { alpha: 0.6 }); }
       if (hot2) line(b, Bv, Cv, 'green', 6, { alpha: 0.6 });
       if (C.problem) { foot(b, Mh, '빗변에 내린 수선의 길이 h = ?', 'amber', 58); return; }
-      if (C.review) foot(b, Mh, C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
+      if (C.review) foot(b, Mh, C.step < 1 ? '같은 넓이를 두 방법으로 나타내요' : C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
       else foot(b, Mh, t > 0.999 ? `직사각형 ${a}×${bb}=${a * bb}의 절반 = ${S}` : `넓이 = ${HALF}×${a}×${bb} = ${S}`, 'green', 58);
     },
     stepT: (n) => (n === 1 ? 1 : 0),
@@ -94,7 +94,7 @@
     geo: (M) => { const B = pt(0, 0), Cc = pt(M.a, 0), D = pt(M.a + M.S, -M.h1), A = pt(M.S, -M.h1); return { pg: [B, Cc, D, A] }; },
     draw(b, s, M, C) {
       const { a, S, h1, c, h2, A: ar } = M, [Bp, Cp, Dp, Ap] = para2.geo(M).pg;
-      const mode = C.review ? (C.step === 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
+      const mode = C.review ? (C.step <= 1 ? 0 : C.step === 2 ? 1 : 2) : C.problem ? 2 : s.b2Mode;
       const u = mul(sub(Dp, Cp), 1 / c), tt = (sub(Ap, Cp).x * u.x + sub(Ap, Cp).y * u.y), Fp = add(Cp, mul(u, tt));
       const bb = bboxOf([Bp, Cp, Dp, Ap, Fp, pt(S, 0)]);
       FIT(b, bb, { b: 92, r: 54 });
@@ -105,14 +105,15 @@
       if (show1) line(b, Bp, Cp, 'sky', 6, { alpha: 0.65 });
       if (show2) line(b, Cp, Dp, 'green', 6, { alpha: 0.65 });
       if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1 });
-      if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
+      if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem || (C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
       dim(b, Bp, Cp, `BC = ${a}`, { ref: c0, color: 'sky' });
       dim(b, Cp, Dp, `CD = ${c}`, { ref: c0, color: 'green', off: 26 });
       [[Ap, 'A'], [Bp, 'B'], [Cp, 'C'], [Dp, 'D']].forEach(([p, n]) => tagOut(b, p, c0, n, { size: 17, gap: 10 }));
       const fx = (a + S) / 2;
       if (C.problem) { foot(b, pt(fx, 0), '평행사변형의 넓이를 두 가지로 나타내 보세요', 'amber', 58); return; }
+      if (C.review && C.step < 1) { foot(b, pt(fx, 0), '같은 넓이를 두 방법으로 나타내요', 'amber', 58); return; }
       if (mode === 0) foot(b, pt(fx, 0), `넓이 = ${a} × ${h1} = ${ar}`, 'sky', 58);
-      else if (mode === 1) foot(b, pt(fx, 0), `넓이 = ${c} × ${num(h2)} = ${ar}`, 'green', 58);
+      else if (mode === 1) foot(b, pt(fx, 0), `넓이 = ${c} × ${C.review && C.step < 3 ? 'h₂' : num(h2)} = ${ar}`, 'green', 58);
       else foot(b, pt(fx, 0), `${a}×${h1} = ${c}×${num(h2)} = ${ar}`, 'amber', 58);
     },
     steps: (M) => [
@@ -218,7 +219,7 @@
       // actual label space instead of the three-line animated proof below it.
       if (C.problem) FIT(b, bboxOf([Av, Bv, Cv, Dv]), { t: 28, b: 84, l: 32, r: 32 });
       else FIT(b, { x0: 0, x1: Math.max(B, 4 + 8), y0: -H, y1: 0 }, { b: 138, l: 52, r: 52 });
-      const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
+      const t = C.problem ? 0 : C.review ? (C.step < 1 ? 0 : C.step === 1 ? 0.4 : C.step === 2 ? 0.8 : 1) : C.t;
       const c0 = centroid([Av, Bv, Cv, Dv]);
       if (C.problem) { fillPoly(b, [Bv, Cv, O], 'green', 0.3); fillPoly(b, [Av, Bv, O], 'amber', 0.3); }
       else {
@@ -239,7 +240,7 @@
         return;
       }
       if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
-      dim(b, Bv, Cv, `${B}`, { ref: c0, color: 'sky' });
+      dim(b, Bv, Cv, C.review ? 'BC' : `${B}`, { ref: c0, color: 'sky' });
       let r = 0;
       if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${G.exactTex(X)}`, 'sky', 58 + 26 * r++);
       if (t > 0.55) foot(b, pt(B / 2, 0), `공통 △OBC = ${G.exactTex(Y)}`, 'green', 58 + 26 * r++);
