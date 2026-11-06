@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
-    "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+    "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
