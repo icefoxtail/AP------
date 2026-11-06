@@ -42,7 +42,7 @@
   const PARAMS = {
     pgOn: P('꼭짓점의 수 n', 3, 12, 1, 7, { color: 'amber', hint: '막대를 움직여 다각형을 바꿔 보세요', format: (v) => `${v}각형` }),
     pgOt: P('삼각형 나누기', 0, 1, 0.01, 1, { color: 'green', hint: '▶를 누르거나 막대를 끌면 삼각형이 하나씩 나뉘어요', format: (v) => Math.round(v * 100) + '%' }),
-    pgCf: P('꼭짓점 P 가로로 밀기', 0, 1, 0.01, 0.3, { color: 'amber', hint: '그림의 노란 점 P를 가로로 끌어도 돼요 (오른쪽 = 볼록, 왼쪽 = 오목)', format: (v) => (v > 0.6 ? '볼록' : '오목') }),
+    pgCf: P('꼭짓점 P 가로로 밀기', 0, 1, 0.01, 0.3, { color: 'amber', hint: '그림의 노란 점 P를 가로로 끌어도 돼요 (오른쪽 = 볼록, 왼쪽 = 오목)', format: (v, s) => { const g = concaveGeom(s && [4, 5, 6].includes(s.pgCn) ? s.pgCn : 4, v); return g.flat ? '일직선 경계' : g.concave ? '오목' : '볼록'; } }),
     pgXn: P('꼭짓점의 수 n', 3, 12, 1, 6, { color: 'amber', format: (v) => `${v}각형` }),
     pgXt: P('다각형 줄이기', 0, 1, 0.01, 0, { color: 'rose', hint: '▶를 누르거나 막대를 끌면 다각형이 한 점으로 줄어들어요', format: (v) => Math.round(v * 100) + '%' }),
     pgGa: P('내각 ∠A', 100, 115, 1, 105, { color: 'sky', format: (v) => v + '°' }),
@@ -76,7 +76,7 @@
       const cen = pt(0, 0);
       fillPoly(b, V, 'sky', 0.08);
       for (let i = 0; i < n; i++) {
-        if (i < nTri) fillPoly(b, [O, V[i], V[(i + 1) % n]], i % 2 ? 'green' : 'sky', 0.24);
+        if (i < nTri) fillPoly(b, [O, V[i], V[(i + 1) % n]], i % 2 ? 'green' : 'sky', 0.14);
       }
       poly(b, V, 'ink', 3.4);
       if (!C.problem) for (let i = 0; i < n; i++) {
@@ -131,12 +131,15 @@
   /* ====================================================================== 2. 오목다각형 */
   const XMIN = -0.5;
   function concaveGeom(n, f) {
-    const V = regPoly(n, 1, 0), xl = cos(360 / n), x = XMIN + f * (1 - XMIN);
+    const V = regPoly(n, 1, 0), xl = cos(360 / n), yy = sin(360 / n), wanted = XMIN + f * (1 - XMIN);
+    // Snap the adjacent angle, then rebuild P. All labelled angles are exact integers.
+    const beta = clamp(Math.round(Math.atan2(wanted - xl, yy) / DEG), Math.ceil(Math.atan2(XMIN - xl, yy) / DEG), Math.floor(Math.atan2(1 - xl, yy) / DEG));
+    const x = xl + yy * Math.tan(beta * DEG);
     V[0] = pt(x, 0);
     // 안쪽 각: 방향을 정해 합이 180(n−2)가 되게
     const S = 180 * (n - 2), raw = (sg) => V.map((p, i) => { const u = V[(i + n - 1) % n], w = V[(i + 1) % n], a = sub(p, u), c = sub(w, p); const turn = Math.atan2(cross(a, c), a.x * c.x + a.y * c.y) / DEG; return 180 - sg * turn; });
     let ints = raw(1); if (Math.abs(ints.reduce((p, q) => p + q, 0) - S) > 1e-6) ints = raw(-1);
-    return { V, x, xl, ints, fc: (xl - XMIN) / (1 - XMIN), concave: ints[0] > 180 + 1e-9 };
+    return { V, x, xl, ints, fc: (xl - XMIN) / (1 - XMIN), concave: ints[0] > 180 + 1e-9, flat: Math.abs(ints[0] - 180) < 1e-9 };
   }
   const concave = {
     id: 'p3-concave', title: '오목다각형의 각', short: '오목다각형',
@@ -147,9 +150,8 @@
     reroll: (s) => { const g = concaveGeom(s.pgCn, 1); s.pgCf = 0.08 + Math.random() * 0.6 * g.fc; },
     model: (s) => {
       const n = [4, 5, 6].includes(s.pgCn) ? s.pgCn : 4, f = clamp(+s.pgCf, 0, 1), g = concaveGeom(n, f);
-      const fp = Math.min(f, g.fc * 0.78), gp = concaveGeom(n, fp), S = 180 * (n - 2);
-      const mk = (q) => { const iv = lr(q.ints, S); return { iv, x: 360 - iv[0], others: iv.slice(1).reduce((a, c) => a + c, 0) }; };
-      return { n, f, g, gp, S, ...mk(g), p: mk(gp) };
+      const S = 180 * (n - 2), iv = g.ints.map((v) => Math.round(v)), x = g.concave ? 360 - iv[0] : iv[0], p = { iv, x, others: iv.slice(1).reduce((a, c) => a + c, 0) };
+      return { n, f, g, gp: g, S, ...p, p };
     },
     draw(b, s, M, C) {
       const n = M.n, gg = C.problem ? M.gp : M.g, iv = C.problem ? M.p.iv : M.iv, x = C.problem ? M.p.x : M.x, V = gg.V, cen = pt(0, 0.0);
@@ -165,7 +167,8 @@
         const u = V[(i + n - 1) % n], w = V[(i + 1) % n], isP = i === 0, big = iv[i] > 180;
         const given = !(C.problem && isP);
         const col = isP ? 'amber' : 'sky';
-        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: given ? `${iv[i]}°` : '', size: 16, fa: 0.22, labelRot: isP && big ? 45 : 0 });
+        const hiddenP = isP && (C.problem || (C.review && st < 3));
+        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: hiddenP ? (!big ? 'x' : '') : `${iv[i]}°`, size: 16, fa: 0.14, labelRot: isP && big ? 45 : 0 });
         b.point(p, { color: 'ink', r: 4.5 });
         void col; void nm;
       });
@@ -177,7 +180,8 @@
         else b.point(V[0], { color: 'amber', r: 6.5 });
         const yb = 1.05;
         let r1, r2 = '', c1 = 'sky', c2 = 'amber';
-        if (C.problem) { r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°`; r2 = ''; }
+        if (C.problem) { r1 = gg.flat ? 'P에서 두 변이 이루는 각 x는?' : `내각의 합 = 180°×(${n}−2) = ${M.S}°`; r2 = ''; }
+        else if (gg.flat) { r1 = 'P에서 두 변이 한 직선을 이뤄요'; r2 = st >= 3 ? '평각 = 180°' : ''; }
         else if (st === 1) { r1 = `P에서 대각선 ${n - 3}개 → 삼각형 ${n - 2}개`; c1 = 'green'; }
         else if (st === 2) { r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°`; }
         else if (concaveNow) { r1 = `안쪽 각 ${iv[0]}° (180° 넘어요)`; r2 = `x = 360° − ${iv[0]}° = ${x}°`; }
@@ -189,20 +193,21 @@
     },
     steps: (M) => {
       const p = M.p, n = M.n;
+      if (M.g.flat) return ['점 P와 양쪽의 이웃한 꼭짓점이 한 직선 위에 있어요.', 'P에서 양쪽으로 나가는 두 반직선의 방향이 서로 반대예요.', '두 반직선이 이루는 평각의 크기는 180°예요.'];
       return [
-        `오목한 꼭짓점 P에서 이웃하지 않는 꼭짓점으로 대각선(보조선)을 그어요. ${n}각형이 삼각형 ${n - 2}개로 나뉘어요.`,
-        `삼각형 ${n - 2}개의 내각의 합이므로 ${n}각형의 내각의 합은 180°×(${n}−2)=${M.S}°예요. P의 안쪽 각(180°보다 큰 각)도 포함해요.`,
-        `P의 안쪽 각 = ${M.S}° − (나머지 내각의 합 ${p.others}°) = ${p.iv[0]}° 이므로 x = 360° − ${p.iv[0]}° = ${p.x}°`
+        `꼭짓점 P에서 이웃하지 않는 꼭짓점으로 대각선(보조선)을 그어요. ${n}각형이 삼각형 ${n - 2}개로 나뉘어요.`,
+        `삼각형 ${n - 2}개의 내각의 합이므로 ${n}각형의 내각의 합은 180°×(${n}−2)=${M.S}°예요.` + (M.g.concave ? ' P의 안쪽 각(180°보다 큰 각)도 포함해요.' : ''),
+        `P의 안쪽 각 = ${M.S}° − (나머지 내각의 합 ${p.others}°) = ${p.iv[0]}°예요.` + (M.g.concave ? ` 그러므로 x = 360° − ${p.iv[0]}° = ${p.x}°` : ` 구하는 내각 x = ${p.x}°예요.`)
       ];
     },
     view: (M) => ({
       guide: '<b>노란 점 P</b>를 가로로 끌어 보세요. 왼쪽으로 밀면 P의 안쪽 각이 <b>180°를 넘는 오목다각형</b>이 돼요. 그래도 내각의 합은 180°×(n−2) 그대로예요.',
       readouts: [
-        rd('내각의 합', `${M.S}°`, 'sky', `180° × (${M.n} − 2)`), rd('P의 안쪽 각', `${M.iv[0]}°`, M.g.concave ? 'rose' : 'sky', M.g.concave ? '180°보다 커요 (오목)' : '180°보다 작아요 (볼록)'),
+        rd(M.g.flat ? '표시한 각의 합' : '내각의 합', `${M.S}°`, 'sky', `180° × (${M.n} − 2)`), rd('P의 안쪽 각', `${M.iv[0]}°`, M.g.concave ? 'rose' : 'sky', M.g.flat ? '180° (일직선 경계)' : M.g.concave ? '180°보다 커요 (오목)' : '180°보다 작아요 (볼록)'),
         rd('나머지 내각의 합', `${M.others}°`, 'sky'), rd('x = 360° − P의 안쪽 각', M.g.concave ? `${M.x}°` : '오목일 때만', 'amber', null, null, true)
       ],
-      status: M.g.concave ? { tone: 'warn', text: `오목다각형: P의 안쪽 각 ${M.iv[0]}°` } : { tone: 'ok', text: '볼록다각형: 모든 내각이 180°보다 작아요' },
-      formula: `<p>(내각의 합) $=180^{\\circ}\\times(${M.n}-2)=${M.S}^{\\circ}$</p><p>$x=360^{\\circ}-(${M.S}^{\\circ}-${M.others}^{\\circ})=${M.x}^{\\circ}$</p>`,
+      status: M.g.flat ? { tone: 'info', text: '일직선 경계: P에서 두 변이 한 직선을 이뤄요' } : M.g.concave ? { tone: 'warn', text: `오목다각형: P의 안쪽 각 ${M.iv[0]}°` } : { tone: 'ok', text: '볼록다각형: 모든 내각이 180°보다 작아요' },
+      formula: M.g.flat ? '<p>$x=180^{\\circ}$ (평각)</p>' : `<p>(내각의 합) $=180^{\\circ}\\times(${M.n}-2)=${M.S}^{\\circ}$</p><p>$x=${M.g.concave ? `360^{\\circ}-(${M.S}^{\\circ}-${M.others}^{\\circ})` : `${M.S}^{\\circ}-${M.others}^{\\circ}`}=${M.x}^{\\circ}$</p>`,
       rule: '오목다각형도 내각의 합은 180°×(n−2). 안쪽 각이 180°보다 큰 꼭짓점도 내각이에요.',
       notes: notes('오목사각형에서 x는 나머지 세 내각의 합과 같아요. (x = ∠A+∠B+∠C)', '내각 P는 <b>안쪽</b>에서 재요. x는 움푹 들어간 쪽(바깥)의 각이라 360°에서 뺀 값이에요.')
     }),
@@ -210,12 +215,12 @@
       const { n, p } = M, S = M.S, nm = (i) => (i === 0 ? 'P' : LET[i - 1]);
       const given = p.iv.slice(1).map((v, i) => `∠${LET[i]}=${v}°`).join(', ');
       return {
-        tag: '오목다각형에서 각의 크기', key: `n${n}f${M.f.toFixed(2)}`,
-        stem: `그림과 같이 꼭짓점 P가 안쪽으로 들어간 오목${n}각형에서 ${given}일 때, P에서 움푹 들어간 쪽의 각 $x$의 크기는?`,
-        choices: mkChoices(p.x, [[360 - p.x, 'P의 안쪽 각을 구했어요. 구하는 것은 움푹한 쪽의 각 x예요.'], [p.others, '나머지 내각의 합이에요. 오각형 이상은 180°×(n−4)를 더 빼야 해요.'], [180 - p.x > 0 ? 180 - p.x : p.x + 20, '다시 계산해 보세요.'], [S - p.others, '내각의 합에서 나머지를 뺀 안쪽 각이에요.'], [p.x + 20, '다시 계산해 보세요.']], { pad: 15, valid: (v) => v > 0 && v < 360 })
+        tag: M.g.flat ? '두 변이 한 직선이 되는 경계' : M.g.concave ? '오목다각형에서 각의 크기' : '볼록다각형에서 각의 크기', key: `n${n}i${p.iv.join(',')}`,
+        stem: M.g.flat ? '그림에서 P와 양쪽의 이웃한 꼭짓점이 한 직선 위에 있다. P에서 두 변이 이루는 각 x의 크기는?' : `그림과 같은 ${M.g.concave ? '오목' : '볼록'}${n}각형에서 ${given}일 때, ${M.g.concave ? 'P에서 움푹 들어간 쪽의 각' : 'P의 내각'} $x$의 크기는?`,
+        choices: mkChoices(p.x, [[360 - p.x, M.g.concave ? 'P의 안쪽 각을 구했어요. 구하는 것은 움푹한 쪽의 각 x예요.' : 'P에서 바깥쪽의 큰 각을 구했어요. 구하는 것은 안쪽 각이에요.'], [p.others, M.g.concave ? '나머지 내각의 합이에요. 오각형 이상은 180°×(n−4)를 더 빼야 해요.' : `나머지 내각의 합이에요. 전체 ${S}°에서 빼야 해요.`], [180 - p.x > 0 ? 180 - p.x : p.x + 20, '다시 계산해 보세요.'], [S - p.others, '내각의 합에서 나머지를 뺀 안쪽 각이에요.'], [p.x + 20, '다시 계산해 보세요.']], { pad: 15, valid: (v) => v > 0 && v < 360 })
       };
     },
-    verify: (s) => { const M = concave.model(s); const g = M.gp, V = g.V, n = M.n; const raw = angBetween(V[0], V[n - 1], V[1]); const sm = g.ints.reduce((a, c) => a + c, 0); return { ans: raw, model: M.p.x, tol: 1.0001, extra: [[sm, M.S], [g.concave ? 1 : 0, 1]] }; }
+    verify: (s) => { const M = concave.model(s); const g = M.g, V = g.V, n = M.n; const raw = angBetween(V[0], V[n - 1], V[1]); const sm = g.ints.reduce((a, c) => a + c, 0); return { ans: raw, model: M.x, tol: 1e-7, extra: [[sm, M.S]] }; }
   };
 
   /* ====================================================================== 3. 외각의 합 360° */
@@ -232,7 +237,7 @@
     draw(b, s, M, C) {
       const { n, eps, V } = M, th = (() => { const t = [0]; for (let i = 1; i < n; i++) t[i] = t[i - 1] + eps[i]; return t; })();
       fit(b, { x0: -1.1, x1: 1.1, y0: -1.1, y1: 1.1 }, { t: 40, b: 90, l: 50, r: 50 });
-      const t = C.problem ? 0 : C.t, f = 1 - 0.97 * t, G0 = pt(0, 0), W = V.map((p) => lerp(G0, p, f));
+      const t = C.problem ? 0 : C.t, f = 1 - t, G0 = pt(0, 0), W = V.map((p) => lerp(G0, p, f));
       const showN = n <= 8, k = b.k || 60, rpx = 34 + 74 * G.ease(t), labelOn = !C.problem;
       fillPoly(b, W, 'sky', 0.08 * (1 - t));
       // 외각: 변을 늘인 선(점선) + 부채꼴
@@ -240,7 +245,7 @@
         const p = W[i], aIn = th[(i + n - 1) % n], aOut = i === 0 ? th[0] + 360 : th[i];
         const a0 = aIn, a1 = i === 0 ? 360 + th[0] : aOut; // 늘인 변 방향 → 다음 변 방향 (시계 방향으로 ε)
         const a1c = a0 + eps[i];
-        b.arc(p, rpx / k, a0 * DEG, a1c * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.34 : 0.5, color: 'rose', width: 2 });
+        b.arc(p, rpx / k, a0 * DEG, a1c * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.14 : 0.22, color: 'rose', width: 2 });
         if (t < 0.6) b.path([p, polar(p, 44 / k, a0)], { color: 'rose', width: 2, dash: [5, 4] });
         void a1; void a1c;
         if (C.txt && showN && labelOn && t < 0.95) {
@@ -302,7 +307,7 @@
       const showInt = g.kind === 'int' ? true : (C.full || st >= 1) && !C.problem;
       const showExt = g.kind === 'ext' ? true : showAllExt && !isX ? true : (isX && (C.full || st >= 3) && !C.problem);
       if (showInt) {
-        const lab = isX ? (C.problem ? 'x' : `x=${ints[i]}°`) : `${ints[i]}°`;
+        const lab = isX ? (C.problem || (C.review && st < 3) ? 'x' : `x=${ints[i]}°`) : `${ints[i]}°`;
         ang(b, p, u, w, { color: isX ? 'amber' : 'sky', r: 30, label: lab, size: 16, fa: isX ? 0.28 : 0.22 });
       }
       if (showExt) {
@@ -342,7 +347,7 @@
         const sumE = M.sum4;
         if (C.problem) r1 = '∠E = x 의 크기는?';
         else if (st === 1) { r1 = '내각 → 외각 : 180° − 내각'; c1 = 'rose'; }
-        else if (st === 2) { r1 = `외각 5개의 합 = 360°`; r2 = `${sumE}° + ${M.ex}° = 360°`; c1 = 'rose'; }
+        else if (st === 2) { r1 = `외각 5개의 합 = 360°`; r2 = `${sumE}° + (E의 외각) = 360°`; c1 = 'rose'; }
         else if (st === 3) { r1 = `E의 외각 = 360° − ${sumE}° = ${M.ex}°`; r2 = `x = 180° − ${M.ex}° = ${M.x}°`; c1 = 'rose'; }
         else { r1 = `외각의 합: ${sumE}° + ${M.ex}° = 360°`; r2 = `x = 180° − ${M.ex}° = ${M.x}°`; c1 = 'rose'; }
         T(b, pt(0, yb), r1, { dy: 74, size: b.W < 560 ? 16 : 17, color: c1 });
