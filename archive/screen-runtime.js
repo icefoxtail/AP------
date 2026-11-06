@@ -75,7 +75,12 @@
                 ctx.snapshotKey = N.computeSnapshotKey(ctx.candidate);
                 const cached = !sourceChange && canCache(ctx.candidate.mode) && currentSession.modeSnapshots[ctx.candidate.mode];
                 const force = ['FORCED_REBUILD', 'PRINT_STALE_REBUILD'].includes(ctx.intentType);
-                const hit = !force && cached?.status === 'READY' && cached.sessionId === ctx.requestedTargetSessionId && cached.key === ctx.snapshotKey && owners.get(cached.rootNode) === cached && adapter.canReuse?.(cached, ctx);
+                // Canceling an unfinished mode change can return to the still
+                // active healthy view. Revalidate that exact owned snapshot;
+                // invalidation and other intents keep their rebuild behavior.
+                const activeModeReturn = ctx.foreground && ctx.intentType === 'MODE_CHANGE' && cached === activeSnapshot &&
+                    cached?.status === 'ACTIVE' && currentSession.activeMode === cached.mode && currentSession.activeSnapshotKey === cached.key;
+                const hit = !force && (cached?.status === 'READY' || activeModeReturn) && cached.sessionId === ctx.requestedTargetSessionId && cached.key === ctx.snapshotKey && owners.get(cached.rootNode) === cached && adapter.canReuse?.(cached, ctx);
                 ctx.cacheStatus = hit ? 'HIT' : 'MISS';
                 ctx.result = hit ? await adapter.reuse(ctx, cached) : await adapter.build(ctx);
                 if (!isLatest(ctx)) throw new Error('DISCARDED_STALE');
@@ -142,7 +147,7 @@
                     ctx.committed = true;
                 } catch (error) {
                     if (oldSnapshot) oldSnapshot.status = oldStatus;
-                    snapshot.status = 'READY';
+                    if (snapshot !== oldSnapshot) snapshot.status = 'READY';
                     if (oldSession) Object.assign(oldSession, oldSessionFields);
                     currentSession = oldSession; activeSnapshot = oldSnapshot; committedCandidate = oldCandidate;
                     adapter.rollback(ctx, journal);

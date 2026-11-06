@@ -887,7 +887,10 @@ async function runCase(browser, server, fixture, name, work, params = {}, initia
     session = await bounded(P.openSession(browser, server, fixture, initialMode, false));
     session.page.setDefaultTimeout(remaining());
     const url = new URL(session.url);
-    for (const [key, value] of Object.entries(params)) url.searchParams.set(key, value);
+    for (const [key, value] of Object.entries(params)) {
+      if (value === null) url.searchParams.delete(key);
+      else url.searchParams.set(key, value);
+    }
     session.url = url.href;
     await session.page.goto(session.url, { waitUntil: 'domcontentloaded', timeout: remaining() });
     const outcome = await bounded(P.awaitInitialOutcome(session.page, fixture.kind === 'envelope'));
@@ -937,7 +940,8 @@ async function main() {
     await runCase(browser, server, envelope, 'final-readiness-failure-and-retry', finalReadinessFailure);
     await runCase(browser, server, envelope, 'pending-finalizer-decode-cancellation', abortPendingDecode);
     await runCase(browser, server, real50, 'known-real50-qpp4-clipping-preservation', knownReal50Clipping);
-    await runCase(browser, server, envelope, 'solution-qr-refreshes-request-canvas', solutionQrRefresh, { solQr: '1' });
+    await runCase(browser, server, envelope, 'solution-qr-refreshes-request-canvas', solutionQrRefresh,
+      { solQr: '1', portalQr: '0', submitQr: null, osqr: null });
     await runCase(browser, server, { ...envelope, id: 'cache-image-wait-real8-qpp1', qpp: 1 },
       'pending-exam-image-cancellation', abortPendingExamImage, {}, 'ans');
     report.pass = report.cases.length === 10 && report.cases.every(row => row.pass);

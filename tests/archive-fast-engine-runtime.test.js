@@ -271,6 +271,113 @@ test('cached foreground reuse still finalizes; background prewarm never publishe
     assert.deepEqual(finalized, ['exam', 'sol']);
 });
 
+test('returning to the active answer cancels a pending build and revalidates the same snapshot without rebuilding', async () => {
+    const built = [], reused = [], finalized = [], cleaned = [];
+    const f = fixture({ cacheModes: ['exam', 'sol', 'ans'],
+        canReuse: snapshot => snapshot.rootNode.mode === snapshot.mode,
+        reuse: async (ctx, snapshot) => {
+            reused.push(snapshot);
+            return { rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount };
+        },
+        finalize: async ctx => { finalized.push(ctx.candidate.mode); },
+        cleanup: root => { cleaned.push(root); }
+    });
+    const build = f.adapter.build;
+    f.adapter.build = async ctx => { built.push(ctx.candidate.mode); return build(ctx); };
+    await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+    const active = f.runtime.activeSnapshot, visible = f.state().visible, session = f.runtime.currentSession;
+    let enter;
+    const entered = new Promise(resolve => { enter = resolve; });
+    f.adapter.build = async ctx => {
+        built.push(ctx.candidate.mode);
+        if (ctx.candidate.mode === 'exam') {
+            enter();
+            await new Promise((_, reject) => ctx.abortSignal.addEventListener('abort', () => reject(Error('DISCARDED_STALE')), { once: true }));
+        }
+        return build(ctx);
+    };
+    const pending = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'exam' });
+    await entered;
+    const latest = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    let timer;
+    try {
+        const result = await Promise.race([Promise.all([pending, latest]), new Promise((_, reject) => {
+            timer = setTimeout(() => reject(Error('ACTIVE_RETURN_WAITED_FOR_STALE_BUILD')), 500);
+        })]);
+        assert.equal(result[0].code, 'DISCARDED_STALE');
+        assert.equal(result[1].ok, true);
+    } finally { clearTimeout(timer); }
+    assert.deepEqual(built, ['ans', 'exam']);
+    assert.deepEqual(reused, [active]);
+    assert.deepEqual(finalized, ['ans', 'ans'], 'full readiness still runs for the reused current view');
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.runtime.currentSession, session);
+    assert.equal(f.state().visible, visible);
+    assert.equal(active.status, 'ACTIVE');
+    assert.equal(cleaned.includes(visible), false, 'self reuse cannot retire the visible root');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.inspect().attempts.at(-2).committed, false);
+});
+
+test('failed active-snapshot finalization restores ACTIVE status and retries without losing the healthy root', async () => {
+    let builds = 0, fail = false;
+    const f = fixture({ cacheModes: ['exam', 'sol', 'ans'], canReuse: () => true,
+        reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount }),
+        finalize: async () => { if (fail) throw Error('ACTIVE_PDF_DECODE_FAILED'); }
+    });
+    const build = f.adapter.build;
+    f.adapter.build = async ctx => { builds++; return build(ctx); };
+    await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+    const before = { ...f.state(), session: f.runtime.currentSession, snapshot: f.runtime.activeSnapshot, candidate: f.runtime.committedCandidate };
+    fail = true;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' })).code, 'ACTIVE_PDF_DECODE_FAILED');
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.inspect().attempts.at(-1).committed, false);
+    assert.equal(f.runtime.currentSession, before.session);
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.currentSession.modeSnapshots.ans, before.snapshot);
+    assert.equal(before.snapshot.status, 'ACTIVE');
+    assert.equal(f.runtime.committedCandidate, before.candidate);
+    assert.equal(f.state().visible, before.visible);
+    assert.equal(f.state().committed, before.committed);
+    assert.equal(f.state().effectCount, before.effectCount);
+    fail = false;
+    assert.equal((await f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' })).ok, true);
+    assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'HIT');
+    assert.equal(f.runtime.activeSnapshot, before.snapshot);
+    assert.equal(f.runtime.activeSnapshot.status, 'ACTIVE');
+    assert.equal(builds, 1);
+});
+
+for (const reason of ['changed-key', 'corrupt-root', 'font-invalidation']) {
+    test(`active snapshot reuse still rebuilds for ${reason}`, async () => {
+        let builds = 0;
+        const f = fixture({ cacheModes: ['exam', 'sol', 'ans'],
+            prepare: async (input, ctx) => {
+                const value = candidate(ctx.requestedTargetSessionId, input.mode, input);
+                return N.createCandidate({ ...value, fingerprints: { ...value.fingerprints, engine: input.engineRevision || '1' } });
+            },
+            canReuse: snapshot => !snapshot.rootNode.corrupt,
+            reuse: async (ctx, snapshot) => ({ rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount })
+        });
+        const build = f.adapter.build;
+        f.adapter.build = async ctx => { builds++; return build(ctx); };
+        await f.runtime.request(req('SOURCE_CHANGE', { mode: 'ans' }));
+        const old = f.runtime.activeSnapshot;
+        if (reason === 'corrupt-root') old.rootNode.corrupt = true;
+        const intent = reason === 'font-invalidation' ? req('FONT_INVALIDATION') : {
+            type: 'MODE_CHANGE', requestedMode: 'ans', ...(reason === 'changed-key' ? { payload: { engineRevision: '2' } } : {})
+        };
+        assert.equal((await f.runtime.request(intent)).ok, true);
+        assert.equal(f.runtime.inspect().attempts.at(-1).cacheStatus, 'MISS');
+        assert.notEqual(f.runtime.activeSnapshot, old);
+        assert.equal(old.status, 'EVICTED');
+        assert.equal(builds, 2);
+        if (reason === 'font-invalidation') assert.equal(old.key, f.runtime.activeSnapshot.key,
+            'an invalidation intent must rebuild even if the adapter emits the same key');
+    });
+}
+
 test('a newer mode leaves a stalled finalizer decode without waiting for native completion', async () => {
     const f = fixture();
     await f.runtime.request(req('SOURCE_CHANGE'));

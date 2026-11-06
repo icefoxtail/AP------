@@ -310,17 +310,29 @@ function validateRepairedNetwork(report, output, artifacts) {
     diagnostic.summary?.images === results.length && diagnostic.summary.loaded === results.length - timedOut.length &&
     diagnostic.summary.errors === 0 && diagnostic.summary.timeouts === timedOut.length, 'REPAIRED_BASELINE_IMAGE_STATUS_CHANGED');
   const boundImages = timedOut.map(item => {
-    requireThat(item.reason === 'LOAD_TIMEOUT' && item.completeAtFailure === false && item.naturalWidth === 0 && item.naturalHeight === 0 &&
+    requireThat(item.reason === 'LOAD_TIMEOUT' && item.completeAtFailure === false &&
       item.inStagingHost === true && item.inTargetArea === false && typeof item.sourceRef === 'string' && isHash(item.imageUrlSha256),
     'REPAIRED_BASELINE_IMAGE_NOT_PENDING');
+    // Chrome may expose dimensions from an image header before the complete
+    // resource has loaded. H.capture records naturalWidth/naturalHeight, so a
+    // positive partial-header observation must exactly match that same ready
+    // image's intrinsic dimensions in every normal baseline repetition.
+    const unknownDimensions = item.naturalWidth === 0 && item.naturalHeight === 0;
+    requireThat(Number.isInteger(item.naturalWidth) && Number.isInteger(item.naturalHeight) &&
+      (unknownDimensions || item.naturalWidth > 0 && item.naturalHeight > 0), 'REPAIRED_BASELINE_IMAGE_DIMENSIONS_INVALID');
     let pageNumber;
     for (const reference of normalExam) {
       const pages = reference.pages.map((page, index) => ({ page, index })).filter(({ page }) => page.blocks.some(block => block.sourceRef === item.sourceRef));
-      requireThat(pages.length === 1 && pages[0].page.images.some(image => image.sourceHash === item.imageUrlSha256 && image.loaded === true &&
-        image.width > 0 && image.height > 0), 'REPAIRED_BASELINE_IMAGE_NOT_IN_PINNED_PAGE');
+      requireThat(pages.length === 1, 'REPAIRED_BASELINE_IMAGE_NOT_IN_PINNED_PAGE');
+      const matchingImages = pages[0].page.images.filter(image => image.sourceHash === item.imageUrlSha256 && image.loaded === true &&
+        image.width > 0 && image.height > 0);
+      requireThat(matchingImages.length > 0, 'REPAIRED_BASELINE_IMAGE_NOT_IN_PINNED_PAGE');
+      requireThat(unknownDimensions || matchingImages.every(image => image.width === item.naturalWidth && image.height === item.naturalHeight),
+        'REPAIRED_BASELINE_IMAGE_DIMENSIONS_MISMATCH');
       pageNumber = pages[0].index + 1;
     }
-    return { index: item.index, sourceRef: item.sourceRef, imageUrlSha256: item.imageUrlSha256, baselinePage: pageNumber };
+    return { index: item.index, sourceRef: item.sourceRef, imageUrlSha256: item.imageUrlSha256, baselinePage: pageNumber,
+      intrinsicDimensionsAtTimeout: { width: item.naturalWidth, height: item.naturalHeight }, intrinsicDimensionsKnown: !unknownDimensions };
   });
   const crossContext = [];
   for (const [operation, normalOperation] of [['ans-exam', 'cold-exam'], ['exam-sol-warm', 'exam-sol'], ['same-sol', 'exam-sol-warm']]) {

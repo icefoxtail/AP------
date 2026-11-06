@@ -423,6 +423,27 @@ test('repaired outputs need complete qualified normal/PDF references; missing ne
   rejectsRepair(input => { const row = input['network:envelope50-qpp1'].rows.find(item => item.label === 'current' && item.operation === 'ans-exam'); row.mathMarkupHash = hash('different math'); }, 'EXTENDED_OUTPUT_PARITY_CHANGED');
 });
 
+test('a pending image header may expose only the exact intrinsic dimensions verified by every ready baseline page', () => {
+  const pending = input => input['network:envelope50-qpp1'].rows.find(row => row.label === 'baseline' && row.operation === 'ans-exam').imageBuildFailures[0].results[0];
+  const input = repairedNetworkArtifacts();
+  Object.assign(pending(input), { naturalWidth: 420, naturalHeight: 300 });
+  const result = evaluate(input);
+  assert.deepEqual(result.failures, []);
+  assert.equal(result.scopedReleasePass, true);
+  assert.equal(result.rawReports['network:envelope50-qpp1'].pass, false);
+  assert.equal(result.repairs['network:envelope50-qpp1'].timedOutImages[0].intrinsicDimensionsKnown, true);
+  assert.deepEqual(result.repairs['network:envelope50-qpp1'].timedOutImages[0].intrinsicDimensionsAtTimeout, { width: 420, height: 300 });
+  rejectsRepair(value => { Object.assign(pending(value), { naturalWidth: 421, naturalHeight: 300 }); }, 'REPAIRED_BASELINE_IMAGE_DIMENSIONS_MISMATCH');
+  for (const [width, height] of [[0, 300], [420, 0], [-420, 300], [420, -300], [Infinity, 300], [420, NaN], [420.5, 300]])
+    rejectsRepair(value => { Object.assign(pending(value), { naturalWidth: width, naturalHeight: height }); }, 'REPAIRED_BASELINE_IMAGE_DIMENSIONS_INVALID');
+  rejectsRepair(value => {
+    Object.assign(pending(value), { naturalWidth: 420, naturalHeight: 300 });
+    for (const row of value.performance.rows.filter(row => row.fixture === 'envelope50-qpp1' && row.operation === 'cold-exam' && row.repeat === 3)) {
+      row.images[0].height = 301; row.pages[0].images[0].height = 301;
+    }
+  }, 'REPAIRED_BASELINE_IMAGE_DIMENSIONS_MISMATCH');
+});
+
 test('request-bound QR must rebuild actual pixels for the fresh request while retaining safe mode hits', () => {
   rejects(input => { input.cache.cases[8].examProofs[1].qr.expectedPixelSha256 = hash('stale QR'); }, 'QR_PIXELS_OR_IDENTITY_NOT_VERIFIED');
   rejects(input => { input.cache.cases[8].examProofs[1].qr.pixelSha256 = input.cache.cases[8].examProofs[0].qr.pixelSha256; }, 'QR_REQUEST_OR_PIXELS_STALE');
