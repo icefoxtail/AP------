@@ -5,6 +5,17 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createSolutionRenderExecutor(root) {
     'use strict';
 
+    // One shared semantic rule for all output adapters. This is the existing
+    // original-engine reminder-image rule, not a change to source image bytes.
+    // Install synchronously before any staging measurement; no extra request.
+    if (root?.document?.head && !root.document.getElementById('ap-solution-reminder-image-fit')) {
+        const style = root.document.createElement('style');
+        style.id = 'ap-solution-reminder-image-fit';
+        style.textContent = '.q-box.sol-box [data-semantic-content="1"] img { max-width: 100%; height: auto; }';
+        root.document.head.appendChild(style);
+    }
+
+
     // Avoid visually orphaning only a handful of final solution chunks in the
     // next column/page. Source line breaks and typography remain unchanged;
     // only the split boundary moves earlier when the trailing fragment is tiny.

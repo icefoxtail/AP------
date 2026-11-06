@@ -44,7 +44,7 @@
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="layout-materializer.js?v=20261102.2"></script>
-    <script src="solution-render-executor.js?v=20261106-output-performance-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="solution-render-executor.js?v=20261106-reminder-fit-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
@@ -55,7 +55,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261106-output-performance-1"></script>
+    <script src="screen-runtime-adapter.js?v=20261106-output-performance-2"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -249,9 +249,6 @@
         .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: 640px; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
-        /* The solution reminder repeats q.content in a [data-semantic-content] div, not .q-content,
-           so inline question images must be fitted to the solution column here (no crop/distortion). */
-        .q-box.sol-box [data-semantic-content="1"] img { max-width: 100%; height: auto; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }

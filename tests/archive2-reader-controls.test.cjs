@@ -27,12 +27,12 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261106-output-performance-1/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261106-output-performance-1/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261106-reminder-fit-1/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261106-reminder-fit-1/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
-  assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-1/);
+  assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-navigation-s5-3/);
   assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261031-recorded-use-1/);
 });
