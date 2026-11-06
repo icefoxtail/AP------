@@ -68,7 +68,8 @@
       return function (b, s, M, C, ST, idx) {
         const nw = b.W < 560, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
         const box = spec.box(M, s);
-        G.fit(b, box, { t: spec.padT || (nw ? 50 : 68), b: nw ? 126 : 132, l: spec.padL || 54, r: spec.padL || 54 });
+        const side = spec.padL || (nw ? 40 : 54);
+        G.fit(b, box, { t: spec.padT || (nw ? 48 : 68), b: idx < 0 ? (nw ? 72 : 80) : (nw ? 126 : 132), l: side, r: side });
         const X = { b, idx, cur, f, K, prob: idx < 0, nw, lf: G.fs(b, 14), at: (n) => f === n, has: (n) => idx >= 0 && ST.slice(0, idx + 1).some((q) => q.f === n) };
         X.xArc = X.prob || f === 'given' || f === 'eq' || f === 'ans'; X.xVal = f === 'ans';
         if (spec.base) spec.base(b, M, s, X);

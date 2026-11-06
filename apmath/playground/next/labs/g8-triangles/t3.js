@@ -183,8 +183,8 @@
     { id: 'h', t: '빗변만', cong: false, why: '모양이 달라질 수 있어요' }
   ];
   const r3 = {
-    id: 't3-3', title: '합동이 될 수 있을까? (반례)', short: '합동이 될 수 없는 경우',
-    question: '두 직각삼각형에서 어떤 조건이 같으면 합동이고, 어떤 조건은 합동이 아닐까?',
+    id: 't3-3', title: '합동이라고 할 수 있을까? (반례)', short: '합동 조건과 반례',
+    question: '두 직각삼각형에서 어떤 조건이면 반드시 합동이고, 어떤 조건만으로는 합동이라고 할 수 없을까?',
     presets: () => CASES.map((c, i) => ({ group: i === 0 ? '같은 조건' : '', label: c.t, apply: (s) => { s.trCase = i; }, on: (s) => (s.trCase || 0) === i })),
     ctl: (s) => ((s.trCase || 0) === 2 ? ['trSb', 'trSc'] : (s.trCase || 0) === 3 ? ['trSb', 'trSa'] : ['trSb']),
     init: (s) => { s.trCase = 0; s.trSb = 40; s.trSc = 6; s.trSa = 56; s.trQi = 0; },
@@ -235,7 +235,7 @@
       return [
         `두 직각삼각형 ABC, DEF에서 $\\angle C=\\angle F=90^{\\circ}$이에요. 이제 어떤 조건이 같은지 확인해요.`,
         `같은 조건: ${cs.t}. ${cs.cong ? '빗변과 다른 요소가 같아서 대응이 정해져요.' : '나머지 요소를 마음대로 바꿀 수 있어요.'}`,
-        cs.cong ? `따라서 두 삼각형은 합동이에요 (${cs.why}).` : `따라서 합동이 아니에요. ${M.k === 2 ? '세 각이 같아도 크기가 다른 삼각형(닮은 삼각형)이 만들어져요.' : '빗변이 같아도 예각이 다르면 다른 삼각형이에요.'}`
+        cs.cong ? `따라서 두 삼각형은 합동이에요 (${cs.why}).` : `이 조건만으로는 합동이라고 할 수 없어요. ${M.k === 2 ? '세 각이 같아도 크기가 다른 삼각형(닮은 삼각형)을 만들 수 있어요.' : '빗변이 같아도 다른 모양의 삼각형을 만들 수 있어요.'}`
       ];
     },
     view: (M) => ({
@@ -244,7 +244,7 @@
       status: M.same ? { tone: 'ok', text: `합동 (${CASES[M.k].why})` } : { tone: 'warn', text: '합동이 되지 않는 경우예요' },
       formula: `<p>직각삼각형의 합동 조건: RHA (빗변 + 한 예각), RHS (빗변 + 다른 한 변)</p><p>두 예각만, 또는 빗변만 같은 것은 합동 조건이 아니에요.</p>`,
       rule: '두 직각삼각형은 (빗변, 한 예각) 또는 (빗변, 다른 한 변)이 각각 같을 때 합동이다.',
-      notes: notes('두 <b>예각</b>이 모두 같아도 합동이 아니에요. 크기가 다른 삼각형(닮음)이 있어요.', '<b>빗변</b>이 같아도 한 가지 조건만으로는 합동이 되지 않아요.')
+      notes: notes('두 <b>예각</b>이 모두 같아도 크기가 다를 수 있으므로 합동이라고 단정할 수 없어요.', '<b>빗변</b>만 같은 조건은 합동을 보장하지 않아요. 합동인 예와 합동이 아닌 예를 모두 만들 수 있어요.')
     }),
     prob: (M, s) => {
       const key = 'q' + (s.trQi || 0), ask = (s.trQi || 0) % 2 === 0;
@@ -670,7 +670,7 @@
     { id: 'asa', h: `${ob('BC')}=${ob('EF')},\\ \\angle B=\\angle E`, cap: 'BC=EF, ∠B=∠E', cong: true, why: 'ASA 합동', m: { legB: 3, ang: 'B' }, T2: null },
     { id: 'rha2', h: `${ob('AB')}=${ob('DE')},\\ \\angle B=\\angle E`, cap: 'AB=DE, ∠B=∠E', cong: true, why: 'RHA 합동', m: { hyp: 1, ang: 'B' }, T2: null },
     { id: 'aa', h: '\\angle A=\\angle D,\\ \\angle B=\\angle E', cap: '∠A=∠D, ∠B=∠E', cong: false, why: '두 예각만 같아요', m: { ang: 'AB' }, T2: [6, 4.5], reason: '두 예각이 같아도 크기가 다른 닮은 삼각형을 만들 수 있어요.' },
-    { id: 'hyp', h: `${ob('AB')}=${ob('DE')}`, cap: 'AB=DE', cong: false, why: '빗변만 같아요', m: { hyp: 1 }, T2: [3, 4], reason: '빗변의 길이만 같으면 두 예각이 다른 삼각형을 만들 수 있어요.' },
+    { id: 'hyp', h: `${ob('AB')}=${ob('DE')}`, cap: 'AB=DE', cong: false, why: '빗변만 같아요', m: { hyp: 1 }, T2: [Math.sqrt(21), 2], reason: '빗변의 길이는 같지만 두 직각변의 길이가 원래 삼각형과 다른 삼각형을 만들 수 있어요.' },
     { id: 'angA', h: '\\angle A=\\angle D', cap: '∠A=∠D', cong: false, why: '한 예각만 같아요', m: { ang: 'A' }, T2: [6, 4.5], reason: '한 예각만 같으면 크기가 다른 삼각형을 만들 수 있어요.' },
     { id: 'legA', h: `${ob('AC')}=${ob('DF')}`, cap: 'AC=DF', cong: false, why: '한 직각변만 같아요', m: { legA: 2 }, T2: [4, 2], reason: '한 직각변만 같으면 다른 변이 달라질 수 있어요.' },
     { id: 'legB', h: `${ob('BC')}=${ob('EF')}`, cap: 'BC=EF', cong: false, why: '한 직각변만 같아요', m: { legB: 3 }, T2: [2, 3], reason: '한 직각변만 같으면 다른 변이 달라질 수 있어요.' }
@@ -688,8 +688,8 @@
       steps.push({ id: 'cong', k: 'fig', lb: '합동 판정', t: `직각을 빼고도 같은 것이 합동 조건에 맞아요. 따라서 △ABC≡△DEF (${c.why})이에요.`, cap: `△ABC≡△DEF (${c.why})` });
       steps.push({ id: 'ans', k: 'ans', t: `합동이에요 (${c.why})`, cap: `합동이다 (${c.why})` });
     } else {
-      steps.push({ id: 'cong', k: 'fig', lb: '반례 찾기', t: `${c.reason} 그림의 점선 삼각형은 같은 표시를 그대로 두고 모양만 바꾼 삼각형이에요. 합동이 아니에요.`, cap: '같은 표시는 그대로, 모양은 다른 삼각형 → 합동이 아니에요' });
-      steps.push({ id: 'ans', k: 'ans', t: `합동이 아니에요 (${c.why})`, cap: `합동이 아니다 (${c.why})` });
+      steps.push({ id: 'cong', k: 'fig', lb: '반례 찾기', t: `${c.reason} 점선 삼각형은 주어진 같은 조건을 유지하면서 원래 삼각형과 합동이 아닌 예예요. 같은 조건으로 합동인 예도 있으므로, 주어진 조건만으로는 합동이라고 할 수 없어요.`, cap: '주어진 조건은 같아도 합동이 아닌 예가 있어요' });
+      steps.push({ id: 'ans', k: 'ans', t: `주어진 조건만으로는 합동이라고 할 수 없어요 (${c.why}).`, cap: '조건이 부족해 합동을 보장할 수 없어요' });
       steps.push({ id: 'trap', k: 'trap', t: '직각 하나만 같은 것으로는 부족해요. 합동 조건에 맞는 요소(변·각)이 충분한지 꼭 확인해요.', cap: '합동 조건에 맞는 요소가 충분한지 확인!' });
     }
     [[T1, 1], [U, 2]].forEach(([Tr]) => {
@@ -711,10 +711,10 @@
   };
   r3.solve = mkSolve(r3Plan);
   r3.prob = (M, s) => {
-    const c = r3Pick(s), key = 'q' + (s.trQi || 0), ans = c.cong ? `합동이에요 (${c.why})` : `합동이 아니에요 (${c.why})`;
+    const c = r3Pick(s), key = 'q' + (s.trQi || 0), ans = c.cong ? `합동이에요 (${c.why})` : `주어진 조건만으로는 합동이라고 할 수 없어요 (${c.why}).`;
     return {
-      tag: c.cong ? '직각삼각형의 합동 조건 · 합동이 되는 경우' : '[함정] 직각삼각형의 합동 조건 · 합동이 되지 않는 경우', key,
-      stem: `그림과 같이 $\\angle C=\\angle F=90^{\\circ}$인 두 직각삼각형 ABC, DEF에서 $${c.h}$이다. 두 삼각형은 합동인가? 합동이면 합동 조건을, 아니면 그 이유를 말하시오.`,
+      tag: '직각삼각형의 합동 조건 · 주어진 조건으로 판단하기', key,
+      stem: `그림과 같이 $\\angle C=\\angle F=90^{\\circ}$인 두 직각삼각형 ABC, DEF에서 $${c.h}$이다. 주어진 조건만으로 두 삼각형이 반드시 합동이라고 할 수 있는가? 합동 조건 또는 반례로 설명하시오.`,
       ansHTML: ans, choices: [{ t: '', p: ans, ok: true, hint: '' }]
     };
   };

@@ -370,6 +370,64 @@
   }
   const showAt = (C, n) => C.step >= n;
 
+  // 각·길이·점 이름을 화면 크기에 맞춰 서로 떨어뜨립니다. 도형의 좌표나
+  // 수학적 대응색은 그대로 두고, 움직인 짧은 라벨에는 지시선을 남깁니다.
+  function layoutLabels(b, draw) {
+    if (b.thumb || b._bbox || !b.toS || !b.toW) { draw(); return; }
+    const original = b.text, queue = [];
+    b.text = (p, str, o = {}) => {
+      if (str != null && str !== '' && o.alpha !== 0) queue.push({ p, str: String(str), o: { ...o } });
+      return b;
+    };
+    try { draw(); } finally { b.text = original; }
+    const boxes = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
+    const isName = (s) => /^(?:[A-Z](?:[′']|=[A-Z])?|ℓ)$/.test(s);
+    const measure = (str, o) => {
+      const size = Math.max(14, o.size || 16), scaled = size * (b.fs || 1) * (b._ts ? b._ts() : 1), c = b.ctx;
+      const widthOf = (text, fontSize) => {
+        if (!c || !c.measureText) return textW(text, fontSize);
+        c.font = `${o.weight || 800} ${fontSize}px ${b.font}`;
+        return c.measureText(text).width;
+      };
+      if (c) c.save();
+      const parts = b._fracSplit ? b._fracSplit(str) : null;
+      let width;
+      if (parts) {
+        const small = Math.max(scaled * .72, Math.min(scaled * .9, 9.5));
+        width = parts.reduce((n, p) => n + (p.t != null ? widthOf(p.t, scaled) : Math.max(widthOf(p.n, small), widthOf(p.d, small)) + small * .34), 0);
+      } else width = widthOf(str.replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, (_, n, d) => textW(n, 1) >= textW(d, 1) ? n : d), scaled);
+      if (c) c.restore();
+      return { size, width: Math.min(b.W - 24, width + 8), height: scaled * (parts || /\\frac/.test(str) ? 1.7 : 1.12) + 6 };
+    };
+    queue.sort((a, z) => Number(!isName(a.str)) - Number(!isName(z.str)));
+    for (const { p, str, o } of queue) {
+      const anchor = b.toS(b._P ? b._P(p) : p), m = measure(str, o);
+      const align = o.align || 'center', shift = align === 'left' || align === 'start' ? (m.width - 8) / 2 : align === 'right' || align === 'end' ? -(m.width - 8) / 2 : 0;
+      const x0 = anchor.x + (o.dx || 0) + shift, y0 = anchor.y + (o.dy || 0), long = m.width > b.W * .65;
+      const candidates = [[0, 0]];
+      for (const d of [12, 24, 38, 54]) {
+        candidates.push([0, -d], [0, d]);
+        if (!long) candidates.push([-d, 0], [d, 0], [-d, -d * .6], [d, -d * .6], [-d, d * .6], [d, d * .6]);
+      }
+      let best;
+      for (const [dx, dy] of candidates) {
+        const x = clamp(x0 + dx, 10 + m.width / 2, b.W - 10 - m.width / 2);
+        const y = clamp(y0 + dy, (b.insets.top || 0) + 8 + m.height / 2, b.H - (b.insets.bottom || 0) - 8 - m.height / 2);
+        const box = { l: x - m.width / 2, r: x + m.width / 2, t: y - m.height / 2, b: y + m.height / 2 };
+        const score = boxes.reduce((n, q) => n + overlap(q, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
+        if (!best || score < best.score) best = { x, y, box, score };
+      }
+      if (!long && Math.hypot(best.x - x0, best.y - y0) > 16) {
+        const from = isName(str) ? anchor : { x: x0, y: y0 }, dx = best.x - from.x, dy = best.y - from.y, d = Math.hypot(dx, dy) || 1;
+        const edge = Math.min(d, Math.abs(dx / d) * m.width / 2 + Math.abs(dy / d) * m.height / 2 + 3);
+        if (d > edge + 3) line(b, b.toW(from.x, from.y), b.toW(best.x - dx / d * edge, best.y - dy / d * edge), o.color || 'ink', 1, { alpha: .45 });
+      }
+      original.call(b, p, str, { ...o, size: m.size, dx: best.x - anchor.x - shift, dy: best.y - anchor.y });
+      boxes.push({ ...best.box, text: str });
+    }
+    b.trLabels = boxes;
+  }
+
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
@@ -391,6 +449,7 @@
   }
   function answerText(D, s) {
     const Q = D.prob(D.model(s), s), i = Q.choices.findIndex((o) => o.ok);
+    if (Q.ansHTML != null || Q.ansHtml != null) return Q.ansHTML != null ? Q.ansHTML : Q.ansHtml;
     const o = Q.choices[i];
     return `${NUM[i]} ${o.h != null ? o.h : '$' + o.t + '$'}`;
   }
@@ -573,12 +632,12 @@
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        if (SV && !b.thumb && (C.problem || C.review)) { // 문제·풀이 그림은 같은 그리기(같은 숫자·같은 배치)로
-          const ST = SV.steps(M, s);
-          SV.draw(b, s, M, C, ST, C.problem ? -1 : clamp((s.step || 1) - 1, 0, ST.length - 1));
-          return;
-        }
-        D.draw(b, s, M, C);
+        layoutLabels(b, () => {
+          if (SV && !b.thumb && (C.problem || C.review)) { // 문제·풀이 그림은 같은 그리기(같은 숫자·같은 배치)로
+            const ST = SV.steps(M, s);
+            SV.draw(b, s, M, C, ST, C.problem ? -1 : clamp((s.step || 1) - 1, 0, ST.length - 1));
+          } else D.draw(b, s, M, C);
+        });
       }
     };
   }
@@ -633,7 +692,8 @@
     const ids = pl.steps.map((s) => s.id || s.k);
     const ix = (v, d) => (v == null ? d : typeof v === 'number' ? v : Math.max(0, ids.indexOf(v)));
     const cur = idx < 0 ? 0 : idx, nar = b.W < 560;
-    fit(b, bboxOf(pl.fit), { t: pl.t != null ? pl.t : 60, b: idx < 0 ? (pl.bp != null ? pl.bp : 44) : (nar ? 112 : 100), l: pl.l != null ? pl.l : 50, r: pl.r != null ? pl.r : 50 });
+    const sidePad = (v) => nar ? Math.max(28, (v == null ? 50 : v) - 8) : v == null ? 50 : v;
+    fit(b, bboxOf(pl.fit), { t: pl.t != null ? pl.t : nar ? 48 : 60, b: idx < 0 ? (pl.bp != null ? pl.bp : 44) : (nar ? 104 : 100), l: sidePad(pl.l), r: sidePad(pl.r) });
     const stateOf = (it) => {
       if (idx < 0 && it.noProb) return null;
       const set = it.on ? it.on.map((v) => ix(v, 0)) : null, a = set ? Math.min(...set) : ix(it.at, 0);
