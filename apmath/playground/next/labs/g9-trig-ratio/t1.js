@@ -43,12 +43,16 @@
   const degOf = (a, b) => Math.atan2(a, b) / DEG;
   const same = (x, y) => vtex(x) === vtex(y);
 
+  // The wide shell floats its toolbar over the lower-right corner (right inset
+  // 16); narrow layouts already reserve the toolbar with a bottom inset.
+  const toolbarBottomPad = (b) => !b.thumb && b.insets.right > 0 ? 32 : 0;
+
   /* ---- 문제 그림: 직각삼각형(공용) ---- */
   // f = { a, b(모양용 실수), mirror, rot, names, side:{a,b,c:{t,c}}, angA:{t,c}, angB:{t,c}, ticks, notes:[{t,c}] }
   function pdrawRT(b, f, C = {}) {
     const g = rtGeo(f.a, f.b, { mirror: f.mirror, rot: f.rot });
     const nn = (f.notes || []).length;
-    fit(b, rtBox(g), { t: 44, b: 52 + nn * 28, l: 60, r: 60 });
+    fit(b, rtBox(g), { t: 44, b: 52 + nn * 28 + toolbarBottomPad(b), l: 60, r: 60 });
     const base = f.swap && C.review && C.step >= 3 ? 'B' : f.reference || 'A';
     const roles = roleFor(base), col = colFor(base), showRole = C.review && C.step >= 2;
     const side = Object.fromEntries(Object.entries(f.side || {}).map(([k, v]) => [k, { ...v }]));
@@ -208,11 +212,11 @@
       const nm = nmRand(), t = pick(TRI), a = vi(t[0]), b = vi(t[1]), c = vi(t[2]), rv = rtVals(a, b);
       const A = nm.A, B = nm.B;
       const forms = [
-        { s: `\\sin ${A}+\\cos ${B}`, v: vmul(vi(2), rv.sA), w: [[rv.sA, 'sin A 하나만 구했어요. cos B도 더해요.'], [vadd(rv.sA, rv.sB), 'cos B 는 sin B 가 아니라 sin A 와 같아요.'], [vmul(vi(2), rv.sB), '대변과 이웃변이 바뀌었어요.'], [vi(1), '$\\sin^2 A+\\cos^2 A$ 가 아니에요.']] },
-        { s: `\\sin ${A}\\times\\cos ${B}`, v: vmul(rv.sA, rv.cB), w: [[vmul(rv.sA, rv.cA), 'cos B 가 아니라 cos A 를 곱했어요.'], [rv.sA, 'cos B 를 곱하지 않았어요.'], [vmul(rv.sB, rv.cB), '기준각이 B로 바뀌었어요.'], [vmul(rv.sA, rv.sB), 'sin A 와 sin B 를 곱했어요.']] },
-        { s: `\\cos ${A}+\\sin ${B}`, v: vmul(vi(2), rv.cA), w: [[rv.cA, 'cos A 하나만 구했어요. sin B도 더해요.'], [vmul(vi(2), rv.sA), '대변과 이웃변이 바뀌었어요.'], [vadd(rv.cA, rv.cB), 'sin B 는 cos B 가 아니라 cos A 와 같아요.'], [vi(1), '$\\sin^2 A+\\cos^2 A$ 가 아니에요.']] },
-        { s: `\\tan ${A}\\times\\tan ${B}`, v: vi(1), w: [[rv.tA, 'tan B 를 곱하지 않았어요.'], [vadd(rv.tA, rv.tB), '곱이 아니라 합을 구했어요.'], [vmul(rv.sA, rv.cA), 'tan 이 아니라 sin·cos 를 곱했어요.'], [rv.tB, 'tan A 를 곱하지 않았어요.']] },
-        { s: `\\sin ${A}\\times\\sin ${B}`, v: vmul(rv.sA, rv.sB), w: [[vmul(rv.sA, rv.sA), 'sin B 가 아니라 sin A 를 곱했어요.'], [vadd(rv.sA, rv.sB), '곱이 아니라 합을 구했어요.'], [vmul(rv.cA, rv.sB), 'sin A 가 아니라 cos A 예요.'], [vmul(rv.tA, rv.sB), 'tan 을 곱했어요.']] }
+        { s: `\\sin ${A}+\\cos ${B}`, v: vmul(vi(2), rv.sA), w: [[rv.sA, `sin ${A} 하나만 구했어요. cos ${B}도 더해요.`], [vadd(rv.sA, rv.sB), `cos ${B} 는 sin ${B} 가 아니라 sin ${A} 와 같아요.`], [vmul(vi(2), rv.sB), '대변과 이웃변이 바뀌었어요.'], [vi(1), `$\\sin^2 ${A}+\\cos^2 ${A}$ 가 아니에요.`]] },
+        { s: `\\sin ${A}\\times\\cos ${B}`, v: vmul(rv.sA, rv.cB), w: [[vmul(rv.sA, rv.cA), `cos ${B} 가 아니라 cos ${A} 를 곱했어요.`], [rv.sA, `cos ${B} 를 곱하지 않았어요.`], [vmul(rv.sB, rv.cB), `기준각이 ${B}로 바뀌었어요.`], [vmul(rv.sA, rv.sB), `sin ${A} 와 sin ${B} 를 곱했어요.`]] },
+        { s: `\\cos ${A}+\\sin ${B}`, v: vmul(vi(2), rv.cA), w: [[rv.cA, `cos ${A} 하나만 구했어요. sin ${B}도 더해요.`], [vmul(vi(2), rv.sA), '대변과 이웃변이 바뀌었어요.'], [vadd(rv.cA, rv.cB), `sin ${B} 는 cos ${B} 가 아니라 cos ${A} 와 같아요.`], [vi(1), `$\\sin^2 ${A}+\\cos^2 ${A}$ 가 아니에요.`]] },
+        { s: `\\tan ${A}\\times\\tan ${B}`, v: vi(1), w: [[rv.tA, `tan ${B} 를 곱하지 않았어요.`], [vadd(rv.tA, rv.tB), '곱이 아니라 합을 구했어요.'], [vmul(rv.sA, rv.cA), 'tan 이 아니라 sin·cos 를 곱했어요.'], [rv.tB, `tan ${A} 를 곱하지 않았어요.`]] },
+        { s: `\\sin ${A}\\times\\sin ${B}`, v: vmul(rv.sA, rv.sB), w: [[vmul(rv.sA, rv.sA), `sin ${B} 가 아니라 sin ${A} 를 곱했어요.`], [vadd(rv.sA, rv.sB), '곱이 아니라 합을 구했어요.'], [vmul(rv.cA, rv.sB), `sin ${A} 가 아니라 cos ${A} 예요.`], [vmul(rv.tA, rv.sB), 'tan 을 곱했어요.']] }
       ];
       const f = pick(forms), mirror = Math.random() < 0.4;
       const q = {
@@ -282,7 +286,7 @@
         const wr = [];
         ['s', 'c', 't'].forEach((k) => { if (k !== ask) { const w = { s: rv.sA, c: rv.cA, t: rv.tA }[k]; wr.push([w, '다른 삼각비예요. 구하는 것이 무엇인지 확인해요.']); } });
         wr.push([vdiv(vi(1), val), '분자와 분모를 거꾸로 썼어요.']);
-        wr.push([{ s: rv.sB, c: rv.cB, t: rv.tB }[ask], '기준각이 ∠B 로 바뀌었어요.']);
+        wr.push([{ s: rv.sB, c: rv.cB, t: rv.tB }[ask], `기준각이 ∠${nm.B} 로 바뀌었어요.`]);
         q = {
           tag: '삼각비 하나로 나머지 구하기', key: ['r12', 'ratio', fn, ask, t.join(','), nm.A + nm.B + nm.C, mirror].join('|'),
           stem: `$\\angle ${nm.C}=90^{\\circ}$인 직각삼각형 ${triName(nm)}에서 $${gtex}$일 때, $${FN[ask]} ${nm.A}$의 값은?`,
@@ -344,7 +348,7 @@
   function drawNest(b, N, o = {}) {
     const { A, feet, tops } = N, st = o.step == null ? 99 : o.step;
     const xmax = N.us[2];
-    fit(b, bboxOf([A, feet[2], tops[2]]), { t: 44, b: 52 + (o.rows ? o.rows.length * 26 : 0), l: 52, r: 54 });
+    fit(b, bboxOf([A, feet[2], tops[2]]), { t: 44, b: 52 + (o.rows ? o.rows.length * 26 : 0) + toolbarBottomPad(b), l: 52, r: 54 });
     const cols = ['sky', 'green', 'rose'];
     if (st >= 1) { fillPoly(b, [A, feet[0], tops[0]], cols[0], 0.2); fillPoly(b, [feet[0], feet[1], tops[1], tops[0]], cols[1], 0.16); fillPoly(b, [feet[1], feet[2], tops[2], tops[1]], cols[2], 0.14); }
     line(b, A, feet[2], 'ink', 3.4); line(b, A, tops[2], 'ink', 3.4);

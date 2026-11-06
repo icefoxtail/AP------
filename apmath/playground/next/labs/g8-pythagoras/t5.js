@@ -59,31 +59,55 @@
       // 바깥 변: sAB 의 A 쪽이 아닌 변(꼭짓점 두 개)
       const br1 = branch(sAB[2], sAB[3], cen, th1), br2 = branch(sAC[3], sAC[2], cen, th2);
       const all = [A, B, Cc, ...sBC, ...sAB, ...sAC, ...br1.s1, ...br1.s2, ...br2.s1, ...br2.s2];
-      fit(b, bboxOf(all), { t: 24, b: 26, l: 24, r: 24 });
+      const box = bboxOf(all); let compact = b.W < 560;
+      fit(b, box, { t: 24, b: compact ? 66 : 26, l: 24, r: compact ? 60 : 24 });
+      if (!compact && Math.min(p, q) * b.k < 72) {
+        compact = true;
+        fit(b, box, { t: 24, b: 76, l: 24, r: 60 });
+      }
       const st = (n) => !C.review || C.step >= n;
-      const sh = (k) => (prob ? (shade === 'all' || (shade === 'ab' && k === 1)) : st(k === 1 ? 3 : 4));
-      drawSq(b, sBC, 'amber', prob ? '' : `BC²=${w2}`, { size: 14 });
-      drawSq(b, sAB, 'sky', prob ? '' : `AB²=${p * p}`, { size: 14 });
-      drawSq(b, sAC, 'green', prob ? '' : `AC²=${q * q}`, { size: 14 });
-      if (st(2) || prob) {
+      const selected = (k) => !C.givens || shade === 'all' || k === 1;
+      const sh = (k) => selected(k) && (C.givens || st(k === 1 ? 3 : 4));
+      const labBC = prob ? '' : C.answer ? `BC²=${w2}` : 'BC²';
+      const labAB = prob ? '' : C.full || C.step >= 3 ? `AB²=${p * p}` : 'AB²';
+      const labAC = prob || C.givens && shade === 'ab' ? '' : C.full || C.step >= 4 ? `AC²=${q * q}` : 'AC²';
+      drawSq(b, sBC, 'amber', compact ? '' : labBC, { size: 14 });
+      drawSq(b, sAB, 'sky', compact ? '' : labAB, { size: 14 });
+      drawSq(b, sAC, 'green', compact ? '' : labAC, { size: 14 });
+      if (compact && !prob) {
+        const foot = pt((box.x0 + box.x1) / 2, box.y1);
+        [[labAB, 'sky', -88], [labAC, 'green', 0], [labBC, 'amber', 88]].forEach(([text, color, dx]) => T(b, foot, text, { dx, dy: 30, size: 14, color }));
+      }
+      if (st(2) || C.givens) {
         [[br1, 1], [br2, 2]].forEach(([br, k]) => {
           fillPoly(b, br.tri, 'ink', 0.08); poly(b, br.tri, 'ink', 2.4);
           b.right(br.W, br.tri[0], br.tri[1], { size: 9, color: 'amber' });
           const on = sh(k);
-          drawSq(b, br.s1, 'rose', '', { fa: on ? 0.34 : 0.1, w: 2.2 }); drawSq(b, br.s2, 'rose', '', { fa: on ? 0.34 : 0.1, w: 2.2 });
-          if (!prob) { T(b, cenOf(br.s1), 'S₁', { size: 14, color: 'rose' }); T(b, cenOf(br.s2), 'S₂', { size: 14, color: 'rose' }); }
+          const col = selected(k) ? 'rose' : 'muted';
+          drawSq(b, br.s1, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 }); drawSq(b, br.s2, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 });
+          if (!prob && selected(k)) {
+            if (compact && (k === 1 ? p : q) * b.k < 55) {
+              // 작은 가지의 정사각형 이름은 바깥 지시선으로 분리합니다.
+              const bb = bboxOf([...br.s1, ...br.s2]), cy = (bb.y0 + bb.y1) / 2;
+              [br.s1, br.s2].forEach((sq, j) => {
+                const at = pt(bb.x1 + 12 / b.k, cy + (j ? 16 : -16) / b.k);
+                line(b, cenOf(sq), at, col, 1.2);
+                T(b, at, k === 1 ? (j ? 'S₂' : 'S₁') : (j ? 'S₄' : 'S₃'), { dx: 5, align: 'left', size: 14, color: col });
+              });
+            } else { T(b, cenOf(br.s1), k === 1 ? 'S₁' : 'S₃', { size: 14, color: col }); T(b, cenOf(br.s2), k === 1 ? 'S₂' : 'S₄', { size: 14, color: col }); }
+          }
         });
       }
       fillPoly(b, [A, B, Cc], 'ink', 0.1); poly(b, [A, B, Cc], 'ink', 3.2);
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', 0, -1], [B, 'B', -1, 1], [Cc, 'C', 1, 1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 16 }); });
-      if (prob) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
+      if (C.givens) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
     },
     steps: (M) => [
-      `직각삼각형 ABC의 세 변 위에 정사각형을 세워요. 넓이는 $AB^2=${M.p * M.p}$, $AC^2=${M.q * M.q}$, $BC^2=${M.w2}$예요.`,
-      `AB 위 정사각형의 바깥 변을 빗변으로 하는 직각삼각형을 그리고, 그 두 직각변 위에 정사각형(S₁, S₂)을 세워요. 다른 쪽(AC)도 같게 해요.`,
-      `새 직각삼각형에서 $S_1+S_2$는 빗변 위 정사각형의 넓이와 같아요. 그러므로 AB 쪽 두 정사각형의 합은 $AB^2=${M.p * M.p}$예요.`,
-      `AC 쪽 두 정사각형의 합은 $AC^2=${M.q * M.q}$예요. 색칠한 네 정사각형의 넓이의 합은 $${M.p * M.p}+${M.q * M.q}=${M.w2}$ (= $BC^2$)예요.`
+      `$AB=${M.p}$, $AC=${M.q}$예요. 구하는 것은 ${M.shade === 'ab' ? 'AB 쪽 두 정사각형' : '양쪽 네 정사각형'}의 넓이의 합이에요.`,
+      `가지의 직각삼각형에 피타고라스 정리를 적용해요. 두 직각변 위 정사각형의 넓이의 합은 빗변 위 정사각형의 넓이와 같아요.`,
+      `AB 쪽 두 정사각형을 묶으면 넓이가 $AB^2=${M.p}^2=${M.p * M.p}$예요. 가지의 모양은 이 합을 바꾸지 않아요.`,
+      M.shade === 'ab' ? `AC 쪽은 색칠하지 않았어요. 따라서 구하는 합은 $${M.p * M.p}$예요.` : `AC 쪽도 $AC^2=${M.q}^2=${M.q * M.q}$이므로 네 정사각형의 합은 $${M.p * M.p}+${M.q * M.q}=${M.w2}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>AB, AC의 길이</b>와 두 가지의 <b>모양(각도)</b>을 바꿔 보세요. 가지의 모양이 달라져도 <b>두 정사각형의 합</b>은 바깥 변 위 정사각형의 넓이로 늘 같아요.',
@@ -117,16 +141,17 @@
     draw(b, s, M, C) {
       const { S1, S2, S3, unk } = M, prob = C.problem;
       const a = Math.sqrt(S1), bq = Math.sqrt(S2); // 그림을 그릴 때만 쓰는 길이 (변의 길이는 적지 않음)
-      const lab = (k, v) => (prob && unk === k ? 'x' : `${v}`);
+      const lab = (k, v) => (!C.answer && unk === k ? 'x' : `${v}`);
       figRt(b, a, bq, C, {
         sq: true, bt: 30, t: 30, names: ['A', 'B', 'C'], sqLab: { a: lab('a', S1), b: lab('b', S2), c: lab('c', S3) }, sqSize: 20,
-        at: { sa: 1, sb: 1, sc: 2 }
+        at: { sa: 1, sb: 1, sc: 1 }
       });
     },
     steps: (M) => [
-      `직각삼각형의 세 변 위 정사각형의 넓이는 두 직각변 위 정사각형의 넓이의 합이 빗변 위 정사각형의 넓이예요. (파랑 ${M.S1}, 초록 ${M.S2})`,
-      `빗변 위 정사각형의 넓이 $=${M.S1}+${M.S2}=${M.S3}$예요.`,
-      `직각변 위 정사각형의 넓이를 구할 때는 (빗변 위) − (다른 직각변 위)로 빼요: 예) $${M.S3}-${M.S1}=${M.S2}$.`
+      M.unk === 'c' ? `직각변 위 두 정사각형의 넓이는 $${M.S1}$, $${M.S2}$예요. 빗변 위의 넓이를 $x$라 놓아요.` : `빗변 위 넓이는 $${M.S3}$, 한 직각변 위 넓이는 $${M.S1}$예요. 다른 직각변 위의 넓이를 $x$라 놓아요.`,
+      `직각 표시를 찾아 빗변 위 정사각형을 확인해요. (하늘색 넓이)+(초록색 넓이)=(노란 넓이)예요.`,
+      M.unk === 'c' ? `$x=${M.S1}+${M.S2}$로 더해요.` : `$${M.S1}+x=${M.S3}$이므로 $x=${M.S3}-${M.S1}$로 빼요.`,
+      `구하는 정사각형의 넓이는 $x=${M.unk === 'c' ? M.S3 : M.S2}$예요. 주어진 수가 이미 넓이이므로 다시 제곱하지 않아요.`
     ],
     view: (M) => ({
       guide: '막대로 두 직각변 위 정사각형의 <b>넓이</b>를 바꿔 보세요. 정사각형의 한 변의 길이는 몰라도 <b>넓이끼리</b> 계산해서 구할 수 있어요.',
@@ -160,25 +185,28 @@
       const A = pt(0, 0), B = pt(0, h), Cc = pt(w, h), D = pt(w, 0), cen = pt(w / 2, h / 2), R = Math.sqrt(d2) / 2;
       const dd = Math.sqrt(d2);
       const edges = [[A, D], [D, Cc], [Cc, B], [B, A]];
-      fit(b, bboxOf(edges.flatMap(([p, q]) => semiPts(p, q, cen)).concat([A, B, Cc, D])), { t: 28, b: 34, l: 28, r: 28 });
+      const box = bboxOf(edges.flatMap(([p, q]) => semiPts(p, q, cen)).concat([A, B, Cc, D]));
+      fit(b, box, { t: 28, b: C.answer ? 64 : 34, l: 28, r: 28 });
       const st = (n) => !C.review || C.step >= n;
-      const showLune = st(3) || prob;
-      if (showLune) outsideCircle(b, cen, R, () => { edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { close: true, fill: 'amber', fillAlpha: 0.5, color: null }); }); });
+      const showLune = st(3) || C.givens;
+      if (showLune) outsideCircle(b, cen, R, () => { edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); }); });
       edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { color: 'amber', width: 2.6 }); });
-      b.circle(cen, R, { color: 'sky', width: st(2) ? 2.6 : 1.4, dash: [6, 5] });
+      b.circle(cen, R, { color: 'rose', width: st(2) ? 2.6 : 1.4, dash: [6, 5] });
       fillPoly(b, [A, B, Cc, D], 'ink', 0.1); poly(b, [A, B, Cc, D], 'ink', 3.4);
-      if (prob && kind === 1 || (!prob && st(2))) line(b, A, Cc, 'sky', 2.4, { dash: [6, 5] });
+      if (C.givens && kind === 1 || (!prob && st(2))) line(b, A, Cc, 'amber', 2.4, { dash: [6, 5] });
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cc, 'C', 1, 1], [B, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 14, size: 17 }); });
       // 길이: 문제 kind=1 은 가로와 대각선, kind=0 은 가로·세로
       T(b, mid(A, D), `${w}`, { dy: 18, size: 17, color: 'sky' });
-      if (!prob || kind === 0) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
-      if (prob && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'sky' });
-      if (!prob && C.txt && st(3)) T(b, cen, `색칠 = ${w}×${h} = ${w * h}`, { size: 17, color: 'amber' });
+      if (C.full || kind === 0 || C.review && C.step >= 2) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
+      if (C.givens && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'amber' });
+      if (C.answer && C.txt) T(b, pt(cen.x, box.y1), `색칠 = ${w}×${h} = ${w * h}`, { dy: 28, size: 17, color: 'amber' });
     },
     steps: (M) => [
-      `직사각형의 대각선 $AC$는 외접원의 지름이에요. 대각선의 제곱은 $AC^2=${M.w}^2+${M.h}^2=${M.d2}$예요.`,
-      `네 변을 지름으로 하는 반원의 넓이의 합 $=\\frac{\\pi}{8}\\times 2(${M.w * M.w}+${M.h * M.h})=\\frac{\\pi}{4}\\times${M.d2}$이고, 이것은 외접원의 넓이 $\\pi\\times(\\frac{AC}{2})^2=\\frac{\\pi}{4}\\times${M.d2}$와 같아요.`,
-      `색칠한 부분 $=$ (반원 4개) $-$ (외접원에서 직사각형 밖의 부분)이고 반원 4개의 합이 외접원과 같으므로 색칠한 넓이는 직사각형의 넓이 $${M.w}\\times${M.h}=${M.area}$예요.`
+      M.kind === 1 ? `직사각형의 가로 $AD=${M.w}$와 대각선 $AC=${M.di}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.` : `직사각형의 가로 $AD=${M.w}$, 세로 $AB=${M.h}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.`,
+      M.kind === 1 ? `직각삼각형 ADC에서 세로 $CD^2=AC^2-AD^2=${M.di}^2-${M.w}^2=${M.h * M.h}$이므로 $CD=AB=${M.h}$예요.` : `대각선 AC를 그으면 $AC^2=${M.w}^2+${M.h}^2=${M.d2}$예요. AC는 외접원의 지름이에요.`,
+      `반원 4개의 넓이의 합은 $\\frac{\\pi}{4}(AD^2+AB^2)=\\frac{\\pi AC^2}{4}$로 외접원의 넓이와 같아요.`,
+      `두 넓이에서 공통 부분인 '외접원 안, 직사각형 밖'을 빼요. 남는 네 초승달의 합은 직사각형의 넓이와 같아요.`,
+      `따라서 색칠한 넓이는 $${M.w}\\times${M.h}=${M.area}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>가로</b>와 <b>세로</b>를 바꿔 보세요. 반원 네 개의 넓이의 합이 <b>외접원의 넓이</b>와 같아서, 색칠한 초승달 네 개는 늘 <b>직사각형의 넓이</b>와 같아요.',
@@ -220,27 +248,28 @@
       fit(b, bboxOf(all), { t: 28, b: 34, l: 26, r: 26 });
       const st = (n) => !C.review || C.step >= n;
       // 빗변 위 큰 반원(삼각형 쪽): 점선 / 빗변이 지름인 원은 꼭짓점 A 를 지나요
-      if (st(2) || prob) {
-        outsideCircle(b, mBC, R, () => { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.55, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.55, color: null }); });
+      if (st(2) || C.givens) {
+        outsideCircle(b, mBC, R, () => { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); });
       } else { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); }
       b.path(sABp, { color: 'amber', width: 2.6 }); b.path(sACp, { color: 'amber', width: 2.6 });
-      b.path(sBCp, { color: 'sky', width: 2.4, dash: [6, 5] });
-      fillPoly(b, [Ap, Bp, Cp], 'green', st(3) ? 0.32 : 0.14); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
+      b.path(sBCp, { color: 'rose', width: 2.4, dash: [6, 5] });
+      fillPoly(b, [Ap, Bp, Cp], 'green', !prob && st(4) ? 0.2 : 0.06); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, 0], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); if (nm !== 'A') T(b, q, nm, { dx: dx * 13, dy: dy * 14, size: 17 }); });
       T(b, Ap, 'A', { dx: 14, dy: -10, size: 17 });
       // 길이 (문제 kind=1 은 한 직각변과 빗변)
       const lAB = a, lAC = bb;
       sideTag(b, Bp, Ap, Cp, `${lAB}`, { color: 'sky', size: 17, gap: -22 });
-      if (!prob || kind === 0) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
-      else T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 17, color: 'sky' });
-      if (!prob && C.txt && st(3)) T(b, centroid([Ap, Bp, Cp]), `△ABC=${fmtN(tri)}`, { dy: 24, size: 15, color: 'green' });
-      if (!prob && ci) T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 16, color: 'sky' });
+      if (C.full || kind === 0 || C.review && C.step >= 2) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
+      if (C.answer && C.txt) T(b, centroid([Ap, Bp, Cp]), `△ABC=${fmtN(tri)}`, { dy: 24, size: 15, color: 'green' });
+      if (ci && (C.full || kind === 1)) T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 16, color: 'amber' });
     },
     steps: (M) => [
-      `삼각형 ABC(∠A=90°)의 세 변을 지름으로 하는 반원을 그려요. 반원의 넓이를 $S_1$ (AB), $S_2$ (AC), $S_3$ (BC)라 해요.`,
-      `피타고라스 정리에서 $AB^2+AC^2=BC^2$이므로 반원의 넓이도 $S_1+S_2=S_3$예요. (닮은 도형의 넓이는 지름의 제곱에 비례)`,
-      `초승달 두 개 $=S_1+S_2+\\triangle ABC-S_3=\\triangle ABC$예요. $\\triangle ABC=\\frac{1}{2}\\times${M.a}\\times${M.b}=${fmtN(M.tri)}$.`
+      M.kind === 1 ? `직각 A를 확인해요. 주어진 길이는 $AB=${M.a}$와 빗변 $BC=${M.ci}$예요.` : `직각 A를 끼는 두 변은 $AB=${M.a}$, $AC=${M.b}$예요. 색칠한 두 초승달의 넓이를 구해요.`,
+      M.kind === 1 ? `$AC^2=BC^2-AB^2=${M.ci}^2-${M.a}^2=${M.b * M.b}$이므로 $AC=${M.b}$예요.` : `세 반원의 넓이를 $S_1,S_2,S_3$라 하면 지름의 제곱에 비례하므로 $S_1+S_2=S_3$예요.`,
+      `피타고라스 정리 $AB^2+AC^2=BC^2$에 $\\frac{\\pi}{8}$을 곱하면 $S_1+S_2=S_3$예요.`,
+      `두 작은 반원과 큰 반원에서 공통으로 겹치는 두 활꼴을 빼면, 초승달 두 개의 합은 삼각형 ABC의 넓이와 같아요.`,
+      `따라서 색칠한 넓이는 $\\frac{1}{2}\\times${M.a}\\times${M.b}=${texRat(M.tri)}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>a</b>, <b>b</b>를 바꿔 보세요. 초승달(노랑) 두 개의 넓이의 합은 늘 <b>초록 삼각형의 넓이</b>와 같아요. 칩의 <b>a = b</b>는 직각이등변삼각형이에요.',
@@ -279,20 +308,21 @@
       const st = (n) => !C.review || C.step >= n;
       const lbl = (k, v) => (prob && unk === k ? 'x' : piC(v));
       [[sAB, 'sky', 'a', S1], [sAC, 'green', 'b', S2], [sBC, 'amber', 'c', S3]].forEach(([pts, col, k, v]) => {
-        if (k === 'c' && !(st(2) || prob)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
-        b.path(pts, { close: true, fill: col, fillAlpha: 0.22, color: col, width: 2.6 });
+        if (k === 'c' && !(st(2) || C.givens)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
+        b.path(pts, { close: true, fill: col, fillAlpha: 0.16, color: col, width: 2.6 });
         const cm = semiLab(pts);
-        T(b, cm, (prob ? 'S' : `S`) + { a: '₁', b: '₂', c: '₃' }[k] + (prob && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
+        T(b, cm, 'S' + { a: '₁', b: '₂', c: '₃' }[k] + (!C.answer && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
       });
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
-      if (!prob) { sideTag(b, Bp, Ap, Cp, `${a}`, { color: 'sky', size: 15, gap: -20 }); sideTag(b, Ap, Cp, Bp, `${bb}`, { color: 'green', size: 15, gap: -20 }); }
+      if (C.full) { sideTag(b, Bp, Ap, Cp, `${a}`, { color: 'sky', size: 15, gap: -20 }); sideTag(b, Ap, Cp, Bp, `${bb}`, { color: 'green', size: 15, gap: -20 }); }
     },
     steps: (M) => [
-      `삼각형 ABC(∠A=90°)의 변 AB, AC, BC를 지름으로 하는 반원의 넓이를 각각 $S_1$, $S_2$, $S_3$라 해요. 지름이 $d$인 반원의 넓이는 $\\frac{1}{2}\\pi(\\frac{d}{2})^2=\\frac{\\pi d^2}{8}$이에요.`,
-      `$S_1=\\frac{\\pi}{8}\\times${M.a}^2=${piT(M.S1)}$, $S_2=\\frac{\\pi}{8}\\times${M.b}^2=${piT(M.S2)}$.`,
-      `$S_3=\\frac{\\pi}{8}\\times BC^2=\\frac{\\pi}{8}\\times${M.c2}=${piT(M.S3)}$이고, $S_1+S_2=${piT(M.S1 + M.S2)}=S_3$예요.`
+      M.unk === 'c' ? `주어진 반원 넓이는 $S_1=${piT(M.S1)}$, $S_2=${piT(M.S2)}$예요. 빗변 위 넓이 $S_3=x$를 구해요.` : `주어진 반원 넓이는 $S_2=${piT(M.S2)}$, $S_3=${piT(M.S3)}$예요. 직각변 위 넓이 $S_1=x$를 구해요.`,
+      `지름이 $d$인 반원의 넓이는 $\\frac{\\pi d^2}{8}$예요. 직각삼각형의 관계 $AB^2+AC^2=BC^2$에서 $S_1+S_2=S_3$를 얻어요.`,
+      M.unk === 'c' ? `$x=S_1+S_2=${piT(M.S1)}+${piT(M.S2)}$예요.` : `$x=S_3-S_2=${piT(M.S3)}-${piT(M.S2)}$예요.`,
+      `구하는 넓이는 $x=${piT(M.unk === 'c' ? M.S3 : M.S1)}$예요. $\\pi$를 그대로 두고 계수끼리 계산해요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>a</b>, <b>b</b>를 바꿔 보세요. 직각을 낀 두 변 위의 반원의 넓이의 합은 늘 <b>빗변 위의 반원</b>의 넓이와 같아요.',
@@ -333,8 +363,8 @@
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2); ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
       T(b, semiLab(sAB), 'S₁', { size: 17, color: 'sky' }); T(b, semiLab(sAC), 'S₂', { size: 17, color: 'green' });
-      T(b, semiLab(sBC), prob ? '' : `S₃=${k}π`, { size: 16, color: 'amber' });
-      T(b, mid(Bp, Cp), prob ? 'x' : `${c}`, { dy: 18, size: 17, color: 'amber' });
+      T(b, semiLab(sBC), C.full || C.review && C.step >= 2 ? `S₃=${k}π` : '', { size: 16, color: 'amber' });
+      T(b, mid(Bp, Cp), C.answer ? `${c}` : 'x', { dy: 18, size: 17, color: 'amber' });
       T(b, cen, `S₁+S₂=${k}π`, { size: 17, color: 'ink' });
     },
     steps: (M) => [

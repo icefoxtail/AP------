@@ -39,17 +39,18 @@
      o: sq(정사각형 3개), rot(제자리 회전 도), lab {a,b,c: 변 위 글자}, sqLab {a,b,c: 정사각형 안 글자}, names(꼭짓점 이름) */
   function figRt(b, a, bq, C, o = {}) {
     const T0 = rtTri(a, bq), cen0 = centroid([T0.A, T0.B, T0.C]);
-    const R = (p) => { const q = rotP(p, cen0, o.rot || 0); return o.dx ? pt(q.x + o.dx, q.y) : q; };
+    const R = (p) => { const q = rotP(p, cen0, o.rot || 0); return pt(q.x + (o.dx || 0), q.y + (o.dy || 0)); };
     const A = R(T0.A), B = R(T0.B), Cc = R(T0.C), cen = R(cen0);
     const sqs = o.sq ? { a: squareOn(B, Cc, cen), b: squareOn(Cc, A, cen), c: squareOn(A, B, cen) } : null;
-    const pts = [A, B, Cc].concat(sqs ? [...sqs.a, ...sqs.b, ...sqs.c] : []);
-    let box;
-    if (o.rot != null && !o.sq) { const Rr = Math.max(...pts.map((p) => Math.hypot(p.x - cen.x, p.y - cen.y))); box = { x0: cen.x - Rr, x1: cen.x + Rr, y0: cen.y - Rr, y1: cen.y + Rr }; } else box = bboxOf(pts);
-    if (!o.noFit) fit(b, box, { t: o.t == null ? 40 : o.t, b: o.bt == null ? 40 : o.bt, l: o.l, r: o.r });
     const sh = (k) => !C.review || C.step >= (o.at && o.at[k] != null ? o.at[k] : 0);
+    const visibleSq = (k) => sqs && sh('s' + k);
+    const pts = [A, B, Cc].concat(sqs ? ['a', 'b', 'c'].filter(visibleSq).flatMap((k) => sqs[k]) : []);
+    let box;
+    if (o.rot != null && !o.sq && C.full) { const Rr = Math.max(...pts.map((p) => Math.hypot(p.x - cen.x, p.y - cen.y))); box = { x0: cen.x - Rr, x1: cen.x + Rr, y0: cen.y - Rr, y1: cen.y + Rr }; } else box = bboxOf(pts);
+    if (!o.noFit) fit(b, box, { t: o.t == null ? 40 : o.t, b: o.bt == null ? 40 : o.bt, l: o.l, r: o.r });
     // 정사각형이 있고 삼각형이 작으면(휴대폰) 변의 길이 글자와 정사각형 글자가 겹치므로, 변의 길이를 정사각형 안에 두 줄로 함께 적습니다.
     const pxD = (p, q) => { const u = b.toS(p), v = b.toS(q); return Math.hypot(u.x - v.x, u.y - v.y); };
-    const small = !!sqs && Math.min(pxD(B, Cc), pxD(Cc, A)) < 125;
+    const small = !!sqs && ['a', 'b', 'c'].some(visibleSq) && Math.min(pxD(B, Cc), pxD(Cc, A)) < 125;
     const sqDraw = (k, col) => {
       const two = small && o.lab && o.lab[k] && o.sqLab && o.sqLab[k];
       drawSq(b, sqs[k], col, two ? '' : o.sqLab && o.sqLab[k], { size: o.sqSize || 16 });
@@ -66,7 +67,7 @@
     // 납작하거나 홀쭉한 삼각형: 빗변 글자가 직각변 글자와 붙으면 빗변 글자를 바깥쪽으로 보냅니다.
     const dS = (u, v) => Math.hypot(u.x - v.x, u.y - v.y);
     const cOut = !sqs && !o.labOut && Math.min(dS(b.toS(B), b.toS(Cc)), dS(b.toS(Cc), b.toS(A))) < 150;
-    [[B, Cc, 'a', sqs && cenOf(sqs.a)], [Cc, A, 'b', sqs && cenOf(sqs.b)], [A, B, 'c', sqs && cenOf(sqs.c)]].forEach(([p, q, k, sc]) => {
+    [[B, Cc, 'a', visibleSq('a') && cenOf(sqs.a)], [Cc, A, 'b', visibleSq('b') && cenOf(sqs.b)], [A, B, 'c', visibleSq('c') && cenOf(sqs.c)]].forEach(([p, q, k, sc]) => {
       const t = o.lab && o.lab[k];
       if (t && !(small && o.sqLab && o.sqLab[k] && sh('s' + k))) sideTag(b, k === 'c' ? lerp(p, q, 0.25) : p, q, sc || (o.labOut || (cOut && k === 'c') ? cen : add(mul(mid(p, q), 2), mul(cen, -1))), t, { color: COL[k], size: o.size || 16, gap: o.gap == null ? 11 : o.gap });
       if (o.hi === k) line(b, p, q, COL[k], 6, { alpha: 0.9 });
@@ -93,8 +94,8 @@
       const { a, b: bb, a2, b2, c2, ci } = M;
       const R = figRt(b, a, bb, C, {
         sq: !C.problem, bt: C.problem ? 40 : 50, size: 16,
-        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.problem ? 'x' : ci ? `c=${ci}` : 'c' },
-        sqLab: { a: `a²=${a2}`, b: `b²=${bb * bb}`, c: `c²=${c2}` },
+        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.answer ? ci ? `c=x=${ci}` : 'c' : 'x' },
+        sqLab: { a: `a²=${a2}`, b: `b²=${bb * bb}`, c: C.calculation ? `c²=${c2}` : 'c²=x²' },
         at: { sa: 2, sb: 2, sc: 3 }
       });
       if (C.problem) return;
@@ -103,15 +104,17 @@
         cells(b, 0, 0, a, 'sky');
         cells(b, -bb, -bb, bb, 'green');
       }
-      if (C.txt) {
+      if (C.txt && C.calculation) {
         const y1 = Math.max(a, 0) + 0;
         T(b, pt((a + 0) / 2, y1), `${a2} + ${bb * bb} = ${c2}`, { dy: 34, size: 18, color: 'amber' });
       }
     },
     steps: (M) => [
-      `직각삼각형 ABC에서 직각을 낀 두 변은 $a=${M.a}$, $b=${M.b}$이고, 직각의 맞은편 변(가장 긴 변)이 빗변 $c$예요.`,
-      `각 변 위에 정사각형을 그려요. 넓이는 $a^2=${M.a2}$, $b^2=${M.b2}$예요.`,
-      `빗변 위 정사각형의 넓이는 두 정사각형의 넓이의 합과 같아요. $c^2=a^2+b^2=${M.a2}+${M.b2}=${M.c2}$${M.ci ? `, 그래서 $c=${M.ci}$예요.` : '예요.'}`
+      `직각을 낀 두 변은 $a=${M.a}$, $b=${M.b}$예요. 직각 C의 맞은편 빗변을 $c=x$라 놓아요.`,
+      `두 직각변 위에 정사각형을 세워요. 하늘색 넓이는 $a^2$, 초록색 넓이는 $b^2$예요.`,
+      `피타고라스 정리에 따라 빗변 위 정사각형의 넓이는 $c^2=a^2+b^2$예요. 노란 정사각형과 두 작은 정사각형을 비교해요.`,
+      `현재 숫자를 대입하면 $c^2=${M.a}^2+${M.b}^2=${M.a2}+${M.b2}=${M.c2}$예요.`,
+      M.ci ? `$${M.ci}^2=${M.c2}$이고 길이는 양수이므로 $x=c=${M.ci}$예요.` : `빗변의 제곱은 $x^2=${M.c2}$예요. 정수 길이로 바꾸지 않아요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>a</b>와 <b>b</b>를 바꿔 보세요. 파란 정사각형 + 초록 정사각형의 넓이가 <b>노란 정사각형</b>의 넓이와 늘 같아요. 칩으로 칸을 켜면 칸 수로도 셀 수 있어요.',
@@ -151,16 +154,18 @@
       const bq = Math.sqrt(b2); // 그림을 그릴 때만 쓰는 값(화면에 제곱근 기호는 쓰지 않음)
       const R = figRt(b, a, bq, C, {
         sq: !C.problem, bt: 40,
-        lab: { a: `a=${a}`, b: C.problem ? 'x' : bi ? `b=${bi}` : 'b', c: `c=${c}` },
-        sqLab: { a: `a²=${a2}`, b: C.problem ? '' : `b²=${b2}`, c: `c²=${c2}` },
+        lab: { a: `a=${a}`, b: C.answer ? bi ? `b=x=${bi}` : 'b' : 'x', c: `c=${c}` },
+        sqLab: { a: `a²=${a2}`, b: C.calculation ? `b²=${b2}` : 'b²=x²', c: `c²=${c2}` },
         at: { sa: 2, sb: 3, sc: 2 }
       });
-      if (!C.problem && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
+      if (C.calculation && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
     },
     steps: (M) => [
-      `빗변은 $c=${M.c}$, 한 직각변은 $a=${M.a}$예요. 구하려는 변은 나머지 직각변 $b$예요.`,
-      `피타고라스 정리 $a^2+b^2=c^2$에서 $b^2=c^2-a^2$예요. $b^2=${M.c}^2-${M.a}^2=${M.c2}-${M.a2}=${M.b2}$.`,
-      M.bi ? `제곱해서 ${M.b2}가 되는 양수는 ${M.bi}이므로 $b=${M.bi}$예요.` : `$b^2=${M.b2}$이고 ${M.b2}는 어떤 자연수의 제곱도 아니에요. 이 경우에는 $b^2=${M.b2}$까지 구하면 돼요.`
+      `빗변은 $c=${M.c}$, 한 직각변은 $a=${M.a}$예요. 나머지 직각변을 $b=x$라 놓아요.`,
+      `$a^2+b^2=c^2$에서 $b^2=c^2-a^2$로 정리해요. 빗변 위 정사각형에서 하늘색 정사각형을 빼요.`,
+      `주어진 길이를 제곱하면 $c^2=${M.c2}$, $a^2=${M.a2}$예요. 남은 초록색 넓이가 $b^2$예요.`,
+      `$b^2=${M.c}^2-${M.a}^2=${M.c2}-${M.a2}=${M.b2}$예요.`,
+      M.bi ? `$${M.bi}^2=${M.b2}$이므로 $x=b=${M.bi}$예요.` : `정수가 아닌 길이를 반올림하지 않고 $x^2=${M.b2}$로 써요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>c</b>와 <b>a</b>를 바꿔 보세요. 빗변 위 정사각형(노랑)에서 a 위 정사각형(파랑)을 빼면 b 위 정사각형(초록)의 넓이가 남아요. 칩은 b가 정수가 되는 경우예요.',
@@ -193,18 +198,20 @@
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, rot: r, kind } = M;
       // 문제에서 kind=1 이면 한 직각변을 구하는 문제: 빗변 값을 주고 직각변 x 를 구합니다.
-      const hypGiven = C.problem && kind === 1;
+      const pending = !C.answer, hypGiven = C.givens && kind === 1;
       figRt(b, a, bb, C, {
         rot: r, names: ['A', 'B', 'C'], hi: C.review && C.step >= 2 ? 'c' : null, t: 26, bt: 26,
-        lab: { a: C.problem && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: hypGiven ? (ci || 'c') : C.problem ? 'x' : ci ? `${ci}` : 'c' },
+        lab: { a: pending && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: hypGiven ? (ci || 'c') : pending ? 'x' : ci ? `${ci}` : 'c' },
         labOut: true
       });
       if (!C.problem && C.txt) T(b, pt(0, 0), '', {});
     },
     steps: (M) => [
-      `먼저 직각 ∠C(네모 표시)를 찾아요. 직각을 낀 두 변은 $${M.a}$와 $${M.b}$예요.`,
-      `<b>빗변은 직각의 맞은편 변</b>이고 가장 긴 변이에요. 삼각형을 돌려도 빗변은 그대로예요.`,
-      `$c^2=${M.a}^2+${M.b}^2=${M.a * M.a + M.b * M.b}$${M.ci ? `이므로 $c=${M.ci}$예요.` : '예요.'}`
+      M.kind === 1 ? `직각 C의 맞은편 빗변은 $${M.ci}$, 주어진 직각변은 $${M.b}$예요. 구하는 $x$는 다른 직각변이에요.` : `직각 C를 끼는 두 변은 $${M.a}$, $${M.b}$예요. 구하는 $x$는 직각의 맞은편 빗변이에요.`,
+      `네모 표시와 마주 보는 변을 강조해요. 그림을 돌려 놓아도 빗변은 바뀌지 않아요.`,
+      M.kind === 1 ? `$x^2+${M.b}^2=${M.ci}^2$이므로 빗변의 제곱에서 주어진 직각변의 제곱을 빼요.` : `$x^2=${M.a}^2+${M.b}^2$이므로 두 직각변의 제곱을 더해요.`,
+      M.kind === 1 ? `$x^2=${M.ci}^2-${M.b}^2=${M.c2}-${M.b * M.b}=${M.a * M.a}$예요.` : `$x^2=${M.a * M.a}+${M.b * M.b}=${M.c2}$예요.`,
+      `$x=${M.kind === 1 ? M.a : M.ci}$예요. 구한 변이 직각변인지 빗변인지 다시 확인해요.`
     ],
     view: (M) => ({
       guide: '막대로 삼각형을 <b>돌려</b> 보세요. 어떻게 돌려도 <b>직각(네모)의 맞은편</b>이 빗변이에요. 두 직각변 길이도 바꿔 보세요.',
@@ -238,7 +245,7 @@
     question: '모눈종이 위에 기울어져 놓인 정사각형의 넓이는 어떻게 구할까? 한 변의 길이를 모르는데도 넓이는 구할 수 있다.',
     ctl: ['pyU', 'pyV'],
     init: (s) => { s.pyU = 2; s.pyV = 3; },
-    gen: (s, prev) => { let u, v; do { u = rint(1, 5); v = rint(u + 1, 6); } while (prev && u === prev.pyU && v === prev.pyV); return Math.random() < 0.5 ? { pyU: u, pyV: v } : { pyU: v, pyV: u }; },
+    gen: (s, prev) => { let u, v; do { u = rint(1, 5); v = rint(u + 1, 6); } while (prev && (u === prev.pyU && v === prev.pyV || u === prev.pyV && v === prev.pyU)); return Math.random() < 0.5 ? { pyU: u, pyV: v } : { pyU: v, pyV: u }; },
     model: (s) => gridOf(s),
     draw(b, s, M, C) {
       const { u, v, n, big, S } = M;
@@ -260,14 +267,15 @@
       T(b, pt(n, u + v / 2), `${v}`, { dx: -14, size: 16, color: 'green' });
       if (!C.problem) {
         if (showTri) tris.forEach((t) => b.right(t[0], t[1], t[2], { size: 11, color: 'sky' }));
-        if (C.txt) T(b, pt(n / 2, n / 2), showSq ? `S=${S}` : '', { size: 20, color: 'amber' });
-        if (C.txt) T(b, pt(n / 2, n), `큰 정사각형 ${n}×${n}=${big}`, { dy: 50, size: 15, color: 'ink' });
+        if (C.txt) T(b, pt(n / 2, n / 2), C.answer ? `S=${S}` : 'S=?', { size: 20, color: 'amber' });
+        if (C.txt && C.step >= 2) T(b, pt(n / 2, n), `큰 정사각형 ${n}×${n}=${big}`, { dy: 50, size: 15, color: 'ink' });
       }
     },
     steps: (M) => [
-      `정사각형 PQRS를 둘러싸는 큰 정사각형(한 변 $${M.u}+${M.v}=${M.n}$)을 그려요. 넓이는 $${M.n}^2=${M.big}$예요.`,
-      `큰 정사각형에서 정사각형 PQRS 밖의 모양은 합동인 직각삼각형 4개예요. 한 개의 넓이는 $\\frac{1}{2}\\times${M.u}\\times${M.v}=${fmtN(M.tri / 2)}$이고, 4개는 $${M.tri * 2}$예요.`,
-      `PQRS의 넓이 $=${M.big}-${M.tri * 2}=${M.S}$예요. 이것은 $${M.u}^2+${M.v}^2=${M.S}$와 같아요.`
+      `기울어진 정사각형 한 변을 따라갈 때 가로 이동은 $${M.u}$칸, 세로 이동은 $${M.v}$칸이에요. 모눈 한 칸의 한 변은 1이고, PQRS의 넓이를 구해요.`,
+      `바깥에 한 변이 $${M.u}+${M.v}=${M.n}$인 큰 정사각형을 잡으면, 모서리에 합동인 직각삼각형 4개가 생겨요.`,
+      `큰 정사각형의 넓이는 $${M.n}^2=${M.big}$, 직각삼각형 4개의 넓이는 $4\\times\\frac{${M.u}\\times${M.v}}{2}=${M.tri * 2}$예요.`,
+      `PQRS의 넓이는 $${M.big}-${M.tri * 2}=${M.S}$예요. 한 변의 길이를 먼저 구하지 않아도 돼요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>u</b>와 <b>v</b>를 바꿔 보세요. 기울어진 정사각형 PQRS의 한 변은 모눈과 맞지 않지만, <b>큰 정사각형 − 직각삼각형 4개</b>로 넓이를 구할 수 있어요.',
@@ -311,25 +319,27 @@
       const { x, m, n, y2, z2, yi, zi } = M, y = Math.sqrt(y2);
       const Bp = pt(0, 0), Ap = pt(0, -x), Dp = pt(m, 0), Cp = pt(m + n, 0);
       fit(b, { x0: 0, x1: m + n, y0: -x, y1: 0 }, { t: 40, b: 60, l: 50, r: 40 });
-      const s1 = !C.review || C.step >= 1, s2 = !C.review || C.step >= 2;
-      fillPoly(b, [Ap, Bp, Dp], 'sky', s1 ? 0.2 : 0);
-      if (s2) fillPoly(b, [Ap, Dp, Cp], 'green', 0.18);
+      const showX = C.full || C.review && C.step >= 3, showY = C.full || C.review && C.step >= 4;
+      fillPoly(b, [Ap, Bp, Cp], 'green', C.review && C.step === 2 ? 0.16 : 0.04);
+      if (C.full || C.review && C.step >= 4) fillPoly(b, [Ap, Bp, Dp], 'sky', 0.16);
       poly(b, [Ap, Bp, Cp], 'ink', 3.4);
       line(b, Ap, Dp, 'amber', 3.4);
       ang(b, Bp, Cp, Ap, { color: 'amber', r: 20 });
       [['A', Ap, 0, -1], ['B', Bp, -1, 0.5], ['D', Dp, 0, 1], ['C', Cp, 1, 0.5]].forEach(([nm, p, dx, dy]) => { b.point(p, { color: 'ink', r: 4.5 }); T(b, p, nm, { dx: dx * 15, dy: dy * 16, size: 17 }); });
       const cen = pt((m + n) / 2, -x / 2);
       // 값은 그림 안에: 변 위
-      T(b, lerp(Ap, Bp, 0.5), C.problem ? 'x' : `x=${x}`, { dx: C.problem ? -14 : -26, size: 17, color: 'amber' });
+      T(b, lerp(Ap, Bp, 0.5), showX ? `x=${x}` : 'x', { dx: showX ? -26 : -14, size: 17, color: 'amber' });
       T(b, lerp(Bp, Dp, 0.5), `${m}`, { dy: 18, size: 16, color: 'sky' });
       T(b, lerp(Dp, Cp, 0.5), `${n}`, { dy: 18, size: 16, color: 'green' });
       sideTag(b, Ap, Cp, pt(0, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
-      sideTag(b, Ap, Dp, Cp, C.problem ? 'y' : (yi ? `y=${yi}` : `y²=${y2}`), { color: 'amber', size: 16, gap: 12 });
+      sideTag(b, Ap, Dp, Bp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : 'y', { color: 'amber', size: 16, gap: 12 });
     },
     steps: (M) => [
-      `삼각형 ABD는 ∠B=90°인 직각삼각형, 삼각형 ABC도 ∠B=90°인 직각삼각형이에요. 변 AB(=x)를 함께 써요.`,
-      `큰 삼각형 ABC에서 $AC^2=x^2+BC^2$이고 $BC=${M.m}+${M.n}=${M.m + M.n}$예요. 그래서 $x^2=${M.z2}-${(M.m + M.n) ** 2}=${M.x * M.x}$, $x=${M.x}$예요.`,
-      M.yi ? `삼각형 ABD에서 $y^2=x^2+BD^2=${M.x}^2+${M.m}^2=${M.y2}$, $y=${M.yi}$예요. 그래서 $x+y=${M.x}+${M.yi}=${M.x + M.yi * 1}$예요.` : `삼각형 ABD에서 $y^2=x^2+BD^2=${M.x}^2+${M.m}^2=${M.y2}$예요.`
+      `$BD=${M.m}$, $DC=${M.n}$, $AC=${M.zi}$예요. $AB=x$, $AD=y$일 때 $x+y$를 구해요.`,
+      `큰 직각삼각형 ABC부터 봐요. 밑변 $BC=BD+DC=${M.m}+${M.n}=${M.m + M.n}$예요.`,
+      `$x^2=AC^2-BC^2=${M.zi}^2-${M.m + M.n}^2=${M.x * M.x}$이므로 $x=${M.x}$예요.`,
+      `작은 직각삼각형 ABD에서 $y^2=x^2+BD^2=${M.x}^2+${M.m}^2=${M.y2}$이므로 $y=${M.yi}$예요.`,
+      `따라서 $x+y=${M.x}+${M.yi}=${M.sum}$예요. 두 직각삼각형이 같은 높이 AB를 쓴다는 점을 확인해요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>AB, BD, DC</b>를 바꿔 보세요. 직각삼각형 ABD와 ABC가 변 AB를 나눠 쓰는 것을 확인해 보세요. 정수로 딱 떨어지지 않으면 <b>제곱한 값</b>으로 써요.',
@@ -362,17 +372,19 @@
     model: (s) => perimOf(s),
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, area, kind } = M;
-      const ask = C.problem && kind === 1; // 문제 kind=1: 빗변과 한 직각변을 주고 넓이를 구함(다른 직각변은 숨김)
-      figRt(b, a, bb, C, { sq: false, bt: C.problem ? 40 : 100, lab: { a: `${a}`, b: ask ? '' : `${bb}`, c: C.problem && !ask ? '' : ci ? `${ci}` : 'c' }, labOut: true });
-      if (!C.problem && C.txt) {
-        T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
-        T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: 80, size: 17, color: 'sky' });
+      const pending = C.problem || C.review && C.step < 3, ask = C.givens && kind === 1;
+      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null });
+      if (C.answer && C.txt) {
+        if (C.full || kind === 0) T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
+        if (C.full || kind === 1) T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: C.full ? 80 : 48, size: 17, color: 'sky' });
       }
     },
     steps: (M) => [
-      `직각을 낀 변이 $a=${M.a}$, $b=${M.b}$이므로 빗변은 $c^2=${M.a}^2+${M.b}^2=${M.c2}$${M.ci ? `, $c=${M.ci}$` : ''}예요.`,
-      M.per != null ? `둘레 $=a+b+c=${M.a}+${M.b}+${M.ci}=${M.per}$예요.` : '빗변이 정수가 아니면 둘레를 정수로 쓸 수 없어요. 빗변이 정수가 되는 값(칩)을 골라 보세요.',
-      `넓이 $=\\frac{1}{2}\\times a\\times b=\\frac{1}{2}\\times${M.a}\\times${M.b}=${fmtN(M.area)}$예요.`
+      M.kind === 1 ? `빗변은 $${M.ci}$, 한 직각변은 $${M.a}$예요. 넓이를 구하려면 다른 직각변 $b$가 필요해요.` : `주어진 두 직각변은 $${M.a}$, $${M.b}$예요. 둘레를 구하려면 빗변 $c$가 필요해요.`,
+      M.kind === 1 ? `$b^2=${M.ci}^2-${M.a}^2$예요. 빗변과 직각변을 먼저 구별해요.` : `$c^2=${M.a}^2+${M.b}^2$예요. 직각의 맞은편 변을 찾아요.`,
+      M.kind === 1 ? `$b^2=${M.ci}^2-${M.a}^2=${M.c2}-${M.a * M.a}=${M.b * M.b}$이므로 $b=${M.b}$예요.` : `$c^2=${M.a * M.a}+${M.b * M.b}=${M.c2}$이므로 $c=${M.ci}$예요.`,
+      M.kind === 1 ? `두 직각변은 서로 수직이므로 밑변 $${M.a}$와 높이 $${M.b}$로 삼각형의 넓이를 구해요.` : `그림의 세 변을 한 번씩 더해요. 둘레는 $a+b+c$예요.`,
+      M.kind === 1 ? `넓이 $=\\frac{1}{2}\\times${M.a}\\times${M.b}=${texRat(M.area)}$예요.` : `둘레 $=${M.a}+${M.b}+${M.ci}=${M.per}$예요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>a</b>와 <b>b</b>를 바꿔 보세요. 빗변이 정수가 되는 칩을 누르면 둘레도 정수로 구해져요. 넓이는 항상 두 직각변으로 구해요.',

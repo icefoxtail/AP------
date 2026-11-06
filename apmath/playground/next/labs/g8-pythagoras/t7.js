@@ -49,6 +49,7 @@
     id: 'py7-rect', title: '직사각형의 꼭짓점 D 접기', short: '직사각형 접기',
     question: '직사각형 ABCD를 선분 AF를 접는 선으로 하여 꼭짓점 D가 변 BC 위의 점 E에 오도록 접으면, 접어서 겹친 부분의 길이는 어떻게 될까?',
     ctl: ['pyFi', 'pyFp'],
+    anim: { key: 'pyFp', dur: 4, label: '접어 보기' },
     presets: () => [0, 0.5, 1].map((v, i) => ({ group: i === 0 ? '접는 정도' : '', label: v === 0 ? '펼침' : v === 1 ? '접음' : '반쯤', apply: (ss) => { ss.pyFp = v; }, on: (ss) => Math.abs((ss.pyFp || 0) - v) < 0.01 })),
     init: (s) => { s.pyFi = 6; s.pyFp = 0; s.pyKind = 0; },
     gen: (s, prev) => { let i, k; do { i = rint(0, FOLD_TAB.length - 1); k = rint(0, 2); } while (prev && prev.pyFi === i && prev.pyKind === k); return { pyFi: i, pyKind: k, pyFp: 1 }; },
@@ -56,7 +57,7 @@
     draw(b, s, M, C) {
       const { h, w, be, ec, x, p, kind } = M, prob = C.problem;
       const A = pt(0, 0), D = pt(w, 0), B = pt(0, h), Cc = pt(w, h), E = pt(be, h), F = pt(w, x);
-      fit(b, { x0: 0, x1: w, y0: 0, y1: h }, { t: 40, b: 44, l: 44, r: 40 });
+      fit(b, { x0: 0, x1: w, y0: 0, y1: h }, { t: 40, b: 44, l: 44, r: C.givens && kind === 0 ? 78 : 48 });
       const st = (n) => !C.review || C.step >= n;
       const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Dp = foldPt(D, A, F, pp);
@@ -71,37 +72,43 @@
       b.right(B, A, Cc, { size: 10, color: 'ink' }); b.right(Cc, B, D, { size: 10, color: 'ink' });
       // 주어진 길이 (그림 안)
       sideTag(b, A, B, Cc, `${h}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(A, D), `${w}`, { dy: -24, size: 17, color: 'sky' });
-      if (!prob) {
+      if (C.full) {
         if (pp > 0.5) {
           T(b, mid(B, E), `${be}`, { dy: 16, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 16, size: 15, color: 'green' });
           T(b, mid(Dp, F), `x=${f(x)}`, { dx: -22, dy: 0, size: 15, color: 'sky' }); T(b, mid(F, Cc), `${f(M.fc)}`, { dx: 14, size: 15, color: 'green' });
         }
       } else {
         // x 는 묻는 선분에만, 구하는 것이 아닌 값은 적지 않음
-        if (kind === 0) T(b, mid(F, Cc), 'x', { dx: 14, size: 18, color: 'amber' });
-        if (kind === 1) T(b, mid(Dp, F), 'x', { dx: -12, dy: -8, size: 18, color: 'amber' });
-        if (kind === 2) T(b, mid(B, Dp), 'x', { dy: 16, size: 18, color: 'amber' });
+        if (kind === 0) T(b, mid(F, Cc), C.answer ? `x=${f(M.fc)}` : 'x', { dx: C.answer ? 32 : 14, size: 17, color: 'amber' });
+        if (kind === 1) T(b, mid(Dp, F), C.answer ? `x=${f(x)}` : 'x', { dx: -16, dy: -12, size: 17, color: 'amber' });
+        if (kind === 2) T(b, mid(B, Dp), C.answer ? `x=${be}` : 'x', { dy: 18, size: 17, color: 'amber' });
+        if (C.review && C.step >= 3 && kind !== 2) { T(b, mid(B, E), `${be}`, { dy: 18, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 18, size: 15, color: 'green' }); }
+        if (C.review && C.step >= 4 && kind === 0) T(b, mid(Dp, F), `y=${f(x)}`, { dx: -22, dy: -8, size: 15, color: 'sky' });
       }
     },
     steps: (M) => [
-      `접으면 D가 E에 겹쳐져요. 접은 부분은 모양과 크기가 같으므로 $AE=AD=${M.w}$, $FE=FD$예요.`,
-      `직각삼각형 ABE에서 $BE^2=AE^2-AB^2=${M.w}^2-${M.h}^2=${M.w * M.w - M.h * M.h}$, $BE=${M.be}$예요. 그러므로 $EC=${M.w}-${M.be}=${M.ec}$예요.`,
-      `$FD=FE=x$라 하면 $FC=${M.h}-x$. 직각삼각형 FEC에서 $x^2=(${M.h}-x)^2+${M.ec}^2$ ⟹ $x=\\frac{${M.h}^2+${M.ec}^2}{2\\times${M.h}}=${f(M.x)}$.`,
-      `따라서 $FC=${M.h}-${f(M.x)}=${f(M.fc)}$이고, $FD=FE=${f(M.x)}$예요.`
+      `$AB=${M.h}$, $AD=BC=${M.w}$예요. D를 E에 겹치도록 접었고, 구하는 선분은 ${M.kind === 0 ? 'FC' : M.kind === 1 ? 'FE' : 'BE'}예요.`,
+      `접어도 길이는 같으므로 $AE=AD=${M.w}$, $FE=FD$예요. 직각삼각형 ABE를 먼저 찾아요.`,
+      `$BE^2=AE^2-AB^2=${M.w}^2-${M.h}^2=${M.be * M.be}$이므로 $BE=${M.be}$예요.${M.kind === 2 ? '' : ` 또한 $EC=${M.w}-${M.be}=${M.ec}$예요.`}`,
+      M.kind === 2 ? `BE는 밑변 BC의 일부이며, EC가 아니라 BE를 물었는지 확인해요.` : `$FE=FD=y$라 하면 $FC=${M.h}-y$예요. 직각삼각형 FEC에서 $y^2=(${M.h}-y)^2+${M.ec}^2$이므로 $y=${f(M.x)}$예요.`,
+      M.kind === 0 ? `$FC=x=${M.h}-${f(M.x)}=${f(M.fc)}$예요.` : M.kind === 1 ? `$FE=x=${f(M.x)}$예요.` : `$BE=x=${M.be}$예요.`
     ],
-    view: (M) => ({
+    view: (M, C) => ({
       guide: '막대로 <b>직사각형</b>을 고르고 <b>접기</b> 막대를 끌어 보세요. 접힌 부분(삼각형 ADF)은 접는 선 AF를 축으로 돌아요. 접으면 <b>같은 길이</b>(AE=AD, FE=FD)가 생겨요.',
       readouts: [rd('BE', `${M.be}`, 'sky', `AE² − AB² = ${M.w * M.w} − ${M.h * M.h}`), rd('EC', `${M.ec}`, 'green', `${M.w} − ${M.be}`), rd('FD = FE = x', `$${f(M.x)}$`, 'amber', `(AB² + EC²) ÷ (2 × AB)`), rd('FC', `$${f(M.fc)}$`, 'rose', `${M.h} − x`)],
       status: { tone: 'info', text: `접기 ${Math.round(M.p * 100)}%` },
       formula: `<p>$BE=${M.be}$, $EC=${M.ec}$</p><p>$x^2=(${M.h}-x)^2+${M.ec}^2\\Rightarrow x=${f(M.x)}$, $FC=${f(M.fc)}$</p>`,
       rule: '접으면 겹치는 길이가 같다 → 직각삼각형을 찾아 피타고라스 정리로 x를 구한다',
-      notes: notes('접은 선분 $FE$와 접히기 전 $FD$는 길이가 같아요. 같은 문자 $x$로 놓아요.', '직각삼각형이 <b>두 개</b>예요: $ABE$(BE를 구함), $FEC$(x를 구함). 순서대로 풀어요.')
+      notes: C.review ? notes(
+        M.kind === 2 ? '접으면 $AE=AD$예요. 직각삼각형 <b>ABE</b>에서 주어진 빗변 AE와 높이 AB로 구하는 선분 $BE=x$를 찾아요.' : '접은 선분 $FE$와 접히기 전 $FD$는 길이가 같아요. 풀이에서 두 길이를 같은 문자 $y$로 놓았어요.',
+        M.kind === 0 ? '먼저 구한 $FE=FD=y$를 그대로 답하지 않아요. 구하는 선분은 $FC=x=DC-y$예요.' : M.kind === 1 ? '구하는 선분은 $FE=x$예요. 직각삼각형 FEC에서 구한 $y$가 바로 FE의 길이예요.' : 'BC 전체나 남은 EC가 아니라 <b>BE</b>의 길이를 확인해요.'
+      ) : notes('접은 선분 $FE$와 접히기 전 $FD$는 길이가 같아요. 같은 문자 $x$로 놓아요.', '직각삼각형이 <b>두 개</b>예요: $ABE$(BE를 구함), $FEC$(x를 구함). 순서대로 풀어요.')
     }),
     prob: (M) => {
       const { h, w, be, ec, x, fc, kind } = M;
       const cf = { tex: (v) => f(v), plain: (v) => plainRat(v), pad: 1 / 3 };
       const q = kind === 0 ? { ans: fc, tag: '[접기] FC의 길이', ask: `$\\overline{FC}$의 길이 $x$` } : kind === 1 ? { ans: x, tag: '[접기] FE의 길이', ask: `$\\overline{FE}$의 길이 $x$` } : { ans: be, tag: '[접기] BE의 길이', ask: `$\\overline{BE}$의 길이 $x$` };
-      const wr = kind === 0 ? [[x, 'FD(=FE)의 길이예요. FC는 DC에서 x를 뺀 것이에요.'], [ec, 'EC의 길이예요.'], [be, 'BE의 길이예요.'], [fc + 1 / 3, '다시 계산해 보세요.'], [fc - 1 / 3, '다시 계산해 보세요.'], [h - ec, '다시 계산해 보세요.']]
+      const wr = kind === 0 ? [[x, 'FD(=FE)의 길이예요. FC는 DC에서 FD를 뺀 것이에요.'], [ec, 'EC의 길이예요.'], [be, 'BE의 길이예요.'], [fc + 1 / 3, '다시 계산해 보세요.'], [fc - 1 / 3, '다시 계산해 보세요.'], [h - ec, '다시 계산해 보세요.']]
         : kind === 1 ? [[fc, 'FC의 길이예요. FE는 FD와 같아요.'], [ec, 'EC의 길이예요.'], [h - ec, '다시 계산해 보세요.'], [x + 1 / 3, '다시 계산해 보세요.'], [x - 1 / 3, '다시 계산해 보세요.'], [be, 'BE의 길이예요.']]
           : [[ec, 'EC의 길이예요.'], [w - h, '길이의 차가 아니라 제곱의 차예요.'], [w, '접으면 AE=AD예요. BE는 직각삼각형 ABE로 구해요.'], [be + 1, '다시 계산해 보세요.'], [be - 1, '다시 계산해 보세요.'], [h, 'AB의 길이예요.']];
       return { tag: q.tag, key: `${kind}-${h}-${w}`, stem: `다음 그림과 같이 $\\overline{AB}=${h}$, $\\overline{AD}=${w}$인 직사각형 ABCD를 꼭짓점 D가 변 BC 위의 점 E에 오도록 접었다. 접는 선이 $\\overline{AF}$일 때, ${q.ask}는?`, choices: mkChoices(q.ans, wr, kind === 2 ? { tex: (v) => `${v}`, plain: (v) => `${v}` } : cf) };
@@ -119,6 +126,7 @@
     id: 'py7-tri', title: '직각삼각형을 접어 B를 A에 포개기', short: '삼각형 접기',
     question: '직각삼각형 ABC를 꼭짓점 B가 꼭짓점 A에 겹치도록 접으면 접는 선은 어디를 지날까? 접어서 생긴 선분의 길이는 어떻게 구할까?',
     ctl: ['pyGa', 'pyGb', 'pyFp'],
+    anim: { key: 'pyFp', dur: 4, label: '접어 보기' },
     presets: () => TRI_CHIPS.slice(0, 6).map(([a, b], i) => ({ group: i === 0 ? '빗변이 정수가 되는 (BC, CA)' : '', label: `${a}, ${b}`, apply: (ss) => { ss.pyGa = a; ss.pyGb = b; }, on: (ss) => ss.pyGa === a && ss.pyGb === b })),
     init: (s) => { s.pyGa = 8; s.pyGb = 6; s.pyFp = 0; s.pyKind = 0; },
     gen: (s, prev) => { let t, k; do { t = pick(TRI_CHIPS); k = rint(0, 2); } while (prev && prev.pyGa === t[0] && prev.pyGb === t[1] && prev.pyKind === k); return { pyGa: t[0], pyGb: t[1], pyKind: k, pyFp: 1 }; },
@@ -126,7 +134,7 @@
     draw(b, s, M, C) {
       const { a, b: bb, y, ce, p, kind, ci } = M, prob = C.problem;
       const Cc = pt(0, 0), B = pt(a, 0), A = pt(0, -bb), D = mid(A, B), E = pt(a - y, 0);
-      fit(b, { x0: 0, x1: a, y0: -bb, y1: 0 }, { t: 40, b: 46, l: 46, r: 40 });
+      fit(b, { x0: 0, x1: a, y0: -bb, y1: 0 }, { t: 40, b: 62, l: 46, r: 40 });
       const st = (n) => !C.review || C.step >= n;
       const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Bp = foldPt(B, D, E, pp);
@@ -139,29 +147,32 @@
       b.point(D, { color: 'rose', r: 4.5 }); T(b, D, 'D', { dx: 10, dy: -14, size: 17, color: 'rose' }); b.point(E, { color: 'rose', r: 4.5 }); T(b, E, 'E', { dx: 0, dy: 17, size: 17, color: 'rose' });
       if (pp > 0.5) { tick(b, E, A, 2, 'amber'); tick(b, E, B, 2, 'amber'); tick(b, D, A, 1, 'sky'); tick(b, D, B, 1, 'sky'); b.right(D, E, A, { size: 10, color: 'rose' }); }
       // 길이는 그림 안에: AC, BC 는 문제에서도 주어진 값
-      sideTag(b, Cc, A, B, `${bb}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(Cc, B), `${a}`, { dy: 36, size: 17, color: 'sky' });
-      if (!prob) {
+      sideTag(b, Cc, A, B, `${bb}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(Cc, B), `${a}`, { dy: 48, size: 17, color: 'sky' });
+      if (C.full) {
         if (pp > 0.5) { T(b, mid(Cc, E), `${f(ce)}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(E, B), `${f(y)}`, { dy: 16, size: 15, color: 'amber' }); }
         if (ci) T(b, lerp(A, B, 0.8), `${ci}`, { dx: 20, dy: -12, size: 16, color: 'ink' });
       } else {
-        if (kind === 0) T(b, mid(Cc, E), 'x', { dy: 17, size: 18, color: 'amber' });
-        if (kind === 1) T(b, mid(E, A), 'x', { dx: -14, dy: 0, size: 18, color: 'amber' });
-        if (kind === 2) T(b, mid(D, E), 'x', { dx: 12, dy: 10, size: 18, color: 'amber' });
+        if (kind === 0) T(b, mid(Cc, E), C.answer ? `x=${f(ce)}` : 'x', { dy: 19, size: 17, color: 'amber' });
+        if (kind === 1) T(b, mid(E, A), C.answer ? `x=${f(y)}` : 'x', { dx: 26, dy: -4, size: 17, color: 'amber' });
+        if (kind === 2) T(b, mid(D, E), C.answer ? `x=${f(M.de)}` : 'x', { dx: 20, dy: 12, size: 17, color: 'amber' });
+        if (C.review && kind === 2 && C.step >= 3) T(b, lerp(A, B, 0.8), `AB=${ci}`, { dx: 20, dy: -12, size: 15, color: 'ink' });
+        if (C.review && kind !== 2 && C.step >= 4) T(b, mid(E, B), `y=${f(y)}`, { dy: 18, size: 15, color: 'sky' });
       }
     },
     steps: (M) => [
-      `B를 A에 포개도록 접으면 접는 선 DE는 AB의 <b>수직이등분선</b>이에요. 그래서 $AE=BE$예요.`,
-      `$AE=BE=y$라 하면 $CE=${M.a}-y$예요. 직각삼각형 ACE에서 $y^2=(${M.a}-y)^2+${M.b}^2$.`,
-      `풀면 $y=\\frac{${M.a}^2+${M.b}^2}{2\\times${M.a}}=\\frac{${M.c2}}{${2 * M.a}}=${f(M.y)}$이므로 $CE=${M.a}-${f(M.y)}=${f(M.ce)}$예요.`,
-      M.de != null ? `DE는 닮음(삼각형 BDE∽BCA)으로 구해요: $DE=\\frac{BD\\times AC}{BC}=\\frac{${f(M.ci / 2)}\\times${M.b}}{${M.a}}=${f(M.de)}$.` : `DE는 닮음으로 구해요: $DE=\\frac{BD\\times AC}{BC}$.`
+      `$BC=${M.a}$, $CA=${M.b}$, $\\angle C=90^\\circ$예요. B를 A에 겹치도록 접고 ${M.kind === 0 ? 'CE' : M.kind === 1 ? 'AE' : '접는 선 DE'}의 길이를 구해요.`,
+      `접는 선 DE는 AB의 수직이등분선이에요. 따라서 $AE=BE$이고 $AD=BD$예요.`,
+      M.kind === 2 ? `$AB^2=${M.a}^2+${M.b}^2=${M.c2}$이므로 $AB=${M.ci}$, $BD=\\frac{${M.ci}}{2}$예요.` : `$AE=BE=y$로 놓으면 $CE=${M.a}-y$예요. 직각삼각형 ACE에서 $y^2=(${M.a}-y)^2+${M.b}^2$예요.`,
+      M.kind === 2 ? `$\\triangle BDE\\sim\\triangle BCA$이므로 $DE:CA=BD:BC$예요. 따라서 $DE=\\frac{${f(M.ci / 2)}\\times${M.b}}{${M.a}}$예요.` : `식을 정리하면 $2\\times${M.a}y=${M.a}^2+${M.b}^2=${M.c2}$이므로 $y=${f(M.y)}$예요.`,
+      M.kind === 0 ? `$CE=x=${M.a}-${f(M.y)}=${f(M.ce)}$예요.` : M.kind === 1 ? `$AE=x=${f(M.y)}$예요.` : `$DE=x=${f(M.de)}$예요.`
     ],
-    view: (M) => ({
+    view: (M, C) => ({
       guide: '막대로 <b>BC, CA</b>를 바꾸고 <b>접기</b> 막대를 끌어 보세요. B가 A에 포개지면 접는 선 DE는 AB의 <b>수직이등분선</b>이에요. (CA < BC일 때 접는 선이 BC와 만나요)',
-      readouts: [rd('AE = BE', `$${f(M.y)}$`, 'amber', `(${M.a}² + ${M.b}²) ÷ (2 × ${M.a})`), rd('CE', `$${f(M.ce)}$`, 'green', `${M.a} − AE`), rd('DE', M.de != null ? `$${f(M.de)}$` : '구할 수 없어요', 'rose', M.ci ? `${f(M.ci / 2)} × ${M.b} ÷ ${M.a}` : '')],
+      readouts: [rd('AE = BE', `$${f(M.y)}$`, 'amber', `(${M.a}² + ${M.b}²) ÷ (2 × ${M.a})`), rd('CE', `$${f(M.ce)}$`, 'green', `${M.a} − AE`), rd(M.de != null ? 'DE' : 'DE²', `$${f(M.de != null ? M.de : M.b * M.b * M.c2 / (4 * M.a * M.a))}$`, 'rose', M.ci ? `${f(M.ci / 2)} × ${M.b} ÷ ${M.a}` : 'DE² = CA² × AB² ÷ (4 × BC²)')],
       status: { tone: 'info', text: `접기 ${Math.round(M.p * 100)}%` },
       formula: `<p>$y^2=(${M.a}-y)^2+${M.b}^2\\Rightarrow y=${f(M.y)}$, $CE=${f(M.ce)}$</p>`,
       rule: '접는 선은 포개지는 두 점을 잇는 선분의 수직이등분선 → AE=BE 로 직각삼각형 ACE',
-      notes: notes('접는 선 위의 점에서 포개지는 두 점까지의 거리가 같아요: $AE=BE$.', '직각삼각형 <b>ACE</b>(직각은 C)의 빗변은 $AE$예요. $CE$가 아니에요.')
+      notes: C.review && M.kind === 2 ? notes('접는 선 DE는 AB에 수직이고, D는 AB의 중점이에요. 따라서 $BD=AB/2$예요.', '직각삼각형 BDE와 BCA의 대응은 B↔B, D↔C, E↔A예요. $DE:CA=BD:BC$로 구하는 선분 $DE=x$를 찾아요.') : notes('접는 선 위의 점에서 포개지는 두 점까지의 거리가 같아요: $AE=BE$.', C.review && M.kind === 0 ? '직각삼각형 ACE에서 구한 $AE=BE=y$를 BC에서 빼야 구하는 선분 $CE=x$가 돼요.' : '직각삼각형 <b>ACE</b>(직각은 C)의 빗변은 $AE$예요. $CE$가 아니에요.')
     }),
     prob: (M) => {
       const { a, b: bb, y, ce, de, kind } = M;
@@ -179,35 +190,35 @@
   const reflOf = (s) => {
     const d = clamp(Math.round(s.pyLd), 3, 24), p = clamp(Math.round(s.pyLp), 1, 14), q = clamp(Math.round(s.pyLq), 1, 14), t = clamp(s.pyLt == null ? 5 : s.pyLt, 0, d);
     const ap = Math.hypot(t, p), pb = Math.hypot(d - t, q), min2 = d * d + (p + q) * (p + q), tStar = (d * p) / (p + q);
-    return { d, p, q, t, ap, pb, tot: ap + pb, min2, mini: isSqN(min2) ? isq(min2) : null, tStar, onBest: Math.abs(t - tStar) < 0.06 };
+    return { d, p, q, t, ap, pb, tot: ap + pb, min2, mini: isSqN(min2) ? isq(min2) : null, tStar, onBest: Math.abs(t - tStar) < 1e-7, nearBest: Math.abs(t - tStar) < 0.06 };
   };
   const refl = {
     id: 'py7-refl', title: '직선 위의 점을 지나는 최단거리', short: '직선 위 점의 최단거리',
     question: '직선 ℓ 위의 점 P를 지나 A에서 B로 갈 때, 가장 짧은 길은 P를 어디에 잡을 때일까?',
     ctl: ['pyLd', 'pyLp', 'pyLq', 'pyLt'],
-    presets: (s) => [{ group: '위치', label: '최단 위치로', apply: (ss) => { const m = reflOf(ss); ss.pyLt = Math.round(m.tStar * 10) / 10; }, on: (ss) => reflOf(ss).onBest }].concat(REFL_CHIPS.slice(0, 6).map(([d, p, q], i) => ({ group: i === 0 ? '최단이 정수인 (거리, A, B 높이)' : '', label: `${d}, ${p}, ${q}`, apply: (ss) => { ss.pyLd = d; ss.pyLp = p; ss.pyLq = q; ss.pyLt = Math.round(((d * p) / (p + q)) * 10) / 10; }, on: (ss) => ss.pyLd === d && ss.pyLp === p && ss.pyLq === q }))),
+    presets: (s) => [{ group: '위치', label: '최단 위치로', apply: (ss) => { ss.pyLt = reflOf(ss).tStar; }, on: (ss) => reflOf(ss).onBest }].concat(REFL_CHIPS.slice(0, 6).map(([d, p, q], i) => ({ group: i === 0 ? '최단이 정수인 (거리, A, B 높이)' : '', label: `${d}, ${p}, ${q}`, apply: (ss) => { ss.pyLd = d; ss.pyLp = p; ss.pyLq = q; ss.pyLt = d * p / (p + q); }, on: (ss) => ss.pyLd === d && ss.pyLp === p && ss.pyLq === q }))),
     init: (s) => { s.pyLd = 12; s.pyLp = 3; s.pyLq = 2; s.pyLt = 5; },
-    gen: (s, prev) => { let t; do { t = pick(REFL_CHIPS.slice(0, 7)); } while (prev && prev.pyLd === t[0] && prev.pyLp === t[1] && prev.pyLq === t[2]); return { pyLd: t[0], pyLp: t[1], pyLq: t[2], pyLt: Math.round(((t[0] * t[1]) / (t[1] + t[2])) * 10) / 10 }; },
+    gen: (s, prev) => { let t; do { t = pick(REFL_CHIPS.slice(0, 7)); } while (prev && prev.pyLd === t[0] && prev.pyLp === t[1] && prev.pyLq === t[2]); return { pyLd: t[0], pyLp: t[1], pyLq: t[2], pyLt: t[0] * t[1] / (t[1] + t[2]) }; },
     model: (s) => reflOf(s),
     draw(b, s, M, C) {
       const { d, p, q, t, ap, pb, tot, min2, mini, onBest } = M, prob = C.problem;
-      const tt = prob ? d / 2 : t;
+      const tt = prob || C.review && C.step < 2 ? d / 2 : C.review ? M.tStar : t;
       const A = pt(0, -p), B = pt(d, -q), H = pt(0, 0), K = pt(d, 0), Pp = pt(tt, 0), A2 = pt(0, p);
       const showMirror = !prob && (!C.review || C.step >= 2);
       fit(b, { x0: -1, x1: d + 1, y0: -Math.max(p, q) - 0.2, y1: showMirror ? p + 0.4 : 1.4 }, { t: 40, b: 70, l: 36, r: 36 });
       const st = (n) => !C.review || C.step >= n;
       line(b, pt(-1, 0), pt(d + 1, 0), 'ink', 3); T(b, pt(d + 1, 0), 'ℓ', { dx: -4, dy: 16, size: 18 });
       line(b, A, H, 'muted', 2, { dash: [5, 5] }); line(b, B, K, 'muted', 2, { dash: [5, 5] }); b.right(H, K, A, { size: 9, color: 'ink' }); b.right(K, H, B, { size: 9, color: 'ink' });
-      const best = prob ? false : onBest;
+      const best = C.full ? onBest : C.review && C.step >= 2;
       line(b, A, Pp, best ? 'green' : 'sky', 4); line(b, Pp, B, best ? 'green' : 'sky', 4);
       if (showMirror) { line(b, A2, pt(d, -q), 'amber', 2.4, { dash: [6, 5] }); line(b, A, A2, 'muted', 1.6, { dash: [4, 5] }); b.point(A2, { color: 'amber', r: 4 }); T(b, A2, "A′", { dx: -16, dy: 4, size: 17, color: 'amber' }); }
       [[A, 'A', -1, -1], [B, 'B', 1, -1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 14, size: 17 }); });
-      if (prob) { b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dx: 0, dy: 17, size: 17, color: 'amber' }); }
+      if (C.givens) { b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dx: 0, dy: 17, size: 17, color: 'amber' }); }
       else b.handle('P', Pp, { color: 'amber', r: 8, ariaLabel: '점 P 끌기', drag: (w) => { s.pyLt = clamp(Math.round(w.x * 10) / 10, 0, d); } });
-      if (!prob) T(b, Pp, 'P', { dx: 0, dy: 26, size: 16, color: 'amber' });
+      if (C.full) T(b, Pp, 'P', { dx: 0, dy: 26, size: 16, color: 'amber' });
       // 길이: 그림 안
       T(b, mid(A, H), `${p}`, { dx: 12, size: 16, color: 'green' }); T(b, mid(B, K), `${q}`, { dx: 12, size: 16, color: 'rose' }); T(b, mid(H, K), `${d}`, { dy: 48, size: 16, color: 'sky' });
-      if (!prob && C.txt) T(b, pt(d / 2, -Math.max(p, q) - 0.2), `AP+PB ${best && mini ? '=' : '≈'} ${best && mini ? mini : fmtN(Math.round(tot * 10) / 10)}`, { dy: -14, size: 18, color: best ? 'green' : 'sky' });
+      if (C.answer && C.txt) T(b, pt(d / 2, -Math.max(p, q) - 0.2), `AP+PB ${best && mini ? '=' : '≈'} ${best && mini ? mini : fmtN(Math.round(tot * 10) / 10)}`, { dy: -14, size: 18, color: best ? 'green' : 'sky' });
     },
     steps: (M) => [
       `A에서 직선 ℓ에 수선의 발 H, B에서 수선의 발 K를 내리면 $AH=${M.p}$, $BK=${M.q}$, $HK=${M.d}$예요.`,
@@ -217,7 +228,7 @@
     view: (M) => ({
       guide: '<b>노란 점 P</b>를 끌거나 막대로 옮겨 보세요. 파란 선의 길이 AP+PB가 가장 짧을 때는 <b>대칭점 A′</b>과 B를 이은 직선 위에 P가 있을 때예요(초록). 칩은 최단거리가 정수인 경우예요.',
       readouts: [rd('AP + PB (지금)', `${fmtN(Math.round(M.tot * 10) / 10)}`, M.onBest ? 'green' : 'sky', '대략의 값'), rd('가장 짧은 값 x', M.mini ? `${M.mini}` : `x²=${M.min2}`, 'green', `${M.d}² + ${M.p + M.q}² = ${M.min2}`), rd('최단 위치 (H에서)', `$${f(M.tStar)}$`, 'amber', `${M.d} × ${M.p} ÷ ${M.p + M.q}`)],
-      status: M.onBest ? { tone: 'ok', text: '가장 짧은 길이에요 (A′, P, B가 한 직선)' } : { tone: 'info', text: 'P를 움직여 가장 짧은 길을 찾아보세요' },
+      status: M.onBest ? { tone: 'ok', text: '가장 짧은 길이에요 (A′, P, B가 한 직선)' } : { tone: 'info', text: M.nearBest ? '최단 위치에 가까워요. 최단 위치로 버튼으로 정확히 맞춰 보세요.' : 'P를 움직여 가장 짧은 길을 찾아보세요' },
       formula: `<p>$x^2=${M.d}^2+(${M.p}+${M.q})^2=${M.min2}$</p>`,
       rule: '직선에 대해 한 점을 대칭이동하면, 대칭점과 다른 점을 잇는 선분이 최단거리',
       notes: notes('대칭점과 이은 선분의 세로 길이는 두 높이의 <b>합</b> ($p+q$)이에요. 차가 아니에요.', '두 점이 직선의 <b>같은 쪽</b>에 있을 때 대칭이동을 써요. 서로 반대쪽이면 그냥 일직선이 최단이에요.')
@@ -254,9 +265,11 @@
       // 오른쪽: 선택한 경로의 전개도 (가로로 펼침)
       const nw = route === 0 ? c + bb : route === 1 ? a + bb : c + a, nh = route === 0 ? a : route === 1 ? c : bb;
       const gapX = Math.max(1.2, (a + dx) * 0.25), ox = a + dx + gapX, oy = -(Math.max(0, nh));
-      fit(b, { x0: -0.2, x1: prob ? a + dx + 0.3 : ox + nw + 0.3, y0: Math.min(-c + dy, -nh) - 0.2, y1: 0.5 }, { t: 40, b: 48, l: 26, r: 26 });
       const st = (n) => !C.review || C.step >= n;
+      const showNet = !prob && st(2), netOnly = C.review && showNet && b.W < 560;
+      fit(b, { x0: netOnly ? ox - 0.2 : -0.2, x1: showNet ? ox + nw + 0.3 : a + dx + 0.3, y0: netOnly ? -nh - 0.2 : Math.min(-c + dy, showNet ? -nh : 0) - 0.2, y1: 0.5 }, { t: 40, b: 48, l: 30, r: 38 });
       // 상자 (앞면 / 윗면 / 오른쪽면) — 밑면이 아래
+      if (!netOnly) {
       fillPoly(b, [F0, F1, F3, F2], 'ink', 0.06); fillPoly(b, [F2, F3, G3, G2], 'sky', 0.14); fillPoly(b, [F1, F3, G3, G1], 'green', 0.12);
       poly(b, [F0, F1, F3, F2], 'ink', 2.8); poly(b, [F2, F3, G3, G2], 'ink', 2.8); poly(b, [F1, F3, G3, G1], 'ink', 2.8);
       line(b, F0, G0, 'muted', 1.6, { dash: [5, 5] }); line(b, G0, G1, 'muted', 1.6, { dash: [5, 5] }); line(b, G0, G2, 'muted', 1.6, { dash: [5, 5] });
@@ -264,11 +277,12 @@
       b.point(G3, { color: 'rose', r: 5.5 }); T(b, G3, 'G', { dx: 14, dy: -12, size: 17, color: 'rose' });
       T(b, mid(F0, F1), `${a}`, { dy: 16, size: 16, color: 'sky' }); T(b, mid(F0, F2), `${c}`, { dx: -14, size: 16, color: 'rose' }); T(b, mid(F1, G1), `${bb}`, { dx: 14, dy: 6, size: 16, color: 'green' });
       if (prob) { T(b, pt((a + dx) / 2, -c + dy), 'x : A→G 겉면 최단거리', { dy: -24, size: 14, color: 'amber' }); return; }
+      }
       if (st(2)) {
         // 상자 위의 경로 (선택한 경로)
         let X, path;
         if (route === 0) { X = pt((a * c) / (bb + c), -c); path = [F0, X, G3]; } else if (route === 1) { X = pt(a, -(c * a) / (a + bb)); path = [F0, X, G3]; } else { const t = c / (a + c); X = add(F2, pt(dx * t, dy * t)); path = [F0, X, G3]; }
-        b.path(path, { color: 'amber', width: 4 });
+        if (!netOnly) b.path(path, { color: 'amber', width: 4 });
         // 전개도: 두 직사각형을 가로로 나란히
         const X0 = ox, Y0 = 0;
         let r1, r2, q0, q1;
@@ -276,7 +290,7 @@
         const rc = (r) => [pt(r[0], r[1]), pt(r[0] + r[2], r[1]), pt(r[0] + r[2], r[1] - r[3]), pt(r[0], r[1] - r[3])];
         fillPoly(b, rc(r1), 'ink', 0.06); fillPoly(b, rc(r2), 'sky', 0.14); poly(b, rc(r1), 'ink', 2.6); poly(b, rc(r2), 'ink', 2.6);
         const S = pt(X0, 0), Eg = pt(X0 + nw, -nh);
-        if (st(3)) { line(b, S, Eg, 'amber', 4.2); T(b, S, 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, Eg, 'G', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, mid(S, Eg), mini ? `x=${isq(v[route])}` : `x²=${v[route]}`, { dx: 0, dy: 18, size: 16, color: 'amber' }); T(b, pt(X0 + nw / 2, 0), `${nw}`, { dy: 16, size: 15, color: 'sky' }); T(b, pt(X0 + nw, -nh / 2), `${nh}`, { dx: 12, size: 15, color: 'green' }); }
+        if (st(3)) { line(b, S, Eg, 'amber', 4.2); T(b, S, 'A', { dx: -12, dy: 14, size: 16, color: 'amber' }); T(b, Eg, 'G', { dx: 12, dy: -12, size: 16, color: 'rose' }); T(b, mid(S, Eg), isSqN(v[route]) ? `x=${isq(v[route])}` : `x²=${v[route]}`, { dx: 0, dy: 18, size: 16, color: 'amber' }); T(b, pt(X0 + nw / 2, 0), `${nw}`, { dy: 16, size: 15, color: 'sky' }); T(b, pt(X0 + nw, -nh / 2), `${nh}`, { dx: 12, size: 15, color: 'green' }); }
         T(b, pt(X0 + nw / 2, 0), st(3) ? '' : ROUTE_NM[route], { dy: 18, size: 14, color: 'ink' });
       }
     },
@@ -321,10 +335,12 @@
     draw(b, s, M, C) {
       const { L, h, half, W, x2, x } = M, prob = C.problem;
       const r = L / (2 * PI), ry = r * 0.34, gapX = Math.max(1.4, r * 0.6), ox = r + gapX + 0.3;
-      fit(b, { x0: -r - 0.3, x1: prob ? r + 0.5 : ox + W + 0.3, y0: -h - ry - 0.3, y1: ry + 0.9 }, { t: 40, b: 50, l: 24, r: 24 });
       const st = (n) => !C.review || C.step >= n;
+      const showNet = !prob && st(2), netOnly = C.review && showNet && b.W < 560;
+      fit(b, { x0: netOnly ? ox - 0.3 : -r - 0.3, x1: showNet ? ox + W + 0.3 : r + 0.5, y0: netOnly ? -h - 0.3 : -h - ry - 0.3, y1: netOnly ? 0.3 : ry + 0.9 }, { t: 40, b: 50, l: 42, r: 40 });
       const ell = (cy, from, to) => { const pts = []; for (let i = 0; i <= 60; i++) { const t = from + (to - from) * (i / 60); pts.push(pt(r * Math.sin(t), cy + ry * Math.cos(t))); } return pts; };
       // 원기둥: 밑면이 아래 — 옆면 좌우 선, 아래 앞쪽 반타원, 위 타원
+      if (!netOnly) {
       fillPoly(b, [pt(-r, 0), pt(r, 0), pt(r, -h), pt(-r, -h)], 'ink', 0.06);
       line(b, pt(-r, 0), pt(-r, -h), 'ink', 2.8); line(b, pt(r, 0), pt(r, -h), 'ink', 2.8);
       b.path(ell(0, 0, PI * 2), { color: 'muted', width: 1.6, dash: [5, 5] });
@@ -347,6 +363,7 @@
         T(b, xp, 'x', { dx: 15, size: 18, color: 'amber' }); return;
       }
       T(b, pt(r, -h / 2), `${h}`, { dx: 16, size: 16, color: 'green' });
+      }
       if (st(2)) {
         const X0 = ox, rc = [pt(X0, 0), pt(X0 + W, 0), pt(X0 + W, -h), pt(X0, -h)];
         fillPoly(b, rc, 'sky', 0.12); poly(b, rc, 'ink', 2.8);

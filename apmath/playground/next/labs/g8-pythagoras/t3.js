@@ -38,18 +38,24 @@
         const { a, b: bb, c, k, ask } = M, prob = C.problem;
         const val = { a, b: bb, c };
         const lab = {};
-        ['a', 'b', 'c'].forEach((q) => { lab[q] = prob ? (q === ask ? 'x' : `${val[q]}`) : `${q}=${val[q]}`; });
+        ['a', 'b', 'c'].forEach((q) => { lab[q] = C.givens ? (q === ask && !C.answer ? 'x' : `${val[q]}`) : `${q}=${val[q]}`; });
         const R = figRt(b, a, bb, C, {
           sq: !prob, bt: 44, lab, at: { sa: 2, sb: 2, sc: 2 },
-          sqLab: { a: `a²=${a * a}`, b: `b²=${bb * bb}`, c: `c²=${c * c}` }
+          sqLab: Object.fromEntries(['a', 'b', 'c'].map((q) => [q, q === ask && !C.calculation ? 'x²' : `${q}²=${val[q] * val[q]}`]))
         });
-        if (!prob && C.txt) T(b, pt(a / 2, a), `${a * a} + ${bb * bb} = ${c * c}`, { dy: 34, size: 18, color: 'amber' });
+        if (C.calculation && C.txt) T(b, pt(a / 2, a), `${a * a} + ${bb * bb} = ${c * c}`, { dy: 34, size: 18, color: 'amber' });
       },
-      steps: (M) => [
-        `기본 삼각형 $(${M.a0}, ${M.b0}, ${M.c0})$는 $${M.a0}^2+${M.b0}^2=${M.a0 ** 2}+${M.b0 ** 2}=${M.c0 ** 2}=${M.c0}^2$이라 직각삼각형이에요. 이렇게 세 변이 모두 자연수인 직각삼각형의 세 변을 <b>피타고라스 수</b>라고 해요.`,
-        `각 변을 $k=${M.k}$배 하면 $(${M.a}, ${M.b}, ${M.c})$가 돼요. $(${M.a0}k)^2+(${M.b0}k)^2=k^2(${M.a0}^2+${M.b0}^2)=(${M.c0}k)^2$이에요.`,
-        `그래서 $${M.a}^2+${M.b}^2=${M.a * M.a}+${M.b * M.b}=${M.c * M.c}=${M.c}^2$이고, 이 삼각형도 직각삼각형이에요. 세 변의 비가 $${M.a0}:${M.b0}:${M.c0}$로 같으니까 모양이 같아요.`
-      ],
+      steps: (M) => {
+        const known = ['a', 'b', 'c'].filter((k) => k !== M.ask), other = M.ask === 'a' ? 'b' : 'a';
+        const ans = M[M.ask];
+        return [
+          `주어진 변은 ${known.map((k) => `$${k}=${M[k]}$`).join(', ')}예요. 구하는 $x$는 ${M.ask === 'c' ? '빗변' : '직각변'}이에요.`,
+          `기본 피타고라스 수 $(${M.a0},${M.b0},${M.c0})$에서 $${M.a0}^2+${M.b0}^2=${M.c0}^2$예요. 같은 비율로 커져도 이 관계는 같아요.`,
+          `주어진 ${known.map((k) => `$${M[k]}\\div${M[k + '0']}=${M.k}$`).join(', ')}로 두 변의 배수가 같음을 확인해요.`,
+          M.ask === 'c' ? `$x^2=${M.a}^2+${M.b}^2=${ans * ans}$예요.` : `$x^2=${M.c}^2-${M[other]}^2=${ans * ans}$예요.`,
+          `$x=${M[M.ask + '0']}\\times${M.k}=${ans}$예요. 양수 ${ans}를 제곱하면 ${ans * ans}인지 확인해요.`
+        ];
+      },
       view: (M) => ({
         guide: '막대로 <b>배수 k</b>를 바꿔 보세요. 세 변이 모두 k배가 되어도 <b>a²+b²=c²</b>가 그대로 성립해요.' + (o.fams.length > 1 ? ' 칩으로 기본 삼각형을 바꿀 수 있어요.' : ''),
         readouts: [rd('세 변 (a, b, c)', `${M.a}, ${M.b}, ${M.c}`, 'amber', `(${M.a0}, ${M.b0}, ${M.c0}) × ${M.k}`, null, true), rd('a² + b²', `${M.a * M.a + M.b * M.b}`, 'sky', `${M.a * M.a} + ${M.b * M.b}`), rd('c²', `${M.c * M.c}`, 'amber', `${M.c}²`)],
@@ -102,31 +108,35 @@
       const { p, q, x1, x2, x1i, x2i, kind } = M, prob = C.problem;
       // 왼쪽: x 가 빗변(직각변 p, q), 오른쪽: q 가 빗변(직각변 p, x). 두 삼각형을 가로로 나란히 놓습니다.
       const w2 = Math.sqrt(x2), gap = Math.max(2.2, q * 0.5);
-      const x0 = q + gap;
-      const show1 = !prob || kind !== 1, show2 = !prob || kind !== 2;
-      fit(b, { x0: show1 ? -0.4 : x0 - 0.4, x1: (show2 ? x0 + w2 : q) + 0.4, y0: -p, y1: 0 }, { t: 44, b: 56, l: 34, r: 34 });
+      const show1 = !C.givens || kind !== 1, show2 = !C.givens || kind !== 2;
+      const rowScale = Math.min((b.W - 68) / (q + gap + w2), (b.H - 110) / p);
+      const columnScale = Math.min((b.W - 68) / Math.max(q, w2), (b.H - 110) / (2 * p + gap));
+      const stacked = b.W < 560 && show1 && show2 && columnScale > rowScale * 1.08;
+      const x0 = stacked || !show1 ? 0 : q + gap, dy = stacked ? p + gap : 0;
+      fit(b, { x0: -0.4, x1: (show2 ? Math.max(show1 ? q : 0, x0 + w2) : q) + 0.4, y0: -p, y1: dy }, { t: 44, b: 56, l: 34, r: 34 });
       if (show1) {
-        figRt(b, q, p, C, { noFit: true, dx: 0, sq: false, names: ['', '', ''], lab: { a: `${q}`, b: `${p}`, c: prob ? 'x' : x1i ? `x=${x1i}` : `x²=${x1}` }, labOut: true });
+        figRt(b, q, p, C, { noFit: true, dx: 0, sq: false, names: ['', '', ''], lab: { a: `${q}`, b: `${p}`, c: C.answer ? x1i ? `x=${x1i}` : `x²=${x1}` : 'x' }, labOut: true });
         if (!prob) T(b, pt(q / 2, 0), 'x가 가장 긴 변', { dy: 40, size: 15, color: 'amber' });
       }
       if (show2) {
-        figRt(b, w2, p, C, { noFit: true, dx: x0, sq: false, names: ['', '', ''], lab: { a: prob ? 'x' : x2i ? `x=${x2i}` : `x²=${x2}`, b: `${p}`, c: `${q}` }, labOut: true });
-        if (!prob) T(b, pt(x0 + w2 / 2, 0), `${q}가 가장 긴 변`, { dy: 40, size: 15, color: 'amber' });
+        figRt(b, w2, p, C, { noFit: true, dx: x0, dy, sq: false, names: ['', '', ''], lab: { a: C.answer ? x2i ? `x=${x2i}` : `x²=${x2}` : 'x', b: `${p}`, c: `${q}` }, labOut: true });
+        if (!prob) T(b, pt(x0 + w2 / 2, dy), `${q}가 가장 긴 변`, { dy: 40, size: 15, color: 'amber' });
       }
     },
     steps: (M) => [
-      `세 변의 길이가 $${M.p}$, $${M.q}$, $x$인 직각삼각형에서 <b>가장 긴 변이 빗변</b>이에요. 가장 긴 변이 $x$인지 $${M.q}$인지 두 경우를 나눠요.`,
-      `(경우 1) $x$가 빗변: $x^2=${M.p}^2+${M.q}^2=${M.x1}$${M.x1i ? `, $x=${M.x1i}$` : ''}.`,
-      `(경우 2) $${M.q}$가 빗변: $x^2=${M.q}^2-${M.p}^2=${M.x2}$${M.x2i ? `, $x=${M.x2i}$` : ''}. 그래서 가능한 $x^2$의 값의 합은 $${M.x1}+${M.x2}=${M.sum}$예요.`
+      `두 변의 길이는 $${M.p}$, $${M.q}$이고 $${M.p}<${M.q}$예요. ${M.kind === 1 ? `가장 긴 변은 $${M.q}$라고 주어졌어요.` : M.kind === 2 ? '가장 긴 변은 $x$라고 주어졌어요.' : '가장 긴 변이 주어지지 않았으므로 두 경우를 나눠요.'}`,
+      M.kind === 1 ? `$${M.q}$가 빗변이므로 $x^2+${M.p}^2=${M.q}^2$예요.` : `$x$가 빗변이면 $x^2=${M.p}^2+${M.q}^2$예요.`,
+      M.kind === 1 ? `$x^2=${M.q * M.q}-${M.p * M.p}=${M.x2}$예요.` : M.kind === 2 ? `$x^2=${M.p * M.p}+${M.q * M.q}=${M.x1}$예요.` : `$${M.q}$가 빗변인 경우도 가능해요. 이때 $x^2=${M.q}^2-${M.p}^2=${M.x2}$예요.`,
+      M.kind === 0 ? `가능한 두 값의 합은 $${M.x1}+${M.x2}=${M.sum}$예요. 더 작은 주어진 변 $${M.p}$는 빗변이 될 수 없어요.` : `문제는 길이 $x$가 아니라 $x^2$를 물었으므로 답은 $${M.kind === 1 ? M.x2 : M.x1}$예요.`
     ],
-    view: (M) => ({
+    view: (M, C) => ({
       guide: '막대로 <b>p</b>, <b>q</b>를 바꿔 보세요. 같은 두 변이라도 <b>가장 긴 변</b>이 누구냐에 따라 나머지 변 x가 달라져요. 제곱근을 배우기 전이라 x²의 값으로 써요.',
       readouts: [rd('경우 1: x²', `${M.x1}`, 'amber', `${M.p}² + ${M.q}²`), rd('경우 2: x²', `${M.x2}`, 'rose', `${M.q}² − ${M.p}²`), rd('두 값의 합', `${M.sum}`, 'sky', `2 × ${M.q}²`)],
       status: { tone: 'warn', text: 'x가 가장 긴 변인지 먼저 따져 봐요' },
       formula: `<p>경우 1: $x^2=${M.p}^2+${M.q}^2=${M.x1}$</p><p>경우 2: $x^2=${M.q}^2-${M.p}^2=${M.x2}$</p>`,
       rule: '두 변만 알면 가장 긴 변이 누구인지 두 경우로 나누어 x²를 구한다',
       alert: { tone: 'warn', text: `<b>[함정]</b> $${M.p}$와 $${M.q}$가 직각변이라고만 생각하면 한 경우를 놓쳐요. $${M.q}$가 빗변이 될 수도 있어요.` },
-      notes: notes('가장 긴 변이 빗변이에요. $x$의 값이 $q$보다 커야 경우 1이고, 작아야 경우 2예요.', '두 경우의 $x^2$를 <b>모두</b> 구했는지 확인해요.')
+      notes: C.review && M.kind !== 0 ? notes(M.kind === 1 ? `문제에서 가장 긴 변이 $${M.q}$라고 주어졌으므로 그 변을 빗변으로 놓아요.` : '문제에서 가장 긴 변이 $x$라고 주어졌으므로 $x$를 빗변으로 놓아요.', '이 문항은 주어진 빗변 조건에 맞는 <b>한 경우</b>의 $x^2$를 물어요.') : notes('가장 긴 변이 빗변이에요. $x$의 값이 $q$보다 커야 경우 1이고, 작아야 경우 2예요.', '두 경우의 $x^2$를 <b>모두</b> 구했는지 확인해요.')
     }),
     prob: (M) => {
       const { p, q, x1, x2, sum, kind } = M;

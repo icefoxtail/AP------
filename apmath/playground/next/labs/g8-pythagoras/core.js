@@ -1,7 +1,7 @@
 /* ==========================================================================
    중2 · 피타고라스 정리 — 공용 도구 (core.js)
    - 여덟 개 탭 모듈(t1~t8.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_PY(도구)와 APL_PY_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 풀이 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 문제(5지선다 + 숫자 바꾸기) → 풀이(현재 문항의 조건·보조선·계산).
    - 색의 역할(이 실험실 전체): 하늘 = 직각을 낀 변 a·넓이 a² · 초록 = 직각을 낀 변 b·넓이 b² · 노랑 = 빗변 c·구하는 값 x·끌 수 있는 점 · 분홍 = 보조선·비교 · 기본 = 도형의 변.
    - 중2는 제곱근(√)을 배우기 전입니다 → √ 표기 없음. 정수 변(피타고라스 수)이거나 x²=값 꼴로만 씁니다.
    - 같은 길이는 눈금, 직각은 네모, 평행은 화살표. 움직임은 가로로만(제자리 회전·접기·서서히 나타남은 허용).
@@ -187,7 +187,12 @@
     const pp = b.pad * Math.min(aw, ah), W = aw - 2 * pp, H = ah - 2 * pp;
     const base = b.thumb ? 5 : narrow ? 30 : 46;
     const pad = { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r, t: o.t == null ? base : o.t, b: o.b == null ? base : o.b };
-    if (!narrow && !b.thumb) pad.t = Math.max(pad.t, 56); // 넓은 화면: 무대 오른쪽 위의 상태 칩(그림을 보고 풀어 보세요 등) 아래에 그림을 둡니다
+    if (!narrow && !b.thumb) {
+      pad.t = Math.max(pad.t, 56); // 상태 칩 아래에 그림을 둡니다.
+      // 가로 태블릿에서는 도구 막대가 캔버스 하단을 덮습니다.
+      // 아래쪽 꼭짓점 이름까지 막대 위에 남도록 여백을 확보합니다.
+      pad.b = Math.max(pad.b, 76);
+    }
     let bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
     if (o.maxK) k = Math.min(k, o.maxK);
@@ -281,7 +286,7 @@
   const cenOf = (Pts) => pt(Pts.reduce((a, p) => a + p.x, 0) / Pts.length, Pts.reduce((a, p) => a + p.y, 0) / Pts.length);
   // 정사각형 그리기: 면 색 + 테두리 + (선택) 안쪽 글자
   function drawSq(b, sq, color, label, o = {}) {
-    fillPoly(b, sq, color, o.fa == null ? 0.2 : o.fa);
+    fillPoly(b, sq, color, o.fa == null ? 0.16 : o.fa);
     poly(b, sq, o.line || color, o.w || 2.6, { alpha: o.alpha, dash: o.dash });
     if (label != null && label !== '') T(b, cenOf(sq), label, { size: o.size || 16, color: o.lc || color, alpha: o.alpha });
   }
@@ -307,7 +312,8 @@
   }
   // 다각형 영역 바깥만 / 안쪽만 칠하기는 필요한 곳에서 b.ctx 로 직접 합니다.
 
-  // 문제 탭은 탐구·정리의 슬라이더 값과 따로 저장한 문제 숫자(s.pyQ)로 그립니다.
+  // 현재 문항의 숫자·유형은 pyQ에 보존합니다. 탐구의 조절 값은 문항을 바꾸지 않습니다.
+  // 문제, 풀이 글, 풀이 그림, 정답 모두 이 모델을 사용합니다.
   const qState = (s) => Object.assign({}, s, s.pyQ || {});
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
@@ -324,7 +330,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="py-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="py-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="py-fb ok"><b>정답이에요!</b> 풀이 탭에서 이 문제의 풀이 그림을 확인해 보세요.</div>' : `<div class="py-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="py-tools"><button type="button" class="apl-btn sm" data-py-new>숫자 바꾸기</button>${Q.note ? `<span class="py-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -333,6 +339,11 @@
     const s2 = qState(s), Q = D.prob(D.model(s2), s2), i = Q.choices.findIndex((o) => o.ok);
     const o = Q.choices[i];
     return `${NUM[i]} ${o.h != null ? o.h : '$' + o.t + '$'}`;
+  }
+
+  function reviewTop(D, s) {
+    const qs = qState(s), Q = D.prob(D.model(qs), qs);
+    return `<details class="py-recap" open><summary>지금 푸는 문제</summary><div class="py-q">${Q.html || esc(Q.stem)}</div></details>`;
   }
 
   // 새 문제: 숫자를 새로 뽑고, 탐구·정리 화면도 같은 숫자로 맞춥니다(정리 탭에서 이 문제의 풀이를 볼 수 있게).
@@ -391,6 +402,7 @@
 .py-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
 .py-note{font-size:var(--fs-xs);color:var(--text-3)}
 .py-notes{margin:0;padding-left:18px;display:grid;gap:4px}`;
+    st.textContent += '\n.py-recap{margin:0 0 12px;padding:12px 14px;border:1px solid var(--line-2);border-radius:var(--r-md);background:var(--card-2)}.py-recap summary{cursor:pointer;font-weight:800;color:var(--m-sky);margin-bottom:8px}';
     document.head.append(st);
   }
   installStyle();
@@ -400,7 +412,7 @@
      D = { id, title, short, question, ctl:[조절 값 id…] | (s)=>[…], presets?(s), init(s), gen(s,prev)→{슬라이더 값 묶음}(문제 숫자),
            model(s)→M, draw(b,s,M,C), steps(M)→[글…], view(M,C,s)→{guide,readouts,status?,formula?,rule?,notes?,alert?},
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) }
-     문제 탭은 s.pyQ(= gen 이 뽑은 슬라이더 값 묶음)를 덮어쓴 상태로 모델·그림·문제를 만듭니다. */
+     문제·풀이 탭은 s.pyQ(= gen 이 뽑은 슬라이더 값 묶음)를 덮어쓴 같은 상태로 만듭니다. */
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D) {
     const A = D.anim;
@@ -419,7 +431,10 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
+      reviewTop: (s) => reviewTop(D, s),
+      reviewTitles: { steps: '현재 문제의 풀이 · 단계마다 그림이 바뀌어요', solution: '풀이 확인' },
+      steps: (s) => D.steps(D.model(qState(s))).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => { const s2 = qState(s); return D.prob(D.model(s2), s2).tag; },
@@ -448,18 +463,29 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         const C = baseCtx(s, lab, false);
-        const M = D.model(s);
-        const v = D.view(M, C, s) || {};
+        const s2 = C.problem || C.review ? qState(s) : s;
+        const M = D.model(s2);
+        const v = D.view(M, C, s2) || {};
+        if (C.problem || C.review) {
+          // 탐구용 완성 수식/측정값이 풀이 첫 단계에서 답을 먼저 보여 주지 않도록 합니다.
+          delete v.formula; delete v.rule; delete v.alert;
+          v.readouts = [];
+          if (C.problem || (s.step || 1) < D.steps(M).length) delete v.notes;
+        }
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; v.guide = '문제의 조건을 유지한 채 단계를 눌러 보조선과 계산을 확인해 보세요.'; }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
-        const s2 = C.problem ? qState(s) : s;
+        const s2 = C.problem || C.review ? qState(s) : s;
         const M = D.model(s2);
+        if (C.review) C.step = Math.max(1, C.step);
+        C.answer = C.full || (C.review && C.step >= D.steps(M).length);
+        C.calculation = C.full || (C.review && C.step >= D.steps(M).length - 1);
+        C.givens = C.problem || C.review;
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
         D.draw(b, s2, M, C);
       }

@@ -183,10 +183,40 @@ test('tan 90° is undefined; acute SAS exterior foot has a positive distance', (
   const m = sas.tg.model(z); close(m.hc.v, Math.abs(2 - 12 * cs(20)), 'HC is a length'); assert.ok(m.past);
 });
 
+test('renaming the current triangle also renames every wrong-choice explanation', () => {
+  const originalRandom = context.Math.random, forms = new Set(); let ratioCases = 0;
+  try {
+    for (const id of ['refAngleSwap', 'r1-2']) for (let n = 0; n < 64; n++) {
+      const gen = (j2, j1) => {
+        seed = 1709 + n * 7919; let calls = 0;
+        // Only the first two draws choose the names. All numerical/question
+        // random draws remain identical under each of the six permutations.
+        context.Math.random = () => ++calls === 1 ? (j2 + .1) / 3 : calls === 2 ? (j1 + .1) / 2 : originalRandom();
+        return scene(id).tg.gen();
+      };
+      const base = gen(2, 1);
+      if (id === 'refAngleSwap') forms.add(base.solution.math.expression);
+      else if (base.key.includes('|ratio|')) ratioCases++;
+      for (let j2 = 0; j2 < 3; j2++) for (let j1 = 0; j1 < 2; j1++) {
+        const q = gen(j2, j1), names = q.fig.names;
+        assert.deepEqual(q.choices.map(c => [c.t, c.ok]), base.choices.map(c => [c.t, c.ok]), id + ': unchanged mathematics');
+        for (let i = 0; i < q.choices.length; i++) {
+          const expected = base.choices[i].hint.replace(/[ABC]/g, x => names[x]);
+          assert.equal(q.choices[i].hint, expected, `${id}/${q.key}/choice${i}: feedback must follow the renamed triangle`);
+          checkMathText(q.choices[i].hint, id + ': feedback math');
+        }
+      }
+    }
+  } finally { context.Math.random = originalRandom; }
+  assert.equal(forms.size, 5, 'all reference-angle expressions'); assert.ok(ratioCases > 0);
+});
+
 // Canvas-command verification exercises the production draw paths, not pixels.
 function board(width = 390, height = 490) {
-  const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, insets: { left: 0, right: 0, top: 0, bottom: 0 }, thumb: false, _tgBoxes: [], log, toS(p) { const f = this.focus || { x: [-width / 70, width / 70], y: [-height / 70, height / 70] }; return { x: width / 2 + (p.x - (f.x[0] + f.x[1]) / 2) * this.k, y: height / 2 + (p.y - (f.y[0] + f.y[1]) / 2) * this.k }; }, _P: p => p, _ts: () => 1 };
-  Object.defineProperty(b, 'k', { get() { if (!this.focus) return 35; const p = this.pad * Math.min(width, height); return Math.min((width - 2 * p) / (this.focus.x[1] - this.focus.x[0]), (height - 2 * p) / (this.focus.y[1] - this.focus.y[0])); } });
+  const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, insets: { left: 0, right: 0, top: 0, bottom: 0 }, thumb: false, _tgBoxes: [], log,
+    area() { const i = this.insets; return { x: i.left, y: i.top, w: Math.max(10, width - i.left - i.right), h: Math.max(10, height - i.top - i.bottom) }; },
+    toS(p) { const a = this.area(), f = this.focus || { x: [-width / 70, width / 70], y: [-height / 70, height / 70] }; return { x: a.x + a.w / 2 + (p.x - (f.x[0] + f.x[1]) / 2) * this.k, y: a.y + a.h / 2 + (p.y - (f.y[0] + f.y[1]) / 2) * this.k }; }, _P: p => p, _ts: () => 1 };
+  Object.defineProperty(b, 'k', { get() { if (!this.focus) return 35; const a = this.area(), p = this.pad * Math.min(a.w, a.h); return Math.min((a.w - 2 * p) / (this.focus.x[1] - this.focus.x[0]), (a.h - 2 * p) / (this.focus.y[1] - this.focus.y[0])); } });
   for (const name of ['path', 'text', 'point', 'circle', 'arc', 'right', 'ticks', 'handle']) b[name] = (...args) => { const inspect = x => { if (typeof x === 'number') assert.ok(Number.isFinite(x), `non-finite ${name}`); else if (x && typeof x === 'object') Object.values(x).forEach(inspect); }; args.forEach(inspect); log.push({ name, args }); return b; };
   return b;
 }
@@ -248,6 +278,55 @@ test('nested right triangles retain a usable mobile figure while ratios remain i
   assert.ok(Math.max(...points.map(p => p.x)) - Math.min(...points.map(p => p.x)) > 200, 'default figure should span over 200 pixels');
   const cards = JSON.stringify(sc.view(s, { tab: 'explore' }).readouts);
   for (const fraction of ['BC}{AC', 'AB}{AC', 'BC}{AB']) assert.ok(cards.includes(fraction), fraction + ': keep corresponding-side ratios');
+});
+
+// Real 1440/1024 layouts leave the toolbar floating over the lower-right canvas.
+// Use their final canvas dimensions and the shell's right inset, not viewport width.
+function assertToolbarClear(b, context) {
+  const labels = b._tgBoxes.filter(x => /^[A-G]$/.test(x.s));
+  assert.ok(labels.length >= 3, context + ': vertex names');
+  for (const x of labels) assert.ok(x.x1 <= b.W - 290 || x.y1 <= b.H - 54,
+    `${context}: ${x.s} (${x.x0.toFixed(1)},${x.y0.toFixed(1)})–(${x.x1.toFixed(1)},${x.y1.toFixed(1)}) overlaps the toolbar`);
+}
+test('wide captured reference-swap and 1:2 tilted cases retain visible lower names', () => {
+  const fixtures = JSON.parse(fs.readFileSync(path.join(here, 'g8-g9-geometry-audit-targets-g9-trig-ratio.json'), 'utf8'));
+  const cases = fixtures.filter(x => /^toolbar-/.test(x.label)), overlaps = [];
+  assert.equal(cases.length, 2);
+  for (const f of cases) {
+    const { id } = f, sc = scene(id), s = {}; sc.enter(s); Object.assign(s, f.params, { step: f.step });
+    assert.equal(s.q.solution.key, s.q.key, id + ': fixed question/solution identity');
+    close(s.q.solution.math.answer, id === 'refAngleSwap' ? 8 / 5 : 1 / 2, id + ': fixed production question answer');
+    for (const [w, h] of [[1040, 746], [683, 614]]) {
+      const b = board(w, h); b.insets.right = 16; sc.draw(b, s, {}, { tab: 'review' });
+      try { assertToolbarClear(b, `${id}/captured/${w}×${h}`); } catch (e) { overlaps.push(e.message); }
+    }
+  }
+  assert.deepEqual(overlaps, []);
+});
+test('wide current right triangles keep rotated and mirrored vertex names above the toolbar', () => {
+  for (const id of ['r1-1', 'refAngleSwap', 'r1-2', 'r1-4', 'cut3060', 'cut45', 'r2-1', 'trigTableCalc', 'findFromHyp', 'findFromBase']) {
+    seed = 1024; const sc = scene(id), s = {}; sc.enter(s);
+    for (let n = 0; n < 32; n++) {
+      if (n) s.q = sc.tg.gen(s.q);
+      for (const [w, h] of [[1040, 746], [683, 614]]) for (const step of [1, 3, sc.steps(s).length]) {
+        s.step = step; const b = board(w, h); b.insets.right = 16; sc.draw(b, s, {}, { tab: 'review' });
+        assertToolbarClear(b, `${id}/${s.q.key}/${w}×${h}/step${step}`);
+      }
+    }
+  }
+});
+test('wide nested right triangles keep B/D/F clear in short exploration canvases', () => {
+  const sc = scene('r1-3'), s = {}; sc.enter(s);
+  for (const th of [15, 25, 35, 50, 65, 75]) for (const us of [[3, 6, 9], [2, 5, 8], [4, 6, 10]]) {
+    Object.assign(s, { t13t: th, t13u1: us[0], t13u2: us[1], t13u3: us[2] });
+    for (const [w, h] of [[1040, 606], [683, 474]]) {
+      const b = board(w, h); b.insets.right = 16; sc.draw(b, s, {}, { tab: 'explore' });
+      assertToolbarClear(b, `r1-3/${th}/${us}/${w}×${h}`);
+    }
+  }
+  sc.tg.init(s); const b = board(390, 412); b.insets.bottom = 58; sc.draw(b, s, {}, { tab: 'explore' });
+  const xs = b.log.filter(x => x.name === 'point').map(x => b.toS(x.args[0]).x);
+  assert.ok(Math.max(...xs) - Math.min(...xs) > 200, 'mobile bottom inset retains a figure wider than 200 pixels');
 });
 
 

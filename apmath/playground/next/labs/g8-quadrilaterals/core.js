@@ -1,7 +1,7 @@
 /* ==========================================================================
    중2 · 사각형의 성질 — 공용 도구 (core.js)
    - 여섯 개 탭 모듈(t1~t6.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_QD(도구)와 APL_QD_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 풀이 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 문제(5지선다 + 숫자 바꾸기) → 현재 문제 풀이(단계별 그림).
    - 색의 역할(이 실험실 전체): 하늘 = 주어진 각·변 · 분홍 = 구하는 값 x · 노랑 = 끌 수 있는 점·같은 길이 눈금 · 초록 = 보조선·완성한 도형·합동/평행 · 기본 = 도형의 변.
    - 같은 크기의 각은 같은 표시(호 1개, 2개, 3개), 직각은 네모, 같은 길이는 눈금, 평행선은 화살표.
    - 움직임은 가로 이동만(세로 이동 없음). 제자리 회전·접기·서서히 나타남은 허용.
@@ -125,6 +125,15 @@
     ang(b, V, X, M, Object.assign({}, q, o.label1 ? { label: o.label1 } : {}));
     ang(b, V, M, Y, Object.assign({}, q, o.label2 ? { label: o.label2 } : {}));
     void l;
+  }
+  // In a shallow quadrilateral an inside label can reach the next vertex.
+  // Keep its arc at the vertex and put the number outside with a short leader.
+  function outsideAng(b, V, A, B, label, color = 'sky') {
+    const mark = ang(b, V, A, B, { color, r: 22, fa: .1 });
+    const u = pt(-Math.cos(mark.mid), -Math.sin(mark.mid)), k = b.k || 60;
+    const gap = 48, end = add(V, mul(u, (gap - 14) / k));
+    line(b, add(V, mul(u, 9 / k)), end, color, 1.3);
+    T(b, V, label, { dx: u.x * gap, dy: u.y * gap, size: 15, color });
   }
   function tick(b, p, q, count = 1, color = 'amber') { b.ticks(p, q, { color, count, size: 7 }); }
   function par(b, p, q, count = 1, color = 'green', f = 0.5) {
@@ -305,7 +314,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="qd-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="qd-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="qd-fb ok"><b>정답이에요!</b> 풀이 탭에서 현재 문제의 풀이 과정을 확인해 보세요.</div>' : `<div class="qd-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="qd-tools"><button type="button" class="apl-btn sm" data-qd-new>숫자 바꾸기</button>${Q.note ? `<span class="qd-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -378,6 +387,14 @@
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) } */
   // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
+  // Both review text and review drawing read this same current question. The
+  // exploration proof stays available in D.steps; it is not the answer to a
+  // differently generated target (for example an exterior angle or perimeter).
+  function currentSolution(D, s) {
+    const M = D.model(s), Q = D.prob(M, s);
+    const details = D.solve ? D.solve(M, s, Q) : D.steps(M);
+    return { model: M, question: Q, key: Q.key, steps: details.map(t => texSafe(String(t).replace(/<\/?b>/g, ''))) };
+  }
   function makeScene(D) {
     const A = D.anim;
     const actions = A ? () => [
@@ -391,11 +408,13 @@
     ] : undefined;
     return {
       id: D.id, title: D.title, short: D.short || D.title, qd: D,
-      question: D.question,
+      tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
+      question: (s) => { const Q = D.prob(D.model(s), s); return Q.stem || Q.html; },
+      reviewTop: (s) => { const Q = D.prob(D.model(s), s); return `<div class="qd-q"><b>현재 문제</b><br>${Q.html || esc(Q.stem)}</div>`; },
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      steps: (s) => currentSolution(D, s).steps,
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -404,7 +423,7 @@
       } : undefined,
       enter: (s, lab) => {
         D.init(s);
-        s.qdSeed = 0; s.qdPick = null; s.playing = false; s.qdOrd = newOrd();
+        s.qdSeed = 0; s.qdPick = null; s.playing = false; s.qdOrd = newOrd(); s.qdQuestionKey = null;
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -414,7 +433,7 @@
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && !D.solve && lab && lab.tab === 'review' && !s.dragging) {
           const tg = D.stepT(s.step || 0, D.model(s)), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
@@ -424,10 +443,17 @@
         if (lab) curLab = lab;
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        const Q = D.prob(M, s), key = D.id + '|' + Q.key;
+        if (s.qdQuestionKey != null && s.qdQuestionKey !== key) { s.step = 1; s.revealed = false; s.qdPick = null; }
+        s.qdQuestionKey = key;
         const v = D.view(M, C, s) || {};
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const solution = currentSolution(D, s), n = solution.steps.length, step = Math.max(1, Math.min(s.step || 1, n));
+          v.guide = solution.steps[step - 1]; v.readouts = []; v.formula = ''; v.rule = ''; v.notes = '';
+          v.status = { tone: step >= n ? 'ok' : 'info', text: `현재 문제 풀이 ${step} / ${n}단계` };
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
@@ -435,7 +461,8 @@
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        D.draw(b, s, M, C);
+        if (C.review && D.solveDraw && !b.thumb) D.solveDraw(b, s, M, C, currentSolution(D, s));
+        else D.draw(b, s, M, C);
       }
     };
   }
@@ -449,8 +476,8 @@
   window.APL_QD = {
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg, ol,
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
-    textW, T, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, fit, P, degF, cmF,
-    josa, seeded, shuffle, mkChoices, mkTextChoices, newOrd,
+    textW, T, tagOut, vtx, sideTag, lenTag, ang, outsideAng, tick, par, fillPoly, line, poly, arcPart, fit, P, degF, cmF,
+    josa, seeded, shuffle, mkChoices, mkTextChoices, newOrd, currentSolution,
     sinD, cosD, dv, para, foot, refl, pOnLine, dots, sd, ll, an, tri, par2, vang, xlab, vlab, parAll, dimLine, ang2, capLine, segTag, asArr, ci, iga, frac, baseCtx, showAt, makeScene, register, notes, rd
   };
 })();
