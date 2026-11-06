@@ -901,7 +901,7 @@
       readouts: [rd('AB · BC · CA', `${M.c} · ${M.a} · ${M.b} cm`, 'sky'), rd('AF · BD · CE', `${M.x} · ${M.y} · ${M.z} cm`, 'amber', '접선의 길이', null, true)],
       formula: `<p>$\\overline{AF}=${fr('\\overline{AB}+\\overline{CA}-\\overline{BC}', 2)}=${fr(`${M.c}+${M.b}-${M.a}`, 2)}=${M.x}$</p><p>$\\overline{BD}=${M.y}$, $\\overline{CE}=${M.z}$ (cm)</p>`,
       rule: '접선의 길이 = (두 변의 합 − 나머지 한 변) ÷ 2. 예: AF = (AB + CA − BC) ÷ 2',
-      notes: notes('AF는 꼭짓점 <b>A</b>를 낀 두 변 AB, CA의 합에서 <b>BC</b>를 빼요.', '나눈 값이 정수가 되는지 확인해요. 정수가 아니면 계산이 틀린 거예요.')
+      notes: notes('AF는 꼭짓점 <b>A</b>를 낀 두 변 AB, CA의 합에서 <b>BC</b>를 빼요.', '구한 접선의 길이를 다시 더해 AB, BC, CA의 주어진 길이와 맞는지 확인해요.')
     }),
     prob: (M, s) => {
       const { a, b: bb, c, x, y, z } = M, v = (s.trV || 0) % 3, key = `${v}:${a}:${bb}:${c}`;

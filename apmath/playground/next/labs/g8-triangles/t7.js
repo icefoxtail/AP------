@@ -81,7 +81,7 @@
       const cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
       const seen = new Set(idx >= 0 ? ST.slice(0, idx + 1).map((x) => x.f) : []), at = (x) => f === x, has = (x) => seen.has(x);
       const narrowW = b.W < 560;
-      fit(b, bboxOf([A, B, Cc, O, I]), { t: 50, b: narrowW ? 112 : 122, l: 54, r: 54 });
+      fit(b, bboxOf([A, B, Cc, O, I]), { t: 50, b: idx < 0 ? 72 : narrowW ? 112 : 122, l: narrowW ? 40 : 54, r: narrowW ? 40 : 54 });
       const k = b.k || 60, lf = fs(b, 14), px = (n) => n / k, isProb = idx < 0, gv = at('given');
       const oUp = O.y <= I.y, close = !same && Math.abs(I.y - O.y) * k < 84; // O·I 가 가까우면 위쪽 점의 각 글자는 점 위에, 아래쪽 점의 각 글자는 점 아래에 둡니다
       const rotO = close && oUp ? 180 : 0, rotI = close && !oUp ? 180 : 0;

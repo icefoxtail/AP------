@@ -26,7 +26,7 @@
     trBm: P('AM = BM', 2, 6, 1, 3, { color: 'sky', format: (v) => v + ' cm' }),
     trBq: P('PM', 1, 9, 1, 4, { color: 'amber', hint: '점 P를 수직이등분선 위에서 가로로 끌어도 돼요', format: (v) => v + ' cm' }),
     trBc: P('AB', 4, 12, 1, 5, { color: 'sky', format: (v) => v + ' cm' }),
-    trBb: P('AC', 4, 12, 1, 3, { color: 'green', format: (v) => v + ' cm' }),
+    trBb: P('AC', 4, 12, 1, 4, { color: 'green', format: (v) => v + ' cm' }),
     trBa: P('∠A', 40, 100, 2, 70, { color: 'amber', format: (v) => v + '°' }),
     trBe: P('EQ', 0, 6, 1, 3, { color: 'rose', hint: '점 Q를 변 OX 위에서 가로로 끌어도 돼요', format: (v) => v + ' cm' }),
     trCb: P('∠B', 30, 75, 1, 50, { color: 'sky', format: (v) => v + '°' }),
@@ -252,11 +252,18 @@
     id: 't4-4', title: '각의 이등분선과 넓이의 비', short: '이등분선과 넓이비',
     question: '삼각형 ABC에서 ∠A의 이등분선 AD가 나누는 두 삼각형 ABD, ACD의 넓이의 비는?',
     ctl: ['trBc', 'trBb', 'trBa'],
-    init: (s) => { s.trBc = 5; s.trBb = 3; s.trBa = 70; s.trV = 0; },
-    reroll: (s) => { const c = rint(4, 12); let b2 = rint(4, 12); if (b2 === c) b2 = c > 4 ? c - 1 : c + 1; s.trBc = c; s.trBb = b2; s.trBa = pick([50, 60, 70, 80, 90], s.trBa); s.trK = rint(2, 9); s.trV = (s.trV + 1) % 2; },
-    model: (s) => { const c = clamp(Math.round(s.trBc), 4, 12), bb = clamp(Math.round(s.trBb), 4, 12), a = clamp(Math.round(s.trBa / 2) * 2, 40, 100), g = gcdf(c, bb); return { c, b: bb, a, rc: c / g, rb: bb / g, geo: areaGeom(c, bb, a), k: s.trK || 4 }; },
+    init: (s) => { s.trBc = 5; s.trBb = 4; s.trBa = 70; s.trK = 1; s.trV = 0; },
+    reroll: (s) => { const c = rint(4, 12); let b2 = rint(4, 12); if (b2 === c) b2 = c > 4 ? c - 1 : c + 1; s.trBc = c; s.trBb = b2; s.trBa = pick([50, 60, 70, 80, 90], s.trBa); s.trK = rint(1, Math.floor(c * b2 / (2 * (c + b2)))); s.trV = (s.trV + 1) % 2; },
+    model: (s) => {
+      const c = clamp(Math.round(s.trBc), 4, 12), bb = clamp(Math.round(s.trBb), 4, 12), a = clamp(Math.round(s.trBa / 2) * 2, 40, 100), g = gcdf(c, bb);
+      // 두 부분의 넓이가 kc, kb이면 전체 넓이는 k(c+b)이며 cb/2 이하여야 해요.
+      // 문제 그림의 끼인각은 이 실제 넓이로 정하고, 탐구의 각도 조절은 별도로 유지해요.
+      const k = clamp(Math.round(s.trK || 1), 1, Math.floor(c * bb / (2 * (c + bb))));
+      const questionAngle = Math.asin(clamp(2 * k * (c + bb) / (c * bb), 0, 1)) / DEG;
+      return { c, b: bb, a, rc: c / g, rb: bb / g, geo: areaGeom(c, bb, a), questionGeo: areaGeom(c, bb, questionAngle), k };
+    },
     draw(b, s, M, C) {
-      const { c, b: bb, a, rc, rb, geo, k } = M, { A, B, C: Cc, D, E, F } = geo, st = C.step, v = (s.trV || 0) % 2;
+      const { c, b: bb, a, rc, rb, k } = M, geo = C.problem ? M.questionGeo : M.geo, { A, B, C: Cc, D, E, F } = geo, st = C.step, v = (s.trV || 0) % 2;
       fit(b, bboxOf([A, B, Cc, D, E, F]), { t: 50, b: C.problem ? 50 : 92, l: 44, r: 48 });
       const cen = pt(D.x * 0.6, 0), show = (n) => (C.problem ? false : C.review ? st >= n : true);
       fillPoly(b, [A, B, D], 'sky', 0.2); fillPoly(b, [A, D, Cc], 'green', 0.2);
@@ -296,7 +303,7 @@
       readouts: [rd('AB : AC', `${M.c} : ${M.b}`, 'sky', `간단히 ${M.rc} : ${M.rb}`), rd('△ABD : △ACD', `${M.rc} : ${M.rb}`, 'amber', '넓이의 비', null, true), rd('DE = DF', '같아요', 'rose')],
       formula: `<p>$\\triangle ABD:\\triangle ACD=${fr('1', 2)}\\overline{AB}\\cdot\\overline{DE}:${fr('1', 2)}\\overline{AC}\\cdot\\overline{DF}$</p><p>$=\\overline{AB}:\\overline{AC}=${M.c}:${M.b}=${M.rc}:${M.rb}$</p>`,
       rule: '각의 이등분선이 나눈 두 삼각형은 높이(DE=DF)가 같으므로 넓이의 비는 밑변의 길이의 비(AB : AC)와 같다.',
-      notes: notes('넓이의 비는 <b>밑변 AB, AC</b>의 비예요. BD:CD가 아니라 AB:AC로 써요.', '높이 DE, DF가 같다는 것은 D가 <b>이등분선 위</b>에 있기 때문이에요.')
+      notes: notes('주어진 <b>AB, AC</b>를 각각 밑변으로 보면 같은 높이 DE, DF를 바로 이용할 수 있어요.', '높이 DE, DF가 같다는 것은 D가 <b>이등분선 위</b>에 있기 때문이에요.')
     }),
     prob: (M, s) => {
       const { c, b: bb, k } = M, v = (s.trV || 0) % 2, a1 = k * c, a2 = k * bb, key = `${v}:${c}:${bb}:${k}`;
@@ -305,7 +312,7 @@
       if (v === 0) return numProb({ tag: '이등분선과 넓이의 비', key, stem: `${head} △ABD의 넓이가 ${a1} cm²일 때, △ACD의 넓이 $x$는?`, correct: a2, wrongs: [[a1, '넓이가 같지 않아요. 넓이의 비는 AB : AC예요.'], [(a1 * c) / bb, '비를 거꾸로 썼어요. △ABD : △ACD = AB : AC예요.'], [a1 + (bb - c), '넓이의 차가 아니라 비로 구해요.'], [a2 + 2, '다시 계산해 보세요.'], [a2 - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0]) && q[0] !== a2), ...ar });
       return numProb({ tag: '이등분선과 넓이의 비', key, stem: `${head} △ACD의 넓이가 ${a2} cm²일 때, △ABD의 넓이 $x$는?`, correct: a1, wrongs: [[a2, '넓이가 같지 않아요. 넓이의 비는 AB : AC예요.'], [(a2 * bb) / c, '비를 거꾸로 썼어요.'], [a2 + (c - bb), '넓이의 차가 아니라 비로 구해요.'], [a1 + 2, '다시 계산해 보세요.'], [a1 - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0]) && q[0] !== a1), ...ar });
     },
-    verify: (s) => { const M = b4.model(s), g = M.geo; const ar = (X, Y, Z) => Math.abs(G.polyArea([X, Y, Z])); return { ans: ar(g.A, g.B, g.D) / ar(g.A, g.C, g.D), model: M.c / M.b, extra: [[dist(g.D, g.E), dist(g.D, g.F)], [angBetween(g.A, g.B, g.D), M.a / 2]] }; }
+    verify: (s) => { const M = b4.model(s), g = M.geo, q = M.questionGeo; const ar = (X, Y, Z) => Math.abs(G.polyArea([X, Y, Z])); return { ans: ar(g.A, g.B, g.D) / ar(g.A, g.C, g.D), model: M.c / M.b, extra: [[dist(g.D, g.E), dist(g.D, g.F)], [angBetween(g.A, g.B, g.D), M.a / 2], [ar(q.A, q.B, q.D), M.k * M.c], [ar(q.A, q.C, q.D), M.k * M.b]] }; }
   };
 
   /* ====================================================================== 5. 거리는 수선의 길이 */
@@ -468,6 +475,8 @@
   const angNames = (b, g, withQ) => { [g.P, g.E, g.F].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, g.P, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, g.E, 'E', { dx: 4, dy: -14, size: 18 }); T(b, g.F, 'F', { dx: 4, dy: 16, size: 18 }); if (withQ) { b.point(withQ, { color: 'ink', r: 4.5 }); T(b, withQ, 'Q', { dx: 6, dy: -14, size: 18 }); } };
 
   /* ---- t4-1 각의 이등분선 위의 점 · v0: PE → PF · v1: ∠XOP → ∠EPF · v2: OE → OF ---- */
+  // 한 눈금은 OE=OF, 두 눈금은 PE=PF, 세 눈금은 공통 빗변 OP를 나타낸다.
+  // OP는 직각변보다 길므로 수선과 같은 눈금을 사용하지 않는다.
   const b1Plan = (M, s) => {
     const { h, d, g } = M, { O, P: Pp, E, F, X, Y } = g, v = (s.trV || 0) % 3, m = 3 + ((h + d) % 6), steps = [], items = [], rest = 90 - h;
     const head = '점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이에요.';
@@ -483,7 +492,7 @@
     items.push(SK.seg(O, Pp, { at: 'given', col: 'green', dash: [7, 5], w: 3.2 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
       SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
       SK.ang(O, X, Pp, { r: 40, cut: [0, 7], on: ['given', 'A'], col: 'sky', cols: { A: 'green' }, label: v === 1 ? dg(h) : '', ld: 66, gl: true, glTo: 'eq' }), SK.ang(O, Pp, Y, { r: 40, cut: [7, 0], on: ['given', 'A'], col: 'sky', cols: { A: 'green' } }),
-      SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }), SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
+      SK.tick(O, Pp, 3, { at: 'H', col: 'rose' }), SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
     if (v === 0) items.push(SK.len(Pp, E, pt(-50, 0), `${d} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(Pp, F, pt(-50, 0), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${d} cm` } }), SK.tick(Pp, E, 2, { at: 'eq', col: 'rose' }), SK.tick(Pp, F, 2, { at: 'eq', col: 'rose' }));
     else if (v === 1) items.push(SK.ang(Pp, E, F, { r: 34, ld: 52, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${180 - 2 * h}°` }, gl: true }), SK.ang(Pp, O, E, { r: 24, at: 'eq', col: 'green', label: dg(rest), size: 14, ld: 38 }));
     else items.push(SK.len(O, E, Pp, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8 }), SK.len(O, F, Pp, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 8, labels: { ans: `x=${m} cm` } }), SK.tick(O, E, 1, { at: 'eq', col: 'rose' }), SK.tick(O, F, 1, { at: 'eq', col: 'rose' }));
@@ -507,7 +516,7 @@
     steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(h)}$`, cap: `x = ${h}°` });
     items.push(SK.seg(O, Pp, { at: 'given', to: 'S', col: 'ink', dash: [7, 5], w: 3 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
       SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
-      SK.tick(Pp, E, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Pp, F, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }),
+      SK.tick(Pp, E, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Pp, F, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(O, Pp, 3, { at: 'H', col: 'rose' }),
       SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
     if (v === 0) items.push(SK.ang(O, X, Y, { r: 66, ld: 94, lr: 0, on: ['given'], col: 'sky', fa: 0.05, label: dg(2 * h), gl: true, glTo: 'cong' }), SK.ang(O, E, Pp, { r: 34, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }), SK.ang(O, Pp, F, { r: 34, ld: 54, at: 'eq', col: 'green', label: dg(h), size: 14 }));
     else items.push(SK.ang(O, X, Pp, { r: 34, ld: 56, on: ['given', 'eq'], col: 'sky', label: dg(h), gl: true }), SK.ang(O, Pp, Y, { r: 34, ld: 56, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }));
@@ -546,7 +555,7 @@
 
   /* ---- t4-4 이등분선과 넓이의 비 · v0: △ABD → △ACD · v1: △ACD → △ABD ---- */
   const b4Plan = (M, s) => {
-    const { c, b: bb, rc, rb, geo, k } = M, { A, B, C: Cc, D, E, F } = geo, v = (s.trV || 0) % 2, a1 = k * c, a2 = k * bb, steps = [], items = [], cen = pt(D.x * 0.6, 0);
+    const { c, b: bb, rc, rb, questionGeo: geo, k } = M, { A, B, C: Cc, D, E, F } = geo, v = (s.trV || 0) % 2, a1 = k * c, a2 = k * bb, steps = [], items = [], cen = pt(D.x * 0.6, 0);
     const xv = v === 0 ? a2 : a1, hasT = v === 0 ? `$\\triangle ABD=${a1}\\text{ cm}^2$` : `$\\triangle ACD=${a2}\\text{ cm}^2$`;
     steps.push({ id: 'given', k: 'given', t: `$\\overline{AD}$는 $\\angle A$의 이등분선이고 $${ov('AB')}=${c}$ cm, $${ov('AC')}=${bb}$ cm, ${hasT}예요. 구하는 것은 ${v === 0 ? '$\\triangle ACD$' : '$\\triangle ABD$'}의 넓이 $x$.`, cap: `AB=${c} cm, AC=${bb} cm, ${v === 0 ? `△ABD=${a1} cm²` : `△ACD=${a2} cm²`}` });
     steps.push({ id: 'idea', k: 'idea', t: '두 삼각형 ABD, ACD의 넓이는 (밑변)×(높이)÷2예요. 높이가 같다면 넓이의 비는 밑변 AB, AC의 비와 같아요. AD가 이등분선이면 D에서 AB, AC까지의 거리(높이)가 같아요.', cap: '높이가 같으면 넓이의 비 = 밑변의 비' });
