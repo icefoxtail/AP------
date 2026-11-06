@@ -73,6 +73,29 @@ function checkText(t, why) {
   assert.equal((t.match(/\$/g) || []).length % 2, 0, why + ' delimiters');
   for (const m of t.matchAll(/\$([^$]+)\$/g)) assert.doesNotThrow(() => katex.renderToString(m[1], { throwOnError: true, strict: false }), why + ': ' + m[1]);
 }
+
+test('all review text renders after the shell HTML-escape and math-parser pipeline', () => {
+  // Raw TeX parsing alone misses G\' -> G&#39; in apl-shell._buildReview.
+  // Load the real shared renderer, then apply the exact review-step pipeline.
+  const htmlContext = { window: { katex }, URLSearchParams, location: { search: '' }, document: { documentElement: { setAttribute() {} } } };
+  vm.createContext(htmlContext);
+  vm.runInContext(fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-core.js'), 'utf8'), htmlContext);
+  const APLab = htmlContext.window.APLab;
+  const renderStep = text => APLab.renderMath(APLab.esc(String(text).replace(/^Step\s*\d+\s*·\s*/, '')).replace(/&amp;/g, '&'));
+  assert.match(renderStep("$GG'=8$"), /katex-error/, 'negative control must reproduce the browser failure');
+  for (const sc of scenes) for (const seed of [1, 17, 83, 997]) {
+    const s = {}; sc.enter(s); s.smPk = sc.sm.gen(seed);
+    sc.steps(s).forEach((step, i) => {
+      const html = renderStep(step), why = `${sc.id}|${seed}|step ${i + 1}`;
+      assert.doesNotMatch(html, /katex-error/, why);
+      assert.equal((html.match(/class="katex"/g) || []).length, (step.match(/\$[^$]+\$/g) || []).length, why + ': all formulas rendered');
+    });
+  }
+  for (const id of ['sm8-gg', 'sm8-chain']) for (const kind of [0, 1]) {
+    const sc = get(id), s = {}; sc.enter(s); s.smPk = { ...sc.sm.gen(17), kind };
+    assert.doesNotMatch(sc.steps(s).map(renderStep).join(''), /katex-error/, `${id}: kind ${kind}`);
+  }
+});
 function board(width = 390, height = 460) {
   const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, thumb: false, insets: { left: 0, right: 0, top: 0, bottom: 0 }, log, toS(p) { return { x: width / 2 + p.x * this.k, y: height / 2 + p.y * this.k }; } };
   for (const name of ['text', 'path', 'circle', 'arc', 'point', 'ticks', 'right', 'handle']) b[name] = (...args) => {
@@ -85,6 +108,64 @@ function board(width = 390, height = 460) {
   };
   return b;
 }
+
+function layoutBoard(width = 390, height = 324) {
+  const b = board(width, height); b.insets.bottom = 58;
+  Object.defineProperty(b, 'k', { get() {
+    if (!this.focus) return 35;
+    const w = this.W - this.insets.left - this.insets.right, h = this.H - this.insets.top - this.insets.bottom, p = this.pad * Math.min(w, h);
+    return Math.min((w - 2 * p) / (this.focus.x[1] - this.focus.x[0]), (h - 2 * p) / (this.focus.y[1] - this.focus.y[0]));
+  } });
+  b.toS = function (p) { return { x: this.W / 2 + (p.x - (this.focus.x[0] + this.focus.x[1]) / 2) * this.k, y: (this.H - this.insets.bottom) / 2 + (p.y - (this.focus.y[0] + this.focus.y[1]) / 2) * this.k }; };
+  return b;
+}
+const labelCenter = (b, entry) => { const [p, , o] = entry.args, s = b.toS(p); return { x: s.x + (o.dx || 0), y: s.y + (o.dy || 0) }; };
+
+test('mobile rotated shared vertices and centroid-copy point names stay outside the small figures', () => {
+  const sc = get('sm3-rot'), s = {}; sc.enter(s);
+  const inside = (p, a, c, d) => { const sign = (u, v, w) => (v.x - u.x) * (w.y - u.y) - (v.y - u.y) * (w.x - u.x); const x = [sign(a, c, p), sign(c, d, p), sign(d, a, p)]; return x.every(v => v > 1e-8) || x.every(v => v < -1e-8); };
+  for (const angle of [0, 30, 90, 120, 180, 210, 270, 330, 360]) for (const progress of [0, .5, 1]) {
+    Object.assign(s, { smOrot: angle, smOt: progress }); const b = layoutBoard(); sc.draw(b, s, {}, { tab: 'explore' });
+    const g = sc.sm.model(s), name = b.log.find(x => x.name === 'text' && x.args[1] === 'A'), center = labelCenter(b, name);
+    for (const tri of [[g.A, g.B, g.C], [g.A, g.D, g.E]]) assert.ok(!inside(center, ...tri.map(p => b.toS(p))), `${angle}|${progress}: A must be outside both triangles`);
+  }
+  Object.assign(s, { smOrot: 210, smOt: 0 }); const b = layoutBoard(); sc.draw(b, s, {}, { tab: 'explore' });
+  const g = sc.sm.model(s), ys = [g.A, g.B, g.C, g.D, g.E].map(p => b.toS(p).y);
+  assert.ok(Math.max(...ys) - Math.min(...ys) >= 190, 'short mobile board must retain a large rotated diagram');
+  const cp = get('sm8-proof'), state = {}; cp.enter(state);
+  for (const progress of [0, .25, .5, .75, 1]) {
+    state.smGr = progress; const b = layoutBoard(); cp.draw(b, state, {}, { tab: 'explore' });
+    const right = name => b.log.filter(x => x.name === 'text' && x.args[1] === name).sort((a, c) => c.args[0].x - a.args[0].x)[0];
+    const center = labelCenter(b, right('G'));
+    for (const name of ['D', 'E']) assert.ok(G.dist(center, labelCenter(b, right(name))) >= 25, `${progress}: copy G and ${name} must read as separate names`);
+  }
+});
+
+test('parallel-line auxiliary names stay separate from the given segment lengths', () => {
+  const sc = get('sm5-lmn'), s = {}; sc.enter(s); s.smPk = { seed: 1, a: 4, bb: 2, u: 2, kind: 0 }; s.step = 5;
+  const b = layoutBoard(390, 412); sc.draw(b, s, {}, { tab: 'review' });
+  const m = b.log.find(x => x.name === 'text' && x.args[1] === 'M'), length = b.log.find(x => x.name === 'text' && x.args[1] === '8');
+  assert.ok(m && length);
+  assert.ok(G.dist(labelCenter(b, m), labelCenter(b, length)) >= 28, 'M and 8 cannot form one apparent M8 label');
+});
+
+test('EF and river inverse ratios keep active smaller triangles sky and larger triangles green', () => {
+  for (const id of ['sm4-ef', 'sm7-river']) for (const [m, n] of [[1, 3], [2, 3], [3, 1], [3, 2]]) for (const kind of [0, 1]) for (const [tab, step] of [['problem', 0], ['explore', 0], ['review', 2], ['review', 3], ['review', 4], ['review', 5]]) {
+    const sc = get(id), s = {}; sc.enter(s); s.smPk = { ...sc.sm.gen(1), m, n, u: 2, w: 3, kind };
+    Object.assign(s, { smEm: m, smEn: n, smRm: m, smRn: n, smRu: 2, smRw: 3, step });
+    const b = board(); sc.draw(b, s, {}, { tab });
+    const fills = b.log.filter(x => x.name === 'path' && x.args[0].length === 3 && ['sky', 'green'].includes(x.args[1]?.fill));
+    const sky = fills.filter(x => x.args[1].fill === 'sky').map(x => G.polyArea(x.args[0])), green = fills.filter(x => x.args[1].fill === 'green').map(x => G.polyArea(x.args[0]));
+    assert.ok(sky.length && green.length, `${id}|${tab}|${step}: both comparison figures remain`);
+    assert.ok(Math.max(...sky) < Math.min(...green), `${id}|${m}:${n}|${tab}|${step}: actual area-color order`);
+    const g = id === 'sm4-ef' ? G.geo.efGeo(m, n) : G.geo.rvGeo(m, n, 2, 3);
+    const entries = id === 'sm4-ef' ? [[g.A, g.D, m <= n ? 'sky' : 'green'], [g.B, g.C, m <= n ? 'green' : 'sky']] : [[g.Q, g.D, m <= n ? 'sky' : 'green'], [g.A, g.E, m <= n ? 'green' : 'sky']];
+    for (const [a, c, color] of entries) {
+      const midpoint = G.mid(a, c), label = b.log.find(x => x.name === 'text' && G.dist(x.args[0], midpoint) < 1e-8 && /^\d+$/.test(x.args[1]));
+      assert.equal(label?.args[2].color, color, `${id}|${m}:${n}|${tab}|${step}: matching dimension color`);
+    }
+  }
+});
 
 test('current rectangle problem survives exploration changes (baseline regression)', () => {
   const sc = get('sm1-len'), s = {}; sc.enter(s); s.smPk = sc.sm.gen(17);

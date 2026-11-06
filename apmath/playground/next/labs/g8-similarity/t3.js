@@ -201,7 +201,7 @@
       const all = [g.A, g.B, g.C, g.D, g.E], bb0 = bboxOf(all);
       const full = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, 0);
       const bbU = unionBox(bboxOf([full.A, full.B, full.C, full.D, full.E]), bb0);
-      fit(b, { x0: bbU.x0, x1: bbU.x1, y0: bbU.y0, y1: bbU.y1 }, { t: 46, b: 70, l: 52, r: 52 });
+      fit(b, { x0: bbU.x0, x1: bbU.x1, y0: bbU.y0, y1: bbU.y1 }, { t: phone(b) ? 30 : 46, b: phone(b) ? 30 : 70, l: 52, r: 52 });
       const done = !prob && C.t >= 0.999;
       fillPoly(b, [g.A, g.B, g.C], 'green', 0.12); poly(b, [g.A, g.B, g.C], 'ink', 3.6);
       fillPoly(b, [g.A, g.D, g.E], 'sky', 0.22); poly(b, [g.A, g.D, g.E], done ? 'sky' : 'ink', 3.6);
@@ -220,9 +220,18 @@
         lb(g.A, g.B, cB, String(g.AB), 'green'); lb(g.A, g.C, cB, String(g.AC), 'green'); lb(g.B, g.C, cB, String(g.BC), 'green');
         lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.A, g.E, cS, String(g.AE), 'sky'); lb(g.D, g.E, cS, String(g.DE), 'sky');
       }
-      [[g.A, 'A', cB], [g.B, 'B', cB], [g.C, 'C', cB]].forEach(([p, nm, c]) => vtx(b, p, c, nm, { size: 17, gap: 12 }));
+      // A belongs to both triangles. Put its name in an empty angular sector,
+      // outside both right angles, instead of inside the small rotated triangle.
+      const rays = [g.B, g.C, g.D, g.E].map(p => (Math.atan2(p.y - g.A.y, p.x - g.A.x) + 2 * Math.PI) % (2 * Math.PI)).sort((a, c) => a - c);
+      const inCorner = (u, p, q) => { const v = sub(p, g.A), w = sub(q, g.A), turn = v.x * w.y - v.y * w.x; return (v.x * u.y - v.y * u.x) * turn > 0 && (u.x * w.y - u.y * w.x) * turn > 0; };
+      const empty = rays.map((a, i) => { const gap = (i + 1 < rays.length ? rays[i + 1] : rays[0] + 2 * Math.PI) - a, angle = a + gap / 2; return { gap, u: pt(Math.cos(angle), Math.sin(angle)) }; }).filter(x => !inCorner(x.u, g.B, g.C) && !inCorner(x.u, g.D, g.E)).sort((a, c) => c.gap - a.gap)[0];
+      const au = empty.u, ak = b.k || 60;
+      b.point(g.A, { color: 'ink', r: 4.5 });
+      line(b, add(g.A, mul(au, 7 / ak)), add(g.A, mul(au, 23 / ak)), 'muted', 1.4);
+      T(b, g.A, 'A', { dx: au.x * 35, dy: au.y * 35, size: 17 });
+      [[g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, cB, nm, { size: 17, gap: 12 }));
       [[g.D, 'D'], [g.E, 'E']].forEach(([p, nm]) => vtx(b, p, cS, nm, { size: 17, gap: 12 }));
-      if (C.txt && !prob) {
+      if (C.txt && !prob && !phone(b)) {
         const cap = done ? '포개면 대응변이 보여요: AD↔AB, AE↔AC, DE↔BC' : st >= 1 ? '∠BAC=∠DAE, ∠ABC=∠ADE → AA 닮음' : `닮음비 ${M.m} : ${M.n}`;
         T(b, pt((bbU.x0 + bbU.x1) / 2, bbU.y1), cap, { dy: 56, size: capSize(b), color: 'amber' });
       }

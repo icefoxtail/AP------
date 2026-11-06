@@ -65,9 +65,10 @@
         const G2 = sh(g.G), A2 = sh(g.A), B2 = sh(g.B), E2 = rotP(sh(g.E), G2, rot), D2 = rotP(sh(g.D), G2, rot);
         fillPoly(b, [G2, B2, A2], 'green', 0.14); poly(b, [G2, B2, A2], 'green', 3.4);
         fillPoly(b, [G2, E2, D2], 'sky', 0.3); poly(b, [G2, E2, D2], 'sky', 3.4);
-        b.point(G2, { color: 'amber', r: 4.8 }); T(b, G2, 'G', { dx: -13, dy: 14, size: 16, color: 'amber' });
+        b.point(G2, { color: 'amber', r: 4.8 }); T(b, G2, 'G', { dx: 16, dy: 18, size: 16, color: 'amber' });
         [[A2, 'A'], [B2, 'B']].forEach(([p, nm]) => tagOut2(b, p, G2, nm));
-        T(b, E2, 'E', { dx: 0, dy: -15, size: 16, color: 'sky' }); T(b, D2, 'D', { dx: 0, dy: -15, size: 16, color: 'sky' });
+        G.tagOut(b, E2, G2, 'E', { size: 16, gap: 12, color: 'sky' });
+        G.tagOut(b, D2, G2, 'D', { size: 16, gap: 12, color: 'sky' });
         if (C.t >= 0.999) { par(b, E2, D2, 1, 'amber'); par(b, B2, A2, 1, 'amber'); }
         T(b, pt(G2.x, tri.y1), '△GBA와 △GED (G를 중심으로 반 바퀴 돌린 모양)', { dy: 68, size: phone(b) ? 12 : 14, color: 'amber' });
       }

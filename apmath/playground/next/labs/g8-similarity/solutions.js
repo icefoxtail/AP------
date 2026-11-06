@@ -338,8 +338,8 @@
     return pack([
       'D는 BC의 중점, P는 BD의 중점, Q는 DC의 중점이에요. G, G′는 각각 △ABD, △ADC의 무게중심이에요.',
       S`$BP=PD=DQ=QC$이므로 $PQ=${F(1, 2)}BC$예요.`,
-      S`$AG:AP=AG':AQ=2:3$이고 ∠A는 공통이므로 △AGG′ ∽ △APQ예요. $GG'=${F(2, 3)}PQ=${F(1, 3)}BC$예요.`,
-      p.kind === 0 ? S`$GG'=${F(6 * p.k, 3)}=${a}$예요.` : S`$BC=3GG'=3\times${2 * p.k}=${a}$예요.`
+      S`$AG:AP=AG^{\prime}:AQ=2:3$이고 ∠A는 공통이므로 △AGG′ ∽ △APQ예요. $GG^{\prime}=${F(2, 3)}PQ=${F(1, 3)}BC$예요.`,
+      p.kind === 0 ? S`$GG^{\prime}=${F(6 * p.k, 3)}=${a}$예요.` : S`$BC=3GG^{\prime}=3\times${2 * p.k}=${a}$예요.`
     ], a, { x: a });
   };
   solvers['sm8-chain'] = p => {
@@ -347,8 +347,8 @@
     return pack([
       'G는 △ABC의 무게중심이고, G′는 △GBC의 무게중심이에요. D는 BC의 중점이에요.',
       S`첫 번째 무게중심에서 $S_{GBC}=${F(1, 3)}S_{ABC}$예요. 같은 밑변 BC에 대한 높이가 3분의 1이에요.`,
-      S`두 번째 무게중심에서도 $S_{G'BC}=${F(1, 3)}S_{GBC}$예요. 또 $BD=DC$이므로 $S_{G'BD}=${F(1, 2)}S_{G'BC}$예요.`,
-      p.kind === 0 ? S`$S_{G'BD}=${18 * p.c}\times${F(1, 3)}\times${F(1, 3)}\times${F(1, 2)}=${a}$예요.` : S`$S_{G'BD}=${F(1, 18)}S_{ABC}$이므로 $S_{ABC}=18\times${p.c}=${a}$예요.`
+      S`두 번째 무게중심에서도 $S_{G^{\prime}BC}=${F(1, 3)}S_{GBC}$예요. 또 $BD=DC$이므로 $S_{G^{\prime}BD}=${F(1, 2)}S_{G^{\prime}BC}$예요.`,
+      p.kind === 0 ? S`$S_{G^{\prime}BD}=${18 * p.c}\times${F(1, 3)}\times${F(1, 3)}\times${F(1, 2)}=${a}$예요.` : S`$S_{G^{\prime}BD}=${F(1, 18)}S_{ABC}$이므로 $S_{ABC}=18\times${p.c}=${a}$예요.`
     ], a, { x: a });
   };
   G.solveQuestion = function (id, p, Q) {
@@ -517,9 +517,10 @@
           equal(b, g.O, g.A, g.D, 3); equal(b, g.O, g.C, g.B, 3);
           break;
         case 'sm4-ef':
-          if (stage === 2) pair(b, g, ['A', 'O', 'D'], ['C', 'O', 'B'], 3);
+          if (stage === 2) pair(b, g, p.m <= p.n ? ['A', 'O', 'D'] : ['C', 'O', 'B'], p.m <= p.n ? ['C', 'O', 'B'] : ['A', 'O', 'D'], 3);
+          else if (stage >= 4 && p.kind === 0) pair(b, g, ['D', 'O', 'F'], ['D', 'B', 'C'], 3);
           else pair(b, g, ['A', 'E', 'O'], ['A', 'B', 'C'], 3);
-          if (stage >= 4 && p.kind === 0) { line(b, g.O, g.F, 'green', 4); T(b, mid(g.O, g.F), String(g.EO), { dy: -20, color: 'green' }); }
+          if (stage >= 4 && p.kind === 0) { line(b, g.O, g.F, 'sky', 4); T(b, mid(g.O, g.F), String(g.EO), { dy: -20, color: 'sky' }); }
           break;
         case 'sm4-four':
           line(b, g.D, g.E, 'sky', 4); line(b, g.A, g.C, 'sky', 4);
@@ -569,7 +570,7 @@
           equal(b, g.Atip, g.A, g.Atop); equal(b, g.Btip, g.Bb, g.Btop);
           break;
         case 'sm7-river':
-          pair(b, g, ['P', 'Q', 'D'], ['E', 'A', 'D'], stage);
+          pair(b, g, p.m <= p.n ? ['P', 'Q', 'D'] : ['E', 'A', 'D'], p.m <= p.n ? ['E', 'A', 'D'] : ['P', 'Q', 'D'], stage);
           equal(b, g.D, g.P, g.Q); equal(b, g.D, g.E, g.A);
           break;
         case 'sm8-proof':

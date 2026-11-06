@@ -54,7 +54,10 @@
       line(b, p0, p1, 'ink', 3.4); line(b, q0, q1, 'ink', 3.4);
       if ((!prob && C.review && st >= 1) || (C.solution && C.solStep >= 2)) { // 보조선: A 를 지나 q 에 평행
         line(b, g.A, g.N, 'violet', 2.8, { dash: [7, 5] }); b.point(g.M, { color: 'violet', r: 4.2 }); b.point(g.N, { color: 'violet', r: 4.2 });
-        T(b, g.M, 'M', { dx: 15, dy: -13, size: 16, color: 'violet' }); T(b, g.N, 'N', { dx: 15, dy: -13, size: 16, color: 'violet' });
+        const k = b.k || 60;
+        line(b, add(g.M, pt(-5 / k, -7 / k)), add(g.M, pt(-12 / k, -18 / k)), 'violet', 1.2);
+        T(b, g.M, 'M', { dx: -18, dy: -28, size: 16, color: 'violet' });
+        T(b, g.N, 'N', { dx: 15, dy: 21, size: 16, color: 'violet' });
         par(b, g.A, g.N, 1, 'violet', 0.38); par(b, g.D, g.F, 1, 'violet', 0.62);
       }
       const sz = 16, cenP = pt(g.A.x - 1, (g.ys[0] + g.ys[2]) / 2), cenQ = pt(g.D.x + 1, (g.ys[0] + g.ys[2]) / 2);
