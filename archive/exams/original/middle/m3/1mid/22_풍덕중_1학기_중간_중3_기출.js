@@ -75,7 +75,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "제곱근의 단조성으로 각 보기의 대소를 비교한다.",
+    "decisiveStep": "③은 √(1/2)>√(1/3), 나머지는 왼쪽 수가 작다."
   },
   {
     "id": 3,
@@ -210,10 +217,17 @@ window.questionBank = [
     "answer": "1",
     "solution": "두 항에서 공통인 $2y$를 묶으면\n$2xy-8y=2y(x-4)$이다.\n따라서 빈칸에는 $x-4$가 들어간다.\n$\\therefore$ ①",
     "level": "하",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "공통인수 2y를 묶어 남는 식을 찾는다.",
+    "decisiveStep": "2xy-8y=2y(x-4)."
   },
   {
     "id": 7,
@@ -278,7 +292,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "0<a<3으로 부호를 판단하고 √(t²)=|t|를 쓴다.",
+    "decisiveStep": "|3-a|+|a|=(3-a)+a=3."
   },
   {
     "id": 9,
@@ -305,10 +326,17 @@ window.questionBank = [
     "answer": "2",
     "solution": "$1<\\sqrt2<2$이므로 $1-\\sqrt2<0$이고, $\\frac12<1<\\sqrt2$이다.\n또 $5-\\sqrt2>3$이므로 $\\sqrt2<5-\\sqrt2$이다.\n따라서\n$1-\\sqrt2<\\frac12<1<\\sqrt2<5-\\sqrt2$.\n세 번째 수는 1이다.\n$\\therefore$ ②",
     "level": "중",
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "1<√2<2를 이용해 모든 수를 정렬한다.",
+    "decisiveStep": "1-√2<1/2<1<√2<5-√2."
   },
   {
     "id": 10,
@@ -408,7 +436,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "MULTI_STEP_COUPLING",
+    "primaryMethod": "겉넓이 2(ab+bc+ca)에 변 길이를 대입하고 근호를 정리한다.",
+    "decisiveStep": "2(√10+5√5+8√2)=2√10+10√5+16√2."
   },
   {
     "id": 13,
@@ -443,7 +478,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "각 보기의 근호 곱셈·나눗셈을 비교한다.",
+    "decisiveStep": "② √12÷√3=2이므로 √2는 틀리다."
   },
   {
     "id": 14,
@@ -478,7 +520,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "다섯 보기의 전개식을 곱셈공식과 대조한다.",
+    "decisiveStep": "④ (x+4)(x-5)=x²-x-20."
   },
   {
     "id": 15,
@@ -545,10 +594,17 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "완전제곱식이 될 상수항을 비교한다.",
+    "decisiveStep": "x²+2x-8+k=(x+1)²이면 k=9."
   },
   {
     "id": 17,
@@ -616,10 +672,17 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "2120×2124를 중심 2122의 제곱 차로 변환한다.",
+    "decisiveStep": "(2122-2)(2122+2)+4=2122²."
   },
   {
     "id": 19,
@@ -684,6 +747,13 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "MULTI_STEP_COUPLING",
+    "primaryMethod": "s²=24x와 소인수 짝수 지수 조건에서 최소 s를 찾는다.",
+    "decisiveStep": "24=2³×3이므로 최소 s=12이고 x=6."
   }
 ];
