@@ -127,9 +127,13 @@ try {
           const normalize = text => (text || '').replace(/\s+/g, ' ').trim();
           const questionText = normalize(lab.ui.head.querySelector('.apl-question .q')?.textContent);
           const questionMatches = questionText === normalize(expectedQuestion.textContent);
+          const problemTag = lab.scene.problem?.tag, tagExpected = document.createElement('div');
+          tagExpected.innerHTML = problemTag ? APLab.renderMath(APLab.esc(APLab.stripEmoji(typeof problemTag === 'function' ? problemTag(lab.s) : problemTag))) : '';
+          const tagElement = document.querySelector('#apl-pane-problem .apl-problem-meta .apl-tag');
+          const problemTagMatches = problemTag ? !!tagElement && normalize(tagElement.textContent) === normalize(tagExpected.textContent) : !tagElement;
           const visibleText = [...document.querySelectorAll('.apl-tabpanel:not([hidden])')].map(el=>{const c=el.cloneNode(true);c.querySelectorAll('.katex,script,style').forEach(n=>n.remove());return c.textContent;}).join(' ');
           const brokenText = (visibleText.match(/undefined|NaN|Infinity|\[object Object\]|\$|\\(?:frac|sqrt|sin|cos|tan|angle|circ)\b/g)||[]).slice(0,20);
-          return { brokenText, ink, sampledInk, clipped, labels: window.__g89Labels, want, have, reviewSteps, futureStepText, orientationHintOverlap, questionText, questionMatches, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
+          return { brokenText, ink, sampledInk, clipped, labels: window.__g89Labels, want, have, reviewSteps, futureStepText, orientationHintOverlap, questionText, questionMatches, problemTagMatches, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
         });
         const issues = [];
         if (obs.ink < 200) issues.push('blank-canvas');
@@ -140,6 +144,7 @@ try {
         if (obs.tab === 'review' && obs.futureStepText.length) issues.push('future-step-disclosure');
         if (obs.orientationHintOverlap > 0) issues.push('orientation-hint-covers-canvas');
         if (!obs.questionMatches) issues.push('question-text-state-mismatch');
+        if (!obs.problemTagMatches) issues.push('problem-tag-state-mismatch');
         if (!obs.guide) issues.push('missing-guide');
         if (state === 'initial' && obs.want !== obs.have) issues.push('missing-control');
         const nSteps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
@@ -174,6 +179,9 @@ try {
         cases.push(c);
       }
       dest.targets = cases;
+      // A native-drag fixture promises a real draggable scene. A missing handle
+      // is a failed observation, never an empty 0/0 interaction pass.
+      const requiredNative = new Set(cases.filter(c => String(c.label || '').startsWith('native-drag-')).map(c => String(c.id)));
       const sceneIds = new Set(scenes.map(scene => scene.id));
       for (const c of cases) {
         if (!sceneIds.has(String(c.id))) report.failures.push({ unit, run: run.name, reason: 'unknown-target-scene', id: String(c.id), label: c.label });
@@ -236,7 +244,10 @@ try {
             await actualCanvas.scrollIntoViewIfNeeded(); await settle();
             const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
             const attempts = []; let passed = false;
-            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64]]) {
+            // Integer-snapped handles can require more than 64px to cross a
+            // half-step on a large board (sm4-conv quarters of AB). Keep the
+            // same native acquisition/state-change gate and try a longer drag.
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64],[128,0],[-128,0],[0,128],[0,-128]]) {
               const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
               if (!fresh) break;
               const rect = await actualCanvas.boundingBox();
@@ -252,6 +263,9 @@ try {
             }
             dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
             if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
+          } else if (requiredNative.has(scene.id)) {
+            dest.interactions.push({ id:scene.id, run:run.name, control:'pointer-drag', executed:false, stateChanged:false, pass:false, attempts:[], pointer:'mouse', reason:'required-handle-missing' });
+            report.failures.push({ unit, id:scene.id, run:run.name, reason:'required-native-drag-handle-missing' });
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {

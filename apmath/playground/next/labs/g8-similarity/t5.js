@@ -44,17 +44,20 @@
     model: (s) => ({ ...lmnGeo(clamp(Math.round(s.smLa), 1, 4), clamp(Math.round(s.smLb), 1, 4), clamp(Math.round(s.smLu), 1, 3)), g: gcd(clamp(Math.round(s.smLa), 1, 4), clamp(Math.round(s.smLb), 1, 4)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? lmnGeo(pk.a, pk.bb, pk.u) : M;
-      const ext = 1.4, xs = [g.A.x, g.B.x, g.C.x, g.D.x, g.E.x, g.F.x], x0 = Math.min(...xs) - 1, x1 = Math.max(...xs) + 1.6;
+      const ext = 1.4, xs = [g.A.x, g.B.x, g.C.x, g.D.x, g.E.x, g.F.x].concat(C.solution && C.solStep >= 2 ? [g.M.x, g.N.x] : []), x0 = Math.min(...xs) - 1, x1 = Math.max(...xs) + 1.6;
       fit(b, { x0, x1, y0: -0.6, y1: g.ys[2] + 0.8 }, { t: 40, b: 50, l: 36, r: 40 });
       const names = ['l', 'm', 'n'];
-      g.ys.forEach((y, i) => { line(b, pt(x0 + 0.4, y), pt(x1 - 0.5, y), 'green', 3.2); par(b, pt(x0 + 0.4, y), pt(x1 - 0.5, y), 1 + i, 'green', 0.04 + 0.0); T(b, pt(x1 - 0.5, y), names[i], { dx: 14, size: 18, color: 'green' }); });
+      g.ys.forEach((y, i) => { line(b, pt(x0 + 0.4, y), pt(x1 - 0.5, y), 'green', 3.2); par(b, pt(x0 + 0.4, y), pt(x1 - 0.5, y), 1, 'green', 0.04 + 0.0); T(b, pt(x1 - 0.5, y), names[i], { dx: 14, size: 18, color: 'green' }); });
       // 두 직선 p, q (조금 연장)
       const ext1 = (p, q) => [sub(p, mul(unit(sub(q, p)), 0.9)), add(q, mul(unit(sub(q, p)), 0.9))];
       const [p0, p1] = ext1(g.A, g.C), [q0, q1] = ext1(g.D, g.F);
       line(b, p0, p1, 'ink', 3.4); line(b, q0, q1, 'ink', 3.4);
-      if (!prob && C.review && st >= 1) { // 보조선: A 를 지나 q 에 평행
+      if ((!prob && C.review && st >= 1) || (C.solution && C.solStep >= 2)) { // 보조선: A 를 지나 q 에 평행
         line(b, g.A, g.N, 'violet', 2.8, { dash: [7, 5] }); b.point(g.M, { color: 'violet', r: 4.2 }); b.point(g.N, { color: 'violet', r: 4.2 });
-        T(b, g.M, 'M', { dx: 15, dy: -13, size: 16, color: 'violet' }); T(b, g.N, 'N', { dx: 15, dy: -13, size: 16, color: 'violet' });
+        const k = b.k || 60;
+        line(b, add(g.M, pt(-5 / k, -7 / k)), add(g.M, pt(-12 / k, -18 / k)), 'violet', 1.2);
+        T(b, g.M, 'M', { dx: -18, dy: -28, size: 16, color: 'violet' });
+        T(b, g.N, 'N', { dx: 15, dy: 21, size: 16, color: 'violet' });
         par(b, g.A, g.N, 1, 'violet', 0.38); par(b, g.D, g.F, 1, 'violet', 0.62);
       }
       const sz = 16, cenP = pt(g.A.x - 1, (g.ys[0] + g.ys[2]) / 2), cenQ = pt(g.D.x + 1, (g.ys[0] + g.ys[2]) / 2);
@@ -71,7 +74,7 @@
       }
       [[g.A, 'A'], [g.B, 'B'], [g.C, 'C'], [g.D, 'D'], [g.E, 'E'], [g.F, 'F']].forEach(([p, nm]) => vtx(b, p, pt(p.x - 0.5, p.y + 1), nm, { size: 17, gap: 12 }));
       if (C.txt && !prob) {
-        const msg = st >= 3 ? `AB : BC = DE : EF = ${g.a} : ${g.bb}` : st >= 2 ? '△AMB ∽ △ANC? 아니라 △ABM… 평행선으로 닮음' : st >= 1 ? '보조선 AN ∥ DF, 평행사변형으로 AM = DE, MN = EF' : 'l ∥ m ∥ n';
+        const msg = st >= 3 ? `AB : BC = DE : EF = ${g.a} : ${g.bb}` : st >= 2 ? '△ABM ∽ △ACN (동위각과 공통각)' : st >= 1 ? '보조선 AN ∥ DF, 평행사변형으로 AM = DE, MN = EF' : 'l ∥ m ∥ n';
         T(b, pt((x0 + x1) / 2, g.ys[2]), C.review ? (st >= 3 ? msg : st >= 2 ? `AB : AC = AM : AN = DE : DF` : msg) : `AB : BC = DE : EF = ${g.a} : ${g.bb}`, { dy: 36, size: phone(b) ? 13 : 16, color: 'amber' });
       }
     },
@@ -115,7 +118,7 @@
       fillPoly(b, [g.A, g.D, g.F, g.E], 'sky', 0.14); fillPoly(b, [g.E, g.F, g.C, g.B], 'green', 0.1);
       poly(b, [g.A, g.B, g.C, g.D], 'ink', 3.6); line(b, g.E, g.F, 'amber', 3.8);
       par(b, g.A, g.D, 1, 'green'); par(b, g.E, g.F, 1, 'green'); par(b, g.B, g.C, 1, 'green');
-      if (!prob && C.review && st >= 1) { line(b, g.A, g.H, 'violet', 2.8, { dash: [7, 5] }); b.point(g.H, { color: 'violet', r: 4.2 }); b.point(g.Gp, { color: 'violet', r: 4.2 }); T(b, g.H, 'H', { dy: 18, size: 16, color: 'violet' }); T(b, g.Gp, 'G', { dx: 14, dy: 13, size: 16, color: 'violet' }); par(b, g.A, g.H, 1, 'violet', 0.5); par(b, g.D, g.C, 1, 'violet', 0.5); }
+      if ((!prob && C.review && st >= 1) || (C.solution && C.solStep >= 2)) { line(b, g.A, g.H, 'violet', 2.8, { dash: [7, 5] }); b.point(g.H, { color: 'violet', r: 4.2 }); b.point(g.Gp, { color: 'violet', r: 4.2 }); T(b, g.H, 'H', { dy: 18, size: 16, color: 'violet' }); T(b, g.Gp, 'G', { dx: 14, dy: 13, size: 16, color: 'violet' }); par(b, g.A, g.H, 1, 'violet', 0.5); par(b, g.D, g.C, 1, 'violet', 0.5); }
       const sz = 16, lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); if (pk.kind !== 1) lb(g.B, g.C, cen, String(g.BC), 'green');

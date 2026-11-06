@@ -68,7 +68,9 @@
       return function (b, s, M, C, ST, idx) {
         const nw = b.W < 560, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
         const box = spec.box(M, s);
-        G.fit(b, box, { t: spec.padT || (nw ? 50 : 68), b: nw ? 126 : 132, l: spec.padL || 54, r: spec.padL || 54 });
+        const side = spec.padL || (nw ? 40 : 54);
+        const padding = spec.padding ? spec.padding(b, M, s, idx) : { t: spec.padT || (nw ? 48 : 68), b: idx < 0 ? (nw ? 72 : 80) : (nw ? 126 : 132), l: side, r: side };
+        G.fit(b, box, padding);
         const X = { b, idx, cur, f, K, prob: idx < 0, nw, lf: G.fs(b, 14), at: (n) => f === n, has: (n) => idx >= 0 && ST.slice(0, idx + 1).some((q) => q.f === n) };
         X.xArc = X.prob || f === 'given' || f === 'eq' || f === 'ans'; X.xVal = f === 'ans';
         if (spec.base) spec.base(b, M, s, X);
@@ -350,6 +352,8 @@
 
   /* ---------------------------------------------------------------- 4. 외심에서의 각 */
   const o4cols = (v) => (v === 0 ? ['amber', 'sky', 'green'] : v === 1 ? ['green', 'violet', 'rose'] : ['sky', 'green', 'violet']);
+  // 짧은 문제 캔버스에서도 각의 숫자가 반지름을 넘어 다른 꼭짓점에 붙지 않게 합니다.
+  const o4LabelDist = (b, wanted = 48) => Math.min(wanted, .48 * b.k);
   const o4Solve = {
     steps: (M, s) => {
       const v = (s.trV || 0) % 3, { a, b: bb, c, x, y, z } = M, out = [];
@@ -373,16 +377,19 @@
       return out;
     },
     draw: SVB.runner({
-      box: () => RBOX,
+      // 외심이라는 설명은 발문과 풀이에 있으므로 같은 범례 줄을 다시 비워
+      // 두지 않습니다. 실제 원의 경계에 맞춰 세 꼭짓점과 각을 크게 봅니다.
+      box: () => ({ x0: -1.02, x1: 1.02, y0: -1.02, y1: 1.02 }),
+      padding: (b, M, s, idx) => ({ t: b.H < 520 ? 30 : 44, b: idx < 0 ? 22 : 90, l: 40, r: 40 }),
       base: (b, M) => cBase(b, M.g),
-      legend: () => 'O: 외심',
       st: {
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 3, [cx, cy, cz] = o4cols(v);
+          const labelDist = o4LabelDist(X.b);
           [A, B, Cc].forEach((z) => L.ln(O, z, 'rose', 3.2));
-          if (v === 0) { L.ang(B, Cc, O, { color: cy, r: 34, label: dg(M.y), size: 15, labelDist: 54, keep: true }); L.ang(Cc, A, O, { color: cz, r: 34, label: dg(M.z), size: 15, labelDist: 54, keep: true }); }
-          else if (v === 1) L.ang(A, B, Cc, { color: 'sky', r: 34, label: dg(M.a), size: 16, labelDist: 64, labelRot: 20, keep: true });
-          else { L.ang(A, B, O, { color: cx, r: 34, label: dg(M.x), size: 15, labelDist: 54, keep: true }); L.ang(B, Cc, O, { color: cy, r: 34, label: dg(M.y), size: 15, labelDist: 54, keep: true }); }
+          if (v === 0) { L.ang(B, Cc, O, { color: cy, r: 30, label: dg(M.y), size: 15, labelDist, keep: true }); L.ang(Cc, A, O, { color: cz, r: 30, label: dg(M.z), size: 15, labelDist, keep: true }); }
+          else if (v === 1) L.ang(A, B, Cc, { color: 'sky', r: 34, label: dg(M.a), size: 16, labelDist: o4LabelDist(X.b, 56), labelRot: 20, keep: true });
+          else { L.ang(A, B, O, { color: cx, r: 30, label: dg(M.x), size: 15, labelDist, keep: true }); L.ang(B, Cc, O, { color: cy, r: 30, label: dg(M.y), size: 15, labelDist, keep: true }); }
         },
         idea: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, B, Cc], 'green', 0.14); L.fl([O, Cc, A], 'violet', 0.14); },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
@@ -406,9 +413,9 @@
       },
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 3;
-        if (v === 0) { if (M.x < 25) xOut(b, A, B, O, xLbl(X, M.x), { arc: X.xArc, r: 34, dist: 56 }); else ang(b, A, B, O, { color: 'amber', r: 32, label: xLbl(X, M.x), size: 17, labelDist: 46, noMark: !X.xArc, fa: 0.3 }); }
+        if (v === 0) { if (M.x < 25) xOut(b, A, B, O, xLbl(X, M.x), { arc: X.xArc, r: 34, dist: 56 }); else ang(b, A, B, O, { color: 'amber', r: 30, label: xLbl(X, M.x), size: 17, labelDist: o4LabelDist(b, 46), noMark: !X.xArc, fa: 0.3 }); }
         else if (v === 1) ang(b, O, B, Cc, { color: 'amber', r: 26, label: xLbl(X, 2 * M.a), size: 17, labelDist: 42, noMark: !X.xArc, fa: 0.3 });
-        else ang(b, Cc, A, B, { color: 'amber', r: 32, label: xLbl(X, M.c), size: 17, labelDist: 48, noMark: !X.xArc, fa: 0.3 });
+        else ang(b, Cc, A, B, { color: 'amber', r: 30, label: xLbl(X, M.c), size: 17, labelDist: o4LabelDist(b), noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => cTop(b, M.g, X)
     })

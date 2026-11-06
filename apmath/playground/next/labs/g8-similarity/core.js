@@ -1,7 +1,7 @@
 /* ==========================================================================
    중2 · 도형의 닮음 — 공용 도구 (core.js)
    - 여덟 개 탭 모듈(t1~t8.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_SM(도구)과 APL_SM_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 풀이 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 먼저 문제 풀기 → 현재 문제의 단계별 풀이.
    - 색의 역할(이 실험실 전체): 하늘 = 작은(첫째) 도형·주어진 값 · 초록 = 큰(둘째) 도형·평행선·완성 · 분홍 = 같은 각 · 노랑 = 구하는 값 x·끌 수 있는 점 · 기본 = 도형의 변.
    - 같은 크기의 각은 같은 표시(호 1개, 2개), 직각은 네모, 같은 길이는 눈금, 평행선은 화살표.
    - 움직임은 가로 이동만(세로 이동 없음). 제자리 회전·뒤집기·서서히 나타남은 허용. 길이는 모두 정수(√ 없음, 중2).
@@ -113,8 +113,7 @@
     const m = lerp(p, q, o.f == null ? 0.5 : o.f), size = o.size || 16;
     let n = unit({ x: -(q.y - p.y), y: q.x - p.x });
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
-    const isF = /\\frac/.test(String(str));
-    const sh = isF ? size * 1.0 : size * 0.55, w = isF ? size * 1.9 : textW(str, size), g = o.gap == null ? 12 : o.gap;
+    const metrics = labelMetrics(str, size), sh = metrics.height / 2, w = metrics.width, g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * sh + g;
     T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
   }
@@ -153,8 +152,8 @@
     const p2 = add(p, mul(n, off)), q2 = add(q, mul(n, off));
     b.path([p, p2], { color: col, width: 1.3, alpha: 0.55 }); b.path([q, q2], { color: col, width: 1.3, alpha: 0.55 });
     b.path([p2, q2], { color: col, width: 2.4 });
-    const size = o.size || 16, isF = /\\frac/.test(String(str)), w = isF ? size * 1.9 : textW(str, size);
-    const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * (isF ? size : size * 0.55) + 12;
+    const size = o.size || 16, metrics = labelMetrics(str, size), w = metrics.width;
+    const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * metrics.height / 2 + 12;
     T(b, mid(p2, q2), str, { color: col, size, dx: n.x * d, dy: n.y * d });
   }
   function tick(b, p, q, count = 1, color = 'amber') { b.ticks(p, q, { color, count, size: 7 }); }
@@ -248,6 +247,11 @@
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
   const qOf = (D, s) => { const Q = D.prob(D.model(s), s); Q.key = D.id + '|' + (Q.key == null ? '' : Q.key) + '|' + (s.smSeed || 0); return Q; };
+  const solutionOf = (D, s) => {
+    const M = D.model(s), Q = qOf(D, s);
+    const solution = window.APL_SM.solveQuestion(D.id, M.pk, Q);
+    return { ...solution, key: Q.key, steps: solution.steps.map(texSafe) };
+  };
   function problemHTML(D, s) {
     const Q = qOf(D, s);
     const pk = s.smPick && s.smPick.key === Q.key ? s.smPick : null;
@@ -260,7 +264,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="sm-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="sm-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="sm-fb ok"><b>정답이에요!</b> 풀이 탭에서 지금 문제의 풀이 그림을 확인해 보세요.</div>' : `<div class="sm-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="sm-tools"><button type="button" class="apl-btn sm" data-sm-new>숫자 바꾸기</button>${Q.note ? `<span class="sm-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -335,7 +339,19 @@
   /* ------------------------------------------------------------------ 글자 겹침 풀기
      한 장면을 그리는 동안 b.text 를 모아 두었다가 마지막에 한꺼번에 그린다. 점 이름(대문자 한 글자)이 먼저 자리를 잡고,
      길이·각·넓이 같은 값 글자는 점 이름, 점(원), 이미 놓인 다른 글자와 겹치면 가까운 빈자리로 조금(최대 ~44px) 비켜 놓는다. */
-  const recW = (str, size) => (/\\frac|\\dfrac/.test(String(str)) ? size * 1.9 : textW(str, size));
+  // Fraction width depends on the numerator/denominator, and its height is
+  // nearly twice a single line. The former fixed box let two fractions overlap.
+  function labelMetrics(str, size) {
+    const t = String(str), re = /\\(?:d?frac)\{([^{}]*)\}\{([^{}]*)\}/g;
+    let width = 0, cursor = 0, fractions = false, m;
+    while ((m = re.exec(t))) {
+      fractions = true;
+      width += textW(t.slice(cursor, m.index), size) + Math.max(textW(m[1], size * .88), textW(m[2], size * .88)) + 6;
+      cursor = m.index + m[0].length;
+    }
+    width += textW(t.slice(cursor), size);
+    return { width, height: size * (fractions ? 2.2 : 1.12) };
+  }
   function drawResolved(b, run) {
     if (b.thumb) { run(); return; }
     const oText = b.text, oPoint = b.point, hadT = Object.prototype.hasOwnProperty.call(b, 'text'), hadP = Object.prototype.hasOwnProperty.call(b, 'point');
@@ -349,7 +365,7 @@
     const k = b.k || 60;
     const isName = (e) => /^[A-Z][′'’]?$/.test(String(e.str));
     const rectOf = (e, ox, oy) => {
-      const size = e.o.size || 16, w = recW(e.str, size) + 4, h = size * 1.12, al = e.o.align || 'center';
+      const size = e.o.size || 16, metrics = labelMetrics(e.str, size), w = metrics.width + 4, h = metrics.height, al = e.o.align || 'center';
       const cx = e.p.x * k + (e.o.dx || 0) + ox, cy = e.p.y * k + (e.o.dy || 0) + oy;
       const x0 = al === 'left' || al === 'start' ? cx : al === 'right' || al === 'end' ? cx - w : cx - w / 2;
       return { x0, x1: x0 + w, y0: cy - h / 2, y1: cy + h / 2 };
@@ -387,13 +403,17 @@
     ] : undefined;
     const model = (s) => { if (!s.smPk) s.smPk = D.gen(1); const M = D.model(s); M.pk = s.smPk; return M; };
     const DD = { ...D, model, reroll: (s) => { s.smPk = D.gen(1 + Math.floor(Math.random() * 1e9)); } };
+    DD.questionOf = (s) => qOf(DD, s);
+    DD.solution = (s) => solutionOf(DD, s);
     return {
       id: D.id, title: D.title, short: D.short || D.title, sm: DD,
+      tabs: { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } },
       question: D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      steps: (s) => solutionOf(DD, s).steps,
+      reviewTop: (s) => { const Q = qOf(DD, s); return `<div class="sm-current"><b>지금 푸는 문제</b><div class="sm-q">${texSafe(Q.html != null ? Q.html : Q.stem)}</div></div>`; },
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: (s) => D.prob(model(s), s).tag,
@@ -403,7 +423,7 @@
       enter: (s, lab) => {
         D.init(s);
         s.smPk = D.gen(1);
-        s.smSeed = 0; s.smPick = null; s.playing = false;
+        s.smSeed = 0; s.smPick = null; s.playing = false; s.step = 1; s.revealed = false;
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -413,9 +433,6 @@
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
-          const tg = D.stepT(s.step || 0, model(s)), d = tg - s[A.key];
-          if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
         return again;
       },
@@ -425,8 +442,12 @@
         const M = model(s);
         const v = D.view(M, C, s) || {};
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
-        if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        if (C.problem || C.review) {
+          v.readouts = []; v.formula = ''; v.rule = ''; v.notes = '';
+          v.guide = C.problem ? '주어진 조건과 대응하는 변을 먼저 찾아보세요. 답을 고른 뒤 풀이 탭에서 같은 문제의 그림을 단계별로 확인할 수 있어요.' : '문제의 조건은 그대로 유지됩니다. 단계 버튼으로 대응각, 보조선, 계산을 차례로 확인하세요.';
+          if (C.problem) v.status = { tone: 'info', text: '먼저 문제를 풀어 보세요' };
+          else { const n = solutionOf(DD, s).steps.length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `현재 문제 풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
@@ -434,7 +455,10 @@
         if (b.thumb) C.step = 99;
         const M = model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        drawResolved(b, () => D.draw(b, s, M, C));
+        drawResolved(b, () => {
+          if (C.review) window.APL_SM.drawSolution(b, DD, s, M, C, solutionOf(DD, s));
+          else D.draw(b, s, M, C);
+        });
       }
     };
   }
@@ -449,6 +473,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, tx, texDeg, ol, gcd, fr, frT, cm, cm2, cm3, josa,
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, rotP, angBetween, cross, inter, polyArea, centroid, bboxOf, unionBox, shiftPts, scalePts, triTop,
     seeded, shuffle, ri, rpick, textW, phone, capSize, T, tagOut, vtx, sideTag, dim, ang, tick, par, fillPoly, line, poly, fit, extend, P, degF, cmF,
-    mkChoices, mkTextChoices, mkRatioChoices, baseCtx, showAt, makeScene, register, notes, rd
+    mkChoices, mkTextChoices, mkRatioChoices, baseCtx, showAt, makeScene, register, notes, rd, labelMetrics
   };
 })();

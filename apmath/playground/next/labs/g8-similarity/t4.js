@@ -128,9 +128,11 @@
     model: (s) => ({ ...xGeo(clamp(Math.round(s.smXm), 1, 3), clamp(Math.round(s.smXn), 1, 4), clamp(Math.round(s.smXr), 2, 4)), g: gcd(clamp(Math.round(s.smXm), 1, 3), clamp(Math.round(s.smXn), 1, 4)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? xGeo(pk.m, pk.n, pk.r) : M;
-      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 44, b: 66, l: 52, r: 52 });
-      const cen = g.O;
-      fillPoly(b, [g.O, g.A, g.D], 'sky', 0.26); fillPoly(b, [g.O, g.B, g.C], 'green', 0.2);
+      // Keep the outward A/D names below the board's upper status badge.
+      // Inverse ratios place the large top triangle directly beneath that badge.
+      fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 74, b: 66, l: 52, r: 52 });
+      const cen = g.O, upperColor = g.m <= g.n ? 'sky' : 'green', lowerColor = g.m <= g.n ? 'green' : 'sky';
+      fillPoly(b, [g.O, g.A, g.D], upperColor, 0.18); fillPoly(b, [g.O, g.B, g.C], lowerColor, 0.18);
       line(b, g.A, g.D, 'ink', 3.6); line(b, g.B, g.C, 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.6); line(b, g.D, g.B, 'ink', 3.6);
       par(b, g.A, g.D, 1, 'green'); par(b, g.B, g.C, 1, 'green');
       if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: 20 }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: 20 }); }
@@ -138,10 +140,10 @@
       const sz = 16, lb = (p, q, t, col, gap) => t != null && sideTag(b, p, q, cen, t, { color: col, size: sz, gap: gap || 12 });
       const lbIn = (p, q, t, col) => T(b, lerp(p, q, 0.5), t, { size: sz, color: col, dx: ((p.y > q.y ? 1 : 1) * 14), dy: 0 });
       if (prob) {
-        if (pk.kind === 0) { lbIn(g.A, g.O, String(g.OA), 'sky'); lbIn(g.O, g.C, String(g.OC), 'green'); lb(g.A, g.D, String(g.AD), 'sky'); lb(g.B, g.C, 'x', 'amber'); }
-        else { lbIn(g.A, g.O, 'x', 'amber'); lbIn(g.O, g.C, String(g.OC), 'green'); lbIn(g.D, g.O, String(g.OD), 'sky'); lbIn(g.O, g.B, String(g.OB), 'green'); }
+        if (pk.kind === 0) { lbIn(g.A, g.O, String(g.OA), upperColor); lbIn(g.O, g.C, String(g.OC), lowerColor); lb(g.A, g.D, String(g.AD), upperColor); lb(g.B, g.C, 'x', 'amber'); }
+        else { lbIn(g.A, g.O, 'x', 'amber'); lbIn(g.O, g.C, String(g.OC), lowerColor); lbIn(g.D, g.O, String(g.OD), upperColor); lbIn(g.O, g.B, String(g.OB), lowerColor); }
       } else {
-        lbIn(g.A, g.O, String(g.OA), 'sky'); lbIn(g.O, g.C, String(g.OC), 'green'); lbIn(g.D, g.O, String(g.OD), 'sky'); lbIn(g.O, g.B, String(g.OB), 'green'); lb(g.A, g.D, String(g.AD), 'sky'); lb(g.B, g.C, String(g.BC), 'green');
+        lbIn(g.A, g.O, String(g.OA), upperColor); lbIn(g.O, g.C, String(g.OC), lowerColor); lbIn(g.D, g.O, String(g.OD), upperColor); lbIn(g.O, g.B, String(g.OB), lowerColor); lb(g.A, g.D, String(g.AD), upperColor); lb(g.B, g.C, String(g.BC), lowerColor);
       }
       [[g.A, 'A'], [g.D, 'D'], [g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, g.O, nm, { size: 17, gap: 12 }));
       b.point(g.O, { color: 'ink', r: 4.2 });
@@ -186,18 +188,23 @@
     model: (s) => ({ ...efGeo(clamp(Math.round(s.smEm), 1, 3), clamp(Math.round(s.smEn), 1, 3)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? efGeo(pk.m, pk.n) : M;
+      const topColor = g.m <= g.n ? 'sky' : 'green', bottomColor = g.m <= g.n ? 'green' : 'sky';
       fit(b, bboxOf([g.A, g.B, g.C, g.D]), { t: 44, b: 60, l: 52, r: 104 });
       const cen = centroid([g.A, g.B, g.C, g.D]);
-      fillPoly(b, [g.A, g.D, g.O], 'sky', 0.22); fillPoly(b, [g.B, g.C, g.O], 'green', 0.18);
+      // Once the proof switches to AEO/ABC (or DOF/DBC), its overlay supplies
+      // those two relevant fills; the earlier X-shaped comparison is cleared.
+      if (!C.solution || C.solStep < 3) {
+        fillPoly(b, [g.A, g.D, g.O], topColor, 0.18); fillPoly(b, [g.B, g.C, g.O], bottomColor, 0.18);
+      }
       poly(b, [g.A, g.B, g.C, g.D], 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.0); line(b, g.B, g.D, 'ink', 3.0);
       line(b, g.E, g.F, 'amber', 3.8); par(b, g.A, g.D, 1, 'green'); par(b, g.B, g.C, 1, 'green'); par(b, g.E, g.F, 1, 'green', 0.2);
       const sz = 16;
       const lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
-        lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green');
+        lb(g.A, g.D, cen, String(g.AD), topColor); lb(g.B, g.C, cen, String(g.BC), bottomColor);
         if (pk.kind === 0) T(b, g.F, 'EF = x', { size: 17, color: 'amber', dx: 56, dy: -2 }); else T(b, lerp(g.E, g.O, 0.5), 'EO = x', { size: 17, color: 'amber', dy: -15 }); // EF 전체를 구하는 문제: 점 F 바깥에 'EF = x'
       } else {
-        lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green');
+        lb(g.A, g.D, cen, String(g.AD), topColor); lb(g.B, g.C, cen, String(g.BC), bottomColor);
         T(b, lerp(g.E, g.O, 0.5), String(g.EO), { size: 16, color: 'amber', dy: -15 });
         if (!C.review || st >= 3) T(b, lerp(g.O, g.F, 0.5), String(g.EO), { size: 16, color: 'amber', dy: -15 });
       }
@@ -315,12 +322,12 @@
       }
       [[g.A, 'A', cen], [g.B, 'B', cen], [g.C, 'C', cen], [g.D, 'D', cen], [g.E, 'E', cen], [g.F, 'F', cen]].forEach(([p, nm, c]) => vtx(b, p, c, nm, { size: 17, gap: 12 }));
       if (C.txt && !prob) {
-        const msg = st >= 3 ? `넓이 ${g.S} = ${g.s4} × 4  (△DEF = ${g.s4})` : st >= 2 ? '네 삼각형이 서로 합동이에요 (SSS)' : st >= 1 ? 'DE는 AB의 절반, EF는 AC의 절반, FD는 BC의 절반' : '세 변의 중점 D, E, F';
+        const msg = st >= 3 ? `넓이 ${g.S} = ${g.s4} × 4  (△DEF = ${g.s4})` : st >= 2 ? '네 삼각형이 서로 합동이에요 (SSS)' : st >= 1 ? 'DE는 AC의 절반, EF는 AB의 절반, FD는 BC의 절반' : '세 변의 중점 D, E, F';
         T(b, pt(g.B.x / 2, g.A.y), msg, { dy: 84, size: phone(b) ? 13 : 16, color: 'amber' });
       }
     },
     steps: (M) => [
-      `중점연결정리에 의해 $\\overline{DE}=\\dfrac{1}{2}\\overline{AB}$, $\\overline{EF}=\\dfrac{1}{2}\\overline{AC}$, $\\overline{FD}=\\dfrac{1}{2}\\overline{BC}$예요. △DEF의 둘레 $=\\dfrac{1}{2}\\times${M.per}=${M.per2}$`,
+      `중점연결정리에 의해 $\\overline{DE}=\\dfrac{1}{2}\\overline{AC}$, $\\overline{EF}=\\dfrac{1}{2}\\overline{AB}$, $\\overline{FD}=\\dfrac{1}{2}\\overline{BC}$예요. △DEF의 둘레 $=\\dfrac{1}{2}\\times${M.per}=${M.per2}$`,
       '△ADF, △DBE, △FEC, △DEF는 세 변의 길이가 각각 같아서 모두 합동이에요 (SSS 합동). 그래서 같은 색 삼각형은 모양과 크기가 같아요.',
       `합동인 삼각형 4개가 △ABC를 나누므로 넓이는 모두 같아요. △ABC의 넓이 ${M.S}를 4로 나누면 △DEF의 넓이는 ${M.s4}예요.`
     ],
@@ -347,6 +354,7 @@
       fillPoly(b, [g.D, g.E, g.F], 'amber', 0.24); poly(b, [g.A, g.B, g.C], 'ink', 3.6); poly(b, [g.D, g.E, g.F], 'ink', 3);
       ang(b, g.A, g.B, g.C, { color: 'rose', r: 20 });
       dim(b, g.A, g.B, cen, String(g.AB), { color: 'sky', off: 38 }); dim(b, g.A, g.C, cen, String(g.AC), { color: 'sky', off: 38 });
+      tick(b, g.A, g.D, 1); tick(b, g.D, g.B, 1); tick(b, g.B, g.E, 2); tick(b, g.E, g.C, 2); tick(b, g.C, g.F, 3); tick(b, g.F, g.A, 3);
       T(b, centroid([g.D, g.E, g.F]), 'x', { size: 18, color: 'amber' });
       [[g.A, 'A'], [g.B, 'B'], [g.C, 'C'], [g.D, 'D'], [g.E, 'E'], [g.F, 'F']].forEach(([p, nm]) => vtx(b, p, cen, nm, { size: 17, gap: 12 }));
       return;
@@ -374,7 +382,7 @@
       fillPoly(b, [g.E, g.F, g.Gp, g.H], 'green', 0.2);
       poly(b, [g.A, g.B, g.C, g.D], 'ink', 3.6); line(b, g.A, g.C, 'ink', 2.6, { dash: [7, 6] }); line(b, g.B, g.D, 'ink', 2.6, { dash: [7, 6] });
       poly(b, [g.E, g.F, g.Gp, g.H], 'green', 3.6);
-      [[g.A, g.B], [g.B, g.C], [g.C, g.D], [g.D, g.A]].forEach(([p, q], i) => { tick(b, p, mid(p, q), 1 + (i % 2), 'amber'); tick(b, mid(p, q), q, 1 + (i % 2), 'amber'); });
+      [[g.A, g.B], [g.B, g.C], [g.C, g.D], [g.D, g.A]].forEach(([p, q], i) => { tick(b, p, mid(p, q), i + 1, 'amber'); tick(b, mid(p, q), q, i + 1, 'amber'); });
       if (!prob && (!C.review || st >= 2)) { par(b, g.E, g.F, 1, 'green'); par(b, g.H, g.Gp, 1, 'green'); par(b, g.F, g.Gp, 2, 'green'); par(b, g.E, g.H, 2, 'green'); }
       const sz = 16;
       const lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
@@ -432,7 +440,7 @@
     model: (s) => ({ ...bisGeo(clamp(Math.round(s.smBm), 2, 4), clamp(Math.round(s.smBn), 2, 4)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? bisGeo(pk.m, pk.n) : M;
-      fit(b, bboxOf([g.A, g.B, g.C, g.E]), { t: 44, b: 86, l: 56, r: 56 });
+      fit(b, bboxOf(prob && !(C.solution && C.solStep >= 2) ? [g.A, g.B, g.C] : [g.A, g.B, g.C, g.E]), { t: 44, b: 86, l: 56, r: 56 });
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.A, g.B, g.D], 'sky', 0.2); fillPoly(b, [g.A, g.D, g.C], 'green', 0.15);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.A, g.D, 'amber', 3.6);
@@ -480,7 +488,7 @@
   bisS.draw = function (b, s, M, C) {
     if (C.problem && M.pk.kind === 2) {
       const g = bisGeo(M.pk.m, M.pk.n), cen = centroid([g.A, g.B, g.C]);
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 56, l: 56, r: 56 });
+      fit(b, bboxOf(C.solution && C.solStep >= 2 ? [g.A, g.B, g.C, g.E] : [g.A, g.B, g.C]), { t: 44, b: 56, l: 56, r: 56 });
       fillPoly(b, [g.A, g.B, g.D], 'sky', 0.2); fillPoly(b, [g.A, g.D, g.C], 'green', 0.15);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.A, g.D, 'amber', 3.6);
       ang(b, g.A, g.B, g.D, { color: 'rose', rings: 1, r: 24 }); ang(b, g.A, g.D, g.C, { color: 'rose', rings: 1, r: 24 });
@@ -511,7 +519,7 @@
       fit(b, bboxOf([g.A, g.B, g.C, g.D, g.E]), { t: 44, b: 56, l: 50, r: 50 });
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.A, g.B, g.C], 'sky', 0.16);
-      poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.C, g.D, 'ink', 3.6); line(b, g.A, g.D, 'amber', 3.6); line(b, g.B, g.E, 'ink', 3.0, { dash: [7, 6], alpha: 0.9 });
+      poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.C, g.D, 'ink', 3.6); line(b, g.A, g.D, 'amber', 3.6); line(b, g.B, g.E, 'ink', 3.0, { dash: [7, 6], alpha: 0.9 }); T(b, g.E, 'E', { dy: -16, color: 'ink' });
       ang(b, g.A, g.C, g.D, { color: 'rose', rings: 1, r: 26 }); ang(b, g.A, g.D, g.E, { color: 'rose', rings: 1, r: 26 });
       const sz = 16, lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {

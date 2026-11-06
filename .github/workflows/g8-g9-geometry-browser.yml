@@ -68,7 +68,7 @@ jobs:
           shopt -s nullglob
           tests=(apmath/playground/next/tools/"$UNIT"-*.test.mjs)
           if (( ${#tests[@]} )); then node --test "${tests[@]}"; else echo "No unit-specific mathematical regression supplied yet"; fi
-          node --test apmath/playground/next/tools/catalog.test.mjs
+          node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/apl-problem-tag-state.test.mjs
       - name: Install Chromium test runtime
         if: steps.scope.outputs.active == 'true'
         run: |
@@ -91,4 +91,40 @@ jobs:
         with:
           name: g8-g9-geometry-${{ github.run_id }}-${{ matrix.unit }}
           path: ${{ runner.temp }}/g89-evidence/
+          retention-days: 14
+
+  student-flow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium for the actual student navigation
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g89-flow-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g89-flow-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify six lab flows and exact checkout assets at four sizes and both themes
+        env:
+          NODE_PATH: ${{ runner.temp }}/g89-flow-browser/node_modules
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory . > "$RUNNER_TEMP/g89-flow-http.log" 2>&1 &
+          G89_FLOW_HTTP_PID=$!
+          trap 'kill "$G89_FLOW_HTTP_PID" 2>/dev/null || true' EXIT
+          node --input-type=module <<'JS'
+          for (let n = 0; ; n++) {
+            try { const r = await fetch('http://127.0.0.1:4173/apmath/playground/next/kit/apl-catalog.js'); if (r.ok) break; } catch {}
+            if (n >= 30) throw Error('Local CI HTTP server did not become ready');
+            await new Promise(resolve => setTimeout(resolve, 200));
+          }
+          JS
+          node apmath/playground/next/tools/g8-g9-student-live-smoke.mjs --base-url http://127.0.0.1:4173/apmath/playground/next/labs/ --out "$RUNNER_TEMP/g89-student-flow"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g8-g9-student-flow-${{ github.run_id }}
+          path: ${{ runner.temp }}/g89-student-flow/
           retention-days: 14

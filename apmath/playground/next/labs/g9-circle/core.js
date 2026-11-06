@@ -1,7 +1,7 @@
 /* ==========================================================================
    중3 · 원의 성질 — 공용 도구 (core.js)
    - 일곱 개 탭 모듈(t1~t7.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_CI(도구)와 APL_CI_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구 → 먼저 문제 풀기 → 현재 문항의 단계별 풀이 → 답 확인.
    - 색의 역할(이 실험실 전체): 하늘 = 주어진 길이·각 · 분홍 = 구하는 값 x · 노랑 = 끌 수 있는 점·같은 길이 눈금 · 초록 = 보조선·정리로 알아낸 값 · 기본 = 도형의 변.
    - 같은 크기의 각은 같은 표시(호 1개, 2개, 3개), 직각은 네모, 같은 길이는 눈금, 평행선은 화살표.
    - 움직임은 가로 이동만(세로 이동 없음). 제자리 회전·접기·서서히 나타남은 허용. 호 위의 점은 막대로, 접선 위의 점 P는 가로로 끕니다.
@@ -184,6 +184,7 @@
     if (o.away && n.x * (m.x - o.away.x) + n.y * (m.y - o.away.y) < 0) n = mul(n, -1);
     const w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
+    if (str && o.leader) line(b, m, add(m, mul(n, g / (b.k || 60))), o.color || 'sky', 1.2, { alpha: .7 });
     T(b, m, str, { color: o.color || 'sky', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
   }
   const sz = (b, a = 16) => (b.W < 560 ? a - 1 : a);
@@ -210,7 +211,7 @@
     if (v > 0 && Math.abs(q - Math.round(q)) < 1e-9 && q <= 2000) { const { a, b } = radSimp(q); return (a === 1 ? '' : String(a)) + `\\sqrt{${b}}`; }
     return tx(v);
   }
-  const npl = (v) => nt(v).replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1분의$2').replace(/\\sqrt\{(\d+)\}/g, '√$1');
+  const npl = (v) => nt(v).replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$2분의$1').replace(/\\sqrt\{(\d+)\}/g, '√$1');
   const ntD = (v) => `$${nt(v)}$`;
   const exactQ = (v) => !!fracOf(v) || (Number.isFinite(v) && v > 0 && Math.abs(v * v - Math.round(v * v)) < 1e-9 && v * v <= 2000);
   const eqv = (v) => (exactQ(v) ? '=' : '≈');
@@ -266,12 +267,12 @@
       if (list.length < 5 && Number.isFinite(v) && valid(v) && !list.some((x) => same(x.v, v))) list.push({ v, ok: false, hint: '풀이 순서대로 다시 계산해 보세요.' });
     }
     list.sort((a, b) => a.v - b.v);
-    return list.map((x) => ({ t: tex(x.v), p: plain(x.v), ok: x.ok, hint: x.hint }));
+    return list.map((x) => ({ t: tex(x.v), p: plain(x.v), ok: x.ok, hint: x.hint, value: x.v }));
   }
   // 글 보기: items = [{h: 보기(글·$수식$ 가능), ok, hint}] 5개를 key 로 안정되게 섞어 놓습니다.
   function mkTextChoices(items, key) {
     const list = shuffle(items, seeded('tc|' + key));
-    return list.map((x) => ({ h: x.h, p: x.p || String(x.h).replace(/\$/g, ''), ok: !!x.ok, hint: x.hint || '' }));
+    return list.map((x) => ({ h: x.h, p: x.p || String(x.h).replace(/\$/g, ''), ok: !!x.ok, hint: x.hint || '', value: x.v }));
   }
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
@@ -279,7 +280,7 @@
     const tab = thumb ? 'explore' : (lab && lab.tab) || 'explore';
     const problem = !thumb && tab === 'problem';
     const review = !thumb && tab === 'review';
-    return { tab, problem, review, step: review ? s.step || 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
+    return { tab, problem, review, step: review ? s.step || 1 : problem ? 0 : 99, txt: !thumb, thumb: !!thumb, full: tab === 'explore' || thumb };
   }
   const showAt = (C, n) => C.step >= n;
 
@@ -297,7 +298,7 @@
     h += '</div>';
     if (pk) {
       const o = Q.choices[pk.idx];
-      h += o.ok ? '<div class="ci-fb ok"><b>정답이에요!</b> 정리 탭에서 풀이 과정을 확인해 보세요.</div>' : `<div class="ci-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
+      h += o.ok ? '<div class="ci-fb ok"><b>정답이에요!</b> 풀이 탭에서 이 문제의 풀이 과정을 확인해 보세요.</div>' : `<div class="ci-fb bad"><b>다시 생각해 볼까요?</b> ${esc(o.hint || '풀이 순서대로 다시 계산해 보세요.')}</div>`;
     }
     h += `<div class="ci-tools"><button type="button" class="apl-btn sm" data-ci-new>숫자 바꾸기</button>${Q.note ? `<span class="ci-note">${esc(Q.note)}</span>` : ''}</div>`;
     return h;
@@ -357,6 +358,8 @@
 .ci-fb.bad{border-left-color:var(--m-red)}
 .ci-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
 .ci-note{font-size:var(--fs-xs);color:var(--text-3)}
+.ci-current{padding:12px 14px;border:1px solid var(--line-2);border-radius:var(--r-md);background:var(--card-2);line-height:1.8}
+.ci-current b{display:block;color:var(--m-sky);margin-bottom:5px}
 .ci-notes{margin:0;padding-left:18px;display:grid;gap:4px}`;
     document.head.append(st);
   }
@@ -370,7 +373,48 @@
   // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   /* 문제 변형(숫자 바꾸기) 하나를 고릅니다. first=true 이면 정해진 첫 변형(그림과 보기를 처음부터 채웁니다). */
-  const PC = { tab: 'problem', problem: true, review: false, step: 99, txt: true, thumb: false, full: false };
+  const PC = { tab: 'problem', problem: true, review: false, step: 0, txt: true, thumb: false, full: false };
+  // 탐구의 슬라이더 값은 그대로 보존하고, 문제와 풀이만 같은 문항 모델을 읽습니다.
+  function currentSolution(D, s) {
+    const M = D.model(s, PC), Q = D.prob(M, s);
+    const solution = D.solve ? D.solve(M, s) : { steps: D.steps(M, s) };
+    return { ...solution, model: M, question: Q, key: Q.key };
+  }
+
+  // 단원 안에서만 적용하는 라벨 배치. 도형 크기를 줄이지 않고 겹치는 글자를
+  // 화면 픽셀 단위로 벌리고, 멀어진 라벨은 원래 위치와 가는 지시선으로 연결합니다.
+  function drawLabels(b, draw, answer) {
+    if (b.thumb || !b.toS || !b.toW) { draw(); return; }
+    const original = b.text, queue = [];
+    b.text = (p, str, o = {}) => {
+      if (answer != null && typeof str === 'string' && /(?:^x$|=\s*x$)/.test(str)) {
+        str = str.replace(/x$/, answer);
+        if (textW(str, o.size || 16) > b.W - 40) str = 'x = ' + answer;
+      }
+      if (str != null && str !== '') queue.push({ p, str: String(str), o: { ...o } });
+      return b;
+    };
+    try { draw(); } finally { b.text = original; }
+    const placed = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
+    queue.sort((a, z) => Number(!/^[A-Z][′']?$/.test(a.str)) - Number(!/^[A-Z][′']?$/.test(z.str)));
+    for (const item of queue) {
+      const { p, str, o } = item, anchor = b.toS(p), x0 = anchor.x + (o.dx || 0), y0 = anchor.y + (o.dy || 0);
+      const size = Math.max(14, o.size || 16), width = Math.min(b.W - 24, textW(str, size) + 8), height = size * (hasFrac(str) ? 1.65 : 1.15) + 6;
+      const toolbar = Math.max(60, b.insets && b.insets.bottom || 0);
+      const shifts = [[0, 0], [0, -14], [0, 14], [-16, 0], [16, 0], [0, -28], [0, 28], [-28, -14], [28, -14], [-28, 14], [28, 14], [-40, 0], [40, 0], [0, -44], [0, 44], [-44, -28], [44, -28], [-44, 28], [44, 28]];
+      let best;
+      for (const [dx, dy] of shifts) {
+        const x = clamp(x0 + dx, 12 + width / 2, b.W - 12 - width / 2), y = clamp(y0 + dy, 48 + height / 2, b.H - toolbar - 14 - height / 2);
+        const box = { l: x - width / 2, r: x + width / 2, t: y - height / 2, b: y + height / 2 };
+        const score = placed.reduce((n, a) => n + overlap(a, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
+        if (!best || score < best.score) best = { x, y, box, score };
+      }
+      if (Math.hypot(best.x - x0, best.y - y0) > 13) line(b, b.toW(x0, y0), b.toW(best.x, best.y), o.color || 'ink', 1, { alpha: 0.45 });
+      original.call(b, p, str, { ...o, size, dx: best.x - anchor.x, dy: best.y - anchor.y });
+      placed.push({ ...best.box, text: str });
+    }
+    b.ciLabels = placed;
+  }
   function rollPk(D, s, first) {
     if (!D.gen) return;
     const prev = s.ciPk;
@@ -395,17 +439,23 @@
       },
       { id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[A.key] = 0; } }
     ] : undefined;
-    const RC = { tab: 'review', review: true, step: 99, txt: true };
+    const RC = { ...PC, tab: 'review', review: true };
     return {
       id: D.id, title: D.title, short: D.short || D.title, ci: D,
       question: D.question,
+      tabs: { order: ['explore', 'problem', 'review'], labels: { explore: '탐구', problem: '문제', review: '풀이' } },
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s, RC), s).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      solution: (s) => currentSolution(D, s),
+      steps: (s) => currentSolution(D, s).steps.map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      reviewTop: (s) => { const Q = D.prob(D.model(s, PC), s); return `<div class="ci-current"><b>지금 풀고 있는 문제</b>${texSafe(Q.html || esc(Q.stem))}</div>`; },
+      reviewTitles: { steps: '현재 문제의 풀이', solution: '답 확인' },
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
-        tag: (s) => D.prob(D.model(s, PC), s).tag,
+        // 배지는 장면 진입 때 만들어집니다. 새 문항에서 구하는 선분이
+        // 바뀌어도 처음 선분명이 남지 않도록 장면의 주제로 표시합니다.
+        tag: () => D.title,
         text: (s) => problemHTML(D, s),
         answer: (s) => answerText(D, s)
       } : undefined,
@@ -422,7 +472,7 @@
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !D.solve && !s.dragging) {
           const tg = D.stepT(s.step || 0, D.model(s, RC)), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -0.35 * dt, 0.35 * dt); again = true; }
         }
@@ -431,6 +481,11 @@
       view: (s, lab) => {
         if (lab) curLab = lab;
         const C = baseCtx(s, lab, false);
+        if (C.problem) return { guide: '주어진 조건과 구하는 값을 그림에서 찾고 먼저 풀어 보세요. 풀이 탭에서도 같은 문항이 이어져요.', readouts: [], status: { tone: 'info', text: '현재 문제 · 먼저 풀어 보기' } };
+        if (C.review && D.solve) {
+          const sol = currentSolution(D, s), n = sol.steps.length, step = clamp(s.step || 1, 1, n);
+          return { guide: texSafe(sol.steps[step - 1]), readouts: [], status: { tone: step === n ? 'ok' : 'info', text: `현재 문제 · 풀이 ${step} / ${n}단계` } };
+        }
         const M = D.model(s, C);
         const v = D.view(M, C, s) || {};
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
@@ -441,9 +496,17 @@
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
+        if (C.review && D.solve) {
+          const sol = currentSolution(D, s), step = clamp(s.step || 1, 1, sol.steps.length);
+          drawLabels(b, () => {
+            D.draw(b, s, sol.model, { ...PC, review: true, t: 1 });
+            if (sol.draw) sol.draw(b, step);
+          }, step === sol.steps.length ? sol.display : null);
+          return;
+        }
         const M = D.model(s, C);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        D.draw(b, s, M, C);
+        drawLabels(b, () => D.draw(b, s, M, C));
       }
     };
   }

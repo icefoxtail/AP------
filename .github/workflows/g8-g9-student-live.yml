@@ -1,0 +1,56 @@
+name: G8 G9 student live smoke
+
+# Observe the published student URLs after a successful release. The triggering
+# event SHA is recorded separately from exact served HTML/JS/CSS byte hashes.
+on:
+  workflow_run:
+    workflows: [Archive Pages Release]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Optional HTTP(S) labs directory; empty uses the public student URLs'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g8-g9-student-live-smoke
+  cancel-in-progress: true
+
+jobs:
+  published-site:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # Trusted main is checked out explicitly; an event payload never supplies code.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          sparse-checkout: apmath/playground/next
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g8-g9-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g8-g9-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Check published labs, real review navigation and served asset hashes
+        env:
+          NODE_PATH: ${{ runner.temp }}/g8-g9-browser/node_modules
+          BASE_URL: ${{ inputs.base_url }}
+          RELEASE_RUN_ID: ${{ github.event.workflow_run.id }}
+          RELEASE_EVENT_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: node apmath/playground/next/tools/g8-g9-student-live-smoke.mjs --out "$RUNNER_TEMP/g8-g9-student-live"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g8-g9-student-live-${{ github.run_id }}
+          path: ${{ runner.temp }}/g8-g9-student-live/
+          if-no-files-found: warn
+          retention-days: 14

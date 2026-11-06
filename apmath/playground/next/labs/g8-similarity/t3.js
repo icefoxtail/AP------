@@ -197,11 +197,11 @@
     model: (s) => { const m = clamp(Math.round(s.smOm), 1, 2), n = clamp(Math.round(s.smOn), 3, 4); return { m, n, rho: s.smOrot, t: s.smOt || 0, ...rotGeo(m, n, s.smOrot, s.smOt || 0) }; },
     draw(b, s, M, C) {
       const prob = C.problem, st = C.step, pk = M.pk;
-      const g = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, C.t);
+      const g = prob ? rotGeo(pk.m, pk.n, 210, C.solution && C.solStep >= 3 ? 1 : 0) : rotGeo(M.m, M.n, M.rho, C.t);
       const all = [g.A, g.B, g.C, g.D, g.E], bb0 = bboxOf(all);
       const full = prob ? rotGeo(pk.m, pk.n, 210, 0) : rotGeo(M.m, M.n, M.rho, 0);
       const bbU = unionBox(bboxOf([full.A, full.B, full.C, full.D, full.E]), bb0);
-      fit(b, { x0: bbU.x0, x1: bbU.x1, y0: bbU.y0, y1: bbU.y1 }, { t: 46, b: 70, l: 52, r: 52 });
+      fit(b, { x0: bbU.x0, x1: bbU.x1, y0: bbU.y0, y1: bbU.y1 }, { t: phone(b) ? 30 : 46, b: phone(b) ? 30 : 70, l: 52, r: 52 });
       const done = !prob && C.t >= 0.999;
       fillPoly(b, [g.A, g.B, g.C], 'green', 0.12); poly(b, [g.A, g.B, g.C], 'ink', 3.6);
       fillPoly(b, [g.A, g.D, g.E], 'sky', 0.22); poly(b, [g.A, g.D, g.E], done ? 'sky' : 'ink', 3.6);
@@ -220,12 +220,19 @@
         lb(g.A, g.B, cB, String(g.AB), 'green'); lb(g.A, g.C, cB, String(g.AC), 'green'); lb(g.B, g.C, cB, String(g.BC), 'green');
         lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.A, g.E, cS, String(g.AE), 'sky'); lb(g.D, g.E, cS, String(g.DE), 'sky');
       }
-      [[g.A, 'A', cB], [g.B, 'B', cB], [g.C, 'C', cB]].forEach(([p, nm, c]) => vtx(b, p, c, nm, { size: 17, gap: 12 }));
+      // A belongs to both triangles. Put its name in an empty angular sector,
+      // outside both right angles, instead of inside the small rotated triangle.
+      const rays = [g.B, g.C, g.D, g.E].map(p => (Math.atan2(p.y - g.A.y, p.x - g.A.x) + 2 * Math.PI) % (2 * Math.PI)).sort((a, c) => a - c);
+      const inCorner = (u, p, q) => { const v = sub(p, g.A), w = sub(q, g.A), turn = v.x * w.y - v.y * w.x; return (v.x * u.y - v.y * u.x) * turn > 0 && (u.x * w.y - u.y * w.x) * turn > 0; };
+      const empty = rays.map((a, i) => { const gap = (i + 1 < rays.length ? rays[i + 1] : rays[0] + 2 * Math.PI) - a, angle = a + gap / 2; return { gap, u: pt(Math.cos(angle), Math.sin(angle)) }; }).filter(x => !inCorner(x.u, g.B, g.C) && !inCorner(x.u, g.D, g.E)).sort((a, c) => c.gap - a.gap)[0];
+      const au = empty.u, ak = b.k || 60;
+      b.point(g.A, { color: 'ink', r: 4.5 });
+      line(b, add(g.A, mul(au, 7 / ak)), add(g.A, mul(au, 23 / ak)), 'muted', 1.4);
+      T(b, g.A, 'A', { dx: au.x * 35, dy: au.y * 35, size: 17 });
+      [[g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, cB, nm, { size: 17, gap: 12 }));
       [[g.D, 'D'], [g.E, 'E']].forEach(([p, nm]) => vtx(b, p, cS, nm, { size: 17, gap: 12 }));
-      if (C.txt && !prob) {
-        const cap = done ? '포개면 대응변이 보여요: AD↔AB, AE↔AC, DE↔BC' : st >= 1 ? '∠BAC=∠DAE, ∠ABC=∠ADE → AA 닮음' : `닮음비 ${M.m} : ${M.n}`;
-        T(b, pt((bbU.x0 + bbU.x1) / 2, bbU.y1), cap, { dy: 56, size: capSize(b), color: 'amber' });
-      }
+      // The correspondence is in the exploration card. Long canvas sentences
+      // at this lower edge would run behind the landscape floating toolbar.
     },
     steps: (M) => [
       '∠BAC=∠DAE이고 ∠ABC=∠ADE이므로 $\\triangle ADE\\sim\\triangle ABC$ (AA 닮음)예요. 두 삼각형은 돌아가 있을 뿐 모양은 같아요.',
@@ -233,7 +240,7 @@
       `$\\overline{AD}:\\overline{AB}=\\overline{AE}:\\overline{AC}=\\overline{DE}:\\overline{BC}$ → $${M.AD}:${M.AB}=${M.AE}:${M.AC}=${M.DE}:${M.BC}$ (닮음비 ${M.m} : ${M.n})`
     ],
     view: (M) => ({
-      guide: '<b>m, n</b>으로 닮음비를, <b>회전 각도</b>로 작은 삼각형이 놓인 방향을 바꿔 보세요. ▶를 누르면 작은 삼각형이 점 A를 중심으로 <b>제자리에서 돌아</b> 큰 삼각형에 포개져요.',
+      guide: '<b>m, n</b>으로 닮음비를, <b>회전 각도</b>로 작은 삼각형이 놓인 방향을 바꿔 보세요. ▶를 누르면 작은 삼각형이 점 A를 중심으로 <b>제자리에서 돌아</b> 큰 삼각형에 포개져요.<br>두 각의 크기가 같으므로 <b>AA 닮음</b>이에요. 대응변은 <b>AD↔AB, AE↔AC, DE↔BC</b>입니다.',
       readouts: [rd('AD : AB', `${M.AD} : ${M.AB}`, 'sky', `= ${M.m} : ${M.n}`), rd('AE : AC', `${M.AE} : ${M.AC}`, 'green', `= ${M.m} : ${M.n}`), rd('DE : BC', `${M.DE} : ${M.BC}`, 'amber', `= ${M.m} : ${M.n}`)],
       formula: `<p>$\\overline{AD}:\\overline{AB}=\\overline{DE}:\\overline{BC}$ → $${M.AD}:${M.AB}=${M.DE}:${M.BC}$</p>`,
       rule: '돌아가 있는 닮은 삼각형은 같은 각의 표시를 따라 돌려 포개면 대응변이 보인다',
@@ -265,7 +272,8 @@
       const cen = centroid([g.A, g.B, g.C]);
       fillPoly(b, [g.A, g.D, g.E], 'sky', 0.22); fillPoly(b, [g.D, g.B, g.C, g.E], 'green', 0.07);
       poly(b, [g.A, g.B, g.C], 'ink', 3.6); line(b, g.D, g.E, 'ink', 3.4);
-      ang(b, g.A, g.B, g.C, { color: 'rose', r: 28, label: prob ? undefined : `${g.a}°`, size: 15 });
+      const includedRadius = Math.min(28, Math.min(g.AD, g.AE) * (b.k || 60) * .4);
+      ang(b, g.A, g.B, g.C, { color: 'rose', r: includedRadius, label: prob ? undefined : `${g.a}°`, size: 15 });
       const lb = (p, q, c, t, col) => sideTag(b, p, q, c, t, { color: col, size: 16, gap: 10 });
       const cl = centroid([g.D, g.B, g.C, g.E]);
       if (prob) {
@@ -401,7 +409,7 @@
       if (!prob || pk.kind === 0) arcIn(g.B, g.a, arcLo, arcHi, { color: 'amber', width: 2.4, dash: [6, 5] });
       const cA = [g.C1, g.C2].filter(Boolean);
       const col = ['amber', 'green'];
-      const showT = !prob;
+      const showT = !prob || (C.solution && C.solStep >= 3 && pk.kind === 0);
       if (showT) [g.C1, g.C2].forEach((Cp, i) => { if (Cp) { fillPoly(b, [g.A, g.B, Cp], col[i], 0.15); line(b, g.B, Cp, col[i], 3.6); line(b, g.A, Cp, col[i], 3.6); b.point(Cp, { color: col[i], r: 5.6 }); T(b, Cp, i === 0 || cA.length === 1 ? 'C' : 'C′', { dy: -16, dx: i === 0 ? -6 : 6, size: 17, color: col[i] }); } });
       if (prob && pk.kind === 0) { const Cp = g.C2 || g.C1; if (Cp && g.cnt >= 1) { /* 문제에서는 점 C 의 위치를 그리지 않음(몇 개인지가 질문) */ } }
       /* kind 1(BC 가 정수인 경우의 개수)은 점 C 의 위치를 그리지 않는다: 반직선 AX 와 AB, ∠A 만 주어진다 */
@@ -594,7 +602,7 @@
 
   /* ====================================================================== 9. [심화] 사다리꼴 대각선 4분할 */
   function trapGeo(a, bb, c) {
-    const t = 2, ADl = a * t, BCl = bb * t, h = 4, ox = (BCl - ADl) / 2, B = pt(0, 0), Cp = pt(BCl, 0), A = pt(ox, -h), Dp = pt(ox + ADl, -h);
+    const t = 2, ADl = a * t, BCl = bb * t, h = c * (a + bb), ox = (BCl - ADl) / 2, B = pt(0, 0), Cp = pt(BCl, 0), A = pt(ox, -h), Dp = pt(ox + ADl, -h);
     const O = inter(A, Cp, B, Dp);
     return { a, bb, c, AD: ADl, BC: BCl, A, B, C: Cp, D: Dp, O, S1: a * a * c, S2: a * bb * c, S3: a * bb * c, S4: bb * bb * c };
   }

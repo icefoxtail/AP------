@@ -79,14 +79,14 @@
       const pk = M.pk;
       if (pk.kind === 0) { const S1 = pk.p * pk.p * pk.c, S2 = pk.q * pk.q * pk.c; return { tag: '넓이의 비', key: `a${pk.p}-${pk.q}-${pk.c}`, stem: `두 도형 A, B가 닮은 도형이고 닮음비가 ${pk.p} : ${pk.q}이다. A의 넓이가 ${S1} cm²일 때, B의 넓이는?`, choices: mkChoices(S2, [[S1 * pk.q / pk.p, '닮음비를 그대로 곱했어요. 넓이는 제곱의 비예요.'], [S1 + (pk.q - pk.p) * pk.c, '비의 차를 더했어요.'], [S1 * pk.q * pk.q * 1 / (pk.p * pk.p) === S2 ? S2 + 1 : 0, ''], [Math.round(S1 * pk.q * pk.q * pk.q / (pk.p * pk.p * pk.p)), '부피의 비(세제곱)를 썼어요. 넓이는 제곱이에요.'], [S2 + pk.c, '']], { pad: pk.c }), fig: 'two' }; }
       if (pk.kind === 1) return { tag: '닮음비와 넓이의 비', key: `b${pk.p}-${pk.q}`, stem: `닮은 두 도형 A, B의 닮음비가 ${pk.p} : ${pk.q}일 때, 넓이의 비는?`, choices: mkRatioChoices([pk.p * pk.p, pk.q * pk.q], [[[pk.p, pk.q], '닮음비를 그대로 썼어요. 제곱해야 해요.'], [[pk.p * pk.p * pk.p, pk.q * pk.q * pk.q], '세제곱은 부피의 비예요.'], [[pk.p * 2, pk.q * 2], '닮음비를 2배 했어요. 제곱을 해야 해요.']]) };
-      return { tag: '넓이의 비로 닮음비 구하기', key: `c${pk.p}-${pk.q}`, stem: `닮은 두 도형 A, B의 넓이의 비가 ${pk.p * pk.p} : ${pk.q * pk.q}일 때, 닮음비는?`, choices: mkRatioChoices([pk.p, pk.q], [[[pk.p * pk.p, pk.q * pk.q], '넓이의 비를 그대로 썼어요. 제곱근(제곱의 반대)을 생각해요.'], [[pk.p * pk.p * pk.p, pk.q * pk.q * pk.q], '세제곱은 부피예요.'], [[pk.p + 1, pk.q + 1], '각 항에 1을 더하면 비가 달라져요.']]) };
+      return { tag: '넓이의 비로 닮음비 구하기', key: `c${pk.p}-${pk.q}`, stem: `닮은 두 도형 A, B의 넓이의 비가 ${pk.p * pk.p} : ${pk.q * pk.q}일 때, 닮음비는?`, choices: mkRatioChoices([pk.p, pk.q], [[[pk.p * pk.p, pk.q * pk.q], '넓이의 비를 그대로 썼어요. 두 항이 각각 어떤 수의 제곱인지 생각해요.'], [[pk.p * pk.p * pk.p, pk.q * pk.q * pk.q], '세제곱은 부피예요.'], [[pk.p + 1, pk.q + 1], '각 항에 1을 더하면 비가 달라져요.']]) };
     }
   };
   const centroidOf = (Pn) => G.centroid(Pn);
   // 문제 그림(넓이): 닮은 두 도형 A, B — 값은 그림 안에
   function drawTwoSim(b, pk) {
     const p = pk.p, q = pk.q, c = pk.c, bx = Math.max(p, q);
-    const sa = p / bx * 3.2 + 0.8, sb = q / bx * 3.2 + 0.8, X2 = sa + 1.4;
+    const sa = p / bx * 3.8, sb = q / bx * 3.8, X2 = sa + 1.4;
     fit(b, { x0: -0.2, x1: X2 + sb + 0.2, y0: -Math.max(sa, sb) * HH - 0.2, y1: 0.4 }, { t: 40, b: 56, l: 30, r: 30 });
     const A = [pt(0, 0), pt(sa, 0), pt(sa / 2, -sa * HH)], Bt = [pt(X2, 0), pt(X2 + sb, 0), pt(X2 + sb / 2, -sb * HH)];
     fillPoly(b, A, 'sky', 0.14); poly(b, A, 'ink', 3.6); fillPoly(b, Bt, 'green', 0.14); poly(b, Bt, 'ink', 3.6);
@@ -137,7 +137,7 @@
       const e1 = cubeExt(k1), e2 = cubeExt(k2), gap = 1.5, X2 = e1.w + gap, st = C.step;
       fit(b, { x0: -0.2, x1: X2 + e2.w + 0.2, y0: -e2.h - 0.2, y1: 0.3 }, { t: 40, b: 84, l: 30, r: 30 });
       drawCube(b, 0, k1, { fill: 'sky' });
-      drawCube(b, X2, k2, { fill: 'green', grid: !prob && (!C.review || st >= 2) || (prob && pk.kind === 0 && k2 > 1) });
+      drawCube(b, X2, k2, { fill: 'green', grid: !prob && (!C.review || st >= 2) || (prob && pk.kind === 0 && k2 > 1) || (C.solution && C.solStep >= 3 && pk.kind !== 2) });
       const mm = (ox, k) => lerp(cubeP(ox, 0, 0, 0), cubeP(ox, k, 0, 0), 0.5);
       if (prob && pk.kind === 0) { T(b, mm(0, k1), lab1, { dy: 20, size: 16, color: 'sky' }); T(b, mm(X2, k2), lab2, { dy: 20, size: 16, color: 'green' }); }
       else if (prob && pk.kind === 2) { T(b, add(mm(0, k1), pt(0, 0)), lab1, { dy: 22, size: 16, color: 'sky' }); T(b, mm(X2, k2), lab2, { dy: 22, size: 16, color: 'green' }); }
@@ -253,7 +253,7 @@
       const top = i === 0 ? [A] : ellipse(ox, z0, rad(z0), ry(z0), Math.PI, 0, 24).map((p) => pt(p.x, 2 * z0 - p.y));
       const topF = i === 0 ? [A] : ellipse(ox, z0, rad(z0), ry(z0), Math.PI, 0, 24);
       const bot = ellipse(ox, z1, rad(z1), ry(z1), 0, Math.PI, 24);
-      fillPoly(b, topF.concat(bot), cols[i], o.fa == null ? 0.22 : o.fa);
+      fillPoly(b, topF.concat(bot), cols[i], o.fa == null ? 0.12 : o.fa);
     }
     // 잘린 면(타원): 뒤쪽 점선, 앞쪽 실선
     for (let i = 1; i <= 3; i++) {
@@ -328,5 +328,6 @@
     }
   };
 
+  G.geo = Object.assign(G.geo || {}, { cubeP, cubeExt, boxExt, drawCube, drawBox });
   G.register(20, 't2', '② 닮음비와 넓이·부피의 비', '넓이·부피의 비', PARAMS, [tile, cube, solidSV, cone]);
 })();

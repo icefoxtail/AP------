@@ -734,9 +734,13 @@
       pane.innerHTML = '';
       const pr = sc.problem;
       const r = this.refs;
+      r.problemTag = null;
       if (!pr) return;
       const meta = h('div', { class: 'apl-problem-meta' });
-      if (pr.tag) meta.append(h('span', { class: 'apl-tag', style: { '--c': 'var(--m-amber)' }, html: icon('flag') + APLab.renderMath(APLab.esc(APLab.stripEmoji(call(pr.tag, this.s)))) }));
+      if (pr.tag) {
+        r.problemTag = h('span', { class: 'apl-tag', style: { '--c': 'var(--m-amber)' }, html: icon('flag') + APLab.renderMath(APLab.esc(APLab.stripEmoji(call(pr.tag, this.s)))) });
+        meta.append(r.problemTag);
+      }
       r.timerBtn = null;
       const secs = pr.time ? parseInt(String(call(pr.time, this.s)).replace(/[^\d]/g, ''), 10) : 0;
       if (secs) {
@@ -1161,6 +1165,8 @@
       // 문제 탭
       if (r.top && sc.reviewTop) APLab.setHTML(r.top, this._rich(call(sc.reviewTop, s)));
       const pr = sc.problem;
+      // The generated target can change without rebuilding the problem card.
+      if (pr && r.problemTag) APLab.setHTML(r.problemTag, icon('flag') + APLab.renderMath(APLab.esc(APLab.stripEmoji(call(pr.tag, s)))));
       if (pr && r.problemText) {
         APLab.setHTML(r.problemText, this._rich(call(pr.text, s)));
       }

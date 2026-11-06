@@ -223,9 +223,9 @@
       const rr = pt(g.I.x, (g.I.y + g.E.y) / 2);
       if (pr) {
         segTag(b, g.B, g.C, String(q.a), { away: g.I, color: 'sky', size: S(b), gap: 12 }); segTag(b, g.C, g.A, String(q.b), { away: g.I, color: 'sky', size: S(b), gap: 12 }); segTag(b, g.A, g.B, String(q.c), { away: g.I, color: 'sky', size: S(b), gap: 12 });
-        segTag(b, g.I, g.E, q.kind === 0 ? 'x' : String(q.r), { toward: pt(g.E.x + 4, g.E.y - 4), color: 'sky', size: S(b), gap: 10 });
+        segTag(b, g.I, g.E, q.kind === 1 ? String(q.r) : 'x', { toward: pt(g.E.x + 4, g.E.y - 4), color: 'sky', size: S(b), gap: 10 });
         if (q.kind === 1) T(b, mid(g.B, g.C), '넓이=x', { dy: 46, size: S(b) });
-        else T(b, mid(g.B, g.C), `넓이=${g.area}`, { dy: 46, size: S(b), color: 'sky' });
+        else T(b, mid(g.B, g.C), `넓이=${cv(g.area)}`, { dy: 46, size: S(b), color: 'sky' });
         return;
       }
       segTag(b, g.B, g.C, cv(g.a), { away: g.I, color: 'sky', size: S(b) - 1, gap: 12 }); segTag(b, g.C, g.A, cv(g.b), { away: g.I, color: 'sky', size: S(b) - 1, gap: 12 }); segTag(b, g.A, g.B, cv(g.c), { away: g.I, color: 'sky', size: S(b) - 1, gap: 12 });
@@ -347,7 +347,7 @@
         readouts: [rd('AB + CD', fmtN(g.ab + g.cd), 'sky'), rd('BC + DA', fmtN(g.bc + g.da), 'green', '늘 같아요'), rd('AB', fmtN(g.ab), 'ink'), rd('BC', fmtN(g.bc), 'ink'), rd('CD', fmtN(g.cd), 'ink'), rd('DA', fmtN(g.da), 'ink')],
         status: { tone: 'ok', text: 'AB+CD = BC+DA' },
         rule: '원에 외접하는 사각형에서 두 쌍의 대변의 길이의 합은 같다',
-        notes: notes('이 관계는 <b>접선 길이가 같다</b>는 사실에서 나와요.', '거꾸로 두 쌍의 대변의 합이 같은 사각형에는 원이 내접해요.')
+        notes: notes('이 관계는 <b>접선 길이가 같다</b>는 사실에서 나와요.', '원의 네 접점과 같은 길이의 접선을 먼저 확인한 뒤 대변의 합을 비교해요.')
       };
     },
     prob(M, s) {
@@ -390,7 +390,7 @@
       if (!pr && (ex || st >= 1)) { tick(b, g.A, g.tp, 1, 'amber'); tick(b, g.A, g.ta, 1, 'amber'); tick(b, g.B, g.ta, 2, 'amber'); tick(b, g.B, g.tb, 2, 'amber'); tick(b, g.D, g.tp, 3, 'amber'); tick(b, g.D, g.tc, 3, 'amber'); tick(b, g.C, g.tb, 4, 'amber'); tick(b, g.C, g.tc, 4, 'amber'); }
       [g.A, g.B, g.C, g.D].forEach((p) => dot(b, p, 'ink', 4.6)); [g.tp, g.tb, g.ta, g.tc].forEach((p) => dot(b, p, 'amber', 3.8)); dot(b, g.O, 'ink', 4);
       if (!C.txt) return;
-      T(b, g.A, 'A', { dx: -14, dy: -13, size: 17 }); T(b, g.D, 'D', { dx: 14, dy: -13, size: 17 }); T(b, g.B, 'B', { dx: -14, dy: 14, size: 17 }); T(b, g.C, 'C', { dx: 14, dy: 14, size: 17 }); T(b, g.O, 'O', { dx: 0, dy: 0, size: 1 });
+      T(b, g.A, 'A', { dx: -14, dy: -13, size: 17 }); T(b, g.D, 'D', { dx: 14, dy: -13, size: 17 }); T(b, g.B, 'B', { dx: -14, dy: 14, size: 17 }); T(b, g.C, 'C', { dx: 14, dy: 14, size: 17 });
       T(b, pt(g.O.x - 0.0, g.O.y - 0.0), 'O', { dy: -14, size: 16 });
       if (pr) {
         segTag(b, g.A, g.D, String(q.a), { away: g.O, color: 'sky', size: S(b), gap: 12 }); segTag(b, g.B, g.C, String(q.b), { away: g.O, color: 'sky', size: S(b), gap: 12 });
@@ -468,7 +468,7 @@
       T(b, g.A, 'A', { dx: -14, dy: 14, size: 17 }); T(b, g.B, 'B', { dx: 14, dy: 14, size: 17 }); T(b, g.D, 'D', { dx: -14, dy: -4, size: 17 }); T(b, g.C, 'C', { dx: 14, dy: -4, size: 17 });
       tagOut(b, g.E, g.O, 'E', { size: 17, gap: 12 }); T(b, g.O, 'O', { dx: -13, dy: -13, size: 16 });
       if (pr) {
-        segTag(b, g.A, g.D, String(q.a), { away: g.O, color: 'sky', size: S(b), gap: 12 });
+        segTag(b, g.A, g.D, q.kind === 2 ? 'x' : String(q.a), { away: g.O, color: 'sky', size: S(b), gap: 12 });
         segTag(b, g.B, g.C, String(q.b), { away: g.O, color: 'sky', size: S(b), gap: 12 });
         if (q.kind === 0) segTag(b, g.A, g.B, 'x', { away: pt(g.r, -1), gap: 14 });
         if (q.kind === 1) segTag(b, g.C, g.D, 'x', { away: g.O, gap: 12 });

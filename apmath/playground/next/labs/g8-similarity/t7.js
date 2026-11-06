@@ -92,25 +92,26 @@
     model: (s) => ({ ...rvGeo(clamp(Math.round(s.smRm), 1, 3), clamp(Math.round(s.smRn), 1, 3), clamp(Math.round(s.smRu), 1, 3), clamp(Math.round(s.smRw), 1, 3)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? rvGeo(pk.m, pk.n, pk.u, pk.w) : M;
+      const riverColor = g.m <= g.n ? 'sky' : 'green', landColor = g.m <= g.n ? 'green' : 'sky';
       fit(b, { x0: -1.2, x1: g.A.x + 1.3, y0: -g.PQ - 1, y1: g.AE + 1 }, { t: 40, b: 60, l: 44, r: 44 });
       fillPoly(b, [pt(-1.2, -g.PQ), pt(g.A.x + 1.3, -g.PQ), pt(g.A.x + 1.3, 0), pt(-1.2, 0)], 'sky', 0.16);
       line(b, pt(-1.2, 0), pt(g.A.x + 1.3, 0), 'ink', 3.2); line(b, pt(-1.2, -g.PQ), pt(g.A.x + 1.3, -g.PQ), 'ink', 3.2);
       T(b, pt(g.A.x + 0.2, -g.PQ / 2), '강', { size: 15, color: 'sky', dx: 8 });
-      fillPoly(b, [g.P, g.Q, g.D], 'sky', 0.24); fillPoly(b, [g.E, g.A, g.D], 'green', 0.2);
+      fillPoly(b, [g.P, g.Q, g.D], riverColor, 0.2); fillPoly(b, [g.E, g.A, g.D], landColor, 0.2);
       line(b, g.P, g.E, 'amber', 3.4); line(b, g.P, g.Q, 'ink', 3.6); line(b, g.Q, g.A, 'ink', 3.6); line(b, g.A, g.E, 'ink', 3.6);
       ang(b, g.Q, g.P, g.D, { color: 'rose', r: 16 }); ang(b, g.A, g.D, g.E, { color: 'rose', r: 16 });
       if (prob || !C.review || st >= 1) { ang(b, g.D, g.Q, g.P, { color: 'violet', rings: 1, r: 22 }); ang(b, g.D, g.A, g.E, { color: 'violet', rings: 1, r: 22 }); }
       const sz = 16, cen = pt(g.A.x / 2, 0);
       if (prob) {
         const k = pk.kind;
-        dim(b, g.P, g.Q, pt(g.A.x, -g.PQ / 2), k === 0 ? 'x' : String(g.PQ), { color: k === 0 ? 'amber' : 'sky', off: 28, size: 17 });
-        T(b, lerp(g.Q, g.D, 0.5), String(g.QD), { dy: -16, size: sz, color: 'sky' });
-        T(b, lerp(g.D, g.A, 0.5), k === 1 ? 'x' : String(g.DA), { dy: -16, size: sz, color: k === 1 ? 'amber' : 'green' });
-        sideTag(b, g.A, g.E, pt(g.A.x - 3, g.AE / 2), String(g.AE), { color: 'green', size: sz });
+        dim(b, g.P, g.Q, pt(g.A.x, -g.PQ / 2), k === 0 ? 'x' : String(g.PQ), { color: k === 0 ? 'amber' : riverColor, off: 28, size: 17 });
+        T(b, lerp(g.Q, g.D, 0.5), String(g.QD), { dy: -16, size: sz, color: riverColor });
+        T(b, lerp(g.D, g.A, 0.5), k === 1 ? 'x' : String(g.DA), { dy: -16, size: sz, color: k === 1 ? 'amber' : landColor });
+        sideTag(b, g.A, g.E, pt(g.A.x - 3, g.AE / 2), String(g.AE), { color: landColor, size: sz });
       } else {
         dim(b, g.P, g.Q, pt(g.A.x, -g.PQ / 2), !C.review || st >= 3 ? `PQ = ${g.PQ}` : 'PQ = x', { color: 'amber', off: 28, size: 17 });
-        T(b, lerp(g.Q, g.D, 0.5), String(g.QD), { dy: -16, size: sz, color: 'sky' }); T(b, lerp(g.D, g.A, 0.5), String(g.DA), { dy: -16, size: sz, color: 'green' });
-        sideTag(b, g.A, g.E, pt(g.A.x - 3, g.AE / 2), String(g.AE), { color: 'green', size: sz });
+        T(b, lerp(g.Q, g.D, 0.5), String(g.QD), { dy: -16, size: sz, color: riverColor }); T(b, lerp(g.D, g.A, 0.5), String(g.DA), { dy: -16, size: sz, color: landColor });
+        sideTag(b, g.A, g.E, pt(g.A.x - 3, g.AE / 2), String(g.AE), { color: landColor, size: sz });
       }
       [[g.P, 'P', pt(2, -g.PQ / 2)], [g.Q, 'Q', pt(2, -g.PQ / 2)], [g.D, 'D', pt(g.D.x, -3)], [g.A, 'A', pt(g.A.x - 2, -3)], [g.E, 'E', pt(g.E.x - 3, g.AE - 2)]].forEach(([p, nm, c]) => vtx(b, p, c, nm, { size: 17, gap: 12 }));
       if (C.txt && !prob) {

@@ -25,7 +25,7 @@
 
   /* ---- 삼각비의 표(표시용) ---- */
   const tv = (fn, d) => (fn === 't' && d === 90 ? null : tbl(fn, d));
-  const cell = (v) => (v == null ? '없음' : d4(v));
+  const cell = (v) => (v == null ? '정의되지 않음' : d4(v));
   const tableHTML = (hl) => {
     let rows = '';
     for (let d = 0; d <= 90; d++) rows += `<tr${d === hl ? ' class="hl"' : ''}><td>${d}°</td><td>${cell(tv('s', d))}</td><td>${cell(tv('c', d))}</td><td>${cell(tv('t', d))}</td></tr>`;
@@ -53,8 +53,8 @@
     if (L.OB) T(b, mid(O, Bp), L.OB, { dy: 22, size: 16, color: col.c });
     if (L.CD) T(b, mid(Cp, D), L.CD, { dx: 10, size: 16, color: col.t, align: 'left' });
     if (L.OA) T(b, mid(O, A), L.OA, { dx: -4, dy: -14, size: 16, color: 'ink', align: 'right' });
-    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', null], [Cp, 'C', null]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); if (n === 'B') T(b, p0, n, { dx: -12, dy: 19, size: 17 }); else if (n === 'C') T(b, p0, n, { dx: 12, dy: 19, size: 17 }); else tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
-    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dx: 13, dy: -13, size: 17 }); }
+    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', null], [Cp, 'C', null]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); if (n === 'A') T(b, p0, n, { dx: -13, dy: -17, size: 17, align: 'right' }); else if (n === 'B') T(b, p0, n, { dx: -12, dy: 19, size: 17 }); else if (n === 'C') T(b, p0, n, { dx: 12, dy: 19, size: 17 }); else tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
+    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dx: 13, dy: -13, size: 17, align: 'left' }); }
     else if (!vis) T(b, pt(1, -tc), 'D ↑ (그림 밖)', { dx: 8, dy: -2, size: 15, color: 'green', align: 'left' });
     if (o.handle) b.handle('th', A, { color: 'amber', r: 8, ariaLabel: '점 A 끌기', drag: o.handle });
     (o.rows || []).forEach((r, i) => T(b, pt(0.65, 0), r.t, { dy: 42 + i * 26, size: 16, color: r.c }));
@@ -109,9 +109,15 @@
           choices: degChoices(ansDeg, wr), fig: { th, labels, thLabel: 'x' }, given: [vcan(val), '1'], ans: [`${th}°`]
         };
       }
-      return checkQ(q);
+      q.fig.seg = seg; q.fig.value = vcan(val); q.fig.kind = kind;
+      return checkQ(q, [
+        `반지름은 $OA=OC=1$입니다. ${kind === 'seg' ? `현재 각은 $${th}^{\\circ}$이고 선분 $${seg}=x$를 구해요.` : `현재 선분 $${seg}=${vtex(val)}$이고 각 $x$를 구해요.`}`,
+        '$\\triangle OAB$에서 $\\sin\\theta=AB$, $\\cos\\theta=OB$입니다. $\\triangle OCD$에서 $\\tan\\theta=CD$입니다.',
+        `따라서 이번에는 $${FN[fnk]} ${kind === 'seg' ? th + '^{\\circ}' : 'x'}=${kind === 'seg' ? 'x' : vtex(val)}$를 이용합니다.`,
+        kind === 'seg' ? `$${th}^{\\circ}$의 ${FNK[fnk]} 값을 특수각의 직각삼각형에서 읽어 선분 $${seg}$에 대응시켜요.` : `특수각 표에서 ${FNK[fnk]} 값이 $${vtex(val)}$인 예각을 찾아요.`
+      ], { kind: 'unit-circle', theta: th, fn: fnk, ask: kind, answer: kind === 'seg' ? val.v : th });
     },
-    pdraw: (b, q) => quarter(b, q.fig.th, { labels: q.fig.labels, thLabel: q.fig.thLabel, tri: false })
+    pdraw: (b, q, C) => quarter(b, q.fig.th, { labels: C.last && q.fig.kind === 'seg' ? { ...q.fig.labels, [q.fig.seg]: q.fig.value } : q.fig.labels, thLabel: C.last ? `${q.fig.th}°` : q.fig.thLabel, tri: C.review && C.step >= 2 })
   };
 
   /* ====================================================================== 2. 왜 tan 은 바깥 CD 로 읽을까 */
@@ -151,9 +157,14 @@
         stem: `그림과 같이 반지름의 길이가 $1$ 인 사분원에서 $\\angle AOB=\\theta$ 일 때, $${ask[0]}$ 의 값과 길이가 같은 선분은?`,
         choices: mkTextChoices(items, 'why' + th + ask[0]), fig: { th, thLabel: 'θ' }, given: ['θ'], wide: false
       };
-      return checkQ(q);
+      return checkQ(q, [
+        `반지름 $OA=OC=1$이고, 구하는 값은 $${ask[0]}$입니다.`,
+        '$\\triangle OAB$에서 $\\sin\\theta=AB/OA=AB$, $\\cos\\theta=OB/OA=OB$입니다.',
+        '$\\triangle OCD$에서 $\\tan\\theta=CD/OC=CD$입니다. 바깥 삼각형의 이웃변이 1이라는 점을 확인해요.',
+        '$\\sin(90^{\\circ}-\\theta)=\\cos\\theta$, $\\cos(90^{\\circ}-\\theta)=\\sin\\theta$를 이용해 현재 구하는 함수와 선분을 연결해요.'
+      ], { kind: 'unit-segment', expression: ask[0], segment: ask[1] });
     },
-    pdraw: (b, q) => quarter(b, q.fig.th, { thLabel: 'θ', tri: false, segs: false, labels: {} })
+    pdraw: (b, q, C) => quarter(b, q.fig.th, { thLabel: 'θ', tri: C.review && C.step >= 2, segs: C.review && C.step >= 2, labels: C.review && C.step >= 2 ? { OA: '1' } : {} })
   };
 
   /* ====================================================================== 3. 삼각비의 표 읽기 */
@@ -197,9 +208,15 @@
         html: `다음 삼각비의 표를 이용하여 $${nameF[fa]} ${a1}^{\\circ}${op === '+' ? '+' : '-'}${nameF[fb]} ${a2}^{\\circ}$ 의 값을 구하면?<div style="margin-top:8px">$${tableTex(angs)}$</div>`,
         choices, fig: { angs }, given: [cell(tv('s', angs[0])), cell(tv('c', angs[3])), cell(tv('t', angs[2]))]
       };
-      return checkQ(q);
+      q.fig.cells = [{ angle: a1, fn: fa }, { angle: a2, fn: fb }];
+      return checkQ(q, [
+        `구하는 식은 $${nameF[fa]} ${a1}^{\\circ}${op}${nameF[fb]} ${a2}^{\\circ}$입니다. 각도는 행, 삼각비의 종류는 열에서 찾아요.`,
+        `$${a1}^{\\circ}$ 행의 ${FNN[fa]} 열을 읽으면 $${nameF[fa]} ${a1}^{\\circ}\\approx${d4(va)}$입니다.`,
+        `$${a2}^{\\circ}$ 행의 ${FNN[fb]} 열을 읽으면 $${nameF[fb]} ${a2}^{\\circ}\\approx${d4(vb)}$입니다.`,
+        `문제에서 준 표의 근삿값으로 $${d4(va)}${op}${d4(vb)}$를 계산해요. 함수나 각도를 바꾸어 읽지 않아요.`
+      ], { kind: 'table-expression', functions: [fa, fb], angles: [a1, a2], op, values: [va, vb], answer: mk(ans) });
     },
-    pdraw: (b, q) => drawTable(b, q.fig.angs, null)
+    pdraw: (b, q, C) => drawTable(b, q.fig.angs, C.review ? q.fig.cells.slice(0, Math.max(0, C.step - 1)) : null)
   };
   // 문제 그림: 삼각비의 표 일부(칸마다 글자)
   function drawTable(b, angs, hl) {
@@ -210,7 +227,7 @@
     for (let j = 0; j < 4; j++) T(b, ctr, hdr[j], { dx: (j - 1.5) * cw, dy: y0 + 18, size: 17, color: j === 0 ? 'ink' : col[['', 's', 'c', 't'][j]] });
     angs.forEach((d, i) => {
       const y = y0 + 54 + i * 36, vals = [`${d}°`, cell(tv('s', d)), cell(tv('c', d)), cell(tv('t', d))];
-      vals.forEach((v, j) => T(b, ctr, v, { dx: (j - 1.5) * cw, dy: y, size: 16, color: hl === d ? 'amber' : j === 0 ? 'ink' : 'ink' }));
+      vals.forEach((v, j) => T(b, ctr, v, { dx: (j - 1.5) * cw, dy: y, size: 16, color: (Array.isArray(hl) ? hl.some((c) => c.angle === d && (j === 0 || c.fn === ['', 's', 'c', 't'][j])) : hl === d) ? 'amber' : 'ink' }));
     });
     // 표 선
     const k = b.k, hw = 2 * cw, top = y0 + 36, bot = y0 + 36 + n * 36, pxw = hw / k;
@@ -255,13 +272,19 @@
       const labels = {}; labels[seg] = d4(v);
       const q = {
         tag: '삼각비의 표에서 각 구하기', key: ['r32', f, ans, base].join('|'), table: true,
-        html: `다음 삼각비의 표에서 $${nameF[f]}\\,x=${d4(v)}$ 일 때, $x$ 의 크기는?<div style="margin-top:8px">$${tableTex(angs)}$</div>`,
-        stem: `$${nameF[f]}\\,x=${d4(v)}$ 일 때, $x$ 의 크기는?`,
+        html: `다음 삼각비의 표에서 $${nameF[f]} \\,x=${d4(v)}$ 일 때, $x$ 의 크기는?<div style="margin-top:8px">$${tableTex(angs)}$</div>`,
+        stem: `$${nameF[f]} \\,x=${d4(v)}$ 일 때, $x$ 의 크기는?`,
         choices, fig: { th: clamp(ans, 5, 85), labels, f }, given: [d4(v)], ans: [`${ans}°`]
       };
-      return checkQ(q);
+      q.fig.angs = angs;
+      return checkQ(q, [
+        `주어진 식은 $${nameF[f]} x=${d4(v)}$입니다. 표에서 ${FNN[f]} 열을 먼저 찾아요.`,
+        `${FNN[f]} 열에서 $${d4(v)}$와 일치하는 칸을 찾습니다. 다른 함수의 같은 숫자와 혼동하지 않아요.`,
+        '찾은 칸에서 가로로 이동해 맨 왼쪽 각도 열을 읽어요.',
+        `$${nameF[f]} ${ans}^{\\circ}\\approx${d4(v)}$인지 표에서 다시 확인해요. 이 문제는 표에 주어진 값으로 각을 찾습니다.`
+      ], { kind: 'table-inverse', fn: f, value: v, answer: ans });
     },
-    pdraw: (b, q) => quarter(b, q.fig.th, { labels: q.fig.labels, thLabel: 'x', tri: false })
+    pdraw: (b, q, C) => quarter(b, q.fig.th, { labels: q.fig.labels, thLabel: C.last ? `${q.fig.th}°` : 'x', tri: C.review && C.step >= 2 })
   };
 
   /* ====================================================================== 5. 표로 변의 길이 구하기 */
@@ -307,12 +330,19 @@
       const choices = mkChoices(vf(ans), wr.map((w) => [vf(mk(w)), '곱할 삼각비를 잘못 골랐어요. 구하는 변이 대변인지 이웃변인지 확인해요.']), { fmt: (v) => trim(v.v), plain: (v) => trim(v.v), valid: (v) => v.v > 0 });
       const q = {
         tag: '삼각비의 표로 변의 길이', key: ['calc', th, kind, c, nm.A + nm.B + nm.C].join('|'), table: true,
-        stem: `∠${nm.C}$=90^{\\circ}$, ∠${nm.A}$=${th}^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, gk)}=${c}$ 일 때, $${G.sideTag2(nm, ask)}$ 의 길이는? (단, $${tabTex}$ 로 계산한다.)`,
+        stem: `$\\angle ${nm.C}=90^{\\circ}$, $\\angle ${nm.A}=${th}^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, gk)}=${c}$ 일 때, $${G.sideTag2(nm, ask)}$ 의 길이는? (단, $${tabTex}$ 로 계산한다.)`,
         choices, fig: { a: sh, b: 1, mirror, rot: 0, names: nm, side, angA: { t: `${th}°`, c: 'sky' } }, given: [given, `${th}°`], ans: [trim(ans)]
       };
-      return checkQ(q);
+      const fn = kind === 'hs' ? 's' : kind === 'hc' ? 'c' : 't', value = { s: sn, c: cs, t: tn }[fn];
+      q.fig.reference = 'A'; q.fig.solutionSide = { [ask]: trim(ans) };
+      return checkQ(q, [
+        `기준각 $${nm.A}=${th}^{\\circ}$, 주어진 변 $${G.sideTag2(nm, gk)}=${c}$, 구하는 변 $${G.sideTag2(nm, ask)}=x$를 확인해요.`,
+        `${kind === 'hc' ? '이웃변 ÷ 빗변이므로 cos' : kind === 'hs' ? '대변 ÷ 빗변이므로 sin' : '대변 ÷ 이웃변이므로 tan'}을 사용합니다. $${FN[fn]} ${th}^{\\circ}=\\frac{x}{${c}}$입니다.`,
+        `문제에서 준 표의 값 $${FN[fn]} ${th}^{\\circ}\\approx${d4(value)}$를 읽어요.`,
+        `$x\\approx${c}\\times${d4(value)}$를 계산합니다. 주어진 반올림 값을 그대로 사용해요.`
+      ], { kind: 'table-side', theta: th, fn, length: c, value, answer: ans });
     },
-    pdraw: (b, q) => G.pdrawRT(b, q.fig)
+    pdraw: (b, q, C) => G.pdrawRT(b, q.fig, C)
   };
 
   /* ====================================================================== 6. [참고] 직선의 기울기 = tan θ */
@@ -365,12 +395,17 @@
       wr.push([vdiv(vi(1), ans), '분자와 분모를 거꾸로 썼어요.']);
       const q = {
         tag: '[참고] 직선의 기울기와 삼각비', key: ['slope', p, qy, fnk].join('|'),
-        stem: `그림과 같이 $x$ 절편이 $-${p}$, $y$ 절편이 $${qy}$ 인 직선이 $x$ 축과 이루는 예각의 크기를 $a$ 라 할 때, $${FN[fnk]}\\,a$ 의 값은?`,
+        stem: `그림과 같이 $x$ 절편이 $-${p}$, $y$ 절편이 $${qy}$ 인 직선이 $x$ 축과 이루는 예각의 크기를 $a$ 라 할 때, $${FN[fnk]} \\,a$ 의 값은?`,
         choices: mkChoices(ans, wr), fig: { u: qy, r: p, n: qy, p, qy }, given: [`(−${p}, 0)`, `(0, ${qy})`]
       };
-      return checkQ(q);
+      return checkQ(q, [
+        `두 절편은 $(-${p},0)$, $(0,${qy})$입니다. 두 점과 원점으로 직각삼각형을 만들어요.`,
+        `기준각 $a$의 이웃변은 $${p}$, 대변은 $${qy}$입니다. 좌표가 음수여도 선분의 길이는 양수예요.`,
+        `빗변은 $\\sqrt{${p}^2+${qy}^2}=${hyp}$입니다. 기울기는 높이 ÷ 밑변 $=${qy}/${p}$입니다.`,
+        `$${FN[fnk]} a=\\frac{${ang0[0]}}{${ang0[1]}}$를 약분합니다. 기울기와 같은 것은 $\\tan a$예요.`
+      ], { kind: 'slope', opposite: qy, adjacent: p, fn: fnk, answer: ans.v });
     },
-    pdraw: (b, q) => { const f = q.fig; lineFig(b, f.u, f.r, f.n, { th: 'a', coords: [`(−${f.p}, 0)`, `(0, ${f.qy})`] }); }
+    pdraw: (b, q, C) => { const f = q.fig; lineFig(b, f.u, f.r, f.n, { th: 'a', tri: C.review && C.step >= 2, coords: [`(−${f.p}, 0)`, `(0, ${f.qy})`] }); }
   };
 
   G.register(30, 't3', '③ 사분원·삼각비표', '사분원·삼각비표', PARAMS, [uc, why, r31, r32, calc, slope]);

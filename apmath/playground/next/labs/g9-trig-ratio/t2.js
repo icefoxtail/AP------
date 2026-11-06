@@ -47,14 +47,20 @@
     const atB = Math.random() < 0.0;
     const q = {
       tag: th === 45 ? '45° 직각삼각형' : '30°·60° 직각삼각형', key: [tagKey, th, vtex(k), gk, ak, nm.A + nm.B + nm.C, mirror].join('|'),
-      stem: `∠${nm.C}$=90^{\\circ}$, ∠${nm.A}$=${th}^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, gk)}=${vtex(gv)}$ 일 때, $${G.sideTag2(nm, ak)}$의 길이는?`,
+      stem: `$\\angle ${nm.C}=90^{\\circ}$, $\\angle ${nm.A}=${th}^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, gk)}=${vtex(gv)}$ 일 때, $${G.sideTag2(nm, ak)}$의 길이는?`,
       choices: mkChoices(ans, pool),
       fig: { a: shape.a, b: shape.b, mirror, rot: 0, names: nm, side, angA: { t: `${th}°`, c: 'sky' }, ticks: null },
       given: [vcan(gv), `${th}°`], ans: [vcan(ans)]
     };
-    return checkQ(q);
+    q.fig.reference = 'A'; q.fig.solutionSide = Object.fromEntries(Object.entries(sides).map(([key, v]) => [key, vcan(v)]));
+    return checkQ(q, [
+      `기준각은 $\\angle ${nm.A}=${th}^{\\circ}$이며, 주어진 변은 $${G.sideTag2(nm, gk)}=${vtex(gv)}$입니다.`,
+      `이 직각삼각형의 대변 : 이웃변 : 빗변은 $${r.map((v) => vtex(v)).join(':')}$입니다. 주어진 변과 구하는 변의 위치를 짝지어요.`,
+      `세 변의 공통 배율은 $k=\\frac{${vtex(gv)}}{${vtex(r[kinds.indexOf(gk)])}}=${vtex(k)}$입니다.`,
+      `따라서 구하는 변은 $x=k\\times${vtex(r[kinds.indexOf(ak)])}=${vtex(k)}\\times${vtex(r[kinds.indexOf(ak)])}$입니다.`
+    ], { kind: 'special-side', theta: th, givenSide: gk, askedSide: ak, given: gv.v, answer: ans.v });
   }
-  const pdrawSP = (b, q) => G.pdrawRT(b, q.fig);
+  const pdrawSP = (b, q, C) => G.pdrawRT(b, q.fig, C);
 
   /* ---- 정삼각형·정사각형을 반으로 자르기(가로로 벌어짐) ---- */
   const r3 = (v) => vcan(v);
@@ -176,11 +182,17 @@
         choices: mkChoices(ans, wr),
         fig: { pair, hv: hv.v, givenK, askK, g: vcan(gv) }, given: [vcan(gv), `${pair[0]}°`, `${pair[1]}°`], ans: [vcan(ans)]
       };
-      return checkQ(q);
+      q.fig.exact = M;
+      return checkQ(q, [
+        `주어진 길이는 $${givenK.toUpperCase()}=${vtex(gv)}$, 두 밑각은 $${pair[0]}^{\\circ}$, $${pair[1]}^{\\circ}$입니다.`,
+        `주어진 빗변을 가진 직각삼각형에서 공통 높이 $AH=${vtex(gv)}\\sin ${pair[givenK === 'ab' ? 0 : 1]}^{\\circ}=${vtex(M.h)}$입니다.`,
+        `$BH=\\frac{${vtex(M.h)}}{\\tan ${pair[0]}^{\\circ}}=${vtex(M.bh)}$, $CH=\\frac{${vtex(M.h)}}{\\tan ${pair[1]}^{\\circ}}=${vtex(M.ch)}$입니다.`,
+        askK === 'bc' ? `수선의 발 $H$가 $BC$ 위에 있으므로 $BC=BH+CH=${vtex(M.bh)}+${vtex(M.ch)}$입니다.` : `구하는 빗변 $${askK.toUpperCase()}=\\frac{AH}{\\sin ${pair[askK === 'ab' ? 0 : 1]}^{\\circ}}=\\frac{${vtex(M.h)}}{${vtex(sinD(pair[askK === 'ab' ? 0 : 1]))}}$입니다.`
+      ], { kind: 'chain', pair, height: hv.v, givenSide: givenK, askedSide: askK, answer: ans.v });
     },
-    pdraw: (b, q) => {
-      const f = q.fig, M = chainModel(vf(f.hv), f.pair, true);
-      drawChain(b, M, { step: 99, problem: true, givenK: f.givenK, askK: f.askK, g: f.g });
+    pdraw: (b, q, C) => {
+      const f = q.fig, M = f.exact;
+      drawChain(b, M, { step: C.review ? C.step : 0, review: C.review, last: C.last, problem: true, givenK: f.givenK, askK: f.askK, g: f.g });
     }
   };
   function chainModel(h, pair, hIsV) {
@@ -198,16 +210,16 @@
     const cen = G.centroid([A, B, C]);
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     b.point(Hp, { color: 'violet', r: 4 }); T(b, Hp, 'H', { dy: 20, size: 17, color: 'violet' });
-    const lab = (k, v) => (o.problem ? (o.givenK === k ? o.g : o.askK === k ? 'x' : null) : v);
+    const lab = (k, v) => (o.problem ? (o.givenK === k ? o.g : o.askK === k ? (o.last ? v : 'x') : null) : v);
     const col = (k) => (o.problem && o.askK === k ? 'amber' : 'sky');
     const sz = (k) => (o.problem && o.askK === k ? 21 : 17);
     const labs = { ab: lab('ab', vcan(M.ab)), ac: lab('ac', vcan(M.ac)), bc: lab('bc', vcan(M.bc)) };
     if (labs.ab) sideTag(b, A, B, cen, labs.ab, { color: col('ab'), size: sz('ab') });
     if (labs.ac) sideTag(b, A, C, cen, labs.ac, { color: o.problem ? col('ac') : 'green', size: sz('ac') });
     if (labs.bc) sideTag(b, B, C, cen, labs.bc, { color: col('bc'), size: sz('bc'), flip: false, gap: 24 });
-    if (!o.problem) {
+    if (!o.problem || (o.review && st >= 2)) {
       T(b, mid(A, Hp), `AH = ${vcan(M.h)}`, { dx: -4, dy: 0, size: 16, color: 'violet', align: 'right' });
-      if (st >= 2 || st === 99) { T(b, mid(B, Hp), `BH = ${vcan(M.bh)}`, { dy: 16, size: 15, color: 'amber' }); T(b, mid(Hp, C), `CH = ${vcan(M.ch)}`, { dy: 16, size: 15, color: 'rose' }); }
+      if ((!o.problem && st >= 2) || (o.review && st >= 3)) { T(b, mid(B, Hp), `BH = ${vcan(M.bh)}`, { dy: 16, size: 15, color: 'amber' }); T(b, mid(Hp, C), `CH = ${vcan(M.ch)}`, { dy: 16, size: 15, color: 'rose' }); }
     }
   }
 
@@ -257,11 +269,19 @@
       side[k1] = { t: vcan(sides[k1]), c: 'sky' }; side[k2] = { t: vcan(sides[k2]), c: 'sky' };
       const q = {
         tag: '변의 비로 각 구하기', key: ['r21', th, vtex(k), k1, k2, nm.A + nm.B + nm.C, mirror].join('|'),
-        stem: `∠${nm.C}$=90^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, k1)}=${vtex(sides[k1])}$, $${G.sideTag2(nm, k2)}=${vtex(sides[k2])}$ 일 때, $\\angle ${nm.A}=x$ 의 크기는? (단, $0^{\\circ}<x<90^{\\circ}$)`,
+        stem: `$\\angle ${nm.C}=90^{\\circ}$ 인 직각삼각형 ${triName(nm)}에서 $${G.sideTag2(nm, k1)}=${vtex(sides[k1])}$, $${G.sideTag2(nm, k2)}=${vtex(sides[k2])}$ 일 때, $\\angle ${nm.A}=x$ 의 크기는? (단, $0^{\\circ}<x<90^{\\circ}$)`,
         choices: degChoices(th, [[90 - th, '대변과 이웃변이 바뀌었어요. 기준각이 어느 각인지 다시 봐요.'], [th === 45 ? 30 : 45, '변의 비가 달라요. $1:\\sqrt{3}:2$ 인지 $1:1:\\sqrt{2}$ 인지 확인해요.'], [15, '특수각이 아니에요.'], [75, '특수각이 아니에요.'], [60, '변의 비를 다시 확인해요.'], [30, '변의 비를 다시 확인해요.']], {}),
         fig: { a: r[0].v, b: r[1].v, mirror, rot: 0, names: nm, side, angA: { t: 'x', c: 'amber', size: 20 } }, given: Object.values(side).map((x) => x.t)
       };
-      return checkQ(q);
+      q.fig.reference = 'A';
+      q.fig.solutionSide = Object.fromEntries(Object.entries(sides).map(([key, v]) => [key, vcan(v)]));
+      const fn = k2 === 'c' ? (k1 === 'a' ? 's' : 'c') : 't';
+      return checkQ(q, [
+        `기준각은 $\\angle ${nm.A}=x$입니다. 주어진 두 변 $${G.sideTag2(nm, k1)}=${vtex(sides[k1])}$, $${G.sideTag2(nm, k2)}=${vtex(sides[k2])}$를 찾아요.`,
+        `$${FN[fn]} x=\\frac{${vtex(sides[k1])}}{${vtex(sides[k2])}}=${vtex(vdiv(sides[k1], sides[k2]))}$입니다.`,
+        '특수각의 변의 비 $1:\\sqrt{3}:2$와 $1:1:\\sqrt{2}$를 비교하되, 대변과 이웃변의 위치를 구별해요.',
+        `구한 $${FN[fn]} x$의 값과 일치하는 예각을 특수각 표에서 찾습니다. $0^{\\circ}<x<90^{\\circ}$이므로 그 각 하나로 정해져요.`
+      ], { kind: 'special-angle', theta: th, numerator: sides[k1].v, denominator: sides[k2].v, fn, answer: th });
     },
     pdraw: pdrawSP
   };
@@ -324,7 +344,7 @@
         choices: mkChoices(ans, wr, { valid: (v) => true }),
         fig: { hl: [a, b, c] }, given: []
       };
-      return checkQ(q);
+      return checkQ(q, r22.steps({ f, a, b, c, val: ans }).slice(0, 3), { kind: 'expression', form: f.id, angles: [a, b, c], answer: ans.v });
     },
     pdraw: (b, q) => { const { cx } = drawRefTris(b, q.fig.hl, { pb: 52 }); }
   };
@@ -398,17 +418,25 @@
         const T0 = lst.filter((x) => x.truth), F0 = lst.filter((x) => !x.truth), askRight = Math.random() < 0.5;
         if (askRight && T0.length >= 1 && F0.length >= 4) {
           const items = [{ ...T0[0], ok: true }, ...F0.slice(0, 4).map((x) => ({ ...x, ok: false, hint: '이 식은 옳지 않아요. 크기 변화와 45° 기준을 다시 확인해요.' }))];
-          return checkQ({ tag: '삼각비의 크기 비교', key: ['r23', items.map((x) => x.h).join('')].join('|'), stem: '다음 중 옳은 것은?', choices: mkTextChoices(items, 'r23' + items.map((x) => x.h).join('')), wide: true, fig: { ask: 'right' }, given: [] });
+          return checkQ({ tag: '삼각비의 크기 비교', key: ['r23', items.map((x) => x.h).join('')].join('|'), stem: '다음 중 옳은 것은?', choices: mkTextChoices(items, 'r23' + items.map((x) => x.h).join('')), wide: true, fig: { ask: 'right' }, given: [] }, comparisonWork(true), { kind: 'comparison', askRight: true, items: items.map((x) => ({ expression: x.h, truth: x.truth, correct: x.ok })) });
         }
         if (!askRight && F0.length >= 1 && T0.length >= 4) {
           const items = [{ ...F0[0], ok: true }, ...T0.slice(0, 4).map((x) => ({ ...x, ok: false, hint: '이 식은 옳아요. 옳지 않은 것을 찾아요.' }))];
-          return checkQ({ tag: '삼각비의 크기 비교', key: ['r23', items.map((x) => x.h).join('')].join('|'), stem: '다음 중 옳지 않은 것은?', choices: mkTextChoices(items, 'r23' + items.map((x) => x.h).join('')), wide: true, fig: { ask: 'wrong' }, given: [] });
+          return checkQ({ tag: '삼각비의 크기 비교', key: ['r23', items.map((x) => x.h).join('')].join('|'), stem: '다음 중 옳지 않은 것은?', choices: mkTextChoices(items, 'r23' + items.map((x) => x.h).join('')), wide: true, fig: { ask: 'wrong' }, given: [] }, comparisonWork(false), { kind: 'comparison', askRight: false, items: items.map((x) => ({ expression: x.h, truth: x.truth, correct: x.ok })) });
         }
       }
       throw new Error('r2-3 문제 생성 실패');
     },
     pdraw: (b, q) => drawTrigGraph(b)
   };
+  function comparisonWork(askRight) {
+    return [
+      `이번 문제는 ${askRight ? '옳은' : '옳지 않은'} 식을 고릅니다. 각 식의 함수와 각도를 따로 읽어요.`,
+      '$0^{\\circ}$에서 $90^{\\circ}$로 갈수록 $\\sin$은 증가하고 $\\cos$는 감소합니다. $\\tan$도 $0^{\\circ}\\le x<90^{\\circ}$에서 증가하지만 $\\tan90^{\\circ}$는 정의되지 않아요.',
+      '$45^{\\circ}$에서는 $\\sin x=\\cos x$, $\\tan x=1$입니다. $45^{\\circ}$보다 작으면 $\\sin x<\\cos x$, $\\tan x<1$이고 크면 두 부등호가 반대입니다.',
+      '$\\sin0^{\\circ}=0$, $\\cos0^{\\circ}=1$, $\\sin90^{\\circ}=1$, $\\cos90^{\\circ}=0$을 포함해 현재 보기의 등식과 부등식을 차례로 확인해요.'
+    ];
+  }
   // 문제 그림: y = sin x, cos x, tan x 의 그래프(0°~90°, 값 0~2)
   function drawTrigGraph(b, o = {}) {
     const X = 4.5, Y = 2;
@@ -501,10 +529,15 @@
         choices: mkTextChoices(items, 'abs' + f.f + lo + items.map((x) => x.h).join('')), wide: true,
         fig: { range: rng, xm }, given: [`${rng[0]}°`, `${rng[1]}°`].filter((t) => t !== '0°' && t !== '90°')
       };
-      return checkQ(q);
+      return checkQ(q, [
+        `현재 범위는 $${rng[0]}^{\\circ}<x<${rng[1]}^{\\circ}$입니다. 식 $${f.f}$에서 각 제곱근을 $\\sqrt{U^2}=|U|$로 바꿔요.`,
+        lo ? '$x<45^{\\circ}$이므로 $\\sin x<\\cos x$, $\\tan x<1$입니다. 따라서 $\\sin x-\\cos x$와 $\\tan x-1$은 음수예요.' : '$x>45^{\\circ}$이므로 $\\sin x>\\cos x$, $\\tan x>1$입니다. 따라서 $\\sin x-\\cos x$와 $\\tan x-1$은 양수예요.',
+        '예각에서는 $0<\\sin x<1$, $0<\\cos x<1$입니다. 따라서 $\\sin x+\\cos x>0$, $\\sin x-1<0$, $\\cos x-1<0$도 함께 확인해요.',
+        '음수인 식의 절댓값에는 마이너스를 붙이고, 양수인 식은 그대로 둡니다. 바깥의 덧셈·뺄셈 부호를 유지해 동류항을 정리해요.'
+      ], { kind: 'absolute', expression: f.f, range: rng, coefficients: ok });
     },
-    pdraw: (b, q) => {
-      drawQuarter(b, q.fig.xm, { range: q.fig.range, b: 52 });
+    pdraw: (b, q, C) => {
+      drawQuarter(b, q.fig.xm, { range: q.fig.range, b: 52, segs: C.review && C.step >= 2 });
     }
   };
 
