@@ -29,6 +29,8 @@
 
 | 2023 강남여고 2학기 기말 고1 Q16 | 절댓값·일대일대응 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 중 | 대기 | 미반영 |
 
+| 2023 금당고 2학기 기말 고1 Q4 | 함수 판정·수직선 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 중 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
