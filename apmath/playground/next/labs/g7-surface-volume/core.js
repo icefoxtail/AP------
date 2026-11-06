@@ -206,9 +206,19 @@
   const cm = (v) => fmtN(v) + 'cm';
 
   /* ------------------------------------------------------------------ 문제 탭 */
+  // 답 공개와 풀이 완료는 현재 문항에만 속합니다. 시점·재생 위치는 문항 조건이 아닙니다.
+  const questionKeys = new WeakMap();
+  const resetQuestion = (s) => { s.svPick = null; s.revealed = false; s.step = 0; };
+  const questionKey = (D, s, Q) => D.id + '|' + Q.key + '|' + (s.svSeed || 0);
+  function syncQuestion(D, s, Q) {
+    const key = questionKey(D, s, Q);
+    if (questionKeys.has(s) && questionKeys.get(s) !== key) resetQuestion(s);
+    questionKeys.set(s, key);
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.svSeed || 0);
+    const key = syncQuestion(D, s, Q);
     const pk = s.svPick && s.svPick.key === key ? s.svPick : null;
     let h = `<div class="sv-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += `<div class="sv-choices${Q.wide ? ' wide' : ''}">`;
@@ -244,6 +254,7 @@
       if (hit.hasAttribute('data-sv-new')) {
         D.reroll(s);
         s.svSeed = (s.svSeed || 0) + 1; s.svPick = null; s.revealed = false; s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         lab.setStep(1);
         try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
         lab.invalidate(true);
@@ -304,7 +315,13 @@
       question: D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       // 시점은 무대를 직접 끌어 조절합니다. 계산·도형 선택만 남깁니다.
-      presets: (s) => D.presets ? D.presets(s) : [],
+      presets: (s) => (D.presets ? D.presets(s) : []).map((pr) => ({ ...pr,
+        apply: (st, lab) => {
+          resetQuestion(st);
+          if (pr.apply) pr.apply(st, lab);
+          questionKeys.set(st, questionKey(D, st, D.prob(D.model(st), st)));
+        }
+      })),
       actions,
       steps: (s) => D.steps(D.model(s)).map((t) => String(t).replace(/<\/?b>/g, '')),
       notesTitle: '자주 틀리는 부분',
@@ -317,7 +334,8 @@
         const c0 = D.cam0 || { yaw: 28, pitch: 22 };
         s.svYaw = c0.yaw; s.svPitch = c0.pitch;
         D.init(s);
-        s.svSeed = 0; s.svPick = null; s.playing = false;
+        s.svSeed = 0; resetQuestion(s); s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         if (A) s[A.key] = A.start || 0;
         if (lab) { curLab = lab; lab._svOwner = D.id; lab._svSig = null; }
       },
@@ -335,8 +353,9 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        syncQuestion(D, s, D.prob(M, s));
+        const C = baseCtx(s, lab, false);
         const v = D.view(M, C, s) || {};
         if (C.tab === 'explore' && v.guide) v.guide += ' <span>입체 상태에서 그림을 끌어 방향을 바꿔 보세요.</span>';
         // 조절 막대로 값이 바뀌면 정리 탭의 풀이 글도 그 값으로 다시 만듭니다
@@ -345,7 +364,11 @@
           if (lab._svSig !== sig) { const first = lab._svSig == null; lab._svSig = sig; if (!first) { try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } } }
         }
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = D.steps(M).length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if ((s.step || 0) < n) v.formula = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {

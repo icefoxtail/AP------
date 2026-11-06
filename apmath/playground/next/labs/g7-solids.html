@@ -10,6 +10,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<style>
+/* 단면 비교는 입체와 실제 단면을 함께 보므로, 조절 막대가 많아도 탐구 무대를 줄이지 않습니다. */
+@media (max-width: 559px) {
+  body[data-so-section="1"]:has(.apl-scene-head[data-many-ctl]:not([data-tab="problem"])) .apl-stage {
+    height: clamp(400px, 54svh, 560px);
+  }
+}
+</style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -32,7 +40,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 'solid3d', 't1', 't2', 't3', 't4'];
+const MODULES = ['core', 'solid3d', 't1', 't2', 't3', 't4', 'solutions'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -69,7 +77,7 @@ function start() {
         s.soPitch = clamp((s.soPitch == null ? 22 : s.soPitch) + dy * 0.4, 6, 80);
       }
     },
-    enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
+    enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { document.body.dataset.soSection = /^s2-/.test(sc.id) ? '1' : '0'; lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
     params,
     groups
   });

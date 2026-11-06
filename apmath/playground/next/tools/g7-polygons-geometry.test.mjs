@@ -295,3 +295,23 @@ test('star, chained and attached isosceles targets stay symbolic until their sol
     s.step = 3; assert.ok(render('p2-iso', s, 'review').texts.includes(G.dg(m.d)));
   }
 });
+
+test('star proof captions avoid the observed narrow-landscape toolbar', () => {
+  const angleCases = Array.from({ length: 16 }, (_, mask) => Object.fromEntries(['pgSa', 'pgSb', 'pgSc', 'pgSd'].map((key, i) => [key, mask & (1 << i) ? 40 : 30])));
+  angleCases.push({ pgSa: 30, pgSb: 35, pgSc: 40, pgSd: 33 });
+  for (const height of [500, 614, 626]) for (const patch of angleCases) for (const [tab, step] of [['explore', 0], ['problem', 0], ...[0, 1, 2, 3].map((n) => ['review', n])]) {
+    const width = 684, right = 16, s = state('p2-star', { ...patch, step }), sc = by('p2-star'), calls = [];
+    const b = { W: width, H: height, insets: { left: 0, right, top: 0, bottom: 0 }, pad: .02, thumb: false };
+    Object.defineProperty(b, 'k', { get() { const pad = 2 * b.pad * Math.min(width - right, height); return Math.min((width - right - pad) / (b.focus.x[1] - b.focus.x[0]), (height - pad) / (b.focus.y[1] - b.focus.y[0])); } });
+    for (const method of ['path', 'text', 'point', 'arc', 'right', 'circle', 'ticks', 'handle']) b[method] = (...args) => { calls.push({ method, args }); return b; };
+    const lab = { tab, s, scene: sc }, v = sc.view(s, lab); sc.draw(b, s, v, lab);
+    for (const { args: [p, text, o] } of calls.filter((c) => c.method === 'text')) {
+      const size = o.size || 16, w = G.textW(text, size), x = (width - right) / 2 + (p.x - (b.focus.x[0] + b.focus.x[1]) / 2) * b.k + (o.dx || 0), y = height / 2 + (p.y - (b.focus.y[0] + b.focus.y[1]) / 2) * b.k + (o.dy || 0);
+      const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2, x1 = x0 + w, y0 = y - size / 2, y1 = y + size / 2;
+      assert.ok(x0 >= 0 && x1 <= width && y0 >= 0 && y1 <= height, `${height}/${tab}/${step}: clipped ${text}`);
+      // Chromium 1024×768: toolbar starts at x408, y566 in a684×614 stage.
+      // Keep the same right276/bottom60 clearance used by the concave regression.
+      assert.ok(!(x1 > width - 276 && x0 < width && y1 > height - 60 && y0 < height), `${height}/${tab}/${step}: toolbar covers ${text}`);
+    }
+  }
+});

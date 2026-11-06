@@ -155,7 +155,9 @@
     draw(b, s, M, C) {
       const { a, b: bb, c, d, e, pts } = M, { A, B, C: Cc, D, E, P: Pp, S } = pts;
       const all = [A, B, Cc, D, E];
-      fit(b, bboxOf(all), { t: 58, b: 112, l: 62, r: 62 });
+      // 좁은 가로 화면에서 긴 풀이 식이 오른쪽 아래 도구막대 뒤로 들어가지 않게 합니다.
+      const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
+      fit(b, bboxOf(all), { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
       const cen = pt(all.reduce((q, p) => q + p.x, 0) / 5, all.reduce((q, p) => q + p.y, 0) / 5);
       const st = C.step;
       const lines = [[A, Cc], [A, D], [B, D], [B, E], [Cc, E]];
