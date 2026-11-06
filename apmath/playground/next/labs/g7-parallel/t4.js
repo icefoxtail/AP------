@@ -39,7 +39,10 @@
   const D41 = {
     id: 'p4-1', title: '[함정] 직사각형 종이 테이프 접기', short: '종이 테이프 접기',
     question: '직사각형 종이 테이프를 점 B에서 점 C로 접으면 겹친 삼각형 ABC가 생겨요. 이 삼각형은 어떤 삼각형일까요?',
-    focus: { x: [-3.85, 3.85], y: [-3.45, 2.55] }, t0: 1, ctl: ['fA', 'fX'], actions: () => foldActions(), tick: foldTick(1.8, () => 1),
+    focus: (M) => {
+      const pts = [M.A, M.B, M.C, M.E, M.F, refl(M.E, M.B, M.u), refl(M.F, M.B, M.u)];
+      return { x: [Math.min(-3.85, M.A.x - 1, ...pts.map(p => p.x - .65)), Math.max(3.85, ...pts.map(p => p.x + .65))], y: [Math.min(-3.45, ...pts.map(p => p.y - .65)), Math.max(2.55, ...pts.map(p => p.y + .65))] };
+    }, t0: 1, ctl: ['fA', 'fX'], actions: () => foldActions(), tick: foldTick(1.8, () => 1),
     init: (s) => { s.fA = 55; s.fX = -1.2; },
     reroll: (s) => { s.fA = pick([42, 46, 50, 54, 58, 62, 66], s.fA); s.fX = pick([-2.0, -1.4, -0.8], s.fX); s.pat = 1; },
     model: (s) => Object.assign(tapeGeom(s.fA, s.fX), { pat: s.pat == null ? 1 : s.pat }),
@@ -47,9 +50,10 @@
       const G = M, prob = C.mode === 'problem', pat = C.mode === 'review' || prob ? 1 : G.pat, c = tc(pat), st = C.mode === 'review' ? C.step : 99;
       const { B, C: Cc, A, u, E, F, a } = G;
       // 종이(고정 부분)
-      b.path([{ x: XL, y: YB }, B, Cc, { x: XL, y: YT }], { close: true, fill: 'sky', fillAlpha: 0.14, color: null });
-      parLine(b, { x: 0, y: YT }, 0, { e0: -3.6, e1: 3.6, arrows: [-2.8, 2.6], name: 'l', nameAt: 3.3 });
-      parLine(b, { x: 0, y: YB }, 0, { e0: -3.6, e1: 3.6, arrows: [-2.8, 2.6], name: 'm', nameAt: 3.3, nameDy: 18 });
+      const left = Math.min(XL, A.x - .5), right = Math.max(3.6, Cc.x + .9);
+      b.path([{ x: left, y: YB }, B, Cc, { x: left, y: YT }], { close: true, fill: 'sky', fillAlpha: 0.14, color: null });
+      parLine(b, { x: 0, y: YT }, 0, { e0: left + .15, e1: right, arrows: [-2.8, 2.6], name: 'l', nameAt: right - .3 });
+      parLine(b, { x: 0, y: YB }, 0, { e0: left + .15, e1: right, arrows: [-2.8, 2.6], name: 'm', nameAt: right - .3, nameDy: 18 });
       // 접기 전 모양(점선)과 접힌 조각
       const flap = [B, Cc, F, E];
       if (pat < 0.98) b.path(flap, { close: true, color: 'muted', width: 2, dash: [6, 6], alpha: 0.8 });
@@ -68,7 +72,8 @@
         if (C.mode !== 'review' || st >= 2) wedge(b, Cc, 180, a + 180, { color: 'amber', rings: 1, text: mi(a) + '°', r: 28, size: 17 });
         if (C.mode !== 'review' || st >= 3) {
           ticks(b, A, B, 1, 'rose'); ticks(b, A, Cc, 1, 'rose');
-          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16 });
+          // 좁은 화면에서도 C의 밑각 글자와 겹치지 않도록 꼭짓점 A 위에 둡니다.
+          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16, at: { dx: 0, dy: -46 } });
         }
       } else if (C.mode === 'explore') T(b, { x: 0, y: 2.1 }, pat < 0.02 ? '펼친 모양 (접어 보기를 눌러요)' : '접는 중...', { color: 'muted', size: 16 });
       if (C.mode === 'explore') {
