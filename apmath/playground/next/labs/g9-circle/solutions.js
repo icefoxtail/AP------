@@ -9,7 +9,7 @@
   const sq = v => `${n(v)}^2`;
   const aux = (b, p, q, color = 'green') => line(b, p, q, color, 2.8, { dash: [6, 4] });
   const shade = (b, pts, color = 'green') => fillPoly(b, pts, color, 0.12);
-  const angle = (b, V, A, B, label, color = 'green') => ang(b, V, A, B, { color, r: 23, label, size: 15 });
+  const angle = (b, V, A, B, label, color = 'green', rings = 1) => ang(b, V, A, B, { color, r: 23, label, size: 15, rings });
   const halfChord = (b, g, count = 1) => { tick(b, g.A, g.M, count); tick(b, g.M, g.B, count); b.right(g.M, O, g.B, { size: 12, color: 'green' }); };
   const labelPoint = (b, P, name) => { dot(b, P, 'green', 4); T(b, P, name, { dx: 13, dy: 15, color: 'green', size: 15 }); };
   const sameArc = (b, A, B, center = O) => {
@@ -350,9 +350,9 @@
     const out = lesson('\\text{판정}', value, '',
       `그림의 ${g.name}에서 ∠A=${g.a}°, ∠C=${g.cc}°예요. 원에 내접하는지 판단해요.`,
       '볼록사각형이 원에 내접할 필요충분조건은 마주 보는 두 각의 합이 180°인 것이에요.',
-      '∠A와 ∠C를 같은 표시로 강조해요. 이웃한 각의 합이나 같은 변의 길이만으로 판단하지 않아요.',
+      '마주 보는 ∠A와 ∠C의 크기를 더해요. 이웃한 각의 합이나 같은 변의 길이만으로 판단하지 않아요.',
       `${m(`${a(g.a)}+${a(g.cc)}=${a(g.a + g.cc)}`)}${g.cyc ? '로 180°와 같아요.' : '로 180°와 달라요.'}`,
-      (b, st) => { if (st >= 2) { angle(b, g.A, g.B, g.D); angle(b, g.C, g.B, g.D); } if (st >= 3) aux(b, g.B, g.D); if (st >= 5) circle(b, g.c, g.r, g.cyc ? 'green' : 'ink', 2.8, { dash: g.cyc ? undefined : [6, 5], alpha: .65 }); });
+      (b, st) => { if (st >= 2) { angle(b, g.A, g.B, g.D, undefined, 'green', g.angleRings[0]); angle(b, g.C, g.B, g.D, undefined, 'green', g.angleRings[2]); } if (st >= 3) aux(b, g.B, g.D); if (st >= 5) circle(b, g.c, g.r, g.cyc ? 'green' : 'ink', 2.8, { dash: g.cyc ? undefined : [6, 5], alpha: .65 }); });
     out.steps[4] = `따라서 이 ${g.name}${g.cyc ? '은 원에 내접해요.' : '은 원에 내접하지 않아요.'} 일반적인 평행사변형은 직사각형일 때, 마름모는 정사각형일 때 원에 내접해요.`;
     return out;
   };
