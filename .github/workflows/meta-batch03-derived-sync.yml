@@ -29,15 +29,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Regenerate deterministic Meta Foundation artifacts
         run: |
           set -euo pipefail
           node archive/tools/meta-foundation/compile-meta-foundation.mjs --write
+          python archive/build_db.py
           node archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs --write
           node archive/tools/meta-foundation/compile-meta-foundation.mjs --check
           node archive/tools/meta-foundation/refresh-runtime-source-readiness.mjs --check
           git diff --check
-      - name: Commit only compiler-owned derived artifacts
+      - name: Commit only registration-and-compiler-owned derived artifacts
         env:
           SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
@@ -47,11 +52,26 @@ jobs:
             exit 1
           }
           git add -- \
+            archive/db.js \
+            archive/data/question_identity_map.json \
+            archive/data/question_metadata.json \
+            archive/question-identity.js \
+            archive/question-index.js \
+            archive/question-index-report.md \
+            archive/question-index-audit.md \
+            archive/data/archive2-catalog.json \
+            archive/data/archive2-source-verification-index.json \
+            archive/data/archive2-source-verification/v1 \
+            archive/data/archive2-crosswalk-inventory.json \
+            archive/data/archive2-canonical-input-manifest.json \
+            archive/data/archive2-canonical-projection-policy.json \
+            archive/data/archive2-item-review-overrides.json \
+            archive/data/basic-scope-parent-links.json \
             archive/data/meta-foundation/compiled/curriculum_bindings.json \
             archive/data/meta-foundation/compiled/taxonomy_registry.json \
             archive/data/meta-foundation/compiled/meta_foundation_compiled.json \
             archive/data/meta-foundation/canonical/registry_index.json \
-            archive/data/meta-foundation/runtime/runtime-bridge-receipt.json
+            archive/data/meta-foundation/runtime
           test -z "$(git diff --name-only)" || {
             echo "Additional compiler files modified, refusing incomplete commit:"
             git diff --name-only
