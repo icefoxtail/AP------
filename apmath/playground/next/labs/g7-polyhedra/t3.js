@@ -431,7 +431,8 @@
   // 문제 그림: 접기 전 전개도에 점 이름을 모두 보이고, 묻는 점만 노랑으로 표시합니다.
   function vertexProblemDraw(o, b, s, M, C) {
     const net = landscapeNet(M.qnet), k = M.qk;
-    fitNow(b, s, net, C, { t: 56, b: 30, l: 40, r: 40 }, camFold, 0);
+    // 큰 화면의 하단 도구막대 위에도 전개도 꼭짓점 이름이 남도록 여백을 둡니다.
+    fitNow(b, s, net, C, { t: 56, b: b.W >= 560 ? 64 : 30, l: 40, r: 40 }, camFold, 0);
     const D = scene3(b, camFold(s, 0), C);
     const faces = drawFaces(D, net, 0, () => ({ c: 'green', a: 0.1, ec: 'ink', ew: 1.8 }));
     const cc = cen3(faces.flat());
@@ -850,18 +851,25 @@
     const rollQ = () => ({ a: [4, 6, 8, 10, 12][rint(0, 4)] });
     return {
       id: 'p3-7', title: '겉면 위의 최단 경로', short: '최단 경로',
+      questionReviewDraw: true,
       question: '정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 길은 어디를 지날까? 두 면을 펼쳐서 보자.',
       cam0: { yaw: -28, pitch: 24 }, ctl: () => ['phEdge', 'phAnt', 'phFold'].concat(VIEW), anim: { key: 'phFold', dur: 4, label: '접어 보기', start: 0 }, stepT: (n) => (n >= 3 ? 0 : 0),
       init: (s) => { s.phEdge = 8; s.phAnt = 0.3; s.phFold = 0; s.phQ = rollQ(); },
       reroll: (s) => { s.phQ = rollQ(); },
       model: (s) => {
-        const a = Math.round(s.phEdge / 2) * 2, r = clamp(s.phAnt, 0.1, 0.9), ep = r * a;
+        const a = clamp(Math.round(s.phEdge / 2) * 2, 4, 14), r = Math.round(clamp(s.phAnt, 0.1, 0.9) * 100) / 100, ep = r * a;
+        s.phEdge = a; s.phAnt = r; // 손잡이와 1% 간격 막대가 같은 위치를 가리키게 합니다.
         const len = (rr) => Math.hypot(rr * a, a) + Math.hypot((1 - rr) * a, a);
-        return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 0.02, Q: s.phQ };
+        return { a, r, ep, len: len(r), minLen: len(0.5), mid: Math.abs(r - 0.5) < 1e-9, Q: s.phQ };
       },
       draw(b, s, M, C) {
+        if (C.questionReview) {
+          const a = M.Q.a, length = a * Math.sqrt(5);
+          M = { ...M, a, r: 0.5, ep: a / 2, len: length, minLen: length, mid: true };
+          if (C.step < 2) C = { ...C, tab: 'problem', problem: true, review: false };
+        }
         const st = stepOf(C), t = C.problem ? 1 : C.review ? 0 : (C.thumb ? 0 : s.phFold), phi = (PI / 2) * t;
-        const r = C.problem ? 0.5 : C.review ? (st === 1 ? M.r : 0.5) : M.r;
+        const r = C.problem || (C.review && st >= 2) ? 0.5 : M.r;
         const D0 = scene3(b, Object.assign({}, s, { phYaw: s.phYaw, phPitch: s.phPitch }), C);
         const D = D0;
         const A = fr(0, 0), Bp = fr(L, 0), E = fr(0, L), F = fr(L, L), Pp = fr(r * L, L), G = topPt(L, L, phi), H = topPt(0, L, phi);
@@ -869,8 +877,10 @@
         // 지금 그려지는 모양만 화면에 맞춥니다(접은 정육면체가 펼친 모양의 자리까지 잡아 작아지지 않게)
         const fitp = [A, Bp, E, F, G, H];
         if (t > 0.02) fitp.push(v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2));
-        D.fitPts(fitp, { t: C.problem ? 46 : 92, b: 52, l: 46, r: 46 });
-        D.top = C.problem ? 42 : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
+        const compact = b.W < 560 && !C.problem, thirdLine = C.review && (C.questionReview ? st >= 4 : st === 3);
+        // 휴대폰은 보드가 도구막대 높이를 이미 비워 둡니다. 줄글 높이만 남겨 펼친 두 면을 읽을 만큼 키웁니다.
+        D.fitPts(fitp, { t: C.problem ? 46 : compact ? (thirdLine ? 86 : 58) : 92, b: compact ? 12 : 52, l: 46, r: 46 });
+        D.top = C.problem ? 42 : compact ? (thirdLine ? 78 : 52) : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
         // 나머지 네 면(접으면 보이는 입체의 겉면)은 옅게
         const back = [v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2)], bd = [v3(-L / 2, -L / 2, -L / 2), v3(L / 2, -L / 2, -L / 2)];
         if (t > 0.02) {
@@ -888,17 +898,25 @@
           seg(A, Pp, AMB, 5); seg(Pp, G, AMB, 5);
           D.dot(Pp, AMB, 7);
         } else { D.line(E, F, AMB, 5, {}); }
-        [[A, 'A'], [Bp, 'B'], [E, 'E'], [F, 'F'], [G, 'G'], [H, 'H']].forEach(([p, nm]) => { D.dot(p, nm === 'A' || nm === 'G' ? AMB : 'ink', nm === 'A' || nm === 'G' ? 6.5 : 3.6); if (C.txt) D.label(p, nm, { color: nm === 'A' || nm === 'G' ? AMB : 'ink', size: 18, dir: D.out(p, v3(0, 0, 0)), gap: 10 }); });
+        [[A, 'A'], [Bp, 'B'], [E, 'E'], [F, 'F'], [G, 'G'], [H, 'H']].forEach(([p, nm]) => {
+          D.dot(p, nm === 'A' || nm === 'G' ? AMB : 'ink', nm === 'A' || nm === 'G' ? 6.5 : 3.6);
+          // 문제의 맨 아래 B가 도구막대로 내려가지 않게 옆자리를 먼저 씁니다. 입체의 크기는 유지합니다.
+          const beside = C.problem && nm === 'B' && b.toS(D.P(p)).y > b.H - b.insets.bottom - 80;
+          if (C.txt) D.label(p, nm, { color: nm === 'A' || nm === 'G' ? AMB : 'ink', size: 18, dir: D.out(p, v3(0, 0, 0)), gap: 10, at: beside ? [[20, -2], [-20, -2], [16, -24], [-16, -24]] : undefined });
+        });
         if (C.txt && !C.problem) {
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
-          const ep = st === 3 || st === 2 ? M.a / 2 : M.ep, pf = M.a - ep;
-          D.label(mid3(E, Pp), `${fmt1(ep)}`, { color: SKY, size: 15, at: [[0, -18]] });
-          D.label(mid3(Pp, F), `${fmt1(pf)}`, { color: SKY, size: 15, at: [[0, -18]] });
+          const ep = r * M.a, pf = M.a - ep;
+          D.obstacle(Pp, 12);
+          if (!C.questionReview || st >= 4) {
+            D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -20], [0, -38], [-18, -24], [0, 26]] });
+            D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -20], [0, 26], [18, -24], [0, -38]] });
+          }
           const L1 = [{ t: `한 모서리 a = ${M.a}`, c: 'ink', size: 15 }];
           if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
           else if (M.mid && t < 0.05) L1.push({ t: 'AP와 PG가 한 직선이에요 → 가장 짧아요!', c: GRN, size: 15 });
           else L1.push({ t: `경로 A→P→G 의 길이 ≈ ${fmt1(M.len)}`, c: AMB, size: 15 });
-          if (st === 3) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
+          if (C.questionReview ? st >= 4 : st === 3) L1.push({ t: `EP = ${M.a} ÷ 2 = ${M.a / 2}`, c: GRN, size: 16 });
           banner(b, L1, C);
         } else if (C.problem && C.txt) banner(b, [{ t: `정육면체의 한 모서리의 길이 a = ${M.Q.a}`, c: 'ink', size: 16 }], C);
         D.flush();
@@ -909,13 +927,16 @@
         `펼친 그림에서 $\\text{A}$와 $\\text{G}$를 직선으로 이어요. 직선이 가장 짧아요.`,
         `이 직선은 $\\overline{\\text{EF}}$의 가운데를 지나요. 따라서 $\\overline{\\text{EP}}=\\dfrac{${M.a}}{2}=${M.a / 2}$예요.`
       ],
-      view: (M) => ({
+      view: (M, C) => {
+        const r = C.review && C.step >= 2 ? 0.5 : M.r;
+        const ep = r * M.a, length = Math.hypot(ep, M.a) + Math.hypot(M.a - ep, M.a), mid = Math.abs(r - 0.5) < 1e-9;
+        return {
         guide: `<b>노란 손잡이</b>를 끌어 점 P를 모서리 EF 위에서 옮겨 보세요. 경로 A→P→G의 길이가 달라져요. 두 면을 펼치면(접기 0%) ${span('amber', '직선')}일 때 가장 짧아요.`,
-        readouts: [rd('한 모서리 a', `${M.a}`, SKY), rd('EP', `${fmt1(M.ep)}`, AMB, `a의 ${Math.round(M.r * 100)}%`), rd('경로의 길이', `≈ ${fmt1(M.len)}`, M.mid ? GRN : AMB), rd('가장 짧은 경로', `≈ ${fmt1(M.minLen)}`, GRN, 'P가 EF의 가운데일 때')],
+        readouts: [rd('한 모서리 a', `${M.a}`, SKY), rd('EP', fmt2(ep), 'rose', `a의 ${Math.round(r * 100)}%`), rd('경로의 길이', `≈ ${fmt1(length)}`, mid ? GRN : AMB), rd('가장 짧은 경로', `≈ ${fmt1(M.minLen)}`, GRN, 'P가 EF의 가운데일 때')],
         formula: `<p>최단 경로는 두 면을 펼쳤을 때의 직선이에요. $\\overline{\\text{EP}}=\\dfrac{a}{2}=${M.a / 2}$</p>`,
         rule: '겉면 위의 최단 경로: 두 면을 한 평면 위에 펼쳤을 때 두 점을 잇는 직선',
-        notes: notes('펼치면 가로가 $2a$, 세로가 $a$인 직사각형이 돼요. 대각선이 $\\overline{\\text{EF}}$의 가운데를 지나요.', '입체에서는 꺾인 선이지만 펼치면 곧은 선이에요.')
-      }),
+        notes: notes('펼치면 두 변의 길이가 $a$와 $2a$인 직사각형이 돼요. 대각선이 $\\overline{\\text{EF}}$의 가운데를 지나요.', '입체에서는 꺾인 선이지만 펼치면 곧은 선이에요.')
+      }; },
       prob: (M) => {
         const a = M.Q.a, ans = a / 2;
         return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: (() => {
@@ -927,6 +948,7 @@
     };
   })();
   function fmt1(v) { const x = Math.round(v * 10) / 10; return Number.isInteger(x) ? String(x) : x.toFixed(1); }
+  function fmt2(v) { return String(Math.round(v * 100) / 100); }
 
   /* ------------------------------------------------------------------ p3-8 주사위의 전개도 */
   const PIPS = { 1: [[0.5, 0.5]], 2: [[0.28, 0.28], [0.72, 0.72]], 3: [[0.28, 0.28], [0.5, 0.5], [0.72, 0.72]], 4: [[0.28, 0.28], [0.72, 0.28], [0.28, 0.72], [0.72, 0.72]], 5: [[0.28, 0.28], [0.72, 0.28], [0.5, 0.5], [0.28, 0.72], [0.72, 0.72]], 6: [[0.28, 0.25], [0.72, 0.25], [0.28, 0.5], [0.72, 0.5], [0.28, 0.75], [0.72, 0.75]] };
@@ -1004,7 +1026,51 @@
     }
   };
 
-  G.register(30, 't3', '③ 정다면체의 전개도와 꼬인 위치', '전개도·꼬인 위치', PARAMS, [A1, A2, A3, A4, A5, A6, A7, A8]);
+  function problemSteps(id, M, Q) {
+    const answer = Q.choices.find((c) => c.ok).p;
+    if (id === 'p3-1') {
+      const wrong = M.Q.items.map((it, i) => ({ it, i })).filter(({ it }) => !it.ok);
+      const why = (list) => list.map(({ it, i }) => `${G.NUM[i]} ${why31(it.cells)}`).join(' ');
+      const correct = M.Q.items.findIndex((it) => it.ok);
+      return ['정육면체의 전개도는 여섯 면이 접힌 뒤 모두 다른 자리를 차지하고, 한 꼭짓점에 세 면씩 모여야 해요.',
+        why(wrong.slice(0, 2)), why(wrong.slice(2)),
+        `${G.NUM[correct]}번은 여섯 면이 겹치지 않고 정육면체의 여섯 방향을 채워요. 따라서 이 전개도로 정육면체를 만들 수 있어요.`];
+    }
+    if (['p3-2', 'p3-5', 'p3-6'].includes(id)) {
+      const name = ptName(M.qnet, M.qk), partners = M.qT.map((k) => ptName(M.qnet, k)).sort();
+      return [`문제의 전개도에서 기준 점 ${name}이 있는 면을 먼저 확인해요. 점 이름은 현재 문제에 적힌 이름을 그대로 써요.`,
+        '이웃한 면을 공통 모서리를 축으로 접고, 같은 입체의 꼭짓점에 닿는 점들을 따라가요. 종이에서 가까운 점이라고 겹치는 것은 아니에요.',
+        `접었을 때 점 ${name}과 같은 꼭짓점으로 모이는 다른 점은 ${partners.join(', ')}이에요.`,
+        `따라서 고를 보기는 ${answer}이에요. 기준 점 ${name} 자신은 다시 세지 않아요.`];
+    }
+    if (id === 'p3-3') {
+      const base = fLet(M.qn, M.qf), opposite = fLet(M.qn, M.qopp);
+      return [`문제의 전개도에서 면 ${base}를 기준으로 나머지 면을 접어요.`,
+        '접은 정육면체에서 기준 면과 모서리를 공유하는 네 면은 수직이에요. 기준 면과 마주 보는 면 한 개만 평행해요.',
+        `이 전개도에서는 면 ${base}와 면 ${opposite}가 서로 마주 보므로, 답은 면 ${opposite}예요.`];
+    }
+    if (id === 'p3-4') {
+      const { ref, c } = M.qM;
+      return [`문제의 전개도를 접어 ${M.qsd.name}를 만들어요. 같은 이름의 점은 한 꼭짓점으로 모이고, 기준 모서리는 ${ref.name}이에요.`,
+        `기준 모서리와 만나는 모서리 ${c.nMeet + c.nExt}개와 평행한 모서리 ${c.nPar}개는 꼬인 위치가 아니에요.`,
+        `남은 ${c.nSkew}개(${skewNames(c).join(', ')})는 만나지도 평행하지도 않아 꼬인 위치예요.`,
+        `문제의 보기 중 여기에 해당하는 것은 모서리 ${answer}예요.`];
+    }
+    if (id === 'p3-7') {
+      const a = M.Q.a;
+      return [`문제의 정육면체는 한 모서리가 ${a}예요. 경로가 지나는 두 면을 모서리 EF를 축으로 펼쳐요.`,
+        `펼친 두 면은 가로 ${2 * a}, 세로 ${a}인 직사각형이에요. 평면에서 A와 G를 잇는 직선이 가장 짧은 경로예요.`,
+        '두 합동인 정사각형의 경계 EF는 직사각형의 한가운데를 지나므로, 대각선과 EF가 만나는 P는 EF의 중점이에요.',
+        `따라서 $\\overline{EP}=\\dfrac{${a}}{2}=${a / 2}$예요.`];
+    }
+    const opposite = M.qn.opposite[M.hid], given = M.qv[opposite];
+    return ['문제의 전개도를 접어 ?가 쓰인 면과 마주 보는 면을 찾아요. 옆에서 맞닿는 면은 수직이므로 제외해요.',
+      `?와 마주 보는 면의 눈은 ${given}이에요. 주사위에서 마주 보는 두 면의 눈의 합은 7이에요.`,
+      `따라서 $?=7-${given}=${7 - given}$이에요.`];
+  }
+  const scenes = [A1, A2, A3, A4, A5, A6, A7, A8];
+  scenes.forEach((D) => { D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(30, 't3', '③ 정다면체의 전개도와 꼬인 위치', '전개도·꼬인 위치', PARAMS, scenes);
   // 문제 탭(휴대폰): 그림 아래에서 질문이 스크롤 없이 보이도록 이 탭의 '탐구 질문' 카드는 접습니다(탐구 탭에서 이미 읽은 글입니다).
   // 셸의 장면 선택 사항 sc.tabs 를 켜면 머리말에 data-tab 이 달려, 아래 CSS 가 문제 탭에서만 적용됩니다.
   (function () {

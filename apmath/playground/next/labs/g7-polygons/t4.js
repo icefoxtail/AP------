@@ -5,19 +5,18 @@
    · p4-diag  정다각형의 두 대각선이 이루는 각 ∠APB = 360°÷n       · 꼭짓점 끌어 고르기, n 조절
    · p4-join  변을 공유하는 두 정다각형                              · n, m, 변의 길이 조절, 가로로 밀어 붙이기
    · p4-fan   한 꼭짓점에서 그은 대각선이 내각을 같은 크기로 나눔  · n 조절, 꼭짓점 끌어 고르기
-   값은 모두 지금의 n(과 m·비)로 다시 계산됩니다. 360°÷n 이 나누어떨어지지 않으면 소수 첫째 자리까지만 보여 줍니다(≈).
+   값은 모두 지금의 n(과 m·비)로 다시 계산됩니다. 나누어떨어지지 않는 각은 기약분수로 나타냅니다.
    ========================================================================== */
 (function () {
   'use strict';
   const G = window.APL_PG;
   if (!G) return;
-  const { DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, len, polar, inter, angBetween, regUp, pick, rint, bboxOf, T, tagOut, ang, tick, fillPoly, line, poly, fit, P, mkChoices, LET, rd, notes, fmtN, dg, tx, eqs, textW } = G;
+  const { DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, len, polar, inter, angBetween, regUp, pick, rint, bboxOf, T, tagOut, ang, tick, fillPoly, line, poly, fit, P, mkChoices, LET, rd, notes, dg, tx, eqs, textW } = G;
+  const fmtN = (v) => G.fracText(v);
   const sin = (d) => Math.sin(d * DEG), cos = (d) => Math.cos(d * DEG);
   const dv = (d) => pt(cos(d), sin(d));
-  const PN = [5, 6, 8, 9, 10, 12, 15, 18, 20]; // 360 ÷ n 이 정수인 n
-  const NICE = (n) => PN.includes(n);
   const E = (n) => 360 / n; // 한 외각
-  const eq = (v) => (Math.abs(v * 10 - Math.round(v * 10)) < 1e-9 ? '=' : '≈');
+  const eq = () => '='; // fmtN and tx retain exact reduced fractions.
 
   const PARAMS = {
     pgRn: P('꼭짓점의 수 n', 3, 20, 1, 6, { color: 'amber', hint: '막대를 움직여 정다각형을 바꿔 보세요', format: (v) => `정${v}각형` }),
@@ -61,7 +60,7 @@
         if (!(C.full ? (i < k || C.t >= 0.999) : show)) continue;
         const ex = add(p, mul(unit(sub(p, u)), 0.34));
         b.path([p, ex], { color: 'rose', width: 2, dash: [5, 4] });
-        ang(b, p, ex, w, { color: 'rose', r: i === 0 ? 40 : rp, rings: 0, fa: i === 0 ? 0.3 : 0.4, label: i === 0 && C.txt ? `${fmtN(e)}°` : '', size: 17, labelDist: i === 0 ? 70 : 0 });
+        ang(b, p, ex, w, { color: 'rose', r: i === 0 ? 40 : rp, rings: 0, fa: i === 0 ? 0.16 : 0.12, label: i === 0 && C.txt ? `${fmtN(e)}°` : '', size: 17, labelDist: i === 0 ? 70 : 0 });
       }
       void showAll;
       Pn.forEach((p, i) => { b.point(p, { color: 'ink', r: n > 12 ? 3.5 : 4.5 }); if (C.txt && (n <= 9 || i === 0)) tagOut(b, p, O, LET[i], { size: 17, gap: 10 }); });
@@ -71,13 +70,14 @@
       // 가운데: 외각을 모은 모양
       const cr = 0.3;
       if (!C.problem && k > 0) {
-        for (let i = 0; i < k; i++) b.arc(O, cr, (i * e - 90) * DEG, ((i + 1) * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.34 : 0.55, color: 'rose', width: 1.4 });
+        for (let i = 0; i < k; i++) b.arc(O, cr, (i * e - 90) * DEG, ((i + 1) * e - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.14 : 0.22, color: 'rose', width: 1.4 });
         if (C.txt && k >= n) T(b, O, '360°', { size: 20, color: 'amber' });
       }
       if (!C.txt) return;
       const yb = Math.max(...Pn.map((p) => p.y));
       let r1, r2 = '', c1 = 'rose';
       if (C.problem) r1 = `정${n}각형의 한 내각 x의 크기는?`;
+      else if (C.review && C.step === 0) r1 = `정${n}각형의 내각과 외각을 확인해요`;
       else if (C.review && C.step === 1) r1 = `한 외각 = 360° ÷ ${n} = ${fmtN(e)}${eq(e) === '≈' ? '' : ''}°`;
       else if (C.review && C.step === 2) { r1 = `한 외각 ${fmtN(e)}°`; r2 = `한 내각 = 180° − ${fmtN(e)}° ${eq(I)} ${fmtN(I)}°`; }
       else if (C.review) { r1 = `한 내각 ${fmtN(I)}° × ${n} ${eq(I * n)} ${fmtN(I * n)}°`; r2 = `= 180° × (${n}−2) = ${M.sum}°`; }
@@ -96,13 +96,13 @@
       readouts: [rd('꼭짓점의 수 n', `${M.n}개`, 'ink'), rd('한 외각 360° ÷ n', `${fmtN(M.e)}°`, 'rose'), rd('한 내각 180° − 한 외각', `${fmtN(M.I)}°`, 'sky', null, null, true)],
       formula: `<p>(한 외각) $=\\dfrac{360^{\\circ}}{n}=\\dfrac{360^{\\circ}}{${M.n}}${eq(M.e) === '=' ? '=' : '\\approx'}${tx(M.e)}^{\\circ}$</p><p>(한 내각) $=180^{\\circ}-(\\text{한 외각})${eq(M.I) === '=' ? '=' : '\\approx'}${tx(M.I)}^{\\circ}$</p>`,
       rule: '정n각형의 한 외각 = 360° ÷ n, 한 내각 = 180° − (한 외각) = 180°×(n−2)÷n',
-      notes: notes('360°를 n으로 나누면 한 외각이에요. 내각의 합 180°×(n−2)를 n으로 나눈 값(한 내각)과 헷갈리지 마세요.', 'n이 360의 약수가 아니면 소수가 나와요. 시험에서는 나누어떨어지는 n(5, 6, 8, 9, 10, 12 …)이 나와요.')
+      notes: notes('360°를 n으로 나누면 한 외각이에요. 내각의 합 180°×(n−2)를 n으로 나눈 값(한 내각)과 헷갈리지 마세요.', '나누어떨어지지 않으면 기약분수로 나타내요. 계산 중에 반올림하지 않으면 내각의 합도 정확히 맞아요.')
     }),
     prob: (M) => {
       const { n, e, I, sum } = M;
       return {
         tag: '정다각형의 한 내각', key: `n${n}`,
-        stem: `정${n}각형의 한 내각의 크기는?${NICE(n) ? '' : ' (소수 첫째 자리까지)'}`,
+        stem: `정${n}각형의 한 내각의 크기는?`,
         choices: mkChoices(I, [[e, '한 외각을 구했어요. 구하는 것은 한 내각이에요.'], [sum, '내각의 합이에요. n으로 나누어야 한 내각이에요.'], [180 / n, '180°를 n으로 나눴어요. 한 외각은 360°÷n이에요.'], [180 - e / 2, '다시 계산해 보세요.'], [I - 12, '다시 계산해 보세요.'], [I + 12, '다시 계산해 보세요.']], { pad: 12, valid: (v) => v > 0 && v < 360 })
       };
     },
@@ -120,22 +120,23 @@
     init: (s) => { s.pgQa = 3; s.pgQb = 2; },
     reroll: (s) => { const pool = RATIOS.filter((r) => !(r[0] === s.pgQa && r[1] === s.pgQb)); const r = pool[Math.floor(Math.random() * pool.length)]; s.pgQa = r[0]; s.pgQb = r[1]; },
     model: (s) => {
-      const a = clamp(Math.round(s.pgQa), 1, 9), bb = clamp(Math.round(s.pgQb), 1, 4), m = ratioModel(a, bb), pq = m.valid ? m : ratioModel(3, 2);
-      return { ...m, n: m.valid ? Math.round(m.nn) : null, pa: pq.a, pb: pq.bb, pq, pn: Math.round(pq.nn) };
+      const a = clamp(Math.round(s.pgQa), 1, 9), bb = clamp(Math.round(s.pgQb), 1, 4), m = ratioModel(a, bb);
+      return { ...m, n: m.valid ? Math.round(m.nn) : null, pa: a, pb: bb, pq: m, pn: m.valid ? Math.round(m.nn) : -1 };
     },
     draw(b, s, M, C) {
-      const m = C.problem ? M.pq : M, a = m.a, bb = m.bb, eps = m.eps, I = m.I, nn = m.nn, valid = C.problem ? true : M.valid;
+      const m = M, a = m.a, bb = m.bb, eps = m.eps, I = m.I, nn = m.nn, valid = M.valid;
       fit(b, { x0: -1.25, x1: 1.25, y0: -2.05, y1: 1.45 }, { t: 30, b: 82, l: 20, r: 20 });
       const st = C.step, K = b.k || 60;
       // 위: 180°를 내각 : 외각 으로 나눈 막대
       const W = 2.4, x0 = -W / 2, xm = x0 + (W * a) / (a + bb), y = -1.62, h = 0.2;
-      fillPoly(b, [pt(x0, y), pt(xm, y), pt(xm, y + h), pt(x0, y + h)], 'sky', 0.55);
-      fillPoly(b, [pt(xm, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(xm, y + h)], 'rose', 0.55);
+      fillPoly(b, [pt(x0, y), pt(xm, y), pt(xm, y + h), pt(x0, y + h)], 'sky', 0.18);
+      fillPoly(b, [pt(xm, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(xm, y + h)], 'rose', 0.18);
       poly(b, [pt(x0, y), pt(x0 + W, y), pt(x0 + W, y + h), pt(x0, y + h)], 'ink', 2.6);
       line(b, pt(xm, y - 0.04), pt(xm, y + h + 0.04), 'ink', 3);
       if (C.txt) {
-        T(b, pt((x0 + xm) / 2, y), C.problem ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
-        T(b, pt((xm + x0 + W) / 2, y), C.problem ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
+        const showRatio = C.problem || (C.review && st === 0);
+        T(b, pt((x0 + xm) / 2, y), showRatio ? `내각 ${a}` : `내각 ${fmtN(I)}°`, { dy: -22, color: 'sky', size: 17 });
+        T(b, pt((xm + x0 + W) / 2, y), showRatio ? `외각 ${bb}` : `외각 ${fmtN(eps)}°`, { dy: -22, color: 'rose', size: 17 });
         T(b, pt(0, y), `${a} : ${bb}`, { dy: h * K + 18, color: 'ink', size: 17 });
         if (!C.problem) T(b, pt(0, y), '(내각 + 외각 = 180°)', { dy: h * K + 40, color: 'muted', size: 14 });
       }
@@ -144,7 +145,7 @@
       const showRing = C.problem ? false : C.review ? st >= 2 : true;
       if (showRing) {
         const cntf = nn, cnt = Math.floor(cntf + 1e-9);
-        for (let i = 0; i < cnt; i++) b.arc(c, r, (i * eps - 90) * DEG, ((i + 1) * eps - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.3 : 0.5, color: 'rose', width: 1.6 });
+        for (let i = 0; i < cnt; i++) b.arc(c, r, (i * eps - 90) * DEG, ((i + 1) * eps - 90) * DEG, { sector: true, fill: 'rose', fillAlpha: i % 2 ? 0.14 : 0.22, color: 'rose', width: 1.6 });
         const rest = 360 - cnt * eps;
         if (rest > 1e-6) {
           b.arc(c, r, (cnt * eps - 90) * DEG, (270) * DEG, { sector: true, fill: 'amber', fillAlpha: 0.12, color: 'amber', width: 2.4 });
@@ -156,7 +157,8 @@
       } else if (C.txt) T(b, c, C.problem ? '정n각형 → n = ?' : '', { size: 20, color: 'amber' });
       if (!C.txt) return;
       let r1, r2 = '', col = 'amber';
-      if (C.problem) { r1 = `한 내각 : 한 외각 = ${a} : ${bb}`; r2 = '정다각형은 정몇 각형일까요?'; }
+      if (C.problem) { r1 = `한 내각 : 한 외각 = ${a} : ${bb}`; r2 = '이 비를 만족하는 정다각형이 있을까요?'; }
+      else if (C.review && st === 0) r1 = '내각과 외각의 비를 확인해요';
       else if (C.review && st === 1) { r1 = `한 외각 = 180° × ${bb}/${a + bb} = ${fmtN(eps)}°`; col = 'rose'; }
       else if (valid) { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${Math.round(nn)}`; r2 = `→ 정${Math.round(nn)}각형`; }
       else { r1 = `n = 360° ÷ ${fmtN(eps)}° = ${fmtN(nn)}`; r2 = '자연수가 아니라서 정다각형이 없어요'; col = 'rose'; }
@@ -179,6 +181,11 @@
     prob: (M) => {
       const n = M.pn, a = M.pa, bb = M.pb, eps = M.pq.eps;
       const tex = (v) => `\\text{정}${v}\\text{각형}`, plain = (v) => `정${v}각형`;
+      if (!M.valid) return {
+        tag: '비로 구하는 정다각형', key: `${a}:${bb}`, wide: true,
+        stem: `한 내각과 한 외각의 크기의 비가 ${a} : ${bb}인 정다각형에 대한 설명으로 옳은 것은?`,
+        choices: [3, 4, 5, 6].map((v) => ({ t: tex(v), p: plain(v), ok: false, hint: 'n=2×(내각의 비+외각의 비)÷외각의 비가 자연수인지 확인하세요.' })).concat([{ t: '\\text{존재하지 않는다}', p: '존재하지 않는다', ok: true, hint: '' }])
+      };
       return {
         tag: '비로 구하는 정다각형', key: `${a}:${bb}`,
         stem: `한 내각과 한 외각의 크기의 비가 ${a} : ${bb}인 정다각형은?`,
@@ -230,6 +237,7 @@
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
         if (C.problem) r1 = `∠APB = x 의 크기는?`;
+        else if (C.review && st === 0) r1 = '두 대각선과 구할 각 x를 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `△ABC: 밑각 = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
         else if (C.review && st === 3) { r1 = `∠ABD = ${fmtN(I)}° − ${fmtN(h)}° ${eq(M.ab)} ${fmtN(M.ab)}°`; r2 = `∠APB = 180° − ${fmtN(h)}° − ${fmtN(M.ab)}° ${eq(x)} ${fmtN(x)}°`; }
@@ -254,7 +262,7 @@
       const { n, x, I, h } = M;
       return {
         tag: '정다각형의 대각선이 이루는 각', key: `n${n}`,
-        stem: `정${n}각형 ${LET.slice(0, n)}에서 두 대각선 AC와 BD의 교점을 P라 할 때, ∠APB의 크기 $x$는?${NICE(n) ? '' : ' (소수 첫째 자리까지)'}`,
+        stem: `정${n}각형 ${LET.slice(0, n)}에서 두 대각선 AC와 BD의 교점을 P라 할 때, ∠APB의 크기 $x$는?`,
         choices: mkChoices(x, [[180 - x, '∠BPC를 구했어요. ∠APB는 외각과 같아요.'], [I, '한 내각이에요. ∠APB는 아니에요.'], [h, '이등변삼각형의 밑각이에요.'], [2 * h + 0, '밑각의 두 배예요. ∠APB는 외각 360°÷n이에요.'], [x + 12, '다시 계산해 보세요.'], [x - 10, '다시 계산해 보세요.']], { pad: 10, valid: (v) => v > 0 && v < 180 })
       };
     },
@@ -278,12 +286,12 @@
     reroll: (s) => { const pool = [[5, 5], [5, 6], [6, 6], [4, 5], [4, 6], [6, 8], [5, 8], [8, 8], [3, 8], [5, 7].slice()]; const r = pool[Math.floor(Math.random() * pool.length)]; s.pgJn = r[0]; s.pgJm = r[1]; s.pgJl = rint(3, 8); },
     model: (s) => {
       const n = clamp(Math.round(s.pgJn), 3, 8), m = clamp(Math.round(s.pgJm), 3, 8), L = clamp(Math.round(s.pgJl), 2, 8);
-      const mk = (n0, m0) => { const In = 180 - E(n0), Im = 180 - E(m0), x = 360 - In - Im; return { n: n0, m: m0, In, Im, x, valid: x < 180 - 1e-9, base: (180 - x) / 2 }; };
-      const cur = mk(n, m), pr = cur.valid ? cur : mk(5, 5);
-      return { ...cur, L, pr, g: joinGeom(n, m), gp: joinGeom(pr.n, pr.m) };
+      const In = 180 - E(n), Im = 180 - E(m), gap = 360 - In - Im, x = Math.min(gap, 360 - gap);
+      const cur = { n, m, In, Im, gap, x, valid: x < 180 - 1e-9, base: (180 - x) / 2 }, g = joinGeom(n, m);
+      return { ...cur, L, pr: cur, g, gp: g };
     },
     draw(b, s, M, C) {
-      const q = C.problem ? M.pr : M, g = C.problem ? M.gp : M.g, { n, m, In, Im, x, valid, base } = q, { A, B, polyN, polyM, P: Pp, Q } = g;
+      const q = M, g = M.g, { n, m, In, Im, gap, x, valid, base } = q, { A, B, polyN, polyM, P: Pp, Q } = g;
       const t = C.problem || C.review ? 1 : C.t, off = (1 - seg01(t, 0, 0.8)) * 1.3;
       const sh = (pts) => pts.map((p) => pt(p.x + off, p.y)), pM = sh(polyM), Qs = pt(Q.x + off, Q.y), As = pt(A.x + off, A.y), Bs = pt(B.x + off, B.y);
       const all = polyN.concat(pM), box = bboxOf(all);
@@ -308,7 +316,7 @@
           ang(b, A, B, Pp, { color: 'sky', r: 26, label: `${fmtN(In)}°`, size: 14, labelDist: 54, rings: 1 });
           ang(b, A, Q, B, { color: 'green', r: 26, label: `${fmtN(Im)}°`, size: 14, labelDist: 54, rings: 1 });
         }
-        if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'violet', big: x > 180, r: 36, label: `${fmtN(x)}°`, size: 16, fa: 0.22, labelDist: 62 });
+        if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'amber', r: 36, label: `${fmtN(x)}°`, size: 16, fa: 0.14, labelDist: 62 });
         if (valid && (C.problem || C.full || st >= 3)) {
           ang(b, Pp, Q, A, { color: 'amber', r: 28, rings: 1, label: C.problem ? 'x' : `${fmtN(base)}°`, size: C.problem ? 17 : 15, fa: 0.26, labelDist: 46, labelRot: 40 });
           ang(b, Q, A, Pp, { color: 'amber', r: 28, rings: 1, fa: 0.26 });
@@ -317,36 +325,50 @@
       if (!C.txt) return;
       const yb = Math.max(...polyN.concat(pM).map((p) => p.y));
       let r1, r2 = '', c1 = 'amber';
-      if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = `AP = AQ 일 때, ∠APQ = x 의 크기는?`; }
+      const gapRow = `A 둘레 남는 각: 360°−${fmtN(In)}°−${fmtN(Im)}°=${fmtN(gap)}°`;
+      const apexRow = gap > 180 ? `△APQ의 안쪽 각: 360°−${fmtN(gap)}°=${fmtN(x)}°` : `∠PAQ = ${fmtN(x)}°`;
+      if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = valid ? `AP = AQ 일 때, ∠APQ = x 의 크기는?` : '세 점 P, A, Q의 위치는 어떨까요?'; }
+      else if (C.review && st === 0) r1 = '두 정다각형과 구할 각을 확인해요';
       else if (!done) { r1 = '오른쪽 도형을 가로로 밀어 붙여 보세요'; c1 = 'green'; }
       else if (C.review && st === 1) { r1 = `정${n}각형의 한 내각 ${fmtN(In)}°`; r2 = `정${m}각형의 한 내각 ${fmtN(Im)}°`; c1 = 'sky'; }
-      else if (C.review && st === 2) { r1 = `∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; }
-      else if (!valid) { r1 = `A에서 남는 각 ∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = x > 180 + 1e-9 ? '180°보다 커요' : '일직선이에요 (삼각형 APQ가 없어요)'; }
-      else { r1 = `∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = `∠APQ = (180° − ${fmtN(x)}°) ÷ 2 = ${fmtN(base)}°`; }
+      else if (C.review && st === 2) { r1 = gapRow; r2 = gap > 180 ? apexRow : ''; }
+      else if (!valid) { r1 = gapRow; r2 = 'P, A, Q가 일직선이에요 (삼각형 APQ가 없어요)'; }
+      else { r1 = gap > 180 ? apexRow : gapRow; r2 = `∠APQ = (180°−${fmtN(x)}°)÷2 = ${fmtN(base)}°`; }
       T(b, pt((box.x0 + box.x1) / 2, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
       T(b, pt((box.x0 + box.x1) / 2, yb), r2, { dy: 72, size: b.W < 560 ? 15 : 16, color: 'rose' });
     },
     steps: (M) => [
       `정${M.n}각형의 한 내각은 ${fmtN(M.In)}°, 정${M.m}각형의 한 내각은 ${fmtN(M.Im)}°예요. (한 내각 = 180° × (변의 수 − 2) ÷ 변의 수)`,
-      `점 A 둘레의 각은 360°이므로 남는 각 ∠PAQ = 360° − ${fmtN(M.In)}° − ${fmtN(M.Im)}° = ${fmtN(M.x)}°`,
-      M.valid ? `AP=AQ=AB 이므로 △APQ는 이등변삼각형이에요. ∠APQ = (180° − ${fmtN(M.x)}°) ÷ 2 = ${fmtN(M.base)}°` : `∠PAQ가 180°가 되거나 넘으면 P, A, Q가 삼각형을 이루지 않아요. 변의 수를 늘려 ∠PAQ가 180°보다 작게 만들어 보세요.`
+      `점 A 둘레에서 두 내각을 빼면 남는 각은 360°−${fmtN(M.In)}°−${fmtN(M.Im)}°=${fmtN(M.gap)}°예요.` + (M.gap > 180 ? ` 이 각은 180°보다 크므로 △APQ의 안쪽 각 ∠PAQ=360°−${fmtN(M.gap)}°=${fmtN(M.x)}°예요.` : ` 따라서 ∠PAQ=${fmtN(M.x)}°예요.`),
+      M.valid ? `AP=AQ=AB 이므로 △APQ는 이등변삼각형이에요. ∠APQ = (180° − ${fmtN(M.x)}°) ÷ 2 = ${fmtN(M.base)}°` : `∠PAQ가 180°이면 P, A, Q가 한 직선 위에 있어 삼각형을 이루지 않아요.`
     ],
     view: (M) => ({
-      guide: '막대로 두 정다각형의 변의 수와 <b>변의 길이</b>를 바꾸고, ▶로 오른쪽 도형을 <b>가로로 밀어</b> 붙여 보세요. 두 도형의 한 내각을 빼고 남은 <b>∠PAQ</b>가 AP = AQ인 이등변삼각형의 꼭지각이에요.',
-      readouts: [rd(`정${M.n}각형의 한 내각`, `${fmtN(M.In)}°`, 'sky'), rd(`정${M.m}각형의 한 내각`, `${fmtN(M.Im)}°`, 'green'), rd('A에서 남는 각 ∠PAQ', `${fmtN(M.x)}°`, 'amber', '360° − 두 내각'), rd('밑각 ∠APQ', M.valid ? `${fmtN(M.base)}°` : '—', 'rose', M.valid ? '(180° − ∠PAQ) ÷ 2' : '∠PAQ < 180°일 때', null, true)],
-      formula: `<p>$\\angle PAQ=360^{\\circ}-${tx(M.In)}^{\\circ}-${tx(M.Im)}^{\\circ}=${tx(M.x)}^{\\circ}$</p>${M.valid ? `<p>$\\angle APQ=\\dfrac{180^{\\circ}-${tx(M.x)}^{\\circ}}{2}=${tx(M.base)}^{\\circ}$</p>` : ''}`,
+      guide: '막대로 두 정다각형의 변의 수와 <b>변의 길이</b>를 바꾸고, ▶로 오른쪽 도형을 <b>가로로 밀어</b> 붙여 보세요. 남는 각이 180°보다 크면 <b>360°에서 그 각을 뺀 작은 각</b>이 △APQ의 꼭지각이에요. P, A, Q가 한 직선이 아니면 AP=AQ인 이등변삼각형이 돼요.',
+      readouts: [rd(`정${M.n}각형의 한 내각`, `${fmtN(M.In)}°`, 'sky'), rd(`정${M.m}각형의 한 내각`, `${fmtN(M.Im)}°`, 'green'), rd(M.valid ? '△APQ의 꼭지각 ∠PAQ' : '∠PAQ (일직선)', `${fmtN(M.x)}°`, 'amber', M.gap > 180 ? `360° − 남는 각 ${fmtN(M.gap)}°` : '360° − 두 내각'), rd('밑각 ∠APQ', M.valid ? `${fmtN(M.base)}°` : '—', 'rose', M.valid ? '(180° − ∠PAQ) ÷ 2' : 'P, A, Q가 일직선', null, true)],
+      formula: `<p>(A 둘레 남는 각) $=360^{\\circ}-${tx(M.In)}^{\\circ}-${tx(M.Im)}^{\\circ}=${tx(M.gap)}^{\\circ}$</p>${M.gap > 180 ? `<p>$\\angle PAQ=360^{\\circ}-${tx(M.gap)}^{\\circ}=${tx(M.x)}^{\\circ}$</p>` : ''}${M.valid ? `<p>$\\angle APQ=\\dfrac{180^{\\circ}-${tx(M.x)}^{\\circ}}{2}=${tx(M.base)}^{\\circ}$</p>` : '<p>P, A, Q가 한 직선 위에 있어 삼각형이 만들어지지 않아요.</p>'}`,
       rule: '한 점 둘레의 각은 360°. 정다각형의 변의 길이는 모두 같으므로 AP = AQ (이등변삼각형)',
       notes: notes('한 변이 겹쳐 있으니 AB 둘레에서 두 도형의 내각을 <b>모두</b> 빼야 해요.', '변의 길이를 바꿔도 각의 크기는 변하지 않아요. 닮음인 도형이 되기 때문이에요.')
     }),
     prob: (M) => {
       const q = M.pr, { n, m, In, Im, x, base } = q;
+      if (!q.valid) return {
+        tag: '변을 공유하는 정다각형', key: `${n},${m}`, wide: true,
+        stem: `한 변의 길이가 같은 정${n}각형과 정${m}각형이 그림처럼 변 AB를 공유한다. 점 A의 이웃한 꼭짓점 P, Q의 위치에 대한 설명으로 옳은 것은?`,
+        choices: [
+          { t: '\\text{P, A, Q가 한 직선 위에 있다}', p: 'P, A, Q가 한 직선 위에 있다', ok: true },
+          { t: '\\text{정삼각형 APQ가 만들어진다}', p: '정삼각형 APQ가 만들어진다', ok: false },
+          { t: '\\angle PAQ=90^{\\circ}', p: '∠PAQ=90°', ok: false },
+          { t: '\\angle APQ=60^{\\circ}', p: '∠APQ=60°', ok: false },
+          { t: '\\overline{AP}\\ne\\overline{AQ}', p: 'AP와 AQ의 길이가 다르다', ok: false }
+        ].map((c) => ({ ...c, hint: 'A 둘레에서 두 정다각형의 내각을 빼면 180°가 남아요.' }))
+      };
       return {
         tag: '변을 공유하는 정다각형', key: `${n},${m}`,
         stem: `그림과 같이 한 변의 길이가 같은 정${n}각형과 정${m}각형이 변 AB를 공유하고 있다. 점 A에서 두 정다각형의 이웃한 꼭짓점 P, Q에 대하여 $\\overline{AP}=\\overline{AQ}$일 때, ∠APQ의 크기 $x$는?`,
         choices: mkChoices(base, [[x, '꼭지각 ∠PAQ를 구했어요. 구하는 것은 밑각 ∠APQ예요.'], [180 - x, '이등변삼각형의 밑각의 합이에요. 2로 나누어야 해요.'], [x / 2, '꼭지각의 반이에요. (180° − ∠PAQ) ÷ 2예요.'], [In, '정다각형의 한 내각이에요.'], [base + 8, '다시 계산해 보세요.'], [base - 6, '다시 계산해 보세요.']], { pad: 6, valid: (v) => v > 0 && v < 90 })
       };
     },
-    verify: (s) => { const M = join.model(s), g = M.gp, q = M.pr; return { ans: angBetween(g.P, g.Q, g.A), model: q.base, extra: [[angBetween(g.A, g.P, g.Q), q.x]] }; }
+    verify: (s) => { const M = join.model(s), g = M.g, q = M.pr; return { ans: q.valid ? angBetween(g.P, g.Q, g.A) : -1, model: q.valid ? q.base : -1, extra: [[angBetween(g.A, g.P, g.Q), q.x]] }; }
   };
 
   /* ====================================================================== 5. 한 꼭짓점에서 그은 대각선이 나누는 각 */
@@ -381,6 +403,7 @@
         const yb = Math.max(...Pn.map((p) => p.y));
         let r1, r2 = '', c1 = 'sky';
         if (C.problem) r1 = `∠BA${LET[k + 1]} = x 의 크기는?`;
+        else if (C.review && st === 0) r1 = '대각선으로 나뉜 각을 확인해요';
         else if (C.review && st === 1) r1 = `한 내각 = 180°×(${n}−2)÷${n} ${eq(I)} ${fmtN(I)}°`;
         else if (C.review && st === 2) r1 = `∠BAC = (180° − ${fmtN(I)}°) ÷ 2 ${eq(h)} ${fmtN(h)}°`;
         else if (C.review && st === 3) { r1 = `같은 각이 ${n - 2}개 → ${fmtN(h)}° × ${n - 2} ${eq(I)} ${fmtN(I)}°`; r2 = `∠BA${LET[k + 1]} = ${fmtN(h)}° × ${k} = ${fmtN(kk)}°`; c1 = 'amber'; }
@@ -405,7 +428,7 @@
       const { n, k, h, I, kk } = M;
       return {
         tag: '대각선이 나누는 각', key: `n${n}k${k}`,
-        stem: `정${n}각형 ${LET.slice(0, n)}에서 꼭짓점 A에서 모든 대각선을 그을 때, ∠BA${LET[k + 1]}의 크기 $x$는?${NICE(n) ? '' : ' (소수 첫째 자리까지)'}`,
+        stem: `정${n}각형 ${LET.slice(0, n)}에서 꼭짓점 A에서 모든 대각선을 그을 때, ∠BA${LET[k + 1]}의 크기 $x$는?`,
         choices: mkChoices(kk, [[h, `나뉜 각 하나예요. ∠BA${LET[k + 1]}는 그 각이 ${k}개 모인 각이에요.`], [I, '꼭짓점 A의 한 내각이에요. 일부분만 구해요.'], [(k + 1) * h, `나뉜 각 ${k + 1}개를 더했어요. ${k}개예요.`], [(k - 1) * h, `나뉜 각 ${k - 1}개만 더했어요. ${k}개예요.`], [kk + 12, '다시 계산해 보세요.'], [180 - kk, '다시 계산해 보세요.']], { pad: 12, valid: (v) => v > 0 && v < 180 })
       };
     },

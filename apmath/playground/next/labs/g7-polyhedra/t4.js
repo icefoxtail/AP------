@@ -1,5 +1,5 @@
 /* ==========================================================================
-   중1 · 다면체와 정다면체 — 탭 ④ 「도전: 단면과 꼭짓점 자르기」 (t4.js, order 40) — 장면 3개
+   중1 · 다면체와 정다면체 — 탭 ④ 「도전: 단면과 꼭짓점 자르기」 (t4.js, order 40) — 장면 4개
    · p4-1 정육면체의 단면 — 단면판이 화면 가로로만 움직이도록 입체를 제자리에서 돌려 놓고, 판을 좌우로 밉니다.
    · p4-3 세 꼭짓점을 지나는 단면 — 교과서 겨냥도의 꼭짓점 이름 A~H, 세 점을 골라 단면을 칠하고 이름(예: 직사각형 ABGH)을 표시. 계산은 cubesec.js
    · p4-2 꼭짓점을 잘라 낸 입체(축구공) — 면·모서리·꼭짓점의 수가 어떻게 달라지는지
@@ -16,10 +16,10 @@
   const PARAMS = {
     phTa: P('자르는 방향 ①', 0, 45, 1, 45, { color: 'sky', hint: '막대를 움직이면 입체가 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
     phTb: P('자르는 방향 ②', 0, 45, 1, 45, { color: 'violet', hint: '입체를 다른 쪽으로 기울여요', format: (v) => Math.round(v) + '°' }),
-    phTd: P('단면판의 위치', -1, 1, 0.01, 0, { color: 'amber', hint: '단면판을 가로로 밀어 보세요', format: (v) => (Math.abs(v) < 0.015 ? '가운데' : (v > 0 ? '오른쪽 ' : '왼쪽 ') + Math.round(Math.abs(v) * 100) + '%') }),
+    phTd: P('단면판의 위치', -1, 1, 0.01, 0, { color: 'amber', hint: '단면판을 가로로 밀어 보세요', format: (v) => (Math.abs(v) < 1e-9 ? '가운데' : (v > 0 ? '오른쪽 ' : '왼쪽 ') + Math.round(Math.abs(v) * 100) + '%') }),
     phTe: P('평면 넓히기', 0, 1, 0.01, 1, { color: 'amber', hint: '0이면 세 점을 이은 삼각형만, 1이면 정육면체를 끝까지 자른 단면', format: (v) => (v < 0.01 ? '세 점 삼각형만' : v > 0.99 ? '끝까지 자름' : Math.round(v * 100) + '%'), onInput: (s) => { s.playing = false; } }),
     phDu: P('잇기', 0, 1, 0.01, 0, { color: 'amber', hint: '오른쪽으로 밀면 ① 점 찍기 → ② 선분 잇기 → ③ 새 입체 칠하기 순서로 보여 줘요', format: (v) => (v < 0.02 ? '처음' : v < 0.32 ? '① 점 찍기' : v < 0.655 ? '② 선분 잇기' : v < 0.99 ? '③ 새 입체 칠하기' : '완성'), onInput: (s) => { s.playing = false; } }),
-    phTr: P('자르는 깊이', 0.05, 0.45, 0.01, 1 / 3, { color: 'amber', hint: '모서리의 길이의 몇 분의 몇을 잘라 낼까요?', format: (v) => `모서리의 ${Math.round(v * 100)}%` })
+    phTr: P('자르는 깊이', 0.05, 0.45, 0.01, 1 / 3, { color: 'amber', hint: '모서리의 길이의 몇 분의 몇을 잘라 낼까요?', format: (v) => Math.abs(v - 1 / 3) < 1e-9 ? '모서리의 1/3' : `모서리의 ${Math.round(v * 100)}%` })
   };
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
@@ -46,20 +46,25 @@
   // 평면 n·p = d 로 자른 단면의 꼭짓점(순서대로)과 자른 면
   function sectionOf(n, d, B) {
     const pts = [], sd = CV.map((p) => dot3(n, p) - d);
+    const add = (p) => { if (!pts.some((q) => len3(sub3(q, p)) < 1e-7)) pts.push(p); };
     CE.forEach(([i, j]) => {
-      if (Math.abs(sd[i]) < 1e-9) { if (!pts.some((q) => len3(sub3(q, CV[i])) < 1e-7)) pts.push(CV[i]); return; }
-      if (Math.abs(sd[j]) < 1e-9) return;
-      if (sd[i] * sd[j] < 0) { const t = sd[i] / (sd[i] - sd[j]), p = add3(CV[i], mul3(sub3(CV[j], CV[i]), t)); if (!pts.some((q) => len3(sub3(q, p)) < 1e-7)) pts.push(p); }
+      // 모서리의 어느 끝점이 평면 위에 놓여도 같은 교점입니다. 둘 다 놓이면 둘 다 보존합니다.
+      if (Math.abs(sd[i]) < 1e-9) add(CV[i]);
+      if (Math.abs(sd[j]) < 1e-9) add(CV[j]);
+      if ((sd[i] < -1e-9 && sd[j] > 1e-9) || (sd[j] < -1e-9 && sd[i] > 1e-9)) {
+        const t = sd[i] / (sd[i] - sd[j]); add(add3(CV[i], mul3(sub3(CV[j], CV[i]), t)));
+      }
     });
-    if (pts.length < 3) return { pts: [], faces: [], count: 0 };
+    const edgeCount = CE.filter(([i, j]) => Math.abs(sd[i]) < 1e-9 && Math.abs(sd[j]) < 1e-9).length;
+    if (pts.length < 3) return { pts, faces: [], count: 0, edgeCount, touchCount: pts.length, n, d, B };
     const c = cen3(pts), ang = (p) => Math.atan2(dot3(sub3(p, c), B.w), dot3(sub3(p, c), B.u));
     pts.sort((p, q) => ang(p) - ang(q));
     const faces = CF.map((f, fi) => fi).filter((fi) => { const s2 = CF[fi].map((i) => sd[i]); return Math.min(...s2) < -1e-9 && Math.max(...s2) > 1e-9; });
-    return { pts, faces, count: pts.length, n, d, B };
+    return { pts, faces, count: pts.length, edgeCount, touchCount: 0, n, d, B };
   }
   function shapeName(sec) {
     const k = sec.count, B = sec.B;
-    if (k < 3) return '단면 없음';
+    if (k < 3) return sec.touchCount === 1 ? '꼭짓점에서만 만남' : sec.touchCount === 2 ? '모서리에서만 만남' : '단면 없음';
     const p2 = sec.pts.map((p) => [dot3(p, B.u), dot3(p, B.w)]);
     const side = p2.map((p, i) => { const q = p2[(i + 1) % k]; return Math.hypot(p[0] - q[0], p[1] - q[1]); });
     const eq = (a, b) => Math.abs(a - b) < 1e-5;
@@ -91,7 +96,9 @@
       if (cnt < 3) continue;
       return { es, ts, cnt, P3 };
     }
-    return { es: [0, 5, 10], ts: [0.5, 0.5, 0.5], cnt: 3, P3: [CV[0], CV[1], CV[2]] };
+    // 같은 꼭짓점에 모인 세 모서리의 중점은 실제 삼각형 단면을 만듭니다.
+    const es = [0, 1, 2], ts = [0.5, 0.5, 0.5];
+    return { es, ts, cnt: 3, P3: es.map((ei) => lerp3(CV[CE[ei][0]], CV[CE[ei][1]], 0.5)) };
   }
   const T1 = {
     id: 'p4-1', title: '정육면체의 단면', short: '정육면체의 단면',
@@ -115,8 +122,13 @@
         D2.fitPts(CV.map(W), { t: 50, b: 50, l: 60, r: 60 });
         const S = solidOf(CV.map(W));
         drawPoly(D2, S, { face: (fi, vis) => (vis ? { c: 'green', a: 0.1 } : null), edge: () => ({ color: 'ink', width: 3 }) });
+        if (C.questionReview && C.solutionStep >= 2) {
+          const n = unit3(cross3(sub3(Q.P3[1], Q.P3[0]), sub3(Q.P3[2], Q.P3[0])));
+          const sec = sectionOf(n, dot3(n, Q.P3[0]), basisOf(n));
+          D2.panel(sec.pts.map(W), RED, 0.22, RED, 3.4);
+        }
         ['P', 'Q', 'R'].forEach((nm, k) => { const p = W(Q.P3[k]); D2.dot(p, AMB, 7); D2.label(p, nm, { color: AMB, size: 19, dir: D2.out(p, v3(0, 0, 0)), gap: 12 }); });
-        if (C.txt) banner(b, [{ t: '정육면체의 세 모서리 위의 점 P, Q, R', c: 'ink', size: 15 }], C);
+        if (C.txt) banner(b, [{ t: C.questionReview && C.solutionStep >= 4 ? `단면은 ${NAME_N[Q.cnt]}: 변 ${Q.cnt}개` : '정육면체의 세 모서리 위의 점 P, Q, R', c: C.questionReview && C.solutionStep >= 4 ? RED : 'ink', size: 15 }], C);
         D2.flush();
         return;
       }
@@ -127,7 +139,7 @@
       const L = 1.45;
       // 화면 틀: 입체 + 지금 놓인 단면판만 담습니다(판이 끝까지 가는 자리를 미리 잡지 않아 입체가 크게 보여요)
       const corners = [-1, 1].flatMap((sy) => [-1, 1].map((sz2) => add3(mul3(FR.e1, d), add3(mul3(FR.e2, sy * L), mul3(FR.e3, sz2 * L)))));
-      const narrow = b.W < 560, boxSz = narrow ? 80 : 140, showBox = sec.count >= 3 && C.txt, keepBox = narrow && C.txt; // keepBox: 단면이 없을 때도 자리를 그대로 둬서 판을 밀어도 입체 크기가 변하지 않게
+      const narrow = b.W < 560, boxSz = narrow ? 80 : 140, showBox = sec.count >= 3 && C.txt, keepBox = narrow && showBox; // 넓이 0인 끝점에서는 없는 실제 모양 상자의 자리를 비워 두지 않아 큐브와 접촉점을 크게 보여 줍니다.
       const nLines = st >= 1 && st <= 3 ? 2 : 1;
       // 단면의 실제 모양 상자는 입체 아래(휴대폰)에 따로 자리를 둬서 입체의 모서리를 가리지 않게 합니다
       D.fitPts(wv.concat(corners), { t: topFor(nLines, 17), b: keepBox ? boxSz + 24 : 40, l: 36, r: 36 });
@@ -136,14 +148,14 @@
       // 입체 면: 단면이 지나는 면을 강조
       const idxOf = (f) => CF.findIndex((c) => c.every((q) => f.i.map((v) => wv.findIndex((w) => len3(sub3(w, S.V[v])) < 1e-7)).includes(q)));
       const faceHit = S.F.map((f) => hit(idxOf(f)));
-      drawPoly(D, S, { face: (fi, vis) => (vis ? (faceHit[fi] && (st === 1 || st === 4) ? { c: AMB, a: 0.2 } : { c: 'green', a: 0.2 }) : null), edge: () => ({ color: 'ink', width: 3.4 }) });
+      drawPoly(D, S, { face: (fi, vis) => (vis ? (faceHit[fi] && (st === 1 || st === 4) ? { c: AMB, a: 0.13 } : { c: SKY, a: 0.08 }) : null), edge: () => ({ color: 'ink', width: 3.4 }) });
       // 단면판(화면에서 세로로 선 판) — 가로로만 움직임
       const plane = [add3(mul3(FR.e1, d), add3(mul3(FR.e2, -L), mul3(FR.e3, -L))), add3(mul3(FR.e1, d), add3(mul3(FR.e2, L), mul3(FR.e3, -L))), add3(mul3(FR.e1, d), add3(mul3(FR.e2, L), mul3(FR.e3, L))), add3(mul3(FR.e1, d), add3(mul3(FR.e2, -L), mul3(FR.e3, L)))];
       D.panel(plane, SKY, 0.05, SKY, 2, { dash: [6, 5], alpha: 0.7 });
       if (sec.count >= 3) {
         const poly = sec.pts.map((p) => toWorld(Bs, p));
-        D.panel(poly, AMB, 0.5, AMB, 4);
-        poly.forEach((p) => D.dot(p, RED, 5));
+        D.panel(poly, RED, 0.16, RED, 3.4);
+        poly.forEach((p) => D.dot(p, AMB, 5));
       }
       // 단면의 실제 모양(정면에서 본 그림)
       if (sec.count >= 3 && C.txt) {
@@ -152,13 +164,13 @@
         const p2 = sec.pts.map((p) => [dot3(p, Bs.u), dot3(p, Bs.w)]);
         const ext = Math.max(...p2.map((q) => Math.hypot(q[0], q[1])), 0.5), k = (sz / 2 - 16) / ext;
         const pc = p2.reduce((a, q) => [a[0] + q[0] / p2.length, a[1] + q[1] / p2.length], [0, 0]);
-        b.path(p2.map((q) => b.toW(cx + (q[0] - pc[0]) * k, cy - (q[1] - pc[1]) * k)), { close: true, fill: AMB, fillAlpha: 0.45, color: AMB, width: 3 });
+        b.path(p2.map((q) => b.toW(cx + (q[0] - pc[0]) * k, cy - (q[1] - pc[1]) * k)), { close: true, fill: RED, fillAlpha: 0.16, color: RED, width: 3 });
         b.stext(x0 + sz / 2, y0 + 11, narrow ? '실제 모양' : '단면의 실제 모양', { color: 'ink', size: 12, weight: 700, align: 'center', baseline: 'middle' });
       }
       if (C.txt) {
-        const lines = [{ t: sec.count >= 3 ? `단면: ${M.name} (${sec.count}개의 변)` : '단면판이 입체 밖에 있어요', c: AMB, size: 17 }];
-        if (st === 1) lines.push({ t: `평면이 지나는 면 ${sec.faces.length}개`, c: AMB, size: 15 });
-        if (st === 2) lines.push({ t: `변의 수 = 자른 면의 수 = ${sec.faces.length}`, c: GRN, size: 15 });
+        const lines = [{ t: sec.count >= 3 ? `단면: ${M.name} (${sec.count}개의 변)` : sec.touchCount ? `${M.name} (넓이 0)` : '단면판이 입체 밖에 있어요', c: RED, size: 17 }];
+        if (st === 1 && sec.count >= 3) lines.push({ t: `새 절단선 ${sec.faces.length}개 · 원래 모서리 ${sec.edgeCount}개`, c: AMB, size: 15 });
+        if (st === 2 && sec.count >= 3) lines.push({ t: `단면의 변: ${sec.faces.length} + ${sec.edgeCount} = ${sec.count}개`, c: GRN, size: 15 });
         if (st === 3) lines.push({ t: '정육면체의 면은 6개 → 단면은 최대 육각형', c: GRN, size: 15 });
         banner(b, lines, C);
       }
@@ -168,17 +180,21 @@
         b.handle('plane', D.P(add3(mul3(FR.e1, d), mul3(FR.e3, L))), { color: 'amber', r: 9, ariaLabel: '단면판 밀기', drag: (w) => { const tt = ((w.x - a0.x) * (a1.x - a0.x) + (w.y - a0.y) * (a1.y - a0.y)) / ((a1.x - a0.x) ** 2 + (a1.y - a0.y) ** 2); s.phTd = clamp(tt * 2 - 1, -1, 1); } });
       }
     },
-    steps: (M) => [
-      `평면이 정육면체의 어느 면을 지나는지 살펴요. 평면이 지나는 면은 $${M.sec.faces.length}$개예요.`,
-      `단면의 변은 평면이 자른 면에서 하나씩 생겨요. 변의 수 $=$ 자른 면의 수 $=${M.k}$이므로 단면은 ${NAME_N[M.k] || ''}이에요.`,
+    steps: (M) => M.k < 3 ? [
+      M.sec.touchCount ? `평면은 정육면체의 ${M.sec.touchCount === 1 ? '꼭짓점' : '모서리'}에서만 만나요.` : '평면이 정육면체와 만나지 않아요.',
+      '넓이가 있는 다각형 단면이 생기지 않았어요.',
+      '단면판을 입체 안쪽으로 옮겨 넓이가 있는 단면을 만들어 보세요.'
+    ] : [
+      `평면이 면 내부를 가로질러 만드는 선분은 $${M.sec.faces.length}$개, 원래 모서리와 겹치는 변은 $${M.sec.edgeCount}$개예요.`,
+      `두 종류를 합하면 단면의 변은 $${M.sec.faces.length}+${M.sec.edgeCount}=${M.k}$개예요. 단면은 ${M.name}이에요.`,
       `정육면체의 면은 $6$개뿐이므로 단면의 변은 $6$개를 넘을 수 없어요. 단면은 삼각형·사각형·오각형·육각형 중 하나예요.`
     ],
     view: (M) => ({
-      guide: `<b>방향 막대</b>로 입체를 제자리에서 돌리고 <b>단면판의 위치</b> 막대나 <b>노란 손잡이</b>로 단면판을 가로로 밀어 보세요. ${span('amber', '노란 도형')}이 단면이에요. 왼쪽 아래 작은 상자에는 단면의 실제 모양이 보여요. 버튼으로 모양을 바로 만들 수 있어요.`,
-      readouts: [rd('단면의 모양', M.k >= 3 ? M.name : '없음', AMB), rd('변의 개수', M.k >= 3 ? `${M.k}개` : '—', AMB), rd('평면이 지나는 면', `${M.sec.faces.length}개`, SKY)],
-      formula: '<p>(단면의 변의 수) = (평면이 지나는 면의 수) ≤ 6</p>',
+      guide: `<b>방향 막대</b>로 입체를 제자리에서 돌리고 <b>단면판의 위치</b> 막대나 <b>노란 손잡이</b>로 단면판을 가로로 밀어 보세요. ${span('red', '붉은 도형')}이 단면이에요. 왼쪽 아래 작은 상자에는 단면의 실제 모양이 보여요. 원래 모서리를 지날 때는 그 모서리도 단면의 변이 돼요.`,
+      readouts: [rd('단면의 모양', M.name, RED), rd('변의 개수', M.k >= 3 ? `${M.k}개` : '—', RED), rd('새 절단선', `${M.sec.faces.length}개`, RED), rd('원래 모서리와 겹친 변', M.k >= 3 ? `${M.sec.edgeCount}개` : '—', AMB)],
+      formula: '<p>(단면의 변) = (면 내부의 새 절단선) + (원래 모서리와 겹친 변) ≤ 6</p>',
       rule: '정육면체를 한 평면으로 자른 단면은 삼각형·사각형·오각형·육각형 중 하나이다',
-      notes: notes('단면의 변은 평면이 지나는 면에서 하나씩 생겨요.', '정육면체에서는 정삼각형·정사각형·정육각형 단면도 만들 수 있어요. 정오각형 단면은 만들 수 없어요.')
+      notes: notes('원래 모서리와 겹치는 변이 없을 때에는 단면의 변의 수가 평면이 가로지른 면의 수와 같아요.', '정육면체에서는 정삼각형·정사각형·정육각형 단면도 만들 수 있어요. 정오각형 단면은 만들 수 없어요.')
     }),
     prob: (M) => {
       const Q = M.Q, names = [3, 4, 5, 6, 7];
@@ -210,13 +226,13 @@
       D.fitPts(platS(k).V, { t: C.problem ? 56 : 100, b: 36, l: 40, r: 40 });
       // 잘려 나간 부분(원래 입체의 윤곽)은 옅은 점선으로
       const O = platS(k);
-      drawPoly(D, O, { face: () => null, edge: (ei, vis) => (vis ? { color: VIO, width: 1.6, alpha: 0.35, dash: [5, 5] } : { skip: true }) }); // 앞쪽 윤곽만: 뒤쪽 점선이 겹쳐 복잡해지지 않게
+      drawPoly(D, O, { face: () => null, edge: (ei, vis) => (vis ? { color: RED, width: 1.6, alpha: 0.3, dash: [5, 5] } : { skip: true }) }); // 앞쪽 윤곽만: 뒤쪽 점선이 겹쳐 복잡해지지 않게
       const cutEdge = (ei) => { const e = S.E[ei]; return e.f.some((fi) => S.F[fi].cut); };
       drawPoly(D, S, {
-        face: (fi, vis) => (vis ? (S.F[fi].cut ? { c: AMB, a: st === 1 || st === 4 || C.problem ? 0.3 : 0.18 } : { c: 'green', a: 0.12 }) : null),
+        face: (fi, vis) => (vis ? (S.F[fi].cut ? { c: RED, a: st === 1 || st === 4 || C.problem ? 0.18 : 0.12 } : { c: 'green', a: 0.1 }) : null),
         edge: (ei, vis) => ({ color: st === 3 && cutEdge(ei) ? RED : 'ink', width: st === 3 && cutEdge(ei) ? 4 : 2.8, alpha: vis ? 1 : 0.5 })
       });
-      if (st === 2) S.V.forEach((p) => D.dot(p, RED, 4));
+      if (st === 2) S.V.forEach((p) => D.dot(p, AMB, 4));
       if (C.txt) {
         const c = cutCounts(I);
         if (C.problem) banner(b, [{ t: `${I.name}의 모든 꼭짓점을`, c: 'ink', size: 14 }, { t: '각 모서리의 3분의 1만큼 잘라 낸 입체', c: 'ink', size: 14 }], C); // 폰 폭에서 한 줄로는 잘려서 두 줄로
@@ -230,7 +246,7 @@
       `모서리는 원래 모서리 $${M.I.E}$개에 새 면의 모서리 $${2 * M.I.E}$개를 더해 $${M.c.E}$개예요. 오일러의 공식 $${M.c.V}-${M.c.E}+${M.c.F}=2$가 맞는지 확인해요.`
     ],
     view: (M) => ({
-      guide: `입체를 고르고 <b>자르는 깊이</b> 막대로 꼭짓점을 잘라 보세요. ${span('amber', '노란 면')}이 새로 생긴 면이에요. 정이십면체를 모서리의 $\\frac13$만큼 자르면 정오각형 12개와 정육각형 20개로 된 축구공 모양(32면체)이 돼요.`.replace('$\\frac13$', '3분의 1'),
+      guide: `입체를 고르고 <b>자르는 깊이</b> 막대로 꼭짓점을 잘라 보세요. ${span('red', '붉은 단면')}이 새로 생긴 면이고, 초록색은 남은 원래 면이에요. 옅은 붉은 점선은 잘려 나간 원래 윤곽이에요. 정이십면체를 모서리의 $\\frac13$만큼 자르면 정오각형 12개와 정육각형 20개로 된 축구공 모양(32면체)이 돼요.`.replace('$\\frac13$', '3분의 1'),
       readouts: [rd('원래 입체', M.I.name, 'ink', `면 ${M.I.F} · 모서리 ${M.I.E} · 꼭짓점 ${M.I.V}`), rd('면의 개수', `${M.c.F}개`, AMB, `${M.I.F} + ${M.I.V}`), rd('꼭짓점의 개수', `${M.c.V}개`, RED, `2 × ${M.I.E}`), rd('모서리의 개수', `${M.c.E}개`, RED, `3 × ${M.I.E}`)],
       formula: `<p>$V-E+F=${M.c.V}-${M.c.E}+${M.c.F}=2$ ✓</p>`,
       rule: '꼭짓점을 모두 잘라 내면 면은 (원래 면 + 꼭짓점의 수), 꼭짓점은 (원래 모서리 × 2), 모서리는 (원래 모서리 × 3)',
@@ -281,7 +297,7 @@
     const triLab = (sec) => sec.tri.join('');
     // 평면 넓히기 단계의 맨 위 줄글(항상 2줄이라 그림 크기가 흔들리지 않습니다)
     function extLines(sec, t) {
-      const l1 = t < 0.01 ? { t: `세 점을 이은 삼각형 ${triLab(sec)}: ${CS.triName(sec)}`, c: SKY, size: 17 } : t > 0.99 ? { t: `단면: ${sec.label}`, c: AMB, size: 17 } : { t: '평면을 넓히는 중…', c: AMB, size: 17 };
+      const l1 = t < 0.01 ? { t: `세 점을 이은 삼각형 ${triLab(sec)}: ${CS.triName(sec)}`, c: SKY, size: 17 } : t > 0.99 ? { t: `단면: ${sec.label}`, c: RED, size: 17 } : { t: '평면을 넓히는 중…', c: AMB, size: 17 };
       const l2 = t < 0.01 ? { t: '이 삼각형이 곧 단면일까?', c: 'ink', size: 14 }
         : t > 0.99 ? { t: sec.fourth ? `삼각형은 시작일 뿐, 평면이 ${sec.fourth}까지 닿아요` : '넓혀도 삼각형 그대로예요', c: GRN, size: 14 }
           : { t: '평면은 끝없이 넓어요', c: 'ink', size: 14 };
@@ -353,7 +369,7 @@
       viewTick: (s, dt, lab) => {
         if (s.phVman) return false;
         if (s.phVa && (Math.abs(s.phYaw - s.phVa.yaw) > 0.02 || Math.abs(s.phPitch - s.phVa.pitch) > 0.02)) { s.phVman = true; return false; } // 우리가 둔 값과 달라졌다 = 학생이 돌렸다
-        const M = T3.model(s), sec = lab.tab === 'explore' ? M.sec : M.qsec;
+        const M = T3.model(s), sec = lab.tab === 'problem' ? M.qsec : M.sec;
         const tg = sec ? CS.viewFor(sec) : CS.DEFAULT_VIEW, dy = tg.yaw - s.phYaw, dp = tg.pitch - s.phPitch;
         if (Math.abs(dy) < 0.05 && Math.abs(dp) < 0.05) { s.phVa = { yaw: s.phYaw, pitch: s.phPitch }; return false; }
         const k = 1 - Math.exp(-Math.min(dt, 0.1) * 6);
@@ -367,7 +383,7 @@
         return { sel, sec: sel.length === 3 ? CS.sectionOf3(sel[0], sel[1], sel[2]) : null, Q, qsec: CS.sectionOf3(Q.tri[0], Q.tri[1], Q.tri[2]) };
       },
       draw(b, s, M, C) {
-        const st = stepOf(C), asQ = C.problem || C.review, sec = asQ ? M.qsec : M.sec, sel = asQ ? M.qsec.tri : M.sel;
+        const st = C.review ? Math.max(1, C.step) : stepOf(C), asQ = C.problem || C.questionReview, sec = asQ ? M.qsec : M.sec, sel = asQ ? M.qsec.tri : M.sel;
         const D = scene3(b, s, C), S = solidOf(V8);
         const ext = C.thumb || C.problem ? 1 : C.review ? clamp(C.t, 0, 1) : clamp(s.phTe == null ? 1 : s.phTe, 0, 1); // 평면 넓히기(0 = 세 점 삼각형, 1 = 단면)
         const showPatch = !!sec && !C.problem && (!C.review || st >= 2);
@@ -375,30 +391,30 @@
         // 맨 위 줄글
         let lines = [];
         if (C.problem) lines.push({ t: `세 꼭짓점 ${M.qsec.tri.join(', ')}를 지나는 평면으로 자른다`, c: 'ink', size: 15 });
-        else if (C.review) {
+        else if (C.review && sec) {
           if (st === 1) sec.pairs.forEach((pr) => lines.push({ t: `${pr.p}${pr.q}: ${relTxt(pr)}`, c: REL_COL[pr.rel], size: 15 }));
           else if (st === 2) lines = extLines(sec, ext);
           else if (st === 3) {
-            if (sec.kind === 'rect') lines.push({ t: `평행한 모서리 ${sec.par.edge.join('')} ∥ ${[sec.par.z, sec.par.w].sort().join('')}`, c: SKY, size: 15 }, { t: `넷째 점 ${sec.par.w}`, c: RED, size: 15 });
-            else if (sec.kind === 'square') lines.push({ t: `${sec.face.name} ${sec.poly.join('')}`, c: AMB, size: 15 }, { t: `넷째 점 ${sec.fourth}`, c: RED, size: 15 });
+            if (sec.kind === 'rect') lines.push({ t: `평행한 모서리 ${sec.par.edge.join('')} ∥ ${[sec.par.z, sec.par.w].sort().join('')}`, c: SKY, size: 15 }, { t: `넷째 점 ${sec.par.w}`, c: AMB, size: 15 });
+            else if (sec.kind === 'square') lines.push({ t: `${sec.face.name} ${sec.poly.join('')}`, c: AMB, size: 15 }, { t: `넷째 점 ${sec.fourth}`, c: AMB, size: 15 });
             else lines.push({ t: '넷째 점이 없어요', c: RED, size: 15 }, { t: `세 점 모두 ${sec.hub}에 이웃해요`, c: SKY, size: 15 });
-          } else lines.push({ t: `단면: ${sec.label}`, c: AMB, size: 17 });
+          } else lines.push({ t: `단면: ${sec.label}`, c: RED, size: 17 });
         } else if (sec) lines = extLines(sec, ext);
         else lines.push({ t: `꼭짓점 ${sel.length}/3 — 세 점을 골라 주세요`, c: 'ink', size: 16 }, { t: '세 점을 고르면 단면이 보여요', c: 'ink', size: 14 });
         const pc = showPatch ? planeCorners(sec, 1) : [];
         D.fitPts(V8.concat(pc), { t: topFor(lines.length, 16) + 14, b: 44, l: 46, r: 46 });
         const faceLet = (f) => f.i.map((i) => LET8[i]);
-        const hl = C.review && st === 3 && sec.kind === 'square' ? sec.face : null; // 한 면 위의 세 점: 그 면을 강조
+        const hl = sec && C.review && st === 3 && sec.kind === 'square' ? sec.face : null; // 한 면 위의 세 점: 그 면을 강조
         const hlSet = hl ? CS.lettersOnFace(hl).join('') : '';
-        const parE = C.review && st === 3 && sec.kind === 'rect' ? [sec.par.edge.join(''), [sec.par.z, sec.par.w].sort().join('')] : [];
+        const parE = sec && C.review && st === 3 && sec.kind === 'rect' ? [sec.par.edge.join(''), [sec.par.z, sec.par.w].sort().join('')] : [];
         drawPoly(D, S, {
-          face: (fi, vis) => (vis ? (faceLet(S.F[fi]).sort().join('') === hlSet ? { c: AMB, a: 0.28 } : { c: 'green', a: 0.1 }) : null),
+          face: (fi, vis) => (vis ? (faceLet(S.F[fi]).sort().join('') === hlSet ? { c: AMB, a: 0.16 } : { c: SKY, a: 0.08 }) : null),
           edge: (ei, vis) => (parE.includes([LET8[S.E[ei].a], LET8[S.E[ei].b]].sort().join('')) ? { color: SKY, width: 5.4 } : { color: 'ink', width: 3.2 })
         });
-        if (C.review && st === 1) sec.pairs.forEach((pr) => D.line(vp(pr.p), vp(pr.q), REL_COL[pr.rel], 4.6));
+        if (sec && C.review && st === 1) sec.pairs.forEach((pr) => D.line(vp(pr.p), vp(pr.q), REL_COL[pr.rel], 4.6));
         if (showPatch) {
-          if (ext > 0.005) D.panel(planeCorners(sec, ext), SKY, 0.1, SKY, 1.8, { dash: [6, 5], alpha: 0.85 }); // 정육면체 밖으로 끝없이 넓어지는 평면(옅게)
-          D.panel(CS.patchAt(sec, ext).map(a3), AMB, 0.5, AMB, 4); // 정육면체 안의 부분: 삼각형 → 단면
+          if (ext > 0.005) D.panel(planeCorners(sec, ext), SKY, 0.05, SKY, 1.8, { dash: [6, 5], alpha: 0.85 }); // 정육면체 밖으로 끝없이 넓어지는 평면(옅게)
+          D.panel(CS.patchAt(sec, ext).map(a3), RED, 0.16, RED, 4); // 정육면체 안의 부분: 삼각형 → 단면
         }
         const rv = sec && !C.problem ? CS.rightVertex(sec) : null;
         if (rv) { const o = sec.tri.filter((L) => L !== rv); D.right(vp(rv), sub3(vp(o[0]), vp(rv)), sub3(vp(o[1]), vp(rv)), 0.3, AMB); } // 세 점 삼각형의 직각 표시
@@ -412,28 +428,30 @@
         });
         if (show4) { // 넷째 점: 삼각형의 한 변 위에서 출발해 제자리로 옮겨 가고, 닿으면 고리로 강조
           const j = sec.poly.indexOf(sec.fourth), q = a3(CS.patchAt(sec, ext)[j]);
-          D.dot(q, RED, 6.5);
-          if (ext > 0.99) b.point(D.P(q), { color: RED, r: 13, hollow: true });
+          D.dot(q, AMB, 6.5);
+          if (ext > 0.99) b.point(D.P(q), { color: AMB, r: 13, hollow: true });
         }
         if (C.txt) {
           LET8.forEach((L, i) => {
             const p = vp(L), on = sel.includes(L);
-            D.label(p, L, { dir: D.out(p, v3(0, 0, 0)), gap: 12, size: 20, color: on ? AMB : four4(L) ? RED : 'ink', alpha: hidden(i) ? 0.85 : 1, inside: hidden(i) });
+            D.label(p, L, { dir: D.out(p, v3(0, 0, 0)), gap: 12, size: 20, color: on || four4(L) ? AMB : 'ink', alpha: hidden(i) ? 0.85 : 1, inside: hidden(i) });
           });
           banner(b, lines, C);
         }
         D.flush();
       },
-      steps: (M) => stepsOf(M.qsec),
+      steps: (M) => M.sec ? stepsOf(M.sec) : ['서로 다른 세 꼭짓점을 골라요.', '세 점을 지나는 평면을 정육면체 끝까지 넓혀요.', '정육면체와 평면이 겹치는 부분 전체가 단면이에요.'],
+      problemSteps: (M) => stepsOf(M.qsec),
+      questionReviewDraw: true,
       view: (M) => {
         const sec = M.sec, k = (x) => `${count(x)}가지`;
         return {
-          guide: `아래 <b>꼭짓점 단추</b>에서 세 점을 골라 보세요(네 번째 점을 누르면 가장 먼저 고른 점이 빠져요). ${span('amber', '노란 점')}은 고른 점, ${span('amber', '노란 도형')}은 정육면체 안의 단면, ${span('red', '빨간 점')}은 평면이 닿는 넷째 꼭짓점이에요. <b>평면 넓히기</b> 막대를 0으로 내리면 세 점을 이은 삼각형만 보이고, 1로 올리면 평면이 정육면체를 끝까지 잘라 단면이 돼요(옅은 판이 끝없이 넓은 평면이에요). 점선은 가려진 모서리이고, <b>대표 단면</b> 단추로 세 가지 경우를 바로 볼 수 있어요.`,
+          guide: `아래 <b>꼭짓점 단추</b>에서 세 점을 골라 보세요(네 번째 점을 누르면 가장 먼저 고른 점이 빠져요). ${span('amber', '노란 점')}은 고른 점, ${span('red', '붉은 도형')}은 정육면체 안의 단면이에요. 움직이는 노란 점이 넷째 꼭짓점에 닿으면 <b>고리</b>로 강조해요. <b>평면 넓히기</b> 막대를 0으로 내리면 세 점을 이은 삼각형만 보이고, 1로 올리면 평면이 정육면체를 끝까지 잘라 단면이 돼요(옅은 판이 끝없이 넓은 평면이에요). 점선은 가려진 모서리이고, <b>대표 단면</b> 단추로 세 가지 경우를 바로 볼 수 있어요.`,
           readouts: [
             rd('고른 꼭짓점', M.sel.length ? M.sel.join(' · ') : '—', AMB, `${M.sel.length} / 3`),
             rd('세 점을 이은 삼각형', sec ? `${triLab(sec)}: ${CS.triName(sec)}` : '—', SKY),
-            rd('단면의 모양', sec ? sec.label : '—', AMB),
-            rd('단면이 지나는 꼭짓점', sec ? `${sec.poly.length}개` : '—', RED, sec ? (sec.fourth ? `넷째 점 ${sec.fourth}` : '넷째 점 없음') : ''),
+            rd('단면의 모양', sec ? sec.label : '—', RED),
+            rd('단면이 지나는 꼭짓점', sec ? `${sec.poly.length}개` : '—', AMB, sec ? (sec.fourth ? `넷째 점 ${sec.fourth}` : '넷째 점 없음') : ''),
             rd('평면을 넓히면', extMsg(sec), 'green', null, null, true)
           ],
           formula: '<p>한 면 위의 세 점 → 정사각형 · 마주 보는 두 모서리 → 직사각형 · 한 꼭짓점에 이웃한 세 점 → 정삼각형</p>',
@@ -586,5 +604,27 @@
   };
   G.dualOf = dualOf;
 
-  G.register(40, 't4', '④ 도전: 단면과 꼭짓점 자르기', '도전', PARAMS, CS ? [T1, T3, T2, T4] : [T1, T2, T4]);
+  function problemSteps(id, M, Q) {
+    const q = M.Q;
+    if (id === 'p4-1') return [
+      '문제의 세 점 P, Q, R를 지나는 평면을 정육면체의 끝까지 넓혀요. 세 점을 이은 삼각형에서 멈추지 않아요.',
+      '한 면 위에 있는 두 절단점을 선분으로 잇고, 다음 면에서도 절단선을 이어 닫힌 다각형을 만들어요.',
+      `이 문제의 평면은 정육면체의 ${q.cnt}개 면을 지나며, 단면의 변이 ${q.cnt}개 생겨요.`,
+      `따라서 단면은 ${NAME_N[q.cnt]}이에요. 세 점이 주어졌다고 단면이 항상 삼각형인 것은 아니에요.`
+    ];
+    if (id === 'p4-2') {
+      const I = PLAT[q.k], c = cutCounts(I), nm = { F: '면', V: '꼭짓점', E: '모서리' };
+      const first = `${I.name}는 면 ${I.F}개, 모서리 ${I.E}개, 꼭짓점 ${I.V}개예요. 모서리의 3분의 1만큼 잘라 가운데 남은 모서리와 새 단면을 구별해요.`;
+      const why = { F: `원래 면 ${I.F}개가 남고, 원래 꼭짓점 ${I.V}개마다 새 면이 하나씩 생겨요.`, V: `원래 모서리 ${I.E}개마다 양 끝에서 잘려 새 꼭짓점이 2개씩 생겨요.`, E: `원래 모서리의 가운데 ${I.E}개가 남아요. 새 단면의 변은 잘린 꼭짓점에 모인 모서리 수의 합만큼, 원래 모서리마다 양 끝에 하나씩 모두 ${2 * I.E}개 생겨요.` };
+      const calc = { F: `${I.F}+${I.V}=${c.F}`, V: `2\\times${I.E}=${c.V}`, E: `${I.E}+2\\times${I.E}=${c.E}` };
+      return [first, why[q.ask], `따라서 구하는 ${nm[q.ask]}는 $${calc[q.ask]}$개예요.`];
+    }
+    const I = PLAT[q.k], X = dualOf(q.k), names = { F: '면', E: '모서리', V: '꼭짓점' };
+    return [`${I.name}의 면마다 중심을 하나씩 잡아요. 새 입체의 꼭짓점은 원래 면의 개수인 ${I.F}개예요.`,
+      `이웃한 두 면의 중심을 이으면 원래 모서리마다 새 모서리가 하나씩 생겨 ${I.E}개예요. 원래 꼭짓점마다 새 면이 생겨 면은 ${I.V}개예요.`,
+      q.ask === 'shape' ? `따라서 ${X.name}가 만들어져요.` : `문제는 ${names[q.ask]}의 개수를 물었으므로 답은 ${X.cnt[q.ask]}개예요.`];
+  }
+  const scenes = CS ? [T1, T3, T2, T4] : [T1, T2, T4];
+  scenes.forEach((D) => { if (!D.problemSteps) D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(40, 't4', '④ 도전: 단면과 꼭짓점 자르기', '도전', PARAMS, scenes);
 })();

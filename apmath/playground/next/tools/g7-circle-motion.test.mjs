@@ -462,3 +462,25 @@ await test('compound-arc captions reserve the toolbar row without covering the f
     }
   }
 });
+
+await test('unfolded perimeter labels remain above the toolbar and clear of the main figure', async () => {
+  const lab = await load();
+  for (const [width, height, bottom] of [[1039, 612, 0], [683, 614, 0], [683, 494, 0], [820, 516, 58], [390, 410, 58]]) {
+    lab.board.resize(width, height);
+    for (const id of ['z2-semi', 'z2-quarter', 'z2-sector', 'z2-segment']) {
+      const scene = lab.go(id);
+      lab.board.setInsets({ top: 0, right: width > 850 ? 16 : 0, bottom, left: 0 });
+      lab.s.csP = 33; lab.draw();
+      for (const tab of ['explore', 'review']) {
+        lab.tab = tab; lab.s.step = tab === 'review' ? 1 : call(scene.steps, lab.s).length;
+        const drawing = lab.draw(), labels = drawing.textItems.filter((item) => item.options.dy === 24);
+        assert.ok(labels.length >= 2, `${id}: inspect every strip component label`);
+        const toolbarTop = height - Math.max(bottom, 58);
+        for (const item of labels) assert.ok(item.y + (item.options.size || 15) / 2 < toolbarTop, `${id} ${width}×${height}: ${item.text} stays above tools`);
+        const strip = lab.board.handles.find((handle) => handle.id === 'P');
+        const figureBottom = lab.board.toS({ x: 0, y: ['z2-sector', 'z2-segment'].includes(id) ? 1 : 0 }).y;
+        assert.ok(strip.y - 60 > figureBottom, `${id}: the strip's distance label stays clear of the figure`);
+      }
+    }
+  }
+});

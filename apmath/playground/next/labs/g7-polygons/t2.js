@@ -68,8 +68,8 @@
         ang(b, A, B, Cp, { color: 'sky', rings: 1, r: R, label: C.problem ? dg(a) : dg(a), size: 16 });
         ang(b, B, Cp, A, { color: 'sky', rings: 2, r: R, label: dg(bb), size: 16 });
       }
-      if (!C.problem) ang(b, Cp, Cp.x > A.x ? A : B, Cp.x > A.x ? B : A, { color: 'sky', r: 24, label: dg(c), size: 15, noMark: false });
-      else ang(b, Cp, B, A, { color: 'sky', r: 24, label: dg(c), size: 15 });
+      if (!C.problem) ang(b, Cp, Cp.x > A.x ? A : B, Cp.x > A.x ? B : A, { color: 'sky', r: 24, label: C.review && C.step < 3 ? '' : dg(c), size: 15, noMark: false });
+      else ang(b, Cp, B, A, { color: 'sky', r: 24, size: 15 });
       // 엇각·동위각으로 옮긴 각
       if (c2 > 0.01) {
         ang(b, Cp, A, E, { color: 'sky', rings: 1, r: 30, size: 16, alpha: c2, fa: 0.2 * c2 });
@@ -155,19 +155,21 @@
     draw(b, s, M, C) {
       const { a, b: bb, c, d, e, pts } = M, { A, B, C: Cc, D, E, P: Pp, S } = pts;
       const all = [A, B, Cc, D, E];
-      fit(b, bboxOf(all), { t: 58, b: 112, l: 62, r: 62 });
+      // 좁은 가로 화면에서 긴 풀이 식이 오른쪽 아래 도구막대 뒤로 들어가지 않게 합니다.
+      const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
+      fit(b, bboxOf(all), { t: 58, b: 112 + footerReserve, l: 62, r: 62 });
       const cen = pt(all.reduce((q, p) => q + p.x, 0) / 5, all.reduce((q, p) => q + p.y, 0) / 5);
       const st = C.step;
       const lines = [[A, Cc], [A, D], [B, D], [B, E], [Cc, E]];
       // 풀이 단계에 따라 쓰는 삼각형 칠하기
-      if (!C.problem && st >= 1 && st < 99) { fillPoly(b, [Pp, Cc, E], 'green', 0.22); fillPoly(b, [S, B, D], 'green', 0.22); }
-      if (!C.problem && st >= 2 && st < 99) fillPoly(b, [A, Pp, S], 'sky', 0.26);
+      if (!C.problem && st >= 1 && st < 99) { fillPoly(b, [Pp, Cc, E], 'green', 0.12); fillPoly(b, [S, B, D], 'green', 0.12); }
+      if (!C.problem && st >= 2 && st < 99) fillPoly(b, [A, Pp, S], 'sky', 0.14);
       lines.forEach(([p, q]) => line(b, p, q, 'ink', 3.4));
       const tips = [[A, D, Cc, a, 'A'], [B, E, D, bb, 'B'], [Cc, A, E, c, 'C'], [D, B, A, d, 'D'], [E, Cc, B, e, 'E']];
       tips.forEach(([V, p, q, val, nm], i) => {
-        const isX = C.problem && i === 4;
+        const isX = i === 4 && (C.problem || (C.review && st < 3));
         const col = isX ? 'amber' : 'sky';
-        const r = ang(b, V, p, q, { color: col, r: 26, rings: 0, size: 16, fa: 0.3 });
+        const r = ang(b, V, p, q, { color: col, r: 26, rings: 0, size: 16, fa: 0.16 });
         const u = unit(sub(cen, V));
         const lab = isX ? `${nm} x` : `${nm} ${val}°`;
         const dist = 24 + G.textW(lab, 16) * 0.4;
@@ -181,23 +183,24 @@
       }
       if (!C.problem && st >= 1 && st < 99) {
         ang(b, Pp, A, S, { color: 'rose', r: 22 });
-        T(b, Pp, `c+e=${c + e}°`, { dx: 12, dy: -30, size: 15, color: 'rose', align: 'left' });
+        T(b, Pp, C.review && st < 3 ? 'c+x' : `c+e=${c + e}°`, { dx: 12, dy: -30, size: 15, color: 'rose', align: 'left' });
         ang(b, S, Pp, A, { color: 'rose', r: 22 });
         T(b, S, `b+d=${bb + d}°`, { dx: -12, dy: -30, size: 15, color: 'rose', align: 'right' });
       }
       const yb = Math.max(D.y, Cc.y);
       let row = '', col = 'amber';
       if (C.problem) row = '별 모양에서 ∠E = x 의 크기는?';
-      else if (st === 1) { row = `삼각형 PCE, SBD 의 외각 → c+e, b+d`; col = 'green'; }
-      else if (st === 2) { row = `△APS: ${a}°+${c + e}°+${bb + d}° = 180°`; col = 'sky'; }
+      else if (C.review && st === 0) row = '주어진 네 각과 x를 확인해요';
+      else if (st === 1) { row = `삼각형 PCE, SBD 의 외각 → c+x, b+d`; col = 'green'; }
+      else if (st === 2) { row = `${a}°+(${c}°+x)+${bb + d}° = 180°`; col = 'sky'; }
       else row = b.W < 560 ? `A+B+C+D+E = 180°` : `A+B+C+D+E = ${a}+${bb}+${c}+${d}+${e} = 180°`;
       T(b, pt((D.x + Cc.x) / 2, yb), row, { dy: 80, size: 17, color: col });
       if (!C.problem && !C.review && b.W < 560) T(b, pt((D.x + Cc.x) / 2, yb), `${a}+${bb}+${c}+${d}+${e} = 180`, { dy: 104, size: 15, color: 'sky' });
     },
     steps: (M) => [
-      `삼각형의 외각의 성질을 두 번 써요. △PCE의 외각 ∠APS=∠C+∠E=${M.c + M.e}°, △SBD의 외각 ∠ASP=∠B+∠D=${M.b + M.d}°`,
+      `삼각형의 외각의 성질을 두 번 써요. ∠E=x라 두면 △PCE의 외각 ∠APS=∠C+x이고, △SBD의 외각 ∠ASP=∠B+∠D=${M.b + M.d}°예요.`,
       `△APS의 세 내각의 합: ∠A + (∠C+∠E) + (∠B+∠D) = 180°`,
-      `∠A+∠B+∠C+∠D+∠E = ${M.a}°+${M.b}°+${M.c}°+${M.d}°+${M.e}° = 180°`
+      `∠E=x=180°−(${M.a}°+${M.b}°+${M.c}°+${M.d}°)=${M.e}°. 다섯 꼭짓점의 각의 합은 180°예요.`
     ],
     view: (M) => ({
       guide: '막대로 ∠A, ∠B, ∠C, ∠D를 바꿔 보세요. 별의 모양이 변해도 <b>다섯 꼭짓점의 각의 합은 늘 180°</b>예요. ∠E는 나머지 값으로 자동으로 정해져요.',
@@ -258,24 +261,24 @@
       if (k === 2) { line(b, B, extB, 'ink', 3, { dash: [7, 6] }); line(b, Cp, extC, 'ink', 3, { dash: [7, 6] }); }
       if (k === 3) line(b, Cp, F, 'ink', 3, { dash: [7, 6] });
       // 이등분선 (초록)
-      if (sh(2) || C.full) { line(b, B, X, 'green', 3.6); line(b, Cp, X, 'green', 3.6); }
+      if (sh(1) || C.full) { line(b, B, X, 'green', 3.6); line(b, Cp, X, 'green', 3.6); }
       // 반으로 나뉜 각 표시 (● = 1개, × = 2개)
       const r1 = 30, r2 = 36;
-      if (sh(2) || C.full) {
+      if (sh(1) || C.full) {
         if (k === 1) {
           ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, X, A, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, B, X, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, Cp, X, A, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
         } else if (k === 2) {
           ang(b, B, Cp, X, { color: 'rose', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, extB, { color: 'rose', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, B, X, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, extC, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, Cp, B, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, extC, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
         } else {
           ang(b, B, Cp, X, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 }); ang(b, B, X, A, { color: 'sky', rings: 1, r: r1, label: '●', size: 17 });
-          ang(b, Cp, A, X, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, F, { color: 'violet', rings: 2, r: r2, label: '×', size: 17 });
+          ang(b, Cp, A, X, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 }); ang(b, Cp, X, F, { color: 'sky', rings: 2, r: r2, label: '×', size: 17 });
         }
       }
       ang(b, A, B, Cp, { color: 'sky', r: 30, label: dg(a), size: 16 });
       // 구하는 각 x
-      ang(b, X, B, Cp, { color: 'amber', r: 32, label: C.problem ? 'x' : dg(x), size: 18, fa: 0.26 });
+      ang(b, X, B, Cp, { color: 'amber', r: 32, label: C.problem || (C.review && st < 3) ? 'x' : dg(x), size: 18, fa: 0.16 });
       if (C.txt) {
         [A, B, Cp].forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, 'ABC'[i], { size: 18 }); });
         b.point(X, { color: 'amber', r: 5 });
@@ -293,8 +296,9 @@
         const bx = (B.x + Cp.x) / 2, yb = Math.max(B.y, Cp.y, X.y);
         if (C.problem) { row1 = '∠A 의 크기가 주어졌어요'; row2 = `x 의 크기는?`; }
         else {
-          row1 = `● = ${fmtN(o.p)}°,  × = ${fmtN(o.q)}°`;
-          row2 = st <= 1 ? '● 와 × 를 정해요' : st === 2 ? `2●+2×+∠A = 180°` : `x = ${BIS[k].sym} = ${dg(x)}`;
+          row1 = C.review && st < 2 ? '같은 표시의 두 각은 크기가 같아요' : `● = ${fmtN(o.p)}°,  × = ${fmtN(o.q)}°`;
+          const relation = k === 1 ? '2●+2×+∠A = 180°' : k === 2 ? '2●+2× = 180°+∠A' : '2× = ∠A+2●,  × = ●+x';
+          row2 = st <= 1 ? '● 와 × 를 정해요' : st === 2 ? relation : `x = ${BIS[k].sym} = ${dg(x)}`;
           if (C.full) row2 = `x = ${BIS[k].sym} = ${dg(x)}`;
         }
         T(b, pt(bx, yb), row1, { dy: 54, size: 16, color: 'sky' });
@@ -369,9 +373,9 @@
       void vis;
       fit(b, bboxOf([A, B, Cc, D, E, F]), { t: 40, b: 86, l: 36, r: 40 });
       const tri = [[A, B, Cc], [B, Cc, D], [Cc, D, E], [D, E, F]];
-      const col = ['sky', 'green', 'violet', 'amber'];
+      const col = ['sky', 'green', 'sky', 'amber'];
       // 삼각형 칠하기
-      tri.forEach((t3, i) => { const on = i < n || C.problem; fillPoly(b, t3, col[i], on ? 0.2 : 0.04); });
+      tri.forEach((t3, i) => { const on = i < n || C.problem; fillPoly(b, t3, col[i], on ? 0.12 : 0.04); });
       // 두 반직선 + 이어 붙인 선분
       const segs = [[A, B], [B, Cc], [Cc, D], [D, E], [E, F]];
       line(b, A, pt(E.x + 0.5, 0), 'ink', 2.4, { alpha: 0.6 });
@@ -388,7 +392,7 @@
         pair.forEach(([V, q, r], j) => {
           const hide = C.problem && ((i === 3 && j === 0) || (i === 0 && j === 1) || (i === 1) || (i === 2) || (i === 3 && j === 1));
           void hide;
-          let color = ['sky', 'green', 'violet', 'amber'][i];
+          let color = ['sky', 'green', 'sky', 'amber'][i];
           let label = lbl(k);
           if (C.problem) { if (!(i === 3 && j === 0) && !(i === 0 && j === 0)) return; label = i === 0 ? 'x' : dg(4 * x); color = i === 0 ? 'amber' : 'sky'; }
           const rr = 26 + (k - 1) * 0;
@@ -403,21 +407,21 @@
       const bx = (A.x + E.x) / 2, yb = 0;
       let row, rcol = 'amber';
       if (C.problem) row = `AB=BC=CD=DE=EF 일 때 ∠A = x 의 크기는?`;
-      else if (C.review) row = ['x', 'x → 2x', 'x → 2x → 3x', 'x → 2x → 3x → 4x'][Math.min(3, Math.max(0, C.step - 1))] + (C.step >= 1 ? `  (${[1, 2, 3, 4].slice(0, Math.max(1, C.step)).map((k) => k * x + '°').join(' → ')})` : '');
+      else if (C.review) row = C.step >= 4 ? `4x = ${4 * x}° → x = ${4 * x}° ÷ 4 = ${x}°` : C.step === 0 ? `주어진 ∠EDF=${4 * x}°, ∠A=x` : ['x', 'x → 2x', 'x → 2x → 3x'][Math.min(2, C.step - 1)];
       else row = `x=${x}° → 2x=${2 * x}° → 3x=${3 * x}° → 4x=${4 * x}°`;
       T(b, pt(bx, yb), row, { dy: 66, size: 16, color: rcol });
       void part;
     },
     steps: (M) => [
-      `AB=BC 이므로 △ABC는 이등변삼각형이에요. ∠ACB=∠A=x=${M.x}°`,
-      `∠CBD는 △ABC의 외각이므로 ∠CBD=∠A+∠ACB=2x=${2 * M.x}°. BC=CD 이므로 ∠CDB=∠CBD=2x`,
-      `∠DCE는 △ACD의 외각이므로 ∠DCE=∠A+∠ADC=x+2x=3x=${3 * M.x}°. CD=DE 이므로 ∠DEC=∠DCE=3x`,
-      `∠EDF는 △ADE의 외각이므로 ∠EDF=∠A+∠AED=x+3x=4x=${4 * M.x}°. 따라서 ∠EDF=4∠A`
+      `주어진 ∠EDF=${4 * M.x}°를 기억해 두어요. AB=BC 이므로 △ABC는 이등변삼각형이고, ∠A=x라 두면 ∠ACB=x예요.`,
+      `∠CBD는 △ABC의 외각이므로 ∠CBD=∠A+∠ACB=2x예요. BC=CD 이므로 ∠CDB=∠CBD=2x`,
+      `∠DCE는 △ACD의 외각이므로 ∠DCE=∠A+∠ADC=x+2x=3x예요. CD=DE 이므로 ∠DEC=∠DCE=3x`,
+      `∠EDF는 △ADE의 외각이므로 ∠EDF=x+3x=4x예요. 주어진 ∠EDF=${4 * M.x}°이므로 x=${4 * M.x}°÷4=${M.x}°`
     ],
     view: (M) => ({
       guide: '막대로 <b>꼭지각 x</b>를 바꾸거나 ▶를 눌러 이등변삼각형이 하나씩 이어지는 것을 보세요. <b>같은 표시(호의 개수)</b>의 각은 크기가 같아요. 밑각은 x → 2x → 3x → 4x로 커져요.',
-      readouts: [rd('∠A = x', `${M.x}°`, 'sky'), rd('∠CBD = 2x', `${2 * M.x}°`, 'green'), rd('∠DCE = 3x', `${3 * M.x}°`, 'violet'), rd('∠EDF = 4x', `${4 * M.x}°`, 'amber')],
-      formula: `<p>$\\angle EDF=4x=4\\times${M.x}^{\\circ}=${4 * M.x}^{\\circ}$</p><p>x → 2x → 3x → 4x (외각 = 두 내각의 합)</p>`,
+      readouts: [rd('∠A = x', `${M.x}°`, 'sky'), rd('∠CBD = 2x', `${2 * M.x}°`, 'green'), rd('∠DCE = 3x', `${3 * M.x}°`, 'sky'), rd('∠EDF = 4x', `${4 * M.x}°`, 'amber')],
+      formula: `<p>$\\angle EDF=4x=${4 * M.x}^{\\circ}$ 이므로 $x=\\dfrac{${4 * M.x}^{\\circ}}{4}=${M.x}^{\\circ}$</p><p>x → 2x → 3x → 4x (외각 = 두 내각의 합)</p>`,
       rule: '이등변삼각형을 이어 붙이면 외각의 성질로 밑각이 x, 2x, 3x, 4x로 늘어난다',
       notes: notes('이등변삼각형의 <b>같은 두 각</b>은 밑각이에요. 어느 변이 같은지 먼저 확인하세요.', '외각은 <b>이웃하지 않는 두 내각의 합</b>이에요. 매번 ∠A=x가 더해져서 한 칸씩 x만큼 커져요.')
     }),
@@ -461,8 +465,9 @@
       ang(b, A, B, Cp, { color: 'sky', r: 30, label: C.problem ? '' : dg(al), size: 16, labelDist: 56 });
       if (done || C.problem) {
         if (m2 > 0.01 || C.problem) {
-          ang(b, A, Cp, D, { color: 'amber', rings: 2, r: 34, label: C.problem ? '' : dg(d), size: 16, labelDist: 62, alpha: C.problem ? 1 : m2 });
-          ang(b, D, A, Cp, { color: 'amber', rings: 2, r: 34, label: C.problem ? 'x' : dg(d), size: 17, alpha: C.problem ? 1 : m2, labelDist: 62 });
+          const hideTarget = C.problem || (C.review && C.step < 3);
+          ang(b, A, Cp, D, { color: 'amber', rings: 2, r: 34, label: hideTarget ? '' : dg(d), size: 16, labelDist: 62, alpha: C.problem ? 1 : m2 });
+          ang(b, D, A, Cp, { color: 'amber', rings: 2, r: 34, label: hideTarget ? 'x' : dg(d), size: 17, alpha: C.problem ? 1 : m2, labelDist: 62 });
         }
       }
       if (!C.txt) return;
@@ -486,7 +491,7 @@
       `CA=CD 이므로 ∠CAD=∠D 예요. 그러므로 ${M.bb}° = 2×∠D, ∠D = ${M.bb}° ÷ 2 = ${M.d}°`
     ],
     view: (M) => ({
-      guide: '막대로 <b>∠B</b>를 바꾸거나 ▶를 눌러 <b>CD</b>를 가로로 늘여 보세요. AB=AC=CD(같은 눈금 3개)가 되면 ∠D는 늘 <b>∠B의 반</b>이에요.',
+      guide: '막대로 <b>∠B</b>를 바꾸거나 ▶를 눌러 <b>CD</b>를 가로로 늘여 보세요. AB=AC=CD(세 변에 같은 눈금)가 되면 ∠D는 늘 <b>∠B의 반</b>이에요.',
       readouts: [rd('∠B = ∠ACB', `${M.bb}°`, 'sky'), rd('꼭지각 ∠A', `${M.al}°`, 'sky', '180° − 2×∠B'), rd('∠D = ∠CAD', `${M.d}°`, 'amber', '∠B ÷ 2', null, true)],
       formula: `<p>$\\angle ACB=\\angle CAD+\\angle D=2\\angle D$</p><p>$\\angle D=\\dfrac{1}{2}\\times${M.bb}^{\\circ}=${M.d}^{\\circ}$</p>`,
       rule: '이등변삼각형 ACD의 외각 ∠ACB = 두 밑각의 합 = 2 × ∠D',

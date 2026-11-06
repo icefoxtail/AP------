@@ -434,7 +434,15 @@ function periScene(type) {
       // 펼친 둘레 띠 (가로)
       let ymax = 0; segs.forEach((g) => { for (let i = 0; i <= 8; i++) ymax = Math.max(ymax, g.at(i / 8).y); });
       let x0 = Infinity, x1 = -Infinity; segs.forEach((g) => { for (let i = 0; i <= 8; i++) { const p = g.at(i / 8); x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); } });
-      const Wt = type === 'sector' || type === 'segment' ? 2.2 : Math.max(2.2, x1 - x0), xl = (type === 'sector' || type === 'segment' ? 0 : (x0 + x1) / 2) - Wt / 2, yt = type === 'sector' || type === 'segment' ? 1.8 : ymax + 0.95;
+      const Wt = type === 'sector' || type === 'segment' ? 2.2 : Math.max(2.2, x1 - x0), xl = (type === 'sector' || type === 'segment' ? 0 : (x0 + x1) / 2) - Wt / 2;
+      let yt = type === 'sector' || type === 'segment' ? 1.8 : ymax + 0.95;
+      if (!b._bbox && !b.thumb) {
+        // 넓은 화면에서는 우하단 도구가 inset 밖에 있으므로 띠의 치수 라벨까지 비웁니다.
+        // 도형의 축척은 유지하고, 충분히 떨어져 있는 펼친 띠만 필요한 만큼 올립니다.
+        const toolsHeight = lab && lab.ui && lab.ui.tools && lab.ui.tools.offsetHeight;
+        const bottom = Math.max(b.insets.bottom, (toolsHeight || 44) + 14);
+        yt = Math.min(yt, b.toW(0, b.H - bottom - 34 * Math.max(1, b.fs || 1)).y);
+      }
       const total = segs.reduce((a, g) => a + g.len, 0); let acc = 0;
       const known = segs.every((g) => g.exact), tot = segs.reduce((a, g) => plus(a, g.exact || ex()), ex());
       const totalLabel = revealed < segs.length ? '둘레 = ?' : known ? `합계 ${cmOf(tot)}` : '현의 길이는 계산 안 함';
