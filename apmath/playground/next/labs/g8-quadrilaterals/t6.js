@@ -268,9 +268,9 @@
     question: '정사각형 ABCD에서 BE=CF가 되도록 변 BC, CD 위에 점 E, F를 잡으면 두 선분 AE와 BF는 어떤 관계일까?',
     ctl: ['qfSp', 'qfE'],
     init: (s) => { s.qfSp = 6; s.qfE = 2; s.qfK = 0; s.qfThA = 30; },
-    reroll: (s) => { s.qfSp = pick([4, 6, 8], s.qfSp); s.qfE = rint(1, s.qfSp - 1); s.qfK = rint(0, 1); s.qfThA = rint(20, 65); },
+    reroll: (s) => { s.qfSp = pick([4, 6, 8], s.qfSp); s.qfE = rint(1, s.qfSp - 1); s.qfK = rint(0, 1); s.qfThA = rint(20, 44); },
     model: (s) => {
-      const S = ci(s.qfSp, 4, 8), e = clamp(ci(s.qfE, 1, 7), 1, S - 1), th = ci(s.qfThA || 30, 20, 65);
+      const S = ci(s.qfSp, 4, 8), e = clamp(ci(s.qfE, 1, 7), 1, S - 1), th = ci(s.qfThA || 30, 20, 44);
       const mk = (S0, e0) => { const A = pt(0, -S0), B = pt(0, 0), C = pt(S0, 0), D = pt(S0, -S0), E = pt(e0, 0), F = pt(S0, -e0); return { A, B, C, D, E, F, Pp: inter(A, E, B, F) }; };
       const g = mk(S, e), g2 = mk(6, 6 * tanD(th));
       return { S, e, th, ...g, g2, fd: S - e, K: s.qfK || 0 };

@@ -11,7 +11,7 @@
   'use strict';
   const G = window.APL_QD;
   if (!G) return;
-  const { ang2, dimLine, parAll, DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, dist, rotP, inter, pick, rint, bboxOf, unionBox, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, mkTextChoices, rd, notes, fmtN, dg, texDeg, para, sd, ll, an, tri, vlab, capLine, segTag, ci, josa } = G;
+  const { outsideAng, ang2, dimLine, parAll, DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, dist, rotP, inter, pick, rint, bboxOf, unionBox, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, mkTextChoices, rd, notes, fmtN, dg, texDeg, para, sd, ll, an, tri, vlab, capLine, segTag, ci, josa } = G;
   const lenF = (v) => fmtN(v);
   const degF = G.degF;
   const eqB = 'rose';
@@ -46,8 +46,8 @@
     reroll: (s) => { s.qaW = rint(6, 10); s.qaS = rint(3, 5); s.qaB = rand66(s.qaB); s.qaK = rint(0, 2); s.qaT = 0; },
     model: (s) => { const w = ci(s.qaW, 6, 10), sd0 = ci(s.qaS, 3, 5), beta = ci(s.qaB, 50, 130); return { w, s: sd0, beta, alpha: 180 - beta, K: s.qaK || 0, p: para(w, sd0, beta) }; },
     draw(b, s, M, cx) {
-      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = paraBox(M.w, M.s);
-      fit(b, bx, { t: 40, b: 70, l: 46, r: 46 });
+      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts);
+      fit(b, bx, { t: 58, b: 76, l: 58, r: 58 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       if (cx.problem) { drawProb1(b, M); return; }
       if (st >= 1) line(b, A, C, 'green', 3, { dash: [8, 5] });
@@ -63,8 +63,13 @@
       }
       if (st >= 3) { tick(b, A, B, 1); tick(b, D, C, 1); tick(b, A, D, 2); tick(b, B, C, 2); }
       if (st >= 3) {
-        ang(b, B, C, A, { color: 'green', rings: 3, r: 24, label: dg(M.beta), size: 15, labelDist: 52 }); ang(b, D, A, C, { color: 'green', rings: 3, r: 24, label: dg(M.beta), size: 15, labelDist: 52 });
-        vlab(b, pts, 0, dg(M.alpha), { color: 'sky', dist: 60 }); vlab(b, pts, 2, dg(M.alpha), { color: 'sky', dist: 60 });
+        if (b.W < 560) {
+          outsideAng(b, B, C, A, dg(M.beta), 'green'); outsideAng(b, D, A, C, dg(M.beta), 'green');
+          outsideAng(b, A, B, D, dg(M.alpha), 'sky'); outsideAng(b, C, B, D, dg(M.alpha), 'sky');
+        } else {
+          ang(b, B, C, A, { color: 'green', rings: 3, r: 24, label: dg(M.beta), size: 15, labelDist: 42 }); ang(b, D, A, C, { color: 'green', rings: 3, r: 24, label: dg(M.beta), size: 15, labelDist: 42 });
+          vlab(b, pts, 0, dg(M.alpha), { color: 'sky', dist: 38 }); vlab(b, pts, 2, dg(M.alpha), { color: 'sky', dist: 38 });
+        }
       }
       if (st >= 3) {
         sd(b, A, B, O, `${M.s}`, 'amber'); sd(b, D, C, O, `${M.s}`, 'amber'); sd(b, B, C, O, `${M.w}`, 'amber'); sd(b, A, D, O, `${M.w}`, 'amber');
@@ -96,7 +101,7 @@
     verify: (M) => { const p = M.p; return [[dist(p.A, p.B), dist(p.D, p.C)], [dist(p.B, p.C), dist(p.A, p.D)]]; }
   };
   function drawProb1(b, M) {
-    const p = M.p, { A, B, C, D, O } = p, K = M.K, bx = paraBox(M.w, M.s);
+    const p = M.p, { A, B, C, D, O } = p, K = M.K, bx = bboxOf(p.pts);
     parAll(b, { A, B, C, D });
     if (K === 0) { ang(b, B, C, A, { color: 'sky', rings: 1, r: 26, label: dg(M.beta), size: 16, labelDist: 56 }); xl(b, D, A, C); }
     else if (K === 1) { ang(b, B, C, A, { color: 'sky', rings: 1, r: 26, label: dg(M.beta), size: 16, labelDist: 56 }); xl(b, A, D, B); }
@@ -122,7 +127,7 @@
       return { w, s: sd0, beta, alpha, hb: beta / 2, ha: alpha / 2, p, P: Pp, E0, E1, K: s.qaK || 0 };
     },
     draw(b, s, M, cx) {
-      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = paraBox(M.w, M.s);
+      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts);
       fit(b, bx, { t: 40, b: 64, l: 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
@@ -183,7 +188,7 @@
       return { w, s: sd0, beta, e, rest: w - e, p, E, F, K: s.qaK || 0, S: 4 * (w + sd0) };
     },
     draw(b, s, M, cx) {
-      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = paraBox(M.w, M.s), { E, F } = M;
+      const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts), { E, F } = M;
       fit(b, bx, { t: 40, b: 64, l: 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
@@ -310,7 +315,7 @@
     draw(b, s, M, cx) {
       if (cx.problem && M.K === 1) { drawIso1(b, M); return; }
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, E = M.E;
-      fit(b, { x0: -0.66 * M.s - 0.1, x1: M.w + 0.66 * M.s + 0.1, y0: -M.s - 0.1, y1: 0 }, { t: 40, b: cx.problem ? 96 : 66, l: 46, r: 46 });
+      fit(b, bboxOf(p.pts), { t: 48, b: cx.problem ? 90 : 76, l: 54, r: 54 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D }, 0.25);
       line(b, A, E, 'green', 3.4);
@@ -322,9 +327,10 @@
         dotsABCD(b, p); return;
       }
       const ex = st >= 2 || !cx.review;
+      if (b.W < 560) capLine(b, pt(M.w / 2, -M.s), `같은 표시의 각: ${M.ha}°`, 'sky', { dy: -20 });
       fillPoly(b, [A, B, E], 'amber', st >= 3 ? 0.2 : 0.1);
-      ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(M.ha), size: 14, labelDist: 44 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(M.ha), size: 14, labelDist: 46 });
-      if (ex) ang(b, E, A, B, { color: 'sky', rings: 1, r: 26, hash: true, label: dg(M.ha), size: 14, labelDist: 46 });
+      ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 44 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 46 });
+      if (ex) ang(b, E, A, B, { color: 'sky', rings: 1, r: 26, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 46 });
       if (st >= 3 || !cx.review) { tick(b, A, B, 1); tick(b, B, E, 1); segTag(b, B, E, 0.5, `${M.s}`, 22, 'amber'); segTag(b, E, C, 0.5, `${M.ec}`, 22, 'rose'); }
       sd(b, A, B, O, `${M.s}`, 'amber'); sd(b, A, D, O, `${M.w}`, 'sky');
       b.point(E, { color: 'amber', r: 5 }); T(b, E, 'E', { dy: 20, size: 17, color: 'amber' });
