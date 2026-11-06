@@ -111,8 +111,11 @@ try {
       // First/middle/last plus supplied scene IDs provide reproducible captures.
       // All scenes still receive every measurement below.
       const targets = new Set([scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
-      const targetFile = path.join(path.dirname(new URL(import.meta.url).pathname), 'g7-geometry-audit-targets.json');
-      const cases = fs.existsSync(targetFile) ? (JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || []).map(x => typeof x === 'string' ? { id: x } : x) : [];
+      const targetDir = path.dirname(new URL(import.meta.url).pathname);
+      const unitTargetFile = path.join(targetDir, `g7-geometry-audit-targets-${unit}.json`);
+      const targetFile = path.join(targetDir, 'g7-geometry-audit-targets.json');
+      const rawCases = fs.existsSync(unitTargetFile) ? JSON.parse(fs.readFileSync(unitTargetFile, 'utf8')) : fs.existsSync(targetFile) ? JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || [] : [];
+      const cases = rawCases.map(x => typeof x === 'string' ? { id: x } : x);
       for (const c of cases) targets.add(String(c.id));
       for (const scene of scenes) {
         await page.evaluate(i => lab.goScene(i), scene.index);
@@ -192,6 +195,42 @@ try {
             const stopped = await page.evaluate(() => !lab.s.playing);
             dest.interactions.push({ id: scene.id, run: run.name, control: 'reset', executed: true, stopped });
             if (!stopped) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'reset-left-playing' });
+          }
+          if (await page.evaluate(() => lab._tabAvailable('problem'))) {
+            await page.evaluate(i => { lab.goScene(i); lab.setStep(0); lab.setTab('problem'); }, scene.index);
+            await page.waitForFunction(() => !lab._tween); await settle();
+            const reveal = page.locator('[data-reveal]:visible');
+            if (await reveal.count()) {
+              await reveal.click(); await settle();
+              const opened = await page.evaluate(() => !!lab.refs.answer?.classList.contains('open'));
+              const signature = () => page.evaluate(() => { const p = lab.scene.problem, call = v => typeof v === 'function' ? v(lab.s, lab) : v; return JSON.stringify([call(p.text), call(p.answer)]); });
+              const questionBefore = await signature();
+              await page.evaluate(() => lab.setTab('explore')); await settle();
+              const ctlInfo = await page.evaluate(() => {
+                const x = Object.entries(lab._ctls || {}).find(([k, c]) => c.input.checkVisibility() && !/yaw|pitch|orbit|view/i.test(k));
+                if (!x) return null; const [key] = x, p = lab.params[key];
+                return { key, label: APLab.stripEmoji(p.label), value: lab.s[key], step: +p.step || .01, min: +p.min, max: +p.max };
+              });
+              if (ctlInfo) {
+                const places = Math.max(0, String(ctlInfo.step).split('.')[1]?.length || 0, String(ctlInfo.min).split('.')[1]?.length || 0);
+                const value = Number((ctlInfo.value + ctlInfo.step <= ctlInfo.max ? ctlInfo.value + ctlInfo.step : ctlInfo.value - ctlInfo.step).toFixed(Math.min(12, places)));
+                await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(String(value)); await settle();
+                const changed = questionBefore !== await signature();
+                await page.evaluate(() => lab.setTab('problem')); await page.waitForFunction(() => !lab._tween); await settle();
+                const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
+                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, problemChanged: changed, locked });
+                if (opened && changed && !locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-values-retain-open-answer', parameter: ctlInfo.key });
+              }
+              const revealAgain = page.locator('[data-reveal]:visible');
+              if (await revealAgain.count()) await revealAgain.click();
+              const newProblem = page.locator('.apl-newprob:visible').last();
+              if (await newProblem.count()) {
+                await newProblem.click(); await page.waitForFunction(() => !lab._tween); await settle();
+                const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
+                dest.interactions.push({ id: scene.id, run: run.name, control: 'new-problem-relocks-answer', locked });
+                if (!locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-problem-retains-open-answer' });
+              }
+            }
           }
         }
         for (const c of cases.filter(x => String(x.id) === scene.id && (x.params || x.tab || x.step != null))) {

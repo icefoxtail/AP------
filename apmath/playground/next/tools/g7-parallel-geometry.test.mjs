@@ -142,3 +142,13 @@ test('paper folds preserve lengths and reflected geometry yields the claimed ang
     }
   }
 });
+
+test('manual answer reveal relocks on a new question but not on a visual-only change', () => {
+  const sc = get('p3-1'), s = state(sc);
+  Object.assign(s, { revealed: true, step: 3, papick: null });
+  s.tA += 2; sc.view(s, { tab: 'explore' });
+  assert.equal(s.revealed, false); assert.equal(s.step, 0);
+  Object.assign(s, { revealed: true, step: 3 });
+  s.tX += .1; sc.view(s, { tab: 'explore' });
+  assert.equal(s.revealed, true); assert.equal(s.step, 3);
+});

@@ -207,13 +207,16 @@
       enter: (s, lab) => {
         D.init(s);
         s.paseed = 0; s.papick = null; s.playing = false; s.pat = D.t0 == null ? 0 : D.t0;
+        s.paQuestionKey = keyOf(D, D.prob(D.model(s), s), s);
         if (lab) curLab = lab;
       },
       tick: D.tick || null,
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        const questionKey = keyOf(D, D.prob(M, s), s);
+        if (s.paQuestionKey !== questionKey) { s.paQuestionKey = questionKey; s.papick = null; s.revealed = false; s.step = 0; }
+        const C = baseCtx(s, lab, false);
         const v = D.view(M, C, s) || {};
         // 값이 바뀌면(막대·끌기·숫자 바꾸기) 정리 단계 글도 새 값으로 다시 쓰도록 합니다.
         if (lab && lab.scene && lab.scene.pa === D) {
