@@ -90,7 +90,13 @@ try {
     page.on('pageerror', e => report.failures.push({ unit, viewport, error: e.message }));
     await page.goto(`http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/${unit}.html?theme=board`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.lab && lab.list.some(sc => sc.id === 'f1-star'));
-    const settle = async () => { await page.waitForFunction(() => !lab._tween); await page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); lab.render(); }); };
+    const settle = async () => {
+      await page.waitForFunction(() => !lab._tween);
+      await page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); lab.render(); });
+      // This scene also animates through tick/_raf, outside the shell tween.
+      // Compare every input only after that real animation has finished.
+      await page.waitForFunction(() => !lab._tween && !lab._raf);
+    };
     await page.evaluate(() => { lab.goScene(lab.list.findIndex(sc => sc.id === 'f1-star')); lab.setTab('review'); lab.setStep(1); });
     await settle();
     const initial = await page.evaluate(() => {

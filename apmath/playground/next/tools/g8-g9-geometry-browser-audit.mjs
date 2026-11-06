@@ -127,9 +127,13 @@ try {
           const normalize = text => (text || '').replace(/\s+/g, ' ').trim();
           const questionText = normalize(lab.ui.head.querySelector('.apl-question .q')?.textContent);
           const questionMatches = questionText === normalize(expectedQuestion.textContent);
+          const problemTag = lab.scene.problem?.tag, tagExpected = document.createElement('div');
+          tagExpected.innerHTML = problemTag ? APLab.renderMath(APLab.esc(APLab.stripEmoji(typeof problemTag === 'function' ? problemTag(lab.s) : problemTag))) : '';
+          const tagElement = document.querySelector('#apl-pane-problem .apl-problem-meta .apl-tag');
+          const problemTagMatches = problemTag ? !!tagElement && normalize(tagElement.textContent) === normalize(tagExpected.textContent) : !tagElement;
           const visibleText = [...document.querySelectorAll('.apl-tabpanel:not([hidden])')].map(el=>{const c=el.cloneNode(true);c.querySelectorAll('.katex,script,style').forEach(n=>n.remove());return c.textContent;}).join(' ');
           const brokenText = (visibleText.match(/undefined|NaN|Infinity|\[object Object\]|\$|\\(?:frac|sqrt|sin|cos|tan|angle|circ)\b/g)||[]).slice(0,20);
-          return { brokenText, ink, sampledInk, clipped, labels: window.__g89Labels, want, have, reviewSteps, futureStepText, orientationHintOverlap, questionText, questionMatches, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
+          return { brokenText, ink, sampledInk, clipped, labels: window.__g89Labels, want, have, reviewSteps, futureStepText, orientationHintOverlap, questionText, questionMatches, problemTagMatches, tab: lab.tab, step: lab.s.step, revealed: lab.s.revealed, answerOpen: !!lab.refs.answer?.classList.contains('open'), guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim(), overflow: document.documentElement.scrollWidth > innerWidth + 1, katexErrors: [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent), values: Object.fromEntries(Object.keys(lab.params).map(k => [k, lab.s[k]])) };
         });
         const issues = [];
         if (obs.ink < 200) issues.push('blank-canvas');
@@ -140,6 +144,7 @@ try {
         if (obs.tab === 'review' && obs.futureStepText.length) issues.push('future-step-disclosure');
         if (obs.orientationHintOverlap > 0) issues.push('orientation-hint-covers-canvas');
         if (!obs.questionMatches) issues.push('question-text-state-mismatch');
+        if (!obs.problemTagMatches) issues.push('problem-tag-state-mismatch');
         if (!obs.guide) issues.push('missing-guide');
         if (state === 'initial' && obs.want !== obs.have) issues.push('missing-control');
         const nSteps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
