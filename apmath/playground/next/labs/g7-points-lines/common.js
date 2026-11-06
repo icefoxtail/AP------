@@ -84,15 +84,16 @@
   PL.scene = function (spec) {
     const kind = spec.kind || 'figure';
     const model = (s) => spec.model(s);
-    const nSteps = (s) => spec.steps(model(s)).length;
+    const nSteps = (s) => spec.steps(model(s), s).length;
     const ctxOf = (s, lab, thumb) => {
       const tab = lab && lab.tab ? lab.tab : 'explore';
       return { tab, hide: tab === 'problem', thumb: !!thumb, step: thumb ? 99 : tab === 'review' ? Math.min(s.step || 1, 99) : 99 };
     };
     const quizOf = (s) => spec.quiz(model(s), s, PL.rng(PL.hash(spec.id) + ((s.plSeed || 0) + 1) * 7919));
-    const keyOf = (s) => spec.id + '|' + (s.plSeed || 0);
+    // A drag or preset can change a question without changing its seed.
+    const keyOf = (s, Q = quizOf(s)) => spec.id + '|' + (s.plSeed || 0) + '|' + PL.hash(JSON.stringify([Q.stem, Q.choices.map((c) => [c.t, c.ok])]));
     const problemHTML = (s) => {
-      const Q = quizOf(s), pk = s.plPick && s.plPick.key === keyOf(s) ? s.plPick : null;
+      const Q = quizOf(s), pk = s.plPick && s.plPick.key === keyOf(s, Q) ? s.plPick : null;
       let h = `<div class="plq-stem">${Q.stem}</div><div class="plq-choices">`;
       Q.choices.forEach((o, i) => {
         const cls = pk && pk.idx === i ? (o.ok ? ' ok' : ' bad') : '';
@@ -108,13 +109,13 @@
     };
     const boxOf = (b) => (typeof spec.box === 'function' ? spec.box(b) : spec.box);
     const scene = {
-      id: spec.id, title: spec.title, short: spec.short || spec.title, _pl: spec, boardKind: kind,
+      id: spec.id, title: spec.title, short: spec.short || spec.title, _pl: spec, _plKey: keyOf, boardKind: kind,
       question: spec.question,
       guide: (s) => spec.guide(model(s), s),
       controls: () => (typeof spec.controls === 'function' ? spec.controls() : spec.controls) || [],
       presets: (s) => (spec.presets ? spec.presets(s) : []),
       actions: () => (spec.actions ? spec.actions() : []),
-      steps: (s) => spec.steps(model(s)),
+      steps: (s) => spec.steps(model(s), s),
       notesTitle: spec.notesTitle || '자주 틀리는 부분',
       problem: {
         tag: (s) => quizOf(s).tag,
@@ -125,7 +126,7 @@
       focus: () => scene._focus || null,
       enter: (s, lab) => {
         Object.assign(s, typeof spec.init === 'function' ? spec.init(s) : spec.init || {});
-        s.plSeed = 0; s.plPick = null; s.playing = false;
+        s.plSeed = 0; s.plPick = null; s.playing = false; s.plQuestionKey = keyOf(s);
         if (lab && lab.board && s === lab.s) {
           scene._focus = null;
           lab.board.onPanDrag = spec.orbit ? (dx, dy) => { spec.orbit(lab.s, dx, dy); lab.invalidate(true); } : null;
@@ -134,13 +135,15 @@
       tick: spec.tick,
       view: (s, lab) => {
         const M = model(s), C = ctxOf(s, lab);
+        const questionKey = keyOf(s);
+        if (s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; }
         const v = { guide: spec.guide(M, s) };
         if (C.tab === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; return v; }
         v.readouts = spec.readouts ? spec.readouts(M, s) : [];
         if (C.tab === 'review') { const n = nSteps(s); v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(Math.max(s.step || 1, 1), n)} / ${n}단계` }; }
         else if (spec.status) v.status = spec.status(M, s);
         if (spec.alert) { const a = spec.alert(M, s); if (a) v.alert = a; }
-        if (spec.formula) v.formula = spec.formula(M, s);
+        if (spec.formula) v.formula = C.tab !== 'review' || C.step >= nSteps(s) ? spec.formula(M, s) : '';
         if (spec.rule) v.rule = spec.rule(M, s);
         if (spec.notes) v.notes = spec.notes(M, s);
         return v;
@@ -171,8 +174,8 @@
       return;
     }
     const idx = parseInt(hit.getAttribute('data-plq-pick'), 10);
-    s.plPick = { key: spec.id + '|' + (s.plSeed || 0), idx };
     const Q = spec.quiz(spec.model(s), s, PL.rng(PL.hash(spec.id) + ((s.plSeed || 0) + 1) * 7919));
+    s.plPick = { key: sc._plKey(s, Q), idx };
     if (Q.choices[idx] && Q.choices[idx].ok) s.revealed = true;
     lab.invalidate(true);
   });

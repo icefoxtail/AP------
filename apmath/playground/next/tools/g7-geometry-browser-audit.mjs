@@ -42,6 +42,7 @@ try {
     for (const run of runs) {
       const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: run.name !== 'pc', deviceScaleFactor: 1 });
       const page = await ctx.newPage();
+      await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
@@ -98,7 +99,8 @@ try {
       // All scenes still receive every measurement below.
       const targets = new Set([scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
       const targetFile = path.join(path.dirname(new URL(import.meta.url).pathname), 'g7-geometry-audit-targets.json');
-      if (fs.existsSync(targetFile)) for (const id of JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || []) targets.add(String(id));
+      const cases = fs.existsSync(targetFile) ? (JSON.parse(fs.readFileSync(targetFile, 'utf8'))[unit] || []).map(x => typeof x === 'string' ? { id: x } : x) : [];
+      for (const c of cases) targets.add(String(c.id));
       for (const scene of scenes) {
         await page.evaluate(i => lab.goScene(i), scene.index);
         await measure(scene, 'initial');
@@ -130,7 +132,10 @@ try {
           const ctl = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([, c]) => c.input.checkVisibility())?.[0] || null);
           if (ctl) {
             const info = await page.evaluate(k => { const p = lab.params[k]; return { label: APLab.stripEmoji(p.label), value: lab.s[k], step: +p.step || .01, min: +p.min, max: +p.max }; }, ctl);
-            const value = info.value + info.step <= info.max ? info.value + info.step : info.value - info.step;
+            // Range inputs reject binary floating-point tails such as 0.15000000000000002.
+            // Round to the control's decimal precision before exercising its real input event.
+            const places = Math.max(0, String(info.step).split('.')[1]?.length || 0, String(info.min).split('.')[1]?.length || 0);
+            const value = Number((info.value + info.step <= info.max ? info.value + info.step : info.value - info.step).toFixed(Math.min(12, places)));
             await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value));
             const actual = await page.evaluate(k => lab.s[k], ctl);
             const pass = Math.abs(actual - value) < 1e-7;
@@ -142,6 +147,15 @@ try {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
           }
+        }
+        for (const c of cases.filter(x => String(x.id) === scene.id && (x.params || x.tab || x.step != null))) {
+          await page.evaluate(({ index, tab }) => { lab.goScene(index); if (tab) lab.setTab(tab); }, { index: scene.index, tab: c.tab });
+          await page.waitForFunction(() => !lab._tween);
+          await page.evaluate(c => { if (c.params) lab.set(c.params); if (c.step != null) lab.setStep(c.step); }, c);
+          const label = 'target-' + (c.label || c.tab || 'fixed');
+          await measure(scene, label);
+          const filename = `${unit}--${scene.id}--${run.name}--${label}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
+          await page.screenshot({ path: path.join(out, filename), fullPage: true }); dest.captures.push(filename);
         }
       }
       if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });

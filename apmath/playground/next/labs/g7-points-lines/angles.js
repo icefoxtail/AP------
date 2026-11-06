@@ -78,7 +78,7 @@
       /** 각 표시: d0 → d1(반시계)의 색칠한 부채꼴 + 호(rings 개). r 은 화면 픽셀 */
       ang(c, d0, d1, o = {}) {
         const r = (o.r || 28) / K(), col = o.color || 'amber';
-        g.arc(c, r, d0, d1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.32 : o.fa, stroke: false, ref: o.ref });
+        g.arc(c, r, d0, d1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.16 : o.fa, stroke: false, ref: o.ref });
         for (let i = 0; i < (o.rings || 1); i++) g.arc(c, r - (i * 4.5) / K(), d0, d1, { color: col, width: 2.6, ref: o.ref });
         return g;
       },
@@ -208,6 +208,7 @@
       focus: () => sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
       view: (s, lab) => {
         const q = sv(s), mode = modeOf(lab);
+        if (q.pk && q.pk !== spec.problem(q).key + '|' + q.seed) { q.pk = ''; q.pi = -1; s.revealed = false; }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
         if (lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
           const sig = spec.steps(q).join('\u0001');
@@ -215,7 +216,7 @@
         }
         if (mode === 'problem') v.status = stat('info', '그림을 보고 풀어 보세요');
         else if (mode === 'review') { const n = spec.steps(q).length; v.status = stat((s.step | 0) >= n ? 'ok' : 'info', `풀이 ${Math.min(Math.max(s.step | 0, 1), n)} / ${n}단계`); }
-        if (spec.work && mode !== 'explore') v.formula = spec.work(q, s.step | 0);
+        if (spec.work && mode !== 'explore') v.formula = mode === 'review' && (s.step | 0) >= spec.steps(q).length ? spec.work(q, s.step | 0) : '';
         if (spec.rule) v.rule = spec.rule(q);
         return v;
       },
@@ -402,7 +403,7 @@
   const sChase = build({
     id: 'ck2', title: '분이 지나면 사잇각은?', short: '분이 지나면',
     question: '분침은 1분에 6°, 시침은 1분에 0.5° 움직여요. 분이 지날수록 두 바늘 사이의 각은 어떻게 변할까?',
-    guide: '<b>분 막대</b>를 끌거나 ▶를 눌러 분침을 돌려 보세요. 분침이 시침보다 1분에 <b>5.5°</b>씩 더 가서 따라잡기 때문에, 사잇각이 5.5°씩 줄어요. 분침이 시침을 지나면 다시 늘어나요.',
+    guide: '<b>분 막대</b>를 끌거나 ▶를 눌러 분침을 돌려 보세요. 분침은 시침보다 1분에 <b>5.5°</b>씩 더 회전해요. 작은 쪽 사잇각은 두 바늘의 위치에 따라 줄거나 늘고, 0° 또는 180°에 이르면 변화 방향이 바뀌어요.',
     box: { x: [-1.3, 1.3], y: [-3.3, 1.3] },
     params: { h: { ...hourParam, hint: '정각일 때 시침의 자리가 바뀌어요' }, m: { ...minParam, value: 20, hint: '그림의 분침 끝을 끌어도 됩니다' }, acc: { value: 0, min: 0, max: 1, step: 1 } },
     controls: ['h', 'm'],
@@ -481,7 +482,7 @@
   function sgnTxt(v) { return v < 0 ? '−' + (-v) : String(v); }
 
   /* ---- 5-1 맞꼭지각의 성질과 쌍의 개수 ---- */
-  const nEffV = (q, mode) => (mode === 'problem' && q.seed % 2 === 1 ? Math.max(3, q.n) : q.n);
+  const nEffV = (q, mode) => (mode === 'problem' ? (q.seed % 2 === 1 ? Math.max(3, q.n) : 2) : q.n);
   const sVert = build({
     id: 'vt', title: '맞꼭지각은 크기가 같다', short: '맞꼭지각의 성질',
     question: '두 직선이 한 점에서 만나면 네 개의 각이 생겨요. 서로 마주 보는 각(맞꼭지각)의 크기는 어떤 관계일까?',
@@ -518,12 +519,13 @@
         { k: 'd', d0: 180 + th, d1: 360, col: 'rose', ring: 2, val: 180 - th, ref: ['d', 'v'], on: 3 }
       ];
       W.forEach((w) => {
-        g.ang(O, w.d0, w.d1, { r, color: w.col, rings: w.ring, ref: w.ref });
+        const col = mode === 'problem' ? (kind === 0 && w.k === 'a' ? 'amber' : 'sky') : w.col;
+        g.ang(O, w.d0, w.d1, { r, color: col, rings: mode === 'problem' ? 1 : w.ring, ref: w.ref });
         let txt = '';
         if (mode === 'explore') txt = `∠${w.k}=${w.val}°`;
         else if (rev) txt = step >= w.on ? `∠${w.k}=${w.val}°` : `∠${w.k}`;
         else if (kind === 0) txt = w.k === 'a' ? `∠a=${th}°` : `∠${w.k}`;
-        if (txt) g.angText(O, w.d0, w.d1, txt, { r, color: w.col, ref: w.ref });
+        if (txt) g.angText(O, w.d0, w.d1, txt, { r, color: col, ref: w.ref });
       });
       g.dot(O, { color: 'ink', r: 5 });
       if (mode !== 'review') {
@@ -578,7 +580,7 @@
   const sVeq = build({
     id: 've', title: '맞꼭지각으로 식 세우기', short: '맞꼭지각과 방정식',
     question: '맞꼭지각은 크기가 같아요. 두 맞꼭지각이 x에 대한 식으로 주어지면 x는 어떻게 구할까?',
-    guide: '막대나 <b>두 반직선의 끝점</b>을 끌어 x를 바꿔 보세요. 두 각 <b>(3x+10)°</b>와 <b>(5x−20)°</b>가 같아질 때만 두 반직선이 <b>한 직선</b>이 되어 맞꼭지각이 돼요. 그때 x를 찾으면 돼요.',
+    guide: (q) => `막대나 <b>두 반직선의 끝점</b>을 끌어 x를 바꿔 보세요. 두 각 <b>(${ex1(q.a1, q.b1)})°</b>와 <b>(${ex1(q.a2, q.b2)})°</b>가 같아질 때만 두 반직선이 <b>한 직선</b>이 되어 맞꼭지각이 돼요. 그때 x를 찾으면 돼요.`,
     box: { x: [-1.8, 1.8], y: [-3.2, 1.9] },
     state: { a1: 3, b1: 10, a2: 5, b2: -20 },
     params: { x: { value: 8, min: 8, max: 36, step: 1, color: 'amber', label: 'x의 값', hint: '두 각이 같아지는 x를 찾아보세요', format: (v) => `x = ${Math.round(v)}` } },
@@ -605,9 +607,9 @@
       };
     },
     draw: (g, q, mode, step) => {
-      const rev = mode === 'review', x = rev ? solOf(q).x : q.x, A1 = q.a1 * x + q.b1, A2 = q.a2 * x + q.b2, O = [0, 0], L = 1.55, r = wedgeR(g), eq = A1 === A2;
+      const rev = mode === 'review', prob = mode === 'problem', x = mode === 'explore' ? q.x : solOf(q).x, A1 = q.a1 * x + q.b1, A2 = q.a2 * x + q.b2, O = [0, 0], L = 1.55, r = wedgeR(g), eq = A1 === A2;
       g.box(-1.7, -1.7, 1.7, 1.7);
-      const c1 = eq ? 'green' : 'amber', c2 = eq ? 'green' : 'rose';
+      const c1 = prob ? 'sky' : eq ? 'green' : 'amber', c2 = prob ? 'sky' : eq ? 'green' : 'rose';
       g.seg(g.pol(O, L, 0), g.pol(O, L, 180), { color: 'sky', width: 4.5 });
       if (!eq) g.seg(O, g.pol(O, L, A1 + 180), { color: 'muted', width: 3, dash: [6, 6], alpha: 0.9 });
       g.seg(O, g.pol(O, L, A1), { color: 'sky', width: 4.5 });
@@ -618,7 +620,7 @@
       const lab1 = `(${ex1(q.a1, q.b1)})°`, lab2 = `(${ex1(q.a2, q.b2)})°`;
       g.angText(O, 0, A1, lab1, { r, color: c1, ref: ['a', 'eq', 'x', 'val'] });
       g.angText(O, 180, 180 + A2, lab2, { r, color: c2, ref: ['b', 'eq', 'x', 'val'] });
-      if (!rev) {
+      if (mode === 'explore') {
         g.handle('u1', g.pol(O, L, A1), { color: 'amber', ariaLabel: '위쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R, 360); q.x = clamp(Math.round((a - q.b1) / q.a1), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
         g.handle('u2', g.pol(O, L, 180 + A2), { color: 'rose', ariaLabel: '아래쪽 반직선 끝', drag: (w) => { const a = mod(Math.atan2(w.y, w.x) / D2R - 180, 360); q.x = clamp(Math.round((a - q.b2) / q.a2), PARAMS.ve_x.min, PARAMS.ve_x.max); } });
       }
@@ -644,7 +646,7 @@
         push((180 - q.b1 - q.b2) / (q.a1 + q.a2), '맞꼭지각은 합이 180°가 아니라 크기가 같아요.');
         push((q.b2 + q.b1) / (q.a2 + q.a1), '이항할 때 부호를 바꿔요.');
         push(so.x + 2, '이항한 뒤 계산을 다시 확인해 보세요.'); push(so.x - 2, '이항한 뒤 계산을 다시 확인해 보세요.');
-        return { key: `x${q.a1}${q.b1}${q.a2}${q.b2}`, stem: `그림과 같이 두 직선이 한 점에서 만날 때, 두 맞꼭지각의 크기가 (${e1})°, (${e2})°이다. x의 값은?`, choices: mkNumChoices(so.x, cands, (v) => String(v), (v) => v > 0, 1), note: '식의 x를 바꿔 두 각이 같아지는 곳을 찾아도 돼요' };
+        return { key: `x${q.a1}${q.b1}${q.a2}${q.b2}`, stem: `그림과 같이 두 직선이 한 점에서 만날 때, 두 맞꼭지각의 크기가 (${e1})°, (${e2})°이다. x의 값은?`, choices: mkNumChoices(so.x, cands, (v) => String(v), (v) => v > 0, 1), note: '맞꼭지각의 두 식을 같다고 놓아 보세요' };
       }
       push(so.x, 'x가 아니라 각의 크기를 구해야 해요. x를 식에 대입해 보세요.');
       push(180 - so.V, '맞꼭지각이 아니라 이웃한 각의 크기예요.');
@@ -811,7 +813,7 @@
     },
     controls: ['d', 'q'],
     presets: [{ group: '점 Q', label: 'H와 겹치기', apply: (q) => { q.q = 0; }, on: (q) => q.q === 0 }, { label: '가까이', apply: (q) => { q.q = 1; }, on: (q) => q.q === 1 }, { label: '멀리', apply: (q) => { q.q = 4; }, on: (q) => q.q === 4 }],
-    fit: [{ d: 4, q: 3, px: 0 }, { d: 5, q: -4, px: 2 }, { d: 2, q: 4, px: -2 }],
+    fit: [{ d: 4, q: 3, px: 0 }, { d: 5, q: -4, px: -2 }, { d: 5, q: 4, px: 2 }],
     partOfStep: (st) => ['', 'ph', 'h', 'bar'][st] || null,
     steps: (q) => [
       `직선 ℓ 위의 점과 점 P를 잇는 선분 중에서 직선 ℓ과 직각(90°)으로 만나는 선분이 PH예요. 이때 ℓ ⊥ PH이고, PH를 직선 ℓ의 수선이라고 해요.`,
@@ -829,9 +831,10 @@
     },
     draw: (g, q, mode, step) => {
       const d = q.d, qq = q.q, px = q.px, P = [px, d], H = [px, 0], Q = [px + qq, 0], hyp = Math.hypot(d, qq), same = Math.abs(qq) < 0.01;
-      g.box(-5.4, -2.9, 5.4, d + 0.9);
-      g.seg([-5.2, 0], [5.2, 0], { color: 'sky', width: 4.5 });
-      g.text([5.0, 0], 'ℓ', { dy: -20, size: 20, color: 'sky' });
+      const left = Math.min(-5.2, Q[0] - 0.6), right = Math.max(5.2, Q[0] + 0.6);
+      g.box(left - 0.2, -2.9, right + 0.2, d + 0.9);
+      g.seg([left, 0], [right, 0], { color: 'sky', width: 4.5 });
+      g.text([right - 0.2, 0], 'ℓ', { dy: -20, size: 20, color: 'sky' });
       if (!same) g.seg(P, Q, { color: 'violet', width: 3.5, ref: ['pq', 'bar'] });
       g.seg(P, H, { color: 'rose', width: 5.5, ref: ['ph', 'bar'] });
       g.right(H, P, [px + 1, 0], { size: 15, color: 'amber', ref: ['ph', 'h'] });
@@ -848,6 +851,7 @@
       if (!same) g.handle('Q', Q, { color: 'violet', ariaLabel: '점 Q (가로로 끌기)', drag: (w2) => { q.q = clamp(Math.round((w2.x - q.px) * 2) / 2, -4, 4); } });
       else g.handle('Q', Q, { color: 'violet', ariaLabel: '점 Q (가로로 끌기)', r: 7, drag: (w2) => { q.q = clamp(Math.round((w2.x - q.px) * 2) / 2, -4, 4); } });
       // 길이 비교 막대(그림과 같은 눈금): PH와 PQ
+      if (mode === 'problem' || (mode === 'review' && step < 3)) return;
       const x0 = -5, y1 = -1.8, y2 = -2.4;
       g.seg([x0, y1], [x0 + d, y1], { color: 'rose', width: 10, cap: 'butt', ref: ['ph', 'bar'] });
       g.text([x0 + d, y1], `PH = ${d} cm`, { dx: 10, align: 'left', size: 16, color: 'rose', ref: ['ph', 'bar'] });
@@ -870,7 +874,7 @@
   const sBis = build({
     id: 'bs', title: '평각의 두 이등분선이 이루는 각', short: '이등분선 사이의 각',
     question: '평각 AOB 안에 반직선 OC를 긋고, 각 AOC와 각 COB를 각각 이등분하면 두 이등분선 사이의 각은 얼마일까?',
-    guide: '<b>반직선 OC의 끝(노랑 점)</b>을 끌어 보세요. OM은 ∠AOC를, ON은 ∠COB를 이등분해요. OC를 어디로 옮겨도 ∠MON은 <b>언제나 90°</b>(직각)예요. 막대로 ∠AOB를 평각보다 작게 줄여도 ∠MON = ∠AOB ÷ 2예요.',
+    guide: '<b>반직선 OC의 끝(노랑 점)</b>을 끌어 보세요. OM은 ∠AOC를, ON은 ∠COB를 이등분해요. ∠AOB를 고정하면 OC를 어디로 옮겨도 <b>∠MON = ∠AOB ÷ 2</b>예요. ∠AOB가 평각(180°)일 때에는 ∠MON이 언제나 <b>90°</b>(직각)예요.',
     box: { x: [-1.8, 1.8], y: [-3.2, 1.8] },
     params: {
       g: { value: 70, min: 15, max: 165, step: 5, color: 'amber', label: '∠AOC', hint: '그림의 점 C를 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.g = Math.min(q.g, q.T - 15); } },
@@ -906,7 +910,11 @@
         { d0: a.aM, d1: a.aA, col: 'amber', ring: 1, v: h1, ref: ['am', 'all'] }, { d0: a.aC, d1: a.aM, col: 'amber', ring: 1, v: h1, ref: ['am', 'all'] },
         { d0: a.aN, d1: a.aC, col: 'rose', ring: 2, v: h2, ref: ['nb', 'all'] }, { d0: a.aB, d1: a.aN, col: 'rose', ring: 2, v: h2, ref: ['nb', 'all'] }
       ];
-      Wd.forEach((w) => { g.ang(O, w.d0, w.d1, { r, color: w.col, rings: w.ring, ref: w.ref }); g.angText(O, w.d0, w.d1, (w.col === 'amber' ? '● ' : '× ') + n1(w.v) + '°', { r: r + 14, color: w.col, ref: w.ref }); });
+      Wd.forEach((w) => {
+        const symbol = w.col === 'amber' ? '●' : '×', shown = mode === 'explore' || (rev && step >= (w.col === 'amber' ? 1 : 2));
+        g.ang(O, w.d0, w.d1, { r, color: w.col, rings: w.ring, ref: w.ref });
+        g.angText(O, w.d0, w.d1, shown ? `${symbol} ${n1(w.v)}°` : symbol, { r: r + 14, color: w.col, ref: w.ref });
+      });
       if (mode === 'explore' || (rev && step >= 4)) {
         if (T === 180) g.right(O, g.pol(O, 1, a.aM), g.pol(O, 1, a.aN), { size: 14, color: 'green' });
         else g.ang(O, a.aN, a.aM, { r: r * 0.55, color: 'green', rings: 1, ref: ['mon'] });
