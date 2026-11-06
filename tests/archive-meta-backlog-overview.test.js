@@ -15,7 +15,7 @@ lastReasons:['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']}}}};
 test('historical provisional receipt is not registered',async()=>{
 const {summarizeArchiveMetaBacklog:f}=await load;
 const r=f(fixture());
-assert.equal(r.summary.registrationProven,0);
+assert.equal(r.summary.registrationEvidenceStatus,'NOT_EVALUATED');
 assert.equal(r.requests[0].nextAction,'VERIFY_UID_SOURCE_REBIND');
 });
 test('matching source SHA does not invent missing review',async()=>{
