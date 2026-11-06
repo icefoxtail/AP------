@@ -467,43 +467,84 @@ function proofScene(type) {
       return { readouts: [{ label: '호의 길이 l', value: cmOf(arc), color: 'sky' }, { label: '가로 (l ÷ 2)', value: cmOf(ex(r * s.csS, 360)), color: 'amber' }, { label: '부채꼴의 넓이', value: cm2Of(ex(r * r * s.csS, 360)), color: 'green', note: '½ × r × l' }], formula: RICH(M('부채꼴의 넓이 $S=\\pi r^2\\times\\dfrac{\\theta}{360}=\\dfrac{1}{2}rl$'), M(`지금: $S=\\dfrac{1}{2}\\times${r}\\times${texOf(arc)}=${texOf(ex(r * r * s.csS, 360))}\\ \\text{cm}^2$`)) };
     },
     draw: (b, s) => {
-      const r = s.csR, N = countOf(s), t = ease(s.csT / 100);
-      const th = circ ? TAU : rad(s.csS), a0 = -PI / 2, d = th / N, chord = 2 * Math.sin(d / 2), W = (N / 2) * chord, h = Math.cos(d / 2);
-      // 위쪽: 원(부채꼴) — 조각마다 번갈아 색 (움직이지 않음)
-      let bx0 = 0, bx1 = 0, by1 = 0;
-      arcPts(0, 0, 1, a0, a0 + th, 48).forEach((q) => { bx0 = Math.min(bx0, q.x); bx1 = Math.max(bx1, q.x); by1 = Math.max(by1, q.y); });
-      for (let i = 0; i < N; i++) {
-        const down = i % 2 === 0, A0 = a0 + i * d;
-        b.arc(O0, 1, A0, A0 + d, { sector: true, fill: down ? 'sky' : 'green', fillAlpha: 0.34, color: down ? 'sky' : 'green', width: N > 32 ? 0.8 : 1.4, alpha: 0.9 });
+      // 두 그림은 같은 축척을 사용합니다. 넓은 무대는 나란히, 좁은 무대는 위아래로 배치합니다.
+      // 현재 중심각의 시작/완성 상태만 함께 맞춰 재생 중 확대가 흔들리지 않게 합니다.
+      const paint = (st) => {
+        const r = st.csR, N = countOf(st), t = ease(st.csT / 100);
+        const th = circ ? TAU : rad(st.csS), a0 = -PI / 2, d = th / N;
+        const chord = 2 * Math.sin(d / 2), W = N / 2 * chord, h = Math.cos(d / 2);
+        const source = [O0, ...arcPts(0, 0, 1, a0, a0 + th, 72)];
+        const bx0 = Math.min(...source.map(p => p.x)), bx1 = Math.max(...source.map(p => p.x));
+        const by0 = Math.min(...source.map(p => p.y)), by1 = Math.max(...source.map(p => p.y));
+        const wide = b.W >= 700, compact = b.W < 560, sourceX = (bx0 + bx1) / 2;
+        const xc = wide ? bx1 + 1.55 + W * 0.725 : sourceX;
+        const Yt = wide ? (by0 + by1 - h) / 2 : by1 + 0.85, Yb = Yt + h;
+        const spread = 1 + 0.45 * (1 - t), x0 = xc - W / 2;
+        b.path(source, { color: null });
+        for (let i = 0; i < N; i++) {
+          const A0 = a0 + i * d, color = i % 2 === 0 ? 'sky' : 'green';
+          b.arc(O0, 1, A0, A0 + d, { sector: true, fill: color, fillAlpha: 0.22, color, width: N > 32 ? 0.8 : 1.3 });
+        }
+        b.arc(O0, 1, a0, a0 + th, { color: 'ink', width: 2, alpha: 0.7 });
+        if (!circ) {
+          b.seg(O0, pt(0, 0, 1, a0), { color: 'ink', width: 2 });
+          b.seg(O0, pt(0, 0, 1, a0 + th), { color: 'ink', width: 2 });
+          angleMark(b, a0, a0 + th, `${st.csS}°`, {});
+          tagN(b, { x: 0, y: -0.5 }, -1, 0, `r = ${r} cm`, { color: 'amber', size: 16, gap: 6 });
+        } else {
+          const Pr = pt(0, 0, 1, -PI / 6);
+          b.seg(O0, Pr, { color: 'amber', width: 2, dash: [6, 5] });
+          tagN(b, lerp(O0, Pr, 0.5), Math.sin(-PI / 6), -Math.cos(-PI / 6), `r = ${r} cm`, { color: 'amber', size: 16, gap: 6 });
+        }
+        dot(b, O0, 'ink', 4.5);
+        T(b, { x: sourceX, y: by0 }, circ ? `원주 = ${cmOf(ex(2 * r))}` : `호 l = ${cmOf(ex(r * st.csS, 180))}`, { dy: -24, color: 'sky', size: 17 });
+        for (let i = 0; i < N; i++) {
+          const down = i % 2 === 0, j = Math.floor(i / 2);
+          const px = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px - xc) * spread;
+          const c = { x: X, y: down ? Yt : Yb }, mid = down ? PI / 2 : -PI / 2;
+          const color = down ? 'sky' : 'green';
+          // 호의 끝뿐 아니라 실제 조각 전체를 맞춤 범위에 포함합니다.
+          b.path([c, ...arcPts(c.x, c.y, 1, mid - d / 2, mid + d / 2, 12)], { color: null });
+          b.arc(c, 1, mid - d / 2, mid + d / 2, { sector: true, fill: color, fillAlpha: 0.28, color, width: N > 32 ? 0.8 : 1.4 });
+        }
+        if (st.csT >= 55) {
+          const al = clamp((st.csT - 55) / 35, 0, 1), xl = x0, xr = x0 + W;
+          b.seg({ x: xl, y: Yt - 0.12 }, { x: xr, y: Yt - 0.12 }, { color: 'amber', width: 2.5, alpha: al });
+          // 유한한 조각은 곡선 경계가 남습니다. 극한 길이를 등호로 단정하지 않습니다.
+          T(b, { x: xc, y: Yt - 0.12 }, circ ? `가로 → πr = ${cmOf(ex(r))}` : `가로 → l ÷ 2 = ${cmOf(ex(r * st.csS, 360))}`, { dy: -22, color: 'amber', size: 16 });
+          b.seg({ x: xl - 0.12, y: Yt }, { x: xl - 0.12, y: Yb }, { color: 'rose', width: 2.5, alpha: al });
+          tagN(b, { x: xl - 0.12, y: (Yt + Yb) / 2 }, -1, 0, compact ? '세로 → r' : `세로 → r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
+          T(b, { x: xc, y: Yb }, circ ? `S = πr² = ${cm2Of(ex(r * r))}` : `S = ½rl = ${cm2Of(ex(r * r * st.csS, 360))}`, { dy: 28, color: 'green', size: 17 });
+        }
+        const yh = Yb + (compact ? 0.85 : 0.65), half = Math.max(0.7, Math.min(1.2, W * 0.6));
+        const xa = xc - half, xb = xc + half;
+        b.seg({ x: xa, y: yh }, { x: xb, y: yh }, { color: 'muted', width: 3, alpha: 0.7 });
+        b.handle('T', { x: xa + (xb - xa) * st.csT / 100, y: yh }, { color: 'amber', ariaLabel: '조각 가로로 밀기', drag: (w) => { s.playing = false; s.csT = clamp(Math.round((w.x - xa) / (xb - xa) * 100), 0, 100); } });
+        if (!compact) {
+          T(b, { x: xc, y: yh }, '조각을 가로로 밀어 맞물려 보세요', { dy: 26, color: 'muted', size: 14 });
+          bbox(b, xa, yh, xb, yh + 0.45); // 오른쪽 아래 도구 막대와 겹치지 않는 여백
+        }
+      };
+      if (!b._bbox && !b.thumb && b.W > 80 && b.H > 80) {
+        const key = [meta.id, s.csR, s.csS, s.csN, b.W, b.H, b.fs, ...Object.values(b.insets)].join('|');
+        const cached = b._csProofLayout;
+        if (!cached || cached.key !== key || cached.focus !== b.focus) {
+          // 라벨은 픽셀 크기이므로 맞춘 배율에서 한 번 더 측정합니다.
+          b.setFocus(CANON_VIEW, true);
+          b.begin({ emph: b.emph });
+          for (let pass = 0; pass < 2; pass++) {
+            const a = b.measure(() => paint({ ...s, csT: 0 }));
+            const z = b.measure(() => paint({ ...s, csT: 100 }));
+            if (a && z) {
+              const box = { x0: Math.min(a.x0, z.x0), y0: Math.min(a.y0, z.y0), x1: Math.max(a.x1, z.x1), y1: Math.max(a.y1, z.y1), texts: [...a.texts, ...z.texts] };
+              b.setFocus(b.fitBox(box, { margin: 0.025, px: 14 }), true);
+            }
+          }
+          b._csProofLayout = { key, focus: b.focus };
+          b.begin({ emph: b.emph });
+        }
       }
-      b.arc(O0, 1, a0, a0 + th, { color: 'ink', width: 2, alpha: 0.7 });
-      if (!circ) { b.seg(O0, pt(0, 0, 1, a0), { color: 'ink', width: 2, alpha: 0.7 }); b.seg(O0, pt(0, 0, 1, a0 + th), { color: 'ink', width: 2, alpha: 0.7 }); }
-      dot(b, O0, 'ink', 4.5);
-      if (circ) { const Pr = pt(0, 0, 1, -PI / 6); b.seg(O0, Pr, { color: 'amber', width: 3, dash: [6, 5] }); tagN(b, lerp(O0, Pr, 0.5), Math.sin(-PI / 6), -Math.cos(-PI / 6), `r = ${r} cm`, { color: 'amber', size: 17, gap: 6 }); }
-      else tagN(b, { x: 0, y: -0.5 }, -1, 0, `r = ${r} cm`, { color: 'amber', size: 17, gap: 6 });
-      if (circ) T(b, { x: 0, y: -1 }, `원주 2πr = ${cmOf(ex(2 * r))}`, { dy: -26, color: 'sky', size: 17 });
-      else { const am = a0 + th / 2; tagN(b, pt(0, 0, 1, am), Math.cos(am), Math.sin(am), `호의 길이 l = ${cmOf(ex(r * s.csS, 180))}`, { color: 'sky', size: 17, gap: 10 }); angleMark(b, a0, a0 + th, `${s.csS}°`, {}); }
-      // 아래쪽: 조각을 가로로 늘어놓았다가 가로로만 밀어 맞물림 (세로 위치는 처음부터 끝까지 그대로)
-      const xc = (bx0 + bx1) / 2, Yt = by1 + 1.0, Yb = Yt + h, spread = 1 + 0.45 * (1 - t), x0 = xc - W / 2;
-      bbox(b, xc - W * 1.45 / 2 - 0.1, by1 - 1.0, xc + W * 1.45 / 2 + 0.1, Yb + 0.3); b.path(arcPts(0, 0, 1, a0, a0 + th, 24), { color: null });
-      for (let i = 0; i < N; i++) {
-        const down = i % 2 === 0, j = Math.floor(i / 2), px = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px - xc) * spread;
-        const c = { x: X, y: down ? Yt : Yb }, mid = down ? PI / 2 : -PI / 2;
-        b.arc(c, 1, mid - d / 2, mid + d / 2, { sector: true, fill: down ? 'sky' : 'green', fillAlpha: 0.4, color: down ? 'sky' : 'green', width: N > 32 ? 0.9 : 1.6 });
-      }
-      if (s.csT >= 55) {
-        const al = clamp((s.csT - 55) / 35, 0, 1), xl = x0, xr = x0 + W;
-        b.seg({ x: xl, y: Yt - 0.12 }, { x: xr, y: Yt - 0.12 }, { color: 'amber', width: 3, alpha: al });
-        T(b, { x: xc, y: Yt - 0.12 }, circ ? `가로 = 원주의 절반 = πr = ${cmOf(ex(r))}` : `가로 = l ÷ 2 = ${cmOf(ex(r * s.csS, 360))}`, { dy: -22, color: 'amber', size: 16 });
-        b.seg({ x: xl - 0.12, y: Yt }, { x: xl - 0.12, y: Yb }, { color: 'rose', width: 3, alpha: al });
-        tagN(b, { x: xl - 0.12, y: (Yt + Yb) / 2 }, -1, 0, `세로 = r = ${r} cm`, { color: 'rose', size: 16, gap: 8 });
-        T(b, { x: xc, y: Yb }, circ ? `넓이 = ${plain(ex(r))} × ${r} = ${cm2Of(ex(r * r))}` : `넓이 = ½ × ${r} × ${plain(ex(r * s.csS, 180))} = ${cm2Of(ex(r * r * s.csS, 360))}`, { dy: 32, color: 'green', size: 17 });
-      }
-      // 가로 조절 막대: 노란 점을 오른쪽으로 끌면 조각이 가로로 밀려 맞물림
-      const yh = Yb + 0.62, xa = xc - 1.1, xb = xc + 1.1;
-      b.seg({ x: xa, y: yh }, { x: xb, y: yh }, { color: 'muted', width: 3, alpha: 0.7 });
-      b.handle('T', { x: xa + (xb - xa) * (s.csT / 100), y: yh }, { color: 'amber', ariaLabel: '조각 가로로 밀기', drag: (w) => { s.playing = false; s.csT = clamp(Math.round((w.x - xa) / (xb - xa) * 100), 0, 100); } });
-      T(b, { x: xc, y: yh }, '← 조각이 가로로 밀려 맞물립니다 →', { dy: 26, color: 'muted', size: 14 });
+      paint(s);
     }
   };
 }
@@ -546,7 +587,7 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
     if (d) Object.assign(s, d);
     s.playing = false;
     sc._focus = null;
-    if (lab && lab.board && FIT[sc.id]) {
+    if (lab && lab.board && FIT[sc.id] && !sc.id.startsWith('z3-')) {
       const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
       b.setFocus(CANON_VIEW, true); // 앞 장면의 확대·위치가 남은 채로 재면 그림이 작게 맞춰집니다 → 항상 같은 처음 상태에서 잽니다
       let uni = null;

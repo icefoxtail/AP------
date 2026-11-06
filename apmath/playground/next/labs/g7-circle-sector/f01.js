@@ -341,6 +341,8 @@
         const c = ctxOf(s, lab);
         const L = sp.layout(c);
         if (['star', 'ss2', 'lens', 'ex22'].includes(sp.id) && c.problem) L.marg.b = 100;
+        // 고리 부채꼴의 끝점 치수는 외곽선 밖에 놓이므로 글자 폭과 목차 손잡이 여백을 확보합니다.
+        if (sp.id === 'ring') { L.marg.l = 44; L.marg.r = 64; }
         fitPx(b, L.bb, L.marg);
         sp.render(b, c, ['star', 'ss2', 'ring'].includes(sp.id));
       },
