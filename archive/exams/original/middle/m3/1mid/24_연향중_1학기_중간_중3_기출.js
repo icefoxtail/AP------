@@ -54,7 +54,9 @@ window.questionBank = [
     "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "primaryMethod": "제곱근의 정의와 제곱 성질로 주어진 명제들의 참·거짓을 판별한다.",
+    "decisiveStep": "음수의 실수 제곱근은 없고, 제곱근의 제곱 성질로 $(-\\sqrt{7})^2=7$이므로 ⑤만 참이다."
   },
   {
     "id": 2,
@@ -390,7 +392,9 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png"
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png",
+    "primaryMethod": "피타고라스 정리로 정사각형의 대각선 길이를 구하여 수직선 위의 점에 대응하는 수를 결정한다.",
+    "decisiveStep": "한 변이 1인 정사각형에서 $AC=\\sqrt{1^2+1^2}=\\sqrt2$이고 $CP=AC$이므로 $P$는 $1+\\sqrt2$에 대응한다."
   },
   {
     "id": 8,
