@@ -39,6 +39,10 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-registration-whitespace.test.mjs',
+    args: ['--test', 'tests/archive-registration-whitespace.test.mjs']
+  },
+  {
     label: 'tests/archive-registration-writer.test.mjs',
     args: ['--test', 'tests/archive-registration-writer.test.mjs']
   },

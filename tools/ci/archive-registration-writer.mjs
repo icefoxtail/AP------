@@ -8,6 +8,7 @@ import crypto from 'node:crypto';
 import vm from 'node:vm';
 import {execFileSync, spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {checkStagedRegistrationWhitespace} from './archive-registration-whitespace.mjs';
 
 export const VERSION = 'archive-registration-writer-v1';
 export const STATE = '.archive-meta-register/auto/writer-state.json';
@@ -90,7 +91,7 @@ export function nativeLanes(root) {
     accessibilityBase=context.APSvgAccessibilityIndex?.buildScope?.baseRef;
   }
   if(!/^[a-f0-9]{40}$/.test(accessibilityBase||''))throw Error('ACCESSIBILITY_FIXED_COVERAGE_BASE_REQUIRED');
-  const code=['archive/tools/','archive/build_db.py','tools/ci/archive-registration-writer.mjs',
+  const code=['archive/tools/','archive/build_db.py','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-whitespace.mjs',
     'tools/ci/archive-pages-registration.paths','tools/ci/archive-meta-register-commit.paths',
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js'];
@@ -155,7 +156,7 @@ export function nativeLanes(root) {
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
     {id:'fourSlot',inputs:['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       'archive/assets/','docs/architecture/4slot/','archive/item-4slot.js','tools/4slot/',
-      'tools/ci/archive-four-slot-pass.sh','tools/ci/archive-registration-writer.mjs','.archive-meta-register/auto/config.json'],
+      'tools/ci/archive-four-slot-pass.sh','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-whitespace.mjs','.archive-meta-register/auto/config.json'],
       // Preserve the existing independent 4slot failure policy; failed output is rolled back and
       // retryable, while validated ordinary exam publication can continue with the prior index.
       outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,
@@ -390,7 +391,15 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   }
   guardFiles(changed(root),[...allOutputs,STATE],'TRANSACTION');
   if(unstaged(root).length)throw Error('UNSTAGED_TRANSACTION_OUTPUT');
-  git(root,'diff','--cached','--check');checkPreserved(root,before,initialSeals);
+  try {
+    report.whitespace=checkStagedRegistrationWhitespace(root);
+    checkPreserved(root,before,initialSeals);
+  } catch(error) {
+    Object.assign(report,{status:'FINAL_GATE_FAILED',safeToPersist:false,registrationReady:false,publishable:false,
+      error:error.message,changedPaths:changed(root)});
+    writeEvidence(work,report,allOutputs);
+    throw error;
+  }
   report.changedPaths=changed(root);report.safeToPersist=true;
   const failed=report.lanes.some(r=>['FAILED','ROLLED_BACK','STALE_DEPENDENCY'].includes(r.status));
   report.status=failed?'PREPARED_WITH_FAILURES':report.needed?'PREPARED_WITH_PENDING':report.changedPaths.length?'PREPARED':'NO_OP';
@@ -410,6 +419,8 @@ async function main() {
   console.log(json(result));
   if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,
     `writer_status=${result.status}\nsafe_to_persist=${result.safeToPersist}\nregistration_ready=${result.registrationReady}\npublishable=${result.publishable}\nneeded=${result.needed}\ninput_sha=${result.inputSha}\ninput_digest=${result.inputDigest}\noutput_digest=${result.outputDigest}\n`);
+  if(process.env.GITHUB_STEP_SUMMARY&&result.whitespace)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+    `Git whitespace: ${result.whitespace.status}; raw Git exit=${result.whitespace.rawGitExitCode}; inherited source lines=${result.whitespace.inheritedLineCount}; byte-bound assets=${result.whitespace.inheritedAssets.length}. No source or derived SVG bytes were changed for this classification.\n\n`);
   if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
     `### Archive registration writer: ${result.status}\n\n| lane | result |\n| --- | --- |\n${result.lanes.map(r=>`| ${r.id} | ${r.status} |`).join('\n')}\n\nregistration_ready=${result.registrationReady}; staged paths=${result.changedPaths.length}\n`);
 }

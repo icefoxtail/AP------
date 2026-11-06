@@ -28,6 +28,7 @@
 - 실제 학생 패키지 bytes와 외부 R2 이미지·Worker 입력이 게시 receipt와 같으면 NO_OP다. 검사기·비게시 입력이 달라졌으면 이전 검증 PASS를 재사용하거나 새 receipt를 발행하지 않는다. 새 등록 SHA가 이미 게시된 SHA의 과거이면 SUPERSEDED로 끝내며 새 검증 PASS로 표현하지 않는다. 유효한 게시 SHA와 판본 관계가 불명확하면 게시하지 않는다. 게시 receipt가 없거나 조회되지 않으면 checkout 때 고정한 원격 main과 정확히 같은 snapshot만 전체 기술검사 뒤 게시할 수 있다.
 - 기존 package manifest/용량 상한, 필요한 Chrome 출력, Worker 준비, R2 이미지의 정확한 bytes(첫 전환에는 legacy 존재 확인을 재사용하지 않음), 실제 step outcome을 읽는 release gate를 유지한다. gate 뒤 `_archive-release.json`을 패키지에 기록해 등록 SHA와 실제 게시본을 연결한다. 실패 시 이전 정상 사이트를 유지한다.
 - 시간별 등록 복구와 3시간 주기 Pages 복구는 유지한다. 고정 snapshot이 아직 등록되지 않은 scheduled release는 DEFERRED이며, 정확한 등록 SHA dispatch가 불일치하면 실패다.
+- Git 공백 검사는 유지한다. 기존 QID9 SVG는 공식 import manifest의 source와 현재 normalizer로 구한 전체 bytes가 staged 출력과 같고, 지적된 줄도 source에서 그대로 상속됐을 때만 `INHERITED_SOURCE_WHITESPACE`로 구분한다. 원시 Git exit·파일·줄 수를 summary/증거에 남기며 raw `git diff --check` 성공으로 기록하지 않는다. 새 공백·다른 경로·충돌 표식·기존의 더 엄격한 Git 공백 규칙은 계속 차단한다.
 - 구 Reviewed workflow의 수동 실행은 단일 writer로 전달한다. 봉인 legacy Apply의 non-main 복구는 유지하지만 main 직접 쓰기는 차단한다. main 입력은 기존 PR/inbox 경로로 전달한다.
 
 ## 시범 및 운영 경계
