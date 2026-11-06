@@ -254,9 +254,20 @@ try {
           // Changing numerical conditions may correctly relock a previous solution.
           // Select the requested review step after that state transition completes.
           if (c.step != null) { await page.evaluate(n => { const x = lab.scene.steps; lab.setStep(n === 'final' ? (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0 : n); }, c.step); await settle(); }
+          if (c.waitFor) {
+            const condition = { values: c.waitFor.values, tolerance: c.waitFor.tolerance ?? 0.001 };
+            let settled = true;
+            try {
+              await page.waitForFunction(({ values, tolerance }) => Object.entries(values).every(([key, value]) => Number.isFinite(lab.s[key]) && Math.abs(lab.s[key] - value) <= tolerance), condition, { timeout: c.waitFor.timeoutMs ?? 5000 });
+            } catch { settled = false; }
+            const actual = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, lab.s[key]])), Object.keys(condition.values));
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'wait-for-production-animation', label: c.label, settled, expected: condition.values, actual });
+            if (!settled) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'target-animation-did-not-settle', label: c.label, expected: condition.values, actual });
+            await settle();
+          }
           const label = 'target-' + (c.label || c.tab || 'fixed');
           const targetObservation = await measure(scene, label);
-          targetObservation.target = { requested: c, actual: await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, lab.s[k]])), Object.keys(c.params || {})) };
+          targetObservation.target = { requested: c, actual: await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, lab.s[k]])), [...new Set([...Object.keys(c.params || {}), ...Object.keys(c.waitFor?.values || {})])]) };
           const filename = `${unit}--${scene.id}--${run.name}--${label}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await capture(filename);
         }

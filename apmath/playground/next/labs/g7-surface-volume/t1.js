@@ -735,8 +735,10 @@
       if (surf) {
         const sn = solidNet(poly, hu, 1, sm, 8), A = sn.A, B = sn.B, eNow = ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
         const grp = (k) => (k === 0 ? 0 : k === 15 ? 2 : k === 16 ? 3 : 1);
+        // 옆 패널이 있는 가로 태블릿에서 아래 밑면 끝이 도구막대에 가리지 않게 합니다.
+        const bottom = C.review && b.W >= 560 && b.W < 800 ? 54 : 30;
         netScene(b, s, C, {
-          sn, t, fitOpt: { l: 30, r: (M.started && C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 25, b: 30 },
+          sn, t, fitOpt: { l: 30, r: (M.started && C.tab === 'explore' && !C.problem && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 25, b: bottom },
           style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
             edgeStyle: (e, p) => {
               if (!glue) return null;

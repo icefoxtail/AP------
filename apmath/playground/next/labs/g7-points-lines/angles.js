@@ -211,6 +211,10 @@
         const q = sv(s), mode = modeOf(lab);
         const questionKey = spec.problem(q).key + '|' + q.seed;
         if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
+        if (!measuring && spec.currentFocus && lab && s === lab.s && lab.board) {
+          const current = spec.currentFocus(q, mode);
+          lab.board.setFocus(current || sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] }, false);
+        }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
         if (lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
           const sig = spec.steps(q).join('\u0001');
@@ -484,7 +488,7 @@
   function sgnTxt(v) { return v < 0 ? '−' + (-v) : String(v); }
 
   /* ---- 5-1 맞꼭지각의 성질과 쌍의 개수 ---- */
-  const nEffV = (q, mode) => (mode === 'problem' ? (q.seed % 2 === 1 ? Math.max(3, q.n) : 2) : q.n);
+  const nEffV = (q, mode) => (mode === 'explore' ? q.n : q.seed % 2 === 1 ? Math.max(3, q.n) : 2);
   const sVert = build({
     id: 'vt', title: '맞꼭지각은 크기가 같다', short: '맞꼭지각의 성질',
     question: '두 직선이 한 점에서 만나면 네 개의 각이 생겨요. 서로 마주 보는 각(맞꼭지각)의 크기는 어떤 관계일까?',
@@ -498,18 +502,18 @@
     presets: [30, 55, 90, 120, 150].map((a, i) => ({ group: i === 0 ? '∠a' : '', label: a + '°', apply: (q) => { q.th = a; }, on: (q) => q.th === a })),
     fit: [{ th: 55, n: 2 }, { th: 30, n: 6 }, { th: 150, n: 4 }],
     partOfStep: (st) => ['', 'ab', 'cb', 'v', 'n'][st] || null,
-    steps: (q) => [
+    steps: (q) => { const n = nEffV(q, 'review'); return [
       `두 직선이 만나 생긴 ∠a와 ∠b는 한 직선 위에 있으므로 ∠a + ∠b = 180° → ∠b = 180° − ${q.th}° = ${180 - q.th}°`,
       `∠c와 ∠b도 한 직선 위에 있으므로 ∠c + ∠b = 180° → ∠c = 180° − ${180 - q.th}° = ${q.th}°. 따라서 ∠a = ∠c`,
       `마주 보는 각 ∠a와 ∠c, ∠b와 ∠d를 맞꼭지각이라 해요. 맞꼭지각의 크기는 같아요: ∠a = ∠c = ${q.th}°, ∠b = ∠d = ${180 - q.th}°`,
-      `직선 ${q.n}개가 한 점에서 만날 때, 직선 2개를 고르는 방법은 ${q.n}×${q.n - 1}÷2 = ${q.n * (q.n - 1) / 2}가지이고 한 번에 맞꼭지각이 2쌍씩 생겨요. 모두 ${q.n}×${q.n - 1} = ${q.n * (q.n - 1)}쌍`
-    ],
+      `직선 ${n}개가 한 점에서 만날 때, 직선 2개를 고르는 방법은 ${n}×${n - 1}÷2 = ${n * (n - 1) / 2}가지이고 한 번에 맞꼭지각이 2쌍씩 생겨요. 모두 ${n}×${n - 1} = ${n * (n - 1)}쌍`
+    ]; },
     work: () => RICH(M('맞꼭지각의 크기는 같다'), M('직선 n개가 한 점에서 만날 때 맞꼭지각 = n × (n − 1) 쌍')),
-    view: (q) => ({
+    view: (q, mode) => { const n = nEffV(q, mode); return {
       status: stat('ok', `∠a = ∠c = ${q.th}° · ∠b = ∠d = ${180 - q.th}°`),
-      readouts: [rd('∠a = ∠c', q.th + '°', 'amber', '맞꼭지각', 'a'), rd('∠b = ∠d', 180 - q.th + '°', 'rose', '맞꼭지각', 'b'), rd(`직선 ${q.n}개의 맞꼭지각`, q.n * (q.n - 1) + '쌍', 'green', `${q.n} × ${q.n - 1}`, 'n', true)],
+      readouts: [rd('∠a = ∠c', q.th + '°', 'amber', '맞꼭지각', 'a'), rd('∠b = ∠d', 180 - q.th + '°', 'rose', '맞꼭지각', 'b'), rd(`직선 ${n}개의 맞꼭지각`, n * (n - 1) + '쌍', 'green', `${n} × ${n - 1}`, 'n', true)],
       alert: { tone: 'key', text: '∠a + ∠b = 180°이고 ∠c + ∠b = 180°이므로 ∠a = ∠c. 맞꼭지각은 크기가 같아요.' }
-    }),
+    }; },
     draw: (g, q, mode, step) => {
       const th = q.th, n = nEffV(q, mode), O = [0, 0], L = 1.55, rev = mode === 'review', r = wedgeR(g), kind = q.seed % 2;
       g.box(-1.7, -1.7, 1.7, 1.7);
@@ -543,7 +547,10 @@
         if (step >= 4) L1.push([`직선 ${n}개 → ${n}×${n - 1} = ${n * (n - 1)}쌍`, 'green', ['n']]);
       }
       const keep = rev ? L1.slice(-3) : L1;
-      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], l[2] ? { ref: l[2] } : {}));
+      const footerLift = g.b.W >= 560 && g.b.W < 900 && (g.b.insets?.bottom || 0) < 40 ? 20 : 0;
+      // 글을 올린 만큼 자동 맞춤이 다시 아래로 당기지 않도록 기존 아래 여유를 유지해요.
+      if (footerLift) g.box(0, -1.72 - g.u(94), 0, -1.72);
+      keep.forEach((l, i) => lineAnchor(g, i, l[0], l[1], { ...(l[2] ? { ref: l[2] } : {}), dy: 30 + i * 27 - footerLift }));
     },
     problem: (q) => {
       const th = q.th;
@@ -878,6 +885,12 @@
     question: '평각 AOB 안에 반직선 OC를 긋고, 각 AOC와 각 COB를 각각 이등분하면 두 이등분선 사이의 각은 얼마일까?',
     guide: '<b>반직선 OC의 끝(노랑 점)</b>을 끌어 보세요. OM은 ∠AOC를, ON은 ∠COB를 이등분해요. ∠AOB를 고정하면 OC를 어디로 옮겨도 <b>∠MON = ∠AOB ÷ 2</b>예요. ∠AOB가 평각(180°)일 때에는 ∠MON이 언제나 <b>90°</b>(직각)예요.',
     box: { x: [-1.8, 1.8], y: [-3.2, 1.8] },
+    currentFocus: (q, mode) => {
+      if (mode !== 'problem') return null;
+      // 문제에는 아래 계산줄이 없으므로 현재 반직선과 이름만 크게 맞춥니다.
+      const pts = [[0, 0], ...Object.values(bisAng(q)).map((a) => [1.6 * Math.cos(a * D2R), 1.6 * Math.sin(a * D2R)])];
+      return { x: [Math.min(...pts.map((p) => p[0])) - 0.26, Math.max(...pts.map((p) => p[0])) + 0.26], y: [-Math.max(...pts.map((p) => p[1])) - 0.28, 0.34] };
+    },
     params: {
       g: { value: 70, min: 15, max: 165, step: 5, color: 'amber', label: '∠AOC', hint: '그림의 점 C를 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.g = Math.min(q.g, q.T - 15); } },
       T: { value: 180, min: 60, max: 180, step: 10, color: 'sky', label: '∠AOB (180°이면 평각)', hint: '점 B를 끌어도 돼요', format: (v) => `${Math.round(v)}°`, onInput: (q) => { q.g = Math.min(q.g, q.T - 15); } }
@@ -923,6 +936,7 @@
       }
       g.dot(O, { color: 'ink', r: 5 });
       [['A', a.aA, 'sky'], ['B', a.aB, 'sky'], ['C', a.aC, 'ink'], ['M', a.aM, 'green'], ['N', a.aN, 'green']].forEach(([nm, ang, col]) => g.out(g.pol(O, L, ang), ang, nm, { size: 19, color: col }, 17));
+      g.text(O, 'O', { dy: 21, size: 18, color: 'ink' });
       const rel = (w) => { const ang = w.y < 0 ? (w.x < 0 ? 180 : 0) : Math.atan2(w.y, w.x) / D2R; return ang; };
       g.handle('C', g.pol(O, L, a.aC), { color: 'amber', ariaLabel: '반직선 OC 끝', drag: (w) => { q.g = clamp(rr5(180 - rel(w)), 15, q.T - 15); } });
       g.handle('B', g.pol(O, L, a.aB), { color: 'sky', ariaLabel: '반직선 OB 끝', drag: (w) => { q.T = clamp(Math.round((180 - rel(w)) / 10) * 10, 60, 180); q.g = Math.min(q.g, q.T - 15); } });
