@@ -72,7 +72,7 @@ async function load() {
   lab.draw = () => {
     const texts = [], labels = [], paths = [], original = board._text, originalPath = board.path;
     board.path = function (points, options = {}) { paths.push({ points: points.map((p) => ({ x: p.x ?? p[0], y: p.y ?? p[1] })), options }); return originalPath.call(this, points, options); };
-    board._text = function (x, y, text, ...args) { if (text != null) { texts.push(String(text)); labels.push({ text: String(text), x, y, size: (args[0]?.size || 13) * board.fs * board._ts() }); } return original.call(this, x, y, text, ...args); };
+    board._text = function (x, y, text, ...args) { if (text != null) { texts.push(String(text)); labels.push({ text: String(text), x, y, size: (args[0]?.size || 13) * board.fs * board._ts(), width: board.ctx.measureText(String(text)).width, align: args[0]?.align || 'center' }); } return original.call(this, x, y, text, ...args); };
     try { const value = call(lab.scene.view, lab.s, lab); board.begin(); lab.scene.draw(board, lab.s, value, lab); board.end(); return { texts, labels, paths, value }; }
     finally { board._text = original; board.path = originalPath; }
   };
@@ -342,5 +342,63 @@ await test('returning before the first area step removes final result captions',
     assert.equal(start.texts.some(text => pattern.test(text)), false, `${id}: previous-to-start relocks the final result`);
     assert.equal(start.value.formula, null);
     if (id === 'b4-wing') assert.equal(start.texts.includes('10'), false, 'the area-only proof does not invent a given base length');
+  }
+});
+
+function labelBox(label) {
+  const x0 = label.x - (label.align === 'left' ? 0 : label.align === 'right' ? label.width : label.width / 2);
+  return { x0, x1: x0 + label.width, y0: label.y - label.size / 2, y1: label.y + label.size / 2 };
+}
+function segmentHitsBox(a, b, box) {
+  let lo = 0, hi = 1;
+  const dx = b.x - a.x, dy = b.y - a.y;
+  for (const [p, q] of [[-dx, a.x - box.x0], [dx, box.x1 - a.x], [-dy, a.y - box.y0], [dy, box.y1 - a.y]]) {
+    if (p === 0) { if (q < 0) return false; }
+    else { const t = q / p; if (p < 0) lo = Math.max(lo, t); else hi = Math.min(hi, t); if (lo > hi) return false; }
+  }
+  return true;
+}
+
+await test('both parallelogram height labels remain clear of the other altitude and canvas edges', async () => {
+  const lab = await load();
+  for (const [W,H,bottom] of [[390,310,70],[820,516,70],[683,438,0],[1039,786,0]]) for (let K = 0; K < 3; K++) for (let a = 6; a <= 12; a++) {
+    lab.go('b2-para'); Object.assign(lab.s, { b2K:K, b2A:a }); lab.tab='review';
+    lab.board.resize(W,H); lab.board.setInsets({top:0,right:0,left:0,bottom});
+    lab.draw(); lab.s.step=3;
+    const result=lab.draw(), M=lab.scene.ar.model(lab.s), [B,C,D,A]=lab.scene.ar.geo(M).pg;
+    assert.ok(result.texts.includes(`h₂ = ${lab.api.fmtN(M.h2)}`), 'the inspected state actually displays both heights');
+    const vx=D.x-C.x, vy=D.y-C.y, t=((A.x-C.x)*vx+(A.y-C.y)*vy)/(vx*vx+vy*vy), F={x:C.x+t*vx,y:C.y+t*vy};
+    const label=result.labels.find(x=>x.text.startsWith('h₁ =')), box=labelBox(label);
+    assert.ok(box.x0>=0 && box.x1<=W && box.y0>=0 && box.y1<=H-bottom, `${K}/${a}/${W}: given height label is visible`);
+    assert.equal(segmentHitsBox(lab.board.toS(A),lab.board.toS(F),{x0:box.x0-3,x1:box.x1+3,y0:box.y0-3,y1:box.y1+3}),false, `${K}/${a}/${W}: second altitude does not cross the given height`);
+  }
+});
+
+await test('ratio vertex names, dimension ticks and current-question caption occupy separate rows', async () => {
+  const lab=await load();
+  for (const [W,H,bottom] of [[390,310,70],[820,516,70],[683,438,0],[1039,786,0]]) for (const [m,n] of [[1,6],[3,2],[6,1]]) for (const q of [0,1]) {
+    lab.go('b5-ratio'); Object.assign(lab.s,{b5M:m,b5N:n,b5H:8,b5Q:q}); lab.tab='problem';
+    lab.board.resize(W,H);lab.board.setInsets({top:0,right:0,left:0,bottom});const result=lab.draw();
+    const D=labelBox(result.labels.find(x=>x.text==='D')), left=labelBox(result.labels.find(x=>x.text===`${m}k`)), right=labelBox(result.labels.find(x=>x.text===`${n}k`));
+    const baseline=lab.board.toS({x:m,y:0}).y, caption=labelBox(result.labels.find(x=>x.text.startsWith('△ABC =')));
+    assert.ok(D.y1+5 <= Math.min(left.y0,right.y0), 'D is above the dimension label row with a readable gap');
+    assert.ok(Math.max(left.y1,right.y1)+5<=caption.y0, 'the area/ratio caption is below both dimension labels');
+    assert.ok(caption.y1<=H-bottom && baseline<D.y0);
+    if (W===390 && m===3 && n===2) {
+      const leftPoint=lab.board.toS({x:0,y:0}),rightPoint=lab.board.toS({x:m+n,y:0});
+      assert.ok(rightPoint.x-leftPoint.x>=55, 'the question uses the space left by absent inquiry calculations');
+    }
+  }
+});
+
+await test('a static trapezoid question uses the stage for its actual shape and keeps captions centered', async () => {
+  const lab=await load();
+  for (const q of [0,1,2]) {
+    lab.go('c1-trap');Object.assign(lab.s,{c1A:4,c1B:10,c1H:6,c1Q:q});lab.tab='problem';
+    lab.board.resize(390,310);lab.board.setInsets({top:0,right:0,left:0,bottom:70});const result=lab.draw();
+    const vertices=lab.scene.ar.geo(lab.scene.ar.model(lab.s)).trap.map(p=>lab.board.toS(p)), xs=vertices.map(p=>p.x);
+    assert.ok(Math.max(...xs)-Math.min(...xs)>=185, `q${q}: the unused rotating copy does not shrink the question`);
+    const caption=labelBox(result.labels.find(x=>x.text.startsWith(q===0?'사다리꼴 2개':q===1?'사다리꼴의 넓이':'삼각형 ACD')));
+    assert.ok(caption.x0>=0 && caption.x1<=390 && caption.y1<=240, `q${q}: current question caption fits`);
   }
 });

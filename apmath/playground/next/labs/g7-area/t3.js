@@ -38,7 +38,8 @@
       if (mode === 1) {
         // 같은 사다리꼴(복사본)을 만들고, 붙을 자리에서 제자리 180° 회전
         const Mp = mid(BR, TR), cF = pt(2 * Mp.x - c0.x, 2 * Mp.y - c0.y), off = pt(2 * (Mp.x - c0.x), 2 * (Mp.y - c0.y));
-        FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, { b: C.problem ? 80 : 118, t: 24 });
+        if (C.problem) FIT(b, { x0: 0, x1: B, y0: -H, y1: 0 }, { b: 76, t: 40 });
+        else FIT(b, { x0: 0, x1: B + a + p, y0: -H - 3.2, y1: 3.2 }, { b: 118, t: 24 });
         fillPoly(b, g.trap, 'sky', 0.22); poly(b, g.trap, 'ink', 3.6);
         if (!C.problem) {
           const al = seg01(t, 0, 0.1), ang = Math.PI * seg01(t, 0.1, 1);
@@ -51,7 +52,7 @@
         dim(b, TL, TR, `윗변 ${a}cm`, { ref: c0, color: 'sky' });
         dim(b, BL, BR, fin ? `${B}` : `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
         if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
-        if (C.problem) { foot(b, pt((B + a) / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
+        if (C.problem) { foot(b, pt(B / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
         const fx = (B + a) / 2;
         if (C.review ? C.step >= 3 : t > 0.999) foot(b, pt(fx, 0), `평행사변형의 절반: ${HALF}×${a + B}×${H} = ${num(S)}cm²`, 'green', 92);
         else foot(b, pt(fx, 0), C.review && C.step >= 2 ? '돌려서 붙여요' : '사다리꼴의 넓이 = ?', 'amber', C.review && C.step >= 2 ? 92 : 64);
@@ -59,7 +60,7 @@
       }
       // 대각선 TL-BR 로 나누기: 윗변 쪽 삼각형이 가로로 떼어짐
       const gap = 1.6 * ease(C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : t);
-      FIT(b, { x0: 0, x1: Math.max(B, p + a) + 1.6, y0: -H, y1: 0 }, { b: C.problem ? 84 : 122 });
+      FIT(b, { x0: 0, x1: Math.max(B, p + a) + (C.problem ? 0 : 1.6), y0: -H, y1: 0 }, { b: C.problem ? 76 : 122 });
       const t1 = [BL, BR, TL], t2 = [TL, TR, BR].map((q) => pt(q.x + gap, q.y));
       fillPoly(b, t1, 'sky', 0.26); poly(b, t1, 'ink', 3.6);
       fillPoly(b, t2, C.problem && M.q === 2 ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);

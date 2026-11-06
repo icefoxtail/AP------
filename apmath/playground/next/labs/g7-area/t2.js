@@ -104,7 +104,7 @@
       const show1 = mode === 0 || mode === 2, show2 = mode === 1 || mode === 2;
       if (show1) line(b, Bp, Cp, 'sky', 6, { alpha: 0.65 });
       if (show2) line(b, Cp, Dp, 'green', 6, { alpha: 0.65 });
-      if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1 });
+      if (show1) hgtTo(b, Ap, Bp, Cp, { color: 'amber', label: `h₁ = ${h1}`, side: 1, at: show2 ? 0 : 0.5, dy: show2 ? -26 : 0 });
       if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem || (C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
       dim(b, Bp, Cp, `BC = ${a}`, { ref: c0, color: 'sky' });
       dim(b, Cp, Dp, `CD = ${c}`, { ref: c0, color: 'green', off: 26 });
@@ -282,7 +282,7 @@
     geo: (M, gap = 0) => { const xA = (M.m + M.n) * 0.4, Bv = pt(0, 0), D = pt(M.m, 0), Cv = pt(M.m + M.n, 0), Av = pt(xA, -M.h); return { Bv, D, Cv, Av, left: [Av, Bv, D], right: [Av, D, Cv].map((p) => pt(p.x + gap, p.y)) }; },
     draw(b, s, M, C) {
       const { m, n, h, S1, S2, S } = M, t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.7 : 0.7) : C.t, gap = 1.6 * ease(t), g = ratio.geo(M, gap), { Bv, D, Cv, Av } = g;
-      FIT(b, { x0: 0, x1: m + n + 1.6, y0: -h, y1: 0 }, { b: 130 });
+      FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? 100 : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
       [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 ? -12 : i === 3 ? 12 : 0, size: 17 }));
@@ -291,16 +291,16 @@
         if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: `h = ${h}`, side: 1, gap: 8 });
       }
       const cc = centroid(g.left.concat(g.right));
-      dim(b, Bv, D, C.problem ? `${m}k` : `${m}`, { ref: cc, color: 'sky' });
-      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem ? `${n}k` : `${n}`, { ref: cc, color: 'rose' });
+      dim(b, Bv, D, C.problem ? `${m}k` : `${m}`, { ref: cc, color: 'sky', off: C.problem ? 42 : 38 });
+      dim(b, pt(D.x + gap, 0), pt(Cv.x + gap, 0), C.problem ? `${n}k` : `${n}`, { ref: cc, color: 'rose', off: C.problem ? 42 : 38 });
       if (C.problem) {
         T(b, M.q ? pt((Av.x + D.x + Cv.x) / 3, -h / 3) : pt((Av.x + Bv.x + D.x) / 3, -h / 3), '?', { size: 20, color: 'amber' });
-        foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 58); return;
+        foot(b, pt((m + n) / 2, 0), `△ABC = ${S} cm²   BD : DC = ${m} : ${n}`, 'amber', 82); return;
       }
       T(b, pt((Av.x + Bv.x + D.x) / 3, -h / 3), 'S₁', { size: 16, color: 'sky' }); T(b, pt((Av.x + D.x + Cv.x) / 3 + gap, -h / 3), 'S₂', { size: 16, color: 'rose' });
       const x0 = (m + n) / 2;
-      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 58); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 84); }
-      if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 110);
+      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 62); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 88); }
+      if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 114);
     },
     steps: (M) => [
       `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이 h=${M.h}가 같아요.`,
