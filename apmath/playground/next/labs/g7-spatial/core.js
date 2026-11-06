@@ -499,9 +499,19 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  // 수동으로 연 답과 풀이 완료도 현재 문항에만 속합니다. 시점·순수 재생은 그대로 둡니다.
+  const questionKeys = new WeakMap();
+  const resetQuestion = (s) => { s.spPick = null; s.revealed = false; s.step = 0; };
+  const questionKey = (D, s, Q) => D.id + '|' + Q.key + '|' + (s.spSeed || 0);
+  function syncQuestion(D, s, Q) {
+    const key = questionKey(D, s, Q);
+    if (questionKeys.has(s) && questionKeys.get(s) !== key) resetQuestion(s);
+    questionKeys.set(s, key);
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.spSeed || 0);
+    const key = syncQuestion(D, s, Q);
     const pk = s.spPick && s.spPick.key === key ? s.spPick : null;
     let h = `<div class="sp-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += `<div class="sp-choices${Q.wide ? ' wide' : ''}">`;
@@ -538,6 +548,7 @@
       if (hit.hasAttribute('data-sp-new')) {
         D.reroll(s);
         s.spSeed = (s.spSeed || 0) + 1; s.spPick = null; s.revealed = false; s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         lab.setStep(1);
         try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
         lab.invalidate(true);
@@ -626,7 +637,8 @@
         D.init(s);
         const c0 = (typeof D.cam0 === 'function' ? D.cam0(s) : D.cam0) || { yaw: -30, pitch: 24 };
         s.spYaw = c0.yaw; s[pitchKey] = c0.pitch; s.spYawLast = c0.yaw;
-        s.spSeed = 0; s.spPick = null; s.playing = false;
+        s.spSeed = 0; resetQuestion(s); s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -646,8 +658,9 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        syncQuestion(D, s, D.prob(M, s));
+        const C = baseCtx(s, lab, false);
         normView(s, M, !!s.spSpin && C.tab === 'explore');
         const v = D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };

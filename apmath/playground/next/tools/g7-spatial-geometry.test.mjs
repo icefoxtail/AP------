@@ -6,8 +6,9 @@ import vm from 'node:vm';
 
 // Load the production scene registrations. This is a geometry test, not a browser substitute.
 const base = new URL('../labs/g7-spatial/', import.meta.url);
+const listeners = {};
 const document = { documentElement: { dataset: {} }, head: { append() {} },
-  getElementById() { return null; }, createElement() { return {}; }, addEventListener() {} };
+  getElementById() { return null; }, createElement() { return {}; }, addEventListener(name, callback) { listeners[name] = callback; } };
 const context = vm.createContext({ window: {}, document, console });
 vm.runInContext('let randomSeed = 260711; Math.random = () => { randomSeed = (1664525 * randomSeed + 1013904223) >>> 0; return randomSeed / 4294967296; };', context);
 for (const name of ['core', 'stmt', 't1', 't2', 't3', 't4', 't5']) {
@@ -174,5 +175,46 @@ test('every registered scene retains five unique choices, one answer, and no ini
       assert.ok(sc.steps(s).length >= 3, sc.id);
       sc.sp.reroll(s);
     }
+  }
+});
+
+test('a changed problem closes manual reveal as well as a correct choice and completed solution', t => {
+  const defaults = Object.fromEntries(Object.entries(Object.assign({}, ...context.window.APL_SP_GROUPS.map(g => g.params))).map(([key, p]) => [key, p.value]));
+  let checked = 0;
+  for (const sc of scenes) for (const picked of [false, true]) {
+    const s = { ...defaults }, lab = { tab: 'problem' };
+    sc.enter(s, lab); sc.view(s, lab); sc.problem.text(s);
+    const q = sc.sp.prob(sc.sp.model(s), s), oldKey = q.key;
+    s.revealed = true; s.step = sc.steps(s).length;
+    if (picked) s.spPick = { key: sc.id + '|' + q.key + '|0', idx: q.choices.findIndex(c => c.ok) };
+    for (let i = 0; i < 20 && sc.sp.prob(sc.sp.model(s), s).key === oldKey; i++) sc.sp.reroll(s);
+    assert.notEqual(sc.sp.prob(sc.sp.model(s), s).key, oldKey, sc.id + ': generated a different problem');
+    sc.view(s, lab);
+    assert.equal(s.revealed, false, sc.id + ': ' + (picked ? 'selected answer' : 'manual reveal'));
+    assert.equal(s.spPick, null, sc.id);
+    assert.equal(s.step, 0, sc.id);
+    assert.doesNotMatch(sc.problem.text(s), /class="sp-ch (?:ok|bad)"|class="sp-fb/, sc.id);
+    checked++;
+  }
+  t.diagnostic(`${checked} question changes after manual reveal or a correct choice`);
+});
+
+test('camera and unchanged-problem animation preserve progress; a new question starts at step one', () => {
+  for (const sc of scenes) {
+    const s = state(sc.id), lab = { tab: 'problem', scene: sc, s, setStep(n) { s.step = n; }, _buildReview() {}, invalidate() {} };
+    sc.enter(s, lab); sc.view(s, lab); sc.problem.text(s);
+    const q = sc.sp.prob(sc.sp.model(s), s), key = sc.id + '|' + q.key + '|0';
+    s.spPick = { key, idx: q.choices.findIndex(c => c.ok) }; s.revealed = true; s.step = sc.steps(s).length;
+    s.spYaw = -44; s.spPitch = 35;
+    if (sc.sp.anim) s[sc.sp.anim.key] = 0.37;
+    sc.view(s, lab);
+    assert.equal(s.revealed, true, sc.id);
+    assert.equal(s.spPick.key, key, sc.id);
+    assert.match(sc.problem.text(s), /class="sp-fb ok"/, sc.id);
+    listeners.click({ target: { closest: () => ({ hasAttribute: name => name === 'data-sp-new' }) } });
+    sc.view(s, lab);
+    assert.equal(s.revealed, false, sc.id);
+    assert.equal(s.step, 1, sc.id);
+    assert.equal(s.spPick, null, sc.id);
   }
 });
