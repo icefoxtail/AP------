@@ -37,6 +37,8 @@
 
 | 2022 제일고 2학기 기말 고1 Q8 | 유리함수 구간 최솟값 | 작성·전달 | Luna high 유리함수 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 제일고 2학기 기말 고1 Q1 | 합성·역함수 대응 | 작성·전달 | Luna high 대응 묶음 | 계획 중 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
