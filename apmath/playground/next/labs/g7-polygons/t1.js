@@ -54,7 +54,7 @@
         for (let i = 0; i <= a; i++) {
           if (prog < Math.min(i + 1, a) - 1e-9) continue;
           nTri++;
-          fillPoly(b, [V, Pn[(v + 1 + i) % n], Pn[(v + 2 + i) % n]], i % 2 ? 'green' : 'sky', i % 2 ? 0.2 : 0.2);
+          fillPoly(b, [V, Pn[(v + 1 + i) % n], Pn[(v + 2 + i) % n]], i % 2 ? 'green' : 'sky', 0.14);
         }
       } else fillPoly(b, Pn, 'sky', 0.08);
       poly(b, Pn, 'ink', 3.4);
@@ -140,7 +140,7 @@
         else {
           const full = kp >= n - 1e-9;
           T(b, pt(0, yb), `${kInt}개 × ${a}개 = ${kInt * a}`, { dy: 44, size: 17, color: 'sky' });
-          if (full) T(b, pt(0, yb), `두 번씩 센 값 → ÷2 = ${M.N}개`, { dy: 70, size: 17, color: 'amber' });
+          if (full && (!C.review || C.step >= 3)) T(b, pt(0, yb), `두 번씩 센 값 → ÷2 = ${M.N}개`, { dy: 70, size: 17, color: 'amber' });
         }
       }
     },
@@ -186,10 +186,10 @@
       const n = C.review || C.problem ? M.ns : M.n;
       fit(b, { x0: -1, x1: 1, y0: -1, y1: 1 }, { t: 40, b: 84 });
       const O = pt(0, 0);
-      if (C.problem) {
+      if (C.problem || (C.review && C.step < 3)) {
         b.circle(O, 1, { color: 'muted', width: 2.4, dash: [7, 6] });
         T(b, O, '?각형', { size: 26, color: 'amber' });
-        T(b, pt(0, 1), `대각선 ${M.T0}개`, { dy: 46, size: 18, color: 'green' });
+        T(b, pt(0, 1), C.review && C.step >= 2 ? `n(n−3) = ${M.two}` : `대각선 ${M.T0}개`, { dy: 46, size: 18, color: 'green' });
         return;
       }
       const Pn = regUp(n, 1);

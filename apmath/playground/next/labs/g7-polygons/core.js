@@ -21,9 +21,18 @@
   const r1 = (v) => Math.round(v * 10) / 10;
   const isInt = (v) => Math.abs(v - Math.round(v)) < 1e-9;
   const fmtN = (v) => { const x = r1(v); return (Number.isInteger(x) ? String(x) : x.toFixed(1)).replace('-', '−'); };
-  const dg = (v) => fmtN(v) + '°';
+  // Every problem value here comes from integer angles and small integer ratios.
+  // Keep those ratios exact instead of turning 360/7 into the equality 51.4.
+  const fracText = (v, tex = false) => {
+    for (let d = 1; d <= 360; d++) {
+      const n = Math.round(v * d);
+      if (Math.abs(v * d - n) < 1e-8) return d === 1 ? String(n) : tex ? `\\dfrac{${n}}{${d}}` : `${n}/${d}`;
+    }
+    return (tex ? '\\approx ' : '≈ ') + fmtN(v).replace('−', '-');
+  };
+  const dg = (v) => fracText(v) + '°';
   const eqs = (v) => (isInt(v * 10) ? '=' : '≈'); // 소수 첫째 자리에서 딱 떨어지지 않으면 ≈
-  const tx = (v) => fmtN(v).replace('−', '-');
+  const tx = (v) => fracText(v, true);
   const texDeg = (v) => tx(v) + '^{\\circ}';
 
   /* ------------------------------------------------------------------ 기하 (figure: y 아래쪽) */
@@ -96,7 +105,7 @@
       if (!o.big && Math.abs(deg - 90) < 0.6 && !o.noRight) {
         b.right(V, A, B, { size: Math.min(r * 0.62, 17), color: col });
       } else {
-        b.arc(V, rw, a0, a0 + d, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, a0, a0 + d, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.14 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 0;
         b.arc(V, rw, a0, a0 + d, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
         for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, a0, a0 + d, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
@@ -182,7 +191,7 @@
     const key = D.id + '|' + Q.key + '|' + (s.pgSeed || 0);
     const pk = s.pgPick && s.pgPick.key === key ? s.pgPick : null;
     let h = `<div class="pg-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
-    h += '<div class="pg-choices">';
+    h += `<div class="pg-choices${Q.wide ? ' wide' : ''}">`;
     Q.choices.forEach((o, i) => {
       const cls = pk && pk.idx === i ? (o.ok ? ' ok' : ' bad') : '';
       h += `<button type="button" class="pg-ch${cls}" data-pg-pick="${i}" aria-label="${NUM[i]} ${esc(o.p)}"><span class="n">${NUM[i]}</span><span class="v">$${o.t}$</span></button>`;
@@ -235,6 +244,7 @@
     st.textContent = `
 .pg-q{font-size:var(--fs-md);line-height:1.85}
 .pg-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:12px 0 4px}
+.pg-choices.wide{grid-template-columns:1fr}
 .pg-ch{display:flex;gap:8px;align-items:center;min-height:44px;padding:6px 10px;border:1px solid var(--line-2);background:var(--card-2);color:var(--text);border-radius:var(--r-md);font:700 var(--fs-md) var(--font-ui);cursor:pointer;text-align:left}
 .pg-ch:hover{background:var(--hover)}
 .pg-ch .n{color:var(--m-amber);flex:none}
@@ -257,6 +267,7 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label}, stepT?(n), verify?(s)→[기하로 잰 값, 식으로 구한 값] } */
   function makeScene(D) {
     const A = D.anim;
+    const keyOf = (s, M = D.model(s)) => D.id + '|' + D.prob(M, s).key + '|' + (s.pgSeed || 0);
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -283,6 +294,7 @@
         D.init(s);
         s.pgSeed = 0; s.pgPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
+        s.pgQuestionKey = keyOf(s);
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
@@ -299,9 +311,14 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (lab && lab.s === s && document.body) document.body.dataset.pgScene = D.id;
+        const key = keyOf(s);
+        if (s.pgQuestionKey !== key) { s.pgQuestionKey = key; s.pgPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);
+        if (C.review && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step), 0, 1); s.playing = false; }
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        if (C.review && C.step < D.steps(M).length && v.formula) v.formula = '';
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
@@ -310,7 +327,7 @@
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step), 0, 1) : 1)) : 1;
         D.draw(b, s, M, C);
       }
     };
@@ -323,7 +340,7 @@
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
 
   window.APL_PG = {
-    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg,
+    PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, fracText, dg, eqs, tx, texDeg,
     pt, add, sub, mul, len, unit, mid, lerp, polar, dirDeg, angBetween, cross, inter, regPoly, regUp, polyArea, centroid, gcd, pick, rint, bboxOf, unionBox,
     textW, T, tagOut, vtx, ang, tick, par, fillPoly, line, poly, fit, P, degF, mkChoices, baseCtx, showAt, makeScene, register, notes, rd
   };
