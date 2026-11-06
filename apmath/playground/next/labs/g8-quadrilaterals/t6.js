@@ -214,7 +214,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E, S } = M, st = cx.step, sq = [A, B, C, D], O = pt(S / 2, -S / 2);
-      fit(b, { x0: -0.4, x1: 6.4, y0: -6.4, y1: 0.4 }, { t: 30, b: 74, l: 50, r: 50 });
+      fit(b, bboxOf(sq), { t: 50, b: 94, l: 50, r: 50 });
       fillPoly(b, sq, 'sky', 0.08); poly(b, sq, 'ink', 3.4);
       fillPoly(b, [E, B, C], 'green', 0.18); poly(b, [E, B, C], 'green', 3.4);
       line(b, A, E, 'ink', 3); line(b, D, E, 'ink', 3);

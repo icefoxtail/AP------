@@ -25,6 +25,45 @@ test('P1: mobile 66/114 degree labels remain distinct',()=>{
  for(let i=0;i<a.length;i++)for(let j=i+1;j<a.length;j++)assert.ok(!overlap(a[i],a[j]),`${a[i].text} overlaps ${a[j].text}`);
  for(const l of a)assert.ok(l.x0>=0&&l.y0>=0&&l.x1<=b.W&&l.y1<=b.H,`clipped ${l.text}`);
 });
+test('whole-side dimensions above q1-3 remain inside short and portrait stages',()=>{
+ for(const [W,H] of [[1440,610],[820,310],[684,420],[390,310]])for(const w of [6,8,10])for(const beta of [50,66,90,130])for(const tab of ['problem','review']){
+  const s=state('q1-3',{qaK:0,qaW:w,qaS:4,qaB:beta,qaE:2});s.step=tab==='review'?by('q1-3').steps(s).length:1;
+  const b=draw('q1-3',s,tab,W,H),dimension=labels(b).filter(l=>l.text===String(w));
+  assert.ok(dimension.length,'the stated whole side is still displayed');
+  for(const l of dimension)assert.ok(l.x0>=0&&l.y0>=0&&l.x1<=b.W&&l.y1<=b.H,`AD=${w}, angle=${beta}, ${tab}, ${W}×${H}: ${JSON.stringify(l)}`);
+ }
+});
+test('mobile exploration separates angle values from captions and point names',()=>{
+ const a=labels(draw('q1-1',state('q1-1'),'explore'));
+ for(const angleLabel of a.filter(l=>/^\d+°$/.test(l.text)))for(const caption of a.filter(l=>/포개|돌려/.test(l.text)))assert.ok(!overlap(angleLabel,caption),angleLabel.text+' overlaps the rotation instruction');
+ const b=labels(draw('q1-2',state('q1-2'),'explore')),selected=b.filter(l=>['57°','33°','90°','P','A','B'].includes(l.text));
+ assert.equal(selected.filter(l=>/°/.test(l.text)).length,3);
+ for(let i=0;i<selected.length;i++)for(let j=i+1;j<selected.length;j++)assert.ok(!overlap(selected[i],selected[j]),selected[i].text+' overlaps '+selected[j].text);
+ const c=labels(draw('q6-4',state('q6-4'),'explore')),E=c.find(l=>l.text==='E'),small=c.find(l=>l.text==='15°');
+ assert.ok(E&&small&&!overlap(E,small),'the 15-degree label must not merge with the name E');
+});
+test('the rotating triangle remains entirely visible between its start and finish',()=>{
+ for(const [W,H] of [[1000,510],[820,310],[684,420],[390,310]])for(const t of [.25,.5,.75]){
+  const b=draw('q1-1',state('q1-1',{qaT:t}),'explore',W,H);
+  const polygon=b.calls.find(c=>c.method==='path'&&c.args[0].length===3&&c.args[1].color==='amber');assert.ok(polygon,'the moving triangle is drawn');
+  for(const p of polygon.args[0]){const x=b.W/2+(p.x-(b.focus.x[0]+b.focus.x[1])/2)*b.k,y=b.H/2+(p.y-(b.focus.y[0]+b.focus.y[1])/2)*b.k;assert.ok(x>=0&&x<=W&&y>=0&&y<=H,`rotation ${t} at ${W}×${H}: ${x},${y}`);}
+ }
+});
+test('diagonal targets and small trapezoid angles stay separate from adjacent labels',()=>{
+ const a=labels(draw('q1-5',state('q1-5'),'explore')),caption=a.find(l=>l.text.includes('같은 표시의 각')),width=a.find(l=>l.text==='10');
+ assert.ok(caption&&width&&!overlap(caption,width),'equal-angle caption overlaps the upper side length');
+ for(const tab of ['problem','review']){
+  const s=state('q1-4',{qaK:1});s.step=by('q1-4').steps(s).length;
+  const b=labels(draw('q1-4',s,tab)),target=b.find(l=>l.text===(tab==='problem'?'x':'5')),diagonal=b.find(l=>l.text==='BD=12');
+  assert.ok(target&&diagonal&&!overlap(target,diagonal),'AB target overlaps BD');
+ }
+ for(const [W,H] of [[1000,510],[820,310],[684,420],[390,310]])for(const tab of ['problem','review','explore']){
+  const s=state('q4-1',{qdTa:7,qdTb:8,qdTt:51,qdK:0});s.step=by('q4-1').steps(s).length;
+  const b=draw('q4-1',s,tab,W,H),a=labels(b),angles=a.filter(l=>/^(?:51°|129°|129|x)$/.test(l.text));
+  assert.ok(angles.length>=2);for(let i=0;i<angles.length;i++)for(let j=i+1;j<angles.length;j++)assert.ok(!overlap(angles[i],angles[j]),`${tab}: shallow trapezoid angle overlap`);
+  for(const l of angles)assert.ok(l.x0>=0&&l.y0>=0&&l.x1<=W&&l.y1<=H,`${tab}: clipped external trapezoid angle`);
+ }
+});
 test('angle-bisector and extension questions no longer receive unrelated theory',()=>{
  const a=by('q1-2').steps(state('q1-2')).join(' ');assert.match(a,/∠AEB/);assert.match(a,/33/);assert.doesNotMatch(a,/∠APB/);
  const b=by('q1-5').steps(state('q1-5',{qaK:1,qaPa:3,qaPb:9})).join(' ');assert.match(b,/9−3=6/);assert.match(b,/C 바깥/);

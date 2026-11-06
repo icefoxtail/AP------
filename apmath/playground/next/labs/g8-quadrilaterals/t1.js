@@ -47,13 +47,14 @@
     model: (s) => { const w = ci(s.qaW, 6, 10), sd0 = ci(s.qaS, 3, 5), beta = ci(s.qaB, 50, 130); return { w, s: sd0, beta, alpha: 180 - beta, K: s.qaK || 0, p: para(w, sd0, beta) }; },
     draw(b, s, M, cx) {
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts);
-      fit(b, bx, { t: 58, b: 76, l: 58, r: 58 });
+      const t = cx.review ? (st >= 2 ? 1 : 0) : cx.t;
+      const R = !cx.problem && t > 0.001 && st >= 1 ? [A, B, C].map((q) => rotP(q, O, 180 * t)) : null;
+      const frame = R ? bboxOf([...pts, ...R]) : bx;
+      fit(b, frame, { t: 58, b: b.W < 560 ? 108 : 76, l: 58, r: 58 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       if (cx.problem) { drawProb1(b, M); return; }
       if (st >= 1) line(b, A, C, 'green', 3, { dash: [8, 5] });
-      const t = cx.review ? (st >= 2 ? 1 : 0) : cx.t;
-      if (t > 0.001 && st >= 1) {
-        const R = [A, B, C].map((q) => rotP(q, O, 180 * t));
+      if (R) {
         fillPoly(b, R, 'amber', 0.16); poly(b, R, 'amber', 3.2, { alpha: 0.95 });
       }
       parAll(b, { A, B, C, D }, st >= 3 ? 0.25 : 0.5);
@@ -77,7 +78,7 @@
       dotsABCD(b, p);
       if (!cx.review) handleA(b, s, 'qaB', p, 50, 130); else b.point(A, { color: 'ink', r: 4.5 });
       const cap = cx.review ? ['대각선 AC를 그어요', '엇각이 같고 AC가 공통 → △ABC ≡ △CDA', `AB=DC=${M.s}, BC=AD=${M.w}, ∠B=∠D=${M.beta}°`][clamp(st, 1, 3) - 1] : t >= 0.999 ? '△ABC가 △CDA에 꼭 포개져요 (ASA 합동)' : '▶를 눌러 △ABC를 돌려 포개 보세요';
-      capLine(b, pt((bx.x0 + bx.x1) / 2, 0), cap, t >= 0.999 || st >= 2 ? 'green' : 'amber', { dy: 44 });
+      capLine(b, pt((bx.x0 + bx.x1) / 2, frame.y1), cap, t >= 0.999 || st >= 2 ? 'green' : 'amber', { dy: b.W < 560 ? 76 : 44 });
     },
     stepT: (n) => (n >= 2 ? 1 : 0),
     steps: (M) => [
@@ -128,7 +129,8 @@
     },
     draw(b, s, M, cx) {
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts);
-      fit(b, bx, { t: 40, b: 64, l: 46, r: 46 });
+      const smallExplore = !cx.problem && b.W < 560;
+      fit(b, bx, { t: smallExplore ? 78 : 40, b: smallExplore ? 82 : 64, l: smallExplore ? 70 : 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
       if (cx.problem) {
@@ -144,9 +146,13 @@
       }
       const Aa = M.ha, Bb = M.hb;
       if (st >= 2) {
-        ang(b, A, B, M.P, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(Aa), size: 14, labelDist: 56 }); ang(b, A, M.P, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true });
-        ang(b, B, A, M.P, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true, label: dg(Bb), size: 14, labelDist: 56 }); ang(b, B, M.P, C, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true });
-        ang(b, M.P, A, B, { color: 'amber', r: 24, size: 15, label: st >= 3 ? '90°' : '', labelDist: 40 });
+        ang(b, A, B, M.P, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: smallExplore ? '' : dg(Aa), size: 14, labelDist: 56 }); ang(b, A, M.P, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true });
+        ang(b, B, A, M.P, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true, label: smallExplore ? '' : dg(Bb), size: 14, labelDist: 56 }); ang(b, B, M.P, C, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true });
+        if (smallExplore) {
+          outsideAng(b, A, B, M.P, dg(Aa), 'sky'); outsideAng(b, B, A, M.P, dg(Bb), 'rose');
+          if (st >= 3) outsideAng(b, M.P, A, B, '90°', 'amber');
+          b.right(M.P, A, B, { size: 11, color: 'amber' });
+        } else ang(b, M.P, A, B, { color: 'amber', r: 24, size: 15, label: st >= 3 ? '90°' : '', labelDist: 40 });
         b.point(M.P, { color: 'amber', r: 5 }); T(b, M.P, 'P', { dy: -16, size: 16, color: 'amber' });
       } else {
         ang(b, A, B, D, { color: 'sky', rings: 1, r: 28, label: dg(M.alpha), size: 15, labelDist: 56 }); ang(b, B, C, A, { color: 'rose', rings: 2, r: 28, label: dg(M.beta), size: 15, labelDist: 56 });
@@ -189,7 +195,8 @@
     },
     draw(b, s, M, cx) {
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, bx = bboxOf(p.pts), { E, F } = M;
-      fit(b, bx, { t: 40, b: 64, l: 46, r: 46 });
+      // AD 전체 길이는 도형 위의 치수선과 글자까지 함께 화면 안에 둡니다.
+      fit(b, bx, { t: cx.problem && M.K === 0 ? 74 : 40, b: 64, l: 46, r: 46 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D });
       const K = M.K;
@@ -271,7 +278,7 @@
       if (!cx.problem || M.K === 0) sd(b, A, B, O, `${M.c}`, 'sky');
       if (cx.problem) {
         diagLab(b, A, C, 0.2, `AC=${M.ac}`, 'sky'); diagLab(b, B, D, 0.2, `BD=${M.bd}`, 'sky');
-        if (M.K === 1) { segTag(b, A, B, 0.5, 'x', -22, 'rose', { size: 18 }); capLine(b, pt((A.x + D.x) / 2, 0), `△ABO의 둘레 = ${M.per}`, 'amber', { dy: 44 }); }
+        if (M.K === 1) { sd(b, A, B, O, 'x', 'rose', { size: 18, gap: 28 }); capLine(b, pt((A.x + D.x) / 2, 0), `△ABO의 둘레 = ${M.per}`, 'amber', { dy: 44 }); }
       } else {
         segTag(b, A, O, 0.5, `${M.p}`, 14, 'amber'); segTag(b, O, C, 0.5, `${M.p}`, 14, 'sky'); segTag(b, B, O, 0.5, `${M.q}`, -14, 'amber'); segTag(b, O, D, 0.5, `${M.q}`, -14, 'sky');
       }
@@ -315,7 +322,7 @@
     draw(b, s, M, cx) {
       if (cx.problem && M.K === 1) { drawIso1(b, M); return; }
       const p = M.p, { A, B, C, D, O } = p, pts = p.pts, st = cx.step, E = M.E;
-      fit(b, bboxOf(p.pts), { t: 48, b: cx.problem ? 90 : 76, l: 54, r: 54 });
+      fit(b, bboxOf(p.pts), { t: !cx.problem && b.W < 560 ? 90 : 48, b: cx.problem ? 90 : 76, l: 54, r: 54 });
       fillPoly(b, pts, 'sky', 0.1); poly(b, pts, 'ink', 3.4);
       parAll(b, { A, B, C, D }, 0.25);
       line(b, A, E, 'green', 3.4);
@@ -327,7 +334,7 @@
         dotsABCD(b, p); return;
       }
       const ex = st >= 2 || !cx.review;
-      if (b.W < 560) capLine(b, pt(M.w / 2, -M.s), `같은 표시의 각: ${M.ha}°`, 'sky', { dy: -20 });
+      if (b.W < 560) capLine(b, mid(A, D), `같은 표시의 각: ${M.ha}°`, 'sky', { dy: -58 });
       fillPoly(b, [A, B, E], 'amber', st >= 3 ? 0.2 : 0.1);
       ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 44 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 46 });
       if (ex) ang(b, E, A, B, { color: 'sky', rings: 1, r: 26, hash: true, label: b.W < 560 ? null : dg(M.ha), size: 14, labelDist: 46 });
