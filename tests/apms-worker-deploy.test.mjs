@@ -131,15 +131,26 @@ test("Pages release: worker_order is a required, bounded, gate-listed step and t
   assert.match(step, /node tools\/ci\/apms-worker-deploy-gate\.mjs/);
   assert.match(step, /GITHUB_TOKEN: \$\{\{ github\.token \}\}/);
   assert.match(pages, /\n {2}actions: read\n/);
+  assert.match(pages, /\n {2}contents: read\n/, "the Pages build reads a registered snapshot");
+  assert.match(build, /ref: \$\{\{ inputs\.registered_main_sha \|\| github\.sha \}\}/, "Worker ordering belongs to the exact registered checkout");
+  assert.doesNotMatch(step, /archive_needed/, "Archive-only proof reuse cannot skip external Worker readiness");
   const required = (/--required (\S+)/.exec(pages) || [])[1].split(",");
   assert.ok(required.includes("worker_order"), "worker_order is a REQUIRED gate entry");
-  assert.ok(!(/--skip-ok (\S+)/.exec(pages) || [])[1].split(",").includes("worker_order"), "it may not be skipped");
+  assert.ok(required.includes("registered") && required.includes("identity"), "ordering cannot publish without the registration/content identity proof");
+  const skipArguments = [...pages.matchAll(/--skip-ok (\S+)/g)].map(match => match[1]);
+  const skipAssignments = [...pages.matchAll(/^\s*skip_ok='([^']*)'/gm)].map(match => match[1]);
+  assert.ok(skipArguments.length && skipAssignments.length, "inspect both the gate argument and its conditional skip list");
+  for (const value of [...skipArguments, ...skipAssignments])
+    assert.ok(!value.split(",").includes("worker_order"), "Worker readiness may not be skipped by the actual dynamic list");
   const index = id => steps.findIndex(s => new RegExp(`id: ${id}\\b`).test(s));
   assert.ok(index("worker_order") > index("staged_site_chrome") && index("worker_order") < index("release_gate"));
-  assert.ok(index("release_gate") < steps.findIndex(s => /upload-pages-artifact@/.test(s)), "Pages artifact is uploaded only after the gate");
+  assert.ok(index("release_gate") < index("release_receipt") && index("release_receipt") < steps.findIndex(s => /upload-pages-artifact@/.test(s)),
+    "the exact registered receipt and Pages artifact are emitted only after Worker readiness passes the gate");
   assert.match(pages, /\n {4}needs: build\n/);
+  assert.match(pages, /needs\.build\.outputs\.ready == 'true' && needs\.build\.outputs\.needed == 'true'/);
   // merge independence: the ordering gate lives only in the Pages workflow; the CI workflow never waits for it.
-  assert.ok(!/apms-worker-deploy/.test(read(".github/workflows/ci.yml")));
+  assert.doesNotMatch(read(".github/workflows/ci.yml"), /node tools\/ci\/apms-worker-deploy-gate\.mjs|gh workflow run apms-worker-deploy\.yml/,
+    "CI may test the gate but does not wait for or trigger production Worker deployment");
 });
 
 // ---- ordering-gate decision logic with a fake API ----------------------------------------------------------------

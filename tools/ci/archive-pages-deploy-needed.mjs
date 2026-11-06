@@ -1,53 +1,34 @@
 #!/usr/bin/env node
-// Self-heal probe for .github/workflows/archive-pages-release.yml (scheduled runs only).
-//
-// A cancelled or timed-out release run can leave main ahead of the live site (its `[skip ci]`
-// registration commit is never deployed and nothing triggers a new run). A scheduled run asks this probe
-// whether the latest successful github-pages deployment already serves main; if so the expensive
-// build is skipped. Every other event (push, workflow_run, workflow_dispatch) always builds.
-//
-// The deployment API records the SHA that triggered the deploy, while the build job then pushes a
-// `chore(archive): sync registration artifacts [skip ci]` commit on top and deploys that registered
-// tree. So "deployed SHA is an ancestor of main and every commit after it is such a bot sync commit"
-// also means the live site already serves main. Any doubt (API error, no deployment, other commits)
-// answers needed=true: it is always safe to build, the release gate decides whether to deploy.
-//
-//   GITHUB_TOKEN=... GITHUB_REPOSITORY=o/r node tools/ci/archive-pages-deploy-needed.mjs [--main-sha <sha>]
-// Writes needed=true|false and reason=... to $GITHUB_OUTPUT.
+// Compare effective student output on EVERY event. Commit subjects and unrelated main movement
+// are not evidence that a package was published. A missing/unreadable receipt always requests checks.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
+import { compareReleaseIdentity, computeReleaseIdentity, RELEASE_RECEIPT, validateReleaseIdentity } from "./archive-pages-release-identity.mjs";
 
-export const SYNC_SUBJECT = /^chore\(archive\): sync registration artifacts \[skip ci\]/;
-const BOT = "github-actions[bot]";
-
-export async function latestSuccessfulDeploymentSha(get, repo) {
+// Kept for the independent APMS Worker and R2 ordering gates.
+export async function latestSuccessfulDeploymentSha(get, repo, { readLive = readLiveReceipt,
+  configuredURL = process.env.ARCHIVE_PAGES_RELEASE_RECEIPT_URL || "", allowLegacy = true } = {}) {
+  try {
+    const live = await readLive(receiptUrl({ repo, configured: configuredURL }));
+    // The Actions deployment SHA can be the dispatch tip, not the registered checkout. Once a
+    // receipt exists it is the only valid source of that exact deployed snapshot.
+    return validateReleaseIdentity(live, { requireGate: true }) ? live.registeredMainSHA : null;
+  } catch (error) {
+    // A confirmed 404 is the pre-receipt deployment format. Timeout, malformed JSON and invalid
+    // new receipts are unknown, never permission to use a possibly newer trigger SHA.
+    if (error?.status !== 404) return null;
+  }
+  // R2 byte-identity validation cannot reuse a legacy presence-only image gate.
+  // Keep the old deployment fallback available to the independent Worker gate.
+  if (!allowLegacy) return null;
   const deployments = await get(`/repos/${repo}/deployments?environment=github-pages&per_page=20`);
   for (const d of (Array.isArray(deployments) ? deployments : []).slice(0, 10)) {
     const statuses = await get(`/repos/${repo}/deployments/${d.id}/statuses?per_page=1`);
     if (Array.isArray(statuses) && statuses[0] && statuses[0].state === "success") return d.sha;
   }
   return null;
-}
-
-export async function decideDeployNeeded({ get, repo, eventName, mainSha }) {
-  if (eventName !== "schedule") return { needed: true, reason: `event ${eventName} always builds` };
-  try {
-    const deployedSha = await latestSuccessfulDeploymentSha(get, repo);
-    if (!deployedSha) return { needed: true, reason: "no successful github-pages deployment found" };
-    if (deployedSha === mainSha) return { needed: false, reason: `live site already serves main ${mainSha}` };
-    const cmp = await get(`/repos/${repo}/compare/${deployedSha}...${mainSha}?per_page=100`);
-    const commits = Array.isArray(cmp?.commits) ? cmp.commits : [];
-    if (cmp?.status !== "ahead" || !commits.length || Number(cmp.total_commits) !== commits.length) {
-      return { needed: true, reason: `deployed ${deployedSha} is not a fully listed ancestor of main (${cmp?.status || "unknown"})` };
-    }
-    const foreign = commits.filter(c => !(SYNC_SUBJECT.test(String(c.commit?.message || "").split("\n")[0]) && c.commit?.author?.name === BOT));
-    if (foreign.length) return { needed: true, reason: `${foreign.length} commit(s) after deployed ${deployedSha} are not registration syncs` };
-    return { needed: false, reason: `only registration sync commits follow deployed ${deployedSha}; main ${mainSha} is already served` };
-  } catch (error) {
-    return { needed: true, reason: `probe failed (${String(error.message || error).slice(0, 120)}); building to be safe` };
-  }
 }
 
 export function makeGet(token) {
@@ -61,31 +42,132 @@ export function makeGet(token) {
   };
 }
 
-// Never throws and never returns needed=false unless decideDeployNeeded proved the live site serves main:
-// a crash of this probe must not be able to skip a push build. Non-schedule events answer needed=true before
-// touching git or the network.
-export async function probe({ args = [], env = process.env, headSha = () => execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(), makeGetFn = makeGet } = {}) {
+export function receiptUrl({ repo, configured = "" }) {
+  if (configured) {
+    const parsed = new URL(configured);
+    if (!["https:", "http:"].includes(parsed.protocol) || parsed.username || parsed.password)
+      throw new Error("release receipt URL must be an HTTP(S) URL without credentials");
+    return parsed.href;
+  }
+  const [owner, name, extra] = String(repo || "").split("/");
+  if (!owner || !name || extra || !/^[a-z0-9_.-]+$/i.test(owner) || !/^[a-z0-9_.-]+$/i.test(name))
+    throw new Error("GITHUB_REPOSITORY is missing or invalid");
+  const sitePath = name.toLowerCase() === `${owner.toLowerCase()}.github.io` ? "" : `${encodeURIComponent(name)}/`;
+  return `https://${owner.toLowerCase()}.github.io/${sitePath}${RELEASE_RECEIPT}`;
+}
+
+export async function readLiveReceipt(url, { fetchImpl = fetch, timeoutMs = 20000 } = {}) {
+  const response = await fetchImpl(url, { cache: "no-store", headers: { "Cache-Control": "no-cache" }, signal: AbortSignal.timeout(timeoutMs) });
+  if (response.status !== 200) {
+    const error = new Error(`live release receipt HTTP ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  const chunks = [];
+  let bytes = 0;
+  if (!response.body) throw new Error("live release receipt has no body");
+  for await (const chunk of response.body) {
+    bytes += chunk.length;
+    if (bytes > 16384) throw new Error("live release receipt is unexpectedly large");
+    chunks.push(Buffer.from(chunk));
+  }
+  return JSON.parse(Buffer.concat(chunks).toString("utf8"));
+}
+
+export function releaseAncestry({ candidateSHA, liveSHA, sourceRoot = process.cwd() }) {
+  if (candidateSHA === liveSHA) return "equal";
+  for (const sha of [candidateSHA, liveSHA]) execFileSync("git", ["cat-file", "-e", `${sha}^{commit}`], { cwd: sourceRoot, stdio: ["ignore", "pipe", "pipe"] });
+  const ancestor = (before, after) => {
+    try { execFileSync("git", ["merge-base", "--is-ancestor", before, after], { cwd: sourceRoot, stdio: ["ignore", "pipe", "pipe"] }); return true; }
+    catch (error) { if (error.status === 1) return false; throw error; }
+  };
+  if (ancestor(candidateSHA, liveSHA)) return "superseded";
+  if (ancestor(liveSHA, candidateSHA)) return "forward";
+  return "diverged";
+}
+
+function unknownLiveIdentity({ candidate, fixedMainSHA, reason }) {
+  const current = SHA.test(String(fixedMainSHA || "")) && candidate.registeredMainSHA === fixedMainSHA;
+  return { needed: true, archiveNeeded: true, blocked: !current, status: current ? "VALIDATE" : "BLOCKED",
+    reason: current
+      ? `${reason}; candidate equals fixed fetched main ${fixedMainSHA}; full checks required, no validation result is reused`
+      : `${reason}; registered ${candidate.registeredMainSHA} is not the fixed fetched main ${fixedMainSHA || "(unavailable)"}; refusing to replace a possibly newer student site` };
+}
+
+const SHA = /^[a-f0-9]{40}$/;
+
+export async function decideDeployNeeded({ candidate, readLive, fixedMainSHA = "",
+  compareSnapshots = ({ candidateSHA, liveSHA }) => candidateSHA === liveSHA ? "equal" : "unknown" }) {
+  let live;
+  try { live = await readLive(); }
+  catch (error) {
+    return unknownLiveIdentity({ candidate, fixedMainSHA,
+      reason: `live identity unknown (${String(error?.message || error).slice(0, 160)})` });
+  }
+  if (!validateReleaseIdentity(live, { requireGate: true })) return unknownLiveIdentity({ candidate, fixedMainSHA,
+    reason: "no valid successful live release receipt" });
+  let relation;
+  try { relation = compareSnapshots({ candidateSHA: candidate.registeredMainSHA, liveSHA: live.registeredMainSHA }); }
+  catch (error) { relation = `unknown (${String(error.message || error).slice(0, 120)})`; }
+  if (relation === "superseded") return { needed: false, archiveNeeded: true, blocked: false, status: "SUPERSEDED",
+    reason: `SUPERSEDED: registered ${candidate.registeredMainSHA} is older than published ${live.registeredMainSHA}; no validation result is reused` };
+  if (!["equal", "forward"].includes(relation)) return { needed: true, archiveNeeded: true, blocked: true, status: "BLOCKED",
+    reason: `published registered SHA ancestry is ${relation}; refusing to replace a possibly newer student site` };
+  const result = compareReleaseIdentity(candidate, live);
+  return { ...result, blocked: false, status: result.needed ? "VALIDATE" : "NO_OP" };
+}
+
+function parseArgs(argv) {
+  const names = { "--registered-main-sha": "registeredMainSHA", "--main-sha": "registeredMainSHA", "--identity-file": "identityFile",
+    "--receipt-url": "receiptURL", "--root": "sourceRoot", "--manifest": "manifestPath" };
+  const opt = {};
+  for (let i = 0; i < argv.length; i += 2) {
+    const key = names[argv[i]];
+    if (!key || !argv[i + 1]) throw new Error(`unknown or valueless argument: ${argv[i]}`);
+    opt[key] = argv[i + 1];
+  }
+  return opt;
+}
+
+// Unknown input, Git, network or parser state always means validation is needed. No event bypasses
+// this content comparison, and an empty output must also default to true in the workflow.
+export async function probe({ args = [], env = process.env, sourceRoot = process.cwd(),
+  headSha = root => execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(),
+  fetchedMainSha = root => execFileSync("git", ["rev-parse", "--verify", "refs/remotes/origin/main"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(),
+  computeIdentity = computeReleaseIdentity, readLive = readLiveReceipt } = {}) {
+  let candidate, fixedMainSHA = "";
   try {
-    const eventName = env.GITHUB_EVENT_NAME || "";
-    if (eventName !== "schedule") return { needed: true, reason: `event ${eventName} always builds` };
-    const mainSha = args[0] === "--main-sha" && args[1] ? args[1] : headSha();
-    return await decideDeployNeeded({ get: makeGetFn(env.GITHUB_TOKEN || ""), repo: env.GITHUB_REPOSITORY || "", eventName, mainSha });
+    const opt = parseArgs(args);
+    const root = path.resolve(opt.sourceRoot || sourceRoot);
+    const registeredMainSHA = opt.registeredMainSHA || headSha(root);
+    // Read the checkout's fetched ref exactly once. Never fetch moving main or
+    // switch the package snapshot to answer whether an unknown live site is newer.
+    try { fixedMainSHA = fetchedMainSha(root); } catch { fixedMainSHA = ""; }
+    candidate = await computeIdentity({ sourceRoot: root, registeredMainSHA, ...(opt.manifestPath ? { manifestPath: opt.manifestPath } : {}) });
+    if (opt.identityFile) {
+      fs.mkdirSync(path.dirname(path.resolve(opt.identityFile)), { recursive: true });
+      fs.writeFileSync(opt.identityFile, `${JSON.stringify(candidate)}\n`);
+    }
+    const url = receiptUrl({ repo: env.GITHUB_REPOSITORY, configured: opt.receiptURL || env.ARCHIVE_PAGES_RELEASE_RECEIPT_URL || "" });
+    return await decideDeployNeeded({ candidate, fixedMainSHA, readLive: () => readLive(url),
+      compareSnapshots: pair => releaseAncestry({ ...pair, sourceRoot: root }) });
   } catch (error) {
-    return { needed: true, reason: `probe crashed (${String(error?.message || error).slice(0, 120)}); building to be safe` };
+    if (candidate) return unknownLiveIdentity({ candidate, fixedMainSHA,
+      reason: `probe crashed (${String(error?.message || error).slice(0, 160)})` });
+    return { needed: true, archiveNeeded: true, blocked: false, status: "VALIDATE", reason: `probe crashed (${String(error?.message || error).slice(0, 160)}); checks required` };
   }
 }
 
 async function main() {
   const result = await probe({ args: process.argv.slice(2) });
-  console.log(`needed=${result.needed} (${result.reason})`);
+  console.log(`needed=${result.needed} archive_needed=${result.archiveNeeded} status=${result.status} (${result.reason})`);
   try {
-    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `needed=${result.needed}\nreason=${result.reason.replace(/[\r\n]/g, " ")}\n`);
-  } catch (error) {
-    // The workflow also defaults an empty `needed` output to true.
-    console.error(`could not write GITHUB_OUTPUT: ${error?.message || error}`);
-  }
+    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT,
+      `needed=${result.needed}\narchive_needed=${result.archiveNeeded}\nblocked=${result.blocked}\nstatus=${result.status}\nreason=${result.reason.replace(/[\r\n]/g, " ")}\n`);
+  } catch (error) { console.error(`could not write GITHUB_OUTPUT: ${error?.message || error}`); }
+  if (result.blocked) process.exitCode = 1;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await main(); } catch (error) { console.log(`needed=true (probe crashed: ${String(error?.message || error).slice(0, 120)})`); }
+  try { await main(); } catch (error) { console.log(`needed=true archive_needed=true (probe crashed: ${String(error?.message || error).slice(0, 120)})`); }
 }

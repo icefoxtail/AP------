@@ -7,11 +7,12 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { createServer } from "node:http";
+import crypto from "node:crypto";
 import { createRequire } from "node:module";
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
-  gitAllImages, gitChangedImages, headCheck, planImageCheck, r2UrlFor, waitForImages
+  gitAllImages, gitChangedImages, gitImageIdentity, contentCheck, planImageCheck, r2UrlFor, waitForImages
 } from "../tools/ci/archive-pages-image-r2-gate.mjs";
 
 const require = createRequire(import.meta.url);
@@ -102,16 +103,39 @@ test("git range: added, modified and renamed images are listed; deleted ones and
   assert.deepEqual(gitChangedImages({ base: git("rev-parse", "HEAD"), cwd: dir }).files, [], "no image change in the range");
 });
 
-// ---- one HEAD request ------------------------------------------------------------------------------------------------
-test("headCheck: 200 is present; 404, other statuses and network errors are not yet present", async () => {
-  const respond = status => async (url, init) => { assert.equal(init.method, "HEAD"); return { status }; };
-  assert.deepEqual(await headCheck("https://x/a.png", { fetchImpl: respond(200) }), { present: true });
-  assert.deepEqual(await headCheck("https://x/a.png", { fetchImpl: respond(404) }), { present: false, detail: "HTTP 404" });
-  assert.equal((await headCheck("https://x/a.png", { fetchImpl: respond(503) })).present, false);
-  assert.equal((await headCheck("https://x/a.png", { fetchImpl: respond(301) })).present, false, "a redirect is not the image");
-  const boom = await headCheck("https://x/a.png", { fetchImpl: async () => { throw new TypeError("fetch failed"); } });
+// ---- exact registered bytes from the canonical URL -------------------------------------------------------------------
+test("contentCheck: GET 200 passes only with the expected bytes; stale same-path images remain pending", async () => {
+  const bytes = Buffer.from("new bytes");
+  const expected = { expectedSha256: crypto.createHash("sha256").update(bytes).digest("hex"), expectedBytes: bytes.length };
+  const respond = (status, body = bytes) => async (url, init) => {
+    assert.equal(url, "https://x/a.png", "no fabricated version query or alternate URL");
+    assert.equal(init.method, "GET"); assert.equal(init.cache, "no-store");
+    return new Response(body, { status });
+  };
+  assert.equal((await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(200) })).present, true);
+  assert.deepEqual(await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(404) }), { present: false, detail: "HTTP 404" });
+  assert.equal((await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(503) })).present, false);
+  assert.equal((await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(301) })).present, false, "a redirect is not the image");
+  const stale = await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(200, "old bytes") });
+  assert.equal(stale.present, false); assert.match(stale.detail, /SHA-256 mismatch/);
+  const short = await contentCheck("https://x/a.png", { ...expected, fetchImpl: respond(200, "short") });
+  assert.equal(short.present, false); assert.match(short.detail, /byte length mismatch/);
+  assert.equal((await contentCheck("https://x/a.png", { fetchImpl: respond(200) })).present, false, "missing expected digest cannot pass");
+  const boom = await contentCheck("https://x/a.png", { ...expected, fetchImpl: async () => { throw new TypeError("fetch failed"); } });
   assert.equal(boom.present, false);
   assert.match(boom.detail, /request failed/);
+});
+
+test("image digest comes from the selected Git snapshot, not a dirty working-tree replacement", t => {
+  const { dir, git, put } = tempRepo(t);
+  const file = "archive/assets/images/a.png";
+  put(file, "registered bytes"); git("add", "-A"); git("commit", "-qm", "registered");
+  const base = git("rev-parse", "HEAD"), before = gitImageIdentity({ file, cwd: dir });
+  put(file, "working-tree bytes");
+  assert.deepEqual(gitImageIdentity({ file, cwd: dir }), before);
+  git("add", "-A"); git("commit", "-qm", "replacement");
+  assert.notEqual(gitImageIdentity({ file, cwd: dir }).expectedSha256, before.expectedSha256);
+  assert.deepEqual(gitImageIdentity({ file, head: base, cwd: dir }), before);
 });
 
 // ---- bounded wait with a fake clock --------------------------------------------------------------------------------------
@@ -203,12 +227,12 @@ test("CLI: no image change passes at once and makes no request; missing images f
   assert.match(failing.stdout, /::error title=Pages release waits for the R2 exam images::/);
   assert.match(failing.stdout, /archive\/assets\/images\/25_new\/q1\.png/);
 
-  // A real HTTP server plays R2: the new image appears after the first request, as if the copy finished meanwhile.
+  // A real HTTP server plays R2: an old cached image appears first, then the exact registered bytes.
   const seen = [];
   const server = createServer((request, response) => {
     seen.push(`${request.method} ${request.url}`);
-    response.statusCode = seen.length >= 2 ? 200 : 404;
-    response.end();
+    response.statusCode = 200;
+    response.end(seen.length >= 2 ? "new" : "old");
   });
   await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
   t.after(() => server.close());
@@ -221,8 +245,9 @@ test("CLI: no image change passes at once and makes no request; missing images f
   });
   assert.equal(arrives.code, 0, arrives.out);
   assert.match(arrives.out, /IMAGE_ORDER_PASS/);
-  assert.ok(seen.every(line => line.startsWith("HEAD /exams/images/25_new/q1.png")), seen.join("\n"));
-  assert.ok(seen.length >= 2, "retried after the first 404");
+  assert.ok(seen.every(line => line === "GET /exams/images/25_new/q1.png"), seen.join("\n"));
+  assert.ok(seen.length >= 2, "retried after the HTTP-200 same-path byte mismatch");
+  assert.match(arrives.out, /SHA-256 mismatch/);
   const text = fs.readFileSync(evidence, "utf8");
   assert.match(text, /image_order=IMAGE_ORDER_NOT_NEEDED/);
   assert.match(text, /image_order=IMAGE_ORDER_FAIL/);
@@ -239,6 +264,10 @@ test("CLI: an unknown release range verifies every image instead of skipping, an
   assert.match(unknown.stdout, /archive\/assets\/images\/old\/q1\.png/);
   assert.notEqual(runCli(dir, ["--nope"]).status, 0);
   assert.notEqual(runCli(dir, ["--timeout-minutes", "0"]).status, 0);
+  const productionUnknown = runCli(dir, ["--fallback-base", git("rev-parse", "HEAD"), "--r2-base", "http://127.0.0.1:9", "--timeout-minutes", "0.002", "--interval-seconds", "0.02"], { GITHUB_REPOSITORY: "o/r" });
+  assert.equal(productionUnknown.status, 1, "a push-before tip is not a proven published base");
+  assert.match(productionUnknown.stdout, /uncertain=true/);
+  assert.match(productionUnknown.stdout, /archive\/assets\/images\/old\/q1\.png/);
 });
 
 // ---- workflow wiring -------------------------------------------------------------------------------------------------------
@@ -254,7 +283,7 @@ test("Pages release: image_order is a required, bounded, non-skippable step betw
   assert.ok(waitMin > 0 && waitMin < timeout, "wait is bounded below the step cap");
   assert.match(step, /node tools\/ci\/archive-pages-image-r2-gate\.mjs/);
   assert.match(step, /GITHUB_TOKEN: \$\{\{ github\.token \}\}/, "the token reads the latest successful deployment");
-  assert.match(step, /--fallback-base "\$\{\{ github\.event\.before \}\}"/);
+  assert.doesNotMatch(step, /--fallback-base|github\.event\.before/, "only the actual published receipt supplies the release base");
   const required = (/--required (\S+)/.exec(pages) || [])[1].split(",");
   assert.ok(required.includes("image_order"), "image_order is a REQUIRED gate entry");
   assert.ok(!(/--skip-ok (\S+)/.exec(pages) || [])[1].split(",").includes("image_order"), "it may not be skipped");
@@ -273,4 +302,11 @@ test("the package, the R2 copy and the registered test list agree", () => {
   assert.match(copy, /paths:\n\s+- "archive\/assets\/images\/\*\*"/, "the copy starts on the same push that changes images");
   const manifest = JSON.parse(read("tools/archive-pages-release-manifest.json"));
   assert.deepEqual(manifest.trees.find(tree => tree.path === "archive/assets").exclude, ["images"]);
+});
+
+// A legacy Pages success only ran the old existence probe. It cannot certify
+// unchanged image bytes for the first exact-content release.
+test("production image base requires a byte-verified live registered receipt", () => {
+  const script = read("tools/ci/archive-pages-image-r2-gate.mjs");
+  assert.match(script, /latestSuccessfulDeploymentSha\(get, repo, \{ allowLegacy: false \}\)/);
 });

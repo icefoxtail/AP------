@@ -40,16 +40,16 @@ A new exam's images must be on R2 before the student site that references them g
 verifications, step cap 15 min):
 
 1. Take the images added, modified or renamed (`git diff --diff-filter=ACMR`) between the latest successful
-   github-pages deployment (the same base `worker_order` uses; fallback: the push's `before` SHA) and HEAD.
+   live release receipt registered SHA (the same base `worker_order` uses) and the exact registered checkout. A confirmed legacy receipt 404 permits the prior deployment API fallback; an invalid or unreachable receipt does not.
    Unknown/unreachable base: every image in HEAD is verified (fail closed, never skipped).
-2. `HEAD https://img.wangjiedu.com/exams/images/<encoded key>` for each (16 in parallel). 200 = present.
+2. `GET https://img.wangjiedu.com/exams/images/<encoded key>` for each (bounded parallelism). The response must be HTTP 200 and its SHA-256 must match the exact registered Git image bytes.
 3. Missing ones are retried every 30 s for up to 14 minutes, while `r2-archive-assets-copy.yml` (started by the same
    push) finishes. Still missing at the end: the step fails, the release gate fails, `deploy` does not run and the
    previous verified site stays live. Fix by running Actions > R2 Archive Assets Copy > Run workflow on main and then
    re-running the release.
 4. No image change in the range: passes at once with no network request.
 
-Presence only, not bytes: a modified image keeps its R2 key, so it counts as present until the copy overwrites it.
+A modified image keeps its canonical R2 key. HTTP 200 with older bytes remains unready until the copy replaces them. An unknown deployment base checks all registered images; it never uses the triggering push's before SHA to hide earlier undeployed changes.
 Git main merges never wait for this gate. Tests: `tests/archive-pages-image-r2-gate.test.mjs`.
 
 ### Rollback (ship the images from Pages again)
@@ -137,3 +137,5 @@ Verify with `curl -I -H "Origin: https://icefoxtail.github.io" https://img.wangj
 `apmath/js/report-print.js` (parent report PNG) renders no exam figures. Optional hardening on Cloudflare: a
 response-header rule adding `Vary: Origin` to every `img.wangjiedu.com` response would stop a plain load from ever
 poisoning the cache for CORS loads.
+
+첫 exact-byte release에는 legacy Pages 성공 SHA를 이미지 검증 base로 사용하지 않습니다. 기존 HEAD 존재 확인은 같은 경로의 bytes를 증명하지 않으므로, 유효한 `_archive-release.json`이 없으면 기존 unknown-base 경로에서 모든 등록 이미지 bytes를 확인합니다. 이후에는 해당 live receipt 이후 변경한 이미지에 한정합니다.

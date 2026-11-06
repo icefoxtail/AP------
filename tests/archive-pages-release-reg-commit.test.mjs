@@ -3,21 +3,18 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-// Runs the real `reg_commit` step script of the Pages release workflow against a stub push helper and a
-// throwaway git repo. A lost push race (RETRY_EXHAUSTED) or main moving after the push must not fail the
-// required step (busy merge periods would otherwise freeze the student site); any other helper failure must.
-
+// Keep the existing CI entry, now guarding the retirement of Pages' Git writer. The shared writer's
+// retry/race behavior belongs to its own helper tests; Pages only accepts its exact verified snapshot.
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const workflow = fs.readFileSync(path.join(repo, ".github/workflows/archive-pages-release.yml"), "utf8");
-// Same step splitting as tests/archive-pages-release-gate.test.mjs (no YAML dependency in this repo).
 const buildJob = workflow.slice(workflow.indexOf("\n  build:\n"), workflow.indexOf("\n  deploy:\n"));
-const stepText = buildJob.split(/\n(?=      - )/).find(text => /^\s*(?:- )?id: reg_commit$/m.test(text));
+const step = id => buildJob.split(/\n(?=      - )/).find(text => new RegExp(`^\\s*(?:- )?id: ${id}$`, "m").test(text));
 function blockScript(text) {
-  const lines = text.split("\n");
-  const start = lines.findIndex(line => line === "        run: |");
+  const lines = text.split("\n"), start = lines.indexOf("        run: |");
+  assert.ok(start >= 0, "workflow uses an inspectable shell block");
   const body = [];
   for (const line of lines.slice(start + 1)) {
     if (line.trim() && !line.startsWith("          ")) break;
@@ -25,85 +22,90 @@ function blockScript(text) {
   }
   return body.join("\n");
 }
-const regCommit = stepText && {
-  run: blockScript(stepText),
-  continueOnError: /^ {8}continue-on-error: true$/m.test(stepText),
-  condition: (/^ {8}if: (.+)$/m.exec(stepText) || [])[1] || ""
-};
 
-function git(cwd, ...args) {
-  const result = spawnSync("git", args, { cwd, encoding: "utf8" });
-  assert.equal(result.status, 0, `git ${args.join(" ")}: ${result.stderr}`);
-  return result.stdout.trim();
-}
-
-function sandbox({ helperResult, helperExit, advanceRemote = false }) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), "reg-commit-"));
-  const remote = path.join(root, "remote.git");
-  const work = path.join(root, "work");
-  const evidence = path.join(root, "evidence");
-  fs.mkdirSync(evidence);
-  git(root, "init", "-q", "--bare", "-b", "main", remote);
-  git(root, "init", "-q", "-b", "main", work);
-  git(work, "config", "user.email", "t@example.invalid");
-  git(work, "config", "user.name", "t");
-  fs.writeFileSync(path.join(work, "a.txt"), "a\n");
-  git(work, "add", "a.txt");
-  git(work, "commit", "-q", "-m", "base");
-  git(work, "remote", "add", "origin", remote);
-  git(work, "push", "-q", "origin", "main");
-  if (advanceRemote) {
-    const other = path.join(root, "other");
-    git(root, "clone", "-q", remote, other);
-    git(other, "config", "user.email", "o@example.invalid");
-    git(other, "config", "user.name", "o");
-    fs.writeFileSync(path.join(other, "b.txt"), "b\n");
-    git(other, "add", "b.txt");
-    git(other, "commit", "-q", "-m", "competitor");
-    git(other, "push", "-q", "origin", "main");
-  }
-  fs.mkdirSync(path.join(work, "tools/ci"), { recursive: true });
-  fs.writeFileSync(path.join(work, "tools/ci/git-push-derived-with-retry.mjs"),
-    `console.log("[Pages registration sync] result=${helperResult} attempts=3 main_sha=x");\nprocess.exit(${helperExit});\n`);
-  const summary = path.join(root, "summary.md");
-  const run = spawnSync("bash", ["-c", regCommit.run], {
-    cwd: work, encoding: "utf8",
-    env: { ...process.env, RELEASE_EVIDENCE_DIR: evidence, GITHUB_STEP_SUMMARY: summary, GITHUB_SHA: git(work, "rev-parse", "HEAD") }
+function sandbox(t) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "pages-registered-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const git = (...args) => execFileSync("git", ["-c", "user.name=t", "-c", "user.email=t@example.invalid", "-c", "commit.gpgsign=false", ...args], { cwd: root, encoding: "utf8" }).trim();
+  git("init", "-q", "-b", "main");
+  fs.writeFileSync(path.join(root, "source.js"), "window.example = 1;\n");
+  fs.writeFileSync(path.join(root, ".gitignore"), "evidence/\n");
+  fs.mkdirSync(path.join(root, "tools/ci"), { recursive: true });
+  fs.writeFileSync(path.join(root, "tools/ci/archive-registration-writer.mjs"), `
+    import fs from 'node:fs';
+    const args = process.argv.slice(2);
+    if (!args.includes('--check') || args.includes('--write')) throw new Error('read-only check required');
+    const directory = args[args.indexOf('--work-dir') + 1];
+    fs.mkdirSync(directory, {recursive:true});
+    const publishable = process.env.FIXTURE_PUBLISHABLE === 'true';
+    fs.writeFileSync(directory + '/report.json', JSON.stringify({publishable, status:publishable ? 'CURRENT' : 'REGISTRATION_NEEDED'}));
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, 'publishable=' + publishable + '\\n');
+  `);
+  git("add", "-A"); git("commit", "-qm", "registered snapshot");
+  const sha = git("rev-parse", "HEAD");
+  git("update-ref", "refs/remotes/origin/main", sha);
+  const evidence = path.join(root, "evidence"); fs.mkdirSync(evidence);
+  const run = (id, extra = {}) => spawnSync("bash", ["-e", "-o", "pipefail", "-c", blockScript(step(id))], {
+    cwd: root, encoding: "utf8", env: { ...process.env, REGISTERED_MAIN_SHA: sha,
+      GITHUB_EVENT_NAME: "workflow_dispatch", GITHUB_RUN_ID: "fixture", GITHUB_RUN_ATTEMPT: "1",
+      GITHUB_WORKFLOW_REF: "o/r/.github/workflows/archive-pages-release.yml@refs/heads/main", GITHUB_SERVER_URL: "https://github.com", GITHUB_REPOSITORY: "o/r",
+      RELEASE_EVIDENCE_DIR: evidence, GITHUB_STEP_SUMMARY: path.join(evidence, "summary.md"),
+      GITHUB_OUTPUT: path.join(evidence, "outputs.txt"), REQUESTED_REGISTERED_SHA: "", ...extra }
   });
-  const context = fs.existsSync(path.join(evidence, "context.txt")) ? fs.readFileSync(path.join(evidence, "context.txt"), "utf8") : "";
-  fs.rmSync(root, { recursive: true, force: true });
-  return { status: run.status, stdout: run.stdout, stderr: run.stderr, context };
+  return { root, git, sha, evidence, run };
 }
 
-test("reg_commit step exists, is required-gated and still only runs on main pushes", () => {
-  assert.ok(regCommit, "reg_commit step");
-  assert.equal(regCommit.continueOnError, true);
-  assert.match(regCommit.condition, /github\.event_name == 'push'/);
-  assert.match(regCommit.run, /git-push-derived-with-retry\.mjs/);
+test("Pages has no shared-data Git writer, write credential, or moving-main checkout", () => {
+  assert.match(workflow, /\npermissions:\n  contents: read/);
+  assert.match(buildJob, /persist-credentials: false/);
+  assert.doesNotMatch(buildJob, /id: reg_commit|git (?:add|commit|push|fetch)|git-push-derived-with-retry|archive-pages-registration-derive\.sh/);
+  assert.match(step("registered"), /archive-registration-writer\.mjs --check/);
+  assert.match(step("package_shards"), /build-archive2-catalog\.mjs --package-only/);
+  assert.match(step("archive2_runtime"), /check-archive2-runtime\.cjs --registered/);
+  assert.doesNotMatch(buildJob, /(?:compile-qid9-main-source|auto-register-approved-qid9|rebuild-main-source-consumer)\.mjs --write/);
+  assert.match(buildJob, /ref: \$\{\{ inputs\.registered_main_sha \|\| github\.sha \}\}/);
 });
 
-test("a lost push race (RETRY_EXHAUSTED) is a warning, not a failure, and is recorded as deferred", () => {
-  const r = sandbox({ helperResult: "RETRY_EXHAUSTED", helperExit: 1 });
-  assert.equal(r.status, 0, r.stderr);
-  assert.match(r.stdout, /::warning title=Registration commit deferred::/);
-  assert.match(r.context, /registration_commit=deferred_race/);
+test("exact dispatch with stale registration fails; scheduled recovery records DEFERRED and cannot publish", t => {
+  const f = sandbox(t);
+  const dispatch = f.run("registered", { FIXTURE_PUBLISHABLE: "false", REQUESTED_REGISTERED_SHA: f.sha });
+  assert.equal(dispatch.status, 1, dispatch.stdout + dispatch.stderr);
+  assert.match(dispatch.stderr, /DEFERRED_REGISTRATION/);
+  const recovery = f.run("registered", { FIXTURE_PUBLISHABLE: "false", REQUESTED_REGISTERED_SHA: "" });
+  assert.equal(recovery.status, 0, recovery.stdout + recovery.stderr);
+  assert.match(fs.readFileSync(path.join(f.evidence, "summary.md"), "utf8"), /DEFERRED_REGISTRATION: REGISTRATION_NEEDED/);
+  assert.match(fs.readFileSync(path.join(f.evidence, "outputs.txt"), "utf8"), /publishable=false/);
+  assert.match(workflow, /if: needs\.build\.outputs\.ready == 'true' && needs\.build\.outputs\.needed == 'true'/);
+  assert.equal(f.git("rev-parse", "HEAD"), f.sha);
+  assert.equal(f.git("diff", "--name-only", "HEAD"), "");
 });
 
-test("any other helper failure still fails the required step", () => {
-  for (const result of ["REGENERATE_FAILED", "PUSH_REJECTED"]) {
-    const r = sandbox({ helperResult: result, helperExit: 1 });
-    assert.equal(r.status, 1, `${result} must fail`);
-    assert.doesNotMatch(r.context, /deferred_race/);
-  }
+test("verified registration check is read-only and the snapshot guard rejects staged source mutation", t => {
+  const f = sandbox(t);
+  const current = f.run("registered", { FIXTURE_PUBLISHABLE: "true", REQUESTED_REGISTERED_SHA: f.sha });
+  assert.equal(current.status, 0, current.stderr);
+  assert.match(fs.readFileSync(path.join(f.evidence, "outputs.txt"), "utf8"), /publishable=true/);
+  assert.equal(f.run("snapshot_guard").status, 0);
+  fs.writeFileSync(path.join(f.root, "source.js"), "unexpected source mutation\n");
+  f.git("add", "source.js");
+  const mutation = f.run("snapshot_guard");
+  assert.notEqual(mutation.status, 0, "staged and unstaged source edits cannot reach upload");
+  assert.equal(f.git("rev-parse", "HEAD"), f.sha, "Pages makes no Git commit");
 });
 
-test("a successful push records the registration SHAs; main moving afterwards is only a warning", () => {
-  const same = sandbox({ helperResult: "PUSHED", helperExit: 0 });
-  assert.equal(same.status, 0, same.stderr);
-  assert.match(same.context, /registration_commit_sha=/);
-  assert.doesNotMatch(same.stdout, /::warning/);
-  const moved = sandbox({ helperResult: "PUSHED", helperExit: 0, advanceRemote: true });
-  assert.equal(moved.status, 0, moved.stderr);
-  assert.match(moved.stdout, /::warning title=main advanced after registration::/);
-  assert.match(moved.context, /registration_remote_main_sha=/);
+test("context binds an exact main ancestor while unrelated newer main does not invalidate the fixed snapshot", t => {
+  const f = sandbox(t);
+  fs.writeFileSync(path.join(f.root, "unrelated.txt"), "another maintainer's merge\n");
+  f.git("add", "unrelated.txt"); f.git("commit", "-qm", "later main");
+  const newer = f.git("rev-parse", "HEAD");
+  f.git("update-ref", "refs/remotes/origin/main", newer);
+  assert.notEqual(f.run("context").status, 0, "wrong checked-out commit is rejected");
+  f.git("checkout", "-q", "--detach", f.sha);
+  const fixed = f.run("context");
+  assert.equal(fixed.status, 0, `exact registered ancestor remains valid despite unrelated main movement: ${fixed.stderr}`);
+  assert.equal(f.run("snapshot_guard").status, 0);
+  const evidence = fs.readFileSync(path.join(f.evidence, "context.txt"), "utf8");
+  assert.match(evidence, new RegExp(`source_sha=${f.sha}`));
+  assert.doesNotMatch(evidence, new RegExp(`source_sha=${newer}`));
+  assert.notEqual(f.run("context", { REGISTERED_MAIN_SHA: "main" }).status, 0, "moving refs are not valid release identities");
 });
