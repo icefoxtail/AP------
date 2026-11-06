@@ -305,7 +305,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR"
   },
   {
     "id": 11,
@@ -337,7 +339,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
   },
   {
     "id": 12,
@@ -370,7 +374,9 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q12-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q12-solution.svg",
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE"
   },
   {
     "id": 13,
@@ -402,7 +408,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
   },
   {
     "id": 14,
@@ -435,7 +443,9 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q14-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q14-solution.svg",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
   },
   {
     "id": 15,
@@ -468,7 +478,9 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q15-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q15-solution.svg",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
   },
   {
     "id": 16,
@@ -500,7 +512,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER"
   },
   {
     "id": 17,
@@ -532,7 +546,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER"
   },
   {
     "id": 18,
@@ -564,7 +580,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
   },
   {
     "id": 19,
@@ -594,7 +612,9 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
   },
   {
     "id": 20,
@@ -627,7 +647,9 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
   },
   {
     "id": 21,
@@ -704,7 +726,9 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q23-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q23-solution.svg",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER"
   },
   {
     "id": 24,
@@ -731,6 +755,8 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q24-solution.svg"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q24-solution.svg",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
   }
 ];
