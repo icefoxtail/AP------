@@ -155,12 +155,13 @@
       const D = scene3(b, s, C), st = stepOf(C);
       const scl = (S, f) => Object.assign({}, S, { V: S.V.map((p) => mul3(p, f)), F: S.F.map((x) => Object.assign({}, x, { c: mul3(x.c, f) })), ctr: mul3(S.ctr, f) });
       if (C.problem) {
-        const SP = 3.6, RZ = 5.5, ctr = layout5(s, SP, RZ), pts = [];
-        ctr.forEach((c) => pts.push(add3(c, v3(-1.8, 0, -1.9)), add3(c, v3(1.8, 0, 1.9))));
+        const SP = 3.6, RZ = 5.5, ctr = layout5(s, SP, RZ), pts = [], names = ctr.map((c) => add3(c, v3(0, 0, -2.1)));
+        // 입체의 실제 꼭짓점과 이름 앵커를 함께 맞춥니다. 가상 상자만 맞추면 아래 줄 이름이 PC 무대 밖으로 내려가요.
+        PLAT_KEYS.forEach((k, i) => pts.push(...platS(k).V.map((p) => add3(ctr[i], p)), names[i]));
         D.fitPts(pts, { t: 20, b: 56, l: 12, r: 12 });
         PLAT_KEYS.forEach((k, i) => {
           drawPoly(D, platS(k), { off: ctr[i], face: (fi, vis) => (vis ? { c: 'green', a: 0.16 } : null), edge: () => ({ color: 'ink', width: 2.6 }) });
-          D.label(add3(ctr[i], v3(0, 0, -2.1)), PLAT[k].name, { color: 'ink', size: 15, at: [[0, 22]] });
+          D.label(names[i], PLAT[k].name, { color: 'ink', size: 15, at: [[0, 22]] });
         });
         D.flush();
         return;
@@ -255,7 +256,7 @@
     model: (s) => ({ ex: s.phEx || 'bi', join: clamp(s.phJoin, 0, 1), Q: s.phQ }),
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C), F = frameOf(s), a = 2.4;
-      const ex = C.problem ? 'bi' : M.ex, join = C.problem ? 1 : C.review ? (st === 1 ? 0 : 1) : M.join;
+      const ex = C.problem ? 'bi' : M.ex, join = C.problem ? 1 : C.review ? (st <= 1 ? 0 : 1) : M.join;
       const vcount = [];
       if (ex === 'bi') {
         const gap = (1 - join) * 2.8;
@@ -270,14 +271,14 @@
           const info = drawPoly(D, S, { face: (fi, vis) => (vis ? { c: 'green', a: 0.18 } : null), edge: () => ({ color: 'ink', width: 3.2 }) });
           // 꼭짓점마다 모인 면의 수
           if (!C.problem) S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6.5); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
-          if (C.txt && !C.problem) banner(b, [{ t: '면 6개 모두 합동인 정삼각형', c: 'ink', size: 15 }, { t: `꼭짓점: 3개씩 모임(파랑) 2곳 · 4개씩 모임(빨강) 3곳`, c: RED, size: 15 }, st >= 2 || st === 4 ? { t: '모인 면의 수가 다르다 → 정다면체가 아니에요', c: RED, size: 15 } : null], C);
+          if (C.txt && !C.problem) banner(b, [{ t: '정삼각형 6개 · 모두 합동', c: 'ink', size: 15 }, { t: '면 3개씩: 2곳 · 면 4개씩: 3곳', c: RED, size: 15 }, st >= 2 || st === 4 ? { t: '정다면체가 아니에요', c: RED, size: 15 } : null], C);
           void info;
         } else {
           const SA = solidOf(A.tri.concat([A.apex])), SB = solidOf(B.tri.map((p) => add3(p, v3(0, 0, 0))).concat([B.apex]));
           drawPoly(D, SA, { face: (fi, vis) => (vis ? { c: 'green', a: 0.18 } : null), edge: () => ({ color: 'ink', width: 3.2 }) });
           drawPoly(D, SB, { face: (fi, vis) => (vis ? { c: AMB, a: 0.18 } : null), edge: () => ({ color: AMB, width: 3.2 }) });
           if (!C.problem) { SA.V.forEach((p) => { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SA.ctr), gap: 10 }); }); SB.V.forEach((p, i) => { if (i < 3 || true) { D.dot(p, SKY, 5.5); D.label(p, '3', { color: SKY, size: 16, dir: D.out(p, SB.ctr), gap: 10 }); } }); }
-          if (C.txt) banner(b, [{ t: '정사면체 2개: 모든 꼭짓점에 면이 3개씩 모여요', c: 'ink', size: 15 }, { t: '막대로 오른쪽 정사면체를 붙여 보세요', c: AMB, size: 14 }], C);
+          if (C.txt) banner(b, [{ t: '정사면체 2개 · 꼭짓점마다 면 3개', c: 'ink', size: 15 }, { t: '막대로 두 입체를 붙여 보세요', c: AMB, size: 14 }], C);
         }
       } else {
         // 정사각뿔: 밑면 정사각형 + 정삼각형 4개 (옆모서리 = 밑변)
@@ -288,22 +289,28 @@
         drawPoly(D, S, { face: (fi, vis) => (vis ? (fi === bot ? { c: SKY, a: 0.3 } : { c: 'green', a: 0.2 }) : null), edge: () => ({ color: 'ink', width: 3.2 }) });
         S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
         D.label(S.F[bot].c, '정사각형', { color: SKY, size: 14, at: [[0, 8]], alpha: 0.9 });
-        if (C.txt) banner(b, [{ t: '밑면은 정사각형, 옆면은 정삼각형 4개', c: 'ink', size: 15 }, { t: '면이 모두 합동은 아니에요 · 모인 면의 수도 달라요', c: RED, size: 15 }], C);
+        if (C.txt) banner(b, [{ t: '밑면: 정사각형 1개', c: SKY, size: 15 }, { t: '옆면: 정삼각형 4개', c: GRN, size: 15 }], C);
       }
       D.flush();
     },
-    steps: (M) => [
+    steps: (M) => M.ex === 'sq' ? [
+      '밑면은 정사각형 $1$개, 옆면은 정삼각형 $4$개예요. 모두 정다각형이지만 면끼리 합동이 아니에요.',
+      '밑면의 꼭짓점 $4$개에는 면이 $3$개씩, 꼭대기에는 면이 $4$개 모여요. 꼭짓점마다 모인 면의 수도 달라요.',
+      '모든 면이 합동인 정다각형이어야 하고, 각 꼭짓점에 모인 면의 수도 같아야 해요. 이 정사각뿔은 정다면체가 아니에요.'
+    ] : [
       `정사면체 2개를 붙이기 전에는 모든 꼭짓점에 면이 $3$개씩 모여요.`,
       `붙이면 면이 모두 합동인 정삼각형 $6$개예요. 그런데 붙인 면의 꼭짓점 $3$개에는 면이 $4$개씩, 나머지 $2$개에는 $3$개씩 모여요.`,
       `각 꼭짓점에 모인 면의 수가 같지 않으므로 $\\text{정다면체가 아니에요}$.`
     ],
-    view: (M) => ({
+    view: (M, C) => {
+      const join = C.review ? (C.step <= 1 ? 0 : 1) : M.join;
+      return {
       guide: M.ex === 'bi' ? `막대로 오른쪽 정사면체를 <b>가로로 밀어 붙여</b> 보세요. 꼭짓점의 ${span('sky', '파란 3')}과 ${span('red', '빨간 4')}는 그 꼭짓점에 모인 면의 수예요.` : `${span('sky', '파란 3')}과 ${span('red', '빨간 4')}는 꼭짓점에 모인 면의 수예요. 정사각뿔의 면은 정사각형 1개와 정삼각형 4개예요.`,
-      readouts: M.ex === 'bi' ? [rd('면', '정삼각형 6개', GRN, '모두 합동'), rd('3개 모인 꼭짓점', M.join > 0.995 ? '2개' : '모두', SKY), rd('4개 모인 꼭짓점', M.join > 0.995 ? '3개' : '없음', RED), rd('정다면체?', M.join > 0.995 ? '✕ 아님' : '—', RED)] : [rd('면', '정사각형 1 + 정삼각형 4', AMB, '합동이 아니에요'), rd('3개 모인 꼭짓점', '4개', SKY), rd('4개 모인 꼭짓점', '1개', RED), rd('정다면체?', '✕ 아님', RED)],
+      readouts: M.ex === 'bi' ? [rd('면', `정삼각형 ${join > 0.995 ? 6 : 8}개`, GRN, join > 0.995 ? '붙인 두 면은 안쪽에 있어요' : '두 정사면체의 면 4개씩'), rd('3개 모인 꼭짓점', join > 0.995 ? '2개' : '8개', SKY), rd('4개 모인 꼭짓점', join > 0.995 ? '3개' : '없음', RED), rd('정다면체?', join > 0.995 ? '✕ 아님' : '각각 정사면체', RED)] : [rd('면', '정사각형 1 + 정삼각형 4', AMB, '합동이 아니에요'), rd('3개 모인 꼭짓점', '4개', SKY), rd('4개 모인 꼭짓점', '1개', RED), rd('정다면체?', '✕ 아님', RED)],
       formula: M.ex === 'bi' ? '<p>모든 면이 합동인 정삼각형이어도, 모인 면의 수가 다르면 정다면체가 아니에요.</p>' : '<p>면이 합동이 아니므로 정다면체가 아니에요.</p>',
       rule: '정다면체의 조건: ① 모든 면이 합동인 정다각형 ② 각 꼭짓점에 모인 면의 수가 같다',
       notes: notes('면이 모두 합동인 정삼각형이라는 조건만으로는 정다면체가 아니에요. <b>두 조건을 모두</b> 확인해야 해요.', '정사각뿔은 면의 모양이 서로 달라서 정다면체가 아니에요.')
-    }),
+    }; },
     prob: (M) => {
       const t = M.Q.t;
       if (t === 'why') {
@@ -313,8 +320,8 @@
         ]);
         return { tag: '정다면체가 아닌 까닭 (함정)', key: 'why' + items.map((x) => x.h).join(''), stem: '그림은 정사면체 2개를 붙인 입체이다. 면이 모두 합동인 정삼각형인데 정다면체가 아닌 까닭은?', choices: mkText(items), wide: true };
       }
-      if (t === 'count') return { tag: '정다면체가 아닌 예', key: 'count', stem: '그림과 같이 정사면체 2개를 붙인 입체의 면의 개수는?', choices: mkChoices(6, [[8, '정사면체 2개의 면 $4+4$를 더했어요. 붙인 면 2개는 안쪽에 들어가요.'], [7, '붙인 면을 한 개만 뺐어요.'], [4, '정사면체 하나의 면의 개수예요.'], [5, '꼭짓점의 개수예요.'], [10, '모서리의 개수예요.']]) };
-      return { tag: '정다면체가 아닌 예', key: 'four', stem: '그림과 같이 정사면체 2개를 붙인 입체에서, 면이 4개씩 모이는 꼭짓점의 개수는?', choices: mkChoices(3, [[2, '면이 3개씩 모이는 꼭짓점의 개수예요.'], [4, '꼭짓점의 개수예요.'], [5, '전체 꼭짓점의 개수예요.'], [6, '면의 개수예요.']]) };
+      if (t === 'count') return { tag: '정다면체가 아닌 예', key: 'count', stem: '그림과 같이 정사면체 2개를 붙인 입체의 면의 개수는?', choices: mkChoices(6, [[8, '정사면체 2개의 면 $4+4$를 더했어요. 붙인 면 2개는 안쪽에 들어가요.'], [7, '붙인 면을 한 개만 뺐어요.'], [4, '정사면체 하나의 면의 개수예요.'], [5, '꼭짓점의 개수예요.'], [9, '모서리의 개수예요.']]) };
+      return { tag: '정다면체가 아닌 예', key: 'four', stem: '그림과 같이 정사면체 2개를 붙인 입체에서, 면이 4개씩 모이는 꼭짓점의 개수는?', choices: mkChoices(3, [[2, '면이 3개씩 모이는 꼭짓점의 개수예요.'], [4, '정사면체 하나의 꼭짓점의 개수예요.'], [5, '전체 꼭짓점의 개수예요.'], [6, '면의 개수예요.']]) };
     }
   };
 
@@ -440,12 +447,20 @@
     draw(b, s, M, C) {
       const st = stepOf(C);
       if (C.problem) {
-        // 문제: 면 하나(정p각형)와 모을 꼭짓점 O 만 보여 줍니다
-        const pp = M.Q.p, pl = fan(pp, 1)[0], R = pp === 6 ? 2.05 : pp === 5 ? 1.75 : pp === 4 ? 1.45 : 1.05;
-        fit(b, { x0: -R, x1: R, y0: -R, y1: R }, { t: 70, b: 50, l: 40, r: 40 });
-        b.path(pl.pts, { close: true, fill: SKY, fillAlpha: 0.25, color: 'ink', width: 2.6 });
+        // 최대 개수는 마지막 풀이에서만 그림으로 완성합니다. 그전에는 문제의 면 하나를 유지합니다.
+        const pp = M.Q.p, final = C.questionReview && C.solutionStep >= 3;
+        const q = final ? (pp === 3 ? 5 : 3) : 1, polys = fan(pp, q), pts = polys.flatMap((pl) => pl.pts);
+        const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
+        fit(b, { x0: Math.min(...xs) - 0.12, x1: Math.max(...xs) + 0.12, y0: Math.min(...ys) - 0.12, y1: Math.max(...ys) + 0.12 }, { t: final ? 90 : 70, b: 64, l: 40, r: 40 });
+        polys.forEach((pl) => b.path(pl.pts, { close: true, fill: final ? GRN : SKY, fillAlpha: 0.25, color: 'ink', width: 2.6 }));
         b.point({ x: 0, y: 0 }, { color: AMB, r: 7 });
-        if (C.txt) banner(b, [{ t: `${PNAME[pp]}을 한 꼭짓점 O에 여러 개 모아요`, c: 'ink', size: 16 }], C);
+        if (C.txt) {
+          b.text({ x: 0, y: 0 }, 'O', { color: AMB, size: 15, weight: 800, dx: -13, dy: 17 });
+          banner(b, final ? [
+            { t: `${PNAME[pp]} ${q}개를 점 O에 모았어요`, c: GRN, size: 16 },
+            { t: `${Math.round(interior(pp))}° × ${q} = ${Math.round(interior(pp) * q)}° < 360°`, c: 'ink', size: 15 }
+          ] : [{ t: `${PNAME[pp]}을 한 꼭짓점 O에 여러 개 모아요`, c: 'ink', size: 16 }], C);
+        }
         return;
       }
       b.focus = { x: [0, 1], y: [0, 1] }; // 그림 좌표는 쓰지 않고 화면 좌표로 그립니다
@@ -494,5 +509,43 @@
     }
   };
 
-  G.register(20, 't2', '② 정다면체', '정다면체', PARAMS, [P1, P2, P3, P4, P5, P6]);
+  function problemSteps(id, M, Q) {
+    const q = M.Q, answer = Q.choices.find((c) => c.ok).p;
+    if (id === 'p2-1') {
+      const angle = 180 - 360 / q.p, sum = angle * q.q;
+      return [
+        `${PNAME[q.p]}의 한 내각은 $180^\\circ-360^\\circ\\div${q.p}=${angle}^\\circ$예요.`,
+        `한 꼭짓점에 ${q.q}개가 모이면 각의 합은 $${angle}^\\circ\\times${q.q}=${sum}^\\circ$예요.`,
+        sum < 360 ? `각의 합이 $360^\\circ$보다 작아요. ${PNAME[q.p]}이 한 꼭짓점에 ${q.q}개씩 모이는 정다면체는 ${answer}예요.` : `각의 합이 $360^\\circ$${sum === 360 ? '와 같아 평평해지므로' : '보다 커서 면이 겹치므로'} 정다면체를 만들 수 없어요.`
+      ];
+    }
+    if (id === 'p2-2') return [
+      '정다면체는 모든 면이 합동인 정다각형이에요. 입체 이름에 들어 있는 수는 면의 개수예요.',
+      '정사면체·정팔면체·정이십면체의 면은 정삼각형, 정육면체의 면은 정사각형, 정십이면체의 면은 정오각형이에요.',
+      `문제의 보기와 대조하면 옳게 짝지어진 것은 “${answer}”이에요.`
+    ];
+    if (id === 'p2-3') {
+      if (q.t === 'count') return ['정사면체 하나의 면은 4개이므로 두 개의 면을 합하면 8개예요.', '붙인 면은 정사면체마다 하나씩, 모두 2개가 내부로 들어가 겉면이 아니에요.', '따라서 겉에 남은 면은 $4+4-2=6$개예요.'];
+      return ['두 정사면체가 붙은 삼각형의 세 꼭짓점과, 양 끝의 두 꼭짓점을 구별해요.', '양 끝의 두 꼭짓점에는 면이 3개씩 모여요. 붙인 삼각형의 세 꼭짓점에는 면이 4개씩 모여요.', q.t === 'four' ? '따라서 면이 4개씩 모이는 꼭짓점은 3개예요.' : '모든 면이 합동인 정삼각형이어도 각 꼭짓점에 모인 면의 수가 서로 달라 정다면체가 아니에요.'];
+    }
+    if (id === 'p2-4') {
+      const I = PLAT[q.k], divisor = q.ask === 'E' ? 2 : I.q, name = q.ask === 'E' ? '모서리' : '꼭짓점';
+      return [`${I.name}는 ${I.face} ${I.F}개로 이루어져요. 각 면에 ${name}가 ${I.p}개씩 있어요.`,
+        `면마다 센 수는 $${I.p}\\times${I.F}=${I.p * I.F}$예요. 같은 ${name}를 ${divisor}개의 면이 함께 가지므로 ${divisor}번씩 중복하여 세었어요.`,
+        `따라서 ${name}는 $${I.p}\\times${I.F}\\div${divisor}=${I[q.ask]}$개예요.`];
+    }
+    if (id === 'p2-5') {
+      const I = PLAT[q.k], J = PLAT[DUAL[q.k]];
+      return [`${I.name}의 면 ${I.F}개에 중심을 하나씩 표시하므로 새 입체의 꼭짓점은 ${I.F}개예요.`,
+        `원래 꼭짓점마다 둘레의 ${I.q}개 면의 중심을 이으면 정${I.q}각형인 새 면이 생겨요. 새 면은 ${I.V}개예요.`,
+        `따라서 면 ${J.F}개, 꼭짓점 ${J.V}개인 ${J.name}가 돼요.`];
+    }
+    const angle = 180 - 360 / q.p, max = Math.ceil(360 / angle) - 1;
+    return [`${PNAME[q.p]}의 한 내각은 $${angle}^\\circ$예요. 꼭짓점을 만들려면 면이 3개 이상 모여야 해요.`,
+      `면이 ${max}개 모이면 $${angle}^\\circ\\times${max}=${angle * max}^\\circ\\lt360^\\circ$예요. ${max + 1}개면 $${angle * (max + 1)}^\\circ$로 360° 이상이 되어 입체가 되지 않아요.`,
+      `따라서 한 꼭짓점에 모일 수 있는 면은 최대 ${max}개예요.`];
+  }
+  const scenes = [P1, P2, P3, P4, P5, P6];
+  scenes.forEach((D) => { D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(20, 't2', '② 정다면체', '정다면체', PARAMS, scenes);
 })();

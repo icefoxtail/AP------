@@ -29,6 +29,7 @@ const W = load(['core', 'geo', 'cubesec', 't4']);
 const G = W.APL_PH, CS = G.cubeSec;
 const scene = Object.fromEntries(W.APL_PH_GROUPS.flatMap((g) => g.scenes).map((s) => [s.id, s.ph]));
 const P3 = scene['p4-3'];
+const sectionScene = W.APL_PH_GROUPS.flatMap((g) => g.scenes).find((s) => s.id === 'p4-3');
 const js = (x) => JSON.stringify(x); // vm 안에서 만든 배열은 prototype 이 달라 deepEqual 대신 문자열로 비교
 
 test('세 꼭짓점 56가지가 모두 정사각형·직사각형·정삼각형 중 하나이고 24·24·8가지', () => {
@@ -83,19 +84,26 @@ test('선생님 문항: A·G·H 는 직사각형 ABGH (AB ∥ GH), B·D·E 는 �
 
 test('문제 탭: 첫 문제는 A·G·H, 보기 5개 중 정답은 계산한 모양 하나뿐, 정리는 4단계', () => {
   const s = {};
-  P3.init(s);
+  const lab = { tab: 'problem', scene: sectionScene, s };
+  sectionScene.enter(s, lab);
   assert.equal(js(s.phQ.tri), js(['A', 'G', 'H']));
   for (let g = 0; g < 80; g++) {
     if (g) P3.reroll(s);
+    // The public scene now distinguishes inquiry review from current-question
+    // review. Enter the same tabs as the student before testing the question's
+    // four steps; raw P3.steps(M) describes the independently selected inquiry.
+    lab.tab = 'problem'; sectionScene.view(s, lab);
+    lab.tab = 'review'; sectionScene.view(s, lab);
     const M = P3.model(s), Q = P3.prob(M, s), sec = CS.sectionOf3(...s.phQ.tri);
+    const steps = sectionScene.steps(s);
     assert.equal(js(Q.choices.map((c) => c.h)), js(['정삼각형', '직각삼각형', '정사각형', '직사각형', '오각형']));
     assert.equal(Q.choices.filter((c) => c.ok).length, 1);
     assert.equal(Q.choices.find((c) => c.ok).h, sec.name);
     assert.ok(Q.stem.includes(`세 꼭짓점 ${s.phQ.tri.join(', ')}`));
     Q.choices.filter((c) => !c.ok).forEach((c) => assert.ok(c.hint, `${sec.label}: ${c.h} 힌트 없음`));
-    assert.equal(P3.steps(M).length, 4);
-    assert.ok(P3.steps(M)[3].includes(sec.name));
-    assert.ok(P3.steps(M)[1].includes(sec.tri.join('')), '2단계가 문제의 세 점 삼각형 이름을 씀');
+    assert.equal(steps.length, 4);
+    assert.ok(steps[3].includes(sec.name));
+    assert.ok(steps[1].includes(sec.tri.join('')), '2단계가 문제의 세 점 삼각형 이름을 씀');
   }
 });
 

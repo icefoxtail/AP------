@@ -177,7 +177,8 @@
         return { n, S, c, name: nameOf(kind, n), Q: s.phQ };
       },
       draw(b, s, M, C) {
-        const D = scene3(b, s, C), { S, n } = M, st = stepOf(C), c = M.c;
+        const D = scene3(b, s, C), st = stepOf(C);
+        const n = C.problem ? M.Q.n : M.n, S = C.problem ? solid(n) : M.S, c = C.problem ? countsOf(kind, n) : M.c;
         const W = (isP ? 2.8 : 3.0) - (b.W < 560 ? 0.4 : 0);
         const split = C.problem ? 0 : C.review ? (st === 1 ? 1 : 0) : s.phSplit;
         const bi = baseIdx(S), si = sideIdx(S);
@@ -266,7 +267,8 @@
       return { n, k, S: frustumS(n, k, 1.5, 2.4), T: topPyrS(n, k, 1.5, 2.4), c, name: nameOf('fr', n), Q: s.phQ };
     },
     draw(b, s, M, C) {
-      const D = scene3(b, s, C), { S, T, n, k, c } = M, st = stepOf(C);
+      const D = scene3(b, s, C), st = stepOf(C), n = C.problem ? M.Q.n : M.n, k = C.problem ? 0.5 : M.k;
+      const S = C.problem ? frustumS(n, k, 1.5, 2.4) : M.S, T = M.T, c = C.problem ? countsOf('fr', n) : M.c;
       const sep = C.problem ? 0 : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
       const W = 2 * k * 1.5 + 0.9, off = hxOf(s, W * sep);
       const showTop = !C.problem && sep > 0.01;
@@ -492,7 +494,7 @@
       mk(n + 1, '밑면의 개수를 잘못 빼서 한 개 많아요.'); mk(n - 1, '밑면의 개수를 잘못 빼서 한 개 적어요.'); mk(n + 2, '밑면 수를 거꾸로 더했어요.'); mk(n - 2, '밑면 수를 거꾸로 뺐어요.'); mk(n + 3, '밑면의 변의 수를 다시 계산해 보세요.');
       const items = [{ h: nameOf(q.kind, n), nn: n, ok: true, hint: '' }].concat(wr).slice(0, 5);
       const sorted = items.sort((a, c) => a.nn - c.nn);
-      return { tag: '면의 개수로 입체 찾기', key: `${q.kind}|${q.F}`, stem: `면의 개수가 ${q.F}개인 ${kn}은 몇 ${kn}인가?`, choices: mkText(sorted) };
+      return { tag: '면의 개수로 입체 찾기', key: `${q.kind}|${q.F}`, stem: `면의 개수가 ${q.F}개인 ${kn}${jo(kn, 'eun')} 몇 ${kn}인가?`, choices: mkText(sorted) };
     }
   };
 
@@ -669,5 +671,50 @@
     }
   };
 
-  G.register(10, 't1', '① 다면체와 각기둥·각뿔·각뿔대', '다면체', PARAMS, [P0, bpScene('prism'), bpScene('pyr'), FR, P4, P5, P6, P7]);
+  function problemSteps(id, M, Q) {
+    const q = M.Q, answer = Q.choices.find((c) => c.ok).p;
+    if (id === 'p1-0') return [
+      '다면체는 다각형인 면으로만 둘러싸인 입체도형이에요.',
+      '각기둥·각뿔·각뿔대의 면은 다각형이에요. 원기둥·원뿔·구에는 곡면이 있어요.',
+      `이 문제의 보기에서 곡면이 있는 입체는 ${answer}예요. 따라서 다면체가 아니에요.`
+    ];
+    if (['p1-1', 'p1-2', 'p1-3'].includes(id)) {
+      const kind = { 'p1-1': 'prism', 'p1-2': 'pyr', 'p1-3': 'fr' }[id], pyramid = kind === 'pyr';
+      const c = countsOf(kind, q.n), expr = pyramid ? { F: 'n+1', V: 'n+1', E: '2n' } : { F: 'n+2', V: '2n', E: '3n' };
+      const nCalc = q.given === 'E' ? `${c.E}\\div${pyramid ? 2 : 3}` : q.given === 'V' ? pyramid ? `${c.V}-1` : `${c.V}\\div2` : `${c.F}-${pyramid ? 1 : 2}`;
+      const result = q.ask === 'E' ? `${pyramid ? 2 : 3}\\times${q.n}` : q.ask === 'V' ? pyramid ? `${q.n}+1` : `2\\times${q.n}` : `${q.n}+${pyramid ? 1 : 2}`;
+      return [
+        `${KNAME[kind]}의 밑면을 n각형이라 하면 면은 $${expr.F}$개, 모서리는 $${expr.E}$개, 꼭짓점은 $${expr.V}$개예요.`,
+        `문제에서 ${Q3[q.given]}가 ${c[q.given]}개이므로 $${expr[q.given]}=${c[q.given]}$, $n=${nCalc}=${q.n}$이에요.`,
+        `구하는 것은 ${Q3[q.ask]}의 개수예요. $${expr[q.ask]}=${result}=${c[q.ask]}$이므로 ${answer}예요.`
+      ];
+    }
+    if (id === 'p1-4') return [
+      `문제는 옆면이 ${SHAPE_NAME[q.target]}인 입체를 묻고 있어요. 밑면의 모양과 구별해요.`,
+      '각기둥의 옆면은 직사각형, 각뿔의 옆면은 삼각형, 각뿔대의 옆면은 사다리꼴이에요.',
+      `따라서 이 보기에서는 ${answer}${jo(answer, 'eul')} 고르면 돼요.`
+    ];
+    if (id === 'p1-5') {
+      const base = q.kind === 'pyr' ? 1 : 2, n = q.F - base;
+      return [`${KNAME[q.kind]}은 밑면 ${base}개와 옆면 n개로 이루어져요.`,
+        `면이 ${q.F}개이므로 $n+${base}=${q.F}$, $n=${q.F}-${base}=${n}$이에요.`,
+        `밑면이 ${n}각형이므로 이름은 ${answer}예요.`];
+    }
+    if (id === 'p1-6') return [
+      `${nameOf('fr', q.n)}는 각뿔을 밑면과 평행하게 잘라 윗부분을 떼어 낸 입체예요.`,
+      `두 밑면은 평행하지만 크기가 달라 합동이 아니에요. 옆면은 사다리꼴 ${q.n}개예요.`,
+      `면은 $${q.n}+2=${q.n + 2}$개, 모서리는 $3\\times${q.n}=${3 * q.n}$개, 꼭짓점은 $2\\times${q.n}=${2 * q.n}$개예요.`,
+      `위 성질과 다른 설명은 “${answer}”이에요. 문제에서 옳지 않은 것을 물었으므로 이 보기가 정답이에요.`
+    ];
+    const e = M.qe, given = ['V', 'E', 'F'].filter((k) => k !== q.ask);
+    const calc = { V: `E-F+2=${e.E}-${e.F}+2=${e.V}`, E: `V+F-2=${e.V}+${e.F}-2=${e.E}`, F: `E-V+2=${e.E}-${e.V}+2=${e.F}` };
+    return [
+      `주어진 수는 ${given.map((k) => `${Q3[k]} ${e[k]}개`).join(', ')}이고, ${Q3[q.ask]}의 개수를 구해요.`,
+      '볼록한 다면체는 오일러의 공식 $V-E+F=2$를 만족해요.',
+      `$${q.ask}=${calc[q.ask]}$이므로 구하는 ${Q3[q.ask]}는 ${answer}예요.`
+    ];
+  }
+  const scenes = [P0, bpScene('prism'), bpScene('pyr'), FR, P4, P5, P6, P7];
+  scenes.forEach((D) => { D.problemSteps = (M, Q) => problemSteps(D.id, M, Q); });
+  G.register(10, 't1', '① 다면체와 각기둥·각뿔·각뿔대', '다면체', PARAMS, scenes);
 })();
