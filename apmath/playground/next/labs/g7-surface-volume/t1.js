@@ -853,10 +853,10 @@
       steps: (M) => M.mode === 'vol' ? [
         `밑면은 직사각형($${M.w}\\times${2 * M.r}$)과 반원(반지름 $${M.r}$)을 붙인 모양이에요. 직사각형의 넓이는 $${M.w}\\times${2 * M.r}=${2 * M.w * M.r}$예요.`,
         `반원의 넓이는 $\\frac{1}{2}\\times\\pi\\times${M.r}^2=${tx(V(0, M.r * M.r / 2))}$이므로 밑넓이 $S=${tx(M.S)}$예요.`,
-        `(부피) $=S\\times h=${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
+        `(부피) $=S\\times h=(${tx(M.S)})\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
       ] : [
         `밑넓이: 직사각형 $${2 * M.w * M.r}$ + 반원 $${tx(V(0, M.r * M.r / 2))}$ $=${tx(M.S)}$이고 밑면이 2개이므로 $2S=${tx(M.S2)}\\,\\mathrm{cm}^2$예요.`,
-        `밑면의 둘레(붙인 변은 뺌): $${M.w}+${M.w}+${2 * M.r}+\\pi\\times${M.r}=${tx(M.P)}$. 옆넓이 $=${tx(M.P)}\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
+        `밑면의 둘레(붙인 변은 뺌): $${M.w}+${M.w}+${2 * M.r}+\\pi\\times${M.r}=${tx(M.P)}$. 옆넓이 $=(${tx(M.P)})\\times${M.h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
         `(겉넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M, C) => ({

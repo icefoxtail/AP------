@@ -179,3 +179,65 @@ test('triangular pyramid and frustum measurements equal independent vector produ
     }
   }
 });
+
+test('review hides calculated formulas until its final solution step in all current scenes', t => {
+  const unit = loadUnit();
+  let checked = 0;
+  for (const sc of unit.scenes) {
+    const s = unit.state(sc);
+    unit.lab.tab = 'explore';
+    const original = sc.view(s, unit.lab).formula;
+    unit.lab.tab = 'review';
+    const count = sc.steps(s).length;
+    for (let step = 0; step < count; step++) {
+      s.step = step;
+      assert.equal(sc.view(s, unit.lab).formula, null, `${sc.id}: step ${step}`);
+      checked++;
+    }
+    s.step = count;
+    const finalFormula = sc.sv.view(sc.sv.model(s), unit.G.baseCtx(s, unit.lab, false), s).formula;
+    assert.deepEqual(sc.view(s, unit.lab).formula, finalFormula, `${sc.id}: final formula remains available`);
+    unit.lab.tab = 'explore';
+    assert.deepEqual(sc.view(s, unit.lab).formula, original, `${sc.id}: inquiry formula remains available`);
+  }
+  assert.equal(unit.scenes.length, 30);
+  t.diagnostic(`${checked} pre-final states across 30 scenes`);
+});
+
+test('problem and review keep the same dimensions through every available preset', t => {
+  const unit = loadUnit();
+  let checked = 0;
+  for (const sc of unit.scenes) {
+    const s = unit.state(sc);
+    for (const preset of [{ label: 'initial' }, ...sc.presets(s)]) {
+      unit.lab.tab = 'explore';
+      preset.apply?.(s, unit.lab);
+      sc.view(s, unit.lab);
+      unit.lab.tab = 'problem';
+      sc.view(s, unit.lab);
+      const question = sc.sv.prob(sc.sv.model(s), s);
+      const before = JSON.stringify(sc.steps(s));
+      unit.lab.tab = 'review';
+      sc.view(s, unit.lab);
+      const current = sc.sv.prob(sc.sv.model(s), s);
+      assert.equal(current.key, question.key, `${sc.id}: ${preset.label}`);
+      assert.equal(current.stem, question.stem, `${sc.id}: same problem conditions`);
+      assert.equal(JSON.stringify(sc.steps(s)), before, `${sc.id}: same numerical solution`);
+      checked++;
+    }
+  }
+  t.diagnostic(`${checked} problem-to-review transitions with current scene parameters`);
+});
+
+test('a rectangle joined to a semicircle multiplies the whole sum by prism height', () => {
+  const sc = byId('sv1-5'), s = U.state(sc);
+  Object.assign(s, { sW: 4, sRr: 2, sH5: 5, svMode: 'surf' });
+  let M = sc.sv.model(s);
+  assert.ok(Math.abs(U.G.vnum(M.S) - (16 + 2 * Math.PI)) < 1e-10);
+  assert.ok(Math.abs(U.G.vnum(M.P) - (12 + 2 * Math.PI)) < 1e-10);
+  assert.ok(Math.abs(U.G.vnum(M.ans) - (92 + 14 * Math.PI)) < 1e-10);
+  assert.match(sc.steps(s)[1], /\(12\+2\\pi\)\\times5=60\+10\\pi/);
+  s.svMode = 'vol'; M = sc.sv.model(s);
+  assert.ok(Math.abs(U.G.vnum(M.ans) - (80 + 10 * Math.PI)) < 1e-10);
+  assert.match(sc.steps(s)[2], /\(16\+2\\pi\)\\times5=80\+10\\pi/);
+});

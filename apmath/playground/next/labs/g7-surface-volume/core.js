@@ -364,7 +364,11 @@
           if (lab._svSig !== sig) { const first = lab._svSig == null; lab._svSig = sig; if (!first) { try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } } }
         }
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = D.steps(M).length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if ((s.step || 0) < n) v.formula = null;
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
