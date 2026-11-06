@@ -340,15 +340,24 @@
     question: '동위각 또는 엇각이라고 표시한 두 각의 크기가 주어졌어요. 두 각의 크기가 어떨 때 두 직선 l, m 이 평행일까요?',
     focus: FOCUS,
     ctl: ['rA', 'rB'],
-    init: (s) => { s.rA = 70; s.rB = 70; s.rMode = 'corr'; s.rSeedBase = 0; genJudge(s); },
+    init: (s) => { s.rA = 70; s.rB = 70; s.rMode = 'corr'; s.rSeedBase = 0; s.rReviewQuestion = false; s.rReviewTab = 'explore'; genJudge(s); },
     reroll: (s) => { genJudge(s); },
     presets: () => [
       { group: '표시한 각', label: '동위각 (F)', apply: (s) => { s.rMode = 'corr'; }, on: (s) => s.rMode === 'corr' },
       { label: '엇각 (Z)', apply: (s) => { s.rMode = 'alt'; }, on: (s) => s.rMode === 'alt' },
       { group: '바로 맞추기', label: '두 각을 같게', apply: (s) => { s.rB = s.rA; }, on: (s) => s.rA === s.rB }
     ],
+    syncContext(s, lab) {
+      if (lab.tab === 'problem') s.rReviewQuestion = true;
+      else if (lab.tab === 'explore') s.rReviewQuestion = false;
+      s.rReviewTab = lab.tab;
+    },
     model: (s) => {
-      return { vP: s.rA, vQ: s.rB, kind: s.rMode, eq: s.rA === s.rB, list: s.rList || [], pickIdx: s.papick ? s.papick.idx : 0 };
+      const list = s.rList || [], problemReview = !!s.rReviewQuestion;
+      let pickIdx = s.papick ? s.papick.idx : 0;
+      if (problemReview && s.rReviewTab === 'review') pickIdx = s.step >= 6 ? list.findIndex(it => it.ok) : Math.max(0, (s.step || 1) - 1);
+      const it = problemReview ? list[pickIdx] : null, vP = it ? it.vP : s.rA, vQ = it ? it.vQ : s.rB, kind = it ? it.kind : s.rMode;
+      return { vP, vQ, kind, eq: vP === vQ, list, pickIdx, problemReview };
     },
     draw(b, s, M, C) {
       let vP = M.vP, vQ = M.vQ, kind = M.kind;
@@ -359,10 +368,10 @@
       const spec = {};
       spec[n1] = { color: 'amber', text: mi(vP) + '°' };
       spec[n2] = { color: C.mode === 'problem' ? 'violet' : eq ? 'amber' : 'violet', rings: C.mode === 'problem' ? 1 : eq ? 1 : 2, text: mi(vQ) + '°' };
-      if (C.mode === 'review' && C.step === 1) { spec[n1].text = 'p'; spec[n2].text = 'q'; }
+      if (C.mode === 'review' && C.step === 1 && !M.problemReview) { spec[n1].text = 'p'; spec[n2].text = 'q'; }
       overlay(b, G, n1, n2, 'amber', 0.3);
       drawWedges(b, G, spec, { letters: false });
-      if (C.mode === 'problem') T(b, { x: 0, y: -3.7 }, `${NUM[Math.max(0, M.list.indexOf(M.list[M.pickIdx] || M.list[0]))]} 그림 (${KIND(kind)})`, { color: 'muted', size: 17 });
+      if (C.mode === 'problem' || (C.mode === 'review' && M.problemReview)) T(b, { x: 0, y: -3.7 }, `${NUM[Math.max(0, M.list.indexOf(M.list[M.pickIdx] || M.list[0]))]} 그림 (${KIND(kind)})`, { color: 'muted', size: 17 });
       else if (!(C.mode === 'review' && C.step < 3)) T(b, { x: 0, y: -3.7 }, eq ? 'l ∥ m  (두 각이 같아요)' : 'l과 m은 평행하지 않아요', { color: eq ? 'green' : 'rose', size: 19 });
       if (C.mode === 'explore') {
         const Q = G.Q, top = at(G.P, vP, 1.3);
@@ -373,6 +382,10 @@
     },
     steps: (M) => {
       const k = KIND(M.kind);
+      if (M.problemReview) {
+        const i = M.list.findIndex(it => it.ok), it = M.list[i];
+        return M.list.map((q, j) => `${NUM[j]} 그림: ${KIND(q.kind)}은 ${mi(q.vP)}°와 ${mi(q.vQ)}°예요. ${q.vP === q.vQ ? '크기가 같으므로 두 직선은 평행해요.' : '크기가 다르므로 두 직선은 평행하지 않아요.'}`).concat(`${NUM[i]}의 ${KIND(it.kind)}이 ${mi(it.vP)}°로 같아요. 따라서 정답은 ${NUM[i]}이에요.`);
+      }
       return [
         `${k}을 찾아요. 노란 각 p(l 쪽)와 보라 각 q(m 쪽)는 ${SHAPE(M.kind)} 모양의 ${k}이에요.`,
         `두 각의 크기를 비교해요. p = ${mi(M.vP)}°, q = ${mi(M.vQ)}°`,

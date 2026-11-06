@@ -86,7 +86,8 @@
       });
       const showExt = !C.problem && (st === 4 || st === 1) && extAt > 0.02; // 그림에 늘인 선이 실제로 그려질 때만 화면 맞춤에 넣습니다
       const lr = exts.length ? (lean ? 40 : extInfo.some((q) => q.far) ? 44 : 64) : 40;
-      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(showExt ? extInfo.flatMap((q) => (q.far ? q.segs.map((g) => g.end) : [q.X])) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: lean ? 44 : 54, l: lr, r: lr });
+      const bottom = (lean ? 44 : 54) + (b.W >= 560 && b.W < 800 ? 20 : 0);
+      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(showExt ? extInfo.flatMap((q) => (q.far ? q.segs.map((g) => g.end) : [q.X])) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: bottom, l: lr, r: lr });
       const style = (e) => {
         const r = e.rel;
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };

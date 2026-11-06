@@ -22,16 +22,16 @@
     soCr: P('밑면의 반지름 r', 1, 15, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soCr3: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', hint: 'R = r × (배)라서 r은 7 cm까지만 정해요', format: (v) => Math.round(v) + ' cm' }),
     soCh: P('높이 h', 2, 20, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soRl: P('옆면 펼친 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 옆면이 한 줄로 오른쪽으로 펼쳐져요', format: (v) => (v * 100 >= 99.5 ? '한 바퀴' : Math.round(v * 360) + '°') }),
+    soRl: P('옆면 펼친 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 옆면이 한 줄로 오른쪽으로 펼쳐져요', format: (v) => (G.complete(v) ? '한 바퀴' : G.measureN(v * 360) + '°') }),
     soNr: P('밑면의 반지름 r', 1, 14, 1, 3, { color: 'sky', hint: '중심각이 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng3(st, 0) }),
     soNR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요. 중심각이 자연수가 되는 값만 골라져요', onInput: (st) => fixAng3(st, 1), format: (v) => Math.round(v) + ' cm' }),
-    soNt: P('호와 둘레 비교하기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 색이 칠해지며 길이가 같아지는 것을 볼 수 있어요', format: (v) => Math.round(v * 100) + '%' }),
+    soNt: P('호와 둘레 비교하기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 색이 칠해지며 길이가 같아지는 것을 볼 수 있어요', format: (v) => G.measureN(v * 100) + '%' }),
     soNk: P('R은 r의 몇 배', 2, 6, 1, 3, { color: 'amber', format: (v) => 'R = ' + Math.round(v) + ' × r' }),
-    soNq: P('조각 밀기', 0, 1, 0.005, 0.4, { color: 'green', hint: '오른쪽으로 끌면 조각이 가로로 밀려 맞물려요', format: (v) => Math.round(v * 100) + '%' }),
-    soF1: P('작은 밑면의 반지름', 1, 6, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soF2: P('큰 밑면의 반지름', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soNq: P('조각 밀기', 0, 1, 0.005, 0.4, { color: 'green', hint: '오른쪽으로 끌면 조각이 가로로 밀려 맞물려요', format: (v) => G.measureN(v * 100) + '%' }),
+    soF1: P('작은 밑면의 반지름', 1, 6, 1, 2, { onInput: (st) => G.keepSmaller(st, 'soF1', 'soF2'), color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soF2: P('큰 밑면의 반지름', 2, 7, 1, 4, { onInput: (st) => G.keepSmaller(st, 'soF1', 'soF2'), color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soFk: P('모선은 반지름의 몇 배', 2, 5, 1, 3, { color: 'amber', format: (v) => '× ' + Math.round(v) }),
-    soFg: P('작은 부채꼴 빼기', 0, 1, 0.005, 1, { color: 'rose', hint: '작은 부채꼴이 가로로 빠져요', format: (v) => Math.round(v * 100) + '%' })
+    soFg: P('작은 부채꼴 빼기', 0, 1, 0.005, 1, { color: 'rose', hint: '작은 부채꼴이 가로로 빠져요', format: (v) => G.measureN(v * 100) + '%' })
   };
 
   /* ------------------------------------------------------------------ 평면(전개도) 그리기 도구 */
@@ -174,7 +174,7 @@
         const hm = D.P({ x: r, y: h / 2, z: 0 });
         const hdx = b.toS(hm).x + 36 + G.textW(`h = ${h}`, G.FS(b, 15)) / 2 > b.W - 8 ? -36 : 36; // 원기둥이 무대 폭을 거의 채우면 h 글자를 입체 안쪽(왼쪽)에 둬요
         T(b, hm, `h = ${h}`, AMB, { dx: hdx, size: 15 });
-        if (C.review && C.step >= 3) {
+        if (C.review && C.step >= 4) {
           const full = `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, short = `옆넓이 = ${2 * r * h}π cm²`, wide = w * b.k - 12 >= G.textW(full, G.FS(b, 17));
           if (wide) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, full, GRN, { size: 17 });
           else T(b, { x: X0 + w / 2, y: Y0 }, short, GRN, { size: 16, dy: thin ? 42 : 20 }); // 좁으면 짧은 식을 직사각형 아래에
@@ -190,7 +190,7 @@
     view: (M, C) => ({
       guide: '막대를 오른쪽으로 끌거나 ▶를 눌러 <b>옆면을 오른쪽으로 펼쳐</b> 보세요. 입체에서 펼쳐지는 부분(노랑)과 오른쪽(또는 아래) 직사각형이 같은 비율로 늘어나요.',
       readouts: [rd('옆면의 가로', `${2 * M.r}π cm`, AMB, '밑면의 둘레 2πr'), rd('옆면의 세로', cmv(M.h), AMB, '원기둥의 높이'), rd('옆넓이', `${2 * M.r * M.h}π cm²`, GRN, '가로 × 세로', null, true)],
-      status: M.t >= 0.995 ? { tone: 'ok', text: `한 바퀴 → 가로 ${2 * M.r}π cm` } : { tone: 'info', text: `${Math.round(M.t * 360)}° 펼쳤어요` },
+      status: G.complete(M.t) ? { tone: 'ok', text: `한 바퀴 → 가로 ${2 * M.r}π cm` } : { tone: 'info', text: `${G.measureN(M.t * 360)}° 펼쳤어요` },
       formula: `<p>(옆면의 가로) = (밑면의 둘레) = $2\\pi r$</p><p>(옆면의 세로) = (높이) = $h$</p><p>(옆넓이) = $2\\pi r\\times h$ = ${2 * M.r}π × ${M.h} = <b>${2 * M.r * M.h}π</b> cm²</p>`,
       rule: '원기둥의 옆면의 전개도는 직사각형이고, 가로의 길이는 밑면의 둘레, 세로의 길이는 높이이다',
       notes: notes('가로는 <b>반지름이 아니라 밑면의 둘레</b> $2\\pi r$ 예요.', '펼친 옆면은 직사각형이므로 넓이는 가로 × 세로예요.')
@@ -406,15 +406,15 @@
       // 위: 전체 부채꼴(조각 색 번갈아). 아래: 조각을 위·아래 방향을 번갈아 가로로 놓고 맞물림
       const rowY = -R - 1.1 - Math.max(0, R * Math.sin(rad(Math.max(0, x / 2 - 90)))), spread = 1 + 0.45 * (1 - q);
       const sb0 = sectorBox(R, x, r, false), A = { x0: Math.min(sb0.x0, -W * 0.75), x1: Math.max(sb0.x1, W * 0.75), y0: rowY - hgt - 1.6, y1: Math.max(0.4, sb0.y1 + 0.2) };
-      fit(b, A, { l: 30, r: 30, t: 30, b: 30 });
-      for (let i = 0; i < N; i++) { const a0 = G0.a0 + i * d, col = i % 2 === 0 ? SKY : GRN; b.path(sectorPts(G0.O, R, a0, a0 + d), { close: true, fill: col, fillAlpha: 0.32, color: col, width: 1.4 }); }
+      fit(b, A, { l: 30, r: 30, t: 30, b: 50 });
+      for (let i = 0; i < N; i++) { const a0 = G0.a0 + i * d, col = i % 2 === 0 ? SKY : GRN; b.path(sectorPts(G0.O, R, a0, a0 + d), { close: true, fill: col, fillAlpha: 0.2, color: col, width: 1.4 }); }
       b.path(arcPts(G0.O, R, G0.a0, G0.a1), { color: AMB, width: 3.2 });
       void topY;
       const xc = 0, x0 = xc - W / 2, Yt = rowY, Yb = rowY - hgt;
       for (let i = 0; i < N; i++) {
         const down = i % 2 === 0, j = Math.floor(i / 2), px0 = x0 + (j + (down ? 0.5 : 1)) * chord, X = xc + (px0 - xc) * spread;
         const c = { x: X, y: down ? Yt : Yb }, mid = down ? -90 : 90, col = down ? SKY : GRN;
-        b.path(sectorPts(c, R, mid - d / 2, mid + d / 2), { close: true, fill: col, fillAlpha: 0.4, color: col, width: 1.6 });
+        b.path(sectorPts(c, R, mid - d / 2, mid + d / 2), { close: true, fill: col, fillAlpha: 0.24, color: col, width: 1.6 });
       }
       if (C.txt) {
         T(b, G0.O, `${xTxt(x)}°`, AMB, { dy: 36, size: 16 });
@@ -425,21 +425,22 @@
           T(b, { x: xc, y: Yt + 0.15 }, `가로 ≈ 호의 길이의 절반 = π×${r} = ${pk(r)}`, AMB, { dy: -17, size: 15, alpha: al });
           b.seg({ x: x0 - 0.2, y: Yt }, { x: x0 - 0.2, y: Yb }, { color: ROSE, width: 3, alpha: al });
           T(b, { x: x0 - 0.2, y: (Yt + Yb) / 2 }, `세로 ≈ R = ${R}`, ROSE, { dx: -8, align: 'right', size: 15, alpha: al });
-          T(b, { x: xc, y: Yb }, `넓이 ≈ ${pk(r)} × ${R} = ${pk(r * R)} cm²`, GRN, { dy: 24, size: 16, alpha: al });
+          if (!C.review || C.step >= 4) T(b, { x: xc, y: Yb }, `조각의 넓이 합 = ${pk(r * R)} cm²`, GRN, { dy: 24, size: 16, alpha: al });
         }
       }
-      b.handle('q', { x: x0 + W * 0.0 + (W * 1.0) * q, y: Yb - 0.9 }, { color: GRN, ariaLabel: '조각을 가로로 밀기', drag: (w) => { s.playing = false; s.soNq = clamp((w.x - x0) / W, 0, 1); } });
-      b.seg({ x: x0, y: Yb - 0.9 }, { x: x0 + W, y: Yb - 0.9 }, { color: 'muted', width: 3, alpha: 0.6 });
+      const handleY = Yb - px(b, 52); // 결과 글(24px 아래)과 조작 손잡이의 자리를 분리합니다.
+      b.handle('q', { x: x0 + W * q, y: handleY }, { color: AMB, ariaLabel: '조각을 가로로 밀기', drag: (w) => { s.playing = false; s.soNq = clamp((w.x - x0) / W, 0, 1); } });
+      b.seg({ x: x0, y: handleY }, { x: x0 + W, y: handleY }, { color: 'muted', width: 3, alpha: 0.6 });
       void chord;
     },
     steps: (M) => [
       `밑면의 반지름 ${M.r} cm, 모선 ${M.R} cm인 원뿔의 옆면은 반지름 ${M.R}, 호의 길이 $2\\pi\\times${M.r}$인 부채꼴이에요.`,
       `부채꼴을 잘게 나눠 위·아래 방향을 번갈아 가로로 놓고 맞물려요. 직사각형에 가까워져요.`,
-      `가로 = 호의 길이의 절반 = $\\dfrac12\\times 2\\pi\\times ${M.r} = ${pkT(M.r)}$, 세로 = 반지름 = ${M.R}`,
+      `조각을 더 잘게 나눌수록 가로는 호의 길이의 절반 $\\dfrac12\\times 2\\pi\\times ${M.r} = ${pkT(M.r)}$에, 세로는 모선 ${M.R}에 가까워져요.`,
       `(옆넓이) = $${pkT(M.r)}\\times${M.R} = ${pkT(M.r * M.R)}$ (cm²). 일반적으로 $\\pi R r$ 이에요.`
     ],
     view: (M) => ({
-      guide: '막대를 오른쪽으로 끌면 <b>조각이 가로로 밀려</b> 맞물려요. 가로는 호의 길이의 절반, 세로는 반지름 R이에요.',
+      guide: '막대를 오른쪽으로 끌면 <b>조각이 가로로 밀려</b> 맞물려요. 더 잘게 나누면 가로는 호의 길이의 절반, 세로는 모선 R에 가까워져요. 재배열해도 조각의 넓이 합은 그대로예요.',
       readouts: [rd('가로 (호의 길이의 절반)', `${pk(M.r)} cm`, AMB, 'π × r'), rd('세로 (모선 R)', cmv(M.R), ROSE), rd('옆넓이', `${pk(M.r * M.R)} cm²`, GRN, 'π × R × r', null, true)],
       status: M.q > 0.95 ? { tone: 'ok', text: `옆넓이 = ${pk(M.r * M.R)} cm²` } : { tone: 'info', text: '조각을 가로로 밀어 보세요' },
       formula: `<p>(옆넓이) = $\\dfrac12\\times(\\text{호의 길이})\\times R$ = $\\dfrac12\\times 2\\pi r\\times R$ = $\\pi R r$</p><p>= π × ${M.R} × ${M.r} = <b>${M.r * M.R}π</b> cm²</p>`,
