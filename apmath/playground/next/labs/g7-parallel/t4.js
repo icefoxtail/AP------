@@ -72,7 +72,8 @@
         if (C.mode !== 'review' || st >= 2) wedge(b, Cc, 180, a + 180, { color: 'amber', rings: 1, text: mi(a) + '°', r: 28, size: 17 });
         if (C.mode !== 'review' || st >= 3) {
           ticks(b, A, B, 1, 'rose'); ticks(b, A, Cc, 1, 'rose');
-          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16 });
+          // 좁은 화면에서도 C의 밑각 글자와 겹치지 않도록 꼭짓점 A 위에 둡니다.
+          wedge(b, A, angOf(A, B), 0, { color: 'green', rings: 3, text: prob ? 'x' : 'x=' + mi(G.x) + '°', r: 34, size: prob ? 20 : 18, fa: 0.16, at: { dx: 0, dy: -46 } });
         }
       } else if (C.mode === 'explore') T(b, { x: 0, y: 2.1 }, pat < 0.02 ? '펼친 모양 (접어 보기를 눌러요)' : '접는 중...', { color: 'muted', size: 16 });
       if (C.mode === 'explore') {
