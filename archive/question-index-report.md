@@ -9,18 +9,18 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 1056780 bytes
-- 시험지 JS 총 크기: 56763211 bytes
-- 인덱스 크기: 11305637 bytes
+- 시험지 JS 총 크기: 56783266 bytes
+- 인덱스 크기: 11306059 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(26574)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 23613
+- 공식(official): 23615
 - RAW-(임시 규약, 허용): 25 (distinct 7)
 - 비공식(invalid): 632 (distinct 28)
-- 빈 키(empty): 2304
+- 빈 키(empty): 2302
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
@@ -30,9 +30,9 @@
 - 누락 content: 1521
 - 누락 choices: 5
 - 누락 level: 2667
-- 누락 standardUnit: 2476
-- 누락 standardUnitKey: 2304
-- 누락 standardCourse: 2228
+- 누락 standardUnit: 2474
+- 누락 standardUnitKey: 2302
+- 누락 standardCourse: 2226
 - 누락 tags: 2772
 
 ## 시각요소 집계 (최종 인덱스 기준)

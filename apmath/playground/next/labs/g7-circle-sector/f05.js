@@ -275,6 +275,7 @@
           : '<div class="f5-fb bad"><b>다시 생각해 볼까요?</b> ' + esc(hintOf(o.L, ok.L)) + '</div>';
       }
     }
+    if (D.id === 'f5-ring') h += '<div class="f5-fb"><b>서술형 연습</b> 같은 그림의 둘레를 구하는 과정을 직접 써 보세요. 정리 탭에서 풀이를 확인할 수 있어요. [6점]</div>';
     h += '<div class="f5-tools"><button type="button" class="apl-btn sm" data-f5-new>숫자 바꾸기</button><span class="f5-note">슬라이더로 길이와 각을 바꾸면 그림과 보기가 함께 바뀌어요.</span></div>';
     return h;
   }
@@ -1366,9 +1367,9 @@
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
     order: 65,
     id: 'f5',
-    title: 'F05 복합 원호',
-    short: 'F05 복합 원호',
+    title: '복합 원호',
+    short: '복합 원호',
     params: BASE_PARAMS,
-    scenes: [SN, RING, RING2, RING240, STAR, LENS, CUT, TRACK].map(pieceScene).concat(['sq4', 'rect', 'tri3', 'line'].map(bandScene))
+    scenes: [SN, RING, RING240, STAR, LENS, CUT, TRACK].map(pieceScene).concat(['sq4', 'rect', 'tri3', 'line'].map(bandScene))
   });
 })();

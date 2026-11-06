@@ -84,8 +84,8 @@ function tagStack(b, p, nx, ny, items, o = {}) {
 const arcPts = (cx, cy, R, a0, a1, n = 72) => { const o = []; for (let i = 0; i <= n; i++) o.push(pt(cx, cy, R, a0 + (a1 - a0) * i / n)); return o; };
 const lerp = (A, B, f) => ({ x: A.x + (B.x - A.x) * f, y: A.y + (B.y - A.y) * f });
 const ghost = (b) => b.circle(O0, 1, { color: 'muted', width: 1.8, dash: [6, 6], alpha: 0.7 });
-const fillWedge = (b, a0, a1) => b.arc(O0, 1, a0, a1, { sector: true, fill: 'green', fillAlpha: 0.26, color: null });
-const fillSegment = (b, a0, a1) => b.path(arcPts(0, 0, 1, a0, a1, 64), { close: true, fill: 'green', fillAlpha: 0.26, color: null });
+const fillWedge = (b, a0, a1) => b.arc(O0, 1, a0, a1, { sector: true, fill: 'green', fillAlpha: 0.06, color: null });
+const fillSegment = (b, a0, a1) => b.path(arcPts(0, 0, 1, a0, a1, 64), { close: true, fill: 'green', fillAlpha: 0.06, color: null });
 // 중심각 표시: 부채꼴 안쪽에 노란 부채꼴 + 값(직각은 네모)
 function angleMark(b, a0, a1, text, o = {}) {
   const k = b.k || 100, th = Math.abs(a1 - a0), rpx = o.r || 30, am = (a0 + a1) / 2;
@@ -164,7 +164,7 @@ const mkTick = (key, max, dur, reviewTarget) => (s, dt, lab) => {
   }
   return again;
 };
-const rPresets = () => [{ group: '반지름 r', label: '3 cm', apply: (s) => { s.csR = 3; }, on: (s) => s.csR === 3 }, { label: '6 cm', apply: (s) => { s.csR = 6; }, on: (s) => s.csR === 6 }, { label: '9 cm', apply: (s) => { s.csR = 9; }, on: (s) => s.csR === 9 }, { label: '12 cm', apply: (s) => { s.csR = 12; }, on: (s) => s.csR === 12 }];
+const rPresets = () => [3, 4, 5, 6].map((r, i) => ({ group: i === 0 ? '반지름 r' : '', label: `${r} cm`, apply: (s) => { s.csR = r; }, on: (s) => s.csR === r }));
 const angPresets = (key, list) => list.map((a, i) => ({ group: i === 0 ? '중심각' : '', label: a + '°', apply: (s) => { s[key] = a; }, on: (s) => s[key] === a }));
 // 중심각 손잡이(점 B): 끌면 중심각이 15° 단위로 바뀜
 function angleHandle(b, s, key, a0, min, max) {
@@ -209,11 +209,11 @@ const sCenter = {
   draw: (b, s, v, lab) => {
     const st = lab && lab.tab === 'review' ? s.step : 99, r = s.csR, ph = rad(s.csQ), a = -PI / 2 + ph, P = pt(0, 0, 1, a);
     bbox(b, -1, -1, 1, 1.0);
-    b.circle(O0, 1, { fill: 'green', fillAlpha: 0.2, color: 'sky', width: 3.6 });
-    if (st >= 2) for (let i = 1; i < 4; i++) { const Q = pt(0, 0, 1, a + i * PI / 2); b.seg(O0, Q, { color: 'rose', width: 2, alpha: 0.5 }); b.ticks(O0, Q, { color: 'amber' }); }
+    b.circle(O0, 1, { fill: 'green', fillAlpha: 0.035, color: 'sky', width: 2.4 });
+    if (st >= 2) for (let i = 1; i < 4; i++) { const Q = pt(0, 0, 1, a + i * PI / 2); b.seg(O0, Q, { color: 'rose', width: 1.4, alpha: 0.35 }); b.ticks(O0, Q, { color: 'amber' }); }
     if ((lab && lab.tab === 'review' && s.step >= 3) || s.csQ >= 359) b.circle(O0, 1, { color: 'sky', width: 7, glow: true });
-    if (s.csQ > 0) b.arc(O0, 1, -PI / 2, a, { color: 'amber', width: 7, alpha: 0.9 });
-    if (st >= 1) { b.seg(O0, P, { color: 'rose', width: 4 }); b.ticks(O0, P, { color: 'amber' }); }
+    if (s.csQ > 0) b.arc(O0, 1, -PI / 2, a, { color: 'amber', width: 4.5, alpha: 0.8 });
+    if (st >= 1) { b.seg(O0, P, { color: 'rose', width: 2.8 }); b.ticks(O0, P, { color: 'amber' }); }
     b.handle('P', P, { color: 'amber', ariaLabel: '점 P', drag: (w) => { s.playing = false; s.csQ = clamp(Math.round((((Math.atan2(w.y, w.x) + PI / 2) * 180 / PI) + 720) % 360 / 15) * 15, 0, 360); } });
     dot(b, O0, 'ink', 6);
     T(b, O0, '중심 O', { dx: -2, dy: 24, size: 16 });
@@ -235,11 +235,11 @@ const sDiameter = {
     `지름은 원 안에서 그을 수 있는 가장 긴 현입니다. 길이는 ${2 * s.csR} cm입니다.`,
     `원을 한 바퀴 굴린 거리 = 원주 = ${plain(ex(2 * s.csR))} cm. 원주 ÷ 지름 = ${plain(ex(2 * s.csR))} ÷ ${2 * s.csR} = π`
   ],
-  problem: problemOf('생각해 보기', '원의 지름은 반지름의 몇 배일까요?', '2배입니다. 지름은 원의 중심 O를 지나는 가장 긴 현이며 길이는 2r입니다.'),
+  problem: problemOf('생각해 보기', '원주를 지름으로 나눈 값은 무엇일까요?', '원의 크기와 관계없이 원주율 π입니다.'),
   view: (s) => {
-    const r = s.csR, deg = Math.floor(s.csD * 3.6 / 15) * 15;
+    const r = s.csR, progress = Math.round(s.csD);
     return {
-      readouts: [{ label: '지름 2r', value: 2 * r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '굴러간 거리', value: s.csD >= 99.5 ? cmOf(ex(2 * r)) : cmOf(ex(r * deg, 180)), color: 'amber', note: `${Math.round(s.csD * 3.6)}°만큼 굴림` }],
+      readouts: [{ label: '지름 2r', value: 2 * r + ' cm', color: 'rose' }, { label: '원주 2πr', value: cmOf(ex(2 * r)), color: 'sky' }, { label: '굴러간 거리', value: s.csD >= 99.5 ? cmOf(ex(2 * r)) : cmOf(ex(2 * r * progress, 100)), color: 'amber', note: `${Math.round(s.csD * 3.6)}°만큼 굴림` }],
       formula: RICH(M('원주율 $\\pi=\\dfrac{\\text{원주}}{\\text{지름}}$ , 원주 $l=\\pi\\times\\text{지름}=2\\pi r$'), M(`지금: $\\pi\\times${2 * r}=${texOf(ex(2 * r))}\\ \\text{cm}$`))
     };
   },
@@ -248,25 +248,18 @@ const sDiameter = {
     bbox(b, -1, -1, TAU + 1, gy + 0.4);
     b.circle(O0, 1, { color: 'muted', width: 1.6, dash: [5, 6], alpha: 0.6 });
     b.seg({ x: -0.7, y: gy }, { x: TAU + 0.7, y: gy }, { color: 'ink', width: 2.6, alpha: 0.75 });
-    if (th > 0) b.seg({ x: 0, y: gy }, { x: th, y: gy }, { color: 'amber', width: 8, alpha: 0.95 });
-    b.circle(C, 1, { fill: 'green', fillAlpha: 0.2, color: 'sky', width: 3.6 });
+    if (th > 0) b.seg({ x: 0, y: gy }, { x: th, y: gy }, { color: 'amber', width: 4.5, alpha: 0.8 });
+    b.circle(C, 1, { fill: 'green', fillAlpha: 0.035, color: 'sky', width: 2.4 });
     const ph = PI / 2 + th, P = pt(C.x, 0, 1, ph), Q = pt(C.x, 0, 1, ph + PI);
-    b.seg(P, Q, { color: 'rose', width: 4 });
+    b.seg(P, Q, { color: 'rose', width: 2.8 });
     b.ticks(P, C, { color: 'amber' }); b.ticks(C, Q, { color: 'amber' });
     dot(b, C, 'ink', 5);
     dot(b, Q, 'rose', 5.5);
     b.handle('roll', C, { color: 'amber', ariaLabel: '원 굴리기', drag: (w) => { s.playing = false; s.csD = clamp(w.x / TAU * 100, 0, 100); } });
     b.point(P, { color: 'amber', r: 7 });
     T(b, { x: C.x, y: -1 }, `지름 2r = ${2 * r} cm`, { dy: -26, color: 'rose', size: 17 });
-    // 지름 길이 자로: 원주 = 지름 3개 + 조금
-    if (st >= 2) {
-      const by = gy + 0.34;
-      [0, 1, 2].forEach((i) => { const x0 = i * 2 + 0.04, x1 = i * 2 + 1.96; b.seg({ x: x0, y: by }, { x: x1, y: by }, { color: 'rose', width: 8, alpha: th >= x1 - 0.04 ? 1 : 0.35 }); T(b, { x: i * 2 + 1, y: by }, `지름 ${2 * r}`, { dy: 20, color: 'rose', size: 15 }); });
-      b.seg({ x: 6.04, y: by }, { x: TAU, y: by }, { color: 'amber', width: 8, alpha: th >= TAU - 0.04 ? 1 : 0.35 });
-      T(b, { x: (6 + TAU) / 2 + 0.02, y: by }, '조금', { dy: 20, color: 'amber', size: 15 });
-    }
-    T(b, { x: TAU / 2, y: gy }, s.csD >= 99.5 ? `한 바퀴 굴러간 거리 = 원주 = ${cmOf(ex(2 * r))}` : (th > 0 ? `굴러간 거리 = ${cmOf(ex(r * Math.floor(s.csD * 3.6 / 15) * 15, 180))}` : '원을 굴려 보세요 →'), { dy: st >= 2 ? 78 : 36, color: 'amber', size: 17 });
-    if (s.csD >= 99.5) T(b, { x: TAU / 2, y: gy }, `원주 ÷ 지름 = ${plain(ex(2 * r))} ÷ ${2 * r} = π`, { dy: st >= 2 ? 106 : 66, color: 'ink', size: 16 });
+    T(b, { x: TAU / 2, y: gy }, s.csD >= 99.5 ? `한 바퀴 굴러간 거리 = 원주 = ${cmOf(ex(2 * r))}` : (th > 0 ? `굴러간 거리 = ${cmOf(ex(2 * r * Math.round(s.csD), 100))}` : '원을 굴려 보세요 →'), { dy: 36, color: 'amber', size: 17 });
+    if (s.csD >= 99.5) T(b, { x: TAU / 2, y: gy }, `원주 ÷ 지름 = ${plain(ex(2 * r))} ÷ ${2 * r} = π`, { dy: 66, color: 'ink', size: 16 });
   }
 };
 
@@ -275,26 +268,34 @@ function partScene(type) {
   const meta = {
     arc: { id: 'z0-arc', title: '호·현', info: '<b>호</b>는 원 위의 굽은 곡선, <b>현</b>은 원 위의 두 점 A, B를 곧게 이은 선분입니다. 노란 점 B를 끌어 보세요. 아래 막대는 호와 현을 곧게 펴서 길이를 비교한 것입니다.', q: ['원 위의 두 점 A, B를 잇는 두 가지 선 중 가장 짧은 길은 호일까요, 현일까요?', '현 AB입니다. 두 점을 잇는 선 중 가장 짧은 것은 직선 거리인 현입니다.'] },
     sector: { id: 'z0-sector', title: '부채꼴', info: '<b>부채꼴</b>은 원에서 두 반지름(OA, OB)과 한 호(AB)로 이루어진 부채 모양의 도형입니다. 노란 점 B를 끌어 <b>중심각</b>을 바꿔 보세요.', q: Q_SECTOR },
-    segment: { id: 'z0-segment', title: '활꼴', info: '호 AB와 현 AB로 둘러싸인 활 모양의 도형이 <b>활꼴</b>입니다. 부채꼴과 달리 중심 O를 꼭짓점으로 갖지 않습니다. 노란 점 B를 끌어 보세요.', q: Q_SEGMENT }
+    segment: { id: 'z0-segment', title: '활꼴', info: '호 AB와 현 AB로 둘러싸인 활 모양의 도형이 <b>활꼴</b>입니다. 부채꼴과 달리 중심 O를 꼭짓점으로 갖지 않습니다. 노란 점 B를 끌어 보세요.', q: ['활꼴은 어떤 선들로 둘러싸인 도형인가요?', '원 위의 호와 그 양 끝을 이은 현으로 둘러싸인 도형입니다.'] }
   }[type];
   const key = type === 'sector' ? 'csA' : 'csS', min = 30, max = type === 'sector' ? 300 : 180;
   const chordTxt = (sh, r) => (sh.deg === 60 ? `현 AB = ${r} cm` : sh.deg === 180 ? `현 AB = ${2 * r} cm` : '현 AB');
   return {
     id: meta.id, title: meta.title, short: meta.title, question: Q_CIRCLE, guide: meta.info,
     controls: ['csR', key], presets: () => [...rPresets(), ...angPresets(key, type === 'sector' ? [30, 60, 90, 120, 180] : [60, 90, 120, 180])],
+    actions: type === 'sector' ? () => [
+      { id: 'sector-perimeter', label: '둘레', on: (s) => s.csMeasure === 'perimeter', run: (s) => { s.csMeasure = 'perimeter'; } },
+      { id: 'sector-area', label: '넓이', on: (s) => s.csMeasure === 'area', run: (s) => { s.csMeasure = 'area'; } }
+    ] : undefined,
     steps: (s) => {
       const sh = shapeOf(type, s), r = s.csR, arc = ex(r * sh.deg, 180);
       if (type === 'arc') return ['원 위의 두 점 A, B를 잇는 두 가지 선, 호 AB와 현 AB를 비교합니다.', `호 AB는 원주를 따라 굽은 곡선입니다. 길이는 2π × ${r} × ${sh.deg}/360 = ${plain(arc)} cm`, sh.deg === 60 ? `현 AB는 A, B를 곧게 이은 선분입니다. 중심각이 60°이면 현의 길이는 반지름과 같은 ${r} cm` : sh.deg === 180 ? `현 AB는 지름이 됩니다. 길이는 ${2 * r} cm` : '현 AB는 A, B를 곧게 이은 선분입니다. (현의 길이는 중1에서 계산하지 않습니다)'];
       if (type === 'sector') return [`반지름 ${r} cm, 중심각 ${sh.deg}°인 부채꼴 OAB를 관찰합니다.`, `두 반지름 OA, OB의 길이는 각각 ${r} cm입니다.`, `호 AB의 길이 = 2π × ${r} × ${sh.deg}/360 = ${plain(arc)} cm`];
-      return ['활꼴은 호 AB와 현 AB로 둘러싸인 도형입니다.', `호 AB의 길이 = 2π × ${r} × ${sh.deg}/360 = ${plain(arc)} cm`, sh.deg === 60 ? `현 AB = ${r} cm` : sh.deg === 180 ? `현 AB = ${2 * r} cm (지름)` : '현 AB는 두 점을 곧게 이은 선분입니다. 점선 반지름은 경계가 아닙니다.'];
+      return ['활꼴은 호 AB와 현 AB로 둘러싸인 도형입니다.', '호 AB는 원 위의 굽은 선입니다.', '현 AB는 호의 양 끝 A, B를 곧게 이은 선분입니다. 그 사이의 면이 활꼴입니다.'];
     },
     problem: problemOf('생각해 보기', meta.q[0], meta.q[1]),
     view: (s) => {
-      const sh = shapeOf(type, s), r = s.csR, arc = ex(r * sh.deg, 180), v = { readouts: [{ label: '중심각', value: sh.deg + '°', color: 'amber' }, { label: '호 AB의 길이', value: cmOf(arc), color: 'sky', note: `2π × ${r} × ${sh.deg}/360` }] };
+      const sh = shapeOf(type, s), r = s.csR, arc = ex(r * sh.deg, 180);
+      if (type === 'segment') return { readouts: [] };
+      const v = { readouts: [{ label: '중심각', value: sh.deg + '°', color: 'amber' }, { label: '호 AB의 길이', value: cmOf(arc), color: 'sky', note: `2π × ${r} × ${sh.deg}/360` }] };
       if (type === 'sector') v.readouts.push({ label: '부채꼴의 넓이', value: cm2Of(ex(r * r * sh.deg, 360)), color: 'green', note: `π × ${r}² × ${sh.deg}/360` });
       if (type === 'arc' || type === 'segment') v.readouts.push({ label: '현 AB의 길이', value: sh.deg === 60 ? `${r} cm` : sh.deg === 180 ? `${2 * r} cm` : '계산 안 함', color: 'rose' });
       v.formula = RICH(M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$ , 부채꼴의 넓이 $S=\\pi r^2\\times\\dfrac{\\theta}{360}$'), M(`지금: $l=2\\pi\\times${r}\\times\\dfrac{${sh.deg}}{360}=${texOf(arc)}\\ \\text{cm}$`));
-      if (type === 'segment' || type === 'arc') v.alert = sh.deg === 180 ? { tone: 'info', text: '중심각이 180°이면 현 AB는 지름(2r)이 되고, 활꼴과 부채꼴은 모두 반원이 됩니다.' } : { tone: 'info', text: '일반 각도의 현의 길이와 활꼴의 넓이를 수로 구하는 것은 중1 과정이 아닙니다. 호 + 현의 구조만 구분합니다.' };
+      if (type === 'sector' && s.csMeasure === 'perimeter') v.alert = { tone: 'info', text: `둘레는 경계선인 호와 두 반지름의 길이를 더합니다: ${plain(arc)} + ${2 * r} cm` };
+      if (type === 'sector' && s.csMeasure === 'area') v.alert = { tone: 'info', text: `넓이는 부채꼴 면의 크기입니다: ${plain(ex(r * r * sh.deg, 360))} cm²` };
+      if (type === 'segment') v.alert = sh.deg === 180 ? { tone: 'info', text: '중심각이 180°이면 현 AB는 지름(2r)이 되고, 활꼴과 부채꼴은 모두 반원이 됩니다.' } : { tone: 'info', text: '일반 각도의 현의 길이와 활꼴의 넓이를 수로 구하는 것은 중1 과정이 아닙니다. 호 + 현의 구조만 구분합니다.' };
       return v;
     },
     draw: (b, s, v, lab) => {
@@ -302,12 +303,12 @@ function partScene(type) {
       const st = lab && lab.tab === 'review' ? s.step : 99;
       bbox(b, -1, -1, 1, type === 'arc' ? 1.9 : 1);
       ghost(b);
-      if (type === 'sector') fillWedge(b, a0, a1); else fillSegment(b, a0, a1);
+      if (type === 'sector' && s.csMeasure !== 'perimeter') b.arc(O0, 1, a0, a1, { sector: true, fill: 'green', fillAlpha: s.csMeasure === 'area' ? 0.16 : 0.09, color: null }); else if (type === 'segment') b.path(arcPts(0, 0, 1, a0, a1, 64), { close: true, fill: 'green', fillAlpha: 0.10, color: null });
       if (type !== 'sector') { b.seg(O0, A, { color: 'muted', width: 2, dash: [6, 6] }); b.seg(O0, B, { color: 'muted', width: 2, dash: [6, 6] }); }
-      b.arc(O0, 1, a0, a1, { color: 'sky', width: type === 'arc' && st < 2 ? 3 : 5.2, glow: st === 2 && type !== 'sector' });
-      if (type === 'sector') { b.seg(B, O0, { color: 'rose', width: 4.4 }); b.seg(O0, A, { color: 'rose', width: 4.4 }); b.ticks(O0, A, { color: 'amber' }); b.ticks(O0, B, { color: 'amber' }); }
-      else { b.seg(B, A, { color: 'rose', width: 4.4, glow: st === 3 }); b.ticks(O0, A, { color: 'amber', size: 5 }); b.ticks(O0, B, { color: 'amber', size: 5 }); }
-      angleMark(b, a0, a1, `${sh.deg}°`);
+      b.arc(O0, 1, a0, a1, { color: 'sky', width: 3, glow: st === 2 && type !== 'sector' });
+      if (type === 'sector') { const edge = s.csMeasure === 'perimeter' ? 'sky' : 'rose'; b.seg(B, O0, { color: edge, width: 2.8 }); b.seg(O0, A, { color: edge, width: 2.8 }); b.ticks(O0, A, { color: 'amber' }); b.ticks(O0, B, { color: 'amber' }); }
+      else { b.seg(B, A, { color: 'rose', width: 2.8, glow: st === 3 }); b.ticks(O0, A, { color: 'amber', size: 5 }); b.ticks(O0, B, { color: 'amber', size: 5 }); }
+      angleMark(b, a0, a1, `${sh.deg}°`, { r: 18 });
       angleHandle(b, s, key, a0, min, max);
       dot(b, O0, 'ink', 5.5); dot(b, A, 'ink', 5); dot(b, B, 'ink', 5);
       const bis = { x: Math.cos(am), y: Math.sin(am) };
@@ -315,8 +316,8 @@ function partScene(type) {
       tagN(b, A, Math.cos(a0), Math.sin(a0), 'A', { size: 17, gap: 9 });
       tagN(b, B, Math.cos(a1), Math.sin(a1), 'B', { size: 17, gap: 9 });
       // 호 라벨 (활꼴·호·현은 현 라벨을 바로 아래에 함께 쌓음: 색으로 구분)
-      const items = [{ t: `호 AB = ${cmOf(ex(r * sh.deg, 180))}`, color: 'sky' }];
-      if (type !== 'sector') items.push({ t: chordTxt(sh, r), color: 'rose' });
+      const items = [{ t: type === 'segment' ? '호 AB' : `호 AB = ${cmOf(ex(r * sh.deg, 180))}`, color: 'sky' }];
+      if (type !== 'sector') items.push({ t: type === 'segment' ? '현 AB' : chordTxt(sh, r), color: 'rose' });
       tagStack(b, pt(0, 0, 1, am), bis.x, bis.y, items, { size: 17, gap: sh.deg < 60 ? 24 : 10 });
       // 반지름 라벨(부채꼴만)
       if (type === 'sector') {
@@ -328,8 +329,8 @@ function partScene(type) {
         // 호와 현을 곧게 펴서 비교 (가로 막대)
         const y1 = 1.5, y2 = 1.85, la = sh.th * 0.64, lc = 2 * Math.sin(sh.th / 2) * 0.64; // 같은 눈금(0.64배)으로 곧게 펴서 비교
         T(b, { x: -1, y: y1 }, '호', { dx: -16, color: 'sky', size: 16 }); T(b, { x: -1, y: y2 }, '현', { dx: -16, color: 'rose', size: 16 });
-        b.seg({ x: -1, y: y1 }, { x: -1 + la, y: y1 }, { color: 'sky', width: 8 });
-        b.seg({ x: -1, y: y2 }, { x: -1 + lc, y: y2 }, { color: 'rose', width: 8 });
+        b.seg({ x: -1, y: y1 }, { x: -1 + la, y: y1 }, { color: 'sky', width: 4 });
+        b.seg({ x: -1, y: y2 }, { x: -1 + lc, y: y2 }, { color: 'rose', width: 4 });
         T(b, { x: -1 + la, y: y1 }, cmOf(ex(r * sh.deg, 180)), { dx: 10, align: 'left', color: 'sky', size: 15 });
         T(b, { x: -1 + lc, y: y2 }, sh.deg === 60 ? `${r} cm` : sh.deg === 180 ? `${2 * r} cm` : '현', { dx: 10, align: 'left', color: 'rose', size: 15 });
       } else if (type === 'sector') {
@@ -363,7 +364,15 @@ function periScene(type) {
       const known = segs.every((g) => g.exact);
       return [meta.info.replace(/<\/?b>/g, ''), ...segs.map((g, i) => `${NUMS[i]} ${g.name}: ${g.exact ? '길이 ' + plain(g.exact) + ' cm' : '길이는 중1에서 계산하지 않습니다'}${i === segs.length - 1 ? (known ? `. 모두 더하면 둘레 ${plain(tot)} cm` : '') : ''}`)];
     },
-    problem: problemOf('생각해 보기', meta.q[0], meta.q[1]),
+    problem: type === 'sector' ? {
+      tag: '둘레 확인 문제',
+      text: (s) => {
+        const r = s.csR, a = s.csA, l = ex(r * a, 180);
+        const values = [l, plus(l, ex(0, 1, r)), plus(l, ex(0, 1, 2 * r)), plus(scaleEx(l, 2, 1), ex(0, 1, 2 * r)), plus(l, ex(0, 1, 4 * r))];
+        return RICH(APLab.esc(`반지름 ${r} cm, 중심각 ${a}°인 부채꼴의 둘레는?`), ...values.map((v, i) => APLab.esc(`${['①', '②', '③', '④', '⑤'][i]} ${plain(v)} cm`)));
+      },
+      answer: (s) => APLab.esc(`③ ${plain(plus(ex(s.csR * s.csA, 180), ex(0, 1, 2 * s.csR)))} cm`)
+    } : problemOf('생각해 보기', meta.q[0], meta.q[1]),
     view: (s) => {
       const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, s.csP / 100);
       const known = segs.every((g) => g.exact), tot = segs.reduce((a, g) => plus(a, g.exact || ex()), ex());
@@ -371,7 +380,7 @@ function periScene(type) {
       if (type !== 'segment') rd.push({ label: '넓이', value: cm2Of(type === 'semi' ? ex(r * r, 2) : ex(r * r * sh.deg, 360)), color: 'green' });
       rd.push({ label: '점 P가 지나간 길이', value: s.csP > 0 ? (tp.ex ? cmOf(tp.ex) : '계산 안 함') : '0', color: 'amber' });
       const f = { semi: `반원 둘레 = πr + 2r = π × ${r} + 2 × ${r} = ${plain(tot)} cm`, quarter: `사분원 둘레 = $\\frac{\\pi r}{2}$ + 2r = π × ${r}/2 + 2 × ${r} = ${plain(tot)} cm`, sector: `부채꼴 둘레 = 호 AB + 2r = 2π × ${r} × ${sh.deg}/360 + 2 × ${r} = ${plain(tot)} cm`, segment: `활꼴 둘레 = 호 AB + 현 AB = 2π × ${r} × ${sh.deg}/360 + ${known ? plain(segs[1].exact) + ' = ' + plain(tot) : '현 AB'} cm` }[type];
-      return { readouts: rd, formula: RICH(esc2(f), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '현의 길이를 수로 구하는 것은 중1 과정이 아닙니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
+      return { readouts: rd, formula: RICH(esc2(f), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '이 조건에서 현의 길이를 계산하는 방법은 중1 과정에서 배우지 않습니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
     },
     draw: (b, s) => {
       const sh = shapeOf(type, s), r = s.csR, segs = boundary(sh, r), tp = tracePlan(segs, s.csP / 100), a0 = sh.a0, a1 = sh.a1, am = (a0 + a1) / 2;
@@ -380,7 +389,7 @@ function periScene(type) {
       if (type === 'segment') fillSegment(b, a0, a1); else fillWedge(b, a0, a1);
       if (type === 'segment') { b.seg(O0, pt(0, 0, 1, a0), { color: 'muted', width: 2, dash: [6, 6] }); b.seg(O0, pt(0, 0, 1, a1), { color: 'muted', width: 2, dash: [6, 6] }); }
       // 경계: 호(하늘) · 선(분홍)
-      segs.forEach((g) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a1, { color: 'sky', width: 5.4 }); else b.seg(g.P, g.Q, { color: 'rose', width: 4.8 }); });
+      segs.forEach((g) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a1, { color: 'sky', width: 2.8 }); else b.seg(g.P, g.Q, { color: 'rose', width: 2.8 }); });
       if (type === 'quarter' || type === 'sector') { b.ticks(O0, pt(0, 0, 1, a0), { color: 'amber' }); b.ticks(O0, pt(0, 0, 1, a1), { color: 'amber' }); }
       // 자취
       if (s.csP > 0) tp.done.forEach(({ g, f }) => { if (g.kind === 'arc') b.arc(O0, 1, g.a0, g.a0 + f * (g.a1 - g.a0), { color: 'amber', width: 8, alpha: 0.95 }); else b.seg(g.P, g.at(f), { color: 'amber', width: 8, alpha: 0.95 }); });
@@ -435,7 +444,7 @@ function proofScene(type) {
   const circ = type === 'circle';
   const meta = circ
     ? { id: 'z3-circleProof', title: '원을 잘게 나누기', info: '원을 합동인 부채꼴 조각으로 잘게 나눕니다. 조각을 <b>위·아래 방향을 번갈아</b> 가로로 늘어놓고, 막대를 끌어 <b>가로로 밀어</b> 맞물리게 해 보세요. 직사각형에 가까워집니다. 조각 수와 반지름도 바꿔 보세요.', q: ['원을 한없이 잘게 나누어 만든 직사각형의 가로와 세로는 각각 원의 무엇과 같나요?', '가로는 원주의 절반(πr)이고, 세로는 원의 반지름(r)입니다. 따라서 넓이는 πr × r = πr²입니다.'] }
-    : { id: 'z3-sectorProof', title: '부채꼴 넓이', info: '부채꼴을 같은 크기로 나눈 뒤 조각을 위·아래 방향을 번갈아 가로로 늘어놓고, 막대를 끌어 가로로 밀어 맞물리게 합니다. 가로는 호의 길이의 절반($\\frac{l}{2}$), 세로는 반지름(r)에 가까워집니다.', q: ['부채꼴 넓이 공식 S = 1/2 rl에서 l은 무엇을 뜻하나요?', '부채꼴의 호의 길이(l = 2πr × $\\frac{\\theta}{360}$°)입니다. 중심각을 몰라도 반지름(r)과 호의 길이(l)를 알면 넓이를 바로 구할 수 있습니다.'] };
+    : { id: 'z3-sectorProof', title: '부채꼴 넓이', info: '부채꼴을 같은 크기로 나눈 뒤 조각을 위·아래 방향을 번갈아 가로로 늘어놓고, 막대를 끌어 가로로 밀어 맞물리게 합니다. 가로는 호의 길이의 절반($\\frac{l}{2}$), 세로는 반지름(r)에 가까워집니다.', q: ['부채꼴 넓이 공식 S = 1/2 rl에서 l은 무엇을 뜻하나요?', '부채꼴의 호의 길이(l = 2πr × $\\frac{\\theta}{360}$)입니다. 중심각을 몰라도 반지름(r)과 호의 길이(l)를 알면 넓이를 바로 구할 수 있습니다.'] };
   const Kof = (s) => Math.max(2, 2 * Math.ceil(s.csS / 20));
   const countOf = (s) => (circ ? s.csN : Kof(s));
   return {
@@ -519,7 +528,7 @@ const PARAMS = {
 };
 // 장면에 들어올 때 기본값(교과서 숫자)
 const ENTER = {
-  'z0-center': { csR: 6, csQ: 90 }, 'z0-diameter': { csR: 6, csD: 30 }, 'z0-arc': { csR: 6, csS: 60 }, 'z0-sector': { csR: 6, csA: 90 }, 'z0-segment': { csR: 6, csS: 60 },
+  'z0-center': { csR: 6, csQ: 90 }, 'z0-diameter': { csR: 6, csD: 30 }, 'z0-arc': { csR: 6, csS: 60 }, 'z0-sector': { csR: 6, csA: 90, csMeasure: '' }, 'z0-segment': { csR: 6, csS: 60 },
   'z2-semi': { csR: 6, csP: 0 }, 'z2-quarter': { csR: 6, csP: 0 }, 'z2-sector': { csR: 6, csA: 90, csP: 0 }, 'z2-segment': { csR: 6, csS: 60, csP: 0 },
   'z3-circleProof': { csR: 6, csN: 16, csT: 0 }, 'z3-sectorProof': { csR: 6, csS: 90, csT: 0 }
 };
@@ -561,11 +570,68 @@ const loadScript = (src) => new Promise((res) => {
 });
 
 function start() {
-  const mods = (window.APL_CS_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length);
+  // 기존 부채꼴 둘레 링크는 통합 화면으로 옮기고 숫자 조건을 보존한다.
+  const oldHash = new URLSearchParams(location.hash.slice(1));
+  if ((oldHash.get('s') || '').split('@')[0] === 'x02') {
+    const r = Number(oldHash.get('bx02_r') || 6), a = Number(oldHash.get('bx02_th') || 120);
+    oldHash.set('s', 'z2-sector@2');
+    oldHash.set('csR', String(clamp(Number.isFinite(r) ? r : 6, 2, 12)));
+    oldHash.set('csA', String(clamp(Number.isFinite(a) ? a : 120, 30, 300)));
+    oldHash.set('step', '1');
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
+  // 회전하면 같은 세 반원인 기존 연습 링크를 통합 화면에 연결한다.
+  if ((oldHash.get('s') || '').split('@')[0] === 'y11') {
+    const left = Number(oldHash.get('f02_y11_a') || 8), right = Number(oldHash.get('f02_y11_b') || 6);
+    oldHash.set('s', 'sj1@5');
+    oldHash.set('f02_sj1_a', String(clamp(Number.isFinite(right) ? right : 6, 1, 8)));
+    oldHash.set('f02_sj1_b', String(clamp(Number.isFinite(left) ? left : 8, 1, 8)));
+    if (oldHash.has('f02_y11_u')) oldHash.set('f02_sj1_u', oldHash.get('f02_y11_u'));
+    oldHash.set('step', '1');
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
+  // 같은 두 작은 반원 장면의 기존 공유 링크를 통합 화면으로 옮긴다.
+  if ((oldHash.get('s') || '').split('@')[0] === 'f1-semis') {
+    const R = Number(oldHash.get('f1_semis_R') || 6), r1 = Number(oldHash.get('f1_semis_r1') || 3);
+    const big = clamp(Number.isFinite(R) ? R : 6, 4, 9), left = clamp(Number.isFinite(r1) ? r1 : 3, 1, big - 1);
+    oldHash.set('s', 'y12@5');
+    oldHash.set('f02_y12_p', String(left));
+    oldHash.set('f02_y12_q', String(big - left));
+    oldHash.set('step', '1');
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
+  // 이전 서술형 고리 링크는 같은 모형의 통합 문제로 연결한다.
+  if ((oldHash.get('s') || '').split('@')[0] === 'f5-ring2') {
+    oldHash.set('s', 'f5-ring@8');
+    if (!oldHash.has('f5A')) oldHash.set('f5A', '9');
+    if (!oldHash.has('f5B')) oldHash.set('f5B', '6');
+    if (!oldHash.has('f5C')) oldHash.set('f5C', '40');
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
+  // 원의 요소 확인 문제는 개념 화면 묶음에 함께 둔다.
+  if ((oldHash.get('s') || '').split('@')[0] === '1101') {
+    oldHash.set('s', '1101@0');
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
+  const advancedAngleIds = new Set(['1719', '1807', '1104', '1105', '1809', 'x01']);
+  const sourceBasic = (window.APL_CS_GROUPS || []).find((g) => g.id === 'basic');
+  const legacyTriLink = (oldHash.get('s') || '').split('@')[0] === 'f1-tri';
+  const mods = (window.APL_CS_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length)
+    .map((g) => g.id === 'basic' ? { ...g, scenes: g.scenes.filter((sc) => sc.id !== 'x02' && sc.id !== '1101' && !advancedAngleIds.has(sc.id)) } : g.id === 'f01' ? { ...g, scenes: g.scenes.filter((sc) => sc.id !== 'f1-semis' && (legacyTriLink || sc.id !== 'f1-tri')) } : g);
+  const elementQuiz = sourceBasic && sourceBasic.scenes.find((sc) => sc.id === '1101');
+  if (elementQuiz && !mineGroups[0].scenes.some((sc) => sc.id === '1101')) mineGroups[0].scenes.push(elementQuiz);
+  if (sourceBasic) mods.push({ order: 90, id: 'basic-advanced', title: '각과 호의 응용', short: '각과 호의 응용', scenes: sourceBasic.scenes.filter((sc) => advancedAngleIds.has(sc.id)) });
   // 좌표계: 이 파일의 탭(①③④)과 F03·F05·F06·중심각 탭은 도형 좌표(figure, y 아래쪽), F01·F04 모듈은 수학 좌표(cartesian, y 위쪽)로 그려져 있어 장면마다 알려 줍니다.
   const CARTESIAN = { f01: 1, f04: 1 };
   mods.forEach((g) => { if (CARTESIAN[g.id]) g.scenes.forEach((sc) => { sc.boardKind = 'cartesian'; }); });
   const groups = [...mineGroups, ...mods].sort((a, b) => (a.order || 0) - (b.order || 0)).map((g) => ({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes }));
+  // 장면을 묶음 간 이동해도 예전 공유 링크는 동일한 장면을 연다.
+  const linkedId = (oldHash.get('s') || '').split('@')[0];
+  const linkedGroup = groups.findIndex((g) => g.scenes.some((sc) => sc.id === linkedId));
+  if (linkedId && linkedGroup >= 0 && oldHash.get('s') !== linkedId + '@' + linkedGroup) {
+    oldHash.set('s', linkedId + '@' + linkedGroup);
+    history.replaceState(null, '', location.pathname + location.search + '#' + oldHash.toString());
+  }
   const params = { ...PARAMS };
   mods.forEach((g) => Object.assign(params, g.params || {}));
   APLab.createLab({
@@ -585,6 +651,50 @@ function start() {
     videos: (window.APL_VIDEOS || {})['g7-circle-sector'], // 장면 id → 영상 대본 (kit/apl-player.js, labs/g7-circle-sector/video.js)
     groups
   });
+  const setupLearningLevels = () => {
+    const lab = window.lab;
+    if (!lab || !lab.ui || !lab.ui.railWrap || lab.ui.railWrap.dataset.csLevels) return;
+    const levels = [
+      { id: 'concept', label: '개념', groups: ['z0', 'z3'] },
+      { id: 'basic', label: '기본', groups: ['basic', 'z2'] },
+      { id: 'advanced', label: '심화', first: 'basic-advanced', groups: ['basic-advanced', 'f01', 'f02', 'f03', 'f04', 'f5', 'rolling', 'f06-swept', 'f06-goat'] }
+    ];
+    const categoryOf = (id) => levels.find((level) => level.groups.includes(id)) || levels[2];
+    const row = document.createElement('div');
+    row.className = 'cs-levels';
+    row.setAttribute('role', 'group');
+    row.setAttribute('aria-label', '학습 수준');
+    const buttons = levels.map((level) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.textContent = level.label;
+      button.addEventListener('click', () => {
+        if (categoryOf(lab.scene.group.id).id === level.id) return;
+        const i = lab.list.findIndex((sc) => level.first ? sc.group.id === level.first : level.groups.includes(sc.group.id));
+        if (i >= 0) lab.goScene(i);
+      });
+      row.append(button); return button;
+    });
+    const style = document.createElement('style');
+    style.textContent = `.apl-railwrap.cs-has-levels{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px}.cs-levels{grid-column:1/-1;display:flex;gap:6px}.cs-levels button{min-height:34px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text-2);font:700 var(--fs-sm) var(--font-ui)}.cs-levels button[aria-pressed="true"]{background:var(--card);border-color:var(--accent);color:var(--text)}.cs-has-levels .apl-rail{grid-column:1;min-width:0}.cs-has-levels .apl-all-btn{grid-column:2}.cs-has-levels .apl-scene-tab .n{display:none}@media(max-width:560px){.cs-levels button{flex:1;min-height:38px}}`;
+    document.head.append(style);
+    lab.ui.railWrap.dataset.csLevels = '1';
+    lab.ui.railWrap.classList.add('cs-has-levels');
+    lab.ui.railWrap.prepend(row);
+    const renderRail = lab._buildRail.bind(lab);
+    lab._buildRail = () => {
+      renderRail();
+      const active = categoryOf(lab.scene.group.id);
+      buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(levels[i].id === active.id)));
+      Array.from(lab.ui.rail.children).forEach((button, i) => {
+        const visible = lab.groups[i] && categoryOf(lab.groups[i].id).id === active.id;
+        button.style.display = visible ? '' : 'none';
+      });
+      lab._edgeFade(lab.ui.rail);
+    };
+    lab._buildRail();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupLearningLevels, { once: true });
+  else setupLearningLevels();
 }
 Promise.all(MODULES.map((m) => loadScript(`g7-circle-sector/${m}.js`))).then(start);
 });

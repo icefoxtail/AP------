@@ -5,12 +5,24 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createSolutionRenderExecutor(root) {
     'use strict';
 
+    // One shared semantic rule for all output adapters. This is the existing
+    // original-engine reminder-image rule, not a change to source image bytes.
+    // Install synchronously before any staging measurement; no extra request.
+    if (root?.document?.head && !root.document.getElementById('ap-solution-reminder-image-fit')) {
+        const style = root.document.createElement('style');
+        style.id = 'ap-solution-reminder-image-fit';
+        style.textContent = '.q-box.sol-box [data-semantic-content="1"] img { max-width: 100%; height: auto; }';
+        root.document.head.appendChild(style);
+    }
+
+
     // Avoid visually orphaning only a handful of final solution chunks in the
     // next column/page. Source line breaks and typography remain unchanged;
     // only the split boundary moves earlier when the trailing fragment is tiny.
     const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
     const MIN_LEADING_CONTINUATION_CHUNKS = 2;
     const SOLUTION_TYPESET_BATCH_SIZE = 8;
+    const SOLUTION_LAYOUT_YIELD_BUDGET_MS = 8;
     // Initial loading can transfer several MB across 50 solutions. Allow one
     // bounded load+decode budget, then keep the final print readiness gate.
     const SOLUTION_IMAGE_TIMEOUT_MS = 15000;
@@ -107,6 +119,19 @@
         const observedMeasurementsOnly = deps.measurementMode?.() === 'batch'
             && deps.layoutPlannerMode?.() !== 'authority'
             && deps.collectSolutionDecisionDetails === false;
+        const layoutNow = () => root?.performance?.now?.() ?? Date.now();
+        let lastLayoutYield = -Infinity;
+        const yieldSolutionLayout = async () => {
+            // Images and MathJax finish before placement. The following
+            // scrollHeight/clientHeight reads synchronously flush CSS layout,
+            // including compression, so already typeset boxes need no fixed
+            // frame delay. Keep the first barrier and bounded later yields for
+            // progress, cancellation and the host's rAF timeout fallback.
+            if (layoutNow() - lastLayoutYield >= SOLUTION_LAYOUT_YIELD_BUDGET_MS) {
+                await deps.raf();
+                lastLayoutYield = layoutNow();
+            }
+        };
 
         const markSolutionPlacement = (node, continuation = false) => {
             const sourceRef = String(node?.getAttribute?.('data-source-ref') || '').trim();
@@ -198,7 +223,7 @@
                 if (deps.rendererMode() === 'legacy') {
                     await deps.typesetMath('solution-split-chunk', [chunk]);
                     await deps.raf();
-                }
+                } else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
 
                 if (exp.children.length > 1) {
@@ -222,10 +247,12 @@
                     }
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
+                    else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);
-                    await deps.raf();
+                    if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                    else await deps.raf();
                 }
             }
         };
@@ -236,12 +263,16 @@
                 targetCol.appendChild(box);
                 markSolutionPlacement(box, false);
                 if (deps.rendererMode() === 'legacy') await deps.typesetMath('solution-box', [box]);
-                await deps.raf();
+                if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                else await deps.raf();
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
                 deps.autoCompress(box);
-                await deps.raf();
-                await deps.raf();
+                if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                else {
+                    await deps.raf();
+                    await deps.raf();
+                }
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
                 const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;

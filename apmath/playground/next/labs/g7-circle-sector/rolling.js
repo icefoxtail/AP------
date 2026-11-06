@@ -1071,7 +1071,7 @@
   }
 
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
-    order: 66, id: 'rolling', title: 'F06 점의 이동 — 굴리기', short: 'F06 굴리기', params: PARAMS,
+    order: 66, id: 'rolling', title: '점의 이동 — 굴리기', short: '굴리기', params: PARAMS,
     scenes: SPECS.map(buildScene)
   });
 })();

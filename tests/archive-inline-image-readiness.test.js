@@ -119,15 +119,15 @@ test('picture choices use the same source resolution and readiness gate as quest
 });
 
 test('inline image policy is wired through shared, legacy, layout-authority, Screen Runtime, and mixer paths', () => {
-  assert.match(engine, /question-image-readiness\.js\?v=20261106-solution-loading-1/);
+  assert.match(engine, /question-image-readiness\.js\?v=20261106-output-performance-1/);
   assert.match(engine, /s = s\.split\(mathSegmentRe\)\.map/);
   assert.doesNotMatch(engine, /protectedSegmentRe/);
-  assert.match(engine, /await prepareQuestionImages\(root\)/);
+  assert.match(engine, /await prepareQuestionImages\(root, timeoutMs, signal\)/);
   assert.match(engine, /\.q-content img, \.q-image-wrap img/);
   assert.match(engine, /QUESTION_IMAGE_LOAD_FAILED/);
   assert.match(engine, /finish\(document\.getElementById\('print-area'\), undefined, outcome\?\.ok === true\)/);
-  assert.match(mixed, /question-image-readiness\.js\?v=20261106-solution-loading-1/);
-  assert.match(mixed, /await prepareQuestionImages\(root\)/);
+  assert.match(mixed, /question-image-readiness\.js\?v=20261106-output-performance-1/);
+  assert.match(mixed, /await prepareQuestionImages\(root, timeoutMs, signal\)/);
   assert.match(examExecutor, /normalizeQuestionImageSources/);
   assert.match(solutionExecutor, /normalizeQuestionImageSources/);
   assert.match(layoutMaterializer, /validateQuestionImageReadiness/);

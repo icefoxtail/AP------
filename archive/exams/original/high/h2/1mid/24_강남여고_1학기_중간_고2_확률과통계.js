@@ -465,7 +465,9 @@ window.questionBank = [
     "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "primaryMethod": "이항정리에서 짝수 차수와 홀수 차수의 이항계수 합을 $(1+1)^n$과 $(1-1)^n$의 합·차로 계산한다.",
+    "decisiveStep": "$A=2^9=512$, $B=2^{10}=1024$이므로 $A+B=1536$이다."
   },
   {
     "id": 11,
@@ -884,7 +886,9 @@ window.questionBank = [
     "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "상하좌우 이동 횟수를 정수 조건으로 정리한 다음 가능한 경우를 분기해 중복순열로 센다.",
+    "decisiveStep": "$(R,D)=(1,1)$은 $6!/(1!1!4!)=30$, $(R,D)=(2,0)$은 $6!/(2!1!3!)=60$이므로 합은 $90$이다."
   },
   {
     "id": 20,
