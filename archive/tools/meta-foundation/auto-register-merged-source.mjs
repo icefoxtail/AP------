@@ -52,6 +52,32 @@ const archived = (root,commit,file) => {
 const mapUnique = (rows, key, label) => { const m=new Map(); for(const r of rows||[]){const k=key(r);if(m.has(k))throw Error(`DUPLICATE_${label}:${k}`);m.set(k,r);}return m; };
 const semantic = q => pick(q,FIELDS);
 
+// Only a previously fingerprint-bound, independently reviewed metadata row can
+// be carried across a solution-only edit. The edited solution itself has no new
+// independent math-review approval from this registrar.
+export function classifySourceFingerprintDrift({question,previous,current,identity}) {
+  const after=sourceFingerprint(question);
+  if(identity?.sourceFingerprint===after)return {cause:'CURRENT_MATCH',canRebind:false};
+  if(!previous)return {cause:'PREVIOUS_SOURCE_NOT_FOUND',canRebind:false};
+  const before=sourceFingerprint(previous);
+  if(identity?.sourceFingerprint!==before)return {cause:'OLD_FINGERPRINT_NOT_ANCHORED',canRebind:false};
+  if(current?.sourceFingerprint!==before||current?.contentFingerprint!==contentFingerprint(previous))
+    return {cause:'METADATA_IDENTITY_DIVERGED',canRebind:false};
+  if(contentFingerprint(question)!==contentFingerprint(previous))
+    return {cause:'QUESTION_OR_IMAGE_CHANGED',canRebind:false};
+  const withoutSolution=v=>Object.fromEntries(Object.entries(v??{}).filter(([k])=>k!=='solution'));
+  if(!equal(withoutSolution(previous),withoutSolution(question)))
+    return {cause:'ANSWER_OR_OTHER_FIELDS_CHANGED',canRebind:false};
+  if(typeof previous.solution!=='string'||!previous.solution.trim()||
+     typeof question.solution!=='string'||!question.solution.trim()||previous.solution===question.solution)
+    return {cause:'SOLUTION_EVIDENCE_INCOMPLETE',canRebind:false};
+  const reviewed=current.reviewStatus==='reviewed_pass'||String(current.metadataStatus||'').startsWith('approved_');
+  if(!reviewed||!Array.isArray(current.approvalEvidence)||!current.approvalEvidence.some(x=>typeof x==='string'&&x.trim())||
+     current.registrationUpdateState)
+    return {cause:'REVIEWED_METADATA_EVIDENCE_MISSING',canRebind:false};
+  return {cause:'SOLUTION_ONLY_PROVEN',canRebind:true,before,after,contentFingerprint:contentFingerprint(question)};
+}
+
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
@@ -62,7 +88,9 @@ export function planQuestion({question:q, previous, current, identity, registry,
   if (identity.sourceQuestionNo!=null && String(identity.sourceQuestionNo)!==questionNo) return reject('SOURCE_ORDINAL_CHANGED');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
-  if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
+  const drift=classifySourceFingerprintDrift({question:q,previous,current,identity});
+  if(identity.sourceFingerprint!==fp&&!drift.canRebind)
+    return {...reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH'),fingerprintCause:drift.cause};
   if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous))) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
   const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
@@ -111,10 +139,12 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha});
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
   const effectiveFields=[...FIELDS.filter(k=>Object.hasOwn(final,k)), 'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'];
-  if(priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash};
+  if(!drift.canRebind&&priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash};
   return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack:pt.ownerPack,final,
     changedFields:effectiveFields.filter(k=>!equal(current[k],final[k])),preserveReview,coreChanged,sourceMetaChanged,
-    studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo};
+    studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo,
+    fingerprintCause:drift.canRebind?drift.cause:null,rebindIdentity:drift.canRebind,
+    ...(drift.canRebind?{rebindProof:{before:drift.before,after:drift.after,contentFingerprint:drift.contentFingerprint}}:{})};
 }
 
 async function context(root) {
@@ -136,7 +166,7 @@ async function context(root) {
     runtimes.set(data.packId,{rel,data});
     for(const r of data.records){if(owners.has(r.questionUid))throw Error('DUPLICATE_RUNTIME_UID');owners.set(r.questionUid,data.packId);}
   }
-  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityByJoin,runtimes,owners};
+  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,identity,metaByUid,identityByJoin,runtimes,owners};
 }
 
 export function selectTargets(root, state, config, head) {
@@ -170,6 +200,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const c=await context(root),banks=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
   const nextState=structuredClone(state);nextState.pending={...state.pending};nextState.latestReceipts={...state.latestReceipts};nextState.completedPilots=[...(state.completedPilots||[])];
   const beforeRows=new Map(c.metadata.records.map(r=>[r.questionUid,hash(r)])),touched=new Set(),sourceHashes=new Map();
+  const beforeIdentityRows=new Map(c.identity.records.map(r=>[r.questionUid,hash(r)])),reboundUids=new Set();
   const max=config.maxQuestionsPerRun||100;
   if(!Number.isInteger(max)||max<1||max>500)throw Error('BATCH_LIMIT_INVALID');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
@@ -192,7 +223,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const priorPath=state.latestReceipts?.[id?.questionUid];
       if(priorPath&&!new RegExp('^\\.archive-meta-register/auto/receipts/[A-Za-z0-9_-]+\\.json$').test(priorPath))throw Error('RECEIPT_PATH_INVALID');
       const prior=priorPath?read(root,priorPath):null;
-      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha});
+      // Version the pending decision: old fingerprint failures must receive one safe S1 re-evaluation.
+      const attemptSignature=hash({decisionContract:'solution-only-rebind-s1',source:sourceHashes.get(rel),
+        metadata:current,identityFingerprint:id?.sourceFingerprint,registry:c.registry.registrySha});
       if(state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         continue;
@@ -209,7 +242,14 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         const request={schemaVersion:VERSION,requestId,questionUid:result.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
           inputHash:result.inputHash,sourceSha256:sourceHashes.get(rel),sourceCommit:git(root,'log','-1','--format=%H','--',rel).trim(),registrySha:c.registry.registrySha,
           approvalBasis:'MAIN_MERGED_EXPLICIT_METADATA',independentReviewClaim:false,
-          before:pick(current,result.changedFields),after:pick(final,result.changedFields),changedFields:result.changedFields};
+          before:pick(current,result.changedFields),after:pick(final,result.changedFields),changedFields:result.changedFields,
+          ...(result.rebindIdentity?{solutionOnlyRebindProof:{
+            previousSourceCommit:target.baseCommit,
+            previousSourceBlobSha1:git(root,'rev-parse',`${target.baseCommit}:archive/exams/${source}`).trim(),
+            sourceOrdinal:ordinal,questionUid:result.questionUid,
+            beforeFingerprint:result.rebindProof.before,afterFingerprint:result.rebindProof.after,
+            unchangedContentFingerprint:result.rebindProof.contentFingerprint,
+            changedSourceField:'solution',newIndependentMathReviewClaim:false}}:{})};
         const receipt={...request,metadataRegistrationStatus:'REGISTERED',consumerStatus:'PENDING_VERIFICATION',
           studentPayloadHash:result.studentPayloadHash,coreChanged:result.coreChanged,reviewPreserved:result.preserveReview,
           values:pick(final,[...FIELDS,'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'])};
@@ -219,6 +259,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         if(priorStoredReceipt&&!equal(priorStoredReceipt,receipt))throw Error('IMMUTABLE_RECEIPT_CONFLICT');
         outputs.set(reqPath,request);outputs.set(receiptPath,receipt);
         Object.assign(current,final);touched.add(result.questionUid);
+        if(result.rebindIdentity){id.sourceFingerprint=result.rebindProof.after;reboundUids.add(result.questionUid);}
         const rr={...structuredClone(final),sourceQuestionNo:result.sourceQuestionNo,sourceIdentity:key,
           approvedSourceFingerprint:final.sourceFingerprint,legacyLevel:final.level,
           runtimeSelectable:final.defaultSelectable&&final.curriculumApplicability==='DEFAULT_SCOPE'};
@@ -237,6 +278,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   // A queued batch is durable in the SAME commit as its cursor. Missed events are caught up from this cursor.
   if(sourceDelta||touched.size||acted&&targets.some(([,t])=>t.pilot&&!state.completedPilots?.includes(`${t.sourceArchiveFile}#${t.sourceOrdinal}`)))nextState.lastProcessedCommit=head;
   for(const row of c.metadata.records)if(!touched.has(row.questionUid)&&beforeRows.get(row.questionUid)!==hash(row))throw Error('UNRELATED_UID_MUTATION');
+  for(const row of c.identity.records)if(!reboundUids.has(row.questionUid)&&beforeIdentityRows.get(row.questionUid)!==hash(row))
+    throw Error('UNRELATED_IDENTITY_MUTATION');
+  if(reboundUids.size){
+    const stableIdentity={...c.identity};delete stableIdentity.generatedAt;delete stableIdentity.identityDigest;
+    c.identity.identityDigest=sha256(JSON.stringify(stableIdentity));
+    outputs.set(IDENTITY,c.identity);
+  }
   for(const [rel,sha]of sourceHashes)if(sha256(fs.readFileSync(path.join(root,rel)))!==sha)throw Error('STUDENT_SOURCE_MUTATION');
   if(touched.size) {
     c.metadata.counts={...c.metadata.counts,records:c.metadata.records.length,uidUnique:true,sourceJoinUnique:true};
@@ -250,6 +298,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     for(const p of changedPacks){const rt=c.runtimes.get(p);rt.data.records.sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en'));c.refreshRuntime(rt.data);outputs.set(rt.rel,rt.data);}
   }
   if(!equal(state,nextState))outputs.set(STATE,nextState);
+  report.fingerprintCauses=Object.fromEntries([...new Set(report.results.map(r=>r.fingerprintCause).filter(Boolean))]
+    .sort().map(cause=>[cause,report.results.filter(r=>r.fingerprintCause===cause).length]));
+  report.identityRebound=reboundUids.size;
   report.status=report.results.some(r=>r.status.startsWith('SUPPLEMENT_PENDING'))?'REGISTERED_WITH_SUPPLEMENTS':touched.size?'REGISTERED':'NO_CHANGE';
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
@@ -270,6 +321,11 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
   for(const r of report.results.filter(r=>r.status==='APPLY')) {
     const receipt=read(root,r.receiptPath),row=c.metaByUid.get(r.questionUid),owner=c.owners.get(r.questionUid),rt=c.runtimes.get(owner)?.data.records.find(x=>x.questionUid===r.questionUid),consumer=byUid.get(r.questionUid);
     if(!receipt||!row||!rt||!consumer)throw Error('REGISTERED_UID_MISSING:'+r.questionUid);
+    const identity=c.identityByJoin.get(`${r.sourceArchiveFile}#${r.sourceOrdinal}`);
+    if(identity?.questionUid!==r.questionUid||identity.sourceFingerprint!==receipt.values.sourceFingerprint)
+      throw Error('REGISTERED_IDENTITY_FINGERPRINT_PARITY:'+r.questionUid);
+    if(receipt.solutionOnlyRebindProof&&row.independentMathReviewStatus!=='NOT_PERFORMED_BY_AUTO_REGISTRAR')
+      throw Error('REBOUND_SOLUTION_REVIEW_MISCLAIM:'+r.questionUid);
     for(const f of ['problemTypeKey','templateKey','crossConceptKeys','conditionKeys','integrationPattern','difficultyBucket']) {
       if(!equal(row[f],receipt.values[f])||!equal(rt[f],receipt.values[f]))throw Error(`REGISTERED_PARITY:${r.questionUid}.${f}`);
     }
