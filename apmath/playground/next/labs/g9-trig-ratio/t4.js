@@ -85,7 +85,7 @@
   function sasGeom(a, c, beta) { const A = pt(c * Math.cos(beta * DEG), -c * Math.sin(beta * DEG)); return { B: pt(0, 0), C: pt(a, 0), A, H: pt(A.x, 0) }; }
   function drawSas(b, g, L, o = {}) {
     const { A, B, C, H } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C]), obt = H.x < 0;
-    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 64, l: 54, r: 54 });
+    fit(b, bboxOf([A, B, C, H]), { t: 50, b: 126 + (L.rows ? L.rows.length * 26 : 0), l: 54, r: 54 });
     fillPoly(b, [A, B, C], 'sky', 0.08);
     if (st >= 1) { fillPoly(b, [A, B, H], 'rose', 0.14); fillPoly(b, [A, H, C], 'green', 0.12); }
     poly(b, [A, B, C], 'ink', 3.4);
@@ -95,12 +95,21 @@
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(H, { color: 'violet', r: 4 }); T(b, H, 'H', { dy: 20, size: 17, color: 'violet' }); }
     if (L.c) sideTag(b, A, B, cen, L.c.t, { color: L.c.c || 'sky', size: L.c.size || 17 });
-    if (L.a) sideTag(b, B, C, cen, L.a.t, { color: L.a.c || 'green', size: L.a.size || 17, flip: false, gap: 24 });
+    // Whole BC and the two auxiliary distances use separate dimension rows.
+    // A bare 6 beside a bare 5 is ambiguous when BC and HC almost coincide.
+    const dimension = (P0, Q0, value, name, dy, color) => {
+      const k = b.k || 60, P1 = pt(P0.x, P0.y + dy / k), Q1 = pt(Q0.x, Q0.y + dy / k);
+      line(b, P1, Q1, color, 1.4, { alpha: .7 });
+      for (const p0 of [P1, Q1]) line(b, pt(p0.x, p0.y - 4 / k), pt(p0.x, p0.y + 4 / k), color, 1.4);
+      const text = String(value).includes('=') ? String(value) : `${name} = ${value}`;
+      T(b, mid(P0, Q0), text, { dy: dy + 12, size: 14, color });
+    };
+    if (L.a) dimension(B, C, L.a.t, 'BC', 32, L.a.c || 'green');
     if (L.AC) sideTag(b, A, C, cen, L.AC.t, { color: L.AC.c || 'amber', size: L.AC.size || 17, f: obt ? 0.88 : 0.5 });
     if (L.AH && st >= 1) T(b, mid(A, H), L.AH, { dx: obt ? 22 : -4, size: 15, color: 'violet', align: obt ? 'left' : 'right' });
-    if (L.BH && st >= 1) T(b, mid(B, H), L.BH, { dy: 38, size: 15, color: 'rose' });
-    if (L.HC && st >= 1) T(b, mid(H, C), L.HC, { dy: 38, size: 15, color: 'green' });
-    (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 64 + i * 26, size: 16, color: r.c }));
+    if (L.BH && st >= 1) dimension(B, H, L.BH, 'BH', 62, 'rose');
+    if (L.HC && st >= 1) dimension(H, C, L.HC, 'HC', 92, 'green');
+    (L.rows || []).forEach((r, i) => T(b, pt((Math.min(B.x, A.x) + C.x) / 2, 0), r.t, { dy: 138 + i * 26, size: 16, color: r.c }));
   }
   function sasModel(a, c, beta) {
     const obt = beta > 90, w = obt ? 180 - beta : beta, A = vi(a), Cc = vi(c);

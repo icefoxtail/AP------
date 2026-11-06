@@ -29,17 +29,21 @@
   function geoAC(b0, c0, A) { return { A: pt(0, 0), B: pt(c0, 0), C: pt(b0 * Math.cos(A * DEG), -b0 * Math.sin(A * DEG)) }; }
   function drawAC(b, g, o = {}) {
     const { A, B, C } = g, Hh = pt(C.x, 0), st = o.step == null ? 99 : o.step, obt = C.x < 0, cen = centroid([A, B, C]);
-    fit(b, bboxOf([A, B, C, Hh]), { t: 52, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: 56, r: 56 });
+    fit(b, bboxOf([A, B, C, Hh]), { t: obt ? 88 : 52, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: obt && o.h ? 104 : 56, r: 56 });
     fillPoly(b, [A, B, C], obt ? 'rose' : 'sky', 0.14);
     poly(b, [A, B, C], 'ink', 3.4);
     if (st >= 1) { line(b, C, Hh, 'violet', 3.2, { dash: dashed }); if (obt) line(b, Hh, A, 'violet', 2.6, { dash: dashed }); else if (Hh.x > B.x) line(b, B, Hh, 'violet', 2.6, { dash: dashed }); ang(b, Hh, C, B, { color: 'violet', r: 16 }); }
     ang(b, A, B, C, { color: 'amber', r: 34, label: o.angL, size: 16 });
-    if (obt && st >= 1) ang(b, A, Hh, C, { color: 'rose', r: 30, label: o.outL, size: 15, rings: 2, labelDist: 50 });
+    if (obt && st >= 1) {
+      ang(b, A, Hh, C, { color: 'rose', r: 24, rings: 2 });
+      // The exterior 30° label must not concatenate with the short CH = 1 label.
+      if (o.outL) T(b, A, `∠CAH = ${o.outL}`, { dy: -78, size: 15, color: 'rose' });
+    }
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(Hh, { color: 'violet', r: 4 }); T(b, Hh, 'H', { dy: 20, size: 17, color: 'violet' }); }
     if (o.b) sideTag(b, A, C, cen, o.b, { color: 'sky', size: 17, f: obt ? 0.7 : 0.5 });
     if (o.c) sideTag(b, A, B, cen, o.c, { color: 'green', size: 17, flip: false, gap: 22 });
-    if (o.h && st >= 1) T(b, mid(C, Hh), o.h, { dx: obt ? -8 : 10, size: 15, color: 'violet', align: obt ? 'right' : 'left' });
+    if (o.h && st >= 1) T(b, mid(C, Hh), `CH = ${String(o.h).replace(/^h\s*=\s*/, '')}`, { dx: obt ? -16 : 10, size: 15, color: 'violet', align: obt ? 'right' : 'left' });
     (o.rows || []).forEach((r, i) => T(b, pt((Math.min(A.x, C.x) + B.x) / 2, 0), r.t, { dy: 64 + i * 26, size: r.size || 16, color: r.c }));
   }
   function areaScene(id, title, short, obtuse) {

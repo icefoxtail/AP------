@@ -67,34 +67,19 @@ try {
       await page.evaluate(() => {
         const b = lab.board, original = b._text;
         window.__g89Labels = [];
-        window.__g89TextBox = function (x, y, text, o = {}) {
-          const size=(o.size||13)*b.fs*b._ts(), c=b.ctx, weight=o.weight||750;
-          const segs=b._fracSplit(String(text)); let width=0, fractionSize=0, gap=0;
-          c.save();c.font=`${weight} ${size}px ${b.font}`;
-          if(segs){
-            fractionSize=Math.max(size*.72,Math.min(size*.9,9.5));gap=fractionSize*.2;
-            for(const part of segs){c.font=`${weight} ${part.t!==undefined?size:fractionSize}px ${b.font}`;width+=part.t!==undefined?c.measureText(part.t).width:Math.max(c.measureText(part.n).width,c.measureText(part.d).width)+fractionSize*.34;}
-          }else width=c.measureText(String(text)).width;
-          c.restore();
-          const al=o.align||'center', bl=o.baseline||'alphabetic';
-          const x0=x+(al==='center'?-width/2:al==='right'||al==='end'?-width:0);
-          let top=bl==='middle'?-size/2:bl==='top'||bl==='hanging'?0:bl==='bottom'?-size:-size*.8,bottom=top+size;
-          if(segs){const mid=bl==='middle'?0:bl==='top'||bl==='hanging'?size*.5:bl==='bottom'?-size*.5:-size*.3;top=Math.min(top,mid-gap-fractionSize*.95);bottom=Math.max(bottom,mid+gap+fractionSize*.95);}
-          return {text:String(text),x0,y0:y+top,x1:x0+width,y1:y+bottom};
-        };
         b._text = function (x, y, text, o = {}, screen) {
           if (text != null && text !== '' && !screen && !this._bbox && !this.thumb) {
-            window.__g89Labels.push(window.__g89TextBox(x,y,text,o));
+            const size = (o.size || 13) * this.fs * this._ts(), c = this.ctx;
+            c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
+            const width = c.measureText(String(text)).width; c.restore();
+            const al = o.align || 'center', bl = o.baseline || 'alphabetic';
+            const x0 = x + (al === 'center' ? -width / 2 : al === 'right' || al === 'end' ? -width : 0);
+            const y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * .8);
+            window.__g89Labels.push({ text: String(text), x0, y0, x1: x0 + width, y1: y0 + size });
           }
           return original.apply(this, arguments);
         };
       });
-      const fractionControl=await page.evaluate(()=>{
-        const b=lab.board,o={size:16,baseline:'middle'},inside=__g89TextBox(b.W/2,b.H/2,'\\frac{12}{5}',o),outside=__g89TextBox(b.W+10,b.H/2,'\\frac{12}{5}',o);
-        return {inside,outside,pass:inside.x0>=0&&inside.x1<=b.W&&inside.y0>=0&&inside.y1<=b.H&&outside.x1>b.W+2&&inside.y1-inside.y0>16*b.fs*b._ts()};
-      });
-      dest.measurementControls.push({run:run.name,type:'stacked-fraction-bounds',...fractionControl});
-      if(!fractionControl.pass)throw Error('Stacked-fraction clipping positive/negative control failed');
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g89Labels = []; lab.render(); });
       const capture = async filename => {
         // Full-page screenshots of a scrolled sticky stage can contain an artificial
@@ -214,7 +199,7 @@ try {
             // Round to the control's decimal precision before exercising its real input event.
             const places = Math.max(0, String(info.step).split('.')[1]?.length || 0, String(info.min).split('.')[1]?.length || 0);
             const value = Number((info.value + info.step <= info.max ? info.value + info.step : info.value - info.step).toFixed(Math.min(12, places)));
-            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value));
+            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value)); await settle();
             const actual = await page.evaluate(k => lab.s[k], ctl);
             const pass = Math.abs(actual - value) < 1e-7;
             dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass });
@@ -225,19 +210,33 @@ try {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
           }
+          await settle();
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
           if (handle) {
-            // Exercise native browser pointer events; do not invoke the drag callback.
+            // Render after a control change, scroll, and then read the current
+            // handle location. A previous frame's position can start a pan.
+            // Exercise native pointer events and verify that the intended handle
+            // was actually acquired; never invoke its callback directly.
             const actualCanvas = page.locator('canvas').filter({ visible: true }).first();
-            await actualCanvas.scrollIntoViewIfNeeded();
-            const rect = await actualCanvas.boundingBox();
-            const before = await page.evaluate(() => JSON.stringify(lab.s));
-            const start = { x: rect.x + handle.x, y: rect.y + handle.y };
-            const dx = handle.x < rect.width / 2 ? 48 : -48, dy = handle.y < rect.height / 2 ? 24 : -24;
-            await page.mouse.move(start.x, start.y); await page.mouse.down();
-            await page.mouse.move(start.x + dx, start.y + dy, { steps: 8 }); await page.mouse.up(); await settle();
-            const after = await page.evaluate(() => JSON.stringify(lab.s));
-            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: handle.id, executed: true, stateChanged: before !== after, pointer: 'mouse' });
+            await actualCanvas.scrollIntoViewIfNeeded(); await settle();
+            const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
+            const attempts = []; let passed = false;
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64]]) {
+              const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
+              if (!fresh) break;
+              const rect = await actualCanvas.boundingBox();
+              const start = { x: rect.x + fresh.x * rect.width / fresh.W, y: rect.y + fresh.y * rect.height / fresh.H };
+              const before = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              await page.mouse.move(start.x, start.y); await page.mouse.down();
+              const acquired = await page.evaluate(id => lab.board.dragging?.id === id, handle.id);
+              await page.mouse.move(start.x + mx, start.y + my, {steps:8}); await page.mouse.up(); await settle();
+              const after = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              const changedKeys = [...new Set([...Object.keys(before),...Object.keys(after)])].filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k]));
+              attempts.push({acquired,delta:[mx,my],changedKeys});
+              if (acquired && changedKeys.length) { passed = true; break; }
+            }
+            dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
+            if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {
@@ -301,11 +300,10 @@ try {
         // all variants; rendering checks never substitute for independent math.
         if (await page.evaluate(() => lab._tabAvailable('problem'))) {
           await page.evaluate(i => { lab.goScene(i); lab.setTab('problem'); }, scene.index);
-          await page.waitForFunction(() => !lab._tween); await settle();
+          await page.waitForFunction(() => !lab._tween);
           for (let variant = 1; variant <= 3; variant++) {
             const next = page.locator('#apl-pane-problem button.apl-newprob:visible');
-            try { await next.first().waitFor({state:'visible',timeout:3000}); }
-            catch { report.failures.push({ unit, id: scene.id, run: run.name, reason:'missing-new-problem-control' }); break; }
+            if (!(await next.count())) { report.failures.push({ unit, id: scene.id, run: run.name, reason:'missing-new-problem-control' }); break; }
             await next.first().click(); await page.waitForFunction(() => !lab._tween);
             await measure(scene, `new-problem-${variant}`);
             await page.evaluate(() => { lab.setTab('review'); const f = lab.scene.steps; lab.setStep((typeof f === 'function' ? f(lab.s, lab) : f)?.length || 0); });

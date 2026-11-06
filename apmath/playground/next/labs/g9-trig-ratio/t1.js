@@ -368,16 +368,10 @@
     init: (s) => { s.t13t = 35; s.t13u1 = 3; s.t13u2 = 6; s.t13u3 = 9; },
     model: (s) => { const N = nest(s); N.val = { s: N.s, c: N.c, t: N.t }; return N; },
     draw(b, s, M, C) {
-      const st = C.step, dec = (v) => G.decS(v, 3);
-      const nr = b.W < 560;
-      const rows = st >= 3 || st === 99 ? (nr ? [
-        { t: 'sin A = \\frac{BC}{AC} = \\frac{DE}{AE}', c: 'rose' }, { t: `= \\frac{FG}{AG} = ${dec(M.s)}`, c: 'rose' },
-        { t: 'cos A = \\frac{AB}{AC} = \\frac{AD}{AE}', c: 'sky' }, { t: `= \\frac{AF}{AG} = ${dec(M.c)}`, c: 'sky' }
-      ] : [
-        { t: `sin A = \\frac{BC}{AC} = \\frac{DE}{AE} = \\frac{FG}{AG} = ${dec(M.s)}`, c: 'rose' },
-        { t: `cos A = \\frac{AB}{AC} = \\frac{AD}{AE} = \\frac{AF}{AG} = ${dec(M.c)}`, c: 'sky' }
-      ]) : [];
-      drawNest(b, M, { step: st, rows, angLabel: `${fmtN(M.th)}°`, sideLabels: st >= 2 || st === 99 ? M.leg.map((v) => G.decS(v, 1)) : null });
+      const st = C.step;
+      // Keep the full drawing area for the nested triangles. The ratio chains
+      // remain in the readout cards directly below, including on mobile.
+      drawNest(b, M, { step: st, angLabel: `${fmtN(M.th)}°`, sideLabels: st >= 2 || st === 99 ? M.leg.map((v) => G.decS(v, 1)) : null });
     },
     steps: (M) => [
       '세 직각삼각형 $\\triangle ABC$, $\\triangle ADE$, $\\triangle AFG$ 는 $\\angle A$ 가 공통이고 직각도 같아요. 두 각이 같으므로 서로 닮음이에요.',
@@ -385,8 +379,8 @@
       '$\\sin A$, $\\cos A$, $\\tan A$ 는 어느 삼각형으로 구해도 같아요. 삼각비는 각의 크기에만 달라져요.'
     ],
     view: (M) => ({
-      guide: '<b>각 A</b>와 세 삼각형의 크기를 바꿔 보세요. 삼각형의 크기가 달라도 $\\sin A$, $\\cos A$, $\\tan A$ 는 변하지 않아요. 세로 길이는 그림 안의 분홍 숫자예요.',
-      readouts: [rd('$\\sin A$', G.decS(M.s, 4), 'rose', `$\\frac{BC}{AC}=\\frac{DE}{AE}=\\frac{FG}{AG}$`), rd('$\\cos A$', G.decS(M.c, 4), 'sky'), rd('$\\tan A$', G.decS(M.t, 4), 'green')],
+      guide: '<b>각 A</b>와 세 삼각형의 크기를 바꿔 보세요. 삼각형의 크기가 달라도 $\\sin A$, $\\cos A$, $\\tan A$ 는 변하지 않아요. 세로 길이는 각 세로변 옆의 숫자로 확인해요.',
+      readouts: [rd('$\\sin A$', G.decS(M.s, 4), 'rose', `$\\frac{BC}{AC}=\\frac{DE}{AE}=\\frac{FG}{AG}$`), rd('$\\cos A$', G.decS(M.c, 4), 'sky', '$\\frac{AB}{AC}=\\frac{AD}{AE}=\\frac{AF}{AG}$'), rd('$\\tan A$', G.decS(M.t, 4), 'green', '$\\frac{BC}{AB}=\\frac{DE}{AD}=\\frac{FG}{AF}$')],
       rule: '$\\angle A$ 가 같으면 직각삼각형의 크기와 관계없이 삼각비의 값은 같다',
       notes: notes('삼각비는 변의 길이가 아니라 <b>변의 비</b>예요. 큰 삼각형도 작은 삼각형도 비는 같아요.', '$\\sin A=\\frac{BC}{AC}$ 처럼 같은 삼각형의 변끼리 짝을 지어야 해요. $\\frac{BC}{AE}$ 는 sin A 가 아니에요.')
     }),

@@ -185,7 +185,8 @@ test('tan 90° is undefined; acute SAS exterior foot has a positive distance', (
 
 // Canvas-command verification exercises the production draw paths, not pixels.
 function board(width = 390, height = 490) {
-  const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, insets: { left: 0, right: 0, top: 0, bottom: 0 }, thumb: false, _tgBoxes: [], log, toS(p) { return { x: width / 2 + p.x * this.k, y: height / 2 + p.y * this.k }; }, _P: p => p, _ts: () => 1 };
+  const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, insets: { left: 0, right: 0, top: 0, bottom: 0 }, thumb: false, _tgBoxes: [], log, toS(p) { const f = this.focus || { x: [-width / 70, width / 70], y: [-height / 70, height / 70] }; return { x: width / 2 + (p.x - (f.x[0] + f.x[1]) / 2) * this.k, y: height / 2 + (p.y - (f.y[0] + f.y[1]) / 2) * this.k }; }, _P: p => p, _ts: () => 1 };
+  Object.defineProperty(b, 'k', { get() { if (!this.focus) return 35; const p = this.pad * Math.min(width, height); return Math.min((width - 2 * p) / (this.focus.x[1] - this.focus.x[0]), (height - 2 * p) / (this.focus.y[1] - this.focus.y[0])); } });
   for (const name of ['path', 'text', 'point', 'circle', 'arc', 'right', 'ticks', 'handle']) b[name] = (...args) => { const inspect = x => { if (typeof x === 'number') assert.ok(Number.isFinite(x), `non-finite ${name}`); else if (x && typeof x === 'object') Object.values(x).forEach(inspect); }; args.forEach(inspect); log.push({ name, args }); return b; };
   return b;
 }
@@ -203,5 +204,60 @@ test('all scene drawings: given → construction → final use current question;
     const sc = scene(id), z = {}; sc.enter(z); z.step = 2; const b = board(); sc.draw(b, z, {}, { tab: 'review' });
     assert.ok(b.log.some(x => x.name === 'right'), `${id}: explicit 3D right angle`);
     assert.ok(b.log.some(x => x.name === 'path' && x.args[1]?.dash), `${id}: hidden/auxiliary lines`);
+  }
+});
+
+
+function fixedQuestion(id, key) {
+  const sc = scene(id), s = {}; seed = 123; sc.enter(s);
+  for (let i = 0; i < 30000 && s.q.key !== key; i++) s.q = sc.tg.gen();
+  assert.equal(s.q.key, key); s.step = sc.steps(s).length;
+  return { sc, s };
+}
+function labels(b) {
+  return b.log.filter(x => x.name === 'text').map(x => {
+    const [point, text, options] = x.args, screen = b.toS(point);
+    return { text, ...options, x: screen.x + (options.dx || 0), y: screen.y + (options.dy || 0) };
+  });
+}
+test('mobile labels identify whole/partial distances and separate nearby A/D and CH/angle', () => {
+  for (const id of ['unitCircle', 'whyOuterTan']) {
+    const key = id === 'unitCircle' ? 'uc|seg|30|s' : 'why|30|\\tan\\theta';
+    const { sc, s } = fixedQuestion(id, key), b = board(390, 412); sc.draw(b, s, {}, { tab: 'review' });
+    const a = labels(b).find(x => x.text === 'A'), d = labels(b).find(x => x.text === 'D');
+    assert.ok(d.x - a.x > 35, id + ': point names must straddle the nearby vertices');
+  }
+  for (const [id, key, whole, part] of [
+    ['sasAcuteLen', 'sasAcuteLen|45|\\sqrt{2}|6', '6', '5'],
+    ['sasObtuseLen', 'sasObtuseLen|120|2|5', '5', '6']
+  ]) {
+    const { sc, s } = fixedQuestion(id, key), b = board(390, 412); sc.draw(b, s, {}, { tab: 'review' });
+    const wholeLabel = labels(b).find(x => x.text === `BC = ${whole}`), partLabel = labels(b).find(x => x.text === `HC = ${part}`);
+    assert.ok(wholeLabel && partLabel, id + ': named distances');
+    assert.ok(partLabel.y - wholeLabel.y >= 45, id + ': whole and partial distances need distinct dimension rows');
+    assert.ok(labels(b).some(x => x.text === 'BH = 1'));
+  }
+  const { sc, s } = fixedQuestion('areaObtuse', 'areaObtuse|150|2|7'), b = board(390, 412); sc.draw(b, s, {}, { tab: 'review' });
+  const h = labels(b).find(x => x.text === 'CH = 1'), angle = labels(b).find(x => x.text === '∠CAH = 30°');
+  assert.ok(h && angle, 'short height and exterior angle must be named');
+  assert.ok(Math.abs(h.y - angle.y) > 40, '1 and 30° must not concatenate');
+});
+test('nested right triangles retain a usable mobile figure while ratios remain in cards', () => {
+  const sc = scene('r1-3'), s = {}; sc.enter(s); const b = board(390, 328); sc.draw(b, s, {}, { tab: 'explore' });
+  const points = b.log.filter(x => x.name === 'point').map(x => b.toS(x.args[0]));
+  assert.ok(Math.max(...points.map(p => p.x)) - Math.min(...points.map(p => p.x)) > 200, 'default figure should span over 200 pixels');
+  const cards = JSON.stringify(sc.view(s, { tab: 'explore' }).readouts);
+  for (const fraction of ['BC}{AC', 'AB}{AC', 'BC}{AB']) assert.ok(cards.includes(fraction), fraction + ': keep corresponding-side ratios');
+});
+
+
+test('quadrilateral exploration reserves the mobile stage for the actual figure', () => {
+  for (const id of ['quadSplitSum', 'quadUnfold2x', 'quadDiagHalf']) {
+    const sc = scene(id), s = {}; sc.enter(s); const b = board(390, 328); sc.draw(b, s, {}, { tab: 'explore' });
+    const points = b.log.filter(x => x.name === 'point').map(x => b.toS(x.args[0]));
+    assert.ok(Math.max(...points.map(p => p.x)) - Math.min(...points.map(p => p.x)) > 180, id + ': useful width');
+    const text = labels(b).map(x => x.text); assert.ok(text.includes('60°'), id + ': angle remains on its diagram');
+    if (id === 'quadSplitSum') assert.ok(text.includes('45°'));
+    assert.ok(sc.view(s, { tab: 'explore' }).readouts.length >= 2, id + ': exact area values remain in cards');
   }
 });

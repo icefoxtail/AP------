@@ -40,13 +40,13 @@
     // 평행사변형(2배)
     const wide = [pt(A.x + (B.x - Pp.x), A.y + (B.y - Pp.y)), pt(C.x + (B.x - Pp.x), C.y + (B.y - Pp.y)), pt(C.x + (D.x - Pp.x), C.y + (D.y - Pp.y)), pt(A.x + (D.x - Pp.x), A.y + (D.y - Pp.y))];
     const k2 = o.k2 || 0;
-    const rowsD = [...(o.th ? [{ t: `두 대각선이 이루는 각 = ${o.th}`, c: 'amber' }] : []), ...(o.rows || [])];
+    const rowsD = o.rows || [];
     const visible = [A, B, C, D, ...(o.reserveWide || k2 > 0 ? wide : [])];
     fit(b, bboxOf(visible), { t: 54, b: 58 + rowsD.length * 26, l: 56, r: 56 });
     if (k2 > 0) { b.path(wide, { close: true, color: 'amber', width: 2.6, fill: 'amber', fillAlpha: 0.1 * k2, alpha: k2, dash: dashed }); }
     fillPoly(b, [A, B, C, D], 'sky', 0.12); poly(b, [A, B, C, D], 'ink', 3.4);
     line(b, A, C, 'violet', 3, { dash: dashed }); line(b, B, D, 'violet', 3, { dash: dashed });
-    ang(b, Pp, C, B, { color: 'amber', r: 28 });
+    ang(b, Pp, C, B, { color: 'amber', r: 28, label: o.th, labelDist: 51, size: 15 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
     if (o.p) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
@@ -63,7 +63,7 @@
     model: (s) => ({ ...diagM(Math.round(s.t71p), Math.round(s.t71q), Math.round(s.t71t)), k: s.t71k }),
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99;
-      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.t, reserveWide: true, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, rows: show(3) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
+      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.t, reserveWide: true, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}` });
     },
     steps: (M) => [
       '사각형 $ABCD$ 의 네 꼭짓점에서 각각 다른 대각선에 평행한 직선을 그어요. 겹치는 부분 없이 평행사변형이 만들어져요. 이 평행사변형의 넓이는 사각형의 <b>2배</b>예요.',
@@ -230,7 +230,7 @@
     draw(b, s, M, C) {
       const st = C.step, g = diagGeo(M.p, M.q, M.th, M.x), show = (n) => st >= n || st === 99;
       const sl = (w) => { s.t71x = clamp(Math.round(((w.x + M.x * M.p) / M.p) * 20) / 20, 0.25, 0.75); };
-      drawDiag(b, g, { step: st, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, handle: C.tab === 'explore' && !C.thumb ? sl : null, rows: show(2) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
+      drawDiag(b, g, { step: st, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, handle: C.tab === 'explore' && !C.thumb ? sl : null });
     },
     steps: (M) => [
       '대각선 $AC=p$, $BD=q$ 와 사잇각 $\\theta$ 가 주어지면, 교점 $P$ 의 위치와 관계없이 넓이가 정해져요.',
@@ -251,11 +251,12 @@
   function splitGeo(p, a, c, be, de) { const B = pt(0, 0), Dd = pt(p, 0); return { B, D: Dd, A: pt(a * Math.cos(be * DEG), -a * Math.sin(be * DEG)), C: pt(c * Math.cos(de * DEG), c * Math.sin(de * DEG)) }; }
   function drawSplit2(b, g, o = {}) {
     const { A, B, C, D } = g, st = o.step == null ? 99 : o.step, cen = centroid([A, B, C, D]);
-    const rowsS = [{ t: `∠ABD = ${o.be}`, c: 'sky' }, { t: `∠CBD = ${o.de}`, c: 'green' }, ...(o.rows || [])];
+    // The two given angles belong on their wedges; calculation stays in the cards.
+    const rowsS = o.rows || [];
     fit(b, bboxOf([A, B, C, D]), { t: 54, b: 58 + rowsS.length * 26, l: 56, r: 56 });
     fillPoly(b, [A, B, D], 'sky', st >= 2 ? 0.14 : 0.05); fillPoly(b, [C, B, D], 'green', st >= 3 ? 0.14 : 0.05); poly(b, [A, B, C, D], 'ink', 3.4);
     line(b, B, D, 'violet', 3, { dash: dashed });
-    ang(b, B, D, A, { color: 'sky', r: 34 }); ang(b, B, D, C, { color: 'green', r: 34 });
+    ang(b, B, D, A, { color: 'sky', r: 28, label: o.be, labelDist: 54, size: 15 }); ang(b, B, D, C, { color: 'green', r: 28, label: o.de, labelDist: 54, size: 15 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.p) T(b, mid(B, D), o.p, { dy: -14, dx: 0, size: 16, color: 'violet' });
     if (o.a) sideTag(b, A, B, cen, o.a, { color: 'sky', size: 17 });
@@ -272,7 +273,7 @@
       const S1 = vdiv(vmul(vmul(vi(p), vi(a)), sinD(be)), vi(2)), S2 = vdiv(vmul(vmul(vi(p), vi(c)), sinD(de)), vi(2));
       return { p, a, c, be, de, S1, S2, S: vadd(S1, S2) };
     },
-    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawSplit2(b, splitGeo(M.p, M.a, M.c, M.be, M.de), { step: st, be: `${M.be}°`, de: `${M.de}°`, p: `${M.p}`, a: `${M.a}`, c: `${M.c}`, rows: [show(1) ? { t: `S₁ = ${vv(M.S1)},  S₂ = ${vv(M.S2)}`, c: 'sky' } : null, show(2) ? { t: `S = S₁ + S₂ = ${vv(M.S)}`, c: 'amber' } : null].filter(Boolean) }); },
+    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawSplit2(b, splitGeo(M.p, M.a, M.c, M.be, M.de), { step: st, be: `${M.be}°`, de: `${M.de}°`, p: `${M.p}`, a: `${M.a}`, c: `${M.c}` }); },
     steps: (M) => [
       '대각선 $BD$ 로 사각형을 두 삼각형 $ABD$, $CBD$ 로 나눠요. 각 삼각형은 두 변과 그 끼인각을 알아요.',
       `$S_1=\\frac{1}{2}\\times BD\\times BA\\times\\sin ${M.be}^{\\circ}=${vtex(M.S1)}$, $S_2=\\frac{1}{2}\\times BD\\times BC\\times\\sin ${M.de}^{\\circ}=${vtex(M.S2)}$`,

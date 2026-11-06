@@ -53,8 +53,8 @@
     if (L.OB) T(b, mid(O, Bp), L.OB, { dy: 22, size: 16, color: col.c });
     if (L.CD) T(b, mid(Cp, D), L.CD, { dx: 10, size: 16, color: col.t, align: 'left' });
     if (L.OA) T(b, mid(O, A), L.OA, { dx: -4, dy: -14, size: 16, color: 'ink', align: 'right' });
-    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', null], [Cp, 'C', null]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); if (n === 'B') T(b, p0, n, { dx: -12, dy: 19, size: 17 }); else if (n === 'C') T(b, p0, n, { dx: 12, dy: 19, size: 17 }); else tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
-    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dx: 13, dy: -13, size: 17 }); }
+    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', null], [Cp, 'C', null]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); if (n === 'A') T(b, p0, n, { dx: -13, dy: -17, size: 17, align: 'right' }); else if (n === 'B') T(b, p0, n, { dx: -12, dy: 19, size: 17 }); else if (n === 'C') T(b, p0, n, { dx: 12, dy: 19, size: 17 }); else tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
+    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dx: 13, dy: -13, size: 17, align: 'left' }); }
     else if (!vis) T(b, pt(1, -tc), 'D ↑ (그림 밖)', { dx: 8, dy: -2, size: 15, color: 'green', align: 'left' });
     if (o.handle) b.handle('th', A, { color: 'amber', r: 8, ariaLabel: '점 A 끌기', drag: o.handle });
     (o.rows || []).forEach((r, i) => T(b, pt(0.65, 0), r.t, { dy: 42 + i * 26, size: 16, color: r.c }));
