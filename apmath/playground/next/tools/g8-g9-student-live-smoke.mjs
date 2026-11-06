@@ -49,6 +49,9 @@ const sourcePrefix = 'apmath/playground/next/';
 const startedAt = new Date().toISOString(), out = path.resolve(options.get('--out') || `.tmp/g8-g9-student-live-${startedAt.replace(/[:.]/g, '-')}`);
 const sha256 = data => crypto.createHash('sha256').update(data).digest('hex');
 const safeURL = raw => { try { const u = new URL(raw); return u.origin + u.pathname; } catch { return String(raw).slice(0, 200); } };
+// Scene state is kept in the fragment, which is not sent in an HTTP request.
+// Preserve the query: two query variants can serve different response bytes.
+const responseURL = raw => { const u = new URL(raw); u.hash = ''; return u.href; };
 function eventMetadata() {
   let payload = null, payloadReadError = null;
   if (process.env.GITHUB_EVENT_PATH) {
@@ -272,7 +275,7 @@ try {
         if (r.status() >= 400) record.errors.push({ kind: 'http-error', status: r.status(), url: safeURL(r.url()) });
         if (!['document', 'script', 'stylesheet'].includes(r.request().resourceType())) return;
         const task = (async () => {
-          try { verifyAsset(r.url(), await r.body(), r.status(), id); verifiedURLs.add(r.url()); }
+          try { verifyAsset(r.url(), await r.body(), r.status(), id); verifiedURLs.add(responseURL(r.url())); }
           catch (e) { record.errors.push({ kind: 'source-asset-verification', url: safeURL(r.url()), message: e.message }); }
         })();
         pendingAssets.add(task); task.finally(() => pendingAssets.delete(task));
@@ -307,8 +310,8 @@ try {
       await Promise.allSettled([...pendingAssets]);
       for (const reference of references) {
         if (new URL(reference).origin !== base.origin) continue;
-        record.localAssetReferences.push({ url: safeURL(reference), repoPath: localRepoPath(reference), responseVerified: verifiedURLs.has(reference) });
-        if (!verifiedURLs.has(reference)) record.errors.push({ kind: 'referenced-local-asset-not-verified', url: safeURL(reference) });
+        record.localAssetReferences.push({ url: safeURL(reference), repoPath: localRepoPath(reference), responseVerified: verifiedURLs.has(responseURL(reference)) });
+        if (!verifiedURLs.has(responseURL(reference))) record.errors.push({ kind: 'referenced-local-asset-not-verified', url: safeURL(reference) });
       }
     } catch (e) {
       record.errors.push({ kind: 'exception', message: e.message });

@@ -68,7 +68,7 @@ jobs:
           shopt -s nullglob
           tests=(apmath/playground/next/tools/"$UNIT"-*.test.mjs)
           if (( ${#tests[@]} )); then node --test "${tests[@]}"; else echo "No unit-specific mathematical regression supplied yet"; fi
-          node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/apl-problem-tag-state.test.mjs
+          node --test apmath/playground/next/tools/catalog.test.mjs apmath/playground/next/tools/apl-problem-tag-state.test.mjs apmath/playground/next/tools/g8-g9-student-live-smoke.test.mjs
       - name: Install Chromium test runtime
         if: steps.scope.outputs.active == 'true'
         run: |

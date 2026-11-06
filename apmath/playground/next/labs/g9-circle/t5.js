@@ -372,8 +372,9 @@
       if (ex) b.handle('D', D, { color: 'amber', r: 8, ariaLabel: '점 D를 가로로 끌기', drag: (w) => { s.c5d = clamp(Math.round(w.x * 10) / 10, -5.6, 2.4); } });
       if (!C.txt) return;
       T(b, D, 'D', { dy: 20, size: 17 });
-      ang(b, B, A, Cc, { color: 'sky', rings: 1, label: dgx(angAt(B, A, Cc)), r: 26, size: S(b) - 1 });
-      ang(b, D, A, Cc, { color: all ? 'sky' : 'rose', rings: 1, label: dgx(angAt(D, A, Cc)), r: 26, size: S(b) - 1 });
+      const B0 = angAt(B, A, Cc), D0 = angAt(D, A, Cc), rings = angleRings([B0, D0]);
+      ang(b, B, A, Cc, { color: 'sky', rings: rings[0], label: dgx(B0), r: 26, size: S(b) - 1 });
+      ang(b, D, A, Cc, { color: all ? 'sky' : 'rose', rings: rings[1], label: dgx(D0), r: 26, size: S(b) - 1 });
     },
     steps: (M) => [
       '사각형이 원에 내접하려면 네 꼭짓점이 모두 한 원 위에 있어야 해요. A, B, C를 지나는 원을 그려요.',
