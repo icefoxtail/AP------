@@ -774,10 +774,16 @@ function createArchiveScreenRuntime() {
     });
     let fontReadyObserved = false;
     document.fonts?.ready.then(() => { fontReadyObserved = true; });
-    document.fonts?.addEventListener('loadingdone', () => {
+    document.fonts?.addEventListener('loadingdone', async () => {
         // Fonts loaded by this serialized build belong to its readiness barrier;
         // they must not supersede the user intent that caused the load.
-        if (fontReadyObserved && runtime.currentSession && !runtime.busy) runtime.request({ type: 'FONT_INVALIDATION', reason: 'font-loadingdone', foreground: true });
+        if (!fontReadyObserved || !runtime.currentSession || runtime.busy) return;
+        const ready = window.__AP_RENDER_READY__;
+        let outcome;
+        try { outcome = await ready; } catch (_) { return; }
+        if (outcome?.ok === true && window.__AP_RENDER_READY__ === ready &&
+            runtime.currentSession && !runtime.busy)
+            runtime.request({ type: 'FONT_INVALIDATION', reason: 'font-loadingdone', foreground: true });
     });
     window.__AP_SIDE_EFFECT_LEDGER__ = effects;
     return runtime;

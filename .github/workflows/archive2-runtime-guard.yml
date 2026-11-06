@@ -9,6 +9,7 @@ on:
       - 'tests/archive2-*'
       - 'tests/archive-solution-loading.test.cjs'
       - 'tests/archive-render-feedback.test.cjs'
+      - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
       - 'tools/run-tests.js'
@@ -22,6 +23,7 @@ on:
       - 'tests/archive2-*'
       - 'tests/archive-solution-loading.test.cjs'
       - 'tests/archive-render-feedback.test.cjs'
+      - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
       - 'tools/run-tests.js'
@@ -81,6 +83,7 @@ jobs:
           node --test
           tests/archive-solution-loading.test.cjs
           tests/archive-render-feedback.test.cjs
+          tests/archive-font-invalidation.test.cjs
           tests/archive-inline-image-readiness.test.js
           tests/archive-question-image-map-regression.test.js
       - uses: browser-actions/setup-chrome@v1

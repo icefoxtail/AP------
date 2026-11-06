@@ -238,8 +238,15 @@
                 snapshot.geometry = geometry(snapshot.rootNode);
             }, 100);
         });
-        document.fonts?.addEventListener('loadingdone', () => {
-            if (runtime.currentSession && !runtime.busy && !printLocked) runtime.request({ type: 'FONT_INVALIDATION' });
+        document.fonts?.addEventListener('loadingdone', async () => {
+            if (!runtime.currentSession || runtime.busy || printLocked) return;
+            const ready = root.__AP_RENDER_READY__;
+            let outcome;
+            try { outcome = await ready; } catch (_) { return; }
+            // A delayed font event must not replace a failed or newer user request.
+            if (outcome?.ok === true && root.__AP_RENDER_READY__ === ready &&
+                runtime.currentSession && !runtime.busy && !printLocked)
+                runtime.request({ type: 'FONT_INVALIDATION' });
         });
         async function preflight() {
             cancelWarm();
