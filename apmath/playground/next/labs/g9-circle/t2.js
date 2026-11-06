@@ -435,7 +435,7 @@
     steps: (M) => [
       '두 원이 점 P에서 접하므로 P에서 두 원의 공통접선을 그어 선분 AB와 만나는 점을 M이라 해요.',
       '점 M에서 원 O에 그은 접선의 길이는 같으므로 $\\overline{MA}=\\overline{MP}$, 원 O′에서도 $\\overline{MB}=\\overline{MP}$. 그래서 $\\overline{MA}=\\overline{MP}=\\overline{MB}$이고 $\\angle APB=90^{\\circ}$.',
-      `직각사다리꼴 OABO′에서 $\\overline{OO^{\\prime}}=r_1+r_2$, 높이 $\\overline{AB}$ 이므로 $\\overline{AB}^2=(r_1+r_2)^2-(r_1-r_2)^2=4r_1r_2$.`,
+      M.r1 === M.r2 ? '두 반지름이 같으면 OABO′은 직사각형이에요. 마주 보는 변의 길이가 같으므로 $\\overline{AB}=\\overline{OO^{\\prime}}=2r_1$이에요.' : `직각사다리꼴 OABO′에서 $\\overline{OO^{\\prime}}=r_1+r_2$, 두 반지름의 길이 차는 $\\lvert r_1-r_2\\rvert$예요. 따라서 $\\overline{AB}^2=(r_1+r_2)^2-(r_1-r_2)^2=4r_1r_2$.`,
       `$\\overline{AB}=2\\sqrt{r_1r_2}=2\\sqrt{${M.r1}\\times ${M.r2}}=${nt(M.g.len)}$.`
     ],
     view: (M) => ({
@@ -576,14 +576,19 @@
       const u = unit(sub(g.B, g.A)); line(b, sub(g.A, mul(u, 1.2)), add(g.B, mul(u, 1.2)), 'amber', 3.4);
       line(b, g.O1, g.A, 'ink', 2.4); line(b, g.O2, g.B, 'ink', 2.4); line(b, g.O1, g.O2, 'ink', 2.2, { dash: [6, 5] });
       b.right(g.A, g.O1, g.B, { size: 12, color: 'amber' }); b.right(g.B, g.O2, g.A, { size: 12, color: 'amber' });
-      // 보조선: O2 에서 O1A 로(외접선) 또는 O1A의 연장선으로(내접선) 평행선을 그어 직각삼각형을 만든다
+      // 오른쪽 중심에서 직선 OA에 수선을 그어요. 반지름이 같으면 직사각형이에요.
       if (!pr && (ex || st >= 1)) {
-        const H = mode === 'ext' ? add(g.O2, sub(g.A, g.B)) : add(g.O2, sub(g.A, g.B));
-        const foot = mode === 'ext' ? add(g.O1, mul(unit(sub(g.A, g.O1)), g.r1 - g.r2)) : add(g.O1, mul(unit(sub(g.A, g.O1)), g.r1 + g.r2));
-        const E2 = mode === 'ext' ? foot : foot;
-        line(b, g.O2, E2, 'green', 2.6, { dash: [6, 4] }); void H;
-        b.right(E2, g.O1, g.O2, { size: 11, color: 'green' });
-        fillPoly(b, [g.O1, g.O2, E2], 'green', 0.1);
+        if (mode === 'ext' && g.r1 === g.r2) {
+          line(b, g.O1, g.O2, 'green', 2.6, { dash: [6, 4] });
+          b.right(g.O1, g.A, g.O2, { size: 11, color: 'green' });
+          fillPoly(b, [g.O1, g.A, g.B, g.O2], 'green', 0.1);
+        } else {
+          const foot = add(g.O1, mul(unit(sub(g.A, g.O1)), mode === 'ext' ? g.r1 - g.r2 : g.r1 + g.r2));
+          line(b, g.O2, foot, 'green', 2.6, { dash: [6, 4] });
+          if (mode === 'int' || g.r1 < g.r2) line(b, g.O1, foot, 'green', 2.6, { dash: [6, 4] });
+          b.right(foot, g.O1, g.O2, { size: 11, color: 'green' });
+          fillPoly(b, [g.O1, g.O2, foot], 'green', 0.1);
+        }
       }
       [g.O1, g.O2, g.A, g.B].forEach((p) => dot(b, p, 'ink', 4.4));
       if (!C.txt) return;
@@ -601,11 +606,11 @@
       if (ex || st >= 2) segTag(b, g.A, g.B, 'AB=' + cv(g.len), { away: g.O1, color: 'rose', size: S(b), gap: 14 });
     },
     steps: (M) => {
-      const g = M.g, ex = g.mode === 'ext', dd = ex ? Math.abs(g.r1 - g.r2) : g.r1 + g.r2;
+      const g = M.g, ex = g.mode === 'ext', dd = ex ? Math.abs(g.r1 - g.r2) : g.r1 + g.r2, equal = ex && g.r1 === g.r2;
       return [
         `점 A, B는 접점이므로 $\\overline{OA}\\perp AB$, $\\overline{O^{\\prime}B}\\perp AB$예요.`,
-        ex ? `O′에서 $\\overline{OA}$에 수선 $\\overline{O^{\\prime}H}$를 그으면 직사각형 모양이 생겨 $\\overline{OH}=r_1-r_2=${fmtN(dd)}$, $\\overline{O^{\\prime}H}=\\overline{AB}$.` : `O′에서 반지름 OA의 연장선에 수선 $\\overline{O^{\\prime}H}$를 그으면 $\\overline{OH}=r_1+r_2=${fmtN(dd)}$, $\\overline{O^{\\prime}H}=\\overline{AB}$.`,
-        `직각삼각형 OHO′에서 $\\overline{AB}^2=d^2-(${ex ? 'r_1-r_2' : 'r_1+r_2'})^2=${fmtN(g.d)}^2-${fmtN(dd)}^2$.`,
+        equal ? '두 반지름이 같으면 사각형 OABO′이 직사각형이에요. 수선의 발 H는 O와 같으므로 별도의 직각삼각형은 만들지 않아요.' : ex ? `O′에서 직선 OA에 수선 $\\overline{O^{\\prime}H}$를 그으면 $\\overline{OH}=\\lvert r_1-r_2\\rvert=${fmtN(dd)}$, $\\overline{O^{\\prime}H}=\\overline{AB}$. H는 ${g.r1 > g.r2 ? '선분 OA 위' : 'OA를 O 쪽으로 연장한 부분'}에 있어요.` : `O′에서 반지름 OA의 연장선에 수선 $\\overline{O^{\\prime}H}$를 그으면 $\\overline{OH}=r_1+r_2=${fmtN(dd)}$, $\\overline{O^{\\prime}H}=\\overline{AB}$.`,
+        equal ? `직사각형의 마주 보는 변이 같으므로 $\\overline{AB}=\\overline{OO^{\\prime}}=d=${fmtN(g.d)}$예요.` : `직각삼각형 OHO′에서 $\\overline{AB}^2=d^2-(${ex ? 'r_1-r_2' : 'r_1+r_2'})^2=${fmtN(g.d)}^2-${fmtN(dd)}^2$.`,
         `$\\overline{AB}=${nt(g.len)}$.`
       ];
     },
@@ -613,7 +618,7 @@
       const g = M.g, ex = g.mode === 'ext';
       return {
         guide: '칩으로 <b>공통외접선/공통내접선</b>을 고르고 막대로 <b>중심 사이의 거리 d</b>(오른쪽 원이 가로로 움직여요)와 반지름을 바꿔 보세요.',
-        readouts: [rd('d', fmtN(g.d), 'green', '중심 사이의 거리'), rd(ex ? 'r₁ − r₂' : 'r₁ + r₂', fmtN(ex ? Math.abs(g.r1 - g.r2) : g.r1 + g.r2), 'violet'), rd('AB', ntD(g.len), 'rose', ex ? '√(d²−(r₁−r₂)²)' : '√(d²−(r₁+r₂)²)')],
+        readouts: [rd('d', fmtN(g.d), 'green', '중심 사이의 거리'), rd(ex ? '|r₁ − r₂|' : 'r₁ + r₂', fmtN(ex ? Math.abs(g.r1 - g.r2) : g.r1 + g.r2), 'violet'), rd('AB', ntD(g.len), 'rose', ex ? '√(d²−(r₁−r₂)²)' : '√(d²−(r₁+r₂)²)')],
         rule: ex ? '[심화] 공통외접선의 길이 $=\\sqrt{d^2-(r_1-r_2)^2}$' : '[심화] 공통내접선의 길이 $=\\sqrt{d^2-(r_1+r_2)^2}$',
         notes: notes('이 장면은 <b>심화</b>예요. 접선과 반지름이 수직이라는 것에서 직각삼각형을 만들어요.', ex ? '외접선은 반지름의 <b>차</b>, 내접선은 반지름의 <b>합</b>을 써요.' : '공통내접선이 있으려면 두 원이 떨어져 있어야 해요(d > r₁+r₂).')
       };

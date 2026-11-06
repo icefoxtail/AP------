@@ -24,7 +24,8 @@ const close = (a, b, label) => assert.ok(Number.isFinite(a) && Number.isFinite(b
 function checkMath(html, label) {
   assert.doesNotMatch(html, /NaN|undefined|Infinity/, label);
   assert.equal((html.match(/\$/g) || []).length % 2, 0, `${label}: unbalanced math delimiters`);
-  for (const [, tex] of html.matchAll(/\$([^$]+)\$/g)) katex.renderToString(tex, { throwOnError: true, strict: 'ignore' });
+  assert.doesNotMatch(html.replace(/\$[^$]*\$/g, ''), /\\[A-Za-z]+/, `${label}: TeX command outside math delimiters`);
+  for (const [, tex] of html.matchAll(/\$([^$]+)\$/g)) katex.renderToString(tex, { throwOnError: true, strict: 'error' });
 }
 function board(W = 390, H = 440) {
   const items = [], b = { W, H, pad: .02, insets: { top: 0, bottom: 0, left: 0, right: 0 }, focus: { x: [-6, 6], y: [-6, 6] }, items };
@@ -142,4 +143,60 @@ test('answer leaks and unrelated unknowns stay absent in repaired question varia
     assert.ok(!texts.includes(forbidden), `${id}: leaked ${forbidden}`);
     assert.ok(texts.includes(required), `${id}: missing ${required}`);
   }
+});
+
+test('common external tangents handle either radius order and the equal-radius rectangle', () => {
+  const sc = scenes.find(sc => sc.id === 'c2-5'), s = state(sc);
+  for (const [r1, r2] of [[1, 4], [4, 1], [4, 4]]) for (let kind = 0; kind < 3; kind++) {
+    s.ciPk = { kind, r1, r2, key: `radius-order.${r1}.${r2}.${kind}` };
+    const sol = sc.solution(s), text = sol.steps.join('\n');
+    assert.doesNotMatch(text, /큰 반지름|작은 반지름|작은 원의 중심/, 'left and right do not imply larger and smaller');
+    if (r1 === r2) {
+      assert.match(text, /직사각형/);
+      assert.doesNotMatch(text, /직각삼각형 OHO/, 'O=H does not define a triangle');
+    } else assert.match(text, /\\lvert r_1-r_2\\rvert/, 'the difference used as a length is nonnegative');
+    for (let step = 1; step <= 5; step++) {
+      s.step = step; const b = board(); sc.draw(b, s, {}, { tab: 'review' });
+      for (const item of b.items.filter(x => x.type === 'right')) {
+        const [V, A, B] = item.args;
+        assert.ok(G.dist(V, A) > 1e-7 && G.dist(V, B) > 1e-7, 'right-angle markers need two nonzero rays');
+        close((A.x - V.x) * (B.x - V.x) + (A.y - V.y) * (B.y - V.y), 0, 'marked rays are perpendicular');
+      }
+    }
+  }
+  const common = scenes.find(sc => sc.id === 'c2-7'), c = state(common);
+  for (const [r1, r2] of [[2, 6], [6, 2], [4, 4]]) {
+    Object.assign(c, { c2cm: 'ext', c2r1: r1, c2r2: r2, c2d: 13 });
+    const b = board(); common.draw(b, c, {}, { tab: 'explore' });
+    for (const { args: [V, A, B] } of b.items.filter(x => x.type === 'right')) {
+      assert.ok(G.dist(V, A) > 1e-7 && G.dist(V, B) > 1e-7, 'exploration must also omit degenerate right-angle markers');
+    }
+    assert.match(JSON.stringify(common.view(c, { tab: 'explore' })), /\|r₁ − r₂\|/, 'readout labels the absolute difference');
+  }
+});
+
+test('equal-length marks and right-angle marks describe the actual solution geometry in all 45 scenes', t => {
+  let frames = 0;
+  for (const sc of scenes) {
+    const s = state(sc);
+    for (let seed = 0; seed < 24; seed++) {
+      s.ciPk = sc.ci.gen(G.seeded(`mark-audit|${sc.id}|${seed}`), seed);
+      for (let step = 1; step <= 5; step++) {
+        s.step = step; const b = board(); sc.draw(b, s, {}, { tab: 'review' });
+        const groups = new Map(), label = `${sc.id}/${s.ciPk.key}/step${step}`;
+        for (const { args: [A, B, options] } of b.items.filter(x => x.type === 'ticks')) {
+          const key = `${options.count || 1}:${options.color || 'amber'}`, length = G.dist(A, B);
+          if (groups.has(key)) close(length, groups.get(key), `${label}: identical tick patterns must mean equal lengths`);
+          else groups.set(key, length);
+        }
+        for (const { args: [V, A, B] } of b.items.filter(x => x.type === 'right')) {
+          const a = G.dist(V, A), c = G.dist(V, B);
+          assert.ok(a > 1e-7 && c > 1e-7, `${label}: right angle cannot use a zero-length ray`);
+          close(((A.x - V.x) * (B.x - V.x) + (A.y - V.y) * (B.y - V.y)) / (a * c), 0, `${label}: right-angle rays`);
+        }
+        frames++;
+      }
+    }
+  }
+  t.diagnostic(`${frames} staged drawing frames independently checked for equal lengths and perpendicular rays`);
 });

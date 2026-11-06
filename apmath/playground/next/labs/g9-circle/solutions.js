@@ -10,7 +10,7 @@
   const aux = (b, p, q, color = 'green') => line(b, p, q, color, 2.8, { dash: [6, 4] });
   const shade = (b, pts, color = 'green') => fillPoly(b, pts, color, 0.12);
   const angle = (b, V, A, B, label, color = 'green') => ang(b, V, A, B, { color, r: 23, label, size: 15 });
-  const halfChord = (b, g) => { tick(b, g.A, g.M, 1); tick(b, g.M, g.B, 1); b.right(g.M, O, g.B, { size: 12, color: 'green' }); };
+  const halfChord = (b, g, count = 1) => { tick(b, g.A, g.M, count); tick(b, g.M, g.B, count); b.right(g.M, O, g.B, { size: 12, color: 'green' }); };
   const labelPoint = (b, P, name) => { dot(b, P, 'green', 4); T(b, P, name, { dx: 13, dy: 15, color: 'green', size: 15 }); };
   const sameArc = (b, A, B, center = O) => {
     let aa = degOf(center, A), bb = degOf(center, B); while (bb < aa) bb += 360;
@@ -45,7 +45,7 @@
       '중심에서 현에 내린 수선은 현을 이등분해요. 두 직각삼각형의 빗변은 같은 원의 반지름이에요.',
       `${m(`AM=${q.a1}`)}이므로 ${m(`R^2=${sq(q.a1)}+${sq(q.d1)}=${q.R * q.R}`)}이에요. 이 반지름 제곱을 다른 현에도 사용해요.`,
       kind === 0 ? `${m(`CN^2=${q.R * q.R}-${sq(q.d2)}=${q.a2 * q.a2}`)}이므로 ${m(`CN=${q.a2}`)}. CD는 CN의 두 배예요.` : `${m(`CN=${q.a2},\ ON^2=${q.R * q.R}-${sq(q.a2)}=${q.d2 * q.d2}`)}이에요.`
-    ], (b, st) => { if (st >= 2) { aux(b, O, g.M); aux(b, O, h.M); halfChord(b, g); halfChord(b, h); } if (st >= 3) { shade(b, [O, g.A, g.M], 'sky'); shade(b, [O, h.A, h.M], 'green'); } });
+    ], (b, st) => { if (st >= 2) { aux(b, O, g.M); aux(b, O, h.M); halfChord(b, g, 1); halfChord(b, h, 2); } if (st >= 3) { shade(b, [O, g.A, g.M], 'sky'); shade(b, [O, h.A, h.M], 'green'); } });
   };
   solvers['c1-3'] = M => {
     const q = M.q, g = M.g1, h = M.g2, k = q.kind, am = q.am;
@@ -54,7 +54,7 @@
       '한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같고, 길이가 같은 두 현은 중심으로부터의 거리가 같아요.',
       k === 0 ? 'ON을 그으면 △OCN은 직각삼각형이고 CN은 현 CD의 절반이에요.' : `수선을 내려 현을 이등분하면 ${m(`CN=${am}`)}이에요.`,
       k === 0 ? `${m(`CN^2=${sq(q.R)}-${sq(q.om)}=${am * am}`)}이므로 ${m(`CN=${am}`)}. CD는 그 두 배예요.` : k === 1 ? `${m(`ON^2=${sq(q.R)}-${sq(am)}=${q.om * q.om}`)}이에요.` : `${m(`R^2=${sq(am)}+${sq(q.om)}=${q.R * q.R}`)}이에요.`
-    ], (b, st) => { if (st >= 2) { tick(b, O, g.M, 2); tick(b, O, h.M, 2); halfChord(b, g); halfChord(b, h); } if (st >= 3) shade(b, [O, h.A, h.M]); });
+    ], (b, st) => { if (st >= 2) { tick(b, O, g.M, 1); tick(b, O, h.M, 1); halfChord(b, g, 3); halfChord(b, h, 3); } if (st >= 3) shade(b, [O, h.A, h.M]); });
   };
   solvers['c1-4'] = M => {
     const q = M.q, k = q.kind, value = k === 2 ? q.om ** 2 : q.am ** 2;
@@ -69,9 +69,9 @@
     const q = M.q, R = M.R, h = R * Math.sqrt(3) / 2, A0 = pt(-h, R / 2), B0 = pt(h, R / 2), H = pt(0, R / 2), Op = pt(0, R);
     const k = q.kind, target = slide ? ['OM', 'AB', 'R'][k] : ['AB', 'R', 'OM', '\\angle AOB'][k];
     const value = slide ? [R / 2, Math.sqrt(3) * R, R][k] : [Math.sqrt(3) * R, R, R / 2, 120][k];
-    const given = slide ? k === 0 ? `반지름 R=${R}` : `OM=${q.k}` : k === 1 ? `AB=${n(Math.sqrt(3) * R)}` : `반지름 R=${R}`;
+    const given = slide ? k === 0 ? `반지름 ${m(`R=${R}`)}` : m(`OM=${q.k}`) : k === 1 ? m(`AB=${n(Math.sqrt(3) * R)}`) : `반지름 ${m(`R=${R}`)}`;
     return lesson(target, value, target.startsWith('\\angle') ? '°' : 'cm',
-      `현재 조건 ${m(given)}에서 접힌 호가 중심 O를 지나요. ${m(target)}를 구해요.`,
+      `현재 조건 ${given}에서 접힌 호가 중심 O를 지나요. ${m(target)}를 구해요.`,
       '접은 도형은 현 AB에 대해 대칭이에요. 접힌 원의 중심 O′을 표시하면 M은 OO′의 중점이에요.',
       '접힌 호가 O를 지나므로 O′O=R이에요. 따라서 OM=R÷2이고, △OAM에서 ∠AOM=60°, ∠OAM=30°예요.',
       target === 'OM' ? `${m(`OM=R\\div2=${R}\\div2`)}로 계산해요.` : target === 'R' ? slide ? `${m(`R=2OM=2\\times${q.k}`)}로 계산해요.` : `${m(`AB=\\sqrt{3}R`)}에 ${m(`AB=${n(Math.sqrt(3) * R)}`)}을 대입해 R을 구해요.` : target === 'AB' ? `${m(`AM^2=R^2-(R/2)^2=\\frac34R^2`)}이므로 ${m(`AB=2AM=\\sqrt{3}\\times${R}`)}이에요.` : 'OA=OB이고 OM은 꼭지각을 이등분하므로 ∠AOB=2×60°이에요.',
@@ -130,12 +130,20 @@
   };
   solvers['c2-5'] = M => {
     const q = M.q, g = M.g, k = q.kind, h = add(g.O1, mul(unit(sub(g.A, g.O1)), q.r1 - q.r2)), length = 2 * Math.sqrt(q.r1 * q.r2);
+    const equal = q.r1 === q.r2;
     return L(['AB', 'r_2', 'MP'][k], [length, q.r2, length / 2][k], [
-      k === 1 ? `큰 반지름 ${q.r1}, 공통접선 AB=${n(length)}에서 작은 반지름을 구해요.` : `외접하는 두 원의 반지름은 ${q.r1}, ${q.r2}이에요. ${k === 2 ? '두 공통접선의 교점 M에서 MP를 구해요.' : '공통접선 AB를 구해요.'}`,
-      '접선에 수직인 두 반지름은 평행해요. 작은 원의 중심 O′에서 OA에 수선을 그어 H를 만들어요.',
-      '직각삼각형 OHO′에서 OO′=r₁+r₂, OH=r₁−r₂, HO′=AB이므로 AB²=4r₁r₂예요.',
+      k === 1 ? `왼쪽 원의 반지름 ${m(`r_1=${q.r1}`)}, 공통접선 ${m(`AB=${n(length)}`)}에서 오른쪽 원의 반지름을 구해요.` : `외접하는 두 원의 반지름은 ${q.r1}, ${q.r2}이에요. ${k === 2 ? '두 공통접선의 교점 M에서 MP를 구해요.' : '공통접선 AB를 구해요.'}`,
+      equal ? '두 반지름은 접선에 수직이고 길이가 같아요. 사각형 OABO′은 직사각형이므로 마주 보는 변 AB와 OO′이 같아요.' : `접선에 수직인 두 반지름은 평행해요. 오른쪽 원의 중심 O′에서 직선 OA에 수선을 그어 H를 만들어요. H는 ${q.r1 > q.r2 ? '선분 OA 위' : 'OA를 O 쪽으로 연장한 부분'}에 있어요.`,
+      equal ? `직사각형에서 ${m(`AB=OO^{\\prime}=r_1+r_2=2r_1`)}이에요. 따라서 이 경우에도 ${m('AB^2=4r_1r_2')}가 성립해요.` : `직각삼각형 OHO′에서 ${m('OO^{\\prime}=r_1+r_2,\\ OH=\\lvert r_1-r_2\\rvert,\\ HO^{\\prime}=AB')}이므로 ${m('AB^2=(r_1+r_2)^2-(r_1-r_2)^2=4r_1r_2')}예요.`,
       k === 1 ? `${m(`${sq(length)}=4\\times${q.r1}\\times r_2`)}를 풀어요.` : k === 0 ? `${m(`AB^2=4\\times${q.r1}\\times${q.r2}=${length ** 2}`)}이에요.` : `같은 점 M에서 그은 접선은 ${m(`MA=MP=MB`)}이므로 ${m(`MP=AB/2=\\sqrt{${q.r1}\\times${q.r2}}`)}이에요.`
-    ], (b, st) => { if (st >= 2) { aux(b, g.O2, h); labelPoint(b, h, 'H'); b.right(h, g.O1, g.O2, { size: 12, color: 'green' }); } if (st >= 3) shade(b, [g.O1, h, g.O2]); if (st >= 3 && k === 2) { tick(b, g.M, g.A); tick(b, g.M, g.P); tick(b, g.M, g.B); } });
+    ], (b, st) => {
+      if (st >= 2) {
+        if (equal) { aux(b, g.O1, g.O2); b.right(g.O1, g.A, g.O2, { size: 12, color: 'green' }); }
+        else { aux(b, g.O2, h); if (q.r1 < q.r2) aux(b, g.O1, h); labelPoint(b, h, 'H'); b.right(h, g.O1, g.O2, { size: 12, color: 'green' }); }
+      }
+      if (st >= 3) shade(b, equal ? [g.O1, g.A, g.B, g.O2] : [g.O1, h, g.O2]);
+      if (st >= 3 && k === 2) { tick(b, g.M, g.A); tick(b, g.M, g.P); tick(b, g.M, g.B); }
+    });
   };
   solvers['c2-6'] = M => {
     const q = M.q, g = M.g, pa = q.pbFull * q.r / q.R, k = q.kind;
@@ -152,7 +160,7 @@
     return L(q.kind < 2 ? 'AB' : 'OO^{\\prime}', q.kind < 2 ? q.len : q.d, [
       `두 반지름은 ${q.r1}, ${q.r2}이고 ${ext ? '공통외접선' : '공통내접선'}이에요. ${q.kind < 2 ? `중심 거리 ${q.d}에서 AB를 구해요.` : `접선 길이 AB=${q.len}에서 중심 거리를 구해요.`}`,
       `두 반지름이 접선과 수직이므로 평행해요. O′에서 OA${ext ? '' : '의 연장선'}에 수선을 내려 H를 만들어요.`,
-      `${m(`OH=${ext ? 'r_1-r_2' : 'r_1+r_2'}=${dh},\ HO^{\\prime}=AB`)}인 직각삼각형 OHO′을 보세요. 빗변은 OO′예요.`,
+      `${m(`OH=${ext ? '\\lvert r_1-r_2\\rvert' : 'r_1+r_2'}=${dh},\ HO^{\\prime}=AB`)}인 직각삼각형 OHO′을 보세요. 빗변은 OO′예요.`,
       q.kind < 2 ? `${m(`AB^2=${sq(q.d)}-${sq(dh)}=${q.len ** 2}`)}이에요.` : `${m(`OO^{\\prime 2}=${sq(q.len)}+${sq(dh)}=${q.d ** 2}`)}이에요.`
     ], (b, st) => { if (st >= 2) { aux(b, g.O2, H); labelPoint(b, H, 'H'); b.right(H, g.O1, g.O2, { size: 12, color: 'green' }); } if (st >= 3) shade(b, [g.O1, H, g.O2]); });
   };
@@ -256,7 +264,7 @@
   solvers['c4-5'] = M => {
     const q = M.q, g = M.g, s = Math.sin(q.A0 * DEG), bc = 2 * q.a * s, askR = q.ask === 'R';
     return L(askR ? 'R' : 'BC', askR ? q.a : bc, [
-      `∠A=${q.A0}°이고 ${askR ? `BC=${n(bc)}에서 반지름 R` : `반지름 R=${q.a}에서 BC`}를 구해요.`,
+      `${m(`\\angle A=${a(q.A0)}`)}이고 ${askR ? `${m(`BC=${n(bc)}`)}에서 반지름 R을` : `반지름 ${m(`R=${q.a}`)}에서 BC를`} 구해요.`,
       'B를 지나는 지름 BD를 그으면 ∠BCD=90°예요. ∠BDC와 ∠BAC는 같은 호 BC에 대한 원주각이에요.',
       `${m(`\\sin${a(q.A0)}=\\frac{BC}{BD}=\\frac{BC}{2R}`)}이므로 ${m(`BC=2R\\sin${a(q.A0)}`)}예요.`,
       askR ? `${m(`R=\\frac{${n(bc)}}{2\\sin${a(q.A0)}}`)}에 특수각의 정확한 삼각비를 대입해요.` : `${m(`BC=2\\times${q.a}\\times\\sin${a(q.A0)}`)}에 특수각의 정확한 삼각비를 대입해요.`
@@ -444,7 +452,7 @@
       '접는 선의 중점 M은 원래 중심과 접힌 원의 중심의 중점이에요. 접힌 호가 O를 지나므로 OM=R÷2예요.',
       `${m(`OM=${n(R / 2)}`)}이고 △OMC에서 ∠COM=60°예요. 따라서 ∠COD=120°이고 ${m(`CD=\\sqrt{3}R`)}이에요.`,
       k === 0 ? `${m(`CD=\\sqrt{3}\\times${R}`)}예요.` : k === 1 ? `접어도 넓이는 같아요. 접힌 활꼴의 넓이는 ${m(`${pi(R * R / 3)}-${tt}`)}예요.` : `접은 뒤 겉모양은 원에서 원래 활꼴 하나를 뺀 영역이에요. ${m(`${pi(R * R)}-(${pi(R * R / 3)}-${tt})`)}로 계산해요.`,
-      (b, st) => { if (st >= 2) { aux(b, O, g.M); b.right(g.M, O, g.D, { size: 12, color: 'green' }); labelPoint(b, g.M, 'M'); tick(b, g.C, g.M); tick(b, g.M, g.D); } if (st >= 3) shade(b, [O, g.C, g.M]); }, tex);
+      (b, st) => { if (st >= 2) { aux(b, O, g.M); b.right(g.M, O, g.D, { size: 12, color: 'green' }); labelPoint(b, g.M, 'M'); tick(b, g.C, g.M, 2); tick(b, g.M, g.D, 2); } if (st >= 3) shade(b, [O, g.C, g.M]); }, tex);
   };
   solvers['c7-3'] = M => {
     const q = M.q, g = M.g, phi = 2 * q.th, k = q.kind, sector = Math.PI * q.R ** 2 * phi / 360, tri = q.R ** 2 * Math.sin(phi * DEG) / 2;
