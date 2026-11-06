@@ -870,8 +870,10 @@
         // 지금 그려지는 모양만 화면에 맞춥니다(접은 정육면체가 펼친 모양의 자리까지 잡아 작아지지 않게)
         const fitp = [A, Bp, E, F, G, H];
         if (t > 0.02) fitp.push(v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2));
-        D.fitPts(fitp, { t: C.problem ? 46 : 92, b: 52, l: 46, r: 46 });
-        D.top = C.problem ? 42 : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
+        const compact = b.W < 560 && !C.problem, thirdLine = C.review && st === 3;
+        // 휴대폰은 보드가 도구막대 높이를 이미 비워 둡니다. 줄글 높이만 남겨 펼친 두 면을 읽을 만큼 키웁니다.
+        D.fitPts(fitp, { t: C.problem ? 46 : compact ? (thirdLine ? 86 : 58) : 92, b: compact ? 12 : 52, l: 46, r: 46 });
+        D.top = C.problem ? 42 : compact ? (thirdLine ? 78 : 52) : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
         // 나머지 네 면(접으면 보이는 입체의 겉면)은 옅게
         const back = [v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2)], bd = [v3(-L / 2, -L / 2, -L / 2), v3(L / 2, -L / 2, -L / 2)];
         if (t > 0.02) {
@@ -893,8 +895,9 @@
         if (C.txt && !C.problem) {
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
           const ep = r * M.a, pf = M.a - ep;
-          D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -18]] });
-          D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -18]] });
+          D.obstacle(Pp, 12);
+          D.label(mid3(E, Pp), fmt2(ep), { color: 'rose', size: 15, at: [[0, -20], [0, -38], [-18, -24], [0, 26]] });
+          D.label(mid3(Pp, F), fmt2(pf), { color: 'rose', size: 15, at: [[0, -20], [0, 26], [18, -24], [0, -38]] });
           const L1 = [{ t: `한 모서리 a = ${M.a}`, c: 'ink', size: 15 }];
           if (st === 2 || st === 3) L1.push({ t: 'A와 G를 직선으로 이으면 EF의 가운데를 지나요', c: VIO, size: 14 });
           else if (M.mid && t < 0.05) L1.push({ t: 'AP와 PG가 한 직선이에요 → 가장 짧아요!', c: GRN, size: 15 });

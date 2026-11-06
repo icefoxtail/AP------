@@ -155,12 +155,13 @@
       const D = scene3(b, s, C), st = stepOf(C);
       const scl = (S, f) => Object.assign({}, S, { V: S.V.map((p) => mul3(p, f)), F: S.F.map((x) => Object.assign({}, x, { c: mul3(x.c, f) })), ctr: mul3(S.ctr, f) });
       if (C.problem) {
-        const SP = 3.6, RZ = 5.5, ctr = layout5(s, SP, RZ), pts = [];
-        ctr.forEach((c) => pts.push(add3(c, v3(-1.8, 0, -1.9)), add3(c, v3(1.8, 0, 1.9))));
+        const SP = 3.6, RZ = 5.5, ctr = layout5(s, SP, RZ), pts = [], names = ctr.map((c) => add3(c, v3(0, 0, -2.1)));
+        // 입체의 실제 꼭짓점과 이름 앵커를 함께 맞춥니다. 가상 상자만 맞추면 아래 줄 이름이 PC 무대 밖으로 내려가요.
+        PLAT_KEYS.forEach((k, i) => pts.push(...platS(k).V.map((p) => add3(ctr[i], p)), names[i]));
         D.fitPts(pts, { t: 20, b: 56, l: 12, r: 12 });
         PLAT_KEYS.forEach((k, i) => {
           drawPoly(D, platS(k), { off: ctr[i], face: (fi, vis) => (vis ? { c: 'green', a: 0.16 } : null), edge: () => ({ color: 'ink', width: 2.6 }) });
-          D.label(add3(ctr[i], v3(0, 0, -2.1)), PLAT[k].name, { color: 'ink', size: 15, at: [[0, 22]] });
+          D.label(names[i], PLAT[k].name, { color: 'ink', size: 15, at: [[0, 22]] });
         });
         D.flush();
         return;
