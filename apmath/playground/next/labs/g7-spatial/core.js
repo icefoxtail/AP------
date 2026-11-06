@@ -643,7 +643,12 @@
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       steps: stepsOf,
-      reviewTop: (s) => questionReview.has(s) ? esc(D.prob(D.model(s), s).stem) : '',
+      reviewTop: (s) => {
+        if (!questionReview.has(s)) return '';
+        const Q = D.prob(D.model(s), s);
+        const choices = Q.wide ? `<details><summary>보기 다시 확인하기</summary><div class="sp-choices wide">${Q.choices.map((o, i) => `<div class="sp-ch"><span class="n">${NUM[i]}</span><span class="v">${o.h}</span></div>`).join('')}</div></details>` : '';
+        return `<p>${esc(Q.stem)}</p>${choices}`;
+      },
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,

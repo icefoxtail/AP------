@@ -230,6 +230,8 @@ test('independent questions retain their own drawing and solution when opening r
     lab.tab = 'review'; sc.view(s, lab);
     assert.equal(sc.sp.prob(sc.sp.model(s), s).key, q.key, sc.id);
     assert.ok(sc.reviewTop(s).includes(G.esc(q.stem)), sc.id + ': current question is shown above the solution');
+    if (q.wide) for (const choice of q.choices) assert.ok(sc.reviewTop(s).includes(choice.h), sc.id + ': the statement choices remain accessible');
+    assert.doesNotMatch(sc.reviewTop(s), /class="sp-ch (?:ok|bad)"|class="sp-fb/, sc.id + ': review choices are neutral');
     if (sc.sp.problemSteps) {
       let seen;
       const draw = sc.sp.draw;
