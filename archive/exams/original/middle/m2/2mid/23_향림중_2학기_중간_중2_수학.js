@@ -643,13 +643,11 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 큰 삼각형에서 작은 삼각형을 빼고, 평행선 사이에 있는 두 점에서 같은 밑변으로 만든 삼각형의 넓이가 같음을 이용한다.\n$\\triangle ABE$는 $\\triangle ABC$와 $\\triangle ACE$로 나뉘므로 $[ACE]=17-8=9\\,\\mathrm{cm}^2$이다. $AC\\parallel DE$이므로 점 $D$와 $E$에서 직선 $AC$까지의 높이는 같다. 따라서 같은 밑변 $AC$를 가지는 $\\triangle ACD$와 $\\triangle ACE$의 넓이는 같아 $[ACD]=9\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_중간_중2_수학/q20.png",
-    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
-    "subUnit": "사각형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg"
   },
   {
     "id": 21,
