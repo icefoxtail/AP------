@@ -158,7 +158,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "√5의 정수부분을 정해 a=√5−2로 놓고 √45=3√5에 대입한 뒤 √45의 정수부분을 뺀다.",
+    "decisiveStep": "√45=3(a+2)=3a+6이고 6<√45<7이므로 소수부분은 3a이다."
   },
   {
     "id": 5,
