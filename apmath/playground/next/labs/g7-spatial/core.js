@@ -4,7 +4,7 @@
      전역은 APL_SP(도구)와 APL_SP_GROUPS(탭 묶음) 둘뿐입니다.
    - 장면 하나 = 탐구(조절·돌려 보기·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
    - 입체는 평행투영(원근 없음)이라 평행한 모서리는 화면에서도 평행하게 보입니다. 안 보이는 모서리는 점선입니다.
-   - 색의 역할(이 실험실 전체): 노랑 = 기준 모서리·구하는 것·끌 수 있는 점 · 빨강 = 만나는 · 파랑 = 평행한 · 초록 = 꼬인 위치·평면 ·
+   - 색의 역할(이 실험실 전체): 노랑 = 기준 모서리·구하는 것·끌 수 있는 점 · 분홍 = 비교하는 모서리 · 하늘 = 기본 도형·평행한 선 · 초록 = 판별 결과 ·
      보라 = 연장선·보조 · 기본 = 입체의 모서리.
    - 같은 크기의 각은 같은 표시, 직각은 네모, 평행한 선에는 화살표.
    - 입체의 시점 돌리기(제자리 회전)는 이동이 아니므로 허용합니다. 위치 이동은 쓰지 않습니다.
@@ -207,8 +207,10 @@
       edges = [E('A', 'B'), E('B', 'C'), E('C', 'D'), E('D', 'A'), E('V', 'A'), E('V', 'B'), E('V', 'C'), E('V', 'D')];
       faces = [['A', 'B', 'C', 'D'], ['V', 'A', 'B'], ['V', 'B', 'C'], ['V', 'C', 'D'], ['V', 'D', 'A']];
     } else { // tetra
-      const r = 1.75;
-      verts = { V: v3(0, 0, 1.45), A: v3(-r, -0.95, -0.95), B: v3(r, -0.95, -0.95), C: v3(0, 1.55, -0.95) };
+      // 한 변 a인 정삼각형 밑면의 외접반지름 a/√3, 정사면체의 높이 a√(2/3).
+      // 무게중심을 원점에 두고 밑면을 아래에 놓으면 여섯 모서리가 모두 정확히 a예요.
+      const a = 3.5, r = a / Math.sqrt(3), h = a * Math.sqrt(2 / 3), z = -h / 4;
+      verts = { V: v3(0, 0, 3 * h / 4), A: v3(-a / 2, -r / 2, z), B: v3(a / 2, -r / 2, z), C: v3(0, r, z) };
       edges = [E('A', 'B'), E('B', 'C'), E('C', 'A'), E('V', 'A'), E('V', 'B'), E('V', 'C')];
       faces = [['A', 'B', 'C'], ['V', 'A', 'B'], ['V', 'B', 'C'], ['V', 'C', 'A']];
     }
@@ -241,6 +243,22 @@
 
   /* ------------------------------------------------------------------ 그리기 도우미 */
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
+  // 관계 설명은 글자를 줄이지 않고 무대의 실제 폭에 맞춰 줄을 나눕니다.
+  function caption(b, text, o = {}) {
+    const size = o.size || (b.W < 560 ? 14.5 : 17), left = b.insets.left + 12, right = b.W - b.insets.right - 12;
+    const px = size * (b.fs || 1) * (b.thumb ? 0.78 : b._ts ? b._ts() : 1), ctx = b.ctx;
+    if (ctx) { ctx.save(); ctx.font = `800 ${px}px ${b.font}`; }
+    const width = (str) => ctx ? ctx.measureText(str).width : textW(str, px);
+    const lines = []; let line = '';
+    for (const ch of String(text)) {
+      if (line && width(line + ch) > right - left) { lines.push(line.trim()); line = ''; }
+      line += ch;
+    }
+    if (ctx) ctx.restore();
+    if (line.trim()) lines.push(line.trim());
+    lines.forEach((str, i) => b.stext((left + right) / 2, b.insets.top + (o.top || 20) + i * (px + 4), str, { color: o.color || 'amber', size, weight: 800, align: 'center', baseline: 'middle' }));
+    return lines.length;
+  }
   const bboxOf = (pts, pad = 0) => {
     let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
     pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
@@ -390,7 +408,7 @@
   function drawSolid(D, sol, style, o = {}) {
     const { b } = D;
     const vis = (e) => (sol.edgeFaces[e.key] || []).some((fi) => D.facing(sol.faces[fi].n));
-    if (o.fillFaces !== false) sol.faces.forEach((f) => { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), o.faceColor || 'green', o.faceAlpha == null ? 0.07 : o.faceAlpha); });
+    if (o.fillFaces !== false) sol.faces.forEach((f) => { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), o.faceColor || 'sky', o.faceAlpha == null ? 0.07 : o.faceAlpha); });
     const hid = sol.edges.filter((e) => !vis(e)), shown = sol.edges.filter((e) => vis(e));
     const kk = b.k || 60;
     const dr = (e, hidden) => {
@@ -481,9 +499,19 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  // 수동으로 연 답과 풀이 완료도 현재 문항에만 속합니다. 시점·순수 재생은 그대로 둡니다.
+  const questionKeys = new WeakMap();
+  const resetQuestion = (s) => { s.spPick = null; s.revealed = false; s.step = 0; };
+  const questionKey = (D, s, Q) => D.id + '|' + Q.key + '|' + (s.spSeed || 0);
+  function syncQuestion(D, s, Q) {
+    const key = questionKey(D, s, Q);
+    if (questionKeys.has(s) && questionKeys.get(s) !== key) resetQuestion(s);
+    questionKeys.set(s, key);
+    return key;
+  }
   function problemHTML(D, s) {
     const M = D.model(s), Q = D.prob(M, s);
-    const key = D.id + '|' + Q.key + '|' + (s.spSeed || 0);
+    const key = syncQuestion(D, s, Q);
     const pk = s.spPick && s.spPick.key === key ? s.spPick : null;
     let h = `<div class="sp-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
     h += `<div class="sp-choices${Q.wide ? ' wide' : ''}">`;
@@ -520,6 +548,7 @@
       if (hit.hasAttribute('data-sp-new')) {
         D.reroll(s);
         s.spSeed = (s.spSeed || 0) + 1; s.spPick = null; s.revealed = false; s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         lab.setStep(1);
         try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
         lab.invalidate(true);
@@ -562,6 +591,23 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n), cam0?:{yaw,pitch}, spin?:false } */
   function makeScene(D) {
     const A = D.anim;
+    // 문제를 본 뒤의 정리는 그 문항을 풉니다. 탐구를 다시 열면 원래 원리 정리로 돌아갑니다.
+    const questionReview = new WeakSet();
+    const syncReview = (s, lab) => {
+      if (lab && lab.tab === 'problem') {
+        if (!questionReview.has(s)) s.step = 0;
+        questionReview.add(s);
+      } else if (lab && lab.tab === 'explore') {
+        if (questionReview.has(s)) s.step = 0;
+        questionReview.delete(s);
+      }
+      return questionReview.has(s);
+    };
+    const stepsOf = (s) => {
+      if (curLab && curLab.scene && curLab.scene.sp === D) syncReview(s, curLab);
+      const M = D.model(s);
+      return questionReview.has(s) && D.problemSteps ? D.problemSteps(M, D.prob(M, s), s) : D.steps(M);
+    };
     const pitchKey = D.pitchKey || 'spPitch', pitchRange = D.pitchRange || [PITCH_MIN, PITCH_MAX], yawOff = D.yawOff || 0;
     // 이 장면에서 시점 검사에 쓸 입체: 객체 → 그 입체로 · undefined → 좌표축 기준 · false → 검사 안 함
     const solOf = (s, M) => (D.safeSol ? D.safeSol(s, M) : M && M.sol && M.sol.order && M.sol.edges ? M.sol : undefined);
@@ -596,7 +642,13 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)),
+      steps: stepsOf,
+      reviewTop: (s) => {
+        if (!questionReview.has(s)) return '';
+        const Q = D.prob(D.model(s), s);
+        const choices = Q.wide ? `<details><summary>보기 다시 확인하기</summary><div class="sp-choices wide">${Q.choices.map((o, i) => `<div class="sp-ch"><span class="n">${NUM[i]}</span><span class="v">${o.h}</span></div>`).join('')}</div></details>` : '';
+        return `<p>${esc(Q.stem)}</p>${choices}`;
+      },
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -604,11 +656,13 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
+        questionReview.delete(s);
         s.spSpin = false;
         D.init(s);
         const c0 = (typeof D.cam0 === 'function' ? D.cam0(s) : D.cam0) || { yaw: -30, pitch: 24 };
         s.spYaw = c0.yaw; s[pitchKey] = c0.pitch; s.spYawLast = c0.yaw;
-        s.spSeed = 0; s.spPick = null; s.playing = false;
+        s.spSeed = 0; resetQuestion(s); s.playing = false;
+        questionKeys.set(s, questionKey(D, s, D.prob(D.model(s), s)));
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -620,7 +674,7 @@
           if (s[A.key] >= 1) s.playing = false;
           if (D.onAnim && lab && lab.tab === 'explore') D.onAnim(s, s[A.key]); // 막대 값이 움직임을 따라가게
           again = true;
-        } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
+        } else if (A && D.stepT && lab && lab.tab === 'review' && !questionReview.has(s) && !s.dragging) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
           if (Math.abs(d) > 8e-4) { s[A.key] += clamp(d, -1 * dt, 1 * dt); again = true; }
         }
@@ -628,16 +682,30 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
-        const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        syncQuestion(D, s, D.prob(M, s));
+        const C = baseCtx(s, lab, false);
+        const fromQuestion = syncReview(s, lab);
         normView(s, M, !!s.spSpin && C.tab === 'explore');
-        const v = D.view(M, C, s) || {};
+        const v = C.review && fromQuestion && D.problemSteps ? {
+          guide: '문제의 그림과 조건을 그대로 두고, 다음 단계에서 풀이를 차례로 확인해요.',
+          readouts: [], notes: '', rule: '', formula: null
+        } : D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') {
+          const n = stepsOf(s).length;
+          v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` };
+          if ((s.step || 0) < n) {
+            v.formula = null;
+            // 예: 직육면체의 주의 글에 '꼬인 모서리 4개'가 적혀 있어 풀이 전에는 함께 감춥니다.
+            if (fromQuestion) v.notes = null;
+          }
+        }
         return v;
       },
       draw: (b, s, v, lab) => {
         const C = baseCtx(s, lab, !!b.thumb);
+        if (C.review && syncReview(s, lab) && D.problemSteps) { C.tab = 'problem'; C.problem = true; C.review = false; C.step = 99; }
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         // 그림 한 장 한 장도 시점 검사를 거칩니다(작은 미리보기·저장된 시점 포함). 상태 자체는 건드리지 않고 그리는 동안만 바꿉니다.
@@ -678,6 +746,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN, jo,
     v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, proj, facing, lineRel, lineMeetPoint,
     buildSolid, relEdges, classify, edgeByKey, ov, nm, SHAPE_NAME, PRISM_NAME,
-    textW, bboxOf, fit, scene3, drawSolid, drawVerts, vertVisible, P, VIEW_PARAMS, VIEW, orbit, bestYaw, safeYaw, yawOk, viewQ, PITCH_MIN, PITCH_MAX, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
+    textW, caption, bboxOf, fit, scene3, drawSolid, drawVerts, vertVisible, P, VIEW_PARAMS, VIEW, orbit, bestYaw, safeYaw, yawOk, viewQ, PITCH_MIN, PITCH_MAX, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
   };
 })();

@@ -10,7 +10,13 @@
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { DEG, v3, add3, sub3, mul3, lerp3, rotAxis, lineRel, mid3, P } = G;
+  const { DEG, v3, add3, sub3, mul3, lerp3, rotAxis, lineRel, mid3, caption, P } = G;
+  const EPS = 1e-9; // 부동소수점 오차만 허용하며, 눈에 잘 안 보이는 기울기를 0°로 판정하지 않습니다.
+  const numberText = (v, digits = 2) => {
+    const rounded = Number(v.toFixed(digits));
+    return (Math.abs(v - rounded) > EPS ? '≈' : '') + String(rounded).replace('-', '−');
+  };
+  const angleText = (v) => numberText(v) + '°';
   const PZ = -1; // 바닥 평면 P 의 높이
   const sq = (z, R) => [v3(-R, -R, z), v3(R, -R, z), v3(R, R, z), v3(-R, R, z)];
   const floorP = (R = 2.7) => ({ pts: sq(PZ, R), color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(R - 0.1, -R + 0.1, PZ) });
@@ -32,7 +38,8 @@
     return {
       lines, panels: [], rights: [{ O: Pm, a: v3(1, 0, 0), c: dm, color: COL.m }, { O: Pn, a: v3(1, 0, 0), c: dn, color: COL.n }],
       pars: rel === 'parallel' ? [[lines[1].p, lines[1].q], [lines[2].p, lines[2].q]] : [],
-      fit: [], box: [3.1, 2.5, 2.5], conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
+      fit: [], box: [3.1, 2.5, 2.5], conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: rel !== 'same', holds: rel === 'parallel',
+      note: rel === 'same' ? 'm과 n이 일치해요 (서로 다른 직선이라는 조건이 깨짐)' : ''
     };
   }
   function geoP2(a, b) { // 평면 P 는 뒤의 벽. l, m 은 P 와 나란한 직선. m 은 제자리에서 돌고 앞뒤로 옮겨요.
@@ -57,11 +64,11 @@
     const m1 = L(Pm, add3(Pm, mul3(dm, 3.2)), COL.m, { name: 'm', nameAt: add3(Pm, mul3(dm, 3.2)) });
     return {
       lines: [l1, m1], panels: [floorP()],
-      rights: [{ O: Pl, a: v3(1, 0, 0), c: dl, color: COL.l }].concat(tau < 0.4 ? [{ O: Pm, a: v3(-1, 0, 0), c: dm, color: COL.m }] : []),
+      rights: [{ O: Pl, a: v3(1, 0, 0), c: dl, color: COL.l }].concat(Math.abs(tau) <= EPS ? [{ O: Pm, a: v3(-1, 0, 0), c: dm, color: COL.m }] : []),
       pars: rel === 'parallel' ? [[l1.p, l1.q], [m1.p, m1.q]] : [],
       fit: [v3(-2.7, -2.7, PZ), v3(2.7, 2.7, 2.6)],
-      conc: 'l∥m', relText: `l과 m: ${REL[rel]}`, rel, given: tau < 0.4, holds: rel === 'parallel' || rel === 'same',
-      note: tau >= 0.4 ? 'm이 평면 P와 수직이 아니에요 (조건이 깨짐)' : ''
+      conc: 'l∥m', relText: `l과 m: ${REL[rel]}`, rel, given: Math.abs(tau) <= EPS, holds: rel === 'parallel',
+      note: Math.abs(tau) > EPS ? `m이 ${angleText(tau)} 기울어져 P와 수직이 아니에요 (조건이 깨짐)` : ''
     };
   }
   function geoP4(a, b) {
@@ -72,7 +79,7 @@
     const R = wall(Rc, d, Hw, 'amber', '평면 R', v3(Hw * d.x, cy + Hw * d.y, top - 0.1));
     const lines = [];
     let rel = 'parallel';
-    if (ang > 0.5) {
+    if (Math.abs(ang) > EPS) {
       rel = 'meet';
       const t = (Qy - cy) / Math.sin(ang * DEG), X = v3(t * Math.cos(ang * DEG), Qy, 0);
       const inside = Math.abs(t) <= Hw + 0.05 && Math.abs(X.x) <= 2.4;
@@ -91,20 +98,20 @@
     const Qp = wall(y2).map((p) => rotAxis(p, c2, ax, tau * DEG));
     const lines = [L(v3(0, -2.7, zc), v3(0, 2.9, zc), 'amber', { name: 'l', nameAt: v3(0, 2.9, zc) })];
     let rel = 'parallel';
-    if (tau > 0.4) {
+    if (Math.abs(tau) > EPS) {
       rel = 'meet';
       const t = (y1 - y2) / Math.sin(tau * DEG), X = t * Math.cos(tau * DEG);
       if (Math.abs(t) <= Hh && Math.abs(X) <= Hh) lines.push(L(v3(X, y1, zc - Hh), v3(X, y1, zc + Hh), 'red', { width: 5.5, name: '교선', nameAt: v3(X, y1, zc + Hh) }));
     }
     return {
       lines, panels: [{ pts: wall(y1), color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(-Hh, y1, zc + Hh) }, { pts: Qp, color: 'sky', fa: 0.17, name: '평면 Q', nameAt: Qp[3] }],
-      rights: [{ O: v3(0, y1, zc), a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'green' }].concat(tau < 0.4 ? [{ O: c2, a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'sky' }] : []),
-      pars: [], fit: [], conc: 'P∥Q', relText: `평면 P와 Q: ${rel === 'parallel' ? '평행' : '교선에서 만남'}`, rel, given: tau < 0.4, holds: rel === 'parallel',
-      note: tau >= 0.4 ? 'l이 평면 Q와 수직이 아니에요 (조건이 깨짐)' : ''
+      rights: [{ O: v3(0, y1, zc), a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'green' }].concat(Math.abs(tau) <= EPS ? [{ O: c2, a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'sky' }] : []),
+      pars: [], fit: [], conc: 'P∥Q', relText: `평면 P와 Q: ${rel === 'parallel' ? '평행' : '교선에서 만남'}`, rel, given: Math.abs(tau) <= EPS, holds: rel === 'parallel',
+      note: Math.abs(tau) > EPS ? `Q가 ${angleText(tau)} 기울어져 l과 수직이 아니에요 (조건이 깨짐)` : ''
     };
   }
   function geoP6(a, b) { // 평면 P 는 벽. l 은 벽에 수직으로 박힌 막대, m 은 l 에 수직. m 은 l 둘레로 돌고 앞뒤로 옮겨요(0 이면 벽 위).
-    const zc = 0.6, ym = -2.3 * a, dm = v3(Math.cos(b * 90 * DEG), 0, Math.sin(b * 90 * DEG)), onP = a < 0.02, Hh = 2.1, Cm = v3(0, ym, zc), O = v3(0, 0, zc);
+    const zc = 0.6, ym = -2.3 * a, dm = v3(Math.cos(b * 90 * DEG), 0, Math.sin(b * 90 * DEG)), onP = Math.abs(ym) <= EPS, Hh = 2.1, Cm = v3(0, ym, zc), O = v3(0, 0, zc);
     const wall = { pts: [v3(-2.7, 0, zc - Hh), v3(2.7, 0, zc - Hh), v3(2.7, 0, zc + Hh), v3(-2.7, 0, zc + Hh)], color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(2.6, 0, zc + Hh - 0.1) };
     const l1 = L(v3(0, -2.7, zc), v3(0, 1.0, zc), 'amber', { name: 'l', nameAt: v3(0, -2.7, zc) });
     const m1 = L(sub3(Cm, mul3(dm, 2.0)), add3(Cm, mul3(dm, 2.0)), COL.m, { name: 'm', nameAt: add3(Cm, mul3(dm, 2.0)) });
@@ -124,7 +131,7 @@
       lines, panels: [floorP(), door],
       rights: [{ O: v3(1.3 * d.x, 1.3 * d.y, PZ), a: v3(0, 0, 1), c: perp, color: 'sky', size: 0.45 }, { O, a: v3(0, 0, 1), c: perp, color: 'amber', size: 0.4 }],
       pars: [], fit: [v3(-2.7, -2.7, PZ - 0.4), v3(2.7, 2.7, PZ + H + 0.5)],
-      conc: 'P⊥Q', relText: `평면 P와 Q: 수직 (문을 ${Math.round(th)}°로 열어도)`, rel: 'perp', given: true, holds: true, th
+      conc: 'P⊥Q', relText: `평면 P와 Q: 수직 (문을 ${angleText(th)}로 열어도)`, rel: 'perp', given: true, holds: true, th
     };
   }
   function geoPlanes(a, b) {
@@ -148,17 +155,17 @@
       L(v3(0, -R + 0.3, PZ), v3(0, R - 0.3, PZ), COL.n, { width: 3.6, name: 'n', nameAt: v3(0, R - 0.3, PZ) }),
       L(sub3(O, mul3(dir, 0.9)), add3(O, mul3(dir, 3.0)), 'amber', { width: 5.8, name: 'l', nameAt: add3(O, mul3(dir, 3.0)) })
     ];
-    const angN = Math.round(90 - tau);
+    const angN = 90 - tau, upright = Math.abs(tau) <= EPS;
     return {
-      lines, panels: [floorP(R)], rights: [{ O, a: v3(1, 0, 0), c: dir, color: COL.m, size: 0.4 }].concat(tau < 0.4 ? [{ O, a: v3(0, 1, 0), c: dir, color: COL.n, size: 0.4 }] : []),
-      arcs: tau >= 0.4 ? [{ O, a: v3(0, 1, 0), c: dir, r: 0.75, color: COL.n }] : [],
+      lines, panels: [floorP(R)], rights: [{ O, a: v3(1, 0, 0), c: dir, color: COL.m, size: 0.4 }].concat(upright ? [{ O, a: v3(0, 1, 0), c: dir, color: COL.n, size: 0.4 }] : []),
+      arcs: !upright ? [{ O, a: v3(0, 1, 0), c: dir, r: 0.75, color: COL.n }] : [],
       pars: [], fit: [v3(-R, -R, PZ - 0.9), v3(R, R, PZ + 3.3)],
-      conc: 'l⊥P', relText: tau < 0.4 ? 'l은 m, n과 모두 90° → l ⊥ P' : `l과 m은 90°, l과 n은 ${angN}° → l ⊥ P 아님`, rel: 'perp', given: true, holds: tau < 0.4, angN, tau, arcText: tau >= 0.4 ? `${angN}°` : ''
+      conc: 'l⊥P', relText: upright ? 'l은 m, n과 모두 90° → l ⊥ P' : `l과 m은 90°, l과 n은 ${angleText(angN)} → l ⊥ P 아님`, rel: 'perp', given: true, holds: upright, angN, tau, arcText: !upright ? angleText(angN) : ''
     };
   }
 
   /* ------------------------------------------------------------ 설명 목록 */
-  const pc = (v) => Math.round(v * 100) + '%', dgr = (v) => Math.round(v * 90) + '°';
+  const pc = (v) => Math.round(v * 100) + '%', dgr = (v) => angleText(v * 90);
   const STM = {
     p1: { geo: geoP1, truth: false, label: 'a:n의 방향, b:n의 높이', init: { a: 0, b: 0.6 }, cex: { a: 0.65, b: 0.6 }, ctl: ['spP1a', 'spP1b'], text: '서로 다른 세 직선 $l, m, n$에 대하여 $l\\perp m,\\ l\\perp n$이면 $m\\parallel n$이다.' },
     p2: { geo: geoP2, truth: false, init: { a: 0, b: 0.6 }, cex: { a: 0.65, b: 0.6 }, ctl: ['spP2a', 'spP2b'], text: '서로 다른 두 직선 $l, m$이 평면 $P$와 모두 평행하면 $l\\parallel m$이다.' },
@@ -175,21 +182,21 @@
 
   const PARAMS = {
     spP1a: P('직선 n을 l 둘레로 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: 'n은 l과 계속 수직으로 만나요', format: dgr }),
-    spP1b: P('직선 n 옮기기 (가로)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l을 따라 옮겨요. m과 같은 자리에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) < 0.005 ? 'm과 같은 자리' : ((v - 0.5) * 3.6 > 0 ? '+' : '−') + Math.abs((v - 0.5) * 3.6).toFixed(1)) }),
+    spP1b: P('직선 n 옮기기 (가로)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l을 따라 옮겨요. m과 같은 자리에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) <= EPS ? 'm과 같은 자리' : numberText((v - 0.5) * 3.6, 3)) }),
     spP2a: P('직선 m을 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: '평면 P와 나란한 채로 제자리에서 돌아가요', format: dgr }),
-    spP2b: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l과 같은 평면 위에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) < 0.005 ? 'l과 같은 평면 위' : ((v - 0.5) * 2.8 > 0 ? '+' : '−') + Math.abs((v - 0.5) * 2.8).toFixed(1)) }),
+    spP2b: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l과 같은 평면 위에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) <= EPS ? 'l과 같은 평면 위' : numberText((v - 0.5) * 2.8, 3)) }),
     spP3a: P('직선 m의 자리', 0, 1, 0.01, 0.2, { color: 'amber', hint: '바닥에 수직으로 세운 m을 옮겨 보세요', format: pc }),
-    spP3b: P('직선 m 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 P와 수직이 아니에요', format: (v) => Math.round(v * 35) + '°' }),
+    spP3b: P('직선 m 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 P와 수직이 아니에요', format: (v) => angleText(v * 35) }),
     spP4a: P('평면 R을 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: 'R은 바닥에 수직인 채로 돌아가요', format: dgr }),
     spP4b: P('평면 R의 자리', 0, 1, 0.01, 0.2, { color: 'amber', format: pc }),
     spP5a: P('평면 Q 옮기기 (앞뒤)', 0, 1, 0.01, 0.3, { color: 'amber', hint: 'l을 따라 앞뒤로 옮겨요', format: pc }),
-    spP5b: P('평면 Q 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 l과 수직이 아니에요', format: (v) => Math.round(v * 30) + '°' }),
-    spP6a: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.6, { color: 'amber', hint: '평면 P에 닿게 옮겨 보세요', format: (v) => (v < 0.02 ? '평면 P 위' : pc(v)) }),
+    spP5b: P('평면 Q 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 l과 수직이 아니에요', format: (v) => angleText(v * 30) }),
+    spP6a: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.6, { color: 'amber', hint: '평면 P에 닿게 옮겨 보세요', format: (v) => (Math.abs(v) <= EPS ? '평면 P 위' : pc(v)) }),
     spP6b: P('직선 m을 l 둘레로 돌리기', 0, 1, 0.01, 0.2, { color: 'amber', format: dgr }),
-    spDoor: P('문(평면 Q) 열기', 0, 1, 0.01, 0.15, { color: 'amber', hint: '문을 열고 닫아도 바닥과 수직이에요', format: (v) => Math.round((0.15 + v * 0.7) * 180) + '°' }),
+    spDoor: P('문(평면 Q) 열기', 0, 1, 0.01, 0.15, { color: 'amber', hint: '문을 열고 닫아도 바닥과 수직이에요', format: (v) => angleText((0.15 + v * 0.7) * 180) }),
     spPl1: P('평면 R 기울이기', 0, 1, 0.01, 0.3, { color: 'amber', format: pc }),
-    spPl2: P('평면 R 돌리기', 0, 1, 0.01, 0, { color: 'amber', format: (v) => Math.round(v * 60) + '°' }),
-    spPerp: P('직선 l 세우기', 0, 1, 0.01, 1, { color: 'amber', hint: '왼쪽으로 가면 l이 쓰러져요', format: (v) => (v > 0.98 ? '똑바로 세움' : Math.round((1 - v) * 36) + '° 쓰러짐') })
+    spPl2: P('평면 R 돌리기', 0, 1, 0.01, 0, { color: 'amber', format: (v) => angleText(v * 60) }),
+    spPerp: P('직선 l 세우기', 0, 1, 0.01, 1, { color: 'amber', hint: '왼쪽으로 가면 l이 쓰러져요', format: (v) => (Math.abs(1 - v) <= EPS ? '똑바로 세움' : angleText((1 - v) * 36) + ' 쓰러짐') })
   };
 
   /* ------------------------------------------------------------ 그리기 */
@@ -261,7 +268,7 @@
       if (opts.caption !== false && !C.problem) {
         const cex = geo.given && !geo.holds, col = !geo.given ? 'rose' : cex ? 'red' : 'green';
         const txt = !geo.given ? (geo.note || '조건이 깨졌어요') : `${geo.relText}${cex ? ' → 반례!' : ''}`;
-        b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, txt, { color: col, size: b.W < 560 ? 14.5 : 17, weight: 800, align: 'center', baseline: 'middle' });
+        caption(b, txt, { color: col });
       }
     }
     D.flush();

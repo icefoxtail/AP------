@@ -440,3 +440,25 @@ await test('mobile perimeter and thin-ring dimension labels remain separated', a
     }
   }
 });
+
+await test('compound-arc captions reserve the toolbar row without covering the figure', async () => {
+  const lab = await load(), scenes = lab.list.filter((scene) => scene.f5Kind === 'piece');
+  assert.equal(scenes.length, 7);
+  for (const [width, height, bottom] of [[1039, 742, 0], [683, 614, 0], [683, 540, 0], [820, 516, 58], [390, 410, 58]]) {
+    lab.board.resize(width, height);
+    for (const scene of scenes) for (const tab of ['explore', 'review']) {
+      lab.go(scene.id); lab.board.setInsets({ top: 0, right: width > 900 ? 16 : 0, bottom, left: 0 });
+      lab.tab = tab; lab.draw(); // Settle the current problem identity before advancing its steps.
+      const expectedStep = tab === 'review' ? call(scene.steps, lab.s).length : 1;
+      lab.s.step = expectedStep;
+      const drawing = lab.draw(), captions = drawing.textItems.filter((item) => item.screen);
+      assert.equal(lab.s.step, expectedStep, `${scene.id}: inspect the requested step`);
+      assert.equal(captions.length, 2, `${scene.id}: retain both useful caption lines`);
+      if (tab === 'review') assert.equal(captions[1].text, scene.f5Model(lab.s).sumText, `${scene.id}: inspect the complete perimeter sum`);
+      const toolbarTop = height - Math.max(bottom, 58);
+      for (const line of captions) assert.ok(line.y + (line.options.size || 15) * 0.3 < toolbarTop, `${scene.id} ${width}×${height} ${tab}: ${line.text} must stay above the toolbar row`);
+      const box = scene.f5Def.bbox(lab.s, scene.f5Model(lab.s)), figureBottom = lab.board.toS({ x: (box.x0 + box.x1) / 2, y: box.y1 }).y;
+      assert.ok(figureBottom + 16 < captions[0].y, `${scene.id}: the raised captions must not overlap the figure`);
+    }
+  }
+});

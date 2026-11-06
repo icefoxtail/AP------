@@ -44,6 +44,7 @@
         render(D, st, v, C, { caption: true });
       },
       steps: (M) => o.steps(M),
+      problemSteps: (M) => solidProblemSteps(o.id, M),
       view: (M) => ({
         guide: o.guide,
         readouts: [rd('조건', M.cur.given ? '모두 지켜요' : '깨졌어요', M.cur.given ? 'green' : 'rose'), rd(`결론 ${st.geo(0, 0).conc}`, M.cur.holds ? '성립해요' : '성립하지 않아요', M.cur.holds ? 'green' : 'red'), rd('지금의 상태', M.cur.relText, 'amber', null, null, true)].concat(o.extraRead ? o.extraRead(M) : []),
@@ -55,13 +56,50 @@
     };
   }
   const caseKey = (q) => `${q.kind}${q.n || ''}f${q.face}`;
-  const drawSolidFace = (D, b, M, C, hl) => {
+  function solidProblemSteps(id, M) {
+    const { sol, q } = M, fi = q.face % sol.faces.length, name = faceName(sol.faces[fi]);
+    if (id === 's5-1') {
+      const edges = perpEdges(sol, fi);
+      return [
+        `${sol.name}에서 문제의 기준 면 ${name}을 확인해요.`,
+        '그 면 위의 한 직선과만 수직인 것으로는 부족해요. 면과 만나는 점에서, 면 위의 서로 다른 두 직선에 모두 수직인 모서리를 찾아요.',
+        edges.length ? `조건을 만족하는 모서리는 ${edges.map((e) => e.name).join(', ')}이에요. 면 위에 놓인 모서리와 비스듬한 모서리는 제외해요.` : '면 위에 놓인 모서리와 비스듬한 모서리를 제외하면 조건을 만족하는 모서리가 없어요.',
+        `따라서 면 ${name}에 수직인 모서리는 ${edges.length}개예요.`
+      ];
+    }
+    if (id === 's5-2') {
+      const faces = perpFaces(sol, fi);
+      return [
+        `${sol.name}에서 기준 면 ${name}을 확인해요. 기준 면 자신은 세지 않아요.`,
+        '기준 면과 다른 면이 이루는 각이 직각인지 살펴요. 평행한 면과 비스듬히 만나는 면은 제외해요.',
+        faces.length ? `직각으로 만나는 면은 ${faces.map((i) => faceName(sol.faces[i])).join(', ')}이에요.` : '기준 면과 직각으로 만나는 면이 없어요.',
+        `따라서 면 ${name}에 수직인 면은 ${faces.length}개예요.`
+      ];
+    }
+    const pairs = [];
+    for (let i = 0; i < sol.faces.length; i++) for (let j = i + 1; j < sol.faces.length; j++) {
+      if (dot3(sol.faces[i].n, sol.faces[j].n) < -0.999999) pairs.push(`${faceName(sol.faces[i])}와 ${faceName(sol.faces[j])}`);
+    }
+    return [
+      `${sol.name}의 면들을 한 쌍씩 비교해요. 같은 두 면은 순서를 바꾸어도 같은 쌍이에요.`,
+      '끝없이 넓혀도 만나지 않는 두 평면이 평행해요. 이웃하여 모서리를 공유하는 두 면은 제외해요.',
+      pairs.length ? `평행한 면의 쌍은 ${pairs.join('; ')}이에요.` : '평행한 면의 쌍이 없어요.',
+      `따라서 평행한 두 면은 모두 ${pairs.length}쌍이에요.`
+    ];
+  }
+  const drawSolidFace = (D, b, M, C, hl, opt = {}) => {
     const { sol, q } = M, f = sol.faces[q.face % sol.faces.length];
-    D.fitPts(sol.order.map((k) => sol.verts[k]), { t: 46, b: 56, l: 44, r: 44 });
-    drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
-    if (hl) { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), 'amber', 0.28); else D.path(f.v.map((k) => sol.verts[k]), 'amber', 3, { close: true, dash: [6, 5] }); D.path(f.v.map((k) => sol.verts[k]), 'amber', 4.4, { close: true }); }
+    D.fitPts(sol.order.map((k) => sol.verts[k]), opt.fit || { t: 46, b: 56, l: 44, r: 44 });
+    const { vis } = drawSolid(D, sol, () => ({ color: 'ink', width: 3.2 }), { faceAlpha: 0.05 });
+    if (hl) {
+      if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), 'amber', 0.17);
+      f.v.forEach((a, i) => {
+        const c = f.v[(i + 1) % f.v.length], edge = sol.edges.find(e => (e.u === a && e.v === c) || (e.u === c && e.v === a));
+        D.line(sol.verts[a], sol.verts[c], 'amber', 4.4, { dash: edge && vis(edge) ? undefined : [6, 5] });
+      });
+    }
     drawVerts(D, sol, { hot: (k) => hl && f.v.includes(k) });
-    if (C.txt && hl) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: 17, at: [[0, 0], [0, 22], [0, -22]] });
+    if (C.txt && hl) D.label(f.c, `면 ${faceName(f)}`, { color: 'amber', size: opt.faceSize || 17, at: [[0, 0], [0, 22], [0, -22]] });
     D.flush();
   };
 
@@ -71,11 +109,21 @@
     question: '직선 $l$이 평면 $P$ 위의 한 직선과 수직이면 $l\\perp P$일까? 어떤 조건이 있어야 평면과 수직일까?',
     q0: { kind: 'prism', n: 3, face: 0 }, cases: CASES.slice(0, 4).concat([CASES[4]]),
     guide: '평면 $P$ 위의 두 직선 $m$, $n$이 한 점 $O$에서 만나요. 막대로 직선 $l$을 <b>세우거나 쓰러뜨려</b> 보세요. 기울어진 $l$은 $m$과는 수직이지만 $n$과는 아니에요.',
-    steps: () => ['직선 $l$이 평면 $P$ 위의 직선 $m$과 수직이에요. 그런데 $l$은 $m$을 축으로 앞뒤로 쓰러질 수 있어요.', '평면 $P$ 위의 다른 직선 $n$과도 수직인지 살펴요. 기울어진 $l$은 $n$과 90°가 아니에요. 한 직선과만 수직이면 $l\\perp P$라고 할 수 없어요.', '점 $O$에서 만나는 서로 다른 두 직선 $m$, $n$과 모두 수직이면 $l$이 똑바로 서요. 그러면 $l\\perp P$이고 $P$ 위의 모든 직선과 수직이에요.'],
+    steps: () => ['직선 $l$이 평면 $P$ 위의 직선 $m$과 수직이에요. 그런데 $l$은 $m$을 축으로 앞뒤로 쓰러질 수 있어요.', '평면 $P$ 위의 다른 직선 $n$과도 수직인지 살펴요. 기울어진 $l$은 $n$과 90°가 아니에요. 한 직선과만 수직이면 $l\\perp P$라고 할 수 없어요.', '점 $O$에서 만나는 서로 다른 두 직선 $m$, $n$과 모두 수직이면 $l$이 똑바로 서요. 그러면 $l\\perp P$이고 $P$ 위에서 $O$를 지나는 모든 직선과 수직이에요.'],
     formula: () => '<p>$l\\perp m,\\ l\\perp n$ ($m$, $n$은 점 $O$에서 만나는 평면 $P$ 위의 두 직선) $\\Rightarrow$ $l\\perp P$</p>',
-    rule: '직선이 평면 위의 서로 다른 두 직선과 수직이면 그 평면과 수직이다',
-    tips: ['평면 위의 <b>한 직선</b>과만 수직인 것은 부족해요. 서로 다른 <b>두 직선</b>과 수직이어야 해요.', '직선이 평면에 수직이면 평면 위의 모든 직선과 수직이에요. 거꾸로 두 직선만 확인하면 돼요.'],
-    drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true),
+    rule: '직선이 평면 위에서 한 점에 만나는 서로 다른 두 직선과 모두 수직이면 그 평면과 수직이다',
+    tips: ['평면 위의 <b>한 직선</b>과만 수직인 것은 부족해요. <b>한 점에서 만나는 서로 다른 두 직선</b>과 수직인지 확인해요.', '직선이 평면에 수직이면 수선의 발을 지나는 평면 위의 모든 직선과 수직이에요. 그 점에서 만나는 두 직선으로 확인할 수 있어요.'],
+    tune: (D) => {
+      // 바닥 이름은 판 안쪽에 둡니다. 앞 모서리 바깥에 놓으면 낮은 무대의 우하단 도구막대에 가려져요.
+      const label0 = D.label;
+      D.label = (p, str, op = {}) => {
+        if (str !== '평면 P') return label0(p, str, op);
+        const d = D.out(p, v3(0, 0, p.z));
+        return label0(p, str, Object.assign({}, op, { at: [32, 44, 56].map((r) => [-d.x * r, -d.y * r]) }));
+      };
+    },
+    // 휴대폰의 짧은 문제 무대에서는 실제 투영된 입체 둘레에 꼭짓점 이름 자리만 남겨 핵심 그림을 키웁니다.
+    drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true, b.W < 560 && M.q.kind === 'prism' && M.q.n === 3 && M.q.face === 0 ? { fit: { t: 24, b: 26, l: 30, r: 30 }, faceSize: 16 } : undefined),
     prob: (M) => {
       const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], ans = perpEdges(sol, fi).length;
       return {
