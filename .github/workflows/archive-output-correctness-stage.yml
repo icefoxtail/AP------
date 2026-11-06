@@ -1,0 +1,32 @@
+name: Archive Output Correctness Stage
+on:
+  push:
+    branches: ['perf/archive-output-718c238a']
+    paths: ['.github/workflows/archive-output-correctness-stage.yml']
+permissions:
+  contents: write
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build exact source objects without updating the task branch or main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/ci/archive-output-correctness-stage.py
+      - name: Retain source-only staged changes for independent readback
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-output-correctness-stage-${{ github.run_id }}
+          path: ${{ runner.temp }}/output-repair-stage/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 7
