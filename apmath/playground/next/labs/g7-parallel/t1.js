@@ -40,7 +40,7 @@
   // 직선 l·m·n 과 점. opt.arrowM: m 에 평행 표시(>) 를 그릴지
   function drawBase(b, G, opt = {}) {
     const { P, Q, theta, phi } = G;
-    parLine(b, { x: 0, y: -GAP / 2 }, 0, { e0: -XR, e1: XR, arrows: [-3.0, 2.6], name: 'l', nameAt: XR - 0.3 });
+    parLine(b, { x: 0, y: -GAP / 2 }, 0, { e0: -XR, e1: XR, arrows: opt.arrowL === false ? [] : [-3.0, 2.6], name: 'l', nameAt: XR - 0.3 });
     const cp = Math.cos(phi * DEG);
     const e0 = (-XR - Q.x) / cp, e1 = (XR - Q.x) / cp;
     if (opt.arrowM !== false) parLine(b, Q, phi, { e0, e1, arrows: [(-3.0 - Q.x) / cp, (2.6 - Q.x) / cp], name: null });
@@ -298,7 +298,7 @@
     const ptf = (x, y, d, len) => [x + Math.cos(d * DEG) * len, y - Math.sin(d * DEG) * len];
     const arc = (x, y, r, d1, d2) => { // 수학 각도 d1→d2(반시계) 부채꼴 호
       let w = norm(d2 - d1); if (w > 180) { const t = d1; d1 = d2; d2 = t; w = 360 - w; }
-      const a = ptf(x, y, d1, r), c = ptf(x, y, d1 + w, r), bis = ptf(x, y, d1 + w / 2, r + 17);
+      const a = ptf(x, y, d1, r), c = ptf(x, y, d1 + w, r), bis = ptf(x, y, d1 + w / 2, r + 12);
       return { d: `M${x},${y} L${a[0].toFixed(1)},${a[1].toFixed(1)} A${r},${r} 0 0 0 ${c[0].toFixed(1)},${c[1].toFixed(1)} Z`, tx: bis[0], ty: bis[1] };
     };
     const mk = [px, yl, kind === 'corr' ? [0, vP] : [180, vP + 180]];
@@ -306,16 +306,15 @@
     const A2 = arc(qx, ym, 16, phi / DEG, vP);
     const sx = (x, y, d1, d2) => `${(x + Math.cos(d1 * DEG) * d2).toFixed(1)},${(y - Math.sin(d1 * DEG) * d2).toFixed(1)}`;
     const mE0 = ptf(qx, ym, phi / DEG, -90), mE1 = ptf(qx, ym, phi / DEG, 90);
-    const eq = vP === vQ;
     const nTop = ptf(px, yl, vP, 24), nBot = ptf(qx, ym, vP + 180, 24);
     return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${KIND(kind)} ${vP}°와 ${vQ}°"><g fill="none" stroke-linecap="round">` +
       `<line x1="4" y1="${yl}" x2="${W - 4}" y2="${yl}" stroke="var(--m-sky)" stroke-width="3"/>` +
       `<line x1="${mE0[0].toFixed(1)}" y1="${mE0[1].toFixed(1)}" x2="${mE1[0].toFixed(1)}" y2="${mE1[1].toFixed(1)}" stroke="var(--m-sky)" stroke-width="3"/>` +
       `<line x1="${nBot[0].toFixed(1)}" y1="${nBot[1].toFixed(1)}" x2="${nTop[0].toFixed(1)}" y2="${nTop[1].toFixed(1)}" stroke="var(--m-rose)" stroke-width="3"/>` +
       `<path d="${A1.d}" fill="var(--m-amber)" fill-opacity=".28" stroke="var(--m-amber)" stroke-width="2"/>` +
-      `<path d="${A2.d}" fill="var(${eq ? '--m-amber' : '--m-violet'})" fill-opacity=".28" stroke="var(${eq ? '--m-amber' : '--m-violet'})" stroke-width="2"/></g>` +
-      `<text x="${(px + (kind === 'corr' || vP > 90 ? 34 : -34)).toFixed(1)}" y="${(yl - 8).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="var(--m-amber)" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vP}°</text>` +
-      `<text x="${(qx + 28).toFixed(1)}" y="${(ym - 28 * Math.tan(phi) + 19).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="var(${eq ? '--m-amber' : '--m-violet'})" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vQ}°</text></svg>`;
+      `<path d="${A2.d}" fill="var(--m-violet)" fill-opacity=".28" stroke="var(--m-violet)" stroke-width="2"/></g>` +
+      `<text x="${A1.tx.toFixed(1)}" y="${A1.ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="800" fill="var(--m-amber)" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vP}°</text>` +
+      `<text x="${A2.tx.toFixed(1)}" y="${A2.ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="800" fill="var(--m-violet)" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vQ}°</text></svg>`;
   }
   function genJudge(s) {
     // 정답 1개(두 각이 같음) + 오답 4개(다름). 오답 중 하나는 합이 180°인 함정.
@@ -355,11 +354,11 @@
       let vP = M.vP, vQ = M.vQ, kind = M.kind;
       if (C.mode === 'problem') { const it = M.list[M.pickIdx] || M.list[0]; if (!it) return; vP = it.vP; vQ = it.vQ; kind = it.kind; }
       const G = judgeGeom(vP, vQ), W = G.W, eq = vP === vQ;
-      drawBase(b, G, { arrowM: eq });
+      drawBase(b, G, { arrowL: C.mode !== 'problem', arrowM: C.mode !== 'problem' && eq });
       const n1 = kind === 'corr' ? 'b' : 'c', n2 = 'f';
       const spec = {};
       spec[n1] = { color: 'amber', text: mi(vP) + '°' };
-      spec[n2] = { color: eq ? 'amber' : 'violet', rings: eq ? 1 : 2, text: mi(vQ) + '°' };
+      spec[n2] = { color: C.mode === 'problem' ? 'violet' : eq ? 'amber' : 'violet', rings: C.mode === 'problem' ? 1 : eq ? 1 : 2, text: mi(vQ) + '°' };
       if (C.mode === 'review' && C.step === 1) { spec[n1].text = 'p'; spec[n2].text = 'q'; }
       overlay(b, G, n1, n2, 'amber', 0.3);
       drawWedges(b, G, spec, { letters: false });
@@ -392,13 +391,13 @@
         status: M.eq ? { tone: 'ok', text: `${k}이 같아요 → l ∥ m` } : { tone: 'warn', text: `${k}이 달라요 (${mi(M.vP)}° ≠ ${mi(M.vQ)}°)` },
         formula: '<p>① 동위각(또는 엇각)을 찾는다</p><p>② 두 각의 크기를 비교한다</p><p>③ 같으면 평행, 다르면 평행하지 않다</p>',
         rule: '동위각 또는 엇각의 크기가 같을 때만 두 직선은 평행하다',
-        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>두 각의 합이 180°(예: 70°와 110°)이면 평행이 <b>아니에요</b>. 평행이려면 크기가 <b>같아야</b> 해요.</li><li>그림에 평행 표시(>)가 없으면 평행하다고 가정하면 안 돼요. 각으로 확인해요.</li></ul>'
+        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>두 각의 합이 180°라는 것만으로는 평행을 판단할 수 없어요. 동위각 또는 엇각의 크기가 <b>같은지</b> 비교해요. 예를 들어 90°와 90°는 합도 180°이고 크기도 같아요.</li><li>그림에 평행 표시(>)가 없으면 평행하다고 가정하면 안 돼요. 각으로 확인해요.</li></ul>'
       };
     },
     prob(M, s) {
       const list = M.list;
       return {
-        tag: '함정 주의 · 평행 판별 (합이 180°는 평행이 아니에요)', stem: '다음 중 두 직선 l, m 이 평행한 것은?', key: list.map((x) => x.kind + x.vP + x.vQ).join(','),
+        tag: '평행 판별 · 동위각과 엇각의 크기 비교', stem: '다음 중 두 직선 l, m 이 평행한 것은?', key: list.map((x) => x.kind + x.vP + x.vQ).join(','),
         choices: list.map((it) => ({ html: miniSVG(it.vP, it.vQ, it.kind), p: `${KIND(it.kind)} ${it.vP}°, ${it.vQ}°`, ok: it.ok, hint: it.hint || '', t: '' })),
         note: '표시한 두 각이 같은 그림이 평행해요.'
       };

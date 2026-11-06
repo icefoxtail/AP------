@@ -191,10 +191,14 @@
       const s1 = ease(seg01(t, 0, 0.4)), phi = (Math.PI / 2) * ease(seg01(t, 0.4, 0.7)), s3 = ease(seg01(t, 0.7, 1));
       const tf = (q) => rotAbout(q, C0, phi), sh = (P3, dx, dy) => P3.map((q) => pt(q.x + dx, q.y + dy)), out = (P3) => P3.map(tf);
       const field = [pt(0, 0), pt(W, 0), pt(W, H), pt(0, H)];
-      const box = G.bboxOf(out(field)), narrow = b.W < 560;
-      // 현재 회전한 도형에 맞춥니다. 대각선 길이의 정사각형 여백이 결과 직사각형을 작게 만들지 않게 합니다.
-      FIT(b, box, { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 });
-      poly(b, out(field), 'sky', 2.2, { dash: [7, 6], alpha: 0.45 });
+      const parts = [sh(pc.UL, x * s1, 0), pc.UR, sh(pc.LL, x * s1, -x * s3), sh(pc.LR, 0, -x * s3)];
+      const fieldBox = G.bboxOf(out(field)), partBox = G.bboxOf(parts.flatMap(out)), focusT = seg01(t, 0.4, 0.7), narrow = b.W < 560;
+      const box = Object.fromEntries(Object.keys(fieldBox).map((key) => [key, fieldBox[key] + (partBox[key] - fieldBox[key]) * focusT]));
+      // 첫 붙이기가 끝나면 원래 땅의 외곽은 물리고, 회전 중에 실제 조각 범위로 부드럽게 맞춥니다.
+      // 초기 치수용 여백을 끝까지 예약하지 않아, 하단 도구가 있는 모바일에서도 결과를 크게 봅니다.
+      const initialPad = { b: C.problem ? 78 : narrow ? 104 : 78, t: 34, l: 40, r: 76 }, packedPad = { b: narrow ? 82 : 78 - 20 * seg01(t, 0.4, 0.55), t: 22, l: 28, r: 28 }, padT = seg01(t, 0.02, 0.15);
+      FIT(b, box, Object.fromEntries(Object.keys(initialPad).map((key) => [key, initialPad[key] + (packedPad[key] - initialPad[key]) * padT])));
+      if (t < 0.4) poly(b, out(field), 'sky', 2.2, { dash: [7, 6], alpha: 0.45 * (1 - s1) });
       if (t < 0.4) {
         const e = pc.e, roadParts = [
           [pt(e(0), 0), pt(e(0) + x, 0), pt(e(H) + x, H), pt(e(H), H)],
@@ -203,7 +207,6 @@
         ];
         roadParts.forEach((q) => fillPoly(b, out(q), 'red', 0.16 * (1 - s1)));
       }
-      const parts = [sh(pc.UL, x * s1, 0), pc.UR, sh(pc.LL, x * s1, -x * s3), sh(pc.LR, 0, -x * s3)];
       parts.forEach((q, i) => {
         const moving = (t > 0 && t < 0.4 && (i === 0 || i === 2)) || (t > 0.7 && t < 1 && i >= 2);
         const color = moving ? 'amber' : 'green';
@@ -222,6 +225,7 @@
       const cy = box.y1, cx = (box.x0 + box.x1) / 2;
       if (t < 0.4) foot(b, pt(W / 2, H), `땅 ${W}×${H}, 길의 폭 ${x}`, 'amber', 56);
       else if (t < 0.999) foot(b, pt(cx, cy), t < 0.7 ? `가로 = ${W} − ${x} = ${W - x}` : `(돌려서) 세로 = ${H} − ${x} = ${H - x}`, 'amber', 36);
+      else if (C.review && C.step < 3) foot(b, pt(cx, cy), `직사각형 ${W - x}m × ${H - x}m`, 'green', 36);
       else if (narrow) {
         foot(b, pt(cx, cy), `(${W}−${x}) × (${H}−${x})`, 'green', 36);
         foot(b, pt(cx, cy), `${W - x} × ${H - x} = ${A}m²`, 'green', 64);

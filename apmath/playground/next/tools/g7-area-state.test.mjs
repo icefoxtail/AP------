@@ -188,3 +188,25 @@ await test('grass reassembly preserves disjoint area and finishes as a rectangle
   assert.ok(Math.max(...ys) - Math.min(...ys) >= 210, 'mobile result uses meaningful stage height');
   assert.ok(result.texts.includes('12 × 6 = 72m²'));
 });
+
+
+await test('completed grass reassembly uses the mobile stage below the HUD and reveals its area in the final step', async () => {
+  const lab = await load();
+  lab.go('c3-road');
+  Object.assign(lab.s, { c3W: 14, c3H: 8, c3X: 2, c3T: 1 });
+  lab.board.resize(390, 410);
+  // The actual mobile shell reserves its bottom row for status and zoom tools.
+  lab.board.setInsets({ top: 0, right: 0, bottom: 70, left: 0 });
+  lab.tab = 'review'; lab.s.step = 2;
+  const second = lab.draw();
+  assert.equal(second.texts.some((text) => text.includes('72m²')), false, 'step 2 shows the completed rectangle, before the area calculation in step 3');
+  lab.s.step = 3;
+  const result = lab.draw();
+  const pieces = result.paths.filter((p) => p.options.fill === 'green').flatMap((p) => p.points);
+  const screen = pieces.map((p) => lab.board.toS(p));
+  const ys = screen.map((p) => p.y);
+  assert.ok(Math.max(...ys) - Math.min(...ys) >= 220, 'the final rectangle stays large with the actual HUD reservation');
+  assert.ok(result.texts.includes('12 × 6 = 72m²'));
+  assert.equal(result.paths.some((p) => p.options.dash && p.options.color === 'sky'), false, 'the unused original field no longer reserves space after assembly');
+  assert.ok(Math.min(...ys) >= 12 && Math.max(...ys) <= 410 - 70 - 78, 'shape and two-line caption leave room for the real mobile tools');
+});
