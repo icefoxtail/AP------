@@ -342,6 +342,7 @@
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D) {
     const A = D.anim;
+    const keyOf = (s, M = D.model(s)) => D.prob ? D.id + '|' + D.prob(M, s).key + '|' + (s.cnSeed || 0) : '';
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -368,6 +369,7 @@
         D.init(s);
         s.cnSeed = 0; s.cnPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
+        s.cnQuestionKey = keyOf(s);
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
@@ -384,9 +386,14 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        const key = keyOf(s);
+        if (s.cnQuestionKey !== key) { s.cnQuestionKey = key; s.cnPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);
+        // Review selects a complete construction stage; exploration keeps continuous playback.
+        if (C.review && A && D.stepT) { s[A.key] = clamp(D.stepT(C.step, D.model(s)), 0, 1); s.playing = false; }
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        if (C.review && C.step < D.steps(M).length && v.formula) v.formula = '';
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
@@ -396,7 +403,7 @@
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = D.model(s);
-        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.review ? clamp(D.stepT(C.step, M), 0, 1) : 1)) : 1;
         D.draw(b, s, M, C);
       }
     };

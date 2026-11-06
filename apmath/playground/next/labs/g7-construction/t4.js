@@ -13,6 +13,11 @@
   const pctF = (v) => Math.round(v * 100) + '%';
   const lenF = (v) => fmtN(v) + ' cm';
   const degF = G.degF;
+  const ratioText = (n, d) => {
+    const gcd = (a, b) => b ? gcd(b, a % b) : a;
+    const g = gcd(n, d);
+    return d / g === 1 ? String(n / g) : `${n / g}/${d / g}`;
+  };
   const VCOL = ['sky', 'rose', 'green']; // 꼭짓점 A·D / B·E / C·F 의 색
 
   const PARAMS = {
@@ -171,7 +176,7 @@
         fillPoly(b, r1, 'sky', 0.14); poly(b, r1, 'ink', 3.4); fillPoly(b, r2, same ? 'green' : 'rose', 0.14); poly(b, r2, 'ink', 3.4);
         T(b, pt(w1 / 2, -h1 / 2), `넓이 ${area}`, { size: 17, color: 'sky' }); T(b, pt(X + w2 / 2, -h2 / 2), `넓이 ${fmtN(area)}`, { size: 17, color: same ? 'green' : 'rose' });
         T(b, pt(w1 / 2, 0), `${w1}`, { dy: 18, size: 16, color: 'sky' }); T(b, pt(0, -h1 / 2), `${h1}`, { dx: -14, size: 16, color: 'sky' });
-        T(b, pt(X + w2 / 2, 0), `${w2}`, { dy: 18, size: 16, color: same ? 'green' : 'rose' }); T(b, pt(X + w2, -h2 / 2), `${fmtN(h2)}`, { dx: 16, size: 16, color: same ? 'green' : 'rose' });
+        T(b, pt(X + w2 / 2, 0), `${w2}`, { dy: 18, size: 16, color: same ? 'green' : 'rose' }); T(b, pt(X + w2, -h2 / 2), ratioText(area, w2), { dx: 16, size: 16, color: same ? 'green' : 'rose' });
         if (C.txt) T(b, pt((X + w2 + 0) / 2, 0), same ? '넓이도 같고 모양·크기도 같아서 합동이에요 ✓' : '넓이는 같지만 합동이 아니에요 ✗ (모양이 달라요)', { dy: 46, size: b.W < 560 ? 14 : 17, color: same ? 'green' : 'rose' });
         return;
       }

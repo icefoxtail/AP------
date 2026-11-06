@@ -33,6 +33,12 @@
     cnJt: P('△ABE를 뒤집기', 0, 1, 0.01, 0, { color: 'rose', hint: '▶를 누르면 △ABE가 제자리에서 뒤집혀 △DCE에 겹쳐요', format: (v) => (v >= 0.999 ? '뒤집힘 (겹침)' : Math.round(v * 100) + '%') })
   };
   const sm = (b) => b.W < 560;
+  const keepDInside = (s) => { s.cnHd = clamp(s.cnHd, 1, s.cnHL - 1); };
+  PARAMS.cnHL.onInput = keepDInside;
+  PARAMS.cnHd.onInput = keepDInside;
+  const keepSmallSquare = (s) => { s.cnKe = Math.min(s.cnKe, s.cnKa); };
+  PARAMS.cnKa.onInput = keepSmallSquare;
+  PARAMS.cnKe.onInput = keepSmallSquare;
   const cap = (b, x, y, text, color, dy = 24) => T(b, pt(x, y), text, { dy, size: sm(b) ? 13 : 16, color });
   const lab = (b, p, c, name, size = 17, gap = 11) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, c, name, { size, gap }); };
 
@@ -91,8 +97,8 @@
     ],
     view: (M) => ({
       guide: '막대로 <b>두 정삼각형의 크기</b>를 바꿔 보세요. ▶를 누르면 <b>△BCD가 점 C를 중심으로 60° 돌아</b> △ACE에 꼭 겹쳐요. 같은 눈금은 같은 길이, 같은 호는 같은 각이에요.',
-      readouts: [rd('∠BCD = ∠ACE', '120°', 'amber', '60° + 60°'), rd('BD = AE', '같아요', 'rose', '△BCD ≡ △ACE'), rd('∠BDC = ∠AEC', dg(M.y), 'sky', '대응각'), rd('BD와 AE가 이루는 각', dg(M.apb), 'rose', '늘 60°', null, true)],
-      formula: `<p>$\\triangle BCD\\equiv\\triangle ACE$ (SAS) → $\\overline{BD}=\\overline{AE}$, $\\angle BDC=\\angle AEC=${fmtN(M.y)}^{\\circ}$</p>`,
+      readouts: [rd('∠BCD = ∠ACE', '120°', 'amber', '60° + 60°'), rd('BD = AE', '같아요', 'rose', '△BCD ≡ △ACE'), rd('∠BDC = ∠AEC', (G.eqs(M.y) === '≈' ? '≈ ' : '') + dg(M.y), 'sky', '대응각'), rd('BD와 AE가 이루는 각', dg(M.apb), 'rose', '늘 60°', null, true)],
+      formula: `<p>$\\triangle BCD\\equiv\\triangle ACE$ (SAS) → $\\overline{BD}=\\overline{AE}$, $\\angle BDC=\\angle AEC${G.eqs(M.y) === '≈' ? '\\approx' : '='}${fmtN(M.y)}^{\\circ}$</p>`,
       rule: '정삼각형 두 개가 점 C를 공유하면 △BCD ≡ △ACE (SAS)',
       notes: notes('합동인 두 삼각형의 <b>꼭짓점 순서</b>: B↔A, C↔C, D↔E예요.', '∠BCD와 ∠ACE는 <b>둘 다 120°</b>예요(60°+60°). 60°로 착각하지 마세요.')
     }),
@@ -169,7 +175,7 @@
     }),
     prob: (M) => {
       const pk = M.pk, key = `L${pk.L}c${pk.c}kd${pk.kind}`, L = pk.L, c = pk.c;
-      if (pk.kind === 0) return { tag: '숨은 합동 · CE의 길이 구하기', key, stem: `그림에서 △ABC와 △ADE는 정삼각형이고 점 D는 변 BC 위의 점이다. $\\overline{BC}=${L}$ cm, $\\overline{CD}=${c}$ cm일 때, $\\overline{CE}$의 길이는?`, choices: mkChoices(L - c, [[c, '∠CD의 길이예요. CE=BD=BC−CD예요.'], [L, 'BC의 길이예요. CE=BD=BC−CD예요.'], [L + c, '더하지 않고 빼야 해요.'], [(L - c) / 2, 'BD를 반으로 나누지 않아요.']], { tex: (v) => `${fmtN(v)}\\text{ cm}`, plain: (v) => fmtN(v) + ' cm', pad: 1, valid: (v) => v > 0 }) };
+      if (pk.kind === 0) return { tag: '숨은 합동 · CE의 길이 구하기', key, stem: `그림에서 △ABC와 △ADE는 정삼각형이고 점 D는 변 BC 위의 점이다. $\\overline{BC}=${L}$ cm, $\\overline{CD}=${c}$ cm일 때, $\\overline{CE}$의 길이는?`, choices: mkChoices(L - c, [[c, '선분 CD의 길이예요. CE=BD=BC−CD예요.'], [L, 'BC의 길이예요. CE=BD=BC−CD예요.'], [L + c, '더하지 않고 빼야 해요.'], [(L - c) / 2, 'BD를 반으로 나누지 않아요.']], { tex: (v) => `${fmtN(v)}\\text{ cm}`, plain: (v) => fmtN(v) + ' cm', pad: 1, valid: (v) => v > 0 }) };
       if (pk.kind === 1) return { tag: '숨은 합동 · CD의 길이 구하기', key, stem: `그림에서 △ABC와 △ADE는 정삼각형이고 점 D는 변 BC 위의 점이다. $\\overline{BC}=${L}$ cm, $\\overline{CE}=${c}$ cm일 때, $\\overline{CD}$의 길이는?`, choices: mkChoices(L - c, [[c, 'CE의 길이예요. CD=BC−BD이고 BD=CE예요.'], [L, 'BC의 길이예요. CD=BC−CE예요.'], [L + c, '더하지 않고 빼야 해요.'], [(L - c) / 2, '반으로 나누지 않아요.']], { tex: (v) => `${fmtN(v)}\\text{ cm}`, plain: (v) => fmtN(v) + ' cm', pad: 1, valid: (v) => v > 0 }) };
       return { tag: '함정 · ∠DCE의 크기 (60°가 아니에요)', key, stem: '그림에서 △ABC와 △ADE는 정삼각형이고 점 D는 변 BC 위의 점이다. $\\angle DCE$의 크기는?', choices: mkChoices(120, [[60, '∠ACE는 60°이고 ∠ACB도 60°라서 ∠DCE=∠DCA+∠ACE=60°+60°예요.'], [90, '직각이 아니에요.'], [30, '∠DCA와 ∠ACE를 더해야 해요.'], [150, '60°+60°=120°예요.']], { tex: (v) => `${v}^{\\circ}`, plain: (v) => v + '°', pad: 10, valid: (v) => v > 0 && v < 180 }) };
     },

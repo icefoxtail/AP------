@@ -62,14 +62,14 @@
       const t = C.problem ? 1 : C.t;
       if (tool === 'ruler') {
         const f1 = ease(clamp(t / 0.35, 0, 1)), f2 = seg01(t, 0.3, 1);
-        const x0 = -6.4 - 9 * (1 - f1);
-        b.path([pt(x0, 0.18), pt(x0 + 9, 0.18), pt(x0 + 9, 0.95), pt(x0, 0.95)], { close: true, fill: 'muted', fillAlpha: 0.25, color: 'muted', width: 2 });
+        const x0 = -6.4;
+        b.path([pt(x0, 0.18), pt(x0 + 9, 0.18), pt(x0 + 9, 0.95), pt(x0, 0.95)], { close: true, fill: 'muted', fillAlpha: 0.12, color: 'muted', width: 2, alpha: 0.35 + 0.65 * f1 });
         if (C.txt) T(b, pt(x0 + 4.5, 0.57), '눈금 없는 자', { size: 14, color: 'ink' });
         line(b, pt(lerpX(A.x, -6.3, f2), 0), pt(lerpX(B.x, 6.3, f2), 0), 'green', 3.4);
         b.point(A, { color: 'sky', r: 5 }); b.point(B, { color: 'sky', r: 5 });
         T(b, A, 'A', { dy: -18, size: 17 }); T(b, B, 'B', { dy: -18, size: 17 });
         if (C.txt && f2 > 0.7) T(b, pt(6.3, 0), '직선 AB', { dx: -34, dy: -18, size: 15, color: 'green' });
-        if (C.txt) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자가 들어와 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
+        if (C.txt) T(b, pt(0, 0), t < 0.05 ? '▶를 누르면 자를 따라 직선을 그어요' : '두 점을 지나는 직선을 그릴 수 있어요', { dy: 66, size: 15, color: 'amber' });
         if (C.txt) T(b, pt(0, 0), '눈금이 없어서 길이는 잴 수 없어요', { dy: 92, size: 15, color: 'rose' });
         if (!C.problem && !C.review && C.txt) b.handle('B', B, { color: 'amber', r: 8, ariaLabel: '점 B 끌기', drag: (w) => { s.cnL = clamp(Math.round((w.x - A.x) * 2) / 2, 2, 4); } });
         return;

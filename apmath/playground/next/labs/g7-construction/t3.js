@@ -98,8 +98,8 @@
       const { a, b: b2, c, Tr, phi0 } = M, A = Tr[0], B = Tr[1];
       const phi = C.review ? (C.step <= 1 ? Math.min(175, phi0 + 24) : phi0) : M.phi;
       const match = Math.abs(phi - phi0) < 2, ph = match ? phi0 : phi;
-      fit(b, { x0: -1, x1: c + 1, y0: -Math.max(8.2, b2 + 0.6), y1: 1.6 }, { t: 30, b: 62 });
       const H = polar(A, b2, -ph), E = add(B, mul(unit(sub(H, B)), a)), gap = dist(B, H) - a;
+      fit(b, { x0: Math.min(-1, H.x - 1, E.x - 1), x1: Math.max(c + 1, H.x + 1, E.x + 1), y0: -Math.max(8.2, b2 + 0.6), y1: 1.6 }, { t: 30, b: 62 });
       // 두 원(반지름 b, a)이 만나는 곳 = 꼭짓점
       if (!C.review || C.step >= 2) {
         const dA = dirDeg(A, Tr[2]), dB = dirDeg(B, Tr[2]);
@@ -122,7 +122,7 @@
       sideTag(b, B, E, cen, `a = ${a}`, { color: 'sky', size: 16, gap: 12 });
       if (C.txt) {
         const col = match ? 'green' : 'rose';
-        T(b, pt(c / 2, 0), match ? '딱 맞아요! 세 변이 정해지면 모양은 하나뿐이에요' : Math.abs(gap) > 0.02 ? (gap > 0 ? `a 막대가 모자라서 닿지 않아요 (틈 ${fmtN(gap)})` : `a 막대가 길어서 남아요 (${fmtN(-gap)} 넘침)`) : '', { dy: 48, size: b.W < 560 ? 14 : 16, color: col });
+        T(b, pt(c / 2, 0), match ? '딱 맞아요! 세 변이 정해지면 모양은 하나뿐이에요' : Math.abs(gap) > 0.02 ? (gap > 0 ? `a 막대가 모자라서 닿지 않아요 (틈 ≈ ${fmtN(gap)})` : `a 막대가 길어서 남아요 (≈ ${fmtN(-gap)} 넘침)`) : '', { dy: 48, size: b.W < 560 ? 14 : 16, color: col });
       }
       if (!C.review && !C.problem && C.txt) b.handle('H', H, { color: 'amber', r: 8, ariaLabel: '왼쪽 막대 돌리기', drag: (w) => { const f = clamp(Math.round(-dirDeg(A, w)), 5, 175); s.cnSphi = Math.abs(f - phi0) < 3 ? Math.round(phi0) : f; } });
     },
@@ -133,7 +133,7 @@
     ],
     view: (M) => ({
       guide: '막대 <b>a, b, c</b>의 길이를 바꿔 보세요. <b>노란 점</b>을 끌어 왼쪽 막대를 돌리면 오른쪽 막대가 닿는지 볼 수 있어요. <b>딱 맞는 곳</b>은 한 곳뿐이에요.',
-      readouts: [rd('세 변의 길이', `a=${M.a}, b=${M.b}, c=${M.c}`, 'sky', '', null, true), rd('왼쪽 막대의 각도', dg(M.phi), M.match ? 'green' : 'rose', M.match ? '딱 맞아요' : '맞지 않아요'), rd('삼각형의 모양', '하나', 'green', 'SSS')],
+      readouts: [rd('세 변의 길이', `a=${M.a}, b=${M.b}, c=${M.c}`, 'sky', '', null, true), rd('왼쪽 막대의 각도', (G.eqs(M.phi) === '≈' ? '≈ ' : '') + dg(M.phi), M.match ? 'green' : 'rose', M.match ? '딱 맞아요' : '맞지 않아요'), rd('삼각형의 모양', '하나', 'green', 'SSS')],
       status: M.match ? { tone: 'ok', text: '딱 맞아요 → 삼각형이 하나로 정해져요' } : { tone: 'info', text: '노란 점을 끌어 딱 맞는 곳을 찾아보세요' },
       formula: `<p>$a=${M.a},\\ b=${M.b},\\ c=${M.c}$ → 삼각형 ABC가 하나로 정해진다</p>`,
       rule: '세 변의 길이가 주어지면 삼각형은 하나로 정해진다 (SSS)',
@@ -154,15 +154,15 @@
     // 가로로 벌려 놓을 거리
     let dX = 0;
     if (trs.length === 2) { const xs1 = trs[0].map((q) => q.x), xs2 = trs[1].map((q) => q.x); dX = Math.max(...xs1) - Math.min(...xs2) + 2.8; }
-    const all = [...trs.flat(), ...(trs.length === 2 ? shiftPts(trs[1], dX) : []), g.Cs[0] ? polar(B, Math.max(...g.ts) + 1.3, -(180 - be)) : polar(B, 6, -(180 - be)), pt(-1, 1.4)];
+    const rayLength = g.Cs.length ? Math.max(...g.ts) + 1.3 : 7;
+    const all = [A, B, pt(-b2, 0), pt(0, -b2), pt(b2, 0), ...trs.flat(), ...(trs.length === 2 ? shiftPts(trs[1], dX) : []), polar(B, rayLength, -(180 - be)), pt(-1, 1.4)];
     const bb = bboxOf(all, 0.5);
     fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 2.0 }, { t: 26, b: 40 });
     const cx = (bb.x0 + bb.x1) / 2, yb = bb.y1 + 2.0;
     const fade = 1 - 0.85 * p, n = trs.length;
     const showRay = p < 0.98;
     if (showRay) {
-      const tr = n ? Math.max(...g.ts) + 1.3 : 7;
-      line(b, B, add(B, mul(g.dir, tr)), 'muted', 2, { dash: [6, 6], alpha: fade });
+      line(b, B, add(B, mul(g.dir, rayLength)), 'muted', 2, { dash: [6, 6], alpha: fade });
       arcPart(b, A, b2, -6, -174, 1, 'muted', { pen: false, width: 1.8, dash: [6, 6], alpha: fade * 0.9 });
     }
     const draw1 = (Tr, off, label, col, quiet) => {
@@ -201,7 +201,7 @@
       const mode = C.review ? (C.step <= 1 ? 'inc' : 'non') : M.mode;
       if (mode === 'inc') {
         const Tr = triSAS(M.b, M.c, M.A), [A, B, Cc] = Tr, cen = centroid(Tr);
-        fit(b, { x0: -1, x1: M.c + 1, y0: -(Math.max(M.b * Math.sin(M.A * DEG), 2) + 1.2), y1: 1.4 }, { t: 30, b: 64 });
+        fit(b, { x0: Math.min(-1, Cc.x - 1), x1: Math.max(M.c + 1, Cc.x + 1), y0: -(Math.max(M.b * Math.sin(M.A * DEG), 2) + 1.2), y1: 1.4 }, { t: 30, b: 64 });
         fillPoly(b, Tr, 'sky', 0.08);
         line(b, A, B, 'sky', 6, { alpha: 0.95 }); line(b, A, Cc, 'sky', 6, { alpha: 0.95 }); line(b, B, Cc, 'ink', 3.2);
         tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 2, 'amber');
@@ -232,8 +232,8 @@
       const g = ssaGeo(M.b, M.c, M.A);
       return [
         `끼인각: 두 변 ${M.c}, ${M.b} 사이의 각 ∠A=${M.A}°를 주면 삼각형은 <b>하나로 정해져요</b> (SAS).`,
-        `끼인각이 아닌 각을 주면 반직선과 호가 두 곳에서 만날 수 있어요. 서로 다른 두 삼각형이 만들어져요.`,
-        `따라서 두 변의 길이와 그 <b>끼인각</b>이 주어질 때만 삼각형이 하나로 정해져요. (끼인각이 아니면 조건만으로는 정해진다고 할 수 없어요.)`
+        `끼인각이 아닌 각 ∠B=${M.A}°를 주면, 지금 값에서는 삼각형이 ${g.Cs.length}개 만들어져요. 값에 따라 0개, 1개 또는 서로 다른 2개가 될 수 있어요.`,
+        `두 변의 길이와 그 <b>끼인각</b>이 주어지면 삼각형이 하나로 정해져요. 끼인각이 아닌 경우에는 항상 하나라고 보장할 수 없으므로 SSA는 일반적인 합동 조건이 아니에요.`
       ];
     },
     view: (M) => {
@@ -244,7 +244,7 @@
         status: non ? { tone: n === 2 ? 'warn' : 'info', text: n === 2 ? '두 후보 → 하나로 정해지지 않아요' : n === 1 ? '이 값에서는 하나 (항상은 아니에요)' : '삼각형이 만들어지지 않아요' } : { tone: 'ok', text: '두 변과 끼인각 → 하나로 정해져요' },
         formula: non ? `<p>같은 조건(두 변, 끼인각이 아닌 각)에서 삼각형이 ${n}개</p>` : `<p>$${ol('AB')}=${M.c},\\ ${ol('AC')}=${M.b},\\ \\angle A=${M.A}^{\\circ}$ → 삼각형이 하나로 정해진다</p>`,
         rule: '두 변의 길이와 그 끼인각이 주어지면 삼각형은 하나로 정해진다 (SAS)',
-        notes: notes('각이 <b>두 변의 사이</b>에 있어야 SAS예요. 한 변의 끝에 있는 각은 끼인각이 아니에요.', '끼인각이 아닌 각을 주면(SSA) 삼각형이 하나일 수도, 두 개일 수도 있어서 합동 조건이 아니에요.')
+        notes: notes('각이 <b>주어진 두 변 사이</b>에 있어야 SAS예요. 두 변이 만나는 꼭짓점의 각이 끼인각이에요.', '끼인각이 아닌 각을 주면(SSA) 삼각형이 없거나 하나 또는 두 개가 될 수 있어서 일반적인 합동 조건이 아니에요.')
       };
     },
     prob: (M) => uniqProb('sas', M.pk.k)
@@ -351,7 +351,7 @@
       const mode = M.mode, g = ssaGeo(M.sb, M.sc, M.sA), n = g.Cs.length;
       const guide = mode === 'aaa' ? '막대로 <b>∠A, ∠B</b>를 바꿔 보세요. 세 각이 같은 삼각형을 겹쳐 놓았다가 <b>가로로 벌리면</b> 크기가 다른 것을 볼 수 있어요.' : mode === 'ssa' ? '길이와 각을 바꾸고 <b>가로로 나란히 놓기</b>를 움직여 보세요. 끼인각이 아니면 같은 조건에서 두 삼각형이 나올 수 있어요.' : '막대 <b>a, b</b>와 긴 막대를 바꿔 보세요. 긴 막대가 a+b 이상이면 아무리 막대를 세워도 닿지 않아요.';
       const rds = mode === 'aaa' ? [rd('세 각', `${M.A}°, ${M.B}°, ${180 - M.A - M.B}°`, 'sky', '', null, true), rd('삼각형', '무수히 많아요', 'rose', '크기가 달라요')] : mode === 'ssa' ? [rd('만들어지는 삼각형', n === 0 ? '0개' : n + '개', n === 2 ? 'rose' : 'amber')] : [rd('가장 긴 막대', `${M.la + M.lb + M.ld} cm`, 'amber'), rd('나머지 두 막대의 합', `${M.la + M.lb} cm`, 'rose')];
-      return { guide, readouts: rds, status: { tone: 'warn', text: mode === 'aaa' ? '세 각만으로는 정해지지 않아요' : mode === 'ssa' ? '끼인각이 아니면 정해지지 않을 수 있어요' : '삼각형이 만들어지지 않아요' }, rule: '세 각(AAA), 끼인각이 아닌 각(SSA), 가장 긴 변 ≥ 나머지 합 → 삼각형이 하나로 정해지지 않는다', notes: notes('모양이 같아 보여도 크기가 다르면 합동이 아니에요.', '두 변과 한 각을 알아도 그 각이 <b>끼인각이 아니면</b> 정해지지 않을 수 있어요.') };
+      return { guide, readouts: rds, status: { tone: 'warn', text: mode === 'aaa' ? '세 각만으로는 정해지지 않아요' : mode === 'ssa' ? '끼인각이 아니면 정해지지 않을 수 있어요' : '삼각형이 만들어지지 않아요' }, rule: 'AAA는 크기를 정하지 못하고, SSA는 하나로 정해짐을 항상 보장하지 않는다. 가장 긴 변 ≥ 나머지 합이면 삼각형이 없다.', notes: notes('모양이 같아 보여도 크기가 다르면 합동이 아니에요.', '두 변과 한 각을 알아도 그 각이 <b>끼인각이 아니면</b> 정해지지 않을 수 있어요.') };
     },
     prob: (M) => uniqProb(M.pk.g || 'sss', M.pk.k)
   };

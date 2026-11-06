@@ -46,7 +46,7 @@
     draw(b, s, M, C) {
       const Tr = [pt(0, 0), pt(6, 0), pt(M.Cx, -M.Cy)];
       if (C.problem) { const Gt = [pt(0, 0), pt(6, 0), pt(2.4, -3.6)], I = imageAt(Gt, 'rot', 0, 9.8), bb = unionBox(bboxOf(Gt, 0.4), bboxOf(I, 0.4)); fit(b, bb, { t: 40, b: 44 }); fillPoly(b, Gt, 'sky', 0.1); poly(b, Gt, 'ink', 3.4); fillPoly(b, I, 'sky', 0.1); poly(b, I, 'ink', 3.4); const c1 = centroid(Gt), c2 = centroid(I); Gt.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, c1, 'ABC'[i], { size: 17 }); }); I.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, c2, 'DEF'[i], { size: 17 }); }); return; }
-      const w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3.4, cond0 = C.review ? 'SSS' : M.cond;
+      const w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3.4, cond0 = M.cond;
       let bb = bboxOf(Tr, 0.3); [0, 0.5, 1].forEach((t) => { bb = unionBox(bb, bboxOf(imageAt(Tr, 'rot', t, X0), 0.3)); });
       fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.8 }, { t: 36, b: 56 });
       const t = C.review ? (C.step >= 2 ? 1 : 0) : C.t, img = imageAt(Tr, 'rot', t, X0), done = t >= 0.999;
@@ -99,8 +99,8 @@
     question: '두 삼각형에서 두 각이 각각 같으면 나머지 한 각은 어떻게 될까? 한 변까지 같으면 합동일까?',
     ctl: ['cnEA', 'cnEB', 'cnCt'], anim: { key: 'cnCt', dur: 4, label: '포개어 보기', start: 0 },
     init: (s) => { s.cnEA = 55; s.cnEB = 65; s.cnCt = 0; s.cnPk = { A: 55, B: 70, k: 0 }; },
-    reroll: (s) => { s.cnPk = { A: 5 * rint(7, 15), B: 5 * rint(7, 15), k: ((s.cnPk && s.cnPk.k) || 0) + 1 }; if (s.cnPk.A + s.cnPk.B > 165) s.cnPk.B = 165 - s.cnPk.A; },
-    model: (s) => ({ A: s.cnEA, B: s.cnEB, Cc: 180 - s.cnEA - s.cnEB, pk: s.cnPk || { A: 55, B: 70, k: 0 } }),
+    reroll: (s) => { s.cnPk = { A: 5 * rint(7, 15), B: 5 * rint(7, 15), k: ((s.cnPk && s.cnPk.k) || 0) + 1 }; if (s.cnPk.A + s.cnPk.B > 165) s.cnPk.B = 165 - s.cnPk.A; s.cnEA = s.cnPk.A; s.cnEB = s.cnPk.B; },
+    model: (s) => ({ A: s.cnEA, B: s.cnEB, Cc: 180 - s.cnEA - s.cnEB, pk: { ...(s.cnPk || { k: 0 }), A: s.cnEA, B: s.cnEB } }),
     draw(b, s, M, C) {
       const A = C.problem ? M.pk.A : M.A, B = C.problem ? M.pk.B : M.B, Cc = 180 - A - B, Tr = triASA(6, A, B) || triASA(6, 55, 65);
       const w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3, t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
@@ -242,19 +242,22 @@
     reroll: (s) => {
       const ty = rint(0, 2), k = ((s.cnPk && s.cnPk.k) || 0) + 1;
       const nums = ty === 0 ? (() => { for (;;) { const a = rint(5, 8), b2 = rint(5, 8), c = rint(5, 8); if (new Set([a, b2, c]).size >= 2 && a < b2 + c && b2 < a + c && c < a + b2) return [a, b2, c]; } })() : ty === 1 ? [rint(5, 9), rint(5, 9), 10 * rint(4, 9)] : [rint(5, 9), 10 * rint(3, 7), 10 * rint(3, 7)];
-      if (ty === 1 && nums[0] === nums[1]) nums[1] += 1;
+      if (ty === 1 && nums[0] === nums[1]) nums[1] += nums[1] < 9 ? 1 : -1;
       if (ty === 2 && nums[1] === nums[2]) nums[2] += 10;
       s.cnPk = { k, ty, nums };
+      s.cnTy = ty;
+      const keys = ty === 0 ? ['cnVa', 'cnVb', 'cnVc'] : ty === 1 ? ['cnWs1', 'cnWs2', 'cnWth'] : ['cnUc', 'cnUa', 'cnUb'];
+      keys.forEach((key, i) => { s[key] = nums[i]; });
     },
     model: (s) => {
       const ty = s.cnTy || 0, nums = ty === 0 ? [s.cnVa, s.cnVb, s.cnVc] : ty === 1 ? [s.cnWs1, s.cnWs2, s.cnWth] : [s.cnUc, s.cnUa, s.cnUb];
-      const pk = s.cnPk || { k: 0, ty: 0, nums: [6, 7, 8] };
-      return { ty, nums, set: genSet(ty, nums, 0), pk, pset: genSet(pk.ty, pk.nums, pk.k) };
+      const pk = { ...(s.cnPk || { k: 0 }), ty, nums }, set = genSet(ty, nums, pk.k);
+      return { ty, nums, set, pk, pset: set };
     },
     draw(b, s, M, C) {
       if (C.problem) { drawSet(b, M.pset, { verdict: false, seed: M.pk.k }); return; }
       const st = C.review ? C.step : 3;
-      drawSet(b, M.set, { verdict: st >= 3, seed: 0 });
+      drawSet(b, M.set, { verdict: st >= 3, seed: M.pk.k });
     },
     steps: (M) => {
       const ty = M.ty, ok = M.set.cands.findIndex((c) => c.ok);
