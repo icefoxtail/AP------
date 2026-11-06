@@ -13,7 +13,7 @@
 
   const PARAMS = {
     s6R: P('구의 반지름', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s6T: P('껍질 펼치기', 0, 1, 0.01, 0, { color: 'green', hint: '구의 껍질이 원 4개로 가로로 늘어서요', format: (v) => (v < 0.02 ? '구' : v > 0.98 ? '원 4개' : Math.round(v * 100) + '%') }),
+    s6T: P('넓이 비교', 0, 1, 0.01, 0, { color: 'green', hint: '구의 겉넓이와 같은 반지름의 원 넓이를 비교해요', format: (v) => (v < 0.02 ? '구' : v > 0.98 ? '원 4개' : Math.round(v * 100) + '%') }),
     s7R: P('구의 반지름', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
     s7T: P('자르고 · 가르고 · 돌리고 · 합치기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.02 ? '구' : v < 0.3 ? '레이저로 자르는 중' : v < 0.55 ? '가로로 갈라지는 중' : v < 0.8 ? '단면이 돌아서 보이는 중' : v > 0.99 ? '합치기 완료' : '막대로 합치는 중') }),
     s8R: P('수조의 반지름', 2, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
@@ -73,40 +73,39 @@
       // 원 4개의 줄(가로로만 이동)
       const rows = narrow ? 2 : 1, perRow = 4 / rows;
       const dR = R, gapD = 0.45, rowW = perRow * 2 * dR + (perRow - 1) * gapD;
-      const sphereY = 0, rowTop = D.P(v3(0, -R, R)).y + 0.9 + 0.0;
+      const sphereY = 0, rowTop = narrow ? -2 * R - 0.275 : D.P(v3(0, -R, R)).y + 0.9;
       const finals = [];
-      for (let i = 0; i < 4; i++) { const rw = Math.floor(i / perRow), cidx = i % perRow; finals.push({ x: -rowW / 2 + dR + cidx * (2 * dR + gapD), y: rowTop + dR + rw * (2 * dR + 0.55) }); }
+      for (let i = 0; i < 4; i++) { const rw = Math.floor(i / perRow), cidx = i % perRow; finals.push({ x: (narrow ? R + 1.2 + dR : -rowW / 2 + dR) + cidx * (2 * dR + gapD), y: rowTop + dR + rw * (2 * dR + 0.55) }); }
       const pts = cube8(v3(0, 0, 0), R);
       const bbS = bboxOf([D.P(v3(-R, -R, -R)), D.P(v3(R, R, R)), D.P(v3(R, -R, -R)), D.P(v3(-R, R, R))]);
       const ext = [{ x: -rowW / 2, y: rowTop }, { x: rowW / 2, y: rowTop + rows * 2 * dR + (rows - 1) * 0.55 + 0.6 }];
-      // 원은 구 바로 아래에서 작게 나와 제자리로 커지며 이동해요(껍질이 펼쳐지는 모습). 지금 프레임의 원 위치만으로 맞춰요
+      // 구면 전개가 아닌 넓이 비교: 원 네 개가 제자리에 나타납니다.
       const pc0 = D.P(v3(0, 0, 0)), cb0 = { x0: pc0.x - R, y0: pc0.y - R, x1: pc0.x + R, y1: pc0.y + R };
-      const cur = finals.map((f) => { const ee = C.problem ? 0 : e, rr = dR * (0.3 + 0.7 * ee); return { x: ee > 0 ? 0 + (f.x - 0) * ee : 0, y: rowTop + dR * 0.3 + (f.y - rowTop - dR * 0.3) * ee, r: rr }; });
+      const cur = finals.map((f) => ({ x:f.x, y:f.y, r:dR }));
       const showC = !C.problem && (e > 0.02 || b.thumb);
       if (b.thumb) D.fit(pts, C.problem ? [] : ext, { l: 30, r: 30, t: 40, b: 36 });
-      else D.fitCore([{ x: cb0.x0, y: cb0.y0 }, { x: cb0.x1, y: cb0.y1 }], showC ? cur.flatMap((c) => [{ x: c.x - c.r, y: c.y - c.r }, { x: c.x + c.r, y: c.y + c.r + 0.3 * e }]).concat(e > 0.9 ? [{ x: 0, y: rowTop - 0.7 }] : []) : [], { l: 30, r: 30, t: 26, b: 26 }, { cap: D.narrow ? 0.6 : 0.4 });
-      D.body({ mesh: sphM, fill: lvS === 2 ? 'amber' : 'sky', alpha: lvS === 2 ? 0.36 : 0.24, edge: 'ink', edgeW: 2.6, hidden: true });
+      else D.fitCore([{ x: cb0.x0, y: cb0.y0 }, { x: cb0.x1, y: cb0.y1 }], showC ? cur.flatMap((c) => [{ x: c.x - c.r, y: c.y - c.r }, { x: c.x + c.r, y: c.y + c.r + 0.3 * e }]).concat(e > 0.9 && !narrow ? [{ x: 0, y: rowTop - 0.7 }] : []) : [], { l: 30, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 30), t: 26, b: 26 }, { cap: showC ? (D.narrow ? 0.6 : 0.4) : (D.narrow ? 0.72 : 0.62) });
+      D.body({ mesh: sphM, fill: lvS === 2 ? 'amber' : 'sky', alpha: lvS === 2 ? 0.13 : 0.035, edge: 'ink', edgeW: 2.6, hidden: true });
       sphereLabels(D, R, v3(0, 0, 0), `반지름 ${M.r}`);
       if (!C.problem) {
         // 구를 가운데로 자른 단면(큰 원) 하나가 껍질의 1/4: 그 넓이 9π
         if (e < 0.5) {
           const fa = 1 - lin01(e, 0, 0.5);
-          D.disc(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 'sky', 0.3 * fa, 'sky', 3, { alpha: fa });
-          aLab(D, v3(-0.25 * R, 0, 0.62 * R), '큰 원의 넓이', plainVal(M.one), { alpha: fa, maxW: R * b.k * 1.2, size: 14 });
+          D.disc(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 'sky', 0.07 * fa, 'ink', 2, { alpha: fa });
         }
         for (let i = 0; i < 4 && showC; i++) {
           const f = finals[i], cc = b.thumb ? { x: f.x, y: f.y, r: dR } : cur[i], x = cc.x, ry = cc.y;
-          const al = 0.12 + 0.28 * e, hl = lvD, ec = hl === 2 ? 'amber' : 'sky';
-          b.circle({ x, y: ry }, cc.r, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.4 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 3.2 : 2.4, alpha: 0.5 + 0.5 * e });
-          if (e > 0.55) aLab(D, { x, y: ry }, '원의 넓이', plainVal(M.one), { fig: true, maxW: cc.r * b.k * 1.5, size: 14 });
+          const al = 0.06 * e, hl = lvD, ec = 'ink';
+          b.circle({ x, y: ry }, cc.r, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.10 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 2.8 : 2.4, alpha: 0.5 + 0.5 * e });
+          if (e > 0.55) aLab(D, { x, y: ry }, '', plainVal(M.one), { fig: true, maxW: cc.r * b.k * 1.5, size: 14 });
         }
-        if (e > 0.9) b.text({ x: 0, y: rowTop - 0.35 }, `구의 겉넓이 = ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
+        if (e > 0.9 && !narrow) b.text({ x: 0, y: rowTop - 0.35 }, `넓이 비교: ${plainVal(M.one)} × 4 = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
       }
     };
     return {
       id: 'sv3-1', title: '구의 겉넓이 4πr²', short: '구의 겉넓이',
-      question: '구의 겉넓이는 구를 꼭 맞게 감싸는 껍질의 넓이야. 이 껍질을 평평하게 펴면 반지름이 같은 원 몇 개의 넓이와 같을까?',
-      anim: { key: 's6T', dur: 5, label: '껍질 펼치기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0, view3: false,
+      question: '구의 겉넓이는 반지름이 같은 원 몇 개의 넓이와 같을까요?',
+      anim: { key: 's6T', dur: 5, label: '넓이 비교하기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0, view3: false,
       ctl: () => ['s6R', 's6T'],
       init: (s) => { s.s6R = 3; s.s6T = 0; },
       reroll: (s) => { s.s6R = rint(1, 8); s.s6T = 0; },
@@ -114,11 +113,12 @@
       check: (s) => { const M = model(s); let a = 0; const n = 4000; for (let i = 0; i < n; i++) { const th0 = (PI * i) / n, th1 = (PI * (i + 1)) / n; a += PI * (M.r * Math.sin(th0) + M.r * Math.sin(th1)) * Math.hypot(M.r * (Math.cos(th1) - Math.cos(th0)), M.r * (Math.sin(th1) - Math.sin(th0))); } return { ans: a, model: vnum(M.tot) }; },
       steps: (M) => [
         `구를 반으로 자른 단면은 반지름 $${M.r}$인 원이에요. 그 넓이는 $\\pi r^2=\\pi\\times${M.r}^2=${tx(M.one)}\\,\\mathrm{cm}^2$예요.`,
-        `구의 껍질을 펼치면 이 원 $4$개의 넓이와 같아요. 그래서 겉넓이는 $4\\times\\pi r^2$이에요.`,
+        `구의 겉넓이는 이 원 $4$개의 넓이의 합과 같아요. 구면은 평면 전개도로 펼칠 수 없어요. 그래서 겉넓이는 $4\\times\\pi r^2$이에요.`,
         `(구의 겉넓이) $=4\\pi r^2=4\\pi\\times${M.r}^2=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
-      view: (M) => ({
-        guide: `<b>껍질 펼치기</b> 막대를 끌거나 ▶를 눌러 보세요. 구의 껍질이 ${span('sky', '반지름이 같은 원 4개')}로 가로로 늘어서요. 막대로 반지름을 바꾸면 원의 넓이와 겉넓이가 같이 바뀌어요.`,
+      view: (M, C) => ({
+        card: C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560 ? { title:'', lines:[{text:'원 하나의 넓이'}, {text:`$\\pi\\times${M.r}^2=${tx(M.one)}$`}, {text:'구의 겉넓이'}, {text:`$4\\times${tx(M.one)}=${tx(M.tot)}$`}] } : null,
+        guide: `<b>넓이 비교</b> 막대를 끌거나 ▶를 눌러 보세요. 구의 겉넓이는 ${span('sky', '반지름이 같은 원 4개')}의 넓이 합과 같아요. 이 원들은 넓이를 비교하기 위한 그림이며 구의 전개도는 아니에요. 막대로 반지름을 바꾸면 원의 넓이와 겉넓이가 같이 바뀌어요.`,
         readouts: [rd('원 하나의 넓이', plainVal(M.one) + ' cm²', 'sky', `π × ${M.r} × ${M.r}`), rd('원의 개수', '4개', 'amber'), rd('구의 겉넓이', plainVal(M.tot) + ' cm²', 'green', `4 × ${plainVal(M.one)}`)],
         formula: `<p>(구의 겉넓이) $=4\\pi r^2$ &nbsp; ($r$ 구의 반지름)</p>`,
         rule: '구의 겉넓이 = 반지름이 같은 원 4개의 넓이 = 4πr²',
@@ -151,6 +151,33 @@
       return cutModel(s, fr, key);
     };
     const draw = (b, s, M, C) => {
+      if (isHalf) {
+        const D = scene3(b, s, C), R = 2.4, e = C.problem ? 0 : ease(C.t), dy = -2.4 * e;
+        const n = 36, profile = [[0,0],[R,0]];
+        for (let i = 1; i <= n; i++) { const a = Math.PI * i / (2*n); profile.push([R*Math.cos(a), R*Math.sin(a)]); }
+        profile[profile.length - 1][0] = 0;
+        const mesh = revolveMesh(profile, { N: 44, tags: ['cap'] });
+        const cap = add3(v3(0,0,0),v3(0,dy,0));
+        D.fit([v3(-R,0,-R),v3(R,0,R),v3(-R,R,-R),v3(R,R,R)].concat(e > 0.01 ? [add3(cap,v3(-R,0,-R)),add3(cap,v3(R,0,R))] : []), [], { l: 32, r: C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 32, t: 28, b: 38 });
+        D.body({mesh, fill:'sky', alpha:.035, edge:'ink', edgeW:2, sil:false, faceStyle:f=>f.tag==='cap'?{skip:true}:C.review&&C.step===2?{fill:'sky',alpha:.1}:{}});
+        limb(D, v3(0,0,0), R, q=>q.y>=-1e-6, 'ink', 2.3);
+        D.disc(v3(0,0,0),v3(1,0,0),v3(0,0,1),R,'sky',.025,'ink',1.7,{dash:[5,4]});
+        if (e > 0.01) D.disc(cap,v3(1,0,0),v3(0,0,1),R,'sky',.08,'ink',2,{alpha:e});
+        sphereLabels(D,R,v3(0,0,0),`반지름 ${M.r}`);
+        return;
+      }
+      if (!isHalf) {
+        const D=scene3(b,s,C), R=2.4, e=C.problem?1:ease(C.t), al=7*DEG, hw=PI/4, a0=al-hw, a1=al+hw;
+        const e1=v3(Math.cos(a0),0,Math.sin(a0)), wedge=M.frac==='quarter' ? revolveMesh(sphereProfile(R,-90,90,48),{axis:'y',N:40,a0,a1}) : revolveMesh([[0,0],...sphereProfile(R,0,90,36)],{axis:'y',N:40,a0,a1,tags:['cap']});
+        const pair=!C.problem && C.tab==='explore' && b.W>=1000 && e>.02, shift=pair?D.hx(2.8*e):v3(0,0,0), left=pair?D.hx(-2.8*e):v3(0,0,0), wm=xfMesh(wedge,shiftT(shift));
+        const bounds=wm.faces.flatMap(f=>f.pts).concat(pair?cube8(left,R):[]);
+        D.fit(bounds,[],{l:b.W<500?12:30,r:C.tab==='explore' && window.innerWidth>=700 && b.W>=560 ? 245 : b.W<500?12:30,t:b.W<500?12:30,b:b.W<500?12:30});
+        if(pair){const ghost=xfMesh(sph(R,-90,90),shiftT(left)); D.body({mesh:ghost,fill:'sky',alpha:.025,edge:'ink',edgeW:2,hidden:true});}
+        D.body({mesh:wm,fill:'sky',alpha:.045,edge:'ink',edgeW:2.2,sil:false,faceStyle:f=>(f.cut||f.tag==='cap')?{fill:'sky',alpha:C.review&&C.step===3?.12:.035+.1*e}:C.review&&C.step===2?{fill:'sky',alpha:.1}:{}});
+        limb(D,shift,R,q=>{const dx=q.x-shift.x,dz=q.z-shift.z;let d=Math.atan2(dz,dx)-al;d=Math.atan2(Math.sin(d),Math.cos(d));return Math.abs(d)<=hw+1e-6 && (M.frac==='quarter'||q.y-shift.y>=-1e-6);});
+        D.radius(shift,add3(shift,mul3(e1,R)),`반지름 ${M.r}`,{color:'ink'});
+        return;
+      }
       const D = scene3(b, s, C), st = C.step, R = 1.6, bcx = (isHalf ? 1.25 : 0.95) * 1.6, t = C.problem ? (isHalf ? 0.8 : 1) : C.t, fr = M.frac;
       const sph0 = (a, c) => sph(R, a, c);
       let bodies = [], extra = [], ptsFit = [];
@@ -242,13 +269,13 @@
         drawBars(D, parts, isN ? barsCx : bcx, y0, isN ? Math.max(barsW, 3.6) : 6.2, merge, { total: `겉넓이 = ${plainVal(M.tot)}` });
       }
     };
-    const stemName = (M) => (M.frac === 'half' ? '반구' : M.frac === 'quarter' ? '구를 $\\frac{1}{4}$만큼 잘라 낸 입체(중심을 지나는 평면 2개로 자른 쐐기 모양)' : '구를 $\\frac{1}{8}$만큼 잘라 낸 입체(서로 수직인 세 평면으로 자른 조각)');
+    const stemName = (M) => (M.frac === 'half' ? '반구' : M.frac === 'quarter' ? '구를 중심을 지나는 서로 수직인 두 평면으로 잘라 얻은 네 조각 중 하나' : '구를 중심을 지나는 서로 수직인 세 평면으로 잘라 얻은 여덟 조각 중 하나');
     return {
       id: isHalf ? 'sv3-2' : 'sv3-5', title: isHalf ? '반구의 겉넓이' : '1/4 구·1/8 구', short: isHalf ? '반구' : '1/4·1/8 구',
       question: isHalf ? '구를 반으로 자른 반구의 겉넓이는 구 겉넓이의 반일까? 잘린 평평한 면은 어떻게 될까?' : '구를 더 잘게 자른 조각의 겉넓이는? 곡면의 몇 분의 몇만 더하면 될까, 새로 생긴 평평한 면은 몇 개일까?',
-      anim: { key: tkey, dur: isHalf ? 11 : 7, label: isHalf ? '자르고 합치기' : '조각 떼어 내기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => (isHalf ? [0, 0.02, 0.5, 0.75, 1][Math.min(st, 4)] : [0, 0.02, 0.47, 0.82, 1][Math.min(st, 4)]) , thumbT: 1, problemT: isHalf ? 0 : 0.2, view3: true,
-      ctl: () => [key, tkey],
-      presets: isHalf ? undefined : () => [{ group: '조각', label: '1/4 구', apply: (st) => { st.svFrac = 'quarter'; }, on: (st) => st.svFrac !== 'eighth' }, { label: '1/8 구', apply: (st) => { st.svFrac = 'eighth'; }, on: (st) => st.svFrac === 'eighth' }],
+      anim: { key: tkey, dur: 3, label: isHalf ? '밑면 살펴보기' : '자른 면 강조', hideActions: isHalf }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => (isHalf ? [0, 0.02, 0.5, 0.75, 1][Math.min(st, 4)] : [0, 0.02, 0.47, 0.82, 1][Math.min(st, 4)]) , thumbT: 1, problemT: isHalf ? 0 : 0.2, view3: true,
+      ctl: () => [key],
+      presets: isHalf ? () => [{group:'구하는 것', label:'겉넓이', apply:(st, lab)=>{st.s7T=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?1:0;st.revealed=false;st.step=0;lab?._buildProblem?.();st.playing=st.s7T===0;}, on:()=>false}] : () => [{ group: '조각', label: '1/4 구', apply: (st, lab) => { st.svFrac = 'quarter'; st.s9T=0; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svFrac !== 'eighth' }, { label: '1/8 구', apply: (st, lab) => { st.svFrac = 'eighth'; st.s9T=0; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svFrac === 'eighth' }],
       init: (s) => { s[key] = 3; s[tkey] = 0; s.svFrac = 'quarter'; },
       reroll: (s) => { s[key] = rint(1, 8); s[tkey] = 0; if (!isHalf) s.svFrac = pick(['quarter', 'eighth'], s.svFrac); },
       model, draw,
@@ -272,11 +299,13 @@
         const s4 = `(겉넓이) $=${tx(M.curve)}+${tx(M.flat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`;
         return [s1, s2, s3, s4];
       },
-      view: (M) => ({
+      view: (M, C) => ({
+        card: C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560 ? {title:'', lines:[{text:isHalf?'반구의 곡면 (구의 겉넓이의 절반)':'구의 곡면 중 남은 부분'},{text:`$${tx(M.sphere)}\\times${M.f.fracTex}=${tx(M.curve)}$`},{text:isHalf?'잘린 원의 넓이':`${M.f.flats[0].name} ${M.f.flats.length}개의 넓이`},{text:isHalf ? `$${tx(M.flat)}$` : `$${tx(V(0,M.f.flats[0].k*M.r*M.r))}\\times${M.f.flats.length}=${tx(M.flat)}$`},{text:`${M.f.name}의 겉넓이`},{text:`$${tx(M.curve)}+${tx(M.flat)}=${tx(M.tot)}$`}] } : null,
+        tip: isHalf && C.tab === 'explore' ? '반구만 따로 있으면 잘린 원도 겉면이에요. 다른 입체에 붙은 면은 겉면에서 빼요.' : (!isHalf && C.tab === 'explore' ? (M.frac === 'quarter' ? '새로 생긴 평평한 면은 반원 두 개예요.' : '새로 생긴 평평한 면은 사분원 세 개예요.') : null),
         guide: isHalf
-          ? `<b>자르고 합치기</b> 막대를 끌거나 ▶를 눌러 보세요. 노란 ${span('amber', '레이저 판')}이 구의 가운데에 나타나 구를 둘로 가르고, 위쪽 반구(밑면이 아래)가 오른쪽으로 옮겨 가요. 아래쪽 반구에 ${span('red', '자른 면(원)')}이 드러나고, 막대로 합쳐져요.`
-          : `칩에서 <b>1/4 구</b>와 <b>1/8 구</b>를 골라 보세요. <b>조각 떼어 내기</b>를 끌면 조각이 가로로 빠져나가요. 곡면(${span('sky', '파랑')})에 새로 생긴 ${span('red', '자른 면(빨강)')}을 더해요.`,
-        readouts: [rd('구의 겉넓이', plainVal(M.sphere) + ' cm²', 'ink', `4 × π × ${M.r} × ${M.r}`), rd(`곡면 (${M.f.factor})`, plainVal(M.curve) + ' cm²', 'sky'), rd('자른 면', plainVal(M.flat) + ' cm²', 'red', M.f.flats.length > 1 ? `${M.f.flats[0].name} ${M.f.flats.length}개` : '원 1개'), rd(`${M.f.name}의 겉넓이`, plainVal(M.tot) + ' cm²', 'green')],
+          ? `반구의 곡면은 구의 겉넓이의 절반이에요. 겉넓이를 누르면 잘린 원을 따로 볼 수 있어요. 반구를 따로 놓았을 때는 이 원도 겉면에 더해요.`
+          : `1/4 구와 1/8 구를 선택해 보세요. 구의 곡면 중 남은 부분에 새로 생긴 평평한 단면의 넓이를 더해요.`,
+        readouts: C.tab === 'explore' && window.innerWidth >= 700 && document.querySelector('.apl-canvas-wrap')?.clientWidth >= 560 ? [] : [rd('구의 겉넓이', plainVal(M.sphere) + ' cm²', 'ink', `4 × π × ${M.r} × ${M.r}`), rd(`곡면 (${M.f.factor})`, plainVal(M.curve) + ' cm²', 'sky'), rd('자른 면', plainVal(M.flat) + ' cm²', 'red', M.f.flats.length > 1 ? `${M.f.flats[0].name} ${M.f.flats.length}개` : '원 1개'), rd(`${M.f.name}의 겉넓이`, plainVal(M.tot) + ' cm²', 'green')],
         formula: `<p>(${M.f.name}의 겉넓이) $=4\\pi r^2\\times${M.f.fracTex}+$ (자른 면의 넓이)</p>`,
         rule: '자른 입체의 겉넓이 = 곡면 + 새로 생긴 자른 면',
         notes: notes('<b>함정</b>: 곡면만 구하고 <b>자른 면</b>을 빠뜨리지 않아요.', '반구의 자른 면은 <b>원 전체 $\\pi r^2$</b>이고, 1/4 구는 반원 2개, 1/8 구는 사분원 3개예요.')
@@ -287,7 +316,7 @@
         if (M.frac === 'half') wrongs = [[M.curve, '곡면만 구했어요. 자른 면(원)을 더해야 해요.'], [M.sphere, '구 전체의 겉넓이예요.'], [vadd(M.curve, V(0, r2 / 2)), '자른 면은 반원이 아니라 원 전체예요.'], [vadd(M.curve, vmul(V(0, 2 * r2), 1)), '자른 면은 곡면이 아니라 원 $\\pi r^2$이에요.'], [V(0, r2 / 2), '반원의 넓이만 구했어요.']];
         else if (M.frac === 'quarter') wrongs = [[M.curve, '곡면만 구했어요. 반원 2개를 더해야 해요.'], [vadd(M.curve, V(0, r2 / 2)), '자른 면은 반원이 2개예요.'], [vadd(M.curve, V(0, 2 * r2)), '자른 면은 원이 아니라 반원 2개예요.'], [M.sphere, '구 전체의 겉넓이예요.'], [vadd(M.curve, V(0, r2 / 4)), '반원은 $\\frac{1}{2}\\pi r^2$이에요.']];
         else wrongs = [[M.curve, '곡면만 구했어요. 사분원 3개를 더해야 해요.'], [vadd(M.curve, V(0, r2 / 4)), '자른 면은 사분원이 3개예요.'], [vadd(M.curve, V(0, r2 / 2)), '사분원은 $\\frac{1}{4}\\pi r^2$이에요.'], [vadd(M.curve, V(0, (3 * r2) / 2)), '사분원은 반원이 아니에요.'], [M.sphere, '구 전체의 겉넓이예요.']];
-        return { tag: M.frac === 'half' ? '반구의 겉넓이 (함정: 자른 면)' : `${M.f.name}의 겉넓이 (함정: 자른 면)`, key: `${M.frac}|${M.r}`, stem: `그림과 같이 반지름이 $${M.r}\\,\\mathrm{cm}$인 ${stemName(M)}의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
+        return { tag: M.frac === 'half' ? '반구의 겉넓이' : `${M.f.name}의 겉넓이`, key: `${M.frac}|${M.r}`, stem: `그림과 같이 반지름이 $${M.r}\\,\\mathrm{cm}$인 ${stemName(M)}의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
       }
     };
   }
@@ -313,18 +342,18 @@
       if (isN) {
         // 물체가 잠겨 사라진 뒤에는 수조 위 공간을 비우고, 그만큼 수조·비커를 크게 보여 줘요(막대가 나타날 때 같이 바뀜)
         const rp = C.problem ? 0 : clamp((sink - 0.4) / 0.5, 0, 1), topY = yRail + 1 - (yRail + 1 - (hT + 0.55)) * rp;
-        D.fit([v3(-1, 0, -1), v3(4.3, topY, 1), v3(-1, topY, 1), v3(4.3, 0, -1)], [{ x: 1.55, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 0.6 + 2.6 * rp) }], { l: 56, r: 36, t: 52, b: 24 });
+        D.fit([v3(-1, 0, -1), v3(4.3, topY, 1), v3(-1, topY, 1), v3(4.3, 0, -1)], [{ x: 1.55, y: D.P(v3(0, 0, 1)).y + 0.6 }], { l: 56, r: 36, t: 52, b: 24 });
       }
-      else D.fit([v3(sx - 1, 0, -1), v3(4.6, yRail + 1, 1), v3(sx - 1, yRail + 1, 1), v3(4.6, 0, -1)], [{ x: 0, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 4.0) }], { l: 34, r: 34, t: 34, b: 34 });
+      else D.fit([v3(sx - 1, 0, -1), v3(4.6, yRail + 1, 1), v3(sx - 1, yRail + 1, 1), v3(4.6, 0, -1)], [{ x: 0, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 2.8) }], { l: 28, r: 28, t: 24, b: 26 });
       // 수조·물
       D.body({ mesh: tankM, fill: 'sky', alpha: 0.1, edge: 'ink', edgeW: 2.6 });
-      D.body({ mesh: revolveMesh([[0, 0], [0.985, 0], [0.985, hT], [0, hT]], { N: 40 }), fill: 'sky', alpha: M.mode === 'remain' && st >= 3 && C.review ? 0.5 : 0.3, hidden: false, edge: 'sky', edgeW: 1.4 });
+      D.body({ mesh: revolveMesh([[0, 0], [0.985, 0], [0.985, hT], [0, hT]], { N: 40 }), fill: 'sky', alpha: M.mode === 'remain' && st >= 3 && C.review ? 0.18 : 0.10, hidden: false, edge: 'sky', edgeW: 1.4 });
       // 수조 오른쪽 주둥이(가로 관)와 비커
       const py = hT - 0.12;
       D.line(v3(1, py + 0.06, 0), v3(2.1, py + 0.06, 0), 'ink', 2.4);
       D.line(v3(1, py - 0.06, 0), v3(2.1, py - 0.06, 0), 'ink', 2.4);
       D.body({ mesh: bkM, fill: 'sky', alpha: 0.08, edge: 'ink', edgeW: 2.4 });
-      if (wl > 0.01) D.body({ mesh: revolveMesh([[0, 0], [0.985, 0], [0.985, wl], [0, wl]], { O: v3(3.1, 0, 0), N: 40 }), fill: 'sky', alpha: 0.5, hidden: false, edge: 'sky', edgeW: 1.4 });
+      if (wl > 0.01) D.body({ mesh: revolveMesh([[0, 0], [0.985, 0], [0.985, wl], [0, wl]], { O: v3(3.1, 0, 0), N: 40 }), fill: 'sky', alpha: 0.16, hidden: false, edge: 'sky', edgeW: 1.4 });
       if (q > 0.02 && q < 0.999) { D.line(v3(1, py, 0), v3(2.1, py, 0), 'sky', 4.5, { dash: [7, 6] }); }
       // 비커 눈금(1칸 = 원뿔 부피)
       [1, 2, 3].forEach((i) => { const yy = (hT * i) / 3; D.line(v3(3.1 + 1, yy, 0), v3(3.1 + 0.82, yy, 0), 'ink', 2.2); D.tag(v3(4.2, yy, 0), `${i}칸`, { size: 13, align: 'left', dx: 2 }); });
@@ -336,24 +365,24 @@
       if (sink < 0.02 || C.problem) D.line(v3(sx - 0.4, yRail - 0.0, 0), v3(0.5, yRail - 0.0, 0), 'muted', 2, { dash: [6, 5] });
       if (topAlpha > 0.02) {
         const cy = yRail - (M.body === 'sph' ? 1 : M.body === 'cone' ? 0.5 * hT : 0.5 * hT);
-        D.body({ mesh: bodyMesh(bx, M.body === 'sph' ? yRail - 1 : yRail - hT / 2), fill: colr, alpha: 0.36 * topAlpha, edge: 'ink', edgeW: 2.4 * topAlpha + 0.2, edgeFn: () => ({ alpha: topAlpha }) });
+        D.body({ mesh: bodyMesh(bx, M.body === 'sph' ? yRail - 1 : yRail - hT / 2), fill: colr, alpha: 0.1 * topAlpha, edge: 'ink', edgeW: 2.4 * topAlpha + 0.2, edgeFn: () => ({ alpha: topAlpha }) });
         void cy; void bodyTop;
       }
       const inAlpha = ease(sink);
-      if (inAlpha > 0.02) D.body({ mesh: bodyMesh(0, 0), fill: colr, alpha: 0.42 * inAlpha, edge: 'ink', edgeW: 2.2, hidden: true, edgeFn: () => ({ alpha: inAlpha }) });
+      if (inAlpha > 0.02) D.body({ mesh: bodyMesh(0, 0), fill: colr, alpha: 0.12 * inAlpha, edge: 'ink', edgeW: 2.2, hidden: true, edgeFn: () => ({ alpha: inAlpha }) });
       // 길이: r, h
-      D.radius(v3(0, hT, 0), add3(v3(0, hT, 0), D.rightFront()), `반지름 ${M.r}`, {});
-      D.dim(add3(v3(0, 0, 0), D.hx(-1)), add3(v3(0, hT, 0), D.hx(-1)), M.k === 0 && !D.narrow ? `높이 ${M.h} = 지름` : `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'amber' });
+      D.radius(v3(0, hT, 0), add3(v3(0, hT, 0), D.rightFront()), isN && sink < .2 && !C.problem ? '' : `반지름 ${M.r}`, {});
+      D.dim(add3(v3(0, 0, 0), D.hx(-1)), add3(v3(0, hT, 0), D.hx(-1)), M.k === 0 && !D.narrow ? `높이 ${M.h} = 지름` : `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 16, color: 'ink' });
       if (!C.problem) {
-        if (sink < 0.02) aLab(D, v3(bx, yRail, 0), `${BODY[M.body]}의 부피`, plainVal(M.vols[M.body]), { maxW: b.k * 1.7, size: 14, dy: -b.k * 0.32, color: 'ink' });
+        if (sink < 0.02) { D.tag(v3(bx, yRail + 1.2, 0), BODY[M.body], {size:13,color:'ink'}); }
         // 가로 막대: 원뿔·구·원기둥 (1칸 = 원뿔)
-        if (!isN || sink >= 0.9) { // 폰: 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
+        if (!isN) { // 좁은 화면은 그림을 우선하고 수치는 아래에 표시 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
         const rowsV = ['cone', 'sph', 'cyl'].map((k2) => ({ k: k2, units: M.mode === 'remain' ? 3 - M.unitsOf(M.vols[k2]) : M.unitsOf(M.vols[k2]), val: M.mode === 'remain' ? vsub(M.tank, M.vols[k2]) : M.vols[k2] }));
         const y0 = D.P(v3(0, 0, 1)).y + 0.7, W = isN ? 4.4 : 5.4, bcx2 = isN ? 1.55 : 0, x0 = bcx2 - W / 2 - (isN ? 0 : 0.2), H = isN ? 0.42 : 0.42;
         rowsV.forEach((rw, i) => {
           const y = y0 + i * (H + (isN ? 0.2 : 0.22)), cur = rw.k === M.body, w = (rw.units / 3) * W, wc = cur ? (M.mode === 'remain' ? w * 1 : w * q) : 0;
           b.path([{ x: x0, y }, { x: x0 + W, y }, { x: x0 + W, y: y + H }, { x: x0, y: y + H }], { close: true, color: 'muted', width: 1.2, alpha: 0.5 });
-          b.path([{ x: x0, y }, { x: x0 + (cur ? Math.max(wc, 0) : w * 0.0), y }, { x: x0 + (cur ? Math.max(wc, 0) : 0), y: y + H }, { x: x0, y: y + H }], { close: true, fill: colorOf(rw.k), fillAlpha: 0.7, color: null });
+          b.path([{ x: x0, y }, { x: x0 + (cur ? Math.max(wc, 0) : w * 0.0), y }, { x: x0 + (cur ? Math.max(wc, 0) : 0), y: y + H }, { x: x0, y: y + H }], { close: true, fill: colorOf(rw.k), fillAlpha: 0.22, color: null });
           if (!cur) b.path([{ x: x0, y }, { x: x0 + w, y }, { x: x0 + w, y: y + H }, { x: x0, y: y + H }], { close: true, fill: colorOf(rw.k), fillAlpha: 0.2, color: colorOf(rw.k), width: 1.6, alpha: 0.7 });
           b.text({ x: x0, y: y + H / 2 }, `${BODY[rw.k]}`, { dx: -6, size: D.fs(13), weight: 800, align: 'right', baseline: 'middle' });
           b.text({ x: x0 + Math.max(w, 0), y: y + H / 2 }, `${plainVal(rw.val)}`, { dx: 6, size: D.fs(13), weight: 800, align: 'left', baseline: 'middle', color: cur ? 'ink' : 'muted' });
@@ -369,9 +398,9 @@
     return {
       id, title: fixedMode === 'over' ? '원뿔·구·원기둥 부피 1:2:3' : '수조 문제: 넘친 물·남은 물', short: fixedMode === 'over' ? '부피비 1:2:3' : '수조 문제',
       question: fixedMode === 'over' ? '물이 가득 찬 수조에 지름이 같은 원뿔·구·원기둥을 넣으면 넘치는 물의 양은 어떤 비가 될까?' : '물체를 넣고 물이 넘친 뒤 수조에 남은 물은 얼마일까? 구를 넣었을 때 남은 물과 같은 부피의 물체는 무엇일까?',
-      anim: { key: 's8T', dur: 9, label: '물체 넣기' }, cam0: { yaw: 24, pitch: 18 }, stepT: (n) => [0, 0.2, 0.52, 1, 1][Math.min(n, 4)], thumbT: 1, problemT: 0.3,
+      anim: { key: 's8T', dur: 4.5, label: '물체 넣기' }, cam0: { yaw: 24, pitch: 18 }, stepT: (n) => [0, 0.2, 0.52, 1, 1][Math.min(n, 4)], thumbT: 1, problemT: 0.3,
       ctl: () => ['s8R', 's8K', 's8T'],
-      presets: () => [{ group: '넣는 물체', label: '원뿔', color: 'amber', apply: (st) => { st.svBody = 'cone'; st.s8T = 0; }, on: (st) => st.svBody === 'cone' }, { label: '구', color: 'green', apply: (st) => { st.svBody = 'sph'; st.s8T = 0; }, on: (st) => st.svBody === 'sph' || !st.svBody }, { label: '원기둥', color: 'violet', apply: (st) => { st.svBody = 'cyl'; st.s8T = 0; }, on: (st) => st.svBody === 'cyl' }].concat(fixedMode === 'over' ? [] : [{ group: '구하는 것', label: '넘친 물', apply: (st) => { st.svTankMode = 'over'; }, on: (st) => st.svTankMode === 'over' }, { label: '남은 물', apply: (st) => { st.svTankMode = 'remain'; }, on: (st) => st.svTankMode !== 'over' }]),
+      presets: () => [{ group: '넣는 물체', label: '원뿔', color: 'amber', apply: (st, lab) => { st.svBody = 'cone'; st.s8T = 0; st.revealed = false; st.step = 0; lab?._buildProblem?.(); }, on: (st) => st.svBody === 'cone' }, { label: '구', color: 'green', apply: (st, lab) => { st.svBody = 'sph'; st.s8T = 0; st.revealed = false; st.step = 0; lab?._buildProblem?.(); }, on: (st) => st.svBody === 'sph' || !st.svBody }, { label: '원기둥', color: 'violet', apply: (st, lab) => { st.svBody = 'cyl'; st.s8T = 0; st.revealed = false; st.step = 0; lab?._buildProblem?.(); }, on: (st) => st.svBody === 'cyl' }].concat(fixedMode === 'over' ? [] : [{ group: '구하는 것', label: '넘친 물', apply: (st, lab) => { st.svTankMode = 'over'; st.revealed = false; st.step = 0; lab?._buildProblem?.(); }, on: (st) => st.svTankMode === 'over' }, { label: '남은 물', apply: (st, lab) => { st.svTankMode = 'remain'; st.revealed = false; st.step = 0; lab?._buildProblem?.(); }, on: (st) => st.svTankMode !== 'over' }]),
       init: (s) => { s.svBody = 'sph'; s.s8R = 3; s.s8K = 0; s.s8T = 0; s.svTankMode = fixedMode === 'over' ? 'over' : 'remain'; },
       reroll: (s) => { s.svBody = pick(fixedMode === 'over' ? ['cone', 'sph', 'cyl'] : ['cone', 'sph'], s.svBody); s.s8R = rint(2, 6); s.s8K = pick([0, 0, 0, 1, 2, 3, 4], -1); s.s8T = 0; if (fixedMode !== 'over') s.svTankMode = pick(['over', 'remain'], s.svTankMode); },
       model, draw,
@@ -394,7 +423,7 @@
         return [s1, s2, s3, s4];
       },
       view: (M) => ({
-        guide: `칩에서 <b>넣는 물체</b>를 고르고 <b>물체 넣기</b> 막대를 끌거나 ▶를 눌러 보세요. 물체가 ${span('sky', '가로 레일')}을 따라 수조 위로 이동한 뒤 물속으로 <b>잠기면</b>(서서히 사라져요) 물이 가로 관을 지나 비커로 넘쳐 채워져요. 아래 막대는 부피를 가로로 보여 줘요.${M.mode === 'remain' ? ' 지금은 <b>남은 물</b>(수조 − 물체)을 구해요.' : ''}`,
+        guide: `칩에서 <b>넣는 물체</b>를 고르고 <b>물체 넣기</b> 막대를 끌거나 ▶를 눌러 보세요. 물체가 ${span('sky', '가로 레일')}을 따라 수조 위로 이동한 뒤 물속으로 <b>잠기면</b>(서서히 사라져요) 물이 가로 관을 지나 비커로 넘쳐 채워져요. 큰 화면의 막대와 아래 계산으로 부피를 비교해요.${M.mode === 'remain' ? ' 지금은 <b>남은 물</b>(수조 − 물체)을 구해요.' : ''}`,
         readouts: [rd('수조의 부피', plainVal(M.tank) + ' cm³', 'sky', '3칸'), rd(`${BODY[M.body]}의 부피`, plainVal(M.vols[M.body]) + ' cm³', 'amber', `${M.unitStr(M.vols[M.body])}칸`), rd('넘친 물', plainVal(M.over) + ' cm³', 'green', '물체의 부피와 같음'), rd('남은 물', plainVal(M.remain) + ' cm³', 'violet', `3칸 − ${M.unitStr(M.vols[M.body])}칸`)],
         formula: `<p>원뿔 $\\frac{1}{3}\\pi r^2h$ : 구 $\\frac{4}{3}\\pi r^3$ : 원기둥 $\\pi r^2h$ &nbsp;$(h=2r)$ &nbsp;$=\\ 1:2:3$</p>`,
         rule: '넘친 물 = 넣은 물체의 부피 · 남은 물 = 수조의 부피 − 물체의 부피',
@@ -412,7 +441,7 @@
           wrongs = [[vsub(cyl, M.over), '남은 물을 구했어요. 넘친 물은 물체의 부피예요.'], [cyl, '수조 전체의 부피예요.'], [M.body === 'sph' ? cone : sphv, '다른 물체의 부피예요.'], [M.body === 'sph' ? V(0, 4 * r * r) : V(0, 2 * r * h), '겉넓이를 구했어요.'], [vmul(M.over, 2), '두 배로 계산했어요.']];
         }
         const act = { cone: `밑면의 반지름이 $${r}\\,\\mathrm{cm}$, 높이가 $${h}\\,\\mathrm{cm}$인 원뿔을 꼭짓점이 위로 가게 꼭 맞게 넣었다.`, sph: `반지름이 $${r}\\,\\mathrm{cm}$인 구를 완전히 잠기게 넣었다.`, cyl: `수조에 꼭 맞는 원기둥을 넣었다.` }[M.body];
-        return { tag: M.mode === 'remain' ? '수조에 남은 물 (킬러)' : '넘친 물의 부피', key: `${M.mode}|${M.body}|${r}|${h}`, stem: `물이 가득 찬 ${H}에 ${act} 이때 ${M.mode === 'remain' ? '수조에 남아 있는 물의 부피는?' : '넘친 물의 부피는?'}`, choices: mkV(M.ans, wrongs, { dim: 3 }) };
+        return { tag: M.mode === 'remain' ? '수조에 남은 물' : '넘친 물의 부피', key: `${M.mode}|${M.body}|${r}|${h}`, stem: `물이 가득 찬 ${H}에 ${act} 이때 ${M.mode === 'remain' ? '수조에 남아 있는 물의 부피는?' : '넘친 물의 부피는?'}`, choices: mkV(M.ans, wrongs, { dim: 3 }) };
       }
     };
   }
@@ -426,40 +455,21 @@
       return { r, shape, ask, S, V: Vv, ans, curve: V(0, (shape === 'full' ? 4 : 2) * r * r) };
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), R = 1.7, st = C.step;
-      const mesh = M.shape === 'full' ? sph(R, -90, 90) : revolveMesh([[0, 0], [R, 0], ...sphereProfile(R, 0, 90, 36).slice(1)], { N: 40, tags: ['cap'] });
-      const mv = M.shape === 'half' ? shiftT(v3(0, -R / 2, 0)) : shiftT(v3(0, 0, 0));
-      const m2 = xfMesh(mesh, mv), c = v3(0, M.shape === 'half' ? -R / 2 : 0, 0);
-      D.fit(cube8(v3(0, 0, 0), R), [], { l: 40, r: 40, t: 40, b: 84 });
-      D.body({ mesh: m2, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, sil: M.shape === 'full', faceStyle: (f) => (f.tag === 'cap' && (st === 2 || !C.review) ? { fill: 'red', alpha: 0.4 } : C.review && st === 1 && f.tag !== 'cap' ? { fill: 'amber', alpha: 0.34 } : {}) });
-      if (M.shape === 'half') limb(D, c, R, (q) => q.y - c.y >= -1e-6);
-      sphereLabels(D, R, c, `반지름 ${M.r}`);
-      if (!C.problem) {
-        const kpx = b.k * R, fv = unit3(v3(D.vw.x, 0, D.vw.z)), faceAt = (c0, lat) => add3(c0, add3(mul3(fv, R * Math.cos(lat)), v3(0, R * Math.sin(lat), 0)));
-        const r = M.r, rrr = `${r}×${r}×${r}`;
-        let cap;
-        if (M.shape === 'full') {
-          const isV = M.ask !== 'S';
-          aLab(D, faceAt(c, -32 * DEG), isV ? '부피' : '겉넓이', plainVal(isV ? M.V : M.S), { maxW: kpx * 1.3, size: 14 });
-          cap = M.ask === 'S' ? `겉넓이 = 4 × π × ${r} × ${r} = ${plainVal(M.S)}` : M.ask === 'V' ? `부피 = 4/3 × π × ${rrr} = ${plainVal(M.V)}` : `부피 ${plainVal(M.V)} → 반지름 ${r} → 겉넓이 ${plainVal(M.S)}`;
-        } else {
-          const isV = M.ask !== 'S';
-          if (isV) aLab(D, faceAt(c, 58 * DEG), '부피', plainVal(M.V), { maxW: kpx * 1.2, size: 14 });
-          else {
-            aLab(D, faceAt(c, 52 * DEG), '곡면', plainVal(M.curve), { maxW: kpx * 1.2, size: 14 });
-            aLab(D, add3(c, v3(-0.5 * R, 0, 0.2 * R)), '원의 넓이', plainVal(V(0, r * r)), { maxW: kpx * 0.8, size: 14 });
-          }
-          cap = M.ask === 'S' ? `겉넓이 = 곡면 ${plainVal(M.curve)} + 원 ${plainVal(V(0, r * r))} = ${plainVal(M.S)}` : M.ask === 'V' ? `부피 = 2/3 × π × ${rrr} = ${plainVal(M.V)}` : `부피 ${plainVal(M.V)} → 반지름 ${r} → 겉넓이 ${plainVal(M.S)}`;
-        }
-        D.tag(M.shape === 'full' ? v3(0, -R, 0) : c, cap, { dy: M.shape === 'full' ? R * b.k * 0.04 + 30 : R * b.k * 0.4 + 30, size: 15, color: 'amber' });
-      }
+      const D=scene3(b,s,C), R=2.2;
+      const mesh=M.shape==='full'?sph(R,-90,90):revolveMesh([[0,0],[R,0],...sphereProfile(R,0,90,36).slice(1)],{N:40,tags:['cap']});
+      const c=M.shape==='half'?v3(0,-R/2,0):v3(0,0,0), m2=xfMesh(mesh,shiftT(c));
+      const fit=M.shape==='full'?cube8(c,R):[add3(c,v3(-R,0,-R)),add3(c,v3(R,R,R)),add3(c,v3(-R,R,-R)),add3(c,v3(R,0,R))];
+      D.fit(fit,[],{l:C.problem||b.W<500?12:40,r:C.tab==='explore' && window.innerWidth>=700 && b.W>=560?245:C.problem||b.W<500?12:40,t:C.problem||b.W<500?12:40,b:C.problem||b.W<500?12:40});
+      D.body({mesh:m2,fill:'sky',alpha:.035,edge:'ink',edgeW:2.2,sil:M.shape==='full',faceStyle:f=>f.tag==='cap'?{fill:'sky',alpha:.08}:C.review && C.step===1?{fill:'sky',alpha:.1}:{}});
+      if(M.shape==='half') limb(D,c,R,q=>q.y-c.y>=-1e-6);
+      sphereLabels(D,R,c,C.problem && M.ask==='rev'?'반지름 r':`반지름 ${M.r}`);
     };
     return {
       id: 'sv3-6', title: '구 종합', short: '구 종합',
       question: '구의 겉넓이와 부피를 모두 구할 수 있어야 풀리는 문제는 어떻게 풀까? 부피가 주어지면 반지름부터 구해야 할까?',
       cam0: { yaw: 28, pitch: 22 }, problemT: 1,
       ctl: () => ['sAR'],
-      presets: () => [{ group: '입체', label: '구', apply: (st) => { st.svShape6 = 'full'; }, on: (st) => st.svShape6 !== 'half' }, { label: '반구', apply: (st) => { st.svShape6 = 'half'; }, on: (st) => st.svShape6 === 'half' }, { group: '문제 유형', label: '겉넓이', apply: (st) => { st.svAsk = 'S'; }, on: (st) => (st.svAsk || 'S') === 'S' }, { label: '부피', apply: (st) => { st.svAsk = 'V'; }, on: (st) => st.svAsk === 'V' }, { label: '부피 → 겉넓이', apply: (st) => { st.svAsk = 'rev'; }, on: (st) => st.svAsk === 'rev' }],
+      presets: () => [{ group: '입체', label: '구', apply: (st, lab) => { st.svShape6 = 'full'; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svShape6 !== 'half' }, { label: '반구', apply: (st, lab) => { st.svShape6 = 'half'; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svShape6 === 'half' }, { group: '문제 유형', label: '겉넓이', apply: (st, lab) => { st.svAsk = 'S'; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => (st.svAsk || 'S') === 'S' }, { label: '부피', apply: (st, lab) => { st.svAsk = 'V'; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svAsk === 'V' }, { label: '부피 → 겉넓이', apply: (st, lab) => { st.svAsk = 'rev'; st.revealed=false; st.step=0; lab?._buildProblem?.(); }, on: (st) => st.svAsk === 'rev' }],
       init: (s) => { s.sAR = 3; s.svShape6 = 'full'; s.svAsk = 'S'; },
       reroll: (s) => { s.sAR = rint(1, 8); s.svShape6 = pick(['full', 'half'], s.svShape6); s.svAsk = pick(['S', 'V', 'rev'], s.svAsk); },
       model, draw,
@@ -479,9 +489,10 @@
         const f = M.shape === 'full' ? { S: `4\\pi r^2`, V: `\\frac{4}{3}\\pi r^3` } : { S: `2\\pi r^2+\\pi r^2=3\\pi r^2`, V: `\\frac{1}{2}\\times\\frac{4}{3}\\pi r^3=\\frac{2}{3}\\pi r^3` };
         return [`${nm}의 반지름은 $r=${r}$예요.`, `${M.ask === 'S' ? '겉넓이' : '부피'}의 식은 $${f[M.ask]}$예요.${M.shape === 'half' && M.ask === 'S' ? ' (곡면 + 자른 면의 원)' : ''}`, `대입하면 $${tx(M.ans)}\\,\\mathrm{${M.ask === 'S' ? 'cm}^2' : 'cm}^3'}$예요.`];
       },
-      view: (M) => ({
-        guide: `<b>반지름 막대</b>와 칩으로 <b>구·반구</b>, <b>구하는 것</b>을 골라 보세요. 겉넓이 $4\\pi r^2$과 부피 $\\frac{4}{3}\\pi r^3$을 반지름 하나로 모두 구할 수 있어요. 부피가 주어지면 ${span('amber', '반지름부터')} 구해요.`,
-        readouts: [rd('반지름', M.r + ' cm', 'amber'), rd('겉넓이', plainVal(M.S) + ' cm²', 'sky', M.shape === 'full' ? `4 × π × ${M.r} × ${M.r}` : `3 × π × ${M.r} × ${M.r}`), rd('부피', plainVal(M.V) + ' cm³', 'green', `${M.shape === 'full' ? '4/3' : '2/3'} × π × ${M.r}×${M.r}×${M.r}`)],
+      view: (M, C) => ({
+        card: C.tab==='explore' && window.innerWidth>=700 && document.querySelector('.apl-canvas-wrap')?.clientWidth>=560 ? {title:'',lines:M.ask==='rev'?[{text:'주어진 부피'},{text:`$${tx(M.V)}$`},{text:'부피에서 반지름을 구하기'},{text:`$r^3=${M.r**3},\\quad r=${M.r}$`},{text:'겉넓이'},{text:`$${tx(M.S)}$`}]:M.ask==='V'?[{text:'부피'},{text:`$${M.shape==='full'?'\\frac{4}{3}':'\\frac{2}{3}'}\\pi\\times${M.r}^3=${tx(M.V)}$`}]:[{text:'겉넓이'},{text:`$${M.shape==='full'?4:3}\\pi\\times${M.r}^2=${tx(M.S)}$`}] } : null,
+        guide: `구 또는 반구를 고르고 겉넓이·부피를 살펴보세요. ${M.shape === 'half' ? '반구의 겉넓이에는 잘린 원도 더해요.' : '구의 겉넓이와 부피는 반지름으로 구해요.'} 부피가 주어지면 반지름부터 구해요.`,
+        readouts: C.tab==='explore' && window.innerWidth>=700 && document.querySelector('.apl-canvas-wrap')?.clientWidth>=560 ? [] : [rd('반지름', M.r + ' cm', 'amber'), rd('겉넓이', plainVal(M.S) + ' cm²', 'sky', M.shape === 'full' ? `4 × π × ${M.r} × ${M.r}` : `3 × π × ${M.r} × ${M.r}`), rd('부피', plainVal(M.V) + ' cm³', 'green', `${M.shape === 'full' ? '4/3' : '2/3'} × π × ${M.r}×${M.r}×${M.r}`)],
         formula: `<p>(구) $S=4\\pi r^2,\\ V=\\frac{4}{3}\\pi r^3$ &nbsp;,&nbsp; (반구) $S=3\\pi r^2,\\ V=\\frac{2}{3}\\pi r^3$</p>`,
         rule: '구는 반지름 r 하나로 겉넓이($4\\pi r^2$)와 부피($\\frac{4}{3}\\pi r^3$)가 모두 정해져요',
         notes: notes('반구의 겉넓이는 $2\\pi r^2$이 아니라 자른 면 $\\pi r^2$까지 더한 <b>$3\\pi r^2$</b>이에요.', '부피 → 겉넓이 문제는 먼저 $r^3$을 구해 <b>반지름</b>을 찾고 겉넓이 식에 넣어요.')
@@ -500,7 +511,7 @@
           wrongs = M.shape === 'full' ? [[V(0, 4 * r * r), '겉넓이를 구했어요.'], [V(0, (2 * r * r * r) / 3), '반구의 부피예요.'], [V(0, 4 * r * r * r), '$\\frac{1}{3}$을 곱하지 않았어요.'], [V(0, (4 * r * r) / 3), '$r^3$이 아니라 $r^2$을 썼어요.'], [V(0, (4 * r * r * r * 8) / 3), '지름을 반지름으로 썼어요.']] : [[V(0, (4 * r * r * r) / 3), '구 전체의 부피예요. 반구는 그 절반이에요.'], [V(0, 3 * r * r), '겉넓이를 구했어요.'], [V(0, 2 * r * r * r), '$\\frac{1}{3}$을 빠뜨렸어요.'], [V(0, (2 * r * r) / 3), '$r^3$이 아니라 $r^2$을 썼어요.'], [V(0, (8 * r * r * r) / 3), '반구가 아니라 구의 지름 값이에요.']];
           stem = `그림과 같이 반지름이 $${r}\\,\\mathrm{cm}$인 ${nm}의 부피는?`;
         }
-        return { tag: M.ask === 'rev' ? '구 종합 (킬러: 부피 → 반지름 → 겉넓이)' : M.ask === 'V' ? '구의 부피' : '구의 겉넓이', key: `${M.shape}|${M.ask}|${r}`, stem, choices: mkV(M.ans, wrongs, { dim: M.ask === 'V' ? 3 : 2 }) };
+        return { tag: M.ask === 'rev' ? '부피에서 겉넓이 구하기' : M.ask === 'V' ? `${nm}의 부피` : `${nm}의 겉넓이`, key: `${M.shape}|${M.ask}|${r}`, stem, choices: mkV(M.ans, wrongs, { dim: M.ask === 'V' ? 3 : 2 }) };
       }
     };
   }

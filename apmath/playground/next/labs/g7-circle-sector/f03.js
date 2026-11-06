@@ -1387,8 +1387,8 @@
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
     order: 63,
     id: 'f03',
-    title: 'F03 겹치기·빼기',
-    short: 'F03 겹치기·빼기',
+    title: '겹치기·빼기',
+    short: '겹치기·빼기',
     params: PARAMS,
     scenes: SCENES.map(makeScene)
   });
