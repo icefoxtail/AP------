@@ -5,7 +5,7 @@
     <script src="generated-mock-selection.js?v=20261030-s9-1"></script>
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
     <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
-    <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
+    <script src="archive2-pdf-readiness.js?v=20261106-output-performance-1"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script>
         // Studio owns ordering/header/layout. Keep the existing renderer and print
@@ -59,7 +59,7 @@
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
-    <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+    <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
@@ -430,13 +430,13 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
     <script src="render-state-normalizer.js?v=20261009.1"></script>
-    <script src="screen-runtime.js?v=20260922.2"></script>
-    <script src="question-image-readiness.js?v=20261106-solution-loading-1"></script>
-    <script src="common-fast-runtime.js?v=20261106-solution-loading-1"></script>
+    <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
+    <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="common-fast-runtime.js?v=20261106-output-performance-2"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261029-sections-1"></script>
-    <script src="solution-render-executor.js?v=20261106-solution-loading-1"></script>
+    <script src="exam-render-executor.js?v=20261106-output-performance-1"></script>
+    <script src="solution-render-executor.js?v=20261106-reminder-fit-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
     <script src="render-feedback.js?v=20261106-solution-loading-1"></script>
@@ -520,6 +520,7 @@
 function createMixerSourceAdapter(buildContext = null) {
 // Each transaction owns this helper scope, AppState, staging and target DOM.
 // The default scope alone installs UI/boot and performs post-commit registration.
+const outputMetadataLoader = window.APOutputMetadataLoader;
 /**
  * Stage E Mixed Engine v1.6.2 (Rulebook v1.9 Final Fix + Image Field + Sol Reverted)
  */
@@ -2103,18 +2104,18 @@ function validateQuestionImageReadiness(root) {
     });
 }
 
-async function waitForQuestionImages(root, timeoutMs = 1200) {
+async function waitForQuestionImages(root, timeoutMs = 1200, signal) {
     const images = normalizeQuestionImageSources(root);
     const result = await window.APQuestionImageReadiness.waitForImages(images, {
-        timeoutMs,
+        timeoutMs, signal,
         failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
         throwOnFailure: true
     });
     return result.summary;
 }
 
-async function prepareQuestionImages(root, timeoutMs = 1200) {
-    return waitForQuestionImages(root, timeoutMs);
+async function prepareQuestionImages(root, timeoutMs = 1200, signal) {
+    return waitForQuestionImages(root, timeoutMs, signal);
 }
 
 async function waitForQuestionImage(img, timeoutMs = 1200) {
@@ -2127,8 +2128,8 @@ async function waitForQuestionImage(img, timeoutMs = 1200) {
     return result;
 }
 
-async function applyAutoImageSizeClasses(root) {
-    await prepareQuestionImages(root);
+async function applyAutoImageSizeClasses(root, timeoutMs = 1200, signal) {
+    await prepareQuestionImages(root, timeoutMs, signal);
     const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
     await Promise.all(wraps.map(async wrap => {
         if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
@@ -2143,7 +2144,74 @@ async function applyAutoImageSizeClasses(root) {
 
 /** UI Actions & Navigation */
 let modeSwitchPending = false;
-async function switchOutputEnvelopeMode(mode) {
+let outputModeTransitionGeneration = 0;
+let activeOutputModeTransition = null;
+
+function normalizeMixedSourceQuestions(questions) {
+    const normalize = outputMetadataLoader?.normalizeQuestion || window.mergeArchiveQuestionMetadata;
+    return questions.map((question, index) => normalize
+        ? normalize(question, {
+            questionUid: question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid,
+            sourceArchiveFile: question?.sourceArchiveFile || question?._sourceFile,
+            sourceOrdinal: question?.sourceOrdinal || question?._sourceQuestionOrdinal || question?.source_question_ordinal || index + 1
+        })
+        : question);
+}
+
+function mixedOutputInputFingerprint(state) {
+    return window.APRenderStateNormalizer.semanticDigest({
+        key: state.key, data: state.data, meta: state.meta, qpp: state.qpp,
+        printHeaderOptions: state.printHeaderOptions
+    });
+}
+
+function captureOutputTransport(intent, state, baseUrl) {
+    const payload = intent.payload || {};
+    if (!payload.outputEnvelope) return null;
+    const N = window.APRenderStateNormalizer;
+    const envelope = payload.outputEnvelope;
+    const url = new URL(payload.outputUrl || baseUrl, baseUrl);
+    const base = new URL(baseUrl);
+    const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+    const optionIdentity = value => {
+        const options = new URL(value);
+        for (const key of ['archive2Context', 'archive2OutputContract', 'outputRequestId', 'outputOwnerId', 'mode', 'q', 'qpp', 'studio'])
+            options.searchParams.delete(key);
+        return N.semanticDigest([...options.searchParams.entries()].sort());
+    };
+    if (intent.type !== 'MODE_CHANGE' || payload.outputGeneration !== outputModeTransitionGeneration ||
+        payload.inputFingerprint !== mixedOutputInputFingerprint(state) ||
+        url.origin !== base.origin || url.pathname !== base.pathname || url.hash !== base.hash ||
+        optionIdentity(url) !== optionIdentity(base) ||
+        envelope.mode !== state.mode || url.searchParams.get('mode') !== state.mode ||
+        url.searchParams.get('archive2Context') !== 'archive2' ||
+        url.searchParams.get('archive2OutputContract') !== envelope.contractVersion ||
+        url.searchParams.get('outputRequestId') !== envelope.outputRequestId ||
+        url.searchParams.get('outputOwnerId') !== envelope.ownerId ||
+        (current && (envelope.ownerId !== current.ownerId || envelope.sourceKind !== current.sourceKind || envelope.sourceId !== current.sourceId)) ||
+        envelope.questionCount !== state.data.length || url.searchParams.get('q') !== String(state.data.length) ||
+        Number(envelope.meta?.qpp) !== state.qpp || url.searchParams.get('qpp') !== String(state.qpp) ||
+        url.searchParams.get('studio') !== '1' ||
+        N.semanticDigest(normalizeMixedSourceQuestions(envelope.questions || [])) !== N.semanticDigest(state.data) ||
+        N.semanticDigest(envelope.meta) !== N.semanticDigest({ ...state.meta, qpp: state.qpp, printHeaderOptions: state.printHeaderOptions }))
+        throw new Error('OUTPUT_MODE_TRANSACTION_MISMATCH');
+    return { envelope, url: url.href, generation: payload.outputGeneration };
+}
+
+function outputRenderUrl(value) {
+    const url = new URL(value);
+    // A new envelope has a fresh request ID even when all rendering inputs are
+    // unchanged. The ordinary solution QR embeds that URL, so its exam canvas
+    // still needs a rebuild. Portal QR uses a separate student-portal URL.
+    const embedsRequestId = url.searchParams.get('mode') === 'exam' &&
+        url.searchParams.get('solQr') === '1' && url.searchParams.get('portalQr') !== '1';
+    if (!embedsRequestId) url.searchParams.delete('outputRequestId');
+    return url.href;
+}
+
+// Keep the explicit legacy diagnostic path unchanged; production uses the
+// common runtime transaction and snapshot cache below.
+async function switchLegacyOutputEnvelopeMode(mode) {
     if (modeSwitchPending) return { ok: false, code: 'MODE_SWITCH_PENDING' };
     const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
     if (current?.mode === mode || (!current && AppState.mode === mode)) return { ok: true, mode };
@@ -2244,6 +2312,110 @@ async function switchOutputEnvelopeMode(mode) {
         throw error;
     } finally {
         modeSwitchPending = false;
+    }
+}
+
+
+async function switchOutputEnvelopeMode(mode) {
+    if (!window.mixedFastHost) return switchLegacyOutputEnvelopeMode(mode);
+    const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+    const ready = window.__AP_OUTPUT_RENDER_READY__;
+    if (!activeOutputModeTransition && !window.mixedFastHost.runtime.busy && !window.__AP_OUTPUT_RENDER_ERROR__ && AppState.mode === mode &&
+        ((!current) || (current.mode === mode && ready?.outputRequestId === current.outputRequestId && ready?.payloadHash === current.payloadHash))) {
+        const pending = window.__AP_RENDER_READY__;
+        const generation = outputModeTransitionGeneration;
+        let rendered;
+        try { rendered = await pending; } catch (_) { /* Retry a rejected latest render below. */ }
+        if (pending !== window.__AP_RENDER_READY__ || generation !== outputModeTransitionGeneration ||
+            activeOutputModeTransition || window.mixedFastHost.runtime.busy || AppState.mode !== mode ||
+            current !== (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__) || ready !== window.__AP_OUTPUT_RENDER_READY__)
+            return { ok: false, code: 'DISCARDED_STALE' };
+        if (!window.__AP_OUTPUT_RENDER_ERROR__ && rendered?.ok === true && rendered.mode === mode && Number(rendered.pages) > 0 &&
+            (!current || rendered.pages === ready.pageCount)) return { ok: true, mode, pages: rendered.pages };
+        // A failed transition can restore this healthy view while leaving the
+        // latest public promise failed. Re-enter the runtime to recover printing.
+    }
+    if (!current && (!Array.isArray(AppState.data) || !AppState.data.length)) return null;
+    const N = window.APRenderStateNormalizer;
+    const source = N.copy({ key: AppState.key, data: AppState.data, meta: AppState.meta,
+        qpp: normalizeMixedQpp(AppState.qpp), printHeaderOptions: normalizePrintHeaderOptions(AppState.printHeaderOptions) });
+    const transition = { generation: ++outputModeTransitionGeneration, mode };
+    activeOutputModeTransition = transition;
+    const oldHref = window.location.href;
+    const previousReady = !!ready && !window.__AP_OUTPUT_RENDER_ERROR__;
+    let envelope = null, runtimeCommitted = false, completed = false, renderPromise = null;
+    let readyBeforeRequest = null, renderPromiseObserved = false;
+    const isLatest = () => transition.generation === outputModeTransitionGeneration &&
+        (!renderPromise || window.__AP_RENDER_READY__ === renderPromise ||
+            (!renderPromiseObserved && window.__AP_RENDER_READY__ === readyBeforeRequest));
+    const discarded = () => ({ ok: false, code: 'DISCARDED_STALE' });
+    const cleanupUncommittedEnvelope = async () => {
+        if (!envelope || runtimeCommitted || window.__AP_OUTPUT_ENVELOPE__?.outputRequestId === envelope.outputRequestId) return;
+        try { await window.Archive2Output.createOutputStore().cleanup(envelope.ownerId, envelope.outputRequestId); }
+        catch (error) { console.warn('[mixed-engine] stale output envelope cleanup failed:', error); }
+    };
+    window.Archive2ReaderControls?.setReady(false, AppState.mode);
+    try {
+        // Keep the exact frozen source on ordinary mode switches. A source edit
+        // must receive its own envelope, never the old content's transport ID.
+        const sameSource = current && N.semanticDigest(normalizeMixedSourceQuestions(current.questions)) === N.semanticDigest(source.data);
+        const questions = sameSource ? current.questions : source.data;
+        const questionUids = sameSource ? current.questionUids : questions.map(question =>
+            question.questionUid || question.source_question_uid || question._sourceQuestionUid || null);
+        envelope = await window.Archive2Output.publishOutputEnvelope({
+            sourceKind: current?.sourceKind || (source.meta.category === '단원별 기출' ? 'unit-past' : 'archive2-mixed'),
+            sourceId: current?.sourceId || source.key || source.meta.unitKey || source.meta.identityTitle || source.meta.title || 'mixed-output-source',
+            ...(current?.paperId ? { paperId: current.paperId } : {}),
+            ...(current?.assignmentId ? { assignmentId: current.assignmentId } : {}),
+            ...(current?.ownerId ? { ownerId: current.ownerId } : {}),
+            mode, questionCount: questions.length, questionUids, questions,
+            meta: { ...source.meta, qpp: source.qpp, printHeaderOptions: source.printHeaderOptions }
+        });
+        if (!isLatest()) { await cleanupUncommittedEnvelope(); return discarded(); }
+        if (!window.mixedFastHost) throw new Error('SCREEN_RUNTIME_UNAVAILABLE');
+        const outputUrl = new URL(oldHref);
+        outputUrl.searchParams.set('archive2Context', 'archive2');
+        outputUrl.searchParams.set('archive2OutputContract', envelope.contractVersion);
+        outputUrl.searchParams.set('outputRequestId', envelope.outputRequestId);
+        outputUrl.searchParams.set('outputOwnerId', envelope.ownerId);
+        outputUrl.searchParams.set('mode', envelope.mode);
+        outputUrl.searchParams.set('q', String(envelope.questionCount));
+        outputUrl.searchParams.set('qpp', String(source.qpp));
+        outputUrl.searchParams.set('studio', '1');
+        readyBeforeRequest = window.__AP_RENDER_READY__;
+        renderPromise = window.mixedFastHost.runtime.request({
+            type: 'MODE_CHANGE', requestedMode: mode, foreground: true,
+            payload: { outputEnvelope: envelope, outputUrl: outputUrl.href,
+                inputFingerprint: mixedOutputInputFingerprint(source), outputGeneration: transition.generation }
+        });
+        renderPromiseObserved = window.__AP_RENDER_READY__ === renderPromise;
+        const rendered = await renderPromise;
+        runtimeCommitted = rendered?.ok === true;
+        if (!isLatest()) { await cleanupUncommittedEnvelope(); return discarded(); }
+        if (!rendered?.ok || !rendered.pages)
+            throw new Error(rendered?.message || rendered?.code || '출력 렌더링이 완료되지 않았습니다.');
+        // Full PDF readiness and its identity seal already passed inside the
+        // runtime transaction, while the previous view was still recoverable.
+        window.Archive2ReaderControls?.setReady(true, mode);
+        completed = true;
+        return { ...rendered, ok: true, mode, outputRequestId: envelope.outputRequestId };
+    } catch (error) {
+        if (!runtimeCommitted) await cleanupUncommittedEnvelope();
+        if (!isLatest()) return discarded();
+        if (runtimeCommitted) {
+            // A late asset/readiness failure must keep the committed DOM and
+            // its identity together and must never restore an old success seal.
+            window.__AP_OUTPUT_RENDER_ERROR__ = String(error?.message || error);
+            window.__AP_OUTPUT_RENDER_READY__ = null;
+            window.Archive2ReaderControls?.setReady(false, mode);
+        }
+        throw error;
+    } finally {
+        if (activeOutputModeTransition === transition) {
+            activeOutputModeTransition = null;
+            if (isLatest() && !completed && !runtimeCommitted)
+                window.Archive2ReaderControls?.setReady(previousReady, AppState.mode);
+        }
     }
 }
 
@@ -3188,6 +3360,13 @@ async function safePrint(mode = 'vector') {
     let fastPreflightComplete = false;
     try {
         if (window.mixedFastHost) await window.mixedFastHost.preflight();
+        if (activeOutputModeTransition) throw new Error('OUTPUT_MODE_TRANSITION_PENDING');
+        const envelope = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+        if (envelope) await window.Archive2PdfReadiness.assertReady({
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash
+        });
         fastPreflightComplete = true;
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         const renderOutcome = await Promise.race([window.__AP_RENDER_READY__, limit(20000)]);
@@ -3356,7 +3535,11 @@ if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
 }
 
 async function init() {
-    if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
+    if (!outputMetadataLoader) throw Object.assign(
+        new Error('출력 준비 모듈을 불러오지 못했습니다. 새로고침하여 다시 시도해 주세요.'),
+        { code: 'OUTPUT_METADATA_LOADER_UNAVAILABLE' }
+    );
+    await outputMetadataLoader.ready;
     const p = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
     const strictOutput = p.get('archive2Context') === 'archive2' || p.has('archive2OutputContract') || p.has('outputRequestId');
     const outputRequestId = p.get('outputRequestId') || '';
@@ -3475,13 +3658,7 @@ async function init() {
     try {
         const parsedData = JSON.parse(rawData);
         const parsedQuestions = Array.isArray(parsedData) ? parsedData : [];
-        AppState.data = parsedQuestions.map((question, index) => window.mergeArchiveQuestionMetadata
-            ? window.mergeArchiveQuestionMetadata(question, {
-                questionUid: question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid,
-                sourceArchiveFile: question?.sourceArchiveFile || question?._sourceFile,
-                sourceOrdinal: question?.sourceOrdinal || question?._sourceQuestionOrdinal || question?.source_question_ordinal || index + 1
-            })
-            : question);
+        AppState.data = normalizeMixedSourceQuestions(parsedQuestions);
     } catch (e) {
         console.error('mixedQuestions parse error:', e);
         if (strictOutput) {
@@ -3537,17 +3714,19 @@ async function init() {
             window.__AP_OUTPUT_RENDER_ERROR__ = message;
             throw new Error(message);
         }
-        const readiness = await window.Archive2PdfReadiness.assertReady({
-            contractVersion: outputEnvelope.contractVersion,
-            outputRequestId: outputEnvelope.outputRequestId,
-            payloadHash: outputEnvelope.payloadHash,
-        });
-        window.__AP_OUTPUT_RENDER_READY__ = {
-            contractVersion: outputEnvelope.contractVersion,
-            outputRequestId: outputEnvelope.outputRequestId,
-            payloadHash: outputEnvelope.payloadHash,
-            pageCount: readiness.pageCount,
-        };
+        if (!window.mixedFastHost) {
+            const readiness = await window.Archive2PdfReadiness.assertReady({
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+            });
+            window.__AP_OUTPUT_RENDER_READY__ = {
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+                pageCount: readiness.pageCount,
+            };
+        }
         window.Archive2ReaderControls?.setReady(true, outputEnvelope.mode);
     }
 }
@@ -3570,7 +3749,7 @@ if (!buildContext) window.onload = () => {
     init().catch(error => {
         console.error('[mixed-engine] output render failed', error);
         const params = new URLSearchParams(window.location.search);
-        if (params.get('archive2Context') !== 'archive2') return;
+        if (params.get('archive2Context') !== 'archive2' && error?.code !== 'OUTPUT_METADATA_LOADER_UNAVAILABLE') return;
         document.documentElement.dataset.archive2OutputFailure = 'true';
         const host = document.getElementById('print-area') || document.body;
         host.replaceChildren();
@@ -3585,13 +3764,20 @@ if (!buildContext) window.onload = () => {
         reopen.href = 'workspace.html?view=saved';
         reopen.textContent = '저장한 시험지 목록에서 다시 열기';
         panel.append(title, detail, reopen);
+        if (error?.code === 'OUTPUT_METADATA_LOADER_UNAVAILABLE') {
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.textContent = '새로고침하여 다시 시도';
+            retry.addEventListener('click', () => window.location.reload());
+            panel.append(retry);
+        }
         host.append(panel);
         window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
     });
 };
 
 function mixedExecutorDeps() {
-    return { document, Node, appState: AppState, stagingHost: buildContext.stagingHost,
+    return { document, Node, appState: AppState, stagingHost: buildContext.stagingHost, abortSignal: buildContext.abortSignal,
         makePage, applyAutoImageSizeClasses, typesetMath, raf,
         getArchiveQuestionSourceRef: getMixedQuestionSourceRef,
         stripInlineImagesFromContent, sanitizeProtectedSegments, normalizeQuestionNotes,
@@ -3739,20 +3925,82 @@ return { AppState,
     raf,
     build: buildMixedTransaction,
     waitImages: waitForPrintImages,
-    restoreState(value) { for (const key of Object.keys(AppState)) delete AppState[key]; Object.assign(AppState, value); },
+    restoreState(value) {
+        for (const key of Object.keys(AppState)) delete AppState[key];
+        Object.assign(AppState, value.appState);
+        for (const [key, descriptor, previousValue] of value.outputGlobals) {
+            if (descriptor) {
+                Object.defineProperty(window, key, descriptor);
+                if (descriptor.set) descriptor.set.call(window, previousValue);
+            }
+            else delete window[key];
+        }
+        for (const [name, present] of value.outputClasses) document.documentElement.classList.toggle(name, present);
+    },
     getReadiness: () => mixedReadinessTracker,
-    captureState: () => ({ ...AppState }),
+    captureState: () => ({
+        appState: { ...AppState },
+        outputGlobals: ['__AP_OUTPUT_ENVELOPE__', '__AP_OUTPUT_ENVELOPE_READY__', '__AP_OUTPUT_RENDER_READY__', '__AP_OUTPUT_RENDER_ERROR__']
+            .map(key => [key, Object.getOwnPropertyDescriptor(window, key), window[key]]),
+        outputClasses: ['archive2-output-envelope', 'archive2-output']
+            .map(name => [name, document.documentElement.classList.contains(name)])
+    }),
     bindReadiness(value) { mixedReadinessTracker = value; },
     commitState(value, ctx) {
+        const transport = ctx?.input.transport;
+        if (transport && transport.generation !== outputModeTransitionGeneration) throw new Error('DISCARDED_STALE');
+        const envelope = transport?.envelope || AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
         for (const key of Object.keys(AppState)) delete AppState[key];
         Object.assign(AppState, value);
+        if (envelope) AppState.outputEnvelope = envelope;
+        if (transport) {
+            window.__AP_OUTPUT_ENVELOPE__ = envelope;
+            window.__AP_OUTPUT_ENVELOPE_READY__ = {
+                contractVersion: envelope.contractVersion,
+                outputRequestId: envelope.outputRequestId,
+                payloadHash: envelope.payloadHash
+            };
+            window.__AP_OUTPUT_RENDER_READY__ = null;
+            window.__AP_OUTPUT_RENDER_ERROR__ = null;
+            document.documentElement.classList.add('archive2-output-envelope', 'archive2-output');
+        }
         if (ctx) mixedReadinessTracker = ctx.readinessTracker;
         renderPrintHeaderControls();
         syncQrOutputControls(ctx?.input.url);
         document.getElementById('ctrl-title').textContent = getIdentityTitle();
         document.getElementById('qppSelect').value = String(AppState.qpp);
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${AppState.mode}`));
-    } };
+        applyQrSolutionLockUI();
+        window.Archive2ReaderControls?.syncMode(AppState.mode);
+        // This runs after attachment but before history, inside the runtime's
+        // synchronous rollback boundary, on both cache misses and hits.
+        if (envelope) window.Archive2PdfReadiness.assertLayoutReady();
+    },
+    async finalizeState(ctx) {
+        const transport = ctx.input.transport;
+        const envelope = transport?.envelope || AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+        if (!envelope) return;
+        const readiness = await window.Archive2PdfReadiness.assertReady({
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash
+        }, {
+            signal: ctx.abortSignal,
+            renderOutcome: { ok: ctx.state === 'SUCCEEDED' && ctx.result.sessionId === ctx.requestedTargetSessionId,
+                pages: ctx.result.pageCount }
+        });
+        if (ctx.abortSignal.aborted || (transport && transport.generation !== outputModeTransitionGeneration))
+            throw new Error('DISCARDED_STALE');
+        if (readiness.pageCount !== ctx.result.pageCount) throw new Error('OUTPUT_PAGE_COUNT_MISMATCH');
+        window.__AP_OUTPUT_RENDER_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+            pageCount: readiness.pageCount
+        };
+    },
+    captureOutputTransport,
+    outputRenderUrl };
 }
 const mixerSourceAdapter = createMixerSourceAdapter();
 Object.assign(window, mixerSourceAdapter);
@@ -3764,6 +4012,8 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
             return { data, meta, mode, qpp, key, printHeaderOptions };
         },
         sourceIdentity: state => ({ key: state.key, data: state.data, meta: state.meta }),
+        captureTransport: mixerSourceAdapter.captureOutputTransport,
+        renderUrl: mixerSourceAdapter.outputRenderUrl,
         applyIntent(state, intent) {
             if (intent.type === 'SOURCE_CHANGE' && intent.payload?.data) state.data = intent.payload.data;
             if (intent.type === 'MODE_CHANGE') state.mode = intent.requestedMode;
@@ -3774,6 +4024,7 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
         prepareState(state) { if (!Array.isArray(state.data) || !state.data.length) throw Error('INVALID_MIXED_SOURCE'); },
         createBuild: createMixerSourceAdapter,
         commit: mixerSourceAdapter.commitState,
+        finalize: mixerSourceAdapter.finalizeState,
         restoreState: mixerSourceAdapter.restoreState,
         bindReadiness: mixerSourceAdapter.bindReadiness,
         getReadiness: mixerSourceAdapter.getReadiness, captureState: mixerSourceAdapter.captureState,

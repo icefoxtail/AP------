@@ -50,11 +50,13 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "primaryMethod": "제곱근의 정의와 음수의 실수 제곱근 존재 여부를 선택지별로 확인",
+    "decisiveStep": "(-√7)²=7은 참이고, 나머지 선택지는 0의 제곱근·양의 제곱근·음수·분수 제곱근 성질에 위배"
   },
   {
     "id": 2,
@@ -383,14 +385,16 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+    "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png"
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png",
+    "primaryMethod": "정사각형의 대각선에 피타고라스 정리를 적용한 뒤 같은 길이를 수직선 위로 옮겨 좌표 결정",
+    "decisiveStep": "AC=√(1²+1²)=√2, CP=AC이므로 C의 좌표 1에서 오른쪽으로 √2만큼 이동하여 P=1+√2"
   },
   {
     "id": 8,

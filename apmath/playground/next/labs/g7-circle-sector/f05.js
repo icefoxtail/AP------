@@ -275,6 +275,7 @@
           : '<div class="f5-fb bad"><b>다시 생각해 볼까요?</b> ' + esc(hintOf(o.L, ok.L)) + '</div>';
       }
     }
+    if (D.id === 'f5-ring') h += '<div class="f5-fb"><b>서술형 연습</b> 같은 그림의 둘레를 구하는 과정을 직접 써 보세요. 정리 탭에서 풀이를 확인할 수 있어요. [6점]</div>';
     h += '<div class="f5-tools"><button type="button" class="apl-btn sm" data-f5-new>숫자 바꾸기</button><span class="f5-note">슬라이더로 길이와 각을 바꾸면 그림과 보기가 함께 바뀌어요.</span></div>';
     return h;
   }
@@ -949,7 +950,9 @@
     const ah = Math.max(10, b.H - (b.panes ? 0 : b.insets.top + b.insets.bottom));
     const pad = b.pad * Math.min(aw, ah);
     const W = aw - 2 * pad, H = ah - 2 * pad;
-    const fx0 = G.x0 - 1, fx1 = G.x1 + 1, fy0 = G.y0 - 1, fy1 = G.y1 + 1;
+    // 정리의 호 길이 이름표는 반지름 1.5 위치에 있습니다. 원의 테두리만으로 맞추지 않습니다.
+    const extent = plain || b.thumb ? 1 : 1.5;
+    const fx0 = G.x0 - extent, fx1 = G.x1 + extent, fy0 = G.y0 - extent, fy1 = G.y1 + extent;
     const narrow = aw < 560;
     const tiny = !!b.thumb;
     const PAD_X = tiny ? 8 : narrow ? 38 : 52, PAD_T = tiny ? 8 : narrow ? 30 : 38, PAD_B = tiny ? 8 : narrow ? 24 : 34, BOT_TXT = 56, HALF_TXT = 96, GAP = 0.5;
@@ -1366,9 +1369,9 @@
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
     order: 65,
     id: 'f5',
-    title: 'F05 복합 원호',
-    short: 'F05 복합 원호',
+    title: '복합 원호',
+    short: '복합 원호',
     params: BASE_PARAMS,
-    scenes: [SN, RING, RING2, RING240, STAR, LENS, CUT, TRACK].map(pieceScene).concat(['sq4', 'rect', 'tri3', 'line'].map(bandScene))
+    scenes: [SN, RING, RING240, STAR, LENS, CUT, TRACK].map(pieceScene).concat(['sq4', 'rect', 'tri3', 'line'].map(bandScene))
   });
 })();

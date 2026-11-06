@@ -33,7 +33,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 예: a=0일 때 x≥0에서 y=x+3(점 (0,3)에서 시작)과 x<0에서 기울기 2인 직선이 점선 y=3 아래로 (0,3)에 다가가는 그래프.",
     "solutionImageCaption": "예: a=0이면 x≥0에서 y=x+3은 점 (0,3)에서 시작하고, x<0에서 기울기 2-a>0인 직선은 y=3보다 아래에서 (0,3)에 다가가 두 부분의 함수값이 겹치지 않는다. 따라서 a<2이므로 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION"
   },
   {
     "id": 2,
@@ -63,7 +65,9 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+    "templateKey": "TPL_COMPOSITION_RELATION_CONDITION"
   },
   {
     "id": 3,
@@ -138,7 +142,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: y=-√(-4x+4)+1의 그래프가 끝점 (1,1)에서 시작해 점 (0,-1)을 지나 왼쪽 아래로 뻗고, 끝점에서 두 축으로 점선이 내려오는 그림.",
     "solutionImageCaption": "끝점 (1,1)에서 근호 안의 값이 0이고 점 (0,-1)을 지나므로 a=-2, b=4, c=1이다. 따라서 a+b+c=3이고 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE"
   },
   {
     "id": 5,

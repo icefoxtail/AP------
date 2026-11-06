@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<style>.sv-student-tip{position:absolute;top:12px;left:14px;max-width:230px;padding:9px 12px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);color:var(--text);font-size:13px;line-height:1.45;z-index:4;pointer-events:auto;box-shadow:0 2px 8px #0000000b}.sv-student-tip[hidden]{display:none}.sv-student-tip summary{cursor:pointer;font-weight:700}.sv-student-tip span{display:block;margin-top:6px}@media(max-width:599px){.sv-student-tip{position:static;max-width:none;margin:6px 12px}}
+@media (min-width:700px){.apl-card-float{width:220px;padding:12px}.apl-card-float h4{display:none}.apl-card-float ul,.apl-card-float.min ul{display:grid;gap:2px}.apl-card-float li{font-size:15px;line-height:1.4}.apl-card-float li:nth-child(2n+3){margin-top:6px}}.apl-stage:has(.apl-card-float:not([hidden])) .apl-dock{filter:saturate(.55)}
+.apl-stage:has(.apl-card-float:not([hidden])) .apl-dock .apl-btn.primary{background:#dcece5;color:#204d3d;border:1px solid #b4d1c2}
+.apl-stage:has(.apl-card-float:not([hidden])) .apl-dock .apl-btn.primary:hover{background:#cce2d7;color:#173e30}
+@media(min-width:700px) and (max-width:859px){.apl-float.tr{top:12px;right:12px;bottom:auto;left:auto;align-items:flex-end;max-width:220px}}</style>
 <link rel="stylesheet" href="../kit/apl-video.css">
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
@@ -38,7 +43,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 'video'];
+const MODULES = ['solid3d', 'dims', 'core', 'net', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'video'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
@@ -49,12 +54,31 @@ const loadScript = (src) => new Promise((res) => {
 
 function start() {
   const mods = (window.APL_SV_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length);
-  const groups = mods.slice().sort((a, b) => (a.order || 0) - (b.order || 0)).map((g) => ({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes }));
+  // 겉넓이·부피의 학습 흐름에 맞게 정리합니다. 각 장면의 ID와 기존 코드는 유지합니다.
+  const byId = new Map(mods.flatMap(g => g.scenes).map(sc => [sc.id, sc]));
+  const layout = [
+    ['기둥의 겉넓이와 부피', '기둥', ['sv1-1','sv1-2','sv1-3','sv1-4']],
+    ['뿔의 겉넓이와 부피', '뿔', ['sv2-1','sv2-2','sv2-3','sv2-4','sv2-5','sv2-6','sv2-7','sv4-1']],
+    ['구의 겉넓이와 부피', '구', ['sv3-1','sv3-2','sv3-3','sv3-4','sv3-5','sv3-6','sv3-7']],
+    ['여러 가지 입체도형', '여러 가지', ['sv1-5','sv4-2','sv4-3','sv4-4','sv5-1','sv5-2','sv5-3','sv5-4','sv5-5','sv5-6','sv6-1']]
+  ];
+  const groups = layout.map(([title, short, ids], i) => ({ id: `sv-layout-${i+1}`, title, short, scenes: ids.map(id => byId.get(id)).filter(Boolean) }));
+  // 이후 추가되는 장면도 분류표에 없다는 이유로 사라지지 않게 보존합니다.
+  const assigned = new Set(layout.flatMap(([, , ids]) => ids));
+  mods.flatMap(g => g.scenes).filter(sc => !assigned.has(sc.id)).forEach(sc => groups[3].scenes.push(sc));
+  // 예전 공유 주소의 장면 ID를 새 그룹 번호로 옮겨 같은 장면을 계속 엽니다.
+  const hash = new URLSearchParams(location.hash.slice(1));
+  const selected = hash.get('s');
+  if (selected) {
+    const id = selected.split('@')[0], gi = groups.findIndex(group => group.scenes.some(scene => scene.id === id));
+    if (gi >= 0 && selected !== `${id}@${gi}`) { hash.set('s', `${id}@${gi}`); history.replaceState(null, '', `${location.pathname}${location.search}#${hash}`); }
+  }
   const params = {};
   mods.forEach((g) => Object.assign(params, g.params || {}));
   const clamp = APLab.clamp;
   APLab.createLab({
     id: 'g7-surface-volume',
+    persist: ['tfMode', 'tfStarted', 'tpStarted', 'sv11Mode', 'sv11Started', 'sv23Started', 'svTri', 'svTri4', 'svKind5', 'svMode', 'svYaw', 'svPitch', 'svShape', 'jcKind', 'jcMode', 'jcStarted', 'remKind', 'remMode', 'tpMode'],
     stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)
     title: '겉넓이 · 부피',
     courseName: '중1',

@@ -35,7 +35,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_CIRCULAR_PERMUTATION",
+    "primaryMethod": "서로 다른 네 색을 사분면에 배치하고 정사각형의 90도 회전으로 일치하는 배치를 한 경우로 계산",
+    "decisiveStep": "네 색이 모두 달라 비항등 회전으로 자기 자신과 일치하지 않으므로 4!/4=3!=6"
   },
   {
     "id": 2,
@@ -72,7 +77,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_CIRCULAR_PERMUTATION",
+    "primaryMethod": "정삼각형 탁자의 세 방향 회전 중복을 제거한 전체 배치에서 남자 두 명이 같은 모서리인 배치를 제외",
+    "decisiveStep": "전체 6!/3=240, 같은 모서리 3·2!·4!/3=48이므로 다른 모서리 192"
   },
   {
     "id": 3,
@@ -109,7 +119,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+    "primaryMethod": "학생마다 네 여행지 중 하나를 독립적으로 중복 선택하는 중복순열",
+    "decisiveStep": "세 학생 각각 4가지이므로 4³=64"
   },
   {
     "id": 4,

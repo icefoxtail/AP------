@@ -182,3 +182,120 @@ for (const failure of ['network', 'decode', 'timeout']) {
     }
   });
 }
+
+function trackedAbort() {
+  const controller = new AbortController(), listeners = new Set();
+  const signal = controller.signal;
+  const add = signal.addEventListener.bind(signal), remove = signal.removeEventListener.bind(signal);
+  signal.addEventListener = (type, callback, options) => { if (type === 'abort') listeners.add(callback); add(type, callback, options); };
+  signal.removeEventListener = (type, callback) => { if (type === 'abort') listeners.delete(callback); remove(type, callback); };
+  return { controller, signal, listenerCount: () => listeners.size };
+}
+
+for (const phase of ['load', 'decode', 'already-aborted']) {
+  test(`canceling an image ${phase} wait releases its deadline and listeners immediately`, async () => {
+    const harness = readinessHarness(), abort = trackedAbort(), decode = deferred();
+    const item = phase === 'load' ? pendingImage() : image({ decode: () => decode.promise });
+    if (phase === 'already-aborted') abort.controller.abort();
+    const outcome = observe(harness.api.waitForImages([item], { timeoutMs: 15000, signal: abort.signal }));
+    await harness.advance(50);
+    if (phase !== 'already-aborted') {
+      assert.equal(outcome.settled, false);
+      abort.controller.abort();
+      await harness.advance();
+    }
+    assert.equal(outcome.error?.code, 'DISCARDED_STALE');
+    assert.equal(harness.timerCount(), 0);
+    assert.equal(item.listenerCount(), 0);
+    assert.equal(abort.listenerCount(), 0);
+    // Late native completion is observed but cannot upgrade the canceled wait.
+    if (phase === 'load') item.load();
+    else decode.reject(new Error('late native decode failure'));
+    if (phase === 'already-aborted') decode.promise.catch(() => {});
+    await harness.advance();
+    assert.equal(outcome.error?.code, 'DISCARDED_STALE');
+    assert.equal(harness.timerCount(), 0);
+  });
+}
+
+function examImageHarness(imageState, signal) {
+  const timing = readinessHarness(), events = [];
+  const node = (tag = 'div') => {
+    const value = { tag, style: {}, dataset: {}, children: [], className: '',
+      classList: { add() {}, remove() {} },
+      appendChild(child) { this.children.push(child); return child; },
+      removeChild(child) { this.children.splice(this.children.indexOf(child), 1); },
+      querySelectorAll(selector) {
+        const all = this.children.flatMap(child => [child, ...child.querySelectorAll('*')]);
+        return selector === '*' ? all : all.filter(child => child.className === 'q-box');
+      },
+      cloneNode() { const clone = node(tag); clone.className = this.className; clone.dataset = { ...this.dataset }; return clone; }
+    };
+    Object.defineProperties(value, {
+      innerHTML: { set() { this.children = []; } },
+      scrollHeight: { get() { events.push({ kind: 'geometry', box: this.className === 'q-box' }); return 60; } },
+      clientHeight: { get() { events.push({ kind: 'geometry', box: false }); return 1000; } }
+    });
+    return value;
+  };
+  const document = { createElement: node }, staging = node(), area = node();
+  const context = { module: { exports: {} }, URL };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../archive/exam-render-executor.js'), 'utf8'), context);
+  const pass = value => value;
+  const deps = { document, stagingHost: staging, appState: { qpp: 1 }, abortSignal: signal,
+    makePage(target, type, number) { events.push({ kind: 'page', number }); const page = node('page'); page.body = node('body'); page.appendChild(page.body); target.appendChild(page); return page; },
+    async applyAutoImageSizeClasses(target, timeoutMs, passedSignal) {
+      events.push({ kind: 'images', timeoutMs, signal: passedSignal });
+      await timing.api.waitForImages([imageState], { timeoutMs, signal: passedSignal,
+        failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' } });
+      events.push({ kind: 'images-ready' });
+    },
+    async typesetMath() { events.push({ kind: 'math' }); }, async raf() {},
+    getArchiveQuestionSourceRef: (question, index) => 'fixture#' + index,
+    stripInlineImagesFromContent: pass, sanitizeProtectedSegments: pass, normalizeQuestionNotes: pass,
+    normalizeViewBlocks: pass, normalizeQuestionTables: pass, formatQuestionContent: pass, wrapLatex: pass,
+    renderQuestionImageHTML: () => '', renderChoicesHTML: () => '', normalizeQuestionImageSources() {},
+    fitQuestionBox() {}, autoCompress() {}, rendererMode: () => 'batch', measurementMode: () => 'batch' };
+  return { ...timing, events, area,
+    outcome: observe(context.module.exports.render({ area, data: [{ content: 'first' }, { content: 'second' }], deps })) };
+}
+
+test('shared exam staging waits for delayed figures before MathJax, profile measurement and pages', async () => {
+  const item = pendingImage(), abort = trackedAbort();
+  const h = examImageHarness(item, abort.signal);
+  assert.equal(h.events[0].timeoutMs, 15000);
+  assert.equal(h.events[0].signal, abort.signal);
+  await h.advance(6000);
+  assert.equal(h.outcome.settled, false);
+  assert.deepEqual(h.events.map(item => item.kind), ['images'], 'valid slow images cannot be measured as unloaded placeholders');
+  item.load(); await h.advance(); await h.advance();
+  assert.equal(h.outcome.error, undefined);
+  assert.equal(h.outcome.value, h.area);
+  assert.ok(h.events.filter(item => item.kind === 'geometry' && item.box).length >= 4, 'both raw and tight question measurements still execute');
+  assert.ok(h.events.some(item => item.kind === 'math'));
+  assert.ok(h.events.filter(item => item.kind === 'page' && item.number > 0).length > 0);
+  assert.equal(h.events.findIndex(item => item.kind === 'images-ready'), 1);
+  assert.equal(h.timerCount(), 0);
+  assert.equal(abort.listenerCount(), 0);
+});
+
+for (const failure of ['network', 'timeout', 'cancel']) {
+  test(`exam staging ${failure} still blocks every measurement and cleans up before retry`, async () => {
+    const item = pendingImage(), abort = trackedAbort();
+    const h = examImageHarness(item, abort.signal);
+    await h.advance(14999);
+    assert.equal(h.outcome.settled, false);
+    if (failure === 'network') item.fail();
+    if (failure === 'cancel') abort.controller.abort();
+    await h.advance(failure === 'timeout' ? 1 : 0);
+    assert.equal(h.outcome.error?.code, failure === 'cancel' ? 'DISCARDED_STALE' :
+      failure === 'timeout' ? 'QUESTION_IMAGE_READINESS_INCOMPLETE' : 'QUESTION_IMAGE_LOAD_FAILED');
+    assert.deepEqual(h.events.map(item => item.kind), ['images']);
+    assert.equal(h.timerCount(), 0);
+    assert.equal(item.listenerCount(), 0);
+    assert.equal(abort.listenerCount(), 0);
+    const retry = examImageHarness(image(), new AbortController().signal);
+    await retry.advance(); await retry.advance();
+    assert.equal(retry.outcome.value, retry.area, 'an old image failure must not poison a fresh transaction');
+  });
+}

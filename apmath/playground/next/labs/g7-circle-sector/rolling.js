@@ -1037,7 +1037,7 @@
         const sc = scenario(spec, s, lab, thumb);
         const full = focusOf(sc.M);
         if (!thumb) {
-          const key = sc.tab + JSON.stringify(sc.M.cfg);
+          const key = sc.tab + JSON.stringify(sc.M.cfg) + '|' + b.W + '|' + b.H;
           // 작은 화면에서 길이 너무 길면: 지금 일어나는 회전만 크게(부드럽게 따라가며)
           let target = full;
           const area = b._area(), pad = b.pad * Math.min(area.w, area.h);
@@ -1047,6 +1047,9 @@
             if (sc.tab === 'explore' && sc.k < N) target = regionOf(sc.M, sc.k, sc.f);
             else if (sc.tab === 'review' && sc.item && sc.item.rot != null) target = regionOf(sc.M, sc.item.rot, 1);
           }
+          // 모형 바깥의 치수와 아래 손잡이 글자는 픽셀 크기입니다. 세계 좌표 여백만 쓰면 작은 배율에서 잘립니다.
+          const tk = Math.max(1, Math.min((area.w - 2 * pad) / (target.x[1] - target.x[0]), (area.h - 2 * pad) / Math.abs(target.y[1] - target.y[0])));
+          target = { x: [target.x[0] - 28 / tk, target.x[1] + 28 / tk], y: [target.y[0] - (b.kind === 'figure' ? 12 : 40) / tk, target.y[1] + (b.kind === 'figure' ? 40 : 12) / tk] };
           if (b.__rlKey !== key && !s.dragging) { b.__rlKey = key; b.setFocus(target, true); }
           else if (b.focus !== target && !s.dragging) {
             const f0 = b.focus, e = 0.2;
@@ -1071,7 +1074,7 @@
   }
 
   (window.APL_CS_GROUPS = window.APL_CS_GROUPS || []).push({
-    order: 66, id: 'rolling', title: 'F06 점의 이동 — 굴리기', short: 'F06 굴리기', params: PARAMS,
+    order: 66, id: 'rolling', title: '점의 이동 — 굴리기', short: '굴리기', params: PARAMS,
     scenes: SPECS.map(buildScene)
   });
 })();

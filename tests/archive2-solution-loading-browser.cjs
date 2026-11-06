@@ -12,7 +12,7 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
-const baseSha = process.env.ARCHIVE_SOLUTION_BASE_SHA || 'f446e62a29f90d6d30a76b295e5c226f5ead72d2';
+const baseSha = process.env.ARCHIVE_SOLUTION_BASE_SHA || require('./archive2-output-comparison-references.json').originalReference;
 const reportDir = path.resolve(process.env.ARCHIVE_SOLUTION_REPORT_DIR || path.join(os.tmpdir(), 'archive-solution-loading-evidence'));
 const repeats = Number(process.env.ARCHIVE_SOLUTION_REPEATS || 2);
 const sourceFiles = [
@@ -602,7 +602,11 @@ async function main() {
   if (!report.pass) process.exitCode = 1;
 }
 
-main().catch(error => {
+module.exports = { serve, realFixture, loadBank, sourceFiles, installInstrumentation,
+  waitForOutcome, capture, assertReady, compareRows, verifiedPreflight,
+  assertPrintBlocked, faultFixture };
+
+if (require.main === module) main().catch(error => {
   report.pass = false; report.fatal = safeError(error); writeReport();
   console.error(JSON.stringify({ pass: false, error: report.fatal })); process.exitCode = 1;
 });

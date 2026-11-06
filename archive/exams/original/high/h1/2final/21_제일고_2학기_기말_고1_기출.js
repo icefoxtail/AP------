@@ -375,7 +375,9 @@ window.questionBank = [
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+    "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION"
   },
   {
     "id": 12,

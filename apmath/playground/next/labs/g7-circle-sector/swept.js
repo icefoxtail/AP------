@@ -1697,16 +1697,16 @@
   const swGroup = {
     order: 67,
     id: 'f06-swept',
-    title: 'F06 원이 지나간 자리',
-    short: 'F06 지나간 자리',
+    title: '원이 지나간 자리',
+    short: '지나간 자리',
     params: PARAMS,
     scenes: ['sw-square', 'sw-rect', 'sw-tri', 'sw-center', 'sw-inside'].map((id) => SW[id])
   };
   const gtGroup = {
     order: 68,
     id: 'f06-goat',
-    title: 'F06 묶인 동물의 영역',
-    short: 'F06 묶인 동물',
+    title: '묶인 동물의 영역',
+    short: '묶인 동물',
     params: PARAMS,
     scenes: ['gt-kennel', 'gt-warehouse', 'gt-tri', 'gt-hex', 'gt-spiral'].map((id) => GOAT[id])
   };

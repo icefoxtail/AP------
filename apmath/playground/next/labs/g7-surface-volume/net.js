@@ -22,11 +22,35 @@
     const e = G.ease(spec.t);
     const yaw = (s.svYaw == null ? 28 : s.svYaw) * (1 - e), pitch = (s.svPitch == null ? 22 : s.svPitch) * (1 - e);
     const D = G.scene3(b, s, C, { yaw, pitch });
+    let reference = null;
+    if (spec.showOriginal && C.tab === 'explore' && !b.thumb && b.W >= 600 && e > 0.02) {
+      const shift = 5.2 * G.ease(G.lin01(e, 0.02, 0.25)), baseP = D.P;
+      D.P = p => { const q = baseP(p); return { x: q.x + shift, y: q.y }; };
+      const R = G.scene3(b, s, C, { yaw: s.svYaw == null ? 28 : s.svYaw, pitch: s.svPitch == null ? 22 : s.svPitch }), refP = R.P;
+      R.P = p => { const q = refP(p); return { x: q.x - shift, y: q.y }; };
+      reference = { R, poses: G.netPose(spec.sn.net, 0) };
+    }
     const poses = G.netPose(spec.sn.net, e);
     const all = [];
     spec.sn.net.pieces.forEach((pc, k) => pc.pts.forEach((p) => all.push(G.applyT(poses[k], p))));
-    D.fit(all, spec.extra || [], spec.fitOpt || {});
-    const tp = G.netDraw(D, spec.sn.net, poses, spec.style);
+    const refPts = reference ? spec.sn.net.pieces.flatMap((pc, k) => pc.pts.map(p => reference.R.P(G.applyT(reference.poses[k], p)))) : [];
+    D.fit(all, (spec.extra || []).concat(refPts), spec.fitOpt || {});
+    if (reference) {
+      b.ctx.save();
+      b.ctx.globalAlpha *= G.ease(G.lin01(e, 0.18, 0.5));
+      G.netDraw(reference.R, spec.sn.net, reference.poses, () => ({ fill: 'sky', alpha: 0.035, edge: 'ink', ew: 2 }));
+      if (spec.refLabels) spec.refLabels(reference.R);
+      const rb = G.bboxOf(refPts), nb = G.bboxOf(all.map(D.P));
+      b.text({ x: (rb.x0 + rb.x1) / 2, y: rb.y1 }, '원래 입체', { dy: 14, size: reference.R.fs(13), color: 'ink', weight: 700 });
+      if (nb.x0 - rb.x1 > 0.45) D.arrow({ x: rb.x1 + 0.12, y: (rb.y0 + rb.y1) / 2 }, { x: nb.x0 - 0.12, y: (rb.y0 + rb.y1) / 2 }, 'muted', 1.5);
+      b.ctx.restore();
+    }
+    const tp = G.netDraw(D, spec.sn.net, poses, (pc, k) => {
+      const st = spec.style ? spec.style(pc, k) : {};
+      // 처음에는 교과서처럼 흰 입체로, 펼칠 때만 면 구분을 부드럽게 나타냅니다.
+      if (!C.review && !C.problem) st.alpha = Math.min(st.alpha == null ? 0.06 : st.alpha, 0.015 + 0.065 * e);
+      return st;
+    });
     const ctx = { D, tp, poses, e, all, at: (k, p) => G.applyT(poses[k], p), front: (k) => tp[k].front };
     if (spec.labels) spec.labels(ctx);
     return ctx;

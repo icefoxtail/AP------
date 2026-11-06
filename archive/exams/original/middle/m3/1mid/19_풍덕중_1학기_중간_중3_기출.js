@@ -31,10 +31,17 @@ window.questionBank = [
     "wide": false,
     "solution": "각 보기의 값을 직접 확인한다.\n① $\\sqrt{49}=7$\n② $\\sqrt{(-5)^2}=|-5|=5$\n③ $\\sqrt{\\dfrac{25}{4}}=\\dfrac52$\n④ $-\\sqrt{0.16}=-0.4$\n⑤ $-\\sqrt{(-\\dfrac13)^2}=-\\dfrac13$\n따라서 $0.4$라고 한 ④가 틀렸다.",
     "level": "중",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "primaryMethod": "각 선택지의 근호값을 정의 및 √(t²)=|t|에 따라 확인한다.",
+    "decisiveStep": "−√0.16=−0.4이므로 0.4라고 한 ④가 틀리다."
   },
   {
     "id": 2,
@@ -106,7 +113,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "x/240이 유리수의 제곱이 되는 자연수 x를 범위 안에서 검사한다.",
+    "decisiveStep": "x=15이면 √(15/240)=1/4이고 10≤15≤20이다."
   },
   {
     "id": 4,
@@ -179,7 +193,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "근호의 제곱인수를 밖으로 꺼내어 동류근호끼리 계산한다.",
+    "decisiveStep": "√32+√2−√8=(4+1−2)√2=3√2이다."
   },
   {
     "id": 6,
@@ -215,7 +236,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "a,b>0에서 √(a²b/a)=√(ab)를 적용해 두 항의 근호를 통일한다.",
+    "decisiveStep": "2a√(b/a)+3b√(a/b)=5√(ab)=10이다."
   },
   {
     "id": 7,
@@ -251,7 +279,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "2<x<3에서 각 일차식의 부호를 판정해 √(t²)=|t|를 정리한다.",
+    "decisiveStep": "|x−2|+|3−x|+|x−3|=(x−2)+(3−x)+(3−x)=4−x이다."
   },
   {
     "id": 8,
@@ -287,7 +322,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "제곱근 항의 양수 조건에서 제곱으로 비교한 뒤 세 수를 정렬한다.",
+    "decisiveStep": "4√2>5이고 C−A=√2>0이므로 B<A<C이다."
   },
   {
     "id": 9,
@@ -323,7 +365,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "근호 속 제곱인수와 소수의 분수 변환을 사용해 a,b로 표현한다.",
+    "decisiveStep": "√175=5a, √2.8=b/5이므로 5a+b/5이다."
   },
   {
     "id": 10,
@@ -395,7 +444,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "분모의 근호를 유리화하고 동류근호를 통합한다.",
+    "decisiveStep": "√48−3/(4√3)−2√3=4√3−√3/4−2√3=7√3/4이다."
   },
   {
     "id": 12,
@@ -538,7 +594,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "제곱의 차 인수분해를 반복해 3¹⁶−1의 소인수를 구하고 작은 약수를 찾는다.",
+    "decisiveStep": "3¹⁶−1=2⁶·5·17·41·193이므로 10 미만 약수 1,2,4,5,8의 합은 20이다."
   },
   {
     "id": 16,
@@ -574,7 +637,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "x−z를 한 덩어리로 보고 완전제곱 후 제곱의 차 공식을 적용한다.",
+    "decisiveStep": "x²−y²+z²−2xz=(x−z)²−y²=(x−y−z)(x+y−z)이다."
   },
   {
     "id": 17,
@@ -682,7 +752,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "반복되는 a+b를 t로 치환해 이차식을 인수분해한다.",
+    "decisiveStep": "t²−4t−5=(t+1)(t−5)이므로 (a+b+1)(a+b−5)이다."
   },
   {
     "id": 20,
@@ -718,7 +795,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "이차식 인수분해 뒤 두 일차 인수의 합을 계산한다.",
+    "decisiveStep": "2x²−11x+5=(2x−1)(x−5)이므로 두 인수의 합은 3x−6이다."
   },
   {
     "id": 21,
@@ -751,10 +835,17 @@ window.questionBank = [
     "wide": false,
     "solution": "$4040=2019+2021$이므로\\n$2019^2-2019\\cdot4040+2020^2$\\n$=2019^2-2019(2019+2021)+2020^2$\\n$=2020^2-2019\\cdot2021$이다.\\n여기서 $2019=2020-1$, $2021=2020+1$이므로\\n$2020^2-(2020-1)(2020+1)=2020^2-(2020^2-1)=1$이다.\\n따라서 정답은 ①이다.",
     "level": "중",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "2019과 2021을 2020±1로 바꾼 뒤 제곱의 차를 적용한다.",
+    "decisiveStep": "2020²−2019·2021=2020²−(2020−1)(2020+1)=1이다."
   },
   {
     "id": 22,
@@ -820,7 +911,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "39−n이 양의 완전제곱수가 되도록 자연수 n을 결정한다.",
+    "decisiveStep": "39−n=k², k=1,…,6이므로 n=3,14,23,30,35,38이다."
   },
   {
     "id": 24,
@@ -850,7 +948,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "두 이차식을 각각 인수분해하고 공통으로 등장하는 일차 인수를 읽는다.",
+    "decisiveStep": "(2x−3)(x+4)와 (2x−3)(x+1)의 공통인수는 2x−3이다."
   },
   {
     "id": 25,
@@ -877,9 +982,16 @@ window.questionBank = [
     "wide": false,
     "solution": "주어진 식을 묶으면\n$a^2+b^2+2ab+2a+2b+1$\n$=(a+b)^2+2(a+b)+1$\n$=(a+b+1)^2$이다.\n$a+b=\\sqrt3-1$이므로\n$a+b+1=\\sqrt3$이다.\n따라서 값은\n$(\\sqrt3)^2=3$이다.",
     "level": "중",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "반복되는 a+b를 묶어 완전제곱식으로 정리하고 주어진 값을 대입한다.",
+    "decisiveStep": "(a+b+1)²에서 a+b=√3−1을 대입하면 3이다."
   }
 ];

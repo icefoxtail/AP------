@@ -288,10 +288,10 @@
     const A = D.anim;
     const actions = () => {
       const out = [];
-      if (A) {
+      if (A && !A.hideActions) {
         out.push({
           id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
-          label: (s) => (s.playing ? '일시 정지' : s[A.key] >= 0.999 ? '다시 재생' : A.label || '움직여 보기'),
+          label: (s) => (s.playing ? '일시 정지' : s[A.key] >= 0.999 ? '다시 재생' : (typeof A.label === 'function' ? A.label(s) : A.label) || '움직여 보기'),
           on: (s) => s.playing,
           run: (s) => { if (s.playing) s.playing = false; else { if (s[A.key] >= 0.999) s[A.key] = 0; s.playing = true; } }
         });
@@ -303,13 +303,8 @@
       id: D.id, title: D.title, short: D.short || D.title, sv: D,
       question: D.question,
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
-      presets: (s) => {
-        const list = D.presets ? D.presets(s) : [];
-        if (D.view3 === false) return list;
-        const c0 = D.cam0 || { yaw: 28, pitch: 22 };
-        const vl = [['기본', c0.yaw, c0.pitch]].concat(VIEWS.slice(1));
-        return list.concat(vl.map((v, i) => ({ group: i === 0 ? '시점' : '', label: v[0], apply: (st) => { st.svYaw = v[1]; st.svPitch = v[2]; }, on: (st) => Math.abs((st.svYaw == null ? c0.yaw : st.svYaw) - v[1]) < 1.5 && Math.abs((st.svPitch == null ? c0.pitch : st.svPitch) - v[2]) < 1.5 })));
-      },
+      // 시점은 무대를 직접 끌어 조절합니다. 계산·도형 선택만 남깁니다.
+      presets: (s) => D.presets ? D.presets(s) : [],
       actions,
       steps: (s) => D.steps(D.model(s)).map((t) => String(t).replace(/<\/?b>/g, '')),
       notesTitle: '자주 틀리는 부분',
@@ -330,7 +325,7 @@
         let again = false;
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
-          if (s[A.key] >= 1) s.playing = false;
+          if (s[A.key] >= 1) { s.playing = false; if (lab && typeof lab._saveHashSoon === 'function') lab._saveHashSoon(); }
           again = true;
         } else if (A && D.stepT && lab && lab.tab === 'review' && !s.dragging) {
           const tg = D.stepT(s.step || 0), d = tg - s[A.key];
@@ -343,6 +338,7 @@
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        if (C.tab === 'explore' && v.guide) v.guide += ' <span>입체 상태에서 그림을 끌어 방향을 바꿔 보세요.</span>';
         // 조절 막대로 값이 바뀌면 정리 탭의 풀이 글도 그 값으로 다시 만듭니다
         if (lab && lab._svOwner === D.id && typeof lab._buildReview === 'function') {
           const sig = JSON.stringify(D.steps(M));
