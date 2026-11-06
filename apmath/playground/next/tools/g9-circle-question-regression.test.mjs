@@ -291,14 +291,22 @@ test('angle arc patterns denote equal angles rather than merely opposite compari
       }
     }
   }
-  for (const id of ['c5-1', 'c5-6']) {
+  for (const id of ['c5-1', 'c5-5', 'c5-6']) {
     const sc = scenes.find(x => x.id === id), s = state(sc);
     const cases = id === 'c5-1'
       ? [50, 70, 90, 110, 130].flatMap(c5A => [50, 90, 130].map(c5B => ({ c5A, c5B })))
-      : [0, 1, 2, 3, 4, 5].flatMap(c5ty => [55, 60, 65, 70, 75, 80].map(c5th => ({ c5ty, c5th })));
+      : id === 'c5-6' ? [0, 1, 2, 3, 4, 5].flatMap(c5ty => [55, 60, 65, 70, 75, 80].map(c5th => ({ c5ty, c5th })))
+      : Array.from({ length: 81 }, (_, i) => ({ c5d: (-56 + i) / 10 }));
     for (const params of cases) {
       Object.assign(s, params); const b = board(); sc.draw(b, s, {}, { tab: 'explore' });
       check(b, `${id}/explore/${JSON.stringify(params)}`); frames++;
+    }
+    if (id === 'c5-5') for (const preset of sc.presets(s)) {
+      preset.apply(s);
+      const g = sc.ci.model(s, { tab: 'explore', problem: false }).g;
+      assert.ok(g.cs.every(c => c.ok), 'the circle preset still reaches all three original snap conditions');
+      const b = board(); sc.draw(b, s, {}, { tab: 'explore' });
+      check(b, `${id}/preset/${preset.label}`); frames++;
     }
   }
   t.diagnostic(`${frames} question-stage and exploration frames checked against their actual angle measures`);
