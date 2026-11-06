@@ -18,6 +18,9 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "함수 g가 4를 3으로 보내고 f가 3을 1로 보내어 (f∘g)(4)=1이며, g가 1을 6으로 보내고 f가 6을 7로 보내어 (f∘g)⁻¹(7)=1임을 대응 그림으로 나타낸다.",
     "content": "그림은 두 함수 $f:X\\to Y$, $g:Y\\to X$를 나타낸 것이다. $(f\\circ g)(4)+(f\\circ g)^{-1}(7)$의 값은? [3.7점]",
     "choices": [
       "$1$",

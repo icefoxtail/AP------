@@ -532,6 +532,9 @@ window.questionBank = [
       "일대일대응과 역함수"
     ],
     "wide": false,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "세 집합을 잇는 대응 f, g에서 f(3)=1과 g(5)=4로 이어지는 경로를 강조한다.",
     "content": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 $X$에서 $X$로의 일대일대응인 두 함수 $f,g$가 다음 조건을 만족시킨다.<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">(가) $f(1)=3$, $f(2)+g(4)=7$<br>(나) $f(2)=g(2)$, $f(4)=g(4)$<br>(다) 함수 $(g\\circ f)(x)$는 항등함수이다.</div>$g(5)-f(3)$의 값은? [4.2점]",
     "choices": [
       "$-3$",
