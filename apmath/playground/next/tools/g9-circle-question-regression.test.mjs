@@ -151,6 +151,11 @@ test('common external tangents handle either radius order and the equal-radius r
     s.ciPk = { kind, r1, r2, key: `radius-order.${r1}.${r2}.${kind}` };
     const sol = sc.solution(s), text = sol.steps.join('\n');
     assert.doesNotMatch(text, /큰 반지름|작은 반지름|작은 원의 중심/, 'left and right do not imply larger and smaller');
+    if (kind === 1) {
+      assert.match(sol.steps[1], /반지름이 다르면/);
+      assert.match(sol.steps[1], /같으면/);
+      assert.doesNotMatch(sol.steps.slice(0, 3).join(' '), /길이가 같아요|H는 선분|H는 OA를/, 'unknown radius equality/order is not assumed before solving');
+    }
     if (r1 === r2) {
       assert.match(text, /직사각형/);
       assert.doesNotMatch(text, /직각삼각형 OHO/, 'O=H does not define a triangle');
