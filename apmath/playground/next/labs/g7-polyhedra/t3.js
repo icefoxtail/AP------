@@ -891,7 +891,12 @@
           seg(A, Pp, AMB, 5); seg(Pp, G, AMB, 5);
           D.dot(Pp, AMB, 7);
         } else { D.line(E, F, AMB, 5, {}); }
-        [[A, 'A'], [Bp, 'B'], [E, 'E'], [F, 'F'], [G, 'G'], [H, 'H']].forEach(([p, nm]) => { D.dot(p, nm === 'A' || nm === 'G' ? AMB : 'ink', nm === 'A' || nm === 'G' ? 6.5 : 3.6); if (C.txt) D.label(p, nm, { color: nm === 'A' || nm === 'G' ? AMB : 'ink', size: 18, dir: D.out(p, v3(0, 0, 0)), gap: 10 }); });
+        [[A, 'A'], [Bp, 'B'], [E, 'E'], [F, 'F'], [G, 'G'], [H, 'H']].forEach(([p, nm]) => {
+          D.dot(p, nm === 'A' || nm === 'G' ? AMB : 'ink', nm === 'A' || nm === 'G' ? 6.5 : 3.6);
+          // 문제의 맨 아래 B가 도구막대로 내려가지 않게 옆자리를 먼저 씁니다. 입체의 크기는 유지합니다.
+          const beside = C.problem && nm === 'B' && b.toS(D.P(p)).y > b.H - b.insets.bottom - 80;
+          if (C.txt) D.label(p, nm, { color: nm === 'A' || nm === 'G' ? AMB : 'ink', size: 18, dir: D.out(p, v3(0, 0, 0)), gap: 10, at: beside ? [[20, -2], [-20, -2], [16, -24], [-16, -24]] : undefined });
+        });
         if (C.txt && !C.problem) {
           D.label(Pp, 'P', { color: AMB, size: 18, at: [[0, 20], [0, -20]] });
           const ep = r * M.a, pf = M.a - ep;

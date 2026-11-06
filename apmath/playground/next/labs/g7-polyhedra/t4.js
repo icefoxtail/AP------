@@ -19,7 +19,7 @@
     phTd: P('단면판의 위치', -1, 1, 0.01, 0, { color: 'amber', hint: '단면판을 가로로 밀어 보세요', format: (v) => (Math.abs(v) < 1e-9 ? '가운데' : (v > 0 ? '오른쪽 ' : '왼쪽 ') + Math.round(Math.abs(v) * 100) + '%') }),
     phTe: P('평면 넓히기', 0, 1, 0.01, 1, { color: 'amber', hint: '0이면 세 점을 이은 삼각형만, 1이면 정육면체를 끝까지 자른 단면', format: (v) => (v < 0.01 ? '세 점 삼각형만' : v > 0.99 ? '끝까지 자름' : Math.round(v * 100) + '%'), onInput: (s) => { s.playing = false; } }),
     phDu: P('잇기', 0, 1, 0.01, 0, { color: 'amber', hint: '오른쪽으로 밀면 ① 점 찍기 → ② 선분 잇기 → ③ 새 입체 칠하기 순서로 보여 줘요', format: (v) => (v < 0.02 ? '처음' : v < 0.32 ? '① 점 찍기' : v < 0.655 ? '② 선분 잇기' : v < 0.99 ? '③ 새 입체 칠하기' : '완성'), onInput: (s) => { s.playing = false; } }),
-    phTr: P('자르는 깊이', 0.05, 0.45, 0.01, 1 / 3, { color: 'amber', hint: '모서리의 길이의 몇 분의 몇을 잘라 낼까요?', format: (v) => `모서리의 ${Math.round(v * 100)}%` })
+    phTr: P('자르는 깊이', 0.05, 0.45, 0.01, 1 / 3, { color: 'amber', hint: '모서리의 길이의 몇 분의 몇을 잘라 낼까요?', format: (v) => Math.abs(v - 1 / 3) < 1e-9 ? '모서리의 1/3' : `모서리의 ${Math.round(v * 100)}%` })
   };
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
