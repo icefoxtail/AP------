@@ -427,7 +427,7 @@
       const st = C.step, rv = C.review;
       const hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
       G.coneNet(b, s, C, {
-        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 12 : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 12 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv ? 1 : C.t, problem: C.problem, review: rv, hl,
+        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, hColor: 'ink', cleanFrustum: true, showOriginal: true, problemAlpha: 0.02, fitL: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 82 : undefined), fitR: C.problem ? (b.W < 450 ? 12 : 95) : (b.W < 600 ? 12 : undefined), fitT: C.problem ? (b.W < 450 ? 18 : 85) : (b.W < 600 ? 35 : undefined), fitB: C.problem ? (b.W < 450 ? 12 : 85) : (b.W < 600 ? 12 : undefined), t: C.problem ? 0 : rv ? 1 : C.t, problem: C.problem, review: rv, hl,
         vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) }
       });
     };

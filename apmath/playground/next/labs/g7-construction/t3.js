@@ -210,7 +210,12 @@
         tagOut(b, A, cen, 'A', { size: 17 }); tagOut(b, B, cen, 'B', { size: 17 }); tagOut(b, Cc, cen, 'C', { size: 17 });
         sideTag(b, A, B, cen, `${M.c}`, { color: 'sky', size: 17 }); sideTag(b, Cc, A, cen, `${M.b}`, { color: 'sky', size: 17 });
         sideTag(b, B, Cc, cen, 'BC는 저절로 정해져요', { color: 'muted', size: 13, gap: 10 });
-        if (C.txt) T(b, pt(M.c / 2, 0), '끼인각 ∠A를 바꾸면 BC가 변하지만, ∠A가 정해지면 삼각형은 하나예요', { dy: 54, size: b.W < 560 ? 13 : 15, color: 'amber' });
+        if (C.txt) {
+          if (b.W < 560) {
+            T(b, pt(M.c / 2, 0), '끼인각 ∠A를 바꾸면 BC도 변해요.', { dy: 48, size: 13, color: 'amber' });
+            T(b, pt(M.c / 2, 0), '두 변과 끼인각이 정해지면 삼각형은 하나예요.', { dy: 68, size: 13, color: 'amber' });
+          } else T(b, pt(M.c / 2, 0), '끼인각 ∠A를 바꾸면 BC가 변하지만, ∠A가 정해지면 삼각형은 하나예요', { dy: 54, size: 15, color: 'amber' });
+        }
         if (!C.review && C.txt) b.handle('C', Cc, { color: 'amber', r: 8, ariaLabel: '∠A 조절', drag: (w) => { s.cnMA = clamp(Math.round(-dirDeg(A, w) / 5) * 5, 25, 120); } });
         return;
       }

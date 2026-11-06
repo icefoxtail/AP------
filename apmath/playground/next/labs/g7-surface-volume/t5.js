@@ -145,8 +145,8 @@
       const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, rowTop = bb.y1 + 0.9;
       if (blend > 0) {
         const mix = (p, q) => p + (q - p) * blend;
-        D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 38, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 32, b: 34 });
-      } else D.fit(pts, R && !narrow && te > 0.01 ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : Rp ? [{ x: -Rp.total / 2, y: rowTop }, { x: Rp.total / 2, y: rowTop + Rp.height + 2.6 }] : [], { l: 38, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 32, b: 34 });
+        D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 82, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 32, b: 34 });
+      } else D.fit(pts, R && !narrow && te > 0.01 ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : Rp ? [{ x: -Rp.total / 2, y: rowTop }, { x: Rp.total / 2, y: rowTop + Rp.height + 2.6 }] : [], { l: 82, r: (C.tab === 'explore' && window.innerWidth >= 700 && b.W >= 560 ? 245 : 38), t: 32, b: 34 });
       if (R) spaceRows(D, R, narrow ? 4.6 : 6.4); // 화면 배율이 정해진 뒤 한 번 더: 글자가 겹치지 않게 간격 조정
       if (Rp) spaceRows(D, Rp, 6.4);
       const showSolid = !(R && narrow && te > 0.15);

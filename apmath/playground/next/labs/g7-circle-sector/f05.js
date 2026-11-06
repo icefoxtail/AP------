@@ -950,7 +950,9 @@
     const ah = Math.max(10, b.H - (b.panes ? 0 : b.insets.top + b.insets.bottom));
     const pad = b.pad * Math.min(aw, ah);
     const W = aw - 2 * pad, H = ah - 2 * pad;
-    const fx0 = G.x0 - 1, fx1 = G.x1 + 1, fy0 = G.y0 - 1, fy1 = G.y1 + 1;
+    // 정리의 호 길이 이름표는 반지름 1.5 위치에 있습니다. 원의 테두리만으로 맞추지 않습니다.
+    const extent = plain || b.thumb ? 1 : 1.5;
+    const fx0 = G.x0 - extent, fx1 = G.x1 + extent, fy0 = G.y0 - extent, fy1 = G.y1 + extent;
     const narrow = aw < 560;
     const tiny = !!b.thumb;
     const PAD_X = tiny ? 8 : narrow ? 38 : 52, PAD_T = tiny ? 8 : narrow ? 30 : 38, PAD_B = tiny ? 8 : narrow ? 24 : 34, BOT_TXT = 56, HALF_TXT = 96, GAP = 0.5;
