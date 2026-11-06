@@ -71,6 +71,8 @@
 
 | 2022 제일고 2학기 기말 고1 Q10 | 감소함수 역함수 반례 | 작성·전달 | Luna high 원본 그래프 묶음 | 계획 대기 | 대기 | 미반영 |
 
+| 2022 금당고 2학기 기말 고1 Q15 | 유리식 부등식 범위 | 작성·전달 | Luna high 2022 금당고 시험지 전담 | 계획 중 | 대기 | 미반영 |
+
 지시서: `docs/operations/GPT_SVG_H1_2FINAL_RADICAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_RATIONAL_BRIEFS_CURRENT.md`, `docs/operations/GPT_SVG_H1_2FINAL_FUNCTION_BRIEFS_CURRENT.md`.
 
 ## 운영 방법
