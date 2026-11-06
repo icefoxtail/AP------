@@ -39,17 +39,18 @@
      o: sq(정사각형 3개), rot(제자리 회전 도), lab {a,b,c: 변 위 글자}, sqLab {a,b,c: 정사각형 안 글자}, names(꼭짓점 이름) */
   function figRt(b, a, bq, C, o = {}) {
     const T0 = rtTri(a, bq), cen0 = centroid([T0.A, T0.B, T0.C]);
-    const R = (p) => { const q = rotP(p, cen0, o.rot || 0); return o.dx ? pt(q.x + o.dx, q.y) : q; };
+    const R = (p) => { const q = rotP(p, cen0, o.rot || 0); return pt(q.x + (o.dx || 0), q.y + (o.dy || 0)); };
     const A = R(T0.A), B = R(T0.B), Cc = R(T0.C), cen = R(cen0);
     const sqs = o.sq ? { a: squareOn(B, Cc, cen), b: squareOn(Cc, A, cen), c: squareOn(A, B, cen) } : null;
-    const pts = [A, B, Cc].concat(sqs ? [...sqs.a, ...sqs.b, ...sqs.c] : []);
-    let box;
-    if (o.rot != null && !o.sq) { const Rr = Math.max(...pts.map((p) => Math.hypot(p.x - cen.x, p.y - cen.y))); box = { x0: cen.x - Rr, x1: cen.x + Rr, y0: cen.y - Rr, y1: cen.y + Rr }; } else box = bboxOf(pts);
-    if (!o.noFit) fit(b, box, { t: o.t == null ? 40 : o.t, b: o.bt == null ? 40 : o.bt, l: o.l, r: o.r });
     const sh = (k) => !C.review || C.step >= (o.at && o.at[k] != null ? o.at[k] : 0);
+    const visibleSq = (k) => sqs && sh('s' + k);
+    const pts = [A, B, Cc].concat(sqs ? ['a', 'b', 'c'].filter(visibleSq).flatMap((k) => sqs[k]) : []);
+    let box;
+    if (o.rot != null && !o.sq && C.full) { const Rr = Math.max(...pts.map((p) => Math.hypot(p.x - cen.x, p.y - cen.y))); box = { x0: cen.x - Rr, x1: cen.x + Rr, y0: cen.y - Rr, y1: cen.y + Rr }; } else box = bboxOf(pts);
+    if (!o.noFit) fit(b, box, { t: o.t == null ? 40 : o.t, b: o.bt == null ? 40 : o.bt, l: o.l, r: o.r });
     // 정사각형이 있고 삼각형이 작으면(휴대폰) 변의 길이 글자와 정사각형 글자가 겹치므로, 변의 길이를 정사각형 안에 두 줄로 함께 적습니다.
     const pxD = (p, q) => { const u = b.toS(p), v = b.toS(q); return Math.hypot(u.x - v.x, u.y - v.y); };
-    const small = !!sqs && Math.min(pxD(B, Cc), pxD(Cc, A)) < 125;
+    const small = !!sqs && ['a', 'b', 'c'].some(visibleSq) && Math.min(pxD(B, Cc), pxD(Cc, A)) < 125;
     const sqDraw = (k, col) => {
       const two = small && o.lab && o.lab[k] && o.sqLab && o.sqLab[k];
       drawSq(b, sqs[k], col, two ? '' : o.sqLab && o.sqLab[k], { size: o.sqSize || 16 });
@@ -66,7 +67,7 @@
     // 납작하거나 홀쭉한 삼각형: 빗변 글자가 직각변 글자와 붙으면 빗변 글자를 바깥쪽으로 보냅니다.
     const dS = (u, v) => Math.hypot(u.x - v.x, u.y - v.y);
     const cOut = !sqs && !o.labOut && Math.min(dS(b.toS(B), b.toS(Cc)), dS(b.toS(Cc), b.toS(A))) < 150;
-    [[B, Cc, 'a', sqs && cenOf(sqs.a)], [Cc, A, 'b', sqs && cenOf(sqs.b)], [A, B, 'c', sqs && cenOf(sqs.c)]].forEach(([p, q, k, sc]) => {
+    [[B, Cc, 'a', visibleSq('a') && cenOf(sqs.a)], [Cc, A, 'b', visibleSq('b') && cenOf(sqs.b)], [A, B, 'c', visibleSq('c') && cenOf(sqs.c)]].forEach(([p, q, k, sc]) => {
       const t = o.lab && o.lab[k];
       if (t && !(small && o.sqLab && o.sqLab[k] && sh('s' + k))) sideTag(b, k === 'c' ? lerp(p, q, 0.25) : p, q, sc || (o.labOut || (cOut && k === 'c') ? cen : add(mul(mid(p, q), 2), mul(cen, -1))), t, { color: COL[k], size: o.size || 16, gap: o.gap == null ? 11 : o.gap });
       if (o.hi === k) line(b, p, q, COL[k], 6, { alpha: 0.9 });
@@ -93,8 +94,8 @@
       const { a, b: bb, a2, b2, c2, ci } = M;
       const R = figRt(b, a, bb, C, {
         sq: !C.problem, bt: C.problem ? 40 : 50, size: 16,
-        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.problem ? 'x' : ci ? `c=${ci}` : 'c' },
-        sqLab: { a: `a²=${a2}`, b: `b²=${bb * bb}`, c: `c²=${c2}` },
+        lab: { a: `a=${a}`, b: `b=${bb}`, c: C.answer ? ci ? `c=x=${ci}` : 'c' : 'x' },
+        sqLab: { a: `a²=${a2}`, b: `b²=${bb * bb}`, c: C.calculation ? `c²=${c2}` : 'c²=x²' },
         at: { sa: 2, sb: 2, sc: 3 }
       });
       if (C.problem) return;
@@ -103,7 +104,7 @@
         cells(b, 0, 0, a, 'sky');
         cells(b, -bb, -bb, bb, 'green');
       }
-      if (C.txt) {
+      if (C.txt && C.calculation) {
         const y1 = Math.max(a, 0) + 0;
         T(b, pt((a + 0) / 2, y1), `${a2} + ${bb * bb} = ${c2}`, { dy: 34, size: 18, color: 'amber' });
       }
@@ -153,11 +154,11 @@
       const bq = Math.sqrt(b2); // 그림을 그릴 때만 쓰는 값(화면에 제곱근 기호는 쓰지 않음)
       const R = figRt(b, a, bq, C, {
         sq: !C.problem, bt: 40,
-        lab: { a: `a=${a}`, b: C.problem ? 'x' : bi ? `b=${bi}` : 'b', c: `c=${c}` },
-        sqLab: { a: `a²=${a2}`, b: C.problem ? '' : `b²=${b2}`, c: `c²=${c2}` },
+        lab: { a: `a=${a}`, b: C.answer ? bi ? `b=x=${bi}` : 'b' : 'x', c: `c=${c}` },
+        sqLab: { a: `a²=${a2}`, b: C.calculation ? `b²=${b2}` : 'b²=x²', c: `c²=${c2}` },
         at: { sa: 2, sb: 3, sc: 2 }
       });
-      if (!C.problem && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
+      if (C.calculation && C.txt) T(b, pt(a / 2, a), `${c2} − ${a2} = ${b2}`, { dy: 34, size: 18, color: 'green' });
     },
     steps: (M) => [
       `빗변은 $c=${M.c}$, 한 직각변은 $a=${M.a}$예요. 나머지 직각변을 $b=x$라 놓아요.`,
@@ -197,10 +198,10 @@
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, rot: r, kind } = M;
       // 문제에서 kind=1 이면 한 직각변을 구하는 문제: 빗변 값을 주고 직각변 x 를 구합니다.
-      const hypGiven = C.problem && kind === 1;
+      const pending = !C.answer, hypGiven = C.givens && kind === 1;
       figRt(b, a, bb, C, {
         rot: r, names: ['A', 'B', 'C'], hi: C.review && C.step >= 2 ? 'c' : null, t: 26, bt: 26,
-        lab: { a: C.problem && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: hypGiven ? (ci || 'c') : C.problem ? 'x' : ci ? `${ci}` : 'c' },
+        lab: { a: pending && kind === 1 ? 'x' : `${a}`, b: `${bb}`, c: hypGiven ? (ci || 'c') : pending ? 'x' : ci ? `${ci}` : 'c' },
         labOut: true
       });
       if (!C.problem && C.txt) T(b, pt(0, 0), '', {});
@@ -266,12 +267,12 @@
       T(b, pt(n, u + v / 2), `${v}`, { dx: -14, size: 16, color: 'green' });
       if (!C.problem) {
         if (showTri) tris.forEach((t) => b.right(t[0], t[1], t[2], { size: 11, color: 'sky' }));
-        if (C.txt) T(b, pt(n / 2, n / 2), showSq ? `S=${S}` : '', { size: 20, color: 'amber' });
-        if (C.txt) T(b, pt(n / 2, n), `큰 정사각형 ${n}×${n}=${big}`, { dy: 50, size: 15, color: 'ink' });
+        if (C.txt) T(b, pt(n / 2, n / 2), C.answer ? `S=${S}` : 'S=?', { size: 20, color: 'amber' });
+        if (C.txt && C.step >= 2) T(b, pt(n / 2, n), `큰 정사각형 ${n}×${n}=${big}`, { dy: 50, size: 15, color: 'ink' });
       }
     },
     steps: (M) => [
-      `모눈의 가로·세로 간격은 각각 $${M.u}$, $${M.v}$예요. 기울어진 정사각형 PQRS의 넓이를 구해요.`,
+      `기울어진 정사각형 한 변을 따라갈 때 가로 이동은 $${M.u}$칸, 세로 이동은 $${M.v}$칸이에요. 모눈 한 칸의 한 변은 1이고, PQRS의 넓이를 구해요.`,
       `바깥에 한 변이 $${M.u}+${M.v}=${M.n}$인 큰 정사각형을 잡으면, 모서리에 합동인 직각삼각형 4개가 생겨요.`,
       `큰 정사각형의 넓이는 $${M.n}^2=${M.big}$, 직각삼각형 4개의 넓이는 $4\\times\\frac{${M.u}\\times${M.v}}{2}=${M.tri * 2}$예요.`,
       `PQRS의 넓이는 $${M.big}-${M.tri * 2}=${M.S}$예요. 한 변의 길이를 먼저 구하지 않아도 돼요.`
@@ -318,20 +319,20 @@
       const { x, m, n, y2, z2, yi, zi } = M, y = Math.sqrt(y2);
       const Bp = pt(0, 0), Ap = pt(0, -x), Dp = pt(m, 0), Cp = pt(m + n, 0);
       fit(b, { x0: 0, x1: m + n, y0: -x, y1: 0 }, { t: 40, b: 60, l: 50, r: 40 });
-      const s1 = !C.review || C.step >= 1, s2 = !C.review || C.step >= 2;
-      fillPoly(b, [Ap, Bp, Dp], 'sky', s1 ? 0.2 : 0);
-      if (s2) fillPoly(b, [Ap, Dp, Cp], 'green', 0.18);
+      const showX = C.full || C.review && C.step >= 3, showY = C.full || C.review && C.step >= 4;
+      fillPoly(b, [Ap, Bp, Cp], 'green', C.review && C.step === 2 ? 0.16 : 0.04);
+      if (C.full || C.review && C.step >= 4) fillPoly(b, [Ap, Bp, Dp], 'sky', 0.16);
       poly(b, [Ap, Bp, Cp], 'ink', 3.4);
       line(b, Ap, Dp, 'amber', 3.4);
       ang(b, Bp, Cp, Ap, { color: 'amber', r: 20 });
       [['A', Ap, 0, -1], ['B', Bp, -1, 0.5], ['D', Dp, 0, 1], ['C', Cp, 1, 0.5]].forEach(([nm, p, dx, dy]) => { b.point(p, { color: 'ink', r: 4.5 }); T(b, p, nm, { dx: dx * 15, dy: dy * 16, size: 17 }); });
       const cen = pt((m + n) / 2, -x / 2);
       // 값은 그림 안에: 변 위
-      T(b, lerp(Ap, Bp, 0.5), C.problem ? 'x' : `x=${x}`, { dx: C.problem ? -14 : -26, size: 17, color: 'amber' });
+      T(b, lerp(Ap, Bp, 0.5), showX ? `x=${x}` : 'x', { dx: showX ? -26 : -14, size: 17, color: 'amber' });
       T(b, lerp(Bp, Dp, 0.5), `${m}`, { dy: 18, size: 16, color: 'sky' });
       T(b, lerp(Dp, Cp, 0.5), `${n}`, { dy: 18, size: 16, color: 'green' });
       sideTag(b, Ap, Cp, pt(0, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
-      sideTag(b, Ap, Dp, Cp, C.problem ? 'y' : (yi ? `y=${yi}` : `y²=${y2}`), { color: 'amber', size: 16, gap: 12 });
+      sideTag(b, Ap, Dp, Cp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : 'y', { color: 'amber', size: 16, gap: 12 });
     },
     steps: (M) => [
       `$BD=${M.m}$, $DC=${M.n}$, $AC=${M.zi}$예요. $AB=x$, $AD=y$일 때 $x+y$를 구해요.`,
@@ -371,11 +372,11 @@
     model: (s) => perimOf(s),
     draw(b, s, M, C) {
       const { a, b: bb, c2, ci, area, kind } = M;
-      const ask = C.problem && kind === 1; // 문제 kind=1: 빗변과 한 직각변을 주고 넓이를 구함(다른 직각변은 숨김)
-      figRt(b, a, bb, C, { sq: false, bt: C.problem ? 40 : 100, lab: { a: `${a}`, b: ask ? '' : `${bb}`, c: C.problem && !ask ? '' : ci ? `${ci}` : 'c' }, labOut: true });
-      if (!C.problem && C.txt) {
-        T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
-        T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: 80, size: 17, color: 'sky' });
+      const pending = C.problem || C.review && C.step < 3, ask = C.givens && kind === 1;
+      figRt(b, a, bb, C, { sq: false, bt: C.full ? 100 : C.answer ? 76 : 40, lab: { a: `${a}`, b: pending && ask ? 'b' : `${bb}`, c: pending && !ask ? 'c' : ci ? `${ci}` : 'c' }, labOut: true, hi: C.review && C.step === 2 ? 'c' : null });
+      if (C.answer && C.txt) {
+        if (C.full || kind === 0) T(b, pt(a / 2, 0), M.per != null ? `둘레 ${a}+${bb}+${ci}=${M.per}` : `둘레: c²=${c2}`, { dy: 48, size: 17, color: 'amber' });
+        if (C.full || kind === 1) T(b, pt(a / 2, 0), `넓이 \\frac{${a}×${bb}}{2}=${fmtN(area)}`, { dy: C.full ? 80 : 48, size: 17, color: 'sky' });
       }
     },
     steps: (M) => [

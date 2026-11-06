@@ -61,23 +61,25 @@
       const all = [A, B, Cc, ...sBC, ...sAB, ...sAC, ...br1.s1, ...br1.s2, ...br2.s1, ...br2.s2];
       fit(b, bboxOf(all), { t: 24, b: 26, l: 24, r: 24 });
       const st = (n) => !C.review || C.step >= n;
-      const sh = (k) => (prob ? (shade === 'all' || (shade === 'ab' && k === 1)) : st(k === 1 ? 3 : 4));
-      drawSq(b, sBC, 'amber', prob ? '' : `BC²=${w2}`, { size: 14 });
-      drawSq(b, sAB, 'sky', prob ? '' : `AB²=${p * p}`, { size: 14 });
-      drawSq(b, sAC, 'green', prob ? '' : `AC²=${q * q}`, { size: 14 });
-      if (st(2) || prob) {
+      const selected = (k) => !C.givens || shade === 'all' || k === 1;
+      const sh = (k) => selected(k) && (C.givens || st(k === 1 ? 3 : 4));
+      drawSq(b, sBC, 'amber', prob ? '' : C.answer ? `BC²=${w2}` : 'BC²', { size: 14 });
+      drawSq(b, sAB, 'sky', prob ? '' : C.full || C.step >= 3 ? `AB²=${p * p}` : 'AB²', { size: 14 });
+      drawSq(b, sAC, 'green', prob ? '' : C.full || C.step >= 4 ? `AC²=${q * q}` : 'AC²', { size: 14 });
+      if (st(2) || C.givens) {
         [[br1, 1], [br2, 2]].forEach(([br, k]) => {
           fillPoly(b, br.tri, 'ink', 0.08); poly(b, br.tri, 'ink', 2.4);
           b.right(br.W, br.tri[0], br.tri[1], { size: 9, color: 'amber' });
           const on = sh(k);
-          drawSq(b, br.s1, 'rose', '', { fa: on ? 0.34 : 0.1, w: 2.2 }); drawSq(b, br.s2, 'rose', '', { fa: on ? 0.34 : 0.1, w: 2.2 });
-          if (!prob) { T(b, cenOf(br.s1), 'S₁', { size: 14, color: 'rose' }); T(b, cenOf(br.s2), 'S₂', { size: 14, color: 'rose' }); }
+          const col = selected(k) ? 'rose' : 'muted';
+          drawSq(b, br.s1, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 }); drawSq(b, br.s2, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 });
+          if (!prob) { T(b, cenOf(br.s1), k === 1 ? 'S₁' : 'S₃', { size: 14, color: col }); T(b, cenOf(br.s2), k === 1 ? 'S₂' : 'S₄', { size: 14, color: col }); }
         });
       }
       fillPoly(b, [A, B, Cc], 'ink', 0.1); poly(b, [A, B, Cc], 'ink', 3.2);
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', 0, -1], [B, 'B', -1, 1], [Cc, 'C', 1, 1]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: 'ink', r: 4 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 16 }); });
-      if (prob) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
+      if (C.givens) { sideTag(b, B, A, Cc, `${p}`, { color: 'sky', size: 16, gap: -24 }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 16, gap: -24 }); }
     },
     steps: (M) => [
       `$AB=${M.p}$, $AC=${M.q}$예요. 구하는 것은 ${M.shade === 'ab' ? 'AB 쪽 두 정사각형' : '양쪽 네 정사각형'}의 넓이의 합이에요.`,
@@ -117,10 +119,10 @@
     draw(b, s, M, C) {
       const { S1, S2, S3, unk } = M, prob = C.problem;
       const a = Math.sqrt(S1), bq = Math.sqrt(S2); // 그림을 그릴 때만 쓰는 길이 (변의 길이는 적지 않음)
-      const lab = (k, v) => (prob && unk === k ? 'x' : `${v}`);
+      const lab = (k, v) => (!C.answer && unk === k ? 'x' : `${v}`);
       figRt(b, a, bq, C, {
         sq: true, bt: 30, t: 30, names: ['A', 'B', 'C'], sqLab: { a: lab('a', S1), b: lab('b', S2), c: lab('c', S3) }, sqSize: 20,
-        at: { sa: 1, sb: 1, sc: 2 }
+        at: { sa: 1, sb: 1, sc: 1 }
       });
     },
     steps: (M) => [
@@ -163,18 +165,18 @@
       const edges = [[A, D], [D, Cc], [Cc, B], [B, A]];
       fit(b, bboxOf(edges.flatMap(([p, q]) => semiPts(p, q, cen)).concat([A, B, Cc, D])), { t: 28, b: 34, l: 28, r: 28 });
       const st = (n) => !C.review || C.step >= n;
-      const showLune = st(3) || prob;
-      if (showLune) outsideCircle(b, cen, R, () => { edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { close: true, fill: 'amber', fillAlpha: 0.5, color: null }); }); });
+      const showLune = st(3) || C.givens;
+      if (showLune) outsideCircle(b, cen, R, () => { edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); }); });
       edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { color: 'amber', width: 2.6 }); });
-      b.circle(cen, R, { color: 'sky', width: st(2) ? 2.6 : 1.4, dash: [6, 5] });
+      b.circle(cen, R, { color: 'rose', width: st(2) ? 2.6 : 1.4, dash: [6, 5] });
       fillPoly(b, [A, B, Cc, D], 'ink', 0.1); poly(b, [A, B, Cc, D], 'ink', 3.4);
-      if (prob && kind === 1 || (!prob && st(2))) line(b, A, Cc, 'sky', 2.4, { dash: [6, 5] });
+      if (C.givens && kind === 1 || (!prob && st(2))) line(b, A, Cc, 'amber', 2.4, { dash: [6, 5] });
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cc, 'C', 1, 1], [B, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 14, size: 17 }); });
       // 길이: 문제 kind=1 은 가로와 대각선, kind=0 은 가로·세로
       T(b, mid(A, D), `${w}`, { dy: 18, size: 17, color: 'sky' });
-      if (!prob || kind === 0) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
-      if (prob && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'sky' });
-      if (!prob && C.txt && st(3)) T(b, cen, `색칠 = ${w}×${h} = ${w * h}`, { size: 17, color: 'amber' });
+      if (C.full || kind === 0 || C.review && C.step >= 2) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
+      if (C.givens && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'amber' });
+      if (C.answer && C.txt) T(b, cen, `색칠 = ${w}×${h} = ${w * h}`, { size: 17, color: 'amber' });
     },
     steps: (M) => [
       M.kind === 1 ? `직사각형의 가로 $AD=${M.w}$와 대각선 $AC=${M.di}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.` : `직사각형의 가로 $AD=${M.w}$, 세로 $AB=${M.h}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.`,
@@ -223,22 +225,21 @@
       fit(b, bboxOf(all), { t: 28, b: 34, l: 26, r: 26 });
       const st = (n) => !C.review || C.step >= n;
       // 빗변 위 큰 반원(삼각형 쪽): 점선 / 빗변이 지름인 원은 꼭짓점 A 를 지나요
-      if (st(2) || prob) {
-        outsideCircle(b, mBC, R, () => { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.55, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.55, color: null }); });
+      if (st(2) || C.givens) {
+        outsideCircle(b, mBC, R, () => { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); });
       } else { b.path(sABp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); b.path(sACp, { close: true, fill: 'amber', fillAlpha: 0.2, color: null }); }
       b.path(sABp, { color: 'amber', width: 2.6 }); b.path(sACp, { color: 'amber', width: 2.6 });
-      b.path(sBCp, { color: 'sky', width: 2.4, dash: [6, 5] });
-      fillPoly(b, [Ap, Bp, Cp], 'green', st(3) ? 0.32 : 0.14); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
+      b.path(sBCp, { color: 'rose', width: 2.4, dash: [6, 5] });
+      fillPoly(b, [Ap, Bp, Cp], 'green', !prob && st(4) ? 0.2 : 0.06); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, 0], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); if (nm !== 'A') T(b, q, nm, { dx: dx * 13, dy: dy * 14, size: 17 }); });
       T(b, Ap, 'A', { dx: 14, dy: -10, size: 17 });
       // 길이 (문제 kind=1 은 한 직각변과 빗변)
       const lAB = a, lAC = bb;
       sideTag(b, Bp, Ap, Cp, `${lAB}`, { color: 'sky', size: 17, gap: -22 });
-      if (!prob || kind === 0) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
-      else T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 17, color: 'sky' });
-      if (!prob && C.txt && st(3)) T(b, centroid([Ap, Bp, Cp]), `△ABC=${fmtN(tri)}`, { dy: 24, size: 15, color: 'green' });
-      if (!prob && ci) T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 16, color: 'sky' });
+      if (C.full || kind === 0 || C.review && C.step >= 2) sideTag(b, Ap, Cp, Bp, `${lAC}`, { color: 'green', size: 17, gap: -22 });
+      if (C.answer && C.txt) T(b, centroid([Ap, Bp, Cp]), `△ABC=${fmtN(tri)}`, { dy: 24, size: 15, color: 'green' });
+      if (ci && (C.full || kind === 1)) T(b, mid(Bp, Cp), `${ci}`, { dy: 18, size: 16, color: 'amber' });
     },
     steps: (M) => [
       M.kind === 1 ? `직각 A를 확인해요. 주어진 길이는 $AB=${M.a}$와 빗변 $BC=${M.ci}$예요.` : `직각 A를 끼는 두 변은 $AB=${M.a}$, $AC=${M.b}$예요. 색칠한 두 초승달의 넓이를 구해요.`,
@@ -284,15 +285,15 @@
       const st = (n) => !C.review || C.step >= n;
       const lbl = (k, v) => (prob && unk === k ? 'x' : piC(v));
       [[sAB, 'sky', 'a', S1], [sAC, 'green', 'b', S2], [sBC, 'amber', 'c', S3]].forEach(([pts, col, k, v]) => {
-        if (k === 'c' && !(st(2) || prob)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
-        b.path(pts, { close: true, fill: col, fillAlpha: 0.22, color: col, width: 2.6 });
+        if (k === 'c' && !(st(2) || C.givens)) { b.path(pts, { color: col, width: 2.4, dash: [6, 5] }); return; }
+        b.path(pts, { close: true, fill: col, fillAlpha: 0.16, color: col, width: 2.6 });
         const cm = semiLab(pts);
-        T(b, cm, (prob ? 'S' : `S`) + { a: '₁', b: '₂', c: '₃' }[k] + (prob && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
+        T(b, cm, 'S' + { a: '₁', b: '₂', c: '₃' }[k] + (!C.answer && unk === k ? '=x' : `=${piC(v)}`), { size: 16, color: col });
       });
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2);
       ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
-      if (!prob) { sideTag(b, Bp, Ap, Cp, `${a}`, { color: 'sky', size: 15, gap: -20 }); sideTag(b, Ap, Cp, Bp, `${bb}`, { color: 'green', size: 15, gap: -20 }); }
+      if (C.full) { sideTag(b, Bp, Ap, Cp, `${a}`, { color: 'sky', size: 15, gap: -20 }); sideTag(b, Ap, Cp, Bp, `${bb}`, { color: 'green', size: 15, gap: -20 }); }
     },
     steps: (M) => [
       M.unk === 'c' ? `주어진 반원 넓이는 $S_1=${piT(M.S1)}$, $S_2=${piT(M.S2)}$예요. 빗변 위 넓이 $S_3=x$를 구해요.` : `주어진 반원 넓이는 $S_2=${piT(M.S2)}$, $S_3=${piT(M.S3)}$예요. 직각변 위 넓이 $S_1=x$를 구해요.`,
@@ -339,8 +340,8 @@
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.1); poly(b, [Ap, Bp, Cp], 'ink', 3.2); ang(b, Ap, Bp, Cp, { color: 'amber', r: 18 });
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4 }); T(b, q, nm, { dx: dx * 13, dy: dy * 13, size: 16 }); });
       T(b, semiLab(sAB), 'S₁', { size: 17, color: 'sky' }); T(b, semiLab(sAC), 'S₂', { size: 17, color: 'green' });
-      T(b, semiLab(sBC), prob ? '' : `S₃=${k}π`, { size: 16, color: 'amber' });
-      T(b, mid(Bp, Cp), prob ? 'x' : `${c}`, { dy: 18, size: 17, color: 'amber' });
+      T(b, semiLab(sBC), C.full || C.review && C.step >= 2 ? `S₃=${k}π` : '', { size: 16, color: 'amber' });
+      T(b, mid(Bp, Cp), C.answer ? `${c}` : 'x', { dy: 18, size: 17, color: 'amber' });
       T(b, cen, `S₁+S₂=${k}π`, { size: 17, color: 'ink' });
     },
     steps: (M) => [

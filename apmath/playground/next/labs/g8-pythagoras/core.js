@@ -281,7 +281,7 @@
   const cenOf = (Pts) => pt(Pts.reduce((a, p) => a + p.x, 0) / Pts.length, Pts.reduce((a, p) => a + p.y, 0) / Pts.length);
   // 정사각형 그리기: 면 색 + 테두리 + (선택) 안쪽 글자
   function drawSq(b, sq, color, label, o = {}) {
-    fillPoly(b, sq, color, o.fa == null ? 0.2 : o.fa);
+    fillPoly(b, sq, color, o.fa == null ? 0.16 : o.fa);
     poly(b, sq, o.line || color, o.w || 2.6, { alpha: o.alpha, dash: o.dash });
     if (label != null && label !== '') T(b, cenOf(sq), label, { size: o.size || 16, color: o.lc || color, alpha: o.alpha });
   }
@@ -479,6 +479,7 @@
         const M = D.model(s2);
         if (C.review) C.step = Math.max(1, C.step);
         C.answer = C.full || (C.review && C.step >= D.steps(M).length);
+        C.calculation = C.full || (C.review && C.step >= D.steps(M).length - 1);
         C.givens = C.problem || C.review;
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
         D.draw(b, s2, M, C);

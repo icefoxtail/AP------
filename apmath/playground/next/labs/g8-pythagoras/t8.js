@@ -51,21 +51,22 @@
       const R = (q) => rotP(q, pt(0, 0), rot);
       const O = pt(0, 0), A = R(pt(0, -a)), Cc = R(pt(0, c)), B = R(pt(-bb, 0)), D = R(pt(d, 0));
       const ext = Math.max(a, bb, c, d);
-      fit(b, { x0: -ext - 0.3, x1: ext + 0.3, y0: -ext - 0.3, y1: ext + 0.3 }, { t: 30, b: prob ? 30 : 74, l: 30, r: 30 });
+      const shapeBox = bboxOf([A, B, Cc, D]);
+      fit(b, shapeBox, { t: 44, b: C.full ? 74 : C.answer ? 60 : 44, l: 58, r: 58 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [A, B, Cc, D], 'ink', 0.07); poly(b, [A, B, Cc, D], 'ink', 3.4);
       if (st(1)) { line(b, A, Cc, 'rose', 2.6, { dash: [7, 6] }); line(b, B, D, 'rose', 2.6, { dash: [7, 6] }); b.right(O, A, B, { size: 11, color: 'rose' }); }
       [[A, 'A'], [B, 'B'], [Cc, 'C'], [D, 'D']].forEach(([q, nm]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, pt(0, 0), nm, { size: 17, gap: 10 }); });
       b.point(O, { color: 'rose', r: 4 }); T(b, O, 'O', { dx: 12, dy: 12, size: 15, color: 'rose' });
       const sides = [[A, B, 'AB', AB2, 'sky'], [B, Cc, 'BC', BC2, 'green'], [Cc, D, 'CD', CD2, 'sky'], [D, A, 'DA', DA2, 'green']];
-      if (!prob) {
+      if (C.full) {
         sides.forEach(([p, q, nm, v2, col]) => sideTag(b, p, q, O, L2(nm, v2), { color: col, size: 15, gap: 11 }));
-        if (st(2)) { T(b, pt(0, ext + 0.3), `${AB2}+${CD2}=${AB2 + CD2}`, { dy: 22, size: 16, color: 'sky' }); T(b, pt(0, ext + 0.3), `${DA2}+${BC2}=${DA2 + BC2}`, { dy: 46, size: 16, color: 'green' }); }
+        if (st(2)) { T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${AB2}+${CD2}=${AB2 + CD2}`, { dy: 26, size: 16, color: 'sky' }); T(b, pt((shapeBox.x0 + shapeBox.x1) / 2, shapeBox.y1), `${DA2}+${BC2}=${DA2 + BC2}`, { dy: 50, size: 16, color: 'green' }); }
       } else {
         // 문제: AB, BC, CD 는 주어진 값(길이), DA 는 구하는 값 x (제곱을 물음)
         const val = { AB: AB2, BC: BC2, CD: CD2 };
         sides.slice(0, 3).forEach(([p, q, nm, v2, col]) => sideTag(b, p, q, O, `${isq(v2)}`, { color: col, size: 17, gap: 11 }));
-        sideTag(b, D, A, O, 'x', { color: 'amber', size: 18, gap: 11 });
+        sideTag(b, D, A, O, C.answer ? `x²=${DA2}` : 'x', { color: 'amber', size: 17, gap: 11 });
       }
     },
     steps: (M) => [
@@ -115,24 +116,30 @@
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [A, Bq, Cc, D], 'ink', 0.07); poly(b, [A, Bq, Cc, D], 'ink', 3.4);
       const segs = [[A, 'PA', PA, 'sky'], [Bq, 'PB', PB, 'green'], [Cc, 'PC', PC, 'sky'], [D, 'PD', PD, 'green']];
+      if (!prob && st(2)) {
+        line(b, pt(0, y), pt(W, y), 'rose', 1.8, { dash: [6, 5] });
+        line(b, pt(x, 0), pt(x, H), 'rose', 1.8, { dash: [6, 5] });
+        b.right(pt(0, y), Pp, A, { size: 8, color: 'rose' }); b.right(pt(W, y), Pp, Cc, { size: 8, color: 'rose' });
+      }
       segs.forEach(([q, nm, v2, col]) => line(b, Pp, q, col, 2.8, { alpha: 0.9 }));
       b.right(A, D, Bq, { size: 10, color: 'ink' }); b.right(Bq, A, Cc, { size: 10, color: 'ink' }); b.right(Cc, Bq, D, { size: 10, color: 'ink' }); b.right(D, Cc, A, { size: 10, color: 'ink' });
       [[A, 'A', -1, -1], [Bq, 'B', -1, 1], [Cc, 'C', 1, 1], [D, 'D', 1, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
-      if (prob) { b.point(Pp, { color: 'amber', r: 5.5 }); T(b, Pp, 'P', { dx: 10, dy: -12, size: 17, color: 'amber' }); }
+      if (C.givens) { b.point(Pp, { color: 'amber', r: 5.5 }); T(b, Pp, 'P', { dx: 10, dy: -12, size: 17, color: 'amber' }); }
       else b.handle('P', Pp, { color: 'amber', r: 8, ariaLabel: '점 P 끌기', drag: (w) => { s.pyPx = clamp(Math.round(w.x), 1, W - 1); s.pyPy = clamp(Math.round(w.y), 1, H - 1); } });
-      if (!prob) T(b, Pp, 'P', { dx: 14, dy: -14, size: 17, color: 'amber' });
-      if (!prob) {
+      if (C.full) T(b, Pp, 'P', { dx: 14, dy: -14, size: 17, color: 'amber' });
+      if (C.full) {
         segs.forEach(([q, nm, v2, col]) => T(b, lerp(Pp, q, 0.55), L2(nm, v2), { dx: 0, dy: -12, size: 14, color: col }));
         if (st(2)) T(b, pt(W / 2, H), `${PA}+${PC}=${PA + PC}  ·  ${PB}+${PD}=${PB + PD}`, { dy: 30, size: 15, color: 'ink' });
       } else {
         // 문제: 길이(PB, PD)를 주고 PA²+PC² 를 구함 (kind 0) / PA², PB², PC² 를 주고 PD² 를 구함 (kind 1)
         if (kind === 0) { T(b, lerp(Pp, Bq, 0.55), `${isq(PB)}`, { dx: 12, dy: -6, size: 16, color: 'green' }); T(b, lerp(Pp, D, 0.55), `${isq(PD)}`, { dx: 0, dy: -12, size: 16, color: 'green' }); }
-        else { T(b, lerp(Pp, A, 0.55), `${PA}`, { dx: 0, dy: -12, size: 15, color: 'sky' }); T(b, lerp(Pp, Bq, 0.55), `${PB}`, { dx: 12, dy: -6, size: 15, color: 'green' }); T(b, lerp(Pp, Cc, 0.55), `${PC}`, { dx: 0, dy: 14, size: 15, color: 'sky' }); T(b, lerp(Pp, D, 0.55), 'x', { dx: 0, dy: -12, size: 18, color: 'amber' }); }
+        else { T(b, lerp(Pp, A, 0.55), `PA²=${PA}`, { dx: 0, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Pp, Bq, 0.55), `PB²=${PB}`, { dx: 12, dy: -6, size: 14, color: 'green' }); T(b, lerp(Pp, Cc, 0.55), `PC²=${PC}`, { dx: 0, dy: 14, size: 14, color: 'sky' }); T(b, lerp(Pp, D, 0.55), C.answer ? `x²=${PD}` : 'x', { dx: 0, dy: -14, size: 16, color: 'amber' }); }
+        if (C.answer && kind === 0) T(b, pt(W / 2, H), `PA²+PC²=${PB}+${PD}=${PB + PD}`, { dy: 30, size: 15, color: 'amber' });
       }
     },
     steps: (M) => [
       M.kind === 1 ? `$PA^2=${M.PA}$, $PB^2=${M.PB}$, $PC^2=${M.PC}$예요. $PD^2=x^2$를 구해요.` : `$PB=${isq(M.PB)}$, $PD=${isq(M.PD)}$예요. 마주 보는 두 꼭짓점까지의 제곱의 합 $PA^2+PC^2$를 구해요.`,
-      `P를 지나는 가로·세로 보조선을 그으면 네 직각삼각형이 보여요. 각 거리의 제곱은 가로 거리의 제곱과 세로 거리의 제곱의 합이에요.`,
+      `P를 지나는 가로·세로 보조선을 그어요. 각 꼭짓점까지의 거리를 직각삼각형의 빗변으로 보면, 그 제곱은 가로 거리의 제곱과 세로 거리의 제곱의 합이에요.`,
       `A와 C, B와 D를 각각 짝지으면 같은 네 제곱이 한 번씩 들어가므로 $PA^2+PC^2=PB^2+PD^2$예요.`,
       M.kind === 1 ? `$PD^2=PA^2+PC^2-PB^2=${M.PA}+${M.PC}-${M.PB}$예요.` : `$PA^2+PC^2=PB^2+PD^2=${isq(M.PB)}^2+${isq(M.PD)}^2=${M.PB}+${M.PD}$예요.`,
       M.kind === 1 ? `따라서 $x^2=${M.PD}$예요.` : `따라서 구하는 제곱의 합은 $${M.PB + M.PD}$예요.`
@@ -169,22 +176,24 @@
     draw(b, s, M, C) {
       const { p, q, m, n, BC2, DE2, BE2, CD2 } = M, prob = C.problem;
       const A = pt(0, 0), B = pt(p, 0), Cc = pt(0, -q), D = pt(m, 0), E = pt(0, -n);
-      fit(b, { x0: 0, x1: p, y0: -q, y1: 0 }, { t: 36, b: 40, l: 40, r: 40 });
+      fit(b, { x0: 0, x1: p, y0: -q, y1: 0 }, { t: 36, b: C.answer ? 68 : 40, l: 40, r: 40 });
       const st = (n2) => !C.review || C.step >= n2;
       fillPoly(b, [A, B, Cc], 'ink', 0.07); poly(b, [A, B, Cc], 'ink', 3.4);
+      if (!prob && st(2)) { fillPoly(b, [A, B, E], 'sky', 0.12); fillPoly(b, [A, Cc, D], 'green', 0.12); }
       line(b, B, E, 'sky', 3.4); line(b, Cc, D, 'green', 3.4); line(b, D, E, 'rose', 3);
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', -1, -1], [D, 'D', 0, 1], [E, 'E', -1, 0]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: nm === 'D' || nm === 'E' ? 'rose' : 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
-      if (!prob) {
+      if (C.full) {
         T(b, lerp(B, E, 0.35), L2('BE', BE2), { dx: 16, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, (q - n) / q < 0.45 ? 0.5 : 0.3), L2('CD', CD2), { dx: (q - n) / q < 0.45 ? 28 : -17, dy: 0, size: 14, color: 'green' });
         T(b, mid(A, B), `${p}`, { dy: 36, size: 15, color: 'sky' }); (n > q / 2 ? sideTag(b, A, lerp(A, Cc, 0.4), B, `${q}`, { color: 'green', size: 15, gap: 12 }) : sideTag(b, lerp(A, Cc, 0.6), Cc, B, `${q}`, { color: 'green', size: 15, gap: 12 }));
         T(b, mid(D, E), L2('DE', DE2), { dx: -28, dy: 2, size: 14, color: 'rose' });
         sideTag(b, B, Cc, A, L2('BC', BC2), { color: 'amber', size: 14, gap: 12 });
-        if (st(2)) T(b, pt(p * 0.55, -q * 0.9), `${BE2}+${CD2}=${BE2 + CD2}`, { size: 14, color: 'ink' });
+        if (st(2)) T(b, pt(p / 2, 0), `${BE2}+${CD2}=${BE2 + CD2}`, { dy: 46, size: 15, color: 'ink' });
       } else {
         // 문제: BC, DE 는 길이로 주어지고 BE²+CD² 를 구함
         sideTag(b, B, Cc, A, `${isq(BC2)}`, { color: 'amber', size: 16, gap: 12 }); T(b, mid(D, E), `${isq(DE2)}`, { dx: -8, dy: -12, size: 16, color: 'rose' });
         T(b, lerp(B, E, 0.5), 'BE', { dx: 8, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, (q - n) / q < 0.45 ? 0.5 : 0.3), 'CD', { dx: (q - n) / q < 0.45 ? 20 : -17, dy: 0, size: 14, color: 'green' });
+        if (C.answer) T(b, pt(p / 2, 0), `BE²+CD²=${BC2}+${DE2}=${BC2 + DE2}`, { dy: 40, size: 15, color: 'amber' });
       }
     },
     steps: (M) => [

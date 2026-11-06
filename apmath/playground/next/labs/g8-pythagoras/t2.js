@@ -46,22 +46,22 @@
       const rectL = [pt(0, 0), pt(p, 0), pt(p, c), pt(0, c)].map((q) => pt(q.x + dxL, q.y));
       const rectR = [pt(p, 0), pt(c, 0), pt(c, c), pt(p, c)].map((q) => pt(q.x + dxR, q.y));
       const hiL = !C.review || C.step >= 3, hiR = !C.review || C.step >= 4;
-      drawSq(b, sqA, 'green', prob ? '' : `b²=${M.b2}`, { fa: hiL ? 0.26 : 0.1 });
-      drawSq(b, sqB, 'sky', prob ? '' : `a²=${M.a2}`, { fa: hiR ? 0.26 : 0.1 });
-      if (stp(2)) {
+      drawSq(b, sqA, 'green', prob ? '' : C.answer ? `b²=${M.b2}` : 'b²', { fa: hiL ? 0.2 : 0.08 });
+      drawSq(b, sqB, 'sky', prob ? '' : C.calculation ? `a²=${M.a2}` : 'a²', { fa: hiR ? 0.2 : 0.08 });
+      if (stp(2) || C.givens) {
         fillPoly(b, rectL, 'green', hiL ? 0.3 : 0.1); poly(b, rectL, 'green', 2.8);
         fillPoly(b, rectR, 'sky', hiR ? 0.3 : 0.1); poly(b, rectR, 'sky', 2.8);
-        if (C.txt && !prob) { T(b, cenOf(rectL), hiL ? `${M.b2}` : '', { size: 18, color: 'green' }); T(b, cenOf(rectR), hiR ? `${M.a2}` : '', { size: 18, color: 'sky' }); }
+        if (C.txt && !prob) { T(b, cenOf(rectL), C.answer ? `${M.b2}` : 'x', { size: 18, color: 'green' }); T(b, cenOf(rectR), C.calculation ? `${M.a2}` : 'a²', { size: 18, color: 'sky' }); }
         line(b, Cc, pt(p, c), 'rose', 2.6, { dash: [7, 6] });
       } else { fillPoly(b, [A, B, pt(c, c), pt(0, c)], 'amber', 0.1); poly(b, [A, B, pt(c, c), pt(0, c)], 'amber', 2.8); }
-      T(b, pt(c / 2, c), prob ? '' : `c²=${M.c2}`, { dy: -14, size: 16, color: 'amber', alpha: stp(2) ? 0.9 : 1 });
+      T(b, pt(c / 2, c), prob ? '' : C.calculation ? `c²=${M.c2}` : 'c²', { dy: -14, size: 16, color: 'amber', alpha: stp(2) ? 0.9 : 1 });
       fillPoly(b, [A, B, Cc], 'ink', 0.08);
       poly(b, [A, B, Cc], 'ink', 3.4);
       ang(b, Cc, A, B, { color: 'amber', r: 20 });
       if (stp(2)) { b.right(H, B, Cc, { size: 11, color: 'rose' }); b.point(H, { color: 'rose', r: 4 }); T(b, H, 'H', { dx: 12, dy: -12, size: 15, color: 'rose' }); }
       [[A, 'A', -1, -1], [B, 'B', 1, -1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
       T(b, mid(A, B), prob ? `${c}` : `c=${c}`, { dy: 16, size: 15, color: 'amber' });
-      if (prob) sideTag(b, Cc, B, A, `${a}`, { color: 'sky', size: 16, gap: 12 });
+      if (C.givens) sideTag(b, Cc, B, A, `${a}`, { color: 'sky', size: 16, gap: 12 });
     },
     steps: (M) => [
       `직각삼각형에서 빗변 $AB=${M.c}$, 직각변 $BC=${M.a}$예요. A 쪽 초록 직사각형의 넓이를 구해요.`,
@@ -92,26 +92,31 @@
     id: 'py2-bhas1', title: '큰 정사각형 안의 직각삼각형 4개', short: '큰 정사각형 안의 4개',
     question: '똑같은 직각삼각형 4개를 한 변이 a+b인 큰 정사각형 안에 두 가지로 놓으면, 남는 부분의 넓이를 비교해 어떤 식이 나올까?',
     ctl: ['pyBa', 'pyBb'],
-    init: (s) => { s.pyBa = 3; s.pyBb = 4; },
+    presets: () => [0, 1].map((i) => ({ group: i === 0 ? '휴대폰에서 배치 비교' : '', label: i === 0 ? '처음 배치' : '옮긴 배치', apply: (s) => { s.pyArrange = i; }, on: (s) => (s.pyArrange || 0) === i })),
+    init: (s) => { s.pyBa = 3; s.pyBb = 4; s.pyArrange = 0; },
     gen: (s, prev) => { let a, b; do { a = rint(2, 6); b = rint(a + 1, 9); } while (prev && a === prev.pyBa && b === prev.pyBb); return { pyBa: a, pyBb: b }; },
     model: (s) => { const m = abOf(s); return { ...m, sd: m.a + m.b, big: (m.a + m.b) ** 2, tri4: 2 * m.a * m.b }; },
     draw(b, s, M, C) {
       const { a, b: bb, sd, c2, ci } = M, prob = C.problem;
       const gap = Math.max(1.6, sd * 0.28);
-      const ox = prob ? 0 : sd + gap;
-      fit(b, { x0: 0, x1: prob ? sd : sd + ox, y0: 0, y1: sd }, { t: 38, b: 62, l: 30, r: 30 });
       const st = (n) => !C.review || C.step >= n;
+      const compare = !prob && b.W >= 560 && st(4);
+      const arranged = !prob && !compare && (C.review ? C.step >= 4 : s.pyArrange === 1);
+      const ox = compare ? sd + gap : 0;
+      fit(b, { x0: 0, x1: compare ? sd + ox : sd, y0: 0, y1: sd }, { t: 38, b: 76, l: 30, r: 30 });
       const sq1 = [pt(0, 0), pt(sd, 0), pt(sd, sd), pt(0, sd)];
       const Pq = [pt(a, 0), pt(sd, a), pt(bb, sd), pt(0, bb)];
       const tr1 = [[pt(0, 0), Pq[0], Pq[3]], [pt(sd, 0), Pq[1], Pq[0]], [pt(sd, sd), Pq[2], Pq[1]], [pt(0, sd), Pq[3], Pq[2]]];
       // 왼쪽: 직각삼각형 4개 + 가운데 기울어진 정사각형 c²
+      if (!arranged) {
       poly(b, sq1, 'muted', 2.6);
       tr1.forEach((t) => { fillPoly(b, t, 'ink', 0.1); poly(b, t, 'ink', 2.4); b.right(t[0], t[1], t[2], { size: 9, color: 'amber' }); });
-      if (st(2)) { fillPoly(b, Pq, 'amber', 0.28); poly(b, Pq, 'amber', 3); T(b, cenOf(Pq), prob ? '?' : `c²=${c2}`, { size: 18, color: 'amber' }); }
+      if (st(2) || C.givens) { fillPoly(b, Pq, 'amber', 0.18); poly(b, Pq, 'amber', 3); T(b, cenOf(Pq), C.answer ? `c²=${c2}` : 'c²=?', { size: 18, color: 'amber' }); }
       T(b, pt(a / 2, 0), `${a}`, { dy: 13, size: 15, color: 'sky' }); T(b, pt(a + bb / 2, 0), `${bb}`, { dy: 13, size: 15, color: 'green' });
       T(b, pt(0, bb / 2), `${bb}`, { dx: 13, size: 15, color: 'green' }); T(b, pt(0, bb + a / 2), `${a}`, { dx: 13, size: 15, color: 'sky' });
       T(b, pt(sd / 2, sd), `${a}+${bb}=${sd}`, { dy: 22, size: 15, color: 'ink' });
-      if (prob) return;
+      }
+      if (prob || !compare && !arranged) return;
       // 오른쪽: 같은 삼각형 4개를 옮겨 놓으면 a²와 b²가 남음
       const X = (q) => pt(q.x + ox, q.y);
       const sq2 = sq1.map(X);
@@ -125,7 +130,7 @@
         fillPoly(b, sqb, 'green', 0.3); poly(b, sqb, 'green', 3); T(b, cenOf(sqb), `b²=${bb * bb}`, { size: 16, color: 'green' });
       }
       T(b, pt(sd / 2 + ox, sd), `${a}+${bb}=${sd}`, { dy: 22, size: 15, color: 'ink' });
-      if (st(4) && C.txt) T(b, pt(sd + gap / 2, sd), `${c2} = ${a * a} + ${bb * bb}`, { dy: 46, size: 17, color: 'amber' });
+      if (C.txt) T(b, pt(compare ? sd + gap / 2 : sd / 2, sd), C.answer ? `${c2} = ${a * a} + ${bb * bb}` : '같은 삼각형 4개를 옮긴 배치', { dy: 50, size: 16, color: 'amber' });
     },
     steps: (M) => [
       `큰 정사각형의 한 변은 $${M.sd}$, 합동인 직각삼각형의 두 직각변은 $a=${M.a}$, $b=${M.b}$예요. 가운데 정사각형의 넓이를 구해요.`,
@@ -170,7 +175,7 @@
       // 삼각형: 빗변이 바깥 변, 직각 꼭짓점이 안쪽(Wp)
       const sides = [[Pq[0], Pq[3], Wp[0]], [Pq[1], Pq[0], Wp[1]], [Pq[2], Pq[1], Wp[2]], [Pq[3], Pq[2], Wp[3]]];
       sides.forEach(([p, q, w]) => { fillPoly(b, [p, q, w], 'sky', 0.22); poly(b, [p, q, w], 'ink', 2.4); b.right(w, p, q, { size: 9, color: 'amber' }); });
-      if (st(2)) { fillPoly(b, Wp, 'rose', 0.34); poly(b, Wp, 'rose', 2.8); T(b, cenOf(Wp), prob ? '?' : `${d2}`, { size: prob ? 18 : 16, color: 'rose' }); }
+      if (st(2) || C.givens) { fillPoly(b, Wp, 'rose', 0.22); poly(b, Wp, 'rose', 2.8); T(b, cenOf(Wp), C.answer ? `${d2}` : '?', { size: 17, color: 'rose' }); }
       // 직각삼각형 하나의 변 길이(한 변이 어디서나 a, b 로 읽히도록)
       const [p0, q0, w0] = sides[0];
       sideTag(b, p0, w0, cenOf(Pq), `${a}`, { color: 'sky', size: 16, gap: -26 });
@@ -180,7 +185,7 @@
       sideTag(b, q1, w1, cenOf(Pq), `${bb}`, { color: 'green', size: 16, gap: -26 });
       if (!prob) sideTag(b, Pq[0], Pq[1], cenOf(Pq), M.ci ? `c=${M.ci}` : 'c', { color: 'amber', size: 16, gap: 13 });
       Pq.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); });
-      if (!prob && C.txt && st(3)) T(b, pt(sd / 2, sd), `${c2} = ${M.tri4} + ${d2}`, { dy: 40, size: 17, color: 'amber' });
+      if (C.calculation && C.txt) T(b, pt(sd / 2, sd), C.answer ? `가운데 넓이 ${d}²=${d2}` : `가운데 한 변 ${Math.max(a, bb)}−${Math.min(a, bb)}=${d}`, { dy: 40, size: 17, color: 'rose' });
     },
     steps: (M) => [
       `직각변이 $a=${M.a}$, $b=${M.b}$인 합동인 삼각형 4개예요. 가운데 분홍 정사각형의 넓이를 구해요.`,
@@ -189,7 +194,7 @@
       `따라서 구하는 넓이는 $${M.d}^2=${M.d2}$예요. 바깥 정사각형 전체의 넓이와 구별해요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>a</b>, <b>b</b>를 바꿔 보세요. 바깥 정사각형(노랑) = 삼각형 4개(파랑) + 가운데 작은 정사각형(분홍). 가운데 정사각형의 한 변은 <b>b − a</b>예요.',
+      guide: '막대로 <b>a</b>, <b>b</b>를 바꿔 보세요. 바깥 정사각형(노랑) = 삼각형 4개(파랑) + 가운데 작은 정사각형(분홍). 가운데 한 변은 <b>긴 직각변 − 짧은 직각변</b>이에요.',
       readouts: [rd('바깥 정사각형 c²', `${M.c2}`, 'amber'), rd('삼각형 4개', `${M.tri4}`, 'sky', `4 × ½ × ${M.a} × ${M.b}`), rd('가운데 (b−a)²', `${M.d2}`, 'rose', `(${M.b} − ${M.a})²`)],
       formula: `<p>$c^2=4\\times\\frac{1}{2}ab+(b-a)^2=${M.tri4}+${M.d2}=${M.c2}$</p><p>$=a^2+b^2$</p>`,
       rule: '직각삼각형 4개로 둘러싼 정사각형: c² = 4×(½ab) + (b−a)² = a² + b²',
@@ -285,8 +290,8 @@
       [[A, 'A', -1, 0.4], [B, 'B', 1, 0.4], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       // 길이: 문제에서는 주어진 AB, AC 만 보임
       sideTag(b, A, Cc, B, `${bb}`, { color: 'green', size: 16, gap: 12 });
-      sideTag(b, Cc, B, A, prob ? '' : `${a}`, { color: 'sky', size: 16, gap: 12 });
-      if (prob) { T(b, mid(A, B), `${c}`, { dy: 40, size: 16, color: 'amber' }); T(b, mid(A, H), 'x', { dy: 18, size: 17, color: 'rose' }); }
+      sideTag(b, Cc, B, A, C.givens ? '' : `${a}`, { color: 'sky', size: 16, gap: 12 });
+      if (C.givens) { T(b, mid(A, B), `${c}`, { dy: 44, size: 16, color: 'amber' }); T(b, mid(A, H), C.answer ? `x=${fr(p)}` : 'x', { dy: 20, size: 17, color: 'rose' }); }
       else {
         T(b, mid(A, H), `${fr(p)}`, { dy: 22, size: 16, color: 'green' }); T(b, mid(H, B), `${fr(M.q)}`, { dy: 22, size: 16, color: 'sky' });
         T(b, lerp(Cc, H, 0.5), `${fr(h)}`, { dx: 16, size: 14, color: 'rose' });
