@@ -116,7 +116,14 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "제곱근을 제곱한 값과 양수의 제곱의 양의 제곱근을 각각 계산한 후 합한다.",
+    "decisiveStep": "(√3)²=3, √(5²)=|5|=5이므로 합은 8이다."
   },
   {
     "id": 4,
@@ -186,7 +193,14 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "이항식 곱의 분배법칙으로 식을 전개하고 제시된 다섯 식과 대조한다.",
+    "decisiveStep": "(x-1)(x+3)=x²+3x-x-3=x²+2x-3이므로 ④이다."
   },
   {
     "id": 6,
@@ -254,10 +268,17 @@ window.questionBank = [
     "answer": "1",
     "solution": "$(x-6)^2=x^2-12x+36$이므로 $\\Box=12$, $\\triangle=36$이다.\n또 $x^2-36=(x+6)(x-6)$이므로 $\\bigcirc=6$이다.\n따라서 순서는 $12,36,6$이다.\n$\\therefore$ ①",
     "level": "하",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "primaryMethod": "완전제곱식 전개와 제곱의 차 인수분해 공식을 각각 적용하여 빈칸 세 값을 결정한다.",
+    "decisiveStep": "(x-6)²=x²-12x+36, x²-36=(x+6)(x-6)이므로 순서대로 12,36,6이다."
   },
   {
     "id": 8,
