@@ -33,6 +33,44 @@ function verify(id, s) { const r = by(id).pg.verify(s); close(r.ans, r.model, id
 const area = (pts) => Math.abs(pts.reduce((sum, p, i) => { const q = pts[(i + 1) % pts.length]; return sum + p.x * q.y - q.x * p.y; }, 0) / 2);
 const angle = (v, a, b) => { const u = { x: a.x - v.x, y: a.y - v.y }, w = { x: b.x - v.x, y: b.y - v.y }; return Math.atan2(Math.abs(u.x * w.y - u.y * w.x), u.x * w.x + u.y * w.y) * 180 / Math.PI; };
 
+// Representative canvas coordinates, not a substitute for Chromium CSS/font checks.
+function concaveScreen(n, f, tab, step, width, height, bottom) {
+  const s = state('p3-concave', { pgCn: n, pgCf: f, step }), sc = by('p3-concave'), calls = [];
+  const b = { W: width, H: height, insets: { left: 0, right: 0, top: 0, bottom }, pad: .02, thumb: false, calls };
+  Object.defineProperty(b, 'k', { get() { const pad = 2 * b.pad * Math.min(width, height - bottom); return Math.min((width - pad) / (b.focus.x[1] - b.focus.x[0]), (height - bottom - pad) / (b.focus.y[1] - b.focus.y[0])); } });
+  for (const method of ['path', 'text', 'point', 'arc', 'right', 'circle', 'ticks', 'handle']) b[method] = (...args) => { calls.push({ method, args }); return b; };
+  const lab = { tab, s, scene: sc }, v = sc.view(s, lab); sc.draw(b, s, v, lab);
+  const labels = calls.filter((c) => c.method === 'text').map(({ args: [p, text, o] }) => {
+    const size = o.size || 16, w = G.textW(text, size), x = width / 2 + (p.x - (b.focus.x[0] + b.focus.x[1]) / 2) * b.k + (o.dx || 0), y = (height - bottom) / 2 + (p.y - (b.focus.y[0] + b.focus.y[1]) / 2) * b.k + (o.dy || 0);
+    return { text, p, x0: x - w / 2, x1: x + w / 2, y0: y - size / 2, y1: y + size / 2 };
+  });
+  return { b, labels, m: model('p3-concave', s) };
+}
+
+test('all concave slider values retain separated given labels and a visible unknown on representative stages', () => {
+  for (const [w, h, bottom] of [[1024, 700, 0], [820, 430, 58], [684, 500, 0], [390, 512, 58]]) {
+    for (const n of [4, 5, 6]) for (let j = 0; j <= 100; j++) for (const [tab, step] of [['explore', 1], ['review', 3], ['problem', 1]]) {
+      const { b, labels, m } = concaveScreen(n, j / 100, tab, step, w, h, bottom);
+      for (let i = 1; i < n; i++) {
+        const atVertex = labels.filter((l) => l.p.x === m.g.V[i].x && l.p.y === m.g.V[i].y), name = G.LET[i - 1], value = `${m.iv[i]}°`;
+        assert.ok(atVertex.some((l) => l.text === name || l.text.startsWith(name + ' ')), 'vertex name stays attached');
+        assert.ok(atVertex.some((l) => l.text === value || l.text === `${name} ${value}`), 'given angle stays attached to its vertex');
+      }
+      for (const l of labels) assert.ok(l.x0 >= 0 && l.x1 <= w && l.y0 >= 0 && l.y1 <= h - bottom, `${n}/${j}/${w}/${tab}: clipped ${l.text}`);
+      for (let a = 0; a < labels.length; a++) for (let c = a + 1; c < labels.length; c++) {
+        const u = labels[a], v = labels[c];
+        assert.ok(!(Math.min(u.x1, v.x1) > Math.max(u.x0, v.x0) && Math.min(u.y1, v.y1) > Math.max(u.y0, v.y0)), `${n}/${j}/${w}/${tab}: ${u.text} overlaps ${v.text}`);
+      }
+      if (tab === 'problem') {
+        assert.ok(labels.some((l) => l.text === 'x'));
+        assert.ok(!labels.some((l) => l.text.startsWith('x=')), 'target value is not visible');
+        assert.ok(!labels.some((l) => l.p.x === m.g.V[0].x && l.p.y === m.g.V[0].y && l.text === `${m.iv[0]}°`), 'P interior is not disclosed');
+      }
+      if (w === 390) { const xs = m.g.V.map((p) => p.x); assert.ok((Math.max(...xs) - Math.min(...xs)) * b.k >= 145, 'core polygon retains usable mobile width'); }
+    }
+  }
+});
+
 test('registered scenes produce finite drawings and five valid choices in all requested viewport dimensions', () => {
   assert.ok(scenes.length > 0); assert.equal(new Set(scenes.map((sc) => sc.id)).size, scenes.length);
   for (const sc of scenes) {

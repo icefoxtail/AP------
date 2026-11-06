@@ -311,6 +311,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (lab && lab.s === s && document.body) document.body.dataset.pgScene = D.id;
         const key = keyOf(s);
         if (s.pgQuestionKey !== key) { s.pgQuestionKey = key; s.pgPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);

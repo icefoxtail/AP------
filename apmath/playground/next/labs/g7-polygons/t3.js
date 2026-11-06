@@ -155,7 +155,8 @@
     },
     draw(b, s, M, C) {
       const n = M.n, gg = C.problem ? M.gp : M.g, iv = C.problem ? M.p.iv : M.iv, x = C.problem ? M.p.x : M.x, V = gg.V, cen = pt(0, 0.0);
-      fit(b, { x0: -1.05, x1: 1.05, y0: -1.05, y1: 1.05 }, { t: 36, b: 92, l: 48, r: 44 });
+      const shape = bboxOf(V, 0.025);
+      fit(b, shape, { t: 36, b: C.problem ? 64 : 92, l: 72, r: 108 });
       const concaveNow = gg.concave, st = C.step;
       fillPoly(b, V, 'sky', 0.1);
       // 보조선: 오목한 꼭짓점 P(=V0)에서 이웃하지 않는 꼭짓점으로 (n−3개)
@@ -168,17 +169,19 @@
         const given = !(C.problem && isP);
         const col = isP ? 'amber' : 'sky';
         const hiddenP = isP && (C.problem || (C.review && st < 3));
-        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: hiddenP ? (!big ? 'x' : '') : `${iv[i]}°`, size: 16, fa: 0.14, labelRot: isP && big ? 45 : 0 });
+        ang(b, p, u, w, { color: isP ? 'rose' : 'sky', big: big, r: isP ? 28 : 26, label: isP ? (hiddenP ? (!big ? 'x' : '') : `${iv[i]}°`) : '', size: 16, fa: 0.14, labelRot: isP && big ? 45 : 0 });
         b.point(p, { color: 'ink', r: 4.5 });
         void col; void nm;
       });
       // 오목한 꼭짓점의 바깥(움푹한) 각 x
       if (concaveNow && (C.full || st >= 3 || C.problem)) ang(b, V[0], V[n - 1], V[1], { color: 'amber', r: 40, label: C.problem ? 'x' : `x=${x}°`, size: 17, fa: 0.18, labelDist: 66 });
       if (C.txt) {
-        V.forEach((p, i) => { const q = V[(i + n - 1) % n]; void q; tagOut(b, p, i === 0 ? pt(-5, 0) : cen, i === 0 ? 'P' : LET[i - 1], { size: 18, gap: 11 }); });
+        // 급한 각의 이등분선에 숫자를 밀어 넣으면 P의 큰 각과 겹칩니다.
+        // 꼭짓점 이름과 주어진 각을 함께 바깥에 두고, 호는 실제 내각에 남깁니다.
+        V.forEach((p, i) => tagOut(b, p, i === 0 ? pt(-5, 0) : cen, i === 0 ? 'P' : `${LET[i - 1]} ${iv[i]}°`, { size: i === 0 ? 18 : 16, gap: 11, color: i === 0 ? 'ink' : 'sky' }));
         if (!C.problem && !C.thumb && !C.review) b.handle('P', V[0], { color: 'amber', r: 8, ariaLabel: '꼭짓점 P 가로로 끌기', drag: (w) => { s.pgCf = clamp((w.x - XMIN) / (1 - XMIN), 0, 1); } });
         else b.point(V[0], { color: 'amber', r: 6.5 });
-        const yb = 1.05;
+        const yb = shape.y1, cx = (b.focus.x[0] + b.focus.x[1]) / 2;
         let r1, r2 = '', c1 = 'sky', c2 = 'amber';
         if (C.problem) { r1 = gg.flat ? 'P에서 두 변이 이루는 각 x는?' : `내각의 합 = 180°×(${n}−2) = ${M.S}°`; r2 = ''; }
         else if (gg.flat) { r1 = 'P에서 두 변이 한 직선을 이뤄요'; r2 = st >= 3 ? '평각 = 180°' : ''; }
@@ -186,9 +189,9 @@
         else if (st === 2) { r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°`; }
         else if (concaveNow) { r1 = `안쪽 각 ${iv[0]}° (180° 넘어요)`; r2 = `x = 360° − ${iv[0]}° = ${x}°`; }
         else { r1 = `볼록: 안쪽 각 ${iv[0]}° < 180°`; r2 = `내각의 합 = ${M.S}°`; c2 = 'sky'; }
-        if (!C.problem && st >= 99 && concaveNow) r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°  ·  P의 안쪽 각 ${iv[0]}°`;
-        T(b, pt(0, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
-        T(b, pt(0, yb), r2, { dy: 72, size: 17, color: c2 });
+        if (!C.problem && st >= 99 && concaveNow) r1 = `내각의 합 = 180°×(${n}−2) = ${M.S}°` + (b.W < 560 ? '' : `  ·  P의 안쪽 각 ${iv[0]}°`);
+        T(b, pt(cx, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
+        T(b, pt(cx, yb), r2, { dy: 72, size: 17, color: c2 });
       }
     },
     steps: (M) => {
