@@ -156,7 +156,10 @@
     draw(b, s, M, C) {
       const n = M.n, gg = C.problem ? M.gp : M.g, iv = C.problem ? M.p.iv : M.iv, x = C.problem ? M.p.x : M.x, V = gg.V, cen = pt(0, 0.0);
       const shape = bboxOf(V, 0.025);
-      fit(b, shape, { t: 36, b: C.problem ? 64 : 92, l: 72, r: 108 });
+      // 좁은 가로 화면의 툴바는 캔버스 오른쪽 아래에 겹쳐 놓입니다.
+      // 이미 하단 inset을 둔 세로 화면은 그대로 두고, 이 경우만 설명줄을 올립니다.
+      const footerReserve = b.W >= 560 && b.W < 900 && (b.insets.bottom || 0) < 40 ? 44 : 0;
+      fit(b, shape, { t: 36, b: (C.problem ? 64 : 92) + footerReserve, l: 72, r: 108 });
       const concaveNow = gg.concave, st = C.step;
       fillPoly(b, V, 'sky', 0.1);
       // 보조선: 오목한 꼭짓점 P(=V0)에서 이웃하지 않는 꼭짓점으로 (n−3개)

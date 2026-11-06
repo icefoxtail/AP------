@@ -211,3 +211,12 @@ test('step reveal, manual answer reset, progress and drag interactions stay cohe
     const s = state(id), r = render(id, s, 'explore'), handle = r.b.calls.find((c) => c.method === 'handle' && c.args[0] === name); assert.ok(handle, id + ' drag handle'); handle.args.at(-1).drag(point); verify(id, s);
   }
 });
+
+test('concave captions stay above the observed narrow-landscape toolbar area', () => {
+  for (const height of [500, 626]) for (const n of [4, 5, 6]) for (let j = 0; j <= 100; j++) for (const [tab, step] of [['explore', 1], ['review', 3], ['problem', 1]]) {
+    const width = 684, { labels } = concaveScreen(n, j / 100, tab, step, width, height, 0);
+    // Actual 1024×768 Chromium capture: stage width 684; toolbar occupies
+    // the rightmost 276 px and bottom 60 px including its visual clearance.
+    for (const label of labels) assert.ok(!(label.x1 > width - 276 && label.x0 < width && label.y1 > height - 60 && label.y0 < height), `${n}/${j}/${height}/${tab}: toolbar covers ${label.text}`);
+  }
+});
