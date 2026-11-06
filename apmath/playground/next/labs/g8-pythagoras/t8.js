@@ -176,7 +176,7 @@
     draw(b, s, M, C) {
       const { p, q, m, n, BC2, DE2, BE2, CD2 } = M, prob = C.problem;
       const A = pt(0, 0), B = pt(p, 0), Cc = pt(0, -q), D = pt(m, 0), E = pt(0, -n);
-      fit(b, { x0: 0, x1: p, y0: -q, y1: 0 }, { t: 36, b: C.answer ? 68 : 40, l: 40, r: 40 });
+      fit(b, { x0: 0, x1: p, y0: -q, y1: 0 }, { t: 36, b: C.full ? 94 : C.answer ? 68 : 40, l: 40, r: 40 });
       const st = (n2) => !C.review || C.step >= n2;
       fillPoly(b, [A, B, Cc], 'ink', 0.07); poly(b, [A, B, Cc], 'ink', 3.4);
       if (!prob && st(2)) { fillPoly(b, [A, B, E], 'sky', 0.12); fillPoly(b, [A, Cc, D], 'green', 0.12); }
@@ -188,7 +188,7 @@
         T(b, mid(A, B), `${p}`, { dy: 36, size: 15, color: 'sky' }); (n > q / 2 ? sideTag(b, A, lerp(A, Cc, 0.4), B, `${q}`, { color: 'green', size: 15, gap: 12 }) : sideTag(b, lerp(A, Cc, 0.6), Cc, B, `${q}`, { color: 'green', size: 15, gap: 12 }));
         T(b, mid(D, E), L2('DE', DE2), { dx: -28, dy: 2, size: 14, color: 'rose' });
         sideTag(b, B, Cc, A, L2('BC', BC2), { color: 'amber', size: 14, gap: 12 });
-        if (st(2)) T(b, pt(p / 2, 0), `${BE2}+${CD2}=${BE2 + CD2}`, { dy: 46, size: 15, color: 'ink' });
+        if (st(2)) T(b, pt(p / 2, 0), `${BE2}+${CD2}=${BE2 + CD2}`, { dy: 70, size: 15, color: 'ink' });
       } else {
         // 문제: BC, DE 는 길이로 주어지고 BE²+CD² 를 구함
         sideTag(b, B, Cc, A, `${isq(BC2)}`, { color: 'amber', size: 16, gap: 12 }); T(b, mid(D, E), `${isq(DE2)}`, { dx: -8, dy: -12, size: 16, color: 'rose' });

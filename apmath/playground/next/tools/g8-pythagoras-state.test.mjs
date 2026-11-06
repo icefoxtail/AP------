@@ -8,14 +8,15 @@ import { createRequire } from 'node:module';
 
 const labDir = process.env.G8_PYTHAGORAS_LAB_DIR || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../labs/g8-pythagoras');
 const katex = createRequire(import.meta.url)('../kit/vendor/katex/katex.min.js');
-function loadUnit() {
+function loadUnit(random=Math.random) {
   const listeners = {};
   const document = {
     documentElement: { dataset: {} }, head: { append() {} },
     getElementById() { return null; }, createElement() { return {}; },
     addEventListener(name, callback) { listeners[name] = callback; }
   };
-  const ctx = vm.createContext({ window: {}, document });
+  const math=Object.create(Math);math.random=random;
+  const ctx = vm.createContext({ window: {}, document, Math:math });
   for (const name of ['core', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8']) {
     vm.runInContext(fs.readFileSync(path.join(labDir, name + '.js'), 'utf8'), ctx, { filename: name + '.js' });
   }
@@ -49,8 +50,8 @@ function commandBoard(width = 390, height = 440) {
     ctx: new Proxy({}, { get: () => () => {} }),
     get focus() { return focus; },
     set focus(v) { assert.ok([...v.x, ...v.y].every(Number.isFinite)); focus = v; },
-    get k() { return Math.min(width / (focus.x[1] - focus.x[0]), height / (focus.y[1] - focus.y[0])); },
-    toS(p) { point(p); return { x: width / 2 + (p.x - (focus.x[0] + focus.x[1]) / 2) * this.k, y: height / 2 + (p.y - (focus.y[0] + focus.y[1]) / 2) * this.k }; },
+    get k() { const w=width-this.insets.left-this.insets.right,h=height-this.insets.top-this.insets.bottom,pad=this.pad*Math.min(w,h); return Math.min((w-2*pad)/(focus.x[1]-focus.x[0]),(h-2*pad)/(focus.y[1]-focus.y[0])); },
+    toS(p) { point(p); return { x: (this.insets.left+width-this.insets.right)/2+(p.x-(focus.x[0]+focus.x[1])/2)*this.k, y: (this.insets.top+height-this.insets.bottom)/2+(p.y-(focus.y[0]+focus.y[1])/2)*this.k }; },
     path(points, options) { points.forEach(point); paths.push({ points, options }); },
     text(p, text, options) { point(p); assert.doesNotMatch(String(text), /NaN|undefined|Infinity|√|\\sqrt/); labels.push({ text: String(text), p, options }); },
     point(p) { point(p); },
@@ -145,6 +146,13 @@ test('changing the question clears previous answers and completed solution steps
     assert.equal(s.revealed, false, sc.id + ': answer locked');
     assert.ok(s.step < sc.steps(s).length, sc.id + ': previous solution no longer complete');
   }
+});
+
+test('new grid questions cannot repeat the previous lengths after reversing their order', () => {
+  const values=[.65,.7,.9,.2,.1];let i=0;
+  const local=loadUnit(()=>values[i++%values.length]);
+  const sc=local.scenes.find(s=>s.id==='py1-grid'),q=sc.py.gen({}, {pyU:6,pyV:4});
+  assert.notDeepEqual([q.pyU,q.pyV].sort(),[4,6],'retry also excludes the reversed previous pair');
 });
 
 test('generated questions have five distinct choices and exactly one finite answer', t => {
@@ -257,6 +265,69 @@ test('fold solutions place x on the requested segment in all six question varian
     const v=sc.view(s,{tab:'review'});
     assert.match(v.notes,note,id + ': final notes match requested target');
     if(id === 'py7-rect' && q.pyKind === 2) assert.doesNotMatch(v.notes,/FEC|FE=FD/);
+  }
+});
+
+// These are conservative command-space clearances for collisions confirmed in
+// actual Chromium captures. They do not replace the subsequent raster review.
+function layoutDrawing(id, q, tab='review', width=390, height=408) {
+  const { sc, s }=setup(id,q);if(tab==='explore')Object.assign(s,q);
+  s.step=sc.steps(s).length;
+  const r=commandBoard(width,height);
+  if(width<560)r.b.insets.bottom=58;
+  sc.draw(r.b,s,{}, {tab});
+  return r;
+}
+function labelBox(record, text) {
+  const label=record.labels.find(x=>typeof text==='string'?x.text===text:text.test(x.text));
+  assert.ok(label,'label found: '+text);
+  const size=label.options.size||16, fs=Math.max(size*.72,Math.min(size*.9,9.5));
+  const measure=(s,z)=>[...s].reduce((sum,c)=>sum+(c===' '?z*.32:c.charCodeAt(0)>=0x1100?z:z*.62),0);
+  const re=/\\frac\{([^{}]+)\}\{([^{}]+)\}/g;
+  let w=0,start=0,fraction=false;
+  for(const m of label.text.matchAll(re)){w+=measure(label.text.slice(start,m.index),size)+Math.max(measure(m[1],fs),measure(m[2],fs))+fs*.34;start=m.index+m[0].length;fraction=true;}
+  w+=measure(label.text.slice(start),size);
+  const pos=record.b.toS(label.p),x=pos.x+(label.options.dx||0),y=pos.y+(label.options.dy||0),h=fraction?fs*2.3:size;
+  const left=label.options.align==='left'?x:label.options.align==='right'?x-w:x-w/2;
+  return {left,right:left+w,top:y-h/2,bottom:y+h/2,label};
+}
+function separated(record,a,b,gap=6) {
+  const A=labelBox(record,a),B=labelBox(record,b);
+  assert.ok(A.right+gap<=B.left||B.right+gap<=A.left||A.bottom+gap<=B.top||B.bottom+gap<=A.top,`${a} / ${b}: clear gap ${gap}px; ${JSON.stringify({A,B})}`);
+}
+
+test('visual regression: current lengths, areas, foot names and comparison formulas have separate label space', () => {
+  separated(layoutDrawing('py1-chain',{pyX:24,pyM:7,pyN:11}),'x=24','y=25');
+  for(let pyP=0;pyP<=U.params.pyP.max;pyP++) {
+    const q={pyP,pyG:0},eu=layoutDrawing('py2-euclid',q),M=byId('py2-euclid').py.model(q);
+    separated(eu,String(M.a),`a²=${M.a2}`);separated(eu,String(M.a),'H');
+  }
+  separated(layoutDrawing('py4-hinge',{pyHa:8,pyHb:6,pyHang:90,pyKind:0},'explore'),'C','a²+b²=64+36=100');
+  separated(layoutDrawing('py5-rectsemi',{pyRw:12,pyRh:16,pyKind:1}),'20',/^색칠/);
+  const rect=layoutDrawing('py6-rect',{pyWw:15,pyWh:8,pyKind:2});separated(rect,'P','BD=17');separated(rect,'Q','BD=17');
+  const tri=layoutDrawing('py7-tri',{pyGa:12,pyGb:9,pyKind:1,pyFp:1});separated(tri,'9','x=\\frac{75}{8}');separated(tri,'12','y=\\frac{75}{8}');
+  separated(layoutDrawing('py8-cross',{pyXp:8,pyXq:6,pyXm:3,pyXn:4,pyKind:0},'explore'),'8','80+45=125');
+  const tree=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'ab'});
+  assert.equal(tree.labels.some(x=>/^AC²/.test(x.text)),false,'unselected branch does not add irrelevant area labels');
+  const both=layoutDrawing('py5-tree',{pyTa:11,pyTb:3,pyT1:40,pyT2:55,pyShade:'all'});
+  separated(both,'3','AC²=9');separated(both,'A','AC²=9');separated(both,'S₃','S₄');
+});
+
+test('visual regression: every FC fraction stays inside the mobile canvas and vertex labels clear wide-screen tools', () => {
+  for(let i=0;i<=U.params.pyFi.max;i++) {
+    const r=layoutDrawing('py7-rect',{pyFi:i,pyFp:1,pyKind:0}),box=labelBox(r,/^x=/);
+    assert.ok(box.right<=382,`FC variant ${i}: fraction right edge ${box.right}`);
+  }
+  const fixtures=[
+    ['py1-sq',{pyA:6,pyB:8},'B'],
+    ['py1-rot',{pyWa:5,pyWb:12,pyRot:145,pyK:1},'A'],
+    ['py1-perim',{pyWa:5,pyWb:12,pyK:1},'B'],
+    ['py8-rectP',{pyRW:8,pyRH:6,pyPx:3,pyPy:2,pyKind:1},'C'],
+    ...[0,1,2].map(kind=>['py7-tri',{pyGa:8,pyGb:6,pyFp:1,pyKind:kind},'B'])
+  ];
+  for(const [width,height]of [[683,613],[1100,745]])for(const[id,q,name]of fixtures)for(const tab of ['problem','review']) {
+    const r=layoutDrawing(id,q,tab,width,height),box=labelBox(r,name);
+    assert.ok(box.bottom<=height-54,`${id}/${tab}/${width}: ${name} clears fixed tools; bottom=${box.bottom}`);
   }
 });
 

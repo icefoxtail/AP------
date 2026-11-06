@@ -61,7 +61,8 @@
       if (stp(2)) { b.right(H, B, Cc, { size: 11, color: 'rose' }); b.point(H, { color: 'rose', r: 4 }); T(b, H, 'H', { dx: 12, dy: -12, size: 15, color: 'rose' }); }
       [[A, 'A', -1, -1], [B, 'B', 1, -1], [Cc, 'C', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 13, dy: dy * 15, size: 17 }); });
       T(b, mid(A, B), prob ? `${c}` : `c=${c}`, { dy: 16, size: 15, color: 'amber' });
-      if (C.givens) sideTag(b, Cc, B, A, `${a}`, { color: 'sky', size: 16, gap: 12 });
+      // BC의 길이는 변 가까이에, a²의 넓이는 정사각형 중심에 구분해 둡니다.
+      if (C.givens) T(b, mid(Cc, B), `${a}`, { color: 'sky', size: 16, dx: -17, dy: -10 });
     },
     steps: (M) => [
       `직각삼각형에서 빗변 $AB=${M.c}$, 직각변 $BC=${M.a}$예요. A 쪽 초록 직사각형의 넓이를 구해요.`,

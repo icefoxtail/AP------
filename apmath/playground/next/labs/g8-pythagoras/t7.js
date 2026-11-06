@@ -57,7 +57,7 @@
     draw(b, s, M, C) {
       const { h, w, be, ec, x, p, kind } = M, prob = C.problem;
       const A = pt(0, 0), D = pt(w, 0), B = pt(0, h), Cc = pt(w, h), E = pt(be, h), F = pt(w, x);
-      fit(b, { x0: 0, x1: w, y0: 0, y1: h }, { t: 40, b: 44, l: 44, r: 40 });
+      fit(b, { x0: 0, x1: w, y0: 0, y1: h }, { t: 40, b: 44, l: 44, r: C.givens && kind === 0 ? 78 : 48 });
       const st = (n) => !C.review || C.step >= n;
       const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Dp = foldPt(D, A, F, pp);
@@ -134,7 +134,7 @@
     draw(b, s, M, C) {
       const { a, b: bb, y, ce, p, kind, ci } = M, prob = C.problem;
       const Cc = pt(0, 0), B = pt(a, 0), A = pt(0, -bb), D = mid(A, B), E = pt(a - y, 0);
-      fit(b, { x0: 0, x1: a, y0: -bb, y1: 0 }, { t: 40, b: 46, l: 46, r: 40 });
+      fit(b, { x0: 0, x1: a, y0: -bb, y1: 0 }, { t: 40, b: 62, l: 46, r: 40 });
       const st = (n) => !C.review || C.step >= n;
       const pp = prob ? 1 : C.review ? (C.step >= 1 ? 1 : 0) : p;
       const Bp = foldPt(B, D, E, pp);
@@ -147,13 +147,13 @@
       b.point(D, { color: 'rose', r: 4.5 }); T(b, D, 'D', { dx: 10, dy: -14, size: 17, color: 'rose' }); b.point(E, { color: 'rose', r: 4.5 }); T(b, E, 'E', { dx: 0, dy: 17, size: 17, color: 'rose' });
       if (pp > 0.5) { tick(b, E, A, 2, 'amber'); tick(b, E, B, 2, 'amber'); tick(b, D, A, 1, 'sky'); tick(b, D, B, 1, 'sky'); b.right(D, E, A, { size: 10, color: 'rose' }); }
       // 길이는 그림 안에: AC, BC 는 문제에서도 주어진 값
-      sideTag(b, Cc, A, B, `${bb}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(Cc, B), `${a}`, { dy: 36, size: 17, color: 'sky' });
+      sideTag(b, Cc, A, B, `${bb}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(Cc, B), `${a}`, { dy: 48, size: 17, color: 'sky' });
       if (C.full) {
         if (pp > 0.5) { T(b, mid(Cc, E), `${f(ce)}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(E, B), `${f(y)}`, { dy: 16, size: 15, color: 'amber' }); }
         if (ci) T(b, lerp(A, B, 0.8), `${ci}`, { dx: 20, dy: -12, size: 16, color: 'ink' });
       } else {
         if (kind === 0) T(b, mid(Cc, E), C.answer ? `x=${f(ce)}` : 'x', { dy: 19, size: 17, color: 'amber' });
-        if (kind === 1) T(b, mid(E, A), C.answer ? `x=${f(y)}` : 'x', { dx: -20, dy: 0, size: 17, color: 'amber' });
+        if (kind === 1) T(b, mid(E, A), C.answer ? `x=${f(y)}` : 'x', { dx: 26, dy: -4, size: 17, color: 'amber' });
         if (kind === 2) T(b, mid(D, E), C.answer ? `x=${f(M.de)}` : 'x', { dx: 20, dy: 12, size: 17, color: 'amber' });
         if (C.review && kind === 2 && C.step >= 3) T(b, lerp(A, B, 0.8), `AB=${ci}`, { dx: 20, dy: -12, size: 15, color: 'ink' });
         if (C.review && kind !== 2 && C.step >= 4) T(b, mid(E, B), `y=${f(y)}`, { dy: 18, size: 15, color: 'sky' });

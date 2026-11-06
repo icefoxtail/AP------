@@ -187,7 +187,12 @@
     const pp = b.pad * Math.min(aw, ah), W = aw - 2 * pp, H = ah - 2 * pp;
     const base = b.thumb ? 5 : narrow ? 30 : 46;
     const pad = { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r, t: o.t == null ? base : o.t, b: o.b == null ? base : o.b };
-    if (!narrow && !b.thumb) pad.t = Math.max(pad.t, 56); // 넓은 화면: 무대 오른쪽 위의 상태 칩(그림을 보고 풀어 보세요 등) 아래에 그림을 둡니다
+    if (!narrow && !b.thumb) {
+      pad.t = Math.max(pad.t, 56); // 상태 칩 아래에 그림을 둡니다.
+      // 가로 태블릿에서는 도구 막대가 캔버스 하단을 덮습니다.
+      // 아래쪽 꼭짓점 이름까지 막대 위에 남도록 여백을 확보합니다.
+      pad.b = Math.max(pad.b, 76);
+    }
     let bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
     if (o.maxK) k = Math.min(k, o.maxK);

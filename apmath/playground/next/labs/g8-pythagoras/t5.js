@@ -59,13 +59,25 @@
       // 바깥 변: sAB 의 A 쪽이 아닌 변(꼭짓점 두 개)
       const br1 = branch(sAB[2], sAB[3], cen, th1), br2 = branch(sAC[3], sAC[2], cen, th2);
       const all = [A, B, Cc, ...sBC, ...sAB, ...sAC, ...br1.s1, ...br1.s2, ...br2.s1, ...br2.s2];
-      fit(b, bboxOf(all), { t: 24, b: 26, l: 24, r: 24 });
+      const box = bboxOf(all); let compact = b.W < 560;
+      fit(b, box, { t: 24, b: compact ? 66 : 26, l: 24, r: compact ? 60 : 24 });
+      if (!compact && Math.min(p, q) * b.k < 72) {
+        compact = true;
+        fit(b, box, { t: 24, b: 76, l: 24, r: 60 });
+      }
       const st = (n) => !C.review || C.step >= n;
       const selected = (k) => !C.givens || shade === 'all' || k === 1;
       const sh = (k) => selected(k) && (C.givens || st(k === 1 ? 3 : 4));
-      drawSq(b, sBC, 'amber', prob ? '' : C.answer ? `BC²=${w2}` : 'BC²', { size: 14 });
-      drawSq(b, sAB, 'sky', prob ? '' : C.full || C.step >= 3 ? `AB²=${p * p}` : 'AB²', { size: 14 });
-      drawSq(b, sAC, 'green', prob ? '' : C.full || C.step >= 4 ? `AC²=${q * q}` : 'AC²', { size: 14 });
+      const labBC = prob ? '' : C.answer ? `BC²=${w2}` : 'BC²';
+      const labAB = prob ? '' : C.full || C.step >= 3 ? `AB²=${p * p}` : 'AB²';
+      const labAC = prob || C.givens && shade === 'ab' ? '' : C.full || C.step >= 4 ? `AC²=${q * q}` : 'AC²';
+      drawSq(b, sBC, 'amber', compact ? '' : labBC, { size: 14 });
+      drawSq(b, sAB, 'sky', compact ? '' : labAB, { size: 14 });
+      drawSq(b, sAC, 'green', compact ? '' : labAC, { size: 14 });
+      if (compact && !prob) {
+        const foot = pt((box.x0 + box.x1) / 2, box.y1);
+        [[labAB, 'sky', -88], [labAC, 'green', 0], [labBC, 'amber', 88]].forEach(([text, color, dx]) => T(b, foot, text, { dx, dy: 30, size: 14, color }));
+      }
       if (st(2) || C.givens) {
         [[br1, 1], [br2, 2]].forEach(([br, k]) => {
           fillPoly(b, br.tri, 'ink', 0.08); poly(b, br.tri, 'ink', 2.4);
@@ -73,7 +85,17 @@
           const on = sh(k);
           const col = selected(k) ? 'rose' : 'muted';
           drawSq(b, br.s1, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 }); drawSq(b, br.s2, col, '', { fa: on ? 0.22 : 0.02, w: 2.2 });
-          if (!prob) { T(b, cenOf(br.s1), k === 1 ? 'S₁' : 'S₃', { size: 14, color: col }); T(b, cenOf(br.s2), k === 1 ? 'S₂' : 'S₄', { size: 14, color: col }); }
+          if (!prob && selected(k)) {
+            if (compact && (k === 1 ? p : q) * b.k < 55) {
+              // 작은 가지의 정사각형 이름은 바깥 지시선으로 분리합니다.
+              const bb = bboxOf([...br.s1, ...br.s2]), cy = (bb.y0 + bb.y1) / 2;
+              [br.s1, br.s2].forEach((sq, j) => {
+                const at = pt(bb.x1 + 12 / b.k, cy + (j ? 16 : -16) / b.k);
+                line(b, cenOf(sq), at, col, 1.2);
+                T(b, at, k === 1 ? (j ? 'S₂' : 'S₁') : (j ? 'S₄' : 'S₃'), { dx: 5, align: 'left', size: 14, color: col });
+              });
+            } else { T(b, cenOf(br.s1), k === 1 ? 'S₁' : 'S₃', { size: 14, color: col }); T(b, cenOf(br.s2), k === 1 ? 'S₂' : 'S₄', { size: 14, color: col }); }
+          }
         });
       }
       fillPoly(b, [A, B, Cc], 'ink', 0.1); poly(b, [A, B, Cc], 'ink', 3.2);
@@ -163,7 +185,8 @@
       const A = pt(0, 0), B = pt(0, h), Cc = pt(w, h), D = pt(w, 0), cen = pt(w / 2, h / 2), R = Math.sqrt(d2) / 2;
       const dd = Math.sqrt(d2);
       const edges = [[A, D], [D, Cc], [Cc, B], [B, A]];
-      fit(b, bboxOf(edges.flatMap(([p, q]) => semiPts(p, q, cen)).concat([A, B, Cc, D])), { t: 28, b: 34, l: 28, r: 28 });
+      const box = bboxOf(edges.flatMap(([p, q]) => semiPts(p, q, cen)).concat([A, B, Cc, D]));
+      fit(b, box, { t: 28, b: C.answer ? 64 : 34, l: 28, r: 28 });
       const st = (n) => !C.review || C.step >= n;
       const showLune = st(3) || C.givens;
       if (showLune) outsideCircle(b, cen, R, () => { edges.forEach(([p, q]) => { const pts = semiPts(p, q, cen); b.path(pts, { close: true, fill: 'amber', fillAlpha: 0.26, color: null }); }); });
@@ -176,7 +199,7 @@
       T(b, mid(A, D), `${w}`, { dy: 18, size: 17, color: 'sky' });
       if (C.full || kind === 0 || C.review && C.step >= 2) T(b, mid(A, B), `${h}`, { dx: 18, size: 17, color: 'green' });
       if (C.givens && kind === 1) T(b, lerp(A, Cc, 0.62), `${di}`, { dx: 12, dy: -12, size: 17, color: 'amber' });
-      if (C.answer && C.txt) T(b, cen, `색칠 = ${w}×${h} = ${w * h}`, { size: 17, color: 'amber' });
+      if (C.answer && C.txt) T(b, pt(cen.x, box.y1), `색칠 = ${w}×${h} = ${w * h}`, { dy: 28, size: 17, color: 'amber' });
     },
     steps: (M) => [
       M.kind === 1 ? `직사각형의 가로 $AD=${M.w}$와 대각선 $AC=${M.di}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.` : `직사각형의 가로 $AD=${M.w}$, 세로 $AB=${M.h}$가 주어졌어요. 색칠한 네 초승달의 넓이를 구해요.`,

@@ -195,7 +195,7 @@
       }
       [[A, 'A', -1, -1], [D, 'D', 1, -1], [Cp, 'C', 1, 1], [Bp, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       T(b, mid(Bp, Cp), `${w}`, { dy: 18, size: 17, color: 'sky' }); sideTag(b, A, Bp, Cp, `${h}`, { color: 'green', size: 17, gap: 12 });
-      if (C.full || C.review && C.step >= 2) T(b, lerp(Bp, D, 0.2), `BD=${d}`, { dx: -4, dy: 20, size: 15, color: 'sky' });
+      if (C.full || C.review && C.step >= 2) T(b, mid(Bp, D), `BD=${d}`, { dy: -24, size: 15, color: 'sky' });
       if (!C.answer && kind === 2) T(b, mid(A, Pf), 'x', { dx: -10, dy: -10, size: 18, color: 'amber' });
       if (!C.answer && kind === 1) T(b, mid(Pf, Qf), 'x', { dx: 6, dy: -14, size: 18, color: 'amber' });
       if (C.full || C.review && kind !== 1 && C.step >= 3) T(b, mid(A, Pf), `AP=${f(M.AP)}`, { dx: -6, dy: -16, size: 14, color: 'rose' });

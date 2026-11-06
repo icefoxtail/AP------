@@ -245,7 +245,7 @@
     question: '모눈종이 위에 기울어져 놓인 정사각형의 넓이는 어떻게 구할까? 한 변의 길이를 모르는데도 넓이는 구할 수 있다.',
     ctl: ['pyU', 'pyV'],
     init: (s) => { s.pyU = 2; s.pyV = 3; },
-    gen: (s, prev) => { let u, v; do { u = rint(1, 5); v = rint(u + 1, 6); } while (prev && u === prev.pyU && v === prev.pyV); return Math.random() < 0.5 ? { pyU: u, pyV: v } : { pyU: v, pyV: u }; },
+    gen: (s, prev) => { let u, v; do { u = rint(1, 5); v = rint(u + 1, 6); } while (prev && (u === prev.pyU && v === prev.pyV || u === prev.pyV && v === prev.pyU)); return Math.random() < 0.5 ? { pyU: u, pyV: v } : { pyU: v, pyV: u }; },
     model: (s) => gridOf(s),
     draw(b, s, M, C) {
       const { u, v, n, big, S } = M;
@@ -332,7 +332,7 @@
       T(b, lerp(Bp, Dp, 0.5), `${m}`, { dy: 18, size: 16, color: 'sky' });
       T(b, lerp(Dp, Cp, 0.5), `${n}`, { dy: 18, size: 16, color: 'green' });
       sideTag(b, Ap, Cp, pt(0, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
-      sideTag(b, Ap, Dp, Cp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : 'y', { color: 'amber', size: 16, gap: 12 });
+      sideTag(b, Ap, Dp, Bp, showY ? (yi ? `y=${yi}` : `y²=${y2}`) : 'y', { color: 'amber', size: 16, gap: 12 });
     },
     steps: (M) => [
       `$BD=${M.m}$, $DC=${M.n}$, $AC=${M.zi}$예요. $AB=x$, $AD=y$일 때 $x+y$를 구해요.`,

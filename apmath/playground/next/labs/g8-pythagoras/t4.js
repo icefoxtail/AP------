@@ -87,7 +87,7 @@
       line(b, O, B, 'sky', 4); line(b, O, A, 'green', 4);
       line(b, A, B, 'amber', 4);
       ang(b, O, B, A, { color: C.answer ? TYC[type] : 'rose', r: 26, label: C.answer ? `${Math.round(th)}°` : '', rings: 1, noRight: !C.answer });
-      [[O, 'C', -1, 1], [B, 'B', 1, 1], [A, 'A', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
+      [[O, 'C', -1, -1], [B, 'B', 1, 1], [A, 'A', 0, -1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       T(b, mid(O, B), `${a}`, { dy: 18, size: 17, color: 'sky' });
       sideTag(b, O, A, B, `${bb}`, { color: 'green', size: 17, gap: 11 });
       if (C.full || C.review && C.step >= 2 || kind === 1) sideTag(b, A, B, O, prob ? `AB²=${c2}` : `c²${Math.abs(c2 - Math.round(c2)) < 1e-9 ? '=' : '≈'}${fmtN(c2)}`, { color: 'amber', size: 16, gap: 12 });
