@@ -42,13 +42,13 @@
   };
 
   /* ====================================================================== 1. 원주각과 중심각 */
-  const casesOf = (th, u) => (Math.abs(u - 180) < 0.51 || Math.abs(u - (180 + th)) < 0.51 ? 'side' : u > 180 && u < 180 + th ? 'in' : 'out');
+  const casesOf = (th, u) => (Math.abs(u - 180) < 0.51 || Math.abs(u - (180 - th)) < 0.51 ? 'side' : u > 180 - th && u < 180 ? 'in' : 'out');
   const abpG = (th, u) => { const A = pp(90 + th / 2), B = pp(90 - th / 2), Pp = pp(90 - th / 2 - u), Q = pp(90 - th / 2 - u + 180); return { A, B, P: Pp, Q, th, u, cs: casesOf(th, u) }; };
   const c1 = {
     id: 'c4-1', title: '원주각과 중심각', short: '원주각과 중심각',
     question: '호 AB에 대한 원주각 ∠APB는 중심각 ∠AOB와 어떤 관계일까? 점 P를 호 위에서 움직이면 중심 O가 각의 안쪽, 한 변 위, 바깥에 놓이는 세 경우가 나와. 모두 같은 관계일까?',
     ctl: ['c4t', 'c4u'],
-    presets: () => [['in', 'O가 ∠APB의 안쪽'], ['side', 'O가 한 변 위(PB가 지름)'], ['out', 'O가 바깥']].map(([id, label], i) => ({ group: i === 0 ? '세 가지 경우' : '', label, apply: (s) => { const th = s.c4t; s.c4u = id === 'in' ? (180 + (315 - th)) / 2 : id === 'side' ? 180 : 100; s.c4u = clamp(Math.round(s.c4u / 5) * 5, 45, 315 - th); }, on: (s) => casesOf(s.c4t, s.c4u) === id })),
+    presets: () => [['in', 'O가 ∠APB의 안쪽'], ['side', 'O가 한 변 위(PB가 지름)'], ['out', 'O가 바깥']].map(([id, label], i) => ({ group: i === 0 ? '세 가지 경우' : '', label, apply: (s) => { const th = s.c4t; s.c4u = id === 'in' ? 180 - th / 2 : id === 'side' ? 180 : (180 - th) / 2; s.c4u = clamp(Math.round(s.c4u / 5) * 5, 45, 315 - th); }, on: (s) => casesOf(s.c4t, s.c4u) === id })),
     init: (s) => { s.c4t = 100; s.c4u = 200; },
     gen(rnd, n) { const kind = n % 3, th = pickR(rnd, [60, 70, 80, 100, 110, 120]), hi = 315 - th, u0 = pickR(rnd, [60, 100, 130, 180, Math.round((180 + hi) / 10) * 5]), u = clamp(u0, 55, hi); return { kind, th, u, key: `a${kind}.${th}.${u}` }; },
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: abpG(q.th, q.u) }; } const th = clamp(s.c4t, 40, 120), u = clamp(s.c4u, 45, 315 - th); return { g: abpG(th, u) }; },
@@ -83,7 +83,7 @@
         `점 P에서 지름 $\\overline{PQ}$를 그어요. ${cs === 'in' ? '중심 O가 ∠APB의 안쪽에 있는 경우예요.' : cs === 'side' ? '이 경우 PA 또는 PB가 지름이라서 Q가 A 또는 B와 같아요.' : '중심 O가 ∠APB의 바깥에 있는 경우예요.'}`,
         '삼각형 OPA는 $\\overline{OP}=\\overline{OA}$(반지름)인 이등변삼각형이에요. $\\angle OPA=\\angle OAP$이고 외각의 성질로 $\\angle AOQ=2\\angle APQ$.',
         '삼각형 OPB도 마찬가지로 $\\angle BOQ=2\\angle BPQ$.',
-        cs === 'out' ? '두 식을 빼면 $\\angle AOB=2\\angle APQ-2\\angle BPQ=2\\angle APB$.' : '두 식을 더하면 $\\angle AOB=\\angle AOQ+\\angle BOQ=2(\\angle APQ+\\angle BPQ)=2\\angle APB$.',
+        cs === 'out' ? '두 각의 큰 쪽에서 작은 쪽을 빼면 $\\angle AOB=2\\lvert\\angle APQ-\\angle BPQ\\rvert=2\\angle APB$.' : cs === 'side' ? '한 변이 지름이면 다른 이등변삼각형의 외각 관계만 사용해 $\\angle AOB=2\\angle APB$를 얻어요.' : '두 식을 더하면 $\\angle AOB=\\angle AOQ+\\angle BOQ=2(\\angle APQ+\\angle BPQ)=2\\angle APB$.',
         `따라서 $\\angle APB=\\frac{1}{2}\\angle AOB=\\frac{1}{2}\\times ${fmtN(g.th)}^{\\circ}=${fmtN(g.th / 2)}^{\\circ}$.`
       ];
     },
