@@ -207,7 +207,7 @@
     quiz: (M, s, rng) => {
       const cls = [];
       for (let a = 0; a < 4; a++) for (const d of [1, -1]) { const nm = rayNames(a, d, 4); if (nm.length >= 2) cls.push({ a, d, nm }); }
-      const tgt = PL.pick(rng, cls), names = tgt.nm, pickN = PL.shuffle(rng, names);
+      const tgt = PL.pick(rng, cls.filter((c) => c.a === M.S)), names = tgt.nm, pickN = PL.shuffle(rng, names);
       const asked = pickN[0], right = pickN[1];
       const all = [];
       for (let a = 0; a < 4; a++) for (const d of [1, -1]) rayNames(a, d, 4).forEach((n) => all.push({ a, d, n }));
