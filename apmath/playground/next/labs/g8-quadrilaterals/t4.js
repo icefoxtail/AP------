@@ -8,7 +8,7 @@
   'use strict';
   const G = window.APL_QD;
   if (!G) return;
-  const { DEG, clamp, pt, add, sub, mul, unit, mid, lerp, polar, pick, rint, bboxOf, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, rd, notes, fmtN, dg, sd, ll, an, tri, capLine, segTag, ci } = G;
+  const { outsideAng, DEG, clamp, pt, add, sub, mul, unit, mid, lerp, polar, pick, rint, bboxOf, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, rd, notes, fmtN, dg, sd, ll, an, tri, capLine, segTag, ci } = G;
   const lenF = (v) => fmtN(v);
   const degF = G.degF;
   const dotsT = (b, A, B, C, D) => { const c = mid(A, C); [['A', A], ['B', B], ['C', C], ['D', D]].forEach(([k, q]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, c, k, { size: 17, gap: 11 }); }); };
@@ -35,18 +35,18 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D } = M, pts = [A, B, C, D], st = cx.step, O = mid(A, C);
-      fit(b, { x0: -0.2, x1: M.bb + 0.2, y0: -((M.bb - 4) / 2) * Math.tan(M.t * DEG) - 0.1, y1: 0 }, { t: 30, b: 70, l: 40, r: 40 });
+      fit(b, bboxOf(pts), { t: 64, b: cx.problem ? 68 : 108, l: 68, r: 68 });
       fillPoly(b, pts, 'sky', 0.12); poly(b, pts, 'ink', 3.4);
       par(b, A, D, 1, 'green'); par(b, B, C, 1, 'green');
       if (cx.problem) { drawProb41(b, M); return; }
       if (st >= 1) { tick(b, A, B, 1); tick(b, D, C, 1); }
-      if (st >= 2) { ang(b, B, C, A, { color: 'sky', rings: 1, r: 28, label: dg(M.t), size: 15, labelDist: 62 }); ang(b, C, D, B, { color: 'sky', rings: 1, r: 28, label: dg(M.t), size: 15, labelDist: 62 }); ang(b, A, B, D, { color: 'rose', rings: 2, r: 28, label: dg(M.top), size: 15, labelDist: 52 }); ang(b, D, A, C, { color: 'rose', rings: 2, r: 28, label: dg(M.top), size: 15, labelDist: 52 }); }
+      if (st >= 2) { outsideAng(b, B, C, A, dg(M.t), 'sky'); outsideAng(b, C, D, B, dg(M.t), 'sky'); outsideAng(b, A, B, D, dg(M.top), 'rose'); outsideAng(b, D, A, C, dg(M.top), 'rose'); }
       if (st >= 3) { line(b, A, C, 'green', 3, { dash: [8, 5] }); line(b, B, D, 'green', 3, { dash: [8, 5] }); tick(b, A, C, 3); tick(b, B, D, 3); fillPoly(b, [A, B, C], 'amber', 0.14); fillPoly(b, [D, C, B], 'amber', 0.14); }
       sd(b, A, D, O, `${M.a}`, 'amber'); sd(b, B, C, O, `${M.bb}`, 'sky');
       dotsT(b, A, B, C, D);
       if (!cx.review) b.handle('A', A, { color: 'amber', r: 8, ariaLabel: '꼭짓점 A 가로로 끌기', drag: (w2) => { s.qdTa = clamp(Math.round(M.bb - 2 * w2.x), 4, 7); } });
       const cap = cx.review ? ['AD∥BC이고 AB=DC인 등변사다리꼴 (아랫변의 양 끝각이 같아요)', `∠B=∠C=${M.t}°, ∠A=∠D=${M.top}°`, 'AC=BD (△ABC ≡ △DCB)'][clamp(st, 1, 3) - 1] : `∠B=∠C=${M.t}° · ∠A=∠D=${M.top}° · AB=DC, AC=BD`;
-      capLine(b, pt(M.bb / 2, 0), cap, 'amber', { dy: 44 });
+      capLine(b, pt(M.bb / 2, 0), cap, 'amber', { dy: 76 });
     },
     steps: (M) => [
       'AD∥BC인 사다리꼴에서 아랫변의 양 끝각이 같으면(∠B=∠C) 등변사다리꼴이에요. 이때 두 다리의 길이가 같아요(AB=DC).',
@@ -71,8 +71,8 @@
   function drawProb41(b, M) {
     const { A, B, C, D } = M, K = M.K, O = mid(A, C);
     tick(b, A, B, 1); tick(b, D, C, 1);
-    if (K === 0) { ang(b, B, C, A, { color: 'sky', rings: 1, r: 30, label: dg(M.t), size: 15, labelDist: 54 }); ang(b, A, B, D, { color: 'rose', rings: 1, r: 28, label: 'x', size: 18, labelDist: 46 }); }
-    else if (K === 1) { ang(b, A, B, D, { color: 'sky', rings: 1, r: 30, label: dg(M.top), size: 15, labelDist: 54 }); ang(b, C, D, B, { color: 'rose', rings: 1, r: 28, label: 'x', size: 18, labelDist: 46 }); }
+    if (K === 0) { outsideAng(b, B, C, A, dg(M.t), 'sky'); outsideAng(b, A, B, D, 'x', 'rose'); }
+    else if (K === 1) { outsideAng(b, A, B, D, dg(M.top), 'sky'); outsideAng(b, C, D, B, 'x', 'rose'); }
     else { line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6); segTag(b, A, C, 0.5, `${M.a + M.bb - 2}`, -16, 'sky'); segTag(b, B, D, 0.5, 'x', 16, 'rose', { size: 18 }); }
     void O;
     dotsT(b, A, B, C, D);

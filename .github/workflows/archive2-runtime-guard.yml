@@ -12,6 +12,12 @@ on:
       - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
+      - 'tools/check-archive-content-browser.mjs'
+      - 'tools/ci/archive-ci-scope.mjs'
+      - 'tools/ci/run-scoped-tests.mjs'
+      - 'tests/archive-ci-scope.test.mjs'
+      - 'tests/archive-content-scope.test.mjs'
+      - 'tests/archive-original-exam-access.browser.cjs'
       - 'tools/run-tests.js'
       - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
       - '.github/workflows/archive2-runtime-guard.yml'
@@ -26,6 +32,12 @@ on:
       - 'tests/archive-font-invalidation.test.cjs'
       - 'tests/fixtures/archive2-*'
       - 'tools/check-archive2-runtime.cjs'
+      - 'tools/check-archive-content-browser.mjs'
+      - 'tools/ci/archive-ci-scope.mjs'
+      - 'tools/ci/run-scoped-tests.mjs'
+      - 'tests/archive-ci-scope.test.mjs'
+      - 'tests/archive-content-scope.test.mjs'
+      - 'tests/archive-original-exam-access.browser.cjs'
       - 'tools/run-tests.js'
       - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
       - '.github/workflows/archive2-runtime-guard.yml'
@@ -49,18 +61,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Classify the fixed snapshot impact
+        id: scope
+        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
+      - name: Record unchanged shared runtime scope
+        if: steps.scope.outputs.mode != 'full'
+        run: |
+          echo 'Shared runtime regression: NOT_APPLICABLE; no engine, selector, metadata, generator, or test dependency changed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'CI checks affected data bindings. The output job loads and prints the affected original sources.' >> "$GITHUB_STEP_SUMMARY"
       - name: Verify original routes, response budgets, and storage failures
+        if: steps.scope.outputs.mode == 'full'
         env:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: node tools/check-archive2-runtime.cjs
       - uses: browser-actions/setup-chrome@v1
+        if: steps.scope.outputs.mode == 'full'
         id: chrome
         with:
           chrome-version: stable
       - name: Verify finder desktop single row and mobile exam period in actual Chrome
+        if: steps.scope.outputs.mode == 'full'
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-archive2-finder-filter-browser.cjs
@@ -72,13 +96,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          # Test the same immutable PR merge snapshot as CI and runtime-contract.
+          ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Classify the fixed snapshot impact
+        id: scope
+        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
       - name: Verify image deadlines and render feedback regressions
+        if: steps.scope.outputs.mode == 'full'
         run: >-
           node --test
           tests/archive-solution-loading.test.cjs
@@ -88,14 +117,17 @@ jobs:
           tests/archive-question-image-map-regression.test.js
           tests/archive2-output-strict-gate.test.cjs
       - uses: browser-actions/setup-chrome@v1
+        if: steps.scope.outputs.mode != 'playground'
         id: chrome
         with:
           chrome-version: stable
       - name: Install the pinned browser driver outside the checkout
+        if: steps.scope.outputs.mode != 'playground'
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Compare 50 real solutions and verify asset failures in actual Chrome
+        if: steps.scope.outputs.mode == 'full'
         timeout-minutes: 8
         # The test's checked-in reference applies only the shared image-fit fix
         # to the old engine. Never accept the old overflow as output parity,
@@ -107,6 +139,24 @@ jobs:
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs
+      - name: Load and print the changed original sources in actual Chrome
+        if: steps.scope.outputs.mode == 'archive-content'
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+          ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
+        run: node tools/check-archive-content-browser.mjs --scope "$RUNNER_TEMP/archive-ci-scope.json"
+      - name: Verify the changed scoped browser checker on one existing original
+        if: steps.scope.outputs.mode == 'full' && steps.scope.outputs.scoped_browser_changed == 'true'
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
+        run: |
+          node tests/archive-original-exam-access.browser.cjs
+          ARCHIVE_OUTPUT_MODE=sol node tests/archive-original-exam-access.browser.cjs
+      - name: Record unrelated project scope
+        if: steps.scope.outputs.mode == 'playground'
+        run: echo 'Archive output regression NOT_APPLICABLE; only playground files changed. Playground checks run in CI.' >> "$GITHUB_STEP_SUMMARY"
       - name: Upload solution loading metadata, including failures
         if: always()
         uses: actions/upload-artifact@v4
