@@ -32,9 +32,9 @@ on:
   workflow_dispatch:
     inputs:
       solution_baseline_sha:
-        description: 'Exact baseline for the 50-question Chrome comparison (defaults to the loading-fix baseline).'
+        description: 'Optional exact baseline override; otherwise use the pinned correctness-only reference in tests/archive2-output-comparison-references.json.'
         required: false
-        default: 'f446e62a29f90d6d30a76b295e5c226f5ead72d2'
+        default: ''
         type: string
 
 permissions:
@@ -86,6 +86,7 @@ jobs:
           tests/archive-font-invalidation.test.cjs
           tests/archive-inline-image-readiness.test.js
           tests/archive-question-image-map-regression.test.js
+          tests/archive2-output-strict-gate.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
@@ -96,10 +97,13 @@ jobs:
         run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
       - name: Compare 50 real solutions and verify asset failures in actual Chrome
         timeout-minutes: 8
+        # The test's checked-in reference applies only the shared image-fit fix
+        # to the old engine. Never accept the old overflow as output parity,
+        # and never widen the existing one-pixel geometry tolerance.
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: ${{ inputs.solution_baseline_sha || 'f446e62a29f90d6d30a76b295e5c226f5ead72d2' }}
+          ARCHIVE_SOLUTION_BASE_SHA: ${{ inputs.solution_baseline_sha }}
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs
