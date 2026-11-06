@@ -511,7 +511,8 @@
           if (stage >= 4 && p.kind === 0) tri(b, [g.C, g.O, g.D], 'amber');
           break;
         case 'sm4-x':
-          pair(b, g, ['O', 'A', 'D'], ['O', 'C', 'B'], stage);
+          // The generated ratio can run in either direction; sky stays the smaller triangle.
+          pair(b, g, p.m <= p.n ? ['O', 'A', 'D'] : ['O', 'C', 'B'], p.m <= p.n ? ['O', 'C', 'B'] : ['O', 'A', 'D'], stage);
           // The original diagram uses rose/one for A↔C and violet/two for D↔B.
           equal(b, g.O, g.A, g.D, 3); equal(b, g.O, g.C, g.B, 3);
           break;

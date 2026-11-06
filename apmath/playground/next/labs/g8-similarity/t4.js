@@ -129,8 +129,8 @@
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? xGeo(pk.m, pk.n, pk.r) : M;
       fit(b, bboxOf([g.A, g.D, g.B, g.C]), { t: 44, b: 66, l: 52, r: 52 });
-      const cen = g.O;
-      fillPoly(b, [g.O, g.A, g.D], 'sky', 0.26); fillPoly(b, [g.O, g.B, g.C], 'green', 0.2);
+      const cen = g.O, upperColor = g.m <= g.n ? 'sky' : 'green', lowerColor = g.m <= g.n ? 'green' : 'sky';
+      fillPoly(b, [g.O, g.A, g.D], upperColor, 0.18); fillPoly(b, [g.O, g.B, g.C], lowerColor, 0.18);
       line(b, g.A, g.D, 'ink', 3.6); line(b, g.B, g.C, 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.6); line(b, g.D, g.B, 'ink', 3.6);
       par(b, g.A, g.D, 1, 'green'); par(b, g.B, g.C, 1, 'green');
       if (prob || !C.review || st >= 1) { ang(b, g.A, g.D, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.C, g.B, g.O, { color: 'rose', rings: 1, r: 20 }); ang(b, g.D, g.A, g.O, { color: 'violet', rings: 2, r: 20 }); ang(b, g.B, g.C, g.O, { color: 'violet', rings: 2, r: 20 }); }
@@ -138,10 +138,10 @@
       const sz = 16, lb = (p, q, t, col, gap) => t != null && sideTag(b, p, q, cen, t, { color: col, size: sz, gap: gap || 12 });
       const lbIn = (p, q, t, col) => T(b, lerp(p, q, 0.5), t, { size: sz, color: col, dx: ((p.y > q.y ? 1 : 1) * 14), dy: 0 });
       if (prob) {
-        if (pk.kind === 0) { lbIn(g.A, g.O, String(g.OA), 'sky'); lbIn(g.O, g.C, String(g.OC), 'green'); lb(g.A, g.D, String(g.AD), 'sky'); lb(g.B, g.C, 'x', 'amber'); }
-        else { lbIn(g.A, g.O, 'x', 'amber'); lbIn(g.O, g.C, String(g.OC), 'green'); lbIn(g.D, g.O, String(g.OD), 'sky'); lbIn(g.O, g.B, String(g.OB), 'green'); }
+        if (pk.kind === 0) { lbIn(g.A, g.O, String(g.OA), upperColor); lbIn(g.O, g.C, String(g.OC), lowerColor); lb(g.A, g.D, String(g.AD), upperColor); lb(g.B, g.C, 'x', 'amber'); }
+        else { lbIn(g.A, g.O, 'x', 'amber'); lbIn(g.O, g.C, String(g.OC), lowerColor); lbIn(g.D, g.O, String(g.OD), upperColor); lbIn(g.O, g.B, String(g.OB), lowerColor); }
       } else {
-        lbIn(g.A, g.O, String(g.OA), 'sky'); lbIn(g.O, g.C, String(g.OC), 'green'); lbIn(g.D, g.O, String(g.OD), 'sky'); lbIn(g.O, g.B, String(g.OB), 'green'); lb(g.A, g.D, String(g.AD), 'sky'); lb(g.B, g.C, String(g.BC), 'green');
+        lbIn(g.A, g.O, String(g.OA), upperColor); lbIn(g.O, g.C, String(g.OC), lowerColor); lbIn(g.D, g.O, String(g.OD), upperColor); lbIn(g.O, g.B, String(g.OB), lowerColor); lb(g.A, g.D, String(g.AD), upperColor); lb(g.B, g.C, String(g.BC), lowerColor);
       }
       [[g.A, 'A'], [g.D, 'D'], [g.B, 'B'], [g.C, 'C']].forEach(([p, nm]) => vtx(b, p, g.O, nm, { size: 17, gap: 12 }));
       b.point(g.O, { color: 'ink', r: 4.2 });

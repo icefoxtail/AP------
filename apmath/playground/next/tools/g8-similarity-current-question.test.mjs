@@ -203,3 +203,22 @@ test('rhombus similarity allows a cyclic change of corresponding vertices', () =
   const marked = b.log.filter(x => x.name === 'arc' && x.args[4]?.color === 'rose' && x.args[4].width === 2.4);
   assert.equal(marked.length, 2); marked.forEach(x => close(Math.abs(x.args[3] - x.args[2]) * 180 / Math.PI, 100, 'corresponding obtuse corners'));
 });
+
+
+test('X-shaped generated inverse ratios keep smaller sky and larger green', () => {
+  const sc = get('sm4-x');
+  for (const [m, n] of [[1, 2], [3, 1], [3, 2]]) for (const kind of [0, 1]) for (const tab of ['problem', 'review', 'explore']) {
+    const s = {}; sc.enter(s); s.smPk = { seed: 63, m, n, r: 2, kind }; Object.assign(s, { smXm: m, smXn: n, smXr: 2, step: 3 });
+    const b = board(); sc.draw(b, s, {}, { tab });
+    const fills = b.log.filter(x => x.name === 'path' && x.args[1]?.fill && x.args[0].length === 3 && ['sky', 'green'].includes(x.args[1].fill));
+    assert.ok(fills.length >= 2);
+    const sky = fills.filter(x => x.args[1].fill === 'sky').map(x => G.polyArea(x.args[0]));
+    const green = fills.filter(x => x.args[1].fill === 'green').map(x => G.polyArea(x.args[0]));
+    assert.ok(Math.max(...sky) < Math.min(...green), `${m}:${n}|${kind}|${tab}: incorrect area-color order`);
+    const g = G.geo.xGeo(m, n, 2);
+    for (const [value, color] of [[g.OC, m <= n ? 'green' : 'sky'], [g.OD, m <= n ? 'sky' : 'green']]) {
+      if (kind === 0 && value === g.OD && tab !== 'explore') continue;
+      assert.ok(b.log.some(x => x.name === 'text' && String(x.args[1]) === String(value) && x.args[2].color === color), `${m}:${n}|${kind}|${tab}: side label must follow its triangle`);
+    }
+  }
+});
