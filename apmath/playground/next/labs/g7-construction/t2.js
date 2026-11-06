@@ -59,7 +59,7 @@
         sideTag(b, A, tp, cen, lab(p), { color: p.c || 'sky', size: sz, gap: 12 });
         sideTag(b, B, tq, cen, lab(q), { color: q.c || 'green', size: sz, gap: 12 });
       }
-      T(b, mid(A, B), lab(Lb), { dy: 18, size: sz, color: Lb.c || 'amber' });
+      T(b, mid(A, B), lab(Lb), { dy: o.baseDy == null ? 18 : o.baseDy, size: sz, color: Lb.c || 'amber' });
     }
     return { p, q, L: Lb, ok, A, B, tp, tq };
   }
@@ -87,7 +87,7 @@
       const tt = C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       // 밑변 강조(1단계) 후 경첩
       const items = M.srt.map((x) => ({ ...x, c: x === M.srt[2] ? 'amber' : x.c }));
-      const h = hinge(b, items, C.review ? (C.step >= 3 ? 1 : 0.0) : tt, { nums: true, name: true });
+      const h = hinge(b, items, C.review ? (C.step >= 3 ? 1 : 0.0) : tt, { nums: true, name: true, baseDy: -18 });
       // 길이 비교 줄 (작은 두 막대를 이어 붙이기)
       const y0 = 1.7, p = M.srt[0], q = M.srt[1];
       if (!C.review || C.step >= 2) {
@@ -246,7 +246,7 @@
     draw(b, s, M, C) {
       if (C.problem) { drawFourProblem(b, M); return; }
       const colsN = 2, Wc = 7.6, Hc = 8.2, Hi = Hc - 0.5;
-      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: 44 });
+      fit(b, { x0: -0.2, x1: colsN * Wc + 0.4, y0: -2 * Hc - 0.3, y1: 0.4 }, { t: 20, b: 44, l: b.W < 560 ? 14 : 46, r: b.W < 560 ? 14 : 46 });
       const tt = C.review ? (C.step >= 3 ? 1 : 1) : C.t, st = C.review ? C.step : 3;
       M.cards.forEach((cd, i) => {
         const col = i % 2, row = Math.floor(i / 2), x0 = col * Wc + 0.2, y0 = -(2 - row) * Hc + 0.4;
@@ -256,7 +256,7 @@
         b.path([pt(x0, y0), pt(x0 + Wc - 0.4, y0), pt(x0 + Wc - 0.4, y0 + Hi), pt(x0, y0 + Hi)], { close: true, fill: show ? c : 'muted', fillAlpha: show ? 0.1 : 0.05, color: show ? c : 'muted', width: 1.6, alpha: 0.9 });
         const items = cd.t.map((v, k) => ({ v, n: '', c: k === 2 ? 'amber' : k === 0 ? 'sky' : 'green' }));
         hinge(b, items, tt, { ox: x0 + 0.9, oy: y0 + Hi - 2.4, sc: sc * 0.9, w: 5, nums: true, numSize: 14 });
-        if (show) T(b, pt(x0 + (Wc - 0.4) / 2, y0 + Hi), `${fmtN(cd.t[0])}+${fmtN(cd.t[1])}=${fmtN(cd.sum)} ${cd.ok ? '>' : '≤'} ${fmtN(cd.t[2])}`, { dy: -4, size: 15, color: c });
+        if (show) T(b, pt(x0 + (Wc - 0.4) / 2, y0 + Hi), `${fmtN(cd.t[0])}+${fmtN(cd.t[1])}=${fmtN(cd.sum)} ${cd.ok ? '>' : '≤'} ${fmtN(cd.t[2])}`, { dy: -8, size: 15, color: c });
         if (st >= 3) T(b, pt(x0 + Wc - 0.4, y0), cd.ok ? '✓' : '✗', { dx: -16, dy: 18, size: 20, color: c });
       });
       if (C.txt && st >= 3) T(b, pt(Wc, 0), `삼각형을 만들 수 있는 경우: ${M.n}가지`, { dy: 20, size: 17, color: 'green' });

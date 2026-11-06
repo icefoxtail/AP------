@@ -41,6 +41,59 @@ function points(calls) {
   calls.filter((c) => c.method !== 'text').forEach((c) => walk(c.args)); return out;
 }
 
+// Canvas-space checks use representative stage sizes and conservative text widths.
+// Browser CSS, real font metrics and device interaction remain separate gates.
+function screenRender(id, patch, tab, width, height, inset = 0) {
+  const b = board(width, height), sc = by(id), s = state(id, patch);
+  b.insets.bottom = inset;
+  Object.defineProperty(b, 'k', { get() {
+    const aw = b.W - b.insets.left - b.insets.right, ah = b.H - b.insets.top - b.insets.bottom, pad = 2 * b.pad * Math.min(aw, ah);
+    return Math.min((aw - pad) / (b.focus.x[1] - b.focus.x[0]), (ah - pad) / (b.focus.y[1] - b.focus.y[0]));
+  } });
+  s.cnQuestionKey = sc.id + '|' + question(id, s).key + '|' + (s.cnSeed || 0);
+  const lab = { tab, s, scene: sc }, v = sc.view(s, lab);
+  sc.draw(b, s, v, lab);
+  const toS = (p) => ({ x: width / 2 + (p.x - (b.focus.x[0] + b.focus.x[1]) / 2) * b.k, y: (height - inset) / 2 + (p.y - (b.focus.y[0] + b.focus.y[1]) / 2) * b.k });
+  const labels = b.calls.filter((c) => c.method === 'text').map(({ args: [p, text, o] }) => {
+    const at = toS(p), size = o.size || 16, w = G.textW(text, size), x = at.x + (o.dx || 0), y = at.y + (o.dy || 0), x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
+    return { text, x0, x1: x0 + w, y0: y - size / 2, y1: y + size / 2 };
+  });
+  return { b, s, labels, toS };
+}
+const overlap = (a, b) => Math.min(a.x1, b.x1) > Math.max(a.x0, b.x0) && Math.min(a.y1, b.y1) > Math.max(a.y0, b.y0);
+
+test('given angles and vertex names stay apart for every allowed ASA pair on representative stages', () => {
+  for (const [w, h, inset] of [[1024, 700, 0], [820, 430, 58], [684, 500, 0], [390, 310, 58]]) {
+    for (let A = 30; A <= 80; A += 5) for (let B = 30; B <= 80; B += 5) {
+      const { labels } = screenRender('c5-2', { cnEA: A, cnEB: B }, 'problem', w, h, inset);
+      assert.equal(labels.filter((l) => l.text === 'x°').length, 1);
+      for (const label of labels) assert.ok(label.x0 >= 0 && label.x1 <= w && label.y0 >= 0 && label.y1 <= h - inset, `${A}/${B}/${w}: clipped ${label.text}`);
+      for (let i = 0; i < labels.length; i++) for (let j = i + 1; j < labels.length; j++) assert.ok(!overlap(labels[i], labels[j]), `${A}/${B}/${w}: ${labels[i].text} overlaps ${labels[j].text}`);
+    }
+  }
+});
+
+test('compact construction labels and dense candidate cards retain separate reading space', () => {
+  for (let L = 2; L <= 4; L += .5) for (let phi = 5; phi <= 40; phi += 5) {
+    const { labels } = screenRender('c1-1', { cnL: L, cnPhi: phi, step: 3 }, 'review', 390, 310, 58);
+    assert.ok(!overlap(labels.find((l) => l.text === 'P'), labels.find((l) => /^PQ =/.test(l.text))), `${L}/${phi}: P and PQ`);
+  }
+  for (let a = 3; a <= 7; a++) for (let b = 3; b <= 7; b++) {
+    const { labels } = screenRender('c6-1', { cnGa: a, cnGb: b }, 'explore', 390, 310, 58);
+    const marks = labels.filter((l) => ['120°', '60°', 'P'].includes(l.text));
+    for (let i = 0; i < marks.length; i++) for (let j = i + 1; j < marks.length; j++) assert.ok(!overlap(marks[i], marks[j]), `${a}/${b}: ${marks[i].text} and ${marks[j].text}`);
+  }
+  for (const patch of [{ cnTy: 0 }, { cnTy: 1, cnWs1: 9, cnWs2: 8, cnWth: 90 }, { cnTy: 2, cnUc: 9, cnUa: 70, cnUb: 60 }]) {
+    const { b, labels, toS } = screenRender('c5-3', patch, 'problem', 390, 564, 58);
+    const title = labels.find((l) => l.text === '기준 △ABC');
+    assert.ok(!labels.some((l) => /합동 ✓|합동 아님/.test(l.text)), 'candidate verdict stays hidden');
+    for (const other of labels.filter((l) => l !== title)) assert.ok(!overlap(title, other), 'reference title must not overlap a dimension');
+    const cards = b.calls.filter((c) => c.method === 'path' && c.args[0].length === 4);
+    assert.equal(cards.length, 6);
+    for (const card of cards) { const p = card.args[0].map(toS); assert.ok(Math.max(...p.map((q) => q.x)) - Math.min(...p.map((q) => q.x)) > 160, 'mobile candidate card keeps readable width'); }
+  }
+});
+
 test('registered scenes keep valid questions and finite geometry across all requested viewport sizes', () => {
   assert.ok(scenes.length > 0); assert.equal(new Set(scenes.map((sc) => sc.id)).size, scenes.length);
   for (const sc of scenes) {

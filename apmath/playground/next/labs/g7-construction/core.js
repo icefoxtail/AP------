@@ -386,6 +386,7 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        if (lab && lab.s === s && document.body) document.body.dataset.cnScene = D.id;
         const key = keyOf(s);
         if (s.cnQuestionKey !== key) { s.cnQuestionKey = key; s.cnPick = null; s.revealed = false; s.step = 0; }
         const C = baseCtx(s, lab, false);

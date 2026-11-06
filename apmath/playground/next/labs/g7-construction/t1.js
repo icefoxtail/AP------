@@ -95,7 +95,7 @@
         b.point(Q, { color: 'green', r: 5.5 });
         T(b, Q, 'Q', { dx: -16, dy: -14, size: 17 });
         if (!C.problem) { tick(b, A, B, 1, 'amber'); tick(b, Pp, Q, 1, 'amber'); }
-        if (C.txt && !C.problem) T(b, mid(Pp, Q), `PQ = ${fmtN(L)} cm`, { dx: 4, dy: 30, size: 16, color: 'green' });
+        if (C.txt && !C.problem) T(b, pt(mid(Pp, Q).x, Pp.y), `PQ = ${fmtN(L)} cm`, { dy: 50, size: 16, color: 'green' });
       }
       if (C.txt && !C.problem) caption(b, f1 <= 0 ? '컴퍼스를 AB의 길이만큼 벌려요' : f2 <= 0 ? '벌린 그대로 점 P로 옮겨요' : f2 < 1 ? '점 P에 바늘을 꽂고 호를 그려요' : '반직선과 만나는 점 Q → PQ = AB', 'amber', 0.2, 0, 84);
       if (!C.problem && !C.review && C.txt) {

@@ -103,21 +103,27 @@
     model: (s) => ({ A: s.cnEA, B: s.cnEB, Cc: 180 - s.cnEA - s.cnEB, pk: { ...(s.cnPk || { k: 0 }), A: s.cnEA, B: s.cnEB } }),
     draw(b, s, M, C) {
       const A = C.problem ? M.pk.A : M.A, B = C.problem ? M.pk.B : M.B, Cc = 180 - A - B, Tr = triASA(6, A, B) || triASA(6, 55, 65);
-      const w = bboxOf(Tr).x1 - bboxOf(Tr).x0, X0 = w + 3, t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
+      const shape = bboxOf(Tr), w = shape.x1 - shape.x0, h = shape.y1 - shape.y0;
+      const aw = b.W - b.insets.left - b.insets.right, ah = b.H - b.insets.top - b.insets.bottom, pp = 2 * b.pad * Math.min(aw, ah);
+      const margins = C.problem ? { t: 26, b: 30, l: 46, r: 46 } : { t: 40, b: 56, l: 46, r: 46 };
+      // 두 삼각형 사이의 주어진 각·꼭짓점 이름은 화면 크기와 무관하게 떨어뜨립니다.
+      const labelGap = 108, scale = Math.max(3, Math.min((aw - pp - margins.l - margins.r - labelGap) / (2 * w + 0.8), (ah - pp - margins.t - margins.b) / (h + 1.2)));
+      const X0 = w + Math.max(3, labelGap / scale), t = C.problem ? 0 : C.review ? (C.step >= 3 ? 1 : 0) : C.t;
       const img = shiftPts(Tr, X0 * (1 - seg01(t, 0, 1))), done = t >= 0.999;
       const bb = unionBox(bboxOf(Tr, 0.4), bboxOf(shiftPts(Tr, X0), 0.4));
-      fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.4 }, { t: 40, b: 56 });
+      fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 0.4 }, margins);
       const st = C.problem ? 0 : C.review ? C.step : 3;
       const mk = (T3, nms, tag) => {
+        const labels = tag === 'l' || (X0 * (1 - seg01(t, 0, 1)) - w) * b.k >= 90;
         fillPoly(b, T3, tag === 'r' && done ? 'green' : 'sky', 0.1);
         drawTri(b, T3, {
           color: tag === 'r' && done ? 'green' : 'ink', dash: tag === 'r' && done ? [8, 5] : undefined,
           ticks: st >= 3 ? { c: { n: 1, color: 'amber' } } : undefined,
-          angs: { A: { c: 'sky', rings: 1, t: '', r: 28 }, B: { c: 'green', rings: 2, t: '', r: 28 }, C: st >= 2 || C.problem ? { c: 'rose', rings: 3, t: C.problem ? (tag === 'r' ? 'x°' : '') : dg(Cc), r: 24, d: 44 } : undefined }
+          angs: { A: { c: 'sky', rings: 1, t: '', r: 28 }, B: { c: 'green', rings: 2, t: '', r: 28 }, C: st >= 2 || C.problem ? { c: 'rose', rings: 3, t: C.problem ? (tag === 'r' ? 'x°' : '') : labels ? dg(Cc) : '', r: 24, d: 44 } : undefined }
         });
         const cc = centroid(T3);
-        T(b, T3[0], dg(A), { dx: -30, dy: -16, size: 15, color: 'sky' }); T(b, T3[1], dg(B), { dx: 30, dy: -16, size: 15, color: 'green' });
-        T3.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (!(done && tag === 'r')) tagOut(b, p, cc, nms[i], { size: 17, gap: i < 2 ? 22 : 11 }); });
+        if (labels) { T(b, T3[0], dg(A), { dx: -30, dy: -16, size: 15, color: 'sky' }); T(b, T3[1], dg(B), { dx: 30, dy: -16, size: 15, color: 'green' }); }
+        T3.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); if (labels) tagOut(b, p, cc, nms[i], { size: 17, gap: i < 2 ? 22 : 11 }); });
       };
       mk(Tr, ['A', 'B', 'C'], 'l'); mk(img, ['D', 'E', 'F'], 'r');
       if (C.problem) { // BC = EF 눈금
@@ -212,16 +218,17 @@
     // 공통 배율: 모두 같은 크기로
     const rnd = set.rnd, pose = cells.map((c, i) => ({ rot: c.base ? 0 : [0, 70, 140, 200, 260, 320][Math.floor((((i * 7919 + (o.seed || 0)) % 6) + 6) % 6)], flip: !c.base && (i + (o.seed || 0)) % 2 === 1 }));
     const tris = cells.map((c, i) => { const cc = centroid(c.dsc.pts); return c.dsc.pts.map((p) => { let q = sub(p, cc); if (pose[i].flip) q = pt(-q.x, q.y); q = rotP(q, pt(0, 0), pose[i].rot); return q; }); });
-    const ext = tris.map((t) => { const bb = bboxOf(t); return [bb.x1 - bb.x0, bb.y1 - bb.y0]; });
-    const S = Math.min(1, ...ext.map(([w, h]) => Math.min((Wc * 0.72) / w, (Hc * 0.56) / h)));
     fit(b, { x0: 0, x1: cols * Wc, y0: 0, y1: rows * Hc }, { t: 8, b: 8, l: 8, r: 8 });
     const small = b.W < 560;
+    const bounds = tris.map((t) => bboxOf(t));
+    const head = Math.min(44 / b.k, Hc * 0.33), foot = Math.min(22 / b.k, Hc * 0.16), edge = Math.min(22 / b.k, Wc * 0.2);
+    const S = Math.min(1, ...bounds.map((bb) => Math.min((Wc - 2 * edge) / (bb.x1 - bb.x0), (Hc - head - foot) / (bb.y1 - bb.y0))));
     cells.forEach((c, i) => {
-      const col = i % cols, row = Math.floor(i / cols), x0 = col * Wc, y0 = row * Hc, cx = x0 + Wc / 2, cy = y0 + Hc * 0.55;
+      const col = i % cols, row = Math.floor(i / cols), x0 = col * Wc, y0 = row * Hc, cx = x0 + Wc / 2, cy = y0 + (head + Hc - foot) / 2;
       const verdict = o.verdict && !c.base;
       const colr = verdict ? (c.ok ? 'green' : 'rose') : c.base ? 'amber' : 'muted';
       b.path([pt(x0 + 0.15, y0 + 0.15), pt(x0 + Wc - 0.15, y0 + 0.15), pt(x0 + Wc - 0.15, y0 + Hc - 0.15), pt(x0 + 0.15, y0 + Hc - 0.15)], { close: true, fill: colr, fillAlpha: verdict || c.base ? 0.07 : 0.03, color: colr, width: verdict || c.base ? 1.8 : 1.2, alpha: 0.8 });
-      const T3 = tris[i].map((p) => pt(cx + p.x * S, cy + p.y * S)), cen = pt(cx, cy);
+      const bb = bounds[i], T3 = tris[i].map((p) => pt(cx + (p.x - (bb.x0 + bb.x1) / 2) * S, cy + (p.y - (bb.y0 + bb.y1) / 2) * S)), cen = centroid(T3);
       fillPoly(b, T3, verdict ? colr : 'sky', 0.12); poly(b, T3, 'ink', 3);
       // 변 길이 · 각 크기 (그림 안)
       const cd = c.dsc, perm = (k) => k; // 점 번호는 그대로 (같은 순서로 변환)
@@ -229,7 +236,7 @@
       cd.angs.forEach(([v, t]) => { const a1 = T3[(v + 1) % 3], a2 = T3[(v + 2) % 3]; ang(b, T3[v], a1, a2, { color: 'amber', rings: 1, label: `${t}°`, r: small ? 16 : 22, labelDist: small ? 36 : 46, size: small ? 13 : 15 }); });
       T3.forEach((p) => b.point(p, { color: 'ink', r: 3.6 }));
       T(b, pt(x0, y0), c.base ? '기준 △ABC' : c.label, { dx: 8, dy: 16, align: 'left', size: small ? 14 : 17, color: c.base ? 'amber' : 'ink' });
-      if (verdict) T(b, pt(x0 + Wc / 2, y0 + Hc), c.ok ? '합동 ✓' : '합동 아님 ✗', { dy: -12, size: small ? 13 : 15, color: colr });
+      if (verdict) T(b, pt(x0 + Wc, y0), c.ok ? '합동 ✓' : '합동 아님 ✗', { dx: -8, dy: 16, align: 'right', size: small ? 13 : 15, color: colr });
     });
   }
   const TYPES = ['세 변이 주어진 경우', '두 변과 끼인각이 주어진 경우', '한 변과 양 끝각이 주어진 경우'];

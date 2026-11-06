@@ -71,17 +71,21 @@
         ang(b, Cp, D, A, { color: 'sky', rings: 1, label: '60°', r: 18, labelDist: 34, size: 13, labelRot: 0 });
       }
       if (!prob && (expl || st === 2 || st === 3)) {
-        ang(b, Cp, B, D, { color: 'amber', rings: 2, label: '120°', r: 40, labelDist: 66, size: 14 });
-        ang(b, Cp, A, E, { color: 'amber', rings: 2, label: '120°', r: 54, labelDist: 84, size: 14 });
+        const compact = sm(b) && st !== 2;
+        ang(b, Cp, B, D, { color: 'amber', rings: 2, label: '120°', r: compact ? 26 : 40, labelDist: compact ? 44 : 66, size: 14 });
+        ang(b, Cp, A, E, { color: 'amber', rings: 2, label: '120°', r: compact ? 34 : 54, labelDist: compact ? 54 : 84, size: 14 });
       }
       if (!prob && (expl || st >= 3)) { tick(b, B, D, 3, 'rose'); tick(b, A, E, 3, 'rose'); }
-      if (!prob && (expl || st >= 4) && Pp) { ang(b, Pp, A, B, { color: 'rose', rings: 1, label: dg(M.apb), r: 22, labelDist: 40, size: 14 }); }
+      if (!prob && (expl || st >= 4) && Pp) {
+        ang(b, Pp, A, B, { color: 'rose', rings: 1, label: sm(b) ? '' : dg(M.apb), r: sm(b) ? 16 : 22, labelDist: 40, size: 14 });
+        if (sm(b)) T(b, Pp, dg(M.apb), { dx: -22, dy: -26, size: 14, color: 'rose' });
+      }
       if (prob) {
         if (pk.kind === 0) { ang(b, D, B, Cp, { color: 'sky', rings: 1, label: `${pk.y}°`, r: 26, labelDist: 52, size: 14 }); ang(b, E, D, A, { color: 'rose', rings: 1, label: '?', r: 30, labelDist: 52, size: 15 }); }
         else { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: '?', r: 24, labelDist: 44, size: 15 }); }
       }
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E']].forEach(([p, n]) => { b.point(p, { color: 'ink', r: 4.6 }); const o = n === 'C' ? pt(0, 1) : p; if (n === 'C') T(b, p, 'C', { dy: 18, size: 17 }); else tagOut(b, p, cen, n, { size: 17, gap: n === 'B' || n === 'E' ? 12 : 11 }); });
-      if ((prob ? pk.kind !== 0 : st >= 4) || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: 16, size: 16, color: 'rose' }); } }
+      if ((prob ? pk.kind !== 0 : st >= 4) || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: !prob && sm(b) ? -28 : 16, size: 16, color: 'rose' }); } }
       if (C.txt && !prob) {
         const msgs = ['같은 길이: AB=BC=CA, CD=DE=EC', '두 각 ∠BCD, ∠ACE는 모두 120°', t >= 0.999 ? '△BCD가 △ACE에 겹쳐요 → 합동 (SAS)' : '△BCD를 점 C 둘레로 60° 돌려요', `합동이라서 BD = AE, 두 선분이 이루는 각 ∠APB = ${dg(M.apb)}`];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : t > 0 ? msgs[2] : '▶를 눌러 △BCD를 돌려 보세요';

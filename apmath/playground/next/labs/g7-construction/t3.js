@@ -158,7 +158,7 @@
     const all = [A, B, pt(-b2, 0), pt(0, -b2), pt(b2, 0), ...trs.flat(), ...(trs.length === 2 ? shiftPts(trs[1], dX) : []), polar(B, rayLength, -(180 - be)), pt(-1, 1.4)];
     const bb = bboxOf(all, 0.5);
     fit(b, { x0: bb.x0, x1: bb.x1, y0: bb.y0, y1: bb.y1 + 2.0 }, { t: 26, b: 40 });
-    const cx = (bb.x0 + bb.x1) / 2, yb = bb.y1 + 2.0;
+    const cx = (bb.x0 + bb.x1) / 2, yb = bb.y1 + 2.0 - 12 / b.k;
     const fade = 1 - 0.85 * p, n = trs.length;
     const showRay = p < 0.98;
     if (showRay) {
