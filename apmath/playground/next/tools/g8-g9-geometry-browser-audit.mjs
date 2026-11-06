@@ -214,7 +214,7 @@ try {
             // Round to the control's decimal precision before exercising its real input event.
             const places = Math.max(0, String(info.step).split('.')[1]?.length || 0, String(info.min).split('.')[1]?.length || 0);
             const value = Number((info.value + info.step <= info.max ? info.value + info.step : info.value - info.step).toFixed(Math.min(12, places)));
-            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value));
+            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value)); await settle();
             const actual = await page.evaluate(k => lab.s[k], ctl);
             const pass = Math.abs(actual - value) < 1e-7;
             dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass });
@@ -225,19 +225,33 @@ try {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
           }
+          await settle();
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
           if (handle) {
-            // Exercise native browser pointer events; do not invoke the drag callback.
+            // Render after a control change, scroll, and then read the current
+            // handle location. A previous frame's position can start a pan.
+            // Exercise native pointer events and verify that the intended handle
+            // was actually acquired; never invoke its callback directly.
             const actualCanvas = page.locator('canvas').filter({ visible: true }).first();
-            await actualCanvas.scrollIntoViewIfNeeded();
-            const rect = await actualCanvas.boundingBox();
-            const before = await page.evaluate(() => JSON.stringify(lab.s));
-            const start = { x: rect.x + handle.x, y: rect.y + handle.y };
-            const dx = handle.x < rect.width / 2 ? 48 : -48, dy = handle.y < rect.height / 2 ? 24 : -24;
-            await page.mouse.move(start.x, start.y); await page.mouse.down();
-            await page.mouse.move(start.x + dx, start.y + dy, { steps: 8 }); await page.mouse.up(); await settle();
-            const after = await page.evaluate(() => JSON.stringify(lab.s));
-            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: handle.id, executed: true, stateChanged: before !== after, pointer: 'mouse' });
+            await actualCanvas.scrollIntoViewIfNeeded(); await settle();
+            const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
+            const attempts = []; let passed = false;
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64]]) {
+              const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
+              if (!fresh) break;
+              const rect = await actualCanvas.boundingBox();
+              const start = { x: rect.x + fresh.x * rect.width / fresh.W, y: rect.y + fresh.y * rect.height / fresh.H };
+              const before = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              await page.mouse.move(start.x, start.y); await page.mouse.down();
+              const acquired = await page.evaluate(id => lab.board.dragging?.id === id, handle.id);
+              await page.mouse.move(start.x + mx, start.y + my, {steps:8}); await page.mouse.up(); await settle();
+              const after = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              const changedKeys = [...new Set([...Object.keys(before),...Object.keys(after)])].filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k]));
+              attempts.push({acquired,delta:[mx,my],changedKeys});
+              if (acquired && changedKeys.length) { passed = true; break; }
+            }
+            dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
+            if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {
