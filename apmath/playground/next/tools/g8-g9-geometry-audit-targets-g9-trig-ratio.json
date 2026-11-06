@@ -425,5 +425,223 @@
       "tgPick": null,
       "revealed": false
     }
+  },
+  {
+    "id": "refAngleSwap",
+    "label": "feedback-current-first-term",
+    "tab": "problem",
+    "params": {
+      "q": {
+        "tag": "기준각이 바뀌면",
+        "key": "sw|\\sin C+\\cos A|4,3,5|CA",
+        "stem": "$\\angle B=90^{\\circ}$인 직각삼각형 ABC에서 $\\overline{AB}=4$, $\\overline{BC}=3$일 때, $\\sin C+\\cos A$의 값은?",
+        "choices": [
+          {
+            "t": "\\frac{4}{5}",
+            "p": "5분의 4",
+            "ok": false,
+            "hint": "sin C 하나만 구했어요. cos A도 더해요."
+          },
+          {
+            "t": "\\frac{6}{5}",
+            "p": "5분의 6",
+            "ok": false,
+            "hint": "대변과 이웃변이 바뀌었어요."
+          },
+          {
+            "t": "\\frac{7}{5}",
+            "p": "5분의 7",
+            "ok": false,
+            "hint": "cos A 는 sin A 가 아니라 sin C 와 같아요."
+          },
+          {
+            "t": "\\frac{8}{5}",
+            "p": "5분의 8",
+            "ok": true,
+            "hint": ""
+          },
+          {
+            "t": "\\frac{16}{5}",
+            "p": "5분의 16",
+            "ok": false,
+            "hint": "풀이 순서대로 다시 계산해 보세요."
+          }
+        ],
+        "fig": {
+          "a": 4,
+          "b": 3,
+          "mirror": false,
+          "rot": 0,
+          "names": {
+            "A": "C",
+            "B": "A",
+            "C": "B"
+          },
+          "side": {
+            "a": {
+              "t": "4",
+              "c": "sky"
+            },
+            "b": {
+              "t": "3",
+              "c": "sky"
+            }
+          },
+          "angA": {
+            "t": "",
+            "c": "amber",
+            "rings": 1
+          },
+          "angB": {
+            "t": "",
+            "c": "rose",
+            "rings": 2
+          },
+          "reference": "A",
+          "swap": true,
+          "solutionSide": {
+            "a": "4",
+            "b": "3",
+            "c": "5"
+          }
+        },
+        "given": [
+          "4",
+          "3"
+        ],
+        "solution": {
+          "key": "sw|\\sin C+\\cos A|4,3,5|CA",
+          "steps": [
+            "주어진 두 변은 $\\overline{AB}=4$, $\\overline{BC}=3$입니다. $\\sin C+\\cos A$를 구해요.",
+            "피타고라스 정리로 빗변 $\\overline{CA}=\\sqrt{4^2+3^2}=5$입니다.",
+            "기준각이 $C$에서 $A$로 바뀌면 대변과 이웃변이 바뀝니다. $\\sin C=\\cos A=\\frac{4}{5}$, $\\cos C=\\sin A=\\frac{3}{5}$입니다.",
+            "$\\tan C=\\frac{4}{3}$, $\\tan A=\\frac{3}{4}$도 확인한 뒤, 문제의 식 $\\sin C+\\cos A$에 해당하는 값만 넣어 계산해요.",
+            "따라서 정답은 $\\frac{8}{5}$입니다."
+          ],
+          "math": {
+            "kind": "swap",
+            "a": 4,
+            "b": 3,
+            "expression": "\\sin C+\\cos A",
+            "answer": 1.6
+          }
+        }
+      },
+      "tgSeed": 0,
+      "tgPick": {
+        "key": "refAngleSwap|sw|\\sin C+\\cos A|4,3,5|CA|0",
+        "idx": 0
+      },
+      "revealed": false
+    }
+  },
+  {
+    "id": "refAngleSwap",
+    "label": "feedback-current-complement",
+    "tab": "problem",
+    "params": {
+      "q": {
+        "tag": "기준각이 바뀌면",
+        "key": "sw|\\sin C+\\cos A|4,3,5|CA",
+        "stem": "$\\angle B=90^{\\circ}$인 직각삼각형 ABC에서 $\\overline{AB}=4$, $\\overline{BC}=3$일 때, $\\sin C+\\cos A$의 값은?",
+        "choices": [
+          {
+            "t": "\\frac{4}{5}",
+            "p": "5분의 4",
+            "ok": false,
+            "hint": "sin C 하나만 구했어요. cos A도 더해요."
+          },
+          {
+            "t": "\\frac{6}{5}",
+            "p": "5분의 6",
+            "ok": false,
+            "hint": "대변과 이웃변이 바뀌었어요."
+          },
+          {
+            "t": "\\frac{7}{5}",
+            "p": "5분의 7",
+            "ok": false,
+            "hint": "cos A 는 sin A 가 아니라 sin C 와 같아요."
+          },
+          {
+            "t": "\\frac{8}{5}",
+            "p": "5분의 8",
+            "ok": true,
+            "hint": ""
+          },
+          {
+            "t": "\\frac{16}{5}",
+            "p": "5분의 16",
+            "ok": false,
+            "hint": "풀이 순서대로 다시 계산해 보세요."
+          }
+        ],
+        "fig": {
+          "a": 4,
+          "b": 3,
+          "mirror": false,
+          "rot": 0,
+          "names": {
+            "A": "C",
+            "B": "A",
+            "C": "B"
+          },
+          "side": {
+            "a": {
+              "t": "4",
+              "c": "sky"
+            },
+            "b": {
+              "t": "3",
+              "c": "sky"
+            }
+          },
+          "angA": {
+            "t": "",
+            "c": "amber",
+            "rings": 1
+          },
+          "angB": {
+            "t": "",
+            "c": "rose",
+            "rings": 2
+          },
+          "reference": "A",
+          "swap": true,
+          "solutionSide": {
+            "a": "4",
+            "b": "3",
+            "c": "5"
+          }
+        },
+        "given": [
+          "4",
+          "3"
+        ],
+        "solution": {
+          "key": "sw|\\sin C+\\cos A|4,3,5|CA",
+          "steps": [
+            "주어진 두 변은 $\\overline{AB}=4$, $\\overline{BC}=3$입니다. $\\sin C+\\cos A$를 구해요.",
+            "피타고라스 정리로 빗변 $\\overline{CA}=\\sqrt{4^2+3^2}=5$입니다.",
+            "기준각이 $C$에서 $A$로 바뀌면 대변과 이웃변이 바뀝니다. $\\sin C=\\cos A=\\frac{4}{5}$, $\\cos C=\\sin A=\\frac{3}{5}$입니다.",
+            "$\\tan C=\\frac{4}{3}$, $\\tan A=\\frac{3}{4}$도 확인한 뒤, 문제의 식 $\\sin C+\\cos A$에 해당하는 값만 넣어 계산해요.",
+            "따라서 정답은 $\\frac{8}{5}$입니다."
+          ],
+          "math": {
+            "kind": "swap",
+            "a": 4,
+            "b": 3,
+            "expression": "\\sin C+\\cos A",
+            "answer": 1.6
+          }
+        }
+      },
+      "tgSeed": 0,
+      "tgPick": {
+        "key": "refAngleSwap|sw|\\sin C+\\cos A|4,3,5|CA|0",
+        "idx": 2
+      },
+      "revealed": false
+    }
   }
 ]

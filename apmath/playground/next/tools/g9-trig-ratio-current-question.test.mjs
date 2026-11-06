@@ -211,6 +211,22 @@ test('renaming the current triangle also renames every wrong-choice explanation'
   assert.equal(forms.size, 5, 'all reference-angle expressions'); assert.ok(ratioCases > 0);
 });
 
+test('wrong-choice replay renders the current angle feedback without revealing the answer', () => {
+  const fixtures = JSON.parse(fs.readFileSync(path.join(here, 'g8-g9-geometry-audit-targets-g9-trig-ratio.json'), 'utf8'));
+  const cases = fixtures.filter(x => /^feedback-current-/.test(x.label)); assert.equal(cases.length, 2);
+  for (const f of cases) {
+    const sc = scene(f.id), s = {}; sc.enter(s); Object.assign(s, f.params);
+    assert.equal(s.q.solution.key, s.q.key); assert.equal(s.revealed, false);
+    const choice = s.q.choices[s.tgPick.idx], html = sc.problem.text(s);
+    assert.equal(choice.ok, false); assert.ok(html.includes('class="tg-fb bad"'));
+    assert.ok(html.includes(choice.hint)); assert.doesNotMatch(choice.hint, /(?:sin|cos|tan) B/);
+    if (f.label.endsWith('first-term')) assert.match(choice.hint, /sin C.*cos A/);
+    else assert.match(choice.hint, /cos A.*sin A.*sin C/);
+    assert.doesNotMatch(html, /정답이에요!/);
+    s.tgPick = null; assert.ok(!sc.problem.text(s).includes('class="tg-fb bad"'), 'unselected problem does not show feedback');
+  }
+});
+
 // Canvas-command verification exercises the production draw paths, not pixels.
 function board(width = 390, height = 490) {
   const log = [], b = { W: width, H: height, k: 35, fs: 1, pad: .02, insets: { left: 0, right: 0, top: 0, bottom: 0 }, thumb: false, _tgBoxes: [], log,
