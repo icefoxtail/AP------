@@ -134,9 +134,9 @@
       },
       tick: spec.tick,
       view: (s, lab) => {
-        const M = model(s), C = ctxOf(s, lab);
         const questionKey = keyOf(s);
-        if (s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; }
+        if (s.plQuestionKey !== questionKey) { s.plQuestionKey = questionKey; s.plPick = null; s.revealed = false; s.step = 0; }
+        const M = model(s), C = ctxOf(s, lab);
         const v = { guide: spec.guide(M, s) };
         if (C.tab === 'problem') { v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' }; return v; }
         v.readouts = spec.readouts ? spec.readouts(M, s) : [];

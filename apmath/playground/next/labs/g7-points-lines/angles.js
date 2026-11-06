@@ -127,7 +127,7 @@
 
   function build(spec) {
     const pre = spec.id + '_';
-    const defs = { pk: '', pi: -1, seed: 0 };
+    const defs = { pk: '', pi: -1, seed: 0, questionKey: '' };
     Object.entries(spec.state || {}).forEach(([k, v]) => { defs[k] = v; });
     Object.entries(spec.params || {}).forEach(([k, p]) => { defs[k] = p.value; });
     const own = new Set(Object.keys(defs));
@@ -164,6 +164,7 @@
         const q = sv(s);
         Object.entries(defs).forEach(([k, v]) => { q[k] = v; });
         if (spec.enter) spec.enter(q, lab);
+        q.questionKey = spec.problem(q).key + '|' + q.seed;
         s.playing = false;
         sc._focus = null;
         if (main && lab.board && lab._measureFocus) {
@@ -208,7 +209,8 @@
       focus: () => sc._focus || { x: box.x.slice(), y: [-box.y[1], -box.y[0]] },
       view: (s, lab) => {
         const q = sv(s), mode = modeOf(lab);
-        if (q.pk && q.pk !== spec.problem(q).key + '|' + q.seed) { q.pk = ''; q.pi = -1; s.revealed = false; }
+        const questionKey = spec.problem(q).key + '|' + q.seed;
+        if (!measuring && q.questionKey !== questionKey) { q.questionKey = questionKey; q.pk = ''; q.pi = -1; s.revealed = false; s.step = 0; }
         const v = (spec.view ? spec.view(q, mode, lab) : {}) || {};
         if (lab && s === lab.s && !measuring && lab.refs && lab.refs.steps) {
           const sig = spec.steps(q).join('\u0001');
