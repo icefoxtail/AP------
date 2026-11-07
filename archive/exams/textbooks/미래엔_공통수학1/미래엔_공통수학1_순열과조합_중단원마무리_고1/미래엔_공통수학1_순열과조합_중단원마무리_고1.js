@@ -267,7 +267,7 @@ window.questionBank = [
     "displayNo": 10,
     "setKey": "미래엔_공통수학1_순열과조합_중단원마무리_고1",
     "sourceQuestionNo": 10,
-    "level": "L2",
+    "level": "고1",
     "category": "순열과 조합",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
