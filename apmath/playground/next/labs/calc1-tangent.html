@@ -848,7 +848,7 @@ window.addEventListener('DOMContentLoaded', function () {
         curve(b, f);
         b.line([0, -2], 1, { color: 'sky', width: 2.6, glow: true });
         const vb = b.viewBox();
-        b.text([Math.min(vb.x1 - 0.8, 3.6), Math.min(vb.x1 - 0.8, 3.6) - 2], 'l : y = x − 2', { color: 'sky', dx: 10, dy: 18, align: 'left', size: 13 });
+        b.text([Math.min(vb.x1 - 0.8, 3.6), Math.min(vb.x1 - 0.8, 3.6) - 2], 'l : y = x − 2', { color: 'sky', dx: -10, dy: -14, align: 'right', size: 13 });
         if (s.step >= 1) b.line([a, ya], m, { extent: 2.5, color: 'rose', width: 2.3, dash: true, glow: true, ref: 'tangent' });
         if (s.step >= 2) {
           if (Math.abs(m) > 1e-9) b.line([a, ya], -1 / m, { extent: 2.0, color: 'violet', width: 2, dash: true, ref: 'normal' });
