@@ -42,7 +42,7 @@ const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath
 const save = () => fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
 try {
   for (const item of labs) {
-    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [] };
+    const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], failureCaptures: [] };
     report.labs.push(dest);
     for (const run of runs) {
       const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc'), deviceScaleFactor: 1 });
@@ -114,6 +114,7 @@ try {
               invalidText: (text.match(/undefined|NaN|Infinity|\[object Object\]/g) || []),
               clipped: window.__highLabels.filter(q => Math.max(-q.x0, q.x1-b.W, -q.y0, q.y1-b.H) > 2),
               overflow: document.documentElement.scrollWidth > innerWidth + 1,
+              overflowNodes: document.documentElement.scrollWidth > innerWidth + 1 ? [...document.querySelectorAll('body *')].filter(e=>e.checkVisibility()).map(e=>({e,r:e.getBoundingClientRect()})).filter(({r})=>r.left < -1 || r.right > innerWidth + 1).sort((a,b)=>b.r.right-a.r.right).slice(0,8).map(({e,r})=>({tag:e.tagName,className:String(e.className),left:r.left,right:r.right,width:r.width,text:e.textContent.replace(/\s+/g,' ').trim().slice(0,100)})) : [],
               answerOpen: !!lab.refs.answer?.classList.contains('open'),
               steps: get(lab.scene.steps).length,
               guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() };
@@ -135,7 +136,11 @@ try {
           }
           const row = { id: scene.id, run: run.name, state, ...obs, issues };
           dest.observations.push(row);
-          if (issues.length) report.failures.push({ lab: item.id, id: scene.id, run: run.name, state, issues, clipped: obs.clipped, katexErrors: obs.katexErrors });
+          if (issues.length) report.failures.push({ lab: item.id, id: scene.id, run: run.name, state, issues, clipped: obs.clipped, katexErrors: obs.katexErrors, overflowNodes:obs.overflowNodes });
+          if (issues.length && !observe && run.theme==='paper' && dest.failureCaptures.length<2 && !dest.failureCaptures.some(f=>f.id===scene.id)) {
+            await capture(scene, `defect-${state}`, false);
+            dest.failureCaptures.push({id:scene.id,run:run.name,state,issues,file:dest.captures.at(-1)});
+          }
           return row;
         };
         const inspectSolutions = async (scene, prefix) => {
