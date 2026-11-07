@@ -1,0 +1,1269 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "batchId": "diff5-final-authority-reconciliation-20261108",
+  "reconciledAt": "2026-11-08",
+  "purpose": "Repair request after-values that the prior review incorrectly changed away from the current approved metadata. Preserve source and canonical user-approved metadata; do not re-register the 8 exams already registered by PR #1481.",
+  "basis": {
+    "difficultyRule": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "priorRequestEvidence": ".archive-meta-register/evidence/diff5-reviewed-40-20261107.json",
+    "authorityForRequest08": {
+      "path": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+      "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+      "note": "META_REVIEW2 approved current source-bound difficulty; each original item was re-read and matches the recorded decision."
+    },
+    "authorityForRequest11": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+      "record": "records[questionNo] / difficulty.bucket",
+      "note": "APPROVED_CANONICAL current source-bound review; each original item and solution was re-read and matches the recorded decision."
+    },
+    "reviewedRows": 48,
+    "keptApprovedRows": 14
+  },
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 1,
+      "questionUid": "qid_v1_1de44b712c2a26bc9c6ca7970daf28c0b5f9b6f61cef182ea668eb87d543beb2",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "962652fd23268ab2ef0fec0b23860549c11c21cf541f16ec91d50847b75b1e09",
+        "contentFingerprint": "a0e4cdce3ae0486e242f950414bf124f1ab0fd88099ad54806c1b6eb304d8c8f"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "329d04c22e4f15404975b7669810986fc49bcf55d07e495964b185c170b3bd29",
+      "contentFingerprint": "a0e4cdce3ae0486e242f950414bf124f1ab0fd88099ad54806c1b6eb304d8c8f",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+        "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+        "approvedDifficultyBucket": 2,
+        "rejectedPriorCorrectionBucket": 1
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 2,
+      "questionUid": "qid_v1_78e206919f48246684527220358f5454866cf7250ad6d1e4abe7c81fc263a71e",
+      "decision": "CORRECT",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "0557ae2f0ee0998c1eb6b4eb5db3f84c43099392456c4351e7ed886cb28587a9",
+        "contentFingerprint": "03f02e1f9ad516ba8a20a3a551c6d1ee3345027a32d5bb32213d8c7eb9b2a489"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "df2008aa185d1f2cf7c00ca2be93e6262a5e7280e23aa9e14191ec2f1d9ccb2f",
+      "contentFingerprint": "03f02e1f9ad516ba8a20a3a551c6d1ee3345027a32d5bb32213d8c7eb9b2a489",
+      "staleSourceBinding": false,
+      "reason": "순환소수·근호·제곱근 용어의 정의를 구별해 보기 검증.",
+      "reviewKind": "source_recheck_349"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 3,
+      "questionUid": "qid_v1_e5381a4c7c81ba1e1931e69dcc207739e8128f268db0ebc04f2396a430e79a8f",
+      "decision": "CORRECT",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "ded3546762b254fe509ff475a1e41428423232269587f31bec0d7e8702187e75",
+        "contentFingerprint": "ca745f646364d6b8ca3c0879122eb0dc4fda1add17593e2e4699cacbb51b6c11"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "04385812f289bcf89c2777015d0064cfa4fb1f95012e604e65013a64238c9672",
+      "contentFingerprint": "ca745f646364d6b8ca3c0879122eb0dc4fda1add17593e2e4699cacbb51b6c11",
+      "staleSourceBinding": false,
+      "reason": "근호 곱셈·나눗셈과 유리화를 각 보기에서 직접 정리.",
+      "reviewKind": "source_recheck_349"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 4,
+      "questionUid": "qid_v1_72fd7442a5ef09614cb028bd06a657fc2dec7ed82f36e68aca01c629b06b9bc5",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "7de2d678ed58366220e5862ecfbecace5eba4cc6bf2bb87addf6eca3e61e8a84",
+        "contentFingerprint": "0bec929e10553203da8b8fe28af3a6057324d7b6d1194ed9aa828bab3af7bd11"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "e53154564ff3d83983462f7584aaae04498ac32e8363b76ee662e82d797ea031",
+      "contentFingerprint": "0bec929e10553203da8b8fe28af3a6057324d7b6d1194ed9aa828bab3af7bd11",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 5,
+      "questionUid": "qid_v1_0a53a0bd2a97692230cc06b7747cf76417cfce7816caa5fb3e8129d18ee31d23",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중",
+        "sourceFingerprint": "9acc5bba582702fe9cc8a750e506d39456c1fe0565ba819948cd87a4d57d83f0",
+        "contentFingerprint": "1e84dccc40fe736903b8e522fb4434f7731880dfcb7815bde6ba1bdf0048c624"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "c92ce89ace59da5b60ad5865ace5bd9adc656096af81bfc145a2d08be3c6a850",
+      "contentFingerprint": "1e84dccc40fe736903b8e522fb4434f7731880dfcb7815bde6ba1bdf0048c624",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_d18d2372669ffbf74523f6a320555f4c99c720a65ff0961dcb38d48aeec108ab",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "b0a200290f4793788d7f4f97fdaf9296d043971b0cf1dbf394af8e1b48c828c4",
+        "contentFingerprint": "46418ed3f8f92f0db28c2ba4e2d06517fa66281bb878093321b3af0d4f7ae099"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "ae90618475fa6d73f5cf8cf5f942ae50bdb0b6226e513e21af075a1a4f32354e",
+      "contentFingerprint": "46418ed3f8f92f0db28c2ba4e2d06517fa66281bb878093321b3af0d4f7ae099",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+        "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+        "approvedDifficultyBucket": 2,
+        "rejectedPriorCorrectionBucket": 1
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 7,
+      "questionUid": "qid_v1_c0d9579fa65213ab7aedb3cf10f5cc1e3c8e61260666fbd7644406181737fc73",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "d811a961538a632e0ed5766476506b3134d7be32ea53cd00ee4132c5f9de554d",
+        "contentFingerprint": "8b6966b19bbb95b7dbbfa302afce4d5fddc63006c72a557a97ccf92a2e8f55a9"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "74280de0c60af5fe46b32f3b09f3254e939269794b0facac8e05ec83239b66a9",
+      "contentFingerprint": "8b6966b19bbb95b7dbbfa302afce4d5fddc63006c72a557a97ccf92a2e8f55a9",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 8,
+      "questionUid": "qid_v1_fc50b43b634856c59323c578afac96d89faba1d44a0ceb951b890d85406bcbac",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "e0086ef160a92b00d98294f7c0f37c5b2c90092bd0c1916e8fd83205e72b4ced",
+        "contentFingerprint": "30552927bba857ac6ba7a99a78eb3b1f8a97c85a8a6a91e987bf2ae379ba7117"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "cd3b67bd9bcee42e9e96d216d8a075f36cc1c52794c1f199347f94b7bba29c05",
+      "contentFingerprint": "30552927bba857ac6ba7a99a78eb3b1f8a97c85a8a6a91e987bf2ae379ba7117",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 9,
+      "questionUid": "qid_v1_6a07a4c2aef0e95f6894852b989fe08ec6bf1d25d63c76180e773e05ed8c17cd",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "2f291275734be2a6822947c687314a82579eb90c99207c758f81d552ef9eb9ad",
+        "contentFingerprint": "e3a4160a0aa726975ae23a92d962ffacc67aa992fb6032248e84ac42e96d7e29"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "aecbb648c34a910b4621123ad9011c794c361858980c1d765ee98ba87095e5a0",
+      "contentFingerprint": "e3a4160a0aa726975ae23a92d962ffacc67aa992fb6032248e84ac42e96d7e29",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 10,
+      "questionUid": "qid_v1_f98392f7b97764ac0feb4126e0277092379cdfaadac8a5f83441bfca9986c3c2",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "9d4d5f272460b9b9c8c265ff22d42c5fd81f4075484d4435d36bbc762fac5ec8",
+        "contentFingerprint": "e79bb16531ea7365bf891c5f87e55ac8fea449f02d07ebb93a98724ee999037e"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "46614feee5553a1cdb930667055596099283a82f90b4ddd7dbe021c4ecdcefb2",
+      "contentFingerprint": "e79bb16531ea7365bf891c5f87e55ac8fea449f02d07ebb93a98724ee999037e",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 11,
+      "questionUid": "qid_v1_b0104d6a6841f31458c196de30544d3382fb9eaa203d783504936dbe18336212",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "16bfe797c91e6c87667021e46e01fd29ba4ace31e2becfb4e42dc11adcf9e97a",
+        "contentFingerprint": "a21aa2c2a14979b77be330d3b5918b37967ab572508baaf641d91b471a0180bd"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "d453d88cbb75342f55086df1bebf5efd16d2b2fbc2bd58dc8f3e70f15dccbe1c",
+      "contentFingerprint": "a21aa2c2a14979b77be330d3b5918b37967ab572508baaf641d91b471a0180bd",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 12,
+      "questionUid": "qid_v1_5b1aa20c3a312ca284844847446b2324e83e14de7bd37892d778129ca5ee2153",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "4183b3fed465c1d491cf82016ae2a0d7aa4cf235e93b10f9c9d92008d1b28d75",
+        "contentFingerprint": "d608b6161e3e5a3b70537f363834990796c5951aee31462cbf641c64534fd595"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "dcbf5842b52f8fb665d29d741d2c253143a03ac5bdd7a51951e78148bccc6e45",
+      "contentFingerprint": "d608b6161e3e5a3b70537f363834990796c5951aee31462cbf641c64534fd595",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 13,
+      "questionUid": "qid_v1_34d3457012ffe260b83f1a3e1b01bc2764e9eb3b97740ee8c5fcd21423ba7763",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "a9bf546c258e56579797314608303b68237f1f0444a9743cbd07c005939100d9",
+        "contentFingerprint": "0a5ac8ba7e6f6007500e4ca1efff9b33cbdf61dff9860c54319de6dd0082a026"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "a7d4852f4f95aa640d4abfacdc3333247f112b0911633a84d865296407387d04",
+      "contentFingerprint": "0a5ac8ba7e6f6007500e4ca1efff9b33cbdf61dff9860c54319de6dd0082a026",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 14,
+      "questionUid": "qid_v1_d0e3e7e799f8576eed5624f787d3aa5bde7c7705cf22894bfb3c18cf139c69f4",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "3f247d942a8a9c9b6d36c8dc512608fb39560bbafdc501a14855119ac5d96910",
+        "contentFingerprint": "3c57794727988e917ae0664cb56de516aad23d82296f378c2df594a2fa8f2f96"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "e606731445b14ebaa801153d1a1e59fd203929e6e21051f375036a0d75e05385",
+      "contentFingerprint": "3c57794727988e917ae0664cb56de516aad23d82296f378c2df594a2fa8f2f96",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 15,
+      "questionUid": "qid_v1_7502f020a2c99d4a5ec54ebd94ac065c8de63588c22335a6d2cc019be67651fa",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "bec271dfd01f6da313e82f667ad194bfc577c3880e599d1e5cc724f02584c492",
+        "contentFingerprint": "6f5d7648217635d66bc458e088c0e424a5743e0b0d6256ce5c0de1905fa8700a"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "4fadf2a194f7531cb0e73040c05f0a0cd0f1b725880f1af250de99314d60312e",
+      "contentFingerprint": "6f5d7648217635d66bc458e088c0e424a5743e0b0d6256ce5c0de1905fa8700a",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+        "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 16,
+      "questionUid": "qid_v1_a59230ae13e4321d013ae7842e63da9adf7591e6e8c4853dc9fa9057793528f5",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "90f4d394c1f465d66a989cd65dae6276e10415cea24b211aa8bb0520be987983",
+        "contentFingerprint": "ea3d82e7698bfd7d098ae1e034ac47d2a3533624635b2da6e81a05bef7e4d308"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "96a125ad8a785027f6330fbe1d2491acf156c448bd3e32958e3faa8ba4064a46",
+      "contentFingerprint": "ea3d82e7698bfd7d098ae1e034ac47d2a3533624635b2da6e81a05bef7e4d308",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 17,
+      "questionUid": "qid_v1_af939737b2a6cbb0cc6a62c87b598941a10614128e8287135f31f18beabee8fe",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "e2691b34057e18304c9b191614b21f77cb644f685e49fb587a8a4c73a8f96945",
+        "contentFingerprint": "672a8959b362eba240e2cda3c615117115625ca7a1240352ada5c7b458cfec48"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "b26a5433babbf77b12f58892dc63770b2e97056d9456eda160bdf9a883009a1b",
+      "contentFingerprint": "672a8959b362eba240e2cda3c615117115625ca7a1240352ada5c7b458cfec48",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 18,
+      "questionUid": "qid_v1_fc8494d2d3c8f6f9fed3f82a292bda3ea760c49e021b13f8aec8b7f677581b4b",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "221bc007805e7655183c60d3e9953b19ee7a482ad3d525e6fcedd3644a96ac7a",
+        "contentFingerprint": "ab0a39658fb03a85dbf1cf6a9776a279b4e399307da3fe8f014a855fcb8cce1c"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "0b68a7322b4457148fa0da5179906a5061c6c18b16ac1739b139a9a449711a81",
+      "contentFingerprint": "ab0a39658fb03a85dbf1cf6a9776a279b4e399307da3fe8f014a855fcb8cce1c",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+        "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 19,
+      "questionUid": "qid_v1_25d4fa4fadb09b3036feb54fc1904e706c86c7b1a737f5d94cb1407ea797eef8",
+      "decision": "CORRECT",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "101d27430c168bab0a468cdb01a969343e49db8ef6f55fe65eb504b5ca56fbcd",
+        "contentFingerprint": "d366258f7e7bd44382c936c99885aa781cb73a64bab4269d3228719c5b54d835"
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "fa7e0a15bce0dcde77b9a94f3780c5c1ae85381523ed3440824d96c9064831b2",
+      "contentFingerprint": "d366258f7e7bd44382c936c99885aa781cb73a64bab4269d3228719c5b54d835",
+      "staleSourceBinding": false,
+      "reason": "두 분모를 켤레식으로 유리화하고 합·곱 항등식으로 이차식을 축약.",
+      "reviewKind": "source_recheck_349"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 20,
+      "questionUid": "qid_v1_b32eb975b0d3b2b00d2dd4abff3035322846bc099ffb54a86d007bb254e5b513",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "f8b3c08f0f1a0fb6e6eba1191ebb14b813cee28cdf09c3a85216eacfb31e2505",
+        "contentFingerprint": "573fa2fa9e96f6fab57dad81d1c6b6bdf20a29101def87f2e3791430348b7803"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "946d522c926adb6fe54866ab550bb0c29d6805c3bc432e91e38eb027c9637059",
+      "contentFingerprint": "573fa2fa9e96f6fab57dad81d1c6b6bdf20a29101def87f2e3791430348b7803",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 21,
+      "questionUid": "qid_v1_46938d04b36c281a5b473551181822e3a0d6912637e1e634126f33fcb7fc8a2f",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "c9a013f8646d506c0b9776c3e7b69eae23f5a64088d6649f428bc6fa415387f4",
+        "contentFingerprint": "fdecc6eeb91bcef9ebbdcd9941d357d8f3e30f6262439383ddc2d8f9f8ee1af7"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "ac736f6cd962c45d1a3d86be392c36f69b6037c1dd6cc6971b2e2e0fb07b4c2e",
+      "contentFingerprint": "fdecc6eeb91bcef9ebbdcd9941d357d8f3e30f6262439383ddc2d8f9f8ee1af7",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 22,
+      "questionUid": "qid_v1_7eb978759754da9695a73db5a92fd86fb0d12aef7bfbfd3c29f28ba0c9ad30ef",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "f888e5f44a178b3d985a9ccdf25b5df09b4969cb53d4317387f738ce00d65a54",
+        "contentFingerprint": "71d037a3193c30b315404853704935a91319763df16a1fa1485dac3b0984aef4"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "df0228647c179be29e1b6f73589c73bd0e56ac11cd757bcf3908410d359693bb",
+      "contentFingerprint": "71d037a3193c30b315404853704935a91319763df16a1fa1485dac3b0984aef4",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 23,
+      "questionUid": "qid_v1_fc8122ae79a7d35f1daf9a03e7f969728cc2527b00dadb02a823cb75650afd47",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "e033583bb8d438583d177658a6ada5ce35d9c833a4cc4f16f51e3655e570e821",
+        "contentFingerprint": "6063ebc0573afb91110c7a4b7f61391da757733b27e7dc327f0caf912fba2add"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "c06a733e66150dffe48d9fd0e2118f5bc59ee5b4c486003db468cd2876dc29dd",
+      "contentFingerprint": "6063ebc0573afb91110c7a4b7f61391da757733b27e7dc327f0caf912fba2add",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+        "record": "rows[sourceOrdinal] / difficulty.difficultyBucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
+      "ordinal": 24,
+      "questionUid": "qid_v1_85ef0abe4e398a0d4bc7ae51419945778bfca82de39d1d4a6cfdc2269c432ca8",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "9ae333ce041912ae2191e8dc919a311cd9ab82121d18f39a9af917758dd22a1c",
+        "contentFingerprint": "3adb2c04b00784f2509178ac1a23ee8f045716be33b439495bc6ae19a0e63ce2"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "9a4f4eca676fd87c23778f097daf52774c7b664edd0ed6f14430be7efc9878a3",
+      "contentFingerprint": "3adb2c04b00784f2509178ac1a23ee8f045716be33b439495bc6ae19a0e63ce2",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 1,
+      "questionUid": "qid_v1_aa3073e3192219ceff9626886cf46bd0c7d9017972cb9517dcd7b16f52db9308",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "하",
+        "sourceFingerprint": "46478fd5f4e6adb187415011ae508d7cfca18686dadae855ad8332ff605b0371",
+        "contentFingerprint": "d784aba603b3a4f9f90bee4149fed0dcdede7e91ef8a8044ffc2601368c40ed6"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "46478fd5f4e6adb187415011ae508d7cfca18686dadae855ad8332ff605b0371",
+      "contentFingerprint": "d784aba603b3a4f9f90bee4149fed0dcdede7e91ef8a8044ffc2601368c40ed6",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 2,
+      "questionUid": "qid_v1_55ad338d23a57116767956f0a44b7bb76ace6268b0b166433ef59c2721196c9d",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "하",
+        "sourceFingerprint": "6aceb7a0b99dc8a2d4c668c689a62b5398651f48b7f5b7814dfe8d3e5e4adc75",
+        "contentFingerprint": "04f185e5272275a523848c41d706d8770da6ec9e74a8f533ba46f03db9fc54e2"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "6aceb7a0b99dc8a2d4c668c689a62b5398651f48b7f5b7814dfe8d3e5e4adc75",
+      "contentFingerprint": "04f185e5272275a523848c41d706d8770da6ec9e74a8f533ba46f03db9fc54e2",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 3,
+      "questionUid": "qid_v1_0d349e7ec1d6e0e32ac9e33bfda52a3785128f0519b295d93c24d07eb36c05e1",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중",
+        "sourceFingerprint": "831cb64a1331ac95cb6a2497eef09881fef24b80cb9791a92a4b40dbd8416749",
+        "contentFingerprint": "0369a93ba95fa0e9e44eb3c81abb8e5d3f4e9014e9f5f773290d574ff44922c7"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "831cb64a1331ac95cb6a2497eef09881fef24b80cb9791a92a4b40dbd8416749",
+      "contentFingerprint": "0369a93ba95fa0e9e44eb3c81abb8e5d3f4e9014e9f5f773290d574ff44922c7",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 4,
+      "questionUid": "qid_v1_a4be3058f7de7a95a0a2647f20268d0b698b0b7f85f335bcab01f80fa696b471",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "8b829396ee87ab1d782dc556afcbfae170b854f4ddb98c10c307a53a537b5a26",
+        "contentFingerprint": "c0bfae90ffcdd91e3318a8a167195a571a47ec203ae8135e6123531c9099c5f0"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "8b829396ee87ab1d782dc556afcbfae170b854f4ddb98c10c307a53a537b5a26",
+      "contentFingerprint": "c0bfae90ffcdd91e3318a8a167195a571a47ec203ae8135e6123531c9099c5f0",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 5,
+      "questionUid": "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "aefc609e9a09549000984fc9eb61d0e73ace15b193efba47043e87124e0a5c39",
+        "contentFingerprint": "88247f3cf47ae317f2259304d4d9b508476a5edaa46e4b3c765ac9c17fd645b0"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "aefc609e9a09549000984fc9eb61d0e73ace15b193efba47043e87124e0a5c39",
+      "contentFingerprint": "88247f3cf47ae317f2259304d4d9b508476a5edaa46e4b3c765ac9c17fd645b0",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_278d3c06f8b5adf11c42bcf38f09194c239cf3dcfe3ea07d976c6ed05d8ba611",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "하",
+        "sourceFingerprint": "48fcd246868dc706b922768cd7be7bd131c1e2f5c636f5408309290d6a256d3b",
+        "contentFingerprint": "58f44e7df5fad37e984ab7f9c8d063e8bd3e992c4fcc18f92b06785f639f3279"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "48fcd246868dc706b922768cd7be7bd131c1e2f5c636f5408309290d6a256d3b",
+      "contentFingerprint": "58f44e7df5fad37e984ab7f9c8d063e8bd3e992c4fcc18f92b06785f639f3279",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 7,
+      "questionUid": "qid_v1_e593396a2f43001bcdb2cc02626dadd03832fdb8959f18f5b244035220c415df",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "하",
+        "sourceFingerprint": "28cbbbe570d051b0be60ceebafd234ea8071777e0264e7e908f05ef22b9f448e",
+        "contentFingerprint": "55f622133afcbac15f284460ce4ca85558faab7dc6c7f85e4e0f6535313e535a"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "28cbbbe570d051b0be60ceebafd234ea8071777e0264e7e908f05ef22b9f448e",
+      "contentFingerprint": "55f622133afcbac15f284460ce4ca85558faab7dc6c7f85e4e0f6535313e535a",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 8,
+      "questionUid": "qid_v1_0e3ebd389ae8d095d995cbc7122bdd5d5d06814e243635ced9005d151cf8833b",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "하",
+        "sourceFingerprint": "9e48ab2221a6cc5ccafb587e62c79427dfcb134d6331e8d3793abe65aaa5ec39",
+        "contentFingerprint": "e19f1943fc90bd8e0d67efc7309374a49a85fbc17f7f9403034c6e85d5ff4e24"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "9e48ab2221a6cc5ccafb587e62c79427dfcb134d6331e8d3793abe65aaa5ec39",
+      "contentFingerprint": "e19f1943fc90bd8e0d67efc7309374a49a85fbc17f7f9403034c6e85d5ff4e24",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 9,
+      "questionUid": "qid_v1_8c4150ce82a489d2477817240ce884c353031b6de069b7350ce758f3254d542d",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "86d74388b1d427c5b36b5db04d02da1aeecdd4e5445e7514cac4a982b5c4076c",
+        "contentFingerprint": "97393dc3df932ba024f190c5095fcf90ea76c1029587a58ea995b0eb88eb7d87"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "86d74388b1d427c5b36b5db04d02da1aeecdd4e5445e7514cac4a982b5c4076c",
+      "contentFingerprint": "97393dc3df932ba024f190c5095fcf90ea76c1029587a58ea995b0eb88eb7d87",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 10,
+      "questionUid": "qid_v1_7d142cadc3657e9753f620ee7b044e7915d297d6fef4bdb396574596bbec35fe",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중",
+        "sourceFingerprint": "d2512eef3c49c2be2f16e6c511d27245dc3a8ca1766b57c6b161cce192d60ca3",
+        "contentFingerprint": "9785b299f69577b076540e7aa3d76ef848257934b70a3ecb4eb6bd81de2ae19f"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "d2512eef3c49c2be2f16e6c511d27245dc3a8ca1766b57c6b161cce192d60ca3",
+      "contentFingerprint": "9785b299f69577b076540e7aa3d76ef848257934b70a3ecb4eb6bd81de2ae19f",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 11,
+      "questionUid": "qid_v1_6ba3588b527ef271c45aea9f7dfa1098be1cc4ab4eebccde453b9aeee8357ad0",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "5cb64237707aacabcc738d155a8e6fb02177f0246366ef1a954dcca64cfa9d12",
+        "contentFingerprint": "221b4a5c7ba3535ca953470229e32c91a7a21e7d9669b952ad61942e09a415d7"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "5cb64237707aacabcc738d155a8e6fb02177f0246366ef1a954dcca64cfa9d12",
+      "contentFingerprint": "221b4a5c7ba3535ca953470229e32c91a7a21e7d9669b952ad61942e09a415d7",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 12,
+      "questionUid": "qid_v1_723b688be8b4c7e871bd56e56e039cf7d239f492d49a4dd862a374b7938485be",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중",
+        "sourceFingerprint": "3b6bdbc4c4dff403096d4a2c37a3037a4e25640bb0d311a29977cff6c499303e",
+        "contentFingerprint": "830a5ee7ffbedf8283b6dbc7de046899c36659e049f410cfabcc905ec185448d"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "3b6bdbc4c4dff403096d4a2c37a3037a4e25640bb0d311a29977cff6c499303e",
+      "contentFingerprint": "830a5ee7ffbedf8283b6dbc7de046899c36659e049f410cfabcc905ec185448d",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 13,
+      "questionUid": "qid_v1_6f2d2795a3917cf47348d243f18ae186128442095c28caa7b37b89d9d5c47e2c",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "388a92bb22da64f71248b1f6714c03c24b40b4cc6ca039aaeda03f3b0b2d46d4",
+        "contentFingerprint": "9e5c9c79dcb07e0a40e4b5d4da85643821de85bb4f43d23db70959a6d9d29d91"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "388a92bb22da64f71248b1f6714c03c24b40b4cc6ca039aaeda03f3b0b2d46d4",
+      "contentFingerprint": "9e5c9c79dcb07e0a40e4b5d4da85643821de85bb4f43d23db70959a6d9d29d91",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 14,
+      "questionUid": "qid_v1_3614dbd99ebcfd0d998364b1291471b46ca3501f4c7263ae3193a09b65429528",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "02946a593c31e4252ad23f3144d4bb212457123806f7d90b977b46f9ff292a23",
+        "contentFingerprint": "3f160d02608d283bb2638087110af74a64cb92fd0886c0114d7736332cd01d53"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "02946a593c31e4252ad23f3144d4bb212457123806f7d90b977b46f9ff292a23",
+      "contentFingerprint": "3f160d02608d283bb2638087110af74a64cb92fd0886c0114d7736332cd01d53",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 15,
+      "questionUid": "qid_v1_dcad1a6236334c1365d0499d4c8d2b1aa15ec5ad383d0e20a8c4d300058d054c",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "233dae3ab8b666eb10d8b90e6e09d4f39860959000cb73db693aabf55f0914bd",
+        "contentFingerprint": "358d3839ee3153dda0b881dc79396d9c700acca3b5d13fa3b633afb794057863"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "233dae3ab8b666eb10d8b90e6e09d4f39860959000cb73db693aabf55f0914bd",
+      "contentFingerprint": "358d3839ee3153dda0b881dc79396d9c700acca3b5d13fa3b633afb794057863",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 2,
+        "rejectedPriorCorrectionBucket": 1
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 16,
+      "questionUid": "qid_v1_323c03f3a99370be184e2f41593a98eea70f80dc7745d48ac5b776ffff4f4746",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "32559e139efd53e439d01506dd991a473d5c2c32fdcac5a5ebd37ff43b2a0c38",
+        "contentFingerprint": "7aafa1a8962a59fe13ded802127762213dbbf3ee2489cbdcd201963017beb93a"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "32559e139efd53e439d01506dd991a473d5c2c32fdcac5a5ebd37ff43b2a0c38",
+      "contentFingerprint": "7aafa1a8962a59fe13ded802127762213dbbf3ee2489cbdcd201963017beb93a",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 17,
+      "questionUid": "qid_v1_ef8bafdbcf20001377e05d612d183179c807d554b886ed742ba0b5b57dc048e4",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "cd0a1596c50e60404bdd15b23edf500bb0abc2beaba7a1d192a95aa6933dfa55",
+        "contentFingerprint": "853555faf33f052c61c34d1d0024d3761df415dcae1aab485ccfcf9e3be712be"
+      },
+      "after": {
+        "difficultyBucket": 2
+      },
+      "sourceFingerprint": "cd0a1596c50e60404bdd15b23edf500bb0abc2beaba7a1d192a95aa6933dfa55",
+      "contentFingerprint": "853555faf33f052c61c34d1d0024d3761df415dcae1aab485ccfcf9e3be712be",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 18,
+      "questionUid": "qid_v1_bb40aee649389c1fb33457d6d229e288226fb53c3ed1bc549569a8bff979aff6",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "상",
+        "sourceFingerprint": "cd2a32b8655b145a47f4262e2410ae3100d8d1bfbef97775438bd52f93f0dcfc",
+        "contentFingerprint": "63dee108da16136c88eb353660e0ad88f5872091e0b485bde34bc37c17bc08df"
+      },
+      "after": {
+        "difficultyBucket": 4
+      },
+      "sourceFingerprint": "cd2a32b8655b145a47f4262e2410ae3100d8d1bfbef97775438bd52f93f0dcfc",
+      "contentFingerprint": "63dee108da16136c88eb353660e0ad88f5872091e0b485bde34bc37c17bc08df",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 4가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 4,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 19,
+      "questionUid": "qid_v1_057dbf61be41bdca88bfa620dc9b7358a7039406a3df8ddc32f9b878342f3eed",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "상",
+        "sourceFingerprint": "9ab49559b21ecd99fe846cd968d7d9bd81a8e13be5e3d9672e784972e0fb64e0",
+        "contentFingerprint": "190e86b98d370ea5f2735409892d14dd9a8ec52f9f09e42039611b1a50a8abff"
+      },
+      "after": {
+        "difficultyBucket": 4
+      },
+      "sourceFingerprint": "9ab49559b21ecd99fe846cd968d7d9bd81a8e13be5e3d9672e784972e0fb64e0",
+      "contentFingerprint": "190e86b98d370ea5f2735409892d14dd9a8ec52f9f09e42039611b1a50a8abff",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 20,
+      "questionUid": "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "level": "상",
+        "sourceFingerprint": "c13fa3723ac81ff38ed2c4972e85aa9143ed1c82b2ceee07fa73b3d96299f672",
+        "contentFingerprint": "ad788864434b327b3d1f1825df22e5fc1217917efa859ab20c6a1e616344d53e"
+      },
+      "after": {
+        "difficultyBucket": 4
+      },
+      "sourceFingerprint": "c13fa3723ac81ff38ed2c4972e85aa9143ed1c82b2ceee07fa73b3d96299f672",
+      "contentFingerprint": "ad788864434b327b3d1f1825df22e5fc1217917efa859ab20c6a1e616344d53e",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 4가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 4,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 21,
+      "questionUid": "qid_v1_96825bc5997b418f5e36232b9779ca892ff7f51d199d20f69150cb79a439d68b",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "하",
+        "sourceFingerprint": "500c22dfa9944307512e838c1f0af0b977723ef8209e6e09ffa97692bc530952",
+        "contentFingerprint": "c400baaaa82db0cc0112b97407920a440756f7d6949038ab870ea058600128bb"
+      },
+      "after": {
+        "difficultyBucket": 1
+      },
+      "sourceFingerprint": "500c22dfa9944307512e838c1f0af0b977723ef8209e6e09ffa97692bc530952",
+      "contentFingerprint": "c400baaaa82db0cc0112b97407920a440756f7d6949038ab870ea058600128bb",
+      "staleSourceBinding": false,
+      "reason": "난이도 검수 대상이 아닌 문항은 현재 등록 숫자를 보존. 원문과 sidecar 지문 불일치는 별도 감사 항목으로만 기록.",
+      "reviewKind": "preserve_current"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 22,
+      "questionUid": "qid_v1_764f53c3e94c1f92361d7b8dc0d77f0042b174c6ed8e9281542a6fe3cc177ebd",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "bf7f04e3cca515e28c1d039c0a721b3af9f1299c1142de88230bfe94a54680cb",
+        "contentFingerprint": "9e32091e61236644486f07f5006c3cdbea3171dc508040325cd262cfc4f610ff"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "bf7f04e3cca515e28c1d039c0a721b3af9f1299c1142de88230bfe94a54680cb",
+      "contentFingerprint": "9e32091e61236644486f07f5006c3cdbea3171dc508040325cd262cfc4f610ff",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 23,
+      "questionUid": "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "eee84ada97c722c9a9df2983d61dfd44b9115c81adf01937b6e7929d6cb2fe54",
+        "contentFingerprint": "6adb8f22d7bf4d7a0dea5f548fc892874353b71907a980bfdaeb86290d043f5d"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "eee84ada97c722c9a9df2983d61dfd44b9115c81adf01937b6e7929d6cb2fe54",
+      "contentFingerprint": "6adb8f22d7bf4d7a0dea5f548fc892874353b71907a980bfdaeb86290d043f5d",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "ordinal": 24,
+      "questionUid": "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe",
+      "decision": "KEEP",
+      "refreshBinding": false,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "reconstructed_evidence",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "sourceFingerprint": "49584a1e41c5bffac89d7ddb48b42db946e5d5f07761f91179abebf99545a135",
+        "contentFingerprint": "052590d6075779bbc3392640bf7890fba7645e3bf451c9657bd10d7a5c94b4dc"
+      },
+      "after": {
+        "difficultyBucket": 3
+      },
+      "sourceFingerprint": "49584a1e41c5bffac89d7ddb48b42db946e5d5f07761f91179abebf99545a135",
+      "contentFingerprint": "052590d6075779bbc3392640bf7890fba7645e3bf451c9657bd10d7a5c94b4dc",
+      "staleSourceBinding": false,
+      "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
+      "reviewKind": "source_recheck_349",
+      "authorityReconciliation": {
+        "approvalEvidence": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+        "record": "records[questionNo] / difficulty.bucket",
+        "approvedDifficultyBucket": 3,
+        "rejectedPriorCorrectionBucket": 2
+      }
+    }
+  ]
+}
