@@ -7,10 +7,18 @@
 // push the fresh result (at most 3 attempts, hard cap). If the competitor already
 // published an identical tree, that is success without any extra commit.
 //
+// Optional --reapply-check "<command>": the single shortcut. If this attempt created a local commit and the
+// check (env DERIVED_BASE_SHA=<our base>, COMPETITOR_HEAD_SHA=<remote tip>) exits 0, the competing range is
+// provably unrelated to the producers, so the already-verified derived commit is cherry-picked onto the new
+// tip instead of re-running --regenerate; --verify-command then runs again on the new base..head before the
+// push. A failing check, a cherry-pick conflict or a staged path outside --paths-file falls back to
+// regenerate. Without the option the behaviour is unchanged.
+//
 //   node tools/ci/git-push-derived-with-retry.mjs --paths-file <file> --message <msg> \
 //     [--regenerate "<command run through the platform shell>"] [--remote origin] \
 //     [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>] \
-//     [--verify-command "<candidate check before each push>"]
+//     [--verify-command "<candidate check before each push>"] \
+//     [--reapply-check "<exit 0 only if the competing range is provably unrelated>"]
 //
 // --paths-file: git pathspecs relative to the repository root, one per line
 //               ('#' comments and blank lines ignored). Only these are staged/cleaned.
@@ -30,9 +38,9 @@ const HARD_CAP = 3;
 const SUCCESS = new Set(["PUSHED", "ALREADY_CURRENT", "ALREADY_REFLECTED"]);
 
 function parseArgs(argv) {
-  const opt = { remote: "origin", branch: "main", maxAttempts: HARD_CAP, label: "derived data", regenerate: "", verifyCommand: "", summaryFile: "", pathsFile: "", message: "" };
+  const opt = { remote: "origin", branch: "main", maxAttempts: HARD_CAP, label: "derived data", regenerate: "", verifyCommand: "", reapplyCheck: "", summaryFile: "", pathsFile: "", message: "" };
   const names = { "--paths-file": "pathsFile", "--regenerate": "regenerate", "--message": "message", "--remote": "remote", "--branch": "branch",
-    "--max-attempts": "maxAttempts", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand" };
+    "--max-attempts": "maxAttempts", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand", "--reapply-check": "reapplyCheck" };
   for (let i = 0; i < argv.length; i += 2) {
     const key = names[argv[i]];
     if (!key || argv[i + 1] === undefined) throw new Error(`unknown or valueless argument: ${argv[i]}`);
@@ -133,6 +141,27 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
     if (attempts.length >= opt.maxAttempts) return outcome("RETRY_EXHAUSTED", { competitor: competitor() });
     if (!opt.regenerate) return outcome("NO_REGENERATE", { error: "branch moved and no --regenerate command was given", competitor: competitor() });
 
+    if (opt.reapplyCheck && attempt.pushed) {
+      const unrelated = spawnSync(opt.reapplyCheck, { cwd, shell: true, stdio: "inherit",
+        env: { ...process.env, DERIVED_BASE_SHA: attempt.base, COMPETITOR_HEAD_SHA: remote } });
+      if (unrelated.status === 0) {
+        git(["reset", "--hard", "-q", remoteRef]);
+        const pick = git(["cherry-pick", "--no-commit", attempt.pushed]);
+        let reapplied = pick.status === 0;
+        if (reapplied) {
+          const names = args => git(["diff", "--cached", "--name-only", "-z", ...args]).stdout.split("\0").filter(Boolean);
+          const inside = new Set(names(["--", ...pathspecs]));
+          reapplied = names([]).every(f => inside.has(f));
+        } else git(["cherry-pick", "--abort"]);
+        if (reapplied) {
+          attempt.cause += `${attempt.cause ? "; " : ""}competitor range unrelated, re-applied verified derived commit`;
+          log(`[${opt.label}] attempt ${attempt.n} lost the race to ${remote}; competing range is unrelated, re-applying the verified derived commit`);
+          continue;
+        }
+        git(["reset", "--hard", "-q", remoteRef]);
+      }
+    }
+
     git(["reset", "--hard", "-q", remoteRef]);
     for (const spec of pathspecs) git(["clean", "-fdq", "--", spec]); // stale untracked output only inside the pathspecs
     log(`[${opt.label}] attempt ${attempt.n} lost the race to ${remote}; regenerating on the new base`);
@@ -172,7 +201,7 @@ export function renderSummary(opt, r) {
 
 function main() {
   let opt;
-  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--regenerate <cmd>] [--verify-command <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>]`); process.exit(2); }
+  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--regenerate <cmd>] [--verify-command <cmd>] [--reapply-check <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>]`); process.exit(2); }
   let result;
   try { result = pushDerivedWithRetry(opt); } catch (error) { result = { result: "STAGE_FAILED", ok: false, attempts: 0, mainSha: "", registeredSha: "", attemptLog: [], error: error.message }; }
   console.log(`[${opt.label}] result=${result.result} attempts=${result.attempts} main_sha=${result.mainSha} registered_sha=${result.registeredSha}${result.error ? ` error=${result.error}` : ""}`);
