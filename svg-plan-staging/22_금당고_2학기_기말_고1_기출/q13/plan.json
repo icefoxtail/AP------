@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "세 x-범위에서 교점이 생기는 $m$의 범위를 각각 구해 합친다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "color": "BLUE",
+        "hideLabel": true,
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "middle",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "hideLabel": true,
+        "emphasis": [
+          {
+            "from": "0",
+            "to": "1",
+            "fromState": "CLOSED",
+            "toState": "OPEN",
+            "color": "BLUE"
+          }
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "hideLabel": true,
+        "emphasis": [
+          {
+            "from": "1",
+            "to": "5",
+            "fromState": "OPEN",
+            "color": "BLUE"
+          }
+        ]
+      },
+      {
+        "id": "sample",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=-x/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "예: m=−1/2일 때 원점을 지나는 직선과 세 구간의 그래프를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "집합 A는 x<0, 0≤x<1, x>1의 세 구간별 그래프이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "세 구간별 그래프와 원점을 지나는 예시 직선 y=−x/2를 함께 나타낸다."
+  ]
+}

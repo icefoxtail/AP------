@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "공",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "상자",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: 사용할 세 상자를 정했을 때 각 상자에 공이 적어도 한 개 들어가는 배치 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 공 5개를 상자에 넣고 정확히 2개 상자는 비운다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "선택한 세 상자에 공이 빠짐없이 배정되는 한 예를 표시한다."
+  ],
+  "sourceQuote": "먼저 사용할 상자 3개를 고른 뒤"
+}

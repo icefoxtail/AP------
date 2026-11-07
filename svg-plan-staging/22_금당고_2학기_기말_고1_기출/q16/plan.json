@@ -1,0 +1,70 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "왼쪽",
+        "elements": [
+          "4",
+          "5",
+          "7"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "오른쪽",
+        "elements": [
+          "5",
+          "6",
+          "8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "원본 좌석도에서 비어 있으면서 나란한 좌석쌍이며 화살표 방향은 뜻하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "비어 있는 좌석은 2, 4, 5, 6, 7, 8, 11번이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서 남학생 두 명을 앉힐 수 있는 이웃한 쌍 (4,5), (5,6), (7,8)을 추려 보인다."
+  ],
+  "sourceQuote": "그림에서 실제로 서로 붙어 있는 사용 가능 좌석쌍을 먼저 확인한다."
+}

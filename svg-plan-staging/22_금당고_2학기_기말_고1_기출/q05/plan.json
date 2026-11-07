@@ -1,0 +1,102 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "두 개",
+        "elements": [
+          "AB",
+          "AC",
+          "AD",
+          "BC",
+          "BD",
+          "CD"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "구분",
+        "elements": [
+          "A포함",
+          "A제외"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: 네 개 중 두 개를 선택할 때 A를 포함하는 경우와 제외하는 경우로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "조합의 두 인접한 항을 더하는 관계를 이용한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "더 작은 네 원소의 예시로 특정 원소의 포함 여부에 따른 조합 분할을 보인다."
+  ],
+  "sourceQuote": "두 식 모두 조합의 성질과 조합값 비교로 해결한다."
+}

@@ -1,0 +1,116 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "영역",
+        "elements": [
+          "위바깥",
+          "원왼",
+          "원오",
+          "아래왼",
+          "아래오",
+          "맨아래"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "인접",
+        "elements": [
+          "위바깥",
+          "원왼",
+          "원오",
+          "아래왼",
+          "아래오",
+          "맨아래"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      }
+    ]
+  },
+  "caption": "인접 관계의 각 영역 쌍을 임의의 한 방향 화살표로 한 번씩 표시하며, 함수가 아닌 대칭 관계이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연의 여섯 영역 중 서로 인접한 영역은 다른 색으로 칠한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "위 바깥과 원 안 두 영역은 서로 인접하며, 아래쪽은 위 바깥과 함께 네 영역의 순환 인접 관계를 이룬다."
+  ],
+  "sourceQuote": "그림의 인접 관계를 위쪽 3영역과 아래쪽 3영역으로 나누어 센다."
+}

@@ -1,0 +1,139 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "학생",
+        "elements": [
+          "여1",
+          "남1",
+          "남2",
+          "남3",
+          "남4",
+          "남5",
+          "여2",
+          "여3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "자리",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 6
+        },
+        "to": {
+          "column": 1,
+          "element": 6
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 7
+        },
+        "to": {
+          "column": 1,
+          "element": 7
+        }
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "caption": "예: 여학생 세 명 중 두 명이 양끝에 서고 남학생 다섯 명이 이어 선 n=3의 한 배열이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남학생 다섯 명이 서로 이웃하도록 선다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "예시에서 두 조건을 모두 만족하는 배열 중 하나를 표시한다."
+  ],
+  "sourceQuote": "두 조건의 배열 수를 각각 세어 그 비가 18이라는 식을 세운다."
+}

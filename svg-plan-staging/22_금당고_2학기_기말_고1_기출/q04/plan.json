@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "첫째",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "둘째",
+        "elements": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ]
+  },
+  "caption": "첫 선수를 1번으로 정했을 때 둘째 선수의 후보를 잇는 함수가 아닌 선택 대응이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 선수 6명 중 4명을 뽑아 순서를 정한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 선수를 1번으로 고정하면 둘째 후보는 나머지 다섯 명이다."
+  ],
+  "sourceQuote": "6명 중 4명을 뽑아 순서까지 정하므로 순열을 사용한다."
+}

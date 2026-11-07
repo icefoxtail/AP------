@@ -1,0 +1,100 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "일의 자리",
+        "elements": [
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "십의 자리",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "일의 자리마다 여러 십의 자리 후보로 나가는 함수가 아닌 선택 대응을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1, 2, 3, 4가 각각 적힌 카드에서 두 장을 골라 짝수 만들기",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "일의 자리를 정했을 때 같은 카드를 제외한 십의 자리 후보를 보인다."
+  ],
+  "sourceQuote": "일의 자리에는 $2,4$ 중 하나를 놓고"
+}

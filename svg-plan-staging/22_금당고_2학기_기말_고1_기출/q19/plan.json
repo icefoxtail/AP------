@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "평행선 때문에 삼각형이 생기지 않는 경우를 제외한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "p1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=x-2"
+      },
+      {
+        "id": "p2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=x"
+      },
+      {
+        "id": "p3",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=x+2"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-x+1/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 서로 평행한 세 직선과 다른 직선 하나를 그려 평행선이 포함된 선택을 살펴본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "13개 직선 중 어느 세 직선도 한 점에서 만나지 않고 세 직선만 평행하다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 평행한 세 직선과 이를 가로지르는 직선 하나의 예시를 나타낸다."
+  ]
+}

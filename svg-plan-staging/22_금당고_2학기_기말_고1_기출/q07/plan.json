@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "sourceQuote": "분모를 연속한 두 인수로 만든 뒤 부분분수로 분해하면",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "1/6",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1/5",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "1/4",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "1/3",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "C",
+            "to": "D",
+            "label": "첫째",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "둘째",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "label": "셋째",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "예: 앞의 세 항"
+  },
+  "caption": "예: 앞의 세 항을 인접한 세 구간으로 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x²+5x+6의 값으로 이루어진 합에서 인접한 부분분수 항이 소거된다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 세 항의 인접한 부분분수 차와 소거 방향을 보여 준다."
+  ]
+}
