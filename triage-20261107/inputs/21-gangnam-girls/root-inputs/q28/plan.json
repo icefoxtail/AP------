@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "주어진 구간에서 분모의 범위를 이용해 함수값의 범위를 찾는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      7,
+      -6,
+      -2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "1",
+        "6"
+      ],
+      "y": [
+        "-5",
+        "-4",
+        "-3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-14",
+          "-3"
+        ],
+        "denominator": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "asymptote",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=-3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "-5"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "-16/5"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 구간의 양 끝에서 함수값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 (-2,-4)를 지나므로 k=-2, 함수는 -2/(x+4)-3이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "정의구간 -3≤x≤6에서 함수는 증가한다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c3",
+      "condition": "양 끝에서의 함수값은 -5와 -16/5이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "정해진 구간에서 함수가 증가하므로 양 끝이 각각 최솟값과 최댓값이 되는 관계를 보여 준다."
+  ]
+}
