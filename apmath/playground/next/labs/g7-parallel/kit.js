@@ -67,7 +67,7 @@
       if (o.at) {
         // 좁은 접힌 각의 글자를 바깥에 둔 경우, 실제 각 표시와 연결합니다.
         // 꼭짓점이나 이등분선 끝이 아닌 호의 중점(직각이면 네모의 모서리)이 대상입니다.
-        if (!o.bare && b.leader) {
+        if (!o.bare && !b.thumb && b.leader) {
           const anchor = Math.abs(w - 90) < 1e-6 && !o.noRight
             ? add(V, mul(add(dir(d1), dir(d1 + w)), 15 / k))
             : at(V, bis, rw);

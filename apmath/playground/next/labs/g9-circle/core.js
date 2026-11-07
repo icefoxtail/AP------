@@ -114,12 +114,15 @@
     if (o.label) {
       const size = o.size || 15;
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
-      const tight = !b.thumb && deg < 35 && !o.noMark, outside = tight && o.labelDist == null && o.labelRot == null;
-      const dst = o.labelDist != null ? o.labelDist : outside ? r + 26 : Math.max(r + 14, Math.min(need, r + 34));
-      const la = am + (outside ? (d < 0 ? 1 : -1) * .72 : (o.labelRot || 0) * DEG);
+      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 34));
+      const la = am + (o.labelRot || 0) * DEG;
+      // Keep the continuous angle-bisector placement. Only an explicit rotation
+      // outside the angle needs a callout before collision avoidance moves it.
+      const turn = (((d < 0 ? -1 : 1) * (la - a0)) % (PI * 2) + PI * 2) % (PI * 2);
+      const outside = o.labelRot != null && turn > Math.abs(d) + 1e-6;
       const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
       const anchor = square ? add(V, add(mul(unit(sub(A, V)), corner), mul(unit(sub(B, V)), corner))) : pt(V.x + Math.cos(am) * rw, V.y + Math.sin(am) * rw);
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: tight });
+      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside });
     }
     return { deg, mid: am };
   }
@@ -397,7 +400,7 @@
       return b;
     };
     try { draw(); } finally { b.text = original; }
-    const placed = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
+    const placed = [], labels = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
     queue.sort((a, z) => Number(!/^[A-Z][′']?$/.test(a.str)) - Number(!/^[A-Z][′']?$/.test(z.str)));
     for (const item of queue) {
       const { p, str, o } = item, anchor = b.toS(p), x0 = anchor.x + (o.dx || 0), y0 = anchor.y + (o.dy || 0);
@@ -424,9 +427,11 @@
           if (trim < 1) line(b, o.leaderAnchor, b.toW(best.x - dx * trim, best.y - dy * trim), o.color || 'muted', 1.2, { alpha });
         }
       }
-      original.call(b, p, str, { ...o, size, dx: best.x - anchor.x, dy: best.y - anchor.y });
+      labels.push({ p, str, options: { ...o, size, dx: best.x - anchor.x, dy: best.y - anchor.y } });
       placed.push({ ...best.box, text: str });
     }
+    // Later callouts must not paint over a vertex name placed earlier.
+    for (const label of labels) original.call(b, label.p, label.str, label.options);
     b.ciLabels = placed;
   }
   function rollPk(D, s, first) {

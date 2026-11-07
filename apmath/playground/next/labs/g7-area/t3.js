@@ -64,13 +64,13 @@
       const t1 = [BL, BR, TL], t2 = [TL, TR, BR].map((q) => pt(q.x + gap, q.y));
       fillPoly(b, t1, 'sky', 0.26); poly(b, t1, 'ink', 3.6);
       fillPoly(b, t2, C.problem && M.q === 2 ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);
-      par(b, TL, TR, 1, 'green'); par(b, BL, BR, 1, 'green');
+      par(b, b.thumb ? TL : t2[0], b.thumb ? TR : t2[1], 1, 'green'); par(b, BL, BR, 1, 'green');
       if (!C.problem) {
         hgtTo(b, TL, BL, BR, { label: `높이 ${H}`, side: -1, gap: 8 });
         hgtTo(b, t2[2], t2[0], t2[1], { label: `높이 ${H}`, side: 1 });
       } else hgtTo(b, TL, BL, BR, { label: `높이 ${H}cm`, side: 1 });
       if (gap < 0.05) [[TL, 'A'], [BL, 'B'], [BR, 'C'], [TR, 'D']].forEach(([q, n]) => tagOut(b, q, c0, n, { size: 17, gap: 10 }));
-      dim(b, TL, TR, `윗변 ${a}cm`, { ref: c0, color: 'sky' });
+      dim(b, b.thumb ? TL : t2[0], b.thumb ? TR : t2[1], `윗변 ${a}cm`, { ref: c0, color: 'sky' });
       dim(b, BL, BR, `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
       if (C.problem) { foot(b, pt(Math.max(B, p + a) / 2, 0), '삼각형 ACD의 넓이 = ? cm²', 'amber', 58); return; }
       const x0 = Math.max(B, p + a) / 2;

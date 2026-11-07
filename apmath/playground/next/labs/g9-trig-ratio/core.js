@@ -265,12 +265,15 @@
     if (o.label) {
       const size = o.size || 16;
       const need = (textW2(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
-      const tight = !b.thumb && deg < 35 && !o.noMark, outside = tight && o.labelDist == null && o.labelRot == null;
-      const dst = o.labelDist != null ? o.labelDist : outside ? r + 26 : Math.max(r + 14, Math.min(need, r + 70));
-      const la = am + (outside ? (d < 0 ? 1 : -1) * .72 : (o.labelRot || 0) * DEG);
+      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
+      const la = am + (o.labelRot || 0) * DEG;
+      // Keep the continuous angle-bisector placement. Only an explicit rotation
+      // outside the angle needs a callout before collision avoidance moves it.
+      const turn = (((d < 0 ? -1 : 1) * (la - a0)) % (PI * 2) + PI * 2) % (PI * 2);
+      const outside = o.labelRot != null && turn > Math.abs(d) + 1e-6;
       const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
       const anchor = square ? add(V0, add(mul(unit(sub(A, V0)), corner), mul(unit(sub(B, V0)), corner))) : pt(V0.x + Math.cos(am) * rw, V0.y + Math.sin(am) * rw);
-      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: tight });
+      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside });
     }
     return { deg, mid: am };
   }

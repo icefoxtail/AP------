@@ -48,7 +48,7 @@
       dim(b, Bv, Av, `${a}`, { ref: Cv, color: 'sky', width: 3 });
       dim(b, Av, Cv, `${bb}`, { ref: Bv, color: 'sky' });
       dim(b, Bv, Cv, `${c}`, { ref: Av, color: 'green' });
-      T(b, Av, 'A', { dy: -20, dx: 14, size: 18 }); T(b, Bv, 'B', { dx: -14, dy: 15, size: 18 }); T(b, Cv, 'C', { dx: 14, dy: 15, size: 18 }); T(b, Hf, 'H', { dx: -14, dy: 15, size: 18, color: 'amber' });
+      T(b, Av, 'A', { dy: b.thumb ? -20 : -26, dx: b.thumb ? 14 : 0, size: 18 }); T(b, Bv, 'B', { dx: -14, dy: 15, size: 18 }); T(b, Cv, 'C', { dx: 14, dy: 15, size: 18 }); T(b, Hf, 'H', { dx: -14, dy: 15, size: 18, color: 'amber' });
       if (hot1) { line(b, Bv, Av, 'sky', 6, { alpha: 0.6 }); line(b, Av, Cv, 'sky', 6, { alpha: 0.6 }); }
       if (hot2) line(b, Bv, Cv, 'green', 6, { alpha: 0.6 });
       if (C.problem) { foot(b, Mh, '빗변에 내린 수선의 길이 h = ?', 'amber', 58); return; }
@@ -108,7 +108,10 @@
       if (show2) hgtTo(b, Ap, Cp, Dp, { color: 'rose', label: C.problem || (C.review && C.step < 3) ? 'h₂ = ?' : `h₂ = ${num(h2)}`, side: 1, gap: 14, dy: -10, at: 0.62 });
       dim(b, Bp, Cp, `BC = ${a}`, { ref: c0, color: 'sky' });
       dim(b, Cp, Dp, `CD = ${c}`, { ref: c0, color: 'green', off: 26 });
-      [[Ap, 'A'], [Bp, 'B'], [Cp, 'C'], [Dp, 'D']].forEach(([p, n]) => tagOut(b, p, c0, n, { size: 17, gap: 10 }));
+      [[Ap, 'A'], [Bp, 'B'], [Cp, 'C'], [Dp, 'D']].forEach(([p, n]) => {
+        if (n === 'C' && !b.thumb) T(b, p, n, { size: 17, dx: 30 });
+        else tagOut(b, p, c0, n, { size: 17, gap: 10 });
+      });
       const fx = (a + S) / 2;
       if (C.problem) { foot(b, pt(fx, 0), '평행사변형의 넓이를 두 가지로 나타내 보세요', 'amber', 58); return; }
       if (C.review && C.step < 1) { foot(b, pt(fx, 0), '같은 넓이를 두 방법으로 나타내요', 'amber', 58); return; }
@@ -288,7 +291,7 @@
       FIT(b, { x0: 0, x1: m + n + (C.problem ? 0 : 1.6), y0: -h, y1: 0 }, { b: C.problem ? questionBottom : 130 });
       fillPoly(b, g.left, 'sky', 0.24); poly(b, g.left, 'ink', 3.6);
       fillPoly(b, g.right, 'rose', 0.24); poly(b, g.right, 'ink', 3.6);
-      [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 ? -12 : i === 3 ? 12 : 0, size: 17 }));
+      [[Av, 'A'], [Bv, 'B'], [pt(D.x, 0), 'D'], [pt(Cv.x + gap, 0), 'C']].forEach(([q, nm], i) => T(b, q, nm, { dy: i === 0 ? -18 : 18, dx: i === 1 || (i === 2 && !b.thumb) ? -12 : i === 3 ? 12 : 0, size: 17 }));
       if (!C.problem && (!C.review || C.step >= 1)) {
         hgtTo(b, Av, Bv, D, { label: `h = ${h}`, side: -1, gap: 8 });
         if (gap > 0.05) hgtTo(b, g.right[0], g.right[1], g.right[2], { label: `h = ${h}`, side: 1, gap: 8 });

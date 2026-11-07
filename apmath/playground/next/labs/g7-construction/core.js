@@ -138,7 +138,7 @@
       const la = am + (o.labelRot || 0) * DEG;
       const dx = o.labelOffset ? o.labelOffset.dx : Math.cos(la) * dst;
       const dy = o.labelOffset ? o.labelOffset.dy : Math.sin(la) * dst;
-      if (o.labelOffset && !o.noMark && b.leader) {
+      if (o.labelOffset && !o.noMark && !b.thumb && b.leader) {
         const anchor = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight
           ? add(V, mul(add(unit(sub(A, V)), unit(sub(B, V))), Math.min(r * 0.62, 17) / k))
           : { x: V.x + Math.cos(am) * rw, y: V.y + Math.sin(am) * rw };

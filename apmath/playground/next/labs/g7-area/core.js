@@ -406,8 +406,9 @@
     }
     const a = add(p, mul(n, off)), c = add(q, mul(n, off)), e = 6 / k;
     if (!o.noLine) {
-      // 치수의 양 끝이 원래 도형의 어느 점인지 바로 따라갈 수 있게 묶습니다.
-      [[p, a], [q, c]].forEach(([at, end]) => line(b, at, add(end, mul(n, 3 / k)), col, 1.1, { alpha: .45 }));
+      // 배치용 pq가 도형 밖에 있으면 source로 실제 길이의 두 끝점을 지정합니다.
+      const source = o.source || [p, q];
+      if (!b.thumb) [[source[0], a], [source[1], c]].forEach(([at, end]) => line(b, at, add(end, mul(n, 3 / k)), col, 1.1, { alpha: .45 }));
       line(b, a, c, col, 1.9, { alpha: 0.75 });
       line(b, add(a, mul(n, e)), sub(a, mul(n, e)), col, 1.9, { alpha: 0.75 });
       line(b, add(c, mul(n, e)), sub(c, mul(n, e)), col, 1.9, { alpha: 0.75 });
