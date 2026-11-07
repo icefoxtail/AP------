@@ -1,4 +1,29 @@
 {
-  "status": "EXEMPT",
-  "reason": "대칭식의 두 대수적 분기(a+b+c=0 또는 비영)는 풀이식으로 충분하며 별도 SVG가 필요하지 않다."
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+        "label": "합=0: 식 −3"
+        },
+        {
+        "label": "합≠0: a=b=c, 식 6"
+        }
+      ]
+    },
+    "leafLayout": "COMPACT"
+  },
+  "caption": "두 분기에서 가능한 대칭식 값은 −3과 6이고 그 합은 3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "공통비를 둔 세 식의 합에서 (k+3)(a+b+c)=0을 얻는다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "합이 0이면 식은 −3이다.",
+    "합이 0이 아니면 a=b=c이고 식은 6이다."
+  ]
 }

@@ -1,4 +1,32 @@
 {
-  "status": "EXEMPT",
-  "reason": "테마별 선택 개수 (2,1,1)의 세 경우 9+18+18과 시간순 배열 4!은 작은 표/수식으로 충분하다."
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+        "label": "레저 2개: 9×4!"
+        },
+        {
+        "label": "놀이 2개: 18×4!"
+        },
+        {
+        "label": "관람 2개: 18×4!"
+        }
+      ]
+    },
+    "leafLayout": "COMPACT"
+  },
+  "caption": "두 체험을 고르는 테마별 세 분기와 네 체험의 시간 배열을 나타낸다. (9+18+18)×4!=1080.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "테마별 체험 수는 2,3,3이고 총 4개를 선택하며 각 테마에서 하나 이상 고른다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "선택 분기 수는 9,18,18이다.",
+    "각 분기에서 시간순 배열은 4!이다."
+  ]
 }
