@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "제3사분면에서는 $x<0$이고 $y<0$이어야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=0",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "경계 사례에서 함수의 사분면 위치를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "경계에서 함수는 y=2x/(x-1)이고 x<0에서 y>0이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "경계 매개변수의 유리함수가 음의 x에서 갖는 부호를 보여 준다."
+  ]
+}

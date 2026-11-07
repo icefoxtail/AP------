@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "최고차항의 계수가 양수이므로 $a>0$이다.",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          null,
+          "-1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-5",
+        "-4",
+        "1",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "caption": "세 조각의 열린점과 닫힌점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "왼쪽 x<-1은 y=x-4, 가운데 [-1,2]는 y=(x-2)²-5, 오른쪽 x>2는 y=x+2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수 조각의 열린·닫힌 경계와 치역 연결을 비교한다."
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f$가 $f(x)=\\dfrac{1}{2}x+3$일 때,",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      7,
+      -3,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "예: 한 점과 역함수의 대응점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 대응점으로 역함수의 입력·출력 교환을 보여 준다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 대응점으로 역함수의 입력·출력 교환을 보여 준다."
+  ]
+}

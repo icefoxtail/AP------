@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "그림에서 그래프가 시작하는 점은 $(-1,2)$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -2,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "2",
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-2",
+          "1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "3-sqrt(7)",
+          "y": "3-sqrt(7)"
+        }
+      ]
+    }
+  },
+  "caption": "원함수와 역함수의 교점 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=2-√(2x+2), 역함수 g=(x-2)²/2-1, 공통점 C=(3-√7,3-√7)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수·역함수와 대칭축을 함께 보되 교점 여부는 식으로 검증한다."
+  ]
+}

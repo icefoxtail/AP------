@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "역함수의 그래프는 원래 함수 그래프를 $y=x$에 대하여 대칭이동한",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "1"
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "역함수의 대응점을 대칭으로 옮긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 (-2,1)의 대칭점은 (1,-2), 두 점을 잇는 직선은 y=-x-1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 대칭 대응점이 같은 직선 위에 있는 자기 역함수 사례를 보인다."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$y=\\sqrt{-x+a}+2$에서 $x$가 커지면 근호 안의",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      2,
+      0,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "1"
+      ],
+      "y": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "5",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "label": "y=4",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "5"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "4"
+        }
+      ]
+    }
+  },
+  "caption": "구간 양끝에서 함수값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=5이면 f=√(5-x)+2는 구간에서 감소한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 구간에서 감소하는 곡선의 양 끝 높이를 비교한다."
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "교점의 $x$좌표는 직선과 쌍곡선의 $y$값이 같은 실수 $x$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-2",
+          "1"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ]
+  },
+  "caption": "예: 한 직선과 유리함수의 교차를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "경계 사례 n=-2에서 예시 m=1인 직선은 곡선과 만난다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "한 경계 사례에서 고정된 y절편을 지나는 직선과 곡선의 교차를 보인다."
+  ]
+}

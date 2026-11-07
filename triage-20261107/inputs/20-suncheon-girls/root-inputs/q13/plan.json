@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "역함수를 구하기 위해 먼저",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-3",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "함수와 역함수의 시작점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원함수 시작점 (3,2)와 역함수 시작점 (2,3)은 대각선 대칭이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "무리함수와 역함수의 시작점 및 정의역·치역 역할 교환을 보인다."
+  ]
+}

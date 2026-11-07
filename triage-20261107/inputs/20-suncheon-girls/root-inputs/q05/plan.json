@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "먼저 $h=f\\circ g$라고 두면",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -3,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-4"
+        ],
+        "domain": [
+          "1",
+          "5/2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "j",
+        "kind": "LINE",
+        "coefficients": [
+          "11/8",
+          "-1/8"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=j(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-1"
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "-1",
+          "y": "3/2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        }
+      ]
+    }
+  },
+  "caption": "합성 순서 중 앞의 두 단계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 함수의 출력을 역함수의 입력으로 넘기는 합성 순서를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 함수의 출력을 역함수의 입력으로 넘기는 합성 순서를 보인다."
+  ]
+}
