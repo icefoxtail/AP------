@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 곡선 $y=x^2-2$,",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      2,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "label": "y=x^2-2",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "label": "y=-x^2-2x+2",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "2"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "-1"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "-2",
+        "to": "1"
+      }
+    ]
+  },
+  "caption": "두 곡선의 교점 사이에서 위쪽 함수와 아래쪽 함수의 차를 적분하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선의 교점 사이에서 위쪽 함수와 아래쪽 함수의 차를 적분하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선의 교점 사이에서 위쪽 함수와 아래쪽 함수의 차를 적분하는 관계."
+  ]
+}

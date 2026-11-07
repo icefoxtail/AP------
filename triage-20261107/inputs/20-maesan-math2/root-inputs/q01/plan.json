@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^3-3x+3$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-3",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "8"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "5"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "극대점과 극소점 사이에서 함수가 감소하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "극대점과 극소점 사이에서 함수가 감소하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점과 극소점 사이에서 함수가 감소하는 관계."
+  ]
+}
