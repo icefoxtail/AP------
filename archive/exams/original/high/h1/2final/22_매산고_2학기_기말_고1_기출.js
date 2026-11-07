@@ -276,11 +276,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 점 $A$의 좌표를 $A=(t,\\dfrac2t)$로 놓고, 원문에서 정한 $B,C$의 위치를 그대로 사용한다.\n조건 정리: $x$축에 평행한 직선과 $y=\\dfrac{k}{x}$의 교점이 $B$이므로 $B=(\\dfrac{kt}{2},\\dfrac2t)$이고, $y$축에 평행한 직선과의 교점이 $C$이므로 $C=(t,\\dfrac{k}{t})$이다.\n풀이 방향: $AB$와 $AC$가 서로 수직이므로 두 변의 길이로 삼각형의 넓이를 구한다.\n정석 풀이: $AB=\\dfrac{t(k-2)}2$, $AC=\\dfrac{k-2}{t}$이다. 따라서 삼각형 $ABC$의 넓이는 $\\dfrac12\\cdot\\dfrac{t(k-2)}2\\cdot\\dfrac{k-2}{t}=\\dfrac{(k-2)^2}{4}$이다. 이것이 $4$이므로 $(k-2)^2=16$이고, $k\\gt2$이므로 $k=6$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q8-solution-v2.svg",
 
-    "solutionImageAlt": "반비례 함수와 직각삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=2/x와 y=k/x의 그래프, y=2/x 위의 점 A에서 x축·y축에 평행한 선이 y=k/x와 만나는 점 B, C, 직각삼각형 ABC",
 
-    "solutionImageCaption": "k=6에서 A=(1,2), B=(3,2), C=(1,6)과 넓이 4를 확인한다.",
+    "solutionImageCaption": "예: t=1, k=4로 그린 모양이다. A(t,2/t)에서 x축에 평행한 직선과 y=k/x가 만나는 점은 B(kt/2,2/t), y축에 평행한 직선과 만나는 점은 C(t,k/t)이고 AB⊥AC이다. AB=t(k−2)/2, AC=(k−2)/t이므로 삼각형 ABC의 넓이는 (k−2)²/4이다. 이것이 4이므로 (k−2)²=16이고 k>2에서 k=6이다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -629,11 +629,11 @@ window.questionBank = [
     "answer": "$-5$",
     "solution": "[키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 놓는다.\n조건 정리: 교점의 $x$좌표 $x_1,x_2$는 $x^2+6x-k=0$의 두 근이므로 $x_1+x_2=-6$, $x_1x_2=-k$이다.\n풀이 방향: 세 점의 좌표로 삼각형 넓이를 근의 차와 연결한다.\n정석 풀이: $P=(x_1,x_1+6)$, $Q=(x_2,x_2+6)$이므로 삼각형 $OPQ$의 넓이는 $\\dfrac12|x_1(x_2+6)-x_2(x_1+6)|=3|x_1-x_2|$이다. 넓이가 12이므로 $|x_1-x_2|=4$이다. 따라서 $(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=36+4k=16$이고 $k=-5$이다.\n따라서 구하는 값은 $-5$이다.",
 
-    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q19-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 직선 및 삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 직선 y=x+6과 유리함수 y=k/x(k<0)의 그래프가 두 점 P, Q에서 만나고 원점 O와 함께 삼각형 OPQ를 이루는 그림(예: k=−8)",
 
-    "solutionImageCaption": "k=−5일 때 P=(−5,1), Q=(−1,5), 삼각형 넓이 12를 확인한다.",
+    "solutionImageCaption": "예: k=−8로 그린 모양이다(실제 k는 아래에서 구한다). 교점 P, Q의 x좌표 x₁, x₂는 x²+6x−k=0의 두 근이므로 x₁+x₂=−6, x₁x₂=−k이다. 삼각형 OPQ의 넓이는 ½|x₁(x₂+6)−x₂(x₁+6)|=3|x₁−x₂|=12이므로 |x₁−x₂|=4이다. (x₁−x₂)²=(x₁+x₂)²−4x₁x₂=36+4k=16에서 k=−5이다. 구하는 값은 −5이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",

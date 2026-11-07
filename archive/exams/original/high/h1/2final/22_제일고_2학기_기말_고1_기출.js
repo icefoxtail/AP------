@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 g가 4를 3으로 보내고 f가 3을 1로 보내어 (f∘g)(4)=1이며, g가 1을 6으로 보내고 f가 6을 7로 보내어 (f∘g)⁻¹(7)=1임을 대응 그림으로 나타낸다.",
+    "solutionImageCaption": "파란 경로 4→3→1에서 g(4)=3, f(3)=1이므로 (f∘g)(4)=f(g(4))=1이다. 보라 경로 1→6→7에서 g(1)=6, f(6)=7이므로 (f∘g)(1)=7이고, 따라서 (f∘g)⁻¹(7)=1이다. 구하는 값은 1+1=2이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

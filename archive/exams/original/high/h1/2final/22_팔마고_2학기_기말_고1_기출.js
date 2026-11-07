@@ -61,7 +61,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄: 분자 조건 x≥3(3은 닫힌 점)과 분모 조건 x<5(5는 열린 점)",
+    "solutionImageCaption": "분자의 근호는 x−3≥0에서 x≥3이어야 하고, 분모의 근호는 5−x>0에서 x<5이어야 한다(분모는 0이 될 수 없으므로 5는 제외). 두 조건을 동시에 만족하는 범위는 3≤x<5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -558,7 +562,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: x, f(x), f(f(x))의 대응도: x=1은 5/2를 거쳐 다시 1로, x=5/2는 1을 거쳐 다시 5/2로 돌아온다",
+    "solutionImageCaption": "예: f(1)=5/2, f(5/2)=1이므로 x=1에서 f를 두 번 쓰면 처음 값 1로 돌아온다. 실제로 y=f(x)라 두면 f(f(x))=(3y−8)/(y−3)=x이므로 f∘f는 항등함수이고 f¹⁰⁰도 항등함수이다. 따라서 f¹⁰¹=f이고 f¹⁰¹(0)=f(0)=(−8)/(−3)=8/3이다. 구하는 값은 8/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

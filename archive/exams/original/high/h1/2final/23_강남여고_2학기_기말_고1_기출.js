@@ -545,7 +545,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합을 잇는 대응 f, g에서 f(3)=1과 g(5)=4로 이어지는 경로를 강조한다.",
+    "solutionImageCaption": "(g∘f)(x)=x이므로 g=f⁻¹이다. f(2)=g(2)에서 f(f(2))=2, f(4)=g(4)에서 f(f(4))=4이고, f(2)+f(4)=7이며 f(1)=3이므로 합이 7인 값은 2와 5뿐이다. f(2)=5, f(4)=2이면 f(5)=2가 되어 f(4)=2와 모순이므로 f(2)=2, f(4)=5이다. 이어서 f(5)=f(f(4))=4이고, 남은 값 1에서 f(3)=1이다. 그림의 강조 경로는 f(3)=1(f의 대응)과 g(5)=4(g의 대응)이다. g(5)=f⁻¹(5)=4이므로 g(5)−f(3)=4−1=3이고 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

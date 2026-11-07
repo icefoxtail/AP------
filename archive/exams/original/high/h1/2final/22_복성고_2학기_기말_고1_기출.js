@@ -151,7 +151,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: y=√(x+2)+1과 역함수 y=(x−1)²−2가 y=x에 대칭이며, 끝점 (−2,1)과 (1,−2), 역함수 정의역 x≥1을 나타낸다.",
+    "solutionImageCaption": "원함수의 치역 y≥1이 역함수의 정의역 x≥1이 된다. y−1=√(x+2)에서 f⁻¹(x)=(x−1)²−2를 얻어 a=−2, b=−1, c=1이므로 a+b+c=−2, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -408,7 +412,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: h(x)=(−2x+1)/(x+2)의 그래프에서 구간 −1≤x≤1 부분을 굵게 표시하고 양 끝점 (−1,3), (1,−1/3)을 찍은 그림",
+    "solutionImageCaption": "그림에서 b=1, c=2, a=−2이므로 h(x)=(−2x+1)/(x+2)=−2+5/(x+2)이다. −1≤x≤1에서 h는 감소하므로 최댓값 M=h(−1)=3, 최솟값 m=h(1)=−1/3이다. 따라서 M+m=8/3이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -465,11 +473,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 유리함수의 두 가지가 네 사분면을 모두 지나려면 왼쪽 가지가 제2·3·4사분면을 연결하고 오른쪽 가지가 제1사분면에 있어야 한다.\n조건 정리: $y=\\dfrac{2x+k-3}{x-2}=2+\\dfrac{k+1}{x-2}$이고 점근선은 $x=2$, $y=2$이다.\n풀이 방향: 제3사분면이 생기기 위한 $x$절편의 위치를 기준으로 $k$의 범위를 정한다.\n정석 풀이: $x$절편은 $2x+k-3=0$에서 $x=\\dfrac{3-k}{2}$이다. 제2사분면에서 내려온 왼쪽 가지가 $x\\lt0$인 곳에서 $x$축을 지나 제3사분면으로 들어가려면 이 절편이 음수여야 한다. 따라서 $\\dfrac{3-k}{2}\\lt0$, 즉 $k\\gt3$이다. 이때 $k+1\\gt0$이므로 $x\\gt2$인 오른쪽 가지는 $y\\gt2$여서 제1사분면을 지나고, 왼쪽 가지는 제2사분면에서 음의 $x$절편을 지나 제3사분면으로 들어간 뒤 $x=0$에서 $y=\\dfrac{3-k}{2}\\lt0$이므로 $0\\lt x\\lt2$ 구간에서 제4사분면도 지난다. 따라서 네 사분면을 모두 지난다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q15-solution-v2.svg",
 
-    "solutionImageAlt": "점근선 x=2, y=2를 점선으로 표시한 유리함수 y=2+5/(x−2)의 두 갈래 곡선을 그린 좌표평면이다. 음의 x절편을 지나 왼쪽 가지가 제2·3·4사분면을, 오른쪽 가지가 제1사분면을 지나며 모든 사분면을 지나는 조건이 k>3임을 보여 준다.",
+    "solutionImageAlt": "해설 그림: 예시 k=7인 y=(2x+4)/(x−2)의 그래프(실선)와 x절편이 원점이 되는 경계 경우의 그래프(점선), x절편 (−2,0)과 y절편 (0,−2), 점근선 x=2, y=2",
 
-    "solutionImageCaption": "k=4 대표 그래프와 일반 조건 k>3을 확인한다.",
+    "solutionImageCaption": "예: k=7인 실선 그래프는 y=2+8/(x−2)이고 점근선은 x=2, y=2이다. x절편 (3−k)/2가 음수이면 왼쪽 가지가 제2사분면에서 x축을 지나 제3사분면으로 내려오고, 이어 제4사분면과 오른쪽 가지의 제1사분면도 지난다. 점선은 x절편이 원점이 되는 경계 경우로 제3사분면을 지나지 않는다. 따라서 (3−k)/2<0, 즉 k>3이고 정답은 ⑤이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -565,7 +573,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X={1,2,3,4,5}에서 Y={a,b,c}로 가는 함수의 대응도 한 예: 1,2→a, 3,4→b, 5→c로 a, b, c가 모두 사용된다",
+    "solutionImageCaption": "예: 그린 화살표는 치역과 공역이 일치하는(a, b, c가 모두 쓰이는) 함수 한 가지일 뿐이다. 전체 함수는 3⁵=243개이고, a, b, c 중 특정 한 원소를 쓰지 않는 함수는 2⁵개씩 3가지 경우로 96개이다. 두 원소를 함께 쓰지 않는 경우 3개는 두 번 뺐으므로 다시 더하여 243−96+3=150이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -648,11 +660,11 @@ window.questionBank = [
     "answer": "$9$",
     "solution": "[키포인트] $P$의 $x$좌표의 부호에 따라 함수의 두 식이 서로 바뀌지만, 두 직각변 길이의 곱은 같은 식으로 정리된다.\n조건 정리: $Q$는 $P$와 같은 $x$좌표를 가지며 직선 $y=-x$ 위에 있고, $R$은 $Q$와 같은 $y$좌표를 가진다.\n풀이 방향: $P$의 $x$좌표를 $t\\ne0$이라 두고 $t\\gt0$, $t\\lt0$을 확인한 뒤 넓이의 공통식을 최소화한다.\n정석 풀이: 먼저 $t\\gt0$이면 $P=(t,\\dfrac8t)$, $Q=(t,-t)$이다. $R$은 $y=-t\\lt0$인 $f$의 그래프 위에 있으므로 $\\dfrac2x=-t$에서 $R=(-\\dfrac2t,-t)$이다. 따라서 $PQ=t+\\dfrac8t$, $QR=t+\\dfrac2t$이다. 반대로 $t\\lt0$에서 $u=-t\\gt0$이라 두면 $P=(-u,-\\dfrac2u)$, $Q=(-u,u)$이고 $R=(\\dfrac8u,u)$이므로 두 직각변의 길이는 $u+\\dfrac2u$, $u+\\dfrac8u$로 순서만 바뀐다. 따라서 두 경우 모두 양수 $u$에 대해 넓이는 $S=\\dfrac12(u+\\dfrac8u)(u+\\dfrac2u)=\\dfrac{u^2}{2}+5+\\dfrac8{u^2}$이다. 여기서 $S-9=\\dfrac{u^4-8u^2+16}{2u^2}=\\dfrac{(u^2-4)^2}{2u^2}\\ge0$이므로 $S\\ge9$이다. $u=2$일 때 등호가 성립한다.\n따라서 구하는 넓이의 최솟값은 $9$이다.",
 
-    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q21-solution-v2.svg",
 
-    "solutionImageAlt": "조각 유리함수와 직각삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=8/x(x>0), y=2/x(x<0)의 그래프와 직선 y=−x 위에, t=4인 삼각형 PQR(파랑)과 t=−4인 삼각형 P′Q′R′(주황)을 그린 그림",
 
-    "solutionImageCaption": "u=2에서 P,Q,R과 최소 넓이 9를 확인한다.",
+    "solutionImageCaption": "예: t=4이면 P(4,2), Q(4,−4), R(−1/2,−4)이고 t=−4이면 P′(−4,−1/2), Q′(−4,4), R′(2,4)이다. 두 경우 모두 직각변이 t+8/t, t+2/t의 길이로 순서만 바뀐다. u=|t|라 하면 넓이 S=½(u+8/u)(u+2/u)=u²/2+5+8/u²이고 S−9=(u²−4)²/(2u²)≥0이므로 u=2일 때 S는 최소이다. 따라서 구하는 넓이의 최솟값은 9이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",

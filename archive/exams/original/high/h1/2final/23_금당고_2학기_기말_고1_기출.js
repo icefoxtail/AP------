@@ -153,7 +153,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(−2x+1)의 그래프: x축 위의 닫힌 점(끝점)에서 시작해 왼쪽으로 뻗고, y축과 점 (0,1)에서 만난다",
+    "solutionImageCaption": "근호 안의 식은 0 이상이어야 하므로 1−2x≥0이고, 따라서 x≤1/2이다. 그래프는 근호 안이 0이 되는 끝점(닫힌 점)에서 시작해 왼쪽으로만 그려지므로 정의역은 {x|x≤1/2}이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,

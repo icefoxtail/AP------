@@ -27,7 +27,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=−x+1(실선)과 y=x(점선), 직선 위의 서로 대칭인 두 점 (2,−1), (−1,2)를 나타낸 그래프",
+    "solutionImageCaption": "y=−x+1에서 x와 y를 바꾸면 x=−y+1, 곧 y=−x+1로 같은 식이다. 그래프로 보아도 직선 위의 점 (2,−1)을 y=x에 대하여 대칭이동한 (−1,2)가 같은 직선 위에 있으므로 역함수는 원래 함수와 같다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -348,7 +352,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 A={1,…,7}에서 A로의 일대일대응 예: f(1)=1, f(3)=7(주황 화살표)이고 나머지 2→2, 4→3, 5→4, 6→5, 7→6인 대응도",
+    "solutionImageCaption": "예: n=1일 때 주황 화살표는 f(1)=1, f(3)=7이고, 나머지 파란 화살표는 2, 3, 4, 5, 6을 배치한 한 가지 예일 뿐이다. 역함수가 있으므로 f는 일대일대응이고, 차가 6인 값은 1과 7뿐이어서 f(n)=1, f(n+2)=7이다. n은 1, 2, 3, 4, 5의 5가지이고 나머지 5개 원소에 2, 3, 4, 5, 6을 배치하는 방법이 5!가지이므로 5×5!이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -605,7 +613,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X={−3,…,3}에서 X로의 함수 f(−x)=f(x)를 만족하는 대응도 한 예: −3과 3(파랑)은 1에, −2와 2(주황)는 2에, −1과 1(초록)은 3에, 0(점선)은 0에 대응한다",
+    "solutionImageCaption": "예: 같은 색 화살표 쌍은 같은 값으로 가는 f(−x)=f(x)인 함수 한 가지이다(파랑 −3·3→1, 주황 −2·2→2, 초록 −1·1→3, 점선 0→0). 각 쌍의 두 입력은 같은 함수값을 가져야 하므로 f(3), f(2), f(1)을 정하면 f(−3), f(−2), f(−1)이 자동으로 정해진다. 따라서 독립적으로 정할 값은 f(1), f(2), f(3), f(0)의 4개이고, 각각 X의 원소 7개 중 하나가 될 수 있으므로 7×7×7×7=7⁴이다. 구하는 값은 7⁴이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
