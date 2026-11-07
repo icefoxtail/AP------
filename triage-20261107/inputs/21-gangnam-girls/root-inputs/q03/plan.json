@@ -1,0 +1,71 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "유리함수를 상수항과 분수항으로 나누면 점근선을 바로 읽을 수 있다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-3",
+      "2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      7
+    ],
+    "viewport": [
+      -5,
+      7,
+      -4,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "2",
+        "3"
+      ]
+    },
+    "hideLabels": [
+      "formula",
+      "asymptotes"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "유리함수의 수직·수평점근선이 만나는 대칭 중심을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=(2x−3)/(x−1)=2−1/(x−1)이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "점근선의 교점은 (1,2)이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 방향의 점근선이 만나는 점이 그래프의 중심이라는 관계를 보여 준다."
+  ]
+}
