@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import os from "node:os";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -17,8 +18,8 @@ const IDENTITY = "archive/data/question_identity_map.json";
 const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");
 
 // Read the real sidecars once, keep only this exam's rows. Tests then run on temp copies, never on the real files.
-const realMeta = JSON.parse(fs.readFileSync(path.join(repo, META), "utf8"));
-const realIds = JSON.parse(fs.readFileSync(path.join(repo, IDENTITY), "utf8"));
+let realMeta = JSON.parse(fs.readFileSync(path.join(repo, META), "utf8"));
+let realIds = JSON.parse(fs.readFileSync(path.join(repo, IDENTITY), "utf8"));
 const geminiByOrdinal = new Map(gemini.items.map(i => [i.ordinal, i]));
 const slice = {
   meta: {
@@ -37,8 +38,11 @@ const slice = {
       return copy;
     })
   },
-  ids: { ...realIds, records: realIds.records.filter(r => r.sourceArchiveFile === SOURCE) }
+  ids: { schemaVersion: realIds.schemaVersion, sourceCommit: realIds.sourceCommit,
+    records: realIds.records.filter(r => r.sourceArchiveFile === SOURCE) }
 };
+realMeta = null;
+realIds = null;
 const sourceBytes = fs.readFileSync(path.join(repo, "archive/exams", SOURCE));
 
 function make(t, { mutateMeta, sourceOverride = sourceBytes } = {}) {
@@ -57,6 +61,46 @@ function make(t, { mutateMeta, sourceOverride = sourceBytes } = {}) {
 }
 const decisions = r => Object.fromEntries(r.items.map(i => [i.ordinal, i.decision]));
 const withItem = (n, fn) => { const g = structuredClone(gemini); fn(g.items.find(i => i.ordinal === n)); return g; };
+function makeReviewedRequest(x, { ordinal = 1, staleContentBinding = false } = {}) {
+  const metaPath = path.join(x.root, META), idsPath = path.join(x.root, IDENTITY);
+  const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
+  const ids = JSON.parse(fs.readFileSync(idsPath, "utf8"));
+  const rec = meta.records.find(row => row.sourceArchiveFile === SOURCE && row.sourceOrdinal === ordinal);
+  const idr = ids.records.find(row => row.sourceArchiveFile === SOURCE && row.sourceOrdinal === ordinal);
+  const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  vm.createContext(ctx);
+  vm.runInContext(sourceBytes.toString("utf8"), ctx);
+  const q = (ctx.window.questionBank || ctx.window.questions || ctx.window.examData?.questions)[ordinal - 1];
+  rec.difficultyBucket = 4;
+  if (staleContentBinding) rec.contentFingerprint = "stale-content-fingerprint";
+  fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");
+  const fp = sha256(Buffer.from(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
+    answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })));
+  const cfp = sha256(Buffer.from(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
+    image: q.image ?? null })));
+  const after = { difficultyBoundaryFlag: "B23", difficultyBucket: 3, difficultyConfidence: "high", legacyLevelCompatibility: "NORMAL" };
+  const before = { difficultyBucket: rec.difficultyBucket, difficultyConfidence: rec.difficultyConfidence ?? null,
+    difficultyBoundaryFlag: rec.difficultyBoundaryFlag ?? null, legacyLevelCompatibility: rec.legacyLevelCompatibility ?? null,
+    level: rec.level ?? q.level ?? null, sourceFingerprint: rec.sourceFingerprint ?? null, contentFingerprint: rec.contentFingerprint ?? null };
+  const staleSourceBinding = rec.contentFingerprint !== cfp || idr.sourceFingerprint !== rec.sourceFingerprint;
+  const review = { sourceArchiveFile: SOURCE, ordinal, questionUid: rec.questionUid, decision: "CORRECT", refreshBinding: false,
+    before, after, sourceFingerprint: fp, contentFingerprint: cfp,
+    staleSourceBinding, reason: "fixture reviewed correction" };
+  const evidence = { schemaVersion: "archive-difficulty5-reviewed-correction-v1", rows: [review] };
+  const evidencePath = ".archive-meta-register/evidence/reviewed-correction-test.json";
+  const evidenceBytes = Buffer.from(JSON.stringify(evidence, null, 2) + "\n");
+  const fullEvidencePath = path.join(x.root, evidencePath);
+  fs.mkdirSync(path.dirname(fullEvidencePath), { recursive: true });
+  fs.writeFileSync(fullEvidencePath, evidenceBytes);
+  const bytes = fs.readFileSync(path.join(x.root, "archive/exams", SOURCE));
+  const sourceBlobSha = crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+  return { idsPath, evidencePath, evidenceSha256: sha256(evidenceBytes), sourceBlobSha, review, staleSourceBinding,
+    request: { schemaVersion: SCHEMA, driveFileId: "FILE_REVIEWED", gemini: { schemaVersion: "v1", requestId: "reviewed-correction-test",
+      sourceArchiveFile: SOURCE, latestBlobSha: sourceBlobSha,
+      items: [{ ordinal, questionUid: idr.questionUid, before: { level: rec.level ?? q.level ?? null }, after }] },
+      reviewedCorrection: { schemaVersion: "archive-difficulty5-reviewed-correction-v1", approvalRef: "test fixture approval",
+        evidencePath, evidenceSha256: sha256(evidenceBytes), rows: [review] } } };
+}
 
 test("derived fixture carries only registration fields", () => {
   assert.match(gemini._fixtureNote, /not a byte copy/);
@@ -180,6 +224,37 @@ test("existing different numeric bucket is CONFLICT and never overwritten; same 
   assert.equal(x.rec(19).difficultyConfidence, undefined);
   assert.equal(x.rec(22).difficultyConfidence, undefined);
   assert.equal(r.summary.APPLY, 21);
+});
+
+test("reviewed correction can replace a numeric conflict only with exact evidence, and is idempotent", t => {
+  const x = make(t), f = makeReviewedRequest(x), sourceAndIdentityBefore = x.snap().slice(1);
+  const r = registerDifficulty5({ root: x.root, request: f.request });
+  assert.equal(r.summary.APPLY, 1);
+  assert.equal(r.summary.CONFLICT, 0);
+  assert.equal(r.items[0].after.difficultyBucket, 3);
+  assert.equal(r.items[0].consumerBinding, f.staleSourceBinding ? "stale" : "exact");
+  const changed = registerDifficulty5({ root: x.root, request: f.request, write: true });
+  assert.equal(changed.summary.written, true);
+  assert.equal(x.rec(1).difficultyBucket, 3);
+  assert.deepEqual(x.snap().slice(1), sourceAndIdentityBefore);
+  const replay = registerDifficulty5({ root: x.root, request: f.request, write: true });
+  assert.equal(replay.summary.ALREADY_REGISTERED, 1);
+  assert.equal(replay.summary.written, false);
+  assert.equal(registerDifficulty5({ root: x.root, request: f.request, verifyProjection: true }).summary.VERIFIED, 1);
+});
+
+test("reviewed correction does not silently rebind stale source metadata", t => {
+  const x = make(t), f = makeReviewedRequest(x, { staleContentBinding: true });
+  const sourceAndIdentityBefore = x.snap().slice(1);
+  const r = registerDifficulty5({ root: x.root, request: f.request, write: true });
+  assert.equal(r.summary.APPLY, 1);
+  assert.equal(r.summary.staleSourceBinding, 1);
+  assert.equal(x.rec(1).difficultyBucket, 3);
+  assert.equal(x.rec(1).contentFingerprint, "stale-content-fingerprint");
+  assert.deepEqual(x.snap().slice(1), sourceAndIdentityBefore);
+  const verify = registerDifficulty5({ root: x.root, request: f.request, verifyProjection: true });
+  assert.equal(verify.summary.VERIFIED, 1);
+  assert.equal(verify.summary.staleSourceBinding, 1);
 });
 
 test("legacy compatibility is computed from the existing level, not Gemini's string", () => {
