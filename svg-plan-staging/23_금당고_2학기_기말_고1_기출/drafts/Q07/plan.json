@@ -1,0 +1,72 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "1"
+    ],
+    "denominator": [
+      "1",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -5,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "asymptoteLabelAt": "END",
+    "verticalAsymptoteLabelAt": "TOP_LEFT",
+    "equalUnits": true,
+    "overlays": {
+      "lines": [
+        {
+          "id": "s",
+          "slope": "1",
+          "intercept": "-2",
+          "label": "y=x-2",
+          "color": "BLUE"
+        }
+      ],
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ]
+  },
+  "pointNames": {
+    "C": "C"
+  },
+  "caption": "점근선 x=1, y=−1의 교점 C=(1,−1)과 대칭 직선 y=x−2를 나타낸다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    "y=(x+1)/(1−x)",
+    "점근선의 교점은 (1,−1)",
+    "대칭 직선은 y=x−2",
+    "원문 해설은 기본 그래프 y=−2/x로 변형한다"
+  ],
+  "newVisualInformation": [
+    "점근선 x=1, y=−1",
+    "중심 C=(1,−1)",
+    "대칭 직선 y=x−2",
+    "유리함수 두 가지의 배치"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-4",
+      "3"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "asymptoteLabelAt": "END",
+    "verticalAsymptoteLabelAt": "BOTTOM_RIGHT",
+    "equalUnits": true,
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ]
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "a<0이면 0≤x≤1에서 f(x)>3이므로 최댓값 2와 모순이다. a>0일 때 x<2이므로 f는 이 구간에서 감소하고 f(0)=2로 a=2를 얻는다. 따라서 f(4)=4이며 정답은 ③이다.",
+  "sourceConditions": [
+    "실제 문항은 f(x)=a/(x−2)+3 꼴",
+    "점근선 교점은 (2,3)",
+    "0≤x≤1에서 최댓값은 2",
+    "실제 함수는 f(x)=2/(x−2)+3",
+    "(0,2), (1,1)은 구간 끝점의 함수값"
+  ],
+  "newVisualInformation": [
+    "실제 함수의 점근선 x=2, y=3",
+    "[0,1] 구간의 감소와 끝점 최댓값 위치",
+    "A=(0,2), B=(1,1)"
+  ]
+}
