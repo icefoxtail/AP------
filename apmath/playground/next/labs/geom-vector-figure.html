@@ -152,9 +152,9 @@ window.addEventListener('DOMContentLoaded', function () {
           theta4: (65 * Math.PI) / 180
         },
         steps: [
-          "두 점 A(-3, -1), B(3, 3) 및 지름 선분 AB (길이 2√13)",
-          "시점을 바꾸어: (OP - OA) · (OP - OB) = AP · BP = 0 (∠APB = 90°)",
-          "지름에 대한 원주각은 90°: 선분 AB를 지름으로 하는 원 (중심 M(0,1), r=√13)"
+          "벡터 차 OP−OA=AP, OP−OB=BP를 화살표로 읽습니다.",
+          "AB의 중점 M에서 MA=−MB이므로 AP·BP=PM²−AM²=0입니다. P=A 또는 B이면 각은 정의되지 않지만 내적은 0입니다.",
+          "PM=AM이므로 자취는 AB를 지름으로 하는 원 전체입니다. AB²=52에서 둘레 2√13π, 넓이 13π입니다."
         ],
         textbook: () => ({
           steps: `① 시점이 모두 ${tex('O')}인 벡터 차를 점에서 점으로 향하는 벡터로 바꾸면 ${tex('OP-OA=AP')}, ${tex('OP-OB=BP')}이다. 따라서 조건은 ${tex('AP\\cdot BP=0')}, 즉 ${tex('AP\\perp BP')}이다.<br/>
@@ -408,7 +408,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       const dx = B.x - A.x;
       const dy = B.y - A.y;
-      const isInternal = t >= -0.001 && t <= 1.001;
+      const isInternal = t >= -1e-10 && t <= 1+1e-10;
 
       // Step 3 (partIdx = 2, lens = 'locus'): 내분 구간(선분 AB 초록색) vs 외분 구간(연장선 분홍색 점선) 구분
       if (state.steps[3]) {
@@ -461,7 +461,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawVectorArrow(0, 0, P.x, P.y, '#fbbf24', 3.6, `OP (t=${t.toFixed(2)})`, false, vecLabelOffset, 1, 'aux');
 
         // [BUG-09 수리] t = 0.6 근처일 때 캔버스 세로 분수(drawCanvasFraction)로 (2/5)OA + (3/5)OB 판서 표시
-        if (Math.abs(t - 0.6) < 0.06) {
+        if (Math.abs(t - 0.6) < 1e-10) {
           const sP = toScreen(P.x, P.y);
           const fx = Math.min(sP.x + 18, BD.W - (BD.insets.right || 0) - 165); // [2.0 수정] 글자를 무대 안으로
           const fy = sP.y - 38;
@@ -638,7 +638,7 @@ window.addEventListener('DOMContentLoaded', function () {
           ];
         }
 
-        drawBottomTapeBanner(rect, bannerTitle, tapeSegs);
+        drawBottomTapeBanner(rect, `선택 조건: ${bannerTitle} · 현재 P ${regionContains(state)?'조건 만족':'조건 밖'}`, tapeSegs);
       }
     }
 
@@ -754,9 +754,10 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.stroke();
         ctx.restore();
 
-        drawChalkPoint(M.x, M.y, 5, '#34d399', `중심 M(${M.x.toFixed(0)}, ${M.y.toFixed(0)}) [r=√13]`, { x: 10, y: 18 }, 2, 'locus');
-        // [표시 보강] 지름 AB의 중심 M: MA = MB = MP(반지름) 같은 길이 눈금
-        drawChalkLine(M.x, M.y, P.x, P.y, 'rgba(52, 211, 153, 0.6)', 1.5, true, false, 2, 'locus');
+      }
+      if(state.steps[2]){
+        drawChalkPoint(M.x,M.y,5,'#34d399',state.steps[3]?'중심 M(0,1), r=√13':'중점 M(0,1)',{x:10,y:18},1,'aux');
+        drawChalkLine(M.x,M.y,P.x,P.y,'rgba(52, 211, 153, 0.6)',1.5,true,false,1,'aux');
         BD.ticks([M.x, M.y], [A.x, A.y], { count: 1, color: '#34d399' });
         BD.ticks([M.x, M.y], [B.x, B.y], { count: 1, color: '#34d399' });
         BD.ticks([M.x, M.y], [P.x, P.y], { count: 1, color: '#34d399' });
@@ -773,13 +774,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const vPB = { x: B.x - P.x, y: B.y - P.y };
       const lPB = Math.hypot(vPB.x, vPB.y);
 
-      if (state.steps[2]) {
+      if (state.steps[1]) {
         const labelAP = lPA > 1.2 ? 'AP = OP - OA' : '';
         const labelBP = lPB > 1.2 ? 'BP = OP - OB' : '';
         drawVectorArrow(A.x, A.y, P.x, P.y, '#38bdf8', 3.2, labelAP, false, { x: -35, y: -10 }, 1, 'aux');
         drawVectorArrow(B.x, B.y, P.x, P.y, '#f472b6', 3.2, labelBP, false, { x: 35, y: -10 }, 1, 'aux');
 
-        if (lPA > 0.25 && lPB > 0.25) {
+        if (state.steps[2]&&lPA > 0.25 && lPB > 0.25) {
           drawRightAngleMark(
             P,
             { x: vPA.x / lPA, y: vPA.y / lPA },
@@ -793,11 +794,11 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       if (state.steps[3]) {
-        const wPA = (lPA * lPA) / 52;
+        const wPA = clamp((lPA * lPA) / 52,0,1);
         const wPB = 1 - wPA;
         drawBottomTapeBanner(
           rect,
-          `(OP - OA)·(OP - OB) = AP·BP = 0 ⇔ ∠APB = 90° (피타고라스 |AP|²+|BP|²=|AB|²=52)`,
+          lPA>1e-9&&lPB>1e-9?'AP·BP = 0, ∠APB = 90° · |AP|²+|BP|²=|AB|²=52':'끝점에서도 AP·BP = 0입니다. 한 벡터가 0이므로 ∠APB는 정의되지 않습니다.',
           [
             { weight: wPA, label: `|AP|² = ${(lPA * lPA).toFixed(1)}`, bg: 'rgba(56, 189, 248, 0.28)', color: '#38bdf8' },
             { weight: wPB, label: `|BP|² = ${(lPB * lPB).toFixed(1)} (합=52.0)`, bg: 'rgba(244, 114, 182, 0.28)', color: '#f472b6' }
@@ -811,7 +812,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawChalkPoint(0, 0, 4.5, '#f8fafc', '', { x: 0, y: 0 }, 0, 'base');
       drawChalkPoint(A.x, A.y, 7, '#38bdf8', `A(${A.x.toFixed(0)}, ${A.y.toFixed(0)})`, { x: -75, y: 20 }, 0, 'base');
       drawChalkPoint(B.x, B.y, 7, '#f472b6', `B(${B.x.toFixed(0)}, ${B.y.toFixed(0)})`, { x: 10, y: -10 }, 0, 'base');
-      drawChalkPoint(P.x, P.y, 8, '#fbbf24', `점 P (∠APB=90°)`, safeOffsetP, 2, 'locus');
+      drawChalkPoint(P.x,P.y,8,'#fbbf24',state.steps[2]?(lPA>1e-9&&lPB>1e-9?'점 P (∠APB=90°)':'끝점 P (각 미정)'):'점 P',safeOffsetP,2,'locus');
     }
   /* ===== 원본 그대로: 실시간 값 (원본 updateLiveMonitor — 화면에 쓰는 대신 값을 돌려줌) ===== */
     function monitor() {
@@ -823,7 +824,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const m = 1 - t;
         const n = t;
         const P = { x: m * A.x + n * B.x, y: m * A.y + n * B.y };
-        const isInternal = t >= -0.001 && t <= 1.001;
+        const isInternal = t >= -1e-10 && t <= 1+1e-10;
 
         out.eq = (`\\overrightarrow{OP} = (${m.toFixed(2)})\\overrightarrow{OA} + (${n.toFixed(2)})\\overrightarrow{OB}`);
         out.sub = (`m + n = 1.00`);
@@ -860,10 +861,10 @@ window.addEventListener('DOMContentLoaded', function () {
         // [BUG-04 수리] 프리셋 5종에 따라 4번째 모니터 카드 동적 갱신
         if (state.preset2 === 'seg1') {
           out.labels[3] = '① m+n=1 자취 상태';
-          out.vals[3] = `선분 AB 위 (m+n=${sum.toFixed(2)})`;
+          out.vals[3] = `${regionContains(state)?'선분 AB 위':'선택 조건 밖'} (m+n≈${sum.toFixed(2)})`;
         } else if (state.preset2 === 'seg2') {
           out.labels[3] = '② m+n=2 자취 상태';
-          out.vals[3] = `선분 A'B' 위 (m+n=${sum.toFixed(2)})`;
+          out.vals[3] = `${regionContains(state)?'선분 2A·2B 위':'선택 조건 밖'} (m+n≈${sum.toFixed(2)})`;
         } else if (state.preset2 === 'tri1') {
           out.labels[3] = '③ m+n≤1 영역 넓이 (S)';
           out.vals[3] = `S = ${baseAreaS.toFixed(2)} (삼각형 OAB)`;
@@ -901,12 +902,13 @@ window.addEventListener('DOMContentLoaded', function () {
         out.eq = (`(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OB}) = 0`);
         out.sub = (`x^2 + (y-1)^2 = 13`);
 
-        out.labels[0] = '지름 양 끝점 A, B';
+        out.labels[0] = '고정된 두 점 A, B';
         out.vals[0] = `A(-3,-1), B(3,3) | M(0,1)`;
         out.labels[1] = '원의 반지름 r = $\\frac{|AB|}{2}$';
         out.vals[1] = `r = √13 ≈ ${r.toFixed(3)}`;
         out.labels[2] = '내적 AP · BP';
-        out.vals[2] = `AP · BP = 0.000 (∠APB=90°)`;
+        const p={x:r*Math.cos(state.theta4),y:1+r*Math.sin(state.theta4)},endpoint=Math.hypot(p.x+3,p.y+1)<1e-9||Math.hypot(p.x-3,p.y-3)<1e-9;
+        out.vals[2] = endpoint?'AP·BP = 0 (끝점: 각이 정의되지 않음)':'AP·BP = 0 (∠APB=90°)';
         out.labels[3] = '원의 넓이 π r²';
         out.vals[3] = `13π ≈ ${(13 * Math.PI).toFixed(2)}`;
 
@@ -918,10 +920,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const MODE2 = [
     { key: 'seg1', label: '① m+n=1 (선분 AB)', m: 0.5, n: 0.5 },
     { key: 'seg2', label: "② m+n=2 (선분 2A·2B)", m: 1.0, n: 1.0 },
-    { key: 'tri1', label: '③ m+n≤1 (ΔOAB 넓이 S)', m: 0.35, n: 0.35 },
-    { key: 'trap', label: '④ 1≤m+n≤2 (사다리꼴 3S)', m: 0.8, n: 0.7 },
-    { key: 'para', label: '⑤ 0≤m,n≤1 (평행사변형 2S)', m: 0.75, n: 0.85 }
+    { key: 'tri1', label: '③ m+n≤1', m: 0.35, n: 0.35 },
+    { key: 'trap', label: '④ 1≤m+n≤2', m: 0.8, n: 0.7 },
+    { key: 'para', label: '⑤ 0≤m,n≤1', m: 0.75, n: 0.85 }
   ];
+  function regionContains(s){const m=s.m2,n=s.n2,k=m+n,e=1e-10;if(m<-e||n<-e)return false;return s.preset2==='seg1'?Math.abs(k-1)<=e:s.preset2==='seg2'?Math.abs(k-2)<=e:s.preset2==='tri1'?k<=1+e:s.preset2==='para'?m<=1+e&&n<=1+e:k>=1-e&&k<=2+e;}
   const LENS = [['all', '전체 보기'], ['base', '위치벡터 OA, OB'], ['locus', '자취·영역'], ['aux', '수직·내분 보조선']];
   const presetChips = (m) => (m === 2 ? MODE2.map((p) => ({
     group: '조건별 자취 버튼', label: p.label,
@@ -947,8 +950,6 @@ window.addEventListener('DOMContentLoaded', function () {
         const det = A.x * B.y - A.y * B.x;
         if (Math.abs(det) > 0.01) {
           let mVal = clamp((w.x * B.y - w.y * B.x) / det, 0, 2), nVal = clamp((A.x * w.y - A.y * w.x) / det, 0, 2);
-          if (s.preset2 === 'seg1') { mVal = clamp(mVal, 0, 1); nVal = 1 - mVal; }
-          else if (s.preset2 === 'seg2') { mVal = clamp(mVal, 0, 2); nVal = 2 - mVal; }
           s.m2 = mVal; s.n2 = nVal;
         }
       } });
@@ -964,8 +965,9 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== 장면 글: 탭 이름·탐구 질문 (새로 쓴 부분) ===== */
-  const TITLE = ['내분점과 일직선 조건 (1−t, t)', '계수 합(m+n=k)에 따른 자취와 넓이', '방향벡터와 법선벡터로 나타낸 직선', '원의 벡터방정식 (지름·접선)'];
-  const SHORT = ['내분점·일직선', '계수 합 자취', '방향·법선벡터', '원의 벡터방정식'];
+  const TITLE = ['내분점과 일직선 조건', '계수 합(m+n=k)에 따른 자취와 넓이', '방향벡터와 법선벡터로 나타낸 직선', '내적 조건과 점의 자취'];
+  const SHORT = ['내분점·일직선', '계수 합 자취', '방향·법선벡터', '내적 조건의 자취'];
+  const SAFE_PARTS={1:['두 위치벡터','한 직선의 점 표현','선분과 연장선 비교'],2:['기준 삼각형','계수 합의 경계','선택 영역과 넓이'],3:['기준점과 방향','매개변수 이동','수직인 법선'],4:['두 벡터의 차','중점에서 묶기','자취와 길이·넓이']};
   const QUESTION = [
     'OP = (1−t)OA + t·OB에서 t가 바뀌면 점 P는 어디를 지날까? 선분 AB 위의 점이 되는 t의 범위는 어디일까?',
     'OP = m·OA + n·OB에서 m+n의 값이나 범위에 따라 점 P는 어떤 도형 위를 움직일까?',
@@ -978,7 +980,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(m) {
     const d = examData[m];
-    const hint = d.hint; // [2.0 수정] 프리셋 바가 더 이상 좌측 상단에 없음
+    const hint = m===2?'색 영역은 선택한 조건의 범위입니다. m, n과 점 P는 자유롭게 움직이며 조건 안팎을 비교합니다. 자동 이동은 선택 조건 안을 따라갑니다.':m===4?'벡터 차의 시작점과 끝점을 먼저 보세요. AB의 중점에서 반대인 두 벡터를 묶으면 자취를 찾을 수 있습니다. P가 끝점이면 각은 정의되지 않습니다.':d.hint;
     return {
       id: 'm' + m, title: TITLE[m - 1], short: SHORT[m - 1],
       question: QUESTION[m - 1], guide: hint,
@@ -988,7 +990,11 @@ window.addEventListener('DOMContentLoaded', function () {
         id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '자동 이동'), on: (s) => s.playing,
         run: (s) => { s.playing = !s.playing; }
       }],
-      steps: d.steps,
+      steps:(s)=>m!==2?d.steps:[
+        '기본 삼각형 OAB의 넓이는 S=4입니다. m,n이 비음수일 때 OP=mOA+nOB는 두 벡터 사이에 놓입니다.',
+        `m+n=k>0이면 P는 kA,kB를 잇는 선분 위에 있습니다. 현재 선택 조건은 ${MODE2.find(x=>x.key===s.preset2)?.label||s.preset2}입니다.`,
+        `${s.preset2==='seg1'?'조건의 자취는 선분 AB이고 넓이는 0입니다.':s.preset2==='seg2'?'조건의 자취는 선분 2A·2B이고 넓이는 0입니다.':s.preset2==='tri1'?'조건의 영역은 삼각형 OAB, 넓이는 S=4입니다.':s.preset2==='para'?'조건의 영역은 평행사변형 O-A-(A+B)-B, 넓이는 2S=8입니다.':'조건의 영역은 1≤m+n≤2인 띠, 넓이는 (2²−1²)S=12입니다.'} 현재 m≈${s.m2.toFixed(2)}, n≈${s.n2.toFixed(2)}인 P는 ${regionContains(s)?'선택 조건을 만족합니다.':'선택 조건 밖입니다.'}`
+      ],
       enter: (s) => { s.sid = String(m); s.lens = 'all'; s.animDir = 1; if (m === 2) s.preset2 = 'trap'; Object.assign(s, SNAP[m]); },
       focus: FOCUS[m - 1],
       tick: (s, dt) => {
@@ -1018,22 +1024,28 @@ window.addEventListener('DOMContentLoaded', function () {
         use(s);
         if (s.part != null && s.step < s.part + 1) s.step = s.part + 1; // 원본: 조각을 고르면 그 단계가 자동으로 켜짐
         const o = monitor();
+        const final=s.step>=3||s.revealed,readouts=o.labels.map((label,i)=>({label,value:o.vals[i],color:['sky','amber','rose','green'][i],wide:String(o.vals[i]).length>15}));
+        let shown=readouts;if(!final){if(m===1)shown=readouts.filter((_,i)=>i===0||i===2);if(m===2)shown=readouts.slice(0,3);if(m===3)shown=readouts.filter((_,i)=>i===0||i===2);if(m===4){const p={x:Math.sqrt(13)*Math.cos(state.theta4),y:1+Math.sqrt(13)*Math.sin(state.theta4)};shown=[{label:'고정점 A, B',value:'A(−3,−1), B(3,3)',color:'sky',wide:true},{label:'현재 P (근사)',value:`(${p.x.toFixed(2)}, ${p.y.toFixed(2)})`,color:'amber'}];}}
         return {
           guide: hint,
-          chips: [{ k: '벡터방정식', tex: o.eq, color: 'amber' }, { k: '', tex: o.sub, color: 'sky' }],
-          readouts: o.labels.map((label, i) => ({ label, value: o.vals[i], color: ['sky', 'amber', 'rose', 'green'][i], wide: String(o.vals[i]).length > 15 })),
-          parts: d.steps.map((name, i) => ({ id: i, name, color: ['sky', 'amber', 'rose'][i] })),
-          formula: '<div style="text-align:center">' + APLab.tex(o.eq, true) + '</div>'
+          chips: [{k:'주어진 벡터 관계',tex:o.eq,color:'amber'}].concat(final?[{k:'',tex:o.sub,color:'sky'}]:[]),
+          readouts:shown,
+          parts: SAFE_PARTS[m].map((name, i) => ({ id: i, name, color: ['sky', 'amber', 'rose'][i] })),
+          status:m===2?{tone:regionContains(s)?'ok':'warn',text:regionContains(s)?'현재 P는 선택 조건을 만족합니다.':'현재 P는 선택 조건 밖입니다. 색 영역과 자유 이동점을 구별하세요.'}:undefined,
+          notes:'움직이는 그림의 소수 좌표·길이는 근삿값이며, 문제의 분수·근호 답은 정확값입니다.',
+          formula:s.step>=2?'<div style="text-align:center">' + APLab.tex(o.eq, true) + '</div>':''
         };
       },
       draw: (b, s, v) => {
         BD = b; s.sid = String(m); use(s);
+        if(m<=2&&!b.thumb&&b.W>=160&&b.H>=160&&b.zoom===1&&b.panX===0&&b.panY===0){const A=m===1?state.A1:state.A2,B=m===1?state.B1:state.B2,p=m===1?{x:(1-s.t1)*A.x+s.t1*B.x,y:(1-s.t1)*A.y+s.t1*B.y}:{x:s.m2*A.x+s.n2*B.x,y:s.m2*A.y+s.n2*B.y},q=b.toS(p),a=b._area();if(q.x<a.x+32||q.x>a.x+a.w-32||q.y<a.y+32||q.y>a.y+a.h-32){const xs=[0,A.x,B.x,p.x],ys=[0,A.y,B.y,p.y];b.setFocus({x:[Math.min(...xs)-1.2,Math.max(...xs)+1.2],y:[Math.min(...ys)-1.2,Math.max(...ys)+1.2]},true);}}
         TAPE = null; LBOX.length = 0;
         if (s.grid) b.grid();
         b.axes();
+        if(s.step===0){const O={x:0,y:0};if(m<=2){const A=m===1?state.A1:state.A2,B=m===1?state.B1:state.B2;NQ.vec(b,O,A,{color:'sky',width:3});NQ.vec(b,O,B,{color:'rose',width:3});}else if(m===3){NQ.vec(b,state.A3,{x:state.A3.x+state.u3.x,y:state.A3.y+state.u3.y},{color:'sky',width:3});}else b.seg(state.A4,state.B4,{color:'ink',width:2});}
         [null, renderMode1, renderMode2, renderMode3, renderMode4][m]({ width: b.W, height: b.H });
         drawHandles(b, s, m);
-        v.tape = TAPE;
+        v.tape = s.step>=3?TAPE:null;
       },
       problem: {
         tag: d.tag, time: d.targetTime,
@@ -1043,7 +1055,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       solution: {
         standardTitle: '교과서식 풀이', standardTag: '기본 풀이',
-        quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷',
+        quickTitle: '실전 풀이 · 핵심 성질로 계산 줄이기', quickTag: '핵심 발상',
         standard: (s) => { s.sid = String(m); use(s); return d.textbook(); },
         quick: (s) => { s.sid = String(m); use(s); return d.shortcut(); }
       }
@@ -1086,7 +1098,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!sc || !sc.vary) return;
       sc.vary.next();
       lab.s.revealed = false;
-      lab.setStep(1);
+      lab.setStep(0);
       try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
       lab.invalidate(true);
     });
@@ -1095,9 +1107,10 @@ window.addEventListener('DOMContentLoaded', function () {
     function fit(b, key, content) {
       if (b.thumb) return;
       const ins = b.insets || {};
+      const usableW=b.W-(ins.left||0)-(ins.right||0), usableH=b.H-(ins.top||0)-(ins.bottom||0);
+      if (!(usableW>=64 && usableH>=64)) return;
       const k = [key, b.W, b.H, Math.round(ins.top || 0), Math.round(ins.right || 0), Math.round(ins.bottom || 0)].join('|');
       if (b.__nq === k) return;
-      b.__nq = k;
       // 새 장면은 휴대폰에서 핵심 도형이 무대 폭의 절반 이상이 되도록 바깥 여유(pad)를 줄여 맞춥니다(라벨 글자 상자는 그대로 지킴).
       // 라벨 자리는 배율에 따라 달라지므로 맞춘 배율에서 한 번 더 재어 다시 맞춥니다.
       const pad0 = b.pad, pad1 = 0.012;
@@ -1112,6 +1125,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const hw = ((f.x[1] - f.x[0]) / 2) * (a.w - 2 * p0) / (a.w - 2 * p1), hh = ((f.y[1] - f.y[0]) / 2) * (a.h - 2 * p0) / (a.h - 2 * p1);
         b.setFocus({ x: [cx - hw, cx + hw], y: [cy - hh, cy + hh] }, true);
       }
+      b.__nq = k;
     }
     // 좌표축: 눈금 숫자는 그림의 선·라벨과 겹치므로 빼고(점의 좌표는 지문·라벨에 적혀 있음), 원점·축 이름만 둡니다.
     function axes(b) {
@@ -1245,18 +1259,18 @@ window.addEventListener('DOMContentLoaded', function () {
         controls: o.controls, presets: o.presets, actions: o.actions, tick: o.tick,
         enter: (s) => { Object.assign(s, o.init(s)); },
         focus: o.focus,
-        steps: () => o.steps(cur()),
+        steps: (s,lab=window.lab) => lab?.tab==='explore'&&o.exploreSteps?o.exploreSteps(s):o.steps(cur()),
         reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${o.text(cur())}</div>`,
         problem: { tag: o.tag, time: o.time, text: () => probHTML(o.text(cur())), answer: () => tex(o.answer(cur())) },
         solution: {
-          standardTitle: o.stdTitle || '교과서식 풀이', standardTag: '기본 풀이', quickTitle: o.quickTitle || '10초 컷', quickTag: '10초 컷',
+          standardTitle: o.stdTitle || '교과서식 풀이', standardTag: '기본 풀이', quickTitle: o.quickTitle || '실전 풀이', quickTag: '핵심 발상',
           standard: () => ({ steps: o.std(cur()), warning: o.warning }),
           quick: () => ({ steps: o.quick(cur()), highlight: o.highlight })
         },
         view: (s, lab) => {
           const tab = lab ? lab.tab : 'explore';
-          if (tab !== 'explore') return { chips: (o.given ? o.given(cur()) : []).concat((o.reviewChips ? o.reviewChips(cur(), s) : []).map((c) => ({ ...c, answer: true }))), formula: o.formula, notes: o.notes };
-          return { ...o.view(s), formula: o.formula, notes: o.notes };
+          if (tab !== 'explore') return { chips: (o.given ? o.given(cur()) : []).concat((o.reviewChips ? o.reviewChips(cur(), s) : []).map((c) => ({ ...c, answer: true }))), formula: s.step>=2 ? o.formula : '', notes: s.step>=1 ? o.notes : '' };
+          const v=o.view(s);return { ...v, formula: s.step>=2 ? o.formula : '', notes: v.notes||(s.step>=1 ? o.notes : '') };
         },
         vary,
         draw: (b, s0, v, lab) => {
@@ -1294,10 +1308,22 @@ window.addEventListener('DOMContentLoaded', function () {
     ];
     const FL = ['diff', 'prod'], FC = ['norm', 'sq'];
     const geom = (A, b, C, r) => {
-      const bb = dot(b, b) || 1, sd = dot(b, sub(C, A)) / Math.sqrt(bb), d = Math.abs(sd);
-      const H = sub(C, mul(b, dot(b, sub(C, A)) / bb)), tt = P(-b.y / Math.sqrt(bb), b.x / Math.sqrt(bb)), bh = mul(b, 1 / Math.sqrt(bb));
-      const u = len(sub(H, C)) > 1e-9 ? mul(sub(H, C), 1 / len(sub(H, C))) : P(1, 0);
-      return { d, H, t: tt, bh, lam: dot(sub(H, A), tt), Q0: add(C, mul(u, r)), thOpt: (Math.atan2(u.y, u.x) * 180 / Math.PI + 360) % 360, min: d > r ? d - r : 0 };
+      const bb = dot(b, b);
+      if (bb === 0) {
+        const Q0 = add(C, P(r, 0));
+        return { plane: true, relation: 'plane', d: null, H: null, t: null, bh: null, lam: null, P0: Q0, Q0, thOpt: 0, min: 0 };
+      }
+      const bh = mul(b, 1 / Math.sqrt(bb)), tt = P(-bh.y, bh.x), sd = dot(b, sub(C, A)) / Math.sqrt(bb), d = Math.abs(sd), H = sub(C, mul(bh, sd));
+      let P0, Q0;
+      if (d < r) {
+        // 원과 직선이 만나면 수선의 발이 아니라 실제 교점에서 P=Q를 잡습니다.
+        P0 = Q0 = add(H, mul(tt, Math.sqrt(Math.max(0, r * r - d * d))));
+      } else {
+        P0 = H;
+        Q0 = d > 0 ? add(C, mul(sub(H, C), r / d)) : C;
+      }
+      const u = sub(Q0, C);
+      return { plane: false, relation: d < r ? 'intersect' : d === r ? 'tangent' : 'exterior', d, H, t: tt, bh, P0, Q0, lam: dot(sub(P0, A), tt), thOpt: (Math.atan2(u.y, u.x) * 180 / Math.PI + 360) % 360, min: Math.max(0, d - r) };
     };
     const gen = (prev) => {
       const c = prev ? pickOf(SETS, prev.c) : SETS[0];
@@ -1312,42 +1338,55 @@ window.addEventListener('DOMContentLoaded', function () {
     const f2 = (x) => (Math.abs(x - Math.round(x)) < 1e-6 ? String(Math.round(x)) : x.toFixed(2)).replace('-', '−');
     const stateOf = (s) => {
       const A = P(s.cn_Ax, s.cn_Ay), b = P(s.cn_bx, s.cn_by), C = P(s.cn_Cx, s.cn_Cy), r = s.cn_r, g = CND.geom(A, b, C, r);
-      return { A, b, C, r, g, P: add(A, mul(g.t, s.cn_lam)), Q: polar(C, r, s.cn_th) };
+      return { A, b, C, r, g, P: g.plane ? P(s.cn_Px, s.cn_Py) : add(A, mul(g.t, s.cn_lam)), Q: polar(C, r, s.cn_th) };
     };
+    const refit = (lab) => { const b=lab?.board;if(b&&b.zoom===1&&b.panX===0&&b.panY===0)b.__nq=''; };
+    const setLam = (s,lab,k) => { if(!Number.isFinite(k))return;const p=lab.params.cn_lam;p.min=Math.min(p.min,Math.floor(k-1));p.max=Math.max(p.max,Math.ceil(k+1));const input=lab._ctls?.cn_lam?.input;if(input){input.min=p.min;input.max=p.max;}s.cn_lam=k;refit(lab); };
     const sc = NQ.scene({
       axes: true, id: 'cnd5', title: '[기출 기본] 내적·크기 조건이 정하는 직선과 원', short: '조건이 정하는 직선·원',
       question: '(OP−OA)·OB = 0 을 만족시키는 점 P는 어떤 도형일까? |OQ−OC| = r 이면 점 Q는? 두 점 사이의 거리는 가장 가까울 때 얼마일까?',
-      guide: '<b>점 P</b>(보라, 직선 위)와 <b>점 Q</b>(하늘색, 원 위)를 끌어 보세요. 점 A, B(벡터 OB의 끝), C를 끌어 직선과 원의 위치도 바꿀 수 있습니다. 가장 가까운 두 점은 <b>중심 C에서 직선에 내린 수선</b> 위에 있습니다.',
-      init: () => ({ cn_Ax: 1, cn_Ay: 2, cn_bx: 3, cn_by: 4, cn_Cx: -4, cn_Cy: 2, cn_r: 1, cn_lam: 2, cn_th: 70 }),
+      guide: '<b>점 P</b>와 <b>점 Q</b>를 끌어 보세요. A, B(벡터 OB의 끝), C도 움직일 수 있습니다. 원과 직선이 떨어져 있으면 <b>C에서 내린 수선</b>을, 만나면 <b>공통점</b>을 살펴보세요. B=O이면 내적 조건은 모든 P에 성립하여 평면 전체를 자유롭게 탐구합니다.',
+      init: () => ({ cn_Ax: 1, cn_Ay: 2, cn_bx: 3, cn_by: 4, cn_Cx: -4, cn_Cy: 2, cn_r: 1, cn_lam: 2, cn_th: 70, cn_Px: -0.6, cn_Py: 3.2 }),
       focus: () => ({ x: [-7.5, 7.5], y: [-5.5, 6.5] }),
       box: () => [P(-6.5, -4.5), P(6.5, 6)],
-      controls: ['cn_lam', 'cn_th', 'cn_r'],
-      presets: () => [{ group: '위치 찾기', label: '|PQ|가 가장 작은 위치', color: 'green', apply: (s, lab) => { const x = stateOf(s); lab.tween({ cn_lam: clamp(x.g.lam, -7, 7), cn_th: x.g.thOpt }, 800); } }],
+      controls: (s) => s.cn_bx===0&&s.cn_by===0?['cn_th','cn_r']:['cn_lam','cn_th','cn_r'],
+      exploreSteps:(s)=>{const x=stateOf(s),g=x.g;if(g.plane)return ['현재 OB=0이므로 (OP−OA)·OB=0은 모든 P에 성립합니다. P의 자취는 직선이 아닌 평면 전체입니다.',`Q는 중심 C, 반지름 r≈${f2(x.r)}인 원 위에 있습니다. P는 같은 원 위의 Q를 포함하여 어디든 갈 수 있습니다.`,'P=Q로 잡을 수 있으므로 거리의 최솟값은 0입니다. 영벡터의 방향과 수직각은 정의하지 않습니다.'];return [
+        `현재 법선벡터 $\\overrightarrow{OB}\\approx${CND.pn(x.b)}$는 영벡터가 아닙니다. 따라서 P는 A를 지나 이 벡터에 수직인 직선 위를 움직입니다.`,
+        `Q는 중심 C, 반지름 $r\\approx${f2(x.r)}$인 원 위에 있습니다. 수선의 발 H를 잡으면 중심과 직선 사이 거리 $d=CH\\approx${f2(g.d)}$입니다.`,
+        g.relation==='exterior'?`$d\\gt r$이므로 $PQ\\ge d-r\\approx${f2(g.min)}$. 수선 CH 위의 최근접 두 점에서 이 값에 도달합니다.`:g.relation==='tangent'?'d=r이므로 접점 H에서 P=Q로 잡아 최솟값 0을 얻습니다.':'d<r이므로 두 교점 중 하나에서 P=Q로 잡아 최솟값 0을 얻습니다. 수선의 발 H는 원 위 점이 아니므로 최근접 점 쌍으로 택하지 않습니다.'
+      ];},
+      presets: () => [
+        { group: '위치 찾기', label: '가장 가까운 두 점', color: 'green', apply: (s, lab) => { const g=stateOf(s).g;if(g.plane){s.cn_Px=g.P0.x;s.cn_Py=g.P0.y;}else setLam(s,lab,g.lam);s.cn_th=g.thOpt;refit(lab); } },
+        ...[['떨어짐',2,1],['접함',1,1],['교차',0.5,1],['영벡터',1,0]].map(([label,cx,bx])=>({group:'경계 비교',label,apply:(s,lab)=>{Object.assign(s,{cn_Ax:0,cn_Ay:0,cn_bx:bx,cn_by:0,cn_Cx:cx,cn_Cy:0,cn_r:1,cn_lam:1.5,cn_th:70,cn_Px:0,cn_Py:1.5});refit(lab);}}))
+      ],
       view: (s) => {
-        const x = stateOf(s), g = x.g, pq = len(sub(x.P, x.Q));
+        const x = stateOf(s), g = x.g, pq = len(sub(x.P, x.Q)), final=s.step>=3||s.revealed;
         return {
           chips: [{ tex: '(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0', color: 'violet' }, { tex: '|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r', color: 'sky' }],
-          status: g.d > x.r + 1e-6 ? { tone: 'info', text: `직선과 원 사이 거리 d − r = ${f2(g.d - x.r)}` } : { tone: 'warn', text: '직선이 원과 만납니다 (최솟값 0)' },
+          status: g.plane?{tone:'info',text:'OB=0: P의 자취는 평면 전체입니다. P를 자유롭게 움직일 수 있습니다.'}:{tone:'info',text:g.relation==='exterior'?'직선과 원이 떨어져 있습니다. 수선의 방향을 비교하세요.':g.relation==='tangent'?'직선과 원이 한 점에서 접합니다.':'직선과 원이 두 점에서 만납니다. 공통점을 비교하세요.'},
           readouts: [
-            { label: '지금 |PQ|', value: f2(pq), color: 'amber' },
-            { label: '중심 C에서 직선까지의 거리 d', value: f2(g.d), color: 'violet' },
+            { label: '지금 |PQ| (근사)', value: f2(pq), color: 'amber' },
+            ...(!g.plane&&s.step>=2?[{ label: 'C에서 직선까지 d (근사)', value: f2(g.d), color: 'violet' }]:[]),
             { label: '반지름 r', value: f2(x.r), color: 'sky' },
-            { label: '|PQ|의 최솟값 = d − r', value: f2(g.min), color: 'green', wide: true }
-          ]
+            ...(final?[{label:g.plane?'|PQ|의 최솟값':'|PQ|의 최솟값 = max(0, d−r)',value:f2(g.min),color:'green',wide:true}]:[])
+          ],
+          notes:g.plane?'영벡터와의 내적은 항상 0입니다. 영벡터의 방향·수직각은 정의하지 않습니다.':'소수로 표시한 현재 거리와 좌표는 근삿값입니다. 고정 문제의 정답은 정확값으로 계산합니다.'
         };
       },
-      explore: (b, s) => {
+      explore: (b, s, lab) => {
         const x = stateOf(s), g = x.g, L = NQ.labels(b), O = P(0, 0);
-        L.inf(x.A, g.t, { color: 'violet', width: 3, w: 1 });
+        if(!g.plane)L.inf(x.A, g.t, { color: 'violet', width: 3, w: 1 });
         b.circle(x.C, x.r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(x.C, x.r);
         L.vec(O, x.b, { color: 'rose', width: 3.2 });
-        b.right(x.A, add(x.A, g.bh), add(x.A, g.t), { size: 11, color: 'violet' });
+        if(!g.plane&&s.step>=1)b.right(x.A, add(x.A, g.bh), add(x.A, g.t), { size: 11, color: 'violet' });
+        if(!g.plane&&s.step>=2){L.line(x.C,g.H,{color:'ink',width:1.6,dash:[5,4]});if(g.d>0)b.right(g.H,x.C,add(g.H,g.t),{color:'ink',size:9});L.pt(g.H,{color:'ink',r:3.5});L.at(g.H,'H',{color:'ink',away:x.C});}
+        if(s.step>=3){L.line(g.P0,g.Q0,{color:'green',width:4});L.pt(g.P0,{color:'green',r:5});L.pt(g.Q0,{color:'green',r:5});L.at(g.P0,g.min===0?'공통점':'최근접점',{color:'green',away:x.C});}
         L.line(x.P, x.Q, { color: 'amber', width: 2.6, dash: [5, 4] });
         L.pt(x.A, { color: 'violet' }).pt(x.C, { r: 4, color: 'sky' }).pt(x.b, { color: 'rose' });
         b.handle('cnA', x.A, { color: 'violet', r: 7, ariaLabel: '점 A', drag: (w) => { s.cn_Ax = clamp(w.x, -6, 6); s.cn_Ay = clamp(w.y, -4.5, 5.5); } });
-        b.handle('cnB', x.b, { color: 'rose', r: 7, ariaLabel: '벡터 OB의 끝점 B', drag: (w) => { s.cn_bx = clamp(w.x, -5, 5); s.cn_by = clamp(w.y, -5, 5); } });
+        b.handle('cnB', x.b, { color: 'rose', r: 7, ariaLabel: '벡터 OB의 끝점 B', drag: (w) => { const old=stateOf(s);s.cn_Px=old.P.x;s.cn_Py=old.P.y;s.cn_bx=clamp(w.x,-5,5);s.cn_by=clamp(w.y,-5,5);const now=stateOf(s);if(!now.g.plane)setLam(s,lab,dot(sub(old.P,now.A),now.g.t));refit(lab); } });
         b.handle('cnC', x.C, { color: 'sky', r: 7, ariaLabel: '원의 중심 C', drag: (w) => { s.cn_Cx = clamp(w.x, -6, 6); s.cn_Cy = clamp(w.y, -4.5, 5.5); } });
-        b.handle('cnP', x.P, { color: 'violet', r: 7, ariaLabel: '점 P (직선 위)', drag: (w) => { s.cn_lam = clamp(dot(sub(w, x.A), g.t), -7, 7); } });
+        b.handle('cnP', x.P, { color: 'violet', r: 7, ariaLabel:g.plane?'점 P (평면에서 자유 이동)':'점 P (직선 위)', drag: (w) => { if(g.plane){s.cn_Px=w.x;s.cn_Py=w.y;refit(lab);}else setLam(s,lab,dot(sub(w,x.A),g.t)); } });
         b.handle('cnQ', x.Q, { color: 'sky', r: 7, ariaLabel: '점 Q (원 위)', drag: (w) => { s.cn_th = (Math.atan2(w.y - x.C.y, w.x - x.C.x) * 180 / Math.PI + 360) % 360; } });
         [x.A, x.b, x.C, x.P, x.Q].forEach((p) => L.dot(p, 13));
         L.at(x.P, 'P', { color: 'violet', away: x.C, size: 14 });
@@ -1371,15 +1410,14 @@ window.addEventListener('DOMContentLoaded', function () {
         L.vec(O, B, { color: 'rose', width: 3.2 });
         L.pt(O, { r: 3.6, color: 'ink' }).pt(A, { color: 'violet' }).pt(B, { color: 'rose' }).pt(C, { r: 4.4, color: 'sky' });
         if (step >= 1) { L.inf(A, g.t, { color: 'violet', width: 3, w: 1 }); b.right(A, add(A, g.bh), add(A, g.t), { size: 11, color: 'violet' }); L.dot(add(A, mul(g.bh, 0.35)), 9); }
-        if (step >= 2) { b.circle(C, r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(C, r); }
-        if (step >= 3) { L.line(C, g.H, { color: 'ink', width: 1.8, dash: [5, 4] }); L.line(g.Q0, g.H, { color: 'green', width: 4.4 }); L.pt(g.Q0, { r: 5, color: 'green' }).pt(g.H, { r: 5, color: 'green' }); }
+        if (step >= 2) { b.circle(C, r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(C, r); L.line(C,g.H,{color:'ink',width:1.8,dash:[5,4]});b.right(g.H,C,add(g.H,g.t),{size:10,color:'ink'});L.pt(g.H,{color:'ink',r:4});L.at(g.H,'H',{color:'ink',size:13,dirDeg:45}); }
+        if (step >= 3) { L.line(g.Q0, g.P0, { color: 'green', width: 4.4 }); L.pt(g.Q0, { r: 5, color: 'green' }).pt(g.P0, { r: 5, color: 'green' }); }
         L.at(A, `A${CND.pn(A)}`, { color: 'violet', dirDeg: 135, size: 13 });
         L.at(B, `B${CND.pn(B)}`, { color: 'rose', away: O, size: 13 });
         L.at(C, `C${CND.pn(C)}`, { color: 'sky', dirDeg: 180, size: 13 });
         if (step >= 3) {
           L.at(lerp(C, g.H, 0.18), `d = ${num(g.d)}`, { color: 'ink', size: 13, dirDeg: 180 });
           L.at(lerp(g.Q0, g.H, 0.5), `최소 ${num(g.min)}`, { color: 'green', size: 14, dirDeg: 0 });
-          L.at(g.H, 'H', { color: 'green', size: 13, dirDeg: 45 });
         }
         L.O();
       },
@@ -1387,21 +1425,21 @@ window.addEventListener('DOMContentLoaded', function () {
         const b = I.b, A = I.A, C = I.C, g = I.g, p = (v) => (v < 0 ? `(${v})` : `${v}`);
         return [
           `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0$은 $\\overrightarrow{AP}\\perp\\overrightarrow{OB}$이므로, $P$는 <b>점 $A$를 지나고 $\\overrightarrow{OB}$에 수직인 직선</b> 위의 점입니다 ($\\overrightarrow{OB}$가 법선벡터).`.replace(/<\/?b>/g, ''),
-          `$|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}$은 $|\\overrightarrow{CQ}|=${I.r}$이므로, $Q$는 <b>중심이 $C${CND.pn(C)}$이고 반지름이 ${I.r}인 원</b> 위의 점입니다.`.replace(/<\/?b>/g, ''),
-          `$C$에서 직선까지의 거리 $d=\\dfrac{|${b.x}\\cdot${p(C.x - A.x)}+${b.y}\\cdot${p(C.y - A.y)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}$ ($d\\gt ${I.r}$이므로 만나지 않음). $|PQ|$의 최솟값은 $d-r=${num(g.d)}-${I.r}=${num(I.ans)}$.`
+          `$|\\overrightarrow{CQ}|=${I.r}$이므로 $Q$는 중심 $C${CND.pn(C)}$, 반지름 ${I.r}인 원 위에 있습니다. 중심에서 직선으로 수선 $CH$를 내려 거리의 기준을 잡습니다.`,
+          `$d=CH=\\dfrac{|${b.x}\\cdot${p(C.x - A.x)}+${b.y}\\cdot${p(C.y - A.y)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}\\gt ${I.r}$. $CP\\le CQ+QP$와 $CP\\ge d$에서 $PQ\\ge d-r$. $P=H$, $Q$를 선분 $CH$ 위의 원 위 점으로 잡으면 등호가 성립하므로 최솟값은 $${num(g.d)}-${I.r}=${num(I.ans)}$.`
         ];
       },
       reviewChips: (I) => [{ tex: '\\text{직선}\\ \\&\\ \\text{원}\\ \\Rightarrow\\ d-r', color: 'violet' }, { tex: `\\text{최솟값}=${I.ans}`, color: 'green' }],
-      stdTitle: '교과서식 풀이 (직선과 점 사이 거리)', quickTitle: '10초 컷 · 법선벡터가 곧 OB',
+      stdTitle: '교과서식 풀이 · 직선의 방정식과 거리', quickTitle: '실전 풀이 · 법선 방향의 거리만 계산',
       std: (I) => {
         const b = I.b, A = I.A, C = I.C, g = I.g, k = dot(b, A), p = (v) => (v < 0 ? `(${v})` : `${v}`);
-        return `① $\\overrightarrow{OP}=(x,y)$라 하면 $(x-${p(A.x)},\\ y-${p(A.y)})\\cdot(${b.x},\\ ${b.y})=0$, 즉 직선 $${b.x === 0 ? '' : b.x + 'x'}${b.y === 0 ? '' : (b.y > 0 && b.x !== 0 ? '+' : '') + b.y + 'y'}=${k}$.<br>② $|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}$는 중심 $C${CND.pn(C)}$, 반지름 ${I.r}인 원.<br>③ 중심 $C$와 직선 사이의 거리 $d=\\dfrac{|${b.x}\\cdot${p(C.x)}+${b.y}\\cdot${p(C.y)}-${p(k)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}$.<br>④ $d>r$이므로 원과 직선은 만나지 않고, 최솟값은 $d-r=${num(I.ans)}$.`;
+        return `① $\\overrightarrow{OP}=(x,y)$라 하면 $(x-${p(A.x)},\\ y-${p(A.y)})\\cdot(${b.x},\\ ${b.y})=0$, 즉 직선 $${b.x === 0 ? '' : b.x + 'x'}${b.y === 0 ? '' : (b.y > 0 && b.x !== 0 ? '+' : '') + b.y + 'y'}=${k}$.<br>② $|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}$는 중심 $C${CND.pn(C)}$, 반지름 ${I.r}인 원.<br>③ 중심 $C$와 직선 사이의 거리 $d=\\dfrac{|${b.x}\\cdot${p(C.x)}+${b.y}\\cdot${p(C.y)}-${p(k)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}$.<br>④ $d\\gt r$이므로 모든 $P,Q$에 대해 $PQ\\ge CP-CQ\\ge d-r$. 수선 $CH$ 위에서 두 점을 잡으면 등호가 성립하므로 최솟값은 $d-r=${num(I.ans)}$.`;
       },
       warning: '원의 중심까지의 거리 d만 답하지 않도록 합니다. 원 위의 점과 직선 위의 점 사이의 최단거리는 d에서 반지름을 뺀 값입니다. d ≤ r이면 직선과 원이 만나 최솟값은 0입니다.',
-      quick: (I) => `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0$은 <b>점 A를 지나고 법선벡터가 OB인 직선</b>, $|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r$은 <b>중심 C, 반지름 r인 원</b>. 중심에서 직선까지의 거리 ${num(I.g.d)}에서 반지름 ${I.r}을 빼면 ${num(I.ans)}.`,
-      highlight: '벡터 식은 도형으로 번역합니다: (OP−OA)·n = 0 → A를 지나고 n에 수직인 직선 · |OQ−OC| = r → 중심 C, 반지름 r인 원.',
-      formula: '<b>벡터 조건 → 도형</b><br>$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\vec n=0$ ⟺ 점 $A$를 지나고 $\\vec n$에 수직인 직선 ($\\overrightarrow{OP}\\cdot\\vec n=\\overrightarrow{OA}\\cdot\\vec n$ 도 같은 직선)<br>$|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r$ ⟺ 중심 $C$, 반지름 $r$인 원 · 점과 직선 사이의 거리 $\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$',
-      notes: '내적 = 0 은 "수직"입니다. 직선의 방정식을 세울 때 OB가 방향벡터가 아니라 법선벡터임을 헷갈리지 않도록 합니다. 직선이 원과 만나는 경우를 먼저 확인합니다.'
+      quick: (I) => `법선벡터가 $\\overrightarrow{OB}$임을 읽으면 직선의 일반형을 만들 필요가 없습니다. $\\overrightarrow{AC}$의 법선 방향 성분만 구하여 $CH=\\dfrac{|\\overrightarrow{AC}\\cdot\\overrightarrow{OB}|}{|\\overrightarrow{OB}|}=${num(I.g.d)}$. 이 값이 반지름 ${I.r}보다 크므로 $PQ\\ge CH-r=${num(I.ans)}$. 그림의 수선 $CH$ 위에 $P=H$와 $Q$를 잡으면 이 하한에 도달합니다.`,
+      highlight: '법선벡터 n≠0이면 내적 조건은 직선, n=0이면 평면 전체입니다. 직선과 원이 만나는지 먼저 판단한 뒤 수선 또는 공통점을 사용합니다.',
+      formula: '<b>벡터 조건 → 도형</b><br>$\\vec n\\ne\\vec0$일 때 $(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\vec n=0$은 $A$를 지나고 $\\vec n$에 수직인 직선입니다. $\\vec n=\\vec0$이면 모든 $P$가 조건을 만족합니다.<br>$|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r$은 중심 $C$, 반지름 $r$인 원. 직선과 원 사이 최단거리는 $\\max(0,d-r)$이며 $d=\\dfrac{|\\overrightarrow{AC}\\cdot\\vec n|}{|\\vec n|}$.',
+      notes: '영벡터가 아닌 OB는 직선의 법선벡터입니다. 직선이 원과 만나면 실제 교점을 택하고, 만나지 않을 때만 d−r을 사용합니다.'
     });
     return sc;
   }
@@ -1442,26 +1480,31 @@ window.addEventListener('DOMContentLoaded', function () {
       focus: () => ({ x: [-4.5, 6.5], y: [-3.5, 5.5] }),
       box: () => [P(-3.4, -2.6), P(5.4, 4.8)],
       controls: [],
-      presets: () => ANG.PAIRS.map((pr) => { const c = ((x) => x)(Math.abs(pr[0][0] * pr[1][0] + pr[0][1] * pr[1][1])); const nn = Math.round(Math.hypot(...pr[0]) * Math.hypot(...pr[1])), g = NQ.gcd(c, nn); return { group: '방향벡터 예 (cos θ)', label: `${c / g}/${nn / g}`, apply: (s) => { s.an_x1 = pr[0][0]; s.an_y1 = pr[0][1]; s.an_x2 = pr[1][0]; s.an_y2 = pr[1][1]; }, on: (st) => st.an_x1 === pr[0][0] && st.an_y1 === pr[0][1] && st.an_x2 === pr[1][0] && st.an_y2 === pr[1][1] }; }),
+      exploreSteps:(s)=>{const u=P(s.an_x1,s.an_y1),v=P(s.an_x2,s.an_y2),n=len(u)*len(v),d=dot(u,v);if(n===0)return ['현재 방향벡터 중 하나가 영벡터입니다.','영벡터만으로는 직선의 방향을 정할 수 없습니다.','두 직선 사이 각과 cos θ는 정의되지 않습니다.'];const phi=Math.acos(clamp(d/n,-1,1))*180/Math.PI,theta=Math.min(phi,180-phi);return [
+        `현재 방향벡터는 $\\vec d_1\\approx(${num(u.x)},${num(u.y)})$, $\\vec d_2\\approx(${num(v.x)},${num(v.y)})$입니다. 화살표의 길이가 바뀌어도 방향이 같으면 같은 직선입니다.`,
+        `방향벡터 사이 각은 약 ${phi.toFixed(1)}°입니다. ${d<0?'그 보각을 택해 두 직선의 작은각을 표시합니다.':'그 각이 두 직선의 작은각입니다.'} 따라서 내적의 절댓값을 사용합니다.`,
+        `$\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}\\approx${Math.abs(d/n).toFixed(4)}$, $\\theta\\approx${theta.toFixed(1)}^\\circ$. ${Math.abs(d)<=1e-10*n?'현재 내적은 0이므로 정확히 직각입니다.':'소수 각도를 반올림하여 직각으로 판정하지 않습니다.'}`
+      ];},
+      presets: () => ANG.PAIRS.map((pr) => ({group:'방향벡터 비교',label:`(${pr[0].join(',')}) ↔ (${pr[1].join(',')})`,apply:(s)=>{s.an_x1=pr[0][0];s.an_y1=pr[0][1];s.an_x2=pr[1][0];s.an_y2=pr[1][1];},on:(st)=>st.an_x1===pr[0][0]&&st.an_y1===pr[0][1]&&st.an_x2===pr[1][0]&&st.an_y2===pr[1][1]})),
       view: (s) => {
-        const d1 = P(s.an_x1, s.an_y1), d2 = P(s.an_x2, s.an_y2), dt = dot(d1, d2), n = len(d1) * len(d2) || 1, cs = dt / n, phi = Math.acos(clamp(cs, -1, 1)) * 180 / Math.PI, th = Math.min(phi, 180 - phi);
+        const d1=P(s.an_x1,s.an_y1),d2=P(s.an_x2,s.an_y2),dt=dot(d1,d2),n=len(d1)*len(d2),cs=n>0?dt/n:null,phi=n>0?Math.acos(clamp(cs,-1,1))*180/Math.PI:null,th=n>0?Math.min(phi,180-phi):null,perp=n>0&&Math.abs(dt)<=1e-10*n,final=s.step>=3||s.revealed;
         return {
-          chips: [{ tex: '\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}', color: 'amber' }],
-          status: Math.abs(dt) < 0.05 * n ? { tone: 'ok', text: '두 직선이 수직입니다 (d₁·d₂ = 0, θ = 90°)' } : phi > 90 ? { tone: 'info', text: `방향벡터 사이의 각 ${phi.toFixed(1)}°는 둔각 → 직선이 이루는 각 θ = ${th.toFixed(1)}°` } : { tone: 'info', text: `직선이 이루는 각 θ = ${th.toFixed(1)}°` },
+          chips: s.step>=2?[{tex:'\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}',color:'amber'}]:[],
+          status:n===0?{tone:'warn',text:'영벡터로는 직선의 방향과 각을 정할 수 없습니다.'}:!final?{tone:'info',text:'같은 직선의 화살표를 반대로 해도 직선의 작은각은 그대로입니다.'}:perp?{tone:'ok',text:'두 직선이 수직입니다 (d₁·d₂=0, θ=90°).'}:phi>90?{tone:'info',text:`방향벡터 사이 각 φ≈${phi.toFixed(1)}°의 보각: θ≈${th.toFixed(1)}°`}:{tone:'info',text:`두 직선의 작은각 θ≈${th.toFixed(1)}°`},
           readouts: [
             { label: '방향벡터 d₁ , d₂', value: `(${f2(d1.x)}, ${f2(d1.y)}) , (${f2(d2.x)}, ${f2(d2.y)})`, color: 'sky', wide: true },
-            { label: 'd₁·d₂', value: f2(dt), color: 'amber' },
-            { label: '|d₁||d₂|', value: f2(n), color: 'violet' },
-            { label: 'cos θ  (θ: 직선이 이루는 각)', value: `${f2(Math.abs(cs))}  (θ = ${th.toFixed(1)}°)`, color: 'green', wide: true }
-          ]
+            ...(s.step>=2?[{label:'d₁·d₂',value:f2(dt),color:'amber'},{label:'|d₁||d₂| (근사)',value:f2(n),color:'violet'}]:[]),
+            ...(final?[{label:'cos θ와 θ (근사)',value:n>0?`cos θ≈${Math.abs(cs).toFixed(4)}, θ≈${th.toFixed(1)}°`:'정의되지 않음',color:'green',wide:true}]:[])
+          ],
+          notes:'움직이는 그림의 각도·소수는 근삿값입니다. 직각 표시는 반올림한 각도가 아닌 실제 내적 0 조건으로 판단합니다.'
         };
       },
       explore: (b, s) => {
         const d1 = P(s.an_x1, s.an_y1), d2 = P(s.an_x2, s.an_y2), X = X0, L = NQ.labels(b), e1 = add(X, d1), e2 = add(X, d2), dt = dot(d1, d2), phi = Math.acos(clamp(dt / ((len(d1) * len(d2)) || 1), -1, 1)) * 180 / Math.PI;
-        L.inf(X, d1, { color: 'sky', width: 1.8, alpha: 0.7, dash: [6, 5] });
-        L.inf(X, d2, { color: 'rose', width: 1.8, alpha: 0.7, dash: [6, 5] });
-        if (len(d1) > 0.1 && len(d2) > 0.1) {
-          if (Math.abs(dt) < 0.03 * len(d1) * len(d2)) b.right(X, e1, e2, { size: 12, color: 'amber' });
+        if(len(d1)>0)L.inf(X, d1, { color: 'sky', width: 1.8, alpha: 0.7, dash: [6, 5] });
+        if(len(d2)>0)L.inf(X, d2, { color: 'rose', width: 1.8, alpha: 0.7, dash: [6, 5] });
+        if (s.step>=2&&len(d1)>0&&len(d2)>0) {
+          if (Math.abs(dt)<=1e-10*len(d1)*len(d2)) b.right(X, e1, e2, { size: 12, color: 'amber' });
           else if (phi > 90) { b.angle(X, e1, e2, { r: 22, color: 'muted', rings: 1 }); b.angle(X, e1, sub(X, d2), { r: 36, color: 'amber', rings: 2 }); }
           else b.angle(X, e1, e2, { r: 30, color: 'amber', rings: 2 });
         }
@@ -1510,16 +1553,16 @@ window.addEventListener('DOMContentLoaded', function () {
         ];
       },
       reviewChips: (I) => [{ tex: `\\cos\\theta=${I.ans}`, color: 'green' }],
-      stdTitle: '교과서식 풀이 (방향벡터의 내적)', quickTitle: '10초 컷 · 분모가 방향벡터',
+      stdTitle: '교과서식 풀이 · 주어진 벡터로 내적 계산', quickTitle: '실전 풀이 · 방향만 남겨 성분 약분',
       std: (I) => {
         const d1 = I.d1, d2 = I.d2, p = (v) => (v < 0 ? `(${v})` : `${v}`);
         return `① 대칭형 직선의 방정식 $\\dfrac{x-x_1}{a}=\\dfrac{y-y_1}{b}$에서 방향벡터는 $(a,\\ b)$. $\\vec d_1=(${d1.x},\\ ${d1.y})$, $\\vec d_2=(${d2.x},\\ ${d2.y})$.<br>② $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$ (직선이 이루는 각은 예각이므로 절댓값).<br>③ $|\\vec d_1\\cdot\\vec d_2|=|${d1.x}\\cdot${p(d2.x)}+${d1.y}\\cdot${p(d2.y)}|=${Math.abs(I.dtv)}$, $|\\vec d_1||\\vec d_2|=${num(len(d1) * len(d2))}$.<br>④ $\\cos\\theta=\\dfrac{${I.cosN}}{${I.cosD}}$.`;
       },
       warning: '내적이 음수이면 방향벡터 사이의 각이 둔각입니다. 두 직선이 이루는 각은 예각이므로 반드시 내적에 절댓값을 씌웁니다. 분모(분수 모양)에서 방향벡터를 읽을 때 x 쪽 분모가 a, y 쪽 분모가 b입니다.',
-      quick: (I) => `직선 $\\dfrac{x-x_1}{a}=\\dfrac{y-y_1}{b}$의 <b>분모 (a, b)가 곧 방향벡터</b>입니다. $\\vec d_1\\cdot\\vec d_2$의 절댓값 ${Math.abs(I.dtv)}을 $|\\vec d_1||\\vec d_2|=${num(len(I.d1) * len(I.d2))}$로 나누면 $\\cos\\theta=\\dfrac{${I.cosN}}{${I.cosD}}$.`,
+      quick: (I) => {const g1=NQ.gcd(Math.abs(I.d1.x),Math.abs(I.d1.y)),g2=NQ.gcd(Math.abs(I.d2.x),Math.abs(I.d2.y)),u=mul(I.d1,1/g1),v=mul(I.d2,1/g2);return `그림에서 화살표의 길이를 바꿔도 직선의 방향은 같습니다. 분모에서 읽은 방향벡터를 각각 ${g1}, ${g2}로 나누어 $\\vec u=(${u.x},${u.y})$, $\\vec v=(${v.x},${v.y})$로 줄입니다.<br>내적과 길이의 곱이 같은 배율로 줄어 비는 그대로입니다. 따라서 $\\cos\\theta=\\dfrac{|\\vec u\\cdot\\vec v|}{|\\vec u||\\vec v|}=\\dfrac{${Math.abs(dot(u,v))}}{${num(len(u)*len(v))}}=\\dfrac{${I.cosN}}{${I.cosD}}$. 내적이 음수이면 한 화살표를 뒤집어 작은각을 택합니다.`;},
       highlight: '내적은 두 벡터의 방향 정보를 담고 있습니다. 직선이 이루는 각은 방향벡터의 내적에 절댓값을 씌워 구합니다.',
-      formula: '<b>두 직선이 이루는 각</b>: 방향벡터가 $\\vec d_1$, $\\vec d_2$인 두 직선이 이루는 예각 $\\theta$ ($0^\\circ\\le\\theta\\le90^\\circ$)는 $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$.<br>수직이면 $\\vec d_1\\cdot\\vec d_2=0$, 평행이면 $\\vec d_1=k\\vec d_2$.',
-      notes: '방향벡터 사이의 각과 직선이 이루는 각을 구별합니다. 내적이 음수여도 cos θ는 양수로 답합니다. 방향벡터를 약분해도(예: (6,2) → (3,1)) 같은 직선이므로 cos θ는 변하지 않습니다.'
+      formula: '<b>두 직선의 작은각</b>: 영벡터가 아닌 방향벡터 $\\vec d_1$, $\\vec d_2$에 대해 $0^\\circ\\le\\theta\\le90^\\circ$, $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$.<br>수직이면 내적이 0, 평행이면 한 방향벡터가 다른 방향벡터의 0이 아닌 실수배입니다.',
+      notes: 'cos θ는 음이 아닌 값입니다(수직이면 0). 방향벡터의 0이 아닌 실수배는 같은 직선의 방향을 나타내므로 성분을 약분해도 cos θ는 변하지 않습니다.'
     });
     return sc;
   }
@@ -1543,14 +1586,15 @@ window.addEventListener('DOMContentLoaded', function () {
       const kn = md - mn, k = fr(kn, md), m = fr(mn, md), rt = `${kn}:${mn}`;
       return {
         A, B, mn, md, kn, k, rt, val: kn / md,
-        text: `평면 위의 서로 다른 세 점 ${APLab.tex(`O,\\ A${pt(A)},\\ B${pt(B)}`)}에 대하여 점 ${APLab.tex('P')}가 ${APLab.tex(`${V('OP')}=${m.startsWith('\\') ? m : m}${V('OA')}+k${V('OB')}`)}를 만족시킨다. 점 ${APLab.tex('P')}가 직선 ${APLab.tex('AB')} 위에 있을 때 상수 ${APLab.tex('k')}의 값과 선분 길이의 비 ${APLab.tex('\\overline{AP}:\\overline{PB}')}를 구하시오.`,
+        text: `좌표평면의 원점 ${APLab.tex('O')}와 두 점 ${APLab.tex(`A${pt(A)},\\ B${pt(B)}`)}에 대하여 점 ${APLab.tex('P')}가 ${APLab.tex(`${V('OP')}=${m}${V('OA')}+k${V('OB')}`)}를 만족시킨다. 점 ${APLab.tex('P')}가 직선 ${APLab.tex('AB')} 위에 있을 때 상수 ${APLab.tex('k')}의 값과 선분 길이의 비 ${APLab.tex('\\overline{AP}:\\overline{PB}')}를 구하시오.`,
         ans: `k=${k},\\ \\overline{AP}:\\overline{PB}=${rt}`,
         steps: [
-          `두 위치벡터 $${V('OA')}=${pt(A)}$, $${V('OB')}=${pt(B)}$와 직선 $AB$를 그립니다.`,
+          `두 위치벡터 $${V('OA')}=${pt(A)}$, $${V('OB')}=${pt(B)}$는 평행하지 않습니다. 따라서 이 둘로 나타낸 벡터의 계수를 비교할 수 있습니다.`,
           `직선 $AB$ 위의 점은 $${V('OP')}=(1-t)${V('OA')}+t${V('OB')}$ (계수의 합 $=1$)로 나타냅니다.`,
           `계수를 비교하면 $1-t=${m}$이므로 $t=k=${k}$. $${V('AP')}=${k}${V('AB')}$이므로 $\\overline{AP}:\\overline{PB}=${rt}$ (내분점).`
         ],
-        quick: `세 점 $A,B,P$가 한 직선 위에 있으면 계수의 합이 $1$입니다: $${m}+k=1\\Rightarrow k=${k}$. 내분비는 계수가 엇갈려 $\\overline{AP}:\\overline{PB}=(OB\\text{의 계수}):(OA\\text{의 계수})=${rt}$.`
+        std:`$P=(${m}\\cdot${par(A[0])}+${par(B[0])}k,\\ ${m}\\cdot${par(A[1])}+${par(B[1])}k)$를 직선 $AB$의 방정식 $(B_y-A_y)(x-A_x)-(B_x-A_x)(y-A_y)=0$에 대입합니다. $A_xB_y-A_yB_x=${A[0]*B[1]-A[1]*B[0]}\\ne0$이므로 $${m}+k-1=0$, 즉 $k=${k}$. $P=A+${k}(B-A)$에서 내분비는 $${rt}$.`,
+        quick: `$O,A,B$가 한 직선 위에 없으므로 $A,B,P$가 한 직선 위일 조건은 위치벡터 계수의 합이 1인 것입니다. 따라서 $${m}+k=1\\Rightarrow k=${k}$. $P=A+${k}(B-A)$에서 $AP:PB=${rt}$. 두 계수가 양수이므로 선분 내부입니다.`
       };
     };
     // ---- 2: 계수 합의 범위와 자취의 넓이
@@ -1562,10 +1606,11 @@ window.addEventListener('DOMContentLoaded', function () {
         ans: `${k2 * k2 - k1 * k1}S=${k2 * k2 - k1 * k1}\\times${S}=${val}`,
         steps: [
           `기본 삼각형 $\\triangle OAB$ ($m+n\\le1$ 영역)의 넓이는 $S=${S}$입니다.`,
-          `$m+n=k$이면 $A^{\\prime}=kA,\\ B^{\\prime}=kB$에 대하여 $P$는 선분 $A^{\\prime}B^{\\prime}$ 위에 있습니다. 경계는 $k=${k1}$, $k=${k2}$인 선분입니다.`,
+          `$m+n=k\\gt0$이면 $m/k+n/k=1$입니다. 따라서 $P$는 $kA,kB$를 끝점으로 하는 선분 위에 있습니다. 경계 $k=${k1},${k2}$를 함께 그립니다.`,
           `$m+n\\le k$ 영역은 닮음비 $1:k$인 삼각형이므로 넓이 $k^2S$. 따라서 $(${k2}^2-${k1}^2)S=${k2 * k2 - k1 * k1}\\times${S}=${val}$.`
         ],
-        quick: `$m,n\\ge0$, $m+n\\le k$인 영역은 $\\triangle OAB$의 $k$배 닮은꼴이라 넓이가 $k^2S$입니다. 두 경계 사이의 띠는 $(${k2}^2-${k1}^2)S=${val}$.`
+        std:`$m+n=k$를 $k$로 나누면 $P=(m/k)(kA)+(n/k)(kB)$이며 두 계수는 비음수, 합은 1입니다. $0\\le m+n\\le k$의 각 선분을 모으면 삼각형 $O(kA)(kB)$ 전체입니다. 밑변과 높이가 각각 $k$배이므로 넓이는 $k^2S$. 큰 삼각형과 작은 삼각형의 넓이 $${k2*k2}S-${k1*k1}S=${val}$을 뺍니다.`,
+        quick: `그림의 두 경계는 원점 중심 확대율 ${k1}, ${k2}의 같은 삼각형입니다. 넓이는 확대율의 제곱에 비례하므로 별도의 좌표 계산 없이 $(${k2}^2-${k1}^2)S=${val}$. $m,n\\ge0$이 두 변 사이를 선택하며 경계 포함 여부는 넓이에 영향을 주지 않습니다.`
       };
     };
     // ---- 3: 직선의 벡터방정식 (방향벡터·법선벡터)
@@ -1577,10 +1622,11 @@ window.addEventListener('DOMContentLoaded', function () {
         ans: `${V('n')}=${pt(n)},\\ k=${k}`,
         steps: [
           `기준점 $A${pt(A)}$와 방향벡터 $${V('u')}=${pt(u)}$를 표시합니다.`,
-          `$${V('u')}$에 수직인 법선벡터는 $${V('n')}=(b,\\ -a)=${pt(n)}$이고, 직선은 $(${V('OP')}-${V('OA')})\\cdot${V('n')}=0$입니다.`,
+          `$${V('u')}$를 90° 회전한 $${V('n')}=(b,-a)=${pt(n)}$은 법선벡터의 한 예입니다. 0이 아닌 모든 실수배도 법선벡터입니다. 직선은 $(${V('OP')}-${V('OA')})\\cdot${V('n')}=0$입니다.`,
           `$P=A+t${V('u')}=(${A[0]}+${par(u[0])}t,\\ ${A[1]}+${par(u[1])}t)$에서 $x=${xp}$이면 $t=${t}$이므로 $k=${A[1]}+${par(u[1])}\\times${t}=${k}$.`
         ],
-        quick: `$${V('u')}=(a,b)$이면 $${V('n')}=(b,-a)=${pt(n)}$. $P=A+t${V('u')}$에서 $x$좌표가 $${xp}$인 $t=${t}$를 $y$좌표에 대입하면 $k=${k}$.`
+        std:`직선의 대칭형 $\\dfrac{x-${par(A[0])}}{${u[0]}}=\\dfrac{y-${par(A[1])}}{${u[1]}}$을 정리하면 $${u[1]}(x-${par(A[0])})-${u[0]}(y-${par(A[1])})=0$. 계수에서 법선벡터 한 예는 $${pt(n)}$입니다. $x=${xp}$를 넣어 $y=k=${k}$를 구합니다.`,
+        quick: `그림에서 방향벡터를 90° 돌리면 법선벡터 한 예 $${V('n')}=${pt(n)}$을 바로 읽습니다. 점의 이동은 $P=A+t${V('u')}$ 하나로 나타냅니다. 가로 이동으로 $t=(${xp}-${par(A[0])})/${u[0]}=${t}$를 구하고 세로 이동에 넣으면 $k=${k}$.`
       };
     };
     // ---- 4: 원의 벡터방정식 (PA·PB=0)
@@ -1598,11 +1644,12 @@ window.addEventListener('DOMContentLoaded', function () {
         text: `좌표평면 위의 두 점 ${APLab.tex(`A${pt(A)},\\ B${pt(B)}`)}에 대하여 벡터방정식<br/>${APLab.tex(`(${V('OP')}-${V('OA')})\\cdot(${V('OP')}-${V('OB')})=0`)}<br/>을 만족시키는 점 ${APLab.tex('P')}가 나타내는 도형의 둘레의 길이와 넓이를 구하시오.`,
         ans: `\\text{둘레 }${per},\\ \\text{넓이 }${area}`,
         steps: [
-          `두 점 $A${pt(A)}$, $B${pt(B)}$와 선분 $AB$(길이 $${isInt ? d : `\\sqrt{${d2}}`}$)를 그립니다.`,
-          `$${V('OP')}-${V('OA')}=${V('AP')}$, $${V('OP')}-${V('OB')}=${V('BP')}$이므로 조건은 $${V('AP')}\\cdot${V('BP')}=0$, 곧 $\\angle APB=90^\\circ$입니다.`,
-          `지름에 대한 원주각은 $90^\\circ$이므로 $P$는 $AB$를 지름으로 하는 원 위의 점입니다. 지름 $AB=${isInt ? d : `\\sqrt{${d2}}`}$이므로 둘레 $${per}$, 넓이 $${area}$.`
+          `벡터 차를 읽으면 $${V('OP')}-${V('OA')}=${V('AP')}$, $${V('OP')}-${V('OB')}=${V('BP')}$. 화살표 $AP,BP$를 그립니다.`,
+          `$AB$의 중점 $M(${Mx},${My})$에서 반대인 두 벡터를 묶으면 $${V('AP')}\\cdot${V('BP')}=PM^2-AM^2=0$. 따라서 $PM=AM$입니다. $P=A,B$도 포함되며 그때 각은 정의하지 않습니다.`,
+          `자취는 중심 $M$, 반지름 $AB/2$인 원 전체입니다. $AB^2=${d2}$이므로 둘레 $${per}$, 넓이 $${area}$. 끝점 이외에는 지름에 대한 원주각 $\\angle APB=90^\\circ$입니다.`
         ],
-        quick: `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OB})=0$은 $AB$를 지름으로 하는 원입니다. 지름 $AB=${isInt ? d : `\\sqrt{${d2}}`}$ ⇒ 둘레 $${per}$, 넓이 $${area}$.`
+        std:`$P=(x,y)$를 대입하면 $(x-${par(A[0])})(x-${par(B[0])})+(y-${par(A[1])})(y-${par(B[1])})=0$. 전개하고 완전제곱식을 만들면 $(x-(${Mx}))^2+(y-(${My}))^2=\\dfrac{${d2}}4$. 따라서 둘레 $${per}$, 넓이 $${area}$.`,
+        quick: `중점 $M$에서 $\\overrightarrow{MA}=-\\overrightarrow{MB}$이므로 두 교차항이 소거되어 $\\overrightarrow{AP}\\cdot\\overrightarrow{BP}=PM^2-AM^2$. 조건은 정확히 $PM=AM$과 동치여서 끝점도 포함한 지름 $AB$의 원입니다. 좌표식의 전개 없이 $AB^2=${d2}$만 구하면 둘레 $${per}$, 넓이 $${area}$.`
       };
     };
     const POOL = {
@@ -1636,10 +1683,10 @@ window.addEventListener('DOMContentLoaded', function () {
       2: (b, step, I) => {
         const L = NQ.labels(b), O = P(0, 0), A = P(4, 1), Bq = P(1, 3), sc = (k) => [mul(A, k), mul(Bq, k)];
         const [a1, b1] = sc(I.k1), [a2, b2] = sc(I.k2);
-        if (step >= 2) b.poly([a1, a2, b2, b1], { fill: 'amber', fillAlpha: 0.22, color: 'amber', width: 2 });
+        if (step >= 3) b.poly([a1, a2, b2, b1], { fill: 'amber', fillAlpha: 0.22, color: 'amber', width: 2 });
         b.poly([O, A, Bq], { fill: 'sky', fillAlpha: 0.12, color: 'ink', width: 2.4 });
         L.poly([O, A, Bq]);
-        if (step >= 1) {
+        if (step >= 2) {
           L.line(a2, b2, { color: 'rose', width: 2.4, dash: [6, 5] }); L.line(O, a2, { color: 'ink', width: 1.4, dash: [4, 5], alpha: 0.6 }); L.line(O, b2, { color: 'ink', width: 1.4, dash: [4, 5], alpha: 0.6 });
           if (I.k1 !== 1) L.line(a1, b1, { color: 'green', width: 2.4, dash: [6, 5] });
           L.pt(a2, { color: 'rose', r: 4 }).pt(b2, { color: 'rose', r: 4 });
@@ -1647,9 +1694,9 @@ window.addEventListener('DOMContentLoaded', function () {
         L.pt(O, { color: 'ink' }).pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' });
         L.at(O, 'O', { color: 'ink', dirDeg: 200 }); L.at(A, 'A', { color: 'sky', dirDeg: -30 }); L.at(Bq, 'B', { color: 'rose', dirDeg: 150 });
         L.at(P(1.6, 1.3), `S = ${I.S}`, { color: 'ink', dirDeg: 0, size: 14, rmin: 0 });
-        if (step >= 1) { L.at(a2, "A′ (=" + I.k2 + "A)", { color: 'rose', away: O }); L.at(b2, "B′ (=" + I.k2 + "B)", { color: 'rose', away: O }); L.along(a2, b2, `m+n = ${I.k2}`, { color: 'rose', side: 1, off: 16, at: 0.5, toward: O }); }
-        if (step >= 1 && I.k1 !== 1) L.along(a1, b1, `m+n = ${I.k1}`, { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
-        else if (step >= 1) L.along(A, Bq, 'm+n = 1', { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
+        if (step >= 2) { L.at(a2, "A′ (=" + I.k2 + "A)", { color: 'rose', away: O }); L.at(b2, "B′ (=" + I.k2 + "B)", { color: 'rose', away: O }); L.along(a2, b2, `m+n = ${I.k2}`, { color: 'rose', side: 1, off: 16, at: 0.5, toward: O }); }
+        if (step >= 2 && I.k1 !== 1) L.along(a1, b1, `m+n = ${I.k1}`, { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
+        else if (step >= 2) L.along(A, Bq, 'm+n = 1', { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
       },
       3: (b, step, I) => {
         const L = NQ.labels(b), O = P(0, 0), A = Q(I.A), u = Q(I.u), n = Q(I.n), un = mul(u, 1 / len(u)), nn = mul(n, 1 / len(n)), Pp = P(I.xp, I.k);
@@ -1669,14 +1716,15 @@ window.addEventListener('DOMContentLoaded', function () {
         const L = NQ.labels(b), A = Q(I.A), Bq = Q(I.B), M = Q(I.M), r = Math.sqrt(I.d2) / 2, base = Math.atan2(Bq.y - A.y, Bq.x - A.x) * 180 / Math.PI;
         const Pp = NQ.polar(M, r, base + 115);
         if (step >= 3) { b.circle(M, r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(M, r); }
-        if (step >= 1) L.line(A, Bq, { color: 'ink', width: 3 });
-        if (step >= 2) { L.vec(Pp, A, { color: 'sky', width: 2.8 }); L.vec(Pp, Bq, { color: 'rose', width: 2.8 }); b.right(Pp, A, Bq, { color: 'amber', size: 11 }); L.pt(Pp, { color: 'amber' }); }
+        L.line(A, Bq, { color: 'ink', width: 3 });
+        if (step >= 1) { L.vec(A, Pp, { color: 'sky', width: 2.8 }); L.vec(Bq, Pp, { color: 'rose', width: 2.8 }); L.pt(Pp, { color: 'amber' }); }
+        if(step>=2){L.line(M,Pp,{color:'green',width:1.7,dash:[5,4]});b.ticks(M,A,{count:1,color:'green'});b.ticks(M,Bq,{count:1,color:'green'});b.ticks(M,Pp,{count:1,color:'green'});b.right(Pp,A,Bq,{color:'amber',size:11});}
         L.pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' });
-        if (step >= 3) L.pt(M, { color: 'green', r: 4 });
+        if (step >= 2) L.pt(M, { color: 'green', r: 4 });
         L.O();
         L.at(A, `A(${I.A[0]}, ${I.A[1]})`, { color: 'sky', away: M }); L.at(Bq, `B(${I.B[0]}, ${I.B[1]})`, { color: 'rose', away: M });
-        if (step >= 2) L.at(Pp, 'P', { color: 'amber', away: M });
-        if (step >= 3) L.at(M, 'M', { color: 'green', dirDeg: 90 });
+        if (step >= 1) L.at(Pp, 'P', { color: 'amber', away: M });
+        if (step >= 2) L.at(M, 'M', { color: 'green', dirDeg: 90 });
       }
     };
     const nq = NQ.scene({
@@ -1684,9 +1732,9 @@ window.addEventListener('DOMContentLoaded', function () {
       axes: m !== 2, gen: (prev) => (prev ? NQ.pickOf(list, prev) : list[0]),
       tag: ['세 점이 한 직선 위에 있을 조건', '자취의 넓이 킬러', '직선의 벡터방정식', '원의 벡터방정식 킬러'][m - 1], time: '목표 시간: 30초',
       text: (I) => I.text, answer: (I) => I.ans, figure: FIG[m], steps: (I) => I.steps,
-      std: (I) => OVF.stdOf(I.steps), quick: (I) => I.quick,
-      warning: ['세 점이 한 직선 위에 있으려면 계수의 합이 1이어야 합니다. 내분비는 계수가 엇갈려 대응합니다.', 'm+n=k 선분은 선분 AB를 k배 한 것입니다. 영역의 넓이는 닮음비의 제곱(k²S)으로 계산하세요.', '방향벡터 (a,b)에 수직인 법선벡터는 (b,−a)입니다. 직선 위의 점은 한 문자 t로 나타내면 편합니다.', '(OP−OA)·(OP−OB)=0은 AP·BP=0, 곧 지름이 AB인 원입니다(P=A 또는 B인 점 포함).'][m - 1],
-      highlight: ['A, B, P가 한 직선 위 ⇔ 계수의 합 m+n=1', 'm,n≥0일 때 m+n≤k 영역의 넓이는 k²S', '점 A(x₁,y₁)을 지나고 방향벡터 (a,b)인 직선 위의 점은 (x₁+at, y₁+bt)', '지름이 AB인 원: 둘레 π·AB, 넓이 π·AB²/4'][m - 1],
+      std: (I) => I.std, quick: (I) => I.quick,
+      warning: ['O,A,B가 한 직선 위에 없을 때 위치벡터 계수를 비교할 수 있습니다. 내분비는 계수가 엇갈려 대응합니다.', 'm,n≥0과 k>0을 확인해야 경계가 선분이 됩니다. 영역의 넓이는 닮음비의 제곱(k²S)으로 계산하세요.', '방향벡터 (a,b)에 수직인 법선벡터의 한 예는 (b,−a)이며 0이 아닌 실수배도 가능합니다.', 'P=A 또는 B도 내적 조건을 만족합니다. 이때 한 벡터가 0이므로 각은 정의되지 않습니다.'][m - 1],
+      highlight: ['O,A,B가 한 직선 위에 없으면: A,B,P가 한 직선 위 ⇔ 계수 합 m+n=1', 'm,n≥0, k≥0일 때 m+n≤k 영역의 넓이는 k²S', '방향을 90° 돌리면 법선, 방향을 따라 t배 이동하면 직선 위의 점', '중점에서 반대인 벡터를 묶어 PM²−AM²=0 → 지름이 AB인 원'][m - 1],
       reviewChips: (I) => [{ tex: I.ans, color: 'green' }],
       fbox: m === 1 ? (I) => { const xs = [0, I.A[0], I.B[0]], ys = [0, I.A[1], I.B[1]]; return [P(Math.min(...xs) - 1.2, Math.min(...ys) - 0.8), P(Math.max(...xs) + 1.2, Math.max(...ys) + 0.8)]; } : undefined
     });
@@ -1713,6 +1761,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'geom-vector-figure',
+    stagedReveal: true,
     stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '벡터로 나타낸 도형',
     courseName: '기하',
@@ -1722,11 +1771,11 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/기하와벡터/벡터로 나타낸 도형.html',
     board: { kind: 'cartesian', focus: FOCUS[0], minZoom: 0.3, maxZoom: 8 },
     params: {
-      t1: { value: 0.6, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (선분 AB 위: 0~1 / 연장선 위: −1.0~2.4)', format: (v) => `t = ${v.toFixed(2)} (${v >= -0.001 && v <= 1.001 ? '선분 AB 위' : '연장선 위'})` },
+      t1: { value: 0.6, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (선분 AB 위: 0~1 / 연장선 위: −1.0~2.4)', format: (v) => `t = ${v.toFixed(2)} (${v >= -1e-10 && v <= 1+1e-10 ? '선분 AB 위' : '연장선 위'})` },
       m2: { value: 0.8, min: 0, max: 2, step: 0.05, color: 'sky', label: 'OA 계수 m', format: (v, s) => `m=${v.toFixed(2)}, n=${s.n2.toFixed(2)} (합 m+n=${(v + s.n2).toFixed(2)})` },
       n2: { value: 0.7, min: 0, max: 2, step: 0.05, color: 'rose', label: 'OB 계수 n', format: (v, s) => `m=${s.m2.toFixed(2)}, n=${v.toFixed(2)} (합 m+n=${(s.m2 + v).toFixed(2)})` },
       t3: { value: 2, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (P = A + t·u, −1.0~2.4)', format: (v) => { const x = 1 + 3 * v, y = 2 + 2 * v; return `t = ${v.toFixed(2)} (P(${x.toFixed(1)}, ${y.toFixed(1)}))`; } },
-      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위의 점 P의 회전각 θ (어디에 있어도 ∠APB = 90°)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` },
+      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '점 P의 회전각 θ', format: (v) => `θ ≈ ${mod360(v).toFixed(1)}°` },
       cn_lam: { value: 2, min: -7, max: 7, step: 0.05, color: 'violet', label: '직선 위의 점 P의 위치 (A에서 직선을 따라)', format: (v) => v.toFixed(2) },
       cn_th: { value: 70, min: 0, max: 360, step: 1, color: 'sky', label: '원 위의 점 Q의 회전각', format: (v) => `${Math.round(v)}°` },
       cn_r: { value: 1, min: 0.5, max: 2.2, step: 0.1, color: 'sky', label: '원의 반지름 r', format: (v) => `r = ${v.toFixed(1)}` }
