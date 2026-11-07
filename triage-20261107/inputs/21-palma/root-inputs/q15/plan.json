@@ -1,0 +1,63 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "sourceQuote": "x가 커질수록 √(2x−4)가 커지므로 함수는 주어진 구간에서 감소한다.",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-4",
+      "2"
+    ],
+    "amplitude": "1",
+    "sign": -1,
+    "offset": "-1",
+    "sourceDomain": {
+      "kind": "CLOSED_INTERVAL",
+      "range": [
+        4,
+        10
+      ]
+    },
+    "domain": [
+      4,
+      10
+    ],
+    "viewport": [
+      0,
+      11,
+      -7,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "6",
+        "10"
+      ],
+      "y": [
+        "-5",
+        "-3",
+        "1"
+      ]
+    },
+    "hideLabels": [
+      "formula",
+      "start"
+    ]
+  },
+  "caption": "제한된 구간에서 감소하는 무리함수의 양 끝값을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수는 y=−√(2x−4)−1이며 조건으로 정해진 구간은 [4,10]이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "감소하므로 최댓값과 최솟값은 왼쪽·오른쪽 끝에서 얻는다.",
+      "mappedTo": "graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프의 감소 방향과 극값이 나타나는 끝점의 관계를 보여 준다."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "교점 문제를 음이 아닌 근을 갖는 이차방정식 문제로 바꿀 수 있다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      12,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "8",
+        "10"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-8",
+          "4"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "2",
+          "11"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "y=x-3"
+      }
+    ]
+  },
+  "caption": "예: 직선과 무리함수가 한 점에서 만나는 한 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "무리함수는 y=√(4x−8), 직선은 y=x+k이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=−3일 때 두 곡선은 한 점에서 만난다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역 끝점과 한 교점의 위치를 보여 준 뒤 접하는 별도 경계를 확인하도록 돕는다."
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "정의역, 그래프의 방향, 사분면, 역함수의 정의역을 각각 확인한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "-2"
+        ],
+        "amplitude": "-1",
+        "offset": "2",
+        "domain": [
+          "-4",
+          "1/2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "other",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "9/2"
+        ],
+        "color": "GREEN",
+        "label": "y=h(x)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ]
+  },
+  "caption": "무리함수의 뻗는 방향과 역함수의 대칭을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=−√(1−2x)+2는 왼쪽으로 뻗으며 치역은 y≤2이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "h(x)=−√(2x)는 오른쪽으로 뻗고, g는 f의 역함수이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동으로 바뀌지 않는 좌우 방향과 대칭 후 정의역의 관계를 함께 보여 준다."
+  ]
+}

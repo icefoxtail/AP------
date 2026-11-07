@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "유리함수의 점근선과 y절편의 위치에서 a,b,c의 부호를 읽는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      11,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "-1",
+        "domain": [
+          "2",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ]
+  },
+  "caption": "예: 원문 그래프와 같은 부호 조건에서 대응하는 무리함수의 방향을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림에서 a<0, b>0, c<0이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예로 (a,b,c)=(−1,2,−1)을 택해 유리함수와 무리함수를 함께 그린다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선·절편에서 읽은 부호가 무리함수의 시작 위치와 진행 방향을 제한하는 관계를 보여 준다."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": "1",
+        "y": "9"
+      },
+      {
+        "x": "2",
+        "y": "8"
+      },
+      {
+        "x": "3",
+        "y": "6"
+      },
+      {
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "x": "5",
+        "y": "2"
+      }
+    ],
+    "xRange": [
+      "0",
+      "6"
+    ],
+    "yRange": [
+      "0",
+      "10"
+    ],
+    "xStep": "1",
+    "yStep": "1",
+    "labelEvery": 1,
+    "xTitle": "x",
+    "yTitle": "f(x)",
+    "grid": true,
+    "pointGroups": [
+      {
+        "points": [
+          [
+            3,
+            6
+          ]
+        ],
+        "color": "BLUE",
+        "label": "주어진 점"
+      }
+    ]
+  },
+  "caption": "예: f(3)=6을 지나는 감소하는 함수의 한 가지를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X={1,2,3,4,5}, 함수는 엄격히 감소하고 f(3)=6이다.",
+      "mappedTo": "chart.points"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 함수값은 차례대로 9,8,6,4,2이다.",
+      "mappedTo": "chart.points"
+    }
+  ],
+  "newVisualInformation": [
+    "고정된 가운데 값보다 앞의 두 값은 크고 뒤의 두 값은 작아야 하는 관계를 보여 준다."
+  ]
+}
