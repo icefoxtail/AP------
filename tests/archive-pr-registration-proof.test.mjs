@@ -6,8 +6,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, producePrRegistrationProof,
-  validateLocalRegistrationProof, consumePrRegistrationProof, registrationProofArtifactName,
-  decodeRegistrationProofArtifact, createGitHubProofReader, prRegistrationProofNeeded,
+  validateLocalRegistrationProof, prRegistrationProofNeeded,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -33,17 +32,6 @@ test('proof production follows registration inputs and direct checkers, not unre
   }
 });
 
-test('every existing Sync path can obtain CI proof, including the relocated advisory checkers', () => {
-  const workflow = fs.readFileSync(new URL('../.github/workflows/archive-registration-sync.yml', import.meta.url), 'utf8');
-  const paths = workflow.slice(workflow.indexOf('    paths:'), workflow.indexOf('\npermissions:'));
-  const globs = [...paths.matchAll(/^\s+- "([^"]+)"$/gm)].map(match => match[1]);
-  assert.ok(globs.length > 20, 'the existing trigger scope must be inspected');
-  for (const glob of globs) {
-    const file = glob.replaceAll('**', 'fixture/nested').replaceAll('*', 'fixture');
-    assert.equal(prRegistrationProofNeeded([file]), true, `Sync would wait without producer: ${glob}`);
-  }
-});
-
 function fixture(t, changedFile = 'archive/exams/original/new.js') {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'registration-proof-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -59,7 +47,7 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
   const dependencyFiles = [...REGISTRATION_CHECKS.map(check => check.file), 'archive/build_db.py',
     'archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', 'archive/tools/build-archive2-catalog.mjs',
     'tools/ci/archive-pr-registration-prepare.mjs', 'tools/ci/archive-pr-registration-proof.mjs',
-    'tools/ci/push-touches-paths.mjs', CI_WORKFLOW_PATH, '.github/workflows/archive-registration-sync.yml'];
+    'tools/ci/push-touches-paths.mjs', CI_WORKFLOW_PATH];
   for (const file of dependencyFiles) write(file, '// fixed fixture dependency\n');
   write('tools/ci/archive-pages-registration.paths', 'archive/db.js\narchive/data/archive2-catalog.json\narchive/data/archive2-canonical-input-manifest.json\narchive/data/meta-foundation/runtime/*.json\n');
   write('.gitignore', 'archive/data/archive2-source-verification/mixed-v1/\narchive/exams/ignored.js\nnode_modules/\n');
@@ -112,39 +100,6 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
     return headSha;
   };
   return { root, repo, event, baseSha, write, git, calls, run, options, produce, clean, commit };
-}
-
-function zip(proof, member = 'proof.json', extra = false) {
-  const code = 'import io,sys,zipfile\nb=io.BytesIO()\nz=zipfile.ZipFile(b,"w",compression=zipfile.ZIP_DEFLATED)\nz.writestr(sys.argv[1],sys.stdin.buffer.read())\n' +
-    (extra ? 'z.writestr("unrequested.txt","not a proof")\n' : '') + 'z.close()\nsys.stdout.buffer.write(b.getvalue())\n';
-  const result = spawnSync('python3', ['-c', code, member], { input: JSON.stringify(proof) });
-  assert.equal(result.status, 0, String(result.stderr));
-  return result.stdout;
-}
-
-function network(f, proof, { mutateRun, mutateArtifact, mutateProof, jobs, omitArtifact = false, rawZip } = {}) {
-  const payload = clone(proof); mutateProof?.(payload);
-  const bytes = rawZip || zip(payload);
-  const run = { id: 41, run_attempt: 1, event: 'pull_request', path: CI_WORKFLOW_PATH,
-    repository: clone(f.event.repository), head_sha: f.event.pull_request.head.sha,
-    pull_requests: [clone(f.event.pull_request)], status: 'completed', conclusion: 'success' };
-  mutateRun?.(run);
-  const artifact = { id: 71, name: registrationProofArtifactName(f.options().expectedSha, run.run_attempt),
-    expired: false, size_in_bytes: bytes.length, digest: `sha256:${sha256(bytes)}`,
-    workflow_run: { id: run.id, repository_id: 101, head_repository_id: 101, head_sha: f.event.pull_request.head.sha } };
-  mutateArtifact?.(artifact);
-  const requests = [];
-  const getJson = async route => {
-    requests.push(route);
-    if (route.includes('/workflows/ci.yml/runs?')) return { workflow_runs: [run] };
-    if (route.includes('/jobs?')) return { jobs: jobs || [{ name: 'test', status: 'completed', conclusion: 'success' }] };
-    if (route.includes('/artifacts?')) return { artifacts: omitArtifact ? [] : [artifact] };
-    if (route.endsWith(`/actions/runs/${run.id}`)) return run;
-    throw Error(`UNEXPECTED_FIXTURE_ROUTE:${route}`);
-  };
-  const getArtifact = async route => { requests.push(route); return bytes; };
-  const consume = extra => consumePrRegistrationProof({ ...f.options(), getJson, getArtifact, timeoutMs: 0, ...extra });
-  return { run, artifact, bytes, getJson, getArtifact, requests, consume };
 }
 
 test('producer uses the existing preparation once, verifies all required data checks, and creates no commit', t => {
@@ -207,14 +162,9 @@ test('local catalog reuse rejects changed generated bytes, staged output, delete
   assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof }), /OUTPUT_MISMATCH/);
 });
 
-test('a valid remote proof never authorizes skipping a build in an unprepared checkout', async t => {
+test('a proof is not reusable in a checkout that lacks its generated outputs', t => {
   const f = fixture(t), proof = f.produce(); f.clean();
-  const n = network(f, proof), before = f.git('status', '--porcelain');
-  const result = await n.consume();
-  assert.equal(result.state, 'REUSED'); assert.equal(result.chrome, 'NOT_INCLUDED');
-  assert.equal(result.artifactDigest, n.artifact.digest);
-  assert.equal(f.git('status', '--porcelain'), before);
-  assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof: result.proof }), /OUTPUT_MISMATCH/);
+  assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof }), /OUTPUT_MISMATCH/);
 });
 
 test('producer refuses dirty, staged source and generator/validator mutations', t => {
@@ -262,12 +212,11 @@ test('symlinked generated output is rejected without hashing an external file', 
   } }), /OUTPUT_SYMLINK_FORBIDDEN/);
 });
 
-test('ignored untracked source files cannot masquerade as the fixed registered input', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
+test('ignored untracked source files cannot masquerade as the fixed registered input', t => {
+  const f = fixture(t); f.produce(); f.clean();
   f.write('archive/exams/ignored.js', 'hidden source input');
   assert.equal(f.git('status', '--porcelain'), '', 'git status alone cannot detect this input');
   assert.throws(() => f.produce(), /UNREGISTERED_IGNORED_REGISTRATION_INPUT/);
-  await assert.rejects(network(f, proof).consume(), /UNREGISTERED_IGNORED_REGISTRATION_INPUT/);
 });
 
 test('new ignored allowlisted outputs also invalidate local proof reuse', t => {
@@ -277,27 +226,54 @@ test('new ignored allowlisted outputs also invalidate local proof reuse', t => {
   assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof }), /OUTPUT_MISMATCH/);
 });
 
-test('an old PASS with a newly attached source SHA or checker SHA is rejected', async t => {
+test('an old PASS with a newly attached source SHA or checker SHA is rejected', t => {
   for (const [file, label] of [['archive/exams/original/new.js', 'source'],
     ['archive/tools/build-archive2-catalog.mjs', 'generator'],
     [REGISTRATION_CHECKS[0].file, 'checker'], [CI_WORKFLOW_PATH, 'workflow']]) {
-    await t.test(label, async st => {
-      const f = fixture(st), proof = f.produce();
-      const headSha = f.commit(file, 'changed bytes under the same path\n');
-      // Deliberately reproduce the prohibited trick: retain the old verdict but
-      // attach the new SHA. The Git blob input/checker digest still rejects it.
-      proof.context.headSha = headSha; proof.context.checkoutSha = headSha;
-      await assert.rejects(network(f, proof).consume(), /INPUT_OR_CHECKER_MISMATCH/);
-    });
+    const f = fixture(t), proof = f.produce();
+    const headSha = f.commit(file, 'changed bytes under the same path\n');
+    // Deliberately reproduce the prohibited trick: retain the old verdict but
+    // attach the new SHA. The Git blob input/checker digest still rejects it.
+    proof.context.headSha = headSha; proof.context.checkoutSha = headSha;
+    assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof }), /INPUT_OR_CHECKER_MISMATCH/, label);
   }
 });
 
-test('an unrelated later origin/main move does not invalidate the fixed event proof', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
+test('an unrelated later origin/main move does not invalidate the fixed event proof', t => {
+  const f = fixture(t), proof = f.produce();
   f.git('switch', '-q', 'main'); f.write('unrelated.txt', 'another worker');
   f.git('add', '--', 'unrelated.txt'); f.git('commit', '-qm', 'unrelated main advance');
   f.git('update-ref', 'refs/remotes/origin/main', 'HEAD'); f.git('switch', '-q', 'source-pr');
-  assert.equal((await network(f, proof).consume()).state, 'REUSED');
+  assert.equal(validateLocalRegistrationProof({ ...f.options(), proof }).reusable, true);
+});
+
+// Official manifest paths are relative to archive/ and include a legitimate ../docs/... authority input.
+const DOCS_ROW = '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+function produceWithManifestRows(t, rows) {
+  const f = fixture(t), docs = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+  const content = '{"authority":"fixture"}\n';
+  f.commit(docs, content);
+  const manifestFile = path.join(f.root, 'archive/data/archive2-canonical-input-manifest.json');
+  const resolved = rows.map(row => row === DOCS_ROW ? { path: row, sha256: sha256(content) }
+    : { path: row, sha256: 'a'.repeat(64) });
+  return f.produce({ run: (program, args) => {
+    const result = f.run(program, args);
+    if (program === 'python3') {
+      const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+      manifest.files.push(...resolved);
+      fs.writeFileSync(manifestFile, JSON.stringify(manifest) + '\n');
+    }
+    return result;
+  } });
+}
+
+test('catalog manifest accepts the official ../docs authority row and rejects unsafe paths', t => {
+  const proof = produceWithManifestRows(t, [DOCS_ROW]);
+  assert.equal(proof.status, 'PASS');
+  assert.equal(proof.preparation.catalogStabilized, false);
+  for (const bad of ['../../etc/passwd', '/abs/file.json', 'a/./b', 'a//b', 'a\\b.json']) {
+    assert.throws(() => produceWithManifestRows(t, [bad]), /REGISTRATION_CATALOG_MANIFEST_INVALID/, bad);
+  }
 });
 
 test('a NO_OP preparation may verify data but cannot suppress the catalog pre-step', t => {
@@ -307,68 +283,8 @@ test('a NO_OP preparation may verify data but cannot suppress the catalog pre-st
   assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof }), /CATALOG_NOT_PREPARED/);
 });
 
-test('only a completed successful real CI test job can supply a proof', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  for (const conclusion of ['failure', 'cancelled', 'timed_out', 'skipped', null]) {
-    await assert.rejects(network(f, proof, { mutateRun: run => { run.conclusion = conclusion; } }).consume(), /CI_REGISTRATION_PROOF_RUN_/);
-  }
-  for (const jobs of [[], [{ name: 'plan', status: 'completed', conclusion: 'success' }],
-    [{ name: 'test', status: 'completed', conclusion: 'skipped' }]]) {
-    await assert.rejects(network(f, proof, { jobs }).consume(), /TEST_JOB_NOT_SUCCESS/);
-  }
-});
-
-test('run lookup binds repository, PR number, event base, head and workflow', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  const mutations = [run => { run.repository.full_name = 'other/repository'; },
-    run => { run.repository.id = 999; }, run => { run.pull_requests[0].number = 18; },
-    run => { run.pull_requests[0].base.sha = 'f'.repeat(40); },
-    run => { run.head_sha = 'e'.repeat(40); }, run => { run.event = 'push'; },
-    run => { run.path = '.github/workflows/other.yml'; }];
-  for (const mutateRun of mutations) {
-    const n = network(f, proof, { mutateRun });
-    await assert.rejects(n.consume(), /WAIT_TIMEOUT/);
-    assert.equal(n.requests.some(route => route.endsWith('/zip')), false);
-  }
-});
-
-test('waiting uses bounded intervals, and missing CI never becomes PASS', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  const n = network(f, proof); let clock = 0, reads = 0;
-  const sleeps = [], notices = [];
-  const result = await n.consume({ timeoutMs: 90000, now: () => clock,
-    getJson: async route => {
-      if (route.includes('/workflows/')) {
-        reads++;
-        if (reads <= 2) return { workflow_runs: [{ ...n.run, status: 'in_progress', conclusion: null }] };
-      }
-      return n.getJson(route);
-    }, sleep: async ms => { sleeps.push(ms); clock += ms; }, onWait: item => notices.push(item) });
-  assert.equal(result.state, 'REUSED'); assert.deepEqual(sleeps, [30000, 30000]);
-  assert.equal(notices.length, 2);
-  clock = 0; reads = 0; sleeps.length = 0;
-  await assert.rejects(n.consume({ timeoutMs: 60000, now: () => clock,
-    getJson: async () => { reads++; return { workflow_runs: [] }; },
-    sleep: async ms => { sleeps.push(ms); clock += ms; } }), /WAIT_TIMEOUT/);
-  assert.equal(reads, 3); assert.deepEqual(sleeps, [30000, 30000]);
-  await assert.rejects(n.consume({ pollMs: 1000 }), /WAIT_BOUND_INVALID/);
-});
-
-test('missing, expired, foreign, digestless and wrong-attempt artifacts are rejected', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  await assert.rejects(network(f, proof, { omitArtifact: true }).consume(), /ARTIFACT_MISSING/);
-  for (const mutateArtifact of [artifact => { artifact.expired = true; },
-    artifact => { delete artifact.digest; }, artifact => { artifact.workflow_run.id = 999; },
-    artifact => { artifact.workflow_run.repository_id = 999; },
-    artifact => { artifact.workflow_run.head_repository_id = 999; },
-    artifact => { artifact.workflow_run.head_sha = 'c'.repeat(40); }]) {
-    await assert.rejects(network(f, proof, { mutateArtifact }).consume(), /ARTIFACT_INVALID/);
-  }
-  await assert.rejects(network(f, proof, { mutateRun: run => { run.run_attempt = 2; } }).consume(), /RUN_MISMATCH/);
-});
-
-test('required check outcomes, strict metadata schema and exact producer cannot be forged', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
+test('required check outcomes, strict metadata schema and exact producer cannot be forged', t => {
+  const f = fixture(t), proof = f.produce();
   const cases = [[item => { item.status = 'FAIL'; }, /NOT_PASS/],
     [item => { item.checks.pop(); }, /CHECKS_INCOMPLETE/],
     [item => { item.checks[0].outcome = 'skipped'; }, /CHECKS_INCOMPLETE/],
@@ -377,63 +293,8 @@ test('required check outcomes, strict metadata schema and exact producer cannot 
     [item => { item.rawStudentContent = 'must never be accepted'; }, /SCHEMA_INVALID/],
     [item => { item.context.checkoutSha = 'a'.repeat(40); }, /CONTEXT_MISMATCH/],
     [item => { item.outputs.digest = 'not a digest'; }, /OUTPUT_INVALID/]];
-  for (const [mutateProof, pattern] of cases) await assert.rejects(network(f, proof, { mutateProof }).consume(), pattern);
-});
-
-test('changing generated output digest inside an artifact fails its API digest binding', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  const n = network(f, proof);
-  const forged = clone(proof); forged.outputs.digest = '0'.repeat(64);
-  await assert.rejects(n.consume({ getArtifact: async () => zip(forged) }), /ARTIFACT_DIGEST_MISMATCH/);
-  const before = f.git('status', '--porcelain');
-  await assert.rejects(n.consume({ getArtifact: async () => Buffer.alloc(0) }), /ARTIFACT_DIGEST_MISMATCH/);
-  assert.equal(f.git('status', '--porcelain'), before);
-});
-
-test('artifact decoding is bounded and never extracts extra or traversing members', t => {
-  const f = fixture(t), proof = f.produce();
-  assert.equal(decodeRegistrationProofArtifact(zip(proof)).status, 'PASS');
-  assert.throws(() => decodeRegistrationProofArtifact(zip(proof, '../proof.json')), /ARTIFACT_INVALID/);
-  assert.throws(() => decodeRegistrationProofArtifact(zip(proof, 'proof.json', true)), /ARTIFACT_INVALID/);
-  assert.throws(() => decodeRegistrationProofArtifact(Buffer.alloc(256 * 1024 + 1)), /SIZE_INVALID/);
-  assert.throws(() => decodeRegistrationProofArtifact(zip({ huge: 'x'.repeat(65 * 1024) })), /ARTIFACT_INVALID/);
-});
-
-test('a rerun or local source change during retrieval invalidates the consumed proof', async t => {
-  const f = fixture(t), proof = f.produce(); f.clean();
-  const n = network(f, proof);
-  await assert.rejects(n.consume({ getJson: async route => {
-    const result = await n.getJson(route);
-    return route.endsWith('/actions/runs/41') ? { ...result, status: 'in_progress', conclusion: null, run_attempt: 2 } : result;
-  } }), /RUN_CHANGED/);
-  await assert.rejects(n.consume({ getArtifact: async route => {
-    f.write('archive/exams/original/new.js', 'concurrent source mutation');
-    return n.getArtifact(route);
-  } }), /CLEAN_REGISTRATION_CHECKOUT_REQUIRED/);
-});
-
-test('the HTTP reader only makes GET requests and strips authorization at the signed redirect', async () => {
-  const calls = [], payload = Buffer.from('bounded fixture bytes');
-  const reader = createGitHubProofReader({ token: 'fixture-token', fetchImpl: async (url, options) => {
-    calls.push({ url, options });
-    if (url.endsWith('/zip')) return new Response(null, { status: 302, headers: { location: 'https://storage.example.invalid/artifact?signature=fixture' } });
-    if (url.startsWith('https://storage.')) return new Response(payload);
-    return new Response(JSON.stringify({ workflow_runs: [] }));
-  } });
-  assert.deepEqual(await reader.getJson('/repos/o/r/actions/workflows/ci.yml/runs'), { workflow_runs: [] });
-  assert.deepEqual(await reader.getArtifact('/repos/o/r/actions/artifacts/1/zip'), payload);
-  assert.ok(calls.every(call => call.options.method === 'GET'));
-  assert.equal(calls[0].options.headers.Authorization, 'Bearer fixture-token');
-  assert.equal(calls[2].options.headers, undefined);
-  assert.equal(calls[2].options.redirect, 'error');
-});
-
-test('HTTP errors, unsafe redirects and oversized responses fail without a fallback PASS', async () => {
-  const failing = createGitHubProofReader({ fetchImpl: async () => new Response('', { status: 403 }) });
-  await assert.rejects(failing.getJson('/repos/o/r/actions/runs'), /HTTP_403/);
-  const redirect = createGitHubProofReader({ fetchImpl: async () => new Response(null, { status: 302,
-    headers: { location: 'http://storage.example.invalid/artifact' } }) });
-  await assert.rejects(redirect.getArtifact('/repos/o/r/actions/artifacts/1/zip'), /REDIRECT_INVALID/);
-  const oversized = createGitHubProofReader({ fetchImpl: async () => new Response(Buffer.alloc(256 * 1024 + 1)) });
-  await assert.rejects(oversized.getArtifact('/repos/o/r/actions/artifacts/1/zip'), /RESPONSE_TOO_LARGE/);
+  for (const [mutate, pattern] of cases) {
+    const forged = clone(proof); mutate(forged);
+    assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof: forged, runId: 41, runAttempt: 1 }), pattern);
+  }
 });

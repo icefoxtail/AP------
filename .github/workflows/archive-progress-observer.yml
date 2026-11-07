@@ -2,7 +2,7 @@ name: Archive Progress Observer
 
 on:
   workflow_run:
-    workflows: [Archive Registration Sync, Archive Pages Release, Archive Stage Validator]
+    workflows: [Archive Pages Release, Archive Stage Validator]
     types: [completed]
   pull_request:
     types: [closed]

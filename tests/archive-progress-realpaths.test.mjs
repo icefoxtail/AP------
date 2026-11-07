@@ -165,7 +165,7 @@ test('proof query/download and status storage failures in observer path do not b
   const api=async route=>{
    if(route.startsWith('/pulls?'))return [];
    if(route.includes('/runs?')){
-    const reg=route.includes('archive-registration');
+    const reg=route.includes('registration-fixture');
     return {workflow_runs:[{id:reg?20:30,run_attempt:2,event:'push',conclusion:'success',
      head_sha:B,updated_at:at(5),html_url:link('actions/runs',reg?20:30),head_branch:'main'}]};
    }
@@ -174,7 +174,7 @@ test('proof query/download and status storage failures in observer path do not b
   };
   let gate;const waiting=new Promise(resolve=>{gate=resolve;});let signal;
   const entered=new Promise(resolve=>{signal=resolve;});
-  const status=executeOnce({api,getEvidence:async()=>{evidenceCalls++;throw Error('evidence query unavailable');},
+  const status=executeOnce({api,registrationWorkflow:'registration-fixture.yml',getEvidence:async()=>{evidenceCalls++;throw Error('evidence query unavailable');},
    storeStatus:async()=>{signal();await waiting;throw Error('status branch failed');}});
   await entered;
   const tmp=mkdtempSync(path.join(os.tmpdir(),'independent-producer-'));
@@ -215,9 +215,9 @@ test('successful old proof is not fetched repeatedly when no new observer events
  const fake=async route=>{
   if(route.startsWith('/pulls?'))return [];
   if(route.includes('/runs?'))return {workflow_runs:[{
-   id:route.includes('archive-registration')?20:30,run_attempt:2,event:'push',conclusion:'success',
-   head_sha:route.includes('archive-registration')?B:D,updated_at:at(route.includes('archive-registration')?3:4),
-   html_url:link('actions/runs',route.includes('archive-registration')?20:30),head_branch:'main'}]};
+   id:route.includes('registration-fixture')?20:30,run_attempt:2,event:'push',conclusion:'success',
+   head_sha:route.includes('registration-fixture')?B:D,updated_at:at(route.includes('archive-registration')?3:4),
+   html_url:link('actions/runs',route.includes('registration-fixture')?20:30),head_branch:'main'}]};
   if(route.startsWith('/contents/'))return {encoding:'base64',content:Buffer.from(JSON.stringify(previous)).toString('base64'),sha:A};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('unexpected '+route);

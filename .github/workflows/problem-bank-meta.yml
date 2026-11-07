@@ -2,10 +2,10 @@ name: Problem Bank Shared Meta
 on:
   push:
     branches: [main]
-    paths: ['archive/**', 'tests/*meta*', '.github/workflows/problem-bank-meta.yml']
+    paths: ['archive/**', 'tests/*meta*', 'tests/archive-original-exam-access.browser.cjs', '.github/workflows/problem-bank-meta.yml']
   pull_request:
     branches: [main]
-    paths: ['archive/**', 'tests/*meta*', '.github/workflows/problem-bank-meta.yml']
+    paths: ['archive/**', 'tests/*meta*', 'tests/archive-original-exam-access.browser.cjs', '.github/workflows/problem-bank-meta.yml']
   workflow_dispatch:
 permissions:
   contents: read

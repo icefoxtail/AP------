@@ -35,8 +35,8 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
-    label: 'tests/archive2-registration-sync.test.mjs',
-    args: ['--test', 'tests/archive2-registration-sync.test.mjs']
+    label: 'tests/archive2-registration-contracts.test.mjs',
+    args: ['--test', 'tests/archive2-registration-contracts.test.mjs']
   },
   {
     label: 'tests/archive-register-trigger-paths.test.mjs',

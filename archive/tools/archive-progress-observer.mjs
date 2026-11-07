@@ -123,12 +123,16 @@ export async function readStatus(api) {
  return {value,sha:file.sha||null};
 }
 
-export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new Date().toISOString(),storeStatus,manualRetry=false,
+export async function executeOnce({api,getEvidence,historyPages=1,registrationWorkflow=null,clock=()=>new Date().toISOString(),storeStatus,manualRetry=false,
  ancestor:ancestorImpl=null,deadlineAt=Infinity,now:nowMs=()=>Date.now(),log=()=>{}}){
  const {value:old,sha:previousSha}=await readStatus(api);
- const [{prs,incompletePRs,completePulls,oldestObservedAt},regRuns,releaseRuns]=await Promise.all([
-  mergedPRs(api,historyPages),runs(api,'archive-registration-sync.yml',historyPages),runs(api,'archive-pages-release.yml',historyPages)]);
- const checks=checksFromRuns(regRuns),registrations=[],releases=[];
+ const [{prs,incompletePRs,completePulls,oldestObservedAt},ciRuns,regRuns,releaseRuns]=await Promise.all([
+  mergedPRs(api,historyPages),runs(api,'ci.yml',historyPages),
+  registrationWorkflow?runs(api,registrationWorkflow,historyPages):[],runs(api,'archive-pages-release.yml',historyPages)]);
+ // 2026-11-07: the PR-only Archive Registration Sync workflow was removed. PR check evidence now comes from CI
+ // pull_request runs. No workflow produces observer registration runs on main (the main writer's job is not
+ // 'sync'), so registrationWorkflow stays null in production; the registration path is exercised by test fixtures.
+ const checks=checksFromRuns([...ciRuns,...regRuns]),registrations=[],releases=[];
  const manualHistory=historyPages>1;
  // Incremental by default. History replay remains a separate manual dispatch.
  // The next run always fetches the newest page; updatedAt NEVER gates evidence.

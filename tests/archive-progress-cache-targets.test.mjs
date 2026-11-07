@@ -45,7 +45,8 @@ function fixture({mode='fail',latePR=false}={}){
    {number:2,merged_at:at(1),merge_commit_sha:B,head:{sha:A},changed_files:1,html_url:link('pull',2)}];
   if(route.includes('/pulls/1/files'))return [{filename:'archive/exams/high/'+ID+'.js'}];
   if(route.includes('/pulls/2/files'))return discovered?[{filename:'archive/exams/high/'+LATE+'.js'}]:[];
-  if(route.includes('/archive-registration-sync.yml/runs?'))return {workflow_runs:[reg]};
+  if(route.includes('/ci.yml/runs?'))return {workflow_runs:[]};
+  if(route.includes('/registration-fixture.yml/runs?'))return {workflow_runs:[reg]};
   if(route.includes('/archive-pages-release.yml/runs?'))return {workflow_runs:[release]};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('unexpected observer API '+route);
@@ -79,7 +80,7 @@ function fixture({mode='fail',latePR=false}={}){
   }};
  const evidence=async(run,kind,prior)=>kind==='release'||prior?collectEvidence(run,kind,prior,client):
   {schema:2,run_id:20,run_attempt:1,sourceSha:C,...expected,evidenceSource:'trusted-git-tree'};
- const next=async(minute,manualRetry=false)=>executeOnce({api,storeStatus:async current=>{stored=current;},
+ const next=async(minute,manualRetry=false)=>executeOnce({registrationWorkflow:'registration-fixture.yml',api,storeStatus:async current=>{stored=current;},
   getEvidence:evidence,clock:()=>at(minute),manualRetry});
  return {next,called,get state(){return stored;},setMode:v=>currentMode=v,discover:()=>{discovered=true;},setTreeDown:v=>{treeDown=v;},cleanup:()=>rmSync(dir,{recursive:true,force:true})};
 }
@@ -248,7 +249,7 @@ function oldRunBackfillFixture({negative=false}={}){
   }
   throw Error('unexpected tree API '+route);
  }};
- const next=async(minute)=>executeOnce({api,clock:()=>at(minute),
+ const next=async(minute)=>executeOnce({registrationWorkflow:'registration-fixture.yml',api,clock:()=>at(minute),
   getEvidence:(run,kind,cached,missing)=>collectEvidence(run,kind,cached,client),
   storeStatus:async state=>{stored=state;}});
  return {next,get count(){return trees;}};

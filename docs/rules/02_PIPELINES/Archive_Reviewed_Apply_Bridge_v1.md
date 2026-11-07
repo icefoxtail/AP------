@@ -112,6 +112,8 @@ fast-forward push. If the target moved during the run, it reports
 R2 resealing. It never force-pushes. The final target tree contains no
 `.archive-apply/inbox/**` files. On success, the staging branch is deleted.
 
-`archive-registration-sync.yml` remains enabled for ordinary `main` exam
-registration. It must be a no-op after an Apply Bridge commit. Automatic R2
+Ordinary `main` exam registration is done by the main registration writer
+(`archive-main-auto-meta.yml`). It must be a no-op after an Apply Bridge commit.
+(2026-11-07: the PR-only Archive Registration Sync workflow was removed; its Chrome
+check runs in Problem Bank Shared Meta and its registration data check in CI.) Automatic R2
 asset copy is restricted to `main`; `workflow_dispatch` remains available.

@@ -81,11 +81,12 @@ test('executeOnce retains all prior 180 observations when new run rows are added
  const api=async route=>{
   if(route.startsWith('/contents/'))return {sha:'status-blob',size:Buffer.byteLength(raw),encoding:'base64',content:encode(raw)};
   if(route.startsWith('/pulls?'))return [];
-  if(route.startsWith('/actions/workflows/archive-registration-sync.yml/runs?'))return {workflow_runs:newRuns};
+  if(route.startsWith('/actions/workflows/ci.yml/runs?'))return {workflow_runs:[]};
+  if(route.startsWith('/actions/workflows/registration-fixture.yml/runs?'))return {workflow_runs:newRuns};
   if(route.startsWith('/actions/workflows/archive-pages-release.yml/runs?'))return {workflow_runs:[]};
   throw Error('unexpected API route '+route);
  };
- await executeOnce({api,getEvidence:async()=>null,clock:()=> '2026-10-14T14:01:00.000Z',
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api,getEvidence:async()=>null,clock:()=> '2026-10-14T14:01:00.000Z',
   storeStatus:async value=>{written=value;}});
  assert.ok(written);
  for(const [key,value] of Object.entries(observations))assert.deepEqual(written.observations[key],value);

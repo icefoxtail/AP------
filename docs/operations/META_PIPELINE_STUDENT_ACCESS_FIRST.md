@@ -18,4 +18,4 @@ Pages release의 `selection_tests`는 학생용 원본 자산·Consumer 동기�
 
 Pages의 생성문항 메타 필터 Chrome(`chrome_generated_bank`)도 후보완 진단이다. 필수 `staged_site_chrome`은 완성된 사이트의 실제 원본 시험지 출력 경로를 확인한다. 검색 필터 메타 실패만으로 기출 문제 화면을 막지 않는다.
 
-`Archive Registration Sync`도 META_V2 완성도와 검색 메타 필터를 진단으로 남기고, 원본 UID·DB 등록 및 실제 Chrome 문제 화면 접근을 필수로 검사한다. `Problem Bank Shared Meta`의 필터·저장 메타 검사는 진단이며 문제 화면 접근은 별도 필수 Chrome 검사다. 해설이 비어 있는 기출은 `SOLUTION_PENDING`으로 표시하고 문제 화면 출고를 허용한다.
+CI는 META_V2 완성도와 검색 메타 필터를 진단으로 남기고, 원본 UID·DB 등록을 필수로 검사한다. `Problem Bank Shared Meta`의 필터·저장 메타 검사는 진단이며 실제 Chrome 문제 화면 접근은 같은 워크플로의 별도 필수 Chrome 검사다(2026-11-07: Archive Registration Sync 제거, Chrome 검사는 Problem Bank Shared Meta, 등록 데이터 검사는 CI). 해설이 비어 있는 기출은 `SOLUTION_PENDING`으로 표시하고 문제 화면 출고를 허용한다.

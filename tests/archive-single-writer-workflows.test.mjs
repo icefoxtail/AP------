@@ -10,7 +10,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const workflow = name => fs.readFileSync(path.join(root, '.github/workflows', name), 'utf8');
 const writer = workflow('archive-main-auto-meta.yml');
 const pages = workflow('archive-pages-release.yml');
-const sync = workflow('archive-registration-sync.yml');
+const problemBankMeta = workflow('problem-bank-meta.yml');
 const compatibility = workflow('archive-reviewed-exam-meta-register.yml');
 const legacy = workflow('archive-reviewed-apply.yml');
 
@@ -70,7 +70,7 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.match(register, /--remote origin --branch main --max-attempts 3/);
   assert.doesNotMatch(register, /--force|git\s+(?:commit|push)\b/);
   assert.match(step(register, /^        id: persist$/m), /if: steps\.prepare\.outputs\.safe_to_persist == 'true'/);
-  for (const [name, text] of [['Pages', pages], ['PR preview', sync], ['compatibility recovery', compatibility]]) {
+  for (const [name, text] of [['Pages', pages], ['compatibility recovery', compatibility]]) {
     assert.doesNotMatch(text, /contents: write|git-push-derived-with-retry|git\s+(?:commit|push)\b/, `${name} has no shared Git writer`);
   }
   assert.doesNotMatch(compatibility, /actions\/checkout|reviewed-meta-register-pass|archive-pages-release\.yml/);
@@ -81,14 +81,23 @@ test('PR validation jobs do not retain checkout credentials or inherit the main 
   assert.match(writer, /^permissions:\n  contents: read\njobs:/m);
   const pr = job(writer, 'test');
   assert.match(pr, /if: github\.event_name == 'pull_request'/);
-  for (const [name, text] of [['writer fixtures', pr], ['registration preview', sync],
+  for (const [name, text] of [['writer fixtures', pr],
     ['QID9 validation', workflow('auto-register-approved-qid9.yml')]]) {
     assert.match(text, /persist-credentials: false/, name);
     assert.doesNotMatch(text, /(?:contents|actions|id-token|pages|pull-requests): write|GH_TOKEN:|secrets\.|git\s+(?:commit|push)\b|gh workflow run/, name);
   }
-  assert.match(sync, /^permissions:\n  contents: read\n  actions: read/m);
-  assert.match(sync, /GITHUB_TOKEN: \$\{\{ github\.token \}\}/);
-  assert.match(sync, /archive-pr-registration-proof\.mjs consume/);
+});
+
+// 2026-11-07: the separate Archive Registration Sync workflow was removed. Its Chrome check runs in
+// Problem Bank Shared Meta and its registration data check runs in CI; neither may be weakened.
+test('original exam Chrome check is a blocking Problem Bank Shared Meta step on archive PRs', () => {
+  assert.equal(fs.existsSync(path.join(root, '.github/workflows/archive-registration-sync.yml')), false);
+  const triggers = problemBankMeta.slice(0, problemBankMeta.indexOf('\npermissions:'));
+  assert.match(triggers, /pull_request:\n    branches: \[main\]\n    paths: \[[^\]]*'archive\/\*\*'/);
+  assert.match(triggers, /pull_request:[^]*tests\/archive-original-exam-access\.browser\.cjs/);
+  const chrome = step(problemBankMeta, /name: Verify original exam opens for students in actual Chrome/);
+  assert.match(chrome, /run: node tests\/archive-original-exam-access\.browser\.cjs/);
+  assert.doesNotMatch(chrome, /continue-on-error/);
 });
 
 test('the publication handoff consumes only the push helper registered SHA and has one dispatch', () => {
@@ -104,7 +113,7 @@ test('the publication handoff consumes only the push helper registered SHA and h
   assert.match(dispatch, /steps\.persist\.outputs\.result == 'PUSHED' \|\| github\.event_name != 'schedule'/,
     'unchanged periodic registration does not dispatch the same package again');
   assert.equal((register.match(/gh workflow run archive-pages-release\.yml/g) || []).length, 1);
-  assert.doesNotMatch(sync + compatibility, /gh workflow run archive-pages-release\.yml/);
+  assert.doesNotMatch(compatibility, /gh workflow run archive-pages-release\.yml/);
 });
 
 test('actual binding shell checks the registered commit even when main has advanced', t => {
@@ -224,7 +233,6 @@ test('one main push entrypoint and periodic reconciliation preserve interrupted-
   assert.match(pages, /^  schedule:\n    - cron:/m);
   assert.match(pages, /^  workflow_dispatch:/m);
   assert.doesNotMatch(pages, /^  (?:push|workflow_run):/m, 'publication does not fan out from duplicate registration events');
-  assert.doesNotMatch(sync, /^  (?:push|workflow_dispatch|schedule|repair):/m);
   assert.doesNotMatch(compatibility, /^  (?:push|schedule):/m);
   assert.match(legacy, /^      - "archive-apply\/\*\*"/m);
 });
