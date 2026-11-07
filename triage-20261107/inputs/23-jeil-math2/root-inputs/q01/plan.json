@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $F(x)=x^2-x+1$이 $f(x)$의",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -5,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5"
+        }
+      ]
+    }
+  },
+  "caption": "부정적분을 미분해 얻은 일차함수의 입력에 대응하는 위치를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "부정적분을 미분해 얻은 일차함수의 입력에 대응하는 위치를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "부정적분을 미분해 얻은 일차함수의 입력에 대응하는 위치를 보인다."
+  ]
+}

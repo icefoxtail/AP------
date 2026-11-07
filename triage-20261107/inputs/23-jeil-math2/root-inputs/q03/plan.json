@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=x^4-4x^2+3$의 최댓값",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "-4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -2,
+      3,
+      -2,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "Q",
+        "x": "sqrt(2)",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "닫힌구간의 양 끝과 내부 극값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[-1,2]의 후보는 양 끝과 내부 극점 x=0,√2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "제한 구간의 끝점과 내부 극값을 함께 비교해야 함을 보인다."
+  ]
+}

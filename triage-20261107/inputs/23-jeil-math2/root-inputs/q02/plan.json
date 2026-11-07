@@ -1,0 +1,75 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(3)=27-27-27+k=k-27=-6$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "21",
+      "-9",
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -10,
+      30
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-10",
+        "-6",
+        "-2",
+        "1",
+        "5",
+        "10",
+        "15",
+        "20",
+        "25",
+        "30"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "26"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "-6"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 극솟값에 맞는 함수의 극대와 극소를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=21을 대입하면 극대는 x=-1, 극소는 x=3에서 생긴다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "극솟값 조건으로 정해진 함수의 두 극점 관계를 보인다."
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=|x|+|x-2|$일 때,",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -2,
+      4,
+      -1,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "4"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S_3"
+      }
+    ]
+  },
+  "caption": "도함수의 절댓값 경계를 기준으로 적분 영역을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g=f'이고 x<0에서는 -2x+2, 0≤x<2에서는 2, x≥2에서는 2x-2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 세 구간 넓이를 더해 함수값의 차를 구하는 관계를 보인다."
+  ]
+}
