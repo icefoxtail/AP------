@@ -6,12 +6,15 @@ import http from 'node:http';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
+import { createLiveAssetVerifier, publicPlaygroundBase, drainResponseTasks } from './high-live-assets.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
 const arg = (key, fallback) => { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; };
 const root = path.resolve(arg('--root', '.'));
 const out = path.resolve(arg('--out', '.tmp/high-lab-browser'));
 const observe = argv.includes('--baseline-observe');
+const publicBase = arg('--base-url', ''); // HTTP(S) playground/ directory, not labs/.
+if (publicBase && observe) throw Error('Public verification cannot be a baseline-only observation');
 const scope = arg('--only', '').split(',').filter(Boolean);
 const courses = ['common', 'algebra', 'calc1', 'geom', 'probstat'];
 const sandbox = { window: {} };
@@ -34,10 +37,15 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
   fs.createReadStream(file).pipe(res);
 });
-await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-const base = `http://127.0.0.1:${server.address().port}/apmath/playground/`;
+if (!publicBase) await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const base = publicBase ? publicPlaygroundBase(publicBase).href : `http://127.0.0.1:${server.address().port}/apmath/playground/`;
 fs.mkdirSync(out, { recursive: true });
 const report = { schema: 1, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, labs: [], failures: [], limitations: ['Viewport simulation, not physical device testing.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; mathematical/visual interpretation requires independent review.'] };
+const live = publicBase ? createLiveAssetVerifier({root,baseURL:base,commit:report.commit,onFailure:f=>report.failures.push(f)}) : null;
+if (live) {
+  report.mode = 'PUBLIC_READ_ONLY_CHECK'; report.baseURL = base; report.sourceVerification = live.report;
+  report.releaseEvent = { runId:process.env.RELEASE_RUN_ID||null,headSHA:process.env.RELEASE_EVENT_HEAD_SHA||null,meaning:'Release workflow metadata, not an assertion of deployed commit.' };
+}
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { headless: true });
 const save = () => fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
 try {
@@ -45,9 +53,14 @@ try {
     const dest = { id: item.id, course: item.course, file: item.next, scenes: [], observations: [], interactions: [], captures: [], failureCaptures: [] };
     report.labs.push(dest);
     for (const run of runs) {
-      const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc'), deviceScaleFactor: 1 });
+      const context = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc'), deviceScaleFactor: 1, serviceWorkers:'block' });
       const page = await context.newPage();
       const errors = [], externalFailures = [];
+      const responseTasks=[],liveContext=item.id+'--'+run.name;
+      if(live){
+        await context.route('**/*',route=>['GET','HEAD','OPTIONS'].includes(route.request().method())?route.continue():(errors.push('Blocked non-read-only request'),route.abort()));
+        page.on('response',response=>{if(['document','script','stylesheet'].includes(response.request().resourceType()))responseTasks.push(live.verify(response,liveContext));});
+      }
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
       page.on('requestfailed', r => { if (r.url().startsWith(base)) errors.push(r.url() + ' ' + r.failure()?.errorText); else externalFailures.push({ url: r.url(), error: r.failure()?.errorText }); });
@@ -55,6 +68,10 @@ try {
         await page.addInitScript(() => { let seed = 424; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
         await page.goto(base + item.next + '?theme=' + run.theme, { waitUntil: 'networkidle', timeout: 30000 });
         await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
+        if(live){
+          const catalogResponse=await context.request.get(new URL('next/kit/apl-catalog.js',base).href);
+          await live.verify(catalogResponse,liveContext);
+        }
         const census = await page.evaluate(async () => {
           const scenes = lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index, group: s.group?.title }));
           lab.openOverview(); await new Promise(r => requestAnimationFrame(r));
@@ -177,7 +194,7 @@ try {
             if (scene.index === 0 && run.name === 'pc-paper') await capture(scene, 'final');
             // One bounded student viewport per opted-in scene supports independent
             // figure/step review without archiving every intermediate state.
-            else if (!observe && initial.stagedReveal && run.name === 'pc-paper') await capture(scene, 'review', false);
+            else if (!observe && !live && initial.stagedReveal && run.name === 'pc-paper') await capture(scene, 'review', false);
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(() => { lab.s.revealed=false; lab.setStep(0); lab.setTab('problem'); }); await measure(scene, 'problem-hidden');
@@ -236,11 +253,21 @@ try {
       } catch(e) { report.failures.push({lab:item.id,run:run.name,reason:'runner-error',error:e.message}); }
       if(errors.length)report.failures.push({lab:item.id,run:run.name,reason:'runtime-error',errors});
       if(externalFailures.length)(dest.externalFailures ||= []).push({run:run.name,failures:externalFailures});
-      await context.close();save();
+      let sourceURLs=[];
+      if(live){
+        sourceURLs=await page.evaluate(()=>[location.href,...[...document.scripts].filter(s=>s.src).map(s=>s.src),...[...document.querySelectorAll('link[rel="stylesheet"][href]')].map(s=>s.href)]).catch(()=>[]);
+        await drainResponseTasks(responseTasks);
+      }
+      await context.close(); // End observation before the final response drain.
+      if(live){
+        await drainResponseTasks(responseTasks);
+        live.requireSources([base+item.next,new URL('next/kit/apl-catalog.js',base).href,...sourceURLs],liveContext);
+      }
+      save();
       console.log(JSON.stringify({lab:item.id,run:run.name,scenes:dest.scenes.length,failures:report.failures.filter(f=>f.lab===item.id).length}));
     }
   }
-} finally { await browser.close();await new Promise(resolve=>server.close(resolve));save(); }
+} finally { await browser.close();if(!publicBase)await new Promise(resolve=>server.close(resolve));if(live)report.sourceVerification=live.finish();save(); }
 const totals={};for(const l of report.labs)totals[l.course]=(totals[l.course]||0)+l.scenes.length;
 console.log(JSON.stringify({mode:report.mode,commit:report.commit,labs:report.labs.length,scenes:report.labs.reduce((n,l)=>n+l.scenes.length,0),totals,failures:report.failures.length}));
 process.exitCode=observe?0:report.failures.length?1:0;
