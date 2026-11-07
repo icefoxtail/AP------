@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(x)=6x-2$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -6,
+      16
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "2",
+        "4",
+        "6",
+        "8",
+        "12",
+        "14"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "6"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "10"
+        }
+      ]
+    }
+  },
+  "caption": "적분 조건을 두 번 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 조건을 두 번 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분 조건을 두 번 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다."
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$v(t)=6t-3t^2$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -10,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-9",
+        "-7",
+        "-5",
+        "-3",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "v",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "6",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=v(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "-9"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "v",
+          "axis"
+        ],
+        "from": "1",
+        "to": "2"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "v",
+          "axis"
+        ],
+        "from": "2",
+        "to": "3"
+      }
+    ]
+  },
+  "caption": "속도의 부호에 따라 구간을 나누고 각 영역의 넓이를 더한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도의 부호가 바뀌는 지점에서 구간을 나누어 각 영역의 넓이를 더한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호에 따른 구간별 넓이를 더해 이동거리를 구하는 관계를 보인다."
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=2x^2+ax+5$에서",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      2,
+      -3,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "14"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "5",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "s",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "5"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "label": "y=s(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "2"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "12"
+        }
+      ]
+    }
+  },
+  "caption": "두 점을 잇는 할선의 기울기와 평균변화율을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점을 잇는 할선의 기울기와 평균변화율을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점을 잇는 할선의 기울기와 평균변화율을 비교한다."
+  ]
+}

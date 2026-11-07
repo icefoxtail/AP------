@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$\\displaystyle\\int f(x)dx=5x^2+2x+C$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      2,
+      -8,
+      16
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-6",
+        "-2",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "14"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "10"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "12"
+        }
+      ]
+    }
+  },
+  "caption": "부정적분을 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "부정적분을 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "부정적분을 미분해 얻은 일차함수에서 주어진 입력의 위치를 보인다."
+  ]
+}
