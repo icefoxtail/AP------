@@ -180,12 +180,12 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span> 의 두 초점을 <span class="font-mono">F, F'</span>이라 하자. 타원 위의 점 <span class="font-mono">P</span>에 대하여 선분 <span class="font-mono text-pink-300 font-bold">PF' = 7</span> 일 때, 선분 <span class="font-mono text-emerald-300 font-bold">PF</span>의 길이와 삼각형 <span class="font-mono text-amber-300 font-bold">PF'F의 둘레의 길이</span>를 구하시오.`,
         answerBadge: "PF = 3, ΔPF'F 둘레 = 18",
         presets: [
-          { label: "PF'=7 (둘레 18)", a: 5.0, b: 3.0, theta: Math.PI / 3 },
+          { label: "PF'=7인 조건", a: 5.0, b: 3.0, theta: Math.PI / 3 },
           { label: "단축 꼭짓점 B(0,3): 직각삼각형 BOF", a: 5.0, b: 3.0, theta: Math.PI / 2 },
           { label: "PF':PF = 4:1 (θ=0° 근처)", a: 5.0, b: 3.0, theta: Math.acos(0.75) }
         ],
         parts: [
-          { idx: 0, title: "① 초점 거리 합 (PF' + PF = 2a)", desc: "어느 위치에서도 7.00 + 3.00 = 10.00 일정", color: "#f472b6" },
+          { idx: 0, title: "① 초점 거리 합 (PF' + PF = 2a)", desc: "점 P의 위치에 따라 두 거리는 각각 변합니다. 거리의 합을 비교하세요.", color: "#f472b6" },
           { idx: 1, title: "② 초점삼각형 ΔPF'F 둘레 (2a + 2c)", desc: "(PF'+PF) + F'F = 10 + 8 = 18 불변", color: "#fbbf24" },
           { idx: 2, title: "③ 직각삼각형 ΔBOF (a²=b²+c²)", desc: "항상 보이는 기준 직각삼각형: OF=c, OB=b, BF=a", color: "#38bdf8" }
         ],
@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function () {
           steps: `① 초점 좌표: c = √(25 - 9) = 4 ⇒ F(4, 0), F'(-4, 0)<br/>
 ② 점 P(x₁, y₁)라 두면 √((x₁+4)² + y₁²) = 7<br/>
 ③ 타원 식 y₁² = 9(1 - x₁²/25) 대입 후 무리방정식 전개:<br/>
-&nbsp;&nbsp;(16/25)x₁² + 8x₁ - 24 = 0 ⇒ x₁ = 5/2를 구한 뒤 PF를 다시 계산한다.`,
+&nbsp;&nbsp;(16/25)x₁² + 8x₁ - 24 = 0 ⇒ 타원 위의 근 x₁ = 5/2, y₁²=27/4이다.<br/>④ PF²=(5/2−4)²+27/4=9이므로 PF=3. 둘레는 7+3+8=18이다.`,
           warning: "주의: 점 P의 좌표를 구하려고 근호가 들어 있는 방정식을 연립하면 계산이 길어지고 실수하기 쉽습니다. 타원의 정의를 이용하면 PF를 바로 구할 수 있습니다."
         },
         shortcut: {
@@ -219,8 +219,8 @@ window.addEventListener('DOMContentLoaded', function () {
         // ∠F'PF = 90° 조건: x^2 + y^2 = c^2 => a^2 cos^2θ + b^2 sin^2θ = c^2 => (a^2-b^2)cos^2θ = c^2 - b^2 => cos^2θ = (c^2-b^2)/c^2
         // a=5, b=3, c=4 => cos^2θ = (16-9)/16 = 7/16 => θ = acos(√7 / 4) ≈ 48.59°
         presets: [
-          { label: "∠F'PF = 90°인 교점 (넓이 b²=9)", a: 5.0, b: 3.0, theta: Math.acos(Math.sqrt(7) / 4) },
-          { label: "단축 꼭짓점 B (∠F'PF가 최대, 106.3°)", a: 5.0, b: 3.0, theta: Math.PI / 2 },
+          { label: "∠F'PF = 90°인 교점", a: 5.0, b: 3.0, theta: Math.acos(Math.sqrt(7) / 4) },
+          { label: "단축 꼭짓점 B", a: 5.0, b: 3.0, theta: Math.PI / 2 },
           { label: "c < b (∠F'PF = 90°인 점이 없는 경우)", a: 4.0, b: 3.2, theta: Math.PI / 2 }
         ],
         parts: [
@@ -244,7 +244,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: {
           steps: `① 타원에서 <strong class="text-sky-300">∠F'PF = 90°</strong>이면 <strong class="text-pink-300">PF'·PF = 2b²</strong>이다. (교과서식 풀이에서 2pq = (2a)² − (2c)² = 4b²)<br/>
 ② 따라서 직각삼각형의 넓이는 <strong class="text-amber-300">S = ½·PF'·PF = b²</strong>이다.<br/>
-③ 타원의 방정식 <span class="font-mono">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span>에서 y²의 분모가 <strong class="text-amber-300">b² = 9</strong>이므로 넓이는 9이다. (3초 컷!)`,
+③ 타원의 방정식 <span class="font-mono">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span>에서 y²의 분모가 <strong class="text-amber-300">b² = 9</strong>이므로 넓이는 9이다.`,
           highlight: "∠F'PF = α 일 때도 넓이는 S = b²·tan($\\frac{α}{2}$) 이며, α = 90°이면 tan 45° = 1 이므로 S = b² 입니다."
         }
       },
@@ -257,8 +257,8 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span> 의 초점 <span class="font-mono">F(4,0)</span>을 지나는 직선이 타원과 만나는 두 점을 <span class="font-mono text-amber-300 font-bold">P, Q</span>라 할 때, 다른 초점 <span class="font-mono">F'(-4,0)</span>에 대하여 삼각형 <span class="font-mono text-pink-300 font-bold">ΔPQF'의 둘레의 길이</span>를 구하시오.`,
         answerBadge: "ΔPQF' 둘레 = 4a = 20 (불변)",
         presets: [
-          { label: "60° 기울어진 현 (둘레 20)", a: 5.0, b: 3.0, theta: Math.PI / 3 },
-          { label: "x축에 수직인 현 (PQ = $\\frac{2b^2}{a}$ = 3.6)", a: 5.0, b: 3.0, theta: Math.PI / 2 },
+          { label: "60° 기울어진 현", a: 5.0, b: 3.0, theta: Math.PI / 3 },
+          { label: "x축에 수직인 현", a: 5.0, b: 3.0, theta: Math.PI / 2 },
           { label: "135°로 기울어진 현", a: 5.0, b: 3.0, theta: (3 * Math.PI) / 4 }
         ],
         parts: [
@@ -274,8 +274,8 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: {
           steps: `① 초점 F(4,0)을 지나는 직선 y = m(x - 4)를 타원 식에 대입<br/>
 ② 이차방정식의 두 근으로 P, Q의 좌표를 구한 뒤 거리 공식을 적용한다.<br/>
-③ 기울기 m이 주어지지 않으면 좌표로는 구할 수 없고, 계산 과정도 매우 복잡하다.`,
-          warning: "주의: 직선의 기울기 m이 주어지지 않으면 좌표로는 구할 수 없습니다. PQ = PF + QF로 나누어 타원의 정의를 두 번 쓰면 됩니다."
+③ m을 문자로 두어 좌표와 거리를 계산할 수 있지만, 둘레에서는 m이 소거된다. 실제로 PQ=PF+QF이므로 둘레=(PF+PF′)+(QF+QF′)=4a=20이다.`,
+          warning: "주의: 기울기 m을 문자로 두는 좌표 풀이도 가능하지만 둘레에 불필요한 미지수를 도입합니다. PQ = PF + QF로 나누어 타원의 정의를 두 번 쓰면 됩니다."
         },
         shortcut: {
           steps: `① 현 PQ는 초점 F를 지나므로 <strong class="text-amber-300">PQ = PF + QF</strong>로 나눌 수 있다.<br/>
@@ -293,8 +293,8 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{16}$ + $\\frac{y^2}{4}$ = 1</span> 과 큰 원 <span class="font-mono text-sky-300">x² + y² = 16</span>, 작은 원 <span class="font-mono text-pink-300">x² + y² = 4</span> 가 있다. 양의 x축과 이루는 각이 <span class="font-mono text-amber-300 font-bold">θ = 60°</span>인 동경이 두 원과 만나는 점을 <span class="font-mono">Q, R</span>이라 할 때, Q에서 x축에 내린 수선과 R에서 y축에 내린 수선의 교점 <span class="font-mono text-amber-300 font-bold">P의 좌표</span>를 구하시오.`,
         answerBadge: "P(4cos60°, 2sin60°) = (2, √3)",
         presets: [
-          { label: "a=4, b=2, θ=60° → P(2, √3)", a: 4.0, b: 2.0, theta: Math.PI / 3 },
-          { label: "θ=45° → P(2√2, √2)", a: 4.0, b: 2.0, theta: Math.PI / 4 },
+          { label: "a=4, b=2, θ=60°", a: 4.0, b: 2.0, theta: Math.PI / 3 },
+          { label: "a=4, b=2, θ=45°", a: 4.0, b: 2.0, theta: Math.PI / 4 },
           { label: "a=5, b=3, θ=30°", a: 5.0, b: 3.0, theta: Math.PI / 6 }
         ],
         parts: [
@@ -324,7 +324,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       '2-B': {
         badge: "장면 2-B · 원에서 타원으로의 세로 방향 축소와 내접삼각형 최대 넓이",
-        hint: "<span class='text-amber-300 font-bold'>[원 → 타원 y축 방향 축소 ($\\frac{b}{a}$배)]</span> 슬라이더를 움직여 보세요. 반지름 a인 원의 각 점에서 y좌표를 <span class='text-sky-300 font-bold'>$\\frac{b}{a}$배</span>로 줄이면 타원이 됩니다. 이렇게 y축 방향으로만 줄이면 가로 방향의 길이(밑변)는 그대로이고 높이와 넓이는 $\\frac{b}{a}$배가 됩니다.",
+        hint: "<span class='text-amber-300 font-bold'>[원 → 타원 y축 방향 축소 ($\\frac{b}{a}$배)]</span> 슬라이더를 움직여 보세요. 반지름 a인 원의 각 점에서 y좌표를 <span class='text-sky-300 font-bold'>$\\frac{b}{a}$배</span>로 줄이면 타원이 됩니다. 이렇게 y축 방향으로만 줄이면 수평 길이는 그대로이고 수직 높이와 넓이는 $\\frac{b}{a}$배가 됩니다.",
         tag: "타원에 내접하는 삼각형의 최대 넓이 킬러",
         targetTime: "목표 시간: 10초",
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span> 에 내접하는 삼각형 <span class="font-mono">ΔP₁P₂P₃</span>의 넓이의 최댓값을 구하시오. (단, 원 <span class="font-mono text-sky-300">x² + y² = 25</span> 에 내접하는 정삼각형 <span class="font-mono">ΔQ₁Q₂Q₃</span>에서 y좌표를 $\\frac{b}{a}$배로 줄이는 것을 이용하시오.)`,
@@ -355,7 +355,7 @@ window.addEventListener('DOMContentLoaded', function () {
           steps: `① 원 위의 각 점 (x,y)를 (x,($\\frac{b}{a}$)y)로 옮기면 $\\frac{x^2}{a^2}$+$\\frac{y^2}{b^2}$=1이므로 타원 위의 점이 됩니다.<br/>
 ② 원에 내접하는 최대 삼각형은 정삼각형: <strong class="text-sky-300">S_원 = (3√3 / 4)a²</strong><br/>
 ③ 따라서 타원 최대 내접삼각형은 <strong class="text-amber-300">S_타원 = S_원 × ($\\frac{b}{a}$) = (3√3 / 4)ab</strong>이다.`,
-          highlight: "y좌표만 $\\frac{b}{a}$배로 줄이면 밑변은 그대로이고 높이만 $\\frac{b}{a}$배가 되므로, 대응하는 도형의 넓이도 $\\frac{b}{a}$배입니다."
+          highlight: "삼각형을 수평 밑변을 가진 삼각형들로 나누면, 각 밑변은 그대로이고 높이는 $\\frac{b}{a}$배입니다. 따라서 모든 삼각형의 넓이가 같은 비로 바뀌며 역변환도 가능합니다."
         }
       },
 
@@ -367,8 +367,8 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{16}$ + $\\frac{y^2}{9}$ = 1</span> 위의 점 <span class="font-mono">P(2, 3√3/2)</span>에서의 접선과, 원 <span class="font-mono text-sky-300">x² + y² = 16</span> 위의 점 <span class="font-mono">Q(2, 2√3)</span>에서의 접선이 x축과 만나는 공통 교점 <span class="font-mono text-pink-300 font-bold">T의 좌표</span>를 구하시오.`,
         answerBadge: "공통 x절편 T($\\frac{a^2}{x_1}$, 0) = T(8, 0)",
         presets: [
-          { label: "a=4, b=3, x₁=2 → T(8, 0)", a: 4.0, b: 3.0, theta: Math.PI / 3 },
-          { label: "a=5, b=3, θ=45° → T(5√2, 0)", a: 5.0, b: 3.0, theta: Math.PI / 4 }
+          { label: "a=4, b=3, x₁=2", a: 4.0, b: 3.0, theta: Math.PI / 3 },
+          { label: "a=5, b=3, θ=45°", a: 5.0, b: 3.0, theta: Math.PI / 4 }
         ],
         parts: [
           { idx: 0, title: "① 큰 원의 직각삼각형 ΔOQT (∠OQT = 90°)", desc: "H는 Q에서 OT에 내린 수선의 발이므로 직각삼각형의 닮음에 의해 OH · OT = OQ² = a²", color: "#38bdf8" },
@@ -389,7 +389,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: {
           steps: `① y축 방향으로 ($\\frac{b}{a}$)배 줄여도 <strong class="text-pink-300">x축 위의 점 T는 움직이지 않는다</strong>.<br/>
 ② 따라서 원의 접선과 타원의 접선은 x축 위의 같은 점 <strong class="text-amber-300">T($\\frac{a^2}{x_1}$, 0)</strong>에서 만난다.<br/>
-③ 직각삼각형 ΔOQT에서 <strong class="text-sky-300">OH · OT = a²</strong>이므로 OT = $\\frac{a^2}{OH}$ = 16/2 = 8이다. (3초 컷!)`,
+③ 직각삼각형 ΔOQT에서 <strong class="text-sky-300">OH · OT = a²</strong>이므로 OT = $\\frac{a^2}{OH}$ = 16/2 = 8이다.`,
           highlight: "타원의 접선의 x절편은, 반지름 a인 원에서 직각삼각형 ΔOQT를 그려 OH · OT = a²으로 구할 수 있습니다."
         }
       },
@@ -438,9 +438,9 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span> 위의 임의의 점 <span class="font-mono">P</span>에서의 접선 <span class="font-mono text-sky-300">l</span>이 있다. 두 초점 <span class="font-mono">F(4, 0), F'(-4, 0)</span>에서 접선 <span class="font-mono">l</span>에 내린 수선의 길이를 각각 <span class="font-mono text-pink-300 font-bold">d₁</span>, <span class="font-mono text-emerald-300 font-bold">d₂</span>라 할 때, <span class="font-mono text-amber-300 font-bold">d₁ × d₂</span>의 값을 구하시오.`,
         answerBadge: "d₁ × d₂ = b² = 9 (불변)",
         presets: [
-          { label: "θ=45° (d₁d₂=9)", a: 5.0, b: 3.0, theta: Math.PI / 4 },
-          { label: "θ=90° 단축 꼭짓점 (d₁=d₂=3)", a: 5.0, b: 3.0, theta: Math.PI / 2 },
-          { label: "θ=0° 장축 꼭짓점 (d₁=1, d₂=9)", a: 5.0, b: 3.0, theta: 0 }
+          { label: "θ=45°", a: 5.0, b: 3.0, theta: Math.PI / 4 },
+          { label: "θ=90° 단축 꼭짓점", a: 5.0, b: 3.0, theta: Math.PI / 2 },
+          { label: "θ=0° 장축 꼭짓점", a: 5.0, b: 3.0, theta: 0 }
         ],
         parts: [
           { idx: 0, title: "① 오른쪽 초점 F에서 접선까지의 거리 d₁ = FH₁ (FH₁ ⊥ l)", desc: "접선 l에 내린 수선의 발 H₁은 큰 원(반지름 a) 위에 있음", color: "#f472b6" },
@@ -462,7 +462,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: {
           steps: `① 수선의 발 <strong class="text-amber-300">H₁, H₂는 항상 원 x²+y²=a² 위</strong>에 있다.<br/>
 ② 현 H₂H₁'은 점 F'을 지나고, 원 안의 한 점을 지나는 지름 위에서 F'에 의해 나뉜 두 선분의 길이는 a − c, a + c이다. 한 점을 지나는 두 현은 나뉜 두 선분의 길이의 곱이 서로 같으므로 d₂ · d₁ = (a − c)(a + c) = a² − c² = b², 즉 위치에 관계없이 <strong class="text-sky-300">d₁ × d₂ = b²</strong>이다.<br/>
-③ 방정식 <strong class="font-mono">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</strong> 에서 y²의 분모가 <strong class="text-amber-300">b² = 9</strong>이므로 d₁ × d₂ = 9이다. (3초 컷!)`,
+③ 방정식 <strong class="font-mono">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</strong> 에서 y²의 분모가 <strong class="text-amber-300">b² = 9</strong>이므로 d₁ × d₂ = 9이다.`,
           highlight: "점 P가 단축 꼭짓점 B(0, b)일 때 d₁ = b, d₂ = b 이므로 d₁d₂ = b² 임을 바로 확인할 수 있습니다."
         }
       },
@@ -475,9 +475,9 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{16}$ + $\\frac{y^2}{7}$ = 1</span> 의 두 초점을 <span class="font-mono">F, F'</span>이라 하자. 타원 위의 점 <span class="font-mono">P</span>에서의 접선에 수직인 <span class="font-mono text-sky-300 font-bold">법선</span>이 x축과 만나는 점을 <span class="font-mono text-sky-300 font-bold">N</span>이라 할 때, <span class="font-mono text-pink-300 font-bold">PF' : PF = 3 : 1</span> 인 지점에서 선분 <span class="font-mono text-amber-300 font-bold">F'N : NF</span>의 길이의 비를 구하시오.`,
         answerBadge: "PF':PF = F'N:NF = 3 : 1",
         presets: [
-          { label: "PF':PF = 3:1 (N=1.50)", a: 4.0, b: Math.sqrt(7), theta: Math.acos(2 / 3) },
+          { label: "PF':PF = 3:1", a: 4.0, b: Math.sqrt(7), theta: Math.acos(2 / 3) },
           { label: "PF':PF = 2:1", a: 4.0, b: Math.sqrt(7), theta: Math.acos(4 / 9) },
-          { label: "PF':PF = 1:1 (N=0)", a: 4.0, b: Math.sqrt(7), theta: Math.PI / 2 }
+          { label: "PF':PF = 1:1", a: 4.0, b: Math.sqrt(7), theta: Math.PI / 2 }
         ],
         parts: [
           { idx: 0, title: "① 두 초점까지의 거리의 비 PF' : PF", desc: "접선은 PF', PF와 같은 크기의 각을 이룸", color: "#f472b6" },
@@ -499,7 +499,7 @@ window.addEventListener('DOMContentLoaded', function () {
         shortcut: {
           steps: `① 타원 위의 점 P에서의 접선은 PF', PF와 같은 크기의 각을 이루므로 <strong class="text-sky-300">법선 PN은 ∠F'PF의 이등분선</strong>이다.<br/>
 ② 삼각형 PF'F에서 내각 P의 이등분선이 변 F'F와 만나는 점이 N이므로, <strong class="text-amber-300">삼각형의 내각의 이등분선의 성질</strong>에 의해:<br/>
-&nbsp;&nbsp;<strong class="text-pink-300">F'N : NF = PF' : PF = 3 : 1</strong> (계산 없이 1초 컷!)`,
+&nbsp;&nbsp;<strong class="text-pink-300">F'N : NF = PF' : PF = 3 : 1</strong>`,
           highlight: "법선의 x절편은 x_N = e²·x₁ = (c²/a²)x₁ 이고, 접선의 x절편은 x_T = $\\frac{a^2}{x_1}$ 입니다."
         }
       },
@@ -512,8 +512,8 @@ window.addEventListener('DOMContentLoaded', function () {
         question: `타원 <span class="font-mono text-amber-300 font-bold">$\\frac{x^2}{25}$ + $\\frac{y^2}{9}$ = 1</span> 밖의 점 <span class="font-mono text-purple-300 font-bold">M</span>에서 타원에 그은 두 접선이 서로 수직일 때, 원점 <span class="font-mono">O</span>에서 점 <span class="font-mono">M</span>까지의 거리 <span class="font-mono text-amber-300 font-bold">OM의 길이</span>와 점 <span class="font-mono">M</span>이 그리는 도형의 방정식을 구하시오.`,
         answerBadge: "x² + y² = a² + b² = 34 (OM = √34 ≈ 5.83)",
         presets: [
-          { label: "타원에 외접하는 직사각형의 꼭짓점 M(5, 3)", a: 5.0, b: 3.0, theta: Math.atan2(3, 5) },
-          { label: "x축 위의 점 M(√34, 0)", a: 5.0, b: 3.0, theta: 0 },
+          { label: "타원에 외접하는 직사각형의 꼭짓점 M", a: 5.0, b: 3.0, theta: Math.atan2(3, 5) },
+          { label: "x축 위의 점 M", a: 5.0, b: 3.0, theta: 0 },
           { label: "제2사분면의 점 M (θ=125°)", a: 5.0, b: 3.0, theta: (125 * Math.PI) / 180 }
         ],
         parts: [
@@ -531,7 +531,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 점 M(x₀, y₀)을 지나므로 (y₀ - mx₀)² = a²m² + b² 전개:<br/>
 &nbsp;&nbsp;(x₀² - a²)m² - 2x₀y₀ m + (y₀² - b²) = 0<br/>
 ③ 두 접선이 수직 ⇔ 두 근의 곱 m₁m₂ = -1:<br/>
-&nbsp;&nbsp;(y₀² - b²)/(x₀² - a²) = -1 ⇒ x₀² + y₀² = a² + b²`,
+&nbsp;&nbsp;(y₀² - b²)/(x₀² - a²) = -1 ⇒ x₀² + y₀² = a² + b²<br/>④ x₀²=a²인 경우 수직 접선 x=±a와 수평 접선 y=±b가 만나므로 (±a,±b)이며 같은 식을 만족한다. 역으로 이 원은 타원 밖에 있고, 일반점에서는 두 실접선의 기울기 곱이 −1, 이 네 점에서는 수평·수직이므로 모두 조건을 만족한다.`,
           warning: "주의: 접선의 방정식을 제곱하여 이차방정식을 만들고 근과 계수의 관계를 쓰면 풀이가 길어집니다."
         },
         shortcut: {
@@ -837,7 +837,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (state.steps[2]) {
         drawChalkLine(0,0,P.x,P.y,'#a78bfa',2,true,false,2);
-        if (Math.abs(distance(P,{x:0,y:0})-c)<0.025) {
+        if (Math.abs(distance(P,{x:0,y:0})-c)<1e-8) {
           const mid=toScreen(P.x/2,P.y/2);
           ctx.save();ctx.fillStyle='#c4b5fd';ctx.font='bold 12px Pretendard';
           ctx.fillText(`OP=OF=OF'=c=${c.toFixed(2)}`,mid.x+6,mid.y+8);ctx.restore();
@@ -854,7 +854,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.lineTo(sF2.x, sF2.y);
         ctx.lineTo(sF1.x, sF1.y);
         ctx.closePath();
-        ctx.fillStyle = Math.abs(alphaDeg - 90) < 1.5 ? 'rgba(251, 191, 36, 0.22)' : 'rgba(52, 211, 153, 0.1)';
+        ctx.fillStyle = Math.abs(alphaDeg - 90) < 1e-7 ? 'rgba(251, 191, 36, 0.22)' : 'rgba(52, 211, 153, 0.1)';
         ctx.fill();
         ctx.restore();
 
@@ -863,7 +863,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(F1.x, F1.y, P.x, P.y, '#34d399', 2.8, false, true, 1);
 
         // ∠F'PF = 90° 근처이면 직각 네모 표시, 아니면 각도 호 표시
-        if (Math.abs(alphaDeg - 90) < 2.0) {
+        if (Math.abs(alphaDeg - 90) < 1e-7) {
           drawRightAngleMark(P, v2, v1, 13, '#fbbf24', 1);
         } else if (dPF > 0.1 && dPFp > 0.1) {
           markAngle(P, F2, F1, '#fbbf24', '', 26, 1, 2); // [표시 보강] 각 호(값 ∠F'PF 는 바로 아래 글자에 표시)
@@ -872,7 +872,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ctx.save();
         ctx.globalAlpha = getPartAlpha(2, 1.0);
         ctx.font = 'bold 12.5px Pretendard';
-        ctx.fillStyle = Math.abs(alphaDeg - 90) < 2.0 ? '#fbbf24' : '#6ee7b7';
+        ctx.fillStyle = Math.abs(alphaDeg - 90) < 1e-7 ? '#fbbf24' : '#6ee7b7';
         ctx.fillText(
           `∠F'PF = ${alphaDeg.toFixed(1)}° | 넓이 S = ${area.toFixed(2)}`,
           sP.x - 65,
@@ -909,7 +909,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const maxAngle = (2 * Math.atan2(c, b) * 180) / Math.PI;
         drawBottomHUD(
           rect,
-          `∠F'PF = ${alphaDeg.toFixed(1)}° (∠F'PF의 최댓값 = ${maxAngle.toFixed(1)}°)  |  ΔPF'F 넓이 S = ½·PF'·PF = ${area.toFixed(2)}`,
+          `∠F'PF = ${alphaDeg.toFixed(1)}° (∠F'PF의 최댓값 = ${maxAngle.toFixed(1)}°)  |  ΔPF'F 넓이 S = ½·PF'·PF·sinα ≈ ${area.toFixed(2)}`,
           `확인: S = b²·tan(∠F'PF / 2) = ${formatNum(b * b)} × tan(${(alphaDeg / 2).toFixed(1)}°) = ${area.toFixed(2)} (90°일 때 S = b² = ${formatNum(b * b)})`
         );
       }
@@ -1212,7 +1212,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const vec={x:P1.x-P2.x,y:P1.y-P2.y};
         const product=Math.abs(vec.x*M.x)>1e-8 ? (vec.y/vec.x)*(M.y/M.x) : null;
         const q=toScreen(M.x,M.y);ctx.save();ctx.fillStyle='#fcd34d';ctx.font='bold 11px Pretendard';
-        ctx.fillText(`기울기의 곱 = ${product===null?'축과 평행한 경우':product.toFixed(3)}  (−(\\frac{b}{a})²=${(-((b/a)**2)).toFixed(3)})`,q.x+10,q.y-26,250);
+        ctx.fillText(`기울기의 곱 ≈ ${product===null?'축과 평행한 경우':product.toFixed(3)}  (현재 세로배율의 제곱에 −1을 곱한 값 ≈ ${(-(k*k)).toFixed(3)})`,q.x+10,q.y-26,250);
         ctx.restore();
       }
 
@@ -1223,7 +1223,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawBottomHUD(
           rect,
           `원 내접 정삼각형 넓이 S_원 = (3√3/4)a² = ${areaCircle.toFixed(2)}  |  축소비 $\\frac{b}{a}$ = ${(b / a).toFixed(3)}`,
-          `∴ 타원 내접 최대삼각형 넓이 S_타원 = S_원 × ($\\frac{b}{a}$) = (3√3/4)ab = ${areaEllipse.toFixed(2)}`
+          `현재 세로배율 ${curRatio.toFixed(3)} → 현재 삼각형 넓이 ≈ ${(areaCircle*curRatio).toFixed(2)} · 축소 완료 때 타원 최댓값 ≈ ${areaEllipse.toFixed(2)}`
         );
       }
     }
@@ -1257,7 +1257,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       // Step 2: 공용 x절편 T(a^2 / x1, 0) 및 두 접선 QT, PT
-      if (Math.abs(P.x) > 0.25) {
+      if (Math.abs(P.x) > 1e-9) {
         const xT = (a * a) / P.x;
         const T = { x: xT, y: 0 };
 
@@ -1282,7 +1282,7 @@ window.addEventListener('DOMContentLoaded', function () {
       } else if (state.steps[3]) {
         drawBottomHUD(
           rect,
-          `점 P가 단축 꼭짓점 근처(x₁ ≈ 0)일 때는 두 접선이 모두 x축에 평행합니다.`,
+          `x₁=0일 때만 두 접선이 x축과 평행합니다. x₁≠0이면 멀리 있는 공통 절편이 존재합니다.`,
           `점 P를 좌우로 조금 끌면 x절편 T($\\frac{a^2}{x_1}$, 0)가 나타납니다.`
         );
       }
@@ -1317,7 +1317,7 @@ window.addEventListener('DOMContentLoaded', function () {
       };
 
       const Q={x:P.x+utx*state.tangentQOffset, y:P.y+uty*state.tangentQOffset};
-      if (state.steps[2] && fold > .85) {
+      if (state.steps[2] && fold >= 1-1e-9) {
         drawCircleGeometry(F2,2*a,'rgba(192,132,252,.70)',1,true,1.9);
         const val=distance(F2,Fpp);
         drawChalkLine(F2.x,F2.y,Fpp.x,Fpp.y,'rgba(251,191,36,.3)',1.4,true,false,1);
@@ -1341,7 +1341,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         drawChalkPoint(F2.x, 0, 5.5, '#f43f5e', `F'(-${formatNum(c)}, 0)`, { x: -32, y: 22 });
         drawChalkPoint(F1.x, 0, 5.5, '#f43f5e', `F(${formatNum(c)}, 0)`, { x: -16, y: 22 }, 0);
-        drawChalkPoint(H1.x, H1.y, 5.0, '#f472b6', `H₁ (중점)`, getRadialOffset(H1.x, H1.y, 10, -75, -10, 20), 0);
+        drawChalkPoint(H1.x, H1.y, 5.0, '#f472b6', fold >= 1-1e-9 ? 'H₁ (중점)' : 'H₁ (수선의 발)', getRadialOffset(H1.x, H1.y, 10, -75, -10, 20), 0);
       }
 
       // Step 2: 대칭점 F'' 및 일직선 F' - P - F'' = 2a (partIdx = 0, 1)
@@ -1357,7 +1357,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if(k===0)ctx.moveTo(v.x,v.y);else ctx.lineTo(v.x,v.y);
         }
         ctx.strokeStyle='#c084fc';ctx.lineWidth=1.4;ctx.stroke();ctx.restore();
-        if(fold>.95){
+        if(fold>=1-1e-9){
           const proof=distance(P,F1);
           // [표시 보강] 접기(대칭)로 같아진 두 각 ∠FPH₁ = ∠F″PH₁ 를 같은 색·같은 값으로, 합동의 같은 길이도 눈금으로 표시
           const eqDeg = degBetween(P, F1, H1);
@@ -1375,7 +1375,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // 일직선 F' - P - F'' (partIdx = 1)
         drawChalkLine(F2.x, F2.y, P.x, P.y, '#fbbf24', 3.0, false, true, 1);
-        if (fold > 0.85) {
+        if (fold >= 1-1e-9) {
           drawChalkLine(P.x, P.y, Fpp.x, Fpp.y, '#fbbf24', 3.0, false, true, 1);
         }
 
@@ -1384,7 +1384,7 @@ window.addEventListener('DOMContentLoaded', function () {
           F_fold.y,
           5.8,
           '#f472b6',
-          fold > 0.9 ? `F″ (대칭점)` : `F (접기 ${Math.round(fold * 100)}%)`,
+          fold >= 1-1e-9 ? `F″ (대칭점)` : `F (접기 ${Math.round(fold * 100)}%)`,
           getRadialOffset(F_fold.x, F_fold.y, 10, -135, -10, 20),
           1
         );
@@ -1416,7 +1416,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // [표시 보강] O는 F'F의 중점(F'O = OF), H₁은 FF″의 중점(FH₁ = H₁F″), OH₁ ∥ F'F″ 표시
         B.ticks([F2.x, F2.y], [0, 0], { count: 1, color: '#38bdf8' });
         B.ticks([0, 0], [F1.x, F1.y], { count: 1, color: '#38bdf8' });
-        if (fold > 0.85) {
+        if (fold >= 1-1e-9) {
           B.ticks([F1.x, F1.y], [H1.x, H1.y], { count: 2, color: '#f9a8d4' });
           B.ticks([H1.x, H1.y], [Fpp.x, Fpp.y], { count: 2, color: '#f9a8d4' });
           parMark({ x: 0, y: 0 }, H1, '#38bdf8', 1);
@@ -1435,8 +1435,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const lenOH1 = Math.hypot(H1.x, H1.y);
         drawBottomHUD(
           rect,
-          `[대칭 합동] F'P + PF = F'P + PF'' = 일직선 F'F'' = 2a = ${lenFpFpp.toFixed(2)}`,
-          `[중점연결정리] O는 F'F 중점, H₁은 FF'' 중점 ⇒ OH₁ = ½·F'F'' = a = ${lenOH1.toFixed(2)}`
+          fold >= 1-1e-9 ? `[대칭 합동] F'P + PF = F'P + PF'' = 일직선 F'F'' = 2a = ${lenFpFpp.toFixed(2)}` : `접기 ${Math.round(fold*100)}% · 현재 표시점은 아직 대칭점 F″이 아닙니다`,
+          fold >= 1-1e-9 ? `[중점연결정리] O는 F'F 중점, H₁은 FF'' 중점 ⇒ OH₁ = ½·F'F'' = a = ${lenOH1.toFixed(2)}` : '접기 100%에서 합동과 중점 표시를 확인하세요. 수선의 발 H₁은 접는 동안 고정됩니다.'
         );
       }
     }
@@ -1558,7 +1558,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const dFpN = Math.abs(xN - F2.x);
       const dNF = Math.abs(F1.x - xN);
 
-      const isDegenerate = Math.abs(P.y) < 0.08;
+      const isDegenerate = Math.abs(P.y) < 1e-9;
 
       // Step 1: 선분 F'P 및 FP 연결 (partIdx = 0)
       if (state.steps[1]) {
@@ -1599,7 +1599,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
 
       // 외각 이등분선 T 및 F의 접선대칭점 F'' (x_P≈0에서는 평행접선: 유한한 T 없음)
-      const canShowT=Math.abs(P.x)>0.25 && !isDegenerate;
+      const canShowT=Math.abs(P.x)>1e-9 && !isDegenerate;
       const T=canShowT?{x:a*a/P.x,y:0}:null;
       const unit={x:utx,y:uty};
       const {H:Ht,reflection:Fpp}=reflectAcrossLine(F1,P,unit);
@@ -1914,8 +1914,20 @@ window.addEventListener('DOMContentLoaded', function () {
     '4-A': '타원 위의 점 P에서 접선과 법선은 두 초점 방향의 각 F\'PF를 어떻게 나눌까?',
     '4-B': '서로 수직인 두 접선의 교점 M은 어떤 도형 위를 움직일까?'
   };
-  const GROUP_TITLE = { 1: '정의 · 직각 · 초점을 지나는 현', 2: '큰 원 · 정사영 · 절편', 3: "대칭점 F'' · 중점연결 · d₁d₂=b²", 4: '법선 이등분 · 수직인 두 접선' };
+  const GROUP_TITLE = { 1: '정의 · 직각 · 초점을 지나는 현', 2: '큰 원 · 정사영 · 절편', 3: "대칭점 F'' · 중점연결 · 거리의 곱", 4: '법선 이등분 · 수직인 두 접선' };
   const GROUP_SHORT = { 1: '정의·직각·현', 2: '큰 원·정사영', 3: '대칭점·d₁d₂', 4: '법선·수직 접선' };
+  const OBSERVATIONS = {
+    '1-A': ['두 초점과 점 P', '초점삼각형의 세 변', '단축 꼭짓점의 직각삼각형'],
+    '1-B': ['두 초점을 지름으로 하는 원', '원과 타원의 교점', '삼각형의 넓이와 내접원'],
+    '1-C': ['초점을 지나는 현', '두 끝점과 반대쪽 초점', '현 위의 길이 분해'],
+    '2-A': ['큰 원의 동경', '작은 원의 동경', '수직선과 수평선의 교점'],
+    '2-B': ['원에 내접하는 삼각형', '세로로 축소한 삼각형', '대응하는 넓이의 비교'],
+    '2-C': ['원의 접점과 수선의 발', '원과 타원의 접선', '두 접선의 x절편'],
+    '3-A': ['접선에 대한 초점의 대칭', '대칭점과 반대쪽 초점', '두 중점을 잇는 선분'],
+    '3-B': ['첫 초점에서 내린 수선', '다른 초점에서 내린 수선', '보조원의 현과 거리의 곱'],
+    '4-A': ['두 초점까지의 거리', '접점에서의 법선', '법선과 접선의 각'],
+    '4-B': ['외접하는 직사각형', '점 M의 위치', 'M에서 그은 두 접선']
+  };
   // 장면별 처음 보이는 범위(1:1 축척). 3-A는 초점 방향 원(반지름 2a)이 들어오도록 a, b에 맞춰 정합니다.
   const SPAN = { x: [-6.8, 6.8], y: [-4.9, 4.9] };
   const FOCUS = {
@@ -1950,10 +1962,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const p0 = d.presets[0];
     const dragP = (s) => (w) => { s.theta = normTheta(Math.atan2(w.y / s.b, w.x / s.a)); };
     return {
-      id, title: d.badge, short: it.label.replace(/^\d-[A-C]\.\s*/, ''),
+      id, startStep:0, title: {'1-A':'타원의 정의와 둘레','1-B':'초점원과 직각삼각형의 넓이','1-C':'초점현과 둘레','2-A':'두 원으로 타원 위의 점 작도','2-B':'세로 축소와 최대 넓이','2-C':'두 접선의 공통 절편','3-A':'초점의 대칭과 수선의 발','3-B':'두 초점에서 접선까지의 거리','4-A':'법선과 길이의 비','4-B':'서로 수직인 두 접선의 교점'}[id], short: {'1-A':'정의와 둘레','1-B':'직각삼각형','1-C':'초점현','2-A':'두 원과 좌표','2-B':'세로 축소','2-C':'공통 절편','3-A':'대칭과 중점','3-B':'접선까지 거리','4-A':'법선과 비','4-B':'수직인 접선'}[id],
       question: QUESTIONS[id],
       focus: id === '3-A' ? (s) => focus3A(s) : FOCUS[id],
-      guide: d.hint,
+      guide: QUESTIONS[id],
       notesTitle: '단원 연결',
       enter: (s) => {
         s.a = p0.a; s.b = p0.b; s.theta = normTheta(p0.theta);
@@ -1982,7 +1994,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       solution: {
         standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이',
-        quickTitle: '10초 컷 · 도형의 성질과 보조선을 이용한 풀이', quickTag: '10초 컷',
+        quickTitle: '구조를 이용한 풀이 · 도형의 성질과 보조선을 이용한 풀이', quickTag: '핵심 구조',
         standard: d.textbook, quick: d.shortcut
       },
       tick: (s, dt) => {
@@ -1998,13 +2010,19 @@ window.addEventListener('DOMContentLoaded', function () {
         const geometry = id === '1-C' ? { kind: 'focal-chord', ...ellipseFocalChord(a, b, c, theta) }
           : id === '4-B' ? { kind: 'orthogonal-tangents', ...ellipseOrthogonalTangents(a, b, theta) }
           : { kind: 'ellipse-point', P };
+        const pf = Math.hypot(P.x - c, P.y), pfp = Math.hypot(P.x + c, P.y);
+        const liveParts = id === '1-A' && s.step >= 3 ? [
+          `현재 PF′≈${formatNum(pfp)}, PF≈${formatNum(pf)}, 합≈${formatNum(pfp + pf)}`,
+          `현재 둘레≈${formatNum(pfp + pf + 2*c)} (초점 사이 거리≈${formatNum(2*c)})`,
+          `현재 a=${formatNum(a)}, b=${formatNum(b)}, c≈${formatNum(c)}`
+        ] : [];
         return {
           chips: [
             { k: '타원', tex: `\\dfrac{x^2}{${formatNum(a * a)}} + \\dfrac{y^2}{${formatNum(b * b)}} = 1`, color: 'amber' },
             { k: '이심률 $e=\\frac{c}{a}$', tex: (c / a).toFixed(3), color: 'sky' }
           ],
-          readouts: monitorRows(a, b, c, geometry, F1, F2),
-          parts: d.parts.map((p) => ({ id: p.idx, name: p.title, desc: p.desc, color: p.color })),
+          readouts: s.step===0 ? [{label:'현재 조작값',value:`a=${formatNum(a)}, b=${formatNum(b)}, θ≈${(theta*180/Math.PI).toFixed(1)}°`,color:'amber',wide:true}] : monitorRows(a,b,c,geometry,F1,F2),
+          parts: d.parts.map((p) => ({ id: p.idx, name: OBSERVATIONS[id][p.idx], desc: liveParts[p.idx] || '', color: p.color })),
           notes: '🔗 단원 연결 · ' + CROSS[id]
         };
       },
@@ -2047,9 +2065,9 @@ window.addEventListener('DOMContentLoaded', function () {
           bd.handle('Q', [ch.Q.x, ch.Q.y], { color: 'sky', ariaLabel: '점 Q', drag: dragChord });
           bd.handle('P', [ch.P.x, ch.P.y], { color: 'amber', ariaLabel: '점 P', drag: dragChord, priority: 1 });
         } else {
-          let pLabel = `P(${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
+          let pLabel = s.step===0 ? 'P' : `P ≈ (${P.x.toFixed(2)}, ${P.y.toFixed(2)})`;
           const pDeg = ((theta * 180 / Math.PI) % 360 + 360) % 360;
-          if (id === '2-A' && Math.abs(a - 4) < 0.05 && Math.abs(b - 2) < 0.05 && Math.abs(pDeg - 60) < 1.2) pLabel = 'P(2, √3) ≈ (2.00, 1.73)';
+          if (s.step>0 && id === '2-A' && Math.abs(a - 4) < 0.05 && Math.abs(b - 2) < 0.05 && Math.abs(pDeg - 60) < 1e-7) pLabel = 'P(2, √3) ≈ (2.00, 1.73)';
           bd.handle('P', [P.x, P.y], { color: 'amber', r: 7, label: pLabel, baseline: 'alphabetic', ...labelPos(getRadialOffset(P.x, P.y, 12, -128, -13, 22)), drag: dragP(s) });
           if (m === 2) bd.handle('Q', [a * Math.cos(theta), a * Math.sin(theta)], { color: 'sky', ariaLabel: '큰 원 위의 점 Q', drag: (w) => { s.theta = normTheta(Math.atan2(w.y, w.x)); } });
           if (id === '3-A') {
@@ -2095,7 +2113,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.vary.next();
     lab.__cqKey = '';
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -2164,7 +2182,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (bb) b.setFocus(b.fitBox(bb, { margin: 0.07, px: 12 }), true);
   }
   // 새 장면의 공통 틀
-  const baseScene = (o) => ({ tabs: { compact: true }, reviewTab: true, ...o });
+  const baseScene = (o) => ({ startStep: 0, tabs: { compact: true }, reviewTab: true, ...o });
   const KP = {}; // 이 장면들이 쓰는 조절 막대
   const KS = {}; // 이 장면들의 초기 상태
 
@@ -2235,9 +2253,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneE5() {
     return baseScene({
-      id: 'q5', title: '타원과 쌍곡선이 초점 하나를 공유할 때 — 둘레는 4a', short: '타원+쌍곡선 (초점 1개)',
+      id: 'q5', title: '타원과 쌍곡선이 초점 하나를 공유할 때', short: '타원+쌍곡선 (초점 1개)',
       question: '타원과 쌍곡선이 초점 F₁을 함께 쓰면, 두 곡선의 정의를 더했을 때 어떤 선분이 사라질까?',
-      guide: '점 <b>C</b>를 끌거나 <b>c</b>를 바꿔 보세요. 타원: <b>PF₁ + PF₂ = 10</b>, 쌍곡선: <b>PF₃ − PF₁ = BC</b>. 두 식을 더하면 PF₁이 사라져 <b>PF₃ + PF₂</b>가 남고, F₃F₂를 더한 삼각형 PF₃F₂의 <b>둘레는 c와 C를 바꿔도 늘 20</b>입니다.',
+      guide: '점 <b>C</b>를 끌거나 <b>c</b>를 바꾸며 공유하는 초점 <b>F₁</b>을 찾으세요. 같은 선분 PF₁이 두 곡선의 거리 관계에 어떻게 나타날까요? 구하는 둘레를 이루는 선분부터 표시해 보세요.',
       enter: (s, lab) => { s.q5c = 3; s.q5x = 2; if (lab) lab.__cqKey = ''; },
       controls: ['q5c', 'q5x'],
       presets: () => [{ group: '값', label: 'c = 3, C(2, 0)', apply: (st) => { st.q5c = 3; st.q5x = 2; }, on: (st) => Math.abs(st.q5c - 3) < 0.03 && Math.abs(st.q5x - 2) < 0.03 }],
@@ -2253,7 +2271,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTopOf(() => textE5()),
       problem: { tag: '2022학년도 3월 학평(서울) 29번 유형', time: '목표 시간: 60초', text: () => probHTML(textE5()), answer: () => tex(String(varE5.cur().ans)) },
       solution: {
-        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 두 정의를 더하면 4a', quickTag: '10초 컷',
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '구조를 이용한 풀이 · 두 정의를 더하면 4a', quickTag: '핵심 구조',
         standard: () => {
           const v = varE5.cur(), a = v.a;
           return {
@@ -2278,13 +2296,14 @@ window.addEventListener('DOMContentLoaded', function () {
         if (tab !== 'explore') return out;
         const g = geoE5(5, s.q5x, s.q5c);
         const per = g.PF3 + g.PF2 + dist(g.F3, g.F2);
-        out.status = { tone: 'ok', text: `둘레 = ${nf(per, 3)} (4a = 20)` };
+        out.status = s.step>=4 ? {tone:'ok',text:`둘레 = ${nf(per,3)} (4a = 20)`} : {tone:'info',text:'공유하는 초점 F₁을 찾아 두 거리 관계를 비교하세요'};
         out.readouts = [
           { label: 'PF₁ + PF₂ (타원)', value: `${nf(g.PF1, 3)} + ${nf(g.PF2, 3)} = ${nf(g.PF1 + g.PF2, 3)}`, color: 'sky', wide: true },
           { label: 'PF₃ − PF₁ (쌍곡선)', value: `${nf(g.PF3, 3)} − ${nf(g.PF1, 3)} = ${nf(g.PF3 - g.PF1, 3)} = BC`, color: 'violet', wide: true },
           { label: 'F₃F₂', value: nf(dist(g.F3, g.F2), 3), color: 'green' },
           { label: '삼각형 PF₃F₂의 둘레', value: nf(per, 3), color: 'amber' }
         ];
+        if(s.step<4)out.readouts=out.readouts.slice(0,3);
         return out;
       },
       formula: '<b>정의를 더하고 빼기</b><br>타원: PF₁ + PF₂ = 2a &nbsp;·&nbsp; 쌍곡선: PF₃ − PF₁ = (주축의 길이)<br>같은 초점 F₁까지의 거리를 한쪽에서는 더하고 한쪽에서는 빼므로, 두 식을 더하면 PF₁이 소거됩니다.',
@@ -2356,9 +2375,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneE6() {
     return baseScene({
-      id: 'q6', title: '타원과 쌍곡선이 두 초점을 모두 공유할 때 — PF = a − a′, PF′ = a + a′', short: '타원+쌍곡선 (초점 2개)',
+      id: 'q6', title: '타원과 쌍곡선이 두 초점을 모두 공유할 때', short: '타원+쌍곡선 (초점 2개)',
       question: '두 초점이 같은 타원과 쌍곡선이 만나는 점 P에서, PF와 PF′은 각 곡선의 a로 어떻게 나타날까?',
-      guide: '타원의 꼭짓점 <b>a</b>와 쌍곡선의 꼭짓점 <b>a′</b>를 끌어 보세요. 타원은 <b>PF + PF′ = 2a</b>, 쌍곡선은 <b>PF′ − PF = 2a′</b>. 이 둘을 연립하면 <b>PF = a − a′</b>, <b>PF′ = a + a′</b>가 곧바로 나옵니다.',
+      guide: '타원의 꼭짓점 <b>a</b>와 쌍곡선의 꼭짓점 <b>a′</b>를 끌어 보세요. 두 곡선이 같은 초점을 사용할 때, 교점 P에서 두 초점까지의 거리를 어떤 두 식으로 연결할 수 있을까요?',
       enter: (s, lab) => { s.q6a = 6; s.q6h = 2; if (lab) lab.__cqKey = ''; },
       controls: ['q6a', 'q6h'],
       presets: () => [{ group: '값', label: 'a = 6, a′ = 2', apply: (st) => { st.q6a = 6; st.q6h = 2; }, on: (st) => Math.abs(st.q6a - 6) < 0.03 && Math.abs(st.q6h - 2) < 0.03 }],
@@ -2374,7 +2393,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTopOf(() => textE6()),
       problem: { tag: '2022학년도 4월 학평(경기) 27번 유형', time: '목표 시간: 40초', text: () => probHTML(textE6()), answer: () => tex(String(varE6.cur().ans)) },
       solution: {
-        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · PF = a − a′ 로 읽기', quickTag: '10초 컷',
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '구조를 이용한 풀이 · PF = a − a′ 로 읽기', quickTag: '핵심 구조',
         standard: () => {
           const v = varE6.cur();
           return {
@@ -2387,8 +2406,8 @@ window.addEventListener('DOMContentLoaded', function () {
         quick: () => {
           const v = varE6.cur();
           return {
-            steps: `<strong class="text-sky-300">${tex("PF+PF'=2a")}</strong>, <strong class="text-violet-300">${tex("PF'-PF=2a'")}</strong> ⇒ ${tex("PF=a-a'")}. ${tex(`a'=\\sqrt{${v.n}}=${v.sn}`)}, ${tex(`PF=${v.d}`)}이므로 ${tex(`a=${v.d}+${v.sn}=${v.a}`)}. 이어서 ${tex('c^2=a^2-' + v.m + '=n+b^2')}에서 ${tex(`a^2+b^2=2a^2-${v.m}-${v.n}=${v.ans}`)}.`,
-            highlight: '공통 초점이면 a² − m = n + b² (같은 c²). 이 한 식과 a = PF + a′ 만 있으면 끝납니다.'
+            steps: `<strong class="text-sky-300">${tex("PF+PF'=2a")}</strong>, <strong class="text-violet-300">${tex("PF'-PF=2a'")}</strong> ⇒ ${tex("PF=a-a'")}. ${tex(`a'=\\sqrt{${v.n}}=${v.sn}`)}, ${tex(`PF=${v.d}`)}이므로 ${tex(`a=${v.d}+${v.sn}=${v.a}`)}. 이어서 ${tex(`c^2=a^2-${v.m}=${v.n}+b^2`)}에서 ${tex(`a^2+b^2=2a^2-${v.m}-${v.n}=${v.ans}`)}.`,
+            highlight: `공통 초점이면 a² − ${v.m} = ${v.n} + b² (같은 c²). 이 한 식과 a = PF + a′ 만 있으면 끝납니다.`
           };
         }
       },
@@ -2444,7 +2463,7 @@ window.addEventListener('DOMContentLoaded', function () {
         a, b, c, chk: { S: b * b },
         text: `타원 ${tex(eq(a, b))}의 두 초점 ${tex(FF(c))}를 지름의 양 끝으로 하는 원 ${tex(`x^2+y^2=${c * c}`)}과 타원의 교점을 ${tex('P')}라 할 때, 직각삼각형 ${tex("PF'F")}의 넓이를 구하시오.`,
         ans: `${b * b}`,
-        steps: [`두 초점 $F$, $F^{\\prime}$과 이를 지름으로 하는 원, 그 원과 타원의 교점 $P$를 그립니다.`, `지름에 대한 원주각이므로 $\\angle F^{\\prime}PF=90^\\circ$입니다. 타원의 정의 $PF+PF^{\\prime}=2a=${2 * a}$, 피타고라스 $PF^2+PF^{\\prime}^2=(2c)^2=${4 * c * c}$.`, `$PF\\cdot PF^{\\prime}=\\dfrac{(PF+PF^{\\prime})^2-(PF^2+PF^{\\prime}^2)}{2}=\\dfrac{${4 * a * a}-${4 * c * c}}{2}=${2 * b * b}$이므로 넓이 $S=\\dfrac12\\cdot PF\\cdot PF^{\\prime}=${b * b}\\ (=b^2)$.`],
+        steps: [`두 초점 $F$, $F^{\\prime}$과 이를 지름으로 하는 원, 그 원과 타원의 교점 $P$를 그립니다.`, `지름에 대한 원주각이므로 $\\angle F^{\\prime}PF=90^\\circ$입니다. 타원의 정의 $PF+PF^{\\prime}=2a=${2 * a}$, 피타고라스 $PF^2+(PF^{\\prime})^2=(2c)^2=${4 * c * c}$.`, `$PF\\cdot PF^{\\prime}=\\dfrac{(PF+PF^{\\prime})^2-(PF^2+(PF^{\\prime})^2)}{2}=\\dfrac{${4 * a * a}-${4 * c * c}}{2}=${2 * b * b}$이므로 넓이 $S=\\dfrac12\\cdot PF\\cdot PF^{\\prime}=${b * b}\\ (=b^2)$.`],
         quick: `$\\angle F^{\\prime}PF=90^\\circ$이면 삼각형의 넓이는 $b^2$입니다: $S=b^2=${b * b}$.`
       };
     };
@@ -2615,7 +2634,9 @@ window.addEventListener('DOMContentLoaded', function () {
       E(b, a, bb); Cr(b, a, 'sky');
       seg(b, Q, [x1, 0], 'ink', 1.8, [5, 5]);
       if (st(1)) { seg(b, Q, Tt, 'sky', 2.6); seg(b, P, Tt, 'amber', 2.6); }
-      if (st(2)) D(b, Tt, st(3) ? `T(${nf(Tt[0], 2)}, 0)` : 'T', 'green', [Tt[0] - 1, 1], { r: 5.2 });
+      if (st(1)) { seg(b,O,Q,'green',2); D(b,[x1,0],'H','rose',Q); rt(b,[x1,0],O,Q,'rose',9); }
+      if (st(2)) { D(b,Tt,'T','green',[Tt[0]-1,1],{r:5.2}); rt(b,Q,O,Tt,'amber',11); }
+      if (st(3)) T(b,[0,-bb*1.4],`OH × OT = OQ² = ${a*a}`,'green',0,0,13);
       D(b, Q, `Q (x = ${x1})`, 'sky', O); D(b, P, `P (x = ${x1})`, 'amber', [P[0] + 3, P[1] - 3], { });
     };
     const tan3 = (a, bb, deg) => { const t = deg * Math.PI / 180, P = [a * Math.cos(t), bb * Math.sin(t)], n = [Math.cos(t) / a, Math.sin(t) / bb], dir = [-n[1], n[0]], L = Math.hypot(...dir); return { P, n, dir: [dir[0] / L, dir[1] / L] }; };
@@ -2624,17 +2645,18 @@ window.addEventListener('DOMContentLoaded', function () {
       E(b, a, bb);
       seg(b, [P[0] - dir[0] * ext, P[1] - dir[1] * ext], [P[0] + dir[0] * ext, P[1] + dir[1] * ext], 'violet', 2.4);
       seg(b, Fo, H, 'sky', 2.4); rt(b, H, Fo, P, 'amber', 10);
-      if (st(1)) { seg(b, Fo, Fpp, 'sky', 1.8, [5, 5]); }
-      if (st(2)) { seg(b, Fp, Fpp, 'rose', 3); seg(b, O, H, 'green', 3); }
+      if(st(2)){seg(b,Fo,Fpp,'sky',1.8,[5,5]);}
+      if (st(2)) { seg(b,Fp,Fpp,'rose',3); if(st(3))seg(b,O,H,'green',3); tk(b,Fp,O,'green',1); tk(b,O,Fo,'green',1); tk(b,Fo,H,'sky',2); tk(b,H,Fpp,'sky',2); tk(b,P,Fo,'rose',3); tk(b,P,Fpp,'rose',3); }
       if (st(3)) { T(b, [0, -bb * 1.5], `F'F'' = 2a = ${2 * a}`, 'rose', 0, 0, 13); T(b, [0, -bb * 1.5], `OH₁ = a = ${a}`, 'green', 0, 20, 13); }
       D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 }); D(b, H, 'H₁', 'sky', Fo, { r: 4 });
-      if (st(1)) D(b, Fpp, "F''", 'sky', Fo, { r: 4 });
+      if(st(2))D(b,Fpp,"F''",'sky',Fo,{r:4});
     };
     F['3-B'] = (b, st, v) => {
       const { a, b: bb, c, deg } = v, Fo = [c, 0], Fp = [-c, 0], { P, n, dir } = tan3(a, bb, deg), H1 = footOn(n, Fo), H2 = footOn(n, Fp), ext = a * 1.1;
       E(b, a, bb);
       seg(b, [P[0] - dir[0] * ext, P[1] - dir[1] * ext], [P[0] + dir[0] * ext, P[1] + dir[1] * ext], 'violet', 2.4);
       if (st(1)) { seg(b, Fo, H1, 'sky', 2.8); seg(b, Fp, H2, 'rose', 2.8); rt(b, H1, Fo, P, 'amber', 9); rt(b, H2, Fp, P, 'amber', 9); segLabel(b, Fo, H1, 'd₁', 'sky', 13, 1, 13); segLabel(b, Fp, H2, 'd₂', 'rose', 13, -1, 13); }
+      if(st(2)) { const Hp=[-H1[0],-H1[1]]; Cr(b,a,'green'); seg(b,H1,Hp,'green',1.5,[5,5]); seg(b,Hp,H2,'amber',2.6); seg(b,[-a,0],[a,0],'green',2); D(b,Hp,'H₁′','green',O,{r:4}); tk(b,Fo,H1,'sky',2); tk(b,Fp,Hp,'sky',2); }
       if (st(3)) T(b, [0, -bb * 1.45], `d₁ × d₂ = b² = ${bb * bb}`, 'amber', 0, 0, 14);
       D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
       if (st(1)) { D(b, H1, 'H₁', 'sky', Fo, { r: 3.6 }); D(b, H2, 'H₂', 'rose', Fp, { r: 3.6 }); }
@@ -2645,34 +2667,66 @@ window.addEventListener('DOMContentLoaded', function () {
       seg(b, P, Fp, 'rose', 2.8); segLabel(b, P, Fp, `PF' = ${d}`, 'rose', 15, 1, 13);
       if (st(1)) { seg(b, P, Fo, 'sky', 2.8); segLabel(b, P, Fo, `PF = ${pf}`, 'sky', 15, -1, 13); }
       if (st(1)) seg(b, P, N, 'green', 3);
-      if (st(2)) { b.angle(P, Fp, N, { r: 28, color: 'amber', rings: 1 }); b.angle(P, N, Fo, { r: 28, color: 'amber', rings: 2 }); }
+      if (st(2)) { b.angle(P, Fp, N, { r: 28, color: 'amber', rings: 1 }); b.angle(P, N, Fo, { r: 28, color: 'amber', rings: 1 }); }
       if (st(3)) { const nv = [N[0] - P[0], N[1] - P[1]], L = Math.hypot(...nv), tv = [-nv[1] / L, nv[0] / L]; seg(b, [P[0] - tv[0] * a * 0.7, P[1] - tv[1] * a * 0.7], [P[0] + tv[0] * a * 0.7, P[1] + tv[1] * a * 0.7], 'violet', 1.8, [6, 5]); T(b, [0, -bb * 1.45], `F'N : NF = PF' : PF = ${v.r1 || d} : ${v.r2 || pf}`, 'amber', 0, 0, 13); }
       D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
       if (st(1)) D(b, N, 'N', 'green', [N[0], N[1] + 1], { r: 4 });
     };
     F['4-B'] = (b, st, v) => {
-      const { a, b: bb, R2 } = v, R = Math.sqrt(R2), th = 50 * Math.PI / 180, M = [R * Math.cos(th), R * Math.sin(th)];
-      const A = M[0] * M[0] - a * a, B1 = -2 * M[0] * M[1], C = M[1] * M[1] - bb * bb, dd = Math.sqrt(B1 * B1 - 4 * A * C), ms = [(-B1 + dd) / (2 * A), (-B1 - dd) / (2 * A)];
-      const Ts = ms.map((m) => { const k = M[1] - m * M[0], den = a * a * m * m + bb * bb; return [-a * a * m * k / den, bb * bb * k / den]; });
-      E(b, a, bb);
-      if (st(1)) b.poly([[-a, -bb], [a, -bb], [a, bb], [-a, bb]], { color: 'sky', width: 2, fill: 'sky', fillAlpha: 0.06 });
-      if (st(2)) Cr(b, R, 'violet');
-      Ts.forEach((tp) => seg(b, M, tp, 'amber', 2.8)); rt(b, M, Ts[0], Ts[1], 'amber', 12);
-      if (st(1)) [[a, bb], [-a, bb], [-a, -bb], [a, -bb]].forEach((p) => b.point(p, { r: 3.6, color: 'sky' }));
-      if (st(3)) { seg(b, O, M, 'green', 3); T(b, [0, -R * 1.18], `OM = √(a²+b²) = √${R2}`, 'green', 0, 0, 13); }
-      D(b, M, 'M', 'violet', O, { r: 5.2 }); Ts.forEach((tp, i) => D(b, tp, `T${'₁₂'[i]}`, 'amber', O, { r: 3.8 }));
+      const {a,b:bb,R2}=v,R=Math.sqrt(R2),th=50*Math.PI/180;
+      const g=ellipseOrthogonalTangents(a,bb,th),M=[g.M.x,g.M.y],Ts=[g.T1,g.T2].map(p=>[p.x,p.y]);
+      E(b,a,bb);
+      Ts.forEach(tp=>seg(b,M,tp,'amber',2.8)); rt(b,M,Ts[0],Ts[1],'amber',12);
+      D(b,M,'M','violet',O,{r:5.2}); Ts.forEach((tp,i)=>D(b,tp,`T${'₁₂'[i]}`,'amber',O,{r:3.8}));
+      const Ks=Ts.map(tp=>{const dx=tp[0]-M[0],dy=tp[1]-M[1],u=-(M[0]*dx+M[1]*dy)/(dx*dx+dy*dy);return [M[0]+u*dx,M[1]+u*dy]});
+      if(st(1)) {
+        b.poly([O,Ks[0],M,Ks[1]],{color:'green',width:2,fill:'green',fillAlpha:.07});
+        Ks.forEach((K,i)=>{rt(b,K,O,M,'green',10);D(b,K,`K${'₁₂'[i]}`,'green',O,{r:3.8});segLabel(b,O,K,`h${'₁₂'[i]}`,'green',14,i?1:-1,13)});
+      }
+      if(st(2)) { seg(b,O,M,'violet',2,[5,5]); T(b,[0,-R*1.1],'OM² = h₁² + h₂²','green',0,0,13); }
+      if(st(3)) {Cr(b,R,'violet');T(b,[0,-R*1.1],`h₁² + h₂² = a²+b² = ${R2}`,'violet',0,22,13);}
     };
     return F;
   })();
 
+  function ellipseProof(id,v) {
+    const a=v.a, bb=v.b, c=v.c;
+    if(id==='1-A')v.quick=String.raw`정의 $PF+PF'=2a=${2*a}$에서 $PF=${v.pf}$. 세 변을 한꺼번에 묶으면 둘레 $=(PF+PF')+FF'=2a+2c=${v.per}$. 점 P의 좌표는 필요하지 않습니다.`;
+    if(id==='1-B')v.quick=String.raw`지름에 대한 원주각으로 직각임을 먼저 확인합니다. $u=PF$, $v=PF'$라 놓으면 $u+v=2a$, $u^2+v^2=4c^2$. 따라서 $S=uv/2=((2a)^2-(2c)^2)/4=a^2-c^2=b^2=${bb*bb}$. 이 직각 교점은 $c\ge b$일 때 존재합니다.`;
+    if(id==='1-C')v.quick=String.raw`초점 F는 타원 내부이므로 현 PQ에서 P와 Q 사이에 있습니다. $PQ=PF+FQ$로 나누면 둘레 $=(PF'+PF)+(QF'+QF)=2a+2a=${4*a}$.`;
+    if(id==='2-B'){
+      v.quick=String.raw`세로 배율 $b/a$의 변환과 역변환은 원·타원 위 삼각형을 일대일로 대응시킵니다. 수평 밑변으로 삼각형을 나누면 각 조각의 밑변은 그대로, 높이만 $b/a$배여서 모든 넓이가 같은 비로 바뀝니다. 원의 최댓값 $3\sqrt3a^2/4$에 $b/a$를 곱해 $3\sqrt3ab/4$입니다.`;
+      v.steps[1]+=' 역변환도 가능하고 모든 삼각형의 넓이가 같은 비로 바뀌므로 최댓값의 순서도 보존됩니다.';
+    }
+    if(id==='2-C'){
+      v.steps=[String.raw`P와 Q에서 x축에 내린 공통 수선의 발 H를 잡고 OQ를 연결합니다.`,String.raw`원의 접선 QT는 OQ와 수직입니다. 세로 축소는 접선도 접선으로 보내고 x축 위 T를 고정하므로 두 접선의 절편이 같습니다.`,String.raw`직각삼각형 OQT의 닮음으로 $OH\cdot OT=OQ^2=a^2$. $x_1=${v.x1}>0$이므로 $OT=${v.chk.T}$.`];
+      v.quick=String.raw`수선 QH를 그리면 $\triangle OQH\sim\triangle OTQ$이므로 $OH\cdot OT=a^2$. 세로 축소에서 x축 위 T가 고정되므로 타원 접선도 이 T를 지납니다. $x_T=a^2/x_1=${v.ans.match(/T\((.*),/)[1]}$. $x_1=0$일 때는 수평 접선이라 절편이 없습니다.`;
+    }
+    if(id==='3-A') {
+      v.quick=String.raw`접선의 반사 성질로 F의 대칭점 F″은 F′P의 연장선 위에 놓입니다. $PF''=PF$이므로 $F'F''=PF'+PF=2a=${2*a}$. O와 H₁은 각각 F′F와 FF″의 중점이므로 $OH_1=F'F''/2=${a}$.`;
+      v.standard={steps:String.raw`① 접선의 식을 $ux+vy=1$로 씁니다. $u=x_1/a^2$, $v=y_1/b^2$, $N=u^2+v^2$로 두면 타원 식에서 $b^2N=1-c^2u^2$입니다.<br>② 수선의 발은 $H_1=(c,0)+(1-cu)(u,v)/N$이므로 $OH_1^2=c^2+(1-c^2u^2)/N=c^2+b^2=a^2$. 따라서 $OH_1=${a}$.<br>③ 좌표벡터로 $F''=2H_1-F$, $F'=-F$이므로 $F'F''=2OH_1=${2*a}$.`,warning:'수선의 발 좌표와 거리 제곱을 정리해야 합니다. 반사와 중점을 보면 이 통분을 생략할 수 있습니다.'};
+    }
+    if(id==='3-B'){
+      v.steps=['각 초점에서 접선에 내린 수선의 발 H₁,H₂를 잡습니다. 초점의 대칭과 중점연결정리로 OH₁=OH₂=a입니다.','H₁의 원점 대칭점 H₁′을 잡습니다. 중심대칭으로 F′H₁′=FH₁=d₁이며 H₁′,F′,H₂는 한 직선 위입니다.',String.raw`원 안의 F′를 지나는 두 현의 곱: $d_1d_2=(a-c)(a+c)=a^2-c^2=b^2=${bb*bb}$.`];
+      v.quick=String.raw`수선의 발은 반지름 a인 원 위입니다(초점 반사와 중점연결정리). H₁을 원점에 대칭시킨 H₁′도 원 위이고 $F′H₁′=d_1$, $F′H_2=d_2$. 현 H₁′H₂와 장축 지름이 F′에서 만나므로 두 현의 곱에서 $d_1d_2=(a-c)(a+c)=b^2=${bb*bb}$.`;
+      v.standard={steps:String.raw`① 접선 $ux+vy=1$에서 $u=x_1/a^2$, $v=y_1/b^2$, $N=u^2+v^2$로 두면 거리 공식으로 $d_1=|1-cu|/\sqrt N$, $d_2=|1+cu|/\sqrt N$입니다.<br>② 타원 식을 이용하면 $b^2N=b^2x_1^2/a^4+y_1^2/b^2=1-c^2u^2>0$.<br>③ 따라서 $d_1d_2=|1-c^2u^2|/N=b^2=${bb*bb}$.`,warning:'접선 계수의 제곱합을 통분하는 계산을 원 안의 두 현의 곱으로 줄일 수 있습니다.'};
+    }
+    if(id==='4-B'){
+      v.steps=['O에서 서로 수직인 두 접선에 내린 수선의 발 K₁,K₂를 잡으면 OK₁MK₂는 직사각형입니다.',String.raw`첫 수선 방향이 θ이면 $OK_1^2=a^2\cos^2\theta+b^2\sin^2\theta$. 수직인 두 번째 방향에서는 sin,cos가 바뀝니다. (접선 조건으로 얻는 식)`,String.raw`두 식을 더하면 $OM^2=OK_1^2+OK_2^2=a^2+b^2=${v.R2}$. 모든 방향에서 성립하므로 자취는 원입니다.`];
+      v.quick=String.raw`직사각형 OK₁MK₂에서 $OM^2=OK_1^2+OK_2^2$. 법선 방향 $(\cos\theta,\sin\theta)$인 접선까지의 거리 h는 $h^2=a^2\cos^2\theta+b^2\sin^2\theta$입니다. 이 식은 직선과 타원의 교점이 하나라는 판별식 조건으로 얻습니다. 수직 방향의 식을 더하면 $OM^2=a^2+b^2=${v.R2}$. 역으로 이 원은 타원 밖에 있으며, 이 원 위 점을 지나는 두 접선의 기울기 곱은 −1입니다(수직 접선이 있으면 다른 접선은 수평). 꼭짓점 (a,b)는 결과를 검산하는 한 위치입니다.`;
+      v.standard={steps:String.raw`① M의 좌표를 $(X,Y)$라 놓습니다. 기울기 t인 접선의 조건 $(Y-tX)^2=a^2t^2+b^2$에서 $(X^2-a^2)t^2-2XYt+(Y^2-b^2)=0$입니다.<br>② 두 접선의 기울기 곱이 −1이므로 $(Y^2-b^2)/(X^2-a^2)=-1$, 따라서 $X^2+Y^2=a^2+b^2=${v.R2}$이고 $OM=\sqrt{${v.R2}}$.<br>③ $X^2=a^2$이면 수직 접선 $x=\pm a$와 수평 접선 $y=\pm b$의 교점이며 같은 원 위입니다. 역으로 이 원의 모든 점은 타원 밖에 있고, 일반점의 두 실접선의 기울기 곱은 −1, 네 예외점에서는 수평·수직이므로 원 전체가 자취입니다.`,warning:'기울기만으로 증명할 때는 수직 접선을 별도로 확인해야 합니다. 수선으로 만든 직사각형은 이 경우도 같은 그림으로 다룹니다.'};
+    }
+    return v;
+  }
+
   function oldEllipseUpgrade(sc, id) {
-    const old = scenarioDB[id], list = OVE.POOL[id].map(OVE.B[id]);
+    const old = scenarioDB[id], list = OVE.POOL[id].map(q=>ellipseProof(id,OVE.B[id](q)));
     const vr = varier(list, (x) => x);
     const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
     const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view, oSol = sc.solution;
     const cur = () => vr.cur(), isOld = () => vr.idx() === 0;
     sc.vary = vr;
-    sc.steps = (s) => (away() && !isOld() ? cur().steps : oSteps);
+    sc.steps = (s) => (away() ? cur().steps : oSteps);
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${isOld() ? old.question : cur().text}</div>`;
     sc.problem = {
       tag: old.tag, time: old.targetTime,
@@ -2681,8 +2735,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     sc.solution = {
       ...oSol,
-      standard: (s) => (isOld() ? oSol.standard(s) : { steps: cur().steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>'), warning: '정의와 도형의 성질로 먼저 선분의 관계를 정리한 뒤 값을 계산하세요.' }),
-      quick: (s) => (isOld() ? oSol.quick(s) : { steps: cur().quick, highlight: '핵심 성질을 쓰면 좌표 계산 없이 한두 줄로 끝납니다.' })
+      standard: (s) => (cur().standard || (isOld() ? (typeof oSol.standard === 'function' ? oSol.standard(s) : oSol.standard) : { steps: cur().steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>'), warning: '정의와 도형의 성질로 먼저 선분의 관계를 정리한 뒤 값을 계산하세요.' })),
+      quick: () => ({ steps: cur().quick, highlight: '보조선의 성질과 적용 조건을 확인한 뒤 값을 계산합니다.' })
     };
     sc.view = (s, lab) => (lab && lab.tab !== 'explore' ? { chips: [], formula: old.formula } : oView(s, lab));
     sc.draw = (b, s, v, lab) => {
@@ -2704,8 +2758,8 @@ window.addEventListener('DOMContentLoaded', function () {
   groups.forEach((g) => g.scenes.forEach((sc, i) => oldEllipseUpgrade(sc, sc.id)));
 
   const KICE_GROUPS = [
-    { id: 'q5', title: '[기출 핵심] 타원과 쌍곡선이 초점 하나를 공유 — 둘레는 4a', short: '타원+쌍곡선 1', scenes: [sceneE5()] },
-    { id: 'q6', title: '[기출 핵심] 타원과 쌍곡선이 두 초점을 공유 — PF = a − a′', short: '타원+쌍곡선 2', scenes: [sceneE6()] }
+    { id: 'q5', title: '[기출 핵심] 타원과 쌍곡선이 초점 하나를 공유', short: '타원+쌍곡선 1', scenes: [sceneE5()] },
+    { id: 'q6', title: '[기출 핵심] 타원과 쌍곡선이 두 초점을 공유', short: '타원+쌍곡선 2', scenes: [sceneE6()] }
   ];
 
   return { groups: KICE_GROUPS, params: KP, state: KS };
@@ -2713,7 +2767,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* [기출 핵심 유형 장면 끝] */
 
   APLab.createLab({
-    id: 'geom-ellipse',
+    id: 'geom-ellipse', stagedReveal: true,
     title: '타원',
     courseName: '기하',
     unit: '이차곡선 · 타원',
