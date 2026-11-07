@@ -38,7 +38,9 @@ window.addEventListener('DOMContentLoaded', function () {
   const snapTo = (v, st) => Math.round(v / st) * st;
   const n2 = (v) => { let r = Math.round(v * 100) / 100; if (r === 0) r = 0; return String(r).replace('-', '−'); }; // 화면용(유니코드 마이너스)
   const nt = (v) => n2(v).replace('−', '-'); // 수식용
-  const pS = (p) => `(${n2(p.x)}, ${n2(p.y)})`;
+  const rounded = (v) => Math.abs(v - Math.round(v * 100) / 100) > 1e-9;
+  const valueS = (v) => `${rounded(v) ? '≈ ' : ''}${n2(v)}`;
+  const pS = (p) => `${rounded(p.x) || rounded(p.y) ? '≈ ' : ''}(${n2(p.x)}, ${n2(p.y)})`;
   const pT = (p) => `(${nt(p.x)}, ${nt(p.y)})`;
   function sqrtSimp(n) { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; }
   const radTex = (n) => { const [o, i] = sqrtSimp(Math.round(n)); return i === 1 ? String(o) : (o === 1 ? '' : o) + `\\sqrt{${i}}`; };
@@ -83,11 +85,12 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
-  const stepsOf = (V) => () => V.cur().steps.map((t) => t.replace(/<\/?b>/g, ''));
+  // 전체 장면 보기는 enter 전에도 다른 장면의 단계 수를 묻습니다. 활성 탐구만 현재 상태를 읽습니다.
+  const stepsOf = (V, id) => (s, lab = window.lab) => (lab && lab.tab === 'explore' && lab.scene && lab.scene.id === id ? exploreSteps(id, s) : V.cur().steps).map((t) => t.replace(/<\/?b>/g, ''));
   const reviewTop = (V) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.cur().text}</div>`;
   /** 탭에 따른 풀이 단계: 정리 탭은 s.step, 문제 탭·탐구 탭은 0 */
   const stepOf = (s, lab) => (lab && lab.tab === 'review' ? s.step : 0);
@@ -242,7 +245,7 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: ['a', 'b'],
       enter: (s) => { s.shape = 'para'; s.a = 3; s.b = 2; s.u = -1.5; },
       presets: () => Object.entries(SHAPES).map(([k, v]) => ({ group: '옮길 도형', label: v.label, apply: (st) => { st.shape = k; st.u = k === 'circle' ? 2.3 : k === 'para' ? -1.5 : -1; }, on: (st) => st.shape === k })),
-      steps: stepsOf(V7),
+      steps: stepsOf(V7, 'shift'),
       reviewTop: reviewTop(V7),
       vary: V7,
       problem: { tag: '2021학년도 9월 학평(인천) 26번 유형', time: '목표 시간: 30초', text: () => probHTML(V7.cur().text), answer: () => tex(V7.cur().ansTex) },
@@ -337,7 +340,7 @@ window.addEventListener('DOMContentLoaded', function () {
         std: `① 원 ${tex(std)}의 중심은 ${tex(pT(P(cx, cy)))}, 반지름은 ${tex(String(r))}입니다.<br/>② ${RNAME[m]}에 대한 대칭이동 ${tex(RULE[m])}를 중심에 적용하면 ${tex(pT(C1))}.<br/>③ ${tex(`m+n=${nt(ans)}`)}`,
         warn: m === 'd' ? '직선 y = x에 대한 대칭이동은 식에서 x와 y를 서로 바꾸는 것입니다. 부호는 바뀌지 않습니다.' : '식에서 y 대신 −y를 넣는(x축 대칭) 것과 점의 y좌표 부호를 바꾸는 것은 같은 규칙입니다. 중심의 좌표 부호를 따져 보세요.',
         quick: `원 전체가 아니라 <b>중심 한 점</b>만 대칭이동합니다: ${tex(pT(P(cx, cy)))}→${tex(pT(C1))}.`,
-        highlight: '원, 포물선 같은 도형의 대칭이동은 대표점(중심·꼭짓점) 하나의 대칭이동으로 줄여서 생각합니다.'
+        highlight: '원은 중심만 옮기면 됩니다. 포물선은 꼭짓점과 함께 대칭축과 열리는 방향도 옮겨야 합니다.'
       };
     }
     const { A, m1, m2 } = d, B = REF[m1](A), C = REF[m2](B), ar = areaP(A, B, C);
@@ -377,7 +380,8 @@ window.addEventListener('DOMContentLoaded', function () {
       mirrorDraw(b, q.m, { color: 'green' });
       b.circle(P(q.cx, q.cy), q.r, { color: 'ink', width: 3 });
       b.text(P(q.cx, q.cy + q.r), `원 ${plainEq(`(${sgn(q.cx, 'x')})^2+(${sgn(q.cy, 'y')})^2=${q.r * q.r}`)}`, { color: 'ink', size: 12.5, dy: -10 });
-      if (st >= 1) { b.seg(P(q.cx, q.cy), q.C1, { color: 'green', width: 1.5, dash: true }); b.point(P(q.cx, q.cy), { color: 'ink', r: 4.5, label: pS(P(q.cx, q.cy)), ...away(P(q.cx, q.cy), q.C1, 18), size: 12.5 }); b.point(q.C1, { color: 'amber', r: 5, label: pS(q.C1), ...away(q.C1, P(q.cx, q.cy), 18), size: 12.5 }); }
+      if (st >= 1) b.point(P(q.cx, q.cy), { color: 'ink', r: 4.5, label: pS(P(q.cx, q.cy)), ...away(P(q.cx, q.cy), q.C1, 18), size: 12.5 });
+      if (st >= 2) { b.seg(P(q.cx, q.cy), q.C1, { color: 'green', width: 1.5, dash: true }); b.point(q.C1, { color: 'amber', r: 5, label: pS(q.C1), ...away(q.C1, P(q.cx, q.cy), 18), size: 12.5 }); }
       if (st >= 2) { b.circle(q.C1, q.r, { color: 'amber', width: 3, fill: 'amber', fillAlpha: 0.1, glow: true }); b.text(P(q.C1.x, q.C1.y - q.r), '대칭이동한 원', { color: 'amber', size: 12.5, dy: 16 }); }
     } else {
       mirrorDraw(b, q.m1, { color: 'sky' }); if (q.m2 !== q.m1) mirrorDraw(b, q.m2, { color: 'green' });
@@ -394,11 +398,11 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'reflect', title: '대칭이동 — x축·y축·원점·직선 y = x', short: '대칭이동',
       question: '점과 도형을 x축, y축, 원점, 직선 y = x에 대하여 대칭이동하면 좌표와 식은 어떻게 바뀔까?',
-      guide: '버튼으로 거울(대칭의 기준)을 고르고 <b>P</b>와 <b>원</b>을 끌어 보세요. 점 P와 P′는 늘 <b>거울에서 같은 거리</b>에 있고, 선분 PP′는 거울과 <b>수직</b>입니다. 그래서 좌표가 규칙대로 바뀝니다.',
+      guide: (s) => s.ref === 'o' ? '<b>P</b>와 <b>원</b>을 끌어 보세요. 원점 대칭은 <b>O를 중심으로 180° 회전</b>하는 것입니다. O가 PP′의 중점이므로 두 좌표의 부호가 모두 바뀝니다.' : '<b>P</b>와 <b>원</b>을 끌어 보세요. 서로 다른 P, P′를 잇는 선분의 <b>수직이등분선</b>이 거울입니다. P가 거울 위에 있으면 P′와 겹쳐 그 자리에 남습니다.',
       focus: FOCUS,
       enter: (s) => { s.ref = 'x'; s.rp = { x: 4, y: 3 }; s.rc = { x: -2, y: 2 }; },
       presets: () => Object.keys(RNAME).map((k) => ({ group: '거울(대칭의 기준)', label: `${RNAME[k]}에 대하여`, color: RCOL[k], apply: (st) => { st.ref = k; }, on: (st) => st.ref === k })),
-      steps: stepsOf(V8),
+      steps: stepsOf(V8, 'reflect'),
       reviewTop: reviewTop(V8),
       vary: V8,
       problem: { tag: '2022학년도 11월 학평(경기) 15번 · 2023학년도 9월 학평(인천) 16번 유형', time: '목표 시간: 25초', text: () => probHTML(V8.cur().text), answer: () => tex(V8.cur().ansTex) },
@@ -417,14 +421,14 @@ window.addEventListener('DOMContentLoaded', function () {
             { label: '점 P → P′', value: `${pS(P0)} → ${pS(P1)}`, color: 'amber', ref: 'img', wide: true },
             { label: '원의 중심 C → C′', value: `${pS(C0)} → ${pS(C1)}`, color: 'amber', wide: true, note: '반지름 1은 그대로' },
             { label: '이동한 원의 방정식', value: `(${sgn(C1.x, 'x').replace('-', '−')})² + (${sgn(C1.y, 'y').replace('-', '−')})² = 1`, color: 'ink', wide: true },
-            { label: '거울과 PP′의 관계', value: '수직이등분', color: RCOL[k], ref: 'mirror', note: '거울이 선분 PP′의 수직이등분선' }
+            { label: k === 'o' ? '원점과 PP′의 관계' : '거울과 PP′의 관계', value: distP(P0, P1) < 1e-9 ? 'P = P′ (고정점)' : k === 'o' ? 'O는 PP′의 중점' : '수직이등분', color: RCOL[k], ref: 'mirror', note: k === 'o' ? '원점 중심 180° 회전' : distP(P0, P1) < 1e-9 ? '거울 위의 점은 움직이지 않음' : '거울이 선분 PP′의 수직이등분선' }
           ]
         };
       },
       formula: `<p>점 ${tex('(x,\\ y)')}의 대칭이동</p>
 <p>${tex('x')}축: ${tex('(x,\\ -y)')} · ${tex('y')}축: ${tex('(-x,\\ y)')} · 원점: ${tex('(-x,\\ -y)')} · 직선 ${tex('y=x')}: ${tex('(y,\\ x)')}</p>
 <p>도형 ${tex('f(x,\\ y)=0')}의 대칭이동은 식에서 같은 규칙으로 바꿔 씁니다. ${tex('x')}축: ${tex('f(x,\\ -y)=0')}, ${tex('y')}축: ${tex('f(-x,\\ y)=0')}, 원점: ${tex('f(-x,\\ -y)=0')}, ${tex('y=x')}: ${tex('f(y,\\ x)=0')}</p>`,
-      notes: '<ul><li>x축 대칭은 <b>y의 부호</b>, y축 대칭은 <b>x의 부호</b>가 바뀝니다. 반대로 외우지 마세요.</li><li>직선 y = x 대칭은 부호가 아니라 <b>x와 y를 맞바꿉니다.</b></li><li>대칭이동한 원·포물선도 모양은 같고 <b>위치(중심·꼭짓점)만</b> 옮겨집니다.</li></ul>',
+      notes: '<ul><li>x축 대칭은 <b>y의 부호</b>, y축 대칭은 <b>x의 부호</b>가 바뀝니다. 반대로 외우지 마세요.</li><li>직선 y = x 대칭은 부호가 아니라 <b>x와 y를 맞바꿉니다.</b></li><li>대칭이동한 원은 중심만 옮기고 반지름을 유지합니다. 포물선은 꼭짓점뿐 아니라 <b>축과 열리는 방향</b>도 옮깁니다(예: y = x²를 y = x에 대칭이동하면 x = y²).</li></ul>',
       draw: (b, s, v, lab) => {
         const tab = lab.tab;
         if (tab === 'explore') { useView(b, 'refl:ex', FOCUS); plane(b, s); drawReflect(b, s); }
@@ -447,7 +451,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const t = fu / (fu - fv);
     return lerpP(U, V, t);
   }
-  const rad1 = (m) => m;
+  function crossMirTex(m, U, V) {
+    const f = (p) => m === 'x' ? p.y : m === 'y' ? p.x : p.y - p.x;
+    const u = f(U), v = f(V), den = u - v;
+    const fraction = (n) => { const g = gcd(n, den), a = n / g * Math.sign(den), d = Math.abs(den / g); return d === 1 ? String(a) : `\\dfrac{${a}}{${d}}`; };
+    return `\\left(${fraction(u * V.x - v * U.x)},\\ ${fraction(u * V.y - v * U.y)}\\right)`;
+  }
   /** 문제·탐구 공용: 꺾인 경로(A→거울 위 P→목표) 그림 */
   function drawBend(b, o) {
     const { m, A, T, r, P: Pp, st, handle } = o, A2 = REF[m](A), circ = r != null;
@@ -472,7 +481,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!circ) b.point(T, { color: 'ink', r: 5.5, label: `B${pS(T)}`, ...away(T, A, 20), size: 13 });
     else b.point(T, { color: 'rose', r: 4.5, label: `C${pS(T)}`, dx: 0, dy: 20, align: 'center', size: 13 });
     if (handle && Pp) b.handle('P', Pp, { color: 'amber', r: 7.5, label: 'P', dx: 0, dy: m === 'x' ? 22 : -18, align: 'center', drag: handle });
-    if (circ && Pp && handle) b.point(end, { color: 'rose', r: 4.5, label: 'Q', ...away(end, T, 16), size: 13 });
+    if (circ && Pp) b.point(end, { color: 'rose', r: 4.5, label: 'Q', ...away(end, T, 16), size: 13 });
   }
   function drawBendTri(b, o) {
     const { A, P: Pp, Q, st, handles } = o, Ax = REF.x(A), Ad = REF.d(A);
@@ -503,13 +512,13 @@ window.addEventListener('DOMContentLoaded', function () {
         text: `좌표평면 위의 점 ${tex('A' + pT(A))}와 ${tex('x')}축 위의 점 ${tex('P')}, 직선 ${tex('y=x')} 위의 점 ${tex('Q')}에 대하여 삼각형 ${tex('APQ')}의 둘레의 길이의 최솟값을 구하시오.`,
         steps: [
           `$A$를 $x$축에 대하여 대칭이동한 점 $A_x${pT(Ax)}$, 직선 $y=x$에 대하여 대칭이동한 점 $A_d${pT(Ad)}$를 찍습니다. $\\overline{AP}=\\overline{A_xP}$, $\\overline{AQ}=\\overline{A_dQ}$`,
-          `둘레 $\\overline{AP}+\\overline{PQ}+\\overline{QA}=\\overline{A_xP}+\\overline{PQ}+\\overline{QA_d}\\ge\\overline{A_xA_d}$ (네 점이 한 직선 위일 때 등호)`,
+          `둘레 $\\overline{AP}+\\overline{PQ}+\\overline{QA}=\\overline{A_xP}+\\overline{PQ}+\\overline{QA_d}\\ge\\overline{A_xA_d}$ ($A_x,\\ P,\\ Q,\\ A_d$가 이 순서로 한 직선 위일 때 등호)`,
           `$\\overline{A_xA_d}=\\sqrt{(${nt(Ax.x - Ad.x)})^2+(${nt(Ax.y - Ad.y)})^2}=${radTex(L * L)}$`
         ],
         ansTex: radTex(L * L),
         std: `① ${tex(`A_x${pT(Ax)},\\ A_d${pT(Ad)}`)}로 두면 ${tex('\\overline{AP}=\\overline{A_xP}')}, ${tex('\\overline{AQ}=\\overline{A_dQ}')}입니다.<br/>② ${tex('\\overline{AP}+\\overline{PQ}+\\overline{QA}\\ge\\overline{A_xA_d}')}이고, ${tex('A_x,\\ P,\\ Q,\\ A_d')}가 한 직선 위에 이 순서로 놓일 때 등호가 성립합니다.<br/>③ ${tex(`\\overline{A_xA_d}=${radTex(L * L)}`)}`,
         warn: '두 번 반사하는 문제에서는 점 A를 각 거울에 대해 따로 대칭이동합니다. 한 점을 다시 대칭하면 안 됩니다(둘째 대칭을 A에서 그대로 한 점).',
-        quick: `${tex('A')}를 두 거울에 각각 대칭이동한 두 점 사이의 거리가 최솟값입니다: ${tex(`\\overline{A_xA_d}=${radTex(L * L)}`)}.`,
+        quick: `${tex('A')}를 두 거울에 각각 대칭이동합니다. 이 문제에서는 두 대칭점을 이은 선분이 x축, y=x를 이 순서로 지나므로 그 거리가 최솟값입니다: ${tex(`\\overline{A_xA_d}=${radTex(L * L)}`)}.`,
         highlight: '삼각형의 둘레 = 꺾인 선분 A_xP + PQ + QA_d 를 일직선으로 펴면 A_xA_d 의 길이가 최솟값입니다.'
       };
     }
@@ -520,16 +529,16 @@ window.addEventListener('DOMContentLoaded', function () {
       text: circ ? `좌표평면 위의 점 ${tex('A' + pT(A))}와 원 ${tex(`(${sgn(T.x, 'x')})^2+(${sgn(T.y, 'y')})^2=${r * r}`)} 위의 점 ${tex('Q')}, ${nm} 위의 점 ${tex('P')}에 대하여 ${tex('\\overline{AP}+\\overline{PQ}')}의 최솟값을 구하시오.` : `좌표평면 위의 두 점 ${tex('A' + pT(A))}, ${tex('B' + pT(T))}와 ${nm} 위의 점 ${tex('P')}에 대하여 ${tex('\\overline{AP}+\\overline{PB}')}의 최솟값을 구하시오.`,
       steps: circ ? [
         `$A$를 ${nm}에 대하여 대칭이동한 점 $A′${pT(A2)}$를 찍습니다. $\\overline{AP}=\\overline{A′P}$ 이므로 $\\overline{AP}+\\overline{PQ}=\\overline{A′P}+\\overline{PQ}$`,
-        `원 위의 점 $Q$에 대하여 $\\overline{PQ}\\ge\\overline{PC}-${r}$ (중심까지 거리에서 반지름을 뺀 값). 따라서 $\\overline{A′P}+\\overline{PC}-${r}\\ge\\overline{A′C}-${r}$ (A′, P, C가 한 직선 위일 때 등호)`,
+        `원 위의 점 $Q$에 대하여 $\\overline{PQ}\\ge\\overline{PC}-${r}$ (중심까지 거리에서 반지름을 뺀 값). 따라서 $\\overline{A′P}+\\overline{PC}-${r}\\ge\\overline{A′C}-${r}$ (A′, P, Q, C가 이 순서로 한 직선 위일 때 등호)`,
         `$\\overline{A′C}=\\sqrt{(${nt(A2.x - T.x)})^2+(${nt(A2.y - T.y)})^2}=${nt(dist)}$ → 최솟값 $${nt(dist)}-${r}=${nt(L)}$`
       ] : [
         `$A$를 ${nm}에 대하여 대칭이동한 점 $A′${pT(A2)}$를 찍습니다. $\\overline{AP}=\\overline{A′P}$ 이므로 $\\overline{AP}+\\overline{PB}=\\overline{A′P}+\\overline{PB}$`,
-        `$\\overline{A′P}+\\overline{PB}\\ge\\overline{A′B}$ — 꺾인 경로를 직선으로 펴면 최단이고, 등호는 $A′,\\ P,\\ B$가 한 직선 위일 때(${nm}과의 교점 $P=${pT(Pstar)}$)`,
+        `$\\overline{A′P}+\\overline{PB}\\ge\\overline{A′B}$ — 꺾인 경로를 직선으로 펴면 최단이고, 등호는 $A′,\\ P,\\ B$가 한 직선 위일 때(${nm}과의 교점 $P=${crossMirTex(m, A2, T)}$)`,
         `$\\overline{A′B}=\\sqrt{(${nt(A2.x - T.x)})^2+(${nt(A2.y - T.y)})^2}=${nt(dist)}$`
       ],
       ansTex: nt(L),
-      std: circ ? `① ${tex("A'")}${pT(A2)}를 잡으면 ${tex("\\overline{AP}=\\overline{A'P}")}입니다.<br/>② 원의 중심을 ${tex('C')}${pT(T)}라 하면 ${tex(`\\overline{PQ}\\ge\\overline{PC}-${r}`)}이므로 ${tex(`\\overline{AP}+\\overline{PQ}\\ge\\overline{A'P}+\\overline{PC}-${r}\\ge\\overline{A'C}-${r}`)}<br/>③ ${tex(`\\overline{A'C}=${nt(dist)}`)} → 최솟값 ${tex(`${nt(dist)}-${r}=${nt(L)}`)}` : `① ${tex("A'")}${pT(A2)}를 잡으면 ${tex("\\overline{AP}=\\overline{A'P}")}입니다.<br/>② ${tex("\\overline{AP}+\\overline{PB}=\\overline{A'P}+\\overline{PB}\\ge\\overline{A'B}")} (등호: ${tex("A',\\ P,\\ B")}가 한 직선 위)<br/>③ ${tex(`\\overline{A'B}=\\sqrt{(${nt(A2.x - T.x)})^2+(${nt(A2.y - T.y)})^2}=${nt(dist)}`)}`,
-      warn: circ ? '두 점 A, C가 거울의 같은 쪽에 있어야 대칭점 A′와 C를 직선으로 이을 때 거울을 지납니다. 원 위의 점까지는 “중심까지 거리 − 반지름”입니다.' : 'A와 B가 거울의 같은 쪽에 있을 때만 이 방법을 씁니다. 다른 쪽에 있으면 대칭이동 없이 AB가 곧 최단 경로입니다.',
+      std: circ ? `① ${tex("A'")}${pT(A2)}를 잡으면 ${tex("\\overline{AP}=\\overline{A'P}")}입니다.<br/>② 원의 중심을 ${tex('C')}${pT(T)}라 하면 ${tex(`\\overline{PQ}\\ge\\overline{PC}-${r}`)}이므로 ${tex(`\\overline{AP}+\\overline{PQ}\\ge\\overline{A'P}+\\overline{PC}-${r}\\ge\\overline{A'C}-${r}`)}<br/>③ ${tex(`\\overline{A'C}=${nt(dist)}`)} → 최솟값 ${tex(`${nt(dist)}-${r}=${nt(L)}`)}` : `① ${tex("A'")}${pT(A2)}를 잡으면 ${tex("\\overline{AP}=\\overline{A'P}")}입니다.<br/>② ${tex("\\overline{AP}+\\overline{PB}=\\overline{A'P}+\\overline{PB}\\ge\\overline{A'B}")} (등호: ${tex("A',\\ P,\\ B")}가 이 순서로 한 직선 위)<br/>③ ${tex(`\\overline{A'B}=\\sqrt{(${nt(A2.x - T.x)})^2+(${nt(A2.y - T.y)})^2}=${nt(dist)}`)}`,
+      warn: circ ? '두 점 A, C가 거울의 같은 쪽에 있어야 대칭점 A′와 C를 직선으로 이을 때 거울을 지납니다. 여기서는 원 전체가 거울의 같은 쪽에 있어 P가 항상 원 밖입니다. 따라서 가까운 원 위의 점까지 거리는 PC − r이며, P와 C 사이에 Q가 놓여 등호가 성립합니다.' : 'A와 B가 거울의 같은 쪽에 있을 때만 이 방법을 씁니다. 다른 쪽에 있으면 대칭이동 없이 AB가 곧 최단 경로입니다.',
       quick: circ ? `${tex('A')}를 대칭이동하고 중심까지 직선거리에서 반지름을 뺍니다: ${tex(`${nt(dist)}-${r}=${nt(L)}`)}.` : `${tex('A')}를 ${nm}에 대하여 대칭이동한 뒤 ${tex('B')}와의 직선거리를 구합니다: ${tex(`${nt(L)}`)}.`,
       highlight: '“거울 위의 점을 지나는 꺾인 경로의 최솟값” = 한 점을 거울에 대칭시킨 뒤의 직선거리. 원이 끼면 반지름만큼 줄어듭니다.'
     };
@@ -558,7 +567,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { group: '경로의 종류', label: '두 번 반사 (삼각형 둘레)', apply: (st) => { st.mode = 'tri'; st.pp = 3; st.qq = 4; }, on: (st) => st.mode === 'tri' },
         ...(s.mode === 'tri' ? [] : ['x', 'y', 'd'].map((k) => ({ group: '거울', label: RNAME[k], color: RCOL[k], apply: (st) => { st.mir = k; st.pp = 0.5; }, on: (st) => st.mir === k })))
       ],
-      steps: stepsOf(V9),
+      steps: stepsOf(V9, 'shortest'),
       reviewTop: reviewTop(V9),
       vary: V9,
       problem: { tag: '2024학년도 10월 학평(경기) 21번 · 2022학년도 9월 학평(인천) 17번 유형', time: '목표 시간: 40초', text: () => probHTML(V9.cur().text), answer: () => tex(V9.cur().ansTex) },
@@ -573,11 +582,11 @@ window.addEventListener('DOMContentLoaded', function () {
           const A = P(7, 1), Ax = REF.x(A), Ad = REF.d(A), Pp = P(s.pp, 0), Q = P(s.qq, s.qq), cur = distP(A, Pp) + distP(Pp, Q) + distP(Q, A), min = distP(Ax, Ad);
           return {
             chips: [{ k: '둘레', tex: '\\overline{AP}+\\overline{PQ}+\\overline{QA}\\ge\\overline{A_xA_d}', color: 'violet' }],
-            status: Math.abs(cur - min) < 0.02 ? { tone: 'ok', text: `최솟값 ${n2(min)} — 네 점이 한 직선 위` } : { tone: 'info', text: `둘레 ${n2(cur)} (최솟값 ${n2(min)})` },
+            status: Math.abs(cur - min) < 1e-8 ? { tone: 'ok', text: `최솟값 ${n2(min)} — 네 점이 한 직선 위` } : { tone: 'info', text: `둘레 ${valueS(cur)} (최솟값 ${valueS(min)})` },
             readouts: [
-              { label: '지금의 둘레 AP + PQ + QA', value: n2(cur), color: 'amber', ref: 'pq' },
-              { label: '최솟값 AₓA_d', value: n2(min), color: 'violet', ref: 'min', note: '일직선으로 펴진 길이' },
-              { label: '차이', value: n2(cur - min), color: Math.abs(cur - min) < 0.02 ? 'green' : 'rose', wide: true }
+              { label: '지금의 둘레 AP + PQ + QA', value: valueS(cur), color: 'amber', ref: 'pq' },
+              { label: '최솟값 AₓA_d', value: valueS(min), color: 'violet', ref: 'min', note: '일직선으로 펴진 길이' },
+              { label: '차이', value: valueS(cur - min), color: Math.abs(cur - min) < 1e-8 ? 'green' : 'rose', wide: true }
             ]
           };
         }
@@ -585,18 +594,18 @@ window.addEventListener('DOMContentLoaded', function () {
         const cur = circ ? distP(A, Pp) + Math.max(0, distP(Pp, T) - 1) : distP(A, Pp) + distP(Pp, T), min = circ ? distP(A2, T) - 1 : distP(A2, T);
         return {
           chips: [{ k: circ ? '원 위의 점' : '꺾인 경로', tex: circ ? "\\overline{AP}+\\overline{PQ}\\ge\\overline{A'C}-r" : "\\overline{AP}+\\overline{PB}=\\overline{A'P}+\\overline{PB}\\ge\\overline{A'B}", color: 'violet' }],
-          status: Math.abs(cur - min) < 0.02 ? { tone: 'ok', text: `최솟값 ${n2(min)} — A′, P, ${circ ? 'C' : 'B'}가 한 직선 위` } : { tone: 'info', text: `경로 ${n2(cur)} (최솟값 ${n2(min)})` },
+          status: Math.abs(cur - min) < 1e-8 ? { tone: 'ok', text: `최솟값 ${n2(min)} — A′, P, ${circ ? 'C' : 'B'}가 한 직선 위` } : { tone: 'info', text: `경로 ${valueS(cur)} (최솟값 ${valueS(min)})` },
           readouts: [
-            { label: circ ? '지금의 길이 AP + PQ' : '지금의 길이 AP + PB', value: n2(cur), color: 'amber', ref: 'ap' },
-            { label: circ ? "최솟값 A′C − 반지름" : "최솟값 A′B", value: n2(min), color: 'violet', ref: 'min', note: circ ? `A′C = ${n2(distP(A2, T))}, 반지름 1` : '대칭점과 B를 이은 직선거리' },
-            { label: '차이', value: n2(cur - min), color: Math.abs(cur - min) < 0.02 ? 'green' : 'rose', wide: true }
+            { label: circ ? '지금의 길이 AP + PQ' : '지금의 길이 AP + PB', value: valueS(cur), color: 'amber', ref: 'ap' },
+            { label: circ ? "최솟값 A′C − 반지름" : "최솟값 A′B", value: valueS(min), color: 'violet', ref: 'min', note: circ ? `A′C = ${n2(distP(A2, T))}, 반지름 1` : '대칭점과 B를 이은 직선거리' },
+            { label: '차이', value: valueS(cur - min), color: Math.abs(cur - min) < 1e-8 ? 'green' : 'rose', wide: true }
           ]
         };
       },
       formula: `<p>거울(직선) 위의 점 ${tex('P')}를 지나는 경로 ${tex('A\\to P\\to B')}의 길이 ${tex('\\overline{AP}+\\overline{PB}')}의 최솟값은 ${tex('A')}를 거울에 대하여 대칭이동한 점 ${tex("A'")}에 대하여 ${tex("\\overline{AP}=\\overline{A'P}")}이므로</p>
 <p>${tex("\\overline{AP}+\\overline{PB}=\\overline{A'P}+\\overline{PB}\\ge\\overline{A'B}", true)}</p>
-<p>원 위의 점 ${tex('Q')}가 끼면 ${tex('\\overline{PQ}\\ge\\overline{PC}-r')}이므로 최솟값은 ${tex("\\overline{A'C}-r")}입니다. 거울이 둘이면 ${tex('A')}를 각각 대칭이동한 두 점 사이의 거리가 최솟값입니다.</p>`,
-      notes: '<ul><li>두 점이 거울의 <b>같은 쪽</b>에 있을 때 대칭이동을 씁니다. 반대쪽이면 그냥 직선 AB입니다.</li><li>원 위의 점은 <b>중심까지 거리에서 반지름을 뺍니다.</b> 더하면 최댓값입니다.</li><li>거울이 두 개이면 점을 <b>각각 따로</b> 대칭이동합니다.</li></ul>',
+<p>원 전체와 ${tex('A')}가 거울의 같은 쪽에 있고 원이 거울과 만나지 않는 여기의 경우, 원 위의 점 ${tex('Q')}가 끼면 ${tex('\\overline{PQ}\\ge\\overline{PC}-r')}이므로 최솟값은 ${tex("\\overline{A'C}-r")}입니다. 두 거울 문제에서는 각각 대칭이동한 두 점을 이은 선분이 지정된 두 거울을 경로 순서대로 통과하는지 확인해야 그 거리가 실제 최솟값이 됩니다.</p>`,
+      notes: '<ul><li>두 점이 거울의 <b>같은 쪽</b>에 있을 때 대칭이동을 씁니다. 반대쪽이면 그냥 직선 AB입니다.</li><li>P가 원 밖일 때 가까운 원 위의 점까지 거리는 <b>PC − r</b>입니다. 원 안이라면 r − PC이므로 조건을 확인해야 합니다.</li><li>두 거울에서는 대칭점들을 이은 선분 위에 반사점들이 <b>지정된 순서</b>로 놓이는지 확인합니다.</li></ul>',
       draw: (b, s, v, lab) => {
         const tab = lab.tab;
         if (tab === 'explore') {
@@ -645,6 +654,15 @@ window.addEventListener('DOMContentLoaded', function () {
     const draw = (c, col, ref, name) => {
       b.plot(parab(c), { color: col, width: 3.2, glow: true, ref });
       const h = hitsPL(c, 2, 0);
+      // 두 그래프의 세로 차이는 -(x-a+1)² + (1-2a±b): 꼭짓점에서 최대이다.
+      if (v !== 'both') {
+        const x = a - 1, Lp = P(x, 2 * x), Fp = P(x, parab(c)(x));
+        if (Math.abs(Fp.y - Lp.y) > 1e-9) {
+          b.seg(Lp, Fp, { color: col, width: 4, ref });
+          b.point(Fp, { color: col, r: 4 });
+          b.text(midP(Lp, Fp), 'Δ 최댓값', { color: col, size: 12, dx: 13, align: 'left', ref });
+        }
+      }
       h.xs.forEach((x) => b.point(P(x, 2 * x), { color: h.xs.length === 1 ? 'green' : 'rose', r: h.xs.length === 1 ? 6.5 : 4.5, hollow: h.xs.length === 2, ref }));
       return h;
     };
@@ -667,10 +685,10 @@ window.addEventListener('DOMContentLoaded', function () {
           `접하려면 판별식 $D=0$: $(${nt(m)}-2a)^2-4(a^2-${par(bb)}${n === 0 ? '' : n > 0 ? `+${n}` : `${n}`})=0$ → $a=${nt(a)}$ (접점 $${pT(P(xt, yt))}$)`
         ],
         ansTex: nt(a),
-        std: `① ${tex('y=x^2')}을 ${tex('x')}축에 대칭이동하면 ${tex('y=-x^2')}, 평행이동하면 ${tex(`y=-(x-a)^2+${nt(bb)}`)}<br/>② 직선 ${tex(lt)}과 연립하면 ${tex(`x^2+(${nt(m)}-2a)x+a^2-${par(bb)}${n === 0 ? '' : n > 0 ? `+${n}` : `${n}`}=0`)}<br/>③ 접하므로 ${tex('D=0')}: ${tex(`${m}^2-4a\\cdot ${par(m)}+4\\cdot${par(bb)}-4\\cdot${par(n)}=0`)} → ${tex(`a=${nt(a)}`)}`,
+        std: `① ${tex('y=x^2')}을 ${tex('x')}축에 대칭이동하면 ${tex('y=-x^2')}, 평행이동하면 ${tex(`y=-(x-a)^2+${nt(bb)}`)}<br/>② 직선 ${tex(lt)}과 연립하면 ${tex(`x^2+(${nt(m)}-2a)x+a^2-${par(bb)}${n === 0 ? '' : n > 0 ? `+${n}` : `${n}`}=0`)}<br/>③ 접하므로 ${tex('D=0')}: ${tex(`${par(m)}^2-4a\\cdot ${par(m)}+4\\cdot${par(bb)}-4\\cdot${par(n)}=0`)} → ${tex(`a=${nt(a)}`)}`,
         warn: '대칭이동을 먼저 하면 x²의 계수 부호가 바뀝니다. 평행이동한 뒤에 대칭이동하면 y축 방향 이동량의 부호까지 바뀌니 순서를 지켜야 합니다.',
-        quick: `이차식의 최고차항이 −1이므로 연립하면 ${tex('x^2+\\cdots=0')}이 되고, 접하려면 판별식이 0입니다. ${tex(`m^2-4am+4b-4n=0`)}에 대입해 ${tex(`a=${nt(a)}`)}.`,
-        highlight: '접선 문제는 “연립한 이차방정식의 판별식 = 0” 한 줄로 끝납니다. 접점의 x좌표는 중근 −B/2A 입니다.'
+        quick: `포물선과 직선의 <b>세로 차이</b>를 보면 ${tex(`-(x-a)^2+${nt(bb)}-(${nt(m)}x+${nt(n)})=-\\left(x-a+\\dfrac{${nt(m)}}2\\right)^2+${nt(bb)}-${par(m)}a+\\dfrac{${par(m)}^2}4-${par(n)}`)}입니다. 접할 때 이 차이의 최댓값이 0이므로 ${tex(`${nt(bb)}-${par(m)}a+\\dfrac{${par(m)}^2}4-${par(n)}=0`)}. 바로 ${tex(`a=${nt(a)}`)}, 접점은 차이 그래프의 꼭짓점 ${tex(`x=a-\\dfrac{${nt(m)}}2=${nt(xt)}`)}입니다.`,
+        highlight: '연립식을 모두 전개하는 대신 두 그래프의 세로 차이를 아래로 열린 포물선으로 봅니다. 그 최댓값이 0인 순간이 접하는 순간입니다.'
       };
     }
     const { h, s: sh, order } = d, v1 = order === 'rs' ? -h : h + sh, v2 = order === 'rs' ? -h + sh : -(h + sh), mid = order === 'rs' ? { vx: -h, vy: 0, sg: 1 } : { vx: h + sh, vy: 0, sg: 1 };
@@ -714,7 +732,8 @@ window.addEventListener('DOMContentLoaded', function () {
       b.line(P(0, q.n), q.m, { color: 'sky', width: 2.6 });
       b.text(P(q.xt - 1.2, q.m * (q.xt - 1.2) + q.n), plainEq(q.lt), { color: 'sky', size: 13, dx: -8, align: 'right' });
       if (st >= 1) { b.plot((x) => -x * x, { color: 'muted', width: 2.2, dash: true }); b.text(P(1.8, -3.2), 'y = −x²', { color: 'muted', size: 12.5, dx: 12, align: 'left' }); }
-      if (st >= 2) {
+      if (st === 2) legend(b, [['amber', `이동 후 꼭짓점 (a, ${n2(q.bb)}) · 접할 때의 a 찾기`]]);
+      if (st >= 3) {
         b.plot((x) => -((x - q.a) ** 2) + q.bb, { color: 'amber', width: 3.4, glow: true });
         b.text(P(q.a + 1.5, -2.25 + q.bb), plainEq(vtex({ vx: q.a, vy: q.bb, sg: -1 })), { color: 'amber', size: 12.5, dx: 8, align: 'left' });
         b.point(P(q.a, q.bb), { color: 'amber', r: 5, label: `(${n2(q.a)}, ${n2(q.bb)})`, dx: 0, dy: -18, align: 'center', size: 12.5 });
@@ -734,7 +753,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'compose', title: '[기출 유형] 평행이동·대칭이동의 합성과 접하는 순간', short: '이동의 합성',
       question: '대칭이동과 평행이동을 이어서 할 때 순서를 바꾸면 결과가 같을까? 이동한 포물선이 직선에 딱 접하는 순간은 언제일까?',
-      guide: '<b>①번 꼭짓점</b>(주황)을 끌어 보세요. ① <b>대칭 → 이동</b>(주황)과 ② <b>이동 → 대칭</b>(보라)은 꼭짓점의 <b>y좌표 부호</b>가 달라 서로 다른 포물선입니다. 직선 l과 한 점에서 만나는(접하는) 순간 교점이 <b>초록 점</b>으로 바뀝니다.',
+      guide: '<b>①번 꼭짓점</b>(주황)을 끌어 보세요. ① <b>대칭 → 이동</b>(주황)과 ② <b>이동 → 대칭</b>(보라)은 꼭짓점의 <b>y좌표 부호</b>가 바뀝니다. b = 0이면 두 포물선이 같고, 그 밖에는 서로 다릅니다. 한 순서만 보면 표시한 세로 선분이 <b>포물선 높이 − 직선 높이</b>의 최댓값입니다. 이 값이 0인 순간 두 그래프가 접하고 교점이 <b>초록 점</b>으로 바뀝니다.',
       focus: FOCUS,
       controls: ['ca', 'cb'],
       enter: (s) => { s.ca = 1; s.cb = 2; s.cv = 'both'; },
@@ -744,7 +763,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { group: '보기', label: '② 이동 → 대칭', color: 'violet', apply: (st) => { st.cv = '2'; }, on: (st) => st.cv === '2' },
         { group: '접하는 순간', label: '① 이 직선에 접함 (b = 2a − 1)', apply: (st) => { st.ca = 2; st.cb = 3; }, on: (st) => st.cb === 2 * st.ca - 1 }
       ],
-      steps: stepsOf(V10),
+      steps: stepsOf(V10, 'compose'),
       reviewTop: reviewTop(V10),
       vary: V10,
       problem: { tag: '2023학년도 9월 학평(인천) 15번 · 2025학년도 10월 학평(경기) 30번 유형', time: '목표 시간: 40초', text: () => probHTML(V10.cur().text), answer: () => tex(V10.cur().ansTex) },
@@ -763,7 +782,7 @@ window.addEventListener('DOMContentLoaded', function () {
           readouts: [
             { label: '① 대칭 → 이동', value: `꼭짓점 (${n2(a)}, ${n2(bb)})`, color: 'amber', ref: 'c1', note: `직선 l과 ${word(h1)} (D = ${n2(h1.D)})` },
             { label: '② 이동 → 대칭', value: `꼭짓점 (${n2(a)}, ${n2(-bb)})`, color: 'violet', ref: 'c2', note: `직선 l과 ${word(h2)} (D = ${n2(h2.D)})` },
-            { label: '접하는 조건', value: '① b = 2a − 1 · ② b = 1 − 2a', color: 'green', wide: true, note: 'D = 4(1 − 2a ± b) = 0' },
+            { label: '세로 차이 Δ의 최댓값', value: `① ${n2(1 - 2 * a + bb)} · ② ${n2(1 - 2 * a - bb)}`, color: 'green', wide: true, note: 'Δ = −(x−a+1)² + 1−2a±b. 최댓값 > 0: 두 교점, = 0: 접함, < 0: 교점 없음' },
             { label: '두 결과가 같아지는 때', value: bb === 0 ? '지금 b = 0 → 같음' : 'b = 0일 때만', color: bb === 0 ? 'green' : 'ink', wide: true }
           ]
         };
@@ -780,9 +799,59 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* 탐구용 수업 설명: 선택한 변환·거울·경로와 실제 조작값에 맞춥니다. */
+  function exploreSteps(id, s) {
+    if (id === 'shift') {
+      const sh = SHAPES[s.shape], Q = sh.pt(s.u), Q2 = P(Q.x + s.a, Q.y + s.b);
+      return [
+        `Step 1 · 한 점의 이동을 따라가기 — 현재 원래 도형은 $${sh.base}$이고 Q${pS(Q)}입니다. 모든 점을 같은 이동량 (${n2(s.a)}, ${n2(s.b)})만큼 옮깁니다.`,
+        `Step 2 · 점과 식의 좌표 연결 — $Q^{\\prime}=Q+(a,b)$이므로 현재 Q′${pS(Q2)}입니다. 이동한 점 (X, Y)를 원래 자리로 되돌리면 (X−a, Y−b)입니다.`,
+        `Step 3 · 역이동을 대입 — 원래 식에 $x\\mapsto x-a,\ y\\mapsto y-b$를 대입하면 현재 도형의 식은 $${sh.eq(s.a, s.b)}$입니다.${s.a === 0 && s.b === 0 ? ' 지금은 이동량이 0이므로 두 도형과 대응점이 겹칩니다.' : ' 대응점의 이동량은 바뀌어도 도형의 모양과 크기는 유지됩니다.'}`
+      ];
+    }
+    if (id === 'reflect') {
+      const k = s.ref, Q = P(s.rp.x, s.rp.y), Q2 = REF[k](Q), C = P(s.rc.x, s.rc.y), C2 = REF[k](C), fixed = distP(Q, Q2) < 1e-9;
+      return [
+        `Step 1 · 선택한 대칭을 확인 — 지금은 ${RNAME[k]}에 대한 대칭입니다. 좌표 규칙 $${RULE[k]}$를 현재 P${pS(Q)}에 적용합니다.`,
+        `Step 2 · 대응점과 거울의 관계 — 현재 P′${pS(Q2)}입니다. ${fixed ? '지금은 P = P′인 고정점입니다. 길이 0인 선분에 수직 관계를 붙이지 않습니다.' : k === 'o' ? '원점 O가 PP′의 중점이며, 원점 중심의 180° 회전입니다.' : '거울은 PP′의 중점을 지나고 PP′에 수직입니다.'}`,
+        `Step 3 · 원은 중심을 따라가기 — 중심 C${pS(C)}는 C′${pS(C2)}로 옮겨지고 반지름 1은 그대로입니다. 따라서 현재 대칭이동한 원은 $${eqCirc(C2)}$입니다.`
+      ];
+    }
+    if (id === 'shortest') {
+      if (s.mode === 'tri') {
+        const A = P(7, 1), Q = P(s.pp, 0), R = P(s.qq, s.qq), cur = distP(A, Q) + distP(Q, R) + distP(R, A);
+        const deg = areaP(A, Q, R) < 1e-9, optimal = Math.abs(cur - 10) < 1e-8;
+        return [
+          `Step 1 · 양 끝을 각각 반사 — 현재 A(7, 1), P${pS(Q)}, Q${pS(R)}입니다. A를 x축과 y = x에 대칭이동하면 $A_x=(7,-1),\ A_d=(1,7)$입니다.${deg ? ' 현재 세 점은 삼각형을 만들지 않지만 꺾인 경로의 길이는 비교할 수 있습니다.' : ''}`,
+          `Step 2 · 경로를 한 선분과 비교 — $AP+PQ+QA=A_xP+PQ+QA_d\\ge A_xA_d=10$입니다. 등호가 성립하려면 $A_x,P,Q,A_d$가 이 순서로 한 선분 위에 있어야 합니다.`,
+          `Step 3 · 현재 경로와 최적점 구별 — 현재 길이는 ${valueS(cur)}입니다. ${optimal ? '지금은 순서 조건을 만족하여 최솟값 10입니다.' : '지금은 최솟값 10보다 큽니다.'} 최적점은 $P=(\\frac{25}4,0)$, $Q=(\\frac{25}7,\\frac{25}7)$로 두 거울을 순서대로 통과합니다.`
+        ];
+      }
+      const m = s.mir, cfg = CFG[m], A = cfg.A, A2 = REF[m](A), circ = s.mode === 'circ', T = circ ? cfg.C : cfg.B, Q = mirPt(m, s.pp);
+      const l2 = (A2.x - T.x) ** 2 + (A2.y - T.y) ** 2, min = Math.sqrt(l2) - (circ ? 1 : 0);
+      const cur = distP(A, Q) + distP(Q, T) - (circ ? 1 : 0), optimal = Math.abs(cur - min) < 1e-8;
+      return [
+        `Step 1 · 현재 거울에 반사 — ${RNAME[m]} 위의 P${pS(Q)}를 거칩니다. A${pS(A)}의 대칭점은 A′${pS(A2)}이며, 목표는 ${circ ? '반지름 1인 원의 중심 C' : '점 B'}${pS(T)}입니다.`,
+        circ ? 'Step 2 · 원까지의 거리와 직선거리 — 이 원은 거울과 만나지 않아 P가 항상 원 밖입니다. 가까운 Q에 대해 $PQ=PC-1$이므로 $AP+PQ=A^{\\prime}P+PC-1\\ge A^{\\prime}C-1$입니다.'
+          : 'Step 2 · 반사로 거리 보존 — $AP=A^{\\prime}P$이므로 $AP+PB=A^{\\prime}P+PB\\ge A^{\\prime}B$입니다. P가 선분 A′B 위에 있을 때만 등호가 성립합니다.',
+        `Step 3 · 현재 길이와 최솟값 — 현재 길이는 ${valueS(cur)}, 최솟값은 $${radTex(l2)}${circ ? '-1' : ''}$입니다. 최적점 $P_*=${crossMirTex(m, A2, T)}$에서 대칭점과 목표를 잇는 선분이 거울을 통과합니다. ${optimal ? '지금 P는 최적점입니다.' : '지금 P는 최적점과 다릅니다.'}`
+      ];
+    }
+    const a = s.ca, b = s.cb, g1 = 1 - 2 * a + b, g2 = 1 - 2 * a - b;
+    const word = g => g > 0 ? '두 교점' : g < 0 ? '교점 없음' : '한 접점';
+    const one = s.cv === '1', two = s.cv === '2';
+    const desc = one ? `① 대칭 → 이동: $${vtex({ vx: a, vy: b, sg: -1 })}$` : two ? `② 이동 → 대칭: $${vtex({ vx: a, vy: -b, sg: -1 })}$` : `①은 $${vtex({ vx: a, vy: b, sg: -1 })}$, ②는 $${vtex({ vx: a, vy: -b, sg: -1 })}$`;
+    return [
+      `Step 1 · 순서대로 꼭짓점 추적 — 현재 이동량은 (${a}, ${b})입니다. ${desc}입니다.${b === 0 ? ' 지금은 b = 0이므로 두 결과가 같습니다.' : ' y좌표 이동량의 부호가 달라 두 결과가 다릅니다.'}`,
+      `Step 2 · 세로 차이의 최댓값 — 직선 $y=2x$와의 차이를 완전제곱하면 $\\Delta=-(x-a+1)^2+1-2a${one ? '+b' : two ? '-b' : '\\pm b'}$입니다. $x=a-1=${a - 1}$에서 차이가 최대입니다.`,
+      `Step 3 · 현재 교점 수 판단 — ${one ? `①의 최대 차이 ${g1}: ${word(g1)}` : two ? `②의 최대 차이 ${g2}: ${word(g2)}` : `①의 최대 차이 ${g1}: ${word(g1)}, ②의 최대 차이 ${g2}: ${word(g2)}`}입니다. 최대 차이가 양수·0·음수일 때 각각 두 교점·한 접점·교점 없음으로 구별합니다.`
+    ];
+  }
+
   /* ===== 실험실 등록 ===== */
   APLab.createLab({
     id: 'common-transform',
+    stagedReveal: true,
     title: '도형의 이동',
     courseName: '공통수학',
     unit: '도형의 방정식 · 도형의 이동',

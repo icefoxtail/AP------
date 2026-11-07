@@ -40,7 +40,9 @@ window.addEventListener('DOMContentLoaded', function () {
   const snapTo = (v, st) => Math.round(v / st) * st;
   const n2 = (v) => { let r = Math.round(v * 100) / 100; if (r === 0) r = 0; return String(r).replace('-', '−'); }; // 화면용(유니코드 마이너스)
   const nt = (v) => n2(v).replace('−', '-'); // 수식용
-  const pS = (p) => `(${n2(p.x)}, ${n2(p.y)})`;
+  const rounded = (v) => Math.abs(v - Math.round(v * 100) / 100) > 1e-9;
+  const valueS = (v) => `${rounded(v) ? '≈ ' : ''}${n2(v)}`;
+  const pS = (p) => `${rounded(p.x) || rounded(p.y) ? '≈ ' : ''}(${n2(p.x)}, ${n2(p.y)})`;
   const pT = (p) => `(${nt(p.x)}, ${nt(p.y)})`;
   function sqrtSimp(n) { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; }
   const radTex = (n) => { const [o, i] = sqrtSimp(Math.round(n)); return i === 1 ? String(o) : (o === 1 ? '' : o) + `\\sqrt{${i}}`; };
@@ -87,11 +89,12 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
-  const stepsOf = (V) => () => V.cur().steps.map((t) => t.replace(/<\/?b>/g, ''));
+  // 전체 장면 보기는 enter 전에도 다른 장면의 단계 수를 묻습니다. 활성 탐구만 현재 상태를 읽습니다.
+  const stepsOf = (V, id) => (s, lab = window.lab) => (lab && lab.tab === 'explore' && lab.scene && lab.scene.id === id ? exploreSteps(id, s) : V.cur().steps).map((t) => t.replace(/<\/?b>/g, ''));
   const reviewTop = (V) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.cur().text}</div>`;
   /** 탭에 따른 풀이 단계: 정리 탭은 s.step, 문제 탭·탐구 탭은 0 */
   const stepOf = (s, lab) => (lab && lab.tab === 'review' ? s.step : 0);
@@ -179,7 +182,7 @@ window.addEventListener('DOMContentLoaded', function () {
       focus: FOCUS,
       enter: (s) => { s.d1 = { ax: -3, ay: -1, bx: 3, by: 7 }; },
       presets: () => EX.map(([label, v]) => ({ group: '예시', label, apply: (st) => { st.d1 = { ...v }; }, on: (st) => ['ax', 'ay', 'bx', 'by'].every((k) => st.d1[k] === v[k]) })),
-      steps: stepsOf(V1),
+      steps: stepsOf(V1, 'dist'),
       reviewTop: reviewTop(V1),
       vary: V1,
       problem: { tag: '고1 학평 기본 유형 · 두 점 사이의 거리와 중점', time: '목표 시간: 20초', text: () => probHTML(V1.cur().text), answer: () => tex(V1.cur().ansTex) },
@@ -298,7 +301,7 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: ['m', 'n'],
       enter: (s) => { s.m = 2; s.n = 1; },
       presets: () => RATIOS.map(([a, c]) => ({ group: '내분비 m : n', label: a === c ? '1 : 1 (중점)' : `${a} : ${c}`, apply: (st) => { st.m = a; st.n = c; }, on: (st) => st.m === a && st.n === c })),
-      steps: stepsOf(V2),
+      steps: stepsOf(V2, 'inner'),
       reviewTop: reviewTop(V2),
       vary: V2,
       problem: { tag: '2021학년도 9월 학평(인천) 19번 유형 · 선분의 내분', time: '목표 시간: 25초', text: () => probHTML(V2.cur().text), answer: () => tex(V2.cur().ansTex) },
@@ -317,8 +320,8 @@ window.addEventListener('DOMContentLoaded', function () {
           status: { tone: 'info', text: `AP : PB = ${s.m} : ${s.n}${rm !== s.m ? ` (= ${rm} : ${rn})` : ''}` },
           readouts: [
             { label: '내분비 AP : PB', value: `${s.m} : ${s.n}`, color: 'amber', ref: 'ap', note: 'AP는 m, PB는 n에 해당' },
-            { label: 'x좌표 (그림자 비 m : n)', value: n2(Pp.x), color: 'sky', ref: 'mx', note: `(${s.m}·${n2(B.x)} + ${s.n}·(${n2(A.x)})) ÷ ${s.m + s.n}` },
-            { label: 'y좌표 (그림자 비 m : n)', value: n2(Pp.y), color: 'rose', ref: 'my', note: `(${s.m}·${n2(B.y)} + ${s.n}·(${n2(A.y)})) ÷ ${s.m + s.n}` },
+            { label: 'x좌표 (그림자 비 m : n)', value: valueS(Pp.x), color: 'sky', ref: 'mx', note: `(${s.m}·${n2(B.x)} + ${s.n}·(${n2(A.x)})) ÷ ${s.m + s.n}` },
+            { label: 'y좌표 (그림자 비 m : n)', value: valueS(Pp.y), color: 'rose', ref: 'my', note: `(${s.m}·${n2(B.y)} + ${s.n}·(${n2(A.y)})) ÷ ${s.m + s.n}` },
             { label: '점 P', value: pS(Pp), color: 'amber', wide: true }
           ]
         };
@@ -384,7 +387,7 @@ window.addEventListener('DOMContentLoaded', function () {
         s.kP = clamp(Math.round(t * 8), 1, 7);
       } });
     } else {
-      const DA = lerpP(B, C, g.b / (g.b + g.c)), DB = lerpP(C, A, g.c / (g.c + g.a)), DC = lerpP(A, B, g.a / (g.a + g.b));
+      const DA = lerpP(B, C, g.c / (g.b + g.c)), DB = lerpP(C, A, g.a / (g.c + g.a)), DC = lerpP(A, B, g.b / (g.a + g.b));
       b.circle(g.I, g.r, { color: 'green', width: 2, fill: 'green', fillAlpha: 0.1, ref: 'r' });
       [[A, DA], [B, DB], [C, DC]].forEach(([u, w]) => b.seg(u, w, { color: 'green', width: 2.2, dash: true, ref: 'bis' }));
       b.point(DC, { color: 'violet', r: 4, label: 'D', ...perp(A, B, C, 14), size: 12.5, ref: 'bis' });
@@ -456,7 +459,7 @@ window.addEventListener('DOMContentLoaded', function () {
       text: `좌표평면 위의 세 점 ${tex('A' + pT(A))}, ${tex('B' + pT(B))}, ${tex('C' + pT(C))}을 꼭짓점으로 하는 삼각형 ${tex('ABC')}의 내심을 ${tex(ask === 'OI' ? 'I' : 'I(a,\\ b)')}라 할 때, ${askTxt}`,
       steps: [
         `세 변의 길이를 구합니다. $\\overline{AB}=${w}$, $\\overline{AC}=${h}$, $\\overline{BC}=\\sqrt{${w}^2+${h}^2}=${hyp}$ (${nm ? '피타고라스 수 ' + nm : '∠A = 90°'})`,
-        `내심은 세 각의 이등분선의 교점입니다. 직각삼각형의 내접원은 두 직각변에 접하고, 반지름은 $r=\\dfrac{${w}+${h}-${hyp}}{2}=${r}$ 입니다. 따라서 $I=A+(r,\\ r)=${pT(I)}$`,
+        `내심은 세 각의 이등분선의 교점입니다. 내심에서 세 변까지의 거리는 모두 $r$이므로 넓이는 $\\dfrac{${w}\\cdot${h}}2=\\dfrac{r(${w}+${h}+${hyp})}2$입니다. 따라서 $r=${r}$이며, 직각삼각형에서는 $r=\\dfrac{${w}+${h}-${hyp}}2$와 같습니다. 따라서 $I=A+(r,\\ r)=${pT(I)}$`,
         ask === 'OI' ? `$\\overline{AI}=\\sqrt{${r}^2+${r}^2}=${radTex(2 * r * r)}$` : `$a=${nt(I.x)},\\ b=${nt(I.y)}$ → $${ask === 'sum' ? 'a+b' : 'a-b'}=${nt(ans)}$`
       ],
       ansTex: ask === 'OI' ? radTex(2 * r * r) : nt(ans),
@@ -521,7 +524,13 @@ window.addEventListener('DOMContentLoaded', function () {
         b.text(midP(B, C), `${n2(q.hyp)}`, { color: 'sky', size: 13.5, ...perp(B, C, A, 14) });
       }
       if (st >= 2) {
+        [A, B, C].forEach((V) => b.seg(I, V, { color: 'muted', width: 1.2, alpha: 0.55 }));
         b.circle(I, r, { color: 'green', width: 2, fill: 'green', fillAlpha: 0.1 });
+        [footP(A, B, I), footP(A, C, I), footP(B, C, I)].forEach((H, i) => {
+          b.seg(I, H, { color: 'green', width: 1.8, dash: true });
+          b.right(H, I, i === 0 ? B : C, { color: 'green', size: 7 });
+        });
+        b.text(midP(I, footP(A, B, I)), 'r', { color: 'green', size: 12, dx: 10 });
         b.point(I, { color: 'green', r: 6, label: `I${pS(I)}`, toward: A, size: 13 });
         b.text(P(I.x, I.y - r), '내접원', { color: 'green', size: 12, dy: 14 });
       }
@@ -547,7 +556,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { group: '삼각형 모양', label: '직각삼각형 (8, 6, 10)', apply: (st) => { st.t3 = { ax: 0, ay: 0, bx: 8, by: 0, cx: 0, cy: 6 }; }, on: (st) => st.t3.ax === 0 && st.t3.bx === 8 && st.t3.cy === 6 && st.t3.ay === 0 && st.t3.by === 0 && st.t3.cx === 0 },
         { group: '삼각형 모양', label: '처음 삼각형', apply: (st) => { st.t3 = { ...T0 }; }, on: (st) => Object.keys(T0).every((k) => st.t3[k] === T0[k]) }
       ],
-      steps: stepsOf(V3),
+      steps: stepsOf(V3, 'tri'),
       reviewTop: reviewTop(V3),
       vary: V3,
       problem: {
@@ -567,7 +576,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const Ma = midP(B, C);
           return {
             chips: [{ k: '무게중심', tex: 'G\\left(\\dfrac{x_1+x_2+x_3}{3},\\ \\dfrac{y_1+y_2+y_3}{3}\\right)', color: 'rose' }],
-            status: { tone: 'info', text: `AG : GM = ${n2(distP(A, g.G))} : ${n2(distP(g.G, Ma))} = 2 : 1` },
+            status: { tone: 'info', text: 'AG : GM = 2 : 1 (어느 꼭짓점의 중선에서나 같음)' },
             readouts: [
               { label: '무게중심 G', value: pS(g.G), color: 'rose', ref: 'g', note: '세 꼭짓점 좌표의 평균', wide: true },
               { label: '중선 AM 위의 비 AG : GM', value: '2 : 1', color: 'amber', ref: 'ratio', note: '어느 중선에서나 같음' },
@@ -591,12 +600,12 @@ window.addEventListener('DOMContentLoaded', function () {
         const [rb, ra] = ratio(g.b, g.a);
         return {
           chips: [{ k: '내심', tex: 'I\\left(\\dfrac{ax_1+bx_2+cx_3}{a+b+c},\\ \\dfrac{ay_1+by_2+cy_3}{a+b+c}\\right)', color: 'green' }],
-          status: { tone: 'info', text: `내접원 반지름 r = ${n2(g.r)}` },
+          status: { tone: 'info', text: `내접원 반지름 r ${rounded(g.r) ? '≈' : '='} ${n2(g.r)}` },
           readouts: [
-            { label: '변의 길이 a(BC) · b(CA) · c(AB)', value: `${n2(g.a)} · ${n2(g.b)} · ${n2(g.c)}`, color: 'ink', wide: true },
+            { label: '변의 길이 a(BC) · b(CA) · c(AB)', value: `${valueS(g.a)} · ${valueS(g.b)} · ${valueS(g.c)}`, color: 'ink', wide: true },
             { label: '내심 I', value: pS(g.I), color: 'green', ref: 'i', note: '마주 보는 변의 길이를 가중치로' },
-            { label: '내접원 반지름 r', value: n2(g.r), color: 'green', ref: 'r', note: 'r = 2S ÷ (a+b+c)' },
-            { label: '각 C의 이등분선: AD : DB', value: `${n2(g.b)} : ${n2(g.a)}`, color: 'violet', ref: 'bis', note: '= CA : CB', wide: true }
+            { label: '내접원 반지름 r', value: valueS(g.r), color: 'green', ref: 'r', note: 'r = 2S ÷ (a+b+c)' },
+            { label: '각 C의 이등분선: AD : DB', value: `${n2(g.b)} : ${n2(g.a)}`, color: 'violet', ref: 'bis', note: '= CA : CB (표시한 변의 길이는 반올림)', wide: true }
           ]
         };
       },
@@ -637,6 +646,9 @@ window.addEventListener('DOMContentLoaded', function () {
     d = D - (k - B.y) ** 2;
     if (d >= -1e-9) { const r = Math.sqrt(Math.max(0, d)); add(B.x + r, 'B'); if (r > 1e-9) add(B.x - r, 'B'); }
     if (B.x !== A.x) add((B.x ** 2 - A.x ** 2 + (k - B.y) ** 2 - (k - A.y) ** 2) / (2 * (B.x - A.x)), 'M');
+    // 수직이등분선이 y=k 자체이면 원의 교점 몇 개가 아니라 직선 전체가 해집합이다.
+    out.infinite = Math.abs(B.x - A.x) < 1e-9 && Math.abs(2 * k - A.y - B.y) < 1e-9;
+    out.excludedT = out.infinite ? A.x : null; // 중점에서는 세 점이 한 직선 위에 놓인다.
     return out.sort((u, v) => u.t - v.t);
   }
   const ISO = { A: ['sky', 'AB = AC'], B: ['rose', 'BA = BC'], M: ['green', 'AC = BC'] };
@@ -654,11 +666,11 @@ window.addEventListener('DOMContentLoaded', function () {
     b.text(P(vb.x1 - (vb.x1 - vb.x0) * 0.04, k), k === 0 ? 'x축 (C는 이 위의 점)' : `직선 y = ${n2(k)} (C는 이 위의 점)`, { color: 'ink', size: 12.5, dy: 34, align: 'right' });
     if (show('A')) b.circle(A, R, { color: 'sky', width: 2.2, dash: true, ref: 'cA' });
     if (show('B')) b.circle(B, R, { color: 'rose', width: 2.2, dash: true, ref: 'cB' });
-    if (show('M')) drawBisector(b, A, B, { dash: true, ref: 'cM' });
-    legend(b, [['sky', show('A') ? '파란 원: AB = AC (A 중심, 반지름 AB)' : null], ['rose', show('B') ? '분홍 원: BA = BC (B 중심, 반지름 AB)' : null], ['green', show('M') ? '초록 직선: AC = BC (AB의 수직이등분선)' : null]].filter((x) => x[1]));
+    if (show('M')) drawBisector(b, A, B, { dash: !list.infinite, width: list.infinite ? 4 : 2.2, ref: 'cM' });
+    legend(b, [['sky', show('A') ? '파란 원: AB = AC (A 중심, 반지름 AB)' : null], ['rose', show('B') ? '분홍 원: BA = BC (B 중심, 반지름 AB)' : null], ['green', show('M') ? (list.infinite ? '초록 직선 전체에서 AC = BC (중점 제외)' : '초록 직선: AC = BC (AB의 수직이등분선)') : null]].filter((x) => x[1]));
     if (o.C) {
       // 탐구: 지금 C로 만든 삼각형
-      const C = o.C, ab = R, ac = distP(A, C), bc = distP(B, C), eps = 0.011;
+      const C = o.C, ab = R, ac = distP(A, C), bc = distP(B, C), eps = 1e-8;
       const cr = (B.x - A.x) * (C.y - A.y) - (B.y - A.y) * (C.x - A.x);
       if (Math.abs(cr) > 1e-9) {
         const iso = Math.abs(ab - ac) < eps || Math.abs(ab - bc) < eps || Math.abs(ac - bc) < eps;
@@ -671,6 +683,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // 후보 점 (번호는 처음부터 끝까지 고정: 정리 탭에서 단계가 늘어도 이름이 바뀌지 않게)
     const good = list.filter((c) => !c.deg);
     list.forEach((c) => {
+      if (list.infinite && show('M')) return;
       if (!c.types.some(show)) return;
       const p = P(c.t, k);
       if (c.deg) {
@@ -680,6 +693,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const n = good.indexOf(c) + 1, col = c.types.length > 1 ? 'amber' : ISO[c.types[0]][0];
       b.point(p, { color: col, hollow: true, r: 6, label: `C${sub(n)}${o.coords ? ` (${n2(c.t)}, ${n2(k)})` : ''}`, ...isoLabelPos(n - 1), size: 12.5 });
     });
+    if (list.infinite && show('M')) b.point(P(list.excludedT, k), { color: 'red', hollow: true, r: 6, label: '중점 제외', dx: 14, dy: 20, size: 12 });
     if (o.handles) {
       const hs = o.handles;
       b.handle('A', A, { color: 'amber', label: `A${pS(A)}`, ...away(A, B, 26), drag: (w) => hs.set('a', w) });
@@ -698,7 +712,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const of = (type) => good.filter((c) => c.types.includes(type));
     const deg = list.filter((c) => c.deg);
     const sg = (c) => (c === 0 ? 't' : c > 0 ? `(t-${nt(c)})` : `(t+${nt(-c)})`);
-    const case12 = (P0, name, other) => `${tex(`${sg(P0.x)}^2+${P0.y}^2=${D}`)} → ${tex(`t=${tl(of(other)).replace(/, /g, ',\\ ')}`)}`;
+    const case12 = (P0, name, other) => `${tex(`${sg(P0.x)}^2+${par(P0.y)}^2=${D}`)} → ${tex(`t=${tl(of(other)).replace(/, /g, ',\\ ')}`)}`;
     const ts = (type) => of(type).map((c) => nt(c.t)).join(',\\ ');
     const only3 = of('M');
     return {
@@ -711,9 +725,9 @@ window.addEventListener('DOMContentLoaded', function () {
       ],
       ansTex: nt(ans),
       std: `① ${tex(`\\overline{AB}^2=${D}`)}이고 ${tex('C(t,\\ 0)')}라 둡니다.<br/>
-② ${tex('\\overline{AB}=\\overline{AC}')}: ${tex(`${sg(A.x)}^2+${A.y}^2=${D}`)} → ${tex(`t=${ts('A') || '\\text{(없음)}'}`)}<br/>
-③ ${tex('\\overline{BA}=\\overline{BC}')}: ${tex(`${sg(B.x)}^2+${B.y}^2=${D}`)} → ${tex(`t=${ts('B') || '\\text{(없음)}'}`)}<br/>
-④ ${tex('\\overline{AC}=\\overline{BC}')}: ${tex(`${sg(A.x)}^2+${A.y}^2=${sg(B.x)}^2+${B.y}^2`)} → ${tex(`t=${nt(list.find((c) => c.types.includes('M')).t)}`)}${deg.length ? '이지만 ' + tex('A,\\ C,\\ B') + '가 한 직선 위의 점이라 삼각형이 되지 않아 제외합니다.' : ''}<br/>
+② ${tex('\\overline{AB}=\\overline{AC}')}: ${tex(`${sg(A.x)}^2+${par(A.y)}^2=${D}`)} → ${tex(`t=${ts('A') || '\\text{(없음)}'}`)}<br/>
+③ ${tex('\\overline{BA}=\\overline{BC}')}: ${tex(`${sg(B.x)}^2+${par(B.y)}^2=${D}`)} → ${tex(`t=${ts('B') || '\\text{(없음)}'}`)}<br/>
+④ ${tex('\\overline{AC}=\\overline{BC}')}: ${tex(`${sg(A.x)}^2+${par(A.y)}^2=${sg(B.x)}^2+${par(B.y)}^2`)} → ${tex(`t=${nt(list.find((c) => c.types.includes('M')).t)}`)}${deg.length ? '이지만 ' + tex('A,\\ C,\\ B') + '가 한 직선 위의 점이라 삼각형이 되지 않아 제외합니다.' : ''}<br/>
 ⑤ 세 경우에서 겹치는 점 없이 ${tex(`m=${m}`)}${ask === 'cnt' ? '' : `, ${tex(`n=${nt(sum)}`)} → ${tex(`m+n=${nt(ans)}`)}`}`,
       warn: '두 경우에서 같은 점이 나오면 한 번만 셉니다. 또 세 점이 한 직선 위에 있는 경우(예: C가 선분 AB의 중점)는 삼각형이 아니므로 반드시 빼야 합니다.',
       quick: `이등변삼각형이 되는 경우는 <b>세 가지</b>(두 원과 수직이등분선)뿐입니다. 각 경우에서 직선(${tex('x')}축)과 만나는 점을 그림에서 세면 바로 개수가 나옵니다: 원 ${tex('A')}에서 ${of('A').length}개, 원 ${tex('B')}에서 ${of('B').length}개, 수직이등분선에서 ${only3.length}개.`,
@@ -731,7 +745,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const FOCUS = { x: [-8.5, 9.5], y: [-5.5, 7.5] };
     const PRE = [
       ['A, B가 같은 쪽 (5개)', { ax: -2, ay: 3, bx: 3, by: 3, k: 0 }, 'rose'],
-      ['A, B가 양쪽 (한 점 제외)', { ax: -1, ay: -1, bx: 0, by: 1, k: 0 }, 'sky']
+      ['A, B가 양쪽 (한 점 제외)', { ax: -1, ay: -1, bx: 0, by: 1, k: 0 }, 'sky'],
+      ['수직이등분선과 겹침', { ax: 0, ay: -2, bx: 0, by: 2, k: 0 }, 'green']
     ];
     const setP = (s) => (which, w) => {
       const d = s.i4;
@@ -747,12 +762,12 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'isos', title: '[기출 유형] 이등변삼각형이 되는 점 찾기', short: '이등변삼각형',
       question: '두 점 A, B와 직선 위의 점 C로 이등변삼각형을 만들 때, 같은 길이가 되는 두 변은 세 가지뿐일까? 그런 점 C는 몇 개일까?',
-      guide: '<b>C</b>를 끌어 보세요. 세 경우 AB = AC, BA = BC, AC = BC는 각각 <b>A 중심 원</b>, <b>B 중심 원</b>, <b>수직이등분선</b> 위의 점입니다. 이 셋이 직선과 만나는 곳(초록 점)이 이등변삼각형이 되는 자리이고, <b>A, B를 끌거나 높이 막대로 직선을 옮기면</b> 개수가 바뀝니다.',
+      guide: '<b>C</b>를 끌어 보세요. 세 경우 AB = AC, BA = BC, AC = BC는 각각 <b>A 중심 원</b>, <b>B 중심 원</b>, <b>수직이등분선</b> 위의 점입니다. 이 셋이 직선과 만나는 곳이 이등변삼각형이 되는 자리이고, <b>A, B를 끌거나 높이 막대로 직선을 옮기면</b> 개수가 바뀝니다.',
       focus: FOCUS,
       controls: ['k4'],
       enter: (s) => { s.k4 = 0; s.i4 = { ax: -2, ay: 3, bx: 3, by: 3, ct: 2 }; },
       presets: () => PRE.map(([label, v, color]) => ({ group: '예시', label, color, apply: (st) => { st.k4 = v.k; st.i4 = { ...st.i4, ax: v.ax, ay: v.ay, bx: v.bx, by: v.by }; }, on: (st) => st.i4.ax === v.ax && st.i4.ay === v.ay && st.i4.bx === v.bx && st.i4.by === v.by && st.k4 === v.k })),
-      steps: stepsOf(V4),
+      steps: stepsOf(V4, 'isos'),
       reviewTop: reviewTop(V4),
       vary: V4,
       problem: { tag: '2021학년도 9월 학평(인천) 21번 · 2026학년도 9월 학평(인천) 28번 유형', time: '목표 시간: 60초', text: () => probHTML(V4.cur().text), answer: () => tex(V4.cur().ansTex) },
@@ -763,27 +778,27 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       view: (s, lab) => {
         if (lab.tab !== 'explore') return {};
-        const d = s.i4, A = P(d.ax, d.ay), B = P(d.bx, d.by), C = P(d.ct, s.k4), ab = distP(A, B), ac = distP(A, C), bc = distP(B, C), eps = 0.011;
+        const d = s.i4, A = P(d.ax, d.ay), B = P(d.bx, d.by), C = P(d.ct, s.k4), ab = distP(A, B), ac = distP(A, C), bc = distP(B, C), eps = 1e-8;
         const list = isoList(A, B, s.k4), good = list.filter((c) => !c.deg);
         const cr = (B.x - A.x) * (C.y - A.y) - (B.y - A.y) * (C.x - A.x);
         const eqAC = Math.abs(ab - ac) < eps, eqBC = Math.abs(ab - bc) < eps, eqM = Math.abs(ac - bc) < eps;
         const degenerate = Math.abs(cr) < 1e-9;
         const txt = degenerate ? 'A, C, B가 한 직선 위: 삼각형이 아닙니다' : [eqAC && 'AB = AC', eqBC && 'BA = BC', eqM && 'AC = BC'].filter(Boolean).join(' · ');
         return {
-          chips: [{ html: `이등변삼각형이 되는 점 C: <b>${good.length}개</b>`, color: 'green' }],
-          status: degenerate ? { tone: 'warn', text: txt } : txt ? { tone: 'ok', text: `이등변삼각형: ${txt}` } : { tone: 'info', text: '이등변삼각형이 아닙니다 — 초록 점으로 끌어 보세요' },
+          chips: [{ html: `이등변삼각형이 되는 점 C: <b>${list.infinite ? '무한히 많음' : `${good.length}개`}</b>`, color: 'green' }],
+          status: degenerate ? { tone: 'warn', text: txt } : txt ? { tone: 'ok', text: `이등변삼각형: ${txt}` } : { tone: 'info', text: '이등변삼각형이 아닙니다 — 표시된 교점으로 끌어 보세요' },
           readouts: [
-            { label: 'AB (두 점 A, B 사이의 거리)', value: n2(ab), color: 'ink', ref: 'ab' },
-            { label: 'AC', value: n2(ac), color: 'sky', ref: 'cA', note: eqAC ? 'AB와 같음' : '' },
-            { label: 'BC', value: n2(bc), color: 'rose', ref: 'cB', note: eqBC ? 'AB와 같음' : eqM ? 'AC와 같음' : '' },
-            { label: '이등변삼각형이 되는 점 C의 x좌표', value: good.length ? good.map((c) => n2(c.t)).join(', ') : '없음', color: 'green', ref: 'cM', wide: true, note: list.some((c) => c.deg) ? '한 직선 위의 점은 삼각형이 안 되어 제외' : '' }
+            { label: 'AB (두 점 A, B 사이의 거리)', value: valueS(ab), color: 'ink', ref: 'ab' },
+            { label: 'AC', value: valueS(ac), color: 'sky', ref: 'cA', note: eqAC ? 'AB와 같음' : '' },
+            { label: 'BC', value: valueS(bc), color: 'rose', ref: 'cB', note: eqBC ? 'AB와 같음' : eqM ? 'AC와 같음' : '' },
+            { label: '이등변삼각형이 되는 점 C의 x좌표', value: list.infinite ? `모든 실수 t (t = ${n2(list.excludedT)} 제외)` : good.length ? good.map((c) => n2(c.t)).join(', ') : '없음', color: 'green', ref: 'cM', wide: true, note: list.infinite ? '직선 y = k와 수직이등분선이 일치합니다. 중점에서는 삼각형이 되지 않습니다.' : '소수 좌표는 반올림한 근삿값입니다. 겹치는 점과 한 직선 위의 점은 중복 계산하지 않습니다.' }
           ]
         };
       },
       formula: `<p>삼각형 ${tex('ABC')}가 이등변삼각형이 되는 경우는 세 가지입니다.</p>
 <p>① ${tex('\\overline{AB}=\\overline{AC}')}: ${tex('C')}는 ${tex('A')}를 중심으로 하는 반지름 ${tex('\\overline{AB}')}인 <b>원</b> 위의 점<br/>② ${tex('\\overline{BA}=\\overline{BC}')}: ${tex('B')}를 중심으로 하는 반지름 ${tex('\\overline{AB}')}인 <b>원</b> 위의 점<br/>③ ${tex('\\overline{AC}=\\overline{BC}')}: ${tex('AB')}의 <b>수직이등분선</b> 위의 점</p>
 <p>점 ${tex('C')}가 직선 위를 움직일 때는 이 세 도형과 그 직선의 교점이 후보입니다. 후보 중에서 ${tex('A, B, C')}가 한 직선 위에 놓이는 점은 삼각형이 되지 않으므로 뺍니다.</p>`,
-      notes: '<ul><li>세 경우를 모두 확인하세요. <b>AC = BC</b>(수직이등분선)를 빠뜨리는 경우가 가장 많습니다.</li><li>같은 점이 두 경우에서 동시에 나오면(정삼각형) <b>한 번만</b> 셉니다.</li><li>C가 선분 AB 위에 오면 삼각형이 아닙니다. 수직이등분선과 직선AB의 교점(중점)이 대표적입니다.</li></ul>',
+      notes: '<ul><li>세 경우를 모두 확인하세요. <b>AC = BC</b>(수직이등분선)를 빠뜨리는 경우가 가장 많습니다.</li><li>수직이등분선과 움직이는 직선이 겹치면 중점을 제외한 <b>모든 점</b>이 해가 되어 무한히 많습니다.</li><li>같은 점이 두 경우에서 동시에 나오면(정삼각형) <b>한 번만</b> 셉니다.</li><li>C가 선분 AB 위에 오면 삼각형이 아닙니다. 수직이등분선과 직선AB의 교점(중점)이 대표적입니다.</li></ul>',
       draw: (b, s, v, lab) => {
         const tab = lab.tab;
         if (tab === 'explore') {
@@ -940,7 +955,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { group: '증명할 도형', label: '삼각형과 중선 (중선정리)', apply: (st) => { st.pf = 'median'; }, on: (st) => st.pf === 'median' },
         { group: '증명할 도형', label: '직사각형과 한 점 P', apply: (st) => { st.pf = 'rect'; }, on: (st) => st.pf === 'rect' }
       ],
-      steps: stepsOf(V5),
+      steps: stepsOf(V5, 'proof'),
       reviewTop: reviewTop(V5),
       vary: V5,
       problem: {
@@ -1061,7 +1076,7 @@ window.addEventListener('DOMContentLoaded', function () {
 &nbsp;&nbsp;${tex(`a=\\dfrac{${m}\\cdot${par(B.x)}-${n}\\cdot${par(A.x)}}{${m}-${n}}=${nt(Pp.x)}`)}, ${tex(`b=\\dfrac{${m}\\cdot${par(B.y)}-${n}\\cdot${par(A.y)}}{${m}-${n}}=${nt(Pp.y)}`)}<br/>
 ③ ${tex(`a+b=${nt(ans)}`)}`,
       warn: '분모는 m − n 입니다(내분의 m + n이 아닙니다). m < n 이면 분모가 음수가 되고, 그때 P는 A쪽 연장선에 놓입니다. 부호를 빠뜨리지 마세요.',
-      quick: `내분점 공식 ${tex('\\dfrac{mx_2+nx_1}{m+n}')}에서 <b>n 대신 −n</b>을 넣으면 외분점 공식 ${tex('\\dfrac{mx_2-nx_1}{m-n}')}입니다. 그림으로는 ${tex('A')}에서 ${tex('B')}를 지나 ${tex('AB')}의 ${nt(m / (m - n) === 1 ? 1 : Math.round(Math.abs(m / (m - n)) * 100) / 100)}배 위치(${tex(`P=A+\\dfrac{${m}}{${m - n}}(B-A)`)})입니다.`,
+      quick: `내분점 공식 ${tex('\\dfrac{mx_2+nx_1}{m+n}')}에서 <b>n 대신 −n</b>을 넣으면 외분점 공식 ${tex('\\dfrac{mx_2-nx_1}{m-n}')}입니다. ${tex(`P=A+\\dfrac{${m}}{${m - n}}(B-A)`)}에서 계수의 부호로 방향을 확인합니다. ${m > n ? '계수가 1보다 크므로 A에서 B를 지나 B쪽으로 나갑니다.' : '계수가 음수이므로 A에서 B와 반대 방향, 즉 A쪽으로 나갑니다.'}`,
       highlight: '외분은 내분 공식에서 n의 부호만 바꾼 것입니다. m : n 외분 = m : (−n) 내분이라고 기억하면 한 공식으로 둘 다 씁니다.'
     };
   }
@@ -1091,7 +1106,7 @@ window.addEventListener('DOMContentLoaded', function () {
       controls: ['tt'],
       enter: (s) => { s.tt = 3; },
       presets: () => PRE.map(([label, tt]) => ({ group: '내분 ↔ 외분', label, color: tt >= 4 || tt <= 0 ? 'amber' : 'green', apply: (st) => { st.tt = tt; }, on: (st) => st.tt === tt })),
-      steps: stepsOf(V6),
+      steps: stepsOf(V6, 'outer'),
       reviewTop: reviewTop(V6),
       vary: V6,
       problem: { tag: '2020학년도 9월 학평(인천) 21번 · 2022학년도 11월 학평(경기) 19번 유형 (이전 교육과정)', time: '목표 시간: 25초', text: () => probHTML(V6.cur().text), answer: () => tex(V6.cur().ansTex) },
@@ -1150,9 +1165,92 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* 탐구용 수업 설명: 자유조작 중인 점·비율·렌즈에서 직접 계산합니다. */
+  function exploreSteps(id, s) {
+    if (id === 'dist') {
+      const d = s.d1, A = P(d.ax, d.ay), B = P(d.bx, d.by), M = midP(A, B);
+      const dx = Math.abs(B.x - A.x), dy = Math.abs(B.y - A.y), l2 = dx * dx + dy * dy;
+      return [
+        `Step 1 · 좌표 차이를 길이로 — 현재 A${pS(A)}, B${pS(B)}입니다. 가로 차이는 ${n2(dx)}, 세로 차이는 ${n2(dy)}입니다.${dx === 0 || dy === 0 ? ' 한 차이가 0이므로 선분이 좌표축에 평행합니다.' : ' 두 차이를 직각삼각형의 직각변으로 봅니다.'}`,
+        `Step 2 · 제곱합으로 연결 — $AB^2=${nt(dx)}^2+${nt(dy)}^2=${nt(l2)}$이므로 $AB=${radTex(l2)}$입니다. 좌표의 부호보다 두 점 사이의 차이에 주목합니다.`,
+        `Step 3 · 중점은 좌표의 평균 — 현재 중점 M${pS(M)}입니다. $M=\\left(\\dfrac{${nt(A.x + B.x)}}2,\\dfrac{${nt(A.y + B.y)}}2\\right)$이므로 A와 B에서 M까지의 두 이동량이 같습니다.`
+      ];
+    }
+    if (id === 'inner') {
+      const m = s.m, n = s.n, Q = P((7 * m - 5 * n) / (m + n), (4 * m - 2 * n) / (m + n));
+      return [
+        `Step 1 · 전체 중 어디까지 갔는가 — 현재 A(−5, −2), B(7, 4)이고 $AP:PB=${m}:${n}$입니다. A에서 B까지 가로 12, 세로 6만큼 움직입니다.`,
+        `Step 2 · 같은 비율로 정사영 — P까지는 전체 이동량의 $\\dfrac{${m}}{${m + n}}$입니다. $P=A+\\dfrac{${m}}{${m + n}}(B-A)$이므로 가로·세로 모두 같은 비율로 나뉩니다.`,
+        `Step 3 · 현재 좌표 확인 — $P=\\left(\\dfrac{${7 * m - 5 * n}}{${m + n}},\\dfrac{${4 * m - 2 * n}}{${m + n}}\\right)$, 표시 좌표는 ${pS(Q)}입니다.${m === n ? ' 지금은 두 비가 같아 중점입니다.' : m > n ? ' 지금은 AP가 더 길어 P가 B에 더 가깝습니다.' : ' 지금은 PB가 더 길어 P가 A에 더 가깝습니다.'}`
+      ];
+    }
+    if (id === 'tri') {
+      const t = s.t3, A = P(t.ax, t.ay), B = P(t.bx, t.by), C = P(t.cx, t.cy), g = triGeo(A, B, C);
+      const given = `현재 A${pS(A)}, B${pS(B)}, C${pS(C)}입니다.`;
+      if (g.S < 0.45) return [
+        `Step 1 · 삼각형 조건 확인 — ${given} 세 점이 한 직선 위에 놓인 퇴화 상태입니다.`,
+        'Step 2 · 성질의 전제 — 넓이가 0이므로 삼각형의 내심이나 양의 넓이비를 적용할 수 없습니다.',
+        'Step 3 · 도형 다시 구성 — 꼭짓점 하나를 직선 밖으로 옮겨 삼각형이 된 뒤 중선·내분·각 이등분선의 관계를 확인합니다.'
+      ];
+      if (s.lens3 === 'G') return [
+        `Step 1 · 중점부터 찾기 — ${given} 변 BC의 중점 M${pS(midP(B, C))}과 A를 이으면 중선입니다.`,
+        'Step 2 · 중선의 공통 비 — 세 중선의 교점 G는 각 중선을 꼭짓점 쪽부터 $2:1$로 나눕니다. 따라서 $G=A+\\frac23(M-A)=\\frac{A+B+C}{3}$입니다.',
+        `Step 3 · 현재 무게중심 — $G=\\left(\\dfrac{${A.x + B.x + C.x}}3,\\dfrac{${A.y + B.y + C.y}}3\\right)$, 표시 좌표는 ${pS(g.G)}입니다. 꼭짓점을 옮겨도 $AG:GM=2:1$은 유지됩니다.`
+      ];
+      if (s.lens3 === 'P') {
+        const k = s.kP, Q = lerpP(A, B, k / 8), [m, n] = ratio(k, 8 - k), a1 = g.S * k / 8, a2 = g.S * (8 - k) / 8;
+        return [
+          `Step 1 · 높이가 같은 두 삼각형 — ${given} 현재 P${pS(Q)}는 AB를 ${m}:${n}으로 내분합니다. APC와 PBC의 꼭짓점 C와 밑변의 직선 AB가 같습니다.`,
+          `Step 2 · 공통 높이 약분 — $\\dfrac{S(APC)}{S(PBC)}=\\dfrac{AP}{PB}=\\dfrac{${m}}{${n}}$입니다. $P=A+\\dfrac{${k}}8(B-A)$로 좌표와 넓이비가 함께 정해집니다.`,
+          `Step 3 · 현재 넓이 검산 — 전체 넓이는 ${valueS(g.S)}, 두 넓이는 ${valueS(a1)}와 ${valueS(a2)}입니다.${k === 4 ? ' 지금은 P가 중점이므로 CP가 넓이를 이등분합니다.' : ' 지금은 P가 중점이 아니므로 두 넓이가 다릅니다.'}`
+        ];
+      }
+      return [
+        `Step 1 · 각 이등분선의 길이비 — ${given} $a=BC,\ b=CA,\ c=AB$로 두면 C의 각 이등분선은 AB를 $AD:DB=b:a$로 나눕니다.`,
+        `Step 2 · 마주 보는 변으로 가중평균 — $I=\\dfrac{aA+bB+cC}{a+b+c}$입니다. 현재 a ${valueS(g.a)}, b ${valueS(g.b)}, c ${valueS(g.c)}를 쓰면 내심 I${pS(g.I)}입니다.`,
+        `Step 3 · 같은 수선거리로 검산 — 세 변까지의 거리가 r로 같으므로 $S=\\frac12r(a+b+c)$입니다. 현재 $S=${nt(g.S)}$, 따라서 $r=\\dfrac{2S}{a+b+c}$이고 표시 반지름은 ${valueS(g.r)}입니다.`
+      ];
+    }
+    if (id === 'isos') {
+      const d = s.i4, A = P(d.ax, d.ay), B = P(d.bx, d.by), C = P(d.ct, s.k4), L = isoList(A, B, s.k4), good = L.filter(v => !v.deg);
+      const ab = distP(A, B), ac = distP(A, C), bc = distP(B, C), deg = areaP(A, B, C) < 1e-9;
+      const equal = [Math.abs(ab - ac) < 1e-8 && 'AB = AC', Math.abs(ab - bc) < 1e-8 && 'AB = BC', Math.abs(ac - bc) < 1e-8 && 'AC = BC'].filter(Boolean).join(' · ');
+      return [
+        `Step 1 · 세 자취로 나누기 — 현재 A${pS(A)}, B${pS(B)}, C${pS(C)}이고 C는 $y=${nt(s.k4)}$ 위를 움직입니다. AB = AC, AB = BC, AC = BC는 두 원과 수직이등분선에 대응합니다.`,
+        `Step 2 · 교점과 퇴화 구별 — ${L.infinite ? `현재 수직이등분선이 $y=${nt(s.k4)}$와 일치합니다. 중점인 $x=${nt(L.excludedT)}$만 제외하면 가능한 C가 무한히 많습니다.` : `세 자취와 현재 직선의 교점을 모아 중복점과 한 직선 위의 점을 빼면 가능한 C는 ${good.length}개입니다.`}`,
+        `Step 3 · 움직인 C를 검산 — 현재 AB ${valueS(ab)}, AC ${valueS(ac)}, BC ${valueS(bc)}입니다. ${deg ? '지금은 A, B, C가 한 직선 위이므로 길이가 같아도 삼각형이 아닙니다.' : equal ? `지금은 ${equal}이므로 이등변삼각형입니다.` : '지금은 같은 길이의 두 변이 없으므로 이등변삼각형이 아닙니다.'}`
+      ];
+    }
+    if (id === 'proof') {
+      if (s.pf === 'median') {
+        const c = s.c5, { p, q } = s.m5, ab2 = (p + c) ** 2 + q * q, ac2 = (p - c) ** 2 + q * q, am2 = p * p + q * q;
+        return [
+          `Step 1 · 중점을 원점으로 — 현재 $M(0,0),\ B(-${c},0),\ C(${c},0),\ A(${p},${q})$입니다. B와 C의 좌표가 반대이므로 제곱을 더할 때 교차항이 사라집니다.`,
+          `Step 2 · 대칭인 항 소거 — $AB^2=(p+c)^2+q^2$, $AC^2=(p-c)^2+q^2$를 더하면 $2(p^2+q^2+c^2)$입니다. 현재 두 제곱은 ${ab2}와 ${ac2}입니다.`,
+          `Step 3 · 거리로 되읽기 — $AM^2=${am2}$, $BM^2=${c * c}$이므로 $AB^2+AC^2=${ab2 + ac2}=2(${am2}+${c * c})$입니다. A를 움직여도 중선정리가 유지됩니다.`
+        ];
+      }
+      const w = s.w5, h = s.h5, { x, y } = s.r5;
+      const pa = x * x + y * y, pc = (x - w) ** 2 + (y - h) ** 2, pb = (x - w) ** 2 + y * y, pd = x * x + (y - h) ** 2;
+      return [
+        `Step 1 · 변을 좌표축으로 — 현재 직사각형은 A(0, 0), B(${w}, 0), C(${w}, ${h}), D(0, ${h})이고 P${pS(P(x, y))}입니다. 서로 마주 보는 꼭짓점까지의 제곱합을 비교합니다.`,
+        'Step 2 · 같은 네 제곱 — $PA^2+PC^2$와 $PB^2+PD^2$는 모두 $x^2+(x-w)^2+y^2+(y-h)^2$입니다. P가 직사각형 밖에 있어도 식은 같습니다.',
+        `Step 3 · 현재 위치 검산 — $PA^2+PC^2=${nt(pa)}+${nt(pc)}=${nt(pa + pc)}$, $PB^2+PD^2=${nt(pb)}+${nt(pd)}=${nt(pb + pd)}$입니다.`
+      ];
+    }
+    const t = s.tt / 4, Q = lerpP(P(-3, -1), P(3, 2), t), [m, n] = ratio(Math.abs(t), Math.abs(1 - t));
+    const endpoint = t === 0 || t === 1, inside = t > 0 && t < 1;
+    return [
+      `Step 1 · 선분 안과 밖 구별 — 현재 A(−3, −1), B(3, 2), P${pS(Q)}입니다. $P=A+t(B-A)$에서 $t=${nt(t)}$이므로 ${endpoint ? `P는 끝점 ${t === 0 ? 'A' : 'B'}입니다.` : inside ? 'P는 내분점입니다.' : `P는 ${t > 1 ? 'B' : 'A'}쪽 연장선의 외분점입니다.`}`,
+      `Step 2 · 거리비와 방향 — $AP:PB=|t|:|1-t|=${m}:${n}$입니다. ${endpoint ? '한 거리가 0인 끝점 상태이므로 내분·외분의 내부 경우와 구별합니다.' : inside ? '내분에서는 두 부분의 길이를 더하여 전체를 얻으므로 분모가 m+n입니다.' : '외분에서는 두 거리의 차가 AB이므로 분모가 m−n입니다.'}`,
+      `Step 3 · 현재 좌표 검산 — $P=(-3+6t,-1+3t)=${pT(Q)}$입니다.${endpoint ? ' 끝점을 지나면 내분과 외분이 바뀝니다.' : inside ? ' t = 1/2에서는 중점입니다.' : ' 외분비 m = n이면 분모가 0이 되어 유한한 외분점이 없습니다.'}`
+    ];
+  }
+
   /* ===== 실험실 등록 ===== */
   APLab.createLab({
     id: 'common-coord',
+    stagedReveal: true,
     title: '평면좌표',
     courseName: '공통수학',
     unit: '도형의 방정식 · 평면좌표',
