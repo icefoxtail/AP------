@@ -8,6 +8,7 @@ import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { createLiveAssetVerifier, publicPlaygroundBase, drainResponseTasks } from './high-live-assets.mjs';
 import { probeNativeDrag } from './high-drag-probe.mjs';
+import { probeNativeOrbit } from './high-orbit-probe.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
 const arg = (key, fallback) => { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; };
@@ -43,7 +44,7 @@ const server = http.createServer((req, res) => {
 if (!publicBase) await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = publicBase ? publicPlaygroundBase(publicBase).href : `http://127.0.0.1:${server.address().port}/apmath/playground/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { schema: 1, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, labs: [], failures: [], limitations: ['Viewport simulation, not physical device testing.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; mathematical/visual interpretation requires independent review.'] };
+const report = { schema: 1, mode: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, labs: [], failures: [], limitations: ['Viewport simulation, not physical device testing.', 'All baseline scenes and steps; two generated variants per scene on mobile paper.', 'First visible slider and draggable point per scene; native empty-canvas orbit where available. Mathematical/visual interpretation requires independent review.'] };
 const live = publicBase ? createLiveAssetVerifier({root,baseURL:base,commit:report.commit,onFailure:f=>report.failures.push(f)}) : null;
 if (live) {
   report.mode = 'PUBLIC_READ_ONLY_CHECK'; report.baseURL = base; report.sourceVerification = live.report;
@@ -239,6 +240,13 @@ try {
               dest.interactions.push({id:scene.id,run:run.name,kind:'drag',handle:handle.id,...result});
               if(!result.pass)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',...result});
               await measure(scene,'drag');
+            }
+            if(await page.evaluate(()=>typeof lab.board.onPanDrag==='function')){
+              await page.evaluate(i=>lab.goScene(i),scene.index);await settle();
+              const result=await probeNativeOrbit(page,page.locator('.apl-canvas'),settle);
+              dest.interactions.push({id:scene.id,run:run.name,kind:'orbit',...result});
+              if(!result.pass)report.failures.push({lab:item.id,id:scene.id,reason:'native-orbit',...result});
+              await measure(scene,'orbit');
             }
             if(await page.evaluate(()=>lab._tabAvailable('problem'))){
               await page.evaluate(i=>{lab.goScene(i);lab.setTab('problem');},scene.index);await settle();
