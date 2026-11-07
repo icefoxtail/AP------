@@ -56,7 +56,10 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
-  const PI = Math.PI, TAU = 2 * PI, EPS = 1e-7;
+  const PI = Math.PI, TAU = 2 * PI, EPS = 1e-10;
+  const level = (s) => Math.max(0, Math.min(3, Number(s.step) || 0));
+  const tabOf = (l) => (l || window.lab)?.tab || 'explore';
+  const nearExact = (a,b) => Math.abs(a-b) <= 32*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
   const SP = [
     ['0', 0, 0], ['π/6', PI / 6, 30], ['π/4', PI / 4, 45], ['π/3', PI / 3, 60], ['π/2', PI / 2, 90],
     ['2π/3', 2 * PI / 3, 120], ['3π/4', 3 * PI / 4, 135], ['5π/6', 5 * PI / 6, 150], ['π', PI, 180],
@@ -168,7 +171,7 @@ function displayMath(label,cls='math-inline'){return '<span class="'+cls+'">'+re
 function degText(rad){
   let deg=rad*180/PI;
   let r=Math.round(deg);
-  return (Math.abs(deg-r)<0.05?r:deg.toFixed(1))+'°';
+  return (nearExact(deg,r)?r:'≈ '+deg.toFixed(1))+'°';
 }
 function formatAngleWithDeg(radLabel,radVal,isApprox=false){
   let prefix=isApprox?'≈ ':'';
@@ -265,7 +268,7 @@ function piFormatInfo(x){
   let q=x/PI;
   for(let d=1;d<=24;d++){
     let n=Math.round(q*d);
-    if(Math.abs(q-n/d)<1e-5){
+    if(nearExact(q,n/d)){
       if(!n)return{text:'0',exact:true};
       let z=n<0?'−':'';
       n=Math.abs(n);
@@ -278,14 +281,16 @@ function piFormatInfo(x){
 function piText(x){return piFormatInfo(x).text;}
 function valText(x){
   if(!Number.isFinite(x))return'정의되지 않음';
-  if(Math.abs(x)<1e-9)return'0';
-  for(const [v,s]of K)if(Math.abs(x-v)<1e-7)return s;
+  if(nearExact(x,0))return'0';
+  for(const [v,s]of K)if(nearExact(x,v))return s;
   return Number(x.toFixed(3)).toString();
 }
+function valRelation(x){const exact=K.some(([v])=>nearExact(x,v))||nearExact(x,Number(x.toFixed(3)));return (exact?'= ':'≈ ')+valText(x);}
+function boundText(x){const f=piFormatInfo(x);return (f.exact?'':'≈ ')+f.text;}
 function specialIndex(t){
   let a=((t%TAU)+TAU)%TAU;
-  if(a<1e-6||TAU-a<1e-6)return 0;
-  return SP.slice(0,16).findIndex(x=>Math.abs(x[1]-a)<1e-6);
+  if(nearExact(a,0)||nearExact(a,TAU))return 0;
+  return SP.slice(0,16).findIndex(x=>nearExact(x[1],a));
 }
 function nearestSpecialIndex(t){
   let exactIdx=specialIndex(t);
@@ -337,21 +342,22 @@ function exact(t){
 }
 function currentSpecialDisplay(){
   if(S.mode!=='special')return null;
-  return exact(S.theta)||exactByIndex(S.si);
+  return exact(S.theta);
 }
 
-function fval(f,t){return f==='sin'?Math.sin(t):f==='cos'?Math.cos(t):(Math.abs(Math.cos(t))<1e-12?NaN:Math.tan(t));}
+function tanPole(t){const n=(t-PI/2)/PI;return nearExact(n,Math.round(n));}
+function fval(f,t){return f==='sin'?Math.sin(t):f==='cos'?Math.cos(t):(tanPole(t)?NaN:Math.tan(t));}
 function isClosedRightDomain(a,b){
-  return S.domain==='view'&&Math.abs(a-S.x0)<1e-6&&Math.abs(b-S.x1)<1e-6;
+  return S.domain==='view'&&nearExact(a,S.x0)&&nearExact(b,S.x1);
 }
 function roots(f,k,a,b,includeRight){
   let base;
   if(f==='sin'){
-    if(Math.abs(k)>1+EPS)return[];
+    if(Math.abs(k)>1)return[];
     let t=Math.asin(Math.max(-1,Math.min(1,k)));
     base=[t,PI-t];
   }else if(f==='cos'){
-    if(Math.abs(k)>1+EPS)return[];
+    if(Math.abs(k)>1)return[];
     let t=Math.acos(Math.max(-1,Math.min(1,k)));
     base=[t,-t];
   }else base=[Math.atan(k)];
@@ -360,21 +366,23 @@ function roots(f,k,a,b,includeRight){
   for(let t of base){
     for(let n=Math.ceil((a-t-EPS)/step);n<=Math.floor((b-t+EPS)/step);n++){
       let r=t+n*step;
-      if(r>=a-EPS&&(closedR?r<=b+EPS:r<b-EPS))out.push(+r.toFixed(9));
+      if(nearExact(r,a))r=a;if(nearExact(r,b))r=b;
+      if(r>=a&&(closedR?r<=b:r<b))out.push(r);
     }
   }
-  return [...new Set(out)].sort((x,y)=>x-y);
+  return out.sort((x,y)=>x-y).filter((x,i,a)=>!i||!nearExact(x,a[i-1]));
 }
 function satisfies(f,x){
   let y=fval(f,x),k=S.k;
   if(!Number.isFinite(y))return false;
-  return S.op==='gt'?y>k+EPS:S.op==='ge'?y>=k-EPS:S.op==='lt'?y<k-EPS:y<=k+EPS;
+  const eq=nearExact(y,k);
+  return S.op==='gt'?y>k&&!eq:S.op==='ge'?y>=k||eq:S.op==='lt'?y<k&&!eq:y<=k||eq;
 }
 function mergeContiguousIntervals(list){
   let merged=[];
   for(let iv of list){
     let prev=merged[merged.length-1];
-    if(prev&&!prev.singleton&&!iv.singleton&&Math.abs(prev.v-iv.u)<1e-5&&(prev.right||iv.left)){
+    if(prev&&!prev.singleton&&!iv.singleton&&nearExact(prev.v,iv.u)&&(prev.right||iv.left)){
       prev.v=iv.v;
       prev.right=iv.right;
     }else{
@@ -385,73 +393,73 @@ function mergeContiguousIntervals(list){
 }
 function numericIntervals(f,a,b,includeRight){
   let closedR=includeRight!==undefined?includeRight:isClosedRightDomain(a,b);
-  let cuts=[a,...roots(f,S.k,a,b,true).filter(x=>x>a+EPS&&x<b-EPS)];
+  let cuts=[a,...roots(f,S.k,a,b,true).filter(x=>x>a&&x<b&&!nearExact(x,a)&&!nearExact(x,b))];
   if(f==='tan'){
     for(let n=Math.ceil((a-PI/2)/PI);n<=Math.floor((b-PI/2)/PI);n++){
       let q=PI/2+n*PI;
-      if(q>a+EPS&&q<b-EPS)cuts.push(q);
+      if(q>a&&q<b&&!nearExact(q,a)&&!nearExact(q,b))cuts.push(q);
     }
   }
   cuts.push(b);
-  cuts=[...new Set(cuts.map(x=>+x.toFixed(9)))].sort((x,y)=>x-y);
+  cuts=cuts.sort((x,y)=>x-y).filter((x,i,a)=>!i||!nearExact(x,a[i-1]));
   let raw=[];
   for(let i=0;i<cuts.length-1;i++){
     let u=cuts[i],v=cuts[i+1];
-    if(v-u<1e-7)continue;
+    if(nearExact(v,u))continue;
     if(!satisfies(f,(u+v)/2))continue;
-    let left=satisfies(f,u)&&!(f==='tan'&&Math.abs(Math.cos(u))<1e-8);
-    let right=satisfies(f,v)&&!(f==='tan'&&Math.abs(Math.cos(v))<1e-8)&&!(!closedR&&Math.abs(v-b)<1e-6);
+    let left=satisfies(f,u)&&!(f==='tan'&&tanPole(u));
+    let right=satisfies(f,v)&&!(f==='tan'&&tanPole(v))&&!(!closedR&&nearExact(v,b));
     raw.push({u,v,left,right,singleton:false});
   }
   let list=mergeContiguousIntervals(raw);
   let rs=roots(f,S.k,a,b,closedR);
   for(let r of rs){
     if(!satisfies(f,r))continue;
-    let covered=list.some(iv=>(r>iv.u+1e-5&&r<iv.v-1e-5)||(iv.left&&Math.abs(r-iv.u)<=1e-5)||(iv.right&&Math.abs(r-iv.v)<=1e-5));
+    let covered=list.some(iv=>(r>iv.u&&r<iv.v&&!nearExact(r,iv.u)&&!nearExact(r,iv.v))||(iv.left&&nearExact(r,iv.u))||(iv.right&&nearExact(r,iv.v)));
     if(!covered)list.push({u:r,v:r,left:true,right:true,singleton:true});
   }
   return list.sort((x,y)=>x.u-y.u||(x.v-y.v));
 }
 function intervals(f,a,b){
-  return numericIntervals(f,a,b).map(iv=>iv.singleton?'{'+piText(iv.u)+'}':(iv.left?'[':'(')+piText(iv.u)+', '+piText(iv.v)+(iv.right?']':')'));
+  return numericIntervals(f,a,b).map(iv=>iv.singleton?'{'+boundText(iv.u)+'}':(iv.left?'[':'(')+boundText(iv.u)+', '+boundText(iv.v)+(iv.right?']':')'));
 }
 function commonNumericIntervals(fs,a,b,includeRight){
   let closedR=includeRight!==undefined?includeRight:isClosedRightDomain(a,b);
   let cuts=[a,b];
   for(let f of fs){
-    for(let r of roots(f,S.k,a,b,true))if(r>a+EPS&&r<b-EPS)cuts.push(r);
+    for(let r of roots(f,S.k,a,b,true))if(r>a&&r<b&&!nearExact(r,a)&&!nearExact(r,b))cuts.push(r);
     if(f==='tan'){
       for(let n=Math.ceil((a-PI/2)/PI);n<=Math.floor((b-PI/2)/PI);n++){
         let q=PI/2+n*PI;
-        if(q>a+EPS&&q<b-EPS)cuts.push(q);
+        if(q>a&&q<b&&!nearExact(q,a)&&!nearExact(q,b))cuts.push(q);
       }
     }
   }
-  cuts=[...new Set(cuts.map(x=>+x.toFixed(9)))].sort((x,y)=>x-y);
+  cuts=cuts.sort((x,y)=>x-y).filter((x,i,a)=>!i||!nearExact(x,a[i-1]));
   const allSat=x=>fs.every(f=>satisfies(f,x));
-  const anyTanAsym=x=>fs.includes('tan')&&Math.abs(Math.cos(x))<1e-8;
+  const anyTanAsym=x=>fs.includes('tan')&&tanPole(x);
   let raw=[];
   for(let i=0;i<cuts.length-1;i++){
     let u=cuts[i],v=cuts[i+1];
-    if(v-u<1e-7)continue;
+    if(nearExact(v,u))continue;
     if(!allSat((u+v)/2))continue;
     let left=allSat(u)&&!anyTanAsym(u);
-    let right=allSat(v)&&!anyTanAsym(v)&&!(!closedR&&Math.abs(v-b)<1e-6);
+    let right=allSat(v)&&!anyTanAsym(v)&&!(!closedR&&nearExact(v,b));
     raw.push({u,v,left,right,singleton:false});
   }
   let list=mergeContiguousIntervals(raw);
   let candidateRoots=[];
   for(let f of fs)for(let r of roots(f,S.k,a,b,closedR))candidateRoots.push(r);
-  candidateRoots=[...new Set(candidateRoots.map(x=>+x.toFixed(7)))].sort((x,y)=>x-y);
+  candidateRoots=candidateRoots.sort((x,y)=>x-y).filter((x,i,a)=>!i||!nearExact(x,a[i-1]));
   for(let r of candidateRoots){
     if(!allSat(r)||anyTanAsym(r))continue;
-    let covered=list.some(iv=>(r>iv.u+1e-5&&r<iv.v-1e-5)||(iv.left&&Math.abs(r-iv.u)<=1e-5)||(iv.right&&Math.abs(r-iv.v)<=1e-5));
+    let covered=list.some(iv=>(r>iv.u&&r<iv.v&&!nearExact(r,iv.u)&&!nearExact(r,iv.v))||(iv.left&&nearExact(r,iv.u))||(iv.right&&nearExact(r,iv.v)));
     if(!covered)list.push({u:r,v:r,left:true,right:true,singleton:true});
   }
   return list.sort((x,y)=>x.u-y.u||(x.v-y.v));
 }
 function commonIntervals(fs,a,b){
-  return commonNumericIntervals(fs,a,b).map(iv=>iv.singleton?'{'+piText(iv.u)+'}':(iv.left?'[':'(')+piText(iv.u)+', '+piText(iv.v)+(iv.right?']':')'));
+  return commonNumericIntervals(fs,a,b).map(iv=>iv.singleton?'{'+boundText(iv.u)+'}':(iv.left?'[':'(')+boundText(iv.u)+', '+boundText(iv.v)+(iv.right?']':')'));
 }
 function isTrueInequalityBoundary(f,r){
   return !(satisfies(f,r-1e-4)&&satisfies(f,r)&&satisfies(f,r+1e-4));
@@ -564,8 +572,8 @@ function circleDraw(g,W,H){
     g.fillStyle='#d1e6c6';
     g.beginPath();g.arc(q.x,q.y,3.2,0,TAU);g.fill();
     let labelR=R+26,lx=x+labelR*Math.cos(a[1]),ly=y-labelR*Math.sin(a[1]),idx=specialIndex(S.theta);
-    let selected=S.mode==='special'?(idx===i||(S.si===16&&i===0)):Math.abs(Math.atan2(Math.sin(S.theta-a[1]),Math.cos(S.theta-a[1])))<.008;
-    let isTwoPi=(i===0&&((S.mode==='special'&&S.si===16)||(S.mode!=='special'&&Math.abs(S.theta-TAU)<1e-4)));
+    let selected=idx===i;
+    let isTwoPi=i===0&&nearExact(S.theta,TAU);
     let lmText=isTwoPi?'2π':a[0];
     let degNote=(selected&&S.showDeg)?((isTwoPi?360:a[2])+'°'):'';
     if(R>=80||selected||i%4===0)overlayLabel('circle','landmark-'+i,lmText,lx,ly,'math-label math-landmark'+(selected?' selected':''),{width:W,height:H,fontSize:selected?13.5:11.5,note:degNote});
@@ -597,7 +605,7 @@ function circleDraw(g,W,H){
     g.restore();
   }
 
-  if(S.activity==='inequality'){
+  if(S.activity==='inequality' && level(S)>=2){
     g.save();
     g.lineCap='butt';
     for(let f of active()){
@@ -626,12 +634,12 @@ function circleDraw(g,W,H){
   }
 
   // 직각삼각형 투영: 원점(x,y) -> 수선의 발(px,y)는 cos(가로), 수선의 발(px,y) -> 점 P(px,py)는 sin(세로)
-  if(S.fn.cos&&S.fn.sin&&Math.abs(px-x)>14&&Math.abs(py-y)>14){
+  if(level(S)>=1&&S.fn.cos&&S.fn.sin&&Math.abs(px-x)>14&&Math.abs(py-y)>14){
     let sq=7,sx=px>x?-sq:sq,sy=py>y?-sq:sq;
     g.strokeStyle='#9ab8a199';g.lineWidth=1.3;
     g.beginPath();g.moveTo(px+sx,y);g.lineTo(px+sx,y+sy);g.lineTo(px,y+sy);g.stroke();
   }
-  if(S.fn.cos){
+  if(level(S)>=1&&S.fn.cos){
     g.strokeStyle=C.cos;g.lineWidth=3.6;
     line(g,x,y,px,y);
     g.fillStyle=C.cos;
@@ -640,7 +648,7 @@ function circleDraw(g,W,H){
       overlayLabel('circle','cos-projection-label','cos θ',cosX,y+cosOffY,'math-label math-guide',{width:W,height:H,fontSize:13});
     }
   }
-  if(S.fn.sin){
+  if(level(S)>=1&&S.fn.sin){
     g.save();
     g.strokeStyle=C.sin+'66';g.lineWidth=1.2;g.setLineDash([4,4]);
     line(g,px,py,x,py);
@@ -662,7 +670,7 @@ function circleDraw(g,W,H){
 
   g.strokeStyle='#d8dfcb';g.lineWidth=1.5;
   let rArc=Math.min(30,R*.22),midA=0.25;
-  let fullTurn=(S.mode==='special'&&S.si===16)||Math.abs(t)>=TAU-1e-6;
+  let fullTurn=Math.abs(t)>=TAU||nearExact(Math.abs(t),TAU);
   g.beginPath();
   if(fullTurn){
     g.arc(x,y,rArc,0,TAU,false);
@@ -678,13 +686,13 @@ function circleDraw(g,W,H){
   g.fillStyle='#d8e5d4';g.font='600 12px Pretendard,system-ui';g.textAlign='center';g.textBaseline='middle';
   g.fillText('θ',x+Math.cos(midA)*38,y-Math.sin(midA)*38);
 
-  if(S.fn.tan){
+  if(S.fn.tan && level(S)>=3){
     let tx=x+R;
     g.strokeStyle='#a66c6199';g.lineWidth=1.4;g.setLineDash([5,5]);
     line(g,tx,y-R*1.82,tx,y+R*1.82);
     g.setLineDash([]);
     overlayLabel('circle','tangent-x-label','x = 1',tx+26,Math.max(18,y-R*1.82-2),'math-label math-guide',{width:W,height:H,fontSize:12});
-    let shown=drawTanRay(g,x,y,R,t,W,H,C.tan,'tan θ = '+valText(fval('tan',t)),'tan-guide',0,false);
+    let shown=drawTanRay(g,x,y,R,t,W,H,C.tan,'tan θ '+(exact(t)?'= '+exact(t).tan:'≈ '+Number(fval('tan',t).toPrecision(6))),'tan-guide',0,false);
     if(shown===null)overlayLabel('circle','tan-undefined','tan θ',Math.min(W-68,tx+52),y-R*1.52,'math-label math-guide',{width:W,height:H,fontSize:12,note:'정의되지 않음'});
   }
 
@@ -706,15 +714,15 @@ function circleDraw(g,W,H){
   }else{
     coordLabel='P = (cos θ, sin θ)';
   }
-  placePointCoordinate(coordLabel,px,py,W,H,R<110?13:15,coordNote);
+  if(level(S)>=2)placePointCoordinate(coordLabel,px,py,W,H,R<110?13:15,coordNote);
 
-  if(S.activity!=='motion'){
+  if(S.activity!=='motion' && level(S)>=1){
     let drawnPts=[];
     for(let f of active()){
       let rs=roots(f,S.k,0,TAU,false);
-      if(S.activity==='inequality'){
+      if(S.activity==='inequality' && level(S)>=2){
         let ivs=numericIntervals(f,0,TAU,false);
-        rs=rs.filter(r=>isTrueInequalityBoundary(f,r)&&ivs.some(iv=>Math.abs(iv.u-r)<1e-4||Math.abs(iv.v-r)<1e-4));
+        rs=rs.filter(r=>ivs.some(iv=>nearExact(iv.u,r)||nearExact(iv.v,r)));
       }
       rs.forEach((r,j)=>{
         let q=circleCoords(r,x,y,R),xx=q.x,yy=q.y,open=S.activity==='inequality'&&(S.op==='gt'||S.op==='lt');
@@ -752,11 +760,11 @@ function circleDraw(g,W,H){
           g.restore();
         }
         let eqOffset=Math.abs(fval('tan',t)-S.k)<0.25?26:0;
-        drawTanRay(g,x,y,R,Math.atan(S.k),W,H,C.tan,'T(1, '+valText(S.k)+')','tan-eq-guide',eqOffset,true);
+        drawTanRay(g,x,y,R,Math.atan(S.k),W,H,C.tan,'T(1, k), k '+valRelation(S.k),'tan-eq-guide',eqOffset,true);
       }
     }
     if(S.common&&active().length>1&&S.activity==='equation'){
-      let fs=active(),crs=roots(fs[0],S.k,0,TAU,false).filter(r=>fs.slice(1).every(f=>Math.abs(fval(f,r)-S.k)<1e-6));
+      let fs=active(),crs=roots(fs[0],S.k,0,TAU,false).filter(r=>fs.slice(1).every(f=>nearExact(fval(f,r),S.k)));
       for(let cr of crs){
         let q=circleCoords(cr,x,y,R);
         g.strokeStyle='#fbbf24';g.lineWidth=2.8;
@@ -879,7 +887,7 @@ function graphDraw(g,W,H){
     line(g,p.l,Y(S.k),W-p.r,Y(S.k));
     g.setLineDash([]);
     kLabelY=Y(S.k)<p.t+28?Y(S.k)+16:Y(S.k)-14;
-    overlayLabel('graph','k-guide','y = k = '+valText(S.k),p.l+10,kLabelY,'math-label math-guide',{width:W,height:H,fontSize:12.5,anchor:'left'});
+    overlayLabel('graph','k-guide','y = k, k '+valRelation(S.k),p.l+10,kLabelY,'math-label math-guide',{width:W,height:H,fontSize:12.5,anchor:'left'});
     g.restore();
   }
 
@@ -900,7 +908,7 @@ function graphDraw(g,W,H){
     }
     g.stroke();
 
-    if(S.activity==='inequality'){
+    if(S.activity==='inequality' && level(S)>=2){
       g.strokeStyle=C[f];
       g.lineWidth=f==='tan'?3.6:4.2;
       let ivs=numericIntervals(f,Math.max(lo,S.x0),Math.min(hi,S.x1),S.domain==='view');
@@ -937,7 +945,7 @@ function graphDraw(g,W,H){
     overlayLabel('graph','tan-asymptote','x = π/2 + nπ',W-p.r-10,p.t+16,'math-label math-guide',{width:W,height:H,fontSize:12,note:'tan 점근선',anchor:'right'});
   }
 
-  if(S.activity==='equation'){
+  if(S.activity==='equation' && level(S)>=1){
     g.save();
     g.beginPath();g.rect(p.l-6,p.t-6,pw+12,ph+12);g.clip();
     for(let f of active()){
@@ -951,7 +959,7 @@ function graphDraw(g,W,H){
       }
     }
     if(S.common&&active().length>1){
-      let fs=active(),crs=roots(fs[0],S.k,lo,hi).filter(r=>fs.slice(1).every(f=>Math.abs(fval(f,r)-S.k)<1e-6));
+      let fs=active(),crs=roots(fs[0],S.k,lo,hi).filter(r=>fs.slice(1).every(f=>nearExact(fval(f,r),S.k)));
       for(let cr of crs){
         if(cr<S.x0-EPS||cr>S.x1+EPS)continue;
         g.strokeStyle='#fbbf24';g.lineWidth=2.6;
@@ -960,12 +968,12 @@ function graphDraw(g,W,H){
     }
     g.restore();
   }
-  if(S.activity==='inequality'){
+  if(S.activity==='inequality' && level(S)>=1){
     g.save();
     g.beginPath();g.rect(p.l-6,p.t-6,pw+12,ph+12);g.clip();
     for(let f of active()){
       let ivs=numericIntervals(f,lo,hi);
-      let rs=roots(f,S.k,lo,hi).filter(r=>isTrueInequalityBoundary(f,r)&&ivs.some(iv=>Math.abs(iv.u-r)<1e-4||Math.abs(iv.v-r)<1e-4));
+      let rs=roots(f,S.k,lo,hi).filter(r=>ivs.some(iv=>nearExact(iv.u,r)||nearExact(iv.v,r)));
       for(let r of rs){
         if(r>=S.x0-EPS&&r<=S.x1+EPS){
           g.strokeStyle=C[f];g.lineWidth=2;
@@ -1001,13 +1009,13 @@ function graphDraw(g,W,H){
     g.setLineDash([]);
     for(let f of active()){
       let v=fval(f,S.theta);
-      if(Number.isFinite(v)&&Math.abs(v)<=2.5){
+      if(level(S)>=2&&Number.isFinite(v)&&Math.abs(v)<=2.5){
         g.fillStyle=C[f];g.strokeStyle='#08130e';g.lineWidth=2;
         g.beginPath();g.arc(xx,Y(v),5,0,TAU);g.fill();g.stroke();
-      }else if(f==='tan'&&Number.isFinite(v)){
+      }else if(level(S)>=3&&f==='tan'&&Number.isFinite(v)){
         let edge=v>0?p.t+14:H-p.b-14;
         arrowHead(g,xx,edge,v>0?-PI/2:PI/2,C.tan);
-        overlayLabel('graph','tan-offscreen-value','tan θ = '+valText(v),xx,edge+(v>0?18:-18),'math-label math-guide',{width:W,height:H,fontSize:12,note:v>0?'↑':'↓'});
+        overlayLabel('graph','tan-offscreen-value','tan θ ≈ '+Number(v.toPrecision(6)),xx,edge+(v>0?18:-18),'math-label math-guide',{width:W,height:H,fontSize:12,note:v>0?'↑':'↓'});
       }
     }
     let e=S.mode==='special'?currentSpecialDisplay():exact(S.theta);
@@ -1055,8 +1063,8 @@ function htmlApprox(){
   }
   let s=Math.sin(S.theta),c=Math.cos(S.theta),tn=fval('tan',S.theta);
   let degStr=S.showDeg?' <span class="muted">('+degText(S.theta)+')</span>':'';
-  let tanHtml=!Number.isFinite(tn)||Math.abs(tn)>999?'<b style="color:'+CV.tan+'">정의되지 않음</b>':'<b style="color:'+CV.tan+'">≈ '+tn.toFixed(3)+'</b>';
-  return '<div class="exact-line full">현재 각도 (연속 근삿값) <b>'+displayMath('θ ≈ '+S.theta.toFixed(3))+' rad'+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>('+c.toFixed(3)+', '+s.toFixed(3)+')</b></div><div class="exact-line">사인 · '+displayMath('sin θ')+'<b style="color:'+CV.sin+'">≈ '+s.toFixed(3)+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ')+'<b style="color:'+CV.cos+'">≈ '+c.toFixed(3)+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ')+tanHtml+'</div>';
+  let tanHtml=!Number.isFinite(tn)?'<b style="color:'+CV.tan+'">정의되지 않음</b>':'<b style="color:'+CV.tan+'">≈ '+tn.toFixed(3)+'</b>';
+  return '<div class="exact-line full">현재 각도 (연속 근삿값) <b>'+displayMath('θ ≈ '+S.theta.toFixed(3))+' rad'+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>≈ ('+c.toFixed(3)+', '+s.toFixed(3)+')</b></div><div class="exact-line">사인 · '+displayMath('sin θ')+'<b style="color:'+CV.sin+'">≈ '+s.toFixed(3)+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ')+'<b style="color:'+CV.cos+'">≈ '+c.toFixed(3)+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ')+tanHtml+'</div>';
 }
 
   /* ======================================================================
@@ -1165,12 +1173,12 @@ function htmlApprox(){
     let a = ((t % TAU) + TAU) % TAU;
     let c = Math.cos(t), s = Math.sin(t), tn = fval('tan', t);
     let qName = '';
-    if (Math.abs(s) < 1e-5 || Math.abs(c) < 1e-5) qName = '축 위의 각';
+    if (nearExact(s,0) || nearExact(c,0)) qName = '축 위의 각';
     else if (a < PI / 2) qName = '제1사분면 (모두 +)';
     else if (a < PI) qName = '제2사분면 (sin만 +)';
     else if (a < 3 * PI / 2) qName = '제3사분면 (tan만 +)';
     else qName = '제4사분면 (cos만 +)';
-    const sym = (v) => (!Number.isFinite(v) ? '정의 안 됨' : Math.abs(v) < 1e-6 ? '0' : v > 0 ? '+' : '−');
+    const sym = (v) => (!Number.isFinite(v) ? '정의 안 됨' : nearExact(v,0) ? '0' : v > 0 ? '+' : '−');
     return { qName, cos: sym(c), sin: sym(s), tan: sym(tn) };
   }
 
@@ -1184,7 +1192,7 @@ function htmlApprox(){
     return S.revealedRoot !== null && S.activity === 'equation'
       ? '선택한 해 ' + formatAngleWithDeg('θ ' + (pfRoot.exact ? '= ' : '≈ ') + pfRoot.text, S.revealedRoot) + '를 단위원과 그래프 양쪽에서 동시에 강조합니다.'
       : S.mode === 'special'
-        ? '특수각 ' + formatAngleWithDeg(e ? e.angle : '', e ? e.rad : S.theta) + '에서 읽은 정확한 무리수 값입니다.'
+        ? e ? '특수각 ' + formatAngleWithDeg(e.angle, e.rad) + '에서 읽은 정확값입니다.' : '특수각으로 이동 중입니다. 표시된 근삿값은 지금 점 P의 값입니다.'
         : S.showApprox
           ? '연속 탐구 모드입니다. 원 둘레의 특수각 점을 클릭하면 정확한 특수각 값으로 즉시 고정됩니다.'
           : '연속 각도 숫자를 숨겼습니다. [연속 근삿값] 칩을 켜거나 특수각 탐구에서 정확한 값을 확인하세요.';
@@ -1217,7 +1225,7 @@ function htmlApprox(){
     }
     if (S.common && fs.length > 1) {
       if (S.activity === 'equation') {
-        let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => Math.abs(fval(f, x) - S.k) < 1e-6));
+        let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => nearExact(fval(f,x),S.k)));
         h += chip('공통인 해: ' + (r.length ? displayMath('θ = ' + r.map(piText).join(', '), 'root-angle') : '없음'), 'border-color:var(--m-amber)');
       } else {
         let cp = commonIntervals(fs, lo, hi);
@@ -1233,15 +1241,15 @@ function htmlApprox(){
   function fmtTheta(v) {
     let e = exact(v);
     if (e) return e.angle + (S.showDeg ? ' (' + e.deg + '°)' : '');
-    return S.showApprox ? v.toFixed(2) + ' rad' + (S.showDeg ? ' (' + degText(v) + ')' : '') : '각도 숫자 숨김';
+    return S.showApprox ? '≈ '+v.toFixed(2) + ' rad' + (S.showDeg ? ' (' + degText(v) + ')' : '') : '각도 숫자 숨김';
   }
   function motionReadouts() {
     let t = S.theta, e = curExact(), cs = Math.cos(t), sn = Math.sin(t), tn = fval('tan', t);
     let approx = S.showApprox;
-    const tanApprox = !Number.isFinite(tn) || Math.abs(tn) > 999 ? '정의되지 않음' : '≈ ' + tn.toFixed(3);
+    const tanApprox = !Number.isFinite(tn) ? '정의되지 않음' : '≈ ' + tn.toFixed(3);
     return [
       { label: '각도 θ', value: e ? e.angle + (S.showDeg ? ' (' + e.deg + '°)' : '') : approx ? 'θ ≈ ' + t.toFixed(2) + ' rad' + (S.showDeg ? ' (' + degText(t) + ')' : '') : '각도 숫자 숨김', color: 'violet', wide: true },
-      { label: '점 P의 좌표 (cos θ, sin θ)', value: e ? '(' + e.cos + ', ' + e.sin + ')' : approx ? '(' + cs.toFixed(2) + ', ' + sn.toFixed(2) + ')' : '(cos θ, sin θ)', color: 'ink', wide: true },
+      { label: '점 P의 좌표 (cos θ, sin θ)', value: e ? '(' + e.cos + ', ' + e.sin + ')' : approx ? '≈ (' + cs.toFixed(2) + ', ' + sn.toFixed(2) + ')' : '(cos θ, sin θ)', color: 'ink', wide: true },
       { label: '사인 sin θ · 높이', value: e ? e.sin : approx ? '≈ ' + sn.toFixed(3) : 'sin θ', color: CN.sin },
       { label: '코사인 cos θ · 밑변', value: e ? e.cos : approx ? '≈ ' + cs.toFixed(3) : 'cos θ', color: CN.cos },
       { label: '탄젠트 tan θ · x=1 접선', value: e ? e.tan : approx ? tanApprox : 'tan θ', color: CN.tan, wide: true }
@@ -1249,8 +1257,8 @@ function htmlApprox(){
   }
   function solveReadouts() {
     let [lo, hi] = domainOf(), fs = active(), out = [];
-    out.push({ label: S.activity === 'equation' ? '기준값 y = k' : '경계선 y = k', value: 'k = ' + valText(S.k) + (S.activity === 'inequality' ? '   (조건: y ' + OPSYM[S.op] + ' k)' : ''), color: 'amber', wide: true });
-    out.push({ label: '해의 정의역', value: S.domain === 'one' ? '[0, 2π)' : '현재 보이는 범위 [' + piText(S.x0) + ', ' + piText(S.x1) + ']', color: 'muted', wide: true });
+    out.push({ label: S.activity === 'equation' ? '기준값 y = k' : '경계선 y = k', value: 'k ' + valRelation(S.k) + (S.activity === 'inequality' ? '   (조건: y ' + OPSYM[S.op] + ' k)' : ''), color: 'amber', wide: true });
+    out.push({ label: '해의 정의역', value: S.domain === 'one' ? '[0, 2π)' : '현재 보이는 범위 [' + boundText(S.x0) + ', ' + boundText(S.x1) + ']', color: 'muted', wide: true });
     for (let f of fs) {
       if (S.activity === 'equation') {
         let rs = roots(f, S.k, lo, hi);
@@ -1262,7 +1270,7 @@ function htmlApprox(){
     }
     if (S.common && fs.length > 1) {
       if (S.activity === 'equation') {
-        let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => Math.abs(fval(f, x) - S.k) < 1e-6));
+        let r = roots(fs[0], S.k, lo, hi).filter(x => fs.slice(1).every(f => nearExact(fval(f,x),S.k)));
         out.push({ label: '공통인 해 (선택한 함수 모두)', value: r.length ? 'θ = ' + r.map(piText).join(', ') : '없음', color: 'amber', wide: true });
       } else {
         let cp = commonIntervals(fs, lo, hi);
@@ -1278,7 +1286,7 @@ function htmlApprox(){
       return '선택한 해 θ ' + (pf.exact ? '= ' : '≈ ') + pf.text + degOrNot(S.revealedRoot) + '를 단위원과 그래프 양쪽에서 동시에 강조합니다.';
     }
     if (S.activity === 'motion') {
-      if (S.mode === 'special') return '특수각 ' + (e ? e.angle + degOrNot(e.rad) : '') + '에서 읽은 정확한 무리수 값입니다.';
+      if (S.mode === 'special') return e ? '특수각 ' + e.angle + degOrNot(e.rad) + '에서 읽은 정확값입니다.' : '특수각으로 이동 중: 현재 점의 근삿값을 표시합니다.';
       return S.showApprox ? '연속 탐구: 원 둘레의 특수각 점을 누르면 정확한 값으로 고정됩니다.' : '연속 각도 숫자를 숨겼습니다.';
     }
     return S.activity === 'equation' ? '각 함수와 y = k의 교점이 해입니다.' : '조건을 만족하는 곡선 구간과 단위원의 호를 같은 색으로 봅니다.';
@@ -1546,7 +1554,7 @@ function htmlApprox(){
       if (!sc || !sc.vary) return;
       sc.vary.next();
       lab.s.revealed = false;
-      lab.setStep(1);
+      lab.setStep(0);
       try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
       lab.invalidate(true);
     });
@@ -1562,7 +1570,16 @@ function htmlApprox(){
     function dimH(b, x0, x1, y, color) { b.seg([x0, y], [x1, y], { color, width: 2 }); arrowTip(b, [x0, y], [-1, 0], 8, color); arrowTip(b, [x1, y], [1, 0], 8, color); }
     function dimV(b, x, y0, y1, color) { b.seg([x, y0], [x, y1], { color, width: 2 }); arrowTip(b, [x, y0], [0, -1], 8, color); arrowTip(b, [x, y1], [0, 1], 8, color); }
     const T = (b, p, str, o = {}) => b.text(p, str, { size: 12.5, weight: 800, baseline: 'middle', ...o });
-    const baseScene = (o) => ({ tabs: { compact: true }, ...o });
+    const baseScene = (o) => {
+      const steps=o.steps,view=o.view;
+      return {tabs:{compact:true},...o,startStep:0,
+        steps:(s,l)=>{const active=l||window.lab;return tabOf(l)==='explore'&&active?.scene?.id===o.id?liveSteps(o.id,s):steps(s,l);},
+        view:(s,l)=>{const v=view(s,l);if(tabOf(l)!=='explore')return v;const st=level(s);
+          if(st<3){v.readouts=[];v.status=null;v.notes='';v.formula='';v.rule='';if(o.id==='rootsum')v.chips=v.chips.slice(0,2);if(o.id==='conv')v.chips=v.chips.slice(0,1);v.alert=null;}
+          return v;
+        }
+      };
+    };
     const reviewTopOf = (textFn) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textFn()}</div>`;
 
     /* ====================================================================
@@ -1573,7 +1590,7 @@ function htmlApprox(){
     // [0, t] 에서 최대·최소: 끝점과 sin bx = ±1 인 점(a > 0)
     function extOn(a, bb, c, t) {
       const f = sinF(a, bb, c), cand = [0, t], crit = [];
-      for (let k = 0; ; k++) { const x = (PI / 2 + k * PI) / bb; if (x > t + 1e-9) break; cand.push(x); crit.push(x); }
+      for (let k = 0; ; k++) { const x = (PI / 2 + k * PI) / bb; if (x>t&&!nearExact(x,t)) break; const q=nearExact(x,t)?t:x; cand.push(q); crit.push(q); }
       let mx = cand[0], mn = cand[0];
       cand.forEach((x) => { if (f(x) > f(mx) + 1e-12) mx = x; if (f(x) < f(mn) - 1e-12) mn = x; });
       return { mx, mn, M: f(mx), m: f(mn), crit };
@@ -1625,7 +1642,7 @@ function htmlApprox(){
         g.crit.forEach((x) => {
           b.seg([x, 0], [x, f(x)], { color: 'sky', width: 1.4, dash: [3, 4] });
           b.point([x, f(x)], { color: 'sky', r: 4.5 });
-          if (g.critLabel && !(g.alpha != null && Math.abs(g.alpha - x) < 1e-6)) T(b, [x, 0], piTxt(Math.round(x * bb / PI * 2), Math.round(2 * bb)), { color: 'sky', size: 12, dy: 15, weight: 900 });
+          if (g.critLabel && !(g.alpha != null && Math.abs(g.alpha - x) < 1e-6)) T(b, [x, 0], (piFormatInfo(x).exact?piFormatInfo(x).text:'≈ '+x.toFixed(3)), { color: 'sky', size: 12, dy: 15, weight: 900 });
         });
       }
       if (g.ends) {
@@ -1634,8 +1651,8 @@ function htmlApprox(){
       if (g.ext) {
         const e = g.ext;
         const lab = (x, dy, txt) => (x < 0.25 ? { label: txt, dx: 13, dy, align: 'left' } : { label: txt, dx: 0, dy, align: 'center' });   // y축 위의 점은 이름표를 오른쪽으로
-        b.point([e.mx, e.M], { color: 'green', r: 7, hollow: true, ...lab(e.mx, -17, '최대 ' + num(e.M)) });
-        b.point([e.mn, e.m], { color: 'rose', r: 7, hollow: true, ...lab(e.mn, 18, '최소 ' + num(e.m)) });
+        b.point([e.mx, e.M], { color: 'green', r: 7, hollow: true, ...lab(e.mx, -17, '최대 '+(g.extExact?'':'≈ ')+num(e.M)) });
+        b.point([e.mn, e.m], { color: 'rose', r: 7, hollow: true, ...lab(e.mn, 18, '최소 '+(g.extExact?'':'≈ ')+num(e.m)) });
       }
       if (g.alpha) {
         b.seg([g.alpha, 0], [g.alpha, f(g.alpha)], { color: 'amber', width: 1.6, dash: [4, 4] });
@@ -1695,13 +1712,14 @@ function htmlApprox(){
     function draw5(b, s, v, labx) {
       hideOverlays();
       useBox(b, SIN_BOX);
-      const tab = labx ? labx.tab : 'explore';
+      const tab = tabOf(labx);
       if (tab === 'explore') {
         const E = extOn(s.sna, s.snb, s.snc, s.snt);
         drawSinus(b, {
-          a: s.sna, bb: s.snb, c: s.snc, grid: s.grid, levels: true, mid: true, band: [0, s.snt], ext: E,
-          period: '주기 ' + piTxt(4, Math.round(2 * s.snb)),
-          handle: (w) => { s.snt = clampX(w.x, 0.2, 2 * PI - 0.1); }
+          a: s.sna, bb: s.snb, c: s.snc, grid: s.grid, levels: level(s)>=1, mid: level(s)>=1, amp: level(s)>=2, band: [0,s.snt], ext: level(s)>=3?E:null,
+          crit: level(s)>=2?E.crit:null, critLabel:true, ends:level(s)>=2?[0,s.snt]:null,
+          period: level(s)>=2?(nearExact(2*s.snb,Math.round(2*s.snb))?'주기 '+piTxt(4,Math.round(2*s.snb)):'주기 ≈ '+(TAU/s.snb).toFixed(3)):null,
+          handle: (w) => { s.snt=clampX(w.x,0,TAU); }
         });
         return;
       }
@@ -1716,7 +1734,7 @@ function htmlApprox(){
         drawSinus(b, {
           a: V.a, bb: V.b, c: V.c, grid: s.grid, band: [0, V.t], skipX: [V.t].concat(st >= 1 ? cr : []),
           alpha: V.t, alphaLabel: piTxt(V.alphaN, V.alphaD),
-          crit: st >= 1 ? cr : null, critLabel: true, ends: st >= 2 ? [0, V.t] : null, ext: st >= 3 ? E : null
+          crit: st >= 1 ? cr : null, critLabel: true, ends: st >= 2 ? [0, V.t] : null, ext: st >= 3 ? E : null, extExact:true
         });
       }
     }
@@ -1753,22 +1771,22 @@ function htmlApprox(){
             : { steps: '구간 안에서 <strong class="text-amber-300">끝점 두 곳과 sin bx=±1인 곳</strong>만 후보입니다. 이 값들 중 큰 값이 M, 작은 값이 m입니다.', highlight: '구간 끝 α에서 bx=bα가 π/2를 지났는지(최댓값 도달), 3π/2를 지났는지(최솟값 도달)부터 확인하세요.' })
         },
         view: (s, l) => {
-          const tab = l ? l.tab : 'explore';
+          const tab = tabOf(l);
           if (tab !== 'explore') {
             const V = var5.cur();
             return V.type === 2 ? { chips: [{ tex: f5Tex(V), color: 'ink' }, { tex: '0\\le x\\le ' + piTex(V.alphaN, V.alphaD), color: 'amber' }] } : {};
           }
           const a = s.sna, bb = s.snb, c = s.snc, E = extOn(a, bb, c, s.snt);
-          const per = piTex(4, Math.round(2 * bb));
+          const per=nearExact(2*bb,Math.round(2*bb))?piTex(4,Math.round(2*bb)):'\\approx '+(TAU/bb).toFixed(3);
           return {
             chips: [{ tex: `y=${a === 1 ? '' : num(a)}\\sin ${bb === 1 ? '' : num(bb)}x${c === 0 ? '' : sgn(c).replace('+', '+').replace('-', '-')}`, color: 'ink' }],
-            status: { tone: 'info', text: `구간 [0, t]에서 최대 ${num(E.M)} · 최소 ${num(E.m)}` },
+            status: { tone: 'info', text: `구간 [0, t]에서 최대 ≈ ${num(E.M)} · 최소 ≈ ${num(E.m)}` },
             readouts: [
               { label: '진폭 (높이의 절반) a', value: num(a), color: 'sky' },
               { label: '주기 $\\frac{2\\pi}{b}$', value: `$${per}$`, color: 'violet' },
               { label: '중심선 y = c', value: num(c), color: 'amber' },
               { label: '최댓값 c + a / 최솟값 c − a', value: `${num(c + a)} / ${num(c - a)}`, color: 'sky' },
-              { label: '구간 [0, t]에서의 최댓값 · 최솟값', value: `최대 ${num(E.M)} · 최소 ${num(E.m)}`, color: 'green', wide: true }
+              { label: '구간 [0, t]에서의 최댓값 · 최솟값', value: `최대 ≈ ${num(E.M)} · 최소 ≈ ${num(E.m)}`, color: 'green', wide: true }
             ],
             notes: '<b>탐구 참고</b> · b가 커지면 그래프가 가로로 압축되어 주기가 짧아집니다. a와 c는 주기를 바꾸지 못하고, a는 높이(최고점과 최저점의 간격)만, c는 전체를 위아래로 옮깁니다. 구간 끝 t를 키우다 $bt$가 $\\frac{\\pi}{2}$를 지나는 순간 최댓값이 <b>c + a</b>에 닿습니다.'
           };
@@ -1785,18 +1803,18 @@ function htmlApprox(){
       neg: { txt: '−θ', lab: '-\\theta', phi: (t) => -t, q: (x, y) => [x, -y], qt: ['\\cos\\theta', '-\\sin\\theta'], sym: 'x축 대칭', tan: '-\\tan\\theta', who: 'x축에 대칭이동', rule: '−θ : P를 x축에 대칭 → y좌표(sin)의 부호만 바뀐다' },
       'pi-': { txt: 'π−θ', lab: '\\pi-\\theta', phi: (t) => PI - t, q: (x, y) => [-x, y], qt: ['-\\cos\\theta', '\\sin\\theta'], sym: 'y축 대칭', tan: '-\\tan\\theta', who: 'y축에 대칭이동', rule: 'π−θ : P를 y축에 대칭 → x좌표(cos)의 부호만 바뀐다' },
       'pi+': { txt: 'π+θ', lab: '\\pi+\\theta', phi: (t) => PI + t, q: (x, y) => [-x, -y], qt: ['-\\cos\\theta', '-\\sin\\theta'], sym: '원점 대칭', tan: '\\tan\\theta', who: '원점에 대칭이동', rule: 'π+θ : P를 원점에 대칭 → sin, cos 모두 부호가 바뀌고 tan은 그대로' },
-      'h-': { txt: 'π/2−θ', lab: '\\dfrac{\\pi}{2}-\\theta', phi: (t) => PI / 2 - t, q: (x, y) => [y, x], qt: ['\\sin\\theta', '\\cos\\theta'], sym: '직선 y=x 대칭', tan: '\\dfrac{1}{\\tan\\theta}', who: '직선 y=x에 대칭이동', rule: 'π/2−θ : P를 직선 y=x에 대칭 → x, y좌표가 서로 바뀌어 sin ↔ cos' },
-      'h+': { txt: 'π/2+θ', lab: '\\dfrac{\\pi}{2}+\\theta', phi: (t) => PI / 2 + t, q: (x, y) => [-y, x], qt: ['-\\sin\\theta', '\\cos\\theta'], sym: '90° 회전', tan: '-\\dfrac{1}{\\tan\\theta}', who: '원점을 중심으로 90° 회전', rule: 'π/2+θ : P를 90° 회전 → (x, y) → (−y, x)' }
+      'h-': { txt: 'π/2−θ', lab: '\\dfrac{\\pi}{2}-\\theta', phi: (t) => PI / 2 - t, q: (x, y) => [y, x], qt: ['\\sin\\theta', '\\cos\\theta'], sym: '직선 y=x 대칭', tan: '\\dfrac{\\cos\\theta}{\\sin\\theta}', who: '직선 y=x에 대칭이동', rule: 'π/2−θ : P를 직선 y=x에 대칭 → x, y좌표가 서로 바뀌어 sin ↔ cos' },
+      'h+': { txt: 'π/2+θ', lab: '\\dfrac{\\pi}{2}+\\theta', phi: (t) => PI / 2 + t, q: (x, y) => [-y, x], qt: ['-\\sin\\theta', '\\cos\\theta'], sym: '90° 회전', tan: '-\\dfrac{\\cos\\theta}{\\sin\\theta}', who: '원점을 중심으로 90° 회전', rule: 'π/2+θ : P를 90° 회전 → (x, y) → (−y, x)' }
     };
     const CV_ORDER = ['neg', 'pi-', 'pi+', 'h-', 'h+'];
-    const QN = ['', '제1사분면', '제2사분면', '제3사분면', '제4사분면'];
-    const quadOf = (x, y) => (x >= 0 ? (y >= 0 ? 1 : 4) : (y >= 0 ? 2 : 3));
+    const QN = ['좌표축 위', '제1사분면', '제2사분면', '제3사분면', '제4사분면'];
+    const quadOf = (x, y) => (nearExact(x,0)||nearExact(y,0)?0:x>0?(y>0?1:4):(y>0?2:3));
     const SGN = (v) => (v >= 0 ? '+' : MN);
     // 각도 θ(라디안) → 표시 글: 'π/6 (30°)' 처럼 π/12의 배수면 분수로, 아니면 소수
     function angTxt(t) {
       const k = Math.round(t / (PI / 12));
-      if (Math.abs(t - k * PI / 12) < 0.004) return `${piTxt(k, 12)} (${k * 15}°)`;
-      return `${num(t)} (${num(t * 180 / PI)}°)`;
+      if (nearExact(t,k*PI/12)) return `${piTxt(k, 12)} (${k * 15}°)`;
+      return `≈ ${num(t)} rad (≈ ${num(t * 180 / PI)}°)`;
     }
     // 보이는 소수 읽기용
     const num2 = (v) => (Math.abs(v) < 0.005 ? '0' : (Math.round(v * 100) / 100).toFixed(2).replace('-', MN));
@@ -1890,14 +1908,14 @@ function htmlApprox(){
     function draw6(b, s, v, labx) {
       hideOverlays();
       useBox(b, CV_BOX);
-      const tab = labx ? labx.tab : 'explore';
+      const tab = tabOf(labx);
       if (tab === 'explore') {
         const th = s.cvt, md = CVM[s.cvm || 'pi-'], P = [Math.cos(th), Math.sin(th)], ph = md.phi(th), Q = [Math.cos(ph), Math.sin(ph)];
         drawCircleBase(b, s, { quad: quadOf(P[0], P[1]) });
-        drawSym(b, s.cvm, P, Q);
-        legs(b, P, false); legs(b, Q, true);
+        if(level(s)>=1){drawSym(b,s.cvm,P,Q);legs(b,P,false);}
+        if(level(s)>=2)legs(b,Q,true);
         b.seg([0, 0], P, { color: 'ink', width: 2.6 });
-        b.seg([0, 0], Q, { color: 'rose', width: 2.6 });
+        if(level(s)>=1)b.seg([0,0],Q,{color:'rose',width:2.6});
         // 각 호: θ(안쪽), 변환된 각(바깥쪽). 라벨은 호 바깥쪽
         arcAngle(b, 0, th, 0.18, 'amber');
         const bis = th / 2;
@@ -1911,7 +1929,7 @@ function htmlApprox(){
         for (let i = 0; i + 1 < cuts.length; i++) if (cuts[i + 1] - cuts[i] >= wid - 1e-9) { wid = cuts[i + 1] - cuts[i]; mid = (cuts[i] + cuts[i + 1]) / 2; }
         T(b, [Math.cos(mid) * 0.58, Math.sin(mid) * 0.58], md.txt, { color: 'rose', size: 13, weight: 900 });
         const close = Math.hypot(P[0] - Q[0], P[1] - Q[1]) < 0.34;
-        b.point(Q, { color: 'rose', r: 6.5, label: 'Q', size: 14, ...lblOut({ x: Q[0], y: Q[1] }, close ? 1 : 0) });
+        if(level(s)>=1)b.point(Q, { color: 'rose', r: 6.5, label: 'Q', size: 14, ...lblOut({ x: Q[0], y: Q[1] }, close ? 1 : 0) });
         b.handle('P6', P, { color: 'amber', r: 8, label: 'P', size: 14, ariaLabel: '점 P (끌어서 각 θ 바꾸기)', ...lblOut({ x: P[0], y: P[1] }, close ? -1 : 0), drag: (w) => { s.cvt = ((Math.atan2(w.y, w.x) % TAU) + TAU) % TAU; } });
         return;
       }
@@ -1992,7 +2010,7 @@ function htmlApprox(){
         controls: ['cvt'],
         presets: () => [
           ...CV_ORDER.map((k) => ({ group: '변환 고르기', label: `$${CVM[k].lab}$`, apply: (st) => { st.cvm = k; }, on: (st) => st.cvm === k, color: 'rose' })),
-          ...[[PI / 6, '30°'], [PI / 4, '45°'], [PI / 3, '60°'], [2 * PI / 3, '120°'], [7 * PI / 6, '210°'], [5 * PI / 3, '300°']].map(([t, l]) => ({ group: 'θ 값 (사분면 바꿔 보기)', label: `θ = ${l}`, set: { cvt: t }, ms: 400, on: (st) => Math.abs(st.cvt - t) < 0.01 }))
+          ...[[0,'0°'],[PI/2,'90°'],[PI,'180°'],[3*PI/2,'270°'],[PI / 6, '30°'], [PI / 4, '45°'], [PI / 3, '60°'], [2 * PI / 3, '120°'], [7 * PI / 6, '210°'], [5 * PI / 3, '300°']].map(([t, l]) => ({ group: 'θ 값 (사분면 바꿔 보기)', label: `θ = ${l}`, set: { cvt: t }, ms: 400, on: (st) => nearExact(st.cvt,t) }))
         ],
         steps: () => steps6(varCv.cur()),
         reviewTop: reviewTopOf(() => text6(varCv.cur())),
@@ -2001,25 +2019,25 @@ function htmlApprox(){
         solution: {
           standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 부호와 이름 바꾸기', quickTag: '10초 컷',
           standard: () => ({ steps: steps6(varCv.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: 'tan은 (y좌표)÷(x좌표)입니다. 변환된 점의 두 좌표를 모두 읽은 뒤 나누세요.' }),
-          quick: () => ({ steps: '변환 공식은 <strong class="text-amber-300">① 점이 어디로 가는가(대칭·회전) ② 그 점의 좌표</strong>만 읽으면 됩니다. π±θ는 sin·cos 이름이 그대로이고 부호만, π/2±θ는 sin ↔ cos 이름이 바뀝니다.', highlight: '부호는 "θ를 예각으로 놓았을 때 변환된 점이 있는 사분면"으로 정합니다. 예: π+θ는 제3사분면 → sin −, cos −, tan +.' })
+          quick: () => ({ steps: '변환 공식은 <strong class="text-amber-300">① 점이 어디로 가는가(대칭·회전) ② 그 점의 좌표</strong>만 읽으면 됩니다. π±θ는 sin·cos 이름이 그대로이고 부호만, π/2±θ는 sin ↔ cos 이름이 바뀝니다.', highlight: '공식 앞의 부호와 실제 함수값의 부호를 구별합니다. π+θ는 (x,y)를 (−x,−y)로 옮기므로 sin·cos의 부호가 바뀌고 tan은 같습니다. 실제 부호는 주어진 θ의 사분면과 함께 판단합니다.' })
         },
         view: (s, l) => {
-          const tab = l ? l.tab : 'explore';
+          const tab = tabOf(l);
           if (tab !== 'explore') return {};
           const th = s.cvt, md = CVM[s.cvm], P = [Math.cos(th), Math.sin(th)], ph = md.phi(th), Q = [Math.cos(ph), Math.sin(ph)];
-          const qp = quadOf(P[0], P[1]), qq = quadOf(Q[0], Q[1]), tn = (p) => (Math.abs(p[0]) < 1e-6 ? '없음' : num2(p[1] / p[0]));
+          const qp = quadOf(P[0], P[1]), qq = quadOf(Q[0], Q[1]), tn = (p) => (nearExact(p[0],0) ? '정의되지 않음' : '≈ '+num2(p[1] / p[0]));
           const L = (fn, expr, val) => `$${fn}(${md.lab})=${expr}$`;
           return {
             chips: [{ tex: '\\mathrm{P}(\\cos\\theta,\\ \\sin\\theta)', color: 'amber' }, { tex: `\\mathrm{Q}\\left(${md.qt[0]},\\ ${md.qt[1]}\\right)`, color: 'rose' }],
             status: { tone: 'info', text: `${md.txt}: P를 ${md.who}하면 Q` },
             readouts: [
               { label: 'θ', value: angTxt(th), color: 'amber', note: `P는 ${QN[qp]}` },
-              { label: `${md.txt} 의 점 Q`, value: `(${num2(Q[0])}, ${num2(Q[1])})`, color: 'rose', note: `Q는 ${QN[qq]}` },
-              { label: 'P (cos θ, sin θ)', value: `(${num2(P[0])}, ${num2(P[1])})`, color: 'amber' },
-              { label: `sin · cos · tan (${md.txt})`, value: `${num2(Q[1])} · ${num2(Q[0])} · ${tn(Q)}`, color: 'rose', wide: true }
+              { label: `${md.txt} 의 점 Q`, value: `≈ (${num2(Q[0])}, ${num2(Q[1])})`, color: 'rose', note: `Q는 ${QN[qq]}` },
+              { label: 'P (cos θ, sin θ)', value: `≈ (${num2(P[0])}, ${num2(P[1])})`, color: 'amber' },
+              { label: `sin · cos · tan (${md.txt})`, value: `≈ ${num2(Q[1])} · ≈ ${num2(Q[0])} · ${tn(Q)}`, color: 'rose', wide: true }
             ],
             rule: `${md.rule}`,
-            formula: `<div class="apl-rich" style="line-height:2"><b>변환 결과</b><br>${L('\\sin', md.qt[1])}<br>${L('\\cos', md.qt[0])}<br>${L('\\tan', md.tan)}</div>`,
+            formula: `<div class="apl-rich" style="line-height:2"><b>변환 결과</b><br>${L('\\sin', md.qt[1])}<br>${L('\\cos', md.qt[0])}<br>${L('\\tan', md.tan)}<br><small>tan은 Q의 x좌표가 0이 아닐 때만 정의됩니다. π/2±θ에서는 sin θ≠0이 조건입니다. 1/tan θ로 바꾸려면 cos θ≠0도 필요합니다.</small></div>`,
             notes: '<b>탐구 참고</b> · θ를 제2·3·4사분면으로 옮겨도 같은 규칙이 성립합니다(위의 θ 값 칩). 변환된 점 Q의 사분면에서 sin·cos·tan의 부호를 한꺼번에 읽을 수 있습니다: 제1 (+ + +) · 제2 (+ − −) · 제3 (− − +) · 제4 (− + −).'
           };
         },
@@ -2072,7 +2090,8 @@ function htmlApprox(){
       }
       if (o.height) { b.seg(P.A, [P.A[0], -yk], { color: 'amber', width: 1.8, dash: [5, 4] }); b.right([P.A[0], -yk], P.A, [P.A[0] + 1, -yk], { size: 9, color: 'amber' }); }
       if (o.mid) b.point([o.sym, sy * Math.SQRT1_2], { color: 'violet', r: 4 });
-      [['A', P.A, 'green', -15], ['B', P.B, 'amber', -15], ['C', P.C, 'green', 16], ['D', P.D, 'amber', 16]].forEach(([nm, p, col, dy]) => b.point(p, { color: col, r: 5.5, label: nm, size: 14, dx: 0, dy, align: 'center' }));
+      const joined=Math.hypot(P.A[0]-P.B[0],P.A[1]-P.B[1])<1e-12;
+      [[joined?'A=B':'A', P.A, 'green', -15], ...(!joined?[['B',P.B,'amber',-15]]:[]), ['C', P.C, 'green', 16], ['D', P.D, 'amber', 16]].forEach(([nm, p, col, dy]) => b.point(p, { color: col, r: 5.5, label: nm, size: 14, dx: 0, dy, align: 'center' }));
     }
     const THIRD_TICKS = (n) => Array.from({ length: n }, (_, i) => ({ x: (i + 1) * PI / 4, label: piTxt(i + 1, 4) }));
     // 변형: p = 6 고정, m ∈ {2,3,4}. A(1, m/2) B(2, m/2) C(7, −m/2) D(4, −m/2): 사다리꼴 윗변 1, 아랫변 3, 높이 m
@@ -2097,15 +2116,16 @@ function htmlApprox(){
     }
     function draw7(b, s, v, labx) {
       hideOverlays();
-      const tab = labx ? labx.tab : 'explore';
+      const tab = tabOf(labx);
       if (tab === 'explore') {
         useBox(b, TW_BOX);
         const k = s.twk, Pt = twoPts(k);
         drawTwo(b, {
           sx: 1, sy: 1, k, x1: 4.9, ytop: 1.74, grid: s.grid, gridStep: 0.5, ticks: THIRD_TICKS(6).filter((q) => q.x < 4.75),
-          topLabel: 'y = k', botLabel: 'y = −k', pts: Pt, fill: true, sym: PI / 4, symLabel: 'x = π/4', mid: true,
-          dimCD: 'CD = π/2', fnTags: { f: [PI / 2, 1], g: [0.22, 1] }
+          topLabel:'y = k',botLabel:'y = −k',pts:Pt,outline:true,fill:level(s)>=3,sym:level(s)>=1?PI/4:null,symLabel:'x = π/4',mid:level(s)>=1,
+          dimCD:level(s)>=2?'CD = π/2':null,height:level(s)>=3, fnTags: { f: [PI / 2, 1], g: [0.22, 1] }
         });
+        b.handle('height7',[4.65,k],{color:'rose',r:7,label:'k',dx:0,dy:-18,align:'center',ariaLabel:'두 평행선의 높이 k',drag:w=>{s.twk=clampX(w.y,.1,Math.SQRT1_2);}});
         return;
       }
       const V = var7.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3), m = V.m, h = V.h;
@@ -2131,9 +2151,10 @@ function htmlApprox(){
         enter: (s) => { s.twk = 0.5; },
         controls: ['twk'],
         presets: () => [
-          { group: '평행선의 높이 k', label: '$k=\\dfrac12$', set: { twk: 0.5 }, ms: 400, on: (st) => Math.abs(st.twk - 0.5) < 0.004 },
-          { group: '평행선의 높이 k', label: '$k=0.3$', set: { twk: 0.3 }, ms: 400, on: (st) => Math.abs(st.twk - 0.3) < 0.004 },
-          { group: '평행선의 높이 k', label: '$k=0.7$', set: { twk: 0.7 }, ms: 400, on: (st) => Math.abs(st.twk - 0.7) < 0.004 }
+          { group: '평행선의 높이 k', label: '$k=\\dfrac12$', set: { twk: 0.5 }, ms: 400, on: (st) => nearExact(st.twk,.5) },
+          { group: '평행선의 높이 k', label: '$k=0.3$', set: { twk: 0.3 }, ms: 400, on: (st) => nearExact(st.twk,.3) },
+          { group: '평행선의 높이 k', label: '$k=0.7$', set: { twk: 0.7 }, ms: 400, on: (st) => nearExact(st.twk,.7) },
+          { group:'경계 확인',label:'$k=\\frac{\\sqrt2}{2}$ · A=B',set:{twk:Math.SQRT1_2},on:st=>nearExact(st.twk,Math.SQRT1_2) }
         ],
         steps: () => steps7(var7.cur()),
         reviewTop: reviewTopOf(() => text7(var7.cur())),
@@ -2145,18 +2166,18 @@ function htmlApprox(){
           quick: () => ({ steps: '<strong class="text-amber-300">cos 곡선은 sin 곡선을 왼쪽으로 주기의 4분의 1만큼 옮긴 것(여기서는 3)</strong>이라 같은 높이의 두 교점 사이의 거리가 일정합니다. 위쪽은 두 곡선의 대칭축(교점의 x좌표)을 기준으로 거울상입니다.', highlight: '교점 좌표를 하나하나 풀기 전에 "같은 높이에서 f와 g의 교점 사이 거리가 일정한가?"를 먼저 물으세요. 일정하면 좌표를 구하지 않고 길이만 씁니다.' })
         },
         view: (s, l) => {
-          const tab = l ? l.tab : 'explore';
+          const tab = tabOf(l);
           if (tab !== 'explore') return { chips: [{ tex: `f(x)=${var7.cur().m}\\sin\\dfrac{\\pi x}{6}`, color: 'green' }, { tex: `g(x)=${var7.cur().m}\\cos\\dfrac{\\pi x}{6}`, color: 'amber' }] };
           const k = s.twk, Pt = twoPts(k), AB = PI / 2 - 2 * Pt.al;
           return {
             chips: [{ tex: 'f(x)=\\sin x', color: 'green' }, { tex: 'g(x)=\\cos x', color: 'amber' }],
-            status: { tone: 'info', text: `α = ${angTxt(Pt.al)} · 사다리꼴 넓이 ${num2((PI - 2 * Pt.al) * k)}` },
+            status: { tone: 'info', text: `α = ${angTxt(Pt.al)} · ${nearExact(k,Math.SQRT1_2)?'삼각형으로 겹친 넓이':'사다리꼴 넓이'} ≈ ${num2((PI-2*Pt.al)*k)}` },
             readouts: [
               { label: 'α ($\\sin\\alpha=k$)', value: angTxt(Pt.al), color: 'green' },
-              { label: '윗변 AB = π/2 − 2α', value: num2(AB), color: 'sky', note: 'x = π/4에 대칭' },
-              { label: '아랫변 CD', value: num2(PI / 2), color: 'sky', note: 'k가 변해도 π/2로 일정' },
-              { label: '높이 2k', value: num2(2 * k), color: 'rose' },
-              { label: '넓이 $(\\pi-2\\alpha)k$', value: num2((PI - 2 * Pt.al) * k), color: 'sky', wide: true }
+              { label: '윗변 AB = π/2 − 2α', value: '≈ '+num2(AB), color: 'sky', note: 'x = π/4에 대칭' },
+              { label: '아랫변 CD', value: '≈ '+num2(PI / 2), color: 'sky', note: 'k가 변해도 π/2로 일정' },
+              { label: '높이 2k', value: '≈ '+num2(2 * k), color: 'rose' },
+              { label: '넓이 $(\\pi-2\\alpha)k$', value: '≈ '+num2((PI - 2 * Pt.al) * k), color: 'sky', wide: true }
             ],
             notes: '<b>탐구 참고</b> · $k=\\dfrac12$이면 $\\alpha=\\dfrac{\\pi}{6}$, 윗변 $\\dfrac{\\pi}{6}$, 아랫변 $\\dfrac{\\pi}{2}$, 높이 1이라 넓이가 $\\dfrac{\\pi}{3}$입니다. k를 키우면 윗변이 줄어 $k=\\dfrac{\\sqrt2}{2}$에서 A와 B가 한 점(두 곡선의 교점)으로 모입니다.'
           };
@@ -2170,21 +2191,21 @@ function htmlApprox(){
        ==================================================================== */
     const RS_BOX = { x: [-0.62, 7.75], y: [-1.78, 2.0] };
     function rootsOf(fn, t) {                      // 0 ≤ x < 2π 에서 fn x = t 의 서로 다른 근(작은 것부터)
-      if (Math.abs(t) > 1 + 1e-9) return [];
+      if (Math.abs(t) > 1) return [];
       t = clampX(t, -1, 1);
       const a = fn === 'sin' ? Math.asin(t) : Math.acos(t), raw = fn === 'sin' ? [a, PI - a] : [a, TAU - a], out = [];
-      raw.forEach((x) => { x = ((x % TAU) + TAU) % TAU; if (x > TAU - 1e-9) x = 0; if (!out.some((q) => Math.abs(q - x) < 1e-7)) out.push(x); });
+      raw.forEach((x) => { x = ((x % TAU) + TAU) % TAU; if (nearExact(x,TAU)) x=0; if (!out.some((q) => nearExact(q,x))) out.push(x); });
       return out.sort((p, q) => p - q);
     }
     const SPECIAL_T = [0, 0.5, -0.5, Math.SQRT1_2, -Math.SQRT1_2, Math.sqrt(3) / 2, -Math.sqrt(3) / 2, 1, -1];
-    const snapT = (t) => { const q = SPECIAL_T.find((v) => Math.abs(v - t) < 0.014); return q === undefined ? t : q; };
-    const tTxt = (t) => { const q = [[0, '0'], [0.5, '1/2'], [-0.5, '−1/2'], [Math.SQRT1_2, '√2/2'], [-Math.SQRT1_2, '−√2/2'], [Math.sqrt(3) / 2, '√3/2'], [-Math.sqrt(3) / 2, '−√3/2'], [1, '1'], [-1, '−1']].find((e) => Math.abs(e[0] - t) < 1e-9); return q ? q[1] : num(t); };
-    const rTxt = (x) => { const k = Math.round(x / (PI / 12)); return Math.abs(x - k * PI / 12) < 1e-6 ? piTxt(k, 12) : num(x); };
-    const rTex = (x) => { const k = Math.round(x / (PI / 12)); return Math.abs(x - k * PI / 12) < 1e-6 ? piTex(k, 12) : num(x); };
-    const sumTex = (xs) => { const S = xs.reduce((p, q) => p + q, 0), k = Math.round(S / (PI / 12)); return Math.abs(S - k * PI / 12) < 1e-6 ? piTex(k, 12) : num(S); };
+    const snapT = (t) => { const q = SPECIAL_T.find((v) => nearExact(v,t)); return q === undefined ? t : q; };
+    const tTxt = (t) => { const q = [[0, '0'], [0.5, '1/2'], [-0.5, '−1/2'], [Math.SQRT1_2, '√2/2'], [-Math.SQRT1_2, '−√2/2'], [Math.sqrt(3) / 2, '√3/2'], [-Math.sqrt(3) / 2, '−√3/2'], [1, '1'], [-1, '−1']].find((e) => nearExact(e[0],t)); return q ? q[1] : `≈ ${Number(t.toFixed(4))}`; };
+    const rTxt = (x) => { const k = Math.round(x / (PI / 12)); return nearExact(x,k*PI/12) ? piTxt(k, 12) : `≈ ${num(x)}`; };
+    const rTex = (x) => { const k = Math.round(x / (PI / 12)); return nearExact(x,k*PI/12) ? piTex(k, 12) : `\\approx ${num(x)}`; };
+    const sumTex = (xs) => { const S = xs.reduce((p, q) => p + q, 0), k = Math.round(S / (PI / 12)); return nearExact(S,k*PI/12) ? piTex(k, 12) : `\\approx ${num(S)}`; };
     function allRoots(t) {
-      const rs = rootsOf('sin', t), rc = rootsOf('cos', t), both = rs.filter((x) => rc.some((y) => Math.abs(x - y) < 1e-7));
-      const dist = rs.concat(rc.filter((y) => !rs.some((x) => Math.abs(x - y) < 1e-7))).sort((p, q) => p - q);
+      const rs = rootsOf('sin', t), rc = rootsOf('cos', t), both = rs.filter((x) => rc.some((y) => nearExact(x,y)));
+      const dist = rs.concat(rc.filter((y) => !rs.some((x) => nearExact(x,y)))).sort((p, q) => p - q);
       return { rs, rc, both, dist, sum: dist.reduce((p, q) => p + q, 0) };
     }
     // o: {t, grid, sinRoots, cosRoots, axes, lineLabel, handle, curveTags, extraLines}
@@ -2204,10 +2225,10 @@ function htmlApprox(){
       const R = o.roots ? allRoots(t) : null;
       if (o.axes && R) {
         const sx = t >= 0 ? PI / 2 : 3 * PI / 2;
-        b.seg([sx, -1.4], [sx, TOP - 0.1], { color: 'green', width: 1.6, dash: [8, 5] });
-        T(b, [sx, TOP + 0.04], 'x = ' + piTxt(t >= 0 ? 1 : 3, 2), { color: 'green', size: 12.5, weight: 900 });
-        b.seg([PI, -1.4], [PI, TOP - 0.1], { color: 'amber', width: 1.6, dash: [8, 5] });
-        T(b, [PI, TOP + 0.04], 'x = π', { color: 'amber', size: 12.5, weight: 900 });
+        if(o.sinRoots&&R.rs.length===2){b.seg([sx, -1.4], [sx, TOP - 0.1], { color: 'green', width: 1.6, dash: [8, 5] });
+        T(b, [sx, TOP + 0.04], 'x = ' + piTxt(t >= 0 ? 1 : 3, 2), { color: 'green', size: 12.5, weight: 900 });}
+        if(o.cosRoots&&R.rc.length===2){b.seg([PI, -1.4], [PI, TOP - 0.1], { color: 'amber', width: 1.6, dash: [8, 5] });
+        T(b, [PI, TOP + 0.04], 'x = π', { color: 'amber', size: 12.5, weight: 900 });}
       }
       b.plot(Math.sin, { from: 0, to: TAU, color: 'green', width: 3.2 });
       b.plot(Math.cos, { from: 0, to: TAU, color: 'amber', width: 3.2 });
@@ -2244,8 +2265,8 @@ function htmlApprox(){
     });
     const tTex = (t) => (Math.abs(t - 0.5) < 1e-9 ? '\\dfrac12' : Math.abs(t + 0.5) < 1e-9 ? '-\\dfrac12' : Math.abs(t - Math.sqrt(3) / 2) < 1e-9 ? '\\dfrac{\\sqrt3}{2}' : Math.abs(t + Math.sqrt(3) / 2) < 1e-9 ? '-\\dfrac{\\sqrt3}{2}' : String(t).replace('-0', '0'));
     const text8 = (v) => (v.type === 'A'
-      ? `${tex('t=' + tTex(v.t))}일 때, ${tex('0\\le x<2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 모든 실근의 합이 ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`
-      : `${tex('0\\le x<2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 실근의 개수가 3이 되도록 하는 실수 ${tex('t')}의 값은 두 개이다. 각각의 ${tex('t')}에 대하여 이 방정식의 모든 실근의 합을 ${tex('S')}라 할 때, ${v.agg === 'max' ? 'S의 최댓값이' : v.agg === 'min' ? 'S의 최솟값이' : '두 S의 값의 합이'} ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`);
+      ? `${tex('t=' + tTex(v.t))}일 때, ${tex('0\\le x\\lt 2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 모든 실근의 합이 ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`
+      : `${tex('0\\le x\\lt 2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 실근의 개수가 3이 되도록 하는 실수 ${tex('t')}의 값은 두 개이다. 각각의 ${tex('t')}에 대하여 이 방정식의 모든 실근의 합을 ${tex('S')}라 할 때, ${v.agg === 'max' ? 'S의 최댓값이' : v.agg === 'min' ? 'S의 최솟값이' : '두 S의 값의 합이'} ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`);
     function steps8(v) {
       const tex = (x) => '$' + x + '$';     // 단계 글은 셸이 $…$ 를 수식으로 바꿉니다(미리 만든 수식 HTML을 넣으면 그대로 글자로 보임)
       if (v.type === 'A') {
@@ -2260,7 +2281,7 @@ function htmlApprox(){
         ];
       }
       return [
-        `${tex('\\sin x=\\cos x')}인 곳(두 곡선의 교점) ${tex('x=\\dfrac{\\pi}{4},\\ \\dfrac{5\\pi}{4}')}에서 ${tex('y=\\dfrac{\\sqrt2}{2},\\ -\\dfrac{\\sqrt2}{2}')}입니다. 두 식이 같은 근을 가져 근이 3개가 되는 것은 ${tex('t=\\pm\\dfrac{\\sqrt2}{2}')}일 때뿐입니다(그 밖의 t는 4개 또는 2개).`,
+        `${tex('\\sin x=\\cos x')}인 곳(두 곡선의 교점) ${tex('x=\\dfrac{\\pi}{4},\\ \\dfrac{5\\pi}{4}')}에서 ${tex('y=\\dfrac{\\sqrt2}{2},\\ -\\dfrac{\\sqrt2}{2}')}입니다. 두 식이 같은 근을 가져 근이 3개가 되는 것은 ${tex('t=\\pm\\dfrac{\\sqrt2}{2}')}일 때뿐입니다(나머지 $|t|\\lt1$에서는 4개, $t=\\pm1$에서는 2개, $|t|\\gt1$에서는 0개).`,
         `${tex('t=\\dfrac{\\sqrt2}{2}')}: ${tex('\\sin x=t')}의 근 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{3\\pi}{4}')}, ${tex('\\cos x=t')}의 근 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{7\\pi}{4}')}. 서로 다른 근은 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{3\\pi}{4},\\ \\dfrac{7\\pi}{4}')}이므로 ${tex('S=\\dfrac{11}{4}\\pi')}.`,
         `${tex('t=-\\dfrac{\\sqrt2}{2}')}: ${tex('\\sin x=t')}의 근 ${tex('\\dfrac{5\\pi}{4},\\ \\dfrac{7\\pi}{4}')}, ${tex('\\cos x=t')}의 근 ${tex('\\dfrac{3\\pi}{4},\\ \\dfrac{5\\pi}{4}')}. 서로 다른 근은 ${tex('\\dfrac{3\\pi}{4},\\ \\dfrac{5\\pi}{4},\\ \\dfrac{7\\pi}{4}')}이므로 ${tex('S=\\dfrac{15}{4}\\pi')}. ${v.agg === 'max' ? `최댓값 ${tex('\\dfrac{15}{4}\\pi')}, ${tex('p+q=19')}` : v.agg === 'min' ? `최솟값 ${tex('\\dfrac{11}{4}\\pi')}, ${tex('p+q=15')}` : `합 ${tex('\\dfrac{11}{4}\\pi+\\dfrac{15}{4}\\pi=\\dfrac{13}{2}\\pi')}, ${tex('p+q=15')}`}`
       ];
@@ -2268,10 +2289,10 @@ function htmlApprox(){
     function draw8(b, s, v, labx) {
       hideOverlays();
       useBox(b, RS_BOX);
-      const tab = labx ? labx.tab : 'explore';
+      const tab = tabOf(labx);
       if (tab === 'explore') {
         drawRoots(b, {
-          t: s.rst, grid: s.grid, roots: true, sinRoots: true, cosRoots: true, axes: true, lines: [{ t: s.rst }],
+          t:s.rst,grid:s.grid,roots:level(s)>=1,sinRoots:level(s)>=1,cosRoots:level(s)>=2,axes:level(s)>=1, lines: [{ t: s.rst }],
           handle: (w) => { s.rst = snapT(clampX(w.y, -1.15, 1.15)); }
         });
         return;
@@ -2296,7 +2317,7 @@ function htmlApprox(){
         focus: RS_BOX,
         enter: (s) => { s.rst = 0.5; },
         controls: ['rst'],
-        presets: () => [[0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => Math.abs(st.rst - t) < 0.003 })),
+        presets: () => [[0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),
         steps: () => steps8(var8.cur()),
         reviewTop: reviewTopOf(() => text8(var8.cur())),
         vary: var8,
@@ -2307,7 +2328,7 @@ function htmlApprox(){
           quick: () => ({ steps: '<strong class="text-amber-300">sin x = t의 두 근은 x = π/2(t&lt;0이면 3π/2)에 대칭, cos x = t의 두 근은 x = π에 대칭</strong>이므로 합은 곧바로 π 또는 3π, 2π입니다. 겹친 근만 빼면 끝입니다.', highlight: 't의 부호부터 보세요. t&gt;0이면 3π, t&lt;0이면 5π(겹침이 없을 때). 겹침은 두 곡선이 교점을 갖는 높이 ±√2/2에서만 생깁니다.' })
         },
         view: (s, l) => {
-          const tab = l ? l.tab : 'explore';
+          const tab = tabOf(l);
           if (tab !== 'explore') return { chips: [{ tex: 'y=\\sin x', color: 'green' }, { tex: 'y=\\cos x', color: 'amber' }] };
           const t = s.rst, R = allRoots(t), cnt = R.dist.length;
           const list = (xs) => (xs.length ? xs.map(rTxt).join(', ') : '없음');
@@ -2329,7 +2350,44 @@ function htmlApprox(){
         draw: draw8
       });
     }
-    return { scenes: [scene5(), scene6(), scene7(), scene8()], piTxt, snapT };
+    function liveSteps(id,s){
+      if(id==='sinus'){
+        const E=extOn(s.sna,s.snb,s.snc,s.snt);
+        return [
+          `최고 높이와 최저 높이의 한가운데가 중심선입니다. 현재 $c=${s.snc}$, 두 높이는 $c+a=${s.snc+s.sna}$와 $c-a=${s.snc-s.sna}$입니다.`,
+          `중심선부터 최고점까지의 길이가 $a=${s.sna}$, 한 주기의 가로 길이는 $2\\pi/${s.snb}$입니다. 노란 구간 $[0,t]$에서는 양 끝과 그 안의 꼭짓점만 후보로 표시합니다.`,
+          `현재 $t\\approx${s.snt.toFixed(3)}$에서 후보를 비교하면 최댓값 $\\approx${E.M.toFixed(4)}$, 최솟값 $\\approx${E.m.toFixed(4)}$입니다. 꼭짓점이 구간에 들어오기 전에는 전체 그래프의 최대·최소를 쓰면 안 됩니다.`
+        ];
+      }
+      if(id==='conv'){
+        const md=CVM[s.cvm],Q=md.q(Math.cos(s.cvt),Math.sin(s.cvt));
+        return [
+          `현재 변환은 $${md.lab}$입니다. 원 위의 P를 ${md.who}하면 Q가 됩니다. 점선과 직각 표시로 이동 방법을 확인합니다.`,
+          `P의 좌표를 $(\\cos\\theta,\\sin\\theta)$라 하면 Q의 좌표는 $(${md.qt[0]},${md.qt[1]})$입니다. 가로 좌표가 cos, 세로 좌표가 sin입니다.`,
+          nearExact(Q[0],0)?'현재 Q의 x좌표가 0이므로 변환된 각의 tan은 정의되지 않습니다. sin과 cos는 Q의 좌표로 그대로 읽습니다.':`변환된 각의 tan은 Q의 y좌표를 x좌표로 나눈 값 $\\approx${(Q[1]/Q[0]).toFixed(4)}$입니다. $\\pi/2\\pm\\theta$에서는 $\\sin\\theta\\ne0$이 조건이고, $1/\\tan\\theta$라는 표현은 $\\cos\\theta\\ne0$도 필요합니다.`
+        ];
+      }
+      if(id==='twocurve'){
+        const a=Math.asin(s.twk),AB=PI/2-2*a;
+        return [
+          `위쪽 첫 교점은 $A(\\alpha,k)$, $B(\\pi/2-\\alpha,k)$입니다. $\\alpha=\\arcsin k$이므로 두 점은 $x=\\pi/4$에 대칭입니다.`,
+          `아래쪽 첫 교점은 $C(\\pi+\\alpha,-k)$, $D(\\pi/2+\\alpha,-k)$입니다. 같은 가지끼리 비교하면 $CD=\\pi/2$로 일정합니다. 위쪽 길이는 $AB=\\pi/2-2\\alpha$로 변합니다.`,
+          `높이는 $2k$입니다. $0\\lt k\\lt\\sqrt2/2$에서 넓이는 $\\tfrac12(AB+CD)2k=(\\pi-2\\alpha)k\\approx${((PI-2*a)*s.twk).toFixed(4)}$. ${nearExact(AB,0)?'현재 경계 k=√2/2에서 A=B가 되어 삼각형으로 겹칩니다.':'현재 A와 B는 서로 다른 점입니다.'}`
+        ];
+      }
+      const t=s.rst,R=allRoots(t),ss=xs=>sumTex(xs);
+      return [
+        `$\\sin x=t$의 현재 근은 ${R.rs.length}개입니다. ${R.rs.length===2?'서로 다른 두 근을 대칭축으로 짝지어 합을 구합니다.':R.rs.length===1?'접점에서는 두 근이 한 점으로 합쳐져 하나만 셉니다.':'|t|>1이므로 사인곡선과 만나지 않습니다.'}`,
+        `$\\cos x=t$의 현재 근은 ${R.rc.length}개입니다. ${R.rc.length===2?'두 근은 x=π에 대칭입니다.':R.rc.length===1?'하나의 접점만 셉니다. x=2π는 정의역에서 제외됩니다.':'|t|>1이므로 코사인곡선과 만나지 않습니다.'} 겹치는 근은 ${R.both.length}개입니다.`,
+        `합집합에서 중복을 한 번 뺍니다. 개수는 $${R.rs.length}+${R.rc.length}-${R.both.length}=${R.dist.length}$, 근의 합은 $(${ss(R.rs)})+(${ss(R.rc)})-(${ss(R.both)})=${ss(R.dist)}$입니다. $t=\\pm1$의 한 점짜리 해도 이 계산에 포함됩니다.`
+      ];
+    }
+    const scenes=[scene5(),scene6(),scene7(),scene8()];
+    scenes.find(x=>x.id==='twocurve').guide='높이 k를 바꾸며 위쪽 A,B의 대칭과 아래쪽 C,D의 평행이동 대응을 비교하세요. x≥0에서 각 곡선과 각 직선의 첫 교점만 선택합니다. 경계 칩에서는 A와 B가 합쳐지는 모습도 확인할 수 있습니다.';
+    scenes.find(x=>x.id==='rootsum').guide='수평선 y=t를 움직이며 교점의 생성·합침·소멸을 관찰하세요. 보조선 1단계는 sin의 근, 2단계는 cos의 근, 3단계는 중복을 제거한 개수와 합입니다. t=±1의 접점과 0≤x<2π의 끝점도 비교합니다.';
+    scenes.find(x=>x.id==='rootsum').solution.quick=()=>({steps:'각 식의 서로 다른 근을 먼저 셉니다. |t|<1에서는 sin의 두 근의 합은 t≥0일 때 π, t<0일 때 3π이고 cos의 두 근의 합은 2π입니다. 공통근의 합을 한 번 빼면 됩니다. t=1에서는 근이 0, π/2이므로 합 π/2, t=−1에서는 π, 3π/2이므로 합 5π/2입니다. |t|>1에서는 근이 없습니다.',highlight:'접점의 한 근을 대칭인 두 근으로 세지 않습니다. 합집합의 개수와 합에는 같은 중복 제거 원리를 씁니다.'});
+    scenes.find(x=>x.id==='twocurve').solution.quick=()=>({steps:'주기가 12인 두 곡선에서 g(x)=f(x+3)입니다. 아래쪽에서 선택한 첫 교점끼리는 같은 가지에 대응하므로 CD=3입니다. 위쪽 두 점은 x=3/2에 대칭이고, 주어진 높이가 진폭의 절반이므로 A의 x좌표는 1, B는 2입니다. 이 길이와 높이만으로 넓이를 구합니다.',highlight:'평행이동만으로 임의의 두 교점 사이 거리가 일정해지는 것은 아닙니다. 선택한 교점의 가지가 서로 대응하는지 먼저 확인합니다.'});
+    return {scenes,piTxt,snapT,extOn,twoPts,allRoots,rootsOf,CVM,steps5,steps6,steps7,steps8,var5,varCv,var7,var8,liveSteps};
   })();
   const EXT_SCENES = EXT.scenes, EXT_SNAP = EXT.snapT, piTextOf = (v) => EXT.piTxt(Math.round(v / (PI / 12)), 12);
 
@@ -2358,11 +2416,34 @@ function htmlApprox(){
     }
   ];
 
+  function basicSteps(s, act) {
+    const keep=S;S=s;
+    try {
+      const k=texFromDisplay('k '+valRelation(s.k)),fs=active(),dom=s.domain==='one'?'[0,2\\pi)':texFromDisplay(`[${boundText(s.x0)},${boundText(s.x1)}]`);
+      if(act==='motion')return [
+        '반지름이 1인 원에서 P를 축에 정사영합니다. 가로 좌표가 cos θ, 세로 좌표가 sin θ입니다. 선분의 길이와 좌표의 부호를 구분합니다.',
+        `현재 각 $\\theta${curExact()?'='+texFromDisplay(curExact().angle):'\\approx'+s.theta.toFixed(3)}$에서 P의 두 좌표를 읽고, 같은 각의 그래프 높이에 대응시킵니다. 각도가 이동하는 중에는 도착점의 값을 쓰지 않습니다.`,
+        'x=1 접선과 동경의 교점까지 닮음을 적용하면 그 높이는 sin θ / cos θ입니다. cos θ=0인 각에서만 tan θ가 정의되지 않습니다. 화면을 벗어난 큰 유한값과 구별합니다.'
+      ];
+      if(act==='equation')return [
+        `먼저 현재 선택한 ${fs.join(', ')||'함수'}와 수평선 $y=k$ (현재 $${k}$)의 교점을 표시합니다. sin·cos의 값의 범위는 $[-1,1]$입니다.`,
+        '단위원에서는 sin은 y좌표, cos는 x좌표가 k인 점을 찾습니다. tan은 x=1 접선의 T(1,k)를 지나는 동경입니다. 대응하는 각을 그래프의 가로 좌표로 읽습니다.',
+        `현재 정의역 $${dom}$에서 ${fs.map(f=>`${f}: ${roots(f,s.k,...domainOf()).length}개`).join(', ')||'함수를 선택하세요'}. 한 바퀴 구간에서는 2π를 제외하고, 현재 화면 구간에서는 양 끝을 포함합니다. 선택한 함수들의 해와 공통인 해를 구분합니다.`
+      ];
+      return [
+        `먼저 $${fs.join(', ')||'f'}$와 $y=k$ (현재 $${k}$)의 경계를 찾습니다. 현재 부등호 ${OPSYM[s.op]}는 ${s.op==='gt'||s.op==='lt'?'등호를 포함하지 않으므로 경계점을 비웁니다':'등호를 포함하므로 경계점을 채웁니다'}. tan의 점근선은 항상 제외합니다.`,
+        `그래프가 기준선 ${s.op==='gt'||s.op==='ge'?'위':'아래'}에 있는 구간을 색칠합니다. 그 구간에 대응하는 단위원의 호도 같은 색입니다. 경계 사이의 대표점으로 부등호를 검산합니다.`,
+        `현재 정의역 $${dom}$와 교집합을 취합니다. $k=\\pm1$에서는 접점만 남거나 한 점만 빠질 수 있으므로, 열린 구간과 한 점짜리 집합을 구분합니다.`
+      ];
+    } finally {S=keep;}
+  }
+
   function sceneOf(sd) {
     const act = sd.activity;
     return {
       id: sd.id, title: sd.title, short: sd.short, question: sd.question, guide: sd.guide,
-      reviewTab: true, notesTitle: '탐구 참고',
+      reviewTab: true, notesTitle: '탐구 참고', startStep: 0,
+      steps: (s) => basicSteps(s,act),
       focus: { x: [-1, 1], y: [-1, 1] },
       enter: (s) => {
         s.activity = act; s.revealedRoot = null; s.drag = null; s.anim = null;
@@ -2387,7 +2468,7 @@ function htmlApprox(){
         add('각도 탐구 방식', '연속 탐구', (st) => st.mode === 'continuous', () => setMode('continuous'));
         if (s.mode === 'special') SP.forEach((a, i) => add('특수각 (눌러서 이동)', '$' + texFromDisplay(a[0]) + '$' + (s.showDeg ? ' · ' + a[2] + '°' : ''), (st) => st.mode === 'special' && st.si === i, () => selectSpecial(i)));
         if (act !== 'motion') {
-          K.forEach((kv, i) => add('k 값 (자주 쓰는 값)', '$' + texFromDisplay(kv[1]) + '$', (st) => Math.abs(st.k - kv[0]) < 1e-6, () => setK(kv[0])));
+          K.forEach((kv, i) => add('k 값 (자주 쓰는 값)', '$' + texFromDisplay(kv[1]) + '$', (st) => nearExact(st.k,kv[0]), () => setK(kv[0])));
           add('해의 정의역', '[0, 2π)', (st) => st.domain === 'one', () => { S.domain = 'one'; S.revealedRoot = null; redraw(); });
           add('해의 정의역', '현재 보이는 범위', (st) => st.domain === 'view', () => { S.domain = 'view'; S.revealedRoot = null; redraw(); });
           if (act === 'inequality') Object.keys(OPSYM).forEach((o) => add('부등호', OPSYM[o], (st) => st.op === o, () => { S.op = o; redraw(); }));
@@ -2396,10 +2477,10 @@ function htmlApprox(){
         add('그래프 함수 (각각 독립 선택)', 'cos 코사인', (st) => st.fn.cos, () => toggleFn('cos'));
         add('그래프 함수 (각각 독립 선택)', 'tan 탄젠트', (st) => st.fn.tan, () => toggleFn('tan'));
         if (act !== 'motion') add('공통인 해', '공통인 해도 함께 표시', (st) => st.common, () => { S.common = !S.common; redraw(); });
-        if (act === 'equation') {
+        if (act === 'equation' && level(s)>=3) {
           const [lo, hi] = S.domain === 'one' ? [0, TAU] : [S.x0, S.x1];
           for (const f of active()) for (const r of roots(f, s.k, lo, hi)) {
-            add('해 확인 (누르면 단위원과 그래프에 표시)', f + ' · $' + texFromDisplay(piFormatInfo(r).text) + '$' + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
+            add('해 확인 (누르면 단위원과 그래프에 표시)', f + ' · $' + texFromDisplay(boundText(r)) + '$' + (s.showDeg ? ' (' + degText(r) + ')' : ''), (st) => st.revealedRoot !== null && Math.abs(st.revealedRoot - r) < 1e-6, () => selectRootAngle(r));
           }
         }
         add('표시 설정', '각도(°) 병기', (st) => st.showDeg, () => { S.showDeg = !S.showDeg; redraw(); });
@@ -2444,17 +2525,17 @@ function htmlApprox(){
           const q = quadrantInfo(s.theta);
           const fs = active();
           return {
-            chips: NARROW.matches ? [] : [
+            chips: NARROW.matches || level(s)===0 ? [] : [
               { k: q.qName, tex: '\\cos\\ ' + (q.cos === '−' ? '-' : q.cos === '+' ? '+' : q.cos), color: CN.cos },
               { tex: '\\sin\\ ' + (q.sin === '−' ? '-' : q.sin === '+' ? '+' : q.sin), color: CN.sin },
               { tex: '\\tan\\ ' + (q.tan === '−' ? '-' : q.tan === '+' ? '+' : q.tan === '정의 안 됨' ? '\\text{없음}' : q.tan), color: CN.tan }
             ],
-            status: { tone: 'info', text: captionText() },
+            status: { tone: 'info', text: level(s)>=2?captionText():act==='motion'?'현재 각도에서 P와 그래프의 대응을 관찰하세요.':'현재 기준선과 그래프를 비교하고 단계를 열어 보세요.' },
             alert: fs.length ? null : { tone: 'warn', text: '그래프 함수를 하나 이상 선택하세요.' },
-            readouts: act === 'motion' ? motionReadouts() : solveReadouts(),
-            formula: '<div class="ucl-res"><h4>' + resultTitle() + '</h4><p>' + captionHtml() + '</p>' +
-              (act === 'motion' ? '<div class="ucl-card">' + (s.mode === 'special' ? htmlExact() : htmlApprox()) + '</div>' : '') +
-              '<div>' + rootsHtml() + '</div></div>',
+            readouts: level(s)>=3?(act==='motion'?motionReadouts():solveReadouts()):level(s)===2&&act==='motion'?motionReadouts().filter(x=>!x.label.includes('탄젠트')):[],
+            formula: level(s)>=3?'<div class="ucl-res"><h4>' + resultTitle() + '</h4><p>' + captionHtml() + '</p>' +
+              (act === 'motion' ? '<div class="ucl-card">' + (s.mode === 'special' && currentSpecialDisplay() ? htmlExact() : htmlApprox()) + '</div>' : '') +
+              '<div>' + rootsHtml() + '</div></div>':'',
             notes: act === 'equation'
               ? '<b>탐구 참고</b> · 탐구 탭의 <b>해 확인</b> 칩을 누르면 단위원과 그래프 양쪽에서 해당 해의 위치를 동시에 가리킵니다. 여러 함수를 켜도 해는 함수별 색으로 따로 표시되며, 자동으로 공통인 해라고 가정하지 않습니다.'
               : '<b>탐구 참고</b> · 여러 함수를 켜도 해는 함수별 색으로 따로 표시됩니다. 자동으로 공통인 해라고 가정하지 않으며, <b>공통인 해도 함께 표시</b>를 켜면 선택한 함수를 모두 만족하는 각 θ를 따로 보여 줍니다.'
@@ -2467,6 +2548,7 @@ function htmlApprox(){
 
   APLab.createLab({
     id: 'alg-unit-circle',
+    stagedReveal: true,
     title: '단위원과 삼각함수의 그래프',
     courseName: '대수',
     unit: 'Ⅱ. 삼각함수 · 단위원 연동',
@@ -2482,17 +2564,17 @@ function htmlApprox(){
       },
       k: {
         value: .5, min: -2.5, max: 2.5, step: .001, color: 'amber', label: '수평선 높이 y = k', hint: '그래프의 수평선을 끌어도 됩니다',
-        format: (v) => 'k = ' + valText(v),
+        format: (v) => 'k ' + valRelation(v),
         onInput: (s) => { s.revealedRoot = null; }
       },
       /* 기출 확장 장면 5~8의 조작 막대 (장면 1~4는 쓰지 않음) */
       sna: { value: 2, min: .5, max: 2, step: .5, color: 'sky', label: '$a$ (진폭 · 높이)', hint: '그래프의 높이만 바뀝니다', format: (v) => 'a = ' + String(v).replace('-', '−') },
       snb: { value: 2, min: 1, max: 4, step: .5, color: 'violet', label: '$b$ (가로 폭 · 주기 $\\frac{2\\pi}{b}$)', hint: '가로로 압축될수록 주기가 짧아집니다', format: (v) => 'b = ' + String(v).replace('-', '−') },
       snc: { value: 1, min: -1, max: 1, step: .5, color: 'amber', label: '$c$ (위아래 이동)', hint: '중심선 $y=c$가 움직입니다', format: (v) => 'c = ' + String(v).replace('-', '−') },
-      snt: { value: 3 * PI / 4, min: .2, max: TAU - .1, step: .01, color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't = ' + (Math.abs(v / (PI / 12) - Math.round(v / (PI / 12))) < .02 ? piTextOf(v) : v.toFixed(2)) },
-      cvt: { value: PI / 3, min: 0, max: TAU - .001, step: .005, color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ = ' + Math.round(v * 180 / PI) + '°' },
-      twk: { value: .5, min: .1, max: .7, step: .005, color: 'rose', label: '평행선의 높이 $k$', hint: '$k=\\tfrac12$일 때 기출형', format: (v) => 'k = ' + v.toFixed(2), onInput: (s) => { if (Math.abs(s.twk - .5) < .012) s.twk = .5; } },
-      rst: { value: .5, min: -1.15, max: 1.15, step: .005, color: 'amber', label: '수평선 높이 $y=t$', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't = ' + v.toFixed(2).replace('-', '−'), onInput: (s) => { s.rst = EXT_SNAP(s.rst); } }
+      snt: { value: 3 * PI / 4, min: 0, max: TAU, step: 'any', color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't ' + (nearExact(v/(PI/12),Math.round(v/(PI/12))) ? '= '+piTextOf(v) : '≈ '+v.toFixed(3)) },
+      cvt: { value: PI / 3, min: 0, max: TAU - .001, step: 'any', color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ: '+degText(v) },
+      twk: { value: .5, min: .1, max: Math.SQRT1_2, step: 'any', color: 'rose', label: '평행선의 높이 $k$', hint: '$k=\\tfrac12$일 때 기출형', format: (v) => 'k ≈ ' + v.toFixed(4) },
+      rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't ≈ ' + v.toFixed(4).replace('-', '−') }
     },
     state: INIT,
     scenes: SCENES.map(sceneOf).concat(EXT_SCENES)

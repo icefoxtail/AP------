@@ -39,6 +39,55 @@ window.addEventListener('DOMContentLoaded', function () {
        - 무대 확대·이동은 셸의 기본 동작(휠·핀치·빈 곳 끌기)을 사용
        ========================================================================== */
 
+    const PI=Math.PI, TAU=2*PI;
+    const nearExact=(a,b)=>Math.abs(a-b)<=32*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
+    const tabOf=(lab)=>(lab||window.lab)?.tab||'explore';
+    const canonical=(x,values)=>values.find(y=>nearExact(x,y))??x;
+    const uniqueRoots=xs=>xs.sort((a,b)=>a-b).filter((x,i,a)=>!i||!nearExact(x,a[i-1]));
+    function sineRoots(y,closed=false){
+      if(y < -1 || y > 1)return [];
+      if(y===1)return [PI/2];if(y===-1)return [3*PI/2];
+      if(y===0)return closed?[0,PI,TAU]:[0,PI];
+      const a=Math.asin(y);return y>0?[a,PI-a]:[PI-a,TAU+a];
+    }
+    function foldedRoots(a,b,h,closed=false){
+      if(h<0)return [];
+      return uniqueRoots(sineRoots(canonical((h-b)/a,[-1,0,1]),closed).concat(h===0?[]:sineRoots(canonical((-h-b)/a,[-1,0,1]),closed)));
+    }
+    const circPoint=(R,a)=>({x:R*Math.cos(a),y:R*Math.sin(a)});
+    const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+    function partition(c,b,ratio,angle=2*PI/3){
+      const a=Math.sqrt(c*c+b*b-2*c*b*Math.cos(angle)),cosB=(a*a+c*c-b*b)/(2*a*c);
+      const B={x:-a/2,y:0},C={x:a/2,y:0},A={x:B.x+c*cosB,y:c*Math.sqrt(Math.max(0,1-cosB*cosB))},D={x:B.x+a*ratio,y:0};
+      const AD=distance(A,D),alpha=Math.acos(Math.max(-1,Math.min(1,((B.x-A.x)*(D.x-A.x)+(B.y-A.y)*(D.y-A.y))/(c*AD))));
+      return {a,A,B,C,D,AD,BD:a*ratio,DC:a*(1-ratio),alpha,beta:angle-alpha,area:a*A.y/2,area1:a*ratio*A.y/2,area2:a*(1-ratio)*A.y/2};
+    }
+    function currentModel(id,t){
+      if(id==='bas-1'){const g=TVG(id),r=(2+6*t)*g.f,l=g.P-2*r;return{...g,r,l,theta:l/r,area:r*l/2,max:g.P*g.P/16,optimal:nearExact(r,g.P/4)};}
+      if(id==='bas-2'){const theta=Math.asin(.6)+(t-.41)*1.20366;return{theta,x:Math.cos(theta),y:Math.sin(theta)};}
+      if(id==='bas-3'){const k=canonical(.15+.78*t,[.3,.5,Math.sqrt(3)/2]),a=Math.asin(k)/2;return{...TVG(id),k,xs:[a,PI/2-a,PI+a,3*PI/2-a]};}
+      if(id==='bas-4'){const h=canonical(4.5*t,[0,1,2,4]);return{h,roots:foldedRoots(3,-1,h)};}
+      if(id==='bas-5'){const h=canonical(-1+2*t,[-1,0,.5,1]);return{h,roots:sineRoots(h)};}
+      if(id==='bas-6'){const g=TVG(id);return{...g,atDiameter:nearExact(t,0),angle:PI/2-g.A+t*1.35};}
+      if(id==='bas-7'){
+        const R=3*Math.sqrt(34)/8,bc=2*Math.asin(3/(2*R)),ab=2*Math.asin(2/(2*R)),cd=2*Math.asin(4/(2*R));
+        const A=circPoint(R,bc+ab),B=circPoint(R,bc+t-.562),C=circPoint(R,0),D=circPoint(R,-cd);
+        return{R,A,B,C,D,AB:distance(A,B),BC:distance(B,C),condition:nearExact(t,.562)};
+      }
+      if(id==='bas-8'){const g=TVG(id),q=g.c/(g.c+g.b),ratio=q+(t-.5)*1.8*Math.min(q,1-q);return{...g,...partition(g.c,g.b,ratio),ratio,bisector:nearExact(t,.5)};}
+      if(id==='adv-1'){const theta=t*TAU,P=circPoint(1,theta),Q=circPoint(1,5*theta),area=Math.abs(P.x*Q.y-P.y*Q.x)/2;return{theta,P,Q,area,mirror:nearExact(P.x,Q.y)&&nearExact(P.y,Q.x),upper:P.y>P.x&&!nearExact(P.y,P.x),collinear:nearExact(area,0)};}
+      if(id==='adv-2'){const k=canonical(1+(Math.SQRT2-1)*t,[1,Math.sqrt(1.5),Math.SQRT2]),d=Math.sqrt(Math.max(0,2-k*k)),x=(k-d)/2,y=(k+d)/2;return{k,x,y,h:k/Math.SQRT2,chord:Math.SQRT2*d,area:k*d/2,equilateral:nearExact(k,Math.sqrt(1.5))};}
+      if(id==='adv-3'){const x1=.25+2.5*t,k=3*Math.sin(PI*x1/6),x2=6-x1;return{x1,x2,x3:6+x1,x4:12-x1,k,ratio:x2/x1,area:(x2-x1)*2*k};}
+      if(id==='adv-4'){const h=canonical(5.5*t,[0,1,2,5]);return{h,roots:foldedRoots(3,-2,h,true)};}
+      if(id==='adv-5'){const k=canonical(-1.2+2.4*t,[-1,0,.5,1]),moving=sineRoots(k),roots=uniqueRoots([PI/6,5*PI/6,...moving]);return{k,moving,roots,sum:roots.reduce((a,b)=>a+b,0)};}
+      if(id==='adv-6'){const R=2*Math.sqrt(3),A=circPoint(R,PI/2+(t-.5)*1.85),B={x:-3,y:-Math.sqrt(3)},C={x:3,y:-Math.sqrt(3)},h=A.y-B.y;return{A,B,C,R,h,AB:distance(A,B),AC:distance(A,C),area:3*h,maximum:nearExact(t,.5)};}
+      if(id==='adv-7'){
+        const R=Math.sqrt(19/3),aB=1.65,aA=aB+2*Math.asin(3/(2*R)),aC=aB-2*Math.asin(5/(2*R)),aD=aC-2*Math.asin(2/(2*R))+(t-.62)*.85;
+        const A=circPoint(R,aA),B=circPoint(R,aB),C=circPoint(R,aC),D=circPoint(R,aD),CD=distance(C,D),DA=distance(D,A);return{R,A,B,C,D,CD,DA,ratio:15/(CD*DA),condition:nearExact(t,.62)};
+      }
+      const q=partition(5,7,t,Math.acos((25+49-36)/70));return{...q,ratio:t,target:nearExact(t,1/3)};
+    }
+
     function gcd(a, b) {
       a = Math.abs(Math.round(a));
       b = Math.abs(Math.round(b));
@@ -47,22 +96,22 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function fmtPi(rad) {
-      if (Math.abs(rad) < 1e-3) return '0';
+      if (nearExact(rad,0)) return '0';
       const ratio = rad / Math.PI;
       const denom = 24;
       const num = Math.round(ratio * denom);
-      if (Math.abs(num / denom - ratio) < 1e-7) {
+      if (nearExact(num/denom,ratio)) {
         const g = gcd(num, denom);
         const n = num / g;
         const d = denom / g;
         if (d === 1) return n === 1 ? 'π' : (n === -1 ? '-π' : `${n}π`);
         return n === 1 ? `π/${d}` : (n === -1 ? `-π/${d}` : `${n}π/${d}`);
       }
-      return `${rad.toFixed(2)} rad`;
+      return `≈ ${rad.toFixed(3)} rad`;
     }
 
     function fmtSurd(val) {
-      if (Math.abs(val) < 1e-4) return '0';
+      if (nearExact(val,0)) return '0';
       const sign = val < 0 ? '-' : '';
       const v = Math.abs(val);
       const table = [
@@ -83,9 +132,9 @@ window.addEventListener('DOMContentLoaded', function () {
         { n: Math.sqrt(7), s: '√7' }, { n: 2 * Math.sqrt(7), s: '2√7' }, { n: 3 * Math.sqrt(7), s: '3√7' }
       ];
       for (const item of table) {
-        if (Math.abs(v - item.n) < 1e-6) return sign + item.s;
+        if (nearExact(v,item.n)) return sign + item.s;
       }
-      return sign + v.toFixed(2);
+      return '≈ '+sign+v.toFixed(3);
     }
 
     const C = {
@@ -159,13 +208,13 @@ window.addEventListener('DOMContentLoaded', function () {
             statement: `<div>$0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = \\sin 2x$의 그래프와 직선 $y = k$ ($0 < k < 1$)가 만나는 네 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4$라 할 때,</div><div class="mt-1.5 font-bold text-amber-300">$${sum}$의 값을 구하시오.</div>`,
             answer: `정답: ${ans}  (x₁+x₄ = 3π/2, x₂+x₃ = 3π/2)`,
             snaps: [
-              { t: 0.192307692308, label: 'k = 0.30 (낮은 수평선)' },
-              { t: 0.448717948718, label: `🎯 k = 1/2 (특수각 교점 확인: 합 = ${ans} 불변!)` },
-              { t: 0.917981286903, label: `k = √3/2 (높은 수평선: 합 = ${ans} 불변!)` }
+              { t: (.3-.15)/.78, label: 'k = 0.30 (낮은 수평선)' },
+              { t: (.5-.15)/.78, label: `🎯 k = 1/2 (특수각 교점 확인: 합 = ${ans} 불변!)` },
+              { t: (Math.sqrt(3)/2-.15)/.78, label: `k = √3/2 (높은 수평선: 합 = ${ans} 불변!)` }
             ],
             steps: [
               null, null,
-              { title: `3단계. ${a === 1 ? '' : a}(x₁ + x₄) + ${b === 1 ? '' : b}(x₂ + x₃) 로 묶어 ${ans}를 구합니다.`, desc: `$x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$이고, $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이므로,<br/>$${sum} = ${co(a)}(x_1 + x_4) + ${co(b)}(x_2 + x_3) = ${co(a)}\\times\\dfrac{3\\pi}{2} + ${co(b)}\\times \\dfrac{3\\pi}{2} = \\mathbf{${ansTex}}$입니다.` }
+              { title: `3단계. ${a === 1 ? '' : a}(x₁ + x₄) + ${b === 1 ? '' : b}(x₂ + x₃) 로 묶어 ${ans}를 구합니다.`, desc: `$x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$이고, $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이므로,<br/>$${sum} = ${co(a)}(x_1 + x_4) + ${co(b)}(x_2 + x_3) = ${a}\\times\\dfrac{3\\pi}{2} + ${b}\\times \\dfrac{3\\pi}{2} = \\mathbf{${ansTex}}$입니다.` }
             ],
             alg: `<div class="font-bold text-amber-300 mb-1">📖 첫 번째 근 α 설정 풀이 vs 가운데 대칭축 풀이 비교</div><div>1) <strong>교과서 $\\alpha$ 설정 풀이:</strong> $x_1 = \\alpha$라 두면 $x_2 = \\dfrac{\\pi}{2}-\\alpha$, $x_3 = \\pi+\\alpha$, $x_4 = \\dfrac{3\\pi}{2}-\\alpha$이므로 대입하여 정리하면 $${co(a)}\\alpha + ${co(b)}\\left(\\dfrac{\\pi}{2}-\\alpha\\right) + ${co(b)}(\\pi+\\alpha) + ${co(a)}\\left(\\dfrac{3\\pi}{2}-\\alpha\\right) = ${ansTex}$가 됩니다.</div><div>2) <strong>대칭축 짝짓기 풀이:</strong> 계수가 대칭($${a}, ${b}, ${b}, ${a}$)이므로 가운데 대칭축 $S = \\dfrac{3\\pi}{4}$에 계수의 합 $(${a}+${b}+${b}+${a})=${2 * (a + b)}$를 곱해 $${2 * (a + b)} \\times \\dfrac{3\\pi}{4} = ${ansTex}$로 즉시 구합니다.</div>`
           };
@@ -190,7 +239,7 @@ window.addEventListener('DOMContentLoaded', function () {
             snaps: [
               { t: 0.0, label: "🎯 지름 끝점 A' 일치 (∠A'CB = 90° 직각삼각형!)" },
               { t: 0.5, label: `중앙 위치 A (원주각 ∠A = ${an.txt} 불변)` },
-              { t: 0.85, label: `오른쪽 호 위치 A (원주각 ∠A = ${an.txt} 불변)` }
+              { t: 0.85, label: `왼쪽 호 위치 A (원주각 ∠A = ${an.txt} 불변)` }
             ],
             steps: [
               { title: `1단계. 외접원의 반지름 R = ${R} 와 지름 2R = ${d} 확인`, desc: `외접원의 반지름이 $R = ${R}$이므로, 점 $B$에서 외심 $O$를 지나는 지름 $A'B$를 그으면 빗변의 길이는 $\\overline{A'B} = 2R = \\mathbf{${d}}$입니다.` },
@@ -337,9 +386,9 @@ window.addEventListener('DOMContentLoaded', function () {
         sliderTitle: '수평선 y = k 높이 조절 (0 < k < 1):',
         defaultT: 0.5,
         snaps: [
-          { t: 0.192307692308, label: 'k = 0.30 (낮은 수평선)' },
-          { t: 0.448717948718, label: '🎯 k = 1/2 (특수각 교점 확인: 합 = 9π/2 불변!)' },
-          { t: 0.917981286903, label: 'k = √3/2 (높은 수평선: 합 = 9π/2 불변!)' }
+          { t: (.3-.15)/.78, label: 'k = 0.30 (낮은 수평선)' },
+          { t: (.5-.15)/.78, label: '🎯 k = 1/2 (특수각 교점 확인: 합 = 9π/2 불변!)' },
+          { t: (Math.sqrt(3)/2-.15)/.78, label: 'k = √3/2 (높은 수평선: 합 = 9π/2 불변!)' }
         ],
         aha: `네 교점 $x_1, x_2, x_3, x_4$의 **전체 가운데 대칭축은 $S = \\dfrac{3\\pi}{4}$**입니다! 따라서 바깥쪽 두 교점의 합 $x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$과 안쪽 두 교점의 합 $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이 서로 같으므로, **$k$의 값에 관계없이 $(x_1+x_4) + 2(x_2+x_3) = 6S = \\dfrac{9\\pi}{2}$**입니다!`,
         steps: [
@@ -470,7 +519,7 @@ window.addEventListener('DOMContentLoaded', function () {
         snaps: [
           { t: 0.0, label: '🎯 지름 끝점 A\' 일치 (∠A\'CB = 90° 직각삼각형!)' },
           { t: 0.5, label: '중앙 위치 A (원주각 ∠A = π/3 불변)' },
-          { t: 0.85, label: '오른쪽 호 위치 A (원주각 ∠A = π/3 불변)' }
+          { t: 0.85, label: '왼쪽 호 위치 A (원주각 ∠A = π/3 불변)' }
         ],
         aha: `원주각의 성질에 의해 꼭짓점 $A$를 외접원 둘레를 따라 **지름의 끝점 $A'$로 옮겨도 원주각 $\\angle A' = \\angle A = \\dfrac{\\pi}{3}$는 변하지 않으며, 반원의 원주각 $\\angle A'CB = \\dfrac{\\pi}{2}$($90^\\circ$)**가 됩니다! 따라서 빗변이 지름 $2R = 8$인 각이 $30^\\circ, 60^\\circ, 90^\\circ$인 직각삼각형(변의 길이의 비 $1:\\sqrt{3}:2$)이 바로 만들어집니다.`,
         steps: [
@@ -837,9 +886,9 @@ window.addEventListener('DOMContentLoaded', function () {
         sliderTitle: '긴 호 BC 위의 꼭짓점 A 위치 이동:',
         defaultT: 0.5,
         snaps: [
-          { t: 0.18, label: '왼쪽 치우친 점 A (AB < AC)' },
+          { t: 0.18, label: '오른쪽 치우친 점 A (AB > AC)' },
           { t: 0.5, label: '🎯 수직이등분선 위 점 A! (AB=AC=6 정삼각형, S_max = 9√3)' },
-          { t: 0.82, label: '오른쪽 치우친 점 A (AB > AC)' }
+          { t: 0.82, label: '왼쪽 치우친 점 A (AB < AC)' }
         ],
         aha: `사인법칙으로 밑변 $\\overline{BC} = 2R\\sin A = 6$이 고정되면, $\\triangle ABC$의 넓이가 최대가 되는 순간은 **점 $A$에서 현 $BC$에 내린 수선이 외접원의 중심 $O$를 지날 때(즉 $\\overline{AB} = \\overline{AC}$인 이등변·정삼각형일 때)**입니다!`,
         steps: [
@@ -1005,7 +1054,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return rect;
     }
     const scr = (p) => BRD.toS(p.x, p.y);
-    const txt = (v) => String(v == null ? '' : v).replace(/➔/g, '→'); // 캔버스 글꼴에서 이모지로 그려지는 화살표를 →로
+    const txt = (v) => String(v == null ? '' : v).replace(/➔/g, '→').replace(/=\s*≈/g,'≈'); // 캔버스 글꼴에서 이모지로 그려지는 화살표를 →로
     const insets = () => (BRD.thumb ? { top: 0, right: 0, bottom: 0, left: 0 } : BRD.insets);
     function fitSize(text, size, maxW, weight = 800) {
       const c = BRD.ctx;
@@ -1025,9 +1074,6 @@ window.addEventListener('DOMContentLoaded', function () {
       const p = curProb();
       const lo = SS && p.id === 'bas-1' ? 0.07 : 0;
       num = Math.max(lo, Math.min(1, num));
-      if (state.auxStep >= 3) {
-        for (const sn of p.snaps) if (Math.abs(num - sn.t) < 0.02) { num = sn.t; break; }
-      }
       SS.t = num;
     }
     function handleDrag(w) {
@@ -1039,7 +1085,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const mode = p.dragMode || 'horizontal';
       let deltaT = 0;
       if (mode === 'vertical') {
-        deltaT = -dy / Math.max(180, CURRECT.height * 0.55);
+        deltaT = (p.id === 'adv-2' ? dy : -dy) / Math.max(180, CURRECT.height * 0.55);
       } else if (mode === 'angle' && state.centerPt) {
         const c = state.centerPt;
         const prevAng = Math.atan2(-(ref.y - c.y), ref.x - c.x);
@@ -1047,8 +1093,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let dAng = curAng - prevAng;
         while (dAng <= -Math.PI) dAng += Math.PI * 2;
         while (dAng > Math.PI) dAng -= Math.PI * 2;
-        const dirSign = p.id === 'adv-7' ? -1 : 1;
-        deltaT = (dirSign * dAng) / (p.id === 'adv-1' ? Math.PI * 2 : 1.6);
+        deltaT = dAng / (p.id === 'adv-1' ? Math.PI * 2 : p.id === 'adv-7' ? .85 : 1.6);
       } else {
         deltaT = (dx - dy * 0.35) / Math.max(200, CURRECT.width * 0.55);
       }
@@ -1101,7 +1146,7 @@ window.addEventListener('DOMContentLoaded', function () {
       c.fillText('O', O.x - 6, O.y + 16);
       c.restore();
     }
-    function drawRadianAxesWithTicks(rect, ox, oy, ux, uy, piStep = Math.PI / 2) {
+    function drawRadianAxesWithTicks(rect, ox, oy, ux, uy, piStep = Math.PI / 2, yNumbers = true) {
       const { c, O, W, H } = axisBase(ox, oy, piStep * ux, uy);
       for (let k = -2; k <= 12; k++) {
         if (k === 0) continue;
@@ -1110,7 +1155,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sx > 24 && sx < W - 24) { c.beginPath(); c.moveTo(sx, O.y - 3.5); c.lineTo(sx, O.y + 3.5); c.stroke(); BRD._text(sx, O.y + 17, fmtPi(radVal), { size: 11.5 / (BRD.thumb ? 0.78 : BRD._ts()), weight: 700, color: BRD.colors.tick, align: c.textAlign, baseline: c.textBaseline, halo: false }, true); }
       }
       c.textAlign = 'right';
-      for (let j = -6; j <= 6; j++) {
+      if(yNumbers)for (let j = -6; j <= 6; j++) {
         if (j === 0) continue;
         const sy = BRD.toS(ox, oy - j * uy).y;
         if (sy > 20 && sy < H - 20) { c.beginPath(); c.moveTo(O.x - 3.5, sy); c.lineTo(O.x + 3.5, sy); c.stroke(); c.fillText(String(j).replace('-', '−'), O.x - 8, sy + 4); }
@@ -1217,7 +1262,7 @@ window.addEventListener('DOMContentLoaded', function () {
       for (let i = 0; i <= steps; i++) {
         const x = xMin + ((xMax - xMin) * i) / steps;
         const y = fn(x);
-        if (y === null || isNaN(y) || Math.abs(y) > 40) { flush(); continue; }
+        if (y === null || !Number.isFinite(y)) { flush(); continue; }
         run.push(toScr(x, y, ox, oy, ux, uy));
       }
       flush();
@@ -1228,7 +1273,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function dDot(p, label = '', col = C.white, off = { x: 8, y: -8 }, isHandle = false, showPointAtStep0 = true) {
       if (state.auxStep === 0 && !showPointAtStep0) return;
       const o = { label: txt(label).replace(/\s*\[[^\]]*드래그[^\]]*\]/g, ''), dx: off.x, dy: off.y, align: 'left', baseline: 'alphabetic' };
-      if (isHandle) {
+      if (isHandle && TABK==='explore') {
         state.handlePt = { x: p.x, y: p.y };
         BRD.handle('H', p, { ...o, color: 'amber', drag: handleDrag });
       } else {
@@ -1239,7 +1284,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // =========================================================================
     // 4. 전체 16문항 (`bas-1 ~ bas-8` 및 `adv-1 ~ adv-8`) 정밀 기하 렌더러 (원본 그대로)
     // =========================================================================
-    function setMetric(txt) { METRIC = txt; }
+    function setMetric(value) { METRIC = txt(value); }
 
 
     function drawScene(rect) {
@@ -1251,6 +1296,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const step = state.auxStep;
       const t = state.sliderT;
       const anim = state.animT;
+      const model=currentModel(id,t);
       const baseU = Math.min(rect.width, rect.height) / 11.2;
       const u = baseU * state.scale;
 
@@ -1259,7 +1305,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // -----------------------------------------------------------------------
       if (id === 'bas-1') {
         const GP = TVG('bas-1'), PP = GP.P, ff = GP.f; // 「새 문제」 변형의 둘레 P (원본은 20, ff = 1)
-        const r = (2.0 + t * 6.0) * ff;
+        const r = model.r;
         const l = PP - 2 * r;
         const theta = l / r;
         const area = 0.5 * r * l;
@@ -1277,12 +1323,12 @@ window.addEventListener('DOMContentLoaded', function () {
         const startA = -theta * 0.5 + Math.PI * 0.5;
         const endA = theta * 0.5 + Math.PI * 0.5;
 
-        if (step >= 1) {
+        if (step >= 2) {
           const optRPx = (PP / 4) * secScale;
           dSector(centerPt, optRPx, Math.PI * 0.5 - 1.0, Math.PI * 0.5 + 1.0, 'rgba(251,191,36,0.5)', 'rgba(251,191,36,0.06)', 1.8);
         }
 
-        const isOptimal = Math.abs(r - PP / 4) < 0.08 * ff;
+        const isOptimal = model.optimal;
         dSector(
           centerPt,
           rPx,
@@ -1297,16 +1343,22 @@ window.addEventListener('DOMContentLoaded', function () {
         const B = { x: centerPt.x + rPx * Math.cos(-endA), y: centerPt.y + rPx * Math.sin(-endA) };
         const arcTop = { x: centerPt.x, y: centerPt.y - rPx };
 
-        drawDimension(centerPt, B, step >= 2 ? 22 : -22, `r = ${r.toFixed(1)}`, C.gold); // [2.0 수정] 2단계부터 r 치수선을 반대쪽으로: 작아진 부채꼴에서 θ 라벨·점 A와 겹치지 않게
+        drawDimension(centerPt, B, -22, TABK!=='explore'&&step<2?'r':`r ≈ ${r.toFixed(1)}`, C.gold); // [2.0 수정] 2단계부터 r 치수선을 반대쪽으로: 작아진 부채꼴에서 θ 라벨·점 A와 겹치지 않게
         // [표시 보강] 중심각 θ는 부채꼴 안쪽 호로(θ>π 일 때 보각 쪽에 그려지던 것을 수정), 두 반지름 OA = OB = r 같은 눈금
-        drawSweepAngle(centerPt, startA, endA, Math.min(32, rPx * 0.36), step >= 3 ? `θ = ${theta.toFixed(2)} rad` : 'θ', C.gold);
+        drawSweepAngle(centerPt, startA, endA, Math.min(32, rPx * 0.36), 'θ', C.gold);
         markTick(centerPt, A, 1, C.gold); markTick(centerPt, B, 1, C.gold);
 
-        dDot(centerPt, 'O', C.gold, { x: -16, y: 16 }, false, true);
+        dDot(centerPt, 'O', C.gold, { x: 8, y: 16 }, false, true);
         dDot(A, 'A [드래그]', C.white, { x: 12, y: 16 }, true, true); // [2.0 수정] 점 A 라벨을 오른쪽으로: 작은 부채꼴에서 θ 라벨과 겹치지 않게
         dDot(B, 'B', C.white, { x: -24, y: 6 }, false, true);
         if (step >= 1) {
-          dDot(arcTop, `l = ${PP} - 2r = ${l.toFixed(1)}`, C.cyan, { x: -52, y: -12 }, false, true);
+          const bw=rect.width*(step>=2?.36:.58),bx=leftCx-bw/2,by=rect.height*.88,cut=bx+bw*2*r/PP;
+          dLine({x:bx,y:by},{x:cut,y:by},C.gold,6);
+          dLine({x:cut,y:by},{x:bx+bw,y:by},C.cyan,6);
+          BRD.text({x:bx+bw/2,y:by},`둘레 2r + l = ${PP}`,{dy:-18,size:12,weight:800,align:'center',color:C.white});
+          BRD.text({x:(bx+cut)/2,y:by},'2r',{dy:17,size:12,weight:800,align:'center',color:C.gold});
+          BRD.text({x:(cut+bx+bw)/2,y:by},'l',{dy:17,size:12,weight:800,align:'center',color:C.cyan});
+          dDot(arcTop,TABK!=='explore'&&step<3?`l = ${PP} - 2r`:`l ≈ ${l.toFixed(1)}`,C.cyan,{x:-32,y:-12},false,true);
         }
 
         if (step >= 2) {
@@ -1327,14 +1379,14 @@ window.addEventListener('DOMContentLoaded', function () {
           const curGraphPt = toScr(r, area, gOx, gOy, ux, uy);
           const curGraphBase = toScr(r, 0, gOx, gOy, ux, uy);
           dLine(curGraphBase, curGraphPt, C.cyan, 1.8, [3, 3]);
-          dDot(curGraphPt, `S(${r.toFixed(1)}) = ${area.toFixed(1)}`, C.cyan, { x: 8, y: 14 }, false, true);
+          dDot(curGraphPt, `S(${r.toFixed(1)}) ≈ ${area.toFixed(1)}`, C.cyan, { x: 8, y: 14 }, false, true);
 
           if (step >= 3) {
             dDot(symTop, `최댓값 (r=${PP / 4}, S=${PP * PP / 16})`, C.green, { x: -55, y: -14 }, false, true);
           }
         }
 
-        setMetric(`반지름 r = ${r.toFixed(2)}, 호 l = ${l.toFixed(2)}, 중심각 θ = ${theta.toFixed(2)} rad ➔ 넓이 S = ${area.toFixed(2)} (최대: r=${PP / 4}, θ=2 rad, S=${PP * PP / 16})`);
+        setMetric(`반지름 r ≈ ${r.toFixed(2)}, 호 l ≈ ${l.toFixed(2)}, 중심각 θ ≈ ${theta.toFixed(2)} rad ➔ 넓이 S ≈ ${area.toFixed(2)} (최대: r=${PP / 4}, θ=2 rad, S=${PP * PP / 16})`);
         return;
       }
 
@@ -1351,7 +1403,7 @@ window.addEventListener('DOMContentLoaded', function () {
         state.centerPt = O;
         dCircle(O, sc, 'rgba(56,189,248,0.55)', 2.4);
 
-        const theta = 0.15 + t * 1.20366;
+        const theta = model.theta;
         const cosT = Math.cos(theta), sinT = Math.sin(theta);
 
         const P = toScr(cosT, sinT, ox, oy, sc);
@@ -1364,15 +1416,15 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step >= 1) {
           dPoly([O, Hp, P], 'rgba(251, 191, 36, 0.22)', C.gold, 2.4, step === 1);
           drawRightAngle(Hp, O, P, 11, C.gold);
-          drawDimension(O, Hp, 22, `cos θ = ${fmtSurd(cosT)}`, C.gold);
-          drawDimension(Hp, P, -26, `sin θ = ${fmtSurd(sinT)}`, C.gold);
+          drawDimension(O, Hp, 22, 'cos θ', C.gold);
+          drawDimension(Hp, P, 26, 'sin θ', C.gold);
         }
 
         if (step >= 2) {
           dPoly([O, Hq, Q], 'rgba(56, 189, 248, 0.22)', C.cyan, 2.4, step === 2);
           drawRightAngle(Hq, O, Q, 11, C.cyan);
           drawRightAngle(O, P, Q, 12, C.green);
-          drawDimension(Hq, O, 22, `|-sin θ| = ${fmtSurd(sinT)}`, C.cyan);
+          drawDimension(Hq, O, 22, '|sin θ|', C.cyan);
         }
 
         if (step >= 3) {
@@ -1389,12 +1441,12 @@ window.addEventListener('DOMContentLoaded', function () {
         markTick(O, P, 1, C.white);
         if (step >= 2) {
           drawAngleArc(Q, O, Hq, 26 * kk, 'θ', C.gold);
-          drawAngleArc(O, Xm, Q, 32 * kk, 'π/2-θ', C.pink);
+          drawAngleArc(O, Xm, Q, 32 * kk, '', C.pink);
           markTick(O, Q, 1, C.white);
         }
         if (step >= 3) {
           drawAngleArc(R, O, Hr, 26 * kk, 'θ', C.gold);
-          drawAngleArc(O, X1, R, 54 * kk, 'π/2-θ', C.pink);
+          drawAngleArc(O, X1, R, 54 * kk, '', C.pink);
           markTick(O, R, 1, C.white);
         }
 
@@ -1416,11 +1468,11 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'bas-3') {
         const ox = rect.width * 0.11 + state.panX;
         const oy = rect.height * 0.56 + state.panY;
-        const ux = u * 1.18;
-        const uy = u * 2.35;
+        const ux = rect.width*.80/TAU;
+        const uy = rect.height*.27;
         drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 4);
 
-        const k = 0.15 + t * 0.78;
+        const k = model.k;
         const alpha = 0.5 * Math.asin(k);
         const xs = [alpha, Math.PI * 0.5 - alpha, Math.PI + alpha, Math.PI * 1.5 - alpha];
 
@@ -1469,14 +1521,14 @@ window.addEventListener('DOMContentLoaded', function () {
       // -----------------------------------------------------------------------
       if (id === 'bas-4') {
         const ox = rect.width * 0.11 + state.panX;
-        const oy = rect.height * 0.72 + state.panY;
-        const ux = u * 1.15;
-        const uy = u * 0.92;
+        const oy = rect.height * (id==='bas-4'?(step===1?.50:.76):.72) + state.panY;
+        const ux = rect.width*.80/TAU;
+        const uy = rect.height*(id==='bas-4'?(step===1?.10:.14):.12);
         drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2);
 
-        const lineT = t * 4.5;
+        const lineT = model.h;
 
-        if (step >= 1) {
+        if (step === 1) {
           dCurve((x) => 3 * Math.sin(x) - 1, 0, Math.PI * 2, ox, oy, ux, uy, 'rgba(56,189,248,0.35)', 2.0, [5, 5]);
           dLine(toScr(0, -1, ox, oy, ux, uy), toScr(Math.PI * 2, -1, ox, oy, ux, uy), 'rgba(56,189,248,0.4)', 1.5, [4, 4]);
         }
@@ -1490,58 +1542,27 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dCurve((x) => Math.abs(3 * Math.sin(x) - 1), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
 
-        const roots = [];
-        const addSinSol = (sVal) => {
-          if (sVal < -1 - 1e-4 || sVal > 1 + 1e-4) return;
-          if (Math.abs(sVal - 1) < 1e-3) {
-            roots.push(Math.PI * 0.5);
-          } else if (Math.abs(sVal + 1) < 1e-3) {
-            roots.push(Math.PI * 1.5);
-          } else {
-            const cl = Math.max(-1, Math.min(1, sVal));
-            const a = Math.asin(cl);
-            if (cl >= 0) {
-              roots.push(a, Math.PI - a);
-            } else {
-              roots.push(Math.PI - a, Math.PI * 2 + a);
-            }
-          }
-        };
-        if (Math.abs(lineT) < 1e-3) {
-          addSinSol(1 / 3);
-        } else {
-          addSinSol((lineT + 1) / 3);
-          addSinSol((-lineT + 1) / 3);
-        }
-        roots.sort((a, b) => a - b);
-        const validRoots = [];
-        for (const r of roots) {
-          if (r >= -1e-4 && r < Math.PI * 2 - 1e-3) {
-            if (!validRoots.length || Math.abs(r - validRoots[validRoots.length - 1]) > 1e-3) {
-              validRoots.push(Math.max(0, r));
-            }
-          }
-        }
+        const validRoots = model.roots;
 
         const isTargetCount = validRoots.length === 3 || validRoots.length === 1;
         dLine(
           toScr(-0.2, lineT, ox, oy, ux, uy),
           toScr(Math.PI * 2 + 0.25, lineT, ox, oy, ux, uy),
-          isTargetCount ? C.green : C.gold,
+          isTargetCount && step>=3 ? C.green : C.gold,
           3.0,
           [],
           true
         );
 
-        validRoots.forEach((rx) => {
+        if(step>=2)validRoots.forEach((rx) => {
           dDot(toScr(rx, lineT, ox, oy, ux, uy), '', C.gold, { x: 6, y: -8 }, false, true);
         });
-        dDot(toScr(Math.PI, lineT, ox, oy, ux, uy), `y = ${lineT.toFixed(2)} [드래그]`, C.gold, { x: 10, y: -10 }, true, true);
+        dDot(toScr(Math.PI, lineT, ox, oy, ux, uy), TABK!=='explore'&&step===0?'y = t':`y ≈ ${lineT.toFixed(2)} [드래그]`, C.gold, { x: 10, y: -10 }, true, true);
 
         const openEnd = toScr(Math.PI * 2, 1, ox, oy, ux, uy);
         dCircle(openEnd, 5.5, C.red, 2.2, [], '#05100c');
 
-        setMetric(`직선 y = ${lineT.toFixed(2)} ➔ 0 ≤ x < 2π 에서 교점 ${validRoots.length}개 (3개일 때 a = 2, 1개일 때 b = 4 ➔ a+b = 6)`);
+        setMetric(`직선 y ≈ ${lineT.toFixed(2)} ➔ 0 ≤ x < 2π 에서 교점 ${validRoots.length}개 (3개일 때 a = 2, 1개일 때 b = 4 ➔ a+b = 6)`);
         return;
       }
 
@@ -1551,11 +1572,11 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'bas-5') {
         const ox = rect.width * 0.11 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
-        const ux = u * 1.16;
-        const uy = u * 2.25;
+        const ux = rect.width*.80/TAU;
+        const uy = rect.height*.27;
         drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2);
 
-        const curT = -1.0 + t * 2.0;
+        const curT = model.h;
 
         if (step >= 1) {
           dLine(toScr(0, 1, ox, oy, ux, uy), toScr(Math.PI * 2, 1, ox, oy, ux, uy), 'rgba(203,213,225,0.28)', 1.5, [4, 4]);
@@ -1610,7 +1631,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const angA = angAp + t * 1.35;
         const A = toScr(R * Math.cos(angA), R * Math.sin(angA), ox, oy, sc);
-        const isAtDiameterEnd = t < 0.06;
+        const isAtDiameterEnd = model.atDiameter;
 
         if (step >= 1) {
           dLine(B, Ap, C.gold, 2.4, [6, 4], true);
@@ -1658,7 +1679,6 @@ window.addEventListener('DOMContentLoaded', function () {
         const ox = rect.width * 0.5 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
         const sc = u * 1.50;
-        drawAxesWithTicks(rect, ox, oy, sc, false);
 
         const R = (3 * Math.sqrt(34)) / 8;
         const O = toScr(0, 0, ox, oy, sc);
@@ -1690,7 +1710,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const lenAB = Math.hypot(mA.x - mB.x, mA.y - mB.y);
         const lenBC = Math.hypot(mB.x - mC.x, mB.y - mC.y);
-        const isConditionMet = Math.abs(lenAB - 2) < 1e-5 && Math.abs(lenBC - 3) < 1e-5;
+        const isConditionMet = model.condition;
 
         if (step >= 1) {
           dPoly([A, B, Cpt], 'rgba(56, 189, 248, 0.20)', C.cyan, 2.2);
@@ -1704,14 +1724,14 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (step >= 2) {
-          drawAngleArc(B, A, Cpt, 22, step >= 3 ? 'B (cos B = -1/3 불변)' : '∠B = π - D', C.cyan);
-          drawAngleArc(D, Cpt, A, 24, step >= 3 ? 'π-B (cos D = +1/3)' : '∠D = π - B', C.pink);
+          drawAngleArc(B, A, Cpt, 22, 'B', C.cyan);
+          drawAngleArc(D, Cpt, A, 24, 'π - B', C.pink);
         }
 
-        drawDimension(A, B, -22, isConditionMet ? 'AB = 2 (조건 일치!)' : `AB = ${lenAB.toFixed(2)}`, isConditionMet ? C.green : C.cyan);
-        drawDimension(B, Cpt, -22, isConditionMet ? 'BC = 3 (조건 일치!)' : `BC = ${lenBC.toFixed(2)}`, isConditionMet ? C.green : C.cyan);
-        drawDimension(Cpt, D, 24, 'CD = 4', C.pink);
-        drawDimension(D, A, 24, 'DA = 3', C.pink);
+        drawDimension(A, B, -22, isConditionMet ? 'AB = 2 (조건 일치!)' : `AB ≈ ${lenAB.toFixed(2)}`, isConditionMet ? C.green : C.cyan);
+        drawDimension(B, Cpt, -22, isConditionMet ? 'BC = 3 (조건 일치!)' : `BC ≈ ${lenBC.toFixed(2)}`, isConditionMet ? C.green : C.cyan);
+        drawDimension(Cpt, D, -24, 'CD = 4', C.pink);
+        drawDimension(D, A, -24, 'DA = 3', C.pink);
 
         if (step >= 3) {
           drawDimension(A, Cpt, 18, '공통 대각선 AC = √17', C.gold);
@@ -1722,7 +1742,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dDot(Cpt, 'C', C.white, { x: 10, y: -8 }, false, true);
         dDot(D, 'D', C.white, { x: -8, y: 20 }, false, true);
 
-        setMetric(`현재 AB = ${lenAB.toFixed(2)}, BC = ${lenBC.toFixed(2)} (원주각 cos B = -1/3 불변) ➔ AB=2, BC=3 일 때 AC = √17`);
+        setMetric(`현재 AB ≈ ${lenAB.toFixed(2)}, BC ≈ ${lenBC.toFixed(2)} (원주각 cos B = -1/3 불변) ➔ AB=2, BC=3 일 때 AC = √17`);
         return;
       }
 
@@ -1731,11 +1751,9 @@ window.addEventListener('DOMContentLoaded', function () {
       // -----------------------------------------------------------------------
       if (id === 'bas-8') {
         const ox = rect.width * 0.48 + state.panX;
-        const oy = rect.height * 0.68 + state.panY;
-        const G8 = TVG('bas-8'); // 「새 문제」 변형의 두 변 AB = c, AC = b (원본은 6, 3)
-        let sc = u * 0.92 * Math.sqrt(63) / G8.a;
-        if (TABK === 'problem' && rect.width < 600) sc = Math.min(0.66 * rect.width / G8.a, sc * 2.4); // 휴대폰 문제 탭: 삼각형이 무대 폭의 약 2/3가 되게(탐구 탭은 그대로)
-        drawAxesWithTicks(rect, ox, oy, sc, false);
+        const oy = rect.height * 0.62 + state.panY;
+        const G8 = TVG('bas-8'); // 두 변과 120°를 보존한 채 삼각형 전체를 같은 비율로 확대합니다.
+        const sc = Math.min(rect.width*.80/G8.a,rect.height*.40/(G8.c*G8.b*Math.sin(2*PI/3)/G8.a))*state.scale;
 
         const c = G8.c, b = G8.b, angleA = (2 * Math.PI) / 3;
         const a = Math.sqrt(c * c + b * b - 2 * c * b * Math.cos(angleA));
@@ -1746,7 +1764,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const mC = { x: a * 0.5, y: 0 };
         const mA = { x: mB.x + c * cosB, y: c * sinB };
 
-        const ratioBD = 0.35 + (t - 0.5) * 0.6 + (c / (b + c) - 0.35);
+        const ratioBD = model.ratio;
         const mD = { x: mB.x + a * ratioBD, y: 0 };
 
         const A = toScr(mA.x, mA.y, ox, oy, sc);
@@ -1755,7 +1773,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const D = toScr(mD.x, mD.y, ox, oy, sc);
 
         const lenAD = Math.hypot(mA.x - mD.x, mA.y - mD.y);
-        const isBisector = Math.abs(t - 0.5) < 0.025;
+        const isBisector = model.bisector;
 
         if (step >= 1) {
           dPoly([A, B, D], 'rgba(52, 211, 153, 0.22)', C.green, 2.4);
@@ -1765,23 +1783,23 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (step >= 2) {
-          // [표시 보강] 각의 이등분(π/3 = π/3)이면 두 각은 같은 금색 호·같은 반지름, 전체 ∠A = 2π/3 는 바깥 호
-          drawAngleArc(A, B, D, isBisector ? 30 : 26, isBisector ? 'π/3' : 'α', isBisector ? C.gold : C.green);
-          drawAngleArc(A, D, Cpt, isBisector ? 30 : 32, isBisector ? 'π/3' : '2π/3-α', isBisector ? C.gold : C.cyan);
-          drawDimension(B, D, 24, isBisector && step >= 3 ? `BD = ${G8.bdT} (비율 ${G8.rc})` : `BD = ${(a * ratioBD).toFixed(2)}`, C.green);
-          drawDimension(D, Cpt, 24, isBisector && step >= 3 ? `DC = ${G8.dcT} (비율 ${G8.rb})` : `DC = ${(a * (1 - ratioBD)).toFixed(2)}`, C.cyan);
+          // 같은 반지름의 두 호가 같아질 때에만 공통 sin 60°를 약분할 수 있습니다.
+          drawAngleArc(A, B, D, 18, isBisector ? '60°' : 'α', isBisector ? C.gold : C.green);
+          drawAngleArc(A, D, Cpt, 18, isBisector ? '60°' : 'β', isBisector ? C.gold : C.cyan);
+          drawDimension(B, D, 44, isBisector && step >= 3 ? `BD = ${G8.bdT}` : `BD ≈ ${(a * ratioBD).toFixed(2)}`, C.green);
+          drawDimension(D, Cpt, 44, isBisector && step >= 3 ? `DC = ${G8.dcT}` : `DC ≈ ${(a * (1 - ratioBD)).toFixed(2)}`, C.cyan);
         }
 
-        drawAngleArc(A, B, Cpt, step >= 2 ? 68 : 32, '2π/3', C.white);
+        if(step<2) drawAngleArc(A, B, Cpt, 24, '120°', C.white);
         dLine(A, D, C.gold, 3.2, [], true);
-        const flip8 = TABK === 'problem' && rect.width < 600 ? -1 : 1; // 휴대폰 문제 탭: 치수 상자를 삼각형 바깥쪽으로 빼 각 라벨과 닿지 않게
-        drawDimension(A, B, -24 * flip8, `AB = ${c}`, C.green);
-        drawDimension(A, Cpt, 24 * flip8, `AC = ${b}`, C.cyan);
+        drawDimension(A, B, 24, `AB = ${c}`, C.green);
+        drawDimension(A, Cpt, -24, `AC = ${b}`, C.cyan);
 
-        dDot(A, 'A (∠A = 2π/3)', C.white, { x: -38, y: -14 }, false, true);
+        dDot(A, 'A (120°)', C.white, { x: -25, y: -16 }, false, true);
+        if(step>=3)BRD.text(A,isBisector?`AD = ${G8.AD}`:`AD ≈ ${lenAD.toFixed(3)}`,{dy:-42,size:12,weight:800,color:C.gold});
         dDot(B, 'B', C.white, { x: -20, y: 14 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 14 }, false, true);
-        dDot(D, step >= 3 && isBisector ? `D (AD = ${G8.AD}) [드래그]` : `D (AD = ${lenAD.toFixed(2)}) [드래그]`, C.gold, { x: -45, y: TABK === 'problem' && rect.width < 600 ? 34 : -14 }, true, true); // 휴대폰 문제 탭: D 이름을 BC 아래로 내려 AB 치수 상자와 닿지 않게
+        dDot(D, 'D [드래그]', C.gold, { x: 7, y: 18 }, true, true);
 
         setMetric(`현재 AD = ${fmtSurd(lenAD)} | S_ABC = ${G8.sTxt} = S_ABD + S_ACD (각의 이등분선일 때 AD = ${G8.AD})`);
         return;
@@ -1805,7 +1823,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dCircle(O, sc, C.cyan, 2.8);
 
-        const theta = Math.max(0.02, Math.min(0.98, t)) * Math.PI * 2;
+        const theta = model.theta;
         const theta5 = (5 * theta) % (Math.PI * 2);
 
         const Px = Math.cos(theta), Py = Math.sin(theta);
@@ -1835,13 +1853,13 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         const crossArea = 0.5 * Math.abs(Px * Qy - Py * Qx);
-        const isCollinear = crossArea < 0.03;
+        const isCollinear = model.collinear;
         dPoly([O, P, Q], isCollinear ? 'rgba(251,113,133,0.18)' : 'rgba(56,189,248,0.22)', isCollinear ? C.red : C.cyan, 2.2);
         dLine(O, P, C.gold, 3.2, [], true);
         dLine(O, Q, C.pink, 2.8, []);
         // [표시 보강] 동경의 각: x축에서 반시계로 잰 θ(금색)와 5θ(분홍) 호(180°를 넘어도 안쪽 호), 두 반지름 OP = OQ 같은 눈금
         drawSweepAngle(O, 0, theta, 30, 'θ', C.gold);
-        if (theta5 > 0.05) drawSweepAngle(O, 0, theta5, 48, '5θ', C.pink);
+        if (!nearExact(theta5,0)) drawSweepAngle(O, 0, theta5, 48, '5θ (mod 2π)', C.pink);
         markTick(O, P, 1, C.white); markTick(O, Q, 1, C.white);
 
         if (step >= 1) {
@@ -1851,11 +1869,11 @@ window.addEventListener('DOMContentLoaded', function () {
           markTick(P, M, 1, C.gold); markTick(M, Q, 1, C.gold); // PM = MQ (중점)
         }
 
-        dDot(P, `P(θ = ${fmtPi(theta)}) [드래그]`, C.gold, { x: 12, y: -10 }, true, true);
+        dDot(P, step>=1?`P(θ = ${fmtPi(theta)}) [드래그]`:'P(θ) [드래그]', C.gold, { x: 12, y: -10 }, true, true);
         dDot(Q, 'Q(5θ)', C.pink, { x: 10, y: 16 }, false, true);
 
         setMetric(
-          `현재 θ = ${fmtPi(theta)} | sinθ ${Py > Px ? '>' : '<'} cosθ | △OPQ 넓이 = ${crossArea.toFixed(2)} ${isCollinear ? '(일직선이라 삼각형이 되지 않음)' : '(삼각형 성립)'}`
+          `현재 θ = ${fmtPi(theta)} | sinθ ${nearExact(Py,Px)?'=':Py>Px?'>':'<'} cosθ | △OPQ 넓이 ≈ ${crossArea.toFixed(2)} ${isCollinear ? '(일직선이라 삼각형이 되지 않음)' : '(삼각형 성립)'}`
         );
         return;
       }
@@ -1864,16 +1882,16 @@ window.addEventListener('DOMContentLoaded', function () {
       // 🔥 [심화 02] adv-2: 단위원과 기울기 -1 직선의 교점 및 대칭 넓이
       // -----------------------------------------------------------------------
       if (id === 'adv-2') {
-        const ox = rect.width * 0.34 + state.panX;
-        const oy = rect.height * 0.72 + state.panY;
-        const sc = u * 4.1;
+        const ox = rect.width * 0.39 + state.panX;
+        const oy = rect.height * 0.57 + state.panY;
+        const sc = Math.min(rect.width*.34,rect.height*.36)*state.scale;
         drawAxesWithTicks(rect, ox, oy, sc, true);
 
         const O = toScr(0, 0, ox, oy, sc);
         state.centerPt = O;
         dCircle(O, sc, C.cyan, 2.6);
 
-        const k = 1.02 + t * 0.379157;
+        const k = model.k;
         const disc = Math.max(0, 2 - k * k);
         const xP = 0.5 * (k - Math.sqrt(disc));
         const yP = 0.5 * (k + Math.sqrt(disc));
@@ -1885,7 +1903,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const M = toScr(k * 0.5, k * 0.5, ox, oy, sc);
 
         const areaOPQ = 0.5 * k * Math.sqrt(Math.max(0, 2 - k * k));
-        const isEquilateral = Math.abs(k - Math.sqrt(6) / 2) < 0.015;
+        const isEquilateral = model.equilateral;
 
         dPoly([O, P, Q], isEquilateral && step >= 1 ? 'rgba(52,211,153,0.25)' : 'rgba(56,189,248,0.20)', isEquilateral && step >= 1 ? C.green : C.cyan, 2.6);
         dLine(toScr(-0.15, k + 0.15, ox, oy, sc), toScr(k + 0.15, -0.15, ox, oy, sc), C.gold, 2.8, [], true);
@@ -1898,15 +1916,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 2) {
           dLine(toScr(-0.2, -0.2, ox, oy, sc), toScr(1.15, 1.15, ox, oy, sc), C.pink, 2.2, [6, 4], true);
-          drawRightAngle(M, O, P, 11, C.pink);
+          drawRightAngle(M,O,nearExact(disc,0)?toScr(k*.5-.2,k*.5+.2,ox,oy,sc):P,11,C.pink);
           markTick(P, M, 2, C.pink); markTick(M, Q, 2, C.pink); // [표시 보강] M은 현 PQ의 중점: PM = MQ
-          drawDimension(O, M, 24, isEquilateral && step >= 3 ? '높이 OM = k/√2 = √3/2' : `OM = ${(k / Math.SQRT2).toFixed(2)}`, C.pink);
+          drawDimension(O, M, -32, step >= 3 ? 'OM = k/√2' : `OM ≈ ${(k / Math.SQRT2).toFixed(2)}`, C.pink);
           dDot(M, 'M(k/2, k/2)', C.pink, { x: 10, y: -8 }, false);
         }
 
         dDot(O, 'O(0,0)', C.white, { x: -42, y: 16 }, false, true);
-        dDot(P, step >= 3 ? 'P(cos α, sin α) [드래그]' : 'P(α) [드래그]', C.gold, { x: -95, y: -12 }, true, true);
-        dDot(Q, step >= 3 ? 'Q(cos β, sin β) = (sin α, cos α)' : 'Q(β)', C.cyan, { x: 12, y: 6 }, false, true);
+        dDot(P, nearExact(disc,0)?'P=Q (접점) [드래그]':step>=3?'P(x, y) [드래그]':'P(α) [드래그]', C.gold, { x: -66, y: -12 }, true, true);
+        if(!nearExact(disc,0))dDot(Q,step>=3?'Q(y, x)':'Q(β)',C.cyan,{x:12,y:6},false,true);
 
         setMetric(`현재 k = ${fmtSurd(k)} | △OPQ 넓이 = ${fmtSurd(areaOPQ)} (정삼각형일 때 k = √6/2, sin α sin β = 1/4 ➔ 2k²+4sin α sin β = 4)`);
         return;
@@ -1918,8 +1936,8 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'adv-3') {
         const ox = rect.width * 0.09 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
-        const ux = u * 0.72;
-        const uy = u * 0.92;
+        const ux = rect.width*.80/12;
+        const uy = rect.height*(id==='bas-4'?(step===1?.10:.14):.12);
         drawAxesWithTicks(rect, ox, oy, u, true, 2, ux, uy);
 
         // x1 in [0.25, 2.75], t = 0.30 => x1 = 1.00, x2 = 5.00, k = 1.50
@@ -1946,7 +1964,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (step >= 2) {
-          drawDimension(A, B, -24, `윗변 AB = ${(x2 - x1).toFixed(1)}`, C.gold);
+          drawDimension(A, B, -24, `윗변 AB ≈ ${(x2 - x1).toFixed(1)}`, C.gold);
         }
 
         if (step >= 3) {
@@ -1958,20 +1976,20 @@ window.addEventListener('DOMContentLoaded', function () {
           markTick(A, Cpt, 2, C.white); markTick(B, D, 2, C.white);
           markPar(markMid(A, B), B, 1); markPar(markMid(Cpt, D), D, 1);
           markPar(markMid(A, Cpt), Cpt, 2); markPar(markMid(B, D), D, 2);
-          drawDimension(Cpt, D, 24, `아랫변 CD = ${(x4 - x3).toFixed(1)}`, C.cyan);
+          drawDimension(Cpt, D, 24, `아랫변 CD ≈ ${(x4 - x3).toFixed(1)}`, C.cyan);
         }
 
         dCurve((x) => 3 * Math.sin((Math.PI / 6) * x), 0, 12, ox, oy, ux, uy, C.cyan, 3.6);
         dLine(toScr(0, k, ox, oy, ux, uy), toScr(12.3, k, ox, oy, ux, uy), C.gold, 2.0, [4, 4]);
         dLine(toScr(0, -k, ox, oy, ux, uy), toScr(12.3, -k, ox, oy, ux, uy), C.gold, 2.0, [4, 4]);
 
-        dDot(A, `A(${x1.toFixed(1)}, ${k.toFixed(2)}) [드래그]`, C.gold, { x: -25, y: -12 }, true, true);
-        dDot(B, `B(${x2.toFixed(1)}, ${k.toFixed(2)})`, C.white, { x: 8, y: -12 }, false, true);
-        dDot(Cpt, `C(${x3.toFixed(1)}, -${k.toFixed(2)})`, C.white, { x: -35, y: 18 }, false, true);
-        dDot(D, `D(${x4.toFixed(1)}, -${k.toFixed(2)})`, C.white, { x: 8, y: 18 }, false, true);
+        dDot(A, step>=2?`A ≈ (${x1.toFixed(1)}, ${k.toFixed(2)}) [드래그]`:'A [드래그]', C.gold, { x: -25, y: -12 }, true, true);
+        dDot(B, step>=2?`B ≈ (${x2.toFixed(1)}, ${k.toFixed(2)})`:'B', C.white, { x: 8, y: -12 }, false, true);
+        dDot(Cpt, step>=2?`C ≈ (${x3.toFixed(1)}, -${k.toFixed(2)})`:'C', C.white, { x: -35, y: 18 }, false, true);
+        dDot(D, step>=2?`D ≈ (${x4.toFixed(1)}, -${k.toFixed(2)})`:'D', C.white, { x: 8, y: 18 }, false, true);
 
         const areaPara = (x2 - x1) * (2 * k);
-        setMetric(`기울기 비 OA : OB = ${(x2 / x1).toFixed(2)} : 1 | k = ${fmtSurd(k)} | 사각형 ABDC 넓이 = ${areaPara.toFixed(2)} (정답: 넓이 = 12)`);
+        setMetric(`기울기 비 OA : OB ≈ ${(x2 / x1).toFixed(2)} : 1 | k = ${fmtSurd(k)} | 사각형 ABDC 넓이 ≈ ${areaPara.toFixed(2)} (문제의 기울기 비 5:1일 때 넓이 12)`);
         return;
       }
 
@@ -1980,16 +1998,16 @@ window.addEventListener('DOMContentLoaded', function () {
       // -----------------------------------------------------------------------
       if (id === 'adv-4') {
         const ox = rect.width * 0.11 + state.panX;
-        const oy = rect.height * 0.78 + state.panY;
-        const ux = u * 1.15;
-        const uy = u * 0.82;
-        drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2);
+        const oy = rect.height * (step===1?.50:.78) + state.panY;
+        const ux = rect.width*.80/TAU;
+        const uy = rect.height*(step===1?.08:.12);
+        drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2, step>=2);
 
-        const lineT = t * 5.5;
+        const lineT = model.h;
         const ampA = 3, shiftB = -2;
 
+        if (step === 1) dCurve((x) => ampA * Math.sin(x) + shiftB, 0, Math.PI * 2, ox, oy, ux, uy, 'rgba(56,189,248,0.32)', 1.8, [5, 5]);
         if (step >= 1) {
-          dCurve((x) => ampA * Math.sin(x) + shiftB, 0, Math.PI * 2, ox, oy, ux, uy, 'rgba(56,189,248,0.32)', 1.8, [5, 5]);
           [0, Math.PI, Math.PI * 2].forEach((xv) => {
             dDot(toScr(xv, 2, ox, oy, ux, uy), step >= 2 ? `(${fmtPi(xv)}, |b|=2)` : '', C.pink, { x: -24, y: -12 }, false);
           });
@@ -2008,52 +2026,24 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dCurve((x) => Math.abs(ampA * Math.sin(x) + shiftB), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
 
-        const roots = [];
-        const addSinClosed = (sVal) => {
-          if (sVal < -1 - 1e-4 || sVal > 1 + 1e-4) return;
-          if (Math.abs(sVal - 1) < 1e-3) {
-            roots.push(Math.PI * 0.5);
-          } else if (Math.abs(sVal + 1) < 1e-3) {
-            roots.push(Math.PI * 1.5);
-          } else if (Math.abs(sVal) < 1e-3) {
-            roots.push(0, Math.PI, Math.PI * 2);
-          } else {
-            const cl = Math.max(-1, Math.min(1, sVal));
-            const a = Math.asin(cl);
-            if (cl > 0) roots.push(a, Math.PI - a);
-            else roots.push(Math.PI - a, Math.PI * 2 + a);
-          }
-        };
-        if (Math.abs(lineT) < 1e-3) {
-          addSinClosed(2 / 3);
-        } else {
-          addSinClosed((lineT + 2) / 3);
-          addSinClosed((-lineT + 2) / 3);
-        }
-        roots.sort((a, b) => a - b);
-        const uniqueRoots = [];
-        for (const r of roots) {
-          if (!uniqueRoots.length || Math.abs(r - uniqueRoots[uniqueRoots.length - 1]) > 1e-3) {
-            uniqueRoots.push(r);
-          }
-        }
+        const uniqueRoots = model.roots;
 
         const isThree = uniqueRoots.length === 3;
         dLine(
           toScr(-0.2, lineT, ox, oy, ux, uy),
           toScr(Math.PI * 2 + 0.25, lineT, ox, oy, ux, uy),
-          isThree ? C.green : C.gold,
+          isThree && step>=3 ? C.green : C.gold,
           3.0,
           [],
           true
         );
 
-        uniqueRoots.forEach((rx) => {
-          dDot(toScr(rx, lineT, ox, oy, ux, uy), '', isThree ? C.green : C.gold, { x: 6, y: -8 }, false, true);
+        if(step>=2)uniqueRoots.forEach((rx) => {
+          dDot(toScr(rx, lineT, ox, oy, ux, uy), '', isThree && step>=3 ? C.green : C.gold, { x: 6, y: -8 }, false, true);
         });
-        dDot(toScr(Math.PI * 1.15, lineT, ox, oy, ux, uy), `y = ${lineT.toFixed(2)} [드래그]`, C.gold, { x: 10, y: -10 }, true, true);
+        dDot(toScr(Math.PI * 1.15, lineT, ox, oy, ux, uy), TABK!=='explore'&&step===0?'y = t':`y ≈ ${lineT.toFixed(2)} [드래그]`, C.gold, { x: 10, y: -10 }, true, true);
 
-        setMetric(`직선 y = ${lineT.toFixed(2)} ➔ 닫힌 구간 [0, 2π] 실근 ${uniqueRoots.length}개 (3개인 t = 1, 2 ➔ a=3, b=-2, M=5)`);
+        setMetric(`직선 y ≈ ${lineT.toFixed(2)} ➔ 닫힌 구간 [0, 2π] 실근 ${uniqueRoots.length}개 (3개인 t = 1, 2 ➔ a=3, b=-2, M=5)`);
         return;
       }
 
@@ -2063,11 +2053,11 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'adv-5') {
         const ox = rect.width * 0.11 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
-        const ux = u * 1.16;
-        const uy = u * 2.25;
+        const ux = rect.width*.80/TAU;
+        const uy = rect.height*.27;
         drawRadianAxesWithTicks(rect, ox, oy, ux, uy, Math.PI / 2);
 
-        const k = -1.2 + t * 2.4;
+        const k = model.k;
 
         dLine(toScr(-0.2, 0.5, ox, oy, ux, uy), toScr(Math.PI * 2 + 0.2, 0.5, ox, oy, ux, uy), C.green, 2.2, [5, 4]);
         if (step >= 1) {
@@ -2084,30 +2074,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dCurve((x) => Math.sin(x), 0, Math.PI * 2, ox, oy, ux, uy, C.cyan, 3.8);
 
-        const allRoots = [Math.PI / 6, (5 * Math.PI) / 6];
-        if (k >= -1 - 1e-4 && k <= 1 + 1e-4) {
-          if (Math.abs(k - 1) < 1e-3) allRoots.push(Math.PI * 0.5);
-          else if (Math.abs(k + 1) < 1e-3) allRoots.push(Math.PI * 1.5);
-          else if (Math.abs(k) < 1e-3) allRoots.push(0, Math.PI);
-          else {
-            const cl = Math.max(-1, Math.min(1, k));
-            const a = Math.asin(cl);
-            if (cl > 0) allRoots.push(a, Math.PI - a);
-            else allRoots.push(Math.PI - a, Math.PI * 2 + a);
-          }
-        }
-        allRoots.sort((a, b) => a - b);
-        const distinct = [];
-        for (const r of allRoots) {
-          if (!distinct.length || Math.abs(r - distinct[distinct.length - 1]) > 1e-3) {
-            distinct.push(r);
-          }
-        }
+        const distinct = model.roots;
 
         const isThree = distinct.length === 3;
-        dLine(toScr(-0.2, k, ox, oy, ux, uy), toScr(Math.PI * 2 + 0.2, k, ox, oy, ux, uy), isThree ? C.pink : C.gold, 2.8, [], true);
-        dDot(toScr(Math.PI * 1.25, k, ox, oy, ux, uy), `y = k (${fmtSurd(k)}) [드래그]`, C.gold, { x: 10, y: -10 }, true, true);
+        dLine(toScr(-0.2, k, ox, oy, ux, uy), toScr(Math.PI * 2 + 0.2, k, ox, oy, ux, uy), isThree && step>=2 ? C.pink : C.gold, 2.8, [], true);
+        dDot(toScr(Math.PI * 1.25, k, ox, oy, ux, uy),TABK!=='explore'&&step===0?'y = k':`y = k (${fmtSurd(k)}) [드래그]`,C.gold,{x:10,y:-10},true,true);
 
+        if(step>=2)for(const x of model.moving)dDot(toScr(x,k,ox,oy,ux,uy),step>=3?fmtPi(x):'',C.gold,{x:8,y:k>=0?-14:18});
         const sumRoots = distinct.reduce((s, v) => s + v, 0);
         setMetric(`현재 k = ${fmtSurd(k)} ➔ 서로 다른 실근 ${distinct.length}개 | 합 = ${fmtPi(sumRoots)} (k = ±1 일 때 3개, 최대 합 S = 5π/2)`);
         return;
@@ -2145,7 +2118,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const lenAC = Math.hypot(mA.x - mC.x, mA.y - mC.y);
         const heightH = Math.max(0, mA.y - mB.y);
         const areaABC = 0.5 * 6 * heightH;
-        const isMax = Math.abs(t - 0.5) < 0.025;
+        const isMax = model.maximum;
 
         dPoly([A, B, Cpt], isMax && step >= 2 ? 'rgba(52,211,153,0.24)' : 'rgba(56,189,248,0.18)', isMax && step >= 2 ? C.green : C.cyan, 2.8);
 
@@ -2160,6 +2133,7 @@ window.addEventListener('DOMContentLoaded', function () {
           dLine(A, H, C.gold, 2.4, [4, 3], true);
           drawRightAngle(H, A, Cpt, 11, C.gold);
           markTick(B, M, 1, C.pink); markTick(M, Cpt, 1, C.pink); // [표시 보강] M은 현 BC의 중점: BM = MC
+          if(!isMax)dDot(toScr(0,R,ox,oy,sc),'높이 최대 위치',C.green,{x:10,y:-12});
           if (isMax) { // AB = AC (= BC = 6) 인 정삼각형: 같은 길이 눈금, 세 각 π/3 같은 호
             markTick(A, B, 2, C.green); markTick(A, Cpt, 2, C.green);
             drawAngleArc(B, Cpt, A, 26, 'π/3', C.gold); drawAngleArc(Cpt, A, B, 26, 'π/3', C.gold);
@@ -2171,7 +2145,7 @@ window.addEventListener('DOMContentLoaded', function () {
         dDot(O, 'O(외심, R=2√3)', C.gold, { x: 10, y: -6 }, false, true);
         dDot(B, 'B', C.white, { x: -22, y: 14 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 14 }, false, true);
-        dDot(A, `A (AB+AC = ${(lenAB + lenAC).toFixed(2)}) [드래그]`, C.gold, { x: -65, y: -14 }, true, true);
+        dDot(A, step>=3?`A (AB+AC ≈ ${(lenAB+lenAC).toFixed(3)}) [드래그]`:'A [드래그]', C.gold, { x: -65, y: -14 }, true, true);
 
         setMetric(`AB+AC = ${fmtSurd(lenAB + lenAC)} | 넓이 S = ${fmtSurd(areaABC)} (최대: AB=AC=6, L=12, S_max=9√3 ➔ 39)`);
         return;
@@ -2184,7 +2158,6 @@ window.addEventListener('DOMContentLoaded', function () {
         const ox = rect.width * 0.5 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
         const sc = u * 1.35;
-        drawAxesWithTicks(rect, ox, oy, sc, false);
 
         const R = Math.sqrt(19 / 3);
         const O = toScr(0, 0, ox, oy, sc);
@@ -2216,13 +2189,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const lenCD = Math.hypot(mC.x - mD.x, mC.y - mD.y);
         const lenDA = Math.hypot(mD.x - mA.x, mD.y - mA.y);
-        const isCondMet = Math.abs(t - 0.62) < 0.03;
+        const isCondMet = model.condition;
 
         if (step >= 1) {
           dPoly([A, B, Cpt], 'rgba(56, 189, 248, 0.22)', C.cyan, 2.4);
           dPoly([A, Cpt, D], 'rgba(244, 114, 182, 0.22)', C.pink, 2.4);
-          drawAngleArc(B, A, Cpt, 22, '∠B = π/3', C.cyan);
-          drawAngleArc(D, Cpt, A, 22, '∠D = 2π/3 (불변)', C.pink);
+          drawAngleArc(B, A, Cpt, 22, 'π/3', C.cyan);
+          drawAngleArc(D, Cpt, A, 22, '2π/3', C.pink);
           if (!isCondMet) {
             dDot(DTarget, '조건 위치 (CD=2, DA=3)', 'rgba(251,191,36,0.65)', { x: -55, y: 20 }, false);
           }
@@ -2242,15 +2215,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
         drawDimension(A, B, -22, 'AB = 3', C.cyan);
         drawDimension(B, Cpt, -24, 'BC = 5', C.cyan);
-        drawDimension(Cpt, D, 24, isCondMet ? 'CD = 2 (조건 일치!)' : `CD = ${lenCD.toFixed(2)}`, isCondMet ? C.green : C.pink);
-        drawDimension(D, A, 24, isCondMet ? 'DA = 3 (넓이 비 5:2!)' : `DA = ${lenDA.toFixed(2)}`, isCondMet ? C.green : C.pink);
+        drawDimension(Cpt, D, -24, isCondMet ? 'CD = 2' : `CD ≈ ${lenCD.toFixed(2)}`, isCondMet ? C.green : C.pink);
+        drawDimension(D, A, -24, step>=1?(isCondMet?'DA = 3':`DA ≈ ${lenDA.toFixed(3)}`):'DA', isCondMet ? C.green : C.pink);
 
         dDot(A, 'A', C.white, { x: -22, y: -8 }, false, true);
         dDot(B, 'B(π/3)', C.white, { x: -18, y: -12 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 8 }, false, true);
         dDot(D, 'D(2π/3) [호 위 드래그]', C.gold, { x: -45, y: 20 }, true, true);
 
-        setMetric(`AB·BC = 15, CD·DA = ${(lenCD * lenDA).toFixed(2)} ➔ CD=2, DA=3 일 때 넓이 비 5:2, 외접원 넓이 = 19π/3`);
+        setMetric(`AB·BC = 15, CD·DA ≈ ${(lenCD * lenDA).toFixed(2)} ➔ CD=2, DA=3 일 때 넓이 비 5:2, 외접원 넓이 = 19π/3`);
         return;
       }
 
@@ -2260,8 +2233,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'adv-8') {
         const ox = rect.width * 0.48 + state.panX;
         const oy = rect.height * 0.68 + state.panY;
-        const sc = u * 1.12;
-        drawAxesWithTicks(rect, ox, oy, sc, false);
+        const sc = Math.min(rect.width*.72/6,rect.height*.52/Math.sqrt(24))*state.scale;
 
         const c = 5, a = 6, b = 7;
         const cosB = 0.2;
@@ -2271,7 +2243,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const mC = { x: 3, y: 0 };
         const mA = { x: mB.x + c * cosB, y: c * sinB };
 
-        const ratio = Math.max(0.12, Math.min(0.88, t));
+        const ratio = t;
         const lenBD = a * ratio;
         const lenCD = a * (1 - ratio);
         const mD = { x: mB.x + lenBD, y: 0 };
@@ -2282,41 +2254,44 @@ window.addEventListener('DOMContentLoaded', function () {
         const D = toScr(mD.x, mD.y, ox, oy, sc);
 
         const lenAD = Math.hypot(mA.x - mD.x, mA.y - mD.y);
-        const isTarget = Math.abs(lenBD - 2) < 0.08;
+        const isTarget = model.target;
 
         if (step >= 1) {
           dPoly([A, B, D], 'rgba(52, 211, 153, 0.20)', C.green, 2.3);
           dPoly([A, D, Cpt], 'rgba(56, 189, 248, 0.20)', C.cyan, 2.3);
-          drawDimension(B, D, 24, `BD = ${fmtSurd(lenBD)}`, C.green);
-          drawDimension(D, Cpt, 24, `CD = ${fmtSurd(lenCD)}`, C.cyan);
+          drawDimension(B, D, 48, `BD = ${fmtSurd(lenBD)}`, C.green);
+          drawDimension(D, Cpt, 48, `CD = ${fmtSurd(lenCD)}`, C.cyan);
         } else {
           dPoly([A, B, Cpt], 'rgba(56, 189, 248, 0.16)', C.cyan, 2.6);
           drawDimension(B, Cpt, 24, 'BC = 6', C.white);
         }
 
         if (step >= 2) {
-          drawAngleArc(D, A, B, 22, 'α', C.green);
-          drawAngleArc(D, Cpt, A, 28, 'π - α', C.pink);
-          drawAngleArc(B, Cpt, A, 24, 'cos B = 1/5', C.gold);
+          const H=toScr(mA.x,0,ox,oy,sc);
+          dLine(A,H,C.pink,2,[4,4]);drawRightAngle(H,A,Cpt,10,C.pink);
+          dDot(H,'H',C.pink,{x:-4,y:18});
+          drawDimension(B,H,-22,'BH = 1',C.pink);
+          if(step>=3&&isTarget){markTick(B,H,1,C.pink);markTick(H,D,1,C.pink);markTick(A,B,2,C.gold);markTick(A,D,2,C.gold);}
         }
 
         dLine(A, D, C.gold, 3.4, [], true);
-        drawDimension(A, B, -24, 'AB = 5', C.green);
-        drawDimension(A, Cpt, 24, 'AC = 7', C.cyan);
+        drawDimension(A, B, 24, 'AB = 5', C.green);
+        drawDimension(A, Cpt, -24, 'AC = 7', C.cyan);
+        if(step>=3)BRD.text(A,isTarget?'AD = AB = 5':`AD ${fmtSurd(lenAD).startsWith('≈')?'':'='} ${fmtSurd(lenAD)}`,{dy:-38,size:12,weight:800,color:C.gold});
 
         dDot(A, 'A', C.white, { x: -8, y: -14 }, false, true);
         dDot(B, 'B', C.white, { x: -20, y: 14 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 14 }, false, true);
         dDot(
           D,
-          step >= 3 && isTarget ? 'D (1:2 내분점 ➔ AD = 5!) [드래그]' : `D (AD = ${fmtSurd(lenAD)}) [드래그]`,
+          'D [드래그]',
           C.gold,
-          { x: -55, y: step >= 2 ? -62 : -14 }, // [표시 보강] 2단계부터 D의 각(α, π-α) 글자가 이 라벨 뒤에 가려지지 않게 위로
+          { x: 6, y: 18 },
           true,
           true
         );
 
-        setMetric(`BD = ${lenBD.toFixed(2)}, CD = ${lenCD.toFixed(2)} | cos α + cos(π-α) = 0 ➔ AD = ${fmtSurd(lenAD)} (1:2 내분일 때 AD = 5)`);
+        setMetric(`BD ≈ ${lenBD.toFixed(2)}, CD ≈ ${lenCD.toFixed(2)} | cos α + cos(π-α) = 0 ➔ AD = ${fmtSurd(lenAD)} (1:2 내분일 때 AD = 5)`);
         return;
       }
     }
@@ -2324,6 +2299,33 @@ window.addEventListener('DOMContentLoaded', function () {
     /* ==========================================================================
        2.0 장면 구성 — 원본의 문항 16개를 '기본 / 심화' 두 묶음(탭) × 8장면으로 나눕니다.
        ========================================================================== */
+    // Presets are exact model values, not rounded samples that merely look near a special case.
+    const problemById=id=>PROBLEMS.find(p=>p.id===id);
+    const p2=problemById('bas-2');
+    p2.statement=p2.statement.replace('만큼 회전이동한 점','만큼 반시계 방향으로 회전이동한 점');
+    p2.snaps[0].t=(PI/6-Math.asin(.6))/1.20366+.41;p2.snaps[2].t=(PI/3-Math.asin(.6))/1.20366+.41;
+    for(const [id,vals] of [['bas-4',[1/4.5,2/4.5,4/4.5]],['adv-1',[5/24,3/8,13/24,1/24]],['adv-4',[1/5.5,2/5.5,5/5.5]],['adv-5',[11/12,17/24,1/12]],['adv-8',[1/3,1/2,2/3]]]){
+      problemById(id).snaps.forEach((x,i)=>x.t=vals[i]);
+    }
+    problemById('bas-4').defaultT=2/4.5;problemById('adv-1').defaultT=5/24;problemById('adv-4').defaultT=1/5.5;problemById('adv-5').defaultT=1/12;problemById('adv-8').defaultT=1/3;
+    const pa2=problemById('adv-2');pa2.defaultT=(Math.sqrt(1.5)-1)/(Math.SQRT2-1);
+    pa2.snaps=[{t:.08/(Math.SQRT2-1),label:'k = 1.08 · 현 비교'},{t:pa2.defaultT,label:'문제의 넓이 조건 · k = √6/2'},{t:.37/(Math.SQRT2-1),label:'k = 1.37 · 짧아진 현'},{t:0,label:'경계 k=1 · 두 점이 축 위'},{t:1,label:'경계 k=√2 · P=Q (접점)'}];
+    problemById('bas-7').snaps[2].t=.562+2*Math.asin(2/(2*(3*Math.sqrt(34)/8)))-2*Math.asin(3/(2*(3*Math.sqrt(34)/8)));
+    problemById('bas-7').snaps[2].label='AB와 BC의 길이가 바뀐 위치 · AB=3, BC=2';
+    problemById('adv-7').snaps[2].t=.62+(2*Math.asin(2/(2*Math.sqrt(19/3)))-2*Math.asin(3/(2*Math.sqrt(19/3))))/.85;
+    problemById('adv-7').snaps[2].label='CD와 DA의 길이가 바뀐 위치 · CD=3, DA=2';
+    problemById('bas-8').sliderTitle='변 BC 안에서 분할점 D 위치 조절:';
+    problemById('bas-6').sliderTitle='큰 호 BC 위의 꼭짓점 A 위치 이동:';
+    problemById('bas-4').steps[2].desc += ' $t=0$에서는 접어 올린 영점 2개이고, $t<0$ 또는 $t>4$에서는 교점이 없습니다.';
+    problemById('adv-4').steps[0].desc += ' 또한 $a\\le|b|$이면 원래 곡선 전체가 x축 아래(또는 접함)에 있어 접은 뒤에도 한 봉우리만 남습니다. 실근 3개인 높이는 끝점 높이 $t=|b|$ 한 개뿐이므로 제외합니다.';
+    problemById('adv-4').alg += '<div>• <strong>남은 경우 $0<a\\le|b|$:</strong> 접기 전 함수가 양수가 되지 않아 $f(x)=|b|-a\\sin x$입니다. 끝점 높이 $t=|b|$에서만 0, π, 2π의 3근이 나오므로 주어진 두 높이를 만들지 못합니다. $a=|b|$의 0 높이 접점도 1개입니다.</div>';
+    problemById('adv-2').alg=problemById('adv-2').alg.replace('반지름이 $1$인 두 변 사이의 넓이가','조건 $k>1$에서 끼인각이 예각임을 확인한 뒤, 반지름이 $1$인 두 변 사이의 넓이가');
+    problemById('adv-6').steps[1].desc += ' 원 위에서 A의 높이는 $y_A\\le R$이고 등호는 원의 맨 위 점에서만 성립합니다. 현의 높이는 $-\\sqrt3$이므로 $h=y_A+\\sqrt3\\le3\\sqrt3$입니다.';
+    problemById('adv-8').steps[1]={step:2,title:'2단계. A에서 BC에 수선을 내려 정사영 BH 찾기',desc:'전체 삼각형에 코사인법칙을 쓰면 $\\cos B=(5^2+6^2-7^2)/(2\\cdot5\\cdot6)=1/5$입니다. 수선의 발 H에서 $BH=AB\\cos B=5\\cdot1/5=1$을 얻습니다. 분홍 수선 AH와 직각 표시를 확인합니다.'};
+    problemById('adv-8').steps[2]={step:3,title:'3단계. 수직이등분선에서 AD=AB를 읽기',desc:'$BD=2$, $BH=1$이므로 $BH=HD=1$입니다. 따라서 AH는 BD의 수직이등분선이고 A에서 B와 D까지의 거리는 같습니다. $AD=AB=5$입니다. 인접한 두 삼각형에 코사인법칙을 세우는 정석 풀이와 비교해 계산이 줄어드는 이유를 확인합니다.'};
+    problemById('adv-8').alg='<div><strong>정사영과 대칭으로 줄이는 풀이:</strong> $\\cos B=(25+36-49)/(2\\cdot5\\cdot6)=1/5$이므로 수선의 발 H는 $BH=5\\cos B=1$을 만족합니다. $BD=2$이므로 $BH=HD=1$. A가 BD의 수직이등분선 위에 있어 $AD=AB=5$입니다. 이 발상은 내분점의 양쪽 거리가 같아지는지 먼저 확인할 때만 쓸 수 있습니다.</div>'+problemById('adv-8').alg;
+    const mathSafe=value=>String(value).replace(/\$([^$]*)\$/g,(_,m)=>'$'+m.replace(/</g,'\\lt ').replace(/>/g,'\\gt ').replace(/'/g,'^{\\prime}')+'$');
+    const stepText=st=>mathSafe(stepName(st)+' — '+st.desc).replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').replace(/\*\*/g,'');
     const tex = APLab.tex;
     const arrow = (s) => (typeof s === 'string' ? s.replace(/➔/g, '→') : s);
     PROBLEMS.forEach((p) => {
@@ -2332,7 +2334,7 @@ window.addEventListener('DOMContentLoaded', function () {
       p.steps.forEach((st) => { st.title = arrow(st.title); st.desc = arrow(st.desc); });
     });
     // 원본 renderMathHTML: **굵게** 와 $수식$ 을 HTML로 (이모지 꼬리표는 화면에서 뺍니다)
-    const rm = (str) => (str ? APLab.stripEmoji(str)
+    const rm = (str) => (str ? APLab.stripEmoji(mathSafe(str))
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\$([^$]+)\$/g, (_, m) => tex(m)) : '');
     const stepName = (st) => st.title.replace(/^(?:Step\s*|\d+단계)\s*\d*\.\s*/, '');
@@ -2380,17 +2382,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // 슬라이더 옆에 보이는 값 (원본 syncSliderReadout)
     const READOUT = {
-      'bas-1': (t) => `r=${((2 + 6 * t) * TVG('bas-1').f).toFixed(2)}`,
-      'bas-2': (t) => `θ=${fmtPi(0.15 + 1.20366 * t)}`,
-      'bas-3': (t) => `k=${(0.15 + 0.78 * t).toFixed(3)}`,
-      'bas-4': (t) => `t=${(4.5 * t).toFixed(2)}`,
-      'bas-5': (t) => `t=${(-1 + 2 * t).toFixed(2)}`,
-      'adv-1': (t) => `θ=${fmtPi(Math.max(0.02, Math.min(0.98, t)) * 2 * Math.PI)}`,
-      'adv-2': (t) => `k=${(1.02 + 0.379157 * t).toFixed(3)}`,
-      'adv-3': (t) => `x₁=${(0.25 + 2.5 * t).toFixed(2)}`,
-      'adv-4': (t) => `t=${(5.5 * t).toFixed(2)}`,
-      'adv-5': (t) => `k=${(-1.2 + 2.4 * t).toFixed(2)}`,
-      'adv-8': (t) => `BD=${(6 * Math.max(0.12, Math.min(0.88, t))).toFixed(2)}`
+      'bas-1': (t) => `r≈${((2 + 6 * t) * TVG('bas-1').f).toFixed(2)}`,
+      'bas-2': (t) => `θ ${fmtPi(currentModel('bas-2',t).theta)}`,
+      'bas-3': (t) => `k≈${(0.15 + 0.78 * t).toFixed(3)}`,
+      'bas-4': (t) => `t≈${(4.5 * t).toFixed(2)}`,
+      'bas-5': (t) => `t≈${(-1 + 2 * t).toFixed(2)}`,
+      'adv-1': (t) => `θ ${fmtPi(t*TAU)}`,
+      'adv-2': (t) => `k ≈ ${currentModel('adv-2',t).k.toFixed(4)}`,
+      'adv-3': (t) => `x₁≈${(0.25 + 2.5 * t).toFixed(2)}`,
+      'adv-4': (t) => `t≈${(5.5 * t).toFixed(2)}`,
+      'adv-5': (t) => `k≈${(-1.2 + 2.4 * t).toFixed(2)}`,
+      'adv-8': (t) => `BD ≈ ${(6*t).toFixed(3)}`
     };
     const SHORT = {
       'bas-1': '[01] 부채꼴 최대 넓이', 'bas-2': '[02] 단위원 각변환', 'bas-3': '[03] sin2x 교점의 합', 'bas-4': '[04] 절댓값 교점 개수',
@@ -2404,18 +2406,94 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function frame(idx, b, s, v, lab) {
       BRD = b;
-      TABK = lab ? lab.tab : 'explore';
+      TABK = tabOf(lab);
       SS = s;
       if (!s.dragging) dragPrev = null;
       state.probIdx = idx;
-      state.auxStep = Math.min(3, s.step || 0);
-      state.sliderT = s.t;
+      state.auxStep = TABK==='problem'?0:Math.min(3, s.step || 0);
+      const p=PROBLEMS[idx],fixedT=p.id==='bas-1'&&state.auxStep<2?initialOf(p):p.defaultT;
+      state.sliderT = TABK==='explore'?s.t:fixedT;
       state.animT = 1;
       CURRECT = layoutRect(b);
       METRIC = '';
       drawScene(CURRECT);
       if (state.auxStep >= 3 && METRIC) v.summary = METRIC.replace(/➔/g, '→');
-      else if (state.auxStep >= 1) v.guide = `보조선 ${state.auxStep}단계: 도형의 대칭과 조건의 경계를 살펴보세요.`;
+
+    }
+
+    function ahaOf(p){
+      if(p.id==='bas-1'){const g=TVG(p.id);return `둘레 $2r+l=${g.P}$를 두 부분으로 펴서 봅니다. $S=\\tfrac14(2r)l$은 합이 일정한 두 양의 곱이므로 $2r=l$일 때 최대입니다. 중심각은 둘레와 관계없이 $l/r=2$입니다.`;}
+      if(p.id==='bas-3'){const g=TVG(p.id);return `두 쌍의 합은 모두 $3\\pi/2$입니다. 현재 계수는 ${g.a}, ${g.b}, ${g.b}, ${g.a}이므로 대칭인 항을 묶으면 합은 ${g.ans}입니다.`;}
+      if(p.id==='bas-6'){const g=TVG(p.id);return `현재 반지름은 ${g.R}, 원주각은 ${g.as}입니다. 지름을 빗변으로 만든 직각삼각형에서 BC=${g.bcT}, A′C=${g.acT}를 읽습니다. 같은 현을 보는 큰 호 위에서는 A를 움직여도 원주각이 같습니다.`;}
+      if(p.id==='bas-8'){const g=TVG(p.id);return `전체 넓이와 두 부분 넓이를 비교합니다. 이등분선에서 공통인 $\\sin(\\pi/3)$을 약분하면 $${g.c*g.b}=(${g.c}+${g.b})AD$이므로 AD=${g.AD}입니다. 다른 위치의 D에는 같은 두 각을 대입할 수 없습니다.`;}
+      return p.aha;
+    }
+    function exploreSteps(p,s){
+      const m=currentModel(p.id,s.t),num=x=>Number(x.toFixed(4)),as=fmtSurd;
+      if(p.id==='bas-1')return[
+        `두 반지름의 합 2r과 호의 길이 l을 아래 막대에 이어 붙였습니다. 현재 r≈${num(m.r)}, l≈${num(m.l)}이고 2r+l=${m.P}는 일정합니다.`,
+        `넓이는 $S=\\tfrac14(2r)l$입니다. 같은 합을 나누는 두 길이가 같아질수록 곱이 커집니다. 오른쪽 $S(r)=-(r-${m.P/4})^2+${m.max}$ 그래프에서 같은 사실을 확인합니다.`,
+        `현재 넓이는 약 ${num(m.area)}입니다. ${m.optimal?'지금은 2r=l인 등호 조건을 만족합니다.':'지금은 2r과 l이 달라 최댓값보다 작습니다.'} r=${m.P/4}, l=${m.P/2}일 때 최대 ${m.max}, 그때 θ=2 rad입니다.`];
+      if(p.id==='bas-2')return[
+        `P에서 x축에 수선을 내려 직각삼각형을 만듭니다. 현재 좌표는 (${as(m.x)}, ${as(m.y)})이며, 제1사분면이므로 두 좌표가 양수입니다. 문제의 3/5 조건과 자유조작 값을 구별합니다.`,
+        `반시계로 90° 회전한 Q는 $(-\\sin\\theta,\\cos\\theta)$입니다. 두 직각삼각형이 합동이어서 Q의 가로 좌표는 P의 세로 좌표와 절댓값이 같고 부호가 반대입니다.`,
+        `y=x에 대칭인 R는 $(\\sin\\theta,\\cos\\theta)$입니다. 현재 구하는 두 성분의 합은 $-\\sin\\theta+\\cos\\theta$ ${as(m.x-m.y)}. 문제 조건에서는 $-3/5+4/5=1/5$입니다.`];
+      if(p.id==='bas-3')return[
+        `현재 수평선 높이는 k≈${num(m.k)}입니다. 주기 π의 두 양의 봉우리 축 π/4와 5π/4를 먼저 찾습니다. 각 봉우리에서 같은 높이의 두 교점이 짝을 이룹니다.`,
+        `전체 네 교점을 가운데 축 3π/4로 접으면 바깥 두 점과 안쪽 두 점이 각각 겹칩니다. 두 쌍 모두 x좌표의 합이 3π/2입니다.`,
+        `현재 계수 ${m.a}, ${m.b}, ${m.b}, ${m.a}를 대칭인 쌍끼리 묶으면 $(${m.a}+${m.b})\\cdot3\\pi/2$이므로 합은 ${m.ans}입니다. k가 0과 1 사이에서 변해도 네 점의 짝은 유지됩니다.`];
+      if(p.id==='bas-4')return[
+        '점선의 원래 곡선 y=3 sin x−1과 x축 아래 부분을 먼저 비교합니다. 음수인 부분만 위로 접고, 양수인 부분은 그대로 둡니다.',
+        '접은 뒤 작은 봉우리 높이는 2, 큰 봉우리 높이는 4입니다. 수평선을 움직이며 한 봉우리의 두 교점이 접점 하나로 합쳐지는 순간을 찾습니다.',
+        `현재 t≈${num(m.h)}의 교점은 ${m.roots.length}개입니다. [0,2π)에서 t=0은 2개, 0<t<2는 4개, t=2는 3개, 2<t<4는 2개, t=4는 1개, 그 밖은 0개입니다. t=1에서도 오른쪽 끝 2π는 빼므로 4개입니다.`];
+      if(p.id==='bas-5')return[
+        `원래 식은 $(2\\sin x-1)(\\sin x+1)=0$입니다. 초록 1/2선과 분홍 −1선은 방정식의 조건이고, 금색 t≈${num(m.h)}선은 비교용 조작선입니다.`,
+        '초록선과의 두 교점 π/6, 5π/6은 x=π/2에 대칭입니다. 각 근을 다시 계산하지 않고 합 π를 읽습니다.',
+        `분홍 −1선에서는 3π/2의 접점 하나만 셉니다. 원래 방정식의 서로 다른 근은 3개, 합은 5π/2입니다. 금색 비교선의 현재 교점은 ${m.roots.length}개이며 원래 방정식의 근과 섞어 세지 않습니다.`];
+      if(p.id==='bas-6')return[
+        `현재 원의 반지름은 ${m.R}입니다. B에서 중심 O를 지나는 지름 BA′를 그어 길이 2R=${m.d}를 확보합니다.`,
+        `A와 A′는 같은 현 BC를 보는 큰 호 위에 있으므로 원주각이 ${m.as}로 같습니다. 지름을 보는 C의 각은 직각입니다. ${m.atDiameter?'현재 A=A′입니다.':'현재 A와 A′는 서로 다른 점입니다.'}`,
+        `직각삼각형 A′BC에서 빗변은 ${m.d}입니다. 따라서 BC=${m.d} sin(${m.as})=${m.bcT}, A′C=${m.d} cos(${m.as})=${m.acT}입니다.`];
+      if(p.id==='bas-7')return[
+        `대각선 AC로 두 삼각형을 나눕니다. 현재 AB≈${num(m.AB)}, BC≈${num(m.BC)}입니다. ${m.condition?'지금은 문제의 AB=2, BC=3 조건입니다.':'움직인 B는 문제의 길이 조건과 다릅니다. 표시된 조건 위치와 비교하세요.'}`,
+        'B가 같은 호 위에 있는 동안 마주보는 각은 보각입니다. 고정된 아래 삼각형의 CD=4, DA=3과 cos D=1/3으로 AC²=25−24/3=17을 얻습니다. 따라서 cos B=−1/3도 일정합니다.',
+        `현재 위 삼각형도 $AC^2=AB^2+BC^2+\\tfrac23 AB\\cdot BC=17$을 만족합니다. 조건 위치에서는 $13-12\\cos B=25+24\\cos B$를 풀어 cos B=−1/3, AC=√17을 구합니다.`];
+      if(p.id==='bas-8'){const g=TVG(p.id);return[
+        `전체 넓이는 ${g.sTxt}입니다. 분할점 D가 변 안에 있으므로 두 색 삼각형 넓이 약 ${num(m.area1)}, ${num(m.area2)}의 합이 항상 전체 넓이와 같습니다.`,
+        `현재 ∠BAD≈${num(m.alpha*180/PI)}°, ∠DAC≈${num(m.beta*180/PI)}°이고 합은 120°입니다. ${m.bisector?'두 각이 정확히 60°씩 같아 공통 사인값을 약분할 수 있습니다.':'지금은 이등분선이 아니므로 두 부분에 같은 sin 60°를 대입하면 안 됩니다.'}`,
+        `현재 AD≈${num(m.AD)}입니다. 일반 위치에서는 $2S=AD(${g.c}\\sin\\alpha+${g.b}\\sin\\beta)$입니다. 이등분선 위치에서만 두 사인값이 같아져 $AD=${g.c*g.b}/(${g.c}+${g.b})=${g.AD}$로 줄어듭니다.`];}
+      if(p.id==='adv-1')return[
+        `직선 y=x 반사라면 P의 두 좌표가 Q에서 뒤바뀝니다. 각 조건은 $6\\theta=2n\\pi+\\pi/2$여서 6개의 후보를 표시합니다. 현재 점은 ${m.mirror?'대칭 조건을 만족합니다.':'후보에서 벗어나 대칭 조건을 만족하지 않습니다.'}`,
+        `초록 반원은 y>x인 영역입니다. 현재 P는 ${m.upper?'그 영역 안에 있습니다.':nearExact(m.P.y,m.P.x)?'경계 y=x 위에 있으므로 제외됩니다.':'그 영역 밖입니다.'} 후보 중 5π/12, 3π/4, 13π/12만 남습니다.`,
+        `현재 삼각형 넓이는 약 ${num(m.area)}이며 ${m.collinear?'세 점이 일직선입니다.':'세 점은 일직선이 아닙니다.'} 후보 3π/4에서는 O,P,Q가 일직선이므로 제외하고, 두 유효각의 합은 3π/2입니다. 0과 2π는 원래 범위에서 제외합니다.`];
+      if(p.id==='adv-2')return[
+        `OP=OQ=1인 이등변삼각형을 봅니다. 현재 k≈${num(m.k)}, 넓이≈${num(m.area)}입니다. ${m.equilateral?'지금은 주어진 넓이를 만족하는 정삼각형입니다.':s.t===1?'현재 경계에서는 P=Q로 합쳐져 넓이가 0입니다.':'현재 넓이와 문제의 √3/4를 비교하세요.'}`,
+        `대칭축 y=x가 현의 중점 M을 지나 수직입니다. OM=k/√2≈${num(m.h)}, PQ≈${num(m.chord)}입니다. 1<k<√2에서 중심각이 예각이므로 주어진 sin값에서 60°를 선택할 수 있습니다.`,
+        `Q의 좌표는 P의 좌표를 바꾼 것입니다. $2\\sin\\alpha\\sin\\beta=k^2-1$이므로 현재 식의 값 $4k^2-2$는 약 ${num(4*m.k*m.k-2)}입니다. 주어진 넓이를 만족할 때만 $k^2=3/2$를 써서 4가 됩니다.`];
+      if(p.id==='adv-3')return[
+        `위쪽 두 점의 높이가 같으므로 OA,OB의 기울기 비는 x₂:x₁입니다. 대칭축 x=3에서 x₁+x₂=6이고 현재 비는 약 ${num(m.ratio)}:1입니다.`,
+        `현재 x₁≈${num(m.x1)}, x₂≈${num(m.x2)}, k≈${num(m.k)}이므로 AB≈${num(m.x2-m.x1)}입니다. 문제의 5:1 조건에서는 두 x좌표가 1,5로 정해져 k=3/2입니다.`,
+        `점대칭 중심 M(6,0)이 두 대각선을 이등분하므로 ABDC는 평행사변형입니다. 현재 넓이는 AB·2k≈${num(m.area)}입니다. 기울기 비 5:1일 때 밑변 4, 높이 3으로 넓이 12입니다.`];
+      if(p.id==='adv-4')return[
+        '점선의 원래 곡선과 x축 아래를 접어 올린 모습을 비교합니다. 닫힌 구간이므로 0, π, 2π 세 점을 모두 표시합니다. 이 세 점은 같은 높이 |b|입니다.',
+        '작은 봉우리 높이 1이 끝점 높이 2보다 낮습니다. 이때 작은 봉우리 접점과 다른 두 교점으로 3개, 끝점 높이에서는 0,π,2π의 3개가 생깁니다.',
+        `현재 높이 t≈${num(m.h)}에서 교점 ${m.roots.length}개입니다. t=0은 2개, 0<t<1은 4개, t=1은 3개, 1<t<5는 보통 2개지만 t=2만 3개, t=5는 1개입니다. a≤|b|와 a≥2|b|의 다른 경우는 두 높이를 만들지 못하므로 a=3,b=−2,M=5입니다.`];
+      if(p.id==='adv-5')return[
+        '인수분해하면 고정 조건 sin x=1/2와 이동 조건 sin x=k의 합집합입니다. 고정근 두 개를 초록으로 표시하고 같은 x를 두 번 세지 않습니다.',
+        `현재 k≈${num(m.k)}에서 이동 조건의 근은 ${m.moving.length}개, 합집합의 서로 다른 근은 ${m.roots.length}개입니다. k=1/2이면 두 고정근과 모두 겹치고, |k|>1이면 새 근이 없습니다. ±1의 접점만 새 근 하나를 보탭니다.`,
+        `현재 서로 다른 근의 합은 ${fmtPi(m.sum)}입니다. 세 근 조건에서는 k=1 또는 −1이고 곱은 −1입니다. 각 합 3π/2, 5π/2 중 큰 값을 사용하면 최종 값은 −5/2입니다.`];
+      if(p.id==='adv-6')return[
+        '예각 조건으로 A=π/3을 선택합니다. 사인법칙에서 고정 현 BC=2R sin A=6을 얻으므로 넓이는 A에서 현까지의 높이에만 달렸습니다.',
+        `노란 수선은 현재 높이 h≈${num(m.h)}를 표시합니다. 원 위에서 A의 세로 좌표는 R 이하이므로 h≤R+√3=3√3입니다. ${m.maximum?'현재 원의 맨 위 점에서 등호가 성립합니다.':'현재는 최대 위치와 다릅니다. 수직이등분선 위의 맨 위 점과 비교하세요.'}`,
+        `현재 AB+AC≈${num(m.AB+m.AC)}, 넓이≈${num(m.area)}입니다. 최대 높이일 때에만 AB=AC=BC=6이 되어 L=12, Smax=9√3이고 L+√3 Smax=39입니다.`];
+      if(p.id==='adv-7')return[
+        `두 삼각형의 끼인각은 π/3과 2π/3으로 사인값이 같습니다. 현재 CD≈${num(m.CD)}, DA≈${num(m.DA)}이므로 넓이 비는 15:(CD·DA)≈${num(m.ratio)}:1입니다. 문제의 CD=2, 5:2 조건에서는 DA=3을 얻습니다.`,
+        '위쪽 삼각형 ABC의 3,5와 끼인각 π/3은 고정입니다. 따라서 AC²=9+25−30·1/2=19이고, D를 움직여도 공통 대각선은 같습니다.',
+        `사인법칙으로 R²=19/3, 원의 넓이는 19π/3입니다. 현재 19+DA≈${num(19+m.DA)}이며, 문제의 길이·넓이 비 조건을 만족할 때에는 19+3=22입니다.`];
+      return[
+        `현재 BD≈${num(m.BD)}, DC≈${num(m.DC)}이고 합은 6입니다. ${m.target?'지금은 문제의 1:2 내분점입니다.':s.t===0||s.t===1?'현재 D가 끝점이므로 한 부분 삼각형이 퇴화합니다.':'현재 내분비를 문제의 1:2와 비교하세요.'}`,
+        `A에서 BC에 내린 수선 AH와 그 발 H를 봅니다. 전체 삼각형의 cos B=1/5에서 BH=AB cos B=1은 D를 움직여도 고정됩니다. ${s.t===0||s.t===1?'지금은 끝점이므로 한 부분 삼각형이 퇴화합니다. D=B이면 AD=AB, D=C이면 AD=AC입니다.':'BH와 HD가 같아지는 위치를 찾아 보세요.'}` ,
+        `현재 AD≈${num(m.AD)}입니다. ${m.target?'BD=2와 BH=1에서 BH=HD이므로 A는 BD의 수직이등분선 위에 있습니다. 따라서 AD=AB=5입니다.':'BH와 HD가 같지 않으면 AB=AD를 사용할 수 없습니다. 일반 위치에서는 AD²=(49·BD+25·DC)/6−BD·DC로 검산합니다.'}`];
     }
 
     function sceneOf(p) {
@@ -2432,8 +2510,8 @@ window.addEventListener('DOMContentLoaded', function () {
         guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — 조절 막대를 움직이거나 그림의 <b>테두리가 빛나는 점</b>을 ${VERB[p.dragMode] || '끌어'} 보세요. <b>정리</b> 탭에서 단계 단추를 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
         startStep: 0,
         controls: ['t'],
-        presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => Math.abs(st.t - sn.t) < 0.003 })) : []),
-        steps: () => p.steps.map(stepName),
+        presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => nearExact(st.t,sn.t) })) : []),
+        steps: (s,lab) => (tabOf(lab)==='explore'?exploreSteps(p,s):p.steps.map(stepText)).map(mathSafe),
         notesTitle: '핵심 발견',
         enter: (s, lab) => {
           s.cur = p.id;
@@ -2450,11 +2528,12 @@ window.addEventListener('DOMContentLoaded', function () {
           quick: () => ({ steps: rm(p.alg) })
         },
         problem: { tag: p.badge, text: () => (vary ? probHTML(rm(p.statement)) : rm(p.statement)), answer: () => p.answer, snap: () => ({ t: p.defaultT }) },
-        view: (s) => {
+        view: (s,lab) => {
           const step = Math.min(3, s.step || 0);
           const out = {};
-          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
-          if (step >= 3) out.notes = rm(p.aha);
+          if(tabOf(lab)==='problem')return out;
+          if(step>=1){const live=tabOf(lab)==='explore',text=live?exploreSteps(p,s)[step-1]:p.steps[step-1].desc;out.formula=`<p><strong>${step}단계</strong><br>${rm(text)}</p>`;}
+          if(step>=3&&tabOf(lab)!=='explore')out.notes=rm(ahaOf(p));
           return out;
         },
         draw: (b, s, v, lab) => frame(idx, b, s, v, lab)
@@ -2468,6 +2547,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     APLab.createLab({
       id: 'alg-trig-geometry',
+      stagedReveal: true,
       title: '삼각함수와 도형 활용',
       courseName: '대수',
       unit: 'Ⅱ. 삼각함수',
@@ -2477,15 +2557,10 @@ window.addEventListener('DOMContentLoaded', function () {
       board: { kind: 'figure', focus: { x: [0, 1000], y: [0, 700] }, pad: 0.045, minZoom: 0.6, maxZoom: 4 },
       params: {
         t: {
-          value: 0.5, min: 0, max: 1, step: 0.005, color: 'amber', label: '도형 조작',
+          value: 0.5, min: 0, max: 1, step: 'any', color: 'amber', label: '도형 조작',
           hint: '그림의 테두리가 빛나는 점을 끌어도 같은 값이 바뀝니다',
           format: (v, s) => (READOUT[s.cur] ? READOUT[s.cur](v) : `${Math.round(v * 100)}%`),
-          onInput: (s) => {
-            if (s.step >= 3) {
-              const p = PROBLEMS.find((q) => q.id === s.cur);
-              for (const sn of p.snaps) if (Math.abs(s.t - sn.t) < 0.02) { s.t = sn.t; break; }
-            }
-          }
+          onInput: () => {}
         }
       },
       groups

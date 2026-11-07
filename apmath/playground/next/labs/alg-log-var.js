@@ -62,6 +62,31 @@
     return out;
   };
 
+  // x=±exp(u)로 바꾸어 점근선 근처와 화면 밖의 교점도 빠뜨리지 않습니다.
+  // 각 가지의 높이차는 m≤0이면 단조 증가, m>0이면 유일한 극댓값을 갖습니다.
+  function logLineGeometry(m, k) {
+    function branch(slope) {
+      const H = (u) => 2 * u / Math.LN2 - slope * Math.exp(u) - k;
+      if (slope === 0) return { roots: [2 ** (k / 2)], peak: null, maximum: null };
+      if (slope < 0) {
+        let lo = -1, hi = 1;
+        while (H(lo) > 0) lo *= 2;
+        while (H(hi) < 0) hi *= 2;
+        return { roots: [Math.exp(bisect(H, lo, hi))], peak: null, maximum: null };
+      }
+      const u = Math.log(2 / (slope * Math.LN2)), maximum = H(u), peak = Math.exp(u);
+      const roundoff = 32 * Number.EPSILON * Math.max(1, Math.abs(k), Math.abs(2 * u / Math.LN2));
+      if (maximum < -roundoff) return { roots: [], peak, maximum };
+      if (Math.abs(maximum) <= roundoff) return { roots: [peak], peak, maximum: 0 };
+      let lo = u - 1, hi = u + 1;
+      while (H(lo) > 0) lo = u - 2 * (u - lo);
+      while (H(hi) > 0) hi = u + 2 * (hi - u);
+      return { roots: [Math.exp(bisect(H, lo, u)), Math.exp(bisect(H, u, hi))], peak, maximum };
+    }
+    const positive = branch(m), negative = branch(-m);
+    return { right: positive.roots, left: negative.roots.map((x) => -x).reverse(), positive, negative };
+  }
+
   /* ---------------- 변형 묶음(varier) ---------------- */
   let serial = 0;
   function varier(pool, build) {
@@ -124,20 +149,21 @@
     }
     // 직선 y = m x + k 와의 교점의 개수
     const L = (x) => e.m * x + e.k;
-    const left = crossings((x) => F(x) - L(x), -400, -1e-6), right = crossings((x) => F(x) - L(x), 1e-6, 400);
+    const { left, right, positive } = logLineGeometry(e.m, e.k);
     const R = right.length, total = left.length + R;
     const lineTex = `${e.m === 1 ? '' : num(e.m)}x${e.k > 0 ? '+' + e.k : e.k < 0 ? '-' + (-e.k) : ''}`;
     const text = `함수 $y = \\log_2 x^2$의 그래프와 직선 $y = ${lineTex}$${ji(lineTex)} 만나는 서로 다른 교점의 개수를 구하시오.`;
     const steps = [
       `$x\\lt 0$ 인 왼쪽 가지 $y=2\\log_2(-x)$ 는 감소하고 직선은 증가(기울기 $${num(e.m)}\\gt 0$)하므로 왼쪽에서는 정확히 $1$개 만납니다.`,
-      R === 0 ? `$x\\gt 0$ 인 오른쪽 가지 $y=2\\log_2x$ 는 직선 아래에만 있어 만나지 않습니다($0$개).` : `$x\\gt 0$ 인 오른쪽 가지 $y=2\\log_2x$ 와 직선은 $${R}$개의 점에서 만납니다.`,
+      `오른쪽에서는 높이차 $h(x)=2\\log_2x-(${lineTex})$를 봅니다. 양끝 $x\\to0^+,\\ x\\to\\infty$에서 $h(x)\\to-\\infty$이고, 오목한 그래프의 최대 높이차는 $H\\approx${positive.maximum.toFixed(4)}$입니다. 따라서 ${R === 0 ? '직선 아래에만 있어 교점은 $0$개' : R === 1 ? '한 점에서 접하므로 교점은 $1$개' : '한 번 올라갔다 내려오며 직선을 두 번 지나므로 교점은 $2$개'}입니다.`,
       `따라서 교점은 $1+${R}=${total}$개입니다.`
     ];
     const xr = Math.max(9, ...(right.length ? [right[right.length - 1] + 2.5] : [9]));
     const win = { x: [-9, xr], y: [-6, Math.max(7, L(xr) + 1.5)] };
-    return { e, text, ans: tx(String(total)) + '개', steps, std: steps.map((t, i) => `${i + 1}) ${t}`),
-      quick: [`왼쪽 가지는 증가하는 직선과 반드시 한 번 만나고, 오른쪽 가지에서 ${R === 0 ? '만나지 않아' : `$${R}$개`} 더해 모두 $${total}$개입니다. $x\\gt 0$ 인 부분만 그리면 왼쪽 교점을 놓칩니다.`],
-      win, F, L, left, right, total, R };
+    const proof = `높이차의 최대는 $c=\\dfrac{2}{${num(e.m)}\\ln2}$에서 얻습니다. $u=x/c>0$로 놓으면 $h(x)-h(c)=\\dfrac{2}{\\ln2}(\\ln u-u+1)\\le0$이고 등호는 $u=1$일 때뿐입니다. 이 부등식은 로그곡선이 접선 아래에 놓인다는 성질입니다.`;
+    return { e, text, ans: tx(String(total)) + '개', steps, std: [...steps.map((t, i) => `${i + 1}) ${t}`), proof],
+      quick: [`왼쪽은 감소곡선과 증가직선이므로 $1$개입니다. 오른쪽 높이차의 유일한 최대 $H\\approx${positive.maximum.toFixed(4)}$와 양끝의 음수를 비교하면 $${R}$개, 합계 $${total}$개입니다. 화면 밖의 교점까지 셉니다.`],
+      win, F, L, left, right, total, R, peak: positive.peak, maximum: positive.maximum };
   };
 
   /* ----- absM: |log₂(x−p)| = t 의 두 교점: 곱 1, 중점, 합 ----- */
@@ -164,7 +190,7 @@
     ];
     const hi = p + d2;
     return { e, text, ans, steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
-      quick: [`양의 높이 $t>0$에서 두 교점까지의 점근선 기준 거리는 서로 역수이므로 곱이 $1$입니다. 거리는 $2^{-${t}}, 2^{${t}}$ 이고, 합은 $2^{${t}}+2^{-${t}}\\gt 2$이므로 중점은 꺾인 점의 오른쪽에 있습니다. ${e.ask==='prodM'?`따라서 중점의 x좌표는 $${Mt}$.`:`두 x좌표의 합은 $${St}$.`}`],
+      quick: [`양의 높이 $t\\gt0$에서 두 교점까지의 점근선 기준 거리는 서로 역수이므로 곱이 $1$입니다. 거리는 $2^{-${t}}, 2^{${t}}$ 이고, 합은 $2^{${t}}+2^{-${t}}\\gt 2$이므로 중점은 꺾인 점의 오른쪽에 있습니다. ${e.ask==='prodM'?`따라서 중점의 x좌표는 $${Mt}$.`:`두 x좌표의 합은 $${St}$.`}`],
       win: { x: [Math.min(p - 2.6, -1.4), hi + 2.0], y: [-1.6, t + 2.4] }, p, t, x1, x2, M, d1, d2 };
   };
 
@@ -184,7 +210,7 @@
     ];
     return { e, text, ans, steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
       quick: [`$x_1x_2=1$ (서로 역수), $x_1+x_2\\gt 2$ (산술평균·기하평균의 관계), 중점은 $1$ 보다 크다는 세 가지로 보기를 하나씩 확인합니다.`],
-      win: { x: [-1.4, den + 2.2], y: [-1.6, t + 2.4] }, p: 0, t, M: Mstr };
+      win: { x: [-1.4, den + 2.2], y: [-1.6, t + 2.4] }, p: 0, t, x1: 1 / den, x2: den, M: Mstr };
   };
 
   /* ----- inv: 서로 역함수인 y=aˣ, y=log_a x 와 기울기 −1 인 직선 ----- */
@@ -199,9 +225,10 @@
         `$\\overline{AB}=\\sqrt{2}(\\beta-\\alpha)=${dd}\\sqrt{2}$ 에서 $\\beta-\\alpha=${d}$. $\\beta=${a}^{\\alpha}$ 이므로 $${a}^{\\alpha}=\\alpha+${d}$ 를 만족시키는 $\\alpha=${al}$, $\\beta=${be}$ 입니다.`,
         `$k=${al}+${be}=${k}$. $\\overline{OM}=\\dfrac{${k}}{\\sqrt{2}}\\perp\\overline{AB}$ 이므로 $\\triangle OAB=\\dfrac{1}{2}\\times\\dfrac{${k}}{\\sqrt{2}}\\times${dd}\\sqrt{2}=${area}$.`
       ];
+      const uniqueness = `양수인 해를 확인합니다. $y=${a}^x$는 아래로 볼록하고 $x=0$에서 $1\\le${d}$이며 충분히 큰 $x$에서는 $x+${d}$보다 큽니다. 따라서 $x\\gt0$의 교점은 하나이고, 대입으로 확인한 $x=${al}$이 그 해입니다${d===1?' ($x=0$은 제1사분면 조건에서 제외)':''}.`;
       const hi = Math.max(be, k / 2) + 1.7;
-      return { e, text, ans: tx(`k=${k},\\ \\triangle OAB=${area}`), steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
-        quick: [`$\\overline{AB}=d\\sqrt{2}$ 이면 $x$좌표의 차가 $d=${d}$ 입니다. $${a}^{\\alpha}-\\alpha=${d}$ 에서 $\\alpha=${al}$ 이므로 $A(${al},${be}),\\ B(${be},${al})$, $k=${k}$. 넓이는 $\\dfrac{k}{2}\\times d=${area}$.`],
+      return { e, text, ans: tx(`k=${k},\\ \\triangle OAB=${area}`), steps, std: [...steps.map((s, i) => `${i + 1}) ${s}`), uniqueness],
+        quick: [`$\\overline{AB}=d\\sqrt{2}$ 이면 $x$좌표의 차가 $d=${d}$ 입니다. $${a}^{\\alpha}-\\alpha=${d}$ 에서 $\\alpha=${al}$ 이므로 $A(${al},${be}),\\ B(${be},${al})$, $k=${k}$. 넓이는 $\\dfrac{k}{2}\\times d=${area}$.`, uniqueness],
         win: { x: [-2.6, hi], y: [-2.6, hi] }, a, al, be, d, k, area };
     }
     // ask 'M'
@@ -214,7 +241,7 @@
     ];
     const hi = Math.max(k * 0.78, 6.5) + 1.5;
     return { e, text, ans: tx(`M\\left(${h},${h}\\right),\\ ${k},\\ ${k}`), steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
-      quick: [`두 곡선과 직선이 모두 $y=x$ 에 대칭이므로 $x_A+x_B=y_A+y_B=k=${k}$, 중점은 $\\left(\\dfrac{k}{2},\\dfrac{k}{2}\\right)$ 입니다.`],
+      quick: [`두 곡선은 서로 $y=x$에 대칭이고 직선은 같은 축에 대해 자기 자신으로 겹쳐지므로 $x_A+x_B=y_A+y_B=k=${k}$, 중점은 $\\left(\\dfrac{k}{2},\\dfrac{k}{2}\\right)$ 입니다.`],
       win: { x: [-2.6, hi], y: [-2.6, hi] }, a, k };
   };
 
@@ -301,19 +328,19 @@
   /* ----- circ: 원 x²+y²=r² 과 y=aˣ, y=log_a x 의 대칭인 두 교점 ----- */
   KINDS.circ = (e) => {
     const { al, be, a } = e, r2 = al * al + be * be, d = be - al, dd = d === 1 ? '' : String(d), r = Math.sqrt(r2);
-    const cl = e.clause ? ' (단, $P$의 $x$좌표가 $Q$의 $x$좌표보다 작다)' : '';
-    const aa = e.clause ? ' (단, $a\\gt 1$)' : '';
+    const setup = `원 $x^2+y^2=${r2}$와 지수곡선 $y=a^x$ ($a\\gt1$)가 제1사분면에서 만나는 점 중 $y\\gt x$인 점을 $P$라 하고, $P$를 직선 $y=x$에 대하여 대칭이동한 로그곡선 $y=\\log_a x$ 위의 점을 $Q$라 하자.`;
     const text = e.ask === 'Pa'
-      ? `원 $x^2 + y^2 = ${r2}$${ji(r2)} 두 곡선 $y = a^x, y = \\log_a x$ ($a \\gt 1$)와 제1사분면에서 만나는 점 중 $y = x$에 대칭인 두 점을 $P, Q$라 하자.${cl} $\\overline{PQ} = ${dd}\\sqrt{2}$일 때, 점 $P$의 좌표와 상수 $a$의 값을 구하시오.`
-      : `원 $x^2 + y^2 = ${r2}$${jw(r2)} $y = a^x, y = \\log_a x$의 대칭인 교점 $P, Q$ 사이의 거리가 $\\overline{PQ} = ${dd}\\sqrt{2}$일 때, 상수 $a$의 값을 구하시오.${aa}`;
+      ? `${setup} $\\overline{PQ}=${dd}\\sqrt2$일 때, 점 $P$의 좌표와 상수 $a$의 값을 구하시오.`
+      : `${setup} $\\overline{PQ}=${dd}\\sqrt2$일 때, 상수 $a$의 값을 구하시오.`;
     const ans = e.ask === 'Pa' ? tx(`P(${al},${be}),\\ a=${a}`) : tx(`a=${a}`);
     const steps = [
-      `원과 두 곡선 모두 $y=x$ 에 대하여 대칭이므로 두 교점은 $P(\\alpha,\\beta),\\ Q(\\beta,\\alpha)$ ($\\alpha\\lt\\beta$) 로 놓을 수 있고, 현 $PQ$ 의 기울기는 $-1$ 입니다.`,
+      `두 곡선은 서로 $y=x$에 대칭이고 원은 같은 축에 대해 자기 자신으로 겹쳐지므로 두 교점은 $P(\\alpha,\\beta),\\ Q(\\beta,\\alpha)$ ($\\alpha\\lt\\beta$) 로 놓을 수 있고, 현 $PQ$ 의 기울기는 $-1$ 입니다.`,
       `$\\overline{PQ}=\\sqrt{2}(\\beta-\\alpha)=${dd}\\sqrt{2}$ 에서 $\\beta-\\alpha=${d}$. 또 $P$ 가 원 위의 점이므로 $\\alpha^2+\\beta^2=${r2}$.`,
-      `$\\alpha^2+(\\alpha+${d})^2=${r2}$ 에서 $\\alpha=${al}$, $\\beta=${be}$ 이므로 $P(${al},${be})$. $P$ 가 $y=a^x$ 위의 점이므로 $a^{${al}}=${be}$, 즉 $a=${a}$.`
+      `$(\\alpha+\\beta)^2=2(\\alpha^2+\\beta^2)-(\\beta-\\alpha)^2=2\\times${r2}-${d}^2=${(al + be) ** 2}$이고 두 좌표가 양수이므로 $\\alpha+\\beta=${al + be}$. 합과 차를 더하고 빼면 $\\alpha=${al},\\ \\beta=${be}$. $P$가 지수곡선 위이므로 $a^{${al}}=${be}$, $a\\gt1$에서 $a=${a}$.`
     ];
-    return { e, text, ans, steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
-      quick: [`제곱의 합이 $${r2}$ 이고 차가 $${d}$ 인 두 양의 정수는 $${al}$ 과 $${be}$ ($${al}^2+${be}^2=${r2}$, $${be}-${al}=${d}$) 입니다. $P(${al},${be})$ 를 $y=a^x$ 에 대입하면 $a=${a}$.`],
+    const std = [steps[0], steps[1], `$\\beta=\\alpha+${d}$를 원의 식에 대입하면 $2\\alpha^2+${2*d}\\alpha+(${d*d-r2})=0$. 두 근은 $${al},-${be}$이고 제1사분면 조건에서 $\\alpha=${al}$만 남습니다. 따라서 $\\beta=${be}$, $a^{${al}}=${be}$에서 $a=${a}$.`];
+    return { e, text, ans, steps, std,
+      quick: [`현의 길이에서 좌표의 차는 $${d}$입니다. 좌표의 합은 $\\sqrt{2\\times${r2}-${d}^2}=${al + be}$이므로 정수라고 가정하지 않아도 $P(${al},${be})$가 유일하게 정해집니다. $a^{${al}}=${be}$에서 $a=${a}$.`],
       win: { x: [-r - 1.5, r + 1.5], y: [-r - 1.5, r + 1.5] }, r, r2, d };
   };
 
@@ -483,6 +510,10 @@
     tagAt(b, L, `y = ${e.m === 1 ? '' : num(e.m)}x${e.k > 0 ? ' + ' + e.k : e.k < 0 ? ' − ' + (-e.k) : ''}`, 'amber', { left: true, dy: 16 });
     if (st >= 1) v.left.forEach((x) => b.point([x, L(x)], { color: 'rose', r: 6.5 }));
     if (st >= 2) v.right.forEach((x) => b.point([x, L(x)], { color: 'green', r: 6.5 }));
+    if (st >= 2 && v.peak != null) {
+      b.seg([v.peak, L(v.peak)], [v.peak, F(v.peak)], { color: 'violet', width: 3 });
+      b.text([v.peak, (L(v.peak) + F(v.peak)) / 2], `H ≈ ${v.maximum.toFixed(3)}`, { color: 'violet', size: 12, dx: 12, align: 'left' });
+    }
     if (st >= 3) card(view, `교점의 개수 = 왼쪽 1개 + 오른쪽 ${v.R}개 = ${v.total}개`, '#fbbf24');
   }
 
@@ -514,7 +545,9 @@
       lab(b, [M, t], 'M', 'sky', { r: 6, dx: 8, dy: -14 });
       card(view, `(x₁−${p})(x₂−${p}) = 1,  M = ${v.M}`, '#38bdf8');
     } else if (st >= 3) {
-      card(view, `x₁x₂ = 1,  x₁ + x₂ > 2`, '#fbbf24');
+      b.seg([M,t],[M,0],{color:'sky',width:2,dash:true});
+      lab(b,[M,t],`M (${v.M}, ${t})`,'sky',{r:6,dx:8,dy:18});
+      card(view, `x₁x₂ = 1,  x₁ + x₂ > 2,  중점의 x좌표 = ${v.M}`, '#fbbf24');
     }
   }
 
@@ -609,19 +642,19 @@
     const M1 = [k1 / 2, k1 / 2], M2 = [k2 / 2, k2 / 2];
     const poly = [A, B, D, C];
     b.poly(poly, st >= 3 && e.ask !== 'h' ? { fill: 'amber', fillAlpha: 0.2, color: 'ink', width: 1.8 } : { color: 'ink', width: 1.8, alpha: 0.75 });
-    if (st >= (e.ask === 'h' ? 1 : 2)) b.plot((x) => x, { color: 'violet', width: 1.9, dash: true, from: -6, to: 14 });
+    if (st >= 1) b.plot((x) => x, { color: 'violet', width: 1.9, dash: true, from: -6, to: 14 });
     if (st >= 2) {
       b.seg(M1, M2, { color: 'green', width: 3.4 });
       lab(b, M1, '', 'green', { r: 4.5 }); lab(b, M2, '', 'green', { r: 4.5 });
       const mid = [(M1[0] + M2[0]) / 2, (M1[1] + M2[1]) / 2];
       b.text(mid, 'h', { color: 'green', size: 13, weight: 800, dx: 14, dy: 12 });
     }
-    if (e.ask === 'h' && st >= 2) {
+    if (st >= 2) {
       b.right(M1, [M1[0] + 1, M1[1] + 1], [M1[0] + 1, M1[1] - 1], { color: 'amber', size: 10 });
       b.right(M2, [M2[0] - 1, M2[1] - 1], [M2[0] + 1, M2[1] - 1], { color: 'amber', size: 10 });
     }
     const nm = (z, s, c, o) => lab(b, z, s, c, o);
-    const co = (z) => `(${z[0]}, ${z[1]})`;
+    const co = (z) => `(${Math.round(z[0])}, ${Math.round(z[1])})`; // nice 분기는 정수 교점이 검산된 풀만 사용
     const withC = v.nice && st >= 1;
     nm(A, withC ? 'A' + co(A) : 'A', 'green', { dx: -10, dy: -8, align: 'right' });
     nm(B, withC ? 'B' + co(B) : 'B', 'sky', { dx: 8, dy: 14 });
@@ -645,10 +678,13 @@
     if (st >= 1) {
       b.plot((x) => x, { color: 'ink', width: 1.8, dash: true, alpha: 0.7, from: -r - 1, to: r + 1 });
       b.seg(P, Q, { color: 'amber', width: 3 });
+      const M=[(al+be)/2,(al+be)/2];
+      b.ticks(P,M,{color:'amber'});b.ticks(M,Q,{color:'amber'});
     }
     if (st >= 2) {
       b.seg(P, [al, al], { color: 'amber', width: 2, dash: true });
       b.seg([al, al], Q, { color: 'amber', width: 2, dash: true });
+      b.right([al,al],P,Q,{color:'amber',size:11});
       b.text([al, (be + al) / 2], `${d}`, { color: 'amber', size: 12.5, weight: 800, align: 'right', dx: -8 });
       b.text([(al + be) / 2, al], `${d}`, { color: 'amber', size: 12.5, weight: 800, dy: 16 });
     }
@@ -683,7 +719,7 @@
      공개 API
      ========================================================================== */
   const ALV = {
-    KINDS, POOLS, frac, fstr, rich, tx, bisect, crossings, expX, logX,
+    KINDS, POOLS, frac, fstr, rich, tx, bisect, crossings, expX, logX, logLineGeometry,
     /** 변형 묶음 만들기. kind: 'vert'…, pool: POOLS 항목, orig: { text, std[], quick[] } (첫 문제의 옛 글) */
     make(kind, pool, orig) {
       const build = (e, i) => {
