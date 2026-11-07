@@ -49,7 +49,7 @@ Claude·GPT·Codex 어느 라인이든 기출·생성문항의 문제·해설 �
    b. 문제 그림, 문제, 정답, 해설을 직접 읽는다. 해설이 쓰는 방법(보조선, 닮음, 넓이 옮기기, 대칭, 경계 사례)과 그림에 넣을 중간값 목록을 먼저 정한다.
    c. AUTHOR_GUIDE 계약대로 item.json과 plan.json을 쓴다. 같은 형태의 정답지 plan 구조를 재사용한다.
    d. 렌더(저장소 루트): node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out <out폴더>
-      결과가 ARCHIVE_BOUND여야 한다. 렌더는 문항당 5번 이내, 한 번에 하나씩 한다. 부하가 높으면 기다린다.
+      결과가 ARCHIVE_BOUND여야 한다. 렌더 횟수에는 제한을 두지 않는다(사용자 지시 2026-11-07: 필요하면 충분히 여러 번 렌더한다. 횟수 한도는 품질을 막을 뿐 의미가 없다). 렌더는 한 번에 하나씩 한다. 부하가 높으면 기다린다.
    e. figure.png를 직접 보고 3번 기준으로 확인한다.
    f. publish.json을 쓴다: {"alt": 그림 설명, "caption": 풀이 요약 + 끝에 정답, "size": "medium" 또는 "full"}
 
