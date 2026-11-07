@@ -88,7 +88,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
     'tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs',
     'tests/archive-pages-release-identity.test.mjs', 'tests/archive-pages-release-gate.test.mjs',
     'tests/archive-pages-image-r2-gate.test.mjs', 'tests/archive-pages-release-reg-commit.test.mjs',
-    'tests/archive-reviewed-apply-bridge.test.mjs',
+    'tests/archive-reviewed-apply-bridge.test.mjs', 'tests/archive2-registration-contracts.test.mjs',
     'tests/archive-register-trigger-paths.test.mjs',
   ]),
 });

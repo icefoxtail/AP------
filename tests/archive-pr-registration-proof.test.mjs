@@ -247,6 +247,35 @@ test('an unrelated later origin/main move does not invalidate the fixed event pr
   assert.equal(validateLocalRegistrationProof({ ...f.options(), proof }).reusable, true);
 });
 
+// Official manifest paths are relative to archive/ and include a legitimate ../docs/... authority input.
+const DOCS_ROW = '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+function produceWithManifestRows(t, rows) {
+  const f = fixture(t), docs = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+  const content = '{"authority":"fixture"}\n';
+  f.commit(docs, content);
+  const manifestFile = path.join(f.root, 'archive/data/archive2-canonical-input-manifest.json');
+  const resolved = rows.map(row => row === DOCS_ROW ? { path: row, sha256: sha256(content) }
+    : { path: row, sha256: 'a'.repeat(64) });
+  return f.produce({ run: (program, args) => {
+    const result = f.run(program, args);
+    if (program === 'python3') {
+      const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+      manifest.files.push(...resolved);
+      fs.writeFileSync(manifestFile, JSON.stringify(manifest) + '\n');
+    }
+    return result;
+  } });
+}
+
+test('catalog manifest accepts the official ../docs authority row and rejects unsafe paths', t => {
+  const proof = produceWithManifestRows(t, [DOCS_ROW]);
+  assert.equal(proof.status, 'PASS');
+  assert.equal(proof.preparation.catalogStabilized, false);
+  for (const bad of ['../../etc/passwd', '/abs/file.json', 'a/./b', 'a//b', 'a\\b.json']) {
+    assert.throws(() => produceWithManifestRows(t, [bad]), /REGISTRATION_CATALOG_MANIFEST_INVALID/, bad);
+  }
+});
+
 test('a NO_OP preparation may verify data but cannot suppress the catalog pre-step', t => {
   const f = fixture(t, CI_WORKFLOW_PATH), proof = f.produce();
   assert.equal(proof.preparation.state, 'NO_OP');

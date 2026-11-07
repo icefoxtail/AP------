@@ -182,12 +182,15 @@ function catalogManifestCurrent(root) {
       || !Array.isArray(manifest.files) || !manifest.files.length) throw Error('REGISTRATION_CATALOG_MANIFEST_INVALID');
   const seen = new Set(); let current = true;
   for (const row of manifest.files) {
-    if (typeof row?.path !== 'string' || !row.path || row.path.includes('\\')
-        || row.path.split('/').some(part => !part || part === '.' || part === '..')
-        || !DIGEST.test(row.sha256 || '') || seen.has(row.path)) throw Error('REGISTRATION_CATALOG_MANIFEST_INVALID');
+    // Manifest paths are relative to archive/ and may legitimately step out of it (../docs/...),
+    // but the normalized target must stay inside the repository.
+    if (typeof row?.path !== 'string' || !row.path || row.path.includes('\\') || row.path.startsWith('/')
+        || row.path.split('/').some(part => !part || part === '.')) throw Error('REGISTRATION_CATALOG_MANIFEST_INVALID');
+    const file = path.posix.normalize(`archive/${row.path}`);
+    if (file === '..' || file.startsWith('../') || !DIGEST.test(row.sha256 || '')
+        || seen.has(row.path)) throw Error('REGISTRATION_CATALOG_MANIFEST_INVALID');
     seen.add(row.path);
     // Match the official catalog manifest's normalized-text hash contract.
-    const file = `archive/${row.path}`;
     if (!regularFile(root, file)) throw Error('REGISTRATION_CATALOG_INPUT_MISSING');
     const text = fs.readFileSync(path.join(root, file), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
     if (hash(text) !== row.sha256) current = false;
