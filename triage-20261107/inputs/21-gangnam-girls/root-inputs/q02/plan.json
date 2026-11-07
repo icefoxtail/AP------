@@ -1,0 +1,72 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "이차부등식의 해가 |x−1|≤b의 구간과 정확히 같아야 한다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "-2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -4,
+      6,
+      -10,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-8",
+        "-4",
+        "2",
+        "4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -9
+      }
+    ]
+  },
+  "caption": "이차부등식의 해 구간이 두 근 사이에 놓이는 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 해 구간이 같아지면 이차식은 x²−2x−8이고 두 근은 −2,4이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "두 근은 주어진 중심 x=1을 기준으로 대칭이다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선이 x축 이하인 구간과 절댓값 부등식의 대칭 구간이 같다는 구조를 보여 준다."
+  ]
+}
