@@ -1176,7 +1176,32 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     b.path([P(0, 0), P(V.x1, h), P(V.x2, h), P(L, 0)], { color: 'amber', width: 3, glow: true });
     b.text(P((V.x1 + V.x2) / 2, h), 'f', { size: 14, weight: 800, color: 'amber', baseline: 'bottom', dy: -5 });
-    if (st >= 4) b.text(P((V.u + V.v) / 2, k * 0.35), `P=${fracLab(V.pk.n, V.pk.d)}`, { size: 14, weight: 800, color: 'ink' });
+    if (st >= 4) {
+      const text = `P=${fracLab(V.pk.n, V.pk.d)}`, opts = { size: 14, weight: 800, color: 'ink', align: 'center', baseline: 'middle' };
+      const size = b.annotationSize(text, opts), mid = (V.u + V.v) / 2, top = b.toS(b._P(P(mid, k)));
+      const left = c.ix(b.toW(top.x - size.width / 2 - 4, top.y).x), right = c.ix(b.toW(top.x + size.width / 2 + 4, top.y).x);
+      // 글자 상자 전체가 f와 k 사이에 들어가도록, 상자 아래의 꺾임까지 비교합니다.
+      const floor = Math.max(...[left, right, V.x1, V.x2].filter((x) => x >= left && x <= right).map(f));
+      const room = b.toS(b._P(P(mid, floor))).y - top.y;
+      let at;
+      if (left >= V.u && right <= V.v && room >= size.height + 12) {
+        at = P(mid, (k + floor) / 2);
+      } else {
+        // 좁은 구간은 글자를 줄이지 않고, 목표 영역 안에서 시작하는 지시선으로 연결합니다.
+        const anchor = P(mid, (k + f(mid)) / 2), target = b.toS(b._P(anchor));
+        const rect = PS.fmul(V.k, F(V.v - V.u));
+        const rectSize = b.annotationSize(`k(${V.v}−${V.u})=${fracLab(rect.n, rect.d)}`, { size: 12.5, weight: 800 });
+        const x0 = b.toS(b._P(P(0, k))).x, x1 = b.toS(b._P(P(L, k))).x;
+        const side = mid < L / 2 ? 1 : -1;
+        const lx = clamp(top.x + side * (rectSize.width / 2 + size.width / 2 + 12), x0 + size.width / 2 + 4, x1 - size.width / 2 - 4);
+        const ly = Math.max(b.toS(b._P(P(mid, c.dy1))).y + size.height / 2 + 4, top.y - rectSize.height - size.height / 2 - 10);
+        at = b.toW(lx, ly);
+        const elbow = b.toW(lx, target.y), line = { color: 'rose', lineWidth: 1.15, alpha: 0.85 };
+        b.leader(anchor, elbow, { ...line, gap: 0 });
+        b.leader(elbow, at, { ...line, width: size.width, height: size.height });
+      }
+      b.text(at, text, opts);
+    }
   }
   function sceneM3() {
     return {
