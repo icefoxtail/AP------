@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 함수 $f(x)=ax+b$, $g(x)=-x+c$에 대하여",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      15,
+      -1,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4",
+        "10"
+      ],
+      "y": [
+        "1",
+        "4",
+        "10"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "11",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "14",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "10"
+        },
+        {
+          "id": "Q",
+          "x": "10",
+          "y": "4"
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "4"
+        },
+        {
+          "id": "K",
+          "x": "10",
+          "y": "10"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PK",
+          "from": "P",
+          "to": "K"
+        },
+        {
+          "id": "KQ",
+          "from": "K",
+          "to": "Q"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 f(1)=10과 합성 결과를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 함수의 출력이 다른 함수의 입력으로 전달되는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "한 함수의 출력이 다른 함수의 입력으로 전달되는 관계를 보인다."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "분자를 \\(x+1\\)에 맞추어 묶는다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-6",
+      "-4"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      5
+    ],
+    "viewport": [
+      -6,
+      5,
+      -9,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-6",
+        "-4",
+        "-2",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 매개변수 한 값의 그래프 가지를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 k=1에서 D=2>0이고 y=-4-2/(x+1)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "D가 양수이므로 분수항 계수 -D가 음수인 그래프의 사분면별 가지를 비교한다."
+  ]
+}

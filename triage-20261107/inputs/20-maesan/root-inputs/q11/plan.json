@@ -1,0 +1,62 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "분모가 \\(0\\)인 \\(x=-c\\)는 정의역에서 제외된다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-8",
+      "4"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -6,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "두 점근선과 주어진 점을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "조건에서 a=4,c=1,b=-8이므로 f=4-12/(x+1)이며 (1,-2)를 지난다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역과 치역에서 각각 빠지는 값이 점근선으로 나타남을 보인다."
+  ]
+}

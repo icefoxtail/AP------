@@ -1,0 +1,112 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "점의 제1·4사분면 조건을 쓰기 위해",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -7,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-5",
+        "-2",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-10",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "-5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QO",
+          "from": "Q",
+          "to": "O"
+        }
+      ]
+    }
+  },
+  "caption": "예: 두 그래프 위 점이 만드는 삼각형을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 P=(1,2), Q=(2,-5)이며 정답을 나타내는 최솟값 사례가 아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 그래프 위 점과 원점이 이루는 삼각형의 높이·밑변 관계를 보인다."
+  ]
+}

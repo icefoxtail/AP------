@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "그래프를 \\(x\\)축 방향으로 \\(-1\\)만큼 옮길 때는 \\(x\\) 대신",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "3",
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "두 무리함수의 시작점 이동을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 시작점 (0,0)을 왼쪽 1, 위 3 이동한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "시작점의 평행이동과 함수의 방향을 비교해 최소가 어디서 생기는지 보인다."
+  ]
+}

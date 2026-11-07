@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "분모의 \\(1-x\\)를 \\(-(x-1)\\)로 바꾸어 점근선을 보이게",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      7,
+      -7,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=-x-1",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "유리함수의 중심과 대칭축을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=-2-6/(x-1), 중심 (1,-2), 대칭축 y=-x-1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "유리함수의 중심·점근선과 대칭축 및 사분면 관계를 보인다."
+  ]
+}
