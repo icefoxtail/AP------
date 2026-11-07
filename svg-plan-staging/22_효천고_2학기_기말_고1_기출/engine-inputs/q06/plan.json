@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "세는 대상",
+        "elements": [
+          "방법",
+          "금액"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "각 개수",
+        "elements": [
+          "59",
+          "39"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "동전의 사용 방법과 서로 다른 금액을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "100원 2개, 50원 3개, 10원 4개 중 사용하며 0원은 제외한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "방법은 59가지, 금액은 39가지임을 구분한다."
+  ]
+}

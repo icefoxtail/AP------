@@ -1,0 +1,56 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "조합식"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "분자",
+          "분모"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "조합 공식에서 분자와 분모의 위치를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1≤r≤n이며 조합의 정의를 이용해 주어진 등식을 정리한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "조합 공식을 분자와 분모로 나누어 살핀다."
+  ]
+}

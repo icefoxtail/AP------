@@ -1,0 +1,52 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수에서는 근호 안이 $0$ 이상이어야 하며",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-4",
+      "4",
+      "-2",
+      "5"
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "-2"
+        ],
+        "offset": "-1",
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ],
+        "emphasis": [
+          {
+            "from": "-4",
+            "to": "3",
+            "fromState": "NONE",
+            "toState": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "1"
+      ],
+      "y": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "caption": "무리함수의 시작점과 이어지는 방향을 살펴본다."
+}

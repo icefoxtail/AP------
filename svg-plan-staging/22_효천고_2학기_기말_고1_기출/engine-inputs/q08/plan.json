@@ -1,0 +1,45 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "4P2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "12"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "예: 네 개 중 두 개를 순서 있게 뽑는 경우를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0<r<n이고 nPr을 순열의 정의로 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 n=4, r=2에서는 4P2=12이다."
+  ]
+}

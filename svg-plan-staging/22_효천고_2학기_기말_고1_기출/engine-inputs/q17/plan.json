@@ -1,0 +1,83 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 2
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        5,
+        0
+      ],
+      "C": [
+        5,
+        2
+      ],
+      "D": [
+        0,
+        2
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "counts": false,
+    "highlightPath": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        0
+      ]
+    ]
+  },
+  "caption": "예: A에서 윗변 CD를 거쳐 B에 가는 한 경로다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "왼쪽으로 움직이지 않고 CD를 거친 뒤 B에 도착한다.",
+      "mappedTo": "lattice"
+    }
+  ],
+  "newVisualInformation": [
+    "위 두 번, 오른쪽 다섯 번, 아래 두 번 이동하는 한 경로를 표시한다."
+  ]
+}

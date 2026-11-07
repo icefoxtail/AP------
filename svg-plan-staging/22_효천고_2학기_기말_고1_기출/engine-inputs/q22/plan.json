@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 고정점 사이의 거리는",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3.0,
+      7.0,
+      -3.0,
+      7.0
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2-sqrt(3)",
+          "y": "2-sqrt(3)",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2+sqrt(3)",
+          "y": "2+sqrt(3)",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "자기 자신의 역함수인 유리함수와 y=x의 두 교점을 본다."
+}

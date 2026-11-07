@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "4일때",
+          "6일때"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "−8",
+          "10"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: 정리한 이차식의 값을 두 자연수에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 식을 n²−n−20=0으로 정리한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "n=4일 때 −8, n=6일 때 10이다."
+  ]
+}

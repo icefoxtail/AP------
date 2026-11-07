@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "전체",
+          "남만",
+          "여만"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "56",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "전체 대표 선택과 한 성별만 뽑은 경우를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남학생 네 명과 여학생 네 명에서 대표 세 명을 뽑는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 56개와 남학생만 4개, 여학생만 4개를 구분한다."
+  ]
+}

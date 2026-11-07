@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "역함수의 그래프 위 점 $(u,v)$는 원래 함수의 그래프 위 점",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-23",
+      "8",
+      "-23",
+      "8"
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "22",
+          "1"
+        ],
+        "domain": [
+          "-22",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-23",
+          "8"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3",
+        "5"
+      ],
+      "y": [
+        "3",
+        "5"
+      ]
+    }
+  },
+  "caption": "원함수의 점과 역함수의 대응점은 y=x에 대해 대칭이다."
+}

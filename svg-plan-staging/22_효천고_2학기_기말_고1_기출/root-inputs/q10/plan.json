@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "전체",
+          "정사각"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "중간값",
+        "elements": [
+          "100",
+          "30"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "격자에서 전체 직사각형과 그중 정사각형을 따로 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본은 가로와 세로 각각 네 칸인 격자다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 직사각형 100개와 정사각형 30개를 구분한다."
+  ]
+}

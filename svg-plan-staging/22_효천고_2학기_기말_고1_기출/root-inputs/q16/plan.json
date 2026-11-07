@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "원함수와 역함수 위의 점을 각각",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "0",
+      "7",
+      "0",
+      "7"
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "20",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "6"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "3",
+        "6"
+      ]
+    }
+  },
+  "caption": "예: k=20일 때 두 그래프와 삼각형의 위치를 살핀다."
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "g$는 $f$의 역함수이고 $f$가 $x\\ge0$에서 증가하므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-1",
+      "5",
+      "-1",
+      "5"
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1/4",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "diagonal",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "2"
+      ],
+      "y": [
+        "0",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: k=1일 때 증가함수와 역함수의 교점을 살펴본다."
+}

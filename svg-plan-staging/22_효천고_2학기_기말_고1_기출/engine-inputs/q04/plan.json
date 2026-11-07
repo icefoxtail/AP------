@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "중심을 지나며 기울기가 $1,-1$인 두 대칭축을 구해",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5.0,
+      7.0,
+      -11.0,
+      2.0
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "-5"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "s1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=-x-4"
+      },
+      {
+        "id": "s2",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x-6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "-5"
+      ]
+    }
+  },
+  "caption": "유리함수의 중심을 지나는 두 대칭축을 비교한다."
+}
