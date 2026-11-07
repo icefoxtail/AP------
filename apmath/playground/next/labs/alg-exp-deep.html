@@ -915,7 +915,7 @@ drawFunctionCurve(x => (x - p.r1) * (x - p.r2), '#34d399', 2.8);
 
 const rootCx = -4.5;
 B.text([rootCx, 0], 'u = 0', { color: 'sky', size: 11, align: 'center', dy: 31 });
-B.text([rootCx, B.viewBox().y1 - 1], 'y = uⁿ  (u = x + 4.5)', { color: 'sky', size: 11, align: 'center' });
+B.stext(B.toS(rootCx, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { color: 'sky', size: 11, align: 'center', baseline: 'top' });
 drawFunctionCurve(x => Math.pow(x - rootCx, n), '#38bdf8', 2.6, [], rootCx - 2.5, rootCx + 2.5);
 drawMathSegment(rootCx, -10, rootCx, 10, 'rgba(56, 189, 248, 0.35)', [4, 4], 1.4);
 
@@ -1710,7 +1710,9 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     ];
     if(m===3) return [
       `계수 $${f.k}$를 $2^{\\log_2 ${f.k}}$로 쓰면 그래프의 가로 이동량이 보입니다. 점의 높이가 양수인지 먼저 확인합니다.`,
-      `어느 양의 높이에서도 가로 단면의 길이는 $\\log_2 ${f.k}$. 빨간 중간 단면들도 모두 같은 길이입니다.`,
+      f.two
+        ? `어느 양의 높이에서도 가로 단면의 길이는 $\\log_2 ${f.k}$. 빨간 중간 단면들도 모두 같은 길이입니다.`
+        : `두 교점 A, B는 높이가 같습니다. A의 x좌표는 $\\log_2 t-\\log_2 ${f.k}$, B의 x좌표는 $\\log_2 t$이므로 가로 간격에서 $\\log_2 t$가 소거됩니다.`,
       f.two?`모든 가로 단면을 길이를 유지하며 옮기면 직사각형과 비교할 수 있습니다. 넓이는 $( ${f.t2}-${f.t1})\\log_2 ${f.k}=${Math.log2(f.k)*(f.t2-f.t1)}$.`:`수평선의 높이 t를 구하지 않아도 $AB=\\log_2 ${f.k}$. t>0인 모든 높이에 적용됩니다.`
     ];
     return KILLER_MODES[m].stepDescs.map((d,i)=>KILLER_MODES[m].stepLabels[i]+': '+d);

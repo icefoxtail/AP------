@@ -922,7 +922,7 @@ function solveExpLineIntersection(k, shift = 0) {
       // Right shifted curve: y = (x + 4)^n at x = -4
       const rootCenter = -4.5;
 B.text([rootCenter, 0], 'u = 0', { color: 'sky', size: 11, align: 'center', dy: 31 });
-B.text([rootCenter, B.viewBox().y1 - 1], 'y = uⁿ  (u = x + 4.5)', { color: 'sky', size: 11, align: 'center' });
+B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { color: 'sky', size: 11, align: 'center', baseline: 'top' });
       drawFunctionCurve(x => Math.pow(x - rootCenter, n), '#38bdf8', 2.6, [], rootCenter - 2.5, rootCenter + 2.5);
       drawMathSegment(rootCenter, -10, rootCenter, 10, 'rgba(56, 189, 248, 0.3)', [4, 4], 1.2);
 
@@ -2067,8 +2067,14 @@ B.text([rootCenter, B.viewBox().y1 - 1], 'y = uⁿ  (u = x + 4.5)', { color: 'sk
       id: 't' + (m + 1) + 'ab'[j],
       title: sc.chip,
       short: '문제 ' + 'AB'[j],
-      question: QUESTIONS[m],
-      guide: GUIDES[m],
+      question: j === 1 && m === 3
+        ? 'y = |2ˣ − k|를 수평선 y = t로 자르면 교점 수는 언제 바뀔까? 두 교점의 x좌표의 합은 어떤 곱으로 구할 수 있을까?'
+        : j === 1 && m === 5
+          ? 'y = 2ˣ에서 두 x좌표의 중간을 보면 현과 곡선 중 어느 쪽이 더 높을까? 같은 가로폭을 가진 사다리꼴과 직사각형의 넓이는 어떻게 비교할까?'
+          : QUESTIONS[m],
+      guide: j === 1 && m === 5
+        ? '두 점 A, B를 좌우로 끌고 보조선을 열어 보세요. 가로폭이 같은 사다리꼴과 직사각형의 넓이는 현의 중점 높이와 곡선 위의 높이로 비교할 수 있습니다.'
+        : GUIDES[m],
       startStep: 0,
       notesTitle: '오답 함정 주의보',
       focus: FOCUS[m],
