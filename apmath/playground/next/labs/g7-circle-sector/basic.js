@@ -79,7 +79,8 @@
   function G(b) {
     const F = b.kind === 'figure';
     const Y = F ? -1 : 1;
-    const P = (p) => [p[0], Y * p[1]];
+    let screenShiftX = 0;
+    const P = (p) => [p[0] + screenShiftX, Y * p[1]];
     const pol = (c, r, d) => [c[0] + r * Math.cos(d * D2R), c[1] + r * Math.sin(d * D2R)];
     const arcPts = (c, r, d0, d1, n) => {
       const out = [];
@@ -87,8 +88,87 @@
       for (let i = 0; i <= m; i++) out.push(pol(c, r, d0 + ((d1 - d0) * i) / m));
       return out;
     };
+    const arcCaptionBoxes = [], arcCaptionRoutes = [];
+    // 1607의 두 호 라벨만 사용합니다. 글자·후광의 실제 상자를 피해 배치하고,
+    // 지시선의 시작점은 원래 호 중점에 둡니다. 화면 맞춤 계산에는 참여하지 않습니다.
+    function placeArcCaption(at, anchor, label, metrics, clearance) {
+      const screen = (p) => b.toS(b._P(P(p))), O = screen(clearance.center);
+      const edge = screen([clearance.center[0] + clearance.radius, clearance.center[1]]);
+      const radius = Math.hypot(edge.x - O.x, edge.y - O.y) + 4;
+      const box = (p, m, extra = 0) => ({ x0: p.x - m.width / 2 - extra, x1: p.x + m.width / 2 + extra, y0: p.y - m.height / 2 - extra, y1: p.y + m.height / 2 + extra });
+      const names = clearance.names.map(([point, text]) => {
+        const p = screen(point), dx = p.x - O.x, dy = p.y - O.y, L = Math.hypot(dx, dy) || 1;
+        return box({ x: p.x + 18 * dx / L, y: p.y + 18 * dy / L }, b.annotationSize(text, { size: 12.5, weight: 800 }), 1);
+      });
+      const overlap = (a, z) => a.x0 < z.x1 && a.x1 > z.x0 && a.y0 < z.y1 && a.y1 > z.y0;
+      const hits = (a, z, r) => {
+        let lo = 0, hi = 1;
+        for (const [p, d, low, high] of [[a.x, z.x - a.x, r.x0, r.x1], [a.y, z.y - a.y, r.y0, r.y1]]) {
+          if (Math.abs(d) < 1e-9) { if (p < low || p > high) return false; }
+          else { const t0 = (low - p) / d, t1 = (high - p) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+        }
+        return lo <= hi;
+      };
+      const minX = b.insets.left + 8 + metrics.width / 2, maxX = b.W - b.insets.right - 8 - metrics.width / 2;
+      const minY = b.insets.top + 8 + metrics.height / 2, maxY = b.H - b.insets.bottom - 8 - metrics.height / 2;
+      const points = clearance.names.map(([p]) => screen(p)).filter((p) => Math.hypot(p.x - anchor.x, p.y - anchor.y) > 1).map((p) => box(p, { width: 12, height: 12 }));
+      // 먼저 그린 지시선과 겹치거나 합쳐져 보이는 경로도 피합니다.
+      const priorLines = arcCaptionRoutes.flatMap((route) => route.slice(1).map((p, i) => ({ x0: Math.min(p.x, route[i].x) - 2, x1: Math.max(p.x, route[i].x) + 2, y0: Math.min(p.y, route[i].y) - 2, y1: Math.max(p.y, route[i].y) + 2 })));
+      const positions = [], offsets = [0];
+      for (let d = 12; d <= 180; d += 12) offsets.push(-d, d);
+      const seen = new Set();
+      for (const dx of offsets.filter((d) => Math.abs(d) <= 96)) for (const dy of offsets) {
+        const center = { x: clamp(label.x + dx, minX, maxX), y: clamp(label.y + dy, minY, maxY) };
+        const key = center.x + ':' + center.y; if (seen.has(key)) continue; seen.add(key);
+        const rect = box(center, metrics), nearest = { x: clamp(O.x, rect.x0, rect.x1), y: clamp(O.y, rect.y0, rect.y1) };
+        if (Math.hypot(nearest.x - O.x, nearest.y - O.y) < radius || [...names, ...arcCaptionBoxes].some((q) => overlap(rect, q))) continue;
+        if (arcCaptionRoutes.some((r) => r.some((p, i) => i && hits(r[i - 1], p, rect)))) continue;
+        const vx = anchor.x - center.x, vy = anchor.y - center.y, L = Math.hypot(vx, vy);
+        const t = Math.min(Math.abs(vx) > 1e-9 ? metrics.width / (2 * Math.abs(vx)) : Infinity, Math.abs(vy) > 1e-9 ? metrics.height / (2 * Math.abs(vy)) : Infinity) + 4 / L;
+        if (!Number.isFinite(t) || t >= 1) continue;
+        const end = { x: center.x + vx * t, y: center.y + vy * t }, move = Math.hypot(center.x - label.x, center.y - label.y);
+        if (dx === 0 && dy === 0 && ![...names, ...points, ...arcCaptionBoxes, ...priorLines, rect].some((q) => hits(anchor, end, q))) {
+          const route = [anchor, end]; arcCaptionBoxes.push(rect); arcCaptionRoutes.push(route);
+          return { dx: center.x - at.x, dy: center.y - at.y, route };
+        }
+        positions.push({ center, rect, end, move, lowerBound: move + Math.hypot(end.x - anchor.x, end.y - anchor.y) });
+      }
+      positions.sort((a, z) => a.lowerBound - z.lowerBound);
+      let best = null, bestScore = Infinity;
+      for (const candidate of positions) {
+        if (candidate.lowerBound >= bestScore) break;
+        const { center, rect, end, move } = candidate;
+        const obstacles = [...names, ...points, ...arcCaptionBoxes, ...priorLines, rect];
+        const clear = (a, z) => !obstacles.some((q) => hits(a, z, q));
+        let route = [anchor, end];
+        if (!clear(anchor, end)) {
+          const nodes = [anchor, end, ...obstacles.flatMap((q) => [{ x: q.x0 - 2, y: q.y0 - 2 }, { x: q.x1 + 2, y: q.y0 - 2 }, { x: q.x1 + 2, y: q.y1 + 2 }, { x: q.x0 - 2, y: q.y1 + 2 }])];
+          const dist = nodes.map(() => Infinity), previous = nodes.map(() => -1), visited = new Set(); dist[0] = 0;
+          while (visited.size < nodes.length) {
+            let u = -1;
+            for (let i = 0; i < nodes.length; i++) if (!visited.has(i) && (u < 0 || dist[i] < dist[u])) u = i;
+            if (u < 0 || !Number.isFinite(dist[u]) || u === 1) break;
+            visited.add(u);
+            for (let v = 0; v < nodes.length; v++) if (!visited.has(v) && clear(nodes[u], nodes[v])) {
+              const d = dist[u] + Math.hypot(nodes[v].x - nodes[u].x, nodes[v].y - nodes[u].y);
+              if (d < dist[v]) { dist[v] = d; previous[v] = u; }
+            }
+          }
+          if (!Number.isFinite(dist[1])) continue;
+          route = []; for (let i = 1; i >= 0; i = previous[i]) route.unshift(nodes[i]);
+        }
+        const score = move + route.slice(1).reduce((sum, p, i) => sum + Math.hypot(p.x - route[i].x, p.y - route[i].y), 0);
+        if (score < bestScore) { bestScore = score; best = { dx: center.x - at.x, dy: center.y - at.y, route, rect }; }
+      }
+      if (best) { arcCaptionBoxes.push(best.rect); arcCaptionRoutes.push(best.route); }
+      return best;
+    }
     const g = {
       b, pol, arcPts,
+      shiftRight(px) {
+        if (!b.thumb && !b._bbox) screenShiftX = b.toW(px, 0).x - b.toW(0, 0).x;
+        return g;
+      },
       reserve(...pts) { pts.forEach((p) => { const q = P(p); b.toS(q[0], q[1]); }); return g; },
       seg(p, q, o) { b.seg(P(p), P(q), o); return g; },
       path(pts, o) { b.path(pts.map(P), o); return g; },
@@ -96,7 +176,7 @@
       circle(c, r, o) { b.circle(P(c), r, o); return g; },
       arc(c, r, d0, d1, o = {}) {
         if (F) b.arc(P(c), r, -d0 * D2R, -d1 * D2R, { ...o, ccw: true });
-        else b.arc(c, r, d0 * D2R, d1 * D2R, o);
+        else b.arc(screenShiftX ? P(c) : c, r, d0 * D2R, d1 * D2R, o);
         return g;
       },
       sector(c, r, d0, d1, o = {}) { return g.arc(c, r, d0, d1, { ...o, sector: true }); },
@@ -117,8 +197,14 @@
         const nx = Math.cos(deg_ * D2R), ny = -Math.sin(deg_ * D2R), size = o.size || 15;
         const metrics = b.annotationSize ? b.annotationSize(str, { size, weight: o.weight || 800 }) : { width: String(str).length * size * .65 + 6, height: size + 6 };
         const distance = Math.max(off, Math.abs(nx) * metrics.width / 2 + Math.abs(ny) * metrics.height / 2 + 8);
-        const { avoidRightEdge, ...labelOptions } = o;
+        const { avoidRightEdge, arcClearance, ...labelOptions } = o;
         const opts = { dx: nx * distance, dy: ny * distance, ...labelOptions };
+        let route = null;
+        if (arcClearance && !b.thumb && !b._bbox && b.annotationSize && b.leader) {
+          const at = b.toS(b._P(P(p))), anchor = b.toS(b._P(P(o.leaderAnchor || p)));
+          const placed = placeArcCaption(at, anchor, { x: at.x + opts.dx, y: at.y + opts.dy }, metrics, arcClearance);
+          if (placed) { opts.dx = placed.dx; opts.dy = placed.dy; route = placed.route; }
+        }
         let above = false;
         if (avoidRightEdge && !b.thumb && !b._bbox) {
           const at = b.toS(b._P(P(p))), maxX = b.W - b.insets.right - 8 - metrics.width / 2;
@@ -133,7 +219,9 @@
         // 원호와 헷갈릴 추가 곡선 치수는 만들지 않습니다.
         if (!b.thumb && !b._bbox && b.leader && (off >= 34 || distance > off + 3 || o.leader || above)) {
           const at = b.toS(b._P(P(p)));
-          b.leader(P(o.leaderAnchor || p), b.toW(at.x + opts.dx, at.y + opts.dy), { ...metrics, color: 'muted', alpha: Math.min(.78, o.alpha == null ? 1 : o.alpha), ref: o.ref, part: o.part });
+          const line = { color: 'muted', alpha: Math.min(.78, o.alpha == null ? 1 : o.alpha), ref: o.ref, part: o.part };
+          if (route && route.length > 2) b.path(route.map((q) => b.toW(q.x, q.y)), { ...line, width: 1.15, dash: [], glow: false });
+          else b.leader(P(o.leaderAnchor || p), b.toW(at.x + opts.dx, at.y + opts.dy), { ...metrics, ...line });
         }
         return g.text(p, str, opts);
       },
@@ -153,7 +241,7 @@
       handle(id, p, o = {}) {
         const oo = { color: 'amber', ...o };
         if (oo.toward) oo.toward = P(oo.toward);
-        if (o.drag) oo.drag = (w) => o.drag({ x: w.x, y: Y * w.y });
+        if (o.drag) oo.drag = (w) => o.drag({ x: w.x - screenShiftX, y: Y * w.y });
         b.handle(id, P(p), oo);
         return g;
       }
@@ -564,6 +652,8 @@
     }),
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, a0 = 110, ph = q.ph;
+      // 좁은 화면에서 왼쪽 호 라벨의 공간만 확보하며 원의 크기는 유지합니다.
+      if (g.b.W <= 560) g.shiftRight(32);
       g.reserve([-R - 18, -R - 18], [R + 18, R + 18]);
       const sel = mode === 'explore' ? q.part | 0 : mode === 'review' ? step : 0;
       const A = g.pol(O, R, a0), B = g.pol(O, R, a0 + ph), C = g.pol(O, R, a0 + 2 * ph);
@@ -588,8 +678,9 @@
       }
       if (sel === 3) g.text(mid(A, C), 'AC', { color: 'rose', ref: 3, dx: 28, dy: -4 });
       if (sel === 2) {
-        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2, leaderAnchor: g.pol(O, R, a0 + ph) }, 34);
-        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2 }, 62);
+        const arcClearance = { center: O, radius: R + 9, names: [[A, 'A'], [B, 'B'], [C, 'C']] };
+        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2, leaderAnchor: B, arcClearance }, 34);
+        g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2, arcClearance }, 62);
       }
       if (sel === 4) {
         g.out(g.pol(O, R, a0 + 0.5 * ph), a0 + 0.5 * ph, '호 AB ' + piS((q.r * ph) / 180), { color: 'amber', ref: 4 }, 34);

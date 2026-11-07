@@ -17,6 +17,26 @@ const observe = argv.includes('--baseline-observe');
 const allUnits = ['g7-points-lines', 'g7-parallel', 'g7-spatial', 'g7-construction', 'g7-area', 'g7-polygons', 'g7-circle-sector', 'g7-polyhedra', 'g7-surface-volume', 'g7-solids'];
 const units = (arg('--units', allUnits.join(','))).split(',').filter(Boolean);
 if (!units.length || units.some(x => !allUnits.includes(x))) throw Error('Unknown or empty G7 unit list');
+// Opt-in visual preflight only. The ordinary audit and its result kind stay full.
+const focused = argv.includes('--focus-scenes') || argv.includes('--focus-runs');
+if (focused && (!argv.includes('--focus-scenes') || !argv.includes('--focus-runs') || units.length !== 1)) {
+  throw Error('Focused audit requires both --focus-scenes and --focus-runs, and exactly one --units entry');
+}
+const focusList = name => {
+  const value = arg(name, ''), items = typeof value === 'string' ? value.split(',').map(x => x.trim()) : [];
+  if (argv.filter(x => x === name).length !== 1 || !items.length || items.some(x => !x || x.startsWith('--')) || new Set(items).size !== items.length) {
+    throw Error(`Unknown, empty or duplicate focused list: ${name}`);
+  }
+  return items;
+};
+const focusSceneIds = focused ? focusList('--focus-scenes') : null;
+const focusRunNames = focused ? focusList('--focus-runs') : null;
+const selectScenes = registered => {
+  if (!focused) return registered;
+  const unknown = focusSceneIds.filter(id => !registered.some(scene => scene.id === id));
+  if (unknown.length) throw Object.assign(Error(`Unknown focused scene IDs: ${unknown.join(',')}`), { code: 'INVALID_FOCUS_SELECTION' });
+  return registered.filter(scene => focusSceneIds.includes(scene.id)); // Preserve real lab.list indices.
+};
 // The visible range can clamp stale lab.s values. Ask an off-DOM clone to choose
 // an allowed adjacent value; only the later native fill changes the real control.
 function nextNativeRangeInput(key) {
@@ -61,7 +81,9 @@ const viewports = [
   { name: 'tablet-landscape', width: 1024, height: 768 },
   { name: 'mobile', width: 390, height: 844 }
 ];
-const runs = viewports.flatMap(v => ['board', 'paper'].map(theme => ({ ...v, name: `${v.name}-${theme}`, theme })));
+const allRuns = viewports.flatMap(v => ['board', 'paper'].map(theme => ({ ...v, name: `${v.name}-${theme}`, theme })));
+if (focused && focusRunNames.some(name => !allRuns.some(run => run.name === name))) throw Error('Unknown focused run name');
+const runs = focused ? focusRunNames.map(name => allRuns.find(run => run.name === name)) : allRuns;
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => {
   const p = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
@@ -73,13 +95,15 @@ const server = http.createServer((req, res) => {
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { version: 1, kind: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'] };
+const report = { version: 1, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'],
+  ...(focused ? { fullMatrix: false, focus: { requestedSceneIds: focusSceneIds, requestedRunNames: focusRunNames }, purpose: 'Supplemental visual preflight; does not replace the full geometry audit.' } : {}) };
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { channel: 'chromium', headless: true });
 try {
   for (const unit of units) {
     report.units[unit] = { scenes: [], observations: [], captures: [], interactions: [] };
     const dest = report.units[unit];
     dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
+    if (focused) Object.assign(dest.controlCoverage, { allScenesRun: null, selectedScenesRuns: runs.map(run => run.name), otherRuns: 'all-selected-scenes', sceneScope: 'SELECTED_SCENES_ONLY' });
     for (const run of runs) {
       let ctx, runError = null, expectedSceneIds = null;
       const errors = [];
@@ -101,10 +125,13 @@ try {
       });
       (dest.measurementControls ||= []).push({ run: run.name, ...measurementControl });
       if (!measurementControl.pass) throw Error('Canvas measurement positive/negative control failed');
-      const scenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
+      const registeredScenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
+      if (focused) dest.registeredScenes = registeredScenes;
+      const scenes = selectScenes(registeredScenes);
+      if (focused) dest.selectedScenes = scenes;
       expectedSceneIds = [...new Set(scenes.map(s => s.id))];
       if (!dest.scenes.length) dest.scenes = scenes;
-      if (new Set(scenes.map(s => s.id)).size !== scenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
+      if (new Set(registeredScenes.map(s => s.id)).size !== registeredScenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
       await page.evaluate(() => {
         const b = lab.board, original = b._text;
         window.__g7Labels = [];
@@ -189,7 +216,7 @@ try {
       };
       // First/middle/last plus supplied scene IDs provide reproducible captures.
       // All scenes still receive every measurement below.
-      const targets = new Set([scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
+      const targets = new Set(focused ? scenes.map(scene => scene.id) : [scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
       const targetDir = path.dirname(new URL(import.meta.url).pathname);
       const unitTargetFile = path.join(targetDir, `g7-geometry-audit-targets-${unit}.json`);
       const targetFile = path.join(targetDir, 'g7-geometry-audit-targets.json');
@@ -210,9 +237,10 @@ try {
         filenames.add(c.id + '|' + (c.label || c.tab || 'fixed'));
         cases.push(c);
       }
-      dest.targets = cases;
+      const selectedCases = focused ? cases.filter(c => focusSceneIds.includes(String(c.id))) : cases;
+      dest.targets = selectedCases;
       const sceneIds = new Set(scenes.map(scene => scene.id));
-      for (const c of cases) {
+      for (const c of selectedCases) {
         if (!sceneIds.has(String(c.id))) report.failures.push({ unit, run: run.name, reason: 'unknown-target-scene', id: String(c.id), label: c.label });
         targets.add(String(c.id));
       }
@@ -440,9 +468,10 @@ try {
       // a different legal selection with native pointer events on desktop.
       if (run.name.startsWith('pc-') && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
         const probes = unit === 'g7-spatial'
-          ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' })], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' })]]
-          : [['regular-solid-cell', () => probePolyhedronCell(page)]];
-        for (const [label, execute] of probes) {
+          ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' }), 's1-6'], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' }), 's1-7']]
+          : [['regular-solid-cell', () => probePolyhedronCell(page), 'p2-6']];
+        for (const [label, execute, probeSceneId] of probes) {
+          if (focused && !focusSceneIds.includes(probeSceneId)) continue;
           try {
             dest.interactions.push({ run: run.name, label, ...await execute() });
             await capture(`${unit}--${run.name}--selection-${label}.png`);
@@ -457,14 +486,15 @@ try {
         report.failures.push({ unit, run: run.name, reason: 'run-aborted', error: runError });
         // Observe the unmodified baseline's failure, then try the next viewport.
         // The candidate must still reject the same exception.
-        if (!observe) throw error;
+        if (!observe || error?.code === 'INVALID_FOCUS_SELECTION') throw error;
       } finally {
         if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });
         const observedSceneIds = [...new Set(dest.observations.filter(x => x.run === run.name && x.state === 'initial').map(x => x.id))];
         const initial = { expected: expectedSceneIds?.length ?? null, observed: observedSceneIds.length, expectedSceneIds, observedSceneIds,
           missingSceneIds: expectedSceneIds?.filter(id => !observedSceneIds.includes(id)) ?? null,
           unexpectedSceneIds: expectedSceneIds ? observedSceneIds.filter(id => !expectedSceneIds.includes(id)) : null };
-        (report.runSummaries ||= []).push({ unit, run: run.name, status: runError ? 'ABORTED' : 'FINISHED', initial });
+        (report.runSummaries ||= []).push({ unit, run: run.name, status: runError ? 'ABORTED' : 'FINISHED', initial,
+          ...(focused ? { coverageScope: 'SELECTED_SCENES_ONLY', registeredSceneCount: dest.registeredScenes?.length ?? null, selectedSceneCount: expectedSceneIds?.length ?? null } : {}) });
         if (runError) (report.abortedRuns ||= []).push({ unit, run: run.name, error: runError, runtimeErrors: errors.slice(), initial });
         try { if (ctx) await ctx.close(); }
         finally {
