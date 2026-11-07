@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$v(t)=3-4t$일 때",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      -10,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-9",
+        "-8",
+        "-6",
+        "-4",
+        "-2",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "3/4",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "-9"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "3/4",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "3/4",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "속도의 양·음 영역을 부호 있게 합해 처음 위치에 더하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도의 양·음 영역을 부호 있게 합해 처음 위치에 더하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 양·음 영역을 부호 있게 합해 처음 위치에 더하는 관계."
+  ]
+}

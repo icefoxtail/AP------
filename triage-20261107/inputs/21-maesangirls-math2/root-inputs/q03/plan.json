@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "곡선 $y=3x^2-12x+9$와",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "9"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "9"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-3"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "곡선의 영점을 경계로 축 위아래 넓이를 각각 양수로 더하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선의 영점을 경계로 축 위아래 넓이를 각각 양수로 더하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선의 영점을 경계로 축 위아래 넓이를 각각 양수로 더하는 관계."
+  ]
+}
