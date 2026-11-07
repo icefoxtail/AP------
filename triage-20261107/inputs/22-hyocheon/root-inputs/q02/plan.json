@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "분수함수의 역함수는 $x,y$를 교환한 뒤 $y$를 한쪽에 모아 구한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      7,
+      -4,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "5"
+        ],
+        "denominator": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=(5x+1)/(2x-3)"
+      },
+      {
+        "id": "inv",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "3"
+        ],
+        "denominator": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=(3x+1)/(2x-5)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ]
+  },
+  "caption": "유리함수와 역함수의 그래프 및 점근선은 y=x를 기준으로 서로 대응한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=(5x+1)/(2x−3)이고 f의 역함수는 (3x+1)/(2x−5)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "함수와 역함수는 y=x에 관해 대칭이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "식에서 x와 y를 교환하면 그래프와 수직·수평 점근선이 서로 대응함을 시각화한다."
+  ]
+}

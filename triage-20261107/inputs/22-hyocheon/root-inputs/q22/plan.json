@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "f(f(x))=x는 f가 자기 자신의 역함수라는 뜻이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      8,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2-sqrt(3)",
+          "y": "2-sqrt(3)"
+        },
+        {
+          "id": "Q",
+          "x": "2+sqrt(3)",
+          "y": "2+sqrt(3)"
+        }
+      ]
+    }
+  },
+  "caption": "자기역함수는 y=x에 대칭이며 두 고정점이 이 직선 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 조건을 풀면 f(x)=(2x−1)/(x−2)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=x의 두 근은 2−√3과 2+√3이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "자기역함수의 대각선 대칭과 두 고정점의 위치를 연결하여 고정점 거리 조건을 시각화한다."
+  ]
+}

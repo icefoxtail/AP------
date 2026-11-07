@@ -1,0 +1,56 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "sourceQuote": "근호 내부 조건으로 정의역을 구하고, 제곱근의 최솟값으로 치역을 구한다.",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "-2"
+    ],
+    "amplitude": "1",
+    "sign": 1,
+    "offset": "-1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -6,
+      4,
+      -2,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "hideLabels": [
+      "start"
+    ]
+  },
+  "caption": "무리함수의 끝점과 왼쪽 위로 뻗는 방향을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=√(6−2x)−1이고 제곱근의 값은 0 이상이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "끝점에서 왼쪽 위 방향으로 뻗는다.",
+      "mappedTo": "graphPlan.radicand"
+    }
+  ],
+  "newVisualInformation": [
+    "근호의 허용 구간과 함수값의 방향이 끝점을 기준으로 어떻게 정해지는지 보여 준다."
+  ]
+}
