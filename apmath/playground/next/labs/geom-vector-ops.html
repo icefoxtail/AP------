@@ -905,7 +905,8 @@ window.addEventListener('DOMContentLoaded', function () {
         controls: o.controls, presets: o.presets, actions: o.actions, tick: o.tick,
         enter: (s) => { Object.assign(s, o.init(s)); },
         focus: o.focus,
-        steps: (s,lab=window.lab) => lab?.tab==='explore'&&o.exploreSteps?o.exploreSteps(s):o.steps(cur()),
+        // 전체보기는 현재 상태로 다른 장면의 단계 수도 읽으므로, 현재 탐구 장면만 자유조작 상태를 사용합니다.
+        steps: (s,lab=window.lab) => lab?.tab==='explore'&&lab.scene?.id===o.id&&o.exploreSteps?o.exploreSteps(s):o.steps(cur()),
         reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${o.text(cur())}</div>`,
         problem: { tag: o.tag, time: o.time, text: () => probHTML(o.text(cur())), answer: () => tex(o.answer(cur())) },
         solution: {
