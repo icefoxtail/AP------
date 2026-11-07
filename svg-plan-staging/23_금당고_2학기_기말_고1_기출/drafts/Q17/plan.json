@@ -1,0 +1,81 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "T",
+        "name": "위 원"
+      },
+      {
+        "id": "L",
+        "name": "왼쪽 원"
+      },
+      {
+        "id": "R",
+        "name": "오른쪽 원"
+      }
+    ],
+    "elements": [
+      {
+        "text": "A",
+        "in": [
+          "T"
+        ]
+      },
+      {
+        "text": "B",
+        "in": [
+          "T",
+          "L"
+        ]
+      },
+      {
+        "text": "C",
+        "in": [
+          "L"
+        ]
+      },
+      {
+        "text": "D",
+        "in": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "text": "E",
+        "in": [
+          "R"
+        ]
+      },
+      {
+        "text": "F",
+        "in": [
+          "T",
+          "R"
+        ]
+      },
+      {
+        "text": "G",
+        "in": [
+          "T",
+          "L",
+          "R"
+        ]
+      }
+    ]
+  },
+  "caption": "바깥은 A-B-C-D-E-F-A 순환이고 가운데 G는 B,D,F와 인접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림의 세 원과 7개 영역",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A,C,E는 각 원 단독 영역이다.",
+    "B,D,F는 두 원의 겹침, G는 세 원 공통 영역이다."
+  ]
+}

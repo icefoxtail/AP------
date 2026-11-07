@@ -1,0 +1,328 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "1",
+          "children": [
+            {
+              "label": "2",
+              "children": [
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "3",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "4",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "5",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "children": [
+            {
+              "label": "1",
+              "children": [
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "3",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "4",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "5",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "children": [
+            {
+              "label": "1",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "2",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "4"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "4",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "5",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "children": [
+            {
+              "label": "1",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "2",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "3",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "5"
+                }
+              ]
+            },
+            {
+              "label": "5",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "children": [
+            {
+              "label": "1",
+              "children": [
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            },
+            {
+              "label": "2",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "3"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            },
+            {
+              "label": "3",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "4"
+                }
+              ]
+            },
+            {
+              "label": "4",
+              "children": [
+                {
+                  "label": "1"
+                },
+                {
+                  "label": "2"
+                },
+                {
+                  "label": "3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "leafLayout": "COMPACT"
+  },
+  "caption": "서로 다른 세 자리를 순서대로 골라 5×4×3=60가지가 되는 과정을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 대상 중 서로 다른 세 자리를 순서대로 선택한다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 선택은 5가지, 두 번째는 4가지, 세 번째는 3가지.",
+    "각 경로가 서로 다른 세 대상의 순서 있는 배치 하나이다."
+  ]
+}

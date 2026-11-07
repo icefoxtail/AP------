@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [{"coefficients": ["1", "-1"], "domain": [-1, 4], "start": "OPEN", "end": "OPEN"}],
+    "functionName": "f",
+    "axisTickValues": {"x": [-1, 4], "y": [-3, 2]}
+  },
+  "caption": "실제 대응 f(x)=−x+1은 열린구간 (−1,4)에서 (−3,2)로 감소하며 양 끝점은 포함되지 않는다. 구간 길이가 같고 b>0이므로 a=−1이다. 정답은 ①이다.",
+  "sourceConditions": [
+    "실제 문항의 정의역은 X=(−1,4)",
+    "실제 문항의 치역은 Y=(−3,2)",
+    "역함수가 존재하므로 일대일대응",
+    "b>0 조건을 충족하는 실제 대응은 f(x)=−x+1"
+  ],
+  "newVisualInformation": [
+    "정의역과 치역의 열린 끝점",
+    "두 구간의 끝점 대응 방향",
+    "감소하는 일대일대응"
+  ]
+}

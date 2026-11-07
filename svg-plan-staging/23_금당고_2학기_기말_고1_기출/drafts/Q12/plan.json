@@ -1,0 +1,100 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "b/120"
+        },
+        {
+          "label": "e/120"
+        },
+        {
+          "label": "m/120",
+          "children": [
+            {
+              "label": "b/24"
+            },
+            {
+              "label": "e/24",
+              "children": [
+                {
+                  "label": "b/6"
+                },
+                {
+                  "label": "n/6"
+                },
+                {
+                  "label": "r/6",
+                  "children": [
+                    {
+                      "label": "b/2",
+                      "children": [
+                        {
+                          "label": "nu/1"
+                        },
+                        {
+                          "label": "un/1"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "n/2"
+                    },
+                    {
+                      "label": "u/2"
+                    }
+                  ]
+                },
+                {
+                  "label": "u/6"
+                }
+              ]
+            },
+            {
+              "label": "n/24"
+            },
+            {
+              "label": "r/24"
+            },
+            {
+              "label": "u/24"
+            }
+          ]
+        },
+        {
+          "label": "n/120"
+        },
+        {
+          "label": "r/120"
+        },
+        {
+          "label": "u/120"
+        }
+      ]
+    },
+    "leafLayout": "COMPACT",
+    "highlightPaths": [
+      [
+        "m/120",
+        "e/24",
+        "r/6",
+        "b/2",
+        "un/1"
+      ]
+    ]
+  },
+  "caption": "278번째는 m 블록의 38번째, me 블록의 14번째, mer 블록의 두 번째이다. 남은 b,n,u에서 두 번째 순열은 bun이므로 merbun이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "b,e,m,n,r,u를 사전순으로 배열한다. 하위 블록 크기는 남은 글자 수의 팩토리얼.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "m/e/r/b/u/n 경로가 선택되는 과정을 강조한다.",
+    "하위 블록 크기는 120,24,6,2,1이다."
+  ]
+}

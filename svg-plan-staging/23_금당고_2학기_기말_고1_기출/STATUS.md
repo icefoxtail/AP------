@@ -1,0 +1,29 @@
+# 23 금당고 고1 2학기 기말 SVG 초안 상태
+
+기준 원문 archive/exams/original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js (21문항). 이전 계획의 시각화 의도를 유지해 AUTHOR_GUIDE의 공식 capability 계약을 확인했다. 이번 회차는 입력 작성이며 renderer는 실행하지 않았다.
+
+| 문항 | 상태 | 확인 사항 |
+|---|---|---|
+| Q1 | DRAFT_ONLY | TREE의 5→4→3 선택 트리 |
+| Q2 | DRAFT_ONLY | TREE 순서쌍과 역순 중복 관계 |
+| Q3 | DRAFT_ONLY | g 다음 f의 3열 mapping |
+| Q4 | DRAFT_ONLY | construction circle-line intersection으로 같은 x좌표인 두 교점 표시 |
+| Q5 | CLAUDE_IN_PROGRESS | Claude 담당, 제외 |
+| Q6 | OPEN | 공식 대수식 소거 capability 계약 미확인 |
+| Q7 | FAILED / OPEN | 과거 5회 실패 이력 유지, 추가 렌더 안 함 |
+| Q8 | OPEN | 기존 aligned draft 미확인 |
+| Q9 | DRAFT_ONLY | PLANE_FIGURE construction으로 꼭짓점·대각선·내부 교점 구성 |
+| Q10 | ARCHIVE_BOUND | 기존 공식 piecewise-discontinuous 렌더 보존 |
+| Q11 | ARCHIVE_BOUND | 공식 rational-spike 렌더 보존; 부정확한 양의 분자 설명/Q10 예시 혼동 수정 |
+| Q12 | DRAFT_ONLY | TREE 블록 크기와 278번째 경로 merbun 표시 |
+| Q13 | OPEN | 기존 aligned draft 미확인 |
+| Q14 | DRAFT_ONLY | 두 대수 분기와 값 −3,6의 case tree |
+| Q15 | DRAFT_ONLY | (2,1,1) 선택 분기와 4! 배열 |
+| Q16 | OPEN | 혼합 유리·절댓값·제곱근 piecewise 계약 미확인 |
+| Q17 | DRAFT_ONLY | 3-set VENN 계약으로 원문의 7영역 인접도를 표현 |
+| Q18 | OPEN | f,g 공통 선분은 유한 교점 목록 계약에 맞지 않음 |
+| Q19 | DRAFT_ONLY | PLANE_FIGURE로 원문 2층 3칸·1층 4칸 배열 복원 |
+| Q20 | OPEN | 기존 aligned draft 미확인 |
+| Q21 | OPEN | 두 가능한 h 대응 순서를 보존할 mapping 계약 미확인 |
+
+Q7은 추가 렌더하지 않았다. Q8/Q13/Q20 중복 초안은 만들지 않았다. Q10/Q11 SVG와 검수 증거를 보존했다. Q6/Q16/Q18/Q21에는 미확정 근거를 개별 plan.json에 기록했다.
