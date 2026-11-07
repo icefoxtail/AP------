@@ -59,9 +59,11 @@ try {
           const scenes = lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index, group: s.group?.title }));
           lab.openOverview(); await new Promise(r => requestAnimationFrame(r));
           const selectionCount = document.querySelectorAll('.apl-scene-card').length;
-          document.querySelectorAll('dialog[open]').forEach(d => d.close());
           return { scenes, selectionCount };
         });
+        // The kit uses an accessible div dialog, not the native HTML <dialog>.
+        await page.getByRole('dialog').getByRole('button', { name: '닫기', exact: true }).click();
+        await page.locator('.apl-dialog').waitFor({ state: 'detached' });
         if (!dest.scenes.length) dest.scenes = census.scenes;
         if (census.selectionCount !== census.scenes.length || new Set(census.scenes.map(s => s.id)).size !== census.scenes.length) report.failures.push({ lab: item.id, run: run.name, reason: 'scene-selection-inventory', selectionCount: census.selectionCount, count: census.scenes.length });
         if (JSON.stringify(dest.scenes) !== JSON.stringify(census.scenes)) throw Error('Scene list changes between viewports/themes');
