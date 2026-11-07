@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -21,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "두 다항식 $A=2x^2-xy-3y^2$과 $B=-x^2+3xy-y^2$에 대하여 $A-2B=ax^2-bxy-y^2$일 때, $a+b$의 값은? (단, $a$와 $b$는 상수)",
@@ -32,8 +33,8 @@ window.questionBank = [
       "$9$",
       "$11$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n다항식의 연산에서 $A-2B$를 계산한 후, 동류항끼리 묶어 주어진 결과식 $ax^2-bxy-y^2$과 계수를 비교한다.\n빼는 다항식 $B$에 $-2$를 분배할 때 각 항의 부호 변화에 주의한다.\n\n[단계별 풀이]\n1단계: $A-2B$ 계산하기\n$$A - 2B = (2x^2-xy-3y^2) - 2(-x^2+3xy-y^2)$$\n$$= 2x^2-xy-3y^2 + 2x^2-6xy+2y^2$$\n동류항끼리 묶어서 정리하면\n$$= (2+2)x^2 + (-1-6)xy + (-3+2)y^2$$\n$$= 4x^2 - 7xy - y^2$$\n\n2단계: 계수 비교하여 $a, b$ 구하기\n구한 식 $4x^2-7xy-y^2$을 $ax^2-bxy-y^2$과 비교하면\n- $x^2$의 계수: $a = 4$\n- $xy$의 계수: $-b = -7 \\implies b = 7$\n- $y^2$의 계수: $-1 = -1$ (일치)\n\n3단계: $a+b$ 계산\n$$a+b = 4 + 7 = 11$$\n따라서 선택지 ⑤가 정답이다.\n\n[오답 및 경계 점검]\n- $-bxy = -7xy$에서 $-b = -7$이므로 $b = +7$이다. $b = -7$로 부호를 오인하여 $a+b = 4 + (-7) = -3$으로 계산하지 않도록 식의 부호를 정확히 대조한다.\n\n[결론]\n⑤"
   },
   {
     "id": 2,
@@ -44,9 +45,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -55,7 +56,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "$(2x^3-x^2+3x)(-x^3+4x^2+x-2)$를 전개한 식에서 $x^3$의 계수는?",
@@ -66,8 +68,8 @@ window.questionBank = [
       "$9$",
       "$10$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n전체 다항식을 모두 전개할 필요 없이, 두 괄호에서 곱하여 $x^3$이 되는 항들만 선별적으로 추출하여 계수를 합산한다.\n- (첫 번째 괄호의 차수) + (두 번째 괄호의 차수) = $3$이 되는 조합을 찾는다.\n\n[단계별 풀이]\n$(2x^3-x^2+3x)(-x^3+4x^2+x-2)$에서 $x^3$이 나오는 조합은 다음과 같다:\n1) 삼차항 $\\times$ 상수항:\n   $$2x^3 \\times (-2) = -4x^3$$\n2) 이차항 $\\times$ 일차항:\n   $$-x^2 \\times x = -x^3$$\n3) 일차항 $\\times$ 이차항:\n   $$3x \\times 4x^2 = 12x^3$$\n\n위 세 항을 모두 더하면\n$$-4x^3 - x^3 + 12x^3 = (-4 - 1 + 12)x^3 = 7x^3$$\n따라서 $x^3$의 계수는 $7$이다.\n선택지 ②가 정답이다.\n\n[오답 및 경계 점검]\n- $2x^3 \\times (-2)$에서 음의 부호(-)를 놓쳐 $+4x^3$으로 계산하면 계수가 $15$ 등으로 오답을 내게 된다. 각 항의 계수의 부호를 포함하여 곱셈해야 한다.\n\n[결론]\n②"
   },
   {
     "id": 3,
@@ -78,9 +80,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -89,13 +91,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "$x+y=4$이고 $x^3+y^3=4$일 때, $x^2+y^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n곱셈 공식의 변형을 이용하여 두 수의 곱 $xy$를 먼저 구한 뒤, $x^2+y^2 = (x+y)^2 - 2xy$에 대입하여 식의 값을 구한다.\n- $x^3+y^3 = (x+y)^3 - 3xy(x+y)$\n\n[단계별 풀이]\n1단계: $xy$의 값 구하기\n곱셈 공식 변형 $x^3+y^3 = (x+y)^3 - 3xy(x+y)$에 $x+y=4$, $x^3+y^3=4$를 대입하면\n$$4 = 4^3 - 3xy(4)$$\n$$4 = 64 - 12xy$$\n$$12xy = 64 - 4 = 60 \\implies xy = 5$$\n\n2단계: $x^2+y^2$의 값 계산하기\n곱셈 공식 변형 $x^2+y^2 = (x+y)^2 - 2xy$에 대입하면\n$$x^2+y^2 = 4^2 - 2(5) = 16 - 10 = 6$$\n\n[오답 및 경계 점검]\n- $4^3 = 64$ 계산에 주의한다.\n- $12xy = 60$으로부터 $xy=5$를 도출할 때 부호 이항 실수를 범하지 않도록 주의한다.\n\n[결론]\n$6$"
   },
   {
     "id": 4,
@@ -106,9 +109,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -117,7 +120,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "다항식 $f(x)$를 $2x^2+x+1$로 나누었을 때의 몫이 $x-1$이고 나머지가 $-4x+8$일 때, $f(2)$의 값은?",
@@ -128,8 +132,8 @@ window.questionBank = [
       "$11$",
       "$12$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n다항식의 나눗셈 관계식 $f(x) = (\\text{제수}) \\times (\\text{몫}) + (\\text{나머지})$를 세운 후, 식 전체를 전개할 필요 없이 $x=2$를 직접 대입하여 $f(2)$를 구한다.\n\n[단계별 풀이]\n1단계: $f(x)$에 대한 항등식 작성\n$$f(x) = (2x^2+x+1)(x-1) + (-4x+8)$$\n\n2단계: $x=2$ 대입하여 값 계산\n$$f(2) = \\{2(2)^2 + 2 + 1\\}(2-1) + \\{-4(2) + 8\\}$$\n각 부분을 계산하면\n- $2(2)^2 + 2 + 1 = 2(4) + 2 + 1 = 8 + 2 + 1 = 11$\n- $2-1 = 1$\n- $-4(2) + 8 = -8 + 8 = 0$\n따라서\n$$f(2) = 11 \\times 1 + 0 = 11$$\n선택지 ④가 정답이다.\n\n[오답 및 경계 점검]\n- $f(x)$를 모두 전개하여 $2x^3-x^2-4x+7$로 정리한 후 $x=2$를 대입해도 $2(8)-4-4(2)+7 = 16-4-8+7 = 11$로 같지만, 전개 없이 대입하는 것이 훨씬 빠르고 안전하다.\n\n[결론]\n④"
   },
   {
     "id": 5,
@@ -140,9 +144,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -151,13 +155,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "등식 $a(x+1)-b(2x-1)+3=0$이 $x$의 값에 관계없이 항상 성립할 때, 상수 $a$와 $b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n등식이 $x$의 값에 관계없이 항상 성립하므로 $x$에 대한 항등식이다.\n좌변을 $x$에 대하여 내림차순 $(Ax+B=0)$으로 정리하여 $A=0, B=0$을 풀거나, 적절한 수치($x=-1, x=\\frac{1}{2}$)를 대입하여 $a, b$를 구한다.\n\n[단계별 풀이]\n1단계: $x$에 대하여 내림차순 정리하기\n$$a(x+1)-b(2x-1)+3 = 0$$\n$$ax+a-2bx+b+3 = 0$$\n$$(a-2b)x + (a+b+3) = 0$$\n\n2단계: 항등식 조건 적용하여 $a, b$ 구하기\n모든 $x$에 대하여 성립해야 하므로\n$$\\begin{cases} a-2b = 0 & \\cdots ① \\\\ a+b+3 = 0 & \\cdots ② \\end{cases}$$\n①에서 $a = 2b$\n이를 ②에 대입하면\n$$2b+b+3 = 0 \\implies 3b = -3 \\implies b = -1$$\n$b=-1$을 $a=2b$에 대입하면\n$$a = 2(-1) = -2$$\n\n3단계: $ab$ 계산\n$$ab = (-2) \\times (-1) = 2$$\n\n[오답 및 경계 점검]\n- [수치대입법 검산]:\n  - $x=-1$ 대입: $-b(-2-1)+3 = 0 \\implies 3b+3=0 \\implies b=-1$\n  - $x=\\frac{1}{2}$ 대입: $a\\left(\\frac{3}{2}\\right)+3 = 0 \\implies \\frac{3}{2}a = -3 \\implies a = -2$\n  결과가 완벽히 일치함을 확인하였다.\n\n[결론]\n$2$"
   },
   {
     "id": 6,
@@ -168,9 +173,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -179,7 +184,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $f(x)$에 대하여 등식\n$$x^{14}-ax^7+b=(x^2-1)f(x)+3x+5$$\n가 $x$에 대한 항등식이 되도록 상수 $a$와 $b$를 정할 때, $a^2+b^2$의 값은?",
@@ -190,8 +196,8 @@ window.questionBank = [
       "$20$",
       "$25$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n등식의 우변에 $(x^2-1)f(x) = (x-1)(x+1)f(x)$가 포함되어 있으므로, 알지 못하는 몫 $f(x)$를 소거하기 위해 $x=1$과 $x=-1$을 양변에 대입하는 수치대입법을 적용한다.\n얻어진 $a, b$에 대한 연립방정식을 풀어 $a^2+b^2$을 구한다.\n\n[단계별 풀이]\n1단계: $x=1$ 대입하기\n$$1^{14} - a(1^7) + b = (1^2-1)f(1) + 3(1) + 5$$\n$$1 - a + b = 0 + 8$$\n$$-a + b = 7 \\quad \\cdots ①$$\n\n2단계: $x=-1$ 대입하기\n$$(-1)^{14} - a(-1)^7 + b = ((-1)^2-1)f(-1) + 3(-1) + 5$$\n$1 - a(-1) + b = 0 - 3 + 5$\n$$1 + a + b = 2$$\n$$a + b = 1 \\quad \\cdots ②$$\n\n3단계: 연립방정식을 풀어 $a, b$ 구하기\n①과 ②를 변끼리 더하면\n$$2b = 8 \\implies b = 4$$\n$b=4$를 ②에 대입하면\n$$a + 4 = 1 \\implies a = -3$$\n\n4단계: $a^2+b^2$ 계산하기\n$$a^2+b^2 = (-3)^2 + 4^2 = 9 + 16 = 25$$\n따라서 선택지 ⑤가 정답이다.\n\n[오답 및 경계 점검]\n- $(-1)^{14} = +1$, $(-1)^7 = -1$이므로 $-a(-1)^7 = +a$가 됨을 주의한다. 짝수 거듭제곱과 홀수 거듭제곱의 부호 판정이 핵심이다.\n\n[결론]\n⑤"
   },
   {
     "id": 7,
@@ -202,9 +208,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -213,7 +219,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $f(x)$를 $x+3$으로 나누었을 때의 몫은 $Q(x)$, 나머지는 $2$이고, $Q(x)$를 $x-3$으로 나누었을 때의 나머지는 $-5$이다. $f(x)$를 $x-3$으로 나누었을 때의 나머지는?",
@@ -224,8 +231,8 @@ window.questionBank = [
       "$-16$",
       "$-12$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "①",
+    "solution": "[풀이 전략]\n나머지정리에 의하여 구하고자 하는 $f(x)$를 $x-3$으로 나누었을 때의 나머지는 $f(3)$의 값이다.\n조건에서 주어진 $f(x)$와 $Q(x)$의 관계식을 작성하고 $x=3$을 대입하여 $f(3)$을 산출한다.\n\n[단계별 풀이]\n1단계: 조건식을 나눗셈 항등식으로 나타내기\n- $f(x)$를 $x+3$으로 나누었을 때 몫이 $Q(x)$, 나머지가 $2$이므로:\n  $$f(x) = (x+3)Q(x) + 2 \\quad \\cdots ①$$\n- $Q(x)$를 $x-3$으로 나누었을 때의 나머지가 $-5$이므로 나머지정리에 의해:\n  $$Q(3) = -5$$\n\n2단계: $f(3)$의 값 계산하기\n구하고자 하는 나머지는 나머지정리에 의해 $f(3)$이다.\n①의 양변에 $x=3$을 대입하면\n$$f(3) = (3+3)Q(3) + 2$$\n$$= 6 \\times Q(3) + 2$$\n$Q(3) = -5$를 대입하면\n$$f(3) = 6 \\times (-5) + 2 = -30 + 2 = -28$$\n따라서 선택지 ①이 정답이다.\n\n[오답 및 경계 점검]\n- $Q(x)$에 대한 다항식을 직접 구할 필요 없이 $Q(3)=-5$라는 함축적 함수값만 바로 대입하면 1단계 대입으로 신속하게 해결된다.\n- 부호 연산 $6 \\times (-5) + 2 = -30 + 2 = -28$에 주의한다.\n\n[결론]\n①"
   },
   {
     "id": 8,
@@ -236,9 +243,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -247,13 +254,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $f(x)$를 $x^2+x$로 나누었을 때의 나머지는 $x+3$이고, $x^2+x-2$로 나누었을 때의 나머지는 $3x+1$이다. $f(x)$를 $x^2+2x$로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4x+3$",
+    "solution": "[풀이 전략]\n나누는 식 $x^2+2x = x(x+2)$가 이차식이므로 나머지는 일차 이하의 식 $R(x) = ax+b$로 둔다.\n주어진 두 나눗셈 조건으로부터 $f(0)$과 $f(-2)$의 값을 구한 후 대입하여 $a, b$를 산출한다.\n\n[단계별 풀이]\n1단계: 주어진 조건으로부터 $f(0)$과 $f(-2)$ 구하기\n- $f(x)$를 $x^2+x = x(x+1)$로 나누었을 때 나머지가 $x+3$이므로:\n  $$f(x) = x(x+1)Q_1(x) + (x+3)$$\n  $x=0$을 대입하면: $f(0) = 0 + 3 = 3$\n- $f(x)$를 $x^2+x-2 = (x+2)(x-1)$로 나누었을 때 나머지가 $3x+1$이므로:\n  $$f(x) = (x+2)(x-1)Q_2(x) + (3x+1)$$\n  $x=-2$를 대입하면: $f(-2) = 0 + 3(-2)+1 = -6+1 = -5$\n\n2단계: $f(x)$를 $x^2+2x$로 나눈 나머지 구하기\n$x^2+2x = x(x+2)$로 나눈 몫을 $Q(x)$, 나머지를 $ax+b$ ($a, b$는 상수)라 하면\n$$f(x) = x(x+2)Q(x) + ax+b$$\n- $x=0$ 대입:\n  $$f(0) = 0 \\times Q(0) + b \\implies b = 3$$\n- $x=-2$ 대입:\n  $$f(-2) = 0 \\times Q(-2) - 2a+b \\implies -2a+b = -5$$\n  $b=3$을 대입하면\n  $$-2a+3 = -5 \\implies -2a = -8 \\implies a = 4$$\n따라서 구하는 나머지는 다음과 같다:\n$$4x+3$$\n\n[오답 및 경계 점검]\n- $f(x)$를 각각 나눈 식에서 우리가 필요한 값은 $x=0$과 $x=-2$일 때의 함수값이므로, $x=-1$이나 $x=1$의 대입값은 계산하지 않아도 무방하다. 목표 제수의 인수($x, x+2$)를 미리 확인하는 것이 중요하다.\n\n[결론]\n$4x+3$"
   },
   {
     "id": 9,
@@ -264,9 +272,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -275,13 +283,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "삼차식 $f(x)$에 대하여 $f(x)+8$은 $(x-1)^2$으로 나누어떨어지고, $1-f(x)$는 $x^2-4$로 나누어떨어진다. $f(x)$를 $x-3$으로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$36$",
+    "solution": "[풀이 전략]\n$f(x)$가 삼차식이므로 $f(x)+8$을 $(x-1)^2$으로 나눈 몫은 일차식 $ax+b$ 꼴이다.\n$1-f(x)$가 $x^2-4 = (x-2)(x+2)$로 나누어떨어진다는 조건에서 $f(2)=1, f(-2)=1$을 얻고, 이를 대입하여 미정계수 $a, b$를 구한 후 $f(3)$을 계산한다.\n\n[단계별 풀이]\n1단계: $f(x)+8$의 식 설정\n$f(x)$가 삼차식이므로 $f(x)+8$을 $(x-1)^2$으로 나누었을 때의 몫을 $ax+b$ ($a \\ne 0$)라 하면\n$$f(x)+8 = (x-1)^2(ax+b) \\quad \\cdots ①$$\n\n2단계: $1-f(x)$의 조건 적용\n$1-f(x)$가 $x^2-4 = (x+2)(x-2)$로 나누어떨어지므로 인수정리에 의해\n$$1-f(-2) = 0 \\implies f(-2) = 1$$\n$$1-f(2) = 0 \\implies f(2) = 1$$\n\n3단계: ①식에 대입하여 $a, b$ 구하기\n- $x=-2$를 ①에 대입하면:\n  $$f(-2)+8 = (-2-1)^2\\{a(-2)+b\\}$$\n  $$1+8 = (-3)^2(-2a+b) \\implies 9 = 9(-2a+b) \\implies -2a+b = 1 \\quad \\cdots ②$$\n- $x=2$를 ①에 대입하면:\n  $$f(2)+8 = (2-1)^2\\{a(2)+b\\}$$\n  $$1+8 = 1^2(2a+b) \\implies 2a+b = 9 \\quad \\cdots ③$$\n②와 ③을 변끼리 더하면\n$$2b = 10 \\implies b = 5$$\n이를 ③에 대입하면\n$$2a+5 = 9 \\implies 2a = 4 \\implies a = 2$$\n따라서 $f(x)$는 다음과 같다:\n$$f(x) = (x-1)^2(2x+5) - 8$$\n\n4단계: $f(x)$를 $x-3$으로 나눈 나머지 $f(3)$ 계산하기\n나머지정리에 의하여 구하는 나머지는 $f(3)$이므로\n$$f(3) = (3-1)^2\\{2(3)+5\\} - 8$$\n$$= 2^2(6+5) - 8 = 4 \\times 11 - 8 = 44 - 8 = 36$$\n\n[오답 및 경계 점검]\n- $f(x)$가 삼차식이라는 조건이 주어졌으므로 몫을 일차식 $ax+b$로 두는 것이 핵심이다.\n- $f(3)$ 계산 시 $(3-1)^2 = 4$와 $2(3)+5 = 11$의 곱셈 후 $-8$을 빼는 연산을 침착하게 마무리한다.\n\n[결론]\n$36$"
   },
   {
     "id": 10,
@@ -292,9 +301,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -303,7 +312,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다음은 조립제법을 이용하여 다항식 $x^3+ax^2-2x+b$를 $x+2$로 나누었을 때의 몫과 나머지를 구하는 과정이다. $a$~$e$의 값으로 옳지 않은 것은?\n<img src=\"q10.png\" />",
@@ -314,8 +324,8 @@ window.questionBank = [
       "$d=4$",
       "$e=-2$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n조립제법의 연산 규칙(내려올 때는 더하고, 대각선으로 올라갈 때는 나누는 식의 근을 곱한다)을 역추적하여 각 미지수 $a, b, c, d, e$의 값을 정확히 결정한다.\n- 나누는 식이 $x+2$이므로 $e = -2$이다.\n\n[단계별 풀이]\n조립제법 표를 열별로 분석한다:\n```\ne |  1   a  -2   b\n  |      c   d  -4\n------------------\n     1  -2   2   3\n```\n1단계: $e$의 값 결정\n- 일차식 $x+2$로 나누므로 $x+2=0$의 해인 $e = -2$이다. (⑤ 참)\n\n2단계: 첫 번째 열과 $c$의 값 결정\n- 최고차항 계수 $1$이 그대로 내려온다.\n- 몫의 첫 번째 수 $1$과 $e=-2$를 곱하여 두 번째 열 위로 올라가므로:\n  $$c = 1 \\times e = 1 \\times (-2) = -2$$\n- 선택지 ③에서 $c=2$라고 하였으므로 이는 옳지 않다.\n\n3단계: 두 번째 열과 $a$의 값 결정\n- 위아래 두 수를 더한 값이 $-2$이므로:\n  $$a + c = -2 \\implies a + (-2) = -2 \\implies a = 0$$ (① 참)\n\n4단계: 세 번째 열과 $d$의 값 결정\n- 몫의 두 번째 수 $-2$와 $e=-2$를 곱하여 세 번째 열 위로 올라가므로:\n  $$d = -2 \\times e = -2 \\times (-2) = 4$$ (④ 참)\n- 검산: $-2 + d = -2 + 4 = 2$로 아래의 수와 완벽히 일치한다.\n\n5단계: 네 번째 열과 $b$의 값 결정\n- 몫의 세 번째 수 $2$와 $e=-2$를 곱하면 $2 \\times (-2) = -4$로 네 번째 열 위의 $-4$와 일치한다.\n- 더한 결과가 나머지 $3$이므로:\n  $$b + (-4) = 3 \\implies b = 7$$ (② 참)\n\n따라서 옳지 않은 것은 $c=2$ (실제 값은 $c=-2$)인 ③이다.\n\n[오답 및 경계 점검]\n- 조립제법에서 대각선으로 올라갈 때 곱해지는 부호에 유의한다. $c = 1 \\times (-2) = -2$이므로 $+2$와 혼동하지 않는다.\n\n[결론]\n③"
   },
   {
     "id": 11,
@@ -326,8 +336,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -337,13 +347,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "인수분해"
     ],
     "wide": false,
     "content": "$x=\\sqrt{3}+1$이고 $y=\\sqrt{3}-1$일 때, $x^3+x^2y-xy^2-y^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$24$",
+    "solution": "[풀이 전략]\n주어진 다항식을 먼저 인수분해하여 식을 간단히 만든 후, $x+y$와 $x-y$의 값을 대입하여 계산한다.\n- 두 항씩 묶으면 공통인수 $(x+y)$가 나타난다.\n\n[단계별 풀이]\n1단계: 주어진 다항식 인수분해 하기\n$$x^3+x^2y-xy^2-y^3 = (x^3+x^2y) - (xy^2+y^3)$$\n$$= x^2(x+y) - y^2(x+y)$$\n공통인수 $(x+y)$로 묶으면\n$$= (x^2-y^2)(x+y)$$\n합차 공식에 의해 $x^2-y^2 = (x-y)(x+y)$이므로\n$$= (x-y)(x+y)(x+y) = (x-y)(x+y)^2$$\n\n2단계: $x-y$와 $x+y$의 값 계산하기\n$x = \\sqrt{3}+1$, $y = \\sqrt{3}-1$이므로\n$$x-y = (\\sqrt{3}+1) - (\\sqrt{3}-1) = \\sqrt{3}+1 - \\sqrt{3}+1 = 2$$\n$$x+y = (\\sqrt{3}+1) + (\\sqrt{3}-1) = 2\\sqrt{3}$$\n\n3단계: 식의 값 계산하기\n인수분해한 식에 대입하면\n$$(x-y)(x+y)^2 = 2 \\times (2\\sqrt{3})^2$$\n$$(2\\sqrt{3})^2 = 4 \\times 3 = 12$$\n따라서\n$$= 2 \\times 12 = 24$$\n\n[오답 및 경계 점검]\n- 직접 세제곱하여 대입하면 무리수 세제곱 연산으로 인해 복잡해지므로, 반드시 인수분해를 선행한다.\n- $(2\\sqrt{3})^2 = 2^2 \\times (\\sqrt{3})^2 = 4 \\times 3 = 12$의 거듭제곱 계산에 유의한다.\n\n[결론]\n$24$"
   },
   {
     "id": 12,
@@ -354,8 +365,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -365,7 +376,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "인수분해"
     ],
     "wide": false,
     "content": "다음에서 $x^2-xy-2y^2+x+7y-6$의 인수인 것은?",
@@ -376,8 +388,8 @@ window.questionBank = [
       "$x-2y-2$",
       "$x-2y+3$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n두 문자 $x, y$가 포함된 이차식의 인수분해는 한 문자(보통 $x$)에 대하여 내림차순으로 정리한 후, 상수항(또는 $y$에 대한 식)을 먼저 인수분해하고 대각선 곱셈(크로스 인수분해)을 적용한다.\n\n[단계별 풀이]\n1단계: $x$에 대하여 내림차순 정리하기\n$$x^2-xy-2y^2+x+7y-6 = x^2 + (1-y)x - (2y^2-7y+6)$$\n\n2단계: 상수항에 해당하는 $y$의 식 인수분해 하기\n$$2y^2-7y+6 = (2y-3)(y-2)$$\n따라서 식은 다음과 같다:\n$$x^2 + (1-y)x - (2y-3)(y-2)$$\n\n3단계: 크로스 곱셈으로 일차항 계수 $1-y$ 맞추기\n곱하여 $-(2y-3)(y-2)$가 되고 합하여 $1-y$가 되는 두 일차식을 찾는다:\n- $-(2y-3) = -2y+3$\n- $+(y-2) = y-2$\n두 식의 합을 구하면:\n$$(-2y+3) + (y-2) = -y+1 = 1-y$$\n가운데 일차항의 계수와 정확히 일치한다.\n\n4단계: 인수분해 완료\n$$\\{x - (2y-3)\\}\\{x + (y-2)\\} = (x-2y+3)(x+y-2)$$\n따라서 인수는 $x-2y+3$과 $x+y-2$이다.\n선택지 중 일치하는 것은 ⑤ $x-2y+3$이다.\n\n[오답 및 경계 점검]\n- 상수항 앞의 마이너스 부호를 분배하여 묶을 때 $-(2y^2-7y+6)$으로 부호가 반전됨에 유의한다.\n- 괄호를 풀 때 $x-(2y-3) = x-2y+3$의 부호 처리에 유의한다.\n\n[결론]\n⑤"
   },
   {
     "id": 13,
@@ -388,8 +400,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -399,7 +411,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "인수분해"
     ],
     "wide": false,
     "content": "다항식 $x^4-7x^3+ax^2-14x+4$가\n$$(x-1)(x+b)(x^2+cx+2)$$\n로 인수분해 될 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은?",
@@ -410,8 +423,8 @@ window.questionBank = [
       "$14$",
       "$16$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n주어진 다항식과 인수분해된 식은 $x$에 대한 항등식이므로, 상수항과 각 차수의 계수를 비교하여 $a, b, c$를 순차적으로 결정한다.\n- 상수항 비교로부터 $b$를 먼저 구하고,\n- 전개식을 정리하여 삼차항, 이차항의 계수 비교로 $c, a$를 구한다.\n\n[단계별 풀이]\n1단계: 상수항 비교하여 $b$ 구하기\n우변의 상수항은 각 인수의 상수항의 곱이다:\n$$(-1) \\times b \\times 2 = -2b$$\n좌변의 상수항은 $4$이므로\n$$-2b = 4 \\implies b = -2$$\n따라서 우변의 식은 $(x-1)(x-2)(x^2+cx+2)$가 된다.\n\n2단계: 앞의 두 일차식을 전개하여 삼차항 계수 비교로 $c$ 구하기\n$$(x-1)(x-2) = x^2-3x+2$$\n따라서 우변은 다음과 같다:\n$$(x^2-3x+2)(x^2+cx+2)$$\n이 식에서 삼차항($x^3$)이 나오는 부분은\n$$x^2(cx) + (-3x)(x^2) = (c-3)x^3$$\n좌변의 삼차항 계수가 $-7$이므로\n$$c-3 = -7 \\implies c = -4$$\n\n3단계: 이차항 계수 비교하여 $a$ 구하기\n우변은 $(x^2-3x+2)(x^2-4x+2)$이다.\n여기서 이차항($x^2$)이 나오는 부분은\n$$x^2(2) + (-3x)(-4x) + 2(x^2) = 2x^2 + 12x^2 + 2x^2 = 16x^2$$\n좌변의 이차항 계수가 $a$이므로\n$$a = 16$$\n\n4단계: [검산] 일차항 계수 확인\n우변의 일차항은 $(-3x)(2) + 2(-4x) = -6x-8x = -14x$로 좌변의 $-14x$와 완벽히 일치한다.\n\n5단계: $a+b+c$ 계산\n$$a+b+c = 16 + (-2) + (-4) = 10$$\n따라서 선택지 ②가 정답이다.\n\n[오답 및 경계 점검]\n- $b=-2$의 음의 부호를 $a+b+c$ 합산 시 잊지 않고 계산한다.\n\n[결론]\n②"
   },
   {
     "id": 14,
@@ -422,8 +435,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -433,13 +446,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "인수분해"
     ],
     "wide": false,
     "content": "다항식 $x^4-ax^2+b$가 $(x+1)^2Q(x)$로 인수분해 될 때, $Q(-2)$의 값을 구하시오. (단, $a$와 $b$는 상수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n$x^4-ax^2+b$가 $(x+1)^2$을 인수로 가지므로 조립제법을 $x=-1$로 연속 두 번 적용하여 나머지가 모두 $0$이 됨을 이용한다.\n이를 통해 상수 $a, b$와 몫의 다항식 $Q(x)$를 구한 후 $Q(-2)$를 계산한다.\n\n[단계별 풀이]\n1단계: 조립제법 1회 적용 ($x=-1$)\n$$x^4-ax^2+b = x^4+0x^3-ax^2+0x+b$$\n$$-1 \\,|\\, 1 \\quad\\phantom{-}0 \\quad -a \\quad\\phantom{-}0 \\quad b$$\n$$\\phantom{-1 \\,|\\,} \\downarrow \\quad -1 \\quad\\phantom{-}1 \\quad a-1 \\quad -a+1$$\n$$\\overline{\\phantom{-1 \\,|\\,} 1 \\quad -1 \\quad -a+1 \\quad a-1 \\quad -a+b+1}$$\n첫 번째 나머지가 $0$이어야 하므로\n$$-a+b+1 = 0 \\implies b = a-1 \\quad \\cdots ①$$\n\n2단계: 몫 다항식에 조립제법 2회 적용 ($x=-1$)\n남은 몫 $x^3-x^2-(a-1)x+(a-1)$도 $x+1$로 나누어떨어져야 하므로\n$$-1 \\,|\\, 1 \\quad -1 \\quad -a+1 \\quad a-1$$\n$$\\phantom{-1 \\,|\\,} \\downarrow \\quad -1 \\quad\\phantom{-}2 \\quad a-3$$\n$$\\overline{\\phantom{-1 \\,|\\,} 1 \\quad -2 \\quad -a+3 \\quad 2a-4}$$\n두 번째 나머지도 $0$이어야 하므로\n$$2a-4 = 0 \\implies a = 2$$\n이를 ①에 대입하면\n$$b = 2-1 = 1$$\n\n3단계: $Q(x)$ 및 $Q(-2)$ 구하기\n조립제법 결과 최종 몫은 $x^2-2x+(-a+3)$이다.\n$a=2$를 대입하면\n$$Q(x) = x^2-2x+(-2+3) = x^2-2x+1 = (x-1)^2$$\n따라서 $Q(-2)$의 값은\n$$Q(-2) = (-2-1)^2 = (-3)^2 = 9$$\n\n[오답 및 경계 점검]\n- [다항식 복원 검산]: $a=2, b=1$이면 원래 식은 $x^4-2x^2+1 = (x^2-1)^2 = \\{(x+1)(x-1)\\}^2 = (x+1)^2(x-1)^2$이다.\n- 따라서 $Q(x) = (x-1)^2$임이 명백하고, $Q(-2) = (-3)^2 = 9$가 완벽히 검증된다.\n\n[결론]\n$9$"
   },
   {
     "id": 15,
@@ -450,9 +464,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -461,13 +475,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $f(x)$를 $x^2+x+1$로 나누었을 때의 나머지는 $-x+4$이다. $f(x)$를 $x^3-1$로 나누었을 때의 나머지를 $ax^2+b$라 할 때, 다음에 답하시오.\n⑴ 상수 $a$와 $b$의 값을 구하시오.\n⑵ $f(x)$를 $x-1$로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=1, b=5$\n⑵ $6$",
+    "solution": "[풀이 전략]\n삼차식 $x^3-1 = (x-1)(x^2+x+1)$로 나눈 나눗셈의 관계식을 세운다.\n$f(x)$를 이차식 $x^2+x+1$로 나눈 나머지가 $-x+4$라는 조건을 활용하기 위해, 삼차식으로 나눈 나머지를 $a(x^2+x+1) + (-x+4)$ 구조로 변형하여 주어진 $ax^2+b$와 계수를 비교한다.\n\n[단계별 풀이]\n1단계: [해결 과정 ⑴] $x^3-1$로 나눈 나머지 식 변형하기\n$f(x)$를 $x^3-1$로 나누었을 때의 몫을 $Q(x)$라 하면\n$$f(x) = (x^3-1)Q(x) + ax^2+b$$\n$$= (x-1)(x^2+x+1)Q(x) + ax^2+b$$\n이를 $x^2+x+1$로 묶어 정리하면\n$$f(x) = (x^2+x+1)(x-1)Q(x) + a(x^2+x+1) - ax - a + b$$\n$$= (x^2+x+1)\\{(x-1)Q(x) + a\\} - ax - a + b$$\n\n2단계: [해결 과정 ⑴] 나머지 비교하여 $a, b$ 구하기\n$f(x)$를 $x^2+x+1$로 나눈 나머지가 $-x+4$이므로\n$$-ax - a + b = -x + 4$$\n양변의 계수를 비교하면\n$$-a = -1 \\implies a = 1$$\n$$-a + b = 4 \\implies -1 + b = 4 \\implies b = 5$$\n따라서 $a=1, b=5$이다.\n\n3단계: [답 구하기 ⑵] $f(x)$를 $x-1$로 나눈 나머지 구하기\n$a=1, b=5$이므로\n$$f(x) = (x^3-1)Q(x) + x^2+5$$\n나머지정리에 의하여 $f(x)$를 $x-1$로 나눈 나머지는 $f(1)$이므로 $x=1$을 대입하면\n$$f(1) = (1^3-1)Q(1) + 1^2 + 5 = 0 + 1 + 5 = 6$$\n따라서 나머지는 $6$이다.\n\n[오답 및 경계 점검]\n- $f(x)$를 $x^3-1$로 나눈 나머지를 $x^2+x+1$로 다시 나누었을 때의 나머지가 본래 조건인 $-x+4$가 되어야 한다는 원리를 이해하는 것이 핵심이다.\n- $-a+b=4$에서 $a=1$ 대입 시 부호 실수에 주의한다.\n\n[결론]\n⑴ $a=1, b=5$\n⑵ $6$"
   },
   {
     "id": 16,
@@ -478,9 +493,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -489,13 +504,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "두 다항식 $2x^3+ax^2+bx-30$과 $x^3-3ax^2+2bx+4$는 모두 $x-2$로 나누어떨어질 때, 상수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2, b=3$",
+    "solution": "[풀이 전략]\n인수정리에 의하여 두 다항식이 모두 $x-2$로 나누어떨어지면, 각각의 다항식에 $x=2$를 대입한 값이 모두 $0$이어야 한다.\n두 식에 $x=2$를 대입하여 $a, b$에 대한 연립일차방정식을 세워 해결한다.\n\n[단계별 풀이]\n1단계: [해결 과정] 첫 번째 다항식에 $x=2$ 대입하기\n$f(x) = 2x^3+ax^2+bx-30$이라 하면 $f(x)$가 $x-2$로 나누어떨어지므로\n$$f(2) = 2(2)^3 + a(2)^2 + b(2) - 30 = 0$$\n$$2(8) + 4a + 2b - 30 = 0$$\n$$16 + 4a + 2b - 30 = 0$$\n$$4a + 2b - 14 = 0$$\n양변을 $2$로 나누면\n$$2a + b = 7 \\quad \\cdots ①$$\n\n2단계: [해결 과정] 두 번째 다항식에 $x=2$ 대입하기\n$g(x) = x^3-3ax^2+2bx+4$라 하면 $g(x)$가 $x-2$로 나누어떨어지므로\n$$g(2) = 2^3 - 3a(2)^2 + 2b(2) + 4 = 0$$\n$$8 - 3a(4) + 4b + 4 = 0$$\n$$8 - 12a + 4b + 4 = 0$$\n$$-12a + 4b + 12 = 0$$\n양변을 $-4$로 나누면\n$$3a - b = 3 \\quad \\cdots ②$$\n\n3단계: [답 구하기] 연립방정식을 풀어 $a, b$ 산출\n①과 ②를 변끼리 더하면\n$$(2a+b) + (3a-b) = 7 + 3$$\n$$5a = 10 \\implies a = 2$$\n$a=2$를 ①에 대입하면\n$$2(2) + b = 7 \\implies 4+b = 7 \\implies b = 3$$\n따라서 $a=2, b=3$이다.\n\n[오답 및 경계 점검]\n- $2^3 = 8$과 $2(8) = 16$ 계산 실수에 주의한다.\n- ②식에서 $-12a + 4b + 12 = 0$을 나눌 때 부호 반전에 유의한다.\n\n[결론]\n$a=2, b=3$"
   },
   {
     "id": 17,
@@ -506,8 +522,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -517,12 +533,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "인수분해"
     ],
     "wide": false,
     "content": "모든 양수 $x$에 대하여 세 모서리의 길이가 각각 $x+1, x+a, x+b$인 직육면체의 부피가 항상 $x^3+7x^2+cx+8$과 같다고 한다. 양수 $a, b, c$에 대하여 $a+b+c$의 값을 구하시오.\n<img src=\"q17.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$20$",
+    "solution": "[풀이 전략]\n직육면체의 부피는 세 모서리의 길이의 곱이므로\n$$V(x) = (x+1)(x+a)(x+b)$$\n이 부피가 항상 $x^3+7x^2+cx+8$과 같으므로 두 다항식은 모든 $x$에 대한 항등식이다.\n$(x+1)$이 인수임을 이용하여 $c$를 구한 후, 조립제법으로 이차식을 인수분해하여 $a, b$를 결정하고 $a+b+c$를 구한다.\n\n[단계별 풀이]\n1단계: [문제 이해] 부피 항등식 작성\n직육면체의 부피를 $V(x)$라 하면\n$$(x+1)(x+a)(x+b) = x^3+7x^2+cx+8$$\n이 등식은 모든 양수 $x$에 대하여 성립하므로 $x$에 대한 항등식이다.\n\n2단계: [해결 과정] 인수정리를 이용하여 $c$ 구하기\n좌변이 $x+1$을 인수로 가지므로 양변에 $x=-1$을 대입하면 우변도 $0$이 되어야 한다:\n$$(-1)^3 + 7(-1)^2 + c(-1) + 8 = 0$$\n$$-1 + 7 - c + 8 = 0$$\n$$14 - c = 0 \\implies c = 14$$\n\n3단계: [해결 과정] 조립제법으로 삼차식 인수분해 하기\n$c=14$이므로 다항식은 $x^3+7x^2+14x+8$이다.\n$x=-1$로 조립제법을 적용하면:\n$$-1 \\,|\\, 1 \\quad\\phantom{-}7 \\quad 14 \\quad\\phantom{-}8$$\n$$\\phantom{-1 \\,|\\,} \\downarrow \\quad -1 \\quad -6 \\quad -8$$\n$$\\overline{\\phantom{-1 \\,|\\,} 1 \\quad\\phantom{-}6 \\quad\\phantom{-}8 \\quad\\phantom{-}0}$$\n따라서\n$$x^3+7x^2+14x+8 = (x+1)(x^2+6x+8) = (x+1)(x+2)(x+4)$$\n\n4단계: [답 구하기] $a, b, c$ 결정 및 $a+b+c$ 계산\n$$(x+1)(x+a)(x+b) = (x+1)(x+2)(x+4)$$\n$a, b$는 양수이므로\n$$a=2, b=4 \\quad \\text{또는} \\quad a=4, b=2$$\n어느 경우이든 $a+b = 2+4 = 6$이다.\n따라서 구하는 값은\n$$a+b+c = 6 + 14 = 20$$\n\n[오답 및 경계 점검]\n- $x=-1$ 대입 시 $(-1)^3 = -1, 7(-1)^2 = +7$의 거듭제곱 부호 계산에 주의한다.\n- $a$와 $b$의 순서가 바뀌어도 합 $a+b=6$은 불변이므로 $a+b+c$의 값은 유일하게 $20$으로 확정된다.\n\n[결론]\n$20$"
   }
 ];

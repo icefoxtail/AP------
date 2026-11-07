@@ -10,8 +10,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -20,14 +20,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "등식 $x-xi-1+3xi+yi=\\overline{4i}$를 만족시키는 두 실수 $x, y$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=1, y=-6$",
+    "solution": "[풀이 전략]\n주어진 등식은 복소수가 포함된 일차식 형태의 등식입니다.\n1) 좌변을 전개하여 실수부분과 허수부분으로 각각 묶어 $(A) + (B)i$ 꼴로 정리합니다.\n2) 우변의 $\\overline{4i}$는 순허수 $4i$의 켤레복소수이므로 허수부분의 부호를 바꾸어 $-4i = 0 - 4i$로 나타냅니다.\n3) $x, y$가 실수이므로 '복소수가 서로 같을 조건(복소수의 상등)'을 적용하여 실수부분끼리, 허수부분끼리 연립방정식을 세워 $x$와 $y$를 구합니다.\n\n[단계별 풀이]\n1단계: 좌변을 실수부분과 허수부분으로 정리하기\n$x - xi - 1 + 3xi + yi$\n$= (x - 1) + (-x + 3x + y)i$\n$= (x - 1) + (2x + y)i$\n\n2단계: 우변의 켤레복소수 계산하기\n$4i = 0 + 4i$이므로, 켤레복소수는 허수부분의 부호를 반대로 바꾼 것입니다:\n$\\overline{4i} = \\overline{0 + 4i} = 0 - 4i = -4i$\n\n3단계: 복소수의 상등 적용하기\n등식의 양변을 비교하면:\n$(x - 1) + (2x + y)i = 0 - 4i$\n$x, y$가 실수이므로 실수부분과 허수부분이 각각 같아야 합니다:\n- 실수부분: $x - 1 = 0 \\implies x = 1$\n- 허수부분: $2x + y = -4$\n\n4단계: $y$의 값 구하기\n$x = 1$을 허수부분 식에 대입하면:\n$2(1) + y = -4 \\implies 2 + y = -4 \\implies y = -6$\n\n[오답 및 경계 점검]\n$x = 1, y = -6$을 원래 좌변에 대입하면:\n$(1 - 1) + (2\\times 1 - 6)i = 0 + (-4)i = -4i = \\overline{4i}$\n등식이 정확하게 성립합니다.\n\n[결론]\n따라서 구하는 두 실수의 값은 $x = 1, y = -6$이다."
   },
   {
     "id": 2,
@@ -38,8 +38,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -48,14 +48,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2-2x+k=0$이 다음과 같은 근을 가질 때, 실수 $k$의 값 또는 그 범위를 구하시오.\n⑴ 서로 다른 두 실근\n⑵ 중근(실근)\n⑶ 서로 다른 두 허근\n⑷ 실근",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $k<1$\n⑵ $k=1$\n⑶ $k>1$\n⑷ $k\\le 1$",
+    "solution": "[풀이 전략]\n계수가 실수인 이차방정식 $ax^2 + bx + c = 0$에서 판별식 $D = b^2 - 4ac$ (일차항의 계수가 짝수일 때 $\\frac{D}{4} = b'^2 - ac$)의 부호에 따라 근의 종류가 결정됩니다:\n- 서로 다른 두 실근 $\\iff D > 0$\n- 중근(서로 같은 두 실근) $\\iff D = 0$\n- 서로 다른 두 허근 $\\iff D < 0$\n- 실근을 가질 조건 $\\iff D \\ge 0$ (서로 다른 두 실근 또는 중근)\n\n[단계별 풀이]\n이차방정식 $x^2 - 2x + k = 0$에서 $a = 1, b' = -1, c = k$입니다.\n짝수 판별식을 구하면:\n$\\frac{D}{4} = (-1)^2 - 1 \\times k = 1 - k$\n\n⑴ 서로 다른 두 실근:\n$\\frac{D}{4} > 0 \\implies 1 - k > 0 \\implies k < 1$\n\n⑵ 중근(실근):\n$\\frac{D}{4} = 0 \\implies 1 - k = 0 \\implies k = 1$\n(이때 중근은 $x = 1$입니다.)\n\n⑶ 서로 다른 두 허근:\n$\\frac{D}{4} < 0 \\implies 1 - k < 0 \\implies k > 1$\n\n⑷ 실근:\n실근을 갖는 경우는 '서로 다른 두 실근'인 경우(⑴)와 '중근'인 경우(⑵)를 모두 포함하므로 $\\frac{D}{4} \\ge 0$이어야 합니다:\n$1 - k \\ge 0 \\implies k \\le 1$\n\n[오답 및 경계 점검]\n중근은 '서로 같은 두 실근'이므로 실근의 범주에 포함됩니다. 따라서 ⑷에서는 등호가 반드시 포함되어야 합니다.\n\n[결론]\n⑴ $k<1$\n⑵ $k=1$\n⑶ $k>1$\n⑷ $k\\le 1$"
   },
   {
     "id": 3,
@@ -66,8 +66,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -76,14 +76,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2+3x-5=0$의 두 근을 $\\alpha, \\beta$라고 할 때, 다음 식의 값을 구하시오.\n⑴ $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$\n⑵ $\\alpha^2+\\beta^2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{3}{5}$\n⑵ $19$",
+    "solution": "[풀이 전략]\n이차방정식 $ax^2 + bx + c = 0$의 두 근을 $\\alpha, \\beta$라고 할 때, 근과 계수의 관계에 의하여\n$\\alpha + \\beta = -\\frac{b}{a}$, $\\alpha\\beta = \\frac{c}{a}$\n구하고자 하는 식을 대칭식의 성질을 이용하여 $\\alpha + \\beta$와 $\\alpha\\beta$에 대한 식으로 변형한 후 대입합니다.\n\n[단계별 풀이]\n이차방정식 $x^2 + 3x - 5 = 0$에서 근과 계수의 관계에 의하여:\n$\\alpha + \\beta = -\\frac{3}{1} = -3$\n$\\alpha\\beta = \\frac{-5}{1} = -5$\n이때 $\\alpha\\beta = -5 \\ne 0$이므로 $\\alpha \\ne 0, \\beta \\ne 0$이며 분모가 $0$이 되지 않습니다.\n\n⑴ $\\frac{1}{\\alpha} + \\frac{1}{\\beta}$의 값 구하기:\n두 분수를 통분하면:\n$\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\beta + \\alpha}{\\alpha\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta}$\n구해둔 합과 곱을 대입하면:\n$\\frac{-3}{-5} = \\frac{3}{5}$\n\n⑵ $\\alpha^2 + \\beta^2$의 값 구하기:\n곱셈공식의 변형을 이용하면:\n$\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta$\n값을 대입하면:\n$\\alpha^2 + \\beta^2 = (-3)^2 - 2(-5) = 9 + 10 = 19$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n⑴ $\\frac{3}{5}$\n⑵ $19$"
   },
   {
     "id": 4,
@@ -94,8 +94,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -104,14 +104,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "등식 $iz+3(1-\\overline{z})=0$을 만족시키는 복소수 $z$를 구하시오. (단, $\\overline{z}$는 $z$의 켤레복소수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$z=\\frac{9}{8}-\\frac{3}{8}i$",
+    "solution": "[풀이 전략]\n등식에 복소수 $z$와 그 켤레복소수 $\\overline{z}$가 함께 포함되어 있는 방정식은\n$z = a + bi$ ($a, b$는 실수)로 놓고, $\\overline{z} = a - bi$를 대입하여\n$(실수부분) + (허수부분)i = 0$ 형태로 정리한 뒤, 복소수의 상등을 이용하여 실수 $a, b$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: 복소수 설정 및 식 대입\n$z = a + bi$ ($a, b$는 실수)라 하면 $\\overline{z} = a - bi$입니다.\n주어진 등식 $iz + 3(1 - \\overline{z}) = 0$에 대입하면:\n$i(a + bi) + 3\\{1 - (a - bi)\\} = 0$\n\n2단계: 좌변 전개 및 $i^2 = -1$ 적용\n$ai + bi^2 + 3(1 - a + bi) = 0$\n$ai - b + 3 - 3a + 3bi = 0$\n\n3단계: 실수부분과 허수부분으로 묶기\n$(-3a - b + 3) + (a + 3b)i = 0$\n\n4단계: 복소수가 서로 같을 조건으로 연립방정식 풀기\n$a, b$가 실수이므로:\n- 실수부분: $-3a - b + 3 = 0 \\implies 3a + b = 3$ $\\cdots$ ①\n- 허수부분: $a + 3b = 0 \\implies a = -3b$ $\\cdots$ ②\n\n②를 ①에 대입하면:\n$3(-3b) + b = 3 \\implies -9b + b = 3 \\implies -8b = 3 \\implies b = -\\frac{3}{8}$\n\n$b = -\\frac{3}{8}$을 ②에 대입하면:\n$a = -3\\left(-\\frac{3}{8}\\right) = \\frac{9}{8}$\n\n5단계: 결론 도출 및 검산\n$z = \\frac{9}{8} - \\frac{3}{8}i$\n검산:\n$iz = i\\left(\\frac{9}{8} - \\frac{3}{8}i\\right) = \\frac{3}{8} + \\frac{9}{8}i$\n$3(1 - \\overline{z}) = 3\\left(1 - \\frac{9}{8} - \\frac{3}{8}i\\right) = 3\\left(-\\frac{1}{8} - \\frac{3}{8}i\\right) = -\\frac{3}{8} - \\frac{9}{8}i$\n두 식을 더하면 $\\left(\\frac{3}{8} - \\frac{3}{8}\\right) + \\left(\\frac{9}{8} - \\frac{9}{8}\\right)i = 0$이 되어 성립합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 복소수는 $z = \\frac{9}{8} - \\frac{3}{8}i$이다."
   },
   {
     "id": 5,
@@ -122,8 +122,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -132,14 +132,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$$\\sqrt{-2}\\sqrt{-4}+\\sqrt{-3}\\sqrt{3}+\\frac{\\sqrt{125}}{\\sqrt{-5}}+\\frac{\\sqrt{-72}}{\\sqrt{-4}}=a+bi$$\n일 때, 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=\\sqrt{2}, b=-2$",
+    "solution": "[풀이 전략]\n음수의 제곱근의 성질을 이용하여 각 항을 계산합니다:\n- 부호 실수를 원천 방지하기 위해 $k > 0$일 때 $\\sqrt{-k} = \\sqrt{k}i$로 변환하여 계산하는 것이 가장 안전합니다.\n- 복소수의 나눗셈에서는 분모와 분자에 $i$를 곱하여 실수화합니다: $\\frac{1}{i} = \\frac{i}{i^2} = -i$.\n- 계산 결과를 실수부분과 허수부분으로 정리하여 $a + bi$와 비교합니다 ($a, b$는 실수).\n\n[단계별 풀이]\n주어진 식의 네 항을 각각 $i$를 이용하여 계산합니다:\n1) 첫 번째 항:\n$\\sqrt{-2}\\sqrt{-4} = (\\sqrt{2}i)(2i) = 2\\sqrt{2}i^2 = 2\\sqrt{2}(-1) = -2\\sqrt{2}$\n(참고: $x < 0, y < 0$일 때 $\\sqrt{x}\\sqrt{y} = -\\sqrt{xy}$이므로 $-\\sqrt{(-2)(-4)} = -\\sqrt{8} = -2\\sqrt{2}$)\n\n2) 두 번째 항:\n$\\sqrt{-3}\\sqrt{3} = (\\sqrt{3}i)\\sqrt{3} = 3i$\n\n3) 세 번째 항:\n$\\frac{\\sqrt{125}}{\\sqrt{-5}} = \\frac{5\\sqrt{5}}{\\sqrt{5}i} = \\frac{5}{i} = \\frac{5i}{i^2} = \\frac{5i}{-1} = -5i$\n(참고: $x > 0, y < 0$일 때 $\\frac{\\sqrt{x}}{\\sqrt{y}} = -\\sqrt{\\frac{x}{y}}$이므로 $-\\sqrt{\\frac{125}{-5}} = -\\sqrt{-25} = -5i$)\n\n4) 네 번째 항:\n$\\frac{\\sqrt{-72}}{\\sqrt{-4}} = \\frac{\\sqrt{72}i}{\\sqrt{4}i} = \\frac{6\\sqrt{2}i}{2i} = 3\\sqrt{2}$\n(분모와 분자의 $i$가 서로 약분되어 실수가 됩니다.)\n\n이제 네 항의 합을 계산하여 실수부분과 허수부분으로 묶습니다:\n$(-2\\sqrt{2}) + 3i + (-5i) + 3\\sqrt{2}$\n$= (-2\\sqrt{2} + 3\\sqrt{2}) + (3i - 5i) = \\sqrt{2} - 2i$\n\n이 식이 $a + bi$와 같고 $a, b$는 실수이므로 복소수의 상등에 의하여:\n$a = \\sqrt{2}, b = -2$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 두 실수의 값은 $a = \\sqrt{2}, b = -2$이다."
   },
   {
     "id": 6,
@@ -150,8 +150,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -160,14 +160,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "복소수 $z$가 $z=\\frac{1-i}{\\sqrt{2}}$일 때,\n$$z^2+z^4+z^6+z^8+z^{10}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-i$",
+    "solution": "[풀이 전략]\n복소수의 거듭제곱을 계산할 때는 거듭제곱을 차례로 계산하여 규칙성(주기성)을 찾는 것이 핵심입니다.\n$z = \\frac{1-i}{\\sqrt{2}}$의 제곱 $z^2$을 계산하면 순허수 $-i$가 되므로, 이후의 짝수 거듭제곱들을 $(-i)$의 거듭제곱으로 손쉽게 변환할 수 있습니다.\n\n[단계별 풀이]\n1단계: $z^2$ 계산하기\n$z^2 = \\left(\\frac{1-i}{\\sqrt{2}}\\right)^2 = \\frac{(1-i)^2}{2} = \\frac{1 - 2i + i^2}{2} = \\frac{1 - 2i - 1}{2} = \\frac{-2i}{2} = -i$\n\n2단계: 짝수 거듭제곱 차례로 구하기\n$z^2 = -i$이므로:\n- $z^4 = (z^2)^2 = (-i)^2 = i^2 = -1$\n- $z^6 = z^4 \\times z^2 = (-1) \\times (-i) = i$\n- $z^8 = (z^4)^2 = (-1)^2 = 1$\n- $z^{10} = z^8 \\times z^2 = 1 \\times (-i) = -i$\n\n(참고: $z^8 = 1$이므로 $z$는 $8$주기를 갖습니다.)\n\n3단계: 주어진 식의 합 계산하기\n$z^2 + z^4 + z^6 + z^8 + z^{10}$\n$= (-i) + (-1) + i + 1 + (-i)$\n앞의 네 항의 합은 $(-i) + (-1) + i + 1 = 0$이므로:\n$= 0 + (-i) = -i$\n\n[다른 풀이 - 묶어서 계산하기]\n공통인수 $z^2$으로 묶으면:\n$z^2(1 + z^2 + z^4 + z^6) + z^{10}$\n이때 $1 + z^2 + z^4 + z^6 = 1 - i - 1 + i = 0$이므로\n주어진 식은 $z^{10} = (z^2)^5 = (-i)^5 = -i^5 = -i$가 됩니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $-i$이다."
   },
   {
     "id": 7,
@@ -178,8 +178,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -188,14 +188,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2+2kx+k^2-k+5=0$이 실근을 갖도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k\\ge 5$",
+    "solution": "[풀이 전략]\n계수가 실수인 이차방정식 $ax^2 + bx + c = 0$이 실근을 갖는다는 것은 서로 다른 두 실근($D > 0$) 또는 중근($D = 0$)을 갖는다는 뜻이므로 판별식 $D \\ge 0$ (짝수 판별식 $\\frac{D}{4} \\ge 0$)이어야 합니다.\n\n[단계별 풀이]\n1단계: 짝수 판별식 세우기\n이차방정식 $x^2 + 2kx + (k^2 - k + 5) = 0$에서 일차항의 계수가 $2k$이므로 $b' = k, a = 1, c = k^2 - k + 5$입니다.\n짝수 공식을 적용하면:\n$\\frac{D}{4} = (b')^2 - ac = k^2 - 1 \\times (k^2 - k + 5)$\n\n2단계: 식 전개 및 정리\n$\\frac{D}{4} = k^2 - k^2 + k - 5 = k - 5$\n\n3단계: 실근 조건 적용하기\n이차방정식이 실근을 가지려면 $\\frac{D}{4} \\ge 0$이어야 하므로:\n$k - 5 \\ge 0 \\implies k \\ge 5$\n\n[오답 및 경계 점검]\n문제에서 '서로 다른 두 실근'이 아니라 '실근'을 요구하였으므로, 중근인 경우($k = 5$)도 반드시 포함하여 등호($\\ge$)를 적어야 합니다.\n\n따라서 실수 $k$의 값의 범위는 $k \\ge 5$이다.\n\n[결론]\n$k\\ge 5$"
   },
   {
     "id": 8,
@@ -206,8 +206,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -216,14 +216,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $(a+c)x^2+2bx+(a-c)=0$이 중근을 가질 때, $a, b, c$를 세 변의 길이로 하는 삼각형은 어떤 삼각형인지 구하시오. (단, $a, b, c$는 양수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "빗변의 길이가 $a$인 직각삼각형",
+    "solution": "[풀이 전략]\n1) $a, b, c$는 삼각형의 세 변의 길이이므로 모두 양수($a > 0, b > 0, c > 0$)이며, $a + c > 0$이므로 최고차항의 계수는 $0$이 아닙니다. 즉, 주어진 식은 항상 $x$에 대한 이차방정식입니다.\n2) 이차방정식이 중근을 가질 조건은 판별식 $D = 0$ (짝수 판별식 $\\frac{D}{4} = 0$)입니다.\n3) 판별식 정리 결과 얻은 세 변의 관계식을 피타고라스 정리와 비교하여 삼각형의 형태를 정확하게 서술합니다.\n\n[단계별 풀이]\n1단계: 판별식 세우기\n이차방정식 $(a + c)x^2 + 2bx + (a - c) = 0$에서 짝수 공식을 적용하면:\n$\\frac{D}{4} = b^2 - (a + c)(a - c) = 0$\n\n2단계: 판별식 전개 및 정리\n합차공식 $(a + c)(a - c) = a^2 - c^2$이므로:\n$b^2 - (a^2 - c^2) = 0$\n$b^2 - a^2 + c^2 = 0 \\implies a^2 = b^2 + c^2$\n\n3단계: 삼각형의 종류 판정\n$a^2 = b^2 + c^2$은 피타고라스 정리를 만족하므로, 가장 긴 변(빗변)이 $a$인 직각삼각형입니다.\n(또는 마주 보는 각 $\\angle\\mathrm{A} = 90^\\circ$인 직각삼각형)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 삼각형은 '빗변의 길이가 $a$인 직각삼각형'이다."
   },
   {
     "id": 9,
@@ -234,8 +234,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -244,14 +244,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2+ax+3=0$의 두 근을 $\\alpha, \\beta$라고 할 때, 이차방정식 $x^2+bx+15=0$의 두 근은 $\\alpha+\\beta$, $\\alpha\\beta$이다. 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-5, b=-8$",
+    "solution": "[풀이 전략]\n두 개의 이차방정식에 대해 각각 근과 계수의 관계를 단계적으로 적용합니다:\n1) $x^2 + ax + 3 = 0$의 두 근이 $\\alpha, \\beta$임을 이용하여 $\\alpha + \\beta$와 $\\alpha\\beta$를 표현합니다.\n2) $x^2 + bx + 15 = 0$의 두 근이 $\\alpha + \\beta$, $\\alpha\\beta$이므로 두 근의 합과 곱을 이용하여 $a$와 $b$를 구합니다.\n\n[단계별 풀이]\n1단계: 첫 번째 방정식의 근과 계수의 관계\n$x^2 + ax + 3 = 0$의 두 근이 $\\alpha, \\beta$이므로:\n$\\alpha + \\beta = -a$, $\\alpha\\beta = 3$\n\n2단계: 두 번째 방정식의 두 근의 곱을 이용하여 $a$ 구하기\n$x^2 + bx + 15 = 0$의 두 근이 $\\alpha + \\beta = -a$와 $\\alpha\\beta = 3$입니다.\n근과 계수의 관계에 의하여 두 근의 곱은 상수항 $15$와 같으므로:\n$(-a) \\times 3 = 15 \\implies -3a = 15 \\implies a = -5$\n\n3단계: 두 번째 방정식의 두 근의 합을 이용하여 $b$ 구하기\n$a = -5$이므로 두 근은 다음과 같습니다:\n- 첫 번째 근: $\\alpha + \\beta = -(-5) = 5$\n- 두 번째 근: $\\alpha\\beta = 3$\n근과 계수의 관계에 의하여 두 근의 합은 $-b$이므로:\n$5 + 3 = -b \\implies 8 = -b \\implies b = -8$\n\n4단계: 검산\n두 근이 $5, 3$인 이차방정식은 $(x - 5)(x - 3) = x^2 - 8x + 15 = 0$이므로\n$x^2 + bx + 15 = 0$과 비교하면 $b = -8$이 정확히 맞습니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 두 실수의 값은 $a = -5, b = -8$이다."
   },
   {
     "id": 10,
@@ -262,8 +262,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -272,14 +272,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "실수가 아닌 두 복소수 $z, w$에 대하여 $z+\\overline{w}=0$일 때, 보기에서 항상 실수인 것만을 있는 대로 고르시오. (단, $\\overline{z}, \\overline{w}$는 각각 $z, w$의 켤레복소수이다.)\n\n<보기>\nㄱ. $w+\\overline{z}$\nㄴ. $\\overline{z}-w$\nㄷ. $\\frac{w}{z}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ",
+    "solution": "[풀이 전략]\n복소수 $A$가 항상 실수인지 판별하는 기준:\n- 정의를 이용: $A = \\overline{A} \\iff A$는 실수\n- $z, w$가 실수가 아닌 복소수이므로 허수부분이 $0$이 아닙니다.\n- 조건 $z + \\overline{w} = 0$에서 $\\overline{w} = -z$이고, 양변의 켤레복소수를 취하면 $w = -\\overline{z}$입니다.\n\n[단계별 풀이]\nㄱ. $w + \\overline{z}$:\n$w = -\\overline{z}$를 대입하면:\n$w + \\overline{z} = (-\\overline{z}) + \\overline{z} = 0$\n$0$은 실수이므로 $w + \\overline{z}$는 항상 실수입니다. (참)\n(참고: $\\overline{w + \\overline{z}} = \\overline{w} + z = -z + z = 0$이므로 켤레복소수를 취해도 같은 실수입니다.)\n\nㄴ. $\\overline{z} - w$:\n$w = -\\overline{z}$를 대입하면:\n$\\overline{z} - w = \\overline{z} - (-\\overline{z}) = 2\\overline{z}$\n문제에서 $z$는 실수가 아닌 복소수이므로 $z = a + bi$ ($a, b$는 실수, $b \\ne 0$)라 두면:\n$2\\overline{z} = 2(a - bi) = 2a - 2bi$\n$b \\ne 0$이므로 허수부분 $-2b \\ne 0$입니다. 따라서 $2\\overline{z}$는 실수가 될 수 없습니다. (거짓)\n\nㄷ. $\\frac{w}{z}$:\n$w = -\\overline{z}$를 대입하면:\n$\\frac{w}{z} = \\frac{-\\overline{z}}{z}$\n반례: $z = 1 + i$ (실수가 아닌 복소수)라 하면 $\\overline{z} = 1 - i$이고 $w = -(1 - i) = -1 + i$입니다.\n이때\n$\\frac{w}{z} = \\frac{-1 + i}{1 + i} = \\frac{(-1 + i)(1 - i)}{(1 + i)(1 - i)} = \\frac{-1 + i + i - i^2}{1 - i^2} = \\frac{2i}{2} = i$\n$i$는 실수가 아니므로 $\\frac{w}{z}$는 항상 실수라고 할 수 없습니다. (거짓)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 보기에서 항상 실수인 것은 ㄱ이다."
   },
   {
     "id": 11,
@@ -290,8 +290,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -300,14 +300,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$x^2-2(m+k)x+(k^2+4k-n)=0$$\n이 실수 $k$의 값에 관계없이 항상 중근을 가질 때, 두 실수 $m, n$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$m=2, n=-4$",
+    "solution": "[풀이 전략]\n1) 이차방정식이 중근을 가질 조건은 판별식 $D = 0$ (또는 $\\frac{D}{4} = 0$)입니다.\n2) '실수 $k$의 값에 관계없이 항상 성립한다'는 조건은 판별식 $= 0$이라는 등식이 $k$에 대한 항등식임을 뜻합니다.\n3) 따라서 판별식을 $k$에 대한 내림차순 $Ak + B = 0$으로 정리한 후, $A = 0, B = 0$을 만족하는 $m, n$을 구합니다.\n\n[단계별 풀이]\n1단계: 짝수 판별식 세우기\n이차방정식 $x^2 - 2(m + k)x + (k^2 + 4k - n) = 0$이 중근을 가지므로 $\\frac{D}{4} = 0$이어야 합니다:\n$\\frac{D}{4} = \\{-(m + k)\\}^2 - 1 \\times (k^2 + 4k - n) = 0$\n\n2단계: 식 전개 및 $k^2$ 소거\n$(m^2 + 2mk + k^2) - (k^2 + 4k - n) = 0$\n$m^2 + 2mk - 4k + n = 0$\n\n3단계: $k$에 대한 항등식으로 정리하기\n$k$를 포함한 항과 포함하지 않은 상수항으로 묶으면:\n$(2m - 4)k + (m^2 + n) = 0$\n$2(m - 2)k + (m^2 + n) = 0$\n\n4단계: 계수 비교를 통해 $m, n$ 구하기\n이 등식이 실수 $k$의 값에 관계없이 항상 성립해야 하므로:\n- $k$의 계수: $2(m - 2) = 0 \\implies m = 2$\n- 상수항: $m^2 + n = 0$\n\n$m = 2$를 대입하면:\n$2^2 + n = 0 \\implies 4 + n = 0 \\implies n = -4$\n\n[오답 및 경계 점검]\n$m = 2, n = -4$일 때 이차방정식은\n$x^2 - 2(k + 2)x + (k + 2)^2 = \\{x - (k + 2)\\}^2 = 0$이 되어\n모든 실수 $k$에 대하여 항상 중근 $x = k + 2$를 갖습니다.\n\n[결론]\n따라서 두 실수의 값은 $m = 2, n = -4$이다."
   },
   {
     "id": 12,
@@ -318,8 +318,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -328,14 +328,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2-kx+2k+6=0$의 두 근의 차가 $3$이 되도록 하는 모든 실수 $k$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n1) 이차방정식 $x^2 - kx + 2k + 6 = 0$의 두 근을 $\\alpha, \\beta$라 하고 근과 계수의 관계를 세웁니다.\n2) '두 근의 차가 $3$'이라는 조건은 $|\\alpha - \\beta| = 3 \\iff (\\alpha - \\beta)^2 = 9$를 의미합니다.\n3) 곱셈공식의 변형 $(\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta$를 이용하여 $k$에 대한 이차방정식을 세우고 모든 실수 $k$의 합을 구합니다.\n\n[단계별 풀이]\n1단계: 근과 계수의 관계\n이차방정식 $x^2 - kx + 2k + 6 = 0$의 두 근이 $\\alpha, \\beta$이므로:\n$\\alpha + \\beta = k$, $\\alpha\\beta = 2k + 6$\n\n2단계: 두 근의 차 조건 적용\n두 근의 차가 $3$이므로 $|\\alpha - \\beta| = 3$이고, 양변을 제곱하면:\n$(\\alpha - \\beta)^2 = 9$\n\n3단계: 곱셈공식의 변형 대입 및 $k$에 대한 방정식 풀기\n$(\\alpha + \\beta)^2 - 4\\alpha\\beta = 9$\n$k^2 - 4(2k + 6) = 9$\n$k^2 - 8k - 24 = 9$\n$k^2 - 8k - 33 = 0$\n\n좌변을 인수분해하면:\n$(k - 11)(k + 3) = 0 \\implies k = 11$ 또는 $k = -3$\n\n4단계: 실근 조건 검증\n두 근의 차 $(\\alpha - \\beta)^2 = 9 > 0$이므로, 판별식 $D = (\\alpha - \\beta)^2 = 9 > 0$이 항상 성립합니다.\n따라서 $k = 11, k = -3$ 모두 서로 다른 두 실근을 갖는 조건을 완벽히 만족합니다.\n\n5단계: 합 구하기\n모든 실수 $k$의 값의 합은:\n$11 + (-3) = 8$\n(또는 근과 계수의 관계에 의하여 $-\\frac{-8}{1} = 8$)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 모든 실수 $k$의 값의 합은 $8$이다."
   },
   {
     "id": 13,
@@ -346,8 +346,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -356,14 +356,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "두 복소수 $z, w$에 대하여 $z=\\frac{5}{1+2i}$이고 $zw=5$일 때, $z^3-w^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4i$",
+    "solution": "[풀이 전략]\n1) $z = \\frac{5}{1 + 2i}$의 분모를 켤레복소수 $1 - 2i$를 곱하여 실수화합니다.\n2) $zw = 5$에서 $w = \\frac{5}{z}$를 구합니다.\n3) 두 복소수의 차 $z - w$와 곱 $zw$를 구한 후, 곱셈공식의 변형 $z^3 - w^3 = (z - w)^3 + 3zw(z - w)$을 적용합니다.\n\n[단계별 풀이]\n1단계: $z$의 분모 실수화\n$z = \\frac{5}{1 + 2i} = \\frac{5(1 - 2i)}{(1 + 2i)(1 - 2i)} = \\frac{5(1 - 2i)}{1 - (2i)^2} = \\frac{5(1 - 2i)}{1 + 4} = \\frac{5(1 - 2i)}{5} = 1 - 2i$\n\n2단계: $w$ 구하기\n$zw = 5$이므로\n$w = \\frac{5}{z} = \\frac{5}{1 - 2i} = \\frac{5(1 + 2i)}{(1 - 2i)(1 + 2i)} = \\frac{5(1 + 2i)}{1 + 4} = 1 + 2i$\n(참고: $w$는 $z$의 켤레복소수 $\\overline{z}$임을 알 수 있습니다.)\n\n3단계: 두 복소수의 차와 곱 구하기\n- 차: $z - w = (1 - 2i) - (1 + 2i) = -4i$\n- 곱: $zw = 5$ (문제 조건)\n\n4단계: 곱셈공식의 변형 적용하기\n$z^3 - w^3 = (z - w)^3 + 3zw(z - w)$\n$= (-4i)^3 + 3 \\times 5 \\times (-4i)$\n$= (-4)^3 \\times i^3 - 60i$\n$= -64(-i) - 60i$   ($\\because i^3 = -i$)\n$= 64i - 60i = 4i$\n\n[다른 풀이 - 인수분해 공식 이용]\n$z^3 - w^3 = (z - w)(z^2 + zw + w^2) = (z - w)\\{(z - w)^2 + 3zw\\}$\n$= (-4i)\\{(-4i)^2 + 3(5)\\} = (-4i)(-16 + 15) = (-4i)(-1) = 4i$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $4i$이다."
   },
   {
     "id": 14,
@@ -374,8 +374,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -384,14 +384,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$x$에 대한 이차방정식\n$$x^2-4ax+4b^2+4b+2=0$$\n이 중근을 가질 때, 이차방정식 $bx^2+2ax+b+1=0$의 근을 판별하시오. (단, $a, b$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "서로 다른 두 실근",
+    "solution": "[풀이 전략]\n1) 첫 번째 이차방정식 $x^2 - 4ax + 4b^2 + 4b + 2 = 0$이 중근을 가지므로 판별식 $D_1 = 0$을 이용하여 $a$와 $b$ 사이의 관계식을 구합니다.\n2) 두 번째 식 $bx^2 + 2ax + b + 1 = 0$이 '이차방정식'이므로 최고차항의 계수 $b \\ne 0$임을 확인합니다.\n3) 두 번째 이차방정식의 판별식 $D_2$를 세운 후, 1단계의 관계식을 대입하여 $D_2$의 부호를 엄밀하게 판별합니다.\n\n[단계별 풀이]\n1단계: 첫 번째 방정식의 중근 조건\n이차방정식 $x^2 - 4ax + 4b^2 + 4b + 2 = 0$의 판별식을 $D_1$이라 하면, 중근을 가지므로 $\\frac{D_1}{4} = 0$입니다:\n$\\frac{D_1}{4} = (-2a)^2 - 1 \\times (4b^2 + 4b + 2) = 0$\n$4a^2 - (4b^2 + 4b + 2) = 0$\n$4a^2 = 4b^2 + 4b + 2$ $\\cdots$ ①\n\n양변을 $4$로 나누면:\n$a^2 = b^2 + b + \\frac{1}{2} = \\left(b + \\frac{1}{2}\\right)^2 + \\frac{1}{4}$\n실수 $b$에 대하여 $\\left(b + \\frac{1}{2}\\right)^2 \\ge 0$이므로 $a^2 \\ge \\frac{1}{4} > 0$이며, 따라서 $a \\ne 0$입니다.\n\n2단계: 이차방정식의 정의 확인\n문제에서 $bx^2 + 2ax + b + 1 = 0$이 이차방정식이므로 최고차항의 계수는 $0$이 아니어야 합니다. 즉, $b \\ne 0$입니다.\n\n3단계: 두 번째 방정식의 판별식 $D_2$ 계산하기\n이차방정식 $bx^2 + 2ax + (b + 1) = 0$의 판별식을 $D_2$라 하면:\n$\\frac{D_2}{4} = a^2 - b(b + 1) = a^2 - (b^2 + b)$\n\n4단계: $a^2$ 관계식 대입 및 부호 판별\n1단계에서 구한 $a^2 = b^2 + b + \\frac{1}{2}$을 대입하면:\n$\\frac{D_2}{4} = \\left(b^2 + b + \\frac{1}{2}\\right) - (b^2 + b) = \\frac{1}{2}$\n\n$\\frac{D_2}{4} = \\frac{1}{2} > 0$이므로 판별식의 값이 항상 양수입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n판별식 $D_2 > 0$이고 $b \\ne 0$이므로, 이차방정식 $bx^2 + 2ax + b + 1 = 0$은 '서로 다른 두 실근'을 갖는다."
   },
   {
     "id": 15,
@@ -402,8 +402,8 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -412,14 +412,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2+2x+3=0$의 서로 다른 두 근을 $\\alpha, \\beta$라고 할 때,\n$$\\frac{1}{\\alpha^2+3\\alpha+3}+\\frac{1}{\\beta^2+3\\beta+3}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2}{3}$",
+    "solution": "[풀이 전략]\n1) $\\alpha, \\beta$가 이차방정식 $x^2 + 2x + 3 = 0$의 두 근이므로 $\\alpha^2 + 2\\alpha + 3 = 0, \\beta^2 + 2\\beta + 3 = 0$이 성립합니다.\n2) 이를 이용하여 주어진 식의 분모 $\\alpha^2 + 3\\alpha + 3$과 $\\beta^2 + 3\\beta + 3$의 차수를 일차식으로 낮춥니다(차수 축소 테크닉).\n3) 식을 간단히 정리한 후 근과 계수의 관계를 적용하여 값을 계산합니다.\n\n[단계별 풀이]\n1단계: 근의 성질을 이용한 분모의 차수 축소\n$\\alpha, \\beta$는 $x^2 + 2x + 3 = 0$의 근이므로:\n$\\alpha^2 + 2\\alpha + 3 = 0 \\implies \\alpha^2 + 3 = -2\\alpha$\n$\\beta^2 + 2\\beta + 3 = 0 \\implies \\beta^2 + 3 = -2\\beta$\n\n따라서 각 분모는 다음과 같이 간단해집니다:\n$\\alpha^2 + 3\\alpha + 3 = (\\alpha^2 + 2\\alpha + 3) + \\alpha = 0 + \\alpha = \\alpha$\n$\\beta^2 + 3\\beta + 3 = (\\beta^2 + 2\\beta + 3) + \\beta = 0 + \\beta = \\beta$\n\n2단계: 주어진 분수식 통분하기\n준식은 다음과 같이 변형됩니다:\n$\\frac{1}{\\alpha^2 + 3\\alpha + 3} + \\frac{1}{\\beta^2 + 3\\beta + 3} = \\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta}$\n\n3단계: 근과 계수의 관계 대입하기\n이차방정식 $x^2 + 2x + 3 = 0$에서 근과 계수의 관계에 의하여:\n$\\alpha + \\beta = -2$, $\\alpha\\beta = 3$\n\n대입하면:\n$\\frac{\\alpha + \\beta}{\\alpha\\beta} = \\frac{-2}{3} = -\\frac{2}{3}$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $-\\frac{2}{3}$이다."
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -440,14 +440,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "이차함수 $y=-2x^2+ax+4$의 그래프가 $x$축과 두 점 $\\mathrm{A, B}$에서 만난다. 두 점 $\\mathrm{A, B}$의 $x$좌표의 합이 $5$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n이차함수 $y = ax^2 + bx + c$의 그래프와 $x$축의 교점의 $x$좌표는 $y = 0$으로 놓았을 때의 이차방정식 $ax^2 + bx + c = 0$의 실근과 같습니다.\n두 교점의 $x$좌표의 합은 이 이차방정식의 두 근의 합과 같으므로, 근과 계수의 관계를 이용하여 미정계수 $a$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: $x$축과의 교점에 대한 방정식 세우기\n이차함수 $y = -2x^2 + ax + 4$의 그래프가 $x$축과 만나는 점의 $x$좌표는 $y = 0$일 때의 해이므로:\n$-2x^2 + ax + 4 = 0$\n양변에 $-1$을 곱하면:\n$2x^2 - ax - 4 = 0$\n\n2단계: 두 교점의 $x$좌표의 합과 근과 계수의 관계\n두 점 $\\mathrm{A, B}$의 $x$좌표를 각각 $\\alpha, \\beta$라고 하면, $\\alpha, \\beta$는 위 이차방정식의 두 실근입니다.\n근과 계수의 관계에 의하여:\n$\\alpha + \\beta = -\\frac{-a}{2} = \\frac{a}{2}$\n\n3단계: $a$의 값 구하기\n문제에서 두 점의 $x$좌표의 합이 $5$이므로:\n$\\frac{a}{2} = 5 \\implies a = 10$\n\n4단계: 두 실근의 존재 확인 (판별식 검증)\n$a = 10$일 때 방정식은 $2x^2 - 10x - 4 = 0 \\implies x^2 - 5x - 2 = 0$입니다.\n판별식 $D = (-5)^2 - 4(1)(-2) = 25 + 8 = 33 > 0$이므로 서로 다른 두 실근이 실제로 존재함을 확인합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 실수 $a$의 값은 $10$이다."
   },
   {
     "id": 17,
@@ -458,9 +458,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -468,14 +468,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "이차함수 $y=x^2+x+4$의 그래프와 직선 $y=x+k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k>4$",
+    "solution": "[풀이 전략]\n이차함수 $y = f(x)$의 그래프와 직선 $y = g(x)$의 위치 관계는 연립방정식 $f(x) = g(x) \\iff f(x) - g(x) = 0$의 실근의 개수로 판정합니다:\n- 서로 다른 두 점에서 만난다 $\\iff$ 판별식 $D > 0$\n- 한 점에서 만난다(접한다) $\\iff$ 판별식 $D = 0$\n- 만나지 않는다 $\\iff$ 판별식 $D < 0$\n\n[단계별 풀이]\n1단계: 이차함수와 직선의 연립방정식 세우기\n$x^2 + x + 4 = x + k$\n모든 항을 좌변으로 이항하여 정리하면:\n$x^2 + (4 - k) = 0$\n\n2단계: 판별식 계산하기\n이차방정식 $x^2 + 0x + (4 - k) = 0$에서 일차항의 계수가 $0$이므로:\n$D = 0^2 - 4 \\times 1 \\times (4 - k) = -16 + 4k = 4(k - 4)$\n\n3단계: 서로 다른 두 점에서 만날 조건 적용하기\n서로 다른 두 점에서 만나려면 $D > 0$이어야 하므로:\n$4(k - 4) > 0 \\implies k - 4 > 0 \\implies k > 4$\n\n[다른 관점 - 그래프의 꼭짓점 위치를 통한 이해]\n$x^2 = k - 4$에서 좌변 $x^2 \\ge 0$이므로, 서로 다른 두 실근 $x = \\pm\\sqrt{k - 4}$를 가지려면 우변이 양수이어야 합니다.\n즉 $k - 4 > 0 \\implies k > 4$임을 직관적으로도 확인할 수 있습니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 실수 $k$의 값의 범위는 $k > 4$이다."
   },
   {
     "id": 18,
@@ -486,9 +486,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -496,14 +496,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$-1\\le x\\le 3$에서 이차함수 $y=(x-2)^2+1$의 최댓값과 최솟값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값: $10$, 최솟값: $1$",
+    "solution": "[풀이 전략]\n정의역이 제한된 범위 $[\u0007lpha, \beta]$에서 이차함수의 최대·최소는:\n1) 대칭축 $x = p$가 주어진 범위에 포함되는지 확인합니다.\n2) 대칭축이 범위에 포함되면 꼭짓점에서의 함숫값이 극값(아래로 볼록이면 최솟값, 위로 볼록이면 최댓값)이 됩니다.\n3) 대칭축에서 더 멀리 떨어진 구간의 끝점에서 반대쪽 극값(최댓값 또는 최솟값)이 발생합니다.\n\n[단계별 풀이]\n1단계: 이차함수의 개형 및 대칭축 파악하기\n$y = (x - 2)^2 + 1$\n- 아래로 볼록한 포물선\n- 꼭짓점의 좌표: $(2, 1)$\n- 대칭축의 방정식: $x = 2$\n\n2단계: 정의역과 대칭축의 위치 관계 비교\n주어진 범위는 $-1 \\le x \\le 3$입니다.\n대칭축 $x = 2$는 $-1 \\le x \\le 3$에 포함됩니다.\n포물선이 아래로 볼록하므로 꼭짓점에서 최솟값을 갖습니다:\n$x = 2$일 때 최솟값 $y = 1$\n\n3단계: 구간의 양 끝점에서의 함숫값 계산하기\n대칭축 $x = 2$로부터 각 끝점까지의 거리를 비교하면:\n- $x = -1$까지의 거리: $|-1 - 2| = 3$\n- $x = 3$까지의 거리: $|3 - 2| = 1$\n\n대칭축에서 더 멀리 떨어진 $x = -1$에서 최댓값을 갖습니다.\n각 끝점의 함숫값을 직접 계산하면:\n- $x = -1$일 때: $y = (-1 - 2)^2 + 1 = (-3)^2 + 1 = 9 + 1 = 10$\n- $x = 3$일 때: $y = (3 - 2)^2 + 1 = 1^2 + 1 = 2$\n\n4단계: 결론 도출\n- 최댓값: $10$ ($x = -1$일 때)\n- 최솟값: $1$ ($x = 2$일 때)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 최댓값은 $10$, 최솟값은 $1$이다."
   },
   {
     "id": 19,
@@ -514,9 +514,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -524,14 +524,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "자연수 $n$에 대하여 이차함수 $y=x^2-2x-1+n$의 그래프와 $x$축이 만나는 점의 개수를 $f(n)$이라고 할 때,\n$$f(1)+f(2)+f(3)+f(4)$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n1) 이차함수 $y = x^2 - 2x - 1 + n$의 그래프와 $x$축의 교점의 개수 $f(n)$은\n이차방정식 $x^2 - 2x + (n - 1) = 0$의 서로 다른 실근의 개수와 같습니다.\n2) 판별식 $D$ (또는 $\\frac{D}{4}$)의 부호에 따라 교점의 개수가 결정됩니다:\n- $\\frac{D}{4} > 0 \\iff f(n) = 2$ (두 점에서 만남)\n- $\\frac{D}{4} = 0 \\iff f(n) = 1$ (한 점에서 접함)\n- $\\frac{D}{4} < 0 \\iff f(n) = 0$ (만나지 않음)\n3) 자연수 $n = 1, 2, 3, 4$를 대입하여 각각의 값을 구하고 합을 계산합니다.\n\n[단계별 풀이]\n1단계: 판별식 세우기\n이차방정식 $x^2 - 2x + (n - 1) = 0$에서 짝수 공식을 적용하면:\n$\\frac{D}{4} = (-1)^2 - 1 \\times (n - 1) = 1 - n + 1 = 2 - n$\n\n2단계: $n = 1, 2, 3, 4$에 대한 $f(n)$ 계산하기\n- $n = 1$일 때:\n  $\\frac{D}{4} = 2 - 1 = 1 > 0$이므로 서로 다른 두 점에서 만납니다. $\\implies f(1) = 2$\n- $n = 2$일 때:\n  $\\frac{D}{4} = 2 - 2 = 0$이므로 한 점에서 접합니다. $\\implies f(2) = 1$\n- $n = 3$일 때:\n  $\\frac{D}{4} = 2 - 3 = -1 < 0$이므로 $x$축과 만나지 않습니다. $\\implies f(3) = 0$\n- $n = 4$일 때:\n  $\\frac{D}{4} = 2 - 4 = -2 < 0$이므로 $x$축과 만나지 않습니다. $\\implies f(4) = 0$\n\n[기하학적 직관]\n$y = (x - 1)^2 - 2 + n$이므로 꼭짓점은 $(1, n - 2)$입니다.\n$n$이 $1$씩 증가할 때마다 포물선이 위쪽으로 $1$칸씩 평행이동하므로:\n$n=1$일 때 꼭짓점 $(1, -1)$은 $x$축 아래 $\\implies 2$개 교점\n$n=2$일 때 꼭짓점 $(1, 0)$은 $x$축 위 $\\implies 1$개 교점\n$n=3, 4$일 때 꼭짓점은 $x$축 위쪽 $\\implies 0$개 교점\n\n3단계: 총합 계산하기\n$f(1) + f(2) + f(3) + f(4) = 2 + 1 + 0 + 0 = 3$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $3$이다."
   },
   {
     "id": 20,
@@ -542,9 +542,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -552,14 +552,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "이차함수 $y=x^2-7x+a$의 그래프와 직선 $y=x+k$가 두 점 $\\mathrm{A}(x_1, y_1)$, $\\mathrm{B}(x_2, y_2)$에서 만난다. $x_2-x_1=4$일 때, 두 실수 $a, k$에 대하여 $a-k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n1) 이차함수 $y = x^2 - 7x + a$와 직선 $y = x + k$의 교점의 $x$좌표는 연립이차방정식의 두 실근 $x_1, x_2$입니다.\n2) 근과 계수의 관계를 이용하여 두 실근의 합 $x_1 + x_2$와 곱 $x_1 x_2$를 구합니다.\n3) 주어진 조건 $x_2 - x_1 = 4$에 곱셈공식의 변형 $(x_2 - x_1)^2 = (x_1 + x_2)^2 - 4x_1 x_2$를 적용하여 $a - k$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: 연립이차방정식 세우기\n$x^2 - 7x + a = x + k$\n$x^2 - 8x + (a - k) = 0$\n\n2단계: 근과 계수의 관계 적용하기\n두 교점의 $x$좌표 $x_1, x_2$는 위 방정식의 두 근이므로:\n$x_1 + x_2 = 8$\n$x_1 x_2 = a - k$\n\n3단계: 두 근의 차 조건과 곱셈공식의 변형 적용\n문제에서 $x_2 - x_1 = 4$이므로 양변을 제곱하면:\n$(x_2 - x_1)^2 = 4^2 = 16$\n\n곱셈공식의 변형을 대입하면:\n$(x_1 + x_2)^2 - 4x_1 x_2 = 16$\n$8^2 - 4(a - k) = 16$\n$64 - 4(a - k) = 16$\n$4(a - k) = 64 - 16 = 48$\n$a - k = 12$\n\n4단계: 판별식 검증\n$\\frac{D}{4} = (-4)^2 - 1 \\times (a - k) = 16 - 12 = 4 > 0$이므로\n두 교점이 서로 다른 두 점에서 실제로 존재함을 완벽히 확인합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 $a - k$의 값은 $12$이다."
   },
   {
     "id": 21,
@@ -570,9 +570,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -580,14 +580,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "이차함수 $y=x^2-3x$의 그래프와 직선 $y=-x+k$가 서로 다른 두 점에서 만날 때, 두 교점의 $x$좌표의 합을 $f(k)$, 곱을 $g(k)$라고 하자. $\\{g(k)\\}^2=f(1)\\times f(4)$를 만족시키는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n1) 이차함수 $y = x^2 - 3x$와 직선 $y = -x + k$의 교점의 $x$좌표는 연립방정식 $x^2 - 3x = -x + k \\iff x^2 - 2x - k = 0$의 두 실근입니다.\n2) '서로 다른 두 점에서 만난다'는 조건으로부터 판별식 $D > 0$의 조건을 먼저 구해야 합니다.\n3) 근과 계수의 관계로부터 두 교점의 합 $f(k)$와 곱 $g(k)$를 $k$에 대한 식으로 나타낸 후, 주어진 등식을 만족하는 $k$를 구합니다.\n\n[단계별 풀이]\n1단계: 연립방정식 및 서로 다른 두 교점 조건 (판별식)\n$x^2 - 3x = -x + k \\implies x^2 - 2x - k = 0$\n두 그래프가 서로 다른 두 점에서 만나야 하므로 $\\frac{D}{4} > 0$이어야 합니다:\n$\\frac{D}{4} = (-1)^2 - 1 \\times (-k) = 1 + k > 0 \\implies k > -1$ $\\cdots$ ①\n\n2단계: 근과 계수의 관계로 $f(k)$와 $g(k)$ 정의하기\n두 교점의 $x$좌표의 합 $f(k)$와 곱 $g(k)$는:\n- $f(k) = -\\frac{-2}{1} = 2$ (상수함수)\n- $g(k) = \\frac{-k}{1} = -k$\n\n3단계: 주어진 조건식 풀기\n$f(k)$는 $k$의 값에 관계없이 항상 $2$이므로:\n$f(1) = 2, f(4) = 2$\n\n등식 $\\{g(k)\\}^2 = f(1) \\times f(4)$에 대입하면:\n$(-k)^2 = 2 \\times 2$\n$k^2 = 4 \\implies k = 2$ 또는 $k = -2$\n\n4단계: 판별식 조건 대조 및 최종 값 확정\n1단계의 서로 다른 두 교점 조건 ①에 의하여 $k > -1$이어야 합니다.\n따라서 $k = -2$는 탈락하고 $k = 2$만 적합합니다.\n($k = -2$이면 판별식 $\\frac{D}{4} = -1 < 0$이 되어 교점이 생기지 않습니다.)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 실수 $k$의 값은 $2$이다."
   },
   {
     "id": 22,
@@ -598,9 +598,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -608,14 +608,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$-2\\le x\\le 2$에서 이차함수 $y=-3x^2-6x+a$의 최솟값이 $6$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "[풀이 전략]\n1) 주어진 이차함수 $y = -3x^2 - 6x + a$를 표준형 $y = a(x - p)^2 + q$로 변형하여 대칭축 $x = p$와 볼록 방향을 파악합니다.\n2) 위로 볼록한 포물선은 대칭축에서 멀어질수록 함숫값이 작아지므로, 제한된 범위 $[-2, 2]$의 양 끝점 중 대칭축에서 더 먼 쪽에서 최솟값을 갖습니다.\n3) 최솟값 $= 6$이라는 조건을 이용하여 상수 $a$를 구합니다.\n\n[단계별 풀이]\n1단계: 표준형으로 변형하기\n$y = -3(x^2 + 2x) + a$\n$= -3(x^2 + 2x + 1 - 1) + a$\n$= -3(x + 1)^2 + 3 + a$\n- 위로 볼록한 포물선\n- 꼭짓점: $(-1, a + 3)$\n- 대칭축: $x = -1$\n\n2단계: 정의역 $[-2, 2]$에서 대칭축으로부터의 거리 비교\n대칭축 $x = -1$로부터 구간의 양 끝점까지의 거리는:\n- 왼쪽 끝점 $x = -2$: $|-2 - (-1)| = 1$\n- 오른쪽 끝점 $x = 2$: $|2 - (-1)| = 3$\n\n포물선이 위로 볼록하므로 대칭축에서 더 멀리 떨어진 끝점 $x = 2$에서 최솟값을 갖습니다.\n\n3단계: 최솟값을 이용하여 $a$ 구하기\n$x = 2$를 함수식에 대입하면:\n$y(2) = -3(2)^2 - 6(2) + a = -12 - 12 + a = a - 24$\n이 최솟값이 $6$이므로:\n$a - 24 = 6 \\implies a = 30$\n\n4단계: 최댓값 및 개형 확인\n$a = 30$일 때 함수는 $y = -3(x + 1)^2 + 33$이므로:\n- 꼭짓점 $x = -1$에서 최댓값 $33$\n- $x = -2$에서 $y = -3(-1)^2 + 33 = 30$\n- $x = 2$에서 최솟값 $6$\n정의역 내에서 함숫값의 범위는 $[6, 33]$으로 모든 조건이 잘 부합합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 실수 $a$의 값은 $30$이다."
   },
   {
     "id": 23,
@@ -626,9 +626,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -636,14 +636,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$1\\le x\\le 3$일 때, 이차함수 $y=x^2+2x+k$의 최댓값과 최솟값의 차를 구하시오. (단, $k$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n1) 이차함수 $y = x^2 + 2x + k$를 표준형으로 변형하여 대칭축의 위치를 파악합니다.\n2) 주어진 구간 $1 \\le x \\le 3$이 대칭축의 오른쪽에 위치하는지 확인하여 함수의 증감 상태를 파악합니다.\n3) 최댓값과 최솟값을 각각 구한 후 그 차를 계산합니다. (상수 $k$는 차를 구할 때 상쇄됩니다.)\n\n[단계별 풀이]\n1단계: 표준형으로 변형 및 대칭축 구하기\n$y = (x^2 + 2x + 1) - 1 + k$\n$y = (x + 1)^2 + k - 1$\n- 아래로 볼록한 포물선\n- 대칭축: $x = -1$\n\n2단계: 주어진 구간에서 함수의 증감 확인\n주어진 구간 $1 \\le x \\le 3$은 대칭축 $x = -1$보다 엄격히 오른쪽에 위치합니다 ($x > -1$).\n아래로 볼록한 포물선에서 대칭축의 오른쪽 구간에서는 $x$의 값이 증가할 때 $y$의 값도 항상 증가합니다(단조 증가).\n\n3단계: 최댓값과 최솟값 구하기\n- 최솟값은 구간의 가장 왼쪽인 $x = 1$에서 발생:\n  $y(1) = 1^2 + 2(1) + k = 1 + 2 + k = k + 3$\n- 최댓값은 구간의 가장 오른쪽인 $x = 3$에서 발생:\n  $y(3) = 3^2 + 2(3) + k = 9 + 6 + k = k + 15$\n\n4단계: 최댓값과 최솟값의 차 계산\n$(\\text{최댓값}) - (\\text{최솟값}) = (k + 15) - (k + 3) = 15 - 3 = 12$\n\n[학생을 위한 핵심 팁]\n$y$축 방향 평행이동 상수 $k$는 그래프 전체를 위아래로만 이동시킬 뿐 그래프의 폭이나 구간 내 상대적 높낮이 차이에는 영향을 주지 않으므로, 차는 $k$와 무관하게 항상 $12$로 일정합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 최댓값과 최솟값의 차는 $12$이다."
   },
   {
     "id": 24,
@@ -654,9 +654,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -664,14 +664,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$x$에 대한 이차함수 $y=x^2-4ax+3a^2-4a$의 최솟값을 $f(a)$라고 할 때, $0\\le a\\le 3$에서 함수 $f(a)$의 최댓값과 최솟값의 합을 구하시오. (단, $a$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-21$",
+    "solution": "[풀이 전략]\n이 문제는 '2단계 최적화' 문제입니다:\n1단계: $x$에 대한 이차함수 식을 완전제곱식으로 변형하여 $x$에 대한 최솟값 $f(a)$를 $a$에 관한 식으로 나타냅니다.\n2단계: 새롭게 정의된 $a$에 관한 이차함수 $f(a)$에 대하여 제한된 범위 $0 \\le a \\le 3$에서의 최댓값과 최솟값을 구하고 그 합을 구합니다.\n\n[단계별 풀이]\n1단계: $x$에 대한 최솟값 $f(a)$ 구하기\n$y = x^2 - 4ax + 3a^2 - 4a$\n$= (x^2 - 4ax + 4a^2) - 4a^2 + 3a^2 - 4a$\n$= (x - 2a)^2 - a^2 - 4a$\n$x$는 실수 전체 범위이므로, 아래로 볼록한 포물선의 최솟값은 꼭짓점 $x = 2a$에서 갖는 $y$좌표입니다:\n$f(a) = -a^2 - 4a$\n\n2단계: $f(a)$의 식을 완전제곱식으로 변형하기\n$f(a) = -(a^2 + 4a) = -(a^2 + 4a + 4 - 4) = -(a + 2)^2 + 4$\n- 위로 볼록한 포물선\n- 대칭축: $a = -2$\n\n3단계: $0 \\le a \\le 3$에서 $f(a)$의 최댓값과 최솟값 구하기\n주어진 구간 $0 \\le a \\le 3$은 대칭축 $a = -2$의 오른쪽에 있으므로, 이 구간에서 $f(a)$는 단조 감소합니다.\n- 최댓값: 구간의 왼쪽 끝점 $a = 0$에서 발생\n  $f(0) = -0^2 - 4(0) = 0$\n- 최솟값: 구간의 오른쪽 끝점 $a = 3$에서 발생\n  $f(3) = -(3)^2 - 4(3) = -9 - 12 = -21$\n\n4단계: 최댓값과 최솟값의 합 계산\n$(\\text{최댓값}) + (\\text{최솟값}) = 0 + (-21) = -21$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 최댓값과 최솟값의 합은 $-21$이다."
   },
   {
     "id": 25,
@@ -682,9 +682,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -692,14 +692,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$x$에 대한 이차함수\n$$y=x^2-2(2a-k)x+k^2+3k+b$$\n의 그래프가 실수 $k$의 값에 관계없이 항상 $x$축에 접할 때, 두 실수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-\\frac{3}{4}, b=\\frac{9}{4}$",
+    "solution": "[풀이 전략]\n1) 이차함수 $y = ax^2 + bx + c$의 그래프가 $x$축에 접한다는 것은 이차방정식 $ax^2 + bx + c = 0$이 중근을 갖는다는 뜻이므로 판별식 $D = 0$ (짝수 판별식 $\\frac{D}{4} = 0$)입니다.\n2) '실수 $k$의 값에 관계없이'라는 조건은 판별식 $= 0$이 $k$에 대한 항등식임을 뜻합니다.\n3) 식을 $k$에 대하여 내림차순 $Ak + B = 0$으로 묶은 후 $A = 0, B = 0$을 만족하는 $a, b$를 차례로 구합니다.\n\n[단계별 풀이]\n1단계: 판별식 세우기\n이차함수의 그래프가 $x$축에 접하므로 $x^2 - 2(2a - k)x + (k^2 + 3k + b) = 0$의 판별식 $\\frac{D}{4} = 0$입니다:\n$\\frac{D}{4} = \\{-(2a - k)\\}^2 - 1 \\times (k^2 + 3k + b) = 0$\n\n2단계: 식 전개 및 $k^2$ 소거\n$(4a^2 - 4ak + k^2) - (k^2 + 3k + b) = 0$\n$4a^2 - 4ak - 3k - b = 0$\n\n3단계: $k$에 대한 항등식으로 정리하기\n$k$를 포함하는 항과 상수항으로 묶으면:\n$(-4a - 3)k + (4a^2 - b) = 0$\n\n4단계: 항등식 조건 적용하여 $a, b$ 구하기\n이 식이 실수 $k$의 값에 관계없이 항상 성립하므로:\n- $k$의 계수: $-4a - 3 = 0 \\implies 4a = -3 \\implies a = -\\frac{3}{4}$\n- 상수항: $4a^2 - b = 0 \\implies b = 4a^2$\n\n$a = -\\frac{3}{4}$를 대입하면:\n$b = 4\\left(-\\frac{3}{4}\\right)^2 = 4 \\times \\frac{9}{16} = \\frac{9}{4}$\n\n5단계: 검산\n$a = -\\frac{3}{4}, b = \\frac{9}{4}$를 원래 식에 대입하면:\n$y = x^2 - 2\\left(-\\frac{3}{2} - k\\right)x + \\left(k^2 + 3k + \\frac{9}{4}\\right)$\n$= x^2 + 2\\left(k + \\frac{3}{2}\\right)x + \\left(k + \\frac{3}{2}\\right)^2 = \\left(x + k + \\frac{3}{2}\\right)^2$\n완전제곱식이 되므로 모든 $k$에 대하여 항상 $x$축에 접함이 검증됩니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 두 실수의 값은 $a = -\\frac{3}{4}, b = \\frac{9}{4}$이다."
   },
   {
     "id": 26,
@@ -710,9 +710,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -720,14 +720,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$0\\le x\\le a$에서 이차함수 $y=x^2-4x+3$의 최댓값과 최솟값의 합이 $4$가 되도록 하는 모든 양수 $a$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4-\\sqrt{2}+\\sqrt{6}$",
+    "solution": "[풀이 전략]\n이차함수 $y = x^2 - 4x + 3 = (x - 2)^2 - 1$의 대칭축은 $x = 2$입니다.\n정의역 $0 \\le x \\le a$ ($a > 0$)에서 대칭축 $x = 2$가 구간 안에 포함되는지($a \\ge 2$) 아니면 구간 바깥 오른쪽에 있는지($0 < a < 2$)에 따라 최솟값과 최댓값의 위치가 달라지므로 구간을 엄밀히 분기하여 접근합니다.\n\n[단계별 풀이]\n1단계: 함수식 정리\n$y = x^2 - 4x + 3 = (x - 2)^2 - 1$\n- 아래로 볼록한 포물선\n- 꼭짓점: $(2, -1)$, 대칭축: $x = 2$\n- $x = 0$일 때 $y(0) = 3$\n\n2단계: [경우 1] $0 < a < 2$일 때\n대칭축 $x = 2$가 구간의 오른쪽에 있으므로 $0 \\le x \\le a$에서 함수 $y$는 단조 감소합니다.\n- 최댓값: $M = y(0) = 3$\n- 최솟값: $m = y(a) = a^2 - 4a + 3$\n\n최댓값과 최솟값의 합 조건:\n$M + m = 3 + (a^2 - 4a + 3) = a^2 - 4a + 6 = 4$\n$a^2 - 4a + 2 = 0$\n근의 공식을 적용하면:\n$a = \\frac{4 \\pm \\sqrt{16 - 8}}{2} = 2 \\pm \\sqrt{2}$\n$0 < a < 2$이어야 하므로 $\\sqrt{2} \\approx 1.414$에서\n$a = 2 - \\sqrt{2}$ (적합, $2 + \\sqrt{2} > 2$이므로 제외)\n\n3단계: [경우 2] $a \\ge 2$일 때\n대칭축 $x = 2$가 구간에 포함되므로 최솟값은 꼭짓점의 $y$좌표입니다:\n$m = y(2) = -1$\n\n최댓값과 최솟값의 합 조건:\n$M + m = 4 \\implies M + (-1) = 4 \\implies M = 5$\n구간의 왼쪽 끝점의 함숫값은 $y(0) = 3 < 5$이므로 최댓값 $5$는 반드시 오른쪽 끝점 $x = a$에서 발생해야 합니다:\n$y(a) = a^2 - 4a + 3 = 5$\n$a^2 - 4a - 2 = 0$\n근의 공식을 적용하면:\n$a = \\frac{4 \\pm \\sqrt{16 + 8}}{2} = 2 \\pm \\sqrt{6}$\n$a \\ge 2$이어야 하므로:\n$a = 2 + \\sqrt{6}$ (적합, $2 - \\sqrt{6} < 0$이므로 제외)\n(참고: $2 + \\sqrt{6} \\approx 4.45 > 4$이므로 $y(a) = 5 > y(0) = 3$ 조건도 완벽히 만족합니다.)\n\n4단계: 모든 양수 $a$의 값의 합 구하기\n$(2 - \\sqrt{2}) + (2 + \\sqrt{6}) = 4 - \\sqrt{2} + \\sqrt{6}$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 모든 양수 $a$의 값의 합은 $4 - \\sqrt{2} + \\sqrt{6}$이다."
   },
   {
     "id": 27,
@@ -738,9 +738,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -748,14 +748,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 벽면을 활용하여 길이가 $28\\text{ m}$인 철망으로 ㄷ자 모양의 울타리를 만들려고 한다. 울타리 안쪽 직사각형 모양 땅의 가로의 길이와 세로의 길이가 모두 $4\\text{ m}$ 이상이 되도록 만들 때, 울타리 안쪽 땅의 넓이의 최댓값과 최솟값을 각각 구하시오. (단, 철망의 두께는 생각하지 않는다.)\n<img src=\"q27.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값: $98\\text{ m}^2$, 최솟값: $48\\text{ m}^2$",
+    "solution": "[풀이 전략]\n1) 벽면을 활용하여 길이가 $28\\text{ m}$인 철망으로 ㄷ자 모양의 울타리를 만들 때, 벽면과 수직인 두 변(세로)을 각각 $x\\text{ m}$라고 하면 맞은편 변(가로)은 $(28 - 2x)\\text{ m}$가 됩니다.\n2) '가로와 세로가 모두 $4\\text{ m}$ 이상'이라는 제약 조건으로부터 $x$의 유효 범위를 부등식으로 구합니다.\n3) 넓이 $S(x)$를 $x$에 대한 이차함수로 세운 뒤, 제한된 범위에서 표준형을 이용하여 최댓값과 최솟값을 각각 구합니다.\n\n[단계별 풀이]\n1단계: 변의 길이 설정 및 변역(정의역) 구하기\n- 세로의 길이: $x\\text{ m}$ ($2$개 변)\n- 가로의 길이: $(28 - 2x)\\text{ m}$ ($1$개 변)\n\n조건에서 가로와 세로가 모두 $4\\text{ m}$ 이상이어야 하므로:\n- 세로 조건: $x \\ge 4$\n- 가로 조건: $28 - 2x \\ge 4 \\implies 2x \\le 24 \\implies x \\le 12$\n따라서 $x$의 범위는 $4 \\le x \\le 12$입니다.\n\n2단계: 넓이 함수 $S(x)$ 세우기 및 표준형 변형\n$S(x) = x(28 - 2x) = -2x^2 + 28x$\n$= -2(x^2 - 14x) = -2(x^2 - 14x + 49 - 49)$\n$= -2(x - 7)^2 + 98$\n- 위로 볼록한 포물선\n- 꼭짓점: $(7, 98)$\n- 대칭축: $x = 7$\n\n3단계: 최댓값 구하기\n대칭축 $x = 7$은 $4 \\le x \\le 12$ 범위에 포함되므로:\n최댓값은 $x = 7$일 때 $S(7) = 98\\text{ m}^2$입니다.\n(이때 세로는 $7\\text{ m}$, 가로는 $28 - 14 = 14\\text{ m}$)\n\n4단계: 최솟값 구하기\n대칭축 $x = 7$로부터 구간의 양 끝점까지의 거리를 비교하면:\n- $x = 4$까지의 거리: $|4 - 7| = 3$\n- $x = 12$까지의 거리: $|12 - 7| = 5$\n대칭축에서 더 멀리 떨어진 $x = 12$에서 최솟값을 갖습니다:\n$S(12) = 12(28 - 24) = 12 \\times 4 = 48\\text{ m}^2$\n(참고: $x = 4$일 때 넓이는 $S(4) = 4(28 - 8) = 80\\text{ m}^2 > 48\\text{ m}^2$)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n최댓값은 $98\\text{ m}^2$, 최솟값은 $48\\text{ m}^2$이다."
   },
   {
     "id": 28,
@@ -766,9 +766,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -776,14 +776,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$x^2$의 계수가 $1$인 이차함수 $y=f(x)$가 다음 조건을 만족시킨다. 이차함수 $y=f(x)$의 그래프와 $x$축이 만나는 서로 다른 두 점의 $x$좌표를 각각 $\\alpha, \\beta$라고 할 때, $\\alpha^2+\\beta^2$의 값을 구하시오.\n\n(가) 이차함수 $y=f(x)$의 그래프와 직선 $y=-4$는 한 점에서 만난다.\n(나) 이차함수 $y=f(x)$의 그래프와 직선 $y=2x$가 만나는 서로 다른 두 점의 $x$좌표의 합은 $2$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n1) 최고차항의 계수가 $1$인 이차함수 $f(x) = x^2 + bx + c$에 대하여 조건 (가)와 (나)를 대수적으로 해석합니다.\n2) 조건 (가): $f(x)$가 수평선 $y = -4$와 한 점에서 접하므로, 아래로 볼록한 포물선의 최솟값(꼭짓점의 $y$좌표)이 $-4$입니다. 즉 $f(x) = (x - p)^2 - 4$로 나타낼 수 있습니다.\n3) 조건 (나): $f(x) = 2x$의 두 교점의 $x$좌표의 합이 $2$임을 근과 계수의 관계로 표현하여 $p$의 값을 결정합니다.\n4) 결정된 $f(x) = 0$의 두 실근 $\\alpha, \\beta$에 대하여 $\\alpha^2 + \\beta^2$을 계산합니다.\n\n[단계별 풀이]\n1단계: 조건 (가)로부터 함수식 설정하기\n$x^2$의 계수가 $1$이므로 $f(x)$는 아래로 볼록합니다.\n직선 $y = -4$와 한 점에서 만난다는 것은 꼭짓점의 $y$좌표가 $-4$라는 의미이므로:\n$f(x) = (x - p)^2 - 4 = x^2 - 2px + p^2 - 4$ ($p$는 실수)\n\n2단계: 조건 (나)를 이용하여 $p$ 구하기\n이차함수와 직선 $y = 2x$를 연립하면:\n$x^2 - 2px + p^2 - 4 = 2x$\n$x^2 - 2(p + 1)x + p^2 - 4 = 0$\n두 교점의 $x$좌표의 합이 $2$이므로, 근과 계수의 관계에 의하여:\n$2(p + 1) = 2 \\implies p + 1 = 1 \\implies p = 0$\n\n3단계: 이차함수식 확정 및 두 실근 구하기\n$p = 0$이므로 구하는 이차함수는:\n$f(x) = x^2 - 4$\n$x$축과의 교점의 $x$좌표 $\\alpha, \\beta$는 $f(x) = 0$의 두 실근이므로:\n$x^2 - 4 = 0 \\implies x = \\pm 2$\n따라서 $\\alpha = 2, \\beta = -2$ (또는 $\\alpha = -2, \\beta = 2$)\n\n4단계: $\\alpha^2 + \\beta^2$의 값 계산\n$\\alpha^2 + \\beta^2 = 2^2 + (-2)^2 = 4 + 4 = 8$\n(또는 근과 계수의 관계: $\\alpha + \\beta = 0, \\alpha\\beta = -4$이므로\n$\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = 0 - 2(-4) = 8$)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 $\\alpha^2 + \\beta^2$의 값은 $8$이다."
   },
   {
     "id": 29,
@@ -794,9 +794,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -804,14 +804,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$0\\le x\\le 4$에서 이차함수 $y=x^2-2ax$의 최댓값과 최솟값의 합이 $7$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n이차함수 $y = x^2 - 2ax = (x - a)^2 - a^2$의 그래프는 아래로 볼록하고 대칭축이 $x = a$입니다.\n정의역 $0 \\le x \\le 4$에 대하여 대칭축 $x = a$의 위치에 따라 최댓값과 최솟값이 나타나는 지점이 달라집니다:\n- $a < 0$: 구간 전체에서 증가\n- $0 \\le a \\le 2$: 꼭짓점이 최소, $x = 4$가 최대\n- $2 < a \\le 4$: 꼭짓점이 최소, $x = 0$이 최대\n- $a > 4$: 구간 전체에서 감소\n각 경우를 엄밀하게 나누어 조사합니다.\n\n[단계별 풀이]\n1단계: 함수 표준형\n$y = (x - a)^2 - a^2$ (대칭축: $x = a$)\n\n2단계: [경우 1] $a < 0$일 때\n대칭축이 $0$의 왼쪽에 있으므로 $0 \\le x \\le 4$에서 $y$는 증가합니다.\n- 최솟값: $y(0) = 0$\n- 최댓값: $y(4) = 16 - 8a$\n합: $16 - 8a + 0 = 7 \\implies 8a = 9 \\implies a = \\frac{9}{8}$\n그런데 $\\frac{9}{8} > 0$이므로 $a < 0$이라는 조건에 모순입니다. (해 없음)\n\n3단계: [경우 2] $0 \\le a \\le 2$일 때\n대칭축 $x = a$가 구간 안에 있고, 구간의 중심 $x = 2$의 왼쪽(또는 중심)에 위치합니다.\n- 최솟값: 꼭짓점 $y(a) = -a^2$\n- 최댓값: 대칭축에서 더 먼 끝점 $x = 4$에서 발생, $y(4) = 16 - 8a$\n합: $-a^2 + 16 - 8a = 7$\n$a^2 + 8a - 9 = 0$\n$(a + 9)(a - 1) = 0 \\implies a = -9$ 또는 $a = 1$\n$0 \\le a \\le 2$이므로 $a = 1$ (적합)\n\n4단계: [경우 3] $2 < a \\le 4$일 때\n대칭축 $x = a$가 구간 안에 있고, 구간의 중심 $x = 2$의 오른쪽에 위치합니다.\n- 최솟값: 꼭짓점 $y(a) = -a^2$\n- 최댓값: 대칭축에서 더 먼 끝점 $x = 0$에서 발생, $y(0) = 0$\n합: $-a^2 + 0 = 7 \\implies a^2 = -7$\n실수 $a$에 대하여 $a^2 \\ge 0$이므로 실근이 존재하지 않습니다. (해 없음)\n\n5단계: [경우 4] $a > 4$일 때\n대칭축이 $4$의 오른쪽에 있으므로 $0 \\le x \\le 4$에서 $y$는 감소합니다.\n- 최댓값: $y(0) = 0$\n- 최솟값: $y(4) = 16 - 8a$\n합: $0 + 16 - 8a = 7 \\implies 8a = 9 \\implies a = \\frac{9}{8}$\n그런데 $\\frac{9}{8} < 4$이므로 $a > 4$라는 조건에 모순입니다. (해 없음)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n네 경우 중 조건을 만족하는 유일한 실수는 $a = 1$이다."
   },
   {
     "id": 30,
@@ -822,9 +822,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -832,14 +832,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "이차방정식과 이차함수"
     ],
     "wide": false,
     "content": "$2\\le a\\le 3$일 때, $x$에 대한 이차방정식\n$$x^2-2ax+2a^2-5a+4=0$$\n이 서로 다른 두 실근 $\\alpha, \\beta$를 갖는다. $(2-\\alpha)(2-\\beta)$의 최댓값과 최솟값을 각각 구하시오. (단, $a$는 실수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값: $-1$, 최솟값: $-\\frac{17}{8}$",
+    "solution": "[풀이 전략]\n1) $x^2 - 2ax + 2a^2 - 5a + 4 = 0$이 서로 다른 두 실근 $\\alpha, \\beta$를 가질 조건을 판별식으로 확인합니다.\n2) 식 $(2 - \\alpha)(2 - \\beta)$를 전개하여 근과 계수의 관계를 대입하거나, 다항식 $P(x) = (x - \\alpha)(x - \\beta)$에서 $P(2)$의 값을 구하는 원리를 이용하여 $a$에 대한 이차함수 $g(a)$로 나타냅니다.\n3) 주어진 $2 \\le a \\le 3$에서 $g(a)$의 대칭축을 확인하고 최댓값과 최솟값을 계산합니다.\n\n[단계별 풀이]\n1단계: 서로 다른 두 실근 조건 검증 (판별식)\n$\\frac{D}{4} = (-a)^2 - 1 \\times (2a^2 - 5a + 4) = a^2 - 2a^2 + 5a - 4 = -a^2 + 5a - 4 > 0$\n$-(a - 1)(a - 4) > 0 \\implies 1 < a < 4$\n문제에서 주어진 범위 $2 \\le a \\le 3$은 구간 $(1, 4)$에 완전히 포함되므로, 항상 서로 다른 두 실근이 존재합니다.\n\n2단계: $(2 - \\alpha)(2 - \\beta)$를 $a$에 대한 함수로 나타내기\n방법 A (근과 계수의 관계):\n$\\alpha + \\beta = 2a$, $\\alpha\\beta = 2a^2 - 5a + 4$\n$(2 - \\alpha)(2 - \\beta) = 4 - 2(\\alpha + \\beta) + \\alpha\\beta$\n$= 4 - 2(2a) + (2a^2 - 5a + 4) = 2a^2 - 9a + 8$\n\n방법 B (인수정리 활용):\n$x^2 - 2ax + 2a^2 - 5a + 4 = (x - \\alpha)(x - \\beta)$의 양변에 $x = 2$를 대입하면:\n$(2 - \\alpha)(2 - \\beta) = 2^2 - 2a(2) + 2a^2 - 5a + 4 = 2a^2 - 9a + 8$\n\n3단계: $g(a) = 2a^2 - 9a + 8$의 표준형 및 극값 구하기\n$g(a) = 2\\left(a^2 - \\frac{9}{2}a\\right) + 8$\n$= 2\\left(a - \\frac{9}{4}\\right)^2 - 2\\left(\\frac{81}{16}\\right) + 8$\n$= 2\\left(a - \\frac{9}{4}\\right)^2 - \\frac{81}{8} + \\frac{64}{8} = 2\\left(a - \\frac{9}{4}\\right)^2 - \\frac{17}{8}$\n- 아래로 볼록한 포물선\n- 대칭축: $a = \\frac{9}{4} = 2.25$\n\n4단계: $2 \\le a \\le 3$에서 최댓값과 최솟값 결정하기\n대칭축 $a = 2.25$는 $[2, 3]$에 포함되므로:\n- 최솟값은 꼭짓점 $a = \\frac{9}{4}$에서 발생:\n  $g\\left(\\frac{9}{4}\\right) = -\\frac{17}{8}$\n\n대칭축에서 양 끝점까지의 거리를 비교하면:\n- $|2 - 2.25| = 0.25$\n- $|3 - 2.25| = 0.75$ (더 멀리 떨어짐)\n- 최댓값은 끝점 $a = 3$에서 발생:\n  $g(3) = 2(3)^2 - 9(3) + 8 = 18 - 27 + 8 = -1$\n(참고: $g(2) = 2(4) - 18 + 8 = -2 = -\\frac{16}{8}$)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n최댓값은 $-1$, 최솟값은 $-\\frac{17}{8}$이다."
   },
   {
     "id": 31,
@@ -850,9 +850,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -860,14 +860,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $x^3-27=0$\n⑵ $x^4+x^2-2=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=3$ 또는 $x=\\frac{-3\\pm 3\\sqrt{3}i}{2}$\n⑵ $x=\\pm 1$ 또는 $x=\\pm \\sqrt{2}i$",
+    "solution": "[풀이 전략]\n고차방정식을 풀 때는 인수분해 공식을 적용하거나 치환, 조립제법을 통해 일차식과 이차식의 곱으로 분해한 후 각각의 해를 구합니다.\n⑴ $x^3 - a^3 = (x - a)(x^2 + ax + a^2) = 0$ 공식 적용 후 근의 공식 사용\n⑵ 복이차식 $x^4 + ax^2 + b = 0$은 $x^2 = X$로 치환하여 인수분해\n\n[단계별 풀이]\n⑴ $x^3 - 27 = 0$ 풀기:\n$27 = 3^3$이므로 곱셈공식 $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$을 적용하면:\n$(x - 3)(x^2 + 3x + 9) = 0$\n- $x - 3 = 0 \\implies x = 3$\n- $x^2 + 3x + 9 = 0$에서 근의 공식을 적용하면:\n  $x = \\frac{-3 \\pm \\sqrt{3^2 - 4(1)(9)}}{2} = \\frac{-3 \\pm \\sqrt{9 - 36}}{2} = \\frac{-3 \\pm \\sqrt{-27}}{2} = \\frac{-3 \\pm 3\\sqrt{3}i}{2}$\n\n따라서 $x = 3$ 또는 $x = \\frac{-3 \\pm 3\\sqrt{3}i}{2}$\n\n⑵ $x^4 + x^2 - 2 = 0$ 풀기:\n$x^2 = X$ ($X \\ge 0$이 아니어도 복소수 범위에서 모두 가능)로 치환하면:\n$X^2 + X - 2 = 0$\n좌변을 인수분해하면:\n$(X + 2)(X - 1) = 0$\n$X = x^2$을 다시 대입하면:\n$(x^2 + 2)(x^2 - 1) = 0$\n$(x^2 + 2)(x - 1)(x + 1) = 0$\n- $x^2 - 1 = 0 \\implies x = \\pm 1$\n- $x^2 + 2 = 0 \\implies x^2 = -2 \\implies x = \\pm\\sqrt{2}i$\n\n따라서 $x = \\pm 1$ 또는 $x = \\pm\\sqrt{2}i$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n⑴ $x = 3$ 또는 $x = \\frac{-3 \\pm 3\\sqrt{3}i}{2}$\n⑵ $x = \\pm 1$ 또는 $x = \\pm\\sqrt{2}i$"
   },
   {
     "id": 32,
@@ -878,9 +878,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -888,14 +888,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} x+2y=0 \\\\ x^2-xy-2y^2=4 \\end{cases}$\n⑵ $\\begin{cases} 2x-y=2 \\\\ 3x^2-2x-y^2=4 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{cases} x=-2 \\\\ y=1 \\end{cases}$ 또는 $\\begin{cases} x=2 \\\\ y=-1 \\end{cases}$\n⑵ $\\begin{cases} x=2 \\\\ y=2 \\end{cases}$ 또는 $\\begin{cases} x=4 \\\\ y=6 \\end{cases}$",
+    "solution": "[풀이 전략]\n미지수가 $2$개인 연립이차방정식의 기본 해법:\n- 일차방정식과 이차방정식의 연립: 일차식을 한 문자에 대하여 정리한 후 이차식에 대입하여 푼다.\n- 이차방정식과 이차방정식의 연립: 인수분해 가능한 식(우변이 $0$인 식)을 두 개의 일차식으로 분해하여 대입한다.\n\n[단계별 풀이]\n⑴ $\\begin{cases} x + 2y = 0 & \\cdots \\text{①} \\\\ x^2 - xy - 2y^2 = 4 & \\cdots \\text{②} \\end{cases}$\n1단계: ①에서 $x = -2y$\n2단계: ②에 대입하기:\n$(-2y)^2 - (-2y)y - 2y^2 = 4$\n$4y^2 + 2y^2 - 2y^2 = 4 \\implies 4y^2 = 4 \\implies y^2 = 1$\n$y = 1$ 또는 $y = -1$\n3단계: 각각에 대응하는 $x$ 구하기:\n- $y = 1$일 때: $x = -2(1) = -2$\n- $y = -1$일 때: $x = -2(-1) = 2$\n따라서 $\\begin{cases} x = -2 \\\\ y = 1 \\end{cases}$ 또는 $\\begin{cases} x = 2 \\\\ y = -1 \\end{cases}$\n\n⑵ $\\begin{cases} 2x - y = 2 & \\cdots \\text{③} \\\\ 3x^2 - 2x - y^2 = 4 & \\cdots \\text{④} \\end{cases}$\n1단계: ③에서 $y = 2x - 2$\n2단계: ④에 대입하기:\n$3x^2 - 2x - (2x - 2)^2 = 4$\n$3x^2 - 2x - (4x^2 - 8x + 4) = 4$\n$3x^2 - 2x - 4x^2 + 8x - 4 = 4$\n$-x^2 + 6x - 8 = 0 \\implies x^2 - 6x + 8 = 0$\n3단계: $x$ 구하기:\n$(x - 2)(x - 4) = 0 \\implies x = 2$ 또는 $x = 4$\n4단계: 각각에 대응하는 $y$ 구하기:\n- $x = 2$일 때: $y = 2(2) - 2 = 2$\n- $x = 4$일 때: $y = 2(4) - 2 = 6$\n따라서 $\\begin{cases} x = 2 \\\\ y = 2 \\end{cases}$ 또는 $\\begin{cases} x = 4 \\\\ y = 6 \\end{cases}$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n⑴ $\\begin{cases} x = -2 \\\\ y = 1 \\end{cases}$ 또는 $\\begin{cases} x = 2 \\\\ y = -1 \\end{cases}$\n⑵ $\\begin{cases} x = 2 \\\\ y = 2 \\end{cases}$ 또는 $\\begin{cases} x = 4 \\\\ y = 6 \\end{cases}$"
   },
   {
     "id": 33,
@@ -906,9 +906,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -916,14 +916,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} 3x-1<5x+3 \\\\ x+2\\le 4x-1 \\end{cases}$\n⑵ $\\begin{cases} x-1<4x+5 \\\\ 3x+7<-2x-3 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x\\ge 1$\n⑵ 해는 없다.",
+    "solution": "[풀이 전략]\n연립일차부등식은 각 부등식을 각각 풀어 해의 범위를 구한 후, 수직선 위에 나타내어 공통 범위를 구합니다.\n- 공통 범위가 존재하면 그 범위가 연립부등식의 해가 됩니다.\n- 공통 범위가 존재하지 않으면 '해는 없다'가 됩니다.\n- 음수로 양변을 나눌 때 부등호의 방향이 바뀐다는 점에 유의합니다.\n\n[단계별 풀이]\n⑴ $\\begin{cases} 3x - 1 < 5x + 3 & \\cdots \\text{①} \\\\ x + 2 \\le 4x - 1 & \\cdots \\text{②} \\end{cases}$\n1단계: ① 풀기\n$3x - 5x < 3 + 1 \\implies -2x < 4$\n양변을 $-2$로 나누면 부등호의 방향이 바뀌므로:\n$x > -2$\n\n2단계: ② 풀기\n$x - 4x \\le -1 - 2 \\implies -3x \\le -3$\n양변을 $-3$으로 나누면 부등호의 방향이 바뀌므로:\n$x \\ge 1$\n\n3단계: 공통 범위 구하기\n수직선 위에서 $x > -2$와 $x \\ge 1$의 공통부분을 구하면:\n$x \\ge 1$\n\n⑵ $\\begin{cases} x - 1 < 4x + 5 & \\cdots \\text{③} \\\\ 3x + 7 < -2x - 3 & \\cdots \\text{④} \\end{cases}$\n1단계: ③ 풀기\n$x - 4x < 5 + 1 \\implies -3x < 6$\n양변을 $-3$으로 나누면:\n$x > -2$\n\n2단계: ④ 풀기\n$3x + 2x < -3 - 7 \\implies 5x < -10$\n양변을 $5$로 나누면:\n$x < -2$\n\n3단계: 공통 범위 판정\n$x > -2$이면서 동시에 $x < -2$를 만족시키는 실수는 존재하지 않습니다 ($-2$는 두 부등식 모두에 포함되지 않는 열린 경계입니다).\n따라서 공통 범위가 없으므로 '해는 없다'.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n⑴ $x \\ge 1$\n⑵ 해는 없다."
   },
   {
     "id": 34,
@@ -934,9 +934,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -944,14 +944,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 이차부등식을 푸시오.\n⑴ $x^2-x-12<0$\n⑵ $-4x^2+20x-25\\ge 0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-3<x<4$\n⑵ $x=\\frac{5}{2}$",
+    "solution": "[풀이 전략]\n이차부등식 $ax^2 + bx + c > 0$ 또는 $< 0$의 풀이:\n1) 최고차항의 계수 $a > 0$이 되도록 양변을 정리합니다 ($a < 0$이면 양변에 $-1$을 곱하고 부등호 방향을 바꿈).\n2) 좌변을 인수분해하거나 판별식을 조사하여 이차함수의 그래프와 $x$축의 교점 관계를 확인합니다.\n- 서로 다른 두 실근 $\\alpha < \\beta$를 가질 때: $(x - \\alpha)(x - \\beta) < 0 \\iff \\alpha < x < \\beta$\n- 완전제곱식 $(x - p)^2 \\le 0$일 때: 실수의 제곱은 항상 $0$ 이상이므로 등호가 성립하는 $x = p$만 유일한 해가 됨\n\n[단계별 풀이]\n⑴ $x^2 - x - 12 < 0$ 풀기:\n1단계: 좌변 인수분해하기\n$(x - 4)(x + 3) < 0$\n2단계: 해 구하기\n이차함수 $y = (x - 4)(x + 3)$의 그래프가 아래로 볼록하고 $x$축과 두 점 $x = -3, x = 4$에서 만납니다.\n함숫값이 음수($< 0$)가 되는 구간은 $x$축 아래쪽 부분이므로:\n$-3 < x < 4$\n\n⑵ $-4x^2 + 20x - 25 \\ge 0$ 풀기:\n1단계: 최고차항의 계수를 양수로 만들기\n양변에 $-1$을 곱하면 부등호의 방향이 바뀝니다:\n$4x^2 - 20x + 25 \\le 0$\n2단계: 좌변을 완전제곱식으로 인수분해하기\n$(2x - 5)^2 \\le 0$\n3단계: 실수의 제곱 성질 적용하기\n모든 실수 $x$에 대하여 실수의 제곱은 항상 $0$ 이상이므로 $(2x - 5)^2 \\ge 0$입니다.\n따라서 $(2x - 5)^2 < 0$을 만족하는 실수는 존재하지 않으며, 오직 $(2x - 5)^2 = 0$이 되는 경우만 부등식을 만족합니다:\n$2x - 5 = 0 \\implies x = \\frac{5}{2}$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n⑴ $-3 < x < 4$\n⑵ $x = \\frac{5}{2}$"
   },
   {
     "id": 35,
@@ -962,9 +962,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -972,14 +972,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "사차방정식 $x^4-x^3+x^2-6x=0$의 두 허근을 $\\alpha, \\beta$라고 할 때, $\\frac{\\beta}{\\alpha}+\\frac{\\alpha}{\\beta}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{5}{3}$",
+    "solution": "[풀이 전략]\n1) 사차방정식의 좌변을 공통인수 $x$로 묶은 뒤, 삼차식을 인수정리와 조립제법을 이용하여 인수분해합니다.\n2) 실근과 허근이 발생하는 부분을 분리하고, 두 허근 $\\alpha, \\beta$를 갖는 이차방정식을 특정합니다.\n3) 근과 계수의 관계를 이용하여 대칭식 $\\frac{\\beta}{\\alpha} + \\frac{\\alpha}{\\beta}$의 값을 계산합니다.\n\n[단계별 풀이]\n1단계: 좌변 인수분해하기\n$x^4 - x^3 + x^2 - 6x = 0$\n$x(x^3 - x^2 + x - 6) = 0$\n\n삼차식 $P(x) = x^3 - x^2 + x - 6$에 $x = 2$를 대입하면:\n$P(2) = 2^3 - 2^2 + 2 - 6 = 8 - 4 + 2 - 6 = 0$\n따라서 $P(x)$는 $x - 2$를 인수로 갖습니다.\n조립제법으로 몫을 구하면:\n$x^3 - x^2 + x - 6 = (x - 2)(x^2 + x + 3)$\n\n따라서 주어진 사차방정식은 다음과 같이 인수분해됩니다:\n$x(x - 2)(x^2 + x + 3) = 0$\n\n2단계: 허근을 갖는 방정식 특정하기\n- $x = 0$ (실근)\n- $x = 2$ (실근)\n- $x^2 + x + 3 = 0$:\n  판별식 $D = 1^2 - 4(1)(3) = 1 - 12 = -11 < 0$이므로 서로 다른 두 허근을 갖습니다.\n따라서 $\\alpha, \\beta$는 이차방정식 $x^2 + x + 3 = 0$의 두 허근입니다.\n\n3단계: 근과 계수의 관계 및 식 변형\n$x^2 + x + 3 = 0$에서:\n$\\alpha + \\beta = -1$, $\\alpha\\beta = 3$\n\n구하는 식을 통분하고 곱셈공식의 변형을 적용하면:\n$\\frac{\\beta}{\\alpha} + \\frac{\\alpha}{\\beta} = \\frac{\\alpha^2 + \\beta^2}{\\alpha\\beta} = \\frac{(\\alpha + \\beta)^2 - 2\\alpha\\beta}{\\alpha\\beta}$\n$= \\frac{(-1)^2 - 2(3)}{3} = \\frac{1 - 6}{3} = -\\frac{5}{3}$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $-\\frac{5}{3}$이다."
   },
   {
     "id": 36,
@@ -990,9 +990,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1000,14 +1000,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 2x^2-3xy+y^2=0 \\\\ 3x^2-xy+2y^2=36 \\end{cases}$의 해가 $x=\\alpha$, $y=\\beta$일 때, $\\alpha+\\beta$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n1) 두 이차방정식 중 상수항이 $0$인 동차이차방정식 $2x^2 - 3xy + y^2 = 0$을 먼저 인수분해하여 $y$와 $x$ 사이의 일차 관계식을 유도합니다.\n2) 유도된 두 가지 관계식 ($y = 2x$ 또는 $y = x$)을 두 번째 방정식에 각각 대입하여 연립방정식의 모든 해 순서쌍 $(x, y)$를 구합니다.\n3) 각 해에서 $\\alpha + \\beta$의 값을 계산하고 그 중 최댓값을 찾습니다.\n\n[단계별 풀이]\n1단계: 첫 번째 방정식 인수분해하기\n$2x^2 - 3xy + y^2 = 0$\n$(2x - y)(x - y) = 0$\n따라서 $y = 2x$ 또는 $y = x$입니다.\n\n2단계: [경우 1] $y = 2x$일 때\n두 번째 방정식 $3x^2 - xy + 2y^2 = 36$에 대입하면:\n$3x^2 - x(2x) + 2(2x)^2 = 36$\n$3x^2 - 2x^2 + 8x^2 = 36$\n$9x^2 = 36 \\implies x^2 = 4 \\implies x = \\pm 2$\n- $x = 2$일 때: $y = 2(2) = 4 \\implies \\alpha + \\beta = 2 + 4 = 6$\n- $x = -2$일 때: $y = 2(-2) = -4 \\implies \\alpha + \\beta = -2 + (-4) = -6$\n\n3단계: [경우 2] $y = x$일 때\n두 번째 방정식 $3x^2 - xy + 2y^2 = 36$에 대입하면:\n$3x^2 - x(x) + 2x^2 = 36$\n$3x^2 - x^2 + 2x^2 = 36$\n$4x^2 = 36 \\implies x^2 = 9 \\implies x = \\pm 3$\n- $x = 3$일 때: $y = 3 \\implies \\alpha + \\beta = 3 + 3 = 6$\n- $x = -3$일 때: $y = -3 \\implies \\alpha + \\beta = -3 + (-3) = -6$\n\n4단계: 최댓값 결정\n연립방정식의 모든 해에 대하여 $\\alpha + \\beta$가 가질 수 있는 값은 $6$과 $-6$뿐입니다.\n따라서 최댓값은 $6$입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 $\\alpha + \\beta$의 최댓값은 $6$이다."
   },
   {
     "id": 37,
@@ -1018,9 +1018,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1028,14 +1028,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "연립부등식 $1<|x-2|\\le 3$을 만족시키는 모든 정수 $x$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n연립부등식 $1 < |x - 2| \\le 3$은 두 부등식 $|x - 2| > 1$과 $|x - 2| \\le 3$을 동시에 만족하는 해의 범위를 구하는 문제입니다.\n- 수직선 위의 거리 개념을 활용: 점 $x$와 점 $2$ 사이의 거리가 $1$보다 크고 $3$ 이하이다.\n- 부등식을 각각 대수적으로 풀어 수직선 위의 교집합을 구하고, 그 안에 포함된 모든 정수 $x$를 찾아 합을 계산합니다.\n\n[단계별 풀이]\n1단계: 부등식 $|x - 2| \\le 3$ 풀기\n$-3 \\le x - 2 \\le 3$\n각 변에 $2$를 더하면:\n$-1 \\le x \\le 5$ $\\cdots$ ①\n\n2단계: 부등식 $|x - 2| > 1$ 풀기\n$x - 2 < -1$ 또는 $x - 2 > 1$\n각 변에 $2$를 더하면:\n$x < 1$ 또는 $x > 3$ $\\cdots$ ②\n\n3단계: 공통 범위(교집합) 구하기\n①과 ②를 동시에 만족하는 $x$의 범위는:\n$-1 \\le x < 1$ 또는 $3 < x \\le 5$\n\n4단계: 범위에 포함된 정수 $x$ 나열하기\n- $-1 \\le x < 1$에 속하는 정수: $-1, 0$ ($2$개)\n- $3 < x \\le 5$에 속하는 정수: $4, 5$ ($2$개)\n따라서 만족하는 정수는 $-1, 0, 4, 5$입니다.\n\n[대칭성을 활용한 검산]\n수직선 위에서 점 $2$를 중심으로 대칭인 정수 쌍을 이루고 있습니다:\n$(-1 + 5) + (0 + 4) = 4 + 4 = 8$\n\n5단계: 정수의 총합 구하기\n$(-1) + 0 + 4 + 5 = 8$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 모든 정수 $x$의 값의 합은 $8$이다."
   },
   {
     "id": 38,
@@ -1046,9 +1046,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1056,14 +1056,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "부등식 $|3x-2|\\le x+2$를 만족시키는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n우변에 미지수가 포함된 절댓값 부등식 $|3x - 2| \\le x + 2$를 푸는 두 가지 방법:\n방법 1: 절댓값 안의 식 $3x - 2$가 $0$ 이상인 경우와 음수인 경우로 구간 나누기\n방법 2: 절댓값의 성질 $|A| \\le B \\iff -B \\le A \\le B$ (단, $B \\ge 0$ 전제) 활용\n\n[단계별 풀이]\n[방법 1 - 구간 분기를 통한 완벽한 풀이]\n절댓값 안의 식이 $0$이 되는 기준점은 $x = \\frac{2}{3}$입니다.\n\n1) [경우 1] $x \\ge \\frac{2}{3}$일 때:\n$3x - 2 \\ge 0$이므로 $|3x - 2| = 3x - 2$\n$3x - 2 \\le x + 2 \\implies 2x \\le 4 \\implies x \\le 2$\n가정 $x \\ge \\frac{2}{3}$와의 공통 범위:\n$\\frac{2}{3} \\le x \\le 2$ $\\cdots$ ①\n\n2) [경우 2] $x < \\frac{2}{3}$일 때:\n$3x - 2 < 0$이므로 $|3x - 2| = -(3x - 2) = -3x + 2$\n$-3x + 2 \\le x + 2 \\implies -4x \\le 0 \\implies x \\ge 0$\n가정 $x < \\frac{2}{3}$와의 공통 범위:\n$0 \\le x < \\frac{2}{3}$ $\\cdots$ ②\n\n3) 두 경우의 해 합치기\n①과 ②를 합치면:\n$0 \\le x \\le 2$\n\n[방법 2 - 부등식 성질을 이용한 빠른 풀이]\n절댓값은 항상 $0$ 이상이므로 $x + 2 \\ge 0 \\implies x \\ge -2$입니다.\n$-(x + 2) \\le 3x - 2 \\le x + 2$\n- 왼쪽: $-x - 2 \\le 3x - 2 \\implies -4x \\le 0 \\implies x \\ge 0$\n- 오른쪽: $3x - 2 \\le x + 2 \\implies 2x \\le 4 \\implies x \\le 2$\n공통 범위: $0 \\le x \\le 2$ (이는 $x \\ge -2$를 만족합니다.)\n\n4단계: 정수 $x$의 개수 세기\n$0 \\le x \\le 2$를 만족하는 정수 $x$는 $0, 1, 2$로 총 $3$개입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 정수 $x$의 개수는 $3$이다."
   },
   {
     "id": 39,
@@ -1074,9 +1074,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1084,14 +1084,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "연립부등식 $\\begin{cases} x^2+ax-2<0 \\\\ x^2-6x+b\\le 0 \\end{cases}$의 해가 $1\\le x<2$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1, b=5$",
+    "solution": "[풀이 전략]\n연립이차부등식 $\\begin{cases} x^2 + ax - 2 < 0 & \\cdots \\text{①} \\\\ x^2 - 6x + b \\le 0 & \\cdots \\text{②} \\end{cases}$의 해가 $1 \\le x < 2$로 주어졌습니다.\n1) 등호의 유무에 주목합니다:\n- $x < 2$의 열린 경계 $x = 2$는 등호가 없는 부등식 ①의 경계방정식 $x^2 + ax - 2 = 0$의 근입니다.\n- $1 \\le x$의 닫힌 경계 $x = 1$은 등호가 있는 부등식 ②의 경계방정식 $x^2 - 6x + b = 0$의 근입니다.\n2) 각 근을 대입하여 $a, b$를 구한 후, 실제 연립부등식의 해가 $1 \\le x < 2$와 일치하는지 역으로 검산합니다.\n\n[단계별 풀이]\n1단계: 상수 $a$ 구하기\n첫 번째 부등식 $x^2 + ax - 2 < 0$의 해는 경계점을 포함하지 않으므로, $x < 2$의 경계인 $x = 2$는 이차방정식 $x^2 + ax - 2 = 0$의 한 근이어야 합니다.\n$x = 2$를 대입하면:\n$2^2 + 2a - 2 = 0$\n$4 + 2a - 2 = 0 \\implies 2a + 2 = 0 \\implies a = -1$\n\n$a = -1$일 때 부등식 ① 풀기:\n$x^2 - x - 2 < 0 \\implies (x - 2)(x + 1) < 0 \\implies -1 < x < 2$\n\n2단계: 상수 $b$ 구하기\n두 번째 부등식 $x^2 - 6x + b \\le 0$의 해는 경계점을 포함하므로, $1 \\le x$의 경계인 $x = 1$은 이차방정식 $x^2 - 6x + b = 0$의 한 근이어야 합니다.\n$x = 1$을 대입하면:\n$1^2 - 6(1) + b = 0$\n$1 - 6 + b = 0 \\implies b - 5 = 0 \\implies b = 5$\n\n$b = 5$일 때 부등식 ② 풀기:\n$x^2 - 6x + 5 \\le 0 \\implies (x - 1)(x - 5) \\le 0 \\implies 1 \\le x \\le 5$\n\n3단계: 연립부등식의 공통 범위 검산\n- ①의 해: $-1 < x < 2$\n- ②의 해: $1 \\le x \\le 5$\n두 부등식의 공통 범위를 구하면 $1 \\le x < 2$가 되어 문제의 조건과 완벽하게 일치합니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 두 상수의 값은 $a = -1, b = 5$이다."
   },
   {
     "id": 40,
@@ -1102,9 +1102,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1112,14 +1112,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라고 할 때,\n$$1+\\omega+\\omega^2+\\cdots+\\omega^{50}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "[풀이 전략]\n1) $x^3 = 1$을 인수분해하면 $x^3 - 1 = (x - 1)(x^2 + x + 1) = 0$입니다.\n2) $\\omega$는 허근이므로 $\\omega \\ne 1$이고, 따라서 이차방정식 $x^2 + x + 1 = 0$의 근입니다.\n   - $\\omega^3 = 1$\n   - $\\omega^2 + \\omega + 1 = 0$\n3) 연속된 세 거듭제곱의 합 $\\omega^k + \\omega^{k+1} + \\omega^{k+2} = \\omega^k(1 + \\omega + \\omega^2) = 0$의 주기성을 이용하여 식을 $3$개씩 묶어 계산합니다.\n\n[단계별 풀이]\n1단계: $\\omega$의 성질 도출\n$x^3 - 1 = (x - 1)(x^2 + x + 1) = 0$에서\n$\\omega$는 허수이므로 $x - 1 \\ne 0$이고, 따라서 $x^2 + x + 1 = 0$의 근입니다.\n- $\\omega^3 = 1$\n- $\\omega^2 + \\omega + 1 = 0$\n\n2단계: 항의 총 개수 파악\n주어진 식은 $1 + \\omega + \\omega^2 + \\dots + \\omega^{50}$입니다.\n$1 = \\omega^0$으로 생각하면, 지수는 $0$부터 $50$까지이므로 항의 총 개수는:\n$50 - 0 + 1 = 51\\text{ (개)}$\n\n3단계: $3$개씩 묶기\n$51 = 3 \\times 17$이므로 정확하게 $3$개씩 $17$개의 묶음으로 나누어 떨어집니다:\n$1 + \\omega + \\omega^2 + \\dots + \\omega^{50}$\n$= (1 + \\omega + \\omega^2) + (\\omega^3 + \\omega^4 + \\omega^5) + \\dots + (\\omega^{48} + \\omega^{49} + \\omega^{50})$\n$= (1 + \\omega + \\omega^2) + \\omega^3(1 + \\omega + \\omega^2) + \\dots + \\omega^{48}(1 + \\omega + \\omega^2)$\n$= 0 + 0 + \\dots + 0 = 0$\n\n[다른 풀이 - 등비수열의 합 공식 활용]\n첫째항이 $1$, 공비가 $\\omega$ ($\\omega \\ne 1$), 항수가 $51$개인 등비수열의 합 공식:\n$S = \\frac{1 - \\omega^{51}}{1 - \\omega} = \\frac{1 - (\\omega^3)^{17}}{1 - \\omega} = \\frac{1 - 1^{17}}{1 - \\omega} = \\frac{0}{1 - \\omega} = 0$\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 식의 값은 $0$이다."
   },
   {
     "id": 41,
@@ -1130,9 +1130,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1140,14 +1140,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "연립부등식 $\\begin{cases} 2x+5>1 \\\\ 3x+4<n+3 \\end{cases}$을 만족시키는 모든 정수 $x$의 값의 합이 $5$가 되도록 하는 자연수 $n$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$13$",
+    "solution": "[풀이 전략]\n1) 연립부등식의 두 부등식을 각각 풀어 $x$의 범위를 $n$에 대한 식으로 나타냅니다.\n2) 연립부등식을 만족하는 정수 $x$의 합이 $5$가 되도록 하는 정수해의 구성을 파악합니다.\n3) 수직선 위에서 오른쪽 경계값 $\\frac{n - 1}{3}$의 위치 범위를 부등식으로 세우고, 자연수 $n$의 최댓값을 구합니다.\n\n[단계별 풀이]\n1단계: 두 부등식 각각 풀기\n- 첫 번째 부등식:\n  $2x + 5 > 1 \\implies 2x > -4 \\implies x > -2$\n- 두 번째 부등식:\n  $3x + 4 < n + 3 \\implies 3x < n - 1 \\implies x < \\frac{n - 1}{3}$\n\n연립부등식의 해는 다음과 같습니다:\n$-2 < x < \\frac{n - 1}{3}$\n\n2단계: 정수해의 합이 $5$가 되는 정수 조합 결정하기\n$x > -2$이므로 포함될 수 있는 정수는 $-1$부터 시작합니다.\n작은 정수부터 차례로 누적합을 구해보면:\n- $x = -1$만 포함: 합은 $-1$\n- $x = -1, 0$ 포함: 합은 $-1 + 0 = -1$\n- $x = -1, 0, 1$ 포함: 합은 $-1 + 0 + 1 = 0$\n- $x = -1, 0, 1, 2$ 포함: 합은 $-1 + 0 + 1 + 2 = 2$\n- $x = -1, 0, 1, 2, 3$ 포함: 합은 $-1 + 0 + 1 + 2 + 3 = 5$\n- $x = -1, 0, 1, 2, 3, 4$ 포함: 합은 $5 + 4 = 9$\n\n따라서 정수들의 합이 정확히 $5$가 되려면 정수해는 $\\{-1, 0, 1, 2, 3\\}$이어야 합니다.\n\n3단계: 오른쪽 경계값 $\\frac{n - 1}{3}$의 범위 결정하기\n해 구간이 $-2 < x < \\frac{n - 1}{3}$이므로:\n- $3$은 해에 포함되어야 하므로 $3 < \\frac{n - 1}{3}$이어야 합니다 ($\\,\\frac{n - 1}{3} = 3$이면 $x < 3$이 되어 $3$이 포함되지 않음).\n- 다음 정수 $4$는 해에 포함되지 않아야 하므로 $\\frac{n - 1}{3} \\le 4$이어야 합니다 ($\\,\\frac{n - 1}{3} = 4$이면 $x < 4$이므로 $4$가 포함되지 않아 성립함).\n따라서:\n$3 < \\frac{n - 1}{3} \\le 4$\n\n4단계: 부등식 풀기 및 자연수 $n$의 최댓값 구하기\n각 변에 $3$을 곱하면:\n$9 < n - 1 \\le 12$\n각 변에 $1$을 더하면:\n$10 < n \\le 13$\n\n$n$은 자연수이므로 가능한 $n$은 $11, 12, 13$이며, 최댓값은 $13$입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 자연수 $n$의 최댓값은 $13$이다."
   },
   {
     "id": 42,
@@ -1158,9 +1158,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1168,14 +1168,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "길이가 $16\\text{ m}$인 철사를 구부려 직사각형을 만들려고 한다. 다음 조건을 만족시키는 직사각형의 긴 변의 길이를 $a\\text{ m}$라고 할 때, $a$의 값의 범위를 구하시오. (단, 철사의 굵기는 생각하지 않는다.)\n<img src=\"q42.png\" />\n\n(가) 긴 변의 길이와 짧은 변의 길이의 차가 $2\\text{ m}$ 이상이다.\n(나) 넓이가 $7\\text{ m}^2$ 이상이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5\\le a\\le 7$",
+    "solution": "[풀이 전략]\n1) 둘레가 $16\\text{ m}$인 직사각형에서 긴 변의 길이를 $a\\text{ m}$라 하면, 가로와 세로의 합은 $8\\text{ m}$이므로 짧은 변의 길이는 $(8 - a)\\text{ m}$입니다.\n2) 변의 길이와 '긴 변'의 정의로부터 기본 조건:\n   $8 - a > 0 \\implies a < 8$, 그리고 $a \\ge 8 - a \\implies 2a \\ge 8 \\implies a \\ge 4$\n3) 조건 (가)와 (나)를 각각 $a$에 대한 부등식으로 세워 공통 범위를 구합니다.\n\n[단계별 풀이]\n1단계: 변의 길이 설정 및 기본 범위\n철사의 총 길이가 $16\\text{ m}$이므로 둘레의 길이는 $16\\text{ m}$입니다.\n- 긴 변의 길이: $a\\text{ m}$\n- 짧은 변의 길이: $(8 - a)\\text{ m}$\n\n변의 길이는 양수이고 긴 변은 짧은 변 이상이어야 하므로:\n$a \\ge 8 - a \\implies 2a \\ge 8 \\implies a \\ge 4$\n$8 - a > 0 \\implies a < 8$\n기본 범위: $4 \\le a < 8$ $\\cdots$ ①\n\n2단계: 조건 (가) 부등식 세우기 및 풀기\n(가) 긴 변의 길이와 짧은 변의 길이의 차가 $2\\text{ m}$ 이상이다:\n$a - (8 - a) \\ge 2$\n$2a - 8 \\ge 2 \\implies 2a \\ge 10 \\implies a \\ge 5$ $\\cdots$ ②\n\n3단계: 조건 (나) 부등식 세우기 및 풀기\n(나) 직사각형의 넓이가 $7\\text{ m}^2$ 이상이다:\n$a(8 - a) \\ge 7$\n$8a - a^2 \\ge 7$\n$a^2 - 8a + 7 \\le 0$\n좌변을 인수분해하면:\n$(a - 1)(a - 7) \\le 0 \\implies 1 \\le a \\le 7$ $\\cdots$ ③\n\n4단계: 세 부등식의 공통 범위 구하기\n① $4 \\le a < 8$, ② $a \\ge 5$, ③ $1 \\le a \\le 7$의 공통 범위를 수직선 위에서 구하면:\n$5 \\le a \\le 7$\n\n[검산]\n- $a = 5$일 때: 변의 길이는 $5, 3$. 차는 $2\\text{ m}$ (조건 가 만족), 넓이는 $15\\text{ m}^2 \\ge 7$ (조건 나 만족).\n- $a = 7$일 때: 변의 길이는 $7, 1$. 차는 $6\\text{ m} \\ge 2$ (조건 가 만족), 넓이는 $7\\text{ m}^2 \\ge 7$ (조건 나 만족).\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 $a$의 값의 범위는 $5 \\le a \\le 7$이다."
   },
   {
     "id": 43,
@@ -1186,9 +1186,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1196,14 +1196,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "어느 회사에서는 환경을 위해 사원들에게 대중교통으로 출퇴근할 것을 권장하고 있다. 이 회사에서 5월 한 달 동안 매일 대중교통으로 출퇴근한 사원이 $n$명일 때, 1명당 교통비 지원금을 $1000(n+10)$원 지급하기로 하였다. 이 회사에서 5월에 지급한 교통비 지원금이 $200\\text{만 원}$ 이상일 때, $n$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$40$",
+    "solution": "[풀이 전략]\n1) 실생활 문장제 부등식 문제입니다:\n   - 출퇴근 사원의 수: $n$명 ($n$은 자연수)\n   - 1인당 지원금: $1000(n + 10)$원\n   - 총 지원금: $n \\times 1000(n + 10)$원\n2) $200\\text{만 원} = 2,000,000\\text{원}$이므로 총 지원금 $\\ge 2,000,000$ 부등식을 세웁니다.\n3) 이차부등식을 풀고 $n$이 자연수라는 조건($n > 0$)을 적용하여 $n$의 최솟값을 구합니다.\n\n[단계별 풀이]\n1단계: 총 지원금 식 세우기\n5월 한 달 동안 지급한 총 교통비 지원금은:\n$n \\times 1000(n + 10) = 1000n(n + 10)\\text{ (원)}$\n\n2단계: 부등식 세우기\n총 지원금이 $200\\text{만 원}(=2,000,000\\text{원})$ 이상이어야 하므로:\n$1000n(n + 10) \\ge 2000000$\n\n3단계: 이차부등식 풀기\n양변을 $1000$으로 나누면:\n$n(n + 10) \\ge 2000$\n$n^2 + 10n - 2000 \\ge 0$\n\n좌변을 인수분해하기 위해 곱해서 $-2000$, 더해서 $10$이 되는 두 수를 찾으면 $50$과 $-40$입니다:\n$(n + 50)(n - 40) \\ge 0$\n\n4단계: 자연수 조건 적용하여 $n$의 범위 구하기\n사원의 수 $n$은 자연수이므로 $n \\ge 1 > 0$입니다.\n따라서 $n + 50 > 0$이 항상 성립하므로 양변을 $n + 50$으로 나누어도 부등호 방향이 바뀌지 않습니다:\n$n - 40 \\ge 0 \\implies n \\ge 40$\n\n5단계: 최솟값 및 실제 검산\n$n$의 최솟값은 $40$입니다.\n검산:\n- $n = 40$일 때: $40 \\times 1000(50) = 40 \\times 50000 = 2,000,000\\text{원}$ ($200\\text{만 원}$ 이상 충족)\n- $n = 39$일 때: $39 \\times 1000(49) = 39 \\times 49000 = 1,911,000\\text{원} < 2,000,000\\text{원}$ (미달)\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 $n$의 최솟값은 $40$이다."
   },
   {
     "id": 44,
@@ -1214,9 +1214,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1224,14 +1224,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "삼차방정식 $x^3+(2a-1)x^2+2ax-4a=0$의 서로 다른 실근의 개수가 $2$가 되도록 하는 실수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{6}, 0, 4$",
+    "solution": "[풀이 전략]\n1) 실계수 삼차방정식 $P(x) = 0$이 '서로 다른 실근의 개수가 $2$'라는 조건은\n삼차방정식이 실근 하나와 중근(실근) 하나를 가질 때(즉 $(x - \u0007lpha)^2(x - \beta) = 0$, $\u0007lpha \ne \beta$) 성립합니다.\n(실계수 방정식에서 허근은 켤레쌍으로 존재하므로, 실근이 $2$개인 경우는 오직 중근 $1$개와 다른 실근 $1$개인 경우뿐입니다.)\n2) 먼저 인수정리로 삼차식을 일차식과 이차식의 곱 $(x - 1)(x^2 + 2ax + 4a) = 0$으로 분해합니다.\n3) 다음 두 가지 경우를 나누어 조사합니다:\n- [경우 1] 이차방정식 $x^2 + 2ax + 4a = 0$ 자체가 $1$이 아닌 중근을 갖는 경우 ($D = 0$)\n- [경우 2] 이차방정식 $x^2 + 2ax + 4a = 0$이 $x = 1$을 한 근으로 갖고, 다른 한 근은 $1$이 아닌 경우\n\n[단계별 풀이]\n1단계: 인수정리와 조립제법으로 인수분해하기\n$P(x) = x^3 + (2a - 1)x^2 + 2ax - 4a$\n$x = 1$을 대입하면:\n$P(1) = 1 + (2a - 1) + 2a - 4a = 0$\n따라서 $P(x)$는 $x - 1$을 인수로 갖습니다.\n조립제법으로 몫을 구하면:\n$(x - 1)(x^2 + 2ax + 4a) = 0$\n\n2단계: [경우 1] 이차방정식 $x^2 + 2ax + 4a = 0$이 $1$이 아닌 중근을 가질 때\n이차방정식이 중근을 가져야 하므로 판별식 $\\frac{D}{4} = 0$입니다:\n$\\frac{D}{4} = a^2 - 4a = 0 \\implies a(a - 4) = 0 \\implies a = 0$ 또는 $a = 4$\n\n- $a = 0$일 때:\n  방정식은 $(x - 1)x^2 = 0$이 되어 실근은 $x = 0$ (중근)과 $x = 1$로 서로 다른 실근의 개수는 $2$입니다. (적합)\n- $a = 4$일 때:\n  방정식은 $(x - 1)(x^2 + 8x + 16) = (x - 1)(x + 4)^2 = 0$이 되어 실근은 $x = -4$ (중근)과 $x = 1$로 서로 다른 실근의 개수는 $2$입니다. (적합)\n\n3단계: [경우 2] 이차방정식 $x^2 + 2ax + 4a = 0$이 $x = 1$을 근으로 가질 때\n이때는 $x = 1$이 전체 삼차방정식의 중근이 됩니다.\n$x = 1$을 대입하면:\n$1^2 + 2a(1) + 4a = 0 \\implies 6a + 1 = 0 \\implies a = -\\frac{1}{6}$\n\n$a = -\\frac{1}{6}$일 때 이차방정식을 확인하면:\n$x^2 - \\frac{1}{3}x - \\frac{2}{3} = 0 \\implies 3x^2 - x - 2 = 0 \\implies (x - 1)(3x + 2) = 0$\n따라서 원래 삼차방정식은 $(x - 1)^2(3x + 2) = 0$이 되어\n실근은 $x = 1$ (중근)과 $x = -\\frac{2}{3}$로 서로 다른 실근의 개수는 $2$입니다. (적합)\n\n4단계: 결론 도출\n조건을 만족하는 모든 실수 $a$의 값은 $-\\frac{1}{6}, 0, 4$입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 구하는 모든 실수 $a$의 값은 $-\\frac{1}{6}, 0, 4$이다."
   },
   {
     "id": 45,
@@ -1242,9 +1242,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
-    "standardUnit": "방정식과 부등식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1252,13 +1252,13 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "대단원 평가"
+      "대단원 평가",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "부등식 $2|x+1|-|x-2|\\le a$의 해가 $-12\\le x\\le b$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=8, b=4$",
+    "solution": "[풀이 전략]\n1) 절댓값 기호가 $2$개 포함된 부등식 $2|x + 1| - |x - 2| \\le a$의 좌변을 함수 $f(x) = 2|x + 1| - |x - 2|$로 정의합니다.\n2) 절댓값 안의 부호가 바뀌는 경계 $x = -1, x = 2$를 기준으로 세 구간으로 나누어 $f(x)$를 구간별 일차함수로 나타냅니다.\n3) $f(x)$의 그래프 개형을 파악하고, 부등식 $f(x) \\le a$의 해가 $-12 \\le x \\le b$임을 이용하여 경계점에서의 함숫값 조건으로 상수 $a, b$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: 함수 $f(x) = 2|x + 1| - |x - 2|$의 구간별 식 유도\n- [구간 1] $x < -1$일 때:\n  $x + 1 < 0$, $x - 2 < 0$이므로\n  $f(x) = 2(-x - 1) - \\{-(x - 2)\\} = -2x - 2 + x - 2 = -x - 4$\n  (기울기가 $-1$인 감소함수)\n\n- [구간 2] $-1 \\le x < 2$일 때:\n  $x + 1 \\ge 0$, $x - 2 < 0$이므로\n  $f(x) = 2(x + 1) - \\{-(x - 2)\\} = 2x + 2 + x - 2 = 3x$\n  (기울기가 $3$인 증가함수)\n\n- [구간 3] $x \\ge 2$일 때:\n  $x + 1 > 0$, $x - 2 \\ge 0$이므로\n  $f(x) = 2(x + 1) - (x - 2) = 2x + 2 - x + 2 = x + 4$\n  (기울기가 $1$인 증가함수)\n\n2단계: 주요 점의 함숫값 및 그래프 개형 확인\n- $x = -1$일 때: $f(-1) = 3(-1) = -3$ (최솟값)\n- $x = 2$일 때: $f(2) = 3(2) = 6$\n$f(x)$는 $(-\\infty, -1]$에서 감소하여 $(-1, -3)$에 도달한 후, $[-1, 2]$에서 $(2, 6)$까지 증가하고, $[2, \\infty)$에서 계속 증가하는 V자형 형태입니다.\n따라서 $a \\ge -3$일 때 부등식 $f(x) \\le a$의 해는 하나의 닫힌 구간 $[x_1, x_2]$로 나타납니다.\n\n3단계: 왼쪽 경계 $x = -12$로부터 상수 $a$ 구하기\n문제에서 부등식의 해가 $-12 \\le x \\le b$입니다.\n왼쪽 경계 $-12$는 $x < -1$에 속하므로, 이 구간의 함수식 $f(x) = -x - 4$에 대입하면 $f(-12) = a$이어야 합니다:\n$-(-12) - 4 = a \\implies 12 - 4 = a \\implies a = 8$\n\n4단계: 오른쪽 경계 $x = b$ 구하기\n$a = 8$이므로 부등식은 $f(x) \\le 8$입니다.\n구간 2의 최댓값 $f(2) = 6 < 8$이므로, $f(x) = 8$이 되는 오른쪽 경계 $b$는 $x \\ge 2$ 구간에서 발생합니다:\n$x \\ge 2$에서 $f(x) = x + 4$이므로:\n$f(b) = b + 4 = 8 \\implies b = 4$\n(확인: $b = 4 \\ge 2$이므로 구간 조건에 완벽히 부합합니다.)\n\n5단계: 결론 도출 및 검증\n$-12 \\le x < -1$에서: $-x - 4 \\le 8 \\implies -x \\le 12 \\implies x \\ge -12$\n$-1 \\le x < 2$에서: $f(x) = 3x \\le 6 < 8$ (구간 전체가 성립)\n$2 \\le x \\le 4$에서: $x + 4 \\le 8 \\implies x \\le 4$\n세 구간의 합집합은 $-12 \\le x \\le 4$가 되어 정확히 $a = 8, b = 4$입니다.\n\n[오답 및 경계 점검]\n계산 과정에서 미지수 조건, 판별식 부호 및 근의 영역 경계값을 정확히 검증하고 오답을 방지한다.\n\n[결론]\n따라서 두 상수의 값은 $a = 8, b = 4$이다."
   }
 ];

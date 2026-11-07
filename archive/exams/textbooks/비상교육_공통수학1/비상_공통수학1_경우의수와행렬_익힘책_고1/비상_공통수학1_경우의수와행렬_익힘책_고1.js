@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -20,8 +20,8 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 차가 $2$ 또는 $4$가 되는 경우의 수는?",
@@ -32,8 +32,8 @@ window.questionBank = [
       "$14$",
       "$16$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n서로 다른 두 개의 주사위를 던져 나오는 눈의 수를 $(a, b)$라고 할 때 ($1 \\le a, b \\le 6$), 눈의 수의 차 $|a-b|$가 $2$인 경우와 $4$인 경우를 각각 분류하여 구한 후 합의 법칙을 적용한다.\n\n[단계별 풀이]\n1단계: 눈의 수의 차가 $2$인 경우\n$|a-b| = 2$를 만족시키는 순서쌍 $(a, b)$는:\n- $a < b$: $(1, 3), (2, 4), (3, 5), (4, 6)$의 $4$가지\n- $a > b$: $(3, 1), (4, 2), (5, 3), (6, 4)$의 $4$가지\n따라서 총 $4 + 4 = 8$가지이다.\n\n2단계: 눈의 수의 차가 $4$인 경우\n$|a-b| = 4$를 만족시키는 순서쌍 $(a, b)$는:\n- $a < b$: $(1, 5), (2, 6)$의 $2$가지\n- $a > b$: $(5, 1), (6, 2)$의 $2$가지\n따라서 총 $2 + 2 = 4$가지이다.\n\n3단계: 전체 경우의 수 합산하기\n두 사건은 동시에 일어날 수 없으므로 합의 법칙에 따라:\n$$8 + 4 = 12$$\n선지 ③은 $12$이다.\n따라서 정답은 ③이다.\n\n[오답 및 경계 점검]\n- 서로 다른 두 주사위이므로 $(1, 3)$과 $(3, 1)$은 서로 다른 경우로 각각 계산해야 한다.\n\n[결론]\n③"
   },
   {
     "id": 2,
@@ -44,9 +44,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,14 +54,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "어느 영화관에서는 팝콘 $3$종류, 음료수 $4$종류, 핫도그 $3$종류를 판매하고 있다. 팝콘, 음료수, 핫도그를 각각 $1$종류씩 고르는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "36",
+    "solution": "[풀이 전략]\n팝콘, 음료수, 핫도그를 각각 $1$종류씩 고르는 사건은 연이어 일어나는 독립적인 선택이므로 곱의 법칙을 적용한다.\n\n[단계별 풀이]\n1단계: 각 항목별 선택의 경우의 수 파악하기\n- 팝콘: $3$종류 중 하나 $\\implies 3$가지\n- 음료수: $4$종류 중 하나 $\\implies 4$가지\n- 핫도그: $3$종류 중 하나 $\\implies 3$가지\n\n2단계: 전체 방법의 수 계산하기\n곱의 법칙에 따라:\n$$3 \\times 4 \\times 3 = 36$$\n\n[오답 및 경계 점검]\n- 각각 하나씩 고르는 것이므로 합의 법칙($3+4+3$)이 아닌 곱의 법칙을 적용해야 한다.\n\n[결론]\n36"
   },
   {
     "id": 3,
@@ -72,9 +72,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,14 +82,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "다음 그림과 같은 도로망이 있다. 지점 A에서 지점 C까지 가는 방법의 수를 구하시오. (단, 같은 지점은 두 번 이상 지나지 않는다.)\n<img src=\"q03.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "23",
+    "solution": "[풀이 전략]\n도로망 그림에서 지점 A(상단), B(좌측), C(하단), D(우측) 사이의 도로 연결 상태를 분석하여 같은 지점을 두 번 이상 지나지 않고 A에서 C까지 가는 모든 경로를 분류하여 계산한다.\n- A와 B 사이: $2$개 도로\n- A와 D 사이: $3$개 도로\n- B와 C 사이: $2$개 도로\n- D와 C 사이: $1$개 도로\n- B와 D 사이: $2$개 도로\n\n[단계별 풀이]\n1단계: 가능한 경로 유형 분류하기\nA에서 C로 가는 경로는 다음과 같이 $4$가지 경로로 분류된다:\n1) $A \\to B \\to C$\n2) $A \\to D \\to C$\n3) $A \\to B \\to D \\to C$\n4) $A \\to D \\to B \\to C$\n\n2단계: 각 경로별 경우의 수 구하기\n- 경로 1 ($A \\to B \\to C$):\n  $$2 \\times 2 = 4$$\n- 경로 2 ($A \\to D \\to C$):\n  $$3 \\times 1 = 3$$\n- 경로 3 ($A \\to B \\to D \\to C$):\n  $$2 \\times 2 \\times 1 = 4$$\n- 경로 4 ($A \\to D \\to B \\to C$):\n  $$3 \\times 2 \\times 2 = 12$$\n\n3단계: 전체 방법의 수 합산하기\n모든 경로는 상호 배타적이므로 합의 법칙에 따라:\n$$4 + 3 + 4 + 12 = 23$$\n\n[오답 및 경계 점검]\n- 같은 지점을 두 번 이상 지날 수 없으므로 $A \\to B \\to D \\to B \\to C$와 같은 경로는 불가능하다.\n\n[결론]\n23"
   },
   {
     "id": 4,
@@ -100,9 +100,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,14 +110,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "모둠 A의 학생 $6$명과 모둠 B의 학생 $5$명으로 이루어진 학생 단체 $11$명 중에서 $3$명의 학생을 뽑을 때, $3$명이 모두 같은 모둠 학생인 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "30",
+    "solution": "[풀이 전략]\n$3$명이 모두 같은 모둠 학생인 경우는 '모둠 A에서만 $3$명을 뽑는 경우'와 '모둠 B에서만 $3$명을 뽑는 경우'의 두 가지뿐이다.\n각 경우를 조합으로 계산한 후 합한다.\n\n[단계별 풀이]\n1단계: 모둠 A에서만 $3$명 뽑기\n모둠 A 학생 $6$명 중에서 $3$명을 뽑는 경우의 수:\n$$_6\\mathrm{C}_3 = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$\n\n2단계: 모둠 B에서만 $3$명 뽑기\n모둠 B 학생 $5$명 중에서 $3$명을 뽑는 경우의 수:\n$$_5\\mathrm{C}_3 = _5\\mathrm{C}_2 = \\dfrac{5 \\times 4}{2 \\times 1} = 10$$\n\n3단계: 전체 경우의 수 합산하기\n두 경우는 동시에 일어날 수 없으므로 합의 법칙에 따라:\n$$20 + 10 = 30$$\n\n[오답 및 경계 점검]\n- 대표를 뽑는 것이므로 순서가 없어 순열이 아닌 조합을 적용한다.\n\n[결론]\n30"
   },
   {
     "id": 5,
@@ -128,9 +128,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,14 +138,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "서로 다른 역사 소설 $n$권, 서로 다른 여행 서적 $3$권을 책꽂이에 일렬로 꽂을 때, 여행 서적끼리 이웃하게 꽂는 방법의 수는 $720$이다. 이때 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4",
+    "solution": "[풀이 전략]\n여행 서적 $3$권을 한 묶음으로 취급하여 총 $(n+1)$개의 대상을 일렬로 나열하는 순열과 묶음 내부에서 여행 서적 $3$권이 자리를 바꾸는 순열의 곱으로 식을 세워 $n$을 구한다.\n\n[단계별 풀이]\n1단계: 여행 서적을 한 묶음으로 묶어 나열하기\n역사 소설 $n$권과 여행 서적 $1$묶음을 합치면 총 $(n+1)$개의 대상이 된다.\n이들을 일렬로 나열하는 방법의 수는:\n$$(n+1)!$$\n\n2단계: 여행 서적 내부의 자리바꿈 계산하기\n여행 서적 $3$권끼리 자리를 바꾸는 방법의 수는:\n$$3! = 6$$\n\n3단계: 방정식 세우고 풀기\n여행 서적끼리 이웃하게 꽂는 전체 방법의 수가 $720$이므로:\n$$(n+1)! \\times 6 = 720$$\n$$(n+1)! = 120$$\n$5! = 120$이므로:\n$$n + 1 = 5 \\implies n = 4$$\n\n[오답 및 경계 점검]\n- $n=4$일 때 총 책 수는 $4+3=7$권이며, $5! \\times 6 = 120 \\times 6 = 720$으로 조건과 완벽히 일치한다.\n\n[결론]\n4"
   },
   {
     "id": 6,
@@ -156,9 +156,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "$6$개의 문자 C, H, A, N, G, E를 일렬로 나열할 때, 모음끼리는 이웃하지 않게 나열하는 방법의 수는?",
@@ -178,8 +178,8 @@ window.questionBank = [
       "$540$",
       "$560$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "①",
+    "solution": "[풀이 전략]\n단어 CHANGE의 문자 $6$개 중 자음 C, H, N, G $4$개와 모음 A, E $2$개가 있다.\n'모음끼리는 이웃하지 않는다'는 조건은 자음들을 먼저 나열한 후 그 사이와 양 끝 자리에 모음을 배열하는 이웃하지 않는 순열법을 적용한다.\n\n[단계별 풀이]\n1단계: 자음 $4$개 일렬로 나열하기\n자음 C, H, N, G $4$개를 나열하는 경우의 수:\n$$4! = 24$$\n\n2단계: 모음이 들어갈 수 있는 자리 파악하기\n자음 $4$개의 앞뒤와 사이사이에 총 $4+1 = 5$개의 자리가 있다:\n$$\\vee \\; \\text{자음} \\; \\vee \\; \\text{자음} \\; \\vee \\; \\text{자음} \\; \\vee \\; \\text{자음} \\; \\vee$$\n\n3단계: $5$곳 중 $2$곳에 모음 A, E 배치하기\n서로 다른 $5$곳 중 $2$곳을 택하여 모음 $2$개를 나열하는 순열의 수이므로:\n$$_5\\mathrm{P}_2 = 5 \\times 4 = 20$$\n\n4단계: 전체 방법의 수 계산하기\n곱의 법칙에 따라:\n$$24 \\times 20 = 480$$\n선지 ①은 $480$이다.\n따라서 정답은 ①이다.\n\n[오답 및 경계 점검]\n- 여사건 검산: 전체 $6! = 720$, 모음 2개가 이웃하는 경우 $5! \\times 2! = 240$. $720 - 240 = 480$. 완벽히 일치한다.\n\n[결론]\n①"
   },
   {
     "id": 7,
@@ -190,9 +190,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -200,14 +200,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "$1$부터 $9$까지의 자연수 중에서 서로 다른 세 수를 동시에 선택할 때, 선택된 세 수의 곱이 짝수가 되는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "74",
+    "solution": "[풀이 전략]\n세 수의 곱이 짝수가 되기 위한 조건은 '적어도 하나 이상의 짝수를 포함하는 것'이다.\n전체 $3$수를 뽑는 조합의 수에서 '세 수가 모두 홀수인 경우'의 여사건을 빼서 계산한다.\n\n[단계별 풀이]\n1단계: 전체 경우의 수 구하기\n$1$부터 $9$까지의 서로 다른 $9$개의 수 중에서 $3$개를 동시에 선택하는 경우의 수는:\n$$_9\\mathrm{C}_3 = \\dfrac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84$$\n\n2단계: 세 수의 곱이 홀수인 여사건의 경우의 수 구하기\n세 수의 곱이 홀수이려면 선택된 세 수가 모두 홀수이어야 한다.\n$1$부터 $9$까지의 홀수는 $\\{1, 3, 5, 7, 9\\}$의 $5$개이다.\n이 $5$개 중에서 $3$개를 선택하는 경우의 수는:\n$$_5\\mathrm{C}_3 = _5\\mathrm{C}_2 = \\dfrac{5 \\times 4}{2 \\times 1} = 10$$\n\n3단계: 조건을 만족시키는 경우의 수 구하기\n전체 경우의 수에서 여사건을 빼면:\n$$84 - 10 = 74$$\n\n[오답 및 경계 점검]\n- 직접 분류: (짝1, 홀2): $_4\\mathrm{C}_1 \\times _5\\mathrm{C}_2 = 4 \\times 10 = 40$, (짝2, 홀1): $_4\\mathrm{C}_2 \\times _5\\mathrm{C}_1 = 6 \\times 5 = 30$, (짝3): $_4\\mathrm{C}_3 = 4$.\n  $40 + 30 + 4 = 74$. 결과가 일치한다.\n\n[결론]\n74"
   },
   {
     "id": 8,
@@ -218,9 +218,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -228,14 +228,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "등식 $_{n+2}\\mathrm{C}_3 - 2 \\times {}_n\\mathrm{C}_2 = {}_{n+1}\\mathrm{C}_{n-1}$을 만족시키는 자연수 $n$의 값을 구하시오. (단, $n>2$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "5",
+    "solution": "[풀이 전략]\n조합의 대칭성 $_{n+1}\\mathrm{C}_{n-1} = {}_{n+1}\\mathrm{C}_2$를 이용하여 식을 정리하고, 조합의 팩토리얼 정의를 적용하여 $n$에 대한 이차방정식을 세워 푼다.\n\n[단계별 풀이]\n1단계: 우변 간단히 정리하기\n$$_{n+1}\\mathrm{C}_{n-1} = {}_{n+1}\\mathrm{C}_{(n+1)-(n-1)} = {}_{n+1}\\mathrm{C}_2$$\n따라서 주어진 등식은:\n$$_{n+2}\\mathrm{C}_3 - 2 \\times {}_n\\mathrm{C}_2 = {}_{n+1}\\mathrm{C}_2$$\n\n2단계: 조합 공식 전개하기\n$$\\dfrac{(n+2)(n+1)n}{6} - 2 \\times \\dfrac{n(n-1)}{2} = \\dfrac{(n+1)n}{2}$$\n양변에 $6$을 곱하면:\n$$(n+2)(n+1)n - 6n(n-1) = 3(n+1)n$$\n\n3단계: $n > 2$이므로 양변을 $n$으로 나누어 정리하기\n$$(n+2)(n+1) - 6(n-1) = 3(n+1)$$\n$$n^2 + 3n + 2 - 6n + 6 = 3n + 3$$\n$$n^2 - 3n + 8 = 3n + 3$$\n이항하여 정리하면:\n$$n^2 - 6n + 5 = 0$$\n\n4단계: 방정식 풀기\n$$(n-1)(n-5) = 0$$\n$$n = 1 \\quad \\text{또는} \\quad n = 5$$\n조건에서 $n > 2$이므로:\n$$n = 5$$\n\n[오답 및 경계 점검]\n- 검산 ($n=5$ 대입):\n  좌변: $_7\\mathrm{C}_3 - 2 \\times {}_5\\mathrm{C}_2 = 35 - 2(10) = 35 - 20 = 15$\n  우변: $_6\\mathrm{C}_4 = {}_6\\mathrm{C}_2 = 15$\n  좌우변이 정확히 일치함을 확인한다.\n\n[결론]\n5"
   },
   {
     "id": 9,
@@ -246,9 +246,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -256,14 +256,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다섯 개의 문자 $a$, $b$, $c$, $d$, $e$를 한 번씩 모두 사용하여 만든 문자열을 사전식으로 배열할 때, $105$번째의 문자열을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ebcad",
+    "solution": "[풀이 전략]\n$a, b, c, d, e$의 $5$개 문자로 만든 문자열을 사전식으로 나열할 때, 첫 글자부터 차례대로 가능한 문자열의 개수를 누적 계산하여 $105$번째 문자열을 특정한다.\n\n[단계별 풀이]\n1단계: 첫 글자별 개수 누적하기\n- $a$로 시작하는 문자열: $4! = 24$개 (누적 24)\n- $b$로 시작하는 문자열: $4! = 24$개 (누적 48)\n- $c$로 시작하는 문자열: $4! = 24$개 (누적 72)\n- $d$로 시작하는 문자열: $4! = 24$개 (누적 96)\n따라서 $105$번째 문자열은 $e$로 시작한다.\n\n2단계: $e$로 시작하는 문자열의 두 번째 글자 조사하기\n- $ea$로 시작하는 문자열: $3! = 6$개 (누적 $96 + 6 = 102$)\n따라서 $105$번째 문자열은 $eb$로 시작한다.\n\n3단계: $eb$로 시작하는 문자열의 세 번째 글자 조사하기\n- $eba$로 시작하는 문자열: $2! = 2$개 (누적 $102 + 2 = 104$)\n따라서 $105$번째 문자열은 $ebc$로 시작하는 첫 번째 문자열이다.\n\n4단계: $105$번째 문자열 결정하기\n$e, b, c$를 제외한 남은 문자는 $a, d$이다.\n사전식으로 가장 빠른 배치는 $ad$이므로:\n$$ebcad$$\n\n[오답 및 경계 점검]\n- $103$번째: $ebacd$, $104$번째: $ebadc$, $105$번째: $ebcad$. 정확하다.\n\n[결론]\nebcad"
   },
   {
     "id": 10,
@@ -274,9 +274,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -284,14 +284,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "어느 식품 회사에서는 빵 $6$종류와 과자 $5$종류의 시험 제품을 만들었다. 이 시험 제품 중에서 적어도 빵 $1$종류와 과자 $1$종류를 포함하여 $3$종류를 출시하는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "135",
+    "solution": "[풀이 전략]\n전체 $11$종류 중 $3$종류를 출시하는 경우의 수에서 '적어도 빵 1종류와 과자 1종류를 포함' 조건의 여사건인 '빵만 3종류 출시'와 '과자만 3종류 출시'를 뺀다.\n\n[단계별 풀이]\n1단계: 전체 경우의 수 구하기\n빵 $6$종류와 과자 $5$종류 총 $11$종류 중 $3$종류를 고르는 경우의 수:\n$$_{11}\\mathrm{C}_3 = \\dfrac{11 \\times 10 \\times 9}{3 \\times 2 \\times 1} = 165$$\n\n2단계: 여사건의 경우의 수 구하기\n- 빵만 $3$종류를 출시하는 경우:\n  $$_6\\mathrm{C}_3 = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$\n- 과자만 $3$종류를 출시하는 경우:\n  $$_5\\mathrm{C}_3 = _5\\mathrm{C}_2 = 10$$\n여사건의 총합은:\n$$20 + 10 = 30$$\n\n3단계: 조건을 만족시키는 경우의 수 구하기\n전체 경우의 수에서 여사건을 빼면:\n$$165 - 30 = 135$$\n\n[오답 및 경계 점검]\n- 직접 분류: (빵 1, 과자 2): $_6\\mathrm{C}_1 \\times _5\\mathrm{C}_2 = 6 \\times 10 = 60$, (빵 2, 과자 1): $_6\\mathrm{C}_2 \\times _5\\mathrm{C}_1 = 15 \\times 5 = 75$.\n  $60 + 75 = 135$. 결과가 완벽히 일치한다.\n\n[결론]\n135"
   },
   {
     "id": 11,
@@ -302,9 +302,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -312,14 +312,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 $7$인승 자동차에 운전을 할 수 있는 A, B와 운전을 할 수 없는 C, D, E, F, G가 함께 타고 여행을 가려고 한다. 운전석에는 A 또는 B만 앉을 수 있고, C, D는 3열에 앉는다고 할 때, $7$명이 이 자동차에 앉는 방법의 수를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "288",
+    "solution": "[풀이 전략]\n조건이 지정된 좌석부터 순차적으로 사람을 배치한다.\n1) 운전석에 운전 가능한 A 또는 B를 배치한다.\n2) 3열 좌석에 C와 D를 배치한다.\n3) 남은 인원들을 남은 좌석에 배치한다.\n\n[단계별 풀이]\n1단계: 운전석 배치하기\n운전석에 앉을 수 있는 사람은 A, B 중 $1$명이므로:\n$$_2\\mathrm{C}_1 = 2$$\n\n2단계: 3열 좌석에 C, D 배치하기\n3열의 $3$개 좌석 중에서 $2$자리를 택하여 C와 D를 앉히는 순열의 수:\n$$_3\\mathrm{P}_2 = 3 \\times 2 = 6$$\n\n3단계: 나머지 $4$명 자리 배치하기\n남은 사람 $4$명을 남은 $4$개의 빈자리에 앉히는 방법의 수:\n$$4! = 24$$\n\n4단계: 전체 방법의 수 계산하기\n곱의 법칙에 따라:\n$$2 \\times 6 \\times 24 = 288$$\n\n[오답 및 경계 점검]\n- C와 D의 자리가 서로 바뀔 수 있으므로 조합($_3\\mathrm{C}_2$)이 아니라 순열($_3\\mathrm{P}_2$)을 곱해야 한다.\n\n[결론]\n288"
   },
   {
     "id": 12,
@@ -330,9 +330,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -340,14 +340,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "$10000$원짜리 지폐 $1$장, $5000$원짜리 지폐 $3$장, $1000$원짜리 지폐 $4$장의 일부 또는 전부를 사용하여 지불하려고 한다. 지불할 수 있는 금액의 수를 구하시오. (단, $0$원을 지불하는 것은 생각하지 않는다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "29",
+    "solution": "[풀이 전략]\n'지불할 수 있는 금액의 수'를 구할 때는 큰 단위 지폐의 합이 작은 단위 지폐로 표현될 수 있는지 중복 여부를 점검해야 한다.\n$5000$원짜리 지폐 $2$장으로 $10000$원을 만들 수 있으므로 $10000$원짜리 지폐 $1$장을 $5000$원짜리 $2$장으로 환전하여 계산한다.\n\n[단계별 풀이]\n1단계: 지폐 구성 환전하기\n- $10000$원짜리 $1$장을 $5000$원짜리 $2$장으로 바꾸면, $5000$원짜리 지폐는 총 $3 + 2 = 5$장이 된다.\n- $1000$원짜리 지폐는 $4$장이다 (1000원 4장으로는 5000원을 만들 수 없으므로 추가 환전 불필요).\n\n2단계: 각 화폐 단위별 지불 가능 경우의 수 구하기\n- $5000$원짜리 $5$장으로 지불할 수 있는 금액:\n  $0$원, $5000$원, $10000$원, $15000$원, $20000$원, $25000$원의 $5+1 = 6$가지\n- $1000$원짜리 $4$장으로 지불할 수 있는 금액:\n  $0$원, $1000$원, $2000$원, $3000$원, $4000$원의 $4+1 = 5$가지\n\n3단계: $0$원을 제외한 전체 지불 가능 금액의 수 계산하기\n$$6 \\times 5 - 1 = 30 - 1 = 29$$\n\n[오답 및 경계 점검]\n- 지불 방법의 수(모든 지폐 조합)와 지불 금액의 수(동일한 합산 금액 중복 배제)의 차이를 정확히 구분하여 환전 기법을 올바르게 적용한다.\n\n[결론]\n29"
   },
   {
     "id": 13,
@@ -358,9 +358,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -368,14 +368,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "어느 학교 학생회에서는 학생회에 속한 $1$학년 학생 $9$명을 $3$개의 조로 나누어 교내 축제 진행을 도우려고 한다. 이때 학생들을 $2$명, $3$명, $4$명으로 나누는 방법의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "1260",
+    "solution": "[풀이 전략]\n서로 다른 $9$명의 학생을 $2$명, $3$명, $4$명의 $3$개 조로 분할하는 방법의 수를 구한다.\n각 조의 인원수가 모두 서로 다르므로 분할 후 조의 구별을 없애는 나눗셈 팩토리얼 과정 없이 순차적인 조합의 곱으로 바로 계산된다.\n\n[단계별 풀이]\n1단계: $2$명 조 선택하기\n$9$명 중에서 $2$명을 뽑는 경우의 수:\n$$_9\\mathrm{C}_2 = \\dfrac{9 \\times 8}{2 \\times 1} = 36$$\n\n2단계: $3$명 조 선택하기\n남은 $7$명 중에서 $3$명을 뽑는 경우의 수:\n$$_7\\mathrm{C}_3 = \\dfrac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$$\n\n3단계: $4$명 조 선택하기\n남은 $4$명 중에서 $4$명을 뽑는 경우의 수:\n$$_4\\mathrm{C}_4 = 1$$\n\n4단계: 전체 방법의 수 계산하기\n곱의 법칙에 따라:\n$$36 \\times 35 \\times 1 = 1260$$\n\n[오답 및 경계 점검]\n- 조의 크기가 $2, 3, 4$로 모두 다르므로 같은 인원수가 있는 조의 분할처럼 중복되는 팩토리얼로 나눌 필요가 없다.\n\n[결론]\n1260"
   },
   {
     "id": 14,
@@ -386,9 +386,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -396,14 +396,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "익힘책"
+      "익힘책",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "아래 그림과 같이 크기가 동일한 정사각형 타일 $16$장을 사용하여 벽면을 꾸미려고 한다.\n<img src=\"q14.png\" />\n다음 세 조건을 모두 만족시키도록 벽면을 꾸미는 방법의 수를 구하시오.\n• 초록색 타일 $5$장, 흰색 타일 $11$장을 모두 사용한다.\n• 어느 가로줄에도 이웃한 칸에 초록색 타일을 붙이지 않는다.\n• 모든 세로줄에는 적어도 한 칸 이상 초록색 타일을 붙인다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "360",
+    "solution": "[풀이 전략]\n$4 \\times 4$ 크기의 타일 격자에 초록색 타일 $5$장과 흰색 타일 $11$장을 배치한다.\n- 조건 1: 모든 세로줄(4개)에 적어도 $1$장 이상의 초록색 타일이 붙어야 한다.\n  초록색 타일이 총 $5$장이므로 각 세로줄에 배치되는 초록색 타일의 장수는 반드시 $(2, 1, 1, 1)$개이어야 한다.\n- 조건 2: 어느 가로줄에도 이웃한 칸에 초록색 타일을 붙이지 않는다 (가로로 연속된 칸 불가).\n초록색 타일 $2$장이 들어가는 세로줄의 위치(외곽 열 vs 내부 열)에 따라 경우를 나누어 배치 가능한 방법의 수를 구한다.\n\n[단계별 풀이]\n1단계: $2$장이 들어가는 세로줄이 1번째 또는 4번째 세로줄인 경우 ($2$가지)\n- 대칭성에 의해 1번째 세로줄에 초록색 타일 $2$장을 배치하는 경우를 계산한 후 $2$배한다.\n- 1번째 세로줄의 $4$칸 중 $2$칸을 선택하는 경우의 수:\n  $$_4\\mathrm{C}_2 = 6$$\n- 이어서 인접 가로칸 금지 조건을 만족하며 2, 3, 4번째 세로줄에 각각 $1$장씩 배치하는 방법의 수:\n  조건을 만족하는 배치를 계산하면 $6 \\times 2 \\times 3 \\times 3 = 108$가지.\n- 1번째 또는 4번째 열에 배치되는 총 경우의 수는:\n  $$108 \\times 2 = 216$$\n\n2단계: $2$장이 들어가는 세로줄이 2번째 또는 3번째 세로줄인 경우 ($2$가지)\n- 2번째 세로줄에 초록색 타일 $2$장을 배치하는 경우를 계산한 후 $2$배한다.\n- 2번째 세로줄의 $4$칸 중 $2$칸을 선택하는 경우의 수:\n  $$_4\\mathrm{C}_2 = 6$$\n- 1, 3, 4번째 세로줄에 인접 가로칸 금지 조건을 만족하며 배치하는 방법의 수:\n  $6 \\times 2 \\times 2 \\times 3 = 72$가지.\n- 2번째 또는 3번째 열에 배치되는 총 경우의 수는:\n  $$72 \\times 2 = 144$$\n\n3단계: 전체 방법의 수 합산하기\n합의 법칙에 따라:\n$$216 + 144 = 360$$\n\n[오답 및 경계 점검]\n- 교과서 정답 해설의 단계별 수치($216 + 144 = 360$)와 정확하게 일치한다.\n\n[결론]\n360"
   },
   {
     "id": 15,
@@ -414,9 +414,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -424,14 +424,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "$2\\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\n$$a_{ij} = \\begin{cases} i^2 & (i > j) \\\\ -i+j & (i \\le j) \\end{cases}$$\n일 때, 행렬 $A$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 0 & 1 \\\\ 4 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n$2 \\times 2$ 행렬 $A$의 각 성분 $a_{ij}$가 $i > j$일 때와 $i \\le j$일 때의 조건부 수식에 따라 정의되어 있으므로 각 성분의 위치 조건을 확인하여 값을 구한다.\n\n[단계별 풀이]\n1단계: 각 성분 계산하기\n- $a_{11}$: $1 \\le 1$이므로 $a_{11} = -1 + 1 = 0$\n- $a_{12}$: $1 \\le 2$이므로 $a_{12} = -1 + 2 = 1$\n- $a_{21}$: $2 > 1$이므로 $a_{21} = 2^2 = 4$\n- $a_{22}$: $2 \\le 2$이므로 $a_{22} = -2 + 2 = 0$\n\n2단계: 행렬 $A$ 표현하기\n$$A = \\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix} = \\begin{pmatrix} 0 & 1 \\\\ 4 & 0 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- $i > j$ 조건은 2행 1열($a_{21}$)에만 적용됨에 유의한다.\n\n[결론]\n$\\begin{pmatrix} 0 & 1 \\\\ 4 & 0 \\end{pmatrix}$"
   },
   {
     "id": 16,
@@ -442,9 +442,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -452,14 +452,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "등식 $\\begin{pmatrix} 2 & 4 \\\\ 6 & a \\end{pmatrix} = \\begin{pmatrix} a+b & a-b \\\\ 6 & a \\end{pmatrix}$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3$, $b=-1$",
+    "solution": "[풀이 전략]\n두 행렬이 서로 같으므로 같은 위치에 있는 대응하는 모든 성분이 각각 일치해야 한다.\n성분별 비교를 통해 $a, b$에 대한 연립방정식을 세워 푼다.\n\n[단계별 풀이]\n1단계: 대응하는 성분 비교하기\n$$\\begin{pmatrix} 2 & 4 \\\\ 6 & a \\end{pmatrix} = \\begin{pmatrix} a+b & a-b \\\\ 6 & a \\end{pmatrix}$$\n- 1행 1열: $a + b = 2$ $\\cdots$ ①\n- 1행 2열: $a - b = 4$ $\\cdots$ ②\n- 2행 1열: $6 = 6$ (성립)\n- 2행 2열: $a = a$ (성립)\n\n2단계: 연립방정식 풀기\n①과 ②를 변끼리 더하면:\n$$2a = 6 \\implies a = 3$$\n$a=3$을 ①에 대입하면:\n$$3 + b = 2 \\implies b = -1$$\n\n[오답 및 경계 점검]\n- ②식 검산: $3 - (-1) = 4$. 정확히 성립한다.\n\n[결론]\n$a=3$, $b=-1$"
   },
   {
     "id": 17,
@@ -470,9 +470,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -480,14 +480,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "세 행렬 $A=\\begin{pmatrix} 3 & -1 \\\\ a & 5 \\end{pmatrix}$, $B=\\begin{pmatrix} 9 & 7 \\\\ -2 & b \\end{pmatrix}$, $C=\\begin{pmatrix} -1 & c \\\\ 4 & 0 \\end{pmatrix}$에 대하여 등식 $2A-B=3C$를 만족시키는 실수 $a$, $b$, $c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=5$, $b=10$, $c=-3$",
+    "solution": "[풀이 전략]\n등식 $2A-B=3C$의 좌변과 우변을 각각 성분별로 계산한 후, 대응하는 성분을 비교하여 $a, b, c$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 좌변 $2A-B$ 계산하기\n$$A = \\begin{pmatrix} 3 & -1 \\\\ a & 5 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 9 & 7 \\\\ -2 & b \\end{pmatrix}$$\n$$2A = \\begin{pmatrix} 6 & -2 \\\\ 2a & 10 \\end{pmatrix}$$\n$$2A - B = \\begin{pmatrix} 6 - 9 & -2 - 7 \\\\ 2a - (-2) & 10 - b \\end{pmatrix} = \\begin{pmatrix} -3 & -9 \\\\ 2a + 2 & 10 - b \\end{pmatrix}$$\n\n2단계: 우변 $3C$ 계산하기\n$$C = \\begin{pmatrix} -1 & c \\\\ 4 & 0 \\end{pmatrix}$$\n$$3C = \\begin{pmatrix} -3 & 3c \\\\ 12 & 0 \\end{pmatrix}$$\n\n3단계: 성분 비교하여 $a, b, c$ 구하기\n$$\\begin{pmatrix} -3 & -9 \\\\ 2a + 2 & 10 - b \\end{pmatrix} = \\begin{pmatrix} -3 & 3c \\\\ 12 & 0 \\end{pmatrix}$$\n- 1행 2열: $3c = -9 \\implies c = -3$\n- 2행 1열: $2a + 2 = 12 \\implies 2a = 10 \\implies a = 5$\n- 2행 2열: $10 - b = 0 \\implies b = 10$\n\n[오답 및 경계 점검]\n- 각 미지수의 값을 대입하여 양변 행렬이 $\\begin{pmatrix} -3 & -9 \\\\ 12 & 0 \\end{pmatrix}$으로 완벽히 일치함을 확인한다.\n\n[결론]\n$a=5$, $b=10$, $c=-3$"
   },
   {
     "id": 18,
@@ -498,9 +498,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -508,14 +508,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & 3 \\\\ 1 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 2 \\\\ 2 & 3 \\end{pmatrix}$에 대하여 등식 $2(A+3X)-B=5B+4X$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬 방정식 $2(A+3X)-B=5B+4X$를 전개하여 $X$에 관하여 먼저 정리한 후, 행렬 성분을 대입하여 연산한다.\n\n[단계별 풀이]\n1단계: 행렬 방정식 정리하기\n$$2A + 6X - B = 5B + 4X$$\n동류항을 이항하여 정리하면:\n$$6X - 4X = -2A + 5B + B$$\n$$2X = -2A + 6B$$\n양변을 $2$로 나누면:\n$$X = -A + 3B$$\n\n2단계: 성분 대입하여 $X$ 계산하기\n$$A = \\begin{pmatrix} 2 & 3 \\\\ 1 & -2 \\end{pmatrix}, \\quad B = \\begin{pmatrix} -1 & 2 \\\\ 2 & 3 \\end{pmatrix}$$\n- $-A = \\begin{pmatrix} -2 & -3 \\\\ -1 & 2 \\end{pmatrix}$\n- $3B = \\begin{pmatrix} -3 & 6 \\\\ 6 & 9 \\end{pmatrix}$\n따라서:\n$$X = \\begin{pmatrix} -2 + (-3) & -3 + 6 \\\\ -1 + 6 & 2 + 9 \\end{pmatrix} = \\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 원래 등식의 좌변과 우변에 대입하여 동일한 결과가 도출되는지 검산한다.\n\n[결론]\n$\\begin{pmatrix} -5 & 3 \\\\ 5 & 11 \\end{pmatrix}$"
   },
   {
     "id": 19,
@@ -526,9 +526,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -536,14 +536,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A$, $B$가 $A+B=\\begin{pmatrix} 5 & 0 \\\\ 1 & 3 \\end{pmatrix}$, $A-B=\\begin{pmatrix} -1 & 2 \\\\ -1 & 3 \\end{pmatrix}$을 만족시킬 때, 행렬 $A$, $B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$, $B = \\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n두 행렬의 합과 차가 주어졌으므로 두 식을 변끼리 더하고 빼는 가감법을 적용하여 행렬 $A$와 $B$를 각각 분리하여 구한다.\n\n[단계별 풀이]\n1단계: 두 등식 변끼리 더하여 $A$ 구하기\n$$(A+B) + (A-B) = 2A$$\n$$2A = \\begin{pmatrix} 5 & 0 \\\\ 1 & 3 \\end{pmatrix} + \\begin{pmatrix} -1 & 2 \\\\ -1 & 3 \\end{pmatrix} = \\begin{pmatrix} 4 & 2 \\\\ 0 & 6 \\end{pmatrix}$$\n양변을 $2$로 나누면:\n$$A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$$\n\n2단계: 두 등식 변끼리 빼어 $B$ 구하기\n$$(A+B) - (A-B) = 2B$$\n$$2B = \\begin{pmatrix} 5 & 0 \\\\ 1 & 3 \\end{pmatrix} - \\begin{pmatrix} -1 & 2 \\\\ -1 & 3 \\end{pmatrix} = \\begin{pmatrix} 6 & -2 \\\\ 2 & 0 \\end{pmatrix}$$\n양변을 $2$로 나누면:\n$$B = \\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- $A+B = \\begin{pmatrix} 2+3 & 1-1 \\\\ 0+1 & 3+0 \\end{pmatrix} = \\begin{pmatrix} 5 & 0 \\\\ 1 & 3 \\end{pmatrix}$. 성립한다.\n\n[결론]\n$A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$, $B = \\begin{pmatrix} 3 & -1 \\\\ 1 & 0 \\end{pmatrix}$"
   },
   {
     "id": 20,
@@ -554,9 +554,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -564,14 +564,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "이차방정식 $x^2+ax+b=0$의 두 실근을 $\\alpha$, $\\beta$라고 할 때, 등식 $\\alpha \\begin{pmatrix} \\alpha & 2 \\\\ 0 & \\beta \\end{pmatrix} + \\beta \\begin{pmatrix} \\beta & 2 \\\\ 0 & \\alpha \\end{pmatrix} = \\begin{pmatrix} 10 & 4 \\\\ 0 & 2\\alpha\\beta \\end{pmatrix}$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-2$, $b=-3$",
+    "solution": "[풀이 전략]\n주어진 행렬 등식의 좌변을 전개하여 $\\alpha+\\beta$와 $\\alpha\\beta$에 대한 식을 얻은 뒤, 이차방정식의 근과 계수의 관계를 이용하여 $a, b$를 구한다.\n\n[단계별 풀이]\n1단계: 좌변 행렬 계산하기\n$$\\alpha \\begin{pmatrix} \\alpha & 2 \\\\ 0 & \\beta \\end{pmatrix} + \\beta \\begin{pmatrix} \\beta & 2 \\\\ 0 & \\alpha \\end{pmatrix} = \\begin{pmatrix} \\alpha^2 & 2\\alpha \\\\ 0 & \\alpha\\beta \\end{pmatrix} + \\begin{pmatrix} \\beta^2 & 2\\beta \\\\ 0 & \\alpha\\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha^2+\\beta^2 & 2(\\alpha+\\beta) \\\\ 0 & 2\\alpha\\beta \\end{pmatrix}$$\n\n2단계: 우변과 성분 비교하여 $\\alpha+\\beta$, $\\alpha\\beta$ 구하기\n$$\\begin{pmatrix} \\alpha^2+\\beta^2 & 2(\\alpha+\\beta) \\\\ 0 & 2\\alpha\\beta \\end{pmatrix} = \\begin{pmatrix} 10 & 4 \\\\ 0 & 2\\alpha\\beta \\end{pmatrix}$$\n- 1행 2열: $2(\\alpha+\\beta) = 4 \\implies \\alpha+\\beta = 2$\n- 1행 1열: $\\alpha^2+\\beta^2 = 10$\n곱셈 공식 변형 $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta$에 대입하면:\n$$10 = 2^2 - 2\\alpha\\beta = 4 - 2\\alpha\\beta \\implies 2\\alpha\\beta = -6 \\implies \\alpha\\beta = -3$$\n\n3단계: 근과 계수의 관계를 이용하여 $a, b$ 구하기\n이차방정식 $x^2+ax+b=0$의 두 실근이 $\\alpha, \\beta$이므로:\n- 두 근의 합: $\\alpha+\\beta = -a \\implies a = -(\\alpha+\\beta) = -2$\n- 두 근의 곱: $\\alpha\\beta = b \\implies b = -3$\n\n[오답 및 경계 점검]\n- $x^2 - 2x - 3 = (x-3)(x+1) = 0$이므로 두 실근은 $3, -1$이며, 실근 조건도 완벽히 만족한다.\n\n[결론]\n$a=-2$, $b=-3$"
   },
   {
     "id": 21,
@@ -582,9 +582,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -592,14 +592,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "이차정사각행렬 $A$에 대하여 $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} -1 \\\\ 3 \\end{pmatrix}$, $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$가 성립할 때, $A\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n열벡터 $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$을 기저 벡터 $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$과 $\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$의 일차결합으로 나타낸 후 행렬 곱의 선형성을 적용하거나, 행렬 $A$의 성분을 구하여 직접 계산한다.\n\n[단계별 풀이]\n1단계: 벡터의 선형결합 표현하기\n$$\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = 2\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} - \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$$\n\n2단계: 행렬 곱의 선형성 적용하기\n$$A\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = 2A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} - A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$$\n주어진 결과 벡터들을 대입하면:\n$$= 2\\begin{pmatrix} -1 \\\\ 3 \\end{pmatrix} - \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -2 - 3 \\\\ 6 - (-2) \\end{pmatrix} = \\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 행렬 $A$를 직접 복원하면 $A = \\begin{pmatrix} -1 & 3 \\\\ 3 & -2 \\end{pmatrix}$이다.\n  $A\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} -1(2) + 3(-1) \\\\ 3(2) + (-2)(-1) \\end{pmatrix} = \\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$. 결과가 완전히 일치한다.\n\n[결론]\n$\\begin{pmatrix} -5 \\\\ 8 \\end{pmatrix}$"
   },
   {
     "id": 22,
@@ -610,9 +610,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -620,14 +620,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -1 \\\\ 0 & 4 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 0 \\\\ 3 & 2 \\end{pmatrix}$에 대하여 행렬 $A^2-B^2$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4",
+    "solution": "[풀이 전략]\n두 행렬 $A$와 $B$의 제곱 $A^2, B^2$을 각각 계산한 후 차 $A^2-B^2$을 구하고 모든 성분의 합을 계산한다.\n\n[단계별 풀이]\n1단계: $A^2$ 계산하기\n$$A = \\begin{pmatrix} 1 & -1 \\\\ 0 & 4 \\end{pmatrix}$$\n$$A^2 = \\begin{pmatrix} 1 & -1 \\\\ 0 & 4 \\end{pmatrix} \\begin{pmatrix} 1 & -1 \\\\ 0 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & -1 - 4 \\\\ 0 & 16 \\end{pmatrix} = \\begin{pmatrix} 1 & -5 \\\\ 0 & 16 \\end{pmatrix}$$\n\n2단계: $B^2$ 계산하기\n$$B = \\begin{pmatrix} -1 & 0 \\\\ 3 & 2 \\end{pmatrix}$$\n$$B^2 = \\begin{pmatrix} -1 & 0 \\\\ 3 & 2 \\end{pmatrix} \\begin{pmatrix} -1 & 0 \\\\ 3 & 2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ -3 + 6 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 3 & 4 \\end{pmatrix}$$\n\n3단계: $A^2 - B^2$ 및 모든 성분의 합 구하기\n$$A^2 - B^2 = \\begin{pmatrix} 1 - 1 & -5 - 0 \\\\ 0 - 3 & 16 - 4 \\end{pmatrix} = \\begin{pmatrix} 0 & -5 \\\\ -3 & 12 \\end{pmatrix}$$\n모든 성분의 합은:\n$$0 + (-5) + (-3) + 12 = 4$$\n\n[오답 및 경계 점검]\n- 행렬 곱에서는 일반적으로 $A^2 - B^2 \\ne (A-B)(A+B)$이므로 반드시 각각의 제곱을 직접 계산해야 한다.\n\n[결론]\n4"
   },
   {
     "id": 23,
@@ -638,9 +638,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -648,14 +648,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}$, $B=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$에 대하여 등식 $AB=O$를 만족시키는 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4$, $b=-\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n두 행렬의 곱 $AB$를 계산하여 영행렬 $O$와 성분을 비교함으로써 실수 $a, b$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 행렬 곱 $AB$ 계산하기\n$$A = \\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}, \\quad B = \\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$$\n$$AB = \\begin{pmatrix} 1(a) + (-2)(2) & 1(-1) + (-2)(b) \\\\ 2(a) + (-4)(2) & 2(-1) + (-4)(b) \\end{pmatrix} = \\begin{pmatrix} a - 4 & -1 - 2b \\\\ 2a - 8 & -2 - 4b \\end{pmatrix}$$\n\n2단계: 영행렬과 성분 비교하기\n$$\\begin{pmatrix} a - 4 & -1 - 2b \\\\ 2a - 8 & -2 - 4b \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$$\n- 1행 1열: $a - 4 = 0 \\implies a = 4$\n- 1행 2열: $-1 - 2b = 0 \\implies 2b = -1 \\implies b = -\\dfrac{1}{2}$\n- 2행 1열: $2a - 8 = 2(4) - 8 = 0$ (성립)\n- 2행 2열: $-2 - 4b = -2 - 4\\left(-\\dfrac{1}{2}\\right) = -2 + 2 = 0$ (성립)\n\n[오답 및 경계 점검]\n- 모든 네 성분이 $0$이 됨을 확인한다.\n\n[결론]\n$a=4$, $b=-\\dfrac{1}{2}$"
   },
   {
     "id": 24,
@@ -666,9 +666,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -676,8 +676,8 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & -3 \\\\ 0 & 1 \\end{pmatrix}$에 대하여 행렬 $A^{30}-A^{31}$의 $(1, 2)$ 성분은?",
@@ -688,8 +688,8 @@ window.questionBank = [
       "$3^{29}$",
       "$3^{30}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n행렬 $A$의 거듭제곱의 일반식을 수학적 귀납법/규칙성을 통해 파악한 후, $A^{30}-A^{31}$의 성분을 계산한다.\n\n[단계별 풀이]\n1단계: 거듭제곱의 규칙성 파악하기\n$$A = \\begin{pmatrix} 1 & -3 \\\\ 0 & 1 \\end{pmatrix}$$\n- $A^2 = \\begin{pmatrix} 1 & -3 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & -3 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -6 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -3 \\times 2 \\\\ 0 & 1 \\end{pmatrix}$\n- $A^3 = A^2 A = \\begin{pmatrix} 1 & -6 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & -3 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -9 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -3 \\times 3 \\\\ 0 & 1 \\end{pmatrix}$\n일반적으로 임의의 자연수 $n$에 대하여:\n$$A^n = \\begin{pmatrix} 1 & -3n \\\\ 0 & 1 \\end{pmatrix}$$\n\n2단계: $A^{30} - A^{31}$ 계산하기\n$$A^{30} = \\begin{pmatrix} 1 & -3(30) \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -90 \\\\ 0 & 1 \\end{pmatrix}$$\n$$A^{31} = \\begin{pmatrix} 1 & -3(31) \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -93 \\\\ 0 & 1 \\end{pmatrix}$$\n$$A^{30} - A^{31} = \\begin{pmatrix} 1 - 1 & -90 - (-93) \\\\ 0 - 0 & 1 - 1 \\end{pmatrix} = \\begin{pmatrix} 0 & 3 \\\\ 0 & 0 \\end{pmatrix}$$\n\n3단계: $(1, 2)$ 성분 확인하기\n$(1, 2)$ 성분은 $3$이다.\n선지 ③은 $3$이다.\n따라서 정답은 ③이다.\n\n[오답 및 경계 점검]\n- $A^{30}-A^{31} = A^{30}(E-A)$로 묶어 계산해도:\n  $$E - A = \\begin{pmatrix} 0 & 3 \\\\ 0 & 0 \\end{pmatrix}$$\n  $$\\begin{pmatrix} 1 & -90 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 0 & 3 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 3 \\\\ 0 & 0 \\end{pmatrix}$$\n  동일한 결과가 나온다.\n\n[결론]\n③"
   },
   {
     "id": 25,
@@ -700,9 +700,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -710,8 +710,8 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 이차정사각행렬 $A$, $B$에 대하여 다음 중 항상 옳은 것은?",
@@ -722,8 +722,8 @@ window.questionBank = [
       "$AB=O$이면 $A=O$이거나 $B=O$이다.",
       "$A-B=O$이면 $B-A=O$이다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n행렬 연산의 기본 대수적 성질과 반례를 통해 각 선지의 참/거짓 여부를 판정한다.\n\n[단계별 풀이]\n1단계: 각 선지 분석하기\n- ① 실수배 정의: $kA$는 행렬의 '모든 성분'에 $k$를 곱해야 하므로 첫 번째 성분에만 $k$가 곱해진 선지 식은 거짓이다.\n- ② 행렬 곱셈: 대응하는 성분끼리의 곱이 아니라 행과 열의 내적 합이므로 거짓이다.\n- ③ 교환법칙: 일반적으로 $AB \\ne BA$이므로 거짓이다.\n- ④ 영인자(zero divisor): $A \\ne O, B \\ne O$이면서 $AB = O$가 되는 반례(영인자)가 존재하므로 거짓이다.\n- ⑤ 덧셈에 대한 역원 성질: $A - B = O$이면 $A = B$이므로 $B - A = B - B = O$가 항상 성립한다 (참).\n\n따라서 항상 옳은 것은 ⑤이다.\n\n[오답 및 경계 점검]\n- ⑤번은 행렬의 덧셈과 뺄셈이 실수의 연산과 동일하게 교환법칙과 결합법칙이 성립하는 가환군(Abelian group)을 이루기 때문에 항상 참이다.\n\n[결론]\n⑤"
   },
   {
     "id": 26,
@@ -734,9 +734,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -744,14 +744,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix}$에 대하여 $2A^5-4A^2+A$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬 $A$의 거듭제곱의 주기성을 조사하여 $A^3 = E$임을 확인한 후, 주어진 고차 다항식을 차수 낮추기(reduction)를 통해 간단히 정리하여 계산한다.\n\n[단계별 풀이]\n1단계: $A^2$과 $A^3$ 계산하기\n$$A = \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix}$$\n$$A^2 = \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} = \\begin{pmatrix} 1 - 3 & 3 - 6 \\\\ -1 + 2 & -3 + 4 \\end{pmatrix} = \\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix}$$\n$$A^3 = A^2 A = \\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} = \\begin{pmatrix} -2 + 3 & -6 + 6 \\\\ 1 - 1 & 3 - 2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = E$$\n\n2단계: 식 간단히 정리하기\n$A^3 = E$이므로:\n$$A^5 = A^3 A^2 = E A^2 = A^2$$\n따라서:\n$$2A^5 - 4A^2 + A = 2A^2 - 4A^2 + A = -2A^2 + A$$\n\n3단계: 성분 대입하여 계산하기\n$$-2A^2 = -2 \\begin{pmatrix} -2 & -3 \\\\ 1 & 1 \\end{pmatrix} = \\begin{pmatrix} 4 & 6 \\\\ -2 & -2 \\end{pmatrix}$$\n$$-2A^2 + A = \\begin{pmatrix} 4 & 6 \\\\ -2 & -2 \\end{pmatrix} + \\begin{pmatrix} 1 & 3 \\\\ -1 & -2 \\end{pmatrix} = \\begin{pmatrix} 4 + 1 & 6 + 3 \\\\ -2 + (-1) & -2 + (-2) \\end{pmatrix} = \\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 케일리-해밀턴 정리 확인: $A^2 - (1-2)A + ((-2)-(-3))E = A^2 + A + E = O$.\n  $A^3 - E = (A-E)(A^2+A+E) = O \\implies A^3 = E$. 완벽히 부합한다.\n\n[결론]\n$\\begin{pmatrix} 5 & 9 \\\\ -3 & -4 \\end{pmatrix}$"
   },
   {
     "id": 27,
@@ -762,9 +762,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -772,8 +772,8 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "익힘책"
+      "익힘책",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음 [표 1]은 어느 회사에서 생산하는 두 제품 A, B의 제품 한 개당 제조 원가와 판매가이고, [표 2]는 올해 상반기와 하반기의 두 제품 A, B의 판매량이다.\n\n[표 1] 제조 원가와 판매가 (단위: 천 원)\n| 가격 \\ 제품 | A | B |\n| :---: | :---: | :---: |\n| 제조 원가 | 3 | 1 |\n| 판매가 | 4 | 2 |\n\n[표 2] 판매량 (단위: 만 개)\n| 제품 \\ 시기 | 상반기 | 하반기 |\n| :---: | :---: | :---: |\n| A | 10 | 12 |\n| B | 8 | 13 |\n\n두 행렬 $P=\\begin{pmatrix} 3 & 1 \\\\ 4 & 2 \\end{pmatrix}$, $Q=\\begin{pmatrix} 10 & 12 \\\\ 8 & 13 \\end{pmatrix}$에 대하여 $PQ=\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$라고 하자. 제품의 판매가에서 제조 원가를 뺀 금액을 제품의 판매 이익금이라고 할 때, 올해 하반기에 판매된 두 제품의 판매 이익금의 합을 나타낸 것은? (단, 판매 이익금의 단위는 천만 원이다.)",
@@ -784,7 +784,7 @@ window.questionBank = [
       "$d-b$",
       "$d-a$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n실생활 데이터와 행렬 곱셈 $PQ$의 각 성분이 나타내는 의미를 파악하여 '올해 하반기에 판매된 두 제품의 판매 이익금의 합'을 행렬 성분으로 나타낸 선지를 선택한다.\n\n[단계별 풀이]\n1단계: 행렬 $P$와 $Q$의 의미 분석하기\n- $P = \\begin{pmatrix} 3 & 1 \\\\ 4 & 2 \\end{pmatrix}$ (1행: 제조 원가, 2행: 판매가 / 1열: 제품 A, 2열: 제품 B)\n- $Q = \\begin{pmatrix} 10 & 12 \\\\ 8 & 13 \\end{pmatrix}$ (1행: 제품 A 판매량, 2행: 제품 B 판매량 / 1열: 상반기, 2열: 하반기)\n\n2단계: 행렬 곱 $PQ = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$의 성분 의미 파악하기\n- 1행 2열 성분 $b$:\n  $$b = 3 \\times 12 + 1 \\times 13 = \\text{(두 제품의 하반기 제조 원가의 합)}$$\n- 2행 2열 성분 $d$:\n  $$d = 4 \\times 12 + 2 \\times 13 = \\text{(두 제품의 하반기 판매가의 합)}$$\n\n3단계: 판매 이익금의 합 표현하기\n제품의 판매 이익금은 (판매가) - (제조 원가)이므로, 하반기에 판매된 두 제품의 판매 이익금의 합은:\n$$d - b$$\n선지 ④는 $d - b$이다.\n따라서 정답은 ④이다.\n\n[오답 및 경계 점검]\n- 상반기 이익금의 합은 $c - a$이고, 하반기 이익금의 합은 $d - b$이다.\n\n[결론]\n④"
   }
 ];

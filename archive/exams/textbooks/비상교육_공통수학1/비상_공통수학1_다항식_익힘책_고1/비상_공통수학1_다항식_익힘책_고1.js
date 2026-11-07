@@ -1,4 +1,4 @@
-window.examTitle = "비상 공통수학Ⅰ 다항식 수학 익힘책";
+window.examTitle = "비상 공통수학Ⅰ 다항식 익힘책";
 
 window.questionBank = [
   {
@@ -8,11 +8,11 @@ window.questionBank = [
     "sourceQuestionNo": 1,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,13 +21,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "두 다항식 $A$, $B$가\n$$\\begin{aligned} A+B &= 4x^3+x^2-3x+2 \\\\ A-B &= 2x^3-3x^2+5x-4 \\end{aligned}$$\n를 만족시킬 때, $A+2B$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5x^3+3x^2-7x+5$",
+    "solution": "[풀이 전략]\n연립방정식의 원리를 다항식의 덧셈과 뺄셈에 적용한다.\n- 두 식의 합 $(A+B) + (A-B) = 2A$와 차 $(A+B) - (A-B) = 2B$를 이용하여 다항식 $A$와 $B$를 각각 분리하여 구한다.\n- 또는 구하는 식 $A+2B$를 $(A+B)$와 $(A-B)$의 일차결합으로 표현하여 계산할 수도 있다.\n- 여기서는 가장 오차가 적은 $A$와 $B$를 각각 구한 뒤 $A+2B$를 합성하는 표준적인 방식으로 푼다.\n\n[단계별 풀이]\n1단계: 다항식 $A$ 구하기\n두 식을 변끼리 더하면\n$$(A+B) + (A-B) = (4x^3+x^2-3x+2) + (2x^3-3x^2+5x-4)$$\n$$2A = (4+2)x^3 + (1-3)x^2 + (-3+5)x + (2-4)$$\n$$2A = 6x^3 - 2x^2 + 2x - 2$$\n양변을 $2$로 나누면\n$$A = 3x^3 - x^2 + x - 1$$\n\n2단계: 다항식 $B$ 구하기\n두 식을 변끼리 빼면\n$$(A+B) - (A-B) = (4x^3+x^2-3x+2) - (2x^3-3x^2+5x-4)$$\n$$2B = (4-2)x^3 + (1-(-3))x^2 + (-3-5)x + (2-(-4))$$\n$$2B = 2x^3 + 4x^2 - 8x + 6$$\n양변을 $2$로 나누면\n$$B = x^3 + 2x^2 - 4x + 3$$\n\n3단계: $A+2B$ 계산하기\n$$A+2B = (3x^3-x^2+x-1) + (2x^3+4x^2-8x+6)$$\n동류항끼리 모아 계산하면\n$$= (3+2)x^3 + (-1+4)x^2 + (1-8)x + (-1+6)$$\n$$= 5x^3 + 3x^2 - 7x + 5$$\n\n[오답 및 경계 점검]\n- $2B$를 뺄 때 $A-B$의 부호 분배에서 $(1-(-3))x^2 = 4x^2$, $(-3-5)x = -8x$, $(2-(-4)) = 6$과 같이 음수 부호 처리를 정확히 해야 한다.\n- $A+2B$에서 $B$를 두 배한 식 $2B$가 이미 2단계에서 $2x^3+4x^2-8x+6$으로 구해져 있으므로 이를 직접 $A$에 더하면 계산 시간을 크게 단축할 수 있다.\n\n[결론]\n$5x^3+3x^2-7x+5$"
   },
   {
     "id": 2,
@@ -36,11 +37,11 @@ window.questionBank = [
     "sourceQuestionNo": 2,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,13 +50,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "다항식 $(a-b+1)(a+b+1)$을 전개하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a^2-b^2+2a+1$",
+    "solution": "[풀이 전략]\n공통부분을 찾아 묶은 후 합차공식을 적용하여 전개한다.\n두 다항식에서 부호가 같은 항인 $a+1$을 한 묶음으로 보고, 부호가 다른 항인 $b$를 분리하여\n$\\{(a+1)-b\\}\\{(a+1)+b\\}$ 꼴로 변형한 뒤 $(X-b)(X+b) = X^2-b^2$을 적용한다.\n\n[단계별 풀이]\n1단계: 공통부분 묶기\n$$(a-b+1)(a+b+1) = \\{(a+1)-b\\}\\{(a+1)+b\\}$$\n\n2단계: 합차공식 적용하기\n$$= (a+1)^2 - b^2$$\n\n3단계: 괄호 전개 및 정돈\n$$(a+1)^2 = a^2+2a+1$$\n이므로 대입하면\n$$= a^2+2a+1 - b^2$$\n차수와 문자의 순서에 따라 정돈하면\n$$= a^2-b^2+2a+1$$\n\n[오답 및 경계 점검]\n- 공통부분을 묶지 않고 9개의 항을 일일이 전개하면 동류항 정리 과정에서 부호 실수가 발생하기 쉽다.\n- 합차공식 적용 시 $(a-b+1)$과 $(a+b+1)$에서 부호가 반대인 것은 오직 $b$뿐이므로, $(a+1)$ 전체가 한 덩어리($X$)가 됨을 명확히 인식해야 한다.\n\n[결론]\n$a^2-b^2+2a+1$"
   },
   {
     "id": 3,
@@ -64,11 +66,11 @@ window.questionBank = [
     "sourceQuestionNo": 3,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,13 +79,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "$a=\\sqrt{3}+1$, $b=\\sqrt{3}-1$일 때, $a^3-b^3$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$20$",
+    "solution": "[풀이 전략]\n무리수의 대칭식은 두 수의 합과 차, 곱을 먼저 구한 뒤 곱셈 공식의 변형을 적용하여 식의 값을 구한다.\n$a^3-b^3 = (a-b)^3 + 3ab(a-b)$에 $a-b$와 $ab$의 값을 대입하여 간단히 계산한다.\n\n[단계별 풀이]\n1단계: $a-b$와 $ab$ 계산하기\n$$a-b = (\\sqrt{3}+1) - (\\sqrt{3}-1) = \\sqrt{3}+1-\\sqrt{3}+1 = 2$$\n$$ab = (\\sqrt{3}+1)(\\sqrt{3}-1) = (\\sqrt{3})^2 - 1^2 = 3 - 1 = 2$$\n\n2단계: 곱셈 공식 변형 적용하기\n$$a^3-b^3 = (a-b)^3 + 3ab(a-b)$$\n\n3단계: 값 대입 및 계산\n$$a^3-b^3 = 2^3 + 3(2)(2)$$\n$$= 8 + 12 = 20$$\n\n(별해: 인수분해 공식 이용)\n$a^3-b^3 = (a-b)(a^2+ab+b^2) = (a-b)\\{(a-b)^2+3ab\\} = 2 \\times (2^2+3\\times 2) = 2 \\times (4+6) = 20$.\n\n[오답 및 경계 점검]\n- $a-b$를 계산할 때 빼는 식의 부호를 주의하여 $\\sqrt{3}$이 소거되고 $1-(-1)=2$가 됨을 확인한다.\n- 공식 변형 시 부호 혼동: $a^3-b^3 = (a-b)^3 + 3ab(a-b)$에서 $+3ab$의 부호를 $-3ab$로 잘못 쓰지 않도록 주의한다.\n\n[결론]\n$20$"
   },
   {
     "id": 4,
@@ -92,11 +95,11 @@ window.questionBank = [
     "sourceQuestionNo": 4,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,13 +108,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "어느 직육면체의 모든 모서리의 길이의 합은 $64$이고 대각선의 길이는 $10$일 때, 이 직육면체의 겉넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$156$",
+    "solution": "[풀이 전략]\n직육면체의 기하학적 성질을 세 문자의 곱셈 공식 변형으로 변환한다.\n- 직육면체의 가로, 세로, 높이를 각각 $a, b, c$라 할 때:\n  1. 모든 모서리의 길이의 합: $4(a+b+c) = 64$\n  2. 대각선의 길이: $\\sqrt{a^2+b^2+c^2} = 10$\n  3. 겉넓이: $2(ab+bc+ca)$\n- 곱셈 공식 $(a+b+c)^2 = a^2+b^2+c^2 + 2(ab+bc+ca)$를 활용하여 겉넓이를 단번에 도출한다.\n\n[단계별 풀이]\n1단계: 모서리 합과 대각선 길이 식 세우기\n세 모서리의 길이를 $a, b, c$라 하면\n$$4(a+b+c) = 64 \\implies a+b+c = 16$$\n$$\\sqrt{a^2+b^2+c^2} = 10 \\implies a^2+b^2+c^2 = 10^2 = 100$$\n\n2단계: 겉넓이와 곱셈 공식의 관계 유도\n직육면체의 겉넓이를 $S$라 하면 여섯 면의 넓이의 합이므로\n$$S = 2(ab+bc+ca)$$\n곱셈 공식 $(a+b+c)^2 = a^2+b^2+c^2 + 2(ab+bc+ca)$에 대입하면\n$$(a+b+c)^2 = (a^2+b^2+c^2) + S$$\n\n3단계: 겉넓이 $S$ 계산하기\n$$16^2 = 100 + S$$\n$$256 = 100 + S$$\n$$S = 256 - 100 = 156$$\n따라서 직육면체의 겉넓이는 $156$이다.\n\n[오답 및 경계 점검]\n- 직육면체에서 각 모서리는 동일한 길이가 4개씩 존재하므로 $4(a+b+c)=64$에서 $a+b+c=16$을 얻어야 한다.\n- 대각선의 길이는 피타고라스 정리에 의해 $\\sqrt{a^2+b^2+c^2}$이므로 양변을 제곱하여 $100$을 사용한다.\n- $ab+bc+ca$를 구한 후 다시 $2$를 곱하는 과정에서 누락하지 않도록 겉넓이 자체가 $2(ab+bc+ca)$임을 확인한다.\n\n[결론]\n$156$"
   },
   {
     "id": 5,
@@ -120,11 +124,11 @@ window.questionBank = [
     "sourceQuestionNo": 5,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -133,7 +137,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "다항식의 연산"
     ],
     "wide": false,
     "content": "다음 나눗셈의 몫과 나머지를 차례로 구한 것은?\n$$(3x^3+2x^2+8x+1)\\div(x^2+2)$$",
@@ -144,8 +149,8 @@ window.questionBank = [
       "$3x+6$, $-4x+2$",
       "$3x+7$, $4x-3$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n나누는 식이 이차식이므로 다항식의 직접 나눗셈(세로셈)을 수행하거나 계수 비교 나눗셈을 적용한다.\n- 최고차항을 맞추기 위해 $3x$를 곱하여 삼차항을 소거한다.\n- 그 다음 최고차항을 맞추기 위해 $2$를 곱하여 이차항을 소거한다.\n- 남은 식의 차수가 제수의 차수($2$차)보다 낮은 일차식 이하가 될 때까지 진행한다.\n\n[단계별 풀이]\n1단계: 일차항 몫 결정\n피제수 $3x^3+2x^2+8x+1$의 최고차항 $3x^3$을 제수 $x^2+2$의 최고차항 $x^2$으로 나누면 몫은 $3x$이다.\n$$(x^2+2) \\times 3x = 3x^3 + 6x$$\n변끼리 빼면\n$$(3x^3+2x^2+8x+1) - (3x^3+6x) = 2x^2 + 2x + 1$$\n\n2단계: 상수항 몫 결정\n$2x^2$을 $x^2$으로 나누면 몫은 $2$이다.\n$$(x^2+2) \\times 2 = 2x^2 + 4$$\n변끼리 빼면\n$$(2x^2+2x+1) - (2x^2+4) = 2x - 3$$\n\n3단계: 몫과 나머지 확인\n남은 식 $2x-3$은 1차식으로, 나누는 식 $x^2+2$(2차식)보다 차수가 낮으므로 나눗셈이 종료된다.\n따라서\n- 몫: $3x+2$\n- 나머지: $2x-3$\n이에 해당하는 선지는 ②번이다.\n\n[오답 및 경계 점검]\n- 제수 $x^2+2$에 $x$의 일차항이 없으므로, 세로셈 계산 시 $x$의 자리를 비워두고 계산하여 차수가 다른 항끼리 빼는 실수를 방지해야 한다.\n- $1 - 4 = -3$의 상수항 부호에 주의한다.\n\n[결론]\n②"
   },
   {
     "id": 6,
@@ -154,11 +159,11 @@ window.questionBank = [
     "sourceQuestionNo": 6,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -167,13 +172,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$가 모든 실수 $x$에 대하여 등식\n$$(x+1)^2(x-1)P(x)=(x^2+ax+b)^2$$\n을 만족시킬 때, $P(2)$의 값을 구하시오. (단, $a$, $b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n항등식의 성질과 완전제곱식의 구조를 분석한다.\n- 좌변에 $x=-1$과 $x=1$을 대입하면 $0$이 되므로 우변 역시 $x=-1, 1$에서 $0$이 되어야 한다.\n- 이를 통해 미정계수 $a, b$를 구한 후 우변을 인수분해하여 양변의 공통인수를 약분함으로써 다항식 $P(x)$를 명시적으로 결정한다.\n\n[단계별 풀이]\n1단계: $x=-1, 1$ 대입하여 $a, b$ 구하기\n우변을 $f(x) = (x^2+ax+b)^2$이라 하자.\n좌변이 $x=-1$과 $x=1$에서 $0$이므로\n- $x=-1$ 대입: $0 = (1-a+b)^2 \\implies 1-a+b = 0 \\implies a-b = 1 \\quad \\cdots\\cdots \\text{①}$\n- $x=1$ 대입: $0 = (1+a+b)^2 \\implies 1+a+b = 0 \\implies a+b = -1 \\quad \\cdots\\cdots \\text{②}$\n①식과 ②식을 연립하면\n$$2a = 0 \\implies a = 0$$\n$$b = -1$$\n\n2단계: 우변 식 정리 및 $P(x)$ 유도\n$a=0, b=-1$을 우변에 대입하면\n$$(x^2-1)^2 = \\{(x-1)(x+1)\\}^2 = (x-1)^2(x+1)^2$$\n주어진 항등식은 다음과 같다:\n$$(x+1)^2(x-1)P(x) = (x+1)^2(x-1)^2$$\n양변을 공통인수 $(x+1)^2(x-1)$로 나누면\n$$P(x) = x-1$$\n\n3단계: $P(2)$ 계산\n$$P(2) = 2 - 1 = 1$$\n\n[오답 및 경계 점검]\n- 우변이 제곱식 $(x^2+ax+b)^2$이므로 $x^2+ax+b=0$이 $x=\\pm 1$을 두 근으로 가져야 함을 간파하면 $x^2+ax+b = x^2-1$임을 직관적으로도 즉시 파악할 수 있다.\n- $P(x)$가 일차식 $x-1$이 됨을 정확히 약분하여 확인한다.\n\n[결론]\n$1$"
   },
   {
     "id": 7,
@@ -182,11 +188,11 @@ window.questionBank = [
     "sourceQuestionNo": 7,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -195,13 +201,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)=3x^3+ax^2-6x+2$를 $x+1$로 나누었을 때 나머지와 $x+2$로 나누었을 때 나머지가 같다. 이때 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=5$",
+    "solution": "[풀이 전략]\n나머지 정리에 의해 다항식 $P(x)$를 일차식 $x-\\alpha$로 나눈 나머지는 $P(\\alpha)$이다.\n- $x+1$로 나눈 나머지: $P(-1)$\n- $x+2$로 나눈 나머지: $P(-2)$\n두 나머지가 같다는 조건 $P(-1) = P(-2)$로부터 $a$에 대한 일차방정식을 세워 해결한다.\n\n[단계별 풀이]\n1단계: $P(-1)$ 계산하기\n$$P(-1) = 3(-1)^3 + a(-1)^2 - 6(-1) + 2$$\n$$= -3 + a + 6 + 2 = a + 5$$\n\n2단계: $P(-2)$ 계산하기\n$$P(-2) = 3(-2)^3 + a(-2)^2 - 6(-2) + 2$$\n$$= 3(-8) + 4a + 12 + 2 = -24 + 4a + 14 = 4a - 10$$\n\n3단계: $P(-1) = P(-2)$ 방정식 풀기\n$$a + 5 = 4a - 10$$\n이항하면\n$$5 + 10 = 4a - a$$\n$$15 = 3a \\implies a = 5$$\n\n[오답 및 경계 점검]\n- $(-2)^3 = -8$, $(-2)^2 = 4$의 거듭제곱 계산과 $-6(-2) = +12$의 부호 계산에 유의한다.\n- 검산: $a=5$일 때 $P(-1) = 5+5 = 10$, $P(-2) = 4(5)-10 = 10$으로 두 나머지가 완벽히 일치함을 확인한다.\n\n[결론]\n$a=5$"
   },
   {
     "id": 8,
@@ -210,11 +217,11 @@ window.questionBank = [
     "sourceQuestionNo": 8,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -223,7 +230,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)=x^3-kx^2-5x+k^2-3$이 $x-2$로 나누어떨어지도록 하는 모든 실수 $k$의 값의 합은?",
@@ -234,8 +242,8 @@ window.questionBank = [
       "6",
       "8"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n인수정리에 의해 다항식 $P(x)$가 일차식 $x-2$로 나누어떨어질 필요충분조건은 $P(2)=0$이다.\n- $P(2)$를 계산하여 $k$에 대한 이차방정식을 유도한다.\n- 판별식을 통해 실근 조건을 확인한 뒤, 이차방정식의 근과 계수의 관계를 이용하여 모든 실수 $k$의 합을 구한다.\n\n[단계별 풀이]\n1단계: $P(2)=0$ 적용하기\n$$P(2) = 2^3 - k(2)^2 - 5(2) + k^2 - 3 = 0$$\n$$8 - 4k - 10 + k^2 - 3 = 0$$\n내림차순으로 정리하면\n$$k^2 - 4k - 5 = 0$$\n\n2단계: 이차방정식 풀기 (또는 근과 계수의 관계)\n좌변을 인수분해하면\n$$(k-5)(k+1) = 0$$\n따라서 실수 $k$의 값은\n$$k = 5 \\quad \\text{또는} \\quad k = -1$$\n\n3단계: 모든 실수 $k$의 값의 합 계산\n$$5 + (-1) = 4$$\n(근과 계수의 관계 적용 시: 판별식 $D/4 = (-2)^2 - (-5) = 9 > 0$이므로 서로 다른 두 실근을 가지며, 두 근의 합은 $-\\dfrac{-4}{1} = 4$이다.)\n따라서 구하는 값은 선지 ③번의 $4$이다.\n\n[오답 및 경계 점검]\n- 문제에서 '실수 $k$'의 합을 물었으므로, 근과 계수의 관계를 사용할 때는 반드시 판별식 $D \\ge 0$을 만족하는지 점검해야 한다. 이 문제에서는 $D=36>0$이므로 실근임이 확실하다.\n\n[결론]\n③"
   },
   {
     "id": 9,
@@ -244,11 +252,11 @@ window.questionBank = [
     "sourceQuestionNo": 9,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -257,13 +265,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)=ax^3+2x^2-x+b$는 $x^2-x$로 나누어떨어진다. $P(x)$를 $x-3$으로 나누었을 때, 나머지를 구하시오. (단, $a$, $b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-12$",
+    "solution": "[풀이 전략]\n제수 $x^2-x = x(x-1)$로 나누어떨어지므로 인수정리에 의해 $P(0)=0$과 $P(1)=0$을 만족한다.\n- 두 조건식으로부터 미정계수 $a, b$를 각각 구한다.\n- 완성된 다항식 $P(x)$에 대하여 $P(x)$를 $x-3$으로 나눈 나머지는 나머지 정리에 의해 $P(3)$의 값이 된다.\n\n[단계별 풀이]\n1단계: $P(0)=0$과 $P(1)=0$ 적용\n$x^2-x = x(x-1)$이므로\n- $P(0) = a(0)^3 + 2(0)^2 - 0 + b = 0 \\implies b = 0$\n- $P(1) = a(1)^3 + 2(1)^2 - 1 + 0 = 0 \\implies a + 2 - 1 = 0 \\implies a + 1 = 0 \\implies a = -1$\n\n2단계: $P(x)$ 식 완성\n$$P(x) = -x^3 + 2x^2 - x$$\n\n3단계: $P(3)$ 계산하기\n$P(x)$를 $x-3$으로 나눈 나머지는 $P(3)$이므로\n$$P(3) = -(3)^3 + 2(3)^2 - 3$$\n$$= -27 + 2(9) - 3$$\n$$= -27 + 18 - 3 = -12$$\n따라서 구하는 나머지는 $-12$이다.\n\n[오답 및 경계 점검]\n- $-(3)^3 = -27$의 부호와 $2(3)^2 = 18$의 계산을 차분히 정리한다.\n- $P(x) = -x(x-1)^2$으로 인수분해되므로 $P(3) = -3(3-1)^2 = -3(4) = -12$로 간결하게 검산할 수 있다.\n\n[결론]\n$-12$"
   },
   {
     "id": 10,
@@ -272,11 +281,11 @@ window.questionBank = [
     "sourceQuestionNo": 10,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -285,13 +294,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x-4$로 나누었을 때, 나머지가 $2$이다. 다항식 $6xP(2x+1)$을 $2x-3$으로 나누었을 때, 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$18$",
+    "solution": "[풀이 전략]\n합성된 다항식의 나눗셈에서 나머지 정리를 원리대로 적용한다.\n- 조건: $P(x)$를 $x-4$로 나눈 나머지가 $2$이므로 $P(4) = 2$이다.\n- 목표: 새로운 다항식 $F(x) = 6xP(2x+1)$을 일차식 $2x-3$으로 나눈 나머지를 구한다.\n- $2x-3 = 0$이 되는 $x = \\dfrac{3}{2}$을 $F(x)$에 대입하여 $F\\left(\\dfrac{3}{2}\\right)$의 값을 계산한다.\n\n[단계별 풀이]\n1단계: 주어진 조건 정리\n나머지 정리에 의해\n$$P(4) = 2$$\n\n2단계: 구하는 나머지의 수식 표현\n다항식 $6xP(2x+1)$을 일차식 $2x-3$으로 나누었을 때의 몫을 $Q(x)$, 나머지를 상수 $R$라 하면\n$$6xP(2x+1) = (2x-3)Q(x) + R$$\n양변에 $x = \\dfrac{3}{2}$을 대입하면\n$$R = 6\\left(\\dfrac{3}{2}\\right) \\cdot P\\left(2\\left(\\dfrac{3}{2}\\right) + 1\\right)$$\n\n3단계: 값 계산하기\n$$6\\left(\\dfrac{3}{2}\\right) = 9$$\n$$2\\left(\\dfrac{3}{2}\\right) + 1 = 3 + 1 = 4$$\n따라서\n$$R = 9 \\cdot P(4)$$\n$P(4) = 2$를 대입하면\n$$R = 9 \\times 2 = 18$$\n그러므로 구하는 나머지는 $18$이다.\n\n[오답 및 경계 점검]\n- $P(2x+1)$의 괄호 안뿐만 아니라 바깥에 곱해진 $6x$에도 반드시 $x = \\dfrac{3}{2}$을 대입해야 한다. $6 \\times \\dfrac{3}{2} = 9$를 빼먹고 $2$라고 답하는 실수를 주의해야 한다.\n\n[결론]\n$18$"
   },
   {
     "id": 11,
@@ -300,11 +310,11 @@ window.questionBank = [
     "sourceQuestionNo": 11,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -313,13 +323,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x-2$로 나누었을 때 몫은 $A(x)$, 나머지는 $10$이고, $x-8$로 나누었을 때 몫은 $B(x)$, 나머지는 $-2$이다. 다항식 $\\{A(x)+B(x)\\}^2$을 $x-5$로 나누었을 때, 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$16$",
+    "solution": "[풀이 전략]\n나머지 정리를 몫의 관계식에 적용한다.\n- 조건 1: $P(x) = (x-2)A(x) + 10$\n- 조건 2: $P(x) = (x-8)B(x) - 2$\n- 구하는 것: 다항식 $\\{A(x)+B(x)\\}^2$을 $x-5$로 나눈 나머지이므로, 나머지 정리에 의해 $\\{A(5)+B(5)\\}^2$의 값을 구해야 한다.\n- 두 나눗셈 항등식에 공통으로 $x=5$를 대입하여 $P(5)$를 매개로 $A(5)+B(5)$의 값을 도출한다.\n\n[단계별 풀이]\n1단계: 두 나눗셈 항등식에 $x=5$ 대입하기\n첫 번째 식에 $x=5$를 대입하면\n$$P(5) = (5-2)A(5) + 10 = 3A(5) + 10 \\quad \\cdots\\cdots \\text{①}$$\n두 번째 식에 $x=5$를 대입하면\n$$P(5) = (5-8)B(5) - 2 = -3B(5) - 2 \\quad \\cdots\\cdots \\text{②}$$\n\n2단계: 두 식을 연립하여 $A(5)+B(5)$ 구하기\n①식과 ②식의 좌변이 $P(5)$로 같으므로 우변끼리 같다:\n$$3A(5) + 10 = -3B(5) - 2$$\n$-3B(5)$를 좌변으로, $10$을 우변으로 이항하면\n$$3A(5) + 3B(5) = -2 - 10$$\n$$3\\{A(5) + B(5)\\} = -12$$\n양변을 $3$으로 나누면\n$$A(5) + B(5) = -4$$\n\n3단계: 구하는 나머지 계산하기\n다항식 $\\{A(x)+B(x)\\}^2$을 $x-5$로 나눈 나머지는 $\\{A(5)+B(5)\\}^2$이므로\n$$(-4)^2 = 16$$\n따라서 구하는 나머지는 $16$이다.\n\n[오답 및 경계 점검]\n- $A(x)$와 $B(x)$의 구체적인 다항식을 알지 못하더라도, 특정 값 $x=5$에서의 함숫값의 합 $A(5)+B(5)$를 $P(5)$의 소거를 통해 유일하게 결정할 수 있다는 점이 이 문제의 핵심 발상이다.\n- 마지막에 제곱하는 단계를 빠뜨리지 않고 $(-4)^2 = 16$으로 마감한다.\n\n[결론]\n$16$"
   },
   {
     "id": 12,
@@ -328,11 +339,11 @@ window.questionBank = [
     "sourceQuestionNo": 12,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -341,13 +352,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x^2+1$로 나누었을 때 나머지는 $x+1$이고, $x-1$로 나누었을 때 나머지는 $4$이다. $P(x)$를 $(x-1)(x^2+1)$로 나누었을 때, 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2+x+2$",
+    "solution": "[풀이 전략]\n삼차식으로 나눈 나머지의 표현법을 적용한다.\n- $P(x)$를 삼차식 $(x-1)(x^2+1)$로 나눈 몫을 $Q(x)$, 나머지를 $R(x)$라 하면 $R(x)$는 이차 이하의 다항식이다.\n- $P(x) = (x-1)(x^2+1)Q(x) + R(x)$를 $x^2+1$로 나눌 때, 앞부분 $(x-1)(x^2+1)Q(x)$는 나누어떨어지므로 나머지 $x+1$은 $R(x)$를 $x^2+1$로 나눈 나머지와 일치해야 한다.\n- 따라서 $R(x) = a(x^2+1) + (x+1)$로 두고, 조건 $P(1)=4$를 이용하여 미지수 $a$를 구한다.\n\n[단계별 풀이]\n1단계: 나머지 $R(x)$의 형태 설정\n$P(x)$를 $(x-1)(x^2+1)$로 나눈 몫을 $Q(x)$라 하면 나머지는 이차 이하의 다항식이다.\n이 식 전체를 $x^2+1$로 나눈 나머지가 $x+1$이어야 하므로 나머지는 다음과 같이 둘 수 있다:\n$$P(x) = (x-1)(x^2+1)Q(x) + a(x^2+1) + x+1$$\n(단, $a$는 상수)\n\n2단계: $P(1)=4$를 이용하여 $a$ 구하기\n$P(x)$를 $x-1$로 나눈 나머지가 $4$이므로 나머지 정리에 의해 $P(1) = 4$이다.\n항등식의 양변에 $x=1$을 대입하면\n$$P(1) = (1-1)(1^2+1)Q(1) + a(1^2+1) + 1+1$$\n$$4 = 0 + a(2) + 2$$\n$$4 = 2a + 2$$\n$$2a = 2 \\implies a = 1$$\n\n3단계: 나머지 $R(x)$ 완성하기\n$a=1$을 $R(x) = a(x^2+1) + x+1$에 대입하면\n$$R(x) = 1(x^2+1) + x+1 = x^2 + x + 2$$\n따라서 구하는 나머지는 $x^2+x+2$이다.\n\n[오답 및 경계 점검]\n- 나머지를 $ax^2+bx+c$로 두고 $x=1$만 대입하면 식이 하나뿐이라 $a, b, c$를 연립할 수 없게 된다. 반드시 $x^2+1$로 나눈 나머지 $x+1$을 이용하여 $R(x) = a(x^2+1)+x+1$로 미지수를 $1$개로 축소하는 기법을 써야 한다.\n\n[결론]\n$x^2+x+2$"
   },
   {
     "id": 13,
@@ -356,11 +368,11 @@ window.questionBank = [
     "sourceQuestionNo": 13,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -369,13 +381,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "인수분해"
     ],
     "wide": false,
     "content": "이차항의 계수가 $1$인 두 이차식 $P(x)$, $Q(x)$의 곱이 $x^4-5x^3+8x^2-4x$이다. $P(1)=0$, $Q(0)=0$일 때, $P(3)+Q(4)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n사차식을 인수분해하여 일차 인수들의 곱으로 나타낸 뒤, 주어진 조건 $P(1)=0, Q(0)=0$과 차수 조건을 만족하도록 두 이차식 $P(x)$와 $Q(x)$에 인수를 배분한다.\n- $x^4-5x^3+8x^2-4x$를 조립제법으로 인수분해하면 $x(x-1)(x-2)^2$이다.\n- $P(1)=0$이므로 $P(x)$는 인수로 $(x-1)$을 가져야 하고, $Q(0)=0$이므로 $Q(x)$는 인수로 $x$를 가져야 한다.\n- $P(x)$와 $Q(x)$는 모두 최고차항의 계수가 $1$인 이차식이므로 남은 인수 $(x-2)^2$에서 $(x-2)$를 각각 하나씩 나누어 갖는다.\n\n[단계별 풀이]\n1단계: 사차식 인수분해하기\n공통인수 $x$로 묶으면\n$$x^4-5x^3+8x^2-4x = x(x^3-5x^2+8x-4)$$\n$x=1$을 대입하면 $1-5+8-4 = 0$이므로 $x-1$을 인수로 갖는다. 조립제법을 시행하면\n$$x^3-5x^2+8x-4 = (x-1)(x^2-4x+4) = (x-1)(x-2)^2$$\n따라서\n$$P(x)Q(x) = x(x-1)(x-2)^2$$\n\n2단계: $P(x)$와 $Q(x)$ 결정하기\n$P(x)$와 $Q(x)$는 이차항의 계수가 $1$인 이차식이므로\n- $P(1) = 0 \\implies P(x)$는 $(x-1)$을 인수로 갖는다.\n- $Q(0) = 0 \\implies Q(x)$는 $x$를 인수로 갖는다.\n남은 인수가 $(x-2)^2$이므로, 두 식이 모두 이차식이 되려면 $P(x)$와 $Q(x)$가 각각 $(x-2)$를 하나씩 인수로 가져야 한다.\n따라서\n$$P(x) = (x-1)(x-2) = x^2-3x+2$$\n$$Q(x) = x(x-2) = x^2-2x$$\n\n3단계: $P(3)+Q(4)$ 계산하기\n$$P(3) = (3-1)(3-2) = 2 \\times 1 = 2$$\n$$Q(4) = 4(4-2) = 4 \\times 2 = 8$$\n따라서\n$$P(3) + Q(4) = 2 + 8 = 10$$\n\n[오답 및 경계 점검]\n- (교과서 정답 오류 주의) 교과서 정답 및 해설서(p.157)에는 $P(x)$와 $Q(x)$의 인수를 바꾸어 $P(x)=x(x-2), Q(x)=(x-1)(x-2)$로 잘못 기재하여 $P(3)+Q(4)=3+6=9$로 오기되어 있다.\n- 그러나 문제의 발문 조건은 분명히 $P(1)=0, Q(0)=0$이므로, $P(x)$가 $x-1$을 인수로 갖고 $Q(x)$가 $x$를 인수로 가져야 한다. 따라서 올바른 수학적 정답은 $10$이다. (만약 교과서 해설서 기준 정답을 요구하는 경우 $9$로 채점될 수 있으므로 병기한다.)\n\n[결론]\n$10$"
   },
   {
     "id": 14,
@@ -384,11 +397,11 @@ window.questionBank = [
     "sourceQuestionNo": 14,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -397,13 +410,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "인수분해"
     ],
     "wide": false,
     "content": "인수분해를 이용하여 다음 식의 값을 구하시오.\n$$\\sqrt{99\\times 100\\times 101\\times 102+1}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10099$",
+    "solution": "[풀이 전략]\n연속하는 네 자연수의 곱에 $1$이 더해진 형태는 문자로 치환하여 사차식의 완전제곱식 인수분해 공식을 적용한다.\n- 계산이 간편하도록 $100 = x$로 치환한다.\n- 근호 안의 식은 $(x-1)x(x+1)(x+2) + 1$이 된다.\n- 상수의 합이 같도록 짝지어 전개하고 공통부분을 치환하면 완전제곱식이 유도되어 근호가 벗겨진다.\n\n[단계별 풀이]\n1단계: $100 = x$ 치환 및 전개\n근호 안의 식을 $A$라 하면\n$$A = (x-1)x(x+1)(x+2) + 1$$\n상수의 합이 같도록 $(x-1)(x+2)$와 $x(x+1)$을 짝지으면\n$$A = \\{(x-1)(x+2)\\}\\{x(x+1)\\} + 1$$\n$$= (x^2+x-2)(x^2+x) + 1$$\n\n2단계: $x^2+x = X$ 치환하여 완전제곱식 인수분해\n$$A = (X-2)X + 1 = X^2-2X+1 = (X-1)^2$$\n$X = x^2+x$를 대입하면\n$$A = (x^2+x-1)^2$$\n\n3단계: 근호 계산 및 $x=100$ 환원\n$$\\sqrt{A} = \\sqrt{(x^2+x-1)^2} = |x^2+x-1|$$\n$x=100$을 대입하면\n$$x^2+x-1 = 100^2 + 100 - 1 = 10000 + 100 - 1 = 10099 > 0$$\n따라서 구하는 식의 값은 $10099$이다.\n\n[오답 및 경계 점검]\n- $\\sqrt{A^2} = |A|$이므로 부호를 항상 확인해야 한다. $x=100$에서 $x^2+x-1 > 0$임이 명백하므로 절댓값을 그대로 벗길 수 있다.\n- $99 = x$로 치환해도 결과는 완전히 동일하지만, $100$을 $x$로 두는 것이 $100^2 = 10000$의 자릿수 계산에서 실수를 방지하는 최적의 방법이다.\n\n[결론]\n$10099$"
   },
   {
     "id": 15,
@@ -412,11 +426,11 @@ window.questionBank = [
     "sourceQuestionNo": 15,
     "level": "고1",
     "category": "다항식",
-    "originalCategory": "수학 익힘책",
+    "originalCategory": "익힘책",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -425,12 +439,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "수학 익힘책"
+      "익힘책",
+      "인수분해"
     ],
     "wide": false,
     "content": "다항식 $(x+1)(x+2)(x+3)(x+4)+a$가 $(x^2+bx+c)^2$으로 인수분해될 때, 실수 $a$, $b$, $c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1, b=5, c=5$",
+    "solution": "[풀이 전략]\n네 일차식의 곱에 상수가 더해진 식을 완전제곱식으로 만드는 조건을 찾는다.\n- 상수의 합이 같도록 $(x+1)(x+4)$와 $(x+2)(x+3)$으로 짝지어 전개한다.\n- 공통부분 $x^2+5x = X$로 치환하여 $X$에 대한 이차식을 세운다.\n- $X$에 대한 이차식이 완전제곱식이 되기 위한 상수 $a$를 판별식 또는 계수 관계를 통해 결정하고, $(x^2+bx+c)^2$과 계수를 비교한다.\n\n[단계별 풀이]\n1단계: 짝지어 전개하기\n$$(x+1)(x+2)(x+3)(x+4)+a = \\{(x+1)(x+4)\\}\\{(x+2)(x+3)\\} + a$$\n$$= (x^2+5x+4)(x^2+5x+6) + a$$\n\n2단계: $x^2+5x = X$ 치환하여 정리\n$$= (X+4)(X+6) + a$$\n$$= X^2 + 10X + 24 + a$$\n\n3단계: 완전제곱식 조건 적용\n이 식이 $X$에 대한 완전제곱식이 되려면 상수항이 $\\left(\\dfrac{10}{2}\\right)^2 = 25$이어야 한다.\n$$24 + a = 25 \\implies a = 1$$\n이때 완전제곱식은 다음과 같다:\n$$X^2 + 10X + 25 = (X+5)^2$$\n\n4단계: $X = x^2+5x$ 환원 및 계수 비교\n$$= (x^2+5x+5)^2$$\n이 식이 $(x^2+bx+c)^2$과 일치해야 하므로 양변의 계수를 비교하면\n$$b = 5, \\quad c = 5$$\n따라서 구하는 실수의 값은 $a=1, b=5, c=5$이다.\n\n[오답 및 경계 점검]\n- $(x^2+bx+c)^2$에서 최고차항의 계수가 $1$로 일치하므로 $x^2+bx+c = \\pm(x^2+5x+5)$가 가능하나, 이차항 계수가 $+1$이므로 부호는 양수로 고정되어 $b=5, c=5$가 유일하다.\n- $a=1$일 때 $24+1=25=5^2$ 성립을 재점검한다.\n\n[결론]\n$a=1, b=5, c=5$"
   }
 ];

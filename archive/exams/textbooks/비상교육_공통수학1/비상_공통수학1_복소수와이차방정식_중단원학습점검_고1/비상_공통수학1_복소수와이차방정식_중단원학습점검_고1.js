@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -20,14 +20,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "등식 $(4x+y)+(2x+2y)i=\\overline{4-5i}$를 만족시키는 실수 $x$, $y$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=\\dfrac{1}{2}, y=2$",
+    "solution": "[풀이 전략]\n복소수가 서로 같을 조건(복소수의 상등)을 적용한다.\n- 우변의 켤레복소수 $\\overline{4-5i} = 4+5i$를 먼저 구한다.\n- $x, y$가 실수이므로 좌변 $(4x+y)+(2x+2y)i$의 실수부는 $4x+y$, 허수부는 $2x+2y$이다.\n- 실수부는 실수부끼리, 허수부는 허수부끼리 같다고 놓고 연립일차방정식을 풀어 $x, y$를 구한다.\n\n[단계별 풀이]\n1단계: 우변의 켤레복소수 정리\n$$\\overline{4-5i} = 4+5i$$\n따라서 주어진 등식은 다음과 같다:\n$$(4x+y)+(2x+2y)i = 4+5i$$\n\n2단계: 실수부와 허수부 비교하여 연립방정식 세우기\n$x, y$가 실수이므로 복소수가 서로 같을 조건에 의해\n$$\\begin{cases} 4x+y = 4 & \\cdots \\text{①} \\\\ 2x+2y = 5 & \\cdots \\text{②} \\end{cases}$$\n\n3단계: 연립방정식 풀기\n②번 식의 양변을 $2$로 나누면 $x+y = \\dfrac{5}{2}$, 즉 $y = \\dfrac{5}{2}-x$이다.\n이를 ①번 식에 대입하면:\n$$4x + \\left(\\dfrac{5}{2}-x\\right) = 4$$\n$$3x + \\dfrac{5}{2} = 4$$\n$$3x = 4 - \\dfrac{5}{2} = \\dfrac{3}{2} \\implies x = \\dfrac{1}{2}$$\n$x = \\dfrac{1}{2}$을 $y = \\dfrac{5}{2}-x$에 대입하면:\n$$y = \\dfrac{5}{2} - \\dfrac{1}{2} = 2$$\n\n[오답 및 경계 점검]\n- 우변의 켤레복소수 기호(윗줄 바)를 보지 못하고 $4-5i$와 바로 비교하여 $2x+2y = -5$로 세우는 실수가 자주 발생하므로 기호를 정확히 확인해야 한다.\n- $x, y$가 실수라는 조건이 명시되어 있어야만 실수부와 허수부를 분리하여 항등식처럼 비교할 수 있다.\n\n[결론]\n$x=\\dfrac{1}{2}, y=2$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -48,14 +48,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "다음을 $a+bi$의 꼴로 나타내시오. (단, $a$, $b$는 실수)\n⑴ $(2-i)-(-4i)$\n⑵ $(4-2i)(1+3i)$\n⑶ $\\dfrac{1+5i}{1-i}$\n⑷ $\\dfrac{\\sqrt{32}}{\\sqrt{-8}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2+3i$\n⑵ $10+10i$\n⑶ $-2+3i$\n⑷ $-2i$",
+    "solution": "[풀이 전략]\n복소수의 사칙연산 성질과 $i^2 = -1$을 적용하여 $a+bi$ 꼴로 정리한다.\n- ⑴ 덧셈과 뺄셈: 실수부는 실수부끼리, 허수부는 허수부끼리 계산한다.\n- ⑵ 곱셈: 다항식의 곱셈처럼 전개한 후 $i^2 = -1$을 대입하여 동류항을 모은다.\n- ⑶ 나눗셈: 분모의 켤레복소수를 분모·분자에 곱하여 분모를 실수화한다.\n- ⑷ 음수의 제곱근: $\\sqrt{-a} = \\sqrt{a}i$ ($a>0$)로 바꾸어 계산하거나 음수의 제곱근 나눗셈 성질을 적용한다.\n\n[단계별 풀이]\n⑴ $(2-i)-(-4i)$\n괄호를 풀면:\n$$= 2 - i + 4i = 2 + (-1+4)i = 2+3i$$\n\n⑵ $(4-2i)(1+3i)$\n분배법칙으로 전개하면:\n$$= 4\\times 1 + 4\\times 3i - 2i\\times 1 - 2i\\times 3i$$\n$$= 4 + 12i - 2i - 6i^2$$\n$i^2 = -1$을 대입하면:\n$$= 4 + 10i - 6(-1) = 4 + 10i + 6 = 10+10i$$\n\n⑶ $\\dfrac{1+5i}{1-i}$\n분모 $1-i$의 켤레복소수인 $1+i$를 분모와 분자에 각각 곱한다:\n$$= \\dfrac{(1+5i)(1+i)}{(1-i)(1+i)} = \\dfrac{1 + i + 5i + 5i^2}{1^2 - i^2}$$\n$i^2 = -1$을 대입하면 분모는 $1 - (-1) = 2$가 되고, 분자는 $1 + 6i - 5 = -4+6i$가 된다:\n$$= \\dfrac{-4+6i}{2} = -2+3i$$\n\n⑷ $\\dfrac{\\sqrt{32}}{\\sqrt{-8}}$\n근호 안의 음수를 $i$를 이용하여 나타내면 $\\sqrt{-8} = \\sqrt{8}i = 2\\sqrt{2}i$이고, 분자는 $\\sqrt{32} = 4\\sqrt{2}$이다:\n$$= \\dfrac{4\\sqrt{2}}{2\\sqrt{2}i} = \\dfrac{2}{i}$$\n분모·분자에 $i$를 곱하여 분모를 실수화하면:\n$$= \\dfrac{2i}{i^2} = \\dfrac{2i}{-1} = -2i$$\n(별해: $a>0, b<0$일 때 $\\dfrac{\\sqrt{a}}{\\sqrt{b}} = -\\sqrt{\\dfrac{a}{b}}$이므로 $-\\sqrt{\\dfrac{32}{-8}} = -\\sqrt{-4} = -2i$)\n\n[오답 및 경계 점검]\n- ⑷번에서 음수의 제곱근을 기계적으로 합쳐서 $\\sqrt{\\dfrac{32}{-8}} = \\sqrt{-4} = 2i$로 부호를 $+2i$로 잘못 쓰는 오류가 매우 잦다. 분모만 음수일 때는 앞에 마이너스 부호가 붙어 $-2i$가 됨에 각별히 유의한다.\n\n[결론]\n⑴ $2+3i$\n⑵ $10+10i$\n⑶ $-2+3i$\n⑷ $-2i$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -76,14 +76,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "다음 이차방정식의 근을 판별하시오.\n⑴ $x^2-6x+3=0$\n⑵ $2x^2+5x+5=0$\n⑶ $9x^2-12x+4=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 서로 다른 두 실근\n⑵ 서로 다른 두 허근\n⑶ 중근",
+    "solution": "[풀이 전략]\n계수가 실수인 이차방정식 $ax^2+bx+c=0$의 근의 종류는 판별식 $D = b^2-4ac$ (일차항 계수가 짝수일 때 $\\dfrac{D}{4} = b'^2-ac$)의 부호로 판별한다.\n- $D > 0$: 서로 다른 두 실근\n- $D = 0$: 중근 (서로 같은 두 실근)\n- $D < 0$: 서로 다른 두 허근\n\n[단계별 풀이]\n⑴ $x^2-6x+3=0$\n$a=1, b'=-3, c=3$이므로 짝수 판별식을 적용한다:\n$$\\dfrac{D}{4} = (-3)^2 - 1\\times 3 = 9 - 3 = 6$$\n$\\dfrac{D}{4} = 6 > 0$이므로, 서로 다른 두 실근을 갖는다.\n\n⑵ $2x^2+5x+5=0$\n$a=2, b=5, c=5$이므로 판별식을 적용한다:\n$$D = 5^2 - 4\\times 2\\times 5 = 25 - 40 = -15$$\n$D = -15 < 0$이므로, 서로 다른 두 허근을 갖는다.\n\n⑶ $9x^2-12x+4=0$\n$a=9, b'=-6, c=4$이므로 짝수 판별식을 적용한다:\n$$\\dfrac{D}{4} = (-6)^2 - 9\\times 4 = 36 - 36 = 0$$\n$\\dfrac{D}{4} = 0$이므로, 중근(서로 같은 두 실근)을 갖는다.\n\n[오답 및 경계 점검]\n- 근을 구하라는 문제가 아니라 근을 '판별'하라는 문제이므로 근의 공식을 끝까지 계산할 필요 없이 판별식 $D$의 부호만 명시하고 그에 따른 근의 종류(서로 다른 두 실근/중근/서로 다른 두 허근)를 서술해야 한다.\n\n[결론]\n⑴ 서로 다른 두 실근\n⑵ 서로 다른 두 허근\n⑶ 중근"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -104,14 +104,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "다음 이차방정식의 두 근의 합과 곱을 구하시오.\n⑴ $x^2-3x+5=0$\n⑵ $4x^2+7x-10=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 합: $3$, 곱: $5$\n⑵ 합: $-\\dfrac{7}{4}$, 곱: $-\\dfrac{5}{2}$",
+    "solution": "[풀이 전략]\n이차방정식 $ax^2+bx+c=0$ ($a \\ne 0$)의 두 근을 $\\alpha, \\beta$라 할 때 근과 계수의 관계:\n- 두 근의 합: $\\alpha+\\beta = -\\dfrac{b}{a}$\n- 두 근의 곱: $\\alpha\\beta = \\dfrac{c}{a}$\n\n[단계별 풀이]\n⑴ $x^2-3x+5=0$\n이차항의 계수 $a=1$, 일차항의 계수 $b=-3$, 상수항 $c=5$이다.\n- 두 근의 합: $-\\dfrac{-3}{1} = 3$\n- 두 근의 곱: $\\dfrac{5}{1} = 5$\n\n⑵ $4x^2+7x-10=0$\n이차항의 계수 $a=4$, 일차항의 계수 $b=7$, 상수항 $c=-10$이다.\n- 두 근의 합: $-\\dfrac{7}{4}$\n- 두 근의 곱: $\\dfrac{-10}{4} = -\\dfrac{5}{2}$\n\n[오답 및 경계 점검]\n- 두 근의 합 공식에는 음의 부호가 붙고($-\\dfrac{b}{a}$), 두 근의 곱 공식에는 부호가 붙지 않는다($\\dfrac{c}{a}$). 부호 실수를 주의한다.\n- ⑵번에서 $\\dfrac{-10}{4}$은 기약분수 $-\\dfrac{5}{2}$로 약분하여 작성한다.\n\n[결론]\n⑴ 합: $3$, 곱: $5$\n⑵ 합: $-\\dfrac{7}{4}$, 곱: $-\\dfrac{5}{2}$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -132,14 +132,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$i+2i^2+3i^3+4i^4+5i^5+6i^6$을 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-4+3i$",
+    "solution": "[풀이 전략]\n허수단위 $i$의 거듭제곱의 주기성을 활용한다.\n$i^1 = i$, $i^2 = -1$, $i^3 = -i$, $i^4 = 1$이 순환한다.\n각 항의 $i$의 거듭제곱을 단순화한 뒤, 실수부와 허수부를 각각 모아 계산한다.\n\n[단계별 풀이]\n1단계: 각 항의 $i$ 거듭제곱 정리\n- $i$\n- $2i^2 = 2(-1) = -2$\n- $3i^3 = 3(-i) = -3i$\n- $4i^4 = 4(1) = 4$\n- $5i^5 = 5i^4\\cdot i = 5i$\n- $6i^6 = 6i^4\\cdot i^2 = 6(-1) = -6$\n\n2단계: 실수부와 허수부별로 합산\n주어진 식은:\n$$i - 2 - 3i + 4 + 5i - 6$$\n실수부끼리 묶으면:\n$$-2 + 4 - 6 = -4$$\n허수부끼리 묶으면:\n$$i - 3i + 5i = (1 - 3 + 5)i = 3i$$\n따라서 구하는 식의 값은:\n$$-4 + 3i$$\n\n[오답 및 경계 점검]\n- 4개 항씩 묶어서 계산하는 방법도 가능하다:\n  $(i - 2 - 3i + 4) = 2 - 2i$\n  뒤의 두 항: $5i - 6 = -6 + 5i$\n  합: $(2 - 2i) + (-6 + 5i) = -4 + 3i$\n  어떤 방법으로 계산하든 결과가 동일함을 검산한다.\n\n[결론]\n$-4+3i$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -160,14 +160,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "등식 $\\dfrac{z}{i}+3i\\bar{z}=-4+2i$를 만족시키는 복소수 $z$를 구하시오. (단, $\\bar{z}$는 $z$의 켤레복소수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1-i$",
+    "solution": "[풀이 전략]\n복소수 $z$를 미지수 $a+bi$ ($a, b$는 실수)로 두고, 켤레복소수 $\\bar{z} = a-bi$를 대입하여 식을 정리한 뒤 복소수의 상등을 적용한다.\n\n[단계별 풀이]\n1단계: $z = a+bi$ 대입하여 좌변 정리하기\n$z = a+bi$ ($a, b$는 실수)라 하면 $\\bar{z} = a-bi$이다.\n- 첫째 항 $\\dfrac{z}{i}$:\n  $$\\dfrac{a+bi}{i} = \\dfrac{(a+bi)(-i)}{1} = -ai - bi^2 = b - ai$$\n- 둘째 항 $3i\\bar{z}$:\n  $$3i(a-bi) = 3ai - 3bi^2 = 3ai - 3b(-1) = 3b + 3ai$$\n\n2단계: 두 항을 더하여 실수부와 허수부 분리하기\n$$\\dfrac{z}{i} + 3i\\bar{z} = (b - ai) + (3b + 3ai) = (b+3b) + (-a+3a)i = 4b + 2ai$$\n\n3단계: 우변 $-4+2i$와 비교하여 $a, b$ 구하기\n$a, b$가 실수이므로 복소수의 상등에 의해:\n$$\\begin{cases} 4b = -4 \\implies b = -1 \\\\ 2a = 2 \\implies a = 1 \\end{cases}$$\n따라서 구하는 복소수 $z$는:\n$$z = 1 - i$$\n\n[오답 및 경계 점검]\n- 구한 $z = 1-i$를 원래 등식에 대입하여 검산한다:\n  $\\dfrac{1-i}{i} = -1-i$, $3i(1+i) = -3+3i$\n  $(-1-i) + (-3+3i) = -4+2i$로 우변과 정확히 일치한다.\n\n[결론]\n$1-i$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -188,14 +188,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "두 복소수 $\\alpha=\\dfrac{1+i}{2i}$, $\\beta=\\dfrac{1-i}{2i}$에 대하여 $\\alpha^2+\\alpha\\beta+\\beta^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n복소수 $\\alpha, \\beta$를 먼저 분모 실수화하여 간단한 형태로 만든 후, 곱셈 공식 변형 $\\alpha^2+\\alpha\\beta+\\beta^2 = (\\alpha+\\beta)^2 - \\alpha\\beta$를 활용한다.\n\n[단계별 풀이]\n1단계: $\\alpha$와 $\\beta$의 분모 실수화\n$$\\alpha = \\dfrac{1+i}{2i} = \\dfrac{(1+i)(-i)}{2i(-i)} = \\dfrac{-i-i^2}{2} = \\dfrac{1-i}{2}$$\n$$\\beta = \\dfrac{1-i}{2i} = \\dfrac{(1-i)(-i)}{2i(-i)} = \\dfrac{-i+i^2}{2} = \\dfrac{-1-i}{2}$$\n\n2단계: $\\alpha+\\beta$와 $\\alpha\\beta$ 계산\n- 합:\n  $$\\alpha+\\beta = \\dfrac{(1-i) + (-1-i)}{2} = \\dfrac{-2i}{2} = -i$$\n- 곱:\n  $$\\alpha\\beta = \\left(\\dfrac{1-i}{2}\\right)\\left(\\dfrac{-(1+i)}{2}\\right) = -\\dfrac{(1-i)(1+i)}{4} = -\\dfrac{1-i^2}{4} = -\\dfrac{2}{4} = -\\dfrac{1}{2}$$\n\n3단계: 곱셈 공식 변형 적용하여 식의 값 구하기\n$$\\alpha^2+\\alpha\\beta+\\beta^2 = (\\alpha+\\beta)^2 - \\alpha\\beta$$\n$$\\alpha+\\beta = -i, \\quad \\alpha\\beta = -\\dfrac{1}{2}$$를 대입하면:\n$$= (-i)^2 - \\left(-\\dfrac{1}{2}\\right) = -1 + \\dfrac{1}{2} = -\\dfrac{1}{2}$$\n\n[오답 및 경계 점검]\n- $\\alpha^2$과 $\\beta^2$을 각각 직접 제곱하여 계산해도 되지만:\n  $\\alpha^2 = \\left(\\dfrac{1-i}{2}\\right)^2 = \\dfrac{-2i}{4} = -\\dfrac{i}{2}$\n  $\\beta^2 = \\left(\\dfrac{-1-i}{2}\\right)^2 = \\dfrac{2i}{4} = \\dfrac{i}{2}$\n  $\\alpha^2+\\beta^2 = 0$이므로 $\\alpha^2+\\alpha\\beta+\\beta^2 = 0 + \\alpha\\beta = -\\dfrac{1}{2}$로 더욱 간단하게도 확인할 수 있다.\n\n[결론]\n$-\\dfrac{1}{2}$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -216,14 +216,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $kx^2-2(k-2)x+k-2=0$이 서로 다른 두 허근을 갖도록 하는 정수 $k$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n이차방정식이라는 조건과 판별식을 결합한다.\n- 1) 주어진 식이 '이차방정식'이므로 최고차항 계수는 $0$이 아니어야 한다: $k \\ne 0$.\n- 2) 서로 다른 두 허근을 가지려면 판별식 $D < 0$이어야 한다.\n- 두 부등식의 공통 범위를 구하고, 그 범위에 속하는 최소의 정수 $k$를 결정한다.\n\n[단계별 풀이]\n1단계: 이차방정식 조건 확인\n주어진 방정식이 이차방정식이므로 최고차항의 계수 $k$는 $0$이 될 수 없다:\n$$k \\ne 0$$\n\n2단계: 서로 다른 두 허근 조건 (판별식 $D < 0$)\n일차항 계수가 $-2(k-2)$로 짝수이므로 짝수 판별식 $\\dfrac{D}{4}$를 적용한다:\n$$\\dfrac{D}{4} = \\{-(k-2)\\}^2 - k(k-2) < 0$$\n$k-2$를 공통인수로 묶어 정리하면:\n$$(k-2)\\{(k-2) - k\\} < 0$$\n$$(k-2)(-2) < 0$$\n양변을 $-2$로 나누면 부등호의 방향이 반대로 바뀐다:\n$$k-2 > 0 \\implies k > 2$$\n\n3단계: 공통 범위 및 정수 $k$의 최솟값 구하기\n$k > 2$이면 $k \\ne 0$ 조건은 자동으로 만족된다.\n따라서 $k > 2$를 만족시키는 정수 $k$는 $3, 4, 5, \\dots$이다.\n이 중 최솟값은 $3$이다.\n\n[오답 및 경계 점검]\n- 최고차항 계수가 문자인 경우 $k \\ne 0$ 조건을 항상 염두에 두어야 한다. 이 문제에서는 $k > 2$로 인해 $0$이 범위에 포함되지 않지만, 만약 부등식 결과에 $0$이 포함될 경우 반드시 제외해야 한다.\n\n[결론]\n$3$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -244,14 +244,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $2x^2+7x+a=0$의 두 실근의 차가 $\\dfrac{9}{2}$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-4$",
+    "solution": "[풀이 전략]\n근과 계수의 관계와 곱셈 공식 변형 $(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta$를 활용한다.\n- 두 근을 $\\alpha, \\beta$라 할 때 두 실근의 차가 $\\dfrac{9}{2}$이므로 $|\\alpha-\\beta| = \\dfrac{9}{2}$이다.\n- 양변을 제곱하여 $(\\alpha-\\beta)^2 = \\dfrac{81}{4}$을 세운다.\n- 근과 계수의 관계에서 $\\alpha+\\beta$와 $\\alpha\\beta$를 대입하여 실수 $a$의 방정식을 푼다.\n\n[단계별 풀이]\n1단계: 근과 계수의 관계식 세우기\n이차방정식 $2x^2+7x+a=0$의 두 실근을 $\\alpha, \\beta$라 하면:\n$$\\alpha+\\beta = -\\dfrac{7}{2}, \\quad \\alpha\\beta = \\dfrac{a}{2}$$\n\n2단계: 두 근의 차 조건 대입하기\n두 실근의 차가 $\\dfrac{9}{2}$이므로:\n$$(\\alpha-\\beta)^2 = \\left(\\dfrac{9}{2}\\right)^2 = \\dfrac{81}{4}$$\n곱셈 공식 변형에 의해:\n$$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta$$\n$$\\dfrac{81}{4} = \\left(-\\dfrac{7}{2}\\right)^2 - 4\\left(\\dfrac{a}{2}\\right)$$\n$$\\dfrac{81}{4} = \\dfrac{49}{4} - 2a$$\n\n3단계: $a$에 대하여 풀기\n$$2a = \\dfrac{49}{4} - \\dfrac{81}{4} = -\\dfrac{32}{4} = -8$$\n$$a = -4$$\n\n4단계: 실근 조건(판별식) 점검\n$a=-4$일 때 판별식 $D = 7^2 - 4(2)(-4) = 49 + 32 = 81 > 0$이므로 문제의 '두 실근' 조건을 완벽히 만족한다.\n\n[오답 및 경계 점검]\n- 문제에서 '두 실근'이라고 명시하였으므로 구한 $a$에 대해 판별식 $D \\ge 0$이 성립하는지 반드시 확인해야 한다. $D = 81 > 0$이므로 타당하다.\n\n[결론]\n$-4$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -272,14 +272,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2-abx+a+b=0$의 한 근이 $1+2i$일 때, 실수 $a$, $b$에 대하여 $(a-b)^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$17$",
+    "solution": "[풀이 전략]\n실수 계수 이차방정식의 켤레근 성질을 적용한다.\n- 계수 $a, b$가 실수이므로 방정식 $x^2-abx+a+b=0$의 모든 계수는 실수이다.\n- 실수 계수 이차방정식에서 한 허근이 $1+2i$이면 다른 한 근은 반드시 켤레복소수인 $1-2i$이다.\n- 두 근의 합과 곱을 근과 계수의 관계와 연립하여 $ab$와 $a+b$의 값을 구한 후, 곱셈 공식 변형으로 $(a-b)^2$을 계산한다.\n\n[단계별 풀이]\n1단계: 켤레근 성질 적용\n계수가 모두 실수이므로 한 근이 $1+2i$이면 다른 한 근은 $1-2i$이다.\n\n2단계: 근과 계수의 관계 적용\n- 두 근의 합:\n  $$(1+2i) + (1-2i) = 2$$\n  방정식에서 두 근의 합은 $ab$이므로:\n  $$ab = 2$$\n- 두 근의 곱:\n  $$(1+2i)(1-2i) = 1^2 - (2i)^2 = 1 - 4(-1) = 5$$\n  방정식에서 두 근의 곱은 $a+b$이므로:\n  $$a+b = 5$$\n\n3단계: 곱셈 공식 변형으로 $(a-b)^2$ 계산하기\n$$(a-b)^2 = (a+b)^2 - 4ab$$\n$a+b=5$와 $ab=2$를 대입하면:\n$$(a-b)^2 = 5^2 - 4\\times 2 = 25 - 8 = 17$$\n\n[오답 및 경계 점검]\n- $a, b$의 개별 값을 구할 필요 없이 $(a-b)^2$의 값만 구하면 되므로 곱셈 공식의 변형을 사용하는 것이 가장 빠르고 안전하다.\n- 켤레근 성질은 '계수가 실수'라는 전제가 있을 때만 성립함을 반드시 명기한다.\n\n[결론]\n$17$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -300,14 +300,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2+2x+a=0$의 두 근이 $\\alpha$, $\\beta$이고, 이차방정식 $x^2+bx-8=0$의 두 근이 $\\alpha+\\beta$, $\\alpha\\beta$일 때, 실수 $a$, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4, b=-2$",
+    "solution": "[풀이 전략]\n두 이차방정식에 각각 근과 계수의 관계를 순차적으로 적용한다.\n- 첫째 방정식 $x^2+2x+a=0$에서 $\\alpha+\\beta$와 $\\alpha\\beta$를 구한다.\n- 둘째 방정식 $x^2+bx-8=0$의 두 근이 $\\alpha+\\beta, \\alpha\\beta$이므로 이 값들을 이용하여 둘째 방정식의 근과 계수의 관계식을 세우고 미정계수 $a, b$를 확정한다.\n\n[단계별 풀이]\n1단계: 첫째 방정식에서 두 근의 합과 곱 구하기\n이차방정식 $x^2+2x+a=0$의 두 근이 $\\alpha, \\beta$이므로:\n$$\\alpha+\\beta = -2, \\quad \\alpha\\beta = a$$\n\n2단계: 둘째 방정식의 두 근 파악\n이차방정식 $x^2+bx-8=0$의 두 근은 $\\alpha+\\beta$와 $\\alpha\\beta$이므로, 즉 $-2$와 $a$이다.\n\n3단계: 둘째 방정식에서 근과 계수의 관계 적용하기\n- 두 근의 곱:\n  $$(-2)\\times a = -8 \\implies -2a = -8 \\implies a = 4$$\n- 두 근의 합:\n  $$(-2) + a = -b$$\n  $a=4$를 대입하면:\n  $$-2 + 4 = -b \\implies 2 = -b \\implies b = -2$$\n\n[오답 및 경계 점검]\n- $x^2+bx-8=0$에서 일차항 계수가 $+b$이므로 두 근의 합 공식은 $-b$가 됨에 유의한다. 부호 실수를 점검한다.\n\n[결론]\n$a=4, b=-2$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -328,14 +328,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "$z=\\dfrac{1-i}{\\sqrt{2}}$일 때, $z+z^2+z^3+\\cdots+z^{30}+z^{31}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n주어진 복소수 $z = \\dfrac{1-i}{\\sqrt{2}}$의 거듭제곱을 직접 계산하여 주기성(순환 마디)을 발견한다.\n- $z^2 = -i$, $z^4 = -1$, $z^8 = 1$이므로 $z$는 주기가 $8$이다.\n- 연속하는 $8$개 항의 합이 $0$이 됨을 보이고, 총 $31$개 항을 $8$개씩 묶어 남은 항의 합을 계산한다.\n\n[단계별 풀이]\n1단계: $z$의 거듭제곱 계산 및 주기 확인\n$$z^2 = \\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^2 = \\dfrac{1 - 2i + i^2}{2} = \\dfrac{-2i}{2} = -i$$\n$$z^4 = (z^2)^2 = (-i)^2 = -1$$\n$$z^8 = (z^4)^2 = (-1)^2 = 1$$\n따라서 $z$의 거듭제곱은 $8$을 주기로 순환한다.\n\n2단계: $8$개 항의 합의 성질 파악\n$z^4 = -1$이므로 $z^5 = -z, z^6 = -z^2, z^7 = -z^3, z^8 = -z^4$이다.\n따라서 연속하는 $8$개 항의 합은:\n$$z + z^2 + z^3 + z^4 + z^5 + z^6 + z^7 + z^8$$\n$$= (z-z) + (z^2-z^2) + (z^3-z^3) + (z^4-z^4) = 0$$\n\n3단계: $31$개 항의 합 계산\n구하는 식은 총 $31$개의 항의 합이다. $31 = 8\\times 3 + 7$이므로:\n$$z+z^2+\\cdots+z^{31} = (z+z^2+\\cdots+z^{24}) + (z^{25}+z^{26}+\\cdots+z^{31})$$\n앞의 $24$개 항은 $8$개씩 $3$묶음이므로 합이 $0$이다:\n$$= 0 + (z^{25}+z^{26}+\\cdots+z^{31})$$\n$z^{24} = 1$이므로 $z^{25} = z, z^{26} = z^2, \\dots, z^{31} = z^7$이다:\n$$= z + z^2 + z^3 + z^4 + z^5 + z^6 + z^7$$\n이 식은 $8$개 항의 합에서 $z^8$만 제외된 것이므로:\n$$(z+z^2+\\cdots+z^8) - z^8 = 0 - 1 = -1$$\n\n[오답 및 경계 점검]\n- $z$부터 $z^{31}$까지의 항의 개수는 $31$개이다 ($31-1+1 = 31$). 지수가 $1$부터 시작하므로 항의 개수 계산에 착오가 없도록 확인한다.\n\n[결론]\n$-1$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -356,13 +356,13 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "복소수와 이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $x^2-3x+4=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, 두 수 $\\dfrac{1}{\\alpha^2-2\\alpha+2}$, $\\dfrac{1}{\\beta^2-2\\beta+2}$을 근으로 하고 $x^2$의 계수가 2인 이차방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2x^2+x+1=0$",
+    "solution": "[풀이 전략]\n근의 정의를 활용하여 이차식의 차수를 낮춘 후 새 근을 간단히 표현한다.\n- $\\alpha, \\beta$가 $x^2-3x+4=0$의 근이므로 $\\alpha^2-3\\alpha+4=0 \\implies \\alpha^2-2\\alpha+2 = \\alpha-2$이다.\n- 따라서 새 근은 $\\dfrac{1}{\\alpha-2}$와 $\\dfrac{1}{\\beta-2}$로 차수가 대폭 낮아진다.\n- 두 새 근의 합과 곱을 근과 계수의 관계($\\alpha+\\beta=3, \\alpha\\beta=4$)로 계산하고, 최고차항 계수가 $2$인 이차방정식을 작성한다.\n\n[단계별 풀이]\n1단계: 분모의 차수 낮추기\n$\\alpha$가 $x^2-3x+4=0$의 근이므로 $\\alpha^2-3\\alpha+4 = 0$이 성립한다.\n$$\\alpha^2-2\\alpha+2 = (\\alpha^2-3\\alpha+4) + \\alpha - 2 = 0 + \\alpha - 2 = \\alpha - 2$$\n마찬가지로 $\\beta^2-2\\beta+2 = \\beta - 2$이다.\n따라서 구하는 이차방정식의 두 근은:\n$$p = \\dfrac{1}{\\alpha-2}, \\quad q = \\dfrac{1}{\\beta-2}$$\n\n2단계: $\\alpha+\\beta$와 $\\alpha\\beta$ 파악\n$x^2-3x+4=0$에서 근과 계수의 관계에 의해:\n$$\\alpha+\\beta = 3, \\quad \\alpha\\beta = 4$$\n\n3단계: 두 새 근 $p, q$의 합과 곱 계산하기\n- 두 근의 합:\n  $$p+q = \\dfrac{1}{\\alpha-2} + \\dfrac{1}{\\beta-2} = \\dfrac{(\\beta-2) + (\\alpha-2)}{(\\alpha-2)(\\beta-2)}$$\n  분자: $(\\alpha+\\beta) - 4 = 3 - 4 = -1$\n  분모: $\\alpha\\beta - 2(\\alpha+\\beta) + 4 = 4 - 2(3) + 4 = 2$\n  $$p+q = -\\dfrac{1}{2}$$\n- 두 근의 곱:\n  $$pq = \\dfrac{1}{(\\alpha-2)(\\beta-2)} = \\dfrac{1}{2}$$\n\n4단계: 최고차항 계수가 $2$인 이차방정식 세우기\n두 근의 합이 $-\\dfrac{1}{2}$이고 곱이 $\\dfrac{1}{2}$이며 최고차항 계수가 $2$인 이차방정식은:\n$$2\\left\\{x^2 - (p+q)x + pq\\right\\} = 0$$\n$$2\\left\\{x^2 - \\left(-\\dfrac{1}{2}\\right)x + \\dfrac{1}{2}\\right\\} = 0$$\n$$2\\left(x^2 + \\dfrac{1}{2}x + \\dfrac{1}{2}\\right) = 0$$\n$$2x^2 + x + 1 = 0$$\n\n[오답 및 경계 점검]\n- 분모 $\\alpha^2-2\\alpha+2$를 차수 낮추기 없이 직접 통분하면 사차식 계산이 되어 연산 실수가 발생하기 쉽다. 반드시 대입 관계식 $\\alpha^2-3\\alpha+4=0$을 이용하여 일차식으로 단순화하는 것이 핵심이다.\n- 문제에서 '$x^2$의 계수가 2'라고 지정하였으므로 마지막에 전체에 $2$를 곱하는 것을 빠뜨리지 않아야 한다.\n\n[결론]\n$2x^2+x+1=0$"
   }
 ];

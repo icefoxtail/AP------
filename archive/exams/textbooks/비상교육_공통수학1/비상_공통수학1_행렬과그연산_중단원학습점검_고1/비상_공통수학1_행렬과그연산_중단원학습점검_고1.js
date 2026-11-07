@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -20,14 +20,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "$2\\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가 다음과 같을 때, 행렬 $A$를 구하시오.\n⑴ $a_{ij}=i+2j-3$\n⑵ $a_{ij}=i^2+j^2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{pmatrix} 0 & 2 \\\\ 1 & 3 \\end{pmatrix}$ ⑵ $\\begin{pmatrix} 2 & 5 \\\\ 5 & 8 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n$2 \\times 2$ 행렬 $A$는 $i, j \\in \\{1, 2\\}$에 대하여 성분 $a_{ij}$로 구성된다:\n$$A = \\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix}$$\n주어진 성분 정의 공식에 $i, j$의 값을 대입하여 각 성분을 구한 후 행렬로 표현한다.\n\n[단계별 풀이]\n1단계: ⑴ $a_{ij} = i + 2j - 3$ 계산하기\n- $a_{11} = 1 + 2(1) - 3 = 0$\n- $a_{12} = 1 + 2(2) - 3 = 2$\n- $a_{21} = 2 + 2(1) - 3 = 1$\n- $a_{22} = 2 + 2(2) - 3 = 3$\n따라서 구하는 행렬은:\n$$A = \\begin{pmatrix} 0 & 2 \\\\ 1 & 3 \\end{pmatrix}$$\n\n2단계: ⑵ $a_{ij} = i^2 + j^2$ 계산하기\n- $a_{11} = 1^2 + 1^2 = 2$\n- $a_{12} = 1^2 + 2^2 = 5$\n- $a_{21} = 2^2 + 1^2 = 5$\n- $a_{22} = 2^2 + 2^2 = 8$\n따라서 구하는 행렬은:\n$$A = \\begin{pmatrix} 2 & 5 \\\\ 5 & 8 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 행 번호 $i$와 열 번호 $j$의 위치를 바꾸어 대입하지 않도록 주의한다 ($a_{12}$는 1행 2열, $a_{21}$은 2행 1열).\n\n[결론]\n⑴ $\\begin{pmatrix} 0 & 2 \\\\ 1 & 3 \\end{pmatrix}$ ⑵ $\\begin{pmatrix} 2 & 5 \\\\ 5 & 8 \\end{pmatrix}$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -48,14 +48,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음 등식이 성립할 때, 실수 $a$, $b$, $c$의 값을 구하시오.\n$$\\begin{pmatrix} a+2 & 4 \\\\ 3 & -1 \\end{pmatrix} = \\begin{pmatrix} -4 & 4 \\\\ b-5 & c-2 \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-6$, $b=8$, $c=1$",
+    "solution": "[풀이 전략]\n두 행렬이 서로 같을 조건은 같은 위치에 있는 대응하는 모든 성분이 각각 일치하는 것이다.\n각 행과 열의 성분을 비교하여 $a, b, c$에 대한 일차방정식을 세우고 푼다.\n\n[단계별 풀이]\n1단계: 대응하는 성분별 방정식 세우기\n$$\\begin{pmatrix} a+2 & 4 \\\\ 3 & -1 \\end{pmatrix} = \\begin{pmatrix} -4 & 4 \\\\ b-5 & c-2 \\end{pmatrix}$$\n- (1행 1열): $a+2 = -4$\n- (1행 2열): $4 = 4$ (성립)\n- (2행 1열): $3 = b-5$\n- (2행 2열): $-1 = c-2$\n\n2단계: 각 미지수의 값 구하기\n- $a+2 = -4 \\implies a = -6$\n- $b-5 = 3 \\implies b = 8$\n- $c-2 = -1 \\implies c = 1$\n\n[오답 및 경계 점검]\n- 구한 값들을 원래 행렬에 대입하면 좌우 양변 모두 $\\begin{pmatrix} -4 & 4 \\\\ 3 & -1 \\end{pmatrix}$로 완전히 일치함을 확인한다.\n\n[결론]\n$a=-6$, $b=8$, $c=1$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -76,14 +76,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 4 & -5 & 1 \\\\ -2 & 2 & 3 \\end{pmatrix}$에 대하여 등식 $2A+X=O$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} -8 & 10 & -2 \\\\ 4 & -4 & -6 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬 방정식 $2A+X=O$에서 $X$를 구하기 위해 양변에 $2A$의 덧셈에 대한 역원 $-2A$를 더하면 $X = -2A$가 된다.\n행렬 $A$의 각 성분에 $-2$를 곱하는 실수배를 수행한다.\n\n[단계별 풀이]\n1단계: 행렬 방정식 정리하기\n$$2A + X = O \\implies X = -2A$$\n\n2단계: 실수배 $-2A$ 계산하기\n$$A = \\begin{pmatrix} 4 & -5 & 1 \\\\ -2 & 2 & 3 \\end{pmatrix}$$\n이므로:\n$$X = -2 \\begin{pmatrix} 4 & -5 & 1 \\\\ -2 & 2 & 3 \\end{pmatrix} = \\begin{pmatrix} -2 \\times 4 & -2 \\times (-5) & -2 \\times 1 \\\\ -2 \\times (-2) & -2 \\times 2 & -2 \\times 3 \\end{pmatrix}$$\n$$= \\begin{pmatrix} -8 & 10 & -2 \\\\ 4 & -4 & -6 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 음수 실수배 시 모든 성분의 부호가 반전되는지($-5 \\to 10$, $-2 \\to 4$) 꼼꼼히 점검한다.\n\n[결론]\n$\\begin{pmatrix} -8 & 10 & -2 \\\\ 4 & -4 & -6 \\end{pmatrix}$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -104,14 +104,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음을 계산하시오.\n⑴ $\\begin{pmatrix} 2 & -1 \\\\ 4 & 3 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 7 & -1 \\\\ 4 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & -2 \\\\ -1 & 3 \\end{pmatrix}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{pmatrix} 1 \\\\ 17 \\end{pmatrix}$ ⑵ $\\begin{pmatrix} 1 & -17 \\\\ 0 & -8 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬의 곱셈 법칙을 적용하여 각 성분을 계산한다:\n- $(m \\times k)$ 행렬과 $(k \\times n)$ 행렬의 곱은 $(m \\times n)$ 행렬이 되며, $(i, j)$ 성분은 앞 행렬의 $i$행과 뒤 행렬의 $j$열의 각 성분의 곱의 합이다.\n\n[단계별 풀이]\n1단계: ⑴ $(2 \\times 2)$와 $(2 \\times 1)$의 곱 계산하기\n$$\\begin{pmatrix} 2 & -1 \\\\ 4 & 3 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} = \\begin{pmatrix} 2 \\times 2 + (-1) \\times 3 \\\\ 4 \\times 2 + 3 \\times 3 \\end{pmatrix} = \\begin{pmatrix} 4 - 3 \\\\ 8 + 9 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 17 \\end{pmatrix}$$\n\n2단계: ⑵ $(2 \\times 2)$와 $(2 \\times 2)$의 곱 계산하기\n$$\\begin{pmatrix} 7 & -1 \\\\ 4 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & -2 \\\\ -1 & 3 \\end{pmatrix}$$\n- 1행 1열: $7 \\times 0 + (-1) \\times (-1) = 0 + 1 = 1$\n- 1행 2열: $7 \\times (-2) + (-1) \\times 3 = -14 - 3 = -17$\n- 2행 1열: $4 \\times 0 + 0 \\times (-1) = 0 + 0 = 0$\n- 2행 2열: $4 \\times (-2) + 0 \\times 3 = -8 + 0 = -8$\n따라서:\n$$\\begin{pmatrix} 1 & -17 \\\\ 0 & -8 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- ⑴의 결과는 $2 \\times 1$ 열벡터 형태이며, ⑵의 결과는 $2 \\times 2$ 정사각행렬이다.\n\n[결론]\n⑴ $\\begin{pmatrix} 1 \\\\ 17 \\end{pmatrix}$ ⑵ $\\begin{pmatrix} 1 & -17 \\\\ 0 & -8 \\end{pmatrix}$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -132,14 +132,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} 3 & -2 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 행렬 $3A-2B$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "3",
+    "solution": "[풀이 전략]\n두 행렬의 실수배 및 뺄셈 $3A-2B$를 먼저 성분별로 계산한 후, 얻어진 행렬의 네 성분의 총합을 구한다.\n\n[단계별 풀이]\n1단계: $3A$와 $2B$ 계산하기\n$$A = \\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix} \\implies 3A = \\begin{pmatrix} 3 & -3 \\\\ 9 & -6 \\end{pmatrix}$$\n$$B = \\begin{pmatrix} 3 & -2 \\\\ 0 & -1 \\end{pmatrix} \\implies 2B = \\begin{pmatrix} 6 & -4 \\\\ 0 & -2 \\end{pmatrix}$$\n\n2단계: $3A - 2B$ 계산하기\n$$3A - 2B = \\begin{pmatrix} 3 - 6 & -3 - (-4) \\\\ 9 - 0 & -6 - (-2) \\end{pmatrix} = \\begin{pmatrix} -3 & 1 \\\\ 9 & -4 \\end{pmatrix}$$\n\n3단계: 모든 성분의 합 구하기\n$$(-3) + 1 + 9 + (-4) = 3$$\n\n[오답 및 경계 점검]\n- 성분의 합의 성질: $\\text{sum}(3A-2B) = 3\\,\\text{sum}(A) - 2\\,\\text{sum}(B)$\n  $\\text{sum}(A) = 1 - 1 + 3 - 2 = 1$\n  $\\text{sum}(B) = 3 - 2 + 0 - 1 = 0$\n  $3(1) - 2(0) = 3$. 결과가 정확히 일치한다.\n\n[결론]\n3"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -160,14 +160,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & 0 \\\\ 6 & -1 \\end{pmatrix}$, $B=\\begin{pmatrix} 1 & -3 \\\\ 3 & -2 \\end{pmatrix}$에 대하여 등식 $4A-X=2(X+B)$를 만족시키는 행렬 $X$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n등식 $4A-X=2(X+B)$를 전개하여 $X$에 관하여 먼저 정리한 후, 행렬의 실수배 및 뺄셈 연산을 수행한다.\n\n[단계별 풀이]\n1단계: 행렬 방정식 전개 및 $X$ 정리하기\n$$4A - X = 2X + 2B$$\n양변에 $X - 2B$를 더하여 이항하면:\n$$3X = 4A - 2B$$\n$$X = \\dfrac{1}{3}(4A - 2B)$$\n\n2단계: $4A - 2B$ 계산하기\n$$4A = 4 \\begin{pmatrix} 2 & 0 \\\\ 6 & -1 \\end{pmatrix} = \\begin{pmatrix} 8 & 0 \\\\ 24 & -4 \\end{pmatrix}$$\n$$2B = 2 \\begin{pmatrix} 1 & -3 \\\\ 3 & -2 \\end{pmatrix} = \\begin{pmatrix} 2 & -6 \\\\ 6 & -4 \\end{pmatrix}$$\n$$4A - 2B = \\begin{pmatrix} 8 - 2 & 0 - (-6) \\\\ 24 - 6 & -4 - (-4) \\end{pmatrix} = \\begin{pmatrix} 6 & 6 \\\\ 18 & 0 \\end{pmatrix}$$\n\n3단계: 행렬 $X$ 구하기\n$$X = \\dfrac{1}{3} \\begin{pmatrix} 6 & 6 \\\\ 18 & 0 \\end{pmatrix} = \\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 원래 등식 좌변: $4A - X = \\begin{pmatrix} 8 & 0 \\\\ 24 & -4 \\end{pmatrix} - \\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix} = \\begin{pmatrix} 6 & -2 \\\\ 18 & -4 \\end{pmatrix}$\n- 우변: $2(X+B) = 2\\left(\\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix} + \\begin{pmatrix} 1 & -3 \\\\ 3 & -2 \\end{pmatrix}\\right) = 2\\begin{pmatrix} 3 & -1 \\\\ 9 & -2 \\end{pmatrix} = \\begin{pmatrix} 6 & -2 \\\\ 18 & -4 \\end{pmatrix}$\n- 양변이 완전히 일치하므로 정답이 참임을 확인한다.\n\n[결론]\n$\\begin{pmatrix} 2 & 2 \\\\ 6 & 0 \\end{pmatrix}$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -188,14 +188,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "세 행렬 $A=\\begin{pmatrix} -1 & 2 \\\\ 8 & 16 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 2 \\\\ 2 & 4 \\end{pmatrix}$, $C=\\begin{pmatrix} -1 & 2 \\\\ -1 & -2 \\end{pmatrix}$에 대하여 등식 $A=xB+yC$를 만족시키는 실수 $x$, $y$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=3$, $y=-2$",
+    "solution": "[풀이 전략]\n우변 $xB+yC$를 성분별로 표현한 뒤 좌변 $A$와 성분을 비교하여 $x, y$에 대한 연립일차방정식을 세워 푼다.\n\n[단계별 풀이]\n1단계: $xB+yC$ 표현하기\n$$xB + yC = x\\begin{pmatrix} -1 & 2 \\\\ 2 & 4 \\end{pmatrix} + y\\begin{pmatrix} -1 & 2 \\\\ -1 & -2 \\end{pmatrix} = \\begin{pmatrix} -x-y & 2x+2y \\\\ 2x-y & 4x-2y \\end{pmatrix}$$\n\n2단계: 행렬 $A$와 성분 비교하기\n$$A = \\begin{pmatrix} -1 & 2 \\\\ 8 & 16 \\end{pmatrix}$$\n이므로 대응하는 각 성분을 비교하면:\n- 1행 1열: $-x-y = -1 \\implies x+y = 1$ $\\cdots$ ①\n- 1행 2열: $2x+2y = 2 \\implies x+y = 1$\n- 2행 1열: $2x-y = 8$ $\\cdots$ ②\n- 2행 2열: $4x-2y = 16 \\implies 2x-y = 8$\n\n3단계: 연립방정식 풀기\n①과 ②를 변끼리 더하면:\n$$(x+y) + (2x-y) = 1 + 8$$\n$$3x = 9 \\implies x = 3$$\n$x=3$을 ①에 대입하면:\n$$3 + y = 1 \\implies y = -2$$\n\n[오답 및 경계 점검]\n- 2행 2열 성분 검산: $4(3) - 2(-2) = 12 + 4 = 16$. 정확히 성립한다.\n\n[결론]\n$x=3$, $y=-2$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -216,14 +216,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -2 & 1 \\\\ 3 & 0 \\end{pmatrix}$, $B=\\begin{pmatrix} 3 & -5 \\\\ 1 & -3 \\end{pmatrix}$에 대하여 $AB-BA$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\begin{pmatrix} 16 & 4 \\\\ 20 & -16 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n일반적으로 행렬의 곱셈은 교환법칙이 성립하지 않는다 ($AB \\ne BA$).\n두 행렬의 곱 $AB$와 $BA$를 각각 정확히 계산한 후 그 차 $AB-BA$를 구한다.\n\n[단계별 풀이]\n1단계: $AB$ 계산하기\n$$AB = \\begin{pmatrix} -2 & 1 \\\\ 3 & 0 \\end{pmatrix} \\begin{pmatrix} 3 & -5 \\\\ 1 & -3 \\end{pmatrix}$$\n- 1행 1열: $(-2)(3) + 1(1) = -6 + 1 = -5$\n- 1행 2열: $(-2)(-5) + 1(-3) = 10 - 3 = 7$\n- 2행 1열: $3(3) + 0(1) = 9 + 0 = 9$\n- 2행 2열: $3(-5) + 0(-3) = -15 + 0 = -15$\n$$AB = \\begin{pmatrix} -5 & 7 \\\\ 9 & -15 \\end{pmatrix}$$\n\n2단계: $BA$ 계산하기\n$$BA = \\begin{pmatrix} 3 & -5 \\\\ 1 & -3 \\end{pmatrix} \\begin{pmatrix} -2 & 1 \\\\ 3 & 0 \\end{pmatrix}$$\n- 1행 1열: $3(-2) + (-5)(3) = -6 - 15 = -21$\n- 1행 2열: $3(1) + (-5)(0) = 3 + 0 = 3$\n- 2행 1열: $1(-2) + (-3)(3) = -2 - 9 = -11$\n- 2행 2열: $1(1) + (-3)(0) = 1 + 0 = 1$\n$$BA = \\begin{pmatrix} -21 & 3 \\\\ -11 & 1 \\end{pmatrix}$$\n\n3단계: $AB - BA$ 계산하기\n$$AB - BA = \\begin{pmatrix} -5 - (-21) & 7 - 3 \\\\ 9 - (-11) & -15 - 1 \\end{pmatrix} = \\begin{pmatrix} 16 & 4 \\\\ 20 & -16 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 대각합(trace)의 성질: $\\text{tr}(AB) = \\text{tr}(BA)$이므로 $\\text{tr}(AB-BA) = 0$이어야 한다.\n  $16 + (-16) = 0$으로 대각합이 $0$임을 만족하므로 계산이 정확함을 검증할 수 있다.\n\n[결론]\n$\\begin{pmatrix} 16 & 4 \\\\ 20 & -16 \\end{pmatrix}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -244,14 +244,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음 등식을 만족시키는 실수 $x$, $y$의 값을 구하시오. (단, $x>y$)\n$$\\begin{pmatrix} 1 & 1 \\\\ x & y \\end{pmatrix} \\begin{pmatrix} x & 2 \\\\ y & 3 \\end{pmatrix} = \\begin{pmatrix} -1 & 4 \\\\ 6 & 2x \\end{pmatrix} + \\begin{pmatrix} 5 & 1 \\\\ 4 & 3y \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x=3$, $y=1$",
+    "solution": "[풀이 전략]\n좌변의 행렬 곱셈과 우변의 행렬 덧셈을 각각 계산하여 성분별로 비교한다.\n얻어진 $x+y$와 $x^2+y^2$의 관계식을 곱셈 공식 변형을 통해 $xy$를 구하고, $x>y$ 조건을 만족시키는 해를 구한다.\n\n[단계별 풀이]\n1단계: 좌변과 우변 전개하기\n- 좌변:\n  $$\\begin{pmatrix} 1 & 1 \\\\ x & y \\end{pmatrix} \\begin{pmatrix} x & 2 \\\\ y & 3 \\end{pmatrix} = \\begin{pmatrix} x+y & 1 \\times 2 + 1 \\times 3 \\\\ x^2+y^2 & 2x+3y \\end{pmatrix} = \\begin{pmatrix} x+y & 5 \\\\ x^2+y^2 & 2x+3y \\end{pmatrix}$$\n- 우변:\n  $$\\begin{pmatrix} -1 & 4 \\\\ 6 & 2x \\end{pmatrix} + \\begin{pmatrix} 5 & 1 \\\\ 4 & 3y \\end{pmatrix} = \\begin{pmatrix} 4 & 5 \\\\ 10 & 2x+3y \\end{pmatrix}$$\n\n2단계: 성분 비교하여 연립방정식 세우기\n- 1행 1열: $x+y = 4$\n- 1행 2열: $5 = 5$ (항등식)\n- 2행 1열: $x^2+y^2 = 10$\n- 2행 2열: $2x+3y = 2x+3y$ (항등식)\n\n3단계: $x, y$ 구하기\n곱셈 공식의 변형에 의하여:\n$$x^2+y^2 = (x+y)^2 - 2xy$$\n$$10 = 4^2 - 2xy = 16 - 2xy$$\n$$2xy = 6 \\implies xy = 3$$\n합이 $4$이고 곱이 $3$인 두 수 $x, y$는 이차방정식 $t^2 - 4t + 3 = 0$의 두 근이다:\n$$(t-1)(t-3) = 0 \\implies t = 1 \\quad \\text{또는} \\quad t = 3$$\n조건에서 $x > y$이므로:\n$$x = 3, \\quad y = 1$$\n\n[오답 및 경계 점검]\n- $x=1, y=3$은 $x>y$ 조건을 만족하지 못하므로 반드시 배제해야 한다.\n\n[결론]\n$x=3$, $y=1$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -272,14 +272,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix}$에 대하여 행렬 $A+A^2+A^3+\\cdots+A^{100}$의 모든 성분의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "0",
+    "solution": "[풀이 전략]\n행렬 $A$의 거듭제곱 $A^2, A^3, \\dots$의 규칙성을 파악한다.\n$A^2 = E$ (단위행렬)가 성립함을 확인하고, 주기가 2인 반복성을 이용하여 거듭제곱의 합을 간단히 정리한 뒤 모든 성분의 합을 구한다.\n\n[단계별 풀이]\n1단계: $A^2$ 계산하기\n$$A = \\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix}$$\n$$A^2 = \\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix} \\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix} = \\begin{pmatrix} (-1)^2 + 0 & 0 + 0 \\\\ (-2)(-1) + 1(-2) & 0 + 1^2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = E$$\n\n2단계: 거듭제곱의 합 묶기\n$A^2 = E$이므로:\n$A^3 = A^2 A = A$, $A^4 = (A^2)^2 = E$, $\\dots$\n즉, 홀수 거듭제곱은 $A$, 짝수 거듭제곱은 $E$이다.\n따라서 $100$개의 항은 $(A+E)$가 $50$쌍 반복된다:\n$$A+A^2+A^3+\\dots+A^{100} = (A+E) + (A+E) + \\dots + (A+E) = 50(A+E)$$\n\n3단계: $50(A+E)$ 계산 및 모든 성분의 합 구하기\n$$A+E = \\begin{pmatrix} -1 & 0 \\\\ -2 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ -2 & 2 \\end{pmatrix}$$\n$$50(A+E) = 50 \\begin{pmatrix} 0 & 0 \\\\ -2 & 2 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ -100 & 100 \\end{pmatrix}$$\n따라서 모든 성분의 합은:\n$$0 + 0 + (-100) + 100 = 0$$\n\n[오답 및 경계 점검]\n- $A+E$의 모든 성분의 합 자체가 $0 + 0 + (-2) + 2 = 0$이므로, $50(A+E)$의 성분의 합 또한 $50 \\times 0 = 0$으로 즉시 확인된다.\n\n[결론]\n0"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "행렬",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
+    "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -300,13 +300,13 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "행렬",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "어느 인터넷 쇼핑몰에서는 두 택배 회사 A, B를 이용하여 옷과 가방을 배송하려고 한다. 다음 [표 1]은 배송 유형에 따른 두 회사의 택배 비용이고, [표 2]는 주문받은 옷과 가방의 배송 유형별 수량이다. 회사 A를 이용하여 배송하는 경우와 회사 B를 이용하여 배송하는 경우 지불해야 할 택배 비용을 각각 구하시오.\n\n[표 1] 택배 비용 (단위: 천 원)\n| 회사 \\ 배송 유형 | 일반 | 당일 |\n| :---: | :---: | :---: |\n| A | 3 | 4 |\n| B | 2 | 5 |\n\n[표 2] 주문 수량 (단위: 개)\n| 배송 유형 \\ 물품 | 옷 | 가방 |\n| :---: | :---: | :---: |\n| 일반 | 35 | 10 |\n| 당일 | 30 | 5 |",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "회사 A: $275000$원, 회사 B: $265000$원",
+    "solution": "[풀이 전략]\n실생활 데이터 표를 행렬로 모델링하여 행렬의 곱셈을 통해 총비용을 계산한다.\n두 택배 회사의 비용을 행렬 $X$, 주문 수량을 행렬 $Y$로 나타내고 곱 $XY$를 구하여 각 회사의 총 배송 비용을 산출한다.\n\n[단계별 풀이]\n1단계: 자료를 행렬로 나타내기\n- 회사별 배송 비용 행렬 $X$ (단위: 천 원, 행: A/B, 열: 일반/당일):\n  $$X = \\begin{pmatrix} 3 & 4 \\\\ 2 & 5 \\end{pmatrix}$$\n- 주문 수량 행렬 $Y$ (단위: 개, 행: 일반/당일, 열: 옷/가방):\n  $$Y = \\begin{pmatrix} 35 & 10 \\\\ 30 & 5 \\end{pmatrix}$$\n\n2단계: 두 행렬의 곱 $XY$ 계산하기\n$$XY = \\begin{pmatrix} 3 & 4 \\\\ 2 & 5 \\end{pmatrix} \\begin{pmatrix} 35 & 10 \\\\ 30 & 5 \\end{pmatrix}$$\n- 1행 1열 (A 회사 옷 배송비): $3 \\times 35 + 4 \\times 30 = 105 + 120 = 225$\n- 1행 2열 (A 회사 가방 배송비): $3 \\times 10 + 4 \\times 5 = 30 + 20 = 50$\n- 2행 1열 (B 회사 옷 배송비): $2 \\times 35 + 5 \\times 30 = 70 + 150 = 220$\n- 2행 2열 (B 회사 가방 배송비): $2 \\times 10 + 5 \\times 5 = 20 + 25 = 45$\n$$XY = \\begin{pmatrix} 225 & 50 \\\\ 220 & 45 \\end{pmatrix}$$\n\n3단계: 회사별 총비용 계산하기 (단위: 천 원 $\\to$ 원)\n- 회사 A:\n  $$(225 + 50) \\times 1000\\text{원} = 275 \\times 1000\\text{원} = 275000\\text{원}$$\n- 회사 B:\n  $$(220 + 45) \\times 1000\\text{원} = 265 \\times 1000\\text{원} = 265000\\text{원}$$\n\n[오답 및 경계 점검]\n- 단위가 '천 원'이므로 최종 금액에 $1000$을 곱하여 원 단위로 환산해야 함에 유의한다.\n\n[결론]\n회사 A: $275000$원, 회사 B: $265000$원"
   }
 ];

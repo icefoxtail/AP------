@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -20,14 +20,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $x^3+2x^2+3x-6=0$\n⑵ $x^4-13x^2+36=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=1$ 또는 $x=\\dfrac{-3\\pm\\sqrt{15}i}{2}$\n⑵ $x=\\pm 2$ 또는 $x=\\pm 3$",
+    "solution": "[풀이 전략]\n고차방정식은 인수분해 또는 치환을 이용하여 일차방정식과 이차방정식으로 분해하여 푼다.\n- ⑴ 삼차방정식: 인수정리와 조립제법으로 일차식 인수를 찾아 분해한 후, 남은 이차방정식은 근의 공식을 적용한다.\n- ⑵ 복이차방정식: $x^2 = X$로 치환하여 $X$에 대한 이차방정식을 푼 후, $x = \\pm\\sqrt{X}$를 구한다.\n\n[단계별 풀이]\n⑴ $x^3+2x^2+3x-6=0$\n$P(x) = x^3+2x^2+3x-6$이라 하면 $P(1) = 1+2+3-6 = 0$이므로 $x-1$을 인수로 갖는다.\n조립제법으로 몫을 구하면:\n$$x^3+2x^2+3x-6 = (x-1)(x^2+3x+6) = 0$$\n- $x-1 = 0 \\implies x = 1$\n- $x^2+3x+6 = 0$에 근의 공식을 적용하면:\n  $$x = \\dfrac{-3\\pm\\sqrt{3^2 - 4(1)(6)}}{2} = \\dfrac{-3\\pm\\sqrt{9-24}}{2} = \\dfrac{-3\\pm\\sqrt{15}i}{2}$$\n따라서 해는 $x=1$ 또는 $x=\\dfrac{-3\\pm\\sqrt{15}i}{2}$이다.\n\n⑵ $x^4-13x^2+36=0$\n$x^2 = X$라 하면:\n$$X^2 - 13X + 36 = 0$$\n$$(X-4)(X-9) = 0 \\implies X = 4 \\text{ 또는 } X = 9$$\n$X = x^2$이므로:\n- $x^2 = 4 \\implies x = \\pm 2$\n- $x^2 = 9 \\implies x = \\pm 3$\n따라서 해는 $x=\\pm 2$ 또는 $x=\\pm 3$이다.\n\n[오답 및 경계 점검]\n- 삼차방정식의 근을 구할 때 실근 $x=1$만 구하고 허근을 빠뜨리지 않도록 유의한다. 복소수 범위에서 3개의 근을 모두 제시해야 한다.\n\n[결론]\n⑴ $x=1$ 또는 $x=\\dfrac{-3\\pm\\sqrt{15}i}{2}$\n⑵ $x=\\pm 2$ 또는 $x=\\pm 3$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -48,14 +48,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} x-y=2 \\\\ x^2+y^2=10 \\end{cases}$\n⑵ $\\begin{cases} 4x^2-y^2=0 \\\\ 2x^2+y^2=18 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\begin{cases} x=3 \\\\ y=1 \\end{cases}$ 또는 $\\begin{cases} x=-1 \\\\ y=-3 \\end{cases}$\n⑵ $\\begin{cases} x=\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=-\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=-\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$",
+    "solution": "[풀이 전략]\n연립이차방정식의 기본 해법을 적용한다.\n- ⑴ 일차식과 이차식의 연립: 일차식을 한 문자에 대하여 정리한 후 이차식에 대입하여 일원 이차방정식을 푼다.\n- ⑵ $0$이 있는 동차 이차식과 이차식의 연립: $4x^2-y^2=0$을 인수분해하여 $(2x-y)(2x+y)=0$, 즉 $y=2x$ 또는 $y=-2x$로 분기하여 대입한다.\n\n[단계별 풀이]\n⑴ $\\begin{cases} x-y=2 & \\cdots \\text{①} \\\\ x^2+y^2=10 & \\cdots \\text{②} \\end{cases}$\n①번 식에서 $x = y+2$를 ②번 식에 대입하면:\n$$(y+2)^2 + y^2 = 10$$\n$$y^2+4y+4 + y^2 = 10 \\implies 2y^2+4y-6 = 0$$\n$$y^2+2y-3 = 0 \\implies (y+3)(y-1) = 0$$\n- $y=1$일 때 $x = 1+2 = 3$\n- $y=-3$일 때 $x = -3+2 = -1$\n따라서 해는 $\\begin{cases} x=3 \\\\ y=1 \\end{cases}$ 또는 $\\begin{cases} x=-1 \\\\ y=-3 \\end{cases}$이다.\n\n⑵ $\\begin{cases} 4x^2-y^2=0 & \\cdots \\text{①} \\\\ 2x^2+y^2=18 & \\cdots \\text{②} \\end{cases}$\n①번 식을 인수분해하면 $(2x-y)(2x+y)=0$이므로 $y=2x$ 또는 $y=-2x$이다.\n이를 ②번 식에 대입하면:\n$$2x^2 + (\\pm 2x)^2 = 18 \\implies 2x^2 + 4x^2 = 18 \\implies 6x^2 = 18 \\implies x^2 = 3$$\n$$x = \\pm \\sqrt{3}$$\n- $x = \\sqrt{3}$일 때 $y = \\pm 2\\sqrt{3}$\n- $x = -\\sqrt{3}$일 때 $y = \\pm 2\\sqrt{3}$\n따라서 총 4쌍의 해가 존재한다:\n$\\begin{cases} x=\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$, $\\begin{cases} x=\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$, $\\begin{cases} x=-\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$, $\\begin{cases} x=-\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$.\n\n[오답 및 경계 점검]\n- ⑵번에서 두 식을 바로 더하여 $6x^2 = 18$로 $x=\\pm\\sqrt{3}$을 얻고, $y^2 = 12 \\implies y=\\pm 2\\sqrt{3}$을 얻을 수도 있다. $x, y$의 부호가 독립적이므로 4개의 순서쌍이 모두 해가 된다.\n\n[결론]\n⑴ $\\begin{cases} x=3 \\\\ y=1 \\end{cases}$ 또는 $\\begin{cases} x=-1 \\\\ y=-3 \\end{cases}$\n⑵ $\\begin{cases} x=\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=-\\sqrt{3} \\\\ y=2\\sqrt{3} \\end{cases}$ 또는 $\\begin{cases} x=-\\sqrt{3} \\\\ y=-2\\sqrt{3} \\end{cases}$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -76,14 +76,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 부등식을 푸시오.\n⑴ $|2x-7|>5$\n⑵ $-2x^2+3x-1>0$\n⑶ $x^2+6x+10<0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x<1$ 또는 $x>6$\n⑵ $\\dfrac{1}{2} < x < 1$\n⑶ 해가 없다",
+    "solution": "[풀이 전략]\n절댓값 기호가 포함된 일차부등식과 이차부등식의 성질을 적용한다.\n- ⑴ $|X| > c$ ($c>0$) $\\iff X < -c$ 또는 $X > c$\n- ⑵ 이차항 계수를 양수로 만든 후 인수분해하여 해를 구한다.\n- ⑶ 완전제곱식 변형을 통해 부등식의 성립 여부를 판별한다.\n\n[단계별 풀이]\n⑴ $|2x-7|>5$\n$$2x-7 < -5 \\quad \\text{또는} \\quad 2x-7 > 5$$\n- $2x-7 < -5 \\implies 2x < 2 \\implies x < 1$\n- $2x-7 > 5 \\implies 2x > 12 \\implies x > 6$\n따라서 해는 $x<1$ 또는 $x>6$이다.\n\n⑵ $-2x^2+3x-1>0$\n양변에 $-1$을 곱하면 부등호의 방향이 바뀐다:\n$$2x^2-3x+1 < 0$$\n좌변을 인수분해하면:\n$$(2x-1)(x-1) < 0$$\n따라서 해는 $\\dfrac{1}{2} < x < 1$이다.\n\n⑶ $x^2+6x+10<0$\n완전제곱식으로 변형하면:\n$$(x+3)^2 + 1 < 0$$\n모든 실수 $x$에 대하여 $(x+3)^2 \\ge 0$이므로 $(x+3)^2+1 \\ge 1 > 0$이다.\n따라서 $0$보다 작을 수 없으므로 해가 없다.\n\n[오답 및 경계 점검]\n- ⑵번에서 양변에 음수를 곱할 때 부등호 방향을 바꾸는 것을 잊지 말아야 한다.\n- ⑶번에서 판별식 $D = 6^2 - 4(1)(10) = 36-40 = -4 < 0$이고 최고차항 계수가 양수이므로 그래프가 $x$축 위에 완전히 붕 떠 있어 $y < 0$인 부분이 존재하지 않는다.\n\n[결론]\n⑴ $x<1$ 또는 $x>6$\n⑵ $\\dfrac{1}{2} < x < 1$\n⑶ 해가 없다"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -104,14 +104,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} -3x-2<4 \\\\ 2x+3(x-1)\\le2 \\end{cases}$\n⑵ $\\begin{cases} x^2+5x+4\\le0 \\\\ 2x^2+5x-3>0 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-2 < x \\le 1$\n⑵ $-4 \\le x < -3$",
+    "solution": "[풀이 전략]\n연립부등식은 각각의 부등식을 독립적으로 푼 후, 수직선 위에서 두 해의 공통 범위(교집합)를 구한다.\n\n[단계별 풀이]\n⑴ $\\begin{cases} -3x-2<4 & \\cdots \\text{①} \\\\ 2x+3(x-1)\\le2 & \\cdots \\text{②} \\end{cases}$\n- ①번 부등식:\n  $$-3x < 6 \\implies x > -2$$\n- ②번 부등식:\n  $$2x + 3x - 3 \\le 2 \\implies 5x \\le 5 \\implies x \\le 1$$\n두 부등식의 공통 범위를 구하면:\n$$-2 < x \\le 1$$\n\n⑵ $\\begin{cases} x^2+5x+4\\le0 & \\cdots \\text{①} \\\\ 2x^2+5x-3>0 & \\cdots \\text{②} \\end{cases}$\n- ①번 부등식:\n  $$(x+1)(x+4) \\le 0 \\implies -4 \\le x \\le -1$$\n- ②번 부등식:\n  $$(2x-1)(x+3) > 0 \\implies x < -3 \\text{ 또는 } x > \\dfrac{1}{2}$$\n두 부등식의 공통 범위를 수직선에서 구하면:\n$$[-4, -1] \\cap \\left((-\\infty, -3) \\cup \\left(\\dfrac{1}{2}, \\infty\\right)\\right) = [-4, -3)$$\n따라서 해는 $-4 \\le x < -3$이다.\n\n[오답 및 경계 점검]\n- ⑵번에서 $x=-3$의 경계 조건(①번은 포함, ②번은 미포함이므로 공통부분은 미포함 $<$)을 정확히 판별한다.\n\n[결론]\n⑴ $-2 < x \\le 1$\n⑵ $-4 \\le x < -3$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -132,14 +132,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "삼차방정식 $x^3+ax^2+8x+b=0$의 한 근이 $1-i$일 때, 실수 $a$, $b$의 값과 나머지 두 근을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-5, b=-6$, 나머지 두 근: $1+i, 3$",
+    "solution": "[풀이 전략]\n실수 계수 삼차방정식의 켤레근 성질과 근과 계수의 관계를 적용한다.\n- 계수 $a, b$가 실수이므로 한 근이 $1-i$이면 다른 한 근은 켤레복소수인 $1+i$이다.\n- 나머지 실근을 $\\alpha$라 두고, 삼차방정식의 근과 계수의 관계를 연립하여 $\\alpha, a, b$를 구한다.\n\n[단계별 풀이]\n1단계: 켤레근 성질 적용\n계수가 모두 실수이므로 $1-i$의 켤레복소수인 $1+i$도 이 방정식의 근이다.\n나머지 한 근을 $\\alpha$ (실수)라 하자.\n\n2단계: 두 근끼리의 곱의 합 공식 적용하여 $\\alpha$ 확정하기\n삼차방정식 $x^3+ax^2+8x+b=0$에서 일차항 계수가 $8$이므로:\n$$(1-i)(1+i) + (1-i)\\alpha + (1+i)\\alpha = 8$$\n$$(1 - i^2) + \\alpha(1-i+1+i) = 8$$\n$$2 + 2\\alpha = 8 \\implies 2\\alpha = 6 \\implies \\alpha = 3$$\n따라서 세 근은 $1-i, 1+i, 3$이다.\n\n3단계: $a$와 $b$ 계산하기\n- 세 근의 합:\n  $$(1-i) + (1+i) + 3 = -a \\implies 5 = -a \\implies a = -5$$\n- 세 근의 곱:\n  $$(1-i)(1+i)\\times 3 = -b \\implies 2\\times 3 = -b \\implies b = -6$$\n\n[오답 및 경계 점검]\n- 문제에서 $a, b$뿐만 아니라 '나머지 두 근'도 구하라고 하였으므로 $1+i$와 $3$을 명확히 기재해야 한다.\n\n[결론]\n$a=-5, b=-6$, 나머지 두 근: $1+i, 3$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -160,14 +160,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "두 연립방정식 $\\begin{cases} 3x+y^2=a \\\\ 2x-y=-1 \\end{cases}$, $\\begin{cases} 3x^2-y^2=-6 \\\\ x-y=b \\end{cases}$의 해가 같을 때, 실수 $a$, $b$의 값을 구하시오. (단, $x>0, y>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=12, b=-2$",
+    "solution": "[풀이 전략]\n두 연립방정식이 공통의 해를 가지므로, 미지수 $a, b$가 포함되지 않은 두 식을 연립하여 $x, y$를 먼저 확정한 후 $a, b$를 구한다.\n\n[단계별 풀이]\n1단계: 미지수가 없는 두 식 연립하기\n$$\\begin{cases} 2x-y = -1 & \\cdots \\text{①} \\\\ 3x^2-y^2 = -6 & \\cdots \\text{②} \\end{cases}$$\n①번 식에서 $y = 2x+1$을 ②번 식에 대입하면:\n$$3x^2 - (2x+1)^2 = -6$$\n$$3x^2 - (4x^2+4x+1) = -6$$\n$$-x^2 - 4x - 1 = -6$$\n양변에 $-1$을 곱하고 정리하면:\n$$x^2 + 4x - 5 = 0$$\n$$(x+5)(x-1) = 0$$\n\n2단계: 조건 $x>0, y>0$ 적용하여 $x, y$ 결정\n$x>0$이므로 $x = 1$이다.\n$x=1$을 $y=2x+1$에 대입하면:\n$$y = 2(1) + 1 = 3 > 0$$\n따라서 공통인 해는 $x=1, y=3$이다.\n\n3단계: $a, b$의 값 구하기\n- $3x+y^2 = a$에 대입:\n  $$a = 3(1) + 3^2 = 3 + 9 = 12$$\n- $x-y = b$에 대입:\n  $$b = 1 - 3 = -2$$\n\n[오답 및 경계 점검]\n- $x=-5$는 $x>0$ 조건에 위배되므로 탈락시킨다.\n\n[결론]\n$a=12, b=-2$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -188,14 +188,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "연립부등식 $\\begin{cases} 2x+7<3(x+2) \\\\ 4x<2x+a-1 \\end{cases}$을 만족시키는 정수 $x$가 3개가 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9 < a \\le 11$",
+    "solution": "[풀이 전략]\n각 일차부등식을 풀어 $x$의 공통 범위를 $a$에 관한 식으로 나타낸 뒤, 수직선 위에서 그 범위에 포함되는 정수의 개수가 정확히 3개가 되도록 경계값의 부등식을 세운다.\n\n[단계별 풀이]\n1단계: 각 부등식 풀기\n- 첫째 부등식:\n  $$2x+7 < 3(x+2) \\implies 2x+7 < 3x+6 \\implies -x < -1 \\implies x > 1$$\n- 둘째 부등식:\n  $$4x < 2x+a-1 \\implies 2x < a-1 \\implies x < \\dfrac{a-1}{2}$$\n\n2단계: 공통 범위 표현\n연립부등식이 해를 갖고 정수가 존재해야 하므로:\n$$1 < x < \\dfrac{a-1}{2}$$\n\n3단계: 정수 개수가 3개일 조건 세우기\n$x > 1$이므로 범위 안에 들어갈 수 있는 정수는 작은 순서대로 $2, 3, 4$이어야 한다.\n다음 정수인 $5$는 범위에 포함되지 않아야 하므로:\n$$4 < \\dfrac{a-1}{2} \\le 5$$\n\n4단계: $a$의 범위 풀기\n양변에 $2$를 곱하면:\n$$8 < a-1 \\le 10$$\n양변에 $1$을 더하면:\n$$9 < a \\le 11$$\n\n[오답 및 경계 점검]\n- 경계값 등호 판별:\n  - $\\dfrac{a-1}{2} = 4$이면 범위가 $1 < x < 4$가 되어 정수는 $2, 3$의 2개뿐이므로 등호가 성립하지 않는다 ($>$).\n  - $\\dfrac{a-1}{2} = 5$이면 범위가 $1 < x < 5$가 되어 정수는 $2, 3, 4$의 3개가 되므로 등호가 성립한다 ($\\le$).\n  따라서 $9 < a \\le 11$이 유일한 정답이다.\n\n[결론]\n$9 < a \\le 11$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -216,14 +216,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x-1|+2|x-2|\\le4$를 만족시키는 실수 $x$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n절댓값 안의 식이 $0$이 되는 기준점 $x=1, x=2$를 기준으로 구간을 세 개($x<1$, $1\\le x<2$, $x\\ge 2$)로 나누어 절댓값을 풀고 각각의 해를 구한 후 합집합을 취한다. 최댓값을 구하는 것이 목적이므로 $x \\ge 2$ 영역에 주목한다.\n\n[단계별 풀이]\n1단계: 구간별 부등식 풀기\n- 1구간: $x \\ge 2$일 때\n  $x-1 \\ge 0$, $x-2 \\ge 0$이므로:\n  $$(x-1) + 2(x-2) \\le 4$$\n  $$x-1 + 2x-4 \\le 4 \\implies 3x - 5 \\le 4 \\implies 3x \\le 9 \\implies x \\le 3$$\n  구간 $x \\ge 2$와의 공통 범위:\n  $$2 \\le x \\le 3$$\n\n- 2구간: $1 \\le x < 2$일 때\n  $x-1 \\ge 0$, $x-2 < 0$이므로:\n  $$(x-1) - 2(x-2) \\le 4$$\n  $$x-1 - 2x+4 \\le 4 \\implies -x+3 \\le 4 \\implies -x \\le 1 \\implies x \\ge -1$$\n  구간 $1 \\le x < 2$와의 공통 범위:\n  $$1 \\le x < 2$$\n\n- 3구간: $x < 1$일 때\n  $x-1 < 0$, $x-2 < 0$이므로:\n  $$-(x-1) - 2(x-2) \\le 4$$\n  $$-x+1 - 2x+4 \\le 4 \\implies -3x+5 \\le 4 \\implies -3x \\le -1 \\implies x \\ge \\dfrac{1}{3}$$\n  구간 $x < 1$과의 공통 범위:\n  $$\\dfrac{1}{3} \\le x < 1$$\n\n2단계: 전체 해 및 최댓값 결정\n세 구간의 해를 모두 합치면:\n$$\\dfrac{1}{3} \\le x \\le 3$$\n따라서 실수 $x$의 최댓값은 $3$이다.\n\n[오답 및 경계 점검]\n- $x=3$을 원래 부등식에 대입하여 검산:\n  $|3-1| + 2|3-2| = 2 + 2(1) = 4 \\le 4$ 성립.\n\n[결론]\n$3$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -244,14 +244,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "이차부등식 $x^2-2(a-1)x+2a+1<0$의 해가 존재하지 않도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0 \\le a \\le 4$",
+    "solution": "[풀이 전략]\n이차부등식 $f(x) < 0$의 해가 존재하지 않는다는 것은 모든 실수 $x$에 대하여 $f(x) \\ge 0$이 성립한다는 뜻이다.\n- 아래로 볼록한 이차함수 그래프가 $x$축보다 항상 위쪽에 있거나 접해야 하므로 판별식 $D \\le 0$이어야 한다.\n\n[단계별 풀이]\n1단계: '해가 존재하지 않는다'의 부정 명제 세우기\n이차부등식 $x^2-2(a-1)x+2a+1 < 0$의 해가 존재하지 않으려면,\n모든 실수 $x$에 대하여 다음 부등식이 항상 성립해야 한다:\n$$x^2 - 2(a-1)x + 2a+1 \\ge 0$$\n\n2단계: 판별식 $D \\le 0$ 적용\n이차항의 계수가 $1 > 0$이므로 그래프가 $x$축 아래로 내려가지 않으려면 $x$축과 접하거나 만나지 않아야 한다:\n$$\\dfrac{D}{4} = \\{-(a-1)\\}^2 - 1\\times(2a+1) \\le 0$$\n식을 전개하여 정리하면:\n$$a^2 - 2a + 1 - 2a - 1 \\le 0$$\n$$a^2 - 4a \\le 0$$\n$$a(a-4) \\le 0$$\n\n3단계: $a$의 범위 구하기\n이차부등식을 풀면:\n$$0 \\le a \\le 4$$\n\n[오답 및 경계 점검]\n- 원 부등식이 $< 0$이므로 이것이 거짓이 되려면 부호가 $\\ge 0$이 되어야 하며, 따라서 판별식에 등호가 포함되어 $D \\le 0$이 됨에 주의한다.\n\n[결론]\n$0 \\le a \\le 4$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -272,14 +272,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "두 이차방정식 $x^2+4x+a+6=0$, $x^2-2ax-4a+5=0$이 모두 허근을 갖도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-2 < a < 1$",
+    "solution": "[풀이 전략]\n두 이차방정식이 '모두' 허근을 가지므로 각 이차방정식의 판별식이 동시에 음수($D_1 < 0$ 그리고 $D_2 < 0$)가 되는 $a$의 공통 범위를 구한다.\n\n[단계별 풀이]\n1단계: 첫 번째 방정식의 허근 조건\n$x^2+4x+a+6=0$에서 일차항 계수가 $4$이므로 짝수 판별식을 적용한다:\n$$\\dfrac{D_1}{4} = 2^2 - 1\\times(a+6) < 0$$\n$$4 - a - 6 < 0$$\n$$-a - 2 < 0 \\implies a > -2$$\n\n2단계: 두 번째 방정식의 허근 조건\n$x^2-2ax-4a+5=0$에서 일차항 계수가 $-2a$이므로 짝수 판별식을 적용한다:\n$$\\dfrac{D_2}{4} = (-a)^2 - 1\\times(-4a+5) < 0$$\n$$a^2 + 4a - 5 < 0$$\n좌변을 인수분해하면:\n$$(a+5)(a-1) < 0 \\implies -5 < a < 1$$\n\n3단계: 두 조건의 공통 범위 구하기\n두 방정식이 모두 허근을 가져야 하므로 $a > -2$와 $-5 < a < 1$의 교집합을 구한다:\n$$-2 < a < 1$$\n\n[오답 및 경계 점검]\n- '모두' 허근이므로 합집합이 아닌 교집합(공통 범위)을 취해야 한다.\n\n[결론]\n$-2 < a < 1$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -300,14 +300,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "다음 그림과 같은 다락방에 단면이 직각삼각형 모양인 수납공간을 만들려고 한다. 직각삼각형의 빗변의 길이가 $3\\text{ m}$이고 넓이가 $\\dfrac{7}{4}\\text{ m}^2$일 때, 직각삼각형의 가장 짧은 변의 길이는 몇 $\\text{m}$인지 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{4-\\sqrt{2}}{2}\\text{ m}$",
+    "solution": "[풀이 전략]\n직각삼각형의 두 직교하는 변의 길이를 $x, y$라 두고, 피타고라스 정리와 삼각형 넓이 공식을 이용하여 연립방정식을 세운 후 곱셈 공식 변형으로 짧은 변의 길이를 확정한다.\n\n[단계별 풀이]\n1단계: 미지수 설정 및 방정식 세우기\n직각삼각형의 직각을 낀 두 변의 길이를 $x, y$ ($x \\ge y > 0$)라 하자.\n- 빗변의 길이가 $3\\text{ m}$이므로 피타고라스 정리에 의해:\n  $$x^2+y^2 = 3^2 = 9$$\n- 넓이가 $\\dfrac{7}{4}\\text{ m}^2$이므로:\n  $$\\dfrac{1}{2}xy = \\dfrac{7}{4} \\implies xy = \\dfrac{7}{2}$$\n\n2단계: 합 $x+y$와 차 $x-y$ 구하기\n- 합의 제곱:\n  $$(x+y)^2 = x^2+y^2 + 2xy = 9 + 2\\left(\\dfrac{7}{2}\\right) = 9 + 7 = 16$$\n  $x, y > 0$이므로:\n  $$x+y = 4$$\n- 차의 제곱:\n  $$(x-y)^2 = x^2+y^2 - 2xy = 9 - 2\\left(\\dfrac{7}{2}\\right) = 9 - 7 = 2$$\n  $x \\ge y$이므로:\n  $$x-y = \\sqrt{2}$$\n\n3단계: 가장 짧은 변의 길이 $y$ 구하기\n두 식을 연립하여 아래 식을 빼면:\n$$(x+y) - (x-y) = 4 - \\sqrt{2}$$\n$$2y = 4 - \\sqrt{2} \\implies y = \\dfrac{4-\\sqrt{2}}{2}$$\n(참고: $x = \\dfrac{4+\\sqrt{2}}{2}$이며, 빗변 $3$보다 둘 다 작고 $y$가 가장 짧은 변이다.)\n따라서 가장 짧은 변의 길이는 $\\dfrac{4-\\sqrt{2}}{2}\\text{ m}$이다.\n\n[오답 및 경계 점검]\n- $y = \\dfrac{4-\\sqrt{2}}{2} = 2 - \\dfrac{\\sqrt{2}}{2}$로 작성해도 완전히 동일하며 단위 $\\text{m}$를 명기한다.\n\n[결론]\n$\\dfrac{4-\\sqrt{2}}{2}\\text{ m}$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "방정식과 부등식",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-02",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -328,13 +328,13 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "방정식과 부등식",
-      "중단원 학습 점검"
+      "중단원 학습 점검",
+      "여러 가지 방정식과 부등식"
     ],
     "wide": false,
     "content": "$x$에 대한 연립부등식 $\\begin{cases} x^2-(a-1)x-a<0 \\\\ x^2+(a+5)x+5a<0 \\end{cases}$의 해가 존재하지 않도록 하는 양수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a \\ge 1$",
+    "solution": "[풀이 전략]\n각 이차부등식을 인수분해하여 양수 $a$의 값에 따라 해의 범위를 파악하고, 두 부등식의 해의 공통부분(교집합)이 공집합이 되도록 수직선에서 경계값 조건을 세운다.\n\n[단계별 풀이]\n1단계: 첫 번째 부등식 풀기\n$$x^2 - (a-1)x - a < 0$$\n$$(x-a)(x+1) < 0$$\n$a$가 양수이므로 $a > 0 > -1$이다. 따라서 해는:\n$$-1 < x < a$$\n\n2단계: 두 번째 부등식 풀기\n$$x^2 + (a+5)x + 5a < 0$$\n$$(x+a)(x+5) < 0$$\n두 근은 $-a$와 $-5$이다. $a > 0$이므로 $-a < 0$이다.\n\n3단계: 해가 존재하지 않을 조건 분석\n첫 번째 부등식의 해 $(-1, a)$는 $-1$보다 큰 영역에 위치한다.\n두 번째 부등식의 해가 $(-1, a)$와 겹치지 않으려면:\n- 두 번째 부등식의 해가 $-1$ 이하의 영역에 완전히 머물러야 한다.\n즉, 두 번째 부등식의 두 근 $-5$와 $-a$ 중 오른쪽 끝값인 $-a$가 첫 번째 부등식의 왼쪽 끝값인 $-1$보다 작거나 같아야 한다:\n$$-a \\le -1 \\implies a \\ge 1$$\n(참고: $a \\ge 5$일 때는 두 번째 부등식이 $(x+a)(x+5) < 0$에서 $-a \\le -5$가 되어 해가 $-a < x < -5$가 되며, 이 역시 $-5 < -1$이므로 $(-1, a)$와 전혀 겹치지 않는다.)\n따라서 모든 경우를 종합하면 양수 $a$의 값의 범위는:\n$$a \\ge 1$$\n\n[오답 및 경계 점검]\n- 경계값 $a=1$일 때 검산:\n  - 첫째 식: $(x-1)(x+1) < 0 \\implies -1 < x < 1$\n  - 둘째 식: $(x+1)(x+5) < 0 \\implies -5 < x < -1$\n  두 구간의 교집합은 공집합이므로 해가 존재하지 않는다. 따라서 $a=1$에 등호가 포함됨이 명백하다.\n\n[결론]\n$a \\ge 1$"
   }
 ];

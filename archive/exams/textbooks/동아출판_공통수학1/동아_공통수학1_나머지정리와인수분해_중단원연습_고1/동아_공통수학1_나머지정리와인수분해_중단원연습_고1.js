@@ -10,8 +10,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -21,13 +21,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다음 등식이 $x$에 대한 항등식이 되도록 하는 세 상수 $a, b, c$의 값을 각각 구하시오.\n⑴ $ax^2+x+1=(x-1)^2+b(x-1)+c$\n⑵ $a(x-1)(x-3)+b(x-1)+x=x^2+c$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=1, b=3, c=3$\n⑵ $a=1, b=3, c=0$",
+    "solution": "[풀이 전략] 주어진 등식이 $x$에 대한 항등식이므로 계수비교법 또는 수치대입법을 이용하여 미정계수 $a, b, c$의 값을 구한다.\n\n[단계별 풀이]\n⑴ 우변을 전개하여 내림차순으로 정리하면\n$(x-1)^2+b(x-1)+c=(x^2-2x+1)+(bx-b)+c$\n$=x^2+(b-2)x+(1-b+c)$\n좌변 $ax^2+x+1$과 양변의 동류항의 계수를 비교하면\n$a=1$\n$b-2=1$에서 $b=3$\n$1-b+c=1$에 $b=3$을 대입하면 $1-3+c=1$, 즉 $c=3$이다.\n\n⑵ 주어진 식 $a(x-1)(x-3)+b(x-1)+x=x^2+c$의 양변에\n$x=1$을 대입하면 $0+0+1=1^2+c$이므로 $c=0$\n$x=3$을 대입하면 $0+2b+3=3^2+0$, $2b+3=9$이므로 $b=3$\n양변의 $x^2$의 계수를 비교하면 $a=1$이다.\n\n[오답 및 경계 점검]\n항등식 수치대입법 적용 시 양변에 동일한 값을 대입했는지 확인하고 최고차항 계수 비교로 잔여 미정계수를 교차 검산한다.\n\n[결론] ⑴ $a=1, b=3, c=3$, ⑵ $a=1, b=3, c=0$"
   },
   {
     "id": 2,
@@ -38,8 +39,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -49,13 +50,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다음을 구하시오.\n⑴ 다항식 $x^3-3x+7$을 일차식 $x-2$로 나누었을 때의 나머지\n⑵ 다항식 $8x^3-4x+2$를 일차식 $2x+3$으로 나누었을 때의 나머지",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $9$\n⑵ $-19$",
+    "solution": "[풀이 전략] 다항식 $f(x)$를 일차식 $ax+b$로 나누었을 때의 나머지는 나머지정리에 의하여 $f(-\\frac{b}{a})$이다.\n\n[단계별 풀이]\n⑴ $f(x)=x^3-3x+7$이라 하면 일차식 $x-2$로 나누었을 때의 나머지는 나머지정리에 의하여 $f(2)$이므로\n$f(2)=2^3-3 \\times 2+7=8-6+7=9$\n\n⑵ $g(x)=8x^3-4x+2$라 하면 일차식 $2x+3$으로 나누었을 때의 나머지는 나머지정리에 의하여 $g(-\\frac{3}{2})$이므로\n$g(-\\frac{3}{2})=8 \\times \\left(-\\frac{3}{2}\\right)^3-4 \\times \\left(-\\frac{3}{2}\\right)+2$\n$=8 \\times \\left(-\\frac{27}{8}\\right)+6+2=-27+8=-19$\n\n[오답 및 경계 점검]\n나머지정리는 제수를 0으로 만드는 x값을 대입하는 원리이므로 거듭제곱 계산 시 음수 부호 보존에 유의한다.\n\n[결론] ⑴ $9$, ⑵ $-19$"
   },
   {
     "id": 3,
@@ -66,8 +68,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -77,13 +79,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $x^3+ax^2+bx+4$를 $x-1$로 나누었을 때의 나머지는 $3$이고, $x+1$로 나누었을 때의 나머지는 $0$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-\\frac{5}{2}, b=\\frac{1}{2}$",
+    "solution": "[풀이 전략] $f(x)=x^3+ax^2+bx+4$로 놓고 나머지정리를 적용하여 $a, b$에 대한 연립방정식을 세워 푼다.\n\n[단계별 풀이]\n$f(x)=x^3+ax^2+bx+4$라 할 때,\n$f(x)$를 $x-1$로 나누었을 때의 나머지가 $3$이므로\n$f(1)=1+a+b+4=3$에서 $a+b=-2$ $\\cdots\\cdots$ ①\n\n$f(x)$를 $x+1$로 나누었을 때의 나머지가 $0$이므로\n$f(-1)=-1+a-b+4=0$에서 $a-b=-3$ $\\cdots\\cdots$ ②\n\n①과 ②를 변끼리 더하면 $2a=-5$이므로 $a=-\\frac{5}{2}$\n①에서 ②를 변끼리 빼면 $2b=1$이므로 $b=\\frac{1}{2}$\n\n[오답 및 경계 점검]\n나머지정리 연립일차방정식을 풀 때 가감법 부호 계산 오류를 방지하기 위해 구한 해를 원래 식에 대입하여 검산한다.\n\n[결론] $a=-\\frac{5}{2}, b=\\frac{1}{2}$"
   },
   {
     "id": 4,
@@ -94,8 +97,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -105,13 +108,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x^2+2$로 나누었을 때의 몫은 $x-2$이고, 나머지는 $ax+b$이다. $P(0)=0$, $P(2)=0$일 때, $P(1)$의 값을 구하시오. (단, $a, b$는 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략] 나눗셈의 관계식 $P(x)=(x^2+2)(x-2)+ax+b$를 세우고, 주어진 함숫값 $P(0)=0$, $P(2)=0$을 대입하여 $a, b$를 구한 후 $P(1)$을 계산한다.\n\n[단계별 풀이]\n다항식의 나눗셈의 관계식에 의하여\n$P(x)=(x^2+2)(x-2)+ax+b$\n\n$P(0)=0$이므로\n$P(0)=(0+2)(0-2)+a \\times 0+b=-4+b=0$\n따라서 $b=4$\n\n$P(2)=0$이므로\n$P(2)=(2^2+2)(2-2)+2a+4=0+2a+4=0$\n$2a=-4$이므로 $a=-2$\n\n따라서 다항식 $P(x)$는\n$P(x)=(x^2+2)(x-2)-2x+4$\n여기에 $x=1$을 대입하면\n$P(1)=(1^2+2)(1-2)-2 \\times 1+4$\n$=3 \\times (-1)-2+4=-3-2+4=-1$\n\n[오답 및 경계 점검]\n이차식으로 나눈 나머지는 일차 이하의 식 ax+b로 설정해야 함을 명심하고 제수가 0이 되는 수치를 활용해 신속히 계산한다.\n\n[결론] $-1$"
   },
   {
     "id": 5,
@@ -122,8 +126,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -133,13 +137,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x^2-x-2$로 나누었을 때의 나머지는 $3x+4$이고, $x^2+2x-24$로 나누었을 때의 나머지는 $x$이다. 다항식 $P(x)$를 $x^2+4x-12$로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2x+6$",
+    "solution": "[풀이 전략] 이차식으로 나누었을 때의 나머지는 일차 이하의 다항식이므로 구하는 나머지를 $R(x)=mx+n$ ($m, n$은 상수)으로 두고 조건에서 얻은 $P(2)$와 $P(-6)$의 값을 대입하여 $m, n$을 구한다.\n\n[단계별 풀이]\n$x^2-x-2=(x-2)(x+1)$이므로\n$P(x)=(x-2)(x+1)Q_1(x)+3x+4$\n양변에 $x=2$를 대입하면 $P(2)=3 \\times 2+4=10$\n\n$x^2+2x-24=(x+6)(x-4)$이므로\n$P(x)=(x+6)(x-4)Q_2(x)+x$\n양변에 $x=-6$을 대입하면 $P(-6)=-6$\n\n다항식 $P(x)$를 $x^2+4x-12=(x+6)(x-2)$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $mx+n$ ($m, n$은 상수)이라 하면\n$P(x)=(x+6)(x-2)Q(x)+mx+n$\n양변에 $x=2$를 대입하면 $P(2)=2m+n=10$ $\\cdots\\cdots$ ①\n양변에 $x=-6$을 대입하면 $P(-6)=-6m+n=-6$ $\\cdots\\cdots$ ②\n\n①에서 ②를 변끼리 빼면 $8m=16$이므로 $m=2$\n$m=2$를 ①에 대입하면 $2 \\times 2+n=10$이므로 $n=6$\n따라서 구하는 나머지는 $2x+6$이다.\n\n[오답 및 경계 점검]\n제수가 서로 다른 두 이차식일 때 공통인수와 각 인수에 대한 다항식 함숫값을 혼동 없이 매핑하여 연립식을 세운다.\n\n[결론] $2x+6$"
   },
   {
     "id": 6,
@@ -150,8 +155,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -161,13 +166,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "등식\n$$x^6-x^3+1=a_6(x-2)^6+a_5(x-2)^5+\\cdots+a_1(x-2)+a_0$$\n이 $x$에 대한 항등식일 때, $a_0+a_2+a_4+a_6$의 값을 구하시오. (단, $a_0, a_1, a_2, a_3, a_4, a_5, a_6$은 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$352$",
+    "solution": "[풀이 전략] 등식의 양변에 $x-2=1$, 즉 $x=3$과 $x-2=-1$, 즉 $x=1$을 대입하여 얻은 두 식을 변끼리 더하여 짝수 번호 계수들의 합을 구한다.\n\n[단계별 풀이]\n주어진 등식의 양변에 $x=3$을 대입하면\n$3^6-3^3+1=a_6(1)^6+a_5(1)^5+\\cdots+a_1(1)+a_0$\n좌변을 계산하면\n$3^6-3^3+1=729-27+1=703$이므로\n$a_6+a_5+a_4+a_3+a_2+a_1+a_0=703$ $\\cdots\\cdots$ ①\n\n주어진 등식의 양변에 $x=1$을 대입하면\n$1^6-1^3+1=a_6(-1)^6+a_5(-1)^5+\\cdots+a_1(-1)+a_0$\n좌변을 계산하면\n$1-1+1=1$이므로\n$a_6-a_5+a_4-a_3+a_2-a_1+a_0=1$ $\\cdots\\cdots$ ②\n\n①과 ②를 변끼리 더하면 홀수 차수의 항들이 소거되므로\n$2(a_0+a_2+a_4+a_6)=703+1=704$\n양변을 $2$로 나누면\n$a_0+a_2+a_4+a_6=352$\n\n[오답 및 경계 점검]\n연속조립제법으로 (x-2)의 거듭제곱 전개식을 구성할 때 x=3 대입을 통한 계수합 및 x=1 대입을 통한 교대합으로 신속 검산한다.\n\n[결론] $352$"
   },
   {
     "id": 7,
@@ -178,8 +184,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -189,13 +195,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "항등식과 나머지 정리"
     ],
     "wide": false,
     "content": "삼차식 $P(x)$가 다음 조건을 만족시킨다.\n\n(가) $P(1)=2$\n(나) $P(x-1)=P(x)+x^2-2$\n\n$P(x)$를 $x^2-5x+6$으로 나누었을 때의 나머지를 $R(x)$라고 할 때, $R(-1)$의 값을 구하시오.\n\n[단계1] $P(2)$, $P(3)$의 값을 각각 구하시오.\n[단계2] 나머지정리를 이용하여 $R(x)$를 구하시오.\n[단계3] $R(-1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $P(2)=0, P(3)=-7$\n[단계2] $R(x)=-7x+14$\n[단계3] $21$",
+    "solution": "[풀이 전략] 조건 (나)에 $x=2, 3$을 순차적으로 대입하여 $P(2), P(3)$의 값을 구하고, 나눗셈 관계식에서 일차식 나머지 $R(x)=ax+b$의 계수를 정한 뒤 $R(-1)$을 계산한다.\n\n[단계별 풀이]\n[단계1]\n조건 (나) $P(x-1)=P(x)+x^2-2$의 양변에\n$x=2$를 대입하면 $P(1)=P(2)+2^2-2=P(2)+2$\n조건 (가)에서 $P(1)=2$이므로 $2=P(2)+2$에서 $P(2)=0$이다.\n\n$x=3$을 대입하면 $P(2)=P(3)+3^2-2=P(3)+7$\n$P(2)=0$이므로 $0=P(3)+7$에서 $P(3)=-7$이다.\n\n[단계2]\n$x^2-5x+6=(x-2)(x-3)$이므로\n$P(x)$를 $x^2-5x+6$으로 나누었을 때의 몫을 $Q(x)$, 나머지 $R(x)=ax+b$ ($a, b$는 상수)라 하면\n$P(x)=(x-2)(x-3)Q(x)+ax+b$\n$P(2)=0$이므로 $2a+b=0$ $\\cdots\\cdots$ ①\n$P(3)=-7$이므로 $3a+b=-7$ $\\cdots\\cdots$ ②\n②에서 ①을 변끼리 빼면 $a=-7$\n이를 ①에 대입하면 $-14+b=0$이므로 $b=14$\n따라서 $R(x)=-7x+14$이다.\n\n[단계3]\n$R(x)=-7x+14$에 $x=-1$을 대입하면\n$R(-1)=-7 \\times (-1)+14=7+14=21$\n\n[오답 및 경계 점검]\n삼차식 조건식 유도 과정에서 함숫값 이항 부호 오류가 발생하지 않도록 조건을 순차적으로 대입하여 삼차식을 완성한다.\n\n[결론] [단계1] $P(2)=0, P(3)=-7$, [단계2] $R(x)=-7x+14$, [단계3] $21$"
   },
   {
     "id": 8,
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -217,13 +224,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "다음 식을 인수분해 하시오.\n⑴ $a^2+4b^2+c^2-4ab-4bc+2ca$\n⑵ $64a^3-48a^2+12a-1$\n⑶ $x^6-1$\n⑷ $(x-3y+4)(x-3y-2)-16$\n⑸ $x^4-x^2-12$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(a-2b+c)^2$\n⑵ $(4a-1)^3$\n⑶ $(x-1)(x+1)(x^2+x+1)(x^2-x+1)$\n⑷ $(x-3y+6)(x-3y-4)$\n⑸ $(x^2+3)(x-2)(x+2)$",
+    "solution": "[풀이 전략] 기본 인수분해 공식, 치환법, 복이차식 인수분해 방법을 각각 적용하여 식을 인수분해한다.\n\n[단계별 풀이]\n⑴ $a^2+4b^2+c^2-4ab-4bc+2ca$\n$=a^2+(-2b)^2+c^2+2 \\times a \\times (-2b)+2 \\times (-2b) \\times c+2 \\times c \\times a$\n$=(a-2b+c)^2$\n\n⑵ $64a^3-48a^2+12a-1$\n$=(4a)^3-3 \\times (4a)^2 \\times 1+3 \\times (4a) \\times 1^2-1^3$\n$=(4a-1)^3$\n\n⑶ $x^6-1=(x^3)^2-1^2$\n$=(x^3-1)(x^3+1)$\n$=(x-1)(x^2+x+1)(x+1)(x^2-x+1)$\n$=(x-1)(x+1)(x^2+x+1)(x^2-x+1)$\n\n⑷ $x-3y=X$로 치환하면\n$(X+4)(X-2)-16=X^2+2X-8-16$\n$=X^2+2X-24=(X+6)(X-4)$\n$X=x-3y$를 대입하면 $(x-3y+6)(x-3y-4)$이다.\n\n⑸ $x^2=X$로 치환하면\n$X^2-X-12=(X+3)(X-4)$\n$X=x^2$을 대입하면 $(x^2+3)(x^2-4)=(x^2+3)(x-2)(x+2)$이다.\n\n[오답 및 경계 점검]\n공통인수 묶기를 우선 시행한 후 인수분해 공식을 적용하고 합차공식 연쇄 적용 시 유리수 범위에서 끝까지 인수분해되었는지 확인한다.\n\n[결론] ⑴ $(a-2b+c)^2$, ⑵ $(4a-1)^3$, ⑶ $(x-1)(x+1)(x^2+x+1)(x^2-x+1)$, ⑷ $(x-3y+6)(x-3y-4)$, ⑸ $(x^2+3)(x-2)(x+2)$"
   },
   {
     "id": 9,
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -245,13 +253,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "다항식 $2x^3-x^2-4x+3$을 인수분해 하면 $(x-a)^2(bx+c)$일 때, 세 상수 $a, b, c$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1, b=2, c=3$",
+    "solution": "[풀이 전략] 인수정리와 조립제법을 이용하여 삼차식을 인수분해한 후, 주어진 형태 $(x-a)^2(bx+c)$와 비교하여 상수 $a, b, c$의 값을 구한다.\n\n[단계별 풀이]\n$f(x)=2x^3-x^2-4x+3$이라 하면\n$f(1)=2 \\times 1^3-1^2-4 \\times 1+3=2-1-4+3=0$이므로 $f(x)$는 $x-1$을 인수로 갖는다.\n\n조립제법으로 $f(x)$를 $x-1$로 나누면 몫은 $2x^2+x-3$이다.\n$f(x)=(x-1)(2x^2+x-3)$\n이차식 $2x^2+x-3$을 인수분해하면 $(x-1)(2x+3)$이므로\n$f(x)=(x-1)(x-1)(2x+3)=(x-1)^2(2x+3)$이다.\n\n이를 문제의 $(x-a)^2(bx+c)$와 비교하면\n$a=1, b=2, c=3$이다.\n\n[오답 및 경계 점검]\n조립제법으로 일차 인수를 분리한 뒤 잔여 이차식이 완전제곱식으로 한 번 더 인수분해되는지 꼼꼼히 점검한다.\n\n[결론] $a=1, b=2, c=3$"
   },
   {
     "id": 10,
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -273,13 +282,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "다음은 다항식 $x^4-13x^2+4$를 인수분해 하는 과정이다. (가), (나), (다)에 알맞은 식을 각각 구하시오.\n$$\\begin{aligned} x^4-13x^2+4 &= (x^4-4x^2+4) - [\\;(\\text{가})\\;] \\\\ &= ([\\;(\\text{나})\\;])^2 - (3x)^2 \\\\ &= (x^2+3x-2)(x^2 - [\\;(\\text{다})\\;] - 2) \\end{aligned}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(가) $9x^2$, (나) $x^2-2$, (다) $3x$",
+    "solution": "[풀이 전략] 복이차식을 $A^2-B^2$ 꼴로 변형하기 위해 최고차항 $x^4$과 상수항 $4$를 기준으로 완전제곱식을 만들고, 합차공식을 적용하여 (가), (나), (다)에 들어갈 알맞은 식을 찾는다.\n\n[단계별 풀이]\n$x^4-13x^2+4=(x^4-4x^2+4)-9x^2$이므로\n(가)에 알맞은 식은 $9x^2$이다.\n\n$x^4-4x^2+4=(x^2-2)^2$이므로\n(나)에 알맞은 식은 $x^2-2$이다.\n\n따라서\n$(x^2-2)^2-(3x)^2=\\{(x^2-2)+3x\\}\\{(x^2-2)-3x\\}$\n$=(x^2+3x-2)(x^2-3x-2)$\n문제의 주어진 식과 비교하면\n(다)에 알맞은 식은 $3x$이다.\n\n[오답 및 경계 점검]\n보기차식 인수분해 시 가운데 항을 완전제곱식과 합차공식 꼴 A^2 - B^2 형태가 형성되도록 올바른 부호로 분할했는지 확인한다.\n\n[결론] (가) $9x^2$, (나) $x^2-2$, (다) $3x$"
   },
   {
     "id": 11,
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,13 +311,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "인수분해를 이용하여 $\\frac{998^3-8}{998\\times 1000+4}$을 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$996$",
+    "solution": "[풀이 전략] 반복되는 수 $998$을 문자 $x$로 치환한 후 인수분해 공식 $a^3-b^3=(a-b)(a^2+ab+b^2)$을 적용하여 식을 간단히 약분한다.\n\n[단계별 풀이]\n$998=x$라 하면 $1000=x+2$이므로\n분자는 $x^3-8=x^3-2^3=(x-2)(x^2+2x+4)$\n분모는 $x(x+2)+4=x^2+2x+4$\n\n따라서 주어진 식은\n$\\frac{x^3-8}{x(x+2)+4}=\\frac{(x-2)(x^2+2x+4)}{x^2+2x+4}$\n$x^2+2x+4 \\ne 0$이므로 약분하면\n$=x-2$\n\n$x=998$을 대입하면\n$998-2=996$\n\n[오답 및 경계 점검]\n수의 계산에서 치환 후 분자와 분모의 공통인수가 완전히 약분되어 소거되는지 대수적 구조를 정밀 대조한다.\n\n[결론] $996$"
   },
   {
     "id": 12,
@@ -318,9 +329,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -329,13 +340,14 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "다음 그림에서 선으로 연결되어 있는 다항식에 대하여 위의 두 다항식의 곱은 그 아래의 다항식과 같다. 모든 항의 계수가 자연수인 두 일차식 $A, B$에 대하여 $A+B$를 계산하시오.\n<img src=\"q12.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3x+2$",
+    "solution": "[풀이 전략] 그림의 연결 구조에 따라 가장 아래의 다항식은 위의 일차식들의 곱으로 표현된다. 최하단의 사차식을 인수분해하여 일차식 $A, B$를 구한 후 그 합 $A+B$를 계산한다.\n\n[단계별 풀이]\n그림에서 윗줄의 세 다항식을 왼쪽부터 $A$, $x+2$, $B$라 하면\n중간 줄 왼쪽 다항식은 $A(x+2)$, 오른쪽 다항식은 $(x+2)B$이다.\n따라서 최하단의 다항식은\n$A(x+2) \\times (x+2)B = AB(x+2)^2$이다.\n\n최하단의 다항식 $P(x)=2x^4+11x^3+21x^2+16x+4$에 대하여\n$P(-2)=2(16)+11(-8)+21(4)+16(-2)+4$\n$=32-88+84-32+4=0$\n조립제법을 연속으로 2회 적용하여 $(x+2)^2$으로 나누면\n$P(x)=(x+2)^2(2x^2+3x+1)$\n$=(x+2)^2(2x+1)(x+1)$\n\n모든 항의 계수가 자연수인 두 일차식 $A, B$는 $(2x+1)$과 $(x+1)$이다.\n따라서 두 일차식의 합은\n$A+B=(2x+1)+(x+1)=3x+2$\n\n[오답 및 경계 점검]\n연결 다항식 구조에서 윗줄 두 다항식의 곱이 아래 식이 되므로 공통인수를 제외한 잔여 인수를 나눗셈으로 정확히 추출한다.\n\n[결론] $3x+2$"
   },
   {
     "id": 13,
@@ -346,9 +358,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "나머지정리와 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -357,12 +369,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "다항식",
-      "중단원 연습"
+      "중단원 연습",
+      "인수분해"
     ],
     "wide": false,
     "content": "다항식 $(x-2)(x+1)(x+4)(x+7)+k$가 $x$에 대한 이차식의 제곱으로 인수분해 될 때, 상수 $k$의 값을 구하시오.\n\n[단계1] 다항식 $(x-2)(x+1)(x+4)(x+7)+k$를 $X^2+aX+b$ 꼴로 변형하시오. (단, $X$는 상수항이 $0$인 이차식이고, $a, b$는 상수이다.)\n[단계2] [단계1]의 $X^2+aX+b$가 완전제곱식이 되도록 하는 상수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $X^2-10X-56+k$\n[단계2] $81$",
+    "solution": "[풀이 전략] 일차식 4개의 곱에서 공통부분이 생기도록 상수항의 합이 같은 두 개씩 짝을 지어 전개한 후, 공통부분을 $X$로 치환하여 완전제곱식이 될 조건을 판별식 또는 계수 관계를 이용하여 구한다.\n\n[단계별 풀이]\n[단계1]\n상수항의 합이 같은 것끼리 짝을 지으면\n$(-2)+7=5$, $1+4=5$이므로\n$\\{(x-2)(x+7)\\}\\{(x+1)(x+4)\\}+k$\n$=(x^2+5x-14)(x^2+5x+4)+k$\n상수항이 $0$인 이차식 $x^2+5x=X$로 치환하면\n$(X-14)(X+4)+k=X^2-10X-56+k$이다.\n\n[단계2]\n$X^2-10X-56+k$가 $X$에 대한 완전제곱식이 되려면\n이차방정식 $X^2-10X+(-56+k)=0$의 판별식 $D$가 $0$이어야 한다.\n$\\frac{D}{4}=(-5)^2-(-56+k)=0$\n$25+56-k=0$\n$81-k=0$이므로 $k=81$이다.\n\n[오답 및 경계 점검]\n일차식 4개의 곱에서 상수항의 합이 같은 두 식끼리 짝지어야 공통부분 치환이 가능함을 확인하고 판별식 D=0을 정확히 푼다.\n\n[결론] [단계1] $X^2-10X-56+k$, [단계2] $81$"
   }
 ];

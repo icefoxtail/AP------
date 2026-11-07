@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -20,15 +20,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "우진이네 가족이 간 식당에서는 피자 3종류, 파스타 2종류를 팔고 있다. 다음을 구하시오.\n⑴ 한 가지 메뉴를 주문하는 경우의 수\n⑵ 피자와 파스타를 각각 한 가지씩 주문하는 경우의 수",
     "choices": [],
     "answer": "⑴ 5\n⑵ 6",
-    "solution": "⑴ 피자 또는 파스타 중에서 한 가지 메뉴를 주문하는 경우의 수는 합의 법칙에 의하여\n$$3+2=5$$\n⑵ 피자와 파스타를 각각 한 가지씩 주문하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 2=6$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n⑴ 피자 또는 파스타 중에서 한 가지 메뉴를 주문하는 경우의 수는 합의 법칙에 의하여\n$$3+2=5$$\n⑵ 피자와 파스타를 각각 한 가지씩 주문하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 2=6$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n⑴ 5\n⑵ 6"
   },
   {
     "id": 2,
@@ -39,9 +38,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,15 +48,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "다음 수의 약수의 개수를 구하시오.\n⑴ $48$\n⑵ $120$",
     "choices": [],
     "answer": "⑴ 10\n⑵ 16",
-    "solution": "⑴ $48 = 2^4 \\times 3$이므로 $48$의 약수의 개수는\n$$(4+1)(1+1) = 5 \\times 2 = 10$$\n⑵ $120 = 2^3 \\times 3 \\times 5$이므로 $120$의 약수의 개수는\n$$(3+1)(1+1)(1+1) = 4 \\times 2 \\times 2 = 16$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n⑴ $48 = 2^4 \\times 3$이므로 $48$의 약수의 개수는\n$$(4+1)(1+1) = 5 \\times 2 = 10$$\n⑵ $120 = 2^3 \\times 3 \\times 5$이므로 $120$의 약수의 개수는\n$$(3+1)(1+1)(1+1) = 4 \\times 2 \\times 2 = 16$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n⑴ 10\n⑵ 16"
   },
   {
     "id": 3,
@@ -68,9 +66,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -78,15 +76,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "$x, y$가 자연수일 때, $x+y \\le 5$를 만족시키는 순서쌍 $(x, y)$의 개수를 구하시오.",
     "choices": [],
     "answer": "10",
-    "solution": "$x, y$가 자연수이므로 $x \\ge 1, y \\ge 1$에서 $x+y \\ge 2$이다.\n$x+y$의 값에 따라 경우를 나누면 다음과 같다.\n(i) $x+y=2$인 경우: $(1, 1)$의 $1$개\n(ii) $x+y=3$인 경우: $(1, 2), (2, 1)$의 $2$개\n(iii) $x+y=4$인 경우: $(1, 3), (2, 2), (3, 1)$의 $3$개\n(iv) $x+y=5$인 경우: $(1, 4), (2, 3), (3, 2), (4, 1)$의 $4$개\n따라서 구하는 순서쌍의 개수는 합의 법칙에 의하여\n$$1+2+3+4=10$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n$x, y$가 자연수이므로 $x \\ge 1, y \\ge 1$에서 $x+y \\ge 2$이다.\n$x+y$의 값에 따라 경우를 나누면 다음과 같다.\n(i) $x+y=2$인 경우: $(1, 1)$의 $1$개\n(ii) $x+y=3$인 경우: $(1, 2), (2, 1)$의 $2$개\n(iii) $x+y=4$인 경우: $(1, 3), (2, 2), (3, 1)$의 $3$개\n(iv) $x+y=5$인 경우: $(1, 4), (2, 3), (3, 2), (4, 1)$의 $4$개\n따라서 구하는 순서쌍의 개수는 합의 법칙에 의하여\n$$1+2+3+4=10$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n10"
   },
   {
     "id": 4,
@@ -97,9 +94,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -107,15 +104,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "세 자리의 자연수 중에서 각 자리의 수의 곱이 홀수인 것의 개수를 구하시오.",
     "choices": [],
     "answer": "125",
-    "solution": "각 자리의 수의 곱이 홀수가 되려면 백의 자리, 십의 자리, 일의 자리의 수가 모두 홀수이어야 한다.\n홀수는 $1, 3, 5, 7, 9$의 $5$개이므로\n백의 자리에 올 수 있는 수는 $5$개,\n십의 자리에 올 수 있는 수는 $5$개,\n일의 자리에 올 수 있는 수는 $5$개이다.\n따라서 구하는 자연수의 개수는 곱의 법칙에 의하여\n$$5 \\times 5 \\times 5 = 125$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n각 자리의 수의 곱이 홀수가 되려면 백의 자리, 십의 자리, 일의 자리의 수가 모두 홀수이어야 한다.\n홀수는 $1, 3, 5, 7, 9$의 $5$개이므로\n백의 자리에 올 수 있는 수는 $5$개,\n십의 자리에 올 수 있는 수는 $5$개,\n일의 자리에 올 수 있는 수는 $5$개이다.\n따라서 구하는 자연수의 개수는 곱의 법칙에 의하여\n$$5 \\times 5 \\times 5 = 125$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n125"
   },
   {
     "id": 5,
@@ -126,9 +122,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -136,15 +132,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "다음 그림은 어느 공원의 정문, 분수, 후문, 정원을 연결하는 산책로를 나타낸 것이다. 정문에서 정원, 분수를 모두 거쳐 후문으로 가는 경우의 수를 구하시오. (단, 한 번 지나간 지점은 다시 지나가지 않는다.)\n<img src=\"q05.png\" />",
     "choices": [],
     "answer": "10",
-    "solution": "정문에서 정원, 분수를 모두 거쳐 후문으로 가는 경로는 다음과 같이 두 가지 경우가 있다.\n(i) 정문 $\\to$ 정원 $\\to$ 분수 $\\to$ 후문으로 가는 경우:\n정문에서 정원으로 가는 길 $3$가지,\n정원에서 분수로 가는 길 $1$가지,\n분수에서 후문으로 가는 길 $2$가지이므로\n$$3 \\times 1 \\times 2 = 6$$\n(ii) 정문 $\\to$ 분수 $\\to$ 정원 $\\to$ 후문으로 가는 경우:\n정문에서 분수로 가는 길 $2$가지,\n분수에서 정원으로 가는 길 $1$가지,\n정원에서 후문으로 가는 길 $2$가지이므로\n$$2 \\times 1 \\times 2 = 4$$\n따라서 구하는 경우의 수는 합의 법칙에 의하여\n$$6 + 4 = 10$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n정문에서 정원, 분수를 모두 거쳐 후문으로 가는 경로는 다음과 같이 두 가지 경우가 있다.\n(i) 정문 $\\to$ 정원 $\\to$ 분수 $\\to$ 후문으로 가는 경우:\n정문에서 정원으로 가는 길 $3$가지,\n정원에서 분수로 가는 길 $1$가지,\n분수에서 후문으로 가는 길 $2$가지이므로\n$$3 \\times 1 \\times 2 = 6$$\n(ii) 정문 $\\to$ 분수 $\\to$ 정원 $\\to$ 후문으로 가는 경우:\n정문에서 분수로 가는 길 $2$가지,\n분수에서 정원으로 가는 길 $1$가지,\n정원에서 후문으로 가는 길 $2$가지이므로\n$$2 \\times 1 \\times 2 = 4$$\n따라서 구하는 경우의 수는 합의 법칙에 의하여\n$$6 + 4 = 10$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n10"
   },
   {
     "id": 6,
@@ -155,9 +150,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -165,15 +160,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 $\\mathrm{A, B, C, D}$ 4개의 영역을 빨강, 파랑, 노랑, 검정의 4가지 색으로 칠하려고 한다. 같은 색을 중복하여 사용할 수 있으나 인접한 영역은 서로 다른 색을 칠할 때, 칠하는 경우의 수를 구하시오. (단, 각 영역에는 한 가지 색만 칠한다.)\n<img src=\"q06.png\" />\n\n[단계1] $\\mathrm{A}$와 $\\mathrm{C}$를 같은 색으로 칠하는 경우의 수를 구하시오.\n[단계2] $\\mathrm{A}$와 $\\mathrm{C}$를 다른 색으로 칠하는 경우의 수를 구하시오.\n[단계3] 칠하는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "[단계1] 36\n[단계2] 48\n[단계3] 84",
-    "solution": "[단계1] $\\mathrm{A}$와 $\\mathrm{C}$에 같은 색을 칠하는 경우:\n$\\mathrm{A}$에 칠할 수 있는 색은 $4$가지,\n$\\mathrm{C}$에는 $\\mathrm{A}$와 같은 색을 칠하므로 $1$가지,\n$\\mathrm{B}$에는 $\\mathrm{A(C)}$에 칠한 색을 제외한 $3$가지,\n$\\mathrm{D}$에는 $\\mathrm{A(C)}$에 칠한 색을 제외한 $3$가지를 칠할 수 있으므로\n$$4 \\times 1 \\times 3 \\times 3 = 36$$\n\n[단계2] $\\mathrm{A}$와 $\\mathrm{C}$에 다른 색을 칠하는 경우:\n$\\mathrm{A}$에 칠할 수 있는 색은 $4$가지,\n$\\mathrm{C}$에는 $\\mathrm{A}$에 칠한 색을 제외한 $3$가지,\n$\\mathrm{B}$에는 $\\mathrm{A, C}$에 칠한 색을 제외한 $2$가지,\n$\\mathrm{D}$에는 $\\mathrm{A, C}$에 칠한 색을 제외한 $2$가지를 칠할 수 있으므로\n$$4 \\times 3 \\times 2 \\times 2 = 48$$\n\n[단계3] [단계1]과 [단계2]는 동시에 일어날 수 없으므로 구하는 경우의 수는 합의 법칙에 의하여\n$$36 + 48 = 84$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n[단계1] $\\mathrm{A}$와 $\\mathrm{C}$에 같은 색을 칠하는 경우:\n$\\mathrm{A}$에 칠할 수 있는 색은 $4$가지,\n$\\mathrm{C}$에는 $\\mathrm{A}$와 같은 색을 칠하므로 $1$가지,\n$\\mathrm{B}$에는 $\\mathrm{A(C)}$에 칠한 색을 제외한 $3$가지,\n$\\mathrm{D}$에는 $\\mathrm{A(C)}$에 칠한 색을 제외한 $3$가지를 칠할 수 있으므로\n$$4 \\times 1 \\times 3 \\times 3 = 36$$\n\n[단계2] $\\mathrm{A}$와 $\\mathrm{C}$에 다른 색을 칠하는 경우:\n$\\mathrm{A}$에 칠할 수 있는 색은 $4$가지,\n$\\mathrm{C}$에는 $\\mathrm{A}$에 칠한 색을 제외한 $3$가지,\n$\\mathrm{B}$에는 $\\mathrm{A, C}$에 칠한 색을 제외한 $2$가지,\n$\\mathrm{D}$에는 $\\mathrm{A, C}$에 칠한 색을 제외한 $2$가지를 칠할 수 있으므로\n$$4 \\times 3 \\times 2 \\times 2 = 48$$\n\n[단계3] [단계1]과 [단계2]는 동시에 일어날 수 없으므로 구하는 경우의 수는 합의 법칙에 의하여\n$$36 + 48 = 84$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n[단계1] 36\n[단계2] 48\n[단계3] 84"
   },
   {
     "id": 7,
@@ -184,9 +178,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,15 +188,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ ${}_7\\mathrm{P}_3$\n⑵ ${}_5\\mathrm{P}_5$",
     "choices": [],
     "answer": "⑴ 210\n⑵ 120",
-    "solution": "⑴ ${}_7\\mathrm{P}_3 = 7 \\times 6 \\times 5 = 210$\n⑵ ${}_5\\mathrm{P}_5 = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n⑴ ${}_7\\mathrm{P}_3 = 7 \\times 6 \\times 5 = 210$\n⑵ ${}_5\\mathrm{P}_5 = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n⑴ 210\n⑵ 120"
   },
   {
     "id": 8,
@@ -213,9 +206,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -223,15 +216,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "서현이는 학교 축제 프로그램을 구성하려고 한다. 밴드 경연 대회에 참가 신청서를 제출한 11개 팀 중에서 공연할 3개 팀을 골라 경연 순서를 정하는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "990",
-    "solution": "11개 팀 중에서 서로 다른 3개 팀을 택하여 순서를 정하여 나열하는 순열의 수와 같으므로\n$${}_{11}\\mathrm{P}_3 = 11 \\times 10 \\times 9 = 990$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n11개 팀 중에서 서로 다른 3개 팀을 택하여 순서를 정하여 나열하는 순열의 수와 같으므로\n$${}_{11}\\mathrm{P}_3 = 11 \\times 10 \\times 9 = 990$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n990"
   },
   {
     "id": 9,
@@ -242,9 +234,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -252,15 +244,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다섯 개의 숫자 $1, 2, 3, 4, 5$를 한 번씩 사용하여 다섯 자리의 자연수를 만들 때, 홀수의 개수를 구하시오.",
     "choices": [],
     "answer": "72",
-    "solution": "만든 자연수가 홀수가 되려면 일의 자리에 올 수 있는 숫자는 홀수인 $1, 3, 5$의 $3$개이다.\n일의 자리에 홀수를 놓는 경우의 수는 $3$가지이고,\n나머지 네 자리에 남은 $4$개의 숫자를 일렬로 나열하는 경우의 수는 ${}_4\\mathrm{P}_4 = 4! = 24$가지이다.\n따라서 구하는 홀수의 개수는 곱의 법칙에 의하여\n$$3 \\times 24 = 72$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n만든 자연수가 홀수가 되려면 일의 자리에 올 수 있는 숫자는 홀수인 $1, 3, 5$의 $3$개이다.\n일의 자리에 홀수를 놓는 경우의 수는 $3$가지이고,\n나머지 네 자리에 남은 $4$개의 숫자를 일렬로 나열하는 경우의 수는 ${}_4\\mathrm{P}_4 = 4! = 24$가지이다.\n따라서 구하는 홀수의 개수는 곱의 법칙에 의하여\n$$3 \\times 24 = 72$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n72"
   },
   {
     "id": 10,
@@ -271,9 +262,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -281,15 +272,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다음 그림과 같이 5개의 좌석이 있다. $\\mathrm{A, B, C, D, E}$ 다섯 명이 영화 관람을 위하여 좌석에 앉을 때, $\\mathrm{A}$와 $\\mathrm{B}$가 이웃하게 앉는 경우의 수를 구하시오. (단, 통로를 사이에 두고 앉는 경우에는 이웃하지 않는 것으로 생각한다.)\n<img src=\"q10.png\" />",
     "choices": [],
     "answer": "36",
-    "solution": "통로를 사이에 두고 앉는 경우는 이웃하지 않으므로, 이웃하여 앉을 수 있는 두 좌석의 쌍은 다음과 같이 3가지 경우가 있다.\n- 왼쪽 2개 좌석 중 2자리 (1가지)\n- 오른쪽 3개 좌석 중 첫 번째와 두 번째 자리 (1가지)\n- 오른쪽 3개 좌석 중 두 번째와 세 번째 자리 (1가지)\n따라서 $\\mathrm{A}$와 $\\mathrm{B}$가 이웃하여 앉을 두 자리를 택하는 경우의 수는 $1+2=3$가지이다.\n각 경우에 대하여 $\\mathrm{A}$와 $\\mathrm{B}$의 자리를 바꾸는 경우의 수는 $2! = 2$가지이고,\n나머지 세 자리에 남은 3명이 앉는 경우의 수는 $3! = 6$가지이다.\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 2! \\times 3! = 3 \\times 2 \\times 6 = 36$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n통로를 사이에 두고 앉는 경우는 이웃하지 않으므로, 이웃하여 앉을 수 있는 두 좌석의 쌍은 다음과 같이 3가지 경우가 있다.\n- 왼쪽 2개 좌석 중 2자리 (1가지)\n- 오른쪽 3개 좌석 중 첫 번째와 두 번째 자리 (1가지)\n- 오른쪽 3개 좌석 중 두 번째와 세 번째 자리 (1가지)\n따라서 $\\mathrm{A}$와 $\\mathrm{B}$가 이웃하여 앉을 두 자리를 택하는 경우의 수는 $1+2=3$가지이다.\n각 경우에 대하여 $\\mathrm{A}$와 $\\mathrm{B}$의 자리를 바꾸는 경우의 수는 $2! = 2$가지이고,\n나머지 세 자리에 남은 3명이 앉는 경우의 수는 $3! = 6$가지이다.\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 2! \\times 3! = 3 \\times 2 \\times 6 = 36$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n36"
   },
   {
     "id": 11,
@@ -300,9 +290,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -310,15 +300,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "6개의 문자 $a, b, c, d, e, f$를 일렬로 배열할 때, $a$와 $b$ 또는 $b$와 $c$가 이웃하는 경우의 수를 구하시오.\n\n[단계1] $a$와 $b$가 이웃하는 경우의 수를 구하시오.\n[단계2] $b$와 $c$가 이웃하는 경우의 수를 구하시오.\n[단계3] $a$와 $b$, $b$와 $c$가 모두 이웃하는 경우의 수를 구하시오.\n[단계4] $a$와 $b$ 또는 $b$와 $c$가 이웃하는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "[단계1] 240\n[단계2] 240\n[단계3] 48\n[단계4] 432",
-    "solution": "[단계1] $a$와 $b$를 한 묶음으로 생각하여 5개의 문자를 일렬로 나열하는 경우의 수는 $5!$이고,\n묶음 안에서 $a$와 $b$가 자리를 바꾸는 경우의 수는 $2!$이므로\n$$5! \\times 2! = 120 \\times 2 = 240$$\n\n[단계2] $b$와 $c$를 한 묶음으로 생각하여 5개의 문자를 일렬로 나열하는 경우의 수는 $5!$이고,\n묶음 안에서 $b$와 $c$가 자리를 바꾸는 경우의 수는 $2!$이므로\n$$5! \\times 2! = 120 \\times 2 = 240$$\n\n[단계3] $a, b, c$가 모두 이웃하면서 $b$가 $a$와 $c$ 사이에 있어야 하므로 $(a, b, c)$ 또는 $(c, b, a)$의 형태로 묶어야 한다.\n$a, b, c$를 한 묶음으로 생각하여 4개의 문자를 일렬로 나열하는 경우의 수는 $4!$이고,\n묶음 안에서 배열하는 경우의 수는 $2$가지이므로\n$$4! \\times 2 = 24 \\times 2 = 48$$\n\n[단계4] 따라서 구하는 경우의 수는\n$$240 + 240 - 48 = 432$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n[단계1] $a$와 $b$를 한 묶음으로 생각하여 5개의 문자를 일렬로 나열하는 경우의 수는 $5!$이고,\n묶음 안에서 $a$와 $b$가 자리를 바꾸는 경우의 수는 $2!$이므로\n$$5! \\times 2! = 120 \\times 2 = 240$$\n\n[단계2] $b$와 $c$를 한 묶음으로 생각하여 5개의 문자를 일렬로 나열하는 경우의 수는 $5!$이고,\n묶음 안에서 $b$와 $c$가 자리를 바꾸는 경우의 수는 $2!$이므로\n$$5! \\times 2! = 120 \\times 2 = 240$$\n\n[단계3] $a, b, c$가 모두 이웃하면서 $b$가 $a$와 $c$ 사이에 있어야 하므로 $(a, b, c)$ 또는 $(c, b, a)$의 형태로 묶어야 한다.\n$a, b, c$를 한 묶음으로 생각하여 4개의 문자를 일렬로 나열하는 경우의 수는 $4!$이고,\n묶음 안에서 배열하는 경우의 수는 $2$가지이므로\n$$4! \\times 2 = 24 \\times 2 = 48$$\n\n[단계4] 따라서 구하는 경우의 수는\n$$240 + 240 - 48 = 432$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n[단계1] 240\n[단계2] 240\n[단계3] 48\n[단계4] 432"
   },
   {
     "id": 12,
@@ -329,9 +318,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -339,15 +328,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "$1 \\le r < n$일 때, 등식 ${}_n\\mathrm{P}_r = {}_{n-1}\\mathrm{P}_r + r \\times {}_{n-1}\\mathrm{P}_{r-1}$이 성립함을 증명하시오.",
     "choices": [],
     "answer": "풀이 참조",
-    "solution": "우변을 정리하면\n$$\\begin{aligned} {}_{n-1}\\mathrm{P}_r + r \\times {}_{n-1}\\mathrm{P}_{r-1} &= \\frac{(n-1)!}{(n-1-r)!} + r \\times \\frac{(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r)(n-1)!}{(n-r)(n-r-1)!} + \\frac{r(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r)(n-1)! + r(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r+r)(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{n(n-1)!}{(n-r)!} = \\frac{n!}{(n-r)!} = {}_n\\mathrm{P}_r \\end{aligned}$$\n따라서 ${}_n\\mathrm{P}_r = {}_{n-1}\\mathrm{P}_r + r \\times {}_{n-1}\\mathrm{P}_{r-1}$이 성립한다."
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n우변을 정리하면\n$$\\begin{aligned} {}_{n-1}\\mathrm{P}_r + r \\times {}_{n-1}\\mathrm{P}_{r-1} &= \\frac{(n-1)!}{(n-1-r)!} + r \\times \\frac{(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r)(n-1)!}{(n-r)(n-r-1)!} + \\frac{r(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r)(n-1)! + r(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{(n-r+r)(n-1)!}{(n-r)!} \\\\[6pt] &= \\frac{n(n-1)!}{(n-r)!} = \\frac{n!}{(n-r)!} = {}_n\\mathrm{P}_r \\end{aligned}$$\n따라서 ${}_n\\mathrm{P}_r = {}_{n-1}\\mathrm{P}_r + r \\times {}_{n-1}\\mathrm{P}_{r-1}$이 성립한다.\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n풀이 참조"
   },
   {
     "id": 13,
@@ -358,9 +346,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -368,15 +356,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ ${}_7\\mathrm{C}_3$\n⑵ ${}_5\\mathrm{C}_5$",
     "choices": [],
     "answer": "⑴ 35\n⑵ 1",
-    "solution": "⑴ ${}_7\\mathrm{C}_3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$\n⑵ ${}_5\\mathrm{C}_5 = 1$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n⑴ ${}_7\\mathrm{C}_3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$\n⑵ ${}_5\\mathrm{C}_5 = 1$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n⑴ 35\n⑵ 1"
   },
   {
     "id": 14,
@@ -387,9 +374,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -397,15 +384,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "서현이는 학교 축제 프로그램을 구성하려고 한다. 밴드 경연 대회에 참가 신청서를 제출한 11개 팀 중에서 공연할 3개 팀을 뽑는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "165",
-    "solution": "11개 팀 중에서 순서에 상관없이 공연할 3개 팀을 택하는 조합의 수이므로\n$${}_{11}\\mathrm{C}_3 = \\frac{11 \\times 10 \\times 9}{3 \\times 2 \\times 1} = 165$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n11개 팀 중에서 순서에 상관없이 공연할 3개 팀을 택하는 조합의 수이므로\n$${}_{11}\\mathrm{C}_3 = \\frac{11 \\times 10 \\times 9}{3 \\times 2 \\times 1} = 165$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n165"
   },
   {
     "id": 15,
@@ -416,9 +402,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -426,15 +412,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "등식 ${}_{n+1}\\mathrm{C}_2 + {}_n\\mathrm{C}_2 = 100$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
     "answer": "10",
-    "solution": "${}_{n+1}\\mathrm{C}_2 + {}_n\\mathrm{C}_2 = 100$에서\n$$\\frac{(n+1)n}{2} + \\frac{n(n-1)}{2} = 100$$\n양변에 $2$를 곱하여 정리하면\n$$(n^2+n) + (n^2-n) = 200$$\n$$2n^2 = 200, \\quad n^2 = 100$$\n$n$은 자연수이므로 $n = 10$이다."
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n${}_{n+1}\\mathrm{C}_2 + {}_n\\mathrm{C}_2 = 100$에서\n$$\\frac{(n+1)n}{2} + \\frac{n(n-1)}{2} = 100$$\n양변에 $2$를 곱하여 정리하면\n$$(n^2+n) + (n^2-n) = 200$$\n$$2n^2 = 200, \\quad n^2 = 100$$\n$n$은 자연수이므로 $n = 10$이다.\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n10"
   },
   {
     "id": 16,
@@ -445,9 +430,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -455,15 +440,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "남학생 3명과 여학생 5명으로 이루어진 학생회에서 남학생 2명, 여학생 2명을 학교 홍보 모델로 뽑는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "30",
-    "solution": "남학생 3명 중에서 2명을 뽑는 경우의 수는\n$${}_3\\mathrm{C}_2 = {}_3\\mathrm{C}_1 = 3$$\n여학생 5명 중에서 2명을 뽑는 경우의 수는\n$${}_5\\mathrm{C}_2 = \\frac{5 \\times 4}{2 \\times 1} = 10$$\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 10 = 30$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n남학생 3명 중에서 2명을 뽑는 경우의 수는\n$${}_3\\mathrm{C}_2 = {}_3\\mathrm{C}_1 = 3$$\n여학생 5명 중에서 2명을 뽑는 경우의 수는\n$${}_5\\mathrm{C}_2 = \\frac{5 \\times 4}{2 \\times 1} = 10$$\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$3 \\times 10 = 30$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n30"
   },
   {
     "id": 17,
@@ -474,9 +458,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -484,15 +468,14 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 반원 위에 7개의 점이 있을 때, 두 점을 이어서 만들 수 있는 서로 다른 직선의 개수를 구하시오.\n<img src=\"q17.png\" />",
     "choices": [],
     "answer": "16",
-    "solution": "7개의 점 중에서 2개의 점을 택하는 경우의 수는\n$${}_7\\mathrm{C}_2 = \\frac{7 \\times 6}{2 \\times 1} = 21$$\n반원의 지름 위에 있는 4개의 점 중에서 2개의 점을 택하는 경우의 수는\n$${}_4\\mathrm{C}_2 = \\frac{4 \\times 3}{2 \\times 1} = 6$$\n이 6개의 직선은 모두 같은 하나의 직선(지름)을 나타내므로\n서로 다른 직선의 개수는\n$${}_7\\mathrm{C}_2 - {}_4\\mathrm{C}_2 + 1 = 21 - 6 + 1 = 16$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n7개의 점 중에서 2개의 점을 택하는 경우의 수는\n$${}_7\\mathrm{C}_2 = \\frac{7 \\times 6}{2 \\times 1} = 21$$\n반원의 지름 위에 있는 4개의 점 중에서 2개의 점을 택하는 경우의 수는\n$${}_4\\mathrm{C}_2 = \\frac{4 \\times 3}{2 \\times 1} = 6$$\n이 6개의 직선은 모두 같은 하나의 직선(지름)을 나타내므로\n서로 다른 직선의 개수는\n$${}_7\\mathrm{C}_2 - {}_4\\mathrm{C}_2 + 1 = 21 - 6 + 1 = 16$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n16"
   },
   {
     "id": 18,
@@ -503,9 +486,9 @@ window.questionBank = [
     "category": "경우의 수",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -513,14 +496,13 @@ window.questionBank = [
       "교과서",
       "고1",
       "공통수학1",
-      "경우의 수",
-      "순열과 조합",
-      "중단원 연습"
+      "중단원 연습",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "1층에서 8층까지 올라가는 엘리베이터에 1층에서 6명이 탔다. 1층에서는 내리지 않는다고 할 때, 2명씩 3개의 층에서 6명이 모두 내리는 경우의 수를 구하시오. (단, 엘리베이터는 모든 층에서 멈추고, 엘리베이터에 새로 타는 사람은 없다.)\n\n[단계1] 내리는 3개의 층을 택하는 경우의 수를 구하시오.\n[단계2] 6명을 2명씩 나누는 경우의 수를 구하시오.\n[단계3] 2명씩 3개의 층에서 6명이 모두 내리는 경우의 수를 구하시오.",
     "choices": [],
     "answer": "[단계1] 35\n[단계2] 15\n[단계3] 3150",
-    "solution": "[단계1] 1층에서는 내리지 않으므로 2층부터 8층까지의 7개 층 중에서 사람이 내릴 3개의 층을 택하는 경우의 수는\n$${}_7\\mathrm{C}_3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$$\n\n[단계2] 6명을 2명씩 3개 조로 나누는 경우의 수는\n$${}_6\\mathrm{C}_2 \\times {}_4\\mathrm{C}_2 \\times {}_2\\mathrm{C}_2 \\times \\frac{1}{3!} = 15 \\times 6 \\times 1 \\times \\frac{1}{6} = 15$$\n\n[단계3] 2명씩 나눈 3개의 조가 택한 3개의 층에서 각각 내리는 경우의 수는 3개 조를 택한 3개 층에 일대일 대응(일렬로 나열)시키는 것이므로 $3! = 6$이다.\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$35 \\times 15 \\times 3! = 525 \\times 6 = 3150$$"
+    "solution": "[풀이 전략] 문제에서 요구하는 조건과 구하고자 하는 값을 먼저 명확히 파악한다.\n\n[단계별 풀이]\n[단계1] 1층에서는 내리지 않으므로 2층부터 8층까지의 7개 층 중에서 사람이 내릴 3개의 층을 택하는 경우의 수는\n$${}_7\\mathrm{C}_3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$$\n\n[단계2] 6명을 2명씩 3개 조로 나누는 경우의 수는\n$${}_6\\mathrm{C}_2 \\times {}_4\\mathrm{C}_2 \\times {}_2\\mathrm{C}_2 \\times \\frac{1}{3!} = 15 \\times 6 \\times 1 \\times \\frac{1}{6} = 15$$\n\n[단계3] 2명씩 나눈 3개의 조가 택한 3개의 층에서 각각 내리는 경우의 수는 3개 조를 택한 3개 층에 일대일 대응(일렬로 나열)시키는 것이므로 $3! = 6$이다.\n따라서 구하는 경우의 수는 곱의 법칙에 의하여\n$$35 \\times 15 \\times 3! = 525 \\times 6 = 3150$$\n\n[오답 및 경계 점검] 계산 과정에서 부호 오류나 조건 누락이 없는지 재검산하고 최종 답을 확정한다.\n\n[결론]\n[단계1] 35\n[단계2] 15\n[단계3] 3150"
   }
 ];
