@@ -4,14 +4,15 @@ window.questionBank = [
   {
     "id": 1,
     "displayNo": 1,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 1,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -20,26 +21,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 2 & 4 & 8 \\\\ 1 & 3 & -6 \\end{pmatrix}$에 대하여 다음을 구하시오.\n⑴ $(1, 2)$ 성분\n⑵ $(2, 3)$ 성분",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "⑴ $4$\n⑵ $-6$",
+    "solution": "[풀이 전략]\n행렬 $A$의 $(i, j)$ 성분 $a_{ij}$는 제$i$행과 제$j$열이 만나는 위치에 있는 수를 의미한다.\n- 제$1$행: 가로 첫 번째 줄, 제$2$행: 가로 두 번째 줄\n- 제$1$열: 세로 첫 번째 줄, 제$2$열: 세로 두 번째 줄, 제$3$열: 세로 세 번째 줄\n\n[단계별 풀이]\n주어진 행렬은 $2\\times 3$ 행렬이다:\n$$A = \\begin{pmatrix} a_{11} & a_{12} & a_{13} \\\\ a_{21} & a_{22} & a_{23} \\end{pmatrix} = \\begin{pmatrix} 2 & 4 & 8 \\\\ 1 & 3 & -6 \\end{pmatrix}$$\n⑴ $(1, 2)$ 성분: 제$1$행과 제$2$열이 만나는 성분이므로\n$$a_{12} = 4$$\n\n⑵ $(2, 3)$ 성분: 제$2$행과 제$3$열이 만나는 성분이므로\n$$a_{23} = -6$$\n\n[오답 및 경계 점검]\n- 행(가로줄)과 열(세로줄)의 순서를 혼동하여 $(1, 2)$ 성분을 제$2$행 제$1$열 성분($1$)으로 잘못 읽지 않도록 주의한다.\n\n[결론]\n⑴ $4$\n⑵ $-6$"
   },
   {
     "id": 2,
     "displayNo": 2,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 2,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -48,26 +50,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음 등식이 성립하도록 하는 $a$, $b$, $c$의 값을 구하시오.\n$$\\begin{pmatrix} 1-a & 2b-1 \\\\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & 5 \\\\ 3 & c+3 \\end{pmatrix}$$",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$a=0,\\quad b=3,\\quad c=1$",
+    "solution": "[풀이 전략]\n두 행렬이 서로 같을 조건: 두 행렬의 꼴(행과 열의 개수)이 같고, 대응하는 모든 성분이 각각 같아야 한다.\n각 위치의 성분끼리 일치하도록 방정식을 세워 $a, b, c$를 구한다.\n\n[단계별 풀이]\n대응하는 성분끼리 비교하면:\n1단계: $(1, 1)$ 성분 비교:\n$$1-a = 1 \\implies a = 0$$\n2단계: $(1, 2)$ 성분 비교:\n$$2b-1 = 5 \\implies 2b = 6 \\implies b = 3$$\n3단계: $(2, 1)$ 성분 비교:\n$$3 = 3 \\quad (\\text{항등 성립})$$\n4단계: $(2, 2)$ 성분 비교:\n$$4 = c+3 \\implies c = 1$$\n따라서 구하는 값은 $a=0, b=3, c=1$이다.\n\n[오답 및 경계 점검]\n- 각 성분의 일차방정식에서 이항 시의 부호 실수를 방지한다.\n\n[결론]\n$a=0,\\quad b=3,\\quad c=1$"
   },
   {
     "id": 3,
     "displayNo": 3,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 3,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -76,26 +79,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & -3 \\\\ -1 & 5 \\end{pmatrix}$와 $B=\\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix}$에 대하여 다음을 계산하시오.\n⑴ $A+B$\n⑵ $B-A$\n⑶ $-2B$\n⑷ $3A-B$",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "⑴ $\\begin{pmatrix} 1 & -1 \\\\ 2 & 3 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} -3 & 5 \\\\ 4 & -7 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 2 & -4 \\\\ -6 & 4 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 7 & -11 \\\\ -6 & 17 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬의 덧셈, 뺄셈, 실수배 연산:\n- 덧셈·뺄셈: 같은 위치에 있는 성분끼리 각각 더하거나 뺀다.\n- 실수배: 행렬의 모든 성분에 해당 실수를 곱한다.\n\n[단계별 풀이]\n⑴ $A+B = \\begin{pmatrix} 2+(-1) & -3+2 \\\\ -1+3 & 5+(-2) \\end{pmatrix} = \\begin{pmatrix} 1 & -1 \\\\ 2 & 3 \\end{pmatrix}$\n\n⑵ $B-A = \\begin{pmatrix} -1-2 & 2-(-3) \\\\ 3-(-1) & -2-5 \\end{pmatrix} = \\begin{pmatrix} -3 & 5 \\\\ 4 & -7 \\end{pmatrix}$\n\n⑶ $-2B = -2\\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix} = \\begin{pmatrix} -2(-1) & -2(2) \\\\ -2(3) & -2(-2) \\end{pmatrix} = \\begin{pmatrix} 2 & -4 \\\\ -6 & 4 \\end{pmatrix}$\n\n⑷ $3A-B$:\n$$3A = \\begin{pmatrix} 6 & -9 \\\\ -3 & 15 \\end{pmatrix}$$\n$$3A-B = \\begin{pmatrix} 6-(-1) & -9-2 \\\\ -3-3 & 15-(-2) \\end{pmatrix} = \\begin{pmatrix} 7 & -11 \\\\ -6 & 17 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- ⑵에서 $A-B$가 아니라 $B-A$를 구해야 하므로 빼는 순서에 주의한다.\n- 뺄셈 시 음수의 뺄셈 부호 반전($-(-3) = +3$)을 명확히 확인한다.\n\n[결론]\n⑴ $\\begin{pmatrix} 1 & -1 \\\\ 2 & 3 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} -3 & 5 \\\\ 4 & -7 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 2 & -4 \\\\ -6 & 4 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 7 & -11 \\\\ -6 & 17 \\end{pmatrix}$"
   },
   {
     "id": 4,
     "displayNo": 4,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 4,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -104,26 +108,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "다음을 계산하시오.\n⑴ $\\begin{pmatrix} 3 & 5 \\end{pmatrix}\\begin{pmatrix} -7 \\\\ 6 \\end{pmatrix}$\n⑵ $\\begin{pmatrix} 2 & -5 \\end{pmatrix}\\begin{pmatrix} -1 & 3 \\\\ -2 & 1 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 3 & -2 \\\\ 1 & 6 \\end{pmatrix}\\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 6 & -2 \\\\ 3 & 0 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "⑴ $9$\n⑵ $\\begin{pmatrix} 8 & 1 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 8 \\\\ 16 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 6 & -4 \\\\ 3 & 0 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬의 곱셈 규칙: 앞 행렬의 제$i$행과 뒤 행렬의 제$j$열의 대응하는 성분을 각각 곱하여 합산한 것이 곱행렬의 $(i, j)$ 성분이 된다.\n$(m\\times k)$ 행렬과 $(k\\times n)$ 행렬의 곱은 $(m\\times n)$ 행렬이 된다.\n\n[단계별 풀이]\n⑴ $(1\\times 2) \\times (2\\times 1) \\implies (1\\times 1)$:\n$$\\begin{pmatrix} 3 & 5 \\end{pmatrix}\\begin{pmatrix} -7 \\\\ 6 \\end{pmatrix} = 3(-7) + 5(6) = -21 + 30 = 9 \\quad (\\text{또는 } \\begin{pmatrix} 9 \\end{pmatrix})$$\n\n⑵ $(1\\times 2) \\times (2\\times 2) \\implies (1\\times 2)$:\n$$\\begin{pmatrix} 2 & -5 \\end{pmatrix}\\begin{pmatrix} -1 & 3 \\\\ -2 & 1 \\end{pmatrix} = \\begin{pmatrix} 2(-1)+(-5)(-2) & 2(3)+(-5)(1) \\end{pmatrix} = \\begin{pmatrix} -2+10 & 6-5 \\end{pmatrix} = \\begin{pmatrix} 8 & 1 \\end{pmatrix}$$\n\n⑶ $(2\\times 2) \\times (2\\times 1) \\implies (2\\times 1)$:\n$$\\begin{pmatrix} 3 & -2 \\\\ 1 & 6 \\end{pmatrix}\\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 3(4)+(-2)(2) \\\\ 1(4)+6(2) \\end{pmatrix} = \\begin{pmatrix} 12-4 \\\\ 4+12 \\end{pmatrix} = \\begin{pmatrix} 8 \\\\ 16 \\end{pmatrix}$$\n\n⑷ $(2\\times 2) \\times (2\\times 2) \\implies (2\\times 2)$:\n$$\\begin{pmatrix} 6 & -2 \\\\ 3 & 0 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix} = \\begin{pmatrix} 6(1)+(-2)(0) & 6(0)+(-2)(2) \\\\ 3(1)+0(0) & 3(0)+0(2) \\end{pmatrix} = \\begin{pmatrix} 6 & -4 \\\\ 3 & 0 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 행렬의 곱셈은 교환법칙이 성립하지 않으므로 앞과 뒤의 행렬 순서를 바꾸지 않고 정확히 행 $\\times$ 열의 내적 합을 구한다.\n\n[결론]\n⑴ $9$\n⑵ $\\begin{pmatrix} 8 & 1 \\end{pmatrix}$\n⑶ $\\begin{pmatrix} 8 \\\\ 16 \\end{pmatrix}$\n⑷ $\\begin{pmatrix} 6 & -4 \\\\ 3 & 0 \\end{pmatrix}$"
   },
   {
     "id": 5,
     "displayNo": 5,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 5,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -132,26 +137,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} -2 & 5 & 7 \\\\ 4 & -1 & 6 \\\\ 8 & 8 & 3 \\end{pmatrix}$에 대하여 옳은 것을 보기에서 모두 고르시오.\n[보기]\nㄱ. 제2행은 $\\begin{pmatrix} 4 & -1 & 6 \\end{pmatrix}$이다.\nㄴ. 행렬 $A$의 $(4, 3)$ 성분은 없다.\nㄷ. 제3열의 성분의 합은 16이다.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "ㄱ, ㄴ, ㄷ",
+    "solution": "[풀이 전략]\n$3\\times 3$ 행렬 $A$의 행과 열 구조를 파악하고 보기를 각각 검증한다:\n- 제2행: 가로 두 번째 줄의 성분들\n- $(4, 3)$ 성분: 제4행 제3열 성분 (행의 개수가 3개이므로 존재하는지 확인)\n- 제3열: 세로 세 번째 줄의 성분들의 합\n\n[단계별 풀이]\n1단계 [ㄱ 검증]:\n행렬 $A$의 제2행은 가로 두 번째 줄이므로 $\\begin{pmatrix} 4 & -1 & 6 \\end{pmatrix}$이다. (ㄱ은 참)\n\n2단계 [ㄴ 검증]:\n행렬 $A$는 $3\\times 3$ 행렬이므로 행의 번호 $i$는 $1, 2, 3$만 가능하다.\n따라서 제4행 자체가 존재하지 않으므로 $(4, 3)$ 성분은 없다. (ㄴ은 참)\n\n3단계 [ㄷ 검증]:\n행렬 $A$의 제3열은 세로 세 번째 줄이며, 성분은 $7, 6, 3$이다.\n이 성분들의 합은 $7 + 6 + 3 = 16$이다. (ㄷ은 참)\n\n4단계: 따라서 ㄱ, ㄴ, ㄷ 모두 옳다.\n\n[오답 및 경계 점검]\n- 행렬의 크기가 $3\\times 3$임을 바탕으로 행과 열의 유효 범위를 엄밀히 판정한다.\n\n[결론]\nㄱ, ㄴ, ㄷ"
   },
   {
     "id": 6,
     "displayNo": 6,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 6,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -160,26 +166,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} a-b & 0 \\\\ 6 & 4 \\end{pmatrix}$와 $B=\\begin{pmatrix} -1 & 0 \\\\ 6 & 2ab \\end{pmatrix}$에 대하여 $A=B$일 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n두 행렬이 서로 같으므로 대응하는 성분이 일치해야 한다:\n$(1, 1)$ 성분: $a-b = -1$\n$(2, 2)$ 성분: $4 = 2ab \\implies ab = 2$\n곱셈 공식의 변형 $a^2+b^2 = (a-b)^2 + 2ab$를 이용하여 식의 값을 계산한다.\n\n[단계별 풀이]\n1단계: $A=B$이므로 대응하는 성분을 비교한다:\n- $(1, 1)$ 성분: $a-b = -1$\n- $(2, 2)$ 성분: $2ab = 4 \\implies ab = 2$\n2단계: 곱셈 공식의 변형식을 적용한다:\n$$a^2+b^2 = (a-b)^2 + 2ab$$\n3단계: $a-b=-1$, $ab=2$를 대입한다:\n$$a^2+b^2 = (-1)^2 + 2(2) = 1 + 4 = 5$$\n따라서 구하는 값은 $5$이다.\n\n[오답 및 경계 점검]\n- $a^2+b^2 = (a-b)^2 - 2ab$로 부호를 반대로 적용하지 않도록 곱셈 공식 변형 부호를 점검한다.\n\n[결론]\n$5$"
   },
   {
     "id": 7,
     "displayNo": 7,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 7,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -188,26 +195,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A$와 $B$에 대하여 $B=\\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}$이고 $A+B=\\begin{pmatrix} 4 & -2 \\\\ 3 & 0 \\end{pmatrix}$일 때, $2A-B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$\\begin{pmatrix} 2 & -1 \\\\ 15 & -15 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n1. $A = (A+B) - B$를 이용하여 먼저 행렬 $A$를 구한다.\n2. 구한 행렬 $A$에 2배를 한 후 $B$를 빼서 $2A-B$를 계산한다.\n(또는 $2A-B = 2(A+B) - 3B$의 대수적 변형을 이용하면 $A$를 따로 구하지 않고 바로 계산할 수도 있다.)\n\n[단계별 풀이]\n1단계: 행렬 $A$를 구한다:\n$$A = (A+B) - B = \\begin{pmatrix} 4 & -2 \\\\ 3 & 0 \\end{pmatrix} - \\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}$$\n$$= \\begin{pmatrix} 4-2 & -2-(-1) \\\\ 3-(-3) & 0-5 \\end{pmatrix} = \\begin{pmatrix} 2 & -1 \\\\ 6 & -5 \\end{pmatrix}$$\n2단계: $2A$를 구한다:\n$$2A = 2\\begin{pmatrix} 2 & -1 \\\\ 6 & -5 \\end{pmatrix} = \\begin{pmatrix} 4 & -2 \\\\ 12 & -10 \\end{pmatrix}$$\n3단계: $2A-B$를 계산한다:\n$$2A-B = \\begin{pmatrix} 4 & -2 \\\\ 12 & -10 \\end{pmatrix} - \\begin{pmatrix} 2 & -1 \\\\ -3 & 5 \\end{pmatrix}$$\n$$= \\begin{pmatrix} 4-2 & -2-(-1) \\\\ 12-(-3) & -10-5 \\end{pmatrix} = \\begin{pmatrix} 2 & -1 \\\\ 15 & -15 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- $(2, 1)$ 성분 계산 시 $12 - (-3) = 15$, $(2, 2)$ 성분 $-10 - 5 = -15$ 부호 처리를 주의한다.\n\n[결론]\n$\\begin{pmatrix} 2 & -1 \\\\ 15 & -15 \\end{pmatrix}$"
   },
   {
     "id": 8,
     "displayNo": 8,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 8,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -216,26 +224,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "$2\\times 3$ 행렬 $A$와 $B$에 대하여 $A$의 $(i, j)$ 성분은 $2i-j+1$이고 $A+2B$의 $(i, j)$ 성분은 $i+2j$일 때, 행렬 $B$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$\\begin{pmatrix} \\dfrac{1}{2} & 2 & \\dfrac{7}{2} \\\\ 0 & \\dfrac{3}{2} & 3 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n성분별 관계식을 세운다:\n- $A$의 $(i, j)$ 성분을 $a_{ij} = 2i-j+1$\n- $A+2B$의 $(i, j)$ 성분을 $c_{ij} = i+2j$\n- $2B = (A+2B) - A$이므로, $B$의 $(i, j)$ 성분 $b_{ij}$는 다음과 같다:\n  $$b_{ij} = \\dfrac{c_{ij} - a_{ij}}{2} = \\dfrac{(i+2j) - (2i-j+1)}{2} = \\dfrac{-i+3j-1}{2}$$\n이를 $i=1, 2$와 $j=1, 2, 3$에 대입하여 $2\\times 3$ 행렬 $B$를 구한다.\n\n[단계별 풀이]\n1단계: $B$의 일반 성분 $b_{ij}$를 구한다:\n$$b_{ij} = \\dfrac{(i+2j) - (2i-j+1)}{2} = \\dfrac{-i+3j-1}{2}$$\n2단계: 제1행 성분들 ($i=1$):\n- $j=1: b_{11} = \\dfrac{-1+3(1)-1}{2} = \\dfrac{1}{2}$\n- $j=2: b_{12} = \\dfrac{-1+3(2)-1}{2} = \\dfrac{4}{2} = 2$\n- $j=3: b_{13} = \\dfrac{-1+3(3)-1}{2} = \\dfrac{7}{2}$\n3단계: 제2행 성분들 ($i=2$):\n- $j=1: b_{21} = \\dfrac{-2+3(1)-1}{2} = \\dfrac{0}{2} = 0$\n- $j=2: b_{22} = \\dfrac{-2+3(2)-1}{2} = \\dfrac{3}{2}$\n- $j=3: b_{23} = \\dfrac{-2+3(3)-1}{2} = \\dfrac{6}{2} = 3$\n4단계: 행렬 $B$를 꼴에 맞추어 작성한다:\n$$B = \\begin{pmatrix} \\dfrac{1}{2} & 2 & \\dfrac{7}{2} \\\\ 0 & \\dfrac{3}{2} & 3 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- $A$와 $A+2B$를 각각 $2\\times 3$ 숫자로 직접 적은 후 빼서 2로 나누어도 동일하게 검산된다.\n\n[결론]\n$\\begin{pmatrix} \\dfrac{1}{2} & 2 & \\dfrac{7}{2} \\\\ 0 & \\dfrac{3}{2} & 3 \\end{pmatrix}$"
   },
   {
     "id": 9,
     "displayNo": 9,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 9,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -244,26 +253,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}$에 대하여 $A^2$의 모든 성분의 합이 0이 되도록 하는 모든 실수 $k$의 값의 합을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n1. 행렬의 곱셈을 이용하여 $A^2 = AA$의 각 성분을 $k$에 대한 식으로 구한다.\n2. $A^2$의 4개 성분을 모두 더하여 $k$에 대한 이차방정식을 세운다.\n3. 모든 성분의 합이 0이 되는 이차방정식을 풀거나 근과 계수의 관계를 이용하여 모든 실수 $k$의 합을 구한다.\n\n[단계별 풀이]\n1단계 [해결 과정 - 40%]:\n$A^2 = AA$를 계산한다:\n$$A^2 = \\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}\\begin{pmatrix} k & -1 \\\\ -2 & 1 \\end{pmatrix}$$\n$$= \\begin{pmatrix} k(k)+(-1)(-2) & k(-1)+(-1)(1) \\\\ -2(k)+1(-2) & -2(-1)+1(1) \\end{pmatrix} = \\begin{pmatrix} k^2+2 & -k-1 \\\\ -2k-2 & 3 \\end{pmatrix}$$\n\n2단계 [해결 과정 - 40%]:\n$A^2$의 모든 성분의 합이 0이어야 하므로:\n$$(k^2+2) + (-k-1) + (-2k-2) + 3 = 0$$\n동류항끼리 정리하면:\n$$k^2 - 3k + 2 = 0$$\n좌변을 인수분해하면:\n$$(k-1)(k-2) = 0 \\implies k = 1 \\text{ 또는 } k = 2$$\n\n3단계 [답 구하기 - 20%]:\n따라서 모든 실수 $k$의 값의 합은:\n$$1 + 2 = 3$$\n(또는 근과 계수의 관계에 의하여 합은 $-\\dfrac{-3}{1} = 3$이다.)\n\n[오답 및 경계 점검]\n- 판별식을 확인하면 $D = (-3)^2 - 4(1)(2) = 1 > 0$이므로 두 근 모두 실수임이 확실히 보장된다.\n\n[결론]\n$3$"
   },
   {
     "id": 10,
     "displayNo": 10,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 10,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -272,26 +282,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "오른쪽 그림은 지하철 노선도의 일부를 나타낸 것이다. 이 지하철 노선도를 나타내는 $4\\times 4$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$를 다음과 같이 정하려고 한다.\n$$a_{ij}=\\begin{cases} 1 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 있을 때}) \\\\ 0 & (i\\text{에서 한 번에 } j\\text{로 이동할 수 없을 때}) \\end{cases}$$\n행렬 $A$의 제2행의 모든 성분의 합을 구하시오. (단, $i$와 $j$는 역의 번호를 나타내며, $i=j$이면 $a_{ij}=0$)\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n노선도 그래프와 인접행렬의 관계:\n- 제2행의 성분 $a_{2j}$ ($j=1, 2, 3, 4$)는 2번 역(신길)에서 다른 역 $j$로 한 번에 이동할 수 있는지 여부를 나타낸다.\n- 제2행의 모든 성분의 합은 곧 '2번 역과 직접 연결된 이웃한 역의 개수'와 같다.\n\n[단계별 풀이]\n1단계: 역 번호 매핑:\n- 1번: 여의도\n- 2번: 신길\n- 3번: 대방\n- 4번: 샛강\n2단계: 2번 역(신길)에서 출발하여 한 번에 이동할 수 있는 역을 그림에서 조사한다:\n- 여의도(1)와 신길(2)은 연결되어 있으므로 $a_{21} = 1$\n- 자기 자신으로는 이동하지 않으므로 $a_{22} = 0$\n- 신길(2)과 대방(3)은 연결되어 있으므로 $a_{23} = 1$\n- 신길(2)과 샛강(4)은 직접 연결되어 있지 않으므로 $a_{24} = 0$\n3단계: 따라서 행렬 $A$의 제2행은 다음과 같다:\n$$\\begin{pmatrix} a_{21} & a_{22} & a_{23} & a_{24} \\end{pmatrix} = \\begin{pmatrix} 1 & 0 & 1 & 0 \\end{pmatrix}$$\n4단계: 제2행의 모든 성분의 합을 구하면:\n$$1 + 0 + 1 + 0 = 2$$\n\n[오답 및 경계 점검]\n- 신길(2)에서 샛강(4)은 직접 연결선이 없으므로 $a_{24}=0$이다. 그림의 연결 선분을 정확히 확인한다.\n\n[결론]\n$2$"
   },
   {
     "id": 11,
     "displayNo": 11,
+    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1",
     "sourceQuestionNo": 11,
     "level": "고1",
     "category": "행렬",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -300,13 +311,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "중단원 마무리"
+      "중단원 마무리",
+      "행렬과 그 연산"
     ],
     "wide": false,
     "content": "이차 정사각행렬 $A$에 대하여 $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}=\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$이고 $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} -3 \\\\ 4 \\end{pmatrix}$일 때, $A\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬과연산_중단원마무리_고1"
+    "answer": "$\\begin{pmatrix} 0 \\\\ 10 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n방법 1 (열벡터 결합/행렬 복원):\n$A=\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$라 하면 $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} a \\\\ c \\end{pmatrix}$, $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} b \\\\ d \\end{pmatrix}$이므로 행렬 $A$의 첫 번째 열과 두 번째 열이 그대로 주어진 것이다.\n따라서 $A=\\begin{pmatrix} 1 & -3 \\\\ 2 & 4 \\end{pmatrix}$임을 즉시 알 수 있으며, 이를 $\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$에 곱한다.\n\n방법 2 (선형결합):\n$\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = 3\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$이므로 분배법칙으로\n$$A\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = 3A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = 3\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} + \\begin{pmatrix} -3 \\\\ 4 \\end{pmatrix}$$\n로도 풀 수 있다.\n\n[단계별 풀이]\n1단계 [해결 과정 - 40%]:\n$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$라 하면\n$$A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} a \\\\ c \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$$\n두 행렬이 서로 같을 조건에 의하여 $a=1, c=2$이다.\n\n2단계 [해결 과정 - 40%]:\n$$A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} b \\\\ d \\end{pmatrix} = \\begin{pmatrix} -3 \\\\ 4 \\end{pmatrix}$$\n두 행렬이 서로 같을 조건에 의하여 $b=-3, d=4$이다.\n\n3단계 [답 구하기 - 20%]:\n따라서 $A = \\begin{pmatrix} 1 & -3 \\\\ 2 & 4 \\end{pmatrix}$이므로\n$$A\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 1 & -3 \\\\ 2 & 4 \\end{pmatrix}\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 1(3) + (-3)(1) \\\\ 2(3) + 4(1) \\end{pmatrix} = \\begin{pmatrix} 3-3 \\\\ 6+4 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 10 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- 행렬의 곱셈 연산 결과가 $(2\\times 1)$ 열벡터임에 주의하며, $3-3=0$, $6+4=10$의 기본 연산을 꼼꼼히 점검한다.\n\n[결론]\n$\\begin{pmatrix} 0 \\\\ 10 \\end{pmatrix}$"
   }
 ];

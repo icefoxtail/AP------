@@ -4,14 +4,15 @@ window.questionBank = [
   {
     "id": 1,
     "displayNo": 1,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 1,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -20,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "서로 다른 주사위 두 개를 동시에 던질 때 나오는 눈의 수의 합이 5의 배수인 경우의 수는?",
@@ -31,21 +33,21 @@ window.questionBank = [
       "8",
       "9"
     ],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "③",
+    "solution": "[풀이 전략]\n서로 다른 두 주사위의 눈의 수의 합은 최소 $1+1=2$부터 최대 $6+6=12$까지 가능하다.\n이 범위 내의 $5$의 배수는 $5$와 $10$이다.\n합이 $5$인 사건과 합이 $10$인 사건은 동시에 일어날 수 없으므로 각각의 순서쌍을 구하여 합의 법칙을 적용한다.\n\n[단계별 풀이]\n두 주사위에서 나오는 눈의 수를 $(a, b)$라 하자 ($1\\le a, b \\le 6$).\n1단계: 두 눈의 수의 합이 $5$인 경우 ($a+b=5$):\n$$(1, 4), (2, 3), (3, 2), (4, 1)$$\n경우의 수는 $4$가지이다.\n2단계: 두 눈의 수의 합이 $10$인 경우 ($a+b=10$):\n$$(4, 6), (5, 5), (6, 4)$$\n경우의 수는 $3$가지이다.\n3단계: 두 사건은 동시에 일어날 수 없으므로 합의 법칙에 의하여:\n$$4 + 3 = 7$$\n선지에서 $7$에 해당하는 번호는 ③이다.\n\n[오답 및 경계 점검]\n- 주사위의 합이 $15$ 이상은 불가능하므로 $5$와 $10$ 두 가지만 고려하면 된다.\n\n[결론]\n③"
   },
   {
     "id": 2,
     "displayNo": 2,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 2,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-07",
+    "standardUnit": "합의 법칙과 곱의 법칙",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,26 +56,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "합의 법칙과 곱의 법칙"
     ],
     "wide": false,
     "content": "다항식 $(a+b+c+d)(x+y)$를 전개할 때 생기는 항의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n다항식의 곱을 전개할 때 동류항이 생기지 않으면, 각 괄호 안의 서로 다른 항을 하나씩 택하여 곱하는 경우의 수가 곧 전개식의 항의 개수가 된다(곱의 법칙).\n\n[단계별 풀이]\n1단계: 첫 번째 괄호 $(a+b+c+d)$에는 서로 다른 $4$개의 항이 있다.\n2단계: 두 번째 괄호 $(x+y)$에는 서로 다른 $2$개의 항이 있다.\n3단계: 두 괄호의 문자가 완전히 다르므로 전개했을 때 동류항이 발생하지 않는다.\n따라서 곱의 법칙에 의하여 생기는 항의 개수는 다음과 같다:\n$$4 \\times 2 = 8$$\n\n[오답 및 경계 점검]\n- 두 괄호에 공통 문자가 없으므로 동류항으로 묶여 항의 수가 줄어드는 일이 없음을 확인한다.\n\n[결론]\n$8$"
   },
   {
     "id": 3,
     "displayNo": 3,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 3,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -82,7 +85,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "225의 약수의 개수는?",
@@ -93,21 +97,21 @@ window.questionBank = [
       "12",
       "13"
     ],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "①",
+    "solution": "[풀이 전략]\n자연수 $N$을 소인수분해하여 $N = p^a q^b$ ($p, q$는 서로 다른 소수)로 나타낼 때,\n양의 약수의 개수는 $(a+1)(b+1)$이다.\n\n[단계별 풀이]\n1단계: $225$를 소인수분해한다:\n$$225 = 15^2 = (3 \\times 5)^2 = 3^2 \\times 5^2$$\n2단계: 약수의 개수 공식을 적용한다:\n$$(2+1) \\times (2+1) = 3 \\times 3 = 9$$\n선지에서 $9$에 해당하는 번호는 ①이다.\n\n[오답 및 경계 점검]\n- 지수에 각각 $1$을 더해 곱하는 원리는 각 소인수의 거듭제곱 선택지($3^0, 3^1, 3^2$의 3가지)에서 비롯됨을 확인한다.\n\n[결론]\n①"
   },
   {
     "id": 4,
     "displayNo": 4,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 4,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -116,26 +120,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "오른쪽 그림은 어느 공원의 산책로를 나타낸 것이다. 입구에서 출구로 가는 경우의 수를 구하시오. (단, 같은 지점을 다시 가지 않는다.)\n<img src=\"q04.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n입구에서 출구로 가는 경로를 경유지에 따라 경로별로 분류(합의 법칙)하고, 각 단계의 길의 수를 곱하여(곱의 법칙) 합산한다.\n공원 노선망에서 입구에서 출구로 가는 중간 갈림길 지점을 $A, B$라 할 때 가능한 모든 경로를 빠짐없이 나열한다.\n\n[단계별 풀이]\n그림의 경로망을 분석하면 입구에서 중간 지점과 출구로 연결된 경로가 다음과 같이 구분된다:\n- [경로 1] 입구 $\\to A \\to$ 출구: $2 \\times 3 = 6$가지\n- [경로 2] 입구 $\\to B \\to$ 출구: $2 \\times 2 = 4$가지\n두 경로는 동시에 일어날 수 없으므로 합의 법칙에 의하여 전체 경우의 수는 다음과 같다:\n$$6 + 4 = 10$$\n\n[오답 및 경계 점검]\n- '같은 지점을 다시 가지 않는다'는 조건에 따라 역주행하거나 순환하는 경로는 제외된다.\n\n[결론]\n$10$"
   },
   {
     "id": 5,
     "displayNo": 5,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 5,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -144,26 +149,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
-    "content": "서울역과 강릉역 사이를 운행하는 고속 철도에는 정차역이 11개 있다. 고속 철도의 출발역과 도착역이 표기된 승차권을 발행하는 경우의 수를 구하시오. (단, 출발역과 도착역은 서로 다르다.)",
+    "content": "서울역과 강릉역 사이를 운행하는 고속 철도에는 정차역이 11개 있다. 고속 철도의 출발역과 도착역이 표기된 승차권을 발행하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$110$",
+    "solution": "[풀이 전략]\n승차권에는 출발역과 도착역이 구분되어 표기된다.\n예를 들어 '서울역 출발 $\\to$ 강릉역 도착'과 '강릉역 출발 $\\to$ 서울역 도착'은 서로 다른 승차권이다.\n따라서 서로 다른 11개의 정차역 중에서 순서를 생각하여 서로 다른 2개의 역을 택하는 순열 문제이다.\n\n[단계별 풀이]\n1단계: 전체 정차역의 개수는 $11$개이다.\n2단계: 출발역으로 선택할 수 있는 역은 $11$개이다.\n3단계: 도착역은 출발역과 달라야 하므로 선택할 수 있는 역은 출발역을 제외한 $10$개이다.\n4단계: 따라서 승차권을 발행하는 경우의 수는 순열 ${}_{11}\\mathrm{P}_{2}$와 같다:\n$${}_{11}\\mathrm{P}_{2} = 11 \\times 10 = 110$$\n\n[오답 및 경계 점검]\n- 출발역과 도착역의 순서가 중요하므로 조합(${}_{11}\\mathrm{C}_{2} = 55$)으로 풀면 안 되고 순열(${}_{11}\\mathrm{P}_{2} = 110$)로 풀어야 함을 명확히 점검한다.\n\n[결론]\n$110$"
   },
   {
     "id": 6,
     "displayNo": 6,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 6,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -172,26 +178,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "다섯 개의 숫자 0, 1, 2, 3, 4에서 서로 다른 숫자 3개를 사용하여 만들 수 있는 세 자리 자연수 중에서 짝수의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$30$",
+    "solution": "[풀이 전략]\n세 자리 자연수가 짝수가 되려면 일의 자리 숫자가 짝수($0, 2, 4$)이어야 한다.\n이때 '0'은 백의 자리(맨 앞자리)에 올 수 없으므로, 일의 자리가 $0$인 경우와 $0$이 아닌 짝수($2, 4$)인 경우로 분기하여 계산한다.\n\n[단계별 풀이]\n주어진 숫자는 $\\{0, 1, 2, 3, 4\\}$의 $5$개이다.\n1단계 [일의 자리 숫자가 0인 경우]:\n- 일의 자리: $0$ (1가지)\n- 백의 자리와 십의 자리: $0$을 제외한 $\\{1, 2, 3, 4\\}$ 4개의 숫자 중에서 2개를 택해 나열하므로\n  $${}_{4}\\mathrm{P}_{2} = 4 \\times 3 = 12\\text{가지}$$\n\n2단계 [일의 자리 숫자가 2인 경우]:\n- 일의 자리: $2$ (1가지)\n- 백의 자리: $0$과 $2$를 제외한 $\\{1, 3, 4\\}$ 3가지\n- 십의 자리: 사용된 두 숫자를 제외한 남은 3가지\n  $$3 \\times 3 = 9\\text{가지}$$\n\n3단계 [일의 자리 숫자가 4인 경우]:\n- 2단계와 완전히 동일하게 $3 \\times 3 = 9$가지이다.\n\n4단계: 세 경우는 동시에 일어날 수 없으므로 합의 법칙에 의하여:\n$$12 + 9 + 9 = 30$$\n따라서 만들 수 있는 짝수의 개수는 $30$개이다.\n\n[오답 및 경계 점검]\n- 일의 자리에 $0$이 올 때는 백의 자리에 $0$이 올 걱정이 없지만, 일의 자리에 $2$나 $4$가 올 때는 백의 자리에 $0$이 오지 못하므로 경우를 반드시 분리해야 한다.\n\n[결론]\n$30$"
   },
   {
     "id": 7,
     "displayNo": 7,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 7,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -200,26 +207,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "등식 ${}_{n}\\mathrm{C}_{3}=3\\cdot{}_{n}\\mathrm{C}_{2}$를 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n조합의 계산 공식 ${}_{n}\\mathrm{C}_{r} = \\dfrac{{}_{n}\\mathrm{P}_{r}}{r!}$을 적용하여 $n$에 대한 방정식을 세운다:\n$${}_{n}\\mathrm{C}_{3} = \\dfrac{n(n-1)(n-2)}{6}, \\quad {}_{n}\\mathrm{C}_{2} = \\dfrac{n(n-1)}{2}$$\n$n \\ge 3$인 자연수 조건을 이용하여 양변을 약분하고 $n$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 주어진 등식에 조합의 정의를 대입한다 ($n \\ge 3$):\n$$\\dfrac{n(n-1)(n-2)}{6} = 3 \\times \\dfrac{n(n-1)}{2}$$\n2단계: 우변을 정리하면:\n$$\\dfrac{n(n-1)(n-2)}{6} = \\dfrac{3n(n-1)}{2}$$\n3단계: 양변에 6을 곱한다:\n$$n(n-1)(n-2) = 9n(n-1)$$\n4단계: $n \\ge 3$이므로 $n(n-1) \\ne 0$이다. 양변을 $n(n-1)$로 나누면:\n$$n-2 = 9 \\implies n = 11$$\n따라서 만족시키는 자연수 $n$의 값은 $11$이다.\n\n[오답 및 경계 점검]\n- $n \\ge 3$ 조건에서 $n(n-1) \\ne 0$임을 밝히고 약분해야 논리적 흠결이 없다.\n\n[결론]\n$11$"
   },
   {
     "id": 8,
     "displayNo": 8,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 8,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -228,26 +236,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "남자 선수 6명과 여자 선수 4명으로 이루어진 테니스 팀에서 남자 선수 2명과 여자 선수 2명을 뽑는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$90$",
+    "solution": "[풀이 전략]\n남자 선수와 여자 선수를 각각 독립적으로 뽑은 후 곱의 법칙을 적용한다:\n- 남자 6명 중 2명을 뽑는 조합의 수: ${}_{6}\\mathrm{C}_{2}$\n- 여자 4명 중 2명을 뽑는 조합의 수: ${}_{4}\\mathrm{C}_{2}$\n두 사건이 잇달아 일어나므로 곱의 법칙으로 계산한다.\n\n[단계별 풀이]\n1단계: 남자 선수 6명 중에서 2명을 뽑는 경우의 수는\n$${}_{6}\\mathrm{C}_{2} = \\dfrac{6 \\times 5}{2 \\times 1} = 15$$\n2단계: 여자 선수 4명 중에서 2명을 뽑는 경우의 수는\n$${}_{4}\\mathrm{C}_{2} = \\dfrac{4 \\times 3}{2 \\times 1} = 6$$\n3단계: 곱의 법칙에 의하여 구하는 전체 경우의 수는 다음과 같다:\n$$15 \\times 6 = 90$$\n\n[오답 및 경계 점검]\n- 두 집단에서 각각 뽑는 사건은 곱의 법칙을 적용해야 하므로 $15 + 6 = 21$로 더하지 않도록 유의한다.\n\n[결론]\n$90$"
   },
   {
     "id": 9,
     "displayNo": 9,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 9,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -256,26 +265,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "사과, 배, 바나나를 포함한 과일 8종류 중에서 4종류를 택할 때, 바나나는 포함하지 않고 사과와 배는 모두 포함하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n특정한 원소가 포함되거나 포함되지 않는 조합의 수:\n전체 8종류 중에서 사과, 배, 바나나 3종류의 상태가 이미 결정되어 있다:\n- 바나나는 선택 대상에서 완전히 제외 (0개 선택)\n- 사과와 배는 반드시 포함 (2개 미리 선택)\n따라서 남은 과일 종류 중에서 추가로 필요한 개수만큼 택하는 조합을 구한다.\n\n[단계별 풀이]\n1단계: 전체 과일 8종류 중에서 사과, 배, 바나나 3종류를 제외한 나머지 과일의 수는\n$$8 - 3 = 5\\text{종류}$$\n2단계: 총 4종류를 택해야 하는데, 사과와 배 2종류는 이미 포함되었으므로 추가로 뽑아야 하는 과일의 수는\n$$4 - 2 = 2\\text{종류}$$\n3단계: 따라서 남은 5종류 중에서 2종류를 택하는 조합의 수와 같다:\n$${}_{5}\\mathrm{C}_{2} = \\dfrac{5 \\times 4}{2 \\times 1} = 10$$\n\n[오답 및 경계 점검]\n- 이미 정해진 원소들을 전체 대상 수와 뽑아야 할 수에서 각각 차감하는 논리를 정확히 적용한다.\n\n[결론]\n$10$"
   },
   {
     "id": 10,
     "displayNo": 10,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 10,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -284,26 +294,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "희주와 은비를 포함한 육상 선수 6명 중에서 4명을 선발하여 계주 순서를 정하려고 한다. 희주와 은비 중에서 한 사람만 선발하여 계주 순서를 정하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$192$",
+    "solution": "[풀이 전략]\n1단계: 선발할 4명을 구성하는 조합의 수를 구한다.\n- 희주와 은비 2명 중 선발될 1명을 택한다: ${}_{2}\\mathrm{C}_{1}$\n- 나머지 4명 중에서 남은 3명을 택한다: ${}_{4}\\mathrm{C}_{3}$\n2단계: 선발된 4명의 계주 순서(1번~4번 주자)를 나열한다: $4!$\n3단계: 곱의 법칙으로 전체 경우의 수를 계산한다.\n\n[단계별 풀이]\n1단계: 희주와 은비 중에서 선발할 한 사람을 택하는 경우의 수는\n$${}_{2}\\mathrm{C}_{1} = 2$$\n2단계: 희주와 은비를 제외한 나머지 4명 중에서 선발할 3명을 택하는 경우의 수는\n$${}_{4}\\mathrm{C}_{3} = {}_{4}\\mathrm{C}_{1} = 4$$\n따라서 계주에 출전할 선수 4명을 뽑는 경우의 수는 $2 \\times 4 = 8$가지이다.\n3단계: 선발된 4명의 주자 순서를 정하는 경우의 수는 4명을 일렬로 나열하는 것이므로\n$$4! = 4 \\times 3 \\times 2 \\times 1 = 24$$\n4단계: 곱의 법칙에 의하여 구하는 전체 경우의 수는 다음과 같다:\n$$2 \\times 4 \\times 24 = 192$$\n\n[오답 및 경계 점검]\n- [다른 풀이 (여사건)]:\n  전체 6명 중 4명을 뽑아 나열하는 수: ${}_{6}\\mathrm{P}_{4} = 360$\n  둘 다 선발되는 경우: ${}_{4}\\mathrm{C}_{2} \\times 4! = 6 \\times 24 = 144$\n  둘 다 탈락하는 경우: ${}_{4}\\mathrm{P}_{4} = 24$\n  구하는 수: $360 - 144 - 24 = 192$로 동일함을 교차 검증할 수 있다.\n\n[결론]\n$192$"
   },
   {
     "id": 11,
     "displayNo": 11,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 11,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -312,26 +323,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
     "content": "5개의 숫자 0, 2, 4, 6, 8 중에서 서로 다른 4개를 택하여 만든 네 자리 자연수를 작은 것부터 순서대로 나열할 때, 35째 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$4280$",
+    "solution": "[풀이 전략]\n사전식(크기 순) 배열 문제:\n네 자리 자연수이므로 천의 자리에는 0이 올 수 없다.\n천의 자리 숫자가 작은 것부터 차례대로 각 구간별 자연수의 개수를 순열로 누적 계산하여 35번째 수가 속하는 구간을 좁혀나간다.\n\n[단계별 풀이]\n사용 가능한 숫자는 $\\{0, 2, 4, 6, 8\\}$이다.\n1단계 [천의 자리 숫자가 2인 네 자리 자연수]:\n- 백, 십, 일의 자리에 남은 4개의 숫자 중 3개를 나열하는 경우의 수는\n  $${}_{4}\\mathrm{P}_{3} = 4 \\times 3 \\times 2 = 24\\text{개}$$\n  (1번째부터 24번째까지)\n\n2단계 [천의 자리 숫자가 4인 네 자리 자연수]:\n- $40\\square\\square$ 꼴 (천의 자리가 4, 백의 자리가 0):\n  남은 $\\{2, 6, 8\\}$ 3개 중 2개를 나열하므로\n  $${}_{3}\\mathrm{P}_{2} = 3 \\times 2 = 6\\text{개}$$\n  (누적: $24 + 6 = 30$번째까지)\n- 따라서 35번째 수는 천의 자리가 4, 백의 자리가 2인 $42\\square\\square$ 꼴의 5번째 수이다 ($30 + 5 = 35$).\n\n3단계 [$42\\square\\square$ 꼴의 수들을 작은 것부터 차례로 나열]:\n남은 숫자는 $\\{0, 6, 8\\}$이다.\n- 31번째: $4206$\n- 32번째: $4208$\n- 33번째: $4260$\n- 34번째: $4268$\n- 35번째: $4280$\n\n4단계: 따라서 구하는 35번째 수는 $4280$이다.\n\n[오답 및 경계 점검]\n- 백의 자리가 0인 수를 먼저 카운트(6개)한 후, 백의 자리가 2인 수들을 십의 자리, 일의 자리 순서로 신중하게 나열하여 5번째 수를 정확히 찾는다.\n\n[결론]\n$4280$"
   },
   {
     "id": 12,
     "displayNo": 12,
+    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1",
     "sourceQuestionNo": 12,
     "level": "고1",
     "category": "경우의 수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-03",
-    "standardUnit": "경우의 수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -340,13 +352,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "경우의 수",
-      "대단원 마무리"
+      "대단원 마무리",
+      "순열과 조합"
     ],
     "wide": false,
-    "content": "$x$에 대한 이차방정식\n$$3x^2-{}_{n}\\mathrm{C}_{r}x-3\\cdot{}_{n}\\mathrm{P}_{r}=0$$\n의 두 근이 $-2$와 3일 때, $n+r$의 값을 구하시오. (단, $n$과 $r$은 자연수)",
+    "content": "$x$에 대한 이차방정식\n$$3x^2-{}_{n}\\mathrm{C}_{r}x-3\\cdot{}_{n}\\mathrm{P}_{r}=0$$\n의 두 근이 $-2$와 $3$일 때, $n+r$의 값을 구하시오. (단, $n, r$은 자연수이고 $n\\ge r$)",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_경우의수_대단원마무리_고1"
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n이차방정식의 근과 계수의 관계를 이용하여 ${}_{n}\\mathrm{C}_{r}$과 ${}_{n}\\mathrm{P}_{r}$의 값을 구한다:\n- 두 근의 합: $-2+3 = 1$\n- 두 근의 곱: $(-2) \\times 3 = -6$\n${}_{n}\\mathrm{C}_{r} = \\dfrac{{}_{n}\\mathrm{P}_{r}}{r!}$ 관계식을 이용하여 $r$을 먼저 결정한 후 $n$을 구한다.\n\n[단계별 풀이]\n1단계: 근과 계수의 관계에 의하여\n- 두 근의 합:\n  $$(-2) + 3 = -\\dfrac{-{}_{n}\\mathrm{C}_{r}}{3} \\implies 1 = \\dfrac{{}_{n}\\mathrm{C}_{r}}{3} \\implies {}_{n}\\mathrm{C}_{r} = 3 \\quad \\cdots \\text{①}$$\n- 두 근의 곱:\n  $$(-2) \\times 3 = \\dfrac{-3\\cdot{}_{n}\\mathrm{P}_{r}}{3} \\implies -6 = -{}_{n}\\mathrm{P}_{r} \\implies {}_{n}\\mathrm{P}_{r} = 6 \\quad \\cdots \\text{②}$$\n2단계: 순열과 조합의 관계식 ${}_{n}\\mathrm{C}_{r} = \\dfrac{{}_{n}\\mathrm{P}_{r}}{r!}$에 대입하면:\n$$3 = \\dfrac{6}{r!} \\implies r! = 2$$\n$r$은 자연수이므로 $r=2$이다.\n3단계: $r=2$를 ②에 대입하면:\n$${}_{n}\\mathrm{P}_{2} = n(n-1) = 6$$\n연속하는 두 자연수의 곱이 6이므로 $n = 3$이다 ($3 \\times 2 = 6$).\n4단계: 따라서 구하는 $n+r$의 값은:\n$$n+r = 3 + 2 = 5$$\n\n[오답 및 경계 점검]\n- $n=3, r=2$일 때 ${}_3\\mathrm{C}_2 = 3$, ${}_3\\mathrm{P}_2 = 6$이 정확히 성립함을 교차 확인한다.\n\n[결론]\n$5$"
   }
 ];

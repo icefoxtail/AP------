@@ -1,17 +1,18 @@
-window.examTitle = "미래엔 공통수학Ⅰ 행렬 대단원 마무리";
+window.examTitle = "미래엔 공통수학1 행렬 대단원 마무리";
 
 window.questionBank = [
   {
     "id": 1,
     "displayNo": 1,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 1,
-    "level": "고1",
+    "level": "L1",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -20,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 성분"
     ],
     "wide": false,
     "content": "$2\\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가 $a_{ij}=2i-j+4$일 때, 행렬 $A$의 모든 성분의 합은?",
@@ -31,21 +33,21 @@ window.questionBank = [
       "23",
       "24"
     ],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "③",
+    "solution": "[풀이 전략]\n$2\\times 2$ 행렬 $A$는 $i\\in\\{1, 2\\}$, $j\\in\\{1, 2\\}$인 4개의 성분 $a_{11}, a_{12}, a_{21}, a_{22}$로 구성된다.\n주어진 성분 결정 규칙 $a_{ij} = 2i - j + 4$에 $i, j$ 값을 대입하여 각 성분을 구한 뒤 모두 더한다.\n\n[단계별 풀이]\n1단계: 각 성분을 순서대로 계산한다.\n- 제1행:\n  $$a_{11} = 2(1) - 1 + 4 = 5$$\n  $$a_{12} = 2(1) - 2 + 4 = 4$$\n- 제2행:\n  $$a_{21} = 2(2) - 1 + 4 = 7$$\n  $$a_{22} = 2(2) - 2 + 4 = 6$$\n따라서 행렬 $A$는\n$$A = \\begin{pmatrix} 5 & 4 \\\\ 7 & 6 \\end{pmatrix}$$\n\n2단계: 행렬 $A$의 모든 성분의 합을 구한다.\n$$\\sum_{i=1}^2 \\sum_{j=1}^2 a_{ij} = 5 + 4 + 7 + 6 = 22$$\n\n[오답 및 경계 점검]\n- 행 번호 $i$와 열 번호 $j$의 위치를 바꾸어 대입하지 않도록 주의한다. ($a_{12}$와 $a_{21}$ 혼동 주의)\n- 선지에서 22는 ③번에 위치한다.\n\n[결론]\n③"
   },
   {
     "id": 2,
     "displayNo": 2,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 2,
-    "level": "고1",
+    "level": "L1",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,27 +56,28 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "두 행렬이 서로 같을 조건"
     ],
     "wide": false,
     "content": "등식 $\\begin{pmatrix} 2a-1 & 2 \\\\ -6 & 2b \\end{pmatrix} = \\begin{pmatrix} b+2 & 2 \\\\ -6 & 5a+2 \\end{pmatrix}$가 성립할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "-27",
+    "solution": "[풀이 전략]\n두 행렬이 서로 같으려면 크기가 같고 대응하는 모든 성분이 각각 같아야 한다.\n$(1, 1)$ 성분과 $(2, 2)$ 성분을 비교하여 $a, b$에 대한 연립일차방정식을 세우고 푼다.\n\n[단계별 풀이]\n1단계: 대응하는 성분을 비교하여 방정식을 세운다.\n- $(1, 1)$ 성분:\n  $$2a - 1 = b + 2 \\implies 2a - b = 3 \\quad \\cdots \\text{①}$$\n- $(2, 2)$ 성분:\n  $$2b = 5a + 2 \\implies 5a - 2b = -2 \\quad \\cdots \\text{②}$$\n(참고로 $(1, 2)$ 성분 $2=2$, $(2, 1)$ 성분 $-6=-6$은 이미 일치한다.)\n\n2단계: 연립방정식을 푼다.\n①식의 양변에 2를 곱하면:\n$$4a - 2b = 6 \\quad \\cdots \\text{③}$$\n②식에서 ③식을 빼면:\n$$(5a - 2b) - (4a - 2b) = -2 - 6$$\n$$a = -8$$\n$a = -8$을 ①식에 대입하면:\n$$2(-8) - b = 3 \\implies -16 - b = 3 \\implies b = -19$$\n\n3단계: $a+b$의 값을 계산한다.\n$$a + b = (-8) + (-19) = -27$$\n\n[오답 및 경계 점검]\n- 성분 일치 검산:\n  $2a-1 = 2(-8)-1 = -17$, $b+2 = -19+2 = -17$ (일치)\n  $2b = 2(-19) = -38$, $5a+2 = 5(-8)+2 = -38$ (일치)\n- 음수 덧셈에서 부호 실수가 발생하지 않도록 주의한다.\n\n[결론]\n-27"
   },
   {
     "id": 3,
     "displayNo": 3,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 3,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -82,26 +85,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 연산"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix}$과 $B=\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix}$에 대하여 $2(A-B)-\\dfrac{1}{2}(A+2B)$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$",
+    "solution": "[풀이 전략]\n행렬의 덧셈, 뺄셈, 실수배에 대한 연산 법칙(분배법칙, 결합법칙)을 이용하여 주어진 식을 먼저 행렬 $A, B$에 관해 동류항 정리한 후 성분 계산을 수행한다.\n\n[단계별 풀이]\n1단계: 주어진 행렬식을 먼저 전개하여 정리한다.\n$$2(A-B) - \\dfrac{1}{2}(A+2B) = 2A - 2B - \\dfrac{1}{2}A - B = \\left(2 - \\dfrac{1}{2}\\right)A - 3B = \\dfrac{3}{2}A - 3B$$\n\n2단계: $\\dfrac{3}{2}A$와 $3B$를 각각 계산한다.\n$$\\dfrac{3}{2}A = \\dfrac{3}{2}\\begin{pmatrix} -2 & 4 \\\\ 6 & 0 \\end{pmatrix} = \\begin{pmatrix} -3 & 6 \\\\ 9 & 0 \\end{pmatrix}$$\n$$3B = 3\\begin{pmatrix} 1 & -5 \\\\ 2 & -4 \\end{pmatrix} = \\begin{pmatrix} 3 & -15 \\\\ 6 & -12 \\end{pmatrix}$$\n\n3단계: 두 행렬의 차를 계산한다.\n$$\\dfrac{3}{2}A - 3B = \\begin{pmatrix} -3 & 6 \\\\ 9 & 0 \\end{pmatrix} - \\begin{pmatrix} 3 & -15 \\\\ 6 & -12 \\end{pmatrix}$$\n$$= \\begin{pmatrix} -3 - 3 & 6 - (-15) \\\\ 9 - 6 & 0 - (-12) \\end{pmatrix} = \\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$$\n\n[오답 및 경계 점검]\n- $(1, 2)$ 성분에서 $6 - (-15) = 21$의 부호 처리에 주의한다.\n- $(2, 2)$ 성분에서 $0 - (-12) = 12$의 부호 처리에 주의한다.\n\n[결론]\n$\\begin{pmatrix} -6 & 21 \\\\ 3 & 12 \\end{pmatrix}$"
   },
   {
     "id": 4,
     "displayNo": 4,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 4,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,26 +114,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 실수배와 덧셈"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 4 & -1 \\end{pmatrix}$과 $B=\\begin{pmatrix} -3 & 1 \\\\ 1 & 2 \\end{pmatrix}$에 대하여\n$$kA+lB=\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$$\n를 만족시키는 실수 $k$와 $l$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$k=2, l=-1$",
+    "solution": "[풀이 전략]\n좌변 $kA+lB$를 성분별로 표현한 후, 우변 행렬의 대응하는 성분과 비교하여 $k, l$에 대한 연립방정식을 구성하고 해를 구한다.\n\n[단계별 풀이]\n1단계: 좌변의 행렬 $kA+lB$를 계산한다.\n$$kA + lB = k\\begin{pmatrix} 1 & 2 \\\\ 4 & -1 \\end{pmatrix} + l\\begin{pmatrix} -3 & 1 \\\\ 1 & 2 \\end{pmatrix} = \\begin{pmatrix} k - 3l & 2k + l \\\\ 4k + l & -k + 2l \\end{pmatrix}$$\n\n2단계: 우변 $\\begin{pmatrix} 5 & 3 \\\\ 7 & -4 \\end{pmatrix}$과 각 성분을 비교한다.\n- $(1, 1)$ 성분: $k - 3l = 5 \\quad \\cdots \\text{①}$\n- $(1, 2)$ 성분: $2k + l = 3 \\quad \\cdots \\text{②}$\n- $(2, 1)$ 성분: $4k + l = 7 \\quad \\cdots \\text{③}$\n- $(2, 2)$ 성분: $-k + 2l = -4 \\quad \\cdots \\text{④}$\n\n3단계: ②식과 ③식으로부터 $k, l$을 구한다.\n③식에서 ②식을 빼면:\n$$(4k + l) - (2k + l) = 7 - 3 \\implies 2k = 4 \\implies k = 2$$\n$k = 2$를 ②식에 대입하면:\n$$2(2) + l = 3 \\implies 4 + l = 3 \\implies l = -1$$\n\n4단계: 구해진 $k=2, l=-1$이 ①식과 ④식을 만족하는지 검산한다.\n- ①식: $2 - 3(-1) = 2 + 3 = 5$ (일치)\n- ④식: -2 + 2(-1) = -4 (일치)\n따라서 $k = 2, l = -1$이다.\n\n[오답 및 경계 점검]\n- 미지수는 2개이지만 식은 4개이므로 모든 성분에서 모순이 없는지 반드시 확인한다.\n\n[결론]\n$k=2, l=-1$"
   },
   {
     "id": 5,
     "displayNo": 5,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 5,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,27 +143,28 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 곱셈"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix}$와 $B=\\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}$에 대하여 $AB=O$일 때, $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$a=-2, b=1$",
+    "solution": "[풀이 전략]\n두 행렬 $A, B$의 곱 $AB$를 행렬의 곱셈 정의에 따라 전개한다.\n$AB = O$이므로 결과 행렬의 모든 성분이 0임을 이용하여 $a, b$의 값을 구한다.\n\n[단계별 풀이]\n1단계: 곱행렬 $AB$의 각 성분을 계산한다.\n$$AB = \\begin{pmatrix} a & -1 \\\\ 2 & b \\end{pmatrix} \\begin{pmatrix} 2 & -1 \\\\ -4 & 2 \\end{pmatrix}$$\n- $(1, 1)$ 성분: $a \\cdot 2 + (-1) \\cdot (-4) = 2a + 4$\n- $(1, 2)$ 성분: $a \\cdot (-1) + (-1) \\cdot 2 = -a - 2$\n- $(2, 1)$ 성분: $2 \\cdot 2 + b \\cdot (-4) = 4 - 4b$\n- $(2, 2)$ 성분: $2 \\cdot (-1) + b \\cdot 2 = -2 + 2b$\n따라서\n$$AB = \\begin{pmatrix} 2a + 4 & -a - 2 \\\\ 4 - 4b & -2 + 2b \\end{pmatrix}$$\n\n2단계: $AB = O = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$이므로 각 성분을 0으로 둔다.\n- 제1행 성분:\n  $$2a + 4 = 0 \\implies a = -2$$\n  $$-a - 2 = 0 \\implies a = -2$$\n- 제2행 성분:\n  $$4 - 4b = 0 \\implies 4b = 4 \\implies b = 1$$\n  $$-2 + 2b = 0 \\implies 2b = 2 \\implies b = 1$$\n\n[오답 및 경계 점검]\n- 행렬의 곱셈에서는 $AB = O$라고 해서 $A = O$ 또는 $B = O$일 필요가 없으며, 이와 같이 $A \\ne O, B \\ne O$이면서 $AB = O$가 되는 영인자 관계가 성립한다.\n\n[결론]\n$a=-2, b=1$"
   },
   {
     "id": 6,
     "displayNo": 6,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 6,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -166,26 +172,27 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 거듭제곱"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 0 & a \\end{pmatrix}$와 $B=\\begin{pmatrix} 0 & b \\\\ -1 & 0 \\end{pmatrix}$에 대하여 $(A-B)^2=\\begin{pmatrix} -2 & -9 \\\\ -3 & 1 \\end{pmatrix}$일 때, $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n먼저 행렬 $A-B$를 구한 후, $(A-B)^2 = (A-B)(A-B)$를 행렬 곱셈을 통해 직접 전개한다.\n계산된 행렬의 성분과 우변 행렬의 성분을 비교하여 $a, b$를 구하고 $ab$의 값을 계산한다.\n\n[단계별 풀이]\n1단계: $A - B$를 구한다.\n$$A - B = \\begin{pmatrix} 1 & 0 \\\\ 0 & a \\end{pmatrix} - \\begin{pmatrix} 0 & b \\\\ -1 & 0 \\end{pmatrix} = \\begin{pmatrix} 1 & -b \\\\ 1 & a \\end{pmatrix}$$\n\n2단계: $(A-B)^2$를 계산한다.\n$$(A-B)^2 = \\begin{pmatrix} 1 & -b \\\\ 1 & a \\end{pmatrix} \\begin{pmatrix} 1 & -b \\\\ 1 & a \\end{pmatrix}$$\n- $(1, 1)$ 성분: $1 \\cdot 1 + (-b) \\cdot 1 = 1 - b$\n- $(1, 2)$ 성분: $1 \\cdot (-b) + (-b) \\cdot a = -b - ab = -b(1 + a)$\n- $(2, 1)$ 성분: $1 \\cdot 1 + a \\cdot 1 = 1 + a$\n- $(2, 2)$ 성분: $1 \\cdot (-b) + a \\cdot a = -b + a^2$\n따라서\n$$(A-B)^2 = \\begin{pmatrix} 1 - b & -b(1+a) \\\\ 1 + a & -b + a^2 \\end{pmatrix}$$\n\n3단계: 대응하는 성분을 비교하여 $a, b$를 결정한다.\n- $(1, 1)$ 성분에서:\n  $$1 - b = -2 \\implies b = 3$$\n- $(1, 2)$ 성분에서:\n  $$-b(1+a) = -9 \\implies -3(1+a) = -9 \\implies 1 + a = 3 \\implies a = 2$$\n- $(2, 2)$ 성분 검산:\n  $$-b + a^2 = -3 + 2^2 = -3 + 4 = 1 \\quad \\text{(성립)}$$\n따라서 $a = 2, b = 3$이다.\n\n4단계: $ab$의 값을 구한다.\n$$ab = 2 \\times 3 = 6$$\n\n[오답 및 경계 점검]\n- 문제 본문의 $(A-B)^2$ 행렬에서 $(2, 1)$ 성분이 인쇄상 $-3$으로 표기되어 있으나, $(1, 1), (1, 2), (2, 2)$ 성분의 일관된 계산 결과 $a=2, b=3$일 때 $(2, 1)$ 성분은 $1+a=3$이어야 양립 가능하며, 교과서 공식 정답 역시 $ab = 6$으로 확정되어 있다.\n- 행렬의 곱셈은 교환법칙이 성립하지 않으므로 $(A-B)^2 = A^2 - 2AB + B^2$과 같이 일반 곱셈공식을 적용하면 오답이 된다. 반드시 $(A-B)(A-B)$로 직접 곱해야 한다.\n\n[결론]\n6"
   },
   {
     "id": 7,
     "displayNo": 7,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 7,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -194,7 +201,8 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 교환법칙"
     ],
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix}$과 $B=\\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix}$에 대하여 $AB=BA$일 때, $a+b$의 값은?",
@@ -205,22 +213,22 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "③",
+    "solution": "[풀이 전략]\n행렬의 곱 $AB$와 $BA$를 각각 곱셈 정의에 따라 계산한다.\n두 행렬이 서로 같다는 조건($AB = BA$)으로부터 각 성분을 비교하여 실수 $a, b$를 구한 후 $a+b$를 계산한다.\n\n[단계별 풀이]\n1단계: $AB$를 계산한다.\n$$AB = \\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix} \\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix} = \\begin{pmatrix} 4 \\cdot 0 + 3a & 4 \\cdot 1 + 3b \\\\ 5 \\cdot 0 + 8a & 5 \\cdot 1 + 8b \\end{pmatrix} = \\begin{pmatrix} 3a & 4 + 3b \\\\ 8a & 5 + 8b \\end{pmatrix}$$\n\n2단계: $BA$를 계산한다.\n$$BA = \\begin{pmatrix} 0 & 1 \\\\ a & b \\end{pmatrix} \\begin{pmatrix} 4 & 3 \\\\ 5 & 8 \\end{pmatrix} = \\begin{pmatrix} 0 \\cdot 4 + 1 \\cdot 5 & 0 \\cdot 3 + 1 \\cdot 8 \\\\ a \\cdot 4 + b \\cdot 5 & a \\cdot 3 + b \\cdot 8 \\end{pmatrix} = \\begin{pmatrix} 5 & 8 \\\\ 4a + 5b & 3a + 8b \\end{pmatrix}$$\n\n3단계: $AB = BA$의 성분을 비교한다.\n- $(1, 1)$ 성분: $3a = 5 \\implies a = \\dfrac{5}{3}$\n- $(1, 2)$ 성분: $4 + 3b = 8 \\implies 3b = 4 \\implies b = \\dfrac{4}{3}$\n- $(2, 1)$ 성분 검산: $8a = 8\\left(\\dfrac{5}{3}\\right) = \\dfrac{40}{3}$, $4a+5b = 4\\left(\\dfrac{5}{3}\\right) + 5\\left(\\dfrac{4}{3}\\right) = \\dfrac{20+20}{3} = \\dfrac{40}{3}$ (일치)\n- $(2, 2)$ 성분 검산: $5 + 8b = 3a + 8b \\implies 3a = 5 \\implies a = \\dfrac{5}{3}$ (일치)\n\n4단계: $a+b$의 값을 구한다.\n$$a + b = \\dfrac{5}{3} + \\dfrac{4}{3} = \\dfrac{9}{3} = 3$$\n\n[오답 및 경계 점검]\n- 선지에서 값 3은 ③번에 위치한다.\n\n[결론]\n③"
   },
   {
     "id": 8,
     "displayNo": 8,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 8,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -228,27 +236,28 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "실생활과 행렬의 곱셈"
     ],
     "wide": false,
     "content": "성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에서 빵과 우유를 사려고 한다. [표 1]은 두 편의점의 빵과 우유의 가격을 나타낸 것이고, [표 2]는 성훈이와 미주가 사려고 하는 빵과 우유의 개수를 나타낸 것이다. 다음에 답하시오.\n<img src=\"q08.png\" />\n⑴ 성훈이와 미주가 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$에 지불해야 할 금액을 행렬로 나타내시오.\n⑵ 성훈이와 미주는 두 편의점 $\\mathrm{P}$와 $\\mathrm{Q}$ 중 어디에서 사야 비용이 더 적게 드는지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "⑴ $\\begin{pmatrix} 13800 & 14500 \\\\ 12000 & 12000 \\end{pmatrix}$\n⑵ 성훈이는 편의점 P에서 구입해야 비용이 더 적게 들고, 미주는 두 편의점 P와 Q에서 구입하는 비용이 같다.",
+    "solution": "[풀이 전략]\n[표 1]의 두 편의점의 상품별 가격과 [표 2]의 인원별 상품 구매 수량을 행렬로 나타낸다.\n인원별(행) $\\times$ 품목(열) 행렬과 품목(행) $\\times$ 편의점(열) 행렬을 곱하면 인원별(행) $\\times$ 편의점별(열) 총 지불 금액 행렬이 산출된다.\n\n[단계별 풀이]\n1단계: [표 2]의 구매 수량을 행렬 $B$, [표 1]의 가격을 행렬 $A$로 설정한다.\n- 성훈과 미주의 품목별 구매 개수 (행: 성훈, 미주 / 열: 빵, 우유):\n  $$B = \\begin{pmatrix} 3 & 4 \\\\ 2 & 5 \\end{pmatrix}$$\n- 두 편의점의 품목별 가격 (행: 빵, 우유 / 열: 편의점 P, 편의점 Q):\n  $$A = \\begin{pmatrix} 3000 & 3500 \\\\ 1200 & 1000 \\end{pmatrix}$$\n\n2단계: 두 행렬의 곱 $BA$를 계산하여 지불 금액 행렬을 구한다.\n$$BA = \\begin{pmatrix} 3 & 4 \\\\ 2 & 5 \\end{pmatrix} \\begin{pmatrix} 3000 & 3500 \\\\ 1200 & 1000 \\end{pmatrix}$$\n- 제1행 (성훈):\n  - 편의점 P 지불액: $3 \\times 3000 + 4 \\times 1200 = 9000 + 4800 = 13800$ (원)\n  - 편의점 Q 지불액: $3 \\times 3500 + 4 \\times 1000 = 10500 + 4000 = 14500$ (원)\n- 제2행 (미주):\n  - 편의점 P 지불액: $2 \\times 3000 + 5 \\times 1200 = 6000 + 6000 = 12000$ (원)\n  - 편의점 Q 지불액: $2 \\times 3500 + 5 \\times 1000 = 7000 + 5000 = 12000$ (원)\n따라서 지불해야 할 금액 행렬은\n$$\\begin{pmatrix} 13800 & 14500 \\\\ 12000 & 12000 \\end{pmatrix}$$\n(참고: 행과 열을 바꾸어 편의점별 $\\times$ 인원별로 나타내면 $\\begin{pmatrix} 13800 & 12000 \\\\ 14500 & 12000 \\end{pmatrix}$로 표현할 수도 있다.)\n\n3단계: ⑵의 비용 비교를 서술한다.\n- 성훈: 편의점 P에서 사면 13800원, 편의점 Q에서 사면 14500원이므로 편의점 P에서 구입해야 비용이 더 적게 든다.\n- 미주: 편의점 P와 Q 모두 12000원으로 비용이 같다.\n\n[오답 및 경계 점검]\n- 행렬의 곱셈에서 안쪽 차원이 일치해야 하므로 (2×2 행렬끼리의 곱) 대응 품목(빵, 우유)의 순서가 행과 열에서 정확히 맞물리도록 행렬을 배열해야 한다.\n\n[결론]\n⑴ $\\begin{pmatrix} 13800 & 14500 \\\\ 12000 & 12000 \\end{pmatrix}$\n⑵ 성훈이는 편의점 P에서 구입해야 비용이 더 적게 들고, 미주는 두 편의점 P와 Q에서 구입하는 비용이 같다."
   },
   {
     "id": 9,
     "displayNo": 9,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 9,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -256,27 +265,28 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 연산과 곱셈공식"
     ],
     "wide": false,
     "content": "세 행렬\n$$A=\\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix},\\quad B=\\begin{pmatrix} -b & 2 \\\\ -2 & 4 \\end{pmatrix},\\quad C=\\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}$$\n에 대하여 $A=2B+C$일 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$22$",
+    "solution": "[풀이 전략]\n우변 $2B+C$의 실수배와 덧셈을 성분별로 계산한다.\n$A = 2B+C$의 대응하는 성분을 비교하여 $a+b$와 $ab$의 값을 구한 후 곱셈공식 변형 $a^2+b^2 = (a+b)^2 - 2ab$를 적용한다.\n\n[단계별 풀이]\n1단계: $2B+C$를 계산한다.\n$$2B + C = 2\\begin{pmatrix} -b & 2 \\\\ -2 & 4 \\end{pmatrix} + \\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}$$\n$$= \\begin{pmatrix} -2b & 4 \\\\ -4 & 8 \\end{pmatrix} + \\begin{pmatrix} -8 & -3 \\\\ ab & -7 \\end{pmatrix}$$\n$$= \\begin{pmatrix} -2b - 8 & 4 - 3 \\\\ -4 + ab & 8 - 7 \\end{pmatrix} = \\begin{pmatrix} -2b - 8 & 1 \\\\ ab - 4 & 1 \\end{pmatrix}$$\n\n2단계: $A = 2B + C$이므로 $A = \\begin{pmatrix} 2a & 1 \\\\ -7 & 1 \\end{pmatrix}$와 성분을 비교한다.\n- $(1, 1)$ 성분:\n  $$2a = -2b - 8 \\implies 2a + 2b = -8 \\implies a + b = -4 \\quad \\cdots \\text{①}$$\n- $(2, 1)$ 성분:\n  $$-7 = ab - 4 \\implies ab = -3 \\quad \\cdots \\text{②}$$\n- $(1, 2)$ 성분과 $(2, 2)$ 성분은 모두 $1=1$로 성립한다.\n\n3단계: 곱셈공식의 변형을 이용하여 $a^2+b^2$을 구한다.\n$$a^2 + b^2 = (a+b)^2 - 2ab$$\n①, ②의 값을 대입하면:\n$$a^2 + b^2 = (-4)^2 - 2(-3) = 16 + 6 = 22$$\n\n[오답 및 경계 점검]\n- $-2(-3) = +6$ 부호 계산 실수에 유의한다.\n\n[결론]\n22"
   },
   {
     "id": 10,
     "displayNo": 10,
+    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1",
     "sourceQuestionNo": 10,
-    "level": "고1",
+    "level": "L2",
     "category": "행렬",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-04",
-    "standardUnit": "행렬",
-    "standardUnitOrder": 4,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -284,13 +294,13 @@ window.questionBank = [
       "고1",
       "공통수학1",
       "행렬",
-      "대단원 마무리"
+      "대단원 마무리",
+      "행렬의 거듭제곱의 규칙성"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$에 대하여 $A^n=\\begin{pmatrix} 1 & 30 \\\\ 0 & 1 \\end{pmatrix}$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": "",
-    "setKey": "미래엔_공통수학1_행렬_대단원마무리_고1"
+    "answer": "$15$",
+    "solution": "[풀이 전략]\n행렬 $A$의 거듭제곱 $A^2, A^3, \\dots$을 차례로 계산하여 $(1, 2)$ 성분의 변화 규칙성을 발견한다.\n일반항 $A^n$의 형태를 추론하고 주어진 행렬과 성분을 비교하여 자연수 $n$의 값을 구한다.\n\n[단계별 풀이]\n1단계: $A^2, A^3$을 차례로 계산한다.\n$$A^2 = AA = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 2+2 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}$$\n$$A^3 = A^2 A = \\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 4+2 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 6 \\\\ 0 & 1 \\end{pmatrix}$$\n\n2단계: 거듭제곱의 규칙성을 파악하여 일반적인 $A^n$을 구한다.\n각 거듭제곱에서 대각선 성분은 1, $(2, 1)$ 성분은 0으로 유지되고, $(1, 2)$ 성분은 $2, 4, 6, \\dots, 2n$으로 증가한다.\n따라서 임의의 자연수 $n$에 대하여\n$$A^n = \\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$$\n이 성립한다.\n\n3단계: 주어진 조건과 비교하여 $n$을 구한다.\n$$A^n = \\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 30 \\\\ 0 & 1 \\end{pmatrix}$$\n대응하는 $(1, 2)$ 성분을 비교하면:\n$$2n = 30 \\implies n = 15$$\n\n[오답 및 경계 점검]\n- 행렬의 거듭제곱에서 $(1, 2)$ 성분이 등비수열($2^n$)이 아닌 공차가 2인 등차수열($2n$)로 증가한다는 점에 주의한다.\n\n[결론]\n15"
   }
 ];
