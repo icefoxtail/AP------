@@ -15,6 +15,10 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<style>
+/* 펼친 수식의 위치 지정 요소가 풀이 제목의 클릭을 가로채지 않도록 합니다. */
+.apl-acc > summary { position: relative; z-index: 1; background: var(--card); }
+</style>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -46,6 +50,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
       return Number(v.toFixed(2)).toString();
     }
+    const roundedNow = (...v) => v.some(n => Math.abs(Number(fmtNum(n)) - n) > 1e-9);
+    const relationNow = v => `${roundedNow(v) ? '≈' : '='} ${fmtNum(v)}`;
+    const pointNow = (name, x, y) => `${name}${roundedNow(x, y) ? ' ≈ ' : ''}(${fmtNum(x)}, ${fmtNum(y)})`;
     const ACOL = {
       cyan: '#38bdf8',
       pink: '#f472b6',
@@ -69,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function () {
       mode: 1,
       subType: { 1: 'divInternalExternal', 2: 'perpSlopeMinus1', 3: 'shoelaceArea', 4: 'compositeStepByStep', 5: 'reflectTriPerim', 6: 'trapApollonius' },
       conceptSwitch: 'all', activePartIdx: -1,
-      fold: 0.0, foldTarget: null,
+      fold: 0.0, foldTarget: null, perpK: 1.4,
       ratioIdx: 0,  // 0: 2:1 (m>n), 1: 1:2 (m<n), 2: 3:1 (m>n), 3: 1:3 (m<n)
       scaleIdx: 1,  // 0: (2,1), 1: (3,2), 2: (4,2), 3: (4,3)
       scale: 1.0, panX: 0, panY: 0
@@ -188,6 +195,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const p1 = toScreen(-60, mSlope * -60 + yInt, ox, oy, unit);
     const p2 = toScreen(60, mSlope * 60 + yInt, ox, oy, unit);
     aline(p1, p2, color, width, dash, false, partIdx);
+  }
+
+  function aGeneralLine(a, b, c, ox, oy, unit, color, width = 3.2, partIdx = -1) {
+    if (BOARD._bbox) return;
+    const norm2 = a * a + b * b, r = Math.sqrt(norm2), px = -a * c / norm2, py = -b * c / norm2;
+    aline(toScreen(px - 80 * b / r, py + 80 * a / r, ox, oy, unit), toScreen(px + 80 * b / r, py - 80 * a / r, ox, oy, unit), color, width, [], false, partIdx);
   }
 
   function acircle(center, r, stroke = '#38bdf8', fill = 'rgba(56, 189, 248, 0.10)', width = 2.8, dash = [], partIdx = -1) {
@@ -480,7 +493,7 @@ window.addEventListener('DOMContentLoaded', function () {
               { id: 2, name: `🩷 두 번째 점 C₂ (B에서 왼쪽으로 2칸 = A 바깥 1칸): C₂(-2, -1)`, desc: `A가 B와 C₂의 중점이 됨! (AC₂ : BC₂ = 1 : 2)`, val: `C₂(-2, -1) [AC₂:BC₂ = 1:2]`, color: '#f472b6', ok: true }
             ],
             totalRes: `AB : BC = 1 : 2 ➔ ① B 오른쪽 C₁(6, 3)  ② A 왼쪽 C₂(-2, -1) [문제 조건 확인 필수!]`,
-            rule: '"직선 AB 위"면 2개 모두 정답! "선분 AB의 연장선 위" 또는 "x좌표 > 0" 조건으로 1개를 고른다!',
+            rule: '"직선 AB 위"면 2개 모두 정답! "B쪽 연장선 위" 또는 "x좌표 > 0" 조건으로 1개를 고른다!',
             formulaHTML: `• <strong>공식 없이 칸 수로 구하는 방법</strong>:<br/>&nbsp;&nbsp;$A(0,0) \\to B(2,1)$ 이 <strong>1칸($+2, +1$)</strong>이므로, $B(2,1)$에서 오른쪽으로 <strong>2칸($+4, +2$)</strong> 더 가면 $\\mathbf{C_1(6, 3)}$ 이고, 왼쪽으로 <strong>2칸($-4, -2$)</strong> 되돌아가면 $\\mathbf{C_2(-2, -1)}$ 입니다!`,
             notes: `• 공식에 대입하다가 부호 실수를 하지 마세요! <strong>수직선 위에 칸 수($1\\text{칸}, 2\\text{칸}$)를 그려 놓고 $x$의 증가량, $y$의 증가량만큼 이동</strong>하면 됩니다!`,
             tapeTitle: `칸 수 비교: 왼쪽 C₂(-2,-1) ──[1칸]── A(0,0) ──[1칸]── B(2,1) ──[2칸]── 오른쪽 C₁(6,3)`,
@@ -522,7 +535,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 1-D · ⚖️ 삼각형 무게중심 G 불변의 법칙 & 평행사변형 제4의 꼭짓점 D (A+C = B+D)`,
             hint: `① 삼각형 세 변을 같은 비율 $m:n$으로 내분한 점 $D, E, F$를 이어도 <strong>새 삼각형의 무게중심은 원래 무게중심 $G$와 일치</strong>합니다! ② 평행사변형 $ABCD$에서는 대각선 중점이 일치하므로 <strong class="text-amber-300">(A + C) = (B + D)</strong> 가 성립합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 평행사변형 제4꼭짓점 보기' : '🎬 내분 삼각형 △DEF 무게중심 G 불변 확인!',
+            actionTxt: state.fold > 0.5 ? '🎬 내분 삼각형 무게중심 보기' : '🎬 평행사변형 제4꼭짓점 보기',
             dim1Name: '무게중심 G 좌표', dim2Name: '평행사변형 대각선 합',
             val1Txt: 'G = $\\frac{A+B+C}{3}$', val2Txt: 'A + C = B + D (중점 일치!)',
             parts: [
@@ -538,17 +551,18 @@ window.addEventListener('DOMContentLoaded', function () {
           };
         }
         // distMinSumSq
+        const gap = 75 * (1 - state.fold) ** 2;
         return {
           badge: `탐구 1-E · 🧲 [비교 킬러] (PA + PB)의 최솟값과 (PA² + PB² + PC²)의 최솟값 비교`,
           hint: `거리에 <strong>제곱이 없을 때($PA+PB$)</strong>는 점 $P$가 <strong>선분 $AB$ 위</strong>에 있을 때 최소이지만, <strong>제곱이 붙어 있을 때($PA^2+PB^2+PC^2$)</strong>는 이차함수 완전제곱식에 의해 점 $P$가 <strong class="text-amber-300">삼각형 $\\triangle ABC$의 무게중심 $G$</strong>에 올 때 최소가 됩니다!`,
-          actionTxt: state.fold > 0.5 ? '🎬 선분 AB 위 최솟값 보기' : '🎬 점 P를 무게중심 G로 옮겨 보기',
-          dim1Name: 'PA + PB 최소 위치', dim2Name: 'PA² + PB² + PC² 최소 위치',
-          val1Txt: '선분 AB 위의 점 P', val2Txt: '무게중심 G($\\frac{x_1+x_2+x_3}{3}$)!',
+          actionTxt: state.fold > 0.5 ? '🎬 P를 처음 위치로' : '🎬 P를 무게중심 G로',
+          dim1Name: '현재 PA² + PB² + PC²', dim2Name: '무게중심 값 + 이동으로 늘어난 값',
+          val1Txt: `${roundedNow(52 + gap) ? '≈ ' : ''}${fmtNum(52 + gap)}`, val2Txt: `3PG² ${relationNow(gap)}`,
           parts: [
             { id: 0, name: `🟡 [제곱 있음] PA² + PB² + PC² 이 최소가 되는 점 P = 무게중심 G!`, desc: `3(x - x_G)² + 3(y - y_G)² + k 꼴로 묶이므로 P = G 일 때 최소!`, val: `P = 무게중심 G ⭕`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 [제곱 없음] PA + PB 가 최소가 되는 점 P = 선분 AB 위의 모든 점`, desc: `삼각형 결정조건 PA + PB ≥ AB 에 의해 일직선 선분 AB 위에서 최소!`, val: `최솟값 = 선분 AB`, color: '#38bdf8', ok: true }
           ],
-          totalRes: `PA² + PB² + PC² 이 최소가 되는 점 P의 좌표 = △ABC의 무게중심 G!`,
+          totalRes: `제곱합 = 최솟값 52 + 3PG². 현재 추가량 3PG² ${relationNow(gap)}이며, P=G일 때만 0입니다.`,
           rule: '거리의 제곱의 합(PA²+PB²+PC²)의 최솟값은 P가 삼각형의 무게중심 G일 때이다!',
           formulaHTML: `• $P(x, y)$라 하면 $x$좌표 부분은 ${tex('(x-x_1)^2+(x-x_2)^2+(x-x_3)^2 = 3x^2 - 2(x_1+x_2+x_3)x + \\cdots')}<br/>• 이차함수의 꼭짓점 공식 ${tex('x = -\\dfrac{b}{2a} = \\mathbf{\\dfrac{x_1+x_2+x_3}{3}}')} 이므로 정확히 <strong>무게중심 $G$</strong>와 일치합니다!`,
           notes: `• 만약 점 $P$가 평면 전체가 아니라 <strong>‘$x$축 위의 점 $P(x, 0)$’</strong>으로 제한되어 있다면, 무게중심의 $x$좌표인 **$x = \\frac{x_1+x_2+x_3}{3}$** 일 때 최소가 됩니다!`,
@@ -585,7 +599,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 2-B · 🎡 k값에 관계없이 항상 정점 P(1, 2)를 지나는 회전 직선 다발 (l₁ + k · l₂ = 0)`,
             hint: `식 $(x - y + 1) + k(2x + y - 4) = 0$ 에서 슬라이더로 $k$값을 바꾸어 보세요! $k$에 관한 항등식($l_1=0$ 이고 $l_2=0$)에 의해 직선이 <strong>두 직선의 교점 $P(1, 2)$를 항상 지나면서 회전</strong>합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 반대 방향으로 회전' : '🎬 k의 값에 따라 직선이 점 P를 중심으로 회전하는 모습 보기',
+            actionTxt: state.fold > 0.5 ? '🎬 반대 방향으로 회전' : '🎬 정점 P를 중심으로 회전',
             dim1Name: '현재 회전 파라미터 k', dim2Name: '항상 지나는 점 P',
             val1Txt: `k = ${kVal}`, val2Txt: 'P(1, 2) (l₁=0 ∩ l₂=0)',
             parts: [
@@ -611,7 +625,7 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟡 조건 ① [이등분]: 선분 AB의 중점 M(1, 1) 통과`, desc: `($\\frac{-1+3}{2}$, $\\frac{-1+3}{2}$) = (1, 1)`, val: `중점 M(1, 1)`, color: '#fbbf24', ok: true },
               { id: 1, name: `🩷 조건 ② [수직]: AB 기울기(1) × 수직선 기울기(m') = -1`, desc: `따라서 수직이등분선 방정식: y - 1 = -1(x - 1) ⇒ y = -x + 2!`, val: `y = -x + 2 ⭕`, color: '#f472b6', ok: true },
-              { id: 2, name: `🔵 자취 성질: 수직이등분선 위의 모든 점 P는 PA = PB!`, desc: `△PAM ≡ △PBM (SAS 합동) 이므로 두 정점 A, B에서 같은 거리!`, val: `PA = PB 등거리`, color: '#38bdf8', ok: true }
+              { id: 2, name: `🔵 자취 성질: 수직이등분선 위의 모든 점 P는 PA = PB!`, desc: Math.abs(state.fold - 0.5) < 1e-9 ? `현재 P = M: PA = PB = AM이지만 세 점이 일직선이므로 삼각형은 아닙니다.` : `△PAM ≡ △PBM (SAS 합동) 이므로 두 정점 A, B에서 같은 거리!`, val: `PA = PB 등거리`, color: '#38bdf8', ok: true }
             ],
             totalRes: `중점 M(1, 1) + 수직 기울기(-1) ➔ 수직이등분선: x + y - 2 = 0 (PA = PB인 점의 자취!)`,
             rule: '수직이등분선 = [① 중점 M 구하기] + [② 기울기의 곱 = -1] 의 2단계로 구한다!',
@@ -735,13 +749,13 @@ window.addEventListener('DOMContentLoaded', function () {
             val1Txt: '거리 d₁ = 거리 d₂', val2Txt: '서로 90° 수직 직교!',
             parts: [
               { id: 0, name: `🟡 점 P(x, y)에서 두 직선까지의 수선 길이 일치 (PH₁ = PH₂)`, desc: `△POH₁ ≡ △POH₂ (RHA 합동) ⟺ d₁ = d₂!`, val: `d₁ = d₂ ⭕`, color: '#fbbf24', ok: true },
-              { id: 1, name: `🩷 절댓값 풀기(|A| = |B| ➔ A = ±B): 직선 2개 탄생!`, desc: `+부호는 예각 이등분선, -부호는 둔각 이등분선 (둘은 항상 90° 수직!)`, val: `2개 직선 수직⊥`, color: '#f472b6', ok: true }
+              { id: 1, name: `🩷 절댓값 풀기(|A| = |B| ➔ A = ±B): 직선 2개 탄생!`, desc: `+와 − 중 어느 것이 예각 쪽인지는 직선식의 부호에 따라 달라집니다. 그림의 위치로 구별하며 두 이등분선은 수직입니다.`, val: `2개 직선 수직⊥`, color: '#f472b6', ok: true }
             ],
             totalRes: `각의 이등분선 자취: $\\frac{|a_1x+b_1y+c_1|}{\\sqrt{a_1^2+b_1^2}}$ = $\\frac{|a_2x+b_2y+c_2|}{\\sqrt{a_2^2+b_2^2}}$`,
             rule: '두 직선으로부터 같은 거리에 있는 점 P(x,y)의 자취 = 두 직선이 이루는 각의 이등분선 (2개)!',
-            formulaHTML: `• 예: $2x - y - 1 = 0$ 과 $x + 2y - 1 = 0$ 의 각의 이등분선:<br/>&nbsp;&nbsp;${tex('\\dfrac{|2x - y - 1|}{\\sqrt{2^2+(-1)^2}} = \\dfrac{|x + 2y - 1|}{\\sqrt{1^2+2^2}} \\implies 2x - y - 1 = \\pm(x + 2y - 1)')}<br/>&nbsp;&nbsp;(이 예에서는 양쪽 분모 $\\sqrt{5}$ 가 같아서 약분됩니다!)`,
-            notes: `• 구한 두 각의 이등분선의 기울기를 곱해보면 언제나 **$-1$ ($90^\\circ$ 수직)**이 됩니다! (이웃한 두 각의 합 $180^\\circ$의 절반씩이므로 $\\bullet + \\times = 90^\\circ$)`,
-            tapeTitle: `각의 이등분선 자취 원리: 점 P(x, y)가 어디로 움직이든 두 직선까지의 수직거리 d₁ = d₂ 일정!`,
+            formulaHTML: `• 그림의 $2x-y=0$과 $x-2y=0$의 각의 이등분선:<br/>&nbsp;&nbsp;${tex('\\dfrac{|2x-y|}{\\sqrt5}=\\dfrac{|x-2y|}{\\sqrt5} \\implies 2x-y=\\pm(x-2y)')}<br/>&nbsp;&nbsp;(이 예에서는 양쪽 분모 $\\sqrt{5}$ 가 같아서 약분됩니다!)`,
+            notes: `• 두 각의 이등분선은 항상 **$90^\\circ$ 수직**입니다. 두 기울기가 모두 정의될 때만 곱을 $-1$로 쓸 수 있습니다! (이웃한 두 각의 합 $180^\\circ$의 절반씩이므로 $\\bullet + \\times = 90^\\circ$)`,
+            tapeTitle: `각의 이등분선 위에서는 두 직선까지의 수직거리 d₁과 d₂가 항상 같습니다(각 거리의 값은 변합니다).`,
             tapeSegs: []
           };
         }
@@ -769,13 +783,12 @@ window.addEventListener('DOMContentLoaded', function () {
       // ==================== [탭 4: 점 vs 도형 부호 역설 & 복합 변환 조립기] ====================
       if (m === 4) {
         if (sub === 'compositeStepByStep') {
-          const stepNum = state.fold < 0.33 ? 1 : state.fold < 0.67 ? 2 : 3;
           return {
             badge: `탐구 4-A · 🧩 [킬러] f(x, y) = 0 ➔ f(y + 1, 2 - x) = 0 복합 변환 3단계`,
-            hint: `부호와 순서를 헷갈리기 쉬운 문제입니다! 괄호 전체를 보지 말고 <strong>문자 $x, y$ 자체에만 밑줄</strong>을 긋고 <strong>① $y=x$ 대칭($x\\leftrightarrow y$) $\\to$ ② 축 대칭($x\\to -x$) $\\to$ ③ 평행이동($x$ 대신 $x-2$, $y$ 대신 $y+1$)</strong> 순서로 슬라이더를 밀어 보세요!`,
+            hint: `부호와 순서를 헷갈리기 쉬운 문제입니다! 괄호 전체를 보지 말고 <strong>문자 $x, y$ 자체에만 밑줄</strong>을 긋고 <strong>① $y=x$ 대칭($x\\leftrightarrow y$) $\\to$ ② 축 대칭($x\\to -x$) $\\to$ ③ 평행이동($x$ 대신 $x-2$, $y$ 대신 $y+1$)</strong> 순서로 그림을 비교하세요!`,
             actionTxt: state.fold > 0.8 ? '🎬 처음 f(x,y)=0 으로' : '🎬 1단계(y=x대칭) ➔ 2단계(y축대칭) ➔ 3단계(평행이동) 차례로 보기',
-            dim1Name: '현재 진행 단계', dim2Name: '최종 방정식',
-            val1Txt: `${stepNum}단계 진행 중`, val2Txt: 'f(y + 1, 2 - x) = 0',
+            dim1Name: '비교하는 세 변환', dim2Name: '최종 방정식',
+            val1Txt: 'y=x 대칭 → y축 대칭 → 평행이동', val2Txt: 'f(y + 1, 2 - x) = 0',
             parts: [
               { id: 0, name: `1️⃣ [1단계: 직선 y = x 대칭] f(x, y) = 0 ──▶ f(y, x) = 0`, desc: `x자리와 y자리의 알파벳이 서로 바뀌었으므로 먼저 y = x 대칭!`, val: `f(y, x) = 0`, color: '#38bdf8', ok: true },
               { id: 1, name: `2️⃣ [2단계: y축 대칭 (x 부호 반전)] f(y, x) = 0 ──▶ f(y, -x) = 0`, desc: `문자 x 앞에 마이너스(-)가 붙었으므로 x 대신 -x 대입 (y축 대칭)!`, val: `f(y, -x) = 0`, color: '#fbbf24', ok: true },
@@ -799,8 +812,8 @@ window.addEventListener('DOMContentLoaded', function () {
             badge: `탐구 4-B · 🔄 [궁극의 원리] 왜 점의 이동은 (x + ${a}, y + ${b})인데 도형의 이동은 f(x - ${a}, y - ${b}) = 0 일까?`,
             hint: `도형을 $(+${a}, +${b})$만큼 옮기면 점의 좌표는 당연히 커져서 <strong class="text-sky-300">$(x' = x+${a},\\; y' = y+${b})$</strong>가 됩니다! 그런데 우리가 가진 방정식 $f(x, y)=0$은 **이동하기 전 옛날 점 $(x, y)$만 먹는 기계**이므로, 새 점 $(x', y')$을 넣으려면 다시 $(-${a}, -${b})$만큼 되감아서 <strong class="text-amber-300">$x = x'-${a},\\; y = y'-${b}$</strong>로 넣어주어야 작동하기 때문입니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 원위치로' : '🎬 점의 이동(+a, +b)과 방정식의 대입(-a, -b) 비교',
-            dim1Name: '점 P의 평행이동 (그대로!)', dim2Name: '도형 방정식의 평행이동 (반대 부호!)',
-            val1Txt: `(x, y) ➔ (x + ${a}, y + ${b})`, val2Txt: `f(x - ${a}, y - ${b}) = 0`,
+            dim1Name: '현재 점의 이동', dim2Name: '현재 도형의 식',
+            val1Txt: `${roundedNow(a * state.fold, b * state.fold) ? '(이동량 근삿값) ' : ''}(x, y) → (x + ${fmtNum(a * state.fold)}, y + ${fmtNum(b * state.fold)})`, val2Txt: `${roundedNow(a * state.fold, b * state.fold) ? '(계수 근삿값) ' : ''}f(x - ${fmtNum(a * state.fold)}, y - ${fmtNum(b * state.fold)}) = 0`,
             parts: [
               { id: 0, name: `🔵 [점의 이동] P(x, y) ──(+${a}, +${b})──▶ P'(x' = x+${a}, y' = y+${b})`, desc: `점 자체의 좌표는 이동한 화살표 방향 그대로 더해진다(+)!`, val: `(x+${a}, y+${b})`, color: '#38bdf8', ok: true },
               { id: 1, name: `🟡 [도형의 방정식] 옛날 식 f(x, y) = 0 에 x = x'-${a}, y = y'-${b} 대입!`, desc: `새 좌표 x', y' 의 관계식을 구하려면 역추적한 (x'-${a}, y'-${b})를 대입!`, val: `f(x-${a}, y-${b})=0`, color: '#fbbf24', ok: true }
@@ -816,7 +829,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'symmetry4Basic') {
           return {
             badge: `탐구 4-C · 🪞 4대 기본 대칭이동 (x축 · y축 · 원점 180° 회전 · 직선 y = x 데칼코마니)`,
-            hint: `대칭이동은 점의 이동과 도형의 이동에서 모양의 변화가 **같습니다**! 슬라이더를 움직여 제1사분면의 도형이 **$x$축 대칭($y\\to -y$), $y$축 대칭($x\\to -x$), 원점 대칭(둘 다 부호 반전), 직선 $y=x$ 대칭($x\\leftrightarrow y$ 자리 바꿈)**되는 모습을 확인하세요!`,
+            hint: `대칭이동은 점의 이동과 도형의 이동에서 모양의 변화가 **같습니다**! 제1사분면의 도형과 **$x$축 대칭($y\\to -y$), $y$축 대칭($x\\to -x$), 원점 대칭(둘 다 부호 반전), 직선 $y=x$ 대칭($x\\leftrightarrow y$ 자리 바꿈)**으로 옮긴 도형을 비교하세요!`,
             actionTxt: state.fold > 0.5 ? '🎬 원본 도형만 보기' : '🎬 4대 대칭 도형 데칼코마니 펼치기!',
             dim1Name: 'x축 / y축 / 원점 대칭', dim2Name: '직선 y=x / y=-x 대칭',
             val1Txt: '반대 문자 부호 반전(-)', val2Txt: 'x ↔ y 자리 바꿈!',
@@ -843,13 +856,13 @@ window.addEventListener('DOMContentLoaded', function () {
             parts: [
               { id: 0, name: `🟡 점 M(a, b)에 대한 점대칭 공식: P'(2a - x, 2b - y)`, desc: `기준점 M의 좌표를 2배 한 뒤 원래 좌표를 빼면 대칭점의 좌표!`, val: `(2a-x, 2b-y)`, color: '#fbbf24', ok: true },
               { id: 1, name: `🔵 일반 직선 l에 대한 선대칭 조건 ① [중점 조건]`, desc: `PP'의 중점 M($\\frac{x+x′}{2}$, $\\frac{y+y′}{2}$)이 대칭축 직선 l 위에 있다!`, val: `중점 ∈ 직선 l`, color: '#38bdf8', ok: true },
-              { id: 2, name: `🩷 일반 직선 l에 대한 선대칭 조건 ② [수직 조건]`, desc: `선분 PP'의 기울기 × 직선 l의 기울기(m) = -1 이다!`, val: `m · m' = -1 ⊥`, color: '#f472b6', ok: true }
+              { id: 2, name: `🩷 일반 직선 l에 대한 선대칭 조건 ② [수직 조건]`, desc: `선분 PP′는 직선 l에 수직입니다. 두 기울기가 모두 정의될 때만 기울기의 곱을 -1로 쓸 수 있습니다.`, val: `PP′ ⊥ l`, color: '#f472b6', ok: true }
             ],
             totalRes: `점 (a,b) 대칭 = (2a-x, 2b-y) | 직선 대칭 = [중점 조건 + 수직 조건] 연립!`,
             rule: '기울기가 ±1인 직선(예: y = x + 2)에 대한 대칭점은 연립방정식 없이 식에 대입해서 구할 수 있다!',
             formulaHTML: `• <strong>기울기가 $\\pm 1$인 직선 $y = x + 2$ ($x = y - 2$)에 대하여 점 $(3, 1)$을 대칭이동한 점은?</strong><br/>&nbsp;&nbsp;① $x = 3$을 식에 넣으면 새 $y' = 3 + 2 = \\mathbf{5}$!<br/>&nbsp;&nbsp;② $y = 1$을 식에 넣으면 새 $x' = 1 - 2 = \\mathbf{-1}$!<br/>&nbsp;&nbsp;$\\implies$ 연립방정식 없이 대칭점 $\\mathbf{(-1, 5)}$을 구했습니다! (기울기가 $\\pm 1$일 때만 쓸 수 있는 방법입니다)`,
             notes: `• 기울기가 $2$나 $3$처럼 $\\pm 1$이 아닐 때는 이 대입법을 쓰면 안 되고, 반드시 <strong>① 중점 대입식 + ② 수직 기울기식</strong> 두 개를 연립해야 합니다!`,
-            tapeTitle: `선대칭 = 수직이등분선! [① 중점 M이 대칭축 직선 위에 있음] + [② PP' 기울기 × 직선 기울기 = -1]`,
+            tapeTitle: `선대칭 = 수직이등분선! [① 중점 M이 대칭축 직선 위에 있음] + [② PP′가 대칭축에 수직]`,
             tapeSegs: []
           };
         }
@@ -859,13 +872,13 @@ window.addEventListener('DOMContentLoaded', function () {
           badge: `탐구 4-E · 📐 직선을 x축으로 +${a}만큼 평행이동했더니 y축으로 -${b}만큼 이동한 직선과 겹치는 이유!`,
           hint: `직선 $y = mx + n$을 $x$축 방향으로 $+${a}$만큼 밀었을 때의 직선과 $y$축 방향으로 $-${b}$만큼 내렸을 때의 직선이 완전히 일치하려면, 직선의 <strong class="text-amber-300">기울기가 $m = \\frac{${b}}{${a}}$</strong> 이어야 합니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 x축 이동 보기' : '🎬 x축(+a) 이동과 y축(-b) 이동이 겹치는 모습 보기',
-          dim1Name: 'x축 이동식 = y축 이동식', dim2Name: '직선의 기울기 m',
-          val1Txt: `m(x - ${a}) + n = mx + n - ${b}`, val2Txt: `m = ${b} / ${a}!`,
+          dim1Name: '현재 같은 직선이 되는 두 이동', dim2Name: '직선의 기울기 m',
+          val1Txt: `x축 +${fmtNum(a * state.fold)} ↔ y축 −${fmtNum(b * state.fold)}${roundedNow(a * state.fold, b * state.fold) ? ' (이동량 근삿값)' : ''}`, val2Txt: `m = ${b} / ${a}`,
           parts: [
             { id: 0, name: `🔵 x축으로 +${a}만큼 평행이동한 식: y = m(x - ${a}) + n`, desc: `전개하면 y = mx - ${a}m + n`, val: `y절편: n - ${a}m`, color: '#38bdf8', ok: true },
             { id: 1, name: `🟡 y축으로 -${b}만큼 평행이동한 식: y = mx + n - ${b}`, desc: `두 직선이 일치하므로 -${a}m = -${b} ⇒ 기울기 m = ${b}/${a}!`, val: `m = ${b}/${a} ⭕`, color: '#fbbf24', ok: true }
           ],
-          totalRes: `x축으로 +${a} 이동 = y축으로 -${b} 이동 일치 ⟺ 직선의 기울기 m = ${b}/${a}!`,
+          totalRes: `100% 목표: x축으로 +${a} 이동 = y축으로 -${b} 이동. 현재 두 이동도 비율 ${b}/${a}를 유지하므로 같은 직선을 만듭니다.`,
           rule: 'x축으로 +a 이동한 직선과 y축으로 -b 이동한 직선이 일치할 조건은 기울기 $m=\\frac{b}{a}$ 이다.',
           formulaHTML: `• $x$축으로 $+${a}$ 이동한 직선 $y = m(x-${a})+n$ 과 $y$축으로 $-${b}$ 이동한 직선 $y = mx+n-${b}$ 가 일치하려면:<br/>&nbsp;&nbsp;${tex('-ma = -b \\implies \\mathbf{m = \\dfrac{b}{a}}')}!`,
           notes: `• 두 이동은 점을 같은 방식으로 옮기는 것이 아니라 직선 전체를 옮깁니다. 식을 비교하면 두 이동 뒤의 $y$절편이 각각 $n-${a}m$과 $n-${b}$이고, 두 $y$절편이 같아야 하므로 $m=\\frac{${b}}{${a}}$입니다.`,
@@ -946,12 +959,12 @@ window.addEventListener('DOMContentLoaded', function () {
         if (sub === 'billiardMirrorRoom') {
           return {
             badge: `탐구 5-D · 🟢 당구대에서 공이 벽에 반사될 때 — 공의 경로를 꺾지 말고 당구대를 대칭이동하여 이어 붙이기`,
-            hint: `가로 $6$, 세로 $4$인 당구대에서 공을 벽면에 2번 튕겨 목표 지점으로 보낼 때, 공이 지나는 경로를 꺾지 않고 <strong>당구대 직사각형 자체를 오른쪽과 위쪽으로 대칭이동하여 이어 붙이면</strong> 공의 경로가 <strong class="text-amber-300">단 하나의 반듯한 직각삼각형 빗변</strong>이 됩니다!`,
+            hint: `가로 $6$, 세로 $4$인 당구대에서 $A(1,1)$에서 위쪽 벽, 오른쪽 벽을 차례로 맞힌 뒤 $B(3,1)$로 보낼 때, 공이 지나는 경로를 꺾지 않고 <strong>당구대 직사각형 자체를 위쪽, 이어서 오른쪽으로 대칭이동하여 이어 붙이면</strong> 공의 경로가 <strong class="text-amber-300">단 하나의 반듯한 직각삼각형 빗변</strong>이 됩니다!`,
             actionTxt: state.fold > 0.5 ? '🎬 당구대 1개 안에서 보기' : '🎬 당구대를 대칭이동하여 이어 붙이고 일직선 경로 보기',
             dim1Name: '가로 총 이동량 ΔX', dim2Name: '세로 총 이동량 ΔY ➔ 총 거리',
             val1Txt: '8 칸', val2Txt: '6 칸 ➔ 빗변 √(8²+6²) = 10!',
             parts: [
-              { id: 0, name: `🟢 원래 당구대 (가로 6 × 세로 4) 안의 꺾인 당구공의 경로`, desc: `오른쪽 벽과 위쪽 벽을 차례로 튕겨 도착점 B로 이동`, val: `2쿠션 반사`, color: '#34d399', ok: true },
+              { id: 0, name: `🟢 원래 당구대 (가로 6 × 세로 4) 안의 꺾인 당구공의 경로`, desc: `A(1,1)에서 위쪽 벽, 오른쪽 벽을 차례로 맞힌 뒤 B(3,1)로 이동`, val: `2쿠션 반사`, color: '#34d399', ok: true },
               { id: 1, name: `🟡 대칭이동하여 이어 붙인 당구대의 목표점 B'' ➔ 일직선 거리 = 10!`, desc: `가로 총합 8, 세로 총합 6인 직각삼각형의 빗변 = √(8²+6²) = 10!`, val: `최단거리 = 10 ⭕`, color: '#fbbf24', ok: true }
             ],
             totalRes: `당구대를 대칭이동하여 이어 붙이기 ➔ 가로 총합(8) & 세로 총합(6) 피타고라스 ➔ 이동 거리 = 10!`,
@@ -987,13 +1000,13 @@ window.addEventListener('DOMContentLoaded', function () {
         return {
           badge: `탐구 6-A · 🌕 [심화] 두 점 A(-3,0), B(3,0)으로부터 거리의 비가 2 : 1 인 점 P의 자취`,
           hint: `$PA : PB = 2 : 1$ 인 점 $P(x, y)$를 모두 모으면 직선이 아니라 <strong>$2:1$ 내분점 $P_1(1, 0)$과 직선 $AB$ 위에서 $\\overline{AP_2} : \\overline{BP_2} = 2 : 1$ 인 바깥쪽 점 $P_2(9, 0)$을 지름의 양 끝으로 하는 원(중심 $(5,0)$, 반지름 $4$)</strong>이 됩니다! 슬라이더로 원 위를 도는 점 $P$와 최대 넓이·최대 각을 확인하세요!`,
-          actionTxt: state.fold > 0.5 ? '🎬 최대 각(접선) 위치 보기' : '🎬 원 위를 도는 점 P(PA:PB=2:1) 보기',
+          actionTxt: Math.abs(state.fold - 0.5) < 1e-8 ? '🎬 최대 넓이 위치 보기' : '🎬 최대 각(접선) 위치 보기',
           dim1Name: '지름의 양 끝점', dim2Name: '원의 중심 C & 반지름 r',
           val1Txt: '내분점 P₁(1,0), 바깥쪽 점 P₂(9,0)', val2Txt: '중심 C(5,0), 반지름 r = 4!',
           parts: [
             { id: 0, name: `🟢 지름의 양 끝: 2:1 내분점 P₁(1, 0) & 직선 AB 위의 바깥쪽 점 P₂(9, 0)`, desc: `방정식 PA² = 4PB² 을 전개하지 않아도 두 점 P₁, P₂가 지름의 양 끝!`, val: `지름 = 8 (r=4)`, color: '#34d399', ok: true },
             { id: 1, name: `🟡 파생 문제 ①: △PAB 넓이의 최댓값 (= ½ × 밑변 AB × 반지름 r)`, desc: `점 P가 원의 맨 꼭대기(높이 = 반지름 4)에 올 때 넓이 최대!`, val: `최대넓이 = 12 ⭕`, color: '#fbbf24', ok: true },
-            { id: 2, name: `🩷 파생 문제 ②: ∠PAB 크기가 최대일 때 (= AP가 원의 접선일 때!)`, desc: `∠PCP'=90° 직각삼각형 △APC(빗변 AC=8, 반지름 CP=4 ⇒ 30°)!`, val: `최대각 = 30° ⭕`, color: '#f472b6', ok: true }
+            { id: 2, name: `🩷 파생 문제 ②: ∠PAB 크기가 최대일 때 (= AP가 원의 접선일 때!)`, desc: `∠CPA=90° 직각삼각형 △APC(빗변 AC=8, 반지름 CP=4 ⇒ 30°)!`, val: `최대각 = 30° ⭕`, color: '#f472b6', ok: true }
           ],
           totalRes: `PA:PB = 2:1 자취 ➔ 두 점 (1,0), (9,0)을 지름의 양 끝으로 하는 원 (x-5)²+y²=4² | △PAB 최대넓이 = 12`,
           rule: 'PA : PB = m : n (m≠n) 인 점의 자취: 선분 AB를 m:n으로 내분하는 점과, 직선 AB 위에서 AP : BP = m : n 인 바깥쪽 점을 지름의 양 끝으로 하는 원이다!',
@@ -1009,7 +1022,7 @@ window.addEventListener('DOMContentLoaded', function () {
           hint: `직선 $y = mx - 1$ 은 $m$에 관계없이 항상 <strong>정점 $P(0, -1)$</strong>을 지납니다! 점 $P$를 지나는 직선을 회전시킬 때, 점 $A(1, 3)$을 지날 때의 기울기($m=4$)와 점 $B(4, 1)$을 지날 때의 기울기($m=\\frac{1}{2}$) **사이($\\frac{1}{2} \\le m \\le 4$)**에서 선분과 만납니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 점 A 통과 경계 보기' : '🎬 점 A(m=4)와 점 B(m=1/2)를 지나도록 직선 회전시키기',
           dim1Name: '항상 지나는 점 P', dim2Name: '선분 AB와 만나는 m 범위',
-          val1Txt: 'P(0, -1)', val2Txt: '1/2 ≤ m ≤ 4 (양 끝점 포함!)',
+          val1Txt: 'P(0, -1)', val2Txt: '1/2 ≤ m ≤ 4', val2Note: '양 끝점 포함',
           parts: [
             { id: 0, name: `🟡 경계 ①: 점 B(4, 1)을 지날 때의 최소 기울기 m = 1/2`, desc: `P(0, -1)과 B(4, 1)을 잇는 기울기 = $\\frac{1-(-1)}{4-0}$ = 2/4 = 1/2`, val: `m = 1/2`, color: '#fbbf24', ok: true },
             { id: 1, name: `🩷 경계 ②: 점 A(1, 3)을 지날 때의 최대 기울기 m = 4`, desc: `P(0, -1)과 A(1, 3)을 잇는 기울기 = $\\frac{3-(-1)}{1-0}$ = 4`, val: `m = 4`, color: '#f472b6', ok: true },
@@ -1037,26 +1050,27 @@ window.addEventListener('DOMContentLoaded', function () {
           totalRes: `점 (2, 4)를 지나고 두 절편이 같은 직선 = ① x + y = 6  ② y = 2x (총 2개!)`,
           rule: '"x절편과 y절편이 같다" ("0이 아닌"이라는 말이 없을 때) ➔ [원점을 지나는 직선(절편=0)]도 구한다!',
           formulaHTML: `• 절편 방정식 ${tex('\\dfrac{x}{a} + \\dfrac{y}{b} = 1')} 은 분모 $a \\neq 0, b \\neq 0$ 일 때만 쓸 수 있는 식입니다!<br/>• 따라서 **$a = b = 0$ (원점을 지나는 직선)**인 경우를 반드시 별도로 체크해야 합니다!`,
-          notes: `• 문제에서 친절하게 “**$0$이 아닌** 같은 절편”이라고 주면 1개뿐이지만, 그 말이 없으면 **원점을 지나는 직선까지 합쳐서 2개(절댓값이 같다고 하면 총 3개)**입니다!`,
+          notes: `• 이 예시의 $P(2,4)$에서는 “**$0$이 아닌** 같은 절편”이면 1개, 그 제한이 없으면 **원점 통과 직선을 포함해 2개**입니다. 절편의 절댓값이 같다는 조건이면 $y=x+2$도 포함해 3개입니다.`,
           tapeTitle: `절편 함정 체크리스트: ① a = b ≠ 0 (기울기 -1 직선)  +  ② a = b = 0 (원점 통과 직선 y = 2x!)`,
           tapeSegs: []
         };
       }
       if (sub === 'trapPerpDivideZero') {
+        const k = state.perpK, dot = 5 * k - 7, determinant = (k - 1) * (k - 2) - 6;
         return {
           badge: `탐구 6-D · 💥 [함정 2] 일반형으로 주어진 두 직선 ax+by+c=0 과 a'x+b'y+c'=0 의 수직·평행 조건`,
           hint: `두 직선 $(k-1)x + 2y + 1 = 0$ 과 $3x + (k-2)y - 2 = 0$ 이 수직일 때, $y=$ 꼴로 고쳐서 기울기를 곱하면 분모가 $0$이 되는 경우($k=2$)를 놓칠 수 있습니다! <strong>일반형 수직 공식 <span class="text-amber-300">$aa' + bb' = 0$</span></strong>을 쓰면 분모가 $0$이 되는 경우를 걱정하지 않고 쉽게 해결할 수 있습니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 평행 조건 비교' : '🎬 수직 공식(aa\' + bb\' = 0) 직교 확인!',
-          dim1Name: '일반형 수직 조건 (⊥)', dim2Name: '일반형 평행 조건 (∥)',
-          val1Txt: 'aa\' + bb\' = 0', val2Txt: 'ab\' - a\'b = 0 (bc\' ≠ b\'c)',
+          dim1Name: '현재 k와 두 직선의 관계', dim2Name: '법선 내적 · 평행 판별식',
+          val1Txt: `k ${relationNow(k)} · ${Math.abs(dot) < 1e-9 ? '수직' : Math.abs(determinant) < 1e-9 ? '서로 다른 평행선' : '수직이 아닌 두 직선'}`, val2Txt: `aa′+bb′ ${relationNow(dot)} · ab′−a′b ${relationNow(determinant)}`,
           parts: [
-            { id: 0, name: `🟡 [무결점 수직 공식] (x계수 곱) + (y계수 곱) = aa' + bb' = 0!`, desc: `3(k - 1) + 2(k - 2) = 0 ⇒ 5k = 7 ⇒ k = 7/5 (분수 안 써도 됨!)`, val: `aa' + bb' = 0 ⭕`, color: '#fbbf24', ok: true },
+            { id: 0, name: `🟡 [무결점 수직 공식] (x계수 곱) + (y계수 곱) = aa' + bb' = 0!`, desc: `3(k - 1) + 2(k - 2) = 0 ⇒ 5k = 7 ⇒ k = 7/5 (기울기로 나누지 않음)`, val: `aa' + bb' = 0 ⭕`, color: '#fbbf24', ok: true },
             { id: 1, name: `🔵 [평행 조건] 대각선 방향의 곱이 같음: ab' - a'b = 0!`, desc: `(k - 1)(k - 2) - 2 × 3 = 0 ⇒ k² - 3k - 4 = 0 ⇒ k = 4 또는 -1!`, val: `ab' - a'b = 0 ⭕`, color: '#38bdf8', ok: true },
-            { id: 2, name: `❌ [주의] 평행 값을 구한 뒤 반드시 "일치하는 해"는 제외할 것!`, desc: `상수항 비까지 같아지면(일치) 교점이 무수히 많으므로 평행에서 제외!`, val: `일치 여부 검산!`, color: '#f43f5e', ok: false }
+            { id: 2, name: `❌ [주의] 평행 값을 구한 뒤 반드시 "일치하는 해"는 제외할 것!`, desc: `ab′−a′b=0인 뒤 ac′−a′c와 bc′−b′c가 둘 다0이면 일치합니다. 하나라도0이 아니면 서로 다른 평행선입니다(수직선도 포함).`, val: `일치 여부 검산!`, color: '#f43f5e', ok: false }
           ],
           totalRes: `일반형 두 직선: 수직 ⟺ aa' + bb' = 0  |  평행 ⟺ ab' = a'b (단, 일치 제외!)`,
           rule: '일반형(= 0 꼴)의 직선 두 개는 y = mx + n 으로 고치지 않고 바로 계수를 이용한 식(aa\'+bb\'=0)을 쓴다!',
-          formulaHTML: `• <strong>수직($\\perp$)</strong>: ${tex('\\mathbf{aa\' + bb\' = 0}')} (일치할 걱정이 전혀 없으므로 검산 불필요!)<br/>• <strong>평행($\\parallel$)</strong>: ${tex('\\mathbf{ab\' - a\'b = 0}')} 구한 뒤, 두 식에 대입해 상수항까지 똑같아지는(일치하는) 값은 버린다!`,
+          formulaHTML: `• <strong>수직($\\perp$)</strong>: ${tex('\\mathbf{aa\' + bb\' = 0}')} (각 식이 실제 직선, 즉 법선벡터가 0이 아닐 때)<br/>• <strong>평행($\\parallel$)</strong>: ${tex('\\mathbf{ab\' - a\'b = 0}')} 구한 뒤, 두 식에 대입해 상수항까지 똑같아지는(일치하는) 값은 버린다!`,
           notes: `• 특히 $x = 3$ (수직선)과 $y = 2$ (수평선)처럼 기울기 자체가 정의되지 않는 직선들이 섞여 있을 때도 $aa' + bb' = 1\\cdot 0 + 0\\cdot 1 = 0$ 식이 성립합니다!`,
           tapeTitle: `일반형 계수 공식: 수직(⊥)은 같은 문자의 계수끼리 곱해서 더한 값이 0 (aa'+bb'=0) | 평행(∥)은 대각선 방향의 곱이 같음 (ab'=a'b)`,
           tapeSegs: []
@@ -1172,32 +1186,27 @@ window.addEventListener('DOMContentLoaded', function () {
           const u = M / (M + N);
           const pD = alerp(pA, pB, u), pE = alerp(pB, pC, u), pF = alerp(pC, pA, u);
 
+          const showPara = t > 0.5 || state.activePartIdx === 1;
           apoly([pA, pB, pC], 'rgba(56, 189, 248, 0.14)', ACOL.cyan, 2.8, 0);
-          apoly([pD, pE, pF], 'rgba(251, 191, 36, 0.26)', ACOL.gold, 3.0, 0);
-
-          if (t > 0.5 || state.activePartIdx === 1) {
-            const pD_para = S(0 + 6 - -3, 4 + 0 - -1); // A+C-B = (9, 5) 대신 화면 안 평행사변형 시연
-            const qA = S(-2, 3), qB = S(-4, -1), qC = S(2, -1), qD = S(4, 3);
-            apoly([qA, qB, qC, qD], 'rgba(244, 114, 182, 0.22)', ACOL.pink, 2.8, 1);
-            aline(qA, qC, ACOL.white, 2, [4, 4]);
-            aline(qB, qD, ACOL.white, 2, [4, 4]);
-            adot(qD, 'D = A + C - B!', ACOL.pink, 0, -14);
-            { const qO = alerp(qA, qC, 0.5); atick(qA, qO, 1, ACOL.white); atick(qO, qC, 1, ACOL.white); atick(qB, qO, 2, ACOL.white); atick(qO, qD, 2, ACOL.white); } // [표시 보강] 두 대각선은 서로를 이등분(같은 눈금)
+          if (showPara) {
+            const qD = S(9, 5), O = amid(pA, pC);
+            apoly([pA, pB, pC, qD], 'rgba(244, 114, 182, 0.14)', ACOL.pink, 2.8, 1);
+            aline(pA, pC, ACOL.white, 2, [4, 4]); aline(pB, qD, ACOL.white, 2, [4, 4]);
+            atick(pA, O, 1, ACOL.white); atick(O, pC, 1, ACOL.white); atick(pB, O, 2, ACOL.white); atick(O, qD, 2, ACOL.white);
+            adot(qD, 'D(9,5) = A+C−B', ACOL.pink, 8, -14);
+          } else {
+            apoly([pD, pE, pF], 'rgba(251, 191, 36, 0.26)', ACOL.gold, 3.0, 0);
+            adot(pD, 'D', ACOL.gold, -14, 0); adot(pE, 'E', ACOL.gold, 0, 18); adot(pF, 'F', ACOL.gold, 14, -8);
+            adot(pG, 'G(1,1): 무게중심 불변', ACOL.pink, 12, -10);
           }
+          adot(pA, 'A(0,4)', ACOL.cyan, 0, -14); adot(pB, 'B(-3,-1)', ACOL.cyan, -20, 18); adot(pC, 'C(6,0)', ACOL.cyan, 14, 14);
 
-          adot(pA, 'A(0,4)', ACOL.cyan, 0, -14);
-          adot(pB, 'B(-3,-1)', ACOL.cyan, -20, 18);
-          adot(pC, 'C(6,0)', ACOL.cyan, 14, 14);
-          adot(pD, 'D', ACOL.gold, -14, 0);
-          adot(pE, 'E', ACOL.gold, 0, 18);
-          adot(pF, 'F', ACOL.gold, 14, -8);
-          adot(pG, 'G(1, 1: 무게중심 불변!)', ACOL.pink, 12, -10);
         } else {
           // distMinSumSq (PA²+PB²+PC² 최소 = 무게중심 G)
           const pA = S(-2, 3), pB = S(-3, -2), pC = S(5, 2);
           const pG = S(0, 1);
           const pP_start = S(3, -3);
-          const pP = alerp(pP_start, pG, Math.max(0.15, t));
+          const pP = alerp(pP_start, pG, t);
 
           apoly([pA, pB, pC], 'rgba(52, 211, 153, 0.14)', ACOL.green, 2.6);
           aline(pP, pA, ACOL.gold, 3.0, [], true, 0);
@@ -1208,7 +1217,9 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pB, 'B(-3, -2)', ACOL.white, -20, 18);
           adot(pC, 'C(5, 2)', ACOL.white, 14, -10);
           adot(pG, 'G(0, 1: 무게중심)', ACOL.pink, 14, -12);
-          adot(pP, t > 0.9 ? 'P = G (제곱합 최소!)' : 'P(이동 중)', ACOL.gold, 14, 18);
+          aline(pP, pG, ACOL.pink, 2.4, [4, 4]);
+          adot(pP, t >= 1 - 1e-9 ? 'P = G (제곱합 최소)' : pointNow('P', 3 * (1 - t), -3 + 4 * t), ACOL.gold, 14, 18);
+          if (t < 1 - 1e-9) abadge(pP, pG, `PG² ${relationNow(25 * (1 - t) ** 2)}`, ACOL.pink, -18);
         }
       }
 
@@ -1259,10 +1270,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
           const kVal = -1.5 + 3.5 * t;
           // (1+2k)x + (k-1)y + (1-4k) = 0 -> y = ((1+2k)/(1-k)) x + (1-4k)/(1-k)
-          const denom = Math.abs(1 - kVal) < 0.05 ? 0.05 : 1 - kVal;
-          const mCur = (1 + 2 * kVal) / denom;
-          const yIntCur = 2 - mCur * 1;
-          aMathLine(mCur, yIntCur, ox, oy, unit, ACOL.gold, 3.8, [], 1);
+          aGeneralLine(1 + 2 * kVal, kVal - 1, 1 - 4 * kVal, ox, oy, unit, ACOL.gold, 3.8, 1);
 
           const pP = S(1, 2);
           acircle(pP, 11, ACOL.gold, 'rgba(251, 191, 36, 0.35)', 2.5, [], 0);
@@ -1271,16 +1279,17 @@ window.addEventListener('DOMContentLoaded', function () {
           const pA = S(-1, -1), pB = S(3, 3), pM = S(1, 1);
           const uP = -1.5 + 3.0 * t;
           const pP = S(1 + uP, 1 - uP);
+          const atMidpoint = Math.abs(uP) < 1e-9;
 
           aMathLine(-1, 2, ox, oy, unit, ACOL.pink, 3.6, [], 1);
-          apoly([pP, pA, pB], 'rgba(56, 189, 248, 0.18)', ACOL.cyan, 2.4, 2);
+          if (!atMidpoint) apoly([pP, pA, pB], 'rgba(56, 189, 248, 0.18)', ACOL.cyan, 2.4, 2);
           aline(pA, pB, ACOL.gold, 3.6, [], false, 0);
 
-          aright(pM, pA, pP, 13, ACOL.pink);
+          if (!atMidpoint) aright(pM, pA, pP, 13, ACOL.pink);
           adot(pA, 'A(-1, -1)', ACOL.gold, -20, 20);
           adot(pB, 'B(3, 3)', ACOL.gold, 12, -10);
           adot(pM, '중점 M(1, 1)', ACOL.white, 14, 14);
-          adot(pP, 'P(PA = PB 이등변!)', ACOL.cyan, 14, -12);
+          adot(pP, atMidpoint ? 'P = M (PA = PB, 삼각형 아님)' : 'P(PA = PB 이등변!)', ACOL.cyan, 14, -12);
           atick(pA, pM, 1, ACOL.gold); atick(pM, pB, 1, ACOL.gold); atick(pP, pA, 2, ACOL.cyan); atick(pP, pB, 2, ACOL.cyan); // [표시 보강] AM = MB, PA = PB
         } else if (sub === 'areaBisectLines') {
           // 좌측: 삼각형 꼭짓점 A와 BC 중점 M 연결  |  우측: 직사각형 중심과 원 중심 연결
@@ -1330,14 +1339,14 @@ window.addEventListener('DOMContentLoaded', function () {
           // 이동 중인 삼각형
           apoly([pA, pB, pC], 'rgba(251, 191, 36, 0.34)', ACOL.gold, 3.4, 2);
 
-          if (t > 0.8) {
+          if (t >= 1 - 1e-9) {
             // 원점 도착 시 4×4 외접 직사각형 보조 표시
             apoly([S(0, 0), S(4, 0), S(4, 4), S(0, 4)], null, 'rgba(244, 114, 182, 0.45)', 1.8, 1);
           }
 
-          adot(pA, t > 0.8 ? "A'(0, 0: 원점 고정!)" : 'A(1, 1)', ACOL.cyan, -10, 22);
-          adot(pB, t > 0.8 ? "B'(4, 1)" : 'B(5, 2)', ACOL.gold, 12, 12);
-          adot(pC, t > 0.8 ? "C'(1, 4) [넓이=½|16-1|=7.5!]" : 'C(2, 5)', ACOL.gold, 10, -12);
+          adot(pA, t >= 1 - 1e-9 ? "A'(0, 0: 원점)" : pointNow('A′', 1 - t, 1 - t), ACOL.cyan, -10, 22);
+          adot(pB, pointNow('B′', 5 - t, 2 - t), ACOL.gold, 12, 12);
+          adot(pC, `${pointNow('C′', 2 - t, 5 - t)}${t >= 1 - 1e-9 ? ' [넓이=½|16−1|=7.5]' : ''}`, ACOL.gold, 10, -12);
         } else if (sub === 'pointLineDist') {
           // 직선 3x + 4y - 5 = 0 (y = -0.75x + 1.25) 과 점 P(3, 4), 수선의 발 H(0.6, 0.8)
           aMathLine(-0.75, 1.25, ox, oy, unit, ACOL.cyan, 3.2);
@@ -1452,10 +1461,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
           acircle(p0, 1.5 * unit, 'rgba(56, 189, 248, 0.45)', 'rgba(56, 189, 248, 0.08)', 2.2, [5, 4], 0);
           acircle(pMoved, 1.5 * unit, ACOL.gold, 'rgba(251, 191, 36, 0.26)', 3.4, [], 1);
-          drawJumpArch(p0, pMoved, -45, ACOL.cyan, `점 이동 (+${a}, +${b})`, 0);
+          drawJumpArch(p0, pMoved, -45, ACOL.cyan, `현재 이동${roundedNow(curA, curB) ? ' ≈' : ''} (+${fmtNum(curA)}, +${fmtNum(curB)})`, 0);
 
           adot(p0, '원본 C(-2, -1): (x+2)²+(y+1)²=r²', ACOL.cyan, -30, 24);
-          adot(pMoved, `이동 후 C'(${-2 + a}, ${-1 + b}): 부호 반대 대입!`, ACOL.gold, 10, -16);
+          adot(pMoved, pointNow('현재 C′', -2 + curA, -1 + curB), ACOL.gold, 10, -16);
         } else if (sub === 'symmetry4Basic') {
           const baseT = [[2, 1], [5, 1], [2, 3]];
           aMathLine(1, 0, ox, oy, unit, 'rgba(52, 211, 153, 0.45)', 2.0, [5, 4], 2);
@@ -1489,13 +1498,13 @@ window.addEventListener('DOMContentLoaded', function () {
           aMathLine(mSlope, 2, ox, oy, unit, 'rgba(56, 189, 248, 0.55)', 2.4, [5, 4], 0);
           aMathLine(mSlope, 2 - b * t, ox, oy, unit, ACOL.gold, 3.8, [], 1);
 
-          const pStart = S(0, 2), pRight = S(a, 2), pDown = S(0, 2 - b);
+          const pStart = S(0, 2), pRight = S(a * t, 2), pDown = S(0, 2 - b * t);
           apoly([pStart, pRight, pDown], 'rgba(251, 191, 36, 0.22)', ACOL.gold, 2.4);
-          drawJumpArch(pStart, pRight, -28, ACOL.cyan, `x축 +${a}`, 0);
-          drawJumpArch(pStart, pDown, -28, ACOL.pink, `y축 -${b}`, 1);
+          drawJumpArch(pStart, pRight, -28, ACOL.cyan, `현재 x축 이동 ${relationNow(a * t)}`, 0);
+          drawJumpArch(pStart, pDown, -28, ACOL.pink, `현재 y축 이동 ${relationNow(-b * t)}`, 1);
           adot(pStart, '(0, 2)', ACOL.white, -35, -8);
-          adot(pRight, `(${a}, 2)`, ACOL.cyan, 10, -8);
-          adot(pDown, `(0, ${2 - b})`, ACOL.pink, -42, 14);
+          adot(pRight, pointNow('R′', a * t, 2), ACOL.cyan, 10, -8);
+          adot(pDown, pointNow('S', 0, 2 - b * t), ACOL.pink, -42, 14);
         }
       }
 
@@ -1558,19 +1567,16 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(pQ, 'Q(0, 2)', ACOL.pink, -45, 4);
           areflect(pP, pA, pQ, { x: 1, y: 0 }, ACOL.cyan); areflect(pQ, pP, pB, { x: 0, y: 1 }, ACOL.pink); // [표시 보강] 두 거울에서 입사각 = 반사각
         } else if (sub === 'billiardMirrorRoom') {
-          // 당구대 거울의 방: 원래 당구대 [0~4, 0~3] 을 오른쪽 [4~8], 위쪽 [3~6] 복사!
-          const uB = unit * 0.78;
-          const SB = (mx, my) => toScreen(mx - 2, my - 1.5, ox, oy, uB);
-
-          apoly([SB(0, 0), SB(4, 0), SB(4, 3), SB(0, 3)], 'rgba(52, 211, 153, 0.22)', ACOL.green, 3.0, 0);
-          apoly([SB(4, 0), SB(8, 0), SB(8, 3), SB(4, 3)], 'rgba(56, 189, 248, 0.12)', 'rgba(56, 189, 248, 0.5)', 2.0, 1);
-          apoly([SB(4, 3), SB(8, 3), SB(8, 6), SB(4, 6)], 'rgba(251, 191, 36, 0.16)', 'rgba(251, 191, 36, 0.6)', 2.0, 1);
-
-          const pStart = SB(1, 1), pEndOrig = SB(1, 1), pEndRoom = SB(7, 5.5);
-          // 1쿠션 벽 교점 (4, 3.25 -> 위벽 먼저)
-          aline(pStart, pEndRoom, ACOL.gold, 3.8, [], true, 1);
-          adot(pStart, '출발 A', ACOL.white, -16, 18);
-          adot(pEndRoom, "대칭이동한 목표점 B''(일직선 빗변)", ACOL.gold, -40, -14);
+          const uB = unit * 0.78, SB = (mx, my) => toScreen(mx - 2, my - 1.5, ox, oy, uB);
+          const A = SB(1, 1), B = SB(3, 1), B2 = SB(9, 7), X = SB(5, 4), Y = SB(6, 3.25), Yu = SB(6, 4.75);
+          apoly([SB(0,0),SB(6,0),SB(6,4),SB(0,4)], 'rgba(52,211,153,.16)', ACOL.green, 3, 0);
+          apoly([SB(0,4),SB(6,4),SB(6,8),SB(0,8)], 'rgba(56,189,248,.08)', ACOL.cyan, 1.8, 1);
+          apoly([SB(6,4),SB(12,4),SB(12,8),SB(6,8)], 'rgba(251,191,36,.08)', ACOL.gold, 1.8, 1);
+          aline(A,X,ACOL.cyan,3,[],false,0); aline(X,Y,ACOL.cyan,3,[],false,0); aline(Y,B,ACOL.cyan,3,[],false,0);
+          aline(A,B2,ACOL.gold,3.4,[6,4],true,1); aline(Y,Yu,ACOL.pink,1.6,[4,4],false,1);
+          adot(A,'A(1,1)',ACOL.white,-16,18); adot(B,'B(3,1)',ACOL.cyan,12,18);
+          adot(X,'X',ACOL.cyan,-16,-12); adot(Y,'Y',ACOL.cyan,12,16); adot(Yu,'Y′',ACOL.pink,10,-12);
+          adot(B2,"B''(9,7)",ACOL.gold,10,-14); abadge(A,B2,'√(8²+6²) = 10',ACOL.gold,-20,0.7,1);
         } else {
           // diffMaxLine (|PA - PB| 최댓값 = 대칭 없이 직선 AB 연장선의 x절편!)
           const pA = S(1, 1), pB = S(3, 3), pP0 = S(0, 0), pP_other = S(4, 0);
@@ -1598,10 +1604,19 @@ window.addEventListener('DOMContentLoaded', function () {
           acircle(pC, rApol, ACOL.green, 'rgba(52, 211, 153, 0.16)', 3.2, [], 0);
           const angP = (90 + t * 60) * (Math.PI / 180);
           const pP = apt(pC.x + rApol * Math.cos(angP), pC.y - rApol * Math.sin(angP));
-          const pTop = SA(5, 4);
+          const pTop = SA(5, 4), pTangent = SA(3, 2 * Math.sqrt(3));
 
           apoly([pP, pA, pB], 'rgba(251, 191, 36, 0.24)', ACOL.gold, 2.8, 1);
-          aline(pA, pTop, ACOL.pink, 2.6, [5, 4], false, 2);
+          if (state.activePartIdx === 2 || Math.abs(t - 0.5) < 1e-8) {
+            aline(pA, pTangent, ACOL.pink, 2.6, [5, 4], false, 2);
+            aline(pC, pTangent, ACOL.pink, 2, [4, 4], false, 2);
+            aright(pTangent, pA, pC, 10, ACOL.pink);
+            adot(pTangent, 'T(3, 2√3): 접점', ACOL.pink, 10, -20);
+          }
+          if (state.activePartIdx === 1 || t < 1e-8) {
+            aline(pTop, pC, ACOL.gold, 2, [4, 4], false, 1);
+            abadge(pTop, pC, '최대 높이 4', ACOL.gold, -18);
+          }
 
           adot(pA, 'A(-3, 0)', ACOL.white, -15, 20);
           adot(pB, 'B(3, 0)', ACOL.white, -10, 20);
@@ -1632,10 +1647,16 @@ window.addEventListener('DOMContentLoaded', function () {
           adot(S(0, 6), 'y절편(6)', ACOL.cyan, -35, 4);
           adot(pO, '원점(0,0): 절편=0으로 같음!(y=2x)', ACOL.pink, 14, 20);
         } else if (sub === 'trapPerpDivideZero') {
-          aMathLine(0.2, -0.5, ox, oy, unit, ACOL.cyan, 3.2, [], 0);
-          aMathLine(-5, 3, ox, oy, unit, ACOL.gold, 3.2, [], 0);
-          adot(S(0.67, -0.36), '수직: aa\' + bb\' = 0 (분모 0 걱정 없음!)', ACOL.gold, 16, -12);
-          aright(S(0.67, -0.36), S(1.67, -0.16), S(0.47, 0.64), 14, ACOL.gold); // [표시 보강] 두 직선이 수직
+          const k = state.perpK, determinant = (k - 1) * (k - 2) - 6;
+          aGeneralLine(k - 1, 2, 1, ox, oy, unit, ACOL.cyan, 3.2, 0);
+          aGeneralLine(3, k - 2, -2, ox, oy, unit, ACOL.gold, 3.2, 0);
+          if (BOARD._bbox) { const l = S(-4,-4), r = S(4,4); BOARD.toS(l.x,l.y); BOARD.toS(r.x,r.y); }
+          adot(S(0,-.5), 'l₁: (k−1)x+2y+1=0', ACOL.cyan, -24, 20);
+          adot(S(2/3,0), 'l₂: 3x+(k−2)y−2=0', ACOL.gold, 12, -14);
+          if (Math.abs(5 * k - 7) < 1e-9) {
+            const x = (-k - 2) / determinant, y = (2 * k + 1) / determinant;
+            aright(S(x,y),S(x+2,y-(k-1)),S(x+k-2,y-3),14,ACOL.pink);
+          }
         } else {
           // trapCoordFold: 직사각형 (0,0)-(8,0)-(8,4)-(0,4) 에서 C(8,4)를 O(0,0)에 접기! -> EF: y = -2x + 10
           const uF = unit * 0.78;
@@ -1709,6 +1730,7 @@ window.addEventListener('DOMContentLoaded', function () {
     state.mode = m;
     state.subType[m] = id;
     state.fold = s.fold;
+    state.perpK = s.perpK;
     state.ratioIdx = s.ratioIdx;
     state.scaleIdx = s.scaleIdx;
     state.activePartIdx = s.part == null ? -1 : s.part;
@@ -1912,12 +1934,16 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
   const PROBS = {};
-  function defProb(id, meta, pool) { PROBS[id] = { ...meta, V: varier(pool) }; }
+  function defProb(id, meta, pool) {
+    // 네 번째의 검산 문장을 결론 단계에 붙인다. 그림 조각은 기존에도 0~3단계이다.
+    const prepared = pool.map((make) => () => { const q = make(); if (q.steps.length > 3) q.steps = [q.steps[0], q.steps[1], q.steps.slice(2).join(' ')]; return q; });
+    PROBS[id] = { ...meta, V: varier(prepared) };
+  }
 
   /* ======================= 장면별 문제 (탐구관 1 · 평면좌표) ======================= */
   const NP = (n, p) => `${n}${pN(p[0], p[1])}`;
@@ -1973,7 +1999,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const R = C1[0] > C2[0] ? C1 : C2, L = C1[0] > C2[0] ? C2 : C1, val = R[0] + R[1];
     const items = [Pt(A, NP('A', A)), Pt(B, NP('B', B)), Sg(A, B, { c: 'ink', w: 3 })];
     for (let j = -k; j <= k + 1; j++) { const q = [B[0] + j * v[0], B[1] + j * v[1]]; if (j !== 0 && j !== -1 && Math.abs(j) !== k) items.push(Pt(q, '', { c: 'muted', r: 3, at: 1 })); }
-    items.push(Ln(A, v[1] / v[0], { c: 'sky', w: 2, dash: true, at: 1 }), Sg(B, R, { c: 'rose', w: 4, at: 2 }), Sg(B, L, { c: 'violet', w: 4, at: 2 }), Pt(R, 'C₁', { c: 'rose', at: 2, upg: [3, NP('C₁', R)] }), Pt(L, 'C₂', { c: 'violet', at: 2 }));
+    const rightName = v[0] > 0 ? 'C₁' : 'C₂', leftName = v[0] > 0 ? 'C₂' : 'C₁';
+    items.push(Ln(A, v[1] / v[0], { c: 'sky', w: 2, dash: true, at: 1 }), Sg(B, R, { c: 'rose', w: 4, at: 2 }), Sg(B, L, { c: 'violet', w: 4, at: 2 }), Pt(R, rightName, { c: 'rose', at: 2, upg: [3, NP(rightName, R)] }), Pt(L, leftName, { c: 'violet', at: 2 }));
     items.push(Lb(B, R, `${k}칸`, { c: 'rose', at: 2 }), Lb(B, L, `${k}칸`, { c: 'violet', at: 2 }));
     return {
       fig: { items }, val, ans: nt(val), par: { A, B, k },
@@ -1981,12 +2008,12 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: [
         `$A$에서 $B$까지가 1칸입니다(한 칸은 $(${nt(v[0])},\\ ${nt(v[1])})$). 이 직선을 따라 같은 간격으로 눈금을 잡습니다.`,
         `$\\overline{BC}=${k}\\overline{AB}$이므로 $B$에서 양쪽으로 ${k}칸 간 두 점이 $C$입니다. 점 $C$가 2개인 이유입니다.`,
-        `$x$좌표가 큰 쪽은 $B${v[0] > 0 ? '+' : '-'}${k}\\times(${nt(Math.abs(v[0]))},\\ ${nt(Math.abs(v[1]))})$ 방향이며 $C=${pT(R[0], R[1])}$ → $p+q=${nt(val)}$`,
+        `$x$좌표가 큰 쪽은 $B${v[0] > 0 ? '+' : '-'}${k}\\times(${nt(v[0])},\\ ${nt(v[1])})$ 방향이며 $C=${pT(R[0], R[1])}$ → $p+q=${nt(val)}$`,
         `정석 확인: $C=B\\pm${k}\\overrightarrow{AB}$ 두 점 가운데 $x$좌표가 큰 것을 고른 것과 같습니다.`
       ],
       std: `① ${tex(`\\overline{AB}:\\overline{BC}=1:${k}`)}이므로 점 ${tex('C')}는 ${tex('B')}를 기준으로 양쪽에 하나씩 있습니다.<br/>② ${tex(`C_1=B+${k}(B-A)=${pT(C1[0], C1[1])}`)}, ${tex(`C_2=B-${k}(B-A)=${pT(C2[0], C2[1])}`)}<br/>③ ${tex('x')}좌표가 큰 점은 ${tex(pT(R[0], R[1]))}이므로 ${tex(`p+q=${nt(val)}`)}`,
       quick: `점 ${tex('C')}는 ${tex('B')}에서 양쪽으로 ${k}칸 떨어진 두 점이므로, 두 점은 ${tex('B')}에 대하여 대칭입니다. 한 칸 ${tex(`(${nt(v[0])},\\ ${nt(v[1])})`)}를 ${k}번 더하고 빼서 ${tex(`${pT(C1[0], C1[1])},\\ ${pT(C2[0], C2[1])}`)}를 얻습니다.`,
-      hl: '「직선 AB 위」라고만 하면 점이 두 개입니다. 한쪽만 고르게 하는 조건(x좌표가 큰 점, 선분의 연장선 등)을 꼭 확인하세요.', warn: '직선 AB 위의 점 C는 B의 양쪽 어디에나 있을 수 있습니다. 하나만 구하고 끝내지 마세요.'
+      hl: '「직선 AB 위」라고만 하면 점이 두 개입니다. 한쪽만 고르게 하는 조건(x좌표가 큰 점, B쪽 연장선 등)을 꼭 확인하세요.', warn: '직선 AB 위의 점 C는 B의 양쪽 어디에나 있을 수 있습니다. 하나만 구하고 끝내지 마세요.'
     };
   }
   defProb('divExtendedLine', { tag: '2021학년도 9월 학평(인천) 19번 유형 · 직선 위의 점의 위치', time: '목표 시간: 30초', quickTitle: '10초 컷 · 한 칸 단위로 이동' }, [
@@ -1995,7 +2022,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* 1-C 중선정리 */
   function mkMed(kind, ab, ac, bc, am) {
-    const c = bc / 2, x = (ab * ab - ac * ac) / (4 * c), y = Math.sqrt(ab * ab - (x + c) * (x + c));
+    const c = bc / 2, x = kind === 'sum' ? 3 * am / 5 : (ab * ab - ac * ac) / (4 * c), y = kind === 'sum' ? 4 * am / 5 : Math.sqrt(ab * ab - (x + c) * (x + c));
     const B = [-c, 0], C = [c, 0], A = [x, y], M = [0, 0];
     const items = [Pl([A, B, C], { c: 'ink', fill: 'sky', fa: 0.08 }), Pt(A, 'A'), Pt(B, 'B'), Pt(C, 'C'), Lb(B, C, String(bc), { c: 'ink' }), Pt(M, 'M', { c: 'amber' }), Tk(B, M, 1, { c: 'amber', at: 1 }), Tk(M, C, 1, { c: 'amber', at: 1 }), Sg(A, M, { c: 'rose', w: 3.6, at: kind === 'sum' ? 0 : 2 }), Lb(A, M, String(am), { c: 'rose', at: kind === 'sum' ? 0 : 3 })];
     if (kind !== 'sum') items.push(Lb(A, B, String(ab), { c: 'ink' }), Lb(A, C, String(ac), { c: 'ink' }));
@@ -2064,10 +2091,10 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { A, B, C }, val, ans: nt(val), tag: '2023학년도 9월 학평(인천) 29번 유형 · 무게중심',
       text: `좌표평면 위의 세 점 ${tex(NT('A', A))}, ${tex(NT('B', B))}, ${tex(NT('C', C))}와 평면 위의 점 ${tex('P')}에 대하여 ${tex('\\overline{PA}^2+\\overline{PB}^2+\\overline{PC}^2')}의 최솟값을 구하시오.`,
-      steps: [`세 중선의 교점, 곧 무게중심 $G=\\left(${frT(A[0] + B[0] + C[0], 3)},\\ ${frT(A[1] + B[1] + C[1], 3)}\\right)$를 찾습니다.`, `거리의 제곱의 합은 $P=G$일 때 가장 작습니다(어디로 움직여도 $G$에서보다 커집니다).`, `최솟값 $=\\overline{GA}^2+\\overline{GB}^2+\\overline{GC}^2=${nt(gsum)}$`, `빠른 확인: 세 변의 제곱의 합을 3으로 나눈 $\\dfrac{${ab}+${bc}+${ca}}{3}=${nt(val)}$로 같습니다.`],
+      steps: [`세 중선의 교점, 곧 무게중심 $G=\\left(${frT(A[0] + B[0] + C[0], 3)},\\ ${frT(A[1] + B[1] + C[1], 3)}\\right)$를 찾습니다.`, `$\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}=0$이므로 $\\overline{PA}^2+\\overline{PB}^2+\\overline{PC}^2=3\\overline{PG}^2+\\overline{GA}^2+\\overline{GB}^2+\\overline{GC}^2$입니다. 늘어나는 부분은 $3\\overline{PG}^2$뿐이므로 $P=G$에서 최소입니다.`, `최솟값 $=\\overline{GA}^2+\\overline{GB}^2+\\overline{GC}^2=${nt(gsum)}$`, `빠른 확인: 세 변의 제곱의 합을 3으로 나눈 $\\dfrac{${ab}+${bc}+${ca}}{3}=${nt(val)}$로 같습니다.`],
       std: `① ${tex('P(x,y)')}라 하면 ${tex('\\overline{PA}^2+\\overline{PB}^2+\\overline{PC}^2')}은 ${tex('x')}, ${tex('y')}에 대한 이차식 ${tex('3\\left(x-x_G\\right)^2+3\\left(y-y_G\\right)^2+k')}꼴로 정리됩니다.<br/>② ${tex('P=G')}일 때 최소이고 값은 ${tex(`${nt(gsum)}`)}입니다.`,
-      quick: `제곱의 합의 최솟값은 ${tex('P')}가 무게중심 ${tex('G')}일 때이고, 그 값은 ${tex('\\dfrac{AB^2+BC^2+CA^2}{3}')}입니다. ${tex(`\\dfrac{${ab}+${bc}+${ca}}{3}=${nt(val)}`)}.`,
-      hl: '제곱이 없는 합 PA+PB는 일직선(선분) 위에서, 제곱의 합은 무게중심에서 최소입니다.', warn: 'PA+PB+PC(제곱 없음)의 최소는 무게중심이 아닙니다(페르마 점). 이 문제는 제곱의 합이라 무게중심입니다.'
+      quick: `점 $G$를 기준으로 세 제곱을 더하면 일차항은 $\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}=0$으로 사라지고, $3\\overline{PG}^2$만 추가됩니다. 따라서 제곱의 합의 최솟값은 ${tex('P')}가 무게중심 ${tex('G')}일 때이고, 그 값은 ${tex('\\dfrac{AB^2+BC^2+CA^2}{3}')}입니다. ${tex(`\\dfrac{${ab}+${bc}+${ca}}{3}=${nt(val)}`)}.`,
+      hl: '제곱이 없는 두 거리의 합 PA+PB는 선분 AB 위에서 최소입니다. 이 문제의 세 거리의 제곱의 합은 무게중심에서 최소입니다.', warn: '제곱 없는 세 거리의 합 PA+PB+PC는 일반적으로 무게중심에서 최소가 되지 않습니다. 세 거리의 제곱의 합과 구별하세요.'
     };
   }
   defProb('distMinSumSq', { tag: '2023학년도 9월 학평(인천) 29번 유형 · 무게중심과 거리의 제곱의 합', time: '목표 시간: 35초', quickTitle: '10초 컷 · 무게중심에서 최소' }, [
@@ -2234,7 +2261,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* 3-B 점과 직선 사이의 거리 = 수선의 길이 */
   function mkDist(a, b, c, P) {
     const N = a * P[0] + b * P[1] + c, r = Math.hypot(a, b), d = Math.abs(N) / r, t = N / (a * a + b * b), H = [P[0] - a * t, P[1] - b * t];
-    const Q = [H[0] + b * 1.2 / 1, H[1] - a * 1.2 / 1].map((v) => Math.round(v * 10) / 10), tagP = b !== 0 ? onLine(a, b, c, H[0] + 3.5 * (b > 0 ? 1 : -1)) : [-c / a, H[1] + 3];
+    const Q = [H[0] + b * 1.2, H[1] - a * 1.2], tagP = b !== 0 ? onLine(a, b, c, H[0] + 3.5 * (b > 0 ? 1 : -1)) : [-c / a, H[1] + 3];
     const items = [Bd([0, 0]), eqLn(a, b, c, { c: 'ink' }), Tg(tagP, `l: ${lin(a, b, c).replace(/\\ /g, ' ')}`, { c: 'ink' }), Pt(P, NP('P', P)),
       Sg(P, H, { c: 'rose', w: 3.4, at: 1 }), Pt(H, 'H', { c: 'rose', at: 1 }), Rt(H, P, [H[0] + b, H[1] - a], { c: 'amber', at: 1 }),
       Sg(P, Q, { c: 'muted', w: 2.4, dash: true, at: 2 }), Pt(Q, 'Q', { c: 'muted', at: 2 }), Lb(P, H, Number.isInteger(d) ? String(d) : `${Math.abs(N)}/${nt(r)}`, { c: 'rose', at: 3 })];
@@ -2277,9 +2304,9 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { u, v, sgn0, n1, n2 }, val: d, ans: nt(d), tag: '2023학년도 9월 학평(인천) 14번 유형 · 평행한 두 직선 사이의 거리',
       text: `평행한 두 직선 ${tex(`l_1:\\ ${eqT(n1)}`)}, ${tex(`l_2:\\ ${eqT(n2)}`)} 사이의 거리를 구하시오.`,
-      steps: [`두 직선이 $y$축과 만나는 점 $(0,\\ ${nt(n1)})$, $(0,\\ ${nt(n2)})$ 사이의 세로 길이는 $${dn}$입니다.`, `이 세로 선분을 빗변으로 하고, 두 직선에 수직인 선분(거리 $d$)을 한 변으로 하는 직각삼각형이 생깁니다. 직선의 기울기가 $${frT(u, v)}$이므로 삼각형의 세 변의 비는 $${v}:${u}:${nt(r)}$ 꼴입니다.`, `거리 $d=${dn}\\times\\dfrac{${v}}{${nt(r)}}=${nt(d)}$`, `정석 확인: ${eq(n1) ? '두 직선을 일반형으로 고쳐 ' : ''}$\\dfrac{|c_1-c_2|}{\\sqrt{a^2+b^2}}$에 넣어도 같은 값입니다.`],
+      steps: [`두 직선이 $y$축과 만나는 점 $(0,\\ ${nt(n1)})$, $(0,\\ ${nt(n2)})$ 사이의 세로 길이는 $${dn}$입니다.`, `이 세로 선분을 빗변으로 하고, 두 직선에 수직인 선분(거리 $d$)을 한 변으로 하는 직각삼각형이 생깁니다. 기울기의 절댓값이 $${frT(u, v)}$이므로 삼각형의 세 변의 비는 $${v}:${u}:${nt(r)}$ 꼴입니다.`, `거리 $d=${dn}\\times\\dfrac{${v}}{${nt(r)}}=${nt(d)}$`, `정석 확인: ${eq(n1) ? '두 직선을 일반형으로 고쳐 ' : ''}$\\dfrac{|c_1-c_2|}{\\sqrt{a^2+b^2}}$에 넣어도 같은 값입니다.`],
       std: `① ${tex('l_2')}를 일반형 ${tex(sgn0 > 0 ? `${u}x-${v}y+${v * n2 < 0 ? '(' + v * n2 + ')' : v * n2}=0` : `${u}x+${v}y-${v * n2 < 0 ? '(' + v * n2 + ')' : v * n2}=0`)}으로 고칩니다.<br/>② ${tex('l_1')} 위의 점 ${tex(`(0,\\ ${nt(n1)})`)}과 ${tex('l_2')} 사이의 거리: ${tex(`d=\\dfrac{${v}\\cdot|${nt(n1)}-${pr(n2)}|}{${nt(r)}}=${nt(d)}`)}`,
-      quick: `두 직선의 ${tex('y')}절편의 차 ${tex(dn)}가 빗변, 구하는 거리가 한 변인 직각삼각형입니다. 기울기가 ${tex(frT(u, v))}이면 변의 비가 ${tex(`${v}:${u}:${nt(r)}`)}이므로 ${tex(`d=${dn}\\times\\dfrac{${v}}{${nt(r)}}=${nt(d)}`)}입니다.`,
+      quick: `두 직선의 ${tex('y')}절편의 차 ${tex(dn)}가 빗변, 구하는 거리가 한 변인 직각삼각형입니다. 기울기의 절댓값이 ${tex(frT(u, v))}이면 변의 비가 ${tex(`${v}:${u}:${nt(r)}`)}이므로 ${tex(`d=${dn}\\times\\dfrac{${v}}{${nt(r)}}=${nt(d)}`)}입니다.`,
       hl: '평행선 사이의 거리는 y절편의 차에 cosθ(=1/√(1+m²))를 곱한 값입니다. 3:4:5 같은 직각삼각형이 보이면 바로 계산됩니다.', warn: 'y절편의 차를 그대로 거리로 쓰면 안 됩니다. 세로로 잰 길이이므로 수직인 거리보다 깁니다.'
     };
   }
@@ -2317,7 +2344,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { kind, A }, val, ans: kind === 'max' ? nt(r) : frT(-A[0], A[1]), tag: '2022학년도 9월 학평(인천) 14번 유형 · 정점을 지나는 직선과 거리의 최대',
       text: kind === 'max' ? `좌표평면에서 점 ${tex(NT('A', A))}를 지나는 직선 ${tex('l')}과 원점 ${tex('O')} 사이의 거리의 최댓값을 구하시오.` : `좌표평면에서 점 ${tex(NT('A', A))}를 지나는 직선 ${tex('l')}과 원점 ${tex('O')} 사이의 거리가 최대일 때, 직선 ${tex('l')}의 기울기를 구하시오.`,
-      steps: [`점 $A$를 지나는 직선을 여러 개 그리고 원점에서 내린 수선의 발을 잡습니다(그림의 두 직선). 어느 경우든 수선의 길이는 $\\overline{OA}$보다 짧습니다(직각삼각형의 빗변이 $\\overline{OA}$).`, `거리가 $\\overline{OA}$와 같아지는 순간은 수선의 발이 $A$일 때, 곧 $OA\\perp l$일 때입니다.`, kind === 'max' ? `최댓값 $=\\overline{OA}=\\sqrt{${nt(A[0])}^2+${nt(A[1])}^2}=${nt(r)}$` : `$OA$의 기울기가 $${frT(A[1], A[0])}$이므로 $l$의 기울기는 $${frT(-A[0], A[1])}$입니다(그림의 직각삼각형을 90° 돌린 것).`, '정석 확인: 직선의 기울기를 $m$으로 놓고 거리 식 $\\dfrac{|ma-b|}{\\sqrt{m^2+1}}$의 최댓값을 구해도 같은 결과입니다.'],
+      steps: [`점 $A$를 지나는 직선을 여러 개 그리고 원점에서 내린 수선의 발을 잡습니다(그림의 두 직선). 어느 경우든 수선의 길이는 $\\overline{OA}$보다 짧습니다(직각삼각형의 빗변이 $\\overline{OA}$).`, `거리가 $\\overline{OA}$와 같아지는 순간은 수선의 발이 $A$일 때, 곧 $OA\\perp l$일 때입니다.`, kind === 'max' ? `최댓값 $=\\overline{OA}=\\sqrt{${pr(A[0])}^2+${pr(A[1])}^2}=${nt(r)}$` : `$OA$의 기울기가 $${frT(A[1], A[0])}$이므로 $l$의 기울기는 $${frT(-A[0], A[1])}$입니다(그림의 직각삼각형을 90° 돌린 것).`, '정석 확인: 직선의 기울기를 $m$으로 놓고 거리 식 $\\dfrac{|ma-b|}{\\sqrt{m^2+1}}$의 최댓값을 구해도 같은 결과입니다.'],
       std: `① 기울기 ${tex('m')}인 직선 ${tex(`y-${pr(A[1])}=m(x-${pr(A[0])})`)}과 원점 사이의 거리 ${tex(`d=\\dfrac{|${pr(A[1])}-m\\cdot${pr(A[0])}|}{\\sqrt{m^2+1}}`)}<br/>② ${tex('d^2')}의 최댓값을 구하면 ${kind === 'max' ? tex(`d=${nt(r)}`) : tex(`m=${frT(-A[0], A[1])}`)}`,
       quick: `원점과 직선 사이의 거리는 수선의 길이라 항상 ${tex('\\overline{OA}')} 이하입니다(직각삼각형의 빗변이 ${tex('OA')}). 등호는 ${tex('OA\\perp l')}일 때입니다. 서술형에는 「직각삼각형 ${tex('OHA')}에서 ${tex('\\overline{OH}\\le\\overline{OA}')}」라고 적습니다.`,
       hl: '정점을 지나는 직선과 다른 점 사이 거리의 최대는 그 두 점 사이의 거리(수직일 때)입니다. 최솟값은 정점이 그 점과 직선 위에 올 때(0)가 아니라 직선이 그 점을 지날 때입니다.', warn: '최대일 때의 직선은 OA에 수직인 직선입니다. OA와 평행하거나 OA를 지나는 직선이 아닙니다.'
@@ -2364,7 +2391,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { m, n, p, q }, val: nn, ans: nt(nn), tag: '2019학년도 9월 학평(인천) 19번 유형 · 점의 평행이동을 활용한 문제',
       text: `직선 ${tex(eq(m, n))}을 ${tex('x')}축의 방향으로 ${tex(String(p))}만큼, ${tex('y')}축의 방향으로 ${tex(String(q))}만큼 평행이동한 직선의 ${tex('y')}절편을 구하시오.`,
-      steps: [`평행이동해도 직선의 기울기는 그대로 $${nt(m)}$입니다. 직선 위의 점 $R(0,\\ ${nt(n)})$를 따라가 봅니다.`, `$R$는 오른쪽으로 $${nt(p)}$, 위로 $${nt(q)}$ 가서 $R'=${pT(p, n + q)}$이 됩니다. 새 직선은 $R'$을 지나고 기울기가 $${nt(m)}$입니다.`, `$R'$에서 $x=0$까지 ${p > 0 ? '왼쪽' : '오른쪽'}으로 $${nt(Math.abs(p))}$ 가면 $y$가 $${nt(m * -p)}$만큼 변하므로 $y$절편 $=${nt(n + q)}+(${nt(-m * p)})=${nt(nn)}$`, `정석 확인: $y=${nt(m)}(x-${pr(p)})+${nt(n)}+${pr(q)}$에서 $x=0$일 때 $y=${nt(nn)}$입니다.`],
+      steps: [`평행이동해도 직선의 기울기는 그대로 $${nt(m)}$입니다. 직선 위의 점 $R(0,\\ ${nt(n)})$를 따라가 봅니다.`, `$R$는 ${p < 0 ? '왼쪽' : '오른쪽'}으로 $${nt(Math.abs(p))}$, ${q < 0 ? '아래' : '위'}로 $${nt(Math.abs(q))}$ 가서 $R'=${pT(p, n + q)}$이 됩니다. 새 직선은 $R'$을 지나고 기울기가 $${nt(m)}$입니다.`, `$R'$에서 $x=0$까지 ${p > 0 ? '왼쪽' : '오른쪽'}으로 $${nt(Math.abs(p))}$ 가면 $y$가 $${nt(m * -p)}$만큼 변하므로 $y$절편 $=${nt(n + q)}+(${nt(-m * p)})=${nt(nn)}$`, `정석 확인: $y=${nt(m)}(x-${pr(p)})+${nt(n)}+${pr(q)}$에서 $x=0$일 때 $y=${nt(nn)}$입니다.`],
       std: `① 평행이동한 직선: ${tex(`y-${pr(q)}=${nt(m)}(x-${pr(p)})+${nt(n)}`)}<br/>② ${tex('x=0')}을 넣으면 ${tex(`y=${nt(m)}\\cdot(-${pr(p)})+${nt(n)}+${pr(q)}=${nt(nn)}`)}`,
       quick: `직선은 기울기가 그대로이므로 점 하나만 옮기면 됩니다. 서술형에는 「점 ${tex(`(0,\\ ${nt(n)})`)}이 ${tex(`(${nt(p)},\\ ${nt(n + q)})`)}으로 옮겨지고 기울기는 ${tex(nt(m))}이므로」라고 적고, 새 직선의 식을 세웁니다.`,
       hl: '식을 바꾸지 말고 직선 위의 점 하나와 기울기로 생각하면 부호 실수가 없습니다.', warn: '식에서 x 대신 x−p를 넣으면 그래프가 p만큼 오른쪽으로 옮겨집니다(부호가 반대로 보입니다).'
@@ -2428,10 +2455,11 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     return {
       fig: { items }, par: { kind, A, extra }, val: B[0] + B[1], ans: nt(B[0] + B[1]), tag: '2020학년도 9월 학평(인천) 13번 유형 · 대칭이동을 활용한 문제', text, steps, std, quick,
-      hl: '대칭점은 「중점이 대칭의 중심(축) 위에 있고 선분이 축에 수직」인 점입니다. 기울기 ±1인 직선은 가로·세로 같은 칸만큼 가면 됩니다.', warn: '직선에 대한 대칭에서는 수선의 발을 기준으로 같은 만큼 반대쪽으로 갑니다. 한 방향으로만 가고 멈추지 마세요.'
+      hl: kind === 'pt' ? '점 C에 대한 대칭은 C를 중심으로 180° 회전한 것입니다. C가 AB의 중점이라는 한 가지 관계로 B를 구합니다.' : '직선에 대한 대칭은 AB의 중점이 대칭축 위에 있고 AB가 축에 수직입니다. 기울기 ±1인 축에서는 가로·세로 같은 칸만큼 갑니다.',
+      warn: kind === 'pt' ? '점에 대한 대칭에는 대칭축이 없습니다. 중심 C까지 간 만큼 같은 방향으로 더 가야 B입니다.' : '직선에 대한 대칭에서는 수선의 발을 기준으로 같은 만큼 반대쪽으로 갑니다. 한 방향으로만 가고 멈추지 마세요.'
     };
   }
-  defProb('symPointAndLine', { tag: '2020학년도 9월 학평(인천) 13번 유형 · 대칭이동을 활용한 문제', time: '목표 시간: 30초', quickTitle: '10초 컷 · 수선의 발 건너편' }, [
+  defProb('symPointAndLine', { tag: '2020학년도 9월 학평(인천) 13번 유형 · 대칭이동을 활용한 문제', time: '목표 시간: 30초', quickTitle: '핵심 풀이 · 중점 또는 수선의 발' }, [
     () => mkSymPL('l1', [5, 2], 1), () => mkSymPL('pt', [1, 5], [3, 2]), () => mkSymPL('l2', [1, 2], 5), () => mkSymPL('l1', [4, -1], -2), () => mkSymPL('pt', [-2, 3], [1, -1]), () => mkSymPL('l2', [-2, 1], 3)
   ]);
 
@@ -2443,9 +2471,9 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { m, n, p }, val: q, ans: nt(q), tag: '2019학년도 11월 학평(경기) 12번 유형 · 평행이동한 직선이 일치하는 조건',
       text: `직선 ${tex(`l:\\ ${eq(m, n)}`)}을 ${tex('x')}축의 방향으로 ${tex(String(p))}만큼 평행이동한 직선 ${tex("l'")}은 직선 ${tex('l')}을 ${tex('y')}축의 방향으로 ${tex('q')}만큼 평행이동한 직선과 일치한다. ${tex('q')}의 값을 구하시오.`,
-      steps: [`$l$ 위의 점 $R(0,\\ ${nt(n)})$를 $x$축 방향으로 $${nt(p)}$ 옮겨 새 직선 $l'$이 지나는 점을 잡습니다(그림의 파란 화살표).`, `$l'$은 $l$과 기울기가 $${nt(m)}$로 같은 직선입니다. $l'$이 $y$축과 만나는 점 $S$는 $R$에서 위로 $q$만큼 올라간 곳입니다.`, `기울기가 $${nt(m)}$이므로 $x$축으로 $${nt(p)}$ 간 것은 직선을 따라 $y$가 $${nt(m * p)}$ 변한 만큼 ${m * p > 0 ? '아래' : '위'}로 옮긴 것과 같습니다. $q=-${pr(m)}\\cdot${pr(p)}=${nt(q)}$`, `정석 확인: $l'$은 $y=${nt(m)}(x-${pr(p)})+${nt(n)}$이고, $y$축 방향으로 $q$ 옮긴 직선 $y=${nt(m)}x+${nt(n)}+q$와 같으려면 $q=-${nt(m)}\\cdot${pr(p)}$입니다.`],
+      steps: [`$l$ 위의 점 $R(0,\\ ${nt(n)})$를 $x$축 방향으로 $${nt(p)}$ 옮겨 새 직선 $l'$이 지나는 점을 잡습니다(그림의 파란 화살표).`, `$l'$은 $l$과 기울기가 $${nt(m)}$로 같은 직선입니다. $l'$이 $y$축과 만나는 점 $S$는 $R$에서 위로 $q$만큼 올라간 곳입니다.`, `기울기가 $${nt(m)}$이므로 $x$축으로 $${nt(p)}$ 간 것은 직선을 따라 $y$가 $${nt(m * p)}$ 변한 만큼 ${m * p > 0 ? '아래' : '위'}로 옮긴 것과 같습니다. $q=-${pr(m)}\\cdot${pr(p)}=${nt(q)}$`, `정석 확인: $l'$은 $y=${nt(m)}(x-${pr(p)})+${nt(n)}$이고, $y$축 방향으로 $q$ 옮긴 직선 $y=${nt(m)}x+${nt(n)}+q$와 같으려면 $q=-${pr(m)}\\cdot${pr(p)}$입니다.`],
       std: `① ${tex("l'")}: ${tex(`y=${nt(m)}(x-${pr(p)})+${nt(n)}=${nt(m)}x+${nt(n - m * p)}`)}<br/>② ${tex('l')}을 ${tex('y')}축으로 ${tex('q')}만큼 옮긴 직선: ${tex(`y=${nt(m)}x+${nt(n)}+q`)}<br/>③ 같으므로 ${tex(`q=${nt(-m * p)}`)}`,
-      quick: `기울기가 ${tex(nt(m))}인 직선을 ${tex('x')}축 방향으로 ${tex(String(p))} 옮기는 것과 ${tex('y')}축 방향으로 ${tex(`-${nt(m)}\\cdot${pr(p)}=${nt(q)}`)} 옮기는 것은 같은 직선입니다(직선을 따라 미끄러지는 것). ${tex('q=-mp')}.`,
+      quick: `기울기가 ${tex(nt(m))}인 직선을 ${tex('x')}축 방향으로 ${tex(String(p))} 옮기는 것과 ${tex('y')}축 방향으로 ${tex(`-${pr(m)}\\cdot${pr(p)}=${nt(q)}`)} 옮기는 것은 같은 직선입니다(직선을 따라 미끄러지는 것). ${tex('q=-mp')}.`,
       hl: '직선은 자기 자신을 따라 미끄러져도 같은 직선입니다. 가로로 p 옮긴 것과 세로로 −mp 옮긴 것이 같은 직선이 되는 이유입니다.', warn: '부호를 조심하세요. x축으로 +p 옮기면 y축으로는 −mp 옮긴 것과 같습니다(m이 양수이면 아래로).'
     };
   }
@@ -2470,10 +2498,10 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { a, b }, val, ans: radAns(n2), tag: '2022학년도 9월 학평(인천) 17번 유형 · 대칭이동으로 펴서 구하는 최솟값',
       text: `좌표평면 위의 점 ${tex(NT('A', A))}가 있다. ${tex('x')}축 위의 점 ${tex('P')}와 직선 ${tex('y=x')} 위의 점 ${tex('Q')}에 대하여 삼각형 ${tex('APQ')}의 둘레의 길이의 최솟값을 구하시오.`,
-      steps: [`둘레는 $\\overline{AP}+\\overline{PQ}+\\overline{QA}$입니다. $A$를 $x$축에 대하여 대칭이동한 점을 $A'${pT(a, -b)}$, 직선 $y=x$에 대하여 대칭이동한 점을 $A''${pT(b, a)}$라 하면 $\\overline{AP}=\\overline{A'P}$, $\\overline{AQ}=\\overline{A''Q}$입니다.`, `둘레 $=\\overline{A'P}+\\overline{PQ}+\\overline{QA''}$ — 꺾인 선이 되므로, $P$, $Q$가 선분 $A'A''$ 위에 놓일 때 가장 짧습니다.`, `최솟값 $=\\overline{A'A''}=\\sqrt{(${nt(a)}-${pr(b)})^2+(${nt(-b)}-${nt(a)})^2}=\\sqrt{${n2}}=${radT(n2)}$`, `정석 확인: $P(p,0)$, $Q(q,q)$로 놓고 거리의 합을 직접 최소화하는 것은 계산이 복잡하며, 대칭이동으로 펴면 위 값이 바로 나옵니다.`],
+      steps: [`둘레는 $\\overline{AP}+\\overline{PQ}+\\overline{QA}$입니다. $A$를 $x$축에 대하여 대칭이동한 점을 $A'${pT(a, -b)}$, 직선 $y=x$에 대하여 대칭이동한 점을 $A''${pT(b, a)}$라 하면 $\\overline{AP}=\\overline{A'P}$, $\\overline{AQ}=\\overline{A''Q}$입니다.`, `둘레 $=\\overline{A'P}+\\overline{PQ}+\\overline{QA''}$입니다. 두 축과의 교점이 $A'\\to P\\to Q\\to A''$ 순서로 놓이므로 삼각형의 부등식에서 등호가 성립하고, 곧은 선분의 길이가 최솟값입니다.`, `최솟값 $=\\overline{A'A''}=\\sqrt{(${nt(a)}-${pr(b)})^2+(${nt(-b)}-${nt(a)})^2}=\\sqrt{${n2}}=${radT(n2)}$`, `정석 확인: $P(p,0)$, $Q(q,q)$로 놓고 거리의 합을 직접 최소화하는 것은 계산이 복잡하며, 대칭이동으로 펴면 위 값이 바로 나옵니다.`],
       std: `① ${tex(`A'${pT(a, -b)},\\ A''${pT(b, a)}`)}<br/>② ${tex(`\\overline{AP}+\\overline{PQ}+\\overline{QA}=\\overline{A'P}+\\overline{PQ}+\\overline{QA''}\\ge\\overline{A'A''}`)}<br/>③ ${tex(`\\overline{A'A''}=\\sqrt{(${nt(a)}-${pr(b)})^2+(${nt(-b)}-${nt(a)})^2}=${radT(n2)}`)}`,
       quick: `꺾인 경로는 대칭이동으로 펴 줍니다. 서술형에는 「점 ${tex('A')}를 ${tex('x')}축, 직선 ${tex('y=x')}에 대하여 대칭이동한 점을 각각 ${tex("A',\\ A''")}이라 하면 ${tex("\\overline{AP}=\\overline{A'P},\\ \\overline{AQ}=\\overline{A''Q}")}이므로 둘레는 ${tex("\\overline{A'P}+\\overline{PQ}+\\overline{QA''}\\ge\\overline{A'A''}")}」이라고 씁니다.`,
-      hl: '점이 움직이는 두 직선(축)이 있으면 점을 각 직선에 대칭이동시켜 두 점을 직선으로 이으면 됩니다. 이 직선과 두 축이 만나는 점이 P, Q입니다.', warn: '두 대칭점을 이은 선분이 실제로 두 직선과 만나는지(A가 두 직선 사이 영역에 있는지) 확인하세요. 이 문제는 A가 두 직선 사이에 있습니다.'
+      hl: '점이 움직이는 두 직선(축)이 있으면 점을 각 직선에 대칭이동시켜 두 점을 직선으로 이으면 됩니다. 이 직선과 두 축이 만나는 점이 P, Q입니다.', warn: '두 대칭점을 이은 선분이 A′→P→Q→A″ 순서로 두 축과 만나는지 확인하세요. 이 문제의 A는 두 축 사이에 있어 이 순서가 성립합니다.'
     };
   }
   defProb('reflectTriPerim', { tag: '2022학년도 9월 학평(인천) 17번 유형 · 대칭이동으로 펴서 구하는 최솟값', time: '목표 시간: 40초', quickTitle: '10초 컷 · 두 번 대칭해서 펴기' }, [
@@ -2483,12 +2511,13 @@ window.addEventListener('DOMContentLoaded', function () {
   /* 5-B 거울 한 번 */
   function mkSingle(axis, A, B) {
     const R = axis === 'x' ? (p) => [p[0], -p[1]] : (p) => [-p[0], p[1]], B1 = R(B), P = crossAxis(A, B1, axis), len = dist2(A, B1), tex0 = axis === 'x' ? 'x' : 'y';
+    const pExact = axis === 'x' ? `(${frT(A[0] * B1[1] - B1[0] * A[1], B1[1] - A[1])},0)` : `(0,${frT(A[1] * B1[0] - B1[1] * A[0], B1[0] - A[0])})`;
     const items = [Bd([0, 0]), Pt(A, NP('A', A)), Pt(B, NP('B', B)), Pt(B1, "B′", { c: 'violet', at: 1 }), Sg(B, B1, { c: 'violet', w: 2, dash: true, at: 1 }), Sg(A, B1, { c: 'rose', w: 3.4, at: 2 }), Pt(P, 'P', { c: 'rose', at: 2 }),
       Sg(A, P, { c: 'sky', w: 3, at: 3 }), Sg(P, B, { c: 'sky', w: 3, at: 3 }), Lb(A, B1, nt(len), { c: 'rose', at: 3 })];
     return {
       fig: { items }, par: { axis, A, B }, val: len, ans: nt(len), tag: '2020학년도 11월 학평(경기) 14번 유형 · 대칭이동으로 펴서 구하는 최솟값',
       text: `좌표평면 위의 두 점 ${tex(NT('A', A))}, ${tex(NT('B', B))}와 ${tex(tex0)}축 위의 점 ${tex('P')}에 대하여 ${tex('\\overline{AP}+\\overline{PB}')}의 최솟값을 구하시오.`,
-      steps: [`두 점 $A$, $B$가 ${tex0}축의 같은 쪽에 있습니다. $B$를 ${tex0}축에 대하여 대칭이동한 점 $B'${pT(B1[0], B1[1])}$을 잡으면 $\\overline{PB}=\\overline{PB'}$입니다.`, `$\\overline{AP}+\\overline{PB}=\\overline{AP}+\\overline{PB'}\\ge\\overline{AB'}$ — $P$가 선분 $AB'$ 위에 있을 때 최소입니다(그림의 빨간 선, $P=${pT(P[0], P[1])}$).`, `최솟값 $=\\overline{AB'}=\\sqrt{(${nt(A[0] - B1[0])})^2+(${nt(A[1] - B1[1])})^2}=${nt(len)}$`, `정석 확인: $P$의 좌표를 변수로 놓고 거리의 합을 미분이나 제곱으로 최소화해도 $${nt(len)}$입니다(훨씬 복잡합니다).`],
+      steps: [`두 점 $A$, $B$가 ${tex0}축의 같은 쪽에 있습니다. $B$를 ${tex0}축에 대하여 대칭이동한 점 $B'${pT(B1[0], B1[1])}$을 잡으면 $\\overline{PB}=\\overline{PB'}$입니다.`, `$\\overline{AP}+\\overline{PB}=\\overline{AP}+\\overline{PB'}\\ge\\overline{AB'}$ — $P$가 선분 $AB'$ 위에 있을 때 최소입니다(그림의 빨간 선, $P=${pExact}$).`, `최솟값 $=\\overline{AB'}=\\sqrt{(${nt(A[0] - B1[0])})^2+(${nt(A[1] - B1[1])})^2}=${nt(len)}$`, `정석 확인: $P$의 좌표를 변수로 놓고 거리의 합을 미분이나 제곱으로 최소화해도 $${nt(len)}$입니다(훨씬 복잡합니다).`],
       std: `① ${tex(`B'${pT(B1[0], B1[1])}`)}이므로 ${tex("\\overline{AP}+\\overline{PB}=\\overline{AP}+\\overline{PB'}\\ge\\overline{AB'}")}<br/>② ${tex(`\\overline{AB'}=\\sqrt{(${nt(A[0] - B1[0])})^2+(${nt(A[1] - B1[1])})^2}=${nt(len)}`)}`,
       quick: `같은 쪽에 있는 두 점은 한쪽을 대칭이동해 반대쪽으로 보내고 직선으로 잇습니다. 서술형에는 「점 ${tex('B')}를 ${tex(tex0)}축에 대하여 대칭이동한 점을 ${tex("B'")}이라 하면 ${tex("\\overline{PB}=\\overline{PB'}")}이므로 ${tex("\\overline{AP}+\\overline{PB}\\ge\\overline{AB'}")}」이라고 적습니다.`,
       hl: '합의 최솟값은 두 점이 직선(거울)의 반대쪽에 있게 만든 뒤 직선으로 이으면 됩니다. 이미 반대쪽에 있으면 그대로 잇습니다.', warn: '두 점이 이미 거울의 반대쪽에 있으면 대칭이동하지 않고 바로 이어야 합니다. 같은 쪽일 때만 한 점을 대칭시킵니다.'
@@ -2506,10 +2535,10 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { A, B }, val: len, ans: nt(len), tag: '2024학년도 10월 학평(경기) 21번 유형 · 두 번 대칭이동해 펴기',
       text: `좌표평면 위의 두 점 ${tex(NT('A', A))}, ${tex(NT('B', B))}와 ${tex('x')}축 위의 점 ${tex('P')}, ${tex('y')}축 위의 점 ${tex('Q')}에 대하여 ${tex('\\overline{AP}+\\overline{PQ}+\\overline{QB}')}의 최솟값을 구하시오.`,
-      steps: [`$A$를 $x$축에 대하여 대칭이동한 점 $A'${pT(A1[0], A1[1])}$, $B$를 $y$축에 대하여 대칭이동한 점 $B'${pT(B1[0], B1[1])}$을 잡습니다. $\\overline{AP}=\\overline{A'P}$, $\\overline{QB}=\\overline{QB'}$입니다.`, `$\\overline{AP}+\\overline{PQ}+\\overline{QB}=\\overline{A'P}+\\overline{PQ}+\\overline{QB'}\\ge\\overline{A'B'}$ — $P$, $Q$가 선분 $A'B'$ 위에 있을 때 최소입니다.`, `최솟값 $=\\overline{A'B'}=\\sqrt{(${nt(A1[0] - B1[0])})^2+(${nt(A1[1] - B1[1])})^2}=${nt(len)}$`, `정석 확인: $P$, $Q$를 문자로 놓고 세 거리의 합을 최소화하는 것은 계산이 매우 복잡합니다. 대칭이동으로 펴는 것이 정석이자 최선입니다.`],
+      steps: [`$A$를 $x$축에 대하여 대칭이동한 점 $A'${pT(A1[0], A1[1])}$, $B$를 $y$축에 대하여 대칭이동한 점 $B'${pT(B1[0], B1[1])}$을 잡습니다. $\\overline{AP}=\\overline{A'P}$, $\\overline{QB}=\\overline{QB'}$입니다.`, `$\\overline{AP}+\\overline{PQ}+\\overline{QB}=\\overline{A'P}+\\overline{PQ}+\\overline{QB'}\\ge\\overline{A'B'}$ — 이 문제에서는 교점이 $A'\\to P\\to Q\\to B'$ 순서로 놓이므로 등호가 성립하고 최소입니다.`, `최솟값 $=\\overline{A'B'}=\\sqrt{(${nt(A1[0] - B1[0])})^2+(${nt(A1[1] - B1[1])})^2}=${nt(len)}$`, `정석 확인: $P$, $Q$를 문자로 놓고 세 거리의 합을 최소화하는 것은 계산이 매우 복잡합니다. 대칭이동으로 펴는 것이 정석이자 최선입니다.`],
       std: `① ${tex(`A'${pT(A1[0], A1[1])},\\ B'${pT(B1[0], B1[1])}`)}<br/>② ${tex("\\overline{AP}+\\overline{PQ}+\\overline{QB}=\\overline{A'P}+\\overline{PQ}+\\overline{QB'}\\ge\\overline{A'B'}")}<br/>③ ${tex(`\\overline{A'B'}=\\sqrt{(${nt(A1[0] - B1[0])})^2+(${nt(A1[1] - B1[1])})^2}=${nt(len)}`)}`,
       quick: `거울이 두 개이면 두 점을 각 거울에 대칭이동하고(${tex('A')}는 ${tex('x')}축, ${tex('B')}는 ${tex('y')}축) 그 두 점을 직선으로 잇습니다. 서술형에는 「${tex("\\overline{AP}=\\overline{A'P},\\ \\overline{QB}=\\overline{QB'}")}이므로」라고 쓰고 ${tex("\\overline{A'B'}")}를 계산합니다.`,
-      hl: '거울이 두 개면 점도 두 번 대칭시키는 것이 아니라, 처음 점은 첫 거울에, 끝 점은 둘째 거울에 대칭시킵니다. 중간의 PQ는 그대로 둡니다.', warn: 'A를 x축, B를 y축에 대칭이동하는 짝을 바꾸면 안 됩니다(A에 가까운 거울 = P가 놓인 축).'
+      hl: '거울이 두 개면 점도 두 번 대칭시키는 것이 아니라, 처음 점은 첫 거울에, 끝 점은 둘째 거울에 대칭시킵니다. 중간의 PQ는 그대로 둡니다.', warn: 'A를 x축, B를 y축에 대칭시킨 뒤 교점의 순서 A′→P→Q→B′도 확인해야 합니다. 두 교점이 선분 위에 있다는 사실만으로는 경로의 순서까지 보장되지 않습니다.'
     };
   }
   defProb('reflectDoubleAxes', { tag: '2024학년도 10월 학평(경기) 21번 유형 · 두 번 대칭이동해 펴기', time: '목표 시간: 40초', quickTitle: '10초 컷 · 양 끝을 각각 대칭' }, [
@@ -2520,15 +2549,15 @@ window.addEventListener('DOMContentLoaded', function () {
   function mkBil(w, h, A, B) {
     const B1 = [2 * w - B[0], B[1]], B2 = [2 * w - B[0], 2 * h - B[1]], len = dist2(A, B2), th = (h - A[1]) / (B2[1] - A[1]), X = [A[0] + th * (B2[0] - A[0]), h], tw = (w - A[0]) / (B2[0] - A[0]), Y2 = [w, A[1] + tw * (B2[1] - A[1])], Y = [w, 2 * h - Y2[1]];
     const items = [Pl([[0, 0], [w, 0], [w, h], [0, h]], { c: 'ink', fill: 'sky', fa: 0.12 }), Pt(A, NP('A', A)), Pt(B, NP('B', B)),
-      Pl([[w, 0], [2 * w, 0], [2 * w, h], [w, h]], { c: 'violet', dash: true, w: 1.8, at: 1 }), Pl([[w, h], [2 * w, h], [2 * w, 2 * h], [w, 2 * h]], { c: 'violet', dash: true, w: 1.8, at: 1 }), Pt(B1, "B₁", { c: 'violet', hollow: true, at: 1 }), Pt(B2, "B₂", { c: 'violet', at: 1 }),
-      Sg(A, B2, { c: 'rose', w: 3.4, at: 2 }), Lb(A, B2, nt(len), { c: 'rose', at: 2 }), Pt(X, 'X', { c: 'rose', at: 2 }), Pt(Y, 'Y', { c: 'rose', at: 3 }), Sg(A, X, { c: 'sky', w: 3.2, at: 3 }), Sg(X, Y, { c: 'sky', w: 3.2, at: 3 }), Sg(Y, B, { c: 'sky', w: 3.2, at: 3 })];
+      Pl([[0, h], [w, h], [w, 2 * h], [0, 2 * h]], { c: 'violet', dash: true, w: 1.8, at: 1 }), Pl([[w, h], [2 * w, h], [2 * w, 2 * h], [w, 2 * h]], { c: 'violet', dash: true, w: 1.8, at: 1 }), Pt(B1, 'B₁ (역순 대칭)', { c: 'violet', hollow: true, at: 1 }), Pt(B2, 'B₂', { c: 'violet', at: 1 }),
+      Sg(A, B2, { c: 'rose', w: 3.4, at: 2 }), Lb(A, B2, nt(len), { c: 'rose', at: 3 }), Pt(X, 'X', { c: 'rose', at: 2 }), Pt(Y2, 'Y′', { c: 'violet', at: 2 }), Sg(Y2, Y, { c: 'violet', dash: true, w: 1.5, at: 3 }), Pt(Y, 'Y', { c: 'rose', at: 3 }), Sg(A, X, { c: 'sky', w: 3.2, at: 3 }), Sg(X, Y, { c: 'sky', w: 3.2, at: 3 }), Sg(Y, B, { c: 'sky', w: 3.2, at: 3 })];
     return {
       fig: { items }, par: { w, h, A, B }, val: len, ans: nt(len), tag: '2022학년도 9월 학평(인천) 17번 유형 · 반사 경로를 대칭으로 펴기',
       text: `좌표평면에서 ${tex(`O(0,\\ 0),\\ (${w},\\ 0),\\ (${w},\\ ${h}),\\ (0,\\ ${h})`)}을 꼭짓점으로 하는 직사각형 모양의 당구대가 있다. 점 ${tex(NT('A', A))}에 있는 공을 쳐서 위쪽 벽, 오른쪽 벽을 차례로 한 번씩 맞힌 뒤 점 ${tex(NT('B', B))}에 도달하게 할 때, 공이 움직인 거리를 구하시오. (벽에서 입사각과 반사각은 같다.)`,
-      steps: [`벽에 반사되는 경로는 당구대를 벽에 대칭이동해 이어 붙이면 곧은 선이 됩니다. $B$를 오른쪽 벽($x=${w}$)에 대칭이동하면 $B_1${pT(B1[0], B1[1])}$, 다시 위쪽 벽($y=${h}$)에 대칭이동하면 $B_2${pT(B2[0], B2[1])}$입니다(그림의 점선 당구대).`, `$A$에서 $B_2$까지 곧게 이은 선분이 공이 간 거리와 같습니다. 이 선분이 위쪽 벽 $X$, 오른쪽 벽 $Y$를 차례로 지납니다.`, `$\\overline{AB_2}=\\sqrt{(${nt(B2[0] - A[0])})^2+(${nt(B2[1] - A[1])})^2}=${nt(len)}$`, `정석 확인: 벽에 닿는 점 $X$, $Y$를 문자로 놓고 반사 조건(각이 같음)으로 식을 세우는 것은 복잡합니다. 펴면 한 번의 거리 계산으로 끝납니다.`],
+      steps: [`벽에 반사되는 경로는 당구대를 벽에 대칭이동해 이어 붙이면 곧은 선이 됩니다. $B$를 오른쪽 벽($x=${w}$)에 대칭이동하면 $B_1${pT(B1[0], B1[1])}$, 다시 위쪽 벽($y=${h}$)에 대칭이동하면 $B_2${pT(B2[0], B2[1])}$입니다. 점선 당구대는 공이 가는 순서(위쪽 → 오른쪽)로 펼친 것입니다.`, `$A$에서 $B_2$까지 곧게 이은 선분이 공이 간 거리와 같습니다. 이 선분은 위쪽 경계의 $X$와 펼친 오른쪽 경계의 $Y'$를 차례로 지납니다. 접으면 $Y'$가 실제 오른쪽 벽의 $Y$로 옮겨집니다.`, `$\\overline{AB_2}=\\sqrt{(${nt(B2[0] - A[0])})^2+(${nt(B2[1] - A[1])})^2}=${nt(len)}$`, `정석 확인: 벽에 닿는 점 $X$, $Y$를 문자로 놓고 반사 조건(각이 같음)으로 식을 세우는 것은 복잡합니다. 펴면 한 번의 거리 계산으로 끝납니다.`],
       std: `① ${tex(`B_1${pT(B1[0], B1[1])},\\ B_2${pT(B2[0], B2[1])}`)}<br/>② 경로의 길이는 ${tex('\\overline{AB_2}')}와 같으므로 ${tex(`\\sqrt{(${nt(B2[0] - A[0])})^2+(${nt(B2[1] - A[1])})^2}=${nt(len)}`)}`,
       quick: `당구대를 벽에 대칭이동하여 이어 붙이면 반사 경로가 직선이 됩니다. 마지막에 맞는 벽부터(오른쪽 → 위쪽) 목표점 ${tex('B')}를 대칭이동합니다. 서술형에는 「벽에 대한 대칭이동으로 반사 경로를 직선으로 편다」고 쓰고 ${tex('\\overline{AB_2}')}를 구합니다.`,
-      hl: '벽 둘을 맞히는 경로는 목표점을 두 번 대칭시킵니다. 순서는 나중에 맞는 벽부터입니다.', warn: '대칭시키는 순서가 바뀌면 점이 달라집니다. 공이 맞히는 순서의 반대 순서로 B를 대칭이동하세요.'
+      hl: '벽 둘을 맞히는 경로는 목표점을 두 번 대칭시킵니다. 순서는 나중에 맞는 벽부터입니다.', warn: '이 두 벽은 수직이므로 두 대칭의 최종점은 순서를 바꾸어도 같습니다. 최종점만으로 반사 순서를 판정하지 말고 직선이 두 벽을 위쪽 → 오른쪽 순서로 지나는지 확인하세요.'
     };
   }
   defProb('billiardMirrorRoom', { tag: '2022학년도 9월 학평(인천) 17번 유형 · 반사 경로를 대칭으로 펴기', time: '목표 시간: 40초', quickTitle: '10초 컷 · 당구대를 이어 붙이기' }, [
@@ -2543,12 +2572,12 @@ window.addEventListener('DOMContentLoaded', function () {
     if (flip) items.push(Pt(Bp, "B′", { c: 'violet', at: 1 }), Sg(B, Bp, { c: 'violet', w: 2, dash: true, at: 1 }));
     items.push(Ln(A, (Bp[1] - A[1]) / (Bp[0] - A[0]), { c: 'rose', w: 2.4, at: 2 }), Pt(P, 'P', { c: 'rose', at: 2 }), Sg(A, Bp, { c: 'rose', w: 3.6, at: 3 }), Lb(A, Bp, nt(len), { c: 'rose', at: 3 }));
     const nm0 = kind === 'diff' ? '\\left|\\overline{PA}-\\overline{PB}\\right|' : '\\overline{PA}+\\overline{PB}';
-    const why = kind === 'diff' ? (same ? '두 점이 $x$축의 같은 쪽에 있을 때 $|\\overline{PA}-\\overline{PB}|\\le\\overline{AB}$ (삼각형의 두 변의 차는 나머지 변 이하), 등호는 $P$가 직선 $AB$ 위에 있을 때입니다.' : "두 점이 $x$축의 반대쪽이므로 $B$를 대칭이동한 $B'$을 잡으면 $\\overline{PB}=\\overline{PB'}$이고 $|\\overline{PA}-\\overline{PB'}|\\le\\overline{AB'}$입니다.") : (same ? "두 점이 $x$축의 같은 쪽이므로 $B$를 대칭이동한 $B'$을 잡으면 $\\overline{PB}=\\overline{PB'}$이고 $\\overline{PA}+\\overline{PB'}\\ge\\overline{AB'}$입니다." : '두 점이 $x$축의 반대쪽이므로 $\\overline{PA}+\\overline{PB}\\ge\\overline{AB}$, 등호는 $P$가 선분 $AB$ 위에 있을 때입니다.');
+    const why = kind === 'diff' ? (same ? '두 점이 $x$축의 같은 쪽에 있을 때 $|\\overline{PA}-\\overline{PB}|\\le\\overline{AB}$ (삼각형의 두 변의 차는 나머지 변 이하), 등호는 $P$가 선분 $AB$의 바깥쪽 연장선 위에 있을 때입니다.' : "두 점이 $x$축의 반대쪽이므로 $B$를 대칭이동한 $B'$을 잡으면 $\\overline{PB}=\\overline{PB'}$이고 $|\\overline{PA}-\\overline{PB'}|\\le\\overline{AB'}$입니다. 등호는 $P$가 선분 $AB'$의 바깥쪽 연장선 위에 있을 때입니다.") : (same ? "두 점이 $x$축의 같은 쪽이므로 $B$를 대칭이동한 $B'$을 잡으면 $\\overline{PB}=\\overline{PB'}$이고 $\\overline{PA}+\\overline{PB'}\\ge\\overline{AB'}$입니다." : '두 점이 $x$축의 반대쪽이므로 $\\overline{PA}+\\overline{PB}\\ge\\overline{AB}$, 등호는 $P$가 선분 $AB$ 위에 있을 때입니다.');
     return {
       fig: { items }, par: { kind, same, A, B }, val: len, ans: nt(len), tag: '2022학년도 9월 학평(인천) 17번 유형 · 합의 최솟값과 차의 최댓값',
       text: `좌표평면 위의 두 점 ${tex(NT('A', A))}, ${tex(NT('B', B))}와 ${tex('x')}축 위의 점 ${tex('P')}에 대하여 ${tex(nm0)}의 ${kind === 'diff' ? '최댓값' : '최솟값'}을 구하시오.`,
-      steps: [`먼저 두 점이 $x$축의 ${same ? '같은 쪽' : '반대쪽'}에 있는지 확인합니다. ${kind === 'diff' ? '차의 최댓값은 두 점을 이은 직선 위에서, 합의 최솟값은 두 점이 반대쪽일 때 선분 위에서 생깁니다.' : '합의 최솟값은 두 점이 반대쪽에 있게 만든 뒤 직선으로 이을 때 생깁니다.'}`, flip ? `$B$를 $x$축에 대칭이동한 $B'${pT(Bp[0], Bp[1])}$을 잡습니다. ${why}` : why, `직선 ${flip ? "$AB'$" : '$AB$'}가 $x$축과 만나는 점이 $P=${pT(Math.round(P[0] * 100) / 100, 0)}$이고, 구하는 값은 $${flip ? "\\overline{AB'}" : '\\overline{AB}'}=${nt(len)}$입니다.`, `정석 확인: $P(t,0)$으로 놓고 식을 세워 최소·최대를 구하는 것은 복잡합니다. 대칭이동과 삼각형의 부등식으로 한 번에 구합니다.`],
-      std: `① ${why.replace(/\$/g, '')}<br/>② ${tex(`${flip ? "\\overline{AB'}" : '\\overline{AB}'}=${nt(len)}`)}`,
+      steps: [`먼저 두 점이 $x$축의 ${same ? '같은 쪽' : '반대쪽'}에 있는지 확인합니다. ${kind === 'diff' ? '차의 최댓값은 두 점을 이은 직선 위에서, 합의 최솟값은 두 점이 반대쪽일 때 선분 위에서 생깁니다.' : '합의 최솟값은 두 점이 반대쪽에 있게 만든 뒤 직선으로 이을 때 생깁니다.'}`, flip ? `$B$를 $x$축에 대칭이동한 $B'${pT(Bp[0], Bp[1])}$을 잡습니다. ${why}` : why, `직선 ${flip ? "$AB'$" : '$AB$'}가 $x$축과 만나는 점이 $P=\\left(${frT(A[0] * Bp[1] - Bp[0] * A[1], Bp[1] - A[1])},0\\right)$이고, 구하는 값은 $${flip ? "\\overline{AB'}" : '\\overline{AB}'}=${nt(len)}$입니다.`, `정석 확인: $P(t,0)$으로 놓고 식을 세워 최소·최대를 구하는 것은 복잡합니다. 대칭이동과 삼각형의 부등식으로 한 번에 구합니다.`],
+      std: `① ${APLab.renderMath(why)}<br/>② ${tex(`${flip ? "\\overline{AB'}" : '\\overline{AB}'}=${nt(len)}`)}`,
       quick: `합 ${tex('PA+PB')}의 최솟값과 차 ${tex('|PA-PB|')}의 최댓값은 모두 「두 점을 직선으로 잇기」입니다. 합은 두 점이 반대쪽일 때, 차는 같은 쪽일 때 그대로 잇고, 아니면 한 점을 대칭이동합니다. 서술형에는 「삼각형의 두 변의 길이의 합(차)과 나머지 한 변의 관계」를 이용했다고 씁니다.`,
       hl: '합은 반대쪽, 차는 같은 쪽이 직선으로 바로 이어지는 경우입니다. 반대로 놓였으면 한 점을 대칭이동해 바꿔 줍니다.', warn: '차의 최댓값에서 직선 AB가 x축과 평행하면 최댓값이 존재하지 않습니다(이 문제는 평행하지 않습니다).'
     };
@@ -2566,7 +2595,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       fig: { items }, par: { xa, xb, m, n }, val, ans: nt(val), tag: '아폴로니오스의 원 · 학평 직접 기출 없음(이전 교육과정 심화 유형)',
       text: `좌표평면 위의 두 점 ${tex(NT('A', A))}, ${tex(NT('B', B))}에 대하여 ${tex(`\\overline{PA}:\\overline{PB}=${m}:${n}`)}를 만족시키는 점 ${tex('P')}가 그리는 도형의 넓이가 ${tex('k\\pi')}일 때, ${tex('k')}의 값을 구하시오.`,
-      steps: [`선분 $AB$를 $${m}:${n}$으로 내분하는 점 $P_1${pT(P1[0], 0)}$과 외분하는 점 $P_2${pT(P2[0], 0)}$도 조건을 만족합니다(그림의 두 점).`, `$P$가 그리는 도형은 $P_1P_2$를 지름으로 하는 원(아폴로니오스의 원)입니다. 지름 $\\overline{P_1P_2}=${nt(2 * r)}$, 중심 $C(${nt(C[0])},\\ 0)$`, `반지름 $r=${nt(r)}$이므로 넓이 $=\\pi r^2=${nt(val)}\\pi$ → $k=${nt(val)}$`, `정석 확인: $P(x,y)$로 놓고 $${n}\\overline{PA}=${n}$... $\\overline{PA}^2:\\overline{PB}^2=${m * m}:${n * n}$을 전개하면 같은 원이 나옵니다.`],
+      steps: [`선분 $AB$를 $${m}:${n}$으로 내분하는 점 $P_1${pT(P1[0], 0)}$과 외분하는 점 $P_2${pT(P2[0], 0)}$도 조건을 만족합니다(그림의 두 점).`, `$PP_1$과 $PP_2$는 내각·외각의 이등분선이므로 서로 수직입니다. 따라서 $P$는 $P_1P_2$를 지름으로 하는 원 위에 있습니다(지름의 양 끝점도 포함). 지름 $\\overline{P_1P_2}=${nt(2 * r)}$, 중심 $C(${nt(C[0])},\\ 0)$`, `반지름 $r=${nt(r)}$이므로 넓이 $=\\pi r^2=${nt(val)}\\pi$ → $k=${nt(val)}$`, `정석 확인: $P(x,y)$로 놓고 $${n}\\overline{PA}=${m}\\overline{PB}$를 제곱하여 전개하면 같은 원이 나옵니다.`],
       std: `① ${tex(`P(x,\\ y)`)}라 하면 ${tex(`${n * n}\\left\\{(x-${pr(xa)})^2+y^2\\right\\}=${m * m}\\left\\{(x-${pr(xb)})^2+y^2\\right\\}`)}<br/>② 정리하면 중심 ${tex(`C(${nt(C[0])},\\ 0)`)}, 반지름 ${tex(nt(r))}인 원이므로 넓이는 ${tex(`${nt(val)}\\pi`)}`,
       quick: `거리의 비가 ${tex(`${m}:${n}`)}(≠1)인 점의 자취는 원입니다. 선분 ${tex('AB')}를 ${tex(`${m}:${n}`)}으로 내분하는 점과 외분하는 점이 지름의 양 끝입니다. 서술형에는 「내분점과 외분점을 두 끝으로 하는 원」이라고 쓰고 중심·반지름을 구합니다.`,
       hl: '비가 1:1이면 수직이등분선(직선), 1이 아니면 원입니다. 지름의 양 끝점은 내분점과 외분점이라서 식을 전개하지 않아도 됩니다.', warn: '비가 m:n일 때 반지름은 mn·AB/|m²−n²|입니다. 내분점만 구하고 외분점을 빠뜨리지 마세요.'
@@ -2586,7 +2615,7 @@ window.addEventListener('DOMContentLoaded', function () {
       text: `좌표평면 위의 세 점 ${tex(NT('P', P))}, ${tex(NT('A', A))}, ${tex(NT('B', B))}에 대하여 점 ${tex('P')}를 지나고 기울기가 ${tex('m')}인 직선이 선분 ${tex('AB')}와 만나도록 하는 ${tex('m')}의 최댓값과 최솟값의 합을 구하시오.`,
       steps: [`점 $P$를 지나는 직선이 돌아가는 모양을 그립니다. 선분 $AB$의 양 끝점을 지나는 직선 $PA$, $PB$가 경계입니다(그림의 두 점선).`, `직선이 $\\triangle PAB$의 안쪽 영역(두 점선 사이)을 지날 때 선분과 만납니다. 두 경계 사이에서 기울기는 연속적으로 변하므로 두 경계의 기울기가 최대·최소입니다.`, `$PA$의 기울기 $=\\dfrac{${nt(A[1])}-${pr(P[1])}}{${nt(A[0])}-${pr(P[0])}}=${sd(f1)}$, $PB$의 기울기 $=\\dfrac{${nt(B[1])}-${pr(P[1])}}{${nt(B[0])}-${pr(P[0])}}=${sd(f2)}$ → 합 $=${sumT}$`, '정석 확인: 직선 $y-q=m(x-p)$가 선분과 만나는 조건을 두 끝점의 부호(곱이 음수 또는 0)로 풀어도 같은 범위가 나옵니다.'],
       std: `① 직선 ${tex(`y-${pr(P[1])}=m(x-${pr(P[0])})`)}가 선분 ${tex('AB')}와 만나려면 ${tex('A')}, ${tex('B')}가 직선의 반대쪽(또는 위)에 있어야 하므로 ${tex(`f(m)=y-${pr(P[1])}-m(x-${pr(P[0])})`)}라 할 때 ${tex('f_A\\cdot f_B\\le 0')}<br/>② 풀면 ${tex(`${sd(s1 < s2 ? f1 : f2)}\\le m\\le ${sd(s1 < s2 ? f2 : f1)}`)}이고 합은 ${tex(sumT)}`,
-      quick: `정점을 지나는 직선이 선분과 만나는 기울기의 범위는 두 끝점으로 가는 직선의 기울기 사이입니다. 서술형에는 「직선이 ${tex('PA')}에서 ${tex('PB')}까지 회전하는 동안 선분 ${tex('AB')}와 만나므로」라고 쓰고 두 기울기를 구합니다.`,
+      quick: `이 문제처럼 ${tex('A')}, ${tex('B')}가 정점 ${tex('P')}를 지나는 수직선의 같은 쪽에 있으면, 선분과 만나는 기울기의 범위는 두 끝점으로 가는 직선의 기울기 사이입니다. 서술형에는 「직선이 ${tex('PA')}에서 ${tex('PB')}까지 회전하는 동안 선분 ${tex('AB')}와 만나므로」라고 쓰고 두 기울기를 구합니다.`,
       hl: '「돌려 보는 직선」 문제는 경계가 되는 두 직선(끝점을 지나는 직선)만 그리면 됩니다. 정점 바로 위·아래(수직선)를 가로지르면 범위가 둘로 나뉩니다.', warn: '선분이 정점의 수직선(x=p)을 가로지르면 기울기 범위가 양 끝으로 나뉩니다. 이 문제는 두 점이 정점의 같은 쪽에 있습니다.'
     };
   }
@@ -2611,6 +2640,24 @@ window.addEventListener('DOMContentLoaded', function () {
     () => mkInter(2, 4), () => mkInter(3, 6), () => mkInter(2, 6), () => mkInter(4, 2), () => mkInter(3, 1)
   ]);
 
+  /* 6-D 기존 탐구 예시를 같은 발문·정답의 문제와 세 단계로 연결 */
+  defProb('trapPerpDivideZero', { tag: '일반형 두 직선의 수직 · 기존 탐구 예시', time: '목표 시간: 30초', quickTitle: '핵심 풀이 · 법선벡터의 내적' }, [() => {
+    const k = 7 / 5, I = [85 / 156, -95 / 156], n1 = [k - 1, 2], n2 = [3, k - 2];
+    const items = [Bd([-2,-3]), Bd([4,3]), eqLn(k-1,2,1,{c:'sky'}), eqLn(3,k-2,-2,{c:'rose'}),
+      Tg([-2,-.1],'l₁',{c:'sky'}), Tg([1,5/3],'l₂',{c:'rose'}), Rt(I,[I[0]+2,I[1]-(k-1)],[I[0]+k-2,I[1]-3],{c:'amber',at:1}),
+      Sg(I,[I[0]+n1[0],I[1]+n1[1]],{c:'sky',w:3,at:2}), Sg(I,[I[0]+n2[0],I[1]+n2[1]],{c:'rose',w:3,at:2}),
+      Tg([I[0]+n1[0],I[1]+n1[1]],'n₁=(k−1,2)',{c:'sky',at:2}), Tg([I[0]+n2[0],I[1]+n2[1]],'n₂=(3,k−2)',{c:'rose',at:2})];
+    return {fig:{items,plane:false},par:{k},val:k,ans:'\\dfrac75',
+      text:`두 직선 ${tex('(k-1)x+2y+1=0')}, ${tex('3x+(k-2)y-2=0')}이 서로 수직일 때, 실수 ${tex('k')}의 값을 구하시오.`,
+      steps:['두 직선에 각각 수직인 법선벡터는 $n_1=(k-1,2)$, $n_2=(3,k-2)$입니다. 두 직선을 같은 방향으로 90° 돌려도 사이각은 같습니다.',
+        '따라서 두 직선이 수직일 조건은 법선벡터의 내적 $n_1\\cdot n_2=3(k-1)+2(k-2)=0$입니다. 기울기로 나누지 않아 수직선·수평선도 그대로 포함합니다.',
+        '$5k-7=0$이므로 $k=\\dfrac75$. 두 법선은 $(\\dfrac25,2)$와 $(3,-\\dfrac35)$로 내적이 $\\dfrac65-\\dfrac65=0$임을 확인합니다.'],
+      std:`${tex('k=2')}이면 둘째 직선은 수직선, 첫째 직선의 기울기는 ${tex('-1/2')}이므로 서로 수직이 아닙니다. ${tex('k\\ne2')}에서 두 기울기의 곱을 쓰면 ${tex('(-\\frac{k-1}{2})(-\\frac3{k-2})=-1')} → ${tex('5k=7')} → ${tex('k=\\frac75')}.`,
+      quick:`두 법선의 내적을 바로 쓰면 ${tex('3(k-1)+2(k-2)=0')} → ${tex('k=\\frac75')}. 분모가 0인 경우를 따로 떼지 않아도 됩니다.`,
+      hl:'직선의 계수 (a,b)는 그 직선에 수직인 방향입니다. 두 직선의 수직 여부를 두 법선의 내적 하나로 확인합니다.',
+      warn:'각 식의 x,y 계수가 동시에0이면 직선이 아닙니다. 이 예시는 첫 식의 y계수2, 둘째 식의 x계수3이 항상0이 아니므로 모든 k에서 두 직선이 정의됩니다.'};
+  }]);
+
   /* 6-E 직사각형 종이접기 (C → O, 접는 선은 대각선의 수직이등분선) */
   function mkFold(w, h) {
     const O = [0, 0], A = [w, 0], C = [w, h], B = [0, h], M = [w / 2, h / 2], mf = -w / h, nf = (h * h + w * w) / (2 * h), F = [(w * w + h * h) / (2 * w), 0], E = [(w * w - h * h) / (2 * w), h], val = mf + nf;
@@ -2629,11 +2676,194 @@ window.addEventListener('DOMContentLoaded', function () {
     () => mkFold(8, 4), () => mkFold(6, 2), () => mkFold(12, 6), () => mkFold(4, 2), () => mkFold(12, 4)
   ]);
 
-  const probPart = (PB) => ({
-    steps: () => PB.V.cur().steps.map((t) => t.replace(/\$([^$]+)\$/g, (m0, q) => '$' + q.replace(/''/g, "^{\\prime\\prime}").replace(/'/g, '^{\\prime}') + '$')),
+  /* 탐구의 현재 그림을 설명하는 3단계. 은행의 문항·정답·풀이와 독립입니다. */
+  function exploreSteps(id, s) {
+    const t = s.fold, { m, n } = RATIO_OPTS[s.ratioIdx], { a, b } = SCALE_OPTS[s.scaleIdx];
+    if (id === 'divInternalExternal') return [
+      `Step 1 · 같은 비, 다른 위치 — 현재 A(−2), B(4)를 ${m}:${n}으로 나눕니다. 안쪽 P와 연장선의 Q를 구별하고 $AB=6$을 기준으로 봅니다.`,
+      `Step 2 · 내분은 합, 외분은 차 — $P=\\dfrac{4m-2n}{m+n}=${frT(4 * m - 2 * n, m + n)}$, $Q=\\dfrac{4m+2n}{m-n}=${frT(4 * m + 2 * n, m - n)}$입니다.`,
+      `Step 3 · 방향으로 검산 — 현재 ${m > n ? 'm이 n보다 커서 Q는 B쪽' : 'm이 n보다 작아서 Q는 A쪽'} 연장선에 있습니다. $AP:PB=AQ:QB=${m}:${n}$이며, 외분에서 $m=n$이면 유한한 Q가 없습니다.`
+    ];
+    if (id === 'divExtendedLine') return [
+      'Step 1 · 좌표 한 칸의 이동 — 현재 A(0, 0)에서 B(2, 1)로 가는 한 칸은 (2, 1)입니다. BC = 2AB인 C는 B의 양쪽에서 찾아야 합니다.',
+      'Step 2 · B에서 양방향 두 칸 — $C=B+2(B-A)=(6,3)$ 또는 $C=B-2(B-A)=(-2,-1)$입니다.',
+      'Step 3 · 위치와 거리 확인 — C₁은 B쪽, C₂는 A쪽 연장선입니다. 두 경우 모두 $BC=2\\sqrt5=2AB$이므로 한 방향만 세면 해를 놓칩니다.'
+    ];
+    if (id === 'pappusMedian') return [
+      'Step 1 · 중점 M을 원점으로 — 현재 B(−3, 0), C(3, 0), A(1, 3)입니다. 대칭인 B와 C 때문에 거리의 제곱합에서 교차항이 소거됩니다.',
+      'Step 2 · 제곱합을 묶기 — $AB^2=4^2+3^2=25$, $AC^2=(-2)^2+3^2=13$입니다. $AB^2+AC^2=2(AM^2+BM^2)$로 바꿔 읽습니다.',
+      'Step 3 · 현재 중선 확인 — $38=2(AM^2+9)$이므로 $AM^2=10$, $AM=\\sqrt{10}$입니다. 그림의 중점 눈금이 계산을 줄이는 근거입니다.'
+    ];
+    if (id === 'centroidParaCoord') {
+      if (t > 0.5 || s.part === 1) return [
+        'Step 1 · 현재는 평행사변형 보기 — A(0, 4), B(−3, −1), C(6, 0)에 네 번째 꼭짓점 D를 붙입니다. 대각선 AC와 BD가 서로를 이등분합니다.',
+        'Step 2 · 같은 중점으로 연결 — $\\frac{A+C}{2}=\\frac{B+D}{2}$이므로 $D=A+C-B=(9,5)$입니다.',
+        'Step 3 · 대각선 검산 — AC와 BD의 중점이 모두 (3, 2)입니다. 따라서 두 변의 방정식을 각각 구할 필요 없이 D를 찾습니다.'
+      ];
+      const u = m / (m + n);
+      return [
+        `Step 1 · 같은 방향으로 내분 — A(0, 4), B(−3, −1), C(6, 0)의 각 변을 순환 방향으로 ${m}:${n} 내분한 D, E, F를 봅니다.`,
+        `Step 2 · 세 내분점을 더하기 — $D=\\frac{nA+mB}{m+n},\ E=\\frac{nB+mC}{m+n},\ F=\\frac{nC+mA}{m+n}$입니다. 현재 ${pointNow('D', -3 * u, 4 - 5 * u)}, ${pointNow('E', -3 + 9 * u, -1 + u)}, ${pointNow('F', 6 - 6 * u, 4 * u)}입니다.`,
+        'Step 3 · 무게중심 불변 — $D+E+F=A+B+C=(3,3)$이므로 두 삼각형의 무게중심은 모두 G(1, 1)입니다. 내분비를 바꾸어도 이 합은 그대로입니다.'
+      ];
+    }
+    if (id === 'distMinSumSq') return [
+      `Step 1 · 세 점의 중심을 보기 — A(−2, 3), B(−3, −2), C(5, 2)의 무게중심은 G(0, 1)입니다. 현재 ${pointNow('P', 3 * (1 - t), -3 + 4 * t)}에서 세 점까지의 제곱합을 비교합니다.`,
+      'Step 2 · 무게중심에서 교차항 소거 — $PA^2+PB^2+PC^2=3PG^2+(GA^2+GB^2+GC^2)=3PG^2+52$입니다. 제곱합의 변화는 PG² 하나로 결정됩니다.',
+      `Step 3 · 현재 값과 최솟값 — 현재 PG² ${relationNow(25 * (1 - t) ** 2)}, 제곱합 ${relationNow(52 + 75 * (1 - t) ** 2)}입니다. ${Math.abs(t - 1) < 1e-9 ? '지금은 P = G이므로 최솟값 52입니다.' : 'P를 G에 놓을 때만 PG² = 0이 되어 최솟값 52입니다.'}`
+    ];
+    if (id === 'perpSlopeMinus1') return [
+      `Step 1 · 가로·세로를 방향으로 — 현재 방향 (${a}, ${b})의 기울기는 $m=${frT(b, a)}$입니다. 움직이는 삼각형의 현재 회전각 ${relationNow(90 * t)}°를 고정된 두 직선과 비교합니다.`,
+      `Step 2 · 90° 회전의 좌표 규칙 — (${a}, ${b})를 90° 반시계 회전하면 (−${b}, ${a})가 됩니다. 두 고정 직선의 방향벡터 내적은 $${a}(-${b})+${b}(${a})=0$입니다.`,
+      `Step 3 · 수직 기울기 확인 — 고정 직선은 $m_1=${frT(b, a)}$, $m_2=${frT(-a, b)}$이므로 $m_1m_2=-1$입니다. ${Math.abs(t - 1) < 1e-9 ? '움직이는 삼각형도 지금 90° 회전을 마쳤습니다.' : '움직이는 삼각형은 아직 중간 회전 상태이며, 100%에서 두 번째 직선과 맞아집니다.'}`
+    ];
+    if (id === 'fixedPointPencil') {
+      const k = -1.5 + 3.5 * t;
+      return [
+        `Step 1 · k에 대한 두 묶음 — 현재 k ${relationNow(k)}인 $(x-y+1)+k(2x+y-4)=0$을 봅니다. 두 괄호가 동시에 0이면 k가 바뀌어도 그 점을 지납니다.`,
+        'Step 2 · 공통 교점 — $x-y+1=0$, $2x+y-4=0$을 연립하면 $P=(1,2)$입니다. 이 좌표에서는 항상 $0+k\\cdot0=0$입니다.',
+        `Step 3 · 수직선과 빠지는 직선 — ${Math.abs(k - 1) < 1e-9 ? '지금 k = 1에서는 3x−3 = 0, 즉 수직선 x = 1입니다.' : '현재 직선도 P(1, 2)를 지나며 k = 1이면 수직선 x = 1이 됩니다.'} 일반형을 유지하면 이 경우를 놓치지 않습니다. 유한한 k로는 $2x+y-4=0$ 자체를 만들 수 없습니다.`
+      ];
+    }
+    if (id === 'perpBisectorOrtho') {
+      const u = -1.5 + 3 * t, atMid = Math.abs(u) < 1e-9;
+      return [
+        'Step 1 · 중점과 방향 — A(−1, −1), B(3, 3)의 중점은 M(1, 1)입니다. AB의 기울기가 1이므로 수직 방향의 기울기는 −1입니다.',
+        'Step 2 · 수직이등분선 완성 — M을 지나도록 $y-1=-(x-1)$, 즉 $x+y-2=0$입니다. 이 직선 위에서는 두 점까지의 거리의 제곱 차가 0입니다.',
+        `Step 3 · 현재 P의 상태 — 현재 ${pointNow('P', 1 + u, 1 - u)}이고 $PA^2=PB^2=8+2u^2$입니다. 여기서 $u=x_P-1$입니다. ${atMid ? '지금은 P = M이므로 PA = PB지만 세 점은 일직선이며 삼각형과 직각 표시는 만들지 않습니다.' : '지금은 P가 M과 달라 PAM과 PBM이 SAS 합동이고 삼각형 PAB는 이등변입니다.'}`
+      ];
+    }
+    if (id === 'areaBisectLines') return [
+      'Step 1 · 삼각형은 공통 높이 — 왼쪽 삼각형의 A(−5, 3)에서 BC의 중점 M(−4, −2)을 잇습니다. BM = MC = 3, 높이는 5이므로 두 넓이가 같습니다.',
+      'Step 2 · 대칭 도형은 중심 — 오른쪽 직사각형의 대각선 교점은 (2, −2), 원의 중심은 (5, 2)입니다. 각 중심을 지나는 직선은 180° 회전으로 양쪽 넓이를 대응시킵니다.',
+      'Step 3 · 동시에 이등분 — 두 중심을 이으면 $y=\\frac43x-\\frac{14}3$입니다. 이 직선은 오른쪽 두 도형을 동시에 이등분합니다. 왼쪽 삼각형의 중선과는 별개의 직선입니다.'
+    ];
+    if (id === 'threeLinesNoTri') {
+      const k = s.part === 0 ? 1 : s.part === 1 ? -1 : t < 0.33 ? 1 : t < 0.66 ? -1 : 2;
+      return [
+        `Step 1 · 세 직선을 먼저 비교 — 현재 $l_1:y=x+1$, $l_2:y=-x+3$, $l_3:y=${k}x$입니다. l₁과 l₂의 교점은 P(1, 2)입니다.`,
+        `Step 2 · 서로 다른 세 꼭짓점인가 — ${k === 1 ? '현재 l₃와 l₁은 기울기 1이 같고 절편이 달라 평행합니다.' : k === -1 ? '현재 l₃와 l₂는 기울기 −1이 같고 절편이 달라 평행합니다.' : '현재 l₃: y = 2x도 P(1, 2)를 지나므로 세 직선이 한 점에서 만납니다.'}`,
+        'Step 3 · 빠지는 경우 정리 — 이 예시에서는 $k=1,-1$일 때 평행, $k=2$일 때 한 점 교차이므로 삼각형을 만들지 않습니다. 평행만 확인하면 세 번째 경우를 놓칩니다.'
+      ];
+    }
+    if (id === 'shoelaceArea') return [
+      `Step 1 · 같은 만큼 평행이동 — 현재 ${pointNow('A′', 1 - t, 1 - t)}, ${pointNow('B′', 5 - t, 2 - t)}, ${pointNow('C′', 2 - t, 5 - t)}입니다. 세 점 모두 (−t, −t)만큼 옮겨져 넓이는 변하지 않습니다.`,
+      'Step 2 · 꼭짓점 하나를 원점으로 — A′를 기준으로 두 변의 좌표 차이는 항상 (4, 1), (1, 4)입니다. 좌표 차이만 쓰면 이동량 t가 소거됩니다.',
+      `Step 3 · 행렬식 두 곱만 — $S=\\frac12|4\\cdot4-1\\cdot1|=\\frac{15}2$입니다. ${Math.abs(t - 1) < 1e-9 ? '지금 A′가 원점이어서 그림에서도 두 좌표벡터를 바로 읽을 수 있습니다.' : '100%까지 옮기면 A′가 원점에 놓여 같은 계산을 바로 읽을 수 있습니다.'}`
+    ];
+    if (id === 'pointLineDist') return [
+      'Step 1 · 수직거리부터 선택 — 현재 P(3, 4)와 $3x+4y-5=0$ 사이의 거리를 봅니다. 직선 위의 다른 점까지의 사선 길이가 아니라 수선 PH를 구합니다.',
+      'Step 2 · 법선 방향으로 연결 — 직선의 법선은 (3, 4), 길이는 5입니다. $PH=\\frac{|3\\cdot3+4\\cdot4-5|}{\\sqrt{3^2+4^2}}=4$입니다.',
+      'Step 3 · 수선의 발 검산 — $H=P-\\frac{20}{25}(3,4)=(\\frac35,\\frac45)$입니다. H는 직선 위에 있고 PH는 법선과 나란하므로 최단거리 4가 맞습니다.'
+    ];
+    if (id === 'parallelLineDist') return [
+      'Step 1 · 절편 차와 수직거리 구별 — 현재 두 직선은 $y=2x+5$, $y=2x-5$입니다. y절편의 차 10은 세로 길이이며 두 직선의 수직거리와 다릅니다.',
+      'Step 2 · 한 점에서 수선 내리기 — 첫 직선의 A(0, 5)에서 둘째 직선 $2x-y-5=0$까지의 거리는 $d=\\frac{10}{\\sqrt5}=2\\sqrt5$입니다.',
+      'Step 3 · 현재 도형 검산 — 수선의 발 H(4, 3)은 둘째 직선 위에 있습니다. $AH=\\sqrt{4^2+(-2)^2}=2\\sqrt5$이고 방향 (4, −2)는 직선 방향 (1, 2)와 수직입니다.'
+    ];
+    if (id === 'angleBisectorLine') {
+      const u = 2 + 2.2 * t;
+      return [
+        `Step 1 · 기울기 평균 대신 거리 — 현재 두 직선은 $2x-y=0$, $x-2y=0$이고 ${pointNow('P', u, u)}는 노란 직선 y = x 위에 있습니다.`,
+        'Step 2 · 같은 수선거리 — $\\frac{|2x-y|}{\\sqrt5}=\\frac{|x-2y|}{\\sqrt5}$를 풀면 $y=x$ 또는 $y=-x$입니다. 절댓값 때문에 두 이등분선이 모두 나옵니다.',
+        `Step 3 · 현재 거리 검산 — P=(u, u)에서 두 거리는 모두 $|u|/\\sqrt5$이고 현재 거리 ${relationNow(u / Math.sqrt(5))}입니다. 두 이등분선의 기울기 1과 −1의 곱은 −1입니다.`
+      ];
+    }
+    if (id === 'maxDistFromPt') return [
+      'Step 1 · 고정된 빗변 OA — A(3, 4)를 지나는 직선에 O에서 내린 수선의 발을 H라 하면 $OH\\le OA=5$입니다. 직선을 움직여도 OA는 바뀌지 않습니다.',
+      'Step 2 · 등호의 위치 — 직각삼각형 OHA에서 $OH^2+AH^2=25$입니다. AH가 0, 즉 H = A가 될 때만 OH가 5가 됩니다.',
+      `Step 3 · 현재 거리 확인 — 지금 OH ${relationNow(5 * Math.cos((1 - t) * 0.85))}입니다. ${Math.abs(t - 1) < 1e-9 ? '100%에서 H = A이고 직선은 3x + 4y − 25 = 0, 최대 거리는 5입니다.' : '아직 H와 A가 다르므로 거리는 5보다 작습니다. 100%에서 직선이 OA에 수직이 됩니다.'}`
+    ];
+    if (id === 'compositeStepByStep') return [
+      'Step 1 · 첫 대칭 — 원래 꼭짓점 (1, 2), (3, 2), (1, 5)를 y = x에 대칭이동하면 (2, 1), (2, 3), (5, 1)입니다. 식은 $f(y,x)=0$이 됩니다.',
+      'Step 2 · 두 번째 대칭 — 다시 y축에 대칭이동하면 (−2, 1), (−2, 3), (−5, 1)입니다. 첫 결과의 x에 −x를 넣어 $f(y,-x)=0$을 얻습니다.',
+      'Step 3 · 마지막 평행이동 — (2, −1)만큼 옮기면 (0, 0), (0, 2), (−3, 0)입니다. 직전 식에 x−2와 y+1을 넣으면 $f(y+1,2-x)=0$입니다.'
+    ];
+    if (id === 'paradoxPointVsFig') return [
+      `Step 1 · 현재 이동량 보기 — 원의 원래 중심 C(−2, −1), 반지름은 3/2입니다. 선택한 전체 이동량은 (${a}, ${b})이고 ${pointNow('현재 이동량', a * t, b * t)}입니다.`,
+      `Step 2 · 점에는 더하고 식에서는 되돌리기 — 현재 ${pointNow('C′', -2 + a * t, -1 + b * t)}입니다. 이동한 점 (x, y)를 되돌린 (x−at, y−bt)가 원래 원 위에 있어야 합니다.`,
+      `Step 3 · 현재 원의 방정식 — $a=${a},\ b=${b}$일 때 $(x+2-at)^2+(y+1-bt)^2=\\frac94$입니다. 현재 t ${relationNow(t)}이며, 중심만 이동하고 반지름은 변하지 않습니다.`
+    ];
+    if (id === 'symmetry4Basic') return [
+      'Step 1 · 축 대칭의 바뀌는 좌표 — 원래 삼각형의 꼭짓점 (2, 1)을 기준으로, x축 대칭은 (2, −1), y축 대칭은 (−2, 1)입니다. 거울에 수직인 좌표의 부호만 바꿉니다.',
+      'Step 2 · 원점 대칭 — (2, 1)은 (−2, −1)로 갑니다. 두 좌표의 부호가 모두 바뀌며 원점이 두 대응점의 중점입니다.',
+      'Step 3 · y = x 대칭 — (2, 1)은 (1, 2)로 갑니다. 모든 꼭짓점에 $(x,y)\\mapsto(y,x)$를 적용하면 좌표를 맞바꾼 초록 삼각형을 얻습니다.'
+    ];
+    if (id === 'symPointAndLine') return [
+      'Step 1 · 현재 거울과 점 — 지금은 P(3, 1)을 직선 y = x + 2에 대칭이동합니다. 거울 위에서 PP′를 수직이등분하는 점 M을 찾습니다.',
+      'Step 2 · 수선과 거울 연립 — P를 지나며 기울기가 −1인 직선은 y = −x + 4입니다. 거울과 만나면 M(1, 3)입니다.',
+      'Step 3 · 중점에서 한 번 더 — $P^{\\prime}=2M-P=(-1,5)$입니다. PP′의 중점은 M이고 PP′의 기울기는 −1이므로 두 조건이 모두 맞습니다.'
+    ];
+    if (id === 'lineSlideSame') return [
+      `Step 1 · 같은 직선에 도착하는 두 이동 — 원래 직선은 $y=${frT(b, a)}x+2$입니다. 현재 가로 이동 ${relationNow(a * t)}, 세로 이동 ${relationNow(-b * t)}를 비교합니다.`,
+      `Step 2 · 식으로 두 이동 연결 — 가로로 at만큼 옮기면 $y=\\frac ba(x-at)+2=\\frac bax+2-bt$입니다. 따라서 세로로 −bt만큼 옮긴 직선과 같습니다. 여기서 a = ${a}, b = ${b}입니다.`,
+      `Step 3 · 현재 대응점 확인 — ${pointNow('R′', a * t, 2)}와 ${pointNow('S', 0, 2 - b * t)}는 모두 현재 직선 위에 있습니다.${Math.abs(t) < 1e-9 ? ' 지금은 이동량 0이므로 두 점과 원래 점 (0, 2)이 겹칩니다.' : ' 한 점의 도착 위치는 달라도 직선 전체는 일치할 수 있습니다.'}`
+    ];
+    if (id === 'reflectTriPerim') return [
+      'Step 1 · 양 끝의 대칭점 — 현재 A(3, 1)를 x축과 y = x에 대칭이동하면 A₁(3, −1), A₂(1, 3)입니다. 점 P, Q는 각각 두 거울 위에 있습니다.',
+      'Step 2 · 둘레를 직선거리와 비교 — $AP+PQ+QA=A_1P+PQ+QA_2\\ge A_1A_2=2\\sqrt5$입니다. 펼침 중인 색 선분이 최종 대칭점에 도달하면 이 직선 경로와 맞아집니다.',
+      'Step 3 · 실제 최적점의 순서 — 선분 A₁A₂는 $P=(\\frac52,0)$, $Q=(\\frac53,\\frac53)$를 이 순서로 통과합니다. 그림의 삼각형은 이 고정된 최적점들을 사용하므로 둘레는 $2\\sqrt5$입니다.'
+    ];
+    if (id === 'reflectSingleAxis') return [
+      'Step 1 · 목표점을 한 번 반사 — 현재 A(−2, 2), B(4, 4)를 x축 위 P를 거쳐 잇습니다. B의 대칭점은 B′(4, −4)입니다.',
+      'Step 2 · 꺾인 경로를 펴기 — $PB=PB^{\\prime}$이므로 $AP+PB\\ge AB^{\\prime}=6\\sqrt2$입니다. 분홍 선분은 B에서 B′까지 펼쳐지는 과정을 보여 줍니다.',
+      'Step 3 · 등호의 위치 — 선분 AB′와 x축의 교점은 P(0, 0)입니다. 그림의 반사점은 이 최적점으로 고정되어 있고, 실제 두 경로의 합은 $2\\sqrt2+4\\sqrt2=6\\sqrt2$입니다.'
+    ];
+    if (id === 'reflectDoubleAxes') return [
+      'Step 1 · 두 거울에 대응하는 반사 — A(3, 1)는 x축에 반사하여 A′(3, −1), B(1, 3)는 y축에 반사하여 B′(−1, 3)으로 옮깁니다.',
+      'Step 2 · 두 번 꺾임을 한 선분으로 — $AP+PQ+QB=A^{\\prime}P+PQ+QB^{\\prime}\\ge A^{\\prime}B^{\\prime}=4\\sqrt2$입니다.',
+      'Step 3 · 거울 통과 순서 검산 — 선분 A′B′는 x축의 P(2, 0), y축의 Q(0, 2)를 차례로 지납니다. 순서 조건이 성립하므로 이 하한을 실제 경로가 달성합니다.'
+    ];
+    if (id === 'billiardMirrorRoom') return [
+      'Step 1 · 벽을 넘어 방 펼치기 — 가로 6, 세로 4인 당구대에서 A(1, 1) → 윗벽 → 오른벽 → B(3, 1) 순서입니다. 목표 B를 펼친 방에 옮기면 B″(9, 7)입니다.',
+      'Step 2 · 직선 경로에서 충돌점 읽기 — 직선 AB″는 $y=\\frac34x+\\frac14$입니다. 윗벽 y = 4에서 X(5, 4), 펼친 오른벽 x = 6에서 Y′(6, 19/4)를 지납니다.',
+      'Step 3 · 다시 접어 순서 검산 — Y′를 y = 4에 반사하면 Y(6, 13/4)입니다. 두 점 모두 지정된 벽 안에 있고 X → Y 순서가 맞으므로 실제 길이는 $AB^{\\prime\\prime}=\\sqrt{8^2+6^2}=10$입니다.'
+    ];
+    if (id === 'diffMaxLine') return [
+      'Step 1 · 합이 아니라 차 — 현재 A(1, 1), B(3, 3)에서 x축 위 P까지의 거리 차를 비교합니다. 역삼각부등식 $|PA-PB|\\le AB$가 상한입니다.',
+      'Step 2 · 등호는 연장선 — P가 선분 AB 밖의 같은 직선 위에 있어야 두 거리의 차가 AB가 됩니다. 직선 AB는 y = x이므로 x축과 P₀(0, 0)에서 만납니다.',
+      'Step 3 · 두 점 비교 — P₀에서는 차가 $3\\sqrt2-\\sqrt2=2\\sqrt2$로 최대입니다. 그림의 다른 P(4, 0)에서는 두 거리가 모두 $\\sqrt{10}$이므로 차는 0입니다.'
+    ];
+    if (id === 'trapApollonius') {
+      const ang = (90 + 60 * t) * Math.PI / 180, x = 5 + 4 * Math.cos(ang), y = 4 * Math.sin(ang), area = 3 * y, angle = Math.atan2(y, x + 3) * 180 / Math.PI;
+      return [
+        `Step 1 · 거리비의 자취 — A(−3, 0), B(3, 0), PA:PB = 2:1이면 $(x+3)^2+y^2=4((x-3)^2+y^2)$입니다. 정리하면 중심 C(5, 0), 반지름 4인 원입니다. 현재 ${pointNow('P', x, y)}입니다.`,
+        `Step 2 · 넓이는 높이 — 밑변 AB = 6이므로 $S=3|y|$입니다. 현재 넓이 ${relationNow(area)}, 최대 넓이는 원의 꼭대기 (5, 4)에서 12입니다.${Math.abs(t) < 1e-9 ? ' 지금이 넓이 최대 위치입니다.' : ''}`,
+        `Step 3 · 각은 접선 방향 — 현재 각 PAB ${relationNow(angle)}°입니다. A에서 원에 접할 때 $\\sin\\angle PAB=\\frac{CT}{AC}=\\frac48$이므로 최대 30°입니다. 접점은 $T=(3,2\\sqrt3)$이며 ${Math.abs(t - 0.5) < 1e-9 ? '지금이 각 최대 위치입니다.' : '50%에서 P가 이 접점에 옵니다.'} 넓이 최대 위치와 다릅니다.`
+      ];
+    }
+    if (id === 'trapLineSegmentMeet') return [
+      'Step 1 · 선분을 보는 두 경계선 — P(0, −1)에서 A(1, 3), B(4, 1)을 보는 두 끝 방향은 각각 기울기 4와 1/2입니다. 선분 AB의 모든 점은 P의 오른쪽에 있습니다.',
+      'Step 2 · 사이의 방향을 모두 포함 — P를 지나는 직선 $y=mx-1$이 선분과 만나려면 $\\frac12\\le m\\le4$입니다. 끝점에서 만나는 경우도 포함합니다.',
+      `Step 3 · 현재 직선 검산 — 현재 기울기 m ${relationNow(0.5 + 3.5 * t)}입니다. ${Math.abs(t) < 1e-9 ? '지금은 B에서 만납니다.' : Math.abs(t - 1) < 1e-9 ? '지금은 A에서 만납니다.' : '지금은 선분 AB의 내부에서 만납니다.'} 선분의 x좌표가 양수이므로 기울기가 무한대가 되는 경계는 없습니다.`
+    ];
+    if (id === 'trapInterceptZero') return [
+      'Step 1 · 같은 절편의 두 가능성 — P(2, 4)를 지나는 직선의 x절편과 y절편이 같다고 해서 그 값이 0이 아니라고 가정하면 안 됩니다.',
+      'Step 2 · 0이 아닌 공통 절편 — 공통 절편을 c라 두면 $x+y=c$입니다. P를 대입하면 c = 6이어서 파란 직선 x + y = 6을 얻습니다.',
+      'Step 3 · 0인 절편 별도 확인 — P와 원점을 잇는 분홍 직선 y = 2x도 두 절편이 모두 0입니다. 따라서 현재 그림의 두 직선이 모두 조건을 만족합니다.'
+    ];
+    if (id === 'trapPerpDivideZero') {
+      const k = s.perpK, dot = 5 * k - 7, det = (k - 1) * (k - 2) - 6;
+      const kind = Math.abs(dot) < 1e-9 ? '현재 두 직선은 수직입니다.' : Math.abs(det) < 1e-9 ? '현재 두 직선은 서로 다른 평행선입니다.' : '현재 두 직선은 한 점에서 만나지만 수직은 아닙니다.';
+      return [
+        `Step 1 · 나누기 전 일반형 유지 — 현재 k ${relationNow(k)}인 $(k-1)x+2y+1=0$, $3x+(k-2)y-2=0$입니다. ${Math.abs(k - 1) < 1e-9 ? '지금 첫 직선은 y = −1/2인 수평선입니다.' : Math.abs(k - 2) < 1e-9 ? '지금 둘째 직선은 x = 2/3인 수직선입니다.' : '두 법선 (k−1, 2), (3, k−2)는 항상 영벡터가 아닙니다.'}`,
+        `Step 2 · 내적과 행렬식 — 법선 내적 $3(k-1)+2(k-2)=5k-7$은 현재 ${relationNow(dot)}입니다. 행렬식 $(k-1)(k-2)-6$은 현재 ${relationNow(det)}입니다.`,
+        `Step 3 · 현재 관계와 조건 — ${kind} 수직 조건은 $5k-7=0$, 즉 $k=\\frac75$입니다. $k=1,2$에서도 일반형 검산이 가능하고, $k=-1,4$에서는 행렬식이 0인 평행 상태입니다.`
+      ];
+    }
+    return [
+      'Step 1 · 접는 선의 등거리 — 현재 직사각형은 O(0, 0), A(8, 0), C(8, 4), B(0, 4)입니다. C가 O에 겹치도록 접는 선 위의 점은 O와 C까지의 거리가 같습니다.',
+      'Step 2 · 대각선의 수직이등분선 — OC의 중점 M(4, 2), 기울기 1/2를 이용하면 접는 선은 $y-2=-2(x-4)$, 즉 $y=-2x+10$입니다.',
+      'Step 3 · 실제 종이의 경계와 만나기 — 윗변 y = 4에서는 E(3, 4), 아랫변 y = 0에서는 F(5, 0)입니다. 두 점 모두 직사각형의 변 위에 있고 OE = CE, OF = CF이므로 접는 선 EF가 맞습니다.'
+    ];
+  }
+
+  const probPart = (PB, id) => ({
+    // 수업 모드는 steps(s)만 호출하므로 기본 lab을 읽습니다. 독립 탐구 예시에 은행 숫자를 섞지 않습니다.
+    steps: (s, lab = window.lab) => (lab && lab.tab === 'explore' ? exploreSteps(id, s) : PB.V.cur().steps).map((t) => t.replace(/\$([^$]+)\$/g, (m0, q) => '$' + q.replace(/''/g, "^{\\prime\\prime}").replace(/'/g, '^{\\prime}') + '$')),
     reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${PB.V.cur().text}</div>`,
     vary: PB.V,
-    problem: { tag: () => PB.V.cur().tag || PB.tag, time: PB.time, text: () => probHTML(PB.V.cur().text), answer: () => tex(PB.V.cur().ans) },
+    problem: { tag: () => PB.V.cur().tag || PB.tag, time: PB.time, text: () => PB.V.pool.length > 1 ? probHTML(PB.V.cur().text) : PB.V.cur().text, answer: () => tex(PB.V.cur().ans) },
     solution: {
       standardTitle: '정석(식) 풀이', standardTag: '정석', quickTitle: PB.quickTitle, quickTag: '10초 컷',
       standard: () => ({ steps: PB.V.cur().std, warning: PB.V.cur().warn }),
@@ -2649,17 +2879,24 @@ window.addEventListener('DOMContentLoaded', function () {
       id, title: label, short: label, reviewTab: true, autoFit: true,
       question: QUESTIONS[m - 1],
       notesTitle: '오답 함정과 풀이 요령',
-      ...(PB ? probPart(PB) : {}),
+      ...(PB ? probPart(PB, id) : {}),
       enter: (s) => {
         // 원본 setMode / setSubType 의 초기화 규칙(변환 0%, 렌즈가 없는 장면이면 전체 구조)
         s.fold = 0;
+        if (id === 'trapPerpDivideZero') s.perpK = 1.4;
         if (!lensList(id).includes(s.lens)) s.lens = 'all';
       },
-      controls: () => (FOLD.has(id) ? ['fold'] : []),
+      controls: () => id === 'trapPerpDivideZero' ? ['perpK'] : (FOLD.has(id) ? ['fold'] : []),
       presets: () => {
         const out = [];
         if (FOLD.has(id)) [0, 0.5, 1].forEach((v) => out.push({ group: '변환 단계', label: v === 0 ? '0% 시작' : v === 1 ? '100% 완성' : '50%', set: { fold: v }, ms: 700, on: (st) => Math.abs(st.fold - v) < 0.01 }));
         if (RATIO.has(id)) RATIO_OPTS.forEach((ro, idx) => out.push({ group: '분할 비율 m : n', label: ro.label, apply: (st) => { st.ratioIdx = idx; }, on: (st) => st.ratioIdx === idx }));
+        if (id === 'trapApollonius') {
+          out.push({ group: '서로 다른 최대', label: '넓이 최대 · 원의 꼭대기', set: { fold: 0 }, on: st => Math.abs(st.fold) < 1e-8 });
+          out.push({ group: '서로 다른 최대', label: '각 최대 · A에서 그은 접선', set: { fold: 0.5 }, on: st => Math.abs(st.fold - 0.5) < 1e-8 });
+        }
+        if (id === 'fixedPointPencil') out.push({ group: '특수 위치', label: 'k=1 · 수직선 x=1', set: { fold: 5 / 7 }, on: st => Math.abs(st.fold - 5 / 7) < 1e-8 });
+        if (id === 'trapPerpDivideZero') [-1, 1, 1.4, 2, 4].forEach(k => out.push({ group: '일반형의 경계', label: k === 1.4 ? 'k=7/5 · 수직' : `k=${k}${k === 1 ? ' · 수평선 포함' : k === 2 ? ' · 수직선 포함' : ' · 평행'}`, set: { perpK: k }, on: st => Math.abs(st.perpK - k) < 1e-8 }));
         if (SCALE.has(id)) SCALE_OPTS.forEach((so, idx) => out.push({ group: '기울기·이동량 (a, b)', label: so.label, apply: (st) => { st.scaleIdx = idx; }, on: (st) => st.scaleIdx === idx }));
         const lenses = lensList(id);
         if (lenses.length) LENSES.filter(([k]) => lenses.includes(k)).forEach(([k, lbl]) => out.push({ group: '보기 선택', label: lbl, apply: (st) => { st.lens = k; }, on: (st) => st.lens === k }));
@@ -2670,18 +2907,18 @@ window.addEventListener('DOMContentLoaded', function () {
         return [{
           id: 'act', play: true, primary: true, icon: 'wand',
           label: (st) => { sync(st, m, id); return arrowOnly(getSpec().actionTxt); },
-          run: (st, lab) => { lab.tween({ fold: st.fold > 0.5 ? 0 : 1 }, 1100); }
+          run: (st, lab) => { lab.tween({ fold: id === 'trapApollonius' ? (Math.abs(st.fold - 0.5) < 1e-8 ? 0 : 0.5) : st.fold > 0.5 ? 0 : 1 }, 1100); }
         }];
       },
       view: (s, lab) => {
         sync(s, m, id);
         const spec = arrow(getSpec());
-        if (PB && lab && lab.tab !== 'explore') return lab.tab === 'review' ? { formula: spec.formulaHTML, rule: spec.rule, notes: spec.notes } : {}; // 문제·정리 탭에서는 탐구용 칩·띠·값을 보이지 않음
+        if (PB && lab && lab.tab !== 'explore') return { formula: '', rule: '', notes: '' }; // 현재 문제의 3단계·정석/빠른 풀이를 사용한다. 독립 탐구 예시의 다른 숫자를 섞지 않는다.
         return {
           guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
           readouts: [
             { label: spec.dim1Name, value: spec.val1Txt, color: 'sky' },
-            { label: spec.dim2Name, value: spec.val2Txt, color: 'rose' }
+            { label: spec.dim2Name, value: spec.val2Txt, note: spec.val2Note, color: 'rose' }
           ],
           parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: tone(p), ok: p.ok })),
           summary: spec.totalRes,
@@ -2732,6 +2969,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'common-lines',
+    stagedReveal: true,
     title: '평면 · 직선 · 이동',
     courseName: '공통수학',
     unit: '도형의 방정식',
@@ -2742,6 +2980,7 @@ window.addEventListener('DOMContentLoaded', function () {
     state: { lens: 'all', ratioIdx: 0, scaleIdx: 1 },
     persist: ['lens', 'ratioIdx', 'scaleIdx'],
     params: {
+      perpK: { value: 1.4, min: -4, max: 6, step: 0.05, color: 'sky', label: '두 직선의 계수 k', format: v => `k ${relationNow(v)}` },
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '변환 진행 (0% → 100%)', hint: '회전 · 평행이동 · 대칭 · 점 이동 같은 변환을 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` }
     },
     groups
