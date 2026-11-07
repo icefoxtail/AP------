@@ -382,7 +382,7 @@ window.addEventListener('DOMContentLoaded', function () {
     front: { yaw: 0, pitch: 5 }
   });
   const TITLES = ['꼬인 위치와 정사면체의 마주 보는 모서리', '삼수선의 정리 킬러', '이면각과 정사면체', '직육면체 대각선과 세 각의 관계'];
-  const SHORT = ['꼬인 위치 90°', '삼수선의 정리', '이면각 1/3', '대각선과 세 각'];
+  const SHORT = ['꼬인 두 모서리', '삼수선의 정리', '정사면체 이면각', '대각선과 세 각'];
   const QUESTIONS = [
     '꼬인 위치의 두 모서리가 수직인지, 그림의 겉모습이 아니라 무엇으로 판정할까?',
     '수선 PO, OH를 그으면 PH ⟂ l이 왜 성립할까?',
@@ -1528,14 +1528,23 @@ window.addEventListener('DOMContentLoaded', function () {
         v.parts=PART_HINTS[m].map((desc,i)=>({id:i+1,name:`${i+1}단계`,desc,color:PART_COLORS[i]}));
         if(stage<3){
           const all=readouts(st,m);
-          v.readouts=m===1?all.slice(0,stage>=2?2:1):m===2?[all[0],{...all[2],note:undefined}]:m===3?[all[0],{label:'현재 접은 각',value:`θ ≈ ${st.th.toFixed(3)}°`,color:'amber'}]:[{...all[0],note:undefined}];
+          v.readouts=m===1?all.slice(0,stage>=2?2:1):m===2?[all[0],{...all[2],note:undefined}]:m===3?[{label:'주어진 정삼각형의 한 변',value:'6',color:'sky'},...(stage>=2?[all[0]]:[]),...(lab.tab==='explore'?[{label:'현재 접은 각',value:`θ ≈ ${st.th.toFixed(3)}°`,color:'amber'}]:[])]:[{...all[0],note:undefined}];
         }
       }
       if(lab.tab!=='explore' && m>=5) v.readouts=[];
       if(stage<3){
+        // Solution chips follow the same stage as their justification; inputs stay in readouts.
+        if(!(m===5 && lab.tab==='explore' && s.k5==='pts' && stage>=2))
+          v.chips=m===7 && lab.tab==='explore'?(v.chips||[]).filter(c=>!c.answer):[];
         if(lab.tab==='explore' && m===5 && s.k5==='cube')v.readouts=[{label:'고른 모서리',value:eName(CUBE_EDGES[s.sel5%12]),color:'ink'}];
+        if(lab.tab==='explore' && m===5 && s.k5==='pts' && stage<2)v.readouts=(v.readouts||[]).slice(0,2);
+        if(lab.tab==='explore' && m===5 && s.k5==='skew')v.readouts=(v.readouts||[]).slice(0,2).map(r=>({...r,note:undefined}));
         if(lab.tab==='explore' && m===6)v.readouts=[{label:'옆모서리 AB',value:`${s.lat}`,color:'rose'},{label:'밑면 한 변',value:'6',color:'sky'}];
         if(lab.tab==='explore' && m===7)v.readouts=(v.readouts||[]).slice(0,2);
+        if(lab.tab==='explore' && m===8){
+          v.readouts=s.st8===3?[{label:'현재 P의 높이 / 깊이',value:`${s.h8} / ${s.pz8}`,color:'rose'},...(stage>=2?(v.readouts||[]).slice(0,2):[])]: (v.readouts||[]).slice(0,stage>=2?2:1);
+          v.status={tone:'info',text:s.st8===3?'PH와 OH를 l에 수직으로 둔 채 P를 움직여 보세요':s.st8===1?'주어진 조건: PO ⟂ α, OH ⟂ l':'주어진 조건: PO ⟂ α, PH ⟂ l'};
+        }
         if(lab.tab==='explore' && m===9)v.readouts=(v.readouts||[]).slice(0,1);
         if(lab.tab==='explore' && m===6)v.status={tone:'info',text:`옆모서리 ${s.lat} · 입체가 가능한 길이를 비교하세요`};
         if(lab.tab==='explore' && m===9)v.status={tone:'info',text:`a = ${s.a9}°, b = ${s.b9}°`};

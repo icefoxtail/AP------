@@ -1820,7 +1820,7 @@ window.addEventListener('DOMContentLoaded', function () {
       sync(s,m);
       if(m===1){
         v.readouts=[row('주어진 두 점','A(1,1,2), B(3,4,4)')];
-        if(ex)v.readouts.push(row('현재 후보점 P',`t≈${s.t1.toFixed(4)}, P≈(${(1+2*s.t1).toFixed(4)}, ${(1+3*s.t1).toFixed(4)}, 0)`),row('현재 경로 길이',`AP+PB≈${dist1(s.t1).toFixed(4)}`,'green'));
+        if(ex)v.readouts.push({...row('현재 후보점 P',`P≈(${(1+2*s.t1).toFixed(4)}, ${(1+3*s.t1).toFixed(4)}, 0)`),note:`t≈${s.t1.toFixed(4)}`,wide:true},row('현재 경로 길이',`AP+PB≈${dist1(s.t1).toFixed(4)}`,'green'));
         if(step>=3)v.readouts.push(row('평면 전체의 최솟값','AB′=7, 등호 위치 P*=(5/3,2,0), 내분비 1:2','amber'));
       }else if(m===2){
         v.readouts=[row('끝점의 z좌표','A:4, B:−2')];
@@ -1847,6 +1847,19 @@ window.addEventListener('DOMContentLoaded', function () {
     v={...DEFS[m].view(s,lab),...v,parts,reviewTop};
     if(ex){
       const actual=DEFS[m].view(s,lab);v={...v,...actual,parts};
+      if(m===5&&step<2){
+        v.chips=[];
+        v.readouts=[row('현재 점 P',ptxt('P',P3(s.px,s.py,s.pz))),row('선택한 기준',`${TGT5[s.tgt|0]} · ${(s.kind|0)?'대칭점':'수선의 발'}`)];
+      }
+      if(m===6&&step<3){
+        if(step<1)v.chips=(v.chips||[]).slice(0,1); // The original equation is a given.
+        v.readouts=[row('현재 상수항 k',String(s.k6)),row('자르는 좌표평면',PLN6[s.sel6|0]),...(step>=1?actual.readouts.slice(0,1):[]),...(step>=2?actual.readouts.slice(1,3):[])];
+      }
+      if(m===7&&step<3){
+        v.chips=step>=2?(v.chips||[]).slice(0,1):[];
+        v.readouts=actual.readouts.filter(r=>r.label==='비 AX : XB'||(step>=1&&r.label==='무게중심 G'));
+        if(s.mode7|0)v.tape=null; // External order and the subtracted ratio are derived in Step 3.
+      }
       if(m===8&&step<3){v.chips=[];v.readouts=v.readouts.filter(r=>!['P에서 FH까지 PM','삼각형 PFH의 넓이'].includes(r.label));}
       return v;
     }
