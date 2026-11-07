@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
 // format validation and a "never overwrite an existing 1~5 number" guard.
 export const SCHEMA = "archive-difficulty5-register-request-v1";
+export const REVIEWED_CORRECTION_SCHEMA = "archive-difficulty5-reviewed-correction-v1";
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const CONFIDENCE = new Set(["high", "medium", "low"]);
@@ -41,6 +42,142 @@ function existingLevelOf(rec, item) {
   if (typeof rec.difficultyBucket === "string" && rec.difficultyBucket in LEVEL_OF) return rec.difficultyBucket;
   const g = item.before?.level;
   return g in LEVEL_OF ? g : null;
+}
+
+function registerReviewedCorrection({ root, request, source, sha, bank, doc, ids, byOrdinal, idByOrdinal,
+  ordinalByUid, write, verifyProjection }) {
+  const correction = request.reviewedCorrection;
+  if (correction.schemaVersion !== REVIEWED_CORRECTION_SCHEMA) fail("unsupported reviewed correction schema");
+  if (typeof correction.approvalRef !== "string" || !correction.approvalRef.trim()) fail("reviewed correction approvalRef required");
+  const evidencePath = String(correction.evidencePath || "");
+  if (!evidencePath.startsWith(".archive-meta-register/evidence/") || path.posix.normalize(evidencePath) !== evidencePath || evidencePath.includes(".."))
+    fail("reviewed correction evidencePath must be under .archive-meta-register/evidence");
+  const evidenceBytes = fs.readFileSync(path.join(root, evidencePath));
+  const evidenceSha = sha256(evidenceBytes);
+  if (evidenceSha !== correction.evidenceSha256) fail("reviewed correction evidence SHA256 drift");
+  const evidence = JSON.parse(evidenceBytes.toString("utf8"));
+  if (evidence.schemaVersion !== REVIEWED_CORRECTION_SCHEMA || !Array.isArray(evidence.rows)) fail("reviewed correction evidence schema invalid");
+  if (verifyProjection && write) fail("--verify-projection is read-only");
+
+  const gemini = request.gemini;
+  const rows = correction.rows;
+  if (!Array.isArray(rows) || rows.length !== gemini.items.length || !rows.length) fail("reviewed correction rows/items denominator mismatch");
+  const evidenceByKey = new Map(evidence.rows.map(row => [`${row.sourceArchiveFile}#${row.ordinal}`, row]));
+  const requestByOrdinal = new Map(gemini.items.map(item => [item.ordinal, item]));
+  if (requestByOrdinal.size !== gemini.items.length) fail("duplicate reviewed correction item ordinal");
+  const rowByOrdinal = new Map(rows.map(row => [row.ordinal, row]));
+  if (rowByOrdinal.size !== rows.length) fail("duplicate reviewed correction row ordinal");
+
+  const counts = { APPLY: 0, ALREADY_REGISTERED: 0, SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: 0 };
+  const results = [];
+  let changedFields = 0, wrote = false;
+  let metadataChanged = false;
+
+  for (const item of gemini.items) {
+    const n = item.ordinal, rec = byOrdinal.get(n), idr = idByOrdinal.get(n), review = rowByOrdinal.get(n);
+    if (!Number.isInteger(n) || !rec || !idr || !review) fail("reviewed correction ordinal missing in sidecars #" + n);
+    if (item.questionUid !== rec.questionUid || item.questionUid !== idr.questionUid || ordinalByUid.get(item.questionUid) !== n)
+      fail("ordinal/questionUid mismatch #" + n);
+    if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
+    const q = bank[n - 1];
+    if (q?.id !== undefined && q.id !== n) {
+      const stringId = typeof q.id === "string" && q.id.length > 0;
+      if (!stringId || q.number !== n || typeof idr.sourceQuestionNo !== "string" || q.id !== idr.sourceQuestionNo ||
+          bank.filter(row => row?.id === q.id).length !== 1) fail("source question id mismatch #" + n);
+    }
+    const sourceLegacyLevel = rec.level ?? q?.level ?? null;
+    if ((item.before?.level ?? null) !== sourceLegacyLevel || (review.before?.level ?? null) !== sourceLegacyLevel)
+      fail("legacy level baseline mismatch #" + n);
+
+    const key = `${source}#${n}`, proof = evidenceByKey.get(key);
+    if (!proof || proof.questionUid !== item.questionUid || proof.questionUid !== review.questionUid)
+      fail("reviewed correction evidence row missing/mismatched #" + n);
+    const currentFingerprint = fingerprint(q), currentContentFingerprint = contentFingerprint(q);
+    if (proof.sourceFingerprint !== currentFingerprint || proof.contentFingerprint !== currentContentFingerprint ||
+        review.sourceFingerprint !== currentFingerprint || review.contentFingerprint !== currentContentFingerprint)
+      fail("reviewed correction source fingerprint mismatch #" + n);
+    if (review.refreshBinding !== false) fail("reviewed correction cannot rebind source metadata #" + n);
+    const staleSourceBinding = rec.contentFingerprint !== currentContentFingerprint || idr.sourceFingerprint !== rec.sourceFingerprint;
+    if (proof.staleSourceBinding !== staleSourceBinding) fail("reviewed correction stale-binding evidence mismatch #" + n);
+    if (!equal(review.before, proof.before) || !equal(review.after, proof.after) || review.decision !== proof.decision || review.reason !== proof.reason)
+      fail("reviewed correction row differs from evidence #" + n);
+    const next = review.after;
+    const nextKeys = Object.keys(next || {}).sort();
+    const difficultyKeys = ["difficultyBoundaryFlag", "difficultyBucket", "difficultyConfidence", "legacyLevelCompatibility"];
+    const isBucketOnlyKeep = review.decision === "KEEP";
+    if (isBucketOnlyKeep) {
+      if (JSON.stringify(nextKeys) !== JSON.stringify(["difficultyBucket"]) || !isBucket(next.difficultyBucket))
+        fail("reviewed correction KEEP bucket invalid #" + n);
+    } else if (JSON.stringify(nextKeys) !== JSON.stringify(difficultyKeys) || !isBucket(next.difficultyBucket) ||
+        !CONFIDENCE.has(next.difficultyConfidence) || !BOUNDARY.has(next.difficultyBoundaryFlag) ||
+        !["NORMAL", "BORDERLINE_REVIEW", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT", "UNKNOWN"].includes(next.legacyLevelCompatibility))
+      fail("reviewed correction after fields invalid #" + n);
+    if (!equal(item.after, next)) fail("request after differs from reviewed correction evidence #" + n);
+
+    const before = review.before;
+    const current = {
+      difficultyBucket: rec.difficultyBucket ?? null,
+      difficultyConfidence: rec.difficultyConfidence ?? null,
+      difficultyBoundaryFlag: rec.difficultyBoundaryFlag ?? null,
+      legacyLevelCompatibility: rec.legacyLevelCompatibility ?? null
+    };
+    const currentFp = { sourceFingerprint: rec.sourceFingerprint ?? null, contentFingerprint: rec.contentFingerprint ?? null };
+    const currentIdFp = idr.sourceFingerprint ?? null;
+    const expectedNext = {
+      sourceFingerprint: before.sourceFingerprint ?? null,
+      contentFingerprint: before.contentFingerprint ?? null
+    };
+    const beforeDifficulty = Object.fromEntries(difficultyKeys.map(field => [field, before[field] ?? null]));
+    const beforeFp = { sourceFingerprint: before.sourceFingerprint ?? null, contentFingerprint: before.contentFingerprint ?? null };
+    const afterDifficulty = isBucketOnlyKeep ? beforeDifficulty : Object.fromEntries(difficultyKeys.map(field => [field, next[field] ?? null]));
+    const isBefore = difficultyKeys.every(field => equal(current[field], beforeDifficulty[field])) &&
+      equal(currentFp, beforeFp) && currentIdFp === beforeFp.sourceFingerprint;
+    const isAfter = difficultyKeys.every(field => equal(current[field], afterDifficulty[field])) &&
+      equal(currentFp, expectedNext) && currentIdFp === expectedNext.sourceFingerprint;
+    const result = { ordinal: n, questionUid: item.questionUid, decision: "", before: { ...current, ...currentFp }, after: { ...afterDifficulty, ...expectedNext },
+      reason: review.reason, consumerBinding: currentFp.contentFingerprint !== currentContentFingerprint || currentIdFp !== currentFp.sourceFingerprint ? "stale"
+        : currentFp.sourceFingerprint === currentFingerprint ? "exact" : "content" };
+    if (verifyProjection) {
+      if (!isAfter) fail("registered metadata/fingerprint mismatch #" + n);
+      result.decision = "VERIFIED"; counts.VERIFIED++;
+      results.push(result);
+      continue;
+    }
+    if (isAfter) {
+      result.decision = "ALREADY_REGISTERED"; counts.ALREADY_REGISTERED++;
+      results.push(result);
+      continue;
+    }
+    if (!isBefore) fail("reviewed correction stale before #" + n);
+    if (review.decision === "KEEP" && !equal(beforeDifficulty, afterDifficulty)) fail("KEEP row changes difficulty #" + n);
+    if (!new Set(["CORRECT", "KEEP"]).has(review.decision)) fail("reviewed correction decision invalid #" + n);
+
+    let rowChanged = false;
+    for (const [field, value] of Object.entries(next)) {
+      if (!equal(rec[field], value)) { rec[field] = value; changedFields++; rowChanged = true; }
+    }
+    if (rowChanged) metadataChanged = true;
+    result.decision = "APPLY"; counts.APPLY++;
+    results.push(result);
+  }
+
+  if (verifyProjection) {
+    const consumerBinding = results.reduce((out, row) => (out[row.consumerBinding] = (out[row.consumerBinding] || 0) + 1, out), {});
+    return { status: "PASS", mode: "verify-reviewed-correction", requestId: gemini.requestId, sourceArchiveFile: source, sourceBlobSha: sha,
+      items: results, summary: { total: results.length, ...counts, changedFields: 0, written: false, consumerBinding,
+        staleSourceBinding: consumerBinding.stale || 0 }, ptTpl: "UNTOUCHED_NOT_IN_SCOPE" };
+  }
+
+  if (write && metadataChanged) {
+    delete doc.digest;
+    doc.digest = sha256(JSON.stringify(doc));
+    fs.writeFileSync(path.join(root, META), JSON.stringify(doc, null, 2) + "\n", "utf8");
+    wrote = true;
+  }
+  return { status: "PASS", mode: write ? "write-reviewed-correction" : "dry-run-reviewed-correction", requestId: gemini.requestId,
+    driveFileId: request.driveFileId ?? null, driveSha256: request.driveSha256 ?? null, sourceArchiveFile: source, sourceBlobSha: sha,
+    items: results, summary: { total: results.length, ...counts, changedFields, written: wrote,
+      staleSourceBinding: results.filter(row => row.consumerBinding === "stale").length }, ptTpl: "UNTOUCHED_NOT_IN_SCOPE" };
 }
 
 function parseBank(bytes) {
@@ -87,6 +224,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     idByOrdinal.set(r.sourceOrdinal, r);
   }
   const bank = parseBank(sourceBytes);
+
+  if (request.reviewedCorrection) {
+    return registerReviewedCorrection({ root, request, source, sha, bank, doc, ids, byOrdinal, idByOrdinal,
+      ordinalByUid, write, verifyProjection });
+  }
 
   // Whole-file rejection: every ordinal must map 1:1 to the same questionUid in metadata and identity map.
   const seen = new Set(), binding = {};

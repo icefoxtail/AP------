@@ -402,7 +402,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyRationale": "그림에서 직각삼각형 두 개의 변 길이를 구하고 수직선 구간을 합산한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -721,7 +721,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "제곱근 부등식을 제곱한 뒤 정수 경계의 열린·닫힌 끝점을 세어야 한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -826,7 +826,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "한 값을 대입한 뒤 유리수항과 같은 무리수항을 모은다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -935,7 +935,7 @@ window.questionBank = [
         "integrationPattern": null
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "주어진 근삿값을 제곱근 속 수의 크기와 소수 자릿수에 맞게 바꿔 보기와 비교한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -1042,7 +1042,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "정수부분의 정의를 반열린구간으로 바꿔 자연수 범위를 찾는다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -1149,7 +1149,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "곱셈을 먼저 근호의 곱으로 정리한 뒤 분수로 나누고 동류항을 더한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -1254,7 +1254,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "양수 조건을 이용해 계수를 근호 안으로 넣고 $ab=5$를 두 번 적용한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -1575,7 +1575,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "주어진 차의 제곱으로 제곱합을 만든 뒤 곱 조건을 대입한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -1894,7 +1894,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "큰 수를 직접 거듭제곱하지 않고 완전제곱식으로 묶어 공통인수를 약분한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -2001,7 +2001,7 @@ window.questionBank = [
         "integrationPattern": "CASE_BRANCH"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "상수항 25의 제곱근 두 경우를 나눠 일차항 계수를 맞춘다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -2108,7 +2108,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyRationale": "차의 제곱 형태로 수를 구하고 6의 배수 조건으로 보기들을 판정한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "객관식",
@@ -2429,7 +2429,7 @@ window.questionBank = [
         "integrationPattern": "SEQUENTIAL"
       }
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyRationale": "제곱 비교로 정수부분을 정한 뒤 소수부분을 정의대로 빼고 대입한다.",
     "difficultyStatus": "CREATE_CANDIDATE_UNREVIEWED_BY_R1",
     "questionType": "서술형",
