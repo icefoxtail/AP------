@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -299,8 +299,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const allowed1 = (s) => allTuples(s.nb, s.kb).filter((t) => okT(t, cond1(s)));
   const formula1 = (n, k, lo, cap) => {
     const m = n - k * lo;
+    if (m < 0) return { val: 0, str: `최소 ${k} × ${lo} = ${k * lo}개가 필요하여 ${n}개로는 불가능` };
+    if (cap < lo) return { val: 0, str: '상자 1의 상한이 하한보다 작아 해가 없음' };
     const base = Hc(k, m);
-    if (cap >= n) return { val: base, str: `${sub(k)}H${sub(Math.max(m, 0))} = ${base}` };
+    if (cap >= n) return { val: base, str: `${sub(k)}H${sub(m)} = ${base}` };
     const out = Hc(k, m - (cap + 1 - lo));
     return { val: base - out, str: `${base} − ${out} = ${base - out}` };
   };
@@ -501,7 +503,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw1(b, s, v, lab2) {
     const tab = lab2.tab;
     ensure1(s);
-    if (tab === 'problem') { paint(b, (g) => draw1Problem(g, var1.cur())); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0)) { paint(b, (g) => draw1Problem(g, var1.cur())); return; }
     if (tab === 'review') { paint(b, (g) => draw1Review(g, var1.cur(), s.step)); return; }
     const g = mkG(b), W = g.W, H = g.H;
     // ---- 탐구 탭 ----
@@ -703,7 +705,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (o.stair) {
         const pts = [];
         f.forEach((v, i) => { pts.push([ox + i * c, oy - (v + 0.5) * c], [ox + (i + 1) * c, oy - (v + 0.5) * c]); });
-        g.b.path(pts.map((q) => [q[0], g.H - q[1]]), { color: 'amber', width: 3.2 });
+        g.b.path(pts.map((q) => [q[0], g.Y(q[1])]), { color: 'amber', width: 3.2 });
       }
       f.forEach((v, i) => { const col = o.dup && o.dup(i) ? 'red' : BOX[i % 5]; g.dot(ox + (i + 0.5) * c, oy - (v + 0.5) * c, Math.min(c * 0.3, 10), { color: col }); });
     }
@@ -745,7 +747,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // 아래 라벨: y=j
     for (let j = 0; j < n; j++) {
       const a = j === 0 ? -1 : dv[j - 1], b = j === n - 1 ? S : dv[j];
-      g.txt(x0 + ((a + b) / 2 + 0.5) * p, y + 16 + p + 11, `y=${j + 1}`, { size: 12, color: 'muted', weight: 800 });
+      g.txt(x0 + ((a + b) / 2 + 0.5) * p, y + 16 + p + 11, `y=${j + (o.valueStart || 1)}`, { size: 12, color: 'muted', weight: 800 });
     }
     return 16 + p + 24;
   }
@@ -794,7 +796,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     return [
       `제한 없이 $f(1),\\ldots,f(${v.m})$를 정하는 함수는 $${texPi(v.n, v.m)}=${v.n}^{${v.m}}=${Math.pow(v.n, v.m)}$개입니다.`,
-      `$f(1)\\times f(2)=${v.c}$가 되는 순서쌍 $(f(1),f(2))$는 표의 붉은 칸 ${v.d}개이고, 나머지 ${v.m - 2}개의 값은 자유로우므로 ${v.d}\\times ${v.n}^{${v.m - 2}}=${v.d * Math.pow(v.n, v.m - 2)}개입니다.`,
+      `$f(1)\\times f(2)=${v.c}$가 되는 순서쌍 $(f(1),f(2))$는 표의 붉은 칸 ${v.d}개이고, 나머지 ${v.m - 2}개의 값은 자유로우므로 $${v.d}\\times ${v.n}^{${v.m - 2}}=${v.d * Math.pow(v.n, v.m - 2)}$개입니다.`,
       `여사건으로 $${Math.pow(v.n, v.m)}-${v.d * Math.pow(v.n, v.m - 2)}=${v.ans}$.`
     ];
   };
@@ -802,7 +804,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (v.kind === 'atleast') return { steps: `① 전체: $${texPi(v.n, v.m)}=${Math.pow(v.n, v.m)}$.<br>② ${M('a')}가 없는 경우: $${texPi(v.n - 1, v.m)}=${Math.pow(v.n - 1, v.m)}$.<br>③ $${Math.pow(v.n, v.m)}-${Math.pow(v.n - 1, v.m)}=${v.ans}$.`, warning: '"적어도 한 번"은 거의 언제나 여사건(한 번도 안 나오는 경우)을 뺍니다. 중복순열은 한 자리마다 같은 개수의 선택이 있다는 점을 이용합니다.', quick: `$n^m-(n-1)^m$ 꼴입니다.` };
     if (v.kind === 'mono') return { steps: `① 비감소 함수는 "값 y마다 x가 몇 개 대응하는지"로 완전히 정해집니다.<br>② 사용할 수 있는 값은 ${v.b - v.a + 1}개이므로 $x_1+\\cdots+x_{${v.b - v.a + 1}}=${v.m}$의 음이 아닌 정수해의 개수와 같습니다.<br>③ $${texH(v.b - v.a + 1, v.m)}=${v.ans}$.`, warning: '일대일함수는 순열(PnR), 모든 함수는 중복순열($n^m$), <b>비감소 함수는 중복조합</b>으로 셉니다. 공역에서 값을 고른 뒤 크기 순서로 배정하는 것과 같기 때문입니다.', quick: `값의 범위가 $k$개이면 비감소 함수의 개수는 ${tex(texH('k', 'm'))}입니다.` };
     if (v.kind === 'range') return { steps: `① 치역 후보: $${texC(v.n, v.r)}=${C(v.n, v.r)}$.<br>② ${v.r}개 위로 가는 전사 함수: 포함배제로 $${surj(v.m, v.r)}$.<br>③ $${C(v.n, v.r)}\\times ${surj(v.m, v.r)}=${v.ans}$.`, warning: '치역의 원소 수가 정해지면 "치역 고르기 × 전사 함수 세기"의 두 단계로 나눕니다. 전사 함수는 (r개 모두 사용) = 전체 − 빠진 것이 있는 경우로 셉니다.', quick: '치역이 $r$개: $_nC_r\\times$ (r개 위로의 전사 함수).' };
-    return { steps: `① 전체 $${Math.pow(v.n, v.m)}$.<br>② $f(1)f(2)=${v.c}$인 $(f(1),f(2))$가 ${v.d}개이므로 ${v.d}\\times ${v.n}^{${v.m - 2}}=${v.d * Math.pow(v.n, v.m - 2)}$.<br>③ $${v.ans}$.`, warning: '"~가 아닌" 조건은 여사건이 빠릅니다. 조건에 걸리는 값의 쌍을 모두 세었는지 표로 확인하세요(순서쌍이므로 (a,b)와 (b,a)는 다른 칸).', quick: '조건에 걸리는 순서쌍을 표에서 찾아 개수를 뺍니다.' };
+    return { steps: `① 전체 $${Math.pow(v.n, v.m)}$.<br>② $f(1)f(2)=${v.c}$인 $(f(1),f(2))$가 ${v.d}개이므로 $${v.d}\\times ${v.n}^{${v.m - 2}}=${v.d * Math.pow(v.n, v.m - 2)}$.<br>③ $${v.ans}$.`, warning: '"~가 아닌" 조건은 여사건이 빠릅니다. 조건에 걸리는 값의 쌍을 모두 세었는지 표로 확인하세요(순서쌍이므로 (a,b)와 (b,a)는 다른 칸).', quick: '조건에 걸리는 순서쌍을 표에서 찾아 개수를 뺍니다.' };
   };
 
   function draw2Problem(g, v) {
@@ -846,7 +848,7 @@ window.addEventListener('DOMContentLoaded', function () {
       cnts.forEach((c, j) => { for (let t = 0; t < c; t++) f.push(v.a - 1 + j); });
       const hh = Math.min(H * 0.55, 230);
       drawGrid(g, { x: 0, y: 0, w: W, h: hh, m: v.m, n: v.n, f: step >= 2 ? f : null, stair: step >= 2, title: step >= 1 ? `쓸 수 있는 값은 y = ${v.a} … ${v.b} (붉은 줄은 사용 불가)` : '비감소 함수의 그래프(계단)', forbid: step >= 1 ? (i, j) => j + 1 < v.a || j + 1 > v.b : null });
-      if (step >= 2) { const used = drawMonoStrip(g, hh + 4, v.m, v.b - v.a + 1, f.map((q) => q - (v.a - 1))); if (step >= 3) g.txt(W / 2, hh + 4 + used + 14, `${sub(v.b - v.a + 1)}H${sub(v.m)} = ${sub(v.m + v.b - v.a)}C${sub(v.m)} = ${v.ans}가지`, { size: 14, color: 'green', weight: 900 }); }
+      if (step >= 2) { const used = drawMonoStrip(g, hh + 4, v.m, v.b - v.a + 1, f.map((q) => q - (v.a - 1)), { valueStart: v.a }); if (step >= 3) g.txt(W / 2, hh + 4 + used + 14, `${sub(v.b - v.a + 1)}H${sub(v.m)} = ${sub(v.m + v.b - v.a)}C${sub(v.m)} = ${v.ans}가지`, { size: 14, color: 'green', weight: 900 }); }
       return;
     }
     // range
@@ -860,7 +862,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw2(b, s, v, lab2) {
     const tab = lab2.tab;
     ensure2(s);
-    if (tab === 'problem') { paint(b, (g) => draw2Problem(g, var2.cur())); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0)) { paint(b, (g) => draw2Problem(g, var2.cur())); return; }
     if (tab === 'review') { paint(b, (g) => draw2Review(g, var2.cur(), s.step)); return; }
     const g = mkG(b), W = g.W, H = g.H;
     const m = s.fm, n = s.fn, mode = s.fmode, f = s.f;
@@ -1157,19 +1159,26 @@ window.addEventListener('DOMContentLoaded', function () {
       return;
     }
     const blk = {}, hh = Math.min(H - 30, 340);
-    const dA = dp3(v.ga, v.gb, blk, 0, 0, v.via.i, v.via.j), dP = dp3(v.ga, v.gb, blk, v.via.i, v.via.j, v.ga, v.gb);
+    const dA = dp3(v.ga, v.gb, blk, 0, 0, v.via.i, v.via.j);
+    // Q를 피하는 마지막 단계에서는 Q로 들어가는 길을 막아 각 점의 수도 함께 갱신합니다.
+    const qBlk = {};
+    if (v.q && step >= 3) {
+      if (v.q.i > v.via.i) qBlk['h' + (v.q.i - 1) + ',' + v.q.j] = true;
+      if (v.q.j > v.via.j) qBlk['v' + v.q.i + ',' + (v.q.j - 1)] = true;
+    }
+    const dP = dp3(v.ga, v.gb, qBlk, v.via.i, v.via.j, v.ga, v.gb);
     const nums = (i, j) => {
       if (step >= 2 && i >= v.via.i && j >= v.via.j && !(i === v.via.i && j === v.via.j)) return dP[i][j];
       if (step >= 1 && i <= v.via.i && j <= v.via.j) return dA[i][j];
       return null;
     };
-    drawRoad(g, { x: 0, y: 0, w: W, h: hh, ga: v.ga, gb: v.gb, via: v.via, avoid: step >= 3 ? v.q : null, nums, hiBox: step >= 2 ? { i0: v.via.i, j0: v.via.j, i1: v.ga, j1: v.gb, color: 'violet' } : step >= 1 ? { i0: 0, j0: 0, i1: v.via.i, j1: v.via.j, color: 'sky' } : null, title: step >= 3 ? (v.kind === 'via' ? `곱의 법칙 ${v.AP} × ${v.PB} = ${v.ans}` : `${v.AP} × (${v.PB} − ${v.PQ}×${v.QB}) = ${v.ans}`) : step >= 2 ? `② P → B: ${v.PB}가지` : step >= 1 ? `① A → P: ${v.AP}가지 (각 점의 수 = 왼쪽 + 아래)` : '' });
+    drawRoad(g, { x: 0, y: 0, w: W, h: hh, ga: v.ga, gb: v.gb, via: v.via, avoid: v.q, nums, hiBox: step >= 2 ? { i0: v.via.i, j0: v.via.j, i1: v.ga, j1: v.gb, color: 'violet' } : step >= 1 ? { i0: 0, j0: 0, i1: v.via.i, j1: v.via.j, color: 'sky' } : null, title: step >= 3 ? (v.kind === 'via' ? `곱의 법칙 ${v.AP} × ${v.PB} = ${v.ans}` : `${v.AP} × (${v.PB} − ${v.PQ}×${v.QB}) = ${v.ans}`) : step >= 2 ? `② P → B: ${v.PB}가지` : step >= 1 ? `① A → P: ${v.AP}가지 (각 점의 수 = 왼쪽 + 아래)` : '' });
   }
 
   function draw3(b, s, v, lab2) {
     const tab = lab2.tab;
     ensure3(s);
-    if (tab === 'problem') { paint(b, (g) => draw3Problem(g, var3.cur())); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0)) { paint(b, (g) => draw3Problem(g, var3.cur())); return; }
     if (tab === 'review') { paint(b, (g) => draw3Review(g, var3.cur(), s.step)); return; }
     const g = mkG(b), W = g.W, H = g.H;
     if (!b.dragging) s.wDragIdx = null;
@@ -1212,7 +1221,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const geo = drawRoad(g, { x: 0, y: 0, w: W, h: hh, ga, gb, blk, nums, fd: fdE, via, path, title: '길을 누르면 막힘 · 점을 누르면 거쳐 갈 점 P (다시 누르면 해제)' });
       ROAD.box = { ...geo, ga, gb, H };
       if (list.length && pi >= 0 && pi < list.length) { drawWord(g, H - 70, list[pi]); g.txt(W / 2, H - 38, `경로 ${pi + 1}번째 / 전체 ${list.length}가지 (→ ${[...list[pi]].filter((c) => c === 'R').length}번, ↑ ${[...list[pi]].filter((c) => c === 'U').length}번의 배열)`, { size: 12.5, color: 'amber', weight: 850 }); }
-      else g.txt(W / 2, H - 56, via ? `A→P: ${d[via.i][via.j]} · P→B: ${dp3(ga, gb, blk, via.i, via.j)[ga][gb]} → 전체 ${list.length}가지` : `A에서 B까지 ${d[ga][gb]}가지 (→ ${ga}번, ↑ ${gb}번을 일렬로: ${ga + gb}! ÷ (${ga}! ${gb}!))`, { size: 13, color: 'green', weight: 850 });
+      else g.txt(W / 2, H - 56, via ? `A→P: ${d[via.i][via.j]} · P→B: ${dp3(ga, gb, blk, via.i, via.j)[ga][gb]} → 전체 ${list.length}가지` : Object.values(blk).some(Boolean) ? `막힌 길을 반영한 A→B ${d[ga][gb]}가지 (오는 길만 왼쪽 + 아래)` : `A에서 B까지 ${d[ga][gb]}가지 (→ ${ga}번, ↑ ${gb}번: ${ga + gb}! ÷ (${ga}! ${gb}!))`, { size: 13, color: 'green', weight: 850 });
     }
   }
 
@@ -1234,15 +1243,15 @@ window.addEventListener('DOMContentLoaded', function () {
   function roadView(s) {
     const ga = s.ga, gb = s.gb, d = dp3(ga, gb, s.blk), list = roadPaths(s), via = s.via;
     const nb = Object.keys(s.blk).filter((k) => s.blk[k]).length;
-    const free = C(ga + gb, ga);
+    const free = C(ga + gb, ga), pb = via ? dp3(ga, gb, s.blk, via.i, via.j)[ga][gb] : null;
     return {
       chips: [{ k: '막힌 길 없을 때', tex: `\\dfrac{${ga + gb}!}{${ga}!\\,${gb}!}=${free}`, color: 'sky', answer: true }],
       status: { tone: list.length ? 'info' : 'bad', text: via ? `A → P → B : ${list.length}가지` : `A → B : ${list.length}가지${nb ? ` (막힌 길 ${nb}곳)` : ''}` },
       readouts: [
         { label: '도로망', value: `가로 ${ga}칸 · 세로 ${gb}칸`, color: 'sky', note: `→ ${ga}번, ↑ ${gb}번` },
-        { label: '막힌 길이 없을 때 (공식)', value: `${free}가지`, color: 'green', note: `${ga + gb}! ÷ (${ga}! × ${gb}!)` },
-        { label: 'B 점에 채워진 수 (갈림길 합)', value: String(d[ga][gb]), color: 'amber', note: nb ? '막힌 길을 뺀 값' : '공식 값과 같다' },
-        { label: via ? 'A→P→B 경로 수' : '전체 경로 수', value: `${list.length}가지`, color: 'violet', note: via ? `A→P ${d[via.i][via.j]} × P→B ${dp3(ga, gb, s.blk, via.i, via.j)[ga][gb]}` : '그림이 열거한 수' }
+        { label: '막힌 길이 없을 때 (공식)', value: `${free}가지`, color: 'green', note: `${ga + gb}! ÷ (${ga}! × ${gb}!)${via ? ' · P 조건 없는 A→B' : ''}` },
+        { label: via ? 'B 점에 채워진 수 (P→B)' : 'B 점에 채워진 수 (갈림길 합)', value: String(via ? pb : d[ga][gb]), color: 'amber', note: via ? `P에서 출발하여 B에 도착하는 수${nb ? ' · 막힌 길 반영' : ''}` : nb ? '막힌 길을 뺀 값' : '공식 값과 같다' },
+        { label: via ? 'A→P→B 경로 수' : '전체 경로 수', value: `${list.length}가지`, color: 'violet', note: via ? `A→P ${d[via.i][via.j]} × P→B ${pb}` : '그림이 열거한 수' }
       ]
     };
   }
@@ -1254,7 +1263,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     question: '같은 문자가 섞인 배열의 수를 n!에서 왜 나눠야 할까? 도로망의 최단 경로는 어떻게 세어 질까?',
     tabs: { compact: true },
     guide: (s) => (s.smode === 'road'
-      ? '길을 누르면 <b style="color:var(--m-red)">막힌 길</b>이 되고, 교차점을 누르면 <b>거쳐 갈 점 P</b>가 됩니다. 각 점의 수는 (왼쪽 점의 수) + (아래 점의 수)로 채워지고, 「다음 경로」로 경로를 하나씩 따라가 보세요.'
+      ? '길을 누르면 <b style="color:var(--m-red)">막힌 길</b>이 되고, 교차점을 누르면 <b>거쳐 갈 점 P</b>가 됩니다. 각 점의 수는 (왼쪽 점의 수) + (아래 점의 수)로 채워집니다. ' + (s.via ? '<b>P에는 A→P의 수</b>가 적힙니다. P를 제외한 <b>오른쪽 위 영역은 P에서 1로 다시 시작해 센 수</b>이고, 나머지 점은 A에서 센 수입니다. P의 수와 B의 수(P→B)를 곱하면 전체 경유 경로 수입니다. ' : '') + '「다음 경로」로 경로를 하나씩 따라가 보세요.'
       : '첨자가 붙은 문자는 모두 다릅니다. 토큰을 <b>끌어서</b> 자리를 바꿔 보세요. 같은 문자끼리 첨자만 바꾼 배열은 아래 줄에서 <b>똑같은 모양</b>이 되므로, 그만큼(a! b! c!) 나누어 줍니다.'),
     controls: (s) => (s.smode === 'road' ? ['ga', 'gb', 'fd'] : ['pa', 'pb', 'pc']),
     presets: [
@@ -1446,7 +1455,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     g.title(14, `① ${v.kind === 'ppl' ? '남학생' : v.kind === 'ident' ? '흰 공' : '빈 의자'} ${p}${v.kind === 'ppl' ? '명' : '개'}를 먼저 일렬로 놓습니다 → 틈 ${p + 1}곳`);
     const ex = combos(p + 1, q)[0] || [];
     const slots = step >= 2 ? ex : null;
-    const r = drawGapRow(g, { x: 0, y: 16, w: W, p, q, slots, hiGaps: step >= 2 ? ex : null, names: v.kind === 'ppl' ? Array.from({ length: p }, (_, i) => '남' + (i + 1)) : null });
+    const r = drawGapRow(g, { x: 0, y: 16, w: W, p, q, slots, hiGaps: step >= 2 ? ex : null, names: v.kind === 'ppl' ? Array.from({ length: p }, (_, i) => '남' + (i + 1)) : Array(p).fill(v.kind === 'ident' ? '○' : '빈') });
     if (step >= 2) { g.title(r.bottom + 6, `② 틈 ${p + 1}곳 중 ${q}곳에 하나씩 끼웁니다 (한 틈에 둘이면 이웃하게 됨)`); drawFinal(g, { x: 0, y: r.bottom + 20, w: W, p, slots: ex }); }
     if (step >= 3) {
       const t = v.kind === 'ppl' ? `${fact(v.a)} × ${sub(v.a + 1)}P${sub(v.b)} = ${fact(v.a)} × ${Pm(v.a + 1, v.b)} = ${v.ans}` : v.kind === 'ident' ? `${sub(v.p + 1)}C${sub(v.q)} = ${v.ans}` : `${sub(v.N - v.m + 1)}C${sub(v.m)} × ${v.m}! = ${C(v.N - v.m + 1, v.m)} × ${fact(v.m)} = ${v.ans}`;
@@ -1457,12 +1466,12 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
   function draw4(b, s, v, lab2) {
     const tab = lab2.tab;
     ensure4(s);
-    if (tab === 'problem') { paint(b, (g) => draw4Problem(g, var4.cur())); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0)) { paint(b, (g) => draw4Problem(g, var4.cur())); return; }
     if (tab === 'review') { paint(b, (g) => draw4Review(g, var4.cur(), s.step)); return; }
     const g = mkG(b), W = g.W, H = g.H;
     const p = s.p4, q = s.q4, list = combos(p + 1, q);
     g.title(10, `① 파랑 ${p}명을 먼저 세우면 틈이 ${p + 1}곳 — 주황을 끌어 틈에 끼워 보세요`);
-    const r = drawGapRow(g, { x: 0, y: 14, w: W, p, q, slots: s.slots, drag: (t, gi) => { s.slots[t] = gi; s.g4pi = -1; } });
+    const r = drawGapRow(g, { x: 0, y: 14, w: W, p, q, slots: s.slots, names: s.g4mode === 'diff' ? null : Array(p).fill('○'), drag: (t, gi) => { s.slots[t] = gi; s.g4pi = -1; } });
     const y2 = r.bottom + 6;
     g.title(y2, `② 끼워 넣은 결과 ${isValid4(s.slots) ? '' : '(이웃한 주황 → 위반)'}`, { color: isValid4(s.slots) ? 'muted' : 'red' });
     const th = drawFinal(g, { x: 0, y: y2 + 14, w: W, p, slots: s.slots });
@@ -1494,7 +1503,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     guide: '주황을 <b>좌우로 끌어</b> 파랑 사이의 틈에 끼워 보세요. 한 틈에 두 개가 들어가면 <b style="color:var(--m-red)">이웃</b>하게 되어 붉게 표시됩니다. 「모든 경우 세기」를 누르면 틈 고르기가 하나씩 센 칸으로 채워집니다.',
     controls: ['p4', 'q4'],
     presets: [
-      { group: '대상의 종류', label: '주황이 서로 같다 (조합)', color: 'amber', apply: (s) => { s.g4mode = 'same'; }, on: (s) => s.g4mode !== 'diff' },
+      { group: '대상의 종류', label: '각 색끼리 서로 같다 (조합)', color: 'amber', apply: (s) => { s.g4mode = 'same'; }, on: (s) => s.g4mode !== 'diff' },
       { group: '대상의 종류', label: '모두 서로 다른 사람 (순열)', color: 'sky', apply: (s) => { s.g4mode = 'diff'; }, on: (s) => s.g4mode === 'diff' }
     ],
     actions: [
@@ -1533,7 +1542,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
           { label: '파랑이 만드는 틈', value: `${p + 1}곳`, color: 'sky', note: `사이 ${p - 1}곳 + 양 끝 2곳` },
           { label: '틈 고르기 (공식)', value: `${C(p + 1, q)}가지`, color: 'amber', note: `${sub(p + 1)}C${sub(q)}` },
           { label: '그림이 세어 낸 수', value: `${list.length}가지`, color: 'violet', note: list.length === C(p + 1, q) ? '공식 값과 같다' : '공식 값과 다르다!' },
-          { label: s.g4mode === 'diff' ? '서로 다른 사람일 때 전체' : '위 배열을 모두 같은 사람으로 볼 때', value: `${tot}가지`, color: 'green', wide: true, note: s.g4mode === 'diff' ? `${p}! × ${sub(p + 1)}P${sub(q)} = ${fact(p)} × ${Pm(p + 1, q)}` : '그대로 틈 고르기의 수' }
+          { label: s.g4mode === 'diff' ? '서로 다른 사람일 때 전체' : '같은 색끼리 구별하지 않을 때 전체', value: `${tot}가지`, color: 'green', wide: true, note: s.g4mode === 'diff' ? `${p}! × ${sub(p + 1)}P${sub(q)} = ${fact(p)} × ${Pm(p + 1, q)}` : '파랑 배열 1가지 × 틈 고르기 (주황 순서도 1가지)' }
         ]
       };
     },
@@ -1653,7 +1662,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     ];
   };
   const sol5 = (v) => {
-    if (v.kind === 'plain') return { steps: `① 원순열의 수 $=\\dfrac{n!}{n}=(n-1)!$.<br>② $${v.n}$명이므로 $(${v.n}-1)!=${v.ans}$.`, warning: '원탁에서는 "회전하여 같은 것"을 한 가지로 봅니다. 줄 세우기 $n!$에서 $n$으로 나누는 이유는 회전 $n$가지가 모두 같기 때문입니다.', quick: '한 사람을 기준 자리에 고정하고 나머지 $n-1$명을 줄 세웁니다.' };
+    if (v.kind === 'plain') return { steps: `① 원순열의 수 $=\\dfrac{n!}{n}=(n-1)!$.<br>② $${v.n}$명이므로 $(${v.n}-1)!=${v.ans}$.`, warning: '원탁에서는 "회전하여 같은 것"을 한 가지로 봅니다. 줄 세우기 $n!$에서 $n$으로 나누는 이유는 회전 $n$가지가 모두 같기 때문입니다.', quick: 'A를 12시에 맞추도록 각 배열을 회전하면 한 원순열마다 대표가 정확히 하나 남습니다. 나머지 $n-1$명의 시계 방향 순서를 세면 $(n-1)!$이며 $n!$을 계산할 필요가 없습니다. 거울에 비친 순서는 회전으로 겹치지 않으므로 따로 셉니다.' };
     if (v.kind === 'adj') return { steps: `① 묶음 1개 + 나머지 ${v.n - 2}명 = ${v.n - 1}명의 원순열: $${fact(v.n - 2)}$.<br>② 묶음 안의 순서 $2$.<br>③ $${v.ans}$.`, warning: '묶음을 한 사람으로 세어 원순열을 구한 뒤, 묶음 안의 순서를 곱하는 것을 잊지 마세요.', quick: '$2\\times(n-2)!$' };
     if (v.kind === 'sep') return { steps: `① 남학생 원순열 $${fact(v.a - 1)}$.<br>② 틈 ${v.a}곳에 여학생 ${v.b}명: $${texP(v.a, v.b)}=${Pm(v.a, v.b)}$.<br>③ $${v.ans}$.`, warning: '원탁에서 이웃하지 않는 조건은 <b>양 끝이 없으므로 틈이 (사람 수)곳</b>입니다. 일렬일 때의 (사람 수 + 1)곳과 구별하세요.', quick: '(남학생 원순열) × (틈 a곳에 b명 순열)' };
     return { steps: `① 뽑기 $${C(v.n, v.k)}$.<br>② 원순열 $${fact(v.k - 1)}$.<br>③ $${v.ans}$.`, warning: '뽑은 사람만 원탁에 앉으므로 원순열의 $n$은 뽑은 인원 $k$입니다.', quick: '$_nC_k\\times(k-1)!$' };
@@ -1719,7 +1728,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
   function draw5(b, s, v, lab2) {
     const tab = lab2.tab;
     ensure5(s);
-    if (tab === 'problem') { paint(b, (g) => draw5Problem(g, var5.cur())); return; }
+    if (tab === 'problem' || (tab === 'review' && s.step === 0)) { paint(b, (g) => draw5Problem(g, var5.cur())); return; }
     if (tab === 'review') { paint(b, (g) => draw5Review(g, var5.cur(), s.step)); return; }
     const g = mkG(b), W = g.W, H = g.H;
     const n = s.n5, glue = s.m5 === 'glue', arr = s.circ;
@@ -1779,7 +1788,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     view: (s, l2) => {
       ensure5(s);
       const tab = l2 ? l2.tab : 'explore';
-      const base = { formula: formulaNote5(), notes: '원순열은 <b>이전 교육과정</b> 내용이지만 옛 기출에 자주 나오고, 교육과정이 다시 바뀔 때 들어올 수 있어 남겨 둔 장면입니다. 이웃하지 않는 조건에서 <b>틈의 수가 일렬과 다르다</b>는 점을 가장 많이 틀립니다.' };
+      const base = { formula: formulaNote5(), notes: '원순열은 <b>이전 교육과정</b> 내용이지만 옛 기출에 자주 나오고, 교육과정이 다시 바뀔 때 들어올 수 있어 남겨 둔 장면입니다. 원탁에서 <b>회전은 같고, 뒤집은 시계·반시계 순서는 다릅니다</b>. 서로 다른 사람이므로 회전 묶음은 정확히 n개이고, 한 사람을 고정하면 묶음마다 대표가 하나입니다.' };
       if (tab !== 'explore') return base;
       const n = s.n5, glue = s.m5 === 'glue', e = enumOf5(n, glue ? 1 : 0), f = total5(n, glue), r = ((Math.round(s.r5) % n) + n) % n;
       const near = Math.abs(s.r5 % 1) < 0.06 || Math.abs((s.r5 % 1) - 1) < 0.06;
@@ -1812,8 +1821,20 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
      ====================================================================== */
   const PARAMS = { ...P1, ...P2, ...P3, ...P4, ...P5 };
   const SCENES = [scene1, scene2, scene3, scene4, scene5];
+  SCENES.forEach((sc) => {
+    const originalView = sc.view;
+    sc.view = (s, lab2) => {
+      const out = originalView(s, lab2);
+      if (lab2.tab === 'explore') {
+        out.status = { tone: 'info', ...out.status, text: '탐구 모형 · ' + (out.status?.text || '아래 조작값의 구조를 확인하세요') };
+        out.notes = '<b>현재 그림은 아래 조작값의 탐구 모형입니다.</b> 선택 문제의 조건과 단계별 그림은 「문제」·「정리」에서 함께 확인합니다.<br>' + (out.notes || '');
+      }
+      return out;
+    };
+  });
   APLab.createLab({
     id: 'prob-counting',
+    stagedReveal: true,
     title: '경우의 수 실험실',
     courseName: '확률과 통계',
     unit: '경우의 수',
