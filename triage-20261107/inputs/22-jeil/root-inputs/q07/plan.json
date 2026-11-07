@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 치역이 빈틈없이 이어지고 겹치지 않으려면 a=−3이어야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      12,
+      -7,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "4",
+        "6",
+        "8"
+      ],
+      "y": [
+        "-5",
+        "-3",
+        "-1",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "-3",
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "right",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-7",
+          "1"
+        ],
+        "denominator": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "4",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "두 함수 조각의 치역이 경계에서 이어지고 겹치지 않는 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "왼쪽 조각은 x≤4, 오른쪽 조각은 x>4이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "두 치역이 이어지려면 왼쪽 끝값이 −3이고 오른쪽 조각은 −3보다 크고 1보다 작다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 조각이 경계값을 나누어 갖는 모습으로 전체 함수의 일대일성과 치역 조건을 설명한다."
+  ]
+}

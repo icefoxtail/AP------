@@ -1,0 +1,127 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "같은 x=k에서 두 곡선의 세로 거리는 두 제곱근의 차이고, 이를 모두 더하면 중간 항이 소거된다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -4,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "-1"
+        },
+        {
+          "id": "Q1",
+          "x": "1",
+          "y": "-sqrt(3)"
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "-sqrt(2)"
+        },
+        {
+          "id": "Q2",
+          "x": "2",
+          "y": "-2"
+        },
+        {
+          "id": "P3",
+          "x": "3",
+          "y": "-sqrt(3)"
+        },
+        {
+          "id": "Q3",
+          "x": "3",
+          "y": "-sqrt(5)"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s1",
+          "from": "P1",
+          "to": "Q1"
+        },
+        {
+          "id": "s2",
+          "from": "P2",
+          "to": "Q2"
+        },
+        {
+          "id": "s3",
+          "from": "P3",
+          "to": "Q3"
+        }
+      ]
+    }
+  },
+  "caption": "처음 세 세로 길이에서 서로 같은 제곱근이 어떻게 이어지는지 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선은 y=−√x, y=−√(x+2)이며 같은 x에서 세로 거리를 잰다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "k=1,2,3에 해당하는 Pk,Qk의 세로 선분을 나타낸다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 두 칸 떨어진 선분에서 같은 제곱근이 반대 부호로 나타나는 망원합 구조를 보강한다."
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "F",
+    "M"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMF",
+      "refs": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "expressionLabels": [
+    {
+      "id": "side",
+      "ownerSegment": "sOA",
+      "text": "a"
+    },
+    {
+      "id": "half",
+      "ownerSegment": "sOM",
+      "text": "a/2"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 500
+  },
+  "caption": "예: 정삼각형 한 면에서 수선과 길이 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정삼각형 AOB의 세 변의 길이는 a이고 F는 OB 위에서 OF=b이다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 OB의 중점이므로 AM⊥OB, OM=a/2이다.",
+      "mappedTo": [
+        "M",
+        "sAM",
+        "sOM"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "입체의 한 면을 꺼내어 AF²=AM²+MF²로 이어지는 직각삼각형을 보여 준다."
+  ],
+  "sourceQuote": "정삼각형 AOB에서 A에서 OB에 내린 수선의 발을 M이라 하자."
+}

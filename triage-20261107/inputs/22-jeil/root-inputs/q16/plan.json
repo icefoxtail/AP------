@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 조각이 각각 일대일이고, 두 조각의 치역이 겹치지 않으면서 실수 전체를 정확히 덮어야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      2,
+      -8,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1"
+      ],
+      "y": [
+        "-6",
+        "-3",
+        "1",
+        "3",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "-1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "emphasis": [
+          {
+            "from": "-4",
+            "to": "-1",
+            "toState": "OPEN",
+            "color": "BLUE"
+          }
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "6",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)",
+        "emphasis": [
+          {
+            "from": "-1",
+            "to": "2",
+            "fromState": "CLOSED",
+            "color": "WARM"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 이차함수 조각의 치역이 경계에서 이어지며 겹치지 않는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "왼쪽은 f(x)=−x²−2x+1, 오른쪽은 g(x+b)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "가능한 한 경우에 두 조각은 같은 경계에서 각각 증가하며 열린 끝과 닫힌 끝으로 치역을 나눈다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "조각별 단조성과 경계의 열린·닫힌 상태를 통해 치역의 빈틈과 중복이 없음을 이해한다."
+  ]
+}

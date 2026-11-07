@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 교점 조건이 이차방정식의 서로 다른 두 음이 아닌 근 조건으로 바뀐다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "33/16",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=-x+33/16"
+      }
+    ]
+  },
+  "caption": "예: 직선과 무리함수 그래프가 서로 다른 두 점에서 만나는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선은 y=√(2−x), 직선은 y=−x+k이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=33/16에서는 곡선과 직선이 두 점에서 만난다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "근호 함수의 정의역과 두 교점의 위치를 함께 보아 서로 다른 음이 아닌 두 근 조건을 이해한다."
+  ]
+}

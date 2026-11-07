@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "절편 두 점과 점근선의 교점을 좌표로 나타내어 세 점의 기울기를 비교한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      7,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-4",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "두 절편과 점근선의 교점이 한 직선 위에 놓이는 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점근선의 교점 C=(2,1)이고 A,B는 각각 x절편과 y절편이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "조건을 만족하는 경우 세 점 A,B,C가 한 직선 위에 있다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "절편과 대칭 중심의 위치를 한 그림에서 비교해 두 기울기를 같게 놓는 이유를 보여 준다."
+  ]
+}
