@@ -484,3 +484,63 @@ await test('unfolded perimeter labels remain above the toolbar and clear of the 
     }
   }
 });
+
+await test('polygon kind remains a legal category throughout problem-snap tween frames', async () => {
+  const lab = await load(), scene = lab.go('1809');
+  const kinds = ['정삼각형', '정사각형', '정오각형', '정육각형', '정팔각형'];
+  const shell = { performance: { now: () => 0 }, requestAnimationFrame: () => 1 };
+  shell.window = shell;
+  shell.matchMedia = () => ({ matches: false });
+  shell.APLab = { clamp: (v, min, max) => Math.max(min, Math.min(max, v)), $$: () => [] };
+  vm.createContext(shell);
+  vm.runInContext(fs.readFileSync(path.join(root, 'kit/apl-shell.js'), 'utf8'), shell);
+  const proto = shell.APLab.Lab.prototype;
+  let frameCount = 0;
+  Object.assign(lab, {
+    ui: { panes: { explore: {}, review: {}, problem: {} } },
+    _tabAvailable: () => true, _syncTabAttr() {}, _placeControls() {}, _fitProblemStage() {}, _saveHashSoon() {},
+    _loop: proto._loop, tween: proto.tween, _autoSnap: proto._autoSnap,
+    render() {
+      const raw = lab.s.b1809_i;
+      const kind = kinds[Math.round(raw) - 1];
+      assert.equal(lab.params.b1809_i.format(raw, lab.s), kind);
+      assert.ok(call(scene.problem.text, lab.s).includes(kind), 'the problem names the displayed category');
+      assert.ok(call(scene.steps, lab.s)[0].includes(kind), 'the derivation uses the same category');
+      lab.draw(); // All real Board coordinates must be finite; no fractional array lookup may throw.
+      assert.equal(lab.s.b1809_i, raw, 'normalizing the lookup must not overwrite the tween state');
+      frameCount++;
+    }
+  });
+  for (let from = 1; from <= 5; from++) {
+    lab.go('1809'); lab.s.b1809_i = from;
+    proto.setTab.call(lab, 'problem');
+    for (const ms of [0, 45, 90, 180, 270, 360]) proto._frame.call(lab, ms);
+    assert.equal(lab._tween, null, 'the actual shell tween completes without leaving a pending frame');
+    assert.equal(lab.s.b1809_i, 3, 'the original problem-snap target stays unchanged');
+  }
+  assert.equal(frameCount, 30);
+});
+
+await test('the narrow sector preset keeps its arc label inside the stage with the original arc anchor', async () => {
+  const lab = await load(), board = lab.board;
+  for (const [width, height, bottom, right] of [[390, 410, 60, 0], [820, 516, 60, 0], [683, 614, 0, 16], [1039, 742, 0, 16]]) {
+    board.resize(width, height); board.setInsets({ top: 0, left: 0, right, bottom });
+    lab.go('1610');
+    const last = call(lab.scene.presets, lab.s).at(-1);
+    last.apply(lab.s, lab);
+    assert.equal(lab.s.b1610_r, 12); assert.equal(lab.s.b1610_th, 45);
+    const leaders = [], original = board.leader;
+    board.leader = function (anchor, label, options) { leaders.push({ anchor, label }); return original.call(this, anchor, label, options); };
+    let drawing;
+    try { drawing = lab.draw(); } finally { board.leader = original; }
+    const label = drawing.textItems.find((item) => item.text === '호 3π cm');
+    assert.ok(label, 'the given arc length remains visible');
+    const metrics = board.annotationSize(label.text, label.options);
+    assert.ok(label.x + metrics.width / 2 <= width - right - 8, 'the complete arc label clears the right stage edge');
+    if (width === 390) {
+      assert.ok(label.options.dy <= -32, 'only the crowded mobile label moves above its arc midpoint');
+      const expected = [100 * Math.cos(Math.PI / 8), -100 * Math.sin(Math.PI / 8)];
+      assert.ok(leaders.some(({ anchor }) => Math.hypot(anchor[0] - expected[0], anchor[1] - expected[1]) < 1e-8), 'the leader still starts at the actual arc midpoint');
+    }
+  }
+});

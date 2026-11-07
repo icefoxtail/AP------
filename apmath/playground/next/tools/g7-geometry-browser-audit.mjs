@@ -26,6 +26,22 @@ function nextNativeRangeInput(key) {
   const current = input.valueAsNumber;
   if (!Number.isFinite(current)) throw Error(`Non-finite visible range value: ${key} ${JSON.stringify(dom)}`);
   const probe = input.cloneNode(false);
+  // 1103 snaps a ratio so that every central angle stays an integer. Choose
+  // another value accepted by that scene's contract, not a normalized mismatch.
+  if (String(lab.scene.id) === '1103' && key === 'b1103_a') {
+    const b = lab.s.b1103_b, c = lab.s.b1103_c;
+    if (![b, c].every(v => Number.isInteger(v) && v >= 1 && v <= 9)) throw Error(`Invalid 1103 fixed ratios: ${b}, ${c}`);
+    const domain = Array.from({ length: 9 }, (_, i) => i + 1);
+    const candidates = [...domain.filter(v => v > current), ...domain.filter(v => v < current).reverse()];
+    for (const value of candidates) {
+      if (value === lab.s[key] || 360 % (value + b + c) !== 0) continue;
+      probe.value = String(value);
+      if (probe.valueAsNumber !== value || !probe.validity.valid) continue;
+      return { key, label: input.getAttribute('aria-label') || APLab.stripEmoji(lab.params[key].label), value, text: probe.value, dom, storedBefore: lab.s[key],
+        semantic: { rule: '360 % (a + b + c) === 0', b, c, total: value + b + c }, requiresStateChange: true };
+    }
+    throw Error(`No distinct valid 1103 ratio: ${JSON.stringify({ dom, b, c, storedBefore: lab.s[key] })}`);
+  }
   for (const direction of [1, -1]) {
     probe.value = input.value;
     if (input.step.toLowerCase() === 'any') probe.value = direction > 0 ? input.max || '100' : input.min || '0';
@@ -65,10 +81,12 @@ try {
     const dest = report.units[unit];
     dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
     for (const run of runs) {
-      const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
+      let ctx, runError = null, expectedSceneIds = null;
+      const errors = [];
+      try {
+      ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
       const page = await ctx.newPage();
       await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
-      const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
       await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
@@ -84,6 +102,7 @@ try {
       (dest.measurementControls ||= []).push({ run: run.name, ...measurementControl });
       if (!measurementControl.pass) throw Error('Canvas measurement positive/negative control failed');
       const scenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
+      expectedSceneIds = [...new Set(scenes.map(s => s.id))];
       if (!dest.scenes.length) dest.scenes = scenes;
       if (new Set(scenes.map(s => s.id)).size !== scenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
       await page.evaluate(() => {
@@ -245,8 +264,8 @@ try {
             const value = info.value;
             await page.getByRole('slider', { name: info.label, exact: true }).fill(info.text);
             const actual = await page.evaluate(k => lab.s[k], ctl);
-            const pass = Math.abs(actual - value) < 1e-7;
-            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass, domBefore: info.dom, storedBefore: info.storedBefore });
+            const pass = Math.abs(actual - value) < 1e-7 && (!info.requiresStateChange || actual !== info.storedBefore);
+            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass, domBefore: info.dom, storedBefore: info.storedBefore, semantic: info.semantic });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', expected: value, actual });
             await measure(scene, 'numeric-change');
           } else {
@@ -262,8 +281,18 @@ try {
           // independently so animation cannot masquerade as a successful drag.
           await page.evaluate(i => lab.goScene(i), scene.index);
           await settle();
-          const dragPlaying = await page.evaluate(() => !!lab.s.playing);
-          if (dragPlaying) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-started-playing' });
+          let dragPlaying = await page.evaluate(() => !!lab.s.playing);
+          if (dragPlaying) {
+            const pause = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
+            if (pause >= 0) { await page.locator('.apl-actions-row button').nth(pause).click(); await settle(); }
+            dragPlaying = await page.evaluate(() => !!lab.s.playing);
+            const pass = pause >= 0 && !dragPlaying;
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pause-before-drag', executed: pause >= 0, wasPlaying: true, stopped: !dragPlaying, pass });
+            if (!pass) {
+              report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-could-not-pause', pauseFound: pause >= 0, playing: dragPlaying });
+              throw Error(`Native pause before drag failed: ${unit}/${scene.id}/${run.name}`);
+            }
+          }
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
           if (unit === 'g7-polygons' && ['p1-one', 'p4-diag', 'p4-fan'].includes(scene.id)) {
             // A discrete vertex selector must reach another actual vertex, not
@@ -352,14 +381,14 @@ try {
                 const ctlInfo = await page.evaluate(nextNativeRangeInput, parameter);
                 await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(ctlInfo.text); await settle();
                 const parameterActual = await page.evaluate(k => lab.s[k], parameter);
-                const parameterPass = Math.abs(parameterActual - ctlInfo.value) < 1e-7;
+                const parameterPass = Math.abs(parameterActual - ctlInfo.value) < 1e-7 && (!ctlInfo.requiresStateChange || parameterActual !== ctlInfo.storedBefore);
                 if (!parameterPass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', parameter, expected: ctlInfo.value, actual: parameterActual });
                 await page.evaluate(() => lab.setTab('problem')); await page.waitForFunction(() => !lab._tween); await settle();
                 // Compare question content in the same tab: exploration can hide
                 // reveal buttons or answer styles without changing the question.
                 const changed = questionBefore !== await signature();
                 const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
-                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, parameterInput: { expected: ctlInfo.value, actual: parameterActual, pass: parameterPass, domBefore: ctlInfo.dom, storedBefore: ctlInfo.storedBefore }, problemChanged: changed, locked });
+                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, parameterInput: { expected: ctlInfo.value, actual: parameterActual, pass: parameterPass, domBefore: ctlInfo.dom, storedBefore: ctlInfo.storedBefore, semantic: ctlInfo.semantic }, problemChanged: changed, locked });
                 if (opened && changed && !locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-values-retain-open-answer', parameter: ctlInfo.key });
               }
               const revealAgain = page.locator('[data-reveal]:visible');
@@ -423,10 +452,26 @@ try {
           }
         }
       }
-      if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });
-      await ctx.close();
-      fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
-      console.log(`${unit} ${run.name}: ${scenes.length} scenes observed; failures so far ${report.failures.length}`);
+      } catch (error) {
+        runError = { name: error?.name || 'Error', message: error?.message || String(error), stack: error?.stack };
+        report.failures.push({ unit, run: run.name, reason: 'run-aborted', error: runError });
+        // Observe the unmodified baseline's failure, then try the next viewport.
+        // The candidate must still reject the same exception.
+        if (!observe) throw error;
+      } finally {
+        if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });
+        const observedSceneIds = [...new Set(dest.observations.filter(x => x.run === run.name && x.state === 'initial').map(x => x.id))];
+        const initial = { expected: expectedSceneIds?.length ?? null, observed: observedSceneIds.length, expectedSceneIds, observedSceneIds,
+          missingSceneIds: expectedSceneIds?.filter(id => !observedSceneIds.includes(id)) ?? null,
+          unexpectedSceneIds: expectedSceneIds ? observedSceneIds.filter(id => !expectedSceneIds.includes(id)) : null };
+        (report.runSummaries ||= []).push({ unit, run: run.name, status: runError ? 'ABORTED' : 'FINISHED', initial });
+        if (runError) (report.abortedRuns ||= []).push({ unit, run: run.name, error: runError, runtimeErrors: errors.slice(), initial });
+        try { if (ctx) await ctx.close(); }
+        finally {
+          fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
+          console.log(`${unit} ${run.name}: ${initial.observed}/${initial.expected ?? 'unknown'} initial scenes observed${runError ? ' (ABORTED)' : ''}; failures so far ${report.failures.length}`);
+        }
+      }
     }
   }
 } finally {

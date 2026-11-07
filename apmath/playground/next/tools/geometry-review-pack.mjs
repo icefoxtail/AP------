@@ -10,11 +10,11 @@ const criticalIds = {
   'g7-construction': ['c6-3', 'c5-1'],
   'g7-area': ['a1-rect', 'a5-rhomb', 'b1-rt', 'b2-para', 'b5-ratio', 'c1-trap'],
   'g7-polygons': ['p4-join'],
-  'g7-circle-sector': ['1607', '1102', '1207', '1210', '1609'],
+  'g7-circle-sector': ['1607', '1102', '1207', '1210', '1609', '1610', '1809'],
   'g8-triangles': ['t6-7', 't7-1', 't5-1', 't2-2', 't1-7'],
   'g8-quadrilaterals': ['q1-3', 'q1-5', 'q2-3'],
   'g8-similarity': ['sm1-len', 'sm3-rot', 'sm4-conv'],
-  'g8-pythagoras': ['py6-iso', 'py6-trap'],
+  'g8-pythagoras': ['py6-iso', 'py6-trap', 'py7-tri'],
   'g9-trig-ratio': ['r1-1', 'r1-3', 'findFromHyp', 'findFromBase', 'r4-2'],
   'g9-circle': ['c1-1', 'c2-6', 'c4-6']
 };
@@ -39,7 +39,7 @@ const manifest = {
   status: 'EVIDENCE_COPIED_COMPLETION_NOT_ASSERTED',
   selection: 'First registered scene plus critical IDs; every available PNG viewport/stage for those exact IDs.',
   criticalIds, phases: {}, files: [], partialReasons: [],
-  limitations: ['This is an additive subset; retain the original full artifact.', 'Copied results.json files are unchanged, including failures and limitations.', 'A complete initial-state matrix does not prove a run reached its end; the source audit format has no completion marker.', 'PNG copying is not direct image inspection, mathematical validation or a quality verdict.']
+  limitations: ['This is an additive subset; retain the original full artifact.', 'Copied results.json files are unchanged, including failures and limitations.', 'A complete initial-state matrix does not prove a run reached its end; inspect source run summaries when available and the CI job outcome.', 'PNG copying is not direct image inspection, mathematical validation or a quality verdict.']
 };
 function copy(relative, detail = {}) {
   const source = path.join(input, relative), target = path.join(out, relative);

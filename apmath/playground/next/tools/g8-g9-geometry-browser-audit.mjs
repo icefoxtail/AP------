@@ -275,8 +275,18 @@ try {
           // independently so animation cannot masquerade as a successful drag.
           await page.evaluate(i => lab.goScene(i), scene.index);
           await settle();
-          const dragPlaying = await page.evaluate(() => !!lab.s.playing);
-          if (dragPlaying) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-started-playing' });
+          let dragPlaying = await page.evaluate(() => !!lab.s.playing);
+          if (dragPlaying) {
+            const pause = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
+            if (pause >= 0) { await page.locator('.apl-actions-row button').nth(pause).click(); await settle(); }
+            dragPlaying = await page.evaluate(() => !!lab.s.playing);
+            const pass = pause >= 0 && !dragPlaying;
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pause-before-drag', executed: pause >= 0, wasPlaying: true, stopped: !dragPlaying, pass });
+            if (!pass) {
+              report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-could-not-pause', pauseFound: pause >= 0, playing: dragPlaying });
+              throw Error(`Native pause before drag failed: ${unit}/${scene.id}/${run.name}`);
+            }
+          }
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
           if (handle) {
             // Render after a control change, scroll, and then read the current

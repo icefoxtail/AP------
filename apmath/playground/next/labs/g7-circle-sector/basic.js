@@ -117,10 +117,21 @@
         const nx = Math.cos(deg_ * D2R), ny = -Math.sin(deg_ * D2R), size = o.size || 15;
         const metrics = b.annotationSize ? b.annotationSize(str, { size, weight: o.weight || 800 }) : { width: String(str).length * size * .65 + 6, height: size + 6 };
         const distance = Math.max(off, Math.abs(nx) * metrics.width / 2 + Math.abs(ny) * metrics.height / 2 + 8);
-        const opts = { dx: nx * distance, dy: ny * distance, ...o };
+        const { avoidRightEdge, ...labelOptions } = o;
+        const opts = { dx: nx * distance, dy: ny * distance, ...labelOptions };
+        let above = false;
+        if (avoidRightEdge && !b.thumb && !b._bbox) {
+          const at = b.toS(b._P(P(p))), maxX = b.W - b.insets.right - 8 - metrics.width / 2;
+          if (at.x + opts.dx > maxX) {
+            // 좁은 부채꼴의 긴 호 라벨은 같은 호 중점 위로 옮겨 읽을 공간을 확보합니다.
+            opts.dx = Math.min(0, maxX - at.x);
+            opts.dy = -Math.max(off, metrics.height / 2 + 8);
+            above = true;
+          }
+        }
         // 호 바깥의 긴 글자는 실제 호 중점까지 짧은 실선으로 연결합니다.
         // 원호와 헷갈릴 추가 곡선 치수는 만들지 않습니다.
-        if (!b.thumb && !b._bbox && b.leader && (off >= 34 || distance > off + 3 || o.leader)) {
+        if (!b.thumb && !b._bbox && b.leader && (off >= 34 || distance > off + 3 || o.leader || above)) {
           const at = b.toS(b._P(P(p)));
           b.leader(P(o.leaderAnchor || p), b.toW(at.x + opts.dx, at.y + opts.dy), { ...metrics, color: 'muted', alpha: Math.min(.78, o.alpha == null ? 1 : o.alpha), ref: o.ref, part: o.part });
         }
@@ -671,7 +682,7 @@
         }
         const stR = stateOf('r', mode, step);
         if (stR.s !== 'hide') g.text(g.pol(O, R * 0.52, 0), stR.s === 'ask' ? 'r = ? cm' : SLAB.r(v.r), { color: stR.c === 'ink' ? 'sky' : stR.c, dy: th > 180 ? -18 : 20, size: 16 });
-        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16 }, 32);
+        if (stL.s !== 'hide') g.out(g.pol(O, R, m), m, stL.s === 'ask' ? '호 ? cm' : SLAB.l(v.l), { color: stL.c === 'ink' ? 'amber' : stL.c, size: 16, avoidRightEdge: o.id === '1610' }, 32);
         const stS = stateOf('S', mode, step);
         if (stS.s !== 'hide') g.text(th > 200 ? g.pol(O, R * 0.5, 90) : g.pol(O, R * (th < 90 ? 0.8 : 0.66), m), stS.s === 'ask' ? '넓이 ? cm²' : SLAB.S(v.S), { color: stS.c === 'ink' ? 'green' : stS.c, size: 16, dy: th < 90 ? -10 : 0 });
         if (mode === 'explore') {
@@ -1401,9 +1412,11 @@
 
   /* ---------- 18-09 정다각형의 한 꼭짓점을 중심으로 하는 부채꼴 ---------- */
   const POLY = [{ n: 3, nm: '정삼각형' }, { n: 4, nm: '정사각형' }, { n: 5, nm: '정오각형' }, { n: 6, nm: '정육각형' }, { n: 8, nm: '정팔각형' }];
+  // 문제 조건 맞추기 중 선택값은 소수로 보간됩니다. 종류 조회만 가까운 정수로 정규화합니다.
+  const polyKind = (i) => POLY[clamp(Math.round(i), 1, POLY.length) - 1];
   const polyOf = (q) => {
-    const n = POLY[q.i - 1].n, inner = (180 * (n - 2)) / n;
-    return { n, nm: POLY[q.i - 1].nm, inner, S: (q.r * q.r * inner) / 360 };
+    const { n, nm } = polyKind(q.i), inner = (180 * (n - 2)) / n;
+    return { n, nm, inner, S: (q.r * q.r * inner) / 360 };
   };
   build({
     id: '1809', title: '정다각형 안의 부채꼴의 넓이', short: '정다각형 속 부채꼴',
@@ -1411,7 +1424,7 @@
     guide: '<b>다각형 종류</b>와 <b>한 변의 길이</b>를 바꿔 보세요. 중심각은 정다각형의 <b>한 내각</b>이고, 반지름은 <b>한 변</b>입니다. 오른쪽 아래 손잡이를 끌어도 됩니다.',
     box: { x: [-112, 112], y: [-112, 112] },
     params: {
-      i: { value: 3, min: 1, max: 5, step: 1, color: 'amber', label: '정다각형', format: (v) => POLY[v - 1].nm },
+      i: { value: 3, min: 1, max: 5, step: 1, color: 'amber', label: '정다각형', format: (v) => polyKind(v).nm },
       r: { value: 10, min: 6, max: 12, step: 1, color: 'sky', label: '한 변의 길이', format: (v) => v + ' cm' }
     },
     controls: ['i', 'r'],

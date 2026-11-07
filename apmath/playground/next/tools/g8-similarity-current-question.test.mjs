@@ -164,6 +164,60 @@ test('parallel-line auxiliary names stay separate from the given segment lengths
   assert.ok(G.dist(labelCenter(b, m), labelCenter(b, length)) >= 28, 'M and 8 cannot form one apparent M8 label');
 });
 
+test('rotated whole-side connectors clear point-name halos on the same actual side', () => {
+  const scope = { window: { APLab: { clamp: G.clamp } } };
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-board.js'), 'utf8'), scope);
+  const shared = scope.window.APLab.Board.prototype;
+  // An independent four-edge intersection oracle, including boundary contact.
+  const hits = (a, z, r) => {
+    const inside = p => p.x >= r.x0 && p.x <= r.x1 && p.y >= r.y0 && p.y <= r.y1;
+    if (inside(a) || inside(z)) return true;
+    const cross = (p, q, v) => (q.x - p.x) * (v.y - p.y) - (q.y - p.y) * (v.x - p.x);
+    const between = (p, q, v) => v.x >= Math.min(p.x, q.x) && v.x <= Math.max(p.x, q.x) && v.y >= Math.min(p.y, q.y) && v.y <= Math.max(p.y, q.y);
+    const ps = [{ x: r.x0, y: r.y0 }, { x: r.x1, y: r.y0 }, { x: r.x1, y: r.y1 }, { x: r.x0, y: r.y1 }];
+    return ps.some((p, i) => {
+      const q = ps[(i + 1) % 4], v = [cross(a, z, p), cross(a, z, q), cross(p, q, a), cross(p, q, z)];
+      return v[0] * v[1] < 0 && v[2] * v[3] < 0 ||
+        Math.abs(v[0]) < 1e-8 && between(a, z, p) || Math.abs(v[1]) < 1e-8 && between(a, z, q) ||
+        Math.abs(v[2]) < 1e-8 && between(p, q, a) || Math.abs(v[3]) < 1e-8 && between(p, q, z);
+    });
+  };
+  let obstructedMidpoints = 0, rerouted = 0;
+  const sc = get('sm3-rot');
+  for (const [width, height] of [[390, 328], [390, 440], [820, 620], [1440, 680]]) for (const m of [1, 2]) for (const n of [3, 4]) for (const rho of [0, 180, 210, 330]) for (const progress of [0, .5, 1]) {
+    const s = {}; sc.enter(s); Object.assign(s, { smOm: m, smOn: n, smOrot: rho, smOt: progress });
+    const b = layoutBoard(width, height), leaders = [];
+    if (height === 328) b.insets.bottom = 0;
+    b.font = 'sans-serif'; b._ts = () => 1; b._P = p => p;
+    b.ctx = { font: '', save() {}, restore() {}, measureText(text) { return { width: G.textW(text, parseFloat(this.font.split(' ')[1])) }; } };
+    b._fracSplit = shared._fracSplit; b.annotationSize = shared.annotationSize;
+    b.toW = (x, y) => { const o = b.toS({ x: 0, y: 0 }); return { x: (x - o.x) / b.k, y: (y - o.y) / b.k }; };
+    b.seg = (p, q, o) => b.path([p, q], o);
+    b.leader = (...args) => { const r = shared.leader.call(b, ...args); if (r?.drawn) leaders.push(r); return r; };
+    sc.draw(b, s, {}, { tab: 'explore' });
+    const texts = b.log.filter(x => x.name === 'text');
+    const boxes = texts.filter(x => /^[A-Z]$/.test(x.args[1])).map(e => {
+      const p = labelCenter(b, e), z = b.annotationSize(e.args[1], e.args[2]);
+      return { name: e.args[1], x0: p.x - z.width / 2, x1: p.x + z.width / 2, y0: p.y - z.height / 2, y1: p.y + z.height / 2 };
+    });
+    for (const e of texts.filter(x => x.args[2].leaderSegment)) {
+      const center = labelCenter(b, e), actual = leaders.find(x => G.dist(x.label, center) < 1e-7);
+      if (!actual) continue;
+      const [p, q] = e.args[2].leaderSegment.map(x => b.toS(x));
+      const d = G.sub(q, p), v = G.sub(actual.anchor, p), t = (v.x * d.x + v.y * d.y) / (d.x * d.x + d.y * d.y);
+      close(d.x * v.y - d.y * v.x, 0, 'anchor remains on the same actual full side');
+      assert.ok(t > 0 && t < 1, 'anchor remains internal to the full side');
+      for (const box of boxes) assert.ok(!hits(actual.anchor, actual.end, box), `${m}:${n}|${rho}|${progress}|${width}: ${e.args[1]} crosses ${box.name}`);
+      const midpoint = G.mid(p, q), o = { px: true, width: actual.box.x1 - actual.box.x0, height: actual.box.y1 - actual.box.y0 };
+      const original = shared.leader.call({ ...b, seg() {} }, midpoint, center, o);
+      const blocked = original.drawn && boxes.some(box => hits(original.anchor, original.end, box));
+      if (blocked) obstructedMidpoints++;
+      if (G.dist(midpoint, actual.anchor) > 1e-7) { rerouted++; assert.ok(blocked, 'a clear midpoint connector is unchanged'); }
+    }
+  }
+  assert.ok(obstructedMidpoints > 0 && rerouted === obstructedMidpoints, 'negative controls reproduce the blocked midpoint and require the opt-in repair');
+});
+
 test('small SAS triangles emphasize only their included angle without overlapping corner arcs', () => {
   const sc = get('sm3-sas'), s = {}; sc.enter(s); s.smPk = { seed: 63, m: 1, n: 6, q: 2, a: 50, kind: 1 };
   const g = G.geo.sasGeo(1, 6, 2, 50);

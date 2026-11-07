@@ -94,7 +94,7 @@
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
-    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref, leaderAnchor: o.leaderAnchor, leader: o.leader, noLeader: o.noLeader });
+    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref, leaderAnchor: o.leaderAnchor, leader: o.leader, noLeader: o.noLeader, ...(o.leaderSegment ? { leaderSegment: o.leaderSegment } : {}) });
   }
   const phone = (b) => b.W < 560;
   const capSize = (b) => (phone(b) ? 14 : 17);
@@ -115,7 +115,7 @@
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     const metrics = labelMetrics(str, size), sh = metrics.height / 2, w = metrics.width, g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * sh + g;
-    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader, noLeader: o.noLeader });
+    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader, noLeader: o.noLeader, leaderSegment: o.leaderSegment });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V, A, B, o = {}) {
@@ -355,6 +355,40 @@
     width += textW(t.slice(cursor), size);
     return { width, height: size * (fractions ? 2.2 : 1.12) };
   }
+  function segmentHitsBox(a, z, r) {
+    let lo = 0, hi = 1;
+    for (const [v, d, min, max] of [[a.x, z.x - a.x, r.x0, r.x1], [a.y, z.y - a.y, r.y0, r.y1]]) {
+      if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
+      else { const t0 = (min - v) / d, t1 = (max - v) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); }
+      if (lo > hi) return false;
+    }
+    return true;
+  }
+  // Opt-in whole-side labels keep their text position. If a name hides the
+  // connector, move only its anchor along that same side, in screen-pixel steps.
+  function clearSideAnchor(anchor, label, width, height, ends, names) {
+    const blocked = a => {
+      const dx = a.x - label.x, dy = a.y - label.y, length = Math.hypot(dx, dy);
+      if (length < 1) return null;
+      const edge = Math.min(Math.abs(dx) > 1e-9 ? width / (2 * Math.abs(dx)) : Infinity, Math.abs(dy) > 1e-9 ? height / (2 * Math.abs(dy)) : Infinity);
+      const stop = edge * length + 4; // Same text-box gap as Board.leader.
+      if (length <= stop + 1) return null;
+      const end = { x: label.x + dx * stop / length, y: label.y + dy * stop / length };
+      return names.some(r => segmentHitsBox(a, end, r));
+    };
+    if (!blocked(anchor)) return anchor;
+    const [p, q] = ends, dx = q.x - p.x, dy = q.y - p.y, length = Math.hypot(dx, dy);
+    if (length < 2) return anchor;
+    const at = ((anchor.x - p.x) * dx + (anchor.y - p.y) * dy) / (length * length);
+    for (let pixels = 1; pixels < length; pixels++) for (const sign of [-1, 1]) {
+      const t = at + sign * pixels / length;
+      if (t <= 0 || t >= 1) continue;
+      const candidate = { x: p.x + t * dx, y: p.y + t * dy };
+      // A disappearing connector is not a successful avoidance.
+      if (blocked(candidate) === false) return candidate;
+    }
+    return anchor;
+  }
   function drawResolved(b, run) {
     if (b.thumb || b._bbox) { run(); return; }
     const oText = b.text, oPoint = b.point, hadT = Object.prototype.hasOwnProperty.call(b, 'text'), hadP = Object.prototype.hasOwnProperty.call(b, 'point');
@@ -390,13 +424,23 @@
     };
     q.filter(isName).forEach(place);
     q.filter((e) => !isName(e)).forEach(place);
+    const screen = p => b.toS(b._P ? b._P(p) : p);
+    const nameBoxes = b.leader && q.some(e => e.o.leaderSegment) ? q.filter(isName).map(e => {
+      const at = screen(e.p), m = b.annotationSize(e.str, e.o), al = e.o.align || 'center';
+      const x = at.x + (e.o.dx || 0) + (e.ox || 0) + (al === 'left' || al === 'start' ? (m.width - 6) / 2 : al === 'right' || al === 'end' ? -(m.width - 6) / 2 : 0);
+      const y = at.y + (e.o.dy || 0) + (e.oy || 0);
+      // T uses a middle baseline; annotationSize includes the actual font and halo.
+      return { x0: x - m.width / 2, x1: x + m.width / 2, y0: y - m.height / 2, y1: y + m.height / 2 };
+    }) : [];
     // 배치로 밀려난 값은 해당 선분/각에, 점 이름은 실제 점에 연결합니다.
     // 라벨 전체를 그리기 전에 가는 실선으로 그려 수학적 보조선과 구별합니다.
     q.forEach((e) => {
       const source = e.o.leaderAnchor || (isName(e) ? e.p : null);
       if (!source || e.o.noLeader || !b.leader || !(e.o.leader || Math.hypot(e.ox || 0, e.oy || 0) > 12)) return;
       const r = rectOf(e, e.ox || 0, e.oy || 0), at = b.toS(b._P ? b._P(e.p) : e.p);
-      b.leader(b.toS(b._P ? b._P(source) : source), { x: at.x + (r.x0 + r.x1) / 2 - e.p.x * k, y: at.y + (r.y0 + r.y1) / 2 - e.p.y * k }, { px: true, width: r.x1 - r.x0, height: r.y1 - r.y0, color: 'muted', alpha: Math.min(.78, e.o.alpha == null ? 1 : e.o.alpha) });
+      const label = { x: at.x + (r.x0 + r.x1) / 2 - e.p.x * k, y: at.y + (r.y0 + r.y1) / 2 - e.p.y * k };
+      const anchor = e.o.leaderSegment ? clearSideAnchor(screen(source), label, r.x1 - r.x0, r.y1 - r.y0, e.o.leaderSegment.map(screen), nameBoxes) : screen(source);
+      b.leader(anchor, label, { px: true, width: r.x1 - r.x0, height: r.y1 - r.y0, color: 'muted', alpha: Math.min(.78, e.o.alpha == null ? 1 : e.o.alpha) });
     });
     q.forEach((e) => oText.call(b, e.p, e.str, { ...e.o, dx: (e.o.dx || 0) + (e.ox || 0), dy: (e.o.dy || 0) + (e.oy || 0) }));
   }

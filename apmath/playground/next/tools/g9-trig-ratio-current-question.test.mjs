@@ -236,6 +236,63 @@ function board(width = 390, height = 490) {
   for (const name of ['path', 'text', 'point', 'circle', 'arc', 'right', 'ticks', 'handle']) b[name] = (...args) => { const inspect = x => { if (typeof x === 'number') assert.ok(Number.isFinite(x), `non-finite ${name}`); else if (x && typeof x === 'object') Object.values(x).forEach(inspect); }; args.forEach(inspect); log.push({ name, args }); return b; };
   return b;
 }
+
+// Use production annotation geometry and the actual CI glyph widths for the
+// captured 1:12 mobile case. This checks commands/clearance, not browser pixels.
+const annotationScope = { window: { APLab: { clamp: (v, lo, hi) => Math.max(lo, Math.min(hi, v)) } } };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-board.js'), 'utf8'), annotationScope);
+const annotationProto = annotationScope.window.APLab.Board.prototype;
+function annotationBoard(width, height) {
+  const b = board(width, height);
+  const captured = { A: [12.6171875, 17], B: [10.91552734375, 17], C: [12.47607421875, 17], '대변 1': [41.34619140625, 17], '이웃변 12': [66.5556640625, 17], '빗변 √145': [74.806640625, 17], '≈4.8°': [42.94500732421875, 16] };
+  b.font = 'sans-serif';
+  b.ctx = { font: '', save() {}, restore() {}, measureText(str) { const size = +(this.font.match(/([\d.]+)px/) || [])[1] || 17, m = captured[str]; return { width: m ? m[0] * size / m[1] : G.textW(str, size) }; } };
+  b.toW = (x, y) => { const a = b.area(), f = b.focus; return { x: (x - a.x - a.w / 2) / b.k + (f.x[0] + f.x[1]) / 2, y: (y - a.y - a.h / 2) / b.k + (f.y[0] + f.y[1]) / 2 }; };
+  b.seg = (p, q, o) => b.path([p, q], o);
+  for (const method of ['_fracSplit', 'annotationSize', 'curveDim', 'leader']) b[method] = annotationProto[method];
+  return b;
+}
+test('r1-1 short-side callout clears measured B/C names and still starts on BC', () => {
+  const sc = scene('r1-1'), s = {}; sc.enter(s); Object.assign(s, { t11a: 1, t11b: 12 });
+  const draw = (route) => {
+    const b = annotationBoard(390, 411); b.insets.bottom = 60;
+    if (!route) Object.defineProperty(b, '_tgRouteLeaderNames', { get: () => false, set() {} });
+    sc.draw(b, s, {}, { tab: 'explore' }); return b;
+  };
+  const b = draw(true), prior = draw(false), leaders = b.log.filter(x => x.name === 'path' && x.args[1]?.width === 1.15);
+  assert.equal(leaders.length, 1, 'keep one visible callout');
+  const points = leaders[0].args[0].map(p => b.toS(p));
+  assert.equal(points.length, 4, 'short orthogonal route, not a hidden line');
+  close(points[0].x, 318.98, 'actual BC midpoint x'); close(points[0].y, 134.5, 'actual BC midpoint y');
+  const overlaps = (a, z, q) => {
+    assert.ok(Math.abs(a.x - z.x) < 1e-8 || Math.abs(a.y - z.y) < 1e-8, 'orthogonal segments');
+    return Math.min(a.x, z.x) <= q.x1 && Math.max(a.x, z.x) >= q.x0 && Math.min(a.y, z.y) <= q.y1 && Math.max(a.y, z.y) >= q.y0;
+  };
+  for (const name of ['A', 'B', 'C']) {
+    const q = b._tgBoxes.find(x => x.s === name), protectedBox = { x0: q.x0 - 1, x1: q.x1 + 1, y0: q.y0 - 1, y1: q.y1 + 1 };
+    for (let i = 1; i < points.length; i++) assert.ok(!overlaps(points[i - 1], points[i], protectedBox), name + ': font, halo and leader stroke stay separate');
+  }
+  const vertices = b.log.filter(x => x.name === 'point').map(x => b.toS(x.args[0]));
+  for (const p of vertices.slice(1)) for (let i = 1; i < points.length; i++) assert.ok(!overlaps(points[i - 1], points[i], { x0: p.x - 6, x1: p.x + 6, y0: p.y - 6, y1: p.y + 6 }), 'do not extend through B/C dots');
+  const label = b._tgBoxes.find(x => x.s === '대변 1'); close(points.at(-1).y - label.y1, 4, 'visible line stops before label halo');
+  assert.ok(points.reduce((sum, p, i) => sum + (i ? Math.hypot(p.x - points[i - 1].x, p.y - points[i - 1].y) : 0), 0) > 40, 'routing retains a visible connection');
+  const withoutLeader = board => JSON.stringify(board.log.filter(x => x.name !== 'path' || x.args[1]?.width !== 1.15));
+  assert.equal(withoutLeader(b), withoutLeader(prior), 'geometry, exact fractions/radicals and all text positions remain unchanged');
+  assert.deepEqual(b.focus, prior.focus, 'fit remains unchanged');
+  close((b._tgBoxes.find(x => x.s === 'B').x0 + b._tgBoxes.find(x => x.s === 'B').x1) / 2, 336.4741169459374, 'captured B center');
+});
+test('r1-1 routing is opt-in only for colliding exploration dimensions', () => {
+  for (const [id, tab, thumb] of [['r1-1', 'explore', false], ['r1-1', 'problem', false], ['r1-1', 'review', false], ['r1-1', 'explore', true], ['r1-3', 'explore', false]]) {
+    const sc = scene(id), s = {}; sc.enter(s); s.step = sc.steps(s).length;
+    const draw = (route) => {
+      const b = annotationBoard(thumb ? 240 : 390, thumb ? 150 : 411); b.thumb = thumb; b.insets.bottom = thumb ? 0 : 60;
+      if (!route) Object.defineProperty(b, '_tgRouteLeaderNames', { get: () => false, set() {} });
+      sc.draw(b, s, {}, { tab }); return b;
+    };
+    const b = draw(true), prior = draw(false);
+    assert.equal(JSON.stringify(b.log), JSON.stringify(prior.log), `${id}/${tab}/thumb=${thumb}: retain original commands without a target collision`);
+  }
+});
 test('all scene drawings: given → construction → final use current question; no non-finite geometry', () => {
   for (const sc of scenes) {
     seed = 1701; const s = {}; sc.enter(s);

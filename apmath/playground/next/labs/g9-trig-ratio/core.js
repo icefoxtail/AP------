@@ -166,6 +166,52 @@
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   // 분수(\frac{…}{…})가 들어간 글의 가로 폭 어림
   const textW2 = (t, size) => textW(String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, a, d) => (a.length > d.length ? a : d) + ' '), size);
+  // A displaced short-side label can sit beyond a vertex name. Keep its real
+  // anchor and label fixed, and take a short orthogonal route through free space.
+  // T's measured boxes already include the 4px text halo; add stroke clearance.
+  function leaderPastNames(b, anchor, box, boxes, o) {
+    const obstacles = boxes.map(q => ({ ...q, x0: q.x0 - 1, x1: q.x1 + 1, y0: q.y0 - 1, y1: q.y1 + 1 }));
+    const intersects = (a, z, q) => {
+      let lo = 0, hi = 1;
+      for (const [v, d, min, max] of [[a.x, z.x - a.x, q.x0, q.x1], [a.y, z.y - a.y, q.y0, q.y1]]) {
+        if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
+        else { const t0 = (min - v) / d, t1 = (max - v) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); if (lo > hi) return false; }
+      }
+      return true;
+    };
+    // Same box-edge stop as Board.leader, including its 4px label gap.
+    const endFrom = a => {
+      const dx = a.x - box.x, dy = a.y - box.y, L = Math.hypot(dx, dy);
+      if (L < 1 || (Math.abs(dx) <= box.width / 2 && Math.abs(dy) <= box.height / 2)) return null;
+      const edge = Math.min(Math.abs(dx) > 1e-9 ? box.width / (2 * Math.abs(dx)) : Infinity, Math.abs(dy) > 1e-9 ? box.height / (2 * Math.abs(dy)) : Infinity), stop = edge * L + 4;
+      return L > stop + 1 ? { x: box.x + dx * stop / L, y: box.y + dy * stop / L } : null;
+    };
+    const end = endFrom(anchor);
+    if (!end || !obstacles.some(q => /^[A-Z]$/.test(q.s) && intersects(anchor, end, q))) return false;
+    // Do not turn the callout into an extension through a side's endpoint dot.
+    for (const p of o.points) { const s = b.toS(b._P(p)); obstacles.push({ x0: s.x - 6, x1: s.x + 6, y0: s.y - 6, y1: s.y + 6 }); }
+    const routes = [];
+    const addRoute = corners => {
+      const end = endFrom(corners[corners.length - 1]);
+      if (!end) return;
+      const points = [anchor, ...corners, end].filter((p, i, all) => !i || Math.hypot(p.x - all[i - 1].x, p.y - all[i - 1].y) > 1e-6);
+      if (points.some(p => p.x < 1 || p.x > b.W - 1 || p.y < 1 || p.y > b.H - 1)) return;
+      if (points.some((p, i) => i && obstacles.some(q => intersects(points[i - 1], p, q)))) return;
+      routes.push({ points, length: points.reduce((sum, p, i) => sum + (i ? Math.hypot(p.x - points[i - 1].x, p.y - points[i - 1].y) : 0), 0) });
+    };
+    const gaps = (low, high) => {
+      const edges = [...new Set(obstacles.flatMap(q => [q[low], q[high]]))].sort((a, z) => a - z);
+      return [...obstacles.flatMap(q => [q[low] - 1, q[high] + 1]), ...edges.slice(1).map((v, i) => (edges[i] + v) / 2)];
+    };
+    // Start outward from the measured side; the short initial adjustment only
+    // reaches a free corridor between the existing labels.
+    if (o.normal.x) for (const y of [anchor.y, ...gaps('y0', 'y1')]) addRoute([{ x: anchor.x, y }, { x: box.x, y }]);
+    if (o.normal.y) for (const x of [anchor.x, ...gaps('x0', 'x1')]) addRoute([{ x, y: anchor.y }, { x, y: box.y }]);
+    const route = routes.sort((a, z) => a.length - z.length)[0];
+    if (!route) return false; // Retain the visible original if no clear route exists.
+    b.path(route.points.map(p => b.toW(p.x, p.y)), { color: 'muted', width: 1.15, alpha: o.alpha, dash: [], glow: false, ref: o.ref });
+    return true;
+  }
   function T(b, p, str, o = {}) {
     if (str == null || str === '' || (o.alpha != null && o.alpha <= 0)) return;
     str = String(str).replace(/=\s*≈\s*/g, '≈ '); // "h = ≈4.6" 처럼 기호가 겹치지 않게
@@ -214,7 +260,8 @@
     // Keep the geometric target when collision avoidance moves the label.
     if (!b.thumb && o.leaderAnchor && b.leader && (o.leader || Math.hypot(dx - (o.dx || 0), dy - (o.dy || 0)) > 10)) {
       const sp = b.toS(b._P(p)), box = labelBox || { x: sp.x + dx, y: sp.y + dy, ...b.annotationSize(str, { size: o.size || 16, weight: 800 }) };
-      b.leader(b.toS(b._P(o.leaderAnchor)), box, { px: true, width: box.width, height: box.height, alpha: o.alpha == null ? .72 : o.alpha, ref: o.ref });
+      const anchor = b.toS(b._P(o.leaderAnchor)), options = { px: true, width: box.width, height: box.height, alpha: o.alpha == null ? .72 : o.alpha, ref: o.ref };
+      if (!(b._tgRouteLeaderNames && o.leaderNormal && labelBox && b.toW && b.path && leaderPastNames(b, anchor, box, b._tgBoxes.slice(0, -1), { ...options, normal: o.leaderNormal, points: o.leaderPoints }))) b.leader(anchor, box, options);
     }
     b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
   }
@@ -236,7 +283,7 @@
     if (o.curve && b.curveDim && !b.thumb) {
       // Let the unit's collision layout place the label, retaining the curve anchor.
       const original = b.text;
-      b.text = (at, value, options) => { b.text = original; try { return T(b, at, value, options); } finally { b.text = original; } };
+      b.text = (at, value, options) => { b.text = original; try { return T(b, at, value, { ...options, leaderNormal: n, leaderPoints: [p, q] }); } finally { b.text = original; } };
       try { b.curveDim(p, q, str, { side: n, size, weight: 800, color: o.color || 'ink', alpha: o.alpha, ref: o.ref, gap: 5 }); }
       finally { b.text = original; }
       return;
@@ -585,6 +632,7 @@
       draw: (b, s, v, lab) => {
         b._tgBoxes = [];
         const C = baseCtx(s, lab, !!b.thumb);
+        b._tgRouteLeaderNames = D.id === 'r1-1' && !C.problem && !C.review;
         if (b.thumb) C.step = 99;
         G_STATE.problem = !!(C.problem || C.review);
         if (C.problem || C.review) {
