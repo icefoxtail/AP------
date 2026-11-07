@@ -108,7 +108,9 @@ try {
             const future = [...(lab.refs.steps?.children || [])].filter((e, i) => i >= lab.s.step && e.children[1]?.textContent.trim() !== '선택하면 이 단계의 풀이가 열립니다.').length;
             const katexErrors = [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent);
             const text = [...document.querySelectorAll('.apl-tabpanel:not([hidden])')].map(e => e.textContent).join(' ');
-            return { step: lab.s.step, tab: lab.tab, tabs: ['review','problem'].filter(t=>lab._tabAvailable(t)), ink, width: b.W, height: b.H, want, have, future, katexErrors,
+            const handles=b.handles.filter(h=>typeof h.drag==='function'&&h.x>10&&h.y>10&&h.x<b.W-10&&h.y<b.H-10);
+            const capabilities={sliders:[...document.querySelectorAll('.apl-ctl input[type="range"]')].filter(e=>e.checkVisibility()).length,drags:handles.length,generator:!!lab._newProbBtn(),solutions:['standard','quick'].filter(k=>lab.scene.solution?.[k]).length};
+            return { step: lab.s.step, tab: lab.tab, tabs: ['review','problem'].filter(t=>lab._tabAvailable(t)), stagedReveal:!!lab.def.stagedReveal, solutionVisible:!!lab.refs.solution?.querySelector('details')&&lab.refs.solution.checkVisibility(),capabilities,ink, width: b.W, height: b.H, want, have, future, katexErrors,
               invalidText: (text.match(/undefined|NaN|Infinity|\[object Object\]/g) || []),
               clipped: window.__highLabels.filter(q => Math.max(-q.x0, q.x1-b.W, -q.y0, q.y1-b.H) > 2),
               overflow: document.documentElement.scrollWidth > innerWidth + 1,
@@ -125,28 +127,52 @@ try {
           if (!obs.guide) issues.push('missing-guide');
           if (state === 'initial' && obs.want !== obs.have) issues.push('missing-control');
           if (obs.tab === 'review' && obs.future) issues.push('future-step-disclosure');
-          if (state === 'problem-hidden' && obs.steps > 0 && obs.answerOpen) issues.push('early-answer-disclosure');
+          if ((state === 'initial' || state === 'problem-hidden' || /^variant-\d+$/.test(state)) && obs.steps > 0 && obs.answerOpen) issues.push('early-answer-disclosure');
+          if(obs.stagedReveal){
+            if(state==='initial'&&obs.step!==0)issues.push('initial-step-not-zero');
+            if(state==='first-review'&&obs.steps>0&&obs.step!==1)issues.push('first-review-not-step-one');
+            if(obs.step<obs.steps&&(obs.answerOpen||obs.solutionVisible))issues.push('early-staged-solution-disclosure');
+          }
           const row = { id: scene.id, run: run.name, state, ...obs, issues };
           dest.observations.push(row);
           if (issues.length) report.failures.push({ lab: item.id, id: scene.id, run: run.name, state, issues, clipped: obs.clipped, katexErrors: obs.katexErrors });
           return row;
         };
-        const capture = async (scene, state) => {
+        const inspectSolutions = async (scene, prefix) => {
+          // These bodies are lazy: calling scene.steps does not exercise them.
+          const cards = page.locator('#apl-pane-review details.apl-acc');
+          const count = await cards.count();
+          for (let index = 0; index < count; index++) {
+            const card = cards.nth(index), summary = card.locator('summary');
+            if (!(await card.getAttribute('open') !== null)) await summary.click();
+            await measure(scene, `${prefix}-solution-${index + 1}`);
+            const body = (await card.locator('.apl-acc-body').innerText()).trim();
+            dest.interactions.push({ id:scene.id, run:run.name, kind:'solution-disclosure', state:prefix, index, bodyPresent:!!body });
+            if (!body) report.failures.push({ lab:item.id, id:scene.id, run:run.name, state:prefix, reason:'empty-solution-body', index });
+            if (await card.getAttribute('open') !== null) await summary.click();
+          }
+        };
+        const capture = async (scene, state, fullPage = true) => {
           const name = `${item.id}--${scene.id}--${run.name}--${state}.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })); await settle();
-          await page.screenshot({ path: path.join(out, name), fullPage: true }); dest.captures.push(name);
+          await page.screenshot({ path: path.join(out, name), fullPage }); dest.captures.push(name);
         };
         for (const scene of census.scenes) {
-          await page.evaluate(i => lab.goScene(i), scene.index); await measure(scene, 'initial');
+          await page.evaluate(i => lab.goScene(i), scene.index); const initial = await measure(scene, 'initial');
           if (scene.index === 0 && ['pc-paper', 'mobile-paper'].includes(run.name)) await capture(scene, 'initial');
           const n = await page.evaluate(() => { const s=lab.scene.steps; return (typeof s === 'function' ? s(lab.s,lab) : s)?.length || 0; });
           if (await page.evaluate(() => lab._tabAvailable('review'))) {
             await page.evaluate(() => lab.setTab('review'));
+            await measure(scene,'first-review');
             for (let step = 0; step <= n; step++) {
               await page.evaluate(s => lab.setStep(s), step); await measure(scene, `step-${step}`);
             }
             if (n && await page.locator('.apl-step-all:visible').count()) { await page.locator('.apl-step-all:visible').click(); await measure(scene,'show-all'); }
+            await inspectSolutions(scene, 'baseline');
             if (scene.index === 0 && run.name === 'pc-paper') await capture(scene, 'final');
+            // One bounded student viewport per opted-in scene supports independent
+            // figure/step review without archiving every intermediate state.
+            else if (!observe && initial.stagedReveal && run.name === 'pc-paper') await capture(scene, 'review', false);
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(() => { lab.s.revealed=false; lab.setStep(0); lab.setTab('problem'); }); await measure(scene, 'problem-hidden');
@@ -163,7 +189,7 @@ try {
             if (ctl) {
               await page.getByRole('slider', {name:ctl.label,exact:true}).fill(ctl.value); await settle();
               const actual=await page.evaluate(k=>lab.s[k],ctl.key), pass=Math.abs(actual-Number(ctl.value))<1e-7;
-              dest.interactions.push({id:scene.id,kind:'slider',...ctl,actual,pass});
+              dest.interactions.push({id:scene.id,run:run.name,kind:'slider',...ctl,actual,pass});
               if (!pass) report.failures.push({lab:item.id,id:scene.id,reason:'slider-state',expected:ctl.value,actual});
               await measure(scene,'slider');
             }
@@ -177,7 +203,7 @@ try {
               const acquired=await page.evaluate(id=>lab.board.dragging?.id===id,handle.id);
               await page.mouse.move(x+(point.x>point.W/2?-48:48),y-28,{steps:6});await page.mouse.up();await settle();
               const changed=point.state!==await page.evaluate(()=>JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([k])=>!['step','part','revealed','playing'].includes(k)))));
-              dest.interactions.push({id:scene.id,kind:'drag',handle:handle.id,acquired,changed,pass:acquired&&changed});
+              dest.interactions.push({id:scene.id,run:run.name,kind:'drag',handle:handle.id,acquired,changed,pass:acquired&&changed});
               if(!acquired||!changed)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',acquired,changed});
               await measure(scene,'drag');
             }
@@ -185,16 +211,18 @@ try {
               await page.evaluate(i=>{lab.goScene(i);lab.setTab('problem');},scene.index);await settle();
               const button=page.locator('#apl-pane-problem .apl-newprob:visible');
               const available=await button.count();
-              if(!available)dest.interactions.push({id:scene.id,kind:'new-problem',status:'NOT_APPLICABLE',reason:'scene-does-not-expose-generator'});
+              if(!available)dest.interactions.push({id:scene.id,run:run.name,kind:'new-problem',status:'NOT_APPLICABLE',reason:'scene-does-not-expose-generator'});
+              const problemText=()=>page.evaluate(()=>{const e=lab.refs.problemText.cloneNode(true);e.querySelectorAll('button').forEach(b=>b.remove());return e.textContent.replace(/\s+/g,' ').trim();});
               for(let variant=1;available&&variant<=2;variant++){
-                const before=await page.locator('#apl-pane-problem').innerText();
+                const before=await problemText();
                 await button.first().click();await settle();
-                const after=await page.locator('#apl-pane-problem').innerText();
-                dest.interactions.push({id:scene.id,kind:'new-problem',variant,textChanged:before!==after});
+                const after=await problemText();
+                dest.interactions.push({id:scene.id,run:run.name,kind:'new-problem',variant,textChanged:before!==after});
+                if(before===after)report.failures.push({lab:item.id,id:scene.id,run:run.name,state:`variant-${variant}`,reason:'unchanged-new-problem'});
                 await measure(scene,`variant-${variant}`);
                 if(await page.evaluate(()=>lab._tabAvailable('review'))){
                   await page.evaluate(()=>{lab.setTab('review');const s=lab.scene.steps;lab.setStep((typeof s==='function'?s(lab.s,lab):s)?.length||0);});
-                  await measure(scene,`variant-solution-${variant}`);await page.evaluate(()=>lab.setTab('problem'));
+                  await measure(scene,`variant-solution-${variant}`);await inspectSolutions(scene,`variant-${variant}`);await page.evaluate(()=>lab.setTab('problem'));
                 }
               }
             }

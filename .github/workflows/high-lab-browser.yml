@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.scope.outputs.matrix }}
+      base_sha: ${{ steps.scope.outputs.base_sha }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,16 +46,17 @@ jobs:
       - name: Select affected high-school labs
         id: scope
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'refs/heads/main' }}
           REQUESTED: ${{ inputs.only }}
         run: |
-          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git fetch --no-tags --depth=1 origin "$BASE_REF"
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           import path from 'node:path';
           import vm from 'node:vm';
           import {execFileSync} from 'node:child_process';
-          const paths=execFileSync('git',['diff','--name-only',process.env.BASE_SHA,'HEAD'],{encoding:'utf8'}).trim().split('\n');
+          const baseline=execFileSync('git',['rev-parse','FETCH_HEAD'],{encoding:'utf8'}).trim();
+          const paths=execFileSync('git',['diff','--name-only',baseline,'HEAD'],{encoding:'utf8'}).trim().split('\n');
           const sandbox={window:{}};
           vm.runInNewContext(fs.readFileSync('apmath/playground/next/kit/apl-catalog.js','utf8'),sandbox);
           const labs=sandbox.window.APLab.catalog.labs.filter(l=>['common','algebra','calc1','geom','probstat'].includes(l.course));
@@ -71,8 +73,10 @@ jobs:
           const include=[...new Set(selected.map(l=>l.course))].map(course=>({course,only:selected.filter(l=>l.course===course).map(l=>l.id).join(',')}));
           if(!include.length)throw Error('No high-school labs selected');
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`matrix=${JSON.stringify({include})}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`base_sha=${baseline}\n`);
           JS
   browser:
+    name: browser (${{ matrix.course }})
     needs: scope
     runs-on: ubuntu-24.04
     timeout-minutes: 45
@@ -89,7 +93,7 @@ jobs:
           node-version: '22'
       - name: Prepare fixed main baseline
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          BASE_SHA: ${{ needs.scope.outputs.base_sha }}
         run: |
           git fetch --no-tags --depth=1 origin "$BASE_SHA"
           git worktree add --detach "$RUNNER_TEMP/high-baseline" "$BASE_SHA"
