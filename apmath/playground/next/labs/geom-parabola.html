@@ -1342,7 +1342,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if(key==='3-1')V.steps=['A,B에서 준선에 내린 수선의 발 A′,B′을 잡습니다. 정의로 AA′=AF=a, BB′=BF=b입니다.','사다리꼴 AA′B′B에서 M은 AB의 중점, H_M은 A′B′의 중점입니다. MH_M은 준선에 수직입니다.','중점연결정리로 d=MH_M=(a+b)/2. AB=a+b이므로 R=(a+b)/2=d, 따라서 원과 준선은 접합니다.'];
     if(key==='3-2'){
       const qt=QY[q.deg](p).t;
-      put(['초점현과 포물선을 연립한 y좌표의 근과 계수 관계: y_A y_B=−4p², y_A+y_B=4p cotθ.','두 접선을 연립하면 Q=(−p,(y_A+y_B)/2). 즉 준선 위의 중점 H_M과 같습니다.',`접선 기울기의 곱은 4p²/(y_A y_B)=−1. QF의 기울기는 −cotθ이므로 AB와 수직, Q=(−${p}, ${plainFr(qt)}).`],
+      put(['초점현과 포물선을 연립한 y좌표의 근과 계수 관계: y_A y_B=−4p², y_A+y_B=4p cotθ.','두 접선을 연립하면 Q=(−p,(y_A+y_B)/2). 즉 준선 위의 중점 H_M과 같습니다.',`접선 기울기의 곱은 4p²/(y_A y_B)=−1. QF의 기울기는 −cotθ이므로 AB와 수직, $Q=(-${p}, ${qt})$.`],
         `① 초점현은 $x=p+y\\cot\\theta$. $y^2-4p\\cot\\theta\\,y-4p^2=0$이므로 $y_Ay_B=-4p^2$, $y_A+y_B=4p\\cot\\theta$.<br>② 접선 $y_Ay=2p(x+x_A)$, $y_By=2p(x+x_B)$를 빼면 $y_Q=(y_A+y_B)/2$, 다시 대입하면 $x_Q=-p$. 따라서 $Q=(-${p},${qt})$.<br>③ 두 접선의 기울기 곱은 $4p^2/(y_Ay_B)=-1$. $QF$의 기울기는 $-\\cot\\theta$이므로 기울기 $\\tan\\theta$인 $AB$와 수직입니다.`);
       V.textbook.steps+=`<br>⑤ $m_{QF}=-\\cot\\theta$이고 $m_{AB}=\\tan\\theta$이므로 두 기울기의 곱이 −1입니다.`;
     }

@@ -1139,12 +1139,14 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   // 장면을 열거나 탭·새 문제로 그림이 바뀔 때 한 번, 그린 라벨까지 모두 보이도록 보기 창을 맞춥니다(끌기·확대는 그대로 둡니다).
   function autoView(b, lab, key, fitBody, explicitBox) {
+    // 레이아웃이 확정되기 전에는 픽셀 라벨 여백으로 보기 범위를 재거나 저장하지 않습니다.
+    const usableW = b.W - b.insets.left - b.insets.right, usableH = b.H - b.insets.top - b.insets.bottom;
+    if (!(usableW >= 64 && usableH >= 64)) return;
     const k2 = key + '|' + b.W + 'x' + b.H + '|' + Math.round(b.insets.top / 8) + ',' + Math.round(b.insets.right / 8) + ',' + Math.round(b.insets.bottom / 8);
     if (lab.__cqKey === k2) return;
-    lab.__cqKey = k2;
-    if (explicitBox) { b.setFocus(explicitBox, true); return; }
+    if (explicitBox) { b.setFocus(explicitBox, true); lab.__cqKey = k2; return; }
     const bb = b.measure(fitBody);
-    if (bb) b.setFocus(b.fitBox(bb, { margin: 0.07, px: 12 }), true);
+    if (bb) { b.setFocus(b.fitBox(bb, { margin: 0.07, px: 12 }), true); lab.__cqKey = k2; }
   }
   // 새 장면의 공통 틀
   const baseScene = (o) => ({ startStep: 0, tabs: { compact: true }, reviewTab: true, ...o });

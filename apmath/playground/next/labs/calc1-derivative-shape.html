@@ -40,7 +40,11 @@ window.addEventListener('DOMContentLoaded', function () {
   //   C: 모드 1·3 적분상수 / C2: 모드 2 상하 이동 / k: 모드 4 직선 높이 / a: 모드 5 정적분 아래끝
   const lamOf = (s) => Math.max(0, Math.min(1, s.lam));
   const gammaOf = (s) => -1.0 + 4.0 * lamOf(s);
+  // Only the two endpoints merge roots; a nearby middle root is still distinct.
+  const quarticCase = (s) => lamOf(s) === 0 ? 'left' : lamOf(s) === 1 ? 'right' : 'three';
   const effDeltaOf = (m, s) => (m === 4 ? 1.0 + s.k / 3.0 : s.delta); // 도함수가 x축(또는 직선)과 만나는 정도
+  const effTolerance = (m) => m === 3 ? 0 : 1e-9; // The root-count scene must distinguish either side of δ=0.
+  const productText = (p) => p !== 0 && Math.abs(p) < 1e-4 ? p.toExponential(3) : fmt(p);
   function evalTop(m, s, x) {
     if (m === 1 || m === 3) {
       // f(x) = (x - 1)^3 - 3*δ*(x - 1) + C
@@ -97,8 +101,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const shift = -A / 3;
     const roots = [];
 
-    if (Math.abs(disc) < 1e-4) {
-      if (Math.abs(q) < 1e-5) roots.push(shift);
+    const tol = 64 * Number.EPSILON * Math.max(Math.abs(q*q/4), Math.abs(p*p*p/27), Number.MIN_VALUE);
+    if (Math.abs(disc) <= tol) {
+      if (p === 0 && q === 0) roots.push(shift);
       else {
         const u1 = Math.cbrt(-q / 2);
         roots.push(2 * u1 + shift, -u1 + shift);
@@ -163,13 +168,13 @@ window.addEventListener('DOMContentLoaded', function () {
         textbook: () => ({
           steps: `① 사차함수(${tex('a > 0')})가 극댓값을 가지려면 도함수 ${tex("f'(x) = 0")} 이 서로 다른 세 실근을 가져야 함<br/>
 ② 따라서 극댓값을 갖지 않으려면 도함수 ${tex("f'(x) = 0")} 이 중근 또는 삼중근, 허근을 가져야 함<br/>
-③ ${tex('\\gamma = -1')} 일 때와 ${tex('\\gamma = 3')} 일 때 각각 증감표를 작성하여 부호 변화를 조사합니다.`,
+③ ${tex('\\gamma = -1')}이면 도함수의 부호는 ${tex('-, -, +')}이므로 ${tex('x=3')}만 극소점입니다. ${tex('\\gamma = 3')}이면 부호는 ${tex('-, +, +')}이므로 ${tex('x=-1')}만 극소점입니다. 중근에서는 부호가 바뀌지 않아 극값이 아닙니다.`,
           warning: "⚠️ 사차함수가 극댓값을 갖지 않으려면 도함수가 중근(또는 허근)을 가져서 부호가 (+)에서 (−)로 바뀌는 곳이 없어야 합니다."
         }),
         shortcut: () => ({
           steps: `① 최고차항의 계수가 양수인 사차함수가 <strong>극댓값을 갖지 않으려면</strong> 삼차 도함수 ${tex("f'(x)")}의 부호가 ${tex('(+) \\to (-)')}로 바뀌는 곳이 없어야 합니다.<br/>
 ② 따라서 가운데 근 ${tex('\\gamma')}가 양 끝 근과 같아져 <strong>중근(${tex('\\gamma = -1')} 또는 ${tex('\\gamma = 3')})</strong>이 되어야 합니다.<br/>
-③ ${tex('\\gamma = -1')} 이면 ${tex('x = -1')} 에서는 <strong>부호가 바뀌지 않아 극값이 아니고</strong>, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 <strong class="text-emerald-300">${tex('x = 3')} 만 유일한 극소점</strong>입니다.`,
+③ ${tex('\\gamma = -1')}이면 ${tex('x=-1')}은 중근이어서 극값이 아니며, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 ${tex('x=3')}이 유일한 극소점입니다. ${tex('\\gamma = 3')}이면 반대로 ${tex('x=3')}은 극값이 아니고 ${tex('x=-1')}이 유일한 극소점입니다.`,
           highlight: "💡 사차함수가 극값을 1개만 갖는다 ⇔ 삼차 도함수 f′(x)가 x축에 접하거나(중근) 실근이 1개뿐이다."
         })
       },
@@ -365,17 +370,17 @@ window.addEventListener('DOMContentLoaded', function () {
     const POS = { full: `${sym}(+) ↗ 증가`, short: '+ ↗', color: 'rose' };
     const NEG = { full: `${sym}(−) ↘ 감소`, short: '− ↘', color: 'sky' };
     if (m === 2) {
-      const lam = lamOf(s), g = gammaOf(s);
-      if (lam < 0.02) return { roots: [{ x: -1, label: '극값 아님', color: 'violet' }, { x: 3, label: '극소', color: 'green' }], ints: [NEG, NEG, POS] };
-      if (lam > 0.98) return { roots: [{ x: -1, label: '극소', color: 'green' }, { x: 3, label: '극값 아님', color: 'violet' }], ints: [NEG, POS, POS] };
+      const kind = quarticCase(s), g = gammaOf(s);
+      if (kind === 'left') return { roots: [{ x: -1, label: '극값 아님', color: 'violet' }, { x: 3, label: '극소', color: 'green' }], ints: [NEG, NEG, POS] };
+      if (kind === 'right') return { roots: [{ x: -1, label: '극소', color: 'green' }, { x: 3, label: '극값 아님', color: 'violet' }], ints: [NEG, POS, POS] };
       return { roots: [{ x: -1, label: '극소', color: 'green' }, { x: g, label: '극대', color: 'rose' }, { x: 3, label: '극소', color: 'green' }], ints: [NEG, POS, NEG, POS] };
     }
     const eff = effDeltaOf(m, s);
-    if (eff > 0.005) {
+    if (eff > effTolerance(m)) {
       const h = Math.sqrt(eff);
       return { roots: [{ x: 1 - h, label: '극대', color: 'rose' }, { x: 1 + h, label: '극소', color: 'green' }], ints: [POS, NEG, POS] };
     }
-    if (Math.abs(eff) <= 0.005) return { roots: [{ x: 1, label: '극값 아님 (중근)', color: 'violet' }], ints: [POS, POS] };
+    if (Math.abs(eff) <= effTolerance(m)) return { roots: [{ x: 1, label: '극값 아님 (중근)', color: 'violet' }], ints: [POS, POS] };
     return { roots: [], ints: [{ full: `모든 실수에서 ${sym}(x) > 0  ⇒  전 구간 ↗ 증가 (극값 없음)`, short: '↗ 증가 (극값 없음)', color: 'rose' }] };
   }
   function drawBand(b, s, m) {
@@ -458,7 +463,7 @@ window.addEventListener('DOMContentLoaded', function () {
     else {
       lines.push({ x: 1.0, color: 'violet', alpha: 0.5 });
       const eff = effDeltaOf(m, s);
-      if (eff > 0.005) {
+      if (eff > effTolerance(m)) {
         const h = Math.sqrt(eff);
         lines.push({ x: 1.0 - h, color: 'rose', alpha: 0.6 }, { x: 1.0 + h, color: 'green', alpha: 0.6 });
       }
@@ -508,13 +513,13 @@ window.addEventListener('DOMContentLoaded', function () {
     b.use('main');
     const f = (x) => evalTop(m, s, x);
     if (m === 2) {
-      const lam = lamOf(s), g = gammaOf(s);
+      const kind = quarticCase(s), g = gammaOf(s);
       const L = (x) => `(${fmt(x, 0)}, ${fmt(f(x), 1)})`;
       // 점끼리 가까워도 라벨이 겹치지 않게: 왼쪽 점은 왼쪽 아래, 오른쪽 점은 오른쪽 아래, 극대는 위에 둡니다.
-      if (lam < 0.02) {
+      if (kind === 'left') {
         mark(b, 'main', -1, f(-1), { color: 'violet', r: 6.5, label: `극값 아님${L(-1)}`, dx: -10, dy: -14, align: 'right' });
         mark(b, 'main', 3, f(3), { color: 'green', r: 6.5, label: `극소${L(3)}`, dx: 10, dy: 18, align: 'left' });
-      } else if (lam > 0.98) {
+      } else if (kind === 'right') {
         mark(b, 'main', -1, f(-1), { color: 'green', r: 6.5, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
         mark(b, 'main', 3, f(3), { color: 'violet', r: 6.5, label: `극값 아님${L(3)}`, dx: 10, dy: -14, align: 'left' });
       } else {
@@ -522,7 +527,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const pxL = b.toS(-1, 0).x, pxG = b.toS(g, 0).x, pxR = b.toS(3, 0).x;
         const nearL = pxG - pxL < 130, nearR = pxR - pxG < 130;
         mark(b, 'main', -1, f(-1), { color: 'green', r: 6, label: `극소${L(-1)}`, dx: -10, dy: 18, align: 'right' });
-        mark(b, 'main', g, f(g), { color: 'rose', r: 6.5, label: `극대(${fmt(g, 1)}, ${fmt(f(g), 1)})`, dx: nearL ? 12 : nearR ? -12 : 0, dy: -18, align: nearL ? 'left' : nearR ? 'right' : 'center' });
+        mark(b, 'main', g, f(g), { color: 'rose', r: 6.5, label: `극대 (x=γ≈${fmt(g, 4)}, y≈${fmt(f(g), 2)})`, dx: nearL ? 12 : nearR ? -12 : 0, dy: -18, align: nearL ? 'left' : nearR ? 'right' : 'center' });
         mark(b, 'main', 3, f(3), { color: 'green', r: 6, label: `극소${L(3)}`, dx: 10, dy: 18, align: 'left' });
       }
       return;
@@ -537,7 +542,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return dy > 0 ? Math.max(dy, ay + 44 - p.y) : Math.min(dy, ay - 42 - p.y);
     };
     mark(b, 'main', 1, f(1), { color: 'violet', r: 5.5, label: rootsShown ? '' : `${m === 4 ? 'h′' : m === 5 ? 'g′' : 'f′'}(x)가 극소인 점(1, ${fmt(f(1), 1)})`, dx: 12, dy: -12 });
-    if (eff > 0.005) {
+    if (eff > effTolerance(m)) {
       const h = Math.sqrt(eff);
       mark(b, 'main', 1 - h, f(1 - h), { color: 'rose', r: 6.5, label: `극대(${fmt(1 - h)}, ${fmt(f(1 - h))})`, dx: 0, dy: extDy(1 - h, f(1 - h), -18), align: 'center', ref: 'root' });
       mark(b, 'main', 1 + h, f(1 + h), { color: 'green', r: 6.5, label: `극소(${fmt(1 + h)}, ${fmt(f(1 + h))})`, dx: 0, dy: extDy(1 + h, f(1 + h), 20), align: 'center', ref: 'root' });
@@ -567,12 +572,12 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     const eff = effDeltaOf(m, s);
     const yRef = m === 4 ? s.k : 0;
-    if (eff > 0.005) {
+    if (eff > effTolerance(m)) {
       const h = Math.sqrt(eff);
       mark(b, 'deriv', 1 - h, yRef, { color: 'rose', r: 6, label: `α=${fmt(1 - h)}`, dx: -8, dy: -12, align: 'right', ref: 'root' });
       if (m === 4) mark(b, 'deriv', 1 + h, yRef, { color: 'green', r: 6, label: `β=${fmt(1 + h)}`, dx: 8, dy: -12, ref: 'root' });
       else b.handle('beta', [1 + h, 0], { color: 'amber', r: 7.5, ref: 'root', label: `β=${fmt(1 + h)}`, dx: 8, dy: -12, drag: dragBeta(s) });
-    } else if (Math.abs(eff) <= 0.005) {
+    } else if (Math.abs(eff) <= effTolerance(m)) {
       if (m === 4) mark(b, 'deriv', 1, yRef, { color: 'violet', r: 7.5, label: '접하는 점 x=1', dx: 0, dy: -22, align: 'center', ref: 'root' });
       else b.handle('beta', [1, 0], { color: 'violet', r: 7.5, ref: 'root', label: '중근 x=1 (x축에 접함: 부호 불변)', dx: 0, dy: 24, align: 'center', drag: dragBeta(s) });
     } else if (m !== 4) {
@@ -633,17 +638,17 @@ window.addEventListener('DOMContentLoaded', function () {
     return (s) => {
       const v = {};
       if (m === 2) {
-        const lam = lamOf(s), g = gammaOf(s), dbl = lam < 0.02 || lam > 0.98;
+        const kind = quarticCase(s), g = gammaOf(s), dbl = kind !== 'three';
         v.chips = [
           { k: '함수', tex: 'y = f(x) \\; (\\text{사차함수})', color: 'ink' },
-          { k: '도함수', tex: `f'(x) = 0.8(x+1)(x ${sg(-g)})(x-3)`, color: 'sky' }
+          { k: '도함수', tex: "f'(x)=0.8(x+1)(x-\\gamma)(x-3),\\quad \\gamma=-1+4\\lambda", color: 'sky' }
         ];
         v.status = dbl ? { tone: 'key', text: '도함수의 중근 (극댓값 없음)' } : { tone: 'ok', text: '서로 다른 세 실근 (극값 3개)' };
         v.alert = dbl ? { tone: 'key', text: "삼차 도함수 f'(x)가 중근을 가져 부호가 바뀌지 않으므로 사차함수의 극댓값이 사라지고 그 점은 극값이 아니게 되었습니다!" } : null;
         v.readouts = [
-          { label: '도함수 부호 변화', value: dbl ? '− → 0(부호 불변) → − → 0 → +' : '− → + → − → + (3번 교차)', color: 'amber', ref: 'root' },
-          { label: '양 끝 극소점의 높이', value: `f(−1)=${fmt(evalTop(2, s, -1), 1)} | f(3)=${fmt(evalTop(2, s, 3), 1)}`, color: 'green', ref: 'F' },
-          { label: '극대 f(γ)', value: `f(${fmt(g, 1)})=${fmt(evalTop(2, s, g), 1)}`, color: 'rose', ref: 'root' },
+          { label: '도함수 부호 변화', value: kind === 'left' ? '− → 0(부호 불변) → − → 0 → +' : kind === 'right' ? '− → 0 → + → 0(부호 불변) → +' : '− → + → − → + (3번 교차)', color: 'amber', ref: 'root' },
+          { label: dbl ? '양 끝 도함수 영점에서의 높이' : '양 끝 극소점의 높이', value: `f(−1)≈${fmt(evalTop(2, s, -1), 2)} | f(3)≈${fmt(evalTop(2, s, 3), 2)}`, color: 'green', ref: 'F' },
+          { label: dbl ? '중근 위치 γ (극값 아님)' : '극대 위치 γ와 높이', value: `γ≈${fmt(g, 4)}, f(γ)≈${fmt(evalTop(2, s, g), 2)}`, color: dbl ? 'violet' : 'rose', ref: 'root' },
           { label: '극값 개수', value: dbl ? '극값 1개 (극소만 존재)' : '극값 3개 (극소2 · 극대1)', color: 'violet' }
         ];
         v.tape = s.step >= 3 ? { title: dbl ? `삼차 도함수가 중근을 가짐(λ=${fmt(s.lam)}) ⇒ 사차함수의 극댓값이 없음` : `삼차 도함수 서로 다른 세 실근(λ=${fmt(s.lam)}) ⇒ 사차함수의 극소 2개 · 극대 1개` } : null;
@@ -655,18 +660,18 @@ window.addEventListener('DOMContentLoaded', function () {
         { k: m === 5 ? '정적분으로 정의된 함수' : m === 4 ? '두 함수의 차' : '함수', tex: m === 5 ? `g(x) = \\int_{${asc(s.a)}}^{x} f(t)\\,dt` : m === 4 ? `h(x) = f(x) - g(x) = (x-1)^3 ${sg(-(3 + s.k))}(x-1)` : `f(x) = (x-1)^3 ${sg(-3 * s.delta)}(x-1) ${sg(s.C)}`, color: 'ink' },
         { k: '도함수', tex: m === 4 ? `f'(x) = 3(x-1)^2 - 3, \\; g'(x) = ${asc(s.k)}` : m === 5 ? `g'(x) = f(x) = 3(x-1)^2 ${sg(-3 * s.delta)}` : `f'(x) = 3(x-1)^2 ${sg(-3 * s.delta)}`, color: 'sky' }
       ];
-      if (eff > 0.005) {
+      if (eff > effTolerance(m)) {
         const hV = Math.sqrt(eff);
         const yMax = f(1.0 - hV), yMin = f(1.0 + hV), prod = yMax * yMin;
-        const rCnt = prod < -0.01 ? 3 : (Math.abs(prod) <= 0.01 ? 2 : 1);
+        const rCnt = m === 3 ? solveCubicRoots(1, 0, -3 * s.delta, s.C).length : prod < -1e-9 ? 3 : (Math.abs(prod) <= 1e-9 ? 2 : 1);
         v.status = { tone: 'ok', text: '도함수가 x축과 두 점에서 만남 (극대·극소 있음)' };
         v.readouts = [
           { label: '도함수 부호 변화', value: '+ → 0 → − → 0 → +', color: 'amber', ref: 'root' },
           { label: '극댓값 / 극솟값', value: `극대=${fmt(yMax, 1)} | 극소=${fmt(yMin, 1)}`, color: 'rose', ref: 'F' },
-          { label: '극값의 곱 f(α)·f(β)', value: `곱 = ${fmt(prod)} (${prod < 0 ? '<0' : '≥0'})`, color: 'sky' },
+          { label: '극값의 곱 f(α)·f(β)', value: `곱 ≈ ${productText(prod)} (${prod < 0 ? '<0' : prod > 0 ? '>0' : '=0'})`, color: 'sky' },
           { label: '방정식 실근 / 극값 개수', value: `실근 ${rCnt}개 | 극값 2개`, color: 'violet' }
         ];
-      } else if (Math.abs(eff) <= 0.005) {
+      } else if (Math.abs(eff) <= effTolerance(m)) {
         v.status = { tone: 'key', text: '도함수가 x축에 접함 (중근 · 극값 0개)' };
         v.alert = { tone: 'key', text: '도함수가 x축에 접하여 부호가 (+ → 0 → +)로 바뀌지 않으므로 함수 f는 극값을 갖지 않습니다!' };
         v.readouts = [
@@ -689,15 +694,19 @@ window.addEventListener('DOMContentLoaded', function () {
       if (s.step >= 3) {
         let title = '';
         if (m === 1) {
-          title = s.delta > 0.005 ? `중근이 아닌 두 근(δ=${fmt(s.delta)} > 0) : 도함수의 부호가 바뀌므로 극대·극소 2개 생성!`
-            : Math.abs(s.delta) <= 0.005 ? "중근(δ = 0) : f′(1)=0 이지만 부호가 (+→0→+)로 바뀌지 않으므로 극값이 아님!"
+          title = s.delta > 1e-9 ? `중근이 아닌 두 근(δ=${fmt(s.delta)} > 0) : 도함수의 부호가 바뀌므로 극대·극소 2개 생성!`
+            : Math.abs(s.delta) <= 1e-9 ? "중근(δ = 0) : f′(1)=0 이지만 부호가 (+→0→+)로 바뀌지 않으므로 극값이 아님!"
             : '허근(δ < 0) : 도함수가 x축 위에 있으므로 극값 없이 항상 증가!';
         } else if (m === 3) {
-          const yMax = evalTop(3, s, 1.0 - Math.sqrt(Math.max(0, s.delta)));
-          const yMin = evalTop(3, s, 1.0 + Math.sqrt(Math.max(0, s.delta)));
-          const prod = yMax * yMin;
-          const cnt = prod < -0.01 ? 3 : (Math.abs(prod) <= 0.01 ? 2 : 1);
-          title = `극댓값(${fmt(yMax, 1)}) × 극솟값(${fmt(yMin, 1)}) = ${fmt(prod)}  ⇒  방정식 f(x)=0 실근 ${cnt}개!`;
+          if (s.delta <= 0) {
+            title = '극값 없이 전 구간에서 증가하고 양 끝에서 −∞, +∞로 향하므로 f(x)=0의 서로 다른 실근은 1개입니다.';
+          } else {
+            const yMax = evalTop(3, s, 1.0 - Math.sqrt(s.delta));
+            const yMin = evalTop(3, s, 1.0 + Math.sqrt(s.delta));
+            const prod = yMax * yMin;
+            const cnt = solveCubicRoots(1, 0, -3 * s.delta, s.C).length;
+            title = `극댓값 × 극솟값 ≈ ${productText(prod)} (${prod < 0 ? '음수' : prod > 0 ? '양수' : '0'})  ⇒  방정식 f(x)=0 실근 ${cnt}개!`;
+          }
         } else if (m === 4) title = `직선 g′(x) = ${fmt(s.k)} 를 기준으로 f′의 부호 읽기 ⇒ 만나서 위아래가 바뀌면 h(x)의 극값 / 접하기만 하면 극값 없음`;
         else if (m === 5) title = `g(x) = ∫ₐˣ f(t)dt : 아래끝 a = ${fmt(s.a)} 에서 항상 g(a) = 0 & 도함수는 g'(x) = f(x)!`;
         v.tape = { title };
@@ -729,7 +738,7 @@ window.addEventListener('DOMContentLoaded', function () {
     lab.invalidate(true);
   });
   // 탭별 단계: 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
-  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? 0 : 0);
+  const cxStep = (lab, s) => (lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? 3 : 0) : s.step);
   // 장면마다(또는 문제가 바뀔 때마다) 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
   function cxFocus(b, key, box) {
     if (b._cxKey === key) return;
@@ -884,16 +893,16 @@ window.addEventListener('DOMContentLoaded', function () {
     const vb = b.viewBox();
     b.poly([[vb.x0 - 1, vb.y0 - 1], [0, vb.y0 - 1], [0, vb.y1 + 1], [vb.x0 - 1, vb.y1 + 1]], { fill: 'muted', fillAlpha: 0.14, color: null });
     cxShadeBetween(b, ga, f10, 0, vb.x1, 'red', 0.3, 'bad');
-    b.plot(h10, { color: 'violet', width: 2.2, dash: true, ref: 'h' });
-    b.hline(a, { color: 'violet', width: 1.8, dash: true, ref: 'h' });
+    if (s.step >= 1) b.plot(h10, { color: 'violet', width: 2.2, dash: true, ref: 'h' });
+    if (s.step >= 1) b.hline(a, { color: 'violet', width: 1.8, dash: true, ref: 'h' });
     b.plot(g10, { color: 'muted', width: 2, dash: true, ref: 'g' });
     b.plot(f10, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
     b.plot(ga, { color: 'sky', width: 3.4, glow: true, ref: 'ga' });
     const gap = h10(1) - a;
-    b.seg([1, ga(1)], [1, f10(1)], { color: 'amber', width: 3.2, ref: 'gap' });
-    b.point([1, h10(1)], { color: 'violet', r: 5.5, ref: 'h' });
-    cxTag(b, [1, h10(1)], `h의 최솟값 ${h10(1)}`, { color: 'violet', size: 12, align: 'left', dx: 10, dy: -12, ref: 'h' });
-    if (Math.abs(a - h10(1)) < 0.04) b.point([1, f10(1)], { color: 'green', hollow: true, r: 9, ref: 'gap' });
+    if (s.step >= 2) b.seg([1, ga(1)], [1, f10(1)], { color: 'amber', width: 3.2, ref: 'gap' });
+    if (s.step >= 2) b.point([1, h10(1)], { color: 'violet', r: 5.5, ref: 'h' });
+    if (s.step >= 3) cxTag(b, [1, h10(1)], `h의 최솟값 ${h10(1)}`, { color: 'violet', size: 12, align: 'left', dx: 10, dy: -12, ref: 'h' });
+    if (s.step >= 3 && a === h10(1)) b.point([1, f10(1)], { color: 'green', hollow: true, r: 9, ref: 'gap' });
     cxTag(b, [0, vb.y1 - 0.75], 'x ≥ 0 만 생각', { color: 'muted', size: 12, align: 'right', dx: -8 });
     cxCurveTag(b, f10, 'y = f(x)', 'ink', { dy: -12, skip: [[1, f10(1), 1.4]] });
     cxCurveTag(b, ga, 'y = g(x) + a', 'sky', { side: 'left', dy: -14, skip: [[1, ga(1), 1.4]] });
@@ -923,15 +932,15 @@ window.addEventListener('DOMContentLoaded', function () {
     if (st >= 3) b.stext(14, b.H - b.insets.bottom - 14, v.ask === 'amax' ? `a = ${v.m0} 일 때 g + a 가 f 에 접합니다` : `a = ${-v.m0} 일 때 f + a 가 g 에 접합니다`, { color: 'green', size: 13, align: 'left', ref: 'ga' });
   }
   function view10(s, lab) {
-    if (lab.tab !== 'explore') return { formula: FORMULA10 };
-    const a = s.al, ok = a <= h10(1) + 1e-9, gap = h10(1) - a;
+    if (lab.tab !== 'explore') return { formula: var10.cur().ask === 'amin' ? '<b>차함수의 최솟값으로 읽기</b><br>$f(x)+a\\ge g(x) \\iff h(x)=f(x)-g(x)\\ge -a$. 따라서 $a\\ge-\\min h$이고, 허용된 정의역에서 h의 최소가 실제로 달성되는지도 확인합니다.' : FORMULA10 };
+    const a = s.al, gap = h10(1) - a, ok = gap >= 0, touching = gap === 0;
     return {
       chips: [{ tex: 'h(x)=f(x)-g(x)=x^3-3x+4', color: 'violet' }, { tex: 'f(x)\\ge g(x)+a \;(x\\ge 0)', color: 'sky' }],
-      status: ok ? { tone: 'ok', text: a >= h10(1) - 0.04 ? 'a = 2: 두 그래프가 접합니다 (가장 큰 a)' : '모든 x ≥ 0 에서 f ≥ g + a 가 성립합니다 (a ≤ 2)' } : { tone: 'warn', text: 'g + a 가 f 위로 올라온 구간(빨강)이 생겨 부등식이 깨집니다' },
+      status: ok ? { tone: 'ok', text: touching ? 'a = 2: 두 그래프가 접합니다 (가장 큰 a)' : `모든 x ≥ 0 에서 f > g + a 입니다. 가장 좁은 세로 간격도 ${fmt(gap, 4)}만큼 남습니다.` } : { tone: 'warn', text: 'g + a 가 f 위로 올라온 구간(빨강)이 생겨 부등식이 깨집니다' },
       readouts: [
         { label: '올린 높이 a', value: fmt(a), color: 'amber', ref: 'ga' },
         { label: 'h = f − g 의 최솟값 (x ≥ 0)', value: `${h10(1)}  (x = 1)`, color: 'violet', ref: 'h' },
-        { label: 'x = 1 에서의 세로 간격', value: fmt(gap), color: gap >= -1e-9 ? 'green' : 'red', ref: 'gap' },
+        { label: 'x = 1 에서의 세로 간격', value: touching ? '0 (접함)' : `${gap > 0 ? '양수' : '음수'} · ≈ ${fmt(gap, 4)}`, color: ok ? 'green' : 'red', ref: 'gap' },
         { label: '항상 성립?', value: ok ? '성립 (a ≤ 최솟값)' : '성립하지 않음', color: ok ? 'green' : 'red', ref: 'bad', wide: true }
       ],
       formula: FORMULA10
@@ -1027,7 +1036,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ? `두 실근을 가지려면 수평선이 극값에서 접해야 하므로 $k=${v.m}$ 또는 $k=${v.M}$ 입니다.`
       : `${v.type === 'A' ? '세 실근' : '양의 근 두 개'}이 되는 $k$ 의 범위를 그림에서 읽으면 $${v.desc.tex}$ 입니다.${v.type === 'B' ? ` (y절편 $f(0)=${v.co[3]}$ 이 양의 근과 음의 근을 가르는 높이입니다.)` : ''}`);
     out.push(v.type === 'C' ? `합은 $${v.m}+${v.M < 0 ? '(' + v.M + ')' : v.M}=${v.ans}$.` : `조건을 만족하는 ${v.type === 'A' ? '자연수' : '정수'} $k$ 는 $${v.ints.join(',\\,')}$ 이므로 ${v.ans}개입니다.`);
-    return out;
+    return [out[0], out[1], out[2] + ' ' + out[3]];
   };
   const FORMULA12 = '<b>수평선으로 세는 실근</b><br>$f(x)=k$ 의 실근 = 곡선 $y=f(x)$ 와 수평선 $y=k$ 의 교점의 $x$좌표<br>· 극댓값 $M$, 극솟값 $m$ 이면 $m\\lt k\\lt M$ 에서 서로 다른 세 실근, 극값에 접하면 두 실근<br>· <b>양의 근</b>의 개수는 교점이 $y$축 오른쪽에 있는 것만 세고, $y$절편 $f(0)$ 과 $k$ 의 크기가 경계가 됩니다.';
   function ruler12(b, co, ok, x, vb, labels) {
@@ -1052,13 +1061,13 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s.grid) b.grid();
     b.axes();
     const vb = b.viewBox();
-    ruler12(b, CO12, cond.ok, vb.x0 + 0.55, vb);
+    if (s.step >= 2) ruler12(b, CO12, cond.ok, vb.x0 + 0.55, vb, s.step >= 3);
     b.hline(k, { color: 'sky', width: 2.6, glow: true, ref: 'k' });
     b.plot(f12, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
     r.list.forEach((x) => b.point([x, k], { color: x > 1e-7 ? 'green' : x < -1e-7 ? 'rose' : 'amber', r: 6.5, ref: 'roots' }));
     [[0, 0], [2, -4]].forEach((q) => b.point(q, { color: 'ink', hollow: true, r: 4.5 }));
-    cxTag(b, [0, 0], '극댓값 0', { color: 'muted', size: 12, align: 'left', dx: 10, dy: -12 });
-    cxTag(b, [2, -4], '극솟값 −4', { color: 'muted', size: 12, align: 'left', dx: 10, dy: 18 });
+    if (s.step >= 1) cxTag(b, [0, 0], '극댓값 0', { color: 'muted', size: 12, align: 'left', dx: 10, dy: -12 });
+    if (s.step >= 1) cxTag(b, [2, -4], '극솟값 −4', { color: 'muted', size: 12, align: 'left', dx: 10, dy: 18 });
     cxCurveTag(b, f12, 'y = f(x)', 'ink', { dy: -12, skip: [[0, 0, 1], [2, -4, 1]] });
     b.handle('K', [3.0, k], { color: 'sky', label: `k = ${fmt(k)}`, dx: -12, dy: -14, align: 'right', ref: 'k',
       drag: (w) => { let v = clamp(R10(w.y), -4.8, 2.4); [-4, -3, -2, -1, 0, 1, 2].forEach((z) => { if (Math.abs(v - z) < 0.07) v = z; }); s.kk = v; } });
@@ -1121,7 +1130,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const cxN = (v, d = 2) => { const r = +v.toFixed(d); return String(Object.is(r, -0) ? 0 : r).replace('-', '−'); };
   const dsKp = (a) => { const k = 3 * a; if (Number.isInteger(k)) return k === 1 ? '' : k === -1 ? '−' : String(k).replace('-', '−'); const r = cxRatOf2(k); return `${r.n < 0 ? '−' : ''}${Math.abs(r.n)}/${r.d}`; }; // 그림·단계 글용 3a
   const dsU = (str) => str.replace(/\^2/g, '²').replace(/\^3/g, '³');
-  const dsStepNow = (lab, s) => (lab && lab.tab === 'review' ? s.step : 0);
+  const dsStepNow = (lab, s) => (lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? 3 : 0) : s.step);
   const dsRange = (fn, x0, x1) => { let lo = Infinity, hi = -Infinity; for (let i = 0; i <= 80; i++) { const y = fn(x0 + ((x1 - x0) * i) / 80); lo = Math.min(lo, y); hi = Math.max(hi, y); } return [lo, hi]; };
   // 함수 f(검정)와 도함수 f′(하늘색)를 한 그림에 겹쳐 그립니다(위아래로 쪼개면 휴대폰에서 그림이 너무 작아집니다).
   // showTop 이 아니면(문제 탭·정리 1단계) 도함수만 보이는 창으로, 함수는 풀이 단계에서 드러납니다.
@@ -1261,7 +1270,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       steps: `① 최고차항의 계수가 양수인 사차함수가 <strong>극댓값을 갖지 않으려면</strong> 삼차 도함수 ${tex("f'(x)")}의 부호가 ${tex('(+) \\to (-)')}로 바뀌는 곳이 없어야 합니다.<br/>
 ② 따라서 가운데 근 ${tex('\\gamma')}가 양 끝 근과 같아져 <strong>중근(${tex(`\\gamma = ${v.p}`)} 또는 ${tex(`\\gamma = ${v.r}`)})</strong>이 되어야 합니다.<br/>
-③ ${tex(`\\gamma = ${v.p}`)} 이면 ${tex(`x = ${v.p}`)} 에서는 <strong>부호가 바뀌지 않아 극값이 아니고</strong>, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 <strong class="text-emerald-300">${tex(`x = ${v.r}`)} 만 유일한 극소점</strong>입니다.`,
+③ ${tex(`\\gamma = ${v.r}`)}일 때는 ${tex(`x=${v.r}`)}에서 부호가 바뀌지 않고 ${tex(`x=${v.p}`)}만 극소점입니다. ${tex(`\\gamma = ${v.p}`)} 이면 ${tex(`x = ${v.p}`)} 에서는 <strong>부호가 바뀌지 않아 극값이 아니고</strong>, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 <strong class="text-emerald-300">${tex(`x = ${v.r}`)} 만 유일한 극소점</strong>입니다.`,
       highlight: examData[2].shortcut().highlight
     };
   };
@@ -1440,14 +1449,14 @@ window.addEventListener('DOMContentLoaded', function () {
   const text5 = (v) => (v.first ? examData[5].question() : `이차함수 ${tex(fTex5(v))} 에 대하여 함수 ${tex('g(x) = \\displaystyle\\int_{a}^{x} f(t)\\,dt')} 가 극솟값 ${tex('0')}을 갖도록(즉 ${tex('x')}축에 극소점이 접하도록) 하는 모든 상수 ${tex('a')}의 값을 구하시오.`);
   const ans5 = (v) => (v.first ? examData[5].answerBadge() : `${tex(`a = ${v.r}`)} (극소점) 또는 ${tex(`a = ${v.s2}`)} (x축과 다시 만나는 점)`);
   const steps5 = (v) => (v.first ? examData[5].steps : [
-    `1단계 · g(x)=∫ₐˣ3${dsXm(v.p)}${dsXm(v.r)}dt에서 g′(x)=3${dsXm(v.p)}${dsXm(v.r)}와 g(a)=0을 표시합니다.`,
+    `1단계 · g(x)=∫ₐˣ3${dsXm(v.p).replace(/x/g, 't')}${dsXm(v.r).replace(/x/g, 't')}dt에서 g′(x)=3${dsXm(v.p)}${dsXm(v.r)}와 g(a)=0을 표시합니다.`,
     `2단계 · x=${v.p}, ${v.r}의 양쪽에서 피적분함수의 부호를 살펴 g의 극대·극소 위치를 찾습니다.`,
-    `3단계 · g(${v.r})=0 조건을 ∫ₐ${v.r}3${dsXm(v.p)}${dsXm(v.r)}dt=0으로 바꾸어 아래끝 a를 구합니다.`]);
+    `3단계 · g(${v.r})=0 조건을 ∫ₐ${v.r}3${dsXm(v.p).replace(/x/g, 't')}${dsXm(v.r).replace(/x/g, 't')}dt=0으로 바꾸어 아래끝 a를 구합니다.`]);
   const std5 = (v) => {
     if (v.first) return examData[5].textbook();
     const c2 = 3 * (v.p + 1), c1 = 3 * v.p * (v.p + 2), Fr = v.r * v.r * v.r - c2 * v.r * v.r + c1 * v.r, Fx = cxPoly([1, -c2, c1, 0]);
     return {
-      steps: `① ${tex(`g(x) = \\displaystyle\\int_{a}^{x} (${cxPoly([3, -2 * c2, c1])})\\,dt = \\left[ ${Fx.replace(/x/g, 't')} \\right]_{a}^{x} = F(x) - F(a)`)} (${tex(`F(x) = ${Fx}`)})<br/>
+      steps: `① ${tex(`g(x) = \\displaystyle\\int_{a}^{x} (${cxPoly([3, -2 * c2, c1]).replace(/x/g, 't')})\\,dt = \\left[ ${Fx.replace(/x/g, 't')} \\right]_{a}^{x} = F(x) - F(a)`)} (${tex(`F(x) = ${Fx}`)})<br/>
 ② ${tex(`g'(x) = ${fTex5(v).slice(7)} = 0`)} 에서 ${tex(`x = ${v.r}`)} 일 때 극솟값을 가짐<br/>
 ③ 극솟값 ${tex(`g(${v.r}) = 0`)} 조건 대입:<br/>
 &nbsp;&nbsp;${tex(`F(${v.r}) - F(a) = 0 \\implies ${cxPoly([1, -c2, c1, -Fr]).replace(/x/g, 'a')} = 0`)}<br/>
@@ -1496,9 +1505,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- 6. 장면 정의 ---------- */
   const rootPresets = [
-    { label: '① 중근이 아닌 두 근 (부호가 바뀜 → 극값)', color: 'green', set: { delta: 1, C: 0 }, on: (s) => s.delta > 0.005 },
-    { label: '② 중근 (부호가 바뀌지 않음 → 극값 아님)', color: 'violet', set: { delta: 0, C: 0 }, on: (s) => Math.abs(s.delta) <= 0.005 },
-    { label: '③ 허근 (항상 증가)', color: 'amber', set: { delta: -0.4, C: 0 }, on: (s) => s.delta < -0.005 }
+    { label: '① 중근이 아닌 두 근 (부호가 바뀜 → 극값)', color: 'green', set: { delta: 1, C: 0 }, on: (s) => s.delta > 1e-9 },
+    { label: '② 중근 (부호가 바뀌지 않음 → 극값 아님)', color: 'violet', set: { delta: 0, C: 0 }, on: (s) => Math.abs(s.delta) <= 1e-9 },
+    { label: '③ 허근 (항상 증가)', color: 'amber', set: { delta: -0.4, C: 0 }, on: (s) => s.delta < -1e-9 }
   ];
   const scenes = [
     /* ===== MODE 1 · 이차 도함수 → 삼차 원함수 개형 & 증감표 ===== */
@@ -1527,9 +1536,9 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: guideOf(2) + ' (이 장면은 그래프의 모양이 잘 보이도록 가로로 늘려 그렸습니다.)',
       controls: ['lam', 'C2'],
       presets: [
-        { label: '① 서로 다른 세 실근 (극값 3개)', color: 'green', set: { lam: 0.4, C2: 0 }, on: (s) => s.lam >= 0.02 && s.lam <= 0.98 },
-        { label: '② γ = −1 (왼쪽 중근 · 극값 아님)', color: 'violet', set: { lam: 0, C2: 0 }, on: (s) => s.lam < 0.02 },
-        { label: '③ γ = 3 (오른쪽 중근 · 극값 아님)', color: 'amber', set: { lam: 1, C2: 0 }, on: (s) => s.lam > 0.98 }
+        { label: '① 서로 다른 세 실근 (극값 3개)', color: 'green', set: { lam: 0.4, C2: 0 }, on: (s) => quarticCase(s) === 'three' },
+        { label: '② γ = −1 (왼쪽 중근 · 극값 아님)', color: 'violet', set: { lam: 0, C2: 0 }, on: (s) => quarticCase(s) === 'left' },
+        { label: '③ γ = 3 (오른쪽 중근 · 극값 아님)', color: 'amber', set: { lam: 1, C2: 0 }, on: (s) => quarticCase(s) === 'right' }
       ],
       actions: [chartAction, playAction('자동으로 γ 움직이기')],
       steps: examData[2].steps,
@@ -1553,7 +1562,7 @@ window.addEventListener('DOMContentLoaded', function () {
       question: '극댓값과 극솟값의 부호가 서로 반대일 때만 방정식 f(x)=0 의 실근이 3개일까?',
       guide: guideOf(3),
       controls: ['C', 'delta'],
-      presets: rootPresets,
+      presets: rootPresets.map((p, i) => ({ ...p, on: (s) => i === 0 ? s.delta > 0 : i === 1 ? s.delta === 0 : s.delta < 0 })),
       actions: [chartAction, playAction('자동으로 위아래 이동')],
       steps: examData[3].steps,
       problem: problemOf(3, () => ({ delta: examData[3].snap.p1, C: examData[3].snap.p2 })),
@@ -1573,9 +1582,9 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: guideOf(4),
       controls: ['k'],
       presets: [
-        { label: '① 두 점에서 만남 (k = 0)', color: 'green', set: { k: 0 }, on: (s) => 1 + s.k / 3 > 0.005 },
-        { label: '② 접함 (k = −3)', color: 'violet', set: { k: -3 }, on: (s) => Math.abs(1 + s.k / 3) <= 0.005 },
-        { label: '③ 만나지 않음 (k = −4)', color: 'amber', set: { k: -4 }, on: (s) => 1 + s.k / 3 < -0.005 }
+        { label: '① 두 점에서 만남 (k = 0)', color: 'green', set: { k: 0 }, on: (s) => 1 + s.k / 3 > 1e-9 },
+        { label: '② 접함 (k = −3)', color: 'violet', set: { k: -3 }, on: (s) => Math.abs(1 + s.k / 3) <= 1e-9 },
+        { label: '③ 만나지 않음 (k = −4)', color: 'amber', set: { k: -4 }, on: (s) => 1 + s.k / 3 < -1e-9 }
       ],
       actions: [chartAction, playAction('자동으로 직선 움직이기')],
       steps: examData[4].steps,
@@ -1615,9 +1624,9 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: '<b>금색 점</b>을 위아래로 끌어 g를 올려 보세요. g + a가 f 위로 넘어간 곳은 빨갛게 칠해집니다. 두 곡선이 처음 닿는 순간의 a가 점선 곡선 h = f − g 의 최솟값입니다.',
       controls: ['al'],
       presets: [
-        { label: 'a = 0', set: { al: 0 }, on: (s) => Math.abs(s.al) < 0.03 },
-        { label: 'a = 2 (처음 닿는 순간)', color: 'green', set: { al: 2 }, on: (s) => Math.abs(s.al - 2) < 0.03 },
-        { label: 'a = 3 (넘어간 경우)', color: 'red', set: { al: 3 }, on: (s) => Math.abs(s.al - 3) < 0.03 }
+        { label: 'a = 0', set: { al: 0 }, on: (s) => s.al === 0 },
+        { label: 'a = 2', color: 'green', set: { al: 2 }, on: (s) => s.al === h10(1) },
+        { label: 'a = 3', color: 'red', set: { al: 3 }, on: (s) => s.al === 3 }
       ],
       actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : 'g를 자동으로 올리기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
       tick: (s, dt) => { if (!s.playing) return false; s.al += 0.9 * (s.alDir || 1) * dt; if (s.al > 3.6) { s.al = 3.6; s.alDir = -1; } if (s.al < -1) { s.al = -1; s.alDir = 1; } return true; },
@@ -1685,7 +1694,75 @@ window.addEventListener('DOMContentLoaded', function () {
   for (let i = 0; i < 5; i++) scenes[i] = withVary(i + 1, scenes[i]);
 
   /* ---------- 7. 실험실 등록 ---------- */
+  // Free exploration keeps its own model; problem/review always use the current generated variant.
+  const EXPLORE_STEPS = {
+    "cubic": [
+      "도함수가 x축을 가로지르는 근과 접하기만 하는 중근을 구별합니다.",
+      "각 구간에서 도함수 부호를 읽어 원함수의 증가·감소를 연결합니다.",
+      "부호가 바뀌는 곳만 극값입니다. 두 영점 사이의 도함수 넓이는 원함수 극값의 차입니다."
+    ],
+    "quartic": [
+      "도함수의 세 근과 움직이는 가운데 근 γ를 봅니다.",
+      "γ가 양 끝 근에 합쳐지면 중근에서 부호가 바뀌지 않습니다. 양 끝 경우를 각각 비교합니다.",
+      "도함수의 +→− 변화가 없으면 극댓값이 없습니다. 중근 자체를 극점으로 세지 않습니다."
+    ],
+    "roots": [
+      "삼차함수의 극대·극소 높이와 x축을 비교합니다.",
+      "극값 사이에서 수평선과 만나는 점이 세 개인 이유를 세 단조구간으로 확인합니다.",
+      "극값 높이에서는 중근을 한 번만 셉니다. 극값이 없으면 단조성이므로 실근은 하나입니다."
+    ],
+    "difference": [
+      "두 도함수의 그래프를 비교해 차함수의 도함수를 읽습니다.",
+      "h′=f′−g′의 부호는 두 그래프의 위아래 관계로 정합니다.",
+      "교점에서 위아래가 바뀔 때만 h에 극값이 생깁니다. 접하기만 하고 순서가 그대로이면 극값이 없습니다."
+    ],
+    "integral": [
+      "아래끝 a에서 g(a)=0이며 g′(x)=f(x)임을 함께 확인합니다.",
+      "피적분함수의 부호로 g의 극대·극소를 정합니다. a를 옮기면 g는 세로로 이동합니다.",
+      "극소점이 x축에 접하는 위치를 찾고 g(a)=0의 접점·재교점을 모두 확인합니다."
+    ],
+    "always": [
+      "x≥0인 정의역에서 두 함수 사이의 세로 간격을 봅니다.",
+      "h=f−g의 최솟값을 도함수 부호와 경계 x=0까지 확인하여 구합니다.",
+      "f≥g+a이면 a≤min h입니다. 처음 닿는 값이 실제 가능한 최대 이동량인지 검산합니다."
+    ],
+    "rootcount": [
+      "수평선 y=k와 곡선의 교점을 세고 양의 근은 y축 오른쪽만 봅니다.",
+      "극값의 높이와 y절편이 개수 변화의 후보입니다. 같은 높이에 놓을 때와 전후를 구분합니다.",
+      "열린 경계·닫힌 경계를 확인한 뒤 조건을 만족하는 정수 또는 자연수만 셉니다."
+    ]
+  };
+  const explorationModel = (sc, s, v) => {
+    if (sc.id === 'always') return tex('f(x)=x^3-4x+4,\\quad g(x)=-x,\\quad x\\ge0');
+    if (sc.id === 'rootcount') return tex('f(x)=x^3-3x^2')+', '+tex(`y=k,\\;k=${s.kk}`);
+    if (sc.id === 'quartic') return tex(`f'(x)=0.8(x+1)(x-(${gammaOf(s)}))(x-3)`)+', 적분상수는 현재 그림의 값을 사용합니다.';
+    return v.chips && v.chips[0] ? tex(v.chips[0].tex) : '';
+  };
+  scenes.forEach((sc) => {
+    const view = sc.view, steps = sc.steps;
+    sc.startStep = 0;
+    sc.notesTitle = '현재 탐구 모델과 조건';
+    sc.guide = EXPLORE_STEPS[sc.id][0];
+    sc.steps = (s) => window.lab && window.lab.tab === 'explore'
+      ? EXPLORE_STEPS[sc.id]
+      : (typeof steps === 'function' ? steps(s) : steps);
+    if (sc.solution) {
+      sc.solution.quickTitle = '실전 풀이 · 그림의 구조 활용';
+      sc.solution.quickTag = '구조 풀이';
+    }
+    sc.view = (s, lab) => {
+      const v = typeof view === 'function' ? view(s, lab) || {} : view || {};
+      const explore = !lab || lab.tab === 'explore';
+      const open = lab && lab.tab === 'problem' ? lab._answerOpen() : s.step >= 3;
+      const note = explore ? '<b>자유 탐구 모델</b> '+explorationModel(sc,s,v)+'<br>이 탭의 함수와 조작값으로 구조를 실험합니다. 선택한 문항과 새 문제의 조건·도형·풀이는 문제/정리 탭에서 함께 바뀝니다.' : '';
+      // The canvas reveals its own reasoning stage. Derived answer cards wait for the final stage.
+      if (!open) return note ? { notes: note } : {};
+      return { ...v, notes: [note, v.notes].filter(Boolean).join('<br>') || undefined };
+    };
+  });
+
   APLab.createLab({
+    stagedReveal: true,
     id: 'calc1-derivative-shape',
     title: '도함수와 함수의 그래프',
     courseName: '미적분Ⅰ',
@@ -1701,7 +1778,7 @@ window.addEventListener('DOMContentLoaded', function () {
       C2: { value: 0, min: -1.5, max: 1.5, step: 0.1, color: 'sky', label: '위아래 평행이동 C', format: (v) => `C = ${fmt(v)}` },
       k: { value: -3, min: -4.0, max: 2.0, step: 0.1, color: 'violet', label: "직선의 높이 g′(x) = k (k = −3 일 때 접함)", format: (v) => `k = ${fmt(v)}` },
       a: { value: -1, min: -1.5, max: 3.2, step: 0.05, color: 'amber', label: '정적분의 아래끝 x = a (g(a)=0 인 점)', format: (v) => `a = ${fmt(v)}` },
-      al: { value: 1.2, min: -1, max: 3.6, step: 0.05, color: 'amber', label: 'g를 올린 높이 a', hint: 'a = 2 에서 g + a 가 f 에 처음 닿습니다', format: (v) => `a = ${fmt(v)}` },
+      al: { value: 1.2, min: -1, max: 3.6, step: 0.05, color: 'amber', label: 'g를 올린 높이 a', hint: 'g + a를 위아래로 움직이며 x ≥ 0에서 두 그래프 사이의 세로 간격을 비교하세요', format: (v) => `a = ${fmt(v)}` },
       kk: { value: -2, min: -4.8, max: 2.4, step: 0.05, color: 'sky', label: '수평선의 높이 k', hint: '극값 0, −4 와 y절편 0 근처에서 근의 개수가 바뀝니다', format: (v) => `k = ${fmt(v)}` }
     },
     state: { chart: true, animDir: -1, tgt: 'pos2' },
