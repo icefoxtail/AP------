@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$v(t)=2$를 대입하면",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "-4",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -7,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-5",
+        "-4",
+        "-3",
+        "-1"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2/3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 속도와의 차가 0이 되는 두 후보 중 음이 아닌 시각을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 속도와의 차가 0이 되는 두 후보 중 음이 아닌 시각을 구분한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 속도와의 차가 0이 되는 두 후보 중 음이 아닌 시각을 구분한다."
+  ]
+}
