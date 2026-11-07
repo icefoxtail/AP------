@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      7,
+      -7,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "2"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "-2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "id",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ]
+  },
+  "caption": "두 유리함수의 그래프가 y=x를 기준으로 대칭이다."
+}

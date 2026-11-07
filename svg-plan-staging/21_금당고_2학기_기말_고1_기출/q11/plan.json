@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "합성 순서",
+        "elements": [
+          "x",
+          "3x+1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "다음 단계",
+        "elements": [
+          "3x+1",
+          "f 적용"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x에 3x+1을 만든 뒤 f를 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥1에서 f⁻¹(g(x))=3x+1이므로 g(x)=f(3x+1)을 구한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "합성의 순서 x→3x+1→f 적용을 나타낸다."
+  ]
+}

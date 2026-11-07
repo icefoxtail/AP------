@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "출력",
+        "elements": [
+          "1",
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "조건을 적용해 확인한 두 대응을 먼저 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "일대일대응 f에서 f(1)=1, f(2)=2이며 q=f⁻¹(6)의 후보를 좁힌다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "조건으로 먼저 확정되는 두 대응을 나타낸다."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "소인수",
+        "elements": [
+          "2",
+          "3",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "지수 선택",
+        "elements": [
+          "0·1",
+          "0·1·2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "2와 3의 지수는 0 또는 1, 5의 지수는 0부터 2까지 고른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "150=2·3·5²에서 각 소인수의 지수 범위를 고른다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "각 소인수의 지수 선택 수가 2, 2, 3임을 나타낸다."
+  ]
+}

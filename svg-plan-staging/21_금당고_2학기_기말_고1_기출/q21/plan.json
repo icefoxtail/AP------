@@ -1,0 +1,60 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "치즈버거",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "콜라",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "햄버거",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "사이다",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "감자튀김",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "예: 두 학생이 한 메뉴만 공통으로 고르고 각자 메인 메뉴를 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각자 세 메뉴를 고르고 교집합이 한 메뉴이며 각자 메인 메뉴를 적어도 하나 고른다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "공통 메뉴가 하나인 한 가지 선택 예를 보인다."
+  ]
+}

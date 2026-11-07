@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "점의 x좌표",
+        "elements": [
+          "A: a=2",
+          "B: b=3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "점의 y좌표",
+        "elements": [
+          "10",
+          "−15"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: a=2, b=3이면 A=(2,10), B=(3,−15)이고 a/b=2/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(a,20/a), B=(b,−45/b), a,b>0에서 등호가 성립하는 비는 a/b=2/3이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값을 실제로 이루는 두 점의 좌표 예를 나타낸다."
+  ]
+}

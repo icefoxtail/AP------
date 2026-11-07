@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "자리 예",
+        "elements": [
+          "1",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "학생",
+        "elements": [
+          "가은",
+          "나윤"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: 1번과 4번 자리에 서면 두 사람 사이에 두 자리가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 사람 사이에 적어도 두 명이 서려면 자리의 간격이 3 이상이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 사람 사이가 두 자리인 자리쌍을 예로 보인다."
+  ]
+}

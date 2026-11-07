@@ -1,0 +1,69 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "변수",
+        "elements": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "공통값의 배수",
+        "elements": [
+          "2k",
+          "k",
+          "3k"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "세 합의 비에서 각 변수를 공통값의 배수로 표현한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x+y=3k, y+z=4k, x+z=5k이며 xyz≠0이므로 k≠0이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "세 식을 연립해 x=2k, y=k, z=3k로 나타낸다."
+  ]
+}

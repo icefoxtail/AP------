@@ -1,0 +1,45 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "중심 예",
+        "elements": [
+          "(1,2)"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "직선까지의 거리",
+        "elements": [
+          "2/5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "예: 중심이 (1,2)일 때 직선까지의 거리는 2/5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 3x+4y−13=0과 원의 중심 (a,b) 사이 거리가 1 이하여야 한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "한 격자점에서 직선까지의 거리 계산 예를 보인다."
+  ]
+}

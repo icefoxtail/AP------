@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      7,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=√(5x)"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "15/8",
+          "5/8"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=m(x+3)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "on": "l",
+          "curveX": "-3"
+        },
+        {
+          "id": "B",
+          "on": "g",
+          "curveX": "9/5"
+        },
+        {
+          "id": "C",
+          "on": "g",
+          "curveX": "5"
+        }
+      ]
+    }
+  },
+  "caption": "원본의 A, B, C 순서와 두 교점을 살펴본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(−3,0), AB:BC=3:2이며 m>0이다.",
+      "mappedTo": "graph"
+    }
+  ],
+  "newVisualInformation": [
+    "B=(9/5,3), C=(5,5)에서 원곡선과 직선이 만난다."
+  ]
+}

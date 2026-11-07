@@ -1,0 +1,89 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "중앙 영역",
+        "elements": [
+          "A"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "인접 영역",
+        "elements": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ]
+  },
+  "caption": "A는 나머지 다섯 영역 각각과 인접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 B,C,D,E,F와 모두 인접하고 바깥 다섯 영역은 B-F-E-D-C-B 순환이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "중앙 A에 쓰인 색을 나머지 다섯 영역에서 제외한다."
+  ]
+}

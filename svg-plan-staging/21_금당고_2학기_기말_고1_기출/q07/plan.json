@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "끝자리",
+        "elements": [
+          "왼쪽",
+          "오른쪽"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "모음 예",
+        "elements": [
+          "a",
+          "e"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "예: 양 끝에 모음을 놓고 가운데에 나머지 문자를 둔다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "여섯 문자 중 모음 a,e가 양 끝에 놓인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝 모음 한 배치를 예로 보여 준다."
+  ]
+}

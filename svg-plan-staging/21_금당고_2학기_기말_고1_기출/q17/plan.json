@@ -1,0 +1,67 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "나머지",
+        "elements": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "1부터 18까지의 개수",
+        "elements": [
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "1부터 18까지 3으로 나눈 나머지가 같은 수는 각각 여섯 개다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1부터 18까지 나머지 0, 1, 2인 수는 각각 여섯 개다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "나머지별 원소 개수가 모두 여섯임을 나타낸다."
+  ]
+}

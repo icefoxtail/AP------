@@ -1,0 +1,45 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "인수",
+        "elements": [
+          "x−1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "부호 관계",
+        "elements": [
+          "1−x"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "분자 x−1과 분모 1−x는 서로 부호가 반대다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≠0, 1에서 분자 x−1과 분모 1−x는 서로 부호가 반대다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "분자 x−1과 분모 1−x는 서로 부호가 반대다."
+  ]
+}
