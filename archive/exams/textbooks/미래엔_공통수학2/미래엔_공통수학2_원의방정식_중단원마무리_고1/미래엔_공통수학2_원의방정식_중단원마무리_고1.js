@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,13 +21,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "다음 원의 방정식을 구하시오.\n⑴ 중심의 좌표가 $(1, 2)$이고 반지름의 길이가 $\\sqrt{7}$인 원\n⑵ 두 점 $\\mathrm{A}(-1, 3)$과 $\\mathrm{B}(5, 1)$을 지름의 양 끝 점으로 하는 원",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(x-1)^2+(y-2)^2=7$ ⑵ $(x-2)^2+(y-2)^2=10$",
+    "solution": "[풀이 전략]\n원의 정의: 평면 위의 한 정점(중심)에서 일정한 거리(반지름)에 있는 점들의 자취이다.\n- 중심 $(a, b)$, 반지름 $r$인 원의 방정식: $(x - a)^2 + (y - b)^2 = r^2$\n- 두 점 $\\mathrm{A}, \\mathrm{B}$를 지름의 양 끝으로 하는 원:\n  중심은 선분 $\\mathrm{AB}$의 중점이고, 반지름은 선분 $\\mathrm{AB}$의 길이의 절반이다.\n\n[단계별 풀이]\n⑴ 중심 $(1, 2)$, 반지름 $\\sqrt{7}$인 원의 방정식:\n$$(x - 1)^2 + (y - 2)^2 = (\\sqrt{7})^2 = 7$$\n⑵ 두 점 $\\mathrm{A}(-1, 3)$, $\\mathrm{B}(5, 1)$을 지름의 양 끝 점으로 하는 원:\n1단계 [중심 구하기]:\n중심 $\\mathrm{M}$은 선분 $\\mathrm{AB}$의 중점이므로:\n$$\\mathrm{M}\\left(\\dfrac{-1 + 5}{2}, \\dfrac{3 + 1}{2}\\right) = (2, 2)$$\n2단계 [반지름의 제곱 구하기]:\n중심 $(2, 2)$와 점 $\\mathrm{B}(5, 1)$ 사이의 거리의 제곱:\n$$r^2 = (5 - 2)^2 + (1 - 2)^2 = 3^2 + (-1)^2 = 9 + 1 = 10$$\n3단계 [방정식 완성]:\n$$(x - 2)^2 + (y - 2)^2 = 10$$\n\n[오답 및 경계 점검]\n- 지름의 양 끝점이 주어졌을 때 지름의 길이를 그대로 반지름 자리에 대입하지 않도록 중점과 반지름을 명확히 구분한다.\n\n[결론]\n⑴ $(x-1)^2+(y-2)^2=7$ ⑵ $(x-2)^2+(y-2)^2=10$"
   },
   {
     "id": 2,
@@ -38,9 +39,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,13 +50,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2+6x-8y+9=0$의 중심의 좌표는 $(a, b)$이고 반지름의 길이는 $r$이다. 이때 $a+b+r$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n일반형으로 주어진 이차방정식 $x^2 + y^2 + Ax + By + C = 0$을 $x, y$에 대하여 각각 완전제곱식으로 변형하여 표준형 $(x - a)^2 + (y - b)^2 = r^2$으로 바꾼다.\n\n[단계별 풀이]\n1단계: 완전제곱식으로 변형\n$$x^2 + 6x + y^2 - 8y + 9 = 0$$\n$$(x + 3)^2 - 9 + (y - 4)^2 - 16 + 9 = 0$$\n$$(x + 3)^2 + (y - 4)^2 - 16 = 0 \\implies (x + 3)^2 + (y - 4)^2 = 16 = 4^2$$\n2단계: 중심과 반지름 확정\n- 중심의 좌표: $(a, b) = (-3, 4) \\implies a = -3, b = 4$\n- 반지름의 길이: $r = 4$\n3단계: $a + b + r$의 값 계산\n$$a + b + r = -3 + 4 + 4 = 5$$\n\n[오답 및 경계 점검]\n- $(x+3)^2$에서 중심의 $x$좌표는 $+3$이 아니라 $-3$임에 유의한다.\n- 우변의 $16$은 $r^2$이므로 반지름 $r = \\sqrt{16} = 4$이다.\n\n[결론]\n$5$"
   },
   {
     "id": 3,
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,13 +79,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2=5$와 직선 $y=-3x+k$의 위치 관계가 다음과 같도록 하는 실수 $k$의 값 또는 범위를 구하시오.\n⑴ 서로 다른 두 점에서 만난다.\n⑵ 접한다.\n⑶ 만나지 않는다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-5\\sqrt{2} < k < 5\\sqrt{2}$ ⑵ $k = -5\\sqrt{2}$ 또는 $k = 5\\sqrt{2}$ ⑶ $k < -5\\sqrt{2}$ 또는 $k > 5\\sqrt{2}$",
+    "solution": "[풀이 전략]\n원과 직선의 위치 관계는 원의 중심에서 직선까지의 거리 $d$와 원의 반지름 $r$의 대소 관계를 비교하여 판정한다:\n- 서로 다른 두 점에서 만난다 $\\iff d < r$\n- 접한다 (한 점에서 만난다) $\\iff d = r$\n- 만나지 않는다 $\\iff d > r$\n\n[단계별 풀이]\n1단계: 원의 중심과 반지름 및 거리 $d$ 계산\n원 $x^2 + y^2 = 5$의 중심은 원점 $(0, 0)$이고 반지름은 $r = \\sqrt{5}$이다.\n직선 $y = -3x + k \\implies 3x + y - k = 0$이므로, 원점 $(0, 0)$에서 직선까지의 거리 $d$는:\n$$d = \\dfrac{|3(0) + 0 - k|}{\\sqrt{3^2 + 1^2}} = \\dfrac{|-k|}{\\sqrt{10}} = \\dfrac{|k|}{\\sqrt{10}}$$\n2단계: 각 조건별 $k$의 범위 유도\n⑴ 서로 다른 두 점에서 만나는 경우 ($d < r$):\n$$\\dfrac{|k|}{\\sqrt{10}} < \\sqrt{5} \\implies |k| < \\sqrt{50} = 5\\sqrt{2} \\implies -5\\sqrt{2} < k < 5\\sqrt{2}$$\n⑵ 접하는 경우 ($d = r$):\n$$\\dfrac{|k|}{\\sqrt{10}} = \\sqrt{5} \\implies |k| = 5\\sqrt{2} \\implies k = -5\\sqrt{2} \\text{ 또는 } k = 5\\sqrt{2}$$\n⑶ 만나지 않는 경우 ($d > r$):\n$$\\dfrac{|k|}{\\sqrt{10}} > \\sqrt{5} \\implies |k| > 5\\sqrt{2} \\implies k < -5\\sqrt{2} \\text{ 또는 } k > 5\\sqrt{2}$$\n\n[오답 및 경계 점검]\n- 판별식 $D$를 이용할 수도 있으나, 점과 직선 사이의 거리 $d$를 활용하는 것이 계산 실수가 적고 직관적이다.\n\n[결론]\n⑴ $-5\\sqrt{2} < k < 5\\sqrt{2}$ ⑵ $k = -5\\sqrt{2}$ 또는 $k = 5\\sqrt{2}$ ⑶ $k < -5\\sqrt{2}$ 또는 $k > 5\\sqrt{2}$"
   },
   {
     "id": 4,
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,13 +108,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "다음을 구하시오.\n⑴ 원 $x^2+y^2=36$에 접하고 기울기가 $\\sqrt{3}$인 직선의 방정식\n⑵ 원 $x^2+y^2=17$ 위의 점 $(-4, 1)$에서의 접선의 방정식",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $y=\\sqrt{3}x\\pm 12$ ⑵ $4x-y=-17$",
+    "solution": "[풀이 전략]\n원의 접선의 방정식 공식:\n- 원 $x^2 + y^2 = r^2$에 접하고 기울기가 $m$인 접선:\n  $$y = mx \\pm r\\sqrt{m^2 + 1}$$\n- 원 $x^2 + y^2 = r^2$ 위의 점 $(x_1, y_1)$에서의 접선:\n  $$x_1 x + y_1 y = r^2$$\n\n[단계별 풀이]\n⑴ 원 $x^2 + y^2 = 36$에 접하고 기울기가 $\\sqrt{3}$인 접선:\n- 반지름 $r = 6$, 기울기 $m = \\sqrt{3}$이므로:\n  $$y = \\sqrt{3}x \\pm 6\\sqrt{(\\sqrt{3})^2 + 1} = \\sqrt{3}x \\pm 6\\sqrt{3 + 1} = \\sqrt{3}x \\pm 6 \\times 2 = \\sqrt{3}x \\pm 12$$\n⑵ 원 $x^2 + y^2 = 17$ 위의 점 $(-4, 1)$에서의 접선:\n- $x_1 = -4, y_1 = 1, r^2 = 17$이므로 공식 $x_1 x + y_1 y = r^2$에 대입하면:\n  $$-4x + 1y = 17 \\implies -4x + y = 17 \\implies 4x - y = -17$$\n  (또는 $4x - y + 17 = 0$)\n\n[오답 및 경계 점검]\n- 기울기가 주어진 원의 접선은 원의 양쪽에 평행하게 항상 2개가 존재하므로 $\\pm$ 부호를 누락하지 않아야 한다.\n\n[결론]\n⑴ $y=\\sqrt{3}x\\pm 12$ ⑵ $4x-y=-17$"
   },
   {
     "id": 5,
@@ -122,9 +126,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -133,13 +137,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "방정식 $x^2+y^2-4x+2y+k=0$이 나타내는 도형이 반지름의 길이가 $\\sqrt{2}$ 이상인 원이 되도록 하는 자연수 $k$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n이차방정식을 완전제곱식으로 변형하여 반지름의 제곱 $r^2$을 $k$에 대한 식으로 나타낸 후, 원의 넓이 $S = \\pi r^2$에 주어진 범위를 적용하여 $k$의 범위를 구한다.\n\n[단계별 풀이]\n1단계: 원의 방정식 표준형 변형\n$$x^2 - 4x + y^2 + 2y + k = 0$$\n$$(x - 2)^2 - 4 + (y + 1)^2 - 1 + k = 0$$\n$$(x - 2)^2 + (y + 1)^2 = 5 - k$$\n이 식이 원을 나타내려면 반지름의 제곱이 양수여야 하므로 $r^2 = 5 - k > 0$이다.\n2단계: 넓이 조건 적용\n원의 넓이는 $\\pi r^2 = (5 - k)\\pi$이다.\n넓이가 $2\\pi$ 이상 $5\\pi$ 이하이므로:\n$$2\\pi \\le (5 - k)\\pi \\le 5\\pi$$\n양변을 $\\pi$로 나누면:\n$$2 \\le 5 - k \\le 5$$\n3단계: 부등식 풀이\n- $5 - k \\ge 2 \\implies k \\le 3$\n- $5 - k \\le 5 \\implies k \\ge 0$\n따라서 $0 \\le k \\le 3$이다.\n$k$는 자연수이므로 가능한 값은 $1, 2, 3$의 3개이다.\n\n[오답 및 경계 점검]\n- 문제에서 $k$가 '자연수'라고 제한했으므로 $0$은 제외하고 $1, 2, 3$만 카운트해야 한다.\n\n[결론]\n$3$"
   },
   {
     "id": 6,
@@ -150,9 +155,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -161,13 +166,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "$x$축과 $y$축에 동시에 접하고 점 $(2, 1)$을 지나는 원의 방정식을 모두 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(x-1)^2+(y-1)^2=1$, $(x-5)^2+(y-5)^2=25$",
+    "solution": "[풀이 전략]\n$x$축과 $y$축에 동시에 접하는 원은 중심의 위치에 따라 4가지 사분면으로 분류된다.\n점 $(2, 1)$이 제1사분면의 점이므로 구하는 원의 중심도 제1사분면에 존재하며 중심의 좌표는 $(r, r)$ ($r>0$), 반지름은 $r$이다.\n\n[단계별 풀이]\n1단계 [문제 이해]:\n점 $(2, 1)$을 지나고 $x$축과 $y$축에 동시에 접하는 원의 중심은 제1사분면에 있다.\n\n2단계 [해결 과정]:\n원의 반지름의 길이를 $r$ ($r>0$)이라 하면 원의 중심의 좌표는 $(r, r)$이다.\n따라서 원의 방정식은:\n$$(x - r)^2 + (y - r)^2 = r^2$$\n이 원이 점 $(2, 1)$을 지나므로:\n$$(2 - r)^2 + (1 - r)^2 = r^2$$\n$$(4 - 4r + r^2) + (1 - 2r + r^2) = r^2$$\n$$r^2 - 6r + 5 = 0$$\n인수분해하면:\n$$(r - 1)(r - 5) = 0 \\implies r = 1 \\text{ 또는 } r = 5$$\n\n3단계 [답 구하기]:\n- $r = 1$일 때: $(x - 1)^2 + (y - 1)^2 = 1$\n- $r = 5$일 때: $(x - 5)^2 + (y - 5)^2 = 25$\n따라서 구하는 원의 방정식은:\n$$(x - 1)^2 + (y - 1)^2 = 1, \\quad (x - 5)^2 + (y - 5)^2 = 25$$\n\n[오답 및 경계 점검]\n- $r=1$인 작은 원과 $r=5$인 큰 원 2개가 존재하며, 각각 $(2-1)^2+(1-1)^2 = 1+0=1$, $(2-5)^2+(1-5)^2 = 9+16=25$로 점 $(2, 1)$을 완벽히 지남을 교차 확인한다.\n\n[결론]\n$(x-1)^2+(y-1)^2=1$, $(x-5)^2+(y-5)^2=25$"
   },
   {
     "id": 7,
@@ -178,9 +184,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -189,13 +195,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $(x-2)^2+(y-5)^2=4$ 위의 점과 직선 $3x-4y-6=0$ 사이의 거리의 최댓값과 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값: $6$, 최솟값: $2$",
+    "solution": "[풀이 전략]\n원 위의 점과 직선 사이의 거리는 원의 중심에서 직선까지의 거리 $d$를 구한 후 반지름 $r$을 더하거나 빼서 구한다:\n- 최솟값: $d - r$\n- 최댓값: $d + r$\n\n[단계별 풀이]\n1단계: 원의 중심과 반지름 확인\n원 $(x - 2)^2 + (y - 5)^2 = 4$의 중심은 $\\mathrm{C}(2, 5)$이고, 반지름은 $r = \\sqrt{4} = 2$이다.\n2단계: 중심과 직선 사이의 거리 $d$ 계산\n원의 중심 $(2, 5)$와 직선 $3x - 4y - 6 = 0$ 사이의 거리 $d$는:\n$$d = \\dfrac{|3 \\times 2 - 4 \\times 5 - 6|}{\\sqrt{3^2 + (-4)^2}} = \\dfrac{|6 - 20 - 6|}{\\sqrt{25}} = \\dfrac{|-20|}{5} = 4$$\n3단계: 최댓값과 최솟값 결정\n- 최댓값: $d + r = 4 + 2 = 6$\n- 최솟값: $d - r = 4 - 2 = 2$\n\n[오답 및 경계 점검]\n- 직선과 원이 만나지 않는 위치 관계($d = 4 > r = 2$)이므로 최솟값은 $d-r=2$가 성립한다.\n\n[결론]\n최댓값: $6$, 최솟값: $2$"
   },
   {
     "id": 8,
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -217,13 +224,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2=10$ 위의 점 $(1, 3)$에서의 접선이 원 $x^2+y^2-16x-8y+k=0$과 접할 때, 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$70$",
+    "solution": "[풀이 전략]\n1단계: 원 위의 점에서의 접선의 방정식 공식을 이용하여 접선을 구한다.\n2단계: 두 번째 원을 표준형으로 변형하여 중심과 반지름을 구한다.\n3단계: 접선과 두 번째 원이 만나기 위한 조건(원의 중심에서 직선까지의 거리 $\\le$ 반지름)을 세워 $k$의 범위를 확정한다.\n\n[단계별 풀이]\n1단계 [접선의 방정식 구하기]:\n원 $x^2 + y^2 = 10$ 위의 점 $(1, 3)$에서의 접선의 방정식은:\n$$1 \\cdot x + 3 \\cdot y = 10 \\implies x + 3y - 10 = 0$$\n2단계 [두 번째 원의 중심과 반지름]:\n$$x^2 - 16x + y^2 - 8y + k = 0$$\n$$(x - 8)^2 - 64 + (y - 4)^2 - 16 + k = 0$$\n$$(x - 8)^2 + (y - 4)^2 = 80 - k$$\n원의 중심은 $(8, 4)$이고 반지름 $R$에 대하여 $R^2 = 80 - k$ ($k < 80$)이다.\n3단계 [만나는 조건]:\n원의 중심 $(8, 4)$에서 접선 $x + 3y - 10 = 0$까지의 거리 $d$는:\n$$d = \\dfrac{|8 + 3 \\times 4 - 10|}{\\sqrt{1^2 + 3^2}} = \\dfrac{|8 + 12 - 10|}{\\sqrt{10}} = \\dfrac{10}{\\sqrt{10}} = \\sqrt{10}$$\n직선과 원이 만나려면 $d \\le R$이어야 하므로 양변을 제곱하면:\n$$d^2 \\le R^2 \\implies 10 \\le 80 - k \\implies k \\le 70$$\n따라서 원과 접선이 접하는 경계 기준 값은 $k = 70$이다.\n\n[오답 및 경계 점검]\n- $k=70$일 때 $R^2 = 10 = d^2$으로 접선과 원이 한 점에서 접하며 만남을 확인한다.\n\n[결론]\n$70$"
   },
   {
     "id": 9,
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -245,13 +253,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "점 $\\mathrm{P}(-2, 4)$에서 원 $x^2+y^2=2$에 그은 두 접선이 $y$축과 만나는 두 점을 $\\mathrm{A}$와 $\\mathrm{B}$라 할 때, 삼각형 $\\mathrm{PAB}$의 넓이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n원 밖의 점에서 원에 그은 접선의 방정식을 구하기 위해 접점의 좌표를 미지수로 두거나 판별식/점과 직선 사이의 거리를 이용한다. 접선의 $y$절편을 구하여 삼각형의 밑변의 길이를 구하고, 점 $\\mathrm{P}$의 $x$좌표의 절댓값을 높이로 삼아 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [접점의 좌표를 이용한 접선 구하기]:\n원 $x^2 + y^2 = 2$ 위의 접점을 $\\mathrm{Q}(x_1, y_1)$이라 하면 접선의 방정식은:\n$$x_1 x + y_1 y = 2$$\n이 직선이 점 $\\mathrm{P}(-2, 4)$를 지나므로:\n$$-2x_1 + 4y_1 = 2 \\implies -x_1 + 2y_1 = 1 \\implies x_1 = 2y_1 - 1 \\quad \\cdots\\text{①}$$\n점 $\\mathrm{Q}$는 원 위의 점이므로:\n$$x_1^2 + y_1^2 = 2 \\quad \\cdots\\text{②}$$\n①을 ②에 대입:\n$$(2y_1 - 1)^2 + y_1^2 = 2 \\implies 4y_1^2 - 4y_1 + 1 + y_1^2 = 2$$\n$$5y_1^2 - 4y_1 - 1 = 0 \\implies (5y_1 + 1)(y_1 - 1) = 0$$\n- $y_1 = 1$일 때 $x_1 = 2(1) - 1 = 1$\n- $y_1 = -\\dfrac{1}{5}$일 때 $x_1 = 2\\left(-\\dfrac{1}{5}\\right) - 1 = -\\dfrac{7}{5}$\n\n2단계 [접선의 $y$절편 구하기]:\n(i) 접점 $(1, 1)$에서의 접선:\n$$x + y = 2$$\n$x=0$을 대입하면 $y = 2$, 따라서 $\\mathrm{A}(0, 2)$.\n(ii) 접점 $\\left(-\\dfrac{7}{5}, -\\dfrac{1}{5}\\right)$에서의 접선:\n$$-\\dfrac{7}{5}x - \\dfrac{1}{5}y = 2 \\implies 7x + y = -10$$\n$x=0$을 대입하면 $y = -10$, 따라서 $\\mathrm{B}(0, -10)$.\n\n3단계 [삼각형 $\\mathrm{PAB}$의 넓이]:\n두 점 $\\mathrm{A}(0, 2)$와 $\\mathrm{B}(0, -10)$은 모두 $y$축 위에 있으므로 밑변의 길이는:\n$$\\overline{\\mathrm{AB}} = |2 - (-10)| = 12$$\n점 $\\mathrm{P}(-2, 4)$에서 $y$축까지의 거리는:\n$$h = |-2| = 2$$\n따라서 삼각형 $\\mathrm{PAB}$의 넓이는:\n$$S = \\dfrac{1}{2} \\times \\overline{\\mathrm{AB}} \\times h = \\dfrac{1}{2} \\times 12 \\times 2 = 12$$\n\n[오답 및 경계 점검]\n- $y$축 위의 두 점 사이의 거리는 $y$좌표의 차이며, 높이는 점 $\\mathrm{P}$의 $x$좌표의 절댓값임을 정확히 분리하여 곱한다.\n\n[결론]\n$12$"
   },
   {
     "id": 10,
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -273,13 +282,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2-6x-4y+k=0$이 $x$축과 만나는 두 점 사이의 거리가 $8$일 때, 상수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-7$",
+    "solution": "[풀이 전략]\n원이 $x$축과 만나는 점은 $y=0$일 때의 점이다.\n원의 방정식에 $y=0$을 대입하여 얻은 $x$에 대한 이차방정식의 두 실근이 만나는 점의 $x$좌표이므로, 근과 계수의 관계와 곱셈 공식의 변형을 이용하여 $k$의 값을 구한다.\n\n[단계별 풀이]\n1단계: $y=0$ 대입\n$$x^2 + 0^2 - 6x - 4(0) + k = 0 \\implies x^2 - 6x + k = 0$$\n2단계: 근과 계수의 관계 적용\n두 점의 $x$좌표를 $\\alpha, \\beta$라 하면:\n$$\\alpha + \\beta = 6, \\quad \\alpha\\beta = k$$\n3단계: 두 점 사이의 거리 조건\n두 점 사이의 거리가 $8$이므로:\n$$|\\alpha - \\beta| = 8 \\implies (\\alpha - \\beta)^2 = 64$$\n곱셈 공식의 변형:\n$$(\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta$$\n$$64 = 6^2 - 4k = 36 - 4k$$\n$$4k = 36 - 64 = -28 \\implies k = -7$$\n\n[오답 및 경계 점검]\n- $k=-7$일 때 $x^2 - 6x - 7 = 0 \\implies (x-7)(x+1)=0$.\n  두 교점은 $(-1, 0)$과 $(7, 0)$이며 두 점 사이의 거리는 $7 - (-1) = 8$로 완벽히 일치한다.\n\n[결론]\n$-7$"
   },
   {
     "id": 11,
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,12 +311,13 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 원 $x^2+y^2=8$ 위의 점 $\\mathrm{A}$와 직선 $y=x+6$ 위의 서로 다른 두 점 $\\mathrm{B}$와 $\\mathrm{C}$를 꼭짓점으로 하는 정삼각형 $\\mathrm{ABC}$를 만들 때, 그 넓이의 최댓값과 최솟값을 구하시오.\n<img src=\"q11.png\">",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최솟값: $\\dfrac{2\\sqrt{3}}{3}$, 최댓값: $\\dfrac{50\\sqrt{3}}{3}$",
+    "solution": "[풀이 전략]\n직선 위의 서로 다른 두 점 $\\mathrm{B}, \\mathrm{C}$와 원 위의 점 $\\mathrm{A}$로 만들어지는 정삼각형 $\\mathrm{ABC}$의 높이는 점 $\\mathrm{A}$에서 직선 $y = x + 6$까지의 거리이다.\n원의 중심에서 직선까지의 거리를 이용하여 높이의 최솟값과 최댓값을 구하고, 높이 $h$인 정삼각형의 넓이 공식 $S = \\dfrac{\\sqrt{3}}{3}h^2$에 대입한다.\n\n[단계별 풀이]\n1단계 [정삼각형의 높이 범위]:\n원의 중심인 원점 $(0, 0)$과 직선 $x - y + 6 = 0$ 사이의 거리 $d$는:\n$$d = \\dfrac{|6|}{\\sqrt{1^2 + (-1)^2}} = \\dfrac{6}{\\sqrt{2}} = 3\\sqrt{2}$$\n원의 반지름은 $r = \\sqrt{8} = 2\\sqrt{2}$이다.\n점 $\\mathrm{A}$에서 직선에 이르는 거리(정삼각형의 높이 $h$)는:\n- 높이의 최솟값: $h_{\\min} = d - r = 3\\sqrt{2} - 2\\sqrt{2} = \\sqrt{2}$\n- 높이의 최댓값: $h_{\\max} = d + r = 3\\sqrt{2} + 2\\sqrt{2} = 5\\sqrt{2}$\n\n2단계 [정삼각형의 넓이 계산]:\n한 변의 길이가 $a$이고 높이가 $h$인 정삼각형에서:\n$$h = \\dfrac{\\sqrt{3}}{2}a \\implies a = \\dfrac{2\\sqrt{3}}{3}h$$\n정삼각형의 넓이 $S$는:\n$$S = \\dfrac{\\sqrt{3}}{4}a^2 = \\dfrac{\\sqrt{3}}{4}\\left(\\dfrac{2\\sqrt{3}}{3}h\\right)^2 = \\dfrac{\\sqrt{3}}{3}h^2$$\n- 넓이의 최솟값 ($h = \\sqrt{2}$일 때):\n  $$S_{\\min} = \\dfrac{\\sqrt{3}}{3}(\\sqrt{2})^2 = \\dfrac{2\\sqrt{3}}{3}$$\n- 넓이의 최댓값 ($h = 5\\sqrt{2}$일 때):\n  $$S_{\\max} = \\dfrac{\\sqrt{3}}{3}(5\\sqrt{2})^2 = \\dfrac{\\sqrt{3}}{3} \\times 50 = \\dfrac{50\\sqrt{3}}{3}$$\n\n[오답 및 경계 점검]\n- 정삼각형 넓이 공식에서 $h$를 한 변의 길이로 착각하지 않고, 높이와 넓이의 관계식을 명확히 사용하여 유도한다.\n\n[결론]\n최솟값: $\\dfrac{2\\sqrt{3}}{3}$, 최댓값: $\\dfrac{50\\sqrt{3}}{3}$"
   }
 ];

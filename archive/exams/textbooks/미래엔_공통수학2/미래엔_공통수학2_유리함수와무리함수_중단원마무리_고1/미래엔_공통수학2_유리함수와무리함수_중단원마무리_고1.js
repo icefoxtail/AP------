@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "다음 식을 계산하시오.\n⑴ $\\dfrac{4x-5}{x^2+2x}-\\dfrac{1}{x+2}$\n⑵ $\\dfrac{x}{x^2-9}\\div\\dfrac{3x^2+x}{x-3}$",
@@ -38,9 +39,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,7 +50,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "다음 각 함수에 대하여 그래프를 그리고, 정의역과 치역, 점근선을 구하시오.\n⑴ $y=\\dfrac{4}{x-1}-3$\n⑵ $y=\\dfrac{2x+3}{x+4}$",
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,7 +79,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $(1+\\sqrt{x-5})(1-\\sqrt{x-5})$\n⑵ $\\dfrac{3}{\\sqrt{x+2}-\\sqrt{x-1}}$",
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,7 +108,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "다음 각 함수에 대하여 그래프를 그리고, 정의역과 치역을 구하시오.\n⑴ $y=\\sqrt{2x-4}+3$\n⑵ $y=-\\sqrt{3x+9}-2$",
@@ -122,9 +126,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -133,7 +137,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{-x+1}{x+3}$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하면 함수 $y=\\dfrac{-3x-2}{x+2}$의 그래프와 일치한다고 할 때, 상수 $m$과 $n$에 대하여 $m+n$의 값을 구하시오.",
@@ -150,9 +155,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -161,7 +166,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{ax+b}{x+c}$의 그래프가 오른쪽 그림과 같을 때, 상수 $a,\\, b,\\, c$에 대하여 $a+b+c$의 값을 구하시오.\n<img src=\"q06.png\">",
@@ -178,10 +184,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -189,7 +195,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{ax+b}{x+1}$에 대하여 $y=f(x)$의 그래프가 점 $(3,\\, 1)$을 지나고 $f=f^{-1}$일 때, 상수 $a$와 $b$의 값을 구하는 풀이 과정과 답을 쓰시오.",
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -217,7 +224,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "함수 $y=\\sqrt{ax}$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $5$만큼 평행이동한 그래프가 점 $(-1,\\, 8)$을 지날 때, 상수 $a$의 값을 구하시오.",
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -245,7 +253,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=-\\sqrt{ax+b}+c$의 그래프가 오른쪽 그림과 같을 때, $f(-5)$의 값을 구하시오. (단, $a,\\, b,\\, c$는 상수)\n<img src=\"q09.png\">",
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -273,7 +282,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{2x+b}{x-a}$가 다음 조건을 만족시킬 때, 상수 $a$와 $b$에 대하여 $a+b$의 값을 구하시오.\n\n(가) $2$가 아닌 모든 실수 $x$에 대하여 $f^{-1}(x)=f(x-4)-4$이다.\n(나) 함수 $y=f(x)$의 그래프를 평행이동하면 함수 $y=\\dfrac{3}{x}$의 그래프와 일치한다.",
@@ -290,10 +300,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "유리함수와 무리함수",
-    "standardUnitOrder": 2,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -301,7 +311,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\sqrt{x-5}+k$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",

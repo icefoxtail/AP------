@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 집합 $X=\\{-1,\\, 0,\\, 1\\}$과 $Y=\\{0,\\, 1,\\, 2,\\, 3\\}$에 대하여 다음 중 $X$에서 $Y$로의 함수인 것을 모두 찾으시오.\n⑴ $y=x+2$\n⑵ $y=x^2-1$\n⑶ $y=|x-1|$\n⑷ $y=3|x|$",
@@ -38,9 +39,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,7 +50,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "다음 보기에서 일대일대응, 항등함수, 상수함수를 찾으시오.\n\n<보기>\nㄱ. $y=-1$\nㄴ. $y=x$\nㄷ. $y=-4x+1$\nㄹ. $y=2x^2-3$",
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,7 +79,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 함수 $f(x)=x-5$와 $g(x)=3x^2-4$에 대하여 다음을 구하시오.\n⑴ $(g \\circ f)(3)$\n⑵ $(g \\circ g)(1)$\n⑶ $(f \\circ f)(x)$\n⑷ $(f \\circ g)(x)$",
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,7 +108,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=4x+6$에 대하여 다음을 구하시오.\n⑴ $f^{-1}(2)$\n⑵ $f^{-1}(x)$",
@@ -122,9 +126,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -133,7 +137,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "정의역이 $\\{1,\\, 2\\}$인 두 함수 $f(x)=x+a$와 $g(x)=x^2+bx+5$에 대하여 $f=g$가 성립할 때, 상수 $a$와 $b$의 값을 구하시오.",
@@ -150,9 +155,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -161,7 +166,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 함수\n$$f(x)=\\begin{cases} x+1 & (x \\ge 2) \\\\ 2x-1 & (x < 2) \\end{cases},\\quad g(x)=x^2-3x$$\n에 대하여 $(f \\circ g)(-2)$의 값을 구하시오.",
@@ -178,9 +184,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -189,7 +195,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 함수 $f(x)=2x-7$과 $g(x)=-4x+3$에 대하여 $(f \\circ h)(x)=g(x)$를 만족시키는 $h(x)$를 구하시오.",
@@ -206,10 +213,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
-    "questionType": "단답형",
+    "standardUnitOrder": 7,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -217,7 +224,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=ax+b$가 $f(-1)=1$과 $f^{-1}(3)=-2$를 만족시킬 때, $f(4)$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수)",
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -245,7 +253,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 오른쪽 그림과 같을 때, 다음을 구하시오.\n<img src=\"q09.png\">\n⑴ $(f \\circ f)(d)$\n⑵ $f^{-1}(a)$\n⑶ $(f \\circ f)^{-1}(c)$",
@@ -262,10 +271,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
-    "questionType": "단답형",
+    "standardUnitOrder": 7,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -273,7 +282,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 집합 $X=\\{x \\mid 1 \\le x \\le 3\\}$과 $Y=\\{y \\mid -1 \\le y \\le 5\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=ax+b$가 일대일대응일 때, 상수 $a$와 $b$의 순서쌍 $(a,\\, b)$를 모두 구하는 풀이 과정과 답을 쓰시오.",
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
+    "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,7 +311,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "중단원 마무리"
+      "중단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 함수\n$$f(x)=x+a,\\quad g(x)=\\begin{cases} x^2 & (x \\ge a) \\\\ 2x-6 & (x < a) \\end{cases}$$\n에 대하여 $(g \\circ f)(1)+(f \\circ g)(4)=57$을 만족시키는 모든 실수 $a$의 값의 합을 구하시오.",

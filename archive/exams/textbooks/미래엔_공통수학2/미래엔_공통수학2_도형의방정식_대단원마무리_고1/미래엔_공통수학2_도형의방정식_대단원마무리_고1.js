@@ -11,7 +11,7 @@ window.questionBank = [
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -21,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "두 점 $\\mathrm{A}(-1, 4)$와 $\\mathrm{B}(a, b)$에 대하여 선분 $\\mathrm{AB}$를 $4:1$로 내분하는 점은 $x$축 위에 있고, $1:3$으로 내분하는 점은 $y$축 위에 있을 때, $a+b$의 값은?",
@@ -32,8 +33,8 @@ window.questionBank = [
       "$2$",
       "$4$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n선분의 내분점 공식:\n두 점 $\\mathrm{A}(x_1, y_1), \\mathrm{B}(x_2, y_2)$를 $m:n$으로 내분하는 점은 $\\left(\\dfrac{mx_2 + nx_1}{m + n}, \\dfrac{my_2 + ny_1}{m + n}\\right)$이다.\n- 점이 $x$축 위에 있다 $\\iff y$좌표가 $0$이다.\n- 점이 $y$축 위에 있다 $\\iff x$좌표가 $0$이다.\n\n[단계별 풀이]\n1단계 [선분 $\\mathrm{AB}$를 $4:1$로 내분하는 점]:\n$y$좌표는:\n$$y = \\dfrac{4 \\times b + 1 \\times 4}{4 + 1} = \\dfrac{4b + 4}{5}$$\n이 점이 $x$축 위에 있으므로:\n$$\\dfrac{4b + 4}{5} = 0 \\implies 4b + 4 = 0 \\implies b = -1$$\n\n2단계 [선분 $\\mathrm{AB}$를 $1:3$으로 내분하는 점]:\n$x$좌표는:\n$$x = \\dfrac{1 \\times a + 3 \\times (-1)}{1 + 3} = \\dfrac{a - 3}{4}$$\n이 점이 $y$축 위에 있으므로:\n$$\\dfrac{a - 3}{4} = 0 \\implies a - 3 = 0 \\implies a = 3$$\n\n3단계 [$a + b$ 계산]:\n$$a + b = 3 + (-1) = 2$$\n선지에서 $2$에 해당하는 번호는 ④이다.\n\n[오답 및 경계 점검]\n- $4:1$ 내분과 $1:3$ 내분의 비를 반대로 대입하지 않도록 각 내분 비율을 크로스 곱하여 신중하게 확인한다.\n\n[결론]\n④"
   },
   {
     "id": 2,
@@ -44,9 +45,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -55,13 +56,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "직선 $3x-y-8=0$과 평행하고 점 $(3, -3)$을 지나는 직선이 점 $\\left(\\dfrac{2}{3}, k\\right)$를 지날 때, $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "[풀이 전략]\n두 직선이 평행하면 기울기가 서로 같다. 주어진 직선의 기울기를 구한 후 한 점을 지나는 직선의 방정식을 세우고, 점 $\\left(\\dfrac{2}{3}, k\\right)$를 대입하여 $k$의 값을 결정한다.\n\n[단계별 풀이]\n1단계 [기울기 구하기]:\n직선 $3x - y - 8 = 0 \\implies y = 3x - 8$이므로 기울기는 $3$이다.\n구하는 직선은 이 직선과 평행하므로 기울기가 $3$이다.\n\n2단계 [직선의 방정식 세우기]:\n점 $(3, -3)$을 지나고 기울기가 $3$인 직선의 방정식은:\n$$y - (-3) = 3(x - 3) \\implies y + 3 = 3x - 9 \\implies y = 3x - 12$$\n\n3단계 [$k$의 값 구하기]:\n이 직선이 점 $\\left(\\dfrac{2}{3}, k\\right)$를 지나므로:\n$$k = 3 \\times \\dfrac{2}{3} - 12 = 2 - 12 = -10$$\n\n[오답 및 경계 점검]\n- 점 $(3, -3)$을 대입하면 $-3 = 3(3) - 12 = 9 - 12 = -3$으로 참이다.\n- $x = \\frac{2}{3}$ 대입 시 $k = -10$이 정확히 도출된다.\n\n[결론]\n$-10$"
   },
   {
     "id": 3,
@@ -72,9 +74,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -83,13 +85,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "직선 $2x-y+6=0$이 직선 $2x+ay-3=0$과 수직이고 직선 $(2-b)x+3y+1=0$과 평행할 때, 상수 $a$와 $b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$32$",
+    "solution": "[풀이 전략]\n일반형으로 표현된 두 직선 $a_1 x + b_1 y + c_1 = 0$과 $a_2 x + b_2 y + c_2 = 0$에 대하여:\n- 수직 조건: $a_1 a_2 + b_1 b_2 = 0$\n- 평행 조건: $\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}$\n\n[단계별 풀이]\n1단계 [$a$의 값 구하기 (수직 조건)]:\n직선 $2x - y + 6 = 0$과 직선 $2x + ay - 3 = 0$이 서로 수직이므로:\n$$2 \\times 2 + (-1) \\times a = 0 \\implies 4 - a = 0 \\implies a = 4$$\n\n2단계 [$b$의 값 구하기 (평행 조건)]:\n직선 $2x - y + 6 = 0$과 직선 $(2 - b)x + 3y + 1 = 0$이 서로 평행하므로:\n$$\\dfrac{2 - b}{2} = \\dfrac{3}{-1} \\ne \\dfrac{1}{6}$$\n$$\\dfrac{2 - b}{2} = -3 \\implies 2 - b = -6 \\implies b = 8$$\n(상수항 비 $\\frac{1}{6} \\ne -3$이므로 일치하지 않고 평행함이 성립한다.)\n\n3단계 [$ab$의 값 계산]:\n$$ab = 4 \\times 8 = 32$$\n\n[오답 및 경계 점검]\n- 수직 조건에서 계수의 곱의 합이 $0$임을 확인하고, 평행 조건에서 상수항 비가 달라 일치하지 않음을 반드시 점검한다.\n\n[결론]\n$32$"
   },
   {
     "id": 4,
@@ -100,9 +103,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -111,13 +114,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "두 점 $\\mathrm{A}(-2, -4)$와 $\\mathrm{B}(4, 8)$에 대하여 원점과 선분 $\\mathrm{AB}$의 수직이등분선 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{5}$",
+    "solution": "[풀이 전략]\n1단계: 선분 $\\mathrm{AB}$의 중점 좌표와 선분 $\\mathrm{AB}$의 기울기를 구한다.\n2단계: 중점을 지나고 $\\mathrm{AB}$의 기울기에 수직인 수직이등분선의 방정식을 세운다.\n3단계: 원점 $(0, 0)$에서 수직이등분선까지의 거리를 공식으로 계산한다.\n\n[단계별 풀이]\n1단계 [중점과 기울기]:\n두 점 $\\mathrm{A}(-2, -4)$, $\\mathrm{B}(4, 8)$에 대하여:\n- 선분 $\\mathrm{AB}$의 중점 $\\mathrm{M}$:\n  $$\\mathrm{M}\\left(\\dfrac{-2 + 4}{2}, \\dfrac{-4 + 8}{2}\\right) = (1, 2)$$\n- 직선 $\\mathrm{AB}$의 기울기:\n  $$m_{\\mathrm{AB}} = \\dfrac{8 - (-4)}{4 - (-2)} = \\dfrac{12}{6} = 2$$\n\n2단계 [수직이등분선의 방정식]:\n수직이등분선의 기울기는 $2$와 곱해서 $-1$이 되어야 하므로 $-\\dfrac{1}{2}$이다.\n점 $(1, 2)$를 지나고 기울기가 $-\\dfrac{1}{2}$인 직선의 방정식은:\n$$y - 2 = -\\dfrac{1}{2}(x - 1) \\implies 2(y - 2) = -(x - 1)$$\n$$2y - 4 = -x + 1 \\implies x + 2y - 5 = 0$$\n\n3단계 [원점과의 거리]:\n원점 $(0, 0)$과 직선 $x + 2y - 5 = 0$ 사이의 거리 $d$는:\n$$d = \\dfrac{|0 + 2(0) - 5|}{\\sqrt{1^2 + 2^2}} = \\dfrac{|-5|}{\\sqrt{5}} = \\dfrac{5}{\\sqrt{5}} = \\sqrt{5}$$\n\n[오답 및 경계 점검]\n- 분모 유리화: $\\frac{5}{\\sqrt{5}} = \\frac{5\\sqrt{5}}{5} = \\sqrt{5}$이다.\n\n[결론]\n$\\sqrt{5}$"
   },
   {
     "id": 5,
@@ -128,9 +132,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -139,13 +143,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "두 직선 $3x+y-2=0$과 $x-3y+6=0$이 이루는 각을 이등분하는 직선 중에서 기울기가 음수인 직선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=-\\dfrac{1}{2}x+2$",
+    "solution": "[풀이 전략]\n두 직선 $3x + y - 2 = 0$과 $x - 3y + 6 = 0$이 이루는 각의 이등분선 위의 임의의 점 $\\mathrm{P}(x, y)$에서 두 직선에 이르는 거리는 같다.\n자취의 방정식을 세워 두 개의 이등분선 방정식을 구한 후, 기울기가 음수인 것을 선택한다.\n\n[단계별 풀이]\n1단계 [거리 공식에 의한 자취의 식]:\n각의 이등분선 위의 점 $\\mathrm{P}(x, y)$에 대하여:\n$$\\dfrac{|3x + y - 2|}{\\sqrt{3^2 + 1^2}} = \\dfrac{|x - 3y + 6|}{\\sqrt{1^2 + (-3)^2}}$$\n분모는 모두 $\\sqrt{10}$이므로:\n$$|3x + y - 2| = |x - 3y + 6|$$\n\n2단계 [두 이등분선 유도]:\n$$3x + y - 2 = \\pm(x - 3y + 6)$$\n(i) $3x + y - 2 = x - 3y + 6$인 경우:\n$$2x + 4y - 8 = 0 \\implies x + 2y - 4 = 0 \\implies y = -\\dfrac{1}{2}x + 2$$\n이 직선의 기울기는 $-\\dfrac{1}{2}$로 음수이다.\n(ii) $3x + y - 2 = -(x - 3y + 6)$인 경우:\n$$3x + y - 2 = -x + 3y - 6 \\implies 4x - 2y + 4 = 0 \\implies 2x - y + 2 = 0 \\implies y = 2x + 2$$\n이 직선의 기울기는 $2$로 양수이다.\n\n3단계 [음수 조건 선택]:\n문제에서 기울기가 음수인 직선을 요구하였으므로 구하는 방정식은:\n$$y = -\\dfrac{1}{2}x + 2$$\n\n[오답 및 경계 점검]\n- 두 각의 이등분선은 서로 수직($-\\frac{1}{2} \\times 2 = -1$)이며, 이 중 기울기가 음수인 것은 $y = -\\frac{1}{2}x + 2$이다.\n\n[결론]\n$y=-\\dfrac{1}{2}x+2$"
   },
   {
     "id": 6,
@@ -156,9 +161,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -167,13 +172,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "두 점 $(4, 5)$와 $(-2, -1)$을 지나고 중심이 $y$축 위에 있는 원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$x^2+(y-3)^2=20$",
+    "solution": "[풀이 전략]\n원의 중심이 $y$축 위에 있으므로 중심의 좌표를 $(0, b)$로 놓는다.\n원 위의 두 점 $(4, 5)$와 $(-2, -1)$에서 중심까지의 거리가 반지름 $r$로 서로 같다는 조건을 이용하여 $b$와 $r^2$을 확정한다.\n\n[단계별 풀이]\n1단계 [중심의 좌표와 거리 관계식]:\n원의 중심을 $\\mathrm{C}(0, b)$라 하면 원 위의 점 $\\mathrm{P}(4, 5)$, $\\mathrm{Q}(-2, -1)$에 대하여 $\\overline{\\mathrm{CP}}^2 = \\overline{\\mathrm{CQ}}^2 = r^2$이다.\n$$\\overline{\\mathrm{CP}}^2 = (4 - 0)^2 + (5 - b)^2 = 16 + (b^2 - 10b + 25) = b^2 - 10b + 41$$\n$$\\overline{\\mathrm{CQ}}^2 = (-2 - 0)^2 + (-1 - b)^2 = 4 + (b^2 + 2b + 1) = b^2 + 2b + 5$$\n\n2단계 [$b$의 값 구하기]:\n$$\\overline{\\mathrm{CP}}^2 = \\overline{\\mathrm{CQ}}^2 \\implies b^2 - 10b + 41 = b^2 + 2b + 5$$\n$$-10b + 41 = 2b + 5 \\implies -12b = -36 \\implies b = 3$$\n따라서 원의 중심은 $(0, 3)$이다.\n\n3단계 [반지름의 제곱 $r^2$ 계산 및 식 완성]:\n$$r^2 = 16 + (5 - 3)^2 = 16 + 2^2 = 16 + 4 = 20$$\n따라서 구하는 원의 방정식은:\n$$x^2 + (y - 3)^2 = 20$$\n\n[오답 및 경계 점검]\n- 점 $(-2, -1)$ 대입 검산: $(-2)^2 + (-1 - 3)^2 = 4 + (-4)^2 = 4 + 16 = 20$으로 완전히 일치한다.\n\n[결론]\n$x^2+(y-3)^2=20$"
   },
   {
     "id": 7,
@@ -184,9 +190,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -195,7 +201,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "세 점 $(0, 0)$, $(4, 0)$, $(-2, 6)$을 지나는 원의 중심의 좌표를 $(p, q)$라 할 때, $p+q$의 값은?",
@@ -206,8 +213,8 @@ window.questionBank = [
       "$8$",
       "$10$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n세 점을 지나는 원(삼각형의 외접원)의 방정식은 일반형 $x^2 + y^2 + Ax + By + C = 0$에 세 점의 좌표를 대입하여 미지수 $A, B, C$를 결정한 후 표준형으로 변형하여 중심 $(p, q)$를 구한다.\n\n[단계별 풀이]\n1단계 [일반형에 대입]:\n원의 방정식을 $x^2 + y^2 + Ax + By + C = 0$이라 하자.\n- 점 $(0, 0)$을 지나므로:\n  $$0 + 0 + 0 + 0 + C = 0 \\implies C = 0$$\n- 점 $(4, 0)$을 지나므로:\n  $$4^2 + 0 + 4A + C = 0 \\implies 16 + 4A = 0 \\implies A = -4$$\n- 점 $(-2, 6)$을 지나므로:\n  $$(-2)^2 + 6^2 + A(-2) + B(6) + C = 0$$\n  $$4 + 36 - 2(-4) + 6B = 0 \\implies 40 + 8 + 6B = 0$$\n  $$48 + 6B = 0 \\implies 6B = -48 \\implies B = -8$$\n\n2단계 [표준형 변형 및 중심 확정]:\n원의 방정식은 $x^2 + y^2 - 4x - 8y = 0$이다.\n완전제곱식으로 변형하면:\n$$(x - 2)^2 - 4 + (y - 4)^2 - 16 = 0 \\implies (x - 2)^2 + (y - 4)^2 = 20$$\n따라서 원의 중심은 $(p, q) = (2, 4)$이다.\n\n3단계 [$p + q$ 계산]:\n$$p + q = 2 + 4 = 6$$\n선지에서 $6$에 해당하는 번호는 ③이다.\n\n[오답 및 경계 점검]\n- 외심의 성질을 이용해 세 점에 이르는 거리가 같음을 연립방정식으로 풀어도 동일하게 $(2, 4)$가 도출된다.\n\n[결론]\n③"
   },
   {
     "id": 8,
@@ -218,9 +225,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -229,13 +236,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "방정식 $x^2+y^2+6x-4y+k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k < 12$",
+    "solution": "[풀이 전략]\n방정식 $x^2 + y^2 + Ax + By + C = 0$이 원을 나타내려면 표준형 $(x - a)^2 + (y - b)^2 = r^2$으로 변형했을 때 우변의 반지름의 제곱 $r^2$이 반드시 양수($r^2 > 0$)여야 한다.\n\n[단계별 풀이]\n1단계 [완전제곱식 변형]:\n$$x^2 + 6x + y^2 - 4y + k + 1 = 0$$\n$$(x + 3)^2 - 9 + (y - 2)^2 - 4 + k + 1 = 0$$\n$$(x + 3)^2 + (y - 2)^2 - 12 + k = 0$$\n$$(x + 3)^2 + (y - 2)^2 = 12 - k$$\n\n2단계 [원이 되기 위한 조건]:\n이 방정식이 실원(원)을 나타내기 위해서는 반지름의 제곱이 양수여야 하므로:\n$$12 - k > 0$$\n$$k < 12$$\n\n[오답 및 경계 점검]\n- $12 - k = 0$이면 점 $(-3, 2)$를 나타내고, $12 - k < 0$이면 도형이 존재하지 않는다. 따라서 등호가 포함되지 않은 $k < 12$가 유일한 조건이다.\n\n[결론]\n$k < 12$"
   },
   {
     "id": 9,
@@ -246,9 +254,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -257,13 +265,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "직선 $2x+y-3=0$에 평행하고 원 $x^2+y^2=25$에 접하는 직선이 점 $(-\\sqrt{5}, a)$를 지날 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7\\sqrt{5}$",
+    "solution": "[풀이 전략]\n직선 $2x + y - 3 = 0$과 평행하므로 구하는 접선의 기울기는 $-2$이다.\n기울기가 $m$이고 반지름이 $r$인 원 $x^2 + y^2 = r^2$의 접선 공식 $y = mx \\pm r\\sqrt{m^2 + 1}$을 이용하여 접선을 구한 뒤, 점 $(-\\sqrt{5}, a)$를 대입하여 양수 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [접선의 기울기와 반지름]:\n- 직선 $2x + y - 3 = 0 \\implies y = -2x + 3$이므로 기울기는 $m = -2$이다.\n- 원 $x^2 + y^2 = 25$의 반지름은 $r = \\sqrt{25} = 5$이다.\n\n2단계 [접선의 방정식 구하기]:\n기울기가 $-2$인 접선의 방정식은:\n$$y = -2x \\pm 5\\sqrt{(-2)^2 + 1} = -2x \\pm 5\\sqrt{5}$$\n\n3단계 [점 $(-\\sqrt{5}, a)$ 대입 및 양수 $a$ 확정]:\n(i) $y = -2x + 5\\sqrt{5}$에 대입:\n$$a = -2(-\\sqrt{5}) + 5\\sqrt{5} = 2\\sqrt{5} + 5\\sqrt{5} = 7\\sqrt{5}$$\n(ii) $y = -2x - 5\\sqrt{5}$에 대입:\n$$a = -2(-\\sqrt{5}) - 5\\sqrt{5} = 2\\sqrt{5} - 5\\sqrt{5} = -3\\sqrt{5}$$\n문제에서 $a$는 양수라고 하였으므로:\n$$a = 7\\sqrt{5}$$\n\n[오답 및 경계 점검]\n- $a > 0$ 조건에 의해 음수인 $-3\\sqrt{5}$를 배제하고 $7\\sqrt{5}$를 정확히 선택한다.\n\n[결론]\n$7\\sqrt{5}$"
   },
   {
     "id": 10,
@@ -274,9 +283,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -285,13 +294,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2=r^2$ 위의 점 $(a, 4)$에서의 접선의 방정식이 $x-\\dfrac{4}{3}y+b=0$일 때, $a+3b+r$의 값을 구하시오. (단, $r>0$이고 $b$는 상수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$27$",
+    "solution": "[풀이 전략]\n원 위의 점 $(x_1, y_1)$에서의 접선의 방정식 $x_1 x + y_1 y = r^2$을 세운 후, 주어진 직선의 방정식과 계수를 비교하여 $a, b, r$ 사이의 관계를 찾는다. 점 $(a, 4)$가 원 위의 점임을 이용하여 $r$과 $a$를 확정한다.\n\n[단계별 풀이]\n1단계 [접선의 방정식 공식 적용]:\n원 $x^2 + y^2 = r^2$ 위의 점 $(a, 4)$에서의 접선의 방정식은:\n$$ax + 4y = r^2 \\implies ax + 4y - r^2 = 0 \\quad \\cdots\\text{①}$$\n\n2단계 [주어진 직선과의 계수 비교]:\n주어진 직선 $x - \\dfrac{4}{3}y + b = 0$의 양변에 $-3$을 곱하여 $y$의 계수를 $4$로 맞추면:\n$$-3x + 4y - 3b = 0 \\quad \\cdots\\text{②}$$\n①과 ②가 같은 직선이어야 하므로:\n$$a = -3$$\n$$-r^2 = -3b \\implies r^2 = 3b$$\n\n3단계 [원 위의 점 조건과 값 계산]:\n점 $(a, 4) = (-3, 4)$는 원 $x^2 + y^2 = r^2$ 위의 점이므로:\n$$(-3)^2 + 4^2 = r^2 \\implies 9 + 16 = 25 = r^2$$\n$r > 0$이므로:\n$$r = 5$$\n$r^2 = 25$이므로:\n$$3b = 25$$\n\n4단계 [$a + 3b + r$ 계산]:\n$$a + 3b + r = (-3) + 25 + 5 = 27$$\n\n[오답 및 경계 점검]\n- $b = \\frac{25}{3}$이므로 $3b = 25$가 자연스럽게 정수로 결합되어 $a + 3b + r = -3 + 25 + 5 = 27$이 됨을 확인한다.\n\n[결론]\n$27$"
   },
   {
     "id": 11,
@@ -302,9 +312,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -313,13 +323,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "직선 $2x+y-4=0$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동하면 직선 $2x+y-3=0$과 일치한다. 이때 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "[풀이 전략]\n직선 $f(x, y) = 0$을 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동하면 $f(x - m, y - n) = 0$이다.\n식을 전개하여 일치하는 직선의 방정식과 상수항을 비교한다.\n\n[단계별 풀이]\n1단계 [평행이동 적용]:\n직선 $2x + y - 4 = 0$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동하면:\n$$2(x - 2) + (y - a) - 4 = 0$$\n2단계 [식 정리]:\n$$2x - 4 + y - a - 4 = 0$$\n$$2x + y - a - 8 = 0$$\n3단계 [계수 비교]:\n이 직선이 $2x + y - 3 = 0$과 일치하므로 상수항을 비교하면:\n$$-a - 8 = -3$$\n$$-a = 5 \\implies a = -5$$\n\n[오답 및 경계 점검]\n- $a = -5$ 대입 시 $2(x-2) + (y - (-5)) - 4 = 2x - 4 + y + 5 - 4 = 2x + y - 3 = 0$으로 완벽히 일치한다.\n\n[결론]\n$-5$"
   },
   {
     "id": 12,
@@ -330,9 +341,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -341,13 +352,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "원 $(x+a)^2+(y-4)^2=4$를 $x$축의 방향으로 $-6$만큼 평행이동한 원이 $y$축에 접할 때, 상수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-8, -4$",
+    "solution": "[풀이 전략]\n원의 중심의 평행이동을 추적한다.\n원이 $y$축에 접하기 위한 조건은 원의 중심의 $x$좌표의 절댓값이 원의 반지름의 길이 $r$과 같아야 한다:\n$$|x_{\\text{중심}}| = r$$\n\n[단계별 풀이]\n1단계 [원의 중심과 반지름]:\n원 $(x + a)^2 + (y - 4)^2 = 4$의 중심은 $(-a, 4)$이고 반지름은 $r = \\sqrt{4} = 2$이다.\n2단계 [평행이동 후의 중심]:\n$x$축의 방향으로 $-6$만큼 평행이동한 원의 중심의 좌표는:\n$$(-a - 6, 4)$$\n3단계 [$y$축에 접할 조건]:\n평행이동한 원이 $y$축에 접하므로 중심의 $x$좌표의 절댓값이 반지름 $2$와 같아야 한다:\n$$|-a - 6| = 2 \\implies |a + 6| = 2$$\n4단계 [방정식 풀이]:\n- $a + 6 = 2 \\implies a = -4$\n- $a + 6 = -2 \\implies a = -8$\n따라서 구하는 상수 $a$의 값은 $-8, -4$이다.\n\n[오답 및 경계 점검]\n- $a=-4$일 때 중심 $(-(-4)-6, 4) = (-2, 4)$이고 $|-2| = 2 = r$로 $y$축 접함.\n- $a=-8$일 때 중심 $(-(-8)-6, 4) = (2, 4)$이고 $|2| = 2 = r$로 $y$축 접함.\n모두 유효하다.\n\n[결론]\n$-8, -4$"
   },
   {
     "id": 13,
@@ -358,9 +370,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -369,7 +381,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "점 $(3, a)$를 직선 $y=x$에 대하여 대칭이동한 다음 $x$축에 대하여 대칭이동한 점의 좌표가 $(2, b)$일 때, $a+b$의 값은?",
@@ -380,8 +393,8 @@ window.questionBank = [
       "$1$",
       "$2$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n점의 대칭이동을 단계별로 순서대로 적용한다:\n1. 직선 $y=x$에 대하여 대칭이동: $(x, y) \\to (y, x)$\n2. $x$축에 대하여 대칭이동: $(x, y) \\to (x, -y)$\n\n[단계별 풀이]\n1단계 [대칭이동 순차 적용]:\n- 처음 점의 좌표: $(3, a)$\n- 1단계 대칭이동 (직선 $y=x$ 대칭):\n  $$x\\text{좌표와 } y\\text{좌표를 바꾸면: } (a, 3)$$\n- 2단계 대칭이동 ($x$축 대칭):\n  $$y\\text{좌표의 부호를 바꾸면: } (a, -3)$$\n\n2단계 [좌표 비교]:\n이 점이 $(2, b)$와 같으므로:\n$$a = 2, \\quad b = -3$$\n\n3단계 [$a + b$ 계산]:\n$$a + b = 2 + (-3) = -1$$\n선지에서 $-1$에 해당하는 번호는 ②이다.\n\n[오답 및 경계 점검]\n- 대칭이동 순서가 바뀌지 않았는지 검산한다.\n\n[결론]\n②"
   },
   {
     "id": 14,
@@ -392,9 +405,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -403,13 +416,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "직선 $x+y-4=0$을 원점에 대하여 대칭이동한 직선이 원 $x^2+y^2+ax-4y-6=0$의 넓이를 이등분할 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n직선이 원의 넓이를 이등분하려면 반드시 원의 중심을 지나야 한다.\n직선 $x + y - 4 = 0$을 원점에 대하여 대칭이동한 직선의 방정식을 구한 후, 원을 완전제곱식으로 변형하여 구한 중심의 좌표를 대칭이동한 직선에 대입한다.\n\n[단계별 풀이]\n1단계 [대칭이동한 직선의 방정식]:\n직선 $x + y - 4 = 0$을 원점에 대하여 대칭이동하면 $x$ 대신 $-x$, $y$ 대신 $-y$를 대입하므로:\n$$-x - y - 4 = 0 \\implies x + y + 4 = 0$$\n\n2단계 [원의 중심 구하기]:\n원 $x^2 + y^2 + ax - 4y - 6 = 0$을 완전제곱식으로 변형하면:\n$$\\left(x + \\dfrac{a}{2}\\right)^2 - \\dfrac{a^2}{4} + (y - 2)^2 - 4 - 6 = 0$$\n$$\\left(x + \\dfrac{a}{2}\\right)^2 + (y - 2)^2 = \\dfrac{a^2}{4} + 10$$\n따라서 원의 중심의 좌표는 $\\left(-\\dfrac{a}{2}, 2\\right)$이다.\n\n3단계 [원의 중심 대입하여 $a$ 구하기]:\n직선 $x + y + 4 = 0$이 원의 중심 $\\left(-\\dfrac{a}{2}, 2\\right)$를 지나야 하므로:\n$$-\\dfrac{a}{2} + 2 + 4 = 0$$\n$$-\\dfrac{a}{2} + 6 = 0 \\implies \\dfrac{a}{2} = 6 \\implies a = 12$$\n\n[오답 및 경계 점검]\n- $a=12$일 때 원의 중심은 $(-6, 2)$이며, 대칭이동한 직선 $-6 + 2 + 4 = 0$을 만족함을 확인한다.\n\n[결론]\n$12$"
   },
   {
     "id": 15,
@@ -420,9 +434,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -431,13 +445,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "다음 그림과 같이 직선으로 뻗은 도로변에 $4\\,\\mathrm{km}$ 떨어진 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$로부터 각각 수직으로 $2\\,\\mathrm{km}$와 $1\\,\\mathrm{km}$ 떨어진 지점에 두 건물 $\\mathrm{C}$와 $\\mathrm{D}$가 있다. 도로변에 버스 정류장을 만들려고 할 때, 두 건물에서 버스 정류장까지의 거리의 합의 최솟값을 구하시오.\n<img src=\"q15.png\">",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5\\,\\mathrm{km}$",
+    "solution": "[풀이 전략]\n실생활 문제를 좌표평면에 모델링한다:\n강변을 $x$축으로 잡고, 점 $\\mathrm{A}$에서 강변에 내린 수선의 발을 원점 $\\mathrm{O}(0, 0)$으로 설정한다.\n강변 위의 임의의 점 $\\mathrm{P}$에 대하여 두 선분의 길이의 합 $\\overline{\\mathrm{CP}} + \\overline{\\mathrm{PD}}$의 최솟값을 대칭이동을 이용하여 구한다.\n\n[단계별 풀이]\n1단계 [좌표평면 모델링]:\n- 강변을 $x$축, 직선 $\\mathrm{AC}$를 $y$축으로 놓으면 원점은 $\\mathrm{O}(0, 0)$이다.\n- $\\overline{\\mathrm{AB}} = 4\\,\\mathrm{km}$이므로 점 $\\mathrm{B}$의 수선의 발은 $(4, 0)$이다.\n- 건물 $\\mathrm{C}$는 강변으로부터 $2\\,\\mathrm{km}$ 떨어져 있으므로 $\\mathrm{C}(0, 2)$이다.\n- 건물 $\\mathrm{D}$는 강변으로부터 $1\\,\\mathrm{km}$ 떨어져 있으므로 $\\mathrm{D}(4, 1)$이다.\n- 강변 위의 버스 정류장을 $\\mathrm{P}(x, 0)$이라 하자.\n\n2단계 [대칭이동을 이용한 최단 거리]:\n구하는 값은 $\\overline{\\mathrm{CP}} + \\overline{\\mathrm{PD}}$의 최솟값이다.\n점 $\\mathrm{D}(4, 1)$을 $x$축(강변)에 대하여 대칭이동한 점을 $\\mathrm{D}'$이라 하면:\n$$\\mathrm{D}'(4, -1)$$\n이때 $\\overline{\\mathrm{PD}} = \\overline{\\mathrm{PD}'}$이므로:\n$$\\overline{\\mathrm{CP}} + \\overline{\\mathrm{PD}} = \\overline{\\mathrm{CP}} + \\overline{\\mathrm{PD}'} \\ge \\overline{\\mathrm{CD}'}$$\n등호는 세 점 $\\mathrm{C}, \\mathrm{P}, \\mathrm{D}'$이 일직선 위에 있을 때 성립한다.\n\n3단계 [거리 계산]:\n$$\\overline{\\mathrm{CD}'} = \\sqrt{(4 - 0)^2 + (-1 - 2)^2} = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5\\,\\mathrm{km}$$\n따라서 두 건물에서 버스 정류장까지의 거리의 합의 최솟값은 $5\\,\\mathrm{km}$이다.\n\n[오답 및 경계 점검]\n- 피타고라스 정리의 삼각비 $3:4:5$가 정확히 나타남을 확인한다.\n\n[결론]\n$5\\,\\mathrm{km}$"
   },
   {
     "id": 16,
@@ -449,7 +464,7 @@ window.questionBank = [
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -459,13 +474,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$의 좌표가 $(5, -2)$이고 변 $\\mathrm{BC}$의 중점의 좌표가 $(-4, -5)$일 때, 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(-1, -4)$",
+    "solution": "[풀이 전략]\n삼각형의 무게중심 $\\mathrm{G}$는 꼭짓점에서 대변의 중점을 잇는 중선을 꼭짓점으로부터 $2:1$로 내분하는 점이다.\n꼭짓점 $\\mathrm{A}(5, -2)$와 변 $\\mathrm{BC}$의 중점 $\\mathrm{M}(-4, -5)$에 대하여 선분 $\\mathrm{AM}$을 $2:1$로 내분하는 점의 좌표를 구한다.\n\n[단계별 풀이]\n1단계 [문제 이해]:\n삼각형 $\\mathrm{ABC}$의 무게중심은 꼭짓점 $\\mathrm{A}$와 변 $\\mathrm{BC}$의 중점 $\\mathrm{M}$을 연결한 선분 $\\mathrm{AM}$을 $2:1$로 내분한다.\n\n2단계 [해결 과정]:\n변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}(-4, -5)$라 하면, 무게중심 $\\mathrm{G}(x, y)$는 선분 $\\mathrm{AM}$을 $2:1$로 내분하므로:\n$$x = \\dfrac{2 \\times (-4) + 1 \\times 5}{2 + 1} = \\dfrac{-8 + 5}{3} = \\dfrac{-3}{3} = -1$$\n$$y = \\dfrac{2 \\times (-5) + 1 \\times (-2)}{2 + 1} = \\dfrac{-10 - 2}{3} = \\dfrac{-12}{3} = -4$$\n\n3단계 [답 구하기]:\n따라서 구하는 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표는:\n$$(-1, -4)$$\n\n[오답 및 경계 점검]\n- 내분 공식에서 $2$와 곱해지는 것이 중점 $\\mathrm{M}$의 좌표이고, $1$과 곱해지는 것이 꼭짓점 $\\mathrm{A}$의 좌표임을 정확히 대조한다.\n\n[결론]\n$(-1, -4)$"
   },
   {
     "id": 17,
@@ -476,9 +492,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -487,13 +503,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "원의 방정식"
     ],
     "wide": false,
     "content": "원 $x^2+y^2+9x-6y-2=0$과 직선 $2x-y+2=0$의 두 교점을 지름의 양 끝 점으로 하는 원의 중심의 좌표를 $(a, b)$라 할 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n원과 직선의 두 교점을 지름의 양 끝 점으로 하는 원의 중심은 두 교점을 잇는 선분의 중점이다.\n원과 직선의 방정식을 연립하여 두 교점의 좌표를 직접 구하거나, 근과 계수의 관계를 이용하여 두 교점의 중점 좌표 $(a, b)$를 구한다.\n\n[단계별 풀이]\n1단계 [연립방정식 풀기]:\n직선 $2x - y + 2 = 0$에서:\n$$y = 2x + 2$$\n이를 원의 방정식 $x^2 + y^2 + 9x - 6y - 2 = 0$에 대입하면:\n$$x^2 + (2x + 2)^2 + 9x - 6(2x + 2) - 2 = 0$$\n$$x^2 + (4x^2 + 8x + 4) + 9x - (12x + 12) - 2 = 0$$\n동류항을 정리하면:\n$$5x^2 + 5x - 10 = 0$$\n양변을 $5$로 나누면:\n$$x^2 + x - 2 = 0$$\n인수분해하면:\n$$(x + 2)(x - 1) = 0 \\implies x = -2 \\text{ 또는 } x = 1$$\n\n2단계 [두 교점의 좌표 구하기]:\n- $x = -2$일 때: $y = 2(-2) + 2 = -2 \\implies (-2, -2)$\n- $x = 1$일 때: $y = 2(1) + 2 = 4 \\implies (1, 4)$\n따라서 두 교점의 좌표는 $(-2, -2)$와 $(1, 4)$이다.\n\n3단계 [원의 중심 $(a, b)$ 및 $a+b$ 구하기]:\n두 교점을 지름의 양 끝 점으로 하는 원의 중심은 두 점의 중점이므로:\n$$a = \\dfrac{-2 + 1}{2} = -\\dfrac{1}{2}$$\n$$b = \\dfrac{-2 + 4}{2} = \\dfrac{2}{2} = 1$$\n따라서 $a + b$의 값은:\n$$a + b = -\\dfrac{1}{2} + 1 = \\dfrac{1}{2}$$\n\n[오답 및 경계 점검]\n- 근과 계수의 관계를 이용한 검산:\n  이차방정식 $x^2 + x - 2 = 0$의 두 실근의 합이 $-1$이므로 두 근의 평균인 $x$중점 $a = -\\frac{1}{2}$.\n  직선 $y = 2x + 2$ 위의 점이므로 $b = 2\\left(-\\frac{1}{2}\\right) + 2 = -1 + 2 = 1$.\n  $a + b = -\\frac{1}{2} + 1 = \\frac{1}{2}$로 동일하다.\n\n[결론]\n$\\dfrac{1}{2}$"
   },
   {
     "id": 18,
@@ -504,9 +521,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "도형의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -515,12 +532,13 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "대단원 마무리"
+      "대단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "다음 그림과 같이 두 점 $\\mathrm{A}(4, 3)$과 $\\mathrm{B}(2, -4)$에 대하여 서로 다른 두 점 $\\mathrm{C}$와 $\\mathrm{D}$가 각각 $y$축과 직선 $y=x$ 위에 있을 때, $\\overline{\\mathrm{AD}}+\\overline{\\mathrm{DC}}+\\overline{\\mathrm{CB}}$의 최솟값을 구하시오.\n<img src=\"q18.png\">",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{89}$",
+    "solution": "[풀이 전략]\n선분의 길이의 합 $\\overline{\\mathrm{AD}} + \\overline{\\mathrm{DC}} + \\overline{\\mathrm{CB}}$의 최솟값을 구하기 위해, 점 $\\mathrm{A}$를 직선 $y=x$에 대하여 대칭이동한 점 $\\mathrm{A}'$과 점 $\\mathrm{B}$를 $y$축에 대하여 대칭이동한 점 $\\mathrm{B}'$을 찾는다.\n꺾인 경로를 일직선 선분 $\\overline{\\mathrm{A}'\\mathrm{B}'}$의 길이로 변환하여 최솟값을 계산한다.\n\n[단계별 풀이]\n1단계 [대칭이동 점 $\\mathrm{A}', \\mathrm{B}'$ 구하기]:\n- 점 $\\mathrm{A}(4, 3)$을 직선 $y = x$에 대하여 대칭이동한 점을 $\\mathrm{A}'$이라 하면:\n  $$\\mathrm{A}'(3, 4)$$\n  이때 점 $\\mathrm{D}$가 직선 $y=x$ 위의 점이므로 $\\overline{\\mathrm{AD}} = \\overline{\\mathrm{A}'\\mathrm{D}}$이다.\n- 점 $\\mathrm{B}(2, -4)$를 $y$축에 대하여 대칭이동한 점을 $\\mathrm{B}'$이라 하면:\n  $$\\mathrm{B}'(-2, -4)$$\n  이때 점 $\\mathrm{C}$가 $y$축 위의 점이므로 $\\overline{\\mathrm{CB}} = \\overline{\\mathrm{CB}'}$이다.\n\n2단계 [최단 거리 부등식 유도]:\n$$\\overline{\\mathrm{AD}} + \\overline{\\mathrm{DC}} + \\overline{\\mathrm{CB}} = \\overline{\\mathrm{A}'\\mathrm{D}} + \\overline{\\mathrm{DC}} + \\overline{\\mathrm{CB}'} \\ge \\overline{\\mathrm{A}'\\mathrm{B}'}$$\n등호는 점 $\\mathrm{D}$와 점 $\\mathrm{C}$가 선분 $\\mathrm{A}'\\mathrm{B}'$이 직선 $y=x$ 및 $y$축과 만나는 교점일 때 성립한다.\n\n3단계 [선분 $\\overline{\\mathrm{A}'\\mathrm{B}'}$의 길이 계산]:\n두 점 $\\mathrm{A}'(3, 4)$와 $\\mathrm{B}'(-2, -4)$ 사이의 거리는:\n$$\\overline{\\mathrm{A}'\\mathrm{B}'} = \\sqrt{\\{-2 - 3\\}^2 + \\{-4 - 4\\}^2} = \\sqrt{(-5)^2 + (-8)^2} = \\sqrt{25 + 64} = \\sqrt{89}$$\n따라서 $\\overline{\\mathrm{AD}} + \\overline{\\mathrm{DC}} + \\overline{\\mathrm{CB}}$의 최솟값은 $\\sqrt{89}$이다.\n\n[오답 및 경계 점검]\n- 점 $\\mathrm{D}$가 $y=x$ 위에 있으므로 $\\mathrm{A}$를 $y=x$에 대칭, 점 $\\mathrm{C}$가 $y$축 위에 있으므로 $\\mathrm{B}$를 $y$축에 대칭해야 최단 거리 직선 연결이 가능함을 기하학적으로 검증 완료.\n\n[결론]\n$\\sqrt{89}$"
   }
 ];

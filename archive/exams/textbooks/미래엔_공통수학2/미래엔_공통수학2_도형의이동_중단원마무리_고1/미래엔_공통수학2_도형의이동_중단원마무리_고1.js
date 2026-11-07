@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,13 +21,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "점 $(2, -1)$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 점의 좌표가 $(-5, 2)$일 때, 상수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a = -7, b = 3$",
+    "solution": "[풀이 전략]\n점 $(x, y)$를 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 점의 좌표는 $(x + a, y + b)$이다.\n\n[단계별 풀이]\n점 $(2, -1)$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 점의 좌표는:\n$$(2 + a, -1 + b)$$\n이 점이 $(-5, 2)$와 일치하므로:\n$$2 + a = -5 \\implies a = -7$$\n$$-1 + b = 2 \\implies b = 3$$\n\n[오답 및 경계 점검]\n- 점의 평행이동은 좌표에 이동량을 그대로 더하는 것이므로 부호에 주의하여 계산한다.\n\n[결론]\n$a = -7, b = 3$"
   },
   {
     "id": 2,
@@ -38,9 +39,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,13 +50,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "다음 방정식이 나타내는 도형을 $x$축의 방향으로 $6$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 도형의 방정식을 구하시오.\n⑴ $2x+3y-1=0$\n⑵ $x^2+(y-1)^2=9$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2x+3y-7=0$ ⑵ $(x-6)^2+(y+1)^2=9$",
+    "solution": "[풀이 전략]\n도형 $f(x, y) = 0$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 도형의 방정식은:\n$$f(x - a, y - b) = 0$$\n즉, $x$ 대신 $x - a$, $y$ 대신 $y - b$를 대입한다.\n\n[단계별 풀이]\n⑴ 직선 $2x + 3y - 1 = 0$을 $x$축의 방향으로 $6$만큼, $y$축의 방향으로 $-2$만큼 평행이동:\n- $x$ 대신 $x - 6$, $y$ 대신 $y - (-2) = y + 2$를 대입하면:\n  $$2(x - 6) + 3(y + 2) - 1 = 0$$\n  $$2x - 12 + 3y + 6 - 1 = 0 \\implies 2x + 3y - 7 = 0$$\n⑵ 원 $x^2 + (y - 1)^2 = 9$를 $x$축의 방향으로 $6$만큼, $y$축의 방향으로 $-2$만큼 평행이동:\n- $x$ 대신 $x - 6$, $y$ 대신 $y + 2$를 대입하면:\n  $$(x - 6)^2 + \\{(y + 2) - 1\\}^2 = 9 \\implies (x - 6)^2 + (y + 1)^2 = 9$$\n\n[오답 및 경계 점검]\n- 도형의 평행이동에서는 부호가 반대($(x-a), (y-b)$)로 대입됨을 점의 평행이동과 혼동하지 않도록 유의한다.\n\n[결론]\n⑴ $2x+3y-7=0$ ⑵ $(x-6)^2+(y+1)^2=9$"
   },
   {
     "id": 3,
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,13 +79,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "점 $(-4, 3)$을 다음에 대하여 대칭이동한 점의 좌표를 구하시오.\n⑴ $x$축\n⑵ $y$축\n⑶ 원점\n⑷ 직선 $y=x$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(-4, -3)$ ⑵ $(4, 3)$ ⑶ $(4, -3)$ ⑷ $(3, -4)$",
+    "solution": "[풀이 전략]\n점 $(x, y)$의 대칭이동 공식:\n- $x$축 대칭: $(x, -y)$\n- $y$축 대칭: $(-x, y)$\n- 원점 대칭: $(-x, -y)$\n- 직선 $y = x$ 대칭: $(y, x)$\n\n[단계별 풀이]\n점 $(-4, 3)$에 대하여:\n⑴ $x$축 대칭이동:\n$y$좌표의 부호가 바뀌므로 $(-4, -3)$\n⑵ $y$축 대칭이동:\n$x$좌표의 부호가 바뀌므로 $(4, 3)$\n⑶ 원점에 대하여 대칭이동:\n$x, y$좌표의 부호가 모두 바뀌므로 $(4, -3)$\n⑷ 직선 $y = x$에 대하여 대칭이동:\n$x$좌표와 $y$좌표가 서로 바뀌므로 $(3, -4)$\n\n[오답 및 경계 점검]\n- 각 축 및 직선에 대칭될 때 좌표의 위치와 부호 변화 규칙을 차례대로 확인한다.\n\n[결론]\n⑴ $(-4, -3)$ ⑵ $(4, 3)$ ⑶ $(4, -3)$ ⑷ $(3, -4)$"
   },
   {
     "id": 4,
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,13 +108,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "원 $(x+5)^2+(y-4)^2=1$을 다음에 대하여 대칭이동한 원의 방정식을 구하시오.\n⑴ $x$축\n⑵ $y$축\n⑶ 원점\n⑷ 직선 $y=x$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(x+5)^2+(y+4)^2=1$ ⑵ $(x-5)^2+(y-4)^2=1$ ⑶ $(x-5)^2+(y+4)^2=1$ ⑷ $(x-4)^2+(y+5)^2=1$",
+    "solution": "[풀이 전략]\n원의 대칭이동은 원의 중심의 대칭이동과 같으며, 반지름의 길이는 변하지 않는다.\n원 $(x + 5)^2 + (y - 4)^2 = 1$의 중심은 $(-5, 4)$이고 반지름은 $1$이다.\n\n[단계별 풀이]\n⑴ $x$축 대칭:\n중심 $(-5, 4)$가 $(-5, -4)$로 이동하므로:\n$$(x + 5)^2 + (y + 4)^2 = 1$$\n⑵ $y$축 대칭:\n중심 $(-5, 4)$가 $(5, 4)$로 이동하므로:\n$$(x - 5)^2 + (y - 4)^2 = 1$$\n⑶ 원점 대칭:\n중심 $(-5, 4)$가 $(5, -4)$로 이동하므로:\n$$(x - 5)^2 + (y + 4)^2 = 1$$\n⑷ 직선 $y = x$ 대칭:\n중심 $(-5, 4)$가 $(4, -5)$로 이동하므로:\n$$(x - 4)^2 + (y + 5)^2 = 1$$\n\n[오답 및 경계 점검]\n- 원의 식 자체에 대칭이동 규칙을 적용할 때도 동일한 결과가 도출됨을 검산한다 (예: $x$축 대칭 시 $y \\to -y \\implies (-y - 4)^2 = (y + 4)^2$).\n\n[결론]\n⑴ $(x+5)^2+(y+4)^2=1$ ⑵ $(x-5)^2+(y-4)^2=1$ ⑶ $(x-5)^2+(y+4)^2=1$ ⑷ $(x-4)^2+(y+5)^2=1$"
   },
   {
     "id": 5,
@@ -122,9 +126,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -133,13 +137,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "점 $(4, -5)$를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $4$만큼 평행이동한 점이 직선 $x-ay+3=0$ 위에 있을 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "[풀이 전략]\n점을 평행이동한 후의 좌표를 구하고, 그 점이 주어진 직선의 방정식의 해가 됨을 이용하여 대입한다.\n\n[단계별 풀이]\n1단계: 점 $(4, -5)$의 평행이동\n$x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $4$만큼 평행이동한 점의 좌표는:\n$$(4 + (-2), -5 + 4) = (2, -1)$$\n2단계: 직선의 방정식에 대입\n점 $(2, -1)$이 직선 $x - ay + 3 = 0$ 위에 있으므로:\n$$2 - a(-1) + 3 = 0$$\n$$2 + a + 3 = 0 \\implies a + 5 = 0 \\implies a = -5$$\n\n[오답 및 경계 점검]\n- $a(-1)$의 부호 계산 실수에 유의한다 ($-(-a) = +a$).\n\n[결론]\n$-5$"
   },
   {
     "id": 6,
@@ -150,9 +155,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -161,13 +166,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "원 $(x-1)^2+(y-6)^2=9$를 $x$축의 방향으로 $5$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 다음 직선 $y=x$에 대하여 대칭이동한 원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(x-5)^2+(y-6)^2=9$",
+    "solution": "[풀이 전략]\n원의 중심의 이동을 추적한다. 원의 반지름은 평행이동과 대칭이동에 의해 변하지 않는다.\n\n[단계별 풀이]\n1단계: 원래 원의 중심과 반지름\n원 $(x - 1)^2 + (y - 6)^2 = 9$의 중심은 $(1, 6)$이고 반지름은 $3$이다.\n2단계: 평행이동 적용\n$x$축의 방향으로 $5$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 원의 중심:\n$$(1 + 5, 6 + (-1)) = (6, 5)$$\n3단계: 직선 $y=x$에 대한 대칭이동 적용\n중심 $(6, 5)$를 직선 $y = x$에 대하여 대칭이동하면 $x$좌표와 $y$좌표가 바뀌므로:\n$$(5, 6)$$\n4단계: 원의 방정식 작성\n중심이 $(5, 6)$이고 반지름이 $3$인 원의 방정식은:\n$$(x - 5)^2 + (y - 6)^2 = 9$$\n\n[오답 및 경계 점검]\n- 평행이동 후 대칭이동하는 순서를 정확히 지켜 중심의 이동 좌표를 추적한다.\n\n[결론]\n$(x-5)^2+(y-6)^2=9$"
   },
   {
     "id": 7,
@@ -178,9 +184,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -189,13 +195,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "직선 $y=2x-3$을 $x$축에 대하여 대칭이동한 직선과 점 $(-2, 3)$을 지나는 직선 $l$이 서로 수직일 때, 직선 $l$의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=\\dfrac{1}{2}x+4$",
+    "solution": "[풀이 전략]\n1단계: 직선 $y = 2x - 3$을 $x$축에 대하여 대칭이동한 직선의 방정식을 구한다.\n2단계: 그 직선과 수직인 직선 $l$의 기울기를 구한다.\n3단계: 점 $(-2, 3)$을 지나고 구한 기울기를 갖는 직선의 방정식을 완성한다.\n\n[단계별 풀이]\n1단계 [대칭이동한 직선 구하기]:\n직선 $y = 2x - 3$을 $x$축에 대하여 대칭이동하면 $y$ 대신 $-y$를 대입하므로:\n$$-y = 2x - 3 \\implies y = -2x + 3$$\n2단계 [수직인 직선 $l$의 기울기]:\n대칭이동한 직선의 기울기가 $-2$이므로, 이에 수직인 직선 $l$의 기울기 $m$은:\n$$-2 \\times m = -1 \\implies m = \\dfrac{1}{2}$$\n3단계 [직선 $l$의 방정식 완성]:\n직선 $l$은 점 $(-2, 3)$을 지나고 기울기가 $\\dfrac{1}{2}$이므로:\n$$y - 3 = \\dfrac{1}{2}\\{x - (-2)\\} \\implies y - 3 = \\dfrac{1}{2}(x + 2)$$\n$$y - 3 = \\dfrac{1}{2}x + 1 \\implies y = \\dfrac{1}{2}x + 4$$\n\n[오답 및 경계 점검]\n- 점 $(-2, 3)$ 대입 시 $\\frac{1}{2}(-2) + 4 = -1 + 4 = 3$으로 성립함을 확인한다.\n\n[결론]\n$y=\\dfrac{1}{2}x+4$"
   },
   {
     "id": 8,
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -217,13 +224,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "점 $\\mathrm{A}(2, 1)$을 원점에 대하여 대칭이동한 점을 $\\mathrm{B}$, 직선 $y=x$에 대하여 대칭이동한 점을 $\\mathrm{C}$라 할 때, 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$의 넓이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n1단계: 점 $\\mathrm{A}$를 원점에 대하여 대칭이동한 점 $\\mathrm{B}$와 직선 $y=x$에 대하여 대칭이동한 점 $\\mathrm{C}$의 좌표를 구한다.\n2단계: 밑변 $\\overline{\\mathrm{AB}}$의 길이와 직선 $\\mathrm{AB}$의 방정식을 구한다.\n3단계: 점 $\\mathrm{C}$에서 직선 $\\mathrm{AB}$에 이르는 거리(높이)를 구하여 삼각형 $\\mathrm{ABC}$의 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [점 $\\mathrm{B}, \\mathrm{C}$의 좌표 구하기]:\n점 $\\mathrm{A}(2, 1)$에 대하여:\n- 원점에 대하여 대칭이동한 점 $\\mathrm{B}$:\n  $$\\mathrm{B}(-2, -1)$$\n- 직선 $y = x$에 대하여 대칭이동한 점 $\\mathrm{C}$:\n  $$\\mathrm{C}(1, 2)$$\n\n2단계 [밑변 $\\overline{\\mathrm{AB}}$와 직선 $\\mathrm{AB}$의 방정식]:\n- 선분 $\\mathrm{AB}$의 길이:\n  $$\\overline{\\mathrm{AB}} = \\sqrt{\\{-2 - 2\\}^2 + \\{-1 - 1\\}^2} = \\sqrt{(-4)^2 + (-2)^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$$\n- 직선 $\\mathrm{AB}$의 기울기:\n  $$m = \\dfrac{-1 - 1}{-2 - 2} = \\dfrac{-2}{-4} = \\dfrac{1}{2}$$\n- 직선 $\\mathrm{AB}$의 방정식:\n  $$y - 1 = \\dfrac{1}{2}(x - 2) \\implies 2y - 2 = x - 2 \\implies x - 2y = 0$$\n\n3단계 [높이와 넓이 구하기]:\n- 점 $\\mathrm{C}(1, 2)$와 직선 $x - 2y = 0$ 사이의 거리 $h$:\n  $$h = \\dfrac{|1 \\times 1 - 2 \\times 2|}{\\sqrt{1^2 + (-2)^2}} = \\dfrac{|-3|}{\\sqrt{5}} = \\dfrac{3}{\\sqrt{5}} = \\dfrac{3\\sqrt{5}}{5}$$\n- 삼각형 $\\mathrm{ABC}$의 넓이 $S$:\n  $$S = \\dfrac{1}{2} \\times \\overline{\\mathrm{AB}} \\times h = \\dfrac{1}{2} \\times 2\\sqrt{5} \\times \\dfrac{3\\sqrt{5}}{5} = \\dfrac{3 \\times 5}{5} = 3$$\n\n[오답 및 경계 점검]\n- 사선 공식(신발끈 공식)으로 검산:\n  $$S = \\dfrac{1}{2}|(2)(-1) + (-2)(2) + (1)(1) - \\{1(-2) + (-1)(1) + 2(2)\\}|$$\n  $$= \\dfrac{1}{2}|-2 - 4 + 1 - (-2 - 1 + 4)| = \\dfrac{1}{2}|-5 - 1| = \\dfrac{1}{2} |-6| = 3$$\n  완벽히 일치한다.\n\n[결론]\n$3$"
   },
   {
     "id": 9,
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -245,13 +253,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "직선 $x+3y-4=0$을 직선 $y=x$에 대하여 대칭이동한 직선을 $l$이라 할 때, 원 $(x-1)^2+y^2=4$와 직선 $l$의 교점의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n직선을 $y=x$에 대하여 대칭이동한 후, 원의 중심에서 직선까지의 거리 $d$와 원의 반지름 $r$을 비교하여 교점의 개수를 판정한다.\n- $d < r \\iff$ 서로 다른 두 점에서 만난다 (교점 $2$개)\n- $d = r \\iff$ 한 점에서 접한다 (교점 $1$개)\n- $d > r \\iff$ 만나지 않는다 (교점 $0$개)\n\n[단계별 풀이]\n1단계 [대칭이동한 직선 $l$의 방정식 구하기]:\n직선 $x + 3y - 4 = 0$을 직선 $y = x$에 대하여 대칭이동하면 $x$와 $y$의 위치를 서로 바꾸므로:\n$$y + 3x - 4 = 0 \\implies 3x + y - 4 = 0$$\n따라서 직선 $l$의 방정식은 $3x + y - 4 = 0$이다.\n\n2단계 [원의 중심과 반지름]:\n원 $(x - 1)^2 + y^2 = 4$의 중심은 $(1, 0)$이고, 반지름은 $r = \\sqrt{4} = 2$이다.\n\n3단계 [거리 $d$ 계산 및 교점 개수 판정]:\n원의 중심 $(1, 0)$과 직선 $3x + y - 4 = 0$ 사이의 거리 $d$는:\n$$d = \\dfrac{|3(1) + 0 - 4|}{\\sqrt{3^2 + 1^2}} = \\dfrac{|-1|}{\\sqrt{10}} = \\dfrac{1}{\\sqrt{10}} = \\dfrac{\\sqrt{10}}{10}$$\n$d = \\dfrac{\\sqrt{10}}{10} \\approx 0.316$이고 반지름 $r = 2$이므로:\n$$d < r$$\n원의 중심에서 직선까지의 거리가 반지름보다 작으므로 원과 직선 $l$은 서로 다른 두 점에서 만난다.\n따라서 교점의 개수는 $2$개이다.\n\n[오답 및 경계 점검]\n- 교점의 개수를 묻는 문제이므로 거리를 구한 후 $d<r$의 대소 관계로부터 정수 개수 $2$를 정확히 결론짓는다.\n\n[결론]\n$2$"
   },
   {
     "id": 10,
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -273,13 +282,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "포물선 $y=x^2-4x$를 포물선 $y=x^2-12x+27$로 옮기는 평행이동에 의하여 직선 $l: 2x+y-1=0$이 직선 $l'$으로 옮겨진다. 이때 두 직선 $l$과 $l'$ 사이의 거리를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{3\\sqrt{5}}{5}$",
+    "solution": "[풀이 전략]\n포물선의 평행이동은 꼭짓점의 평행이동으로 파악하는 것이 가장 빠르고 정확하다.\n두 포물선의 꼭짓점 좌표를 구하여 평행이동량 $(a, b)$를 확정한 후, 직선 $l$을 동일하게 평행이동하여 얻은 직선 $l'$과의 평행선 사이의 거리를 계산한다.\n\n[단계별 풀이]\n1단계 [평행이동량 $a, b$ 구하기]:\n- 포물선 $y = x^2 - 4x$:\n  $$y = (x - 2)^2 - 4 \\implies \\text{꼭짓점: } (2, -4)$$\n- 포물선 $y = x^2 - 12x + 27$:\n  $$y = (x - 6)^2 - 36 + 27 = (x - 6)^2 - 9 \\implies \\text{꼭짓점: } (6, -9)$$\n꼭짓점 $(2, -4)$가 $(6, -9)$로 이동했으므로:\n$$x\\text{축 방향 이동량: } a = 6 - 2 = 4$$\n$$y\\text{축 방향 이동량: } b = -9 - (-4) = -5$$\n\n2단계 [직선 $l'$의 방정식 구하기]:\n직선 $l: 2x + y - 1 = 0$을 $x$축의 방향으로 $4$만큼, $y$축의 방향으로 $-5$만큼 평행이동하면:\n$$2(x - 4) + (y + 5) - 1 = 0$$\n$$2x - 8 + y + 5 - 1 = 0 \\implies 2x + y - 4 = 0$$\n따라서 $l': 2x + y - 4 = 0$이다.\n\n3단계 [두 직선 $l$과 $l'$ 사이의 거리 구하기]:\n직선 $l$ 위의 점 $(0, 1)$에서 직선 $l': 2x + y - 4 = 0$까지의 거리 $d$는:\n$$d = \\dfrac{|2(0) + 1 - 4|}{\\sqrt{2^2 + 1^2}} = \\dfrac{|-3|}{\\sqrt{5}} = \\dfrac{3}{\\sqrt{5}} = \\dfrac{3\\sqrt{5}}{5}$$\n\n[오답 및 경계 점검]\n- 평행한 두 직선 사이의 거리 공식 $d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}} = \\frac{|-1 - (-4)|}{\\sqrt{5}} = \\frac{3}{\\sqrt{5}} = \\frac{3\\sqrt{5}}{5}$와 완전히 일치한다.\n\n[결론]\n$\\dfrac{3\\sqrt{5}}{5}$"
   },
   {
     "id": 11,
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
+    "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,12 +311,13 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "도형의 이동"
     ],
     "wide": false,
     "content": "원 $x^2+y^2+8x-10y+28=0$을 $x$축에 대하여 대칭이동한 원이 직선 $y=mx$에 접하도록 하는 모든 실수 $m$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{40}{3}$",
+    "solution": "[풀이 전략]\n원을 $x$축에 대하여 대칭이동한 후의 원의 중심과 반지름을 구한다.\n원과 직선 $y = mx$가 접하므로, 대칭이동한 원의 중심에서 직선 $mx - y = 0$까지의 거리가 반지름과 같다는 조건을 세워 $m$에 대한 이차방정식을 얻고, 근과 계수의 관계를 이용하여 모든 $m$의 값의 합을 구한다.\n\n[단계별 풀이]\n1단계 [대칭이동한 원의 방정식]:\n원 $x^2 + y^2 + 8x - 10y + 28 = 0$을 $x$축에 대하여 대칭이동하면 $y$ 대신 $-y$를 대입하므로:\n$$x^2 + (-y)^2 + 8x - 10(-y) + 28 = 0$$\n$$x^2 + y^2 + 8x + 10y + 28 = 0$$\n표준형으로 정리하면:\n$$(x + 4)^2 - 16 + (y + 5)^2 - 25 + 28 = 0$$\n$$(x + 4)^2 + (y + 5)^2 = 13$$\n따라서 원의 중심은 $(-4, -5)$이고, 반지름은 $r = \\sqrt{13}$이다.\n\n2단계 [접할 조건 세우기]:\n원의 중심 $(-4, -5)$와 직선 $y = mx \\implies mx - y = 0$ 사이의 거리 $d$는:\n$$d = \\dfrac{|m(-4) - (-5)|}{\\sqrt{m^2 + (-1)^2}} = \\dfrac{|-4m + 5|}{\\sqrt{m^2 + 1}}$$\n원이 직선과 접하므로 $d = r = \\sqrt{13}$이다:\n$$\\dfrac{|-4m + 5|}{\\sqrt{m^2 + 1}} = \\sqrt{13}$$\n\n3단계 [이차방정식 유도 및 근과 계수의 관계]:\n양변을 제곱하여 정리하면:\n$$\\dfrac{(-4m + 5)^2}{m^2 + 1} = 13 \\implies 16m^2 - 40m + 25 = 13(m^2 + 1)$$\n$$16m^2 - 40m + 25 = 13m^2 + 13$$\n$$3m^2 - 40m + 12 = 0$$\n판별식 $D/4 = (-20)^2 - 3 \\times 12 = 400 - 36 = 364 > 0$이므로 서로 다른 두 실근이 존재한다.\n따라서 근과 계수의 관계에 의해 두 접선의 기울기의 합은:\n$$\\text{합} = -\\dfrac{-40}{3} = \\dfrac{40}{3}$$\n\n[오답 및 경계 점검]\n- $m$에 대한 이차방정식의 판별식이 양수임을 확인하여 실제 존재하는 두 접선임을 검증 완료.\n\n[결론]\n$\\dfrac{40}{3}$"
   }
 ];

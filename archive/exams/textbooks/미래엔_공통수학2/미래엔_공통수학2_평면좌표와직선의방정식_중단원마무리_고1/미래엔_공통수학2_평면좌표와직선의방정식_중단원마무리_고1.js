@@ -11,7 +11,7 @@ window.questionBank = [
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -21,13 +21,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "다음 두 점 사이의 거리를 구하시오.\n⑴ $\\mathrm{A}(3)$, $\\mathrm{B}(-7)$\n⑵ $\\mathrm{A}(-5, 1)$, $\\mathrm{B}(-2, 6)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $10$ ⑵ $\\sqrt{34}$",
+    "solution": "[풀이 전략]\n수직선 위의 두 점 $\\mathrm{A}(x_1)$, $\\mathrm{B}(x_2)$ 사이의 거리는 두 좌표의 차의 절댓값으로 구한다:\n$$\\overline{\\mathrm{AB}} = |x_2 - x_1|$$\n좌표평면 위의 두 점 $\\mathrm{A}(x_1, y_1)$, $\\mathrm{B}(x_2, y_2)$ 사이의 거리는 피타고라스 정리에 의해 구한다:\n$$\\overline{\\mathrm{AB}} = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$\n\n[단계별 풀이]\n⑴ 수직선 위의 두 점 $\\mathrm{A}(3)$, $\\mathrm{B}(-7)$ 사이의 거리:\n$$\\overline{\\mathrm{AB}} = |-7 - 3| = |-10| = 10$$\n⑵ 좌표평면 위의 두 점 $\\mathrm{A}(-5, 1)$, $\\mathrm{B}(-2, 6)$ 사이의 거리:\n$$\\overline{\\mathrm{AB}} = \\sqrt{\\{-2 - (-5)\\}^2 + (6 - 1)^2} = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34}$$\n\n[오답 및 경계 점검]\n- 좌표평면에서 음의 좌표를 뺄 때 부호 실수($-2 - (-5) = 3$)에 유의한다.\n- 거리는 항상 $0$ 이상인 양수이다.\n\n[결론]\n⑴ $10$ ⑵ $\\sqrt{34}$"
   },
   {
     "id": 2,
@@ -39,7 +40,7 @@ window.questionBank = [
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -49,13 +50,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "다음 점의 좌표를 구하시오.\n⑴ 두 점 $\\mathrm{A}(-2)$와 $\\mathrm{B}(8)$에 대하여 선분 $\\mathrm{AB}$를 $3:2$로 내분하는 점\n⑵ 두 점 $\\mathrm{A}(6, 2)$와 $\\mathrm{B}(-3, -1)$에 대하여 선분 $\\mathrm{AB}$를 $1:2$로 내분하는 점",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $4$ ⑵ $(3, 1)$",
+    "solution": "[풀이 전략]\n선분 $\\mathrm{AB}$를 $m:n$ ($m>0, n>0$)으로 내분하는 점의 좌표 공식:\n- 수직선 위: $\\dfrac{mx_2 + nx_1}{m + n}$\n- 좌표평면 위: $\\left(\\dfrac{mx_2 + nx_1}{m + n}, \\dfrac{my_2 + ny_1}{m + n}\\right)$\n\n[단계별 풀이]\n⑴ $\\mathrm{A}(-2)$, $\\mathrm{B}(8)$을 $3:2$로 내분하는 점:\n$$x = \\dfrac{3 \\times 8 + 2 \\times (-2)}{3 + 2} = \\dfrac{24 - 4}{5} = \\dfrac{20}{5} = 4$$\n⑵ $\\mathrm{A}(6, 2)$, $\\mathrm{B}(-3, -1)$을 $1:2$로 내분하는 점:\n$$x = \\dfrac{1 \\times (-3) + 2 \\times 6}{1 + 2} = \\dfrac{-3 + 12}{3} = \\dfrac{9}{3} = 3$$\n$$y = \\dfrac{1 \\times (-1) + 2 \\times 2}{1 + 2} = \\dfrac{-1 + 4}{3} = \\dfrac{3}{3} = 1$$\n따라서 구하는 점의 좌표는 $(3, 1)$이다.\n\n[오답 및 경계 점검]\n- 내분 공식에서 $m$과 곱해지는 좌표는 점 $\\mathrm{B}$의 좌표이고, $n$과 곱해지는 좌표는 점 $\\mathrm{A}$의 좌표임을 혼동하지 않도록 크로스 곱 순서를 점검한다.\n\n[결론]\n⑴ $4$ ⑵ $(3, 1)$"
   },
   {
     "id": 3,
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,13 +79,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "다음 직선의 방정식을 구하시오.\n⑴ 점 $(-4, 5)$를 지나고 직선 $y=-3x+2$에 평행한 직선\n⑵ 점 $(1, -3)$을 지나고 직선 $y=2x-1$에 수직인 직선",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $y=-3x-7$ ⑵ $y=-\\dfrac{1}{2}x-\\dfrac{5}{2}$",
+    "solution": "[풀이 전략]\n한 점 $(x_1, y_1)$을 지나고 기울기가 $m$인 직선의 방정식은 $y - y_1 = m(x - x_1)$이다.\n- 평행 조건: 두 직선의 기울기가 서로 같다 ($m_1 = m_2$).\n- 수직 조건: 두 직선의 기울기의 곱이 $-1$이다 ($m_1 m_2 = -1$).\n\n[단계별 풀이]\n⑴ 점 $(-4, 5)$를 지나고 직선 $y=-3x+2$에 평행한 직선:\n- 평행하므로 구하는 직선의 기울기는 $-3$이다.\n- 점 $(-4, 5)$를 지나므로:\n  $$y - 5 = -3\\{x - (-4)\\} \\implies y - 5 = -3x - 12 \\implies y = -3x - 7$$\n⑵ 점 $(1, -3)$을 지나고 직선 $y=2x-1$에 수직인 직선:\n- 직선 $y=2x-1$의 기울기가 $2$이므로, 이에 수직인 직선의 기울기 $m$은:\n  $$2 \\times m = -1 \\implies m = -\\dfrac{1}{2}$$\n- 점 $(1, -3)$을 지나므로:\n  $$y - (-3) = -\\dfrac{1}{2}(x - 1) \\implies y + 3 = -\\dfrac{1}{2}x + \\dfrac{1}{2} \\implies y = -\\dfrac{1}{2}x - \\dfrac{5}{2}$$\n\n[오답 및 경계 점검]\n- 수직인 기울기를 구할 때 부호 역수($-\\frac{1}{m}$)를 정확히 적용했는지 확인한다.\n\n[결론]\n⑴ $y=-3x-7$ ⑵ $y=-\\dfrac{1}{2}x-\\dfrac{5}{2}$"
   },
   {
     "id": 4,
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,13 +108,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "점 $(4, 2)$와 직선 $3x-4y+11=0$ 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n점 $(x_1, y_1)$과 직선 $ax + by + c = 0$ 사이의 거리 공식:\n$$d = \\dfrac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}$$\n\n[단계별 풀이]\n점 $(4, 2)$와 직선 $3x - 4y + 11 = 0$ 사이의 거리 $d$는:\n1단계: 공식에 대입하면\n$$d = \\dfrac{|3 \\times 4 - 4 \\times 2 + 11|}{\\sqrt{3^2 + (-4)^2}}$$\n2단계: 분자와 분모 계산\n- 분모: $\\sqrt{9 + 16} = \\sqrt{25} = 5$\n- 분자: $|12 - 8 + 11| = |15| = 15$\n3단계: 거리 확정\n$$d = \\dfrac{15}{5} = 3$$\n\n[오답 및 경계 점검]\n- 분모에서 $(-4)^2 = 16$의 부호와 분자의 절댓값 연산이 정확한지 확인한다.\n\n[결론]\n$3$"
   },
   {
     "id": 5,
@@ -123,7 +127,7 @@ window.questionBank = [
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -133,13 +137,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "세 점 $\\mathrm{A}(-4, 5)$, $\\mathrm{B}(-2, -3)$, $\\mathrm{C}(1, a)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$가 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형일 때, $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0, 2$",
+    "solution": "[풀이 전략]\n$\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이므로 두 변 $\\mathrm{AC}$와 $\\mathrm{BC}$는 서로 수직이다.\n두 직선이 수직이면 기울기의 곱이 $-1$이 성립함을 이용하거나, 피타고라스 정리 $\\overline{\\mathrm{AC}}^2 + \\overline{\\mathrm{BC}}^2 = \\overline{\\mathrm{AB}}^2$을 이용한다.\n\n[단계별 풀이]\n1단계: 각 선분의 길이의 제곱 계산\n- $\\overline{\\mathrm{AC}}^2 = \\{1 - (-4)\\}^2 + (a - 5)^2 = 5^2 + (a^2 - 10a + 25) = a^2 - 10a + 50$\n- $\\overline{\\mathrm{BC}}^2 = \\{1 - (-2)\\}^2 + \\{a - (-3)\\}^2 = 3^2 + (a^2 + 6a + 9) = a^2 + 6a + 18$\n- $\\overline{\\mathrm{AB}}^2 = \\{-2 - (-4)\\}^2 + (-3 - 5)^2 = 2^2 + (-8)^2 = 4 + 64 = 68$\n2단계: 피타고라스 정리 적용\n$\\angle\\mathrm{C}=90^\\circ$이므로:\n$$\\overline{\\mathrm{AC}}^2 + \\overline{\\mathrm{BC}}^2 = \\overline{\\mathrm{AB}}^2$$\n$$(a^2 - 10a + 50) + (a^2 + 6a + 18) = 68$$\n$$2a^2 - 4a + 68 = 68 \\implies 2a^2 - 4a = 0$$\n3단계: 이차방정식 풀이\n$$2a(a - 2) = 0 \\implies a = 0 \\text{ 또는 } a = 2$$\n(기울기로 검산:\n$a=0$일 때 $\\mathrm{AC}$ 기울기 $\\frac{0-5}{5}=-1$, $\\mathrm{BC}$ 기울기 $\\frac{0+3}{3}=1$, 곱은 $-1$.\n$a=2$일 때 $\\mathrm{AC}$ 기울기 $\\frac{2-5}{5}=-\\frac{3}{5}$, $\\mathrm{BC}$ 기울기 $\\frac{2+3}{3}=\\frac{5}{3}$, 곱은 $-1$.)\n\n[오답 및 경계 점검]\n- $a=0$과 $a=2$ 모두 삼각형을 이루며 세 점이 일직선상에 있지 않음을 확인한다.\n\n[결론]\n$0, 2$"
   },
   {
     "id": 6,
@@ -151,7 +156,7 @@ window.questionBank = [
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -161,13 +166,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "두 점 $\\mathrm{A}(2, -3)$과 $\\mathrm{B}(5, 6)$에 대하여 선분 $\\mathrm{AB}$를 $2:3$으로 내분하는 점이 직선 $y=\\dfrac{1}{2}x+k$ 위에 있을 때, 상수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n두 점을 $2:3$으로 내분하는 점의 좌표를 공식으로 구한 후, 그 점의 좌표를 직선의 방정식에 대입하여 $k$의 값을 결정한다.\n\n[단계별 풀이]\n1단계: 선분 $\\mathrm{AB}$를 $2:3$으로 내분하는 점의 좌표 $(x, y)$ 구하기\n$$x = \\dfrac{2 \\times 5 + 3 \\times 2}{2 + 3} = \\dfrac{10 + 6}{5} = \\dfrac{16}{5}$$\n$$y = \\dfrac{2 \\times 6 + 3 \\times (-3)}{2 + 3} = \\dfrac{12 - 9}{5} = \\dfrac{3}{5}$$\n따라서 내분점의 좌표는 $\\left(\\dfrac{16}{5}, \\dfrac{3}{5}\\right)$이다.\n2단계: 직선 $y = \\dfrac{1}{2}x + k$에 대입\n$$\\dfrac{3}{5} = \\dfrac{1}{2} \\times \\dfrac{16}{5} + k$$\n$$\\dfrac{3}{5} = \\dfrac{8}{5} + k \\implies k = \\dfrac{3}{5} - \\dfrac{8}{5} = -\\dfrac{5}{5} = -1$$\n\n[오답 및 경계 점검]\n- $k = -1$ 대입 시 $\\frac{1}{2}(\\frac{16}{5}) - 1 = \\frac{8}{5} - \\frac{5}{5} = \\frac{3}{5}$으로 일치함을 확인한다.\n\n[결론]\n$-1$"
   },
   {
     "id": 7,
@@ -179,7 +185,7 @@ window.questionBank = [
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
+    "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -189,13 +195,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "평면좌표"
     ],
     "wide": false,
     "content": "세 점 $\\mathrm{A}(-1, 2)$, $\\mathrm{B}(3, 5)$, $\\mathrm{C}(a, b)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표가 $(1, 1)$일 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3$",
+    "solution": "[풀이 전략]\n세 점 $\\mathrm{A}(x_1, y_1), \\mathrm{B}(x_2, y_2), \\mathrm{C}(x_3, y_3)$을 꼭짓점으로 하는 삼각형의 무게중심 $\\mathrm{G}$의 좌표는 세 꼭짓점 좌표의 산술평균이다:\n$$\\mathrm{G}\\left(\\dfrac{x_1 + x_2 + x_3}{3}, \\dfrac{y_1 + y_2 + y_3}{3}\\right)$$\n\n[단계별 풀이]\n1단계: $x$좌표 관계식 세우기\n$$\\dfrac{-1 + 3 + a}{3} = 1 \\implies \\dfrac{2 + a}{3} = 1 \\implies 2 + a = 3 \\implies a = 1$$\n2단계: $y$좌표 관계식 세우기\n$$\\dfrac{2 + 5 + b}{3} = 1 \\implies \\dfrac{7 + b}{3} = 1 \\implies 7 + b = 3 \\implies b = -4$$\n3단계: $a + b$ 계산\n$$a + b = 1 + (-4) = -3$$\n\n[오답 및 경계 점검]\n- 무게중심 공식 분모가 $3$임을 확인하고, 좌표 대입 시 부호 실수가 없도록 재검산한다.\n\n[결론]\n$-3$"
   },
   {
     "id": 8,
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -217,13 +224,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "평행한 두 직선 $2x+3y-1=0$과 $2x+3y-k=0$ 사이의 거리가 $\\sqrt{13}$일 때, 상수 $k$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-12, 14$",
+    "solution": "[풀이 전략]\n평행한 두 직선 $ax + by + c_1 = 0$과 $ax + by + c_2 = 0$ 사이의 거리 $d$는 다음 공식으로 구한다:\n$$d = \\dfrac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}$$\n또는 한 직선 위의 임의의 한 점을 잡아 다른 직선까지의 거리를 계산한다.\n\n[단계별 풀이]\n1단계: 거리 공식 적용\n두 직선 $2x + 3y - 1 = 0$과 $2x + 3y - k = 0$에서 $a=2, b=3, c_1=-1, c_2=-k$이므로:\n$$d = \\dfrac{|-1 - (-k)|}{\\sqrt{2^2 + 3^2}} = \\dfrac{|k - 1|}{\\sqrt{4 + 9}} = \\dfrac{|k - 1|}{\\sqrt{13}}$$\n2단계: 거리가 $\\sqrt{13}$이 되는 조건\n$$\\dfrac{|k - 1|}{\\sqrt{13}} = \\sqrt{13} \\implies |k - 1| = 13$$\n3단계: 절댓값 방정식 풀이\n- $k - 1 = 13 \\implies k = 14$\n- $k - 1 = -13 \\implies k = -12$\n따라서 구하는 상수 $k$의 값은 $-12, 14$이다.\n\n[오답 및 경계 점검]\n- 절댓값을 풀 때 $\\pm 13$ 두 가지 경우가 모두 가능하므로 $k$의 값이 2개 존재함을 확인한다.\n\n[결론]\n$-12, 14$"
   },
   {
     "id": 9,
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -245,13 +253,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "두 직선 $2x-3y+4=0$과 $3x+y-5=0$의 교점을 지나고 직선 $6x+3y+1=0$과 평행한 직선의 방정식을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=-2x+4$",
+    "solution": "[풀이 전략]\n1단계: 두 직선의 연립방정식을 풀어 교점의 좌표를 구한다.\n2단계: 주어진 직선의 기울기를 구하여 평행 조건에 의해 구하는 직선의 기울기를 확정한다.\n3단계: 점과 기울기를 이용하여 직선의 방정식을 완성한다.\n\n[단계별 풀이]\n1단계 [두 직선의 교점 구하기]:\n연립방정식\n$$\\begin{cases} 2x - 3y + 4 = 0 & \\cdots\\text{①} \\\\ 3x + y - 5 = 0 & \\cdots\\text{②} \\end{cases}$$\n②에서 $y = -3x + 5$를 ①에 대입하면:\n$$2x - 3(-3x + 5) + 4 = 0 \\implies 2x + 9x - 15 + 4 = 0$$\n$$11x - 11 = 0 \\implies x = 1$$\n$x = 1$을 ②에 대입하면:\n$$y = -3(1) + 5 = 2$$\n따라서 교점의 좌표는 $(1, 2)$이다.\n\n2단계 [기울기 구하기]:\n직선 $6x + 3y + 1 = 0$을 변형하면 $3y = -6x - 1 \\implies y = -2x - \\dfrac{1}{3}$이므로 기울기는 $-2$이다.\n구하는 직선은 이 직선과 평행하므로 기울기가 $-2$이다.\n\n3단계 [직선의 방정식 완성]:\n점 $(1, 2)$를 지나고 기울기가 $-2$인 직선의 방정식은:\n$$y - 2 = -2(x - 1) \\implies y - 2 = -2x + 2 \\implies y = -2x + 4$$\n(또는 일반형 $2x + y - 4 = 0$)\n\n[오답 및 경계 점검]\n- 교점 $(1, 2)$를 $2x+y-4=0$에 대입하면 $2(1)+2-4=0$으로 참이다.\n- $6x+3y+1=0$과 계수 비 비교: $\\frac{2}{6} = \\frac{1}{3} \\ne \\frac{-4}{1}$이므로 일치하지 않고 순수 평행함을 검증 완료.\n\n[결론]\n$y=-2x+4$"
   },
   {
     "id": 10,
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -273,13 +282,14 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "두 직선 $y=-x+3$과 $y=kx+3k+2$가 제$1$사분면에서 만날 때, 실수 $k$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\dfrac{1}{3} < k < \\dfrac{1}{3}$",
+    "solution": "[풀이 전략]\n직선 $y = kx + 3k + 2$를 $k$에 대하여 묶어 $k$의 값에 관계없이 항상 지나는 정점을 파악한다.\n직선 $y = -x + 3$의 절편을 구하여 제1사분면에 있는 선분의 양 끝점을 찾고, 정점을 지나는 직선의 기울기 $k$의 변화에 따라 두 직선이 제1사분면에서 만나는 범위를 결정한다.\n\n[단계별 풀이]\n1단계 [정점 구하기]:\n직선의 방정식을 $k$에 대하여 정리하면:\n$$y = k(x + 3) + 2 \\implies (x + 3)k - (y - 2) = 0 \\quad \\cdots\\text{①}$$\n이 직선은 $k$의 값에 관계없이 항상 정점 $(-3, 2)$를 지난다.\n\n2단계 [직선 $y=-x+3$의 절편과 교점 조건]:\n직선 $y = -x + 3$의 $x$절편은 $(3, 0)$, $y$절편은 $(0, 3)$이다.\n두 직선이 제1사분면에서 만나려면, 직선 ①이 두 점 $(3, 0)$과 $(0, 3)$ 사이(단, 축 위의 점은 제외)를 지나야 한다.\n\n3단계 [경계에서의 $k$값 계산]:\n(i) 직선 ①이 점 $(3, 0)$을 지날 때:\n$$0 = k(3 + 3) + 2 \\implies 6k + 2 = 0 \\implies k = -\\dfrac{1}{3}$$\n(ii) 직선 ①이 점 $(0, 3)$을 지날 때:\n$$3 = k(0 + 3) + 2 \\implies 3k + 2 = 3 \\implies 3k = 1 \\implies k = \\dfrac{1}{3}$$\n\n4단계 [범위 결정]:\n정점 $(-3, 2)$에서 점 $(3, 0)$을 연결한 직선보다 기울기가 크고, 점 $(0, 3)$을 연결한 직선보다 기울기가 작아야 제1사분면에서 만나므로:\n$$-\\dfrac{1}{3} < k < \\dfrac{1}{3}$$\n\n[오답 및 경계 점검]\n- 제1사분면은 좌표축($x$축, $y$축)을 포함하지 않으므로 등호($\\le, \\ge$)가 붙지 않고 엄격한 부등호($<, >$)가 되어야 한다.\n\n[결론]\n$-\\dfrac{1}{3} < k < \\dfrac{1}{3}$"
   },
   {
     "id": 11,
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "도형의 방정식",
     "originalCategory": "중단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표와 직선의 방정식",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,12 +311,13 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "도형의 방정식",
-      "중단원 마무리"
+      "중단원 마무리",
+      "직선의 방정식"
     ],
     "wide": false,
     "content": "두 직선 $4x+y-5=0$과 $x-4y+3=0$이 이루는 각을 이등분하는 직선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3x+5y-8=0$ 또는 $5x-3y-2=0$",
+    "solution": "[풀이 전략]\n두 직선이 이루는 각의 이등분선 위의 임의의 점 $\\mathrm{P}(x, y)$에서 두 직선에 이르는 거리는 서로 같다.\n점과 직선 사이의 거리 공식을 세워 자취의 방정식을 유도한다.\n\n[단계별 풀이]\n1단계: 거리 조건식 세우기\n각의 이등분선 위의 점을 $\\mathrm{P}(x, y)$라 하면 점 $\\mathrm{P}$에서 두 직선 $4x + y - 5 = 0$과 $x - 4y + 3 = 0$에 이르는 거리가 같으므로:\n$$\\dfrac{|4x + y - 5|}{\\sqrt{4^2 + 1^2}} = \\dfrac{|x - 4y + 3|}{\\sqrt{1^2 + (-4)^2}}$$\n2단계: 분모 정리\n분모는 모두 $\\sqrt{16 + 1} = \\sqrt{17}$로 같으므로:\n$$|4x + y - 5| = |x - 4y + 3|$$\n3단계: 절댓값 풀기\n$4x + y - 5 = \\pm(x - 4y + 3)$\n(i) $4x + y - 5 = x - 4y + 3$인 경우:\n$$3x + 5y - 8 = 0$$\n(ii) $4x + y - 5 = -(x - 4y + 3)$인 경우:\n$$4x + y - 5 = -x + 4y - 3 \\implies 5x - 3y - 2 = 0$$\n4단계: 따라서 구하는 직선의 방정식은:\n$$3x + 5y - 8 = 0 \\text{ 또는 } 5x - 3y - 2 = 0$$\n\n[오답 및 경계 점검]\n- 두 직선이 이루는 각의 이등분선은 서로 수직인 2개의 직선으로 존재한다.\n  두 이등분선의 기울기는 각각 $-\\frac{3}{5}$과 $\\frac{5}{3}$이며 곱이 $\\left(-\\frac{3}{5}\\right)\\times\\left(\\frac{5}{3}\\right) = -1$로 수직임을 확인한다.\n\n[결론]\n$3x+5y-8=0$ 또는 $5x-3y-2=0$"
   }
 ];

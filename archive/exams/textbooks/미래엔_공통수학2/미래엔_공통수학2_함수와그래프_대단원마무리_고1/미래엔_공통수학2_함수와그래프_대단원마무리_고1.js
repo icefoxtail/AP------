@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -21,7 +21,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 집합 $X=\\{1,\\, 2,\\, 3,\\, 4,\\, 5\\}$와 $Y=\\{y \\mid y\\text{는 정수}\\}$에 대하여 함수 $f \\colon X \\longrightarrow Y$가\n$$f(x)=(x^2\\text{을 } 7\\text{로 나누었을 때의 나머지})$$\n일 때, 함수 $f$의 치역의 모든 원소의 합은?",
@@ -44,9 +45,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -55,7 +56,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "정의역이 $\\{-1,\\, 3\\}$인 두 함수\n$$f(x)=-x^2+3x-2,\\quad g(x)=ax+b$$\n에 대하여 $f=g$가 성립한다. 이때 상수 $a$와 $b$에 대하여 $a+b$의 값을 구하시오.",
@@ -72,9 +74,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -83,7 +85,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "실수 전체의 집합에서 정의된 함수\n$$f(x)=2|x-1|+ax-6$$\n이 일대일대응이 되도록 하는 자연수 $a$의 최솟값은?",
@@ -106,9 +109,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -117,7 +120,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "집합 $X=\\{1,\\, 2,\\, 3,\\, 4\\}$에 대하여 함수 $f \\colon X \\longrightarrow X$는 항등함수이고 함수 $g \\colon X \\longrightarrow X$는 상수함수이다. $g(2)=4$일 때, $f(3)+g(1)$의 값을 구하시오.",
@@ -134,9 +138,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -145,7 +149,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "집합 $X=\\{0,\\, 2,\\, 4,\\, 6\\}$에 대하여 함수 $f \\colon X \\longrightarrow X$가\n$$f(x)=\\begin{cases} x+2 & (x \\le 4) \\\\ 0 & (x=6) \\end{cases}$$\n이다. $f^2=f \\circ f$, $f^3=f \\circ f^2$, $\\cdots$, $f^{n+1}=f \\circ f^n$으로 나타낼 때, $f^{26}(6)+f^{27}(0)$의 값은? (단, $n$은 자연수)",
@@ -168,9 +173,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -179,7 +184,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{1}{4}x+2$에 대하여 $f^{-1}(6)$의 값은?",
@@ -202,9 +208,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -213,7 +219,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "일차함수 $f$에 대하여 $f^{-1}(2)=-1$이고 $(f \\circ f)(-1)=11$일 때, $f(3)$의 값은?",
@@ -236,9 +243,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -247,7 +254,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "집합 $X=\\{1,\\, 2,\\, 3,\\, 4,\\, 5\\}$에 대하여 함수 $f \\colon X \\longrightarrow X$의 역함수 $f^{-1}$가 존재하고\n$$f(2)=4,\\quad f^{-1}(3)=f(5)=1,\\quad (f \\circ f)(1)=2$$\n일 때, $f^{-1}(2)+(f \\circ f)(4)$의 값을 구하시오.",
@@ -264,9 +272,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -275,7 +283,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "실수 전체의 집합에서 정의된 함수 $f$에 대하여\n$$f(6x+1)=-2x+7$$\n이 성립할 때, 역함수는 $f^{-1}(x)=ax+b$이다. 이때 상수 $a$와 $b$에 대하여 $ab$의 값을 구하시오.",
@@ -292,9 +301,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -303,7 +312,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{ax+b}{x+c}$의 그래프가 점 $(2,\\, 3)$에 대하여 대칭이고 점 $(5,\\, 4)$를 지난다. 이때 상수 $a,\\, b,\\, c$에 대하여 $a+b+c$의 값을 구하시오.",
@@ -320,9 +330,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -331,7 +341,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 함수 $y=\\dfrac{k}{x}\\;(k>0)$의 그래프가 직선 $y=-x+8$과 두 점 $\\mathrm{P},\\, \\mathrm{Q}$에서 만난다. 삼각형 $\\mathrm{OPQ}$의 넓이가 $20$일 때, 상수 $k$의 값을 구하시오. (단, $\\mathrm{O}$는 원점)\n<img src=\"q11.png\">",
@@ -348,9 +359,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -359,7 +370,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "다음에서 함수 $y=-\\sqrt{3x+6}+3$에 대한 설명으로 옳지 않은 것은?",
@@ -382,9 +394,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -393,7 +405,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "함수 $y=a\\sqrt{x+b}+c$의 그래프가 오른쪽 그림과 같을 때, 상수 $a,\\, b,\\, c$에 대하여 $a+b+c$의 값을 구하시오.\n<img src=\"q13.png\">",
@@ -410,9 +423,9 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -421,7 +434,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "공기의 온도가 $x\\,{}^\\circ\\mathrm{C}$일 때, 공기 중에서 소리의 전달 속도를 $y\\,\\mathrm{m/s}$라 하면 $x$와 $y$ 사이에 $y=20\\sqrt{273+x}$인 관계가 성립한다고 한다. 소리의 전달 속도가 $340\\,\\mathrm{m/s}$일 때, 공기의 온도를 구하시오.",
@@ -438,10 +452,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C2-07",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -449,7 +463,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "함수"
     ],
     "wide": false,
     "content": "두 함수 $f(x)=-3x+4$와 $g(x)=kx+5$에 대하여 $f \\circ g=g \\circ f$가 성립할 때, 상수 $k$의 값을 구하시오.",
@@ -466,10 +481,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C2-08",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -477,7 +492,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "유리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{ax}{3x+b}$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 모두 점 $(1,\\, 2)$를 지날 때, $f^{-1}(4)$의 값을 구하시오. (단, $a$와 $b$는 상수)",
@@ -494,10 +510,10 @@ window.questionBank = [
     "category": "함수와 그래프",
     "originalCategory": "대단원 마무리",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "함수와 그래프",
-    "standardUnitOrder": 1,
-    "questionType": "단답형",
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "미래엔",
@@ -505,7 +521,8 @@ window.questionBank = [
       "고1",
       "공통수학2",
       "함수와 그래프",
-      "대단원 마무리"
+      "대단원 마무리",
+      "무리함수"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\sqrt{3x-5}+1$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 만나는 두 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 할 때, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오.",
