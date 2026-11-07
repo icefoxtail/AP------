@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^3-4x=x(x-2)(x+2)$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "-2*sqrt(3)/3",
+        "y": "16*sqrt(3)/9"
+      },
+      {
+        "id": "D",
+        "x": "2*sqrt(3)/3",
+        "y": "-16*sqrt(3)/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "C",
+        "D"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "홀함수 그래프의 원점 대칭과 두 영역의 넓이 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "홀함수 그래프의 원점 대칭과 두 영역의 넓이 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "홀함수 그래프의 원점 대칭과 두 영역의 넓이 관계."
+  ]
+}
