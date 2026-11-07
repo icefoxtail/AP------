@@ -1,0 +1,1419 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "a29f97c3fe8b57686a321a2e7cb237304392e671",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "다음 중 무한소수를 고르시오."
+          },
+          {
+            "term": "유한소수",
+            "src": "solution",
+            "quote": "소수점 아래 자릿수가 끝나므로 유한소수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "무한소수",
+            "src": "stem",
+            "quote": "무한소수를 고르시오."
+          },
+          {
+            "term": "순환소수",
+            "src": "choices",
+            "quote": "0.777…"
+          }
+        ],
+        "method": [
+          {
+            "term": "유한소수",
+            "src": "solution",
+            "quote": "자릿수가 끝나므로 유한소수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자릿수가 유한한 소수를 판별한다."
+          },
+          {
+            "term": "무한소수",
+            "src": "solution",
+            "quote": "7이 계속 이어져 끝나지 않는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "끝없이 이어지는 소수를 무한소수로 판별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "각 소수의 끝을 살펴본다."
+          },
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "소수점 아래 자릿수가 끝나므로 유한소수이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소수의 끝자리가 유한하게 끝나는지 끝없이 이어지는지를 확인하여 무한소수를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "분수 2/3은 나눗셈 2÷3을 뜻한다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "choices",
+            "quote": "ㄱ=2÷3, ㄴ=0.666…"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "알맞게 짝지은 것을 고르시오."
+          },
+          {
+            "term": "순환소수",
+            "src": "choices",
+            "quote": "ㄴ=0.666…"
+          }
+        ],
+        "method": [
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "분수 2/3은 나눗셈 2÷3을 뜻한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "분수를 나눗셈 식으로 바꾼다."
+          },
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "2÷3=0.666…이므로 두 표현이 모두 2/3과 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈을 수행하여 순환소수를 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "두 표현이 모두 2/3과 같다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분수를 나눗셈으로 나타내고 소수로 변환하여 일치하는 짝을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 0.242424…의 순환마디를 고르시오."
+          },
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "소수 부분의 숫자를 순서대로 보면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환마디",
+            "src": "stem",
+            "quote": "0.242424…의 순환마디를 고르시오."
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 순환마디는 24이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "순환마디",
+            "src": "solution",
+            "quote": "소수 부분의 숫자를 순서대로 보면 24가 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 최소 단위 숫자를 찾아 순환마디로 정의한다."
+          },
+          {
+            "term": "반복",
+            "src": "solution",
+            "quote": "24가 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 두 자리 자연수 패턴을 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "따라서 순환마디는 24이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환소수에서 일정하게 반복되는 숫자의 배열인 순환마디를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 0.6111…을 순환마디를 사용하여"
+          },
+          {
+            "term": "순환마디",
+            "src": "stem",
+            "quote": "순환마디를 사용하여 간단히 나타낸 것으로 옳은 것을 고르시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "간단히 나타낸 것으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "순환소수",
+            "src": "choices",
+            "quote": "0.6\\dot{1}"
+          }
+        ],
+        "method": [
+          {
+            "term": "반복",
+            "src": "solution",
+            "quote": "소수 첫째 자리의 6 뒤에 숫자 1이 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 숫자인 1을 순환마디로 정한다."
+          },
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "따라서 0.6\\dot{1}로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "순환마디 위에 점을 찍는 순환소수 표기법을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "소수 첫째 자리의 6 뒤에"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환마디의 양 끝 숫자 위에 점을 찍어 순환소수를 간단히 나타내는 표현을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "다음 중 순환소수로만 나타낼 수 있는 것을 고르시오."
+          },
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "(2×5^2×7)/(2^3×3×5)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "순환소수로만 나타낼 수 있는 것을 고르시오."
+          },
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "분수를 기약분수로 만든 뒤 분모를 확인한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "유한소수는 기약분수의 분모에 2와 5 이외의 소인수가 없어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기약분수로 약분한 후 분모의 소인수를 확인한다."
+          },
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "분모에 2와 5 이외의 소인수가 없어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "2와 5 이외의 소인수가 분모에 남으면 순환소수가 됨을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "분모에 3이 남는다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기약분수의 분모를 소인수분해하여 2나 5 이외의 소인수가 있는 분수를 순환소수로 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 1.4\\overline{273}의 소수점 아래"
+          },
+          {
+            "term": "순환마디",
+            "src": "solution",
+            "quote": "순환마디는 273이고, 소수 첫째 자리의 숫자 4는 순환하지 않는다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "각 숫자의 합을 고르시오."
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 합은 4+9(2+7+3)+2+7=121이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "30자리 가운데 첫 자리는 4이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "순환하지 않는 소수 첫째 자리를 분리한다."
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "나머지 29자리는 273이 9번 반복되어",
+            "evidenceType": "IMPLIED",
+            "justification": "순환마디의 반복 횟수와 나머지를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "다음 순환마디의 앞 두 자리 2, 7이 더해진다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환마디의 주기성과 비순환 부분의 자릿수를 구분하여 30번째 자리까지의 숫자들의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 0.1727272…를 분수로 나타내는 과정이다."
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수로 나타내는 과정이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "ㄱ~ㅁ에 들어갈 수 중 옳은 것을 고르시오."
+          },
+          {
+            "term": "기약분수",
+            "src": "choices",
+            "quote": "ㅁ=19/110"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "또 1000x=172.727272…이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 거듭제곱을 곱하여 소수점 아래 순환부분을 맞춘다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면 990x=171이므로 x=171/990=19/110이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일차방정식을 풀어 기약분수로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "x=0.1727272…로 둔다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "10의 거듭제곱을 곱해 순환부분을 일치시켜 두 식을 빼어 분수로 나타내는 과정을 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "a^3×b^4×a^5×b^2을 간단히 한 식으로"
+          },
+          {
+            "term": "단항식",
+            "src": "choices",
+            "quote": "a^8b^6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "간단히 한 식으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "단항식",
+            "src": "solution",
+            "quote": "따라서 간단히 한 식은 a^8b^6이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "같은 밑의 거듭제곱을 곱할 때는 지수를 더한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 곱셈 지수법칙을 적용한다."
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "a^3×a^5=a^8이고 b^4×b^2=b^6이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 문자의 지수들을 각각 합산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "같은 밑의 거듭제곱을 곱할 때는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑이 같은 거듭제곱의 곱셈에서 지수법칙을 적용하여 지수들의 합으로 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "((x^2)/(3y^a))^b=x^c/(27y^6)일 때,"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 a,b,c에 대하여 a+b+c의 값을 고르시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "a+b+c의 값을 고르시오."
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 a+b+c=2+3+6=11이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "왼쪽을 거듭제곱하면 분모는 3^b y^(ab)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 거듭제곱 지수법칙을 적용한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "3^b=27이므로 b=3이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱 계산으로 미지수 b의 값을 확정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "x의 지수를 비교하면 c=2b=6이고,"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분수의 거듭제곱 지수법칙을 적용하여 분자와 분모의 지수를 비교하고 a, b, c의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "20x^4y^5÷4x^2y를 간단히 한 식으로"
+          },
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "20x^4y^5÷4x^2y"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "간단히 한 식으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "단항식",
+            "src": "choices",
+            "quote": "5x^2y^4"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수는 20÷4=5이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "계수끼리의 나눗셈을 수행한다."
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "같은 밑의 거듭제곱을 나눌 때 지수를 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈에서의 지수법칙을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "x^4÷x^2=x^2이고 y^5÷y=y^4이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단항식의 나눗셈에서 계수는 계수끼리 나누고 문자는 지수법칙을 적용하여 간단히 한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "(2a+4b)+(3a+5b)를 계산한 식으로"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "(2a+4b)+(3a+5b)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산한 식으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "일차식",
+            "src": "choices",
+            "quote": "5a+9b"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "괄호를 풀고 동류항끼리 계수를 더한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문자와 차수가 같은 동류항을 모은다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "2a+3a=5a이고 4b+5b=9b이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동류항의 계수를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "따라서 5a+9b이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "괄호를 풀고 동류항의 계수끼리 더하여 일차식을 간단히 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "x^2+3xy-2y^2를 빼야 할 것을"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "5x^2-8xy+6y^2가 되었다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "바르게 계산한 식을 고르시오."
+          },
+          {
+            "term": "이차식",
+            "src": "choices",
+            "quote": "3x^2-14xy+10y^2"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "A+(x^2+3xy-2y^2)=5x^2-8xy+6y^2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등식의 이항으로 어떤 식 A를 구한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "A-(x^2+3xy-2y^2)=3x^2-14xy+10y^2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동류항끼리 정리하여 바른 뺄셈을 완성한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "따라서 A=4x^2-11xy+8y^2이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "잘못 계산된 식으로부터 어떤 식을 구하고 올바른 뺄셈을 수행하여 바른 식을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "-(6a^2b-9ab^2)/(3ab)를 계산한 식으로"
+          },
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "3ab)를 계산한 식으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산한 식으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "-2a+3b"
+          }
+        ],
+        "method": [
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "분수 앞의 음수를 유지한 채 분자의 각 항을 3ab로 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "분자의 각 항을 분모인 단항식으로 나눈다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "주어진 식은 -(2a-3b)=-2a+3b이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호 앞의 음의 부호를 각 항에 분배한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "(6a^2b-9ab^2)/(3ab)=2a-3b이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "다항식을 단항식으로 나누고 앞의 음의 부호를 분배하여 식을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "x=3/2, y=-1/7일 때,"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "4xy(x-3)-(10x^2y^2+5xy^2)÷((5/2)y)의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "((5/2)y)의 값을 고르시오."
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "따라서 전체 값은 9/7-(-12/7)=3이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "첫째 항은 4·(3/2)·(-1/7)·(3/2-3)=9/7이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫째 항에 유리수를 대입하여 계산한다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "나누는 수는 (5/2)y=-5/14이므로 괄호 안을 나눈 값은 ",
+            "evidenceType": "IMPLIED",
+            "justification": "둘째 항의 나눗셈을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "괄호 안은 y^2(10x^2+5x)=30/49이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "다항식을 먼저 전개 및 나눗셈으로 간단히 정리한 뒤 주어진 유리수 값을 대입하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "어떤 수 a에 1을 더하면 7보다 크다."
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "이를 부등식으로 나타낸 것을 고르시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "이를 부등식으로 나타낸 것을 고르시오."
+          },
+          {
+            "term": "부등식",
+            "src": "choices",
+            "quote": "a+1>7"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "그 값이 7보다 크므로 a+1>7이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "크다 관계를 초과 기호 >로 표현한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "어떤 수 a에 1을 더한 값은 a+1이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "더하기 관계를 덧셈식으로 표현한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "어떤 수 a에 1을 더한 값은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "문장으로 주어진 크기 비교 관계를 부등호 기호를 사용하여 부등식으로 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "x의 값 1을 해로 가지는 부등식을 고르시오."
+          },
+          {
+            "term": "일차부등식",
+            "src": "choices",
+            "quote": "3x-1<4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "부등식을 고르시오."
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "③은 3·1-1<4, 즉 2<4로 참이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "해",
+            "src": "solution",
+            "quote": "각 부등식에 x=1을 대입한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "미지수에 1을 대입하여 해의 정의를 확인한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "나머지 부등식은 x=1을 대입하면 거짓이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대입 후 부등식의 참 거짓을 판별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "각 부등식에 x=1을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x=1을 각 부등식에 대입하여 참이 되는 부등식을 찾아 해인지 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "a<b일 때 옳지 않은 것을 고르시오."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "양변에 같은 수를 더하거나 빼면 부등호 방향은 유지된다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 고르시오."
+          },
+          {
+            "term": "부등식",
+            "src": "choices",
+            "quote": "a÷(-4)<b÷(-4)"
+          }
+        ],
+        "method": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "양변에 양수를 곱해도 방향은 유지되고",
+            "evidenceType": "IMPLIED",
+            "justification": "양수를 곱할 때 부등호 방향이 유지됨을 적용한다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "음수 -4로 나눈 뒤에도 부등호를 <로 둔 ④가 옳지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식의 기본 성질 위반 여부를 판별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "a<b의 양변에 같은 수를"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부등식의 양변에 음수를 곱하거나 나눌 때 부등호 방향이 바뀐다는 성질을 검토한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "사용한 부등식의 성질을 보기에서 골라"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "부등호 방향이 변하지 않는 성질을 쓴다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "차례대로 나열한 것으로 옳은 것을 고르시오."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "따라서 사용한 성질은 (가),(다)이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "양변에서 4x를 빼므로 같은 식을 양변에서 빼도",
+            "evidenceType": "IMPLIED",
+            "justification": "양변에서 같은 식을 뺄 때 부등호 방향이 불변임을 적용한다."
+          },
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "마지막에는 양변을 -3으로 나누므로 부등호 방향이 바뀐다.",
+            "evidenceType": "IMPLIED",
+            "justification": "음수로 나눌 때 부등호 방향이 바뀜을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "부등호 방향이 바뀐다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부등식 풀이 각 단계에서 사용된 부등식의 성질을 순서대로 나열한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $3x+8\\ge5x+4$의 해를 수직선 위에"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위에 나타낸 것으로 옳은 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해를 수직선 위에 나타낸 것으로 옳은 것은? [4점]"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "즉 $x\\le2$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "양변에서 $3x$를 빼면 $8\\ge2x+4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동류항을 이항하여 부등식을 정리한다."
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "2$를 포함하고 왼쪽으로 이어지는 해를 나타낸",
+            "evidenceType": "IMPLIED",
+            "justification": "해의 범위를 수직선 위에 영역으로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "양변을 양수 $2$로 나누면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "일차부등식을 이항과 계수 나눗셈으로 풀어 해를 구하고 수직선 위의 표현을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $\\dfrac15<\\dfrac{x}{2}\\le0.3("
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "0.3(x+4)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "값의 합을 구하시오. [4.5점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "그 합은 $21$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "양변에 $10$을 곱하여 $2<5x$, 즉 $x>\\dfrac25",
+            "evidenceType": "IMPLIED",
+            "justification": "양변에 분모의 최소공배수를 곱하여 분수를 정수로 고친다."
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "이므로 $x\\le6$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 부등식을 풀어 공통 범위를 확정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "두 조건을 모두 만족하는 자연수는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연립일차부등식의 두 부등식을 각각 풀어 공통 범위를 구하고 그 범위 안의 자연수 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "세운 일차부등식으로 옳은 것을 고르시오. [5점]"
+          },
+          {
+            "term": "부등식",
+            "src": "choices",
+            "quote": "0.8x-10000≥3000"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 고르시오. [5점]"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "조건을 나타내는 부등식은 $0.8x-10000\\ge3000$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "원가에 대한 이익률이 30% 이상이려면",
+            "evidenceType": "IMPLIED",
+            "justification": "목표 이익 이상 조건을 부등식으로 세운다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "판매 가격에서 원가를 뺀 $0.8x-10000$",
+            "evidenceType": "IMPLIED",
+            "justification": "판매가에서 원가를 뺀 이익 식을 작성한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "정가를 $x$원이라고 하면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정가와 원가, 이익률 조건으로부터 판매 가격과 이익의 부등식을 바르게 세운다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "두 분수 12/45와 21/77에"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "같은 자연수 A를 각각 곱하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 번째로 작은 자연수를 구하는 과정을 자세히 서술하시오."
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "두 번째로 작은 수는 66이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "기약분수의 분모에 2와 5 이외의 소인수가 없어야 유한소수가 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유한소수가 되기 위한 기약분수 분모 조건을 적용한다."
+          },
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "A는 3과 11의 공배수, 즉 33의 배수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 분모의 불필요한 인수를 모두 약분하는 공배수를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "분모 15의 인수 3을 없애려면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기약분수의 분모에서 2와 5 이외의 소인수를 없애기 위해 공배수 조건을 이용해 두 번째 자연수를 서술한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "원기둥 모양의 그릇에 가득 들어 있는 물을"
+          },
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "반지름의 길이가 2a인 원뿔 모양의 그릇에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "원기둥의 부피를 구하는 과정을 서술하시오."
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "원뿔의 높이를 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "원기둥",
+            "src": "solution",
+            "quote": "원기둥의 부피는 밑넓이에 높이를 곱한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원기둥의 부피 공식을 적용하여 식을 유도한다."
+          },
+          {
+            "term": "원뿔",
+            "src": "solution",
+            "quote": "원뿔의 높이를 h라고 하면 원뿔의 부피는",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의 부피 공식을 세우고 등식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "물을 모두 부어 가득 찼으므로 두 부피가 같다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원기둥과 원뿔의 부피 공식을 세우고 두 부피가 같다는 등식으로부터 원뿔의 높이를 서술한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "단, 일차부등식을 세워 해결하고,"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "인화하는 사진의 수는 자연수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "사진을 몇 장 이상 인화해야"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 23장 이상 인화해야 B가 더 저렴하다."
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "B가 더 저렴하려면 90x+2500<200x이어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "비용 비교 일차부등식을 세워 푼다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "x는 자연수이므로 x≥23이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수 조건에 맞는 최소 인화 매수를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "따라서 2500<110x"
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "사진을 x장 인화한다고 하자."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사진 인화 매수 x에 따른 두 사진관의 비용 식을 세우고 B가 더 저렴한 일차부등식을 풀어 최솟값을 서술한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 24,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
