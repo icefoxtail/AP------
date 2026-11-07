@@ -27,3 +27,11 @@
 | Q21 | OPEN | 두 가능한 h 대응 순서를 보존할 mapping 계약 미확인 |
 
 Q7은 추가 렌더하지 않았다. Q8/Q13/Q20 중복 초안은 만들지 않았다. Q10/Q11 SVG와 검수 증거를 보존했다. Q6/Q16/Q18/Q21에는 미확정 근거를 개별 plan.json에 기록했다.
+
+## 2026-11-07 입력 대조 및 환경 준비 기록
+
+- 원격 학교 브랜치 SHA `91829c1275d63c3fee3e3bf8d7d5031464074c6d`에서 격리 checkout을 만들고 전체 기록을 확인했다. 원래 checkout의 1,788개 staged 변경은 건드리지 않았다.
+- 사용자가 전달한 Q6/Q16/Q18/Q21 `root-inputs` 초안은 원문 보존용으로 추가했다. 각 입력과 원격 OPEN 판정의 차이는 `root-inputs/RECONCILIATION.md`에 기록했다. 이 초안들은 renderer 계약 통과 상태가 아니며 `drafts/`의 OPEN item/plan은 변경하지 않았다.
+- 공식 setup의 Playwright 1.58.2 및 Python 의존성 설치는 완료했지만, 고정 Noto Sans KR 글꼴 다운로드가 DNS `EAI_AGAIN`으로 두 차례 실패했다. 기대 Chromium 경로도 없었다. 이 때문에 공식 renderer와 학생 화면 검수는 실행하지 않았다.
+- Q1의 사용자 제공 2회 시도 정보(두 번째 Playwright 누락 실패)는 `drafts/Q01/attempt-history.md`에 출처와 함께 추가했다. 첫 시도의 상세 자료는 확보되지 않았다. Q7의 기존 5회 실패, Q5 Claude 담당, Q8/Q13/Q20 OPEN, Q10/Q11 결과는 그대로 유지했다.
+- 별도 checkout에서 이번 회차의 신규 공식 렌더는 0건이다. Q6/Q16/Q18/Q21 OPEN, Q1은 과거 시도 이력만 보존했으며 PASS로 표시하지 않는다.
