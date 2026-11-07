@@ -6,7 +6,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
-import { probeSpatialSelection, probePolyhedronCell } from './g7-geometry-selection-probes.mjs';
+import { probeSpatialSelection, probePolyhedronCell, probePolygonVertex } from './g7-geometry-selection-probes.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
@@ -17,6 +17,28 @@ const observe = argv.includes('--baseline-observe');
 const allUnits = ['g7-points-lines', 'g7-parallel', 'g7-spatial', 'g7-construction', 'g7-area', 'g7-polygons', 'g7-circle-sector', 'g7-polyhedra', 'g7-surface-volume', 'g7-solids'];
 const units = (arg('--units', allUnits.join(','))).split(',').filter(Boolean);
 if (!units.length || units.some(x => !allUnits.includes(x))) throw Error('Unknown or empty G7 unit list');
+// The visible range can clamp stale lab.s values. Ask an off-DOM clone to choose
+// an allowed adjacent value; only the later native fill changes the real control.
+function nextNativeRangeInput(key) {
+  const input = lab._ctls?.[key]?.input;
+  if (!input || !input.checkVisibility() || input.type !== 'range') throw Error(`Visible range missing: ${key}`);
+  const dom = { min: input.min, max: input.max, step: input.step, value: input.value, valueAsNumber: input.valueAsNumber, valueAttribute: input.getAttribute('value') };
+  const current = input.valueAsNumber;
+  if (!Number.isFinite(current)) throw Error(`Non-finite visible range value: ${key} ${JSON.stringify(dom)}`);
+  const probe = input.cloneNode(false);
+  for (const direction of [1, -1]) {
+    probe.value = input.value;
+    if (input.step.toLowerCase() === 'any') probe.value = direction > 0 ? input.max || '100' : input.min || '0';
+    else if (direction > 0) probe.stepUp();
+    else probe.stepDown();
+    const value = probe.valueAsNumber;
+    if (Number.isFinite(value) && value !== current && probe.validity.valid) {
+      return { key, label: input.getAttribute('aria-label') || APLab.stripEmoji(lab.params[key].label), value, text: probe.value, dom, storedBefore: lab.s[key] };
+    }
+  }
+  throw Error(`No distinct valid range value: ${key} ${JSON.stringify(dom)}`);
+}
+
 const viewports = [
   { name: 'pc', width: 1440, height: 900 },
   { name: 'tablet-portrait', width: 820, height: 1180 },
@@ -219,15 +241,12 @@ try {
           await settle();
           const ctl = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([, c]) => c.input.checkVisibility())?.[0] || null);
           if (ctl) {
-            const info = await page.evaluate(k => { const p = lab.params[k]; return { label: APLab.stripEmoji(p.label), value: lab.s[k], step: +p.step || .01, min: +p.min, max: +p.max }; }, ctl);
-            // Range inputs reject binary floating-point tails such as 0.15000000000000002.
-            // Round to the control's decimal precision before exercising its real input event.
-            const places = Math.max(0, String(info.step).split('.')[1]?.length || 0, String(info.min).split('.')[1]?.length || 0);
-            const value = Number((info.value + info.step <= info.max ? info.value + info.step : info.value - info.step).toFixed(Math.min(12, places)));
-            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value));
+            const info = await page.evaluate(nextNativeRangeInput, ctl);
+            const value = info.value;
+            await page.getByRole('slider', { name: info.label, exact: true }).fill(info.text);
             const actual = await page.evaluate(k => lab.s[k], ctl);
             const pass = Math.abs(actual - value) < 1e-7;
-            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass });
+            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass, domBefore: info.dom, storedBefore: info.storedBefore });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', expected: value, actual });
             await measure(scene, 'numeric-change');
           } else {
@@ -246,7 +265,22 @@ try {
           const dragPlaying = await page.evaluate(() => !!lab.s.playing);
           if (dragPlaying) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-started-playing' });
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
-          if (handle) {
+          if (unit === 'g7-polygons' && ['p1-one', 'p4-diag', 'p4-fan'].includes(scene.id)) {
+            // A discrete vertex selector must reach another actual vertex, not
+            // merely move by a fixed number of pixels inside its old cell.
+            let selection;
+            try { selection = await probePolygonVertex(page, { sceneId: scene.id }); }
+            catch (error) {
+              report.failures.push({ unit, id: scene.id, run: run.name, reason: 'polygon-vertex-drag-failed', message: error.message });
+              throw error;
+            }
+            const attempts = [{ acquired: selection.acquired, changedKeys: selection.changedKeys,
+              delta: [selection.end.x - selection.start.x, selection.end.y - selection.start.y] }];
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: selection.handleId,
+              executed: true, stateChanged: selection.changedKeys.length > 0, pass: selection.pass, attempts,
+              pointer: 'mouse', selection });
+            await measure(scene, 'after-native-drag');
+          } else if (handle) {
             // Render after a control change, scroll, and then read the current
             // handle location. A previous frame's position can start a pan.
             // Exercise native pointer events and verify that the intended handle
@@ -313,21 +347,19 @@ try {
               const signature = () => page.evaluate(() => { const p = lab.scene.problem, call = v => typeof v === 'function' ? v(lab.s, lab) : v; return JSON.stringify([call(p.text), call(p.answer)]); });
               const questionBefore = await signature();
               await page.evaluate(() => lab.setTab('explore')); await settle();
-              const ctlInfo = await page.evaluate(() => {
-                const x = Object.entries(lab._ctls || {}).find(([k, c]) => c.input.checkVisibility() && !/yaw|pitch|orbit|view/i.test(k));
-                if (!x) return null; const [key] = x, p = lab.params[key];
-                return { key, label: APLab.stripEmoji(p.label), value: lab.s[key], step: +p.step || .01, min: +p.min, max: +p.max };
-              });
-              if (ctlInfo) {
-                const places = Math.max(0, String(ctlInfo.step).split('.')[1]?.length || 0, String(ctlInfo.min).split('.')[1]?.length || 0);
-                const value = Number((ctlInfo.value + ctlInfo.step <= ctlInfo.max ? ctlInfo.value + ctlInfo.step : ctlInfo.value - ctlInfo.step).toFixed(Math.min(12, places)));
-                await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(String(value)); await settle();
+              const parameter = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([k, c]) => c.input.checkVisibility() && !/yaw|pitch|orbit|view/i.test(k))?.[0] || null);
+              if (parameter) {
+                const ctlInfo = await page.evaluate(nextNativeRangeInput, parameter);
+                await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(ctlInfo.text); await settle();
+                const parameterActual = await page.evaluate(k => lab.s[k], parameter);
+                const parameterPass = Math.abs(parameterActual - ctlInfo.value) < 1e-7;
+                if (!parameterPass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', parameter, expected: ctlInfo.value, actual: parameterActual });
                 await page.evaluate(() => lab.setTab('problem')); await page.waitForFunction(() => !lab._tween); await settle();
                 // Compare question content in the same tab: exploration can hide
                 // reveal buttons or answer styles without changing the question.
                 const changed = questionBefore !== await signature();
                 const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
-                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, problemChanged: changed, locked });
+                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, parameterInput: { expected: ctlInfo.value, actual: parameterActual, pass: parameterPass, domBefore: ctlInfo.dom, storedBefore: ctlInfo.storedBefore }, problemChanged: changed, locked });
                 if (opened && changed && !locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-values-retain-open-answer', parameter: ctlInfo.key });
               }
               const revealAgain = page.locator('[data-reveal]:visible');

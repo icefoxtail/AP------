@@ -11,7 +11,7 @@ const criticalIds = {
   'g7-area': ['a1-rect', 'a5-rhomb', 'b1-rt', 'b2-para', 'b5-ratio', 'c1-trap'],
   'g7-polygons': ['p4-join'],
   'g7-circle-sector': ['1607', '1102', '1207', '1210', '1609'],
-  'g8-triangles': ['t6-7', 't7-1', 't5-1', 't2-2'],
+  'g8-triangles': ['t6-7', 't7-1', 't5-1', 't2-2', 't1-7'],
   'g8-quadrilaterals': ['q1-3', 'q1-5', 'q2-3'],
   'g8-similarity': ['sm1-len', 'sm3-rot', 'sm4-conv'],
   'g8-pythagoras': ['py6-iso', 'py6-trap'],
