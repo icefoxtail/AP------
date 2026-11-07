@@ -1,0 +1,125 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=-\\sqrt{-x-4}$의 그래프와",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      1,
+      -7,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-5",
+        "-3",
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-6",
+        "-5",
+        "-3",
+        "-2",
+        "-1",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-4",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "-7",
+          "-4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "0"
+        ],
+        "label": "y=x",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-19/4",
+          "-1"
+        ],
+        "domain": [
+          "-7",
+          "1"
+        ],
+        "label": "y=l(x)",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-17/4",
+          "y": "-1/2"
+        },
+        {
+          "id": "B",
+          "x": "-1/2",
+          "y": "-17/4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "함수와 역함수 위의 두 점이 y=x에 대칭이며 직선 위에 함께 있는 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수와 역함수 위의 두 점이 y=x에 대칭이며 직선 위에 함께 있는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수와 역함수 위의 두 점이 y=x에 대칭이며 직선 위에 함께 있는 관계를 보인다."
+  ]
+}

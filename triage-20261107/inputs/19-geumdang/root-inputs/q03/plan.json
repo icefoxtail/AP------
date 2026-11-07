@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수 $y=\\sqrt{2x-6}+2$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "7",
+        "8"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-6",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "3",
+          "9"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "닫힌 시작점에서 정의역과 치역의 하한이 각각 나타나는 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌 시작점에서 정의역과 치역의 하한이 각각 나타나는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 시작점에서 정의역과 치역의 하한이 각각 나타나는 관계를 보인다."
+  ]
+}

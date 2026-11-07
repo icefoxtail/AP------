@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "일차다항식 $P(x)$에 대하여 함수",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      6,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "원문 그래프의 점근선과 원점 통과를 이용해 분자의 일차식을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 점근선과 원점 통과를 이용해 분자의 일차식을 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프의 점근선과 원점 통과를 이용해 분자의 일차식을 찾는다."
+  ]
+}

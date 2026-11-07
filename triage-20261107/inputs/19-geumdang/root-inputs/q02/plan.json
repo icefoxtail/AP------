@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "유리함수 $y=\\dfrac{2x-3}{x-1}$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      7,
+      -4,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "분모가 0에 가까울 때와 x의 절댓값이 커질 때 점근선을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분모가 0에 가까울 때와 x의 절댓값이 커질 때 점근선을 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "분모가 0에 가까울 때와 x의 절댓값이 커질 때 점근선을 찾는다."
+  ]
+}

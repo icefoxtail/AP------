@@ -1,0 +1,117 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 점 $A(-1,0)$, $B(0,1)$과 곡선",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=l(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "1"
+        },
+        {
+          "id": "P",
+          "x": "1/4",
+          "y": "1/2"
+        },
+        {
+          "id": "H",
+          "x": "-1/8",
+          "y": "7/8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        },
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 위의 점 P와 밑변 AB, 직선에 내린 수선으로 삼각형 높이를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 위의 점 P와 밑변 AB, 직선에 내린 수선으로 삼각형 높이를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 위의 점 P와 밑변 AB, 직선에 내린 수선으로 삼각형 높이를 보인다."
+  ]
+}

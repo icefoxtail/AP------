@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 집합 $A=\\{(x,y)\\mid y=\\sqrt{x-3}\\}$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      -3,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-3",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "3",
+          "8"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "8"
+        ],
+        "label": "y=l(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "7",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "예시 직선과 무리함수의 한 교점을 통해 정의역에 맞는 해를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 직선과 무리함수의 한 교점을 통해 정의역에 맞는 해를 읽는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 직선과 무리함수의 한 교점을 통해 정의역에 맞는 해를 읽는다."
+  ]
+}

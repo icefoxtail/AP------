@@ -1,0 +1,107 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=\\dfrac{3x+a}{x+b}$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      12,
+      -3,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "5",
+        "7",
+        "8",
+        "10"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "5",
+        "7",
+        "8",
+        "10"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-18",
+          "3"
+        ],
+        "denominator": [
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "12"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-18",
+          "8"
+        ],
+        "denominator": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "12"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "12"
+        ],
+        "label": "y=x",
+        "color": "BLUE",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "함수와 역함수의 점근선 중심이 대각선 대칭이고 조건의 평행이동과 일치하는 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수와 역함수의 점근선 중심이 대각선 대칭이고 조건의 평행이동과 일치하는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수와 역함수의 점근선 중심이 대각선 대칭이고 조건의 평행이동과 일치하는 관계를 보인다."
+  ]
+}

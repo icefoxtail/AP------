@@ -1,0 +1,125 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "점 $A(3,4)$와 $y$축 위의 점 $B$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -1,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "label": "y=x",
+        "color": "BLUE"
+      },
+      {
+        "id": "r",
+        "kind": "LINE",
+        "coefficients": [
+          "25/7",
+          "-1/7"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "label": "y=l(x)",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "4"
+        },
+        {
+          "id": "D",
+          "x": "-3",
+          "y": "4"
+        },
+        {
+          "id": "E",
+          "x": "4",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "25/7"
+        },
+        {
+          "id": "C",
+          "x": "25/8",
+          "y": "25/8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        },
+        {
+          "id": "DE",
+          "from": "D",
+          "to": "E"
+        }
+      ]
+    }
+  },
+  "caption": "A를 두 직선에 대칭시킨 점들을 잇는 선분과 B,C의 위치를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A를 두 직선에 대칭시킨 점들을 잇는 선분과 B,C의 위치를 보여 준다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A를 두 직선에 대칭시킨 점들을 잇는 선분과 B,C의 위치를 보여 준다."
+  ]
+}
