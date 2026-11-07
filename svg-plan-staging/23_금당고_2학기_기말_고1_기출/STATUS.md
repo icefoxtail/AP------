@@ -35,3 +35,9 @@ Q7은 추가 렌더하지 않았다. Q8/Q13/Q20 중복 초안은 만들지 않�
 - 공식 setup의 Playwright 1.58.2 및 Python 의존성 설치는 완료했지만, 고정 Noto Sans KR 글꼴 다운로드가 DNS `EAI_AGAIN`으로 두 차례 실패했다. 기대 Chromium 경로도 없었다. 이 때문에 공식 renderer와 학생 화면 검수는 실행하지 않았다.
 - Q1의 사용자 제공 2회 시도 정보(두 번째 Playwright 누락 실패)는 `drafts/Q01/attempt-history.md`에 출처와 함께 추가했다. 첫 시도의 상세 자료는 확보되지 않았다. Q7의 기존 5회 실패, Q5 Claude 담당, Q8/Q13/Q20 OPEN, Q10/Q11 결과는 그대로 유지했다.
 - 별도 checkout에서 이번 회차의 신규 공식 렌더는 0건이다. Q6/Q16/Q18/Q21 OPEN, Q1은 과거 시도 이력만 보존했으며 PASS로 표시하지 않는다.
+
+## 2026-11-07 준비 상태 재확인
+
+- 글꼴 브랜치 `ccr-f54b1f4a-nx80r1` (확인한 SHA `40b478f57ed6c3ed4206f590e6d31012ed06897f`)의 `archive/tools/geometry-equation/production/vendor/noto-sans-kr/`에서 TTF와 OFL을 읽었다. TTF SHA-256은 공식 잠금값 `194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252`와 일치해 `.tmp/apmath-visual-engine/dependencies/`에 임시 복사했고, OFL도 함께 복사했다.
+- Playwright 1.58.2가 요구하는 Chromium revision 1208 / 145.0.7632.6의 예상 실행 파일 `/home/agent/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome`은 없다. `/opt/pw-browsers/chromium-1208/chrome-linux64/chrome` 및 기존 안내의 revision 1243 경로도 없다. `/usr/bin/chromium`은 151.0.7922.173으로 잠금 Playwright와 맞는 브라우저로 확인되지 않았다.
+- 브라우저 CDN 다운로드 및 localhost 접속은 시도하지 않았다. 호환 브라우저 준비가 안 되어 공식 renderer는 계속 실행하지 않았고, 이번 재확인에서도 신규 렌더·PASS는 없다.
