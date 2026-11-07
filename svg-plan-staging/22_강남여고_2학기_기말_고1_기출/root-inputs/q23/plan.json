@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "A동아리 좌석 1,3,4,6은 각각 B동아리 좌석 1,2,3,4와 마주 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A동아리는 위 6자리, B동아리는 아래 4자리",
+      "mappedTo": "columns"
+    },
+    {
+      "id": "c2",
+      "condition": "아래 좌석은 위의 첫째·셋째·넷째·여섯째 좌석과 마주 본다.",
+      "mappedTo": "arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "네 개 정면 좌석쌍 중 임원 두 쌍을 서로 다른 자리로 고른다."
+  ]
+}

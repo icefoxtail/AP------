@@ -1,0 +1,45 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "조건",
+        "elements": [
+          "합성식"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "정리",
+        "elements": [
+          "이차식"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "합성방정식을 정리하면 x²+(a−3)x+4=0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0이고 f(f(k))=k를 만족한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "합성방정식이 이차방정식으로 바뀌는 중간 단계를 표시한다."
+  ]
+}

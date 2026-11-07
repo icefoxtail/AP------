@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "양 끝",
+        "elements": [
+          "왼쪽",
+          "오른쪽"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "짝수 선택",
+        "elements": [
+          "e",
+          "e−1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "양 끝이 모두 짝수인 경우를 먼저 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 일곱 수 가운데 짝수의 수를 e라 한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "한쪽 끝에 짝수를 두면 반대쪽에는 서로 다른 짝수 e−1개가 남는다."
+  ]
+}

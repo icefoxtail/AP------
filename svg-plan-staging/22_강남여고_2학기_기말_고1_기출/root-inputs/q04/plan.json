@@ -1,0 +1,56 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "묶음 내부 순서",
+        "elements": [
+          "AB",
+          "BA"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "바깥 배열",
+        "elements": [
+          "묶음"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "이웃할 두 작품을 하나로 묶고 내부에서 두 순서를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "같은 작가의 두 작품은 서로 이웃해야 한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "묶음의 내부 순서 두 가지와 바깥의 다섯 대상을 분리한다."
+  ]
+}

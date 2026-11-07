@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -4,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          -2,
+          6
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "s1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          -2,
+          6
+        ],
+        "style": "DASHED",
+        "label": "y=x−1"
+      },
+      {
+        "id": "s2",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          6
+        ],
+        "style": "DASHED",
+        "label": "y=−x+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "유리함수의 점근선 교점과 두 대칭축을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=1+1/(x−2), 중심 (2,1)",
+      "mappedTo": "curve f"
+    },
+    {
+      "id": "c2",
+      "condition": "대칭축 y=x−1, y=−x+3",
+      "mappedTo": "lines s1,s2"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선 x=2, y=1과 두 대칭축을 한 좌표평면에서 비교한다."
+  ]
+}

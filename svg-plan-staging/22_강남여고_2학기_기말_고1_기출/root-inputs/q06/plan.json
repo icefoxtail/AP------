@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "P와 Q가 겹치지 않는 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p→~q가 참이면 P⊆Q의 여집합",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "P∩Q=∅",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "서로소 관계에서 P-Q=P가 성립한다."
+  ]
+}

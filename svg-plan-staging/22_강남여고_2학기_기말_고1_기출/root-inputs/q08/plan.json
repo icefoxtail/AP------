@@ -1,0 +1,93 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "대응",
+        "elements": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "예: A와 B는 자신의 이름표를 받고 나머지 세 명은 서로의 이름표를 받는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 명 중 두 명만 자신의 이름표를 고른다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "고정된 두 명과 나머지 세 명의 순환 대응 한 가지를 예시로 보여준다."
+  ]
+}

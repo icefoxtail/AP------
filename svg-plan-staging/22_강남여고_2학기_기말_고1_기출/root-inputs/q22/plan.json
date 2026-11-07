@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -9,
+      6,
+      -9,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "16",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-4",
+        "domain": [
+          "-8",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "2"
+      ],
+      "y": [
+        "0",
+        "2"
+      ]
+    }
+  },
+  "caption": "원함수와 역함수가 직선 y=x에 대하여 대칭인 모습을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 함수의 치역을 역함수의 정의역으로 사용한다.",
+      "mappedTo": "sourceQuote"
+    }
+  ]
+}

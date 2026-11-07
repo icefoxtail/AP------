@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "원래 식의 항",
+        "elements": [
+          "ab",
+          "a+b"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "변환값·하한",
+        "elements": [
+          "t²",
+          "2t"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "ab=t²이고 a+b는 2t 이상임을 함께 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a,b가 양수일 때 a+b≥2√ab이고 ab+a+b=8이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ab=t²과 a+b≥2t를 나누어 보여준다."
+  ]
+}

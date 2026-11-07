@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "집합 A의 근",
+        "elements": [
+          "−2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "집합 B의 원소",
+        "elements": [
+          "−2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "이차방정식의 두 근과 다른 집합의 원소를 대응해 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 B의 부분집합이고 B는 A의 부분집합이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 같은 두 집합의 원소가 각각 일치하는 모습을 나타낸다."
+  ]
+}

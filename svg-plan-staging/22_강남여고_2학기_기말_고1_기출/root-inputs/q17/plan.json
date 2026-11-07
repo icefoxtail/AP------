@@ -1,0 +1,67 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "출발",
+        "elements": [
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "첫 이동",
+        "elements": [
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "원본 육각형 배치에서 1과 이웃한 첫 이동을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1번 칸과 이웃한 칸은 2, 3, 4이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "가능한 첫 이동 세 갈래를 분리한다."
+  ]
+}

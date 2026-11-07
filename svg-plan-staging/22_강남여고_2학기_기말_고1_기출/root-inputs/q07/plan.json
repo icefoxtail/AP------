@@ -1,0 +1,69 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "A→B",
+          "B→C",
+          "C→B"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "대응",
+        "elements": [
+          "4",
+          "n",
+          "n−1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "이동 단계별 선택 가능한 도로 수를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A에서 B까지 4개, B와 C 사이에 n개 도로가 있으며 이용한 도로는 재사용하지 않는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "돌아올 때 B-C 구간의 도로 한 개가 제외된다."
+  ]
+}

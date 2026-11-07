@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -1,
+      4
+    ],
+    "curves": [
+      {
+        "id": "p",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=√(x+1)"
+      },
+      {
+        "id": "q",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=√x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "k1",
+          "x": "1",
+          "style": "DASHED"
+        },
+        {
+          "id": "k2",
+          "x": "2",
+          "style": "DASHED"
+        },
+        {
+          "id": "k3",
+          "x": "3",
+          "style": "DASHED"
+        },
+        {
+          "id": "k4",
+          "x": "4",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "예: k=1,2,3,4에서 두 그래프 사이의 세로 길이가 연속 항으로 이어짐을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Pₖ=(k,√(k+1)), Qₖ=(k,√k), k=1,2,3,4",
+      "mappedTo": "vertical overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "원문 합은 k=1부터 31까지이며 그림은 작은 k의 예시만 보여 준다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "작은 k의 세로 간격이 √(k+1)-√k인 항에 대응한다."
+  ]
+}

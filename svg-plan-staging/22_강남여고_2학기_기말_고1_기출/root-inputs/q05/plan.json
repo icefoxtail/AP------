@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "shade": "(A-B)∪(A∩C)"
+  },
+  "caption": "A에서 B를 뺀 영역과 A와 C의 공통 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "풀이식 (A-B)∪(A∩C)",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A 안에서 B 밖이거나 C 안에 속하는 영역을 표시한다."
+  ]
+}

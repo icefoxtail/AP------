@@ -1,0 +1,98 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "X에서 Y로의 일대일 대응을 화살표로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(1)=7",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "f(2)-f(3)=3에서 f(2)=8, f(3)=5, 남은 값은 f(4)=6",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "네 원소가 Y의 네 원소를 각각 한 번씩 사용한다."
+  ]
+}

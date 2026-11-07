@@ -1,0 +1,58 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ],
+    "elements": [
+      {
+        "text": "11",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "13",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "17",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "19",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "16",
+        "in": []
+      }
+    ]
+  },
+  "caption": "10 이상 20 이하의 소수 원소를 A 안에, 16을 A 밖에 놓아 원소와 부분집합 표기의 대상을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A={11,13,17,19}",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "16∉A",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A의 원소 네 개와 A 밖의 16을 함께 배치해 원소 관계를 구분한다."
+  ]
+}

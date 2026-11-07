@@ -1,0 +1,145 @@
+{
+  "targetExam": "22_강남여고_2학기_기말_고1_기출",
+  "branch": "codex/svg-2022-gangnam-h1-2final-visual-round1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js",
+    "plannedBaselineMain": "15a6dd95fd12aaf847e8b739c2b806627f770782",
+    "currentMain": "5279940ce8f880fe6acfb8e227f2556781c6cbb9",
+    "plannedJsBlob": "b66d0a440b0d826dc328fe3764fc71eea71c226e",
+    "currentJsBlob": "b66d0a440b0d826dc328fe3764fc71eea71c226e",
+    "sourceSha256": "sha256:4a4abe0a1d26b1823fc340b617f61c39a37fc2e3466796786807fbaf64097c09",
+    "plannedBlobMatchesCurrent": true
+  },
+  "ownership": {
+    "examLedger": "NOT_IN_LEDGER",
+    "existingMainSolutionSvgOrdinals": [
+      5,
+      11,
+      15,
+      18,
+      22
+    ],
+    "remoteBranchesReadOnlyInspected": [
+      "claude/svg-h1f-22-23-batch1",
+      "claude/svg-solution-q13-q22",
+      "gpt-svg-h1-2final-22-23-5300bb96",
+      "svg/h1-2final-23-gangnam-girls-gpt",
+      "codex/svg-m1-23-finals"
+    ],
+    "examSpecificChangesFoundOnInspectedBranches": false,
+    "existingAssetsPreserved": true
+  },
+  "calibration": {
+    "stage": "VISUAL_REPAIR",
+    "preflight": "PASS",
+    "targetQuestionCount": 24,
+    "goldenSamples": [
+      {
+        "exam": "26_팔마고_2학기_중간_고1_기출",
+        "questionOrdinals": [
+          20,
+          21
+        ]
+      },
+      {
+        "exam": "25_매산여고_2학기_중간_고1_기출",
+        "questionOrdinals": [
+          12,
+          20
+        ]
+      }
+    ],
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "evidenceFile": ".tmp/svg-calibration/evidence.json",
+    "evidenceSha256": "sha256:a9883373da0b5ee361c5fa3308fd653625f3eb294d84d5d4553e4b08a892e50d"
+  },
+  "inputCoverage": {
+    "rootPlanOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "itemPlanPublishJsonOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      23,
+      24
+    ],
+    "missingEngineInputOrdinals": [
+      9,
+      19,
+      21
+    ],
+    "preservedExistingPassOrdinals": [
+      11
+    ],
+    "jsonSyntaxValidation": "PASS: 60/60 item/plan/publish JSON files parse"
+  },
+  "setup": {
+    "officialSetupCommand": "GEOMETRY_PYTHON=python3 node archive/tools/geometry-equation/production/setup-spikes.mjs",
+    "npmCi": "PASS with task-local NPM_CONFIG_CACHE",
+    "pythonDependencies": "PASS (pinned SymPy and mpmath)",
+    "fontFetch": "FAILED: EAI_AGAIN raw.githubusercontent.com during official setup script",
+    "expectedChromiumPath": "/opt/pw-browsers/chromium-1243/chrome-linux64/chrome",
+    "expectedChromiumExists": false
+  },
+  "renderAttempts": [
+    {
+      "ordinal": 1,
+      "command": "node archive/tools/geometry-equation/production/render-plan.mjs --item .../q01/item.json --plan .../q01/plan.json --out .tmp/svg-m1/runs/22gangnam/q01/out",
+      "status": "FAILED",
+      "stage": "measure",
+      "detail": "ARCHIVE_PREFLIGHT_FAIL: browserType.launch failed because executable does not exist at /opt/pw-browsers/chromium-1243/chrome-linux64/chrome",
+      "identityAssetId": "va-681e99d75fec89f665e5381e122cbeef593221d7c91665acad785c2a38e016de"
+    }
+  ],
+  "renderSummary": {
+    "attempted": 1,
+    "archiveBound": 0,
+    "failed": 1,
+    "notRun": 23,
+    "svgOutputs": 0,
+    "pngOutputs": 0,
+    "studentScreenReviews": 0
+  },
+  "answerExposureReview": "NOT_RUN: no rendered SVG/PNG. Source answer fields and draft publish captions were read; caption policy does not replace visual artifact inspection.",
+  "independentClaudeReview": "NOT_RUN",
+  "mainMergePrPublish": "NOT_PERFORMED"
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력 x",
+        "elements": [
+          "유리수",
+          "무리수"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "첫 함수값",
+        "elements": [
+          "1",
+          "0"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "입력의 종류에 따라 첫 번째 함수값을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x가 유리수이면 f(x)=1, 무리수이면 f(x)=0이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 가능한 값 두 개를 구분한다."
+  ]
+}
