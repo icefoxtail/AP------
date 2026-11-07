@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "svg-independent-review-v1",
+  "exam": "22-hyocheon",
+  "qid": "Q22",
+  "attemptOrdinal": 6,
+  "reviewerBranch": "codex/svg-review-22-hyocheon-q22-20261108",
+  "latestInputBranch": {
+    "remoteRef": "origin/codex/svg-triage-20261107",
+    "latestRemoteHead": "3bb9ecfc236a180ec6035156e9e5221c48d43aef",
+    "renderInputHeadRequested": "53121b178a4def967003294eae446ba5190b43c6",
+    "attemptStartObservedHead": "e290f6b81bb09d9e522192d2dc4143f25a15f50f",
+    "q22SourceBlobAtRenderInputAndLatest": "193acbc5bb7eea4a61e5369aa926201300b02ce3",
+    "itemGitBlobSha1": "fcc6a995349bcddf55f7395a1a9746e97e108500",
+    "basePlanGitBlobSha1": "8514226a261a00b86cae7be731483a456cfbf360",
+    "publishGitBlobSha1": "94e376fe23392e0a4250a72178a52e4752351c4f",
+    "attemptPlanSha256": "0daebcb813ab1eabcb62c0414581ffbbc6baefebe34c1ab9f537b0c95cff0d80",
+    "attemptPublishSha256": "616d5a2b42378db4d86bb10527051258c2da34f9b9c904677e545512dc574f9a",
+    "bindingStatus": "PASS_Q22_CONTENT_IDENTICAL; receipt head field differs from parent-stated render input head"
+  },
+  "candidate": {
+    "status": "ARCHIVE_BOUND_DRAFT_CANDIDATE",
+    "reviewStatusInReceipt": "PENDING_INDEPENDENT_REVIEW",
+    "queueStatus": "ROOT_PREPARING",
+    "productionAuthorized": false,
+    "svgSha256": "947703b21f38c86bf3ea4f80af99989e9cd04be25432a12ca2c5c78068c3e8a0",
+    "afterPngSha256": "0f3304a26b268f01bf65fe3faebbf11fdaf07a2e55fd0c3e06354355038f3634",
+    "contextPngSha256": "5ad22721348a605d9fb0ecefaf22e942b0bbbfd2616a1680994bdcd1eef16fac",
+    "pagePngSha256": "b3cc277c07d3825b28c83301d9c33560485b721980639bf632339be87600c51c",
+    "attemptReceiptSha256": "6bed8bbe09b553d80172b9addaa1ebbb1d545faf7e60ffb47352fb7db59af823",
+    "legacyAssetPath": "archive/assets/images/22_효천고_2학기_기말_고1_기출/q22-solution.svg",
+    "legacyAssetSha256": "2a279e3a6ff17cccadb28f61ce2329d6304b42c5468cb9815663cdaebbee75b8"
+  },
+  "checks": {
+    "sourceAnswerAndSolution": "PASS",
+    "selfInverseFunctionAndFixedPoints": "PASS",
+    "rationalCurveVerticesAndAsymptotes": "PASS",
+    "equalUnitYxSymmetry": "PASS",
+    "PAndQCoordinatesAndLabelOwners": "PASS",
+    "answerLeakageInCandidateSvgAndAlt": "PASS",
+    "studentRasterLabelReadability": "PASS_WITH_FONT_TARGET_NOTE",
+    "legacyStaticAssetComparison": "PASS_STATIC_ONLY"
+  },
+  "independentMath": {
+    "f(x)": "(2x-1)/(x-2)",
+    "f(f(x))": "x",
+    "fixedPoints": [
+      "2-sqrt(3)",
+      "2+sqrt(3)"
+    ],
+    "distance": "2*sqrt(6)",
+    "a": 2,
+    "b": -1,
+    "f(5)": 3,
+    "curveVertexMaxResidualPxRounded": 0.0,
+    "unitScalePx": 81.7777778
+  },
+  "legacyComparison": {
+    "staticTextIncludes": [
+      "f=2+3/(x-2)",
+      "f∘f=x",
+      "PQ=2√6"
+    ],
+    "legacyAxisScalesPxPerUnit": {
+      "x": 46.333333,
+      "y": 25.333333
+    },
+    "legacyVisualRender": "NOT_RUN",
+    "candidateImprovement": "Candidate removes explicit function coefficients from labels and uses equal unit scales, so y=x is visually 45 degrees."
+  },
+  "openNotRun": [
+    {
+      "area": "attemptHeadProvenance",
+      "status": "OPEN_NOTE",
+      "reason": "Attempt-06 start/result record e290f6 as observed head, while the task cites 53121 as render-input head. Q22 source/item/base-plan/publish blob identities are unchanged from 53121 through latest f4e1, so no Q22 content drift was found."
+    },
+    {
+      "area": "partialGraphCropSymmetry",
+      "status": "OPEN_MINOR",
+      "reason": "Requested [0,4.5]^2 plot receives renderer padding and the visible f branch includes a short tail below y=0 without its x<0 reflection. The figure is explicitly a partial graph and both fixed points are correct, but this small unmatched tail may weaken the visual symmetry cue."
+    },
+    {
+      "area": "independentInverseObservation",
+      "status": "NOT_RUN",
+      "reason": "Attempt-06 receipt marks the official inverse observer NOT_RUN; this review independently recomputed function, fixed points, and SVG vertices."
+    },
+    {
+      "area": "qualificationAndPublication",
+      "status": "NOT_RUN",
+      "reason": "Attempt-06 receipt marks qualification/publication NOT_RUN; candidate remains ROOT_PREPARING and unauthorized."
+    },
+    {
+      "area": "outerDomAlt",
+      "status": "NOT_RUN",
+      "reason": "render-plan did not integrate publish-r4 into outer DOM/ARIA; SVG-native title/desc are present, but final consumer DOM was not qualified."
+    },
+    {
+      "area": "fontMeasurement",
+      "status": "NOT_RUN",
+      "reason": "Authored 20px labels at displayScale 0.582336 infer to about 11.65 CSS px, above the 11px hard floor but below the 12px target; no independent browser font measurement was run."
+    }
+  ],
+  "tests": "NOT_RUN",
+  "queueOrStatusChanged": false,
+  "reviewDisposition": "PASS_WITH_OPEN_GATES",
+  "reviewerWorktreeBase": "3bb9ecfc236a180ec6035156e9e5221c48d43aef",
+  "lockReadback": {
+    "examLockOwner": "svg_hyocheon_implementer",
+    "examLockBranch": "codex/svg-triage-20261107",
+    "examLockToken": "510f70fa-5259-42d1-ab1a-cb542819c33c",
+    "examLockScope": "draft-candidates-only",
+    "globalRenderTokenInAttemptReceipt": "510f70fa-5259-42d1-ab1a-cb542819c33c",
+    "reviewerLockAction": "NONE_READ_ONLY"
+  },
+  "latestBranchDelta": "Only 19 Gangnam Girls / 20 Hyocheon input handoff files were added after f4e1; Q22 item/plan/publish/status and queue entry remained byte-identical."
+}
