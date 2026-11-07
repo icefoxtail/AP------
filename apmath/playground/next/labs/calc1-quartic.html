@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function () {
 ② 따라서 미분하지 않고도 극소점은 <strong class="text-amber-300">${tex('\\beta = \\dfrac{0 + 3 \\times 4}{4} = 3')}</strong> 이다.<br/>
 ③ 한 칸 간격을 ${tex('h = 1')} 이라 하면 극소점과 접선 ${tex('y=2')} 사이의 높이 차는 <strong class="text-sky-300">${tex('\\Delta y = 27|a|h^4 = \\dfrac{27}{4} = 6.75')}</strong> 이다.<br/>
 &nbsp;&nbsp;따라서 극솟값은 ${tex('2 - 6.75 = -4.75 \\; (-\\frac{19}{4})')} 이다.`,
-          highlight: "💡 f(x) = a(x − α)³(x − q) + c 꼴에서 삼중근인 접점의 x좌표 α, 극소점의 x좌표 β, 교점 Q의 x좌표 q 사이에는 (β − α) : (q − β) = 3 : 1 이 성립합니다. 이 비율로 5초 컷 하세요!"
+          highlight: "💡 f(x) = a(x − α)³(x − q) + c 꼴에서 삼중근인 접점의 x좌표 α, 극값점의 x좌표 β, 교점 Q의 x좌표 q 사이에는 (β − α) : (q − β) = 3 : 1 이 성립합니다. a의 부호를 확인하여 극소와 극대를 구별합니다."
         })
       },
 
@@ -1276,8 +1276,8 @@ window.addEventListener('DOMContentLoaded', function () {
     b.point([v.be, 0], { color: 'green', r: 5, ref: 'roots', label: `β=${cxN(v.be)}`, dx: 9, dy: 16 });
     // 두 넓이의 이름과 값은 왼쪽 위에 색으로 구분해 적습니다(영역이 좁아도 겹치지 않게)
     const rr = b.paneRect();
-    b.stext(rr.x + 12, rr.y + 16, st >= 3 ? `S₁ = ${exact(v.s1)}` : 'S₁ (붉은 영역)', { color: 'rose', size: 12.5, align: 'left', ref: 'dy' });
-    b.stext(rr.x + 12, rr.y + 33, st >= 3 ? `S₂ = ${exact(v.s2)}` : 'S₂ (파란 영역)', { color: 'sky', size: 12.5, align: 'left', ref: 'dy' });
+    b.stext(rr.x + 12, rr.y + 16, st >= 3 ? `S₁ ${valueRelation(v.s1)}` : 'S₁ (붉은 영역)', { color: 'rose', size: 12.5, align: 'left', ref: 'dy' });
+    b.stext(rr.x + 12, rr.y + 33, st >= 3 ? `S₂ ${valueRelation(v.s2)}` : 'S₂ (파란 영역)', { color: 'sky', size: 12.5, align: 'left', ref: 'dy' });
     if (showF) {
       const pts = [[v.al, 'amber', 'A', -9, -13, 'right'], [v.ga, 'rose', 'C', 0, -16, 'center'], [v.be, 'green', 'B', 9, -13, 'left']];
       pts.forEach(([x, col, nm, dx, dy, al]) => b.point([x, v.f(x)], { color: col, r: 6, ref: 'roots', label: nm, dx, dy, align: al }));
@@ -1287,14 +1287,19 @@ window.addEventListener('DOMContentLoaded', function () {
       b.seg([v.al - 0.3, yA], [xr, yA], { color: 'rose', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
       b.seg([v.be - 0.3, yB], [xr, yB], { color: 'sky', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
       b.seg([xr, yA], [xr, yB], { color: 'amber', width: 3, ref: 'dy' });
-      cxTag(b, [xr, Math.min(yA, yB)], `|f(α)−f(β)| = ${exact(Math.abs(yA - yB))}`, { color: 'amber', dy: 17, ref: 'dy', align: 'right' });
+      cxTag(b, [xr, Math.min(yA, yB)], `|f(α)−f(β)| ${valueRelation(Math.abs(yA - yB))}`, { color: 'amber', dy: 17, ref: 'dy', align: 'right' });
     }
   }
-  // 정확한 값을 짧은 분수 문자열로 (그림 라벨용): 5/6 같은 꼴
-  function exact(x) {
-    const r = cxRatOf(x);
-    if (!r) return String(+x.toFixed(2));
-    return r.d === 1 ? String(r.n) : `${r.n}/${r.d}`;
+  // 기본 장면의 분모 625, 1875도 보존합니다. 분수로 확인되지 않은 값은 근삿값임을 표시합니다.
+  function valueRelation(x) {
+    for (let d = 1; d <= 3000; d++) {
+      const n = Math.round(x * d);
+      if (Math.abs(x * d - n) < 1e-9) {
+        const g = cxGcd(n, d) || 1;
+        return d === g ? `= ${n / g}` : `= ${n / g}/${d / g}`;
+      }
+    }
+    return `≈ ${+x.toFixed(4)}`;
   }
 
   /* ===== 장면 5 · |f(x) − k| 의 미분가능하지 않은 점 (삼중근형) ===== */
@@ -1323,7 +1328,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: `① ${tex('|f(x) - k|')} 에서 ${tex('f(x)=k')} 인 점의 기울기가 <strong>${tex("f' \\ne 0")} 이면(중근이 아닌 근) 접어 올린 그래프가 꺾여 미분가능하지 않고</strong>, <strong>삼중근처럼 ${tex("f' = 0")} 이면 접어 올려도 미분가능</strong>합니다.<br/>
 ② 이 특정 함수에서는 ${tex(`k=${v.y0}`)}일 때 ${tex(`f(x)-k=${qvA(v.a)}${cxXm(v.al)}^3${cxXm(v.q)}`)}: 삼중근 ${tex(`x=${v.al}`)}의 절댓값은 미분가능하고 중근이 아닌 근 ${tex(`x=${v.q}`)}에서만 미분가능하지 않은 점이 생긴다.<br/>
 ③ ${tex(`f(${v.be})=${cxNum(v.yMin)}`)}와 사차함수의 양끝이 ${v.up ? '위' : '아래'}로 향하는 성질을 이용하면 다른 높이에서는 교점이 없거나 중근이 아닌 근이 2개(미분가능하지 않은 점 2개)다. 그러므로 유일한 값은 ${tex(`k=${v.y0}`)}이다.`,
-      highlight: examData[5].shortcut().highlight
+      highlight: `이 함수족에서는 k=${v.y0}일 때 x=${v.al}이 삼중근, x=${v.q}가 중근이 아닌 근입니다. 따라서 절댓값 그래프는 x=${v.q}에서만 꺾입니다. 다른 높이에서는 극값의 높이와 양끝 방향을 함께 확인합니다.`
     };
   };
   function draw5(b, s, lab) {

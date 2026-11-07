@@ -733,10 +733,12 @@ window.addEventListener('DOMContentLoaded', function () {
     ];
     let v;
     for (let t = 0; t < 300; t++) {
-      const e = first ? POOL[0] : cxPick(POOL);
-      const c = first ? 0 : cxPick(e.cs), d = first ? 0 : cxPick([0, 0, 1, -1, 2, -2]);
-      const ask = first ? 'p' : (cxRint(2) ? 'p' : 'ga');
-      const ga = first ? 0 : cxPick([1, 2, 3]);
+      // 재추첨 한도에서도 지문이 다른 기본 함수로 끝나도록 합니다.
+      const fallback = t === 299;
+      const e = first || fallback ? POOL[0] : cxPick(POOL);
+      const c = first || fallback ? 0 : cxPick(e.cs), d = first ? 0 : fallback ? (prev.d === 0 ? 1 : 0) : cxPick([0, 0, 1, -1, 2, -2]);
+      const ask = first || fallback ? 'p' : (cxRint(2) ? 'p' : 'ga');
+      const ga = first || fallback ? 0 : cxPick([1, 2, 3]);
       const { a, b, p } = e;
       const f = (x) => a * x * x * x + b * x * x + c * x + d;
       const fp = (x) => 3 * a * x * x + 2 * b * x + c;
@@ -749,7 +751,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const y0 = Math.min(...keys), y1 = Math.max(...keys);
       if (y1 - y0 > 8) continue;
       v = { a, b, c, d, p, ask, ga, f, fp, fL, fR, ans, co: [a, b, c, d], win: { x: [-2.8, p + 2.8], y: [y0 - 1.2, y1 + 1.2] } };
-      if (prev && prev.a === a && prev.b === b && prev.c === c && prev.d === d && prev.ask === ask && prev.ga === ga) continue;
+      if (prev && prev.a === a && prev.b === b && prev.c === c && prev.d === d && prev.ask === ask && (ask !== 'ga' || prev.ga === ga)) continue;
       break;
     }
     return v;
