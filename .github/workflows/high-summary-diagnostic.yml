@@ -1,4 +1,4 @@
-name: High summary pointer diagnostic
+name: High current exploration visual probe
 on:
   push:
     branches: [high/summary-probe-7907d5aa]
@@ -16,13 +16,13 @@ jobs:
       - run: |
           npm install --prefix "$RUNNER_TEMP/high-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/high-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - run: node apmath/playground/next/tools/high-summary-diagnostic.mjs
+      - run: node apmath/playground/next/tools/high-explore-visual-probe.mjs
         env:
           NODE_PATH: ${{ runner.temp }}/high-browser/node_modules
           PROBE_OUT: ${{ runner.temp }}/summary-probe
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: summary-pointer-probe
+          name: current-exploration-probe
           path: ${{ runner.temp }}/summary-probe
           retention-days: 5
