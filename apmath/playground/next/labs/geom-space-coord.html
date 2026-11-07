@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="../kit/apl.css">
 <style>
 .nc-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+/* 좌표의 정확한 값 아래 계산 과정은 좁은 카드에서도 끝까지 읽을 수 있습니다. */
+.apl-read .n { white-space: normal; overflow-wrap: anywhere; }
 </style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
@@ -1571,12 +1573,12 @@ window.addEventListener('DOMContentLoaded', function () {
         else tape = tapeOfD(`한 줄로 펴면 X → A → B, XA : AB = ${m} : ${n - m} (AX : XB = ${m} : ${n}, 외분)`, [{ text: `XA ${m}`, weight: m, color: 'rose' }, { text: `AB ${n - m}`, weight: n - m, color: 'amber' }]);
       }
       const sg = ext ? '−' : '+';
-      const rowOf = (i, c) => `${c} = (${m}·${par(B7[i])} ${sg} ${n}·${par(A7[i])}) ÷ (${m} ${sg} ${n}) = ${Xf ? fTxt(Xf[i]) : '—'}`;
+      const rowOf = (i, c) => `${c} = (${m}·${par(B7[i])} ${sg} ${n}·${par(A7[i])}) ÷ (${m} ${sg} ${n})`;
       const reads = [
         { label: '비 AX : XB', value: `${m} : ${n} ${ext ? '외분' : '내분'}`, color: ext ? 'rose' : 'sky' },
-        ...(Xf ? [{ label: 'x좌표', value: rowOf(0, 'x'), color: 'amber' }, { label: 'y좌표', value: rowOf(1, 'y'), color: 'amber' }, { label: 'z좌표', value: rowOf(2, 'z'), color: 'amber' }] : [])
+        ...(Xf ? ['x', 'y', 'z'].map((c, i) => ({ label: `${c}좌표`, value: fTxt(Xf[i]), note: rowOf(i, c), color: 'amber' })) : [])
       ];
-      if (s.cent) reads.push({ label: '무게중심 G', value: 'G = ((1+3+5)÷3, (2+(−2)+6)÷3, (3+5+1)÷3) = (3, 2, 3)', color: 'green', wide: true });
+      if (s.cent) reads.push({ label: '무게중심 G', value: 'G = (3, 2, 3)', note: 'G = ((1+3+5) ÷ 3, (2+(−2)+6) ÷ 3, (3+5+1) ÷ 3)', color: 'green', wide: true });
       return {
         chips, status, tape, readouts: reads,
         formula: `<b>내분점 X</b>: ${texU('x_X=\\dfrac{nx_A+mx_B}{m+n}')}<br/><b>외분점 X</b>: ${texU('x_X=\\dfrac{mx_B-nx_A}{m-n}')} (${texU('m\\ne n')})<br/>y, z좌표도 같은 가중치로 각각 계산합니다.<br/><b>무게중심</b>: ${texU('x_G=\\dfrac{x_A+x_B+x_C}{3}')}<br/>y, z좌표도 세 꼭짓점 좌표의 평균입니다.`
