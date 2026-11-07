@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "JS_ARCHIVE_H22_MI1_NEW_SEMANTIC_KEYS_v1",
+  "status": "CANDIDATE_PENDING_REVIEW",
+  "candidateOnly": true,
+  "consumerSelectable": false,
+  "canonicalPromotion": false,
+  "registeredAt": "2026-10-29",
+  "source": {
+    "examUid": "26_매산고_2학기_중간_고2_미적분I",
+    "sourceQuestionNo": 21,
+    "sourcePage": 7,
+    "sourceScan": "S28BW-826102817020_0044.jpg",
+    "sourceScanSha256": "ba983ab3072b0fbf3a6a8601669e8504eee98a3625411788459fe0d4be88b313",
+    "sourceArtifact": "Library:/문제은행/2026_2학기중간_신규JS/04_매산고_고2_미적분I_CREATE/CREATE_CANDIDATE/archive/exams/original/high/h2/2mid/26_매산고_2학기_중간_고2_미적분I.js",
+    "jsSha256": "a1e171eb7289036939f3883f73973bd9f195671f0e6ea6a1bbd08283f6b72d22",
+    "contentSha256": "a1a8ef178b5e55c1bc4f82a273235dcc19082943f55c0168d022be8a413c9ef2",
+    "solutionSha256": "724b263bf5fd05bef228cc967db724d4259bfd9083646042cae0d3f6fc6d1d91",
+    "questionUid": null,
+    "questionUidReason": "unpublished staged CREATE candidate; do not invent canonical UID"
+  },
+  "curriculumScopes": [
+    {
+      "curriculum": "2015",
+      "course": "수학II",
+      "standardUnitKey": "H15-M2-04",
+      "parentL3": "L3-2.1.2",
+      "status": "SAME_SEMANTIC_SCOPE_CANDIDATE"
+    },
+    {
+      "curriculum": "2022",
+      "course": "미적분I",
+      "standardUnitKey": "H22-M1-04",
+      "parentL3": "L3-2.1.2",
+      "status": "Q21_DIRECT_SOURCE_CANDIDATE"
+    }
+  ],
+  "newRpmL4": {
+    "candidateKey": "RPM_H2_DERIV_L4_ADDITION_FORMULA_INVARIANT",
+    "candidatePath": "L4-2.1.2.3",
+    "parentL3": "L3-2.1.2",
+    "parentLabelKo": "도함수",
+    "canonicalLabelKoCandidate": "함수방정식의 미분과 불변식",
+    "definition": "두 미분가능 함수의 덧셈형 함수방정식을 한 변수에 관하여 미분하여 두 함수의 도함수 관계를 얻고, 그 관계에서 일정한 대수식을 도출해 목표 함숫값을 결정하는 유형.",
+    "sourceOfNovelty": "The existing derivative L4 only includes 미분법 and 도함수 계산; this item's decisive step is constructing an invariant between distinct functions.",
+    "curriculumApplicability": "RPM_EXTENDED_CANDIDATE",
+    "defaultSelectable": false,
+    "status": "CANDIDATE_NOT_LOCKED"
+  },
+  "machineProjection": {
+    "reuseActiveProblemTypeKey": "PT_FUNCTIONAL_EQUATION",
+    "activePtOwnerPack": "FUNCTIONS_GRAPHS",
+    "newTemplateCandidate": {
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT",
+      "canonicalLabelKo": "함수방정식 미분으로 불변식 구성",
+      "parentProblemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "definition": "다변수 함수방정식의 초기값과 변수별 미분으로 두 함수의 미분 관계를 만들고, 불변식을 구성하여 미지 함숫값을 결정한다.",
+      "internalSkeleton": "함수방정식 정규화 → 초기값 확정 → 한 변수를 미분하고 0 대입 → 연립 도함수 관계 → 도함수가 0인 불변식 → 목표값",
+      "status": "PROPOSED_NOT_ACTIVE",
+      "defaultSelectable": false
+    },
+    "reuseActiveCrossConceptKeys": [
+      "CC_DERIVATIVE_VALUE"
+    ],
+    "crossConceptReason": "Derivative of functional equation is an essential secondary thinking tool",
+    "exactCurriculumBinding": "MISSING_2015_AND_2022",
+    "conditionKeys": [],
+    "integrationPattern": null
+  },
+  "mathEvidence": {
+    "inputIdentity": "G(x)=3g(x)",
+    "additiveRelations": [
+      "f(x+y)=f(x)G(y)+f(y)G(x)",
+      "G(x+y)=G(x)G(y)+4f(x)f(y)"
+    ],
+    "initialValues": [
+      "G(0)=1",
+      "G'(0)=0",
+      "f(0)=0"
+    ],
+    "afterDifferentiation": [
+      "f'(x)=cG(x)",
+      "G'(x)=4cf(x)",
+      "c=f'(0)"
+    ],
+    "decisiveInvariant": "(G(x)^2-4f(x)^2)' = 2G·4cf-8f·cG = 0",
+    "constantAtZero": "G(0)^2-4f(0)^2=1",
+    "result": "G(1)^2-4f(1)^2=1, f(1)=1/2 → G(1)^2=2 → g(1)^2=2/9",
+    "exclusions": [
+      "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE: determines function form/coefficient, not conserved expression",
+      "TPL_FUNCTIONAL_EQUATION_ADDITIVE: uses substitution rather than differentiation-generated invariant",
+      "L4-2.1.2.1 / L4-2.1.2.2: routine derivative rule and calculation"
+    ]
+  },
+  "evidenceAuthority": {
+    "rpm2015": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md@b8590959171a249095aed4a252ace7c99fa3de3e",
+    "rpm2022": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md@401aa878aa704179d56fad140f3bb5b8fa5c9748",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json@453ce17c65f6bd77aab562d2bb7c445623cd57e2",
+    "functionsActive": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json@6fac8d5c880c3a6af3763fb204708f84d4fba546",
+    "derivativeActive": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json@36df7a6afc8d919743b256fb87af88428bae1081"
+  },
+  "nextGate": {
+    "sourceSolutionIndependentMathReview": "R1_PENDING",
+    "comparisonWith2015SameMethod": "PENDING",
+    "approvedRpmPromotion": "PENDING",
+    "approvedTplPromotion": "PENDING",
+    "activeExactBinding": "PENDING",
+    "changesToStudentJs": "NONE",
+    "doNotWriteProposedKeyToProduction": true
+  }
+}
