@@ -1,5 +1,5 @@
-# Q10 입력 본문 미복원
+# Q10 1차 초안
 
-ROOT_PLAN의 Q10 제작 지시와 root-inputs README의 18문항 초안 수는 보존했다. 메시지에 포함된 Q10 item.json·plan.json·publish.json의 정확한 본문은 전달된 텍스트에서 확인할 수 없어 복원하거나 추정하지 않았다.
+NOT_RENDERED. 원본 등산로 그림을 대체하지 않는다. 구하는 P+Q=19는 쓰지 않는다. 엔진 계약·독립 수학·학생 화면 검수 NOT_RUN.
 
-입력·엔진 계약·렌더·독립 수학·학생 화면 검수는 NOT_RUN이다. 기존 원문 경로·자산은 수정하지 않았다.
+원문 Q10의 q10.png와 풀이에서 입구→폭포 4길, 폭포→정상 3길을 대조했다. mapping은 두 구간별 길 수의 보조 관계도이며 실제 경로 배치는 기존 원본 PNG에 남긴다. plan은 MAPPING의 2개 열, 2개 원소, 유효한 인접 열 화살표와 sourceConditions/newVisualInformation을 갖춘 모양이다. 엔진 parser/observer 및 렌더는 NOT_RUN.

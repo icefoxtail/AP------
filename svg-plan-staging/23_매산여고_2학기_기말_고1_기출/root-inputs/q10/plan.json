@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구간",
+        "elements": [
+          "입→폭",
+          "폭→정"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "길의 수",
+        "elements": [
+          "4",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "등산로를 폭포 기준 두 구간으로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "입구에서 폭포까지 4길, 폭포에서 정상까지 3길이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 구간의 길의 수를 각각 표시한다."
+  ]
+}

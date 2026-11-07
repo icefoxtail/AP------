@@ -4,11 +4,9 @@
 
 - 계획 분모: 23문항.
 - ROOT 계획 전문: ROOT_PLAN.md에 보존.
-- ROOT README 기준 신규 초안 수: 18문항.
-- 완전한 item·plan·publish 입력 세트: 15문항.
-- 메시지 조각만 보존: Q7 publish 1개.
-- 입력 본문 미복원: Q7 item/plan 일부, Q10 전체 세트, Q18 전체 세트.
+- ROOT README 기준 신규 초안 및 보존된 완전 입력 세트: 18문항.
 - 공식 엔진 렌더: 0개. 모든 미보호 문항 렌더 상태 NOT_RUN.
+- Q7은 기존 5회 시도 이력을 보존하고 재렌더하지 않았다.
 - 독립 Claude Code 검수: NOT_RUN.
 - 학생 화면·게시·PR·main 반영: NOT_RUN.
 - Q6·Q9·Q16·Q22는 기존 작업 보호 지시에 따라 건드리지 않았다. Q8은 이력 확인 대기로 유지했다.
@@ -32,10 +30,10 @@
 | Q04 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q05 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q06 | 보호 | 기존 기록 유지 | OPEN | NOT_RUN |
-| Q07 | publish 조각만 복원; 5회 시도·OPEN 기록 보존 | 판정 보류 | OPEN | NOT_RUN |
+| Q07 | 완전 입력; 기존 5회 시도 보존 | k=3 예시 계수 일치 | OPEN; source coverage 미완성 / NOT_RUN | NOT_RUN |
 | Q08 | 이력 대기 | 판정 보류 | OPEN | NOT_RUN |
 | Q09 | 보호; 기존 SVG 존재 | 기존 기록 유지 | OPEN | NOT_RUN |
-| Q10 | 본문 미복원 | 판정 보류 | OPEN | NOT_RUN |
+| Q10 | 완전 입력; 원본 q10.png 보존 | 4·3 경로 수 및 선택식 확인 | mapping 정적 대조 / NOT_RUN | NOT_RUN |
 | Q11 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q12 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q13 | 확보 | 확인 | NOT_RUN | NOT_RUN |
@@ -43,13 +41,13 @@
 | Q15 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q16 | 보호 | 기존 기록 유지 | OPEN | NOT_RUN |
 | Q17 | 확보; 원본 q17.png 확인 | 예시 배열 조건 대조 | NOT_RUN | NOT_RUN |
-| Q18 | 본문 미복원; 메시지 STATUS 조각만 확인 | 판정 보류 | OPEN | NOT_RUN |
+| Q18 | 완전 입력 | a=−6,b=−2 및 근 0,2,22 대조 | OPEN; source coverage·Phase 2 capability 경로 미확인 / NOT_RUN | NOT_RUN |
 | Q19 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q20 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q21 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 | Q22 | 보호; 기존 SVG 존재 | 기존 기록 유지 | OPEN | NOT_RUN |
 | Q23 | 확보 | 확인 | NOT_RUN | NOT_RUN |
 
-Q19의 초안에는 multi-curve 계약상 필수 sourceConditions 및 newVisualInformation이 빠져 있어 요청 원문에 근거해 보완했다. 정적 수학 검토 결과와 해시는 validation/static-review.json에 기록한다. 이 기록은 공식 renderer 또는 독립 시각 검수의 완료를 뜻하지 않는다.
+Q19의 초안에는 multi-curve 계약상 필수 sourceConditions 및 newVisualInformation이 빠져 있어 요청 원문에 근거해 보완했다. 정적 수학 검토 결과와 해시는 validation/static-review.json에 기록한다. 이번에 보충한 Q7·Q10·Q18의 정적 검토는 validation/followup-static-review.json에 기록한다. 두 기록 모두 공식 renderer 또는 독립 시각 검수의 완료를 뜻하지 않는다.
 
 이 상태 문서는 성공·완료가 확인되지 않은 항목을 OPEN/NOT_RUN으로 유지한다.

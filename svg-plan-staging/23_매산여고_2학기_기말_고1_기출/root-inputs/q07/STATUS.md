@@ -1,5 +1,5 @@
-# Q07 전달 원문 조각
+# Q07 1차 초안
 
-ROOT_PLAN의 Q7 지시와 root-inputs 메시지에서 publish.json 문안은 확인 가능해 그대로 보존했다. 메시지에 포함된 plan.json의 끝 부분은 message-fragments/plan-tail.txt에 보이는 조각만 보존했으며, 그 앞 문맥과 item.json 및 plan.json 전체는 전달된 텍스트에서 잘려 있어 복원하지 않았다. 따라서 이 문안은 엔진 입력 세트가 아니며 렌더 대상이 아니다.
+NOT_RENDERED. 정답 최솟값 k=2가 아닌 k=3의 예시를 사용한다. y=2 점근선 라벨은 정답 숫자 노출을 피하도록 숨겼다. 기존 5회 시도 이력을 보존한다. 엔진 계약·독립 수학·학생 화면 검수 NOT_RUN.
 
-기존 5회 시도 및 OPEN 기록을 보존한다. 기존 초안·시도 경로를 수정하거나 재렌더하지 않았다. 엔진 계약·렌더·독립 수학·학생 화면 검수는 NOT_RUN이다.
+정적 대조에서 계수는 k=3일 때 (2x+2)/(x−3)와 일치한다. 다만 현재 plan에는 sourceConditions와 newVisualInformation이 없어 Phase 2 source coverage 계약이 미완성이다. rational-spike-v1은 EXPERIMENTAL capability이며 요구 audit와 실제 렌더 검사는 NOT_RUN이다. 과거 5회 시도 때문에 추가 렌더하지 않았다.

@@ -1,0 +1,70 @@
+{
+  "reviewMode": "static-only",
+  "rendererInvoked": false,
+  "engineParserOrObserverInvoked": false,
+  "studentScreenReview": "NOT_RUN",
+  "sourceReferences": [
+    "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js:209-218",
+    "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js:312-322",
+    "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js:564-574",
+    "archive/assets/images/23_매산여고_2학기_기말_고1_기출/q10.png"
+  ],
+  "engineContractReferences": [
+    "archive/tools/geometry-equation/production/author-guide-body.md:71",
+    "archive/tools/geometry-equation/production/set-diagram-v1.mjs:940-942",
+    "archive/tools/geometry-equation/production/phase2.mjs:1701-1720",
+    "archive/tools/geometry-equation/production/contracts.mjs:63",
+    "archive/tools/geometry-equation/production/construction-candidate-svg-v1.mjs:20"
+  ],
+  "questions": {
+    "7": {
+      "jsonSyntax": "PASS_STATIC_JSON_PARSE",
+      "itemIdentity": "PASS_SOURCE_PATH_AND_ORDINAL",
+      "sourceMath": "MATCH_SAMPLE_K3_TO_SOURCE_FUNCTION; numerator [2,2] and denominator [-3,1] represent (2x+2)/(x-3)",
+      "answerExposure": "The plot plan uses the k=3 example and hides asymptote labels; publish caption includes choice ②. Actual student-screen exposure review is NOT_RUN.",
+      "contract": "OPEN",
+      "findings": [
+        "rational-spike-v1 is marked EXPERIMENTAL and requires source-condition, graph, typography, rendered-layout, Archive, and independent-review audits.",
+        "plan.json lacks required top-level sourceConditions and newVisualInformation for the Phase 2 source-coverage step.",
+        "Existing five-attempt history is preserved; no additional renderer attempt was made."
+      ],
+      "engineValidation": "NOT_RUN",
+      "render": "NOT_RUN"
+    },
+    "10": {
+      "jsonSyntax": "PASS_STATIC_JSON_PARSE",
+      "itemIdentity": "PASS_SOURCE_PATH_AND_ORDINAL",
+      "sourceMath": "MATCHES_SOURCE_4_ROUTES_TO_WATERFALL_AND_3_ROUTES_TO_SUMMIT; P=4×3, Q=4+3, P+Q=19",
+      "sourceFigure": "q10.png visually checked and retained; mapping is supplemental and does not encode or replace the original route layout.",
+      "contract": "OPEN",
+      "findings": [
+        "MAPPING uses two columns, two elements per column, and two valid adjacent-column arrows.",
+        "Required sourceConditions and newVisualInformation fields are present.",
+        "Shape was compared with the documented set-diagram contract only; official parser/observer was not run."
+      ],
+      "engineValidation": "NOT_RUN",
+      "render": "NOT_RUN",
+      "answerExposure": "Publish caption includes choice ④; student-screen review is NOT_RUN."
+    },
+    "18": {
+      "jsonSyntax": "PASS_STATIC_JSON_PARSE",
+      "itemIdentity": "PASS_SOURCE_PATH_AND_ORDINAL",
+      "sourceMath": "MATCHES_SOURCE_AT_A=-6_B=-2; left branch 2−2/(x−2), right branch 5−√(3x−2), and |f|=3 roots 0,2,22",
+      "endpointSemantics": "Left emphasis ends OPEN at x=1; right emphasis starts CLOSED at x=1.",
+      "answerExposure": "Graph plan shows the y=±3 intersections but does not state their sum 24; publish caption includes choice ④. Actual student-screen review is NOT_RUN.",
+      "contract": "OPEN",
+      "findings": [
+        "The four requested curve kinds (RATIONAL, SQRT, LINE, LINE) fit the documented multi-curve family shape and exact coefficient conventions.",
+        "plan.json lacks required top-level sourceConditions and newVisualInformation for the Phase 2 source-coverage step.",
+        "The multi-curve contract text exists, and construction-candidate-svg-v1 lists the capability, but the current phase2.mjs capability allowlist at the checked revision omits multi-curve-figure-v1. The official execution route is unresolved; no engine parser was run."
+      ],
+      "engineValidation": "NOT_RUN",
+      "render": "NOT_RUN"
+    }
+  },
+  "limitations": [
+    "Static JSON parsing and source comparison are not official engine validation.",
+    "No SVG or PNG was generated in this follow-up.",
+    "The prior font DNS failure was not retried or bypassed."
+  ]
+}

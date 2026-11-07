@@ -1,0 +1,109 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 가지의 치역과 끝값의 포함 여부를 확인해",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      24,
+      -5,
+      6
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "asymptotes"
+        ],
+        "emphasis": [
+          {
+            "from": "-5",
+            "to": "1",
+            "fromState": "NONE",
+            "toState": "OPEN"
+          }
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "3"
+        ],
+        "amplitude": "-1",
+        "offset": "5",
+        "domain": [
+          "1",
+          "24"
+        ],
+        "color": "WARM",
+        "hideLabel": true,
+        "emphasis": [
+          {
+            "from": "1",
+            "to": "24",
+            "fromState": "CLOSED",
+            "toState": "NONE"
+          }
+        ]
+      },
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "24"
+        ],
+        "style": "DASHED",
+        "label": "y=3"
+      },
+      {
+        "id": "bottom",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "24"
+        ],
+        "style": "DASHED",
+        "label": "y=-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "2",
+        "22"
+      ],
+      "y": [
+        "-3",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "caption": "두 조각과 y=3, y=−3의 교점을 비교한다."
+}
