@@ -1,0 +1,17 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["0","1/2"]},{"coefficients":["-1","1"]},{"coefficients":["-7","3"]},{"coefficients":["9","-1"]}],
+    "breakpoints":[{"x":"2","y":"1"},{"x":"3","y":"2"},{"x":"4","y":"5"}],
+    "sourceDomain":{"kind":"INTERVAL","range":["0","5"],"states":["CLOSED","CLOSED"]},
+    "domain":[0,5],"viewport":[0,5,0,5],
+    "requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":2,"y":1},{"id":"M","x":3,"y":2,"marker":"NONE"},{"id":"B","x":4,"y":5},{"id":"C","x":5,"y":4}],
+    "axisTickValues":{"x":[2,4,5],"y":[1,2,4,5]},
+    "overlays":{"points":[{"id":"T","x":"1","y":"1"},{"id":"P","curveX":"1"},{"id":"R","x":"1/2","y":"1/2"},{"id":"Q","curveX":"1/2"},{"id":"S","x":"1/4","y":"1/4"}],"segments":[{"id":"s1","from":"T","to":"P","dashed":true},{"id":"s2","from":"P","to":"R","dashed":true},{"id":"s3","from":"R","to":"Q","dashed":true},{"id":"s4","from":"Q","to":"S","dashed":true}],"callouts":[{"id":"c1","point":"P","text":"f(1)=1/2","labelKind":"MATH","direction":"N"},{"id":"c2","point":"Q","text":"f(1/2)=1/4","labelKind":"MATH","direction":"S"}]}
+  },
+  "caption":"예: a=1일 때 f(1)=1/2, 다시 f(1/2)=1/4로 두 단계 적용을 확인한다.",
+  "sourceConditions":[{"id":"c1","condition":"문제의 원본 함수 그래프는 (0,0),(2,1),(3,2),(4,5),(5,4)를 차례로 선분으로 잇는다.","mappedTo":"graphPlan"}],
+  "newVisualInformation":["정답이 아닌 예시 입력 a=1을 (1,1)에서 시작해 두 번 적용한다: 첫 적용은 파랑, 둘째는 주황.","답을 이루는 꼭짓점 (3,2)은 점·이름·좌표 라벨 없이 원본 그래프의 선분 접점으로만 남긴다."],
+  "sourceQuote":"[키포인트] 그래프에서 함수값을 읽어 두 번 연속 적용한다."
+}

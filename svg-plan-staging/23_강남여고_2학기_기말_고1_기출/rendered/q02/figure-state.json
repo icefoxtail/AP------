@@ -1,0 +1,334 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+  "ordinal": 2
+ },
+ "identity": {
+  "questionUid": "23_강남여고_2학기_기말_고1_기출|2",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:f2066f457be114d59d947617e6e9a11e533dae43a076d6ae849c3a8880234cf1",
+  "assetId": "va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7"
+ },
+ "plan": {
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+   "kind": "MAPPING",
+   "columns": [
+    {
+     "id": "X",
+     "name": "X",
+     "elements": [
+      "2"
+     ]
+    },
+    {
+     "id": "Y",
+     "name": "Y",
+     "elements": [
+      "5"
+     ]
+    },
+    {
+     "id": "Z",
+     "name": "Z",
+     "elements": [
+      "75"
+     ]
+    }
+   ],
+   "arrows": [
+    {
+     "from": {
+      "column": 0,
+      "element": 0
+     },
+     "to": {
+      "column": 1,
+      "element": 0
+     }
+    },
+    {
+     "from": {
+      "column": 1,
+      "element": 0
+     },
+     "to": {
+      "column": 2,
+      "element": 0
+     }
+    }
+   ],
+   "arrowGroups": [
+    {
+     "name": "f",
+     "from": "X",
+     "to": "Y",
+     "color": "BLUE"
+    },
+    {
+     "name": "g",
+     "from": "Y",
+     "to": "Z",
+     "color": "WARM"
+    }
+   ],
+   "highlightPaths": [
+    {
+     "path": [
+      "2",
+      "5",
+      "75"
+     ],
+     "color": "WARM"
+    }
+   ]
+  },
+  "caption": "예: x=2일 때 f를 먼저 적용하면 5, 이어 g를 적용하면 75가 된다.",
+  "sourceConditions": [
+   {
+    "id": "c1",
+    "condition": "f(x)=2x+1, g(x)=3x²이고 합성은 안쪽 함수부터 적용한다.",
+    "mappedTo": "diagram"
+   }
+  ],
+  "newVisualInformation": [
+   "예시 입력 2에서 f의 출력 5를 다음 함수 g의 입력으로 이어 합성 순서를 보인다.",
+   "예시와 원문 질문의 입력을 분리해 정답 출력을 그림에 표시하지 않는다."
+  ]
+ },
+ "model": {
+  "schemaVersion": "SET_DIAGRAM_MODEL_v1",
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     {
+      "index": 0,
+      "text": "2",
+      "math": true
+     }
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     {
+      "index": 0,
+      "text": "5",
+      "math": true
+     }
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "Z",
+    "elements": [
+     {
+      "index": 0,
+      "text": "75",
+      "math": false
+     }
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "index": 0,
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    },
+    "style": "SOLID"
+   },
+   {
+    "index": 1,
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    },
+    "style": "SOLID"
+   }
+  ],
+  "highlight": {
+   "arrows": [],
+   "elements": []
+  },
+  "arrowGroups": [
+   {
+    "index": 0,
+    "name": "f",
+    "from": 0,
+    "to": 1,
+    "color": "BLUE",
+    "arrows": [
+     0
+    ]
+   },
+   {
+    "index": 1,
+    "name": "g",
+    "from": 1,
+    "to": 2,
+    "color": "WARM",
+    "arrows": [
+     1
+    ]
+   }
+  ],
+  "highlightPaths": [
+   {
+    "cells": [
+     {
+      "column": 0,
+      "element": 0
+     },
+     {
+      "column": 1,
+      "element": 0
+     },
+     {
+      "column": 2,
+      "element": 0
+     }
+    ],
+    "arrows": [
+     0,
+     1
+    ],
+    "color": "WARM"
+   }
+  ],
+  "isFunction": true
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 152\" width=\"660\" height=\"152\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-set-diagram=\"set-diagram-figure-v1\" data-kind=\"MAPPING\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"6\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\"><title id=\"visual-title\">대응 그림</title><desc id=\"visual-desc\">두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.</desc><rect width=\"660\" height=\"152\" fill=\"#fff\"/><g data-layer=\"20\"><ellipse id=\"oval-X\" data-role=\"oval\" data-column=\"0\" cx=\"110\" cy=\"89\" rx=\"72\" ry=\"39\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"1.4\"/></g><g data-layer=\"20\"><ellipse id=\"oval-Y\" data-role=\"oval\" data-column=\"1\" cx=\"330\" cy=\"89\" rx=\"72\" ry=\"39\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"1.4\"/></g><g data-layer=\"20\"><ellipse id=\"oval-Z\" data-role=\"oval\" data-column=\"2\" cx=\"550\" cy=\"89\" rx=\"72\" ry=\"39\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"1.4\"/></g><g data-layer=\"40\"><polyline id=\"arrow-0\" data-role=\"arrow\" data-arrow=\"0\" data-from-column=\"0\" data-from-element=\"0\" data-to-column=\"1\" data-to-element=\"0\" points=\"120.25,89 140.25,89 299.75,89 319.75,89\" stroke=\"#b85c00\" stroke-width=\"2.4\" fill=\"none\"/></g><g data-layer=\"40\"><polyline id=\"arrow-1\" data-role=\"arrow\" data-arrow=\"1\" data-from-column=\"1\" data-from-element=\"0\" data-to-column=\"2\" data-to-element=\"0\" points=\"340.25,89 360.25,89 512.98,89 532.98,89\" stroke=\"#b85c00\" stroke-width=\"2.4\" fill=\"none\"/></g><g data-layer=\"41\"><polygon id=\"arrow-head-0\" data-role=\"arrow-head\" data-arrow=\"0\" points=\"319.75,89 310.75,85.4 310.75,92.6\" fill=\"#b85c00\" stroke=\"none\"/></g><g data-layer=\"41\"><polygon id=\"arrow-head-1\" data-role=\"arrow-head\" data-arrow=\"1\" points=\"532.98,89 523.98,85.4 523.98,92.6\" fill=\"#b85c00\" stroke=\"none\"/></g><g data-layer=\"90\"><g id=\"element-0-0\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"element\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-X\" data-column=\"0\" data-element=\"0\" data-tex=\"2\" data-fragment-sha=\"sha256:ed5d5d1dafb4787972e38dbd3d56d2dfe9b079cd4b54bf10befb93fdc16fe582\" data-box=\"103.75,80.675,12.5,16.65\" transform=\"translate(103.75 80.675)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12.5\" height=\"16.65\" viewBox=\"0 0 12.5 16.65\" data-outline-width=\"12.5\" data-outline-height=\"16.65\" id=\"lb-e4d38f2b5a851f5f96b3c39ff66b39eb37e0ee16b7b1291e4226f51fe0013b2e\" data-owner=\"oval-X\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.65) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mn\"><path data-c=\"32\" d=\"M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"column-name-X\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"column-name\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-X\" data-column=\"0\" data-tex=\"X\" data-fragment-sha=\"sha256:2b9059b86a1994e9c267001847dac93118cc7770acdb05c92dcc260f40ab8440\" data-box=\"99.35,23.4625,21.3,17.075\" transform=\"translate(99.35 23.4625)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21.3\" height=\"17.075\" viewBox=\"0 0 21.3 17.075\" data-outline-width=\"21.3\" data-outline-height=\"17.075\" id=\"lb-89e94fc2c93705a7bb79377031cf6abd945fe81429c9ed58a2a080608b3c4176\" data-owner=\"oval-X\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.075) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D44B\" d=\"M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"element-1-0\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"element\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-Y\" data-column=\"1\" data-element=\"0\" data-tex=\"5\" data-fragment-sha=\"sha256:92bfcb8b0550d131067430a2558c1cadededce3cb526556aa8315984ab7ff5c7\" data-box=\"323.75,80.4,12.5,17.2\" transform=\"translate(323.75 80.4)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12.5\" height=\"17.2\" viewBox=\"0 0 12.5 17.2\" data-outline-width=\"12.5\" data-outline-height=\"17.2\" id=\"lb-772587f6a76cf1f26f2c084c21b2367db2350c306b707fd4a2cb53cdaad6a179\" data-owner=\"oval-Y\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.65) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mn\"><path data-c=\"35\" d=\"M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"column-name-Y\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"column-name\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-Y\" data-column=\"1\" data-tex=\"Y\" data-fragment-sha=\"sha256:6167f7d071f713e8d527ac8ff871a1f615debec34918923e9baff8de548dbdd9\" data-box=\"320.4625,23.4625,19.075,17.075\" transform=\"translate(320.4625 23.4625)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"19.075\" height=\"17.075\" viewBox=\"0 0 19.075 17.075\" data-outline-width=\"19.075\" data-outline-height=\"17.075\" id=\"lb-c4c6e900b7acc080ace764a34bff5e2c3b4624e4fc1771ea6513f2355f105fa3\" data-owner=\"oval-Y\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.075) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D44C\" d=\"M66 637Q54 637 49 637T39 638T32 641T30 647T33 664T42 682Q44 683 56 683Q104 680 165 680Q288 680 306 683H316Q322 677 322 674T320 656Q316 643 310 637H298Q242 637 242 624Q242 619 292 477T343 333L346 336Q350 340 358 349T379 373T411 410T454 461Q546 568 561 587T577 618Q577 634 545 637Q528 637 528 647Q528 649 530 661Q533 676 535 679T549 683Q551 683 578 682T657 680Q684 680 713 681T746 682Q763 682 763 673Q763 669 760 657T755 643Q753 637 734 637Q662 632 617 587Q608 578 477 424L348 273L322 169Q295 62 295 57Q295 46 363 46Q379 46 384 45T390 35Q390 33 388 23Q384 6 382 4T366 1Q361 1 324 1T232 2Q170 2 138 2T102 1Q84 1 84 9Q84 14 87 24Q88 27 89 30T90 35T91 39T93 42T96 44T101 45T107 45T116 46T129 46Q168 47 180 50T198 63Q201 68 227 171L252 274L129 623Q128 624 127 625T125 627T122 629T118 631T113 633T105 634T96 635T83 636T66 637Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"element-2-0\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"element\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-Z\" data-column=\"2\" data-element=\"0\" data-text=\"75\" data-fragment-sha=\"sha256:e42cbf00f7498e6bdf8a073939ea88b6f77df57a3e82ed7b5a621e7ca632a58e\" data-box=\"536.975,70.9,26.05,36.2\" transform=\"translate(536.975 70.9)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26.05\" height=\"36.2\" viewBox=\"0 0 26.05 36.2\" data-outline-width=\"26.05\" data-outline-height=\"36.2\" id=\"lb-a335238890c78668be4fd71ef0af0cac2f43afae5207c7c23a8da74de11461f2\" data-owner=\"oval-Z\" data-fact-role=\"GIVEN\"><path d=\"M6.27500 29L5.25000 29Q5.37500 26.20000 5.71250 23.85000Q6.05000 21.50000 6.68750 19.45000Q7.32500 17.40000 8.30000 15.48750Q9.27500 13.57500 10.65000 11.67500L10.65000 11.67500L1.20000 11.67500L1.20000 10.85000L11.85000 10.85000L11.85000 11.37500Q10.25000 13.55000 9.20000 15.57500Q8.15000 17.60000 7.55000 19.68750Q6.95000 21.77500 6.66250 24.05000Q6.37500 26.32500 6.27500 29L6.27500 29ZM19.20000 29.32500L19.20000 29.32500Q17.80000 29.32500 16.78750 28.96250Q15.77500 28.60000 15.03750 28.06250Q14.30000 27.52500 13.75000 26.97500L13.75000 26.97500L14.32500 26.30000Q14.85000 26.85000 15.51250 27.35000Q16.17500 27.85000 17.08750 28.17500Q18 28.50000 19.25000 28.50000L19.25000 28.50000Q20.45000 28.50000 21.48750 27.85000Q22.52500 27.20000 23.15000 26.01250Q23.77500 24.82500 23.77500 23.27500L23.77500 23.27500Q23.77500 20.95000 22.56250 19.60000Q21.35000 18.25000 19.30000 18.25000L19.30000 18.25000Q18.30000 18.25000 17.52500 18.58750Q16.75000 18.92500 15.97500 19.45000L15.97500 19.45000L15.22500 19L15.87500 10.85000L23.80000 10.85000L23.80000 11.67500L16.70000 11.67500L16.10000 18.35000Q16.80000 17.92500 17.58750 17.66250Q18.37500 17.40000 19.37500 17.40000L19.37500 17.40000Q20.87500 17.40000 22.08750 18.01250Q23.30000 18.62500 24.01250 19.91250Q24.72500 21.20000 24.72500 23.22500L24.72500 23.22500Q24.72500 25.17500 23.91250 26.53750Q23.10000 27.90000 21.83750 28.61250Q20.57500 29.32500 19.20000 29.32500Z\" fill=\"#111\"/></svg></g></g><g data-layer=\"90\"><g id=\"column-name-Z\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"column-name\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-Z\" data-column=\"2\" data-tex=\"Z\" data-fragment-sha=\"sha256:d6b83e92a897ed5340faebc310a73614744be1be281fd5ec6152528861d5e0f7\" data-box=\"540.9625,23.4625,18.075,17.075\" transform=\"translate(540.9625 23.4625)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.075\" height=\"17.075\" viewBox=\"0 0 18.075 17.075\" data-outline-width=\"18.075\" data-outline-height=\"17.075\" id=\"lb-c3e4c25f82b85d3680c88b1e3e1901207a080328f54f210ecddee98b91cb2f96\" data-owner=\"oval-Z\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.075) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D44D\" d=\"M58 8Q58 23 64 35Q64 36 329 334T596 635L586 637Q575 637 512 637H500H476Q442 637 420 635T365 624T311 598T266 548T228 469Q227 466 226 463T224 458T223 453T222 450L221 448Q218 443 202 443Q185 443 182 453L214 561Q228 606 241 651Q249 679 253 681Q256 683 487 683H718Q723 678 723 675Q723 673 717 649Q189 54 188 52L185 49H274Q369 50 377 51Q452 60 500 100T579 247Q587 272 590 277T603 282H607Q628 282 628 271Q547 5 541 2Q538 0 300 0H124Q58 0 58 8Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"arrow-group-0\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"arrow-group-name\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-X\" data-group=\"0\" data-tex=\"f\" data-fragment-sha=\"sha256:b2e79719d335fc4b89e40874e3d935128ea2faf43c6f3c3e4970bbd144f2362b\" data-box=\"213.125,20.625,13.75,22.75\" transform=\"translate(213.125 20.625)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"13.75\" height=\"22.75\" viewBox=\"0 0 13.75 22.75\" data-outline-width=\"13.75\" data-outline-height=\"22.75\" id=\"lb-dcd9982a1b0b7d8821ce8d54cdbec3629da9a54791d2706c1cf704d6b699b6c3\" data-owner=\"oval-X\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 17.625) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D453\" d=\"M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"arrow-group-1\" data-label-kind=\"COORDINATE_LABEL\" data-label-role=\"arrow-group-name\" data-priority=\"0\" data-font-px=\"25\" data-owner=\"oval-Y\" data-group=\"1\" data-tex=\"g\" data-fragment-sha=\"sha256:a5866eb966c3a130d3ca1c89668b573a6ef376dfc5b25fefb495dc7f04f955a0\" data-box=\"434.0375,23.9125,11.925,16.175\" transform=\"translate(434.0375 23.9125)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"11.925\" height=\"16.175\" viewBox=\"0 0 11.925 16.175\" data-outline-width=\"11.925\" data-outline-height=\"16.175\" id=\"lb-f93e9574f77a127dee91480002549a1e7a4f8d8fce2b283a2b5a2d1552f1b8a8\" data-owner=\"oval-Y\" data-fact-role=\"DERIVED_INTERMEDIATE\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 11.05) scale(0.025)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D454\" d=\"M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z\"></path></g></g></g></g></svg></g></g></svg>",
+  "lineage": {
+   "planSha256": "sha256:6d551906f81836c4c3868a2f7ed0ed7a96a8e20a07339ed34b4cf3af4a18772a",
+   "modelSha256": "sha256:3c4cd276361a4f7791b98af221ad18361f98bdc121ef11d09257241a306e5f5e",
+   "typographyPolicySha256": "sha256:35dbfdb0595e035febf82ab8f5ea06d68911ed09764165d3633a4ae5e139de85",
+   "specSha256": "sha256:4c79ced4a52d54a47e7f2f8af79311facbe38634932209433c5c83659ab601d5",
+   "fragmentSha256s": {
+    "element-0-0": "sha256:ed5d5d1dafb4787972e38dbd3d56d2dfe9b079cd4b54bf10befb93fdc16fe582",
+    "column-name-X": "sha256:2b9059b86a1994e9c267001847dac93118cc7770acdb05c92dcc260f40ab8440",
+    "element-1-0": "sha256:92bfcb8b0550d131067430a2558c1cadededce3cb526556aa8315984ab7ff5c7",
+    "column-name-Y": "sha256:6167f7d071f713e8d527ac8ff871a1f615debec34918923e9baff8de548dbdd9",
+    "element-2-0": "sha256:e42cbf00f7498e6bdf8a073939ea88b6f77df57a3e82ed7b5a621e7ca632a58e",
+    "column-name-Z": "sha256:d6b83e92a897ed5340faebc310a73614744be1be281fd5ec6152528861d5e0f7",
+    "arrow-group-0": "sha256:b2e79719d335fc4b89e40874e3d935128ea2faf43c6f3c3e4970bbd144f2362b",
+    "arrow-group-1": "sha256:a5866eb966c3a130d3ca1c89668b573a6ef376dfc5b25fefb495dc7f04f955a0"
+   },
+   "svgSha256": "sha256:c437f035a910e19a0536ccb4d8380862e619f827bae7e2dc53ab1158e3f9531d",
+   "staticAuditSha256": "sha256:b77f89c710b59fa19918ac1757081b963cdc89e313fd14fd70ca1a47f9942285",
+   "renderedLayoutSha256": "sha256:f0d82118a4cf736e9decd1267a6ca637bb4e5d943748771a991fc7e2532a1d26"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 298.109375,
+    "height": 68.65549242424242
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "productionAuthorized": false
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:c437f035a910e19a0536ccb4d8380862e619f827bae7e2dc53ab1158e3f9531d",
+   "policySha256": "sha256:35dbfdb0595e035febf82ab8f5ea06d68911ed09764165d3633a4ae5e139de85",
+   "candidateBankSha256": "sha256:3d2c2aafe16785291b457fa327cfba437e982484af09b49914c07335017e88b2",
+   "assetPath": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/assets/images/23_강남여고_2학기_기말_고1_기출/q02-solution.svg",
+   "assetResponseSha256": "sha256:c437f035a910e19a0536ccb4d8380862e619f827bae7e2dc53ab1158e3f9531d",
+   "archiveRowSha256": "sha256:70aa18abfd591cc2f3c5a799c3dd82fc94420c5a94993f68dd7814f7aaab6613",
+   "screenshotSha256s": {
+    "image": "sha256:b9c675437a1fd54e56435ef5296d7057eab7a4bd2960a280aab63e838391b391",
+    "context": "sha256:36cd9ea972cd06545a2cb25195ad9a90baabf46b4c9ce67da45434232d096353",
+    "page": "sha256:f24edcdda983c6d515b3ad3d2d8b7b676e33d86005eb59e41377a7bd575e96ac"
+   },
+   "matrixSha256": "sha256:a8322541cf76c140118cfe80b559518e8b06d269df5685cd77b87660faa49ed6",
+   "engineSha256": "sha256:3631a40f445c4dedda408fb4dfe15ca51ad94f13ec4a6cadd198fdbf25c745e8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-03731c9b",
+   "asset": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/assets/images/23_강남여고_2학기_기말_고1_기출/q02-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/candidates/23_강남여고_2학기_기말_고1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7-sol-desktop-va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7.png",
+    "context": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7-sol-desktop-va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7-context.png",
+    "page": ".tmp/archive/pilot-capture-03731c9b/23_강남여고_2학기_기말_고1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-a64ea503ef9efef436e365de3eafba1b88da2df1ffef879059d99be6e4dfbdb7-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+    "bytes": 42662,
+    "sha256": "sha256:4024f5367b7754a73da01371d7f4100a4755afe1a0d22d1117d967a8522a20f5"
+   },
+   "originalQuestionSha256": "sha256:f86b21c990460cf9775bf442c233ff9abe745390a6bbf271d993680ab196f6c5",
+   "questionCount": 24,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 2
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4516808712121212,
+  "expectedDisplayScale": 0.4516808712121212,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

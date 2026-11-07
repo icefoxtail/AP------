@@ -1,0 +1,8 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","curves":[{"id":"f","kind":"LINE","coefficients":["1","2"],"domain":["-5","5"],"color":"BLUE","label":"f(x)"},{"id":"g","kind":"LINE","coefficients":["-1/2","1/2"],"domain":["-5","5"],"color":"WARM","label":"g(x)"},{"id":"identity","kind":"LINE","coefficients":["0","1"],"domain":["-5","5"],"color":"GREEN","style":"DASHED","label":"y=x"}],"viewport":[-5,5,-5,5],"axisTickValues":{"x":[],"y":[]},"overlays":{"points":[{"id":"P","x":"0","y":"1"},{"id":"Q","x":"1","y":"0"}]}},
+  "caption":"예: f(x)=2x+1과 그 역함수 g(x)=(x−1)/2의 그래프는 y=x에 대하여 대칭이다.",
+  "sourceConditions":[{"id":"c1","condition":"원문은 일차함수와 역함수의 대응을 이용해 두 계수를 구한다.","mappedTo":"graphPlan.curves.identity"}],
+  "newVisualInformation":["예시 일차함수와 역함수의 대칭을 같은 축척으로 보인다.","대응점 P(0,1)와 Q(1,0)는 이름만 표시하고 수치 좌표는 숨긴다."],
+  "sourceQuote":"풀이 방향: $x$를 $y$에 대한 식으로 풀어 $f^{-1}(x)$와 계수를 비교한다."
+}
