@@ -60,7 +60,7 @@
       }
       // 대각선 TL-BR 로 나누기: 윗변 쪽 삼각형이 가로로 떼어짐
       const gap = 1.6 * ease(C.problem ? 0 : C.review ? (C.step >= 2 ? 1 : 0) : t);
-      FIT(b, { x0: 0, x1: Math.max(B, p + a) + (C.problem ? 0 : 1.6), y0: -H, y1: 0 }, { b: C.problem ? 76 : 122 });
+      FIT(b, { x0: 0, x1: Math.max(B, p + a) + (C.problem ? 0 : 1.6), y0: -H, y1: 0 }, { b: C.problem ? 76 : 122, ...(!b.thumb && b.W < 560 ? { r: 62 } : {}) });
       const t1 = [BL, BR, TL], t2 = [TL, TR, BR].map((q) => pt(q.x + gap, q.y));
       fillPoly(b, t1, 'sky', 0.26); poly(b, t1, 'ink', 3.6);
       fillPoly(b, t2, C.problem && M.q === 2 ? 'amber' : 'green', 0.3); poly(b, t2, 'ink', 3.6);

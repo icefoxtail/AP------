@@ -295,7 +295,7 @@
       const t = C.problem || C.review ? 1 : C.t, off = (1 - seg01(t, 0, 0.8)) * 1.3;
       const sh = (pts) => pts.map((p) => pt(p.x + off, p.y)), pM = sh(polyM), Qs = pt(Q.x + off, Q.y), As = pt(A.x + off, A.y), Bs = pt(B.x + off, B.y);
       const all = polyN.concat(pM), box = bboxOf(all);
-      fit(b, box, { t: 52, b: 100, l: 40, r: 40 });
+      fit(b, box, { t: 52, b: !b.thumb && b.insets.bottom === 0 ? 140 : 100, l: 40, r: 40 });
       const done = off < 0.001, st = C.step;
       fillPoly(b, polyN, 'sky', 0.14); fillPoly(b, pM, 'green', 0.14);
       poly(b, polyN, 'ink', 3.4); poly(b, pM, 'ink', 3.4);
