@@ -9,7 +9,7 @@ export async function probeNativeDrag(page, canvas, settle, handleId) {
     const point = await page.evaluate(id => {
       const h = lab.board.handles.find(h => h.id === id);
       if (!h) return null;
-      const model = Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['step', 'part', 'revealed', 'playing'].includes(k)));
+      const model = Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['step', 'part', 'revealed', 'playing', 'dragging'].includes(k)));
       return { x:h.x, y:h.y, W:lab.board.W, H:lab.board.H, state:JSON.stringify(model) };
     }, handleId);
     const box = await canvas.boundingBox();
@@ -26,7 +26,7 @@ export async function probeNativeDrag(page, canvas, settle, handleId) {
     try { await page.mouse.move(targetX, targetY, {steps:6}); }
     finally { await page.mouse.up(); }
     await settle();
-    const changed = point.state !== await page.evaluate(() => JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['step', 'part', 'revealed', 'playing'].includes(k)))));
+    const changed = point.state !== await page.evaluate(() => JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['step', 'part', 'revealed', 'playing', 'dragging'].includes(k)))));
     attempts.push({ direction:direction === 1 ? 'primary' : 'opposite', acquired, changed });
     if (!acquired || changed) break;
   }

@@ -10,8 +10,8 @@ function fixture({ initial=0.1, acquire=true, update=true, animate=false } = {})
   let cursor={x:0,y:0}, origin=null, starts=0, releases=0;
   const page={ evaluate:async(fn,arg)=>vm.runInNewContext(`(${fn.toString()})(arg)`,{lab,arg}),mouse:{
     move:async(x,y)=>{cursor={x,y};if(origin&&lab.board.dragging&&update)lab.s.m=Math.max(-0.1,Math.min(0.1,origin.m+(origin.y-y)/200));},
-    down:async()=>{starts++;origin={...cursor,m:lab.s.m};if(acquire)lab.board.dragging={id:'slope'};},
-    up:async()=>{releases++;origin=null;lab.board.dragging=null;}
+    down:async()=>{starts++;origin={...cursor,m:lab.s.m};if(acquire){lab.board.dragging={id:'slope'};lab.s.dragging=true;}},
+    up:async()=>{releases++;origin=null;lab.board.dragging=null;if(acquire)lab.s.dragging=false;}
   }};
   const canvas={scrollIntoViewIfNeeded:async()=>{},boundingBox:async()=>({x:0,y:0,width:390,height:455})};
   const settle=async()=>{if(animate){lab.s.playing=!lab.s.playing;lab.s.step++;}};
@@ -35,6 +35,7 @@ test('an unacquired handle remains a failure without a retry',async()=>{
 test('two no-op drags and unrelated reveal/play state changes cannot pass',async()=>{
   const f=fixture({update:false,animate:true});const r=await probeNativeDrag(f.page,f.canvas,f.settle,'slope');
   assert.equal(r.pass,false);assert.equal(r.changed,false);assert.equal(r.attempts.length,2);assert.equal(f.lab.s.m,0.1);
+  assert.equal(f.lab.s.dragging,false); // Absent initially; the shell adds it on the first native drag.
 });
 test('a disappearing handle fails without synthetic state or mouse calls',async()=>{
   const f=fixture();f.lab.board.handles=[];const r=await probeNativeDrag(f.page,f.canvas,f.settle,'slope');
