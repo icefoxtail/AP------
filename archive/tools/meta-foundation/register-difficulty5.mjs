@@ -100,7 +100,14 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
     if (verifyProjection) {
       const q = bank[n - 1];
-      if (q?.id !== undefined && q.id !== n) fail("source question id mismatch #" + n);
+      if (q?.id !== undefined && q.id !== n) {
+        // Some banks have stable string IDs (e.g. q01/s01) and a separate display number.
+        // Accept them only when the canonical identity, ordinal and unique source ID agree.
+        const stringId = typeof q.id === "string" && q.id.length > 0;
+        if (!stringId || q.number !== n || typeof idr.sourceQuestionNo !== "string" ||
+            q.id !== idr.sourceQuestionNo || bank.filter(row => row?.id === q.id).length !== 1)
+          fail("source question id mismatch #" + n);
+      }
       // Same binding rule as build-archive2-catalog: "exact" = row approved against these bytes; "content" = only
       // answer/solution bytes changed; "stale" = stem/choices/image changed, so consumers ignore the row's meta hint.
       // Stale binding is pre-existing fingerprint debt, not something this registrar repairs: it is reported, not hidden.
