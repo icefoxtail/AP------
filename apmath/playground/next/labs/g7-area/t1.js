@@ -53,8 +53,8 @@
       } else fillPoly(b, [pt(0, -H), pt(W, -H), pt(W, 0), pt(0, 0)], 'sky', 0.14);
       poly(b, [pt(0, -H), pt(W, -H), pt(W, 0), pt(0, 0)], 'ink', 3.6);
       const c0 = pt(W / 2, -H / 2);
-      dim(b, pt(0, 0), pt(W, 0), `가로 ${W}cm`, { ref: c0, color: 'sky' });
-      dim(b, pt(0, 0), pt(0, -H), `세로 ${H}cm`, { ref: c0, color: 'sky' });
+      dim(b, pt(0, 0), pt(W, 0), `${W}cm`, { ref: c0, color: 'sky', curve: true });
+      dim(b, pt(0, 0), pt(0, -H), `${H}cm`, { ref: c0, color: 'sky', curve: true });
       if (C.problem) { T(b, c0, '넓이 ?', { size: 22, color: 'amber' }); return; }
       if (C.review && C.step < 1) foot(b, pt(W / 2, 0), '한 칸부터 차례로 세어 보세요', 'amber');
       else if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');

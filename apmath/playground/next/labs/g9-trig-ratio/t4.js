@@ -31,7 +31,7 @@
     const g = rtGeo(M.sn, M.cs), st = C.step;
     fit(b, rtBox(g), { t: 46, b: 56, l: 64, r: 64 });
     const show = (n) => st >= n || st === 99;
-    drawRT(b, g, { names: { A: 'A', B: 'B', C: 'C' }, fill: 'sky', fa: 0.08, col: show(2) ? col : null, side: { a: { t: show(o.aStep) ? `a = ${dv(M.a)}` : o.aGiven ? dv(M.a) : 'a', c: col.a }, b: { t: show(o.bStep) ? `b = ${dv(M.b)}` : o.bGiven ? dv(M.b) : 'b', c: col.b }, c: { t: o.cGiven ? dv(M.c) : show(o.cStep || 2) ? `c = ${dv(M.c)}` : 'c', c: col.c } }, angA: { t: `${M.A}°`, c: 'amber' } });
+    drawRT(b, g, { names: { A: 'A', B: 'B', C: 'C' }, fill: 'sky', fa: 0.08, col: show(2) ? col : null, curveDim: true, side: { a: { t: show(o.aStep) ? `a = ${dv(M.a)}` : o.aGiven ? dv(M.a) : 'a', c: col.a }, b: { t: show(o.bStep) ? `b = ${dv(M.b)}` : o.bGiven ? dv(M.b) : 'b', c: col.b }, c: { t: o.cGiven ? dv(M.c) : show(o.cStep || 2) ? `c = ${dv(M.c)}` : 'c', c: col.c } }, angA: { t: `${M.A}°`, c: 'amber' } });
     const yb = Math.max(g.A.y, g.C.y);
     T(b, pt((g.A.x + g.C.x) / 2, yb), o.formula(M, st), { dy: 54, size: 16, color: 'amber' });
   }

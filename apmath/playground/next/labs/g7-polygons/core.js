@@ -116,6 +116,14 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dist = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
+      // 좁은 각 밖으로 돌려 놓은 값은 실제 호에 연결해 이웃 각과 혼동하지 않게 합니다.
+      const sg = d < 0 ? -1 : 1; let at = (sg * (la - a0)) % (PI * 2); if (at < 0) at += PI * 2;
+      if (!o.noMark && !b.thumb && !b._bbox && b.leader && (o.leader || at > Math.abs(d) + 1e-6)) {
+        const markerR = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight ? Math.min(r * .62, 17) * Math.SQRT2 / k : rw;
+        const anchor = pt(V.x + Math.cos(am) * markerR, V.y + Math.sin(am) * markerR), pos = b.toS(V);
+        const metrics = b.annotationSize ? b.annotationSize(o.label, { size, weight: 800 }) : { width: textW(o.label, size) + 6, height: size + 6 };
+        b.leader(b.toS(anchor), { x: pos.x + Math.cos(la) * dist, y: pos.y + Math.sin(la) * dist }, { ...metrics, px: true, color: 'muted', alpha: Math.min(.78, o.alpha == null ? 1 : o.alpha), ref: o.ref });
+      }
       T(b, V, o.label, { dx: Math.cos(la) * dist, dy: Math.sin(la) * dist, color: o.labelColor || col, size, alpha: o.alpha });
     }
     return { deg, mid: am };

@@ -114,7 +114,17 @@
       },
       /** 점 p의 바깥쪽(각도 deg 방향)으로 화면 off 픽셀 떨어진 글자 */
       out(p, deg_, str, o = {}, off = 22) {
-        return g.text(p, str, { dx: Math.cos(deg_ * D2R) * off, dy: -Math.sin(deg_ * D2R) * off, ...o });
+        const nx = Math.cos(deg_ * D2R), ny = -Math.sin(deg_ * D2R), size = o.size || 15;
+        const metrics = b.annotationSize ? b.annotationSize(str, { size, weight: o.weight || 800 }) : { width: String(str).length * size * .65 + 6, height: size + 6 };
+        const distance = Math.max(off, Math.abs(nx) * metrics.width / 2 + Math.abs(ny) * metrics.height / 2 + 8);
+        const opts = { dx: nx * distance, dy: ny * distance, ...o };
+        // 호 바깥의 긴 글자는 실제 호 중점까지 짧은 실선으로 연결합니다.
+        // 원호와 헷갈릴 추가 곡선 치수는 만들지 않습니다.
+        if (!b.thumb && !b._bbox && b.leader && (off >= 34 || distance > off + 3 || o.leader)) {
+          const at = b.toS(b._P(P(p)));
+          b.leader(P(o.leaderAnchor || p), b.toW(at.x + opts.dx, at.y + opts.dy), { ...metrics, color: 'muted', alpha: Math.min(.78, o.alpha == null ? 1 : o.alpha), ref: o.ref, part: o.part });
+        }
+        return g.text(p, str, opts);
       },
       tick(p, q, o) { b.ticks(P(p), P(q), o); return g; },
       right(v, p1, p2, o) { b.right(P(v), P(p1), P(p2), o); return g; },
@@ -567,7 +577,7 @@
       }
       if (sel === 3) g.text(mid(A, C), 'AC', { color: 'rose', ref: 3, dx: 28, dy: -4 });
       if (sel === 2) {
-        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2 }, 34);
+        g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2, leaderAnchor: g.pol(O, R, a0 + ph) }, 34);
         g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2 }, 62);
       }
       if (sel === 4) {

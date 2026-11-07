@@ -167,9 +167,9 @@
   // 분수(\frac{…}{…})가 들어간 글의 가로 폭 어림
   const textW2 = (t, size) => textW(String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, a, d) => (a.length > d.length ? a : d) + ' '), size);
   function T(b, p, str, o = {}) {
-    if (str == null || str === '') return;
+    if (str == null || str === '' || (o.alpha != null && o.alpha <= 0)) return;
     str = String(str).replace(/=\s*≈\s*/g, '≈ '); // "h = ≈4.6" 처럼 기호가 겹치지 않게
-    let dx = o.dx || 0, dy = o.dy || 0;
+    let dx = o.dx || 0, dy = o.dy || 0, labelBox;
     // 글자가 무대 밖으로 나가거나 다른 글자와 겹치면 가까운 빈 곳으로 밀어 놓는다(휴대폰에서 잘림·겹침 방지)
     if (!b.thumb && b.W && b.toS && b._P) {
       try {
@@ -207,15 +207,21 @@
           x = cand[0].x; y = cand[0].y;
         }
         dx = x - sp.x; dy = y - sp.y;
+        labelBox = { x: x + ax + w / 2, y, width: w, height: h };
         boxes.push({ x0: x + ax, x1: x + ax + w, y0: y - h / 2, y1: y + h / 2, s: str });
       } catch (e) { /* 보정 없이 그린다 */ }
+    }
+    // Keep the geometric target when collision avoidance moves the label.
+    if (!b.thumb && o.leaderAnchor && b.leader && (o.leader || Math.hypot(dx - (o.dx || 0), dy - (o.dy || 0)) > 10)) {
+      const sp = b.toS(b._P(p)), box = labelBox || { x: sp.x + dx, y: sp.y + dy, ...b.annotationSize(str, { size: o.size || 16, weight: 800 }) };
+      b.leader(b.toS(b._P(o.leaderAnchor)), box, { px: true, width: box.width, height: box.height, alpha: o.alpha == null ? .72 : o.alpha, ref: o.ref });
     }
     b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
   }
   function tagOut(b, p, c, str, o = {}) {
     const u = unit(sub(p, c)), size = o.size || 17, w = textW2(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(u.x) * (w / 2) + Math.abs(u.y) * size * 0.55 + g;
-    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d });
+    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d, leaderAnchor: p });
   }
   function vtx(b, p, c, name, o = {}) {
     b.point(p, { color: o.color || 'ink', r: o.r || 4.5 });
@@ -227,9 +233,18 @@
     let n = unit({ x: -(q.y - p.y), y: q.x - p.x });
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     if (o.flip) n = mul(n, -1);
+    if (o.curve && b.curveDim && !b.thumb) {
+      // Let the unit's collision layout place the label, retaining the curve anchor.
+      const original = b.text;
+      b.text = (at, value, options) => { b.text = original; try { return T(b, at, value, options); } finally { b.text = original; } };
+      try { b.curveDim(p, q, str, { side: n, size, weight: 800, color: o.color || 'ink', alpha: o.alpha, ref: o.ref, gap: 5 }); }
+      finally { b.text = original; }
+      return;
+    }
     const w = textW2(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
-    T(b, lerp(p, q, o.f == null ? 0.5 : o.f), str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    const anchor = lerp(p, q, o.f == null ? 0.5 : o.f);
+    T(b, anchor, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: anchor });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V0, A, B, o = {}) {
@@ -250,9 +265,12 @@
     if (o.label) {
       const size = o.size || 16;
       const need = (textW2(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
-      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
-      const la = am + (o.labelRot || 0) * DEG;
-      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      const tight = !b.thumb && deg < 35 && !o.noMark, outside = tight && o.labelDist == null && o.labelRot == null;
+      const dst = o.labelDist != null ? o.labelDist : outside ? r + 26 : Math.max(r + 14, Math.min(need, r + 70));
+      const la = am + (outside ? (d < 0 ? 1 : -1) * .72 : (o.labelRot || 0) * DEG);
+      const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
+      const anchor = square ? add(V0, add(mul(unit(sub(A, V0)), corner), mul(unit(sub(B, V0)), corner))) : pt(V0.x + Math.cos(am) * rw, V0.y + Math.sin(am) * rw);
+      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: tight });
     }
     return { deg, mid: am };
   }
@@ -303,7 +321,7 @@
     else [A, B, C].forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
     [[B, C, 'a'], [C, A, 'b'], [A, B, 'c']].forEach(([p, q, k]) => {
       const sd = S.side && S.side[k];
-      if (sd && sd.t != null && sd.t !== '') sideTag(b, p, q, cen, sd.t, { color: sd.c || col[k] || 'ink', size: sd.size || 17, gap: sd.gap, flip: sd.flip, f: sd.f });
+      if (sd && sd.t != null && sd.t !== '') sideTag(b, p, q, cen, sd.t, { color: sd.c || col[k] || 'ink', size: sd.size || 17, gap: sd.gap, flip: sd.flip, f: sd.f, curve: sd.curve || S.curveDim });
       const tk = S.ticks && S.ticks[k]; if (tk) tick(b, p, q, tk.n || tk, tk.color || 'amber');
     });
   }

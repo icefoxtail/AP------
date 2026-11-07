@@ -70,10 +70,10 @@
       T(b, Mm, 'M', d > 0 ? { dy: 18, size: 17 } : { dx: 16, dy: 14, size: 17 });
       if (pr && q.kind === 2) segTag(b, O, A, 'x', { away: Mm, ...X(b) }); else rx(b, O, A, cv(R), Mm);
       if (d > 0) { if (pr && q.kind === 0) segTag(b, O, Mm, 'x', { toward: B, gap: 11, ...X(b) }); else rx(b, O, Mm, cv(d), B, 'green'); }
-      if (pr) T(b, Mm, q.kind === 1 ? 'AB=x' : `AB=${2 * q.am}`, { dy: 42, size: S(b) + (q.kind === 1 ? 3 : 0), color: q.kind === 1 ? 'rose' : 'sky' });
+      if (pr) T(b, Mm, q.kind === 1 ? 'AB=x' : `AB=${2 * q.am}`, { dy: 42, size: S(b) + (q.kind === 1 ? 3 : 0), color: q.kind === 1 ? 'rose' : 'sky', leaderAnchor: Mm, leader: true });
       else {
-        if (ex || st >= 3) { T(b, lerp(A, Mm, 0.5), 'AM=' + cv(g.h), { dy: 40, size: S(b), color: 'green' }); T(b, lerp(Mm, B, 0.5), 'BM=' + cv(g.h), { dy: 40, size: S(b), color: 'green' }); }
-        if (st >= 4) T(b, Mm, 'AB=' + cv(2 * g.h), { dy: 64, size: S(b) + 1, color: 'rose' });
+        if (ex || st >= 3) { T(b, lerp(A, Mm, 0.5), 'AM=' + cv(g.h), { dy: 40, size: S(b), color: 'green', leaderAnchor: lerp(A, Mm, .5), leader: true }); T(b, lerp(Mm, B, 0.5), 'BM=' + cv(g.h), { dy: 40, size: S(b), color: 'green', leaderAnchor: lerp(Mm, B, .5), leader: true }); }
+        if (st >= 4) T(b, Mm, 'AB=' + cv(2 * g.h), { dy: 64, size: S(b) + 1, color: 'rose', leaderAnchor: Mm, leader: true });
       }
     },
     steps: (M) => [

@@ -64,7 +64,18 @@
     }
     if (o.text) {
       const size = (o.size || 17) * (b.W < 560 ? 0.92 : 1), tw = textW(o.text, size), bis = d1 + w / 2, u = dir(o.flip ? -bis : bis); // flip: 가로선 반대쪽(평행선 바깥)에 글자
-      if (o.at) T(b, V, o.text, { dx: o.at.dx, dy: o.at.dy, color: o.tcolor || col, size: o.size || 17 });
+      if (o.at) {
+        // 좁은 접힌 각의 글자를 바깥에 둔 경우, 실제 각 표시와 연결합니다.
+        // 꼭짓점이나 이등분선 끝이 아닌 호의 중점(직각이면 네모의 모서리)이 대상입니다.
+        if (!o.bare && b.leader) {
+          const anchor = Math.abs(w - 90) < 1e-6 && !o.noRight
+            ? add(V, mul(add(dir(d1), dir(d1 + w)), 15 / k))
+            : at(V, bis, rw);
+          const box = b.annotationSize ? b.annotationSize(o.text, { size, weight: 800 }) : { width: tw + 6, height: size + 6 };
+          b.leader(anchor, { x: V.x + o.at.dx / k, y: V.y + o.at.dy / k }, { ...box, color: 'muted', alpha: 0.78 });
+        }
+        T(b, V, o.text, { dx: o.at.dx, dy: o.at.dy, color: o.tcolor || col, size: o.size || 17 });
+      }
       else {
         // 글자 상자가 호에 닿지 않을 만큼 띄우고(Dc), 각이 좁으면 각 안쪽으로 조금 더 밀어 냅니다(최대 1.25배)
         const Dc = rpx + 8 + Math.abs(u.x) * tw / 2 + Math.abs(u.y) * size * 0.55;

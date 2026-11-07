@@ -416,16 +416,16 @@
       T(b, O, 'O', { dx: 0, dy: 16, size: 16 });
       if (pr) {
         ang(b, D, A, Cc, { color: 'sky', rings: 1, label: dgx(q.th), r: 32, size: S(b) });
-        if (q.kind === 0) { T(b, mp(O, R + 1.0, g.dd / 2), (q.k === 1 ? "π" : `${q.k}π`), { size: S(b), color: 'sky', noBig: true }); T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' }); }
-        if (q.kind === 1) T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' });
+        if (q.kind === 0) { T(b, mp(O, R + 1.0, g.dd / 2), (q.k === 1 ? "π" : `${q.k}π`), { size: S(b), color: 'sky', noBig: true, leaderAnchor: mp(O, R, g.dd / 2), leader: true }); T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose', leaderAnchor: mp(O, R, 90), leader: true }); }
+        if (q.kind === 1) T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose', leaderAnchor: mp(O, R, 90), leader: true });
         if (q.kind === 2) ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 26, size: S(b) + 3 });
         return;
       }
       ang(b, D, A, Cc, { color: 'sky', rings: 1, label: dgx(g.th), r: 32, size: S(b) });
       if (ex || st >= 2) ang(b, A, B, D, { color: 'sky', rings: 1, label: dgx(g.th), r: 30, size: S(b) - 1 });
-      if (ex || st >= 1) T(b, mp(O, R + 1.0, 180 - g.dd / 2), dgx(2 * g.th), { size: S(b) - 1, color: 'sky', noBig: true });
-      if (ex || st >= 2) T(b, mp(O, R + 1.0, g.dd / 2), dgx(2 * g.th), { size: S(b) - 1, color: 'sky', noBig: true });
-      if (ex || st >= 3) T(b, mp(O, R + 1.0, 90), dgx(g.arcCD), { size: S(b) - 1, color: 'rose', noBig: true });
+      if (ex || st >= 1) T(b, mp(O, R + 1.0, 180 - g.dd / 2), dgx(2 * g.th), { size: S(b) - 1, color: 'sky', noBig: true, leaderAnchor: mp(O, R, 180 - g.dd / 2), leader: true });
+      if (ex || st >= 2) T(b, mp(O, R + 1.0, g.dd / 2), dgx(2 * g.th), { size: S(b) - 1, color: 'sky', noBig: true, leaderAnchor: mp(O, R, g.dd / 2), leader: true });
+      if (ex || st >= 3) T(b, mp(O, R + 1.0, 90), dgx(g.arcCD), { size: S(b) - 1, color: 'rose', noBig: true, leaderAnchor: mp(O, R, 90), leader: true });
     },
     steps: (M) => [
       `∠ADC=${fmtN(M.g.th)}°는 호 AC에 대한 원주각이므로 호 AC의 크기는 $2\\times ${fmtN(M.g.th)}^{\\circ}=${fmtN(2 * M.g.th)}^{\\circ}$.`,
