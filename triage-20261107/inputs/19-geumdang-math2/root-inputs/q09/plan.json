@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "곡선 $y=x^2-2x$와 $x$축",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -2,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "10"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "8"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "축 위와 아래의 영역을 각각 양수 넓이로 더하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "축 위와 아래의 영역을 각각 양수 넓이로 더하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "축 위와 아래의 영역을 각각 양수 넓이로 더하는 관계."
+  ]
+}
