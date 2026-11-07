@@ -364,7 +364,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 2-B · ⚖️ 최댓값을 갖는 점이 바뀌는 경계 — 구간의 중점 p = $\\frac{0+2}{2}$ = 1`,
             hint: `아래로 볼록할 때 <strong>최댓값은 대칭축 $x = p$ 로부터 더 멀리 떨어진 구간의 끝점</strong>에서 나옵니다! 따라서 최댓값은 3구간이 아니라 <strong>구간의 정중앙 $x = 1$ 딱 하나를 경계</strong>로 <strong class="text-amber-300">$p < 1$ 이면 $f(2)$가 최대</strong>, <strong class="text-pink-300">$p > 1$ 이면 $f(0)$이 최대</strong>가 됩니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 p < 1 (오른쪽 끝 최대) 보기' : '🎬 대칭축이 구간의 중점(p=1)을 넘을 때 최댓값을 갖는 점이 바뀌는 모습 보기',
+            actionTxt: state.fold > 0.5 ? '대칭축 왼쪽으로 이동' : '대칭축 오른쪽으로 이동',
             dim1Name: '최댓값 분할 경계선', dim2Name: `현재(p=${fmtNum(curP)}) 최댓값 위치`,
             val1Txt: '구간의 중점 p = 1', val2Txt: Math.abs(curP - 1) < 1e-9 ? 'p=1: 양 끝 f(0), f(2)가 함께 최대!' : isLeftMax ? '왼쪽 끝 f(0)이 최대!' : '오른쪽 끝 f(2)가 최대!',
             parts: [
@@ -575,7 +575,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 4-B · 🌟 근의 분리 유형 ②: 두 실근 사이에 p가 있을 때 (α < p < β) — f(p) < 0 하나만 확인하면 됨!`,
             hint: `왜 두 근 사이에 $p$가 있을 때는 판별식 $D$나 대칭축을 따지지 않고 <strong><span class="text-amber-300">$f(p) < 0$</span> 하나만 써도 될까요?</strong> 아래로 볼록한 포물선이 $x=p$ 에서 $x$축 아래에 있으면, 양쪽으로 위로 올라가면서 **왼쪽에서 한 번, 오른쪽에서 한 번 $x$축과 만날 수밖에 없기 때문**입니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 대칭축이 움직여도 f(p)<0 이면 p가 두 근 사이에 있음을 확인',
+            actionTxt: '대칭축 위치 바꾸기',
             dim1Name: '필요충분조건 (단 1개!)', dim2Name: '판별식 D와 대칭축은?',
             val1Txt: 'f(p) < 0 (아래로 볼록 기준)', val2Txt: '자동 성립 & 무관 (조사 불필요!)',
             parts: [
@@ -834,7 +834,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return {
         badge: `탐구 6-E · 📐 포물선 y = x² - 2x + k 가 두 점 A(0, 1), B(3, 4)를 잇는 '선분 AB'와 만날 조건!`,
         hint: `직선 전체가 아니라 **끊어진 선분 $AB$ ($0 \\le x \\le 3$ 구간에서의 직선 $y = x + 1$)** 와 포물선이 만날 때는, 방정식 $x^2 - 3x + (k - 1) = 0$ (즉 $x^2 - 3x + 1 = 2 - k$)이 $0 \\le x \\le 3$ 범위에서 실근을 가질 조건으로 풉니다!`,
-        actionTxt: state.fold > 0.5 ? '🎬 두 점에서 만나는 범위 보기' : '🎬 포물선을 위아래로 움직이며 접할 때(k=13/4)와 양 끝점을 지날 때 보기',
+        actionTxt: state.fold > 0.5 ? '포물선을 아래로 이동' : '포물선을 위로 이동',
         dim1Name: '접하는 순간 (최대 k)', dim2Name: '양 끝점을 지남 (한 점 또는 두 점)',
         val1Txt: 'D = 0 ➔ k = 13/4 (3.25)', val2Txt: 'A(0,1) 통과 k=1 / B(3,4) 통과 k=1',
         parts: [

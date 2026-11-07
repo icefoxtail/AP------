@@ -16,6 +16,7 @@
   const APLab = window.APLab;
   if (!APLab) return;
   const clamp = APLab.clamp;
+  const nameOn = window.APL_CQ_OLD.H.nameOn;
   const T = (s) => '$' + s + '$';
   const fmt = (v, d = 2) => APLab.fmt(v, d);
   const EPS = 1e-7;
@@ -180,8 +181,8 @@
     const box = n1Box(P);
     stage(b, s, 'n1|' + tab + '|' + (ex ? 'base' : V.key), box);
     drawPieces(b, P, { x0: box.x[0] - 0.5, x1: box.x[1] + 0.5 });
-    b.text([P.be + 1.5, P.f(P.be + 1.5) + 0.5], 'f', { color: 'sky', size: 14, weight: 800 });
-    b.text([P.c, Math.min(P.d + 0.55, box.y[1] - 0.6)], 'g', { color: 'rose', size: 14, weight: 800 });
+    nameOn(b, box, P.f, P.be + 1.5, 'f', { color: 'sky', size: 14, weight: 800 });
+    nameOn(b, box, P.g, P.c, 'g', { color: 'rose', size: 14, weight: 800 });
     // 이어 붙인 두 점: 지문의 α, β(x좌표)를 점 이름으로 늘 보여 줍니다. 좌표값은 풀이에서 구하는 값이라 문제 탭과 풀이 전에는 숨깁니다.
     const coords = shown(tab, s, 1) && tab !== 'problem';
     dot(b, [P.al, P.pa], 'ink', coords ? `α (${sgnTxt(P.al)}, ${sgnTxt(P.pa)})` : 'α', -10, -13, { align: 'right', hollow: true, size: 14 });
@@ -282,8 +283,8 @@
     stage(b, s, 'n2|' + tab + '|' + (ex ? 'base' : V.key), box);
     b.plot(P.f, { color: 'sky', width: 3.6, glow: true });
     b.plot(P.g, { color: 'rose', width: 3.6, glow: true });
-    b.text([P.be + 1.1, P.f(P.be + 1.1) + 0.45], 'f', { color: 'sky', size: 14, weight: 800 });
-    b.text([P.al - 1.1, P.g(P.al - 1.1) + 0.5], 'g', { color: 'rose', size: 14, weight: 800 });
+    nameOn(b, box, P.f, P.be + 1.1, 'f', { color: 'sky', size: 14, weight: 800 });
+    nameOn(b, box, P.g, P.al - 1.1, 'g', { color: 'rose', size: 14, weight: 800 });
     if (shown(tab, s, 2) && tab !== 'problem') {
       dot(b, [P.al, P.pa], 'violet', `(${sgnTxt(P.al)}, ${sgnTxt(P.pa)})`, -10, -13, { align: 'right', hollow: true });
       dot(b, [P.be, P.pb], 'violet', `(${sgnTxt(P.be)}, ${sgnTxt(P.pb)})`, 10, -13, { hollow: true });
