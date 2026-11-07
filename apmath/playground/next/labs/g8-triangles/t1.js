@@ -33,7 +33,7 @@
     trLa: P('꼭지각 ∠A', 40, 140, 2, 80, { color: 'amber', hint: '꼭짓점 A를 가로로 끌어도 돼요', format: (v) => v + '°' }),
     trPa: P('꼭지각 ∠A', 40, 120, 2, 60, { color: 'sky', format: (v) => v + '°' }),
     trPt: P('∠PBC', 10, 40, 1, 20, { color: 'amber', hint: '점 P를 AD 위에서 가로로 끌어도 돼요', format: (v) => v + '°' }),
-    trEx: P('x', 2, 9, 1, 5, { color: 'amber', hint: 'x를 바꿔 두 변이 같아지는 곳을 찾아보세요', format: (v) => String(v) })
+    trExprX: P('x', 2, 9, 1, 5, { color: 'amber', hint: 'x를 바꿔 두 변이 같아지는 곳을 찾아보세요', format: (v) => String(v) })
   };
 
   // 꼭지각 a(짝수), 한 변 1: A 위쪽, BC 가로, D = BC의 중점(원점)
@@ -510,15 +510,15 @@
   const i7 = {
     id: 't1-7', title: '두 변의 길이가 x의 식', short: '변의 길이가 식',
     question: '∠B=∠C인 삼각형에서 두 변 AB, AC의 길이가 x의 식일 때 x는 어떻게 구할까?',
-    ctl: ['trEx'],
-    init: (s) => { s.trEx = 5; s.trQ = { p: 5, q: -6, r: 2, sv: 3 }; },
+    ctl: ['trExprX'],
+    init: (s) => { s.trExprX = 5; s.trQ = { p: 5, q: -6, r: 2, sv: 3 }; },
     reroll: (s) => {
       const x0 = rint(2, 8), p = rint(2, 6); let r = rint(1, 5); if (r === p) r = p - 1 || p + 1;
       const sv = rint(1, 9), q = r * x0 + sv - p * x0;
       s.trQ = { p, q, r, sv, x0 };
     },
     model: (s) => {
-      const Q = s.trQ || { p: 5, q: -6, r: 2, sv: 3 }, x0 = Q.x0 || (Q.sv - Q.q) / (Q.p - Q.r), x = clamp(Math.round(s.trEx), 2, 9);
+      const Q = s.trQ || { p: 5, q: -6, r: 2, sv: 3 }, x0 = Q.x0 || (Q.sv - Q.q) / (Q.p - Q.r), x = clamp(Math.round(s.trExprX), 2, 9);
       const L1 = Q.p * x + Q.q, L2 = Q.r * x + Q.sv;
       return { Q, x, x0, L1, L2, eq: L1 === L2, ok1: L1 > 0 && L2 > 0 };
     },

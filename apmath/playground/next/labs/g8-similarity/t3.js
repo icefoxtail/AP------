@@ -212,12 +212,12 @@
       if (prob) { /* 문제: 두 각이 같다는 표시만 */ }
       else if (!C.review || st >= 2) { ang(b, g.C, g.A, g.B, { color: 'violet', rings: 2, r: 24 }); ang(b, g.E, g.A, g.D, { color: 'violet', rings: 2, r: 18 }); }
       const sz = 16;
-      const lb = (p, q, c, txt, col) => sideTag(b, p, q, c, txt, { color: col, size: sz, gap: 10 });
+      const lb = (p, q, c, txt, col, whole = false) => sideTag(b, p, q, c, txt, { color: col, size: sz, gap: 10, ...(whole ? { leaderSegment: [p, q] } : {}) });
       if (prob) {
-        if (pk.kind === 0) { lb(g.A, g.B, cB, String(g.AB), 'green'); lb(g.A, g.C, cB, String(g.AC), 'green'); lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.A, g.E, cS, 'x', 'amber'); }
-        else { lb(g.A, g.B, cB, String(g.AB), 'green'); lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.D, g.E, cS, String(g.DE), 'sky'); lb(g.B, g.C, cB, 'x', 'amber'); }
+        if (pk.kind === 0) { lb(g.A, g.B, cB, String(g.AB), 'green', true); lb(g.A, g.C, cB, String(g.AC), 'green', true); lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.A, g.E, cS, 'x', 'amber'); }
+        else { lb(g.A, g.B, cB, String(g.AB), 'green', true); lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.D, g.E, cS, String(g.DE), 'sky'); lb(g.B, g.C, cB, 'x', 'amber'); }
       } else {
-        lb(g.A, g.B, cB, String(g.AB), 'green'); lb(g.A, g.C, cB, String(g.AC), 'green'); lb(g.B, g.C, cB, String(g.BC), 'green');
+        lb(g.A, g.B, cB, String(g.AB), 'green', true); lb(g.A, g.C, cB, String(g.AC), 'green', true); lb(g.B, g.C, cB, String(g.BC), 'green');
         lb(g.A, g.D, cS, String(g.AD), 'sky'); lb(g.A, g.E, cS, String(g.AE), 'sky'); lb(g.D, g.E, cS, String(g.DE), 'sky');
       }
       // A belongs to both triangles. Put its name in an empty angular sector,

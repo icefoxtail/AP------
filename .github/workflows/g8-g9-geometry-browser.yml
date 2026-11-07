@@ -92,6 +92,15 @@ jobs:
           name: g8-g9-geometry-${{ github.run_id }}-${{ matrix.unit }}
           path: ${{ runner.temp }}/g89-evidence/
           retention-days: 14
+      - name: Prepare geometry review pack
+        if: always() && steps.scope.outputs.active == 'true'
+        run: node apmath/playground/next/tools/geometry-review-pack.mjs --input "$RUNNER_TEMP/g89-evidence" --out "$RUNNER_TEMP/g89-review-pack"
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.scope.outputs.active == 'true'
+        with:
+          name: geometry-review-${{ github.run_id }}-${{ matrix.unit }}
+          path: ${{ runner.temp }}/g89-review-pack/
+          retention-days: 14
 
   student-flow:
     runs-on: ubuntu-latest

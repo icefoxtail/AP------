@@ -42,6 +42,40 @@ function board(W = 390, H = 440, insets = {}) {
   return b;
 }
 
+test('merged triangle controls keep expression x separate from the t2-2 angle', () => {
+  const expression = get('t1-7'), angle = get('t2-2'), s = state(expression);
+  assert.deepEqual(Array.from(expression.controls(s)), ['trExprX']);
+  assert.deepEqual(Array.from(angle.controls(s)), ['trEx']);
+  // params comes from all seven production modules, where the old shared key was overwritten.
+  for (const [key, expected] of [
+    ['trExprX', ['x', 2, 9, 1, 5, '5']],
+    ['trEx', ['∠B = x', 20, 40, 2, 32, '32°']]
+  ]) {
+    const p = params[key];
+    assert.ok(p, `merged controls include ${key}`);
+    assert.deepEqual([p.label, p.min, p.max, p.step, p.value, p.format(p.value)], expected);
+  }
+  assert.equal(expression.tr.model(s).x, 5, 'expression default stays unchanged');
+  assert.equal(s.trEx, 32, 'entering t1-7 does not replace the angle default');
+  for (let x = 2; x <= 9; x++) {
+    s.trExprX = x;
+    const M = expression.tr.model(s);
+    assert.deepEqual([M.x, M.L1, M.L2], [x, 5 * x - 6, 2 * x + 3]);
+    assert.equal(angle.tr.model(s).x, 32, 'expression slider does not change the angle');
+  }
+  for (let value = 20; value <= 40; value += 2) {
+    s.trEx = value;
+    assert.equal(angle.tr.model(s).x, value, 'existing angle key retains its full range');
+    assert.equal(expression.tr.model(s).x, 9, 'angle slider does not change expression x');
+  }
+  angle.enter(s);
+  assert.equal(s.trExprX, 9, 'entering t2-2 preserves expression x');
+  s.trEx = 26;
+  expression.enter(s);
+  assert.equal(s.trEx, 26, 'entering t1-7 preserves the existing angle key');
+  assert.equal(expression.tr.model(s).x, 5);
+});
+
 test('P0: t4-4 area givens describe an attainable triangle and match the actual solution drawing', () => {
   const sc = get('t4-4'), s = state(sc);
   Object.assign(s, { trBc: 5, trBb: 4, trK: 4 });

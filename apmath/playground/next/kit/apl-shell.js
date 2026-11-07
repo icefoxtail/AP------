@@ -1102,6 +1102,8 @@
           APLab.setHTML(el.children[1], this._label(x.value == null ? '' : String(x.value)));
           APLab.setHTML(el.children[2], this._label(x.note || ''));
           el.children[2].hidden = !x.note;
+          // Opt-in spacing keeps stacked note fractions clear of the readout value.
+          el.children[2].style.paddingTop = Number.isFinite(x.noteGapPx) && x.noteGapPx > 0 ? `${x.noteGapPx}px` : '';
           el.classList.toggle('hot', this._hoverRef === x.ref && !!x.ref);
         });
       }

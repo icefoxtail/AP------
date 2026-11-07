@@ -53,8 +53,8 @@
       } else fillPoly(b, [pt(0, -H), pt(W, -H), pt(W, 0), pt(0, 0)], 'sky', 0.14);
       poly(b, [pt(0, -H), pt(W, -H), pt(W, 0), pt(0, 0)], 'ink', 3.6);
       const c0 = pt(W / 2, -H / 2);
-      dim(b, pt(0, 0), pt(W, 0), `가로 ${W}cm`, { ref: c0, color: 'sky' });
-      dim(b, pt(0, 0), pt(0, -H), `세로 ${H}cm`, { ref: c0, color: 'sky' });
+      dim(b, pt(0, 0), pt(W, 0), b.thumb ? `가로 ${W}cm` : `${W}cm`, { ref: c0, color: 'sky', curve: true });
+      dim(b, pt(0, 0), pt(0, -H), b.thumb ? `세로 ${H}cm` : `${H}cm`, { ref: c0, color: 'sky', curve: true });
       if (C.problem) { T(b, c0, '넓이 ?', { size: 22, color: 'amber' }); return; }
       if (C.review && C.step < 1) foot(b, pt(W / 2, 0), '한 칸부터 차례로 세어 보세요', 'amber');
       else if (C.review && C.step === 1) foot(b, pt(W / 2, 0), '한 칸 = 1cm × 1cm = 1cm²', 'amber');
@@ -291,8 +291,8 @@
           fillPoly(b, cp, 'rose', 0.34 * Math.max(al, C.review && C.step === 1 ? 1 : 0)); poly(b, cp, 'rose', 2.8, { alpha: Math.max(al, C.review && C.step === 1 ? 1 : 0) });
         });
       }
-      dim(b, pt(-x, y), pt(x, y), `대각선 ${X}cm`, { ref: O, color: 'green', off: 22 });
-      dim(b, pt(x, -y), pt(x, y), `${Y}cm`, { ref: O, color: 'green', off: 30 });
+      dim(b, pt(-x, y), pt(x, y), `대각선 ${X}cm`, { ref: O, color: 'green', off: 22, source: [pt(-x, 0), pt(x, 0)] });
+      dim(b, pt(x, -y), pt(x, y), `${Y}cm`, { ref: O, color: 'green', off: 30, source: [pt(0, -y), pt(0, y)] });
       if (C.problem) { T(b, pt(0, -y * 0.45), '넓이 ?', { size: 20, color: 'amber' }); return; }
       const done = C.review ? C.step >= 3 : t > 0.999;
       if (done) foot(b, pt(0, y), `직사각형 ${X}×${Y} = ${R}의 절반 = ${num(A)}cm²`, 'green', 58);

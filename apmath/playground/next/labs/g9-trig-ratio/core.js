@@ -166,10 +166,56 @@
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   // 분수(\frac{…}{…})가 들어간 글의 가로 폭 어림
   const textW2 = (t, size) => textW(String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, a, d) => (a.length > d.length ? a : d) + ' '), size);
+  // A displaced short-side label can sit beyond a vertex name. Keep its real
+  // anchor and label fixed, and take a short orthogonal route through free space.
+  // T's measured boxes already include the 4px text halo; add stroke clearance.
+  function leaderPastNames(b, anchor, box, boxes, o) {
+    const obstacles = boxes.map(q => ({ ...q, x0: q.x0 - 1, x1: q.x1 + 1, y0: q.y0 - 1, y1: q.y1 + 1 }));
+    const intersects = (a, z, q) => {
+      let lo = 0, hi = 1;
+      for (const [v, d, min, max] of [[a.x, z.x - a.x, q.x0, q.x1], [a.y, z.y - a.y, q.y0, q.y1]]) {
+        if (Math.abs(d) < 1e-9) { if (v < min || v > max) return false; }
+        else { const t0 = (min - v) / d, t1 = (max - v) / d; lo = Math.max(lo, Math.min(t0, t1)); hi = Math.min(hi, Math.max(t0, t1)); if (lo > hi) return false; }
+      }
+      return true;
+    };
+    // Same box-edge stop as Board.leader, including its 4px label gap.
+    const endFrom = a => {
+      const dx = a.x - box.x, dy = a.y - box.y, L = Math.hypot(dx, dy);
+      if (L < 1 || (Math.abs(dx) <= box.width / 2 && Math.abs(dy) <= box.height / 2)) return null;
+      const edge = Math.min(Math.abs(dx) > 1e-9 ? box.width / (2 * Math.abs(dx)) : Infinity, Math.abs(dy) > 1e-9 ? box.height / (2 * Math.abs(dy)) : Infinity), stop = edge * L + 4;
+      return L > stop + 1 ? { x: box.x + dx * stop / L, y: box.y + dy * stop / L } : null;
+    };
+    const end = endFrom(anchor);
+    if (!end || !obstacles.some(q => /^[A-Z]$/.test(q.s) && intersects(anchor, end, q))) return false;
+    // Do not turn the callout into an extension through a side's endpoint dot.
+    for (const p of o.points) { const s = b.toS(b._P(p)); obstacles.push({ x0: s.x - 6, x1: s.x + 6, y0: s.y - 6, y1: s.y + 6 }); }
+    const routes = [];
+    const addRoute = corners => {
+      const end = endFrom(corners[corners.length - 1]);
+      if (!end) return;
+      const points = [anchor, ...corners, end].filter((p, i, all) => !i || Math.hypot(p.x - all[i - 1].x, p.y - all[i - 1].y) > 1e-6);
+      if (points.some(p => p.x < 1 || p.x > b.W - 1 || p.y < 1 || p.y > b.H - 1)) return;
+      if (points.some((p, i) => i && obstacles.some(q => intersects(points[i - 1], p, q)))) return;
+      routes.push({ points, length: points.reduce((sum, p, i) => sum + (i ? Math.hypot(p.x - points[i - 1].x, p.y - points[i - 1].y) : 0), 0) });
+    };
+    const gaps = (low, high) => {
+      const edges = [...new Set(obstacles.flatMap(q => [q[low], q[high]]))].sort((a, z) => a - z);
+      return [...obstacles.flatMap(q => [q[low] - 1, q[high] + 1]), ...edges.slice(1).map((v, i) => (edges[i] + v) / 2)];
+    };
+    // Start outward from the measured side; the short initial adjustment only
+    // reaches a free corridor between the existing labels.
+    if (o.normal.x) for (const y of [anchor.y, ...gaps('y0', 'y1')]) addRoute([{ x: anchor.x, y }, { x: box.x, y }]);
+    if (o.normal.y) for (const x of [anchor.x, ...gaps('x0', 'x1')]) addRoute([{ x, y: anchor.y }, { x, y: box.y }]);
+    const route = routes.sort((a, z) => a.length - z.length)[0];
+    if (!route) return false; // Retain the visible original if no clear route exists.
+    b.path(route.points.map(p => b.toW(p.x, p.y)), { color: 'muted', width: 1.15, alpha: o.alpha, dash: [], glow: false, ref: o.ref });
+    return true;
+  }
   function T(b, p, str, o = {}) {
-    if (str == null || str === '') return;
+    if (str == null || str === '' || (o.alpha != null && o.alpha <= 0)) return;
     str = String(str).replace(/=\s*≈\s*/g, '≈ '); // "h = ≈4.6" 처럼 기호가 겹치지 않게
-    let dx = o.dx || 0, dy = o.dy || 0;
+    let dx = o.dx || 0, dy = o.dy || 0, labelBox;
     // 글자가 무대 밖으로 나가거나 다른 글자와 겹치면 가까운 빈 곳으로 밀어 놓는다(휴대폰에서 잘림·겹침 방지)
     if (!b.thumb && b.W && b.toS && b._P) {
       try {
@@ -207,15 +253,22 @@
           x = cand[0].x; y = cand[0].y;
         }
         dx = x - sp.x; dy = y - sp.y;
+        labelBox = { x: x + ax + w / 2, y, width: w, height: h };
         boxes.push({ x0: x + ax, x1: x + ax + w, y0: y - h / 2, y1: y + h / 2, s: str });
       } catch (e) { /* 보정 없이 그린다 */ }
+    }
+    // Keep the geometric target when collision avoidance moves the label.
+    if (!b.thumb && o.leaderAnchor && b.leader && (o.leader || Math.hypot(dx - (o.dx || 0), dy - (o.dy || 0)) > 10)) {
+      const sp = b.toS(b._P(p)), box = labelBox || { x: sp.x + dx, y: sp.y + dy, ...b.annotationSize(str, { size: o.size || 16, weight: 800 }) };
+      const anchor = b.toS(b._P(o.leaderAnchor)), options = { px: true, width: box.width, height: box.height, alpha: o.alpha == null ? .72 : o.alpha, ref: o.ref };
+      if (!(b._tgRouteLeaderNames && o.leaderNormal && labelBox && b.toW && b.path && leaderPastNames(b, anchor, box, b._tgBoxes.slice(0, -1), { ...options, normal: o.leaderNormal, points: o.leaderPoints }))) b.leader(anchor, box, options);
     }
     b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
   }
   function tagOut(b, p, c, str, o = {}) {
     const u = unit(sub(p, c)), size = o.size || 17, w = textW2(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(u.x) * (w / 2) + Math.abs(u.y) * size * 0.55 + g;
-    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d });
+    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d, leaderAnchor: p });
   }
   function vtx(b, p, c, name, o = {}) {
     b.point(p, { color: o.color || 'ink', r: o.r || 4.5 });
@@ -227,9 +280,18 @@
     let n = unit({ x: -(q.y - p.y), y: q.x - p.x });
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     if (o.flip) n = mul(n, -1);
+    if (o.curve && b.curveDim && !b.thumb) {
+      // Let the unit's collision layout place the label, retaining the curve anchor.
+      const original = b.text;
+      b.text = (at, value, options) => { b.text = original; try { return T(b, at, value, { ...options, leaderNormal: n, leaderPoints: [p, q] }); } finally { b.text = original; } };
+      try { b.curveDim(p, q, str, { side: n, size, weight: 800, color: o.color || 'ink', alpha: o.alpha, ref: o.ref, gap: 5 }); }
+      finally { b.text = original; }
+      return;
+    }
     const w = textW2(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
-    T(b, lerp(p, q, o.f == null ? 0.5 : o.f), str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    const anchor = lerp(p, q, o.f == null ? 0.5 : o.f);
+    T(b, anchor, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: anchor });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V0, A, B, o = {}) {
@@ -252,7 +314,13 @@
       const need = (textW2(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
-      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      // Keep the continuous angle-bisector placement. Only an explicit rotation
+      // outside the angle needs a callout before collision avoidance moves it.
+      const turn = (((d < 0 ? -1 : 1) * (la - a0)) % (PI * 2) + PI * 2) % (PI * 2);
+      const outside = o.labelRot != null && turn > Math.abs(d) + 1e-6;
+      const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
+      const anchor = square ? add(V0, add(mul(unit(sub(A, V0)), corner), mul(unit(sub(B, V0)), corner))) : pt(V0.x + Math.cos(am) * rw, V0.y + Math.sin(am) * rw);
+      T(b, V0, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside });
     }
     return { deg, mid: am };
   }
@@ -303,7 +371,7 @@
     else [A, B, C].forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
     [[B, C, 'a'], [C, A, 'b'], [A, B, 'c']].forEach(([p, q, k]) => {
       const sd = S.side && S.side[k];
-      if (sd && sd.t != null && sd.t !== '') sideTag(b, p, q, cen, sd.t, { color: sd.c || col[k] || 'ink', size: sd.size || 17, gap: sd.gap, flip: sd.flip, f: sd.f });
+      if (sd && sd.t != null && sd.t !== '') sideTag(b, p, q, cen, sd.t, { color: sd.c || col[k] || 'ink', size: sd.size || 17, gap: sd.gap, flip: sd.flip, f: sd.f, curve: sd.curve || S.curveDim });
       const tk = S.ticks && S.ticks[k]; if (tk) tick(b, p, q, tk.n || tk, tk.color || 'amber');
     });
   }
@@ -564,6 +632,7 @@
       draw: (b, s, v, lab) => {
         b._tgBoxes = [];
         const C = baseCtx(s, lab, !!b.thumb);
+        b._tgRouteLeaderNames = D.id === 'r1-1' && !C.problem && !C.review;
         if (b.thumb) C.step = 99;
         G_STATE.problem = !!(C.problem || C.review);
         if (C.problem || C.review) {

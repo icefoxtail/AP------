@@ -25,7 +25,9 @@ jobs:
       matrix:
         shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Before/after matrices include native controls for every mobile scene;
+    # the 86-scene circle unit needs room for observed baseline failures too.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -101,4 +103,13 @@ jobs:
         with:
           name: g7-geometry-browser-${{ github.run_id }}-${{ matrix.shard }}
           path: ${{ runner.temp }}/g7-evidence/
+          retention-days: 14
+      - name: Prepare geometry review pack
+        if: always()
+        run: node apmath/playground/next/tools/geometry-review-pack.mjs --input "$RUNNER_TEMP/g7-evidence" --out "$RUNNER_TEMP/g7-review-pack"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-review-${{ github.run_id }}-${{ matrix.shard }}
+          path: ${{ runner.temp }}/g7-review-pack/
           retention-days: 14

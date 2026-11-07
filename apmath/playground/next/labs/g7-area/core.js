@@ -400,8 +400,15 @@
     if (o.ref) { const d = sub(mid(p, q), o.ref); if (n.x * d.x + n.y * d.y < 0) n = mul(n, -1); }
     else if (o.side) n = mul(n, o.side);
     const off = (o.off == null ? 24 : o.off) / k, col = o.color || 'ink';
+    if (o.curve && b.curveDim && !b.thumb && len(sub(q, p)) * k >= 56) {
+      b.curveDim(p, q, str, { from: o.ref, side: n, bow: 12, gap: 5, color: col, size: o.size || 17 });
+      return;
+    }
     const a = add(p, mul(n, off)), c = add(q, mul(n, off)), e = 6 / k;
     if (!o.noLine) {
+      // 배치용 pq가 도형 밖에 있으면 source로 실제 길이의 두 끝점을 지정합니다.
+      const source = o.source || [p, q];
+      if (!b.thumb) [[source[0], a], [source[1], c]].forEach(([at, end]) => line(b, at, add(end, mul(n, 3 / k)), col, 1.1, { alpha: .45 }));
       line(b, a, c, col, 1.9, { alpha: 0.75 });
       line(b, add(a, mul(n, e)), sub(a, mul(n, e)), col, 1.9, { alpha: 0.75 });
       line(b, add(c, mul(n, e)), sub(c, mul(n, e)), col, 1.9, { alpha: 0.75 });

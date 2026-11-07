@@ -73,12 +73,12 @@
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
     const isX = str === 'x' || /=x$/.test(String(str)) || /^x=/.test(String(str));
-    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: isX ? 'rose' : o.color || 'ink', size: (isX ? Math.max(o.size && o.size > 17 ? o.size : 0, 19) : o.size || 16) * (hasFrac(str) ? 1.25 : 1), weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
+    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: isX ? 'rose' : o.color || 'ink', size: (isX ? Math.max(o.size && o.size > 17 ? o.size : 0, 19) : o.size || 16) * (hasFrac(str) ? 1.25 : 1), weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref, leaderAnchor: o.leaderAnchor, leader: o.leader });
   }
   function tagOut(b, p, c, str, o = {}) {
     const u = unit(sub(p, c)), size = o.size || 17, w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(u.x) * (w / 2) + Math.abs(u.y) * size * 0.55 + g;
-    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d });
+    T(b, p, str, { ...o, size, dx: u.x * d, dy: u.y * d, leaderAnchor: p });
   }
   function vtx(b, p, c, name, o = {}) {
     b.point(p, { color: o.color || 'ink', r: o.r || 4.5 });
@@ -91,7 +91,7 @@
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     const w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
-    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V, A, B, o = {}) {
@@ -116,7 +116,13 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 34));
       const la = am + (o.labelRot || 0) * DEG;
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      // Keep the continuous angle-bisector placement. Only an explicit rotation
+      // outside the angle needs a callout before collision avoidance moves it.
+      const turn = (((d < 0 ? -1 : 1) * (la - a0)) % (PI * 2) + PI * 2) % (PI * 2);
+      const outside = o.labelRot != null && turn > Math.abs(d) + 1e-6;
+      const square = !o.big && Math.abs(deg - 90) < .6 && !o.noRight, corner = Math.min(r * .62, 17) / k;
+      const anchor = square ? add(V, add(mul(unit(sub(A, V)), corner), mul(unit(sub(B, V)), corner))) : pt(V.x + Math.cos(am) * rw, V.y + Math.sin(am) * rw);
+      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor: o.noMark ? null : anchor, leader: outside });
     }
     return { deg, mid: am };
   }
@@ -184,8 +190,7 @@
     if (o.away && n.x * (m.x - o.away.x) + n.y * (m.y - o.away.y) < 0) n = mul(n, -1);
     const w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
-    if (str && o.leader) line(b, m, add(m, mul(n, g / (b.k || 60))), o.color || 'sky', 1.2, { alpha: .7 });
-    T(b, m, str, { color: o.color || 'sky', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    T(b, m, str, { color: o.color || 'sky', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader });
   }
   const sz = (b, a = 16) => (b.W < 560 ? a - 1 : a);
 
@@ -391,11 +396,11 @@
         str = str.replace(/x$/, answer);
         if (textW(str, o.size || 16) > b.W - 40) str = 'x = ' + answer;
       }
-      if (str != null && str !== '') queue.push({ p, str: String(str), o: { ...o } });
+      if (str != null && str !== '' && !(o.alpha != null && o.alpha <= 0)) queue.push({ p, str: String(str), o: { ...o } });
       return b;
     };
     try { draw(); } finally { b.text = original; }
-    const placed = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
+    const placed = [], labels = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
     queue.sort((a, z) => Number(!/^[A-Z][′']?$/.test(a.str)) - Number(!/^[A-Z][′']?$/.test(z.str)));
     for (const item of queue) {
       const { p, str, o } = item, anchor = b.toS(p), x0 = anchor.x + (o.dx || 0), y0 = anchor.y + (o.dy || 0);
@@ -409,10 +414,24 @@
         const score = placed.reduce((n, a) => n + overlap(a, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
         if (!best || score < best.score) best = { x, y, box, score };
       }
-      if (Math.hypot(best.x - x0, best.y - y0) > 13) line(b, b.toW(x0, y0), b.toW(best.x, best.y), o.color || 'ink', 1, { alpha: 0.45 });
-      original.call(b, p, str, { ...o, size, dx: best.x - anchor.x, dy: best.y - anchor.y });
+      // A displaced label must point to the actual point, segment or angle arc,
+      // never to its former text position. Unanchored explanatory text has no leader.
+      if (o.leaderAnchor && (o.leader || Math.hypot(best.x - x0, best.y - y0) > 13)) {
+        const target = b.toS(o.leaderAnchor), alpha = o.alpha == null ? .72 : o.alpha;
+        if (b.leader) b.leader(target, best, { px: true, width, height, alpha, ref: o.ref });
+        else {
+          // Lightweight renderers can omit Board.leader; keep the same geometric
+          // anchor and stop outside the final text box in that path as well.
+          const dx = best.x - target.x, dy = best.y - target.y, length = Math.hypot(dx, dy);
+          const trim = Math.min(width / (2 * Math.abs(dx || 1e-9)), height / (2 * Math.abs(dy || 1e-9))) + 4 / (length || 1);
+          if (trim < 1) line(b, o.leaderAnchor, b.toW(best.x - dx * trim, best.y - dy * trim), o.color || 'muted', 1.2, { alpha });
+        }
+      }
+      labels.push({ p, str, options: { ...o, size, dx: best.x - anchor.x, dy: best.y - anchor.y } });
       placed.push({ ...best.box, text: str });
     }
+    // Later callouts must not paint over a vertex name placed earlier.
+    for (const label of labels) original.call(b, label.p, label.str, label.options);
     b.ciLabels = placed;
   }
   function rollPk(D, s, first) {

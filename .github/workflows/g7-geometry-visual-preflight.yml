@@ -1,0 +1,76 @@
+name: G7 geometry visual preflight
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/g7-circle-sector/**'
+      - 'apmath/playground/next/labs/g7-circle-sector.html'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/g7-geometry-browser-audit.mjs'
+      - 'apmath/playground/next/tools/g7-geometry-selection-probes.mjs'
+      - 'apmath/playground/next/tools/g7-geometry-audit-targets.json'
+      - 'apmath/playground/next/tools/g7-geometry-audit-targets-g7-circle-sector.json'
+      - '.github/workflows/g7-geometry-visual-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-circle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FOCUS_SCENES: '1102,1105,1207,1210,1607,1609,1610,1809'
+      FOCUS_RUNS: 'pc-paper,mobile-paper,mobile-board'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Record focused source and fixed baseline
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || '106489359ed96dfc17479fe63ef01d631fc13137' }}
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git worktree add --detach "$RUNNER_TEMP/g7-focused-baseline" "$BASE_SHA"
+          node --input-type=module <<'JS'
+          import { execFileSync } from 'node:child_process';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const out = path.join(process.env.RUNNER_TEMP, 'g7-focused-evidence');
+          fs.mkdirSync(out, { recursive: true });
+          fs.writeFileSync(path.join(out, 'source.json'), JSON.stringify({
+            kind: 'SUPPLEMENTAL_FOCUSED_VISUAL_PREFLIGHT', fullMatrix: false,
+            sourceHead: process.env.SOURCE_HEAD,
+            actualCheckout: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+            baselineCheckout: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: path.join(process.env.RUNNER_TEMP, 'g7-focused-baseline'), encoding: 'utf8' }).trim(),
+            sceneIds: process.env.FOCUS_SCENES.split(','), runs: process.env.FOCUS_RUNS.split(','),
+            qualityVerdict: 'NOT_ASSERTED; screenshots require independent visual inspection. Full G7 and G8/G9 gates remain required.'
+          }, null, 2) + '\n');
+          JS
+      - name: Observe focused baseline
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+        run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root "$RUNNER_TEMP/g7-focused-baseline" --out "$RUNNER_TEMP/g7-focused-evidence/before" --units g7-circle-sector --focus-scenes "$FOCUS_SCENES" --focus-runs "$FOCUS_RUNS" --baseline-observe
+      - name: Inspect focused candidate
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+        run: node apmath/playground/next/tools/g7-geometry-browser-audit.mjs --root . --out "$RUNNER_TEMP/g7-focused-evidence/after" --units g7-circle-sector --focus-scenes "$FOCUS_SCENES" --focus-runs "$FOCUS_RUNS"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-focused-visual-${{ github.run_id }}
+          path: ${{ runner.temp }}/g7-focused-evidence/
+          retention-days: 14

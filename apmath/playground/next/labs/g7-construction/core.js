@@ -136,7 +136,16 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      const dx = o.labelOffset ? o.labelOffset.dx : Math.cos(la) * dst;
+      const dy = o.labelOffset ? o.labelOffset.dy : Math.sin(la) * dst;
+      if (o.labelOffset && !o.noMark && !b.thumb && b.leader) {
+        const anchor = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight
+          ? add(V, mul(add(unit(sub(A, V)), unit(sub(B, V))), Math.min(r * 0.62, 17) / k))
+          : { x: V.x + Math.cos(am) * rw, y: V.y + Math.sin(am) * rw };
+        const box = b.annotationSize ? b.annotationSize(o.label, { size, weight: 800 }) : { width: textW(o.label, size) + 6, height: size + 6 };
+        b.leader(anchor, { x: V.x + dx / k, y: V.y + dy / k }, { ...box, color: 'muted', alpha: o.alpha == null ? 0.78 : Math.min(0.78, o.alpha) });
+      }
+      T(b, V, o.label, { dx, dy, color: o.labelColor || col, size, alpha: o.alpha });
     }
     return { deg, mid: am };
   }

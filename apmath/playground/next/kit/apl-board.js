@@ -485,6 +485,84 @@
     seg(p, q, o = {}) {
       return this.path([p, q], o);
     }
+    /** 라벨 지시선: 실제 점·선분·각의 anchor에서 라벨 상자 바로 앞까지.
+     * 좌표는 기본 세계 좌표, px:true면 화면 좌표. width/height는 라벨 상자의
+     * 픽셀 크기이며 선 굵기는 lineWidth다. 수학적 보조선과 달리 옅은 실선으로
+     * 그리며 화살표·새 점·직각 표시는 만들지 않는다. 배치 결정은 각 장면이 맡는다.
+     */
+    leader(anchor, labelPoint, o = {}) {
+      // 숨긴 풀이 라벨은 화면 맞춤용 경계 계산에도 참여하지 않는다.
+      if (o.alpha != null && o.alpha <= 0) return { drawn: false };
+      const A = o.px ? anchor : this.toS(this._P(anchor));
+      const B = o.px ? labelPoint : this.toS(this._P(labelPoint));
+      if (![A.x, A.y, B.x, B.y].every(Number.isFinite)) return null;
+      const dx = A.x - B.x, dy = A.y - B.y, L = Math.hypot(dx, dy);
+      const w = Math.max(0, o.width || 0), h = Math.max(0, o.height || 0);
+      const gap = o.gap == null ? 4 : Math.max(0, o.gap);
+      const box = { x0: B.x - w / 2, x1: B.x + w / 2, y0: B.y - h / 2, y1: B.y + h / 2 };
+      if (L < 1 || (Math.abs(dx) <= w / 2 && Math.abs(dy) <= h / 2)) return { anchor: A, label: B, box, drawn: false };
+      const edge = Math.min(Math.abs(dx) > 1e-9 ? w / (2 * Math.abs(dx)) : Infinity, Math.abs(dy) > 1e-9 ? h / (2 * Math.abs(dy)) : Infinity);
+      const stop = edge * L + gap;
+      if (L <= stop + 1) return { anchor: A, label: B, box, drawn: false };
+      const end = { x: B.x + dx * stop / L, y: B.y + dy * stop / L };
+      const alpha = o.alpha == null ? 0.78 : o.alpha;
+      this.seg(this.toW(A.x, A.y), this.toW(end.x, end.y), { color: o.color || 'muted', width: o.lineWidth || 1.15, alpha, dash: [], glow: false, ref: o.ref, part: o.part });
+      return { anchor: A, label: B, end, box, drawn: true };
+    }
+    /** 쌓은 분수를 포함한 라벨의 실제 화면 크기. _text와 같은 글꼴·배율을 쓴다. */
+    annotationSize(str, o = {}) {
+      const c = this.ctx, size = (o.size || 14) * this.fs * (this.thumb ? 0.78 : this._ts());
+      const segs = this._fracSplit(String(str));
+      c.save();
+      c.font = `${o.weight || 750} ${size}px ${this.font}`;
+      let width = 0, height = size;
+      if (!segs) width = c.measureText(String(str)).width;
+      else {
+        const fs = Math.max(size * 0.72, Math.min(size * 0.9, 9.5));
+        height = Math.max(size, 2 * (fs * 0.2 + fs * 0.95));
+        for (const s of segs) {
+          if (s.t !== undefined) { c.font = `${o.weight || 750} ${size}px ${this.font}`; width += c.measureText(s.t).width; }
+          else { c.font = `${o.weight || 750} ${fs}px ${this.font}`; width += Math.max(c.measureText(s.n).width, c.measureText(s.d).width) + fs * 0.34; }
+        }
+      }
+      c.restore();
+      return { width: width + 6, height: height + 6 };
+    }
+    /** 선택적으로 쓰는 얕은 곡선 치수선. p·q는 실제 선분의 양 끝이다.
+     * from은 도형 안쪽의 세계 좌표, side는 바깥쪽 화면 방향이다.
+     * 곡률·글자 간격은 화면 픽셀이라 확대/드래그에도 읽기 크기를 유지한다.
+     * 원호/좁은 내부 선분은 호출자가 직접 라벨 또는 leader를 선택한다.
+     */
+    curveDim(p, q, str, o = {}) {
+      if (o.alpha != null && o.alpha <= 0) return null;
+      const A = this.toS(this._P(p)), B = this.toS(this._P(q));
+      if (![A.x, A.y, B.x, B.y].every(Number.isFinite)) return null;
+      const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy);
+      if (L < 3) return null;
+      let n = { x: -dy / L, y: dx / L };
+      const mid = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 };
+      let side = o.side;
+      if (!side && o.from) { const f = this.toS(this._P(o.from)); side = { x: mid.x - f.x, y: mid.y - f.y }; }
+      if (!side) side = { x: 0, y: 1 };
+      if (n.x * side.x + n.y * side.y < 0) n = { x: -n.x, y: -n.y };
+      const textOptions = { size: o.size || 14, weight: o.weight || 750, color: o.color || 'ink', alpha: o.alpha, align: 'center', baseline: 'middle', ref: o.ref, part: o.part };
+      const size = this.annotationSize(str == null ? '' : str, textOptions);
+      // 짧은 구간에 호를 더하면 각 표시로 보일 수 있어 선분 바로 밖의 라벨로 표시한다.
+      const short = L < (o.minLength == null ? 32 : o.minLength);
+      const bow = short ? 0 : (o.bow == null ? clamp(L * 0.09, 8, 18) : clamp(o.bow, 0, 24));
+      const at = t => ({ x: A.x + dx * t + n.x * 4 * bow * t * (1 - t), y: A.y + dy * t + n.y * 4 * bow * t * (1 - t) });
+      if (!short) this.path(Array.from({ length: 25 }, (_, i) => { const s = at(i / 24); return this.toW(s.x, s.y); }), { color: o.lineColor || 'muted', width: o.lineWidth || 1.35, alpha: o.alpha == null ? 0.9 : o.alpha, glow: false, ref: o.ref, part: o.part });
+      const anchor = at(0.5), gap = o.gap == null ? 5 : o.gap;
+      const distance = Math.abs(n.x) * size.width / 2 + Math.abs(n.y) * size.height / 2 + gap;
+      const label = { x: anchor.x + n.x * distance, y: anchor.y + n.y * distance };
+      if (str != null && str !== '') {
+        // 짧은 구간은 직접 라벨만 그린다. 최종 배치 전에 지시선을 그리면
+        // 충돌 회피로 라벨이 옮겨진 뒤 이전 위치를 가리키는 선이 남는다.
+        // 각 단원의 충돌 배치기는 이 anchor를 보존해서 이동한 글자를 원래 대상에 연결한다.
+        this.text(this.toW(label.x, label.y), str, { ...textOptions, leaderAnchor: this.toW(anchor.x, anchor.y), dimension: true });
+      }
+      return { A, B, normal: n, anchor, label, bow, short, box: { x0: label.x - size.width / 2, x1: label.x + size.width / 2, y0: label.y - size.height / 2, y1: label.y + size.height / 2 } };
+    }
     /** 점 p를 지나는 기울기 m의 직선(또는 점 q를 지나는 직선)을 화면 끝까지 */
     line(p, mOrQ, o = {}) {
       p = this._P(p);

@@ -6,7 +6,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
-import { probeSpatialSelection, probePolyhedronCell } from './g7-geometry-selection-probes.mjs';
+import { probeSpatialSelection, probePolyhedronCell, probePolygonVertex } from './g7-geometry-selection-probes.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
@@ -17,12 +17,73 @@ const observe = argv.includes('--baseline-observe');
 const allUnits = ['g7-points-lines', 'g7-parallel', 'g7-spatial', 'g7-construction', 'g7-area', 'g7-polygons', 'g7-circle-sector', 'g7-polyhedra', 'g7-surface-volume', 'g7-solids'];
 const units = (arg('--units', allUnits.join(','))).split(',').filter(Boolean);
 if (!units.length || units.some(x => !allUnits.includes(x))) throw Error('Unknown or empty G7 unit list');
-const runs = [
+// Opt-in visual preflight only. The ordinary audit and its result kind stay full.
+const focused = argv.includes('--focus-scenes') || argv.includes('--focus-runs');
+if (focused && (!argv.includes('--focus-scenes') || !argv.includes('--focus-runs') || units.length !== 1)) {
+  throw Error('Focused audit requires both --focus-scenes and --focus-runs, and exactly one --units entry');
+}
+const focusList = name => {
+  const value = arg(name, ''), items = typeof value === 'string' ? value.split(',').map(x => x.trim()) : [];
+  if (argv.filter(x => x === name).length !== 1 || !items.length || items.some(x => !x || x.startsWith('--')) || new Set(items).size !== items.length) {
+    throw Error(`Unknown, empty or duplicate focused list: ${name}`);
+  }
+  return items;
+};
+const focusSceneIds = focused ? focusList('--focus-scenes') : null;
+const focusRunNames = focused ? focusList('--focus-runs') : null;
+const selectScenes = registered => {
+  if (!focused) return registered;
+  const unknown = focusSceneIds.filter(id => !registered.some(scene => scene.id === id));
+  if (unknown.length) throw Object.assign(Error(`Unknown focused scene IDs: ${unknown.join(',')}`), { code: 'INVALID_FOCUS_SELECTION' });
+  return registered.filter(scene => focusSceneIds.includes(scene.id)); // Preserve real lab.list indices.
+};
+// The visible range can clamp stale lab.s values. Ask an off-DOM clone to choose
+// an allowed adjacent value; only the later native fill changes the real control.
+function nextNativeRangeInput(key) {
+  const input = lab._ctls?.[key]?.input;
+  if (!input || !input.checkVisibility() || input.type !== 'range') throw Error(`Visible range missing: ${key}`);
+  const dom = { min: input.min, max: input.max, step: input.step, value: input.value, valueAsNumber: input.valueAsNumber, valueAttribute: input.getAttribute('value') };
+  const current = input.valueAsNumber;
+  if (!Number.isFinite(current)) throw Error(`Non-finite visible range value: ${key} ${JSON.stringify(dom)}`);
+  const probe = input.cloneNode(false);
+  // 1103 snaps a ratio so that every central angle stays an integer. Choose
+  // another value accepted by that scene's contract, not a normalized mismatch.
+  if (String(lab.scene.id) === '1103' && key === 'b1103_a') {
+    const b = lab.s.b1103_b, c = lab.s.b1103_c;
+    if (![b, c].every(v => Number.isInteger(v) && v >= 1 && v <= 9)) throw Error(`Invalid 1103 fixed ratios: ${b}, ${c}`);
+    const domain = Array.from({ length: 9 }, (_, i) => i + 1);
+    const candidates = [...domain.filter(v => v > current), ...domain.filter(v => v < current).reverse()];
+    for (const value of candidates) {
+      if (value === lab.s[key] || 360 % (value + b + c) !== 0) continue;
+      probe.value = String(value);
+      if (probe.valueAsNumber !== value || !probe.validity.valid) continue;
+      return { key, label: input.getAttribute('aria-label') || APLab.stripEmoji(lab.params[key].label), value, text: probe.value, dom, storedBefore: lab.s[key],
+        semantic: { rule: '360 % (a + b + c) === 0', b, c, total: value + b + c }, requiresStateChange: true };
+    }
+    throw Error(`No distinct valid 1103 ratio: ${JSON.stringify({ dom, b, c, storedBefore: lab.s[key] })}`);
+  }
+  for (const direction of [1, -1]) {
+    probe.value = input.value;
+    if (input.step.toLowerCase() === 'any') probe.value = direction > 0 ? input.max || '100' : input.min || '0';
+    else if (direction > 0) probe.stepUp();
+    else probe.stepDown();
+    const value = probe.valueAsNumber;
+    if (Number.isFinite(value) && value !== current && probe.validity.valid) {
+      return { key, label: input.getAttribute('aria-label') || APLab.stripEmoji(lab.params[key].label), value, text: probe.value, dom, storedBefore: lab.s[key] };
+    }
+  }
+  throw Error(`No distinct valid range value: ${key} ${JSON.stringify(dom)}`);
+}
+
+const viewports = [
   { name: 'pc', width: 1440, height: 900 },
   { name: 'tablet-portrait', width: 820, height: 1180 },
   { name: 'tablet-landscape', width: 1024, height: 768 },
   { name: 'mobile', width: 390, height: 844 }
 ];
+const allRuns = viewports.flatMap(v => ['board', 'paper'].map(theme => ({ ...v, name: `${v.name}-${theme}`, theme })));
+if (focused && focusRunNames.some(name => !allRuns.some(run => run.name === name))) throw Error('Unknown focused run name');
+const runs = focused ? focusRunNames.map(name => allRuns.find(run => run.name === name)) : allRuns;
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => {
   const p = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
@@ -34,20 +95,25 @@ const server = http.createServer((req, res) => {
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/`;
 fs.mkdirSync(out, { recursive: true });
-const report = { version: 1, kind: observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'] };
+const report = { version: 1, kind: focused ? (observe ? 'FOCUSED_BASELINE_OBSERVATION' : 'FOCUSED_CANDIDATE_CHECK') : (observe ? 'BASELINE_OBSERVATION' : 'CANDIDATE_CHECK'), commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), runs, units: {}, failures: [], limitations: ['Browser viewport simulation; physical devices NOT_RUN.', 'Math correctness and visual overlap require independent inspection.'],
+  ...(focused ? { fullMatrix: false, focus: { requestedSceneIds: focusSceneIds, requestedRunNames: focusRunNames }, purpose: 'Supplemental visual preflight; does not replace the full geometry audit.' } : {}) };
 const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, headless: true } : { channel: 'chromium', headless: true });
 try {
   for (const unit of units) {
     report.units[unit] = { scenes: [], observations: [], captures: [], interactions: [] };
     const dest = report.units[unit];
+    dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
+    if (focused) Object.assign(dest.controlCoverage, { allScenesRun: null, selectedScenesRuns: runs.map(run => run.name), otherRuns: 'all-selected-scenes', sceneScope: 'SELECTED_SCENES_ONLY' });
     for (const run of runs) {
-      const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: run.name !== 'pc', deviceScaleFactor: 1 });
+      let ctx, runError = null, expectedSceneIds = null;
+      const errors = [];
+      try {
+      ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
       const page = await ctx.newPage();
       await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
-      const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
-      await page.goto(`${base}${unit}.html?theme=board`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
       const measurementControl = await page.evaluate(() => {
@@ -59,25 +125,44 @@ try {
       });
       (dest.measurementControls ||= []).push({ run: run.name, ...measurementControl });
       if (!measurementControl.pass) throw Error('Canvas measurement positive/negative control failed');
-      const scenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
+      const registeredScenes = await page.evaluate(() => lab.list.map((s, index) => ({ id: String(s.id), title: s.title, index })));
+      if (focused) dest.registeredScenes = registeredScenes;
+      const scenes = selectScenes(registeredScenes);
+      if (focused) dest.selectedScenes = scenes;
+      expectedSceneIds = [...new Set(scenes.map(s => s.id))];
       if (!dest.scenes.length) dest.scenes = scenes;
-      if (new Set(scenes.map(s => s.id)).size !== scenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
+      if (new Set(registeredScenes.map(s => s.id)).size !== registeredScenes.length) report.failures.push({ unit, run: run.name, reason: 'duplicate-scene-id' });
       await page.evaluate(() => {
         const b = lab.board, original = b._text;
         window.__g7Labels = [];
+        window.__g7TextBox = function (x, y, text, o = {}) {
+          const size=(o.size||13)*b.fs*b._ts(), c=b.ctx, weight=o.weight||750;
+          const segs=b._fracSplit(String(text)); let width=0, fractionSize=0, gap=0;
+          c.save();c.font=`${weight} ${size}px ${b.font}`;
+          if(segs){
+            fractionSize=Math.max(size*.72,Math.min(size*.9,9.5));gap=fractionSize*.2;
+            for(const part of segs){c.font=`${weight} ${part.t!==undefined?size:fractionSize}px ${b.font}`;width+=part.t!==undefined?c.measureText(part.t).width:Math.max(c.measureText(part.n).width,c.measureText(part.d).width)+fractionSize*.34;}
+          }else width=c.measureText(String(text)).width;
+          c.restore();
+          const al=o.align||'center', bl=o.baseline||'alphabetic';
+          const x0=x+(al==='center'?-width/2:al==='right'||al==='end'?-width:0);
+          let top=bl==='middle'?-size/2:bl==='top'||bl==='hanging'?0:bl==='bottom'?-size:-size*.8,bottom=top+size;
+          if(segs){const mid=bl==='middle'?0:bl==='top'||bl==='hanging'?size*.5:bl==='bottom'?-size*.5:-size*.3;top=Math.min(top,mid-gap-fractionSize*.95);bottom=Math.max(bottom,mid+gap+fractionSize*.95);}
+          return {text:String(text),x0,y0:y+top,x1:x0+width,y1:y+bottom};
+        };
         b._text = function (x, y, text, o = {}, screen) {
           if (text != null && text !== '' && !screen && !this._bbox && !this.thumb) {
-            const size = (o.size || 13) * this.fs * this._ts(), c = this.ctx;
-            c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
-            const width = c.measureText(String(text)).width; c.restore();
-            const al = o.align || 'center', bl = o.baseline || 'alphabetic';
-            const x0 = x + (al === 'center' ? -width / 2 : al === 'right' || al === 'end' ? -width : 0);
-            const y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * .8);
-            window.__g7Labels.push({ text: String(text), x0, y0, x1: x0 + width, y1: y0 + size });
+            window.__g7Labels.push(window.__g7TextBox(x,y,text,o));
           }
           return original.apply(this, arguments);
         };
       });
+      const fractionControl=await page.evaluate(()=>{
+        const b=lab.board,o={size:16,baseline:'middle'},inside=__g7TextBox(b.W/2,b.H/2,'\\frac{12}{5}',o),outside=__g7TextBox(b.W+10,b.H/2,'\\frac{12}{5}',o);
+        return {inside,outside,pass:inside.x0>=0&&inside.x1<=b.W&&inside.y0>=0&&inside.y1<=b.H&&outside.x1>b.W+2&&inside.y1-inside.y0>16*b.fs*b._ts()};
+      });
+      dest.measurementControls.push({run:run.name,type:'stacked-fraction-bounds',...fractionControl});
+      if(!fractionControl.pass)throw Error('Stacked-fraction clipping positive/negative control failed');
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g7Labels = []; lab.render(); });
       const capture = async filename => {
         // Full-page screenshots of a scrolled sticky stage can contain an artificial
@@ -131,7 +216,7 @@ try {
       };
       // First/middle/last plus supplied scene IDs provide reproducible captures.
       // All scenes still receive every measurement below.
-      const targets = new Set([scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
+      const targets = new Set(focused ? scenes.map(scene => scene.id) : [scenes[0]?.id, scenes[Math.floor(scenes.length / 2)]?.id, scenes.at(-1)?.id]);
       const targetDir = path.dirname(new URL(import.meta.url).pathname);
       const unitTargetFile = path.join(targetDir, `g7-geometry-audit-targets-${unit}.json`);
       const targetFile = path.join(targetDir, 'g7-geometry-audit-targets.json');
@@ -152,16 +237,17 @@ try {
         filenames.add(c.id + '|' + (c.label || c.tab || 'fixed'));
         cases.push(c);
       }
-      dest.targets = cases;
+      const selectedCases = focused ? cases.filter(c => focusSceneIds.includes(String(c.id))) : cases;
+      dest.targets = selectedCases;
       const sceneIds = new Set(scenes.map(scene => scene.id));
-      for (const c of cases) {
+      for (const c of selectedCases) {
         if (!sceneIds.has(String(c.id))) report.failures.push({ unit, run: run.name, reason: 'unknown-target-scene', id: String(c.id), label: c.label });
         targets.add(String(c.id));
       }
       for (const scene of scenes) {
         await page.evaluate(i => lab.goScene(i), scene.index);
         await measure(scene, 'initial');
-        if (targets.has(scene.id)) {
+        if (targets.has(scene.id) || run.name === 'mobile-paper') {
           const filename = `${unit}--${scene.id}--${run.name}--initial.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await capture(filename);
         }
@@ -169,54 +255,119 @@ try {
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); lab.setStep(1); });
           await measure(scene, 'step-1');
+          if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--step-1.png`);
+          const steps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
+          if (steps > 2) {
+            await page.evaluate(n => lab.setStep(Math.ceil(n / 2)), steps);
+            await measure(scene, 'review-middle');
+            if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--review-middle.png`);
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'review-middle', reason: 'no-intermediate-step' });
+          }
+        } else {
+          for (const state of ['step-1', 'review-middle', 'review-final']) (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state, reason: 'no-review-tab' });
         }
         if (await page.evaluate(() => lab._tabAvailable('problem'))) {
           await page.evaluate(() => { lab.setStep(0); lab.setTab('problem'); });
           await page.waitForFunction(() => !lab._tween);
           await measure(scene, 'problem-hidden');
+        } else {
+          (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'problem-hidden', reason: 'no-problem-tab' });
         }
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); const x = lab.scene.steps; lab.setStep((typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0); });
           await measure(scene, 'review-final');
-          if (targets.has(scene.id)) {
+          if (targets.has(scene.id) || run.name === 'mobile-paper') {
             const filename = `${unit}--${scene.id}--${run.name}--review-final.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
             await capture(filename);
           }
         }
-        if (targets.has(scene.id)) {
+        // All scenes receive native controls on mobile; selected scenes retain all eight runs.
+        if (targets.has(scene.id) || run.name === 'mobile-paper') {
           await page.evaluate(i => lab.goScene(i), scene.index);
           await settle();
           const ctl = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([, c]) => c.input.checkVisibility())?.[0] || null);
           if (ctl) {
-            const info = await page.evaluate(k => { const p = lab.params[k]; return { label: APLab.stripEmoji(p.label), value: lab.s[k], step: +p.step || .01, min: +p.min, max: +p.max }; }, ctl);
-            // Range inputs reject binary floating-point tails such as 0.15000000000000002.
-            // Round to the control's decimal precision before exercising its real input event.
-            const places = Math.max(0, String(info.step).split('.')[1]?.length || 0, String(info.min).split('.')[1]?.length || 0);
-            const value = Number((info.value + info.step <= info.max ? info.value + info.step : info.value - info.step).toFixed(Math.min(12, places)));
-            await page.getByRole('slider', { name: info.label, exact: true }).fill(String(value));
+            const info = await page.evaluate(nextNativeRangeInput, ctl);
+            const value = info.value;
+            await page.getByRole('slider', { name: info.label, exact: true }).fill(info.text);
             const actual = await page.evaluate(k => lab.s[k], ctl);
-            const pass = Math.abs(actual - value) < 1e-7;
-            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass });
+            const pass = Math.abs(actual - value) < 1e-7 && (!info.requiresStateChange || actual !== info.storedBefore);
+            dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass, domBefore: info.dom, storedBefore: info.storedBefore, semantic: info.semantic });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', expected: value, actual });
+            await measure(scene, 'numeric-change');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'numeric-change', reason: 'no-visible-numeric-control' });
           }
           const presets = page.locator('.apl-presets .apl-chip:visible');
           if (await presets.count()) {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
+            await measure(scene, 'after-preset');
+          }
+          // Presets may start playback and hide a handle. Probe initial exploration
+          // independently so animation cannot masquerade as a successful drag.
+          await page.evaluate(i => lab.goScene(i), scene.index);
+          await settle();
+          let dragPlaying = await page.evaluate(() => !!lab.s.playing);
+          if (dragPlaying) {
+            const pause = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
+            if (pause >= 0) { await page.locator('.apl-actions-row button').nth(pause).click(); await settle(); }
+            dragPlaying = await page.evaluate(() => !!lab.s.playing);
+            const pass = pause >= 0 && !dragPlaying;
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pause-before-drag', executed: pause >= 0, wasPlaying: true, stopped: !dragPlaying, pass });
+            if (!pass) {
+              report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-could-not-pause', pauseFound: pause >= 0, playing: dragPlaying });
+              throw Error(`Native pause before drag failed: ${unit}/${scene.id}/${run.name}`);
+            }
           }
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
-          if (handle) {
-            // Exercise native browser pointer events; do not invoke the drag callback.
+          if (unit === 'g7-polygons' && ['p1-one', 'p4-diag', 'p4-fan'].includes(scene.id)) {
+            // A discrete vertex selector must reach another actual vertex, not
+            // merely move by a fixed number of pixels inside its old cell.
+            let selection;
+            try { selection = await probePolygonVertex(page, { sceneId: scene.id }); }
+            catch (error) {
+              report.failures.push({ unit, id: scene.id, run: run.name, reason: 'polygon-vertex-drag-failed', message: error.message });
+              throw error;
+            }
+            const attempts = [{ acquired: selection.acquired, changedKeys: selection.changedKeys,
+              delta: [selection.end.x - selection.start.x, selection.end.y - selection.start.y] }];
+            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: selection.handleId,
+              executed: true, stateChanged: selection.changedKeys.length > 0, pass: selection.pass, attempts,
+              pointer: 'mouse', selection });
+            await measure(scene, 'after-native-drag');
+          } else if (handle) {
+            // Render after a control change, scroll, and then read the current
+            // handle location. A previous frame's position can start a pan.
+            // Exercise native pointer events and verify that the intended handle
+            // was actually acquired; never invoke its callback directly.
             const actualCanvas = page.locator('canvas').filter({ visible: true }).first();
-            await actualCanvas.scrollIntoViewIfNeeded();
-            const rect = await actualCanvas.boundingBox();
-            const before = await page.evaluate(() => JSON.stringify(lab.s));
-            const start = { x: rect.x + handle.x, y: rect.y + handle.y };
-            const dx = handle.x < rect.width / 2 ? 48 : -48, dy = handle.y < rect.height / 2 ? 24 : -24;
-            await page.mouse.move(start.x, start.y); await page.mouse.down();
-            await page.mouse.move(start.x + dx, start.y + dy, { steps: 8 }); await page.mouse.up(); await settle();
-            const after = await page.evaluate(() => JSON.stringify(lab.s));
-            dest.interactions.push({ id: scene.id, run: run.name, control: 'pointer-drag', handle: handle.id, executed: true, stateChanged: before !== after, pointer: 'mouse' });
+            await actualCanvas.scrollIntoViewIfNeeded(); await settle();
+            const dx = handle.x < run.width / 2 ? 48 : -48, dy = handle.y < run.height / 2 ? 24 : -24;
+            const attempts = []; let passed = false;
+            // Integer-snapped handles can require more than 64px to cross a
+            // half-step on a large board. Keep the
+            // same native acquisition/state-change gate and try a longer drag.
+            for (const [mx, my] of [[dx,dy],[-dx,-dy],[0,-64],[-64,0],[64,0],[0,64],[128,0],[-128,0],[0,128],[0,-128]]) {
+              const fresh = await page.evaluate(id => { const h = lab.board.handles.find(h => h.id === id && typeof h.drag === 'function'); return h ? {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H} : null; }, handle.id);
+              if (!fresh) break;
+              const rect = await actualCanvas.boundingBox();
+              const start = { x: rect.x + fresh.x * rect.width / fresh.W, y: rect.y + fresh.y * rect.height / fresh.H };
+              const before = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              await page.mouse.move(start.x, start.y); await page.mouse.down();
+              const acquired = await page.evaluate(id => lab.board.dragging?.id === id, handle.id);
+              await page.mouse.move(start.x + mx, start.y + my, {steps:8}); await page.mouse.up(); await settle();
+              const after = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
+              const changedKeys = [...new Set([...Object.keys(before),...Object.keys(after)])].filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k]));
+              attempts.push({acquired,delta:[mx,my],changedKeys});
+              if (!dragPlaying && acquired && changedKeys.length) { passed = true; break; }
+            }
+            dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
+            if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
+            await measure(scene, 'after-native-drag');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'pointer-drag', reason: 'no-visible-draggable-handle' });
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {
@@ -229,6 +380,9 @@ try {
             const pass = during.state !== before && paused;
             dest.interactions.push({ id: scene.id, run: run.name, control: 'play-pause', executed: true, pass });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'play-pause-state' });
+            await measure(scene, 'after-play-pause');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'play-pause', reason: 'no-play-action' });
           }
           const reset = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => a.id === 'reset' && b.checkVisibility()));
           if (reset >= 0) {
@@ -236,6 +390,9 @@ try {
             const stopped = await page.evaluate(() => !lab.s.playing);
             dest.interactions.push({ id: scene.id, run: run.name, control: 'reset', executed: true, stopped });
             if (!stopped) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'reset-left-playing' });
+            await measure(scene, 'after-reset');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'reset', reason: 'no-reset-action' });
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(i => { lab.goScene(i); lab.setStep(0); lab.setTab('problem'); }, scene.index);
@@ -247,21 +404,19 @@ try {
               const signature = () => page.evaluate(() => { const p = lab.scene.problem, call = v => typeof v === 'function' ? v(lab.s, lab) : v; return JSON.stringify([call(p.text), call(p.answer)]); });
               const questionBefore = await signature();
               await page.evaluate(() => lab.setTab('explore')); await settle();
-              const ctlInfo = await page.evaluate(() => {
-                const x = Object.entries(lab._ctls || {}).find(([k, c]) => c.input.checkVisibility() && !/yaw|pitch|orbit|view/i.test(k));
-                if (!x) return null; const [key] = x, p = lab.params[key];
-                return { key, label: APLab.stripEmoji(p.label), value: lab.s[key], step: +p.step || .01, min: +p.min, max: +p.max };
-              });
-              if (ctlInfo) {
-                const places = Math.max(0, String(ctlInfo.step).split('.')[1]?.length || 0, String(ctlInfo.min).split('.')[1]?.length || 0);
-                const value = Number((ctlInfo.value + ctlInfo.step <= ctlInfo.max ? ctlInfo.value + ctlInfo.step : ctlInfo.value - ctlInfo.step).toFixed(Math.min(12, places)));
-                await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(String(value)); await settle();
+              const parameter = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([k, c]) => c.input.checkVisibility() && !/yaw|pitch|orbit|view/i.test(k))?.[0] || null);
+              if (parameter) {
+                const ctlInfo = await page.evaluate(nextNativeRangeInput, parameter);
+                await page.getByRole('slider', { name: ctlInfo.label, exact: true }).fill(ctlInfo.text); await settle();
+                const parameterActual = await page.evaluate(k => lab.s[k], parameter);
+                const parameterPass = Math.abs(parameterActual - ctlInfo.value) < 1e-7 && (!ctlInfo.requiresStateChange || parameterActual !== ctlInfo.storedBefore);
+                if (!parameterPass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', parameter, expected: ctlInfo.value, actual: parameterActual });
                 await page.evaluate(() => lab.setTab('problem')); await page.waitForFunction(() => !lab._tween); await settle();
                 // Compare question content in the same tab: exploration can hide
                 // reveal buttons or answer styles without changing the question.
                 const changed = questionBefore !== await signature();
                 const locked = await page.evaluate(() => !lab.refs.answer?.classList.contains('open'));
-                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, problemChanged: changed, locked });
+                dest.interactions.push({ id: scene.id, run: run.name, control: 'manual-reveal-then-parameter', opened, parameter: ctlInfo.key, parameterInput: { expected: ctlInfo.value, actual: parameterActual, pass: parameterPass, domBefore: ctlInfo.dom, storedBefore: ctlInfo.storedBefore, semantic: ctlInfo.semantic }, problemChanged: changed, locked });
                 if (opened && changed && !locked) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'new-values-retain-open-answer', parameter: ctlInfo.key });
               }
               const revealAgain = page.locator('[data-reveal]:visible');
@@ -311,11 +466,12 @@ try {
       }
       // A small movement can correctly remain in one snap region. Demonstrate
       // a different legal selection with native pointer events on desktop.
-      if (run.name === 'pc' && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
+      if (run.name.startsWith('pc-') && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
         const probes = unit === 'g7-spatial'
-          ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' })], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' })]]
-          : [['regular-solid-cell', () => probePolyhedronCell(page)]];
-        for (const [label, execute] of probes) {
+          ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' }), 's1-6'], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' }), 's1-7']]
+          : [['regular-solid-cell', () => probePolyhedronCell(page), 'p2-6']];
+        for (const [label, execute, probeSceneId] of probes) {
+          if (focused && !focusSceneIds.includes(probeSceneId)) continue;
           try {
             dest.interactions.push({ run: run.name, label, ...await execute() });
             await capture(`${unit}--${run.name}--selection-${label}.png`);
@@ -325,10 +481,27 @@ try {
           }
         }
       }
-      if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });
-      await ctx.close();
-      fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
-      console.log(`${unit} ${run.name}: ${scenes.length} scenes observed; failures so far ${report.failures.length}`);
+      } catch (error) {
+        runError = { name: error?.name || 'Error', message: error?.message || String(error), stack: error?.stack };
+        report.failures.push({ unit, run: run.name, reason: 'run-aborted', error: runError });
+        // Observe the unmodified baseline's failure, then try the next viewport.
+        // The candidate must still reject the same exception.
+        if (!observe || error?.code === 'INVALID_FOCUS_SELECTION') throw error;
+      } finally {
+        if (errors.length) report.failures.push({ unit, run: run.name, reason: 'runtime-error', errors });
+        const observedSceneIds = [...new Set(dest.observations.filter(x => x.run === run.name && x.state === 'initial').map(x => x.id))];
+        const initial = { expected: expectedSceneIds?.length ?? null, observed: observedSceneIds.length, expectedSceneIds, observedSceneIds,
+          missingSceneIds: expectedSceneIds?.filter(id => !observedSceneIds.includes(id)) ?? null,
+          unexpectedSceneIds: expectedSceneIds ? observedSceneIds.filter(id => !expectedSceneIds.includes(id)) : null };
+        (report.runSummaries ||= []).push({ unit, run: run.name, status: runError ? 'ABORTED' : 'FINISHED', initial,
+          ...(focused ? { coverageScope: 'SELECTED_SCENES_ONLY', registeredSceneCount: dest.registeredScenes?.length ?? null, selectedSceneCount: expectedSceneIds?.length ?? null } : {}) });
+        if (runError) (report.abortedRuns ||= []).push({ unit, run: run.name, error: runError, runtimeErrors: errors.slice(), initial });
+        try { if (ctx) await ctx.close(); }
+        finally {
+          fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2));
+          console.log(`${unit} ${run.name}: ${initial.observed}/${initial.expected ?? 'unknown'} initial scenes observed${runError ? ' (ABORTED)' : ''}; failures so far ${report.failures.length}`);
+        }
+      }
     }
   }
 } finally {

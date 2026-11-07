@@ -78,7 +78,7 @@
     const showRole = st >= (o.roleStep || 2), showRows = st >= (o.rowStep || 3);
     const lab = (k, v) => (showRole ? `${role[k]} ${v}` : v);
     drawRT(b, g, {
-      names: { A: 'A', B: 'B', C: 'C' }, fill: 'sky', fa: 0.08, col: showRole ? col : null,
+      names: { A: 'A', B: 'B', C: 'C' }, fill: 'sky', fa: 0.08, col: showRole ? col : null, curveDim: o.curve,
       side: { a: { t: lab('a', vcan(a)), c: showRole ? col.a : 'ink' }, b: { t: lab('b', vcan(bb)), c: showRole ? col.b : 'ink' }, c: { t: lab('c', vcan(M.c)), c: showRole ? col.c : 'ink' } },
       angA: base === 'A' ? { t: o.angA, c: 'amber' } : null, angB: base === 'B' ? { t: o.angB, c: 'amber' } : null
     });
@@ -105,7 +105,7 @@
       const A = 'A', rows = [ratioRow('sin', A, 'a', 'c', M.sA, 'rose'), ratioRow('cos', A, 'b', 'c', M.cA, 'sky'), ratioRow('tan', A, 'a', 'b', M.tA, 'green')];
       const num = [ratioRow('sin', A, vcan(M.a), vcan(M.c), M.sA, 'rose'), ratioRow('cos', A, vcan(M.b), vcan(M.c), M.cA, 'sky'), ratioRow('tan', A, vcan(M.a), vcan(M.b), M.tA, 'green')];
       const use = C.step >= 4 ? num : rows;
-      drawBase(b, M, C, { rows: use, rowStep: 3, roleStep: 2, angA: C.step >= 1 ? `${M.sp}${fmtN(M.deg)}°` : '' });
+      drawBase(b, M, C, { rows: use, rowStep: 3, roleStep: 2, curve: true, angA: C.step >= 1 ? `${M.sp}${fmtN(M.deg)}°` : '' });
     },
     steps: (M) => [
       '기준이 되는 각 $\\angle A$를 정해요. 이 각을 기준으로 변의 이름을 붙여요.',

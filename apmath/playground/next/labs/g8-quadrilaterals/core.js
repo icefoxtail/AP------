@@ -281,6 +281,9 @@
   // 치수선: 선분 pq 에서 수직으로 off(px) 떨어진 곳에 끝 눈금이 있는 가는 선을 긋고 가운데에 길이 글자(전체 길이 표시용). off>0 이면 y 가 커지는 쪽(가로 선분이면 아래)
   function dimLine(b, p, q, off, str, color = 'sky', o = {}) {
     const k = b.k || 60, u = unit(sub(q, p)), n = { x: -u.y, y: u.x }, d = off / k, e = 5 / k, p2 = add(p, mul(n, d)), q2 = add(q, mul(n, d)), sg = off >= 0 ? 1 : -1;
+    // 전체 길이가 어느 두 점 사이인지 끝점을 따라가는 옅은 연장선으로 묶습니다.
+    // 부분 길이 라벨과 분리한 직선 치수는 유지합니다.
+    [[p, p2], [q, q2]].forEach(([at, end]) => b.path([add(at, mul(n, 3 * sg / k)), add(end, mul(n, 3 * sg / k))], { color, width: 1.1, alpha: .5 }));
     b.path([p2, q2], { color, width: 1.8 });
     [p2, q2].forEach((r) => b.path([add(r, mul(n, e)), sub(r, mul(n, e))], { color, width: 1.8 }));
     T(b, mid(p2, q2), str, { dx: n.x * 13 * sg, dy: n.y * 13 * sg, color, size: o.size || 16 });

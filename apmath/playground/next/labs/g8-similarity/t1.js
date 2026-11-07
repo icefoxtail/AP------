@@ -279,20 +279,27 @@
       [[R1, 'ABCD', c1], [R2, 'EFGH', c2]].forEach(([R, nm, c]) => R.forEach((pp, i) => tagOut(b, pp, c, nm[i], { size: 16, gap: 10 })));
       // 대응변: 가로(AB↔EF)=하늘·초록, 세로(BC↔FG)
       const hc = (who) => (who ? 'green' : 'sky');
+      // 다른 부분 길이와 겹치지 않는 가로 대응변만 얕은 곡선 치수로 묶습니다.
+      // 짧게 보이는 작은 직사각형은 직접 라벨을 유지합니다.
+      const widthTag = (R, c, str, color) => {
+        const span = Math.abs(R[1].x - R[0].x) * (b.k || 60);
+        if (b.curveDim && !b.thumb && span >= 70) b.curveDim(R[0], R[1], str, { from: c, bow: 12, gap: 4, size: 16, color });
+        else sideTag(b, R[0], R[1], c, str, { color });
+      };
       if (prob) {
-        sideTag(b, R1[0], R1[1], c1, String(w1), { color: 'sky' }); sideTag(b, R1[1], R1[2], c1, String(h1), { color: 'sky' });
+        widthTag(R1, c1, String(w1), 'sky'); sideTag(b, R1[1], R1[2], c1, String(h1), { color: 'sky' });
         const known = pk.ask === 0 ? 1 : 0; // ask: 0=가로를 구함(세로가 주어짐), 1=세로를 구함(가로가 주어짐)
-        sideTag(b, R2[0], R2[1], c2, pk.ask === 0 ? 'x' : String(w2), { color: pk.ask === 0 ? 'amber' : 'green' });
+        widthTag(R2, c2, pk.ask === 0 ? 'x' : String(w2), pk.ask === 0 ? 'amber' : 'green');
         sideTag(b, R2[1], R2[2], c2, pk.ask === 1 ? 'x' : String(h2), { color: pk.ask === 1 ? 'amber' : 'green' });
       } else {
-        sideTag(b, R1[0], R1[1], c1, fmtN(w1), { color: 'sky' }); sideTag(b, R1[1], R1[2], c1, fmtN(h1), { color: 'sky' });
-        sideTag(b, R2[0], R2[1], c2, fmtN(w2), { color: 'green' });
+        widthTag(R1, c1, fmtN(w1), 'sky'); sideTag(b, R1[1], R1[2], c1, fmtN(h1), { color: 'sky' });
+        widthTag(R2, c2, fmtN(w2), 'green');
         sideTag(b, R2[1], R2[2], c2, st >= 3 || !C.review ? 'x=' + fmtN(h2) : 'x', { color: 'amber' });
       }
       if (C.txt && !prob) {
         const cx = (X2 + w2 + 0) / 2 + 0;
         const cap = st >= 3 ? `x = ${h2}` : st >= 2 ? `닮음비 ${w1} : ${w2} = ${m / M.g} : ${n / M.g}` : '가로는 가로끼리, 세로는 세로끼리 대응해요';
-        T(b, pt((X2 + w2) / 2, 0), C.review ? cap : `닮음비 ${m} : ${n}`, { dy: 40, size: capSize(b), color: 'amber' });
+        T(b, pt((X2 + w2) / 2, 0), C.review ? cap : `닮음비 ${m} : ${n}`, { dy: 54, size: capSize(b), color: 'amber' });
       }
     },
     steps: (M) => [
