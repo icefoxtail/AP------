@@ -1,0 +1,92 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "최댓값을 $M$, 최솟값을 $m$이라 할 때",
+  "sourceConditions": [
+    {
+      "id": "source_graph",
+      "condition": "원문 q13.png의 무리함수 그래프 시작점 (−2,2), x절편 (−1,0). 문제의 주어진 그래프 역할로 보존하고 이 해설 그림에 중복 재작성하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "function",
+      "condition": "시작점에서 b=1,c=2, x절편에서 a=−2. 구하는 함수는 h(x)=(-2x+1)/(x+2)=−2+5/(x+2), 구간 [−1,1]에서 감소.",
+      "mappedTo": [
+        "rational",
+        "requiredPoints"
+      ]
+    },
+    {
+      "id": "extrema",
+      "condition": "닫힌 끝점 h(−1)=3, h(1)=−1/3이므로 M+m=8/3, 정답 ③.",
+      "mappedTo": [
+        "requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 무리함수 문제 그림과 분리해, 보완 해설 그림은 계산된 유리함수 h의 닫힌 구간 그래프와 끝점의 최댓값·최솟값을 보여 준다."
+  ],
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "-2"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -1,
+        "y": 3
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": -0.3333333333333333
+      }
+    ],
+    "exactCoordinates": {
+      "L": [
+        "-1",
+        "3"
+      ],
+      "R": [
+        "1",
+        "-1/3"
+      ]
+    },
+    "formulaTex": "\\frac{-2x+1}{x+2}"
+  },
+  "pointNames": {
+    "L": "L",
+    "R": "R"
+  },
+  "caption": "닫힌 구간 [−1,1]에서 h(x)=−2+5/(x+2)는 감소한다. h(−1)=3, h(1)=−1/3이므로 최댓값과 최솟값의 합은 8/3이다."
+}

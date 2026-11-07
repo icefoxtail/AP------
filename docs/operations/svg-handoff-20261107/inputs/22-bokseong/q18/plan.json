@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "sourceQuote": "치역과 공역이 일치하는",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": ["1", "2", "3", "4", "5"]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": ["a", "b", "c"]
+      }
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 0}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 0}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 4}, "to": {"column": 1, "element": 2}, "style": "SOLID"}
+    ],
+    "arrowGroups": [
+      {"name": "f", "from": "X", "to": "Y", "color": "BLUE"}
+    ]
+  },
+  "caption": "그린 화살표는 모든 전사함수 중 한 예일 뿐이다. 전체 함수 3⁵개에서 a,b,c 중 하나가 빠지는 3·2⁵개를 빼고, 두 값이 함께 빠진 경우 3개를 다시 더해 3⁵−3·2⁵+3=150개이다. 따라서 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "sets",
+      "condition": "X={1,2,3,4,5}, Y={a,b,c}이며 X에서 Y로 가는 함수의 개수를 묻는다.",
+      "mappedTo": ["diagram.columns"]
+    },
+    {
+      "id": "onto",
+      "condition": "치역과 공역이 일치하려면 a,b,c가 모두 함수값으로 사용되어야 한다.",
+      "mappedTo": ["diagram.arrows", "caption"]
+    },
+    {
+      "id": "inclusion_exclusion",
+      "condition": "3^5−C(3,1)2^5+C(3,2)=243−96+3=150.",
+      "mappedTo": ["caption"]
+    }
+  ],
+  "newVisualInformation": [
+    "X의 다섯 원소에서 Y의 세 원소로 가는 함수의 한 예가 a,b,c를 모두 사용함을 대응도로 보인다.",
+    "특정한 대응 예시와 전체 전사함수 개수 150을 분리해, 그림이 150개 전부를 나타내는 것처럼 읽히지 않게 한다.",
+    "포함배제의 전체 함수 수, 빠지는 원소가 있는 함수 수, 중복 차감된 경우를 다시 더하는 흐름은 캡션으로 설명한다."
+  ]
+}

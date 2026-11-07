@@ -1,0 +1,153 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "−3",
+          "−2",
+          "−1",
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "−3",
+          "−2",
+          "−1",
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 6
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 6
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 6
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ]
+    },
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "대표 예시에서 −3과 3은 함께 1에, −2와 2는 함께 2에, −1과 1은 함께 3에 대응하고 0은 0에 대응한다. 이것은 가능한 함수 한 가지일 뿐이다. 일반적으로 세 대칭쌍의 공통 함수값과 f(0)을 각각 X의 7개 값 중 하나로 고를 수 있어 함수의 수는 7⁴이다.",
+  "sourceQuote": "집합 $X=\\{-3,-2,-1,0,1,2,3\\}$에 대하여 함수 $f$는 $X$에서 $X$로의 함수이다. 다음 조건을 만족시키는 함수의 개수를 구하고 그 과정을 서술하시오. (단, 답은 거듭제곱의 형태로 나타낼 수 있다.) [5점]<div class=\"note-box\">$X$의 모든 원소 $x$에 대하여 $f(-x)=f(x)$</div>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X는 {−3,3}, {−2,2}, {−1,1} 세 대칭쌍과 {0} 하나로 나뉜다.",
+      "mappedTo": "diagram.columns"
+    },
+    {
+      "id": "c2",
+      "condition": "f(−x)=f(x)이므로 각 대칭쌍의 두 입력은 공통 함수값 하나를 택한다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "c3",
+      "condition": "각 세 쌍과 0의 함수값은 공역 X의 7개 값 가운데 독립적으로 하나를 선택한다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭쌍 입력마다 화살표가 같은 함수값에 모이는 대표 예시를 보이고, 예시와 전체 7⁴ 경우 수를 분명히 구분한다."
+  ]
+}

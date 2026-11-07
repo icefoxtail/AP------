@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "sym",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "sym"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "sym"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "BD",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [
+    "sym"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "lineLabels": [
+    {
+      "form": "SLOPE_INTERCEPT",
+      "nodeId": "sym"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "to": "D",
+        "offset": 1,
+        "factRole": "GIVEN",
+        "id": "dBD",
+        "label": "7",
+        "side": "BELOW",
+        "from": "B",
+        "style": "BAR"
+      },
+      {
+        "to": "F",
+        "offset": 1,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "id": "dAF",
+        "label": "1",
+        "side": "RIGHT",
+        "from": "A",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raF",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "refs": [
+        "A",
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "caption": "A와 B, C와 D는 y=x에 대칭이다. △ABD의 밑변 BD는 7, 높이 AF는 1이므로 넓이는 7/2이다.",
+  "sourceConditions": [
+    {
+      "condition": "A=(2,3), C=(2,-4)이고 함수와 역함수의 대응점은 y=x에 대칭이므로 B=(3,2), D=(-4,2)이다.",
+      "id": "scReflection",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "sym"
+      ]
+    },
+    {
+      "condition": "B와 D는 y=2 위에 있고 BD=7이다. A에서 BD까지의 수직 높이는 1이며 발은 F=(2,2)이다.",
+      "id": "scTriangle",
+      "mappedTo": [
+        "BD",
+        "AF",
+        "F",
+        "raF"
+      ]
+    },
+    {
+      "condition": "△ABD의 넓이는 7×1/2=7/2이다.",
+      "id": "scArea",
+      "mappedTo": [
+        "sAB",
+        "sAD",
+        "sBD",
+        "dBD",
+        "dAF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등축척 좌표축에서 y=x 대칭선의 화면 기울기가 45°로 보인다.",
+    "대응점 좌표와 닫힌 삼각형 ABD, BD=7, AF=1인 수직 높이를 함께 표시한다.",
+    "문제에 식이 주어지지 않은 함수 곡선을 만들지 않는다."
+  ]
+}

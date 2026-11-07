@@ -1,0 +1,154 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "A",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "A",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 6
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 6
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        },
+        "style": "SOLID"
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        0,
+        2
+      ]
+    },
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "예시로 n=1을 고르면 굵은 화살표는 f(1)=1, f(3)=7을 나타내고 차는 6이다. 일반적으로 n은 1,2,3,4,5의 다섯 위치 중 하나이며, 남은 다섯 입력에는 값 2,3,4,5,6을 5!가지로 배치한다. 따라서 함수의 수는 5×5!, 정답 ①이다. 그림의 다른 화살표는 한 가지 완성 예일 뿐이다.",
+  "sourceQuote": "집합 $A=\\{1,2,3,4,5,6,7\\}$일 때, $A$에서 $A$로의 함수 중 다음 조건을 모두 만족시키는 함수 $f$의 개수는? [4.3점]<div class=\"note-box\">(가) 함수 $f$의 역함수가 존재한다.<br>(나) 정의역 $A$의 오직 한 원소 $n$에 대하여 $f(n+2)-f(n)=6$이다.</div>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "역함수가 존재하므로 f는 A의 원소를 한 번씩 대응시키는 순열이다.",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "f(n+2)-f(n)=6이면 가능한 값은 f(n)=1, f(n+2)=7뿐이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "c3",
+      "condition": "n+2∈A이므로 n=1,2,3,4,5의 다섯 선택지가 있다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c4",
+      "condition": "한 n을 정하면 나머지 다섯 도메인 원소에는 2,3,4,5,6을 임의로 배치해 5!가지가 된다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1인 대표 함수에서 두 강제 대응을 강조하고, 캡션에서 n의 다섯 선택지와 남은 값의 5! 배치를 일반 경우로 따로 설명한다."
+  ]
+}

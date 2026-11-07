@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "직선 $y=-2x+k$와 만나지 않도록 하는 정수 $k$의 최댓값은?",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "BLUE",
+        "weight": "BOLD",
+        "label": "y=x/(x-2)"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "k=1"
+      },
+      {
+        "id": "l8",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "GREEN",
+        "weight": "BOLD",
+        "label": "k=8"
+      },
+      {
+        "id": "l9",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "ROSE",
+        "style": "DASHED",
+        "label": "k=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "caption": "k=1과 k=9에서는 각각 (1,−1), (3,3)에서 한 점으로 접하고, k=8일 때는 만나지 않는다."
+}

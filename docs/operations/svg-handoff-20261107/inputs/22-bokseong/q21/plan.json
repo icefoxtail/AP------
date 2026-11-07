@@ -1,0 +1,189 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $y=f(x)$의 그래프 위의 점 $P$를 지나고",
+  "sourceConditions": [
+    {
+      "id": "branches",
+      "condition": "원문은 x>0에서 8/x, x<0에서 2/x인 조각 유리함수와 직선 y=−x를 준다.",
+      "mappedTo": [
+        "p8",
+        "p2",
+        "line"
+      ]
+    },
+    {
+      "id": "positive_case",
+      "condition": "t=2 대표 사례는 P=(2,4), Q=(2,−2), R=(−1,−2).",
+      "mappedTo": [
+        "Pp",
+        "Qp",
+        "Rp",
+        "segments"
+      ]
+    },
+    {
+      "id": "negative_case",
+      "condition": "t=−2 대표 사례는 P=(−2,−1), Q=(−2,2), R=(4,2).",
+      "mappedTo": [
+        "Pn",
+        "Qn",
+        "Rn",
+        "segments"
+      ]
+    },
+    {
+      "id": "minimum",
+      "condition": "u=|t|>0에서 S=u²/2+5+8/u², S−9=(u²−4)²/(2u²)≥0이며 u=2에서 최소 9.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "두 부호의 대표 삼각형을 같은 좌표평면에서 P⁺Q⁺R⁺와 P⁻Q⁻R⁻로 나누고, 각 점의 좌표·두 직각변 길이를 읽어 같은 넓이 식으로 연결한다."
+  ],
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -3,
+      5
+    ],
+    "curves": [
+      {
+        "id": "p8",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "8"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=8/x"
+      },
+      {
+        "id": "p2",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "2"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "color": "WARM",
+        "label": "y=2/x"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=-x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Pp",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "Qp",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Rp",
+          "x": "-1",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Pn",
+          "x": "-2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Qn",
+          "x": "-2",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Rn",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PpQp",
+          "from": "Pp",
+          "to": "Qp"
+        },
+        {
+          "id": "QpRp",
+          "from": "Qp",
+          "to": "Rp"
+        },
+        {
+          "id": "RpPp",
+          "from": "Rp",
+          "to": "Pp"
+        },
+        {
+          "id": "PnQn",
+          "from": "Pn",
+          "to": "Qn"
+        },
+        {
+          "id": "QnRn",
+          "from": "Qn",
+          "to": "Rn"
+        },
+        {
+          "id": "RnPn",
+          "from": "Rn",
+          "to": "Pn"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "Pp": "P⁺",
+    "Qp": "Q⁺",
+    "Rp": "R⁺",
+    "Pn": "P⁻",
+    "Qn": "Q⁻",
+    "Rn": "R⁻"
+  },
+  "caption": "t=2와 t=−2의 삼각형을 P⁺Q⁺R⁺, P⁻Q⁻R⁻로 구분한다. 두 부호에서 직각변의 순서만 바뀐다. u=|t|에서 S=½(u+8/u)(u+2/u)=u²/2+5+8/u²이고 S−9=(u²−4)²/(2u²)≥0이므로 u=2에서 최소 넓이 9이다."
+}

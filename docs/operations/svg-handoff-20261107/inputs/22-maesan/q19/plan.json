@@ -1,0 +1,162 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-8",
+      "4",
+      "-3",
+      "9"
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    },
+    "curves": [
+      {
+        "id": "hyperbola",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-5",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=-5/x"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=x+6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-8",
+        "-5",
+        "-1",
+        "0",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-3",
+        "0",
+        "1",
+        "5",
+        "6",
+        "9"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-5",
+          "y": "1",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "length": true
+        },
+        {
+          "id": "QO",
+          "from": "Q",
+          "to": "O"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "OPQ",
+          "points": [
+            "O",
+            "P",
+            "Q"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "P=(-1,5)는 위·오른쪽 교점, Q=(-5,1)는 아래·왼쪽 교점이다. △OPQ의 넓이는 12이다.",
+  "sourceConditions": [
+    {
+      "condition": "y=k/x (k<0)과 y=x+6의 교점은 P,Q이며 O=(0,0)이다.",
+      "id": "scCurves",
+      "mappedTo": [
+        "hyperbola",
+        "line",
+        "O",
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "condition": "원문 그림의 P는 위·오른쪽 교점 (-1,5), Q는 아래·왼쪽 교점 (-5,1)이다.",
+      "id": "scSourceLabels",
+      "mappedTo": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "condition": "삼각형 OPQ의 넓이는 12이며 해설에서 k=-5로 정해져 유리함수는 y=-5/x이다.",
+      "id": "scArea",
+      "mappedTo": [
+        "hyperbola",
+        "OPQ",
+        "PQ"
+      ]
+    },
+    {
+      "condition": "음의 x 영역을 포함하고 유리함수의 두 가지는 교점에서 멈추지 않고 plot window 경계까지 이어진다.",
+      "id": "scWindow",
+      "mappedTo": [
+        "hyperbola"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등축척 좌표계에서 y=x+6이 45°로 보이도록 한다.",
+    "원문 점 이름 P/Q의 위치 관계, 음의 x 가지, 원점과 △OPQ를 함께 표시한다.",
+    "유리함수 가지는 교점에서 끊지 않고 각 plot-window 경계까지 표시한다."
+  ]
+}

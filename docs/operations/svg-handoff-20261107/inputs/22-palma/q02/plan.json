@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 조건의 공통 범위"
+  },
+  "caption": "분자의 근호는 x≥3, 분모의 근호는 x<5에서 정의되므로 공통 범위는 [3,5)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분자 √(x−3)이 실수이려면 x−3≥0",
+      "mappedTo": [
+        "numberLine.rows[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "분모 √(5−x)가 실수이고 0이 아니려면 5−x>0",
+      "mappedTo": [
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 조건의 교집합은 [3,5)",
+      "mappedTo": [
+        "numberLine.rows[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선에서 x=3은 닫힌 끝점, x=5는 열린 끝점으로 나타내고 RESULT 행에 교집합을 표시한다."
+  ],
+  "sourceQuote": "분모의 근호는 $0$이 될 수 없다."
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "0",
+          "\\frac{8}{3}"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "0",
+          "\\frac{8}{3}"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "궤도 X={0,8/3}에서 f는 두 값을 서로 대응시키며, 원래 함수의 정의역에서는 x=3을 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(0)=8/3",
+      "mappedTo": "diagram.arrows[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "f(8/3)=0",
+      "mappedTo": "diagram.arrows[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "f(x)는 x=3에서 정의되지 않음",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 얻은 0→8/3→0의 2주기 궤도만 표시하며 전체 실수 정의역을 유한집합으로 축소한 그림이 아님을 캡션에 명시한다."
+  ],
+  "sourceQuote": "합성을 두 번 했을 때 원래 입력값으로 돌아오는지"
+}

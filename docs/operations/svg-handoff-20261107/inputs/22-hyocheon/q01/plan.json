@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-1",
+      "2",
+      "-1",
+      "2"
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "weight": "BOLD",
+        "label": "y=-x+1"
+      },
+      {
+        "id": "yx",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "1"
+      ],
+      "y": [
+        "0",
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x와 y를 바꾸어도 y=-x+1은 같은 직선이며, (0,1)과 (1,0)이 서로 대응한다. 역함수는 f⁻¹(x)=-x+1이고 정답은 ⑤다.",
+  "sourceQuote": "함수 $y=-x+1$의 역함수는? [3.5점]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원함수는 y=-x+1이다.",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x와 y를 바꾸어 다시 y에 대해 풀면 y=-x+1로 동일하다.",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원함수의 (0,1)과 역함수의 (1,0)은 대응점이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "y=x 대칭축과 두 대응점을 한 축척으로 표시해 x,y 교환 뒤 같은 직선이 됨을 드러낸다."
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-1",
+      "7",
+      "-1",
+      "8"
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    },
+    "curves": [
+      {
+        "id": "base",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=2/x"
+      },
+      {
+        "id": "outer",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=6/x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "y": [
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "6",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "length": true
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C",
+          "length": true
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "ABC",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "A",
+          "from": [
+            "B",
+            "C"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "t=1의 예시에서 A(1,2), B(3,2), C(1,6)과 직각삼각형 ABC의 넓이가 4임을 확인한다.",
+  "sourceConditions": [
+    {
+      "condition": "A는 y=2/x 위에 있고, 바깥 곡선은 y=k/x이며 두 곡선과 x축·y축에 평행한 선으로 A,B,C가 정해진다.",
+      "id": "scFunctions",
+      "mappedTo": [
+        "base",
+        "outer",
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "condition": "해설 그림의 대표 예시는 t=1이고 풀이에서 k=6이므로 A=(1,2), B=(3,2), C=(1,6)이다.",
+      "id": "scExample",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "AB",
+        "AC",
+        "BC",
+        "ABC"
+      ]
+    },
+    {
+      "condition": "AB=2, AC=4이고 AB⊥AC이므로 삼각형 넓이는 4이다.",
+      "id": "scArea",
+      "mappedTo": [
+        "AB",
+        "AC",
+        "ABC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등축척 좌표계에서 두 반비례 함수, A/B/C의 좌표, 닫힌 삼각형과 직각을 함께 보인다.",
+    "AB=2와 AC=4를 해당 변에 결속해 면적 계산을 확인한다."
+  ]
+}

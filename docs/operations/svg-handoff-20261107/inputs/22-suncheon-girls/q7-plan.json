@@ -1,0 +1,110 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "모든 사분면을 지나도록 하는 자연수 $k$의 최솟값은?",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "-2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "BLUE",
+        "weight": "BOLD",
+        "label": "k=3"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "-2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "k=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/4",
+          "y": "2/5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1/2",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "-3",
+          "y": "-7/2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "O": "O"
+  },
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "caption": "k=2일 때는 원점을 지나도 제1사분면의 점이 없고, k=3이면 네 사분면을 모두 지난다."
+}
