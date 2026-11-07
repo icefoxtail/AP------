@@ -1,0 +1,130 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "${f(x)}^3-{f(x)}^2-x^2f(x)+x^2=0$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "연속성과 범위 조건에서 이어지는 네 조각과 대칭 적분 영역.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "연속성과 범위 조건에서 이어지는 네 조각과 대칭 적분 영역.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "연속성과 범위 조건에서 이어지는 네 조각과 대칭 적분 영역."
+  ]
+}

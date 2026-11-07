@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$v(t)=3t^2-3t$일 때",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      -1,
+      3,
+      -2,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-3/4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "속도 부호의 변화와 양·음 영역을 각각 양수로 더하는 이동거리 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도 부호의 변화와 양·음 영역을 각각 양수로 더하는 이동거리 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도 부호의 변화와 양·음 영역을 각각 양수로 더하는 이동거리 관계."
+  ]
+}
