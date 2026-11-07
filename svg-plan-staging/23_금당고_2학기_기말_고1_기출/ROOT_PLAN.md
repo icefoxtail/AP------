@@ -1,35 +1,34 @@
 # 최신 ROOT 문항별 계획 · 2023 금당고 2학기 기말
 
-기준 원문은 21문항이다. 계획은 원문 JS와 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`를 대조했다. Q5는 Claude 담당이므로 제외했다. Q8/Q13/Q20 기존 정합 초안은 확인되지 않아 OPEN으로 유지했다. Q7은 과거 5회 FAILED 이력을 보존했고 새 렌더를 하지 않았다.
+기준 원문은 21문항이다. 기존 시각화 의도를 유지했다. AUTHOR_GUIDE의 공식 stat TREE, ellipse, plane construction, VENN 및 piecewise reference 계약을 대조해 실제 plan 초안을 작성했다. Q5는 Claude 담당이라 제외했고, Q7 과거 5회 실패, Q8/Q13/Q20 OPEN 상태를 보존했다. 이번 회차 renderer는 실행하지 않았다.
 
-## 상태별 요약
+## 분류
 
-- EXEMPT: Q1, Q2, Q6, Q12, Q14, Q15. 풀이식과 간단한 경우 분기로 충분해 별도 SVG를 만들지 않는 것이 적절하다.
-- DRAFT_ONLY: Q3. 3열 대응도 plan/publish 입력을 작성했으나 렌더하지 않았다.
-- UNSUPPORTED: Q4, Q9, Q16, Q17, Q18, Q19, Q21. 원문 구조를 충실히 표현할 엔진 입력/스키마가 미확정이다.
-- 기존 상태 보존: Q5 CLAUDE_IN_PROGRESS; Q7 FAILED 5회; Q8/Q13/Q20 OPEN; Q10/Q11 ARCHIVE_BOUND.
-- 시험지 상태 정리는 완료했지만 21문항 전체가 렌더된 것은 아니다.
+- DRAFT_ONLY 입력: Q1–Q4, Q9, Q12, Q14–Q15, Q17, Q19.
+- OPEN: Q6, Q16, Q18, Q21. 개별 plan.json에 근거를 기록했다.
+- 기존 상태: Q5 CLAUDE_IN_PROGRESS; Q7 FAILED 5회; Q8/Q13/Q20 OPEN; Q10/Q11 ARCHIVE_BOUND.
+- EXEMPT로 변경한 문항 없음.
 
 ## 문항별 계획
 
-- Q1: 5P3은 5×4×3 풀이식으로 충분해 EXEMPT.
-- Q2: 서로 다른 크기의 두 모둠이므로 5명 중 2명을 고르는 조합식으로 충분해 EXEMPT.
-- Q3: X의 1 → Y의 −3은 g, Y의 −3 → Z의 1은 f로 잇는 3열 mapping 입력 초안. 렌더 전.
-- Q4: 원본 보기 ②의 원에 수직선을 대는 판별. 보기 배치를 보존하는 엔진 입력 미확정, UNSUPPORTED.
-- Q5: CLAUDE_IN_PROGRESS. 재작성하지 않음.
-- Q6: 1/[k(k+1)] 인접항 소거가 풀이식에 직접 드러나므로 EXEMPT.
-- Q7: y=(x+1)/(1−x), 점근선 x=1,y=−1, 중심 C=(1,−1), 대칭선 y=x−2. 과거 5회 FAILED 및 OPEN 이력 보존, 추가 렌더 금지.
-- Q8: 기존 정합 초안 파일 확인 불가. 재사용 초안 확보 전까지 OPEN.
-- Q9: 원본 q9.png의 정오각형 ABCDE, 내부 교점 5개, 각 대각선의 4점 공선 조건을 보존한다. 좌표/교점 입력 미확정, UNSUPPORTED.
-- Q10: 실제 f(x)=−x+1, X=(−1,4), Y=(−3,2)의 열린 끝점 대응. Q11 예시와 혼동하지 않음. 이전 공식 SVG 보존.
-- Q11: 실제 f(x)=2/(x−2)+3, 점근선 교점 (2,3), [0,1] 위 (0,2),(1,1). 양의 분자 설명 오류와 Q10 예시 혼동을 수정. 이전 공식 SVG 보존.
-- Q12: 사전순 블록 계산. 원문에서 278번째 문자열은 merbun으로 확인; 별도 SVG는 EXEMPT.
-- Q13: 기존 정합 초안 확인 불가. OPEN.
-- Q14: a+b+c≠0 분기 값 6, a+b+c=0 분기 값 −3. 풀이식으로 충분해 EXEMPT.
-- Q15: 테마별 선택 경우 9+18+18, 뒤에 4! 배열. 간단한 경우식으로 충분해 EXEMPT.
-- Q16: sqrt(x−p)와 |1/x+q| 혼합 구간 및 수평선 교점 수. 정확한 엔진 표현 미검증, UNSUPPORTED.
-- Q17: 원본 7영역 인접 그래프. VENN은 위상적으로 달라 대체하지 않으며 일반 인접 그래프 입력 미확인, UNSUPPORTED.
-- Q18: 원문 f,g 꺾은선에서 g(u)=2를 찾고 f를 역추적. stacked multi-curve 입력 미검증, UNSUPPORTED.
-- Q19: 원본 2층 3칸·1층 4칸 사물함 및 층별 인접 제약/경우 분기. 전용 grid 입력 미확인, UNSUPPORTED.
-- Q20: 기존 정합 초안 확인 불가. OPEN.
-- Q21: 일부만 결정되는 세 전단사 대응. h(5),h(7)은 개별 미정이고 {3,5}만 고정되어 확정 대응도로 그리지 않음, UNSUPPORTED.
+- Q1: TREE에서 5,4,3 선택 가지를 전개해 중복 없는 세 자리 순서를 나타낸다.
+- Q2: TREE로 5×4 순서쌍을 펼치고 역순이 같은 모둠임을 설명한다.
+- Q3: MAPPING 3열 1 → −3 → 1, 화살표는 g 다음 f.
+- Q4: construction의 CIRCLE_CENTER_RADIUS 원, x=1 수직선, 교점 두 개를 입력한다.
+- Q5: Claude 담당, 재작성하지 않는다.
+- Q6: OPEN. 확인한 공식 capability 중 대수식 인접항 소거 표시 계약을 찾지 못했다.
+- Q7: 기존 도식과 5회 FAILED 기록 유지, 재렌더하지 않는다.
+- Q8: 기존 정합본 확인 전까지 OPEN.
+- Q9: PLANE_FIGURE construction으로 오각형 ABCDE, 다섯 대각선 및 다섯 내부 교점을 입력한다.
+- Q10: 실제 f(x)=−x+1, 열린 구간 대응, 기존 SVG 보존.
+- Q11: 실제 f(x)=2/(x−2)+3, [0,1] 끝점; 문구 혼동 수정, SVG 보존.
+- Q12: TREE 하위 블록 120,24,6,2,1을 따라 278번째 merbun 경로를 강조한다.
+- Q13: 기존 정합본 미확인으로 OPEN.
+- Q14: TREE로 a+b+c=0과 비영 두 분기 및 대칭식 −3,6을 나타낸다.
+- Q15: TREE로 테마 선택 9,18,18 분기와 네 체험의 4! 배열을 나타낸다.
+- Q16: OPEN. 절댓값 유리 가지(x=0 제외)와 제곱근 가지를 함께 선언할 piecewise 계약 미확인.
+- Q17: 3-set VENN의 일곱 영역 A–G가 원문의 겹침과 인접 구조를 나타낸다.
+- Q18: OPEN. f,g는 [0,2]에서 겹치지만 공식 referenceCurves 계약은 유한 교점 목록을 요구한다.
+- Q19: PLANE_FIGURE 선분으로 위 3칸·아래 4칸 사물함 배열과 A–G 위치를 복원한다.
+- Q20: 기존 정합본 미확인으로 OPEN.
+- Q21: OPEN. 아직 순서 미정인 h(5),h(7)의 두 경우를 보존할 mapping 계약 미확인.

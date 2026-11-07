@@ -1,4 +1,108 @@
 {
-  "status": "EXEMPT",
-  "reason": "서로 다른 크기의 두 모둠이므로 5명 중 2명을 고르는 조합 계산만으로 충분하다. 별도 해설 도식은 중복 정보를 더한다."
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "1",
+          "children": [
+            {
+              "label": "2"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "4"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "4"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "2"
+            },
+            {
+              "label": "4"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "2"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "5"
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "children": [
+            {
+              "label": "1"
+            },
+            {
+              "label": "2"
+            },
+            {
+              "label": "3"
+            },
+            {
+              "label": "4"
+            }
+          ]
+        }
+      ]
+    },
+    "leafLayout": "COMPACT"
+  },
+  "caption": "순서쌍 5×4=20개에서 AB와 BA처럼 순서만 바뀐 쌍을 하나의 두 모둠으로 묶어 2로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "학생 다섯 명에서 첫 번째와 두 번째 학생을 순서 있게 고른다. 각 두 명 모둠은 순서가 달라도 같은 모둠이다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "순서쌍은 20개이며 각 무순서 두 명 모둠을 두 번 센다.",
+    "쌍 수를 2로 나누어 2명·3명 두 모둠으로 나눈다."
+  ]
 }

@@ -1,21 +1,29 @@
 # 23 금당고 고1 2학기 기말 SVG 초안 상태
 
-기준 원문 `archive/exams/original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js` (21문항). AUTHOR_GUIDE와 실제 문항/해설을 대조했다.
+기준 원문 archive/exams/original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js (21문항). 이전 계획의 시각화 의도를 유지해 AUTHOR_GUIDE의 공식 capability 계약을 확인했다. 이번 회차는 입력 작성이며 renderer는 실행하지 않았다.
 
 | 문항 | 상태 | 확인 사항 |
 |---|---|---|
-| Q1, Q2, Q6, Q12, Q14, Q15 | EXEMPT | 풀이식/간단한 경우 분기가 충분해 별도 SVG가 불필요 |
-| Q3 | DRAFT_ONLY | 3열 mapping 입력 및 publish metadata 작성. 렌더 미실행 |
-| Q4, Q9, Q16, Q17, Q18, Q19, Q21 | UNSUPPORTED | 원문 구조에 맞는 엔진 표현/스키마 미확정. 개별 plan.json에 이유 기록 |
-| Q5 | CLAUDE_IN_PROGRESS | Claude 담당; 건드리지 않음 |
-| Q7 | FAILED / OPEN | 과거 렌더 5회 실패 기록 유지. 최종 STATIC_GRAPH_AUDIT_FAIL; 추가 렌더 안 함 |
-| Q8, Q13, Q20 | OPEN | 기존 aligned draft 파일 확인 불가; 중복 초안 생성 안 함 |
-| Q10 | ARCHIVE_BOUND | 공식 piecewise-discontinuous 렌더, repairs 0. PNG 육안 확인. 이전 커밋에 SVG 보존 |
-| Q11 | ARCHIVE_BOUND | 공식 rational-spike 렌더, repairs 0. PNG 육안 확인. 부정확한 양의 분자 설명 및 Q10 예시 혼동 수정; 이전 커밋에 SVG 보존 |
+| Q1 | DRAFT_ONLY | TREE의 5→4→3 선택 트리 |
+| Q2 | DRAFT_ONLY | TREE 순서쌍과 역순 중복 관계 |
+| Q3 | DRAFT_ONLY | g 다음 f의 3열 mapping |
+| Q4 | DRAFT_ONLY | construction circle-line intersection으로 같은 x좌표인 두 교점 표시 |
+| Q5 | CLAUDE_IN_PROGRESS | Claude 담당, 제외 |
+| Q6 | OPEN | 공식 대수식 소거 capability 계약 미확인 |
+| Q7 | FAILED / OPEN | 과거 5회 실패 이력 유지, 추가 렌더 안 함 |
+| Q8 | OPEN | 기존 aligned draft 미확인 |
+| Q9 | DRAFT_ONLY | PLANE_FIGURE construction으로 꼭짓점·대각선·내부 교점 구성 |
+| Q10 | ARCHIVE_BOUND | 기존 공식 piecewise-discontinuous 렌더 보존 |
+| Q11 | ARCHIVE_BOUND | 공식 rational-spike 렌더 보존; 부정확한 양의 분자 설명/Q10 예시 혼동 수정 |
+| Q12 | DRAFT_ONLY | TREE 블록 크기와 278번째 경로 merbun 표시 |
+| Q13 | OPEN | 기존 aligned draft 미확인 |
+| Q14 | DRAFT_ONLY | 두 대수 분기와 값 −3,6의 case tree |
+| Q15 | DRAFT_ONLY | (2,1,1) 선택 분기와 4! 배열 |
+| Q16 | OPEN | 혼합 유리·절댓값·제곱근 piecewise 계약 미확인 |
+| Q17 | DRAFT_ONLY | 3-set VENN 계약으로 원문의 7영역 인접도를 표현 |
+| Q18 | OPEN | f,g 공통 선분은 유한 교점 목록 계약에 맞지 않음 |
+| Q19 | DRAFT_ONLY | PLANE_FIGURE로 원문 2층 3칸·1층 4칸 배열 복원 |
+| Q20 | OPEN | 기존 aligned draft 미확인 |
+| Q21 | OPEN | 두 가능한 h 대응 순서를 보존할 mapping 계약 미확인 |
 
-Q3 입력 초안은 엔진에서 실행하지 않아 엔진 검증/렌더 PASS가 아니다. 이번 라운드에서 공식 렌더를 추가로 실행하지 않았다. Q10/Q11 기존 공식 SVG SHA-256:
-
-- Q10 `figure-solution.svg`: `080A0A689F3A4DB6E0BEA2FF04BE85CADD084FC423D4F338C55BC432C74D4FF7`.
-- Q11 `figure-solution.svg`: `77B472B1796A261A63D843BB7CC840DE91147809EB3296844B7DAEFB781EC74C`.
-
-Q7의 세부 이력은 `drafts/Q07/render-status.json`에 보존했다. Q8/Q13/Q20 OPEN은 기존 정합 초안을 확보하지 못했다는 뜻이다. 확인되지 않은 파일을 완료 처리하지 않았다.
+Q7은 추가 렌더하지 않았다. Q8/Q13/Q20 중복 초안은 만들지 않았다. Q10/Q11 SVG와 검수 증거를 보존했다. Q6/Q16/Q18/Q21에는 미확정 근거를 개별 plan.json에 기록했다.
