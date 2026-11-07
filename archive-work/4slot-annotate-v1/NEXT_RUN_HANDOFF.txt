@@ -1,32 +1,23 @@
-JS Archive 4칸 작성 다음 실행 CURRENT — 2026-11-04
+[JS Archive 4slot Annotation - Batch Run Summary & Next Run Handoff]
+Run Time: 2026-11-07
+Agent: Antigravity
+Branch: work/4slot-annotate-v1
+Remote: https://github.com/icefoxtail/AP------.git
 
-사용자 최신 지시: 현재 대화는 36배치(#351~360) 마감 후 중지. 다음 신규 작업은 37배치(#361~370), ORDER=361-861,N=10. 현재 정상 미출고 0개(최종 readback 수납 전이면 완료라고 하지 않는다). #215/#225 입력 부채는 별도 보존, 완료로 취급하지 않는다.
+Completed in this run (10 exams):
+- ORDER #362: 22_연향중_1학기_중간_중3_기출c.js (21 items, commit 05708aae4, blob 67bc3c0c45e3f90871fe79ca4484cf86354058cd)
+- ORDER #363: 22_왕운중_1학기_중간_중3_기출.js (24 items, commit e956b509e, blob b053584cf1bdf0a0153b89fa01dd7a39f96d70d4)
+- ORDER #364: 22_팔마중_1학기_중간_중3_기출.js (25 items, commit 235035f7c, blob b356825b4fdd66f96de53e9d0f044f7e0893241b)
+- ORDER #365: 22_풍덕중_1학기_중간_중3_기출.js (20 items, commit 5e31071bf, blob 405e3e83ebf97f0ee6802df3f50565ea97e037dc)
+- ORDER #366: 22_향림중_1학기_중간_중3_수학.js (24 items, commit 4c47d6267, blob ae0ce63b668b91742d403a5e182df1e1b6ff46d2)
+- ORDER #367: 21_금당중_1학기_중간_중3_기출.js (23 items, commit fe6764e56, blob 3159c589f25354ef2889456c096508305899712f)
+- ORDER #368: 21_금당중_1학기_중간_중3_수학.js (23 items, commit 8a536b512, blob 142aaaeba97b048bef3d6b7e95f13ef298a30cf7)
+- ORDER #369: 21_동산중_1학기_중간_중3_기출.js (25 items, commit 63d4d5237, blob bd7c0107acbc135eed6c626cf127101344a822a2)
+- ORDER #370: 21_매산중_1학기_중간_중3_기출.js (24 items, commit 762d6e99c, blob 855355ba83078601a725defb06287ce5ee847b0f)
+- ORDER #371: 21_매산중_1학기_중간_중3_수학.js (24 items, commit 45cf96aac, blob c93e17c5681f278bd2e7d7929c673423f9943d00)
 
-JS Archive 4칸 예약 작업 재개 지시
+Total Items Processed: 233 items across 10 exams.
+All 10 exams validated with FAIL: 0, WARN: 0, verified on remote git tree.
 
-대상: 원본 QUEUE-original.json, ORDER=361-861, N=10. 10개마다 새 배치. 마지막 잔여분은 남은 수만.
-기본 작성 모델: gpt-6.1-terra, reasoning high. 최대 5명, 각자 겹치지 않는 10개. 한 작성자가 배치를 마치면 다른 4명을 기다리지 말고 수납/재검 후 즉시 다음 미처리 10개를 배정한다. 완료 상태 작업자를 다시 실행하려면 followup_task 또는 새 작성자를 실제로 실행해야 하며, 단순 메시지 전송만으로 실행됐다고 하지 않는다. 새 문맥의 작성자도 같은 모델을 유지한다.
-
-현재 사용자 범위: JS의 Q/C/S와 연결된 기존 이미지 에셋만 확인. 원본 PDF/Drive/source-pages 대조, 원본문제·정답·해설·그림 수리 확대 금지. SVG/inline SVG/data URI는 기존 내용 그대로 열람용 PNG로 렌더하고 실제로 연다. 부족한 자료는 EVIDENCE_DEBT로 정확히 기록하고 추정/의미 PASS로 채우지 않는다. 과거 비교 기록 및 승인된 #121 수리 초안은 보존한다.
-
-실행 기준 저장소: icefoxtail/AP------, branch work/4slot-annotate-v1. 로컬 Git 작업은 C:\Users\USER\Documents\Codex\2026-11-04\js-archive-4-n-10-icefoxtail\work\next-session-repo만 사용하며 모든 Git 명령의 workdir를 명시한다. Desktop 체크아웃 또는 이전 채팅 체크아웃에서 Git 쓰기 금지. 다른 호스트라면 독립 index를 갖는 체크아웃과 경로를 먼저 명시적으로 바인딩하고 이 Windows 절대 경로를 그대로 실행하지 않는다.
-
-시작: git fetch origin → 작업 브랜치 전환 → git pull --no-rebase. archive-work/4slot-annotate-v1/RUN_PROMPT.md 전체와 origin/main의 계약/인계 문서를 읽는다. 사전은 term-dict-v1.5-2026-11-04(749개), ko/synonyms/status 확인, RETIRED 사용 금지. 원격 지시서가 바뀌었으면 변경점만 좁게 확인한다.
-
-ORDER 범위 안에서 원격 out이 없는 앞의 10개를 선택한다. REVIEW-rejected.json이 있으면 해당 경로/사유를 확인하며 다른 사람 결과를 임의 덮어쓰지 않는다. #215/#225는 기존 입력 부채로 별도 남겨둔 것이므로 신규 37배치 대신 그 문항들을 반복 조사하지 않는다. 분모에는 계속 남겨 두며 완료로 표시하지 않는다.
-
-작성자는 메타 의미를 직접 판단한다. PT/TPL/CC/COND/L1~L4/단원 라벨 또는 다른 문항 4칸을 베끼지 않는다. 모든 문항 7-1 여섯 체크, 실제 그림 열람, 각 용어 src와 원문 그대로 5~40자 quote, method NAMED 또는 IMPLIED+justification. 정확히 없는 개념만 7필드 후보로 선언하고 같은 칸의 사전 상위어를 함께 둔다. 같은 칸 중복 금지. 단순 계산 filler 금지. 문자열 번역/수식 변형을 인용으로 쓰지 않는다.
-
-시험지 하나가 완성되면 output을 저장하고 ready 중간 보고 후 다음 시험지로 계속한다. 10개와 받은 수정까지 끝나야 배치 최종 보고. 작성자는 정확 allowlist output만 쓰며 Git·검증기·렌더는 ROOT. Root는 전 문항 기계검사 FAIL0, 5~40자, 문항 누락/중복, source/dictionary/output 판본, 후보·상위어·usedIn, 통계, 모든 WARN의 작성자 재독 기록을 확인한다. 검증 입력을 불변 스냅샷으로 고정하고 그 바이트만 커밋한다.
-
-제출: archive-work/4slot-annotate-v1/out/<path .js→.4slot.json>. 파일 하나당 커밋/normal pull/push/원격 blob readback. 강제 push·이력재작성 금지. 기계통과를 독립 의미 검수 또는 원본문항 수학 품질 PASS로 부풀리지 않는다.
-
-독립 의미 검수와 main 반영은 별도 검수 채팅 ROOT 소관. 이 작성 라인은 main/PR 병합을 하지 않는다. 검수 정책은 기계 전수 + 시험지마다 무작위2/복잡1 + 고위험 추가, 중요한 오류가 난 시험지만 의미 전수. 미검수 문항에 PASS/KEEP를 만들지 않는다.
-
-로컬 보조 도구: C:\Users\USER\Documents\Codex\2026-11-04\js-archive-4-n-10-icefoxtail\work/next-check-order.cjs <order...>, check-ready-updates.cjs, publish-ready-once.cjs, next-progress.cjs. 직접 선택한 용어/칸/format의 자동 판정은 절대 금지하며, 도구는 추출·직렬화·검사·Git 운영에만 쓴다. 보조 스크립트·PNG·로그를 커밋하지 않는다.
-주의: 로컬 exam-items 사본은 questionBank content||question, id??number 및 examData number??id fallback을 보완했다. 저장소 원래 추출기가 빈 발문/undefined 번호를 낼 수 있으므로 놓치지 않는다. 검사 도구의 원래 범위를 완화하지 않고 local extra 검사로 5~40자·사전부모·usedIn·정확 format9개 등을 보완한다.
-
-원격 다음 실행 문서: archive-work/4slot-annotate-v1/NEXT_RUN_HANDOFF.txt. 실제 완료/커밋/판본·후보·미확정 상세: C:\Users\USER\Documents\Codex\2026-11-04\js-archive-4-n-10-icefoxtail\outputs\4slot-writing-manifest-20261104.json. 최초5개 배치 시작은 정확 dispatch가 아니라 실행 관측시각이므로 순수 모델 속도로 해석하지 않는다. 이후 요청/ready/수정/검사/마지막push 시각은 실제 기록한다.
-
-
-현재 재개 계약만 담은 운영 문서다. 상세 로그/캡처/개별 receipts는 Git에 추가하지 않는다. 이 작업 브랜치 전체를 main에 병합하지 않는다.
+Next Order to Process:
+- ORDER #372: original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js (24 items, blob c14ebc917a990bef456568de33bac974f5799fdd)
