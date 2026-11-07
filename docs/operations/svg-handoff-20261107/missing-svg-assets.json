@@ -1,0 +1,38 @@
+{
+  "schema": "svg-handoff-missing-assets/v1",
+  "items": [
+    {
+      "exam": "2022 팔마고 고1 2학기 기말",
+      "qid": 12,
+      "version": "r1",
+      "status": "REVOKED_VERSION_MISSING",
+      "reason": "User identifies r1 as revoked unequal-scale version. The accessible approval record lists r6 PNG; no actual r1 SVG reference was readable.",
+      "expectedLocation": "Palma Q12 production history / prior r1 candidate storage or ZIP."
+    },
+    {
+      "exam": "2022 제일고 고1 2학기 기말",
+      "qid": 3,
+      "version": "approved PNG candidate",
+      "status": "SVG_MISSING_PNG_ONLY",
+      "reason": "Approved PNG exists; completed SVG source not accessible.",
+      "expectedLocation": "Jeil Q3 production/source artifact or original candidate ZIP."
+    },
+    {
+      "exam": "2023 강남여고 고1 2학기 기말",
+      "qid": null,
+      "version": "8 hand-authored standalone SVG experiments",
+      "status": "EXPERIMENT_SET_MISSING",
+      "reason": "User reports eight experiments; no directly readable refs for them. Linked ZIP contents cannot be read with available Page reference access; QIDs/hashes remain unknown.",
+      "expectedLocation": "Gangnam Girls SVG project attachments/experiment bundle."
+    },
+    {
+      "exam": "Project-wide candidate collection",
+      "qid": null,
+      "version": "approximately 65 SVG variants/components (user estimate)",
+      "status": "COMPLETENESS_NOT_PROVEN",
+      "reason": "Only five unique SVG byte streams were directly retrieved in this pass.",
+      "expectedLocation": "Original Space attachments and each linked project archive/output store."
+    }
+  ],
+  "note": "PNG, screenshots, previews and inaccessible ZIP members are not counted as recovered SVG bytes."
+}

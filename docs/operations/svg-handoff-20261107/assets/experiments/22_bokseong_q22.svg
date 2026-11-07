@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">2022 복성고 고1 2학기 기말 Q22, 반원 위의 점과 중점</title>
+  <desc id="desc">지름 AB의 길이가 2인 윗반원 위의 점 P와 선분 PA, PB의 중점 M, N을 나타낸다. 일반 위치 그림과 최댓값을 이루는 대칭 위치의 예를 분리했다. AN과 BM을 각각 파란색과 주황색으로 표시하고, 두 그림 모두 P에서 직각임을 표시한다.</desc>
+  <defs>
+    <style>
+      text { font-family: "Noto Sans CJK KR", "Malgun Gothic", Arial, sans-serif; fill: #182230; }
+      .meta { font-size: 14px; fill: #697586; letter-spacing: .2px; }
+      .title { font-size: 27px; font-weight: 700; }
+      .sub { font-size: 16px; fill: #465365; }
+      .panel-title { font-size: 19px; font-weight: 700; }
+      .panel-note { font-size: 14px; fill: #637083; }
+      .point-label { font-size: 17px; font-weight: 600; }
+      .segment-label { font-size: 16px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+      .formula { font-size: 17px; }
+      .result { font-size: 20px; font-weight: 700; }
+      .card { fill: #fff; stroke: #d9e0e8; stroke-width: 1.4; }
+      .arc { fill: none; stroke: #637286; stroke-width: 2.4; }
+      .diameter { fill: none; stroke: #202b39; stroke-width: 2.4; }
+      .side { fill: none; stroke: #556477; stroke-width: 2.2; }
+      .an { fill: none; stroke: #176eb3; stroke-width: 3.2; stroke-linecap: round; }
+      .bm { fill: none; stroke: #c45a32; stroke-width: 3.2; stroke-linecap: round; }
+      .mid-tick { stroke: #354153; stroke-width: 2.2; stroke-linecap: round; }
+      .right-angle { fill: none; stroke: #202b39; stroke-width: 1.8; stroke-linejoin: round; }
+      .point { fill: #172230; stroke: #fff; stroke-width: 2; }
+      .pill { fill: #eef5fb; stroke: #d7e7f4; stroke-width: 1; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#f5f7fa"/>
+  <text x="48" y="31" class="meta">2022 복성고 · 고1 2학기 기말 · Q22</text>
+  <text x="48" y="65" class="title">반원 위의 점과 두 중점</text>
+  <text x="48" y="94" class="sub">AB=2, P는 지름 AB인 윗반원 위의 점, M과 N은 각각 PA와 PB의 중점.</text>
+
+  <!-- General-position example: unit circle, P=(-3/5, 4/5). -->
+  <rect x="32" y="120" width="660" height="520" rx="16" class="card"/>
+  <text x="58" y="157" class="panel-title">일반 위치의 예</text>
+  <text x="58" y="181" class="panel-note">P는 반원 위의 한 점이며, 대칭 위치로 한정하지 않는다.</text>
+
+  <!-- Scale 155 px per unit; center=(350,390), A=(-1,0), B=(1,0), P=(-0.6,0.8). -->
+  <path d="M 195 390 A 155 155 0 0 1 505 390" class="arc"/>
+  <line x1="195" y1="390" x2="505" y2="390" class="diameter"/>
+  <line x1="195" y1="390" x2="257" y2="266" class="side"/>
+  <line x1="257" y1="266" x2="505" y2="390" class="side"/>
+  <line x1="195" y1="390" x2="381" y2="328" class="an"/>
+  <line x1="505" y1="390" x2="226" y2="328" class="bm"/>
+
+  <!-- M is the exact midpoint of PA: matching single ticks on AM and MP. -->
+  <line x1="215.9" y1="361.7" x2="205.1" y2="356.3" class="mid-tick"/>
+  <line x1="246.9" y1="299.7" x2="236.1" y2="294.3" class="mid-tick"/>
+  <!-- N is the exact midpoint of PB: each half has a matching double tick. -->
+  <line x1="314.1" y1="300.1" x2="318.6" y2="291.2" class="mid-tick"/>
+  <line x1="319.4" y1="302.8" x2="323.9" y2="293.9" class="mid-tick"/>
+  <line x1="438.1" y1="362.1" x2="442.6" y2="353.2" class="mid-tick"/>
+  <line x1="443.4" y1="364.8" x2="447.9" y2="355.9" class="mid-tick"/>
+
+  <!-- Exact right angle marker: the rays PA and PB are perpendicular. -->
+  <path d="M 250.74 278.52 L 263.26 284.78 L 269.52 272.26" class="right-angle"/>
+
+  <circle cx="195" cy="390" r="5.5" class="point"/>
+  <circle cx="505" cy="390" r="5.5" class="point"/>
+  <circle cx="257" cy="266" r="5.5" class="point"/>
+  <circle cx="226" cy="328" r="5.2" class="point"/>
+  <circle cx="381" cy="328" r="5.2" class="point"/>
+  <text x="181" y="415" class="point-label">A</text>
+  <text x="500" y="415" class="point-label">B</text>
+  <text x="237" y="258" class="point-label">P</text>
+  <text x="207" y="324" class="point-label">M</text>
+  <text x="386" y="323" class="point-label">N</text>
+  <text x="279" y="350" class="segment-label" fill="#176eb3">AN</text>
+  <text x="393" y="378" class="segment-label" fill="#c45a32">BM</text>
+  <text x="350" y="444" text-anchor="middle" class="formula">AB = 2</text>
+  <rect x="58" y="570" width="19" height="5" rx="2.5" fill="#176eb3"/>
+  <text x="85" y="578" class="panel-note">AN</text>
+  <rect x="143" y="570" width="19" height="5" rx="2.5" fill="#c45a32"/>
+  <text x="170" y="578" class="panel-note">BM</text>
+  <text x="58" y="610" class="panel-note">각 선분의 두 반쪽에 같은 표식을 표시했다.</text>
+
+  <!-- Separate symmetric maximum example, same AB=2 geometry. -->
+  <rect x="712" y="120" width="456" height="520" rx="16" class="card"/>
+  <text x="740" y="157" class="panel-title">최댓값을 이루는 대칭 위치의 예</text>
+  <text x="740" y="181" class="panel-note">P*는 반원의 꼭대기인 한 예이다.</text>
+
+  <!-- Scale 112 px per unit; center=(944,440), A=(-1,0), B=(1,0), P*=(0,1). -->
+  <path d="M 832 440 A 112 112 0 0 1 1056 440" class="arc"/>
+  <line x1="832" y1="440" x2="1056" y2="440" class="diameter"/>
+  <line x1="832" y1="440" x2="944" y2="328" class="side"/>
+  <line x1="944" y1="328" x2="1056" y2="440" class="side"/>
+  <line x1="832" y1="440" x2="1000" y2="384" class="an"/>
+  <line x1="1056" y1="440" x2="888" y2="384" class="bm"/>
+
+  <!-- Exact midpoint marks on PA and PB; this symmetric example has all four half-segments equal. -->
+  <line x1="864.24" y1="416.24" x2="855.76" y2="407.76" class="mid-tick"/>
+  <line x1="920.24" y1="360.24" x2="911.76" y2="351.76" class="mid-tick"/>
+  <line x1="967.76" y1="360.24" x2="976.24" y2="351.76" class="mid-tick"/>
+  <line x1="1023.76" y1="416.24" x2="1032.24" y2="407.76" class="mid-tick"/>
+
+  <path d="M 934.10 337.90 L 944 347.80 L 953.90 337.90" class="right-angle"/>
+  <circle cx="832" cy="440" r="5.3" class="point"/>
+  <circle cx="1056" cy="440" r="5.3" class="point"/>
+  <circle cx="944" cy="328" r="5.3" class="point"/>
+  <circle cx="888" cy="384" r="5.1" class="point"/>
+  <circle cx="1000" cy="384" r="5.1" class="point"/>
+  <text x="818" y="464" class="point-label">A</text>
+  <text x="1052" y="464" class="point-label">B</text>
+  <text x="954" y="325" class="point-label">P*</text>
+  <text x="869" y="379" class="point-label">M</text>
+  <text x="1007" y="379" class="point-label">N</text>
+  <text x="907" y="407" class="segment-label" fill="#176eb3">AN</text>
+  <text x="981" y="431" class="segment-label" fill="#c45a32">BM</text>
+  <text x="944" y="487" text-anchor="middle" class="formula">AB = 2</text>
+
+  <line x1="740" y1="509" x2="1140" y2="509" stroke="#e6ebf1" stroke-width="1.2"/>
+  <text x="740" y="542" class="formula">AP = PB = √2</text>
+  <text x="740" y="570" class="formula">AN = BM = √(5/2)</text>
+  <rect x="740" y="588" width="400" height="36" rx="9" class="pill"/>
+  <text x="758" y="613" class="result">AN·BM = 5/2</text>
+  <text x="1005" y="612" class="panel-note">최댓값</text>
+</svg>
