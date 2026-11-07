@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "절댓값의 기준점 x=2에서 식을 나누어 각각 이차함수로 본다.",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -3,
+      6,
+      -10,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "y": [
+        "-9",
+        "-4",
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": -9
+      }
+    ]
+  },
+  "caption": "절댓값의 기준에서 나뉜 이차함수의 극값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≤2에서 h(x)=−x²−2x, x≥2에서 h(x)=x²−6x이다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "주어진 구간에서 각 조각의 꼭짓점을 비교한다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 이차함수 조각의 극값이 각각 어느 구간에서 생기는지 보여 준다."
+  ]
+}

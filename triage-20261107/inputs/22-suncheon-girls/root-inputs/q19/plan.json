@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "g는 증가하고, g(x)<2인 범위에서 f는 감소하므로 합성함수는 감소한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      2,
+      -4,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "5",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "2",
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "5",
+          "-1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "0"
+        ],
+        "color": "WARM",
+        "label": "y=f(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "-1"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "-1",
+          "y": "-2"
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "-5/2"
+        }
+      ]
+    }
+  },
+  "caption": "g의 입력 구간과 그 출력이 들어가는 f의 구간에서 각각의 증감 방향을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "조건을 만족하는 a=5에서 g(x)=2−√(5−x), −4≤x≤1이고 g는 −1에서 0까지 증가한다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "f(u)=3/(u−2)−1은 −1≤u≤0에서 −2에서 −5/2로 감소한다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "안쪽 함수의 출력 구간에서 바깥 함수가 감소함을 비교해 합성함수의 단조성을 이해한다."
+  ]
+}

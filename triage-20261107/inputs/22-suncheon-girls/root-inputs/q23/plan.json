@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 조각의 치역이 겹치지 않으면서 X=[2,∞)를 모두 채워야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      1,
+      9,
+      0,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3",
+        "4",
+        "6",
+        "8"
+      ],
+      "y": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "r",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-2",
+          "4"
+        ],
+        "denominator": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "7/2",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "inc",
+        "kind": "SQRT",
+        "radicand": [
+          "-20",
+          "12"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "dec",
+        "kind": "SQRT",
+        "radicand": [
+          "40",
+          "-12"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "y=h(x)",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ]
+  },
+  "caption": "두 가지 가능한 근호 조각과 공통 유리함수 조각의 치역을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>3인 유리함수 조각의 치역은 (4,∞)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "2≤x≤3인 근호 조각은 증가 또는 감소하며 치역 [2,4]를 채워야 한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "증가와 감소 두 경우에서 치역이 겹치지 않고 합쳐지는 구조를 보여 준다."
+  ]
+}

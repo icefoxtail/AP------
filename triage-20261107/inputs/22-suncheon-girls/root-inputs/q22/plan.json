@@ -1,0 +1,116 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "제2사분면의 좌표 부호를 이용해 거리 조건을 식으로 만든다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      4,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "-2",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "locus",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-5",
+          "2"
+        ],
+        "denominator": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-8",
+          "-3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "3"
+        ],
+        "style": "DASHED",
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-2"
+        },
+        {
+          "id": "P",
+          "x": "-5",
+          "y": "5/2"
+        },
+        {
+          "id": "Q",
+          "x": "-5",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "5/2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R"
+        }
+      ]
+    }
+  },
+  "caption": "예: 제2사분면의 한 점에서 거리 조건과 자취의 모양을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(1,−2), P는 제2사분면에서 PA=PQ+PR을 만족한다.",
+      "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 P=(−5,5/2)에서는 PA=15/2, PQ=5/2, PR=5이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "수선의 발과 세 거리의 관계를 한 위치에서 보여 자취가 생기는 이유를 이해한다."
+  ]
+}

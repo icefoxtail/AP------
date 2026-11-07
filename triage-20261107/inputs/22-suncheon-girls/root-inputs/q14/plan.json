@@ -1,0 +1,134 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "위쪽과 아래쪽의 같은 높이 띠를 짝지어 가로 길이의 합을 본다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3/2",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "low",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "6"
+        ],
+        "amplitude": "1",
+        "offset": "-3",
+        "domain": [
+          "0",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "high",
+        "kind": "SQRT",
+        "radicand": [
+          "9",
+          "-6"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "3/2"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "-3",
+          "unnamed": false
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "3",
+          "unnamed": false
+        },
+        {
+          "id": "C",
+          "x": "3/2",
+          "y": "0",
+          "unnamed": false
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "E",
+          "x": "4/3",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "F",
+          "x": "0",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "G",
+          "x": "2/3",
+          "y": "-1",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "top",
+          "from": "D",
+          "to": "E"
+        },
+        {
+          "id": "bottom",
+          "from": "F",
+          "to": "G"
+        }
+      ]
+    }
+  },
+  "caption": "위아래에서 같은 높이의 띠를 짝지어 가로 길이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선은 y=√(ax)−3, y=√(9−ax)이며 y축과 둘러싸인 영역의 넓이는 9/2이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "조건을 만족하는 그래프에서 y=1과 y=−1의 수평 띠를 예로 표시한다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "위와 아래의 같은 높이에서 가로폭을 짝지으면 넓이 계산의 구조가 보인다."
+  ]
+}

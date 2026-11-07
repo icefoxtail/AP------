@@ -1,0 +1,155 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "f², f³을 직접 계산하여 반복 주기를 찾는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "0"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-1/3",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "-1/3",
+          "y": "-1/3",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "-1/3",
+          "y": "-3/2",
+          "unnamed": true
+        },
+        {
+          "id": "S",
+          "x": "-3/2",
+          "y": "-3/2",
+          "unnamed": true
+        },
+        {
+          "id": "T",
+          "x": "-3/2",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "U",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "s1",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "s2",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "s3",
+          "from": "R",
+          "to": "S"
+        },
+        {
+          "id": "s4",
+          "from": "S",
+          "to": "T"
+        },
+        {
+          "id": "s5",
+          "from": "T",
+          "to": "U"
+        }
+      ]
+    }
+  },
+  "caption": "예: 함수와 대각선을 번갈아 따라가며 세 번 반복했을 때의 변화를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=−1/(x+1)이고 f³(x)=x이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 입력 2에서는 2→−1/3→−3/2→2로 돌아온다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "함수값을 다시 입력으로 넘기는 단계를 보며 3회 반복 주기의 의미를 이해한다."
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "PQ와 PR의 길이가 같아져 넓이 문제가 한 변수의 최솟값 문제로 바뀐다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "3",
+        "5"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "0"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "3/2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=-x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "1/2"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "-3"
+        },
+        {
+          "id": "R",
+          "x": "-1/2",
+          "y": "1/2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "P",
+            "Q",
+            "R"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "예: 세 점이 만드는 직각삼각형의 두 직각변을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P,Q는 x=a와 각각 유리함수·직선의 교점, R은 P와 같은 높이의 직선 위 점이다.",
+      "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 a=3에서 P=(3,1/2), Q=(3,−3), R=(−1/2,1/2)이며 PQ=PR이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "세 점과 두 곡선의 관계를 보여 직각변의 길이가 같다는 점을 이해한다."
+  ]
+}

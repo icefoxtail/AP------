@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "교점의 근호를 하나의 변수로 두면 k를 한 변수의 식으로 나타낼 수 있다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      12,
+      -2,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2",
+        "3",
+        "5"
+      ],
+      "y": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "4",
+        "domain": [
+          "2",
+          "11"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "1/2"
+        ],
+        "domain": [
+          "-1",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "y=x/2+3/2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "1"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "예: 고정된 점을 지나는 직선과 무리함수의 교점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선은 y=−√(x−2)+4, 직선은 y=−k(x+1)+1이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=−1/2인 직선은 고정점 (−1,1)을 지나 곡선과 (3,3)에서 만난다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "직선이 고정점을 중심으로 기울기가 달라질 때 곡선과 만나는 구조를 보여 준다."
+  ]
+}

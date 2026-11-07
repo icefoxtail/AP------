@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 그래프의 교점에 대한 이차방정식이 실근을 갖지 않게 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      7,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=-2x+5"
+      }
+    ]
+  },
+  "caption": "예: 한 직선과 유리함수 그래프가 만나지 않는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수는 y=x/(x−2), 직선은 y=−2x+k이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=5에서 두 그래프는 만나지 않는다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 음수인 경우 두 그래프가 실제로 교차하지 않는 관계를 보여 준다."
+  ]
+}

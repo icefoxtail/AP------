@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "평행이동은 x를 x−2로 바꾸고 함숫값에서 1을 뺀 뒤, x축 대칭으로 전체 부호를 바꾼다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      8,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "y": [
+        "-3",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-1",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "1/2",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "-5",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-3",
+        "domain": [
+          "5/2",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "h",
+        "kind": "SQRT",
+        "radicand": [
+          "-5",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "3",
+        "domain": [
+          "5/2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=h(x)",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ]
+  },
+  "caption": "원래 그래프에서 평행이동을 거쳐 x축에 대칭시킨 결과를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이동 후에는 y=√(2x−5)−3이며 x축 대칭 후에는 y=−√(2x−5)+3이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "원래 함수에서 x 방향 +2, y 방향 −1 이동 후 x축 대칭을 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동과 대칭이동의 순서를 세 곡선으로 비교한다."
+  ]
+}

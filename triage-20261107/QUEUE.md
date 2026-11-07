@@ -28,6 +28,7 @@
 | 3 | 22 효천고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-hyocheon/root-inputs/`의 FIGURE Q02·04·05·13·15·16·18·22 입력 3종 작성, 모두 `NOT_RENDERED` | 기존 담당·실 동시 수정, SVG·검수·승인·시도 이력을 대조해 안전성을 확인한다. Q02 기존 Claude `EXEMPT` 기록은 보존한다. 이력 확인 전 `READY_FOR_RENDER` 금지. |
 | 4 | 23 강남여고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/23-gangnam-girls/root-inputs/`의 Q02·03·05·12·15·16·18·19·20·21·22·23·24 입력 3종, 모두 `NOT_RENDERED` | 기존 Claude 작업·SVG·승인·시도 이력과 소유를 대조한 뒤에만 인수 준비 상태를 재평가한다. Q06·Q17 기존 완료를 보존한다. |
 | 5 | 22 금당고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-geumdang/root-inputs/`의 Q02·06·13 완전한 입력 세트만 게시, 모두 `NOT_RENDERED`; Q15·17·18·20·21 폴더 전체는 검토 보류 | 기존 원격 초안·소유·SVG·시도 이력을 대조한다. Q01/Q08 KEEP, Q09 CONTENT OPEN 등 세부 이력과 추가 렌더 금지 항목을 아래에서 확인한다. 보류 파일은 재시도하지 않는다. |
+| 6 | 22 순천여고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-suncheon-girls/root-inputs/`의 Q04·05·07·08·11·12·13·14·16·17·19·20·21·22·23, 모두 `NOT_RENDERED` | 기존 결과·승인·누적 시도와 로컬 초안 소유를 대조한다. Q09 `OPEN`을 보존한다. 어떤 파일이 거절되면 해당 qNN 폴더 전체를 보류하고 정확한 사유를 아래에 기록한다. |
 
 ## 22 강남여고 기존 자산·시도 이력
 
@@ -76,5 +77,12 @@
   - `inputs/22-geumdang/root-inputs/q18/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “구하는 값은 9이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 SVG·승인·시도 기록은 아직 대조 전이므로 그대로 보존하고, 다음은 기존 결과와 원장 확인 및 사용자 검토 후 초안 재평가다.
   - `inputs/22-geumdang/root-inputs/q20/{item.json,plan.json,publish.json,STATUS.md}`: `plan.json` blob 거절 사유는 그림 조건 속 합계값 10과 40을 결과값 반복으로 분류한 것이고, `publish.json` blob 거절 사유는 caption의 10, 40, 72를 답/결과값으로 분류한 것이다. 기존 9월 파일럿 SVG 중복 가능성과 이력 대조를 보존한다. 다음은 파일럿·시도 원장 비교와 사용자 검토 후 초안 재평가다.
   - `inputs/22-geumdang/root-inputs/q21/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “구하는 값은 4π이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 `OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS:C1` 수정 후 framing/spec 통과만, 실제 렌더 미실행, 두 접점 검증 미지원 가능성 `OPEN` 및 시도 이력 확인 필요 기록을 보존한다. 다음은 공식 엔진 지원·기존 원장 확인이다.
+
+## 22 순천여고 기존 결과·소유 이력 확인
+
+- ROOT가 Q04·Q05·Q11을 최신 사용자 기준에 따라 `FIGURE`로 재판정했다. 함수·유리함수·무리함수는 학생 이해에 조금이라도 도움이 되면 그래프를 만든다는 사용자 지시를 적용하며, 기존 그림이 있다는 이유만으로 제외하지 않는다.
+- Q09의 기존 `OPEN` 상태를 유지한다. Q12는 사전검사 `sign` 필드 실패 후 `amplitude`로 수정한 이력을 함께 보존한다.
+- 이 입력 15문항은 ROOT 초안이며 전부 `NOT_RENDERED`다. 기존 결과·승인·누적 시도와 기존 로컬 초안의 실제 소유를 대조하기 전까지 시험지 상태를 `ROOT_PREPARING`으로 둔다.
+- 한 문항 폴더의 item/plan/publish/STATUS 가운데 하나라도 업로드 심사에서 거절되면 그 qNN 폴더의 나머지 파일도 올리지 않는다. 정확한 거절 경로·사유·기존 이력·다음 조치를 기록하고, 거절된 요청은 재시도하지 않는다. 모든 폴더가 완전한 네 파일 세트일 때만 게시한다.
 
 나머지 시험지는 ROOT가 실제 상태와 중복 소유를 확인해 이 표에 차례로 추가한다. 위 목록 밖의 상태를 완료·대기로 추정하지 않는다.
