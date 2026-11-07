@@ -22,8 +22,8 @@
 /* ==========================================================================
    미적분Ⅰ · 속도·가속도·이동거리 (AP Math Lab 2.0 이식본)
    원본: labs/미적분1/속도·가속도·이동거리.html
-   - 문제·단계·정석/빠른 풀이 문구(examData)는 원본을 그대로 옮겼습니다.
-   - 2026-11: 문제 탭·정리 탭에 「새 문제」(같은 운동 모델에서 숫자만 바꾼 변형)를 더했습니다. 첫 문제와 탐구 탭은 예전 그대로입니다.
+   - 문제의 의도와 정답을 보존하고 부호·시간구간·단계 설명을 검산했습니다.
+   - 2026-11: 문제 탭·정리 탭에 「새 문제」(같은 운동 모델에서 숫자만 바꾼 변형)를 더했습니다. 탐구는 조작 모델, 정리·문제는 선택한 숫자 변형을 따릅니다.
    - 운동 모델(x(t), v(t), a(t), 두 점 P·Q)은 원본과 같은 식입니다.
      변위·이동거리는 원본의 수치 적분 대신, 같은 양을 v(t)=0 인 시각에서 구간을 쪼개 정확히 계산합니다.
    - 바뀐 점
@@ -36,8 +36,10 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
+  const same = (a,b) => Math.abs(a-b) <= 1e-11*Math.max(1,Math.abs(a),Math.abs(b));
+  const timeText = (t) => Number.isInteger(t) ? `t=${t}` : `t≈${fmt(t,4)}`;
 
-  /* ---------- 1. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
+  /* ---------- 1. 문제·풀이 데이터 (원래 문제·정답 보존) ---------- */
     const examData = {
       1: {
         badge: "장면 1 · 위치의 변화량(변위 Δx)과 실제 움직인 거리(D)의 비교",
@@ -94,12 +96,12 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       3: {
-        badge: "장면 3 · 원점으로 돌아오는 시각과 최대 속력 (|v(t)|가 최대 ⇔ a(t)=0)",
+        badge: "장면 3 · 주어진 시간구간에서 속력·원점과의 거리·원점 복귀 비교",
         hint: "시각 <span class='text-amber-300 font-bold'>t</span>를 나타내는 점을 <span class='text-pink-300 font-bold'>t=1, t=2, t=3</span>에 차례로 맞춰 보세요! <span class='text-sky-300 font-bold'>t=1(가속도 0)에서 속력이 최대(3)</span>, t=2에서 원점으로부터 가장 멀리(−4), <span class='text-emerald-300 font-bold'>t=3에서 원점 복귀</span>합니다!",
         tag: "속도·가속도와 위치의 종합",
         targetTime: "목표 시간: 5초",
         question: () => `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v(t) = 3t^2 - 6t')} 일 때, ① 닫힌구간 ${tex('[0, 2]')}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 닫힌구간 ${tex('[0, 3]')}에서 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`,
-        answerBadge: () => `① 최대속력 ${tex('t=1')}, ② 최고점 ${tex('t=2')}, ③ 원점복귀 ${tex('t=3')}`,
+        answerBadge: () => `① 최대속력 ${tex('t=1')}, ② 원점과의 최대거리 ${tex('t=2')}, ③ 원점복귀 ${tex('t=3')}`,
         snap: { t: 1.0, param: 1.0, dualView: true },
         steps: [
           "1단계 · t = 1 : 가속도 a(1)=v′(1)=0 ⇒ 구간 [0, 2]에서 최대 속력 |v(1)| = 3",
@@ -107,10 +109,10 @@ window.addEventListener('DOMContentLoaded', function () {
           "3단계 · t = 3 : 전진한 거리와 후진한 거리가 같아짐(S₁ = S₂) ⇒ 출발 후 원점(x = 0)으로 복귀!"
         ],
         textbook: () => ({
-          steps: `① 속력 ${tex('|v(t)| = |-3t^2 + 6t| = 3(t-1)^2 - 3')} 의 꼭짓점 ${tex('t = 1')} 에서 최댓값 ${tex('3')}<br/>
+          steps: `① ${tex('0\\le t\\le2')}에서 ${tex('v(t)\\le0')}이므로 속력은 ${tex('|v(t)|=-v(t)=3-3(t-1)^2')}입니다. 양 끝에서는 0이고 꼭짓점 ${tex('t=1')}에서 최댓값 ${tex('3')}을 갖습니다.<br/>
 ② ${tex('x(t)=\\int_0^t v(s)ds=t^3-3t^2')}이다. ${tex('x(0)=0, x(2)=-4, x(3)=0')}이고 ${tex('x(t)')}는 ${tex('[0,2]')}에서 감소, ${tex('[2,3]')}에서 증가하므로 이 구간에서 원점과 가장 먼 때는 ${tex('t=2')}이다.<br/>
 ③ ${tex('x(t)=t^2(t-3)=0')}의 양의 해는 ${tex('t=3')}이므로 그때 다시 원점을 지난다.`,
-          warning: "⚠️ 속도 그래프 하나로 ① 꼭짓점(가속도 0 → 속력의 최대 후보), ② v=0 이고 부호가 바뀌는 점(방향 전환, 원점에서 가장 먼 지점), ③ 전진·후진한 넓이가 같아지는 시각(원점 복귀) 세 가지를 읽을 수 있습니다."
+          warning: "속력의 최댓값은 지정한 [0,2]에서 끝점과 꼭짓점을 비교합니다. 원점과의 최대거리도 [0,3]에서만 이 결론이 성립하며, 더 긴 시간구간에서는 다시 비교해야 합니다."
         }),
         shortcut: () => ({
           steps: `① <strong>[최대 속력]</strong> 이차 속도함수의 대칭축(가속도 ${tex('a(t)=0')})인 <strong class="text-sky-300">${tex('t = 1')}초</strong> (속력 ${tex('|-3|=3')})!<br/>
@@ -121,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       4: {
-        badge: "장면 4 · 두 점 P, Q 가 쫓아가는 운동 (거리가 최대 ⇔ v_P=v_Q, 다시 만남 ⇔ 속도 차의 넓이가 0)",
+        badge: "장면 4 · 처음 다시 만날 때까지 두 점의 간격과 상대속도 비교",
         hint: "<span class='text-amber-300 font-bold'>[▶ 주행 재생]</span> 버튼을 눌러 수직선 위의 <span class='text-amber-300 font-bold'>점 P</span>와 <span class='text-sky-300 font-bold'>점 Q</span>가 움직이는 모습을 관찰하세요! <span class='text-pink-300 font-bold'>t=1초(속도 일치)에 간격이 최대</span>로 벌어지고, <span class='text-emerald-300 font-bold'>t=1.5초에 다시 만납니다!</span>",
         tag: "수능·평가원 두 점의 운동 킬러 유형",
         targetTime: "목표 시간: 5초",
@@ -135,9 +137,9 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         textbook: () => ({
           steps: `① 각각 적분하여 위치 구하기: ${tex('x_P(t) = -t^3 + 3t^2')}, ${tex('x_Q(t) = \\dfrac{3}{2}t^2')}<br/>
-② 거리 함수 ${tex('f(t) = x_P(t) - x_Q(t) = -t^3 + \\dfrac{3}{2}t^2')} 를 다시 미분하여 극댓값 조사<br/>
-③ 방정식 ${tex('-t^3 + \\dfrac{3}{2}t^2 = 0')} 을 풀면 만나는 시각 ${tex('t_2 = \\dfrac{3}{2}')} 을 얻습니다.`,
-          warning: "⚠️ 많은 학생들이 두 속도 그래프가 만나는 점(v_P = v_Q, t=1)에서 두 점이 만난다고 착각합니다! 속도가 같을 때는 거리가 최대가 되는 순간입니다!"
+② 위치 차는 ${tex('r(t)=x_P(t)-x_Q(t)=t^2(3/2-t)')}이고 양의 영점은 ${tex('t_2=3/2')}입니다. ${tex('0<t<3/2')}에서 ${tex('r(t)>0')}이므로 이 구간에서는 거리와 위치 차가 같습니다.<br/>
+③ ${tex('r^{\\prime}(t)=3t(1-t)')}는 ${tex('t=1')}에서 양수에서 음수로 바뀝니다. 양 끝의 거리 0과 비교하면 ${tex('t_1=1')}일 때 거리 ${tex('1/2')}로 최대입니다.`,
+          warning: "속도가 같은 때는 위치 차의 극값 후보이고, 실제 만남은 위치가 같을 때입니다. 이 문항에서는 처음 다시 만날 때까지 P가 앞서므로 부호 변화로 거리의 최댓값을 판단할 수 있습니다."
         }),
         shortcut: () => ({
           steps: `① <strong>[거리 최대 시각]</strong> 앞선 점 ${tex('P')}가 더 빠르다가 뒷점 ${tex('Q')}가 더 빨라지는 경계, 즉 <strong class="text-pink-300">두 속도가 같아지는 순간(${tex('v_P = v_Q')})</strong>에 거리가 최대!<br/>
@@ -177,8 +179,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
   /* ---------- 2. 운동 모델 (원본 evalX / evalV / evalA / ...Mode4 와 같은 식) ---------- */
-  const T_MAX = 3.5;
-  const posX = (t, p) => { const u = t - 1.0; return u * u * u - 3.0 * p * u + (1.0 - 3.0 * p); };   // x(0)=0 에서 출발
+  const T_MAX = 4; // k=-1/2인 탐구에서도 첫 재회 t=15/4까지 관찰합니다.
+  const posX = (t, p) => t * (t * t - 3 * t + 3 * (1 - p)); // 같은 다항식; t≈0에서 상수항 상쇄 오차를 줄입니다.
   const velV = (t, p) => { const u = t - 1.0; return 3.0 * (u * u - p); };
   const accA = (t) => 6.0 * (t - 1.0);
   const xP4 = (t) => -t * t * t + 3.0 * t * t;
@@ -187,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const vQ4 = (t, k) => 3.0 * k * t;
 
   /** 속도 부호가 실제로 바뀌는 시각: v = 3((t−1)² − p) = 0 → t = 1 ± √p (p>0). p=0 은 접하기만 하므로 제외. */
-  const turnsOf = (p, t1) => (p > 1e-6 ? [1 - Math.sqrt(p), 1 + Math.sqrt(p)].filter((x) => x > 1e-6 && x < t1 - 1e-6) : []);
+  const turnsOf = (p, t1) => (p > 0 ? [1 - Math.sqrt(p), 1 + Math.sqrt(p)].filter((x) => x > 0 && x < t1) : []);
   /** 0→t 를 방향이 일정한 구간(leg)으로 쪼개 전진 넓이·후진 넓이·변위·이동거리를 구합니다(원본 evalDistance 와 같은 양). */
   function motion(t, p) {
     const cuts = [0, ...turnsOf(p, t), t];
@@ -195,7 +197,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let fwd = 0, back = 0;
     for (let i = 0; i < cuts.length - 1; i++) {
       const a = cuts[i], b = cuts[i + 1];
-      if (b - a < 1e-9) continue;
+      if (!(b > a)) continue;
       const dir = velV((a + b) / 2, p) >= 0 ? 1 : -1;
       const x0 = posX(a, p), x1 = posX(b, p);
       legs.push({ a, b, dir, x0, x1 });
@@ -206,11 +208,11 @@ window.addEventListener('DOMContentLoaded', function () {
   /** 장면 4: v_P − v_Q = −3t(t − (2−k)) 의 부호가 바뀌는 t = 2−k 에서 구간을 나눕니다. */
   function gapLegs(t, k) {
     const t1 = 2 - k;
-    const cuts = [0, ...(t1 > 1e-6 && t1 < t - 1e-6 ? [t1] : []), t];
+    const cuts = [0, ...(t1 > 0 && t1 < t ? [t1] : []), t];
     const legs = [];
     for (let i = 0; i < cuts.length - 1; i++) {
       const a = cuts[i], b = cuts[i + 1];
-      if (b - a < 1e-9) continue;
+      if (!(b > a)) continue;
       const m = (a + b) / 2;
       legs.push({ a, b, dir: vP4(m) - vQ4(m, k) >= 0 ? 1 : -1 });
     }
@@ -219,12 +221,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- 3. 화면 구성: 수직선 트랙 · 위치 x(t) · 속도 v(t) 세 창 ---------- */
   const NARROW = window.matchMedia('(max-width: 859px)'); // apl.css 의 모바일 기준과 같은 값
-  const X_FOCUS = [-0.5, 3.88];  // 시간축: 0~3.5초 + 왼쪽 눈금 자리 + 오른쪽 도구 막대 자리(눈금 4가 가장자리에 걸리지 않게)
+  const X_FOCUS = [-0.5, 4.4];   // 최초 범위; 조작 모델의 시간과 극값에 맞춰 다시 맞춥니다.
   const Y_TRACK = [-1, 1.2];     // 트랙 창: 수직선이 창의 55% 높이에 오도록
   const snapT = (x, extra) => {
-    let v = clamp(x, 0, T_MAX);
-    for (const m of [1.0, 1.5, 2.0, 3.0, ...(extra || [])]) if (Math.abs(v - m) < 0.06) v = m;   // 원본의 자석 스냅
-    return +v.toFixed(2);
+    const v = clamp(x, 0, T_MAX);
+    const candidates=[...(extra||[]),1,1.5,2,3].filter(t=>t>=0&&t<=T_MAX&&Math.abs(v-t)<.06).sort((a,b)=>Math.abs(v-a)-Math.abs(v-b));
+    return candidates.length ? candidates[0] : +v.toFixed(2); // 제곱근인 경계도 정확한 모델값을 보존합니다.
   };
   const sg = (v, d = 1) => (Math.abs(v) < 0.5 * Math.pow(10, -d) ? '' : (v < 0 ? ' - ' : ' + ') + fmt(Math.abs(v), d));
   const intStep = (ky, minPx) => [1, 2, 5, 10, 20, 50].find((v) => v * ky >= minPx) || 100;
@@ -305,14 +307,14 @@ window.addEventListener('DOMContentLoaded', function () {
     b.stext(right ? x + 11 : x - 11, y, str, { baseline: 'middle', weight: 800, ...o, size, align: right ? 'left' : 'right' });
   }
   /** 위치/속도 그래프 바탕: 격자 · 축 · 눈금 · 이름표 */
-  function graphAxes(b, s, title, color) {
+  function graphAxes(b, s, title, color, end = T_MAX) {
     const ky = b.ky;
     if (s.grid) b.grid({ step: 0.5, majorEvery: 2, stepY: intStep(ky, 22) });
     b.axes({ tickStep: 1, tickStepY: intStep(ky, 30), xLabel: false, yLabel: false });
     const r = b.paneRect(), org = b.toS(0, 0);
     if (b.thumb) return null;
     b.stext(org.x + 9, r.y + 14, title, { color, size: 12.5, align: 'left', baseline: 'middle', weight: 800 });
-    b.stext(b.toS(T_MAX, 0).x + 7, org.y + 11, 't(초)', { color: 'muted', size: 11.5, align: 'left', baseline: 'middle', weight: 700 });
+    b.stext(b.toS(end, 0).x + 7, org.y + 11, 't(초)', { color: 'muted', size: 11.5, align: 'left', baseline: 'middle', weight: 700 });
     return [org.x + 7, r.y + 5, org.x + 11 + textW(b, title, 12.5), r.y + 23];   // 이름표 자리(라벨이 피하도록)
   }
   const syncLine = (b, s) => {
@@ -320,7 +322,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.vline(s.t, { color: 'amber', alpha: on ? 0.85 : 0.35, width: on ? 2.2 : 1.3, dash: true, ref: 't' });
   };
   // 끌 때는 1·1.5·2·3 근처에서 자석처럼 붙지만, 화살표 키(keydown)는 붙지 않아야 스냅 점에서 한 칸씩 벗어날 수 있습니다.
-  const timeHandle = (b, s, id, snaps) => b.handle(id, [s.t, 0], { color: 'amber', r: 7, ref: 't', ariaLabel: '시각 t 표시점', priority: 1, drag: (w, e) => { s.t = e && e.type === 'keydown' ? +clamp(w.x, 0, T_MAX).toFixed(2) : snapT(w.x, snaps); } });
+  const timeHandle = (b, s, id, snaps) => b.handle(id, [s.t, 0], { color: 'amber', r: 7, ref: 't', ariaLabel: '시각 t 표시점', priority: 1, drag: (w, e) => { if(same(w.x,s.t))return; s.t = e && e.type === 'keydown' ? +clamp(w.x, 0, T_MAX).toFixed(2) : snapT(w.x, snaps); } });
   /**
    * b.point 래퍼(라벨 자리 찾기): 먼저 그린 라벨·점과 겹치거나 오른쪽 도구 막대(수업 모드에서는 더 큼) 밑으로 들어가면
    * 같은 점의 다른 쪽(아래·왼쪽)으로 옮깁니다. 중요한 라벨부터 먼저 부르세요. 썸네일에서는 라벨 없이 점만 그립니다.
@@ -373,19 +375,19 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- 5. 수직선 트랙 ---------- */
-  const TRACK_X0 = -0.12, TRACK_X1 = 3.82;
   /** 트랙 창에 눈금·수직선을 그리고 위치→가로 좌표 함수를 돌려줍니다(범위 밖의 점은 끝에 붙임). mini: 작은 화면용(글자는 눈금뿐). */
   function trackBase(b, cfg, mini) {
     const c = b.ctx, r = b.paneRect('track'), F = b.fs;
-    const to = (pos) => TRACK_X0 + ((clamp(pos, cfg.lo, cfg.hi) - cfg.lo) / (cfg.hi - cfg.lo)) * (TRACK_X1 - TRACK_X0);
-    const pxUnit = ((TRACK_X1 - TRACK_X0) * b.k) / (cfg.hi - cfg.lo);
+    const vb=b.viewBox(), x0=vb.x0+.08*(vb.x1-vb.x0), x1=vb.x1-.08*(vb.x1-vb.x0);
+    const to = (pos) => x0 + ((clamp(pos, cfg.lo, cfg.hi) - cfg.lo) / (cfg.hi - cfg.lo)) * (x1-x0);
+    const pxUnit = ((x1-x0) * b.k) / (cfg.hi - cfg.lo);
     const st = [1, 2, 5, 10].find((v) => v * pxUnit >= 26) || 20;
     const ticks = [];
     for (let v = Math.ceil(cfg.lo / st) * st; v <= cfg.hi; v += st) ticks.push(v);
     c.save();
     b.clip();
     const U = (px) => px / b.ky;
-    b.seg([TRACK_X0 - 0.06, 0], [TRACK_X1 + 0.06, 0], { color: 'ink', alpha: 0.55, width: 2.2 });
+    b.seg([x0, 0], [x1, 0], { color: 'ink', alpha: 0.55, width: 2.2 });
     ticks.forEach((v) => b.seg([to(v), -U(5)], [to(v), U(5)], { color: v === 0 ? 'amber' : 'ink', alpha: v === 0 ? 1 : 0.5, width: v === 0 ? 2.6 : 1.4 }));
     c.restore();
     const D = mini ? { tick: 13, lane0: 7, laneStep: 5, arrow: 24, dot: 6.5 }
@@ -415,7 +417,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     // 속도 화살표
     const alen = clamp(vel * 10, NARROW.matches ? -45 : -65, NARROW.matches ? 45 : 65);
-    if (Math.abs(vel) > 0.1) {
+    if (!same(vel,0)) {
       const y0 = U(D.arrow * F), tip = px + alen / b.k, d = alen > 0 ? 1 : -1;
       const col = vel > 0 ? 'rose' : 'sky';
       b.seg([px, y0], [tip, y0], { color: col, width: 2.8, ref: 'v' });
@@ -427,9 +429,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const ly = b.toS(0, 0).y;
     trackTicks(b, T, ly + D.tick * F);
     if (mini) return;   // 작은 화면: 값은 아래 두 그래프의 라벨과 상태 배지가 알려 줍니다
-    if (Math.abs(vel) > 0.1) slabel(b, b.toS(px + alen / b.k / 2, 0).x, ly - D.vlab * F, `v=${fmt(vel, 1)} ${vel > 0 ? '→(전진)' : '←(후진)'}`, { color: vel > 0 ? 'rose' : 'sky' });
+    if (!same(vel,0)) slabel(b, b.toS(px + alen / b.k / 2, 0).x, ly - D.vlab * F, `v≈${fmt(vel, 3)} ${vel > 0 ? '→(전진)' : '←(후진)'}`, { color: vel > 0 ? 'rose' : 'sky' });
     else slabel(b, b.toS(px, 0).x, ly - (D.vlab - 2) * F, '순간 정지 (v = 0)', { color: 'amber' });
-    slabel(b, b.toS(px, 0).x, ly + D.name * F, `점 P (x = ${fmt(x)})${off > 0 ? ' →' : off < 0 ? ' ←' : ''}`, { color: 'amber' });
+    slabel(b, b.toS(px, 0).x, ly + D.name * F, `점 P (x ≈ ${fmt(x,3)})${off > 0 ? ' →' : off < 0 ? ' ←' : ''}`, { color: 'amber' });
     trackTitle(b, '수직선 위의 점 P');
   }
   function drawTrackPair(b, s, cfg, V, mini) {
@@ -449,7 +451,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const ly = b.toS(0, 0).y;
     trackTicks(b, T, ly + (mini ? 20 : D.tick + 2) * F);
     if (mini) return;
-    slabel(b, b.toS((pP + pQ) / 2, 0).x, ly - D.gap * F, `간격 |x_P − x_Q| = ${fmt(Math.abs(xp - xq))}`, { color: 'rose' });
+    slabel(b, b.toS((pP + pQ) / 2, 0).x, ly - D.gap * F, `간격 |x_P − x_Q| ≈ ${fmt(Math.abs(xp - xq),3)}`, { color: 'rose' });
     sideLabel(b, b.toS(pP, 0).x, ly - 9 * F, `P(${fmt(xp)})${xp > cfg.hi ? ' →' : xp < cfg.lo ? ' ←' : ''}`, { color: 'amber' });
     slabel(b, b.toS(pQ, 0).x, ly + (D.name + 1) * F, `Q(${fmt(xq)})${xq > cfg.hi ? ' →' : xq < cfg.lo ? ' ←' : ''}`, { color: 'sky' });
     trackTitle(b, '수직선 위의 두 점 P, Q');
@@ -458,42 +460,42 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 6. 장면 1·2·3·5: 점 하나 (위치 x(t), 속도 v(t)) ---------- */
   function drawSingle(b, s, V, cfg) {
     const { p, m, x, v: vv } = V;
-    const t = s.t, id = cfg.id, c = b.ctx, nw = NARROW.matches;   // nw: 휴대폰에서는 라벨을 줄여 겹침을 막습니다
+    const t = s.t, id = cfg.id, end=V.T||T_MAX, c = b.ctx, nw = NARROW.matches;   // nw: 휴대폰에서는 라벨을 줄여 겹침을 막습니다
     const pt = makePt(b);
-    const turns = turnsOf(p, T_MAX);
+    const turns = turnsOf(p, end), turnStage=id==='disp'?1:2;
     const lay = layoutOf(s);
     // (1) 수직선 트랙
     if (lay.track) {
       paneBg(b, 'track', 0.3, false);
-      if (s.step >= 1) drawTrackSingle(b, s, cfg, V, lay.mini);
+      if (s.step >= 1) drawTrackSingle(b, s, {...cfg,...V.trackRange}, V, lay.mini);
     }
     // (2) 위치 x(t)
     paneBg(b, 'main', 0, true);
     c.save();
     b.clip();
-    const tx = graphAxes(b, s, '위치 x(t)', 'ink');
-    b.plot((u) => posX(u, p), { from: 0, to: T_MAX, color: 'ink', width: 3, glow: true, ref: 'x' });
+    const tx = graphAxes(b, s, '위치 x(t)', 'ink',end);
+    b.plot((u) => posX(u, p), { from: 0, to: end, color: 'ink', width: 3, glow: true, ref: 'x' });
     syncLine(b, s);
     c.restore();
     b.use('main');
     pt.block(tx);
-    turns.forEach((tt) => {
+    if(s.step>=turnStage) turns.forEach((tt) => {
       const xv = posX(tt, p), isMin = tt > 1;
-      if (vis(b, xv)) pt([tt, xv], { color: 'red', r: 5.5, ref: 'x', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : nw ? `방향 전환 ${isMin ? '극소' : '극대'} (${fmt(tt, 1)}, ${fmt(xv, 1)})` : `방향 전환 ${isMin ? '극소' : '극대'}(t=${fmt(tt, 1)}, x=${fmt(xv, 1)})`, dx: 10, dy: isMin ? 16 : -16 });
+      if (vis(b, xv)) pt([tt, xv], { color: 'red', r: 5.5, ref: 'x', label: same(t,tt) || (nw && turns.length > 1) ? null : `${isMin ? '극소' : '극대'}·방향 전환 (${timeText(tt)})`, dx: 10, dy: isMin ? 16 : -16 });
     });
-    if (id === 'origin' || id === 'trap') pt([3, 0], { hollow: true, color: 'green', r: 5.5, ref: 'x', label: Math.abs(t - 3) < 0.05 ? null : id === 'origin' ? '원점 복귀 (t=3)' : nw ? '원점 통과 (방향 전환 아님)' : '원점 통과일 뿐 (방향 전환 아님)', dx: -10, dy: -16, align: 'right' });
-    if (id === 'turn' && Math.abs(p) < 1e-6) pt([1, posX(1, p)], { hollow: true, color: 'violet', r: 5.5, ref: 'x', label: nw ? 'v(t) 극소 · x(t)는 극값 아님' : 'v(t)가 극소(0)인 점 · x(t)는 극값 아님', dx: 10, dy: 16 });
+    if (s.step>=3&&(id === 'origin' || id === 'trap')) pt([3, 0], { hollow: true, color: 'green', r: 5.5, ref: 'x', label: same(t,3) ? null : id === 'origin' ? '원점 복귀 (t=3)' : nw ? '원점 통과 (전환 아님)' : '원점 통과일 뿐 (방향 전환 아님)', dx: -10, dy: -16, align: 'right' });
+    if (s.step>=2&&id === 'turn' && p===0) pt([1, posX(1, p)], { hollow: true, color: 'violet', r: 5.5, ref: 'x', label: nw ? '수평 접선 · 극값 아님' : 'x(t)는 계속 증가 · 극값 아님', dx: 10, dy: 16 });
     pt.avoid([t, 0], 9);
-    if (vis(b, x)) pt([t, x], { color: 'amber', r: 6.5, ref: 'x', label: nw ? `x(${fmt(t)}) = ${fmt(x)}` : `위치 x(${fmt(t)}) = ${fmt(x)}`, dx: 12, dy: -12 });
-    timeHandle(b, s, 'T');
+    if (vis(b, x)) pt([t, x], { color: 'amber', r: 6.5, ref: 'x', label: `현재 위치 x≈${fmt(x,3)}`, dx: 12, dy: -12 });
+    timeHandle(b, s, 'T',turns);
     // (3) 속도 v(t)
     if (lay.deriv) {
       paneBg(b, 'deriv', 0.3, true);
       c.save();
       b.clip();
-      const tv = graphAxes(b, s, '속도 v(t)', 'sky');
+      const tv = graphAxes(b, s, '속도 v(t)', 'sky',end);
       if (s.step >= 2) m.legs.forEach((leg) => fillLeg(b, leg, (u) => velV(u, p), () => 0));
-      b.plot((u) => velV(u, p), { from: 0, to: T_MAX, color: 'sky', width: 2.8, glow: true, ref: 'v' });
+      b.plot((u) => velV(u, p), { from: 0, to: end, color: 'sky', width: 2.8, glow: true, ref: 'v' });
       syncLine(b, s);
       c.restore();
       b.use('deriv');
@@ -506,13 +508,13 @@ window.addEventListener('DOMContentLoaded', function () {
           pt.text([mid, velV(mid, p) / 2], `${leg.dir > 0 ? '전진 +' : '후진 −'}${fmt(len)}`, { color: leg.dir > 0 ? 'rose' : 'sky', size: 11.5, weight: 800, baseline: 'middle', ref: 'area' });
         });
       }
-      turns.forEach((tt) => pt([tt, 0], { hollow: true, color: 'red', r: 5.5, ref: 'v', label: Math.abs(t - tt) < 0.05 || (nw && turns.length > 1) ? null : turns.length > 1 ? 'v=0' : nw ? 'v=0 방향 전환' : 'v=0 · 부호 변화(방향 전환)', dx: turns.length > 1 ? -10 : 10, dy: turns.length > 1 ? -16 : 16, align: turns.length > 1 ? 'right' : 'left' }));
+      if(s.step>=turnStage) turns.forEach((tt) => pt([tt, 0], { hollow: true, color: 'red', r: 5.5, ref: 'v', label: same(t,tt) || (nw && turns.length > 1) ? null : turns.length > 1 ? 'v=0' : 'v=0 · 부호 변화', dx: turns.length > 1 ? -10 : 10, dy: turns.length > 1 ? -16 : 16, align: turns.length > 1 ? 'right' : 'left' }));
       const v1 = velV(1, p);
-      const vertex = id === 'origin' ? (nw ? 'a(1)=0 속력 최대' : `a(1)=0 · 속력 최대 |v|=${fmt(Math.abs(v1), 0)}`) : id === 'turn' && Math.abs(p) < 1e-6 ? (nw ? 'v=0 접함 (직진)' : 't=1 : v=0 접함 (부호 불변)') : nw ? 'a(1)=0' : '가속도 a(1)=0 (꼭짓점)';
-      if (vis(b, v1)) pt([1, v1], { color: 'violet', r: 5, ref: 'a', label: vertex, dx: -8, dy: 18, align: 'right' });
+      const vertex = id === 'origin' ? '[0,2] 속력 최대 |v|=3' : id === 'turn' && p===0 ? (s.step>=2?'v=0 · 양쪽 v>0':'v=0 · 접점') : '가속도 a(1)=0';
+      if (s.step>=1&&vis(b, v1)) pt([1, v1], { color: 'violet', r: 5, ref: 'a', label: vertex, dx: -8, dy: 18, align: 'right' });
       pt.avoid([t, 0], 9);
-      if (vis(b, vv)) pt([t, vv], { color: 'amber', r: 6.5, ref: 'v', label: nw ? `v(${fmt(t)}) = ${fmt(vv)}` : `속도 v(${fmt(t)}) = ${fmt(vv)}`, dx: 12, dy: -12 });
-      timeHandle(b, s, 'Tv');
+      if (vis(b, vv)) pt([t, vv], { color: 'amber', r: 6.5, ref: 'v', label: `현재 속도 v≈${fmt(vv,3)}`, dx: 12, dy: -12 });
+      timeHandle(b, s, 'Tv',turns);
     }
     b.use('main');
   }
@@ -520,43 +522,43 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 7. 장면 4: 두 점 P, Q 추격전 ---------- */
   function drawPair(b, s, V, cfg) {
     const { k, xp, xq, t1, t2 } = V;
-    const t = s.t, c = b.ctx;
+    const t = s.t, end=V.T||T_MAX, c = b.ctx;
     const pt = makePt(b);
-    const snaps = [t1, t2].filter((q) => q > 0.05 && q <= T_MAX);
+    const snaps = [t1, t2].filter((q) => q > 0 && q <= T_MAX);
     const lay = layoutOf(s);
     if (lay.track) {
       paneBg(b, 'track', 0.3, false);
-      if (s.step >= 1) drawTrackPair(b, s, cfg, V, lay.mini);
+      if (s.step >= 1) drawTrackPair(b, s, {...cfg,...V.trackRange}, V, lay.mini);
     }
     paneBg(b, 'main', 0, true);
     c.save();
     b.clip();
-    const tx = graphAxes(b, s, '위치 x(t)', 'ink');
-    b.plot(xP4, { from: 0, to: T_MAX, color: 'amber', width: 2.8, glow: true, ref: 'P' });
-    b.plot((u) => xQ4(u, k), { from: 0, to: T_MAX, color: 'sky', width: 2.8, glow: true, ref: 'Q' });
+    const tx = graphAxes(b, s, '위치 x(t)', 'ink',end);
+    b.plot(xP4, { from: 0, to: end, color: 'amber', width: 2.8, glow: true, ref: 'P' });
+    b.plot((u) => xQ4(u, k), { from: 0, to: end, color: 'sky', width: 2.8, glow: true, ref: 'Q' });
     b.seg([t, xp], [t, xq], { color: 'rose', width: 2.8, glow: true, ref: 'gap' });
     syncLine(b, s);
     c.restore();
     b.use('main');
     pt.block(tx);
-    if (t2 > 0.05 && t2 <= T_MAX && vis(b, xQ4(t2, k))) pt([t2, xQ4(t2, k)], { hollow: true, color: 'rose', r: 6, ref: 'gap', label: Math.abs(t - t2) < 0.05 || NARROW.matches ? null : `두 점 만남 (t=${+t2.toFixed(2)})`, dx: -10, dy: -16, align: 'right' });
+    if (s.step>=3&&t2 > 0 && t2 <= end && vis(b, xQ4(t2, k))) pt([t2, xQ4(t2, k)], { hollow: true, color: 'rose', r: 6, ref: 'gap', label: same(t,t2) || NARROW.matches ? null : `첫 재회 (${timeText(t2)})`, dx: -10, dy: -16, align: 'right' });
     pt.avoid([t, 0], 9);
-    if (vis(b, xp)) pt([t, xp], { color: 'amber', r: 6.5, ref: 'P', label: `x_P(${fmt(t)})=${fmt(xp)}`, dx: 12, dy: -12 });
-    if (vis(b, xq)) pt([t, xq], { color: 'sky', r: 6.5, ref: 'Q', label: `x_Q(${fmt(t)})=${fmt(xq)}`, dx: 12, dy: 18 });
+    if (vis(b, xp)) pt([t, xp], { color: 'amber', r: 6.5, ref: 'P', label: `현재 x_P≈${fmt(xp,3)}`, dx: 12, dy: -12 });
+    if (vis(b, xq)) pt([t, xq], { color: 'sky', r: 6.5, ref: 'Q', label: `현재 x_Q≈${fmt(xq,3)}`, dx: 12, dy: 18 });
     timeHandle(b, s, 'T', snaps);
     if (lay.deriv) {
       paneBg(b, 'deriv', 0.3, true);
       c.save();
       b.clip();
-      const tv = graphAxes(b, s, '속도 v(t)', 'sky');
+      const tv = graphAxes(b, s, '속도 v(t)', 'sky',end);
       if (s.step >= 2) gapLegs(t, k).forEach((leg) => fillLeg(b, leg, vP4, (u) => vQ4(u, k)));
-      b.plot(vP4, { from: 0, to: T_MAX, color: 'amber', width: 2.8, glow: true, ref: 'P' });
-      b.plot((u) => vQ4(u, k), { from: 0, to: T_MAX, color: 'sky', width: 2.8, glow: true, ref: 'Q' });
+      b.plot(vP4, { from: 0, to: end, color: 'amber', width: 2.8, glow: true, ref: 'P' });
+      b.plot((u) => vQ4(u, k), { from: 0, to: end, color: 'sky', width: 2.8, glow: true, ref: 'Q' });
       syncLine(b, s);
       c.restore();
       b.use('deriv');
       pt.block(tv);
-      if (t1 > 0.05 && t1 <= T_MAX) pt([t1, vQ4(t1, k)], { color: 'rose', r: 6, ref: 'gap', label: NARROW.matches ? 'v_P=v_Q 거리 최대' : `v_P=v_Q (t=${+t1.toFixed(2)}, 거리 최대!)`, dx: -10, dy: -16, align: 'right' });
+      if (s.step>=2&&t1 > 0 && t1 <= end) pt([t1, vQ4(t1, k)], { color: 'rose', r: 6, ref: 'gap', label: NARROW.matches ? '첫 재회 전 간격 최대' : `첫 재회 전 간격 최대 (${timeText(t1)})`, dx: -10, dy: -16, align: 'right' });
       if (vis(b, vP4(t))) pt([t, vP4(t)], { color: 'amber', r: 5, ref: 'P' });
       if (vis(b, vQ4(t, k))) pt([t, vQ4(t, k)], { color: 'sky', r: 5, ref: 'Q' });
       timeHandle(b, s, 'Tv', snaps);
@@ -571,8 +573,8 @@ window.addEventListener('DOMContentLoaded', function () {
     return { tag: d.tag, time: secs(m), text: d.question, answer: d.answerBadge, snap: () => ({ t: d.snap.t, ...(key ? { [key]: d.snap.param } : {}), dual: d.snap.dualView }) };
   };
   const solutionOf = (m) => ({
-    standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분',
-    quickTitle: '10초 컷 · 넓이와 비율 공식', quickTag: '10초 컷',
+    standardTitle: '식과 부호로 확인', standardTag: '정석 풀이',
+    quickTitle: '그래프의 구조로 계산 줄이기', quickTag: '부호·넓이·대칭',
     standard: examData[m].textbook,
     quick: examData[m].shortcut
   });
@@ -584,7 +586,7 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   const actionsOf = () => [
     { id: 'dual', icon: 'split', label: (s) => (s.dual ? 'x(t)·v(t) 함께 보기 켜짐' : 'x(t)·v(t) 함께 보기'), on: (s) => s.dual, run: (s) => { s.dual = !s.dual; } },
-    { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '주행 재생'), on: (s) => s.playing, run: (s) => { if (!s.playing && s.t >= 3.3) s.t = 0; s.playing = !s.playing; } }
+    { id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '주행 재생'), on: (s) => s.playing, run: (s) => { if (!s.playing && s.t >= T_MAX-.1) s.t = 0; s.playing = !s.playing; } }
   ];
   const tick = (s, dt) => {
     if (!s.playing) return false;
@@ -592,29 +594,28 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s.t > T_MAX) s.t = 0;
     return true;
   };
-  const atT = (tt) => ({ label: `t = ${tt}`, set: { t: tt }, on: (s) => Math.abs(s.t - tt) < 0.011 });
-  const tPreset = (tt, text, color) => ({ ...atT(tt), label: `t = ${tt} · ${text}`, color });
+  const atT = (tt) => ({ label: `t = ${tt}`, set: { t: tt }, on: (s) => same(s.t,tt) });
+  const tPreset = (tt, text, color) => ({ ...atT(tt), label: `t = ${tt} 관찰`, color });
 
   /** 점 하나 장면(1·2·3·5)의 view: 값 · 칩 · 상태 · 실시간 값 · 하단 띠 */
   function viewSingle(cfg) {
     return (s) => {
       const p = cfg.usesP ? s.p : 1;
       const t = s.t, x = posX(t, p), v = velV(t, p), a = accA(t), m = motion(t, p);
-      const p1 = Math.abs(p - 1) < 1e-9;
       const chips = cfg.usesP
-        ? [{ tex: p1 ? 'x(t) = t^3 - 3t^2' : `x(t) = (t-1)^3${sg(-3 * p) ? sg(-3 * p) + '(t-1)' : ''}${sg(1 - 3 * p)}`, color: 'ink' }, { tex: `v(t) = 3(t-1)^2${sg(-3 * p)}`, color: 'sky' }]
+        ? [{ k:'탐구 모델',tex: 'x(t)=t^3-3t^2+3(1-p)t', color: 'ink' }, { tex: 'v(t)=3(t-1)^2-3p', color: 'sky' }]
         : [{ tex: 'x(t) = t^3 - 3t^2', color: 'ink' }, { tex: 'v(t) = 3t^2 - 6t,\\; a(t) = 6t - 6', color: 'sky' }];
       const back = m.back, fwd = m.fwd;
       return {
         p, x, v, a, m, chips,
         status: cfg.status(s, { p, t, x, v, m }),
         readouts: [
-          { label: '관찰 시각 t', value: `${fmt(t)} 초`, color: 'amber', ref: 't' },
-          { label: '위치 x(t)', value: fmt(x), color: 'ink', ref: 'x' },
-          { label: '속도 v(t)', value: fmt(v), color: 'sky', ref: 'v', note: Math.abs(v) < 0.005 ? '순간 정지' : v > 0 ? '전진' : '후진' },
-          { label: '가속도 a(t) = 6(t−1)', value: fmt(a, 1), color: 'violet', ref: 'a' },
-          { label: '변위 Δx = ∫v dt', value: fmt(m.disp), color: 'rose', ref: 'area', note: `전진 ${fmt(fwd)} − 후진 ${fmt(back)}` },
-          { label: '이동거리 D = ∫|v| dt', value: fmt(m.dist), color: 'violet', ref: 'area', note: `전진 ${fmt(fwd)} + 후진 ${fmt(back)}` }
+          { label: '관찰 시각 t', value: `≈ ${fmt(t,4)} 초`, color: 'amber', ref: 't' },
+          { label: '위치 x(t)', value: `≈ ${fmt(x,4)}`, color: 'ink', ref: 'x' },
+          { label: '속도 v(t)', value: `≈ ${fmt(v,4)}`, color: 'sky', ref: 'v', note: same(v,0) ? '순간 정지' : v > 0 ? '전진' : '후진' },
+          { label: '가속도 a(t) = 6(t−1)', value: `≈ ${fmt(a,4)}`, color: 'violet', ref: 'a' },
+          { label: '변위 Δx = ∫v dt', value: `≈ ${fmt(m.disp,4)}`, color: 'rose', ref: 'area', note: `전진 ${fmt(fwd)} − 후진 ${fmt(back)}` },
+          { label: '이동거리 D = ∫|v| dt', value: `≈ ${fmt(m.dist,4)}`, color: 'violet', ref: 'area', note: `전진 ${fmt(fwd)} + 후진 ${fmt(back)}` }
         ],
         tape: s.step >= 3 ? {
           title: NARROW.matches ? `변위 Δx = ${fmt(m.disp)}  |  이동거리 D = ${fmt(m.dist)}  (0 ~ ${fmt(t)}초)` : `[0 ~ ${fmt(t)}초] 위치 변화량(변위 ∫v dt) = ${fmt(m.disp)}  |  실제 움직인 거리(∫|v| dt) = ${fmt(m.dist)}`,
@@ -623,7 +624,7 @@ window.addEventListener('DOMContentLoaded', function () {
       };
     };
   }
-  const near = (t, q) => Math.abs(t - q) < 0.03;
+  const near = (t, q) => same(t,q);
 
   /* ---------- 9. 장면 ---------- */
   const cfg1 = { id: 'disp', lo: -5, hi: 7 };
@@ -632,21 +633,21 @@ window.addEventListener('DOMContentLoaded', function () {
   const cfg5 = { id: 'trap', lo: -5, hi: 7 };
   const cfg4 = { id: 'chase', lo: -7, hi: 19 };
 
-  cfg1.status = (s, q) => (Math.abs(q.m.disp) < 0.005 && q.m.dist > 0.01
+  cfg1.status = (s, q) => (same(q.m.disp,0) && q.m.dist > 0
     ? { tone: 'ok', text: `원점 복귀: 변위 Δx = 0, 이동거리 D = ${fmt(q.m.dist)}` }
     : { tone: 'info', text: `변위 Δx = ${fmt(q.m.disp)} · 이동거리 D = ${fmt(q.m.dist)}` });
   cfg2.status = (s, q) => {
     const p = q.p;
-    if (p > 1e-6) {
+    if (p > 0) {
       const n = turnsOf(p, T_MAX).length;
-      return { tone: 'ok', text: `v의 부호가 바뀜 → 방향 전환 ${n}번 (t = ${turnsOf(p, T_MAX).map((x) => fmt(x, 2)).join(', ')})` };
+      return { tone: 'ok', text: `0<t<${T_MAX}에서 방향 전환 ${n}번 (${turnsOf(p, T_MAX).map(timeText).join(', ')})` };
     }
-    return Math.abs(p) <= 1e-6
+    return p===0
       ? { tone: 'warn', text: 't = 1 : v = 0 이지만 부호 불변 → 방향 전환 아님' }
       : { tone: 'info', text: 'v(t) > 0 : 멈추지 않고 계속 전진' };
   };
   cfg3.status = (s, q) => (near(q.t, 1) ? { tone: 'ok', text: `t = 1 : a = 0 → [0, 2]에서 속력 최대 |v| = ${fmt(Math.abs(q.v), 0)}` }
-    : near(q.t, 2) ? { tone: 'ok', text: `t = 2 : v = 0 (부호 변화) → 원점에서 가장 멀리 x = ${fmt(q.x, 0)}` }
+    : near(q.t, 2) ? { tone: 'ok', text: `t = 2 : v = 0 (부호 변화) → [0,3]에서 원점과의 최대거리 4` }
     : near(q.t, 3) ? { tone: 'ok', text: 't = 3 : x = 0 → 출발 후 다시 원점 복귀' }
     : { tone: 'info', text: `속력 |v| = ${fmt(Math.abs(q.v))} · 위치 x = ${fmt(q.x)}` });
   cfg5.status = (s, q) => (near(q.t, 2) ? { tone: 'ok', text: 't = 2 : x′ = v = 0 → x(t) 극소, v(t)는 t축을 지나며 부호가 바뀜 (방향 전환)' }
@@ -687,7 +688,7 @@ window.addEventListener('DOMContentLoaded', function () {
       title: '운동 방향의 전환', short: '방향 전환 판별',
       question: '속도가 0이 되는 순간마다 점은 방향을 바꿀까? v(t)=0 이어도 방향을 바꾸지 않는 경우는 그래프가 어떤 모양일 때일까?',
       controls: ['t', 'p'],
-      presets: [{ label: 'p = 1 · 부호가 바뀜 (방향 전환)', color: 'sky', set: { p: 1 }, on: (s) => Math.abs(s.p - 1) < 0.011 }, { label: 'p = 0 · 접함 (직진)', color: 'amber', set: { p: 0 }, on: (s) => Math.abs(s.p) < 0.011 }],
+      presets: [{ label: 'p = 1 비교', color: 'sky', set: { p: 1 }, on: (s) => s.p===1 }, { label: 'p = 0 비교', color: 'amber', set: { p: 0 }, on: (s) => s.p===0 }],
       fx: { w: [-6, 9], n: [-7.2, 8.2] }, fv: { w: [-7, 17], n: [-8, 17] }
     }),
     singleScene(3, cfg3, {
@@ -703,8 +704,8 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: examData[4].hint,
       controls: ['t', 'k'],
       presets: [
-        { label: 't = 1 · 거리 최대', color: 'rose', set: { t: 1, k: 1 }, on: (s) => Math.abs(s.t - 1) < 0.011 && Math.abs(s.k - 1) < 0.011 },
-        { label: 't = 1.5 · 다시 만남', color: 'green', set: { t: 1.5, k: 1 }, on: (s) => Math.abs(s.t - 1.5) < 0.011 && Math.abs(s.k - 1) < 0.011 }
+        { label: 'k = 1, t = 1 비교', color: 'rose', set: { t: 1, k: 1 }, on: (s) => same(s.t,1)&&s.k===1 },
+        { label: 'k = 1, t = 1.5 비교', color: 'green', set: { t: 1.5, k: 1 }, on: (s) => same(s.t,1.5)&&s.k===1 }
       ],
       actions: actionsOf(),
       steps: examData[4].steps,
@@ -718,22 +719,21 @@ window.addEventListener('DOMContentLoaded', function () {
         const t = s.t, k = s.k;
         const xp = xP4(t), xq = xQ4(t, k), vp = vP4(t), vq = vQ4(t, k), gap = Math.abs(xp - xq);
         const t1 = 2 - k, t2 = 3 - 1.5 * k;          // v_P = v_Q 인 시각(거리 최대), x_P = x_Q 인 시각(다시 만남)
-        const k1 = Math.abs(k - 1) < 1e-9;
-        const atMax = t1 > 0.05 && near(t, t1), atMeet = t2 > 0.05 && t2 <= T_MAX && near(t, t2);
+        const atMax = t1 > 0 && near(t, t1), atMeet = t2 > 0 && t2 <= T_MAX && near(t, t2);
         return {
           xp, xq, vp, vq, k, t1, t2,
           chips: [
-            { tex: `x_P(t) = -t^3 + 3t^2,\\; x_Q(t) = ${k1 ? '1.5' : fmt(1.5 * k)}t^2`, color: 'ink' },
-            { tex: `v_P(t) = -3t^2 + 6t,\\; v_Q(t) = ${k1 ? '3' : fmt(3 * k)}t`, color: 'sky' }
+            { k:'탐구 모델',tex: 'x_P(t)=-t^3+3t^2,\\;x_Q(t)=\\dfrac32kt^2', color: 'ink' },
+            { tex: 'v_P(t)=-3t^2+6t,\\;v_Q(t)=3kt', color: 'sky' }
           ],
-          status: atMax ? { tone: 'ok', text: '★ 최대 간격 (v_P = v_Q)' } : atMeet ? { tone: 'ok', text: '★ 두 점 만남 (추월)' } : { tone: 'info', text: '두 점이 움직이는 중' },
+          status: t1<=0 ? {tone:'info',text:'k≥2에서는 t>0 내내 Q가 앞서며 다시 만나지 않습니다.'} : atMax ? { tone: 'ok', text: '첫 재회 전의 최대 간격 (v_P = v_Q)' } : atMeet ? { tone: 'ok', text: '출발 후 첫 재회 (추월)' } : { tone: 'info', text: t>t2?'첫 재회 이후에는 Q가 앞서며 간격이 다시 커집니다.':'처음 다시 만날 때까지의 간격을 관찰합니다.' },
           readouts: [
-            { label: '관찰 시각 t', value: `${fmt(t)} 초`, color: 'amber', ref: 't' },
-            { label: '간격 |x_P − x_Q|', value: fmt(gap), color: 'rose', ref: 'gap', note: xp >= xq ? 'P가 앞' : 'Q가 앞' },
-            { label: '위치 x_P', value: fmt(xp), color: 'amber', ref: 'P' },
-            { label: '위치 x_Q', value: fmt(xq), color: 'sky', ref: 'Q' },
-            { label: '속도 v_P', value: fmt(vp), color: 'amber', ref: 'P' },
-            { label: '속도 v_Q', value: fmt(vq), color: 'sky', ref: 'Q' }
+            { label: '관찰 시각 t', value: `≈ ${fmt(t,4)} 초`, color: 'amber', ref: 't' },
+            { label: '간격 |x_P − x_Q|', value: `≈ ${fmt(gap,4)}`, color: 'rose', ref: 'gap', note: same(xp,xq) ? '같은 위치' : xp > xq ? 'P가 앞' : 'Q가 앞' },
+            { label: '위치 x_P', value: `≈ ${fmt(xp,4)}`, color: 'amber', ref: 'P' },
+            { label: '위치 x_Q', value: `≈ ${fmt(xq,4)}`, color: 'sky', ref: 'Q' },
+            { label: '속도 v_P', value: `≈ ${fmt(vp,4)}`, color: 'amber', ref: 'P' },
+            { label: '속도 v_Q', value: `≈ ${fmt(vq,4)}`, color: 'sky', ref: 'Q' }
           ],
           tape: s.step >= 3 ? { title: `시각 t=${fmt(t)}초 : 점 P(${fmt(xp)}) vs 점 Q(${fmt(xq)})  ⇒  간격 = ${fmt(gap)}` } : null
         };
@@ -752,7 +752,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ==========================================================================
      「새 문제」 변형 문제 공용 부품 (2026-11 옛 장면 살리기)
-     - 탐구 탭은 예전 그대로(끌기·슬라이더)입니다. 정리 탭은 변형 문제의 풀이를 단계마다 그림에 드러내고,
+     - 탐구 탭은 현재 끌기·슬라이더의 모델을 표시합니다. 정리 탭은 변형 문제의 풀이를 단계마다 그림에 드러내고,
        문제 탭은 지문에 주어진 값만 그립니다(답과 보조선은 풀이 단계를 누른 뒤에만 나옵니다).
      - 첫 문제는 예전 문제 그대로이고, 「새 문제」는 같은 학습 포인트(같은 비율·같은 성질)가 성립하는
        함수족 안에서 숫자만 바꾼 변형을 만듭니다(연속해서 같은 문제가 나오지 않게 함).
@@ -770,13 +770,13 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.vary.next();
     lab.s.revealed = false;
     lab.setStep(0);
-    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
   // 지금 탭이 탐구가 아니면(정리·문제) 변형 문제의 그림을 그립니다.
   const cxVarTab = () => { const l = window.lab; return !!l && l.tab !== 'explore'; };
-  // 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
-  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : 0);
+  // 문제의 정답 버튼도 최종 그림과 동기화하며, 닫으면 0단계로 돌아갑니다.
+  const cxStep = (lab, s) => (lab&&lab.tab==='problem' ? (lab._answerOpen&&lab._answerOpen()?3:0) : s.step);
   // 변형 문제의 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
   function cxFocus(b, key, box) {
     if (b._cxKey === key) return;
@@ -894,11 +894,14 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   const mvClip = (f, T) => (t) => (t < -1e-9 || t > T + 1e-9 ? NaN : f(t));
   // 현재 변형의 화면 설명(창 개수와 세로 범위): 장면마다 spec(v, step) 을 줍니다
-  const mvSpecNow = (M) => { const l = window.lab; const st = l && l.tab === 'review' ? l.s.step : 0; return M.spec(M.vary.cur(), st); };
+  const mvSpecNow = (M) => { const l = window.lab; return M.spec(M.vary.cur(),l?cxStep(l,l.s):0); };
   const mvPanes = (M) => () => {
     const sp = mvSpecNow(M), lab = labRef(), H = (lab && lab.board.H) || 420, ins = lab ? lab.board.insets : { top: 0, bottom: 0 };
-    const head = Math.max(ins.top || 0, 6) / H, foot = (ins.bottom || 0) / H, rest = 1 - head - foot;
+    const st=lab?cxStep(lab,lab.s):0;
+    const head = Math.max(ins.top || 0, 6) / H, foot = (ins.bottom || 0) / H;
+    const track=st>=1&&M.id!==2&&(M.id!==3||st>=2)&&H*(1-head-foot)>=440?64/H:0, rest=1-head-foot-track;
     const list = [{ id: 'head', frac: head }];
+    if(track)list.push({id:'track',frac:track,focusY:Y_TRACK});
     if (sp.showX) {
       const h1 = rest * 0.5;
       list.push({ id: 'main', frac: h1, focusY: sp.xr }, { id: 'deriv', frac: rest - h1, focusY: sp.vr });
@@ -909,6 +912,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function mvFrame(b, s, lab, M) {
     const v = M.vary.cur(), st = cxStep(lab, s), sp = M.spec(v, st), key = 'mv' + M.id + v.sid + (sp.showX ? 'X' : 'V');
     cxFocus(b, key, { x: [-0.16 * sp.T, 1.24 * sp.T], y: sp.vr });
+    if(b.panes&&b.panes.some(p=>p.id==='track')) mvTrack(b,M,v,st);
     const pane = (pid, title, color, body, last) => {
       b.use(pid);
       const r = b.paneRect(pid), c = b.ctx;
@@ -936,7 +940,23 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
   const mvLabel = (b, p, str, o) => cxTag(b, p, str, { size: 12, ...o });
+  const mvPoint = (b,p,o) => { b.point(p,{...o,label:null}); if(o.label)mvLabel(b,p,o.label,{...o,align:o.align||'left'}); };
+  const mvValue = (x) => { const q=cxRatOf(x); return q ? (q.d===1?String(q.n):`${q.n}/${q.d}`) : `≈${cxN(x,4)}`; };
   const mvNote = (b, pid, y, str, color) => { b.use(pid); const r = b.paneRect(pid); b.stext(r.x + 10, r.y + y, str, { color, size: 12.5, align: 'left', baseline: 'middle', weight: 800 }); };
+  function mvTrack(b,M,v,st) {
+    paneBg(b,'track',.3,false);
+    if(M.id===4){
+      const t=st>=3?v.t2:st>=2?v.t1:v.t2*.4, hi=Math.max(0,v.xP(v.t2),v.xQ(v.t2),v.xP(Math.min(v.b,v.t2)));
+      drawTrackPair(b,{}, {lo:-Math.max(.5,hi*.15),hi:hi+Math.max(.5,hi*.2)}, {xp:v.xP(t),xq:v.xQ(t)},true);
+      mvNote(b,'track',12,`수직선 · t=${mvValue(t)} (P 노랑 · Q 하늘)`,'muted');
+      return;
+    }
+    const turn=M.id===5?v.tt:v.b, back=-v.xf(turn), end=M.id===5?3*v.c:v.T;
+    const t=M.id===1||st>=3?end:turn, cuts=[0,...(turn<t?[turn]:[]),t];
+    const legs=cuts.slice(1).map((b,i)=>({a:cuts[i],b,dir:v.vf((cuts[i]+b)/2)>=0?1:-1,x0:v.xf(cuts[i]),x1:v.xf(b)}));
+    drawTrackSingle(b,{}, {lo:-back-Math.max(.5,back*.15),hi:Math.max(.5,back*.25)}, {x:v.xf(t),v:v.vf(t),m:{legs}},true);
+    mvNote(b,'track',12,`수직선 경로 · t=${mvValue(t)}`,'muted');
+  }
 
   /* ===== 변형 1 · 변위와 이동거리 ===== */
   const MV1 = [[3, 2], [6, 1], [6, 2], [12, 1], [3, 4]];
@@ -954,8 +974,8 @@ window.addEventListener('DOMContentLoaded', function () {
     T: v.T + 0.3, showX: st >= 1, vr: mvRange([mvClip(v.vf, v.T + 0.3)], v.T + 0.3, 0.2), xr: mvRange([mvClip(v.xf, v.T + 0.3)], v.T + 0.3, 0.22), sync: st >= 2 ? [[v.b, 'amber'], [v.T, 'green']] : [],
     x: (b) => {
       b.plot(mvClip(v.xf, v.T + 0.3), { color: 'ink', width: 3.2, glow: true });
-      b.point([v.b, v.xf(v.b)], { color: 'sky', r: 6, label: `방향 전환 (t=${cxN(v.b)}, x=${cxN(v.xf(v.b))})`, dx: 10, dy: 16 });
-      b.point([v.T, 0], { color: 'green', r: 6, label: `t=${cxN(v.T)}, x=0`, dx: -10, dy: -14, align: 'right' });
+      mvPoint(b,[v.b, v.xf(v.b)], { color: 'sky', r: 6, label: `방향 전환 (t=${cxN(v.b)}, x=${cxN(v.xf(v.b))})`, dx: 10, dy: 16 });
+      mvPoint(b,[v.T, 0], { color: 'green', r: 6, label: `t=${cxN(v.T)}, x=0`, dx: -10, dy: -14, align: 'right' });
     },
     v: (b) => {
       if (st >= 2) {
@@ -967,17 +987,17 @@ window.addEventListener('DOMContentLoaded', function () {
       b.vline(v.T, { color: 'green', alpha: 0.7, width: 1.8, dash: true });
       mvLabel(b, [v.T, vrM1[1] * 0.82], `t = ${cxN(v.T)}`, { color: 'green', dx: -5, align: 'right' });
       b.plot(mvClip(v.vf, v.T + 0.3), { color: 'sky', width: 3, glow: true });
-      if (st >= 1) b.point([v.b, 0], { color: 'sky', r: 5.5, label: `t=${cxN(v.b)}`, dx: 8, dy: 16, align: 'left' });
+      if (st >= 1) mvPoint(b,[v.b, 0], { color: 'sky', r: 5.5, label: `t=${cxN(v.b)}`, dx: 8, dy: 16, align: 'left' });
       if (st >= 3) mvNote(b, 'deriv', 34, `Δx = S₁ − S₂ = 0   ·   D = S₁ + S₂ = ${cxN(2 * v.S)}`, 'amber');
     }
   });
   const vTex1 = (v) => `v(t) = ${mvTex(v.a, -v.a * v.b)}`;
   const text1 = (v) => (v.first ? examData[1].question() : `수직선 위를 움직이는 점 ${tex('P')}의 시각 ${tex('t \\; (t \\ge 0)')}에서의 속도가 ${tex(vTex1(v))} 이고 ${tex('t = 0')} 일 때 원점에서 출발한다. ${tex('t = 0')} 에서 ${tex('t = ' + cxNum(v.T))} 까지 점 ${tex('P')}의 위치의 변화량 ${tex('\\Delta x')}와 실제로 움직인 거리 ${tex('D')}를 각각 구하시오.`);
   const ans1 = (v) => (v.first ? examData[1].answerBadge() : `위치 변화량 ${tex('\\Delta x = 0')}, 움직인 거리 ${tex(`D = ${cxNum(2 * v.S)}`)}`);
-  const steps1 = (v) => (v.first ? examData[1].steps : [
-    '1단계 · 수직선 위에서 점 P가 왼쪽으로 갔다가 방향을 바꾸어 돌아오는 경로를 봅니다.',
-    '2단계 · 위치 x(t)의 그래프와, 속도 v(t)의 그래프와 t축 사이의 넓이(후진 −S₂, 전진 +S₁)를 표시합니다.',
-    `3단계 · 변위(Δx = S₁ − S₂ = 0)와 이동거리(D = S₁ + S₂ = ${cxN(2 * v.S)})를 비교합니다.`]);
+  const steps1 = (v) => [
+    `1단계 · 속도는 0<t<${v.b}에서 음수, t>${v.b}에서 양수입니다. 위치 그래프가 감소했다가 증가하는 모습과 점의 왕복 경로를 대응시킵니다.`,
+    `2단계 · 속도 아래의 하늘색 후진 넓이 S₂와 분홍색 전진 넓이 S₁을 봅니다. 처음 위치로 복귀하므로 S₁=S₂이며, 포물선 넓이 S₂=ab³/6=${mvValue(v.S)}만 구하면 됩니다.`,
+    `3단계 · 위치의 변화량은 부호를 살린 Δx=S₁−S₂=0이고, 실제 걸어간 길이는 D=S₁+S₂=${mvValue(2*v.S)}입니다. 적분을 두 번 계산하는 대신 같은 두 넓이를 이용합니다.`];
   const std1 = (v) => {
     if (v.first) return examData[1].textbook();
     return {
@@ -992,7 +1012,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (v.first) return examData[1].shortcut();
     return {
       steps: `① ${tex(`v(t) = ${v.a === 1 ? '' : v.a}t(t - ${v.b})`)} 에서 ${tex(`0 \\sim ${v.b}`)}초 동안 후진한 거리는 포물선과 ${tex('t')}축으로 둘러싸인 넓이 공식 ${tex('S = \\dfrac{|a|}{6}(\\beta - \\alpha)^3')} 으로 <strong class="text-sky-300">${tex(`S_2 = \\dfrac{${v.a}}{6}(${v.b} - 0)^3 = ${cxNum(v.S)}`)}</strong> 입니다.<br/>
-② ${tex(`\\int_{0}^{${cxNum(v.T)}} v(t)\\,dt = 0`)} 이므로 ${tex(`${v.b} \\sim ${cxNum(v.T)}`)}초 동안 전진한 거리도 똑같이 <strong class="text-pink-300">${tex(`S_1 = ${cxNum(v.S)}`)}</strong> 입니다.<br/>
+② ${tex('x(t)=\\dfrac{a}{6}t^2(2t-3b)')}에서 ${tex(`t=3b/2=${cxNum(v.T)}`)}이면 ${tex('x(t)=0')}입니다. 따라서 전진한 거리도 똑같이 <strong class="text-pink-300">${tex(`S_1 = ${cxNum(v.S)}`)}</strong> 입니다.<br/>
 ③ 따라서 ${tex(`t = ${cxNum(v.T)}`)}초일 때 위치 변화량 <strong class="text-amber-300">${tex(`\\Delta x = -${cxNum(v.S)} + ${cxNum(v.S)} = 0`)}</strong>, 실제 움직인 거리 <strong class="text-emerald-300">${tex(`D = ${cxNum(v.S)} + ${cxNum(v.S)} = ${cxNum(2 * v.S)}`)}</strong> 입니다.`,
       highlight: examData[1].shortcut().highlight
     };
@@ -1002,7 +1022,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const MV2 = [[1, 1], [2, 1], [2, 4], [3, 1], [3, 4], [3, 9], [4, 4]];
   function mkM2(first, c, d) {
     const r = Math.sqrt(d), v1 = (t) => 3 * ((t - c) * (t - c) - d), v2 = (t) => 3 * (t - c) * (t - c);
-    const roots = [c - r, c + r].filter((x) => x > 1e-9);
+    const roots = [c - r, c + r].filter((x) => x > 0);
     return { first, c, d, r, v1, v2, roots, n: roots.length, T: c + r + 1.3 };
   }
   const varM2 = cxVarier((prev) => {
@@ -1013,35 +1033,36 @@ window.addEventListener('DOMContentLoaded', function () {
   const specM2 = (v, st) => ({
     T: v.T, showX: false, vr: mvRange([v.v1, v.v2], v.T, 0.18), vTitle: 'v(t) 속도 (두 경우)',
     v: (b) => {
-      b.plot(v.v2, { color: 'violet', width: 2.6, dash: true, ref: 'v2' });
-      b.plot(v.v1, { color: 'sky', width: 3.2, glow: true, ref: 'v1' });
+      b.plot(mvClip(v.v2,v.T), { color: 'violet', width: 2.6, dash: true, ref: 'v2' });
+      b.plot(mvClip(v.v1,v.T), { color: 'sky', width: 3.2, glow: true, ref: 'v1' });
       const vb = b.viewBox();
       cxTag(b, [v.T * 0.93, v.v1(v.T * 0.93)], 'v₁', { color: 'sky', size: 14, dx: -6, dy: -4, align: 'right' });
       cxTag(b, [v.T * 0.84, v.v2(v.T * 0.84)], 'v₂', { color: 'violet', size: 14, dx: -6, dy: -8, align: 'right' });
       if (st >= 1) {
-        [v.c - v.r, v.c + v.r].forEach((x) => b.point([x, 0], { color: 'sky', r: 5.5, ref: 'v1', label: `t=${cxN(x)}`, dx: x < v.c ? -9 : 9, dy: 16, align: x < v.c ? 'right' : 'left' }));
-        b.point([v.c, 0], { color: 'violet', r: 5.5, ref: 'v2', label: `t=${cxN(v.c)} (v₂ 접함)`, dx: 0, dy: -15, align: 'center' });
+        [v.c - v.r, v.c + v.r].forEach((x) => mvPoint(b,[x, 0], { color: 'sky', r: 5.5, ref: 'v1', label: x===0?'t=0 (출발)':`t=${cxN(x)}`, dx: x===0?8:x<v.c?-9:9, dy: 16, align: x===0?'left':x<v.c?'right':'left' }));
+        mvPoint(b,[v.c, 0], { color: 'violet', r: 5.5, ref: 'v2', label: `t=${cxN(v.c)} (v₂ 접함)`, dx: 0, dy: -15, align: 'center' });
       }
       if (st >= 2) {
         const sgn = (t0, t1, f, label) => { const m = (t0 + t1) / 2; cxTag(b, [m, 0], label, { color: f(m) > 0 ? 'rose' : 'sky', size: 12, dy: f(m) > 0 ? -22 : 24, ref: 'sign' }); };
         const cuts = [0, ...v.roots, v.T];
         for (let i = 0; i < cuts.length - 1; i++) sgn(cuts[i], cuts[i + 1], v.v1, v.v1((cuts[i] + cuts[i + 1]) / 2) > 0 ? 'v₁ > 0 (전진)' : 'v₁ < 0 (후진)');
+        if(st===2) mvNote(b,'main',32,'v₂: + → 0 → + (양쪽 모두 전진)','violet');
       }
       if (st >= 3) {
-        v.roots.forEach((x) => b.point([x, 0], { color: 'green', r: 8, hollow: true, ref: 'turn' }));
+        v.roots.forEach((x) => mvPoint(b,[x, 0], { color: 'green', r: 8, hollow: true, ref: 'turn' }));
         mvNote(b, 'main', 32, `v₁: 부호가 바뀌는 곳 ${v.n}번 → 방향 전환 ${v.n}번`, 'green');
         mvNote(b, 'main', 50, 'v₂: 0이 되어도 부호가 그대로 → 방향 전환 0번', 'violet');
       }
     }
   });
-  const v1Tex = (v) => `v_1(t) = 3(t${cxSub(v.c)})^2${v.d === 1 ? '-3' : '-' + 3 * v.d}`.replace('(t)', 't');
+  const v1Tex = (v) => `v_1(t) = 3(t${cxSub(v.c)})^2${v.d === 1 ? '-3' : '-' + 3 * v.d}`;
   const v2Tex = (v) => `v_2(t) = 3(t${cxSub(v.c)})^2`;
   const text2 = (v) => (v.first ? examData[2].question() : `수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex(v1Tex(v))} 일 때와 ${tex(v2Tex(v))} 일 때, 출발 후(${tex('t > 0')}) 점 ${tex('P')}가 운동 방향을 바꾸는 횟수를 각각 구하시오.`);
   const ans2 = (v) => (v.first ? examData[2].answerBadge() : `${tex('v_1(t)')}는 ${tex(String(v.n))}번(${tex('t=' + v.roots.join(',\\; t='))}), ${tex('v_2(t)')}는 ${tex('0')}번 (방향 전환 없음!)`);
-  const steps2 = (v) => (v.first ? examData[2].steps : [
-    `1단계 · v₁의 부호가 바뀌는 시각(t=${v.roots.join(', ')})과 v₂가 0이 되는 시각(t=${v.c})을 표시합니다.`,
-    '2단계 · 속도 v₁, v₂가 양수인 구간과 음수인 구간을 부호로 읽습니다.',
-    '3단계 · 속도 그래프가 t축을 지나며 부호가 바뀌는 경우(방향 전환)와 t축에 접하는 경우(부호 불변, 계속 직진)를 비교합니다.']);
+  const steps2 = (v) => [
+    `1단계 · 두 속도 그래프가 t축과 만나는 후보를 표시합니다. v₁의 두 근은 ${v.c-v.r}, ${v.c+v.r}이고 v₂는 t=${v.c}에서 접합니다. 출발 경계 t=0은 출발 후 방향 전환에 세지 않습니다.`,
+    `2단계 · v₁의 단근에서는 앞뒤 부호가 바뀝니다. v₂=3(t−${v.c})²는 접점 양쪽에서 모두 양수이므로 멈춘 순간 뒤에도 같은 방향으로 갑니다.`,
+    `3단계 · t>0인 부호 변화만 세면 v₁은 ${v.n}번, v₂는 0번입니다. 속도가 0이라는 조건만 세는 계산을 부호 비교로 보완합니다.`];
   const std2 = (v) => {
     if (v.first) return examData[2].textbook();
     return {
@@ -1073,27 +1094,31 @@ window.addEventListener('DOMContentLoaded', function () {
   });
   const specM3 = (v, st) => ({
     T: v.T + 0.3, showX: st >= 2, vr: mvRange([mvClip(v.vf, v.T + 0.3)], v.T + 0.3, 0.2), xr: mvRange([mvClip(v.xf, v.T + 0.3)], v.T + 0.3, 0.22),
+    vTitle:`v(t) 속도 · [0, ${v.b}]에서 속력 비교`,
     sync: st >= 2 ? [[v.tmax, 'violet'], [v.b, 'sky'], [v.T, 'green']] : [],
     x: (b) => {
       b.plot(mvClip(v.xf, v.T + 0.3), { color: 'ink', width: 3.2, glow: true });
-      b.point([v.b, v.xmin], { color: 'sky', r: 6, label: `t=${cxN(v.b)}: x=${cxN(v.xmin)} (가장 멂)`, dx: 10, dy: -14 });
-      if (st >= 3) b.point([v.T, 0], { color: 'green', r: 6, label: `t=${cxN(v.T)}: x=0 (원점 복귀)`, dx: -10, dy: 16, align: 'right' });
+      mvPoint(b,[v.b, v.xmin], { color: 'sky', r: 6, label: `t=${cxN(v.b)}, x=${mvValue(v.xmin)}`, dx: 10, dy: -14 });
+      if (st >= 3) mvPoint(b,[v.T, 0], { color: 'green', r: 6, label: `t=${cxN(v.T)}: x=0 (원점 복귀)`, dx: -10, dy: 16, align: 'right' });
     },
     v: (b) => {
+      const vr=mvRange([v.vf],v.T+.3,.2);
+      b.poly([[0,vr[0]],[v.b,vr[0]],[v.b,vr[1]],[0,vr[1]]],{fill:'violet',fillAlpha:.07,color:null});
       b.plot(mvClip(v.vf, v.T + 0.3), { color: 'sky', width: 3, glow: true });
       if (st >= 1) {
-        b.point([v.tmax, v.vf(v.tmax)], { color: 'violet', r: 6, label: `t=${cxN(v.tmax)}: a=0, |v|=${cxN(v.vmax)}`, dx: 10, dy: 17 });
+        mvPoint(b,[v.tmax, v.vf(v.tmax)], { color: 'violet', r: 6, label: `t=${cxN(v.tmax)}: a=0, |v|=${cxN(v.vmax)}`, dx: 10, dy: 17 });
+        mvPoint(b,[0,0],{color:'muted',r:4}); mvPoint(b,[v.b,0],{color:'muted',r:4});
       }
-      if (st >= 2) b.point([v.b, 0], { color: 'sky', r: 5.5, label: `t=${cxN(v.b)}: v=0`, dx: 0, dy: -14, align: 'center' });
-      if (st >= 3) b.point([v.T, v.vf(v.T)], { color: 'green', r: 5, label: `t=${cxN(v.T)}`, dx: -10, dy: -14, align: 'right' });
+      if (st >= 2) mvPoint(b,[v.b, 0], { color: 'sky', r: 5.5, label: `t=${cxN(v.b)}: v=0`, dx: 0, dy: -14, align: 'center' });
+      if (st >= 3) mvPoint(b,[v.T, v.vf(v.T)], { color: 'green', r: 5, label: `t=${cxN(v.T)}`, dx: -10, dy: -14, align: 'right' });
     }
   });
   const text3 = (v) => (v.first ? examData[3].question() : `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex(`v(t) = ${mvTex(v.a, -v.a * v.b)}`)} 일 때, ① 닫힌구간 ${tex(`[0, ${cxNum(v.b)}]`)}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 닫힌구간 ${tex(`[0, ${cxNum(v.T)}]`)}에서 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`);
-  const ans3 = (v) => (v.first ? examData[3].answerBadge() : `① 최대속력 ${tex(`t=${cxNum(v.tmax)}`)}, ② 최고점 ${tex(`t=${cxNum(v.b)}`)}, ③ 원점복귀 ${tex(`t=${cxNum(v.T)}`)}`);
-  const steps3 = (v) => (v.first ? examData[3].steps : [
-    `1단계 · t = ${cxN(v.tmax)} : 가속도 a(${cxN(v.tmax)})=v′(${cxN(v.tmax)})=0 ⇒ 구간 [0, ${cxN(v.b)}]에서 최대 속력 |v(${cxN(v.tmax)})| = ${cxN(v.vmax)}`,
-    `2단계 · t = ${cxN(v.b)} : 속도 v(${cxN(v.b)})=0 이고 부호가 바뀜 ⇒ 원점으로부터 가장 멀리 떨어진 방향 전환 지점(x = ${cxN(v.xmin)})`,
-    `3단계 · t = ${cxN(v.T)} : 전진한 거리와 후진한 거리가 같아짐(S₁ = S₂) ⇒ 출발 후 원점(x = 0)으로 복귀!`]);
+  const ans3 = (v) => (v.first ? examData[3].answerBadge() : `① 최대속력 ${tex(`t=${cxNum(v.tmax)}`)}, ② 원점과의 최대거리 ${tex(`t=${cxNum(v.b)}`)}, ③ 원점복귀 ${tex(`t=${cxNum(v.T)}`)}`);
+  const steps3 = (v) => [
+    `1단계 · 강조한 구간 [0,${v.b}]에서는 속도가 음수이므로 속력은 −v입니다. 끝점의 속력 0과 꼭짓점을 비교하면 t=${v.tmax}에서 최대 ${mvValue(v.vmax)}입니다.`,
+    `2단계 · 위치 그래프는 [0,${v.b}]에서 감소하고 [${v.b},${v.T}]에서 증가합니다. 구간 [0,${v.T}]의 양 끝은 원점이므로 t=${v.b}, x=${mvValue(v.xmin)}에서 원점과 가장 멉니다.`,
+    `3단계 · x(t)=at²(2t−3b)/6을 보면 출발 후 양의 영점은 t=3b/2=${v.T}입니다. 속력의 극값, 위치의 극값, 원점 복귀는 서로 다른 조건입니다.`];
   const std3 = (v) => {
     if (v.first) return examData[3].textbook();
     return {
@@ -1104,12 +1129,11 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   };
   const quick3 = (v) => {
-    if (v.first) return examData[3].shortcut();
     return {
-      steps: `① <strong>[최대 속력]</strong> 이차 속도함수의 대칭축(가속도 ${tex('a(t)=0')})인 <strong class="text-sky-300">${tex(`t = ${cxNum(v.tmax)}`)}초</strong> (속력 ${tex(cxNum(v.vmax))})!<br/>
-② <strong>[원점에서 가장 먼 시각]</strong> 한쪽으로만 끝까지 가서 방향을 바꾸는 시각 <strong class="text-pink-300">${tex(`t = ${cxNum(v.b)}`)}초</strong> (거리 ${tex(`= \\dfrac{${v.a}}{6}\\cdot ${cxNum(v.b)}^3 = ${cxNum(-v.xmin)}`)})!<br/>
-③ 전진한 넓이와 후진한 넓이가 같아지는 ${tex(`t = ${cxNum(v.T)}`)}에서 ${tex('x(t) = 0')}이므로 출발 이후의 원점 복귀 시각은 ${tex(`t=${cxNum(v.T)}`)}이다. 세 결과는 이 문항의 시간구간과 속도함수에서 나온다.`,
-      highlight: examData[3].shortcut().highlight
+      steps: `① ${tex(`0\\le t\\le${v.b}`)}에서 ${tex(`|v(t)|=${v.a}\\{${cxNum(v.b*v.b/4)}-(t-${cxNum(v.b/2)})^2\\}`)}입니다. 대칭축 ${tex(`t=${cxNum(v.tmax)}`)}에서 최대 ${tex(cxNum(v.vmax))}이고 두 끝의 속력은 0입니다.<br/>
+② ${tex(`[0,${cxNum(v.T)}]`)}에서는 한쪽으로 갔다가 원점으로 돌아오므로 방향을 바꾸는 ${tex(`t=${v.b}`)}에서 가장 멉니다. 그 거리는 포물선의 넓이 ${tex(`|x(${v.b})|=${v.a}\\cdot${v.b}^3/6=${cxNum(-v.xmin)}`)}입니다.<br/>
+③ ${tex('x(t)=at^2(2t-3b)/6')}의 양의 영점은 ${tex(`t=3b/2=${cxNum(v.T)}`)}입니다. 이 식은 두 부호 영역의 넓이가 같아지는 시각을 알려 줍니다.`,
+      highlight: `속력은 [0,${v.b}], 원점과의 거리는 [0,${v.T}]에서 비교한 결론입니다. 시간구간을 늘리면 꼭짓점만으로 최대를 판정할 수 없으며 끝점도 다시 비교합니다.`
     };
   };
 
@@ -1127,14 +1151,14 @@ window.addEventListener('DOMContentLoaded', function () {
   });
   const specM4 = (v, st) => ({
     T: v.T, showX: st >= 1, vr: mvRange([mvClip(v.vP, v.T), mvClip(v.vQ, v.T)], v.T, 0.2), xr: mvRange([mvClip(v.xP, v.T), mvClip(v.xQ, v.T)], v.T, 0.22),
-    xTitle: 'x(t) 위치 (P 노랑 · Q 하늘)', vTitle: 'v(t) 속도 (P 노랑 · Q 하늘)', sync: st >= 2 ? [[v.t1, 'rose'], [v.t2, 'green']] : [],
+    xTitle: 'x(t) 위치 · 첫 재회 전 비교', vTitle: 'v(t) 속도 (P 노랑 · Q 하늘)', sync: st>=3?[[v.t1,'rose'],[v.t2,'green']]:st>=2?[[v.t1,'rose']]:[],
     x: (b) => {
       b.plot(mvClip(v.xQ, v.T), { color: 'sky', width: 3, glow: true });
       b.plot(mvClip(v.xP, v.T), { color: 'amber', width: 3, glow: true });
       if (st >= 2) {
         b.seg([v.t1, v.xQ(v.t1)], [v.t1, v.xP(v.t1)], { color: 'rose', width: 3.4, ref: 'gap' });
-        b.point([v.t1, v.xP(v.t1)], { color: 'rose', r: 5.5, label: `t₁=${cxN(v.t1)} 간격 최대`, dx: -10, dy: -14, align: 'right' });
-        b.point([v.t2, v.xP(v.t2)], { color: 'green', r: 6.5, label: `t₂=${cxN(v.t2)} 다시 만남`, dx: 10, dy: 17 });
+        mvPoint(b,[v.t1, v.xP(v.t1)], { color: 'rose', r: 5.5, label: `t₁=${cxN(v.t1)} 간격 최대`, dx: -10, dy: -14, align: 'right' });
+        if(st>=3)mvPoint(b,[v.t2, v.xP(v.t2)], { color: 'green', r: 6.5, label: `t₂=${cxN(v.t2)} 다시 만남`, dx: 10, dy: 17 });
       }
     },
     v: (b) => {
@@ -1145,24 +1169,24 @@ window.addEventListener('DOMContentLoaded', function () {
       b.plot(mvClip(v.vQ, v.T), { color: 'sky', width: 3, glow: true });
       b.plot(mvClip(v.vP, v.T), { color: 'amber', width: 3, glow: true });
       if (st >= 3) {
-        b.point([v.t1, v.vP(v.t1)], { color: 'rose', r: 6, label: `t₁=${cxN(v.t1)}: v_P = v_Q`, dx: 10, dy: -14 });
+        mvPoint(b,[v.t1, v.vP(v.t1)], { color: 'rose', r: 6, label: `t₁=${cxN(v.t1)}: v_P = v_Q`, dx: 10, dy: -14 });
         mvNote(b, 'deriv', 34, `두 넓이가 같아지는 t₂ = ${cxN(v.t2)} 에서 다시 만남`, 'green');
       }
     }
   });
   const text4 = (v) => (v.first ? examData[4].question() : `원점에서 동시에 출발하여 수직선 위를 움직이는 두 점 ${tex('P, Q')}의 속도가 각각 ${tex(`v_P(t) = ${mvTex(-v.a, v.a * v.b)}`)}, ${tex(`v_Q(t) = ${v.c === 1 ? '' : v.c}t`)} 이다. 출발 후 두 점 ${tex('P, Q')}가 다시 만날 때까지 두 점 사이의 거리가 최대가 되는 시각 ${tex('t_1')}과 다시 만나는 시각 ${tex('t_2')}를 구하시오.`);
   const ans4 = (v) => (v.first ? examData[4].answerBadge() : `최대 거리 시각 ${tex(`t_1 = ${cxNum(v.t1)}`)}, 다시 만나는 시각 ${tex(`t_2 = ${cxNum(v.t2)}`)}`);
-  const steps4 = (v) => (v.first ? examData[4].steps : [
-    '1단계 · 수직선: 두 점 P(노란색)와 Q(하늘색)가 움직이는 모습과 두 점 사이의 간격을 표시합니다.',
-    '2단계 · 위치 그래프: x_P(t) 와 x_Q(t) 의 간격이 가장 큰 지점과 두 그래프의 교점을 확인합니다.',
-    `3단계 · 속도 그래프: 두 속도가 같아지는 교점(t=${cxN(v.t1)})과 넓이가 같아지는 지점(t=${cxN(v.t2)})을 비교합니다.`]);
+  const steps4 = (v) => [
+    '1단계 · 위치 그래프의 같은 시각에서 두 높이의 차가 실제 두 점의 간격입니다. 속도가 같은 점과 위치가 같은 점을 구별합니다.',
+    `2단계 · 상대속도 v_P−v_Q=${v.a}t(${v.t1}−t)는 t=${v.t1}에서 양수에서 음수로 바뀝니다. 첫 재회 전에는 P가 앞서므로 이때까지 벌어지던 간격이 줄기 시작합니다.`,
+    `3단계 · 두 속도 사이의 양·음 넓이가 같아야 위치 차가 0입니다. r(t)=at²(3t₁−2t)/6의 양의 영점 t₂=3t₁/2=${v.t2}에서 처음 다시 만납니다.`];
   const std4 = (v) => {
     if (v.first) return examData[4].textbook();
     const xp = cxPoly([-v.a / 3, v.a * v.b / 2, 0, 0]).replace(/x/g, 't'), xq = `${cxNum(v.c / 2)}t^2`;
     return {
       steps: `① 각각 적분하여 위치 구하기: ${tex(`x_P(t) = ${xp}`)}, ${tex(`x_Q(t) = ${xq}`)}<br/>
-② 거리 함수 ${tex('f(t) = x_P(t) - x_Q(t)')} 를 다시 미분하여 극댓값 조사: ${tex(`f'(t) = v_P - v_Q = ${v.a === 1 ? '' : v.a}t(${cxNum(v.t1)} - t) = 0`)} 에서 ${tex(`t_1=${cxNum(v.t1)}`)}<br/>
-③ 방정식 ${tex('x_P(t) = x_Q(t)')} 를 풀면 만나는 시각 ${tex(`t_2 = ${cxNum(v.t2)}`)} 을 얻습니다.`,
+② 위치 차는 ${tex(`r(t)=\\dfrac{${v.a}}{6}t^2(${cxNum(3*v.t1)}-2t)`)}이므로 첫 재회는 ${tex(`t_2=${cxNum(v.t2)}`)}입니다. ${tex('0<t<t_2')}에서 ${tex('r>0')}이므로 거리와 같습니다.<br/>
+③ ${tex(`r^{\\prime}(t)=v_P-v_Q=${v.a}t(${cxNum(v.t1)}-t)`)}가 ${tex(`t=${cxNum(v.t1)}`)}에서 양수에서 음수로 바뀝니다. 양 끝의 거리 0과 비교하면 이때 최대입니다.`,
       warning: examData[4].textbook().warning
     };
   };
@@ -1171,8 +1195,8 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       steps: `① <strong>[거리 최대 시각]</strong> 앞선 점 ${tex('P')}가 더 빠르다가 뒷점 ${tex('Q')}가 더 빨라지는 경계, 즉 <strong class="text-pink-300">두 속도가 같아지는 순간(${tex('v_P = v_Q')})</strong>에 거리가 최대!<br/>
 &nbsp;&nbsp;${tex(`${mvTex(-v.a, v.a * v.b)} = ${v.c}t \\implies ${v.a === 1 ? '' : v.a}t(${cxNum(v.t1)} - t) = 0 \\implies`)} <strong class="text-amber-300">${tex(`t_1 = ${cxNum(v.t1)}`)}초</strong>!<br/>
-② <strong>[다시 만나는 시각]</strong> 속도의 차 ${tex(`v_P - v_Q = ${v.a === 1 ? '' : v.a}t(${cxNum(v.t1)} - t)`)} 를 ${tex('0')}부터 ${tex('t_2')}까지 정적분한 값이 ${tex('0')}이 되는 <strong class="text-emerald-300">${tex(`t_2 = \\dfrac{3}{2}t_1 = ${cxNum(v.t2)}`)}초</strong>에 다시 만납니다.`,
-      highlight: examData[4].shortcut().highlight
+② <strong>[다시 만나는 시각]</strong> 상대속도의 정적분은 ${tex('r(t)=at^2(3t_1-2t)/6')}입니다. 양의 영점 <strong>${tex(`t_2=\\dfrac32t_1=${cxNum(v.t2)}`)}</strong>에서 두 부호 영역의 넓이가 같아집니다. 그 전에는 ${tex('r>0')}이므로 ①에서 구한 위치 차의 극대가 실제 거리의 최대입니다.`,
+      highlight: '처음 다시 만날 때까지의 거리입니다. 상대속도의 교점은 간격의 변화 방향을, 상대속도의 누적 넓이 0은 실제 만남을 알려 줍니다.'
     };
   };
 
@@ -1188,23 +1212,26 @@ window.addEventListener('DOMContentLoaded', function () {
     return v;
   });
   const specM5 = (v, st) => ({
-    T: v.T, showX: true, vr: mvRange([mvClip(v.vf, v.T)], v.T, 0.2), xr: mvRange([mvClip(v.xf, v.T)], v.T, 0.22), sync: st >= 1 ? [[v.tt, 'rose']] : [],
+    T: v.T, showX: true, vr: mvRange([mvClip(v.vf, v.T)], v.T, 0.2), xr: mvRange([mvClip(v.xf, v.T)], v.T, 0.22), sync: st>=3?[[v.tt,'rose'],[3*v.c,'green']]:st>=1?[[v.tt,'rose']]:[],
     x: (b) => {
       b.plot(mvClip(v.xf, v.T), { color: 'ink', width: 3.2, glow: true });
-      if (st >= 2) b.point([v.tt, v.xmin], { color: 'rose', r: 6.5, label: `극소 (t=${cxN(v.tt)}) = 방향 전환`, dx: 10, dy: 16 });
-      if (st >= 3) b.point([3 * v.c, 0], { color: 'green', r: 6, label: `x=0 (t=${cxN(3 * v.c)}): 방향 전환 아님`, dx: -10, dy: -15, align: 'right' });
+      if (st >= 2) mvPoint(b,[v.tt, v.xmin], { color: 'rose', r: 6.5, label: `극소 (t=${cxN(v.tt)}) = 방향 전환`, dx: 10, dy: 16 });
+      if (st >= 3) mvPoint(b,[3 * v.c, 0], { color: 'green', r: 6, label: `x=0 (t=${cxN(3 * v.c)}): 방향 전환 아님`, dx: -10, dy: -15, align: 'right' });
     },
     v: (b) => {
       b.plot(mvClip(v.vf, v.T), { color: 'sky', width: 3, glow: true });
-      if (st >= 3) b.point([v.tt, 0], { color: 'rose', r: 6.5, label: `t=${cxN(v.tt)}: v=0, 부호가 바뀜`, dx: 10, dy: -15 });
+      if (st >= 3) {
+        mvPoint(b,[v.tt, 0], { color: 'rose', r: 6.5, label: `t=${cxN(v.tt)}: − → 0 → +`, dx: 10, dy: -15 });
+        mvPoint(b,[3*v.c,v.vf(3*v.c)],{color:'green',r:5,label:'v>0 · 원점 통과 후에도 전진',dx:-10,dy:-15,align:'right'});
+      }
     }
   });
   const text5 = (v) => (v.first ? examData[5].question() : `시각 ${tex('t')}에 대한 삼차 위치 그래프 ${tex(`x(t) = ${cxPoly([v.a, -3 * v.a * v.c, 0, 0]).replace(/x/g, 't')}`)} 과 이차 속도 그래프 ${tex(`v(t) = ${mvTex(3 * v.a, -6 * v.a * v.c)}`)} 를 비교할 때, ① 위치 그래프 ${tex('x(t)')}에서 운동 방향이 바뀌는 지점의 그래프상의 특징과, ② 속도 그래프 ${tex('v(t)')}에서 운동 방향이 바뀌는 지점의 특징을 각각 말하시오.`);
   const ans5 = (v) => (v.first ? examData[5].answerBadge() : `위치 ${tex('x(t)')}: 극솟값 ${tex(`t=${cxNum(v.tt)}`)} / 속도 ${tex('v(t)')}: ${tex('t')}축을 지나며 부호가 바뀜(${tex(`t=${cxNum(v.tt)}`)})`);
-  const steps5 = (v) => (v.first ? examData[5].steps : [
-    `1단계 · 수직선: t = ${cxN(v.tt)}초(x = ${cxN(v.xmin)})에서 실제 운동 방향이 왼쪽에서 오른쪽으로 바뀌는 순간을 봅니다.`,
-    '2단계 · 위치 x(t) 그래프: 접선의 기울기가 0이 되는 극소점이 방향 전환점입니다.',
-    '3단계 · 속도 v(t) 그래프: 함숫값이 0이 되면서 부호가 바뀌는 점이 방향 전환점입니다.']);
+  const steps5 = (v) => [
+    '1단계 · 먼저 각 세로축의 이름을 읽습니다. 같은 시각을 잇는 선으로 위치 그래프의 기울기와 속도 그래프의 높이를 대응시킵니다.',
+    `2단계 · t=${v.tt}에서 위치가 감소에서 증가로 바뀌어 극소입니다. 수평 접선이라는 사실과 앞뒤 운동 방향이 바뀐다는 사실을 함께 확인합니다.`,
+    `3단계 · 같은 시각의 속도는 음수에서 0을 지나 양수로 바뀝니다. t=${3*v.c}에서는 위치만 0이고 속도는 양수이므로 원점을 통과해도 방향은 바뀌지 않습니다.`];
   const std5 = (v) => {
     if (v.first) return examData[5].textbook();
     return {
@@ -1223,21 +1250,81 @@ window.addEventListener('DOMContentLoaded', function () {
     4: { id: 4, vary: varM4, spec: specM4, text: text4, answer: ans4, steps: steps4, std: std4, quick: quick4 },
     5: { id: 5, vary: varM5, spec: specM5, text: text5, answer: ans5, steps: steps5, std: std5, quick: quick5 }
   };
-  // 옛 장면 1~5: 탐구 탭은 그대로 두고, 정리·문제 탭에 변형 문제(「새 문제」)를 얹습니다.
+  // 실제 극값으로 조작 중인 점과 경로 전체를 담습니다. 시간·위치·속도는 각 축의 눈금으로 읽습니다.
+  function exploreGeometry(m,s) {
+    const T=Math.max(3.3,s.t+.15,m===4?3-1.5*s.k+.15:0), x=[],v=[];
+    if(m===4){
+      [0,T,...(2<T?[2]:[])].forEach(t=>x.push(xP4(t),xQ4(t,s.k)));
+      [0,T,1].forEach(t=>v.push(vP4(t),vQ4(t,s.k)));
+    }else{
+      const p=m===2?s.p:1;
+      [0,T,...turnsOf(p,T)].forEach(t=>x.push(posX(t,p)));
+      [0,T,1].forEach(t=>v.push(velV(t,p)));
+    }
+    const padded=(values,pad,min)=>{const lo=Math.min(...values),hi=Math.max(...values),gap=Math.max(min,(hi-lo)*pad);return [lo-gap,hi+gap];};
+    const xr=padded(x,.16,.7),vr=padded(v,.15,1),tr=padded(x,.12,.7);
+    return {T,xr,vr,trackRange:{lo:tr[0],hi:tr[1]}};
+  }
+  function motionExploreSteps(m,s) {
+    if(m===1)return [
+      '1단계 · 현재 시각까지 위치가 감소한 구간과 증가한 구간을 봅니다. 감소는 왼쪽 이동, 증가는 오른쪽 이동입니다.',
+      '2단계 · 속도가 음수인 하늘색 넓이는 후진한 거리, 양수인 분홍색 넓이는 전진한 거리입니다. 방향이 바뀌는 시각에서만 구간을 나눕니다.',
+      '3단계 · 변위는 전진−후진, 이동거리는 전진+후진입니다. 현재 시각의 값으로 계산하므로 원점으로 돌아오는 때 외에는 두 부호 넓이가 같지 않습니다.'
+    ];
+    if(m===2)return [
+      `1단계 · 현재 탐구 모델은 v(t)=3(t−1)²−3p, p=${s.p}입니다. 그래프가 t축과 만나는 후보와 출발 경계 t=0을 구별합니다.`,
+      s.p>0?'2단계 · 두 단근 1−√p, 1+√p 전후에서 부호가 바뀝니다. t>0인 근만 실제 출발 후 방향 전환에 포함합니다.':s.p===0?'2단계 · p=0이면 t=1이 중근입니다. 양쪽 속도는 모두 양수여서 위치는 계속 증가하며 수평 접선을 가져도 극값이 아닙니다.':'2단계 · p<0이면 포물선 전체가 t축 위에 있습니다. 속도가 항상 양수이므로 점은 계속 전진합니다.',
+      `3단계 · 현재 모델의 0<t<${T_MAX}에서 방향 전환은 ${turnsOf(s.p,T_MAX).length}번입니다. p=0과 그 양옆, p=1에서 출발 경계와 근의 중복도가 바뀌는 이유를 비교합니다.`
+    ];
+    if(m===3)return [
+      '1단계 · 문제의 속력 비교 구간은 [0,2]입니다. 이 구간에서는 |v|=−v=3−3(t−1)²이므로 끝점의 0과 꼭짓점의 3을 비교합니다.',
+      '2단계 · 문제의 원점 거리 비교 구간은 [0,3]입니다. 위치가 감소했다가 증가하고 양 끝은 원점이므로 t=2의 x=−4에서 가장 멉니다.',
+      '3단계 · 위치 x=t²(t−3)의 양의 영점은 3입니다. 탐구 시간을 3 이후로 늘리면 위치와 속력이 다시 커지므로 앞의 최댓값을 더 넓은 구간에 그대로 적용하지 않습니다.'
+    ];
+    if(m===4)return s.k<2?[
+      '1단계 · 같은 시각의 두 위치 높이 차가 수직선에서 두 점 사이 간격입니다. 위치가 같은 것과 속도가 같은 것은 다른 조건입니다.',
+      `2단계 · 상대속도 v_P−v_Q=3t(2−k−t)는 t=2−k=${fmt(2-s.k,4)}에서 양수에서 음수로 바뀝니다. 첫 재회 전에는 P가 앞서므로 이때 간격이 가장 큽니다.`,
+      `3단계 · 위치 차는 t²(3−1.5k−t)입니다. 양의 영점 t=${fmt(3-1.5*s.k,4)}에서 두 부호 넓이가 같아져 처음 다시 만납니다. 그 이후에는 Q가 앞서며 간격이 다시 커집니다.`
+    ]:[
+      '1단계 · 현재 k=2에서는 출발 직후부터 Q의 속도가 P보다 큽니다. 같은 시각의 위치를 비교합니다.',
+      '2단계 · 상대속도 v_P−v_Q=−3t²<0이므로 위치 차는 계속 작아집니다. 양의 시각에서 상대속도의 부호 변화가 없습니다.',
+      '3단계 · 위치 차는 −t³이므로 출발 후 다시 만나지 않습니다. 따라서 첫 재회까지의 최대거리라는 기본 문제 조건을 이 모델에는 적용하지 않습니다.'
+    ];
+    return [
+      '1단계 · 세로축 이름부터 읽고 같은 시각을 두 그래프에서 대응시킵니다. 위치 그래프의 기울기가 속도 그래프의 높이입니다.',
+      '2단계 · 위치가 감소에서 증가로 바뀌는 곳에서 실제 점의 운동 방향이 바뀝니다. 수평 접선이 있다는 조건만으로는 충분하지 않습니다.',
+      '3단계 · t=2에서는 속도가 음수에서 양수로 바뀌지만, t=3에서는 위치만 0이고 속도는 양수입니다. 원점 통과와 방향 전환을 구별합니다.'
+    ];
+  }
+  // 탐구는 조작 중인 모델, 정리·문제는 선택한 변형의 조건과 단계를 사용합니다.
   function withVary(m, sc) {
-    const M = MVM[m], d = examData[m], oldDraw = sc.draw, oldPanes = sc.panes, oldView = sc.view;
+    const M = MVM[m], d = examData[m], oldDraw = sc.draw, oldView = sc.view;
     const cur = () => M.vary.cur();
     return {
       ...sc,
-      steps: () => M.steps(cur()),
+      aspect:'free',
+      aspectNote:'가로축은 시간, 세로축은 위치 또는 속도여서 축척을 따로 표시합니다. 각 그래프의 눈금으로 값을 읽으세요. 위치와 속도 그래프 사이에서 화면의 높이나 기울기 각도를 그대로 비교할 수는 없습니다.',
+      guide:[null,'시각 t를 움직이며 점의 경로와 속도 그래프의 두 색 영역을 비교하세요.','p를 바꾸어 속도 그래프가 축을 지나는 경우와 접하는 경우를 비교하세요.','각 질문의 시간구간을 먼저 확인한 뒤, 속력·원점과의 거리·원점 복귀를 각각 관찰하세요.','시각 t와 계수 k를 움직이며 두 위치의 간격과 상대속도를 비교하세요.','같은 시각에서 위치의 기울기와 속도의 부호를 비교하세요.'][m],
+      steps: (s,lab=window.lab) => lab&&lab.tab==='explore'?motionExploreSteps(m,s):M.steps(cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${M.text(cur())}</div>`,
       problem: { tag: d.tag, time: d.targetTime, text: () => cxProb(M.text(cur())), answer: () => M.answer(cur()) },
       vary: M.vary,
       solution: { ...sc.solution, standard: () => M.std(cur()), quick: () => M.quick(cur()) },
-      panes: (s) => (cxVarTab() ? mvPanes(M)() : (typeof oldPanes === 'function' ? oldPanes(s) : oldPanes)),
-      view: (s, lab) => (lab && lab.tab !== 'explore' ? {} : typeof oldView === 'function' ? oldView(s, lab) : oldView),
+      panes: (s) => { if(cxVarTab())return mvPanes(M)(); const g=exploreGeometry(m,s);return panesOf(g.xr,g.vr)(s); },
+      view: (s, lab=window.lab) => {
+        if(lab&&lab.tab!=='explore')return {notes:'발문의 시간구간 안에서 위치·속도·부호 있는 넓이를 비교합니다. 수직선의 위치와 그래프의 시간축은 서로 다른 축입니다.'};
+        const out=typeof oldView==='function'?oldView(s,lab):{...oldView},g=exploreGeometry(m,s);
+        Object.assign(out,{T:g.T,trackRange:g.trackRange});
+        if(s.step<3){out.status=null;out.tape=null;out.readouts=out.readouts.filter(x=>m===4?x.ref==='t':!['area','a'].includes(x.ref));}
+        out.notes='탐구는 현재 조작값의 모델입니다. 정리·문제 탭은 선택한 발문의 조건을 따릅니다. 소수 표시는 근삿값이며, 최댓값을 말할 때는 비교하는 시간구간을 확인합니다.';
+        return out;
+      },
       draw: (b, s, v, lab) => {
-        if (b.thumb || !lab || lab.tab === 'explore') { if (!b.thumb) cxBackToExplore(b, s, lab); oldDraw(b, s, v, lab); } else mvFrame(b, s, lab, M);
+        if (b.thumb || !lab || lab.tab === 'explore') {
+          const g=exploreGeometry(m,s);
+          if(!b.thumb&&!s.dragging)cxFocus(b,`EXP:${m}:${m===2?s.p:m===4?s.k:1}:${g.T}`,{x:[-.5,g.T+.38],y:g.xr});
+          oldDraw(b,s,{...v,T:g.T,trackRange:g.trackRange},lab);
+        } else mvFrame(b, s, lab, M);
       }
     };
   }
@@ -1247,6 +1334,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 10. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-motion',
+    stagedReveal:true,
     title: '속도·가속도·이동거리',
     courseName: '미적분Ⅰ',
     unit: '적분 · 속도·가속도·이동거리',
@@ -1256,7 +1344,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // aspect:'free' — 가로축이 시간이라 세로(위치·속도)와 단위가 다르므로 배율을 따로 둡니다(키트의 선택 옵션, 기본은 1:1).
     board: { kind: 'cartesian', aspect: 'free', pad: 0.02, focus: { x: X_FOCUS, y: [-5.2, 7.4] } },
     params: {
-      t: { value: 3, min: 0, max: T_MAX, step: 0.02, color: 'amber', label: '관찰 시각 t (초)', hint: '0초 ~ 3.5초 · 두 그래프 축 위의 노란 점을 끌어도 됩니다', format: (v) => `t = ${fmt(v)} 초` },
+      t: { value: 3, min: 0, max: T_MAX, step: 0.02, color: 'amber', label: '관찰 시각 t (초)', hint: '0초 ~ 4초 · 두 그래프 축 위의 노란 점을 끌어 경계 시각도 확인하세요', format: (v) => `t ≈ ${fmt(v,4)} 초` },
       p: { value: 1, min: -0.5, max: 2.0, step: 0.05, color: 'sky', label: '속도를 정하는 값 p', hint: '$v(t)=3(t-1)^2-3p$ · p = 1 이면 $v=3t(t-2)$, p = 0 이면 $v=3(t-1)^2$', format: (v) => `p = ${fmt(v)}` },
       k: { value: 1, min: -0.5, max: 2.0, step: 0.05, color: 'sky', label: '점 Q의 속도 계수 k', hint: '$v_Q(t)=3kt$ · 문제의 조건은 k = 1', format: (v) => `k = ${fmt(v)}` }
     },

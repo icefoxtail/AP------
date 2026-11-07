@@ -23,7 +23,7 @@
    미적분Ⅰ · 정적분과 넓이 (AP Math Lab 2.0 이식본)
    원본: labs/미적분1/정적분과 넓이.html
    - 문제·단계·정석/빠른 풀이 문구(examData)는 원본을 그대로 옮겼습니다.
-   - 수학 함수(모드별 f, g)와 수치 적분기 computeIntegralStats는 원본과 같은 식입니다.
+   - 기본 함수·발문·정답을 보존하고, 다항식의 원시함수와 영점으로 정적분·넓이를 계산합니다.
    - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 색칠은 부호별(분홍 +, 하늘 −) 다각형으로,
      끌 수 있는 점(장면 1: 아래끝 a·위끝 b / 2: 교점 / 3: 가운데 교점 β / 4: 곡선 g 위의 점 / 5: 점 A·B).
    - 장면 1·3·5의 ‘하단 동기화 뷰’는 원본에서 위와 같은 f를 다시 그릴 뿐이라 두지 않고,
@@ -37,8 +37,9 @@ window.addEventListener('DOMContentLoaded', function () {
   const num = (v, d = 2) => fmt(v, d).replace('−', '-'); // 수식(TeX) 문자열용
   const round05 = (v) => Math.round(v * 20) / 20;
   const R = (v) => Math.round(v * 100) / 100;
+  const same = (a, b) => Math.abs(a - b) <= 1e-11 * Math.max(1, Math.abs(a), Math.abs(b));
 
-  /* ---------- 1. 모드별 수학 함수 & 수치 적분기 (원본 그대로, 모드별 함수로 나눔) ---------- */
+  /* ---------- 1. 모드별 수학 함수와 원시함수 ---------- */
   // 장면 1: f(x) = x^2 - 2x = x(x - 2) (0~2 음수, 2~3 양수)
   const F1 = (x) => x * (x - 2.0);
   // 장면 2: 위로 볼록 포물선 f(x) = -x^2 + 3x = x(3 - x), 원점을 지나는 직선 g(x) = m*x
@@ -54,28 +55,25 @@ window.addEventListener('DOMContentLoaded', function () {
   const ZERO = () => 0;
   const MBISECT = 3.0 - 3.0 / Math.cbrt(2); // (3 - m)^3 = 27/2 인 m
 
-  // 수치 적분기: 구간 [x1, x2]에서 정적분(signed)과 양수 넓이(posArea), 음수 넓이(negArea) 반환
-  function computeIntegralStats(fn, x1, x2, N = 200) {
-    const a = Math.min(x1, x2);
-    const b = Math.max(x1, x2);
-    const signDir = x2 >= x1 ? 1 : -1;
-    if (b - a < 1e-5) return { signed: 0, posArea: 0, negArea: 0, totalArea: 0 };
-
-    const h = (b - a) / N;
-    let pos = 0;
-    let neg = 0;
-    for (let i = 0; i < N; i++) {
-      const xm = a + (i + 0.5) * h;
-      const y = fn(xm);
-      if (y >= 0) pos += y * h;
-      else neg += Math.abs(y) * h;
+  // 다항식의 원시함수와 정확한 영점으로 부호 구간을 나눕니다.
+  // 표시 소수는 근사이지만 면적을 픽셀·중점 표본으로 추정하지 않습니다.
+  function polynomialStats(primitive, roots, x1, x2) {
+    const a = Math.min(x1, x2), b = Math.max(x1, x2);
+    const cuts = [a, ...roots.filter(x => x > a && x < b), b].sort((x,y) => x-y).filter((x,i,all) => !i || !same(x,all[i-1]));
+    let pos = 0, neg = 0;
+    for (let i = 1; i < cuts.length; i++) {
+      const value = primitive(cuts[i]) - primitive(cuts[i-1]);
+      if (value >= 0) pos += value; else neg -= value;
     }
-    return {
-      signed: signDir * (pos - neg),
-      posArea: pos,
-      negArea: neg,
-      totalArea: pos + neg
-    };
+    return { signed: primitive(x2) - primitive(x1), posArea: pos, negArea: neg, totalArea: pos + neg };
+  }
+  const P1 = x => x ** 3 / 3 - x * x;
+  const P3 = beta => x => x ** 4 / 8 - (beta + 2) * x ** 3 / 6 + (2 * beta - 3) * x * x / 4 + 1.5 * beta * x;
+  const P5 = x => x ** 4 / 16 + x * x / 4;
+  function diffStats(m) {
+    const D = 5 + 8 * m, roots = [0];
+    if (D >= 0) roots.push((1 - Math.sqrt(D)) / 2, (1 + Math.sqrt(D)) / 2);
+    return polynomialStats(x => x ** 4 / 8 - x ** 3 / 6 - (.5 + m) * x * x / 2, roots, 0, 1);
   }
 
   /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
@@ -250,7 +248,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function solutionOf(mode) {
     return {
       standardTitle: '교과서식 정석 풀이', standardTag: '정석 · 3분',
-      quickTitle: '10초 컷 · 핵심 공식', quickTag: '10초 컷',
+      quickTitle: '10초 컷 · 핵심 공식', quickTag: '핵심 구조',
       standard: examData[mode].textbook,
       quick: examData[mode].shortcut
     };
@@ -403,22 +401,23 @@ window.addEventListener('DOMContentLoaded', function () {
       focus: { x: [-1.3, 3.7], y: [-1.4, 3.6] },
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'b1', 1.2, 0.5, 3.2, dt); return true; },
       view: (s) => {
-        const st = computeIntegralStats(F1, s.a1, s.b1);
-        const zero = Math.abs(st.signed) < 0.02 && st.totalArea > 0.1;
+        const st = polynomialStats(P1, [0, 2], s.a1, s.b1);
+        const zero = same(st.signed, 0) && st.totalArea > 0;
+        const reverse = s.b1 < s.a1, relation = reverse ? 'S₂ − S₁' : 'S₁ − S₂';
         return {
           chips: [
             { k: '함수', tex: 'f(x) = x^2 - 2x = x(x - 2)', color: 'ink' },
-            { k: '정적분', tex: '\\int_{a}^{b} f(x)\\,dx = S_1 - S_2', color: 'sky' }
+            ...(s.step >= 2 ? [{ k: reverse ? '역방향 적분' : '정방향 적분', tex: '\\int_{a}^{b} f(x)\\,dx = ' + (reverse ? 'S_2-S_1' : 'S_1-S_2'), color: 'sky' }] : [])
           ],
           status: zero ? { tone: 'ok', text: `정적분은 0 이지만 실제 넓이는 ${fmt(st.totalArea)}` } : { tone: 'info', text: `정적분 ${fmt(st.signed)} · 넓이 ${fmt(st.totalArea)}` },
           readouts: [
-            { label: '적분 구간 [a, b]', value: `[${fmt(s.a1)}, ${fmt(s.b1)}]`, color: 'amber', ref: 'range' },
+            { label: '적분 방향 a → b', value: `${fmt(s.a1)} → ${fmt(s.b1)}`, color: 'amber', ref: 'range' },
             { label: 'S₁(x축 위) | S₂(x축 아래)', value: `${fmt(st.posArea)} | ${fmt(st.negArea)}`, color: 'rose', ref: 'S1' },
-            { label: '정적분 S₁ − S₂', value: fmt(st.signed), color: 'sky', ref: 'S2' },
+            { label: `정적분 ${relation}`, value: `≈ ${fmt(st.signed, 4)}`, color: 'sky', ref: 'S2' },
             { label: '실제 넓이 S₁ + S₂', value: fmt(st.totalArea), color: 'green' }
           ],
           tape: s.step >= 3 ? {
-            title: `정적분 $\\int f(x)dx = S_1 - S_2$ = ${fmt(st.signed)}  |  실제 넓이 $\\int |f(x)|dx = S_1 + S_2$ = ${fmt(st.totalArea)}`,
+            title: `${reverse ? 'a>b이므로 방향을 뒤집어' : 'a≤b이므로'} 정적분은 ${relation} ≈ ${fmt(st.signed, 4)}입니다. 두 끝 사이의 실제 넓이는 항상 S₁+S₂ ≈ ${fmt(st.totalArea, 4)}입니다.`,
             segments: [{ text: `S₁ ${fmt(st.posArea)}`, weight: Math.max(0.06, st.posArea), color: 'rose' }, { text: `S₂ ${fmt(st.negArea)}`, weight: Math.max(0.06, st.negArea), color: 'sky' }]
           } : null
         };
@@ -473,11 +472,11 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'm2', 0.9, 0.0, 2.2, dt); return true; },
       view: (s, lab) => {
         const m = s.m2, L = Math.max(0, 3.0 - m), s1 = Math.pow(L, 3) / 6.0, ratio = s1 / 4.5;
-        const half = Math.abs(ratio - 0.5) < 0.008;
+        const half = same(m, MBISECT);
         return {
           ...topInfo(s, lab, [
-            { k: '함수', tex: `f(x) = -x^2 + 3x, \\; g(x) = ${num(m)}x`, color: 'ink' },
-            { k: '윗부분', tex: `S_1 = \\dfrac{1}{6}(3-m)^3 = ${num(s1)}`, color: 'rose' }
+            { k: '현재 함수 · 직선 계수는 소수 근사', tex: `f(x) = -x^2 + 3x, \\; g(x) \\approx ${num(m,4)}x`, color: 'ink' },
+            ...(s.step >= 2 ? [{ k: '윗부분', tex: `S_1 = \\dfrac{1}{6}(3-m)^3` + (s.step >= 3 ? `\\approx ${num(s1,4)}` : ''), color: 'rose' }] : [])
           ], half ? { tone: 'ok', text: `이등분! S₁ = ${fmt(s1)} = $\\frac{S_0}{2}$` } : { tone: 'info', text: `S₁ = ${fmt(s1)} (전체의 ${fmt(ratio * 100, 1)}%)` }),
           readouts: [
             { label: '교점 구간 [0, 3−m]', value: `[0, ${fmt(L)}]`, color: 'amber', ref: 'beta', note: `L = ${fmt(L)}` },
@@ -498,12 +497,16 @@ window.addEventListener('DOMContentLoaded', function () {
           fillBetween(b, F2, G, 0, beta, { pos: 'rose', neg: 'rose', alpha: 0.34, refPos: 'S1', refNeg: 'S1' });
           const areaS1 = Math.pow(beta, 3) / 6.0;
           const xm = beta * 0.42;
-          tag(b, [xm, (F2(xm) + G(xm)) / 2 + 0.1], narrow(b) ? `S₁ = ${fmt(areaS1)}` : `S₁ = ${fmt(areaS1)} (${fmt((areaS1 / 4.5) * 100, 0)}%)`, { color: 'amber', size: 12.5, ref: 'S1' });
+          tag(b, [xm, (F2(xm) + G(xm)) / 2 + 0.1], s.step >= 3 ? `S₁ ≈ ${fmt(areaS1, 4)}` : 'S₁', { color: 'amber', size: 12.5, ref: 'S1' });
         }
         b.plot(F2, { color: 'ink', width: 3.2, glow: true });
         b.line([0, 0], m, { color: 'rose', width: 2.6, glow: true, ref: 'beta' });
         b.handle('beta', [beta, F2(beta)], { color: 'amber', ref: 'beta', label: narrow(b) ? `교점 ${fmt(beta)}` : `교점 (3−m = ${fmt(beta)})`, dx: 12, dy: -14,
-          drag: (w) => { const be = clamp(w.x, 0.5, 3.0); let mm = 3.0 - be; if (Math.abs(mm - MBISECT) < 0.04) mm = MBISECT; s.m2 = clamp(R(mm), 0, 2.5); } });
+          drag: (w) => {
+            if (same(w.x, beta)) return;
+            const mm = 3 - clamp(w.x, 0.5, 3);
+            s.m2 = Math.abs(mm - MBISECT) < 0.04 ? MBISECT : clamp(R(mm), 0, 2.5);
+          } });
         paneEnd(b);
         // 하단: 차함수 h(x) = f(x) − g(x) 와 x축 사이 (같은 넓이 S₁)
         if (s.dual) {
@@ -536,13 +539,13 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'beta3', 1.2, -0.6, 2.7, dt); return true; },
       view: (s) => {
         const beta = s.beta3, F = F3(beta);
-        const st1 = computeIntegralStats(F, -1.0, beta);
-        const st2 = computeIntegralStats(F, beta, 3.0);
-        const equal = Math.abs(st1.totalArea - st2.totalArea) < 0.05;
+        const st1 = polynomialStats(P3(beta), [-1, beta, 3], -1, beta);
+        const st2 = polynomialStats(P3(beta), [-1, beta, 3], beta, 3);
+        const equal = same(beta, 1);
         return {
           chips: [
-            { k: '함수', tex: `f(x) = 0.5(x+1)(x-${num(beta, 1)})(x-3)`, color: 'ink' },
-            { k: '조건', tex: 'S_1 = S_2 \\iff \\beta = 1', color: 'amber' }
+            { k: '현재 함수 · 소수 근사', tex: `f(x) \\approx 0.5(x+1)(x-(${num(beta, 4)}))(x-3)`, color: 'ink' },
+            ...(s.step >= 3 ? [{ k: '조건', tex: 'S_1 = S_2 \\iff \\beta = 1', color: 'amber' }] : [])
           ],
           status: equal ? { tone: 'ok', text: 'β = 1 (−1과 3의 한가운데) → S₁ = S₂' } : { tone: 'warn', text: `β ≠ 1 → S₁ ≠ S₂ (차이 ${fmt(Math.abs(st1.totalArea - st2.totalArea))})` },
           readouts: [
@@ -559,16 +562,16 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       draw: (b, s) => {
         const alpha = -1.0, gamma = 3.0, beta = clamp(s.beta3, -0.8, 2.8), F = F3(beta);
-        const st1 = computeIntegralStats(F, alpha, beta);
-        const st2 = computeIntegralStats(F, beta, gamma);
+        const st1 = polynomialStats(P3(beta), [alpha, beta, gamma], alpha, beta);
+        const st2 = polynomialStats(P3(beta), [alpha, beta, gamma], beta, gamma);
         stage(b, s, 'main');
         // Step 1: S1 [-1, β] 분홍, S2 [β, 3] 하늘
         if (s.step >= 1) fillBetween(b, F, ZERO, alpha, gamma, { pos: 'rose', neg: 'sky', alpha: 0.28, refPos: 'S1', refNeg: 'S2' });
         // Step 2: 두 영역의 넓이 값
         if (s.step >= 2) {
           const xm1 = (alpha + beta) / 2, xm2 = (beta + gamma) / 2;
-          tag(b, [xm1, F(xm1) * 0.45], narrow(b) ? 'S₁' : `S₁ = ${fmt(st1.totalArea)}`, { color: 'rose', size: 13.5, ref: 'S1' });
-          tag(b, [xm2, F(xm2) * 0.45], narrow(b) ? 'S₂' : `S₂ = ${fmt(st2.totalArea)}`, { color: 'sky', size: 13.5, ref: 'S2' });
+          tag(b, [xm1, F(xm1) * 0.45], s.step < 3 || narrow(b) ? 'S₁' : `S₁ ≈ ${fmt(st1.totalArea, 4)}`, { color: 'rose', size: 13.5, ref: 'S1' });
+          tag(b, [xm2, F(xm2) * 0.45], s.step < 3 || narrow(b) ? 'S₂' : `S₂ ≈ ${fmt(st2.totalArea, 4)}`, { color: 'sky', size: 13.5, ref: 'S2' });
         }
         b.plot(F, { color: 'ink', width: 3.2, glow: true });
         b.point([alpha, 0], { color: 'green', r: 5.5 });
@@ -591,16 +594,21 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: examData[4].steps,
       problem: problemOf(4), solution: solutionOf(4), enter: enterOf(4),
       focus: { x: [-0.8, 1.8], y: [-0.2, 2.4] },
-      panes: panesOf([-0.2, 2.4], [-0.55, 1.0]),
+      panes: (s) => {
+        const H = x => F4(x)-G4(s.m4)(x), xs=[0,1], D=4+6*s.m4;
+        if(D>=0) [(1-Math.sqrt(D))/3,(1+Math.sqrt(D))/3].forEach(x=>{if(x>0&&x<1)xs.push(x);});
+        const ys=xs.map(H);
+        return panesOf([-0.2,2.4],[Math.min(-.55,...ys.map(y=>y-.2)),Math.max(1,...ys.map(y=>y+.2))])(s);
+      },
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'm4', 0.6, -1.4, 0.4, dt); return true; },
       view: (s, lab) => {
         const m = s.m4, G = G4(m), H = (x) => F4(x) - G(x);
-        const exact = Math.abs(m + 0.5) < 0.03;
-        const S = computeIntegralStats(H, 0, 1).totalArea;
+        const exact = same(m, -0.5);
+        const S = diffStats(m).totalArea;
         return {
           ...topInfo(s, lab, [
             { k: '두 함수', tex: `f(x) = \\dfrac{1}{2}x^3 - \\dfrac{1}{2}x + 1, \\; g(x) = \\dfrac{1}{2}x^2 + (${num(m)})x + 1`, color: 'ink' },
-            { k: 'h(x)', tex: exact ? 'h(x) = f(x) - g(x) = \\dfrac{1}{2}x^2(x-1)' : 'h(x) = f(x) - g(x) = \\dfrac{1}{2}x^3 - \\dfrac{1}{2}x^2 - \\left(\\dfrac{1}{2} + m\\right)x', color: 'amber' }
+            ...(s.step >= 1 ? [{ k: 'h(x)', tex: exact ? 'h(x) = f(x) - g(x) = \\dfrac{1}{2}x^2(x-1)' : 'h(x) = f(x) - g(x) = \\dfrac{1}{2}x^3 - \\dfrac{1}{2}x^2 - \\left(\\dfrac{1}{2} + m\\right)x', color: 'amber' }] : [])
           ], exact ? { tone: 'ok', text: `m = −0.5 : x = 0 접점, x = 1 교점 → 넓이 S = 1/24 (≈ ${fmt(S, 3)})` } : { tone: 'info', text: `구간 [0, 1] 에서 두 곡선 사이 넓이 ${fmt(S, 3)} (m = −0.5 로 맞추면 접점·교점)` }),
           readouts: [
             { label: 'g 의 기울기 m', value: fmt(m), color: 'amber', ref: 'g', note: 'f 의 x=0 기울기는 −0.5' },
@@ -613,15 +621,15 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       draw: (b, s) => {
         const m = s.m4, G = G4(m), H = (x) => F4(x) - G(x);
-        const exact = Math.abs(m + 0.5) < 0.03;
-        const S = computeIntegralStats(H, 0, 1).totalArea;
+        const exact = same(m, -0.5);
+        const S = diffStats(m).totalArea;
         stage(b, s, 'main');
         // 두 곡선 사이 색칠 (구간 [0, 1])
         if (s.step >= 1) fillBetween(b, F4, G, 0, 1, { pos: 'amber', neg: 'amber', alpha: 0.3, refPos: 'S', refNeg: 'S' });
-        if (s.step >= 2) tag(b, [0.5, Math.min(F4(0.5), G(0.5))], `S = ${fmt(S, 3)}`, { color: 'amber', size: 13, dy: 24, ref: 'S' });
+        if (s.step >= 2) tag(b, [0.5, Math.min(F4(0.5), G(0.5))], s.step >= 3 ? `S ≈ ${fmt(S, 4)}` : 'S', { color: 'amber', size: 13, dy: 24, ref: 'S' });
         b.plot(F4, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
         b.plot(G, { color: 'sky', width: 3, glow: true, ref: 'g' });
-        if (exact) {
+        if (exact && s.step >= 1) {
           b.point([0, F4(0)], { color: 'amber', r: 6.5, ref: 'pts' });
           b.point([1, F4(1)], { color: 'rose', r: 6.5, ref: 'pts' });
           tag(b, [0, F4(0)], '접점 (0, 1)', { color: 'amber', dx: -8, dy: -16, align: 'right', ref: 'pts' });
@@ -632,13 +640,13 @@ window.addEventListener('DOMContentLoaded', function () {
         paneEnd(b);
         if (s.dual) {
           stage(b, s, 'sub', { yLabel: 'h' });
-          fillBetween(b, H, ZERO, 0, 1, { pos: 'rose', neg: 'sky', alpha: 0.3, refPos: 'S', refNeg: 'S' });
+          if(s.step>=1) fillBetween(b, H, ZERO, 0, 1, { pos: 'rose', neg: 'sky', alpha: 0.3, refPos: 'S', refNeg: 'S' });
           b.plot(H, { color: 'amber', width: 3.2, glow: true, ref: 'S' });
-          if (exact) {
+          if (exact && s.step >= 1) {
             b.point([0, 0], { color: 'amber', r: 5.5, ref: 'pts' });
             b.point([1, 0], { color: 'rose', r: 5.5, ref: 'pts' });
           }
-          if (s.step >= 2) tag(b, [0.5, 0], `S = ${fmt(S, 3)}`, { color: 'amber', size: 13, dy: H(0.5) < 0 ? -14 : 24, ref: 'S' });
+          if (s.step >= 2) tag(b, [0.5, 0], s.step >= 3 ? `S ≈ ${fmt(S, 4)}` : 'S', { color: 'amber', size: 13, dy: H(0.5) < 0 ? -14 : 24, ref: 'S' });
           paneEnd(b);
           subTitle(b, narrow(b) ? 'h(x) = f(x) − g(x)' : 'h(x) = f(x) − g(x) 와 x축 사이 (두 곡선 사이와 같은 넓이)');
           if (s.step >= 1) { linkX(b, 0, 'violet'); linkX(b, 1, 'violet'); }
@@ -660,13 +668,13 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'b5', 1.2, Math.max(0.5, s.a5 + 0.3), 2.2, dt); return true; },
       view: (s) => {
         const a = s.a5, b = s.b5, fa = F5(a), fb = F5(b);
-        const stF = computeIntegralStats(F5, a, b);
+        const stF = polynomialStats(P5, [0], a, b);
         const totalL = b * fb - a * fa;
-        const stInv = totalL - stF.totalArea;
+        const stInv = totalL - stF.signed;
         return {
           chips: [
             { k: '함수', tex: 'f(x) = \\dfrac{1}{4}x^3 + \\dfrac{1}{2}x', color: 'ink' },
-            { k: '넓이의 합', tex: `b f(b) - a f(a) = ${num(totalL)}`, color: 'amber' }
+            ...(s.step >= 3 ? [{ k: '넓이의 합', tex: `b f(b) - a f(a) \\approx ${num(totalL,4)}`, color: 'amber' }] : [])
           ],
           status: { tone: 'info', text: `∫f = ${fmt(stF.totalArea)} + ∫f⁻¹ = ${fmt(stInv)} → 합 ${fmt(totalL)}` },
           readouts: [
@@ -718,11 +726,11 @@ window.addEventListener('DOMContentLoaded', function () {
        - 정리: 풀이 단계(s.step)가 올라갈 때마다 보조선이 드러나는 그림
        - 문제: 지문에 주어진 것만(풀이 전) → 정답이 열리면 풀이 끝 그림
      ========================================================================== */
-  const tabOf = (lab) => (lab && lab.tab) || 'explore';
-  // 지금 그림에 보여 줄 풀이 단계 수: 탐구는 전부, 정리는 s.step, 문제는 정답이 열렸을 때만 끝까지
+  const tabOf = (lab) => ((lab||window.lab) && (lab||window.lab).tab) || 'explore';
+  // 탐구·정리도 0단계를 보존하고, 문제는 정답이 열렸을 때만 끝까지 공개합니다.
   const shown = (lab, s, n) => {
     const t = tabOf(lab);
-    if (t === 'explore') return 99;
+    if (t === 'explore') return s.step;
     if (t === 'review') return s.step;
     return lab && lab._answerOpen && lab._answerOpen() ? n : 0;
   };
@@ -823,15 +831,15 @@ window.addEventListener('DOMContentLoaded', function () {
   const l6 = (v, m) => (x) => m * x + v.c;
   const If6 = (v, t) => (v.a * t * t * t * t) / 4 + (v.b * t * t) / 2;            // ∫₀ᵗ f
   const G6 = (v, m, t) => If6(v, t) - ((m * t * t) / 2 + v.c * t);                // ∫₀ᵗ (f − ℓ)
-  function alpha6(v, m) {                                                        // f = ℓ 인 첫 교점의 x좌표
-    const h = (x) => f6(v)(x) - l6(v, m)(x);
-    let x = 0.0;
-    for (; x < 4.5; x += 0.01) if (h(x + 0.01) >= 0) break;
-    if (x >= 4.5) return null;
-    let lo = x, hi = x + 0.01;
-    for (let i = 0; i < 40; i++) { const mid = (lo + hi) / 2; if (h(mid) < 0) lo = mid; else hi = mid; }
+  function positiveCubicRoot(a, b, c) {
+    // 이 실험실의 a>0, b>0, c>0에서는 ax³+bx=c가 양의 근을 하나 가집니다.
+    let lo = 0, hi = 1;
+    while (a * hi ** 3 + b * hi < c) hi *= 2;
+    for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (a * mid ** 3 + b * mid < c) lo = mid; else hi = mid; }
     return (lo + hi) / 2;
   }
+  const alpha6 = (v, m) => positiveCubicRoot(v.a, v.b - m, v.c);
+  const zeroG6 = (v, m) => positiveCubicRoot(v.a / 4, (v.b - m) / 2, v.c);
   function areas6(v, m, t) {                                                     // 벽 x = t 까지의 A, B
     const al = alpha6(v, m);
     if (al == null || al >= t) return { al, A: -G6(v, m, t), B: 0 };
@@ -855,9 +863,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const tab = tabOf(lab);
     if (tab === 'explore') {
       const mode = s.mode6;
-      focusOnce(lab, 'x' + mode, mode === 'wall' ? { x: [-0.9, 3.9], y: [-3.5, 4.7] } : { x: [-0.9, 3.9], y: [-1.5, 4.9] });
       const m = s.m6, t = mode === 'wall' ? s.t6 : V6.w, ar = areas6(V6, m, t), G = G6(V6, m, t);
-      const eq = Math.abs(ar.A - ar.B) < 0.02 && ar.A > 0.05;
+      if (!s.dragging) {
+        const ys = [0, V6.c, f6(V6)(t), l6(V6,m)(t), G, G6(V6,m,3.7), G6(V6,m,ar.al)];
+        focusOnce(lab, 'x'+mode+(mode === 'wall' ? ':'+m+':'+t : ''), mode === 'wall' ? { x:[-.9,4.2], y:[Math.min(-3.5,...ys)-.7,Math.max(4.7,...ys)+.7] } : { x:[-.9,3.9], y:[-1.5,4.9] });
+      }
+      const eq = same(G, 0) && ar.A > 0;
       const h = f6(V6)(t) - l6(V6, m)(t);
       const base = { tone: 'info', text: '' };
       let status = base;
@@ -878,7 +889,7 @@ window.addEventListener('DOMContentLoaded', function () {
         chips: [{ k: '곡선', tex: 'f(x) = \\dfrac{1}{9}x^3 + \\dfrac{1}{3}x', color: 'ink' }, { k: '직선', tex: `\\ell(x) = ${num(m)}x + 2`, color: 'rose' }],
         status,
         readouts: reads,
-        tape: { title: `A = ${fv(ar.A)}  ·  B = ${fv(ar.B)}  →  ${eq ? 'A = B (∫(f − ℓ) = 0)' : 'A ≠ B'}`, segments: [{ text: `A ${fv(ar.A)}`, weight: Math.max(0.06, ar.A), color: 'rose' }, { text: `B ${fv(ar.B)}`, weight: Math.max(0.06, ar.B), color: 'sky' }] }
+        tape: s.step >= 3 ? { title: `A ≈ ${fv(ar.A)}  ·  B ≈ ${fv(ar.B)}  →  ${eq ? 'A = B (∫(f − ℓ) = 0)' : 'A ≠ B'}`, segments: [{ text: `A ${fv(ar.A)}`, weight: Math.max(0.06, ar.A), color: 'rose' }, { text: `B ${fv(ar.B)}`, weight: Math.max(0.06, ar.B), color: 'sky' }] } : null
       };
     }
     const p = var6.cur();
@@ -887,7 +898,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       chips: [{ k: '곡선', tex: 'y = ' + p.ftex, color: 'ink' }, { k: '직선', tex: `y = mx + ${p.c}`, color: 'rose' }],
       formula: `<b>두 영역의 넓이 차는 정적분 한 번</b><br>${tex('A')}에서는 직선이 위(${tex('\\ell > f')}), ${tex('B')}에서는 곡선이 위(${tex('f > \\ell')})입니다. 아래 위가 바뀌는 곳(교점)에서 구간을 나누지 않고, 세로 길이 ${tex('f(x) - \\ell(x)')} 를 <b>부호 있는 채로</b> 적분하면 ${tex('B - A = \\displaystyle\\int_{0}^{' + p.w + '} \\{f(x) - \\ell(x)\\}\\,dx')} 입니다.<br>그래서 ${tex('A = B')} 는 ${tex('\\displaystyle\\int_{0}^{' + p.w + '} (f - \\ell)\\,dx = 0')} 과 같은 말입니다.`,
-      notes: '교점의 x좌표(삼차방정식의 근)를 구하려 하지 마세요. 넓이의 차는 교점을 몰라도 ∫₀ʷ(f − ℓ)dx 하나로 계산됩니다. 직선 아래 넓이는 적분하지 말고 사다리꼴(윗변+아랫변)×높이÷2 로 구하면 빠릅니다.'
+      notes: '교점의 x좌표를 따로 구하지 않아도 두 적분을 합칠 수 있습니다. 직선이 x축 아래로 내려갈 수 있으므로 ∫ℓ은 부호 있는 값으로 계산합니다.'
     };
   }
   function steps6() {
@@ -895,7 +906,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return [
       `곡선과 직선이 만나는 점의 $x$좌표 $\\alpha$ 에서 두 영역이 갈라집니다. 왼쪽 $A$(분홍)와 오른쪽 $B$(하늘)을 색칠합니다.`,
       `$A$에서는 $f - \\ell \\lt 0$, $B$에서는 $f - \\ell \\gt 0$ 이므로 세로 길이 $f - \\ell$ 을 부호 있게 모으면 $B - A = \\int_0^{${p.w}} (f - \\ell)\\,dx$ 입니다.`,
-      `$\\int_0^{${p.w}} f\\,dx = ${frac(If)}$, 직선 아래 넓이(사다리꼴) $= ${nm(slope)}m + ${trap}$ 이므로 $${frac(If)} - (${nm(slope)}m + ${trap}) = ${p.d === 0 ? '0' : frac(p.d)}$ 에서 $m = ${p.mtex}$ 입니다.`
+      `$\\int_0^{${p.w}} f\\,dx = ${frac(If)}$, 직선의 부호 있는 정적분 $\\int_0^{${p.w}}\\ell\\,dx=${nm(slope)}m + ${trap}$ 입니다. 직선이 x축을 가로질러도 이 식은 성립합니다. $${frac(If)} - (${nm(slope)}m + ${trap}) = ${p.d === 0 ? '0' : frac(p.d)}$ 에서 $m = ${p.mtex}$ 입니다.`
     ];
   }
   function draw6(b, s, v, lab) {
@@ -908,17 +919,17 @@ window.addEventListener('DOMContentLoaded', function () {
     // A, B 색칠
     drawPieces(b, pieces(f, l, 0, t), { pos: 'sky', neg: 'rose', alpha: 0.32, refs: ['B', 'A'] });
     // 정리 2단계: 세로 길이 f − ℓ 의 막대(부호 있게)
-    if (tab !== 'explore' && st >= 2) {
+    if (st >= 2) {
       const K = 12;
-      for (let i = 0; i <= K; i++) {
+      for (let i = 0; i < K; i++) {
         const x = (t * (i + 0.5)) / K, hh = f(x) - l(x);
         b.seg([x, l(x)], [x, f(x)], { color: hh >= 0 ? 'sky' : 'rose', width: 2, alpha: 0.9, ref: 'gap' });
       }
     }
     // 정리 3단계: 곡선 아래 넓이와 직선 아래 사다리꼴
     if (tab !== 'explore' && st >= 3) {
-      b.poly([[0, 0], [t, 0], [t, l(t)], [0, l(0)]], { color: 'violet', dash: [6, 4], width: 2, ref: 'trap' });
-      if (!nr) tag(b, [t * 0.5, -0.6], `직선 아래 사다리꼴 ${nm(t * t / 2)}m + ${V.c * t}`, { color: 'violet', size: 12.5, ref: 'trap' });
+      drawPieces(b, pieces(l, ZERO, 0, t), { pos: 'violet', neg: 'sky', alpha: .12, ghost: true, ref: 'trap' });
+      if (!nr) tag(b, [t * 0.5, -0.6], `∫ℓ dx = ${nm(t * t / 2)}m + ${V.c * t}`, { color: 'violet', size: 12.5, ref: 'trap' });
     }
     // 곡선, 직선, 벽
     b.plot(f, { color: 'ink', width: 3.2, glow: true, from: -0.4, to: t + (tab === 'explore' ? 0.6 : 0.5) });
@@ -931,27 +942,28 @@ window.addEventListener('DOMContentLoaded', function () {
     const ya = (x) => (f(x) + l(x)) / 2;
     if (al != null) {
       const xa = Math.min(al, t) * 0.5;
-      const showVal = tab === 'explore' && !nr;
+      const showVal = tab === 'explore' && st >= 3 && !nr;
       if (ar.A > 0.02) tag(b, [xa, ya(xa)], showVal ? `A = ${fv(ar.A)}` : 'A', { color: 'rose', size: 13.5, ref: 'A' });
       if (al < t - 0.15) { const xb = (al + t) / 2; tag(b, [xb, Math.max(f(xb), l(xb)) + 0.25], showVal ? `B = ${fv(ar.B)}` : 'B', { color: 'sky', size: 13.5, dy: -8, ref: 'B' }); }
     }
     // 탐구 ②: G(x) = ∫₀ˣ (f − ℓ) 의 그래프, 높이 차, 접선
     if (tab === 'explore' && mode === 'wall') {
       const Gf = (x) => G6(V, m, x);
+      if (st >= 2) {
       b.plot(Gf, { color: 'amber', width: 3, glow: true, from: 0, to: 3.7, ref: 'G' });
       const h = f(t) - l(t);
       b.seg([t, l(t)], [t, f(t)], { color: 'violet', width: 3.6, ref: 'gap' });
       const sl = (x0) => [x0 - 0.45, Gf(t) + h * (x0 - 0.45 - t)];
       b.seg(sl(t), [t + 0.45, Gf(t) + h * 0.45], { color: 'violet', width: 2.2, ref: 'gap' });
       // G = 0 이 되는 두 번째 점(A = B 가 되는 벽의 위치)
-      let z = null;
-      for (let x = Math.max(al || 0, 0.05); x < 3.7; x += 0.01) if (Gf(x) < 0 && Gf(x + 0.01) >= 0) { z = x + 0.005; break; }
-      if (z != null) {
+      const z = zeroG6(V, m);
+      if (st >= 3 && z < 3.7) {
         b.point([z, 0], { color: 'green', r: 6, ref: 'G' });
-        tag(b, [z, 0], nr ? 'G=0' : 'G = 0 (A = B)', { color: 'green', dy: 36 });
+        tag(b, [z, 0], nr ? 'G=0' : `G=0, x≈${fv(z,4)}`, { color: 'green', dy: 36 });
       }
       b.point([t, Gf(t)], { color: 'amber', r: 6.5, ref: 'G' });
       tag(b, [3.7, Gf(3.7)], nr ? 'G' : 'G(x) = ∫₀ˣ(f−ℓ)', { color: 'amber', dx: -4, dy: -14, align: 'right' });
+      }
       b.handle('t', [t, 0], { color: 'amber', ref: 'wall', label: nr ? 't' : 'x = t', dx: 12, dy: -18, drag: (w) => { s.t6 = clamp(round05(w.x), 0.3, 3.4); } });
     } else if (tab === 'explore') {
       b.handle('m', [t, l(t)], { color: 'amber', ref: 'line', label: nr ? `m=${fv(m)}` : `기울기 m = ${fv(m)}`, dx: 12, dy: -14, drag: (w) => { let mm = (w.y - V.c) / t; if (Math.abs(mm - M6) < 0.03) mm = M6; s.m6 = clamp(R(mm), -1.0, 0.1); } });
@@ -979,6 +991,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const mirrorY = (th) => (p) => [p[0] * Math.cos(th), p[1]];                // y축 거울 접기(0 → π)
   const shiftX = (dx) => (p) => [p[0] + dx, p[1]];
   const gper = (c) => (x) => { const r = x - 2 * Math.floor(x / 2); return c * r * (2 - r); };  // 주기 2, 0≤x≤2 에서 c x (2 − x)
+  const primitivePeriod = (c, x) => { const q = Math.floor(x / 2), r = x - 2*q; return q * 4*c/3 + c * (r*r - r**3/3); };
   const lens7 = [['all', '전체 f = 우함수 + 기함수'], ['even', '우함수 부분 접기'], ['odd', '기함수 부분 돌리기']];
   const modes7 = [['eo', '① 우함수·기함수'], ['pt', '② 점대칭 삼차함수'], ['per', '③ 주기 함수 옮겨 붙이기']];
   // 문제 변형
@@ -1033,8 +1046,11 @@ window.addEventListener('DOMContentLoaded', function () {
     if (tab === 'explore') {
       const mode = s.mode7;
       if (mode === 'eo') {
-        focusOnce(lab, 'eo', { x: [-3.1, 3.1], y: [-3.7, 4.5] });
         const K = s.kk7, E = (2 * s.a7 * K * K * K) / 3;
+        if (!s.dragging) {
+          const bound = Math.abs(s.a7)*K*K + Math.abs(s.b7)*K**3;
+          focusOnce(lab, 'eo:'+K+':'+s.a7+':'+s.b7, { x:[-K-1.2,K+1.2], y:[Math.min(-3.7,-bound-.9),Math.max(4.5,bound+.9)] });
+        }
         const fl = { all: '전체', even: '우함수', odd: '기함수' }[s.lens7];
         return {
           chips: [{ k: '함수', tex: `f(x) = ${num(s.a7)}x^2 ${s.b7 < 0 ? '-' : '+'} ${num(Math.abs(s.b7))}x^3`, color: 'ink' }, { k: '구간', tex: `[-${num(K, 1)}, ${num(K, 1)}]`, color: 'amber' }],
@@ -1048,22 +1064,22 @@ window.addEventListener('DOMContentLoaded', function () {
         };
       }
       if (mode === 'pt') {
-        focusOnce(lab, 'pt', { x: [-1.6, 3.6], y: [-3.4, 5.4] });
         const h = s.h7, q = s.q7, val = 2 * h * q;
+        if (!s.dragging) { const radius = Math.hypot(h,2)+.8; focusOnce(lab, 'pt:'+h+':'+q, { x:[1-radius,1+radius], y:[Math.min(0,q-radius),Math.max(0,q+radius)] }); }
         return {
           chips: [{ k: '함수', tex: `f(x) = (x-1)^3 - 3(x-1) + ${num(q)}`, color: 'ink' }, { k: '대칭의 중심', tex: `C(1, ${num(q)})`, color: 'violet' }],
           status: { tone: 'info', text: `구간 [1 − h, 1 + h] 의 정적분 = 2h·q = ${fv(val)} (중심의 높이 q 와 폭 h 로 정해집니다)` },
           readouts: [
             { label: '구간 [1 − h, 1 + h]', value: `[${fv(1 - h)}, ${fv(1 + h)}]`, color: 'amber', ref: 'rect' },
             { label: '대칭의 중심 C 의 높이 q', value: fv(q), color: 'violet', ref: 'C' },
-            { label: '곡선 아래 넓이 ∫ f dx', value: fv(val), color: 'sky', ref: 'rect', note: '직사각형 2h × q 와 같다' },
+            { label: '부호 있는 정적분 ∫ f dx', value: fv(val), color: 'sky', ref: 'rect', note: '2h × q · q<0이면 음수이며 실제 넓이와 구별합니다' },
             { label: '돌려서 포갠 정도 (0 → 1)', value: fv(s.u7), color: 'green', ref: 'ghost' }
           ]
         };
       }
-      focusOnce(lab, 'per', { x: [-2.3, 5.9], y: [-0.8, 2.7] });
       const s0 = s.s7, j = 2 * Math.ceil(s0 / 2 - 1e-9), g = gper(2);
-      const area = (a, c) => computeIntegralStats(g, a, c, 240).signed;
+      if (!s.dragging) focusOnce(lab, 'per:'+j, { x:[-2.3,Math.max(5.9,j+2.8)], y:[-.8,2.7] });
+      const area = (a, c) => primitivePeriod(2,c) - primitivePeriod(2,a);
       const tot = area(s0, s0 + 2), left = j > s0 ? area(s0, j) : 0, right = area(j, s0 + 2);
       return {
         chips: [{ k: '함수', tex: 'g(x+2) = g(x), \\quad g(x) = 2x(2-x) \\quad (0 \\le x \\le 2)', color: 'ink' }, { k: '창', tex: `[${num(s0)}, ${num(s0 + 2)}]`, color: 'amber' }],
@@ -1072,7 +1088,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { label: '창 [s, s+2] 의 넓이 ∫ g dx', value: fv(tot), color: 'sky', ref: 'win', note: '8/3 ≈ 2.67' },
           { label: '자른 조각 [s, 주기 경계] | 남은 조각', value: `${fv(left)} | ${fv(right)}`, color: 'rose', ref: 'cut' },
           { label: '옮긴 뒤 한 주기 [경계, 경계+2]', value: fv(left + right), color: 'green', ref: 'ghost', note: '조각을 +2 만큼 밀어 붙임' },
-          { label: '옮긴 정도 (0 → 1)', value: fv(s.u7), color: 'amber' }
+          { label: '옮긴 정도 (0 → 1)', value: fv(s.u7), color: 'amber', ref: 'motion' }
         ]
       };
     }
@@ -1089,7 +1105,7 @@ window.addEventListener('DOMContentLoaded', function () {
       chips: [p.t === 3 ? { k: '주기', tex: 'T = 2', color: 'amber' } : { k: '구간', tex: p.t === 1 ? `[-${v.k}, ${v.k}]` : `[${v.x0}, ${v.x1}]`, color: 'amber' }],
       formula: form,
       notes: p.t === 1 ? '상수항 c₀ 를 기함수에 넣거나 x²·x 항의 짝·홀 판단을 바꿔 쓰지 마세요. 거듭제곱의 지수가 짝수이면 우함수, 홀수이면 기함수입니다.'
-        : p.t === 2 ? '모든 삼차함수가 아니라 변곡점을 중심으로 점대칭입니다. 구간의 가운데가 변곡점의 x좌표가 아니면 이 방법을 바로 쓸 수 없습니다.'
+        : p.t === 2 ? '삼차함수는 각자의 변곡점을 중심으로 점대칭입니다. 구간의 가운데가 변곡점의 x좌표와 같아야 이 관계를 쓸 수 있으며, 정적분과 실제 넓이는 구별합니다.'
           : '조각의 폭이 주기와 같을 때만 주기 하나의 넓이로 바꿀 수 있습니다. 한 주기 안에서 좌우 대칭이 있는지도 먼저 확인합니다.'
     };
   }
@@ -1144,9 +1160,9 @@ window.addEventListener('DOMContentLoaded', function () {
       } else {
         drawPieces(b, pieces(F, ZERO0, x0, x1), { pos: 'rose', neg: 'sky', alpha: 0.22 });
       }
-      if (tab === 'explore' || st >= 3) {
+      if (st >= 3) {
         b.poly([[x0, 0], [x1, 0], [x1, q], [x0, q]], { color: 'green', dash: [6, 4], width: 2.2, fill: 'green', fillAlpha: 0.1, ref: 'rect' });
-        tag(b, [x0, q * 0.35], tab === 'explore' ? (nr ? `2h·q` : `직사각형 2h × q = ${nm(2 * h * q)}`) : `${nm(2 * h)} × ${nm(q)} = ${nm(2 * h * q)}`, { color: 'green', size: 12.5, dx: 8, align: 'left', ref: 'rect' });
+        tag(b, [x0, q * 0.35], tab === 'explore' ? (nr ? `∫f = 2h·q` : `정적분 2h × q = ${nm(2 * h * q)}`) : `${nm(2 * h)} × ${nm(q)} = ${nm(2 * h * q)}`, { color: 'green', size: 12.5, dx: 8, align: 'left', ref: 'rect' });
       }
       b.plot(F, { color: 'ink', width: 3.2, glow: true, from: x0 - 0.8, to: x1 + 0.8 });
       if (tab === 'explore' || st >= 1) {
@@ -1167,7 +1183,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawPieces(b, pieces(g, ZERO0, s0, j, 120), { color: 'amber', alpha: 0.3, ghost: true, T: shiftX(dx), ref: 'ghost' });
           tag(b, [(s0 + j) / 2, c * 0.4], nr ? '조각' : '자른 조각', { color: 'amber', size: 12.5, ref: 'cut' });
         }
-        b.plot(g, { color: 'ink', width: 3.2, glow: true, from: -2.2, to: 5.8 });
+        b.plot(g, { color: 'ink', width: 3.2, glow: true, from: b.viewBox().x0+.1, to: b.viewBox().x1-.1 });
         [s0, s0 + 2].forEach((x) => b.seg([x, -0.12], [x, 0.12], { color: 'rose', width: 2.6 }));
         tag(b, [s0, 0], 's', { color: 'rose', dy: 38 });
         tag(b, [s0 + 2, 0], 's+2', { color: 'rose', dy: 38 });
@@ -1245,13 +1261,13 @@ window.addEventListener('DOMContentLoaded', function () {
       focusOnce(lab, 'x', { x: [-0.8, 5.0], y: [-1.2, 4.9] });
       const n = Math.round(s.n8), { dx, up, lo } = sums8(n), I = 16 / 3;
       return {
-        chips: [{ k: '함수', tex: 'f(x) = \\dfrac{x^2}{4}', color: 'ink' }, { k: '구간', tex: '[0, 4]', color: 'amber' }, { k: '윗합', tex: 'S_n = \\dfrac{8}{3}\\left(1 + \\dfrac{1}{n}\\right)\\left(2 + \\dfrac{1}{n}\\right)', color: 'rose' }],
+        chips: [{ k: '함수', tex: 'f(x) = \\dfrac{x^2}{4}', color: 'ink' }, { k: '구간', tex: '[0, 4]', color: 'amber' }, ...(s.step >= 2 ? [{ k: '윗합', tex: 'S_n = \\dfrac{8}{3}\\left(1 + \\dfrac{1}{n}\\right)\\left(2 + \\dfrac{1}{n}\\right)', color: 'rose' }] : [])],
         status: { tone: n >= 40 ? 'ok' : 'info', text: n >= 40 ? `n = ${n}: 윗합 ${fv(up, 3)}, 아랫합 ${fv(lo, 3)} → 둘 다 16/3 ≈ ${fv(I, 3)} 에 가까워집니다` : `n = ${n}: 아랫합 ${fv(lo, 3)} ≤ 16/3 ≤ 윗합 ${fv(up, 3)}` },
         readouts: [
-          { label: '직사각형 개수 n | 가로 $\\Delta x=\\frac{4}{n}$', value: `${n} | ${fv(dx, 3)}`, color: 'amber', ref: 'dx' },
+          { label: '개수 n · 가로 Δx=4/n', value: `${n} · ${fv(dx, 3)}`, color: 'amber', ref: 'dx', wide: true },
           { label: '윗합 Sₙ (오른쪽 끝, 분홍)', value: fv(up, 3), color: 'rose', ref: 'up' },
           { label: '아랫합 sₙ (왼쪽 끝, 하늘)', value: fv(lo, 3), color: 'sky', ref: 'low' },
-          { label: '정적분 ∫₀⁴ $\\frac{x^2}{4}$ dx (n → ∞ 의 값)', value: '16/3 ≈ 5.333', color: 'green', ref: 'I' },
+          { label: '정적분 (n → ∞)', value: '16/3 ≈ 5.333', color: 'green', ref: 'I', wide: true },
           { label: '윗합 − 아랫합 = $\\frac{16}{n}$', value: fv(up - lo, 3), color: 'violet', ref: 'gap', wide: true, note: 'n 이 커질수록 0 에 가까워집니다' }
         ],
         tape: { title: `윗합 = 아랫합 + 틈  (틈 $\\frac{16}{n}$ = ${fv(up - lo, 3)})`, segments: [{ text: `아랫합 ${fv(lo, 2)}`, weight: Math.max(0.06, lo), color: 'sky' }, { text: `틈 ${fv(up - lo, 2)}`, weight: Math.max(0.06, up - lo), color: 'rose' }] }
@@ -1277,7 +1293,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.plot(F8, { color: 'ink', width: 3.2, glow: true, from: -0.5, to: 4.5 });
       b.seg([X8, 0], [X8, F8(X8)], { color: 'amber', width: 1.8, dash: [5, 5] });
       tag(b, [X8, 0], 'x = 4', { color: 'amber', dy: 36 });
-      tag(b, [3.2, F8(3.2)], 'y = \\frac{x²}{4}', { color: 'ink', dx: -10, dy: -16, align: 'right' });
+      tag(b, [3.2, F8(3.2)], 'y = x²/4', { color: 'ink', dx: -10, dy: -16, align: 'right' });
       // Δx 표시
       b.seg([0, -0.5], [dx, -0.5], { color: 'amber', width: 3 });
       tag(b, [0, -0.5], nr ? 'Δx' : `Δx = 4/${n}`, { color: 'amber', dx: 0, dy: 20, align: 'left', ref: 'dx' });
@@ -1293,7 +1309,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.plot(p.f, { color: 'ink', width: 3.2, glow: true, from: p.x0 - 0.5, to: p.x1 + 0.6 });
     [p.x0, p.x1].forEach((x) => { b.seg([x, 0], [x, p.f(x)], { color: 'amber', width: 1.8, dash: [5, 5] }); });
     tag(b, [p.x1, p.f(p.x1)], 'y = f(x)', { color: 'ink', dx: -8, dy: -16, align: 'right' });
-    if (st >= 1) { b.seg([p.x0, -0.55], [p.x0 + d, -0.55], { color: 'rose', width: 3, ref: 'up' }); tag(b, [p.x0, -0.55], nr ? 'Δx' : 'Δx = \\frac{' + (p.x1 - p.x0) + '}{n}', { color: 'rose', dy: 20, align: 'left', ref: 'up' }); }
+    if (st >= 1) { b.seg([p.x0, -0.55], [p.x0 + d, -0.55], { color: 'rose', width: 3, ref: 'up' }); tag(b, [p.x0, -0.55], nr ? 'Δx' : `Δx = ${p.x1-p.x0}/n`, { color: 'rose', dy: 20, align: 'left', ref: 'up' }); }
     if (st >= 3) tag(b, [(p.x0 + p.x1) / 2, ymax * 0.18], `∫ = ${fracTxt(p.I)}`, { color: 'amber', size: 14, ref: 'I' });
     paneEnd(b);
   }
@@ -1311,7 +1327,7 @@ window.addEventListener('DOMContentLoaded', function () {
       tabs: { compact: true },
       guide: (s) => (s.mode6 === 'wall'
         ? '금색 점(벽 <b>x = t</b>)을 좌우로 끌어 보세요. 금색 곡선 <b>G(x) = ∫₀ˣ(f − ℓ)dx</b> 위의 점이 곧 <b>B − A</b>이고, 보라색 세로선(높이 차 f − ℓ)이 G 의 <b>접선의 기울기</b>입니다. G 가 0 이 되는 곳(초록 점)이 A = B 가 되는 벽입니다.'
-        : '금색 점(직선의 오른쪽 끝)을 위아래로 끌어 직선을 돌려 보세요. <b style="color:var(--m-rose)">A</b>와 <b style="color:var(--m-sky)">B</b>의 넓이가 실시간으로 바뀌고, <b>m = −0.5</b> 근처에서 A = B 가 됩니다(자석처럼 붙습니다). 그때 ∫₀³(f − ℓ)dx = 0 입니다.'),
+        : '금색 점(직선의 오른쪽 끝)을 위아래로 끌어 직선을 돌려 보세요. <b style="color:var(--m-rose)">A</b>와 <b style="color:var(--m-sky)">B</b>의 넓이가 실시간으로 바뀌고, 두 넓이가 같아지는 위치를 찾아 보세요. 보조선을 열면 부호 있는 세로 길이와 정적분의 관계가 나타납니다.'),
       enter: (s, lab) => { resetFocus(s, lab); s.mode6 = 'line'; s.m6 = 0.1; s.t6 = 2.0; },
       focus: { x: [-0.9, 3.9], y: [-1.5, 4.9] },
       controls: (s) => (s.mode6 === 'wall' ? ['t6', 'm6'] : ['m6']),
@@ -1322,7 +1338,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTopOf(() => text6(var6.cur())),
       problem: { tag: '2025학년도 6월 모의평가 13번 · 2023학년도 수능 10번 유형', time: '목표 시간: 60초', text: () => probHTML(text6(var6.cur())), answer: () => tex('m = ' + var6.cur().mtex) },
       solution: {
-        standardTitle: '교점을 잡아 A, B를 따로 구하기', standardTag: '정석', quickTitle: 'B − A = ∫(f − ℓ) 한 번', quickTag: '10초 컷',
+        standardTitle: '교점을 잡아 A, B를 따로 구하기', standardTag: '정석', quickTitle: 'B − A = ∫(f − ℓ) 한 번', quickTag: '핵심 구조',
         standard: () => {
           const p = var6.cur();
           return {
@@ -1335,8 +1351,8 @@ window.addEventListener('DOMContentLoaded', function () {
         quick: () => {
           const p = var6.cur();
           return {
-            steps: `${tex('A = B')} 이든 ${tex('B - A = d')} 이든 <strong class="text-sky-300">${tex('B - A = \\int_0^{' + p.w + '} (f - \\ell)\\,dx')}</strong> 하나로 끝납니다. 곡선 아래 ${tex(frac(If6(p, p.w)))} 에서 직선 아래 사다리꼴 ${tex(nm(p.w * p.w / 2) + 'm + ' + p.c * p.w)} 를 빼면 되므로 <strong class="text-amber-300">${tex('m = ' + p.mtex)}</strong>.`,
-            highlight: '두 영역이 곡선·직선의 위아래로 갈라져도 "아래 − 위"를 부호째 한 번에 적분하면 넓이의 차가 됩니다.'
+            steps: `${tex('B - A = \\int_0^{' + p.w + '} (f - \\ell)\\,dx')}에서 곡선의 정적분 ${tex(frac(If6(p,p.w)))}과 직선의 부호 있는 정적분 ${tex(nm(p.w*p.w/2)+'m+'+p.c*p.w)}의 차를 주어진 ${tex('d='+frac(p.d))}와 같게 놓습니다. 직선이 x축을 가로질러도 ${tex('\\int\\ell')}의 부호를 유지하면 <strong>${tex('m='+p.mtex)}</strong>를 얻습니다.`,
+            highlight: 'f−ℓ을 한 번 적분하면 B−A입니다. 각 넓이를 따로 구할 때 등장하는 교점의 x좌표가 계산에서 사라집니다.'
           };
         }
       },
@@ -1349,7 +1365,7 @@ window.addEventListener('DOMContentLoaded', function () {
       question: '넓이를 직접 계산하지 않고, 좌우를 접거나 돌려 포개면 정적분이 어떻게 쉬워질까?',
       tabs: { compact: true },
       guide: (s) => (s.mode7 === 'pt'
-        ? '금색 점 <b>C</b>(대칭의 중심)를 위아래로 끌고 구간의 폭 h 를 바꿔 보세요. <b>돌려서 포갠 정도</b>를 1 로 하면 왼쪽 로브가 C 둘레로 180° 돌아 오른쪽 로브에 포개집니다. 넘친 만큼 메우므로 곡선 아래 넓이는 <b>직사각형 2h × q</b> 와 같습니다.'
+        ? '금색 점 <b>C</b>(대칭의 중심)를 위아래로 끌고 구간의 폭 h 를 바꿔 보세요. <b>돌려서 포갠 정도</b>를 1 로 하면 왼쪽 로브가 C 둘레로 180° 돌아 오른쪽 로브에 포개집니다. 반대 부호의 조각을 대응시켜 보세요. 정적분은 부호를 포함하므로 중심이 x축 아래인 경우 실제 넓이와 구별합니다.'
         : s.mode7 === 'per'
           ? '창 <b>[s, s+2]</b>(길이 = 한 주기)의 왼쪽 끝을 끌어 보세요. 주기 경계에서 잘린 <b>왼쪽 조각</b>을 <b>한 주기(2)만큼 밀어 붙이면</b>(옮긴 정도 → 1) 한 주기 전체가 되어, 창을 어디에 놓아도 넓이가 같습니다.'
           : '<b>우함수</b> 부분을 고르면 왼쪽 반이 y축 거울로 접혀 오른쪽에 포개지고, <b>기함수</b> 부분을 고르면 왼쪽 반이 원점 둘레로 180° 돌아 오른쪽에 포개집니다(부호만 반대). 접은 정도를 0 → 1 로 움직여 보세요.'),
@@ -1366,7 +1382,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTopOf(() => text7(var7.cur())),
       problem: { tag: () => tagOf7(var7.cur()), time: '목표 시간: 40초', text: () => probHTML(text7(var7.cur())), answer: () => tex(ansTex7(var7.cur())) },
       solution: {
-        standardTitle: '정석 · 계산으로 풀기', standardTag: '정석', quickTitle: '대칭으로 계산 없이', quickTag: '10초 컷',
+        standardTitle: '정석 · 계산으로 풀기', standardTag: '정석', quickTitle: '대칭으로 계산 없이', quickTag: '핵심 구조',
         standard: () => {
           const p = var7.cur(), v = p.v;
           if (p.t === 1) return { steps: `① 부정적분 $F(x) = ${frac(v.c[0] / 4)}x^4 + ${frac(v.c[1] / 3)}x^3 + ${frac(v.c[2] / 2)}x^2 + ${frac(v.c[3])}x$ 를 구해 $F(${v.k}) - F(-${v.k})$ 를 계산합니다.<br>② 짝수 차수 항은 두 번 더해지고 홀수 차수 항은 서로 지워져 $2\\left(${frac(v.c[1] / 3)}\\cdot ${v.k ** 3} + ${frac(v.c[3])}\\cdot ${v.k}\\right) = ${frac(v.ans)}$ 입니다.`, warning: '모든 항을 대입하면 계산이 길고 부호 실수가 잦습니다. 홀수 차수 항은 처음부터 버리세요.' };
@@ -1394,7 +1410,7 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'riemann', title: '[이전 교육과정] 구분구적법 · 직사각형의 합과 정적분', short: '[이전 교육과정] 구분구적법',
       question: '직사각형을 더 가늘게, 더 많이 그리면 합은 어디로 다가갈까? 이것이 정적분의 뜻일까?',
       tabs: { compact: true },
-      guide: '조절 막대나 금색 점(첫 직사각형의 오른쪽 아래)을 끌어 <b>n</b>을 키워 보세요. <b style="color:var(--m-rose)">분홍 윗합</b>은 아래로, <b style="color:var(--m-sky)">하늘 아랫합</b>은 위로 다가가 둘 다 <b>16/3</b>으로 모입니다. 「직사각형 늘리기」로 n을 1 → 60 까지 자동으로 키울 수 있습니다.',
+      guide: '조절 막대나 금색 점(첫 직사각형의 오른쪽 아래)을 끌어 <b>n</b>을 키워 보세요. <b style="color:var(--m-rose)">분홍 윗합</b>은 아래로, <b style="color:var(--m-sky)">하늘 아랫합</b>은 위로 다가가 두 합의 차가 줄어드는 것을 관찰할 수 있습니다. 「직사각형 늘리기」로 n을 1 → 60 까지 자동으로 키울 수 있습니다.',
       enter: (s, lab) => { resetFocus(s, lab); s.mode8 = 'both'; s.n8 = 6; },
       focus: { x: [-0.8, 5.0], y: [-1.2, 4.9] },
       controls: ['n8'],
@@ -1405,7 +1421,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTopOf(() => text8(var8.cur())),
       problem: { tag: () => var8.cur().tag + ' · 이전 교육과정', time: '목표 시간: 30초', text: () => probHTML(text8(var8.cur())), answer: () => tex(frac(var8.cur().ans)) },
       solution: {
-        standardTitle: '합을 정적분으로 읽기', standardTag: '정석', quickTitle: '10초 컷 · Σ → ∫', quickTag: '10초 컷',
+        standardTitle: '합을 정적분으로 읽기', standardTag: '정석', quickTitle: '간격과 높이로 Σ → ∫', quickTag: '핵심 구조',
         standard: () => {
           const p = var8.cur(), L = p.x1 - p.x0;
           return {
@@ -1427,6 +1443,76 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   ];
   scenes.push(...newScenes);
+
+  function integralExploreSteps(mode, s) {
+    const common = {
+      1: [
+        '1단계 · 두 끝 사이에서 x축 위·아래를 다른 색으로 칠합니다. 색칠한 실제 넓이는 a와 b의 순서를 바꾸어도 같습니다.',
+        '2단계 · 영점 x=0, 2에서 부호 구간을 나누고 위쪽 넓이를 S₁, 아래쪽 넓이를 S₂라 합니다. a≤b이면 정적분은 S₁−S₂입니다.',
+        s.a1 <= s.b1 ? '3단계 · 정적분 S₁−S₂와 실제 넓이 S₁+S₂를 비교합니다. 상쇄 여부와 관계없이 넓이는 음수가 될 수 없습니다.' : '3단계 · 현재는 a>b이므로 정적분의 방향이 반대입니다. I=S₂−S₁이며 실제 넓이는 두 끝의 작은 값부터 큰 값까지 |f|를 적분한 S₁+S₂입니다.'
+      ],
+      2: [
+        '1단계 · 포물선과 x축 사이의 전체 영역을 봅니다. 두 교점 사이 간격을 L로 바꾸면 가로는 L배, 세로는 L²배가 되어 넓이는 L³에 비례합니다.',
+        '2단계 · 직선과 포물선 사이도 차함수 −x²+(3−m)x로 바꾸면 같은 포물선 모양입니다. 새 간격은 3−m, 넓이는 (3−m)³/6입니다.',
+        '3단계 · 두 넓이의 비는 ((3−m)/3)³입니다. 비가 정확히 1/2인지 확인하며, 가까운 소수를 정확한 이등분값으로 대신하지 않습니다.'
+      ],
+      3: [
+        '1단계 · 왼쪽의 양의 영역 S₁과 오른쪽의 음의 영역 S₂를 비교합니다. 같아지는 조건은 두 영역을 합친 정적분이 0이라는 뜻입니다.',
+        '2단계 · 양 끝 −1,3의 중점 1을 기준으로 u=x−1로 옮기면 대칭인 항과 상쇄되는 홀수항을 구별할 수 있습니다.',
+        '3단계 · 이 함수의 정적분은 (16/3)(β−1)입니다. 따라서 β=1일 때에만 0이며, 이때 그래프가 (1,0)에 대하여 점대칭입니다.'
+      ],
+      4: [
+        '1단계 · 두 곡선 사이의 세로 길이를 보세요. 같은 x에서 높이의 차를 h=f−g로 두면 교점은 h의 영점입니다.',
+        '2단계 · 구간 [0,1]에서 |h|를 적분하면 두 곡선 사이의 넓이입니다. h의 부호가 바뀌는 경우 영점에서 구간을 나눕니다.',
+        same(s.m4,-.5) ? '3단계 · 현재 m=−1/2이므로 h=x²(x−1)/2입니다. 중근과 다른 근의 간격이 1인 구조에서 넓이 |a|L⁴/12=1/24를 얻습니다.' : '3단계 · 현재는 m≠−1/2이므로 x=0이 중근이라는 전제가 성립하지 않습니다. 실제 h의 영점으로 구간을 나누어 원시함수의 차를 더합니다.'
+      ],
+      5: [
+        '1단계 · 증가함수 위의 A, B에서 세로로 자른 분홍 영역을 봅니다. 이것이 a부터 b까지 f의 정적분입니다.',
+        '2단계 · 같은 곡선을 가로로 자르면 길이는 x=f⁻¹(y)입니다. 하늘색 영역을 합치면 원함수와 역함수의 두 적분이 한 그림에 모입니다.',
+        '3단계 · 두 영역은 큰 직사각형 b·f(b)에서 작은 직사각형 a·f(a)를 뺀 부분을 채웁니다. 역함수의 삼차방정식을 풀 필요가 없습니다.'
+      ],
+      6: [
+        '1단계 · 직선이 곡선보다 위인 부분 A와 아래인 부분 B를 구별합니다. 각 넓이를 따로 구하려면 교점이 필요합니다.',
+        '2단계 · 세로 막대를 부호 있는 f−ℓ로 바꾸면 B−A=∫(f−ℓ)입니다. 벽 모드에서는 누적값 G와 높이 차 G′=f−ℓ을 함께 봅니다.',
+        '3단계 · 교점의 x좌표 없이 두 원시함수의 끝값만 계산합니다. G=0이 A=B의 조건이며, 직선이 x축을 지나더라도 ∫ℓ의 부호를 유지합니다.'
+      ],
+      8: [
+        '1단계 · 각 직사각형의 가로는 Δx=4/n, 세로는 왼쪽 또는 오른쪽 끝의 함수값입니다. 가로와 세로를 곱한 넓이를 합칩니다.',
+        '2단계 · 증가함수이므로 아랫합≤정적분≤윗합입니다. 양 끝을 제외한 항이 지워져 두 합의 차는 Δx·(f(4)−f(0))=16/n입니다.',
+        '3단계 · n이 커지면 차 16/n이 0으로 갑니다. 두 합이 같은 값에 모이고, ∫₀⁴x²/4 dx=16/3이라는 정확값과 비교할 수 있습니다.'
+      ]
+    };
+    if (mode !== 7) return common[mode];
+    if (s.mode7 === 'pt') return [
+      '1단계 · 변곡점 C(1,q)를 중심으로 같은 가로 거리의 두 점을 대응시킵니다. 두 함수값의 합은 2q입니다.',
+      '2단계 · y=q 위·아래의 조각을 C 둘레로 반 바퀴 돌려 겹쳐 보세요. 반대 부호의 조각이 같은 크기이므로 정적분에서 상쇄됩니다.',
+      '3단계 · 남는 정적분은 2h·q입니다. q<0이면 이 값은 음수이며 실제 도형의 넓이라고 부르지 않습니다.'
+    ];
+    if (s.mode7 === 'per') return [
+      '1단계 · 길이 2인 창이 주기 경계에서 나뉘는 부분을 찾습니다. 창의 폭은 항상 한 주기입니다.',
+      '2단계 · 잘린 왼쪽 조각을 오른쪽으로 2만큼 옮기면 한 주기를 빈틈없이 채웁니다. 평행이동은 넓이를 보존합니다.',
+      '3단계 · 창의 시작 위치와 관계없이 ∫g는 한 주기의 적분 8/3입니다. 움직이는 창의 두 조각은 정확한 원시함수로 계산하여 더합니다.'
+    ];
+    return [
+      '1단계 · 짝수 차수의 우함수 E와 홀수 차수의 기함수 O를 각각 살펴봅니다. 구간이 [−k,k]인지 먼저 확인합니다.',
+      '2단계 · 기함수 조각을 180° 돌리면 반대쪽과 포개지고 부호는 반대입니다. 우함수 조각은 y축에 반사하면 같은 부호로 포개집니다.',
+      '3단계 · 따라서 홀수항의 정적분은 0이고 우함수의 정적분만 2∫₀ᵏE로 계산합니다. 음의 계수가 있으면 정적분의 부호도 유지합니다.'
+    ];
+  }
+  newScenes.forEach((sc, index) => {
+    const mode = index+6, originalSteps = sc.steps, originalView = sc.view;
+    sc.steps = (s, lab) => tabOf(lab) === 'explore' ? integralExploreSteps(mode,s) : originalSteps();
+    sc.view = (s, lab) => {
+      const out = originalView(s,lab), st = shown(lab,s,3);
+      if (st < 2) out.formula = null;
+      if (tabOf(lab) === 'explore' && st < 3) {
+        out.status = null; out.tape = null;
+        const allowed = mode === 6 ? ['line','wall'] : mode === 7 ? (s.mode7 === 'per' ? ['motion'] : ['C','ghost']) : st === 0 ? ['dx'] : st === 1 ? ['dx','up','low'] : ['dx','up','low','gap'];
+        out.readouts = (out.readouts || []).filter(row => allowed.includes(row.ref));
+      }
+      return out;
+    };
+  });
 
   /* ---------- 5. 실험실 등록 ---------- */
 
@@ -1483,6 +1569,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const ouEv = (co, x) => { let y = 0; for (let i = 0; i < co.length; i++) y = y * x + ouQq(co[i]).v; return y; };
   const ouEvQ = (co, x) => { let y = ouQ(0); for (let i = 0; i < co.length; i++) y = y.mul(x).add(co[i]); return y; };
   const ouDer = (co) => { const n = co.length - 1; return co.slice(0, n).map((c, i) => ouQq(c).mul(n - i)); };
+  const ouPrimitive = (co) => [...co.map((c,i)=>ouQq(c).div(co.length-i)), ouQ(0)];
   const ouMul = (a, b) => { const out = Array(a.length + b.length - 1).fill(0).map(() => ouQ(0)); a.forEach((x, i) => b.forEach((y, j) => { out[i + j] = out[i + j].add(ouQq(x).mul(y)); })); return out; };
   const ouAdd = (a, b) => { const n = Math.max(a.length, b.length), out = []; for (let i = 0; i < n; i++) out.push(ouQq(a[a.length - n + i] === undefined ? 0 : a[a.length - n + i]).add(b[b.length - n + i] === undefined ? 0 : b[b.length - n + i])); return out; };
   // (x − r) 인수 TeX: 0 → x, 양수 r → (x-r), 음수 → (x+|r|)
@@ -1660,27 +1747,51 @@ window.addEventListener('DOMContentLoaded', function () {
     const ex = examData[spec.m], V = ouVarier(spec.gen);
     const body = (v) => (v.first ? ex.question() : spec.text(v));
     const pr0 = sc.problem || {}, origView = sc.view, origDraw = sc.draw, origPanes = sc.panes, focus0 = sc.focus;
-    const inExplore = (lab) => !lab || !lab.tab || lab.tab === 'explore';
-    // 탐구 탭은 원래대로: 원래 단계(1~3)가 그림에 드러나도록 단계 값을 1~3으로 맞춰 그립니다.
-    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(1, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
+    const inExplore = (lab) => { const current=lab||window.lab; return !current||!current.tab||current.tab==='explore'; };
+    // 탐구 탭도 0단계를 보존하고 현재 조작값으로 각 단계를 그립니다.
+    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(0, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
     const stepsOf = (v) => spec.steps(v).map(ouFix);
     const stepsHtml = (v) => stepsOf(v).map((t, i) => `<b>${i + 1}.</b> ${t}`).join('<br>');
     sc.startStep = 0;
-    sc.steps = () => stepsOf(V.cur());
+    sc.steps = (s, lab) => inExplore(lab) ? integralExploreSteps(spec.m,s) : stepsOf(V.cur());
+    sc.guide = [ '',
+      '두 끝 a, b를 움직여 위·아래의 영역을 비교하세요. a와 b의 순서를 바꿀 수도 있습니다. 정적분의 방향과 실제 넓이를 구별해 봅니다.',
+      '직선과 포물선 사이의 교점을 움직여 보세요. 간격이 줄어드는 비율과 넓이가 줄어드는 비율을 비교합니다.',
+      '가운데 교점 β를 움직여 양쪽 영역의 차이를 확인하세요. 양 끝 교점의 중점과 어떤 관계가 있는지 찾아봅니다.',
+      '같은 x에서 두 곡선 사이의 세로 길이를 비교하세요. 차함수를 함께 보면 같은 넓이가 어떻게 옮겨지는지 확인할 수 있습니다.',
+      'A와 B를 움직이고 세로로 자른 영역과 가로로 자른 영역을 차례로 표시하세요. 두 영역을 합친 바깥 테두리에 주목합니다.'
+    ][spec.m];
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${body(V.cur())}</div>`;
     sc.problem = { tag: pr0.tag, time: pr0.time, text: () => ouProb(body(V.cur())), answer: () => (V.cur().first ? ex.answerBadge() : spec.ans(V.cur())) };
     sc.vary = V;
     const sol0 = sc.solution || {};
     sc.solution = {
       ...sol0,
-      standard: () => (V.cur().first ? ex.textbook() : { steps: stepsHtml(V.cur()) }),
-      quick: () => (V.cur().first ? ex.shortcut() : { highlight: spec.core })
+      standardTitle: '식과 적분으로 확인', standardTag: '조건·원시함수',
+      quickTitle: '그림의 구조로 계산 줄이기', quickTag: '부호·비율·대칭',
+      standard: () => spec.standard ? spec.standard(V.cur()) : (V.cur().first ? ex.textbook() : { steps: stepsHtml(V.cur()) }),
+      quick: () => (V.cur().first && spec.m !== 3 ? ex.shortcut() : { steps: spec.core + '<br><br>' + stepsOf(V.cur()).slice(1).join('<br>'), highlight: '공식의 전제인 교점의 중복도·적분 방향·대칭 구간을 먼저 확인합니다.' })
     };
-    sc.view = (s, lab) => (inExplore(lab) ? (origView ? withStep(s, () => origView(s, lab)) : {}) : { formula: spec.core });
+    sc.view = (s, lab) => {
+      if (!inExplore(lab)) return { formula: ouStepOf(lab,s,3) >= 2 ? spec.core : null };
+      const out = origView ? withStep(s, () => origView(s,lab)) : {};
+      if (s.step < 3) {
+        out.status=null; out.alert=null; out.tape=null;
+        const allowed = { 1:['range'], 2:[], 3:['beta'], 4:['g'], 5:['A'] }[spec.m];
+        out.readouts=(out.readouts||[]).filter(row=>allowed.includes(row.ref));
+      }
+      out.notes='현재 탐구 모델의 조절값을 사용합니다. 정리·문제 탭은 발문의 조건을 사용하며, 소수 표시와 정확값을 구별합니다.';
+      return out;
+    };
     if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
     sc.draw = (b, s, v, lab) => {
       if (b.thumb || inExplore(lab)) {
-        if (!b.thumb) ouFocus(b, 'e:' + spec.m, typeof focus0 === 'function' ? focus0(s) : focus0 || (lab && lab.def && lab.def.board && lab.def.board.focus));
+        if (!b.thumb && !s.dragging) {
+          let box=typeof focus0 === 'function' ? focus0(s) : focus0 || lab.def.board.focus, key='e:'+spec.m;
+          if(spec.m===1){ const ys=[0,-1,F1(s.a1),F1(s.b1)]; box={x:[-1.6,4],y:[Math.min(-1.4,...ys)-.2,Math.max(3.6,...ys)+.6]};key+=':'+s.a1+':'+s.b1; }
+          if(spec.m===3){ const beta=s.beta3,disc=Math.sqrt(beta*beta-2*beta+13),F=F3(beta),ys=[0,F((beta+2-disc)/3),F((beta+2+disc)/3)];box={x:[-1.7,3.7],y:[Math.min(...ys)-1,Math.max(...ys)+1]};key+=':'+beta; }
+          ouFocus(b,key,box);
+        }
         const vv = origView ? withStep(s, () => origView(s, lab)) : v;
         return withStep(s, () => origDraw(b, s, vv, lab));
       }
@@ -1730,8 +1841,12 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     text: (v) => `이차함수 ${tex('f(x)=' + ouPoly(v.co))} 에 대하여 구간 ${tex(`[${v.p}, ${v.bb}]`)}에서의 정적분 ${tex(`I = \\displaystyle\\int_{${v.p}}^{${v.bb}} f(x)\\,dx`)} 의 값과, 곡선 ${tex('y = f(x)')}와 ${tex('x')}축으로 둘러싸인 넓이 ${tex(`S = \\displaystyle\\int_{${v.p}}^{${v.bb}} |f(x)|\\,dx`)} 의 값을 각각 구하시오.`,
     ans: (v) => `정적분 ${tex('I = 0')}, 실제 넓이 ${tex('S = ' + v.S.tex)}`,
+    standard: (v) => {
+      const F=ouPrimitive(v.co), root=v.p+v.c, left=ouEvQ(F,root).sub(ouEvQ(F,v.p)), right=ouEvQ(F,v.bb).sub(ouEvQ(F,root));
+      return {steps:`① 원시함수는 ${tex('F(x)='+ouPoly(F))}입니다.<br>② 영점 ${tex(`x=${root}`)}에서 부호가 바뀌므로 ${tex(`\\int_{${v.p}}^{${root}}f(x)\\,dx=${left.tex}`)}, ${tex(`\\int_{${root}}^{${v.bb}}f(x)\\,dx=${right.tex}`)}로 나눕니다.<br>③ 정적분은 두 값을 더한 ${tex('I=0')}, 실제 넓이는 각 절댓값의 합 ${tex(`S=|${left.tex}|+|${right.tex}|=${v.S.tex}`)}입니다.`,warning:'정적분이 0이어도 두 영역의 넓이가 각각 0이라는 뜻은 아닙니다. 그림의 부호를 확인한 뒤 절댓값을 더합니다.'};
+    },
     steps: (v) => {
-      const F = [ouQ(v.a, 3), ouQ(-v.a * (2 * v.p + v.c), 2), ouQ(v.a * v.p * (v.p + v.c))], Fb = ouEvQ(F, v.bb), Fp = ouEvQ(F, v.p);
+      const F = [ouQ(v.a, 3), ouQ(-v.a * (2 * v.p + v.c), 2), ouQ(v.a * v.p * (v.p + v.c)), ouQ(0)], Fb = ouEvQ(F, v.bb), Fp = ouEvQ(F, v.p);
       const small = v.a > 0 ? 'S_2' : 'S_1', big = v.a > 0 ? 'S_1' : 'S_2';
       return [
         `$f(x)=${ouCo(v.a)}${ouFac(v.p)}${ouFac(v.p + v.c)}$ 이므로 $f(x)=0$ 의 해는 $x=${v.p}$, $x=${v.p + v.c}$ 입니다. $x=${v.p + v.c}$ 에서 부호가 바뀌므로 구간을 둘로 나눕니다. x축 위쪽 부분의 넓이를 $S_1$(분홍), 아래쪽 부분을 $S_2$(하늘)이라 하면 $I=S_1-S_2$, $S=S_1+S_2$ 입니다.`,
@@ -1779,6 +1894,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ? `원점을 지나는 직선 ${tex('y = mx')} 가 이 넓이를 이등분할 때 상수 ${tex(`(${v.L} - m)^3`)} 의 값을 구하시오.`
       : `원점을 지나는 직선 ${tex('y = mx')} 와 곡선으로 둘러싸인 부분의 넓이가 ${tex('S_0')} 의 ${tex('\\dfrac{1}{8}')} 일 때 ${tex(`(${v.L} - m)^3`)} 의 값과 상수 ${tex('m')}의 값을 구하시오. (단, ${tex(`0 < m < ${v.L}`)})`),
     ans: (v) => `전체 넓이 ${tex('S_0 = ' + v.S0.tex)}, ` + (v.kind === 'half' ? `이등분 조건 ${tex(`(${v.L} - m)^3 = ${v.cube.tex}`)}` : `${tex(`(${v.L} - m)^3 = ${v.cube.tex}`)}, ${tex('m = ' + v.mq.tex)}`),
+    standard: (v) => ({steps:`① 전체 넓이는 ${tex(`S_0=\\int_0^{${v.L}}(-x^2+${v.L}x)\\,dx=[-x^3/3+${v.L}x^2/2]_0^{${v.L}}=${v.S0.tex}`)}입니다.<br>② 두 그래프의 차는 ${tex(`-x^2+(${v.L}-m)x`)}이고 교점은 ${tex(`0,${v.L}-m`)}이므로 ${tex(`S_1=\\int_0^{${v.L}-m}(-x^2+(${v.L}-m)x)\\,dx=(${v.L}-m)^3/6`)}입니다.<br>③ ${tex(`S_1=S_0/${v.kind==='half'?2:8}`)}를 대입하면 ${tex(`(${v.L}-m)^3=${v.cube.tex}`)}${v.mq?`, ${tex('m='+v.mq.tex)}`:''}입니다.`,warning:'0<m<L인 내부 교점 조건에서 위쪽 영역을 적분합니다. 같은 이차계수를 유지하면 간격의 세제곱 비로 두 적분을 줄일 수 있습니다.'}),
     steps: (v) => [
       `곡선과 $x$축의 교점은 $x=0$, $x=${v.L}$ 이고 간격은 ${v.L} 입니다. 전체 넓이는 $S_0=\\dfrac{1}{6}\\cdot ${v.L}^3=${v.S0.tex}$.`,
       `직선 $y=mx$ 와 곡선의 교점은 $x=0$, $x=${v.L}-m$ 이므로 교점 간격은 $${v.L}-m$ 이고, 둘러싸인 부분의 넓이는 $S_1=\\dfrac{1}{6}(${v.L}-m)^3$ 입니다. (넓이는 간격의 세제곱에 비례합니다)`,
@@ -1821,9 +1937,13 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     text: (v) => `삼차함수 ${tex(`f(x) = ${ouCoQ(v.a)}${ouFac(v.al)}(x - \\beta)${ouFac(v.ga)} \; (${v.al} < \\beta < ${v.ga})`)} 의 그래프와 ${tex('x')}축으로 둘러싸인 두 부분의 넓이 ${tex('S_1, S_2')}가 서로 같을 때(${tex('S_1 = S_2')}), 상수 ${tex('\\beta')}의 값과 ${tex('S_1')}의 넓이를 구하시오.`,
     ans: (v) => `${tex(`\\beta = ${v.be}`)} (${v.al}과 ${v.ga}의 한가운데), 한쪽 넓이 ${tex('S_1 = S_2 = ' + v.S.tex)}`,
+    standard: (v) => {
+      const coeff=v.a.mul(4*v.d**3).div(3), absA=v.a.mul(v.a.sgn);
+      return {steps:`① ${tex('f(x)=a[x^3-(\\alpha+\\beta+\\gamma)x^2+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)x-\\alpha\\beta\\gamma]')}를 원시함수로 적분합니다.<br>② ${tex(`\\alpha=${v.al},\\gamma=${v.ga},a=${v.a.tex}`)}를 넣으면 ${tex(`\\int_{${v.al}}^{${v.ga}}f(x)\\,dx=${coeff.tex}(\\beta-(${v.be}))`)}입니다. 두 영역이 같아 이 값이 0이고 계수는 0이 아니므로 ${tex(`\\beta=${v.be}`)}입니다.<br>③ ${tex(`u=x-(${v.be})`)}로 중심을 옮기면 ${tex(`f=a(u^3-${v.d**2}u)`)}입니다. 한쪽 넓이는 ${tex(`S_1=|a|\\left|[u^4/4-${v.d**2}u^2/2]_{-${v.d}}^0\\right|=${absA.tex}\\cdot ${v.d**4}/4=${v.S.tex}`)}입니다.`,warning:'대칭인 위치가 조건을 만족한다는 확인만으로는 유일성을 증명하지 못합니다. 전체 정적분이 β에 관한 일차식임을 확인하면 필요조건도 얻습니다.'};
+    },
     steps: (v) => [
       `세 교점 $x=${v.al}$, $\\beta$, $x=${v.ga}$ 에서 곡선이 $x$축과 만나고, 왼쪽 부분을 $S_1$, 오른쪽 부분을 $S_2$ 라 합니다. 두 부분은 $x$축의 위·아래에 있으므로 $S_1=S_2$ 이면 $\\int_{${v.al}}^{${v.ga}} f(x)\\,dx=0$ 입니다.`,
-      `이 조건을 만족하는 $\\beta$ 는 두 끝 교점의 한가운데입니다. 그래프가 점 $(\\beta,0)$ 에 대하여 대칭이 되므로 $\\beta=\\dfrac{${v.al}+${ouPar(v.ga)}}{2}=${v.be}$ 입니다.`,
+      `두 끝의 중점 $c=${v.be}$, 반간격 $d=${v.d}$를 쓰고 $u=x-c$로 옮기면 $f=a(u^2-d^2)(u-(\\beta-c))$입니다. 대칭 구간에서 홀수항이 상쇄되어 $\\int_{${v.al}}^{${v.ga}}f\\,dx=\\dfrac{4ad^3}{3}(\\beta-c)$입니다. $a\\ne0$, $d>0$이므로 이 값이 0일 필요충분조건은 $\\beta=c=${v.be}$입니다.`,
       `간격 $d=\\beta-(${v.al})=${v.d}$ 이므로 한쪽 넓이는 $S_1=\\dfrac{|a|}{4}d^4=\\dfrac{${v.a.abs ? '' : ''}${Math.abs(v.a.n)}${v.a.d === 1 ? '' : '/' + v.a.d}}{4}\\cdot ${v.d}^4=${v.S.tex}$.`
     ],
     core: '<b>S₁ = S₂ 이면 가운데 교점은 한가운데</b><br>삼차함수 $y=a(x-\\alpha)(x-\\beta)(x-\\gamma)$ 의 그래프와 $x$축으로 둘러싸인 두 부분의 넓이가 같으면 $\\int_\\alpha^\\gamma f\\,dx=0$ 이고 $\\beta=\\dfrac{\\alpha+\\gamma}{2}$ 입니다. 한쪽 넓이는 $\\dfrac{|a|}{4}d^4$ ($d=\\beta-\\alpha$) 입니다.',
@@ -1869,9 +1989,13 @@ window.addEventListener('DOMContentLoaded', function () {
     steps: (v) => [
       `두 함수의 차를 구하면 $h(x)=f(x)-g(x)=${ouPoly(v.hco)}=${ouCoQ(v.a)}${v.al === 0 ? 'x^2' : ouFac(v.al) + '^2'}${ouFac(v.be)}$ 입니다.`,
       `두 곡선이 만나는 곳은 $h(x)=0$ 인 $x=${v.al}$ (제곱 인수이므로 접합니다)와 $x=${v.be}$ (교점)입니다. 그림에서 두 곡선 사이의 색칠한 부분의 세로 길이가 $|h(x)|$ 이므로, 이 넓이는 $y=h(x)$ 와 $x$축 사이의 넓이와 같습니다.`,
-      `$h(x)=a(x-\\alpha)^2(x-\\beta)$ 꼴의 넓이 공식 $S=\\dfrac{|a|}{12}(\\beta-\\alpha)^4$ 에서 $S=\\dfrac{${v.a.abs ? '' : ''}${Math.abs(v.a.n)}${v.a.d === 1 ? '' : '/' + v.a.d}}{12}\\cdot ${Math.abs(v.be - v.al)}^4=${v.S.tex}$.`
+      `$h(x)=a(x-\\alpha)^2(x-\\beta)$ 꼴의 넓이 공식 $S=\\dfrac{|a|}{12}(\\beta-\\alpha)^4$ 에서 $S=\\dfrac{${v.a.mul(v.a.sgn).tex}}{12}\\cdot ${Math.abs(v.be - v.al)}^4=${v.S.tex}$.`
     ],
-    core: '<b>두 곡선 사이의 넓이는 h(x) = f(x) − g(x)</b><br>두 곡선 사이의 세로 길이는 $|f(x)-g(x)|$ 이므로 넓이는 $h=f-g$ 의 그래프와 $x$축 사이의 넓이와 같습니다. $h$ 를 인수분해해 $a(x-\\alpha)(x-\\beta)$ 이면 $\\dfrac{|a|}{6}(\\beta-\\alpha)^3$, $a(x-\\alpha)^2(x-\\beta)$ 이면 $\\dfrac{|a|}{12}(\\beta-\\alpha)^4$ 입니다.',
+    standard: (v) => {
+      const P=ouPrimitive(v.hco), lo=ouEvQ(P,v.lo),hi=ouEvQ(P,v.hi);
+      return {steps:`① 두 함수의 차는 ${tex('h(x)='+ouPoly(v.hco))}이고, 영점은 ${tex(`x=${v.al},${v.be}`)}입니다.<br>② 두 영점 사이에서 부호가 일정하므로 ${tex(`S=\\left|\\int_{${v.lo}}^{${v.hi}}h(x)\\,dx\\right|`)}입니다. 원시함수 ${tex('H(x)='+ouPoly(P))}를 구합니다.<br>③ ${tex(`S=|H(${v.hi})-H(${v.lo})|=|${hi.tex}-${lo.ptex}|=${v.S.tex}`)}입니다.`,warning:'넓이는 양수입니다. 접점 α가 오른쪽에 놓이거나 최고차항이 음수여도 작은 x부터 큰 x까지 적분하고 절댓값을 취합니다.'};
+    },
+    core: '<b>두 곡선 사이의 넓이는 h(x) = f(x) − g(x)</b><br>두 곡선 사이의 세로 길이는 $|f(x)-g(x)|$ 이므로 넓이는 $h=f-g$ 의 그래프와 $x$축 사이의 넓이와 같습니다. 두 교점 간격을 $L=|\\beta-\\alpha|$라 하면 $h=a(x-\\alpha)(x-\\beta)$일 때 $|a|L^3/6$, $h=a(x-\\alpha)^2(x-\\beta)$일 때 $|a|L^4/12$입니다.',
     draw: (b, s, v, st) => {
       b.plot(v.G, { color: 'sky', width: 3, glow: true });
       b.plot(v.F, { color: 'ink', width: 3.2, glow: true });
@@ -1903,6 +2027,10 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     text: (v) => `함수 ${tex('f(x)=' + ouPoly(v.co))} 의 역함수를 ${tex('f^{-1}(x)')}라 할 때, 정적분의 합 ${tex(`\\displaystyle\\int_{${v.a}}^{${v.bb}} f(x)\\,dx + \\int_{${v.fa.tex}}^{${v.fb.tex}} f^{-1}(x)\\,dx`)} 의 값을 구하시오.`,
     ans: (v) => tex(`${v.bb} \\times ${v.fb.ptex} - ${v.a} \\times ${v.fa.ptex} = ${v.ans.tex}`),
+    standard: (v) => {
+      const P=ouPrimitive(v.co), I=ouEvQ(P,v.bb).sub(ouEvQ(P,v.a)),J=v.ans.sub(I);
+      return {steps:`① ${tex(`f^{\\prime}(x)=${ouPoly(ouDer(v.co))}>0`)}이므로 역함수가 존재합니다. ${tex('F(x)='+ouPoly(P))}에서 ${tex(`\\int_{${v.a}}^{${v.bb}}f(x)\\,dx=F(${v.bb})-F(${v.a})=${I.tex}`)}입니다.<br>② ${tex(`y=f(x)`)}의 가로 단면 길이가 ${tex('x=f^{-1}(y)')}임을 이용합니다. 곡선 왼쪽의 하늘색 영역은 큰 직사각형에서 작은 직사각형과 분홍 영역을 뺀 부분이므로 ${tex(`\\int_{${v.fa.tex}}^{${v.fb.tex}}f^{-1}(y)\\,dy=${v.bb}\\cdot${v.fb.ptex}-${v.a}\\cdot${v.fa.ptex}-${I.ptex}=${J.tex}`)}입니다.<br>③ 두 값을 더하면 ${tex(`${I.tex}+${J.ptex}=${v.ans.tex}`)}입니다.`,warning:'두 적분을 각각 구하면 첫 적분의 계산이 더해집니다. 처음부터 두 영역의 합을 보면 원시함수도 역함수의 식도 구하지 않고 끝점만 사용할 수 있습니다.'};
+    },
     steps: (v) => [
       `$f$ 는 증가함수라 역함수가 있고, $f(${v.a})=${v.fa.tex}$, $f(${v.bb})=${v.fb.tex}$ 이므로 두 번째 정적분의 구간 $[${v.fa.tex},\\,${v.fb.tex}]$ 은 $f$ 의 $y$ 값의 구간입니다.`,
       `$\\int_{${v.a}}^{${v.bb}} f(x)\\,dx$ 는 곡선 아래를 세로로 자른 분홍색 넓이, $\\int_{${v.fa.tex}}^{${v.fb.tex}} f^{-1}(y)\\,dy$ 는 곡선 왼쪽을 가로로 자른 하늘색 넓이입니다. 둘을 합치면 큰 직사각형에서 작은 직사각형을 뺀 ㄱ자 모양입니다.`,
@@ -1915,7 +2043,6 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 1) b.poly([[v.a, 0], ...pts, [v.bb, 0]], { fill: 'rose', fillAlpha: 0.3, color: null });
       if (st >= 2) b.poly([[0, v.fa.v], ...pts, [0, v.fb.v]], { fill: 'sky', fillAlpha: 0.3, color: null });
       b.plot(f, { color: 'ink', width: 3.2, glow: true });
-      b.line([0, 0], 1, { color: 'muted', width: 1.4, dash: true, alpha: 0.6 });
       [[v.a, v.fa], [v.bb, v.fb]].forEach(([x, q]) => { b.seg([x, 0], [x, q.v], { color: 'amber', width: 1.6, dash: true }); b.seg([0, q.v], [x, q.v], { color: 'amber', width: 1.6, dash: true }); });
       lbl(b, [v.a, 0], `x = ${v.a}`, { color: 'amber', dy: 20, dx: v.a === 0 ? 14 : 0, align: v.a === 0 ? 'left' : 'center' });
       lbl(b, [v.bb, 0], `x = ${v.bb}`, { color: 'amber', dy: 20 });
@@ -1936,6 +2063,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'calc1-integral',
+    stagedReveal: true,
     stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '정적분과 넓이',
     courseName: '미적분Ⅰ',
@@ -1946,16 +2074,16 @@ window.addEventListener('DOMContentLoaded', function () {
     board: { kind: 'cartesian', focus: { x: [-1.3, 3.7], y: [-1.4, 3.6] }, pad: 0.04 },
     params: {
       a1: { value: 0, min: -1, max: 2.5, step: 0.05, color: 'amber', label: '아래끝 a', format: (v) => `a = ${fmt(v)}` },
-      b1: { value: 3, min: -0.5, max: 3.3, step: 0.05, color: 'sky', label: '위끝 b', hint: 'b = 3 에서 정적분이 0 이 됩니다 (S₁ = S₂)', format: (v) => `b = ${fmt(v)}` },
-      m2: { value: 0.62, min: 0, max: 2.5, step: 0.01, color: 'amber', label: '직선의 기울기 m', hint: 'm ≈ 0.62 에서 직선이 넓이를 이등분합니다', format: (v) => `m = ${fmt(v)}` },
-      beta3: { value: 1, min: -0.8, max: 2.8, step: 0.05, color: 'amber', label: '가운데 교점 β', hint: 'β = 1 (−1과 3의 한가운데) 에서 S₁ = S₂', format: (v) => `β = ${fmt(v)}` },
+      b1: { value: 3, min: -0.5, max: 3.3, step: 0.05, color: 'sky', label: '위끝 b', hint: '두 끝을 바꾸면 적분의 방향은 바뀌고 실제 넓이는 유지됩니다', format: (v) => `b = ${fmt(v)}` },
+      m2: { value: MBISECT, min: 0, max: 2.5, step: 0.01, color: 'amber', label: '직선의 기울기 m', hint: '교점의 가로 위치를 끌어 간격과 넓이를 비교하세요', format: (v) => `m ≈ ${fmt(v, 6)}` },
+      beta3: { value: 1, min: -0.8, max: 2.8, step: 0.05, color: 'amber', label: '가운데 교점 β', hint: '양쪽 교점 간격과 넓이를 비교하세요', format: (v) => `β ≈ ${fmt(v, 4)}` },
       m4: { value: -0.5, min: -1.5, max: 0.5, step: 0.05, color: 'amber', label: 'g(x) 의 기울기 m (g(x) = ½x² + mx + 1)', hint: 'm = −0.5 일 때 x = 0 에서 f 와 접합니다', format: (v) => `m = ${fmt(v)}` },
       a5: { value: 1, min: 0.2, max: 1.6, step: 0.05, color: 'amber', label: '아래끝 a', format: (v, s) => `a = ${fmt(v)} (f(a) = ${fmt(F5(v))})`,
         onInput: (s) => { if (s.b5 < s.a5 + 0.3) s.b5 = R(s.a5 + 0.3); } },
       b5: { value: 2, min: 0.5, max: 2.2, step: 0.05, color: 'sky', label: '위끝 b', format: (v) => `b = ${fmt(v)} (f(b) = ${fmt(F5(v))})`,
         onInput: (s) => { if (s.b5 < s.a5 + 0.3) s.a5 = Math.max(0.2, R(s.b5 - 0.3)); } },
-      m6: { value: 0.1, min: -1.0, max: 0.1, step: 0.01, color: 'amber', label: '직선 y = mx + 2 의 기울기 m', hint: 'm = −0.5 에서 A = B (∫₀³(f − ℓ)dx = 0)', format: (v) => `m = ${fmt(v)}` },
-      t6: { value: 2, min: 0.3, max: 3.4, step: 0.05, color: 'amber', label: '벽의 위치 x = t', hint: 'm = −0.5 이면 t = 3 에서 G(t) = 0 (A = B)', format: (v) => `t = ${fmt(v)}` },
+      m6: { value: 0.1, min: -1.0, max: 0.1, step: 0.01, color: 'amber', label: '직선 y = mx + 2 의 기울기 m', hint: '직선을 돌려 A와 B의 차를 확인하세요', format: (v) => `m = ${fmt(v)}` },
+      t6: { value: 2, min: 0.3, max: 3.4, step: 0.05, color: 'amber', label: '벽의 위치 x = t', hint: '벽을 옮기며 누적된 넓이 차 G(t)를 확인하세요', format: (v) => `t = ${fmt(v)}` },
       a7: { value: 0.4, min: -0.6, max: 0.6, step: 0.05, color: 'sky', label: '우함수 부분 ax² 의 a', format: (v) => `a = ${fmt(v)}` },
       b7: { value: 0.15, min: -0.25, max: 0.25, step: 0.05, color: 'rose', label: '기함수 부분 bx³ 의 b', hint: 'b 를 바꿔도 ∫₋ₖᵏ f dx 는 변하지 않습니다', format: (v) => `b = ${fmt(v)}` },
       kk7: { value: 2, min: 0.5, max: 2.5, step: 0.1, color: 'amber', label: '구간 [−k, k] 의 k', format: (v) => `k = ${fmt(v, 1)}` },
@@ -1963,7 +2091,7 @@ window.addEventListener('DOMContentLoaded', function () {
       q7: { value: 1.5, min: -1, max: 3, step: 0.5, color: 'violet', label: '대칭의 중심 C 의 높이 q', format: (v) => `q = ${fmt(v, 1)}` },
       s7: { value: 0.5, min: -1.5, max: 2.5, step: 0.05, color: 'rose', label: '창 [s, s+2] 의 왼쪽 끝 s', format: (v) => `s = ${fmt(v)}` },
       u7: { value: 0, min: 0, max: 1, step: 0.01, color: 'green', label: '접기·돌리기·옮기기 (0 → 1)', hint: '1 이면 조각이 목표 자리에 정확히 포개집니다', format: (v) => `${fmt(v)}` },
-      n8: { value: 6, min: 1, max: 60, step: 1, color: 'amber', label: '직사각형의 개수 n', hint: 'n 이 커질수록 윗합과 아랫합이 16/3 에 가까워집니다', format: (v) => `n = ${Math.round(v)}` }
+      n8: { value: 6, min: 1, max: 60, step: 1, color: 'amber', label: '직사각형의 개수 n', hint: 'n을 키우며 윗합과 아랫합 사이의 차를 비교하세요', format: (v) => `n = ${Math.round(v)}` }
     },
     state: { dual: false, animDir: -1, mode6: 'line', mode7: 'eo', lens7: 'all', mode8: 'both' },
     persist: ['dual'],
