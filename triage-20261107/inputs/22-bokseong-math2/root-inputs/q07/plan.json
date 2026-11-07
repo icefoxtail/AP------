@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$v(t)=-t^2+3t$일 때",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -5,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "-4"
+      },
+      {
+        "id": "C",
+        "x": "3/2",
+        "y": "9/4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "C"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "3",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "속도의 양수 영역과 음수 영역을 부호 있게 더해 변위를 구하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도의 양수 영역과 음수 영역을 부호 있게 더해 변위를 구하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 양수 영역과 음수 영역을 부호 있게 더해 변위를 구하는 관계."
+  ]
+}

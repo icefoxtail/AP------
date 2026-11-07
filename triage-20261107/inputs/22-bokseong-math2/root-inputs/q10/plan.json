@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "f'(x)=x^2+2ax+a",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -3,
+      2,
+      -2,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "경계 사례의 도함수가 한 점에서 0이고 다른 곳에서 양수인 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "경계 사례의 도함수가 한 점에서 0이고 다른 곳에서 양수인 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "경계 사례의 도함수가 한 점에서 0이고 다른 곳에서 양수인 관계."
+  ]
+}
