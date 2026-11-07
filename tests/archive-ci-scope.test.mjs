@@ -267,7 +267,7 @@ test('workflow conditions preserve output/checker Chrome and metadata shared-Con
   assert.match(runtime, /name: Compare 50 real solutions and verify asset failures in actual Chrome\n\s+if: steps\.scope\.outputs\.solution_browser == 'true'/);
   assert.match(runtime, /name: Verify the changed scoped browser checker on one existing original\n\s+if: steps\.scope\.outputs\.scoped_browser_changed == 'true'/);
   assert.match(runtime, /name: Load and print the changed original sources in actual Chrome\n\s+if: steps\.scope\.outputs\.mode == 'archive-content'/);
-  assert.match(runtime, /Shared Meta and registration-preview Chrome checks retain their own policies/);
+  assert.match(runtime, /Shared Meta Chrome checks retain their own policies/);
   assert.doesNotMatch(runtime, /continue-on-error: true/);
 });
 

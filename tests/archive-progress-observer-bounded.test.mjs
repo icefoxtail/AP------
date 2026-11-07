@@ -21,7 +21,7 @@ function observerApi(releases,calls){
   calls.push(route);
   if(route.startsWith('/contents/'))return null;
   if(route.startsWith('/pulls?'))return [];
-  if(route.startsWith('/actions/workflows/archive-registration-sync.yml/runs?'))return {workflow_runs:[]};
+  if(route.startsWith('/actions/workflows/ci.yml/runs?'))return {workflow_runs:[]};
   if(route.startsWith('/actions/workflows/archive-pages-release.yml/runs?'))return {workflow_runs:releases};
   throw Error('unexpected API route '+route);
  };
@@ -67,7 +67,7 @@ test('the default ancestry fallback requests a one-commit page, not the full com
    return {sha:'s',size:Buffer.byteLength(raw),encoding:'base64',content:Buffer.from(raw).toString('base64')};
   }
   if(route.startsWith('/pulls?'))return [];
-  if(route.startsWith('/actions/workflows/archive-registration-sync.yml/runs?'))return {workflow_runs:[]};
+  if(route.startsWith('/actions/workflows/ci.yml/runs?'))return {workflow_runs:[]};
   if(route.startsWith('/actions/workflows/archive-pages-release.yml/runs?'))return {workflow_runs:[releaseRun(731,sha(2))]};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('unexpected API route '+route);

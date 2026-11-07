@@ -235,12 +235,3 @@ jobs:
         env:
           ARCHIVE_PR_REGISTRATION_PROOF: ${{ steps.registration_proof.outputs.proof_file }}
         run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json"
-
-      - name: Upload the registration data proof
-        if: steps.registration_proof.outputs.registration_data == 'PASS'
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.registration_proof.outputs.artifact_name }}
-          path: ${{ steps.registration_proof.outputs.proof_file }}
-          if-no-files-found: error
-          retention-days: 7

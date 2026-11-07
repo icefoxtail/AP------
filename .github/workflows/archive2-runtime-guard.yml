@@ -76,7 +76,7 @@ jobs:
           SCOPE_MODE: ${{ steps.scope.outputs.mode }}
         run: |
           printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
-          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta and registration-preview Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
       - name: Verify original routes, response budgets, and storage failures
         if: steps.scope.outputs.runtime_contract == 'true'
         env:

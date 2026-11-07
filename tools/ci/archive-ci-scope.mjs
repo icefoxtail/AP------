@@ -55,7 +55,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
     'tests/fixtures/archive2-output-browser-smoke.html', 'tests/fixtures/archive2-pdf-readiness-browser-smoke.html',
   ]),
   registration: Object.freeze([
-    '.github/workflows/archive-registration-sync.yml', '.github/workflows/archive-main-auto-meta.yml',
+    '.github/workflows/archive-main-auto-meta.yml',
     '.github/workflows/archive-reviewed-exam-meta-register.yml', '.github/workflows/archive-reviewed-apply.yml',
     '.github/workflows/archive-pages-release.yml', '.github/workflows/auto-register-approved-qid9.yml',
     'tools/ci/archive-registration-writer.mjs', 'tools/ci/archive-registration-whitespace.mjs', 'tools/ci/archive-main-auto-meta-pass.sh',
@@ -82,13 +82,13 @@ export const TECHNICAL_INPUTS = Object.freeze({
     // A producer plus its own regression must retain the same bounded scope;
     // arbitrary tests and changes to the shared test runner still select full.
     'tests/archive-package-only.test.js', 'tests/archive-register-isolation.test.js',
-    'tests/archive-registration-preview.test.js', 'tests/archive-registration-whitespace.test.mjs',
+    'tests/archive-registration-whitespace.test.mjs',
     'tests/git-push-derived-with-retry.test.mjs', 'tests/archive-pr-registration-proof.test.mjs',
     'tests/archive-pr-registration-prepare.test.mjs', 'tests/archive-main-merge-meta.test.mjs',
     'tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs',
     'tests/archive-pages-release-identity.test.mjs', 'tests/archive-pages-release-gate.test.mjs',
     'tests/archive-pages-image-r2-gate.test.mjs', 'tests/archive-pages-release-reg-commit.test.mjs',
-    'tests/archive-reviewed-apply-bridge.test.mjs', 'tests/archive2-registration-sync.test.mjs',
+    'tests/archive-reviewed-apply-bridge.test.mjs',
     'tests/archive-register-trigger-paths.test.mjs',
   ]),
 });

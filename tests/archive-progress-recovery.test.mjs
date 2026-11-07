@@ -24,7 +24,8 @@ function environment(){
   if(route.startsWith('/contents/'))return stored&&Object.keys(stored.entries||{}).length||stored?.observations?{sha:C,encoding:'base64',content:Buffer.from(JSON.stringify(stored)).toString('base64')}:null;
   if(route.startsWith('/pulls?'))return prArr;
   if(route.startsWith('/pulls/1/files'))return [{filename:'archive/exams/high/'+id+'.js'}];
-  if(route.includes('/archive-registration-sync.yml/runs?'))return {workflow_runs:regs};
+  if(route.includes('/ci.yml/runs?'))return {workflow_runs:[]};
+  if(route.includes('/registration-fixture.yml/runs?'))return {workflow_runs:regs};
   if(route.includes('/archive-pages-release.yml/runs?'))return {workflow_runs:releases};
   if(route.startsWith('/compare/'))return {status:'ahead'};
   throw Error('Unhandled API '+route);
@@ -38,30 +39,30 @@ function environment(){
 test('executeOnce auto recovers same run after transient failure and old updatedAt boundary',async()=>{
  const e=environment();e.putReg(e.run(20,B,3));let n=0;
  const source=async()=>{n++;return n===1?null:p(C,20,1);};
- const first=await executeOnce({api:e.api,getEvidence:source,storeStatus:e.save,clock:()=>at(5)});
+ const first=await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:source,storeStatus:e.save,clock:()=>at(5)});
  assert.equal(first.entries[id].registration.result,'미확인');assert.equal(n,1);
  // Same completed run timestamp, retry after delay; old updatedAt is newer than run.
- const second=await executeOnce({api:e.api,getEvidence:source,storeStatus:e.save,clock:()=>at(11)});
+ const second=await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:source,storeStatus:e.save,clock:()=>at(11)});
  assert.equal(second.entries[id].registration.result,'완료');assert.equal(second.entries[id].registration.sha,C);
  assert.equal(n,2);assert.equal(second.observations[runKey('registration',{id:20,attempt:1,sha:B})].status,'verified');
 });
 test('executeOnce manual retry can recover unknown without waiting, never re-fetches verified',async()=>{
  const e=environment();e.putReg(e.run(20,B,3));let count=0;
  const getEvidence=async()=>++count===1?{status:'transient',reason:'증거 조회 실패'}:p(C,20,1);
- await executeOnce({api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(5)});
- const recovered=await executeOnce({api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(6),manualRetry:true});
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(5)});
+ const recovered=await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(6),manualRetry:true});
  assert.equal(recovered.entries[id].registration.result,'완료');
- await executeOnce({api:e.api,getEvidence:async()=>{throw Error('must not redownload verified proof');},storeStatus:e.save,clock:()=>at(7)});
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:async()=>{throw Error('must not redownload verified proof');},storeStatus:e.save,clock:()=>at(7)});
  assert.equal(e.state.entries[id].registration.result,'완료');assert.equal(count,2);
 });
 test('verified evidence remains after temporary unrelated API evidence failure and fresh run ends midflight',async()=>{
  const e=environment();e.putReg(e.run(20,B,3));
- await executeOnce({api:e.api,getEvidence:async()=>p(C,20,1),storeStatus:e.save,clock:()=>at(8)});
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:async()=>p(C,20,1),storeStatus:e.save,clock:()=>at(8)});
  let called=0;
- await executeOnce({api:e.api,getEvidence:async()=>{called++;throw Error('transient');},storeStatus:async state=>{
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:async()=>{called++;throw Error('transient');},storeStatus:async state=>{
    e.state=state;e.putRelease(e.run(30,D,6));},clock:()=>at(9)});
  assert.equal(called,0); // verified record cached
- const next=await executeOnce({api:e.api,getEvidence:async(r,kind)=>kind==='release'?p(D,30,1,true):p(C,20,1),storeStatus:e.save,clock:()=>at(10)});
+ const next=await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:async(r,kind)=>kind==='release'?p(D,30,1,true):p(C,20,1),storeStatus:e.save,clock:()=>at(10)});
  assert.equal(next.entries[id].deploymentJob.result,'완료');
  assert.equal(next.entries[id].deployment.result,'완료');
 });
@@ -108,11 +109,11 @@ test('executeOnce large Pages proof marks verified deploy job but file match unk
  const getEvidence=async(r,kind)=>{calls++;return kind==='registration'?p(C,20,1):
   {status:'verified',proof:{schema:2,run_id:30,run_attempt:1,sourceSha:D,deploymentJobVerified:true,
    actualDeployed:false,evidenceSource:'diagnostics-and-deploy-job',fileProofReason:'Pages ZIP 크기 초과',exams:{}}};};
- const result=await executeOnce({api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(5)});
+ const result=await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence,storeStatus:e.save,clock:()=>at(5)});
  assert.equal(result.entries[id].deploymentJob.result,'완료');
  assert.equal(result.entries[id].deployment.result,'미확인');
  assert.equal(result.entries[id].deployment.reason,'Pages ZIP 크기 초과');
- await executeOnce({api:e.api,getEvidence:async()=>{throw Error('must cache oversized');},storeStatus:e.save,clock:()=>at(10)});
+ await executeOnce({registrationWorkflow:'registration-fixture.yml',api:e.api,getEvidence:async()=>{throw Error('must cache oversized');},storeStatus:e.save,clock:()=>at(10)});
  assert.equal(calls,2);
 });
 

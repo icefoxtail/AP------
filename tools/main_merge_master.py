@@ -415,7 +415,7 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
 
     # Load current metadata records. The registrar compares every `before` value with the record that is
     # registered on main right now, and requires exactly one metadata row and one identity row per question.
-    # Those placeholder rows are created by the Registration Sync AFTER the exam JS reaches main, so a request
+    # Those placeholder rows are created by the main registration writer AFTER the exam JS reaches main, so a request
     # generated from a branch that does not have them yet carries `before = null` for every field and a
     # synthetic UID; the registrar then refuses it (`UID denominator mismatch`, later `before mismatch`).
     # Refuse to emit such a request instead of shipping a stale one.
@@ -432,7 +432,7 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
         raise RequestGenerationError(
             f"UID denominator mismatch for {source_archive_file}: JS questions={len(bank)}, "
             f"question_metadata records={len(cur_records)}, question_identity_map records={len(identity_records)}. "
-            "The exam JS must be on this base (main) and the Registration Sync must have created its metadata/identity "
+            "The exam JS must be on this base (main) and the main registration writer must have created its metadata/identity "
             "rows first; regenerate the request then. Do not submit a request built before those rows exist.")
 
     # Load small meta
@@ -714,7 +714,7 @@ def main():
             print(f"\n[REQUEST NOT GENERATED] {err}", file=sys.stderr)
             sys.exit(1)
         print(f"\n[REQUEST DEFERRED] {err}")
-        print(" -> Staging exam files without inbox request so Registration Sync can initialize placeholder rows on main first.")
+        print(" -> Staging exam files without inbox request so the main registration writer can initialize placeholder rows on main first.")
 
     inbox_path = None
     if inbox_request:
@@ -752,7 +752,7 @@ def main():
             print("\n[DRY RUN] Generated Inbox Request:")
             print(json.dumps(inbox_request, indent=2, ensure_ascii=False)[:1000] + "\n  ... (truncated for display)")
         else:
-            print("\n[DRY RUN] Inbox request deferred until exam JS is on main and Registration Sync runs.")
+            print("\n[DRY RUN] Inbox request deferred until exam JS is on main and the main registration writer runs.")
         print("\nTo execute operation merge, rerun with '--apply'.")
         return
 
