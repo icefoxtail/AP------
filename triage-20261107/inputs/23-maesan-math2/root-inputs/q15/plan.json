@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "최고차항의 계수가 $1$인 이차함수",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -20,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-18",
+        "-12",
+        "-6",
+        "6",
+        "12"
+      ]
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-18",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=g(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "g가 y축 대칭이면 두 근이 원점에서 같은 거리에 놓이는 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g가 y축 대칭이면 두 근이 원점에서 같은 거리에 놓이는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "g가 y축 대칭이면 두 근이 원점에서 같은 거리에 놓이는 관계를 보인다."
+  ]
+}

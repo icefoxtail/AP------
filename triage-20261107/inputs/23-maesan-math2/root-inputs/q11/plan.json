@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "곡선 $y=-x^2+4x$와 직선 $y=2x$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "4"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "두 곡선의 교점 사이에서 위 곡선과 아래 직선의 넓이를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선의 교점 사이에서 위 곡선과 아래 직선의 넓이를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선의 교점 사이에서 위 곡선과 아래 직선의 넓이를 보인다."
+  ]
+}

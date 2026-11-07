@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$x=3$에서 좌미분계수는 $2$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "14",
+          "-4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "5",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "11"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      0,
+      18
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9",
+        "11",
+        "13",
+        "15",
+        "17"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "11"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "10"
+      }
+    ]
+  },
+  "caption": "두 조각이 같은 점과 같은 기울기로 이어진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<3에서 (x-2)²+10, x≥3에서 2x+5이고 x=3에서 연속·미분가능하다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "접합점의 좌우 함수값과 접선 기울기가 일치하는 관계를 보여 준다."
+  ]
+}

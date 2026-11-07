@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)$의 한 부정적분을 $F(x)$라고 하자.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -2,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "미적분의 기본정리로 얻은 f의 그래프에서 입력 1의 함수값을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "미적분의 기본정리로 얻은 f의 그래프에서 입력 1의 함수값을 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "미적분의 기본정리로 얻은 f의 그래프에서 입력 1의 함수값을 찾는다."
+  ]
+}

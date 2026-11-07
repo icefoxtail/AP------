@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=x^3-12x+3$가",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-12",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -20,
+      22
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-15",
+        "-10",
+        "-5",
+        "5",
+        "10",
+        "15",
+        "19"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -2,
+        "y": 19
+      },
+      {
+        "id": "Q",
+        "x": 2,
+        "y": -13
+      }
+    ]
+  },
+  "caption": "임계점에서 증가·감소 방향이 바뀌며 생기는 극대와 극소를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "임계점에서 증가·감소 방향이 바뀌며 생기는 극대와 극소를 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "임계점에서 증가·감소 방향이 바뀌며 생기는 극대와 극소를 비교한다."
+  ]
+}

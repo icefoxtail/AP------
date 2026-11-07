@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$\\displaystyle\\lim_{x\\to\\infty}",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      8,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "3",
+        "4",
+        "6"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "3",
+        "4",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "x가 양의 방향으로 커질 때 함수값이 수평 경계에 가까워지는 모습을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x가 양의 방향으로 커질 때 함수값이 수평 경계에 가까워지는 모습을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "x가 양의 방향으로 커질 때 함수값이 수평 경계에 가까워지는 모습을 보인다."
+  ]
+}
