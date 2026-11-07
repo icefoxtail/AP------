@@ -1,0 +1,152 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^2-5|x|+6$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "5",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-5/2",
+        "y": "-1/4"
+      },
+      {
+        "id": "W",
+        "x": "5/2",
+        "y": "-1/4"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-3",
+        "to": "-2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_3"
+      },
+      {
+        "id": "S4",
+        "upper": "axis",
+        "lower": "f",
+        "from": "2",
+        "to": "3",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "짝함수의 영점과 축 위아래 네 영역을 절댓값 넓이로 합하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "짝함수의 영점과 축 위아래 네 영역을 절댓값 넓이로 합하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "짝함수의 영점과 축 위아래 네 영역을 절댓값 넓이로 합하는 관계."
+  ]
+}

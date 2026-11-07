@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^3+ax^2+2ax+5$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -2,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "증가 조건 경계의 도함수가 한 점에서만 0인 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "증가 조건 경계의 도함수가 한 점에서만 0인 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "증가 조건 경계의 도함수가 한 점에서만 0인 관계."
+  ]
+}
