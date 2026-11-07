@@ -2699,7 +2699,7 @@ window.addEventListener('DOMContentLoaded', function () {
       v.steps[1]+=' 역변환도 가능하고 모든 삼각형의 넓이가 같은 비로 바뀌므로 최댓값의 순서도 보존됩니다.';
     }
     if(id==='2-C'){
-      v.steps=[String.raw`P와 Q에서 x축에 내린 공통 수선의 발 H를 잡고 OQ를 연결합니다.`,String.raw`원의 접선 QT는 OQ와 수직입니다. 세로 축소는 접선도 접선으로 보내고 x축 위 T를 고정하므로 두 접선의 절편이 같습니다.`,String.raw`직각삼각형 OQT의 닮음으로 $OH\cdot OT=OQ^2=a^2$. $x_1=${v.x1}>0$이므로 $OT=${v.chk.T}$.`];
+      v.steps=[String.raw`P와 Q에서 x축에 내린 공통 수선의 발 H를 잡고 OQ를 연결합니다.`,String.raw`원의 접선 QT는 OQ와 수직입니다. 세로 축소는 접선도 접선으로 보내고 x축 위 T를 고정하므로 두 접선의 절편이 같습니다.`,String.raw`직각삼각형 OQT의 닮음으로 $OH\cdot OT=OQ^2=a^2$. $x_1=${v.x1}\gt 0$이므로 $OT=${v.chk.T}$.`];
       v.quick=String.raw`수선 QH를 그리면 $\triangle OQH\sim\triangle OTQ$이므로 $OH\cdot OT=a^2$. 세로 축소에서 x축 위 T가 고정되므로 타원 접선도 이 T를 지납니다. $x_T=a^2/x_1=${v.ans.match(/T\((.*),/)[1]}$. $x_1=0$일 때는 수평 접선이라 절편이 없습니다.`;
     }
     if(id==='3-A') {

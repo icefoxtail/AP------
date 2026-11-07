@@ -1,0 +1,67 @@
+name: High school student live audit
+
+on:
+  workflow_run:
+    workflows: [Archive Pages Release]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: high-school-student-live
+  cancel-in-progress: true
+
+jobs:
+  pin-main:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    outputs:
+      sha: ${{ steps.pin.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          sparse-checkout: apmath/playground/next/tools
+      - id: pin
+        run: printf 'sha=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+  published-site:
+    needs: pin-main
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        course: [common, algebra, calc1, geom, probstat]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.pin-main.outputs.sha }}
+          fetch-depth: 1
+          sparse-checkout: apmath/playground/next
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/high-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/high-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify public scenes and exact served HTML JS CSS bytes
+        env:
+          NODE_PATH: ${{ runner.temp }}/high-browser/node_modules
+          COURSE: ${{ matrix.course }}
+          RELEASE_RUN_ID: ${{ github.event.workflow_run.id }}
+          RELEASE_EVENT_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          node apmath/playground/next/tools/scene-smoke.mjs --high-school --root . \
+            --only "$COURSE" --base-url https://icefoxtail.github.io/AP------/apmath/playground/ \
+            --out "$RUNNER_TEMP/high-live"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: high-live-${{ github.run_id }}-${{ matrix.course }}
+          path: ${{ runner.temp }}/high-live/
+          retention-days: 14

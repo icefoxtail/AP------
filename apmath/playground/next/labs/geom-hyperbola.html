@@ -1359,7 +1359,7 @@ window.addEventListener('DOMContentLoaded', function () {
           `쌍곡선의 정의: $PF′-PF=${v.a2}$ 이므로 $PF=u$ 라 하면 $PF′=u+${v.a2}$.`,
           `$PQ=PF=u$ 이고 $Q$는 $F′P$의 연장선 위이므로 $F′Q=PF′+PQ=2u+${v.a2}$ (차가 합으로 바뀝니다).`,
           `$\\triangle QF′F\\sim\\triangle FF′P$ ($∠F′$ 공통) 이므로 $F′F:F′P=F′Q:F′F$, 곧 $F′F^2=F′P\\cdot F′Q$.`,
-          `$F′F=${numTex(2 * v.cn, v.cd)}$ 이므로 $${numTex(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})$ ⇒ $u=${u}$. 길이 $u>0$인 근만 택합니다. 따라서 $PF=${u}$.`
+          `$F′F=${numTex(2 * v.cn, v.cd)}$ 이므로 $${numTex(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})$ ⇒ $u=${u}$. 길이 $u\\gt 0$인 근만 택합니다. 따라서 $PF=${u}$.`
         ];
       },
       reviewTop: reviewTopOf(() => textH6()),
@@ -1485,7 +1485,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function upperBranchReasonH7(v) {
     const m = v.m;
-    return String.raw`만약 Q가 타원 부분에 있으면 $OQ\le ${m}\sqrt5/2$입니다. 삼각부등식으로 $QB\le OQ+OB\le ${m}(\sqrt5+3)/2<${3*m}<${v.L}$이므로 주어진 $QB=${v.L}$과 모순입니다. 따라서 제1사분면의 Q는 위쪽 쌍곡선 가지에 있습니다.`;
+    return String.raw`만약 Q가 타원 부분에 있으면 $OQ\le ${m}\sqrt5/2$입니다. 삼각부등식으로 $QB\le OQ+OB\le ${m}(\sqrt5+3)/2\lt ${3*m}\lt ${v.L}$이므로 주어진 $QB=${v.L}$과 모순입니다. 따라서 제1사분면의 Q는 위쪽 쌍곡선 가지에 있습니다.`;
   }
 
   function sceneH7() {
