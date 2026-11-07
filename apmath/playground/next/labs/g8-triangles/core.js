@@ -167,7 +167,9 @@
       // 충돌 배치가 끝난 뒤에도 같은 각을 가리키도록 실제 호/직각 표시의 위치를 보존합니다.
       const sgn0 = d < 0 ? -1 : 1; let tt0 = (sgn0 * (la - a0)) % (PI * 2); if (tt0 < 0) tt0 += PI * 2;
       const markerR = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight && o.label !== 'x' ? Math.min(r * 0.62, 17) * Math.SQRT2 / k : rw;
-      const leaderAnchor = o.noMark ? V : { x: V.x + Math.cos(am) * markerR, y: V.y + Math.sin(am) * markerR };
+      // 꼭짓점 뒤쪽에 둔 글자는 호에서 점을 관통하지 않고 실제 꼭짓점에 연결합니다.
+      const behindVertex = Math.cos(la - am) < -1e-6;
+      const leaderAnchor = o.noMark || behindVertex ? V : { x: V.x + Math.cos(am) * markerR, y: V.y + Math.sin(am) * markerR };
       T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor, leader: tt0 > Math.abs(d) + 1e-6, noLeader: o.noLeader });
     }
     return { deg, mid: am };

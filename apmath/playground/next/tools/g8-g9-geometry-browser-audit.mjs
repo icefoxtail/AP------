@@ -40,6 +40,7 @@ try {
   for (const unit of units) {
     report.units[unit] = { scenes: [], observations: [], captures: [], interactions: [] };
     const dest = report.units[unit];
+    dest.controlCoverage = { allScenesRun: 'mobile-paper', otherRuns: 'targeted-scenes', numeric: 'first-visible-slider', drag: 'first-visible-draggable-handle', pointer: 'mouse', reset: 'native-click-stopped-and-rendered' };
     for (const run of runs) {
       const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
       const page = await ctx.newPage();
@@ -207,11 +208,15 @@ try {
           } else {
             (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'review-middle', reason: 'no-intermediate-step' });
           }
+        } else {
+          for (const state of ['step-1', 'review-middle', 'review-final']) (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state, reason: 'no-review-tab' });
         }
         if (await page.evaluate(() => lab._tabAvailable('problem'))) {
           await page.evaluate(() => { lab.setStep(0); lab.setTab('problem'); });
           await page.waitForFunction(() => !lab._tween);
           await measure(scene, 'problem-hidden');
+        } else {
+          (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'problem-hidden', reason: 'no-problem-tab' });
         }
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); const x = lab.scene.steps; lab.setStep((typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0); });
@@ -221,7 +226,8 @@ try {
             await capture(filename);
           }
         }
-        if (targets.has(scene.id)) {
+        // All scenes receive native controls on mobile; selected scenes retain all eight runs.
+        if (targets.has(scene.id) || run.name === 'mobile-paper') {
           await page.evaluate(i => lab.goScene(i), scene.index);
           await settle();
           const ctl = await page.evaluate(() => Object.entries(lab._ctls || {}).find(([, c]) => c.input.checkVisibility())?.[0] || null);
@@ -236,13 +242,22 @@ try {
             const pass = Math.abs(actual - value) < 1e-7;
             dest.interactions.push({ id: scene.id, run: run.name, control: ctl, expected: value, actual, pass });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'slider-state-mismatch', expected: value, actual });
+            await measure(scene, 'numeric-change');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'numeric-change', reason: 'no-visible-numeric-control' });
           }
           const presets = page.locator('.apl-presets .apl-chip:visible');
           if (await presets.count()) {
             await presets.last().click(); await page.waitForFunction(() => !lab._tween); await settle();
             dest.interactions.push({ id: scene.id, run: run.name, control: 'preset-last', executed: true });
+            await measure(scene, 'after-preset');
           }
+          // Presets may start playback and hide a handle. Probe initial exploration
+          // independently so animation cannot masquerade as a successful drag.
+          await page.evaluate(i => lab.goScene(i), scene.index);
           await settle();
+          const dragPlaying = await page.evaluate(() => !!lab.s.playing);
+          if (dragPlaying) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'drag-probe-started-playing' });
           const handle = await page.evaluate(() => lab.board.handles.find(h => typeof h.drag === 'function' && h.x > 12 && h.x < lab.board.W - 12 && h.y > 12 && h.y < lab.board.H - 12));
           if (handle) {
             // Render after a control change, scroll, and then read the current
@@ -268,13 +283,16 @@ try {
               const after = await page.evaluate(() => Object.fromEntries(Object.entries(lab.s).filter(([k]) => !['dragging','playing','step'].includes(k))));
               const changedKeys = [...new Set([...Object.keys(before),...Object.keys(after)])].filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k]));
               attempts.push({acquired,delta:[mx,my],changedKeys});
-              if (acquired && changedKeys.length) { passed = true; break; }
+              if (!dragPlaying && acquired && changedKeys.length) { passed = true; break; }
             }
             dest.interactions.push({ id: scene.id, run: run.name, control:'pointer-drag', handle:handle.id, executed:true, stateChanged:passed, pass:passed, attempts, pointer:'mouse' });
             if (!passed) report.failures.push({unit,id:scene.id,run:run.name,reason:'pointer-drag-did-not-update-state',handle:handle.id,attempts});
+            await measure(scene, 'after-native-drag');
           } else if (requiredNative.has(scene.id)) {
             dest.interactions.push({ id:scene.id, run:run.name, control:'pointer-drag', executed:false, stateChanged:false, pass:false, attempts:[], pointer:'mouse', reason:'required-handle-missing' });
             report.failures.push({ unit, id:scene.id, run:run.name, reason:'required-native-drag-handle-missing' });
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'pointer-drag', reason: 'no-visible-draggable-handle' });
           }
           const play = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => (a.play || a.id === 'play') && b.checkVisibility()));
           if (play >= 0) {
@@ -287,6 +305,9 @@ try {
             const pass = during.state !== before && paused;
             dest.interactions.push({ id: scene.id, run: run.name, control: 'play-pause', executed: true, pass });
             if (!pass) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'play-pause-state' });
+            await measure(scene, 'after-play-pause');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'play-pause', reason: 'no-play-action' });
           }
           const reset = await page.evaluate(() => (lab._actionBtns || []).findIndex(({ a, b }) => a.id === 'reset' && b.checkVisibility()));
           if (reset >= 0) {
@@ -294,6 +315,9 @@ try {
             const stopped = await page.evaluate(() => !lab.s.playing);
             dest.interactions.push({ id: scene.id, run: run.name, control: 'reset', executed: true, stopped });
             if (!stopped) report.failures.push({ unit, id: scene.id, run: run.name, reason: 'reset-left-playing' });
+            await measure(scene, 'after-reset');
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'reset', reason: 'no-reset-action' });
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(i => { lab.goScene(i); lab.setStep(0); lab.setTab('problem'); }, scene.index);
