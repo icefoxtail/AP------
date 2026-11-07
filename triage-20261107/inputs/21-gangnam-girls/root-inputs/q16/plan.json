@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "주어진 식을 y에 대하여 정리하여 유리함수의 점근선을 찾는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      13,
+      0,
+      13
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "5",
+        "6",
+        "12"
+      ],
+      "y": [
+        "4",
+        "5",
+        "6",
+        "12"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "4"
+        ],
+        "denominator": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "5",
+          "13"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "asy",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "13"
+        ],
+        "style": "DASHED",
+        "label": "y=4"
+      }
+    ]
+  },
+  "caption": "양의 거리에서의 유리함수와 점근선을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1/x+1/y=1/4에서 y=4x/(x-4)이고 양의 거리에서는 x>4이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "그래프의 수평·수직점근선은 각각 y=4, x=4이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "양의 거리 조건에 맞는 그래프에서 두 점근선을 보여 준다."
+  ]
+}
