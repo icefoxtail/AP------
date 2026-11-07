@@ -205,11 +205,11 @@
     steps: (v) => [
       `${T('f-g=0')}의 근을 그림(직선을 ${T('x')}축으로 내려 ${T('x')}절편)에서 읽으면 ${T('x=' + v.al + ',\\ ' + v.be)}. 밑변 AB는 고정이므로 <strong>점 P가 AB에서 가장 멀 때</strong>(AB와 평행한 접선의 접점)가 넓이 최대입니다.`,
       `포물선에서 AB와 평행한 접선의 접점은 두 교점의 한가운데입니다: ${T('x=\\dfrac{' + v.al + '+' + par(v.be) + '}{2}=' + v.mid)}. 이때 세로 길이 ${T('|f-g|=|' + v.a + '|\\cdot' + (v.mid - v.al) + '\\cdot' + (v.be - v.mid) + '=' + v.gap)}.`,
-      `삼각형의 넓이는 (세로 길이) × (가로 폭) ÷ 2 입니다: ${T('\\dfrac12\\times' + v.gap + '\\times' + v.d + '=' + v.val)}.`
+      `P와 같은 x좌표의 현 위 점을 Q라 하면, 두 삼각형 APQ와 BPQ는 밑변 PQ를 공유합니다. 두 높이의 합은 A와 B의 가로 폭이므로 넓이는 (세로 PQ) × (가로 폭) ÷ 2 입니다: ${T('\\dfrac12\\times' + v.gap + '\\times' + v.d + '=' + v.val)}.`
     ],
     quick: (v) => ({
-      steps: `점 P를 곡선 위에서 움직일 때 높이가 가장 큰 곳은 AB와 평행한 접선이 닿는 점, 곧 두 교점의 한가운데 ${T('x=' + v.mid)}입니다(포물선은 ${T('x=' + v.mid)}에 대해 ${T('h=f-g')}가 대칭). 그곳에서 직선과의 세로 길이는 ${T('|h(' + v.mid + ')|=' + v.gap)}. 세로로 자른 삼각형의 넓이는 ${T('\\dfrac12\\times(\\text{세로 길이})\\times(\\text{가로 폭 }' + v.d + ')')}이므로<br>${T('S=\\dfrac12\\times' + v.gap + '\\times' + v.d + '=' + v.val)}.`,
-      highlight: `💡 서술형 문장: "삼각형 PAB의 넓이는 ${T('\\dfrac12\\times\\overline{PQ}\\times|x_B-x_A|')}(PQ는 P에서 AB로 내린 세로 길이)이고, PQ는 ${T('x=\\dfrac{\\alpha+\\beta}{2}')}일 때 최대이다."`
+      steps: `점 P를 곡선 위에서 움직일 때 높이가 가장 큰 곳은 AB와 평행한 접선이 닿는 점, 곧 두 교점의 한가운데 ${T('x=' + v.mid)}입니다(포물선은 ${T('x=' + v.mid)}에 대해 ${T('h=f-g')}가 대칭). 그곳에서 직선과의 세로 길이는 ${T('|h(' + v.mid + ')|=' + v.gap)}. 세로 PQ로 나눈 두 삼각형의 가로 높이의 합이 AB의 가로 폭이므로 넓이는 ${T('\\dfrac12\\times(\\text{세로 길이})\\times(\\text{가로 폭 }' + v.d + ')')}이므로<br>${T('S=\\dfrac12\\times' + v.gap + '\\times' + v.d + '=' + v.val)}.`,
+      highlight: `💡 서술형 문장: "삼각형 PAB의 넓이는 ${T('\\dfrac12\\times\\overline{PQ}\\times|x_B-x_A|')}(Q는 P를 지나는 y축 평행선과 AB의 교점)이고, PQ는 ${T('x=\\dfrac{\\alpha+\\beta}{2}')}일 때 최대이다."`
     }),
     std: (v) => ({
       steps: `① ${T('P(x,\\ f(x))')}와 직선 ${T('y=' + linTex(v.m, v.n))} 사이의 거리를 점과 직선 사이의 거리 공식으로 구합니다.<br>② ${T('\\overline{AB}=' + v.d + '\\sqrt{' + (1 + v.m * v.m) + '}')}.<br>③ ${T('S(x)=\\dfrac12\\cdot\\overline{AB}\\cdot\\dfrac{|f(x)-g(x)|}{\\sqrt{' + (1 + v.m * v.m) + '}}=\\dfrac12\\cdot' + v.d + '\\cdot|a|(x-' + par(v.al) + ')(' + v.be + '-x)')} 이고 ${T('x=' + v.mid)}에서 최대 ${T(v.val)}.`,
@@ -232,7 +232,7 @@
       if (c.st(2)) {
         const Q = [v.mid, v.g(v.mid)];
         b.seg(Q, P, { color: 'green', width: 3.2 });
-        dot(b, Q, 'green', '', 0, 0, { r: 4.5 });
+        dot(b, Q, 'green', 'Q', 12, v.a > 0 ? -12 : 18, { r: 4.5 });
         b.text([v.mid, (Q[1] + P[1]) / 2], '세로 ' + v.gap, { color: 'green', size: 13, weight: 800, dx: 40 });
       }
     }
@@ -285,7 +285,7 @@
   });
 
   /* ---------- 탐구관 2 공통: p 가 들어 있는 식 a(x−p)²+q 의 전개 글자 ---------- */
-  const fexpP = (a, q) => `${coef(a)}x^2-${2 * a === 1 ? '' : 2 * a}px+${coef(a)}p^2${q === 0 ? '' : sgn(q)}`;
+  const fexpP = (a, q) => `${coef(a)}x^2${a > 0 ? '-' : '+'}${Math.abs(2 * a)}px${a > 0 ? '+' : '-'}${coef(Math.abs(a))}p^2${q === 0 ? '' : sgn(q)}`;
   const band = (b, lo, hi, y0, y1) => {
     b.poly([[lo, y0], [hi, y0], [hi, y1], [lo, y1]], { fill: 'green', fillAlpha: 0.1, color: null });
     b.vline(lo, { color: 'green', width: 1.8, dash: [6, 4], alpha: 0.8 });
@@ -364,7 +364,7 @@
     text: (v) => `${T(v.lo + '\\le x\\le ' + v.hi)}에서 이차함수 ${T('f(x)=' + fexpP(v.a, v.q))}의 ${v.a > 0 ? '최댓값을 ' + T('M(p)') + '라 할 때, ' + T('M(p)') + '의 최솟값' : '최솟값을 ' + T('m(p)') + '라 할 때, ' + T('m(p)') + '의 최댓값'}을 구하시오.`,
     ans: (v) => String(v.val),
     steps: (v) => [
-      `꼭짓점 ${T('(p,\\ ' + v.q + ')')}는 수평선 ${T('y=' + v.q)} 위를 움직입니다. ${v.a > 0 ? '아래로 볼록한 포물선의 구간에서의 최댓값은 두 끝점 중 <strong>축에서 먼 쪽</strong>의 높이입니다(그림의 점선 포물선은 오른쪽 끝이 더 멉니다).' : '위로 볼록한 포물선의 구간에서의 최솟값은 두 끝점 중 <strong>축에서 먼 쪽</strong>의 높이입니다.'}`,
+      `꼭짓점 ${T('(p,\\ ' + v.q + ')')}는 수평선 ${T('y=' + v.q)} 위를 움직입니다. ${v.a > 0 ? '아래로 볼록한 포물선의 구간에서의 최댓값은 두 끝점 중 <strong>축에서 먼 쪽</strong>의 높이입니다(그림의 파란 실선 포물선은 오른쪽 끝이 더 멉니다).' : '위로 볼록한 포물선의 구간에서의 최솟값은 두 끝점 중 <strong>축에서 먼 쪽</strong>의 높이입니다.'}`,
       `먼 쪽 끝점의 높이가 가장 ${v.a > 0 ? '낮아' : '높아'}지는 때는 양 끝이 축에서 같은 거리, 곧 <strong>축이 구간의 한가운데</strong> ${T('p=\\dfrac{' + v.lo + '+' + par(v.hi) + '}{2}=' + v.mid)}일 때입니다.`,
       `그때 끝점은 축에서 ${T('\\dfrac{L}{2}=' + v.L / 2)} 떨어져 있어 높이는 ${T('q' + (v.a > 0 ? '+' : '-') + '|a|\\left(\\dfrac L2\\right)^2=' + v.q + (v.a > 0 ? '+' : '-') + v.h + '=' + v.val)}.`
     ],
@@ -415,7 +415,7 @@
     text: (v) => `이차함수 ${T('f(x)=' + polyTex(...O.H.expand(v.a, v.p, v.q)))}에 대하여 실수 ${T('t')}에 대하여 구간 ${T('[t,\\ t+' + v.L + ']')}에서 ${T('f(x)')}의 최솟값을 ${T('g(t)')}라 하자. 방정식 ${T('g(t)=' + v.k)}의 모든 실근의 합을 구하시오.`,
     ans: (v) => String(v.val),
     steps: (v) => [
-      `구간 ${T('[t,\\ t+' + v.L + ']')}(초록 띠)가 포물선을 따라 움직입니다. 띠가 꼭짓점 ${T('x=' + v.p)}을 품으면 최솟값은 ${T(v.q)}, 띠가 축의 왼쪽에 있으면 오른쪽 끝 ${T('f(t+' + v.L + ')')}, 오른쪽에 있으면 왼쪽 끝 ${T('f(t)')}입니다. 이 값을 ${T('t')}의 그래프로 그리면 점선 ${T('y=g(t)')}: 왼쪽 가지를 ${T(v.L)}만큼 왼쪽으로 옮기고 사이를 높이 ${T(v.q)}로 잇는 모양입니다.`,
+      `구간 ${T('[t,\\ t+' + v.L + ']')}(초록 띠)가 포물선을 따라 움직입니다. 띠가 꼭짓점 ${T('x=' + v.p)}을 품으면 최솟값은 ${T(v.q)}, 띠가 축의 왼쪽에 있으면 오른쪽 끝 ${T('f(t+' + v.L + ')')}, 오른쪽에 있으면 왼쪽 끝 ${T('f(t)')}입니다. 이 값을 ${T('t')}의 그래프로 그리면 주황색 실선 ${T('y=g(t)')}: 왼쪽 가지를 ${T(v.L)}만큼 왼쪽으로 옮기고 사이를 높이 ${T(v.q)}로 잇는 모양입니다.`,
       `수평선 ${T('y=' + v.k)}가 ${T('y=g(t)')}와 만나는 점은 두 개: 왼쪽 가지 위의 점과 오른쪽 가지 위의 점입니다.`,
       `${T('g(t)')}의 그래프는 두 가지 사이 평평한 부분의 한가운데 ${T('t=' + v.cen)}에 대해 대칭이므로 두 근의 합은 ${T('2\\times' + v.cen + '=' + v.val)}.`
     ],
@@ -504,8 +504,12 @@
       b.text([X9 + v.m, v.q], 'y = (t − ' + v.m + ')²' + (v.q ? (v.q < 0 ? ' − ' : ' + ') + Math.abs(v.q) : ''), { color: 'amber', size: 13, weight: 800, dy: v.q < 0 ? 22 : -16, align: 'center' });
       if (c.st(1)) {
         b.seg([0, v.t0], [0, v.t1], { color: 'green', width: 5 });
-        b.seg([v.lo, v.t0], [0, v.t0], { color: 'green', width: 1.4, dash: [3, 4] });
-        b.seg([v.lo === 0 ? v.hi : v.lo, v.t1], [0, v.t1], { color: 'green', width: 1.4, dash: [3, 4] });
+        const xmin = Math.min(v.hi, Math.max(v.lo, 1));
+        const xmax = tc(v.lo) >= tc(v.hi) ? v.lo : v.hi;
+        b.point([xmin, v.t0], { color: 'green', r: 5 });
+        b.point([xmax, v.t1], { color: 'green', r: 5 });
+        b.seg([xmin, v.t0], [0, v.t0], { color: 'green', width: 1.4, dash: [3, 4] });
+        b.seg([xmax, v.t1], [0, v.t1], { color: 'green', width: 1.4, dash: [3, 4] });
         b.text([0, v.t1], 't ≤ ' + lbl(v.t1), { color: 'green', size: 13, weight: 800, dx: -12, align: 'right', dy: -4 });
         b.text([0, v.t0], lbl(v.t0) + ' ≤ t', { color: 'green', size: 13, weight: 800, dx: -12, align: 'right', dy: v.t0 === 0 ? 36 : 14 });
       }
@@ -626,7 +630,7 @@
           b.poly([[v.r1 - 3.5, 0], [v.r2 + 3.5, 0], [v.r2 + 3.5, v.D], [v.r1 - 3.5, v.D]], { fill: 'green', fillAlpha: 0.14, color: null });
           for (let kk = 1; kk < v.D; kk++) b.hline(kk, { color: 'green', width: 1.2, dash: [3, 4], alpha: 0.9 });
         } else if (v.ask === 'B') {
-          [[v.p, v.D], [v.r1, 0], [v.r2, 0]].forEach((pt) => b.point(pt, { color: 'green', r: 6 }));
+          [[v.p, v.D], [v.p - Math.sqrt(2 * v.D), v.D], [v.p + Math.sqrt(2 * v.D), v.D]].forEach((pt) => b.point(pt, { color: 'green', r: 6 }));
         } else {
           const kk = v.kk;
           [v.p - Math.sqrt(v.D + kk), v.p + Math.sqrt(v.D + kk), v.p - Math.sqrt(v.D - kk), v.p + Math.sqrt(v.D - kk)].forEach((x) => b.point([x, kk], { color: 'green', r: 6 }));
@@ -664,7 +668,7 @@
       steps: `${T('x\\ge0')}일 때 ${T('x^2-' + 2 * v.m + 'x' + (v.c === 0 ? '' : sgn(v.c)) + '-k=0')}의 양의 근의 개수를 ${T('k')}에 따라 조사하고, ${T('y')}축 대칭을 이용해 두 배한 뒤 ${T('x=0')}인 근을 따로 처리합니다.`,
       warning: `⚠️ ${T('x=0')}이 근인 경우는 좌우로 겹치므로 두 배하면 안 됩니다.`
     }),
-    box: (v) => autoBox(-v.m - 3.2, v.m + 3.2, [v.lo, v.c + 0.5], 1.2),
+    box: (v) => autoBox(-2 * v.m - 1.8, 2 * v.m + 1.8, [v.lo, v.c + 0.5], 1.2),
     draw: (b, s, v, c) => {
       b.plot((x) => x * x - 2 * v.m * x + v.c, { from: -v.m - 3.6, to: 0, color: 'sky', width: 2, dash: [5, 5], alpha: 0.55 });
       b.plot(v.f, { color: 'sky', width: 3.8, glow: true });
@@ -772,9 +776,8 @@
           b.poly([[v.h - v.n - 3.5, v.bot], [v.h + v.n + 3.5, v.bot], [v.h + v.n + 3.5, v.top], [v.h - v.n - 3.5, v.top]], { fill: 'green', fillAlpha: 0.14, color: null });
           for (let kk = v.bot + 1; kk < v.top; kk++) b.hline(kk, { color: 'green', width: 1.2, dash: [3, 4] });
         } else if (v.ask === 'B') {
-          const u1 = Math.sqrt(v.n * v.n + (v.kk - v.bot)), u2 = v.n - Math.sqrt(v.n * v.n - (v.kk - v.bot));
-          void u1; void u2;
-          const rts = []; for (let x = v.h - v.n - 3.5; x < v.h + v.n + 3.5; x += 0.01) if ((v.f(x) - v.kk) * (v.f(x + 0.01) - v.kk) < 0) rts.push(x + 0.005);
+          const d = Math.sqrt(v.kk - v.bot);
+          const rts = [v.h - v.n - d, v.h - v.n + d, v.h + v.n - d, v.h + v.n + d];
           rts.forEach((x) => b.point([x, v.kk], { color: 'green', r: 6 }));
         } else {
           dot(b, [v.h, v.top], 'green', '', 0, 0, { r: 6.5 });
@@ -807,7 +810,7 @@
     ans: (v) => String(v.val),
     steps: (v) => [
       `두 그래프를 한 좌표평면에 그리고 각 ${T('x')}에서 <strong>위쪽에 있는 값</strong>을 따라가면 ${T('y=h(x)')}의 그래프(굵은 금색선)입니다. 교점 ${T('x=' + v.al)}, ${T('x=' + v.be)}에서 위쪽 그래프가 바뀝니다.`,
-      `${T('h')}의 가장 낮은 점의 후보는 두 곳뿐입니다: 교점(위쪽 선이 바뀌는 점)과 ${T('f')}의 꼭짓점 ${T('(' + frTex(Math.round(2 * v.xv), 2) + ',\\ ' + frTex(Math.round(4 * v.vyv), 4) + ')')}가 ${T('h')} 위에 있을 때의 꼭짓점. 이 문제에서는 꼭짓점이 ${v.fOn ? '<strong>h 위에 있습니다</strong>(꼭짓점에서 f가 g보다 위)' : '<strong>g 아래에 가려져</strong> h 위에 없습니다'}.`,
+      `${T('h')}의 가장 낮은 점의 후보는 두 종류입니다: 교점(위쪽 선이 바뀌는 점)과 ${T('f')}의 꼭짓점 ${T('(' + frTex(-v.B, 2 * v.A) + ',\\ ' + frTex(4 * v.A * v.C - v.B * v.B, 4 * v.A) + ')')}가 ${T('h')} 위에 있을 때의 꼭짓점. 이 문제에서는 꼭짓점이 ${v.fOn ? '<strong>h 위에 있습니다</strong>(꼭짓점에서 f가 g보다 위)' : '<strong>g 아래에 가려져</strong> h 위에 없습니다'}.`,
       `${v.fOn ? '꼭짓점의 높이 ' + T(v.val) : '낮은 쪽 교점 ' + T('x=' + v.best.x) + '의 높이 ' + T(v.val)}가 ${T('h')}의 최솟값입니다 ⇒ ${T(v.val)}.`
     ],
     quick: (v) => ({
@@ -816,7 +819,7 @@
     }),
     std: (v) => ({
       steps: `${T('f(x)-g(x)=' + polyTex(v.A, v.B - v.m, v.C - v.n) + '=' + coef(v.A) + '(' + xm(v.al) + ')(' + xm(v.be) + ')')}의 부호로 ${T('x\\lt ' + v.al + ',\\ ' + v.al + '\\le x\\le ' + v.be + ',\\ x\\gt ' + v.be)}로 나누어 ${T('h(x)')}를 식으로 쓰고, 각 구간에서 최솟값을 비교합니다.`,
-      warning: `⚠️ 구간마다 최솟값이 어디서 생기는지 따로 확인해야 해서 오래 걸립니다. 그래프에서 가장 낮은 점을 바로 찾으면 후보가 두 곳으로 줄어듭니다.`
+      warning: `⚠️ 구간마다 최솟값이 어디서 생기는지 따로 확인해야 해서 오래 걸립니다. 그래프에서 가장 낮은 점을 바로 찾으면 교점과 살아 있는 꼭짓점만 비교하면 됩니다.`
     }),
     box: (v) => autoBox(Math.min(v.al, v.xv) - 2.4, Math.max(v.be, v.xv) + 2.4, [v.val, v.g(v.al), v.g(v.be), v.f(v.xv), v.f(v.al) ], 1.5),
     draw: (b, s, v, c) => {

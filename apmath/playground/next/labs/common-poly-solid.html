@@ -49,13 +49,19 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
+  // 탐구의 자유조작 수치는 새 문제의 조건과 별개다. 문제·정리에는 해당 변형의 그림과 단계만 쓴다.
   const baseScene = (o) => ({
-    tabs: { compact: true },
-    ...o
+    tabs: { compact: true }, ...o,
+    view: (s, lab) => {
+      const v = o.view ? o.view(s, lab) : {};
+      if (!lab || lab.tab === 'explore') return v;
+      return { chips: v.chips || [], readouts: [], status: null, guide: '', parts: [], summary: '', rule: '', formula: '',
+        notes: lab.tab === 'review' && s.step >= 3 ? v.notes : '' };
+    }
   });
   const pState = (lab, s, patch = {}) => (lab && lab.tab === 'problem' ? { ...s, step: 0, part: 0, ...patch } : s);
   const reviewTop = (getText) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${getText()}</div>`;
@@ -131,6 +137,14 @@ window.addEventListener('DOMContentLoaded', function () {
         piece(bb, 0, d, bb, col('ab', 'amber'), L.ab1 || L.ab, o.vals ? num(d * bb) : '', 0.32, o.hot && o.hot.ab);          // 위 띠의 남는 부분 b×(a−b)
         piece(0, bb, bb, d, col('ab', 'amber'), L.ab2 || L.ab, o.vals ? num(d * bb) : '', 0.32, o.hot && o.hot.ab);          // 왼쪽 띠의 남는 부분
         piece(0, 0, bb, bb, col('bb', 'rose'), L.bb, o.vals ? num(bb * bb) : '', 0.45, o.hot && o.hot.bb);                   // 겹친 모서리 b²
+        if (o.strips) {
+          // ab는 b² 모서리까지 포함한 띠 전체입니다.
+          rect2(b, 0, 0, a, bb, { fill: null, color: 'amber', width: 3.5 });
+          rect2(b, 0, 0, bb, a, { fill: null, color: 'violet', width: 3.5, dash: [6, 4] });
+          txt2(b, a + 0.8, bb / 2, 'ab', { color: 'amber', size: 14 });
+          txt2(b, bb / 2, a + 1.65, 'ab', { color: 'violet', size: 14 });
+          txt2(b, a / 2, a + 2.5, '한 띠 ab = b(a−b) + b²', { color: 'muted', size: 13 });
+        }
         if (o.dims !== false) {
           seg2(b, 0, a + 0.45, bb, a + 0.45, { color: 'rose', width: 2.2 }); seg2(b, bb, a + 0.45, a, a + 0.45, { color: 'green', width: 2.2 });
           txt2(b, bb / 2, a + 0.95, o.dimTxt ? o.dimTxt.b : `b${o.vals ? ' = ' + num(bb) : ''}`, { size: 14, color: 'rose' });
@@ -162,7 +176,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ];
     return [
       `가운데 초록 정사각형(한 변 $a-b$)의 넓이: $(a-b)^2=${v.d}^2=${v.d * v.d}$`,
-      `위 띠와 왼쪽 띠(직사각형 $ab$ 두 개)의 넓이: $2ab=2\\times${v.p}=${2 * v.p}$`,
+      `위 띠와 왼쪽 띠는 각각 분홍 모서리 $b^2$까지 포함한 $a×b$ 직사각형입니다. 따라서 두 띠를 더하면 모서리를 두 번 세며, 넓이는 $2ab=2\\times${v.p}=${2 * v.p}$`,
       `큰 정사각형 $a^2$과 겹친 모서리 $b^2$를 합하면 초록 정사각형과 두 띠를 합한 것과 같다: $a^2+b^2=(a-b)^2+2ab=${v.d * v.d}+${2 * v.p}=${v.ans.val}$`
     ];
   };
@@ -206,15 +220,18 @@ window.addEventListener('DOMContentLoaded', function () {
       vary: var1,
       draw: (b, s0, v, lab) => {
         LAB = lab;
-        if (lab.tab === 'explore') drawSquare(b, { mode: s0.mode1, a: s0.a1, b: s0.b1, gap: s0.mode1 === 'plus' ? s0.gap1 : 0, vals: true, labels: s0.mode1 === 'plus' ? { aa: 'a²', ab: 'ab', bb: 'b²' } : { m: '(a−b)²', ab: 'ab', bb: 'b²' } });
+        if (lab.tab === 'explore') drawSquare(b, { mode: s0.mode1, a: s0.a1, b: s0.b1, gap: s0.mode1 === 'plus' ? s0.gap1 : 0, vals: true, strips: s0.mode1 === 'minus', labels: s0.mode1 === 'plus' ? { aa: 'a²', ab: 'ab', bb: 'b²' } : { m: '(a−b)²', ab: '', bb: 'b²' } });
         else {
           const vv = var1.cur(), sp = pState(lab, s0), st = sp.step, sum = vv.kind === 'sum';
+          const total = sum ? vv.s : Math.sqrt(vv.d * vv.d + 4 * vv.p);
+          const diff = sum ? Math.sqrt(vv.s * vv.s - 4 * vv.p) : vv.d;
+          const a = (total + diff) / 2, bb = (total - diff) / 2;
           if (sum) {
             const cols = st === 0 ? { aa: 'muted', ab: 'muted', bb: 'muted' } : st === 1 ? { aa: 'amber', ab: 'amber', bb: 'amber' } : st === 2 ? { aa: 'muted', ab: 'green', bb: 'muted' } : { aa: 'sky', ab: 'green', bb: 'rose' };
-            drawSquare(b, { mode: 'plus', a: 3, b: 2, gap: 0, vals: false, cols, labels: { aa: 'a²', ab1: `ab=${vv.p}`, ab2: `ab=${vv.p}`, bb: 'b²' }, dimTxt: { a: 'a', b: 'b', s: `a+b = ${vv.s}` } });
+            drawSquare(b, { mode: 'plus', a, b: bb, gap: 0, vals: false, cols, labels: { aa: 'a²', ab1: `ab=${vv.p}`, ab2: `ab=${vv.p}`, bb: 'b²' }, dimTxt: { a: 'a', b: 'b', s: `a+b = ${vv.s}` } });
           } else {
             const cols = st === 0 ? { m: 'muted', ab: 'muted', bb: 'muted' } : st === 1 ? { m: 'green', ab: 'muted', bb: 'muted' } : st === 2 ? { m: 'green', ab: 'amber', bb: 'muted' } : { m: 'green', ab: 'amber', bb: 'rose' };
-            drawSquare(b, { mode: 'minus', a: 3, b: 1.2, gap: 0, vals: false, cols, labels: { m: '(a−b)²', ab1: `ab=${vv.p}`, ab2: `ab=${vv.p}`, bb: 'b²' }, dimTxt: { a: 'a', b: 'b', d: `a−b = ${vv.d}` } });
+            drawSquare(b, { mode: 'minus', a, b: bb, gap: 0, vals: false, cols, strips: st >= 2, labels: { m: '(a−b)²', ab: '', bb: 'b²' }, dimTxt: { a: 'a', b: 'b', d: `a−b = ${vv.d}` } });
           }
         }
       }
@@ -333,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function () {
             { label: '(a+b)³ = 네 값의 합', value: `${num(V_.a3 + V_.a2b + V_.ab2 + V_.b3)} = ${num(V_.tot)}`, color: 'ink', wide: true, note: '조각 8개를 모두 합하면 큰 정육면체' }
           ],
           rule: '(a+b)³ = a³ + 3a²b + 3ab² + b³ (조각 1 + 3 + 3 + 1)',
-          formula: '$(a+b)^3=a^3+3a^2b+3ab^2+b^3=a^3+b^3+3ab(a+b)$<br>한 모서리가 $a+b$인 정육면체는 $a^3$ 1개, $a^2b$ 3개, $ab^2$ 3개, $b^3$ 1개의 직육면체 8조각으로 나뉩니다.<br>$(a-b)^3=a^3-3a^2b+3ab^2-b^3=a^3-b^3-3ab(a-b)$ 도 같은 그림에서 부호만 바꾼 것입니다.',
+          formula: '$(a+b)^3=a^3+3a^2b+3ab^2+b^3=a^3+b^3+3ab(a+b)$<br>한 모서리가 $a+b$인 정육면체는 $a^3$ 1개, $a^2b$ 3개, $ab^2$ 3개, $b^3$ 1개의 직육면체 8조각으로 나뉩니다.<br>$(a-b)^3=a^3-3a^2b+3ab^2-b^3=a^3-b^3-3ab(a-b)$ 는 이 항등식에서 $b$ 대신 $-b$를 대입한 식입니다. 음수 길이의 입체로 해석하지 않습니다.',
           notes: '계수 3은 "같은 모양의 조각이 3개"라는 뜻입니다(그림의 초록·노랑 각 3개). $a^3+b^3=(a+b)^3-3ab(a+b)$ 변형은 시험에 자주 나옵니다.'
         };
       },
@@ -348,7 +365,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const cols = vv.kind === 'sum3'
             ? (st === 0 ? { a3: 'muted', a2b: 'muted', ab2: 'muted', b3: 'muted' } : st === 1 ? { a3: 'amber', a2b: 'amber', ab2: 'amber', b3: 'amber' } : st === 2 ? { a3: 'muted', a2b: 'green', ab2: 'amber', b3: 'muted' } : { a3: 'sky', a2b: 'green', ab2: 'amber', b3: 'rose' })
             : (st === 0 ? { a3: 'muted', a2b: 'muted', ab2: 'muted', b3: 'muted' } : { a3: 'muted', a2b: 'green', ab2: 'amber', b3: 'muted' });
-          drawCube3(s, { a: 3, b: 2, gap: 0.55, cols, lens: 'all' });
+          const d = Math.sqrt(vv.s * vv.s - 4 * vv.p);
+          drawCube3(s, { a: (vv.s + d) / 2, b: (vv.s - d) / 2, gap: 0.55, cols, lens: 'all' });
         }
       }
     });
@@ -430,7 +448,7 @@ window.addEventListener('DOMContentLoaded', function () {
           readouts: [
             { label: '모서리 길이의 합 4(a+b+c)', value: `4×${num(m.s)} = ${num(4 * m.s)}`, color: 'amber' },
             { label: '겉넓이 2(ab+bc+ca)', value: `2×${num(m.S)} = ${num(2 * m.S)}`, color: 'violet' },
-            { label: '대각선 AG² = a²+b²+c²', value: `${num(m.q)} (AG = ${fmtN(Math.sqrt(m.q))})`, color: 'rose' },
+            { label: '대각선 AG² = a²+b²+c²', value: `${num(m.q)} (AG = √${num(m.q)}${Number.isInteger(Math.sqrt(m.q)) ? ' = ' : ' ≈ '}${fmtN(Math.sqrt(m.q))})`, color: 'rose' },
             { label: '(a+b+c)² = a²+b²+c² + 2(ab+bc+ca)', value: `${num(m.s * m.s)} = ${num(m.q)} + ${num(2 * m.S)}`, color: 'green', wide: true, note: '세 값을 하나로 묶는 곱셈공식' }
           ],
           rule: '모서리 합→(a+b+c), 겉넓이→(ab+bc+ca), 대각선→(a²+b²+c²)',
@@ -446,7 +464,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (lab.tab === 'explore') drawCuboid3({ a: s0.a3, b: s0.b3, c: s0.c3, groups: s0.lens3 === 'edges', faces: s0.lens3 === 'faces', diag: s0.lens3 === 'diag', helper: true, diagLabel: 'AG', faceLabels: s0.lens3 === 'faces', edgeLabels: s0.lens3 === 'all' || s0.lens3 === 'edges' ? { a: `a=${num(s0.a3)}`, b: `b=${num(s0.b3)}`, c: `c=${num(s0.c3)}` } : null });
         else {
           const vv = var3.cur(), st = lab.tab === 'problem' ? 0 : s0.step;
-          drawCuboid3({ a: 2, b: 2.6, c: 3.2, groups: st === 1, faces: st >= 3, faceLabels: true, diag: true, helper: st >= 2, diagLabel: `AG=√${vv.q}`, edgeLabels: st >= 1 ? { a: 'a', b: 'b', c: 'c' } : null });
+          drawCuboid3({ a: vv.a, b: vv.b, c: vv.c, groups: st === 1, faces: st >= 3, faceLabels: true, diag: true, helper: st >= 2, diagLabel: `AG=√${vv.q}`, edgeLabels: st >= 1 ? { a: 'a', b: 'b', c: 'c' } : null });
         }
       }
     });
@@ -468,15 +486,19 @@ window.addEventListener('DOMContentLoaded', function () {
     SP.solid([[g.A, g.D, g.C], [g.A, g.F, g.E], [g.C, g.G, g.F], [g.A, g.F, g.C], [g.E, g.F, g.G, g.H], [g.A, g.D, g.H, g.E], [g.D, g.C, g.G, g.H]]);
     SP.solid(APLab.solidFaces.tetra(T4.A, T4.B, T4.C, T4.F));
     const body = () => {
-      if (o.fillCut) { SP.poly([g.A, g.F, g.C], { fill: 'rose', fillAlpha: 0.2, color: null, hide: false }); if (o.cut > 0.02) SP.poly([T4.A, T4.F, T4.C], { fill: 'rose', fillAlpha: 0.2, color: null, hide: false }); }
+      if (o.fillCut) { SP.poly([g.A, g.F, g.C], { fill: 'rose', fillAlpha: o.cancelShared ? 0.09 : 0.2, color: null, hide: false }); if (o.cut > 0.02) SP.poly([T4.A, T4.F, T4.C], { fill: 'rose', fillAlpha: o.cancelShared ? 0.09 : 0.2, color: null, hide: false }); }
       if (o.fillRight || o.cut > 0.02) [[T4.A, T4.B, T4.C], [T4.B, T4.C, T4.F], [T4.A, T4.B, T4.F]].forEach((f) => SP.poly(f, { fill: 'amber', fillAlpha: o.fillRight ? 0.3 : 0.12, color: null, hide: false }));
+      if (o.cancelShared) {
+        const cutCenter = mul(add(add(g.A, g.F), g.C), 1 / 3);
+        lbl(cutCenter, '공통 단면: 차에서 소거', 'rose', 0, 0, 12);
+      }
       // 남은 입체 ACD-EFGH의 모서리: 직육면체 모서리 9개 + 단면의 세 모서리
       [['C', 'D'], ['D', 'A'], ['E', 'F'], ['F', 'G'], ['G', 'H'], ['H', 'E'], ['A', 'E'], ['C', 'G'], ['D', 'H']].forEach(([p, q]) => SP.line(g[p], g[q], { color: 'ink', width: 2.2 }));
-      [['A', 'C'], ['C', 'F'], ['F', 'A']].forEach(([p, q]) => SP.line(g[p], g[q], { color: o.hypCol || 'rose', width: 3, glow: !!o.hypCol }));
+      [['A', 'C'], ['C', 'F'], ['F', 'A']].forEach(([p, q]) => SP.line(g[p], g[q], { color: o.hypCol || 'rose', width: o.cancelShared ? 2 : 3, dash: o.cancelShared ? [5, 5] : null, glow: !!o.hypCol && !o.cancelShared }));
       // 사면체 F-ABC의 모서리
       if (o.cut > 0.02) {
         [['A', 'B'], ['B', 'C'], ['B', 'F']].forEach(([p, q]) => SP.line(T4[p], T4[q], { color: o.legCol || 'amber', width: 3.2 }));
-        [['A', 'C'], ['C', 'F'], ['F', 'A']].forEach(([p, q]) => SP.line(T4[p], T4[q], { color: o.hypCol || 'rose', width: 3 }));
+        [['A', 'C'], ['C', 'F'], ['F', 'A']].forEach(([p, q]) => SP.line(T4[p], T4[q], { color: o.hypCol || 'rose', width: o.cancelShared ? 2 : 3, dash: o.cancelShared ? [5, 5] : null }));
       } else {
         [['A', 'B'], ['B', 'C'], ['B', 'F']].forEach(([p, q]) => SP.line(g[p], g[q], { color: o.legCol || 'amber', width: 3.2 }));
       }
@@ -526,12 +548,12 @@ window.addEventListener('DOMContentLoaded', function () {
           chips: ex ? [{ tex: 'l_1-l_2=2(a+b+c),\\ S_1-S_2=ab+bc+ca', color: 'amber' }] : [{ tex: `l_1-l_2=${2 * vv.s},\\ S_1-S_2=${vv.S}`, color: 'ink' }],
           status: ex ? { tone: 'info', text: `a=${num(s.a4)} · b=${num(s.b4)} · c=${num(s.c4)}` } : null,
           readouts: [
-            { label: '남은 입체 모서리 합 l₁ (12개)', value: fmtN(Math.round(m.l1 * 100) / 100), color: 'ink' },
-            { label: '사면체 모서리 합 l₂ (6개)', value: fmtN(Math.round(m.l2 * 100) / 100), color: 'ink' },
-            { label: 'l₁ − l₂ = 2(a+b+c)', value: `${fmtN(Math.round((m.l1 - m.l2) * 100) / 100)} = 2×${num(m.s)}`, color: 'amber', wide: true, note: '단면의 세 모서리는 서로 지워진다' },
-            { label: '남은 입체 겉넓이 S₁', value: fmtN(Math.round(m.S1 * 100) / 100), color: 'ink' },
-            { label: '사면체 겉넓이 S₂', value: fmtN(Math.round(m.S2 * 100) / 100), color: 'ink' },
-            { label: 'S₁ − S₂ = ab+bc+ca', value: `${fmtN(Math.round((m.S1 - m.S2) * 100) / 100)} = ${num(m.S)}`, color: 'amber', wide: true, note: '단면의 넓이는 서로 지워진다' },
+            { label: '남은 입체 모서리 합 l₁ (12개)', value: '≈ ' + fmtN(m.l1), color: 'ink' },
+            { label: '사면체 모서리 합 l₂ (6개)', value: '≈ ' + fmtN(m.l2), color: 'ink' },
+            { label: 'l₁ − l₂ = 2(a+b+c)', value: `${fmtN(2 * m.s)} = 2×${num(m.s)}`, color: 'amber', wide: true, note: '단면의 세 모서리는 서로 지워진다' },
+            { label: '남은 입체 겉넓이 S₁', value: '≈ ' + fmtN(m.S1), color: 'ink' },
+            { label: '사면체 겉넓이 S₂', value: '≈ ' + fmtN(m.S2), color: 'ink' },
+            { label: 'S₁ − S₂ = ab+bc+ca', value: `${fmtN(m.S)} = ${num(m.S)}`, color: 'amber', wide: true, note: '단면의 넓이는 서로 지워진다' },
             { label: 'AC² + CF² + FA² = 2(a²+b²+c²)', value: `${fmtN(Math.round(m.sq * 100) / 100)} = 2×${num(s.a4 ** 2 + s.b4 ** 2 + s.c4 ** 2)}`, color: 'rose', wide: true }
           ],
           rule: '두 입체에 모두 있는 단면은 차를 구할 때 사라진다',
@@ -547,7 +569,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if (lab.tab === 'explore') drawCut4({ a: s0.a4, b: s0.b4, c: s0.c4, cut: s0.cut4, fillCut: true });
         else {
           const st = lab.tab === 'problem' ? 0 : s0.step;
-          drawCut4({ a: 2, b: 2.6, c: 3.2, cut: lab.tab === 'problem' ? 0.5 : 0.7, fillCut: true, fillRight: st === 2, legCol: st === 1 ? 'amber' : 'ink', hypCol: st >= 3 ? 'green' : 'rose' });
+          const vv = var4.cur();
+          drawCut4({ a: vv.a, b: vv.b, c: vv.c, cut: lab.tab === 'problem' ? 0.5 : 0.7, fillCut: true, fillRight: st === 2, legCol: st === 1 ? 'amber' : 'ink', hypCol: st >= 3 ? 'green' : st >= 1 ? 'muted' : 'rose', cancelShared: st === 1 || st === 2 });
         }
       }
     });
@@ -569,6 +592,19 @@ window.addEventListener('DOMContentLoaded', function () {
         SP.poly([g.D, g.H, g.G, g.Q], { fill: 'sky', fillAlpha: 0.28, color: null, hide: false });
         SP.poly([T.Q, T.G, T.C], { fill: 'rose', fillAlpha: 0.34, color: null, hide: false });
       }
+      if (o.showDifference) {
+        const R = V(o.ap, 0, 0), S = V(o.ap, 0, o.a);
+        SP.poly([g.A, g.E, R, g.P], { fill: 'amber', fillAlpha: 0.38, color: 'amber', width: 2.4, hide: false });
+        SP.poly([g.D, g.H, S, g.Q], { fill: 'amber', fillAlpha: 0.24, color: 'amber', width: 2, hide: false });
+        SP.poly([g.P, R, g.F], { fill: 'rose', fillAlpha: 0.25, color: 'rose', width: 2, hide: false });
+        SP.poly([T.P, T.F, T.B], { fill: 'rose', fillAlpha: 0.25, color: 'rose', width: 2, hide: false });
+        SP.line(g.P, R, { color: 'amber', width: 2.5, dash: [5, 4], hide: false });
+        SP.line(g.Q, S, { color: 'amber', width: 2.5, dash: [5, 4], hide: false });
+        SP.line(R, S, { color: 'amber', width: 2.5, dash: [5, 4], hide: false });
+        lbl(mid3(g.A, g.P), 'AP', 'amber', 0, -15);
+        lbl(mul(add(add(g.P, R), g.F), 1 / 3), '같은 넓이', 'rose', 0, 13, 12);
+        lbl(mul(add(add(T.P, T.F), T.B), 1 / 3), '같은 넓이', 'rose', 0, -13, 12);
+      }
       [['A', 'E'], ['E', 'F'], ['P', 'A'], ['D', 'H'], ['H', 'G'], ['Q', 'D'], ['A', 'D'], ['E', 'H'], ['F', 'G'], ['G', 'Q'], ['F', 'P'], ['P', 'Q']].forEach(([p, q]) => SP.line(g[p], g[q], { color: (p + q === 'FP' || p + q === 'PQ' || p + q === 'GQ') ? 'rose' : 'ink', width: (p + q === 'FP' || p + q === 'PQ' || p + q === 'GQ') ? 3 : 2.2 }));
       [['P', 'F'], ['F', 'B'], ['B', 'P'], ['Q', 'G'], ['G', 'C'], ['C', 'Q'], ['P', 'Q'], ['B', 'C'], ['F', 'G']].forEach(([p, q]) => { if (o.cut > 0.02) SP.line(T[p], T[q], { color: (p + q === 'PF' || p + q === 'PQ' || p + q === 'QG') ? 'rose' : 'ink', width: 2.2 }); else if (p + q === 'FB' || p + q === 'BP' || p + q === 'GC' || p + q === 'CQ' || p + q === 'BC') SP.line(g[p], g[q], { color: 'ink', width: 2.2 }); });
       ['A', 'D', 'E', 'H', 'F', 'G', 'P', 'Q'].forEach((n) => vLabel(g[n], n, ctr, n === 'P' || n === 'Q' ? 'rose' : 'ink'));
@@ -588,7 +624,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const steps5 = () => {
     const v = var5.cur();
     return [
-      `$V_1$은 밑면이 사다리꼴 $AEFP$, $V_2$는 밑면이 직각삼각형 $PFB$인 기둥이고 높이는 모두 $AD=a$이다: $V_1-V_2=\\dfrac12(AP+AB)a\\cdot a-\\dfrac12PB\\cdot a\\cdot a$`,
+      `앞면에서 $P$를 지나는 수선을 내려 사다리꼴을 직사각형과 직각삼각형으로 나눕니다. 오른쪽 두 직각삼각형은 밑변 $PB$, 높이 $a$가 같아 넓이가 같습니다. 깊이도 $a$로 같으므로 두 삼각기둥의 부피가 같습니다.`,
       `$AB=AP+PB$ 이므로 $AP+AB-PB=2AP$ → $V_1-V_2=a^2\\cdot AP$. 또 $AP=\\dfrac{AB}{a+1}$ 이고 $AB=(a+1)(${v.m === 1 ? '' : v.m}a+${v.n})$ 이므로 $AP=${v.m === 1 ? '' : v.m}a+${v.n}$ → $a^2(${v.m === 1 ? '' : v.m}a+${v.n})=${v.k}$`,
       `$a=${v.a}$는 이 식을 만족하고 $a\\gt 0$에서 좌변은 증가하므로 $a=${v.a}$뿐이다. 따라서 $AP=${v.m === 1 ? '' : v.m}\\times${v.a}+${v.n}=${v.ans.val}$`
     ];
@@ -606,9 +642,9 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: reviewTop(() => text5(var5.cur())),
       problem: { tag: '2024학년도 10월 학평(경기) 20번 유형', time: '목표 시간: 90초', text: () => probHTML(text5(var5.cur())), answer: () => tex(var5.cur().ans.tex) },
       solution: {
-        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · V₁−V₂ = a²·AP', quickTag: '10초 컷',
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '같은 삼각기둥 지우기', quickTag: '그림 풀이',
         standard: () => { const v = var5.cur(); return { steps: `① 높이(깊이)가 $a$로 같은 두 기둥의 밑면: 사다리꼴 $AEFP$의 넓이 $\\dfrac12(AP+AB)\\cdot a$, 직각삼각형 $PFB$의 넓이 $\\dfrac12PB\\cdot a$<br>② $V_1-V_2=\\dfrac{a^2}{2}(AP+AB-PB)=\\dfrac{a^2}{2}\\cdot2AP=a^2\\cdot AP$<br>③ $AP=\\dfrac{AB}{a+1}=${v.m === 1 ? '' : v.m}a+${v.n}$ 이므로 $a^2(${v.m === 1 ? '' : v.m}a+${v.n})=${v.k}$ → $a=${v.a}$<br>④ $AP=${v.ans.val}$`, warning: '$V_1+V_2$는 직육면체의 부피로 쉽게 나오지만 문제에서 주어진 것은 <b>차</b>입니다. 차는 단면의 한쪽 끝(AP) 길이와 깊이의 제곱만 남습니다.' }; },
-        quick: () => { const v = var5.cur(); return { steps: `<strong class="text-amber-300">V₁ − V₂ = a² · AP = ${v.k}</strong>, AP = ${v.m === 1 ? '' : v.m}a + ${v.n}`, highlight: '차를 구하면 사다리꼴과 삼각형의 겹치는 부분이 지워져 직육면체(AP 부분)만 남는다.' }; }
+        quick: () => { const v = var5.cur(); return { steps: `앞면의 분홍 직각삼각형 두 개는 밑변과 높이가 같고 깊이도 같으므로 부피가 상쇄됩니다. 남는 노란 직육면체는 $AP\\times a\\times a$이므로 $V_1-V_2=a^2AP=${v.k}$.<br>$AP=AB/(a+1)=${v.m === 1 ? '' : v.m}a+${v.n}$를 넣으면 $a^2(${v.m === 1 ? '' : v.m}a+${v.n})=${v.k}$. 양수에서 $a^2$과 $${v.m === 1 ? '' : v.m}a+${v.n}$가 모두 증가하므로 해는 $a=${v.a}$ 하나이며, $AP=${v.ans.val}$.`, highlight: '사다리꼴 넓이를 전개하기 전에 같은 두 삼각기둥을 먼저 지웁니다.' }; }
       },
       view: (s, lab) => {
         setMax(lab, 'ap5', Math.max(1.5, s.L5 - 1));
@@ -635,13 +671,14 @@ window.addEventListener('DOMContentLoaded', function () {
         if (lab.tab === 'explore') drawPrism5({ L: s0.L5, a: s0.a5, ap: Math.min(s0.ap5, s0.L5 - 1), cut: s0.cut5, fill: true, tags: ['V₁', 'V₂'] });
         else {
           const vv = var5.cur(), st = lab.tab === 'problem' ? 0 : s0.step;
-          drawPrism5({ L: 9, a: 2, ap: 2.6, cut: st >= 1 ? 0.8 : 0, fill: st >= 1, tags: st >= 1 ? ['V₁', 'V₂'] : null, under: st === 2 ? ['V₁ − V₂ = a² · AP', 'amber'] : st >= 3 ? [`AP = ${vv.m === 1 ? '' : vv.m}a + ${vv.n} = ${vv.ans.val}`, 'amber'] : null });
+          drawPrism5({ L: (vv.a + 1) * vv.ap, a: vv.a, ap: vv.ap, showDifference: st >= 1, cut: st >= 1 ? 0.8 : 0, fill: st >= 1, tags: st >= 1 ? ['V₁', 'V₂'] : null, under: st === 2 ? ['V₁ − V₂ = a² · AP', 'amber'] : st >= 3 ? [`AP = ${vv.m === 1 ? '' : vv.m}a + ${vv.n} = ${vv.ans.val}`, 'amber'] : null });
         }
       }
     });
   }
 
   APLab.createLab({
+    stagedReveal: true,
     id: 'common-poly-solid',
     title: '다항식과 입체',
     courseName: '공통수학',
