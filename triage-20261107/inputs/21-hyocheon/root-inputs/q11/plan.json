@@ -1,0 +1,72 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "점근선 $x=a$, $y=2$와 $x$절편 $a-\\dfrac32$의",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      6
+    ],
+    "viewport": [
+      -5,
+      6,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1/2",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=1일 때 점근선과 x절편의 위치를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 유리함수는 y=3/(x-a)+2이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 a=1에서 수직점근선은 x=1, 수평점근선은 y=2이고 x절편은 -1/2이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "a=1인 예시에서 두 가지와 x절편의 위치로 지나는 사분면을 판정한다."
+  ]
+}

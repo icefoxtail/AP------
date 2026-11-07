@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "제곱근은 항상 $0$ 이상이므로 앞의 음수 부호가 함숫값의 상한을 만든다",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      4,
+      -5,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "amplitude": "-1",
+        "offset": "1",
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "끝점에서 출발해 아래로 뻗는 그래프의 높이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수는 -√(-2x+4)+1이고 정의역은 x≤2이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "끝점은 (2,1)이고 이보다 큰 함수값은 없다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점의 높이가 함숫값의 최댓값이고 왼쪽 가지가 아래로 뻗어 치역을 이룸을 보인다."
+  ]
+}

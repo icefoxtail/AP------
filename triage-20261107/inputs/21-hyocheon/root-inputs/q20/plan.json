@@ -1,0 +1,98 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "각 정수 $x$에서 두 곡선 사이에 놓이는 정수 $y$의 개수를 세어",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      17,
+      0,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "7",
+        "9",
+        "16"
+      ],
+      "y": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "2",
+        "offset": "0",
+        "domain": [
+          "0",
+          "16"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "6",
+        "domain": [
+          "0",
+          "16"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "7",
+          "y": "4"
+        },
+        {
+          "id": "Q",
+          "x": "7",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: 한 정수 x에서 두 곡선 사이의 격자점을 세는 방법을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선은 y=2√x, y=−√x+6이며 (4,4)에서 만난다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 x=7에서 두 곡선 사이의 정수 y는 4,5이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "각 정수 x마다 곡선 사이의 정수 y를 세어 누적하는 관계를 보여 준다."
+  ]
+}

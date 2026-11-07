@@ -1,0 +1,126 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 곡선 부분은 원점을 중심으로 $90^\\circ$ 회전하면 서로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      10,
+      -10,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "2",
+        "4",
+        "8"
+      ],
+      "y": [
+        "-8",
+        "-4",
+        "-2",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "-20/3",
+          "1/3"
+        ],
+        "domain": [
+          "-5",
+          "9"
+        ],
+        "label": "y=(x-20)/3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "-8"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "8",
+          "y": "-4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "서로 직각 회전에 대응하는 두 곡선과 현을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선과 직선의 교점은 A=(-4,-8), B=(8,-4)이고 두 곡선은 원점 O에서 만난다.",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "곡선 AO는 원점 중심 반시계 90도 회전으로 곡선 OB에 대응한다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c3",
+      "condition": "두 현 AO, OB도 서로 대응하며 수직이다.",
+      "mappedTo": "graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선과 현 사이의 두 넓이가 직각 회전으로 대응해 상쇄되는 구조를 보인다."
+  ]
+}

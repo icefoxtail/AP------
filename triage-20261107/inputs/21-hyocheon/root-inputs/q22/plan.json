@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$y=x$ 조건을 $x-y=0$으로 바꾸면 네 이동을 두 종류씩 묶어 셀",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=x"
+      },
+      {
+        "id": "xaxis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "style": "DASHED",
+        "label": "y=0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "-1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "OQ",
+          "from": "O",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: 대각선 위의 두 도착점을 원점 대칭으로 짝짓는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도착점은 y=x 위의 제1사분면이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 (1,1)과 (-1,-1)은 원점 대칭인 도착점이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "원점을 제외한 대각선 위 도착점은 제1·3사분면에서 대칭으로 짝지어진다."
+  ]
+}

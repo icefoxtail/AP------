@@ -1,0 +1,63 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "분모가 $0$이 되는 직선과 분자·분모의 최고차항 계수비를 이용한다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "-2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -4,
+      6,
+      -7,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "-1",
+        "1"
+      ]
+    },
+    "hideLabels": [
+      "formula",
+      "asymptotes"
+    ]
+  },
+  "caption": "유리함수의 수직점근선과 수평점근선을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수는 (-2x+1)/(x-1)이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "두 점근선은 x=1, y=-2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "분모가 0인 수직선과 양 끝에서 가까워지는 수평선을 함께 보인다."
+  ]
+}

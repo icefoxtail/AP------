@@ -1,0 +1,142 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수가 $|x|$에 대하여 대칭임을 이용해 $|f(x)|=n$의 해의",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -26,
+      26,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-12",
+        "-5",
+        "5",
+        "12"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "-4",
+        "domain": [
+          "-25",
+          "-12"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "li",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "4",
+        "domain": [
+          "-12",
+          "0"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "ri",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "4",
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "ro",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "-4",
+        "domain": [
+          "12",
+          "25"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-25",
+          "25"
+        ],
+        "color": "WARM",
+        "label": "y=1"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-21",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "-5",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "1"
+        },
+        {
+          "id": "D",
+          "x": "21",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "예: 수평선과 절댓값 그래프의 교점 개수를 센다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|f(x)|=|√(|x|+4)-4|이며 y축에 대칭이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 n=1이면 x=±5, ±21에서 4개 교점이 있다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "짝대칭인 절댓값 함수에서 수평선 높이에 따라 교점 개수가 달라지는 구조를 보인다."
+  ]
+}
