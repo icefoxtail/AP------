@@ -13,6 +13,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// The high-school profile uses the same scene renderer, with the four contract
+// viewports, both themes and explicit step/variant interactions. Legacy CLI
+// behavior below remains unchanged.
+if (process.argv.includes('--high-school')) {
+  await import('./high-lab-browser-audit.mjs');
+  process.exit(process.exitCode || 0);
+}
+
 // playwright는 전역 설치(NODE_PATH)인 경우가 많아 require로 불러옵니다.
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
