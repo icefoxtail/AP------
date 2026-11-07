@@ -5,7 +5,7 @@
 - 원문: archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js
 - 최신 main 기준: 5279940ce8f880fe6acfb8e227f2556781c6cbb9 (2026-11-07).
 - 공통 계획 브랜치: svg/h1-2final-tasks, 대조 시점 원격 SHA a70134efb36ec7294928c952a5be736113deb4c5.
-- 시험지별 작업 브랜치: codex/visual-svg-23-maesan-h1-2final, 현재 작업 커밋은 RUN_STATUS.md에 기록한다.
+- 시험지별 작업 브랜치: codex/visual-svg-23-maesan-h1-2final. 원격 branch tip은 최종 보고에서 확인한다.
 
 ## ROOT 계획·입력 메시지 재대조 결과
 
