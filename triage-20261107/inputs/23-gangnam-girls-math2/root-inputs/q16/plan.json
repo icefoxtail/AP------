@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(x)=x^2-(a+1)x+a$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -4,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "0"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "1",
+        "to": "4"
+      }
+    ]
+  },
+  "caption": "적분 구간에서 포물선이 x축 아래에 놓이는 부호를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 구간에서 포물선이 x축 아래에 놓이는 부호를 확인한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분 구간에서 포물선이 x축 아래에 놓이는 부호를 확인한다."
+  ]
+}

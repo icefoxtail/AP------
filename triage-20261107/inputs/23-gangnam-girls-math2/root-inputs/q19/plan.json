@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$F(x) = \\int_1^x f(t)dt$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7/3",
+          "0",
+          "3",
+          "-2/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "67/6",
+          "-3",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "20/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-7/3"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "20/3"
+      }
+    ]
+  },
+  "caption": "도함수 부호에 따른 적분함수의 증가·감소와 극솟값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도함수 부호에 따른 적분함수의 증가·감소와 극솟값을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 부호에 따른 적분함수의 증가·감소와 극솟값을 비교한다."
+  ]
+}

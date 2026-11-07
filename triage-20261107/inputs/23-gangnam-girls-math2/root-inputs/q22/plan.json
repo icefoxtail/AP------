@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$\\int_a^x f(t)dt = 2x^2-8x+6$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "-8",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -4,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "적분의 상한과 하한이 같을 때 0이 되는 두 후보 중 조건에 맞는 점을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분의 상한과 하한이 같을 때 0이 되는 두 후보 중 조건에 맞는 점을 구분한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분의 상한과 하한이 같을 때 0이 되는 두 후보 중 조건에 맞는 점을 구분한다."
+  ]
+}

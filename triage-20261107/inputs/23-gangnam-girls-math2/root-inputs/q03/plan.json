@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^2+4x-21$",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-21",
+      "4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -9,
+      5
+    ],
+    "viewport": [
+      -9,
+      5,
+      -27,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-7",
+        "-6",
+        "-4",
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-24",
+        "-20",
+        "-16",
+        "-12",
+        "-8",
+        "-4"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-7",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "-2",
+          "y": "-25"
+        }
+      ]
+    }
+  },
+  "caption": "양 끝 함숫값이 같을 때 구간 안의 수평 접점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "양 끝 함숫값이 같을 때 구간 안의 수평 접점을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝 함숫값이 같을 때 구간 안의 수평 접점을 비교한다."
+  ]
+}
