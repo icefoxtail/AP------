@@ -64,8 +64,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const shift = -A / 3;
     const roots = [];
 
-    if (Math.abs(disc) < 1e-5) {
-      if (Math.abs(q) < 1e-6) {
+    const tol = 64 * Number.EPSILON * Math.max(Math.abs(q*q/4), Math.abs(p*p*p/27), Number.MIN_VALUE);
+    if (Math.abs(disc) <= tol) {
+      if (p === 0 && q === 0) {
         roots.push(shift);
       } else {
         const u1 = Math.cbrt(-q / 2);
@@ -107,7 +108,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const uniqueT = [];
     uRoots.forEach((u) => {
       const tVal = u + s.m;
-      if (!uniqueT.some((existing) => Math.abs(existing - tVal) < 0.03)) {
+      if (!uniqueT.some((existing) => Math.abs(existing - tVal) < 1e-9 * Math.max(1, Math.abs(tVal), Math.abs(existing)))) {
         uniqueT.push(tVal);
       }
     });
@@ -239,7 +240,7 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "적분 구간의 끝이 무리수여도 u = x − 1 로 치환하고 부정적분을 이용하면 정확히 계산할 수 있다. 이 문항에서는 점 (1, 0)에 대하여 곡선이 대칭임을 이용한다."
         }),
         shortcut: () => ({
-          steps: `① 삼차함수의 최고차항 계수가 ${tex('a')}이고 접점과 재교점의 x좌표가 ${tex('\\alpha,\\beta')}이면 접선과 함수의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)')}로 인수분해된다. 이 조건에서 넓이는 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4 = \\dfrac{1}{12} \\times 3^4 = \\dfrac{27}{4}')}</strong> 이다.<br/>
+          steps: `① 삼차함수의 최고차항 계수가 ${tex('a')}이고 접점과 재교점의 x좌표가 ${tex('\\alpha,\\beta')}이면 (α는 접점이며 좌우 순서와 무관) 접선과 함수의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)')}로 인수분해된다. 이 조건에서 넓이는 <strong class="text-pink-300">${tex('S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4 = \\dfrac{1}{12} \\times 3^4 = \\dfrac{27}{4}')}</strong> 이다.<br/>
 ② 이 문항은 x축과의 세 교점이 점 ${tex('(1,0)')}에 대하여 대칭인 경우다. 각 교점까지의 간격은 ${tex('d=\\sqrt3')}이고 한쪽 넓이는 ${tex('S_1=S_2=\\frac{|a|d^4}{4}')}이다.<br/>
 ③ 따라서 ${tex('S_1 + S_2 = 2 \\times \\dfrac{1}{4}(\\sqrt{3})^4 = \\dfrac{9}{2} = 4.5')} 이다.`,
           highlight: "접선과의 넓이 공식은 접점이 중근인 경우에, x축과의 넓이 공식은 대칭의 중심을 지나는 수평선과의 교점들 사이에서 곡선이 점대칭인 경우에 적용한다."
@@ -304,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     };
 
-  /* ---------- 3. 보기 창 (원본 VIEW: 모드별로 꼭 보여야 할 세계 범위, 무대는 항상 1:1) ---------- */
+  /* ---------- 3. 보기 창 (기본 좌표 범위; 기울어진 접선·넓이의 탐구는 두 축을 따로 맞춤) ---------- */
   // x: 가로, y: 주 그래프 세로, dy: 동시 보기에서 아래 칠판(도함수)의 세로
   // dual: 동시 보기(위 f, 아래 f′)일 때의 위 칠판 세로 범위와 위 칠판이 차지하는 비율(frac)
   const VIEW = {
@@ -317,17 +318,32 @@ window.addEventListener('DOMContentLoaded', function () {
   const dualOf = (v) => ({ y: v.y, frac: 0.58, ...(v.dual || {}) });
   const focusFor = (v, dual) => ({ x: v.x, y: dual ? dualOf(v).y : v.y });
   // 동시 보기를 켜고 끌 때(또는 공유 링크로 열 때) 보기 창을 그에 맞게 다시 맞춥니다.
+  function exploreFocus(s, m) {
+    const base = focusFor(VIEW[m], s.dual);
+    if (m !== 2 && m !== 3) return base;
+    const q = 3*s.m-2*s.t, xs = [s.t, q, s.m];
+    if (s.delta > 0) xs.push(s.m-Math.sqrt(3*s.delta),s.m+Math.sqrt(3*s.delta));
+    const ys = xs.map((x) => evalF(s,x));
+    const x0=Math.min(base.x[0],...xs),x1=Math.max(base.x[1],...xs);
+    const y0=Math.min(base.y[0],...ys)-1.6,y1=Math.max(base.y[1],...ys);
+    const px=Math.max(0.8,(x1-x0)*0.1),py=Math.max(1.5,(y1-y0)*0.13);
+    return {x:[x0-px,x1+px],y:[y0-py,y1+py]};
+  }
   function syncFocus(b, s, m) {
-    const key = m + '|' + (s.dual ? 1 : 0);
+    const moving = m === 2 || m === 3;
+    const key = [m,s.dual,moving?s.a:'',moving?s.m:'',moving?s.ym:'',moving?s.delta:'',moving?s.t:''].join('|');
     if (b.__focusKey !== key) {
       b.__focusKey = key;
-      b.setFocus(focusFor(VIEW[m], s.dual));
+      // Horizontal ratios and the full tangent region remain legible even when Q becomes high.
+      b.aspect = moving ? 'free' : '1:1';
+      b.setFocus(exploreFocus(s,m));
     }
   }
   const panesOf = (m) => (s) => {
     if (!s.dual) return null;
-    const d = dualOf(VIEW[m]);
-    return [{ id: 'main', frac: d.frac, focusY: d.y }, { id: 'deriv', frac: 1 - d.frac, focusY: VIEW[m].dy }];
+    const d = dualOf(VIEW[m]), f=exploreFocus(s,m);
+    const derivY = m===2 || m===3 ? [Math.min(VIEW[m].dy[0],evalFp(s,s.m),evalFp(s,s.t))-1,Math.max(VIEW[m].dy[1],evalFp(s,s.t))+1] : VIEW[m].dy;
+    return [{ id: 'main', frac: d.frac, focusY: f.y }, { id: 'deriv', frac: 1 - d.frac, focusY: derivY }];
   };
 
   /* ---------- 4. 공통 부품 ---------- */
@@ -393,11 +409,11 @@ window.addEventListener('DOMContentLoaded', function () {
         if (m === 1) v2 = [s.m - 2 * d.h, s.m - d.h, s.m, s.m + d.h, s.m + 2 * d.h].map((x) => fmt(x, 1)).join(' : ');
         else if (m === 5) v2 = `P(${fmt(s.px, 1)}, ${fmt(s.py, 1)}) → 접선 ${cnt}개`;
         else if (m === 4) v2 = `P(${fmt(s.t)}, ${fmt(evalF(s, s.t))}) → 접선 기울기 f′(t) = ${fmt(evalFp(s, s.t))}`;
-        else v2 = `|t−m|:${fmt(Math.abs(s.t - s.m))} | |q−m|:${fmt(Math.abs(d.q - s.m))} (1:2)`;
+        else v2 = Math.abs(s.t - s.m) < 1e-9 ? 't=m: 변곡점에서 삼중 접촉 · 서로 다른 재교점 없음' : `|t−m|≈${fmt(Math.abs(s.t - s.m))} | |q−m|≈${fmt(Math.abs(d.q - s.m))} (1:2)`;
         v3 = `Δy = ${fmt(d.dy)} (∫|f′| = ${fmt(d.dy)})`;
       } else {
         v1 = `I(${fmt(s.m, 1)}, ${fmt(s.ym, 1)}) | 극값 없음`;
-        v2 = `2t+q = ${fmt(2 * s.t + d.q)} = 3m (2:1 성립)`;
+        v2 = Math.abs(s.t - s.m) < 1e-9 ? 't=m: 변곡점에서 삼중 접촉 · 0:0에 비율을 붙일 수 없음' : `2t+q = ${fmt(2 * s.t + d.q)} = 3m (거리비 1:2)`;
         v3 = 'D ≤ 0 (극값이 없는 개형)';
       }
       const v4 = `S = ${fmt(d.areaS)} (L = ${fmt(d.L)})`;
@@ -409,7 +425,7 @@ window.addEventListener('DOMContentLoaded', function () {
             ? `1 : 1 : 1 간격 h = ${fmt(d.h)} | 1 : √3 간격 = ${fmt(Math.sqrt(3) * d.h)} | 극값의 차 Δy = 4|a|h³ = ${fmt(d.dy)}`
             : `D ≤ 0 (δ=${fmt(s.delta)}) : 극값이 없어 간격의 비를 볼 수 없습니다`;
         } else if (m === 2) {
-          title = `기울어진 접선: 2t(${fmt(2 * s.t)}) + q(${fmt(d.q)}) = 3m(${fmt(3 * s.m)})  ⇒  |t − m| : |q − m| = 1 : 2`;
+          title = Math.abs(s.t - s.m) < 1e-9 ? '변곡점의 접선은 f−접선=a(x−m)³: 접점만 있고 별도의 재교점은 없습니다.' : `기울어진 접선: 2t(${fmt(2 * s.t)}) + q(${fmt(d.q)}) = 3m(${fmt(3 * s.m)}) ⇒ |t−m| : |q−m| = 1 : 2`;
         } else if (m === 3) {
           title = `접선 넓이 $S=\\dfrac{|a|}{12}(\\beta-\\alpha)^4=${fmt(d.areaS, 3)}$`;
         } else if (m === 4) {
@@ -604,9 +620,9 @@ window.addEventListener('DOMContentLoaded', function () {
     if (s.step >= 1) {
       const x0 = Math.min(t, q) - 1.5, x1 = Math.max(t, q) + 1.5;
       b.seg([x0, yt + slope * (x0 - t)], [x1, yt + slope * (x1 - t)], { color: 'rose', width: 2.6, glow: true, ref: 'T' });
-      b.point([q, yq], { color: 'sky', r: 6.5, ref: 'Q', label: `교점 Q(${num(q)}, ${num(yq)})`, dx: 12, dy: 16 });
+      b.point([q, yq], { color: 'sky', r: 6.5, ref: 'Q', label: Math.abs(t - m) < 1e-9 ? '변곡점에서 삼중 접촉' : s.step >= 2 ? `재교점 Q(${num(q)}, ${num(yq)})` : '재교점 Q', dx: 12, dy: 16 });
     }
-    if (s.step >= 2) {
+    if (s.step >= 2 && Math.abs(t - m) > 1e-9) {
       const rulerY = Math.min(yt, ym, yq) - 1.4;
       b.seg([t, yt], [t, rulerY], { color: 'amber', alpha: 0.7, width: 1.6, dash: true });
       b.seg([m, ym], [m, rulerY], { color: 'violet', alpha: 0.8, width: 1.6, dash: true });
@@ -619,7 +635,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.text([m, rulerY], `x_I=${num(m)}`, { color: 'violet', dy: 35, size: 12 });
       b.text([q, rulerY], `x_Q=${num(q)}`, { color: 'sky', dy: 18, dx: 2, align: 'left', size: 12 });
     }
-    if (s.step >= 3) {
+    if (s.step >= 3 && Math.abs(t - m) > 1e-9) {
       const yLineAtI = yt + slope * (m - t);
       b.point([m, yLineAtI], { color: 'violet', r: 4.5, label: '내분점 (1:2)', dx: 10, dy: -10 });
     }
@@ -718,7 +734,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     // 드래그 가능한 외부 점 P(x0, y0) — 가장 위에 그립니다
     return () => {
-      b.handle('P', [s.px, s.py], { color: 'amber', r: 8, ref: 'P', priority: 3, label: `점 P(${num(s.px)}, ${num(s.py)}) [접선 ${contacts.length}개]`, dx: 14, dy: -12,
+      b.handle('P', [s.px, s.py], { color: 'amber', r: 8, ref: 'P', priority: 3, label: `점 P(${num(s.px)}, ${num(s.py)})${s.step >= 3 ? ' [접선 ' + contacts.length + '개]' : ''}`, dx: 14, dy: -12,
         drag: (w) => { s.px = clamp(+w.x.toFixed(2), -2.5, 4.5); s.py = clamp(+w.y.toFixed(2), -4.5, 4.5); } });
     };
   }
@@ -769,7 +785,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // 지금 탭이 탐구가 아니면(정리·문제) 변형 문제의 그림을 그립니다.
   const cxVarTab = () => { const l = window.lab; return !!l && l.tab !== 'explore'; };
   // 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
-  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : 0);
+  const cxStep = (lab, s) => (lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? 3 : 0) : s.step);
   // 변형 문제의 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
   function cxFocus(b, key, box) {
     if (b._cxKey === key) return;
@@ -955,8 +971,8 @@ window.addEventListener('DOMContentLoaded', function () {
     b.point([v.xA, v.yA], { color: 'rose', r: 6, ref: 'A', label: 'A', dx: -10, dy: -12, align: 'right' });
     b.point([v.xB, yB], { color: 'green', r: 6, ref: 'B', label: 'B', dx: 10, dy: 15 });
     if (st >= 1) {
-      b.point([v.xC, v.yA], { color: 'rose', r: 5, label: `C(${cxN(v.xC)}, ${cxN(v.yA)})`, dx: 10, dy: -12 });
-      b.point([v.xD, yB], { color: 'sky', r: 5, label: `D(${cxN(v.xD)}, ${cxN(yB)})`, dx: -10, dy: 15, align: 'right' });
+      b.point([v.xC, v.yA], { color: 'rose', r: 5, label: st >= 2 ? `C(${cxN(v.xC)}, ${cxN(v.yA)})` : 'C', dx: 10, dy: -12 });
+      b.point([v.xD, yB], { color: 'sky', r: 5, label: st >= 2 ? `D(${cxN(v.xD)}, ${cxN(yB)})` : 'D', dx: -10, dy: 15, align: 'right' });
     }
     if (st >= 3) {
       [-1, 0, 1].forEach((sg) => {
@@ -1026,12 +1042,12 @@ window.addEventListener('DOMContentLoaded', function () {
       b.text([(v.m + v.q) / 2, R], '2', { color: 'sky', dy: -9, size: 15, weight: 850 });
       cxTag(b, [v.t, R], `x_T=${cxN(v.t)}`, { color: 'amber', dy: 18, size: 12 });
       cxTag(b, [v.m, R], `x_I=${cxN(v.m)}`, { color: 'violet', dy: 35, size: 12 });
-      cxTag(b, [v.q, R], `x_Q=${cxN(v.q)}`, { color: 'sky', dy: 18, dx: 2, align: 'left', size: 12 });
+      cxTag(b, [v.q, R], st >= 3 ? `x_Q=${cxN(v.q)}` : 'x_Q=q', { color: 'sky', dy: 18, dx: 2, align: 'left', size: 12 });
     }
     b.plot(f, { color: 'ink', width: 3.2, glow: true });
     cxCurveTag(b, f, 'y = f(x)', 'ink', { side: 'left', dy: 14, skip: [[v.t, v.yT, 1.5], [v.m, v.yI, 1.5], [v.q, v.yQ, 1.5]], axis: 0.7, ymin: v.ruler + 1.6 });
     b.point([v.t, v.yT], { color: 'amber', r: 6.5, ref: 'T', label: `T(${cxN(v.t)}, ${cxN(v.yT)})`, dx: v.slope > 0 ? -10 : 10, dy: -13, align: v.slope > 0 ? 'right' : 'left' });
-    if (st >= 1) b.point([v.q, v.yQ], { color: 'sky', r: 6.5, ref: 'Q', label: `Q(${cxN(v.q)}, ${cxN(v.yQ)})`, dx: v.slope > 0 ? -10 : 10, dy: -13, align: v.slope > 0 ? 'right' : 'left' });
+    if (st >= 1) b.point([v.q, v.yQ], { color: 'sky', r: 6.5, ref: 'Q', label: st >= 3 ? `Q(${cxN(v.q)}, ${cxN(v.yQ)})` : 'Q', dx: v.slope > 0 ? -10 : 10, dy: -13, align: v.slope > 0 ? 'right' : 'left' });
     if (st >= 2) b.point([v.m, v.yI], { color: 'violet', r: 5, ref: 'I', label: 'I', dx: 9, dy: -10 });
     if (st >= 3) b.point([v.m, v.yT + v.slope * (v.m - v.t)], { color: 'green', r: 5, label: '내분점 (1:2)', dx: v.slope > 0 ? -10 : 10, dy: v.slope > 0 ? -12 : -12, align: v.slope > 0 ? 'right' : 'left' });
   }
@@ -1072,7 +1088,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const quick3 = (v) => {
     if (v.first) return examData[3].shortcut();
     return {
-      steps: `① 접점과 재교점의 ${tex('x')}좌표가 ${tex(`\\alpha=${Math.min(v.t, v.q)},\\;\\beta=${Math.max(v.t, v.q)}`)}이면 접선과 함수의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)')}로 인수분해된다. 넓이는 <strong class="text-pink-300">${tex(`S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4 = \\dfrac{${cxNum(Math.abs(v.a))}}{12} \\times ${v.L}^4 = ${cxNum(v.S)}`)}</strong> 이다.<br/>
+      steps: `① 접점과 재교점의 ${tex('x')}좌표가 ${tex(`\\alpha=${v.t},\\;\\beta=${v.q}`)}이면 (α는 접점이며 좌우 순서와 무관) 접선과 함수의 차가 ${tex('a(x-\\alpha)^2(x-\\beta)')}로 인수분해된다. 접점에서 재교점까지 방향을 따라 $x=\\alpha+(\\beta-\\alpha)u$로 치환하면 $S=|a|\\,|\\beta-\\alpha|^4\\int_0^1u^2(1-u)du$이고 적분값은 $1/12$입니다. 따라서 넓이는 <strong class="text-pink-300">${tex(`S = \\dfrac{|a|}{12}(\\beta - \\alpha)^4 = \\dfrac{${cxNum(Math.abs(v.a))}}{12} \\times ${v.L}^4 = ${cxNum(v.S)}`)}</strong> 이다.<br/>
 ② 이 문항은 x축과의 세 교점이 점 ${tex(`(${v.m}, 0)`)}에 대하여 대칭인 경우다. 각 교점까지의 간격은 ${tex(`d=\\sqrt{${3 * v.d}}`)}이고 한쪽 넓이는 ${tex('S_1=S_2=\\frac{|a|d^4}{4}')}이다.<br/>
 ③ 따라서 ${tex(`S_1 + S_2 = 2 \\times \\dfrac{${cxNum(Math.abs(v.a))}}{4}\\times ${9 * v.d * v.d} = ${cxNum(2 * v.W)}`)} 이다.`,
       highlight: examData[3].shortcut().highlight
@@ -1105,7 +1121,7 @@ window.addEventListener('DOMContentLoaded', function () {
       cxTag(b, [v.m - v.r * 0.55, 0], `S₁ = ${cxNum(v.W).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`, { color: 'sky', size: 12, dy: v.a > 0 ? 26 : -22, ref: 'wing' });
       cxTag(b, [v.m + v.r * 0.55, 0], `S₂ = ${cxNum(v.W).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`, { color: 'green', size: 12, dy: v.a > 0 ? -22 : 26, ref: 'wing' });
     }
-    if (st >= 2) cxTag(b, [(al + be) / 2, v.ruler], `접선 넓이 S = ${cxNum(v.S).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`, { color: 'amber', size: 13, dy: 40, ref: 'S' });
+    if (st >= 3) cxTag(b, [(al + be) / 2, v.ruler], `접선 넓이 S = ${cxNum(v.S).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`, { color: 'amber', size: 13, dy: 40, ref: 'S' });
   }
 
   /* ===== 변형 4 · f(x)와 f′(x)를 위아래로: 도함수의 넓이 = 극값의 차 ===== */
@@ -1163,7 +1179,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.seg([v.xa, yA], [xr, yA], { color: 'rose', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
       b.seg([v.xb, yB], [xr, yB], { color: 'sky', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
       b.seg([xr, yA], [xr, yB], { color: 'amber', width: 3, ref: 'dy' });
-      cxTag(b, [xr, (yA + yB) / 2], `Δy = ${cxN(v.dy)}`, { color: 'amber', dx: 8, align: 'left', ref: 'dy' });
+      cxTag(b, [xr, (yA + yB) / 2], st >= 3 ? `Δy = ${cxN(v.dy)}` : '극값의 차 Δy', { color: 'amber', dx: 8, align: 'left', ref: 'dy' });
     }
     b.plot(v.fp, { color: 'sky', width: 2.8, glow: true, ref: 'F' });
     b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
@@ -1173,7 +1189,7 @@ window.addEventListener('DOMContentLoaded', function () {
     b.point([v.xb, yB], { color: 'green', r: 6, ref: 'B', label: `B(${cxN(v.xb)}, ${cxN(yB)})`, dx: 10, dy: 15 });
     b.point([v.xa, 0], { color: 'rose', r: 5, ref: 'A', label: `α=${cxN(v.xa)}`, dx: -9, dy: up ? -14 : 16, align: 'right' });
     b.point([v.xb, 0], { color: 'green', r: 5, ref: 'B', label: `β=${cxN(v.xb)}`, dx: 9, dy: up ? -14 : 16 });
-    if (st >= 2) cxTag(b, [v.m, v.fp(v.m) / 2], `S_d = ${cxN(v.dy)}`, { color: 'amber', size: 12.5, ref: 'dy' });
+    if (st >= 2) cxTag(b, [v.m, v.fp(v.m) / 2], st >= 3 ? `S_d = ${cxN(v.dy)}` : 'S_d = Δy', { color: 'amber', size: 12.5, ref: 'dy' });
     if (st >= 3) {
       const tp = v.m, slope = v.fp(tp), yt = v.f(tp);
       b.seg([tp - 1.0, yt - slope * 1.0], [tp + 1.0, yt + slope * 1.0], { color: 'amber', width: 2.5, glow: true, ref: 'T' });
@@ -1235,13 +1251,10 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   };
   const quick5 = (v) => {
-    if (v.first) return examData[5].shortcut();
     const w = where5(v);
     return {
-      steps: `① 곡선 위의 점이 아닌 점에서 그은 접선의 개수는 곡선과 대칭의 중심에서의 접선, 이 두 경계선이 평면을 어떻게 나누는지로 정해집니다. 대칭의 중심 ${tex(`I(${v.m}, ${v.ym})`)} 에서의 접선은 ${tex(`y=${cxNum(v.sl)}(x${cxSub(v.m)})${v.ym >= 0 ? '+' : ''}${v.ym || ''}`.replace('y=-1(', 'y=-(').replace('y=1(', 'y=('))}.<br/>
-② ${tex(`x=${v.px}`)} 에서 곡선의 높이는 ${tex(`${cxNum(w.fx)}`)}, 변곡점에서의 접선의 높이는 ${tex(`${cxNum(w.lx)}`)} 입니다.<br/>
-③ 점 ${tex(`P(${v.px}, ${v.py})`)} 는 <strong class="text-amber-300">${w.text}</strong>에 있으므로 접선은 <strong class="text-amber-300">${tex(String(v.n))}개</strong>입니다.`,
-      highlight: examData[5].shortcut().highlight
+      steps: `① 중심 ${tex(`I(${v.m},${v.ym})`)}에서의 접선은 ${tex('l(x)='+cxPoly([v.sl,v.ym-v.sl*v.m]))}입니다. 접점의 방정식 ${tex("G(t)=f(t)+f'(t)(x_P-t)-y_P=0")}의 도함수는 ${tex("G'(t)=f''(t)(x_P-t)")}.<br/>② ${tex('x_P\\ne m')}이면 극값의 부호는 ${tex('f(x_P)-y_P')}와 ${tex('l(x_P)-y_P')}의 부호입니다. 두 경계 사이이면 부호가 달라 3개, 경계 위이면 중근을 한 번 세어 2개, 그 밖이면 1개입니다. ${tex('x_P=m')}이면 G가 단조인 삼차식이므로 중심 I를 포함하여 1개입니다.<br/>③ 지금 두 높이는 ${tex(cxNum(w.fx))}, ${tex(cxNum(w.lx))}이고 P는 ${w.text}에 있습니다. 따라서 접선은 ${tex(String(v.n))}개입니다.`,
+      highlight: '접점의 삼차방정식을 직접 풀지 않고 그 극값의 부호를 두 경계의 높이로 읽습니다. 경계 및 중심점의 예외까지 확인합니다.'
     };
   };
   function draw5(b, s, lab) {
@@ -1268,7 +1281,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     b.point([v.px, v.py], { color: 'amber', r: 7, ref: 'P', label: `P(${cxN(v.px)}, ${cxN(v.py)})`, dx: v.px > v.m ? 11 : -11, dy: -13, align: v.px > v.m ? 'left' : 'right' });
     if (st >= 2) {
-      b.stext(12, 18, '접선 3개: 초록 영역 · 2개: 경계 위 · 1개: 그 밖', { color: 'green', size: 12.5, align: 'left', ref: 'region' });
+      b.stext(12, 18, '접선 3개: 두 경계 사이 · 2개: 경계 위(I 제외) · I 및 그 밖: 1개', { color: 'green', size: 12.5, align: 'left', ref: 'region' });
     }
     if (st >= 3) b.stext(12, 38, `점 P에서 그은 접선 ${v.n}개`, { color: 'amber', size: 13, align: 'left', ref: 'tan' });
   }
@@ -1288,6 +1301,35 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   const tickT = (s, dt) => { if (!s.playing) return false; bounce(s, 't', 1.32, -0.55, 2.35, dt); return true; };
 
+  function cbProblemSteps(m, v) {
+    if (m === 1) return [
+      `극점 A, B의 중점 I를 대칭의 중심으로 봅니다. $x_A=${v.xA}$, $x_B=${v.xB}$이므로 $m=${v.m}$, 한 칸의 간격은 $h=${v.h}$입니다.`,
+      `극점에서 그은 접선은 수평입니다. 접점이 중근이므로 $2x_A+x_C=3m$, $2x_B+x_D=3m$. 따라서 $x_C=${v.xC}$, $x_D=${v.xD}$이고 D,A,I,B,C의 가로 간격은 모두 h입니다.`,
+      `중심을 원점으로 옮겨 $u=x-(${v.m})$로 놓으면 $f=a u(u^2-3h^2)$입니다. 중심 높이의 수평선과 만나는 점은 $x=${v.m},\\;${v.m}\\pm${v.h}\\sqrt3$. 전개 없이 대칭과 인수로 위치를 구합니다.`
+    ];
+    if (m === 2) return [
+      `T에서 접선을 그어 다른 교점 Q를 찾고, 변곡점 I의 가로좌표 $m=${v.m}$를 표시합니다. 접선과 곡선의 차에서 T는 중근입니다.`,
+      `삼차식의 이차항은 직선을 빼도 그대로이므로 근과 계수의 관계가 $2t+q=3m$입니다. 이를 $q-m=-2(t-m)$으로 쓰면 I를 기준으로 두 점이 반대쪽에 있고 가로 거리비가 1:2임을 알 수 있습니다.`,
+      `$t=${v.t}$를 대입하면 $q=${v.q}$, $Q=(${v.q},${cxNum(v.yQ)})$. 접선의 기울기는 $f'(${v.t})=${cxNum(v.slope)}$. 이 문제는 t≠m이며, t=m이면 삼중 접촉만 남아 별도의 Q가 없습니다.`
+    ];
+    if (m === 3) return [
+      `접선과 곡선 사이의 영역을 먼저 표시합니다. 접점 $t=${v.t}$는 중근이고, $2t+q=3m$에서 재교점은 $q=${v.q}$입니다.`,
+      `두 그래프의 차는 $a(x-t)^2(x-q)$입니다. 가로 길이 $L=|q-t|=${v.L}$로 정규화하면 넓이는 $|a|L^4\\int_0^1u^2(1-u)du$로 줄어듭니다. 제곱 인수는 항상 접점 쪽에 붙습니다.`,
+      `$\\int_0^1u^2(1-u)du=1/12$이므로 접선 넓이 $S=${cxNum(v.S)}$. 중심을 지나는 수평선의 양쪽 영역은 점대칭으로 같아 각각 $${cxNum(v.W)}$, 합은 $${cxNum(2*v.W)}$입니다.`
+    ];
+    if (m === 4) return [
+      `도함수 그래프의 두 영점 $\\alpha=${v.xa}$, $\\beta=${v.xb}$를 원함수의 극점과 수직으로 맞춥니다. 그 사이 도함수의 부호가 일정한지 먼저 확인합니다.`,
+      `$\\int_\\alpha^\\beta f'(x)dx=f(\\beta)-f(\\alpha)$이므로 도함수와 x축 사이의 넓이는 두 극값의 차의 절댓값입니다. 색칠한 넓이와 원함수의 세로 막대가 같은 양을 나타냅니다.`,
+      `가로 길이는 $${v.xb-v.xa}$, 도함수의 최고차항 계수는 $${cxNum(3*v.a)}$입니다. 따라서 $S=\\dfrac{|3a|}{6}(\\beta-\\alpha)^3=${cxNum(v.dy)}=\\Delta y$. 임의의 점에서도 도함수의 높이는 원함수 접선의 기울기입니다.`
+    ];
+    const w=where5(v);
+    return [
+      `삼차곡선의 중심 $I=(${v.m},${v.ym})$와 그 점에서의 접선을 그립니다. P를 지나는 접선의 접점이 합쳐지는 경계가 곡선과 이 직선입니다.`,
+      `접점 변수의 방정식 $G(t)=f(t)+f'(t)(${v.px}-t)-${v.py}=0$을 보면 $G'(t)=f''(t)(${v.px}-t)$. 두 극값의 높이는 $f(${v.px})-${v.py}$와 $l(${v.px})-${v.py}$이므로 두 경계 사이인지 비교하는 것으로 실근 수를 셀 수 있습니다.`,
+      `$x=${v.px}$에서 곡선 높이는 $${cxNum(w.fx)}$, 중심 접선 높이는 $${cxNum(w.lx)}$. P는 ${w.text}에 있으므로 접선은 $${v.n}$개입니다. 경계 위에서는 2개지만 중심 I 자체에서는 1개이며 접점을 중복해서 세지 않습니다.`
+    ];
+  }
+
   function sceneOf(m, def) {
     const V = VARS[m];
     const oldDraw = drawFor(m), oldView = viewFor(m), oldPanes = panesOf(m);
@@ -1295,7 +1337,7 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: examData[m].hint,
       actions: actionsCommon(),
       presets: presetsCommon,
-      steps: examData[m].steps,
+      steps: () => cbProblemSteps(m, V.vary.cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.text(V.vary.cur())}</div>`,
       problem: { tag: examData[m].tag, time: secs(m), text: () => cxProb(V.text(V.vary.cur())), answer: () => V.answer(V.vary.cur()) },
       vary: V.vary,
@@ -1312,7 +1354,7 @@ window.addEventListener('DOMContentLoaded', function () {
       view: (s, lab) => (lab && lab.tab !== 'explore' ? {} : oldView(s)),
       // 탐구 탭은 예전 그림 그대로, 정리·문제 탭은 변형 문제의 그림(문제 탭은 지문의 값만, 정리 탭은 단계마다 보조선)
       draw: (b, s, v, lab) => {
-        if (b.thumb || !lab || lab.tab === 'explore') { if (!b.thumb) cxBackToExplore(b, s, lab); oldDraw(b, s); } else V.draw(b, s, lab);
+        if (b.thumb || !lab || lab.tab === 'explore') { if (!b.thumb) cxBackToExplore(b, s, lab); oldDraw(b, s); } else { b.aspect = '1:1'; V.draw(b, s, lab); }
       },
       ...def
     };
@@ -1325,11 +1367,15 @@ window.addEventListener('DOMContentLoaded', function () {
     }),
     sceneOf(2, {
       id: 'oblique', title: '기울어진 접선의 2 : 1 내분', short: '접선의 2:1 내분',
+      aspect: 'free',
+      aspectNote: '탐구 탭은 움직인 T와 Q를 함께 볼 수 있도록 <b>가로·세로 축척을 따로</b> 조절합니다. 접선과 곡선의 교점, 가로 거리의 비는 유지되지만 눈에 보이는 각도는 실제 기울기 각도와 다릅니다. 문제·정리 탭은 가로·세로 축척이 같은 1:1 그림입니다.',
       question: '곡선 위의 점 T에서 접선을 그으면 곡선과 다시 만나는 점 Q는 대칭의 중심을 기준으로 어디에 놓일까?',
       controls: ['delta', 'a', 't']
     }),
     sceneOf(3, {
       id: 'area', title: '접선과의 넓이 · 수평선과의 넓이', short: '넓이',
+      aspect: 'free',
+      aspectNote: '탐구 탭은 접점과 재교점, 색칠한 영역을 함께 볼 수 있도록 <b>가로·세로 축척을 따로</b> 조절합니다. 가로 거리의 비와 두 영역의 넓이 비는 유지됩니다. 실제 넓이는 화면의 크기가 아니라 좌표의 눈금과 정적분으로 구합니다. 문제·정리 탭은 가로·세로 축척이 같은 1:1 그림입니다.',
       question: '접선과 곡선이 둘러싸는 넓이는 접점과 교점 사이 거리로, 대칭의 중심을 지나는 수평선이 나눈 두 부분의 넓이는 어떤 관계일까?',
       controls: ['delta', 'a', 't']
     }),
@@ -1346,7 +1392,62 @@ window.addEventListener('DOMContentLoaded', function () {
   ];
 
   /* ---------- 7. 실험실 등록 ---------- */
+  // Free exploration keeps its own model; problem/review always use the current generated variant.
+  const EXPLORE_STEPS = {
+    "box": [
+      "극대·극소를 확인하고 두 점의 중심 I와 가로 간격 h를 읽습니다.",
+      "수평 접점은 중근이므로 2t+q=3m입니다. 재교점을 찾으면 가로 간격이 같은 칸으로 나뉩니다.",
+      "중심 높이의 수평선에는 u(u²−3h²)=0을 사용합니다. 극값이 없는 경우에는 h와 이 간격비를 적용하지 않습니다."
+    ],
+    "oblique": [
+      "T의 접선과 삼차곡선의 재교점 Q를 표시합니다.",
+      "2t+q=3m에서 q−m=−2(t−m)입니다. 두 점은 중심의 반대쪽이고 가로 거리비가 1:2입니다.",
+      "t=m이면 차가 a(x−m)³이므로 삼중 접촉만 남고 별도 Q가 없습니다. 0:0에 1:2를 붙이지 않습니다."
+    ],
+    "area": [
+      "접점 t와 재교점 q 사이의 곡선·접선 영역을 봅니다.",
+      "차가 a(x−t)²(x−q)이므로 가로 길이 L=|q−t|로 정규화합니다. 제곱 인수는 좌우 순서와 무관하게 접점에 붙습니다.",
+      "정규화 적분값 1/12에서 S=|a|L⁴/12를 얻습니다. 중심 수평선 양쪽 영역은 점대칭으로 넓이가 같습니다."
+    ],
+    "sync": [
+      "도함수의 영점과 원함수의 극점을 수직으로 맞춰 봅니다.",
+      "부호가 일정한 두 영점 사이의 도함수 넓이가 원함수의 세로 변화량입니다.",
+      "정적분 기본정리로 극댓값−극솟값과 넓이를 연결합니다. 도함수의 높이는 대응하는 원함수 접선의 기울기입니다."
+    ],
+    "external": [
+      "변곡점의 접선과 삼차곡선을 접선 개수가 달라지는 두 경계로 봅니다.",
+      "접점 방정식의 두 극값 부호를 P와 경계의 세로 위치로 비교합니다.",
+      "두 경계 사이 3개, 경계 위 2개, 바깥 1개입니다. 변곡점 I에서는 두 경계가 만나지만 접선은 1개이며 접점을 중복해 세지 않습니다."
+    ]
+  };
+  const explorationModel = (sc, s, v) => {
+    return tex(`f(x)=${s.a}(x-(${s.m}))^3-3(${s.a})(${s.delta})(x-(${s.m}))+(${s.ym})`)+', '+tex('a\\ne0');
+  };
+  scenes.forEach((sc) => {
+    const view = sc.view, steps = sc.steps;
+    sc.startStep = 0;
+    sc.notesTitle = '현재 탐구 모델과 조건';
+    sc.guide = EXPLORE_STEPS[sc.id][0];
+    sc.steps = (s) => window.lab && window.lab.tab === 'explore'
+      ? EXPLORE_STEPS[sc.id]
+      : (typeof steps === 'function' ? steps(s) : steps);
+    if (sc.solution) {
+      sc.solution.quickTitle = '실전 풀이 · 그림의 구조 활용';
+      sc.solution.quickTag = '구조 풀이';
+    }
+    sc.view = (s, lab) => {
+      const v = typeof view === 'function' ? view(s, lab) || {} : view || {};
+      const explore = !lab || lab.tab === 'explore';
+      const open = lab && lab.tab === 'problem' ? lab._answerOpen() : s.step >= 3;
+      const note = explore ? '<b>자유 탐구 모델</b> '+explorationModel(sc,s,v)+'<br>이 탭의 함수와 조작값으로 구조를 실험합니다. 선택한 문항과 새 문제의 조건·도형·풀이는 문제/정리 탭에서 함께 바뀝니다.' : '';
+      // The canvas reveals its own reasoning stage. Derived answer cards wait for the final stage.
+      if (!open) return note ? { notes: note } : {};
+      return { ...v, notes: [note, v.notes].filter(Boolean).join('<br>') || undefined };
+    };
+  });
+
   APLab.createLab({
+    stagedReveal: true,
     id: 'calc1-cubic',
     title: '삼차함수 비율관계',
     courseName: '미적분Ⅰ',
