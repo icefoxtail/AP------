@@ -94,7 +94,7 @@
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
-    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
+    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref, leaderAnchor: o.leaderAnchor, leader: o.leader, noLeader: o.noLeader });
   }
   const phone = (b) => b.W < 560;
   const capSize = (b) => (phone(b) ? 14 : 17);
@@ -115,7 +115,7 @@
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     const metrics = labelMetrics(str, size), sh = metrics.height / 2, w = metrics.width, g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * sh + g;
-    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader, noLeader: o.noLeader });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V, A, B, o = {}) {
@@ -140,7 +140,10 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      const sg = d < 0 ? -1 : 1; let t = (sg * (la - a0)) % (PI * 2); if (t < 0) t += PI * 2;
+      const markerR = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight ? Math.min(r * 0.62, 17) * Math.SQRT2 / k : rw;
+      const leaderAnchor = o.noMark ? V : { x: V.x + Math.cos(am) * markerR, y: V.y + Math.sin(am) * markerR };
+      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor, leader: t > Math.abs(d) + 1e-6, noLeader: o.noLeader });
     }
     return { deg, mid: am };
   }
@@ -154,7 +157,7 @@
     b.path([p2, q2], { color: col, width: 2.4 });
     const size = o.size || 16, metrics = labelMetrics(str, size), w = metrics.width;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * metrics.height / 2 + 12;
-    T(b, mid(p2, q2), str, { color: col, size, dx: n.x * d, dy: n.y * d });
+    T(b, mid(p2, q2), str, { color: col, size, dx: n.x * d, dy: n.y * d, leaderAnchor: mid(p2, q2) });
   }
   function tick(b, p, q, count = 1, color = 'amber') { b.ticks(p, q, { color, count, size: 7 }); }
   function par(b, p, q, count = 1, color = 'green', f = 0.5) {
@@ -353,10 +356,10 @@
     return { width, height: size * (fractions ? 2.2 : 1.12) };
   }
   function drawResolved(b, run) {
-    if (b.thumb) { run(); return; }
+    if (b.thumb || b._bbox) { run(); return; }
     const oText = b.text, oPoint = b.point, hadT = Object.prototype.hasOwnProperty.call(b, 'text'), hadP = Object.prototype.hasOwnProperty.call(b, 'point');
     const q = [], marks = [];
-    b.text = (p, str, o = {}) => { if (str == null || str === '') return; q.push({ p, str, o }); };
+    b.text = (p, str, o = {}) => { if (str == null || str === '' || o.alpha === 0) return; q.push({ p, str, o }); };
     b.point = function (p, o = {}) { marks.push({ p, r: (o.r || 5) }); return oPoint.call(b, p, o); };
     try { run(); } finally {
       if (hadT) b.text = oText; else delete b.text;
@@ -387,6 +390,14 @@
     };
     q.filter(isName).forEach(place);
     q.filter((e) => !isName(e)).forEach(place);
+    // 배치로 밀려난 값은 해당 선분/각에, 점 이름은 실제 점에 연결합니다.
+    // 라벨 전체를 그리기 전에 가는 실선으로 그려 수학적 보조선과 구별합니다.
+    q.forEach((e) => {
+      const source = e.o.leaderAnchor || (isName(e) ? e.p : null);
+      if (!source || e.o.noLeader || !b.leader || !(e.o.leader || Math.hypot(e.ox || 0, e.oy || 0) > 12)) return;
+      const r = rectOf(e, e.ox || 0, e.oy || 0), at = b.toS(b._P ? b._P(e.p) : e.p);
+      b.leader(b.toS(b._P ? b._P(source) : source), { x: at.x + (r.x0 + r.x1) / 2 - e.p.x * k, y: at.y + (r.y0 + r.y1) / 2 - e.p.y * k }, { px: true, width: r.x1 - r.x0, height: r.y1 - r.y0, color: 'muted', alpha: Math.min(.78, e.o.alpha == null ? 1 : e.o.alpha) });
+    });
     q.forEach((e) => oText.call(b, e.p, e.str, { ...e.o, dx: (e.o.dx || 0) + (e.ox || 0), dy: (e.o.dy || 0) + (e.oy || 0) }));
   }
 

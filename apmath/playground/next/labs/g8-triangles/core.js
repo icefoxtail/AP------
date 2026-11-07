@@ -101,7 +101,7 @@
       const y = sc.y + dy, hh = size * 0.62;
       if (y - hh < 3) dy += 3 - (y - hh); else if (y + hh > b.H - 3) dy -= y + hh - (b.H - 3);
     }
-    b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
+    b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref, leaderAnchor: o.leaderAnchor, leader: o.leader || Math.hypot(dx - (o.dx || 0), dy - (o.dy || 0)) > 16, noLeader: o.noLeader });
   }
   // 그림 아래 설명 줄: 화면 폭보다 길면 가장 가까운 구분(→, 쉼표, 공백)에서 두 줄로 나눕니다.
   function rowT(b, p, str, o = {}) {
@@ -139,7 +139,7 @@
     if (n.x * (m.x - c.x) + n.y * (m.y - c.y) < 0) n = mul(n, -1);
     const w = textW(str, size), g = o.gap == null ? 12 : o.gap;
     const d = Math.abs(n.x) * (w / 2) + Math.abs(n.y) * size * 0.55 + g;
-    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha });
+    T(b, m, str, { color: o.color || 'ink', size, dx: n.x * d + (o.dx || 0), dy: n.y * d + (o.dy || 0), alpha: o.alpha, leaderAnchor: m, leader: o.leader, noLeader: o.noLeader });
   }
   /* 각 표시: 꼭짓점 V 에서 반직선 VA → VB 방향의 작은 각. rings = 호 개수(같은 각은 같은 개수). 직각이면 네모. */
   function ang(b, V, A, B, o = {}) {
@@ -164,16 +164,11 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
-      { // 라벨이 각의 부채꼴 밖에 놓이면(좁은 각), 호의 이등분선 위에서 시작하는 짧은 지시선으로 그 각을 가리켜요
-        const sgn0 = d < 0 ? -1 : 1; let tt0 = (sgn0 * (la - a0)) % (PI * 2); if (tt0 < 0) tt0 += PI * 2;
-        if (tt0 > Math.abs(d) + 1e-6 && !o.noLeader) {
-          const kk = b.k || 60, from = { x: V.x + Math.cos(am) * (rw + 3 / kk), y: V.y + Math.sin(am) * (rw + 3 / kk) }, cx = V.x + Math.cos(la) * dst / kk, cy = V.y + Math.sin(la) * dst / kk;
-          const vx = cx - from.x, vy = cy - from.y, ln = Math.hypot(vx, vy) || 1, ux = vx / ln, uy = vy / ln;
-          const edge = (Math.abs(ux) * (textW(o.label, size) / 2 + 3) + Math.abs(uy) * (size * 0.6 + 2)) / kk;
-          if (ln > edge + 4 / kk) b.path([from, { x: cx - ux * edge, y: cy - uy * edge }], { color: col, width: 1.8, alpha: o.alpha });
-        }
-      }
-      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
+      // 충돌 배치가 끝난 뒤에도 같은 각을 가리키도록 실제 호/직각 표시의 위치를 보존합니다.
+      const sgn0 = d < 0 ? -1 : 1; let tt0 = (sgn0 * (la - a0)) % (PI * 2); if (tt0 < 0) tt0 += PI * 2;
+      const markerR = !o.big && Math.abs(deg - 90) < 0.6 && !o.noRight && o.label !== 'x' ? Math.min(r * 0.62, 17) * Math.SQRT2 / k : rw;
+      const leaderAnchor = o.noMark ? V : { x: V.x + Math.cos(am) * markerR, y: V.y + Math.sin(am) * markerR };
+      T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha, leaderAnchor, leader: tt0 > Math.abs(d) + 1e-6, noLeader: o.noLeader });
     }
     return { deg, mid: am };
   }
@@ -285,7 +280,7 @@
     [[p, p2], [q, q2]].forEach(([u, v]) => line(b, u, add(v, mul(n, e)), col, 1.6, { alpha: 0.6 }));
     const u = unit(sub(q, p)), a1 = 7 / k;
     [p2, q2].forEach((z, i) => { const d = i ? -1 : 1; b.path([add(add(z, mul(u, a1 * d)), mul(n, a1 * 0.5)), z, add(add(z, mul(u, a1 * d)), mul(n, -a1 * 0.5))], { color: col, width: 2 }); });
-    T(b, mid(p2, q2), str, { color: col, size: o.size || 16, dx: n.x * (o.gap == null ? 14 : o.gap), dy: n.y * (o.gap == null ? 14 : o.gap) });
+    T(b, mid(p2, q2), str, { color: col, size: o.size || 16, dx: n.x * (o.gap == null ? 14 : o.gap), dy: n.y * (o.gap == null ? 14 : o.gap), leaderAnchor: mid(p2, q2) });
   }
   // 접힌 가로 이동 없이 같은 자리에서 서서히 나타남
   const fade = (t) => clamp(t, 0, 1);
@@ -380,7 +375,7 @@
       return b;
     };
     try { draw(); } finally { b.text = original; }
-    const boxes = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
+    const boxes = [], placed = [], overlap = (a, z) => Math.max(0, Math.min(a.r, z.r) - Math.max(a.l, z.l)) * Math.max(0, Math.min(a.b, z.b) - Math.max(a.t, z.t));
     const isName = (s) => /^(?:[A-Z](?:[′']|=[A-Z])?|ℓ)$/.test(s);
     const measure = (str, o) => {
       const size = Math.max(14, o.size || 16), scaled = size * (b.fs || 1) * (b._ts ? b._ts() : 1), c = b.ctx;
@@ -417,14 +412,16 @@
         const score = boxes.reduce((n, q) => n + overlap(q, box) * 1000, 0) + (x - x0) ** 2 + (y - y0) ** 2;
         if (!best || score < best.score) best = { x, y, box, score };
       }
-      if (!long && Math.hypot(best.x - x0, best.y - y0) > 16) {
-        const from = isName(str) ? anchor : { x: x0, y: y0 }, dx = best.x - from.x, dy = best.y - from.y, d = Math.hypot(dx, dy) || 1;
-        const edge = Math.min(d, Math.abs(dx / d) * m.width / 2 + Math.abs(dy / d) * m.height / 2 + 3);
-        if (d > edge + 3) line(b, b.toW(from.x, from.y), b.toW(best.x - dx / d * edge, best.y - dy / d * edge), o.color || 'ink', 1, { alpha: .45 });
-      }
-      original.call(b, p, str, { ...o, size: m.size, dx: best.x - anchor.x - shift, dy: best.y - anchor.y });
+      const source = o.leaderAnchor || (isName(str) ? p : null);
+      const needsLeader = source && !o.noLeader && !long && (o.leader || Math.hypot(best.x - x0, best.y - y0) > 16);
+      placed.push({ p, str, o, m, anchor, shift, best, source: needsLeader ? source : null });
       boxes.push({ ...best.box, text: str });
     }
+    // 모든 지시선을 글자 아래에 그립니다. 예전 글자 위치를 임의의 대상처럼 연결하지 않습니다.
+    for (const e of placed) if (e.source && b.leader) {
+      b.leader(b.toS(b._P ? b._P(e.source) : e.source), { x: e.best.x, y: e.best.y }, { px: true, width: e.m.width, height: e.m.height, color: 'muted', alpha: Math.min(.78, e.o.alpha == null ? 1 : e.o.alpha) });
+    }
+    for (const e of placed) original.call(b, e.p, e.str, { ...e.o, size: e.m.size, dx: e.best.x - e.anchor.x - e.shift, dy: e.best.y - e.anchor.y });
     b.trLabels = boxes;
   }
 

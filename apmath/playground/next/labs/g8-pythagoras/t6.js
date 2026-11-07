@@ -24,6 +24,19 @@
   const lenOr = (v2) => (isSqN(v2) ? isq(v2) : null);
   const f = (v) => texRat(v); // 분수(쌓은 분수)
 
+  // 분할된 밑변의 전체 길이: 양 끝점에 결속하고, 부분 길이와 H/I 이름 아래에
+  // 별도 직선 치수를 놓습니다. 가운데 글자 자리는 비워 선과 숫자가 겹치지 않습니다.
+  function baseDim(b, p, q, str, size = 17) {
+    const k = b.k || 60, u = unit(sub(q, p)), n = pt(-u.y, u.x), off = 44 / k;
+    const p2 = add(p, mul(n, off)), q2 = add(q, mul(n, off)), m = mid(p2, q2);
+    const width = b.annotationSize ? b.annotationSize(str, { size, weight: 800 }).width : String(str).length * size * .64 + 6;
+    const gap = (width / 2 + 5) / k, room = Math.hypot(q.x - p.x, q.y - p.y) / 2;
+    [[p, p2], [q, q2]].forEach(([at, end]) => line(b, at, add(end, mul(n, 4 / k)), 'muted', 1.1, { alpha: .65 }));
+    if (room > gap) { line(b, p2, sub(m, mul(u, gap)), 'muted', 1.35); line(b, add(m, mul(u, gap)), q2, 'muted', 1.35); }
+    [p2, q2].forEach((at) => line(b, sub(at, mul(n, 4 / k)), add(at, mul(n, 4 / k)), 'muted', 1.35));
+    T(b, m, str, { size, color: 'sky' });
+  }
+
   /* ====================================================================== 1. 이등변삼각형의 높이 */
   const ISO_CHIPS = [[10, 13], [16, 17], [12, 10], [24, 13], [14, 25], [18, 15], [20, 26], [16, 10]];
   const isoOf = (s) => {
@@ -42,7 +55,7 @@
     draw(b, s, M, C) {
       const { bc, half, leg, h2, hi, area, kind } = M, prob = C.problem;
       const h = Math.sqrt(h2), Bp = pt(-half, 0), Cp = pt(half, 0), Ap = pt(0, -h), H = pt(0, 0);
-      fit(b, bboxOf([Ap, Bp, Cp, pt(0, 1.2)]), { t: 40, b: 40, l: 44, r: 44 });
+      fit(b, bboxOf([Ap, Bp, Cp, pt(0, 1.2)]), { t: 40, b: 52, l: 44, r: 44 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [Ap, Bp, Cp], 'ink', 0.07);
       if (st(1)) { fillPoly(b, [Ap, Bp, H], 'sky', 0.22); fillPoly(b, [Ap, H, Cp], 'green', 0.2); }
@@ -52,7 +65,7 @@
       if (st(2) && !prob) { tick(b, Bp, H, 1, 'sky'); tick(b, H, Cp, 1, 'sky'); }
       [[Ap, 'A', 0, -1], [Bp, 'B', -1, 1], [Cp, 'C', 1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 16, size: 17 }); });
       // 길이 (그림 안): 문제 kind=0 은 BC, AB 를 주고 높이 x, kind=1 은 BC 와 넓이를 주고 AB 를 구함
-      T(b, mid(Bp, Cp), `${bc}`, { dy: 36, size: 17, color: 'sky' });
+      baseDim(b, Bp, Cp, `${bc}`);
       if (C.full || kind === 0 || C.answer) { sideTag(b, Ap, Bp, Cp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Ap, Cp, Bp, `${leg}`, { color: 'amber', size: 17, gap: 12 }); }
       else sideTag(b, Ap, Bp, Cp, 'x', { color: 'amber', size: 18, gap: 12 });
       if (st(1) || prob) {
@@ -112,7 +125,7 @@
     draw(b, s, M, C) {
       const { u, h, d1, d2, v, l1, l2, l1i, l2i, kind } = M, prob = C.problem;
       const Bp = pt(0, 0), Cp = pt(v, 0), Ap = pt(d1, -h), Dp = pt(d1 + u, -h), H = pt(d1, 0), I = pt(d1 + u, 0);
-      fit(b, { x0: -0.2, x1: v + 0.2, y0: -h, y1: 0.8 }, { t: 36, b: 40, l: 40, r: 40 });
+      fit(b, { x0: -0.2, x1: v + 0.2, y0: -h, y1: 0.8 }, { t: 36, b: 54, l: 40, r: 40 });
       const st = (n) => !C.review || C.step >= n;
       fillPoly(b, [Bp, Cp, Dp, Ap], 'ink', 0.07);
       if (st(1)) { fillPoly(b, [Bp, H, Ap], 'sky', 0.22); fillPoly(b, [I, Cp, Dp], 'green', 0.2); }
@@ -122,13 +135,13 @@
       [[Ap, 'A', -1, -1], [Dp, 'D', 1, -1], [Cp, 'C', 1, 1], [Bp, 'B', -1, 1]].forEach(([q, nm, dx, dy]) => { b.point(q, { color: 'ink', r: 4.5 }); T(b, q, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       if (st(1)) { T(b, H, 'H', { dx: -4, dy: 17, size: 15, color: 'rose' }); T(b, I, 'I', { dx: 4, dy: 17, size: 15, color: 'rose' }); }
       T(b, mid(Ap, Dp), `${u}`, { dy: -14, size: 17, color: 'sky' });
-      if (C.full || kind === 0) T(b, mid(Bp, Cp), `${v}`, { dy: 34, size: 16, color: 'sky' });
+      if (C.full || kind === 0) baseDim(b, Bp, Cp, `${v}`, 16);
       // 문제 kind=0 : AD, BC, AB, BH 를 주고 높이 x (AH) / kind=1 : 이등변사다리꼴 AD, BC, 높이를 주고 둘레
       if (C.givens && kind === 0) {
         sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 16, color: 'green' });
         T(b, lerp(Ap, H, 0.5), C.answer ? `x=${h}` : 'x', { dx: C.answer ? 26 : 14, size: 18, color: 'rose' });
       } else if (C.givens && kind === 1) {
-        T(b, mid(Bp, Cp), `${v}`, { dy: 34, size: 16, color: 'sky' }); T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
+        baseDim(b, Bp, Cp, `${v}`, 16); T(b, lerp(Ap, H, 0.5), `${h}`, { dx: 14, size: 17, color: 'rose' });
         if (C.review && C.step >= 3) { T(b, mid(Bp, H), `${d1}`, { dy: 16, size: 15, color: 'green' }); T(b, mid(I, Cp), `${d2}`, { dy: 16, size: 15, color: 'green' }); }
         if (C.review && C.step >= 4) { sideTag(b, Bp, Ap, Cp, `${l1i}`, { color: 'amber', size: 17, gap: 12 }); sideTag(b, Cp, Dp, Bp, `${l2i}`, { color: 'amber', size: 17, gap: 12 }); }
       } else if (!prob) {

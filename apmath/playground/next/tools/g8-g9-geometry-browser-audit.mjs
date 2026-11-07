@@ -198,6 +198,15 @@ try {
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); lab.setStep(1); });
           await measure(scene, 'step-1');
+          if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--step-1.png`);
+          const steps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
+          if (steps > 2) {
+            await page.evaluate(n => lab.setStep(Math.ceil(n / 2)), steps);
+            await measure(scene, 'review-middle');
+            if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--review-middle.png`);
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'review-middle', reason: 'no-intermediate-step' });
+          }
         }
         if (await page.evaluate(() => lab._tabAvailable('problem'))) {
           await page.evaluate(() => { lab.setStep(0); lab.setTab('problem'); });

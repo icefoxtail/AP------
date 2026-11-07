@@ -17,12 +17,13 @@ const observe = argv.includes('--baseline-observe');
 const allUnits = ['g7-points-lines', 'g7-parallel', 'g7-spatial', 'g7-construction', 'g7-area', 'g7-polygons', 'g7-circle-sector', 'g7-polyhedra', 'g7-surface-volume', 'g7-solids'];
 const units = (arg('--units', allUnits.join(','))).split(',').filter(Boolean);
 if (!units.length || units.some(x => !allUnits.includes(x))) throw Error('Unknown or empty G7 unit list');
-const runs = [
+const viewports = [
   { name: 'pc', width: 1440, height: 900 },
   { name: 'tablet-portrait', width: 820, height: 1180 },
   { name: 'tablet-landscape', width: 1024, height: 768 },
   { name: 'mobile', width: 390, height: 844 }
 ];
+const runs = viewports.flatMap(v => ['board', 'paper'].map(theme => ({ ...v, name: `${v.name}-${theme}`, theme })));
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => {
   const p = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
@@ -41,13 +42,13 @@ try {
     report.units[unit] = { scenes: [], observations: [], captures: [], interactions: [] };
     const dest = report.units[unit];
     for (const run of runs) {
-      const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: run.name !== 'pc', deviceScaleFactor: 1 });
+      const ctx = await browser.newContext({ viewport: { width: run.width, height: run.height }, hasTouch: !run.name.startsWith('pc-'), deviceScaleFactor: 1 });
       const page = await ctx.newPage();
       await page.addInitScript(() => { let seed = 1701; Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; });
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) errors.push(`HTTP ${r.status()} ${r.url()}`); });
-      await page.goto(`${base}${unit}.html?theme=board`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}${unit}.html?theme=${run.theme}`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.lab && lab.board && lab.list.length);
       await page.evaluate(() => document.fonts.ready);
       const measurementControl = await page.evaluate(() => {
@@ -65,19 +66,34 @@ try {
       await page.evaluate(() => {
         const b = lab.board, original = b._text;
         window.__g7Labels = [];
+        window.__g7TextBox = function (x, y, text, o = {}) {
+          const size=(o.size||13)*b.fs*b._ts(), c=b.ctx, weight=o.weight||750;
+          const segs=b._fracSplit(String(text)); let width=0, fractionSize=0, gap=0;
+          c.save();c.font=`${weight} ${size}px ${b.font}`;
+          if(segs){
+            fractionSize=Math.max(size*.72,Math.min(size*.9,9.5));gap=fractionSize*.2;
+            for(const part of segs){c.font=`${weight} ${part.t!==undefined?size:fractionSize}px ${b.font}`;width+=part.t!==undefined?c.measureText(part.t).width:Math.max(c.measureText(part.n).width,c.measureText(part.d).width)+fractionSize*.34;}
+          }else width=c.measureText(String(text)).width;
+          c.restore();
+          const al=o.align||'center', bl=o.baseline||'alphabetic';
+          const x0=x+(al==='center'?-width/2:al==='right'||al==='end'?-width:0);
+          let top=bl==='middle'?-size/2:bl==='top'||bl==='hanging'?0:bl==='bottom'?-size:-size*.8,bottom=top+size;
+          if(segs){const mid=bl==='middle'?0:bl==='top'||bl==='hanging'?size*.5:bl==='bottom'?-size*.5:-size*.3;top=Math.min(top,mid-gap-fractionSize*.95);bottom=Math.max(bottom,mid+gap+fractionSize*.95);}
+          return {text:String(text),x0,y0:y+top,x1:x0+width,y1:y+bottom};
+        };
         b._text = function (x, y, text, o = {}, screen) {
           if (text != null && text !== '' && !screen && !this._bbox && !this.thumb) {
-            const size = (o.size || 13) * this.fs * this._ts(), c = this.ctx;
-            c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
-            const width = c.measureText(String(text)).width; c.restore();
-            const al = o.align || 'center', bl = o.baseline || 'alphabetic';
-            const x0 = x + (al === 'center' ? -width / 2 : al === 'right' || al === 'end' ? -width : 0);
-            const y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * .8);
-            window.__g7Labels.push({ text: String(text), x0, y0, x1: x0 + width, y1: y0 + size });
+            window.__g7Labels.push(window.__g7TextBox(x,y,text,o));
           }
           return original.apply(this, arguments);
         };
       });
+      const fractionControl=await page.evaluate(()=>{
+        const b=lab.board,o={size:16,baseline:'middle'},inside=__g7TextBox(b.W/2,b.H/2,'\\frac{12}{5}',o),outside=__g7TextBox(b.W+10,b.H/2,'\\frac{12}{5}',o);
+        return {inside,outside,pass:inside.x0>=0&&inside.x1<=b.W&&inside.y0>=0&&inside.y1<=b.H&&outside.x1>b.W+2&&inside.y1-inside.y0>16*b.fs*b._ts()};
+      });
+      dest.measurementControls.push({run:run.name,type:'stacked-fraction-bounds',...fractionControl});
+      if(!fractionControl.pass)throw Error('Stacked-fraction clipping positive/negative control failed');
       const settle = () => page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__g7Labels = []; lab.render(); });
       const capture = async filename => {
         // Full-page screenshots of a scrolled sticky stage can contain an artificial
@@ -161,7 +177,7 @@ try {
       for (const scene of scenes) {
         await page.evaluate(i => lab.goScene(i), scene.index);
         await measure(scene, 'initial');
-        if (targets.has(scene.id)) {
+        if (targets.has(scene.id) || run.name === 'mobile-paper') {
           const filename = `${unit}--${scene.id}--${run.name}--initial.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
           await capture(filename);
         }
@@ -169,6 +185,15 @@ try {
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); lab.setStep(1); });
           await measure(scene, 'step-1');
+          if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--step-1.png`);
+          const steps = await page.evaluate(() => { const x = lab.scene.steps; return (typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0; });
+          if (steps > 2) {
+            await page.evaluate(n => lab.setStep(Math.ceil(n / 2)), steps);
+            await measure(scene, 'review-middle');
+            if (targets.has(scene.id)) await capture(`${unit}--${scene.id}--${run.name}--review-middle.png`);
+          } else {
+            (dest.notApplicable ||= []).push({ id: scene.id, run: run.name, state: 'review-middle', reason: 'no-intermediate-step' });
+          }
         }
         if (await page.evaluate(() => lab._tabAvailable('problem'))) {
           await page.evaluate(() => { lab.setStep(0); lab.setTab('problem'); });
@@ -178,7 +203,7 @@ try {
         if (hasReview) {
           await page.evaluate(() => { lab.setTab('review'); const x = lab.scene.steps; lab.setStep((typeof x === 'function' ? x(lab.s, lab) : x)?.length || 0); });
           await measure(scene, 'review-final');
-          if (targets.has(scene.id)) {
+          if (targets.has(scene.id) || run.name === 'mobile-paper') {
             const filename = `${unit}--${scene.id}--${run.name}--review-final.png`.replace(/[^\p{L}\p{N}._-]/gu, '_');
             await capture(filename);
           }
@@ -311,7 +336,7 @@ try {
       }
       // A small movement can correctly remain in one snap region. Demonstrate
       // a different legal selection with native pointer events on desktop.
-      if (run.name === 'pc' && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
+      if (run.name.startsWith('pc-') && (unit === 'g7-spatial' || unit === 'g7-polyhedra')) {
         const probes = unit === 'g7-spatial'
           ? [['ref-edge', () => probeSpatialSelection(page, { sceneId: 's1-6', handleId: 'ref' })], ['target-edge', () => probeSpatialSelection(page, { sceneId: 's1-7', handleId: 'tgt' })]]
           : [['regular-solid-cell', () => probePolyhedronCell(page)]];
