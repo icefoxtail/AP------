@@ -26,7 +26,7 @@
 /* ==========================================================================
    기하 · 공간좌표 3D (AP Math Lab 2.0 이식본)
    원본: labs/기하와벡터/공간좌표_3D.html
-   - 문제·단계·두 풀이(examData), 장면 그리기(renderMode1~4), 하단 띠 데이터(makeTapeData)는 원본 그대로입니다.
+   - 원문 문제와 정답은 보존하고, 보조선 공개·현재 탐구 단계·경계 판정·변형 표시를 학생용 경로에서 연결합니다.
    - 원본의 수학 좌표(x, y, z: z가 위쪽)와 draw3D… 함수 이름·인자는 그대로 두고, 실제 그리기만 3D 무대 도우미(apl-space.js)가 맡습니다.
    - 바뀐 점: 빈 곳을 끌면 회전(무대 공통 기능), 두 손가락 확대, 원근 대신 직교 투영(공간도형 3D와 같음),
      하단 띠는 그림 아래 별도 줄, 그림은 점·라벨이 모두 들어오도록 자동 맞춤, 분수는 KaTeX 라벨.
@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function () {
           steps: `① 중심 ${tex('C(0,0,3)')}에서 ${tex('xy')}평면까지의 수선의 발은 ${tex('H(0,0,0)')}, 거리 ${tex('CH=d=3')}이다. 평면 위 교점 ${tex('P')}에 대해 ${tex('CH\\perp HP')}이므로 먼저 단면의 직각삼각형을 확인한다.<br/>
 ② 반지름 ${tex('CP=5')}이므로 ${tex('HP^2=CP^2-CH^2=25-9=16')}; 따라서 ${tex('r=HP=4')}. 구의 방정식에 ${tex('z=0')}을 대입해도 같은 결과가 나온다:<br/>
 &nbsp;&nbsp;${tex('x^2+y^2=16, \\; z=0')}. 그러므로 교선은 중심 ${tex('H')}인 반지름 ${tex('4')}의 원, 넓이는 ${tex('16\\pi')}이다.<br/>
-③ 일반적으로 중심과 평면 사이 거리 ${tex('d')}에 대해 ${tex('d< R')}이면 원, ${tex('d=R')}이면 한 점(접함), ${tex('d>R')}이면 만나지 않는다.`,
+③ 일반적으로 중심과 평면 사이 거리 ${tex('d')}에 대해 ${tex('d\\lt R')}이면 원, ${tex('d=R')}이면 한 점(접함), ${tex('d\\gt R')}이면 만나지 않는다.`,
           warning: "주의: 평면이 좌표평면(z=0)이 아니라 비스듬한 평면이면 z = 0을 대입하는 방법을 쓸 수 없습니다. 이때는 중심에서 평면까지의 거리를 이용합니다."
         }),
         shortcut: () => ({
@@ -353,16 +353,18 @@ window.addEventListener('DOMContentLoaded', function () {
         const mathPy = 1 + t * 3;
         const curDist = Math.hypot(mathPx - 1, mathPy - 1, 2) + Math.hypot(3 - mathPx, 4 - mathPy, 4);
 
-        if(state.lens==='measure')drawFormulaFractionNear(P,'5','3');
+        const Pstar = { x: 5 / 3, y: 2, z: 0 };
+        draw3DPoint(Pstar, 5.5, '#fde047', t === 1 / 3 ? 'P = P*' : '최단점 P*', { x: 10, y: 18 });
+        if(state.lens==='measure')drawFormulaFractionNear(Pstar,'5','3');
       });
 
 
 
       // Step 2: xy평면 위의 경유점 P 및 실제 꺾인 경로 AP + PB
-      if (state.steps[2] || PROB) inPart(1,()=>{ // 문제 그림: xy평면 위를 움직이는 점 P를 거치는 경로 AP + PB
+      inPart(1,()=>{ // 주어진 경로 AP + PB는 보조선 0단계에도 보입니다.
         draw3DLine(A, P, '#34d399', 3.4, false, true);
         draw3DLine(P, B, '#34d399', 3.4, false, true);
-        draw3DPoint(P, 7.5, '#fbbf24', `경유점 P (t=${t.toFixed(2)})`, PROB ? { x: 11, y: 14 } : { x: -95, y: -12 }, { problemLabel: 'P' }); // 문제 그림은 짧은 이름 P라 점 바로 옆에
+        draw3DPoint(P, 7.5, '#fbbf24', PROB || !state.steps[3] ? 'P' : t === 1 / 3 ? '' : `P (t≈${t.toFixed(2)})`, PROB ? { x: 11, y: 14 } : { x: -95, y: -12 }, { problemLabel: 'P' }); // 문제 그림은 짧은 이름 P라 점 바로 옆에
       });
 
       draw3DPoint(A, 7, '#38bdf8', 'A(1, 1, 2)', { x: -75, y: -12 });
@@ -409,23 +411,23 @@ window.addEventListener('DOMContentLoaded', function () {
       });
 
       // Step 1: 선분 AB 연결
-      if (state.steps[1] || PROB) inPart(0,()=>{
+      inPart(0,()=>{
         draw3DLine(A, B, '#e2e8f0', 3.2, false, true);
       });
 
       // Step 3: xy평면 관통 교점 P(2, -3, 0) 강조 및 하단 세로 분수 배너
-      if (state.steps[3] || PROB) inPart(2,()=>{ // 문제 그림: 교점 P는 이름만(좌표·내분비는 묻는 값)
-        draw3DPoint(Phit, 7, '#34d399', '교점 P(2, -3, 0) [2:1 내분]', { x: 14, y: -12 }, { problemLabel: 'P' });
+      inPart(2,()=>{ // 교점은 처음부터 이름만, 좌표와 비는 마지막 단계에서 공개합니다.
+        draw3DPoint(Phit, 7, '#34d399', state.steps[3] ? 'P(2, −3, 0)' : 'P', { x: 14, y: -12 }, { problemLabel: 'P' });
 
-        if(state.lens==='measure')drawFormulaFractionNear(Phit,'2×4 + 1×(-2)','2+1');
+        if(state.steps[3] && state.lens==='measure')drawFormulaFractionNear(Phit,'2×4 + 1×(-2)','2+1');
       });
 
 
 
       draw3DPoint(A, 7, '#38bdf8', 'A(-2, 1, 4)', { x: -85, y: -12 });
       draw3DPoint(B, 7, '#f472b6', 'B(4, -5, -2)', { x: 12, y: 16 });
-      if (Math.abs(t - 2 / 3) > 0.02) {
-        draw3DPoint(P, 6.5, '#fbbf24', `점 P (t=${t.toFixed(2)})`, { x: 10, y: -10 }, { answer: true });
+      if (t !== 2 / 3) {
+        draw3DPoint(P, 6.5, '#fbbf24', `탐구점 X (t≈${t.toFixed(2)})`, { x: 10, y: -10 }, { answer: true });
       }
     }
 
@@ -447,12 +449,10 @@ window.addEventListener('DOMContentLoaded', function () {
       const P = { x: rSec, y: 0, z: 0 }; // 교선원 위의 대표점 P
 
       // Step 1: 3D 구 와이어프레임 및 중심 C
-      if (state.steps[1]) inPart(0,()=>{
-        draw3DSphereWireframe(C, R);
-      });
+      inPart(0,()=>{ draw3DSphereWireframe(C, R); });
 
       // Step 2: xy평면과 만나서 생기는 교선원(Section Circle) 렌더링
-      if (state.steps[2] && rSec > 0.05) inPart(1,()=>{
+      if (state.steps[2] && rSec > 0) inPart(1,()=>{
         const N = 48;
         const secPts = [];
         for (let i = 0; i < N; i++) {
@@ -463,11 +463,11 @@ window.addEventListener('DOMContentLoaded', function () {
       });
 
       // Step 3: 피타고라스 직각삼각형 ΔCHP (빗변 R = 5, 높이 d, 밑변 r)
-      if (state.steps[3] && mathD <= mathR + 1e-9) inPart(2,()=>{
-        if (mathD < mathR - 1e-9) draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
+      if (state.steps[3] && mathD <= mathR) inPart(2,()=>{
+        if (mathD < mathR) draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
         draw3DLine(C, H, '#f472b6', 3.6, false, true); // 거리 d
-        if (mathD < mathR - 1e-9) draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
-        if (mathD <= mathR + 1e-9) draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 교선원 위 점까지의 구 반지름 R = 5
+        if (mathD < mathR) draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
+        if (mathD <= mathR) draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 교선원 위 점까지의 구 반지름 R = 5
 
         if (d > 0.15 && rSec > 0.15) {
           draw3DRightAngle(H, C, P, 0.38, '#fbbf24');
@@ -477,10 +477,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-      draw3DPoint(C, 6.5, '#f472b6', `구 중심 C(0,0,${mathD.toFixed(1)})`, { x: 12, y: -10 });
-      draw3DPoint(H, 5.5, '#34d399', '수선의 발 H(0,0,0)', { x: -115, y: 18 }, { answer: true });
-      if (mathD < mathR - 1e-9) draw3DPoint(P, 6.5, '#fbbf24', `교선원 위 P (r≈${mathR_sec.toFixed(2)})`, { x: 12, y: 16 }, { answer: true });
-      else if (Math.abs(mathD-mathR) <= 1e-9) draw3DPoint(H, 6.5, '#fbbf24', '접점 H (r=0)', { x: 12, y: 16 }, { answer: true });
+      draw3DPoint(C, 6.5, '#f472b6', d === 0 && state.steps[2] ? 'C = H (0,0,0)' : `C(0,0,${String(mathD)})`, { x: 12, y: -10 });
+      if (state.steps[2] && !PROB) {
+        if (d > 0) draw3DPoint(H, 5.5, '#34d399', d === R ? '접점 H' : 'H(0,0,0)', { x: -80, y: 18 });
+        if (d < R) draw3DPoint(P, 6.5, '#fbbf24', state.steps[3] ? `P (r≈${mathR_sec.toFixed(3)})` : 'P', { x: 12, y: 16 });
+      }
     }
 
     // =========================================================================
@@ -512,15 +513,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const theta=state.theta4;
       const pq=Math.sqrt(34-30*Math.cos(theta));
       // Step 1: 구 와이어프레임 및 중심 C, 외부 점 P
-      if (state.steps[1]) inPart(0,()=>{
-        draw3DSphereWireframe(C, R);
-      });
+      inPart(0,()=>{ draw3DSphereWireframe(C, R); });
 
       // Step 2: 중심 관통선 및 최대(Q_max, 8), 최소(Q_min, 2) 표시
       if (state.steps[2]) inPart(1,()=>{
         draw3DLine(Qmax, P, 'rgba(52, 211, 153, 0.75)', 2.4, true);
-        draw3DPoint(Qmax, 6, '#34d399', '최대 Q_max (d+R = 8)', { x: -135, y: 18 });
-        draw3DPoint(Qmin, 6, '#f43f5e', '최소 Q_min (d-R = 2)', { x: 12, y: 16 });
+        draw3DPoint(Qmax, 6, '#34d399', sameAngle(theta, Math.PI) ? 'Q = Qmax' : 'Qmax', { x: -135, y: 18 });
+        draw3DPoint(Qmin, 6, '#f43f5e', (sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) ? 'Q = Qmin' : 'Qmin', { x: 12, y: 16 });
       });
 
       // Step 3: 접선 PT (길이 l = 4) 및 직각삼각형 ΔCTP (∠CTP = 90°)
@@ -532,7 +531,7 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DCircle(circleCenter,12/5,basisU,basisV,'#fbbf24','rgba(251,191,36,.17)',2.8);
         const Tp={x:R*Math.cos(angCP-alpha),y:0,z:R*Math.sin(angCP-alpha)};
         draw3DLine(P,Tp,'rgba(251,191,36,.7)',2,true);
-        draw3DPoint(Tp,5,'#fde68a',"대칭 접점 T′",{x:12,y:14});
+        draw3DPoint(Tp,5,'#fde68a',sameAngle(theta, 2 * Math.PI - alpha) ? 'Q = T′' : 'T′',{x:12,y:14});
         draw3DPolygon([C, T, P], 'rgba(251, 191, 36, 0.22)');
         draw3DLine(C, T, '#f472b6', 3.2, false, true); // 반지름 R = 3
         draw3DLine(P, T, '#fbbf24', 3.6, false, true); // 접선 l = 4
@@ -541,7 +540,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // [표시 보강] 접점 원 반지름 공식 R·l/d 에 쓰이는 ∠TCP(cos = R/d = 3/5)를 C에서 호와 값으로 표시
         draw3DAngleArc(C, T, P, 0.9, '#fde047', `${(Math.acos(3 / 5) * R2D).toFixed(1)}°`);
 
-        draw3DPoint(T, 6.5, '#fbbf24', '접점 T (∠CTP=90°, PT=4)', { x: -65, y: -14 });
+        draw3DPoint(T, 6.5, '#fbbf24', sameAngle(theta, alpha) ? 'Q = T' : 'T', { x: -65, y: -14 });
 
         if(state.lens==='measure')drawFormulaFractionNear(circleCenter,'12','5');
       });
@@ -550,7 +549,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       // 동점 Q 표시
       draw3DLine(P, Q, 'rgba(255,255,255,0.45)', 1.6, true);
-      draw3DPoint(Q, 5.5, '#e2e8f0', `Q (PQ=${pq.toFixed(2)})`, { x: -18, y: -10 }, { problemLabel: 'Q' });
+      const namedQ = state.steps[2] && ((sameAngle(theta, 0) || sameAngle(theta, 2 * Math.PI)) || sameAngle(theta, Math.PI)) || state.steps[3] && (sameAngle(theta, alpha) || sameAngle(theta, 2 * Math.PI - alpha));
+      if (!namedQ) draw3DPoint(Q, 5.5, '#e2e8f0', state.steps[3] ? `Q (PQ≈${pq.toFixed(2)})` : 'Q', { x: -18, y: -10 }, { problemLabel: 'Q' });
       draw3DPoint(C, 6, '#38bdf8', '중심 C(0,0,0)', { x: -45, y: 22 });
       draw3DPoint(P, 7.5, '#fbbf24', '외부 점 P(4, 0, 3)', { x: 12, y: -10 });
     }
@@ -560,22 +560,22 @@ window.addEventListener('DOMContentLoaded', function () {
       if(state.mode===1){
         const t=state.t12,x=1+2*t,y=1+3*t;
         const a=Math.hypot(x-1,y-1,2),b=Math.hypot(x-3,y-4,4);
-        return {caption:`AP + PB = ${(a+b).toFixed(2)} ≥ AB′ = 7.00 · 최단 P=(5/3,2,0)`,blocks:[{label:`AP ${a.toFixed(2)}`,value:a,color:'#34d399'},{label:`PB ${b.toFixed(2)}`,value:b,color:'#38bdf8'}],fraction:['5','3']};
+        return {caption:`AP + PB ≈ ${(a+b).toFixed(2)} ≥ AB′ = 7 · 최단 P=(5/3,2,0)`,blocks:[{label:`AP ≈ ${a.toFixed(2)}`,value:a,color:'#34d399'},{label:`PB ≈ ${b.toFixed(2)}`,value:b,color:'#38bdf8'}],fraction:['5','3']};
       }
       if(state.mode===2){
         const t=state.t12;
-        return {caption:`xy평면 교점 P(2,-3,0) · 내분비 4:2=2:1 · 현재 t=${t.toFixed(2)}, z=${(4-6*t).toFixed(2)}`,blocks:[{label:'AP · 2',value:2,color:'#38bdf8'},{label:'PB · 1',value:1,color:'#f472b6'}],fraction:['2×4−2','3']};
+        return {caption:`xy평면 교점 P(2,-3,0) · 내분비 4:2=2:1 · 현재 t≈${t.toFixed(2)}, z≈${(4-6*t).toFixed(2)}`,blocks:[{label:'AP · 2',value:2,color:'#38bdf8'},{label:'PB · 1',value:1,color:'#f472b6'}],fraction:['2×4−2','3']};
       }
       if(state.mode===3){
         const R=5,d=state.d3;
-        if(d>R+1e-9)return {caption:'d > R, 교점 없음',blocks:[]};
-        if(Math.abs(d-R)<=1e-9)return {caption:'d = R, 평면과 한 점에서 접함 (원형 단면 없음)',blocks:[{label:'d = R = 5',value:R,color:'#f472b6'}]};
+        if(d>R)return {caption:'d > R, 교점 없음',blocks:[]};
+        if(d===R)return {caption:'d = R, 평면과 한 점에서 접함 (원형 단면 없음)',blocks:[{label:'d = R = 5',value:R,color:'#f472b6'}]};
         const r=Math.sqrt(R*R-d*d),exact=Math.abs(d-Math.round(d))<1e-9&&Math.abs(r-Math.round(r))<1e-9;
         const marker=exact?'=':'≈';
         return {caption:`R² = d² + r² · 25 ${marker} ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${marker} ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${marker} ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
       }
       const pq=Math.sqrt(34-30*Math.cos(state.theta4));
-      return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점들이 이루는 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
+      return {caption:`현재 PQ ≈ ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점들이 이루는 원 r′=12/5`,blocks:[{label:`PQ ≈ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
     }
 
   /* ======================================================================
@@ -585,8 +585,8 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw3DAxesAndXYPlane(showGrid, ext) {
     // xy평면과 축은 장면의 점·구가 놓이는 범위(ext)까지만 그립니다. 네 모서리와 축 끝은 모두 맞춤 범위에 들어가 무대에서 잘리지 않습니다.
     const rx = Math.floor(ext.x), ry = Math.floor(ext.y);
+    draw3DPolygon([{ x: -rx, y: -ry, z: 0 }, { x: rx, y: -ry, z: 0 }, { x: rx, y: ry, z: 0 }, { x: -rx, y: ry, z: 0 }], 'rgba(16, 185, 129, 0.06)', 'rgba(52, 211, 153, 0.28)', 1.2);
     if (showGrid) {
-      draw3DPolygon([{ x: -rx, y: -ry, z: 0 }, { x: rx, y: -ry, z: 0 }, { x: rx, y: ry, z: 0 }, { x: -rx, y: ry, z: 0 }], 'rgba(16, 185, 129, 0.06)', 'rgba(52, 211, 153, 0.28)', 1.2);
       for (let i = -rx; i <= rx; i++) draw3DLine({ x: i, y: -ry, z: 0 }, { x: i, y: ry, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
       for (let i = -ry; i <= ry; i++) draw3DLine({ x: -rx, y: i, z: 0 }, { x: rx, y: i, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
     }
@@ -634,9 +634,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const c = SP.P(w(k.sphere.c)), R = k.sphere.R;
       pts.push({ x: c.x + R, y: c.y }, { x: c.x - R, y: c.y }, { x: c.x, y: c.y + R }, { x: c.x, y: c.y - R });
     }
-    const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
-    const bb = BRD.measure(drawFn);
-    BRD.setFocus(BRD.fitBox({ x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys), texts: bb ? bb.texts : [] }, { margin: 0.04, px: 6 }), false);
+    fitCoordinates(pts, drawFn, { margin: 0.04, px: 6 });
   }
   /* 원본 makeTapeData → 셸의 하단 띠 */
   function tapeOf(t) {
@@ -646,7 +644,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const RENDER = { 1: renderMode1, 2: renderMode2, 3: renderMode3, 4: renderMode4 };
   const TH4_TANGENT = Math.acos(3 / 5) * R2D; // 접점 T가 되는 각도 ≈ 53.13°
-  const th4Of = (d) => (Math.abs(d - TH4_TANGENT) < 0.3 ? Math.acos(3 / 5) : d / R2D);
+  const th4Of = (d) => d / R2D; // 접점에 가까운 각도도 실제 값으로 계산합니다. 정확한 접점은 전용 프리셋으로 선택합니다.
   function sync(s, m) {
     state.mode = m;
     state.t12 = m === 1 ? s.t1 : s.t2;
@@ -695,8 +693,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     if (m === 3) {
       const d = state.d3, r = Math.sqrt(Math.max(0, 25 - d * d));
-      const tangent = Math.abs(d - 5) <= 1e-9;
-      const relation = d < 5 - 1e-9 ? '교선은 원' : tangent ? '한 점에서 접함' : '교점 없음';
+      const tangent = d === 5;
+      const relation = d < 5 ? '교선은 원' : tangent ? '한 점에서 접함' : '교점 없음';
       return [
         { label: '구 반지름 R / 중심 높이 d', value: `R = 5.00 | d = ${d.toFixed(2)}`, color: 'sky' },
         { label: d > 5 ? '교선 판정' : relation, value: d > 5 ? 'd > R, 교점 없음' : tangent ? 'd = R, 접점 H (r = 0)' : `r = ${r.toFixed(3)}`, color: 'rose' },
@@ -716,7 +714,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 1) return [{ tex: "\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}" }, { tex: '\\min = 7.00', color: 'amber' }];
     if (m === 2) return [{ tex: 'm : n = |z_1| : |z_2| = 4 : 2 = 2 : 1' }, { tex: 'P(2, -3, 0)', color: 'amber' }];
     if (m === 3) {
-      const d = state.d3, relation = d < 5 - 1e-9 ? '교선은 원' : Math.abs(d - 5) <= 1e-9 ? '한 점에서 접함' : '교점 없음';
+      const d = state.d3, relation = d < 5 ? '교선은 원' : d === 5 ? '한 점에서 접함' : '교점 없음';
       return [{ tex: 'd \\le R: \\; r = \\sqrt{R^2 - d^2}' }, { tex: `d=${d.toFixed(1)}, \\; R=5, \\; \\text{${relation}}`, color: 'amber' }];
     }
     const deg = Math.round(state.theta4 * R2D), pq = Math.sqrt(34 - 30 * Math.cos(state.theta4));
@@ -726,8 +724,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const view = `시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}° — 빈 곳을 끌면 회전`;
     if (m !== 3) return { tone: 'info', text: view };
     const d = state.d3;
-    if (d > 5 + 1e-9) return { tone: 'warn', text: 'd > R: 평면이 구와 만나지 않습니다 (교점 없음)' };
-    if (Math.abs(d - 5) <= 1e-9) return { tone: 'key', text: 'd = R: 평면이 구에 한 점(H)에서 접합니다' };
+    if (d > 5) return { tone: 'warn', text: 'd > R: 평면이 구와 만나지 않습니다 (교점 없음)' };
+    if (d === 5) return { tone: 'key', text: 'd = R: 평면이 구에 한 점(H)에서 접합니다' };
     return { tone: 'info', text: view };
   }
 
@@ -739,8 +737,8 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
       tabs: { status: true }, // 「빈 곳을 끌면 회전」 안내(상태 배지)를 문제 탭에도 둠
-      guide: d.hint,
-      enter: (s) => { const c = iso(); s.yaw = c.yaw; s.pitch = c.pitch; s.t1 = 1 / 3; s.t2 = 2 / 3; s.d = 3; s.th = TH4_TANGENT; s.lens = 'all'; },
+      guide: (s, lab = window.lab) => coordGuide(m, s, lab),
+      enter: (s) => { const c = iso(); s.yaw = c.yaw; s.pitch = c.pitch; s.t1 = .5; s.t2 = .5; s.d = 3; s.th = 90; s.lens = 'all'; },
       controls: () => [tParam, 'yaw', 'pitch'],
       presets: () => {
         const c = CAMS(m);
@@ -750,39 +748,33 @@ window.addEventListener('DOMContentLoaded', function () {
         ] : [];
         const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
         return [
-          { group: '시점', label: '제1팔분면 입체로 보기', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
-          { group: '시점', label: '구의 중심을 지나는 단면 보기', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
-          { group: '시점', label: 'xy평면 위에서 보기', set: c.xy, ms: 600, on: (st) => near(st, c.xy) },
+          { group: '시점', label: '입체로 보기', set: c.iso, ms: 600, on: (st) => near(st, c.iso) },
+          { group: '시점', label: m < 3 ? '수직 단면 보기' : '중심 단면 보기', color: 'amber', set: c.section, ms: 600, on: (st) => near(st, c.section) },
+          { group: '시점', label: '위에서 보기', set: c.xy, ms: 600, on: (st) => near(st, c.xy) },
           { group: '강조해서 볼 요소', label: '전체', apply: (st) => { st.lens = 'all'; st.part = null; }, on: (st) => st.lens === 'all' },
           { group: '강조해서 볼 요소', label: '작도', apply: (st) => { st.lens = 'construction'; }, on: (st) => st.lens === 'construction' },
           { group: '강조해서 볼 요소', label: '길이·비율', apply: (st) => { st.lens = 'measure'; }, on: (st) => st.lens === 'measure' },
-          { group: '강조해서 볼 요소', label: '선택한 단계 확대', apply: (st) => { st.lens = 'focus'; if (st.part == null) st.part = 1; }, on: (st) => st.lens === 'focus' },
-          ...feet
+          { group: '강조해서 볼 요소', label: '선택 단계 강조', apply: (st) => { st.lens = 'focus'; if (st.part == null) st.part = 1; }, on: (st) => st.lens === 'focus' },
+          ...feet,
+          ...(m === 1 ? [{ group: '경계 위치', label: '최단 경로 맞추기', apply: (st) => { st.t1 = 1 / 3; } }] : m === 2 ? [{ group: '경계 위치', label: 'X를 평면 교점에 놓기', apply: (st) => { st.t2 = 2 / 3; } }] : m === 3 ? [{ group: '경계 위치', label: '평면에 접하게 하기', apply: (st) => { st.d = 5; } }] : [{ group: '경계 위치', label: 'Q를 접점에 놓기', apply: (st) => { st.th = TH4_TANGENT; } }])
         ];
       },
       actions: [{ id: 'spin', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '입체 자동 회전'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
       tick: (s, dt) => { if (!s.playing) return false; s.yaw += 34 * dt; if (s.yaw > 180) s.yaw -= 360; return true; },
-      steps: d.steps,
+      steps: (s, lab = window.lab) => coordSteps(m, s, lab),
       problem: {
         tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge,
         snap: () => ({ [tParam]: m === 1 ? 1 / 3 : m === 2 ? 2 / 3 : m === 3 ? 3 : TH4_TANGENT, ...iso() })
       },
-      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
-      view: (s) => {
-        sync(s, m);
-        return {
-          chips: chips(m).map((c) => ({ ...c, answer: true })), // 칩은 모두 풀이 식·답이라 문제 탭에서는 숨깁니다
-          status: statusOf(s, m),
-          readouts: readouts(m),
-          parts: d.steps.map((t, i) => ({ id: i + 1, name: `단계 ${i + 1}`, desc: t, color: PART_COLORS[i] }))
-        };
-      },
+      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '도형으로 줄이는 풀이', quickTag: '구조 활용', standard: d.textbook, quick: d.shortcut },
+      view: (s, lab = window.lab) => coordView(m, s, lab),
       draw: (b, s0, v, lab) => {
         BRD = b;
         OBST = m === 1;    // 장면 1: 수선의 발 이름표가 다른 점의 마커를 피하게
         PROB = !!lab && lab.tab === 'problem';
         // 문제 탭: 풀이 단계를 끄고, 문제에 주어진 값(구 중심 높이 d=3)만 고정합니다. 3번은 구와 교선원까지(step 2), 4번은 구까지(step 1)가 문제 그림입니다.
-        const s = APLab.problemState(lab, s0, m === 3 ? { d: 3, step: 2 } : m === 4 ? { step: 1 } : {});
+        const s = coordFixedState(s0, m, lab);
+        if (PROB) { s.step = 0; s.part = null; s.lens = 'all'; }
         sync(s, m);
         SP = APLab.space(b, cam(s), { problem: PROB });
         const k = KEY(m), ext = extOf(k), rect = { width: b.W, height: b.H };
@@ -791,13 +783,14 @@ window.addEventListener('DOMContentLoaded', function () {
         LQ = [];
         paint();
         flushLabels();
-        v.tape = { ...tapeOf(makeTapeData()), answer: true }; // 띠는 풀이·답이라 문제 탭에서는 숨깁니다
+        if (lab.tab === 'explore') coordHandles(b, s0, m, SP, lab);
+        v.tape = s.step >= 3 ? { ...tapeOf(makeTapeData()), answer: true } : null; // 띠는 풀이·답이라 문제 탭에서는 숨깁니다
       }
     };
   }
 
   /* ======================================================================
-     장면 5~8: 기출·킬러 모음에 더한 핵심 유형 (기존 장면 1~4는 그대로 둡니다)
+     장면 5~8: 수선·대칭·분점·공간좌표를 연결하는 핵심 유형
        5 점의 좌표: 수선의 발·대칭점·거리   (기출 유형: 매산고 22 1학기 기말 1번형)
        6 구의 방정식: 완전제곱·좌표평면에 접함·단면 (기출 유형: 매산고 22 1학기 기말 8·10번형)
        7 분점: 내분점·외분점·무게중심        (교육과정 L3-2.2.2 핵심 유형. EVIDENCE_DEBT: 학교 기출에는 단독 문항이 적고 하위 단계로 자주 쓰임)
@@ -919,18 +912,17 @@ window.addEventListener('DOMContentLoaded', function () {
     const tips = pl.noAxisFit ? [] : [P3(e.x[1], 0, 0), P3(-e.x[0], 0, 0), P3(0, e.y[1], 0), P3(0, -e.y[0], 0), P3(0, 0, e.z[1]), P3(0, 0, -e.z[0])];
     const pts = [...pl.pts, ...(pl.noAxisFit ? [] : [O3]), ...tips].map((p) => SP.P(w(p)));
     if (pl.sphere) { const c = SP.P(w(pl.sphere.c)), R = pl.sphere.R; pts.push({ x: c.x + R, y: c.y }, { x: c.x - R, y: c.y }, { x: c.x, y: c.y + R }, { x: c.x, y: c.y - R }); }
-    const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
-    const bb = BRD.measure(pl.paint);
-    BRD.setFocus(BRD.fitBox({ x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys), texts: bb ? bb.texts : [] }, { margin: 0.1, px: 8 }), false);
+    fitCoordinates(pts, pl.paint, { margin: 0.1, px: 8 });
   }
   function drawNew(id) {
     return (b, s, v, lab) => {
       BRD = b;
       OBST = true;
-      PROB = lab.tab === 'problem';
+      const paintLab = lab.tab === 'review' && s.step === 0 ? { ...lab, tab: 'problem' } : lab;
+      PROB = paintLab.tab === 'problem';
       state.lens = 'all'; state.partIdx = null;
       SP = APLab.space(b, cam(s), { problem: PROB });
-      const pl = PLAN[id](s, lab);
+      const pl = PLAN[id](s, paintLab);
       AXFIT = !pl.noAxisFit;
       if (pl.solid) SP.solid(pl.solid);
       fitNew(pl);
@@ -965,7 +957,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const near = (st, t) => Math.abs(st.yaw - t.yaw) < 1 && Math.abs(st.pitch - t.pitch) < 1;
     return [
       { group: '시점', label: '입체로 보기', set: iso, ms: 600, on: (st) => near(st, iso) },
-      { group: '시점', label: 'xy평면 위에서 보기', set: { yaw: 0, pitch: 85 }, ms: 600, on: (st) => near(st, { yaw: 0, pitch: 85 }) },
+      { group: '시점', label: '위에서 보기', set: { yaw: 0, pitch: 85 }, ms: 600, on: (st) => near(st, { yaw: 0, pitch: 85 }) },
       { group: '시점', label: '앞에서 보기', set: { yaw: 0, pitch: 0 }, ms: 600, on: (st) => near(st, { yaw: 0, pitch: 0 }) }
     ];
   };
@@ -979,7 +971,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const key = 'sd' + nid;
     L.s[key] = t.hasAttribute('data-nc-orig') ? 0 : (L.s[key] | 0) + 1;
     L.s.revealed = false;
-    L.setStep(1);
+    L.setStep(0);
     try { L._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     L.invalidate(true);
   });
@@ -1017,8 +1009,8 @@ window.addEventListener('DOMContentLoaded', function () {
       for (let i = 0; i < 400; i++) {
         const v = [0, 1, 2].map(() => (r() < 0.5 ? -1 : 1) * rint(r, 1, 6));
         const f = rint(r, 0, 2); let si = rint(r, 0, 1); if (si >= f) si++;
-        q = mk5(v, f, si);
-        if (q.d2 <= 150 && !(v[0] === 3 && v[1] === -2 && v[2] === 5) && camOK([q.P, q.A, q.B, mid3(q.P, q.B), O3], [q.P, q.A, q.B, O3], [[q.P, q.A], [q.P, q.B], [q.A, q.B]], ISO)) break;
+        const candidate = mk5(v, f, si);
+        if (candidate.d2 <= 150 && !(v[0] === 3 && v[1] === -2 && v[2] === 5) && camOK([candidate.P, candidate.A, candidate.B, mid3(candidate.P, candidate.B), O3], [candidate.P, candidate.A, candidate.B, O3], [[candidate.P, candidate.A], [candidate.P, candidate.B], [candidate.A, candidate.B]], ISO)) { q = candidate; break; }
       }
     }
     return (I5[seed] = q || NC[5](0));
@@ -1121,8 +1113,8 @@ window.addEventListener('DOMContentLoaded', function () {
       for (let i = 0; i < 400; i++) {
         const c = [0, 1, 2].map(() => (r() < 0.5 ? -1 : 1) * rint(r, 1, 5));
         const tp = rint(r, 0, 2); let op = rint(r, 0, 1); if (op >= tp) op++;
-        q = mk6(c, tp, op);
-        if (q.r2 >= 1 && !(c[0] === 2 && c[1] === -1 && c[2] === 3 && tp === 0 && op === 1)) break;
+        const candidate = mk6(c, tp, op);
+        if (candidate.r2 >= 1 && !(c[0] === 2 && c[1] === -1 && c[2] === 3 && tp === 0 && op === 1)) { q = candidate; break; }
       }
     }
     return (I6[seed] = q || NC[6](0));
@@ -1165,7 +1157,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const d = Math.abs(nrm[selP]), d2 = d * d;
           const { H, u, v } = sec6(C, selP);
           planeHi(selP, extP, 'amber', PLN6[selP], 0.1);
-          if (R > 0.01) draw3DSphereWireframe(C, R);
+          if (R > 0) draw3DSphereWireframe(C, R);
           if (R2 > d2) {
             const r = Math.sqrt(R2 - d2);
             draw3DCircle(H, r, u, v, '#fbbf24', 'rgba(251,191,36,.2)', 3);
@@ -1374,7 +1366,7 @@ window.addEventListener('DOMContentLoaded', function () {
         EDGES.forEach(([p1, p2]) => draw3DLine(V[p1], V[p2], 'rgba(226,232,240,.85)', 1.9));
         if (coord > 0.02) axes3(e, coord);
         const atEnd = (nm) => (nm === 'A' && u === 0) || (nm === 'G' && u === a);    // P가 A나 G와 겹친 끝값: 이름표를 하나로
-        layer(s, lab, 1, () => { Object.keys(V).forEach((nm) => pt3(V[nm], 4.5, '#e2e8f0', (named.includes(nm) ? ptxt(nm, V[nm]) : nm) + (atEnd(nm) ? ' = P' : ''), cc)); });
+        layer(s, lab, 1, () => { Object.keys(V).forEach((nm) => pt3(V[nm], 4.5, '#e2e8f0', (named.includes(nm) ? ptxt(nm, V[nm]) : nm) + (atEnd(nm) ? u === a && (explore ? s.tri : tab === 'review' && s.step >= 3) ? ' = P = Q' : ' = P' : ''), cc)); });
         layer(s, lab, 2, () => {
           draw3DLine(V.A, V.G, 'rgba(251,191,36,.95)', 2.4, false, true);
           draw3DPoint(P, 7, '#fbbf24', u === 0 || u === a ? '' : (named.length && !probTab ? ptxt('P', P) : 'P'), { x: 10, y: -12 });
@@ -1382,17 +1374,16 @@ window.addEventListener('DOMContentLoaded', function () {
         layer(s, lab, 3, () => {
           draw3DPolygon([P, V.F, V.H], 'rgba(251,191,36,.22)', '#fbbf24', 2.4);
           const tri3 = explore ? (s.tri | 0) === 1 : tab === 'review';
-          if (tri3 && dist3(P, Q) > 0.01) {
-            const same = dist3(Q, M) < 0.01;
-            draw3DLine(P, Q, rgb('sky'), 2.6, true);
+          if (tri3) {
+            const same = u === a / 2, onBase = u === a;
+            if (!onBase) draw3DLine(P, Q, rgb('sky'), 2.6, true);
             if (!same) draw3DLine(Q, M, rgb('sky'), 2.6, true);
             draw3DLine(P, M, rgb('green'), 3.2, false, true);
-            if (!same) { draw3DRightAngle(Q, P, M, rsz, '#38bdf8'); draw3DRightAngle(M, Q, V.F, rsz, '#38bdf8'); }
+            if (!same && !onBase) { draw3DRightAngle(Q, P, M, rsz, '#38bdf8'); draw3DRightAngle(M, Q, V.F, rsz, '#38bdf8'); }
             draw3DRightAngle(M, P, V.F, rsz * 1.35, '#34d399');
-            draw3DPoint(Q, 4.5, '#38bdf8', '', { x: 0, y: 0 });
-            tag3(Q, 'Q', '#7dd3fc', same ? -16 : 9, 16, { low: false });
+            if (!same && !onBase) { draw3DPoint(Q, 4.5, '#38bdf8', '', { x: 0, y: 0 }); tag3(Q, 'Q', '#7dd3fc', 9, 16, { low: false }); }
             draw3DPoint(M, 4.5, '#34d399', '', { x: 0, y: 0 });
-            tag3(M, 'M', '#6ee7b7', 9, 16, { low: false });
+            tag3(M, same ? 'Q = M' : 'M', '#6ee7b7', 9, 16, { low: false });
           }
         });
         if (probTab) tag3(mid3(V.E, V.F), String(a), '#fde68a', 0, 22, { low: false, center: true });
@@ -1493,7 +1484,7 @@ window.addEventListener('DOMContentLoaded', function () {
       { group: '조건', label: '선택한 평면에 접하게 하기', apply: (st) => { const d = [3, 2, 1][st.sel6 | 0]; st.k6 = 14 - d * d; }, on: (st) => { const d = [3, 2, 1][st.sel6 | 0]; return st.k6 === 14 - d * d; } },
       ...viewPresets(ISO)
     ],
-    init: { k6: 5, sel6: 0 },
+    init: { k6: 8, sel6: 0 },
     view(s, lab) {
       const k = s.k6, R2 = 14 - k, sel = s.sel6 | 0, d = [3, 2, 1][sel], d2 = d * d;
       const rel = R2 > d2 ? 0 : R2 === d2 ? 1 : 2;
@@ -1518,7 +1509,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { label: 'R과 d 비교', value: rel === 0 ? `R² = ${R2} > d² = ${d2} → 원이 생김` : rel === 1 ? `R² = d² = ${d2} → 접함` : `R² = ${R2} < d² = ${d2} → 만나지 않음`, color: 'amber' },
           { label: '단면 원', value: rel === 0 ? `r² = ${R2} − ${d2} = ${R2 - d2} → 넓이 ${R2 - d2}π` : rel === 1 ? '반지름 0 (접점 한 점)' : '교점 없음', color: 'green' }
         ],
-        formula: `구의 방정식 ${texU('(x-a)^2+(y-b)^2+(z-c)^2=R^2')}: 중심 ${texU('(a,b,c)')}, 반지름 ${texU('R')}<br/>${texU('x^2+y^2+z^2+Ax+By+Cz+D=0')}은 <b>완전제곱식</b>으로 고쳐서 중심과 반지름을 읽는다<br/>중심에서 좌표평면까지의 거리: xy평면 ${texU('|c|')}, yz평면 ${texU('|a|')}, zx평면 ${texU('|b|')}<br/>${texU('R=d')} → 접함, ${texU('R>d')} → 단면 원 ${texU('r=\\sqrt{R^2-d^2}')}`
+        formula: `구의 방정식 ${texU('(x-a)^2+(y-b)^2+(z-c)^2=R^2')}: 중심 ${texU('(a,b,c)')}, 반지름 ${texU('R')}<br/>${texU('x^2+y^2+z^2+Ax+By+Cz+D=0')}은 <b>완전제곱식</b>으로 고쳐서 중심과 반지름을 읽는다<br/>중심에서 좌표평면까지의 거리: xy평면 ${texU('|c|')}, yz평면 ${texU('|a|')}, zx평면 ${texU('|b|')}<br/>${texU('R=d')} → 접함, ${texU('R\\gt d')} → 단면 원 ${texU('r=\\sqrt{R^2-d^2}')}`
       };
     },
     steps: (q) => [
@@ -1533,7 +1524,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const q = NC[6](s.sd6 | 0), c = q.c, axn = ['z', 'x', 'y'];
       return {
         steps: `① 완전제곱식으로 고친다: ${texU(sq6(c))}.<br/>&nbsp;&nbsp;중심 ${texU(ctr6(c))}, 반지름 ${texU('R=\\sqrt{' + q.K0 + '-k}')}<br/>② ${texU(PLN[q.tp])}평면에 접하면 중심에서 평면까지의 거리 ${texU('|' + axn[q.tp] + '|=' + q.dt)}가 반지름과 같다: ${texU(`${q.K0}-k=${q.dt}^2=${q.R2}`)} ⇒ ${texU('k=' + q.k)}<br/>③ ${texU('R^2=' + q.R2)}. ${texU(PLN[q.op])}평면까지의 거리는 ${texU('|' + axn[q.op] + '|=' + q.dO)}이므로 단면 원의 반지름은 ${texU(`r^2=R^2-d^2=${q.R2}-${q.dO * q.dO}=${q.r2}`)}, 넓이는 ${texU('\\pi r^2=' + q.r2 + '\\pi')}`,
-        warning: `주의: 중심의 좌표는 일차항 계수의 <b>절반에 부호를 반대로</b> 쓴 값입니다(${texU('-4x')} → ${texU('x=2')}, ${texU('+2y')} → ${texU('y=-1')}). 또 ${texU('R^2=' + q.K0 + '-k')}처럼 ${texU('k')}를 <b>빼야</b> 합니다.`
+        warning: `주의: 중심의 좌표는 일차항 계수의 <b>절반에 부호를 반대로</b> 쓴 값입니다(${texU(lt(-2*c[0], 'x'))} → ${texU('x='+c[0])}, ${texU(lt(-2*c[1], 'y'))} → ${texU('y='+c[1])}). 또 ${texU('R^2=' + q.K0 + '-k')}처럼 ${texU('k')}를 <b>빼야</b> 합니다.`
       };
     },
     quick: (s) => {
@@ -1588,7 +1579,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (s.cent) reads.push({ label: '무게중심 G', value: 'G = ((1+3+5)÷3, (2+(−2)+6)÷3, (3+5+1)÷3) = (3, 2, 3)', color: 'green', wide: true });
       return {
         chips, status, tape, readouts: reads,
-        formula: `<b>내분점</b>: A${texU('(x_1,y_1,z_1)')}, B${texU('(x_2,y_2,z_2)')}를 ${texU('m:n')}으로 내분하는 점 ${texU('\\left(\\dfrac{mx_2+nx_1}{m+n},\\dfrac{my_2+ny_1}{m+n},\\dfrac{mz_2+nz_1}{m+n}\\right)')}<br/><b>외분점</b>: 내분 공식에서 <b>+를 −로</b> (분모도 ${texU('m-n')}, ${texU('m\\neq n')})<br/><b>무게중심</b>: ${texU('G\\left(\\dfrac{x_1+x_2+x_3}{3},\\dfrac{y_1+y_2+y_3}{3},\\dfrac{z_1+z_2+z_3}{3}\\right)')}`
+        formula: `<b>내분점 X</b>: ${texU('x_X=\\dfrac{nx_A+mx_B}{m+n}')}<br/><b>외분점 X</b>: ${texU('x_X=\\dfrac{mx_B-nx_A}{m-n}')} (${texU('m\\ne n')})<br/>y, z좌표도 같은 가중치로 각각 계산합니다.<br/><b>무게중심</b>: ${texU('x_G=\\dfrac{x_A+x_B+x_C}{3}')}<br/>y, z좌표도 세 꼭짓점 좌표의 평균입니다.`
       };
     },
     steps: (q) => [
@@ -1603,14 +1594,14 @@ window.addEventListener('DOMContentLoaded', function () {
       const q = NC[7](s.sd7 | 0), Dv = [0, 1, 2].map((i) => fVal(q.Q[i]) - fVal(q.G[i]));
       const gx = (i) => `\\dfrac{${q.A[i]}+${par(q.B[i])}+${par(q.C[i])}}{3}`, qx = (i) => `\\dfrac{${q.m}\\cdot${par(q.B[i])}-${q.n}\\cdot${par(q.A[i])}}{${q.m}-${q.n}}`;
       return {
-        steps: `① 무게중심: ${texU(`G\\left(${gx(0)},\\ ${gx(1)},\\ ${gx(2)}\\right)=G(${q.G.map(fTex).join(',')})`)}<br/>② 외분점: ${texU(`Q\\left(${qx(0)},\\ ${qx(1)},\\ ${qx(2)}\\right)=Q(${q.Q.map(fTex).join(',')})`)}<br/>③ ${texU(`\\overline{GQ}=\\sqrt{(${Dv[0]})^2+(${Dv[1]})^2+(${Dv[2]})^2}=${rootEq(q.d2)}`)}`,
+        steps: `① 세 좌표를 각각 평균한다:<br/>${['x','y','z'].map((c,i) => texU(`${c}_G=${gx(i)}=${fTex(q.G[i])}`)).join('<br/>')}<br/>따라서 ${texU(`G(${q.G.map(fTex).join(',')})`)}.<br/>② 외분 좌표도 같은 비로 계산한다:<br/>${['x','y','z'].map((c,i) => texU(`${c}_Q=${qx(i)}=${fTex(q.Q[i])}`)).join('<br/>')}<br/>따라서 ${texU(`Q(${q.Q.map(fTex).join(',')})`)}.<br/>③ ${texU(`\\overline{GQ}^2=(${Dv[0]})^2+(${Dv[1]})^2+(${Dv[2]})^2=${q.d2}`)}<br/>${texU(`\\overline{GQ}=${rootEq(q.d2)}`)}`,
         warning: '주의: 외분은 내분 공식에서 <b>부호가 −</b>이고 분모도 <b>m − n</b>입니다. 내분 공식(+)을 그대로 쓰면 틀립니다.'
       };
     },
     quick: (s) => {
       const q = NC[7](s.sd7 | 0), k = q.m - q.n;
       return {
-        steps: `① 무게중심은 세 점의 <b>좌표의 평균</b>이다.<br/>② ${texU(`\\overline{AQ}:\\overline{QB}=${q.m}:${q.n}`)}이면 ${texU('\\overline{AB}')}는 ${texU(`${Math.abs(k)}`)}칸이므로 Q는 A에서 B 쪽으로 ${texU(`\\dfrac{${q.m}}{${k}}`)}배 간 점이다: ${texU(`Q=A+\\dfrac{${q.m}}{${k}}(B-A)=Q(${q.Q.map(fTex).join(',')})`)}<br/>③ ${texU('Q-G')}의 세 성분의 제곱의 합의 제곱근 ⇒ <strong class="text-amber-300">${texU(`\\overline{GQ}=${sqTex(q.d2)}`)}</strong>`,
+        steps: `① 무게중심은 세 점의 <b>좌표의 평균</b>이다.<br/>② ${texU(`\\overline{AQ}:\\overline{QB}=${q.m}:${q.n}`)}이면 ${texU('\\overline{AB}')}는 ${texU(`${Math.abs(k)}`)}칸이므로 Q는 A에서 B 쪽으로 ${texU(`\\dfrac{${q.m}}{${k}}`)}배 간 점이다: ${texU(`Q=A+\\dfrac{${q.m}}{${k}}(B-A)`)}<br/>${texU(`Q(${q.Q.map(fTex).join(',')})`)}.<br/>③ ${texU('Q-G')}의 세 성분의 제곱의 합의 제곱근 ⇒ <strong class="text-amber-300">${texU(`\\overline{GQ}=${sqTex(q.d2)}`)}</strong>`,
         highlight: '내분은 두 점 사이, 외분은 연장선 위에 생깁니다. m > n이면 B 쪽 연장선, m < n이면 A 쪽 연장선 위의 점입니다.'
       };
     }
@@ -1692,26 +1683,198 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'mode' + nid, nid,
       title: d.title, short: d.short, question: d.question,
       tabs: { compact: true },
-      guide: d.guide,
+      guide: (st, lab = window.lab) => lab.tab === 'explore' ? d.guide : coordGuide(nid, st, lab),
       enter: (st) => { Object.assign(st, { yaw: ISO.yaw, pitch: ISO.pitch }, d.init); st.lens = 'all'; st.playing = false; },
       controls: d.controls,
       presets: d.presets,
       actions: d.actions || [SPIN],
       tick: SPIN_TICK,
-      steps: (st) => d.steps(inst(st)),
+      steps: (st, lab = window.lab) => coordSteps(nid, st, lab),
       problem: {
         tag: d.tag, time: d.time,
         text: (st) => d.problemText(st) + ncTools(nid, st),
         answer: d.answer,
         snap: (st) => ({ yaw: d.init.yaw != null ? d.init.yaw : ISO.yaw, pitch: d.init.pitch != null ? d.init.pitch : ISO.pitch, ...d.snap(st) })
       },
-      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷', standard: d.standard, quick: d.quick },
-      view: (st, lab) => { lab = lab || window.lab; const v = d.view(st, lab); if (lab.tab !== 'explore') v.status = null; return v; },   // 탐구용 상태 글(k=5 등)이 문제·정리 그림 옆에 답으로 남지 않게
+      solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '도형으로 줄이는 풀이', quickTag: '구조 활용', standard: d.standard, quick: d.quick },
+      view: (st, lab = window.lab) => coordView(nid, st, lab),   // 탐구용 상태 글(k=5 등)이 문제·정리 그림 옆에 답으로 남지 않게
       draw: drawNew(nid)
     };
   }
 
+  /* 현재 탐구와 고정 문제 상태는 구별합니다. 전체보기의 비활성 장면은 자기 문제의 단계만 읽습니다. */
+  const coordStandard1 = examData[1].textbook;
+  examData[1].textbook = () => { const q=coordStandard1(); q.steps += `<br/>⑤ 등호는 선분 ${tex("AB'")}가 평면을 지나는 점에서 성립한다. 높이의 비가 ${tex('2:4=1:2')}이므로 ${tex('A_0P:PB_0=1:2')}, ${tex('P=(5/3,2,0)')}이다.`; return q; };
+  examData[3].textbook = () => ({steps:`① ${tex('z=0')}을 구의 방정식에 대입한다: ${tex('x^2+y^2+9=25')}.<br/>② 평면 위의 원의 방정식 ${tex('x^2+y^2=16')}에서 중심은 원점, 반지름은 ${tex('4')}이다.<br/>③ 넓이는 ${tex('16\\pi')}. 중심에서 평면까지 거리 ${tex('d=3')}가 반지름 ${tex('R=5')}보다 작아 실제 원이 생기는 조건도 만족한다.`,warning:'좌표평면에는 대입법이 간단합니다. 기울어진 평면에서는 중심까지의 수직 거리와 직각삼각형으로 같은 관계를 얻습니다.'});
+  const sameAngle = (a, b) => Math.abs(a - b) <= 4 * Number.EPSILON * Math.max(1, Math.abs(a), Math.abs(b));
+  function coordFixedState(s, m, lab) {
+    if (lab?.tab === 'explore') return s;
+    return { ...s, ...(m === 1 ? { t1: 1 / 3 } : m === 2 ? { t2: 2 / 3 } : m === 3 ? { d: 3 } : { th: TH4_TANGENT }) };
+  }
+  function fitCoordinates(pts, paint, options) {
+    const ins = BRD.insets || {};
+    if (BRD.W - (ins.left || 0) - (ins.right || 0) < 64 || BRD.H - (ins.top || 0) - (ins.bottom || 0) < 64) return;
+    const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
+    const box = { x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
+    // 이전의 축소 프레임에서 남은 픽셀/세계좌표 비율로 라벨 여백을 재측정하지 않습니다.
+    BRD.setFocus({ x: [box.x0 - .5, box.x1 + .5], y: [box.y0 - .5, box.y1 + .5] }, false);
+    const bb = BRD.measure(paint);
+    BRD.setFocus(BRD.fitBox({ ...box, texts: bb ? bb.texts : [] }, options), false);
+  }
+  function coordHandles(b, s, m, sp, lab) {
+    const segment = (id, A, B, t, assign) => {
+      const a = sp.P(w(A)), z = sp.P(w(B)), dx = z.x - a.x, dy = z.y - a.y, den = dx * dx + dy * dy;
+      if (den < 1e-12) return;
+      b.handle(id, { x: a.x + t * dx, y: a.y + t * dy }, { color: 'amber', drag: p => { assign(clamp(((p.x - a.x) * dx + (p.y - a.y) * dy) / den, 0, 1)); lab.invalidate(); } });
+    };
+    if (m === 1) segment('coord-P', P3(1,1,0), P3(3,4,0), s.t1, t => { s.t1 = t; });
+    if (m === 2) segment('coord-X', P3(-2,1,4), P3(4,-5,-2), s.t2, t => { s.t2 = t; });
+    if (m === 3) segment('coord-C', O3, P3(0,0,6), s.d / 6, t => { s.d = 6 * t; });
+    if (m === 4) {
+      const a = Math.atan2(3,4), th = th4Of(s.th), pos = P3(3 * Math.cos(a + th), 0, 3 * Math.sin(a + th));
+      const e = sp.P(w(P3(1,0,0))), f = sp.P(w(P3(0,0,1))), det = e.x * f.y - e.y * f.x;
+      if (Math.abs(det) > 1e-10) b.handle('coord-Q', sp.P(w(pos)), { color: 'amber', drag: p => {
+        const x = (p.x * f.y - p.y * f.x) / det, z = (e.x * p.y - e.y * p.x) / det;
+        if (Math.hypot(x,z) < 1e-10) return;
+        s.th = ((Math.atan2(z,x) - a) * R2D % 360 + 360) % 360; lab.invalidate();
+      } });
+    }
+  }
+  const COORD_PARTS = {
+    1: ['수선의 발로 높이를 비교하기', '주어진 경로와 후보점 비교하기', '대칭으로 평면 전체의 최솟값 증명하기'],
+    2: ['선분과 평면의 교점 찾기', '높이가 만드는 닮음 확인하기', '높이의 비로 좌표 계산하기'],
+    3: ['구의 중심과 반지름 읽기', '수선의 발과 단면 찾기', '직각삼각형 또는 경계 경우 판정하기'],
+    4: ['중심과 외부 점의 거리 확인하기', '중심을 지나는 선에서 양 끝값 찾기', '접점의 직각으로 접선 길이 구하기'],
+    5: ['수선의 발에서 바뀌는 좌표', '대칭에서 바뀌는 좌표', '달라진 성분만으로 거리 구하기'],
+    6: ['완전제곱으로 중심 찾기', '접하는 평면까지 거리와 반지름', '다른 평면 단면의 넓이'],
+    7: ['무게중심은 세 좌표의 평균', '외분점의 위치와 부호', '좌표 차로 거리 구하기'],
+    8: ['모서리를 좌표축에 놓기', '대각선의 내분점 찾기', '이등변삼각형의 중점 높이 구하기']
+  };
+  function coordGuide(m, s, lab) {
+    if (m === 1) return '그림에서는 후보 선분 A₀B₀ 위의 P를 움직여 경로를 비교합니다. 평면 전체의 최단 경로는 B를 반사한 뒤 삼각부등식과 등호 조건으로 증명하세요.';
+    if (m === 2) return 'P는 AB와 xy평면의 교점입니다. 탐구점 X는 AB 위를 움직이며, 두 수선의 높이가 닮음비를 어떻게 정하는지 비교합니다.';
+    if (m === 3) return '구의 중심에서 평면에 내린 수선과 구의 반지름을 한 단면에 모으세요. 원·접점·교점 없음의 경계도 비교합니다.';
+    if (m === 4) return '구 전체에서의 거리 범위는 삼각부등식으로 증명합니다. 탐구점 Q는 xz평면의 대원 위를 움직이며, 반지름과 PQ가 수직인 위치를 찾습니다.';
+    return COORD_PARTS[m].join(' → ');
+  }
+  function coordSteps(m, s, lab = window.lab) {
+    const activeExplore = lab?.tab === 'explore' && lab.scene?.id === 'mode' + m;
+    if (m >= 5 && !activeExplore) return DEFS[m].steps(NC[m](s['sd' + m] | 0));
+    const t = activeExplore ? s : coordFixedState(s, m, { tab: 'review' });
+    if (m === 1) {
+      const p = P3(1 + 2 * t.t1, 1 + 3 * t.t1, 0);
+      return [
+        'A, B의 수선의 발 A₀, B₀를 잡아 높이 2와 4를 평면에 수직인 한 단면에 모은다.',
+        activeExplore ? `현재 후보점 P≈(${p.x.toPrecision(6)}, ${p.y.toPrecision(6)}, 0)에서 AP + PB ≈ ${dist1(t.t1).toFixed(4)}. 이 그림의 후보 선분 밖에 있는 평면 위 점도 다음 부등식으로 함께 다룬다.` : 'P를 거치는 두 선분 AP와 PB를 비교한다. 위치를 미지수 두 개로 잡기 전에 PB를 같은 길이의 선분으로 바꿀 방법을 찾는다.',
+        'B를 xy평면에 반사한 B′를 잡으면 모든 P에 대해 PB = PB′. AP + PB′ ≥ AB′ = 7이고, 등호는 P = AB′∩xy평면에서만 성립한다. 높이비 2:4로 A₀P:PB₀ = 1:2, P=(5/3,2,0).'
+      ];
+    }
+    if (m === 2) return [
+      activeExplore ? `AB 위 탐구점 X의 현재 t≈${t.t2.toFixed(4)}, z_X≈${(4 - 6 * t.t2).toFixed(4)}. 교점 P는 z=0인 고정된 점이며 X와 구별한다.` : 'A의 높이는 4, B의 높이는 −2이므로 두 점은 xy평면의 반대쪽에 있다. AB와 평면은 한 점 P에서 만난다.',
+      '수선의 발 A₀, B₀를 잡으면 AA₀∥BB₀이고 두 직각삼각형 AA₀P, BB₀P가 닮음이다. 빗변의 비 AP:PB는 높이의 비 4:2와 같다.',
+      'AP:PB = 2:1. P=(A+2B)/3이므로 x=(−2+8)/3=2, y=(1−10)/3=−3, z=(4−4)/3=0. 따라서 P=(2,−3,0).'
+    ];
+    if (m === 3) {
+      const d = t.d, r2 = 25 - d * d;
+      return [`현재 구 중심 C(0,0,${String(d)}), 반지름 R=5. 평면까지의 수직 거리는 d=${String(d)}이다.`,
+        d > 5 ? 'd>R이므로 중심에서 평면의 어느 점까지도 반지름보다 멀다. 구와 평면은 만나지 않는다.' : d === 5 ? 'd=R이므로 가장 가까운 점 H 하나만 구 위에 있다. 반지름이 양수인 단면 원은 없다.' : '수선의 발 H를 단면 원의 중심으로 잡고, 교선 위의 점 P를 고른다. CH는 평면에 수직이므로 HP와 수직이다.',
+        d > 5 ? '25−d²<0에는 실수 반지름을 대입하지 않는다. 교점이 없으므로 단면 원의 넓이도 정의하지 않는다.' : d === 5 ? '교집합은 H 한 점이다. r=0은 접점의 극한 표기이며 원형 단면과 구별한다.' : d === 0 ? 'C=H이므로 단면은 구의 대원이다. r=5, 넓이=25π이며 길이 0인 CH를 직각삼각형의 변으로 쓰지 않는다.' : activeExplore ? `CHP에서 r²=25−d². 현재 r≈${Math.sqrt(r2).toPrecision(6)}, 넓이≈${r2.toPrecision(6)}π. 숫자 표시는 근삿값이며 관계식이 정확값을 정한다.` : 'CHP에서 r²=25−3²=16, 따라서 r=4, 넓이=16π.'];
+    }
+    if (m === 4) return [
+      `CP=√(4²+3²)=5, CQ=3. ${activeExplore ? `현재 θ≈${t.th.toFixed(3)}°, PQ≈${Math.sqrt(34 - 30 * Math.cos(th4Of(t.th))).toFixed(4)}이다.` : '구와 P를 지나는 단면을 본다.'}`,
+      '역삼각부등식과 삼각부등식으로 모든 구 위 점 Q에 대해 5−3 ≤ PQ ≤ 5+3. 같은 직선 PC 위의 Qmin, Qmax에서 각각 등호가 성립하므로 m=2, M=8이다.',
+      'T는 Q의 현재 위치와 별도로 잡은 정확한 접점이다. CT⊥PT이고 CP=5, CT=3이므로 PT=√(25−9)=4. Q가 T에 가까워도 일치하지 않으면 PQ를 접선 길이라고 부르지 않는다.'
+    ];
+    if (m === 5) {
+      const P=P3(s.px,s.py,s.pz),kind=s.kind|0,tgt=s.tgt|0,{D,M}=derive5(P,kind,tgt),ax=CHG5[tgt].map(i=>['x','y','z'][i]).join(', '),same=dist3(P,D)<1e-10;
+      return [`현재 ${ptxt('P',P)}와 기준 ${TGT5[tgt]}를 본다. 기준에 수직인 성분은 ${ax}좌표이다.`,
+        kind ? `기준까지의 발 ${ptxt('H',M)}를 중점으로 두고 그 수직 성분의 부호를 반대로 바꾸면 ${ptxt('P′',D)}이다.` : `수직 성분 ${ax}만 0으로 바꾸면 ${ptxt('H',D)}이다. 나머지 성분은 보존된다.`,
+        same ? `현재 P는 기준 ${TGT5[tgt]} 위에 있어 ${kind?'P′':'H'}=P이다. 길이 0인 선분에 직각 표시를 붙이지 않는다.` : `바뀐 성분만 거리 계산에 남는다. ${kind?'PP′':'PH'}≈${dist3(P,D).toFixed(4)}이며, ${kind?'대칭점과 기준까지의 발은 서로 다른 점이다.':'수선의 발은 기준 위에 있다.'}`];
+    }
+    if (m === 6) {
+      const R2=14-s.k6,j=s.sel6|0,d=[3,2,1][j];
+      return [`완전제곱식에서 중심 계수는 C=(2,−1,3), 현재 R²=14−${s.k6}=${R2}이다.`,
+        R2<0 ? 'R²<0이므로 방정식을 만족하는 실수 점은 없다. 표시된 C는 계수에서 읽은 기준점일 뿐 실제 구의 중심으로 삼을 구가 없다.' : R2===0 ? 'R²=0이면 교집합 후보는 C 한 점뿐이다. C는 어느 좌표평면 위에도 없으므로 선택한 평면과 만나지 않는다.' : `${PLN6[j]}까지 거리 d=${d}와 R를 비교한다. R²${R2>d*d?'>':R2===d*d?'=':'<'}d²=${d*d}.`,
+        R2>d*d ? `직각삼각형에서 r²=R²−d²=${R2-d*d}; 단면 원의 넓이는 ${R2-d*d}π이다.` : R2===d*d ? 'R=d이므로 수선의 발 H에서 한 점으로 접한다. 양의 반지름을 가진 단면 원은 없다.' : 'R²<d²이므로 평면 위에 방정식을 만족하는 점이 없다. 음수의 제곱근을 단면 반지름으로 쓰지 않는다.'];
+    }
+    if (m === 7) {
+      const m7=s.m7|0,n=s.n7|0,ext=(s.mode7|0)===1,X=div7(A7,B7,m7,n,ext);
+      return [`현재 AX:XB=${m7}:${n}의 ${ext?'외분':'내분'}을 본다. ${s.cent?'세 중선의 교점 G=(3,2,3)도 함께 보인다.':'무게중심 겹쳐 보기를 켜면 세 중선을 확인할 수 있다.'}`,
+        X ? `${ext?'X=A+m/(m−n)(B−A)':'X=A+m/(m+n)(B−A)'}로 한 방향의 배수만 정한 뒤 같은 가중치를 세 좌표에 적용한다.` : '외분에서 m=n이면 분모가 0이다. 서로 다른 A, B에 대해 같은 거리에 있는 연장선 위 외분점은 없다.',
+        X ? `${rpt('X',X)}. ${ext?(m7>n?'A→B→X':'X→A→B'):'A→X→B'} 순서를 확인한다. ${s.cent?'무게중심은 분점 X와 별도로 G=(A+B+C)/3으로 구한다.':'좌표의 부호가 바뀌어도 거리의 비는 양수이다.'}` : '유한한 X를 표시하지 않는다. m과 n을 다르게 고르면 외분점이 다시 생긴다.'];
+    }
+    const u=s.u8,q=mk8(6,u),show=!!s.tri;
+    return [`E를 원점, EF·EH·EA를 세 좌표축으로 잡으면 F=(6,0,0), H=(0,6,0), A=(0,0,6), G=(6,6,0)이다. ${s.coord>.5?'현재 좌표축이 표시되어 있다.':'좌표 얹기를 누르면 이 축이 표시된다.'}`,
+      `현재 P=(${u},${u},${6-u})는 ${u===0?'A와 겹친다':u===6?'G와 겹친다':`AG를 ${u}:${6-u}로 내분한다`}. x와 y가 같으므로 PF=PH인 이등변삼각형이다.`,
+      `${show?'현재 보이는':'삼수선 보기를 켜면 보이는'} FH의 중점 M=(3,3,0)이 높이의 발이다. ${u===3?'Q=M이므로 높이는 PQ 자체이다.':u===6?'P=Q=G가 밑면에 있어도 PM은 FH에 수직인 높이이다.':'PQ와 QM의 직각삼각형으로 PM을 구한다.'} PM²=${q.PM2}, △PFH=${sqTxt(q.area2)}.`];
+  }
+  function coordView(m, s0, lab = window.lab) {
+    const ex=lab.tab==='explore',s=m<=4?coordFixedState(s0,m,lab):s0,step=s.step||0;
+    const parts=COORD_PARTS[m].map((desc,i)=>({id:i+1,name:`단계 ${i+1}`,desc,color:PART_COLORS[i]}));
+    const row=(label,value,color='sky')=>({label,value,color});
+    const reviewTop=ex?undefined:(m<=4?examData[m].question():DEFS[m].problemText(s));
+    let v={parts,reviewTop,readouts:[],chips:[],status:ex?{tone:'info',text:viewStatus(s)}:null};
+    if(m<=4){
+      sync(s,m);
+      if(m===1){
+        v.readouts=[row('주어진 두 점','A(1,1,2), B(3,4,4)')];
+        if(ex)v.readouts.push(row('현재 후보점 P',`t≈${s.t1.toFixed(4)}, P≈(${(1+2*s.t1).toFixed(4)}, ${(1+3*s.t1).toFixed(4)}, 0)`),row('현재 경로 길이',`AP+PB≈${dist1(s.t1).toFixed(4)}`,'green'));
+        if(step>=3)v.readouts.push(row('평면 전체의 최솟값','AB′=7, 등호 위치 P*=(5/3,2,0), 내분비 1:2','amber'));
+      }else if(m===2){
+        v.readouts=[row('끝점의 z좌표','A:4, B:−2')];
+        if(ex)v.readouts.push(row('움직이는 탐구점 X',`t≈${s.t2.toFixed(4)}, X≈(${(-2+6*s.t2).toFixed(4)}, ${(1-6*s.t2).toFixed(4)}, ${(4-6*s.t2).toFixed(4)})`));
+        if(step>=3)v.readouts.push(row('고정된 교점 P','P=(2,−3,0), AP:PB=2:1','amber'));
+      }else if(m===3){
+        v.readouts=[row('구의 반지름과 중심 높이',`R=5, d=${String(s.d)}`)];
+        if(step>=2){
+          v.readouts.push(row('평면과의 관계',s.d<5?'d<R: 원':s.d===5?'d=R: 접점 한 개':'d>R: 교점 없음','rose'));
+          if(step>=3&&s.d<5)v.readouts.push(row('단면 원의 반지름',ex ? `r=√(25−d²)≈${Math.sqrt(25-s.d*s.d).toPrecision(6)}` : 'r=4','amber'),row('단면 원의 넓이',ex ? `π(25−d²)≈${(25-s.d*s.d).toPrecision(6)}π` : '16π','green'));
+        }
+      }else{
+        v.readouts=[row('구와 외부 점','C=(0,0,0), R=3, P=(4,0,3)')];
+        if(ex)v.readouts.push(row('현재 Q의 대원 위치',`θ≈${s.th.toFixed(3)}°, PQ≈${Math.sqrt(34-30*Math.cos(th4Of(s.th))).toFixed(4)}`));
+        if(step>=1)v.readouts.push(row('중심 거리','CP=5'));
+        if(step>=2)v.readouts.push(row('전체 구 위에서 거리 범위','2≤PQ≤8','green'));
+        if(step>=3)v.readouts.push(row('정확한 접점의 길이','PT=4','amber'));
+      }
+      if(step>=3)v.chips=chips(m).map(c=>({...c,answer:true}));
+      if(m===3&&step>=3)v.chips=[{tex:'d\\le5: r=\\sqrt{25-d^2}',answer:true}];
+      if(m===4&&step>=3)v.chips=[{tex:'2\\le PQ\\le8',answer:true},{tex:'PQ=\\sqrt{34-30\\cos\\theta}',answer:true},{tex:'PT=4',answer:true}];
+      return v;
+    }
+    v={...DEFS[m].view(s,lab),...v,parts,reviewTop};
+    if(ex){
+      const actual=DEFS[m].view(s,lab);v={...v,...actual,parts};
+      if(m===8&&step<3){v.chips=[];v.readouts=v.readouts.filter(r=>!['P에서 FH까지 PM','삼각형 PFH의 넓이'].includes(r.label));}
+      return v;
+    }
+    const q=NC[m](s['sd'+m]|0),bank=DEFS[m].view(s,{...lab,tab:'review'});
+    v.chips=bank.chips;v.formula=bank.formula;v.status=null;v.alert=null;v.tape=null;
+    if(m===5){
+      v.readouts=[row('주어진 점',ptxt('P',q.P)),row('기준',`${PLN[q.f]}평면의 수선의 발 A, ${PLN[q.s]}평면 대칭점 B`)];
+      if(step>=1)v.readouts.push(row('수선의 발',ptxt('A',q.A)));
+      if(step>=2)v.readouts.push(row('대칭점',ptxt('B',q.B),'rose'));
+      if(step>=3)v.readouts.push(row('달라지는 두 성분의 거리',`AB=${sqTxt(q.d2)}`,'green'));
+    }else if(m===6){
+      v.readouts=[row('주어진 두 평면',`${PLN[q.tp]}평면에 접하고 ${PLN[q.op]}평면으로 자름`)];
+      if(step>=1)v.readouts.push(row('완전제곱으로 읽은 중심',`C${ctr6t(q.c)}, R²=${q.K0}−k`));
+      if(step>=2)v.readouts.push(row('접하는 조건',`R=${q.dt}, k=${q.k}`,'rose'));
+      if(step>=3)v.readouts.push(row('단면 원',`r²=${q.r2}, 넓이=${q.r2}π`,'green'));
+    }else if(m===7){
+      v.readouts=[row('외분 조건',`AQ:QB=${q.m}:${q.n}`)];
+      if(step>=1)v.readouts.push(row('무게중심',rpt('G',q.G),'green'));
+      if(step>=2)v.readouts.push(row('외분점',rpt('Q',q.Q),'amber'));
+      if(step>=3)v.readouts.push(row('두 점 사이 거리',`GQ=${sqTxt(q.d2)}`,'green'));
+    }else{
+      v.readouts=[row('모서리와 내분비',`a=${q.a}, AP:PG=${q.m}:${q.n}`)];
+      if(step>=2)v.readouts.push(row('내분점 좌표',`P=(${q.u},${q.u},${q.a-q.u})`,'amber'));
+      if(step>=3)v.readouts.push(row('중점까지의 높이',`PM=${sqTxt(q.PM2)}`,'green'),row('삼각형 PFH의 넓이',sqTxt(q.area2),'rose'));
+    }
+    return v;
+  }
+
   APLab.createLab({
+    stagedReveal: true,
     id: 'geom-space-coord',
     title: '공간좌표 3D',
     courseName: '기하',
@@ -1732,17 +1895,17 @@ window.addEventListener('DOMContentLoaded', function () {
     params: {
       yaw: { value: 35, min: -180, max: 180, step: 1, color: 'muted', label: '좌우 회전', format: (v) => `${Math.round(v)}°` },
       pitch: { value: 22, min: -15, max: 85, step: 1, color: 'muted', label: '위아래 기울기', format: (v) => `${Math.round(v)}°` },
-      t1: { value: 1 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '경유점 위치 t (P는 xy평면 위)', hint: 'P가 A₀B₀ 위를 움직입니다. t = 1/3 에서 AP + PB 가 최소(일직선)', format: (v) => `t = ${v.toFixed(2)} (AP+PB = ${dist1(v).toFixed(2)})` },
-      t2: { value: 2 / 3, min: 0, max: 1, step: 0.01, color: 'amber', label: '내분 비율 t (A → B)', hint: 't = 2/3 에서 선분이 xy평면(z = 0)과 만납니다', format: (v) => `t = ${v.toFixed(2)} (z = ${(4 - 6 * v).toFixed(2)})` },
-      d: { value: 3, min: 0, max: 6, step: 0.1, color: 'rose', label: '구 중심 높이 d = |z_C|', hint: 'd ≤ R 일 때 교선원의 반지름 r = √(R²−d²)', format: (v) => { const r = Math.sqrt(Math.max(0, 25 - v * v)); const rel = v < 5 - 1e-9 ? '교선은 원' : Math.abs(v - 5) <= 1e-9 ? '한 점에서 접함' : '교점 없음'; return `d = ${v.toFixed(2)} (${rel}${v < 5 ? `, r≈${r.toFixed(2)}` : ''})`; } },
+      t1: { value: .5, min: 0, max: 1, step: 0.01, color: 'amber', label: '경유점 위치 t (P는 xy평면 위)', hint: '탐구에서는 후보 선분 A₀B₀ 위를 움직입니다. 평면 전체의 최솟값은 대칭과 삼각부등식으로 증명합니다.', format: (v) => `t ≈ ${v.toFixed(2)} (AP+PB ≈ ${dist1(v).toFixed(2)})` },
+      t2: { value: .5, min: 0, max: 1, step: 0.01, color: 'amber', label: '탐구점 X의 위치 t', hint: 'X가 AB 위를 움직입니다. z좌표가 0이 되는 위치를 찾으세요.', format: (v) => `t ≈ ${v.toFixed(2)} (z ≈ ${(4 - 6 * v).toFixed(2)})` },
+      d: { value: 3, min: 0, max: 6, step: 0.1, color: 'rose', label: '구 중심 높이 d = |z_C|', hint: 'd ≤ R 일 때 교선원의 반지름 r = √(R²−d²)', format: (v) => { const r = Math.sqrt(Math.max(0, 25 - v * v)); const rel = v < 5 ? '교선은 원' : v === 5 ? '한 점에서 접함' : '교점 없음'; return `d ≈ ${v.toFixed(2)} (${rel}${v < 5 ? `, r≈${r.toFixed(2)}` : ''})`; } },
       px: { value: 3, min: -6, max: 6, step: 1, color: 'rose', label: '점 P의 x좌표', hint: '정수 좌표로 움직입니다', format: (v) => `x = ${mnum(v)}` },
       py: { value: -2, min: -6, max: 6, step: 1, color: 'green', label: '점 P의 y좌표', format: (v) => `y = ${mnum(v)}` },
       pz: { value: 5, min: -6, max: 6, step: 1, color: 'sky', label: '점 P의 z좌표', format: (v) => `z = ${mnum(v)}` },
-      k6: { value: 5, min: -4, max: 16, step: 1, color: 'amber', label: '상수항 k', hint: 'R² = 14 − k. k = 5, 10, 13이면 각각 xy, yz, zx평면에 접합니다', format: (v) => `k = ${mnum(v)} (R² = ${14 - v}, R = ${rTxt6(14 - v)})` },
+      k6: { value: 8, min: -4, max: 16, step: 1, color: 'amber', label: '상수항 k', hint: 'R² = 14 − k와 중심에서 평면까지 거리의 제곱을 비교하세요.', format: (v) => `k = ${mnum(v)} (R² = ${14 - v}, R = ${rTxt6(14 - v)})` },
       m7: { value: 2, min: 1, max: 4, step: 1, color: 'sky', label: '비 m (AX 쪽)', format: (v) => `m = ${v}` },
       n7: { value: 1, min: 1, max: 4, step: 1, color: 'rose', label: '비 n (XB 쪽)', hint: 'AX : XB = m : n', format: (v) => `n = ${v}` },
       u8: { value: 2, min: 0, max: 6, step: 1, color: 'amber', label: '점 P의 위치 (대각선 AG 위)', hint: 'P(u, u, 6−u): u가 클수록 G에 가깝습니다', format: (v) => { const u = Math.round(v), g = gcdI(u, 6 - u) || 1; return `P(${u}, ${u}, ${6 - u}) · ${u === 0 ? 'P = A' : u === 6 ? 'P = G' : `AP : PG = ${u / g} : ${(6 - u) / g}`}`; } },
-      th: { value: 53.13, min: 0, max: 360, step: 0.5, color: 'amber', label: '구 위의 점 Q의 각도 θ', hint: '53° 근처에서 Q가 접점 T와 겹칩니다 (최대 d+R · 최소 d−R · 접선의 길이 l)', format: (v) => { const t = th4Of(v); return `θ = ${Math.round(t * R2D)}° (PQ = ${Math.sqrt(34 - 30 * Math.cos(t)).toFixed(2)} / PT = 4.00)`; } }
+      th: { value: 90, min: 0, max: 360, step: 0.5, color: 'amber', label: '구 위의 점 Q의 각도 θ', hint: 'Q는 xz평면의 대원 위를 움직입니다. 정확한 접점은 전용 버튼으로 선택합니다.', format: (v) => { const t = th4Of(v); return `θ ≈ ${(t * R2D).toFixed(2)}° (PQ ≈ ${Math.sqrt(34 - 30 * Math.cos(t)).toFixed(2)})`; } }
     },
     state: { lens: 'all', feet1: 0, kind: 0, tgt: 0, sel6: 0, mode7: 0, cent: 0, tri: 0, coord: 0, sd5: 0, sd6: 0, sd7: 0, sd8: 0 },
     persist: ['lens', 'feet1', 'kind', 'tgt', 'sel6', 'mode7', 'cent', 'tri', 'coord', 'sd5', 'sd6', 'sd7', 'sd8'],
