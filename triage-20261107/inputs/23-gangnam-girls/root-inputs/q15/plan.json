@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "y=f(4x+3)이면 g(y)=4x+3이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      12,
+      -4,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "4",
+        "7"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/2",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "-7/8",
+          "1/8"
+        ],
+        "domain": [
+          "-4",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "y=h(x)"
+      }
+    ]
+  },
+  "caption": "예: 원함수의 역함수와 합성된 함수의 역함수 그래프를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시로 f(x)=2x+1을 택하면 g(x)=(x−1)/2이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "h를 f(4x+3)의 역함수라 하면 h(x)=g(x)/4−3/4이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "합성된 함수의 역함수가 원래 역함수의 출력값을 조정한 그래프임을 예시로 보여 준다."
+  ]
+}

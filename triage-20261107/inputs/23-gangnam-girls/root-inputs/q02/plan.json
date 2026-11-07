@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "합성함수는 안쪽 함수부터 계산한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      2,
+      -3,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "-1"
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "안쪽 함수의 출력값을 바깥 함수의 입력값으로 다시 사용하는 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=2x+1이고 g(x)=3x²이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "f(−1)=−1이고 이를 g에 다시 입력한다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 입력값을 두 그래프에서 차례로 읽으며 합성의 순서를 보여 준다."
+  ]
+}

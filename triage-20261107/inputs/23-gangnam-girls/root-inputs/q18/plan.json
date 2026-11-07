@@ -1,0 +1,153 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "f³(x)=x이므로 반복 주기는 3이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -2,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=(x-1)/x"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1/2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "1/2",
+          "y": "1/2",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "1/2",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "S",
+          "x": "-1",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "T",
+          "x": "-1",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "U",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "s1",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "s2",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "s3",
+          "from": "R",
+          "to": "S"
+        },
+        {
+          "id": "s4",
+          "from": "S",
+          "to": "T"
+        },
+        {
+          "id": "s5",
+          "from": "T",
+          "to": "U"
+        }
+      ]
+    }
+  },
+  "caption": "예: 함수와 대각선을 번갈아 따라가며 세 번의 반복이 원래 값으로 돌아옴을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=(x−1)/x이고 f³(x)=x이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 a=2일 때 입력은 2→1/2→−1→2로 반복된다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "함수값을 다시 입력값으로 바꾸는 과정을 그래프와 대각선 사이의 이동으로 보여 준다."
+  ]
+}

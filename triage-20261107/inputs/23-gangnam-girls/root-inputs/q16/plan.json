@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "x=2를 기준으로 두 식의 치역을 직접 비교한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "good",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=x"
+      },
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-x+4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "예: 오른쪽 조각은 공통이며 왼쪽 조각의 두 예를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥2에서 f(x)=x, x<2에서 f(x)=(1−2a)x+4a이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "a=0이면 왼쪽은 y=x이고 a=1이면 왼쪽은 y=−x+4이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 조각이 증가하는 예와 감소하는 예를 비교해 치역 겹침과 일대일성의 차이를 보여 준다."
+  ]
+}

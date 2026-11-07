@@ -1,0 +1,120 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "같은 높이에서 두 그래프 사이의 가로 거리는 항상 2이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      0,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=6/x"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "0"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "3",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "y=6/(x-2)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "3"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "3/2"
+        },
+        {
+          "id": "D",
+          "x": "6",
+          "y": "3/2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "caption": "예: 서로 평행이동한 두 곡선 사이의 수평 간격을 두 높이에서 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=6/x (x>0), g(x)=6/(x−2) (x>2)이고 g는 f를 오른쪽으로 2만큼 옮긴 것이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 t=3에서 A=(2,3), B=(4,3), C=(4,3/2), D=(6,3/2)이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "두 높이에서 선분 AB와 CD가 같은 가로폭을 갖는 이유를 보여 준다."
+  ]
+}

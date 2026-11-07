@@ -1,0 +1,58 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "k>0이면 그래프는 제1, 3사분면에 있고 두 점근선은 좌표축이다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5,
+      5,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 양의 반비례 그래프의 두 가지와 좌표축을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k>0인 y=k/x를 k=1인 예시로 나타낸다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "그래프의 두 가지는 제1, 제3사분면에 놓이고 좌표축에 가까워진다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "축이 점근선이 되어 0이 정의역과 치역에서 제외되는 모습을 보여 준다."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "sourceQuote": "이 함수는 x가 커질수록 증가하므로 3≤x≤27에서",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "3"
+    ],
+    "amplitude": "1",
+    "sign": 1,
+    "offset": "-2",
+    "sourceDomain": {
+      "kind": "CLOSED_INTERVAL",
+      "range": [
+        3,
+        27
+      ]
+    },
+    "domain": [
+      3,
+      27
+    ],
+    "viewport": [
+      0,
+      30,
+      -3,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "9",
+        "18",
+        "27"
+      ],
+      "y": [
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "hideLabels": [
+      "start"
+    ]
+  },
+  "caption": "주어진 구간에서 무리함수 그래프가 증가하는 모습을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "문제의 점근선과 원점 통과 조건으로 a=3, b=0, c=−2이므로 y=√(3x)−2이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "정의역을 3≤x≤27로 제한해 구간 양 끝의 함수값을 비교한다.",
+      "mappedTo": "graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "제한된 구간의 양 끝에서 함수값이 어떻게 달라지는지 증가 그래프를 통해 보여 준다."
+  ]
+}

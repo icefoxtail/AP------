@@ -1,0 +1,79 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "판별식은 D=a²−4b이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1/4",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 6,
+        "y": 9
+      }
+    ],
+    "overlays": {
+      "latticePoints": {
+        "region": "ABOVE_CURVE",
+        "xRange": [
+          1,
+          6
+        ],
+        "yMax": 6,
+        "strict": true,
+        "counts": false
+      }
+    }
+  },
+  "caption": "주사위 눈의 순서쌍 중 포물선 위쪽의 격자점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a,b는 각각 1부터 6까지의 정수이다.",
+      "mappedTo": "graphPlan.overlays.latticePoints"
+    },
+    {
+      "id": "c2",
+      "condition": "실근이 없으려면 b>a²/4이다.",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 음수인 조건을 정수 격자점의 위치로 나타내어 직접 세도록 돕는다."
+  ]
+}
