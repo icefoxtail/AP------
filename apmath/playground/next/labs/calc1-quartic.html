@@ -1365,6 +1365,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const tickSpan = (s, dt) => { if (!s.playing) return false; bounce(s, 'spanL', 0.9, 2.0, 3.7, dt); return true; };
 
   function teachingSteps(m, s, lab) {
+    lab=lab||window.lab;
     const explore = !lab || lab.tab === 'explore', v = VARS[m].vary.cur();
     if (m === 1) {
       if (explore && !isLeft(s) && !isRight(s)) return [

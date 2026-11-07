@@ -810,7 +810,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const q1 = cxArrow(b, [0, 0], [-1, -v.fp(0)], 0.9, 'violet', { ref: 'L' });
       tag(b, q1, `f′(0) = ${v.fp(0)}`, { color: 'violet', size: 12, align: 'right', dx: -4, dy: -14, ref: 'L' });
       b.line([v.p, f(v.p)], v.fp(v.p), { extent: [-0.8, 0.8], color: 'sky', width: 2.2, ref: 'R' });
-      b.point([v.p, f(v.p)], { color: 'amber', r: 5.5, label: 'P: 같은 기울기', dx: 10, dy: -14, ref: 'move' });
+      b.point([v.p, f(v.p)], { color: 'amber', r: 5.5, label: st<3?'P: 같은 기울기':null, dx: 10, dy: -14, ref: 'move' });
     }
     if (st >= 3) {
       const P = [v.p, f(v.p)];
@@ -1242,7 +1242,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ],
       actions: actionsOf(null, 'P를 자동으로 움직이기'),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'cp', 0.9, -1.8, 1.8, dt); return true; },
-      steps: (s, lab) => lab && lab.tab === 'explore' ? exploreSteps(6, s) : steps6(var6.cur()),
+      steps: (s, lab=window.lab) => lab && lab.tab === 'explore' ? exploreSteps(6, s) : steps6(var6.cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text6(var6.cur())}</div>`,
       problem: {
         tag: '2027학년도 7월 학평(인천) 15번 유형', time: '목표 시간: 90초',
@@ -1269,13 +1269,13 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: '<b>금색 점 P</b>를 곡선 위에서 끌어 보세요. P에서 오른쪽 부분을 원점으로 옮겨 왼쪽 조각과 이어 붙입니다. 접합점의 두 화살표(보라·분홍)가 같아지는 순간이 매끄럽게 이어지는 때입니다.',
       controls: ['gp'],
       presets: [
-        { label: 'p = 2 (기울기가 같아지는 곳)', color: 'green', set: { gp: 2 }, on: (s) => same(s.gp, 2) },
+        { label: 'p = 2 비교', color: 'green', set: { gp: 2 }, on: (s) => same(s.gp, 2) },
         { label: 'p = 1', set: { gp: 1 }, on: (s) => same(s.gp, 1) },
         { label: 'p = 3', set: { gp: 3 }, on: (s) => same(s.gp, 3) }
       ],
       actions: actionsOf(null, 'p를 자동으로 움직이기'),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'gp', 0.8, 0.2, 3.6, dt); return true; },
-      steps: (s, lab) => lab && lab.tab === 'explore' ? exploreSteps(7, s) : steps7(var7.cur()),
+      steps: (s, lab=window.lab) => lab && lab.tab === 'explore' ? exploreSteps(7, s) : steps7(var7.cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text7(var7.cur())}</div>`,
       problem: {
         tag: '2022학년도 9월 모의평가 14번 · 2024학년도 3월 학평(서울) 20번 유형', time: '목표 시간: 90초',
@@ -1527,7 +1527,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const ex = examData[spec.m], V = ouVarier(spec.gen);
     const body = (v) => (v.first ? ex.question() : spec.text(v));
     const pr0 = sc.problem || {}, origView = sc.view, origDraw = sc.draw, origPanes = sc.panes, focus0 = sc.focus;
-    const inExplore = (lab) => !lab || !lab.tab || lab.tab === 'explore';
+    const inExplore = (lab) => { const current=lab||window.lab; return !current||!current.tab||current.tab==='explore'; };
     // 탐구도 0단계의 기본 그림을 보존합니다. 단계 문구는 탐구 모델을 설명합니다.
     const withStep = (s, fn) => { const k = s.step; s.step = Math.max(0, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
     const stepsOf = (v) => spec.steps(v).map(ouFix);
@@ -1644,7 +1644,7 @@ window.addEventListener('DOMContentLoaded', function () {
       `미분가능하려면 $f'(0)=0$. $f'(x)=3x^2+2ax+(a^2-${v.q * v.q})$ 이므로 $f'(0)=a^2-${v.q * v.q}=0$, $a>0$ 에서 $a=${v.m}$.`,
       `$g(-1)=f(|-1|)=f(1)$ 이므로 $a=${v.m}$ 일 때 $f(1)=1+${v.m}+0${v.d === 0 ? '' : ouSg(v.d)}=${v.gval}$ 입니다. 그림의 실선은 $a=${v.m}$ 일 때의 $g$ 입니다.`
     ],
-    core: '<b>g(x) = f(|x|) 의 미분가능성</b><br>$x>0$ 에서는 $f(x)$, $x<0$ 에서는 $f(-x)$ 이므로 $x=0$ 에서 우미분계수는 $f\'(0)$, 좌미분계수는 $-f\'(0)$ 입니다. 미분가능하려면 $f\'(0)=0$ 이어야 하고, 그러면 그래프가 $y$축에 대칭이면서 $x=0$ 에서 매끄럽게 이어집니다.',
+    core: '<b>g(x) = f(|x|) 의 미분가능성</b><br>$x\\gt0$ 에서는 $f(x)$, $x\\lt0$ 에서는 $f(-x)$ 이므로 $x=0$ 에서 우미분계수는 $f^{\\prime}(0)$, 좌미분계수는 $-f^{\\prime}(0)$ 입니다. 미분가능하려면 $f^{\\prime}(0)=0$ 이어야 하고, 그러면 그래프가 $y$축에 대칭이면서 $x=0$ 에서 매끄럽게 이어집니다.',
     draw: (b, s, v, st) => {
       const vb = b.viewBox(), ex = v.fam === 'A' ? `m = ${v.mex}` : `a = ${v.mex}`;
       if (st < 2) {
@@ -1855,16 +1855,16 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/미적분1/합성함수·절댓값 그래프.html',
     board: { kind: 'cartesian', focus: { x: [-3.6, 3.6], y: [-2.5, 2.6] }, pad: 0.04 },
     params: {
-      m: { value: 1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '평행이동 m', hint: 'm = 1 에서 f(|x|)가 x = 0 에서 미분가능합니다', format: (v) => `m = ${fmt(v)}` },
+      m: { value: 1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '평행이동 m', hint: '원점의 왼쪽과 오른쪽에서 접선의 기울기를 비교하세요', format: (v) => `m = ${fmt(v)}` },
       t: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '기준선 y = t', hint: '점선 그래프 y = f(x) − t 의 x축 아랫부분이 위로 접혀 올라옵니다', format: (v) => `t = ${fmt(v)}` },
-      k2: { value: 2, min: 0, max: 3.8, step: 0.05, color: 'sky', label: '수평선 y = k', hint: 't = 0, k = 2 일 때 교점이 정확히 4개', format: (v) => `k = ${fmt(v)}` },
-      r: { value: 2, min: -1.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) = x − r 의 x절편 r', hint: 'r = 2 에서 x = 2 의 꺾임이 사라집니다', format: (v) => `r = ${fmt(v)}` },
+      k2: { value: 2, min: 0, max: 3.8, step: 0.05, color: 'sky', label: '수평선 y = k', hint: '극점의 높이와 그 바로 위·아래에서 교점 수를 비교하세요', format: (v) => `k = ${fmt(v)}` },
+      r: { value: 2, min: -1.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) = x − r 의 x절편 r', hint: '직선의 영점과 절댓값이 꺾이는 점의 관계를 살펴보세요', format: (v) => `r = ${fmt(v)}` },
       c4: { value: -2, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: '안쪽함수 꼭짓점 높이 c', hint: 'g(x) = 0.5x² + c', format: (v) => `c = ${fmt(v)}` },
       c5: { value: -1, min: -2.5, max: 2.5, step: 0.05, color: 'amber', label: 'g(x) 최솟값 c', hint: 'g(x) = 0.5x² + c', format: (v) => `c = ${fmt(v)}` },
       k5: { value: 0, min: -2.5, max: 2.5, step: 0.05, color: 'sky', label: '우변 상수 k', hint: 'f(u) = k 의 실근 u₁, u₂, u₃', format: (v) => `k = ${fmt(v)}` },
       cp: { value: 0.5, min: -1.8, max: 1.8, step: 0.05, color: 'amber', label: '접점 P의 x좌표 p', hint: 'P를 곡선 위에서 움직입니다', format: (v) => `p = ${fmt(v)}` },
       cm: { value: 1, min: -4, max: 7, step: 0.05, color: 'sky', label: '직선 g의 기울기 m', hint: 'm = f′(p) 이면 g는 P에서의 접선입니다', format: (v) => `m = ${fmt(v)}` },
-      gp: { value: 1, min: 0.2, max: 3.6, step: 0.05, color: 'amber', label: '오른쪽 조각을 가져오는 위치 p', hint: 'p = 2 에서 두 기울기가 같아집니다', format: (v) => `p = ${fmt(v)}` }
+      gp: { value: 1, min: 0.2, max: 3.6, step: 0.05, color: 'amber', label: '오른쪽 조각을 가져오는 위치 p', hint: '원래 곡선의 x=0과 P에서 접선 기울기를 비교하세요', format: (v) => `p = ${fmt(v)}` }
     },
     state: { absType: 'in', dual: false, animDir: -1, mk: 'max' },
     persist: ['absType', 'dual'],
