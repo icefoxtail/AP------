@@ -22,8 +22,8 @@
 /* ==========================================================================
    미적분Ⅰ · 사차함수 비율관계 (AP Math Lab 2.0 이식본)
    원본: labs/미적분1/사차함수 비율관계.html
-   - 문제·단계·정석/빠른 풀이 문구(examData)는 원본을 그대로 옮겼습니다.
-   - 2026-11: 문제 탭·정리 탭에 「새 문제」(같은 학습 포인트가 성립하는 사차함수족에서 숫자만 바꾼 변형)를 더했습니다. 첫 문제와 탐구 탭은 예전 그대로입니다.
+   - 정리·문제 탭은 같은 학습 포인트를 유지하는 사차함수족의 숫자 변형과 연결됩니다.
+   - 단계별 그림과 설명은 현재 모델의 중근·대칭 조건 및 부호에 맞추어 갱신됩니다.
    - 수학 함수(사차함수 f, 삼차 도함수, 세 극점 α·γ·β, 도함수 넓이 S₁·S₂, 식 표시 생성기)는
      원본과 같은 식입니다. 원본이 전역 state를 읽던 것을 상태 s를 첫 인자로 받도록만 바꿨습니다.
    - 바뀐 점: 셸·레이아웃은 공용 키트가 담당, 무대는 1:1 축척, 점은 직접 끌 수 있는 손잡이
@@ -79,25 +79,25 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     // 삼중근 여부 확인
-    if (s.lambda < 0.01) {
+    if (isLeft(s)) {
       const q = alpha + (4 / 3) * s.spanL;
       const y0Str = s.y0 === 0 ? '' : (s.y0 > 0 ? ` + ${s.y0.toFixed(1)}` : ` - ${Math.abs(s.y0).toFixed(1)}`);
       return {
-        fLatex: `f(x) = ${aStr}${fmtFactor(alpha)}^3${fmtFactor(q)}${y0Str}`,
-        fpLatex: `f'(x) = ${fpPrefix}${fmtFactor(alpha)}^2${fmtFactor(beta)}`
+        fLatex: `f(x) \\approx ${aStr}${fmtFactor(alpha)}^3${fmtFactor(q)}${y0Str}`,
+        fpLatex: `f^{\\prime}(x) \\approx ${fpPrefix}${fmtFactor(alpha)}^2${fmtFactor(beta)}`
       };
-    } else if (s.lambda > 0.99) {
+    } else if (isRight(s)) {
       const q = beta - (4 / 3) * s.spanL;
       const yBeta = evalF(s, beta);
       const yBStr = Math.abs(yBeta) < 0.01 ? '' : (yBeta > 0 ? ` + ${yBeta.toFixed(1)}` : ` - ${Math.abs(yBeta).toFixed(1)}`);
       return {
-        fLatex: `f(x) = ${aStr}${fmtFactor(q)}${fmtFactor(beta)}^3${yBStr}`,
-        fpLatex: `f'(x) = ${fpPrefix}${fmtFactor(alpha)}${fmtFactor(beta)}^2`
+        fLatex: `f(x) \\approx ${aStr}${fmtFactor(q)}${fmtFactor(beta)}^3${yBStr}`,
+        fpLatex: `f^{\\prime}(x) \\approx ${fpPrefix}${fmtFactor(alpha)}${fmtFactor(beta)}^2`
       };
     } else {
       return {
-        fLatex: `y = f(x) \\; (\\alpha=${alpha.toFixed(1)}, \\gamma=${gamma.toFixed(1)}, \\beta=${beta.toFixed(1)})`,
-        fpLatex: `f'(x) = ${fpPrefix}${fmtFactor(alpha)}${fmtFactor(gamma)}${fmtFactor(beta)}`
+        fLatex: `y = f(x) \\; (\\alpha\\approx${alpha.toFixed(2)}, \\gamma\\approx${gamma.toFixed(2)}, \\beta\\approx${beta.toFixed(2)})`,
+        fpLatex: `f^{\\prime}(x) \\approx ${fpPrefix}${fmtFactor(alpha)}${fmtFactor(gamma)}${fmtFactor(beta)}`
       };
     }
   }
@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "1단계 · 삼중근인 접점 A(α)에서의 수평인 접선과, 곡선과 다시 만나는 교점 Q(q)를 그립니다.",
           "2단계 · A, 극소점 B, Q의 x좌표 사이의 간격이 3 : 1임을 직사각형과 4등분한 세로선으로 확인합니다.",
-          "3단계 · 극솟값의 깊이 Δy = 27|a|h⁴ 와, 선분 AB를 2 : 1로 내분하는 점 I₂를 표시합니다."
+          "3단계 · 극값과 접선의 높이 차 Δy = 27|a|h⁴ 를 구합니다. 제2변곡점 I₂의 x좌표는 두 점 A, B의 x좌표 사이를 2 : 1로 나눕니다(선분 AB 위의 점이라는 뜻은 아닙니다)."
         ],
         textbook: () => ({
           steps: `① 식을 전개하여 미분: ${tex('f(x) = \\dfrac{1}{4}x^4 - x^3 + 2')}<br/>
@@ -225,7 +225,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       5: {
         badge: "장면 5 · 함수 |f(x) − k| 의 미분가능성 (미분가능하지 않은 점의 개수)",
-        hint: "보라색 수평선 <span class='text-purple-300 font-bold'>y = k</span>를 위아래로 끌어 보세요! 접어 올린 함수 <span class='text-amber-300 font-bold'>|f(x)-k|는 y = k가 삼중근인 접점의 높이(k=2)에 있을 때만 미분가능하지 않은 점이 1개</span>가 됩니다!",
+        hint: "보라색 수평선 <span class='text-purple-300 font-bold'>y = k</span>를 위아래로 끌어 보세요. 교점에서 원래 곡선의 기울기가 0인지 확인합니다. 보라색 곡선은 접는 과정을 비교하도록 <b>g(x)+k=|f(x)−k|+k</b>를 그린 것입니다.",
         tag: "수능 22번 최고난도 킬러 절대법칙",
         targetTime: "목표 시간: 3초",
         question: () => `사차함수 ${tex('f(x) = \\dfrac{1}{4}x^3(x - 4) + 2')} 에 대하여 함수 ${tex('g(x) = |f(x) - k|')} 가 실수 전체의 집합에서 미분가능하지 않은 점의 개수가 오직 ${tex('1')}개가 되도록 하는 상수 ${tex('k')}의 값과 그 미분가능하지 않은 점의 ${tex('x')}좌표를 구하시오.`,
@@ -287,7 +287,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const addX = (x) => { bx.x0 = Math.min(bx.x0, x); bx.x1 = Math.max(bx.x1, x); };
     if ((m === 1 || m === 3) && (isLeft(s) || isRight(s))) addX(isLeft(s) ? alpha + (4 / 3) * s.spanL : beta - (4 / 3) * s.spanL);
     if (m === 2 && isSym(s)) { addX(gamma - Math.SQRT2 * (s.spanL / 2)); addX(gamma + Math.SQRT2 * (s.spanL / 2)); }
-    if (m === 5) { bx.y0 = Math.min(bx.y0, -6); bx.y1 = Math.max(bx.y1, 4); } // 기준선 k 를 끌 수 있는 범위
+    if (m === 5) {
+      findCrossings(s, s.kLine).forEach(addX);
+      const folded = ys.map(y => s.kLine + Math.abs(y - s.kLine));
+      bx.y0 = Math.min(bx.y0, -6, s.kLine);
+      bx.y1 = Math.max(bx.y1, 4, s.kLine, ...folded);
+    }
     return bx;
   }
   // 도함수가 두 극솟점 사이에서 오가는 값의 범위 (0 포함)
@@ -365,9 +370,10 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 4. 공통 부품 ---------- */
   // 그림 라벨용 짧은 수: 0.00 → 0, 2.40 → 2.4 (불필요한 0을 줄여 라벨이 겹치지 않게)
   const num = (v, d = 2) => { const r = +v.toFixed(d); return String(Object.is(r, -0) ? 0 : r).replace('-', '−'); };
-  const isLeft = (s) => s.lambda < 0.02;
-  const isRight = (s) => s.lambda > 0.98;
-  const isSym = (s) => Math.abs(s.lambda - 0.5) < 0.02;
+  const qSame = (x, y) => Math.abs(x - y) <= 1e-10 * Math.max(1, Math.abs(x), Math.abs(y));
+  const isLeft = (s) => qSame(s.lambda, 0);
+  const isRight = (s) => qSame(s.lambda, 1);
+  const isSym = (s) => qSame(s.lambda, 0.5);
   const secs = (m) => examData[m].targetTime;
   function enterOf(m) {
     return (s) => {
@@ -411,31 +417,30 @@ window.addEventListener('DOMContentLoaded', function () {
   // |f(x) - k| 의 교점 탐색. 원본은 |f-k|<0.015 인 구간을 '교점'으로 훑어 삼중근 근처(예: k=2에서 x≈-0.2)를
   // 엉뚱한 곳에서 잡아 첨점으로 잘못 판정했습니다. 여기서는 ① 부호가 바뀌는 단순근(이분법)과
   // ② 도함수가 0인 점 α·γ·β 중 f=k 가 되는 점(중근·삼중근, 기울기 0)을 정확히 찾습니다.
-  function findCrossings(s, k, minX, maxX) {
-    const crossings = [];
-    const add = (rootX) => { if (!crossings.some((r) => Math.abs(r - rootX) < 0.12)) crossings.push(rootX); };
-    let prevX = minX;
-    let prevDiff = evalF(s, prevX) - k;
-    for (let x = minX + 0.02; x <= maxX; x += 0.02) {
-      const currDiff = evalF(s, x) - k;
-      if (prevDiff * currDiff < 0) {
-        // 이분법 정밀 탐색
-        let lo = prevX;
-        let hi = x;
-        for (let iter = 0; iter < 12; iter++) {
-          const mid = (lo + hi) / 2;
-          if ((evalF(s, lo) - k) * (evalF(s, mid) - k) <= 0) hi = mid;
-          else lo = mid;
-        }
-        add((lo + hi) / 2);
-      }
-      prevX = x;
-      prevDiff = currDiff;
-    }
+  function findCrossings(s, k, minX = -Infinity, maxX = Infinity) {
+    // 도함수의 영점으로 나눈 각 단조 구간에는 교점이 많아야 하나입니다.
+    // 일정한 훑기 간격이나 넓은 병합 오차로 가까운 두 근을 놓치지 않습니다.
     const { alpha, gamma, beta } = getRoots(s);
-    [alpha, gamma, beta].forEach((c) => { if (c >= minX && c <= maxX && Math.abs(evalF(s, c) - k) < 0.02) add(c); });
-    return crossings.sort((p, q) => p - q);
+    const critical = [alpha, gamma, beta].filter((x, i, a) => !i || !qSame(x, a[i - 1]));
+    let reach = Math.max(s.spanL, 1), lo = alpha - reach, hi = beta + reach;
+    for (let i = 0; i < 32 && ((evalF(s, lo) - k) * s.a <= 0 || (evalF(s, hi) - k) * s.a <= 0); i++) {
+      reach *= 2; lo = alpha - reach; hi = beta + reach;
+    }
+    const roots = [], add = x => { if (!roots.some(r => qSame(r, x))) roots.push(x); };
+    critical.forEach(x => { if (qSame(evalF(s, x), k)) add(x); });
+    const cuts = [lo, ...critical, hi];
+    for (let i = 1; i < cuts.length; i++) {
+      let a = cuts[i - 1], b = cuts[i], fa = evalF(s, a) - k, fb = evalF(s, b) - k;
+      if (qSame(evalF(s, a), k) || qSame(evalF(s, b), k) || fa * fb >= 0) continue;
+      for (let j = 0; j < 64; j++) {
+        const c = (a + b) / 2, fc = evalF(s, c) - k;
+        if (fa * fc <= 0) { b = c; fb = fc; } else { a = c; fa = fc; }
+      }
+      add((a + b) / 2);
+    }
+    return roots.filter(x => x >= minX && x <= maxX).sort((a, b) => a - b);
   }
+  const stationaryCrossing = (s, x, k) => Object.values(getRoots(s)).some(c => qSame(c, x) && qSame(evalF(s, c), k));
 
   // 실시간 값·상태·경고·하단 판서 (원본 updateLiveMonitor + renderBottomChalkBanner)
   function viewFor(m) {
@@ -445,6 +450,10 @@ window.addEventListener('DOMContentLoaded', function () {
       const f = getFormulaLatex(s);
       const left = isLeft(s), right = isRight(s), sym = isSym(s);
       const lam = fmt(s.lambda);
+      if (s.step === 0) return {
+        chips: [{ k: '탐구 함수 · 소수 표시는 근삿값', tex: f.fLatex, color: 'amber' }],
+        notes: '현재 탐구 모델은 조절한 a, α, L, λ, y₀로 정해집니다. 정리·문제 탭은 발문에 적힌 조건의 그림입니다. 보조선을 차례로 열어 접점·대칭·높이 차를 확인하세요.'
+      };
       // 모드별 특수 성립 조건 판별
       let status, alert = null;
       if (m === 1 && !left && !right) {
@@ -469,8 +478,8 @@ window.addEventListener('DOMContentLoaded', function () {
         v4 = `극솟값 차 = ${fmt(Math.abs(s1 - s2))}`;
       }
       if (m === 5) {
-        const cr = findCrossings(s, s.kLine, -7, 9);
-        const cusp = cr.filter((rx) => Math.abs(evalFp(s, rx)) >= 0.15).length;
+        const cr = findCrossings(s, s.kLine);
+        const cusp = cr.filter(rx => !stationaryCrossing(s, rx, s.kLine)).length;
         v4 = `미분가능하지 않은 점 ${cusp}개 · 미분가능한 접점 ${cr.length - cusp}개`;
       }
       // 하단 판서(원본 renderBottomChalkBanner)
@@ -498,20 +507,24 @@ window.addEventListener('DOMContentLoaded', function () {
         } else if (m === 4) {
           title = `도함수 넓이 S₁(${fmt(s1)}) vs S₂(${fmt(s2)})  ⇒  두 극솟값 차 f(α)-f(β) = ${fmt(evalF(s, alpha) - evalF(s, beta))}`;
         } else {
-          title = `절댓값 함수 g(x) = |f(x) - k| : 삼중근인 접점의 높이 k = ${fmt(evalF(s, alpha), 1)} 일 때만 미분가능하지 않은 점이 1개!`;
+          const cr = findCrossings(s, s.kLine), cusp = cr.filter(x => !stationaryCrossing(s, x, s.kLine)).length;
+          title = `현재 k=${num(s.kLine, 4)}: 꺾이는 점 ${cusp}개, 기울기 0인 교점 ${cr.length - cusp}개. ` +
+            (left || right ? `이 삼중근 개형에서는 k=f(${left ? 'α' : 'β'})≈${num(evalF(s, left ? alpha : beta), 4)}일 때 꺾임이 1개입니다.` : '현재 개형에서는 각 교점의 기울기를 따로 확인합니다.');
         }
         tape = { title };
       }
       return {
         // 좁은 화면에서는 일반(비대칭) 개형의 긴 식 두 개가 두 줄로 쌓여 그림을 가리므로 도함수 식(세 근이 모두 들어 있음)만 보입니다.
-        chips: NARROW.matches && !left && !right ? [{ k: '도함수', tex: f.fpLatex, color: 'sky' }] : [{ k: '함수', tex: f.fLatex, color: 'amber' }, { k: '도함수', tex: f.fpLatex, color: 'sky' }],
+        chips: NARROW.matches && !left && !right ? [{ k: '탐구 도함수 · 소수 근사', tex: f.fpLatex, color: 'sky' }] : [{ k: '탐구 함수 · 소수 근사', tex: f.fLatex, color: 'amber' }, { k: '탐구 도함수 · 소수 근사', tex: f.fpLatex, color: 'sky' }],
         status,
         alert,
         readouts: [
           { label: '도함수 세 실근 (α, γ, β)', value: `${fmt(alpha, 1)} : ${fmt(gamma)} : ${fmt(beta, 1)}`, color: 'amber', ref: 'roots', wide: true },
-          { label: '비율 (3:1 / 1:√2)', value: v2, color: 'rose', ref: 'box', wide: true },
-          { label: '도함수 넓이 S₁ vs S₂', value: `S₁=${fmt(s1)} | S₂=${fmt(s2)}`, color: 'sky', ref: 'dy', wide: true },
-          { label: m === 5 ? '미분가능하지 않은 점의 개수' : '정적분 넓이 / 극솟값 차', value: v4, color: 'violet', ref: m === 5 ? 'fold' : 'S', wide: true }
+          ...(s.step >= 2 ? [{ label: '비율 (3:1 / 1:√2)', value: v2, color: 'rose', ref: 'box', wide: true }] : []),
+          ...(s.step >= 3 ? [
+            { label: '도함수 넓이 S₁ vs S₂', value: `S₁≈${fmt(s1)} | S₂≈${fmt(s2)}`, color: 'sky', ref: 'dy', wide: true },
+            { label: m === 5 ? '미분가능하지 않은 점의 개수' : '정적분 넓이 / 극솟값 차', value: v4, color: 'violet', ref: m === 5 ? 'fold' : 'S', wide: true }
+          ] : [])
         ],
         tape
       };
@@ -550,17 +563,18 @@ window.addEventListener('DOMContentLoaded', function () {
     const yA = evalF(s, alpha), yB = evalF(s, beta);
     const dragA = (w) => { s.alpha = clamp(+w.x.toFixed(2), -2.0, 1.5); };
     const dragB = (w) => { s.spanL = clamp(+(w.x - s.alpha).toFixed(2), 1.5, 4.0); };
+    const label = (name, x, y) => s.step >= 3 ? `${name}(${num(x)}, ${num(y)})` : name;
     if (isLeft(s)) {
-      b.handle('A', [alpha, yA], { color: 'amber', r: 7, ref: 'A', label: `삼중근 접점 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: -12, align: 'right', drag: dragA });
-      b.handle('B', [beta, yB], { color: 'green', r: 7, ref: 'B', label: `극소 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: 20, drag: dragB });
+      b.handle('A', [alpha, yA], { color: 'amber', r: 7, ref: 'A', label: label('A', alpha, yA), dx: -12, dy: -12, align: 'right', drag: dragA });
+      b.handle('B', [beta, yB], { color: 'green', r: 7, ref: 'B', label: label('B', beta, yB), dx: 12, dy: 20, drag: dragB });
     } else if (isRight(s)) {
-      b.handle('A', [alpha, yA], { color: 'green', r: 7, ref: 'A', label: `극소 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: 20, align: 'right', drag: dragA });
-      b.handle('B', [beta, yB], { color: 'amber', r: 7, ref: 'B', label: `삼중근 접점 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: -12, drag: dragB });
+      b.handle('A', [alpha, yA], { color: 'green', r: 7, ref: 'A', label: label('A', alpha, yA), dx: -12, dy: 20, align: 'right', drag: dragA });
+      b.handle('B', [beta, yB], { color: 'amber', r: 7, ref: 'B', label: label('B', beta, yB), dx: 12, dy: -12, drag: dragB });
     } else {
       const yC = evalF(s, gamma);
-      b.handle('A', [alpha, yA], { color: 'amber', ref: 'A', label: `극소 A(${num(alpha)}, ${num(yA)})`, dx: -12, dy: 20, align: 'right', drag: dragA });
-      b.handle('C', [gamma, yC], { color: 'rose', r: 7.5, ref: 'C', priority: 2, label: `극대 C(${num(gamma)}, ${num(yC)})`, dx: 0, dy: -18, align: 'center', drag: (w) => drawLambda(s, w.x) });
-      b.handle('B', [beta, yB], { color: 'green', ref: 'B', label: `극소 B(${num(beta)}, ${num(yB)})`, dx: 12, dy: 20, drag: dragB });
+      b.handle('A', [alpha, yA], { color: 'amber', ref: 'A', label: label('A', alpha, yA), dx: -12, dy: 20, align: 'right', drag: dragA });
+      b.handle('C', [gamma, yC], { color: 'rose', r: 7.5, ref: 'C', priority: 2, label: label('C', gamma, yC), dx: 0, dy: -18, align: 'center', drag: (w) => drawLambda(s, w.x) });
+      b.handle('B', [beta, yB], { color: 'green', ref: 'B', label: label('B', beta, yB), dx: 12, dy: 20, drag: dragB });
     }
   }
   // 아래 칠판: 삼차 도함수 y = f′(x) 와 두 영역 넓이 S₁ vs S₂ (원본 renderDerivativePane)
@@ -590,7 +604,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // 영역이 글자를 담을 만큼 넓을 때만 그림 안에 표시합니다 (값은 아래 이름표에도 있습니다)
         if (Math.abs(x1 - x0) * b.k >= 80) {
           const mid = (x0 + x1) / 2;
-          b.text([mid, evalFp(s, mid) * 0.5], `${label}=${num(val)}`, { color: col, size: 12.5, weight: 800, ref: 'dy' });
+          b.text([mid, evalFp(s, mid) * 0.5], s.step >= 3 ? `${label}≈${num(val)}` : label, { color: col, size: 12.5, weight: 800, ref: 'dy' });
         }
       };
       area(alpha, gamma, 'rose', 'S₁', s1);
@@ -613,7 +627,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.restore();
     const ttl = NARROW.matches ? '도함수 y = f′(x)' : '삼차 도함수 y = f′(x) · 넓이 S₁, S₂ 비교';
     b.stext(r.x + 14, r.y + 20, ttl, { color: 'sky', size: 12.5, align: 'left', weight: 800 });
-    if (s.step >= 2) {
+    if (s.step >= 3 && !NARROW.matches) {
       // S₁·S₂ 값을 이름표 옆에 색으로 구분해 적습니다
       c.save();
       c.font = `800 ${12.5 * b.fs}px ${b.font}`;
@@ -679,7 +693,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // Step 3: 제2변곡점 I₂(2:1 내분) 및 높이차 Δy = 27|a|h⁴
     if (s.step >= 3) {
       const yInf2 = evalF(s, xInf2);
-      b.point([xInf2, yInf2], { color: 'violet', r: 5, ref: 'I2', label: `점 I₂(${num(xInf2)}, ${num(yInf2)}) [2:1 내분]`, dx: -12, dy: 22, align: 'right' });
+      b.point([xInf2, yInf2], { color: 'violet', r: 5, ref: 'I2', label: 'I₂ · x좌표 사이의 비 2:1', dx: -12, dy: 22, align: 'right' });
       const xr = offX(b, xRight, 26);
       b.seg([xr, yTriple], [xr, yMin], { color: 'sky', width: 2.5, ref: 'dy' });
       barLabel(b, xr, (yTriple + yMin) / 2, `Δy = ${num(Math.abs(yTriple - yMin))}`, 'sky', 'dy');
@@ -688,6 +702,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // 모드 2: 대칭 사차함수(W형)의 1 : √2 비율과 극댓값-극솟값 높이차
   function drawSym(b, s) {
+    if (!isSym(s)) return;
     const { alpha, gamma, beta } = getRoots(s);
     const yA = evalF(s, alpha), yC = evalF(s, gamma), yB = evalF(s, beta);
     // Step 1: 대칭축 x = γ 및 두 극소점 보조선
@@ -695,7 +710,6 @@ window.addEventListener('DOMContentLoaded', function () {
       b.vline(gamma, { color: 'amber', alpha: 0.55, width: 1.8, dash: true, ref: 'axis' });
       b.seg([alpha - 1.5, yA], [beta + 1.5, yB], { color: 'sky', width: 2.2, dash: true, ref: 'dy' });
     }
-    if (!isSym(s)) return;
     const h = s.spanL / 2;
     const xRootL = gamma - Math.sqrt(2) * h;
     const xRootR = gamma + Math.sqrt(2) * h;
@@ -738,7 +752,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if (s.step >= 2) {
         b.seg([x1, yLine], [x2, yLine], { color: 'amber', width: 2, ref: 'S', dash: true });
-        b.text([(x1 + x2) / 2, (yLine + evalF(s, left ? beta : alpha)) / 2], `S = \\frac{|a|}{20} · L⁵ = ${num(area20)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
+        if (s.step >= 3) b.text([(x1 + x2) / 2, (yLine + evalF(s, left ? beta : alpha)) / 2], `S = |a|L⁵/20 ≈ ${num(area20)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
         b.text([(x1 + x2) / 2, yLine], `L = ${num(L)}`, { color: 'amber', dy: -12, size: 12.5, ref: 'S' });
       }
     } else if (sym) {
@@ -750,7 +764,7 @@ window.addEventListener('DOMContentLoaded', function () {
         b.seg([alpha - 0.8, yLine], [beta + 0.8, yLine], { color: 'sky', width: 2.5, glow: true, ref: 'tan' });
       }
       if (s.step >= 2) {
-        b.text([(alpha + beta) / 2, (yLine + evalF(s, (alpha + beta) / 2)) / 2], `S = \\frac{|a|}{30} · L⁵ = ${num(area30)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
+        if (s.step >= 3) b.text([(alpha + beta) / 2, (yLine + evalF(s, (alpha + beta) / 2)) / 2], `S = |a|L⁵/30 ≈ ${num(area30)}`, { color: 'amber', size: 14, weight: 850, ref: 'S' });
         b.text([(alpha + beta) / 2, yLine], `L = β−α = ${num(L)}`, { color: 'amber', dy: -12, size: 12.5, ref: 'S' });
       }
     }
@@ -765,7 +779,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.seg([alpha - 0.5, yA], [xr, yA], { color: 'rose', alpha: 0.7, width: 1.8, dash: true, ref: 'dy' });
       b.seg([alpha - 0.5, yB], [xr, yB], { color: 'sky', alpha: 0.7, width: 1.8, dash: true, ref: 'dy' });
       b.seg([xr, yA], [xr, yB], { color: 'amber', width: 3, ref: 'dy' });
-      barLabel(b, xr, (yA + yB) / 2, `|f(α)−f(β)| = ${num(Math.abs(yA - yB))}`, 'amber', 'dy');
+      barLabel(b, xr, (yA + yB) / 2, s.step >= 3 ? `|f(α)−f(β)| ≈ ${num(Math.abs(yA - yB))}` : '|f(α)−f(β)|', 'amber', 'dy');
     }
   }
 
@@ -780,17 +794,16 @@ window.addEventListener('DOMContentLoaded', function () {
     // Step 2: 접어 올린 그래프 y = |f(x) - k| + k (보라색 네온 실선)
     if (s.step >= 2) {
       b.plot((x) => k + Math.abs(evalF(s, x) - k), { color: 'violet', width: 3.4, glow: true, ref: 'fold' });
+      const r = b.paneRect();
+      b.stext(r.x + 12, r.y + 20, '보라: g(x)+k = |f(x)−k|+k', { color: 'violet', size: 11.5, align: 'left' });
     }
     // Step 3: f(x) = k 의 교점 탐색 및 미분가능(기울기 0) vs 첨점(기울기 ≠ 0) 판별
     if (s.step >= 3) {
       const crossings = findCrossings(s, k, vb.x0 - 0.3, vb.x1 + 0.3);
       crossings.forEach((rx) => {
-        const slope = Math.abs(evalFp(s, rx));
-        if (slope < 0.15) {
-          b.point([rx, k], { color: 'green', r: 6.5, ref: 'fold', label: `미분가능 (${num(rx, 1)}, f′=0)`, dx: -12, dy: 24, align: 'right' });
-        } else {
-          b.point([rx, k], { color: 'red', r: 7, ref: 'fold', label: `꺾이는 점 (미분가능하지 않음, x=${num(rx)})`, dx: 12, dy: 24, align: 'left' });
-        }
+        const smooth = stationaryCrossing(s, rx, k);
+        b.point([rx, k], { color: smooth ? 'green' : 'red', r: 6.5, ref: 'fold' });
+        cxTag(b, [rx, k], `${smooth ? '미분가능' : '꺾임'} x≈${num(rx, 3)}`, { color: smooth ? 'green' : 'red', dx: smooth ? -10 : 10, dy: smooth ? 24 : -15, align: smooth ? 'right' : 'left', size: 11.5, ref: 'fold' });
       });
     }
     // 끌 수 있는 기준선 손잡이: 곡선 위에 그립니다
@@ -1018,10 +1031,10 @@ window.addEventListener('DOMContentLoaded', function () {
     cxCurveTag(b, f, 'y = f(x)', 'ink', { side: v.up ? 'left' : 'left', dy: v.up ? 14 : -14, skip: [[al, y0, 1.6], [q, y0, 1.6], [al + 3, yB, 1.6]], axis: 0.7 });
     b.point([al, y0], { color: 'rose', r: 6, ref: 'tan', label: `A(${cxN(al)}, ${cxN(y0)})`, dx: -10, dy: v.up ? -13 : 15, align: 'right' });
     b.point([q, y0], { color: 'sky', r: 6, ref: 'box', label: `Q(${cxN(q)}, ${cxN(y0)})`, dx: 10, dy: v.up ? -13 : 15 });
-    if (st >= 2) b.point([al + 3, yB], { color: 'green', r: 6, ref: 'dy', label: `B(${cxN(al + 3)}, ${cxN(yB)})`, dx: 10, dy: v.up ? 16 : -14 });
+    if (st >= 2) b.point([al + 3, yB], { color: 'green', r: 6, ref: 'dy', label: st >= 3 ? `B(${cxN(al + 3)}, ${cxN(yB)})` : 'B', dx: 10, dy: v.up ? 16 : -14 });
     if (st >= 3) {
       const xi = al + 2 * h, yi = f(xi);
-      b.point([xi, yi], { color: 'violet', r: 5, ref: 'I2', label: 'I₂ (2:1 내분)', dx: -10, dy: v.up ? 22 : -20, align: 'right' });
+      b.point([xi, yi], { color: 'violet', r: 5, ref: 'I2', label: 'I₂ · x좌표 사이의 비 2:1', dx: -10, dy: v.up ? 22 : -20, align: 'right' });
       const xr = q + 0.45;
       b.seg([xr, y0], [xr, yB], { color: 'sky', width: 2.5, ref: 'dy' });
       cxTag(b, [xr, (y0 + yB) / 2], `Δy = ${cxN(Math.abs(y0 - yB))}`, { color: 'sky', dx: -8, align: 'right', ref: 'dy' });
@@ -1170,7 +1183,7 @@ window.addEventListener('DOMContentLoaded', function () {
       cxTag(b, [(x1 + x2) / 2, yl], `L = ${sym ? 'β−α' : 'q−α'} = ${L}`, { color: 'amber', dy: sym || v.up ? -12 : 20, size: 12.5, ref: 'S' });
     }
     if (st >= 3) {
-      const txt = `S = ${sym ? '\\frac{|a|}{30}' : '\\frac{|a|}{20}'} · L⁵ = ${cxNum(area3(v)).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`;
+      const txt = `S = |a|L⁵/${sym ? 30 : 20} = ${cxNum(area3(v)).replace(/\\dfrac\{(\d+)\}\{(\d+)\}/, '$1/$2')}`;
       const my = sym ? (yl + v.yc) / 2 : (yl + v.yMin) / 2;
       cxTag(b, [(x1 + x2) / 2, my], txt, { color: 'amber', size: 13.5, weight: 850, ref: 'S' });
     }
@@ -1230,13 +1243,12 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   };
   const quick4 = (v) => {
-    if (v.first) return examData[4].shortcut();
     const res = v.cmp === 'eq' ? `f(${v.al}) = f(${v.be})` : v.cmp === 'lt' ? `f(${v.al}) > f(${v.be})` : `f(${v.al}) < f(${v.be})`;
     return {
-      steps: `① ${tex(`\\alpha = ${v.al}, \\; \\gamma = ${v.ga}, \\; \\beta = ${v.be}`)} 에서 왼쪽 간격은 ${tex(String(v.ga - v.al))}, 오른쪽 간격은 ${tex(String(v.be - v.ga))} 입니다.<br/>
+      steps: `① 도함수가 양수인 첫 구간에서는 ${tex('f')}의 높이가 ${tex('S_1')}만큼 올라가고, 음수인 다음 구간에서는 ${tex('S_2')}만큼 내려갑니다.<br/>
 ② ${tex(`f(${v.ga})-f(${v.al})=S_1`)}, ${tex(`f(${v.ga})-f(${v.be})=S_2`)} 이므로 ${tex(`f(${v.al})-f(${v.be})=S_2-S_1`)} 입니다.<br/>
 ③ ${v.cmp === 'eq' ? tex('S_1 = S_2') : v.cmp === 'lt' ? tex('S_1 < S_2') : tex('S_1 > S_2')} 이므로 <strong class="text-amber-300">${tex(res)}</strong>이다.`,
-      highlight: examData[4].shortcut().highlight
+      highlight: '넓이를 각각 적분하지 않아도 주어진 대소관계와 높이의 증감만으로 결론을 얻습니다. 수직으로 평행이동해도 높이 차는 같습니다.'
     };
   };
   // f(x)(검정)와 삼차 도함수 f′(x)(하늘색)를 한 그림에 겹쳐 그립니다(위아래로 쪼개면 휴대폰에서 그림이 너무 작아집니다).
@@ -1264,8 +1276,8 @@ window.addEventListener('DOMContentLoaded', function () {
     b.point([v.be, 0], { color: 'green', r: 5, ref: 'roots', label: `β=${cxN(v.be)}`, dx: 9, dy: 16 });
     // 두 넓이의 이름과 값은 왼쪽 위에 색으로 구분해 적습니다(영역이 좁아도 겹치지 않게)
     const rr = b.paneRect();
-    b.stext(rr.x + 12, rr.y + 16, st >= 2 ? `S₁ = ${exact(v.s1)}` : 'S₁ (붉은 영역)', { color: 'rose', size: 12.5, align: 'left', ref: 'dy' });
-    b.stext(rr.x + 12, rr.y + 33, st >= 2 ? `S₂ = ${exact(v.s2)}` : 'S₂ (파란 영역)', { color: 'sky', size: 12.5, align: 'left', ref: 'dy' });
+    b.stext(rr.x + 12, rr.y + 16, st >= 3 ? `S₁ = ${exact(v.s1)}` : 'S₁ (붉은 영역)', { color: 'rose', size: 12.5, align: 'left', ref: 'dy' });
+    b.stext(rr.x + 12, rr.y + 33, st >= 3 ? `S₂ = ${exact(v.s2)}` : 'S₂ (파란 영역)', { color: 'sky', size: 12.5, align: 'left', ref: 'dy' });
     if (showF) {
       const pts = [[v.al, 'amber', 'A', -9, -13, 'right'], [v.ga, 'rose', 'C', 0, -16, 'center'], [v.be, 'green', 'B', 9, -13, 'left']];
       pts.forEach(([x, col, nm, dx, dy, al]) => b.point([x, v.f(x)], { color: col, r: 6, ref: 'roots', label: nm, dx, dy, align: al }));
@@ -1316,9 +1328,13 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   function draw5(b, s, lab) {
     const v = varF5.cur(), st = cxStep(lab, s), f = v.f, k = v.y0;
-    qvBase(b, s, v.win, 'q5v' + v.sid);
+    const win = st >= 2 ? cxWin([[v.al, k], [v.q, k], [v.be, v.yMin], [v.be, k + Math.abs(v.yMin - k)]], { mx: 1.5, my: 1.4 }) : v.win;
+    qvBase(b, s, win, 'q5v' + v.sid + (st >= 2 ? 'fold' : 'base'));
     if (st >= 1) b.hline(k, { color: 'violet', width: 2.4, dash: true, glow: true, ref: 'fold' });
-    if (st >= 2) b.plot((x) => k + Math.abs(f(x) - k), { color: 'violet', width: 3.4, glow: true, ref: 'fold' });
+    if (st >= 2) {
+      b.plot((x) => k + Math.abs(f(x) - k), { color: 'violet', width: 3.4, glow: true, ref: 'fold' });
+      b.stext(12, 20, '보라: g(x)+k = |f(x)−k|+k', { color: 'violet', size: 11.5, align: 'left' });
+    }
     b.plot(f, { color: 'ink', width: 3.2, glow: true });
     cxCurveTag(b, f, 'y = f(x)', 'ink', { side: 'left', dy: v.up ? 14 : -14, skip: [[v.al, k, 1.6], [v.q, k, 1.6]], axis: 0.7 });
     if (st >= 1) cxTag(b, [v.win.x[0] + 0.1, k], `y = k`, { color: 'violet', size: 12.5, align: 'left', dy: v.up ? -12 : 14, ref: 'fold' });
@@ -1343,6 +1359,50 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   const tickSpan = (s, dt) => { if (!s.playing) return false; bounce(s, 'spanL', 0.9, 2.0, 3.7, dt); return true; };
 
+  function teachingSteps(m, s, lab) {
+    const explore = !lab || lab.tab === 'explore', v = VARS[m].vary.cur();
+    if (m === 1) {
+      if (explore && !isLeft(s) && !isRight(s)) return [
+        '1단계 · 현재 도함수의 세 근은 서로 다릅니다. 먼저 수평 접선과 곡선이 만나는 점을 관찰합니다.',
+        '2단계 · 삼중근인 접점이 없으므로 3:1 비율의 직사각형을 그리지 않습니다. λ=0 또는 λ=1일 때와 비교하세요.',
+        '3단계 · 비율 공식의 전제는 곡선과 접선의 차가 a(x−α)³(x−q) 꼴이라는 것입니다. 전제를 확인한 뒤에만 공식을 적용합니다.'
+      ];
+      return [
+        '1단계 · 삼중근인 접점에서 수평선을 그어 다시 만나는 Q를 찾습니다. 접점의 x좌표를 r라 하면 곡선과 직선의 차를 a(x−r)³(x−q)로 인수분해하면 전개가 필요 없습니다.',
+        '2단계 · 도함수의 중근을 제외한 근은 (r+3q)/4입니다. 직사각형의 4등분선을 따라 접점에서 극값점까지와 그 뒤 Q까지의 x간격이 3:1인지 확인합니다.',
+        '3단계 · 그 x좌표만 원함수에 대입해 극값을 구합니다. a의 부호에 따라 극소·극대가 바뀌어도 x간격 비는 같습니다. I₂의 2:1도 x간격의 비이며 선분 AB 위에 있다는 뜻은 아닙니다.'
+      ];
+    }
+    if (m === 2) return [
+      explore && !isSym(s) ? '1단계 · 현재 λ≠1/2이므로 두 끝 극값의 높이가 다릅니다. 대칭축과 대칭 비율 보조선은 표시하지 않습니다.' : '1단계 · 같은 높이의 두 극값점을 연결합니다. 그 중점의 x좌표 g를 중심으로 좌우를 대응시키면 f(x)=a((x−g)²−h²)²+c 꼴이 보입니다.',
+      explore && !isSym(s) ? '2단계 · 도함수의 세 근이 등간격일 때에만 이 대칭 사차함수의 비율을 쓸 수 있습니다. λ=1/2와 비교하세요.' : '2단계 · 가운데 극값의 높이와 같은 점을 찾으면 ((x−g)²−h²)²=h⁴입니다. 중심 이외의 교점은 |x−g|=√2h이므로 사차방정식 전개를 줄일 수 있습니다.',
+      explore && !isSym(s) ? '3단계 · 1:√2는 임의의 사차함수에 성립하는 비가 아닙니다. 대칭 조건을 확인하고 필요한 경우 실제 방정식을 풀어야 합니다.' : '3단계 · 두 극값의 높이 차는 |a|h⁴입니다. 그림의 h와 √2h 및 높이 차가 같은 중심 g를 기준으로 계산되었는지 확인합니다.'
+    ];
+    if (m === 3) {
+      const sym = explore ? isSym(s) : v.kind === 'sym';
+      if (explore && !sym && !isLeft(s) && !isRight(s)) return [
+        '1단계 · 현재는 비대칭이며 삼중근도 아닙니다. 1/20·1/30 공식에 맞는 접선 구조가 있는지 먼저 확인합니다.',
+        '2단계 · 두 점의 중복도와 구간 양 끝이 공식의 조건을 충족하지 않아 해당 넓이 보조선을 그리지 않습니다.',
+        '3단계 · λ=0, 1 또는 1/2인 경우와 비교하세요. 일반적인 경우에는 실제 교점과 부호를 구분하여 적분해야 합니다.'
+      ];
+      return [
+        sym ? '1단계 · 두 접점 사이를 색칠합니다. 곡선과 직선의 차는 두 점에서 모두 중근이므로 a(x−α)²(x−β)²입니다.' : '1단계 · 삼중근인 접점과 다음 교점 사이를 색칠합니다. 곡선과 직선의 차가 a(x−α)³(x−q)임을 이용합니다.',
+        sym ? '2단계 · 접점 사이 간격을 L로 놓고 t=(x−α)/L로 바꾸면 단위 구간의 ∫₀¹t²(1−t)²dt=1/30만 남습니다.' : '2단계 · 두 교점 사이 간격을 L로 놓고 t=(x−α)/L로 바꾸면 단위 구간의 ∫₀¹t³(1−t)dt=1/20만 남습니다.',
+        `3단계 · 가로 확대 L과 함수값 확대 |a|L⁴를 곱해 넓이 S=|a|L⁵/${sym ? 30 : 20}을 얻습니다. 넓이는 양수이며 수직 이동량은 계산에서 사라집니다.`
+      ];
+    }
+    if (m === 4) return [
+      '1단계 · 도함수의 세 영점과 원함수의 극값점을 세로로 연결합니다. 원함수는 수직 이동한 대표 그래프이며 극값의 높이 차는 변하지 않습니다.',
+      '2단계 · 붉은 양의 영역 S₁은 올라간 높이, 파란 음의 영역 S₂는 내려간 높이입니다. f(β)−f(α)=S₁−S₂로 그림을 식에 연결합니다.',
+      '3단계 · 주어진 S₁, S₂의 대소만 비교하면 됩니다. f(α)−f(β)=S₂−S₁이므로 각각의 적분값을 전개해 계산하는 과정을 생략할 수 있습니다.'
+    ];
+    return [
+      '1단계 · y=k와 원래 곡선의 교점을 표시합니다. 교점에서 기울기가 0인지가 접은 뒤 매끄러운지를 결정합니다.',
+      '2단계 · y=k 아래 부분을 위로 반사합니다. 보라색은 비교를 위한 g+k=|f−k|+k이며, g 자체를 위로 k만큼 옮겨도 미분가능성은 같습니다.',
+      explore ? '3단계 · f(x)=k인 교점에서 기울기가 0이면 좌우 미분계수는 모두 0입니다. 기울기가 0이 아닌 교점에서만 꺾이므로 현재 교점들을 각각 분류하여 셉니다.' : '3단계 · 삼중근인 접점의 높이에서는 그 접점이 매끄럽고 다른 교점 Q만 꺾입니다. 다른 높이에서는 교점이 없거나 일반 교점이 짝수 개 생기므로 이 k가 유일합니다.'
+    ];
+  }
+
   function sceneOf(m, def) {
     const V = VARS[m];
     const oldDraw = drawFor(m), oldView = viewFor(m), oldPanes = panesOf(m);
@@ -1350,13 +1410,13 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: examData[m].hint,
       actions: actionsCommon(),
       presets: presetsCommon,
-      steps: examData[m].steps,
+      steps: (s, lab) => teachingSteps(m, s, lab),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.text(V.vary.cur())}</div>`,
       problem: { tag: examData[m].tag, time: secs(m), text: () => cxProb(V.text(V.vary.cur())), answer: () => V.answer(V.vary.cur()) },
       vary: V.vary,
       solution: {
-        standardTitle: '교과서식 정석 풀이 (전개·미분·조립제법·정적분)', standardTag: '3분 소요',
-        quickTitle: '10초 컷 · 비율과 넓이 공식', quickTag: '10초 컷',
+        standardTitle: '정석 풀이', standardTag: '식과 계산',
+        quickTitle: '구조를 이용한 풀이', quickTag: '비율·넓이·높이 차',
         standard: () => V.std(V.vary.cur()),
         quick: () => V.quick(V.vary.cur())
       },
@@ -1364,7 +1424,7 @@ window.addEventListener('DOMContentLoaded', function () {
       focus: (s) => focusFor(VIEW[m], s.dual),
       panes: (s) => (cxVarTab() ? (V.panes ? V.panes() : null) : oldPanes(s)),
       tick: TICK[m] || tickSpan,
-      view: (s, lab) => (lab && lab.tab !== 'explore' ? {} : oldView(s)),
+      view: (s, lab) => (lab && lab.tab !== 'explore' ? (m === 4 ? { notes: '원함수는 f(α)=1로 놓은 대표 그래프입니다. 문제의 도함수와 극값의 높이 차는 수직 이동해도 변하지 않습니다.' } : {}) : oldView(s)),
       // 탐구 탭은 예전 그림 그대로, 정리·문제 탭은 변형 문제의 그림(문제 탭은 지문의 값만, 정리 탭은 단계마다 보조선)
       draw: (b, s, v, lab) => {
         if (b.thumb || !lab || lab.tab === 'explore') {
@@ -1406,6 +1466,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-quartic',
+    stagedReveal: true,
     title: '사차함수 비율관계',
     courseName: '미적분Ⅰ',
     unit: '미분 · 사차함수 비율관계',
