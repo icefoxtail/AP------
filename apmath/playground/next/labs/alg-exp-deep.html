@@ -983,7 +983,10 @@ ST[K('maxN')] = Math.max(3, Math.min(6, Math.round(mPos.y)));
 // --- EXP 03: Common Log Sawtooth Wave {p * log x} ---
 function renderType3(ST, si) {
   const p=pv(ST,2), P=Math.round(p.multP), sum=Math.round(p.modeSum)===1, c=sum?P+1:P-1;
-  OV.txt(B,[1.5,1.43],'가로축 u = log₁₀x · 세로축 소수부분','muted',{size:11.5});
+  const ar=B._area();
+  B.stext(ar.x+10,ar.y+8,'{u}',{color:'green',size:12.5,weight:800,align:'left',baseline:'top'});
+  B.stext(ar.x+65,ar.y+8,sum?'1−{pu}':'{pu}',{color:sum?'violet':'sky',size:12.5,weight:800,align:'left',baseline:'top'});
+  B.stext(ar.x+ar.w-10,ar.y+8,'1 ≤ u < 2',{color:'muted',size:12.5,weight:800,align:'right',baseline:'top'});
   const saw=(k,color,complement=false)=>{
     for(let j=0;j<3*k;j++){
       const a=j/k,z=(j+1)/k, y0=complement?1:0,y1=complement?0:1;
@@ -993,11 +996,10 @@ function renderType3(ST, si) {
   };
   saw(1,'green'); saw(P,sum?'violet':'sky',sum);
   [1,2].forEach(u=>B.seg([u,-.2],[u,1.15],{color:'rose',dash:[4,4],width:1.5}));
-  OV.corner(B,1,sum?'초록 {u} = 보라 1−{pu} 의 교점':'초록 {u} = 파랑 {pu} 의 교점',sum?'violet':'sky');
-  if(ST.step>=2) OV.corner(B,0,sum?'(p+1)u는 정수, u가 정수인 끝점은 제외':'(p−1)u는 정수; 왼쪽 끝점은 포함','amber');
+  // Full conditions live in the synchronized presenter; the graph keeps short legends.
   if(ST.step>=3) for(let m=c;m<2*c;m++){
     const u=m/c;
-    if(sum&&m===c) { B.point([u,0],{color:'rose',hollow:true,r:6,label:'0+0≠1',dx:-8,dy:17});continue; }
+    if(sum&&m===c) { B.point([u,0],{color:'rose',hollow:true,r:6});continue; }
     B.point([u,u-1],{color:'amber',r:6,label:OV.fr(m,c).replace(/\\frac\{(\d+)\}\{(\d+)\}/,'$1/$2'),dx:8,dy:-14});
   }
 }
@@ -1093,12 +1095,24 @@ const x2 = p.xMid;
 const x3 = p.xMid + p.stepD;
 const y1 = Math.pow(2, x1), y2 = Math.pow(2, x2), y3 = Math.pow(2, x3);
 
-drawFunctionCurve(x => Math.pow(2, x), '#34d399', 2.8, [], -3.5, 4.0);
+drawFunctionCurve(x => Math.pow(2, x), '#34d399', 2.8, [], Math.min(-.5,x1-.5),x3+.25);
 
 if ((ST.step >= 1)) {
 drawMathSegment(x1, y1, x1, 0, '#38bdf8', [4, 3], 2.0);
 drawMathSegment(x2, y2, x2, 0, '#fbbf24', [4, 3], 2.0);
 drawMathSegment(x3, y3, x3, 0, '#fb7185', [4, 3], 2.0);
+// A separate horizontal number line makes the equal x intervals readable
+// without stretching the coordinate plane or changing any point's position.
+const ar=B._area(), left=ar.x+ar.w*.16, right=ar.x+ar.w*.84, mid=(left+right)/2, yy=ar.y+ar.h-25;
+B.stext(mid,yy-38,'x좌표 간격 · 별도 수직선',{color:'muted',size:12,weight:800,align:'center',baseline:'middle'});
+const toW=(x,y)=>{const w=B.toW(x,y);return[w.x,w.y]};
+B.seg(toW(left,yy),toW(right,yy),{color:'amber',width:2});
+[left,mid,right].forEach((x,i)=>{
+  B.seg(toW(x,yy-5),toW(x,yy+5),{color:'amber',width:2});
+  B.stext(x,yy+12,`x${['₁','₂','₃'][i]}=${Number([x1,x2,x3][i].toFixed(2))}`,{color:['sky','amber','rose'][i],size:12,weight:800,align:'center',baseline:'middle'});
+});
+[(left+mid)/2,(mid+right)/2].forEach(x=>B.stext(x,yy-14,`d=${p.stepD}`,{color:'amber',size:12,weight:800,align:'center',baseline:'middle'}));
+
 }
 
 if ((ST.step >= 2)) {
@@ -1680,7 +1694,19 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
   window.__OV = { VARS };
   const VARY = VARS.map((row, m) => row.map((pool, j) => OV.varier(pool)));
   function drawVar(b, s, m, j, lab) {
-    if (!lab || lab.tab === 'explore') { const box = m === 0 ? { x: [-8.5, 11.5], y: [-12, 32] } : m === 5 ? {x:[-2.5,6],y:[-2,26]} : FOCUS[m]; OV.autoFocus(b, 'E' + m + j, box); return drawScene(b, s, m, j); }
+    if (!lab || lab.tab === 'explore') {
+      if(m===5){
+        const p=pv(s,m),key='E'+m+j+':'+JSON.stringify(p);
+        if(!s.dragging || !String(b.__ovKey||'').startsWith('E'+m+j+':')){
+          const x1=p.xMid-p.stepD,x3=p.xMid+p.stepD,y3=2**x3;
+          OV.autoFocus(b,key,{x:[Math.min(-.4,x1-.8),x3+1.4],y:[-.26*y3,1.12*y3]});
+        }
+      }else{
+        const box=m===0?{x:[-8.5,11.5],y:[-12,32]}:m===2?{x:[.78,2.22],y:[-.2,1.28]}:FOCUS[m];
+        OV.autoFocus(b,'E'+m+j,box);
+      }
+      return drawScene(b,s,m,j);
+    }
     const cur = VARY[m][j].cur(), idx = VARS[m][j].indexOf(cur), prob = lab.tab === 'problem', st = prob ? 0 : s.step;
     OV.autoFocus(b, `${lab.scene.id}|${idx}`, cur.focus);
     if (s.grid) b.grid({ step: OV.nice(34 / b.k) });
@@ -1774,6 +1800,29 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     short: md.shortTitle,
     scenes: md.scenarios.map((_, j) => sceneOf(m, j))
   }));
+
+  /* 탐구 칠판은 조작 중인 모델을 따르고, 미입장 전체보기·정리·문제는 기존 은행을 보존합니다. */
+  function currentExploreSteps(m,s){
+    const p=pv(s,m),n=x=>Number(x.toFixed(4));
+    if(m===2){const P=Math.round(p.multP),sum=Math.round(p.modeSum)===1,c=sum?P+1:P-1,ms=[];for(let k=c;k<2*c;k++)if(!sum||k!==c)ms.push(k);const exponent=OV.fr(ms.reduce((a,b)=>a+b,0),c);return[
+      `가로축은 u=log₁₀x이며 탐구 범위는 1≤u<2입니다. 현재 p=${P}이고 ${sum?'초록 {u}와 보라 1−{pu}의 교점을 찾습니다.':'초록 {u}와 파랑 {pu}의 교점을 찾습니다.'} 소수부분의 윗끝1은 열린 점입니다.`,
+      sum?`소수부분의 합이1이므로 $(${P}+1)u=${c}u$가 정수여야 합니다. u=1에서는0+0≠1이므로 왼쪽 끝도 제외하고, 오른쪽 끝2는 원래 범위 밖입니다.`:`소수부분이 같으므로 $(${P}-1)u=${c}u$가 정수입니다. 왼쪽 끝 u=1은 포함하고 오른쪽 끝 u=2는 제외합니다.`,
+      `현재 교점의 u값은 $${ms.map(k=>OV.fr(k,c)).join(',\\ ')}$로 ${ms.length}개이며 합은 $${exponent}$입니다. x들을 직접 구해 곱하지 않고, 로그값의 합에서 곱 $10^{${exponent}}$을 얻습니다.`
+    ];}
+    if(m===3){const k=p.multK,d=Math.log2(k),lo=p.yCut1,hi=p.yCut2;return[
+      `현재 계수 k=${k}를 $2^{\\log_2 ${k}}$로 보면 y=k·2ˣ은 y=2ˣ을 왼쪽으로 log₂k만큼 옮긴 곡선입니다. 탐구의 두 높이 ${lo},${hi}는 모두 양수입니다.`,
+      `2단계의 노란 아래 단면과 빨간 위 단면을 비교합니다. 어느 높이 y에서도 x좌표가 log₂y−log₂k와 log₂y이므로 가로 간격은 $\\log_2 ${k}\\approx${n(d)}$로 같습니다.`,
+      `3단계의 띠 영역을 같은 길이의 가로 단면으로 보면 넓이는 $(${hi}-${lo})\\log_2 ${k}\\approx${n((hi-lo)*d)}$입니다. 한 높이만으로 길이를 구하는 문제에도 같은 간격 관계를 사용합니다.`
+    ];}
+    const x=p.xMid,d=p.stepD,y=2**x,y1=2**(x-d),y3=2**(x+d);return[
+      `현재 세 x좌표는 ${n(x-d)},${x},${n(x+d)}이고 공차는 d=${d}입니다. 수선의 발 사이 가로 간격이 같으면 지수곡선의 높이는 매번 $2^{${d}}$배가 됩니다.`,
+      '따라서 $y_2/y_1=y_3/y_2=2^d$이고 $y_2^2=y_1y_3$입니다. 2단계의 현 AC의 중점 높이는 산술평균이며, 곡선의 가운데 높이인 기하평균과 구별합니다.',
+      `현재 $B=(${x},2^{${x}})$의 높이는 약 ${n(y)}이고, 양끝 높이의 곱은 약 ${n(y1*y3)}입니다. 세 높이의 합은 $y_2(2^{-d}+1+2^d)\\approx${n(y1+y+y3)}$입니다. 현재 B가 고정 문제의 (2,4)라고 가정하지 않습니다.`
+    ];
+  }
+  for(const m of [2,3,5])for(const sc of groups[m].scenes){const fixed=sc.steps;
+    sc.steps=(s,lab)=>{const active=lab||window.lab;return active?.tab==='explore'&&active.scene?.id===sc.id?currentExploreSteps(m,s).map(stepText):fixed(s,lab);};
+  }
 
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
