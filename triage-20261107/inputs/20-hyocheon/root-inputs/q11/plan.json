@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $y=\\dfrac{2}{x-1}+1$ $(x>1)$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "3/2",
+          "6"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "label": "y=l(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "1"
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "3"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        },
+        {
+          "id": "PA",
+          "from": "P",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "원문 곡선의 일부와 예시 P를 이용해 삼각형의 밑변 AB와 높이 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선의 일부와 예시 P를 이용해 삼각형의 밑변 AB와 높이 관계를 살핀다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 곡선의 일부와 예시 P를 이용해 삼각형의 밑변 AB와 높이 관계를 살핀다."
+  ]
+}

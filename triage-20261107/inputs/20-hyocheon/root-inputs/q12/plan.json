@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 함수 $f(x)=\\sqrt{x-2}$, $g(x)=x-k$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      7,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "2",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-9/4",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "예시 k=9/4에서 직선과 제곱근 그래프의 한 교점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 k=9/4에서 직선과 제곱근 그래프의 한 교점을 살핀다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 k=9/4에서 직선과 제곱근 그래프의 한 교점을 살핀다."
+  ]
+}

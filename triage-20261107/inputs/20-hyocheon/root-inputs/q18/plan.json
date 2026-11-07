@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(x)=\\left|\\dfrac{kx}{x-2}\\right|$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      7,
+      -2,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "abs": true,
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "label": "y=2",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "k=2인 경계에서 수평선 y=2가 만나는 점과 가지의 위치를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=2인 경계에서 수평선 y=2가 만나는 점과 가지의 위치를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "k=2인 경계에서 수평선 y=2가 만나는 점과 가지의 위치를 보인다."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "다음은 무리함수 $y=a\\sqrt{bx+c}$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      }
+    ]
+  },
+  "caption": "주어진 개형의 한 예를 통해 부호를 확인한 뒤 대응하는 유리함수의 가지와 점근선 위치를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 개형의 한 예를 통해 부호를 확인한 뒤 대응하는 유리함수의 가지와 점근선 위치를 살핀다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 개형의 한 예를 통해 부호를 확인한 뒤 대응하는 유리함수의 가지와 점근선 위치를 살핀다."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$(f\\circ g)(x)=\\sqrt{3x+1}+1$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      5,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "h",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "3"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "-1/3",
+          "5"
+        ],
+        "label": "y=h(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "j",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-2/3",
+          "1/3"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=j(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "y=x",
+        "color": "BLUE",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "합성함수 h와 역함수 j의 대응점 및 대칭을 보이고 정의역을 교환한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "합성함수 h와 역함수 j의 대응점 및 대칭을 보이고 정의역을 교환한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "합성함수 h와 역함수 j의 대응점 및 대칭을 보이고 정의역을 교환한다."
+  ]
+}

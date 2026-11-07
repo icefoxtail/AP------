@@ -1,0 +1,131 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 함수 $f(x)=\\sqrt{x+4}-2$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -3,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "sqrt(5)-2"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "sqrt(3)+2"
+        },
+        {
+          "id": "C",
+          "x": "-1",
+          "y": "sqrt(3)-2"
+        },
+        {
+          "id": "D",
+          "x": "-1",
+          "y": "sqrt(5)+2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "color": "BLUE"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D",
+          "color": "WARM"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "-4",
+        "to": "4"
+      }
+    ]
+  },
+  "caption": "좌우 대칭 위치에서 두 곡선 사이 높이를 짝지어 제곱근 항이 상쇄됨을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "좌우 대칭 위치에서 두 곡선 사이 높이를 짝지어 제곱근 항이 상쇄됨을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "좌우 대칭 위치에서 두 곡선 사이 높이를 짝지어 제곱근 항이 상쇄됨을 보인다."
+  ]
+}

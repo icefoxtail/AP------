@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 함수 $f(x)=x^2-x$, $g(x)=x+1$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "예시 입력 1을 먼저 g에 넣고 그 출력 2를 f의 입력으로 넘긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 입력 1을 먼저 g에 넣고 그 출력 2를 f의 입력으로 넘긴다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 입력 1을 먼저 g에 넣고 그 출력 2를 f의 입력으로 넘긴다."
+  ]
+}

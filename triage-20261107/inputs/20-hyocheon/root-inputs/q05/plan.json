@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수 $y=-\\sqrt{4-2x}+3$의 치역은?",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "amplitude": "-1",
+        "offset": "3",
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=0",
+        "color": "BLUE",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "정의역의 끝점에서 시작해 왼쪽 아래로 뻗는 곡선을 보이며 최댓값을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정의역의 끝점에서 시작해 왼쪽 아래로 뻗는 곡선을 보이며 최댓값을 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역의 끝점에서 시작해 왼쪽 아래로 뻗는 곡선을 보이며 최댓값을 찾는다."
+  ]
+}
