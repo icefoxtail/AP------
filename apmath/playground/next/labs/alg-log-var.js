@@ -99,11 +99,11 @@
         ? `두 함수 $y = \\log_2 x, y = \\log_2(${e.k}x)$와 두 직선 $x = ${e.x1}, x = ${e.x2}$${jr(e.x2)} 둘러싸인 영역의 넓이 $S$를 구하시오.`
         : `두 함수 $f(x) = \\log_2 x$와 $g(x) = \\log_2(${e.k}x)$의 그래프가 두 직선 $x = ${e.x1}, x = ${e.x2}$${jw(e.x2)} 만나는 네 점으로 둘러싸인 곡선 영역의 넓이 $S$와 수직 선분 $\\overline{AB}$의 길이를 구하시오.`;
       ans = e.ask === 'S' ? tx(`S=${S}`) : tx(`S=${S},\\ \\overline{AB}=${n}`);
-      steps = [common[0], `어느 $x$ 에서 세로로 잘라도 두 곡선 사이의 길이는 $\\log_2${e.k}=${n}$ 로 같습니다. 즉 $\\overline{AB}=${n}$.`, `곡선 부분을 평행이동해 겹치면 둘러싸인 영역은 가로 $${e.x2}-${e.x1}=${w}$, 세로 $${n}$ 인 직사각형과 넓이가 같습니다. $S=${w}\\times${n}=${S}$.`];
+      steps = [common[0], `어느 $x$ 에서 세로로 잘라도 두 곡선 사이의 길이는 $\\log_2${e.k}=${n}$ 로 같습니다. 즉 $\\overline{AB}=${n}$.`, `각 세로 단면을 길이를 유지하며 나란히 옮겨 비교하면, 둘러싸인 영역은 가로 $${e.x2}-${e.x1}=${w}$, 세로 $${n}$ 인 직사각형과 넓이가 같습니다. $S=${w}\\times${n}=${S}$.`];
       quick = [`세로 간격은 어디서나 $\\log_2${e.k}=${n}$ 이므로 넓이 $=(\\text{가로 간격})\\times(\\text{세로 간격})=${w}\\times${n}=${S}$.`];
     }
     const std = steps.map((t, i) => `${i + 1}) ${t}`);
-    const win = { x: [-1.6, Math.max(9.8, e.x2 + 2.6)], y: [-3.4, Math.max(6.8, g(Math.max(e.x2, 2)) + 1.6)] };
+    const win = { x: [-1.6, Math.max(9.8, e.x2 + 2.6)], y: [Math.min(-3.4, -n - 1.9), Math.max(6.8, g(Math.max(e.x2, 2)) + 1.6)] };
     return { e, text, ans, steps, std, quick, win, f, g, n, w, S };
   };
 
@@ -164,7 +164,7 @@
     ];
     const hi = p + d2;
     return { e, text, ans, steps, std: steps.map((s, i) => `${i + 1}) ${s}`),
-      quick: [`두 교점에서 점근선까지의 거리의 곱은 $t$ 에 관계없이 항상 $1$ 입니다. 거리는 $2^{-${t}}, 2^{${t}}$ 이고, 합은 $2^{${t}}+2^{-${t}}\\gt 2$ 이므로 중점은 꺾인 점의 오른쪽에 있습니다.`],
+      quick: [`양의 높이 $t>0$에서 두 교점까지의 점근선 기준 거리는 서로 역수이므로 곱이 $1$입니다. 거리는 $2^{-${t}}, 2^{${t}}$ 이고, 합은 $2^{${t}}+2^{-${t}}\\gt 2$이므로 중점은 꺾인 점의 오른쪽에 있습니다. ${e.ask==='prodM'?`따라서 중점의 x좌표는 $${Mt}$.`:`두 x좌표의 합은 $${St}$.`}`],
       win: { x: [Math.min(p - 2.6, -1.4), hi + 2.0], y: [-1.6, t + 2.4] }, p, t, x1, x2, M, d1, d2 };
   };
 
@@ -227,7 +227,7 @@
     const M0 = [(P1[0] + P2[0]) / 2, (P1[1] + P2[1]) / 2];
     const Cs = C === 0 ? '' : sgn(C);
     let text, ans, steps, quick;
-    const s1 = `지수함수에서 지수가 $0$ 이 되는 점 $P_1(${P1[0]},${P1[1]})$ 와 로그함수에서 진수가 $1$ 이 되는 점 $P_2(${P2[0]},${P2[1]})$ 는 서로 대칭인 점입니다.`;
+    const s1 = `지수함수에서 지수가 $0$ 이 되는 점 $P_1(${P1[0]},${P1[1]})$ 와 로그함수에서 진수가 $1$ 이 되는 점 $P_2(${P2[0]},${P2[1]})$ 를 잡습니다. 일반점 $(m+u,2^u+n)$은 $C=q-m$인 직선에 대하여 $(2^u+p,u+q)$로 옮겨지며 $p=m+n-q$이므로 로그곡선 위의 점입니다. 따라서 두 기준점도 서로 대칭입니다.`;
     const s2 = `두 점의 중점 $M_0\\left(${frac(P1[0] + P2[0], 2)},${frac(P1[1] + P2[1], 2)}\\right)$ 를 지나고 기울기가 $1$ 인 직선이 대칭축입니다. $${frac(P1[1] + P2[1], 2)}=${frac(P1[0] + P2[0], 2)}+C$ 에서 $C=${C}$.`;
     if (e.ask === 'CM') {
       const k = e.k, mx = frac(k - C, 2), my = frac(k + C, 2);
@@ -240,7 +240,7 @@
     } else {
       text = `두 곡선 $y = ${expTex(m, n)}$ (위의 점 $(${P1[0]},${P1[1]})$)과 $y = ${logTex(p, q)}$ (위의 점 $(${P2[0]},${P2[1]})$)의 대칭축 $y = x + C$를 두 점의 중점을 이용하여 구하시오.`;
       ans = tx(`C=${C}`);
-      steps = [s1, s2, `선분 $P_1P_2$ 의 기울기는 $-1$ 이므로 대칭축 $y=x${Cs}$ 에 수직으로 만납니다. 두 곡선이 이 직선에 대해 대칭이라는 것이 확인됩니다.`];
+      steps = [s1, s2, `선분 $P_1P_2$ 의 기울기는 $-1$ 이므로 대칭축 $y=x${Cs}$ 에 수직으로 만납니다. 이는 앞에서 확인한 전체 곡선의 대칭과 일치합니다.`];
       quick = [`중점 $\\left(${frac(P1[0] + P2[0], 2)},${frac(P1[1] + P2[1], 2)}\\right)$ 에서 $y-x=${C}$ 이므로 대칭축은 $y=x${Cs}$ 입니다.`];
     }
     const pts = [P1, P2, M0, [0, 0]];
@@ -448,6 +448,7 @@
       b.text([x1, (f(x1) + g(x1)) / 2], `AB = ${n}`, { color: 'amber', size: 12.5, weight: 800, align: 'left', dx: 10 });
       b.text([x2, (f(x2) + g(x2)) / 2], `CD = ${n}`, { color: 'rose', size: 12.5, weight: 800, align: 'left', dx: 10 });
     }
+    if(st>=2) [0.25,0.5,0.75].forEach(r=>{const x=x1+(x2-x1)*r;b.seg([x,f(x)],[x,g(x)],{color:'violet',width:2});});
     if (st >= 3) {
       // 같은 넓이의 직사각형(가로 w × 세로 n)을 x축 아래 빈 곳에 따로 그립니다
       b.poly([[x1, -1.1], [x2, -1.1], [x2, -1.1 - n], [x1, -1.1 - n]], { fill: 'violet', fillAlpha: 0.14, color: 'violet', width: 2.2 });
@@ -502,6 +503,12 @@
     const s1 = st >= 2 ? `x₁ = ${fstr(p * den + 1, den)}` : 'x₁', s2 = st >= 2 ? `x₂ = ${p + den}` : 'x₂';
     b.point([x1, t], { color: 'rose', r: 6, label: s1, dx: -8, dy: -14, align: 'right' });
     b.point([x2, t], { color: 'green', r: 6, label: s2, dx: 8, dy: -14 });
+    if(st>=2){
+      const ya=-.55,yb=-1.05;
+      b.seg([p,ya],[x1,ya],{color:'rose',width:3}); b.seg([p,yb],[x2,yb],{color:'green',width:3});
+      b.text([x1,ya],'x₁−p',{color:'rose',size:11,align:'left',dx:8,dy:0});
+      b.text([(p+x2)/2,yb],'x₂−p',{color:'green',size:11,dy:12});
+    }
     if (st >= 3 && !names) {
       b.seg([M, t], [M, 0], { color: 'sky', width: 2.2, dash: true });
       lab(b, [M, t], 'M', 'sky', { r: 6, dx: 8, dy: -14 });
@@ -566,6 +573,7 @@
     if (st >= 2) {
       b.plot((x) => x + C, { color: 'violet', width: 2.6, dash: true, from: -12, to: 16 });
       lab(b, M0, `(${fstr(P1[0] + P2[0], 2)}, ${fstr(P1[1] + P2[1], 2)})`, 'rose', { r: 5, dx: 10, dy: 14 });
+      b.ticks(P1,M0,{color:'rose'});b.ticks(M0,P2,{color:'rose'});b.right(M0,P1,[M0[0]+1,M0[1]+1],{color:'violet',size:10});
       tagAt(b, (x) => x + C, `대칭축 y = x ${C >= 0 ? '+' : '−'} ${Math.abs(C)}`, 'violet', { left: true, dy: -14, skip: skX });
     }
     if (e.ask === 'CM') {
@@ -575,6 +583,7 @@
       lab(b, [xb, k - xb], 'B', 'sky', { dx: 8, dy: -10 });
       if (st >= 3) {
         b.seg([xa, k - xa], [xb, k - xb], { color: 'amber', width: 3.4 });
+        const mid=[(k-C)/2,(k+C)/2];b.ticks([xa,k-xa],mid,{color:'amber'});b.ticks(mid,[xb,k-xb],{color:'amber'});b.right(mid,[xa,k-xa],[mid[0]+1,mid[1]+1],{color:'violet',size:10});
         lab(b, [(k - C) / 2, (k + C) / 2], `M(${fstr(k - C, 2)}, ${fstr(k + C, 2)})`, 'violet', { r: 6.5, dx: 12, dy: 0 });
         card(view, `대칭축 y = x ${C >= 0 ? '+' : '−'} ${Math.abs(C)}  ⇒  C = ${C},  M(${fstr(k - C, 2)}, ${fstr(k + C, 2)})`, '#c084fc');
       }

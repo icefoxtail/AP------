@@ -40,7 +40,11 @@
     return s || '0';
   }
   // 일차식 m x + n
-  const linTex = (m, n, v = 'x') => polyTex(0, m, n, v);
+  const linTex = (m, n, v = 'x') => {
+    if (typeof n !== 'string' || n === '') return polyTex(0, m, n || 0, v);
+    const head = m ? polyTex(0, m, 0, v) : '';
+    return head + (head && n[0] !== '-' ? '+' : '') + n;
+  };
   // a·(x−p)²+q 꼴의 전개 계수
   const expand = (a, p, q) => [a, -2 * a * p, a * p * p + q];
 
@@ -138,8 +142,10 @@
     sc.vary = spec.vary;
     sc.view = (s, lab) => {
       const v = origView(s, lab);
-      if (lab && lab.tab !== 'explore') delete v.status; // 상태 배지는 탐구 탭에서만
-      return v;
+      if (!lab || lab.tab === 'explore') return v;
+      // 고정된 탐구 예제의 답/수치를 현재 변형 문제 옆에 남기지 않는다.
+      return { readouts: [], status: null, guide: '', parts: [], summary: '', rule: '', formula: '', tape: null,
+        notes: lab.tab === 'review' && s.step >= 3 ? spec.std(spec.vary.cur()).warning : '' };
     };
     sc.draw = (b, s, v, lab) => {
       const tab = tabOf(b, lab);

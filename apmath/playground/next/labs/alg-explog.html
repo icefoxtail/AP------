@@ -106,17 +106,17 @@ window.addEventListener('DOMContentLoaded', function () {
         source: '평행이동한 곡선과 직선의 교점 사이의 거리',
         params: { base: 2, dx: 2, dy: 4, x0: 0 },
         snapParams: { base: 2, dx: 2, dy: 4, x0: 0 },
-        problem: '두 곡선 $y = 2^x$과 $y = 2^{x-2} + 4$가 기울기가 $2$인 직선 $y = 2x + 1$과 만나는 두 점을 각각 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.',
+        problem: '두 곡선 $y = 2^x$과 $y = 2^{x-2} + 4$가 기울기가 $2$인 직선 $y = 2x + 1$과 만나는 교점 중 각각 $x$좌표가 가장 작은 점을 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.',
         textbookTitle: '교점의 좌표를 미지수로 놓고 연립하기',
         textbookSteps: [
-          '1) $y=2^x$과 직선 $y=2x+1$의 교점 중 $A=(0,1)$은 $2^0=1$로 확인된다. 평행이동으로 대응하는 점을 이용하므로 다른 교점의 좌표를 모두 풀 필요는 없다.',
+          '1) $y=2^x$과 직선 $y=2x+1$의 교점 중 $A=(0,1)$은 $2^0=1$로 확인된다. 이 변형들에서는 기울기가 $2$ 이상이고 $x<0$이면 $2^x>1+x>1+mx$이므로 $A$는 $x$좌표가 가장 작은 교점이다. 다른 교점을 구할 필요는 없다.',
           '2) 점 $B(s, 2^{s-2}+4)$를 직선 $y=2x+1$에 대입하면 $2^{s-2}+4 = 2s+1 \\implies 2^{s-2} = 2(s-2) + 1$.',
           '3) $t = s-2$로 놓으면 $2^t = 2t+1$인데, 이 방정식은 $A$의 $x$좌표 $t=0$을 해로 가진다. $t=0$이면 $s=2$이므로 $B(2, 5)$이다. 따라서 $\\overline{AB} = \\sqrt{(2-0)^2 + (5-1)^2} = \\sqrt{2^2 + 4^2} = 2\\sqrt{5}$.'
         ],
         secretTitle: '직선의 기울기가 평행이동한 방향의 기울기 $\\frac{n}{m}$과 같을 때',
         secretSteps: [
           '두 곡선은 $x$축의 방향으로 $\\Delta x = 2$, $y$축의 방향으로 $\\Delta y = 4$만큼 평행이동한 관계이므로, 이동한 방향의 기울기는 $\\frac{4}{2} = 2$입니다.',
-          '직선 $y=2x+1$의 기울기도 $2$입니다. 따라서 교점의 좌표를 구하지 않아도 두 교점 $A, B$는 평행이동으로 서로 겹쳐지는 점입니다.',
+          '직선 $y=2x+1$의 기울기도 $2$입니다. 이 평행이동은 직선을 자기 자신으로 옮기고 교점의 좌우 순서를 보존합니다. 따라서 각 곡선에서 가장 왼쪽인 $A, B$가 대응합니다. 임의로 고른 두 교점에는 이 결론을 적용할 수 없습니다.',
           '$\\overline{AB} = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{2^2 + 4^2} = \\sqrt{20} = 2\\sqrt{5}$'
         ]
       },
@@ -577,10 +577,11 @@ function solveExpLineIntersection(k, shift = 0) {
   function drawFunctionCurve(fn, color = '#34d399', lineWidth = 2.6, dash = [], xStart = null, xEnd = null) {
     const g = (x) => {
       let y = fn(x);
-      if (S.mut_abs && !isNaN(y)) y = Math.abs(y);
+      // 원래 곡선·점은 보존하고 절댓값 곡선은 비교용으로 겹쳐 그립니다.
       return (isNaN(y) || !isFinite(y) || Math.abs(y) > 80) ? NaN : y;
     };
     B.plot(g, { color, width: lineWidth, dash: dashOf(dash), glow: dash.length === 0, from: xStart, to: xEnd });
+    if (S.mut_abs) B.plot((x) => Math.abs(g(x)), { color: 'violet', width: 1.8, dash: [4, 4], from: xStart, to: xEnd });
   }
   function drawMathLine(slope, intercept, color = '#fbbf24', dash = [], width = 2) {
     B.line([0, intercept], slope, { color, width, dash: dashOf(dash) });
@@ -708,7 +709,7 @@ function solveExpLineIntersection(k, shift = 0) {
   }
 
   /* ---------- 3. 실시간 값 (원본 updateLiveHUDAndInvariants 의 계산 그대로) ---------- */
-      function hudOf(s, m) {
+      function hudOf(s, m, j) {
       const mode = KILLER_MODES[m];
       const mId = mode.id;
       const p = pv(s, m);
@@ -721,7 +722,7 @@ function solveExpLineIntersection(k, shift = 0) {
         const isEven = Math.round(p.n) % 2 === 0;
         const countN = !isEven ? 1 : (Math.abs(fk) < 1e-5 ? 1 : (fk > 0 ? 2 : 0));
         hudEq = (
-          `$f(x)=(x-${p.r1})(x-${p.r2}), \\quad f(${p.k.toFixed(1)}) = ${fk.toFixed(2)}, \\quad x^{${Math.round(p.n)}} = f(k)$`
+          `$f(x)=(x-${p.r1})(x-${p.r2}), \\quad f(${p.k.toFixed(2)}) = ${fk.toFixed(2)}, \\quad x^{${Math.round(p.n)}} = f(k)$`
         );
         cards = [
           { title: '함숫값 부호 f(k)', val: fk.toFixed(2), sub: fk > 0 ? '양수' : (Math.abs(fk) < 1e-4 ? '0' : '음수') },
@@ -734,13 +735,13 @@ function solveExpLineIntersection(k, shift = 0) {
         const slope = p.dy / p.dx;
         const areaS = 2 * p.dx; // between y=mx+1 and y=mx+3
         hudEq = (
-          `$C_1: y=2^x, \\quad C_2: y=2^{x-${p.dx.toFixed(1)}}+${p.dy.toFixed(1)}, \\quad \\text{기울기 } m = \\frac{${p.dy.toFixed(1)}}{${p.dx.toFixed(1)}} = ${slope.toFixed(2)}$`
+          `$C_1: y=2^x, \\quad C_2: y=2^{x-${p.dx.toFixed(2)}}+${p.dy.toFixed(2)}, \\quad \\text{기울기 } m = \\frac{${p.dy.toFixed(2)}}{${p.dx.toFixed(2)}} = ${slope.toFixed(2)}$`
         );
         cards = [
           { title: '선분 길이 AB', val: `${lenAB.toFixed(3)}`, sub: `√(Δx²+Δy²) = √${(p.dx*p.dx + p.dy*p.dy).toFixed(2)}` },
           { title: '선분 길이의 비 AB ÷ √(m²+n²)', val: '1.000', sub: 'AB = √(m²+n²)이므로 항상 1' },
           { title: '넓이 S', val: `${areaS.toFixed(2)}`, sub: '(두 직선의 y절편의 차 2) × Δx' },
-          { title: '평행이동한 양 (Δx, Δy)', val: `(${p.dx.toFixed(1)}, ${p.dy.toFixed(1)})`, sub: `이동한 방향의 기울기 ${slope.toFixed(2)}` }
+          { title: '평행이동한 양 (Δx, Δy)', val: `(${p.dx.toFixed(2)}, ${p.dy.toFixed(2)})`, sub: `이동한 방향의 기울기 ${slope.toFixed(2)}` }
         ];
       } else if (mId === 'type3') {
         const xA = solveExpLineIntersection(p.k, p.shift);
@@ -751,7 +752,7 @@ function solveExpLineIntersection(k, shift = 0) {
         const lenAB = Math.hypot(xB - xA, yB - yA);
         const areaOAB = 0.5 * Math.abs(xA * yB - xB * yA);
         hudEq = (
-          `$y=2^{x-${p.shift}}+${p.shift}, \\quad y=\\log_2(x-${p.shift})+${p.shift}, \\quad y=-x+${p.k.toFixed(1)}$`
+          `$y=2^{x-${p.shift}}+${p.shift}, \\quad y=\\log_2(x-${p.shift})+${p.shift}, \\quad y=-x+${p.k.toFixed(2)}$`
         );
         cards = [
           { title: '선분 길이 AB', val: lenAB.toFixed(3), sub: `Δx·√2 = ${dx.toFixed(2)}×√2` },
@@ -760,48 +761,49 @@ function solveExpLineIntersection(k, shift = 0) {
           { title: '삼각형 OAB 넓이', val: areaOAB.toFixed(3), sub: '½ · k · Δx와 같음' }
         ];
       } else if (mId === 'type4') {
-        const x1 = Math.pow(2, -p.t);
-        const x2 = Math.pow(2, p.t);
-        const prod = x1 * x2;
-        const expSum = p.t < p.kAsym ? Math.log2((p.kAsym - p.t) * (p.kAsym + p.t)) : NaN;
-        hudEq = (
-          `$y = |\\log_2 x| \\cap (y=${p.t.toFixed(2)}) \\implies x_1=${x1.toFixed(3)}, \\; x_2=${x2.toFixed(3)}$`
-        );
-        cards = [
-          { title: '두 교점의 x좌표의 곱 x₁·x₂', val: prod.toFixed(4), sub: '항상 1 (서로 역수)' },
-          { title: '두 교점의 차 x₂ - x₁', val: (x2 - x1).toFixed(3), sub: `2ᵗ − 2⁻ᵗ` },
-          { title: `|2^x - ${p.kAsym}| 교점 개수`, val: p.t < p.kAsym ? '2개' : '1개', sub: `점근선 y = ${p.kAsym}` },
-          { title: '두 교점의 x좌표의 합 x₁+x₂', val: !isNaN(expSum) ? expSum.toFixed(3) : '교점 1개', sub: !isNaN(expSum) ? `log₂(k²-t²) = log₂(${(p.kAsym*p.kAsym - p.t*p.t).toFixed(1)})` : 't ≥ k이면 교점이 1개' }
-        ];
+        const t = p.t, k = p.kAsym;
+        if (j === 0) {
+          const x1 = 2 ** (-t), x2 = 2 ** t;
+          hudEq = `$|\\log_2 x|=t \\Rightarrow x_1=2^{-t},\\ x_2=2^t,\\ x_1x_2=1$`;
+          cards = [
+            { title: '두 교점의 곱', val: '1', sub: '수평선 높이가 바뀌어도 서로 역수' },
+            { title: '교점의 차 x₂−x₁', val: '≈ ' + (x2-x1).toFixed(3), sub: '2ᵗ−2⁻ᵗ: t가 커지면 증가' }
+          ];
+        } else {
+          const two = t > 0 && t < k, count = t < 0 ? 0 : t === 0 ? 1 : two ? 2 : 1;
+          hudEq = two ? `$2^{x_1}=k-t,\\ 2^{x_2}=k+t \\Rightarrow 2^{x_1+x_2}=k^2-t^2$` : `$|2^x-${k}|=${t}\\text{ 의 교점은 }${count}\\text{개}$`;
+          cards = [
+            { title: '교점 개수', val: count + '개', sub: '0<t<k일 때만 서로 다른 두 교점' },
+            { title: '두 근의 합 x₁+x₂', val: two ? '≈ ' + Math.log2(k*k-t*t).toFixed(3) : '두 근 없음', sub: two ? '정확한 값 log₂(k²−t²)' : 't=0 또는 t≥k에서는 교점 1개' }
+          ];
+        }
       } else if (mId === 'type5') {
-        const k = p.ratioK;
-        const yP = Math.pow(k, 1 / (k - 1));
-        const yQ = k * yP;
-        const baseA = Math.pow(yP, 1 / p.tVal);
-        hudEq = (
-          `$\\overline{OP}:\\overline{OQ} = 1:${k.toFixed(1)} \\implies P(${p.tVal.toFixed(1)},\\, ${yP.toFixed(2)}), \\; Q(${(k*p.tVal).toFixed(1)},\\, ${yQ.toFixed(2)})$`
-        );
+        const k = p.ratioK, yP = j === 0 ? 3 : k ** (1/(k-1)), yQ = k*yP;
+        const a = yP ** (1/p.tVal), b = yQ ** (1/(k*p.tVal));
+        hudEq = j === 0 ? `$OP:OQ=1:k \\Rightarrow Q=kP,\\ a^t=3,\\ b^{kt}=3k$` : `$Q=kP,\\ y_Q=y_P^k=ky_P \\Rightarrow y_P^{k-1}=k$`;
         cards = [
-          { title: '점 P의 y좌표', val: yP.toFixed(3), sub: `$k^{\\frac{1}{k-1}}$, t와 관계없음` },
-          { title: '점 Q의 y좌표 (k·y_P)', val: yQ.toFixed(3), sub: `y_P^k = ${(Math.pow(yP, k)).toFixed(3)}` },
-          { title: '밑 a의 값', val: baseA.toFixed(3), sub: `a^t = y_P를 만족시키는 a` },
-          { title: '(a^t)^k − k·a^t의 값', val: '0.000', sub: `(a^t)^k − k·a^t = 0.000` }
+          { title: 'P의 높이', val: '≈ ' + yP.toFixed(3), sub: j === 0 ? '주어진 높이 3을 유지하며 두 밑을 비교' : 'k^(1/(k−1)) — t와 무관' },
+          { title: 'Q의 높이', val: '≈ ' + yQ.toFixed(3), sub: '원점을 중심으로 가로·세로 모두 k배' },
+          { title: j === 0 ? '두 밑 a, b' : '밑 a', val: j === 0 ? `≈ ${a.toFixed(3)}, ${b.toFixed(3)}` : '≈ '+a.toFixed(3), sub: j === 0 ? 'P는 y=aˣ, Q는 y=bˣ 위' : '두 점 모두 같은 지수곡선 위' }
         ];
       } else if (mId === 'type6') {
-        const y1 = Math.log2(p.x1 + 1);
-        const y2 = Math.log2(p.x2 + 1);
-        const slopeP = y1 / p.x1;
-        const slopeQ = y2 / p.x2;
-        const slopeR = (y2 - y1) / (p.x2 - p.x1);
-        hudEq = (
-          `$y=\\log_2(x+1), \\quad A(${p.x1.toFixed(1)}, ${y1.toFixed(2)}), \\; B(${p.x2.toFixed(1)}, ${y2.toFixed(2)})$`
-        );
-        cards = [
-          { title: '원점 기울기 P ($\\frac{y_1}{x_1}$)', val: slopeP.toFixed(3), sub: 'OA 직선의 기울기 (최대)' },
-          { title: '원점 기울기 Q ($\\frac{y_2}{x_2}$)', val: slopeQ.toFixed(3), sub: 'OB 직선의 기울기 (중간)' },
-          { title: '기울기 R (직선 AB)', val: slopeR.toFixed(3), sub: 'AB 직선의 기울기 (최소)' },
-          { title: '세 기울기의 크기 비교', val: 'P > Q > R', sub: '항상 성립' }
-        ];
+        if (j === 0) {
+          const y1=Math.log2(p.x1+1), y2=Math.log2(p.x2+1);
+          const P=y1/p.x1, Q=y2/p.x2, R=(y2-y1)/(p.x2-p.x1);
+          hudEq = `$Q=\\frac{x_1}{x_2}P+\\frac{x_2-x_1}{x_2}R,\\quad P>Q>R$`;
+          cards = [
+            {title:'기울기 P, Q, R',val:`≈ ${P.toFixed(3)}, ${Q.toFixed(3)}, ${R.toFixed(3)}`,sub:'A가 선분 OB보다 위: P>Q. Q는 P와 R의 가중평균'},
+            {title:'가중치의 합',val:'1',sub:'x₁/x₂ + (x₂−x₁)/x₂ = 1, 두 가중치는 양수'}
+          ];
+        } else {
+          const y1=2**p.x1, y2=2**p.x2, ym=Math.sqrt(y1*y2), w=p.x2-p.x1;
+          hudEq = `$S_{\\rm trap}-S_{\\rm mid}=(x_2-x_1)\\left(\\frac{y_1+y_2}{2}-\\sqrt{y_1y_2}\\right)>0$`;
+          cards = [
+            {title:'같은 가로폭',val:w.toFixed(2),sub:'넓이는 높이만 비교하면 됩니다'},
+            {title:'산술평균 높이 / 기하평균 높이',val:`≈ ${((y1+y2)/2).toFixed(3)} / ${ym.toFixed(3)}`,sub:'현의 중점은 곡선 위의 점보다 위'},
+            {title:'넓이 차',val:'≈ '+(w*((y1+y2)/2-ym)).toFixed(3),sub:'(√y₂−√y₁)²/2 × 가로폭'}
+          ];
+        }
       } else if (mId === 'type7') {
         const maxX = Math.round(p.maxX);
         let totalDots = 0;
@@ -820,16 +822,17 @@ function solveExpLineIntersection(k, shift = 0) {
         ];
       } else if (mId === 'type8') {
         const D = p.sumT * p.sumT - 4 * p.prodT;
-        const alphaPlusBeta = Math.log2(p.prodT);
+        const two = D > 1e-10 && p.sumT > 0 && p.prodT > 0;
+        const alphaPlusBeta = two ? Math.log2(p.prodT) : NaN;
         const f1 = 1 - p.sumT + p.prodT;
         hudEq = (
-          `$(2^x)^2 - ${p.sumT.toFixed(1)}\\cdot 2^x + ${p.prodT.toFixed(1)} = 0 \\iff t^2 - ${p.sumT.toFixed(1)}t + ${p.prodT.toFixed(1)} = 0 \\;(t>0)$`
+          `$(2^x)^2 - ${p.sumT.toFixed(2)}\\cdot 2^x + ${p.prodT.toFixed(2)} = 0 \\iff t^2 - ${p.sumT.toFixed(2)}t + ${p.prodT.toFixed(2)} = 0 \\;(t>0)$`
         );
         cards = [
-          { title: '두 근의 합 α + β', val: alphaPlusBeta.toFixed(3), sub: `log₂(t₁t₂) = log₂(${p.prodT.toFixed(1)})` },
+          { title: '두 근의 합 α + β', val: two ? '≈ ' + alphaPlusBeta.toFixed(3) : '서로 다른 두 실근 없음', sub: two ? `정확한 값 log₂(${p.prodT.toFixed(2)})` : 'D>0, t₁>0, t₂>0을 먼저 확인' },
           { title: '판별식 D', val: D.toFixed(2), sub: D > 0 ? '서로 다른 두 실근' : (D === 0 ? '중근' : '실근 없음') },
           { title: '양의 실근 경계 f(1)', val: f1.toFixed(2), sub: f1 > 0 && D > 0 && p.sumT/2 > 1 ? '두 근이 모두 1보다 큼 (x>0인 두 실근)' : '조건을 만족시키지 않음' },
-          { title: '2^(α+β) − P의 값', val: '0', sub: '근과 계수의 관계 t₁t₂ = P' }
+          { title: '2^(α+β) − P의 값', val: two ? '0' : '적용 불가', sub: '원래 방정식에 서로 다른 두 실근이 있을 때 적용' }
         ];
       }
 
@@ -914,10 +917,12 @@ function solveExpLineIntersection(k, shift = 0) {
       const fk = (p.k - p.r1) * (p.k - p.r2);
 
       // Left curve: Quadratic f(x) = 0.5*(x-r1)*(x-r2) scaled for clarity
-      drawFunctionCurve(x => 0.5 * (x - p.r1) * (x - p.r2), '#34d399', 2.8);
+      drawFunctionCurve(x => (x - p.r1) * (x - p.r2), '#34d399', 2.8);
 
       // Right shifted curve: y = (x + 4)^n at x = -4
       const rootCenter = -4.5;
+B.text([rootCenter, 0], 'u = 0', { color: 'sky', size: 11, align: 'center', dy: 31 });
+B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { color: 'sky', size: 11, align: 'center', baseline: 'top' });
       drawFunctionCurve(x => Math.pow(x - rootCenter, n), '#38bdf8', 2.6, [], rootCenter - 2.5, rootCenter + 2.5);
       drawMathSegment(rootCenter, -10, rootCenter, 10, 'rgba(56, 189, 248, 0.3)', [4, 4], 1.2);
 
@@ -930,13 +935,13 @@ function solveExpLineIntersection(k, shift = 0) {
       }
 
       // Horizontal level line y = 0.5 * f(k) connecting both curves
-      const yScaled = 0.5 * fk;
+      const yScaled = fk; // 실제 함수값과 수평선 높이를 같은 좌표계에 표시
       if ((ST.step >= 2)) {
         drawMathLine(0, yScaled, '#fbbf24', [5, 5], 1.8);
         // Show intersections on the x^n curve
         const isEven = n % 2 === 0;
         if (!isEven) {
-          const rx = rootCenter + Math.cbrt(yScaled);
+          const rx = rootCenter + Math.sign(yScaled) * Math.pow(Math.abs(yScaled), 1 / n);
           drawMathPoint(rx, yScaled, '실근 1개(홀수)', '#fbbf24', 6);
         } else {
           if (Math.abs(yScaled) < 1e-3) {
@@ -961,7 +966,7 @@ function solveExpLineIntersection(k, shift = 0) {
       }
 
       // Draggable handle for k on f(k)
-      drawMathPoint(p.k, yScaled, `P(k=${p.k.toFixed(1)}, f=${fk.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(p.k, yScaled, `P(k=${p.k.toFixed(2)}, f≈${fk.toFixed(2)})`, '#fbbf24', 7.5, true, (mPos) => {
         ST[K('k')] = Math.max(0, Math.min(8, Math.round(mPos.x * 10) / 10));
       });
     }
@@ -971,7 +976,7 @@ function solveExpLineIntersection(k, shift = 0) {
       const p = pv(ST, 1);
       const K = (k) => 'type2_' + k;
       const slope = p.dy / p.dx;
-      const showType2BRegion = si === 1 && !ST.twinText && Math.abs(p.dx - 3) < 1e-6 && Math.abs(p.dy - 3) < 1e-6;
+      const showType2BRegion = si === 1;
 
       // Curve 1: y = 2^x, Curve 2: y = 2^(x - dx) + dy
       drawFunctionCurve(x => Math.pow(2, x), '#34d399', 2.8, [], -5, 4.5);
@@ -991,24 +996,25 @@ function solveExpLineIntersection(k, shift = 0) {
       // y-x=1,3. In s=y-x coordinates, translation by (3,3) preserves s.
       if (showType2BRegion) {
         const increasingRoot = (target) => {
-          let lo = 0.55, hi = 5;
+          let lo = Math.log2(slope/Math.LN2), hi = 20;
           for (let i = 0; i < 60; i++) {
             const mid = (lo + hi) / 2;
-            if (Math.pow(2, mid) - mid < target) lo = mid;
+            if (Math.pow(2, mid) - slope*mid < target) lo = mid;
             else hi = mid;
           }
           return (lo + hi) / 2;
         };
         const t1 = increasingRoot(1), t3 = increasingRoot(3);
-        drawMathLine(1, 1, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
-        drawMathLine(1, 3, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
+        drawMathLine(slope, 1, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
+        drawMathLine(slope, 3, 'rgba(251, 191, 36, 0.55)', [5, 5], 1.5);
         const p1 = mathToScreen(t1, Math.pow(2, t1));
         const p2 = mathToScreen(t3, Math.pow(2, t3));
-        const p3 = mathToScreen(t3 + 3, Math.pow(2, t3) + 3);
+        const p3 = mathToScreen(t3 + p.dx, Math.pow(2, t3) + p.dy);
         if ((ST.step >= 1) || (ST.step >= 2)) {
           drawMathPoint(t3, Math.pow(2, t3), 's=3', '#fbbf24', 5.5, false);
-          drawMathPoint(t3 + 3, Math.pow(2, t3) + 3, 's=3', '#38bdf8', 5.5, false);
+          drawMathPoint(t3 + p.dx, Math.pow(2, t3) + p.dy, 's=3', '#38bdf8', 5.5, false);
         }
+        if (ST.step >= 2) { const xm=increasingRoot(2); B.seg([xm,2**xm],[xm+p.dx,2**xm+p.dy],{color:"rose",width:3}); }
         if ((ST.step >= 3)) {
           ctx.save();
           ctx.fillStyle = col('rgba(52, 211, 153, 0.18)');
@@ -1024,15 +1030,15 @@ function solveExpLineIntersection(k, shift = 0) {
           ctx.lineTo(p3.x, p3.y);
           for (let i = 59; i >= 0; i--) {
             const x = t1 + (t3 - t1) * i / 60;
-            const q = mathToScreen(x + 3, Math.pow(2, x) + 3);
+            const q = mathToScreen(x + p.dx, Math.pow(2, x) + p.dy);
             ctx.lineTo(q.x, q.y);
           }
           ctx.closePath();
           ctx.fill();
           ctx.stroke();
           ctx.restore();
-          const mid = mathToScreen((t1 + t3 + 3) / 2, (Math.pow(2, t1) + Math.pow(2, t3) + 3) / 2);
-          drawCanvasBadge(ctx, 'S = 3√2 × √2 = 6', mid.x, mid.y, '#34d399');
+          const mid = mathToScreen((t1 + t3 + p.dx) / 2, (Math.pow(2, t1) + Math.pow(2, t3) + p.dy) / 2);
+          drawCanvasBadge(ctx, `같은 단면 길이 × 수직 폭 → S = 2Δx = ${2*p.dx}`, mid.x, mid.y, '#34d399');
         }
       }
 
@@ -1055,48 +1061,21 @@ function solveExpLineIntersection(k, shift = 0) {
         drawMathSegment(xB, yA, xB, yB, '#fbbf24', [5, 4], 2);
 
         const midBottom = mathToScreen((xA + xB) / 2, yA - 0.55);
-        drawCanvasBadge(ctx, `Δx = ${p.dx.toFixed(1)}`, midBottom.x, midBottom.y, '#fbbf24');
+        drawCanvasBadge(ctx, `Δx = ${p.dx.toFixed(2)}`, midBottom.x, midBottom.y, '#fbbf24');
         const midRight = mathToScreen(xB + 1.1, (yA + yB) / 2);
-        drawCanvasBadge(ctx, `Δy = ${p.dy.toFixed(1)}`, midRight.x, midRight.y, '#fbbf24');
+        drawCanvasBadge(ctx, `Δy = ${p.dy.toFixed(2)}`, midRight.x, midRight.y, '#fbbf24');
       }
 
-      // Step 3: Equi-areal Puzzle Parallelogram Shading (between xA and xA+1)
-      if ((ST.step >= 3) && !showType2BRegion) {
-        const xA2 = xA + 1;
-        const yA2 = Math.pow(2, xA2);
-        const xB2 = xA2 + p.dx;
-        const yB2 = yA2 + p.dy;
-
-        ctx.save();
-        ctx.fillStyle = col('rgba(52, 211, 153, 0.22)');
-        ctx.strokeStyle = col('#34d399');
-        ctx.lineWidth = 2;
-        const p1 = mathToScreen(xA, yA);
-        const p2 = mathToScreen(xA2, yA2);
-        const p3 = mathToScreen(xB2, yB2);
-        const p4 = mathToScreen(xB, yB);
-        ctx.beginPath();
-        ctx.moveTo(p1.x, p1.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.lineTo(p3.x, p3.y);
-        ctx.lineTo(p4.x, p4.y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
-
-        const centerPos = mathToScreen((xA + xB2) / 2, (yA + yB2) / 2 + 1.2);
-        drawCanvasFraction(ctx, `Δy = ${p.dy.toFixed(1)}`, `Δx = ${p.dx.toFixed(1)}`, centerPos.x, centerPos.y, {
-          prefix: '평행이동 기울기 = ',
-          suffix: ` ⟹ AB = √${(p.dx*p.dx + p.dy*p.dy).toFixed(1)}`
-        });
+      if(ST.step>=3 && !showType2BRegion){
+        B.seg([xA,yA],[xB,yB],{color:'amber',width:3.5});
+        OV.corner(B,0,'대응점 사이 거리 = √(Δx²+Δy²)','amber');
       }
 
       // Draggable Points A (controls x0) and B (controls dx, dy)
-      drawMathPoint(xA, yA, `${showType2BRegion ? 's=1 A' : 'A'}(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
+      drawMathPoint(xA, yA, `A(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
         ST[K('x0')] = Math.max(-1.5, Math.min(1.5, Math.round(mPos.x * 10) / 10));
       });
-      drawMathPoint(xB, yB, `${showType2BRegion ? 's=1 B' : 'B'}(${xB.toFixed(1)}, ${yB.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(xB, yB, `B(${xB.toFixed(1)}, ${yB.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
         ST[K('dx')] = Math.max(1, Math.min(4, Math.round((mPos.x - xA) * 4) / 4));
         ST[K('dy')] = Math.max(1, Math.min(5, Math.round((mPos.y - yA) * 4) / 4));
       });
@@ -1166,7 +1145,7 @@ function solveExpLineIntersection(k, shift = 0) {
       // Step 3: Midpoint Vertical Fraction Readout
       if ((ST.step >= 3)) {
         const mScreen = mathToScreen(mx + 1.4, my + 0.9);
-        drawCanvasFraction(ctx, `${p.k.toFixed(1)}`, '2', mScreen.x, mScreen.y, {
+        drawCanvasFraction(ctx, `${p.k.toFixed(2)}`, '2', mScreen.x, mScreen.y, {
           prefix: '대칭 중점 M(',
           suffix: `, ${(p.k/2).toFixed(2)})`
         });
@@ -1174,53 +1153,33 @@ function solveExpLineIntersection(k, shift = 0) {
 
       drawMathPoint(xA, yA, `A(${xA.toFixed(2)}, ${yA.toFixed(2)})`, '#34d399', 6);
       drawMathPoint(xB, yB, `B(${xB.toFixed(2)}, ${yB.toFixed(2)})`, '#38bdf8', 6);
-      drawMathPoint(mx, my, `M [드래그 k=${p.k.toFixed(1)}]`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(mx, my, `M [드래그 k=${p.k.toFixed(2)}]`, '#fbbf24', 7.5, true, (mPos) => {
         ST[K('k')] = Math.max(2.5, Math.min(8.5, Math.round((mPos.x + mPos.y) * 10) / 10));
       });
     }
 
     // --- TYPE 4: Absolute Value Fold & Product Invariant ---
     function renderType4(ST, si) {
-      const p = pv(ST, 3);
-      const K = (k) => 'type4_' + k;
-
-      // Dashed original log2(x) below x-axis
-      drawFunctionCurve(x => Math.log2(x), 'rgba(52, 211, 153, 0.3)', 1.8, [5, 5], 0.05, 1);
-
-      // Step 1: Color-coded left (-log2 x) and right (+log2 x) wings
-      const leftColor = (ST.step >= 1) ? '#fb7185' : '#34d399';
-      drawFunctionCurve(x => -Math.log2(x), leftColor, 2.8, [], 0.06, 1);
-      drawFunctionCurve(x => Math.log2(x), '#34d399', 2.8, [], 1, 9);
-
-      // Step 3: Exponential |2^x - k| and Reflected Asymptote y = k
-      if ((ST.step >= 3)) {
-        drawFunctionCurve(x => Math.abs(Math.pow(2, x) - p.kAsym), '#c084fc', 2.2, [], -5, 3.2);
-        drawMathLine(0, p.kAsym, 'rgba(192, 132, 252, 0.65)', [6, 4], 1.6);
-        const asymPt = mathToScreen(-2.2, p.kAsym + 0.45);
-        drawCanvasBadge(ctx, `접혀 올라온 점근선 y = k = ${p.kAsym}`, asymPt.x, asymPt.y, '#c084fc');
+      const p=pv(ST,3), t=p.t, k=p.kAsym, vb=B.viewBox();
+      drawMathLine(0,t,'#fbbf24',[],2.2);
+      if (si===0) {
+        drawFunctionCurve(x=>Math.abs(Math.log2(x)),'#34d399',2.8,[],0.002,vb.x1);
+        const x1=2**(-t),x2=2**t;
+        if(ST.step>=1) drawFunctionCurve(x=>Math.log2(x),'rgba(148,163,184,.6)',1.6,[4,4],0.002,1);
+        if(ST.step>=2){ B.seg([x1,t],[x1,0],{color:'rose',dash:[4,4]}); B.seg([x2,t],[x2,0],{color:'sky',dash:[4,4]}); }
+        B.point([x1,t],{color:'rose',r:6,label:'x₁ ≈ '+x1.toFixed(3),dx:-8,dy:-15,align:'right'});
+        B.handle('t',[x2,t],{color:'amber',r:7,label:'x₂ ≈ '+x2.toFixed(3),dx:8,dy:-15,drag:w=>{ST.type4_t=clamp(Math.round(w.y*20)/20,0.3,3.2);}});
+        if(ST.step>=3) OV.corner(B,0,'x₁=2⁻ᵗ, x₂=2ᵗ → x₁x₂=1','amber');
+      } else {
+        drawFunctionCurve(x=>Math.abs(2**x-k),'#34d399',2.8,[],vb.x0,vb.x1);
+        if(ST.step>=1) B.hline(k,{color:'violet',dash:[6,4],width:2});
+        const two=t>0&&t<k;
+        if(two) B.point([Math.log2(k-t),t],{color:'rose',r:6,label:'2^x₁=k−t',dx:-8,dy:-15,align:'right'});
+        B.point([Math.log2(k+t),t],{color:'sky',r:6,label:two?'2^x₂=k+t':'유일한 교점',dx:8,dy:-15});
+        B.handle('t',[0,t],{color:'amber',r:7,label:'t = '+t.toFixed(2),dx:8,dy:18,drag:w=>{ST.type4_t=clamp(Math.round(w.y*20)/20,0,Math.max(5,k+1));}});
+        if(ST.step>=2) OV.corner(B,1,two?'0 < t < k : 두 교점':'t=0 또는 t≥k : 교점 1개','violet');
+        if(ST.step>=3&&two) OV.corner(B,0,'2^(x₁+x₂)=(k−t)(k+t)=k²−t²','amber');
       }
-
-      // Horizontal Line y = t
-      drawMathLine(0, p.t, '#fbbf24', [], 2.2);
-
-      const x1 = Math.pow(2, -p.t);
-      const x2 = Math.pow(2, p.t);
-
-      if ((ST.step >= 2)) {
-        drawMathSegment(x1, p.t, x1, 0, '#fb7185', [4, 4], 1.6);
-        drawMathSegment(x2, p.t, x2, 0, '#34d399', [4, 4], 1.6);
-
-        const fracPt = mathToScreen((x1 + x2) / 2, p.t + 1.0);
-        drawCanvasFraction(ctx, '1', `x₂ (${x2.toFixed(2)})`, fracPt.x, fracPt.y, {
-          prefix: `x₁ = `,
-          suffix: ` ⟹ x₁·x₂ = 1.000`
-        });
-      }
-
-      drawMathPoint(x1, p.t, `x₁=${x1.toFixed(2)}`, '#fb7185', 6);
-      drawMathPoint(x2, p.t, `x₂=${x2.toFixed(2)} [드래그 t]`, '#fbbf24', 7.5, true, (mPos) => {
-        ST[K('t')] = Math.max(0.3, Math.min(3.2, Math.round(mPos.y * 20) / 20));
-      });
     }
 
     // --- TYPE 5: Internal/External Ratio & Similarity Projection ---
@@ -1231,13 +1190,15 @@ function solveExpLineIntersection(k, shift = 0) {
       const t = p.tVal;
 
       // Invariant yP = k^(1/(k-1)) so P(t, yP) and Q(k*t, k*yP) both lie on y = a^x and line y = mx
-      const yP = Math.pow(k, 1 / (k - 1));
+      const yP = si === 0 ? 3 : Math.pow(k, 1 / (k - 1));
       const yQ = k * yP;
       const baseA = Math.pow(yP, 1 / t);
       const slopeM = yP / t;
+      const baseB = Math.pow(yQ, 1/(k*t));
 
       // Exponential curve y = a^x & Line through origin
       drawFunctionCurve(x => Math.pow(baseA, x), '#34d399', 2.8, [], -3, k * t + 1.2);
+      if(si === 0) drawFunctionCurve(x => Math.pow(baseB,x), '#38bdf8',2.8,[],-3,k*t+1.2);
       drawMathLine(slopeM, 0, '#fbbf24', [], 2.0);
 
       // Step 1 & 2: Similar Right Triangles on x-axis
@@ -1268,28 +1229,40 @@ function solveExpLineIntersection(k, shift = 0) {
 
       if ((ST.step >= 3)) {
         const fPos = mathToScreen(k * t * 0.55, yQ * 0.85);
-        drawCanvasFraction(ctx, `a^(${(k*t).toFixed(1)})`, `a^(${t.toFixed(1)})`, fPos.x, fPos.y, {
+        drawCanvasFraction(ctx, `${si===0?"b":"a"}^(${(k*t).toFixed(1)})`, `a^(${t.toFixed(1)})`, fPos.x, fPos.y, {
           prefix: '닮음비 = ',
-          suffix: ` = ${k.toFixed(1)} ⟹ y_P = ${yP.toFixed(2)}`
+          suffix: si === 0 ? ` = ${k.toFixed(1)} (Q = kP)` : ` = ${k.toFixed(1)} ⟹ y_P ≈ ${yP.toFixed(3)}`
         });
       }
 
-      drawMathPoint(t, yP, `P(${t.toFixed(1)}, ${yP.toFixed(2)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(t, yP, ST.step>=3 ? `P(${t.toFixed(1)}, ${yP.toFixed(3)})` : 'P (좌우로 드래그)', '#fbbf24', 7.5, true, (mPos) => {
         ST[K('tVal')] = Math.max(0.5, Math.min(1.8, Math.round(mPos.x * 10) / 10));
       });
-      drawMathPoint(k * t, yQ, `Q(${(k*t).toFixed(1)}, ${yQ.toFixed(2)})`, '#38bdf8', 6.5);
+      drawMathPoint(k * t, yQ, ST.step>=3 ? `Q(${(k*t).toFixed(1)}, ${yQ.toFixed(3)})` : 'Q = kP', '#38bdf8', 6.5);
     }
 
     // --- TYPE 6: Geometric Translation Comparison (Slopes & Areas) ---
     function renderType6(ST, si) {
       const p = pv(ST, 5);
       const K = (k) => 'type6_' + k;
-      const fn = x => Math.log2(x + 1);
+      const fn = x => si === 0 ? Math.log2(x + 1) : Math.pow(2,x);
 
       drawFunctionCurve(fn, '#34d399', 2.8, [], -0.85, 7);
 
       const y1 = fn(p.x1);
       const y2 = fn(p.x2);
+
+      if (si === 1) {
+        const xm=(p.x1+p.x2)/2, ym=fn(xm), am=(y1+y2)/2;
+        B.poly([[p.x1,0],[p.x2,0],[p.x2,y2],[p.x1,y1]],{fill:'sky',fillAlpha:.12,color:'sky'});
+        B.seg([p.x1,y1],[p.x2,y2],{color:'sky',width:2.5});
+        if(ST.step>=1){ B.seg([xm,0],[xm,am],{color:'violet',dash:[4,4]}); B.point([xm,am],{color:'sky',label:'산술평균 높이',dx:10,dy:-14}); }
+        if(ST.step>=2){B.poly([[p.x1,0],[p.x2,0],[p.x2,ym],[p.x1,ym]],{fill:'amber',fillAlpha:.2,color:'amber'});B.point([xm,ym],{color:'rose',label:'기하평균 높이',dx:10,dy:16});}
+        if(ST.step>=3) OV.corner(B,0,'가로폭 같음 → 높이로 넓이 비교','amber');
+        B.handle('A',[p.x1,y1],{color:'sky',r:7,label:'A',drag:w=>{ST.type6_x1=clamp(Math.round(w.x*10)/10,.4,p.x2-.4);}});
+        B.handle('B',[p.x2,y2],{color:'rose',r:7,label:'B',drag:w=>{ST.type6_x2=clamp(Math.round(w.x*10)/10,p.x1+.4,4.5);}});
+        return;
+      }
 
       // Step 3: Trapezoid Area under secant AB
       if ((ST.step >= 3)) {
@@ -1332,10 +1305,10 @@ function solveExpLineIntersection(k, shift = 0) {
         });
       }
 
-      drawMathPoint(p.x1, y1, `A(${p.x1.toFixed(1)}, ${y1.toFixed(2)})`, '#fb7185', 7, true, (mPos) => {
+      drawMathPoint(p.x1, y1, `A(${p.x1.toFixed(2)}, ${y1.toFixed(2)})`, '#fb7185', 7, true, (mPos) => {
         ST[K('x1')] = Math.max(0.4, Math.min(p.x2 - 0.4, Math.round(mPos.x * 10) / 10));
       });
-      drawMathPoint(p.x2, y2, `B(${p.x2.toFixed(1)}, ${y2.toFixed(2)})`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(p.x2, y2, `B(${p.x2.toFixed(2)}, ${y2.toFixed(2)})`, '#fbbf24', 7.5, true, (mPos) => {
         ST[K('x2')] = Math.max(p.x1 + 0.4, Math.min(4.5, Math.round(mPos.x * 10) / 10));
       });
     }
@@ -1399,7 +1372,7 @@ function solveExpLineIntersection(k, shift = 0) {
       }
 
       // Handle on x = maxX boundary
-      drawMathPoint(maxX, fn(maxX), `k=${maxX} (총 ${totalCount}개) [드래그]`, '#fbbf24', 8, true, (mPos) => {
+      drawMathPoint(maxX, fn(maxX), `k=${maxX}${ST.step >= 3 ? ` (총 ${totalCount}개)` : ''} [드래그]`, '#fbbf24', 8, true, (mPos) => {
         ST[K('maxX')] = Math.max(1, Math.min(8, Math.round(mPos.x)));
       });
     }
@@ -1411,20 +1384,21 @@ function solveExpLineIntersection(k, shift = 0) {
       const S = p.sumT;
       const P = p.prodT;
 
-      // Quadratic f(t) = 0.25 * (t^2 - S*t + P) scaled vertically for clear viewing
-      const scaleY = 0.35;
+      // 치환한 이차함수의 실제 함숫값: f(t)=t²−St+P
+      const scaleY = 1;
       const ft = t => scaleY * (t * t - S * t + P);
 
       // Step 1: Shaded domain t > 1 (corresponding to x > 0)
       if ((ST.step >= 1)) {
-        const s1 = mathToScreen(1, 0);
+        const boundary = si === 1 ? 1 : 0;
+        const s1 = mathToScreen(boundary, 0);
         ctx.save();
         ctx.fillStyle = col('rgba(52, 211, 153, 0.08)');
         ctx.fillRect(s1.x, 0, B.W - s1.x, B.H);
         ctx.restore();
-        drawMathSegment(1, -8, 1, 8, '#fb7185', [5, 5], 2);
+        drawMathSegment(boundary, -30, boundary, 20, '#fb7185', [5, 5], 2);
         const bPt = mathToScreen(1, 3.8);
-        drawCanvasBadge(ctx, '양의 실근 경계: x > 0 ⟺ t = 2^x > 1', bPt.x, bPt.y, '#fb7185');
+        drawCanvasBadge(ctx, si===1?'양의 실근 경계: x > 0 ⟺ t = 2^x > 1':'치환의 정의역: t = 2^x > 0', bPt.x, bPt.y, '#fb7185');
       }
 
       drawFunctionCurve(ft, '#34d399', 2.8, [], -1.5, 9.5);
@@ -1439,13 +1413,13 @@ function solveExpLineIntersection(k, shift = 0) {
         if (D >= 0) {
           const t1 = (S - Math.sqrt(D)) / 2;
           const t2 = (S + Math.sqrt(D)) / 2;
-          drawMathPoint(t1, 0, `t₁=${t1.toFixed(2)}`, '#38bdf8', 6);
-          drawMathPoint(t2, 0, `t₂=${t2.toFixed(2)}`, '#38bdf8', 6);
+          if(Math.abs(D)<1e-10) drawMathPoint(t1,0,`t=${t1} (중근 하나)`,'#38bdf8',6);
+          else {drawMathPoint(t1,0,`t₁≈${t1.toFixed(3)}`,'#38bdf8',6);drawMathPoint(t2,0,`t₂≈${t2.toFixed(3)}`,'#38bdf8',6);}
         }
       }
 
       // Step 3: Product Invariant Formula Badge
-      if ((ST.step >= 3)) {
+      if (ST.step >= 3 && D > 1e-10 && S > 0 && P > 0) {
         const fPos = mathToScreen(axisT, vertexY - 1.3);
         const alphaBeta = Math.log2(P);
         drawCanvasFraction(ctx, `t₁·t₂ = ${P.toFixed(1)}`, `2^(α+β)`, fPos.x, fPos.y, {
@@ -1566,7 +1540,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `2) $f(k)=0$이면 $${Array(N - 1).fill(1).join(' + ')} = ${N - 1}$이므로 $k=${r1}, ${r2}$이다.`
       ],
       quick: [
-        `$n = 2 \\sim ${N}$ (항 $${N - 1}$개)의 합이 $${N - 1}$이 되려면 모든 항이 $1$이어야 합니다. **$f(k) = 0$이면 $n$이 짝수여도 실근이 $0$ 하나뿐**이므로 $k = ${r1}, ${r2}$입니다.`
+        `$n = 2 \\sim ${N}$ (항 $${N - 1}$개)의 합이 $${N - 1}$이 되려면 홀수 지수의 $${O}$개 항은 모두 $1$이고 짝수 지수의 $${E}$개 항은 같은 값 $h$입니다. $${O}+${E}h=${N-1}$에서 $h=1$입니다. **$f(k) = 0$이면 $n$이 짝수여도 실근이 $0$ 하나뿐**이므로 $k = ${r1}, ${r2}$입니다.`
       ]
     };
   }
@@ -1578,16 +1552,16 @@ function solveExpLineIntersection(k, shift = 0) {
     const m = dy / dx, L = dx * dx + dy * dy, [o, i] = OV.sqrtOf(L), lenTex = i === 1 ? String(o) : (o === 1 ? '' : o) + `\\sqrt{${i}}`, lenPlain = i === 1 ? String(o) : (o === 1 ? '' : o) + `√${i}`;
     return {
       orig, focus: { x: [-2.4, dx + 2.8], y: [-1.5, dy + 3.6] }, fig: { dx, dy, m, lenPlain, slope: pl(dy, dx) }, chk: { t: '2a', dx, dy, val: [Math.sqrt(L)] },
-      text: `두 곡선 $y = 2^x$과 $y = 2^{x-${dx}} + ${dy}$가 기울기가 $${m}$인 직선 $y = ${m === 1 ? '' : m}x + 1$과 만나는 두 점을 각각 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.`,
+      text: `두 곡선 $y = 2^x$과 $y = 2^{x-${dx}} + ${dy}$가 기울기가 $${m}$인 직선 $y = ${m === 1 ? '' : m}x + 1$과 만나는 교점 중 각각 $x$좌표가 가장 작은 점을 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.`,
       ans: `$\\overline{AB}=${lenTex}$`,
       std: [
-        `1) $y=2^x$과 직선 $y=${m === 1 ? '' : m}x+1$의 교점 중 $A=(0,1)$은 $2^0=1$로 확인된다. 평행이동으로 대응하는 점을 이용하므로 다른 교점의 좌표를 모두 풀 필요는 없다.`,
-        `2) 점 $B(s, 2^{s-${dx}}+${dy})$를 직선에 대입하면 $2^{s-${dx}} + ${dy} = ${m === 1 ? '' : m}s+1$이고, $t = s-${dx}$로 놓으면 $2^t = ${m === 1 ? '' : m}t + 1$이다.`,
-        `3) 이 방정식은 $A$의 $x$좌표 $t=0$을 해로 가지므로 $s=${dx}$이고 $B(${dx}, ${dy + 1})$이다. 따라서 $\\overline{AB} = \\sqrt{${dx}^2 + ${dy}^2} = ${lenTex}$이다.`
+        `1) 첫 곡선의 교점의 $x$좌표 $u$는 $2^u=${m}u+1$을 만족한다.`,
+        `2) 두 번째 곡선의 교점의 $x$좌표를 $s$라 하고 $t=s-${dx}$로 치환하면 $2^t=${m}t+1$로 같은 방정식이 된다.`,
+        `3) 두 교점 집합의 $x$좌표는 모두 $${dx}$만큼 차이 나므로 가장 작은 교점끼리도 대응한다. 세로 차이는 $${dy}$이고 $\\overline{AB}=\\sqrt{${dx}^2+${dy}^2}=${lenTex}$.`
       ],
       quick: [
         `두 곡선은 $x$축의 방향으로 $\\Delta x = ${dx}$, $y$축의 방향으로 $\\Delta y = ${dy}$만큼 평행이동한 관계이므로, 이동한 방향의 기울기는 $\\frac{${dy}}{${dx}} = ${m}$입니다.`,
-        `직선의 기울기도 $${m}$입니다. 따라서 교점의 좌표를 구하지 않아도 두 교점 $A, B$는 평행이동으로 서로 겹쳐지는 점입니다.`,
+        `직선의 기울기도 $${m}$라서 평행이동 후 같은 직선입니다. 교점들의 좌우 순서도 보존되어 가장 왼쪽 교점 $A,B$가 대응합니다. 임의로 고른 교점끼리라는 뜻은 아닙니다.`,
         `$\\overline{AB} = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{${dx}^2 + ${dy}^2} = ${lenTex}$`
       ]
     };
@@ -1608,7 +1582,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `3) 경계선 $y=x+${c1}$과 $y=x+${c2}$ 사이의 수직거리는 $\\frac{${c2 - c1}}{\\sqrt{1^2+1^2}}=${gapTex}$이다. 따라서 넓이는 $${len}\\times ${gapTex}=${S}$이다.`
       ],
       quick: [
-        `$s=y-x$로 놓으면 평행이동 $(${dx}, ${dx})$는 $s$의 값을 바꾸지 않습니다. 곡선으로 둘러싸인 부분을 평행이동하면 **평행사변형**이 되므로 곡선의 방정식으로 넓이를 직접 계산하지 않아도 됩니다.`,
+        `$s=y-x$로 놓으면 평행이동 $(${dx}, ${dx})$는 $s$의 값을 바꾸지 않습니다. 영역을 이 직선들과 평행하게 자르면 모든 단면의 길이가 $${len}$로 같습니다. 각 단면을 길이가 바뀌지 않게 나란히 옮겨 직사각형과 비교하므로 곡선의 교점을 직접 풀 필요가 없습니다.`,
         `두 평행선 사이의 거리는 ${gapTex}, 대응하는 두 점 사이의 거리는 ${len}이므로 $S=${len}\\cdot ${gapTex}=${S}$입니다.`
       ]
     };
@@ -1626,11 +1600,11 @@ function solveExpLineIntersection(k, shift = 0) {
       std: [
         `1) $y=${base}^x$과 $y=\\log_${base} x$의 그래프는 직선 $y=x$에 대하여 대칭이므로 $A(\\alpha, \\beta), B(\\beta, \\alpha)$라 놓는다 ($\\alpha < \\beta$).`,
         `2) $\\overline{AB} = \\sqrt{(\\beta-\\alpha)^2 + (\\alpha-\\beta)^2} = \\sqrt{2}(\\beta-\\alpha) = ${abTex}$에서 $\\beta - \\alpha = ${n}$.`,
-        `3) $\\beta=${base}^\\alpha$와 $\\beta-\\alpha=${n}$에서 $${base}^\\alpha-\\alpha=${n}$이다. $\\alpha=${a}$가 해이므로 $(\\alpha,\\beta)=(${a},${b2})$, $k=${k}$이다. 삼각형 넓이는 $\\frac12|${a}\\cdot${a}-${b2}\\cdot${b2}|=${OV.fr(b2 * b2 - a * a, 2)}$이다.`
+        `3) $\\beta=${base}^\\alpha$와 $\\beta-\\alpha=${n}$에서 $${base}^\\alpha-\\alpha=${n}$이다. $x=0$에서 지수곡선은 직선 $y=x+${n}$보다 높지 않고, 지수곡선이 볼록하므로 양의 교점은 하나뿐이다. $\\alpha=${a}$가 그 해이므로 $(\\alpha,\\beta)=(${a},${b2})$, $k=${k}$이다. 삼각형 넓이는 $\\frac12|${a}\\cdot${a}-${b2}\\cdot${b2}|=${OV.fr(b2 * b2 - a * a, 2)}$이다.`
       ],
       quick: [
         `기울기가 $-1$인 직선 위에서 $\\overline{AB} = d\\sqrt{2}$이면 **$x$좌표의 차 $\\Delta x = d$, $y$좌표의 차 $\\Delta y = d$**입니다. 여기서 $d=${n}$입니다.`,
-        `두 교점의 중점은 $M\\left(\\frac{k}{2}, \\frac{k}{2}\\right)$이고 $A\\left(\\frac{k-${n}}{2}, \\frac{k+${n}}{2}\\right)$가 $y=${base}^x$ 위에 있으므로 $k=${k}$입니다.`,
+        `두 교점의 중점은 $M\\left(\\frac{k}{2}, \\frac{k}{2}\\right)$이고 $A\\left(\\frac{k-${n}}{2}, \\frac{k+${n}}{2}\\right)$가 $y=${base}^x$ 위에 있으므로 $k=${k}$입니다. 제1사분면 조건으로 $\\alpha>0$을 확인합니다.`,
         `$\\overline{OM} \\perp \\overline{AB}$이므로 $\\triangle OAB = \\frac{1}{2} \\times \\overline{OM} \\times \\overline{AB} = \\frac{k}{2} \\times d = ${OV.fr(k * n, 2)}$입니다.`
       ]
     };
@@ -1649,7 +1623,7 @@ function solveExpLineIntersection(k, shift = 0) {
       ],
       quick: [
         `두 곡선을 $x$축의 방향으로 $${s}$, $y$축의 방향으로 $${s}$만큼 똑같이 평행이동했으므로 두 곡선은 여전히 직선 $y=x$에 대하여 대칭입니다.`,
-        `대칭인 두 교점의 중점은 직선 $y=x$ 위에 있으므로, 직선 $y=-x+${k}$와 $y=x$의 교점 $M(${OV.fr(k, 2)},${OV.fr(k, 2)})$가 중점입니다. 실제로 $A(${a},${b2})$는 $${b2}=2^{${a}-${s}}+${s}$를 만족시킵니다.`
+        `대칭인 두 교점의 중점은 직선 $y=x$ 위에 있으므로, 직선 $y=-x+${k}$와 $y=x$의 교점 $M(${OV.fr(k, 2)},${OV.fr(k, 2)})$가 중점입니다. 실제로 $A(${a},${b2})$는 $${b2}=2^{${a}-${s}}+${s}$를 만족시킵니다. 따라서 $B(${b2},${a})$이고 $\\overline{AB}=(${b2}-${a})\\sqrt2=${abTex}$입니다.`
       ]
     };
   }
@@ -1669,7 +1643,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `3) $x_1 = ${base}^{-t}, x_2 = ${base}^{t}$이므로 $x_2 - x_1 = ${base}^t - ${base}^{-t} = ${diff}$이고, $t=${t}$이다.`
       ],
       quick: [
-        `$|\\log_a x|=t$의 두 근은 $x=a^{-t}, a^{t}$이므로 **곱은 항상 $1$**입니다. ($0<x<1$ 부분을 $x=1$ 기준으로 접어 올린 그래프)`,
+        `$|\\log_a x|=t$의 두 근은 $x=a^{-t}, a^{t}$이므로 **곱은 항상 $1$**입니다. ($0<x<1$ 부분을 $x$축에 대하여 접어 올린 그래프)`,
         `$x_2 - x_1 = ${base}^t - ${base}^{-t} = ${diff}$에서 $${base}^t = ${dn}$이므로 $t=${t}$입니다.`
       ]
     };
@@ -1687,6 +1661,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `3) $t=${t0}$일 때 $2^{x_1} = ${k - t0}$, $2^{x_2} = ${k + t0}$이므로 $2^{x_1+x_2} = ${P}$, $x_1+x_2 = ${lgTex}$이다.`
       ],
       quick: [
+        `서로 다른 두 교점은 $0<t<${k}$에서만 생기므로 자연수 높이의 합은 $\\frac{${k}(${k}-1)}{2}=${k*(k-1)/2}$입니다.`,
         `$a^{x_1} = k - t$이고 $a^{x_2} = k + t$이므로 두 식을 곱하면 **$a^{x_1 + x_2} = k^2 - t^2$**입니다.`,
         `$2^{x_1+x_2} = ${k}^2 - ${t0}^2 = ${P}$이므로 $x_1+x_2 = ${lgTex}$입니다.`
       ]
@@ -1752,7 +1727,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `3) $x_1=${x1}, x_2=${x2}$이면 $y_1=${y1}, y_2=${y2}$이므로 $P=${pTex}$, $R=${rTex}$이고 $\\frac{P}{R}=${pr}$이다.`
       ],
       quick: [
-        `**원점·$A$·$B$를 잇는 직선의 기울기** $P$, $Q$, $R$ 사이의 관계입니다. 곡선이 위로 볼록하므로 $OA$의 기울기 $P$가 가장 크고 $AB$의 기울기 $R$이 가장 작습니다. ($Q$는 $P$와 $R$ 사이)`,
+        `**원점·$A$·$B$를 잇는 직선의 기울기** $P$, $Q$, $R$ 사이의 관계입니다. A가 선분 OB보다 위라서 $P>Q$입니다. 또 $Q=\\frac{x_1}{x_2}P+\\frac{x_2-x_1}{x_2}R$은 양의 가중평균이므로 $Q>R$입니다.`,
         `$\\frac{P}{R} = \\frac{${pTex}}{${rTex}} = ${pr}$입니다.`
       ]
     };
@@ -1770,7 +1745,7 @@ function solveExpLineIntersection(k, shift = 0) {
         `3) 중점 직사각형 넓이는 $S_{\\text{mid}} = (${x2} - ${x1 < 0 ? `(${x1})` : x1})\\cdot 2^{${xm}} = ${OV.fr(Math.round(mid * 4), 4)}$이다. 차는 $${OV.fr(Math.round(tr * 4), 4)} - ${OV.fr(Math.round(mid * 4), 4)} = ${OV.fr(Math.round(d * 4), 4)}$이다.`
       ],
       quick: [
-        `아래로 볼록한 곡선에서는 **현(사다리꼴)이 곡선보다 위**에 있으므로 사다리꼴이 중점 높이의 직사각형보다 항상 큽니다. ($S_{\\text{trap}}>S_{\\text{mid}}$)`,
+        `두 도형의 가로폭이 같으므로 높이만 비교합니다. 현의 중점 높이 $(y_1+y_2)/2$가 곡선의 중점 높이 $\\sqrt{y_1y_2}$보다 크므로 $S_{\\text{trap}}>S_{\\text{mid}}$입니다.`,
         `$x_2 - x_1 = ${x2 - x1}$이므로 $S_{\\text{trap}} - S_{\\text{mid}} = ${x2 - x1}\\left(\\frac{${y1} + ${y2}}{2} - ${ym}\\right) = ${OV.fr(Math.round(d * 4), 4)}$입니다.`
       ]
     };
@@ -1899,9 +1874,14 @@ function solveExpLineIntersection(k, shift = 0) {
     OV.txt(b, [vb.x0 + 0.2, dx + 0.9], `y = 2^(x−${dx}) + ${dx}`, 'sky', { align: 'left', size: 12.5 });
     if (st >= 1) {
       [xa, xb].forEach((x) => { b.seg(P(x), Q(x), { color: 'violet', width: 2.6 }); b.point(P(x), { color: 'green', r: 5 }); b.point(Q(x), { color: 'sky', r: 5 }); });
-      OV.corner(b, 2, `곡선을 (${dx}, ${dx})만큼 평행이동 : 대응하는 점끼리 이은 선분`, 'violet');
+      OV.corner(b, 2, `대응점의 이동벡터 (${dx}, ${dx})`, 'violet');
     }
-    if (st >= 2) { b.poly([P(xa), P(xb), Q(xb), Q(xa)], { color: 'rose', width: 2, dash: [5, 4] }); OV.corner(b, 1, `평행사변형 : 평행이동 거리 × 두 직선 사이 거리 ${v.gapPlain}`, 'rose'); }
+    if (st >= 2) {
+      [0.25, 0.5, 0.75].forEach((r) => { const x=solveS(c1+(c2-c1)*r); b.seg(P(x), Q(x), {color:'rose',width:2}); });
+      const A=P(xa), h=(c2-c1)/2, H=[A[0]-h,A[1]+h];
+      b.seg(A,H,{color:'violet',width:2.6}); b.right(A,H,Q(xa),{color:'violet',size:10});
+      OV.corner(b,1,`모든 평행 단면 길이 ${dx}√2 × 수직 간격 ${v.gapPlain}`,'rose');
+    }
     if (st >= 3) OV.corner(b, 0, `S = ${v.S}`, 'amber');
   };
   PF[2] = (b, v, st) => { // 유형 3: 역함수 대칭
@@ -1912,22 +1892,24 @@ function solveExpLineIntersection(k, shift = 0) {
     OV.txt(b, [s + lgb(yy - s), yy], s ? `y = ${B0}^(x−${s}) + ${s}` : `y = ${B0}ˣ`, 'green', { align: 'right', dx: -9, size: 12.5 });
     const vb = b.viewBox(), xr = vb.x1 - 0.25;
     OV.txt(b, [xr, s + lgb(xr - s)], s ? `y = log${sub}(x−${s}) + ${s}` : `y = log${sub} x`, 'sky', { align: 'right', dy: 18, size: 12.5 });
-    const showAB = kind === 'B' || st >= 3;
-    if (st >= 1) b.line([0, 0], 1, { color: 'violet', width: 1.8, dash: [6, 4] });
-    if (kind === 'B' && st < 1) { /* 문제: 직선과 A, B는 주어짐 */ }
+    const showAB = kind === 'B' || st >= 1;
+    if (st >= 1) {
+      b.line([0, 0], 1, { color: 'violet', width: 1.8, dash: [6, 4] });
+      b.point([k / 2, k / 2], { color: 'amber', r: 6, label: 'M', dx: 10, dy: 12, align: 'left' });
+    }
     if (showAB) {
       b.line([0, k], -1, { color: 'amber', width: 2.2 });
-      { const xl = Math.min(vb.x1 - 0.6, k - vb.y0 - 1.0); OV.txt(b, [xl, k - xl], `y = −x + ${k}`, 'amber', { align: 'right', dx: -8, dy: 10, size: 12.5 }); }
+      { const xl = Math.min(vb.x1 - 0.6, k - vb.y0 - 1.0); OV.txt(b, [xl, k - xl], `y = −x + ${kind === 'A' && st < 3 ? 'k' : k}`, 'amber', { align: 'right', dx: -8, dy: 10, size: 12.5 }); }
       b.point([a, bb], { color: 'green', r: 6.5, label: 'A', dx: -9, dy: -9, align: 'right' });
       b.point([bb, a], { color: 'sky', r: 6.5, label: 'B', dx: 9, dy: -9, align: 'left' });
     }
-    if (kind === 'B' && st >= 2) {
+    if (st >= 2) {
       b.seg([a, bb], [bb, bb], { color: 'rose', width: 2.4, dash: [5, 4] }); b.seg([bb, bb], [bb, a], { color: 'rose', width: 2.4, dash: [5, 4] });
+      b.right([bb, bb], [a, bb], [bb, a], { color: 'rose', size: 10 });
       OV.txt(b, [(a + bb) / 2, bb], `${bb - a}`, 'rose', { dy: -12, size: 12.5 }); OV.txt(b, [bb, (a + bb) / 2], `${bb - a}`, 'rose', { align: 'left', dx: 8, size: 12.5 });
     }
     if (kind === 'A' && st >= 2) OV.corner(b, 0, `AB = ${bb - a === 1 ? '' : bb - a}√2 → Δx = Δy = ${bb - a}`, 'rose');
     if (st >= 3) {
-      b.point([k / 2, k / 2], { color: 'amber', r: 6, label: 'M', dx: 10, dy: 12, align: 'left' });
       if (kind === 'A') { b.poly([[0, 0], [a, bb], [bb, a]], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 1.6 }); OV.corner(b, 1, `A(${a}, ${bb}), B(${bb}, ${a}), k = ${k}`, 'amber'); }
       else OV.corner(b, 0, `AB = ${bb - a === 1 ? '' : bb - a}√2`, 'amber');
     }
@@ -1989,6 +1971,8 @@ function solveExpLineIntersection(k, shift = 0) {
       b.point([x1, y1], { color: 'sky', r: 6.5, label: 'A', dx: 0, dy: -15 }); b.point([x2, y2], { color: 'rose', r: 6.5, label: 'B', dx: 0, dy: -15 });
       if (st >= 1) { b.line([x1, y1], [x2, y2], { color: 'amber', width: 2.2 }); }
       if (st >= 2) { b.line([0, 0], [x1, y1], { color: 'sky', width: 1.8, dash: [5, 4] }); b.line([0, 0], [x2, y2], { color: 'rose', width: 1.8, dash: [5, 4] }); }
+      if(st>=1){const C=[x1,y2*x1/x2];b.seg(C,[x1,y1],{color:'violet',width:3});b.point(C,{color:'violet',r:4,label:'C ∈ OB',dx:8,dy:16});}
+      if(st>=2) OV.corner(b,1,'x₂Q=x₁P+(x₂−x₁)R','violet');
       if (st >= 3) OV.corner(b, 0, `P = ${v.pS} > Q = ${v.qS} > R = ${v.rS}`, 'amber');
       return;
     }
@@ -1997,21 +1981,22 @@ function solveExpLineIntersection(k, shift = 0) {
     OV.txt(b, [Math.log2(y2 + 1.3), y2 + 1.3], 'y = 2ˣ', 'green', { align: 'left', dx: 9, size: 12.5 });
     if (st >= 1) { b.poly([[x1, 0], [x2, 0], [x2, y2], [x1, y1]], { fill: 'sky', fillAlpha: 0.14, color: 'sky', width: 1.6 }); b.seg([x1, y1], [x2, y2], { color: 'amber', width: 2.4 }); }
     if (st >= 2) { b.seg([xm, 0], [xm, ym], { color: 'rose', width: 1.8, dash: [4, 3] }); b.point([xm, ym], { color: 'rose', r: 5.5 }); b.seg([x1, ym], [x2, ym], { color: 'rose', width: 2, dash: [5, 4] }); }
+    if(st>=2){const am=(y1+y2)/2;b.point([xm,am],{color:'sky',r:5,label:'산술평균',dx:10,dy:-15});b.seg([xm,ym],[xm,am],{color:'violet',width:3});OV.corner(b,2,'높이 비교: (y₁+y₂)/2 > √(y₁y₂)','violet');}
     if (st >= 3) { b.poly([[x1, 0], [x2, 0], [x2, ym], [x1, ym]], { fill: 'amber', fillAlpha: 0.2, color: 'amber', width: 1.8 }); OV.corner(b, 1, `S_trap = ${v.trS}`, 'sky'); OV.corner(b, 0, `S_mid = ${v.midS}`, 'amber'); }
     b.point([x1, y1], { color: 'sky', r: 6.5, label: `A(${x1}, ${y1 === 1 ? 1 : y1 < 1 ? '1/2' : y1})`, dx: -9, dy: -9, align: 'right' });
     b.point([x2, y2], { color: 'rose', r: 6.5, label: `B(${x2}, ${y2})`, dx: -9, dy: -9, align: 'right' });
   };
   PF[6] = (b, v, st) => { // 유형 7: log2 x + 1 아래의 격자점
-    const { k, show } = v, f = (x) => Math.log2(x) + 1, cs = OV.range(1, k).map((x) => Math.floor(Math.log2(x)) + 1);
+    const { k, show } = v, limit = show || st >= 3 ? k : 8, f = (x) => Math.log2(x) + 1, cs = OV.range(1, limit).map((x) => Math.floor(Math.log2(x)) + 1);
     b.plot(f, { color: 'green', width: 2.8, glow: true, from: 1, to: show ? k + 0.6 : 11 });
     b.stext(b.insets.left + 10, b.insets.top + 14, 'y = log₂x + 1', { color: 'green', size: 12.5, weight: 800, align: 'left', baseline: 'middle' });
     if (show) { b.seg([k, -0.2], [k, f(k) + 0.9], { color: 'rose', width: 2, dash: [5, 4] }); OV.txt(b, [k, -0.45], `x = ${k}`, 'rose', { size: 12.5 }); }
     if (st >= 1) {
-      if (!show) { b.seg([k, -0.2], [k, f(k) + 0.9], { color: 'rose', width: 2, dash: [5, 4] }); OV.txt(b, [k, -0.45], 'x = k', 'rose', { size: 12.5 }); }
-      for (let x = 1; x <= k; x++) for (let y = 1; y <= cs[x - 1]; y++) b.point([x, y], { color: 'amber', r: 4.8 });
+      if (!show && st >= 3) { b.seg([k, -0.2], [k, f(k) + 0.9], { color: 'rose', width: 2, dash: [5, 4] }); OV.txt(b, [k, -0.45], 'x = k', 'rose', { size: 12.5 }); }
+      for (let x = 1; x <= limit; x++) for (let y = 1; y <= cs[x - 1]; y++) b.point([x, y], { color: 'amber', r: 4.8 });
     }
-    if (st >= 2) for (let x = 1; x <= k; x++) OV.txt(b, [x, cs[x - 1] + 0.7], String(cs[x - 1]), 'sky', { size: 12.5 });
-    if (st >= 3) OV.corner(b, 0, `${cs.join(' + ')} = ${v.N}`, 'amber');
+    if (st >= 2) for (let x = 1; x <= limit; x++) OV.txt(b, [x, cs[x - 1] + 0.7], String(cs[x - 1]), 'sky', { size: 12.5 });
+    if (st >= 3) OV.corner(b, 0, `${cs.join(' + ')} = ${v.N}${show?'':', k='+k}`, 'amber');
   };
   PF[7] = (b, v, st) => { // 유형 8: y = 4ˣ − s·2ˣ + p
     const { s, p, t1, t2, a1, a2 } = v;
@@ -2029,12 +2014,49 @@ function solveExpLineIntersection(k, shift = 0) {
   window.__OV = { VARS };
   const VARY = VARS.map((row) => row.map((pool) => OV.varier(pool)));
   function drawVar(b, s, m, j, lab) {
-    if (!lab || lab.tab === 'explore') { OV.autoFocus(b, 'E', FOCUS[m]); return drawScene(b, s, m, j); }
+    if (!lab || lab.tab === 'explore') { const box = m === 0 ? { x: [-8.5, 11.5], y: [-12, 32] } : m === 7 ? { x: [-1.5, 10], y: [-22, 22] } : m === 5 && j === 1 ? { x: [-1, 6], y: [-2, 25] } : FOCUS[m]; OV.autoFocus(b, 'E' + m + j, box); return drawScene(b, s, m, j); }
     const cur = VARY[m][j].cur(), idx = VARS[m][j].indexOf(cur), prob = lab.tab === 'problem', st = prob ? 0 : s.step;
     OV.autoFocus(b, `${lab.scene.id}|${idx}`, cur.focus);
     if (s.grid) b.grid({ step: OV.nice(34 / b.k) });
     b.axes({ tickStep: OV.nice(46 / b.k) });
     PF[m](b, cur.fig, st);
+  }
+
+  function teachingSteps(m,j,v){
+    const f=v.fig;
+    if(m===1) return j===0 ? [
+      '두 지수곡선의 평행이동 방향과 직선의 방향을 비교합니다. 직선이 같은 자리로 옮겨지므로 가장 왼쪽 교점끼리 대응합니다.',
+      `대응점의 가로 차이 $${f.dx}$, 세로 차이 $${f.dy}$를 직각삼각형의 두 변으로 봅니다. 다른 교점의 좌표는 필요 없습니다.`,
+      `피타고라스 정리로 $AB=\\sqrt{${f.dx}^2+${f.dy}^2}=${v.ans.replace(/^\$|\$$/g,'').split('=').pop()}$.`
+    ] : [
+      `이동벡터 $(${f.dx},${f.dx})$와 평행한 직선으로 영역을 자릅니다. 이 이동은 $y-x$를 바꾸지 않습니다.`,
+      `빨간 단면은 모두 길이 $${f.dx}\\sqrt2$입니다. 수직 간격은 $(${f.c2}-${f.c1})/\\sqrt2$이므로 같은 단면을 가진 직사각형과 넓이가 같습니다.`,
+      `따라서 $S=${f.dx}(${f.c2}-${f.c1})=${f.S}$. 곡선과 직선을 연립하거나 적분할 필요가 없습니다.`
+    ];
+    if(m===3) return j===0 ? [
+      'x축 아래의 로그 그래프를 x축에 대하여 접습니다. 왼쪽은 −log, 오른쪽은 log이고 x=1은 꺾이는 점입니다.',
+      `수평선 높이가 $t>0$이면 $x_1=${f.base}^{-t},x_2=${f.base}^{t}$라서 $x_1x_2=1$. 곱을 이용해 두 좌표를 각각 구하는 계산을 줄입니다.`,
+      `차는 $${f.base}^{t}-${f.base}^{-t}$이며 $t>0$에서 증가합니다. 주어진 차를 대입하면 $t=${f.t}$이고 곱은 1입니다.`
+    ] : [
+      `접혀 올라간 점근선 $y=${f.k}$을 먼저 봅니다. $t=0$은 꼭짓점 1개, $0<t<${f.k}$는 2개, $t\\ge${f.k}$는 1개입니다.`,
+      `높이 $t=${f.t}$에서 $2^{x_1}=${f.k}-${f.t}$, $2^{x_2}=${f.k}+${f.t}$입니다. 로그로 좌표를 구하기 전에 두 식을 곱합니다.`,
+      `곱은 $${f.k*f.k-f.t*f.t}$이고 $x_1+x_2=\\log_2 ${f.k*f.k-f.t*f.t}$. 두 교점이 되는 자연수 높이의 합은 $${f.k*(f.k-1)/2}$.`
+    ];
+    if(m===5) return j===0 ? [
+      '점 A는 선분 OB의 같은 x좌표 점 C보다 위에 있습니다. 따라서 OA의 기울기 P가 OB의 기울기 Q보다 큽니다.',
+      '$y_2=x_1P+(x_2-x_1)R$을 $x_2$로 나누면 $Q=\\frac{x_1}{x_2}P+\\frac{x_2-x_1}{x_2}R$. 양의 가중평균이므로 Q는 P와 R 사이입니다.',
+      `그러므로 $P>Q>R$. 주어진 좌표를 대입하면 $P=${f.pS},Q=${f.qS},R=${f.rS}$이고 요구한 비도 이 정확값으로 계산합니다.`
+    ] : [
+      '사다리꼴과 중점 높이 직사각형은 가로폭이 같습니다. 넓이를 전개하기 전에 두 높이를 비교합니다.',
+      '현의 중점 높이는 $(y_1+y_2)/2$, 곡선 위 중점의 높이는 $\\sqrt{y_1y_2}$. 두 높이 차는 $(\\sqrt{y_2}-\\sqrt{y_1})^2/2>0$입니다.',
+      `공통 가로폭을 곱하면 $S_{\\rm trap}=${f.trS},S_{\\rm mid}=${f.midS}$. 넓이 차는 두 값의 차이며 원래 조건에서 두 끝점은 서로 다릅니다.`
+    ];
+    if(m===7) return [
+      '원래 지수방정식의 x절편을 α, β라 합니다. 한 교점이 치환한 방정식의 한 근에 대응하는지 정의역부터 확인합니다.',
+      '$t=2^x>0$은 일대일 대응입니다. 그림의 파란 높이는 $t_1=2^\\alpha,t_2=2^\\beta$이며, 양의 x를 요구하면 $t_1,t_2>1$까지 확인합니다.',
+      `근과 계수의 관계 $t_1+t_2=${f.s},t_1t_2=${f.p}$를 사용합니다. $2^{\\alpha+\\beta}=t_1t_2$이므로 각각의 로그를 구하지 않아도 됩니다.`
+    ];
+    return KILLER_MODES[m].stepDescs.map((d,i)=>KILLER_MODES[m].stepLabels[i]+': '+d);
   }
 
   const curOf = (m, j) => VARY[m][j].cur();
@@ -2045,34 +2067,55 @@ function solveExpLineIntersection(k, shift = 0) {
       id: 't' + (m + 1) + 'ab'[j],
       title: sc.chip,
       short: '문제 ' + 'AB'[j],
-      question: QUESTIONS[m],
-      guide: GUIDES[m],
-      startStep: 2,
+      question: j === 1 && m === 3
+        ? 'y = |2ˣ − k|를 수평선 y = t로 자르면 교점 수는 언제 바뀔까? 두 교점의 x좌표의 합은 어떤 곱으로 구할 수 있을까?'
+        : j === 1 && m === 5
+          ? 'y = 2ˣ에서 두 x좌표의 중간을 보면 현과 곡선 중 어느 쪽이 더 높을까? 같은 가로폭을 가진 사다리꼴과 직사각형의 넓이는 어떻게 비교할까?'
+          : QUESTIONS[m],
+      guide: j === 1 && m === 5
+        ? '두 점 A, B를 좌우로 끌고 보조선을 열어 보세요. 가로폭이 같은 사다리꼴과 직사각형의 넓이는 현의 중점 높이와 곡선 위의 높이로 비교할 수 있습니다.'
+        : GUIDES[m],
+      startStep: 0,
       notesTitle: '오답 함정 주의보',
       focus: FOCUS[m],
       enter: (s) => { Object.assign(s, mapP(m, sc.params)); s.twinText = null; s.twinSnap = null; if (window.lab && window.lab.board) window.lab.board.__ovKey = null; },
       controls: (SLIDERS[md.id] || []).map((d) => pk(m, d.key)),
+      presets: (s) => m===3&&j===1 ? [
+        {group:'교점 개수의 경계',label:'t=0 (꼭짓점)',apply:s=>{s.type4_t=0;}},
+        {group:'교점 개수의 경계',label:'0<t<k',apply:s=>{s.type4_t=s.type4_kAsym/2;}},
+        {group:'교점 개수의 경계',label:'t=k (점근선)',apply:s=>{s.type4_t=s.type4_kAsym;}},
+        {group:'교점 개수의 경계',label:'t>k',apply:s=>{s.type4_t=s.type4_kAsym+.5;}}
+      ] : m===7 ? [
+        {group:'근의 경계',label:'D<0',apply:s=>{s.type8_sumT=6;s.type8_prodT=12;}},
+        {group:'근의 경계',label:'D=0',apply:s=>{s.type8_sumT=6;s.type8_prodT=9;}},
+        {group:'근의 경계',label:'t₁=1 (x=0)',apply:s=>{s.type8_sumT=5;s.type8_prodT=4;}},
+        {group:'근의 경계',label:'두 양의 x근',apply:s=>{s.type8_sumT=5;s.type8_prodT=6;}}
+      ] : [],
       actions: () => [
         ...MUTATORS.map((a) => ({ id: a.id, icon: a.icon, label: a.label, on: (s) => !!s[a.key], run: (s) => { s[a.key] = !s[a.key]; } })),
         { id: 'twin', icon: 'wand', label: '숫자 바꿔 보기', primary: true, run: (s) => { twin(s, m); VARY[m][j].next(); } }
       ],
-      steps: md.stepDescs.map((d, i) => stepText(md.stepLabels[i] + ': ' + d.replace(/^Step\s*\d+\s*:\s*/, ''))),
+      steps: () => teachingSteps(m,j,curOf(m,j)).map(stepText),
       vary: VARY[m][j],
-      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(curOf(m, j).orig ? sc.problem : curOf(m, j).text)}</div>`,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(curOf(m, j).text)}</div>`,
       problem: {
         tag: sc.source,
-        text: () => rich(curOf(m, j).orig ? sc.problem : curOf(m, j).text) + OV.newBtn,
-        answer: () => safe(curOf(m, j).orig ? ANSWERS[m][j] : curOf(m, j).ans)
+        text: () => rich(curOf(m, j).text) + OV.newBtn,
+        answer: () => safe(curOf(m, j).ans)
       },
       solution: {
         standardTitle: sc.textbookTitle, standardTag: '교과서 풀이',
         quickTitle: sc.secretTitle, quickTag: '10초 컷',
-        standard: () => ({ steps: lines(curOf(m, j).orig ? sc.textbookSteps : curOf(m, j).std) }),
-        quick: () => ({ steps: lines(curOf(m, j).orig ? sc.secretSteps : curOf(m, j).quick) })
+        standard: () => ({ steps: lines(curOf(m, j).std) }),
+        quick: () => ({ steps: lines(curOf(m, j).quick) })
       },
       view: (s, lab) => {
         if (lab && lab.tab !== 'explore') return { notes: rich(md.trapWarning) };
-        const { formula, cards } = hudOf(s, m);
+        if(s.step<3 && !s.revealed) return {
+          readouts: (SLIDERS[md.id]||[]).map((d,i)=>({label:d.label,value:String(s[pk(m,d.key)]),color:READ_COLORS[i%4]})),
+          notes: s.step===0 ? '현재 조작값과 기준 그래프를 비교해 보세요. 보조선을 한 단계씩 열면 관계식과 결론이 이어집니다.' : rich(md.trapWarning)
+        };
+        const { formula, cards } = hudOf(s, m, j);
         return {
           formula: safe(formula),
           readouts: cards.map((c, i) => ({ label: c.title, value: String(c.val), note: c.sub, color: READ_COLORS[i % 4] })),
@@ -2102,7 +2145,7 @@ function solveExpLineIntersection(k, shift = 0) {
   PL.nice = (raw) => { const p = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
   PL.frame = (b, s) => { if (s.grid) b.grid({ step: PL.nice(34 / b.k) }); b.axes({ tickStep: PL.nice(46 / b.k) }); };
   PL.mode = (lab) => (lab && lab.tab === 'problem' ? 'problem' : lab && lab.tab === 'review' ? 'review' : 'explore');
-  PL.stp = (mode, s, i) => (mode === 'explore' ? true : mode === 'review' ? s.step >= i : false);
+  PL.stp = (mode, s, i) => mode !== 'problem' && s.step >= i;
   PL.f2 = (v, d = 2) => { const r = Math.round(v * Math.pow(10, d)) / Math.pow(10, d); return String(Object.is(r, -0) ? 0 : r); };
   PL.EPS = 1e-9;
   // 새 문제 고르기: 이전과 다른 것을 무작위로 (첫 문제는 목록의 첫 항목)
@@ -2242,7 +2285,7 @@ function solveExpLineIntersection(k, shift = 0) {
     const mode = PL.mode(lab), st = (i) => PL.stp(mode, s, i), prob = mode === 'problem';
     PL.frame(b, s);
     const P = cfg.pieces;
-    if (mode === 'explore' || (mode === 'review' && st(1))) { // 점근선은 풀이의 첫 단계(또는 탐구)에서 드러냅니다
+    if (st(1)) { // 점근선은 풀이의 첫 단계(또는 탐구)에서 드러냅니다
       (cfg.asym || []).forEach((y) => b.hline(y, { color: 'violet', alpha: 0.75, width: 1.6, dash: [7, 5] }));
       (cfg.asymLabels || []).forEach((l) => b.text([l.x, l.y], l.text, { color: 'violet', size: 12.5, weight: 800, align: 'left', baseline: 'middle', dy: l.dy || 0 }));
     }
@@ -2251,7 +2294,7 @@ function solveExpLineIntersection(k, shift = 0) {
     if (prob) return;
     if (mode === 'review' && st(1)) (cfg.endLabels || []).forEach((l) => b.text([l.x, l.y], l.text, { color: l.color || 'rose', size: 13, weight: 800, align: l.align || 'center', baseline: 'middle', dx: l.dx || 0, dy: l.dy || 0 }));
     if (mode === 'review' && st(2) && !st(3)) PL.critLines(b, P, cfg);
-    if (mode === 'explore' || st(3)) PL.stair(b, P, { XG: cfg.XG, U: cfg.U, gmax: cfg.gmax, t: mode === 'explore' ? s[cfg.tKey] : null, hi: st(4) ? cfg.hi : null });
+    if (st(3)) PL.stair(b, P, { XG: cfg.XG, U: cfg.U, gmax: cfg.gmax, t: mode === 'explore' ? s[cfg.tKey] : null, hi: st(4) ? cfg.hi : null });
     if (mode === 'explore') {
       const t = s[cfg.tKey];
       b.hline(t, { color: 'amber', width: 2.6 });
@@ -2281,7 +2324,9 @@ function solveExpLineIntersection(k, shift = 0) {
         quick: () => ({ steps: rich(S.quick(cur().v, cur().ask)), highlight: S.highlight })
       },
       view: (s, lab) => {
+        if ((lab && lab.tab==='problem') || s.step===0) return {notes:'수평선을 움직여 곡선과 만나는 위치를 관찰하세요. 끝점과 점근선을 차례로 확인합니다.'};
         if (lab && lab.tab !== 'explore') return { formula: rich(S.formula), notes: rich(S.notes) };
+        if(s.step<3) return {formula:rich(S.formula),notes:rich(S.notes)};
         const P = S.explore(s), t = s[S.tKey], g = PL.g(P, t), cr = PL.crit(P);
         const on = cr.find((c) => Math.abs(c - t) < 0.026);
         const xs = P.filter((p) => PL.has(p, t)).map((p) => PL.f2(PL.root(p, t)));
@@ -2359,8 +2404,8 @@ function solveExpLineIntersection(k, shift = 0) {
       return `① $x\\lt ${v.c}$ 에서 $y=2^{${PL.xs(v.a)}}$ 은 증가하고 값의 범위는 $0\\lt y\\lt ${L}$ 입니다. $x\\ge ${v.c}$ 에서 $y=${v.q}-2^{${PL.xs(v.b)}}$ 은 감소하고 $y\\le ${R}$ 입니다.<br/>② 수평선 $y=t$ 는 각 조각과 많아야 한 번 만나므로 $g(t)$ 는 ${PL.rangesLine(P)}.<br/>③ ${ask === 'disc' ? `값이 바뀌는 곳은 $t=${PL.crit(P).map((c) => PL.f2(c)).join(',\\ ')}$ 이므로 합은 $${ans9A(v, ask)}$.` : `$g(t)=2$ 인 정수 $t$ 는 $${PL.ints(P, 2).join(',\\ ')}$ 이므로 $${ans9A(v, ask)}$개.`}`;
     },
     quick: (v, ask) => {
-      const P = pieces9A(v), { L, R } = lv9A(v);
-      return `곡선이 끝나는 점(○·●)과 점근선의 높이 $0,\\ ${Math.min(L, R)},\\ ${Math.max(L, R)}$ 가 곧 $g$ 가 바뀌는 높이입니다. ○ 인 ${L} 은 그 높이에서 제외, ● 인 ${R} 은 포함이므로 ${R < L ? `$t=${R}$ 까지는 두 점, $${R}\\lt t\\lt ${L}$ 는 한 점, $t\\ge ${L}$ 는 없음` : `$t=${L}$ 에서는 ○ 때문에 한 점만`} 입니다. ${ask === 'disc' ? `바뀌는 높이를 모두 더하면 $${ans9A(v, ask)}$.` : `$g=2$ 인 구간만 골라 정수를 세면 $${ans9A(v, ask)}$개.`}`;
+      const P=pieces9A(v), {L,R}=lv9A(v);
+      return `각 조각은 수평선과 많아야 한 번 만납니다. 왼쪽은 $0<t<${L}$, 오른쪽은 $t\\le ${R}$일 때 각각 1을 더합니다. 따라서 두 점이 되려면 두 조건을 동시에 만족해야 합니다. ${PL.rangesLine(P)}. ${ask==='disc'?`실제로 개수가 변하는 높이의 합은 $${ans9A(v,ask)}$.`:`정수 높이를 세면 $${ans9A(v,ask)}$개.`}`;
     },
     highlight: '○ 인 높이는 세지 않고 ● 인 높이는 셉니다. 구간의 끝 t 값은 따로 확인하세요.',
     formula: '<b>수평선 y=t 와 곡선의 교점 개수 g(t)</b><br>곡선을 한 방향으로만 움직이는 조각으로 나눈 뒤, 조각마다 \'높이 t 가 치역에 들어 있는가\'만 확인하면 됩니다.<br>개수가 바뀌는 높이 = 조각의 <b>끝점·꼭짓점·점근선</b>의 높이. 끝점이 ○ 이면 그 높이는 제외, ● 이면 포함입니다.',
@@ -2388,7 +2433,7 @@ function solveExpLineIntersection(k, shift = 0) {
   const finalLine9B = (v, ask) => { const P = pieces9B(v); return ask === 'disc' ? `$g$ 가 바뀌는 높이 $t=${PL.crit(P).map((c) => PL.f2(c)).join(',\\ ')}$ 의 합은 $${ans9B(v, ask)}$.` : ask === 'cnt4' ? `$g(t)=4$ 인 구간 $0\\lt t\\lt ${Math.min(v.b, v.fam === 'exp' ? v.a - v.b : 99)}$ 에서 정수 $t=${PL.ints(P, 4).join(',\\ ')}$ → ${ans9B(v, ask)}개.` : `$g(1)+g(2)+g(3)+g(4)=${[1, 2, 3, 4].map((t) => PL.g(P, t)).join('+')}=${ans9B(v, ask)}$.`; };
   const S9B = {
     id: 't9b', title: '문제 B (절댓값을 두 번 쓴 함수 — W 모양 g(t))', short: '절댓값 겹쳐 쓰기',
-    question: '절댓값을 두 번 씌운 함수 f(x)=| |2ˣ − 3| − b | 는 W 모양이다. 수평선을 올리면 개수는 0 → 2 → 4 → 3 … 로 어떻게 바뀔까?',
+    question: '절댓값을 두 번 씌운 함수 f(x)=| |2ˣ − 3| − b | 는 W 모양이다. 수평선을 올리면 교점의 개수는 어디에서 바뀔까? 봉우리와 점근선의 높이 순서가 바뀌면 어떻게 될까?',
     guide: '금색 점을 위아래로 끌어 <b>y = t</b>를 움직이세요. 막대로 <b>b</b>를 바꾸면 꼭짓점의 높이 <b>b</b>와 점근선의 높이 <b>3−b</b>의 크기 순서가 바뀌어 계단 모양이 달라집니다.',
     tKey: 'p9b_t', tMin: -1.5, tMax: 4.6, XG: 5.1, U: 0.8, gmax: 4,
     focus: { x: [-2.7, 9.2], y: [-1.7, 4.9] },
@@ -2426,10 +2471,13 @@ function solveExpLineIntersection(k, shift = 0) {
     stdTitle: '조각을 나누고 높이별로 교점의 개수 쓰기',
     quickTitle: 'W 모양의 높이 세 곳만 적기',
     standard: (v, ask) => `① ${brk9B(v)} 에서 꺾이므로 네 조각입니다. 꺾이는 점의 높이는 $0,\\ ${v.b},\\ 0$${v.fam === 'exp' ? `, 점근선은 $y=${v.a - v.b}$` : ''}.<br/>② 수평선과의 교점: ${PL.rangesLine(pieces9B(v))}.<br/>③ ${finalLine9B(v, ask)}`,
-    quick: (v, ask) => `W 모양은 <b>바닥 0 (두 곳) · 가운데 봉우리 ${v.b}${v.fam === 'exp' ? ` · 점근선 ${v.a - v.b}` : ''}</b> 세 높이만 알면 됩니다. 바닥에서는 2개, 바닥과 봉우리 사이는 4개, 봉우리 높이에서는 3개(봉우리의 꼭짓점이 한 점)입니다. ${finalLine9B(v, ask)}`,
-    highlight: '봉우리의 높이에서는 꼭짓점 한 점과 양쪽 가지의 교점이 합쳐져 4가 아니라 3입니다.',
+    quick: (v,ask) => {
+      const cap=v.fam==='exp'?v.a-v.b:Infinity, top=Math.min(v.b,cap), peak=v.fam==='log'||v.b<cap?3:2;
+      return `바닥에서는 2개이고 $0<t<${top}$에서만 4개입니다. 가운데 봉우리 높이 $t=${v.b}$에서는 ${peak}개입니다.${v.fam==='exp'?' 점근선 높이에 닿으면 왼쪽 바깥 가지의 교점은 사라지므로 봉우리보다 점근선이 낮은 경우를 구별합니다.':''} ${finalLine9B(v,ask)}`;
+    },
+    highlight: '봉우리에서는 가운데 두 교점을 하나로 셉니다. 왼쪽 바깥 가지가 그 높이에 닿는지도 확인하세요.',
     formula: '<b>절댓값을 겹쳐 쓴 함수 y = | |h(x)| − b |</b><br>안쪽 |h| 로 x축 아래를 접어 올리고, b 를 빼서 아래로 내린 뒤 다시 접어 올립니다. 그래서 x축에 닿는 점이 두 개 생기고 그 사이에 봉우리(높이 b)가 생기는 <b>W 모양</b>이 됩니다.<br>개수가 바뀌는 높이: 바닥 0, 봉우리 b, (지수함수라면) 점근선.',
-    notes: '봉우리의 높이 t=b 에서는 꼭짓점 한 점 + 바깥 가지 두 점이라 g=3 입니다(4개로 세지 않기). 바닥 t=0 에서는 x축과 만나는 두 점이라 g=2. 점근선의 높이는 ○ 이라 그 높이에서는 점근선 쪽 가지가 빠집니다.'
+    notes: '지수형 f(x)=||2ˣ−a|−b| (0<b<a)에서 왼쪽 점근선의 높이는 a−b입니다. t=b의 교점은 b<a−b이면 3개, b≥a−b이면 왼쪽 바깥 가지가 없어 2개입니다. t=0에서는 2개이고, 4개가 되는 범위는 0<t<min(b,a−b)입니다. 로그형 f(x)=||log₂x|−b| (b>0)은 양끝이 모두 위로 올라가므로 t=b에서 3개, 0<t<b에서 4개입니다. 점근선 높이 자체는 왼쪽 바깥 가지의 치역에 포함하지 않습니다.'
   };
 
   /* ======================================================================
@@ -2453,7 +2501,7 @@ function solveExpLineIntersection(k, shift = 0) {
     PL.frame(b, s);
     const A = [t, m], Bp = [2 * t, m * m], C = [2 * t, 0], D = [2 * t, m];
     const AB = Math.hypot(t, m * m - m), AC = Math.hypot(t, m);
-    const same = Math.abs(AB - AC) < 0.04;
+    const same = Math.abs(m - 2) < 1e-9;
     const showEq = ex ? same : true; // 문제·정리에서는 AB=AC 가 조건으로 주어져 있음
     b.plot((x) => Math.pow(a, x), { color: 'green', width: 2.8, glow: true, from: -1.4, to: 12.6 });
     const lx = Math.max(0.4, t * 0.4), ly = Math.pow(a, lx); // 곡선 이름은 A 의 왼쪽 아래(비어 있는 곳)
@@ -2526,15 +2574,16 @@ function solveExpLineIntersection(k, shift = 0) {
         quick: () => ({ steps: rich(quick10a(cur().v, cur().ask)), highlight: 'AB = AC 의 조건은 a 나 t 가 아니라 A 의 높이 aᵗ = 2 로만 결정됩니다.' })
       },
       view: (s, lab) => {
+        if((lab&&lab.tab==='problem')||s.step<3) return {notes:'A에서 선분 BC에 내린 수선으로 두 직각삼각형을 비교하세요. 가로 길이가 같다는 조건이 핵심입니다.'};
         if (lab && lab.tab !== 'explore') return { formula: rich('<b>이등변삼각형 조건을 높이로 바꿔 읽기</b><br>A(t, aᵗ), B(2t, a²ᵗ), C(2t, 0) 에서 A 로부터 직선 x = 2t 까지의 가로 거리는 t 로 공통입니다. 따라서 AB = AC ⇔ 세로 거리 같음 ⇔ <b>aᵗ = a²ᵗ − aᵗ</b> ⇔ aᵗ = 2.'), notes: rich('A 와 B 의 x좌표 비가 1 : 2 이므로 y좌표는 m, m² (m = aᵗ) 입니다. a²ᵗ 을 2aᵗ 로 착각하지 마세요. 넓이는 ½ × BC × t 입니다(밑변이 세로선 BC).') };
-        const t = s.p10_t, m = s.p10_m, a = Math.pow(m, 1 / t), AB = Math.hypot(t, m * m - m), AC = Math.hypot(t, m), same = Math.abs(AB - AC) < 0.04;
+        const t = s.p10_t, m = s.p10_m, a = Math.pow(m, 1 / t), AB = Math.hypot(t, m * m - m), AC = Math.hypot(t, m), same = Math.abs(m - 2) < 1e-9;
         return {
           chips: [{ html: `$\\overline{AB}=${PL.fix(AB)},\\ \\overline{AC}=${PL.fix(AC)}$`, color: same ? 'amber' : 'ink', answer: true }],
           readouts: [
             { label: 'A 의 높이 aᵗ', value: PL.fix(m), color: 'amber', note: 't = ' + PL.fix(t) + ' · 곡선의 밑 a ≈ ' + PL.fix(a, 3) },
             { label: 'AC 의 길이', value: PL.fix(AC), color: 'sky', note: 'A 에서 x축 위 점 C 까지' },
             { label: 'AB 의 길이', value: PL.fix(AB), color: 'rose', note: 'B 의 높이 a²ᵗ = ' + PL.fix(m * m) },
-            { label: 'AB − AC', value: (AB - AC >= 0 ? '+' : '') + PL.fix(AB - AC), color: same ? 'amber' : 'violet', wide: true, note: same ? '거의 같습니다. 이때 A 의 높이는?' : AB > AC ? 'AB 가 더 깁니다 — A 를 위로 올려 보세요' : 'AC 가 더 깁니다 — A 를 아래로 내려 보세요' },
+            { label: 'AB − AC', value: (AB - AC >= 0 ? '+' : '') + PL.fix(AB - AC), color: same ? 'amber' : 'violet', wide: true, note: same ? '거의 같습니다. 이때 A 의 높이는?' : AB > AC ? 'AB 가 더 깁니다 — A 를 아래로 내려 보세요' : 'AC 가 더 깁니다 — A 를 위로 올려 보세요' },
             { label: '삼각형 ACB 의 넓이', value: PL.fix(0.5 * m * m * t), color: 'green', note: '½ × BC × t' }
           ],
           formula: rich('<b>이등변삼각형 조건을 높이로 바꿔 읽기</b><br>A(t, aᵗ), B(2t, a²ᵗ), C(2t, 0) 에서 A 로부터 직선 x = 2t 까지의 가로 거리는 t 로 공통입니다. 따라서 AB = AC ⇔ 세로 거리 같음 ⇔ <b>aᵗ = a²ᵗ − aᵗ</b> ⇔ aᵗ = 2.'),
@@ -2568,7 +2617,7 @@ function solveExpLineIntersection(k, shift = 0) {
     b.plot((x) => (-x + p > 0 ? Math.log(-x + p) / la : NaN), { color: 'violet', width: 2.8, glow: true, from: -p - 3, to: p - 0.004 });
     const AB = Math.hypot(w, h), BC = 2 * w;
     const angB = Math.atan2(h, w) * 180 / Math.PI, angA = 180 - 2 * angB;
-    const isEq = Math.abs(angB - 60) < 0.7, isRt = Math.abs(angA - 90) < 1.2;
+    const isEq = Math.abs(angB - 60) < 1e-8, isRt = Math.abs(angA - 90) < 1e-8;
     const eqShape = ex ? isEq : cu.v.shape === 'eq', rtShape = ex ? isRt : cu.v.shape === 'rt';
     b.poly([A, Bp, C], { fill: 'amber', fillAlpha: eqShape || rtShape ? 0.2 : 0.1, color: null });
     if (!ex && st(2)) {
@@ -2627,8 +2676,8 @@ function solveExpLineIntersection(k, shift = 0) {
       enter: (s) => { s.p10b_a = 2.2; },
       controls: () => ['p10b_a'],
       presets: () => [
-        { group: '삼각형의 모양', label: '정삼각형 (∠B = 60°)', color: 'amber', apply: (s) => { s.p10b_a = Math.round(A3 * 1000) / 1000; }, on: (s) => Math.abs(s.p10b_a - A3) < 0.004 },
-        { group: '삼각형의 모양', label: '직각이등변삼각형 (∠A = 90°)', color: 'sky', apply: (s) => { s.p10b_a = Math.round(A3r * 1000) / 1000; }, on: (s) => Math.abs(s.p10b_a - A3r) < 0.004 }
+        { group: '삼각형의 모양', label: '정삼각형 (∠B = 60°)', color: 'amber', apply: (s) => { s.p10b_a = A3; }, on: (s) => Math.abs(s.p10b_a - A3) < 0.004 },
+        { group: '삼각형의 모양', label: '직각이등변삼각형 (∠A = 90°)', color: 'sky', apply: (s) => { s.p10b_a = A3r; }, on: (s) => Math.abs(s.p10b_a - A3r) < 0.004 }
       ],
       steps: () => step10b(cur().v).map(stepText),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(text10b(cur().v))}</div>`,
@@ -2639,11 +2688,12 @@ function solveExpLineIntersection(k, shift = 0) {
         quick: () => ({ steps: rich(quick10b(cur().v)), highlight: '밑변은 a 와 관계없이 2(p−1) 로 고정됩니다. 도형 조건은 높이 log_a p 에 대한 식 하나가 됩니다.' })
       },
       view: (s, lab) => {
+        if((lab&&lab.tab==='problem')||s.step<3) return {notes:'두 곡선의 대칭으로 밑변과 높이를 나누어 보세요. 밑변이 고정되고 높이만 바뀌는지 확인합니다.'};
         const fm = '<b>도형 조건을 높이에 대한 식으로 바꾸기</b><br>두 곡선은 y축 대칭이고 x절편은 ±(p−1) 로 a 와 무관합니다. 그래서 밑변 BC = 2(p−1) 은 고정, <b>높이 log<sub>a</sub> p 만 a 에 따라 변합니다.</b><br>정삼각형: 높이 = (√3/2)·BC = √3(p−1) · 직각이등변삼각형(∠A=90°): 높이 = $\\frac{BC}{2}$ = p−1.';
         const nt = '정삼각형 조건에서 a 의 값은 $p^{\\frac{\\sqrt3}{3(p-1)}}$ 꼴로 나옵니다. 밑 변환은 필요 없고, 높이 = log_a p 와 도형의 높이를 같다고 놓은 뒤 지수로 바꿔 쓰면 됩니다. 이등변삼각형이라 ∠B 와 ∠C 가 같다는 것도 확인하세요.';
         if (lab && lab.tab !== 'explore') return { formula: rich(fm), notes: rich(nt) };
         const a = s.p10b_a, h = Math.log(3) / Math.log(a), angB = Math.atan2(h, 2) * 180 / Math.PI, angA = 180 - 2 * angB, AB = Math.hypot(2, h);
-        const isEq = Math.abs(angB - 60) < 0.7, isRt = Math.abs(angA - 90) < 1.2;
+        const isEq = Math.abs(angB - 60) < 1e-8, isRt = Math.abs(angA - 90) < 1e-8;
         return {
           chips: [{ html: isEq ? '$\\angle B=60^{\\circ}$ : 정삼각형' : isRt ? '$\\angle A=90^{\\circ}$ : 직각이등변삼각형' : `$\\angle B=${PL.fix(angB, 1)}^{\\circ},\\ \\angle A=${PL.fix(angA, 1)}^{\\circ}$`, color: isEq || isRt ? 'amber' : 'ink', answer: true }],
           readouts: [
@@ -2754,7 +2804,7 @@ function solveExpLineIntersection(k, shift = 0) {
       controls: () => ['p11_x', 'p11_a', 'p11_b'],
       presets: (s) => {
         const G = PL.geo11(s.p11_a, s.p11_b);
-        return [{ group: 'P 의 위치', label: 'P 를 AB′ 위로 맞추기', color: 'green', apply: (st) => { st.p11_x = Math.round(G.px * 100) / 100; st.p11_ref = true; }, on: (st) => Math.abs(st.p11_x - G.px) < 0.03 }];
+        return [{ group: 'P 의 위치', label: 'P 를 AB′ 위로 맞추기', color: 'green', apply: (st) => { st.p11_x = G.px; st.p11_ref = true; }, on: (st) => Math.abs(st.p11_x - G.px) < 0.03 }];
       },
       actions: () => [{ id: 'ref', icon: 'split', label: 'B′ (B 의 대칭점) 보기', on: (s) => !!s.p11_ref, run: (s) => { s.p11_ref = !s.p11_ref; } }],
       steps: () => step11(cur().v, cur().ask).map(stepText),
@@ -2766,17 +2816,18 @@ function solveExpLineIntersection(k, shift = 0) {
         quick: () => ({ steps: rich(quick11(cur().v, cur().ask)), highlight: '두 점이 직선의 같은 쪽이면 한 점을 대칭이동, 반대쪽이면 그대로 선분 하나로 연결합니다.' })
       },
       view: (s, lab) => {
+        if((lab&&lab.tab==='problem')||s.step<3) return {notes:'P를 움직여 경로를 비교하세요. 한 점을 대칭이동하면 길이를 보존하면서 경로를 펼칠 수 있습니다.'};
         const fm = '<b>최단거리는 \'펴서\' 구합니다</b><br>직선 y = x 에 대한 대칭: 점 (p, q) 의 대칭점은 <b>(q, p)</b>. 같은 쪽의 두 점 A, B 에서 B 를 대칭이동한 B′ 를 잡으면 BP = B′P 이므로 AP + BP = AP + B′P ≥ AB′ (A 와 B′ 는 직선의 반대쪽이라 선분 AB′ 가 직선과 만남).';
         const nt = '두 점이 직선의 <b>반대쪽</b>에 있으면 대칭이동 없이 선분 AB 가 그대로 최단 경로입니다. 같은 쪽인데 그대로 A, B 를 잇는 선분과 직선의 교점을 잡으면 틀립니다. 지수곡선의 대칭점은 로그곡선 위의 점입니다(2ᵇ, b).';
         if (lab && lab.tab !== 'explore') return { formula: rich(fm), notes: rich(nt) };
         const G = PL.geo11(s.p11_a, s.p11_b), P = [s.p11_x, s.p11_x];
         const AP = Math.hypot(G.A[0] - P[0], G.A[1] - P[1]), BP = Math.hypot(G.B[0] - P[0], G.B[1] - P[1]), tot = AP + BP, near = tot - G.d < 0.03;
         return {
-          chips: [{ html: `$\\overline{AP}+\\overline{BP}=${PL.fix(tot)}$`, color: near ? 'amber' : 'ink', answer: true }],
+          chips: [{ html: `$\\overline{AP}+\\overline{BP}\\approx${PL.fix(tot)}$`, color: near ? 'amber' : 'ink', answer: true }],
           readouts: [
             { label: 'AP 의 길이', value: PL.fix(AP), color: 'amber', note: 'A (' + PL.f2(G.A[0]) + ', ' + PL.f2(G.A[1]) + ') 에서 P 까지' },
             { label: 'BP 의 길이', value: PL.fix(BP), color: 'rose', note: 'B′P 와 같음 (B′ = ' + PL.f2(G.Bq[0]) + ', ' + PL.f2(G.Bq[1]) + ')' },
-            { label: 'AP + BP', value: PL.fix(tot), color: 'sky', wide: true, note: near ? '최소입니다! 이때 A, P, B′ 가 한 직선 위' : 'P 를 움직여 AB′ 의 길이 ' + PL.fix(G.d) + ' 에 가까이 보세요' },
+            { label: 'AP + BP', value: PL.fix(tot), color: 'sky', wide: true, note: Math.abs(s.p11_x-G.px)<1e-9 ? '최소: A, P, B′가 한 직선 위' : near ? '최소에 가깝습니다. 맞추기 버튼으로 정확히 확인하세요' : 'P 를 움직여 AB′ 의 길이 ' + PL.fix(G.d) + ' 에 가까이 보세요' },
             { label: '선분 AB′ 의 길이', value: PL.fix(G.d), color: 'green', note: 'AP + BP 는 이보다 작아질 수 없음' }
           ],
           formula: rich(fm), notes: rich(nt)
@@ -2811,6 +2862,7 @@ function solveExpLineIntersection(k, shift = 0) {
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'alg-explog',
+    stagedReveal: true,
     title: '지수·로그함수 그래프 탐구',
     courseName: '대수',
     unit: 'Ⅰ. 지수함수와 로그함수',
