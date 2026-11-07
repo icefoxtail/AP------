@@ -1,0 +1,1538 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_서울봉원중_1학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "433868f860d99b3bb548459572794f988d80453d",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "antigravity-worker-v1",
+    "model": "gemini-2.5-pro",
+    "batch": "original-372-381",
+    "at": "2026-11-07"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $\\text{ABCD}$의 한 변인 "
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$의 길이로 옳은 것은"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "한 칸을 1로 정하여 그린 정사각형이다. 정사"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$의 길이로 옳은 것은"
+          },
+          {
+            "term": "무리수",
+            "src": "choices",
+            "quote": "$\\sqrt{5}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 의해 $\\sqrt{a^2 +",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 빗변 길이를 피타고라스 정리로 구한다."
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "빗변으로 하는 직각삼각형을 모눈 위에서 확인한",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈종이에서 가로와 세로 칸 수로 직각삼각형을 구성한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "길이는 양수이므로\n$\\text{AB} = \\s"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\text{AB} = \\sqrt{5}$\n(별해"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "choices",
+            "quote": "\\sqrt{0.4}$, $\\sqrt{\\left"
+          },
+          {
+            "term": "무리수",
+            "src": "choices",
+            "quote": "-\\sqrt{2}$, $(-\\sqrt{3})^"
+          },
+          {
+            "term": "유리수",
+            "src": "choices",
+            "quote": "\\sqrt{\\left(-\\frac{2}{3}\\"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "작은 것부터 바르게 쓴 것은? [4.0점]</"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "작은 것부터 순서대로 바르게 나열한 것은 ④이"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "음수와 양수를 구분하고 각각의 절댓값 및 대소",
+            "evidenceType": "IMPLIED",
+            "justification": "음수와 양수를 분리하고 각각의 절댓값을 계산하여 비교한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "(-\\sqrt{3})^2 = 3$\n\n2단계: ",
+            "evidenceType": "IMPLIED",
+            "justification": "근호의 제곱을 계산하여 유리수로 변환한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "주어진 네 수 중 유일한 음수)\n- $\\sqr"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "양수 세 수 $\\sqrt{0.4}, \\frac"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "다음에서 무리수의 개수는? [4.0점]</p>"
+          },
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "\\sqrt{100},\\;\\; \\sqrt{5}-"
+          },
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "유리수: 정수 또는 $\\frac{a}{b}$ "
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "무리수의 개수는? [4.0점]</p>\n<div"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "무리수의 개수는 3개이므로 정답은 ②이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\sqrt{100} = \\sqrt{10^2} ",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부의 제곱수를 꺼내어 유리수인지 판별한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "\\sqrt{5} - 1$: $\\sqrt{5}$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수와 무리수의 연산 결과를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "solution",
+            "quote": "박스 안에 주어진 8개의 수 중에서 무리수의 "
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "정수이므로 유리수)\n2. $\\sqrt{5} -"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "\\frac{1}{2}\\sqrt{20}=a\\sq"
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "등식 $\\frac{1}{2}\\sqrt{20} "
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "a\\sqrt{5}$$\n</div>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "만족하는 상수 $a$의 값을 구한다.\n\n[핵심"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값으로 옳은 것은? [4.0점]</p"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "\\sqrt{4 \\times 5} = \\sqrt",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부의 제곱 인수를 꺼내어 식을 변형한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "1\\sqrt{5} = a\\sqrt{5} \\im",
+            "evidenceType": "IMPLIED",
+            "justification": "무리수 앞의 계수를 비교하여 상수 a를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\frac{1}{2} \\times 2\\sqrt"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "a = 1$이므로 정답은 ②이다."
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "-\\sqrt{39} \\times 2\\sqrt{"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "3\\sqrt{13}$$\n</div>"
+          },
+          {
+            "term": "분수식",
+            "src": "solution",
+            "quote": "-\\frac{\\sqrt{39} \\times 2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "계산한 값으로 옳은 것은? [4.0점]</p>"
+          },
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "값은 $-2$이므로 정답은 ①이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\sqrt{39} = \\sqrt{3 \\time",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부 수를 소인수분해하여 공통 인수를 약분한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "-\\frac{6\\sqrt{13}}{3\\sqrt",
+            "evidenceType": "IMPLIED",
+            "justification": "분모와 분자의 공통 무리수를 약분하여 유리수로 만든다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "유리수 부분끼리, 근호 안의 수끼리 각각 묶어"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "계산한 값은 $-2$이므로 정답은 ①이다."
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "\\sqrt{5}+\\sqrt{45}-\\frac{"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "\\frac{25}{\\sqrt{5}}$$\n</d"
+          },
+          {
+            "term": "분수식",
+            "src": "solution",
+            "quote": "\\frac{25 \\times \\sqrt{5}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "src": "choices",
+            "quote": "-\\sqrt{5}$"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "간단히 한 것은? [4.0점]</p>\n<div"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "\\frac{25\\sqrt{5}}{5} = 5\\",
+            "evidenceType": "IMPLIED",
+            "justification": "분모와 분자에 루트5를 곱하여 분모를 유리화한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "(1 + 3 - 5)\\sqrt{5}$\n$= -",
+            "evidenceType": "IMPLIED",
+            "justification": "무리수 동류항들의 계수를 합산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "유리화 과정의 약분 부호 오류이다.\n\n[명확한"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "근호 안을 가장 작은 자연수가 되도록 변형하고"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$a<0$일 때, $5\\sqrt{(-a)^2}"
+          },
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "5\\sqrt{(-a)^2}+4a-\\sqrt{("
+          },
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "$3a < 0$이다.\n\n2단계: 각각의 제곱근"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "계산한 값은 $2a$이므로 정답은 ③이다."
+          },
+          {
+            "term": "일차식",
+            "src": "solution",
+            "quote": "계산된 결과 $2a$와 일치하여 정답이다.\n④"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "\\sqrt{X^2} = |X|$이다.\n즉, $",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부 제곱식을 밑의 부호에 따른 절댓값으로 처리한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "-5a + 4a + 3a$\n$= (-5 + 4",
+            "evidenceType": "IMPLIED",
+            "justification": "동류항 계수들을 합산하여 식을 정리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "문자식",
+            "src": "solution",
+            "quote": "(-5 + 4 + 3)a$\n$= 2a$\n\n[경"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "-a > 0$이다.\n- $3a < 0$이다.\n"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$0<a<1$일 때, 다음 중 옳은 것은? ["
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "범위 $0 < a < 1$일 때, 다섯 개의 "
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "좌변은 양수이고, 우변 $-\\sqrt{a}$는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은? [4.0점]</p>"
+          },
+          {
+            "term": "부등식",
+            "src": "choices",
+            "quote": "\\frac{1}{a}>\\sqrt{\\frac{1"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "X^2 > X$이고, 양변에 양의 제곱근을 취",
+            "evidenceType": "IMPLIED",
+            "justification": "1보다 큰 수의 거듭제곱 대소 관계를 이용한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "양변에 양의 제곱근을 취하면 $0 < \\sqr",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식 양변에 제곱근을 취하여 대소를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$0 < x < 1$이면 $x < \\sqrt{"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "항상 참인 것을 찾는다.\n\n[핵심 발상/공식/"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "\\sqrt{6.54}=2.557$일 때, $\\"
+          },
+          {
+            "term": "제곱근표",
+            "src": "stem",
+            "quote": "제곱근표에서 $\\sqrt{6.54}=2.557"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "\\sqrt{a}=25.57$를 만족하는 유리수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "유리수 $a$의 값은? [4.0점]</p>"
+          },
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "유리수 $a$의 값은 654이므로 정답은 ②이"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "10 = \\sqrt{10^2} = \\sqrt{",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 거듭제곱을 근호 안으로 넣을 때 제곱하여 넣는다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{a} = \\sqrt{6.54} \\t",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 수의 10배 관계를 제곱근식에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "a = 654$\n\n[경우 나눔 및 5개 선지 "
+          },
+          {
+            "term": "실수",
+            "src": "solution",
+            "quote": "\\sqrt{6.54 \\times 100} = "
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $x^2-8x+A$를 인수분해하면 $("
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "$(x+B)^2$이 될 때, $A+B$의 값은"
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "x^2 - 8x + A$가 완전제곱식 $(x "
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$A+B$의 값은? (단, $A$, $B$는 "
+          },
+          {
+            "term": "식의값",
+            "src": "solution",
+            "quote": "$A + B = 16 + (-4) = 16 -"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(x + B)^2 = x^2 + 2Bx + B",
+            "evidenceType": "IMPLIED",
+            "justification": "우변을 전개하여 좌변과 계수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "2B = -8 \\implies B = -4$\n",
+            "evidenceType": "IMPLIED",
+            "justification": "일차항 계수와 상수항을 각각 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $A$, $B$는 상수) [4.0점]<"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "상수 $A, B$에 대하여 $A + B$의 값"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "$x=\\sqrt{7}-2$, $y=\\sqrt{"
+          },
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "$x = \\sqrt{7} - 2$, $y = "
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "(\\sqrt{7} - 2) + (\\sqrt{7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "src": "choices",
+            "quote": "$-8\\sqrt{7}$"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x^2-y^2$을 구한 것은? [4.0점]<"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "제곱의 차 인수분해 공식 $x^2 - y^2 ",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱의 차를 합차공식으로 인수분해한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2 - y^2 = (x - y)(x + ",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해된 식에 두 수의 합과 차를 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "(-4) \\times (2\\sqrt{7}) =",
+            "evidenceType": "IMPLIED",
+            "justification": "계산된 x+y와 x-y 값을 곱한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "(\\sqrt{7} - 2) - (\\sqrt{7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 4개, 직사각형 4개를 모두 사용하여"
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "하나의 큰 직사각형을 만들려고 한다. 이때 만"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "한 변의 길이가 $x$인 큰 정사각형: 3개 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "인수분해 한 것은? [4.0점]</p>\n<im"
+          },
+          {
+            "term": "일차식",
+            "src": "choices",
+            "quote": "$(x+1)(3x+1)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$3x^2 + 4x + 1 = (x + 1)(",
+            "evidenceType": "IMPLIED",
+            "justification": "각 조각의 넓이의 합으로 이차식을 구성하고 인수분해한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "대각선 곱의 합: $1 \\times 1 + 3",
+            "evidenceType": "IMPLIED",
+            "justification": "크로스 곱으로 계수를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "전체 직사각형의 넓이는 각 조각 도형들의 넓이"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "넓이를 $x$에 관한 식으로 인수분해 한 것은"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2+mx+36$이 $(x+a)(x+b)$"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "곱이 36인 자연수 순서쌍 $(a, b)$를 "
+          },
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해 된다고 할 때, 정수 $m$이 될 수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "가장 큰 값과 가장 작은 값의 차는? (단, "
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $m$이 될 수 있는 가장 큰 값과 가장"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$(x + a)(x + b) = x^2 + (",
+            "evidenceType": "IMPLIED",
+            "justification": "우변을 전개하여 ab=36, m=a+b 임을 확인한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$ab = 36$이고 $m = a + b$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "계수를 비교하여 자연수 순서쌍의 합의 범위를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "$M - N = 37 - 12 = 25$\n\n["
+          },
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "(단, $a$, $b$는 자연수) [4.0점]"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $x^2+4x-5$, $2x^2+x"
+          },
+          {
+            "term": "이차식",
+            "src": "solution",
+            "quote": "각각의 이차식을 십자선 곱셈법(크로스 곱)을 "
+          },
+          {
+            "term": "인수",
+            "src": "solution",
+            "quote": "공통된 인수를 확인한다.\n\n[연속 등식 및 충"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공통인수",
+            "src": "stem",
+            "quote": "공통인 인수는? [4.0점]</p>"
+          },
+          {
+            "term": "일차식",
+            "src": "choices",
+            "quote": "$x-1$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2 + 4x - 5 = (x + 5)(x",
+            "evidenceType": "IMPLIED",
+            "justification": "각 이차식을 인수분해하여 일차식의 곱으로 나타낸다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$2x^2 + x - 3 = (2x + 3)(",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수와 상수항을 크로스 곱하여 일차항 계수를 맞춘다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "choices",
+            "quote": "$x+5$"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "공통인 일차식 인수는 $x - 1$이다.\n\n["
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차방정식을 모두 고르면? (정"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "이차방정식인 것을 모두(2개) 고른다.\n\n[핵"
+          },
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$x^2+5x+2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "모두 고르면? (정답 2개) [4.0점]</p"
+          },
+          {
+            "term": "등식",
+            "src": "choices",
+            "quote": "$x(x-1)=0$"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "좌변을 전개하면 $x^2 - x = 0$\n$x",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 전개하고 이항하여 이차방정식 표준형으로 정리한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "모든 항을 좌변으로 이항하여 정리했을 때 $a",
+            "evidenceType": "IMPLIED",
+            "justification": "동류항을 정리하여 이차항이 소거되는지 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "$ax^2 + bx + c = 0$ ($a \\"
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "주어진 다섯 개의 식 중에서 $x$에 대한 이"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $(a-1)x^2-x-2=0$의 한"
+          },
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "한 근이 $x = -\\frac{2}{3}$일 "
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "한 근이 $-\\frac{2}{3}$일 때 다른"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다른 한 근을 구하면? (단, $a$는 상수)"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "다른 한 근은 $x = 1$이다.\n\n[경우 나"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "방정식에 대입하여 참이 되도록 하는 $a$를 ",
+            "evidenceType": "IMPLIED",
+            "justification": "근을 방정식에 대입하여 미정계수 a를 구한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(3x + 2)(x - 1) = 0$\n따라서\n",
+            "evidenceType": "IMPLIED",
+            "justification": "a를 대입한 이차방정식을 인수분해하여 다른 한 근을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a$는 상수) [4.0점]</p>"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "따라서 다른 한 근은 $x=1$이므로 정답은 "
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $3(x-5)^2=a$의 두 근의 "
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(x - 5)^2 = \\frac{a}{3}$\n"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값은? [4.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "양수 $a$의 값을 구한다.\n\n[핵심 발상/공"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "a = 3 \\times \\frac{1}{4} "
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "x - 5 = \\pm\\sqrt{\\frac{a}",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식에 제곱근을 취하여 두 근을 표현한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "\\frac{a}{3} = \\left(\\frac",
+            "evidenceType": "IMPLIED",
+            "justification": "근호식을 제곱하여 a의 값을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "두 근의 차가 1일 때, 양수 $a$의 값을 "
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "두 근의 차 계산\n$x_1 - x_2 = \\l"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $(x+3)^2=k-1$이 중근 $"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "$(x+3)^2=k-1$이 중근 $x=a$를 "
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "(x + 3)^2 = 0$\n따라서 중근은\n$x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+k$의 값은? (단, $a$, $k$는 "
+          },
+          {
+            "term": "식의값",
+            "src": "solution",
+            "quote": "a + k = -3 + 1 = -2$\n\n[경우"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "k - 1 = 0 \\implies k = 1$",
+            "evidenceType": "IMPLIED",
+            "justification": "중근을 갖기 위해 우변의 상수항이 0임을 적용한다."
+          },
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "중근을 가지려면 우변이 0이어야 한다.\n$k ",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 꼴 이차방정식의 중근 조건을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a$, $k$는 상수이다.) [4.0"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "중근 $x = a$를 가질 때, 상수 $a, "
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-4x+2=0$의 해를 구하"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "a = 1$, $b = -4$ ($b' = -"
+          },
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "c = 2$\n\n2단계: 짝수 근의 공식 적용\n"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "choices",
+            "quote": "$x=2\\pm\\sqrt{2}$"
+          },
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "$x = 2\\pm\\sqrt{2}$이므로 정답은"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "짝수 근의 공식 $x = \\frac{-b' \\",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수 근의 공식을 적용하여 해를 구한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{(-2)^2 - 1 \\times 2",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부 판별식 값을 계산하여 제곱근을 취한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "2 \\pm \\sqrt{4 - 2}$\n$= 2 "
+          },
+          {
+            "term": "근호",
+            "src": "choices",
+            "quote": "\\sqrt{2}$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $8\\text{cm}$인 원에"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "반지름의 길이를 늘였더니 넓이가 $36\\pi\\"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $36\\pi\\text{cm}^2$만큼 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "이때 늘어난 반지름의 길이는? [4.0점]</"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$2\\text{cm}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$x$에 대한 이차방정식을 세운다.\n\n[연속 ",
+            "evidenceType": "IMPLIED",
+            "justification": "늘어난 반지름에 대한 넓이 관계식을 이차방정식으로 세운다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x + 18)(x - 2) = 0$\n$x >",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식을 인수분해하여 해를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$x > 0$이므로 $x = 2$)\n\n[경우 "
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "늘어난 반지름의 길이를 $x\\text{cm}$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "$4-\\sqrt{3}$의 정수부분을 $a$, "
+          },
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "무리수 $\\sqrt{3}$의 범위를 부등식으로"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "1 < \\sqrt{3} < 2$이다.\n각 변에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$2a-3b$의 값을 구하시오. [5.0점]<"
+          },
+          {
+            "term": "식의값",
+            "src": "solution",
+            "quote": "구하는 값은 $3\\sqrt{3}-2$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "정수부분",
+            "src": "solution",
+            "quote": "$4 - \\sqrt{3}$의 정수부분은\n$a ",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식을 이용하여 무리수의 정수부분을 결정한다."
+          },
+          {
+            "term": "소수부분",
+            "src": "solution",
+            "quote": "소수부분은 (원래 수) - (정수부분)으로 정",
+            "evidenceType": "IMPLIED",
+            "justification": "원래 수에서 정수부분을 빼서 소수부분을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "4 - 6 + 3\\sqrt{3}$\n$= 3\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "식에 대입하여 동류항을 정리한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "2(2) - 3(2 - \\sqrt{3})$\n$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "\\frac{(\\sqrt{3}+\\sqrt{2})"
+          },
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "분모: $(\\sqrt{3})^2 - (\\sqr"
+          },
+          {
+            "term": "분수식",
+            "src": "solution",
+            "quote": "주어진 분수식 $\\frac{(\\sqrt{3}+"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "src": "solution",
+            "quote": "결과는 $49+20\\sqrt{6}$이다."
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "다음 식을 간단히 하시오. [5.0점]<br "
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "안쪽 분수의 분모 유리화\n분모와 분자에 $\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레수를 곱하여 분모를 유리화한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "(\\sqrt{3}-\\sqrt{2})(\\sqrt",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에 합차공식을 적용하여 1로 만든다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(5 + 2\\sqrt{6})^2 = 5^2 +"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "25 + 20\\sqrt{6} + 24$\n$= "
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "주어진 공개 키가 $3599$일 때, 비밀번호"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "작은 수부터 큰 수를 쓰면 비밀번호가 된다.'"
+          },
+          {
+            "term": "문자식",
+            "src": "solution",
+            "quote": "$a^2 - b^2 = (a - b)(a + "
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "비밀번호를 구하시오.<br />\n(총 4점: "
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "비밀번호는 5961이다.\n\n[조건 적합성 검토"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "60^2 - 1^2$\n$= (60 - 1)(6",
+            "evidenceType": "IMPLIED",
+            "justification": "3599를 3600-1로 보아 합차공식으로 소인수분해한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(60 - 1)(60 + 1)$\n$= 59 \\",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해하여 두 소수 59와 61을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$3599 = 3600 - 1$\n$= 60^2"
+          },
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "59 \\times 61$\n\n2단계: 두 인수의"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $5x^2=8x-2$의 해를<br "
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "x=\\frac{A\\pm B\\sqrt{C}}{5"
+          },
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "x = \\frac{A \\pm B\\sqrt{C}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "A = 4, \\quad B = 1, \\quad"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "(단, $A, B, C$는 유리수이다.) [6"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "근의 공식을 적용하고, 분모를 5로 맞추기 위",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식에 근의 공식을 적용하여 해를 구한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "분모와 분자를 2로 약분하여 분모를 5로 맞춤",
+            "evidenceType": "IMPLIED",
+            "justification": "분모와 분자를 약분하여 분모를 5로 맞춘다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "$5x^2 - 8x + 2 = 0$\n\n2단계:"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "$A, B, C$는 유리수이고 근호 안의 $C"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 216,
+    "quotesNotFound": 0,
+    "fail": 0,
+    "warn": 0
+  }
+}
