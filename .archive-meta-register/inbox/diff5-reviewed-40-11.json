@@ -63,10 +63,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -106,10 +103,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -139,10 +133,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -172,10 +163,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         }
       },
       {
@@ -205,10 +193,7 @@
           "level": "상"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 4
         }
       },
       {
@@ -228,10 +213,7 @@
           "level": "상"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 4
         }
       },
       {
@@ -251,10 +233,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -264,10 +243,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -277,19 +253,16 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       }
     ]
   },
   "reviewedCorrection": {
     "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
-    "approvalRef": "User approved reviewed repair of all 40 held Diff5 requests; this correction uses source JS and current metadata as the binding.",
-    "evidencePath": ".archive-meta-register/evidence/diff5-reviewed-40-20261107.json",
-    "evidenceSha256": "6b6ebccc784fc892e869e4f5d5a9f455f1d7c8a18433b2561ee2e34369c15056",
+    "approvalRef": "User-approved recheck of all 40 held requests; rows 08 and 11 retain source-verified, previously approved metadata after original question/solution and approval evidence were compared.",
+    "evidencePath": ".archive-meta-register/evidence/diff5-final-authority-reconciliation-20261108.json",
+    "evidenceSha256": "47451006badf18a1863d4d18fff91d5f34f2dbdb32502fdc493073c6631fd70f",
     "inputDriveFileId": "1er8Cc4VFfJcC2R53K8XBxqjnx7REo_1M",
     "originalInputFormat": "json_difficulty_conflict_or_replay",
     "rows": [
@@ -393,7 +366,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 5,
         "questionUid": "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -405,15 +378,12 @@
           "contentFingerprint": "88247f3cf47ae317f2259304d4d9b508476a5edaa46e4b3c765ac9c17fd645b0"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "aefc609e9a09549000984fc9eb61d0e73ace15b193efba47043e87124e0a5c39",
         "contentFingerprint": "88247f3cf47ae317f2259304d4d9b508476a5edaa46e4b3c765ac9c17fd645b0",
         "staleSourceBinding": false,
-        "reason": "모눈에서 정사각형 변을 구해 수직선의 두 켤레형 수를 곱셈공식으로 계산.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -492,7 +462,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 9,
         "questionUid": "qid_v1_8c4150ce82a489d2477817240ce884c353031b6de069b7350ce758f3254d542d",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -504,15 +474,12 @@
           "contentFingerprint": "97393dc3df932ba024f190c5095fcf90ea76c1029587a58ea995b0eb88eb7d87"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "86d74388b1d427c5b36b5db04d02da1aeecdd4e5445e7514cac4a982b5c4076c",
         "contentFingerprint": "97393dc3df932ba024f190c5095fcf90ea76c1029587a58ea995b0eb88eb7d87",
         "staleSourceBinding": false,
-        "reason": "50 이하의 완전제곱수를 모두 나열해 각 자연수 x를 대응.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -567,7 +534,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 12,
         "questionUid": "qid_v1_723b688be8b4c7e871bd56e56e039cf7d239f492d49a4dd862a374b7938485be",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -579,15 +546,12 @@
           "contentFingerprint": "830a5ee7ffbedf8283b6dbc7de046899c36659e049f410cfabcc905ec185448d"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "3b6bdbc4c4dff403096d4a2c37a3037a4e25640bb0d311a29977cff6c499303e",
         "contentFingerprint": "830a5ee7ffbedf8283b6dbc7de046899c36659e049f410cfabcc905ec185448d",
         "staleSourceBinding": false,
-        "reason": "전개식의 일차항을 보고 완전제곱의 중심을 정한 뒤 상수항 비교.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -642,7 +606,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 15,
         "questionUid": "qid_v1_dcad1a6236334c1365d0499d4c8d2b1aa15ec5ad383d0e20a8c4d300058d054c",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 2,
@@ -654,15 +618,12 @@
           "contentFingerprint": "358d3839ee3153dda0b881dc79396d9c700acca3b5d13fa3b633afb794057863"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         },
         "sourceFingerprint": "233dae3ab8b666eb10d8b90e6e09d4f39860959000cb73db693aabf55f0914bd",
         "contentFingerprint": "358d3839ee3153dda0b881dc79396d9c700acca3b5d13fa3b633afb794057863",
         "staleSourceBinding": false,
-        "reason": "공통인수를 묶고 남은 인수들과 보기의 인수 여부를 직접 대조.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -717,7 +678,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 18,
         "questionUid": "qid_v1_bb40aee649389c1fb33457d6d229e288226fb53c3ed1bc549569a8bff979aff6",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 4,
@@ -729,15 +690,12 @@
           "contentFingerprint": "63dee108da16136c88eb353660e0ad88f5872091e0b485bde34bc37c17bc08df"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 4
         },
         "sourceFingerprint": "cd2a32b8655b145a47f4262e2410ae3100d8d1bfbef97775438bd52f93f0dcfc",
         "contentFingerprint": "63dee108da16136c88eb353660e0ad88f5872091e0b485bde34bc37c17bc08df",
         "staleSourceBinding": false,
-        "reason": "이차식을 두 일차인수로 분해하고 곱이 소수일 조건에서 인수를 결정.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 4가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -768,7 +726,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 20,
         "questionUid": "qid_v1_024f1fea5c9f72499f3466a2645cc5357dc5a8ccda235b9124bb7de96df1535d",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 4,
@@ -780,15 +738,12 @@
           "contentFingerprint": "ad788864434b327b3d1f1825df22e5fc1217917efa859ab20c6a1e616344d53e"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 4
         },
         "sourceFingerprint": "c13fa3723ac81ff38ed2c4972e85aa9143ed1c82b2ceee07fa73b3d96299f672",
         "contentFingerprint": "ad788864434b327b3d1f1825df22e5fc1217917efa859ab20c6a1e616344d53e",
         "staleSourceBinding": false,
-        "reason": "x+y와 x−y로 제곱합 및 네제곱 차이를 표준 항등식으로 계산.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 4가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -819,7 +774,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 22,
         "questionUid": "qid_v1_764f53c3e94c1f92361d7b8dc0d77f0042b174c6ed8e9281542a6fe3cc177ebd",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -831,22 +786,19 @@
           "contentFingerprint": "9e32091e61236644486f07f5006c3cdbea3171dc508040325cd262cfc4f610ff"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "bf7f04e3cca515e28c1d039c0a721b3af9f1299c1142de88230bfe94a54680cb",
         "contentFingerprint": "9e32091e61236644486f07f5006c3cdbea3171dc508040325cd262cfc4f610ff",
         "staleSourceBinding": false,
-        "reason": "차의 제곱과 이차식의 표준 인수분해 후 공통인수를 확인.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 23,
         "questionUid": "qid_v1_21ac062ac3a9a3c352b5301fc9d4467ff02d9cf4c71b56f8f54321b3c23cf3ec",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -858,22 +810,19 @@
           "contentFingerprint": "6adb8f22d7bf4d7a0dea5f548fc892874353b71907a980bfdaeb86290d043f5d"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "eee84ada97c722c9a9df2983d61dfd44b9115c81adf01937b6e7929d6cb2fe54",
         "contentFingerprint": "6adb8f22d7bf4d7a0dea5f548fc892874353b71907a980bfdaeb86290d043f5d",
         "staleSourceBinding": false,
-        "reason": "근호 분배법칙으로 두 식을 각각 정리하고 동류항을 합산.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
         "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
         "ordinal": 24,
         "questionUid": "qid_v1_46d1f7c884831ba64cfb50c570c325ec1657b6722d299262cd3c2ca6991dcabe",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -885,15 +834,12 @@
           "contentFingerprint": "052590d6075779bbc3392640bf7890fba7645e3bf451c9657bd10d7a5c94b4dc"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "49584a1e41c5bffac89d7ddb48b42db946e5d5f07761f91179abebf99545a135",
         "contentFingerprint": "052590d6075779bbc3392640bf7890fba7645e3bf451c9657bd10d7a5c94b4dc",
         "staleSourceBinding": false,
-        "reason": "켤레식으로 두 분모를 유리화한 뒤 제곱의 차를 곱셈공식으로 계산.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       }
     ]

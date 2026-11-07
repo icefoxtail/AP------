@@ -23,10 +23,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         }
       },
       {
@@ -82,10 +79,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         }
       },
       {
@@ -175,10 +169,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -208,10 +199,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -264,10 +252,7 @@
           "level": "중"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "medium",
-          "difficultyBoundaryFlag": "B23",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         }
       },
       {
@@ -284,9 +269,9 @@
   },
   "reviewedCorrection": {
     "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
-    "approvalRef": "User approved reviewed repair of all 40 held Diff5 requests; this correction uses source JS and current metadata as the binding.",
-    "evidencePath": ".archive-meta-register/evidence/diff5-reviewed-40-20261107.json",
-    "evidenceSha256": "6b6ebccc784fc892e869e4f5d5a9f455f1d7c8a18433b2561ee2e34369c15056",
+    "approvalRef": "User-approved recheck of all 40 held requests; rows 08 and 11 retain source-verified, previously approved metadata after original question/solution and approval evidence were compared.",
+    "evidencePath": ".archive-meta-register/evidence/diff5-final-authority-reconciliation-20261108.json",
+    "evidenceSha256": "47451006badf18a1863d4d18fff91d5f34f2dbdb32502fdc493073c6631fd70f",
     "inputDriveFileId": "1ftFuZzw3gS0q0kXQES9hTvNu6KIQjC0f",
     "originalInputFormat": "json_difficulty_conflict_or_replay",
     "rows": [
@@ -294,7 +279,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
         "ordinal": 1,
         "questionUid": "qid_v1_1de44b712c2a26bc9c6ca7970daf28c0b5f9b6f61cef182ea668eb87d543beb2",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 2,
@@ -306,15 +291,12 @@
           "contentFingerprint": "a0e4cdce3ae0486e242f950414bf124f1ab0fd88099ad54806c1b6eb304d8c8f"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         },
         "sourceFingerprint": "329d04c22e4f15404975b7669810986fc49bcf55d07e495964b185c170b3bd29",
         "contentFingerprint": "a0e4cdce3ae0486e242f950414bf124f1ab0fd88099ad54806c1b6eb304d8c8f",
         "staleSourceBinding": false,
-        "reason": "실수 범위의 제곱근 정의와 양·음의 제곱근 기본 개념을 바로 적용.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -423,7 +405,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
         "ordinal": 6,
         "questionUid": "qid_v1_d18d2372669ffbf74523f6a320555f4c99c720a65ff0961dcb38d48aeec108ab",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 2,
@@ -435,15 +417,12 @@
           "contentFingerprint": "46418ed3f8f92f0db28c2ba4e2d06517fa66281bb878093321b3af0d4f7ae099"
         },
         "after": {
-          "difficultyBucket": 1,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          "difficultyBucket": 2
         },
         "sourceFingerprint": "ae90618475fa6d73f5cf8cf5f942ae50bdb0b6226e513e21af075a1a4f32354e",
         "contentFingerprint": "46418ed3f8f92f0db28c2ba4e2d06517fa66281bb878093321b3af0d4f7ae099",
         "staleSourceBinding": false,
-        "reason": "인수분해 결과를 보고 0이 아닌 상수와 원식의 인수 포함 정의를 대조.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 2가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 1은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -642,7 +621,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
         "ordinal": 15,
         "questionUid": "qid_v1_7502f020a2c99d4a5ec54ebd94ac065c8de63588c22335a6d2cc019be67651fa",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -654,15 +633,12 @@
           "contentFingerprint": "6f5d7648217635d66bc458e088c0e424a5743e0b0d6256ce5c0de1905fa8700a"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "4fadf2a194f7531cb0e73040c05f0a0cd0f1b725880f1af250de99314d60312e",
         "contentFingerprint": "6f5d7648217635d66bc458e088c0e424a5743e0b0d6256ce5c0de1905fa8700a",
         "staleSourceBinding": false,
-        "reason": "합과 제곱합에서 ab를 복원하고 (a−b)²의 두 부호값을 구함.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -717,7 +693,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
         "ordinal": 18,
         "questionUid": "qid_v1_fc8494d2d3c8f6f9fed3f82a292bda3ea760c49e021b13f8aec8b7f677581b4b",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -729,15 +705,12 @@
           "contentFingerprint": "ab0a39658fb03a85dbf1cf6a9776a279b4e399307da3fe8f014a855fcb8cce1c"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "high",
-          "difficultyBoundaryFlag": "NONE",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "0b68a7322b4457148fa0da5179906a5061c6c18b16ac1739b139a9a449711a81",
         "contentFingerprint": "ab0a39658fb03a85dbf1cf6a9776a279b4e399307da3fe8f014a855fcb8cce1c",
         "staleSourceBinding": false,
-        "reason": "주어진 구간의 부호로 네 절댓값을 풀어 선형식을 정리.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
@@ -843,7 +816,7 @@
         "sourceArchiveFile": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
         "ordinal": 23,
         "questionUid": "qid_v1_fc8122ae79a7d35f1daf9a03e7f969728cc2527b00dadb02a823cb75650afd47",
-        "decision": "CORRECT",
+        "decision": "KEEP",
         "refreshBinding": false,
         "before": {
           "difficultyBucket": 3,
@@ -855,15 +828,12 @@
           "contentFingerprint": "6063ebc0573afb91110c7a4b7f61391da757733b27e7dc327f0caf912fba2add"
         },
         "after": {
-          "difficultyBucket": 2,
-          "difficultyConfidence": "medium",
-          "difficultyBoundaryFlag": "B23",
-          "legacyLevelCompatibility": "NORMAL"
+          "difficultyBucket": 3
         },
         "sourceFingerprint": "c06a733e66150dffe48d9fd0e2118f5bc59ee5b4c486003db468cd2876dc29dd",
         "contentFingerprint": "6063ebc0573afb91110c7a4b7f61391da757733b27e7dc327f0caf912fba2add",
         "staleSourceBinding": false,
-        "reason": "완전제곱식의 제곱근을 절댓값으로 바꾼 뒤 주어진 근호값 범위로 부호를 확정.",
+        "reason": "원문 문항·검수 해설을 재대조했다. archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json의 해당 승인 행에서 bucket 3가 확인되고 현재 사용자 난이도 기준과도 맞아 기존 승인 메타를 유지한다. 이전 보정안 2은 기존 승인 근거와 불일치해 폐기한다.",
         "reviewKind": "source_recheck_349"
       },
       {
