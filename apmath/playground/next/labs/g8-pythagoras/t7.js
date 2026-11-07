@@ -168,7 +168,7 @@
     ],
     view: (M, C) => ({
       guide: '막대로 <b>BC, CA</b>를 바꾸고 <b>접기</b> 막대를 끌어 보세요. B가 A에 포개지면 접는 선 DE는 AB의 <b>수직이등분선</b>이에요. (CA < BC일 때 접는 선이 BC와 만나요)',
-      readouts: [rd('AE = BE', `$${f(M.y)}$`, 'amber', `(${M.a}² + ${M.b}²) ÷ (2 × ${M.a})`), rd('CE', `$${f(M.ce)}$`, 'green', `${M.a} − AE`), rd(M.de != null ? 'DE' : 'DE²', `$${f(M.de != null ? M.de : M.b * M.b * M.c2 / (4 * M.a * M.a))}$`, 'rose', M.ci ? `$${f(M.ci / 2)}$ × ${M.b} ÷ ${M.a}` : 'DE² = CA² × AB² ÷ (4 × BC²)')],
+      readouts: [rd('AE = BE', `$${f(M.y)}$`, 'amber', `(${M.a}² + ${M.b}²) ÷ (2 × ${M.a})`), rd('CE', `$${f(M.ce)}$`, 'green', `${M.a} − AE`), { ...rd(M.de != null ? 'DE' : 'DE²', `$${f(M.de != null ? M.de : M.b * M.b * M.c2 / (4 * M.a * M.a))}$`, 'rose', M.ci ? `$${f(M.ci / 2)}$ × ${M.b} ÷ ${M.a}` : 'DE² = CA² × AB² ÷ (4 × BC²)'), ...(M.ci && M.ci % 2 ? { noteGapPx: 8 } : {}) }],
       status: { tone: 'info', text: `접기 ${Math.round(M.p * 100)}%` },
       formula: `<p>$y^2=(${M.a}-y)^2+${M.b}^2\\Rightarrow y=${f(M.y)}$, $CE=${f(M.ce)}$</p>`,
       rule: '접는 선은 포개지는 두 점을 잇는 선분의 수직이등분선 → AE=BE 로 직각삼각형 ACE',
