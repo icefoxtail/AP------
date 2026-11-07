@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "절댓값 때문에 $x\\lt0$과 $x\\ge0$으로 나누어 교점의 개수를",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -1,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "y=0"
+      },
+      {
+        "id": "right",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(2x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "1/4",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=x+1/4"
+      }
+    ]
+  },
+  "caption": "예: 직선이 두 가지 그래프와 만나는 점의 개수를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<0일 때 y=0이고 x≥0일 때 y=√(2x)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=1/4에서 직선 y=x+1/4는 왼쪽 가지와 한 점, 오른쪽 가지와 두 점에서 만난다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "수평 가지의 한 교점과 근호 가지의 두 교점이 함께 나타나는 구조를 보여 준다."
+  ]
+}
