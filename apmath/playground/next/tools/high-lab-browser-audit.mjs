@@ -18,6 +18,8 @@ const publicBase = arg('--base-url', ''); // HTTP(S) playground/ directory, not 
 if (publicBase && observe) throw Error('Public verification cannot be a baseline-only observation');
 const scope = arg('--only', '').split(',').filter(Boolean);
 const courses = ['common', 'algebra', 'calc1', 'geom', 'probstat'];
+// Bounded mobile follow-up for independently observed label regressions.
+const mobileFollowup = new Set(['calc1-tangent:normal', 'prob-stats:pdf']);
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'apmath/playground/next/kit/apl-catalog.js'), 'utf8'), sandbox);
 const allLabs = sandbox.window.APLab.catalog.labs.filter(l => courses.includes(l.course));
@@ -134,6 +136,7 @@ try {
               overflow: document.documentElement.scrollWidth > innerWidth + 1,
               overflowNodes: document.documentElement.scrollWidth > innerWidth + 1 ? [...document.querySelectorAll('body *')].filter(e=>e.checkVisibility()).map(e=>({e,r:e.getBoundingClientRect()})).filter(({r})=>r.left < -1 || r.right > innerWidth + 1).sort((a,b)=>b.r.right-a.r.right).slice(0,8).map(({e,r})=>({tag:e.tagName,className:String(e.className),left:r.left,right:r.right,width:r.width,text:e.textContent.replace(/\s+/g,' ').trim().slice(0,100)})) : [],
               answerOpen: !!lab.refs.answer?.classList.contains('open'),
+              camera: { focus:b.focus, zoom:b.zoom, k:b.k, ky:b.ky, panX:b.panX, panY:b.panY, insets:b.insets },
               steps: get(lab.scene.steps).length,
               guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() };
           });
@@ -150,7 +153,7 @@ try {
           if(obs.stagedReveal){
             if(state==='initial'&&obs.step!==0)issues.push('initial-step-not-zero');
             if(state==='first-review'&&obs.steps>0&&obs.step!==1)issues.push('first-review-not-step-one');
-            if(obs.step<obs.steps&&(obs.answerOpen||obs.solutionVisible))issues.push('early-staged-solution-disclosure');
+            if(state!=='answer-revealed'&&obs.step<obs.steps&&(obs.answerOpen||obs.solutionVisible))issues.push('early-staged-solution-disclosure');
           }
           const row = { id: scene.id, run: run.name, state, ...obs, issues };
           dest.observations.push(row);
@@ -196,9 +199,22 @@ try {
             // One bounded student viewport per opted-in scene supports independent
             // figure/step review without archiving every intermediate state.
             else if (!observe && !live && initial.stagedReveal && run.name === 'pc-paper') await capture(scene, 'review', false);
+            if (!observe && run.name === 'mobile-paper' && mobileFollowup.has(`${item.id}:${scene.id}`)) await capture(scene, 'review', false);
           }
           if (await page.evaluate(() => lab._tabAvailable('problem'))) {
             await page.evaluate(() => { lab.s.revealed=false; lab.setStep(0); lab.setTab('problem'); }); await measure(scene, 'problem-hidden');
+            if (run.name === 'pc-paper' || run.name === 'mobile-paper') {
+              const reveal = page.locator('#apl-pane-problem .apl-answer [data-reveal]:visible');
+              if (await reveal.count()) {
+                await reveal.click(); await settle();
+                const opened = await page.evaluate(() => ({ open:!!lab.refs.answer?.classList.contains('open'), text:lab.refs.answer?.querySelector('.val')?.textContent.trim() || '' }));
+                const pass = opened.open && !!opened.text;
+                dest.interactions.push({ id:scene.id, run:run.name, kind:'answer-control', pass, open:opened.open, answerPresent:!!opened.text });
+                if (!pass) report.failures.push({lab:item.id,id:scene.id,run:run.name,reason:'answer-control'});
+                await measure(scene, 'answer-revealed');
+                await page.evaluate(() => { lab.s.revealed=false; lab.invalidate(true); }); await settle();
+              } else dest.interactions.push({ id:scene.id, run:run.name, kind:'answer-control', status:'NOT_APPLICABLE', reason:'scene-does-not-expose-standard-reveal-button' });
+            }
           }
           if (run.name === 'mobile-paper') {
             await page.evaluate(i => { lab.goScene(i); lab.setTab('explore'); }, scene.index); await settle();
