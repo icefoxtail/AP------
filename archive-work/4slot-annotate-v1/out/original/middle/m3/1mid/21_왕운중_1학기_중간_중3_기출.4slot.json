@@ -1,0 +1,1321 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_왕운중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "db3dbfccf1150601f6f65495f8ad88df7b216e98",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Antigravity",
+    "run": "original-372-381",
+    "at": "2026-11-07"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-\\sqrt{5})^{2} \\times \\s"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "\\sqrt{\\frac{9}{25}} - (-\\"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-\\sqrt{(-4)^{2}})$ 을 계산하면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "5\\times\\frac35-(-4)=7$이므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "-\\sqrt{(-4)^2}=-4$이다.<br>",
+            "evidenceType": "IMPLIED",
+            "justification": "음수 거듭제곱의 근호를 절댓값 성질로 계산한다."
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "(-\\sqrt5)^2=5$, $\\sqrt{\\f",
+            "evidenceType": "IMPLIED",
+            "justification": "음수 제곱근의 제곱을 양수로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 제곱 성질과 음수의 부호 규칙을 적용하여 식의 값을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "x^{2}+ax-21=(x+b)(x-3)$일 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a-b$의 값은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "x^2+(b-3)x-3b$이다.<br>$-3b",
+            "evidenceType": "IMPLIED",
+            "justification": "우변의 두 일차식을 전개한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "-3b=-21$에서 $b=7$, $a=b-3=",
+            "evidenceType": "IMPLIED",
+            "justification": "상수항과 일차항의 계수를 비교한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "a-b=-3$이다. 따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 a와 b의 차를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a, b$에 대하여 $x^{2}+ax-"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "우변을 전개하여 계수비교법으로 미정계수 a, b를 구한 뒤 차를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "3x^{2}y-6xy^{2}$의 인수가 아닌 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수가 아닌 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "3xy(x-2y)$이다.<br>따라서 $x-y",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 3xy를 묶어낸다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "3x^2y-6xy^2=3xy(x-2y)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "다항식을 완전히 인수분해한다."
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "x-y$는 인수가 아니므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해된 인수를 바탕으로 보기를 검증한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다항식을 공통인수로 묶어 인수분해한 후 각 선지가 인수가 되는지 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "(-\\frac{1}{3}x-1)^{2}$과 전"
+          }
+        ],
+        "goal": [
+          {
+            "term": "전개",
+            "src": "stem",
+            "quote": "전개식이 같은 것은? [4점]"
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "\\frac19(x+3)^2$이다. 따라서 정답"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "-\\frac13(x+3)$이므로 $(-\\fra",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호 안에서 공통인수 -1/3을 묶어낸다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "(-\\frac13x-1)^2=\\frac19(x",
+            "evidenceType": "IMPLIED",
+            "justification": "묶어낸 음수 상수를 제곱하여 양수로 변환한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "괄호 안의 음수 상수를 묶어내어 제곱의 성질을 이용해 동치인 식을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "(x+3y)^{2}-(ax+y)(x+2y)$를"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "xy$의 계수가 3일 때, 상수의 값은? [3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수의 값은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "x^2+6xy+9y^2$, $(ax+y)(x+",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식과 일차식의 곱을 전개한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "xy$의 계수는 $5-2a$이므로 $5-2a=",
+            "evidenceType": "IMPLIED",
+            "justification": "전개식의 xy 동류항 계수를 합산한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "5-2a=3$, 따라서 $a=1$이고 정답은 ",
+            "evidenceType": "IMPLIED",
+            "justification": "일차방정식을 세워 미정계수 a를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다항식을 전개하여 xy 항의 계수를 동류항으로 묶고 일차방정식을 풀어 상수를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "곱셈공식",
+            "src": "stem",
+            "quote": "다음 보기의 전개식 중에서 옳은 것을 모두 고"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "(-x+3)(x+3)=x^{2}-9$ ㄴ. $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른 것은? [4점] <div"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "ㄱ은 $-x^2+9$라 거짓, ㄴ은 참, ㄷ은",
+            "evidenceType": "IMPLIED",
+            "justification": "합차공식을 적용하여 보기의 부호를 확인한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "ㄷ은 $4x^2-12xy+9y^2$라 거짓, ",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 전개 공식을 비교한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "ㄴ은 참, ㄷ은 $4x^2-12xy+9y^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "다항식 곱셈을 수행하여 일치 여부를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "곱셈공식과 합차공식을 적용하여 각 전개식 보기의 참/거짓을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "근호가 있는 수는 무리수이다. ㄴ. 유한소수는"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유한소수는 유리수이다. ㄷ. 순환소수가 아닌 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 찾으면? [4점] <div c"
+          }
+        ],
+        "method": [
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "근호가 있어도 $\\sqrt4=2$처럼 유리수일",
+            "evidenceType": "IMPLIED",
+            "justification": "근호가 있어도 제곱수는 유리수임을 확인한다."
+          },
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "순환하지 않는 무한소수는 무리수이며, 유리수만",
+            "evidenceType": "IMPLIED",
+            "justification": "소수의 분류에 따른 무리수 정의를 적용한다."
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "유리수만으로 수직선을 완전히 메울 수 없다.<",
+            "evidenceType": "IMPLIED",
+            "justification": "수직선의 완비성 성질을 검토한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "실수의 분류 체계와 수직선의 성질을 근거로 보기의 참/거짓을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "다음 중에서 무리수의 개수는? [4점] <di"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "-2, \\frac{3}{10}, \\sqrt{0"
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "0.\\dot{9}, \\sqrt{\\frac{24"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "무리수의 개수는? [4점] <div class"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "-4+\\sqrt{0.01},\\sqrt{\\fra",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안의 수가 유리수로 풀리는지 확인한다."
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "\\sqrt{\\frac{25}{100}},0.\\",
+            "evidenceType": "IMPLIED",
+            "justification": "기약분수의 제곱근을 판단한다."
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "유리수는 $-2,\\frac3{10},-4+\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수와 무리수를 명확히 구분하여 센다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호와 순환소수의 유리수 전환 가능성을 검토하여 무리수의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "\\sqrt{3.4}=1.844$, $\\sqrt"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "\\sqrt{34}=5.831$ 일 때, 다음 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "\\sqrt{\\frac{34}{10000}}=\\",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 짝수 거듭제곱을 근호 밖으로 꺼낸다."
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "\\frac{\\sqrt{34}}{100}=0.0",
+            "evidenceType": "IMPLIED",
+            "justification": "분수 계산으로 소수점 이동을 확인한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "0.05831$이다. 따라서 ⑤가 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 근삿값을 대입하여 바른 선지를 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "100의 거듭제곱을 이용하여 소수점 위치를 조절하고 주어진 제곱근 값을 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "6 \\le \\frac{\\sqrt{2(n-1)}"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "만족시키는 자연수 n은 모두 몇 개인가? [4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모두 몇 개인가? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "12\\le\\sqrt{2n-2}<14$이므로 $",
+            "evidenceType": "IMPLIED",
+            "justification": "양변에 2를 곱해 부등식을 정리한다."
+          },
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "144\\le2n-2<196$, 즉 $73\\le",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변을 제곱하여 근호를 벗긴다."
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "73\\le n<99$이다.<br>$n=73,\\",
+            "evidenceType": "IMPLIED",
+            "justification": "n의 범위를 정수 구간으로 확정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "n=73,\\ldots,98$의 26개이므로 정"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부등식의 각 변에 양수를 곱하고 제곱하여 자연수 n의 범위를 구한 뒤 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "(x-y-1)(x-y+1)$을 전개하면? [4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "전개",
+            "src": "stem",
+            "quote": "전개하면? [4점]"
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "x^2-2xy+y^2-1$이므로 정답은 ②이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "(x-y)^2-1=x^2-2xy+y^2-1$이",
+            "evidenceType": "IMPLIED",
+            "justification": "공통부분 x-y를 한 덩어리로 보고 합차공식을 적용한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "x^2-2xy+y^2-1$이므로 정답은 ②이다",
+            "evidenceType": "IMPLIED",
+            "justification": "(x-y)^2을 완전제곱식으로 전개한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "(x-y-1)(x-y+1)=(x-y)^2-1=",
+            "evidenceType": "IMPLIED",
+            "justification": "합차공식 (A-1)(A+1)=A^2-1을 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통부분을 묶어 합차공식을 적용한 후 완전제곱식을 전개한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형의 대각선의 길이 ㄴ. 반지름의 길이가"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원의 넓이 ㄷ. 넓이가 \\frac{9}{16}"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형의 한 변의 길이 ㄹ. 한변의 길이가 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "무리수인 것을 모두 고른 것은? [4점]\\n<"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직사각형 대각선은 $10$, 원의 넓이는 $4",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스 정리로 대각선 길이를 구해 유리수임을 확인한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원의 넓이는 $4\\pi$, 정사각형 한 변은 ",
+            "evidenceType": "IMPLIED",
+            "justification": "원주율 파이가 포함되어 무리수임을 판정한다."
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형 높이는 $3\\sqrt3$이다.<br>",
+            "evidenceType": "IMPLIED",
+            "justification": "정삼각형 높이 공식을 적용하여 무리수임을 도출한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "도형의 길이와 넓이 공식을 적용하여 각 값이 유리수인지 무리수인지 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "-\\frac{1}{\\sqrt{5}} \\time"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "단, $a$는 소수) [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "src": "stem",
+            "quote": "유리수 $k$의 값은? (단, $a$는 소수)"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유리수 $k$의 값은? (단, $a$는 소수)"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "-\\sqrt{90})=3\\sqrt2$, $\\f",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부를 소인수분해하여 간단한 근호로 만든다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\frac{5\\sqrt{32}}{\\sqrt{8",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈을 역수의 곱으로 바꾸고 약분한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "3\\sqrt2$, $\\frac{5\\sqrt{3",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 유리화를 거쳐 최종 계수 k를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 곱셈과 나눗셈을 정리하고 소인수를 분리하여 유리수 계수 k를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "x^{2}+mx+n$이 완전제곱식이 되도록 하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "m, n의 값이 아닌 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "n=\\frac{m^2}{4}$이다.<br>①~",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수가 1인 이차식의 완전제곱식 조건을 적용한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "m=-\\frac23$이면 $n=\\frac19$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 선지의 m 값을 대입하여 n과의 일치 여부를 검증한다."
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "n=\\frac19$이어야 하므로 $\\frac4",
+            "evidenceType": "IMPLIED",
+            "justification": "분수 계산 오류를 찾아 바르지 않은 선지를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱식이 되기 위한 일차항 계수와 상수항 사이의 관계식을 점검한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "x+y=3, x-y=5$ 일 때, $x^{2}"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "x-y=5$ 일 때, $x^{2}-y^{2}+"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "x^{2}-y^{2}+4x-4y$ 의 값은? "
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "(x-y)(x+y+4)$이다.<br>$x-y=",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2 - y^2에 합차공식을 쓰고 공통인수 4를 묶어낸다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x^2-y^2+4x-4y=(x-y)(x+y+4",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 x-y를 묶어 다항식을 인수분해한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "5\\times7=35$, 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합과 차의 값을 대입하여 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다항식을 적절히 묶어 인수분해한 후 주어진 합과 차의 값을 대입하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "\\sqrt{3}+\\sqrt{8}<\\sqrt{2"
+          },
+          {
+            "term": "무리수",
+            "src": "choices",
+            "quote": "\\sqrt{3}+\\sqrt{8}<\\sqrt{2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소관계",
+            "src": "solution",
+            "quote": "양변은 양수이므로 제곱하여 비교한다.<br>①"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "양수이므로 제곱하여 비교한다.<br>① $(\\",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 양변을 제곱하여 크기를 비교한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(\\sqrt{3}+\\sqrt{8})^2=11+",
+            "evidenceType": "IMPLIED",
+            "justification": "합의 제곱 공식을 전개한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "11+4\\sqrt{6}>20$이다. $4\\sq",
+            "evidenceType": "IMPLIED",
+            "justification": "무리수 근삿값과 비교하여 대소를 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "양변을 제곱하여 전개한 후 무리수의 범위를 이용해 부등식의 참/거짓을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 번째로 큰 수는 $a$, 세 번째로 작은 "
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "-\\sqrt{\\frac{9}{4}}, -\\sq"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a^{2}-b^{2}$의 값은? [5점]\\n"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "-\\sqrt3<-\\sqrt{\\frac52}< ",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 여섯 수의 크기 순서를 결정한다."
+          },
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "-\\sqrt3<-\\sqrt{\\frac52}< ",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부의 크기를 비교하여 순위를 매긴다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$a^2-b^2=4$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a^2과 b^2을 각각 구하여 차를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여섯 수의 대소를 정렬하여 a와 b를 특정한 뒤 제곱의 차를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "(2x-1)(2x+5)+k$ 가 완전제곱식이 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 k의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "4x^2+8x-5+k$이다.<br>완전제곱식 ",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 식을 전개하여 동류항으로 정리한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식 $(2x+2)^2=4x^2+8x+4",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 꼴과 계수를 비교한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "k=9$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "상수항 일치 조건으로 k를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "식을 전개한 뒤 완전제곱식이 되도록 상수항을 맞추는 방정식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "A=\\sqrt{1-2x+x^{2}}+2\\sqr"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른 것은? [5점]\\n<di"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "\\sqrt{(x-1)^2}+2\\sqrt{(x+",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안을 완전제곱식으로 인수분해한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "|x-1|+2|x+2|$이다.<br>$x<-2",
+            "evidenceType": "IMPLIED",
+            "justification": "근호와 제곱을 절댓값으로 전환한다."
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "x<-2$이면 $A=(1-x)+2(-x-2)=",
+            "evidenceType": "IMPLIED",
+            "justification": "x의 구간별로 절댓값 기호를 벗겨 참/거짓을 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 안의 식을 완전제곱식으로 변형하여 절댓값으로 고친 뒤 구간별로 부호를 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "원기둥의 부피를 $A\\,\\mathrm{cm}^"
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "부피를 $A\\,\\mathrm{cm}^{3}$,"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "겉넓이를 $B\\,\\mathrm{cm}^{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이때 $a+b$의 값을 구하시오. (단, $a"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "A=\\pi(\\sqrt{2})^{2}(3\\sqr",
+            "evidenceType": "IMPLIED",
+            "justification": "원기둥 부피와 겉넓이 공식을 적용한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "6\\sqrt{5}\\pi$이다.<br>겉넓이는 ",
+            "evidenceType": "IMPLIED",
+            "justification": "B/A 식을 분모의 유리화로 정리한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "밑면의 반지름은 $\\sqrt{2}$ cm, 높",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수 계수 a와 b를 더하여 최종 값을 도출한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "단, $a,b$는 유리수) [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원기둥 부피와 겉넓이를 근호 식으로 표현하여 비율을 계산하고 유리화하여 계수의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "a\\odot b=\\begin{cases}a&("
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a,b$에 대하여 $a\\odot b"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "(3\\sqrt{6}\\odot5\\sqrt{2})"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하시오. [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "3\\sqrt{6}>5\\sqrt{2}$이다. 실",
+            "evidenceType": "IMPLIED",
+            "justification": "정의된 연산에 따라 두 무리수의 크기를 비교한다."
+          },
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "두 수는 양수이고 $54>50$이므로 $3\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱을 비교하여 크기 순서를 결정한다."
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "3\\sqrt{6}>5\\sqrt{2}$이다. 실",
+            "evidenceType": "IMPLIED",
+            "justification": "각 연산 결과를 곱하여 최종 값을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "새로 정의된 연산 규칙에 따라 무리수의 대소를 판별하고 최종 곱을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "999^{2}-1}, B=\\sqrt{2022\\"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "\\sqrt{2022\\times2020+1}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A+B$의 값을 구하시오. [6점]\\n$A="
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "999^2-1}=\\frac{998\\cdot10",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에 합차공식을 적용하여 인수분해한다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "998(996+4)}{999^2-1}=\\fra",
+            "evidenceType": "IMPLIED",
+            "justification": "분자에서 공통인수 998을 묶어낸다."
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "\\sqrt{2021^2}=2021$이므로 $A",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안의 연속한 짝수의 곱을 완전제곱수로 변형한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해 공식을 이용하여 큰 수의 분수식과 근호 식을 간단히 계산한 후 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "A=2\\sqrt{2}-1, B=4-2\\sqrt"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소관계",
+            "src": "stem",
+            "quote": "의 대소를 비교하시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "A-B=4\\sqrt2-5>0$, $B-C=\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수의 차를 구하여 0과의 대소를 비교한다."
+          },
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "4\\sqrt2-5>0$, $B-C=\\sqrt{",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱을 비교하여 차의 양음 부호를 확정한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "A>B>C$, 즉 $C<B<A$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "비교 결과를 종합하여 최종 부등호로 정리한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 수의 차를 구하고 근호와 유리수의 크기를 비교하여 세 수의 순서를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "x=\\frac{2}{\\sqrt{5}+\\sqrt"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "x^{2}y-xy^{2}$의 값을 구하시오. "
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "x=\\sqrt5-\\sqrt3$, $y=2(\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 유리화를 통해 x와 y를 간단히 정리한다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "x^2y-xy^2=xy(x-y)=-4\\sqrt",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 xy를 묶어 인수분해한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "-4\\sqrt5-12\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "곱과 차를 대입하여 최종 값을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분모를 유리화한 뒤 주어진 다항식을 인수분해하여 곱과 차의 값을 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 145,
+    "quotesNotFound": 0,
+    "fail": 0,
+    "warn": 0
+  }
+}
