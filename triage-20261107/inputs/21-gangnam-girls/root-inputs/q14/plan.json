@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "수직점근선에서는 분모가 0이 된다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "2",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "y2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "5"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "수직점근선에서 얻은 함수값과 주어진 점으로 일차함수를 정한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분모 2-f(x)가 x=4에서 0이므로 f(4)=2다.",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=5이고 두 점을 잇는 일차함수이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선 조건이 일차함수 위 한 점으로 바뀌고 두 점으로 직선이 정해짐을 보여 준다."
+  ]
+}
