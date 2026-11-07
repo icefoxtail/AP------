@@ -65,6 +65,7 @@
     _build() {
       const d = this.def;
       document.body.classList.add('apl');
+      document.body.classList.toggle('apl-staged', !!d.stagedReveal);
       if (d.courseColor) document.documentElement.style.setProperty('--c-course', d.courseColor);
       const ui = (this.ui = {});
 
