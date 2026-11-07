@@ -121,7 +121,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시로 반지름 5인 원과 수직선 x=3이 두 점 P(3,4), Q(3,−4)에서 만나는 좌표평면 그림.",
+    "solutionImageCaption": "예: 반지름이 5인 원 x²+y²=25에서 x=3인 점은 P(3,4), Q(3,−4)로 두 개이다. 수직선이 그래프와 두 점에서 만나는 경우가 있으므로 원은 함수의 그래프가 아니다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -221,10 +225,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수를 평행이동 꼴로 변형하면 정의역, 치역, 점근선과 대칭성을 한 번에 확인할 수 있다.\n조건 정리: $y=\\dfrac{x+1}{1-x}=-1-\\dfrac2{x-1}$이다.\n풀이 방향: 변형한 식을 기준으로 각 보기를 하나씩 판정한다.\n정석 풀이: 분모가 $0$이 되는 $x=1$은 정의역에서 제외되므로 ①은 옳다. $y=-1$은 될 수 없으므로 ②도 옳다. 점근선은 $x=1$, $y=-1$이어서 교점은 $(1,-1)$이므로 ③은 옳다. $X=x-1$, $Y=y+1$로 두면 $XY=-2$이고 이 그래프는 $Y=X$에 대하여 대칭이므로 원래 그래프는 $y=x-2$에 대하여 대칭이다. 따라서 ④도 옳다. 한편 평행이동으로 얻는 기본 그래프는 $y=-\\dfrac2x$이므로 $y=\\dfrac2x$를 평행이동한 것이라는 ⑤는 옳지 않다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "유리함수의 점근선과 대칭 직선을 나타낸 해설 그래프",
-    "solutionImageCaption": "점근선 x=1, y=−1과 중심 (1,−1), 대칭 직선 y=x−2를 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=(x+1)/(1-x)의 두 갈래와 두 점근선, 점근선의 교점 C(1,-1), 대칭 직선 y=x-2를 나타낸 그래프.",
+    "solutionImageCaption": "y=(x+1)/(1-x)=-1-2/(x-1)이므로 점근선의 교점은 C(1,-1)이고 그래프는 직선 y=x-2에 대칭이다. 평행이동으로 얻는 기본 그래프는 y=-2/x이므로 y=2/x를 평행이동한 것이라는 ⑤는 옳지 않다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -259,11 +263,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 증가함수와 그 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다.\n조건 정리: $f(x)=(x-\\dfrac12)^2+\\dfrac12$이고 정의역에서 증가한다.\n풀이 방향: $f$가 증가함수이므로 $f$와 $f^{-1}$의 교점은 $f(x)=x$를 만족하는 점으로 구한다.\n정석 풀이: 두 그래프의 공통점 $(x,y)$에서는 $y=f(x)$이고 동시에 $y=f^{-1}(x)$이므로 $f(y)=x$이다. $f$가 증가함수이므로 $x\\ne y$이면 $x<y$ 또는 $x>y$에서 $f(x)$와 $f(y)$의 대소가 뒤바뀌어 모순이 생긴다. 따라서 $x=y$이다. $f(x)=x$에서 $x^2-2x+\\dfrac34=0$, 즉 $(x-\\dfrac12)(x-\\dfrac32)=0$이므로 교점은 $P(\\dfrac12,\\dfrac12)$, $Q(\\dfrac32,\\dfrac32)$이다. 따라서 $PQ=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q8-solution-v2.svg",
 
-    "solutionImageAlt": "포물선 f(x)=(x−1/2)²+1/2와 그 역함수의 그래프가 직선 y=x 위의 두 점 P(1/2,1/2), Q(3/2,3/2)에서 만나고, PQ=√2임을 표시한다.",
+    "solutionImageAlt": "해설 그림: x≥1/2에서 증가하는 이차함수 y=f(x)와 그 역함수 y=g(x)의 그래프, 직선 y=x, 그리고 세 그래프가 만나는 두 점 P(1/2,1/2), Q(3/2,3/2).",
 
-    "solutionImageCaption": "교점 P=(1/2,1/2), Q=(3/2,3/2)와 PQ=√2를 확인한다.",
+    "solutionImageCaption": "f는 x≥1/2에서 증가하므로 f와 역함수 g의 교점은 직선 y=x 위에 있다. f(x)=x에서 x=1/2, 3/2이므로 P(1/2, 1/2), Q(3/2, 3/2)이고 PQ=√(1²+1²)이다. 정답은 ②이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
@@ -303,7 +307,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형 ABCDE와 다섯 대각선, 내부 교점 5개가 있는 그림. 대각선 AC가 강조되어 있다.",
+    "solutionImageCaption": "점은 모두 10개이고 각 대각선(예: 강조한 AC) 위에는 4개의 점이 한 직선 위에 놓인다. 삼각형이 되지 않는 세 점은 대각선마다 C(4,3)=4가지씩 5×4=20가지이므로 C(10,3)−20=100이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -336,7 +344,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 열린구간 (-1,4)에서 그린 두 직선 y=x-2와 y=-x+1. 두 직선 모두 양 끝점이 속이 빈 점이고 치역은 (-3,2)이다.",
+    "solutionImageCaption": "두 열린구간의 길이가 모두 5이므로 |a|=1이다. a=1이면 b=-2로 양수가 아니고, a=-1이면 b=1로 조건을 만족한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -368,11 +380,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 점근선의 교점을 이용해 유리함수를 $f(x)=\\dfrac{a}{x-2}+3$의 꼴로 나타낸다.\n조건 정리: 수직점근선은 $x=2$, 수평점근선은 $y=3$이다.\n풀이 방향: 구간 $0\\le x\\le1$에서의 최댓값 조건으로 $a$를 정한 뒤 $f(4)$를 계산한다.\n정석 풀이: $f(x)=\\dfrac{a}{x-2}+3$으로 둘 수 있다. 만약 $a<0$이면 $0\\le x\\le1$에서 $x-2<0$이므로 $\\dfrac{a}{x-2}>0$이 되어 $f(x)>3$이므로 최댓값이 $2$일 수 없다. 따라서 $a>0$이다. 이 구간에서 $\\dfrac1{x-2}$는 $-\\dfrac12$에서 $-1$로 작아지므로 $f(x)$의 최댓값은 $x=0$에서이다. $f(0)=3-\\dfrac a2=2$이므로 $a=2$이다. 따라서 $f(4)=\\dfrac2{4-2}+3=4$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 구간 최댓값을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수 f(x)=2/(x-2)+3의 그래프. 점근선 x=2, y=3과 0≤x≤1 구간에서 감소하는 부분(강조), 구간의 두 끝점 (0,2), (1,1)을 나타냈다.",
 
-    "solutionImageCaption": "점근선 교점 (2,3), [0,1]의 최댓값 2, f(4)=4를 확인한다.",
+    "solutionImageCaption": "점근선의 교점이 (2,3)이므로 f(x)=a/(x-2)+3이다. a<0이면 0≤x≤1에서 f(x)>3이라 최댓값 2가 될 수 없으므로 a>0이고, 이 구간에서 f는 감소하므로 f(0)=3-a/2=2에서 a=2이다. 따라서 f(4)=2/2+3=4이다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
@@ -441,13 +453,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 주어진 함수식을 $f(x)$의 식으로 바꾸고 역함수의 조건을 원래 함수의 값으로 해석한다.\n조건 정리: $f^{-1}(-3)=2$는 $f(2)=-3$과 같다.\n풀이 방향: 먼저 $f(x)$와 $a$를 구한 뒤 역함수의 두 절편으로 삼각형의 넓이를 구한다.\n정석 풀이: $t=1-x$로 두면 $x=1-t$이므로 $f(t)=3(1-t)+a=-3t+a+3$이다. 따라서 $f(x)=-3x+a+3$이다. $f(2)=-3$이므로 $-6+a+3=-3$에서 $a=0$이다. 따라서 $f(x)=-3x+3$이고 역함수는 $f^{-1}(x)=1-\\dfrac x3$이다. 이 직선의 $x$절편은 $3$, $y$절편은 $1$이므로 좌표축과 둘러싸인 삼각형의 넓이는 $\\dfrac12\\times3\\times1=\\dfrac32$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "역함수 직선과 좌표축 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 역함수 y=1-x/3의 직선 그래프와 x절편 3, y절편 1, 좌표축과 직선으로 둘러싸인 직각삼각형 영역.",
 
-    "solutionImageCaption": "f⁻¹=1−x/3의 절편과 좌표축 삼각형 넓이를 확인한다.",
+    "solutionImageCaption": "f(x)=-3x+3이므로 역함수는 y=1-x/3이고, x절편 3, y절편 1이다. 좌표축과 둘러싸인 삼각형의 넓이는 (1/2)×3×1=3/2이다. 정답은 ②이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -615,7 +627,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: y=f(x)의 그래프(0≤x≤2에서 y=2x, 2≤x≤4에서 y=4)와 수평선 y=1, y=3, 교점 (1/2,1), (3/2,3)을 나타낸 그래프.",
+    "solutionImageCaption": "g(u)=2가 되는 u는 1, 3이므로 f(x)=1, f(x)=3인 x를 찾는다. 0≤x≤2에서 2x=1, 2x=3이므로 x=1/2, 3/2이고 x≥2에서는 f(x)=4라 해가 없다. 구하는 값은 1/2+3/2=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
