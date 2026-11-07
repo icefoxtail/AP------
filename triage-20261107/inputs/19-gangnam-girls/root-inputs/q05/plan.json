@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "연립방정식 $\\begin{cases}y=4x+6",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      2,
+      -6,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "4"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "label": "y=l(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "p",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "label": "y=p(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "직선과 포물선의 접점을 연립방정식의 중근과 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선과 포물선의 접점을 연립방정식의 중근과 연결한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "직선과 포물선의 접점을 연립방정식의 중근과 연결한다."
+  ]
+}

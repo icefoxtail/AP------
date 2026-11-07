@@ -1,0 +1,98 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "직선 $(k+3)x-2y-8=0$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      2,
+      -7,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "1/2"
+        ],
+        "domain": [
+          "-6",
+          "1"
+        ],
+        "label": "y=l(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "1"
+        ],
+        "label": "y=m(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "l3",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "3/2"
+        ],
+        "domain": [
+          "-6",
+          "1"
+        ],
+        "label": "y=n(x)",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "-4"
+        }
+      ]
+    }
+  },
+  "caption": "평행이동 후 서로 다른 기울기의 직선들이 공통점을 지나는 모습을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행이동 후 서로 다른 기울기의 직선들이 공통점을 지나는 모습을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동 후 서로 다른 기울기의 직선들이 공통점을 지나는 모습을 보인다."
+  ]
+}

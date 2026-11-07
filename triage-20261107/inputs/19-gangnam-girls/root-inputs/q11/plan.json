@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "집합 $A=\\{x\\mid ax+1=2\\sqrt{-x-2}\\}$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -10,
+      1,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-8",
+        "-6",
+        "-4",
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "s",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "-1"
+        ],
+        "amplitude": "2",
+        "offset": "0",
+        "domain": [
+          "-10",
+          "-2"
+        ],
+        "label": "y=s(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1/2"
+        ],
+        "domain": [
+          "-10",
+          "-2"
+        ],
+        "label": "y=l(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1/2"
+        ],
+        "domain": [
+          "-10",
+          "-2"
+        ],
+        "label": "y=m(x)",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-6",
+          "y": "4"
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "예시 두 직선과 제곱근 그래프의 접점 및 끝점 만남을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 두 직선과 제곱근 그래프의 접점 및 끝점 만남을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 두 직선과 제곱근 그래프의 접점 및 끝점 만남을 비교한다."
+  ]
+}

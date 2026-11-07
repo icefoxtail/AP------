@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "유리함수 $y=-\\dfrac{2}{x}$의 그래프를",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      5,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "base",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-2",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "5"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "shift",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "2"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "5"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "기본 유리함수와 평행이동한 함수의 가지를 비교하고 주어진 입력의 위치를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "기본 유리함수와 평행이동한 함수의 가지를 비교하고 주어진 입력의 위치를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기본 유리함수와 평행이동한 함수의 가지를 비교하고 주어진 입력의 위치를 표시한다."
+  ]
+}

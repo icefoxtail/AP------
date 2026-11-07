@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $y=-\\sqrt{ax}$의 그래프를",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-1",
+        "1",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "orig",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "3"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "moved",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "3"
+        ],
+        "amplitude": "-1",
+        "offset": "3",
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=g(x)",
+        "color": "GREEN",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "ref",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "3"
+        ],
+        "amplitude": "1",
+        "offset": "-3",
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=h(x)",
+        "color": "WARM",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ]
+  },
+  "caption": "평행이동한 그래프와 x축 대칭 그래프의 순서를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행이동한 그래프와 x축 대칭 그래프의 순서를 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 그래프와 x축 대칭 그래프의 순서를 비교한다."
+  ]
+}
