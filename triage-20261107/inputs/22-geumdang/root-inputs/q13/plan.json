@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "원점을 지나는 직선 y=mx가 집합 A의 그래프와 만날 때 가능한 기울기의 전체 범위를 구한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      6,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "mid",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "hideLabel": true,
+        "emphasis": [
+          {
+            "from": "0",
+            "to": "1",
+            "toState": "OPEN",
+            "color": "BLUE"
+          }
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "BLUE",
+        "hideLabel": true,
+        "emphasis": [
+          {
+            "from": "1",
+            "to": "6",
+            "fromState": "OPEN",
+            "color": "BLUE"
+          }
+        ]
+      },
+      {
+        "id": "ray",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=-x/2"
+      }
+    ]
+  },
+  "caption": "예: 원점을 지나는 한 직선과 세 조각으로 나뉜 그래프의 만남을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<0에서는 (x+1)/(x−1), 0≤x<1에서는 −1, x>1에서는 1이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예로 m=−1/2인 직선은 세 조각과 만나지 않는다. x=1은 제외된다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 때문에 나뉘는 구간과 제외된 경계를 함께 보아 기울기에 따른 교차 여부를 판단한다."
+  ]
+}

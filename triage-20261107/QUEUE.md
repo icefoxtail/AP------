@@ -1,6 +1,6 @@
 # SVG 작업 대기열
 
-마지막 ROOT 기록: 2026-11-07 15:10 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
+마지막 ROOT 기록: 2026-11-07 15:19 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
 
 ## 사용자 기준
 
@@ -27,6 +27,7 @@
 | 2 | 22 복성고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-bokseong/root-inputs/`의 FIGURE Q06·07·11·14·20·22 입력 3종 작성, 모두 `NOT_RENDERED`; Q22는 JSON 형식만 확인 | Q12/Q19 OPEN과 기존 승인·시도 이력을 보존하고 PR #1442의 소스 중복 소유 여부를 확인한다. 인수 전까지 렌더 금지. |
 | 3 | 22 효천고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-hyocheon/root-inputs/`의 FIGURE Q02·04·05·13·15·16·18·22 입력 3종 작성, 모두 `NOT_RENDERED` | 기존 담당·실 동시 수정, SVG·검수·승인·시도 이력을 대조해 안전성을 확인한다. Q02 기존 Claude `EXEMPT` 기록은 보존한다. 이력 확인 전 `READY_FOR_RENDER` 금지. |
 | 4 | 23 강남여고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/23-gangnam-girls/root-inputs/`의 Q02·03·05·12·15·16·18·19·20·21·22·23·24 입력 3종, 모두 `NOT_RENDERED` | 기존 Claude 작업·SVG·승인·시도 이력과 소유를 대조한 뒤에만 인수 준비 상태를 재평가한다. Q06·Q17 기존 완료를 보존한다. |
+| 5 | 22 금당고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-geumdang/root-inputs/`의 Q02·06·13 완전한 입력 세트만 게시, 모두 `NOT_RENDERED`; Q15·17·18·20·21 폴더 전체는 검토 보류 | 기존 원격 초안·소유·SVG·시도 이력을 대조한다. Q01/Q08 KEEP, Q09 CONTENT OPEN 등 세부 이력과 추가 렌더 금지 항목을 아래에서 확인한다. 보류 파일은 재시도하지 않는다. |
 
 ## 22 강남여고 기존 자산·시도 이력
 
@@ -60,5 +61,20 @@
 - 기존 `EXEMPT` 기록과 승인 결과는 판정 초안에 덮어쓰지 않고 보존한다. Q06·Q17의 기존 Claude 완료 상태도 그대로 둔다.
 - Q23의 첫 multi-curve 프레이밍 실패(`OVERLAY_LATTICE_COLUMN_UNDEFINED:1`) 및 이후 polynomial 후보의 사전검사 통과를 상태표에 기록했다. 공식 렌더와 실제 그림 검수는 하지 않았으므로 완료로 취급하지 않는다.
 - 판정표는 `triage-20261107/23-gangnam-girls.md`다. 시험지 단위 인수 전 실제 작업 소유, 기존 자산 및 문항별 승인·시도 수를 확인한다.
+
+## 22 금당고 기존 판정·자산 확인
+
+- 기존 원격 초안 `codex/svg-plan-22-geumdang-h1-2final` (확인된 HEAD `bde79af73c56911ce63ebdb0448a6c6706f1d13e`)은 보존하고 수정하지 않는다.
+- Q01과 Q08의 `KEEP`, Q09의 `CONTENT OPEN` 판정을 보존한다. Q08은 기존 3회 실패와 4번째 시도의 불확실성이 있어 누적 횟수를 확인하기 전 추가 렌더를 금지한다.
+- Q15는 `4/t³` 미지원 `OPEN` 이력과 시도 횟수를 보존한다. Q17은 글꼴 DNS `TOOLING_GAP`이며 PNG 미생성 기록을 보존한다.
+- Q20은 9월 파일럿과 중복 가능성이 있어 기존 SVG 및 시도 이력을 대조한다.
+- Q21은 `OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS:C1` 사전검사 후 `equalUnits=true`로 보완해 framing/spec만 통과했다. 공식 렌더는 실행하지 않았다. 두 접점 엔진 검증 미지원 가능성 `OPEN` 및 시도 이력을 확인한다.
+- 새 Q02·Q06·Q13 입력은 완전한 세트로 게시한 `NOT_RENDERED` 초안이다. 기존 SVG·승인·실패 및 누적 시도 기록을 보존하고, 소유·이력을 검토할 때까지 시험지 상태를 `ROOT_PREPARING`으로 둔다.
+- Q15·Q17·Q18·Q20·Q21은 각 폴더에 item/plan/publish/STATUS 네 파일을 완성된 세트로 올리기 위해 전체 폴더를 보류했다. 아래 특정 blob 생성 요청은 자동 심사에서 거절됐다. 거절된 호출을 재시도하거나 다른 경로로 게시하지 않는다. 이 다섯 문항은 `OPEN`으로 유지하고, 내일 사용자 확인 후 필요한 초안을 수정해 새 검토를 받는다. 모든 초안은 `NOT_RENDERED`다.
+  - `inputs/22-geumdang/root-inputs/q15/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “정답은 ①이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 `4/t³` 미지원 `OPEN` 및 누적 시도 수를 확인하고, 실제 미지원 여부·이력을 보존한다. 다음은 지원 확인과 이력 대조이며, 확인 전 렌더하지 않는다.
+  - `inputs/22-geumdang/root-inputs/q17/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “정답은 ⑤이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 글꼴 DNS `TOOLING_GAP`, PNG 미생성, 계획·모델 검증 이력을 보존하고, 다음은 환경 복구 여부 및 시도 원장 확인이다.
+  - `inputs/22-geumdang/root-inputs/q18/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “구하는 값은 9이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 SVG·승인·시도 기록은 아직 대조 전이므로 그대로 보존하고, 다음은 기존 결과와 원장 확인 및 사용자 검토 후 초안 재평가다.
+  - `inputs/22-geumdang/root-inputs/q20/{item.json,plan.json,publish.json,STATUS.md}`: `plan.json` blob 거절 사유는 그림 조건 속 합계값 10과 40을 결과값 반복으로 분류한 것이고, `publish.json` blob 거절 사유는 caption의 10, 40, 72를 답/결과값으로 분류한 것이다. 기존 9월 파일럿 SVG 중복 가능성과 이력 대조를 보존한다. 다음은 파일럿·시도 원장 비교와 사용자 검토 후 초안 재평가다.
+  - `inputs/22-geumdang/root-inputs/q21/{item.json,plan.json,publish.json,STATUS.md}`: `publish.json` blob 거절 사유는 caption의 “구하는 값은 4π이다”를 그림/alt 안의 답으로 분류한 것이다. 기존 `OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS:C1` 수정 후 framing/spec 통과만, 실제 렌더 미실행, 두 접점 검증 미지원 가능성 `OPEN` 및 시도 이력 확인 필요 기록을 보존한다. 다음은 공식 엔진 지원·기존 원장 확인이다.
 
 나머지 시험지는 ROOT가 실제 상태와 중복 소유를 확인해 이 표에 차례로 추가한다. 위 목록 밖의 상태를 완료·대기로 추정하지 않는다.
