@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "직각변",
+        "elements": [
+          "AP",
+          "PB"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "변수",
+        "elements": [
+          "u",
+          "v"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "지름 AB=2인 반원에서 ∠APB=90°이므로, u=AP², v=PB²라 두면 u+v=4다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2이고 P는 지름 AB인 반원 위에 있다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "AP와 PB의 제곱을 u와 v로 각각 두고 두 값의 합이 4임을 나타낸다."
+  ]
+}

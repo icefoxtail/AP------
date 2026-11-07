@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "ₙP₂",
+          "₆C₂"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "정리",
+        "elements": [
+          "n²−n",
+          "15"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "순열과 조합을 각각 식과 수로 바꾼다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ₙP₂−₆C₂=15이고 n은 자연수이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ₙP₂=n²−n과 ₆C₂=15를 대응한다."
+  ]
+}

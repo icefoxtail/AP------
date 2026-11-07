@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "두 직각변의 제곱",
+        "elements": [
+          "AP²",
+          "PB²"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "u=AP²",
+        "elements": [
+          "u",
+          "4−u"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "원본 반원에서 직각삼각형의 두 변을 하나의 변수로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2이고 P는 지름 AB인 반원 위에 있다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "AP²+PB²=4에서 u=AP²로 두면 PB²=4−u임을 분리한다."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "s=a+b",
+        "elements": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "c의 개수",
+        "elements": [
+          "7",
+          "5",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ]
+  },
+  "caption": "s의 값에 따라 가능한 c의 개수를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a,b,c는 음이 아닌 정수이고 a+b<c, a+b+c≤7이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "s별 가능한 c의 개수는 7, 5, 3, 1이다."
+  ]
+}

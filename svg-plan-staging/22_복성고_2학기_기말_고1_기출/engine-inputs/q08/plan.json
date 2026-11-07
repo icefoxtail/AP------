@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "배열",
+        "elements": [
+          "전체",
+          "이웃"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "각 경우",
+        "elements": [
+          "720",
+          "240"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "전체 배열과 두 작품이 이웃하는 배열을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 여섯 작품 가운데 같은 작가의 두 작품이 이웃하지 않아야 한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 배열 수 720과 이웃한 배열 수 240을 따로 표시한다."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 그래프의 교점 개수는 $y$를 미지수로 만든 이차방정식의 해 중",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -1,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "9/4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ]
+  },
+  "caption": "예: k=9/4일 때 직선과 무리함수 그래프의 교점을 살펴본다."
+}

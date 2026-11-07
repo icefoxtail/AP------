@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "연산",
+        "elements": [
+          "P",
+          "F"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "계산값",
+        "elements": [
+          "20",
+          "24"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "P=₅P₂, F=4!을 각각 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "₅P₂와 4!의 합을 구한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 연산 P와 F의 계산값을 각각 표시한다."
+  ]
+}

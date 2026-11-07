@@ -1,0 +1,56 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "공연 순서",
+        "elements": [
+          "1번",
+          "3번"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "필수 팀",
+        "elements": [
+          "댄스"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "첫째와 셋째 공연에 댄스 팀을 배치한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "선택된 다섯 팀 중 첫 번째와 세 번째 공연은 댄스 동아리다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 자리에 서로 다른 댄스 팀이 놓여야 함을 분리한다."
+  ]
+}

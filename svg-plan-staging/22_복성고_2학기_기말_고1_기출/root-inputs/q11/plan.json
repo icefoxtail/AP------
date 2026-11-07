@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "명제",
+        "elements": [
+          "q→p",
+          "s→r",
+          "p→q"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "판정",
+        "elements": [
+          "참",
+          "거짓"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "조건 사이 함의와 역의 성립 여부를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "q가 참이면 a=b=0이고, s가 참이면 a=1이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "q→p와 s→r이 성립하고 p→q는 항상 성립하지 않는다는 관계를 분리한다."
+  ]
+}

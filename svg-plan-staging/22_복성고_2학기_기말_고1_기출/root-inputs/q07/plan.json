@@ -1,0 +1,50 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수는 정의역·치역·특정 점 대입·평행이동량을 각각 확인하면",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -3,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "2",
+        "domain": [
+          "-3/2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "emphasis": [
+          {
+            "from": "-3/2",
+            "to": "6",
+            "fromState": "CLOSED",
+            "toState": "NONE"
+          }
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3/2",
+        "0"
+      ],
+      "y": [
+        "0",
+        "2"
+      ]
+    }
+  },
+  "caption": "무리함수의 시작점과 내려가는 방향을 확인한다."
+}

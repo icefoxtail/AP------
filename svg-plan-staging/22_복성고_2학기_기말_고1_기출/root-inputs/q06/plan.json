@@ -1,0 +1,31 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "P와 Q가 겹치지 않는 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "q→¬p가 참이면 Q⊆P의 여집합이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "Q의 모든 원소가 P 밖에 있다는 관계를 나타낸다."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "exam": "archive/exams/original/high/h1/2final/22_복성고_2학기_기말_고1_기출.js",
+  "branch": "codex/22-bokseong-h1-2final-svg",
+  "startedAt": "2026-11-07",
+  "renderAttempts": [
+    {
+      "qid": 1,
+      "attempt": 1,
+      "command": "node archive/tools/geometry-equation/production/render-plan.mjs --item <engine-inputs/q01/item.json> --plan <engine-inputs/q01/plan.json> --out <renders/q01/attempt-01>",
+      "result": "FAILED",
+      "stage": "measure",
+      "reason": "Chromium distribution 'chrome' was not found at /opt/google/chrome/chrome; GEOMETRY_BROWSER_EXECUTABLE was unset.",
+      "artifact": "renders/q01/attempt-01/figure-result.json"
+    },
+    {
+      "qid": 1,
+      "attempt": 2,
+      "command": "GEOMETRY_BROWSER_EXECUTABLE=/usr/bin/chromium PYTHONPATH=<repo>/.tmp/apmath-visual-engine/dependencies/python node archive/tools/geometry-equation/production/render-plan.mjs --item <engine-inputs/q01/item.json> --plan <engine-inputs/q01/plan.json> --out <renders/q01/attempt-02>",
+      "result": "FAILED",
+      "stage": "compose",
+      "reason": "The locked font .tmp/apmath-visual-engine/dependencies/NotoSansKR.ttf was missing. The Q1 plan/model and typography measurement reached compose; no SVG or PNG was emitted.",
+      "artifact": "renders/q01/attempt-02/figure-result.json"
+    }
+  ],
+  "planContractChecks": [
+    {
+      "attempt": 1,
+      "scope": "Q1–4, Q6, Q8–11, Q14, Q16–17, Q19–20, Q22",
+      "result": "PARTIAL",
+      "failures": [
+        {"qid": 2, "reason": "MAPPING_ELEMENT_TEXT_UNSUPPORTED: subscript permutation/factorial labels"},
+        {"qid": 4, "reason": "MAPPING_ELEMENT_TEXT_UNSUPPORTED: subscript and polynomial labels"},
+        {"qid": 10, "reason": "MAPPING_ELEMENT_TEXT_UNSUPPORTED: middle-dot and superscript labels"},
+        {"qid": 11, "reason": "MAPPING_ELEMENT_TEXT_UNSUPPORTED: implication-arrow labels"},
+        {"qid": 22, "reason": "MAPPING_COLUMNS_INVALID: overlong mapping column name"}
+      ],
+      "action": "Corrected only engine-input plan/publish copies for Q2, Q4, Q10, Q11, Q22; original root-input drafts preserved."
+    },
+    {
+      "attempt": 2,
+      "scope": "Q1–4, Q6, Q8–11, Q14, Q16–17, Q19–20, Q22",
+      "result": "PASS",
+      "count": "15/15",
+      "artifact": "evidence/plan-contract-validation.json"
+    }
+  ],
+  "dependencySetup": [
+    {
+      "attempt": 1,
+      "command": "GEOMETRY_PYTHON=python node archive/tools/geometry-equation/production/setup-spikes.mjs",
+      "result": "FAILED",
+      "reason": "npm could not create its default cache directory; setup stopped before restoring dependencies."
+    },
+    {
+      "attempt": 2,
+      "command": "NPM_CONFIG_CACHE=<repo>/.tmp/apmath-npm-cache NPM_CONFIG_FETCH_RETRIES=2 GEOMETRY_PYTHON=python node archive/tools/geometry-equation/production/setup-spikes.mjs",
+      "result": "BLOCKED",
+      "completed": ["npm dependencies", "Python dependencies"],
+      "reason": "Fetching the pinned font failed with getaddrinfo EAI_AGAIN for raw.githubusercontent.com."
+    },
+    {
+      "attempt": 3,
+      "command": "NPM_CONFIG_CACHE=<repo>/.tmp/apmath-npm-cache PIP_CACHE_DIR=<repo>/.tmp/apmath-pip-cache NPM_CONFIG_FETCH_RETRIES=2 GEOMETRY_PYTHON=python node archive/tools/geometry-equation/production/setup-spikes.mjs",
+      "result": "BLOCKED",
+      "completed": ["npm dependencies", "Python dependencies"],
+      "reason": "The same pinned font fetch failed again with getaddrinfo EAI_AGAIN for raw.githubusercontent.com."
+    }
+  ],
+  "pinnedFont": {
+    "path": ".tmp/apmath-visual-engine/dependencies/NotoSansKR.ttf",
+    "sha256": "sha256:194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+    "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf",
+    "systemFontHashMatch": false
+  },
+  "resultingStatus": "RENDER_BLOCKED_PINNED_FONT_DNS",
+  "note": "No alternate address, local-address path, unsupported font substitution, handwritten SVG, or engine modification was used; dependency setup requested only the repository's pinned remote font URL."
+}

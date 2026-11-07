@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "명제",
+        "elements": [
+          "q",
+          "s",
+          "p"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "판정",
+        "elements": [
+          "참",
+          "반례"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "q→p와 s→r은 참이고, 역인 p→q는 (a,b)=(1,1)에서 성립하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "q가 참이면 a=b=0이고, s가 참이면 a=1이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "q와 s 조건은 참인 함의를 만들고 p 조건은 역의 반례를 만든다."
+  ]
+}

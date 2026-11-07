@@ -1,0 +1,104 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "문자곱",
+        "elements": [
+          "x·x",
+          "x·y",
+          "y·x",
+          "x·z",
+          "y·y",
+          "y·z"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "서로 다른 항",
+        "elements": [
+          "x²",
+          "xy",
+          "xz",
+          "y²",
+          "yz"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ]
+  },
+  "caption": "첫째와 셋째 인수를 곱할 때 같은 문자곱을 하나로 모은다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x+y)(x+y+z)에서 같은 문자곱은 한 항으로 합친다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x·y와 y·x가 같은 문자곱 xy로 모이는 모습을 표시한다."
+  ]
+}

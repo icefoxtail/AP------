@@ -1,0 +1,104 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "문자곱",
+        "elements": [
+          "xx",
+          "xy",
+          "yx",
+          "xz",
+          "yy",
+          "yz"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "서로 다른 항",
+        "elements": [
+          "xx",
+          "xy",
+          "xz",
+          "yy",
+          "yz"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ]
+  },
+  "caption": "문자를 이어 쓴 곱 xx, xy, yx, xz, yy, yz 중 xy와 yx가 같은 항으로 모인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x+y)(x+y+z)에서 같은 문자곱은 한 항으로 합친다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곱 xy와 yx가 같은 항 xy로 대응하는 모습을 표시한다."
+  ]
+}

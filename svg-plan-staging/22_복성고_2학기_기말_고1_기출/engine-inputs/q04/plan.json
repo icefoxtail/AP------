@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "연산",
+        "elements": [
+          "P",
+          "C"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "계산값",
+        "elements": [
+          "30",
+          "15"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "P=ₙP₂=n(n−1), C=₆C₂=15이므로 n(n−1)=30을 푼다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ₙP₂−₆C₂=15이고 n은 자연수이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 식에서 ₙP₂=30, ₆C₂=15를 얻는 중간 단계를 나타낸다."
+  ]
+}

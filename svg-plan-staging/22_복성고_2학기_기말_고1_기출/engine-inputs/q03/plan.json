@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "구분",
+        "elements": [
+          "분모",
+          "분자"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "정리",
+        "elements": [
+          "2",
+          "2v"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x≥1에서 v=√(x−1)로 두어 통분한 분모와 분자를 각각 정리한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 분모는 서로 켤레이며 근호가 정의되려면 x≥1이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "공통분모는 2, 통분한 분자는 2v다."
+  ]
+}
