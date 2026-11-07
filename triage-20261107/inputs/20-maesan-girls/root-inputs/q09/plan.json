@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "분모의 $2x+1$에 맞추어 분자를 나누어 쓴다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      5,
+      -7,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-5",
+        "-2",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "-4"
+        ],
+        "denominator": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-6",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3/2",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=x-3/2",
+        "style": "DASHED"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "label": "y=-x-5/2",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "-1/2",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "유리함수의 중심과 두 대칭축을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심은 (-1/2,-2), 대칭축은 y=x-3/2와 y=-x-5/2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선의 교점과 기울기 ±1인 두 대칭축을 함께 나타낸다."
+  ]
+}

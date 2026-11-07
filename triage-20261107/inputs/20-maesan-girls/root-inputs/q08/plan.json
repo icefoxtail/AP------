@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "그림에서 수직점근선은 $y$축의 오른쪽에 있다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      6,
+      -7,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "-3",
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ]
+  },
+  "caption": "예: 원문 그래프의 부호 조건을 만족하는 함수를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=-1,b=2,c=-3이면 원문 유리함수의 수직·수평점근선과 y절편은 모두 양수이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "해당 무리함수는 -√(2-x)-3이고 제3·4사분면을 지난다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 유리함수의 부호 조건과 그에 따른 무리함수 가지의 방향을 예시로 연결한다."
+  ]
+}

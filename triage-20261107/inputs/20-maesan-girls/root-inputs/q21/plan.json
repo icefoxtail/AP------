@@ -1,0 +1,129 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "곡선 위의 점은 $x\\ge0$이므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=x+1"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "P",
+          "x": "1/4",
+          "y": "1/2"
+        },
+        {
+          "id": "H",
+          "x": "-1/8",
+          "y": "7/8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        },
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H"
+        }
+      ],
+      "rightAngles": [
+        {
+          "id": "perp",
+          "at": "H",
+          "from": [
+            "B",
+            "P"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "점과 직선 사이 거리로 삼각형 높이를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(0,1), B=(1,2), 최소 사례의 곡선 위 점 P=(1/4,1/2)이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(1/4,1/2)에서 직선 AB에 내린 수선의 발은 H=(-1/8,7/8)이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 위 점에서 고정된 직선까지의 거리가 삼각형 높이가 되는 관계를 보인다."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "그래프가 $(-1,0)$을 지나므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      0,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "3"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=2",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "3/2"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "5/2"
+        }
+      ]
+    }
+  },
+  "caption": "제한 구간의 양 끝 함수값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=3-3/(x+2)는 [0,4]에서 증가하고 양끝 함수값은 3/2,5/2이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "구간 안 x=1에서 f(1)=2인 중간 높이를 비교한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "제한 구간에서 증가하는 그래프의 양 끝을 비교한다."
+  ]
+}

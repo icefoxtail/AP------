@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "식을 완전제곱식으로 고치면",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      2,
+      10,
+      -2,
+      11
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "5",
+        "7",
+        "8"
+      ],
+      "y": [
+        "2",
+        "4",
+        "5",
+        "7",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-6",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "6",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "10"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "6",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "정의역과 치역이 같은 구간이 되는 시작점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=(x-2)²-10은 x≥6에서 증가하고 시작점은 (6,6)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "전단사 조건이 정의역의 시작점과 치역의 시작점을 같게 함을 보인다."
+  ]
+}

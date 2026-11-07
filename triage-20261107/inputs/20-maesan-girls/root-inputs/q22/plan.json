@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "합성함수를 먼저 식으로 쓴다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-12",
+          "12"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      0,
+      80
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "2",
+        "10",
+        "30",
+        "70"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "2"
+      }
+    ],
+    "functionName": "h"
+  },
+  "caption": "예: 열린 구간의 양끝과 함수값 범위를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=1인 정의역은 (-2,2), h=3(2x-1)²+2, 치역은 [2,77)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 구간에서 포물선의 최솟값과 미포함 상한의 관계를 보여 준다."
+  ]
+}

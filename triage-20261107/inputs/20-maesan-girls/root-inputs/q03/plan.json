@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f$는 $X$에서 $Y$로 가는 함수이므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      -3,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-13/4",
+          "5/4"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "17/4",
+          "-5/4"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-2"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "3"
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "D",
+          "x": "5",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "두 방향의 일차함수에서 양끝 대응을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "증가 예시는 (1,-2),(5,3), 감소 예시는 (1,3),(5,-2)를 지난다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "증가와 감소인 두 일차함수에서 구간 양끝의 대응이 서로 바뀜을 보인다."
+  ]
+}
