@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 점의 x좌표가 같으므로 세로 길이를 식으로 나타낸다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -10,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-8",
+        "-4",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "0"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=1/(x-1)"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-4x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "-8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: 같은 x좌표에서 두 그래프 사이의 세로 길이를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P는 y=1/(x-1), Q는 y=-4x 위에 있고 두 점의 x좌표는 같다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 a=2에서 P=(2,1), Q=(2,-8)이고 선분 PQ는 수직이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 x에서 위쪽 함수값과 아래쪽 함수값의 차가 세로 선분 길이임을 보여 준다."
+  ]
+}
