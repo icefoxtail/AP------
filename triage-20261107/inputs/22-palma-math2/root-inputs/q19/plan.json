@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "처음 2초 동안은 속도가 매초",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "26",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "x": "10",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "13"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      13
+    ],
+    "viewport": [
+      -1,
+      14,
+      -1,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5",
+        "10",
+        "13"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "10",
+        "y": "6"
+      },
+      {
+        "id": "C",
+        "x": "13",
+        "y": "0"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "13",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ]
+  },
+  "caption": "가속·등속·감속 구간에서 속도 그래프 아래 넓이를 합하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "가속·등속·감속 구간에서 속도 그래프 아래 넓이를 합하는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가속·등속·감속 구간에서 속도 그래프 아래 넓이를 합하는 관계."
+  ]
+}

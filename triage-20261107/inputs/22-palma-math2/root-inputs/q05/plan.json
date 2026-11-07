@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "곡선 $y=x^2-3x$와 $x$축",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -4,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=x^2-3x",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "0"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "0",
+        "to": "3"
+      }
+    ]
+  },
+  "caption": "두 영점 사이에서 곡선이 축 아래에 있어 음의 적분을 넓이로 바꾸는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 영점 사이에서 곡선이 축 아래에 있어 음의 적분을 넓이로 바꾸는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 영점 사이에서 곡선이 축 아래에 있어 음의 적분을 넓이로 바꾸는 관계."
+  ]
+}
