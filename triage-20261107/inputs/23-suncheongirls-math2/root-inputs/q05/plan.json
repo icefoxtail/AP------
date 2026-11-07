@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(-x)=f(x)$는 짝함수 조건이므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "-2",
+        "to": "0"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "예시 짝함수에서 y축 좌우의 넓이가 같은 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 짝함수에서 y축 좌우의 넓이가 같은 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 짝함수에서 y축 좌우의 넓이가 같은 관계를 보인다."
+  ]
+}

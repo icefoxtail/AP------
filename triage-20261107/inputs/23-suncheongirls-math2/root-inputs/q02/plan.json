@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "방정식 $x^3-12x+1=0$의 서로 다른",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-12",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -20,
+      20
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-20",
+        "-15",
+        "-10",
+        "-5",
+        "1",
+        "5",
+        "10",
+        "15",
+        "17"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -2,
+        "y": 17
+      },
+      {
+        "id": "Q",
+        "x": 2,
+        "y": -15
+      }
+    ]
+  },
+  "caption": "극대와 극소의 부호로 그래프와 x축의 교점 개수를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "극대와 극소의 부호로 그래프와 x축의 교점 개수를 살핀다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "극대와 극소의 부호로 그래프와 x축의 교점 개수를 살핀다."
+  ]
+}

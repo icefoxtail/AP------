@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(0)=2$일 때 $f(-1)$의 값은?",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -2,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "7",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "초기값으로 적분상수를 정한 이차함수에서 다른 입력에 대응하는 점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초기값으로 적분상수를 정한 이차함수에서 다른 입력에 대응하는 점을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "초기값으로 적분상수를 정한 이차함수에서 다른 입력에 대응하는 점을 보인다."
+  ]
+}

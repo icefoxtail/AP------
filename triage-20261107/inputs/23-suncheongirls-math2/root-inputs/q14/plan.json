@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=0$이 서로 다른 세 실근을 가져야 한다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "-2"
+      }
+    ]
+  },
+  "caption": "예: f의 부호가 세 번 바뀌는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=0인 예시 f=x³−3x는 서로 다른 세 실근을 가지며 부호가 세 번 바뀐다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "F의 극값이 F'=f의 부호 변화와 연결됨을 예시로 보인다."
+  ]
+}

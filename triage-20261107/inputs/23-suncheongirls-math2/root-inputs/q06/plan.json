@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(2)$의 값은? (단, $a$는 상수이다.)",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "7",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "적분의 아래끝을 대입하고 미분해 얻는 이차함수의 입력과 출력을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분의 아래끝을 대입하고 미분해 얻는 이차함수의 입력과 출력을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분의 아래끝을 대입하고 미분해 얻는 이차함수의 입력과 출력을 보인다."
+  ]
+}

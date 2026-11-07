@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$-I=8$이므로 $I=-8$이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-8",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -20,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-20",
+        "-15",
+        "-10",
+        "-8",
+        "-3",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "6",
+        "10"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5"
+        }
+      ]
+    }
+  },
+  "caption": "적분값으로 정한 함수와 주어진 입력을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정적분 I=-8을 대입하면 f(x)=x³-8x+2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정적분 상수로 결정된 함수의 그래프에서 주어진 입력의 위치를 보인다."
+  ]
+}

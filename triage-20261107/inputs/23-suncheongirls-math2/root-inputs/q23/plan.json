@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=x^2-2$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "functionName": "g",
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      -1,
+      3,
+      -3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "적분을 구간에 따라 나누어 얻은 도함수에서 주어진 입력의 위치를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 정의역 0<x<2에서 g=f'=x²−2이고 두 끝점은 열린다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분을 구간에 따라 나누어 얻은 도함수에서 주어진 입력의 위치를 보인다."
+  ]
+}

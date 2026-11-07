@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^3-6x^2+9x+4$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -2,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "8"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "4"
+      }
+    ]
+  },
+  "caption": "조건에서 정한 삼차함수의 형태를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 조건으로 정한 함수는 f(x)=x³−6x²+9x+4이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수의 형태와 도함수 조건의 극대·극소 관계를 보인다."
+  ]
+}
