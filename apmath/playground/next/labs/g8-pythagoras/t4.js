@@ -141,6 +141,7 @@
   /* ====================================================================== 2·3. 세 변으로 판별 */
   const judgeOf = (s) => { const a = clamp(Math.round(s.pyJa), 2, 12), b = clamp(Math.round(s.pyJb), 2, 12), c = clamp(Math.round(s.pyJc), 2, 12); return { a, b, c, ...classify(a, b, c) }; };
   const JUDGE_GEN = (want) => (s, prev) => {
+    const previous = prev && [prev.pyJa, prev.pyJb, prev.pyJc].sort((a, b) => a - b);
     let a, b, c, t;
     do {
       t = want || pick(['acute', 'right', 'obtuse']);
@@ -148,6 +149,7 @@
       else { a = rint(3, 9); b = rint(a, 11); c = rint(b, 12); }
       const cl = classify(a, b, c);
       if (!cl.ok || cl.type !== t) continue;
+      if (previous && cl.s.every((v, i) => v === previous[i])) continue;
       const sh = [a, b, c].sort(() => Math.random() - 0.5); [a, b, c] = sh;
       break;
     } while (true);

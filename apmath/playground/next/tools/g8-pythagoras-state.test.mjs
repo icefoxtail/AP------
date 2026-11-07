@@ -167,6 +167,27 @@ test('new box questions exclude the previous dimensions before shuffling their o
   assert.equal(q.pyRoute,-1,'new questions still select the shortest route');
 });
 
+test('new angle-classification questions exclude the previous lengths in any order', async t => {
+  const permutations = [[3,4,5],[3,5,4],[4,3,5],[4,5,3],[5,3,4],[5,4,3]];
+  for (const id of ['py4-acute','py4-obtuse']) for (const previous of permutations) {
+    await t.test(`${id}: previous ${previous.join(',')}`, () => {
+      // First select the old 3–4–5 triple; the retry selects the existing 6–8–10 triple.
+      const values = [.4,0,.4,.2,.9,.9,.9,.9]; let i = 0;
+      const local = loadUnit(() => {
+        assert.ok(i < values.length, 'the deterministic retry finishes');
+        return values[i++];
+      });
+      const sc = local.scenes.find(s => s.id === id);
+      const prev = { pyJa:previous[0], pyJb:previous[1], pyJc:previous[2] };
+      const q = sc.py.gen({}, prev);
+      const lengths = [q.pyJa,q.pyJb,q.pyJc].sort((a,b) => a-b);
+      assert.notDeepEqual(lengths, [3,4,5], 'reordering the same lengths is not a new question');
+      assert.deepEqual(lengths, [6,8,10], 'retry retains an existing legal triple');
+      assert.deepEqual([prev.pyJa,prev.pyJb,prev.pyJc], previous, 'the previous question is not mutated');
+    });
+  }
+});
+
 test('generated questions have five distinct choices and exactly one finite answer', t => {
   let checked = 0;
   for (const sc of U.scenes) {
