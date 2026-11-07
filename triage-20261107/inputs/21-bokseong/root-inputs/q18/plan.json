@@ -1,0 +1,114 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$y=f(k)$라 두면 $f(y)=y$, 즉 먼저 $f$의 고정점을",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -4,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          "-7/2",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "right",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "9",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "-3"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "3"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "3"
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "함수의 고정점을 찾은 뒤 그 함수값을 만드는 입력들을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<1에서는 f(x)=2x+3, x≥1에서는 f(x)=x²−5x+9이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "고정점은 −3과 3이고 그 높이에서 원함수의 입력을 찾는다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "대각선과의 고정점 및 같은 함수값을 갖는 여러 입력을 한 좌표평면에서 비교한다."
+  ]
+}

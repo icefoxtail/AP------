@@ -1,0 +1,86 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "그래프에서 수직점근선, 수평점근선, $x$절편을 읽는다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "-3"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -4,
+      8,
+      -7,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1"
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "-9/2"
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "원문 그래프의 점근선·절편과 주어진 입력에서의 함수값을 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 점근선은 x=2, y=−3이고 x절편은 1이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "조건으로 정한 함수의 x=4에서의 점 P를 표시한다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 함수값을 읽는 수선을 덧붙여 점근선·절편에서 구한 식을 사용하는 과정을 보여 준다."
+  ]
+}

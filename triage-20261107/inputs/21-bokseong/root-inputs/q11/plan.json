@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "교점 조건을 이차방정식의 서로 다른 두 해 조건으로 바꿀 수 있다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      4,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-5/2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "9/4",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-x+9/4"
+      }
+    ]
+  },
+  "caption": "예: 직선과 무리함수가 서로 다른 두 점에서 만나는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선은 y=√(4−2x), 직선은 y=−x+k이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=9/4에서 서로 다른 두 점에서 만난다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "무리함수의 정의역을 지킨 두 교점과 음이 아닌 두 근의 관계를 보여 준다."
+  ]
+}

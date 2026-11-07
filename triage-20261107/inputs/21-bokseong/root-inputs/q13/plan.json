@@ -1,0 +1,155 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "반복합성 값의 주기를 찾는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "x": "2",
+          "y": "1/3",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "1/3",
+          "y": "1/3",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "x": "1/3",
+          "y": "-1/2",
+          "unnamed": true
+        },
+        {
+          "id": "E",
+          "x": "-1/2",
+          "y": "-1/2",
+          "unnamed": true
+        },
+        {
+          "id": "F",
+          "x": "-1/2",
+          "y": "-3",
+          "unnamed": true
+        },
+        {
+          "id": "G",
+          "x": "-3",
+          "y": "-3",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "-3",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "s1",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "s2",
+          "from": "D",
+          "to": "E"
+        },
+        {
+          "id": "s3",
+          "from": "E",
+          "to": "F"
+        },
+        {
+          "id": "s4",
+          "from": "F",
+          "to": "G"
+        },
+        {
+          "id": "s5",
+          "from": "G",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "caption": "함수와 대각선을 오가며 네 번 적용한 뒤 되돌아오는 과정을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=1−2/(x+1)이고 입력 2에서 2→1/3→−1/2→−3→2가 된다.",
+      "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "반복값의 주기는 4이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "함수값을 다시 입력으로 넘기며 네 단계 주기가 생기는 경로를 그래프에서 보여 준다."
+  ]
+}

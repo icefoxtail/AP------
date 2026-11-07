@@ -1,0 +1,60 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "sourceQuote": "근호 안은 $0$ 이상이어야 하고, $\\sqrt{4-2x}\\ge0$이다.",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "4",
+      "-2"
+    ],
+    "amplitude": "1",
+    "sign": -1,
+    "offset": "4",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -7,
+      3,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "3",
+        "5"
+      ]
+    },
+    "hideLabels": [
+      "formula",
+      "start"
+    ]
+  },
+  "caption": "무리함수의 끝점과 그래프가 뻗는 방향을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=−√(4−2x)+4이고 근호 안은 0 이상이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "끝점에서 왼쪽 아래 방향으로 뻗는다.",
+      "mappedTo": "graphPlan.radicand"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점을 기준으로 입력 가능한 방향과 함수값이 뻗는 방향을 구별한다."
+  ]
+}

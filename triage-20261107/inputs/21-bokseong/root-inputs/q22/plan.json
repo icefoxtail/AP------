@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$A$를 지나는 수직선과 수평선의 좌표를 각각 고정하여 $B,C$를",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      10,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "9"
+      ],
+      "y": [
+        "1",
+        "3",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "3",
+        "offset": "0",
+        "domain": [
+          "0",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "9",
+          "y": "3"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "두 곡선 위의 세 점이 만드는 직각삼각형을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 y=3√x, B,C는 y=√x 위에 있다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "조건에 맞는 t=1에서 A=(1,3), B=(1,1), C=(9,3)이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "세 점에서 고정되는 x좌표와 y좌표를 구별해 직각변의 길이 관계를 보여 준다."
+  ]
+}
