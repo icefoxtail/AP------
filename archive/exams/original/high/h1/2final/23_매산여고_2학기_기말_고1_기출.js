@@ -126,7 +126,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (0,2)를 지나는 두 직선 y=x/3+2와 y=−x/3+2를 정사각형 영역 −3≤x≤3, −3≤y≤3 안에 그린 그래프. 두 직선은 x=±3에서 y=3에 닿는다.",
+    "solutionImageCaption": "f(x)=kx+2의 그래프는 항상 점 (0,2)를 지난다. 정의역 −3≤x≤3에서 함수값이 A의 위쪽 끝 y=3을 넘지 않는 한계가 두 직선 y=x/3+2, y=−x/3+2이고, 기울기 k가 이 두 직선 사이에 있을 때 f(A)⊂A가 된다. 이 경계로 a, b를 정해 b−a를 구하면 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -219,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 k=3일 때 y=(2x+2)/(x−3)의 그래프. 점근선을 기준으로 두 갈래가 있고, x절편 (−1,0)과 y절편 (0,−2/3)이 표시되어 있다.",
+    "solutionImageCaption": "예: k=3인 그래프는 x절편 (−1,0), y절편 (0,−2/3)이며 점근선 x=3 기준의 두 갈래가 네 사분면을 모두 지난다. 이 예시에서 x절편이 원점의 왼쪽에 있도록 하는 k의 조건(k>1)을 따져 정수 k의 최솟값을 구하면 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -599,7 +607,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=-1일 때 f의 그래프. x<0에서는 파란 직선 y=6x, x≥0에서는 주황 직선 y=2x이며 두 직선은 원점에서 이어지고 모두 오른쪽 위로 올라간다. 세로축은 가로축의 절반 눈금이다.",
+    "solutionImageCaption": "예: a=-1이면 x<0에서 y=6x(기울기 6), x≥0에서 y=2x(기울기 2)로 두 가지가 원점에서 이어지며 모두 증가해 일대일대응이 된다. 이처럼 −2a>0, a+7>0, 즉 −7<a<0이어야 하므로 정수 a는 −6부터 −1까지이다. 구하는 값은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
