@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=3x(x-2)$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -4,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ]
+  },
+  "caption": "도함수의 음수 영역이 두 극점 사이 원함수 값의 감소량이 되는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도함수의 음수 영역이 두 극점 사이 원함수 값의 감소량이 되는 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 음수 영역이 두 극점 사이 원함수 값의 감소량이 되는 관계."
+  ]
+}
