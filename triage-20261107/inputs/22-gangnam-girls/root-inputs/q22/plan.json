@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"원래 함수의 치역을 역함수의 정의역으로 사용한다.",
+  "graphPlan":{
+    "family":"multi-curve",
+    "viewport":[-9,6,-9,6],
+    "curves":[
+      {"id":"f","kind":"SQRT","radicand":["16","2"],"amplitude":"1","offset":"-4","domain":["-8","9/2"],"color":"BLUE","label":"y=f(x)","hideLabels":["start"]},
+      {"id":"g","inverseOf":"f","color":"WARM","label":"y=g(x)","hideLabels":["start"]},
+      {"id":"sym","kind":"LINE","coefficients":["0","1"],"domain":["-9","6"],"style":"DASHED","label":"y=x"}
+    ],
+    "axisTickValues":{"x":["-8","2"],"y":["-8","2"]}
+  },
+  "caption":"g를 f의 역함수라 할 때 두 그래프의 y=x 대칭과 정의역·치역의 대응을 살핀다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"f(x)=√(2x+a)−4의 그래프가 원점을 지나므로 a=16이다.","mappedTo":"graphPlan.curves"},
+    {"id":"c2","condition":"원함수와 역함수는 y=x에 대하여 대칭이다.","mappedTo":"graphPlan.curves"}
+  ],
+  "newVisualInformation":["원함수의 치역이 역함수의 정의역으로 바뀌는 대칭 관계를 보여 준다."]
+}

@@ -1,0 +1,28 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"같은 $x=k$에서 두 그래프의 세로 방향 거리는",
+  "graphPlan":{
+    "family":"multi-curve",
+    "viewport":[-1,5,-1,4],
+    "curves":[
+      {"id":"upper","kind":"SQRT","radicand":["1","1"],"domain":["-1","5"],"color":"BLUE","label":"y=sqrt(x+1)"},
+      {"id":"lower","kind":"SQRT","radicand":["0","1"],"domain":["0","5"],"color":"WARM","label":"y=sqrt(x)"}
+    ],
+    "axisTickValues":{"x":["1","2","3","4"],"y":["1","2"]},
+    "overlays":{
+      "points":[
+        {"id":"P1","x":"1","y":"sqrt(2)"},
+        {"id":"Q1","x":"1","y":"1"},
+        {"id":"P2","x":"2","y":"sqrt(3)"},
+        {"id":"Q2","x":"2","y":"sqrt(2)"}
+      ],
+      "segments":[{"id":"S1","from":"P1","to":"Q1"},{"id":"S2","from":"P2","to":"Q2"}]
+    }
+  },
+  "caption":"예: x=1, 2에서 각 세로 선분은 위쪽 함수값과 아래쪽 함수값의 차이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"두 함수는 y=√(x+1), y=√x이다.","mappedTo":"graphPlan.curves"},
+    {"id":"c2","condition":"Pₖ와 Qₖ는 같은 x=k에서 각각 위쪽·아래쪽 곡선 위에 있다.","mappedTo":"graphPlan.overlays"}
+  ],
+  "newVisualInformation":["연속된 두 세로 길이의 끝에서 공통으로 나타나는 √2를 비교해 망원합의 소거 구조를 설명한다."]
+}

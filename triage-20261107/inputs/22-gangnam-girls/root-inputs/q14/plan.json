@@ -1,0 +1,27 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"MAPPING",
+    "columns":[
+      {"id":"X","name":"입력","elements":["유리수","무리수"]},
+      {"id":"Y","name":"첫 값","elements":["1","0"]},
+      {"id":"Z","name":"수의 종류","elements":["유리수"]}
+    ],
+    "arrows":[
+      {"from":{"column":0,"element":0},"to":{"column":1,"element":0}},
+      {"from":{"column":0,"element":1},"to":{"column":1,"element":1}},
+      {"from":{"column":1,"element":0},"to":{"column":2,"element":0}},
+      {"from":{"column":1,"element":1},"to":{"column":2,"element":0}}
+    ],
+    "arrowGroups":[
+      {"name":"f","from":"X","to":"Y","color":"BLUE"},
+      {"name":"분류","from":"Y","to":"Z","color":"WARM"}
+    ]
+  },
+  "caption":"첫 함수값은 0 또는 1이고 두 값의 수의 종류를 비교한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"유리수 입력에는 f(x)=1이고 무리수 입력에는 f(x)=0이다.","mappedTo":"diagram.arrows"},
+    {"id":"c2","condition":"0과 1은 모두 유리수이다.","mappedTo":"diagram.columns"}
+  ],
+  "newVisualInformation":["첫 함수값 두 개가 모두 같은 수의 종류에 속하므로 f를 다시 적용할 때 같은 분기 규칙을 사용함을 보인다."]
+}

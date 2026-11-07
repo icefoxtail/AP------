@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"유리함수를 평행이동된 $y=\\dfrac1x$의 꼴로 바꾸면",
+  "graphPlan":{
+    "family":"multi-curve",
+    "viewport":[-3,7,-4,6],
+    "curves":[
+      {"id":"curve","kind":"RATIONAL","numerator":["-1","1"],"denominator":["-2","1"],"domain":["-3","7"],"color":"BLUE","label":"y=(x-1)/(x-2)"},
+      {"id":"s1","kind":"LINE","coefficients":["-1","1"],"domain":["-3","7"],"style":"DASHED","label":"y=x-1"},
+      {"id":"s2","kind":"LINE","coefficients":["3","-1"],"domain":["-3","7"],"style":"DASHED","label":"y=-x+3"}
+    ],
+    "axisTickValues":{"x":["1","2"],"y":["1","3"]}
+  },
+  "caption":"유리함수의 두 점근선과 중심을 지나는 두 대칭축을 함께 살핀다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y=(x−1)/(x−2)=1+1/(x−2)이다.","mappedTo":"graphPlan.curves"},
+    {"id":"c2","condition":"대칭축은 y=x−1, y=−x+3이다.","mappedTo":"graphPlan.curves"}
+  ],
+  "newVisualInformation":["두 대칭축이 점근선의 교점을 지나며 곡선의 대응 가지를 나눈다."]
+}

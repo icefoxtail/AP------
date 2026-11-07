@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"합성함수를 먼저 계산하고 $(f\\circ f)(x)=x$를",
+  "graphPlan":{
+    "family":"multi-curve",
+    "viewport":[-9,4,-6,6],
+    "curves":[
+      {"id":"f","kind":"RATIONAL","numerator":["-4","3"],"denominator":["7","1"],"domain":["-9","4"],"color":"BLUE","label":"y=(3x-4)/(x+7)"},
+      {"id":"sym","kind":"LINE","coefficients":["0","1"],"domain":["-9","4"],"style":"DASHED","label":"y=x"}
+    ],
+    "axisTickValues":{"x":["-7","-2","2"],"y":["-2","3"]},
+    "overlays":{"points":[{"id":"T","x":"-2","y":"-2"}]}
+  },
+  "caption":"예: 조건을 만족하는 경우 원함수와 y=x가 한 점에서 만나는 모습을 살핀다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"f(x)=(3x−4)/(x+a), a>0이고 f(f(k))=k인 실수 k가 하나이다.","mappedTo":"graphPlan.curves"},
+    {"id":"c2","condition":"해설에서 a=7이고 유효한 유일 고정점은 (−2,−2)이다.","mappedTo":"graphPlan.overlays.points"}
+  ],
+  "newVisualInformation":["유일한 고정점에서 원함수와 y=x가 접하는 관계를 보여 주되 최종 합은 표시하지 않는다."]
+}
