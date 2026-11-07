@@ -1,0 +1,121 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(f(a))=f(a)$는 $f(a)$가 함수 $f$의 고정점이라는",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      6
+    ],
+    "viewport": [
+      -5,
+      6,
+      -3,
+      5
+    ],
+    "functionName": "f",
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-1",
+        "1",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "3",
+        "4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "3"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "D",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "d",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "3",
+          "label": "y=3"
+        }
+      ]
+    }
+  },
+  "caption": "조각함수의 고정점과 해당 높이의 원상을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "고정점은 0,3이고 f(a)=0 또는 f(a)=3인 입력을 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "고정점의 높이에 해당하는 원상을 그래프에서 비교한다."
+  ]
+}

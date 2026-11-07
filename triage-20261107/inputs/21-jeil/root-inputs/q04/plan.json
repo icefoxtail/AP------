@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "유리함수를 $y=\\dfrac{a}{x-p}+q$ 꼴로 바꾸면 점근선과",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      6,
+      -6,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-3",
+        "-1",
+        "1",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "2"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "6"
+        ],
+        "label": "y=-x-1",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "-3",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "두 유리함수와 대칭축을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=2-5/(x+3), g=1-5/(x-1)이며 중심 C=(-3,2)이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "f의 대칭축 하나는 y=-x-1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "유리함수의 대칭축과 같은 모양 그래프의 평행이동 관계를 보인다."
+  ]
+}

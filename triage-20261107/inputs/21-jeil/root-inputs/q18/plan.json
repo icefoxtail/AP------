@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "꼭짓점이 $x=-3$인 아래로 열린 이차함수에서 길이 $2$인 구간의",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      2,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-6",
+        "-3",
+        "-2",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-3/2",
+          "-1/4"
+        ],
+        "domain": [
+          "-7",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "2"
+        ],
+        "label": "y=2",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-4",
+          "y": "2"
+        },
+        {
+          "id": "R",
+          "x": "-2",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "축의 양쪽에 대칭인 구간의 끝 높이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=-x(x+6)/4이고 길이 2의 구간 [-4,-2]은 축 x=-3에 대칭이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점을 중심으로 구간 양 끝을 대칭으로 놓을 때 최소 높이가 커짐을 보인다."
+  ]
+}

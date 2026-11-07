@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "역함수가 존재하려면 함수가 실수 전체에서 일대일함수여야 한다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "6"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3/2",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "1",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "3/2",
+        "y": "5"
+      }
+    ]
+  },
+  "caption": "예: 절댓값 함수 두 조각의 기울기 방향을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 k=4에서 왼쪽 기울기 2, 오른쪽 기울기 6이고 경계는 (3/2,5)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 조각 기울기가 같은 부호이면 연속 그래프가 일대일이 됨을 보인다."
+  ]
+}

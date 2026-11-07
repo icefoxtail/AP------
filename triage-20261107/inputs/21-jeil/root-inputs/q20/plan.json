@@ -1,0 +1,137 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "역함수의 함숫값은 원래 합성함수에서 대응하는 입력값을 찾는 문제로 바꾼다",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "0"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "S",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "2",
+          "y": "1/5",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "a",
+          "from": "S",
+          "to": "P"
+        },
+        {
+          "id": "b",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "c",
+          "from": "Q",
+          "to": "R"
+        }
+      ]
+    }
+  },
+  "caption": "예: 합성함수의 입력과 출력을 차례로 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 x=3에서 g(3)=2, f(2)=1/5이다.",
+      "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "g(x)=√(2(x−1)), f(x)=1/(x+3)이고 정의역 조건을 확인한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "g의 출력이 f의 입력으로 이어지는 합성 순서를 보인다."
+  ]
+}

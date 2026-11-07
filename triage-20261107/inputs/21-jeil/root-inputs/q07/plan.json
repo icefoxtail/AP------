@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "유리함수 그래프의 점근선과 절편의 위치에서 $a,b,c$의 부호를 먼저",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -4,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ]
+  },
+  "caption": "예: 부호 조건을 만족하는 두 그래프를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=-1,b=-1,c=2는 원문의 점근선·절편 부호에 부합하고 g(x)=-√(1-x)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프 부호 조건을 만족하는 예시 무리함수가 제3사분면을 지나는 모습을 보인다."
+  ]
+}

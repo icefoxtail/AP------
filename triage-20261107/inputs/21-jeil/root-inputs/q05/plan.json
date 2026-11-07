@@ -1,0 +1,109 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "정의역·치역, 특정 점, 역함수, 구간 최댓값을 각각 직접 확인한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      5,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "1",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-4"
+        ],
+        "amplitude": "-1",
+        "offset": "3",
+        "domain": [
+          "-6",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5/4",
+          "3/2",
+          "-1/4"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "-5/4",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "-5/4"
+        }
+      ]
+    }
+  },
+  "caption": "무리함수와 역함수의 대응점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원함수 끝점 (1,3), x절편 (-5/4,0)은 역함수의 (3,1),(0,-5/4)에 대응한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점과 절편이 역함수에서 대칭으로 이동하는 관계를 보여 준다."
+  ]
+}
