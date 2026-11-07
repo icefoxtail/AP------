@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "경우", "elements": ["전체", "남만"]},
+      {"id": "Y", "name": "중간값", "elements": ["1140", "220"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 1}
+      }
+    ]
+  },
+  "caption": "대표 선택 전체와 남학생만 고르는 경우를 구분한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "전체 20명 중 여학생을 적어도 한 명 포함하는 대표 3명 선택이 920가지다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["전체는 1140가지이고 남학생만 고르는 경우는 220가지다."]
+}

@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "탐구반", "elements": ["수리", "과학"]},
+      {"id": "Y", "name": "인원", "elements": ["10", "7"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 1}
+      }
+    ]
+  },
+  "caption": "두 탐구반의 인원을 합해 대표를 고른다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "수리탐구반 10명, 과학탐구반 7명 중 대표 3명을 뽑는다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["두 반의 인원이 각각 10명과 7명이다."]
+}

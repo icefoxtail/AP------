@@ -1,0 +1,26 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "시작", "elements": ["−8"]},
+      {"id": "Y", "name": "한 번", "elements": ["−32"]},
+      {"id": "Z", "name": "두 번", "elements": ["−128"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 1, "element": 0},
+        "to": {"column": 2, "element": 0}
+      }
+    ]
+  },
+  "caption": "처음 두 번의 함수 적용을 살펴본다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=4x이다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["−8→−32→−128의 처음 두 단계를 나타낸다."]
+}

@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "입력 예", "elements": ["−3", "3"]},
+      {"id": "Y", "name": "함수값", "elements": ["3/2", "5/2"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 1}
+      }
+    ]
+  },
+  "caption": "예: k=1/6일 때 두 끝점의 함수값을 비교한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A=[−3,3], f(x)=kx+2이다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["k=1/6이면 f(−3)=3/2, f(3)=5/2이다."]
+}

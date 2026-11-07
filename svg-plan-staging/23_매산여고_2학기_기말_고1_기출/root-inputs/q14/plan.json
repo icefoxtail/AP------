@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "구분", "elements": ["둘다줌", "둘다안줌"]},
+      {"id": "Y", "name": "각 경우", "elements": ["56"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 0}
+      }
+    ]
+  },
+  "caption": "같은 색의 두 연필을 함께 주거나 함께 제외한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "같은 색 연필 둘을 모두 주거나 모두 주지 않는다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["두 경우는 각각 56가지다."]
+}

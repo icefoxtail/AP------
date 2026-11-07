@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "자리 예", "elements": ["첫줄", "둘줄", "셋줄"]},
+      {"id": "Y", "name": "성별·공석", "elements": ["BBE", "GGE"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 2},
+        "to": {"column": 1, "element": 1}
+      }
+    ]
+  },
+  "caption": "예: 한 줄 안에서 남녀가 이웃하지 않는 자리 모양이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "남학생 4명, 여학생 2명이며 첫 줄 셋째 자리는 공석이다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["BBE, BBE, GGE는 고정 공석을 포함한 가능한 한 성별 배치다."]
+}

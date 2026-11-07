@@ -1,0 +1,21 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "g 출력", "elements": ["7"]},
+      {"id": "Y", "name": "g 입력", "elements": ["0"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      }
+    ]
+  },
+  "caption": "예: g(0)=7을 역방향으로 읽는다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "g(x)=5x/4+7이고 f∘g는 항등함수다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["g(0)=7이므로 역방향으로 7은 0에 대응한다."]
+}

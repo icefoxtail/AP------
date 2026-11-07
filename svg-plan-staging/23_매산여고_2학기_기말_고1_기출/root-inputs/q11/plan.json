@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "구분", "elements": ["P", "Q", "R"]},
+      {"id": "Y", "name": "각 경우", "elements": ["9", "12", "10"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 1}
+      },
+      {
+        "from": {"column": 0, "element": 2},
+        "to": {"column": 1, "element": 2}
+      }
+    ]
+  },
+  "caption": "세 보기를 각각 계산해 구분한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "자연수 순서쌍, 세 자리 수, 음료 선택을 각각 센다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["각 경우의 수는 P=9,Q=12,R=10이다."]
+}

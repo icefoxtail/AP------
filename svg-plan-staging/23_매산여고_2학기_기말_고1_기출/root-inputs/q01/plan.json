@@ -1,0 +1,33 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "f 입력",
+        "elements": ["2"]
+      },
+      {
+        "id": "Y",
+        "name": "f 출력",
+        "elements": ["4"]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      }
+    ]
+  },
+  "caption": "합성함수에서 먼저 f를 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=3x−2, g(x)=5x+1이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": ["f(2)=4인 첫 단계를 표시한다."]
+}

@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "원래 선택", "elements": ["1", "3", "5"]},
+      {"id": "Y", "name": "간격 제거", "elements": ["1", "2", "3"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 1}
+      },
+      {
+        "from": {"column": 0, "element": 2},
+        "to": {"column": 1, "element": 2}
+      }
+    ]
+  },
+  "caption": "예: 선택한 세 수 사이의 필수 빈칸을 하나씩 제거한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "선택한 세 수는 서로 연속되지 않는다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["예시 1,3,5는 간격을 제거하면 1,2,3에 대응한다."]
+}

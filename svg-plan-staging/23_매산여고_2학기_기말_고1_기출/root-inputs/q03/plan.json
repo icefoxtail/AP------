@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "출력", "elements": ["c", "e"]},
+      {"id": "Y", "name": "역방향 입력", "elements": ["d"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 1},
+        "to": {"column": 1, "element": 0}
+      }
+    ]
+  },
+  "caption": "원본 그래프에서 각 함수의 역방향을 읽는다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 그림에서 f(d)=c, g(d)=e이다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["f에서 c를, g에서 e를 역방향으로 읽으면 각각 d가 된다."]
+}

@@ -1,0 +1,47 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 일차 가지가 각각 양수와 음수의 값을 나누어",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 2, -13, 5],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": ["0", "6"],
+        "domain": ["-2", "0"],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "emphasis": [
+          {"from": "-2", "to": "0", "fromState": "NONE", "toState": "OPEN"}
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": ["0", "2"],
+        "domain": ["0", "2"],
+        "color": "WARM",
+        "hideLabel": true,
+        "emphasis": [
+          {"from": "0", "to": "2", "fromState": "CLOSED", "toState": "NONE"}
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": ["-1", "0", "1"],
+      "y": ["-2", "0", "2"]
+    }
+  },
+  "caption": "예: a=−1일 때 두 일차 가지의 치역을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥0에서 f(x)=−2ax, x<0에서 f(x)=(a+7)x이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예: a=−1이면 x<0에서 y=6x, x≥0에서 y=2x이고 x=0은 오른쪽 가지에 포함된다."
+  ]
+}

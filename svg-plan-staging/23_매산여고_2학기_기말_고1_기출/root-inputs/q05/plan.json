@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "분모", "elements": ["공통"]},
+      {"id": "Y", "name": "인수", "elements": ["x", "x+1", "x+2"]}
+    ],
+    "arrows": [
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 0}
+      },
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 1}
+      },
+      {
+        "from": {"column": 0, "element": 0},
+        "to": {"column": 1, "element": 2}
+      }
+    ]
+  },
+  "caption": "두 분수의 공통분모를 이루는 인수를 확인한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x≠0,−1,−2이다.", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": ["공통분모는 x(x+1)(x+2)다."]
+}
