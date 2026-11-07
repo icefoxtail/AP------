@@ -47,15 +47,16 @@ window.addEventListener('DOMContentLoaded', function () {
   const g5 = (s) => (x) => { const t = s.a, u = x - t; return -0.8 * u * u + FP[5](t) * u + F[5](t); };
   function getMVTPoints(a, b) {
     const minX = Math.min(a, b), maxX = Math.max(a, b);
-    if (maxX - minX < 0.02) return [];
+    if (maxX - minX <= 1e-12) return [];
     const val = (a * a + a * b + b * b) / 3;
     if (val < 0) return [];
     const cPos = Math.sqrt(val), cNeg = -cPos, res = [];
-    if (cNeg > minX + 1e-4 && cNeg < maxX - 1e-4) res.push(cNeg);
-    if (cPos > minX + 1e-4 && cPos < maxX - 1e-4 && Math.abs(cPos - cNeg) > 1e-4) res.push(cPos);
+    if (cNeg > minX + 1e-12 && cNeg < maxX - 1e-12) res.push(cNeg);
+    if (cPos > minX + 1e-12 && cPos < maxX - 1e-12 && Math.abs(cPos - cNeg) > 1e-12) res.push(cPos);
     return res;
   }
-  const safeDx = (dx) => (Math.abs(dx) < 0.03 ? (dx >= 0 ? 0.03 : -0.03) : dx);
+  const safeDx = (dx) => dx;
+  const secantSlope = (a, dx) => 1.5 * a * a + 1.5 * a * dx + 0.5 * dx * dx - 1.5; // dx≠0에서 차분몫과 정확히 같고, 0에서는 그 극한
   const p2 = (x, y) => `(${fmt(x)}, ${fmt(y)})`;
 
   /* ---------- 2. 문제·풀이 데이터 (원본 examData 그대로) ---------- */
@@ -262,7 +263,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 3) {
       b.plot((x) => 2 * x, { to: 1, color: 'ink', width: 2.8 });
       b.plot(() => s.slopeR, { from: 1, color: 'sky', width: 2.8 });
-      b.point([1, 2], { hollow: true, color: 'rose', label: `좌미분계수 f′₋(1)=2.0`, dx: -10, dy: -12, align: 'right' });
+      b.point([1, 2], { hollow: true, color: 'rose', label: Math.abs(s.gapH) < 1e-9 ? '좌미분계수 f′₋(1)=2' : '왼쪽 조각 기울기의 극한 2 (좌미분계수는 없음)', dx: -10, dy: -12, align: 'right' });
       b.point([1, s.slopeR], { hollow: true, color: 'sky', label: `우미분계수 f′₊(1)=${fmt(s.slopeR, 1)}`, dx: 10, dy: 14 });
     } else {
       b.plot(FP[m], { color: 'sky', width: 2.8 });
@@ -334,7 +335,7 @@ window.addEventListener('DOMContentLoaded', function () {
     lab.invalidate(true);
   });
   // 탭별 단계: 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
-  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? 0 : 0);
+  const cxStep = (lab, s) => (lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? 3 : 0) : s.step);
   // 장면마다(또는 문제가 바뀔 때마다) 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
   function cxFocus(b, key, box) {
     if (b._cxKey === key) return;
@@ -435,7 +436,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const f8 = (x) => 0.5 * x * x * x - 1.5 * x * x + 1;
   const fp8 = (x) => 1.5 * x * x - 3 * x;
   const g8 = (t) => f8(t) - t * fp8(t); // 접선의 y절편 = −t³ + 1.5t² + 1
-  const xint8 = (t) => { const m = fp8(t); return Math.abs(m) < 0.04 ? null : t - f8(t) / m; };
+  const xint8 = (t) => { const m = fp8(t); return Math.abs(m) < 1e-10 ? null : t - f8(t) / m; };
   const R8 = (v) => Math.round(v * 100) / 100;
   const fr2 = (n) => cxFrac(Math.round(n * 2), 2); // 반정수 TeX
 
@@ -467,29 +468,28 @@ window.addEventListener('DOMContentLoaded', function () {
   const text8 = (v) => `삼차함수 ${tex('f(x)=' + cxPoly(v.co))} 의 그래프 위의 점 ${tex('\\mathrm{P}(t,\\,f(t))')} 에서의 접선의 ${tex('y')}절편을 ${tex('g(t)')} 라 하자. 함수 ${tex('g(t)')} 의 ${cxJosa(ASK8[v.ask], '을', '를')} 구하시오.`;
   const gTex8 = (v) => cxPoly([-2 * v.a, 3 * v.a * v.x0, 0, v.d]).replace(/x/g, 't');
   const steps8 = (v) => [
-    '점 $(t,\\,f(t))$ 에서의 접선은 $y=f^{\\prime}(t)(x-t)+f(t)$ 입니다. $x=0$ 을 대입하면 $y$절편은 $g(t)=f(t)-t\\,f^{\\prime}(t)$ 입니다.',
-    `$f^{\\prime}(x)=${cxPoly([0, 3 * v.a, 2 * v.co[1], v.co[2]])}$ 이므로 $g(t)=f(t)-t f^{\\prime}(t)=${gTex8(v)}$ 입니다. 일차항은 $f(t)$ 와 $t f^{\\prime}(t)$ 에서 같아 서로 사라집니다.`,
-    `$g^{\\prime}(t)=${cxPoly([0, -6 * v.a, 6 * v.a * v.x0, 0]).replace(/x/g, 't')}=-${6 * v.a}t(t${cxSub(v.x0)})$ 이므로 $t=0$ 과 $t=${v.x0}$ 에서 $g^{\\prime}$ 의 부호가 바뀌어 극값이 생깁니다. ($g^{\\prime}(t)=-t\\,f^{\\prime\\prime}(t)$ 이고 $f^{\\prime\\prime}(${v.x0})=0$ 인 변곡점에서도 극값입니다.)`,
-    `$g(0)=${v.d}$, $g(${v.x0})=${v.gx0}$ 이므로 극댓값은 ${v.mx}, 극솟값은 ${v.mn} 입니다. ` + (v.ask === 'max' ? `구하는 값은 $${v.mx}$.` : v.ask === 'min' ? `구하는 값은 $${v.mn}$.` : v.ask === 'sum' ? `합은 $${v.mx}+(${v.mn})=${v.ans}$.` : `차는 $${v.mx}-(${v.mn})=${v.ans}$.`)
+    '접선이 y축을 만나는 점을 먼저 봅니다. $y=f^{\\prime}(t)(x-t)+f(t)$에 $x=0$을 넣으면 $g(t)=f(t)-t f^{\\prime}(t)$입니다.',
+    `$g^{\\prime}(t)=f^{\\prime}(t)-[f^{\\prime}(t)+t f^{\\prime\\prime}(t)]=-t f^{\\prime\\prime}(t)=-${6*v.a}t(t-(${v.x0}))$. 일차항의 계수를 전개할 필요 없이 $t=0,${v.x0}$ 양쪽에서 부호가 바뀌는지 확인합니다. 두 근은 서로 다르고, 부호는 $- , + , -$입니다.`,
+    `$g(0)=${v.d}$, $g(${v.x0})=${v.gx0}$이므로 극댓값은 $${v.mx}$, 극솟값은 $${v.mn}$. 구하는 ${ASK8[v.ask]}은 $${v.ans}$입니다. (극값은 국소적인 최댓값·최솟값이며, 삼차함수 g의 전 구간 최댓값·최솟값은 아닙니다.)`
   ];
-  const FORMULA8 = '<b>접선의 절편은 접점의 함수</b><br>접점 $(t,f(t))$ 의 접선: $y=f^{\\prime}(t)(x-t)+f(t)$<br>· $y$절편 $g(t)=f(t)-t\\,f^{\\prime}(t)$ , $\\;g^{\\prime}(t)=-t\\,f^{\\prime\\prime}(t)$<br>· $x$절편 $t-\\dfrac{f(t)}{f^{\\prime}(t)}$ (접선이 수평이면 없음)<br>그래서 $y$절편은 $t=0$ 과 <b>변곡점</b>에서 증가·감소가 바뀝니다.';
+  const FORMULA8 = '<b>접선의 절편은 접점의 함수</b><br>접점 $(t,f(t))$ 의 접선: $y=f^{\\prime}(t)(x-t)+f(t)$<br>· $y$절편 $g(t)=f(t)-t\\,f^{\\prime}(t)$ , $\\;g^{\\prime}(t)=-t\\,f^{\\prime\\prime}(t)$<br>· $x$절편 $t-\\dfrac{f(t)}{f^{\\prime}(t)}$ ($f^{\\prime}(t)\\ne0$일 때; 수평접선이 x축과 같으면 절편을 한 점으로 정할 수 없고, 그 밖에는 없음)<br>$t=0$ 또는 $f^{\\prime\\prime}(t)=0$은 극값의 후보입니다. $g^{\\prime}$의 부호가 실제로 바뀌는지 확인해야 합니다.';
   function drawExplore8(b, s) {
     cxFocus(b, 'c8e', { x: [-1.7, 3.1], y: [-3.0, 3.3] });
     const t = s.tp, m = fp8(t), ft = f8(t), gt = g8(t), xi = xint8(t);
     if (s.grid) b.grid();
     b.axes();
-    b.plot(g8, { color: 'violet', width: 2.8, ref: 'g' });
+    if (s.step >= 2) b.plot(g8, { color: 'violet', width: 2.8, ref: 'g' });
     b.plot(f8, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
-    [[0, g8(0)], [1, g8(1)]].forEach((q) => b.point(q, { color: 'violet', hollow: true, r: 5.5, ref: 'g' }));
+    if (s.step >= 2) [[0, g8(0)], [1, g8(1)]].forEach((q) => b.point(q, { color: 'violet', hollow: true, r: 5.5, ref: 'g' }));
     b.line([t, ft], m, { color: 'rose', width: 2.8, glow: true, ref: 'tan' });
-    b.seg([0, gt], [t, gt], { color: 'violet', width: 1.8, dash: true, ref: 'g' });
-    b.point([t, gt], { color: 'violet', r: 5.5, ref: 'g' });
+    if (s.step >= 2) b.seg([0, gt], [t, gt], { color: 'violet', width: 1.8, dash: true, ref: 'g' });
+    if (s.step >= 2) b.point([t, gt], { color: 'violet', r: 5.5, ref: 'g' });
     b.point([0, gt], { color: 'violet', r: 6, label: 'Y', dx: -10, dy: -10, align: 'right', ref: 'Y' });
     if (xi != null && xi > -1.6 && xi < 3.0) b.point([xi, 0], { color: 'green', r: 6, label: 'X', dx: 8, dy: 16, ref: 'X' });
-    if (Math.abs(t) < 0.12) cxTag(b, [0, g8(0)], '극소', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
-    if (Math.abs(t - 1) < 0.12) cxTag(b, [1, g8(1)], '극대', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
+    if (s.step >= 3 && Math.abs(t) < 1e-9) cxTag(b, [0, g8(0)], '극소', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
+    if (s.step >= 3 && Math.abs(t - 1) < 1e-9) cxTag(b, [1, g8(1)], '극대', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
     cxCurveTag(b, f8, 'y = f(x)', 'ink', { side: 'left', dy: 16, skip: [[t, ft, 1.0]] });
-    cxCurveTag(b, g8, 'y = g(x) (y절편)', 'violet', { skip: [[t, gt, 1.2]] });
+    if (s.step >= 2) cxCurveTag(b, g8, 'y = g(x) (y절편)', 'violet', { skip: [[t, gt, 1.2]] });
     b.handle('T', [t, ft], { color: 'amber', label: 'T', dx: 12, dy: 16, ref: 'tan',
       drag: (w) => { let v = clamp(R8(w.x), -0.8, 2.2); [0, 1, 2].forEach((z) => { if (Math.abs(v - z) < 0.06) v = z; }); s.tp = v; } });
   }
@@ -510,7 +510,7 @@ window.addEventListener('DOMContentLoaded', function () {
       cxCurveTag(b, v.g, 'y = g(x)', 'violet', { skip: [[ts, gts, 1.5], [0, gts, 1.5], [ts, f(ts), 1.8]], axis: 0.4 });
     }
     if (st >= 3) [[0, v.d], [v.x0, v.gx0]].forEach((q) => b.point(q, { color: 'violet', hollow: true, r: 8, ref: 'g' }));
-    if (st >= 4) {
+    if (st >= 3) {
       const hi = v.mx === v.d ? [0, v.d] : [v.x0, v.gx0], lo = v.mx === v.d ? [v.x0, v.gx0] : [0, v.d];
       const both = v.ask === 'sum' || v.ask === 'diff';
       if (both || v.ask === 'max') cxTag(b, hi, `극대 ${v.mx}`, { color: 'rose', dx: 12, dy: -16, align: 'left', ref: 'ans' });
@@ -520,7 +520,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function view8(s, lab) {
     if (lab.tab !== 'explore') return { formula: FORMULA8 };
     const t = s.tp, m = fp8(t), gt = g8(t), xi = xint8(t), gp = -t * (3 * t - 3);
-    const near = [0, 1].some((z) => Math.abs(t - z) < 0.06);
+    const near = [0, 1].some((z) => Math.abs(t - z) < 1e-9);
     return {
       chips: [{ k: '접선', tex: `y=f'(t)(x-t)+f(t)`, color: 'rose' }, { k: 'y절편', tex: `g(t)=f(t)-t\\,f'(t)`, color: 'violet' }],
       status: near ? { tone: 'key', text: 'g′(t)=0: y절편이 증가에서 감소(또는 반대)로 바뀌는 극값입니다' } : { tone: 'info', text: gp > 0 ? 'T가 오른쪽으로 갈 때 y절편이 올라갑니다 (g′ > 0)' : 'T가 오른쪽으로 갈 때 y절편이 내려갑니다 (g′ < 0)' },
@@ -537,7 +537,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ----- 응용 장면 7 · 할선 기울기 부등식과 f가 지날 수 있는 영역 ----- */
   const A11 = { a: 1, fa: 1 };
-  const eff11 = (s) => ({ L: s.lo, U: Math.max(s.hi, s.lo + 0.25), both: s.ub === 'both' });
+  const eff11 = (s) => ({ L: s.lo, U: s.hi, both: s.ub === 'both' });
   // 영역 칠하기: 점 A에서 기울기 L, U 인 두 직선 사이(양쪽 모두 같은 두 직선 사이)
   function wedge11(b, a, fa, L, U, both, vb, alpha) {
     const xr = vb.x1 + 1, xl = vb.x0 - 1, yL = (x) => fa + L * (x - a), yU = (x) => fa + U * (x - a);
@@ -550,15 +550,16 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
   function drawExplore11(b, s) {
-    cxFocus(b, 'c11e', { x: [-3.2, 5.2], y: [-4.0, 6.0] });
+    cxFocus(b, `c11e:${s.bx}:${s.by}`, { x: [-3.2, 5.2], y: [Math.min(-4.0, s.by - 1), Math.max(6.0, s.by + 1)] });
     const { L, U, both } = eff11(s), { a, fa } = A11;
-    const bx = s.bx, by = s.by, m = (by - fa) / (bx - a), inside = m >= L - 1e-9 && (!both || m <= U + 1e-9);
+    const bx = s.bx, by = s.by, m = (by - fa) / (bx - a), inside = (!both || L <= U) && m >= L - 1e-9 && (!both || m <= U + 1e-9);
     if (s.grid) b.grid();
     b.axes();
     const vb = b.viewBox();
-    wedge11(b, a, fa, L, U, both, vb, 0.2);
+    if (!both || L <= U) wedge11(b, a, fa, L, U, both, vb, 0.2);
     b.line([a, fa], L, { color: 'violet', width: 2.8, glow: true, ref: 'L' });
     if (both) b.line([a, fa], U, { color: 'rose', width: 2.8, glow: true, ref: 'U' });
+    if (both && L > U) b.stext(14, 20, 'L > U: 두 기울기 조건을 동시에 만족할 수 없습니다', { color: 'red', size: 12, align: 'left' });
     if (inside) {
       const w = 0.9 * Math.min(m - L, both ? U - m : 1);
       const fs = (x) => fa + m * (x - a) + w * ((bx - a) / (2 * Math.PI)) * Math.sin((2 * Math.PI * (x - a)) / (bx - a));
@@ -571,7 +572,7 @@ window.addEventListener('DOMContentLoaded', function () {
     cxTag(b, [lx(L), fa + L * (lx(L) - a)], `기울기 ${fmt(L, 2)}`, { color: 'violet', size: 12, align: 'right', dy: L >= 0 ? 20 : -16, ref: 'L' });
     if (both) cxTag(b, [lx(U), fa + U * (lx(U) - a)], `기울기 ${fmt(U, 2)}`, { color: 'rose', size: 12, align: 'right', dx: -8, dy: -4, ref: 'U' });
     b.handle('B', [bx, by], { color: inside ? 'green' : 'red', label: 'B', dx: 12, dy: -14, ref: 'curve',
-      drag: (w) => { let x = clamp(R8(w.x), -2.8, 4.8); if (Math.abs(x - a) < 0.3) x = x >= a ? a + 0.3 : a - 0.3; s.bx = x; s.by = clamp(R8(w.y), -3.6, 5.6); } });
+      drag: (w) => { let x = clamp(R8(w.x), -2.8, 4.8); if (Math.abs(x - a) < 0.3) x = x >= a ? a + 0.3 : a - 0.3; s.bx = x; s.by = R8(w.y); } });
   }
   const var11 = cxVarier((prev) => {
     const first = !prev;
@@ -608,8 +609,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return [
       `평균값 정리에 의해 $\\dfrac{f(${v.b})-f(${v.a})}{${v.b}-${v.a < 0 ? '(' + v.a + ')' : v.a}}=f^{\\prime}(c)$ 인 $c$ 가 $${v.a}$ 와 $${v.b}$ 사이에 있습니다.`,
       `$f^{\\prime}(c)$ 는 ${v.both ? `$${v.L}$ 이상 $${v.U}$ 이하` : `$${v.L}$ 이상`}이므로 평균변화율도 같은 범위에 있습니다: $${mm}$. 그림에서는 점 A에서 기울기 ${v.both ? `$${v.L}$, $${v.U}$ 인 두 직선 사이` : `$${v.L}$ 인 직선의 한쪽`}이 f가 지날 수 있는 영역입니다.`,
-      fin,
-      last
+      fin + ' ' + last + ` 경계 기울기의 일차함수 $f(x)=${v.fa}+${v.L}(x-(${v.a}))$${v.both ? ` 또는 $f(x)=${v.fa}+${v.U}(x-(${v.a}))$` : ''}가 조건을 만족하며 경곗값을 실제로 만드므로 단순한 한계가 아니라 최솟값·최댓값입니다.`
     ].map((t) => t.replace(/\+-/g, '-'));
   };
   const FORMULA11 = '<b>평균값 정리로 읽는 부등식</b><br>$\\dfrac{f(b)-f(a)}{b-a}=f\'(c)$ ($c$ 는 $a$, $b$ 사이)<br>$m\\le f\'(x)\\le M$ 이면 평균변화율도 $m$ 이상 $M$ 이하이므로 그래프는 점 $(a,f(a))$ 에서 기울기 $m$, $M$ 인 두 직선 사이의 영역을 벗어나지 못합니다. $x\\lt a$ 쪽도 같은 두 직선 사이입니다.';
@@ -630,7 +630,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.point([v.b, yL], { color: 'violet', r: 5.5, ref: 'L' });
       if (v.both) b.point([v.b, yU], { color: 'rose', r: 5.5, ref: 'U' });
     }
-    if (st >= 4) {
+    if (st >= 3) {
       const yL = v.fa + v.L * v.dl, yU = v.fa + v.U * v.dl;
       const lowY = v.both ? Math.min(yL, yU) : yL, highY = v.both ? Math.max(yL, yU) : yL;
       const mark = (y, txt) => cxTag(b, [v.b, y], txt, { color: 'green', size: 13, align: v.b >= v.a ? 'left' : 'right', dx: v.b >= v.a ? 12 : -12, dy: -14, ref: 'ans' });
@@ -643,6 +643,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function view11(s, lab) {
     if (lab.tab !== 'explore') return { formula: FORMULA11 };
+    if (s.ub === 'both' && s.lo > s.hi) return { status: { tone: 'bad', text: '하한 L이 상한 U보다 큽니다. 이 조건을 만족하는 함수는 없습니다.' }, formula: FORMULA11 };
     const { L, U, both } = eff11(s), { a, fa } = A11, m = (s.by - fa) / (s.bx - a), inside = m >= L - 1e-9 && (!both || m <= U + 1e-9);
     return {
       chips: [{ tex: both ? `${fmt(L, 2)}\\le f'(x)\\le ${fmt(U, 2)}` : `f'(x)\\ge ${fmt(L, 2)}`, color: 'violet' }, { tex: `f(${a})=${fa}`, color: 'ink' }],
@@ -672,25 +673,25 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'dx', 1.2, 0.05, 2.0, dt); return true; },
       view: (s) => {
         const a = s.a, dx = safeDx(s.dx), b = a + dx, ya = F[1](a), yb = F[1](b);
-        const sec = (yb - ya) / dx, tan = FP[1](a), err = Math.abs(sec - tan);
+        const zeroWidth = dx === 0, sec = zeroWidth ? null : secantSlope(a, dx), tan = FP[1](a), err = zeroWidth ? null : Math.abs(sec - tan);
         return {
           chips: [{ k: '함수식', tex: 'f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x + 1', color: 'ink' }, { k: '도함수', tex: "f'(x) = \\dfrac{3}{2}x^2 - \\dfrac{3}{2}", color: 'sky' }],
-          status: err < 0.05 ? { tone: 'ok', text: `할선 ≈ 접선 (차이 ${fmt(err, 3)})` } : { tone: 'info', text: `Δx = ${fmt(dx)} · 차이 ${fmt(err, 2)}` },
+          status: zeroWidth ? { tone: 'info', text: 'Δx=0이면 A와 B가 겹쳐 할선 기울기는 정의되지 않습니다. 접선 기울기는 Δx≠0인 비의 극한입니다.' } : err < 0.05 ? { tone: 'ok', text: `할선 ≈ 접선 (차이 ${fmt(err, 3)})` } : { tone: 'info', text: `Δx = ${fmt(dx)} · 차이 ${fmt(err, 2)}` },
           readouts: [
             { label: '기준점 x = a', value: fmt(a), color: 'amber', ref: 'A' },
             { label: '증분 Δx = b − a', value: fmt(dx), color: 'amber', ref: 'dx', note: `b = ${fmt(b)}` },
-            { label: '할선 기울기 $\\frac{\\Delta y}{\\Delta x}$', value: fmt(sec), color: 'sky', ref: 'secant' },
+            { label: '할선 기울기 $\\frac{\\Delta y}{\\Delta x}$', value: dx === 0 ? '정의되지 않음 (Δx=0)' : '≈ ' + fmt(sec), color: 'sky', ref: 'secant' },
             { label: "접선 기울기 f′(a)", value: fmt(tan), color: 'rose', ref: 'tangent' },
-            { label: "차이 |$\\frac{\\Delta y}{\\Delta x}$ − f′(a)|", value: fmt(err, 3), color: 'violet', ref: 'diff', wide: true, note: Math.abs(dx) <= 0.05 ? 'Δx → 0 : 할선이 접선에 포개집니다' : 'Δx를 0에 가깝게 해 보세요' }
+            { label: "차이 |$\\frac{\\Delta y}{\\Delta x}$ − f′(a)|", value: zeroWidth ? '정의되지 않음 (할선 기울기 없음)' : '≈ ' + fmt(err, 3), color: 'violet', ref: 'diff', wide: true, note: zeroWidth ? '0을 대입한 비와 0으로 보낼 때의 극한은 다릅니다' : Math.abs(dx) <= 0.05 ? 'Δx≠0인 채 0으로 보내면 할선 기울기가 접선 기울기로 갑니다' : 'Δx를 0에 가깝게 해 보세요' }
           ],
-          tape: s.step >= 3 ? { title: `할선 기울기 $\\frac{\\Delta y}{\\Delta x}$ = ${fmt(sec)}  →  접선 기울기 f′(a) = ${fmt(tan)}  (차이: ${fmt(err)})`,
-            segments: [{ text: `할선 ${fmt(sec)}`, weight: Math.max(0.2, Math.abs(sec)), color: 'sky' }, { text: `접선 ${fmt(tan)}`, weight: Math.max(0.2, Math.abs(tan)), color: 'rose' }] } : null
+          tape: s.step >= 3 ? { title: zeroWidth ? `Δx=0: 할선 기울기와 그 차이는 정의되지 않습니다. Δx→0일 때의 극한은 접선 기울기 f′(a)≈${fmt(tan)}입니다.` : `할선 기울기 $\\frac{\\Delta y}{\\Delta x}$ ≈ ${fmt(sec)}  →  접선 기울기 f′(a) ≈ ${fmt(tan)}  (차이 ≈ ${fmt(err)})`,
+            segments: zeroWidth ? [{ text: `극한·접선 ≈ ${fmt(tan)}`, weight: Math.max(0.2, Math.abs(tan)), color: 'rose' }] : [{ text: `할선 ≈ ${fmt(sec)}`, weight: Math.max(0.2, Math.abs(sec)), color: 'sky' }, { text: `접선 ≈ ${fmt(tan)}`, weight: Math.max(0.2, Math.abs(tan)), color: 'rose' }] } : null
         };
       },
       draw: (b, s) => {
         mainBg(b, s);
         const f = F[1], a = s.a, dx = safeDx(s.dx), bx = a + dx, ya = f(a), yb = f(bx);
-        const sec = (yb - ya) / dx, tan = FP[1](a);
+        const sec = secantSlope(a, dx), tan = FP[1](a);
         curve(b, f);
         if (s.step >= 2) {
           b.line([a, ya], tan, { extent: 3.5, color: 'rose', width: 2.4, dash: true, glow: true, ref: ['tangent', 'diff'] });
@@ -699,7 +700,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (s.step >= 1) {
           b.seg([a, ya], [bx, ya], { color: 'amber', width: 2, dash: true, ref: 'dx' });
           b.seg([bx, ya], [bx, yb], { color: 'sky', width: 2, dash: true, ref: 'secant' });
-          b.line([a, ya], sec, { extent: 3.5, color: 'sky', width: 2.6, glow: true, ref: ['secant', 'diff'] });
+          if (dx !== 0) b.line([a, ya], sec, { extent: 3.5, color: 'sky', width: 2.6, glow: true, ref: ['secant', 'diff'] });
           b.text([(a + bx) / 2, ya], `Δx = ${fmt(dx)}`, { color: 'amber', dy: 32, size: 12.5, ref: 'dx' });
           b.text([bx, (ya + yb) / 2], `Δy = ${fmt(yb - ya)}`, { color: 'sky', dx: 10, align: 'left', size: 12.5, ref: 'secant' });
         }
@@ -721,7 +722,7 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'dx', 1.2, 0.05, 2.0, dt); return true; },
       view: (s) => {
         const a = s.a, b = a + s.dx, ya = F[2](a), yb = F[2](b);
-        const avg = Math.abs(b - a) > 0.01 ? (yb - ya) / (b - a) : FP[2](a);
+        const avg = secantSlope(a, b - a);
         const cs = getMVTPoints(a, b);
         return {
           chips: [{ k: '함수식', tex: 'f(x) = \\dfrac{1}{2}x^3 - \\dfrac{3}{2}x + 1', color: 'ink' }, { k: '도함수', tex: "f'(x) = \\dfrac{3}{2}x^2 - \\dfrac{3}{2}", color: 'sky' }],
@@ -738,7 +739,7 @@ window.addEventListener('DOMContentLoaded', function () {
       draw: (b, s) => {
         mainBg(b, s);
         const f = F[2], a = s.a, bx = a + s.dx, ya = f(a), yb = f(bx);
-        const avg = Math.abs(bx - a) > 0.01 ? (yb - ya) / (bx - a) : FP[2](a);
+        const avg = secantSlope(a, bx - a);
         curve(b, f);
         if (s.step >= 1) b.seg([a - 2.5, ya - avg * 2.5], [bx + 2.5, yb + avg * 2.5], { color: 'sky', width: 2.5, glow: true, ref: 'secant' });
         const cs = getMVTPoints(a, bx);
@@ -747,7 +748,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const yc = f(c);
             b.line([c, yc], avg, { extent: 2.2, color: 'rose', width: 2.5, dash: true, glow: true, ref: 'c' });
             b.seg([c, 0], [c, yc], { color: 'rose', alpha: 0.5, width: 1.5, dash: true, ref: 'c' });
-            b.point([c, yc], { color: 'rose', r: 6, label: `C(c=${fmt(c)}, f′(c)=${fmt(avg)})`, dx: 10, dy: i === 0 ? 20 : -12, ref: 'c' });
+            b.point([c, yc], { color: 'rose', r: 6, label: `C(c≈${fmt(c)}, f′(c)≈${fmt(avg)})`, dx: 10, dy: i === 0 ? 20 : -12, ref: 'c' });
           });
         }
         handlesAB(b, s, 2, { A: `A${p2(a, ya)}`, B: `B${p2(bx, yb)}` });
@@ -761,9 +762,9 @@ window.addEventListener('DOMContentLoaded', function () {
       guide: examData[3].hint + ' 그림의 <b>보라색 점</b>(높이 차)과 <b>하늘색 점</b>(기울기)도 직접 끌 수 있습니다.',
       controls: ['slopeR', 'gapH'],
       presets: [
-        { label: '① 미분가능 (연속이고 기울기가 같음)', color: 'green', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) < 0.05 },
-        { label: '② 꺾인 점 (연속이지만 좌미분계수 ≠ 우미분계수)', color: 'amber', set: { a: 1, dx: 1, slopeR: -1.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 0.02 && Math.abs(s.slopeR - 2) >= 0.05 },
-        { label: '③ 불연속 (함숫값이 갑자기 달라짐)', color: 'red', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 1.2 }, on: (s) => Math.abs(s.gapH) > 0.02 }
+        { label: '① 미분가능 (연속이고 기울기가 같음)', color: 'green', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 1e-9 && Math.abs(s.slopeR - 2) < 1e-9 },
+        { label: '② 꺾인 점 (연속이지만 좌미분계수 ≠ 우미분계수)', color: 'amber', set: { a: 1, dx: 1, slopeR: -1.0, gapH: 0.0 }, on: (s) => Math.abs(s.gapH) <= 1e-9 && Math.abs(s.slopeR - 2) >= 1e-9 },
+        { label: '③ 불연속 (함숫값이 갑자기 달라짐)', color: 'red', set: { a: 1, dx: 1, slopeR: 2.0, gapH: 1.2 }, on: (s) => Math.abs(s.gapH) > 1e-9 }
       ],
       actions: actionsCommon('자동으로 기울기 바꾸기'),
       steps: examData[3].steps,
@@ -773,16 +774,16 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'slopeR', 1.8, -1.2, 3.5, dt); return true; },
       view: (s) => {
         const gap = s.gapH, p = s.slopeR;
-        const disc = Math.abs(gap) > 0.02, cusp = !disc && Math.abs(p - 2.0) > 0.05;
+        const disc = Math.abs(gap) > 1e-9, cusp = !disc && Math.abs(p - 2.0) > 1e-9;
         const q = 1 + gap - p;
         return {
-          chips: [{ k: '함수식', tex: `x<1: x^2 \\; | \\; x\\ge 1: ${fmt(p, 1).replace('−', '-')}(x-1)+${fmt(1 + gap, 1).replace('−', '-')}`, color: 'ink' }, { k: '좌·우미분계수', tex: `f'_{-}(1) = 2, \\; f'_{+}(1) = ${fmt(p, 1).replace('−', '-')}`, color: 'sky' }],
+          chips: [{ k: '함수식', tex: `x<1: x^2 \\; | \\; x\\ge 1: ${fmt(p, 1).replace('−', '-')}(x-1)+${fmt(1 + gap, 1).replace('−', '-')}`, color: 'ink' }, { k: '연속일 때의 좌·우미분계수', tex: `f'_{-}(1) ${disc ? '\\text{ 는 유한하게 존재하지 않음}' : '= 2'}, \\; f'_{+}(1) = ${fmt(p, 1).replace('−', '-')}`, color: 'sky' }],
           status: disc ? { tone: 'bad', text: '불연속 → 미분가능하지 않음' } : cusp ? { tone: 'warn', text: '연속이지만 꺾인 점 → 미분가능하지 않음' } : { tone: 'ok', text: '연속 · 좌미분계수 = 우미분계수 → 미분가능' },
           alert: disc ? { tone: 'bad', text: `x = 1 에서 좌극한(1)과 우극한(${fmt(1 + gap, 1)})이 달라 불연속이므로 미분가능하지 않습니다!` }
             : cusp ? { tone: 'warn', text: `x = 1 에서 연속이지만 좌미분계수(2.0) ≠ 우미분계수(${fmt(p, 1)})이므로 그래프가 꺾이고 미분가능하지 않습니다!` } : null,
           readouts: [
             { label: '경계 x = 1 · 높이 차 Δh', value: fmt(gap, 1), color: 'violet', ref: 'gap', note: disc ? '끊어짐' : '이어짐' },
-            { label: "좌미분계수 f′₋(1)", value: '2.00', color: 'rose', ref: 'left' },
+            { label: "좌미분계수 f′₋(1)", value: disc ? '존재하지 않음 (높이 차 ÷ h가 발산)' : '2.00', color: 'rose', ref: 'left' },
             { label: "우미분계수 f′₊(1) = p", value: fmt(p), color: 'sky', ref: 'right' },
             { label: '판정', value: disc ? '불연속' : cusp ? '꺾인 점' : '미분가능', color: disc ? 'red' : cusp ? 'amber' : 'green', note: `q = ${fmt(q, 1)} (p + q = ${fmt(1 + gap, 1)})` }
           ],
@@ -799,15 +800,15 @@ window.addEventListener('DOMContentLoaded', function () {
           b.seg([1 - 2.2, 1 - 2 * 2.2], [1 + 1.5, 1 + 2 * 1.5], { color: 'rose', width: 2.2, dash: true, glow: true, ref: 'left' });
           b.seg([1 - 1.5, 1 + gap - p * 1.5], [1 + 2.2, 1 + gap + p * 2.2], { color: 'sky', width: 2.2, dash: true, glow: true, ref: 'right' });
         }
-        if (Math.abs(gap) > 0.02) {
+        if (Math.abs(gap) > 1e-9) {
           b.seg([1, 1], [1, 1 + gap], { color: 'violet', width: 3, ref: 'gap' });
           b.point([1, 1], { hollow: true, color: 'ink', r: 6.5, label: '좌극한(1, 1.0)', dx: -12, dy: -10, align: 'right' });
         } else {
-          const smooth = Math.abs(2.0 - p) < 0.05;
-          b.point([1, 1], { color: smooth ? 'green' : 'red', r: 7, label: smooth ? '미분가능한 접합점(1, 1) [기울기=2]' : `꺾인 점(1, 1) [좌미분계수=2 ≠ 우미분계수=${fmt(p, 1)}]`, dx: 14, dy: 22 });
+          const smooth = Math.abs(2.0 - p) < 1e-9;
+          b.point([1, 1], { color: smooth ? 'green' : 'red', r: 7, label: s.step < 3 ? '접합점 (1, 1)' : smooth ? '미분가능한 접합점(1, 1) [기울기=2]' : `꺾인 점(1, 1) [좌미분계수=2 ≠ 우미분계수=${fmt(p, 1)}]`, dx: 14, dy: 22 });
         }
         // 직접 끄는 점: 단차 Δh (보라), 기울기 p (하늘) — 0과 2 근처에서 자석처럼 붙습니다.
-        b.handle('gap', [1, 1 + gap], { color: 'violet', ref: 'gap', label: Math.abs(gap) > 0.02 ? `함숫값(1, ${fmt(1 + gap, 1)})` : '', dx: 14, dy: -14,
+        b.handle('gap', [1, 1 + gap], { color: 'violet', ref: 'gap', label: Math.abs(gap) > 1e-9 ? `함숫값(1, ${fmt(1 + gap, 1)})` : '', dx: 14, dy: -14,
           drag: (w) => { let v = w.y - 1; if (Math.abs(v) < 0.15) v = 0; s.gapH = clamp(Math.round(v * 10) / 10, -2, 2); } });
         b.handle('p', [2, p + 1 + gap], { color: 'sky', ref: 'right', label: 'p 조절', dx: 12, dy: -12,
           drag: (w) => { let v = w.y - 1 - s.gapH; if (Math.abs(v - 2) < 0.15) v = 2; s.slopeR = clamp(Math.round(v * 10) / 10, -2, 4); } });
@@ -827,8 +828,8 @@ window.addEventListener('DOMContentLoaded', function () {
       panes: panesOf([-2.6, 4.6], [-2.6, 2.8]),
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'a', 1.2, -1.5, 2.2, dt); return true; },
       view: (s) => {
-        const a = s.a, ya = F[4](a), val = a - ya - 2, d = Math.abs(val) / Math.SQRT2, isMin = Math.abs(a - 1.0) < 0.05;
-        const nm = Math.abs(a) > 0.05 ? fmt(-1 / a) : '수직';
+        const a = s.a, ya = F[4](a), val = a - ya - 2, d = Math.abs(val) / Math.SQRT2, isMin = Math.abs(a - 1.0) < 1e-9;
+        const nm = Math.abs(a) > 1e-9 ? '≈ ' + fmt(-1 / a) : '수직';
         return {
           chips: [{ k: '함수식', tex: 'f(x) = \\dfrac{1}{2}x^2 + \\dfrac{1}{2}, \\; l: y = x - 2', color: 'ink' }, { k: '접선', tex: `f'(a) = ${fmt(FP[4](a)).replace('−', '-')}`, color: 'rose' }],
           status: isMin ? { tone: 'ok', text: '최단거리! 접선은 직선과 평행, 법선은 직선과 수직' } : { tone: 'info', text: `거리 d = ${fmt(d, 3)}` },
@@ -847,15 +848,15 @@ window.addEventListener('DOMContentLoaded', function () {
         curve(b, f);
         b.line([0, -2], 1, { color: 'sky', width: 2.6, glow: true });
         const vb = b.viewBox();
-        b.text([Math.min(vb.x1 - 0.8, 3.6), Math.min(vb.x1 - 0.8, 3.6) - 2], 'l : y = x − 2', { color: 'sky', dx: 10, dy: 18, align: 'left', size: 13 });
+        b.text([Math.min(vb.x1 - 0.8, 3.6), Math.min(vb.x1 - 0.8, 3.6) - 2], 'l : y = x − 2', { color: 'sky', dx: -10, dy: -14, align: 'right', size: 13 });
         if (s.step >= 1) b.line([a, ya], m, { extent: 2.5, color: 'rose', width: 2.3, dash: true, glow: true, ref: 'tangent' });
         if (s.step >= 2) {
-          if (Math.abs(m) > 0.05) b.line([a, ya], -1 / m, { extent: 2.0, color: 'violet', width: 2, dash: true, ref: 'normal' });
+          if (Math.abs(m) > 1e-9) b.line([a, ya], -1 / m, { extent: 2.0, color: 'violet', width: 2, dash: true, ref: 'normal' });
           else b.seg([a, ya - 3], [a, ya + 3], { color: 'violet', width: 2, dash: true, ref: 'normal' });
         }
         if (s.step >= 3) {
           const val = a - ya - 2, hx = a - val / 2, hy = ya + val / 2, d = Math.abs(val) / Math.SQRT2;
-          const isMin = Math.abs(a - 1.0) < 0.05;
+          const isMin = Math.abs(a - 1.0) < 1e-9;
           b.seg([a, ya], [hx, hy], { color: isMin ? 'amber' : 'green', width: 2.8, glow: true, ref: 'dist' });
           b.right([hx, hy], [a, ya], [hx + 1, hy + 1], { color: isMin ? 'amber' : 'green', size: 10 });
           b.point([hx, hy], { color: 'sky', r: 5, label: `수선의 발 H${p2(hx, hy)}`, dx: 10, dy: 18 });
@@ -945,8 +946,8 @@ window.addEventListener('DOMContentLoaded', function () {
       presets: [
         { group: '조건', label: 'f′(x) ≥ L (아래만)', apply: (s) => { s.ub = 'lower'; }, on: (s) => s.ub === 'lower' },
         { group: '조건', label: 'L ≤ f′(x) ≤ U', apply: (s) => { s.ub = 'both'; }, on: (s) => s.ub === 'both' },
-        { group: 'B 놓기', label: 'B를 아래쪽 경계선 위로', color: 'violet', apply: (s) => { s.by = clamp(R8(A11.fa + s.lo * (s.bx - A11.a)), -3.6, 5.6); }, on: () => false },
-        { group: 'B 놓기', label: 'B를 위쪽 경계선 위로', color: 'rose', apply: (s) => { const U = Math.max(s.hi, s.lo + 0.25); s.ub = 'both'; s.by = clamp(R8(A11.fa + U * (s.bx - A11.a)), -3.6, 5.6); }, on: () => false }
+        { group: 'B 놓기', label: 'B를 기울기 L의 경계선 위로', color: 'violet', apply: (s) => { s.by = A11.fa + s.lo * (s.bx - A11.a); }, on: () => false },
+        { group: 'B 놓기', label: 'B를 기울기 U의 경계선 위로', color: 'rose', apply: (s) => { s.ub = 'both'; s.by = A11.fa + s.hi * (s.bx - A11.a); }, on: () => false }
       ],
       steps: () => steps11(var11.cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text11(var11.cur())}</div>`,
@@ -1190,16 +1191,34 @@ window.addEventListener('DOMContentLoaded', function () {
     lab.invalidate(true);
   });
   // 지금 그림에 보여 줄 풀이 단계: 정리 탭은 s.step, 문제 탭은 정답이 열렸을 때만 끝까지
-  const ouStepOf = (lab, s, n) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? n : 0) : n);
+  const ouStepOf = (lab, s, n) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? n : 0) : s.step);
   // 원래 장면 1~5에 문제·변형·풀이 단계 그림을 얹습니다. spec: { m, gen, text, ans, steps, core, draw }
   const ouFix = (t) => String(t).replace(/'/g, '^{\\prime}').replace(/</g, '\\lt ').replace(/>/g, '\\gt '); // 단계 글은 esc를 거치므로 ' < > 를 수식 기호로 바꿉니다
+  function ouQuick(m, v, core) {
+    let steps;
+    if (m===1) steps=`① 구간 전체의 평균변화율은 할선 AB의 기울기 ${tex(v.avg.tex)}입니다.<br>② 극한식의 두 점 사이 실제 가로 간격은 ${tex(`(${v.p}-(${v.q}))h`)}입니다. 주어진 분모 h로 나누면 할선 기울기의 ${tex(String(v.p-v.q))}배이고, 두 점이 같은 접점으로 가므로 극한은 ${tex(`(${v.p}-(${v.q}))f'(${v.a0})=${v.lim.tex}`)}입니다. f(a)를 더하고 빼는 두 차분몫 전개를 줄입니다.`;
+    if (m===2) steps=`① 이 문제의 다항식은 ${tex('f(x)=Ax^3+Bx+C')} 꼴입니다. 할선과 접선의 기울기를 같게 하면 ${tex('A(a^2+ab+b^2)+B=3Ac^2+B')}이고 B가 사라집니다.<br>② ${tex(`c^2=\\dfrac{a^2+ab+b^2}{3}=${v.c2.tex}`)}이므로 두 후보 중 ${tex(`(${v.a},${v.b})`)} 안의 ${tex('c='+v.inside.map(c=>c.tex).join(','))}만 고릅니다. 다항함수의 연속·미분가능성과 열린구간 조건도 충족합니다.`;
+    if (m===3) steps=`① 이어 붙일 직선은 이차곡선의 접선이어야 합니다. 곡선 위 점 ${tex(`(${v.c},${v.gc.tex})`)}와 그 기울기 ${tex(v.p.tex)}를 읽습니다.<br>② 접선 ${tex(`y-${v.gc.ptex}=${v.p.ptex}(x-(${v.c}))`)}의 계수와 ${tex('px+q')}를 비교하면 ${tex(`p=${v.p.tex},\\;q=${v.q.tex}`)}. 이 직선은 함숫값과 미분계수를 동시에 맞춥니다.`;
+    if (m===4) steps=`① 직선과 평행한 접선을 위로 옮겨 포물선에 처음 닿게 합니다. ${tex(`f'(a)=${v.m}`)}에서 ${tex(`T=(${v.a.tex},${v.fa.tex})`)}.<br>② 세로 간격은 ${tex(`${ouCoQ(v.u)}(x-(${v.a.tex}))^2+${v.k}>0`)}이므로 이 점이 전 구간의 최소입니다. 평행한 두 직선의 수직거리는 ${tex(`d_{\\min}=\\dfrac{${v.k}}{\\sqrt{${v.r}}}=${v.d.tex}`)}. 교점이 있을 때는 먼저 거리 0인 경우를 확인해야 합니다.`;
+    if (m===5) steps=`① 공통접선은 알고 있는 곡선 f의 접선입니다. ${tex(`T=(${v.t},${v.ft.tex})`)}, ${tex(`f'(${v.t})=${v.mq.tex}`)}만 구합니다.<br>② ${tex(`y-${v.ft.ptex}=${v.mq.ptex}(x-(${v.t}))`)}에서 ${tex('y='+ouPoly([v.mq,v.n]))}. 다른 곡선의 미정계수 p,q를 먼저 구하는 연립계산을 생략할 수 있습니다. 접한다는 조건이 같은 점·같은 기울기를 보장합니다.`;
+    return { steps, highlight: core };
+  }
   function ouUpgrade(sc, spec) {
     const ex = examData[spec.m], V = ouVarier(spec.gen);
     const body = (v) => (v.first ? ex.question() : spec.text(v));
     const pr0 = sc.problem || {}, origView = sc.view, origDraw = sc.draw, origPanes = sc.panes, focus0 = sc.focus;
     const inExplore = (lab) => !lab || !lab.tab || lab.tab === 'explore';
-    // 탐구 탭은 원래대로: 원래 단계(1~3)가 그림에 드러나도록 단계 값을 1~3으로 맞춰 그립니다.
-    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(1, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
+    const exploreWin = (s) => {
+      const base=typeof focus0==='function'?focus0(s):focus0;
+      if (spec.m>2) return base;
+      const a=s.a, b=a+s.dx, xs=[a,b,...[-1,1].filter(x=>x>Math.min(a,b)&&x<Math.max(a,b))];
+      const ys=xs.map(x=>F[spec.m](x));
+      const x0=Math.min(base.x[0],a-0.7,b-0.7),x1=Math.max(base.x[1],a+0.7,b+0.7);
+      const y0=Math.min(base.y[0],...ys),y1=Math.max(base.y[1],...ys),pad=Math.max(0.9,(y1-y0)*0.15);
+      return {x:[x0,x1],y:[y0-pad,y1+pad]};
+    };
+    // 탐구도 0단계에서는 주어진 곡선만 표시하고, 선택한 단계만 공개합니다.
+    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(0, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
     const stepsOf = (v) => spec.steps(v).map(ouFix);
     const stepsHtml = (v) => stepsOf(v).map((t, i) => `<b>${i + 1}.</b> ${t}`).join('<br>');
     sc.startStep = 0;
@@ -1211,13 +1230,23 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.solution = {
       ...sol0,
       standard: () => (V.cur().first ? ex.textbook() : { steps: stepsHtml(V.cur()) }),
-      quick: () => (V.cur().first ? ex.shortcut() : { highlight: spec.core })
+      quick: () => ouQuick(spec.m, V.cur(), spec.core)
     };
     sc.view = (s, lab) => (inExplore(lab) ? (origView ? withStep(s, () => origView(s, lab)) : {}) : { formula: spec.core });
-    if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
+    if (origPanes) sc.panes = (s) => {
+      const L=window.lab;
+      if (L && L.tab && L.tab!=='explore') return null;
+      const panes=origPanes(s);
+      if (panes && spec.m<=2) {
+        panes[0].focusY=exploreWin(s).y;
+        const vals=[FP[spec.m](s.a),FP[spec.m](s.a+s.dx)];
+        panes[1].focusY=[Math.min(panes[1].focusY[0],...vals)-0.8,Math.max(panes[1].focusY[1],...vals)+0.8];
+      }
+      return panes;
+    };
     sc.draw = (b, s, v, lab) => {
       if (b.thumb || inExplore(lab)) {
-        if (!b.thumb) ouFocus(b, 'e:' + spec.m, typeof focus0 === 'function' ? focus0(s) : focus0 || (lab && lab.def && lab.def.board && lab.def.board.focus));
+        if (!b.thumb) ouFocus(b, 'e:' + spec.m + (spec.m<=2 ? ':'+[s.a,s.dx].join(',') : ''), exploreWin(s) || (lab && lab.def && lab.def.board && lab.def.board.focus));
         const vv = origView ? withStep(s, () => origView(s, lab)) : v;
         return withStep(s, () => origDraw(b, s, vv, lab));
       }
@@ -1269,24 +1298,42 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       const F = polyFn(co, den), fq = polyQ(co, den);
       const avg = fq(x2).sub(fq(x1)).div(x2 - x1), dq = ouDer(co).map((c) => c.div(den)), fpq = ouEvQ(dq, a0), lim = fpq.mul(p - q);
-      const win = ouWinF([F], [x1, x2, a0], { pts: [[x1, F(x1)], [x2, F(x2)], [a0, F(a0)]], mx: 1.3, my: 1.3, minW: 6, minH: 5 });
-      if (prev && (fpq.n === 0 || win.y[1] - win.y[0] > 13 || Math.abs(lim.v) > 150)) return null;
+      const baseWin = ouWinF([F], [x1, x2, a0], { pts: [[x1, F(x1)], [x2, F(x2)], [a0, F(a0)]], mx: 1.3, my: 1.3, minW: 6, minH: 5 });
+      if (prev && (fpq.n === 0 || baseWin.y[1] - baseWin.y[0] > 13 || Math.abs(lim.v) > 150)) return null;
+      // The illustrative points in Step 2 are part of the focus, without changing the problem family.
+      const xp = a0 + p * 0.12, xq = a0 + q * 0.12;
+      const win = ouWinF([F], [x1, x2, a0, xp, xq], { pts: [[x1, F(x1)], [x2, F(x2)], [a0, F(a0)], [xp, F(xp)], [xq, F(xq)], [xp, F(a0)], [xq, F(a0)]], mx: 1.3, my: 1.3, minW: 6, minH: 5 });
       return { co, den, x1, x2, a0, p, q, F, fq, avg, dq, fpq, lim, win, key: [co, den, x1, x2, a0, p, q].join(), chk: { co, den, x1, x2, a0, p, q, avg: avg.v, lim: lim.v } };
     },
     text: (v) => `다항함수 ${tex('f(x)=' + ouPoly(v.co))} 에 대하여 ${tex('x')}의 값이 ${tex(String(v.x1))}에서 ${tex(String(v.x2))}까지 변할 때의 평균변화율과, 극한값 ${tex(`\\lim_{h \\to 0} \\dfrac{f(${ouLin(v.a0, v.p)}) - f(${ouLin(v.a0, v.q)})}{h}`)} 의 값을 각각 구하시오.`,
     ans: (v) => `평균변화율 ${tex('=' + v.avg.tex)}, 극한값 ${tex(`=${v.p - v.q}f'(${v.a0})=${v.lim.tex}`)}`,
     steps: (v) => [
-      `평균변화율은 두 점 $A(${v.x1},\\,${v.fq(v.x1).tex})$, $B(${v.x2},\\,${v.fq(v.x2).tex})$ 를 잇는 할선 AB의 기울기입니다: $\\dfrac{f(${v.x2})-f(${v.x1})}{${v.x2}-${ouPar(v.x1)}}=${v.avg.tex}$.`,
-      `분자에 $f(${v.a0})$ 를 더하고 빼서 나눕니다: $\\dfrac{f(${ouLin(v.a0, v.p)})-f(${v.a0})}{h}-\\dfrac{f(${ouLin(v.a0, v.q)})-f(${v.a0})}{h}$. 분모를 $${ouTerm(v.p, 'h')}$, $${ouTerm(v.q, 'h')}$ 로 맞추면 앞 항은 $${v.p}f'(${v.a0})$, 뒤 항은 $${ouPar(v.q)}f'(${v.a0})$ 로 갑니다. (h의 계수가 곱해집니다)`,
-      `$f'(x)=${ouPoly(v.dq)}$ 이므로 $f'(${v.a0})=${v.fpq.tex}$ 입니다. 그림의 점 P에서 접선의 기울기입니다.`,
-      `극한값은 $${v.p}f'(${v.a0})-(${v.q})f'(${v.a0})=(${v.p}-(${v.q}))\\times ${v.fpq.ptex}=${v.lim.tex}$ 입니다.`
+      `두 점 $A(${v.x1},${v.fq(v.x1).tex})$, $B(${v.x2},${v.fq(v.x2).tex})$를 잇는 할선의 세로 변화량을 가로 변화량으로 나누면 평균변화율 $${v.avg.tex}$입니다. 그림의 직각삼각형에서 두 변화량을 구별합니다.`,
+      `극한식의 두 점은 $x=${ouLin(v.a0,v.p)}$, $x=${ouLin(v.a0,v.q)}$이고 가로 간격은 $(${v.p}-(${v.q}))h$입니다. 따라서 주어진 식은 이 두 점 사이 할선 기울기의 $${v.p-v.q}$배입니다. 두 점이 모두 $x=${v.a0}$으로 가므로 할선의 기울기는 접선의 기울기로 갑니다.`,
+      `$f'(x)=${ouPoly(v.dq)}$에서 $f'(${v.a0})=${v.fpq.tex}$. 그러므로 극한값은 $(${v.p}-(${v.q}))f'(${v.a0})=${v.lim.tex}$. 평균변화율 $${v.avg.tex}$과 한 점의 미분계수를 구별해 검산합니다.`
     ],
     core: '<b>h의 계수가 곱해집니다</b><br>$f$ 가 $x=a$ 에서 미분가능하면 $\\displaystyle\\lim_{h\\to0}\\dfrac{f(a+ph)-f(a+qh)}{h}=(p-q)\\,f\'(a)$ 입니다. 평균변화율은 두 점을 잇는 할선의 기울기, $f\'(a)$ 는 점 $(a,f(a))$ 에서 접선의 기울기입니다.',
     draw: (b, s, v, st) => {
       const f = v.F, A = [v.x1, f(v.x1)], B = [v.x2, f(v.x2)], P = [v.a0, f(v.a0)];
       b.plot(f, { color: 'ink', width: 3.2, glow: true });
       ouCurveTag(b, f, 'y = f(x)', 'ink', { side: 'left', dy: 16, skip: [A, B, P].map((q) => [q[0], q[1], 1.6]) });
-      if (st >= 1) b.line(A, (B[1] - A[1]) / (B[0] - A[0]), { color: 'sky', width: 2.6, glow: true });
+      if (st >= 1) {
+        const corner = [B[0], A[1]];
+        b.line(A, (B[1] - A[1]) / (B[0] - A[0]), { color: 'sky', width: 2.6, glow: true });
+        b.seg(A, corner, { color: 'amber', width: 2, dash: true });
+        b.seg(corner, B, { color: 'sky', width: 2, dash: true });
+        ouTag(b, [(A[0] + B[0]) / 2, A[1]], `Δx=${v.x2 - v.x1}`, { color: 'amber', dy: 20, size: 12 });
+        ouTag(b, [B[0], (A[1] + B[1]) / 2], `Δy=${v.fq(v.x2).sub(v.fq(v.x1)).txt}`, { color: 'sky', dx: 10, align: 'left', size: 12 });
+      }
+      if (st >= 2) {
+        const h = 0.12, xp = v.a0 + v.p * h, xq = v.a0 + v.q * h;
+        const U = [xp, f(xp)], V = [xq, f(xq)];
+        b.seg(U, V, { color: 'violet', width: 2.2, dash: true });
+        b.seg([xp, P[1]], [xq, P[1]], { color: 'amber', width: 2.2 });
+        b.point(U, { color: 'violet', r: 4.5, label: 'a+ph', dx: 8, dy: -12 });
+        b.point(V, { color: 'violet', r: 4.5, label: 'a+qh', dx: -8, dy: 18, align: 'right' });
+        ouTag(b, [(xp+xq)/2, P[1]], '(p−q)h', { color: 'amber', dy: 22, size: 12 });
+      }
       if (st >= 3) b.line(P, v.fpq.v, { color: 'rose', width: 2.4, dash: true, glow: true });
       const xs = [v.x1, v.x2, v.a0];
       b.point(A, { color: 'amber', r: 6, label: `A(x = ${v.x1})`, ...ouPlace(ouSlope(f, v.x1), ouPos(xs, v.x1)) });
@@ -1404,11 +1451,11 @@ window.addEventListener('DOMContentLoaded', function () {
     text: (v) => `곡선 ${tex('y=' + ouPoly(v.co))} 위의 점 ${tex('T(a, f(a))')}와 직선 ${tex('y=' + ouPoly([v.m, v.n]))} 사이의 거리가 최소가 될 때, 점 ${tex('T')}의 좌표와 최단거리 ${tex('d_{\\min}')}을 구하시오.`,
     ans: (v) => `접점 ${tex(`T(${v.a.tex}, ${v.fa.tex})`)}, 최단거리 ${tex('d_{\\min}=' + v.d.tex)}`,
     steps: (v) => [
-      `곡선 위의 점에서 직선까지의 거리가 가장 짧을 때, 그 점 T에서의 접선은 직선 $l$ 과 평행합니다. $f'(x)=${ouPoly(ouDer(v.co))}$ 이고 $l$ 의 기울기가 $${v.m}$ 이므로 $f'(a)=${v.m}$, $a=${v.a.tex}$. 따라서 $T(${v.a.tex},\\,${v.fa.tex})$ 입니다.`,
-      `T에서 직선 $l$: $${ouTerm(v.m, 'x')}-y${ouSg(v.n.v)}=0$ 에 내린 수선의 발을 H라 하면 TH가 최단거리입니다. 점과 직선 사이의 거리 공식을 씁니다.`,
-      `$d=\\dfrac{|${ouPar(v.m)}\\cdot ${v.a.ptex}-${v.fa.ptex}${ouSg(v.n.v)}|}{\\sqrt{${v.m}^2+1}}=\\dfrac{${v.k}}{\\sqrt{${v.r}}}=${v.d.tex}$. (참고: $f(x)-(${ouPoly([v.m, v.n])})=${ouCoQ(v.u)}(x${ouSg(-v.a.v)})^2+${v.k}$ 이므로 최솟값 $${v.k}$ 를 $\\sqrt{${v.r}}$ 로 나눈 값입니다.)`
+      `직선 l을 평행이동해 포물선에 처음 닿는 위치를 찾습니다. 포물선의 최고차항 계수 $${v.u.tex}>0$이고 직선과의 세로 간격은 $f(x)-l(x)=${ouCoQ(v.u)}(x-(${v.a.tex}))^2+${v.k}>0$이므로 두 도형은 만나지 않습니다.`,
+      `처음 닿는 접선은 l과 평행하므로 $f'(a)=${v.m}$입니다. $f'(x)=${ouPoly(ouDer(v.co))}$에서 $a=${v.a.tex}$, $T=(${v.a.tex},${v.fa.tex})$. T에서 l에 내린 수선 TH는 평행한 두 직선 사이의 거리입니다.`,
+      `세로 간격의 최솟값은 $${v.k}$이고, 수선 길이는 세로 간격의 $1/\\sqrt{${v.r}}$배입니다. 따라서 $d_{\\min}=\\dfrac{${v.k}}{\\sqrt{${v.r}}}=${v.d.tex}$. 완전제곱항이 0인 T에서 등호가 성립하므로 전 구간의 최소입니다.`
     ],
-    core: '<b>곡선과 직선 사이의 최단거리</b><br>곡선 위의 점 T에서 직선까지의 거리가 최소이면 T에서의 접선은 직선과 평행하고(접선의 기울기 = 직선의 기울기), 법선은 직선에 수직입니다. 그 점에서 점과 직선 사이의 거리 공식 $d=\\dfrac{|px_0-y_0+q|}{\\sqrt{p^2+1}}$ 을 씁니다.',
+    core: '<b>평행하게 옮겨 처음 닿는 접선</b><br>이 문제의 포물선은 직선 위에 있고 세로 간격이 양의 완전제곱식입니다. 간격을 최소로 하는 접점에서 두 기울기가 같아집니다. 직선과 곡선이 만나는 경우에는 먼저 거리 0인 교점을 확인해야 합니다.',
     draw: (b, s, v, st) => {
       b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
       b.line([0, v.n.v], v.m, { color: 'sky', width: 2.6, glow: true });
@@ -1416,7 +1463,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ouTag(b, [vb.x1 - 0.2, vb.y1 - (vb.y1 - vb.y0) * 0.1], `l : y = ${ouMinus(ouPoly([v.m, v.n]))}`, { color: 'sky', size: 12.5, align: 'right' });
       if (st >= 1) {
         b.line(v.T, v.m, { extent: 2.2, color: 'rose', width: 2.3, dash: true, glow: true });
-        b.point(v.T, { color: 'amber', r: 6.5, label: `T(${v.a.txt}, ${v.fa.txt})`, ...ouSide(v.m), dy: -16 });
+        b.point(v.T, { color: 'amber', r: 6.5, label: st >= 2 ? `T(${v.a.txt}, ${v.fa.txt})` : '평행하게 옮긴 접선의 접점 T', ...ouSide(v.m), dy: -16 });
       }
       if (st >= 2) {
         b.seg(v.T, v.H, { color: 'green', width: 2.8, glow: true });
@@ -1469,7 +1516,74 @@ window.addEventListener('DOMContentLoaded', function () {
   })();
   /* OU-END */
 
+  // Free exploration keeps its own model; problem/review always use the current generated variant.
+  const EXPLORE_STEPS = {
+    "secant": [
+      "할선 AB의 가로 변화량 Δx와 세로 변화량 Δy를 직각삼각형으로 읽습니다.",
+      "A의 접선을 겹쳐 그린 뒤 B를 A로 보냅니다. 같은 Δx에서 접선의 세로 변화량과 곡선의 실제 변화량을 비교합니다.",
+      "Δx≠0에서 할선 기울기를 계산하고 Δx→0의 극한과 접선 기울기를 비교합니다. Δx=0에서는 차분몫 자체가 정의되지 않습니다."
+    ],
+    "mvt": [
+      "두 끝점을 잇는 할선의 기울기, 즉 평균변화율을 확인합니다.",
+      "할선과 평행한 접선의 후보를 찾습니다. 미분계수=평균변화율이라는 식을 풉니다.",
+      "접점의 가로좌표가 두 끝점 사이의 열린구간에 있는 값만 선택합니다. 끝점은 답에서 제외합니다."
+    ],
+    "cusp": [
+      "경계에서 두 조각이 이어지는지 먼저 확인합니다. 높이에 점프가 있으면 미분가능하지 않습니다.",
+      "연속일 때 두 조각의 접선 기울기를 비교합니다. 불연속일 때 조각의 기울기 극한을 실제 좌미분계수로 부르면 안 됩니다.",
+      "연속이고 두 기울기가 같을 때만 미분가능합니다. 높이 차와 기울기 차를 각각 조작하여 두 조건의 역할을 확인합니다."
+    ],
+    "normal": [
+      "곡선 위의 점에서 직선으로 내린 수선의 길이를 비교합니다.",
+      "이 포물선은 직선과 만나지 않으므로 직선과 평행한 접선을 옮겨 처음 닿는 위치를 찾습니다.",
+      "세로 간격이 양의 완전제곱식임을 확인하여 그 위치가 전 구간의 최소임을 증명하고 점과 직선의 거리 공식을 적용합니다."
+    ],
+    "common": [
+      "두 곡선의 같은 접점 T를 확인합니다.",
+      "두 곡선의 기울기가 T에서 같음을 비교합니다. 한 곡선의 접선을 구하면 나머지 곡선의 미정계수를 모두 구하지 않아도 됩니다.",
+      "알고 있는 곡선에서 T와 접선 기울기로 직선 방정식을 씁니다. 다른 곡선에서도 같은 접선인지 검산합니다."
+    ],
+    "tanint": [
+      "접점의 접선을 y축까지 연장해 절편을 읽습니다.",
+      "g(t)=f(t)−t f′(t)에서 미분하면 g′(t)=−t f″(t)입니다. 후보 0과 변곡점의 좌표에서 부호를 확인합니다.",
+      "부호가 바뀌는 후보만 극값입니다. 수평접선의 x절편은 x축과 겹치는 경우와 평행한 경우를 구별합니다."
+    ],
+    "mvtband": [
+      "기준점 A에서 허용된 경계 기울기의 직선을 그립니다.",
+      "할선의 기울기도 도함수 범위 안이어야 하므로 곡선이 지날 수 있는 영역을 봅니다. L>U이면 만족하는 함수가 없습니다.",
+      "왼쪽 구간에서는 곱하는 길이가 음수이므로 부등호가 바뀝니다. 경계 기울기의 일차함수가 허용 경곗값을 실제로 만드는지 확인합니다."
+    ]
+  };
+  const explorationModel = (sc, s, v) => {
+    if (sc.id === 'tanint') return tex('f(x)=\\tfrac12x^3-\\tfrac32x^2+1')+', '+tex(`t=${s.tp}`);
+    if (sc.id === 'mvtband') return tex('f(1)=1')+', '+tex(s.ub==='both' ? `${s.lo}\\le f'(x)\\le${s.hi}` : `f'(x)\\ge${s.lo}`);
+    return v.chips && v.chips[0] ? tex(v.chips[0].tex) : '';
+  };
+  scenes.forEach((sc) => {
+    const view = sc.view, steps = sc.steps;
+    sc.startStep = 0;
+    sc.notesTitle = '현재 탐구 모델과 조건';
+    sc.guide = EXPLORE_STEPS[sc.id][0];
+    sc.steps = (s) => window.lab && window.lab.tab === 'explore'
+      ? EXPLORE_STEPS[sc.id]
+      : (typeof steps === 'function' ? steps(s) : steps);
+    if (sc.solution) {
+      sc.solution.quickTitle = '실전 풀이 · 그림의 구조 활용';
+      sc.solution.quickTag = '구조 풀이';
+    }
+    sc.view = (s, lab) => {
+      const v = typeof view === 'function' ? view(s, lab) || {} : view || {};
+      const explore = !lab || lab.tab === 'explore';
+      const open = lab && lab.tab === 'problem' ? lab._answerOpen() : s.step >= 3;
+      const note = explore ? '<b>자유 탐구 모델</b> '+explorationModel(sc,s,v)+'<br>이 탭의 함수와 조작값으로 구조를 실험합니다. 선택한 문항과 새 문제의 조건·도형·풀이는 문제/정리 탭에서 함께 바뀝니다.' : '';
+      // The canvas reveals its own reasoning stage. Derived answer cards wait for the final stage.
+      if (!open) return note ? { notes: note } : {};
+      return { ...v, notes: [note, v.notes].filter(Boolean).join('<br>') || undefined };
+    };
+  });
+
   APLab.createLab({
+    stagedReveal: true,
     id: 'calc1-tangent',
     title: '접선과 미분계수',
     courseName: '미적분Ⅰ',

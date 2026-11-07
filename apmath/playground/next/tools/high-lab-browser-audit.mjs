@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { createLiveAssetVerifier, publicPlaygroundBase, drainResponseTasks } from './high-live-assets.mjs';
+import { probeNativeDrag } from './high-drag-probe.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const argv = process.argv.slice(2);
 const arg = (key, fallback) => { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; };
@@ -218,15 +219,9 @@ try {
             await page.evaluate(i => lab.goScene(i), scene.index); await settle();
             const handle=await page.evaluate(()=>lab.board.handles.find(h=>typeof h.drag==='function' && h.x>10 && h.y>10 && h.x<lab.board.W-10 && h.y<lab.board.H-10));
             if(handle){
-              const canvas=page.locator('.apl-canvas'); await canvas.scrollIntoViewIfNeeded(); await settle();
-              const point=await page.evaluate(id=>{const h=lab.board.handles.find(h=>h.id===id); const model=Object.fromEntries(Object.entries(lab.s).filter(([k])=>!['step','part','revealed','playing'].includes(k)));return {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H,state:JSON.stringify(model)};},handle.id);
-              const box=await canvas.boundingBox(),x=box.x+point.x*box.width/point.W,y=box.y+point.y*box.height/point.H;
-              await page.mouse.move(x,y);await page.mouse.down();
-              const acquired=await page.evaluate(id=>lab.board.dragging?.id===id,handle.id);
-              await page.mouse.move(x+(point.x>point.W/2?-48:48),y-28,{steps:6});await page.mouse.up();await settle();
-              const changed=point.state!==await page.evaluate(()=>JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([k])=>!['step','part','revealed','playing'].includes(k)))));
-              dest.interactions.push({id:scene.id,run:run.name,kind:'drag',handle:handle.id,acquired,changed,pass:acquired&&changed});
-              if(!acquired||!changed)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',acquired,changed});
+              const result=await probeNativeDrag(page,page.locator('.apl-canvas'),settle,handle.id);
+              dest.interactions.push({id:scene.id,run:run.name,kind:'drag',handle:handle.id,...result});
+              if(!result.pass)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',...result});
               await measure(scene,'drag');
             }
             if(await page.evaluate(()=>lab._tabAvailable('problem'))){
