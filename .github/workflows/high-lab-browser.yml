@@ -1,0 +1,127 @@
+name: High school lab browser
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/common-*'
+      - 'apmath/playground/next/labs/common-*/**'
+      - 'apmath/playground/next/labs/alg-*'
+      - 'apmath/playground/next/labs/alg-*/**'
+      - 'apmath/playground/next/labs/calc1-*'
+      - 'apmath/playground/next/labs/geom-*'
+      - 'apmath/playground/next/labs/prob-*'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/high-*'
+      - 'apmath/playground/next/tools/scene-smoke.mjs'
+      - '.github/workflows/high-lab-browser.yml'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Course or comma-separated lab IDs; blank selects all high-school labs'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: high-lab-browser-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scope:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.scope.outputs.matrix }}
+      base_sha: ${{ steps.scope.outputs.base_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Select affected high-school labs
+        id: scope
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'refs/heads/main' }}
+          REQUESTED: ${{ inputs.only }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_REF"
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import vm from 'node:vm';
+          import {execFileSync} from 'node:child_process';
+          const baseline=execFileSync('git',['rev-parse','FETCH_HEAD'],{encoding:'utf8'}).trim();
+          const paths=execFileSync('git',['diff','--name-only',baseline,'HEAD'],{encoding:'utf8'}).trim().split('\n');
+          const sandbox={window:{}};
+          vm.runInNewContext(fs.readFileSync('apmath/playground/next/kit/apl-catalog.js','utf8'),sandbox);
+          const labs=sandbox.window.APLab.catalog.labs.filter(l=>['common','algebra','calc1','geom','probstat'].includes(l.course));
+          const ids=labs.filter(l=>{
+            const html='apmath/playground/'+l.next;
+            const src=fs.readFileSync(html,'utf8');
+            const dependencies=[html,...[...src.matchAll(/<script\b[^>]*src=["']([^"']+)["']/gi)].map(m=>path.posix.normalize(path.posix.join(path.posix.dirname(html),m[1])))];
+            return paths.some(p=>dependencies.includes(p)||p.startsWith(html.replace(/\.html$/,'/')));
+          }).map(l=>l.id);
+          const all=paths.some(p=>/\/kit\//.test(p))||!ids.length;
+          const request=(process.env.REQUESTED||'').split(',').filter(Boolean);
+          if(request.some(s=>!labs.some(l=>l.id===s||l.course===s)))throw Error('Unknown requested lab or course');
+          const selected=labs.filter(l=>request.length?request.some(s=>l.id===s||l.course===s):all||ids.includes(l.id));
+          const include=[...new Set(selected.map(l=>l.course))].map(course=>({course,only:selected.filter(l=>l.course===course).map(l=>l.id).join(',')}));
+          if(!include.length)throw Error('No high-school labs selected');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`matrix=${JSON.stringify({include})}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`base_sha=${baseline}\n`);
+          JS
+  browser:
+    name: browser (${{ matrix.course }})
+    needs: scope
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.scope.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare fixed main baseline
+        env:
+          BASE_SHA: ${{ needs.scope.outputs.base_sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git worktree add --detach "$RUNNER_TEMP/high-baseline" "$BASE_SHA"
+      - name: Install Chromium runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/high-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/high-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify high-school logic regressions
+        run: |
+          files=(apmath/playground/next/tools/high-*.test.mjs)
+          if test -f "${files[0]}"; then node --test "${files[@]}"; fi
+      - name: Observe fixed main baseline
+        env:
+          NODE_PATH: ${{ runner.temp }}/high-browser/node_modules
+          ONLY: ${{ matrix.only }}
+        run: node apmath/playground/next/tools/scene-smoke.mjs --high-school --root "$RUNNER_TEMP/high-baseline" --only "$ONLY" --out "$RUNNER_TEMP/high-evidence/before" --baseline-observe
+      - name: Verify every candidate scene and step
+        continue-on-error: true
+        env:
+          NODE_PATH: ${{ runner.temp }}/high-browser/node_modules
+          ONLY: ${{ matrix.only }}
+        run: node apmath/playground/next/tools/scene-smoke.mjs --high-school --root . --only "$ONLY" --out "$RUNNER_TEMP/high-evidence/after"
+      - name: Compare observed baseline and candidate defects
+        if: always()
+        run: node apmath/playground/next/tools/high-lab-compare.mjs "$RUNNER_TEMP/high-evidence/before/results.json" "$RUNNER_TEMP/high-evidence/after/results.json" "$RUNNER_TEMP/high-evidence/comparison.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: high-labs-${{ github.run_id }}-${{ matrix.course }}
+          path: ${{ runner.temp }}/high-evidence/
+          retention-days: 14
