@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         unit: [g8-triangles, g8-quadrilaterals, g8-similarity, g8-pythagoras, g9-trig-ratio, g9-circle]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -103,7 +103,7 @@ jobs:
           retention-days: 14
 
   student-flow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
