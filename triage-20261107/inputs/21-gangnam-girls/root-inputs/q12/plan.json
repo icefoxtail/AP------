@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "같은 x=n에서 두 함수값의 차를 구하면 선분의 길이가 된다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1/2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=4/x"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "0"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "1/2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=4/(x+1)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "4/3"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "예: 같은 x좌표에서 두 그래프의 세로 거리를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 함수는 y=4/x, y=4/(x+1)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시 n=2에서 두 함수값의 차가 두 점 사이 세로 길이이다.",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "세로 선분 길이가 같은 입력에서의 두 함수값 차임을 보인다."
+  ]
+}
