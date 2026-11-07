@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "곡선 $y=2x\\left|x-\\dfrac12\\right|$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1/2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -1,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1/2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "V",
+        "x": "1/4",
+        "y": "1/8"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "1/2",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "g",
+        "lower": "f",
+        "from": "1/2",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ]
+  },
+  "caption": "절댓값의 경계에서 곡선식을 나누고 직선과 사이 영역을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "절댓값의 경계에서 곡선식을 나누고 직선과 사이 영역을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값의 경계에서 곡선식을 나누고 직선과 사이 영역을 보인다."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(-1)=k+7>0$ 및 $f(2)=k-20<0$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "3",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "3",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "(3-sqrt(105))/4",
+        "y": "0"
+      },
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "(3+sqrt(105))/4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -2,
+      25
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "15",
+        "20"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "(3-sqrt(105))/4",
+        "y": "0"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "(3+sqrt(105))/4",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "7"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "20"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "O"
+      ]
+    }
+  },
+  "caption": "예: 절댓값 함수의 두 극댓값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=0일 때 g=|2x³−3x²−12x|이며 극댓점 x=-1,2의 높이는 7,20이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값으로 반사된 조각에서 두 극댓값의 차를 비교하는 관계를 보인다."
+  ]
+}

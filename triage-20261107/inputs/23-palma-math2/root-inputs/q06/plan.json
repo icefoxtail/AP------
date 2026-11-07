@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "곡선 $y=x^2-(a+1)x+a$와 $x$축",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -6,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "y": [
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "0"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "1",
+        "to": "5"
+      }
+    ]
+  },
+  "caption": "포물선과 x축 사이의 음수 영역을 넓이로 바꾸어 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선과 x축 사이의 음수 영역을 넓이로 바꾸어 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 x축 사이의 음수 영역을 넓이로 바꾸어 비교한다."
+  ]
+}

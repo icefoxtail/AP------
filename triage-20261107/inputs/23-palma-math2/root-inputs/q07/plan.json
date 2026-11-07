@@ -1,0 +1,152 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=\\sqrt{x-2}$의 역함수",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "top",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=h(x)",
+        "color": "GREEN"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "6"
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "2"
+        }
+      ],
+      "lines": [
+        {
+          "id": "d",
+          "slope": "1",
+          "intercept": "0",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "g",
+          "axis"
+        ],
+        "from": "0",
+        "to": "2"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "g",
+          "top"
+        ],
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "역함수의 대칭을 이용해 직사각형 안의 두 영역이 서로 보완됨을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "역함수의 대칭을 이용해 직사각형 안의 두 영역이 서로 보완됨을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수의 대칭을 이용해 직사각형 안의 두 영역이 서로 보완됨을 보인다."
+  ]
+}

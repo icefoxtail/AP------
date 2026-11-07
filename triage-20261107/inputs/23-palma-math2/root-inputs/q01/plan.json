@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=-x^3+3x-4$가 증가하는",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "3",
+      "0",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -10,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-8",
+        "-6",
+        "-4",
+        "-2",
+        "2"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "-6"
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "삼차함수가 두 임계점 사이에서 증가하는 방향을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼차함수가 두 임계점 사이에서 증가하는 방향을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "삼차함수가 두 임계점 사이에서 증가하는 방향을 보인다."
+  ]
+}

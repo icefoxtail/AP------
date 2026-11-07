@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(-x)=-f(x)$이므로",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "29/9",
+      "0",
+      "-2/9"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -8,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-6",
+        "-4",
+        "-2",
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-14/3"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "14/3"
+        }
+      ]
+    }
+  },
+  "caption": "예: 홀함수의 원점 대칭을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 f(x)=(-2x³+29x)/9는 홀함수이고 주어진 두 정적분 조건도 만족한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "홀함수의 원점 대칭과 대칭 구간의 부호 있는 넓이 상쇄를 보여 준다."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "임계점은 $x=1\\pm r$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -2,
+      3,
+      2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1-sqrt(3)/3",
+        "y": "4+2*sqrt(3)/9"
+      },
+      {
+        "id": "Q",
+        "x": "1+sqrt(3)/3",
+        "y": "4-2*sqrt(3)/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "P",
+        "Q"
+      ]
+    }
+  },
+  "caption": "예: 두 임계점이 주어진 구간 안에 있는 경우를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2인 예에서 f=x³−3x²+2x+4이고 두 임계점이 (-1,2)에 있다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 극점의 위치가 동시에 구간 안에 들어가는 조건을 보인다."
+  ]
+}

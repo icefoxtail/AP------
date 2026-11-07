@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(x)=2x^3-x+C$이고",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "-1",
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -15,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-8",
+        "-6",
+        "-4",
+        "-2",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 6
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "-9"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 점으로 적분상수를 정한 삼차함수의 입력을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 점으로 적분상수를 정한 삼차함수의 입력을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점으로 적분상수를 정한 삼차함수의 입력을 비교한다."
+  ]
+}
