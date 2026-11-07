@@ -371,7 +371,7 @@ test('--unrelated-range accepts only provably unrelated competing changes', t=>{
   };
   const ok=verdict(['apmath/playground/next/x.js']);
   assert.equal(ok.unrelated,true);assert.equal(ok.changedCount,1);assert.equal(ok.firstProtectedHit,null);
-  for(const protectedPath of ['archive/exams/x.js',STATE,'tools/ci/foo.mjs','.github/workflows/archive-main-auto-meta.yml',
+  for(const protectedPath of ['archive/exams/x.js','archive/archive2-source.js','archive/unit-past-exams-core.js','archive/engine.html','tests/fixtures/diff5/x.json',STATE,'tools/ci/foo.mjs','.github/workflows/archive-main-auto-meta.yml',
     'apmath/playground/next/.gitignore','.gitattributes','tools/lib/x.mjs','.archive-meta-register/inbox/x.json','package.json','package-lock.json']) {
     const result=verdict([protectedPath]);
     assert.equal(result.unrelated,false,protectedPath);assert.equal(result.firstProtectedHit,protectedPath);

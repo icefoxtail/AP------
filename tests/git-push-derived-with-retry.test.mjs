@@ -280,6 +280,46 @@ test("reapply-check exit 0 but the cherry-pick conflicts: abort, reset and regen
   assert.ok(!fs.existsSync(path.join(f.runner, ".git", "CHERRY_PICK_HEAD")));
 });
 
+test("reapply-check exit 0 but the re-applied commit stages a path outside --paths-file: reset and regenerate", t => {
+  const f = reapplyFixture(t);
+  f.competitorPush("competitor unrelated", () => fs.writeFileSync(path.join(f.competitor, "unrelated.txt"), "x\n"));
+  f.derive(f.runner);
+  fs.writeFileSync(path.join(f.runner, "extra.txt"), "not derived\n");
+  git(f.runner, "add", "extra.txt"); // pre-staged outside the pathspecs, so it rides into the local commit
+  const r = f.run(["--regenerate", f.regenerate, "--reapply-check", f.checkWith(0)]);
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.output, /result=PUSHED/);
+  assert.deepEqual(f.events().map(e => e.name), ["check", "regenerate"]);
+  assert.throws(() => f.originFile("extra.txt"), "a path outside the derived pathspecs is never pushed");
+  assert.equal(f.originFile("out.txt"), "derived:v1");
+  assert.doesNotMatch(r.summary, /re-applied/);
+});
+
+test("fast-path attempt at the cap that loses the race again ends in RETRY_EXHAUSTED, never an unverified push", t => {
+  const f = reapplyFixture(t);
+  const marks = path.join(f.dir, "marks.jsonl"), verify = path.join(f.tools, "verify-race.mjs");
+  // Second verification (the re-applied candidate) is when the competitor lands another commit, so the push is rejected.
+  fs.writeFileSync(verify, `import fs from "node:fs"; import path from "node:path"; import { execFileSync } from "node:child_process";
+fs.appendFileSync(${JSON.stringify(marks)}, JSON.stringify({ name: "verify" }) + "\\n");
+const n = fs.readFileSync(${JSON.stringify(marks)}, "utf8").split("\\n").filter(l => l.includes('"verify"')).length;
+if (n === 2) {
+  const c = ${JSON.stringify(f.competitor)}, g = (...a) => execFileSync("git", a, { cwd: c, stdio: "ignore" });
+  g("pull", "-q", "--ff-only", "origin", "main"); fs.writeFileSync(path.join(c, "second.txt"), "2\\n");
+  g("add", "-A"); g("commit", "-q", "-m", "competitor second"); g("push", "-q", "origin", "HEAD:main");
+}\n`);
+  f.competitorPush("competitor unrelated", () => fs.writeFileSync(path.join(f.competitor, "unrelated.txt"), "x\n"));
+  f.derive(f.runner);
+  const r = f.run(["--regenerate", f.regenerate, "--verify-command", `${q(node)} ${q(verify)}`, "--reapply-check", f.checkWith(0), "--max-attempts", "2"]);
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.output, /result=RETRY_EXHAUSTED/);
+  assert.match(r.output, /attempts=2/);
+  assert.match(r.output, /^registered_sha=$/m);
+  assert.ok(!f.events().some(e => e.name === "regenerate"), "no regenerate at the cap");
+  assert.ok(!f.originLog().includes("chore: derived [skip ci]"), "nothing of ours was pushed");
+  assert.equal(f.originFile("inbox/r1.txt"), "request", "origin still holds the unconsumed seed state");
+  assert.equal(f.originFile("out.txt"), "derived:v0");
+});
+
 test("without --reapply-check an unrelated race still regenerates exactly as before", t => {
   const f = reapplyFixture(t);
   f.competitorPush("competitor unrelated", () => fs.writeFileSync(path.join(f.competitor, "unrelated.txt"), "x\n"));
