@@ -155,6 +155,18 @@ test('new grid questions cannot repeat the previous lengths after reversing thei
   assert.notDeepEqual([q.pyU,q.pyV].sort(),[4,6],'retry also excludes the reversed previous pair');
 });
 
+test('new box questions exclude the previous dimensions before shuffling their order', () => {
+  // The first pick is [4,4,6]; the following shuffle would return the old [6,4,4].
+  // A retry instead selects [1,2,4] without changing the existing question pool.
+  const values=[.99,.1,.1,.1];let i=0;
+  const local=loadUnit(()=>values[i++]??.1);
+  const sc=local.scenes.find(s=>s.id==='py7-box');
+  const q=sc.py.gen({}, {pyXa:6,pyXb:4,pyXc:4,pyRoute:-1});
+  assert.notDeepEqual([q.pyXa,q.pyXb,q.pyXc].sort((a,b)=>a-b),[4,4,6],'a permuted previous box must also be excluded');
+  assert.deepEqual([q.pyXa,q.pyXb,q.pyXc].sort((a,b)=>a-b),[1,2,4],'retry retains the existing legal dimensions');
+  assert.equal(q.pyRoute,-1,'new questions still select the shortest route');
+});
+
 test('generated questions have five distinct choices and exactly one finite answer', t => {
   let checked = 0;
   for (const sc of U.scenes) {

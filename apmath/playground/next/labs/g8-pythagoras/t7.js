@@ -255,7 +255,12 @@
     ctl: ['pyXa', 'pyXb', 'pyXc'],
     presets: () => [{ group: '지나는 면', label: '가장 짧은 길', apply: (ss) => { ss.pyRoute = -1; }, on: (ss) => ss.pyRoute == null || ss.pyRoute < 0 }].concat(ROUTE_NM.map((n, i) => ({ group: '', label: n, apply: (ss) => { ss.pyRoute = i; }, on: (ss) => ss.pyRoute === i }))),
     init: (s) => { s.pyXa = 1; s.pyXb = 2; s.pyXc = 4; s.pyRoute = -1; },
-    gen: (s, prev) => { let t; do { t = pick(BOXES); } while (prev && prev.pyXa === t[0] && prev.pyXb === t[1] && prev.pyXc === t[2]); const sh = t.slice().sort(() => Math.random() - 0.5); return { pyXa: sh[0], pyXb: sh[1], pyXc: sh[2], pyRoute: -1 }; },
+    gen: (s, prev) => {
+      const previous = prev && [prev.pyXa, prev.pyXb, prev.pyXc].sort((a, b) => a - b);
+      let t; do { t = pick(BOXES); } while (previous && previous.every((v, i) => v === t[i]));
+      const sh = t.slice().sort(() => Math.random() - 0.5);
+      return { pyXa: sh[0], pyXb: sh[1], pyXc: sh[2], pyRoute: -1 };
+    },
     model: (s) => boxOf(s),
     draw(b, s, M, C) {
       const { a, b: bb, c, route, v, mini, min } = M, prob = C.problem;

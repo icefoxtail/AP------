@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      FOCUS_SCENES: '1102,1207,1210,1607,1609,1610,1809'
+      FOCUS_SCENES: '1102,1105,1207,1210,1607,1609,1610,1809'
       FOCUS_RUNS: 'pc-paper,mobile-paper,mobile-board'
     steps:
       - uses: actions/checkout@v4

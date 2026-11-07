@@ -197,7 +197,7 @@
         const nx = Math.cos(deg_ * D2R), ny = -Math.sin(deg_ * D2R), size = o.size || 15;
         const metrics = b.annotationSize ? b.annotationSize(str, { size, weight: o.weight || 800 }) : { width: String(str).length * size * .65 + 6, height: size + 6 };
         const distance = Math.max(off, Math.abs(nx) * metrics.width / 2 + Math.abs(ny) * metrics.height / 2 + 8);
-        const { avoidRightEdge, arcClearance, ...labelOptions } = o;
+        const { avoidLeftEdge, avoidRightEdge, arcClearance, ...labelOptions } = o;
         const opts = { dx: nx * distance, dy: ny * distance, ...labelOptions };
         let route = null;
         if (arcClearance && !b.thumb && !b._bbox && b.annotationSize && b.leader) {
@@ -206,6 +206,13 @@
           if (placed) { opts.dx = placed.dx; opts.dy = placed.dy; route = placed.route; }
         }
         let above = false;
+        if (avoidLeftEdge && !b.thumb && !b._bbox) {
+          const at = b.toS(b._P(P(p))), minX = b.insets.left + 8 + metrics.width / 2;
+          const move = Math.max(0, minX - at.x - opts.dx);
+          opts.dx += move;
+          // 호의 접선 방향으로 옮겨 원호 바깥의 여백을 유지합니다.
+          if (Math.abs(ny) > 1e-6) opts.dy -= move * nx / ny;
+        }
         if (avoidRightEdge && !b.thumb && !b._bbox) {
           const at = b.toS(b._P(P(p))), maxX = b.W - b.insets.right - 8 - metrics.width / 2;
           if (at.x + opts.dx > maxX) {
@@ -1491,7 +1498,7 @@
       }
       const lBD = (q.r * be) / 180, lAC = (q.r * ac) / 180;
       g.out(g.pol(O, R, be / 2), be / 2, '호 ' + piS(lBD) + ' cm', { color: 'amber' }, 44);
-      g.out(g.pol(O, R, (2 * be + 180) / 2), (2 * be + 180) / 2, s2 ? '호 AC = ' + piS(lAC) + ' cm' : '호 AC = ? cm', { color: 'rose' }, 40);
+      g.out(g.pol(O, R, (2 * be + 180) / 2), (2 * be + 180) / 2, s2 ? '호 AC = ' + piS(lAC) + ' cm' : '호 AC = ? cm', { color: 'rose', avoidLeftEdge: true }, 40);
       if (mode === 'explore') g.handle('D', D, { color: 'amber', label: 'D', toward: O, drag: (w) => { q.be = clamp(snap(clamp(dirOf(O, w), 0, 90), 6), 18, 60); } });
       else g.dot(D, { color: 'ink', label: 'D', toward: O });
       g.dot(C, { color: 'ink', label: 'C', toward: O });
