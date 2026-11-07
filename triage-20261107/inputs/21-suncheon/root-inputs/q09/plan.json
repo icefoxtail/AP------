@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$a$의 부호에 따라 정의역과 그래프가 놓이는 사분면을 확인한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-1",
+        "1",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "-5",
+          "0"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "h",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-5",
+          "0"
+        ],
+        "color": "GREEN",
+        "label": "y=h(x)",
+        "hideLabels": [
+          "start"
+        ]
+      }
+    ]
+  },
+  "caption": "예: 계수 부호와 원점 대칭에 따른 가지를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=1, a=-1인 두 음의 근호 함수와 첫째의 원점 대칭 그래프를 그린다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "계수 부호에 따른 가지 방향과 원점 대칭을 비교한다."
+  ]
+}

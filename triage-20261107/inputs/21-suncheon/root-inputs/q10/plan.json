@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수 그래프의 끝점과 $y$절편을 이용하여 $a,b,c$를 순서대로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      8,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2",
+        "4",
+        "6"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "36",
+          "-6"
+        ],
+        "amplitude": "1",
+        "offset": "-4",
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "label": "y=0",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "끝점과 y절편이 계수 조건에 주는 정보를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "끝점은 (6,-4), y절편은 (0,2)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점과 y절편을 식의 계수 조건으로 연결한다."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "교점의 $y$좌표를 미지수로 두면 근의 개수와 $y\\ge0$ 조건을 함께",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "19/8",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=x+19/8"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-15/8",
+          "y": "1/2"
+        },
+        {
+          "id": "Q",
+          "x": "-7/8",
+          "y": "3/2"
+        }
+      ]
+    }
+  },
+  "caption": "예: 한 직선과 무리함수의 두 교점을 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 k=19/8에서 서로 다른 교점의 y좌표는 1/2와 3/2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "무리함수와 직선이 두 점에서 만나는 예시를 보인다."
+  ]
+}

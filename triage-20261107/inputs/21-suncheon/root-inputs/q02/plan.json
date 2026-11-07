@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "분모가 0이 되는 값과 분자·분모의 최고차항 계수비로 점근선을 구한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      8,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "3"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "label": "y=3",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "유리함수 그래프와 점근선의 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=2이므로 a=2, 수평점근선은 y=3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점근선이 식의 계수와 연결됨을 보여 준다."
+  ]
+}
