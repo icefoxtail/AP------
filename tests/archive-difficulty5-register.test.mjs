@@ -41,7 +41,7 @@ const slice = {
 };
 const sourceBytes = fs.readFileSync(path.join(repo, "archive/exams", SOURCE));
 
-function make(t, { mutateMeta } = {}) {
+function make(t, { mutateMeta, sourceOverride = sourceBytes } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "diff5-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const meta = structuredClone(slice.meta);
@@ -49,7 +49,7 @@ function make(t, { mutateMeta } = {}) {
   const put = (p, data) => { const f = path.join(root, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data); };
   put(META, JSON.stringify(meta, null, 2) + "\n");
   put(IDENTITY, JSON.stringify(slice.ids, null, 2) + "\n");
-  put("archive/exams/" + SOURCE, sourceBytes);
+  put("archive/exams/" + SOURCE, sourceOverride);
   const req = (g = gemini) => ({ schemaVersion: SCHEMA, driveFileId: "FILE_ID", driveSha256: "x", gemini: g });
   const rec = n => JSON.parse(fs.readFileSync(path.join(root, META), "utf8")).records.find(r => r.sourceOrdinal === n);
   const snap = () => [META, IDENTITY, "archive/exams/" + SOURCE].map(p => sha256(fs.readFileSync(path.join(root, p))));
@@ -124,6 +124,18 @@ test("latestBlobSha drift rejects the whole file", t => {
   const g = structuredClone(gemini); g.latestBlobSha = "0".repeat(40);
   assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g), write: true }), /blob drift/);
   assert.deepEqual(x.snap(), before);
+});
+
+test("examData.questions is accepted as the source bank without relaxing identity guards", t => {
+  const nestedSource = Buffer.from("window.examData = { questions: new Array(23) };\n", "utf8");
+  const blobSha = crypto.createHash("sha1").update("blob " + nestedSource.length + "\0").update(nestedSource).digest("hex");
+  const x = make(t, { sourceOverride: nestedSource });
+  const g = structuredClone(gemini);
+  g.latestBlobSha = blobSha;
+  const r = registerDifficulty5({ root: x.root, request: x.req(g) });
+  assert.equal(r.summary.total, 23);
+  assert.equal(r.summary.APPLY, 23);
+  assert.equal(r.summary.CONFLICT, 0);
 });
 
 test("ordinal/questionUid mismatch rejects the whole file", t => {
@@ -201,6 +213,16 @@ test("wrap CLI helper and registrar CLI dry-run / verify", t => {
   assert.equal(cli.driveSha256, "deadbeef");
   assert.equal(cli.driveChecksumSource, "drive_metadata");
   assert.equal(w.gemini.requestId, gemini.requestId);
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), "diff5-bom-"));
+  t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+  const bomPath = path.join(temp, "gemini.json");
+  const originalBytes = fs.readFileSync(FIXTURE);
+  const bomBytes = Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), originalBytes]);
+  fs.writeFileSync(bomPath, bomBytes);
+  const bomWrapped = wrapGeminiFile(bomPath, "DRIVE_BOM_ID");
+  assert.equal(bomWrapped.driveSha256, sha256(bomBytes));
+  assert.equal(bomWrapped.driveChecksumSource, "local_bytes");
+  assert.equal(bomWrapped.gemini.requestId, gemini.requestId);
   const reqPath = path.join(x.root, ".archive-meta-register/inbox/req.json");
   fs.mkdirSync(path.dirname(reqPath), { recursive: true });
   fs.writeFileSync(reqPath, JSON.stringify(w));
