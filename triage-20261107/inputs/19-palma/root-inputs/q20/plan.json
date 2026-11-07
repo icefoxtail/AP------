@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "g(x)=\\sqrt{x-k}-k",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      15,
+      -4,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "8",
+        "10",
+        "12",
+        "14"
+      ],
+      "y": [
+        "-3",
+        "-1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-2",
+          "3"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "15"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "k=0인 예에서 유리함수의 두 가지에 각각 교점 하나가 생기는 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=0인 예에서 유리함수의 두 가지에 각각 교점 하나가 생기는 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "k=0인 예에서 유리함수의 두 가지에 각각 교점 하나가 생기는 관계를 보인다."
+  ]
+}

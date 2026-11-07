@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "실수 전체의 집합에서 정의된 두 함수 $f, g$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "5"
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "항등함수와 상수함수에서 같은 입력을 넣었을 때의 출력을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "항등함수와 상수함수에서 같은 입력을 넣었을 때의 출력을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "항등함수와 상수함수에서 같은 입력을 넣었을 때의 출력을 비교한다."
+  ]
+}

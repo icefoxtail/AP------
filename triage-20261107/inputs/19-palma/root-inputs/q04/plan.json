@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "무리함수 $y=-\\sqrt{1-x}-3$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      3,
+      -7,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "-4",
+        "-3",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-1",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "-3",
+        "domain": [
+          "-6",
+          "1"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "label": "y=-3",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "닫힌 끝점과 왼쪽 아래 가지의 방향을 통해 정의역과 치역을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌 끝점이 놓인 수평 경계를 보며 치역을 구분한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 끝점과 왼쪽 아래 가지의 방향을 통해 정의역과 치역을 보인다."
+  ]
+}

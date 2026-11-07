@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=3x+a|x+2|-1$이 일대일대응이",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "-7"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      2
+    ],
+    "viewport": [
+      -5,
+      2,
+      -13,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-12",
+        "-9",
+        "-7",
+        "-5",
+        "-3",
+        "-1",
+        "1",
+        "3",
+        "5",
+        "7"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-7"
+      }
+    ]
+  },
+  "caption": "예: 두 조각이 같은 방향으로 증가하는 사례를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=1이면 x<-2에서 기울기 2, x≥-2에서 기울기 4이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시에서 접합점 양쪽의 기울기가 같은 방향일 때 일대일인 관계를 보인다."
+  ]
+}

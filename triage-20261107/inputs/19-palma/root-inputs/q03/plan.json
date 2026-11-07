@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=ax+b$에 대하여",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      5,
+      -8,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-7",
+        "-5",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-7",
+        "-5",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "5/2",
+          "1/2"
+        ],
+        "domain": [
+          "-8",
+          "5"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "d",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "5"
+        ],
+        "label": "y=x",
+        "color": "BLUE",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "-7"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "함수값과 역함수값 조건을 대응점의 좌표 교환으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "함수값과 역함수값 조건을 대응점의 좌표 교환으로 나타낸다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수값과 역함수값 조건을 대응점의 좌표 교환으로 나타낸다."
+  ]
+}

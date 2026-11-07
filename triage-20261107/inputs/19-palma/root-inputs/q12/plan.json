@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $y=\\dfrac{bx+c}{x+a}$의 그래프가",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      7,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "7"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "6"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "-3"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "원문 유리함수의 점근선·절편을 통해 얻은 계수와 무리함수의 끝점 및 방향을 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 유리함수의 점근선·절편을 통해 얻은 계수와 무리함수의 끝점 및 방향을 연결한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 유리함수의 점근선·절편을 통해 얻은 계수와 무리함수의 끝점 및 방향을 연결한다."
+  ]
+}
