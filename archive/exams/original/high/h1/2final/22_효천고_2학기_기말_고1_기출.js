@@ -477,9 +477,9 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
 
     "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "두 유리함수의 사분면 조건을 나타낸 해설 그래프",
+    "solutionImageAlt": "예시에서 두 유리함수의 그래프를 비교한다. 양의 x에서 첫 그래프는 x축 아래를 지나고 둘째 그래프는 x축 위에 놓인다.",
 
-    "solutionImageCaption": "대표값 k=1/3에서 첫 그래프는 네 사분면, 둘째 그래프는 제4사분면을 지나지 않는다.",
+    "solutionImageCaption": "예: k=1/2에서 파란 그래프는 제4사분면을 지나고 주황 그래프는 지나지 않는다. x>0에서 각 함수값의 부호를 조사해 가능한 k의 범위를 구한다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
