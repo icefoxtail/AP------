@@ -822,6 +822,30 @@ async function real50ReminderFit(session, initial) {
   });
   requireThat(fit.found && fit.loaded && fit.stylePresent && fit.inside && fit.naturalWidth === 420 && fit.naturalHeight === 300 &&
     fit.width > 0 && Math.abs(fit.width / fit.height - 420 / 300) < .01, 'REMINDER_IMAGE_FIT_OR_ASPECT_FAILED', fit);
+  // A source <img style="max-width:480px"> must not overrule the narrow solution column.
+  // Use the already loaded real image, then restore its exact DOM style before print/snapshot checks.
+  const inlineFit = await session.page.evaluate(() => {
+    const box = [...document.querySelectorAll('#print-area .sol-box')]
+      .find(node => node.dataset.sourceRef?.endsWith(':17'));
+    const image = box?.querySelector('[data-semantic-content="1"] img');
+    const column = image?.closest('.grid-col');
+    if (!image || !column) return { found: false };
+    const originalStyle = image.getAttribute('style');
+    try {
+      image.style.maxWidth = '480px';
+      const bounds = image.getBoundingClientRect();
+      const container = column.getBoundingClientRect();
+      return { found: true, inlineMaxWidth: image.style.maxWidth,
+        computedMaxWidth: getComputedStyle(image).maxWidth,
+        width: bounds.width, columnWidth: container.width,
+        inside: bounds.left >= container.left - 1 && bounds.right <= container.right + 1 };
+    } finally {
+      if (originalStyle === null) image.removeAttribute('style');
+      else image.setAttribute('style', originalStyle);
+    }
+  });
+  requireThat(inlineFit.found && inlineFit.inlineMaxWidth === '480px' && inlineFit.inside,
+    'REMINDER_INLINE_SOURCE_IMAGE_CLIPPED', inlineFit);
   await remember(session.page, 'sol');
   const printed = await printCheck(session, solution, true, 'real50-qpp4-repaired-print');
   const answer = await operation(session, 'real50-qpp4-repaired-answer', 'ans'); assertReady(answer,50,true);
