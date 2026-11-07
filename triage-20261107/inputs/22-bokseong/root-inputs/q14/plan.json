@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "t=0은 정의역에 포함되지 않으므로 (0,-3)은 뚫린 점으로 나타내고",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "BLUE",
+        "emphasis": [
+          {
+            "from": "0",
+            "to": "8",
+            "fromState": "OPEN",
+            "toState": "NONE",
+            "color": "BLUE"
+          }
+        ],
+        "hideLabel": true
+      },
+      {
+        "id": "asym",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "9"
+        ],
+        "style": "DASHED",
+        "label": "y=2"
+      }
+    ],
+    "axisTitles": {
+      "x": "t"
+    }
+  },
+  "caption": "양수 구간에서 증가하는 유리함수와 열린 시작점, 수평점근선을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t>0이고 f(t)=(2t−3)/(t+1)=2−5/(t+1)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "t=0은 제외되고 f(t)는 2에 가까워지며 증가한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역에서 제외된 시작점과 수평점근선이 그래프의 증가 및 치역을 어떻게 제한하는지 보여 준다."
+  ]
+}

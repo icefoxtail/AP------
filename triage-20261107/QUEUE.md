@@ -1,6 +1,6 @@
 # SVG 작업 대기열
 
-마지막 ROOT 기록: 2026-11-07 14:38 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
+마지막 ROOT 기록: 2026-11-07 14:43 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
 
 ## 사용자 기준
 
@@ -24,7 +24,7 @@
 | 순서 | 시험지 | 상태 | ROOT 입력 | 다음 조치 |
 |---|---|---|---|---|
 | 1 | 22 강남여고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-gangnam-girls/root-inputs/`의 FIGURE Q03·05·06·10·11·14·15·18·20·22 입력 3종 작성, 렌더 전 정적 점검 실시 | 최신 원격 소스·기존 Claude 작업 소유와 문항별 시도 이력을 대조하고 ROOT가 시험지 단위 인수 가능 상태를 정한다. 아직 렌더 인수 금지. |
-| 2 | 22 복성고 고1 2학기 기말 | `ROOT_RETRIAGE` | 미등록 | 최신 함수 그래프 기준으로 재판정. 기존 Claude 담당과 Q12 OPEN 이력 보존. |
+| 2 | 22 복성고 고1 2학기 기말 | `ROOT_PREPARING` | `inputs/22-bokseong/root-inputs/`의 FIGURE Q06·07·11·14·20·22 입력 3종 작성, 모두 `NOT_RENDERED`; Q22는 JSON 형식만 확인 | Q12/Q19 OPEN과 기존 승인·시도 이력을 보존하고 PR #1442의 소스 중복 소유 여부를 확인한다. 인수 전까지 렌더 금지. |
 | 3 | 22 효천고 고1 2학기 기말 | `ROOT_RETRIAGE` | 미등록 | 최신 함수 그래프 기준으로 재판정하고 기존 Claude 담당을 보존. |
 | 4 | 23 강남여고 고1 2학기 기말 | `ROOT_RETRIAGE` | 미등록 | 최신 함수 그래프 기준으로 재판정하고 기존 Claude 담당을 보존. |
 
@@ -36,5 +36,12 @@
 - Q1의 과거 Chromium 실패는 1회다. 그 밖의 이전 상태 출처는 이전 작업 브랜치 `codex/svg-2022-gangnam-h1-2final-visual-round1`의 `STATUS` 및 validation 원장이다.
 - 나머지 14문항 판정은 `triage-20261107/22-gangnam-girls.md`를 참고한다.
 - 다른 담당자의 실제 로컬 Claude 작업 여부는 미확인이다. 이를 완료나 인수로 추정하지 말고, 기존 담당·시도 이력 대조 전까지 `ROOT_PREPARING`을 유지한다. `READY_FOR_RENDER`로 올리지 않는다.
+
+## 22 복성고 기존 자산·소유권 확인
+
+- Q12와 Q19는 `OPEN` 상태로 유지하고 기존 승인·시도 기록을 보존한다.
+- 원격 PR #1442는 현재 열려 있고 22 복성고 원문 JS와 기존 Q05 SVG를 함께 변경한다. PR 브랜치는 `svg/radical-q5-bokseong-geumdang-20261106`이다. 실제 작업 소유와 중복 여부를 확인하기 전에는 구현·렌더를 인수하지 않는다.
+- Q22 입력은 JSON 형식만 확인됐다. 공식 엔진 지원, 수학, 실제 그림은 검수 전이며 `NOT_RENDERED`다.
+- 시험지 판정표는 `triage-20261107/22-bokseong.md`다. 위 입력 초안으로 `READY_FOR_RENDER`를 추정하지 않는다.
 
 나머지 시험지는 ROOT가 실제 상태와 중복 소유를 확인해 이 표에 차례로 추가한다. 위 목록 밖의 상태를 완료·대기로 추정하지 않는다.

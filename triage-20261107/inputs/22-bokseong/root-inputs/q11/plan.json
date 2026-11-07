@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "필요조건·충분조건은 각 조건의 해집합 포함관계로 판정한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "p1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "p2",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "1",
+          "y": "1"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "b"
+    }
+  },
+  "caption": "두 직선의 합집합과 원점 및 직선 위의 다른 점을 비교해 조건의 포함관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "가로 좌표를 a, 세로 좌표를 b로 보면 p는 b=a 또는 b=−a이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "q를 만족하는 점은 원점뿐이며 (1,1)은 p를 만족하나 q는 만족하지 않는다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "조건 p의 두 직선 위에 q의 원점과 반례를 표시해 필요조건과 역의 차이를 시각화한다."
+  ]
+}

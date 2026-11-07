@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 그래프의 교점 개수는 $y$를 미지수로 만든 이차방정식의 해 중 $y\\ge0$을 만족하는 해의 개수와 같다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      4,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(4-2x)"
+      },
+      {
+        "id": "line1",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "line2",
+        "kind": "LINE",
+        "coefficients": [
+          "9/4",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "GREEN",
+        "hideLabel": true
+      },
+      {
+        "id": "line3",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "VIOLET",
+        "hideLabel": true
+      }
+    ]
+  },
+  "caption": "예: 서로 평행한 직선 세 개와 무리함수의 교점 개수를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 y=√(−2x+4), B는 y=−x+k이며 y≥0이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "예시에서 직선의 k는 3/2, 9/4, 3이며 각각 교점은 1개, 2개, 0개이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "직선을 평행이동하면 무리함수와 만나는 횟수가 달라짐을 세 가지 예로 비교한다."
+  ]
+}
