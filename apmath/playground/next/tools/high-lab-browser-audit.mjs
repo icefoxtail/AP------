@@ -165,10 +165,10 @@ try {
         for (const scene of census.scenes) {
           await page.evaluate(i => lab.goScene(i), scene.index); const initial = await measure(scene, 'initial');
           if (scene.index === 0 && ['pc-paper', 'mobile-paper'].includes(run.name)) await capture(scene, 'initial');
-          const n = await page.evaluate(() => { const s=lab.scene.steps; return (typeof s === 'function' ? s(lab.s,lab) : s)?.length || 0; });
           if (await page.evaluate(() => lab._tabAvailable('review'))) {
             await page.evaluate(() => lab.setTab('review'));
-            await measure(scene,'first-review');
+            // Some scenes expose their steps only in the review/problem tab.
+            const firstReview = await measure(scene,'first-review'), n = firstReview.steps;
             for (let step = 0; step <= n; step++) {
               await page.evaluate(s => lab.setStep(s), step); await measure(scene, `step-${step}`);
             }

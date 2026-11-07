@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+const observedSteps = rows => Math.max(0,...rows.filter(o=>!String(o.state).startsWith('variant-')&&(o.state==='initial'||o.tab==='review')).map(o=>Number(o.steps)||0));
+
 function observations(report) {
   const entries = new Map();
   const add = (row, issue, detail = '') => {
@@ -26,7 +28,7 @@ function observations(report) {
       const initial = rows.find(o => o.state === 'initial');
       if (!initial) { add({ lab: lab.id, id: scene.id, run: run.name }, 'missing-scene-observation'); continue; }
       const required = ['initial'];
-      if (initial.tabs?.includes('review')) for (let n = 0; n <= initial.steps; n++) required.push(`step-${n}`);
+      if (initial.tabs?.includes('review')) for (let n = 0; n <= observedSteps(rows); n++) required.push(`step-${n}`);
       if (initial.tabs?.includes('problem')) required.push('problem-hidden');
       for (const state of required) if (!rows.some(o => o.state === state)) add({ lab: lab.id, id: scene.id, run: run.name, state }, 'missing-scene-state');
       const interactions=lab.interactions.filter(i=>i.id===scene.id&&i.run===run.name),cap=initial.capabilities||{};
@@ -72,10 +74,12 @@ export function compareReports(before, after) {
         for (const tab of a?.tabs||[]) if(!b.tabs?.includes(tab)) add(`missing-tab:${key}:${tab}`,{...row,issue:'missing-candidate-tab',tab});
         for(const capability of ['sliders','drags','generator','solutions'])if(a?.capabilities?.[capability]&&!b.capabilities?.[capability])add(`missing-capability:${key}:${capability}`,{...row,issue:'missing-candidate-capability',capability});
         if((a?.capabilities?.solutions||0)>(b.capabilities?.solutions||0))add(`missing-solutions:${key}`,{...row,issue:'missing-candidate-solution-alternative',before:a.capabilities.solutions,after:b.capabilities?.solutions||0});
-        if(a?.steps>0&&!(b.steps>0))add(`missing-steps:${key}`,{...row,issue:'missing-candidate-solution-steps'});
+        const aSteps=observedSteps(lab.observations.filter(o=>o.id===scene.id&&o.run===run.name));
+        const bSteps=observedSteps(found.observations.filter(o=>o.id===scene.id&&o.run===run.name));
+        if(aSteps>0&&!(bSteps>0))add(`missing-steps:${key}`,{...row,issue:'missing-candidate-solution-steps'});
         // A justified 4/5-step to 3-step rewrite is valid. Every positive
         // candidate step must still have a measured state.
-        if(b.steps>0&&b.tabs?.includes('review'))for(let n=0;n<=b.steps;n++)if(!found.observations.some(o=>o.id===scene.id&&o.run===run.name&&o.state===`step-${n}`))add(`missing-step:${key}:${n}`,{...row,state:`step-${n}`,issue:'missing-candidate-step'});
+        if(bSteps>0&&b.tabs?.includes('review'))for(let n=0;n<=bSteps;n++)if(!found.observations.some(o=>o.id===scene.id&&o.run===run.name&&o.state===`step-${n}`))add(`missing-step:${key}:${n}`,{...row,state:`step-${n}`,issue:'missing-candidate-step'});
       }
       }
     }
