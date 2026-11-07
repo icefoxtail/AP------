@@ -1,0 +1,23 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id":"X","name":"X","elements":["2"]},
+      {"id":"Y","name":"Y","elements":["5"]},
+      {"id":"Z","name":"Z","elements":["75"]}
+    ],
+    "arrows": [
+      {"from":{"column":0,"element":0},"to":{"column":1,"element":0}},
+      {"from":{"column":1,"element":0},"to":{"column":2,"element":0}}
+    ],
+    "arrowGroups":[
+      {"name":"f","from":"X","to":"Y","color":"BLUE"},
+      {"name":"g","from":"Y","to":"Z","color":"WARM"}
+    ],
+    "highlightPaths":[{"path":["2","5","75"],"color":"WARM"}]
+  },
+  "caption":"예: x=2일 때 f를 먼저 적용하면 5, 이어 g를 적용하면 75가 된다.",
+  "sourceConditions":[{"id":"c1","condition":"f(x)=2x+1, g(x)=3x²이고 합성은 안쪽 함수부터 적용한다.","mappedTo":"diagram"}],
+  "newVisualInformation":["예시 입력 2에서 f의 출력 5를 다음 함수 g의 입력으로 이어 합성 순서를 보인다.","예시와 원문 질문의 입력을 분리해 정답 출력을 그림에 표시하지 않는다."]
+}
