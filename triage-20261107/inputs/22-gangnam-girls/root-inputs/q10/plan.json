@@ -1,0 +1,23 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"MAPPING",
+    "columns":[
+      {"id":"X","name":"X","elements":["1","2","3","4"]},
+      {"id":"Y","name":"Y","elements":["5","6","7","8"]}
+    ],
+    "arrows":[
+      {"from":{"column":0,"element":0},"to":{"column":1,"element":2}},
+      {"from":{"column":0,"element":1},"to":{"column":1,"element":3}},
+      {"from":{"column":0,"element":2},"to":{"column":1,"element":0}},
+      {"from":{"column":0,"element":3},"to":{"column":1,"element":1}}
+    ],
+    "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
+  },
+  "caption":"f의 각 입력에 서로 다른 함수값이 하나씩 대응한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"f는 X={1,2,3,4}에서 Y={5,6,7,8}로의 일대일 대응이다.","mappedTo":"diagram.columns"},
+    {"id":"c2","condition":"f(1)=7이고 f(2)-f(3)=3이다.","mappedTo":"diagram.arrows"}
+  ],
+  "newVisualInformation":["함수 f의 네 입력과 서로 다른 네 출력이 남김없이 연결되는 관계를 보여 준다."]
+}

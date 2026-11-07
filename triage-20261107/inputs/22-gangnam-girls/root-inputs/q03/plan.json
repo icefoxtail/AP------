@@ -1,0 +1,25 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "그래프에서 두 점근선과 $x$절편을 읽으면",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["3", "-3"],
+    "denominator": ["-2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4, 8],
+    "viewport": [-4, 8, -8, 4],
+    "axisTickValues": {"x": ["1", "2", "4"], "y": ["-3", "3"]},
+    "overlays": {
+      "points": [{"id": "P", "x": "1", "y": "0"}]
+    }
+  },
+  "caption": "유리함수 그래프의 두 점근선과 x절편을 함께 살핀다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 그래프의 수직점근선은 x=2이다.", "mappedTo": "graphPlan.denominator"},
+    {"id": "c2", "condition": "원문 그래프의 수평점근선은 y=-3이다.", "mappedTo": "graphPlan.numerator"},
+    {"id": "c3", "condition": "원문 그래프의 x절편은 x=1이다.", "mappedTo": "graphPlan.overlays.points"}
+  ],
+  "newVisualInformation": [
+    "수직점근선, 수평점근선과 x절편을 한 좌표평면에서 구분하여 계수와 연결한다."
+  ]
+}

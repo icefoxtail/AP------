@@ -1,0 +1,14 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id":"P"},{"id":"Q"}],
+    "disjoint": [["P","Q"]]
+  },
+  "caption": "p가 참이면 q는 거짓이므로 진리집합 P와 Q는 서로 겹치지 않는다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"명제 p→~q가 참이다.","mappedTo":"diagram.disjoint"},
+    {"id":"c2","condition":"P와 Q는 각 조건의 진리집합이다.","mappedTo":"diagram.sets"}
+  ],
+  "newVisualInformation": ["P의 원소가 Q에 속할 수 없다는 서로소 관계를 보인다."]
+}
