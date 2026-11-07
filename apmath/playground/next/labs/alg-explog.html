@@ -1060,22 +1060,27 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
         drawMathSegment(xA, yA, xB, yA, '#fbbf24', [5, 4], 2);
         drawMathSegment(xB, yA, xB, yB, '#fbbf24', [5, 4], 2);
 
-        const midBottom = mathToScreen((xA + xB) / 2, yA - 0.55);
-        drawCanvasBadge(ctx, `Δx = ${p.dx.toFixed(2)}`, midBottom.x, midBottom.y, '#fbbf24');
-        const midRight = mathToScreen(xB + 1.1, (yA + yB) / 2);
-        drawCanvasBadge(ctx, `Δy = ${p.dy.toFixed(2)}`, midRight.x, midRight.y, '#fbbf24');
+        if (B.W < 600 && si === 0) {
+          B.text([(xA+xB)/2,yA],`Δx=${p.dx.toFixed(2)}`,{color:'amber',size:12.5,weight:800,dx:0,dy:24,align:'center'});
+          B.text([xB,(yA+yB)/2],`Δy=${p.dy.toFixed(2)}`,{color:'amber',size:12.5,weight:800,dx:14,dy:0,align:'left'});
+        } else {
+          const midBottom = mathToScreen((xA + xB) / 2, yA - 0.55);
+          drawCanvasBadge(ctx, `Δx = ${p.dx.toFixed(2)}`, midBottom.x, midBottom.y, '#fbbf24');
+          const midRight = mathToScreen(xB + 1.1, (yA + yB) / 2);
+          drawCanvasBadge(ctx, `Δy = ${p.dy.toFixed(2)}`, midRight.x, midRight.y, '#fbbf24');
+        }
       }
 
       if(ST.step>=3 && !showType2BRegion){
         B.seg([xA,yA],[xB,yB],{color:'amber',width:3.5});
-        OV.corner(B,0,'대응점 사이 거리 = √(Δx²+Δy²)','amber');
+        if (B.W >= 600 || si !== 0) OV.corner(B,0,'대응점 사이 거리 = √(Δx²+Δy²)','amber');
       }
 
       // Draggable Points A (controls x0) and B (controls dx, dy)
-      drawMathPoint(xA, yA, `A(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
+      drawMathPoint(xA, yA, B.W<600&&si===0 ? 'A' : `A(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
         ST[K('x0')] = Math.max(-1.5, Math.min(1.5, Math.round(mPos.x * 10) / 10));
       });
-      drawMathPoint(xB, yB, `B(${xB.toFixed(1)}, ${yB.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
+      drawMathPoint(xB, yB, B.W<600&&si===0 ? 'B' : `B(${xB.toFixed(1)}, ${yB.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
         ST[K('dx')] = Math.max(1, Math.min(4, Math.round((mPos.x - xA) * 4) / 4));
         ST[K('dy')] = Math.max(1, Math.min(5, Math.round((mPos.y - yA) * 4) / 4));
       });
@@ -1256,11 +1261,11 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
         const xm=(p.x1+p.x2)/2, ym=fn(xm), am=(y1+y2)/2;
         B.poly([[p.x1,0],[p.x2,0],[p.x2,y2],[p.x1,y1]],{fill:'sky',fillAlpha:.12,color:'sky'});
         B.seg([p.x1,y1],[p.x2,y2],{color:'sky',width:2.5});
-        if(ST.step>=1){ B.seg([xm,0],[xm,am],{color:'violet',dash:[4,4]}); B.point([xm,am],{color:'sky',label:'산술평균 높이',dx:10,dy:-14}); }
-        if(ST.step>=2){B.poly([[p.x1,0],[p.x2,0],[p.x2,ym],[p.x1,ym]],{fill:'amber',fillAlpha:.2,color:'amber'});B.point([xm,ym],{color:'rose',label:'기하평균 높이',dx:10,dy:16});}
+        if(ST.step>=1){ B.seg([xm,0],[xm,am],{color:'violet',dash:[4,4]}); B.point([xm,am],{color:'sky',label:'산술평균',dx:12,dy:-18,align:'left'}); }
+        if(ST.step>=2){B.poly([[p.x1,0],[p.x2,0],[p.x2,ym],[p.x1,ym]],{fill:'amber',fillAlpha:.2,color:'amber'});B.point([xm,ym],{color:'rose',label:'기하평균',dx:12,dy:22,align:'left'});}
         if(ST.step>=3) OV.corner(B,0,'가로폭 같음 → 높이로 넓이 비교','amber');
-        B.handle('A',[p.x1,y1],{color:'sky',r:7,label:'A',drag:w=>{ST.type6_x1=clamp(Math.round(w.x*10)/10,.4,p.x2-.4);}});
-        B.handle('B',[p.x2,y2],{color:'rose',r:7,label:'B',drag:w=>{ST.type6_x2=clamp(Math.round(w.x*10)/10,p.x1+.4,4.5);}});
+        B.handle('A',[p.x1,y1],{color:'sky',r:7,label:'A',dx:-10,dy:16,align:'right',drag:w=>{ST.type6_x1=clamp(Math.round(w.x*10)/10,.4,p.x2-.4);}});
+        B.handle('B',[p.x2,y2],{color:'rose',r:7,label:'B',dx:-10,dy:-15,align:'right',drag:w=>{ST.type6_x2=clamp(Math.round(w.x*10)/10,p.x1+.4,4.5);}});
         return;
       }
 
@@ -1286,31 +1291,22 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
       if ((ST.step >= 2)) {
         drawMathSegment(0, 0, p.x1, y1, '#fb7185', [], 2.4);
         drawMathSegment(0, 0, p.x2, y2, '#38bdf8', [], 2.4);
-        const posP = mathToScreen(p.x1 * 0.6, y1 * 0.6 + 0.55);
-        drawCanvasFraction(ctx, 'y₁', 'x₁', posP.x, posP.y, {
-          color: '#fb7185',
-          prefix: 'P = ',
-          suffix: ` = ${(y1 / p.x1).toFixed(2)}`
-        });
+        B.text([p.x1 * .45, y1 * .45], 'P', { color:'rose', size:14, weight:900, dx:-10, dy:-14, align:'right' });
+        B.text([p.x2 * .78, y2 * .78], 'Q', { color:'sky', size:14, weight:900, dx:8, dy:18, align:'left' });
       }
 
       // Step 1: Secant line AB (Average rate of change R)
       if ((ST.step >= 1)) {
         drawMathSegment(p.x1, y1, p.x2, y2, '#fbbf24', [], 2.6);
-        const posR = mathToScreen((p.x1 + p.x2) / 2 + 0.4, (y1 + y2) / 2 - 0.65);
-        drawCanvasFraction(ctx, 'y₂ - y₁', 'x₂ - x₁', posR.x, posR.y, {
-          color: '#fbbf24',
-          prefix: '직선 AB의 기울기 R = ',
-          suffix: ` = ${((y2 - y1) / (p.x2 - p.x1)).toFixed(2)}`
-        });
+        B.text([(p.x1 + p.x2) / 2, (y1 + y2) / 2], 'R', { color:'amber', size:14, weight:900, dx:0, dy:-22, align:'center' });
       }
 
-      drawMathPoint(p.x1, y1, `A(${p.x1.toFixed(2)}, ${y1.toFixed(2)})`, '#fb7185', 7, true, (mPos) => {
-        ST[K('x1')] = Math.max(0.4, Math.min(p.x2 - 0.4, Math.round(mPos.x * 10) / 10));
-      });
-      drawMathPoint(p.x2, y2, `B(${p.x2.toFixed(2)}, ${y2.toFixed(2)})`, '#fbbf24', 7.5, true, (mPos) => {
-        ST[K('x2')] = Math.max(p.x1 + 0.4, Math.min(4.5, Math.round(mPos.x * 10) / 10));
-      });
+      B.handle('A', [p.x1, y1], { color:'rose', r:7, label:'A', dx:-12, dy:-18, align:'right', drag:w=>{
+        ST[K('x1')] = Math.max(0.4, Math.min(p.x2 - 0.4, Math.round(w.x * 10) / 10));
+      }});
+      B.handle('B', [p.x2, y2], { color:'amber', r:7.5, label:'B', dx:10, dy:-15, align:'left', drag:w=>{
+        ST[K('x2')] = Math.max(p.x1 + 0.4, Math.min(4.5, Math.round(w.x * 10) / 10));
+      }});
     }
 
     // --- TYPE 7: Lattice Point (Integer Coordinate) Scanner ---
@@ -1397,8 +1393,8 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
         ctx.fillRect(s1.x, 0, B.W - s1.x, B.H);
         ctx.restore();
         drawMathSegment(boundary, -30, boundary, 20, '#fb7185', [5, 5], 2);
-        const bPt = mathToScreen(1, 3.8);
-        drawCanvasBadge(ctx, si===1?'양의 실근 경계: x > 0 ⟺ t = 2^x > 1':'치환의 정의역: t = 2^x > 0', bPt.x, bPt.y, '#fb7185');
+        const area = B._area();
+        B.stext(area.x + 12, area.y + 10, si===1 ? '양의 x근의 범위: t > 1' : '치환의 정의역: t > 0', {color:'rose',size:12.5,weight:800,align:'left',baseline:'top'});
       }
 
       drawFunctionCurve(ft, '#34d399', 2.8, [], -1.5, 9.5);
@@ -1409,30 +1405,27 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
       // Step 2: Axis of symmetry & Roots t1, t2
       const D = S * S - 4 * P;
       if ((ST.step >= 2)) {
-        drawMathSegment(axisT, -6, axisT, 6, 'rgba(56, 189, 248, 0.6)', [4, 4], 1.6);
+        const vb=B.viewBox();
+        drawMathSegment(axisT, vb.y0, axisT, vb.y1, 'rgba(56, 189, 248, 0.6)', [4, 4], 1.6);
         if (D >= 0) {
           const t1 = (S - Math.sqrt(D)) / 2;
           const t2 = (S + Math.sqrt(D)) / 2;
-          if(Math.abs(D)<1e-10) drawMathPoint(t1,0,`t=${t1} (중근 하나)`,'#38bdf8',6);
-          else {drawMathPoint(t1,0,`t₁≈${t1.toFixed(3)}`,'#38bdf8',6);drawMathPoint(t2,0,`t₂≈${t2.toFixed(3)}`,'#38bdf8',6);}
+          if(Math.abs(D)<1e-10) B.point([t1,0],{color:'sky',r:6,label:'중근',dx:12,dy:-17,align:'left'});
+          else {B.point([t1,0],{color:'sky',r:6,label:'t₁',dx:-10,dy:-18,align:'right'});B.point([t2,0],{color:'sky',r:6,label:'t₂',dx:10,dy:-18,align:'left'});}
         }
       }
 
       // Step 3: Product Invariant Formula Badge
       if (ST.step >= 3 && D > 1e-10 && S > 0 && P > 0) {
-        const fPos = mathToScreen(axisT, vertexY - 1.3);
-        const alphaBeta = Math.log2(P);
-        drawCanvasFraction(ctx, `t₁·t₂ = ${P.toFixed(1)}`, `2^(α+β)`, fPos.x, fPos.y, {
-          prefix: '근과 계수: ',
-          suffix: ` ⟹ α+β = log₂(${P.toFixed(1)}) = ${alphaBeta.toFixed(2)}`
-        });
+        const area = B._area();
+        B.stext(area.x + 12, area.y + 32, `t₁t₂ = ${P.toFixed(1)}`, {color:'amber',size:13,weight:800,align:'left',baseline:'top'});
       }
 
       // Draggable Vertex Handle
-      drawMathPoint(axisT, vertexY, `꼭짓점 (축 t=${axisT.toFixed(1)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
-        const newAxis = Math.max(1.5, Math.min(4.5, Math.round(mPos.x * 10) / 10));
+      B.handle('vertex', [axisT, vertexY], {color:'amber',r:7.5,label:`축 t=${axisT.toFixed(1)}`,dx:0,dy:22,align:'center',drag:w=>{
+        const newAxis = Math.max(1.5, Math.min(4.5, Math.round(w.x * 10) / 10));
         ST[K('sumT')] = newAxis * 2;
-      });
+      }});
     }
   const RENDER = [renderType1, renderType2, renderType3, renderType4, renderType5, renderType6, renderType7, renderType8];
 
@@ -2014,7 +2007,30 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
   window.__OV = { VARS };
   const VARY = VARS.map((row) => row.map((pool) => OV.varier(pool)));
   function drawVar(b, s, m, j, lab) {
-    if (!lab || lab.tab === 'explore') { const box = m === 0 ? { x: [-8.5, 11.5], y: [-12, 32] } : m === 7 ? { x: [-1.5, 10], y: [-22, 22] } : m === 5 && j === 1 ? { x: [-1, 6], y: [-2, 25] } : FOCUS[m]; OV.autoFocus(b, 'E' + m + j, box); return drawScene(b, s, m, j); }
+    if (!lab || lab.tab === 'explore') {
+      if (m === 5 || m === 7) {
+        const p = pv(s,m), key = 'E' + m + j + ':' + JSON.stringify(p);
+        // Keep the pointer-to-world map fixed throughout a native handle drag.
+        // A slider change or drag release fits the new model once; ordinary redraws
+        // and manual pan/zoom retain their current transform.
+        if (!s.dragging || !String(b.__ovKey || '').startsWith('E' + m + j + ':')) {
+          let box;
+          if (m === 5) {
+            const y2 = j === 0 ? Math.log2(p.x2 + 1) : 2 ** p.x2;
+            box = {x:[-.65,p.x2 + 1.45],y:[-.22 * Math.max(2,y2),y2 + .32 * Math.max(2,y2)]};
+          } else {
+            const axis=p.sumT/2, vertex=p.prodT-axis*axis, D=p.sumT*p.sumT-4*p.prodT;
+            const right=D>=0 ? (p.sumT+Math.sqrt(D))/2 : axis+1.5;
+            const low=Math.min(0,vertex),high=Math.max(3,Math.min(p.prodT,6),vertex),pad=Math.max(1.2,(high-low)*.22);
+            box={x:[-.8,Math.max(3,right)+1.1],y:[low-pad,high+pad]};
+          }
+          OV.autoFocus(b,key,box);
+        }
+      } else {
+        const box=m===0?{x:[-8.5,11.5],y:[-12,32]}:FOCUS[m];OV.autoFocus(b,'E'+m+j,box);
+      }
+      return drawScene(b,s,m,j);
+    }
     const cur = VARY[m][j].cur(), idx = VARS[m][j].indexOf(cur), prob = lab.tab === 'problem', st = prob ? 0 : s.step;
     OV.autoFocus(b, `${lab.scene.id}|${idx}`, cur.focus);
     if (s.grid) b.grid({ step: OV.nice(34 / b.k) });
@@ -2118,7 +2134,7 @@ B.stext(B.toS(rootCenter, 0).x, B.insets.top + 8, 'y = uⁿ  (u = x + 4.5)', { c
         const { formula, cards } = hudOf(s, m, j);
         return {
           formula: safe(formula),
-          readouts: cards.map((c, i) => ({ label: c.title, value: String(c.val), note: c.sub, color: READ_COLORS[i % 4] })),
+          readouts: cards.map((c, i) => ({ label: c.title, value: String(c.val), note: c.sub, color: READ_COLORS[i % 4], ...(m===5&&j===0&&i===0?{wide:true}:{}) })),
           notes: rich(md.trapWarning)
         };
       },

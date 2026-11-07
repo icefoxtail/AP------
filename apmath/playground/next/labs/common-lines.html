@@ -15,6 +15,10 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<style>
+/* 펼친 수식의 위치 지정 요소가 풀이 제목의 클릭을 가로채지 않도록 합니다. */
+.apl-acc > summary { position: relative; z-index: 1; background: var(--card); }
+</style>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -595,7 +599,7 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             badge: `탐구 2-B · 🎡 k값에 관계없이 항상 정점 P(1, 2)를 지나는 회전 직선 다발 (l₁ + k · l₂ = 0)`,
             hint: `식 $(x - y + 1) + k(2x + y - 4) = 0$ 에서 슬라이더로 $k$값을 바꾸어 보세요! $k$에 관한 항등식($l_1=0$ 이고 $l_2=0$)에 의해 직선이 <strong>두 직선의 교점 $P(1, 2)$를 항상 지나면서 회전</strong>합니다!`,
-            actionTxt: state.fold > 0.5 ? '🎬 반대 방향으로 회전' : '🎬 k의 값에 따라 직선이 점 P를 중심으로 회전하는 모습 보기',
+            actionTxt: state.fold > 0.5 ? '🎬 반대 방향으로 회전' : '🎬 정점 P를 중심으로 회전',
             dim1Name: '현재 회전 파라미터 k', dim2Name: '항상 지나는 점 P',
             val1Txt: `k = ${kVal}`, val2Txt: 'P(1, 2) (l₁=0 ∩ l₂=0)',
             parts: [
@@ -1018,7 +1022,7 @@ window.addEventListener('DOMContentLoaded', function () {
           hint: `직선 $y = mx - 1$ 은 $m$에 관계없이 항상 <strong>정점 $P(0, -1)$</strong>을 지납니다! 점 $P$를 지나는 직선을 회전시킬 때, 점 $A(1, 3)$을 지날 때의 기울기($m=4$)와 점 $B(4, 1)$을 지날 때의 기울기($m=\\frac{1}{2}$) **사이($\\frac{1}{2} \\le m \\le 4$)**에서 선분과 만납니다!`,
           actionTxt: state.fold > 0.5 ? '🎬 점 A 통과 경계 보기' : '🎬 점 A(m=4)와 점 B(m=1/2)를 지나도록 직선 회전시키기',
           dim1Name: '항상 지나는 점 P', dim2Name: '선분 AB와 만나는 m 범위',
-          val1Txt: 'P(0, -1)', val2Txt: '1/2 ≤ m ≤ 4 (양 끝점 포함!)',
+          val1Txt: 'P(0, -1)', val2Txt: '1/2 ≤ m ≤ 4', val2Note: '양 끝점 포함',
           parts: [
             { id: 0, name: `🟡 경계 ①: 점 B(4, 1)을 지날 때의 최소 기울기 m = 1/2`, desc: `P(0, -1)과 B(4, 1)을 잇는 기울기 = $\\frac{1-(-1)}{4-0}$ = 2/4 = 1/2`, val: `m = 1/2`, color: '#fbbf24', ok: true },
             { id: 1, name: `🩷 경계 ②: 점 A(1, 3)을 지날 때의 최대 기울기 m = 4`, desc: `P(0, -1)과 A(1, 3)을 잇는 기울기 = $\\frac{3-(-1)}{1-0}$ = 4`, val: `m = 4`, color: '#f472b6', ok: true },
@@ -2914,7 +2918,7 @@ window.addEventListener('DOMContentLoaded', function () {
           guide: `<div style="font-weight:800;margin-bottom:6px">${APLab.esc(APLab.stripEmoji(spec.badge))}</div>${spec.hint}`,
           readouts: [
             { label: spec.dim1Name, value: spec.val1Txt, color: 'sky' },
-            { label: spec.dim2Name, value: spec.val2Txt, color: 'rose' }
+            { label: spec.dim2Name, value: spec.val2Txt, note: spec.val2Note, color: 'rose' }
           ],
           parts: spec.parts.map((p) => ({ id: p.id, name: p.name, desc: p.desc, value: p.val, color: tone(p), ok: p.ok })),
           summary: spec.totalRes,
