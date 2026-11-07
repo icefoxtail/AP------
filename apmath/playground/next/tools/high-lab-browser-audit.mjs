@@ -72,17 +72,27 @@ try {
             if (text != null && text !== '' && !screen && !this._bbox && !this.thumb) {
               const size = (o.size || 13) * b.fs * b._ts(), c = b.ctx;
               c.save(); c.font = `${o.weight || 750} ${size}px ${b.font}`;
-              const width = c.measureText(String(text)).width; c.restore();
+              const segs = b._fracSplit(String(text)), fractionSize = Math.max(size * .72, Math.min(size * .9, 9.5));
+              let width = 0;
+              if (segs) for (const part of segs) {
+                c.font = `${o.weight || 750} ${part.t === undefined ? fractionSize : size}px ${b.font}`;
+                width += part.t === undefined ? Math.max(c.measureText(part.n).width, c.measureText(part.d).width) + fractionSize * .34 : c.measureText(part.t).width;
+              } else width = c.measureText(String(text)).width;
+              c.restore();
               const align = o.align || 'center', baseline = o.baseline || 'alphabetic';
               const x0 = x + (align === 'center' ? -width / 2 : ['right', 'end'].includes(align) ? -width : 0);
-              const y0 = y + (baseline === 'middle' ? -size / 2 : ['top', 'hanging'].includes(baseline) ? 0 : baseline === 'bottom' ? -size : -size * .8);
-              window.__highLabels.push({ text: String(text), x0, x1: x0 + width, y0, y1: y0 + size });
+              let y0 = y + (baseline === 'middle' ? -size / 2 : ['top', 'hanging'].includes(baseline) ? 0 : baseline === 'bottom' ? -size : -size * .8), y1 = y0 + size;
+              if (segs) {
+                const mid = y + (baseline === 'middle' ? 0 : ['top','hanging'].includes(baseline) ? size * .5 : baseline === 'bottom' ? -size * .5 : -size * .3);
+                y0 = Math.min(y0, mid - fractionSize * 1.15); y1 = Math.max(y1, mid + fractionSize * 1.15);
+              }
+              window.__highLabels.push({ text: String(text), x0, x1: x0 + width, y0, y1 });
             }
             return original.apply(this, arguments);
           };
         });
         const settle = async () => {
-          await page.waitForFunction(() => !lab._tween, { timeout: 5000 });
+          await page.waitForFunction(() => !lab._tween, null, { timeout: 5000 });
           await page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); window.__highLabels = []; lab.render(); });
         };
         const measure = async (scene, state) => {
@@ -96,7 +106,7 @@ try {
             const future = [...(lab.refs.steps?.children || [])].filter((e, i) => i >= lab.s.step && e.children[1]?.textContent.trim() !== '선택하면 이 단계의 풀이가 열립니다.').length;
             const katexErrors = [...document.querySelectorAll('.katex-error')].filter(e => e.checkVisibility()).map(e => e.textContent);
             const text = [...document.querySelectorAll('.apl-tabpanel:not([hidden])')].map(e => e.textContent).join(' ');
-            return { step: lab.s.step, tab: lab.tab, ink, width: b.W, height: b.H, want, have, future, katexErrors,
+            return { step: lab.s.step, tab: lab.tab, tabs: ['review','problem'].filter(t=>lab._tabAvailable(t)), ink, width: b.W, height: b.H, want, have, future, katexErrors,
               invalidText: (text.match(/undefined|NaN|Infinity|\[object Object\]/g) || []),
               clipped: window.__highLabels.filter(q => Math.max(-q.x0, q.x1-b.W, -q.y0, q.y1-b.H) > 2),
               overflow: document.documentElement.scrollWidth > innerWidth + 1,
@@ -159,12 +169,12 @@ try {
             const handle=await page.evaluate(()=>lab.board.handles.find(h=>typeof h.drag==='function' && h.x>10 && h.y>10 && h.x<lab.board.W-10 && h.y<lab.board.H-10));
             if(handle){
               const canvas=page.locator('.apl-canvas'); await canvas.scrollIntoViewIfNeeded(); await settle();
-              const point=await page.evaluate(id=>{const h=lab.board.handles.find(h=>h.id===id);return {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H,state:JSON.stringify(lab.s)};},handle.id);
+              const point=await page.evaluate(id=>{const h=lab.board.handles.find(h=>h.id===id); const model=Object.fromEntries(Object.entries(lab.s).filter(([k])=>!['step','part','revealed','playing'].includes(k)));return {x:h.x,y:h.y,W:lab.board.W,H:lab.board.H,state:JSON.stringify(model)};},handle.id);
               const box=await canvas.boundingBox(),x=box.x+point.x*box.width/point.W,y=box.y+point.y*box.height/point.H;
               await page.mouse.move(x,y);await page.mouse.down();
               const acquired=await page.evaluate(id=>lab.board.dragging?.id===id,handle.id);
               await page.mouse.move(x+(point.x>point.W/2?-48:48),y-28,{steps:6});await page.mouse.up();await settle();
-              const changed=point.state!==await page.evaluate(()=>JSON.stringify(lab.s));
+              const changed=point.state!==await page.evaluate(()=>JSON.stringify(Object.fromEntries(Object.entries(lab.s).filter(([k])=>!['step','part','revealed','playing'].includes(k)))));
               dest.interactions.push({id:scene.id,kind:'drag',handle:handle.id,acquired,changed,pass:acquired&&changed});
               if(!acquired||!changed)report.failures.push({lab:item.id,id:scene.id,reason:'native-drag',acquired,changed});
               await measure(scene,'drag');

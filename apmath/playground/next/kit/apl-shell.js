@@ -223,6 +223,8 @@
       this.s.step = sc.startStep != null ? sc.startStep : sc.steps ? 1 : 0;
       if (this.def.enter) this.def.enter(this.s, sc, this);
       if (sc.enter) sc.enter(this.s, this);
+      // Explicit high-school opt-in: the baseline figure precedes any solution.
+      if (this.def.stagedReveal) this.s.step = 0;
       const bd = this.def.board || {};
       this.board.aspect = (sc.aspect || bd.aspect) === 'free' ? 'free' : '1:1'; // 장면별 선택: 생략하면 board.aspect(기본 1:1)
       this.board.setPanes(call(sc.panes, this.s) || null);
@@ -388,6 +390,12 @@
       if (!this._tabAvailable(id)) return;
       const was = this.tab;
       this.tab = id;
+      // Opening the review board is the student's request for the first insight.
+      // Switching tabs again never resets a later step or moves a parameter.
+      if (this.def.stagedReveal && id === 'review' && this.s.step === 0) {
+        const steps = call(this.scene.steps, this.s) || [];
+        if (steps.length) this.s.step = 1;
+      }
       this._syncTabAttr();
       APLab.$$('.apl-tab', this.ui.tabs).forEach((b) => b.setAttribute('aria-selected', String(b.getAttribute('aria-controls') === 'apl-pane-' + id)));
       for (const t of TABS) this.ui.panes[t.id].hidden = this.tab !== t.id;
@@ -690,6 +698,7 @@
       r.notesSec = this._section(sc.notesTitle || this.def.notesTitle || '시험에서 자주 틀리는 부분', 'alert', h('div', { class: 'apl-card soft' }, r.notes));
       pane.append(r.notesSec);
       this._syncReviewSteps();
+      this._syncSolutionDisclosure();
     }
     _syncReviewSteps() {
       const r = this.refs;
@@ -707,6 +716,15 @@
     _syncSolutionDisclosure() {
       const section = this.refs.solution;
       if (!section) return;
+      section.hidden = !!this.def?.stagedReveal && !this._answerOpen();
+      if (section.hidden) {
+        section.querySelectorAll('details.apl-acc[open]').forEach(detail => {
+          detail.open = false;
+          const body = detail.querySelector('.apl-acc-body');
+          if (body) body.innerHTML = '';
+        });
+        return;
+      }
       section.querySelectorAll('details.apl-acc[open]').forEach((detail) => {
         const body = detail.querySelector('.apl-acc-body');
         if (!body || !body.__solutionSource) return;
@@ -820,6 +838,7 @@
     }
     _answerOpen() {
       const steps = call(this.scene.steps, this.s);
+      if (this.def?.stagedReveal) return this.s.revealed || !!steps?.length && this.s.step >= steps.length;
       return this.s.revealed || !steps || this.s.step >= steps.length;
     }
 
@@ -827,6 +846,7 @@
     setStep(n) {
       const steps = call(this.scene.steps, this.s) || [];
       this.s.step = clamp(n, 0, steps.length);
+      if (this.def?.stagedReveal && this.s.step === 0) this.s.revealed = false;
       this.invalidate(true);
       this._saveHashSoon();
     }
