@@ -216,3 +216,77 @@ fs.appendFileSync(${JSON.stringify(proof)},JSON.stringify({base,head,input:g('sh
   assert.equal(rows[1].base,competitor);assert.equal(rows[1].input,'v2');
   assert.equal(rows[1].head,git(f.origin,'rev-parse','main'));assert.match(result.output,new RegExp(`registered_sha=${rows[1].head}`));
 });
+
+// --reapply-check: the single shortcut for a competing range that is provably unrelated to the producers.
+function reapplyFixture(t) {
+  const f = fixture(t);
+  const marks = path.join(f.dir, "marks.jsonl"), mark = (name, extra = "") => `fs.appendFileSync(${JSON.stringify(marks)}, JSON.stringify({ name: ${JSON.stringify(name)}${extra} }) + "\\n");`;
+  const script = (name, body) => { const p = path.join(f.tools, name); fs.writeFileSync(p, `import fs from "node:fs";\nimport { execFileSync } from "node:child_process";\n${body}\n`); return `${q(node)} ${q(p)}`; };
+  const checkWith = code => script(`check-${code}.mjs`, `${mark("check", ", base: process.env.DERIVED_BASE_SHA, competitor: process.env.COMPETITOR_HEAD_SHA")}\nprocess.exit(${code});`);
+  const regenerate = script("regen.mjs", `${mark("regenerate")}\nexecFileSync(${JSON.stringify(node)}, [${JSON.stringify(path.join(f.tools, "derive.mjs"))}, "."]);`);
+  const verify = script("verify.mjs", `${mark("verify", ", base: process.env.DERIVED_BASE_SHA, head: process.env.DERIVED_HEAD_SHA")}`);
+  const events = () => (fs.existsSync(marks) ? fs.readFileSync(marks, "utf8").trim().split("\n").filter(Boolean).map(JSON.parse) : []);
+  return { ...f, checkWith, regenerate, verify, events };
+}
+
+test("reapply-check exit 0: unrelated race re-applies the verified commit on the competitor tip, no regenerate, verify runs on the new range", t => {
+  const f = reapplyFixture(t);
+  f.competitorPush("competitor unrelated", () => fs.writeFileSync(path.join(f.competitor, "unrelated.txt"), "x\n"));
+  const competitorTip = git(f.origin, "rev-parse", "main"), initialBase = git(f.runner, "rev-parse", "HEAD");
+  f.derive(f.runner);
+  const r = f.run(["--regenerate", f.regenerate, "--verify-command", f.verify, "--reapply-check", f.checkWith(0)]);
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.output, /result=PUSHED/);
+  assert.match(r.output, /attempts=2/);
+  const ev = f.events();
+  assert.ok(!ev.some(e => e.name === "regenerate"), "regenerate must not run");
+  const check = ev.find(e => e.name === "check");
+  assert.equal(check.base, initialBase);
+  assert.equal(check.competitor, competitorTip);
+  const verifies = ev.filter(e => e.name === "verify");
+  assert.equal(verifies.length, 2, "verify ran for the first candidate and again on the new range");
+  assert.equal(verifies[1].base, competitorTip);
+  const tip = git(f.origin, "rev-parse", "main");
+  assert.equal(verifies[1].head, tip);
+  assert.equal(git(f.origin, "rev-parse", `${tip}^`), competitorTip, "pushed commit's parent is the competitor tip");
+  assert.equal(f.originFile("out.txt"), "derived:v1", "derived content equals our verified output");
+  assert.equal(f.originFile("unrelated.txt"), "x");
+  assert.throws(() => f.originFile("inbox/r1.txt"), "consumed request stays deleted");
+  assert.match(r.output, new RegExp(`registered_sha=${tip}`));
+  assert.match(r.summary, /competitor range unrelated, re-applied verified derived commit/);
+});
+
+test("reapply-check exit 1: related race falls back to the existing regenerate path", t => {
+  const f = reapplyFixture(t);
+  f.competitorPush("competitor input v2", () => fs.writeFileSync(path.join(f.competitor, "input.txt"), "v2\n"));
+  f.derive(f.runner);
+  const r = f.run(["--regenerate", f.regenerate, "--reapply-check", f.checkWith(1)]);
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.output, /result=PUSHED/);
+  assert.deepEqual(f.events().map(e => e.name), ["check", "regenerate"]);
+  assert.equal(f.originFile("out.txt"), "derived:v2");
+});
+
+test("reapply-check exit 0 but the cherry-pick conflicts: abort, reset and regenerate", t => {
+  const f = reapplyFixture(t);
+  f.competitorPush("competitor edits the derived file", () => fs.writeFileSync(path.join(f.competitor, "out.txt"), "derived:competitor\n"));
+  f.derive(f.runner);
+  const r = f.run(["--regenerate", f.regenerate, "--reapply-check", f.checkWith(0)]);
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.output, /result=PUSHED/);
+  assert.deepEqual(f.events().map(e => e.name), ["check", "regenerate"]);
+  assert.equal(f.originFile("out.txt"), "derived:v1");
+  assert.equal(git(f.runner, "status", "--porcelain"), "", "no conflict markers or half-finished cherry-pick left behind");
+  assert.ok(!fs.existsSync(path.join(f.runner, ".git", "CHERRY_PICK_HEAD")));
+});
+
+test("without --reapply-check an unrelated race still regenerates exactly as before", t => {
+  const f = reapplyFixture(t);
+  f.competitorPush("competitor unrelated", () => fs.writeFileSync(path.join(f.competitor, "unrelated.txt"), "x\n"));
+  f.derive(f.runner);
+  const r = f.run(["--regenerate", f.regenerate]);
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.output, /result=PUSHED/);
+  assert.deepEqual(f.events().map(e => e.name), ["regenerate"]);
+  assert.doesNotMatch(r.summary, /re-applied/);
+});

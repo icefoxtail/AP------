@@ -6,7 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -358,4 +358,43 @@ test('timed-out native command cannot leave a child that advances a cursor after
     commands:[{program:process.execPath,args:['-e',parent],timeoutMs:80}]}}),/NATIVE_COMMAND_FAILED/);
   await new Promise(resolve=>setTimeout(resolve,700));
   assert.equal(fs.existsSync(lateCursor),false,'the entire owned native process group has stopped');
+});
+
+// Race shortcut: the verified derived commit is reused only when the competing range is provably unrelated.
+test('--unrelated-range accepts only provably unrelated competing changes', t=>{
+  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(realRoot);
+  const f=fixture(t),base=git(f.root,'rev-parse','HEAD');
+  const verdict=paths=>{
+    for(const rel of paths)write(f.root,rel,`change ${paths.join()}\n`);
+    const head=commit(f.root,'competitor '+paths.join());
+    const result=unrelatedRange({root:f.root,base,head,lanes});git(f.root,'reset','-q','--hard',base);return result;
+  };
+  const ok=verdict(['apmath/playground/next/x.js']);
+  assert.equal(ok.unrelated,true);assert.equal(ok.changedCount,1);assert.equal(ok.firstProtectedHit,null);
+  for(const protectedPath of ['archive/exams/x.js',STATE,'tools/ci/foo.mjs','.github/workflows/archive-main-auto-meta.yml',
+    'apmath/playground/next/.gitignore','.gitattributes','tools/lib/x.mjs','.archive-meta-register/inbox/x.json','package.json','package-lock.json']) {
+    const result=verdict([protectedPath]);
+    assert.equal(result.unrelated,false,protectedPath);assert.equal(result.firstProtectedHit,protectedPath);
+  }
+  assert.equal(verdict(['apmath/playground/next/x.js','archive/exams/y.js']).firstProtectedHit,'archive/exams/y.js','one protected hit among many refuses');
+  // Not an ancestor: history was rewritten, so the range says nothing.
+  write(f.root,'apmath/playground/next/a.js','a\n');const sibling=commit(f.root,'sibling');git(f.root,'reset','-q','--hard',base);
+  write(f.root,'apmath/playground/next/b.js','b\n');const other=commit(f.root,'other');
+  const rewritten=unrelatedRange({root:f.root,base:sibling,head:other,lanes});
+  assert.equal(rewritten.unrelated,false);assert.match(rewritten.error,/BASE_NOT_ANCESTOR_OF_HEAD/);
+  assert.equal(unrelatedRange({root:f.root,base:'not-a-sha',head:other,lanes}).unrelated,false);
+});
+
+test('--unrelated-range CLI exits 0 only for an unrelated range and 1 for anything else',t=>{
+  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),script=path.join(realRoot,'tools/ci/archive-registration-writer.mjs');
+  const head=git(realRoot,'rev-parse','HEAD');
+  const run=(...args)=>spawnSync(process.execPath,[script,'--unrelated-range',...args],{cwd:realRoot,encoding:'utf8'});
+  const same=run(head,head);assert.equal(same.status,0,same.stderr);
+  assert.deepEqual(Object.keys(JSON.parse(same.stdout)).slice(0,5),['unrelated','base','head','changedCount','firstProtectedHit']);
+  const malformed=run('zzzz',head);assert.equal(malformed.status,1);assert.equal(JSON.parse(malformed.stdout).unrelated,false);assert.match(malformed.stderr,/UNRELATED_RANGE_UNKNOWN/);
+  assert.equal(run(head).status,1,'missing head');
+  // Any error (here: a checkout without the real lane configuration) is "unknown", never "unrelated".
+  const f=fixture(t);write(f.root,'apmath/playground/next/x.js','x\n');const next=commit(f.root,'would be unrelated');
+  const unknown=spawnSync(process.execPath,[script,'--unrelated-range',git(f.root,'rev-parse',next+'^'),next,'--root',f.root],{cwd:realRoot,encoding:'utf8'});
+  assert.equal(unknown.status,1);
 });

@@ -109,6 +109,7 @@ jobs:
             --message 'chore(archive): register main snapshot [skip ci]' \
             --regenerate 'node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"' \
             --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
+            --reapply-check 'node tools/ci/archive-registration-writer.mjs --unrelated-range "$DERIVED_BASE_SHA" "$COMPETITOR_HEAD_SHA"' \
             --remote origin --branch main --max-attempts 3 \
             --summary-file "$GITHUB_STEP_SUMMARY" --label 'single Archive registration writer'
       - name: Bind the persisted snapshot before any publication handoff

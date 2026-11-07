@@ -408,8 +408,34 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   return report;
 }
 
+// Only provably unrelated changes may reuse the verified commit; anything uncertain regenerates.
+const PROTECTED_PREFIXES=['.archive-meta-register/','tools/ci/','tools/lib/','.github/workflows/archive-'];
+const PROTECTED_FILES=[STATE,'package.json','package-lock.json'];
+const isProtectedExtra=f=>PROTECTED_PREFIXES.some(p=>f.startsWith(p))||PROTECTED_FILES.includes(f)
+  ||['.gitignore','.gitattributes'].includes(f.split('/').pop());
+export function unrelatedRange({root=ROOT,base,head,lanes}={}) {
+  const verdict={unrelated:false,base,head,changedCount:0,firstProtectedHit:null};
+  try {
+    for(const sha of [base,head])if(!/^[a-f0-9]{40}$/.test(sha||''))throw Error('MALFORMED_SHA:'+sha);
+    if(spawnSync('git',['merge-base','--is-ancestor',base,head],{cwd:root}).status!==0)throw Error('BASE_NOT_ANCESTOR_OF_HEAD');
+    const patterns=unique((lanes||nativeLanes(root)).flatMap(l=>[l.inputs,l.outputs,l.scopedInputs].flatMap(v=>Array.isArray(v)?v:[])));
+    const files=splitZ(git(root,'diff','--name-only','--no-renames','-z',base,head));
+    verdict.changedCount=files.length;
+    verdict.firstProtectedHit=files.find(f=>isProtectedExtra(f)||matches(f,patterns))||null;
+    verdict.unrelated=verdict.firstProtectedHit===null;
+  } catch(error) {
+    verdict.unrelated=false;verdict.error=String(error.message||error).split('\n')[0];
+    console.error('UNRELATED_RANGE_UNKNOWN:'+verdict.error);
+  }
+  return verdict;
+}
+
 async function main() {
   const args=process.argv.slice(2),options={};let check=false;
+  if(args[0]==='--unrelated-range') {
+    const rootAt=args.indexOf('--root'),verdict=unrelatedRange({...(rootAt>0&&args[rootAt+1]?{root:path.resolve(args[rootAt+1])}:{}),base:args[1],head:args[2]});
+    console.log(JSON.stringify(verdict));process.exitCode=verdict.unrelated?0:1;return;
+  }
   for(let i=0;i<args.length;i++) {
     if(args[i]==='--check')check=true;
     else if(['--root','--work-dir'].includes(args[i])&&args[i+1])options[args[i]==='--root'?'root':'work']=args[++i];
