@@ -354,11 +354,14 @@
   const n3Text = (v) => `이차함수 ${T('y=' + polyTex(1, v.pa.p, v.pa.q))}의 그래프가 직선 ${T('y=ax')} ${T('(a\\gt0)')}와 한 점 ${T('A')}에서 접한다. 이 그래프가 ${T('y')}축과 만나는 점을 ${T('B')}, 점 ${T('A')}에서 ${T('x')}축에 내린 수선의 발을 ${T('H')}라 하고, 선분 ${T('OA')}와 선분 ${T('BH')}가 만나는 점을 ${T('C')}라 하자. 삼각형 ${T('BOC')}의 넓이를 ${T('S_1')}, 삼각형 ${T('ACH')}의 넓이를 ${T('S_2')}라 할 때, ${v.type === 'diff' ? T('S_1-S_2') + '의 값을 구하시오.' : T('S_1:S_2=p:q') + '이다. ' + T('p+q') + '의 값을 구하시오. (단, ' + T('p,\\ q') + '는 서로소인 자연수)'} (단, ${T('O')}는 원점)`;
   function n3Steps(v) {
     const { t, a, pa } = v;
-    const den = a + t;
     return [
-      `접하면 ${T('x^2+(' + pa.p + ')x+' + pa.q + '=ax')}가 중근을 가집니다. ${T('x^2-(a+' + (-pa.p) + ')x+' + pa.q + '=0')}에서 ${T('D=(a+' + (-pa.p) + ')^2-' + 4 * pa.q + '=0')} ⇒ ${T('a+' + (-pa.p) + '=' + 2 * t)} ⇒ ${T('a=' + a)}. 접점은 중근 ${T('x=' + t)}이므로 ${T('A(' + t + ',\\ ' + a * t + ')')}, ${T('H(' + t + ',\\ 0)')}.`,
-      `${T('B(0,\\ ' + pa.q + ')')}. 직선 ${T('OA')}: ${T('y=' + (a === 1 ? '' : a) + 'x')}, 직선 ${T('BH')}: ${T('y=-' + (t === 1 ? '' : t) + 'x+' + pa.q)}. 두 식을 연립하면 ${T('C\\left(' + frTex(t * t, den) + ',\\ ' + frTex(a * t * t, den) + '\\right)')}.`,
-      `${T('S_1=\\dfrac12\\cdot' + pa.q + '\\cdot' + frTex(t * t, den) + '=' + frTex(t ** 4, 2 * den) + '')}, ${T('S_2=\\dfrac12\\cdot' + a * t + '\\cdot\\left(' + t + '-' + frTex(t * t, den) + '\\right)=' + frTex(a * a * t * t, 2 * den) + '')}. ${v.type === 'diff' ? T('S_1-S_2=' + v.ans.tex) : T('S_1:S_2=' + t * t + ':' + a * a) + (v.ans.p === t * t ? '' : ' = ' + T(v.ans.p + ':' + v.ans.q)) + ' ⇒ ' + T('p+q=' + v.ans.tex)}.`
+      `접선과 포물선의 차가 완전제곱식이므로 $x^2+(${pa.p}-a)x+${pa.q}=(x-${t})^2$. 계수를 비교하면 $a=${a}$이고 다른 접선의 기울기 $${a-4*t}$는 $a>0$에 맞지 않습니다. 따라서 $A(${t},${a*t})$, $H(${t},0)$, $B(0,${pa.q})$입니다.`,
+      v.type === 'diff'
+        ? `두 작은 삼각형에 공통 삼각형 OCH를 각각 더합니다. $S_1+[OCH]=[BOH]$, $S_2+[OCH]=[AOH]$이므로 차에서는 OCH가 사라집니다. 큰 두 삼각형의 밑변은 모두 OH입니다.`
+        : `OB와 AH는 모두 y축에 평행합니다. 따라서 엇각과 맞꼭지각으로 삼각형 BOC와 AHC가 닮고, 대응하는 길이의 비는 $OB:AH=${pa.q}:${a*t}=${t}:${a}$입니다. C의 좌표는 필요하지 않습니다.`,
+      v.type === 'diff'
+        ? `$S_1-S_2=[BOH]-[AOH]=\\dfrac12\\cdot${t}\\cdot(${pa.q}-${a*t})=${v.ans.tex}$. 공통 부분을 지워 C의 좌표와 두 넓이를 따로 계산하지 않았습니다.`
+        : `넓이의 비는 닮음비의 제곱이므로 $S_1:S_2=${t*t}:${a*a}=${v.ans.p}:${v.ans.q}$. 서로소 조건을 확인하면 $p+q=${v.ans.tex}$입니다.`
     ];
   }
   function n3Sol(which) {
@@ -404,6 +407,18 @@
     b.seg(A, H, { color: 'ink', width: 2.2 });
     b.poly([B, [0, 0], C], { fill: 'sky', fillAlpha: 0.26, color: null });
     b.poly([A, C, H], { fill: 'rose', fillAlpha: 0.3, color: null });
+    if (shown(tab, s, 2) && tab !== 'problem') {
+      if (V.type === 'diff') {
+        b.poly([[0, 0], C, H], { fill: 'amber', fillAlpha: 0.25, color: 'amber', width: 1.8, dash: [4, 4] });
+        b.text([(C[0] + t) / 3, C[1] / 3], '공통', { color: 'amber', size: 12, weight: 800 });
+        b.seg([0, 0], H, { color: 'amber', width: 3.4 });
+      } else {
+        b.seg([0, 0], B, { color: 'amber', width: 3.4 });
+        b.seg(H, A, { color: 'amber', width: 3.4 });
+        b.text([0, pa.q / 2], 'OB', { color: 'amber', size: 12, weight: 800, dx: -20 });
+        b.text([t, a * t / 2], 'AH ∥ OB', { color: 'amber', size: 12, weight: 800, dx: 50 });
+      }
+    }
     const cx1 = (0 + 0 + C[0]) / 3, cy1 = (pa.q + 0 + C[1]) / 3;
     b.text([cx1 - 0.05, cy1 + 0.1], 'S₁', { color: 'sky', size: 14, weight: 800 });
     b.text([t + 0.18, a * t * 0.45], 'S₂', { color: 'rose', size: 14, weight: 800, align: 'left' });
@@ -428,7 +443,7 @@
       ],
       status: n === 1 ? { tone: 'key', text: '접합니다 (D = 0) → a = 2, 접점 A(3, 6)' } : n === 2 ? { tone: 'ok', text: '서로 다른 두 점에서 만납니다 (D > 0)' } : { tone: 'info', text: '만나지 않습니다 (D < 0)' },
       formula: `• 직선 ${T('y=ax')}와 포물선 ${T('y=x^2-4x+9')}의 교점 ⟺ ${T('x^2-(a+4)x+9=0')}의 실근<br/>• 접한다 ⟺ ${T('D=(a+4)^2-36=0')} ⟺ 중근. 접점의 ${T('x')}좌표는 중근 ${T('x=\\dfrac{a+4}{2}')}.`,
-      rule: '직선이 포물선에 접하는 순간은 연립한 이차방정식의 판별식 D=0 (중근)이다. 직선을 돌리면 D의 부호가 + → 0 → − 로 바뀐다.',
+      rule: '직선이 포물선에 접하는 순간은 연립한 이차방정식의 판별식 D=0 (중근)이다. 직선을 돌리면 이 탐구의 양의 기울기 범위에서는 D의 부호가 − → 0 → + 로 바뀐다.',
       notes: `• ${T('D=0')}을 풀면 ${T('a')}가 두 개 나오지만 ${T('a\\gt0')}인 하나가 그림의 접선입니다(다른 하나는 ${T('a=-10')}).<br/>• 접선이 정해지면 접점 ${T('A')}가 정해져 넓이 문제로 이어집니다(문제 탭).`
     };
   }
@@ -566,7 +581,7 @@
         { label: '정수 해', value: A.ints.length ? A.ints.join(', ') + ` (${A.ints.length}개)` : '없음 (0개)', color: 'green', wide: true }
       ],
       status: { tone: 'info', text: `정수 해 ${A.ints.length}개` },
-      formula: `• 이차부등식 ${T('(x-p)(x-k)\\le0')}의 해 = 포물선이 ${T('x')}축 아래(또는 위)인 구간 = ${T('[p,\\ k]')}<br/>• 연립부등식의 해 = 각 부등식의 해 구간을 수직선에 그려 <strong>겹치는 부분</strong>`,
+      formula: `• 이차부등식 ${T('(x-p)(x-k)\\le0')}의 해 = 포물선이 ${T('x')}축 아래이거나 축 위에 놓이는 구간 = ${T('[p,\\ k]')}<br/>• 연립부등식의 해 = 각 부등식의 해 구간을 수직선에 그려 <strong>겹치는 부분</strong>`,
       rule: '정수 해의 개수는 공통 구간의 끝점이 정수를 지나는 순간 바뀐다. 끝점이 닫혀 있으면 그 정수를 포함하고, 열려 있으면 제외한다.',
       notes: `• 등호를 따질 때는 ${T('k')}에 경계 정수를 직접 넣어 개수를 세어 봅니다.<br/>• 「첫째 부등식」 단추로 ${T('\\le')}와 ${T('\\lt')}를 바꾸면 같은 ${T('k')}에서 정수 개수가 달라집니다.`
     };
@@ -611,7 +626,7 @@
           warning: `⚠️ 두 값을 구별하세요. ${T('t=' + (p - L))}: 구간의 오른쪽 끝이 꼭짓점에 닿는 순간, ${T('t=' + frTex(2 * p - L, 2))}: 구간의 가운데가 축에 오는 순간(최솟값은 이때).` };
       }
       const tc = frTex(2 * p - L, 2);
-      return { steps: `${T('M(t)-m(t)')}는 구간의 "높이 차"입니다. 포물선은 축에서 멀수록 가파르므로, 구간이 <strong>축에 대칭</strong>(구간의 가운데가 축 ${T('x=' + p)}에 올 때)일 때 차가 가장 작습니다. ${T('t=' + tc)}이고, 그때 양 끝의 높이가 같으므로 ${T('M-m=a\\left(\\dfrac L2\\right)^2=' + frTex(a * L * L, 4))}.`,
+      return { steps: `${T('M(t)-m(t)')}는 구간의 "높이 차"입니다. 축이 구간 밖이면 가까운 끝점에서 축까지의 거리를 u≥0이라 할 때 높이 차는 a{(u+L)²−u²}≥aL²입니다. 축이 구간 안이면 m=q이고 먼 끝점까지의 거리가 적어도 L/2이므로 M−m≥aL²/4입니다. 등호는 두 끝점이 축에서 같은 거리에 있을 때, 즉 <strong>구간이 축에 대칭</strong>일 때만 성립합니다. ${T('t=' + tc)}이고, 그때 양 끝의 높이가 같으므로 ${T('M-m=a\\left(\\dfrac L2\\right)^2=' + frTex(a * L * L, 4))}.`,
         highlight: `💡 구간 길이 ${T('L')}, 최고차항 계수 ${T('a')}이면 구간이 축에 대칭일 때 ${T('M-m=\\dfrac{aL^2}{4}')} 로 ${T('p,\\ q')}와 상관없이 정해집니다.` };
     };
   }
@@ -673,6 +688,12 @@
       return;
     }
     if (s.step >= 1) legend();
+    if (s.step >= 2) b.vline(P.p, { color: 'violet', width: 2, dash: [5, 5] });
+    if (s.step >= 3) {
+      b.seg([tC, P.q - 0.6], [P.p, P.q - 0.6], { color: 'green', width: 3 });
+      b.seg([P.p, P.q - 0.6], [tC + P.L, P.q - 0.6], { color: 'rose', width: 3 });
+      b.text([P.p, P.q - 1.4], '양쪽 거리 L/2', { color: 'violet', size: 13, weight: 800 });
+    }
     if (s.step >= 1) drawWindow(b, P, tA, { box, alpha: 0.55 });
     if (s.step >= 2) drawWindow(b, P, tB, { box, alpha: 0.55 });
     if (s.step >= 3) drawWindow(b, P, tC, { box, alpha: 1, bracket: true, bracketLabel: 'M−m = ' + fmtEnd(P.a * P.L * P.L / 4) });
@@ -725,9 +746,9 @@
         return { steps: `① ${T('S_1=\\dfrac12\\cdot k\\cdot\\dfrac{' + a + 'k}{' + b + '}')}, ${T('S_3=\\dfrac12\\cdot ' + a + '\\left(1-\\dfrac{k}{' + b + '}\\right)(' + b + '-k)')}, ${T('S_2=' + a + 'k-S_1')}, ${T('S_4=\\dfrac{' + a * (b + c) + '}{2}-' + a + 'k-S_3')}.<br/>
 ② ${T('S_1-S_3=' + a + 'k-' + frTex(a * b, 2))}, ${T('S_2-S_4=' + a + 'k-' + frTex(a * c, 2))}. 제곱해서 더하면 ${T(a * a)}${T('[(k-' + frTex(b, 2) + ')^2+(k-' + frTex(c, 2) + ')^2]')}.<br/>
 ③ ${T('(k-p)^2+(k-q)^2')}은 ${T('k=\\dfrac{p+q}{2}')}에서 최소 ${T('\\dfrac{(p-q)^2}{2}')}. ${T('p=' + frTex(b, 2) + ',\\ q=' + frTex(c, 2))} ⇒ 최솟값 ${T(a * a + '\\cdot' + frTex((b - c) * (b - c), 8) + '=' + v.ans.tex)}.`,
-          warning: `⚠️ ${T('0\\lt k\\lt ' + c)}에서 최소가 되는 ${T('k=' + frTex(b + c, 4))}가 범위 안에 있는지 확인합니다. 범위 밖이면 끝점에서 최소가 됩니다.` };
+          warning: `⚠️ ${T('0\\lt k\\lt ' + c)}에서 최소가 되는 ${T('k=' + frTex(b + c, 4))}가 범위 안에 있는지 확인합니다. 이 문제의 구간은 양 끝을 포함하지 않으므로 최적점이 범위 밖이면 끝점 값을 최솟값이라고 답할 수 없습니다.` };
       }
-      return { steps: `${T('S_1-S_3,\\ S_2-S_4')}가 모두 ${T('k')}의 <strong>일차식</strong>이므로 식을 길게 전개하지 않고, 각각 ${T('0')}이 되는 ${T('k=' + frTex(b, 2))}, ${T('k=' + frTex(c, 2))}의 중점 ${T('k=' + frTex(b + c, 4))}에서 최소입니다. 최솟값 = ${T(a * a + '\\cdot\\dfrac{\\left(' + frTex(b, 2) + '-' + frTex(c, 2) + '\\right)^2}{2}=' + v.ans.tex)}.`,
+      return { steps: `${T('S_1-S_3,\\ S_2-S_4')}가 모두 ${T('k')}의 <strong>기울기가 같은 일차식</strong>이므로 식을 길게 전개하지 않고, 각각 ${T('0')}이 되는 ${T('k=' + frTex(b, 2))}, ${T('k=' + frTex(c, 2))}의 중점 ${T('k=' + frTex(b + c, 4))}에서 최소입니다. 최솟값 = ${T(a * a + '\\cdot\\dfrac{\\left(' + frTex(b, 2) + '-' + frTex(c, 2) + '\\right)^2}{2}=' + v.ans.tex)}.`,
         highlight: `💡 넓이를 ${T('k')}의 식으로 쓰면 이차함수의 최소 문제로 바뀝니다. 움직이는 선분이 만드는 도형은 "움직이는 부분 + 남는 부분"으로 쪼개 일차·이차 관계를 먼저 찾습니다.` };
     };
   }
@@ -762,6 +783,12 @@
     dot(b, D, 'amber', co ? 'D(0, k)' : 'D', 9, -13, { r: 4.5 });
     dot(b, E, 'amber', co ? `E(${xE}, k)` : 'E', 10, 16, { r: 4.5 });
     dot(b, F, 'amber', co ? `F(${a}, k)` : 'F', 10, 3, { r: 4.5 });
+    if (!ex && tab === 'review' && s.step >= 2) {
+      b.seg([a + 0.6, c / 2], [a + 0.6, bb / 2], { color: 'violet', width: 2.5 });
+      b.point([a + 0.6, c / 2], { color: 'green', r: 4.5 });
+      b.point([a + 0.6, bb / 2], { color: 'rose', r: 4.5 });
+      if (s.step >= 3) b.point([a + 0.6, kStar], { color: 'violet', r: 5.5, label: '중점', dx: 12, dy: 0 });
+    }
     if (ex) {
       b.handle('K', [0, k], { color: 'amber', ariaLabel: '직선 y=k 의 높이',
         drag: (w) => { s.n6k = clamp(Math.round(w.y * 50) / 50, PARAMS.n6k.min, PARAMS.n6k.max); } });
@@ -788,7 +815,7 @@
       ],
       status: near(k, kStar, 0.011) ? { tone: 'key', text: `k = ${kT} 일 때 최소 ${fT}` } : null,
       formula: `• 사각형 ${T('OABC')}를 직선 ${T('y=k')}로 자르면 아래쪽 ${T('S_1+S_2=' + a + 'k')}(직사각형), 전체 넓이 ${T('S_1+S_2+S_3+S_4=' + frTex(a * (bb + c), 2))}.<br/>• ${T('S_1-S_3=' + a + '\\left(k-' + frTex(bb, 2) + '\\right)')}, ${T('S_2-S_4=' + a + '\\left(k-' + frTex(c, 2) + '\\right)')} 처럼 <strong>차는 ${T('k')}의 일차식</strong>이라 제곱의 합은 이차식입니다.`,
-      rule: '움직이는 직선이 만드는 넓이는 k에 대한 식으로 바꿔 쓴다. 두 넓이의 차가 일차식이면 그 제곱의 합은 두 일차식의 0점의 중점에서 최소다.',
+      rule: '움직이는 직선이 만드는 넓이는 k에 대한 식으로 바꿔 쓴다. 두 넓이의 차가 같은 기울기의 일차식이면, 제곱의 합은 두 0점에서 같은 거리에 있는 중점에서 최소다.',
       notes: `• 구간 ${T('0\\lt k\\lt ' + c)} 안에서만 직선이 ${T('OC,\\ OB,\\ AB')}를 모두 지납니다. 최소가 되는 ${T('k')}가 이 구간 안인지 확인하세요.<br/>• ${T('k')}를 움직이며 ${T('S_1-S_3')}이 ${T('0')}이 되는 순간과 ${T('S_2-S_4')}가 ${T('0')}이 되는 순간을 눈으로 확인해 보세요.`
     };
   }
@@ -807,7 +834,12 @@
 
   const tabs = { compact: true };
   // 상태 배지는 탐구 탭에서만 보입니다(정리·문제 탭 그림을 가리지 않게)
-  const exploreOnly = (fn) => (s, lab) => { const v = fn(s, lab); if (lab && lab.tab !== 'explore') delete v.status; return v; };
+  const exploreOnly = (fn) => (s, lab) => {
+    const v = fn(s, lab);
+    if (!lab || lab.tab === 'explore') return v;
+    // 단계별 chips만 현재 문제의 변형에서 계산된다. 나머지는 탐구 예제 전용 값이다.
+    return { chips: v.chips || [], readouts: [], status: null, summary: '', formula: '', rule: '', notes: '' };
+  };
   const baseScene = (o) => Object.assign({ tabs, reviewTab: true, notesTitle: '시험에서 자주 틀리는 부분' }, o);
   const preset = (group, label, key, val, color) => ({ group, label, color, set: { [key]: val }, ms: 700, on: (st) => Math.abs(st[key] - val) < 0.02 });
 

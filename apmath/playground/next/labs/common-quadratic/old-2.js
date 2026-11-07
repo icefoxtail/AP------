@@ -13,8 +13,17 @@
 
   /* ---------- 식 글자 ---------- */
   const lin = (a, b) => polyTex(0, a, b, 'k'); // a k + b
-  const halfT = (x) => (Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : (x < 0 ? '-' : '') + '\\dfrac{' + Math.abs(Math.round(2 * x)) + '}{2}');
-  const halfL = (x) => lbl(Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : String(x)); // 그림 글자
+  // 경계는 정수 계수의 일차식·이차식에서 얻은 정확한 유리수입니다.
+  // 1/2 단위로 반올림하면 11/4 같은 끝점과 합성부등식의 답이 달라집니다.
+  const exactT = (x) => {
+    if (!Number.isFinite(x)) return x < 0 ? '-\\infty' : '\\infty';
+    for (let d = 1; d <= 10000; d++) {
+      const n = Math.round(x * d);
+      if (Math.abs(x - n / d) < 1e-10) return frTex(n, d);
+    }
+    return '\\approx ' + x.toFixed(6);
+  };
+  const exactL = (x) => { for (let d = 1; d <= 10000; d++) { const n = Math.round(x * d); if (Math.abs(x - n / d) < 1e-10) return lbl(d === 1 ? n : n + '/' + d); } return '≈ ' + x.toFixed(4); };
   const kfac = (r) => (r === 0 ? 'k' : r > 0 ? '(k-' + r + ')' : '(k+' + -r + ')');
   // x²+(uk+v)x+wk+z
   const fam = (u, v, w, z) => {
@@ -28,9 +37,9 @@
   const dfac = (c) => `${c.u * c.u === 1 ? '' : c.u * c.u}${kfac(c.r1)}${kfac(c.r2)}`;
   const kInts = (pred) => { const o = []; for (let k = -60; k <= 60; k++) if (pred(k)) o.push(k); return o; };
   // 일차부등식 A k + B (>|<) 0 의 구간
-  const linIv = (A, B, gt) => { const r = -B / A; return (A > 0) === gt ? [[r, INF]] : [[-INF, r]]; };
+  const linIv = (A, B, gt) => { if (A === 0) return (gt ? B > 0 : B < 0) ? [[-INF, INF]] : []; const r = -B / A; return (A > 0) === gt ? [[r, INF]] : [[-INF, r]]; };
   const inter = (X, Y) => { const o = []; X.forEach((p) => Y.forEach((q) => { const a = Math.max(p[0], q[0]), b = Math.min(p[1], q[1]); if (a < b) o.push([a, b]); })); return o; };
-  const ivTex = (iv) => iv.map(([a, b]) => (a === -INF ? 'k\\lt ' + halfT(b) : b === INF ? 'k\\gt ' + halfT(a) : halfT(a) + '\\lt k\\lt ' + halfT(b))).join('\\ \\text{또는}\\ ');
+  const ivTex = (iv) => !iv.length ? '\\varnothing' : iv.map(([a, b]) => (a === -INF && b === INF ? 'k\\in\\mathbb{R}' : a === -INF ? 'k\\lt ' + exactT(b) : b === INF ? 'k\\gt ' + exactT(a) : exactT(a) + '\\lt k\\lt ' + exactT(b))).join('\\ \\text{또는}\\ ');
   const askOf = (S, ask) => (ask === 'C' ? S.length : ask === 'S' ? S.reduce((p, q) => p + q, 0) : ask === 'M' ? Math.max(...S) : Math.min(...S));
   const askName = { C: '개수', S: '합', M: '최댓값', m: '최솟값' };
   const cycle = (pool, asks) => pool.flatMap((c) => asks.map((ask) => ({ ...c, ask })));
@@ -118,11 +127,11 @@
     ans: (v) => String(v.val),
     steps: (v) => [
       `${T('x=' + v.p)}가 두 근 사이에 있다는 것은 포물선이 <strong>${T('x=' + v.p)}에서 ${T('x')}축 아래</strong>에 있다는 뜻입니다(그림에서 ${T('x=' + v.p)}의 점이 ${T('x')}축 아래). 그러면 ${T('x')}축과 반드시 두 점에서 만나므로 판별식은 따로 볼 필요가 없습니다.`,
-      `${T('f(' + v.p + ')=' + lin(v.A, v.B) + '\\lt0')} ⇒ ${T('k' + (v.dirGt ? '\\gt ' : '\\lt ') + halfT(v.kb))}.`,
+      `${T('f(' + v.p + ')=' + lin(v.A, v.B) + '\\lt0')} ⇒ ${T('k' + (v.dirGt ? '\\gt ' : '\\lt ') + exactT(v.kb))}.`,
       `이를 만족하는 정수 ${T('k')}의 ${v.dirGt ? '최솟값은 ' : '최댓값은 '}${T(v.val)}.`
     ],
     quick: (v) => ({
-      steps: `두 근 사이에 ${T(v.p)}가 있으면 ${T('x=' + v.p)}에서 그래프는 ${T('x')}축 <strong>아래</strong>입니다. 아래로 볼록한 포물선이 ${T('x')}축 아래의 점을 지나면 근이 두 개 있고 ${T(v.p)}는 그 사이입니다. 그래서 조건은 ${T('f(' + v.p + ')\\lt0')} 하나: ${T(lin(v.A, v.B) + '\\lt0')} ⇒ ${T('k' + (v.dirGt ? '\\gt ' : '\\lt ') + halfT(v.kb))}. 정수 ${T('k')}의 ${v.dirGt ? '최솟값' : '최댓값'} ${T(v.val)}.`,
+      steps: `두 근 사이에 ${T(v.p)}가 있으면 ${T('x=' + v.p)}에서 그래프는 ${T('x')}축 <strong>아래</strong>입니다. 아래로 볼록한 포물선이 ${T('x')}축 아래의 점을 지나면 근이 두 개 있고 ${T(v.p)}는 그 사이입니다. 그래서 조건은 ${T('f(' + v.p + ')\\lt0')} 하나: ${T(lin(v.A, v.B) + '\\lt0')} ⇒ ${T('k' + (v.dirGt ? '\\gt ' : '\\lt ') + exactT(v.kb))}. 정수 ${T('k')}의 ${v.dirGt ? '최솟값' : '최댓값'} ${T(v.val)}.`,
       highlight: `💡 서술형 문장: "이차항의 계수가 양수이므로 두 근 사이에 ${T(v.p)}가 있을 필요충분조건은 ${T('f(' + v.p + ')\\lt0')}이다."`
     }),
     std: (v) => ({
@@ -170,7 +179,7 @@
     }),
     std: (v) => ({
       steps: `두 근을 ${T('\\alpha,\\ \\beta')}라 놓고 ${T(v.p + '\\lt\\alpha\\lt\\beta\\lt ' + v.q)}를 ${T('(\\alpha-' + par(v.p) + ')(\\beta-' + par(v.p) + ')\\gt0')} 등의 근과 계수 관계로 옮겨 풉니다. 식이 길고 부등호 방향을 틀리기 쉽습니다.`,
-      warning: `⚠️ 축의 조건을 빠뜨리면 두 근이 구간의 양쪽 밖에 있는 경우를 거르지 못합니다.`
+      warning: `⚠️ 축의 조건을 빠뜨리면 두 근이 모두 구간의 한쪽 바깥에 있는 경우를 거르지 못합니다.`
     }),
     box: (v) => famBox(v, v.ks, [v.p, v.q], [famVal(v, v.ks, v.p), famVal(v, v.ks, v.q), 0]),
     draw: (b, s, v, c) => {
@@ -199,25 +208,27 @@
     const S = kInts((k) => famVal(c, k, c.p) * famVal(c, k, c.q) < 0);
     const Ap = c.u * c.p + c.w, Bp = c.p * c.p + c.v * c.p + c.z, Aq = c.u * c.q + c.w, Bq = c.q * c.q + c.v * c.q + c.z;
     const kp = -Bp / Ap, kq = -Bq / Aq;
-    return { ...c, key: 's19_' + i, S, Ap, Bp, Aq, Bq, kp, kq, lo: Math.min(kp, kq), hi: Math.max(kp, kq), ks: bestKs(c, S, [c.p, c.q], (k) => [famVal(c, k, c.p), famVal(c, k, c.q), 0]), val: c.ask === 'C' ? S.length : S.reduce((x, y) => x + y, 0) };
+    const doubles = droots(c).filter(Number.isInteger).map(k => ({ k, x: -(c.u * k + c.v) / 2 }));
+    return { ...c, key: 's19_' + i, S, Ap, Bp, Aq, Bq, kp, kq, doubles, lo: Math.min(kp, kq), hi: Math.max(kp, kq), ks: bestKs(c, S, [c.p, c.q], (k) => [famVal(c, k, c.p), famVal(c, k, c.q), 0]), val: c.ask === 'C' ? S.length : S.reduce((x, y) => x + y, 0) };
   }, sameKey);
+  const oneRootBoundaryNote = (v) => `끝점이 근인 두 경계는 모두 정수가 아닙니다. ${v.doubles.length ? '중근이 생기는 정수 k는 ' + v.doubles.map(d => T('k=' + d.k + ', x=' + d.x)).join(', ') + '이며 그 중근은 모두 주어진 열린구간 밖입니다.' : '판별식 D=0을 만드는 정수 k도 없습니다.'}`;
   add('sepOneRootInInterval', {
     fast: '핵심', vary: var19,
     tag: '25 제일고 기출 유형 · 2024학년도 3월 학평(서울) 유형 (구간에 오직 한 근)', time: '목표 시간: 60초',
     text: (v) => `${T('x')}에 대한 이차방정식 ${T(fam(v.u, v.v, v.w, v.z) + '=0')}이 구간 ${T('(' + v.p + ',\\ ' + v.q + ')')}에서 오직 한 개의 실근을 갖도록 하는 정수 ${T('k')}의 ${v.ask === 'C' ? '개수' : '합'}을 구하시오.`,
     ans: (v) => String(v.val),
     steps: (v) => [
-      `구간 ${T('(' + v.p + ',\\ ' + v.q + ')')}에서 포물선이 ${T('x')}축과 한 번만 만나려면 ${T('x=' + v.p)}와 ${T('x=' + v.q)}에서의 포물선의 높이가 <strong>서로 반대쪽(한쪽은 ${T('x')}축 위, 한쪽은 아래)</strong>이어야 합니다 ⇒ ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')}.`,
-      `${T('f(' + v.p + ')=' + lin(v.Ap, v.Bp) + '')}, ${T('f(' + v.q + ')=' + lin(v.Aq, v.Bq) + '')}이고 각각 0이 되는 ${T('k')}는 ${T(halfT(v.kp))}, ${T(halfT(v.kq))}. 두 값 사이에서 두 높이의 부호가 반대가 됩니다 ⇒ ${T(halfT(v.lo) + '\\lt k\\lt ' + halfT(v.hi))}.`,
-      `경계 ${T('k=' + halfT(v.lo))}, ${T('k=' + halfT(v.hi))}도 확인합니다(정수가 아니면 해당 없음). 정수 ${T('k=' + v.S.join(',\\ '))} ⇒ ${v.ask === 'C' ? '개수 ' : '합 '}${T(v.val)}.`
+      `구간 ${T('(' + v.p + ',\\ ' + v.q + ')')}에서 포물선이 ${T('x')}축을 정확히 한 번 가로지르는 경우에는 ${T('x=' + v.p)}와 ${T('x=' + v.q)}에서의 포물선의 높이가 <strong>서로 반대쪽(한쪽은 ${T('x')}축 위, 한쪽은 아래)</strong>이면 충분합니다 ⇒ ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')}.`,
+      `${T('f(' + v.p + ')=' + lin(v.Ap, v.Bp) + '')}, ${T('f(' + v.q + ')=' + lin(v.Aq, v.Bq) + '')}이고 각각 0이 되는 ${T('k')}는 ${T(exactT(v.kp))}, ${T(exactT(v.kq))}. 두 값 사이에서 두 높이의 부호가 반대가 됩니다 ⇒ ${T(exactT(v.lo) + '\\lt k\\lt ' + exactT(v.hi))}.`,
+      `${oneRootBoundaryNote(v)} 정수 ${T('k=' + v.S.join(',\\ '))} ⇒ ${v.ask === 'C' ? '개수 ' : '합 '}${T(v.val)}.`
     ],
     quick: (v) => ({
-      steps: `구간의 두 끝 ${T('x=' + v.p)}, ${T('x=' + v.q)}에서 높이가 반대쪽이면 그 사이에서 포물선이 ${T('x')}축을 정확히 한 번 지납니다. ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')} ⇒ ${T('(' + lin(v.Ap, v.Bp) + ')(' + lin(v.Aq, v.Bq) + ')\\lt0')} ⇒ ${T(halfT(v.lo) + '\\lt k\\lt ' + halfT(v.hi))}. 정수 ${T(v.S.join(',\\ '))}.`,
+      steps: `구간의 두 끝 ${T('x=' + v.p)}, ${T('x=' + v.q)}에서 높이가 반대쪽이면 그 사이에서 포물선이 ${T('x')}축을 정확히 한 번 지납니다. ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')} ⇒ ${T('(' + lin(v.Ap, v.Bp) + ')(' + lin(v.Aq, v.Bq) + ')\\lt0')} ⇒ ${T(exactT(v.lo) + '\\lt k\\lt ' + exactT(v.hi))}. ${oneRootBoundaryNote(v)} 정수 ${T(v.S.join(',\\ '))}.`,
       highlight: `💡 서술형 문장: "연속인 이차함수가 ${T('x=' + v.p)}와 ${T('x=' + v.q)}에서 부호가 다르면 사이에 근이 하나 있다."`
     }),
     std: (v) => ({
       steps: `${T('D\\ge0')}과 두 근의 위치(한 근만 구간 안)를 경우로 나누어 따져야 하고, 끝점이 근인 경우와 중근인 경우도 각각 확인해야 합니다.`,
-      warning: `⚠️ ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')}이면 충분하지만, 등호(끝점이 근)인 경우를 따로 확인하는 것을 잊지 마세요.`
+      warning: `⚠️ ${T('f(' + v.p + ')f(' + v.q + ')\\lt0')}이면 충분하지만, 끝점이 근인 경우와 구간 안의 중근도 따로 확인해야 필요충분조건이 됩니다.`
     }),
     box: (v) => famBox(v, v.ks, [v.p, v.q], [famVal(v, v.ks, v.p), famVal(v, v.ks, v.q), 0]),
     draw: (b, s, v, c) => {
@@ -258,7 +269,7 @@
     ans: (v) => String(v.val),
     steps: (v) => v.t === 'X' ? [
       `서로 다른 부호의 두 근은 포물선이 ${T('y')}축 왼쪽과 오른쪽에서 각각 ${T('x')}축과 만난다는 뜻입니다. 그러려면 ${T('x=0')}(${T('y')}축)에서 포물선이 ${T('x')}축 <strong>아래</strong>에 있어야 합니다.`,
-      `${T('f(0)=' + lin(v.w, v.z) + '\\lt0')} (두 근의 곱 ${T('\\lt0')}과 같은 조건). 이때 ${T('D')}는 자동으로 양수라 따로 보지 않습니다 ⇒ ${T('k' + (v.w > 0 ? '\\lt ' : '\\gt ') + halfT(-v.z / v.w))}.`,
+      `${T('f(0)=' + lin(v.w, v.z) + '\\lt0')} (두 근의 곱 ${T('\\lt0')}과 같은 조건). 이때 ${T('D')}는 자동으로 양수라 따로 보지 않습니다 ⇒ ${T('k' + (v.w > 0 ? '\\lt ' : '\\gt ') + exactT(-v.z / v.w))}.`,
       `정수 ${T('k')}의 ${v.lim === 'max' ? '최댓값' : '최솟값'}은 ${T(v.val)}.`
     ] : [
       `두 근이 모두 ${kind20[v.t]}이면 포물선은 ${T('x')}축과 두 점에서 만나고(${T('D\\gt0')}), 두 점이 모두 ${T('y')}축의 ${v.t === 'P' ? '오른쪽' : '왼쪽'}에 있습니다.`,
@@ -266,7 +277,7 @@
       `세 조건(${T('D\\gt0')}, 축, ${T('f(0)\\gt0')})을 모두 만족하는 정수는 ${T('k=' + v.S.join(',\\ '))} ⇒ ${T(v.val)}개.`
     ],
     quick: (v) => ({
-      steps: v.t === 'X' ? `서로 다른 부호의 근 ⇒ ${T('y')}축(${T('x=0')})에서 그래프가 ${T('x')}축 아래: ${T('f(0)\\lt0')} 하나. ${T(lin(v.w, v.z) + '\\lt0')} ⇒ ${T('k' + (v.w > 0 ? '\\lt ' : '\\gt ') + halfT(-v.z / v.w))}. 정수 ${T('k')}의 ${v.lim === 'max' ? '최댓값' : '최솟값'} ${T(v.val)}.`
+      steps: v.t === 'X' ? `서로 다른 부호의 근 ⇒ ${T('y')}축(${T('x=0')})에서 그래프가 ${T('x')}축 아래: ${T('f(0)\\lt0')} 하나. ${T(lin(v.w, v.z) + '\\lt0')} ⇒ ${T('k' + (v.w > 0 ? '\\lt ' : '\\gt ') + exactT(-v.z / v.w))}. 정수 ${T('k')}의 ${v.lim === 'max' ? '최댓값' : '최솟값'} ${T(v.val)}.`
         : `${T('y')}축에서 ${T('x')}축 위(${T('f(0)\\gt0')}), 축이 ${T('y')}축의 ${v.t === 'P' ? '오른쪽' : '왼쪽'}, ${T('x')}축과 두 점(${T('D\\gt0')}). 정수 ${T(v.S.join(',\\ '))}로 ${T(v.val)}개.`,
       highlight: `💡 서술형 문장: "두 근이 서로 다른 부호이면 두 근의 곱이 음수이므로 ${T('f(0)\\lt0')}이다. 두 근이 모두 ${v.t === 'P' ? '양수' : '음수'}이면 ${T('D\\gt0')}, 합 ${v.t === 'P' ? T('\\gt0') : T('\\lt0')}, 곱 ${T('\\gt0')}이다."`
     }),
@@ -462,14 +473,14 @@
     fast: '핵심', vary: var25,
     tag: '25 금당고 기출 유형 · 2021학년도 6월 학평(부산) 유형 (f(x)<0의 해로 f(mx+n)<0의 해 구하기)', time: '목표 시간: 40초',
     text: (v) => `이차함수 ${T('f(x)')}에 대하여 부등식 ${T('f(x)\\lt0')}의 해가 ${T(v.al + '\\lt x\\lt ' + v.be)}이다. 부등식 ${T('f(' + linTex(v.m, v.n) + ')\\lt0')}의 해가 ${T('\\gamma\\lt x\\lt\\delta')}일 때, ${v.ask === 'S' ? T('\\gamma+\\delta') : T('\\delta-\\gamma')}의 값을 구하시오.`,
-    ans: (v) => halfT(v.val),
+    ans: (v) => exactT(v.val),
     steps: (v) => [
       `${T('f(x)\\lt0')}의 해 ${T(v.al + '\\lt x\\lt ' + v.be)}는 그래프에서 ${T('x')}축 아래에 있는 부분(초록 구간)입니다.`,
-      `${T('y=f(' + linTex(v.m, v.n) + ')')}의 그래프는 ${T('f')}의 그래프를 가로로 ${T('\\dfrac{1}{' + Math.abs(v.m) + '}')}배 하고 옮긴 것입니다(금색 포물선). 이 그래프가 ${T('x')}축 아래에 있는 것은 ${T(v.al + '\\lt ' + linTex(v.m, v.n) + '\\lt ' + v.be)}일 때입니다.`,
-      `${v.m > 0 ? '' : '(음수를 곱하면 부등호 방향이 바뀌므로 작은 쪽과 큰 쪽을 바꿔 읽습니다) '}${T('\\gamma=' + halfT(v.ga) + ',\\ \\delta=' + halfT(v.de))}. ${v.ask === 'S' ? T('\\gamma+\\delta=' + halfT(v.ga + v.de)) : T('\\delta-\\gamma=' + halfT(v.de - v.ga))}.`
+      `${T('y=f(' + linTex(v.m, v.n) + ')')}의 그래프는 ${T('f')}의 그래프를 가로로 ${T('\\dfrac{1}{' + Math.abs(v.m) + '}')}배 하고${v.m < 0 ? ' y축에 대칭시킨 뒤' : ''} 옮긴 것입니다(금색 포물선). 이 그래프가 ${T('x')}축 아래에 있는 것은 ${T(v.al + '\\lt ' + linTex(v.m, v.n) + '\\lt ' + v.be)}일 때입니다.`,
+      `${v.m > 0 ? '' : '(음수를 곱하면 부등호 방향이 바뀌므로 작은 쪽과 큰 쪽을 바꿔 읽습니다) '}${T('\\gamma=' + exactT(v.ga) + ',\\ \\delta=' + exactT(v.de))}. ${v.ask === 'S' ? T('\\gamma+\\delta=' + exactT(v.ga + v.de)) : T('\\delta-\\gamma=' + exactT(v.de - v.ga))}.`
     ],
     quick: (v) => ({
-      steps: `${T('f(x)\\lt0')}이 되는 "${T('x')}축 아래 구간"의 가로 값이 ${T(v.al + '\\lt(\\ \\ )\\lt ' + v.be)}이므로 ( ) 자리에 ${T(linTex(v.m, v.n))}를 넣어 ${T(v.al + '\\lt ' + linTex(v.m, v.n) + '\\lt ' + v.be)}. 이를 풀면 ${T('\\gamma=' + halfT(v.ga))}, ${T('\\delta=' + halfT(v.de))}. 폭은 원래 폭 ${T(v.be - v.al)}의 ${T('\\dfrac{1}{' + Math.abs(v.m) + '}')}배인 ${T(halfT(v.de - v.ga))}.`,
+      steps: `${T('f(x)\\lt0')}이 되는 "${T('x')}축 아래 구간"의 가로 값이 ${T(v.al + '\\lt(\\ \\ )\\lt ' + v.be)}이므로 ( ) 자리에 ${T(linTex(v.m, v.n))}를 넣어 ${T(v.al + '\\lt ' + linTex(v.m, v.n) + '\\lt ' + v.be)}. 이를 풀면 ${T('\\gamma=' + exactT(v.ga))}, ${T('\\delta=' + exactT(v.de))}. 폭은 원래 폭 ${T(v.be - v.al)}의 ${T('\\dfrac{1}{' + Math.abs(v.m) + '}')}배인 ${T(exactT(v.de - v.ga))}.`,
       highlight: `💡 서술형 문장: "${T('f(x)\\lt0')}의 해가 ${T(v.al + '\\lt x\\lt ' + v.be)}이므로 ${T('f(' + linTex(v.m, v.n) + ')\\lt0')}은 ${T(v.al + '\\lt ' + linTex(v.m, v.n) + '\\lt ' + v.be)}와 같다."`
     }),
     std: (v) => ({
@@ -486,8 +497,8 @@
       if (c.st(2)) b.plot(v.g, { color: 'amber', width: 3.4 });
       if (c.st(3)) {
         b.seg([v.ga, 0], [v.de, 0], { color: 'rose', width: 5 });
-        dot(b, [v.ga, 0], 'rose', 'γ = ' + halfL(v.ga), 0, 40, { r: 5, align: 'center', size: 13 });
-        dot(b, [v.de, 0], 'rose', 'δ = ' + halfL(v.de), 0, 40, { r: 5, align: 'center', size: 13 });
+        dot(b, [v.ga, 0], 'rose', 'γ = ' + exactL(v.ga), 0, 40, { r: 5, align: 'center', size: 13 });
+        dot(b, [v.de, 0], 'rose', 'δ = ' + exactL(v.de), 0, 40, { r: 5, align: 'center', size: 13 });
       }
     }
   });
@@ -668,19 +679,19 @@
     return { ...c, key: 's30_' + i, phi, xv, lo, hi, S, A, B, para: (k) => (x) => x * x + c.b * x + k, val: S.length };
   });
   const bx30 = (v) => (v.b === 0 ? '' : v.b < 0 ? v.b + 'x' : '+' + v.b + 'x');
-  const loTex30 = (v) => halfT(v.lo), hiTex30 = (v) => (Math.abs(v.hi * 4 - Math.round(v.hi * 4)) < 1e-9 ? frTex(Math.round(v.hi * 4), 4) : String(v.hi));
+  const loTex30 = (v) => exactT(v.lo), hiTex30 = (v) => (Math.abs(v.hi * 4 - Math.round(v.hi * 4)) < 1e-9 ? frTex(Math.round(v.hi * 4), 4) : String(v.hi));
   add('trapParabolaMeetSegment', {
     fast: '핵심', vary: var30,
     tag: '26 매산고 기출 유형 · 2022학년도 6월 학평(부산) 유형 (포물선과 선분의 교점)', time: '목표 시간: 60초',
     text: (v) => `좌표평면 위의 두 점 ${T('A(' + v.A[0] + ',\\ ' + v.A[1] + ')')}, ${T('B(' + v.B[0] + ',\\ ' + v.B[1] + ')')}에 대하여 포물선 ${T('y=x^2' + bx30(v) + '+k')}가 선분 AB와 서로 다른 두 점에서 만나도록 하는 정수 ${T('k')}의 개수를 구하시오.`,
     ans: (v) => String(v.val),
     steps: (v) => [
-      `선분 AB는 직선 ${T('y=' + linTex(v.m, v.n))}의 ${T(v.A[0] + '\\le x\\le ' + v.B[0])}인 부분입니다. 그 위의 점이 포물선 위에 있을 조건 ${T('x^2' + bx30(v) + '+k=' + linTex(v.m, v.n))}은 ${T('k=-x^2' + (v.b - v.m === 0 ? '' : (-(v.b - v.m) < 0 ? '' : '+') + -(v.b - v.m) + 'x') + (v.n === 0 ? '' : sgn(v.n)))}. 포물선을 위아래로 옮기는 ${T('k')}를 <strong>선분 위 점의 높이</strong>로 읽는 방법입니다(그림의 두 장면).`,
-      `포물선을 아래에서 올리면 선분의 <strong>더 높은 끝점</strong>을 지날 때(초록 포물선) 두 점으로 만나기 시작하고(${T('k=' + loTex30(v))}), 포물선이 선분에 <strong>접하는 순간</strong>(분홍 포물선, 접점 ${T('x=' + halfT(v.xv))})에는 한 점으로 줄어듭니다(${T('k=' + hiTex30(v))}).`,
+      `선분 AB는 직선 ${T('y=' + linTex(v.m, v.n))}의 ${T(v.A[0] + '\\le x\\le ' + v.B[0])}인 부분입니다. 그 위의 점이 포물선 위에 있을 조건 ${T('x^2' + bx30(v) + '+k=' + linTex(v.m, v.n))}은 ${T('k=-x^2' + (v.b - v.m === 0 ? '' : (-(v.b - v.m) < 0 ? '' : '+') + -(v.b - v.m) + 'x') + (v.n === 0 ? '' : sgn(v.n)))}. 포물선 위의 점이 선분에 닿는 데 필요한 <strong>수직 이동량 ${T('k=\\varphi(x)')}</strong>을 읽는 방법입니다(그림의 두 장면).`,
+      `포물선을 아래에서 올리면 <strong>두 끝점에서 필요한 이동량 중 큰 값</strong>에 도달할 때(초록 포물선) 두 점으로 만나기 시작하고(${T('k=' + loTex30(v))}), 포물선이 선분에 <strong>접하는 순간</strong>(분홍 포물선, 접점 ${T('x=' + exactT(v.xv))})에는 한 점으로 줄어듭니다(${T('k=' + hiTex30(v))}).`,
       `서로 다른 두 점: ${T(loTex30(v) + '\\le k\\lt ' + hiTex30(v))} (시작 ${T('k=' + loTex30(v))}은 선분의 두 점을 지나므로 포함, 접하는 ${T('k=' + hiTex30(v))}는 한 점이라 제외). 정수 ${T(v.S.join(',\\ '))} ⇒ ${T(v.val)}개.`
     ],
     quick: (v) => ({
-      steps: `포물선과 선분의 교점이 두 개인 구간은 <strong>(선분의 두 끝점 중 위쪽 끝점을 지날 때) ≤ k < (선분에 접할 때)</strong>입니다. 끝점을 지날 때 ${T('k=' + loTex30(v))}, 접할 때 ${T('k=' + hiTex30(v))}. 정수 ${T(v.S.join(',\\ '))} ⇒ ${T(v.val)}개.`,
+      steps: `포물선과 선분의 교점이 두 개인 구간은 <strong>(두 끝점에서 구한 이동량 k의 큰 값) ≤ k < (선분에 접할 때)</strong>입니다. 끝점을 지날 때 ${T('k=' + loTex30(v))}, 접할 때 ${T('k=' + hiTex30(v))}. 정수 ${T(v.S.join(',\\ '))} ⇒ ${T(v.val)}개.`,
       warning: `⚠️ 끝점을 지나는 경우(포함)와 접하는 경우(제외)를 각각 그림으로 확인하세요. 한쪽만 맞추면 정수 ${T('k')}의 개수가 하나 어긋납니다.`
     }),
     std: (v) => ({
