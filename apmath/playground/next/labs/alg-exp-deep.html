@@ -1775,6 +1775,29 @@ ST[K('lineT')] = Math.max(0, Math.min(5.5, Math.round(mPos.y * 10) / 10));
     scenes: md.scenarios.map((_, j) => sceneOf(m, j))
   }));
 
+  /* 탐구 칠판은 조작 중인 모델을 따르고, 미입장 전체보기·정리·문제는 기존 은행을 보존합니다. */
+  function currentExploreSteps(m,s){
+    const p=pv(s,m),n=x=>Number(x.toFixed(4));
+    if(m===2){const P=Math.round(p.multP),sum=Math.round(p.modeSum)===1,c=sum?P+1:P-1,ms=[];for(let k=c;k<2*c;k++)if(!sum||k!==c)ms.push(k);const exponent=OV.fr(ms.reduce((a,b)=>a+b,0),c);return[
+      `가로축은 u=log₁₀x이며 탐구 범위는 1≤u<2입니다. 현재 p=${P}이고 ${sum?'초록 {u}와 보라 1−{pu}의 교점을 찾습니다.':'초록 {u}와 파랑 {pu}의 교점을 찾습니다.'} 소수부분의 윗끝1은 열린 점입니다.`,
+      sum?`소수부분의 합이1이므로 $(${P}+1)u=${c}u$가 정수여야 합니다. u=1에서는0+0≠1이므로 왼쪽 끝도 제외하고, 오른쪽 끝2는 원래 범위 밖입니다.`:`소수부분이 같으므로 $(${P}-1)u=${c}u$가 정수입니다. 왼쪽 끝 u=1은 포함하고 오른쪽 끝 u=2는 제외합니다.`,
+      `현재 교점의 u값은 $${ms.map(k=>OV.fr(k,c)).join(',\\ ')}$로 ${ms.length}개이며 합은 $${exponent}$입니다. x들을 직접 구해 곱하지 않고, 로그값의 합에서 곱 $10^{${exponent}}$을 얻습니다.`
+    ];}
+    if(m===3){const k=p.multK,d=Math.log2(k),lo=p.yCut1,hi=p.yCut2;return[
+      `현재 계수 k=${k}를 $2^{\\log_2 ${k}}$로 보면 y=k·2ˣ은 y=2ˣ을 왼쪽으로 log₂k만큼 옮긴 곡선입니다. 탐구의 두 높이 ${lo},${hi}는 모두 양수입니다.`,
+      `2단계의 노란 아래 단면과 빨간 위 단면을 비교합니다. 어느 높이 y에서도 x좌표가 log₂y−log₂k와 log₂y이므로 가로 간격은 $\\log_2 ${k}\\approx${n(d)}$로 같습니다.`,
+      `3단계의 띠 영역을 같은 길이의 가로 단면으로 보면 넓이는 $(${hi}-${lo})\\log_2 ${k}\\approx${n((hi-lo)*d)}$입니다. 한 높이만으로 길이를 구하는 문제에도 같은 간격 관계를 사용합니다.`
+    ];}
+    const x=p.xMid,d=p.stepD,y=2**x,y1=2**(x-d),y3=2**(x+d);return[
+      `현재 세 x좌표는 ${n(x-d)},${x},${n(x+d)}이고 공차는 d=${d}입니다. 수선의 발 사이 가로 간격이 같으면 지수곡선의 높이는 매번 $2^{${d}}$배가 됩니다.`,
+      '따라서 $y_2/y_1=y_3/y_2=2^d$이고 $y_2^2=y_1y_3$입니다. 2단계의 현 AC의 중점 높이는 산술평균이며, 곡선의 가운데 높이인 기하평균과 구별합니다.',
+      `현재 $B=(${x},2^{${x}})$의 높이는 약 ${n(y)}이고, 양끝 높이의 곱은 약 ${n(y1*y3)}입니다. 세 높이의 합은 $y_2(2^{-d}+1+2^d)\\approx${n(y1+y+y3)}$입니다. 현재 B가 고정 문제의 (2,4)라고 가정하지 않습니다.`
+    ];
+  }
+  for(const m of [2,3,5])for(const sc of groups[m].scenes){const fixed=sc.steps;
+    sc.steps=(s,lab)=>{const active=lab||window.lab;return active?.tab==='explore'&&active.scene?.id===sc.id?currentExploreSteps(m,s).map(stepText):fixed(s,lab);};
+  }
+
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'alg-exp-deep',
