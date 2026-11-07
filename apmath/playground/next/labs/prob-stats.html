@@ -30,7 +30,7 @@
 <script>
 /* ==========================================================================
    확률과 통계 · 통계 실험실 (AP Math Lab 2.0 새 실험실)
-   - 5개 장면: ① 이산확률변수 분포 막대(평균·분산·aX+b) ② 이항분포 → 정규곡선(정규 근사)
+   - 5개 묶음 · 7개 기본 장면: ① 이산확률변수 분포 막대(평균·분산·aX+b) ② 이항분포 → 정규곡선(정규 근사)
      ③ 정규분포(표준화 · 두 곡선의 대칭·교점 · 꺾은선 확률밀도함수) ④ 표본평균의 분포 시뮬레이션 ⑤ 신뢰구간
    - 모든 그래프는 "막대·곡선·구간 넓이"가 같은 가로·세로 눈금 위에 그려져 넓이 비교가 그대로 맞습니다
      (세로 단위가 확률·확률밀도라 board.aspect:'free'를 씁니다).
@@ -60,7 +60,7 @@ const PS = (() => {
   // 문제에 주는 표준정규분포표(소수 셋째 자리): P(0 ≤ Z ≤ z)
   const ZT = { 0.5: 0.191, 1: 0.341, 1.5: 0.433, 2: 0.477, 2.5: 0.494, 3: 0.499 };
   const ZK = [0.5, 1, 1.5, 2, 2.5, 3];
-  const T = (z) => ZT[Math.abs(z)] * (z < 0 ? -1 : 1);
+  const T = (z) => z === 0 ? 0 : ZT[Math.abs(z)] * (z < 0 ? -1 : 1);
   const r3 = (v) => Math.round(v * 1000) / 1000;
   // 이항분포
   const LF = [0];
@@ -246,7 +246,7 @@ const PS = (() => {
       const val = form === 'btw' ? T(z1) + T(z2) : 0.5 + T(z1);
       return { kind, n, sig, m, r, z1, z2, form, key, ans: Math.round(val * 1000) };
     }
-    return { kind: 'O1', d: 2, n: 3, a: 3, target: 12, s: 1, b: 2, cards: [1, 3, 5, 7, 9], mean: 5, var: 8, key: 'default', ans: 3 };
+    return { kind: 'O1', d: 2, n: 3, a: 3, target: 24, s: 1, b: 2, cards: [1, 3, 5, 7, 9], mean: 5, var: 8, key: 'default', ans: 3 };
   }
 
   /* ===== P. 신뢰구간 ===== */
@@ -424,7 +424,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     if (o.sigBracket) {
       const wy = c.Y(peak * 0.62);
-      bracketH(b, c, mu - sd, mu + sd, wy, 'rose');
+      bracketH(b, c, mu, mu + sd, wy, 'rose');
       if (o.sigLabel) b.text([c.X(mu + sd), wy], o.sigLabel, { size: 12.5, weight: 800, color: 'rose', align: 'left', dx: 7, baseline: 'middle' });
     }
     (o.marks || []).forEach((m) => {
@@ -444,8 +444,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!sc || !sc.vary) return;
     sc.vary.next();
     lab.s.revealed = false;
-    lab.setStep(1);
-    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.setStep(0);
+    try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
   // 표준정규분포표(문제에 주는 표)
@@ -461,6 +461,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const v0 = sc.view;
     sc.view = (s, lab) => {
       const v = v0(s, lab) || {};
+      if (lab.tab === 'explore') v.notes = '<b>현재 그림은 아래 조작값의 탐구 모형입니다.</b> 선택 문제의 조건과 단계별 그림은 「문제」·「정리」에서 함께 확인합니다.<br>' + (v.notes || sc.notes || '');
       return { formula: typeof sc.formula === 'function' ? sc.formula(s) : sc.formula, notes: sc.notes, ...v };
     };
     return sc;
@@ -567,7 +568,7 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'dist', title: '이산확률변수 분포 막대 · 평균과 분산', short: '분포 막대',
       aspect: 'free', tabs: { compact: true },
       question: '막대를 끌어 확률을 바꾸면 평균과 분산은 어떻게 움직일까? $Y=aX+b$로 바꾸면 막대는 어디로 가고 폭은 어떻게 될까?',
-      guide: (s) => '<b>노란 점</b>을 끌어 막대의 높이(확률)를 바꿔 보세요. 한 막대를 올리면 나머지가 줄어 <b>합은 늘 1</b>입니다. 아래 <b>▲</b>가 평균, <b>가로선</b>이 평균±표준편차(흩어진 폭)입니다.' + (s.kshowY ? ' 파란 막대는 $Y=aX+b$: 점선 화살표가 각 값이 옮겨 가는 길입니다.' : ''),
+      guide: (s) => '<b>노란 점</b>을 끌어 막대의 높이(확률)를 바꿔 보세요. 한 막대를 올리면 나머지가 줄어 <b>합은 늘 1</b>입니다. 아래 <b>중심점</b>이 평균, <b>가로선</b>이 평균±표준편차(흩어진 폭)입니다.' + (s.kshowY ? ' 파란 막대는 $Y=aX+b$: 점선 화살표가 각 값이 옮겨 가는 길입니다.' : ''),
       enter: (s) => { s.kp = KSHAPES.mid.slice(); s.ka = 2; s.kb = 1; s.kshowY = false; },
       controls: (s) => (s.kshowY ? ['ka', 'kb'] : []),
       presets: () => [
@@ -584,9 +585,9 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${kQuestion(varK.cur())}</div>`,
       problem: { tag: '2026학년도 수능 27번 · 2022학년도 9월 모평 29번 유형', time: '목표 시간: 60초', text: () => probHTML(kQuestion(varK.cur())), answer: () => tex(String(varK.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 분산은 a²배', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '평균에서의 거리가 |a|배', quickTag: '핵심 발상',
         standard: () => { const t = kSteps(varK.cur()); return { steps: `① ${t[0]}<br>② ${t[1]}<br>③ ${t[2]}`, warning: '분산에서 $b$(더하는 수)는 막대를 평행이동할 뿐 폭을 바꾸지 않으므로 무시하고, 곱하는 수는 <b>제곱</b>해서 곱합니다.' }; },
-        quick: () => ({ steps: '합이 1이라는 조건으로 모르는 확률을 먼저 정한 뒤, $V(X)=E(X^{2})-\\{E(X)\\}^{2}$를 구하고 $V(aX+b)=a^{2}V(X)$로 마무리합니다.', highlight: '평균은 $E(aX+b)=aE(X)+b$로 변하지만, 분산은 $a^{2}$배만 됩니다.' })
+        quick: () => ({ steps: '그림에서 각 막대와 평균이 함께 옮겨지므로 평균에서의 거리는 $Y-E(Y)=a(X-E(X))$입니다. 거리가 $|a|$배, 거리의 제곱이 $a^2$배이므로 $V(Y)=a^2V(X)$. Y의 분포표를 다시 만들 필요가 없습니다.', highlight: '$a<0$이면 순서가 뒤집혀도 거리의 제곱은 같습니다. $a=0$이면 모든 확률이 한 점 $b$로 모여 분산은 0입니다.' })
       },
       view: (s, lab) => {
         if (lab.tab !== 'explore') {
@@ -600,15 +601,15 @@ window.addEventListener('DOMContentLoaded', function () {
         const reads = [
           { label: '확률의 합', value: dp(sum, 2), color: 'green', note: '막대를 끌어도 항상 1' },
           { label: '평균 E(X)', value: dp(S.E, 2), color: 'amber', note: '막대의 무게중심' },
-          { label: '분산 V(X)', value: dp(S.V, 2), color: 'rose', note: `표준편차 σ = ${dp(S.sd, 2)}` }
+          { label: '분산 V(X)', value: dp(S.V, 2), color: 'rose', note: `표준편차 σ ≈ ${dp(S.sd, 2)}` }
         ];
         if (s.kshowY) reads.push(
-          { label: `평균 E(Y)`, value: dp(S.EY, 2), color: 'sky', note: `= ${s.ka}·${dp(S.E, 2)} + (${s.kb})` },
-          { label: `분산 V(Y)`, value: dp(S.VY, 2), color: 'sky', note: `= ${s.ka}²·${dp(S.V, 2)}  (σ ${dp(S.sdY, 2)})` });
+          { label: `평균 E(Y)`, value: dp(S.EY, 2), color: 'sky', note: `E(Y) = ${s.ka}E(X) + (${s.kb}) · 표시값은 근삿값` },
+          { label: `분산 V(Y)`, value: dp(S.VY, 2), color: 'sky', note: `V(Y) = ${s.ka}²V(X) · σ(Y) ≈ ${dp(S.sdY, 2)}` });
         const chips = s.kshowY ? [{ tex: `Y=${s.ka === 1 ? '' : s.ka === -1 ? '-' : s.ka}X${s.kb >= 0 ? '+' : ''}${s.kb}`, color: 'sky' }] : [];
-        return { chips, readouts: reads, status: { tone: 'info', text: s.kshowY ? 'b는 막대를 옮기고, a는 간격(폭)을 |a|배로 넓힙니다' : '막대 높이를 바꾸면 평균(▲)이 움직입니다' } };
+        return { chips, readouts: reads, status: { tone: 'info', text: s.kshowY ? (s.ka === 0 ? 'a=0: 모든 막대가 b에 합쳐져 확률 1, 분산 0' : '평균에서의 거리가 |a|배 → 분산은 a²배') : '막대 높이를 바꾸면 평균점이 움직입니다' } };
       },
-      formula: '<b>평균·분산</b> $E(X)=\\sum x_iP(X=x_i)$, $V(X)=E(X^{2})-\\{E(X)\\}^{2}$ — 막대 그림에서 평균은 막대가 균형을 잡는 <b>무게중심(▲)</b>, 표준편차는 평균에서 막대들이 퍼진 <b>폭</b>입니다.<br><b>aX+b</b> $E(aX+b)=aE(X)+b$, $V(aX+b)=a^{2}V(X)$, $\\sigma(aX+b)=|a|\\sigma(X)$ — 그림에서 $b$는 모든 막대를 옆으로 옮기고(폭 그대로), $a$는 막대 사이 간격을 $|a|$배로 늘립니다(막대 높이=확률은 그대로).',
+      formula: '<b>평균·분산</b> $E(X)=\\sum x_iP(X=x_i)$, $V(X)=E(X^{2})-\\{E(X)\\}^{2}$ — 막대 그림에서 평균은 막대가 균형을 잡는 <b>무게중심(중심점)</b>, 표준편차는 평균에서 막대들이 퍼진 <b>폭</b>입니다.<br><b>aX+b</b> $E(aX+b)=aE(X)+b$, $V(aX+b)=a^{2}V(X)$, $\\sigma(aX+b)=|a|\\sigma(X)$ — 그림에서 $b$는 모든 막대를 옆으로 옮기고(폭 그대로), $a$는 막대 사이 간격을 $|a|$배로 늘립니다($a\\ne0$이면 각 확률은 그대로). $a=0$에서는 모두 $b$에 합쳐져 확률 1, 분산 0이 됩니다.',
       notes: '분산은 평균에서 떨어진 정도라 <b>b를 더해도 변하지 않고</b>, a는 <b>제곱</b>되어 곱해집니다. $a$가 음수여도 $V(aX+b)=a^{2}V(X)\\ge 0$입니다. 확률의 합이 1인지부터 확인하세요.',
       vary: varK,
       draw: drawK
@@ -646,7 +647,7 @@ window.addEventListener('DOMContentLoaded', function () {
       areaUnder(b, c, f, lo, hi, { fill: 'rose', alpha: 0.22 });
       curve(b, c, f, { color: 'rose', width: 3, glow: true });
       if (s.lcorr) { vmark(b, c, lo, f(lo), { color: 'rose', solid: true, alpha: 0.9, width: 1.6 }); vmark(b, c, hi, f(hi), { color: 'rose', solid: true, alpha: 0.9, width: 1.6 }); }
-      bracketH(b, c, I.mu - I.sd, I.mu + I.sd, c.Y(peak * 0.5), 'green');
+      bracketH(b, c, I.mu, I.mu + I.sd, c.Y(peak * 0.5), 'green');
       b.text([c.X(I.mu + I.sd), c.Y(peak * 0.5)], 'σ', { size: 13, weight: 800, color: 'green', align: 'left', dx: 7, baseline: 'middle' });
     }
     vmark(b, c, I.mu, peak * 1.14, { color: 'amber' });
@@ -676,7 +677,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return [
       `한 번의 시행에서 성공할 확률 $p=\\dfrac{${V.t}}{6}\\times ${cb(V.m1, V.k1)}+\\dfrac{${6 - V.t}}{6}\\times ${cb(V.m2, V.k2)}=${ftex(p)}$.`,
       `$X\\sim \\mathrm{B}(${V.N},\\ ${ftex(p)})$이므로 $\\mathrm{E}(X)=${V.mu}$, $\\mathrm{V}(X)=${V.N}\\times ${ftex(p)}\\times ${ftex(q)}=${V.sig * V.sig}$, $\\sigma(X)=${V.sig}$. $N$이 크므로 $X$는 근사적으로 $\\mathrm{N}(${V.mu},\\ ${V.sig}^{2})$을 따른다.`,
-      `$Z=\\dfrac{X-${V.mu}}{${V.sig}}$로 표준화하면 $${fm.probTex}=${zt}$.`,
+      `$Z=\\dfrac{X-${V.mu}}{${V.sig}}$로 표준화하면 $${fm.probTex}\\approx ${zt}$.`,
       `표에서 $${zt}=${tv}=${(V.ans / 1000).toFixed(3)}$이므로 $k=${(V.ans / 1000).toFixed(3)}$, $1000k=${V.ans}$.`
     ];
   };
@@ -709,7 +710,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { group: 'n, p 고르기', label: 'n=150, p=0.1', apply: (s) => { s.ln = 150; s.lp = 0.1; }, on: (s) => s.ln === 150 && s.lp === 0.1 },
         { group: '구간 (z 단위)', label: 'μ±σ', color: 'amber', apply: (s) => { s.lz1 = -1; s.lz2 = 1; }, on: (s) => s.lz1 === -1 && s.lz2 === 1 },
         { group: '구간 (z 단위)', label: 'μ±2σ', color: 'amber', apply: (s) => { s.lz1 = -2; s.lz2 = 2; }, on: (s) => s.lz1 === -2 && s.lz2 === 2 },
-        { group: '구간 (z 단위)', label: 'X ≤ μ+σ', color: 'amber', apply: (s) => { s.lz1 = -4; s.lz2 = 1; }, on: (s) => s.lz1 === -4 && s.lz2 === 1 }
+        { group: '구간 (z 단위)', label: 'μ−4σ ~ μ+σ (범위 안)', color: 'amber', apply: (s) => { s.lz1 = -4; s.lz2 = 1; }, on: (s) => s.lz1 === -4 && s.lz2 === 1 }
       ],
       actions: [
         { id: 'curve', icon: 'spark', label: (s) => (s.lshow ? '정규곡선 끄기' : '정규곡선 켜기'), on: (s) => s.lshow, run: (s) => { s.lshow = !s.lshow; } },
@@ -719,9 +720,9 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${lQuestion(varL.cur())}</div>`,
       problem: { tag: '2026학년도 수능 29번 · 9월 모평 29번 유형', time: '목표 시간: 90초', text: () => probHTML(lQuestion(varL.cur())), answer: () => tex(String(varL.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 이항 → 정규 → 표준화', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '평균에서 몇 σ인지 읽기', quickTag: '핵심 발상',
         standard: () => { const t = lSteps(varL.cur()); return { steps: `① ${t[0]}<br>② ${t[1]}<br>③ ${t[2]}<br>④ ${t[3]}`, warning: '표준정규분포표는 $\\mathrm{P}(0\\le Z\\le z)$입니다. $\\mathrm{P}(Z\\le z)=0.5+\\mathrm{P}(0\\le Z\\le z)$, 구간이 0을 가로지르면 양쪽 표 값을 더합니다.' }; },
-        quick: () => ({ steps: '성공 확률 $p$를 먼저 구하고 $\\mu=np$, $\\sigma=\\sqrt{npq}$를 계산합니다. 구간의 끝은 $\\mu\\pm z\\sigma$ 꼴로 맞춰 읽습니다.', highlight: '문제에서 끝 값이 $\\mu\\pm0.5\\sigma,\\ \\pm\\sigma,\\ \\pm1.5\\sigma\\cdots$로 떨어지도록 설계되어 있습니다.' })
+        quick: () => ({ steps: '성공 확률 $p$를 먼저 구하고 $\\mu=np$, $\\sigma=\\sqrt{npq}$를 계산합니다. 구간의 끝은 $\\mu\\pm z\\sigma$ 꼴로 맞춰 읽습니다.', highlight: '평균을 빼고 표준편차로 나눈 거리가 $\\mu\\pm0.5\\sigma,\\ \\pm\\sigma,\\ \\pm1.5\\sigma\\cdots$이면 해당 표 값을 읽습니다. 이항확률과 정규곡선 넓이는 근사 관계입니다.' })
       },
       view: (s, lab) => {
         if (lab.tab !== 'explore') {
@@ -738,13 +739,13 @@ window.addEventListener('DOMContentLoaded', function () {
         const ok = I.n * I.p >= 5 && I.n * I.q >= 5;
         return {
           chips: [{ tex: `\\mathrm{B}(${I.n},\\ ${dp(I.p, 2)})\\ \\approx\\ \\mathrm{N}(${num(I.mu, 2)},\\ ${num(I.n * I.p * I.q, 2)})`, color: 'rose' }],
-          status: { tone: ok ? 'ok' : 'warn', text: ok ? 'np ≥ 5, nq ≥ 5 → 막대가 정규곡선과 잘 맞아요' : 'np 또는 nq가 5보다 작아 막대가 한쪽으로 치우쳐요' },
+          status: { tone: ok ? 'ok' : 'warn', text: ok ? 'np ≥ 5, nq ≥ 5: 근사의 출발 기준 · 실제 오차를 아래에서 비교하세요' : 'np 또는 nq < 5: 정규 근사의 오차가 클 수 있어요' },
           readouts: [
             { label: '평균 np', value: dp(I.mu, 2), color: 'amber' },
             { label: '표준편차 √(npq)', value: dp(I.sd, 3), color: 'green', note: `분산 npq = ${dp(I.n * I.p * I.q, 2)}` },
-            { label: `막대 합 P(${I.a} ≤ X ≤ ${I.b})`, value: dp(ex, 4), color: 'amber', note: '노란 막대의 높이(=밑변 1)의 합' },
-            { label: `곡선 넓이 (${I.a} ~ ${I.b})`, value: dp(ap, 4), color: 'rose', note: '보정 없이: 시험에서 쓰는 방식' },
-            { label: `곡선 넓이 (${I.a - 0.5} ~ ${I.b + 0.5})`, value: dp(ac, 4), color: 'rose', note: `막대의 양 끝 반 칸까지 포함 · 막대 합과의 차 ${dp(Math.abs(ac - ex), 4)}`, wide: true }
+            { label: `막대 합 P(${I.a} ≤ X ≤ ${I.b})`, value: '≈ ' + dp(ex, 4), color: 'amber', note: '노란 막대의 높이(=밑변 1)의 합' },
+            { label: `곡선 넓이 (${I.a} ~ ${I.b})`, value: '≈ ' + dp(ap, 4), color: 'rose', note: `보정 없이 · 막대 합과의 차 ≈ ${dp(Math.abs(ap - ex), 4)}` },
+            { label: `곡선 넓이 (${I.a - 0.5} ~ ${I.b + 0.5})`, value: '≈ ' + dp(ac, 4), color: 'rose', note: `막대의 양 끝 반 칸까지 포함 · 막대 합과의 차 ${dp(Math.abs(ac - ex), 4)}`, wide: true }
           ]
         };
       },
@@ -763,6 +764,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const m = s.sm, sd = s.ss, A = Math.min(s.sa, s.sb), B = Math.max(s.sa, s.sb);
     const ct = mkChart(BOX_TOP, [-8, 20, 0, 0.43]), cb = mkChart(BOX_BOT, [-4.5, 4.5, 0, 0.43]);
     const f = normPdf(m, sd), g = normPdf(0, 1), zA = (A - m) / sd, zB = (B - m) / sd;
+    axisY(b, ct, [0.1, 0.2, 0.3, 0.4].map((v) => ({ v, label: String(v) })), { name: '밀도 f', grid: false });
+    axisY(b, cb, [0.1, 0.2, 0.3, 0.4].map((v) => ({ v, label: String(v) })), { name: '밀도 φ', grid: false });
     const t1 = [], t2 = [];
     for (let x = -8; x <= 20; x += 4) t1.push({ v: x, label: M(String(x)) });
     for (let z = -4; z <= 4; z++) t2.push({ v: z, label: M(String(z)), color: 'violet' });
@@ -784,9 +787,9 @@ window.addEventListener('DOMContentLoaded', function () {
       sline(b, [cb.X(z), cb.Y(0.43)], [cb.X(z), cb.Y(0)], { color: 'amber', alpha: 0.4, width: 1.2, dash: [3, 4] });
     }
     b.text([ct.X(ct.dx0), ct.Y(0.43)], 'X ~ N(m, σ²)', { size: 12.5, weight: 800, color: 'sky', align: 'left', baseline: 'top', dx: 3, dy: 2 });
-    b.text([cb.X(cb.dx0), cb.Y(0.43)], 'Z=\\frac{X−m}{σ} ~ N(0, 1)', { size: 12.5, weight: 800, color: 'violet', align: 'left', baseline: 'top', dx: 3, dy: 2 });
+    b.text([cb.X(cb.dx0), cb.Y(0.43)], 'Z=(X−m)/σ ~ N(0, 1)', { size: 12.5, weight: 800, color: 'violet', align: 'left', baseline: 'top', dx: 3, dy: 2 });
     const P = Phi(zB) - Phi(zA);
-    b.text([cb.X((Math.max(zA, -4) + Math.min(zB, 4)) / 2), cb.Y(0.1)], `넓이 ${dp(P, 4)}`, { size: 13, weight: 800, color: 'amber' });
+    b.text([cb.X((Math.max(zA, -4) + Math.min(zB, 4)) / 2), cb.Y(0.1)], `확률 ≈ ${dp(P, 4)}`, { size: 13, weight: 800, color: 'amber' });
     const mk = (id, key, nm) => b.handle(id, [ct.X(s[key]), ct.Y(0)], { color: 'amber', r: 7, step: 0.5, label: nm, dx: 0, dy: -17, align: 'center', ariaLabel: `구간 끝 ${nm}`, drag: (w) => { s[key] = clamp(Math.round(ct.ix(w.x) * 2) / 2, -8, 20); } });
     mk('sa', 'sa', 'α'); mk('sb', 'sb', 'β');
   }
@@ -852,14 +855,14 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'std', title: '정규분포의 표준화', short: '표준화',
       aspect: 'free', tabs: { compact: true },
       question: '평균 $m$과 표준편차 $\\sigma$가 달라도, 구간을 $z=\\dfrac{x-m}{\\sigma}$로 바꾸면 왜 같은 넓이가 될까?',
-      guide: '<b>m</b>과 <b>σ</b>를 바꿔 위쪽 곡선의 모양을 보고, 노란 점 <b>α, β</b>(또는 막대)로 구간을 정해 보세요. 위 구간의 양 끝이 아래 <b>표준정규분포</b>의 $z$ 값으로 옮겨 가고, 두 노란 넓이는 <b>항상 같습니다</b>.',
+      guide: '<b>m</b>과 <b>σ</b>를 바꿔 위쪽 곡선의 모양을 보고, 노란 점 <b>α, β</b>(또는 막대)로 구간을 정해 보세요. 위 구간의 양 끝이 아래 <b>표준정규분포</b>의 $z$ 값으로 옮겨 가고, 두 노란 넓이는 <b>항상 같습니다</b>. 가로 길이가 σ로 나누어지는 만큼 밀도 높이는 σ배가 되어 확률이 보존됩니다.',
       enter: (s) => { s.sm = 5; s.ss = 2; s.sa = 3; s.sb = 8; },
       controls: ['sm', 'ss', 'sa', 'sb'],
       presets: () => [
         { group: '구간 고르기', label: 'm±σ', color: 'amber', apply: (s) => { s.sa = clamp(Math.round((s.sm - s.ss) * 2) / 2, -8, 20); s.sb = clamp(Math.round((s.sm + s.ss) * 2) / 2, -8, 20); } },
         { group: '구간 고르기', label: 'm±2σ', color: 'amber', apply: (s) => { s.sa = clamp(Math.round((s.sm - 2 * s.ss) * 2) / 2, -8, 20); s.sb = clamp(Math.round((s.sm + 2 * s.ss) * 2) / 2, -8, 20); } },
         { group: '구간 고르기', label: 'm ≤ X ≤ m+σ', color: 'amber', apply: (s) => { s.sa = s.sm; s.sb = clamp(Math.round((s.sm + s.ss) * 2) / 2, -8, 20); } },
-        { group: '구간 고르기', label: 'X ≤ m (왼쪽 절반)', color: 'amber', apply: (s) => { s.sa = -8; s.sb = s.sm; } },
+        { group: '구간 고르기', label: '−8 ≤ X ≤ m (보이는 왼쪽)', color: 'amber', apply: (s) => { s.sa = -8; s.sb = s.sm; } },
         { group: '같은 구간, 다른 곡선', label: 'σ=1', apply: (s) => { s.ss = 1; }, on: (s) => s.ss === 1 },
         { group: '같은 구간, 다른 곡선', label: 'σ=4', apply: (s) => { s.ss = 4; }, on: (s) => s.ss === 4 }
       ],
@@ -867,7 +870,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${m1Question(varM1.cur())}</div>`,
       problem: { tag: '2027학년도 9월 모평 27번 · 2024학년도 9월 모평 26번 유형', time: '목표 시간: 60초', text: () => probHTML(m1Question(varM1.cur())), answer: () => tex(String(varM1.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 끝 점이 mσ의 몇 배인지', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '평균을 기준으로 넓이 나누기', quickTag: '핵심 발상',
         standard: () => { const t = m1Steps(varM1.cur()); return { steps: t.map((x, i) => `${'①②③④'[i]} ${x}`).join('<br>'), warning: '표준화할 때 <b>σ가 아니라 σ²이 주어지면</b> 먼저 제곱근을 씌워 σ를 구합니다. 표는 $0$부터 $z$까지이므로 음수 $z$는 대칭을 이용해 양수로 바꿉니다.' }; },
         quick: () => ({ steps: '구간의 끝을 $m\\pm 0.5\\sigma,\\ \\pm\\sigma,\\ \\pm1.5\\sigma\\cdots$ 꼴로 읽으면 곧바로 표의 $z$를 얻습니다.', highlight: '$\\mathrm{P}(m\\le X\\le m+z\\sigma)=\\mathrm{P}(0\\le Z\\le z)$ 이고, 곡선이 $x=m$에 대칭이라 왼쪽 반도 똑같습니다.' })
       },
@@ -892,11 +895,11 @@ window.addEventListener('DOMContentLoaded', function () {
           readouts: [
             { label: '구간의 양 끝 (x)', value: `${num(A, 1)} ~ ${num(B, 1)}`, color: 'amber' },
             { label: '표준화한 양 끝 (z)', value: `${dp(zA, 2)} ~ ${dp(zB, 2)}`, color: 'violet', note: 'z = (x − m) ÷ σ' },
-            { label: 'P(α ≤ X ≤ β) = P(zα ≤ Z ≤ zβ)', value: dp(P, 4), color: 'amber', note: `m=${num(s.sm, 1)}, σ=${num(s.ss, 1)}이든 같은 z면 같은 값`, wide: true }
+            { label: `P(${num(A, 1)} ≤ X ≤ ${num(B, 1)}) (두 끝점 사이)`, value: '≈ ' + dp(P, 4), color: 'amber', note: `m=${num(s.sm, 1)}, σ=${num(s.ss, 1)}이든 같은 z면 같은 값`, wide: true }
           ]
         };
       },
-      formula: '<b>표준화</b> $X\\sim \\mathrm{N}(m,\\sigma^{2})$이면 $Z=\\dfrac{X-m}{\\sigma}\\sim \\mathrm{N}(0,1)$이고 $\\mathrm{P}(a\\le X\\le b)=\\mathrm{P}\\left(\\dfrac{a-m}{\\sigma}\\le Z\\le\\dfrac{b-m}{\\sigma}\\right)$. 그림에서 $x=m$이 $z=0$으로, $x=m+\\sigma$가 $z=1$로 옮겨 가는 <b>눈금 바꾸기</b>이고, 곡선 아래 넓이는 그대로입니다.<br><b>대칭</b> 곡선은 $x=m$에 대칭이라 $\\mathrm{P}(X\\le m)=0.5$, $\\mathrm{P}(m\\le X\\le m+c)=\\mathrm{P}(m-c\\le X\\le m)$입니다.',
+      formula: '<b>표준화</b> $X\\sim \\mathrm{N}(m,\\sigma^{2})$이면 $Z=\\dfrac{X-m}{\\sigma}\\sim \\mathrm{N}(0,1)$이고 $\\mathrm{P}(a\\le X\\le b)=\\mathrm{P}\\left(\\dfrac{a-m}{\\sigma}\\le Z\\le\\dfrac{b-m}{\\sigma}\\right)$. 그림에서 $x=m$이 $z=0$으로, $x=m+\\sigma$가 $z=1$로 옮겨 가는 <b>눈금 바꾸기</b>입니다. 가로 길이는 $1/\\sigma$배, 밀도 높이는 $\\sigma$배가 되므로 넓이(확률)는 그대로입니다.<br><b>대칭</b> 곡선은 $x=m$에 대칭이라 $\\mathrm{P}(X\\le m)=0.5$, $\\mathrm{P}(m\\le X\\le m+c)=\\mathrm{P}(m-c\\le X\\le m)$입니다.',
       notes: '표준정규분포표는 $\\mathrm{P}(0\\le Z\\le z)$입니다. 구간이 평균을 가로지르면 <b>더하고</b>, 같은 쪽에 있으면 <b>뺍니다</b>. $z$가 음수이면 대칭으로 양수 $z$의 값을 씁니다.',
       vary: varM1,
       draw: (b, s, v, lab) => (lab.tab === 'explore' ? drawM1Explore(b, s) : drawM1Problem(b, s, v, lab))
@@ -962,7 +965,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     const k = (V.ans / 1000).toFixed(3), z0 = V.z0;
     return [
-      `$\\sigma$가 같은 두 곡선은 서로 평행이동한 모양이라 교점의 $x$좌표는 두 평균의 한가운데이다. $a=\\dfrac{${V.m1}+${V.m2}}{2}=${V.a}$.`,
+      `$\\sigma$가 같은 두 곡선은 서로 평행이동한 모양이라 같은 높이에서 두 평균까지의 거리가 같아야 한다. 평균이 서로 다르므로 교점의 $x$좌표는 두 평균의 한가운데이다. $a=\\dfrac{${V.m1}+${V.m2}}{2}=${V.a}$.`,
       `$Y\\sim\\mathrm{N}(${V.m2},\\ ${V.sig}^{2})$이므로 $Z=\\dfrac{Y-${V.m2}}{${V.sig}}$로 표준화하면 $\\mathrm{P}(${V.m1}\\le Y\\le ${V.a})=\\mathrm{P}(-${2 * z0}\\le Z\\le -${z0})$.`,
       `$=\\mathrm{P}(${z0}\\le Z\\le ${2 * z0})=\\mathrm{P}(0\\le Z\\le ${2 * z0})-\\mathrm{P}(0\\le Z\\le ${z0})=${Pz(2 * z0)}-${Pz(z0)}=${k}$. $1000k=${V.ans}$.`
     ];
@@ -1025,7 +1028,7 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'sym', title: '두 정규곡선의 대칭 · 교점 · 평행이동', short: '두 곡선',
       aspect: 'free', tabs: { compact: true },
       question: '두 정규곡선이 만나거나 같은 모양일 때, 대칭과 평행이동으로 구간의 넓이를 어떻게 옮겨 붙일 수 있을까?',
-      guide: '<b>f(주황)</b>와 <b>g(파랑)</b>의 평균·표준편차를 바꿔 보세요(곡선 꼭대기의 점도 끌립니다). <b>σ가 같으면</b> 두 곡선은 평행이동한 모양이고 교점은 두 평균의 한가운데입니다. 초록 점 <b>a, b</b>로 구간을 정하고, <b>조각 옮겨 붙이기</b>를 눌러 보세요.',
+      guide: '<b>f(주황)</b>와 <b>g(파랑)</b>의 평균·표준편차를 바꿔 보세요(곡선 꼭대기의 점도 끌립니다). <b>σ가 같고 평균이 서로 다르면</b> 두 곡선은 평행이동한 모양이고 교점은 두 평균의 한가운데입니다. <b>평균과 σ가 모두 같으면 곡선 전체가 겹칩니다.</b> σ가 다르면 두 점에서 만납니다. 초록 점 <b>a, b</b>로 구간을 정하고, <b>조각 옮겨 붙이기</b>를 눌러 보세요.',
       enter: (s) => { s.tm1 = 20; s.tg1 = 5; s.tm2 = 10; s.tg2 = 5; s.ta = 15; s.tb = 20; s.tmove = true; },
       controls: ['tm1', 'tg1', 'tm2', 'tg2', 'ta', 'tb'],
       presets: () => [
@@ -1039,7 +1042,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${m2Question(varM2.cur())}</div>`,
       problem: { tag: '2025학년도 수능 29번 · 2022학년도 10월 학평 27번 유형', time: '목표 시간: 90초', text: () => probHTML(m2Question(varM2.cur())), answer: () => tex(String(varM2.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 조각 옮겨 붙이기', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '같은 폭의 곡선: 대칭과 이동', quickTag: '핵심 발상',
         standard: () => { const t = m2Steps(varM2.cur()); return { steps: t.map((x, i) => `${'①②③④'[i]} ${x}`).join('<br>'), warning: '$\\mathrm{P}(Y\\le x)=\\mathrm{P}(X\\le x+d)$는 $Y$의 그래프가 $X$의 그래프를 <b>왼쪽으로 $d$</b> 옮긴 것입니다(부호를 헷갈리지 않게 그림으로 확인).' }; },
         quick: () => ({ steps: '넓이를 직접 계산하지 말고, 평행이동한 곡선의 구간을 같은 곡선으로 옮기고 대칭축에 대해 뒤집어 한 덩어리로 이어 붙입니다.', highlight: '이어 붙인 구간이 평균에서 시작하면 곧바로 표준정규분포표의 $\\mathrm{P}(0\\le Z\\le z)$가 됩니다.' })
       },
@@ -1058,20 +1061,20 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         const same = s.tg1 === s.tg2, a = Math.min(s.ta, s.tb), e = Math.max(s.ta, s.tb);
         const pf = Phi((e - s.tm1) / s.tg1) - Phi((a - s.tm1) / s.tg1), pg = Phi((e - s.tm2) / s.tg2) - Phi((a - s.tm2) / s.tg2);
-        const xs = intersections(s.tm1, s.tg1, s.tm2, s.tg2).filter((x) => x >= 0 && x <= 40);
+        const xs = intersections(s.tm1, s.tg1, s.tm2, s.tg2);
         const d = s.tm1 - s.tm2;
         return {
           chips: [{ tex: `X\\sim \\mathrm{N}(${s.tm1},${s.tg1}^{2}),\\ Y\\sim \\mathrm{N}(${s.tm2},${s.tg2}^{2})`, color: 'ink' }],
           status: { tone: same ? 'ok' : 'info', text: same ? (d === 0 ? '두 곡선이 완전히 겹쳐요' : `σ가 같다 → g(x)=f(x${d >= 0 ? '+' : '−'}${Math.abs(d)}), 교점은 한가운데 x=${num((s.tm1 + s.tm2) / 2, 1)}`) : 'σ가 다르면 교점이 2개(꼭대기 높이가 다름)' },
           readouts: [
-            { label: '교점의 x좌표', value: xs.length ? xs.map((x) => dp(x, 2)).join(',  ') : '없음', color: 'ink', note: same ? '= $\\frac{m_1+m_2}{2}$' : '이차방정식의 두 근', wide: true },
+            { label: '교점의 x좌표', value: same && s.tm1 === s.tm2 ? '모든 실수 (동일한 곡선)' : xs.length ? xs.map((x) => '≈ ' + dp(x, 2)).join(',  ') : '없음', color: 'ink', note: same ? (s.tm1 === s.tm2 ? '교점이 한 개가 아니라 곡선 전체가 일치' : '$\\frac{m_1+m_2}{2}$ · 같은 높이 = 평균에서 같은 거리') : '전체 교점 좌표 · 0~40 밖의 점은 화면 밖' , wide: true },
             { label: `f의 넓이 P(${a} ≤ X ≤ ${e})`, value: dp(pf, 4), color: 'amber' },
             { label: `g의 넓이 P(${a} ≤ Y ≤ ${e})`, value: dp(pg, 4), color: 'sky' },
             { label: '두 넓이의 합', value: dp(pf + pg, 4), color: 'green', note: same && d !== 0 ? `= P(${num(2 * s.tm1 - e - d, 1)} ≤ X ≤ ${num(2 * s.tm1 - a - d, 1)}) + P(${a} ≤ X ≤ ${e}) …옮긴 조각` : '', wide: true }
           ]
         };
       },
-      formula: '<b>평행이동</b> $\\mathrm{P}(Y\\le x)=\\mathrm{P}(X\\le x+d)$이면 $Y$의 곡선은 $X$의 곡선을 왼쪽으로 $d$만큼 옮긴 것이고(σ 같음) $m_2=m_1-d$. <b>대칭</b> $\\mathrm{P}(X\\le x)=\\mathrm{P}(X\\ge c-x)$이면 곡선은 $x=\\dfrac{c}{2}$에 대칭, 즉 $m=\\dfrac{c}{2}$.<br><b>교점</b> σ가 같은 두 곡선은 한가운데 $x=\\dfrac{m_1+m_2}{2}$에서 한 번 만나고, σ가 다르면 두 번 만납니다. 그림에서 조각을 옮기고 뒤집으면 한 덩어리가 되어 표준정규분포표로 넘어갑니다.',
+      formula: '<b>평행이동</b> $\\mathrm{P}(Y\\le x)=\\mathrm{P}(X\\le x+d)$이면 $Y$의 곡선은 $X$의 곡선을 왼쪽으로 $d$만큼 옮긴 것이고(σ 같음) $m_2=m_1-d$. <b>대칭</b> $\\mathrm{P}(X\\le x)=\\mathrm{P}(X\\ge c-x)$이면 곡선은 $x=\\dfrac{c}{2}$에 대칭, 즉 $m=\\dfrac{c}{2}$.<br><b>교점</b> σ가 같고 평균이 서로 다른 두 곡선은 한가운데 $x=\\dfrac{m_1+m_2}{2}$에서 한 번 만나고, σ가 다르면 두 번 만납니다. 평균과 σ가 모두 같으면 곡선 전체가 겹칩니다. 그림에서 조각을 옮기고 뒤집으면 한 덩어리가 되어 표준정규분포표로 넘어갑니다.',
       notes: '$\\mathrm{P}(Y\\le x)=\\mathrm{P}(X\\le x+d)$에서 $d$의 부호(왼쪽/오른쪽)를 틀리기 쉽습니다. 곡선 위 같은 높이의 점을 비교해 보세요. 또 두 곡선의 σ가 <b>같다는 조건</b>이 있어야 평행이동으로 넓이를 옮길 수 있습니다.',
       vary: varM2,
       draw: (b, s, v, lab) => (lab.tab === 'explore' ? drawM2Explore(b, s) : drawM2Problem(b, s, v, lab))
@@ -1093,10 +1096,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const kLabel = (k) => (Math.abs(k - 1 / 3) < 1e-6 ? '1/3' : dp(k, 3));
   function drawM3Explore(b, s) {
     const { x1, x2, h } = m3Shape(s), L = 6, k = s.qk, mir = !!s.qmir;
-    const f = fPoly(L, x1, x2, h), c = mkChart(BOX1, [-0.6, 6.9, 0, 0.55]);
+    const f = fPoly(L, x1, x2, h), ymin = mir ? Math.min(0, k - h) * 1.2 : 0, c = mkChart(BOX1, [-0.6, 6.9, ymin, 0.55]);
     const xt = []; for (let x = 0; x <= 6; x++) xt.push({ v: x, label: String(x) });
-    axisY(b, c, [0.1, 0.2, 0.3, 0.4, 0.5].map((v) => ({ v, label: v.toFixed(1) })), { name: 'y' });
-    axisX(b, c, xt, { name: 'x' });
+    axisY(b, c, ticksIn(ymin, 0.55, 6).ticks, { name: 'y' });
+    axisX(b, c, xt, { name: 'x', at: 0 });
     const P = (x, y) => [c.X(x), c.Y(y)];
     b.poly([P(0, 0), P(x1, 0), P(x1, h)], { fill: 'amber', fillAlpha: 0.3, color: null });
     b.poly([P(x1, 0), P(x2, 0), P(x2, h), P(x1, h)], { fill: 'sky', fillAlpha: 0.3, color: null });
@@ -1118,8 +1121,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     b.path([P(0, 0), P(x1, h), P(x2, h), P(L, 0)], { color: 'amber', width: 3, glow: true });
     b.text(P(x1 * 0.5, h * 0.5), 'f', { size: 14, weight: 800, color: 'amber', dx: -12, dy: -6 });
-    b.handle('q1', P(x1, h), { color: 'amber', r: 7, step: 0.5, ariaLabel: '꺾인 점 (x₁, h): 좌우로 x₁, 위아래로 높이', drag: (w) => { s.qx1 = clamp(Math.round(c.ix(w.x) * 2) / 2, 0.5, x2 - 0.5); s.qh = clamp(Math.round(c.iy(w.y) * 100) / 100, 0.05, 0.5); } });
-    b.handle('q2', P(x2, h), { color: 'sky', r: 7, step: 0.5, ariaLabel: '꺾인 점 (x₂, h): 좌우로 x₂, 위아래로 높이', drag: (w) => { s.qx2 = clamp(Math.round(c.ix(w.x) * 2) / 2, x1 + 0.5, 5.5); s.qh = clamp(Math.round(c.iy(w.y) * 100) / 100, 0.05, 0.5); } });
+    b.handle('q1', P(x1, h), { color: 'amber', r: 7, step: 0.5, ariaLabel: '꺾인 점 (x₁, h): 좌우로 x₁, 위아래로 높이', drag: (w) => { s.qx1 = clamp(Math.round(c.ix(w.x) * 2) / 2, 0.5, Math.min(4.5, x2 - 0.5)); s.qh = clamp(Math.round(c.iy(w.y) * 100) / 100, 0.05, 0.5); } });
+    b.handle('q2', P(x2, h), { color: 'sky', r: 7, step: 0.5, ariaLabel: '꺾인 점 (x₂, h): 좌우로 x₂, 위아래로 높이', drag: (w) => { s.qx2 = clamp(Math.round(c.ix(w.x) * 2) / 2, Math.max(1.5, x1 + 0.5), 5.5); s.qh = clamp(Math.round(c.iy(w.y) * 100) / 100, 0.05, 0.5); } });
     if (mir) {
       const hx = (id, key, nm) => b.handle(id, [c.X(s[key]), c.Y(0)], { color: 'green', r: 6, step: 1, label: nm, dx: 0, dy: -16, align: 'center', ariaLabel: `구간 끝 ${nm}`, drag: (w) => { s[key] = clamp(Math.round(c.ix(w.x)), 0, 6); } });
       hx('qu', 'qu', 'u'); hx('qv', 'qv', 'v');
@@ -1188,17 +1191,17 @@ window.addEventListener('DOMContentLoaded', function () {
       presets: () => [
         { group: '모양 고르기', label: '(3, 5, 높이 ¼)', apply: (s) => { s.qx1 = 3; s.qx2 = 5; s.qh = 0.25; }, on: (s) => s.qx1 === 3 && s.qx2 === 5 && s.qh === 0.25 },
         { group: '모양 고르기', label: '사다리꼴 (2, 4)', apply: (s) => { s.qx1 = 2; s.qx2 = 4; s.qh = Math.round(100 * 2 / 8) / 100; } },
-        { group: '모양 고르기', label: '삼각형에 가깝게', apply: (s) => { s.qx1 = 3; s.qx2 = 3.5; s.qh = Math.round(100 * 2 / 6.5) / 100; } }
+        { group: '모양 고르기', label: '삼각형에 가깝게', apply: (s) => { s.qx1 = 3; s.qx2 = 3.5; s.qh = 2 / 6.5; } }
       ],
       actions: [
-        { id: 'norm', icon: 'target', label: () => '높이를 넓이 1에 맞추기', run: (s) => { const { x1, x2 } = m3Shape(s); s.qh = Math.round(100 * 2 / (6 + x2 - x1)) / 100; } },
+        { id: 'norm', icon: 'target', label: () => '높이를 넓이 1에 맞추기', run: (s) => { const { x1, x2 } = m3Shape(s); s.qh = 2 / (6 + x2 - x1); } },
         { id: 'mir', icon: 'layers', label: (s) => (s.qmir ? 'g = k − f 숨기기' : 'g = k − f 보기'), on: (s) => s.qmir, run: (s) => { s.qmir = !s.qmir; if (s.qmir) { s.qx1 = 3; s.qx2 = 5; s.qh = 0.25; s.qk = 1 / 3; } } }
       ],
       steps: () => m3Steps(varM3.cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${m3Question(varM3.cur())}</div>`,
       problem: { tag: '2022학년도 수능 29번 유형', time: '목표 시간: 120초', text: () => probHTML(m3Question(varM3.cur())), answer: () => tex(String(varM3.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 직사각형에서 빼기', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '직사각형의 남은 넓이', quickTag: '핵심 발상',
         standard: () => { const t = m3Steps(varM3.cur()); return { steps: t.map((x, i) => `${'①②③④'[i]} ${x}`).join('<br>'), warning: '$g$를 식으로 적분하지 말고, <b>직사각형(높이 $k$)에서 $f$ 아래 넓이를 뺀다</b>고 그림으로 생각하면 계산이 짧아집니다.' }; },
         quick: () => ({ steps: '$k=\\dfrac{2}{(\\text{구간 길이})}$를 먼저 구하고, 구하는 구간의 직사각형 넓이에서 $f$ 아래 넓이만 뺍니다.', highlight: '$f$ 아래 넓이는 사다리꼴·삼각형으로 쪼개 계산합니다.' })
       },
@@ -1209,19 +1212,19 @@ window.addEventListener('DOMContentLoaded', function () {
           if (st >= 4) chips.push({ tex: `\\mathrm{P}=${ftex(V.pk)},\\ p+q=${V.ans}`, color: 'green', answer: true });
           return { chips };
         }
-        const { x1, x2, h } = m3Shape(s), L = 6, A = (h * (L + x2 - x1)) / 2, ok = Math.abs(A - 1) < 0.006;
+        const { x1, x2, h } = m3Shape(s), L = 6, A = (h * (L + x2 - x1)) / 2, ok = Math.abs(A - 1) < 1e-9;
         const reads = [
           { label: '왼쪽 삼각형 ½·x₁·h', value: dp((x1 * h) / 2, 3), color: 'amber' },
           { label: '가운데 직사각형 (x₂−x₁)·h', value: dp((x2 - x1) * h, 3), color: 'sky' },
           { label: '오른쪽 삼각형 ½·(6−x₂)·h', value: dp(((L - x2) * h) / 2, 3), color: 'amber' },
           { label: '전체 넓이', value: dp(A, 3), color: ok ? 'green' : 'rose', note: ok ? '= 1 ✓ 확률밀도함수' : '1이 되도록 높이를 맞추세요', wide: true }
         ];
-        let status = { tone: ok ? 'ok' : 'warn', text: ok ? '넓이 = 1: 확률밀도함수가 됩니다' : `넓이 ${dp(A, 2)} ≠ 1 → 높이 h를 조절해요` };
+        let status = { tone: ok ? 'ok' : 'warn', text: ok ? '넓이 = 1: 확률밀도함수가 됩니다' : `넓이 ≈ ${dp(A, 4)}: 정확히 1이 되도록 높이 h를 조절해요` };
         if (s.qmir) {
-          const u = Math.min(s.qu, s.qv), e = Math.max(s.qu, s.qv), k = s.qk, Ag = L * k - A, fu = fInt(u, e, L, x1, x2, h), pg = k * (e - u) - fu, okg = Math.abs(Ag - 1) < 0.006 && k >= h - 1e-9;
-          reads.push({ label: 'g의 전체 넓이 6k − (f의 넓이)', value: dp(Ag, 3), color: okg ? 'green' : 'rose', note: k < h - 1e-9 ? 'k < h : g가 음수가 되는 곳이 있어요' : okg ? '= 1 ✓' : '1이 되는 k를 찾으세요 (k=1/3)' });
-          reads.push({ label: `P(${u} ≤ Y ≤ ${e}) = k(${e}−${u}) − ∫f`, value: dp(pg, 4), color: 'rose', note: `= ${dp(k * (e - u), 3)} − ${dp(fu, 3)}`, wide: true });
-          status = { tone: okg ? 'ok' : 'info', text: okg ? `k=${kLabel(k)}: g도 넓이 1인 확률밀도함수예요` : 'g의 넓이가 1이 되도록 k를 바꿔 보세요' };
+          const u = Math.min(s.qu, s.qv), e = Math.max(s.qu, s.qv), k = s.qk, Ag = L * k - A, fu = fInt(u, e, L, x1, x2, h), pg = k * (e - u) - fu, okg = Math.abs(Ag - 1) < 1e-9 && k >= h - 1e-9;
+          reads.push({ label: 'g의 전체 넓이 6k − (f의 넓이)', value: dp(Ag, 3), color: okg ? 'green' : 'rose', note: k < h - 1e-9 ? 'k < h : g가 음수가 되는 곳이 있어요' : okg ? '= 1 ✓' : `넓이 1에는 k=(1+넓이 f)/6 ≈ ${dp((1 + A) / 6, 4)} 필요` });
+          reads.push({ label: okg ? `P(${u} ≤ Y ≤ ${e}) = k(${e}−${u}) − ∫f` : `구간의 부호 있는 넓이 (${u}~${e}, 아직 확률이 아님)`, value: '≈ ' + dp(pg, 4), color: 'rose', note: `직사각형 넓이 − f의 넓이 · f와 g가 모두 밀도이면 k=1/3`, wide: true });
+          status = { tone: okg ? 'ok' : 'warn', text: okg ? (ok ? `f, g 모두 밀도함수 → 6k=2, k=1/3` : 'g는 밀도함수 · f의 넓이가 1이 아니므로 6k=2를 적용할 수 없음') : k < h - 1e-9 ? 'g가 음수인 부분이 있어 확률밀도함수가 아닙니다' : 'g의 전체 넓이가 1이 아니므로 현재 구간값은 확률이 아닙니다' };
         }
         return { readouts: reads, status, chips: s.qmir ? [{ tex: 'g(x)=k-f(x)', color: 'rose' }] : [] };
       },
@@ -1268,7 +1271,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // 위: 모집단(카드 한 장을 꺼낼 때의 분포)
     OVALS.forEach((x, i) => { if (pop[i] > 0) bar(b, cp, x - 0.4, x + 0.4, pop[i], { fill: 'violet', alpha: 0.4, color: 'violet' }); b.text([cp.X(x), cp.Y(pop[i])], pop[i] > 0 ? dp(pop[i], 2) : '0', { size: 12, weight: 800, color: 'violet', baseline: 'bottom', dy: -3 }); });
     axisX(b, cp, xt, { name: '카드의 수' , nameColor: 'violet' });
-    bracketH(b, cp, ps.mu - ps.sd, ps.mu + ps.sd, cp.Y(0.52), 'violet');
+    bracketH(b, cp, ps.mu, ps.mu + ps.sd, cp.Y(0.52), 'violet');
     b.point([cp.X(ps.mu), cp.Y(0.52)], { r: 4.5, color: 'violet' });
     b.text([cp.X(ps.mu + ps.sd), cp.Y(0.52)], 'σ', { size: 13, weight: 800, color: 'violet', align: 'left', dx: 7, baseline: 'middle' });
     b.text([cp.X(0), cp.Y(0.62)], '모집단: 한 장을 꺼낼 때', { size: 12.5, weight: 800, color: 'violet', align: 'left', baseline: 'top', dx: 3 });
@@ -1279,8 +1282,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const ft = normPdf(ps.mu, sdm);
     curve(b, cm, ft, { color: 'amber', width: 3, glow: true });
     vmark(b, cm, ps.mu, peak * 1.08, { color: 'amber', alpha: 0.7 });
-    bracketH(b, cm, ps.mu - sdm, ps.mu + sdm, cm.Y(peak * 0.6), 'amber');
-    b.text([cm.X(ps.mu + sdm), cm.Y(peak * 0.6)], '\\frac{σ}{√n}', { size: 13, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
+    bracketH(b, cm, ps.mu, ps.mu + sdm, cm.Y(peak * 0.6), 'amber');
+    b.text([cm.X(ps.mu + sdm), cm.Y(peak * 0.6)], 'σ/√n', { size: 13, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
     if (N) {
       const em = means.reduce((a, x) => a + x, 0) / N;
       vmark(b, cm, em, peak * 0.92, { color: 'green', alpha: 0.85, solid: true, width: 1.6 });
@@ -1291,7 +1294,7 @@ window.addEventListener('DOMContentLoaded', function () {
       b.point([cm.X(x), cm.Y(0)], { r: 5, color: 'rose' });
       b.text([cm.X(x), cm.Y(0)], `x̄=${dp(x, 2)}`, { size: 12.5, weight: 800, color: 'rose', baseline: 'bottom', dy: -9 });
     }
-    b.text([cm.X(10), cm.Y(ymax)], `표본평균 x̄의 분포 (n=${n}, ${N}번)`, { size: 12.5, weight: 800, color: 'sky', align: 'right', baseline: 'top', dx: -2, dy: 2 });
+    b.text([cm.X(10), cm.Y(ymax)], `표본평균 x̄ · 노랑은 정규 근사 (n=${n}, ${N}번)`, { size: 12.5, weight: 800, color: 'sky', align: 'right', baseline: 'top', dx: -2, dy: 2 });
     if (!N) b.text([cm.X(5), cm.Y(ymax * 0.35)], '아래 「추출」 버튼을 눌러 보세요', { size: 13, weight: 800, color: 'muted' });
   }
   // 문제
@@ -1312,11 +1315,21 @@ window.addEventListener('DOMContentLoaded', function () {
     const tv = V.form === 'btw' ? `${Pz(V.z1)}+${Pz(V.z2)}` : `0.5+${Pz(V.z1)}`;
     const zz = V.form === 'btw' ? `\\mathrm{P}(-${V.z1}\\le Z\\le ${V.z2})` : V.form === 'le' ? `\\mathrm{P}(Z\\le ${V.z1})` : `\\mathrm{P}(Z\\ge -${V.z1})`;
     return [
-      `$\\overline{X}$는 $\\mathrm{N}\\left(${V.m},\\ \\dfrac{${V.sig}^{2}}{${V.n}}\\right)$을 따른다. 표준편차 $\\dfrac{\\sigma}{\\sqrt{n}}=\\dfrac{${V.sig}}{${Math.sqrt(V.n)}}=${num(V.r, 3)}$.`,
-      `$Z=\\dfrac{\\overline{X}-${V.m}}{${num(V.r, 3)}}$로 표준화하면 $${oProbTex(V)}=${zz}$.`,
+      `$\\overline{X}$는 $\\mathrm{N}\\left(${V.m},\\ \\dfrac{${V.sig}^{2}}{${V.n}}\\right)$을 따른다. 표준편차 $\\dfrac{\\sigma}{\\sqrt{n}}=\\dfrac{${V.sig}}{${Math.sqrt(V.n)}}=${ftex(F(V.sig, Math.sqrt(V.n)))}$.`,
+      `$Z=\\dfrac{\\overline{X}-${V.m}}{${ftex(F(V.sig, Math.sqrt(V.n)))}}$로 표준화하면 $${oProbTex(V)}=${zz}$.`,
       `표에서 $${zz}=${tv}=${(V.ans / 1000).toFixed(3)}$이므로 $1000k=${V.ans}$.`
     ];
   };
+  function cardMeanDistribution(cards, n) {
+    let counts = [1];
+    for (let t = 0; t < n; t++) {
+      const next = Array(counts.length + 4).fill(0);
+      counts.forEach((v, sum) => { for (let j = 0; j < 5; j++) next[sum + j] += v; });
+      counts = next;
+    }
+    const d = cards[1] - cards[0], total = Math.pow(5, n);
+    return counts.map((count, sum) => ({ x: cards[0] + d * sum / n, p: count / total, count, total }));
+  }
   function drawOProblem(b, s, v, lab) {
     const V = varO.cur(), st = stepOf(lab, s);
     if (V.kind === 'O1') {
@@ -1327,9 +1340,10 @@ window.addEventListener('DOMContentLoaded', function () {
       b.text([cp.X(lo), cp.Y(0.62)], `카드 5장 · ${V.n}번 꺼내 평균 x̄`, { size: 12.5, weight: 800, color: 'violet', align: 'left', baseline: 'top', dx: 3 });
       if (st >= 1) {
         vmark(b, cp, V.mean, 0.42, { color: 'amber', alpha: 0.8 });
-        bracketH(b, cp, V.mean - sd, V.mean + sd, cp.Y(0.36), 'violet');
-        b.text([cp.X(V.mean + sd), cp.Y(0.36)], `σ=${num(sd, 2)}`, { size: 12.5, weight: 800, color: 'violet', align: 'left', dx: 7, baseline: 'middle' });
+        bracketH(b, cp, V.mean, V.mean + sd, cp.Y(0.36), 'violet');
+        b.text([cp.X(V.mean + sd), cp.Y(0.36)], `σ ≈ ${num(sd, 2)}`, { size: 12.5, weight: 800, color: 'violet', align: 'left', dx: 7, baseline: 'middle' });
         b.text([cp.X(V.mean), cp.Y(0.42)], `m=${V.mean}`, { size: 12.5, weight: 800, color: 'amber', baseline: 'bottom', dy: -3 });
+        placeRow(b, V.cards.map((x, i) => ({ p: [cp.X(x), cp.Y(0)], str: ['−2d', '−d', '0', 'd', '2d'][i], color: 'amber', dy: 25 })));
       }
       if (st < 2) {
         const cm0 = mkChart(BOX_MEAN, [lo, hi, 0, 1]);
@@ -1337,12 +1351,14 @@ window.addEventListener('DOMContentLoaded', function () {
         b.text([cm0.X(lo), cm0.Y(1)], `표본평균 X̄ = ${V.n}개 수의 평균 (분포는?)`, { size: 12.5, weight: 800, color: 'sky', align: 'left', baseline: 'top', dx: 3 });
       }
       if (st >= 2) {
-        const peak = 1 / (sdm * SQ2PI), cm = mkChart(BOX_MEAN, [lo, hi, 0, peak * 1.3]);
-        axisX(b, cm, [{ v: V.mean, label: String(V.mean), color: 'amber' }], { name: 'x̄', nameColor: 'sky' });
-        curve(b, cm, normPdf(V.mean, sdm), { color: 'sky', width: 3, glow: true });
-        bracketH(b, cm, V.mean - sdm, V.mean + sdm, cm.Y(peak * 0.6), 'amber');
-        b.text([cm.X(V.mean + sdm), cm.Y(peak * 0.6)], `\\frac{σ}{√${V.n}}`, { size: 12.5, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
-        b.text([cm.X(lo), cm.Y(peak * 1.3)], '표본평균 X̄의 분포', { size: 12.5, weight: 800, color: 'sky', align: 'left', baseline: 'top', dx: 3 });
+        const pmf = cardMeanDistribution(V.cards, V.n), peak = Math.max(...pmf.map((q) => q.p));
+        const cm = mkChart(BOX_MEAN, [lo, hi, 0, peak * 1.5]), half = V.d / V.n * 0.42;
+        axisX(b, cm, V.cards.map((x) => ({ v: x, label: String(x), color: x === V.mean ? 'amber' : 'muted' })), { name: 'x̄', nameColor: 'sky' });
+        pmf.forEach((q) => bar(b, cm, q.x - half, q.x + half, q.p, { fill: 'sky', alpha: 0.5, color: 'sky' }));
+        vmark(b, cm, V.mean, peak * 1.15, { color: 'amber' });
+        bracketH(b, cm, V.mean, V.mean + sdm, cm.Y(peak * 1.16), 'amber');
+        b.text([cm.X(V.mean + sdm), cm.Y(peak * 1.16)], `σ/√${V.n}`, { size: 12.5, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
+        b.text([cm.X(lo), cm.Y(peak * 1.5)], '표본평균 X̄ · 정확한 이산분포 (막대 높이 = 확률)', { size: 12, weight: 800, color: 'sky', align: 'left', baseline: 'top', dx: 3 });
       }
       return;
     }
@@ -1362,10 +1378,10 @@ window.addEventListener('DOMContentLoaded', function () {
     axisX(b, cm, ticks, { name: 'x̄', nameColor: 'sky' });
     b.text([cm.X(lo), cm.Y(pm * 1.28)], `표본평균 X̄ (n=${V.n})`, { size: 12.5, weight: 800, color: 'sky', align: 'left', baseline: 'top', dx: 3 });
     if (st >= 1) {
-      bracketH(b, cp, V.m - sd, V.m + sd, cp.Y(pk * 0.62), 'violet');
+      bracketH(b, cp, V.m, V.m + sd, cp.Y(pk * 0.62), 'violet');
       b.text([cp.X(V.m + sd), cp.Y(pk * 0.62)], `σ=${sd}`, { size: 12.5, weight: 800, color: 'violet', align: 'left', dx: 7, baseline: 'middle' });
-      bracketH(b, cm, V.m - r, V.m + r, cm.Y(pm * 0.62), 'amber');
-      b.text([cm.X(V.m + r), cm.Y(pm * 0.62)], `\\frac{σ}{√n}=${num(r, 3)}`, { size: 12.5, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
+      bracketH(b, cm, V.m, V.m + r, cm.Y(pm * 0.62), 'amber');
+      b.text([cm.X(V.m + r), cm.Y(pm * 0.62)], `σ/√n = ${fracLab(V.sig, Math.sqrt(V.n))}`, { size: 12.5, weight: 800, color: 'amber', align: 'left', dx: 7, baseline: 'middle' });
     }
     if (st >= 2) { const y0 = cm.Y(0); placeRow(b, [0, 1, -1, 2, -2, 3, -3].map((z) => ({ p: [cm.X(V.m + z * r), y0], str: String(z).replace('-', '−'), color: 'violet', dy: 26 }))); b.text([cm.X(lo), y0], 'z', { size: 12.5, weight: 800, color: 'violet', align: 'left', dx: 2, dy: 26, baseline: 'top' }); }
     if (st >= 3) b.text([cm.X((Math.max(a0, lo) + Math.min(a1, hi)) / 2), cm.Y(pm * 0.2)], (V.ans / 1000).toFixed(3), { size: 14, weight: 800, color: 'ink' });
@@ -1375,7 +1391,7 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'mean', title: '표본평균의 분포 시뮬레이션', short: '표본평균',
       aspect: 'free', tabs: { compact: true },
       question: '표본 크기 $n$을 키우며 표본평균을 수백 번 모으면, 그 분포는 모평균 주위에서 얼마나 좁아질까? 폭이 정말 $\\dfrac{\\sigma}{\\sqrt{n}}$일까?',
-      guide: '위 막대는 <b>모집단</b>(카드 한 장), 아래 막대는 <b>표본평균 x̄</b>를 모은 기록입니다. <b>「×100 추출」</b>을 눌러 쌓고, <b>n을 4, 16, 64로</b> 키워 보세요. 아래 노란 곡선 $\\mathrm{N}\\left(m,\\ \\dfrac{\\sigma^{2}}{n}\\right)$이 막대에 겹치고, 노란 가로선 <b>$\\frac{σ}{\\sqrt{n}}$</b>이 위쪽 보라 가로선 <b>σ</b>보다 $\\dfrac{1}{\\sqrt{n}}$배 짧아집니다.',
+      guide: '위 막대는 <b>모집단</b>(카드 한 장), 아래 막대는 <b>표본평균 x̄</b>를 모은 기록입니다. <b>「×100 추출」</b>을 눌러 쌓고, <b>n을 4, 16, 64로</b> 키워 보세요. 아래 노란 곡선은 정규 <b>근사</b> $\\mathrm{N}\\left(m,\\ \\dfrac{\\sigma^{2}}{n}\\right)$이 막대에 겹치고, 노란 가로선 <b>$\\frac{σ}{\\sqrt{n}}$</b>이 위쪽 보라 가로선 <b>σ</b>보다 $\\dfrac{1}{\\sqrt{n}}$배 짧아집니다.',
       enter: (s) => { s.on = 4; s.opop = 'uni'; oReset(s); },
       controls: ['on'],
       presets: () => [
@@ -1397,9 +1413,13 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${oQuestion(varO.cur())}</div>`,
       problem: { tag: () => (varO.cur().kind === 'O1' ? '2025학년도 수능 27번 유형' : '2025학년도 9월 모평 26번 · 2022학년도 9월 모평 27번 유형'), time: '목표 시간: 60초', text: () => probHTML(oQuestion(varO.cur())), answer: () => tex(String(varO.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · $\\frac{σ}{\\sqrt{n}}$', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '폭의 비로 계산하기 · $\\frac{σ}{\\sqrt{n}}$', quickTag: '핵심 발상',
         standard: () => { const t = oSteps(varO.cur()); return { steps: t.map((x, i) => `${'①②③'[i]} ${x}`).join('<br>'), warning: '표본평균의 표준편차는 $\\dfrac{\\sigma}{\\sqrt{n}}$입니다. $n$번 뽑는다고 모집단의 $\\sigma$를 그대로 쓰면 안 됩니다.' }; },
-        quick: () => ({ steps: '모평균·모표준편차를 구한 뒤 $\\overline{X}$의 평균은 $m$, 분산은 $\\dfrac{\\sigma^{2}}{n}$로 바꿔서 표준화나 $\\mathrm{V}(a\\overline{X}+b)=a^{2}\\mathrm{V}(\\overline{X})$를 씁니다.', highlight: '$\\overline{X}$의 분포는 모집단 모양과 상관없이 $n$이 크면 종 모양이 됩니다.' })
+        quick: () => {
+          const V = varO.cur();
+          if (V.kind === 'O1') return { steps: `카드가 가운데 ${V.mean}을 기준으로 대칭입니다. 편차는 $-2d,-d,0,d,2d$이므로 $m=${V.mean}$, $\\sigma^2=(4+1+0+1+4)d^2/5=2d^2=${V.var}$. 카드 숫자를 제곱할 필요 없이 $V(a\\overline X+b)=a^2\\sigma^2/n$으로 바로 갑니다.`, highlight: '그림의 좌우 막대를 짝지으면 평균이 보입니다. 복원추출한 표본은 독립이므로 평균의 분산은 모분산/n입니다.' };
+          return { steps: '정규 모집단의 평균은 모든 n에서 정확히 정규분포입니다. 그림의 중심은 그대로, 표준편차는 σ/√n으로 줄어드므로 그 폭으로 끝점을 표준화합니다.', highlight: '일반 모집단을 정규분포로 근사하려면 독립·동일분포, 유한한 분산과 충분히 큰 표본이 필요합니다.' };
+        }
       },
       view: (s, lab) => {
         if (lab.tab !== 'explore') {
@@ -1409,7 +1429,7 @@ window.addEventListener('DOMContentLoaded', function () {
             if (st >= 2) chips.push({ tex: `\\mathrm{V}(\\overline{X})=\\dfrac{${V.var}}{${V.n}}`, color: 'amber', answer: true });
             if (st >= 3) chips.push({ tex: `a=${V.a}`, color: 'green', answer: true });
           } else {
-            if (st >= 1) chips.push({ tex: `\\dfrac{\\sigma}{\\sqrt{n}}=${num(V.r, 3)}`, color: 'amber', answer: true });
+            if (st >= 1) chips.push({ tex: `\\dfrac{\\sigma}{\\sqrt{n}}=${ftex(F(V.sig, Math.sqrt(V.n)))}`, color: 'amber', answer: true });
             if (st >= 3) chips.push({ tex: `1000k=${V.ans}`, color: 'green', answer: true });
           }
           return { chips };
@@ -1419,19 +1439,19 @@ window.addEventListener('DOMContentLoaded', function () {
         if (N) { em = s.omeans.reduce((a, x) => a + x, 0) / N; es = Math.sqrt(s.omeans.reduce((a, x) => a + (x - em) * (x - em), 0) / N); }
         const reads = [
           { label: '모집단 평균 m · 표준편차 σ', value: `${dp(ps.mu, 2)} · ${dp(ps.sd, 3)}`, color: 'violet' },
-          { label: `이론 $\\frac{σ}{\\sqrt{n}}$ (n=${n})`, value: dp(sdm, 3), color: 'amber', note: `σ ÷ √${n} = ${dp(ps.sd, 3)} ÷ ${dp(Math.sqrt(n), 3)}` },
+          { label: `이론 $\\frac{σ}{\\sqrt{n}}$ (n=${n})`, value: '≈ ' + dp(sdm, 3), color: 'amber', note: `σ ÷ √${n} ≈ ${dp(ps.sd, 3)} ÷ ${dp(Math.sqrt(n), 3)}` },
           { label: '추출한 표본평균 개수', value: `${N}개`, color: 'sky' },
           { label: '표본평균들의 평균', value: N ? dp(em, 3) : '—', color: 'green', note: `이론: m = ${dp(ps.mu, 2)}` },
-          { label: '표본평균들의 표준편차', value: N > 1 ? dp(es, 3) : '—', color: 'green', note: `이론: $\\frac{σ}{\\sqrt{n}}$ = ${dp(sdm, 3)}` }
+          { label: '표본평균들의 표준편차', value: N > 1 ? dp(es, 3) : '—', color: 'green', note: `이론: $\\frac{σ}{\\sqrt{n}}$ ≈ ${dp(sdm, 3)}` }
         ];
         if (s.olast) reads.push({ label: '마지막 표본', value: `${s.olast.vals.join(', ')}${s.olast.n > s.olast.vals.length ? ' …' : ''} → 평균 ${dp(s.olast.mean, 2)}`, color: 'rose', wide: true });
         return {
-          chips: [{ tex: `\\overline{X}\\ \\approx\\ \\mathrm{N}\\left(${dp(ps.mu, 2)},\\ \\left(\\dfrac{${dp(ps.sd, 2)}}{\\sqrt{${n}}}\\right)^{2}\\right)`, color: 'amber' }],
-          status: { tone: 'info', text: n === 1 ? 'n=1: 표본평균은 모집단과 같은 모양' : n < 9 && s.opop !== 'uni' ? 'n이 작으면 모집단 모양이 남아 있어요' : `폭 $\\frac{σ}{\\sqrt{${n}}}$ = ${dp(sdm, 2)}  (모집단 σ의 ${dp(1 / Math.sqrt(n), 2)}배)` },
+          chips: [{ tex: `E(\\overline X)=${num(ps.mu, 2)},\\quad V(\\overline X)=\\dfrac{${num(ps.v, 4)}}{${n}}`, color: 'amber' }],
+          status: { tone: 'info', text: n === 1 ? 'n=1: 표본평균은 모집단과 같은 모양' : n < 9 && s.opop !== 'uni' ? 'n이 작으면 모집단 모양이 남아 있어요' : `폭 $\\frac{σ}{\\sqrt{${n}}}$ ≈ ${dp(sdm, 2)}  (모집단 σ의 약 ${dp(1 / Math.sqrt(n), 2)}배)` },
           readouts: reads
         };
       },
-      formula: '<b>표본평균의 분포</b> 모평균 $m$, 모표준편차 $\\sigma$인 모집단에서 크기 $n$인 표본을 뽑을 때 $\\mathrm{E}(\\overline{X})=m$, $\\mathrm{V}(\\overline{X})=\\dfrac{\\sigma^{2}}{n}$, $\\sigma(\\overline{X})=\\dfrac{\\sigma}{\\sqrt{n}}$. 모집단이 정규분포이면 $\\overline{X}\\sim\\mathrm{N}\\left(m,\\dfrac{\\sigma^{2}}{n}\\right)$, 모집단이 무엇이든 $n$이 크면 근사적으로 정규분포입니다.<br>그림에서 $n$을 4배로 하면 막대 폭($\\frac{σ}{\\sqrt{n}}$)이 절반이 되고, 곡선은 가운데가 두 배로 높아집니다(넓이는 늘 1).',
+      formula: '<b>표본평균의 분포</b> 서로 독립이고 같은 분포인 표본을 추출하며 모평균 $m$, 유한한 모표준편차 $\\sigma$인 모집단에서 크기 $n$인 표본을 뽑을 때 $\\mathrm{E}(\\overline{X})=m$, $\\mathrm{V}(\\overline{X})=\\dfrac{\\sigma^{2}}{n}$, $\\sigma(\\overline{X})=\\dfrac{\\sigma}{\\sqrt{n}}$. 모집단이 정규분포이면 $\\overline{X}\\sim\\mathrm{N}\\left(m,\\dfrac{\\sigma^{2}}{n}\\right)$, 모집단이 정규분포가 아니면 충분히 큰 $n$에서 정규분포로 근사합니다(작은 $n$의 이산분포는 그대로 막대로 봅니다).<br>그림에서 $n$을 4배로 하면 표준편차($\\frac{σ}{\\sqrt{n}}$)이 절반이 되고, 곡선은 가운데가 두 배로 높아집니다(넓이는 늘 1).',
       notes: '표준화할 때는 모집단의 σ가 아니라 <b>$\\frac{σ}{\\sqrt{n}}$</b>으로 나눕니다. 또 $\\mathrm{V}(a\\overline{X}+b)$에서 $b$는 분산에 영향이 없고 $a$는 제곱해서 곱합니다.',
       vary: varO,
       draw: (b, s, v, lab) => (lab.tab === 'explore' ? drawOExplore(b, s) : drawOProblem(b, s, v, lab))
@@ -1485,8 +1505,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (V.kind === 'P1') {
       const zr = Math.round(V.z * V.r * 1000) / 1000, xb = Math.round((V.lo + zr) * 1000) / 1000;
       return [
-        `모표준편차 $\\sigma=${V.sig}$, 표본 크기 $n=${V.n}$이므로 표본평균의 표준편차(표준오차)는 $\\dfrac{\\sigma}{\\sqrt{n}}=\\dfrac{${V.sig}}{${Math.sqrt(V.n)}}=${num(V.r, 3)}$.`,
-        `신뢰도 ${V.conf}%의 신뢰구간은 $\\overline{x}-${V.z}\\times\\dfrac{\\sigma}{\\sqrt{n}}\\le m\\le \\overline{x}+${V.z}\\times\\dfrac{\\sigma}{\\sqrt{n}}$이고 구간의 폭은 $2\\times ${V.z}\\times ${num(V.r, 3)}=${V.w}$.`,
+        `모표준편차 $\\sigma=${V.sig}$, 표본 크기 $n=${V.n}$이므로 표본평균의 표준편차(표준오차)는 $\\dfrac{\\sigma}{\\sqrt{n}}=\\dfrac{${V.sig}}{${Math.sqrt(V.n)}}=${ftex(F(V.sig, Math.sqrt(V.n)))}$.`,
+        `신뢰도 ${V.conf}%의 신뢰구간은 $\\overline{x}-${V.z}\\times\\dfrac{\\sigma}{\\sqrt{n}}\\le m\\le \\overline{x}+${V.z}\\times\\dfrac{\\sigma}{\\sqrt{n}}$이고 구간의 폭은 $2\\times ${V.z}\\times ${ftex(F(V.sig, Math.sqrt(V.n)))}=${V.w}$.`,
         `$\\overline{x}-${num(zr, 3)}=${V.lo}$이므로 $\\overline{x}=${num(xb, 3)}$, 따라서 $a=\\overline{x}+${num(zr, 3)}=${V.hi}$ (또는 $a=${V.lo}+${V.w}$).`
       ];
     }
@@ -1514,8 +1534,8 @@ window.addEventListener('DOMContentLoaded', function () {
       tickMark(b, [cc.X(V.hi), yb], 8, { color: st >= 3 ? 'green' : 'amber', alpha: 1, width: 2.5 });
       b.text([cc.X(V.lo), yb], `${V.lo}`, { size: 13, weight: 800, color: 'amber', align: 'right', dx: -8, baseline: 'middle' });
       b.text([cc.X(V.hi), yb], st >= 3 ? `a = ${V.hi}` : 'a', { size: 13, weight: 800, color: st >= 3 ? 'green' : 'ink', align: 'left', dx: 8, baseline: 'middle' });
-      if (st >= 2) { b.point([cc.X(xb), yb], { r: 5.5, color: 'rose' }); b.text([cc.X(xb), yb], '구간의 한가운데 x̄', { size: 12.5, weight: 800, color: 'rose', baseline: 'top', dy: 12 }); bracketH(b, cc, xb - zr, xb, yb + 9, 'sky', { width: 1.6 }); b.text([cc.X(xb - zr / 2), yb + 9], `${V.z}·\\frac{σ}{√n}`, { size: 12.5, weight: 800, color: 'sky', baseline: 'bottom', dy: -6 }); }
-      b.text([cc.X(lo), 50], `신뢰구간  (폭 = 2 · ${V.z} · \\frac{σ}{√n})`, { size: 12.5, weight: 800, color: 'amber', align: 'left', baseline: 'top', dx: 3 });
+      if (st >= 2) { b.point([cc.X(xb), yb], { r: 5.5, color: 'rose' }); b.text([cc.X(xb), yb], '구간의 한가운데 x̄', { size: 12.5, weight: 800, color: 'rose', baseline: 'top', dy: 12 }); bracketH(b, cc, xb - zr, xb, yb + 9, 'sky', { width: 1.6 }); b.text([cc.X(xb - zr / 2), yb + 9], `${V.z}·σ/√n`, { size: 12.5, weight: 800, color: 'sky', baseline: 'bottom', dy: -6 }); }
+      b.text([cc.X(lo), 50], `신뢰구간  (폭 = 2 · ${V.z} · σ/√n)`, { size: 12.5, weight: 800, color: 'amber', align: 'left', baseline: 'top', dx: 3 });
       return;
     }
     const c = 2 * V.z * V.sig, nmax = V.k * V.k * 1.7, ymax = V.len * 2.3, cc = mkChart(BOX1, [0, nmax, 0, ymax]);
@@ -1530,13 +1550,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const nk = V.k * V.k;
       sline(b, [cc.X(nk), cc.Y(0)], [cc.X(nk), cc.Y(V.len)], { color: 'green', width: 1.8, dash: [5, 4] });
       b.point([cc.X(nk), cc.Y(V.len)], { r: 5.5, color: 'green' });
-      b.text([cc.X(nk), cc.Y(0)], `n = ${nk}`, { size: 13, weight: 800, color: 'green', baseline: 'bottom', dy: -22 });
+      b.text([cc.X(nk), cc.Y(0)], st >= 3 ? `n = ${nk}` : '경계 n₀', { size: 13, weight: 800, color: 'green', baseline: 'bottom', dy: -22 });
     }
   }
   const pFormula = () => {
     const ns = [4, 16, 64, 100];
     const rows = ns.map((n) => `<tr><td>${n}</td>${[90, 95, 99].map((c) => `<td>${(2 * PZ[c] * PSIG / Math.sqrt(n)).toFixed(2)}</td>`).join('')}</tr>`).join('');
-    return '<b>모평균의 신뢰구간</b> 표본평균 $\\overline{x}$, 모표준편차 $\\sigma$, 표본 크기 $n$일 때 신뢰도 95%: $\\overline{x}-1.96\\dfrac{\\sigma}{\\sqrt{n}}\\le m\\le\\overline{x}+1.96\\dfrac{\\sigma}{\\sqrt{n}}$ (99%는 $2.58$, 90%는 $1.645$). 구간의 길이는 $2z\\dfrac{\\sigma}{\\sqrt{n}}$.<br>그림에서 칠한 곡선 폭이 곧 구간의 폭이고, 구간은 표본평균 $\\overline{x}$에 따라 좌우로 움직이지만 <b>길이는 늘 같습니다</b>. 신뢰도 95%의 뜻은 100번 만들면 약 95개가 모평균을 포함한다는 것입니다.'
+    return '<b>모평균의 신뢰구간</b> 표본평균 $\\overline{x}$, 모표준편차 $\\sigma$, 표본 크기 $n$일 때 신뢰도 95%: $\\overline{x}-1.96\\dfrac{\\sigma}{\\sqrt{n}}\\le m\\le\\overline{x}+1.96\\dfrac{\\sigma}{\\sqrt{n}}$ (99%는 $2.58$, 90%는 $1.645$). 구간의 길이는 $2z\\dfrac{\\sigma}{\\sqrt{n}}$.<br>그림에서 칠한 곡선 폭이 곧 구간의 폭이고, 구간은 표본평균 $\\overline{x}$에 따라 좌우로 움직이지만 <b>길이는 늘 같습니다</b>. 신뢰도 95%의 뜻은 같은 방법으로 매우 많이 반복하면 포함 비율이 약 95%에 가까워진다는 것입니다. 한 번에 100개를 만들었을 때 반드시 95개인 것은 아닙니다.'
       + `<div class="ps-tabwrap"><table class="ps-tab"><tr><th>구간의 길이 ($\\sigma=10$)</th><th>90%</th><th>95%</th><th>99%</th></tr>${rows.replace(/<td>(\d+)<\/td>/g, '<td><b>n=$1</b></td>')}</table></div>n을 4배로 하면 길이는 절반, 신뢰도를 높이면 길이는 늘어납니다.`;
   };
   function sceneP() {
@@ -1565,7 +1585,7 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${pQuestion(varP.cur())}</div>`,
       problem: { tag: () => (varP.cur().kind === 'P1' ? '2026학년도 수능 26번 유형' : '2023학년도 수능 27번 · 2022학년도 수능 27번 유형'), time: '목표 시간: 60초', text: () => probHTML(pQuestion(varP.cur())), answer: () => tex(String(varP.cur().ans)) },
       solution: {
-        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 폭 = $\\frac{2zσ}{\\sqrt{n}}$', quickTag: '10초 컷',
+        standardTitle: '풀이 정리', standardTag: '기본 풀이', quickTitle: '10초 컷 · 폭 = $\\frac{2zσ}{\\sqrt{n}}$', quickTag: '핵심 발상',
         standard: () => { const t = pSteps(varP.cur()); return { steps: t.map((x, i) => `${'①②③'[i]} ${x}`).join('<br>'), warning: '신뢰구간의 <b>폭(길이)</b>은 $2z\\dfrac{\\sigma}{\\sqrt{n}}$이고 표본평균 $\\overline{x}$는 구간의 <b>한가운데</b>입니다. 폭은 $\\overline{x}$와 상관없습니다.' }; },
         quick: () => ({ steps: '구간의 한쪽 끝과 폭 $2z\\dfrac{\\sigma}{\\sqrt{n}}$를 알면 반대쪽 끝은 더하기만 하면 됩니다. 길이 조건은 $\\sqrt{n}$에 대한 부등식으로 바꿉니다.', highlight: '$n$을 4배로 하면 폭은 절반, 신뢰도를 95%에서 99%로 올리면 $z$가 1.96에서 2.58로 커져 폭이 넓어집니다.' })
       },
@@ -1573,7 +1593,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (lab.tab !== 'explore') {
           const st = stepOf(lab, s), V = varP.cur(), chips = [];
           if (V.kind === 'P1') {
-            if (st >= 1) chips.push({ tex: `\\dfrac{\\sigma}{\\sqrt{n}}=${num(V.r, 3)}`, color: 'amber', answer: true });
+            if (st >= 1) chips.push({ tex: `\\dfrac{\\sigma}{\\sqrt{n}}=${ftex(F(V.sig, Math.sqrt(V.n)))}`, color: 'amber', answer: true });
             if (st >= 2) chips.push({ tex: `\\text{폭}=${V.w}`, color: 'rose', answer: true });
             if (st >= 3) chips.push({ tex: `a=${V.hi}`, color: 'green', answer: true });
           } else {
@@ -1584,7 +1604,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         const n = Math.round(s.pn), z = PZ[s.pc], sdm = PSIG / Math.sqrt(n), w = 2 * z * sdm, rows = s.prows, hit = rows.filter((r) => r.hit).length;
         const reads = [
-          { label: `신뢰도 ${s.pc}% 의 z`, value: `${z}`, color: 'amber', note: `P(|Z| ≤ ${z}) = ${s.pc / 100}` },
+          { label: `신뢰도 ${s.pc}% 의 z`, value: `${z}`, color: 'amber', note: `P(|Z| ≤ ${z}) ≈ ${s.pc / 100}` },
           { label: '구간의 폭 $\\frac{2zσ}{\\sqrt{n}}$', value: dp(w, 2), color: 'rose', note: `2 × ${z} × ${dp(sdm, 2)} (σ=10, n=${n})` },
           { label: '지금 그린 구간 중 m을 포함', value: rows.length ? `${hit} / ${rows.length}개` : '—', color: 'green', note: rows.length ? `${dp((hit / rows.length) * 100, 0)}%` : '「추출」을 눌러 보세요' },
           { label: '누적 포함 비율', value: s.ptot ? `${dp((s.phit / s.ptot) * 100, 1)}%` : '—', color: 'green', note: s.ptot ? `${s.phit} / ${s.ptot}번 → ${s.pc}%에 가까워져요` : '1000번 더로 확인' }
@@ -1604,6 +1624,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'prob-stats',
+    stagedReveal: true,
     title: '통계 실험실',
     courseName: '확률과 통계',
     unit: '통계',
@@ -1617,31 +1638,31 @@ window.addEventListener('DOMContentLoaded', function () {
     params: {
       // 장면 1 · 이산확률변수
       ka: { value: 2, min: -3, max: 3, step: 1, color: 'sky', label: 'a (간격을 |a|배로)', format: (v) => `a = ${M(v)}` },
-      kb: { value: 1, min: -4, max: 4, step: 1, color: 'sky', label: 'b (옆으로 옮기기)', format: (v) => `b = ${M(v)}` },
+      kb: { value: 1, min: -4, max: 6, step: 1, color: 'sky', label: 'b (옆으로 옮기기)', format: (v) => `b = ${M(v)}` },
       // 장면 2 · 이항분포
       ln: { value: 40, min: 1, max: 200, step: 1, color: 'sky', label: '시행 횟수 n', format: (v) => `n = ${Math.round(v)}` },
       lp: { value: 0.5, min: 0.05, max: 0.95, step: 0.05, color: 'amber', label: '성공 확률 p', format: (v) => `p = ${dp(v, 2)}` },
-      lz1: { value: -1, min: -4, max: 4, step: 0.1, color: 'amber', label: '구간의 왼쪽 끝 a (평균에서 몇 σ)', format: (v, s) => `a = ${lInfo(s).a}  (z = ${dp(v, 1)})` },
-      lz2: { value: 1.5, min: -4, max: 4, step: 0.1, color: 'amber', label: '구간의 오른쪽 끝 b (평균에서 몇 σ)', format: (v, s) => `b = ${lInfo(s).b}  (z = ${dp(v, 1)})` },
+      lz1: { value: -1, min: -4, max: 4, step: 'any', color: 'amber', label: '구간의 왼쪽 끝 a (평균에서 몇 σ)', format: (v, s) => { const i = lInfo(s); return `a = ${i.a}  (z ≈ ${dp((i.a - i.mu) / i.sd, 2)})`; }, onInput: (s) => { if (s.lz1 > s.lz2) s.lz2 = s.lz1; } },
+      lz2: { value: 1.5, min: -4, max: 4, step: 'any', color: 'amber', label: '구간의 오른쪽 끝 b (평균에서 몇 σ)', format: (v, s) => { const i = lInfo(s); return `b = ${i.b}  (z ≈ ${dp((i.b - i.mu) / i.sd, 2)})`; }, onInput: (s) => { if (s.lz2 < s.lz1) s.lz1 = s.lz2; } },
       // 장면 3-1 · 표준화
       sm: { value: 5, min: 0, max: 10, step: 0.5, color: 'sky', label: '평균 m', format: (v) => `m = ${num(v, 1)}` },
       ss: { value: 2, min: 1, max: 4, step: 0.5, color: 'sky', label: '표준편차 σ', format: (v) => `σ = ${num(v, 1)}` },
-      sa: { value: 3, min: -8, max: 20, step: 0.5, color: 'amber', label: '구간의 왼쪽 끝 α', format: (v, s) => `α = ${num(v, 1)}  (z = ${dp((v - s.sm) / s.ss, 2)})` },
-      sb: { value: 8, min: -8, max: 20, step: 0.5, color: 'amber', label: '구간의 오른쪽 끝 β', format: (v, s) => `β = ${num(v, 1)}  (z = ${dp((v - s.sm) / s.ss, 2)})` },
+      sa: { value: 3, min: -8, max: 20, step: 0.5, color: 'amber', label: '구간의 끝점 α', format: (v, s) => `α = ${num(v, 1)}  (z ≈ ${dp((v - s.sm) / s.ss, 2)})` },
+      sb: { value: 8, min: -8, max: 20, step: 0.5, color: 'amber', label: '구간의 끝점 β', format: (v, s) => `β = ${num(v, 1)}  (z ≈ ${dp((v - s.sm) / s.ss, 2)})` },
       // 장면 3-2 · 두 정규곡선
       tm1: { value: 20, min: 6, max: 34, step: 1, color: 'amber', label: 'f의 평균 m₁', format: (v) => `m₁ = ${v}` },
       tg1: { value: 5, min: 2, max: 8, step: 1, color: 'amber', label: 'f의 표준편차 σ₁', format: (v) => `σ₁ = ${v}` },
       tm2: { value: 10, min: 6, max: 34, step: 1, color: 'sky', label: 'g의 평균 m₂', format: (v) => `m₂ = ${v}` },
       tg2: { value: 5, min: 2, max: 8, step: 1, color: 'sky', label: 'g의 표준편차 σ₂', format: (v) => `σ₂ = ${v}` },
-      ta: { value: 15, min: 0, max: 40, step: 1, color: 'green', label: '구간의 왼쪽 끝 a', format: (v) => `a = ${v}` },
-      tb: { value: 20, min: 0, max: 40, step: 1, color: 'green', label: '구간의 오른쪽 끝 b', format: (v) => `b = ${v}` },
+      ta: { value: 15, min: 0, max: 40, step: 1, color: 'green', label: '구간의 끝점 a', format: (v) => `a = ${v}` },
+      tb: { value: 20, min: 0, max: 40, step: 1, color: 'green', label: '구간의 끝점 b', format: (v) => `b = ${v}` },
       // 장면 3-3 · 꺾은선 확률밀도함수
-      qx1: { value: 3, min: 0.5, max: 4.5, step: 0.5, color: 'amber', label: '꺾이는 위치 x₁', format: (v) => `x₁ = ${num(v, 1)}` },
-      qx2: { value: 5, min: 1.5, max: 5.5, step: 0.5, color: 'sky', label: '꺾이는 위치 x₂', format: (v) => `x₂ = ${num(v, 1)}` },
-      qh: { value: 0.2, min: 0.05, max: 0.5, step: 0.01, color: 'rose', label: '높이 h', format: (v) => `h = ${dp(v, 2)}` },
-      qk: { value: 1 / 3, min: 0.1, max: 0.5, step: 0.005, color: 'rose', label: '상수 k (f+g=k)', format: (v) => `k = ${kLabel(v)}` },
-      qu: { value: 2, min: 0, max: 6, step: 1, color: 'green', label: '구하는 구간의 왼쪽 u', format: (v) => `u = ${v}` },
-      qv: { value: 5, min: 0, max: 6, step: 1, color: 'green', label: '구하는 구간의 오른쪽 v', format: (v) => `v = ${v}` },
+      qx1: { value: 3, min: 0.5, max: 4.5, step: 0.5, color: 'amber', label: '꺾이는 위치 x₁', format: (v) => `x₁ = ${num(v, 1)}`, onInput: (s) => { if (s.qx1 >= s.qx2) s.qx2 = s.qx1 + 0.5; } },
+      qx2: { value: 5, min: 1.5, max: 5.5, step: 0.5, color: 'sky', label: '꺾이는 위치 x₂', format: (v) => `x₂ = ${num(v, 1)}`, onInput: (s) => { if (s.qx2 <= s.qx1) s.qx1 = s.qx2 - 0.5; } },
+      qh: { value: 0.2, min: 0.05, max: 0.5, step: 'any', color: 'rose', label: '높이 h', format: (v, s) => { const q = m3Shape(s), normal = 2 / (6 + q.x2 - q.x1); return Math.abs(v - normal) < 1e-12 ? `h = ${fracLab(4, 12 + 2 * q.x2 - 2 * q.x1)} (넓이 1)` : `h ≈ ${dp(v, 4)}`; } },
+      qk: { value: 1 / 3, min: 0.1, max: 0.5, step: 'any', color: 'rose', label: '상수 k (f+g=k)', format: (v) => Math.abs(v - 1 / 3) < 1e-12 ? 'k = 1/3' : `k ≈ ${dp(v, 4)}` },
+      qu: { value: 2, min: 0, max: 6, step: 1, color: 'green', label: '구하는 구간의 끝점 u', format: (v) => `u = ${v}` },
+      qv: { value: 5, min: 0, max: 6, step: 1, color: 'green', label: '구하는 구간의 끝점 v', format: (v) => `v = ${v}` },
       // 장면 4 · 표본평균
       on: { value: 4, min: 1, max: 100, step: 1, color: 'amber', label: '표본 크기 n', hint: '바꾸면 쌓은 표본평균이 지워집니다', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => oReset(s) },
       // 장면 5 · 신뢰구간

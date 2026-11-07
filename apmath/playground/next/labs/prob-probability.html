@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function () {
       K = cfg.m; facesName = '동전';
       const m = cfg.m;
       s0 = cfg.h0;
-      next = (h, f) => (f <= h ? h - 1 : h + 1); // 동전 1..h 는 앞면, 나머지는 뒷면이라고 두고 f번 동전을 뒤집음
+      next = (h, f) => (f <= h ? h - 1 : h + 1); // 경로 수 계산용 선택지: 앞면 h개 / 뒷면 m-h개 (실제 번호별 조작은 별도 mask로 유지)
       label = (h) => String(h);
       rowLo = 0; rowHi = m;
       given = (p) => p[n] === 0 || p[n] === m;
@@ -154,11 +154,19 @@ window.addEventListener('DOMContentLoaded', function () {
     M.finalKeys = [...cnt[n].keys()].sort((a, b) => a - b);
     return M;
   }
+  const coinMask = (h) => (1 << h) - 1;
+  const headCount = (mask) => { let h = 0; while (mask) { h += mask & 1; mask >>>= 1; } return h; };
+  function resetRun(r, M) { r.faces = []; r.path = [M.s0]; r.mask = M.cfg.kind === 'coin' ? coinMask(M.s0) : null; }
   // 무작위 시행: 한 번의 경로(상태 배열)와 눈 배열
   function runOnce(M) {
     const faces = [], path = [M.s0];
-    let k = M.s0;
-    for (let t = 0; t < M.n; t++) { const f = 1 + rint(M.K); faces.push(f); k = M.next(k, f); path.push(k); }
+    let k = M.s0, mask = M.cfg.kind === 'coin' ? coinMask(k) : null;
+    for (let t = 0; t < M.n; t++) {
+      const f = 1 + rint(M.K); faces.push(f);
+      if (mask !== null) { mask ^= 1 << (f - 1); k = headCount(mask); }
+      else k = M.next(k, f);
+      path.push(k);
+    }
     return { faces, path };
   }
   // 시뮬레이션 N번 추가(기록 sim 갱신, 1-2-5 간격마다 수렴 그래프 점을 찍음)
@@ -190,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.vary.next();
     if (sc.vary.onNext) sc.vary.onNext(lab.s, lab);
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); lab._buildProblem(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -245,7 +253,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function cfg1(s, lab) {
     if (lab.tab === 'explore') return { A: s.gA, B: s.gB, mode: s.gMode, seen: Math.round(s.sweep), V: null, st: 0 };
-    const V = var1.cur(), st = s.step;
+    const V = var1.cur(), st = lab.tab === 'problem' ? 0 : s.step;
     let mode = 'none';
     if (V.kind === 'one') mode = st >= 2 ? 'A' : 'none';
     else if (V.kind === 'or') mode = st >= 3 ? 'U' : st === 2 ? 'A' : 'none';
@@ -270,6 +278,9 @@ window.addEventListener('DOMContentLoaded', function () {
         ? { fill: st.col, fillAlpha: st.hi ? 0.62 : 0.15, color: st.col, alpha: st.hi ? 0.9 : 0.35, width: 1.4, ref }
         : { fill: 'ink', fillAlpha: seen ? 0.04 : 0.1, color: 'ink', alpha: 0.28, width: 1, ref });
       if (seen && vk !== 'none') lbl(b, [x + 0.5, y + 0.5], String(valOf(vk, q.a, q.b)), { size: 12.5, weight: 700, color: 'ink', ref });
+    }
+    if ((c.V && c.st >= 1 && c.V.kind === 'one') || (!c.V && c.mode === 'A')) {
+      for (let i = 0; i < 6; i++) b.poly(rectPts(i, i, 1, 1, 0.08), { color: 'ink', alpha: 0.55, width: 1.7, dash: [3, 3] });
     }
     if (c.seen < 36) { // 세는 중인 칸 표시
       const q = cells[c.seen];
@@ -399,15 +410,18 @@ window.addEventListener('DOMContentLoaded', function () {
   function sol1() {
     const v = var1.cur(), c = v.c, f = v.f;
     const cols = (id) => colSums(id).join('+');
+    const upper = gridCells(v.A).filter((q) => q.inA && q.a < q.b).length;
+    const diag = gridCells(v.A).filter((q) => q.inA && q.a === q.b).length;
+    const symmetric = gridCells(v.A).every((q) => q.inA === CONDS[v.A].f(q.b, q.a));
     const stdSteps = v.kind === 'one'
       ? `① 가로 $a=1,2,\\dots,6$ 열마다 조건에 맞는 칸을 세면 $${cols(v.A)}=${c.nA}$칸입니다.<br/>② 확률 $=\\dfrac{${c.nA}}{36}=${frTex(f)}$`
       : v.kind === 'or'
         ? `① $A$: 열마다 $${cols(v.A)}=${c.nA}$칸, $B$: 열마다 $${cols(v.B)}=${c.nB}$칸<br/>② 두 조건에 모두 맞는 칸을 세면 $n(A\\cap B)=${c.nI}$<br/>③ $P(A\\cup B)=\\dfrac{${c.nA}+${c.nB}-${c.nI}}{36}=\\dfrac{${c.nU}}{36}=${frTex(f)}$`
         : `① $A$: 열마다 $${cols(v.A)}=${c.nA}$칸<br/>② 나머지 $36-${c.nA}=${c.nAc}$칸이 $A^c$ → $P(A^c)=\\dfrac{${c.nAc}}{36}=${frTex(f)}$`;
     return {
-      standard: () => ({ steps: stdSteps, warning: '$(a,b)$와 $(b,a)$는 다른 칸입니다. 같은 칸(대각선 $a=b$)만 한 번 세고 나머지는 대칭으로 두 번씩 세어집니다.' }),
+      standard: () => ({ steps: stdSteps, warning: '$(a,b)$와 $(b,a)$는 다른 칸입니다. 사건 자체가 대각선에 대칭일 때만 한쪽 칸 수를 두 배할 수 있습니다. $a\\lt b$는 $a\\gt b$와 짝지어 전체를 절반으로 나눕니다.' }),
       quick: () => ({
-        steps: v.kind === 'one' ? '조건이 좌우 대칭이면 한쪽 절반만 세고 두 배 합니다(대각선은 따로).' : v.kind === 'or' ? '$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ — 칸을 직접 그리지 않아도 $A$, $B$, 겹침 세 개만 세면 됩니다.' : '"아닐 확률"은 $1-P(A)$ — 일어나는 경우가 많을 때는 반대쪽을 세는 것이 빠릅니다.',
+        steps: v.kind === 'one' ? (symmetric ? `대각선 $a=b$에 대해 $(a,b)$와 $(b,a)$를 짝지으면 한쪽 ${upper}칸과 대각선 ${diag}칸만 세면 됩니다. $n(A)=2\\times ${upper}+${diag}=${c.nA}$이므로 $P(A)=${frTex(f)}$.` : '$a\\lt b$와 $a\\gt b$는 대각선에 대해 짝이 됩니다. 같은 눈 6칸을 뺀 30칸을 두 부분으로 나누면 $n(A)=(36-6)/2=15$입니다. 조건 자체는 대칭이 아니므로 이 15칸을 다시 두 배 하지 않습니다.') : v.kind === 'or' ? '$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ — 칸을 직접 그리지 않아도 $A$, $B$, 겹침 세 개만 세면 됩니다.' : '"아닐 확률"은 $1-P(A)$ — 일어나는 경우가 많을 때는 반대쪽을 세는 것이 빠릅니다.',
         highlight: '확률의 분자는 "칠한 칸 수"입니다. 구하는 칸이 많으면 칠하지 않은 칸(여사건)을 세고 36에서 뺍니다.'
       })
     };
@@ -463,13 +477,34 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function cfg2(s, lab) {
     if (lab.tab === 'explore') return { tb: s.tb, cond: s.cond, view: s.view2, tgt: s.cnd, names: s.names2 || NAMES0, V: null, st: 0, live: true };
-    const V = var2.cur(), st = s.step;
+    const V = var2.cur(), st = lab.tab === 'problem' ? 0 : s.step;
     if (V.type === 'bayes') return { tb: V.tb, cond: st >= 3 ? 'A' : 'B', view: 'tree', tgt: st >= 3 ? 1 : 0, names: V.names, V, st, live: false };
     return { tb: V.tb, cond: V.cond, view: 'table', tgt: st >= 2 ? 1 : 0, names: V.names, V, st, live: false };
   }
+  function drawBayesGiven(b, V, step) {
+    setFocus(b, { x: [-0.5, 8.5], y: [-0.5, 6.5] });
+    const bags = [{ x: 0.3, balls: V.X, name: 'X', rule: `눈 ${V.k} 이상`, num: V.a }, { x: 4.7, balls: V.Y, name: 'Y', rule: `눈 ${V.k} 미만`, num: 6 - V.a }];
+    bags.forEach((bag) => {
+      lbl(b, [bag.x + 1.5, 0.2], `주머니 ${bag.name} · ${bag.rule}`, { color: 'ink', size: 13 });
+      b.poly(rectPts(bag.x, 1, 3, 3, 0), { fill: 'sky', fillAlpha: 0.07, color: 'sky', width: 2 });
+      const total = bag.balls[0] + bag.balls[1];
+      for (let i = 0; i < total; i++) b.point([bag.x + 0.65 + (i % 3) * 0.85, 1.85 + Math.floor(i / 3) * 1.3], { r: 11, color: i < bag.balls[0] ? 'amber' : 'muted', hollow: i < bag.balls[0], glow: false });
+      lbl(b, [bag.x + 1.5, 4.45], `흰 ${bag.balls[0]}개 · 검은 ${bag.balls[1]}개`, { color: 'ink', size: 12.5 });
+      if (step >= 1) lbl(b, [bag.x + 1.5, 5.05], `선택 확률 ${frStr(fr(bag.num, 6))}`, { color: 'sky', size: 12.5 });
+    });
+    if (step >= 1) {
+      b.point([4, 0.25], { r: 4, color: 'sky' });
+      lbl(b, [4, -0.1], '주사위', { color: 'sky', size: 12 });
+      [1.8, 6.2].forEach((x) => b.seg([4, 0.25], [x, 0.85], { color: 'sky', width: 1.8 }));
+    }
+    lbl(b, [4, 5.65], '선택한 주머니에서 동시에 2개', { color: 'muted', size: 12 });
+    lbl(b, [4, 6.1], '모두 흰 공일 때, 어느 주머니였을까?', { color: 'muted', size: 12 });
+  }
   function draw2(b, s, v, lab) {
-    const c = cfg2(s, lab), L = lay2(b, c.view === 'tree'), st = tbStats(c.tb), nm = c.names;
-    const e = clamp(s.cndShow == null ? c.tgt : s.cndShow, 0, 1);
+    const c = cfg2(s, lab);
+    if (c.V?.type === 'bayes' && c.st < 2) { drawBayesGiven(b, c.V, c.st); return; }
+    const L = lay2(b, c.view === 'tree'), st = tbStats(c.tb), nm = c.names;
+    const e = c.live ? clamp(s.cndShow == null ? c.tgt : s.cndShow, 0, 1) : c.tgt;
     const condName = c.cond === 'B' ? nm.B : nm.A, otherName = c.cond === 'B' ? nm.A : nm.B;
     // ----- 넓이 사각형(모자이크) -----
     const cols = colsOf(c.tb, c.cond);
@@ -517,7 +552,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     // 분모 설명
     const den = e > 0.5 ? t0 : N;
-    lbl(b, [x0 + L.mw / 2, y0 + H + 0.45], e > 0.5 ? `분모 = ${condName}인 ${t0}칸 (전체 ${N}칸이 아님)` : `분모 = 전체 ${N}칸`, { color: e > 0.5 ? 'rose' : 'muted', size: 12.5 });
+    lbl(b, [x0 + L.mw / 2, y0 + H + 0.45], e > 0.5 ? (t0 ? `분모 = ${condName}인 ${t0}칸 (전체 ${N}칸이 아님)` : '조건 영역 0칸 → 조건부확률은 정의되지 않음') : `분모 = 전체 ${N}칸`, { color: e > 0.5 ? 'rose' : 'muted', size: 12.5 });
     // 끌 수 있는 점(탐구 탭): 가로 경계, 두 열의 세로 경계
     if (c.live) {
       const setCols = (cs) => { s.tb = tbOf(cs, s.cond); };
@@ -599,8 +634,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const aS = keepS ? 1 : 1 - 0.75 * e;
         const col = sideCol(sb.isA, k.isB);
         b.seg(kp, sp, { color: col || 'muted', width: 2.2, alpha: aS });
-        const pc = fr(sb.n, k.tot || 1);
-        lbl(b, [(kp[0] + sp[0]) / 2, (kp[1] + sp[1]) / 2], k.tot ? frStr(pc) : '0', { color: col || 'ink', dy: sb.isA ? -11 : 12, size: 12.5, alpha: aS });
+        const pc = k.tot ? frStr(fr(sb.n, k.tot)) : '정의 안 됨';
+        lbl(b, [(kp[0] + sp[0]) / 2, (kp[1] + sp[1]) / 2], pc, { color: col || 'ink', dy: sb.isA ? -11 : 12, size: 12.5, alpha: aS });
         b.poly(rectPts(sp[0] - 0.12, sp[1] - 0.12, 0.24, 0.24, 0), col ? { fill: col, fillAlpha: 0.7 * aS, color: col, alpha: aS, width: 1.4 } : { fill: 'ink', fillAlpha: 0.08 * aS, color: 'ink', alpha: 0.4 * aS, width: 1 });
         lbl(b, [sp[0] + 0.2, sp[1]], frStr(fr(sb.n, N)), { color: 'ink', align: 'left', size: 12.5, alpha: aS });
       });
@@ -608,7 +643,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function view2(s, lab) {
     const c = cfg2(s, lab), st = tbStats(c.tb), nm = c.names;
-    const e = clamp(s.cndShow == null ? c.tgt : s.cndShow, 0, 1);
+    const e = c.live ? clamp(s.cndShow == null ? c.tgt : s.cndShow, 0, 1) : c.tgt;
     const cB = c.cond === 'B';
     const nC = cB ? st.nB : st.nA, nI = st.n11, N = st.N;
     const evC = cB ? 'B' : 'A', evO = cB ? 'A' : 'B', nO = cB ? st.nA : st.nB;
@@ -618,7 +653,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (lab.tab !== 'explore') {
       const sx = c.st, last = c.V.steps;
       if (sx >= (c.V.type === 'bayes' ? last : 3)) out.chips = [{ tex: `\\dfrac{${nI}}{${nC}}${sx >= last ? '=' + fN(nI, nC) : ''}`, color: 'rose' }];
-    } else if (e > 0.5) out.chips = [{ tex: `${cond}=\\dfrac{n(${evO}\\cap ${evC})}{n(${evC})}=\\dfrac{${nI}}{${nC}}${fr(nI, nC).d === nC ? '' : '=' + fN(nI, nC)}`, color: 'rose' }];
+    } else if (e > 0.5 && !nC) out.chips = [{ html: '조건 사건의 확률이 0이므로 조건부확률은 정의되지 않습니다', color: 'rose' }];
+    else if (e > 0.5) out.chips = [{ tex: `${cond}=\\dfrac{n(${evO}\\cap ${evC})}{n(${evC})}=\\dfrac{${nI}}{${nC}}${fr(nI, nC).d === nC ? '' : '=' + fN(nI, nC)}`, color: 'rose' }];
     else out.chips = [{ tex: `P(A\\cap B)=\\dfrac{${nI}}{${N}}${fr(nI, N).d === N ? '' : '=' + fN(nI, N)}`, color: 'violet' }];
     if (lab.tab === 'explore') {
       out.readouts = [
@@ -626,13 +662,13 @@ window.addEventListener('DOMContentLoaded', function () {
         { label: `조건 ${evC}인 칸`, value: `${nC}칸`, note: `P(${evC}) = $${fN(nC, N)}$`, color: cB ? 'amber' : 'sky' },
         { label: `${evO}이면서 ${evC}인 칸`, value: `${nI}칸`, note: `P(A∩B) = $${fN(nI, N)}$`, color: 'violet', ref: 'I' },
         { label: `조건부확률 P(${evO}|${evC})`, value: nC ? `$${fN(nI, nC)}$` : '—', note: `${nI}칸 ÷ ${nC}칸 (조건 영역 안의 비율)`, color: 'rose', wide: true },
-        { label: `독립인가? P(${evO}|${evC}) = P(${evO})`, value: st.indep ? '독립입니다' : '독립이 아닙니다', note: nC ? `$${fN(nI, nC)}$ ${st.indep ? '=' : '≠'} $${fN(nO, N)}$ = P(${evO})` : '', color: st.indep ? 'green' : 'orange', wide: true }
+        { label: '독립인가? P(A∩B) = P(A)P(B)', value: st.indep ? '독립입니다' : '독립이 아닙니다', note: nC ? `$${fN(nI, nC)}$ ${st.indep ? '=' : '≠'} $${fN(nO, N)}$ = P(${evO})` : '조건부확률은 정의되지 않음. 독립 여부는 교집합 확률 = 두 확률의 곱으로 판정', color: st.indep ? 'green' : 'orange', wide: true }
       ];
-      out.status = st.indep && nC && nC < N ? { tone: 'key', text: '독립: 점선과 두 경계선이 일직선입니다' } : null;
+      out.status = !nC ? { tone: 'warn', text: '조건 영역 0칸: 조건부확률을 정의할 수 없습니다' } : st.indep && nC < N ? { tone: 'key', text: '독립: 조건을 걸어도 높이(비율)가 같습니다' } : null;
     }
-    out.formula = `<p><b>조건부확률은 "조건 영역 안의 비율"</b>입니다. 조건 $B$가 주어지면 사각형에서 $B$ 영역만 남고 그 영역이 새로운 전체가 되므로 분모가 $N$에서 $n(B)$로 바뀝니다.</p>
+    out.formula = `<p><b>조건부확률은 "조건 영역 안의 비율"</b>입니다. 조건 $B$의 확률이 양수일 때, 사각형에서 $B$ 영역만 남고 그 영역이 새로운 전체가 되므로 분모가 $N$에서 $n(B)$로 바뀝니다.</p>
 <p>$P(A\\mid B)=\\dfrac{n(A\\cap B)}{n(B)}=\\dfrac{P(A\\cap B)}{P(B)}$ — 분자·분모를 전체 칸 수 $N$으로 나누면 확률의 비가 됩니다.</p>
-<p><b>독립</b>: $P(A\\mid B)=P(A)$, 곧 $P(A\\cap B)=P(A)P(B)$. 사각형이 <b>가로 $P(B)$ × 세로 $P(A)$</b>로 쪼개져, 두 열의 경계선이 한 직선이 됩니다.</p>
+<p><b>독립</b> ($P(B)>0$): $P(A\\mid B)=P(A)$, 곧 $P(A\\cap B)=P(A)P(B)$. 사각형이 <b>가로 $P(B)$ × 세로 $P(A)$</b>로 쪼개져, 두 열의 경계선이 한 직선이 됩니다.</p>
 <p><b>두 단계 시행(베이즈형)</b>: 나무의 첫 가지 확률은 가로 폭, 둘째 가지 확률은 세로 높이, 가지 끝 확률은 그 곱(넓이)입니다. 결과가 정해진 뒤 원인을 묻는 문제는 결과 영역만 남기고 그 안에서 원인의 몫을 읽습니다.</p>`;
     out.notes = '분모를 전체로 두는 실수가 가장 많습니다. $P(A\\mid B)$의 분모는 $B$의 칸 수이고, $P(B\\mid A)$의 분모는 $A$의 칸 수입니다(조건이 되는 쪽). 독립은 "겹치지 않음"(배반)이 아니라 "비율이 같음"입니다.';
     return out;
@@ -795,13 +831,12 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function cfgOf(kind, s) {
     if (kind === 'walk') {
-      const back = s.wOther === 'back', n = Math.min(Math.round(s.nW), back ? 4 : 6);
-      return { kind, move: MOVES[s.wMove].faces, other: s.wOther, n, thr: clamp(Math.round(s.thW), back ? -n : 0, n) };
+      const n = Math.round(s.nW);
+      return { kind, move: MOVES[s.wMove].faces, other: s.wOther, n, thr: Math.round(s.thW) };
     }
     if (kind === 'ball') {
       const r = BRULES[s.bRule], n = Math.round(s.nB);
-      const lo = Math.min(r.wAdd, r.bAdd) * n, hi = Math.max(r.wAdd, r.bAdd) * n;
-      return { kind, th: r.th, wAdd: r.wAdd, bAdd: r.bAdd, n, T: clamp(Math.round(s.TB), lo, hi) };
+      return { kind, th: r.th, wAdd: r.wAdd, bAdd: r.bAdd, n, T: Math.round(s.TB) };
     }
     return { kind, m: 4, h0: Math.round(s.h0), n: Math.round(s.nC) };
   }
@@ -811,7 +846,7 @@ window.addEventListener('DOMContentLoaded', function () {
     s.runs = s.runs || {};
     const sig = sigOf(M.cfg);
     let r = s.runs[kind];
-    if (!r || r.sig !== sig) r = s.runs[kind] = { sig, faces: [], path: [M.s0] };
+    if (!r || r.sig !== sig) { r = s.runs[kind] = { sig }; resetRun(r, M); }
     return r;
   }
   function simOf(s, kind, M) {
@@ -823,16 +858,17 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function stepRun(s, kind, face) {
     const M = getM(cfgOf(kind, s)), r = runOf(s, kind, M);
-    if (r.path.length - 1 >= M.n) { r.faces = []; r.path = [M.s0]; }
+    if (r.path.length - 1 >= M.n) resetRun(r, M);
     const f = face || 1 + rint(M.K);
     r.faces.push(f);
-    r.path.push(M.next(r.path[r.path.length - 1], f));
+    if (kind === 'coin') { r.mask ^= 1 << (f - 1); r.path.push(headCount(r.mask)); }
+    else r.path.push(M.next(r.path[r.path.length - 1], f));
   }
   function describe(M, f, from, to) {
     const c = M.cfg;
     if (c.kind === 'walk') return `${f}이 나와 ${to > from ? '점 P가 +1칸 이동' : to < from ? '점 P가 −1칸 이동' : '점 P는 제자리'}`;
     if (c.kind === 'ball') return `${f}이 나와 ${f >= c.th ? `흰 공 ${c.wAdd}개` : `검은 공 ${c.bAdd}개`}를 주머니에 넣음`;
-    return `${f}번 동전을 뒤집음(${f <= from ? '앞면→뒷면' : '뒷면→앞면'})`;
+    return `${f}번 동전을 뒤집음(${to < from ? '앞면→뒷면' : '뒷면→앞면'})`;
   }
   const faceWord = (M, f) => (M.cfg.kind === 'coin' ? `${f}번 동전` : `눈 ${f}`);
   function stateText(M, k, t) {
@@ -847,7 +883,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return `점 P: 눈 ${c.move.join('·')} → +1칸, 나머지 눈 → ${c.other === 'back' ? '−1칸' : '제자리'}`;
     }
     if (c.kind === 'ball') return `눈 ${c.th} 이상 → 흰 공 ${c.wAdd}개, 눈 ${c.th - 1} 이하 → 검은 공 ${c.bAdd}개를 넣음 (a=흰, b=검은) · 붉은 칸: a=b`;
-    return `동전 ${c.m}개 중 하나를 골라 뒤집음 (처음 앞면 ${c.h0}개)`;
+    return `동전 ${c.m}개 중 하나를 골라 뒤집음 (처음 앞면 ${c.h0}개, 번호 고정)`;
   };
   function eventText(M) {
     const c = M.cfg;
@@ -899,7 +935,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // 간선(화살표): 한 번의 시행에서 이 방향으로 가는 눈의 수가 위의 숫자
     const showW = kind === 'coin' && g.dx * b.k >= 58; // 점 이동·공 옮기기는 모든 시행의 화살표가 같은 규칙이라 첫 시행에만, 동전은 칸마다 달라서 모두 표시
     const path = o.path || [];
-    for (let t = 0; t < Math.min(n, cs - 1); t++) {
+    for (let t = 0; t < Math.min(n, cs - 1) && o.links !== false; t++) {
       for (const ed of M.edges[t]) {
         const on = path.length > t + 1 && path[t] === ed.from && path[t + 1] === ed.to;
         const x0 = g.cx(t) + nw / 2, x1 = g.cx(t + 1) - nw / 2, y0 = g.rx(ed.from), y1 = g.rx(ed.to);
@@ -967,7 +1003,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function cfg3(kind, s, lab) {
     if (lab.tab === 'explore') return { M: getM(cfgOf(kind, s)), explore: true, cols: null, mark: true };
-    const V = VAR3[kind].cur(), st = s.step;
+    const V = VAR3[kind].cur(), st = lab.tab === 'problem' ? 0 : s.step;
     return { M: V.M, explore: false, cols: V.M.n + 1, fill: st >= 2 ? V.M.n + 1 : 1, mark: st >= 3, V, st }; // 1단계: 칸만 그려 두고 숫자는 처음 칸만 / 2단계: 경로 수를 채움
   }
   function draw3(kind) {
@@ -975,7 +1011,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const c = cfg3(kind, s, lab), M = c.M, g = geo3(b, M, c.explore);
       let path = null;
       if (c.explore) { const r = runOf(s, kind, M); path = r.path; }
-      drawTrellis(b, M, g, { cols: c.cols, fill: c.fill, mark: c.mark, path });
+      drawTrellis(b, M, g, { cols: c.cols, fill: c.fill, mark: c.mark, path, links: c.explore || c.st >= 1 });
       if (c.explore) { const sim = simOf(s, kind, M); drawHist(b, M, g, sim); drawConv(b, M, g, sim); }
     };
   }
@@ -985,12 +1021,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const pTex = frTex(M.P), pv = frVal(M.P);
       if (c.explore) {
         const r = runOf(s, kind, M), sim = simOf(s, kind, M), t = r.path.length - 1;
-        out.chips = [{ html: ruleHTML(M.cfg) }];
+        out.chips = [{ html: '탐구 모형 · ' + ruleHTML(M.cfg) }];
+        if (kind === 'coin') out.chips.push({ html: Array.from({ length: M.K }, (_, i) => `${i + 1}번 ${r.mask & (1 << i) ? '앞' : '뒤'}`).join(' · '), color: 'amber' });
         out.readouts = [
           { label: '시행 진행', value: `${t} / ${M.n}`, note: t ? `${t}번째: ${faceWord(M, r.faces[t - 1])}` : '시행 버튼을 눌러 보세요', color: 'amber' },
           { label: '지금 상태', value: stateText(M, r.path[t], t), note: t === M.n ? '시행 끝' : '', color: 'ink' },
           { label: `사건: ${eventText(M)}`, value: `${M.tgtN} / ${M.givN}`, note: `경로 수 (${M.cfg.kind === 'coin' ? M.K : 6}${M.n > 1 ? `^${M.n}` : ''}=${M.total}가지 중${M.hasGiven ? ' 조건에 맞는 것' : ''})`, color: 'green', wide: true },
-          { label: '이론 확률 (경로 수로 계산)', value: M.noGiven ? '없음' : `$${pTex}$`, note: M.noGiven ? '조건에 맞는 경로가 없음(앞면 개수의 홀짝 때문)' : `≈ ${pv.toFixed(4)}`, color: 'green' },
+          { label: '이론 확률 (경로 수로 계산)', value: M.noGiven ? '정의되지 않음' : `$${pTex}$`, note: M.noGiven ? (kind === 'coin' ? '조건 경로 0개: 앞면 개수의 홀짝을 확인하세요' : '조건 경로 0개: 가능한 최종 공의 총개수를 확인하세요') : `≈ ${pv.toFixed(4)}`, color: 'green' },
           { label: '시뮬레이션 비율', value: sim.giv ? (sim.hit / sim.giv).toFixed(4) : '—', note: sim.N ? `${sim.N}번 시행${M.hasGiven ? ` (조건 ${sim.giv}번)` : ''}` : '아직 안 함', color: 'sky' }
         ];
         if (t === M.n) {
@@ -1020,7 +1057,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const NOTES3 = {
     walk: '"n번째 시행 후" 좌표만 묻는지, "한 번이라도 지났는지"를 묻는지 확인합니다. 눈이 나오는 확률 $\\frac{k}{6}$을 약분한 뒤 거듭제곱하면 분모가 커져 실수하기 쉬우니, 상태도에서는 $6^n$ 가지의 개수로 세어 두면 안전합니다.',
     ball: '구하는 확률이 조건부확률이면 분모는 $6^n$이 아닙니다. 붉은 칸을 "지나는" 경로는 그 칸의 위치(시행 횟수)만 보지 말고 칸까지 오는 경로 수에 뒤의 경로 수를 곱해야 합니다.',
-    coin: '같은 동전을 다시 뒤집을 수 있는 시행이므로 "동전 번호"가 아니라 "앞면의 개수"로 상태를 줄여 셉니다. 한 칸에서 두 방향으로 가는 경로 수가 다르다는 점(앞면의 수 $h$와 뒷면의 수 $m-h$)이 핵심입니다.'
+    coin: '동전을 고르는 번호는 시행마다 독립이지만, 앞면 수의 증가 확률은 현재 상태 h에 따라 달라져 이항분포를 바로 쓸 수 없습니다. 같은 동전을 두 번 뒤집으면 원래 면으로 돌아옵니다. 같은 동전을 다시 뒤집을 수 있는 시행이므로 "동전 번호"가 아니라 "앞면의 개수"로 상태를 줄여 셉니다. 한 칸에서 두 방향으로 가는 경로 수가 다르다는 점(앞면의 수 $h$와 뒷면의 수 $m-h$)이 핵심입니다.'
   };
 
   /* --- 문제 변형 --- */
@@ -1088,7 +1125,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function textBall(v) {
     const c = v.cfg;
-    return `흰 공과 검은 공이 각각 10개 이상 들어 있는 바구니와 비어 있는 주머니가 있다. 한 개의 주사위를 사용하여 다음 시행을 한다.
+    return `흰 공 ${c.wAdd * c.n}개 이상과 검은 공 ${c.bAdd * c.n}개 이상 들어 있는 바구니와 비어 있는 주머니가 있다. 한 개의 주사위를 사용하여 다음 시행을 한다.
 <div style="border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:8px 0">주사위를 한 번 던져 나온 눈의 수가 ${c.th} 이상이면<br>바구니에 있는 흰 공 ${c.wAdd}개를 주머니에 넣고,<br>나온 눈의 수가 ${c.th - 1} 이하이면<br>바구니에 있는 검은 공 ${c.bAdd}개를 주머니에 넣는다.</div>
 위의 시행을 ${c.n}번 반복할 때, $k$ $(1\\le k\\le ${c.n})$번째 시행 후 주머니에 들어 있는 흰 공과 검은 공의 개수를 각각 $a_k$, $b_k$라 하자. $a_{${c.n}}+b_{${c.n}}\\ge ${c.T}$일 때, $a_k=b_k$인 자연수 $k$ $(1\\le k\\le ${c.n})$가 존재할 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)`;
   }
@@ -1166,9 +1203,9 @@ window.addEventListener('DOMContentLoaded', function () {
       if (kind === 'walk') {
         Object.entries(MOVES).forEach(([id, m]) => arr.push({ group: '+1칸 움직이는 눈', label: m.t, color: 'amber', apply: (st) => { st.wMove = id; }, on: (st) => st.wMove === id }));
         arr.push({ group: '그 밖의 눈', label: '제자리', apply: (st) => { st.wOther = 'stay'; }, on: (st) => st.wOther === 'stay' });
-        arr.push({ group: '그 밖의 눈', label: '−1칸(되돌아감, n≤4)', apply: (st) => { st.wOther = 'back'; st.nW = Math.min(st.nW, 4); st.thW = Math.min(st.thW, st.nW); }, on: (st) => st.wOther === 'back' });
+        arr.push({ group: '그 밖의 눈', label: '−1칸(되돌아감)', apply: (st) => { st.wOther = 'back'; }, on: (st) => st.wOther === 'back' });
       }
-      if (kind === 'ball') BRULES.forEach((r, i) => arr.push({ group: '넣는 규칙', label: `눈 ${r.th} 이상: 흰 ${r.wAdd} · 이하: 검은 ${r.bAdd}`, color: 'violet', apply: (st) => { st.bRule = i; }, on: (st) => st.bRule === i }));
+      if (kind === 'ball') BRULES.forEach((r, i) => arr.push({ group: '넣는 규칙', label: `눈 ${r.th} 이상: 흰 ${r.wAdd} · ${r.th} 미만: 검은 ${r.bAdd}`, color: 'violet', apply: (st) => { st.bRule = i; }, on: (st) => st.bRule === i }));
       const M = getM(cfgOf(kind, s));
       for (let f = 1; f <= M.K; f++) arr.push({ group: kind === 'coin' ? '뒤집을 동전 번호를 직접 고르기' : '주사위 눈을 직접 고르기', label: kind === 'coin' ? `${f}번` : `눈 ${f}`, apply: (st) => stepRun(st, kind, f) });
       return arr;
@@ -1180,8 +1217,8 @@ window.addEventListener('DOMContentLoaded', function () {
       presets,
       actions: [
         { id: 'step', primary: true, icon: 'play', label: '시행 1번', run: (s) => stepRun(s, kind) },
-        { id: 'full', icon: 'next', label: '끝까지 시행', run: (s) => { const M = getM(cfgOf(kind, s)), r = runOf(s, kind, M); if (r.path.length - 1 >= M.n) { r.faces = []; r.path = [M.s0]; } while (r.path.length - 1 < M.n) stepRun(s, kind); } },
-        { id: 'reset', icon: 'back', label: '처음으로', run: (s) => { const M = getM(cfgOf(kind, s)); const r = runOf(s, kind, M); r.faces = []; r.path = [M.s0]; } },
+        { id: 'full', icon: 'next', label: '끝까지 시행', run: (s) => { const M = getM(cfgOf(kind, s)), r = runOf(s, kind, M); if (r.path.length - 1 >= M.n) resetRun(r, M); while (r.path.length - 1 < M.n) stepRun(s, kind); } },
+        { id: 'reset', icon: 'back', label: '처음으로', run: (s) => { const M = getM(cfgOf(kind, s)); const r = runOf(s, kind, M); resetRun(r, M); } },
         { id: 'sim1k', icon: 'spark', label: '1000번 반복', run: (s) => { const M = getM(cfgOf(kind, s)); simulate(M, simOf(s, kind, M), 1000); } },
         { id: 'sim10k', icon: 'spark', label: '10000번 반복', run: (s) => { const M = getM(cfgOf(kind, s)); simulate(M, simOf(s, kind, M), 10000); } },
         { id: 'simclr', icon: 'x', label: '기록 지우기', run: (s) => { const M = getM(cfgOf(kind, s)); s.sims = s.sims || {}; s.sims[kind] = { sig: sigOf(M.cfg), sim: newSim() }; } }
@@ -1196,9 +1233,20 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  function scopedScene(sc) {
+    const originalView = sc.view;
+    sc.view = (s, lab) => {
+      const out = originalView(s, lab);
+      if (lab.tab === 'explore') out.notes = '<b>현재 그림은 아래 조작값의 탐구 모형입니다.</b> 선택 문제의 조건과 단계별 그림은 「문제」·「정리」에서 확인합니다.<br>' + (out.notes || '');
+      return out;
+    };
+    return sc;
+  }
+
   /* ---------- 5. 실험실 조립 ---------- */
   APLab.createLab({
     id: 'prob-probability',
+    stagedReveal: true,
     title: '확률 실험실',
     courseName: '확률과 통계',
     unit: '확률',
@@ -1209,7 +1257,7 @@ window.addEventListener('DOMContentLoaded', function () {
       sweep: { value: 36, min: 0, max: 36, step: 1, color: 'amber', label: '살펴본 칸 수', hint: '왼쪽 위 칸부터 차례로 살펴보며 조건에 맞는 칸을 셉니다', format: (v) => `${Math.round(v)} / 36칸` },
       cnd: { value: 0, min: 0, max: 1, step: 0.01, color: 'rose', label: '조건 걸기', hint: '오른쪽으로 갈수록 조건 영역만 남고 그 영역이 새 전체가 됩니다', format: (v) => (v < 0.02 ? '전체' : v > 0.98 ? '조건 영역만' : `${Math.round(v * 100)} %`) },
       nW: { value: 4, min: 2, max: 6, step: 1, color: 'amber', label: '시행 횟수 n', format: (v) => `${Math.round(v)}번` },
-      thW: { value: 3, min: -4, max: 6, step: 1, color: 'green', label: '좌표가 몇 이상? (≥)', format: (v) => `≥ ${Math.round(v)}` },
+      thW: { value: 3, min: -6, max: 6, step: 1, color: 'green', label: '좌표가 몇 이상? (≥)', format: (v) => `≥ ${Math.round(v)}` },
       nB: { value: 5, min: 2, max: 5, step: 1, color: 'amber', label: '시행 횟수 n', format: (v) => `${Math.round(v)}번` },
       TB: { value: 7, min: 3, max: 15, step: 1, color: 'sky', label: '조건 a_n+b_n ≥ T', hint: '주머니 속 공의 총 개수에 대한 조건입니다', format: (v) => `T = ${Math.round(v)}` },
       h0: { value: 3, min: 0, max: 4, step: 1, color: 'amber', label: '처음 앞면의 개수', format: (v) => `${Math.round(v)}개` },
@@ -1217,9 +1265,9 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { gA: 'sum7le', gB: 'prod4', gMode: 'U', tb: [6, 6, 3, 5], cond: 'B', view2: 'table', names2: null, cndShow: null, wMove: 'even', wOther: 'stay', bRule: 0 },
     groups: [
-      { id: 'g1', title: '확률의 뜻과 덧셈정리', short: '확률의 뜻·덧셈', scenes: [scene1()] },
-      { id: 'g2', title: '조건부확률과 독립', short: '조건부확률', scenes: [scene2()] },
-      { id: 'g3', title: '독립시행·반복 시행', short: '반복 시행', scenes: ['walk', 'ball', 'coin'].map(scene3) }
+      { id: 'g1', title: '확률의 뜻과 덧셈정리', short: '확률의 뜻·덧셈', scenes: [scopedScene(scene1())] },
+      { id: 'g2', title: '조건부확률과 독립', short: '조건부확률', scenes: [scopedScene(scene2())] },
+      { id: 'g3', title: '독립시행·반복 시행', short: '반복 시행', scenes: ['walk', 'ball', 'coin'].map((kind) => scopedScene(scene3(kind))) }
     ]
   });
 
