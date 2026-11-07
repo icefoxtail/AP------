@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=1+2x$, $x\\ge1$에서는",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -4,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "2",
+        "3",
+        "5",
+        "7"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-3"
+      },
+      {
+        "id": "P",
+        "x": "-1/2",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "7"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-2",
+        "to": "-1/2",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1/2",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_2"
+      },
+      {
+        "id": "S3",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_3"
+      }
+    ]
+  },
+  "caption": "f의 도함수 부호에 따라 적분 영역을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g=f'이며 x<1에서 1+2x, x≥1에서 4x-1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 부호에 따른 정적분과 함수값의 변화량을 연결한다."
+  ]
+}

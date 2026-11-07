@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$\\displaystyle\\int_{-2}^{1}3x^2dx",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -2,
+      14
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "3",
+        "6",
+        "9",
+        "12"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "12"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "12"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "-2",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "적분 방향을 바꾸어 합친 구간의 양의 영역을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 방향을 바꾸어 합친 구간의 양의 영역을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분 방향을 바꾸어 합친 구간의 양의 영역을 보인다."
+  ]
+}

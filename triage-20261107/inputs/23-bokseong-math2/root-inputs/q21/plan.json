@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(x)=4x^2-x-4$이고",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -6,
+      14
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-4",
+        "-2",
+        "1",
+        "2",
+        "4",
+        "6",
+        "8",
+        "12"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "-1",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "10"
+        }
+      ]
+    }
+  },
+  "caption": "다항식 항등식에서 결정한 이차함수의 입력과 출력을 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다항식 항등식에서 결정한 이차함수의 입력과 출력을 연결한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "다항식 항등식에서 결정한 이차함수의 입력과 출력을 연결한다."
+  ]
+}

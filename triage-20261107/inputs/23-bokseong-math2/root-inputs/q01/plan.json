@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f(x)=x^4-x^2+x+2$이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "1",
+      "-1",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -2,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1",
+        "2",
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      }
+    ]
+  },
+  "caption": "초기값으로 정해진 함수의 그래프를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초기값 f(0)=2를 지나는 함수를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "초기값으로 정해진 함수의 전체 형태를 보인다."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=x^3+3x-3$에 대하여",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "3",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -12,
+      20
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-9",
+        "-6",
+        "-3",
+        "1",
+        "3",
+        "6",
+        "9",
+        "12",
+        "15",
+        "18"
+      ]
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "11"
+        }
+      ]
+    }
+  },
+  "caption": "적분으로 정의한 함수의 미분계수와 원래 함수의 관계를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분으로 정의한 함수의 미분계수가 원래 함수의 해당 입력값과 같음을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "적분으로 정의한 함수의 미분계수가 원래 함수의 해당 입력값과 같음을 보인다."
+  ]
+}

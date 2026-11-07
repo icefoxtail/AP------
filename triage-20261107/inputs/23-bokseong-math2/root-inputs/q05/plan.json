@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "함수 $f(x)=x^3-3x+a$의 극댓값이",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-3",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "Q",
+        "x": 1,
+        "y": -2
+      }
+    ]
+  },
+  "caption": "예시 a=0일 때 삼차함수의 극대·극소와 수직 이동 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=0일 때 삼차함수의 극대·극소와 수직 이동 관계를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=0일 때 삼차함수의 극대·극소와 수직 이동 관계를 보인다."
+  ]
+}

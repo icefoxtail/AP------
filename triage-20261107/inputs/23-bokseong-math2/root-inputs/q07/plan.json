@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$0\\lt x\\lt1$에서는 함수값이 양수이고",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-3x^2+2x",
+    "functionName": "f",
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -1,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "1-sqrt(3)/3",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "D",
+        "x": "1+sqrt(3)/3",
+        "y": "-2*sqrt(3)/9"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_2"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "C",
+        "D"
+      ]
+    }
+  },
+  "caption": "x축 위·아래의 두 영역을 구간별로 합친다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0<x<1에서는 함수가 양수, 1<x<2에서는 음수이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "함수의 부호가 달라지는 두 구간에서 넓이를 양수로 더하는 관계를 보인다."
+  ]
+}
