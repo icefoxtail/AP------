@@ -51,3 +51,17 @@ test('removing one of two solution alternatives cannot pass',()=>{
   after.labs[0].interactions=[before.labs[0].interactions[0]];
   const r=compareReports(before,after);assert.equal(r.regressionCheckPassed,false);assert.equal(r.candidateAllChecksPassed,false);
 });
+test('steps revealed only after opening review must all be observed',()=>{
+  const before=report();before.labs[0].observations[0].steps=0;
+  before.labs[0].observations.push({id:'s',run:'pc-paper',tab:'review',state:'first-review',steps:4});
+  for(let n=2;n<=4;n++)before.labs[0].observations.push({id:'s',run:'pc-paper',tab:'review',state:`step-${n}`,steps:4});
+  assert.equal(compareReports(before,structuredClone(before)).candidateAllChecksPassed,true);
+  const truncated=structuredClone(before);truncated.labs[0].observations=truncated.labs[0].observations.filter(o=>o.state!=='step-3');
+  assert.equal(compareReports(before,truncated).regressionCheckPassed,false);
+  const removed=structuredClone(before);removed.labs[0].observations=removed.labs[0].observations.filter(o=>o.state==='initial'||o.state==='step-0');
+  assert.equal(compareReports(before,removed).regressions.some(o=>o.issue==='missing-candidate-solution-steps'),true);
+});
+test('a longer generated solution does not invent another baseline step',()=>{
+  const before=report();before.labs[0].observations.push({id:'s',run:'pc-paper',tab:'review',state:'variant-solution-1',steps:4});
+  assert.equal(compareReports(before,structuredClone(before)).candidateAllChecksPassed,true);
+});

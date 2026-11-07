@@ -47,7 +47,7 @@ function parseBank(bytes) {
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
-  const bank = ctx.window.questionBank || ctx.window.questions;
+  const bank = ctx.window.questionBank || ctx.window.questions || ctx.window.examData?.questions;
   if (!Array.isArray(bank)) fail("question bank missing in source");
   return bank;
 }
@@ -170,11 +170,12 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
 export function wrapGeminiFile(geminiPath, driveFileId, driveChecksum) {
   const bytes = fs.readFileSync(geminiPath);
   if (!driveFileId) fail("--drive-file-id required");
+  const text = bytes.toString("utf8").replace(/^\uFEFF/, "");
   return {
     schemaVersion: SCHEMA, driveFileId,
     driveSha256: driveChecksum || crypto.createHash("sha256").update(bytes).digest("hex"),
     driveChecksumSource: driveChecksum ? "drive_metadata" : "local_bytes",
-    gemini: JSON.parse(bytes.toString("utf8"))
+    gemini: JSON.parse(text)
   };
 }
 
