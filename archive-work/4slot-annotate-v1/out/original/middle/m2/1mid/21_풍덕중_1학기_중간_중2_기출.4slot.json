@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "c10cdf8e4279bb4a4932196e4e29a4525e4787d0",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "t{정수})"
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "유리수는 분수 $\\frac{a}{b}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "나타낼 수 없는 수는? (정답 2개) [4점]"
+          },
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "꼴로 나타낼 수 있는 수임."
+          }
+        ],
+        "method": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "순환하지 않는 무한소수이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "순환하지 않는 무한소수는 유리수가 아님을 확인한다."
+          },
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "유리수는 분수 $\\frac{a}{b}$",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 비로 나타낼 수 있는 수라는 유리수의 정의를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "무한소수",
+            "src": "solution",
+            "quote": "순환하지 않는 무한소수이므로 분수 꼴로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수의 정의인 두 정수의 비로 나타낼 수 없는 무리수(순환하지 않는 무한소수)를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수의 순환마디와 표현으로"
+          },
+          {
+            "term": "순환마디",
+            "src": "stem",
+            "quote": "순환마디와 표현으로 옳은 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "표현으로 옳은 것은? [4점]"
+          },
+          {
+            "term": "순환마디",
+            "src": "solution",
+            "quote": "순환마디는 $58$임. 점을 찍어"
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "choices",
+            "quote": "$-1.45858... \\rightarrow 58, -1.4\\d",
+            "evidenceType": "IMPLIED",
+            "justification": "소수점 아래 반복되는 숫자의 배열과 순환마디 표기를 확인한다."
+          },
+          {
+            "term": "주기성",
+            "src": "solution",
+            "quote": "반복 부분은 $58$이므로 순환마디는 $58$임.",
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 최소 단위의 마디를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "choices",
+            "quote": "$-1.45858... \\rightarrow 58, -1.4\\d"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환소수에서 반복되는 순환마디를 찾고 점을 찍어 올바르게 표현한 것을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "다음 분수 중 유한소수로"
+          },
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "유한소수로 나타낼 수 없는 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "나타낼 수 없는 것은? [4점]"
+          },
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "기약분수의 분모 소인수가 $2, 5$뿐이어야"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "choices",
+            "quote": "$\\frac{1}{2^3 \\times 5}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "choices",
+            "quote": "$\\frac{18}{2 \\times 3 \\times 5}$",
+            "evidenceType": "IMPLIED",
+            "justification": "분자와 분모를 약분하여 기약분수로 만든 후 소인수를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$\\frac{3}{2^2 \\times 5 \\times 7}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기약분수의 분모를 소인수분해했을 때 2와 5 이외의 소인수가 있어 유한소수가 될 수 없는 분수를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "다음을 만족시키는 분수 $x$의 개수는?"
+          },
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "유한소수로 나타낼 수 없다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "분수 $x$의 개수는? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$\\therefore$ 2개"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "통분: $\\frac{3}{12} < \\frac{x}{12} < ",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "두 경우 모두 분모에 $3$이 남아",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "(나) $\\frac{1}{4} < \\frac{x}{12} < \\"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부등식의 범위를 통분하여 만족하는 x의 값을 구하고 분모의 소인수를 확인하여 유한소수가 되지 않는 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 $x=1.023023...$ 을"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수로 나타낼 때 가장 편리한 식은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "choices",
+            "quote": "$1000x-x$"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "가장 편리한 식은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의 성질",
+            "src": "solution",
+            "quote": "$1000x = 1023.023...$",
+            "evidenceType": "IMPLIED",
+            "justification": "양변에 1000을 곱하여 순환마디의 자릿수를 맞춘다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "를 통해 소수점 아래를 소거함.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x=1.023023...$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "순환마디의 길이에 맞춰 10의 거듭제곱을 곱해 변변 뺌으로써 순환 부분을 소거하는 가장 알맞은 식을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유한소수",
+            "src": "choices",
+            "quote": "유한소수는 유리수이다."
+          },
+          {
+            "term": "순환소수",
+            "src": "choices",
+            "quote": "순환소수는 무한소수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "choices",
+            "quote": "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 보기 중 옳지 않은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "choices",
+            "quote": "순환하지 않는 무한소수는 유리수가 아니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수와 무한소수의 정의에 따른 포함 관계를 적용한다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.",
+            "evidenceType": "IMPLIED",
+            "justification": "반례를 들어 보기의 거짓을 입증한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "정수가 아닌 유리수는 모두 유한소수로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수와 유한소수, 순환소수, 무한소수의 정의와 분류 체계의 참과 거짓을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "$a^m \\times a^n = a^{m \\times n}$"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$a \\ne 0$이고 $m, n$이 자연수일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "choices",
+            "quote": "$(a^m)^n = (a^n)^m$"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$(a^m)^n = a^{mn}$, $(a^n)^m = a^{n",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 거듭제곱에서 지수의 곱셈 법칙을 적용한다."
+          },
+          {
+            "term": "교환법칙",
+            "src": "solution",
+            "quote": "$(a^m)^n = a^{mn}$, $(a^n)^m = a^{n",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수의 곱셈에 대한 교환법칙 mn=nm을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$m, n$이 자연수일 때 옳은 것은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "거듭제곱의 거듭제곱에서 지수의 곱셈 법칙과 교환법칙을 적용하여 성립하는 등식을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "2^5 + 2^5 = 2^a"
+          },
+          {
+            "term": "밑",
+            "src": "stem",
+            "quote": "3^2 + 3^2 + 3^2 = 3^b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$ab$의 값은? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$\\therefore ab = 6 \\times 3 = 18$"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$2 \\times 2^5 = 2^6 \\implies a=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 거듭제곱의 덧셈을 밑과 같은 수의 곱으로 변형하여 지수법칙을 적용한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$3 \\times 3^2 = 3^3 \\implies b=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "지수끼리 비교하여 지수 방정식의 미지수를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "s a=6$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "거듭제곱의 합을 밑과 거듭제곱의 곱으로 나타내어 지수법칙으로 각 지수를 구하고 곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "src": "stem",
+            "quote": "(가) $5x^2 \\times (-6y^3) = -30x^2y^3$"
+          },
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "(다) $12a^5b^2 \\div 3a^2b = 4a^2b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면? [4점]"
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "(가) $5x^2 \\times (-6y^3)=-30x^2y^3$"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "(나) $(-2x^2y)^3=-8x^6y^3$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "단항식의 거듭제곱 및 곱셈, 나눗셈에서 지수법칙을 적용한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "(마) $(-2x^2y)^2=4x^4y^2$이므로 거짓이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱 시 음수 부호의 변화를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "(라) $9a^4 \\div (-27a^{11})=-\\frac{1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단항식의 곱셈과 나눗셈 및 거듭제곱을 지수법칙과 부호 규칙을 적용하여 참 거짓을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형인 삼각기둥 부피가"
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "삼각기둥 부피가 $60x^2y$일 때 높이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "src": "choices",
+            "quote": "$60x$"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "부피가 $60x^2y$일 때 높이는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "부피 $= xy \\times h = 60x^2y$",
+            "evidenceType": "IMPLIED",
+            "justification": "기둥의 부피는 밑넓이 곱하기 높이임을 적용한다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "$\\therefore h = 60x$",
+            "evidenceType": "IMPLIED",
+            "justification": "부피를 밑넓이로 나누어 높이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "밑변 $3x$, 높이 $\\frac{2}{3}y$인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각기둥의 밑넓이를 직각삼각형 넓이 공식으로 구하고 부피를 밑넓이로 나누어 높이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형 ABC에서 $\\angle C$의 외각이"
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "외각이 $115^\\circ$일 때 $\\angle A$는? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "외각이 $115^\\circ$일 때 $\\angle A$는? [3점]"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$50^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\angle B = \\angle C = 65^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 두 밑각의 크기가 같음을 적용한다."
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "$\\angle C = 180 - 115 = 65^\\circ$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}$인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이등변삼각형의 두 밑각의 크기가 같음과 삼각형 내각과 외각의 합 성질을 이용하여 꼭지각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형 ABC에서 $\\angle A=100^\\circ$일 때"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle A=100^\\circ$일 때 $\\angle B$는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "일 때 $\\angle B$는? [3점]"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$40^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\because \\angle B = \\angle C$",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 두 밑각의 크기가 같음을 적용한다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "$\\angle B + \\angle C = 180 - 100 = ",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 세 내각의 합은 180도임을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}$인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이등변삼각형의 꼭지각이 주어졌을 때 삼각형 내각의 합 180도를 이용하여 한 밑각의 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형의 꼭지각 이등분선(수선)은"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\overline{AD} \\perp \\overline{BC}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "일 때 $\\overline{BD}$는? [3점]"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$8cm$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "수직이등분함.\n$\\therefore \\overline{BD} =",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "이등변삼각형의 꼭지각 이등분선(수선)은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{BC}=16cm$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이등변삼각형의 꼭짓점에서 밑변에 내린 수선은 밑변을 수직이등분함을 이용하여 선분의 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}, \\angl"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "$\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "교점 $D$의 각 $\\angle BDC$는? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$19^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "$\\angle C$의 외각은 $180^\\circ-71^\\circ",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "그 외각 이등분선은 $\\overline{CB}$와 $54.5^\\",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}, \\angl"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내각의 이등분선과 외각의 이등분선이 이루는 각의 성질을 이용하여 각의 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "두 직각삼각형 $ABC$, $DEF$에서"
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "한 변 $\\overline{BC}=\\overline{EF}$이므"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle D=x^\\circ$라 하면 $x$의 값은? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 $x=50$이므로 정답은 ③이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHS 합동이다.\n따라서 대응하는 각의 크기가 같아",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 합동조건 RHS를 적용하여 대응각의 크기를 구한다."
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $DEF$에서 $\\angle F=90^\\circ$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 한 예각의 크기를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{DE}$, $\\ov"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각삼각형의 빗변과 다른 한 변의 길이가 같아 RHS 합동임을 확인하고 대응각의 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "세 변의 길이가 다음과 같을 때"
+          },
+          {
+            "term": "둔각",
+            "src": "stem",
+            "quote": "둔각삼각형인 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "둔각삼각형인 것은? [3점]"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$\\therefore$ ③"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$c^2>a^2+b^2$이면 둔각삼각형이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 길이의 제곱의 대소 관계를 비교하여 둔각삼각형을 판정한다."
+          },
+          {
+            "term": "삼각형의결정조건",
+            "src": "solution",
+            "quote": "삼각형이 성립하고 $c^2>a^2+b^2$이면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$5, 7, 9$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형의 결정조건을 만족하고 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합보다 큰 둔각삼각형을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이는? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이는? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 정답은 ③이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형에서 피타고라스 정리를 사용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "따라서 $\\triangle ABC$의 넓이는 $\\frac12 \\",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직교하는 변의 곱의 절반으로 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AB}=15$, $\\overline{BC}=9$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각삼각형에서 피타고라스 정리를 적용하여 나머지 한 변의 길이를 구하고 삼각형의 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심일 때"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BIC$의 크기는?"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$115^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "$I$가 내심이므로 $BI$, $CI$는 각각 $\\angle B",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "각각 $\\angle B$, $\\angle C$의 이등분선이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle A=50^\\circ$ 기준) [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형의 내심은 세 내각의 이등분선의 교점임을 이용하여 각 BIC의 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "점 $O$가 $\\triangle ABC$의 외심이고"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "$\\triangle AOC$ 둘레가 $20, \\overline{"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "둘레가 $20, \\overline{AC}=8$일 때 반지름은? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$6cm$"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "둘레 $= 2r + 8 = 20 \\implies 2r = 12",
+            "evidenceType": "IMPLIED",
+            "justification": "외심에서 각 꼭짓점까지의 거리는 외접원의 반지름으로 같음을 이용한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "둘레 $= 2r + 8 = 20",
+            "evidenceType": "IMPLIED",
+            "justification": "외심과 두 꼭짓점을 잇는 삼각형이 두 변의 길이가 r로 같은 이등변삼각형임을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{AC}=8$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외심에서 꼭짓점까지의 거리가 외접원의 반지름으로 같음을 이용하여 삼각형의 둘레로부터 반지름을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 내접원이 세 변"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "각각 $D$, $E$, $F$에서 접한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "일 때 $\\overline{AC}$의 길이는? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "따라서 정답은 ⑤이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의 길이",
+            "src": "solution",
+            "quote": "한 점에서 원에 그은 두 접선의 길이는 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "점 $A$에서 그은 접선이므로 $AD=AF=4$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AD}=4$, $\\overline{CE}=6$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원 밖의 한 점에서 원에 그은 두 접선의 길이가 같음을 이용하여 삼각형 변의 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "$O$는 $\\triangle ABC$의 외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$I$는 $\\triangle OBC$의 내심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BIC=150^\\circ$일 때 $\\angle A"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$60^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "$\\angle BIC\n=90^\\circ+\\dfrac12\\angl",
+            "evidenceType": "IMPLIED",
+            "justification": "내심이 이루는 각 공식을 적용하여 중심각 BOC를 구한다."
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "$\\angle BOC=2\\angle A$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외심이 이루는 중심각은 원주각의 두 배임을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "$\\angle A<90^\\circ$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내심과 외심의 성질을 연계하여 꼭지각 A의 크기를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "어떤 기약분수에서 수빈이는"
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "처음 기약분수를 순환소수로 나타내면? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "src": "solution",
+            "quote": "처음 분수는 $\\frac{13}{90}=0.1\\dot{4}$이다."
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "처음 기약분수를 순환소수로 나타내면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "(1) $0.2\\dot{5}=\\frac{23}{90}$이고 수빈",
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수를 기약분수로 나타내어 원래의 분모를 복원한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "(2) $0.1\\dot{4}=\\frac{13}{90}$이고 준서",
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수를 기약분수로 나타내어 원래의 분자를 복원한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "원래 분모는 $90$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "잘못 읽어 만든 순환소수를 기약분수로 나타내어 바른 분모와 분자를 구하고 순환소수로 변환한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$3a = 24 \\implies a=8, 3b=6 \\implie"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a+b$의 값은? [4점]"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$\\therefore a+b = 10$"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$3a = 24 \\implies a=8, 3b=6 \\implie",
+            "evidenceType": "IMPLIED",
+            "justification": "분수식 거듭제곱 전개 시 지수 곱셈 법칙을 적용한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "3a = 24 \\implies a=8",
+            "evidenceType": "IMPLIED",
+            "justification": "각 문자의 지수를 비교하여 일차방정식을 풀어 미지수를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분수식의 거듭제곱에서 지수법칙을 적용하여 미지수 a와 b를 구하고 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 ABC ($BC=10, CA=24$)에서"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원 넓이 $M$, 내접원 넓이 $N$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "내접원 넓이 $N$일 때 $M-N$? [10점]"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "그러므로\n\n$M-N=169\\pi-16\\pi$\n\n$=153\\pi$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\sqrt{10^2+24^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스 정리로 직각삼각형의 빗변의 길이를 구한다."
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내접원의 반지름은\n\n$r=\\dfrac{10+24-26}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 세 변의 길이로부터 내접원의 반지름을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "($BC=10, CA=24$)에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "피타고라스 정리로 빗변을 구하고 직각삼각형의 외접원과 내접원의 반지름 및 넓이를 구하여 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 24,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
