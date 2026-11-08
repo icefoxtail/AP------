@@ -1,0 +1,70 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -1,
+      7,
+      -2,
+      2
+    ],
+    "referenceLines": [
+      {
+        "id": "u",
+        "y": "1",
+        "intersectionCount": 2
+      },
+      {
+        "id": "v",
+        "y": "-1/2",
+        "intersectionCount": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "0≤x<2π에서 y=sin 2x의 그래프는 직선 y=1과 2개의 점에서, 직선 y=-1/2과 4개의 점에서 만난다.",
+  "sourceQuote": "$4\\sin2x-1=-3$이면 $\\sin2x=-\\dfrac12$이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "|4sin2x-1|=3에서 sin2x=1 또는 sin2x=-1/2",
+      "mappedTo": [
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "0≤x<2π에서 sin2x=1은 2개, sin2x=-1/2은 4개의 해를 가짐을 보여 준다."
+  ],
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고2_대수_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q21-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q21-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q21-solution.svg"
+  }
+}

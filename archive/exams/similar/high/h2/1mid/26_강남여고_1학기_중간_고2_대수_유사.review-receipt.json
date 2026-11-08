@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_강남여고_1학기_중간_고2_대수_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사.meta-q01-q25.json",
+  "candidateGitBlobSha1": "0f1b39210cf6ed967d92f9e142c4f81a06566d3e",
+  "reviewTimestamp": "2026-11-08T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 25,
+    "answerMatches": 25,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/gn26_daesu_blind_frozen.json (session scratchpad, not committed; 병렬 세션이 같은 이름 파일을 덮어써 원본 동결 사본에서 복원, sha1 일치)",
+    "freezeFileSha1": "4234b79afe669b0b1ae85c03ee10cf40449078c8",
+    "method": "학생에게 보이는 필드(content, choices, Q19 문제 그림)만 덤프해 sympy/python으로 풀고, 25문항 답을 gn26_daesu_blind_frozen.json에 동결한 뒤 저장된 answer/solution/meta/원본을 열어 compare 스크립트로 대조: 객관식 21/21 일치, 서술형 Q22~Q25 4/4 일치.",
+    "disclosure": "완전한 블라인드에서 Q1만 예외: 파일 앞부분 덤프에서 Q1 answer(③)가 노출됨(자명한 문항, 어차피 직접 도출). 나머지 24문항은 저장 정답·해설을 보기 전에 동결. 생성자가 알린 불확실점(Q9,Q17,Q19,Q22)은 지시문으로만 전달받았고 정답은 아님.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "①",
+      "3": "③",
+      "4": "②",
+      "5": "④",
+      "6": "⑤",
+      "7": "④",
+      "8": "②",
+      "9": "④",
+      "10": "③",
+      "11": "⑤",
+      "12": "①",
+      "13": "②",
+      "14": "②",
+      "15": "④",
+      "16": "⑤",
+      "17": "①",
+      "18": "⑤",
+      "19": "③",
+      "20": "⑤",
+      "21": "①",
+      "22": "제1,2,4사분면 (θ/3 ∈ (30+120k, 60+120k)도: k=0 제1, k=1 제2, k=2 제4)",
+      "23": "24 (ab=600, 약수 개수 4*2*3)",
+      "24": "60, 120",
+      "25": "5π/6 < x < 3π/2 또는 3π/2 < x < 7π/4"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "홀수 제곱근은 실수 하나, 짝수 제곱근 기호는 비음수: ①-3 ②3 ③(-1)^5=-1 참 ④5 ⑤2 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "(5*6)^(1/2)/15^(1/2)=sqrt2!=2 이므로 ①만 거짓, 나머지 4개 계산 참 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "a^3=27 -> a=3, (1/4)^b=16 -> b=-2, a^b=3^-2=1/9 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "2π 법으로 환산(python): -19π/12→5π/12(1), 43π/6→7π/6(3), 23π/4→7π/4(4), -37π/15→23π/15(4), 14π/3→2π/3(2) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "r=10, cos=-4/5, sin=-3/5, tan=3/4, cos*(tan-sin)=-4/5*27/20=-27/25 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "log6070=3.7832, log0.00607=-2.2168, 차 6 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "cos는 y축 대칭(우함수)이므로 ④ '원점 대칭'만 거짓, 나머지 참 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "y=8*2^x=2^(x+3)이므로 x축으로 -3 평행이동, 둘러싼 넓이=3*(9-1)=24 (수치 적분 24.0 확인) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "역함수 log_{1/2}x를 (a,2) 평행이동, log_{1/2}(12-a)=-3 -> a=4, 점근선 x=4=b, ab=16 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f(n)=a^((n+4)/12), f(2)f(4)/f(1)=a^((6+8-5)/12)=a^(3/4) (sympy 확인) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "56/n=m^3, m^3|56 -> m=1,2 -> n=56,7, 합 63 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "x=log2a,y=log2b,x/y=5/2, b^(log_a 1/32)=2^(-5y/x)=2^-2=1/4 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "12*(2*0.3010+0.4771)=12.9492 -> n=12 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "(s+c)^2=1/9 -> sc=-4/9, (s-c)^2=17/9, 4사분면에서 s-c<0 -> -sqrt17/3 (근 존재 sympy 확인) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ 거짓(x/3-π/6), ㄴ 주기 3π 참, ㄷ x=3π/2+3nπ 참, ㄹ 치역 R 거짓 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "x=0..3에서 정수 y 개수 2,2,4,6 (python 열거 14) -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "A(1,0),B(a^4,4),C(a^4,0),D(0,4) 사다리꼴 넓이 2(2a^4-1)=14 -> a^4=4, 둘레 11+sqrt17, (11+17)/4=7 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "2^(6/a)=8 -> a=2, 2^(t/2)=128 -> t=14 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "OP=3r/4: 둘레 (7/4)rθ+r/2=5, 넓이 (7/32)θr^2=3/2 -> r^2-10r+24=0, r=4,6 (θ=3/7,4/21 유효, sympy 확인), 곱 24 -> ③ (그림은 비율만 사용)",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 20,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "기울기 -3/2 -> tanθ=-3/2 둔각, sin(θ-π/2)=-cosθ, sin(π-θ)=sinθ, -sinθcosθ=6/13, pq=78 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 21,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "sin2x=1 -> π/4,5π/4; sin2x=-1/2 -> 7π/12,11π/12,19π/12,23π/12; 합 13π/2 (수치 확인 6.5π) -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "제1,2,4사분면 (θ/3 ∈ (30+120k, 60+120k)도: k=0 제1, k=1 제2, k=2 제4)",
+      "blindMatch": true,
+      "blindDerivation": "θ=2nπ+(π/2,π) -> θ/3=2nπ/3+(π/6,π/3), n mod 3 로 1,2,4사분면 (30~60도,150~180도,270~300도)"
+    },
+    {
+      "qid": 23,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "24 (ab=600, 약수 개수 4*2*3)",
+      "blindMatch": true,
+      "blindDerivation": "log(ab)=log600 -> ab=600=2^3*3*5^2, 순서쌍 약수 개수 24 (python 열거 24)"
+    },
+    {
+      "qid": 24,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "60, 120",
+      "blindMatch": true,
+      "blindDerivation": "a=2^(1/3), b=3^(1/4), c=5^(1/10), 서로 다른 소수 지수가 모두 정수 -> n은 60의 배수, 150 이하 60,120"
+    },
+    {
+      "qid": 25,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "5π/6 < x < 3π/2 또는 3π/2 < x < 7π/4",
+      "blindMatch": true,
+      "blindDerivation": "첫 부등식 -1<sinx<1/2, 둘째 3π/4<x<7π/4, 교집합 5π/6<x<3π/2 또는 3π/2<x<7π/4 (수치 격자 확인 경계 5/6,3/2,7/4π)"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "25 vs 25",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "all equal (3점x5, 3.5점x4, 4점x6, 4.5점x6, 서술형 4/5/5/6)",
+    "questionTypes": "all equal (MC 1-21, 서술형 22-25)",
+    "notes": [
+      "Q22: 원본 θ/2(2개 사분면)에서 θ/3(3개 사분면)으로 약간 어려워졌으나 같은 일반각 나눗셈·나머지 경우분류 구조로 교육과정 내, 학생이 풀 수 있는 수준이라 허용.",
+      "Q7: 원본은 sin/tan 정의역·치역·대칭 판정, 유사는 sin 주기·cos 치역·tan/cos 대칭·tan 점근선 판정으로 같은 '옳지 않은 것' 보기 판정형.",
+      "Q19: 원본 내분비 2:1 -> 3:1, 둘레·넓이 조건 -> 가능한 r 값 두 개(4,6)의 곱 24; θ가 조건으로 추가되고 두 해를 모두 검증하도록 변형, 구조 동일.",
+      "모든 문항 정답 값이 원본 정답과 다름(암기 불가)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 5,
+    "note": "MC 1-21; max-min=1"
+  },
+  "mathReview": "25문항 전수 블라인드 독립 풀이 후 저장된 해설을 끝까지 읽어 논리·중간계산·교육과정(2022 개정 대수: 지수·로그·삼각함수) 확인. 해설 오류 0건, 정답 불일치 0건, 보기 5지 유일정답. Q11 n=56,7 모두 자연수, Q14 sinθ+cosθ=1/3 해 존재 확인(θ 4사분면), Q19 두 해 r=4,6의 θ 모두 0<θ<2π, Q16 경계 포함 격자점 14, Q25 sinx=-1 제외 반영. 발문 모호성 없음.",
+  "reviewerEdits": [],
+  "metaReview": {
+    "jsMetaConsistency": "JS 25문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/크로스개념/조건/통합패턴/sourceQid/variationType/rpm 라벨이 meta 요청과 완전 일치(불일치 0). expectedSourceBlobSha1 = JS blob 일치.",
+    "keyExistence": "사용된 모든 PT/TPL/CC/COND/RPM 레코드 키가 canonical registry 또는 crosswalk에서 실재(누락 0). 새 확장 키 5개(EXT-L4 1, EXT-CROSS 4) 모두 parent 실재(H2-M1-RPM-079, CC_RADICAL_SQUARE_ABSOLUTE_VALUE, CC_HALF_LIFE_MODEL, CC_CIRCLE_SECTOR_AREA, CC_COTERMINAL_ANGLES) 확인, 기존 extensions/similar-high 및 canonical 키·라벨과 중복 없음, registry sha256이 meta registryChanges와 일치.",
+    "coverage": "standardCourse/curriculum/course/단원/소단원/개념군/PT/TPL/crossConcept/통합패턴/level/difficulty/sourceQid/variationType/provenance/RPM L3·L4 25/25; conditionKeys 14/25 채움, 11문항은 해를 제한하는 별도 조건이 없어 [] (근거: meta metaRationale.condition).",
+    "changes": "없음"
+  },
+  "visualReview": {
+    "problemFigures": "Q19만 문제 그림(construction-spike-v1, ARCHIVE_BOUND). 렌더 확인: 순백 배경, OP:PA=3:1, 색칠 영역=호 AB·호 PQ·선분 AP·BQ, 수치 라벨 없음(정답 누설 없음). 그림의 θ=60°는 모식도 값이며 실제 조건(r=4,6; θ=3/7,4/21)과 다르나 수치가 표시되지 않아 학생에게 오독 소지 낮음(정보).",
+    "solutionFigures": "Q9, Q15, Q17, Q21 렌더 확인(rsvg PNG). Q21 양호. Q9: 점 (12,-1)이 범위 밖(캡션·해설 본문에 명시), 'log 1/2' 밑이 분수 스택으로 표시되나 판독 가능. Q15: 점근선 x=±3π/2 라벨 없이 점선만 있고 T=3π 라벨이 x축 라벨과 붙어 있음, 해설 본문에 값 재기술. Q17: 엔진 자동 점근선 라벨 'x = 0'이 색칠 사각형 안쪽에 떠 있어 y축 라벨로 읽기 어려움; 해설 본문에 A,B,C,D 좌표 재기술; 엔진이 viewport를 정규화해 위치 조정 불가(재렌더 2회 시도, 동일 SVG).",
+    "unsupported": "Q8, Q16, Q25 해설 그림 UNSUPPORTED(사유 기재, 해설 글로 완결) -> 하네스 WARN으로만 표시.",
+    "planAudit": "50개 plan 모두 유효 JSON, 문제 plan 24개 EXEMPT+사유, Q19 활성; 해설 plan 활성 4(Q9,Q15,Q17,Q21), UNSUPPORTED 3, 나머지 EXEMPT+사유. 활성 plan engineEvidence(result/state/svg) 결속 확인(하네스).",
+    "engineRender": "engine.html?data=...&mode=exam|sol 를 headless Chrome DOM 덤프로 확인: 25문항 로드, MathJax 컨테이너 렌더(문제지 240), Q19 그림 및 해설 그림 4개 img 참조 포함, 로드 오류 없음. 화면 캡처(PNG)는 로딩 스켈레톤 상태에서 찍혀 픽셀 수준 확인은 NOT_RUN."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs <stem> --phase=draft : GATE_PASS (25문항 100점), WARN 3건(SOLUTION_FIGURE_UNSUPPORTED_TEXT_COMPLETE Q8,Q16,Q25)",
+    "strict": "node tools/harness/verify_similar_exam.mjs <stem> (영수증 발급 후): GATE_PASS exit 0, WARN VISUAL_DEBT_ACKNOWLEDGED x3 (Q8,Q16,Q25 UNSUPPORTED 해설 그림) + RECEIPT_QUALIFIED_PASS"
+  },
+  "NOT_RUN": [
+    "engine 화면 픽셀 캡처(로딩 상태 캡처만 가능)",
+    "main_merge_master.py 운영병합(지시상 push 금지)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 17,
+      "qid_ref": "26_강남여고_1학기_중간_고2_대수_유사#17",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림 엔진 자동 라벨 'x = 0'이 색칠 사각형 내부에 떠 있어 y축(점근선) 표시로 읽기 어려울 수 있음. 해설 본문이 좌표를 모두 재기술해 풀이 이해에는 지장 없음. 엔진 viewport 정규화로 위치 조정 불가.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 15,
+      "qid_ref": "26_강남여고_1학기_중간_고2_대수_유사#15",
+      "kind": "visual-solution-figure",
+      "reason": "점근선 점선에 라벨이 없고 'T = 3π' 라벨이 x축 문자와 근접. 해설 본문과 alt 에 점근선·주기 값 기재.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 9,
+      "qid_ref": "26_강남여고_1학기_중간_고2_대수_유사#9",
+      "kind": "visual-solution-figure",
+      "reason": "점 (12,-1)이 그림 범위 밖(캡션·해설에 명시). 로그 밑 1/2 표기가 분수 스택으로 보임.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 25/25 일치, JS 수정 0건, 메타 정합 확인, 소형 시각 부채 3건(모두 low)만 잔존."
+}
