@@ -52,7 +52,11 @@ window.questionBank = [
     "questionUid": "qid_v1_9ffbf4700b5a41fca9a5973970e4fb3a3f8d3c6f491730c3beea3225fd04f961",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":1},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수와 역함수의 두 대응점, 그리고 대칭선 y=x.",
+    "solutionImageCaption": "예: f(1)=5이면 역함수는 5를 1로 보내며 두 대응점은 y=x에 대칭이다. 정답: 0.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -106,7 +110,11 @@ window.questionBank = [
     "questionUid": "qid_v1_0cd25424d8e8edea81c4072910a06b97fa2b21b0c4a11e96dc3ed23fcd1bd872",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":1,"sourceCorrection":{"beforeChoices":["$-10$","$-5$","$0$","$5$","$10$"],"afterChoices":["$-154$","$-5$","$0$","$5$","$10$"],"reason":"Printed prompt yields unique abc=-154; result absent from printed choices. Corrected one choice after exact source-page inspection."}},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 일차함수의 그래프와 합성 과정에서 이어지는 두 대응점.",
+    "solutionImageCaption": "주어진 함수의 출력이 다음 함수의 입력이 되는 합성 과정을 그래프로 나타냈다. 정답: -154.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -159,7 +167,11 @@ window.questionBank = [
     "questionUid": "qid_v1_46ed6d9ab0f8926adbec15723e8456adc2dc9d1a46573d70e741ae8c1707d7f4",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":1},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 반비례 곡선이 제2·4사분면에 놓이고 양의 입력이 음의 함수값에 대응한다.",
+    "solutionImageCaption": "예: 양의 입력에서 음의 함수값으로 이어지는 곡선을 본다. 정답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -212,7 +224,11 @@ window.questionBank = [
     "questionUid": "qid_v1_4df6380e9ca1be61b8bd8a2fcb398d71d15c8d64b57f879a641de5a5e7880ebb",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":1},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행 이동 전후의 무리함수와 표시된 시작점.",
+    "solutionImageCaption": "x축 방향으로 −1, y축 방향으로 3만큼 옮기면 시작점 (0,0)이 (−1,3)으로 가고 최솟값은 시작점의 y좌표이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -267,11 +283,12 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_55ae5ade2f6b91e7e0b4b0118468c980cfd7391bb0305833c027f0401036fb80",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":2},
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q5-solution.svg",
-    "solutionImageAlt": "점근선이 x=1, y=−2인 유리함수의 그래프와 중심대칭축",
-    "solutionImageCaption": "점근선·제2사분면 점·대칭축을 함께 확인",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=1, y=-2를 갖는 유리함수와 대칭축 y=-x-1.",
+    "solutionImageCaption": "점근선을 확인하고 중심을 지난 기울기 -1의 대칭축을 비교하면 옳은 것은 ㄱ과 ㅁ이다. 정답: ②.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -433,11 +450,12 @@ window.questionBank = [
     "questionUid": "qid_v1_58a6a1dd89a4a7101eff6152ea70e8b5ef83a6d43df437301b6de52ecec3fc92",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":2},
     "rpmProjectionDebt": "RPM_ONLY: H1-RPM-113 is the exact locked rational-function maximum/minimum path but has NO_ACTIVE_MAPPING. The active H15-SB-04 Meta row separately confirms PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER; do not invent an RPM binding.",
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q8-solution.svg",
-    "solutionImageAlt": "두 곡선 위의 P와 Q, 원점 O로 만든 삼각형",
-    "solutionImageCaption": "u/v=1/√5인 등호 사례에서 넓이 2√5",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 반비례 곡선 위의 점 (1,2), (2,-5)와 원점을 이은 삼각형.",
+    "solutionImageCaption": "예: 두 곡선 위의 점 (1,2), (2,-5)로 삼각형의 넓이 관계를 본다. 정답: 2√5.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -547,7 +565,11 @@ window.questionBank = [
     "questionUid": "qid_v1_21df1fdb25d7ce3e746ea996519824cdf28ec3aaaa5a32363316e9f233453664",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":3},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 일차함수 조각이 열린 끝점과 닫힌 끝점으로 이어져 치역을 구분하는 그래프.",
+    "solutionImageCaption": "예: a=1, b=-1, c=4이면 치역은 [0,1)과 [1,3]으로 나뉜다. 참인 것은 ㄱ과 ㄷ이다. 정답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -601,7 +623,11 @@ window.questionBank = [
     "questionUid": "qid_v1_16bc9574ea333a082866b2f70ad2e03473184362909c2bed50b70fab2fd5c6e3",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":3},
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프와 수직점근선 x=-1, 수평점근선 y=4 및 주어진 점.",
+    "solutionImageCaption": "정의역에서 빠지는 값은 -1, 치역에서 빠지는 값은 4이며 주어진 점을 대입해 계수를 정한다. 정답: -3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -930,11 +956,12 @@ window.questionBank = [
     "questionUid": "qid_v1_a4fe877b4688099a8a98e68f946773b85898b49320efa84ced3d9fc388869eec",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":5},
     "rpmProjectionDebt": "RPM_ONLY: H1-RPM-113 is the exact locked rational-function maximum/minimum path but has NO_ACTIVE_MAPPING. The active H15-SB-04 Meta row separately confirms PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER; do not invent an RPM binding.",
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "점 A와 그래프 위 두 최단거리 점을 잇는 선분",
-    "solutionImageCaption": "u=±√6인 두 점의 거리가 모두 2√3",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 곡선과 고정점 A, 좌표가 표시된 곡선 위 점을 이은 선분.",
+    "solutionImageCaption": "예: 고정점 A와 곡선 위 점을 잇고 거리의 가로·세로 차를 본다. 정답: 2√3.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1035,11 +1062,12 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_55bcdf5f0ea89be1ec7d6be77905deed8f3bde6c6f68675e11e7abca1329f3cf",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":6,"sourceCorrection":{"beforeContentPreamble":"함수 $y=\\dfrac{-4x-k^2+2k-7}{x+1}$의 그래프가 $k$값 또는 $k$값의 범위에 따라 그래프가 지나는 사분면이 달라진다.","afterContentPreamble":"함수에 대하여 다음 각 물음에 답하시오.","reason":"Exact printed formula yields the same three quadrants for every real k; neutralized only the false explanatory preamble, retaining all subquestions."}},
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "k=1일 때 유리함수의 세 사분면 위치와 점근선",
-    "solutionImageCaption": "예시 k에서 제2·3·4사분면; 제1사분면은 없고 모든 실수 k에서 동일",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시 k=1에서 점근선 x=-1, y=-4를 갖는 유리함수의 그래프와 세 사분면의 가지.",
+    "solutionImageCaption": "예: k=1인 곡선을 y=f(x)로 두고 두 가지의 사분면을 살핀다. 정답: (1) 모든 실수, (2) 모든 실수, (3) 없음.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1088,10 +1116,11 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_c07ec198cf92e1e7376222f47df65d75329b317fedeb425bafa8a032add0c86c",
     "provenance": {"sourceId":"2020|매산고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd","sourceInputJsSha256":"1b0a0dfefefb605a8745ab034226a2f245c2cfd7103d40ad35a0a55dd30e275a","sourcePage":6},
-    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "a=5, b=−2인 무리함수와 정의역 시작점",
-    "solutionImageCaption": "대표 순서쌍에서 제1·2·3사분면을 지남",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 그래프의 시작점과 x축·y축 교점으로 제1·2·3사분면 통과를 나타낸 예시.",
+    "solutionImageCaption": "예: a=4, b=-1이면 그래프는 제3·2·1사분면을 지난다. 일반 조건에서 가능한 순서쌍을 세면 된다. 정답: 149.",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImageSize": "medium"
   }
 ];

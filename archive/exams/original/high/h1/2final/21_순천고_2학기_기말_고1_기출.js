@@ -55,13 +55,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 분모가 0이 되는 값과 분자·분모의 최고차항 계수비로 점근선을 구한다.\n조건 정리: 수직점근선은 $x=a$, 수평점근선은 $y=3$이다.\n풀이 방향: 주어진 점근선과 비교하여 $a,b$를 정한다.\n정석 풀이: $x=a=2$이므로 $a=2$이고, 최고차항 계수비가 $3$이므로 수평점근선은 $y=3$, 따라서 $b=3$이다. 그러므로 $ab=2\\cdot3=6$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q02-solution.svg",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q2-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=(3x+2)/(x−2)=3+8/(x−2)의 그래프가 수직점근선 x=2와 수평점근선 y=3을 가지며, x절편 (−2/3,0)과 y절편 (0,−1)을 지나 a=2, b=3, ab=6임을 보여준다.",
+    "solutionImageAlt": "해설 그림: 유리함수의 두 가지 가지와 세로·가로 점근선을 나타낸 그림.",
 
-    "solutionImageCaption": "y=3+8/(x−2)에서 점근선 x=2, y=3과 절편을 확인한다.",
+    "solutionImageCaption": "분모가 0이 되는 가로 좌표와 최고차항의 계수비로 점근선을 찾는다. 정답은 6이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -232,9 +232,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 교점의 $y$좌표를 미지수로 두면 근의 개수와 $y\\ge0$ 조건을 함께 처리할 수 있다.\n조건 정리: 교점에서는 $x=y-k$이고 무리함수의 함수값이므로 $y\\ge0$이다.\n풀이 방향: $y^2=2x+4$에 $x=y-k$를 대입하여 이차방정식의 두 근이 서로 다르고 모두 0 이상이 되는 조건을 구한다.\n정석 풀이: $y^2=2(y-k)+4$이므로 $y^2-2y+2k-4=0$이고, 두 근은 $y=1\\pm\\sqrt{5-2k}$이다. 서로 다른 두 실근을 가지려면 $k\\lt\\dfrac52$이다. 작은 근도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$, 따라서 $k\\ge2$이다. 그러므로 $2\\le k\\lt\\dfrac52$이고 $a=2$, $b=\\dfrac52$이다. $a+2b=2+5=7$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "무리함수 y=√(2x+4)의 그래프와 기울기 1인 직선 y=x+k가 k=2.2일 때 두 점 P₁, P₂에서 만나며, 서로 다른 두 교점이 생기는 범위가 2≤k<5/2임을 보여준다.",
-    "solutionImageCaption": "2≤k<5/2에서 두 교점이 생기는 영역을 표시한다.",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 곡선과 기울기 1인 예시 직선이 만나는 두 점.",
+    "solutionImageCaption": "예: 한 직선이 무리함수와 두 점에서 만나며, 교점의 세로 좌표는 1/2와 3/2이다. 두 교점 조건에서 범위를 구한다. 정답은 7이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
@@ -267,11 +267,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $a$의 부호에 따라 정의역과 그래프가 놓이는 사분면을 확인한다.\n조건 정리: 근호 안의 조건은 $ax\\ge0$이고, 앞에 음의 부호가 있으므로 함수값은 항상 $0$ 이하이다.\n풀이 방향: ㄱ~ㄹ을 각각 정의역, 치역, 사분면, 원점대칭으로 판정한다.\n정석 풀이: ㄱ은 $a\\lt0$이면 정의역이 $x\\le0$이므로 거짓이다. ㄴ은 $-\\sqrt{ax}\\le0$이므로 참이다. ㄷ은 $a\\lt0$이면 $x\\le0$, $y\\le0$이므로 그래프는 원점과 제3사분면에 있어 거짓이다. ㄹ에서 $y=-\\sqrt{ax}$를 원점 대칭하면 $(x,y)$가 $(-x,-y)$로 바뀌어 $y=\\sqrt{-ax}$가 되므로 참이다. 따라서 옳은 것은 ㄴ, ㄹ이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q09-solution.svg",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q9-solution-v2.svg",
 
-    "solutionImageAlt": "계수의 부호에 따른 무리함수 그래프",
+    "solutionImageAlt": "해설 그림: 원점에서 시작하는 무리함수 가지 세 개가 서로 다른 사분면으로 뻗는다.",
 
-    "solutionImageCaption": "a=1과 a=−1의 대표 그래프로 정의역·치역과 사분면 차이를 확인한다.",
+    "solutionImageCaption": "예: 계수의 부호에 따라 그래프가 놓이는 방향이 달라지고, 두 그래프는 원점 대칭이다. 옳은 것은 ㄴ, ㄹ이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -306,11 +306,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무리함수 그래프의 끝점과 $y$절편을 이용하여 $a,b,c$를 순서대로 결정한다.\n조건 정리: 그림의 끝점은 $(6,-4)$이고 그래프는 $(0,2)$를 지난다.\n풀이 방향: 끝점에서 근호 안이 0이라는 조건과 $y$절편 조건을 연립한다.\n정석 풀이: 끝점의 $y$좌표가 $-4$이므로 $c=-4$이고, $x=6$에서 근호 안이 0이므로 $6a+b=0$이다. 또 $(0,2)$를 지나므로 $2=\\sqrt b-4$, 따라서 $\\sqrt b=6$, $b=36$이다. 그러므로 $6a+36=0$에서 $a=-6$이다. 따라서 $a+b+c=-6+36-4=26$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q10-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점과 절편을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 끝점과 세로축 절편을 표시한 무리함수 그래프.",
 
-    "solutionImageCaption": "끝점 (6,−4), y절편 (0,2), 범위와 a+b+c를 확인한다.",
+    "solutionImageCaption": "끝점과 세로축 절편을 이용해 계수를 차례로 정한다. 정답은 26이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
@@ -343,9 +343,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 함수와 역함수의 그래프가 만나는 점은 $y=x$ 위의 고정점을 이용해 찾는다.\n조건 정리: $f(x)=\\sqrt{x-3}+3$이고 정의역은 $x\\ge3$이다. 이 함수는 증가함수이므로 그래프와 역함수의 공통점은 $f(x)=x$를 만족하는 점이다.\n풀이 방향: $x=\\sqrt{x-3}+3$을 풀어 두 교점을 구한 뒤 두 점 사이의 거리를 계산한다.\n정석 풀이: $x=\\sqrt{x-3}+3$에서 $t=x-3$이라 두면 $t\\ge0$이고 $t=\\sqrt{t}$이다. 양변을 제곱하면 $t^2=t$, 즉 $t(t-1)=0$이므로 $t=0$ 또는 $t=1$이다. 따라서 $x=3,4$이고 두 교점은 $(3,3)$, $(4,4)$이다. 두 점 사이의 거리는 $\\sqrt{(4-3)^2+(4-3)^2}=\\sqrt2$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "함수와 역함수의 두 고정점을 나타낸 해설 그래프",
-    "solutionImageCaption": "교점 (3,3), (4,4)와 y=x를 표시하여 거리를 확인한다.",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수와 역함수가 대각선 위의 두 점에서 만난다.",
+    "solutionImageCaption": "두 공통점은 대각선 위에 있으며 두 점 사이의 거리를 계산한다. 정답은 루트 2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
@@ -546,11 +546,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 교점의 $x^2$을 미지수로 두면 두 교점 조건을 이차방정식의 두 근으로 바꿀 수 있다.\n조건 정리: 교점에서 $y=\\dfrac{k}{x}$이므로 $x^2+\\dfrac{k^2}{x^2}=5$이다.\n풀이 방향: $t=x^2$로 두고 두 근의 비와 근의 합·곱을 이용한다.\n정석 풀이: $t=x^2$라 두면 $t^2-5t+k^2=0$이다. 두 점의 $x$좌표 비가 $1:3$이므로 두 양의 근의 비는 $1:9$이다. 근의 합이 $5$이므로 두 근은 $\\dfrac12$, $\\dfrac92$이고, 근의 곱은 $\\dfrac12\\cdot\\dfrac92=\\dfrac94=k^2$이다. $k\\gt0$이므로 $k=\\dfrac32$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q18-solution-v2.svg",
 
-    "solutionImageAlt": "원과 반비례 함수의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=5와 반비례 그래프가 제1사분면에서 두 점에서 만나고, 두 교점의 가로 좌표를 a, 3a로 나타낸 그림",
 
-    "solutionImageCaption": "x²=1/2, 9/2인 두 교점과 x좌표의 비 1:3을 확인한다.",
+    "solutionImageCaption": "첫째 사분면의 두 교점의 가로 좌표 비가 1:3이므로 x²의 두 값은 1/2, 9/2이고 k²=9/4이다. 정답은 3/2이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -658,6 +658,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 곡선과 대각선 사이에 세 번의 함수값 이동 경로가 이어져 있다.",
+    "solutionImageCaption": "예: 세 단계마다 처음 값으로 돌아오므로 육백 번의 합성 결과는 처음 입력과 같다. 정답은 2이다.",
+    "solutionImageSize": "full"
   }
 ];

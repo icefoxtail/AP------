@@ -92,7 +92,11 @@ window.questionBank = [
     "questionUid": "qid_v1_95e66556f015ba0af9c8be291d93da8d3e06b09cfbbcdbd11144ad14e9476181",
     "sourceOrdinal": 2,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수와 그 역함수 그래프, 대각선 대칭을 이루는 두 대응점.",
+    "solutionImageCaption": "예: f의 점 (0,3)에 대응하는 역함수의 점은 (3,0)이다. g는 f의 역함수이므로 식을 구해 2를 대입한다. 정답은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -234,7 +238,11 @@ window.questionBank = [
     "questionUid": "qid_v1_e0f243145f9cdde9702988de739557702d29c244636077561d5a0d6d48764adf",
     "sourceOrdinal": 5,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=f(x)와 h=f∘g의 역함수 직선 y=h⁻¹(x), 그리고 풀이의 두 중간 단계 점 (2,-1), (-1,3/2)를 나타낸 그림",
+    "solutionImageCaption": "합성함수는 오른쪽부터 적용한다. 먼저 f(2)=-1을 얻고, 이어서 h=f∘g의 역함수 h⁻¹에 -1을 넣어 3/2를 구한 뒤 마지막으로 f를 적용한다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -376,7 +384,11 @@ window.questionBank = [
     "questionUid": "qid_v1_8a91ed8cc58db3bbddf30c9a7a26a4cb30905a55a2f65eb7b93dddaa538d5c8a",
     "sourceOrdinal": 8,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=f(x) 위의 두 대응점 P, Q와 점선 y=x를 나타낸 그림",
+    "solutionImageCaption": "역함수 그래프 위의 점 (-2,1)을 y=x에 대칭으로 옮기면 (1,-2)가 y=f(x) 위에 놓인다. 두 점을 대입해 a, b를 구한다. 이때 f와 역함수의 그래프는 같은 직선이다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -521,7 +533,11 @@ window.questionBank = [
     "questionUid": "qid_v1_36c0b37c6dd8abb3f46c8f774f143251beee85f145b95d9026f2ba7491ec04dc",
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간에서 감소하는 무리함수와 구간의 양 끝점.",
+    "solutionImageCaption": "함수가 감소하므로 오른쪽 끝에서 최솟값을, 왼쪽 끝에서 최댓값을 얻는다. 최솟값 조건으로 매개변수를 정한 뒤 최댓값을 계산한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -569,7 +585,11 @@ window.questionBank = [
     "questionUid": "qid_v1_458352b10058143c3a0e0e1df38e10fe32c60e62b5407a7e96a3f8f8fb75d310",
     "sourceOrdinal": 12,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프와 좌표축, 음의 x 구간의 그래프 가지.",
+    "solutionImageCaption": "경계 사례에서 x가 음수일 때 분자와 분모가 모두 음수이므로 함수값은 양수이다. 매개변수의 범위를 따져 최댓값을 정한다. 정답은 3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -617,7 +637,11 @@ window.questionBank = [
     "questionUid": "qid_v1_ed1957e3ff14aadf0c5d0d24e81c9cfe18cded21d0b7ca95093ab19594b18e99",
     "sourceOrdinal": 13,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수와 역함수의 그래프, 대각선 대칭인 시작점.",
+    "solutionImageCaption": "역함수의 시작점은 원함수 시작점의 좌표를 바꾼 점이다. 역함수 식과 정의역을 비교해 두 상수를 구한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -710,11 +734,14 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 15,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q15-solution-v2.svg",
     "questionUid": "qid_v1_424800a42150a151d79bf093082f190d4dd6ded1e6968c1bb18fbdc800992d09",
     "sourceOrdinal": 15,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImageAlt": "해설 그림: 반비례 곡선과 직선의 두 교점, 수직·수평 선분으로 만든 직각삼각형.",
+    "solutionImageCaption": "예: 두 교점의 좌표가 서로 반대수인 한 경우를 그려 수직변과 수평변의 길이 관계를 본다. 일반적인 두 교점에서 두 변의 길이를 구해 삼각형 넓이를 계산한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -763,7 +790,11 @@ window.questionBank = [
     "questionUid": "qid_v1_c7f62e26019e7017bd084610a5e09dadc311f5455a044d18b0e4e807578a6393",
     "sourceOrdinal": 16,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 위의 두 점과 두 점을 잇는 선분의 중점.",
+    "solutionImageCaption": "예: P=(-1,0), Q=(7,2)의 중점 M=(3,1)을 표시한다. 일반적으로 두 점의 y좌표를 u와 v라 두면 중점 조건은 u+v=2이고, 좌표 차를 인수분해해 선분의 기울기를 구한다. 정답은 1/4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -906,7 +937,11 @@ window.questionBank = [
     "questionUid": "qid_v1_7094e1fa3d523d2f7a6c8ad0c31bad37b28e1dd6ac4889d2ce36e41879961899",
     "sourceOrdinal": 19,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 경계 사례에서 선택한 직선의 교점.",
+    "solutionImageCaption": "예: 파란 곡선은 y=f(x)=(x-2)/(x+1), 주황 직선 y=g(x)는 y=mx+n의 한 경계 사례다. 모든 기울기에서 교점이 존재하려면 판별식의 최솟값이 음수가 아니어야 한다. 이를 이용해 절편의 최댓값을 정한다. 정답은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -952,11 +987,14 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 20,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q20-solution-v2.svg",
     "questionUid": "qid_v1_df642ba5ba6b03a242cfd8f4688169315203ebd89653a68abe8d7d5b2592057b",
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImageAlt": "해설 그림: 두 무리함수 그래프 위의 세 점과 직각이등변삼각형.",
+    "solutionImageCaption": "예: 파란 곡선을 y=f(x)=√x, 주황 곡선을 y=g(x)=k√x로 나타내고, 점 A, B, C의 수평·수직 변이 같은 경우를 살핀다. 넓이 조건에서 변의 길이를 구해 함수 관계에 대입한다. 정답은 2이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -997,11 +1035,14 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 21,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q21-solution-v2.svg",
     "questionUid": "qid_v1_a9196edd63d2e1a153fd3bcea37550d59899a1afe8032fded42b5c35d08efac7",
     "sourceOrdinal": 21,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImageAlt": "해설 그림: 감소하는 무리함수와 역함수의 그래프, 대각선 위 교점.",
+    "solutionImageCaption": "시작점으로 두 상수를 구하고 두 함수식을 연립해 교점을 확인한다. 정답: a=2, b=2, p+q=6−2√7.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -1016,7 +1057,7 @@ window.questionBank = [
     ],
     "answer": "$f(x)=(x-2)^2-5$",
     "solution": "최고차항의 계수가 양수이므로 $a>0$이다.\n이차함수를\n$f(x)=ax^2+bx+c$\n라 두면 $g(0)=f(0)=-1$에서\n$c=-1$이다.\n또 $g(-1)=f(-1)=4$이므로\n$a-b+c=4$이다.\n$c=-1$을 대입하면\n$a-b=5$이다.\n왼쪽 가지는 $g(x)=x-4$이고 $x<-1$이므로 치역은\n$(-\\infty,-5)$이다.\n오른쪽 가지는 $g(x)=x+2$이고 $x>2$이므로 치역은\n$(4,\\infty)$이다.\n따라서 가운데 구간에서는 값 $-5$부터 $4$까지를 겹치지 않게 모두 채워야 한다.\n$a>0$인 이차함수는 꼭짓점을 기준으로 감소하다가 증가한다.\n꼭짓점이 $-1$과 $2$ 사이에 있으면 꼭짓점 양쪽에서 같은 함수값이 나와 $g$가 일대일이 아니게 된다.\n꼭짓점이 $x\\le-1$이면 $[-1,2]$에서 $f$가 증가하므로 $f(-1)=4$ 이후 $-5$를 만들 수 없다.\n따라서 $f$는 $[-1,2]$에서 감소하고, 이 구간의 최솟값은 $f(2)$이다.\n왼쪽 가지는 $(-\\infty,-5)$를 이미 채우므로 가운데 함수값이 $-5$보다 작으면 두 구간의 값이 겹친다.\n반대로 가운데 구간이 $-5$까지 내려가지 않으면 전체 치역에 $-5$가 빠진다.\n따라서\n$f(2)=-5$이다.\n$a-b=5$를 이용해\n$f(2)=4a+2b+c$에 $c=-1$을 대입하면\n$4a+2b-1=-5$이다.\n양변에 $1$을 더하면\n$4a+2b=-4$이다.\n$a-b=5$에서 $b=a-5$이다.\n이를 대입하면\n$4a+2(a-5)=-4$이다.\n괄호를 풀면\n$6a-10=-4$\n$6a=6$\n$a=1$이다.\n따라서\n$b=a-5$\n$b=-4$이다.\n그러므로\n$f(x)=x^2-4x-1$이다.\n완전제곱식으로 고치면\n$f(x)=(x-2)^2-5$이다.",
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q22-solution-v2.svg",
     "level": "상",
     "category": "함수",
     "originalCategory": "함수",
@@ -1045,7 +1086,10 @@ window.questionBank = [
     "questionUid": "qid_v1_78eb383c8d75d1a58c5b0928c84ca37a0ee11f9bc30b050a9bdfd9a2430052a6",
     "sourceOrdinal": 22,
     "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"},
+    "solutionImageAlt": "해설 그림: 세 조각 함수의 그래프와 경계의 열린점·닫힌점.",
+    "solutionImageCaption": "양쪽 조각의 치역은 각각 -5보다 작고 4보다 크다. 가운데 이차함수가 두 경계값을 잇고 일대일이 되려면 구간에서 감소해야 하므로 꼭짓점은 오른쪽 끝에 놓인다. 정답은 f(x)=(x-2)²-5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
