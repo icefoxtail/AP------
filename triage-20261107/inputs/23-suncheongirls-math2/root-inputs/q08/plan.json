@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "접선의 기울기는 $3x^2-10x+7$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1.4,
+      1.5,
+      -3,
+      24
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "-10",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=3x^2-10x+7",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "-1",
+        "to": "0"
+      },
+      {
+        "id": "S2",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "0",
+        "to": "1"
+      }
+    ]
+  },
+  "caption": "도함수의 두 대칭 구간의 적분을 더해 함수값의 변화를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도함수를 −1부터 1까지 적분해 함수값의 변화를 나타낸다.",
+      "mappedTo": "curves"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 아래의 양쪽 영역이 함수값의 변화량에 대응한다."
+  ]
+}
