@@ -339,7 +339,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: -1≤x≤0 구간에서 파란 곡선 y=f(x)와 주황 곡선 y=f⁻¹(x)가 점선 y=x에 대하여 대칭이다. 두 곡선은 직선 y=x 밖의 두 점 (-1,0), (0,-1)에서 만난다.",
+    "solutionImageCaption": "두 함수가 함께 정의된 구간에서 f(파란색)와 f⁻¹(주황색)의 그래프는 y=x에 대하여 대칭이다. (-1,0), (0,-1)은 두 그래프의 교점이지만 y=x 위에 있지 않으므로 ㄱ은 거짓이다. ㄴ은 합성함수의 정의역이 달라 거짓이고 ㄷ만 참이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

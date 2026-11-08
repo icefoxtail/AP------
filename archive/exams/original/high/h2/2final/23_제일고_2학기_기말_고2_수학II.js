@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 그래프와 가로축의 3 눈금에 대응하는 점.",
+    "solutionImageCaption": "부정적분을 미분해 얻은 일차함수의 그래프에서 입력에 대응하는 위치를 확인한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -56,7 +60,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 곡선과 극대·극소 위치를 나타내는 두 점.",
+    "solutionImageCaption": "주어진 조건으로 정해진 삼차함수의 그래프에서 극대와 극소가 나타나는 위치를 확인한다. 정답은 26이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -85,7 +93,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간에서 사차함수의 양 끝점과 두 내부 극점.",
+    "solutionImageCaption": "닫힌구간의 양 끝점과 내부 임계점에서 함수값을 비교해 최댓값과 최솟값을 찾는다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -259,7 +271,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선의 차를 나타내는 삼차함수 h의 그래프와 가로축 사이에 색칠한 두 영역 S1, S2.",
+    "solutionImageCaption": "두 곡선의 차 h(x)=(x+1)(x−1)(x−3)의 그래프이다. 가로축 위쪽 S₁과 아래쪽 S₂는 부호가 반대이므로 넓이는 절댓값으로 더한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -346,7 +362,11 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 g(x)=|x|+|x−2|의 그래프와 가로축 사이에 색칠한 세 영역 S1, S2, S3.",
+    "solutionImageCaption": "g(x)=f′(x)=|x|+|x−2|의 그래프이다. x=0, 2에서 구간을 나눠 세 영역 S₁, S₂, S₃의 넓이(적분값)를 더하면 f(3)−f(−1)이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
