@@ -1,0 +1,17 @@
+{
+ "capability":"composite-panels-v1",
+ "sourceQuote":"이제 $g(3)$의 식이 달라지는 경계",
+ "caption":"예: a=0과 a=5에서 입력 3이 어느 조각에 속하는지 비교한다.",
+ "sourceConditions":[{"id":"c1","condition":"g(x)=2x+17 (x<a), x² (x>=a); g(3)의 식은 a=3을 기준으로 나뉜다.","mappedTo":["panels"]}],
+ "newVisualInformation":["a=0 및 a=5라는 두 예시에서 입력 3이 선택하는 조각"],
+ "panels":[
+  {"caption":{"math":"a=0","text":"예시"},"plan":{"capability":"piecewise-discontinuous-spike-v1","graphPlan":{"family":"piecewise-discontinuous","pieces":[
+   {"coefficients":["17","2"],"domain":[null,"0"],"end":"OPEN"},
+   {"coefficients":["0","0","1"],"domain":["0",null],"start":"CLOSED"}
+  ],"requiredPoints":[{"id":"P","x":"3","y":"9"}],"axisTickValues":{"x":[],"y":[]}}}},
+  {"caption":{"math":"a=5","text":"예시"},"plan":{"capability":"piecewise-discontinuous-spike-v1","graphPlan":{"family":"piecewise-discontinuous","pieces":[
+   {"coefficients":["17","2"],"domain":[null,"5"],"end":"OPEN"},
+   {"coefficients":["0","0","1"],"domain":["5",null],"start":"CLOSED"}
+  ],"requiredPoints":[{"id":"P","x":"3","y":"23"}],"axisTickValues":{"x":[],"y":[]}}}}
+ ]
+}
