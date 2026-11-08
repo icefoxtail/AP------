@@ -1,0 +1,8 @@
+{
+ "capability":"polynomial-spike-v1",
+ "graphPlan":{"family":"polynomial","domain":[-2,4],"viewport":[-2,4,-4,4],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[],"axisTickValues":{"x":[],"y":[]},"overviewHeaderBand":true,"plotHeightLimit":360,"coefficients":["sqrt(6)","-1","-sqrt(6)","1"],"regions":[{"id":"S1","upper":"f","lower":"axis","from":"-1","to":"1","fill":"LIGHT"},{"id":"S2","upper":"axis","lower":"f","from":"1","to":"sqrt(6)","fill":"LIGHT"}]},
+ "caption":"k=√6일 때 h(x)의 그래프와 x축 사이 두 영역을 더한다.",
+ "sourceConditions":[{"id":"c1","condition":"k=√6, h(x)=(x²−1)(x−√6), 근 -1, 1, √6","mappedTo":["graphPlan.coefficients","graphPlan.regions"]}],
+ "newVisualInformation":["[-1,1]에서는 h≥0, [1,√6]에서는 h≤0; 두 영역 넓이 합은 2√6−1/4"],
+ "sourceQuote":"따라서 $k=\\sqrt6$이다."
+}

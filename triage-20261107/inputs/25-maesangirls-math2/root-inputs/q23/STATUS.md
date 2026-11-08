@@ -1,0 +1,1 @@
+원격 브랜치에 보존할 초안. 원문·기존 q23-solution.svg 및 OPEN_LAYOUT 이력 보존. 계획은 radical polynomial 근·영역 지원의 로컬 격리 개선안 codex/q23-radical-polynomial-20261108에 의존하고 현재 main 미반영이다. 사용한 author schema는 해당 개선안 테스트 fixture에 근거하되 이번 초안 validator·렌더 NOT_RUN. 소유·누적 시도 UNKNOWN, 미인계. 거절된 별도 작업 우회 금지.
