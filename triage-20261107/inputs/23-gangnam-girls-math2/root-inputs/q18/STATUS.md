@@ -18,3 +18,12 @@ The draft plots x³−x but supplies no shaded S1/S2 regions or x=a boundary lin
 Source PNG used by ROOT: archive/assets/images/23_강남여고_2학기_기말_고2_수학II/q18.png, PR #1225 head 374cbb01ab00c364e4fb50e3b63d145c1aef5cd3, blob 2e6bdf5c20fb816e210ff80590f952b8622807d7, 31919 bytes. It is not present in checked main. Preserve the pending restoration and linkage instead of duplicating it.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Exact-coordinate representation correction
+
+ROOT의 최신 계획을 그대로 보존했다. requiredPoints의 분수·근호 문자열을 그리기용 유한 JSON 숫자로 바꾸고 graphPlan.exactCoordinates에 양 좌표의 원래 정확식을 함께 보존했다. 계수·함수·정의역·표시 범위·sourceQuote·다른 필드는 변경하지 않았다. 아래 숫자는 그리기용 좌표이며 정확 라벨을 근삿값으로 바꾼 것이 아니다.
+- M: exactCoordinates ["sqrt(3)/3", "-2*sqrt(3)/9"]; numeric drawing position [0.5773502691896257, -0.3849001794597505].
+- B: exactCoordinates ["sqrt(3)", "2*sqrt(3)"]; numeric drawing position [1.7320508075688772, 3.4641016151377544].
+
+phase2.mjs blob 983e492c0661b93ea7e8188fad33061a0d103b36 L791–809의 exactCoordinates 및 finite requiredPoints 규칙을 대조했다. 제한된 정적 대조에서 정확식 일치, 수치 오차의 절대 1e-9 및 상대 1e-9 기준, 곡선 위 점 오차 1e-8 기준을 확인했다. 이것은 공식 validator나 렌더·배치·학생 화면 검수가 아니다. 공식 validator / render / independent visual review / handoff: NOT_RUN. 기존 OPEN·HOLD·실패·가독성·답 노출·소유 UNKNOWN 이력은 유지하며 READY 또는 게시 완료를 주장하지 않는다.
