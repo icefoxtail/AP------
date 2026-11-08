@@ -32,8 +32,15 @@ window.questionBank = [
       "$3$",
       "$5$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n두 포물선의 표준형 $y^2 = 4px$와 $x^2 = 4py$에서 초점의 좌표를 각각 구하고, 두 점 사이의 거리 공식을 적용한다.\n\n[단계별 풀이]\n1단계: 각 포물선의 초점 구하기\n- 포물선 $y^2 = -8x$:\n  $4p = -8 \\implies p = -2$이므로 초점의 좌표는 $\\mathrm{F}_1(-2, 0)$이다.\n- 포물선 $x^2 = 4y$:\n  $4p = 4 \\implies p = 1$이므로 초점의 좌표는 $\\mathrm{F}_2(0, 1)$이다.\n\n2단계: 두 초점 사이의 거리 계산\n점 $\\mathrm{F}_1(-2, 0)$과 점 $\\mathrm{F}_2(0, 1)$ 사이의 거리는\n$$\\overline{\\mathrm{F}_1\\mathrm{F}_2} = \\sqrt{(0 - (-2))^2 + (1 - 0)^2} = \\sqrt{2^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$$\n\n[오답 및 경계 점검]\n- $y^2$ 형태는 초점이 $x$축 위, $x^2$ 형태는 초점이 $y$축 위에 있음을 혼동하지 않는다.\n\n[결론]\n③",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 2,
@@ -66,8 +73,15 @@ window.questionBank = [
       "$7$",
       "$5\\sqrt{2}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n포물선의 정의(포물선 위의 점에서 초점까지의 거리는 준선까지의 거리와 같다)를 활용하여 선분의 합을 기하학적으로 최단거리 문제로 변환한다.\n\n[단계별 풀이]\n1단계: 포물선의 초점과 준선 파악\n포물선 $y^2 = 12x$에서 $4p = 12 \\implies p = 3$이다.\n- 초점: $(3, 0)$\n- 준선: $x = -3$\n주어진 점 $\\mathrm{B}(3, 0)$은 바로 이 포물선의 초점이다!\n\n2단계: 포물선의 정의 적용\n포물선 위의 점 $\\mathrm{P}$에서 준선 $x = -3$에 내린 수선의 발을 $\\mathrm{H}$라 하면, 포물선의 정의에 의하여\n$$\\overline{\\mathrm{PB}} = \\overline{\\mathrm{PH}}$$\n따라서 구하는 식은 다음과 같다:\n$$\\overline{\\mathrm{PA}} + \\overline{\\mathrm{PB}} = \\overline{\\mathrm{PA}} + \\overline{\\mathrm{PH}}$$\n\n3단계: 최솟값 계산\n점 $\\mathrm{A}(4, 5)$와 준선 위의 점 $\\mathrm{H}$를 잇는 꺾인 선의 길이 $\\overline{\\mathrm{PA}} + \\overline{\\mathrm{PH}}$의 최솟값은\n점 $\\mathrm{A}(4, 5)$에서 준선 $x = -3$에 내린 수선의 길이와 같다.\n$$\\text{최솟값} = 4 - (-3) = 7$$\n\n[오답 및 경계 점검]\n- 점 $\\mathrm{B}$가 초점임을 인식하면 복잡한 대수 계산 없이 정의만으로 즉시 해결된다.\n\n[결론]\n④",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 3,
@@ -94,8 +108,15 @@ window.questionBank = [
     "wide": false,
     "content": "포물선 $x^2+8y-8=0$의 준선을 $l$, 포물선 $y^2+6y+8x-7=0$의 초점을 $\\mathrm{F}$라고 할 때, 점 $\\mathrm{F}$와 직선 $l$ 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "6",
+    "solution": "[풀이 전략]\n일반형으로 주어진 두 포물선을 각각 표준형으로 정리하여 준선 $l$과 초점 $\\mathrm{F}$의 좌표를 구하고, 점과 직선 사이의 거리를 계산한다.\n\n[단계별 풀이]\n1단계: 준선 $l$의 방정식 구하기\n$$x^2 + 8y - 8 = 0 \\implies x^2 = -8y + 8 = -8(y - 1) = 4(-2)(y - 1)$$\n기본형 $x^2 = -8y = 4(-2)y$의 준선은 $y = 2$이다.\n$y$축 방향으로 $1$만큼 평행이동하였으므로 준선 $l$의 방정식은\n$$y = 2 + 1 = 3$$\n\n2단계: 초점 $\\mathrm{F}$의 좌표 구하기\n$$y^2 + 6y + 8x - 7 = 0 \\implies (y + 3)^2 - 9 + 8x - 7 = 0$$\n$$(y + 3)^2 = -8x + 16 = -8(x - 2) = 4(-2)(x - 2)$$\n기본형 $y^2 = -8x = 4(-2)x$의 초점은 $(-2, 0)$이다.\n$x$축 방향으로 $2$만큼, $y$축 방향으로 $-3$만큼 평행이동하였으므로 초점 $\\mathrm{F}$의 좌표는\n$$\\mathrm{F}(-2 + 2, 0 - 3) = (0, -3)$$\n\n3단계: 점 $\\mathrm{F}$와 직선 $l$ 사이의 거리 계산\n점 $\\mathrm{F}(0, -3)$에서 수평선 $l: y = 3$까지의 거리는\n$$|3 - (-3)| = 6$$\n\n[오답 및 경계 점검]\n- 완전제곱식 변형 후 평행이동량 부호 처리를 정확히 확인한다.\n\n[결론]\n6",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 4,
@@ -122,8 +143,15 @@ window.questionBank = [
     "wide": false,
     "content": "두 초점의 좌표가 $(5, 0)$, $(-5, 0)$이고 한 꼭짓점의 좌표가 $(0, 4)$인 타원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{41}+\\frac{y^2}{16}=1",
+    "solution": "[풀이 전략]\n타원의 초점이 $x$축 위에 있으므로 표준형 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$)을 세우고 초점 관계식 $a^2 - b^2 = c^2$을 적용한다.\n\n[단계별 풀이]\n1단계: 계수 관계 파악\n두 초점이 $(5, 0), (-5, 0)$이므로 $c = 5$이고 초점은 $x$축 위에 있다.\n한 꼭짓점이 $(0, 4)$이므로 $y$축과의 교점에서 $b = 4 \\implies b^2 = 16$이다.\n\n2단계: $a^2$ 값 계산\n초점이 $x$축 위에 있는 타원에서 $a^2 - b^2 = c^2$이므로:\n$$a^2 - 16 = 5^2 = 25 \\implies a^2 = 25 + 16 = 41$$\n\n3단계: 타원의 방정식 완성\n따라서 구하는 타원의 방정식은\n$$\\frac{x^2}{41} + \\frac{y^2}{16} = 1$$\n\n[오답 및 경계 점검]\n- $a^2 = 41 > b^2 = 16$이므로 장축이 $x$축 위에 올바르게 위치함을 확인한다.\n\n[결론]\n\\frac{x^2}{41}+\\frac{y^2}{16}=1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 5,
@@ -150,8 +178,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q05.png\" />\n\n오른쪽 그림과 같이 $x$축 위의 점 $\\mathrm{A}$와 $y$축 위의 점 $\\mathrm{B}$가 $\\overline{\\mathrm{AB}}=5$를 만족시키며 움직이고 있다. 선분 $\\mathrm{AB}$ 위의 점 $\\mathrm{P}$가 $\\overline{\\mathrm{AP}} : \\overline{\\mathrm{BP}} = 3 : 2$를 만족시킬 때, 점 $\\mathrm{P}$가 그리는 도형의 방정식을 구하시오. (단, 점 $\\mathrm{P}$는 제1사분면 위의 점이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{4}+\\frac{y^2}{9}=1\\text{ ($x>0$, $y>0$)}",
+    "solution": "[풀이 전략]\n선분 $\\mathrm{AB}$의 길이를 이용한 관계식을 세우고, 내분점 공식을 통하여 점 $\\mathrm{P}$의 좌표 $(x, y)$와 $\\mathrm{A}, \\mathrm{B}$의 좌표 사이의 관계를 유도한다.\n\n[단계별 풀이]\n1단계: 좌표 설정 및 선분 길이 관계식\n점 $\\mathrm{A}$가 $x$축 위, 점 $\\mathrm{B}$가 $y$축 위의 점이므로\n$$\\mathrm{A}(a, 0), \\quad \\mathrm{B}(0, b)$$\n$\\\\overline{\\mathrm{AB}} = 5$이므로 피타고라스 정리에 의하여\n$$a^2 + b^2 = 25$$\n\n2단계: 점 $\\mathrm{P}$의 내분점 좌표 표현\n점 $\\mathrm{P}(x, y)$는 선분 $\\mathrm{AB}$를 $3 : 2$로 내분하는 점이므로:\n$$x = \\frac{3 \\times 0 + 2 \\times a}{3 + 2} = \\frac{2a}{5} \\implies a = \\frac{5x}{2}$$\n$$y = \\frac{3 \\times b + 2 \\times 0}{3 + 2} = \\frac{3b}{5} \\implies b = \\frac{5y}{3}$$\n\n3단계: $a, b$ 소거 및 타원 방정식 유도\n$a^2 + b^2 = 25$에 대입하면:\n$$\\left(\\frac{5x}{2}\\right)^2 + \\left(\\frac{5y}{3}\\right)^2 = 25$$\n$$\\frac{25x^2}{4} + \\frac{25y^2}{9} = 25$$\n양변을 $25$로 나누면:\n$$\\frac{x^2}{4} + \\frac{y^2}{9} = 1$$\n단, 점 $\\mathrm{P}$는 제1사분면 위의 점이므로 $x > 0, y > 0$이다.\n\n[오답 및 경계 점검]\n- 제1사분면 단서 조건($x>0, y>0$)을 누락하지 않도록 주의한다.\n\n[결론]\n\\frac{x^2}{4}+\\frac{y^2}{9}=1\\text{ ($x>0$, $y>0$)}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 6,
@@ -178,8 +213,15 @@ window.questionBank = [
     "wide": false,
     "content": "서로 $16\\,\\mathrm{km}$ 떨어진 두 관측소가 있다. 한 관측소에서 폭발음을 들은 지 $12$초 후에 다른 관측소에서 폭발음을 들었다. 이때 두 관측소의 위치를 좌표평면 상에 두 점 $\\mathrm{A}(-8, 0)$, $\\mathrm{B}(8, 0)$으로 나타내면 폭발이 일어난 지점은 두 점 $\\mathrm{A}, \\mathrm{B}$를 초점으로 하는 쌍곡선 위의 점이다. 이 쌍곡선의 방정식을 구하시오. [단, 소리의 속력은 초속 $\\frac{1}{3}\\,\\mathrm{km}$로 계산한다.]",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{4}-\\frac{y^2}{60}=1",
+    "solution": "[풀이 전략]\n두 지점으로부터 거리의 차가 일정한 점의 자취는 쌍곡선임을 이용하여 소리의 전달 시간차로부터 거리의 차를 계산하고 쌍곡선의 방정식을 세운다.\n\n[단계별 풀이]\n1단계: 초점 및 거리의 차 계산\n두 관측소 $\\mathrm{A}(-8, 0), \\mathrm{B}(8, 0)$ 사이의 거리가 $16\\,\\mathrm{km}$이므로\n초점의 좌표는 $(\\pm 8, 0)$이며 $c = 8$이다.\n소리의 속력이 초속 $\\frac{1}{3}\\,\\mathrm{km}$이고, 폭발음을 들은 시간 차가 $12$초이므로\n폭발 지점에서 두 관측소까지의 거리의 차는\n$$2a = 12 \\times \\frac{1}{3} = 4\\,\\mathrm{km} \\implies a = 2 \\implies a^2 = 4$$\n\n2단계: $b^2$ 계산\n쌍곡선에서 $c^2 = a^2 + b^2$이므로:\n$$b^2 = c^2 - a^2 = 8^2 - 2^2 = 64 - 4 = 60$$\n\n3단계: 쌍곡선의 방정식 완성\n주축이 $x$축 위에 있으므로 구하는 쌍곡선의 방정식은\n$$\\frac{x^2}{4} - \\frac{y^2}{60} = 1$$\n\n[오답 및 경계 점검]\n- 소리의 속력 $\\frac{1}{3}\\,\\mathrm{km/s}$와 시간 $12\\mathrm{s}$를 곱해 거리의 차 $4\\,\\mathrm{km}$를 정확히 구한다.\n\n[결론]\n\\frac{x^2}{4}-\\frac{y^2}{60}=1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 7,
@@ -206,8 +248,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q07.png\" />\n\n다음 그림과 같이 쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$의 두 초점을 $\\mathrm{F}, \\mathrm{F}'$이라고 하자. 이 쌍곡선과 선분 $\\mathrm{FF}'$을 지름으로 하는 원의 교점 중 하나를 $\\mathrm{P}$라고 할 때, 삼각형 $\\mathrm{PF'F}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "9",
+    "solution": "[풀이 전략]\n원주각의 성질을 이용하여 $\\triangle\\mathrm{PF'F}$가 직각삼각형임을 확인하고, 쌍곡선의 정의와 피타고라스 정리를 결합하여 넓이를 계산한다.\n\n[단계별 풀이]\n1단계: 쌍곡선의 기본 요소 계산\n쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$에서 $a^2 = 16, b^2 = 9$이다.\n초점의 좌표는 $c^2 = a^2 + b^2 = 16 + 9 = 25 \\implies c = 5$이다.\n두 초점 사이의 거리는 $\\overline{\\mathrm{FF'}} = 2c = 10$이다.\n쌍곡선의 정의에 의하여:\n$$|\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}}| = 2a = 8$$\n\n2단계: 직각삼각형 성질 및 피타고라스 정리\n선분 $\\mathrm{FF'}$을 지름으로 하는 원 위의 점 $\\mathrm{P}$에 대하여, 반원에 대한 원주각의 크기는 $90^\\circ$이므로\n$$\\angle\\mathrm{FPF'} = 90^\\circ$$\n따라서 직각삼각형 $\\mathrm{PF'F}$에서 피타고라스 정리에 의하여\n$$\\overline{\\mathrm{PF'}}^2 + \\overline{\\mathrm{PF}}^2 = \\overline{\\mathrm{FF'}}^2 = 10^2 = 100$$\n\n3단계: 두 선분의 곱 및 넓이 계산\n곱셈공식을 적용하면:\n$$(|\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}}|)^2 = \\overline{\\mathrm{PF'}}^2 + \\overline{\\mathrm{PF}}^2 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}$$\n$$8^2 = 100 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}$$\n$$64 = 100 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} \\implies 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = 36 \\implies \\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = 18$$\n따라서 삼각형 $\\mathrm{PF'F}$의 넓이는\n$$S = \\frac{1}{2}\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = \\frac{1}{2} \\times 18 = 9$$\n\n[오답 및 경계 점검]\n- 지름에 대한 원주각이 $90^\\circ$임을 확인하여 피타고라스 정리를 적용할 수 있다.\n\n[결론]\n9",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 8,
@@ -234,8 +283,15 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $x^2-y^2+2y+a=0$이 나타내는 도형이 $x$축에 평행한 주축을 가지는 쌍곡선이 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "a<-1",
+    "solution": "[풀이 전략]\n주어진 방정식을 표준형으로 정리한 뒤, 주축이 $x$축에 평행하기 위한 우변 상수의 부호 조건을 찾는다.\n\n[단계별 풀이]\n1단계: 완전제곱식 변형\n$$x^2 - y^2 + 2y + a = 0$$\n$$x^2 - (y^2 - 2y + 1) + 1 + a = 0$$\n$$x^2 - (y - 1)^2 = -a - 1$$\n\n2단계: 주축이 $x$축에 평행할 조건\n쌍곡선의 표준형 $\\frac{X^2}{A^2} - \\frac{Y^2}{B^2} = 1$은 주축이 $X$축에 평행하고,\n$\\frac{X^2}{A^2} - \\frac{Y^2}{B^2} = -1$은 주축이 $Y$축에 평행하다.\n주어진 방정식이 $x$축에 평행한 주축을 갖는 쌍곡선이 되려면, 우변의 상수가 양수이어야 한다:\n$$-a - 1 > 0 \\implies -a > 1 \\implies a < -1$$\n\n[오답 및 경계 점검]\n- 우변이 $0$이면 두 일차직선의 쌍(점근선)이 되므로 등호가 들어가지 않아야 한다.\n\n[결론]\na<-1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 9,
@@ -262,8 +318,15 @@ window.questionBank = [
     "wide": false,
     "content": "직선 $y=3x+5$가 쌍곡선 $\\frac{x^2}{a}-\\frac{y^2}{2}=1$에 접할 때, 쌍곡선의 두 초점 사이의 거리를 구하시오. (단, $a$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2\\sqrt{5}",
+    "solution": "[풀이 전략]\n쌍곡선의 접선 공식 $y = mx \\pm \\sqrt{a m^2 - b^2}$을 이용하여 미지수 $a$를 구하고, 두 초점 사이의 거리를 계산한다.\n\n[단계별 풀이]\n1단계: 접선의 방정식 공식 적용\n쌍곡선 $\\frac{x^2}{a}-\\frac{y^2}{2}=1$에 접하고 기울기가 $m = 3$인 직선의 방정식은\n$$y = 3x \\pm \\sqrt{a(3^2) - 2} = 3x \\pm \\sqrt{9a - 2}$$\n\n2단계: 미지수 $a$ 구하기\n이 직선이 $y = 3x + 5$와 일치해야 하므로 $y$절편을 비교한다:\n$$\\sqrt{9a - 2} = 5 \\implies 9a - 2 = 25 \\implies 9a = 27 \\implies a = 3$$\n\n3단계: 두 초점 사이의 거리 계산\n쌍곡선의 방정식은 $\\frac{x^2}{3}-\\frac{y^2}{2}=1$이다.\n초점의 좌표에서 $c^2 = a^2 + b^2 = 3 + 2 = 5 \\implies c = \\sqrt{5}$이다.\n따라서 두 초점 사이의 거리는\n$$2c = 2\\sqrt{5}$$\n\n[오답 및 경계 점검]\n- 초점 사이의 거리는 $c$가 아니라 $2c$임을 확인한다.\n\n[결론]\n2\\sqrt{5}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 10,
@@ -290,8 +353,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q10.png\" />\n\n다음 그림과 같이 타원 $\\frac{x^2}{9}+\\frac{y^2}{5}=1$이 포물선 $y^2=8x$와 제1사분면에서 만나는 점을 $\\mathrm{P}$, 점 $\\mathrm{P}$에서 직선 $x=-2$에 내린 수선의 발을 $\\mathrm{Q}$라고 할 때, 점 $\\mathrm{A}(-2, 0)$에 대하여 $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PQ}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "6",
+    "solution": "[풀이 전략]\n타원의 초점과 포물선의 초점이 일치함을 파악하고, 포물선의 정의를 활용하여 타원의 장축 길이로 합을 치환한다.\n\n[단계별 풀이]\n1단계: 타원과 포물선의 초점 확인\n- 타원 $\\frac{x^2}{9}+\\frac{y^2}{5}=1$:\n  $c^2 = 9 - 5 = 4 \\implies c = 2$이므로 초점은 $\\mathrm{F}(2, 0), \\mathrm{F}'(-2, 0)$이다.\n  점 $\\mathrm{A}(-2, 0)$은 바로 타원의 왼쪽 초점 $\\mathrm{F}'$이다!\n- 포물선 $y^2 = 8x$:\n  $4p = 8 \\implies p = 2$이므로 초점은 $(2, 0)$으로 타원의 오른쪽 초점 $\\mathrm{F}$와 일치하며,\n  준선의 방정식은 $x = -2$이다.\n\n2단계: 포물선의 정의 적용\n점 $\\mathrm{P}$는 포물선 위의 점이고 점 $\\mathrm{Q}$는 준선 $x = -2$에 내린 수선의 발이므로, 포물선의 정의에 의하여\n$$\\overline{\\mathrm{PQ}} = \\overline{\\mathrm{PF}}$$\n\n3단계: 타원의 정의로 식 계산\n따라서 구하는 식은\n$$\\overline{\\mathrm{AP}} + \\overline{\\mathrm{PQ}} = \\overline{\\mathrm{F'P}} + \\overline{\\mathrm{PF}}$$\n이는 타원 위의 점 $\\mathrm{P}$에서 두 초점까지의 거리의 합이므로 타원의 장축의 길이 $2a$와 같다.\n타원에서 $a^2 = 9 \\implies a = 3$이므로\n$$\\overline{\\mathrm{F'P}} + \\overline{\\mathrm{PF}} = 2a = 2 \\times 3 = 6$$\n\n[오답 및 경계 점검]\n- 점 $\\mathrm{A}$가 타원의 초점이고 직선 $x=-2$가 포물선의 준선임을 기하학적으로 연계한다.\n\n[결론]\n6",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 11,
@@ -318,8 +388,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q11.png\" />\n\n다음 그림과 같이 두 점 $\\mathrm{C}, \\mathrm{D}$를 초점으로 하는 쌍곡선 $\\frac{x^2}{4}-\\frac{y^2}{5}=1$ ($x>0$)과 점 $\\mathrm{D}$를 지나는 직선 $y=m(x-3)$이 만나는 점을 $\\mathrm{A}, \\mathrm{B}$라고 하자. $\\overline{\\mathrm{AB}}=6$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "20",
+    "solution": "[풀이 전략]\n쌍곡선의 두 초점을 구하고, 직선이 한 초점을 지남을 확인한 뒤 쌍곡선의 정의를 적용하여 삼각형의 둘레를 구한다.\n\n[단계별 풀이]\n1단계: 쌍곡선의 초점 확인\n쌍곡선 $\\frac{x^2}{4}-\\frac{y^2}{5}=1$ ($x>0$)에서 $a^2 = 4, b^2 = 5$이다.\n초점의 좌표는 $c^2 = 4 + 5 = 9 \\implies c = 3$이다.\n따라서 두 초점은 $\\mathrm{C}(-3, 0), \\mathrm{D}(3, 0)$이다.\n직선 $y = m(x - 3)$은 초점 $\\mathrm{D}(3, 0)$을 지난다.\n\n2단계: 선분의 분할 및 쌍곡선의 정의 적용\n점 $\\mathrm{A}, \\mathrm{B}$는 $x>0$인 쌍곡선 위의 점이고 선분 $\\mathrm{AB}$ 위에 초점 $\\mathrm{D}$가 놓여 있으므로\n$$\\overline{\\mathrm{AD}} + \\overline{\\mathrm{BD}} = \\overline{\\mathrm{AB}} = 6$$\n쌍곡선의 정의에 의하여:\n$$\\overline{\\mathrm{AC}} - \\overline{\\mathrm{AD}} = 2a = 4 \\implies \\overline{\\mathrm{AC}} = \\overline{\\mathrm{AD}} + 4$$\n$$\\overline{\\mathrm{BC}} - \\overline{\\mathrm{BD}} = 2a = 4 \\implies \\overline{\\mathrm{BC}} = \\overline{\\mathrm{BD}} + 4$$\n\n3단계: 삼각형 $\\mathrm{ABC}$의 둘레 계산\n삼각형 $\\mathrm{ABC}$의 둘레의 길이는\n$$\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} + \\overline{\\mathrm{AC}} = \\overline{\\mathrm{AB}} + (\\overline{\\mathrm{BD}} + 4) + (\\overline{\\mathrm{AD}} + 4)$$\n$$= \\overline{\\mathrm{AB}} + (\\overline{\\mathrm{AD}} + \\overline{\\mathrm{BD}}) + 8$$\n$$= 6 + 6 + 8 = 20$$\n\n[오답 및 경계 점검]\n- $\\overline{\\mathrm{AD}}+\\overline{\\mathrm{BD}}=\\overline{\\mathrm{AB}}$ 관계를 이용하여 미지수 $m$의 값과 무관하게 둘레가 결정됨을 확인한다.\n\n[결론]\n20",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 12,
@@ -346,8 +423,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q12.png\" />\n\n오른쪽 그림과 같이 점 $\\mathrm{A}(-2, 0)$에서 포물선 $y^2=24x$에 그은 두 접선이 포물선과 만나는 점을 각각 $\\mathrm{B}, \\mathrm{C}$라 하고 이 포물선의 초점을 $\\mathrm{D}$라고 할 때, 사각형 $\\mathrm{ACDB}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "32\\sqrt{3}",
+    "solution": "[풀이 전략]\n포물선 밖의 점에서 그은 두 접선의 접점을 구하고, $x$축 위의 두 꼭짓점과 대칭인 두 접점으로 이루어진 사각형의 넓이를 대각선 및 삼각형의 합으로 계산한다.\n\n[단계별 풀이]\n1단계: 두 접선의 방정식 및 접점 구하기\n포물선 $y^2 = 24x$에서 $4p = 24 \\implies p = 6$, 초점은 $\\mathrm{D}(6, 0)$이다.\n점 $\\mathrm{A}(-2, 0)$에서 그은 기울기 $m$인 접선의 방정식은\n$$y = mx + \\frac{6}{m}$$\n점 $\\mathrm{A}(-2, 0)$을 대입하면:\n$$0 = -2m + \\frac{6}{m} \\implies 2m^2 = 6 \\implies m^2 = 3 \\implies m = \\pm\\sqrt{3}$$\n- $m = \\sqrt{3}$일 때 접선 $y = \\sqrt{3}x + 2\\sqrt{3}$을 포물선과 연립하면:\n  $(\\sqrt{3}(x + 2))^2 = 24x \\implies 3(x + 2)^2 = 24x \\implies x^2 + 4x + 4 = 8x \\implies (x - 2)^2 = 0 \\implies x = 2$\n  $y = \\sqrt{3}(2 + 2) = 4\\sqrt{3}$\n  접점 $\\mathrm{B}(2, 4\\sqrt{3})$\n- $m = -\\sqrt{3}$일 때 대칭성에 의해 접점 $\\mathrm{C}(2, -4\\sqrt{3})$\n\n2단계: 사각형 $\\mathrm{ACDB}$의 구조 파악 및 넓이 계산\n두 점 $\\mathrm{B}(2, 4\\sqrt{3})$와 $\\mathrm{C}(2, -4\\sqrt{3})$를 잇는 선분 $\\mathrm{BC}$는 직선 $x = 2$ 위에 있으며\n그 길이는 $4\\sqrt{3} - (-4\\sqrt{3}) = 8\\sqrt{3}$이다.\n점 $\\mathrm{A}(-2, 0)$과 점 $\\mathrm{D}(6, 0)$은 $x$축 위의 점이므로, 선분 $\\mathrm{AD}$는 선분 $\\mathrm{BC}$와 수직으로 교차한다.\n따라서 사각형 $\\mathrm{ACDB}$는 선분 $\\mathrm{BC}$를 공통 밑변으로 하는 두 삼각형 $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이의 합이다.\n- $\\triangle\\mathrm{ABC}$의 높이: $2 - (-2) = 4$\n- $\\triangle\\mathrm{DBC}$의 높이: $6 - 2 = 4$\n사각형의 넓이는\n$$S = \\frac{1}{2} \\times 8\\sqrt{3} \\times (4 + 4) = 4\\sqrt{3} \\times 8 = 32\\sqrt{3}$$\n\n[오답 및 경계 점검]\n- 두 대각선 선분 $\\mathrm{AD}$와 선분 $\\mathrm{BC}$가 서로 수직이므로 $\\frac{1}{2} \\times \\overline{\\mathrm{AD}} \\times \\overline{\\mathrm{BC}} = \\frac{1}{2} \\times 8 \\times 8\\sqrt{3} = 32\\sqrt{3}$으로도 검산된다.\n\n[결론]\n32\\sqrt{3}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 13,
@@ -374,7 +458,14 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q13.png\" />\n\n다음 그림과 같이 타원 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$과 쌍곡선 $\\frac{x^2}{6}-\\frac{y^2}{3}=1$은 점 $\\mathrm{P}(2\\sqrt{2}, -1)$에서 만나고 점 $\\mathrm{P}$에서의 타원의 접선과 쌍곡선의 접선이 서로 수직일 때, 양수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "a=2\\sqrt{3},\\, b=\\sqrt{3}",
+    "solution": "[풀이 전략]\n쌍곡선 위의 점에서의 접선의 기울기를 구하고, 수직 조건으로부터 타원의 접선의 기울기를 유도하여 타원의 방정식을 완성한다.\n\n[단계별 풀이]\n1단계: 점 $\\mathrm{P}$에서의 쌍곡선의 접선의 기울기 구하기\n점 $\\mathrm{P}(2\\sqrt{2}, -1)$에서의 쌍곡선 $\\frac{x^2}{6}-\\frac{y^2}{3}=1$의 접선의 방정식은\n$$\\frac{2\\sqrt{2}x}{6} - \\frac{(-1)y}{3} = 1 \\implies \\frac{\\sqrt{2}}{3}x + \\frac{1}{3}y = 1 \\implies y = -\\sqrt{2}x + 3$$\n따라서 쌍곡선의 접선의 기울기는 $m_1 = -\\sqrt{2}$이다.\n\n2단계: 타원의 접선의 기울기 및 관계식 유도\n타원의 접선과 쌍곡선의 접선이 서로 수직이므로 타원의 접선의 기울기 $m_2$는\n$$m_2 = -\\frac{1}{m_1} = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$$\n점 $\\mathrm{P}(2\\sqrt{2}, -1)$에서의 타원 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$의 접선의 방정식은\n$$\\frac{2\\sqrt{2}x}{a^2} - \\frac{y}{b^2} = 1 \\implies \\frac{y}{b^2} = \\frac{2\\sqrt{2}}{a^2}x - 1 \\implies y = \\frac{2\\sqrt{2}b^2}{a^2}x - b^2$$\n접선의 기울기가 $\\frac{\\sqrt{2}}{2}$이어야 하므로:\n$$\\frac{2\\sqrt{2}b^2}{a^2} = \\frac{\\sqrt{2}}{2} \\implies \\frac{2b^2}{a^2} = \\frac{1}{2} \\implies a^2 = 4b^2$$\n\n3단계: $a, b$ 값 결정\n점 $\\mathrm{P}(2\\sqrt{2}, -1)$은 타원 위의 점이므로:\n$$\\frac{(2\\sqrt{2})^2}{a^2} + \\frac{(-1)^2}{b^2} = 1 \\implies \\frac{8}{a^2} + \\frac{1}{b^2} = 1$$\n$a^2 = 4b^2$을 대입하면:\n$$\\frac{8}{4b^2} + \\frac{1}{b^2} = 1 \\implies \\frac{2}{b^2} + \\frac{1}{b^2} = 1 \\implies \\frac{3}{b^2} = 1 \\implies b^2 = 3$$\n$b > 0$이므로 $b = \\sqrt{3}$이다.\n$a^2 = 4 \\times 3 = 12$이므로 $a = 2\\sqrt{3}$ ($a > 0$)이다.\n\n[오답 및 경계 점검]\n- 양수 조건 $a>0, b>0$을 만족하며 $a^2 = 4b^2$ 관계가 성립함을 확인한다.\n\n[결론]\na=2\\sqrt{3},\\, b=\\sqrt{3}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   }
 ];

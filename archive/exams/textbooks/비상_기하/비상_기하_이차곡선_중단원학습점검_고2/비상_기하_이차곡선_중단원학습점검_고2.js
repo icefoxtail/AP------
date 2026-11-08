@@ -26,8 +26,15 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차곡선의 방정식을 구하시오.\n⑴ 초점이 $\\mathrm{F}\\left(0, \\frac{5}{2}\\right)$이고, 준선의 방정식이 $y=-\\frac{5}{2}$인 포물선\n⑵ 두 초점 $\\mathrm{F}(0, 3)$, $\\mathrm{F}'(0, -3)$으로부터 거리의 합이 $10$인 타원\n⑶ 두 초점 $\\mathrm{F}(5, 0)$, $\\mathrm{F}'(-5, 0)$으로부터 거리의 차가 $4$인 쌍곡선",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x^2=10y$  ⑵ $\\frac{x^2}{16}+\\frac{y^2}{25}=1$  ⑶ $\\frac{x^2}{4}-\\frac{y^2}{21}=1$",
+    "solution": "[풀이 전략]\n이차곡선의 표준형 정의를 적용한다.\n1. 포물선: 초점이 $(0, p)$, 준선이 $y=-p$인 포물선의 방정식은 $x^2=4py$이다.\n2. 타원: 초점이 $(0, c), (0, -c)$이고 거리의 합이 $2b$인 타원은 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($b^2-a^2=c^2, b>a>0$)이다.\n3. 쌍곡선: 초점이 $(c, 0), (-c, 0)$이고 거리의 차가 $2a$인 쌍곡선은 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($c^2=a^2+b^2$)이다.\n\n[단계별 풀이]\n1단계 [⑴ 포물선]:\n초점이 $\\mathrm{F}\\left(0, \\frac{5}{2}\\right)$이고 준선이 $y=-\\frac{5}{2}$이므로 $p=\\frac{5}{2}$이다.\n초점이 $y$축 위에 있으므로 포물선의 방정식은 다음과 같다.\n$$x^2 = 4 \\times \\frac{5}{2}y = 10y$$\n\n2단계 [⑵ 타원]:\n두 초점이 $y$축 위에 있으므로 장축은 $y$축에 평행하다.\n거리의 합이 $10$이므로 $2b = 10 \\implies b = 5$, $b^2 = 25$이다.\n초점의 좌표에서 $c = 3$이므로 $b^2 - a^2 = c^2$에서\n$$a^2 = b^2 - c^2 = 25 - 3^2 = 16$$\n따라서 타원의 방정식은 $\\frac{x^2}{16}+\\frac{y^2}{25}=1$이다.\n\n3단계 [⑶ 쌍곡선]:\n두 초점이 $x$축 위에 있으므로 주축은 $x$축 위에 있다.\n거리의 차가 $4$이므로 $2a = 4 \\implies a = 2$, $a^2 = 4$이다.\n초점의 좌표에서 $c = 5$이므로 $c^2 = a^2 + b^2$에서\n$$b^2 = c^2 - a^2 = 5^2 - 2^2 = 25 - 4 = 21$$\n따라서 쌍곡선의 방정식은 $\\frac{x^2}{4}-\\frac{y^2}{21}=1$이다.\n\n[오답 및 경계 점검]\n- 초점의 위치가 $x$축인지 $y$축인지 명확히 구분하여 타원과 쌍곡선의 주축 방향을 혼동하지 않도록 한다.\n\n[결론]\n⑴ $x^2=10y$  ⑵ $\\frac{x^2}{16}+\\frac{y^2}{25}=1$  ⑶ $\\frac{x^2}{4}-\\frac{y^2}{21}=1$",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 2,
@@ -54,8 +61,15 @@ window.questionBank = [
     "wide": false,
     "content": "다음 포물선의 초점의 좌표와 준선의 방정식을 구하시오.\n⑴ $y^2=\\frac{1}{6}x$\n⑵ $x^2=8y$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 초점: $\\left(\\frac{1}{24}, 0\\right)$, 준선: $x=-\\frac{1}{24}$  ⑵ 초점: $(0, 2)$, 준선: $y=-2$",
+    "solution": "[풀이 전략]\n포물선의 기본형 $y^2=4px$와 $x^2=4py$에서 초점과 준선을 구한다.\n1. $y^2=4px$: 초점 $(p, 0)$, 준선 $x=-p$\n2. $x^2=4py$: 초점 $(0, p)$, 준선 $y=-p$\n\n[단계별 풀이]\n1단계 [⑴ $y^2=\\frac{1}{6}x$]:\n$4p = \\frac{1}{6}$이므로 $p = \\frac{1}{24}$이다.\n따라서 초점의 좌표는 $\\left(\\frac{1}{24}, 0\\right)$이고, 준선의 방정식은 $x=-\\frac{1}{24}$이다.\n\n2단계 [⑵ $x^2=8y$]:\n$4p = 8$이므로 $p = 2$이다.\n따라서 초점의 좌표는 $(0, 2)$이고, 준선의 방정식은 $y=-2$이다.\n\n[오답 및 경계 점검]\n- $y^2$ 형태는 초점이 $x$축 위에 있고, $x^2$ 형태는 초점이 $y$축 위에 있음에 유의한다.\n\n[결론]\n⑴ 초점: $\\left(\\frac{1}{24}, 0\\right)$, 준선: $x=-\\frac{1}{24}$  ⑵ 초점: $(0, 2)$, 준선: $y=-2$",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 3,
@@ -82,8 +96,15 @@ window.questionBank = [
     "wide": false,
     "content": "다음 타원의 초점의 좌표와 장축, 단축의 길이를 구하시오.\n⑴ $\\frac{x^2}{8}+y^2=1$\n⑵ $\\frac{x^2}{9}+\\frac{y^2}{16}=1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 초점: $(\\sqrt{7}, 0)$, $(-\\sqrt{7}, 0)$, 장축의 길이: $4\\sqrt{2}$, 단축의 길이: $2$  ⑵ 초점: $(0, \\sqrt{7})$, $(0, -\\sqrt{7})$, 장축의 길이: $8$, 단축의 길이: $6$",
+    "solution": "[풀이 전략]\n타원의 방정식 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$에서\n1. $a > b > 0$일 때: 초점 $(\\pm c, 0)$ ($c^2=a^2-b^2$), 장축의 길이 $2a$, 단축의 길이 $2b$\n2. $b > a > 0$일 때: 초점 $(0, \\pm c)$ ($c^2=b^2-a^2$), 장축의 길이 $2b$, 단축의 길이 $2a$\n\n[단계별 풀이]\n1단계 [⑴ $\\frac{x^2}{8}+y^2=1$]:\n$a^2 = 8$, $b^2 = 1$이므로 $a = 2\\sqrt{2}$, $b = 1$이다.\n$a > b$이므로 장축은 $x$축 위에 있다.\n- 초점: $c^2 = a^2 - b^2 = 8 - 1 = 7 \\implies c = \\sqrt{7}$이므로 초점의 좌표는 $(\\sqrt{7}, 0)$, $(-\\sqrt{7}, 0)$이다.\n- 장축의 길이: $2a = 2 \\times 2\\sqrt{2} = 4\\sqrt{2}$\n- 단축의 길이: $2b = 2 \\times 1 = 2$\n\n2단계 [⑵ $\\frac{x^2}{9}+\\frac{y^2}{16}=1$]:\n$a^2 = 9$, $b^2 = 16$이므로 $a = 3$, $b = 4$이다.\n$b > a$이므로 장축은 $y$축 위에 있다.\n- 초점: $c^2 = b^2 - a^2 = 16 - 9 = 7 \\implies c = \\sqrt{7}$이므로 초점의 좌표는 $(0, \\sqrt{7})$, $(0, -\\sqrt{7})$이다.\n- 장축의 길이: $2b = 2 \\times 4 = 8$\n- 단축의 길이: $2a = 2 \\times 3 = 6$\n\n[오답 및 경계 점검]\n- 분모의 크기를 비교하여 장축이 어느 축 위에 놓이는지 확인해야 초점 좌표의 순서쌍 위치를 바르게 적을 수 있다.\n\n[결론]\n⑴ 초점: $(\\sqrt{7}, 0)$, $(-\\sqrt{7}, 0)$, 장축의 길이: $4\\sqrt{2}$, 단축의 길이: $2$  ⑵ 초점: $(0, \\sqrt{7})$, $(0, -\\sqrt{7})$, 장축의 길이: $8$, 단축의 길이: $6$",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 4,
@@ -110,8 +131,15 @@ window.questionBank = [
     "wide": false,
     "content": "다음 쌍곡선의 초점의 좌표와 주축의 길이, 점근선의 방정식을 구하시오.\n⑴ $\\frac{x^2}{12}-\\frac{y^2}{4}=1$\n⑵ $4x^2-y^2=-1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 초점: $(4, 0)$, $(-4, 0)$, 주축의 길이: $4\\sqrt{3}$, 점근선: $y=\\pm\\frac{\\sqrt{3}}{3}x$  ⑵ 초점: $\\left(0, \\frac{\\sqrt{5}}{2}\\right)$, $\\left(0, -\\frac{\\sqrt{5}}{2}\\right)$, 주축의 길이: $2$, 점근선: $y=\\pm 2x$",
+    "solution": "[풀이 전략]\n쌍곡선의 기본형 성질을 적용한다.\n1. $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: 초점 $(\\pm c, 0)$ ($c^2=a^2+b^2$), 주축의 길이 $2a$, 점근선 $y=\\pm\\frac{b}{a}x$\n2. $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=-1$: 초점 $(0, \\pm c)$ ($c^2=a^2+b^2$), 주축의 길이 $2b$, 점근선 $y=\\pm\\frac{b}{a}x$\n\n[단계별 풀이]\n1단계 [⑴ $\\frac{x^2}{12}-\\frac{y^2}{4}=1$]:\n우변이 $1$이므로 초점과 주축은 $x$축 위에 있다.\n$a^2 = 12$, $b^2 = 4$이므로 $a = 2\\sqrt{3}$, $b = 2$이다.\n- 초점: $c^2 = a^2 + b^2 = 12 + 4 = 16 \\implies c = 4$이므로 초점의 좌표는 $(4, 0)$, $(-4, 0)$이다.\n- 주축의 길이: $2a = 2 \\times 2\\sqrt{3} = 4\\sqrt{3}$\n- 점근선의 방정식: $y = \\pm\\frac{b}{a}x = \\pm\\frac{2}{2\\sqrt{3}}x = \\pm\\frac{\\sqrt{3}}{3}x$\n\n2단계 [⑵ $4x^2-y^2=-1$]:\n양변을 정리하면 $-\\frac{x^2}{1/4}+\\frac{y^2}{1}=1$, 즉 $\\frac{x^2}{(1/2)^2}-\\frac{y^2}{1^2}=-1$이다.\n우변이 $-1$이므로 초점과 주축은 $y$축 위에 있다.\n$a = \\frac{1}{2}$, $b = 1$이다.\n- 초점: $c^2 = a^2 + b^2 = \\frac{1}{4} + 1 = \\frac{5}{4} \\implies c = \\frac{\\sqrt{5}}{2}$이므로 초점의 좌표는 $\\left(0, \\frac{\\sqrt{5}}{2}\\right)$, $\\left(0, -\\frac{\\sqrt{5}}{2}\\right)$이다.\n- 주축의 길이: $2b = 2 \\times 1 = 2$\n- 점근선의 방정식: $y = \\pm\\frac{b}{a}x = \\pm\\frac{1}{1/2}x = \\pm 2x$\n\n[오답 및 경계 점검]\n- 우변이 $-1$인 쌍곡선은 주축의 길이가 $2a$가 아니라 $2b$임에 각별히 유의한다.\n\n[결론]\n⑴ 초점: $(4, 0)$, $(-4, 0)$, 주축의 길이: $4\\sqrt{3}$, 점근선: $y=\\pm\\frac{\\sqrt{3}}{3}x$  ⑵ 초점: $\\left(0, \\frac{\\sqrt{5}}{2}\\right)$, $\\left(0, -\\frac{\\sqrt{5}}{2}\\right)$, 주축의 길이: $2$, 점근선: $y=\\pm 2x$",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 5,
@@ -138,8 +166,15 @@ window.questionBank = [
     "wide": false,
     "content": "꼭짓점이 원점이고 초점의 좌표가 $(0, -2)$인 포물선이 점 $(4, a)$를 지날 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "-2",
+    "solution": "[풀이 전략]\n꼭짓점이 원점이고 초점이 $y$축 위에 있는 포물선의 방정식 표준형을 세운 뒤 점의 좌표를 대입한다.\n\n[단계별 풀이]\n1단계: 포물선의 방정식 세우기\n초점의 좌표가 $(0, -2)$이므로 $p = -2$이고 초점이 $y$축 위에 있다.\n따라서 포물선의 방정식은\n$$x^2 = 4py = 4(-2)y = -8y$$\n\n2단계: 점 $(4, a)$ 대입하기\n포물선이 점 $(4, a)$를 지나므로 $x=4, y=a$를 대입한다.\n$$4^2 = -8a \\implies 16 = -8a \\implies a = -2$$\n\n[오답 및 경계 점검]\n- 초점이 $y$축 위에 있으므로 $y^2=4px$가 아니라 $x^2=4py$임을 반드시 확인한다.\n\n[결론]\n-2",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 6,
@@ -166,8 +201,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q06.png\" />\n\n오른쪽 그림과 같이 초점이 $\\mathrm{F}$인 포물선 $y^2=4x$ 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{PF}}=5$일 때, 점 $\\mathrm{P}$의 $x$좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4",
+    "solution": "[풀이 전략]\n포물선의 정의(포물선 위의 임의의 점에서 초점까지의 거리는 준선까지의 거리와 같다)를 활용한다.\n\n[단계별 풀이]\n1단계: 포물선의 초점과 준선 구하기\n주어진 포물선 $y^2 = 4x$에서 $4p = 4 \\implies p = 1$이다.\n따라서 초점은 $\\mathrm{F}(1, 0)$이고, 준선의 방정식은 $x = -1$이다.\n\n2단계: 포물선의 정의 적용하기\n점 $\\mathrm{P}(x_1, y_1)$에서 준선 $x = -1$에 내린 수선의 발을 $\\mathrm{H}$라 하면, 포물선의 정의에 의하여\n$$\\overline{\\mathrm{PF}} = \\overline{\\mathrm{PH}}$$\n점 $\\mathrm{P}$에서 준선 $x = -1$까지의 거리는 $x_1 - (-1) = x_1 + 1$이다.\n\n3단계: $x$좌표 계산\n조건에서 $\\overline{\\mathrm{PF}} = 5$이므로\n$$x_1 + 1 = 5 \\implies x_1 = 4$$\n\n[오답 및 경계 점검]\n- 준선이 음수 쪽 $x=-1$이므로 거리는 $x_1 - 1$이 아니라 $x_1 - (-1) = x_1 + 1$이다.\n\n[결론]\n4",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 7,
@@ -194,8 +236,15 @@ window.questionBank = [
     "wide": false,
     "content": "포물선 $x^2+2y-4x+5=0$의 초점의 좌표는 $(a, b)$이고, 준선의 방정식은 $y=c$이다. 실수 $a, b, c$에 대하여 $a+b+c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "1",
+    "solution": "[풀이 전략]\n일반형으로 주어진 이차곡선의 방정식을 표준형으로 완전제곱화하여 평행이동 관계를 분석한다.\n\n[단계별 풀이]\n1단계: 완전제곱식을 이용한 표준형 변형\n$$x^2 - 4x + 2y + 5 = 0$$\n$$(x - 2)^2 - 4 + 2y + 5 = 0$$\n$$(x - 2)^2 = -2y - 1 = -2\\left(y + \\frac{1}{2}\\right)$$\n\n2단계: 기본형과의 평행이동 관계 분석\n이 포물선은 기본형 $x^2 = -2y = 4\\left(-\\frac{1}{2}\\right)y$를 $x$축 방향으로 $2$만큼, $y$축 방향으로 $-\\frac{1}{2}$만큼 평행이동한 것이다.\n- 기본형의 초점: $\\left(0, -\\frac{1}{2}\\right)$\n  $\\implies$ 평행이동 후 초점: $\\left(0 + 2, -\\frac{1}{2} - \\frac{1}{2}\\right) = (2, -1)$\n  따라서 $a = 2, b = -1$이다.\n- 기본형의 준선: $y = \\frac{1}{2}$\n  $\\implies$ 평행이동 후 준선: $y = \\frac{1}{2} - \\frac{1}{2} = 0$\n  따라서 $c = 0$이다.\n\n3단계: $a+b+c$ 계산\n$$a + b + c = 2 + (-1) + 0 = 1$$\n\n[오답 및 경계 점검]\n- $y$축 평행이동 시 부호 $-\\frac{1}{2}$를 주의 깊게 반영한다.\n\n[결론]\n1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 8,
@@ -222,8 +271,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q08.png\" />\n\n오른쪽 그림과 같이 타원 $\\frac{x^2}{25}+\\frac{y^2}{9}=1$의 두 초점 $\\mathrm{F}, \\mathrm{F}'$을 각각 지나고 $x$축에 수직인 직선이 타원과 만나는 점 중 제1사분면 위의 점을 $\\mathrm{P}$, 제3사분면 위의 점을 $\\mathrm{P}'$이라고 할 때, 평행사변형 $\\mathrm{PF'P'F}$의 둘레의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "20",
+    "solution": "[풀이 전략]\n타원의 정의(타원 위의 한 점에서 두 초점까지의 거리의 합은 장축의 길이 $2a$로 일정하다)를 이용하여 평행사변형의 둘레를 구한다.\n\n[단계별 풀이]\n1단계: 타원의 기본 요소 확인\n타원 $\\frac{x^2}{25}+\\frac{y^2}{9}=1$에서 $a = 5, b = 3$이다.\n장축의 길이는 $2a = 10$이다.\n초점의 좌표는 $c^2 = a^2 - b^2 = 25 - 9 = 16 \\implies c = 4$이므로 $\\mathrm{F}(4, 0), \\mathrm{F}'(-4, 0)$이다.\n\n2단계: 도형의 대칭성과 둘레의 관계 파악\n점 $\\mathrm{P}$는 초점 $\\mathrm{F}$를 지나고 $x$축에 수직인 직선 위의 타원 점이고, 점 $\\mathrm{P}'$은 초점 $\\mathrm{F}'$을 지나고 $x$축에 수직인 직선 위의 타원 점이다.\n타원은 원점에 대하여 대칭이므로 점 $\\mathrm{P}$와 $\\mathrm{P}'$도 원점 대칭이다.\n따라서 사각형 $\\mathrm{PF'P'F}$는 평행사변형이며, 마주 보는 두 쌍의 대변의 길이가 서로 같다:\n$$\\overline{\\mathrm{PF}} = \\overline{\\mathrm{P'F'}}, \\quad \\overline{\\mathrm{PF'}} = \\overline{\\mathrm{P'F}}$$\n\n3단계: 둘레의 길이 계산\n평행사변형의 둘레의 길이는\n$$\\text{둘레} = 2(\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}})$$\n타원의 정의에 의하여 타원 위의 점 $\\mathrm{P}$에서 두 초점까지의 거리의 합은 장축의 길이와 같으므로\n$$\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}} = 2a = 10$$\n따라서 구하는 둘레의 길이는\n$$2 \\times 10 = 20$$\n\n[오답 및 경계 점검]\n- 점 $\\mathrm{P}$의 $y$좌표를 직접 구하지 않아도 타원의 정의로 즉시 둘레를 구할 수 있다.\n\n[결론]\n20",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 9,
@@ -250,8 +306,15 @@ window.questionBank = [
     "wide": false,
     "content": "두 초점이 $\\mathrm{F}(0, 5)$, $\\mathrm{F}'(0, -5)$이고 장축과 단축의 길이의 차가 $2$인 타원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{144}+\\frac{y^2}{169}=1",
+    "solution": "[풀이 전략]\n두 초점이 $y$축 위에 있는 타원의 표준형에서 초점 사이의 거리 공식 $b^2 - a^2 = c^2$과 장축·단축의 길이 차 조건을 연립한다.\n\n[단계별 풀이]\n1단계: 변수 설정 및 조건식 수립\n초점이 $\\mathrm{F}(0, 5), \\mathrm{F}'(0, -5)$이므로 $c = 5$이고, 초점이 $y$축 위에 있으므로 $b > a > 0$이다.\n장축의 길이는 $2b$, 단축의 길이는 $2a$이다.\n장축과 단축의 길이의 차가 $2$이므로:\n$$2b - 2a = 2 \\implies b - a = 1 \\implies b = a + 1$$\n\n2단계: 초점 관계식 적용\n타원에서 $b^2 - a^2 = c^2$이므로:\n$$(a + 1)^2 - a^2 = 5^2 = 25$$\n$$a^2 + 2a + 1 - a^2 = 25 \\implies 2a + 1 = 25 \\implies 2a = 24 \\implies a = 12$$\n\n3단계: $b$ 및 타원의 방정식 완성\n$a = 12$이므로 $b = 12 + 1 = 13$이다.\n$$a^2 = 144, \\quad b^2 = 169$$\n따라서 구하는 타원의 방정식은\n$$\\frac{x^2}{144} + \\frac{y^2}{169} = 1$$\n\n[오답 및 경계 점검]\n- 장축이 $y$축에 평행하므로 $y^2$의 분모 $b^2$이 $x^2$의 분모 $a^2$보다 커야 함을 확인한다.\n\n[결론]\n\\frac{x^2}{144}+\\frac{y^2}{169}=1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 10,
@@ -278,8 +341,15 @@ window.questionBank = [
     "wide": false,
     "content": "타원 $\\frac{x^2}{9}+\\frac{y^2}{4}=1$과 두 초점이 같고 단축의 길이가 $6$인 타원의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{14}+\\frac{y^2}{9}=1",
+    "solution": "[풀이 전략]\n기존 타원에서 초점을 구한 뒤, 초점을 공유하고 단축의 길이가 주어진 새 타원의 방정식을 수립한다.\n\n[단계별 풀이]\n1단계: 기존 타원의 초점 구하기\n타원 $\\frac{x^2}{9}+\\frac{y^2}{4}=1$에서 $a^2 = 9, b^2 = 4$이다.\n$a > b$이므로 초점은 $x$축 위에 있다.\n$$c^2 = a^2 - b^2 = 9 - 4 = 5 \\implies c = \\sqrt{5}$$\n초점의 좌표는 $(\\sqrt{5}, 0), (-\\sqrt{5}, 0)$이다.\n\n2단계: 새 타원의 방정식 계수 결정\n새 타원의 초점도 $(\\pm\\sqrt{5}, 0)$이므로 초점이 $x$축 위에 있고 $C^2 = 5$이다.\n새 타원의 단축의 길이가 $6$이므로 $2B = 6 \\implies B = 3 \\implies B^2 = 9$이다.\n초점 관계식 $A^2 - B^2 = C^2$에 대입하면:\n$$A^2 - 9 = 5 \\implies A^2 = 14$$\n\n3단계: 타원의 방정식 완성\n따라서 구하는 타원의 방정식은\n$$\\frac{x^2}{14} + \\frac{y^2}{9} = 1$$\n\n[오답 및 경계 점검]\n- 단축의 길이가 $2B = 6$이므로 $B = 3$, $B^2 = 9$임을 확인한다.\n\n[결론]\n\\frac{x^2}{14}+\\frac{y^2}{9}=1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 11,
@@ -306,8 +376,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q11.png\" />\n\n오른쪽 그림과 같이 쌍곡선 $\\frac{x^2}{4}-\\frac{y^2}{10}=1$의 두 초점 $\\mathrm{F}, \\mathrm{F}'$과 쌍곡선 위의 한 점 $\\mathrm{P}$에 대하여 $\\angle\\mathrm{FPF'}=90^\\circ$일 때, 삼각형 $\\mathrm{FPF'}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "10",
+    "solution": "[풀이 전략]\n쌍곡선의 정의 $|\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}}| = 2a$와 직각삼각형에서의 피타고라스 정리를 결합하여 삼각형의 넓이 $\\frac{1}{2}\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}$를 계산한다.\n\n[단계별 풀이]\n1단계: 쌍곡선의 기본 요소 계산\n쌍곡선 $\\frac{x^2}{4}-\\frac{y^2}{10}=1$에서 $a^2 = 4, b^2 = 10$이다.\n초점의 좌표는 $c^2 = a^2 + b^2 = 4 + 10 = 14 \\implies c = \\sqrt{14}$이다.\n두 초점 사이의 거리는\n$$\\overline{\\mathrm{FF'}} = 2c = 2\\sqrt{14}$$\n쌍곡선의 정의에 의해 점 $\\mathrm{P}$에서 두 초점까지의 거리의 차는 주축의 길이와 같으므로\n$$|\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}}| = 2a = 2 \\times 2 = 4$$\n\n2단계: 피타고라스 정리 적용\n$\\angle\\mathrm{FPF'} = 90^\\circ$이므로 삼각형 $\\mathrm{FPF'}$은 직각삼각형이다.\n$$\\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF'}}^2 = \\overline{\\mathrm{FF'}}^2 = (2\\sqrt{14})^2 = 56$$\n\n3단계: 두 선분의 곱 및 넓이 계산\n곱셈공식 변형을 적용한다:\n$$(|\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}}|)^2 = \\overline{\\mathrm{PF}}^2 + \\overline{\\mathrm{PF'}}^2 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}$$\n$$4^2 = 56 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}$$\n$$16 = 56 - 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} \\implies 2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = 40 \\implies \\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = 20$$\n따라서 직각삼각형 $\\mathrm{FPF'}$의 넓이는\n$$S = \\frac{1}{2}\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}} = \\frac{1}{2} \\times 20 = 10$$\n\n[오답 및 경계 점검]\n- $2\\overline{\\mathrm{PF}}\\cdot\\overline{\\mathrm{PF'}}=40$에서 넓이는 $\\frac{1}{2}$을 곱한 $10$임에 유의한다.\n\n[결론]\n10",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 12,
@@ -334,8 +411,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q12.png\" />\n\n다음 그림은 $120\\,\\mathrm{km}$ 떨어진 두 기지국 $\\mathrm{A}, \\mathrm{B}$와 배를 좌표평면 위에 나타낸 것이다. 두 기지국 $\\mathrm{A}, \\mathrm{B}$에서 배로 동시에 전파를 보낸 결과 배는 두 기지국 $\\mathrm{A}, \\mathrm{B}$로부터 거리의 차가 $60\\,\\mathrm{km}$인 지점에 있었다고 한다. 배가 위치할 수 있는 점들로 이루어진 곡선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{x^2}{900}-\\frac{y^2}{2700}=1",
+    "solution": "[풀이 전략]\n두 고정점으로부터 거리의 차가 일정한 점의 자취는 두 점을 초점으로 하는 쌍곡선임을 이용한다.\n\n[단계별 풀이]\n1단계: 초점 및 거리의 차 분석\n두 기지국 $\\mathrm{A}, \\mathrm{B}$ 사이의 거리가 $120\\,\\mathrm{km}$이므로, 선분 $\\mathrm{AB}$의 중점을 원점으로 잡으면\n초점의 좌표는 $\\mathrm{A}(-60, 0), \\mathrm{B}(60, 0)$이다.\n따라서 $c = 60$이다.\n배에서 두 기지국까지의 거리의 차가 $60\\,\\mathrm{km}$로 일정하므로\n주축의 길이는 $2a = 60 \\implies a = 30$, $a^2 = 900$이다.\n\n2단계: $b^2$ 값 구하기\n쌍곡선에서 $c^2 = a^2 + b^2$이므로:\n$$b^2 = c^2 - a^2 = 60^2 - 30^2 = 3600 - 900 = 2700$$\n\n3단계: 쌍곡선의 방정식 완성\n주축이 $x$축 위에 있으므로 구하는 곡선의 방정식은\n$$\\frac{x^2}{900} - \\frac{y^2}{2700} = 1$$\n\n[오답 및 경계 점검]\n- 타원은 거리의 합이 일정하고, 쌍곡선은 거리의 차가 일정함을 명확히 구분한다.\n\n[결론]\n\\frac{x^2}{900}-\\frac{y^2}{2700}=1",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 13,
@@ -362,8 +446,15 @@ window.questionBank = [
     "wide": false,
     "content": "쌍곡선 $3x^2-4y^2-6ax=0$의 점근선과 $y$축으로 둘러싸인 부분의 넓이가 $2\\sqrt{3}$일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2",
+    "solution": "[풀이 전략]\n주어진 쌍곡선의 방정식을 표준형으로 정리하여 점근선의 방정식을 구하고, 점근선과 $y$축이 이루는 삼각형의 넓이 식을 세운다.\n\n[단계별 풀이]\n1단계: 표준형으로 변형\n$$3x^2 - 6ax - 4y^2 = 0$$\n$$3(x^2 - 2ax + a^2) - 4y^2 = 3a^2$$\n$$3(x - a)^2 - 4y^2 = 3a^2$$\n양변을 $3a^2$으로 나누면:\n$$\\frac{(x - a)^2}{a^2} - \\frac{y^2}{\\frac{3}{4}a^2} = 1$$\n\n2단계: 점근선의 방정식 구하기\n쌍곡선의 중심이 $(a, 0)$이므로 점근선의 방정식은\n$$y - 0 = \\pm\\frac{\\sqrt{\\frac{3}{4}a^2}}{a}(x - a) = \\pm\\frac{\\sqrt{3}}{2}(x - a)$$\n\n3단계: 점근선과 $y$축의 교점 및 삼각형의 넓이\n두 점근선이 $y$축($x=0$)과 만나는 점의 $y$좌표는\n$$y = \\pm\\frac{\\sqrt{3}}{2}(0 - a) = \\mp\\frac{\\sqrt{3}}{2}a$$\n따라서 $y$축 위의 두 교점 사이의 거리(밑변의 길이)는\n$$\\frac{\\sqrt{3}}{2}a - \\left(-\\frac{\\sqrt{3}}{2}a\\right) = \\sqrt{3}a$$\n삼각형의 높이는 꼭짓점 $(a, 0)$에서 $y$축까지의 거리이므로 $a$이다 ($a > 0$).\n따라서 삼각형의 넓이는\n$$S = \\frac{1}{2} \\times \\sqrt{3}a \\times a = \\frac{\\sqrt{3}}{2}a^2$$\n\n4단계: $a$의 값 계산\n주어진 넓이가 $2\\sqrt{3}$이므로:\n$$\\frac{\\sqrt{3}}{2}a^2 = 2\\sqrt{3} \\implies a^2 = 4$$\n$a > 0$이므로 $a = 2$이다.\n\n[오답 및 경계 점검]\n- 점근선이 만나는 꼭짓점의 $x$좌표가 $a$이므로 높이가 $a$임을 확인한다.\n\n[결론]\n2",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 14,
@@ -390,8 +481,15 @@ window.questionBank = [
     "wide": false,
     "content": "타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$의 두 초점을 $\\mathrm{F}, \\mathrm{F}'$이라 하고 이 타원과 쌍곡선 $x^2-\\frac{y^2}{8}=1$의 한 교점을 $\\mathrm{P}$라고 할 때, $|\\overline{\\mathrm{PF}}^2-\\overline{\\mathrm{PF'}}^2|$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "20",
+    "solution": "[풀이 전략]\n타원과 쌍곡선의 초점이 일치함을 파악하고, 각 곡선의 정의(거리의 합과 거리의 차)를 곱셈공식에 적용한다.\n\n[단계별 풀이]\n1단계: 타원과 쌍곡선의 초점 확인\n- 타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$:\n  $c^2 = 25 - 16 = 9 \\implies c = 3$이므로 두 초점은 $\\mathrm{F}(3, 0), \\mathrm{F}'(-3, 0)$이다.\n- 쌍곡선 $x^2-\\frac{y^2}{8}=1$:\n  $c^2 = 1 + 8 = 9 \\implies c = 3$이므로 두 초점 역시 $\\mathrm{F}(3, 0), \\mathrm{F}'(-3, 0)$이다.\n즉, 타원과 쌍곡선은 두 초점 $\\mathrm{F}, \\mathrm{F}'$을 공유한다.\n\n2단계: 정의를 이용한 거리 합과 차 표현\n교점 $\\mathrm{P}$에 대하여:\n- 타원의 정의: $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}} = 2 \\times 5 = 10$\n- 쌍곡선의 정의: $|\\overline{\\mathrm{PF}} - \\overline{\\mathrm{PF'}}| = 2 \\times 1 = 2$\n\n3단계: 인수분해를 통한 식 계산\n합차공식을 적용한다:\n$$|\\overline{\\mathrm{PF}}^2 - \\overline{\\mathrm{PF'}}^2| = |(\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}})(\\overline{\\mathrm{PF}} - \\overline{\\mathrm{PF'}})|$$\n$$= (\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}}) \\times |\\overline{\\mathrm{PF}} - \\overline{\\mathrm{PF'}}|$$\n$$= 10 \\times 2 = 20$$\n\n[오답 및 경계 점검]\n- 두 곡선이 같은 초점을 공유하므로 각각의 정의에 의한 합과 차를 바로 곱할 수 있다.\n\n[결론]\n20",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 15,
@@ -418,8 +516,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q15.png\" />\n\n오른쪽 그림과 같이 어느 혜성이 태양을 초점으로 하는 포물선 궤도를 그리며 움직인다고 한다. 태양으로부터 혜성까지의 거리가 $8\\times 10^8\\,\\mathrm{km}$일 때, 태양과 혜성을 잇는 선분과 포물선의 축이 이루는 각의 크기가 $60^\\circ$라고 한다. 태양과 혜성의 거리가 가장 가까울 때의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2\\times 10^8\\,\\mathrm{km}",
+    "solution": "[풀이 전략]\n포물선의 축을 $x$축, 꼭짓점을 원점, 초점을 태양의 위치 $\\mathrm{F}(p, 0)$로 설정하고 포물선의 정의를 적용한다.\n\n[단계별 풀이]\n1단계: 좌표계 설정 및 포물선의 방정식\n포물선의 꼭짓점을 원점 $\\mathrm{O}(0, 0)$, 태양(초점)을 $\\mathrm{F}(p, 0)$ ($p > 0$)이라 하자.\n포물선의 방정식은 $y^2 = 4px$이고, 준선의 방정식은 $x = -p$이다.\n태양과 혜성 사이의 최단 거리는 혜성이 포물선의 꼭짓점 $\\mathrm{O}$에 올 때이며, 이 거리는 $p$이다.\n\n2단계: 혜성의 좌표와 준선까지의 거리 표현\n혜성을 $\\mathrm{P}$라 하면 $\\overline{\\mathrm{PF}} = 8 \\times 10^8\\,\\mathrm{km}$이다.\n선분 $\\mathrm{FP}$와 포물선의 축(양의 $x$축)이 이루는 각이 $60^\\circ$이므로\n점 $\\mathrm{P}$의 $x$좌표는\n$$x_{\\mathrm{P}} = p + \\overline{\\mathrm{PF}}\\cos 60^\\circ = p + 8 \\times 10^8 \\times \\frac{1}{2} = p + 4 \\times 10^8$$\n\n3단계: 포물선의 정의로 $p$ 계산\n포물선의 정의에 의하여 점 $\\mathrm{P}$에서 초점까지의 거리는 준선 $x = -p$까지의 거리와 같으므로:\n$$\\overline{\\mathrm{PF}} = x_{\\mathrm{P}} - (-p) = x_{\\mathrm{P}} + p$$\n$$8 \\times 10^8 = (p + 4 \\times 10^8) + p = 2p + 4 \\times 10^8$$\n$$2p = 4 \\times 10^8 \\implies p = 2 \\times 10^8\\,\\mathrm{km}$$\n\n[오답 및 경계 점검]\n- 태양(초점)과 꼭짓점 사이의 거리 $p$가 최단 거리임을 포물선의 기하학적 성질로부터 확인한다.\n\n[결론]\n2\\times 10^8\\,\\mathrm{km}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 16,
@@ -446,8 +551,15 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q16.png\" />\n\n다음 그림과 같이 두 점 $\\mathrm{A}(5, 0)$, $\\mathrm{B}(-5, 0)$에 대하여 장축이 선분 $\\mathrm{AB}$인 타원의 두 초점을 $\\mathrm{F}, \\mathrm{F}'$이라고 하자. 초점이 $\\mathrm{F}$이고 꼭짓점이 원점인 포물선이 타원과 만나는 두 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라고 하면 $\\overline{\\mathrm{PQ}}=2\\sqrt{10}$이다. 이때 $\\overline{\\mathrm{PF}}\\times\\overline{\\mathrm{PF'}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{91}{4}",
+    "solution": "[풀이 전략]\n타원의 장축과 포물선 방정식을 세우고, 교점의 $y$좌표와 포물선의 정의를 결합하여 초점 거리 $\\overline{\\mathrm{PF}}$와 $\\overline{\\mathrm{PF'}}$를 구한다.\n\n[단계별 풀이]\n1단계: 타원과 포물선의 방정식 수립\n- 타원의 장축이 선분 $\\mathrm{AB}$이고 $\\mathrm{A}(5, 0), \\mathrm{B}(-5, 0)$이므로 $a = 5$이다.\n  타원의 두 초점을 $\\mathrm{F}(c, 0), \\mathrm{F}'(-c, 0)$이라 하면 $b^2 = 25 - c^2$이므로 타원의 방정식은\n  $$\\frac{x^2}{25} + \\frac{y^2}{25 - c^2} = 1$$\n- 포물선은 꼭짓점이 원점이고 초점이 $\\mathrm{F}(c, 0)$이므로\n  $$y^2 = 4cx$$\n\n2단계: 교점 $\\mathrm{P}$의 좌표 구하기\n대칭성에 의해 두 교점 $\\mathrm{P}, \\mathrm{Q}$의 $x$좌표는 같고 $y$좌표는 부호만 반대이다.\n$\\overline{\\mathrm{PQ}} = 2\\sqrt{10}$이므로 점 $\\mathrm{P}$의 $y$좌표는 $y = \\sqrt{10}$이다.\n점 $\\mathrm{P}(x_1, \\sqrt{10})$이 포물선 $y^2 = 4cx$ 위의 점이므로:\n$$(\\sqrt{10})^2 = 4cx_1 \\implies 10 = 4cx_1 \\implies x_1 = \\frac{5}{2c}$$\n\n3단계: 포물선의 정의로 $\\overline{\\mathrm{PF}}$ 구하기\n포물선의 정의에 의하여 점 $\\mathrm{P}$에서 초점까지의 거리는 준선 $x = -c$까지의 거리와 같으므로:\n$$\\overline{\\mathrm{PF}} = x_1 - (-c) = x_1 + c = \\frac{5}{2c} + c$$\n한편 타원 방정식에 $x_1 = \\frac{5}{2c}$, $y^2 = 10$을 대입하면:\n$$\\frac{\\frac{25}{4c^2}}{25} + \\frac{10}{25 - c^2} = 1 \\iff \\frac{1}{4c^2} + \\frac{10}{25 - c^2} = 1$$\n$$(25 - c^2) + 40c^2 = 4c^2(25 - c^2) \\iff 25 + 39c^2 = 100c^2 - 4c^4$$\n$$4c^4 - 61c^2 + 25 = 0 \\iff (4c^2 - 25)(c^2 - 1) = 0$$\n- $c^2 = \\frac{25}{4} \\implies c = \\frac{5}{2}$일 때: $\\overline{\\mathrm{PF}} = \\frac{5}{5} + \\frac{5}{2} = 1 + \\frac{5}{2} = \\frac{7}{2}$\n- $c^2 = 1 \\implies c = 1$일 때: $\\overline{\\mathrm{PF}} = \\frac{5}{2} + 1 = \\frac{7}{2}$\n두 경우 모두 $\\overline{\\mathrm{PF}} = \\frac{7}{2}$로 일치한다.\n\n4단계: $\\overline{\\mathrm{PF'}}$ 및 곱 계산\n타원의 정의에 의하여 $\\overline{\\mathrm{PF}} + \\overline{\\mathrm{PF'}} = 2a = 10$이므로:\n$$\\overline{\\mathrm{PF'}} = 10 - \\frac{7}{2} = \\frac{13}{2}$$\n따라서 구하는 곱은\n$$\\overline{\\mathrm{PF}} \\times \\overline{\\mathrm{PF'}} = \\frac{7}{2} \\times \\frac{13}{2} = \\frac{91}{4}$$\n\n[오답 및 경계 점검]\n- $c^2$의 두 근 모두 $\\overline{\\mathrm{PF}}=\\frac{7}{2}$라는 유일한 거리 값을 제공함을 대수적으로 확인한다.\n\n[결론]\n\\frac{91}{4}",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   },
   {
     "id": 17,
@@ -474,7 +586,14 @@ window.questionBank = [
     "wide": false,
     "content": "쌍곡선 $5x^2-4y^2=20$ 위의 점 중에서 $x$좌표가 양수인 점 $\\mathrm{P}$와 두 점 $\\mathrm{A}(3, 0)$, $\\mathrm{B}(5, \\sqrt{17})$에 대하여 $\\overline{\\mathrm{PA}}+\\overline{\\mathrm{PB}}$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "5",
+    "solution": "[풀이 전략]\n점 $\\mathrm{A}(3, 0)$이 쌍곡선의 초점임을 확인하고, 쌍곡선의 정의를 이용하여 거리의 합을 한 초점과 점 $\\mathrm{B}$ 사이의 거리 문제로 변환한다.\n\n[단계별 풀이]\n1단계: 쌍곡선의 기본형 및 초점 확인\n$$5x^2 - 4y^2 = 20 \\iff \\frac{x^2}{4} - \\frac{y^2}{5} = 1$$\n$a^2 = 4, b^2 = 5$이므로 $c^2 = a^2 + b^2 = 4 + 5 = 9 \\implies c = 3$이다.\n따라서 쌍곡선의 두 초점은 $\\mathrm{F}(3, 0), \\mathrm{F}'(-3, 0)$이다.\n즉, 주어진 점 $\\mathrm{A}(3, 0)$은 바로 쌍곡선의 오른쪽 초점 $\\mathrm{F}$이다!\n\n2단계: 쌍곡선의 정의로 $\\overline{\\mathrm{PA}}$ 치환\n점 $\\mathrm{P}$는 $x > 0$인 오른쪽 쌍곡선 위의 점이므로 초점 $\\mathrm{F}'(-3, 0)$까지의 거리가 $\\mathrm{F}(3, 0)$까지의 거리보다 크다.\n$$\\overline{\\mathrm{PF'}} - \\overline{\\mathrm{PF}} = 2a = 4 \\implies \\overline{\\mathrm{PA}} = \\overline{\\mathrm{PF}} = \\overline{\\mathrm{PF'}} - 4$$\n따라서 구하는 식은 다음과 같다:\n$$\\overline{\\mathrm{PA}} + \\overline{\\mathrm{PB}} = (\\overline{\\mathrm{PF'}} - 4) + \\overline{\\mathrm{PB}} = (\\overline{\\mathrm{PF'}} + \\overline{\\mathrm{PB}}) - 4$$\n\n3단계: 최솟값 계산\n삼각부등식에 의하여 $\\overline{\\mathrm{PF'}} + \\overline{\\mathrm{PB}} \\ge \\overline{\\mathrm{F'B}}$이며, 등호는 점 $\\mathrm{P}$가 선분 $\\mathrm{F'B}$ 위에 있을 때 성립한다.\n두 점 $\\mathrm{F}'(-3, 0)$과 $\\mathrm{B}(5, \\sqrt{17})$ 사이의 거리는\n$$\\overline{\\mathrm{F'B}} = \\sqrt{(5 - (-3))^2 + (\\sqrt{17} - 0)^2} = \\sqrt{8^2 + 17} = \\sqrt{64 + 17} = \\sqrt{81} = 9$$\n따라서 $\\overline{\\mathrm{PA}} + \\overline{\\mathrm{PB}}$의 최솟값은\n$$\\overline{\\mathrm{F'B}} - 4 = 9 - 4 = 5$$\n\n[오답 및 경계 점검]\n- 선분 $\\mathrm{F'B}$는 $x$좌표가 $-3$에서 $5$로 변하므로 $x > 0$인 쌍곡선과 반드시 교점을 가짐을 확인한다.\n\n[결론]\n5",
+    "curriculum": {
+      "unit": "H22-GE-01",
+      "order": 1,
+      "standardUnit": "이차곡선",
+      "majorUnit": "이차곡선"
+    },
+    "majorUnit": "이차곡선"
   }
 ];
