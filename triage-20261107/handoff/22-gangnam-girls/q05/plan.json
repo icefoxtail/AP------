@@ -1,0 +1,13 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id":"A"},{"id":"B"},{"id":"C"}],
+    "shade": "(A-B)∪(A∩C)"
+  },
+  "caption": "A에서 B를 뺀 영역과 A와 C가 겹치는 영역의 합집합을 색으로 나타낸다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"전체집합 U의 부분집합 A, B, C에서 (A-B)∪(A∩C)를 판단한다.","mappedTo":"diagram"}
+  ],
+  "newVisualInformation": ["A 안에서 B 밖인 부분과 A와 C가 겹치는 부분을 빠짐없이 같은 색으로 보여 준다."]
+}

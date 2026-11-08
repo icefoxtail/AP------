@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "Q",
+        "name": "유리수"
+      }
+    ],
+    "elements": [
+      {
+        "in": [
+          "Q"
+        ],
+        "text": "0"
+      },
+      {
+        "in": [
+          "Q"
+        ],
+        "text": "1"
+      }
+    ]
+  },
+  "caption": "가능한 첫 함수값 0과 1은 모두 유리수이다.",
+  "sourceConditions": [
+    {
+      "mappedTo": "diagram.elements",
+      "condition": "첫 함수값은 0 또는 1이다.",
+      "id": "c1"
+    },
+    {
+      "mappedTo": "diagram.elements",
+      "condition": "0과 1은 유리수 집합 Q의 원소이다.",
+      "id": "c2"
+    }
+  ],
+  "newVisualInformation": [
+    "두 가능한 첫 함수값 0과 1이 유리수 집합 Q 안에 놓여 있음을 보여 준다."
+  ]
+}

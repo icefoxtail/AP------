@@ -1,0 +1,71 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "합성함수를 먼저 계산하고 $(f\\circ f)(x)=x$를",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-4",
+      "3"
+    ],
+    "denominator": [
+      "7",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -16,
+      4
+    ],
+    "viewport": [
+      -16,
+      4,
+      -12,
+      12
+    ],
+    "axisTickValues": {
+      "y": [],
+      "x": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "slope": "1",
+          "style": "DASHED",
+          "label": "y=x",
+          "id": "identity",
+          "intercept": "0"
+        }
+      ],
+      "points": [
+        {
+          "x": "-2",
+          "y": "-2",
+          "id": "T"
+        }
+      ]
+    }
+  },
+  "caption": "해설에서 얻은 경우, 유일한 실근이 f와 y=x의 고정점 T로 나타난다.",
+  "sourceConditions": [
+    {
+      "mappedTo": "graphPlan.numerator/graphPlan.denominator",
+      "condition": "f(x)=(3x-4)/(x+a), a>0이고 f(f(k))=k인 실수 k가 하나이다.",
+      "id": "c1"
+    },
+    {
+      "mappedTo": "graphPlan.overlays.points",
+      "condition": "해설에서 a=7이고 유일한 실근 k=-2는 f(k)=k를 만족한다.",
+      "id": "c2"
+    },
+    {
+      "mappedTo": "graphPlan.overlays.lines",
+      "condition": "이 값에서 f와 y=x는 T=(-2,-2)에서 접한다.",
+      "id": "c3"
+    }
+  ],
+  "newVisualInformation": [
+    "유일한 해가 원함수의 고정점이며 그래프에서 y=x와의 접점으로 나타나는 것을 보인다."
+  ]
+}
