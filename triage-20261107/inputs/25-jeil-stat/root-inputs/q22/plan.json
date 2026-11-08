@@ -1,0 +1,8 @@
+{
+ "capability":"stat-chart-figure-v1",
+ "chart":{"kind":"TREE","root":{"children":[{"label":"카드 1","p":"2/3","children":[{"label":"X=0","p":"3/5"},{"label":"X=1","p":"2/5"}]},{"label":"카드 2","p":"1/3","children":[{"label":"X=0","p":"1/3"},{"label":"X=1","p":"8/15"},{"label":"X=2","p":"2/15"}]}]},"showPathProbability":true},
+ "caption":"카드별 조건부확률을 곱하고 같은 X값의 경로를 더해 확률분포표를 만든다.",
+ "sourceConditions":[{"id":"c1","condition":"카드 1 두 장과 카드 2 한 장에서 한 장 선택","mappedTo":"chart.root.children"},{"id":"c2","condition":"흰 구슬 4개와 검은 구슬 6개에서 카드 숫자만큼 비복원 추출","mappedTo":"chart.root.children.children"}],
+ "newVisualInformation":["카드별 흰 구슬 개수 X의 조건부확률과 각 경로확률은 해설 계산을 나타낸다.","같은 X의 경로를 합하면 23/45, 4/9, 2/45이며 평균은 8/15이다."],
+ "sourceQuote":"각 카드가 선택될 확률을 곱해 더하면"
+}
