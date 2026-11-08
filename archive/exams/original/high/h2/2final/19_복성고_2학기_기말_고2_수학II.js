@@ -355,7 +355,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "19e03ff17f1ecd4d1afa9fc83b6a7236b473ed7deb954b72d590961e02c1205d"
+    "solutionSha256": "19e03ff17f1ecd4d1afa9fc83b6a7236b473ed7deb954b72d590961e02c1205d",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점과 점 (2,0)을 지나는 아래로 볼록한 포물선과 x축 사이의 영역이 색칠되어 있다.",
+    "solutionImageCaption": "그림은 도함수 y=f′(x)=3x(x-2)의 그래프이다. 0과 2 사이에서 f′(x)<0이므로 색칠한 영역 S의 넓이는 4이고 f(2)-f(0)=∫₀²f′(x)dx=-4이다. f(0)=3이므로 f(2)=-1이다. 정답은 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

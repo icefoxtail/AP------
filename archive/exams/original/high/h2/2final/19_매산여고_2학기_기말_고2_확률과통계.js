@@ -113,7 +113,11 @@ window.questionBank = [
     },
     "sourceMode": "AUDITED_REPAIR",
     "sourceProvenance": "Original source JS hash-bound; q02 independence/binomial approximation condition explicitly repaired by supervisor.",
-    "repairReason": "원문에는 유한 모집단에서의 추출 방식·모집단 크기가 없어 exact binomial 모형을 정할 수 없다. 이항분포 근사를 사용한다는 최소 조건을 발문에 명시하고 기존 정규근삿값 ③을 유지했다."
+    "repairReason": "원문에는 유한 모집단에서의 추출 방식·모집단 크기가 없어 exact binomial 모형을 정할 수 없다. 이항분포 근사를 사용한다는 최소 조건을 발문에 명시하고 기존 정규근삿값 ③을 유지했다.",
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 240, 표준편차 12인 정규곡선에서 252와 264 사이가 음영으로 표시되어 있다.",
+    "solutionImageCaption": "문학 도서 수를 평균 240, 표준편차 12인 정규분포로 근사한다. 252와 264에 해당하는 경계 사이의 넓이를 읽는다. 정답은 0.14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -562,7 +566,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-029",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 60, 표준편차 4인 표본합 분포에서 64 이상인 오른쪽 꼬리가 음영으로 표시되어 있다.",
+    "solutionImageCaption": "표본합 S는 평균 60, 표준편차 4인 정규분포를 따른다. 64를 표준화한 값 1의 오른쪽 꼬리확률을 읽는다. 정답은 0.15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -674,7 +682,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-027",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 40인 정규곡선에서 30부터 k까지의 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "30을 표준화하면 −1이고, 주어진 확률은 표준정규곡선에서 −1부터 2까지의 넓이에 해당한다. 이에 맞는 원래 분포의 오른쪽 경계는 60이다. 정답은 60이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -844,7 +856,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-030",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1.5와 1.5 사이의 중심 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "신뢰구간의 중심은 45이고 반폭은 3, 표준오차는 2이므로 표준화 경계는 −1.5와 1.5이다. 두 꼬리 바깥을 제외한 중심 영역의 확률을 구한다. 정답은 86이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 16,
@@ -903,7 +919,11 @@ window.questionBank = [
     },
     "sourceMode": "AUDITED_REPAIR",
     "sourceProvenance": "R3 source audit: original PDF p4 duplicated choices ② and ③ at 0.8413; q16 repair is bound to source JS and R3 packet.",
-    "repairReason": "정답 ①의 0.9772는 유지하고, 원문에서 중복된 ③의 0.8413을 서로 다른 오답 0.4772로 최소 교정했다."
+    "repairReason": "정답 ①의 0.9772는 유지하고, 원문에서 중복된 ③의 0.8413을 서로 다른 오답 0.4772로 최소 교정했다.",
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 60, 표준편차 5인 정규곡선에서 70 이하의 왼쪽 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "양의 일차변환 Y=3X+1에서 Y가 211 이하인 조건은 X가 70 이하인 조건과 같다. 이를 표준화하면 Z가 2 이하인 영역이다. 정답은 0.9772이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1212,6 +1232,10 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-029",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −0.5 이하의 왼쪽 꼬리가 음영으로 표시되어 있다.",
+    "solutionImageCaption": "표본평균을 표준화한 경계를 왼쪽 누적확률 0.3085의 경계와 비교한다. 확률의 단조성으로 가능한 자연수 n의 상한을 정한다. 정답은 25이다.",
+    "solutionImageSize": "full"
   }
 ];

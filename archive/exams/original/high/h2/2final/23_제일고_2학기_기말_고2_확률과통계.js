@@ -146,7 +146,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균이 0인 표준정규곡선에서 평균 왼쪽 영역과 0부터 0.5까지의 영역을 음영으로 나타냈고, 각 영역에 0.5와 표의 값 0.19를 표시했다.",
+    "solutionImageCaption": "평균 왼쪽의 넓이는 대칭성으로 0.5이고, 0부터 0.5까지의 넓이는 표에서 0.19이다. 두 넓이를 더하면 P(Z≤0.5)가 된다. 정답은 0.69이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -346,7 +350,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 20킬로그램인 수확량의 정규곡선에서 평균 20과 경계 27을 표시하고, 27 이상인 오른쪽 꼬리를 음영으로 나타냈다.",
+    "solutionImageCaption": "27킬로그램을 표준화하면 z값은 2이고, 오른쪽 꼬리 확률은 표의 0.48을 0.5에서 빼어 구한다. 이 비율을 감나무 5000그루에 적용한다. 정답은 100그루이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -376,7 +384,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 320인 성공 횟수의 정규근사 곡선에서 평균과 k의 경계를 표시하고, k 이상인 오른쪽 꼬리를 음영으로 나타냈다. k 경계 아래에 표준화 값 1.5가 표시되어 있다.",
+    "solutionImageCaption": "이항분포를 평균 320, 표준편차 8인 정규분포로 근사한다. 오른쪽 꼬리 확률 0.07은 표에서 표준화 값 1.5에 대응하므로 k=320+8×1.5이다. 정답은 332이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -406,7 +418,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 80인 표본평균의 정규곡선에서 78과 82 사이의 대칭 구간을 음영으로 표시했다. x축과 z축에 각 경계의 표준화 위치가 표시되어 있다.",
+    "solutionImageCaption": "주어진 확률 0.68은 평균 80을 중심으로 양쪽에 0.34씩 나뉜다. 표에서 각 반쪽의 표준화 값은 1이므로 표본평균의 표준오차는 2이고, 10/√n=2를 푼다. 정답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -464,7 +480,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1.8과 1.8 사이의 중심 영역을 음영으로 표시하고 양쪽 경계와 평균 0을 표시했다.",
+    "solutionImageCaption": "표본평균의 표준오차는 30/√36=5시간이고, 신뢰구간의 반길이는 9시간이다. 따라서 표준화한 경계는 ±1.8이며, 표에서 중심 넓이는 0.46의 두 배이다. 정답은 92이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -585,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 평균 0부터 표준화 경계 1까지의 영역을 음영으로 표시했다.",
+    "solutionImageCaption": "표본평균을 표준화하면 0과 2/σ(X̄) 사이의 확률이 0.34이다. 표에서 이 넓이에 대응하는 표준화 경계는 1이므로 σ(X̄)=2이다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
