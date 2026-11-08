@@ -1,0 +1,95 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "h값",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "name": "시작값"
+          },
+          {
+            "id": "B",
+            "value": "-8",
+            "name": "최솟값"
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "감소t",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "증가t",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "가능k",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-8",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "-7",
+            "-1"
+          ]
+        }
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "t 증감과 k 범위"
+  },
+  "caption": "t>0에서 h(0)=0, h(2)=-8이며 0~2 감소 후 증가한다. -8<k<0 (예: k=-4), 정수 k는 7개.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "만남은 h(t)=t³-2t²-4t=k, t>0에서 해석한다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "h(0)=0, h(2)=-8; t>0에서 0~2 감소, 2 뒤 증가하므로 -8<k<0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "정수 k는 -7부터 -1까지 7개이다. 보조 수직선은 k의 허용 범위만 표시하고 h의 원래 t>0 반직선 곡선은 나타내지 않는다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

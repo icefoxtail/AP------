@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "곱미분",
+        "points": [
+          {
+            "id": "A",
+            "value": "1",
+            "name": "첫째항"
+          },
+          {
+            "id": "B",
+            "value": "10",
+            "name": "둘째항"
+          },
+          {
+            "id": "C",
+            "value": "11",
+            "name": "기울기"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "곱미분 기울기 항"
+  },
+  "caption": "f'(1)g(1)=1, f(1)g'(1)=10; 두 항의 합은 접선 기울기 11.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=1에서 f(1)=2, g(1)=1, f'(1)=1, g'(1)=5이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "곱의 미분법으로 (fg)'(1)=f'(1)g(1)+f(1)g'(1)=1+10=11이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 곱미분 항은 f'(1)g(1)=1, 둘째 항은 f(1)g'(1)=10이며 합은 11이다. 이 수직선은 항과 기울기 값만 보이고 원래 곱함수의 5차 곡선과 접선 전체는 나타내지 않는다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

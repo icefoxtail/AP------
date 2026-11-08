@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "12",
+          "-9",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        3
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "2x^3-9x^2+12x-1",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "id": "D",
+        "x": 3,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "닫힌구간 [0,3]에서 f는 [0,1] 증가, [1,2] 감소, [2,3] 증가한다. x=1의 극댓값은 4, x=2의 극솟값은 3이며 전체 최댓값은 끝점 x=3에서 8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌구간 [0,3]에서 f(x)=2x^3-9x^2+12x-1의 극댓값과 최댓값을 구하고 증감표와 극값, y절편을 표시한 그래프를 그린다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 부호가 +,−,+로 바뀌어 x=1은 극대, x=2는 극소다.",
+    "끝점과 내부 극값을 비교하면 전역 최댓값 8은 x=3에서 얻고, y절편은 (0,−1)이다.",
+    "기존 Q21 SVG의 최댓값/최솟값 오표기 이력은 보존하며 이 draft는 이를 덮어쓰거나 고치지 않는다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 표현을 우선해 준비한다."
+  ]
+}

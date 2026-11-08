@@ -1,0 +1,89 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "b",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a=4",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "1",
+            "3"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "label": "a=5",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "1",
+            "8"
+          ]
+        }
+      },
+      {
+        "kind": "SET",
+        "label": "a=6~9",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "10",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "1",
+            "9"
+          ]
+        }
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수 b 범위별 경우"
+  },
+  "caption": "a=4,5,6,7,8,9의 b 개수는 3,8,9,9,9,9이다. a=6~9 행은 네 경우이며 m=47, k=4, m+k=51.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "극댓값 위치 조건은 a-√b>2, 즉 0<b<(a-2)²이며 가능한 a는 4,5,6,7,8,9이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "경우 수는 차례로 3,8,9,9,9,9이다. a=6~9 네 경우는 같은 b=1..9 범위로 묶되 네 번 각각 9개로 세어 m=47을 보존한다. f(0) 최소의 a=k=4, 따라서 m+k=51.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

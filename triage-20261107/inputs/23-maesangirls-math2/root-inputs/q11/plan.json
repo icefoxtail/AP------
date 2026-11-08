@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-18",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2x^3-18x",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "tangent",
+        "slope": "6",
+        "intercept": "32",
+        "intersectionX": [
+          "-2",
+          "4"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -2,
+        "y": 20
+      },
+      {
+        "id": "Q",
+        "x": 4,
+        "y": 56
+      },
+      {
+        "id": "A",
+        "x": "-sqrt(3)",
+        "y": "12*sqrt(3)",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(3)",
+        "y": "-12*sqrt(3)",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "between-curve-and-tangent",
+        "upper": "tangent",
+        "lower": "f",
+        "from": "-2",
+        "to": "4",
+        "fill": "BLUE",
+        "label": "넓이 216"
+      }
+    ],
+    "axisScale": {
+      "x": "3",
+      "y": "1"
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "Q"
+  ],
+  "caption": "a=2, t=-2일 때 y=f(x)=2x^3-18x와 접선 y=6x+32를 표시한다. P=(-2,20), Q=(4,56) 사이 넓이는 216이다. 화면상 y축 단위 길이는 x축의 1/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접점 P(t,f(t))에서의 접선과 곡선의 다른 교점 Q의 x좌표는 4이고, 둘러싸인 넓이는 216이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2, t=-2에서 곡선은 y=2x^3-18x, 접선은 y=6x+32이다.",
+    "P에서 접선이 곡선과 접하고, Q는 x=4의 다른 교점이며 두 그래프 사이 넓이는 216이다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 표현을 우선해 준비한다.",
+    "표시 배율을 axisScale x:y=3:1로 명시했다. 즉 화면에서 y축 단위 길이는 x축의 1/3이며, 함수식·접점·교점·영역·넓이는 바꾸지 않았다."
+  ]
+}

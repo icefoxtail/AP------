@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "0",
+          "-8"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-8x^3+2x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-sqrt(3)/6",
+        "y": "-2*sqrt(3)/9"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(3)/6",
+        "y": "2*sqrt(3)/9"
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": -6
+      },
+      {
+        "id": "D",
+        "x": 2,
+        "y": -60
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": "6",
+      "y": "1"
+    },
+    "regions": [
+      {
+        "id": "negative-integral-band",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "2",
+        "fill": "WARM",
+        "label": "정적분값 -27"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "C",
+    "D"
+  ],
+  "caption": "y=f′(x)=−8x^3+2x의 [1,2] 구간은 x축 아래에 있다. 이 구간을 색칠해 정적분값 −27을 나타낸다. 표시 가독성을 위해 y축 단위 길이는 x축의 1/6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=∫_x^0(8t^3−2t)dt이므로 f′(x)=−8x^3+2x이다. 구할 적분 구간은 [1,2]이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그려야 하는 곡선은 f 자체가 아니라 f′(x)=−8x^3+2x이다.",
+    "[1,2]에서 곡선이 x축 아래에 있어 부호 있는 넓이는 −27이다.",
+    "세로축은 가로축 단위 길이의 1/6로 압축해 구간 [1,2]를 읽기 쉽게 표시한다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 표현을 우선해 준비한다."
+  ]
+}

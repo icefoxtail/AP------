@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "7",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-4x^2+7x",
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "-1",
+          "2"
+        ],
+        "intersectionX": [
+          "0",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 28
+      },
+      {
+        "id": "V",
+        "x": "1/4",
+        "y": "-1/8",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "left-band",
+        "upper": "f",
+        "lower": "g",
+        "from": "0",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "넓이 4"
+      },
+      {
+        "id": "right-band",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "4",
+        "fill": "WARM",
+        "label": "넓이 4"
+      }
+    ],
+    "axisScale": {
+      "x": "2",
+      "y": "1"
+    }
+  },
+  "caption": "두 곡선의 교점은 (0,0), (2,6), (4,28)이며 두 색칠 영역의 넓이는 각각 4, 합은 8이다. 화면상 y축 단위 길이는 x축의 1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x^3-4x^2+7x와 y=2x^2-x로 둘러싸인 도형의 넓이를 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "교점 x=0,2,4 사이에서 위쪽 곡선이 바뀌며 두 영역의 넓이는 각각 4이다.",
+    "두 영역을 따로 색칠해 합이 8임을 보인다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 표현을 우선해 준비한다.",
+    "표시 배율을 axisScale x:y=2:1로 명시했다. 즉 화면에서 y축 단위 길이는 x축의 1/2이며, 함수식·교점·영역·넓이는 바꾸지 않았다."
+  ],
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ]
+}

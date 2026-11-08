@@ -1,0 +1,85 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-9",
+      "3"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -3,
+      5,
+      -20,
+      60
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": -8
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        1,
+        3
+      ],
+      "y": [
+        -8,
+        4
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "Lp",
+          "slope": "0",
+          "intercept": "9",
+          "label": "y=9"
+        },
+        {
+          "id": "Lm",
+          "slope": "0",
+          "intercept": "-9",
+          "label": "y=-9"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "c=9인 예에서 y=9와 y=−9가 각각 한 점에서 만나므로 |f(x)|=9는 서로 다른 두 실근을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=3x³−9x²+4이며 |f(x)|=k+1의 서로 다른 두 실근 조건은 k>7이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "c=9는 k>7에서 고른 예시이며 원문이 특정한 조건은 k>7이다. 두 수평선은 예시를 설명하고, 교점 근을 근사하거나 따로 표기하지 않는다.",
+    "사용자 요청에 따라 함수 그래프가 이해에 도움을 주도록 준비했다."
+  ],
+  "sourceQuote": "$f'(x)=9x(x-2)$이므로 $f$는 $x=0$에서 극댓값 $4$, $x=2$에서 극솟값 $-8$을 갖는다."
+}

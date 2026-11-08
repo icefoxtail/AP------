@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x<0에서는 g=−x^2(x−3), x≥0에서는 g=x^2(x−3)이다. g는 x=0에서 미분가능하고 x=2에서 극솟값 −4를 가지며 k=2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=−f(x) (x<0), f(x) (x≥0); 모든 실수에서 미분가능하고 g(x)=0의 모든 실근의 합은 양수이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "승인된 풀이에서 f(x)=x²(x−3), c=3이며 g의 두 조각은 x=0에서 미분가능하게 이어진다.",
+    "x=2에서 g의 극솟값 −4를 가지므로 k=2이다. x=3은 추가 영점이다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 표현을 우선해 준비한다."
+  ],
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "근 순서",
+        "points": [
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "a",
+            "between": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "b",
+            "between": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "D",
+            "value": "4",
+            "hideName": true
+          }
+        ],
+        "order": [
+          "O",
+          "a",
+          "C",
+          "b",
+          "D"
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "근의 개략적 순서"
+  },
+  "caption": "[0,2] 양의 넓이 16, 음의 넓이 24; [2,4] 양의 넓이 48, 음의 넓이 8; 음수 전체 적분의 최솟값은 -32.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 근의 위치는 0<a<2<b<4이고, 수직선은 이 순서만 표현한다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "구간별 넓이는 [0,2]의 양의 넓이 16, 음의 넓이 크기 24; [2,4]의 양의 넓이 48, 음의 넓이 크기 8이다. 음수 부분 전체의 적분은 -32이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a와 b는 값이 주어지지 않은 상징적 점으로만 둔다. 두 점 사이 또는 양 끝 사이의 간격·비율은 의미를 갖지 않는다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

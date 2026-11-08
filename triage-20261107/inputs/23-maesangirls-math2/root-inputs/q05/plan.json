@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-20",
+      "-32",
+      "0",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4.5,
+      4.5
+    ],
+    "viewport": [
+      -5,
+      5,
+      -120,
+      240
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 13
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": -20
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        2,
+        4
+      ],
+      "y": [
+        -100,
+        -50,
+        50,
+        100,
+        200
+      ]
+    }
+  },
+  "caption": "f(x)=x⁴−32x−20에서 f(−1)=13, f(0)=−20이며 두 값의 차는 33이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f'(x)=4(x−2)(x²+2x+4), f(0)=−20이며 f(−1)을 구한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 요청에 따라 함수 그래프가 이해에 도움을 주도록 준비했다."
+  ],
+  "sourceQuote": "$f(-1)=f(0)+33=-20+33=13$이므로 정답은 ③이다.",
+  "coordinateLeader": [
+    "A",
+    "B"
+  ]
+}

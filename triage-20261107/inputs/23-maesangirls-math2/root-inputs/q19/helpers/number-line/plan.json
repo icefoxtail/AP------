@@ -1,0 +1,81 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "구간점",
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "0",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "증가",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "감소",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "닫힌구간 증감 보조"
+  },
+  "caption": "f(-2)=-4 (최솟값), f(-1)=11 (최댓값), f(0)=8.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌구간 [-2,0]에서 f(-2)=-4, f(-1)=11, f(0)=8이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "f는 [-2,-1]에서 증가하고 [-1,0]에서 감소한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "보조 수직선은 값 비교를 돕지만 원문이 요구한 닫힌구간 곡선을 대체하지 않는다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

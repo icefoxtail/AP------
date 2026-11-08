@@ -1,0 +1,107 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "근 위치",
+        "points": [
+          {
+            "id": "A",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "양수",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "양수",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "음수",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수 부호 구간"
+  },
+  "caption": "f'(x)>0: (-5,-4),(0,4),(4,5]; f'(x)<0: (-4,0). x=4에서 부호 유지.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "열린 구간 (-5,-4)에서 f'(x)>0, (-4,0)에서 f'(x)<0, (0,4)와 (4,5)에서 f'(x)>0이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "x=-4는 양수에서 음수로, x=0은 음수에서 양수로 바뀌며 x=4에서는 f'(4)=0이어도 부호가 바뀌지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 도함수 그래프 자체나 미지의 함수식·높이는 재구성하지 않고 알려진 부호와 부호 변화만 표시한다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "임계점",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "감소",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "증가",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "x≥0에서 h₀의 증감"
+  },
+  "caption": "h₀(0)=10, h₀(2)=-10; 최솟값은 -10, h₀+k의 최솟값은 k-10>0이므로 k>10.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥0에서 h₀'(x)=15x(x-2), h₀(0)=10, h₀(2)=-10이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "h₀는 0부터 2까지 감소하고, 2 뒤 증가하여 최솟값 -10을 갖는다. 따라서 h₀+k의 최솟값은 k-10이고 k>10이다. 수직선은 이 증감만 표현하며 원래 h₀ 반직선 곡선은 나타내지 않는다.",
+    "사용자 요청에 따라 함수 관계와 수직선 정보를 연결해 이해를 돕는다."
+  ]
+}

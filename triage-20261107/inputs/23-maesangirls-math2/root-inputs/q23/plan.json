@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-15",
+      "6",
+      "1"
+    ],
+    "domain": [
+      -10.5,
+      10
+    ],
+    "viewport": [
+      -11,
+      10.5,
+      -600,
+      1600
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -5,
+        "y": 100
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": -8
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -10,
+        -5,
+        1,
+        5,
+        9
+      ],
+      "y": [
+        -500,
+        -100,
+        100,
+        500,
+        1000
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "B",
+    "O"
+  ],
+  "caption": "f(x)=x³+6x²−15x의 극댓값은 100, 극솟값은 −8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(0)=0, f(x)=x³+6x²−15x이며 극댓점은 (−5,100), 극솟점은 (1,−8)이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "함수의 극값 좌표를 그래프에서 확인할 수 있다.",
+    "사용자 요청에 따라 함수 그래프가 이해에 도움을 주도록 준비했다."
+  ],
+  "sourceQuote": "왼쪽 임계점 $x=-2-p=-5$에서 극댓값을 갖고, $f(-5)=2p^3+6p^2-8=54+54-8=100$이다."
+}
