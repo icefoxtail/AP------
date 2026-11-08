@@ -65,6 +65,7 @@
     _build() {
       const d = this.def;
       document.body.classList.add('apl');
+      document.body.classList.toggle('apl-staged', !!d.stagedReveal);
       if (d.courseColor) document.documentElement.style.setProperty('--c-course', d.courseColor);
       const ui = (this.ui = {});
 
@@ -1221,16 +1222,20 @@
       this.invalidate(true);
       this._saveHashSoon();
     }
+    _problemPresenter() {
+      return !!(this.def.stagedReveal && this.teach && this.tab === 'problem' && this._tabAvailable('review'));
+    }
     _renderPresenter() {
       const p = this.ui.presenter;
       if (!this.teach) return;
       const sc = this.scene;
       const steps = call(sc.steps, this.s) || [];
       const cur = this.s.step;
-      const txt = steps.length
+      const problemOnly = this._problemPresenter();
+      const txt = problemOnly ? '주어진 조건을 확인하세요. 다음 버튼을 누르면 풀이 그림과 설명을 함께 볼 수 있습니다.' : steps.length
         ? cur > 0 ? String(steps[cur - 1]).replace(/^Step\s*\d+\s*·\s*/, '') : '그림을 먼저 관찰해 보세요'
         : APLab.stripEmoji(APLab.splitFlag(sc.title).text);
-      const label = steps.length ? `단계 ${cur} / ${steps.length}` : `장면 ${this.index + 1} / ${this.list.length}`;
+      const label = problemOnly ? '문제의 기준 도형' : steps.length ? `단계 ${cur} / ${steps.length}` : `장면 ${this.index + 1} / ${this.list.length}`;
       const key = label + txt;
       if (p.__k === key) return;
       p.__k = key;
@@ -1241,11 +1246,13 @@
         h('button', { class: 'apl-icon-btn', 'aria-label': '다음', html: icon('next'), onclick: () => this.next() }));
     }
     next() {
+      if (this._problemPresenter()) { this.setTab('review'); return; }
       if (!this.stepBy(1)) {
         if (this.index < this.list.length - 1) this.goScene(this.index + 1);
       }
     }
     prev() {
+      if (this._problemPresenter()) { this.setTab('review'); return; }
       if (!this.stepBy(-1)) {
         if (this.index > 0) {
           this.goScene(this.index - 1);
