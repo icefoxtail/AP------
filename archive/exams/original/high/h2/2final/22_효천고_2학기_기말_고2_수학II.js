@@ -324,7 +324,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 두 점에서 만나며, 두 점에는 각각 (1, 0)과 (5, 0)이 표시되어 있다.",
+    "solutionImageCaption": "상한과 하한이 같을 때 적분값이 0이 되는 조건을 이차식의 영점으로 읽는다. 두 하한 후보의 합을 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -381,7 +385,11 @@ window.questionBank = [
     "rpmL3": "방정식과 부등식",
     "rpmL4": "근의 개수",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극대점과 극소점에 각각 (-1, 2), (1, -2)가 표시되어 있고, 다른 색의 수평선이 그래프와 세 곳에서 만난다.",
+    "solutionImageCaption": "극대와 극소의 높이는 각각 2와 -2이다. 예: y=1인 수평선은 그래프와 세 번 만난다. 정답은 -2 < a < 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -493,7 +501,11 @@ window.questionBank = [
     "rpmL3": "정적분의 뜻",
     "rpmL4": "구간 분할",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 두 조각이 (0, 1), (1, 3), (2, 12)를 지나며 x축 위의 두 구간 영역이 색칠되어 있다. 영역 안에 2와 7이 표시되어 있다.",
+    "solutionImageCaption": "x=1에서 도함수 그래프의 구간을 나누고 각 정적분을 넓이로 읽는다. 두 넓이를 더해 함수값의 변화를 구한다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

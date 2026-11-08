@@ -166,7 +166,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 밀도 직선과 주어진 구간 아래의 삼각형 영역.",
+    "solutionImageCaption": "확률밀도함수 아래 주어진 구간의 전체 넓이는 1이다. 정답은 2/9이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -208,7 +212,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균을 중심으로 두 꼬리 영역이 대칭인 정규분포 곡선.",
+    "solutionImageCaption": "같은 꼬리 확률의 두 경계는 평균을 중심으로 대칭이다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -250,7 +258,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 양쪽 대칭 구간이 색칠된 정규근사 곡선.",
+    "solutionImageCaption": "정규근사에서 구간을 평균 기준으로 나누고 표의 두 면적을 더한다. 정답은 0.6826이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -292,7 +304,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포에서 평균 왼쪽과 평균부터 주어진 경계까지 칠한 영역.",
+    "solutionImageCaption": "평균 왼쪽 절반에 표에서 찾은 평균부터 경계까지의 면적을 더한다. 정답은 0.93이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -334,7 +350,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균을 중심으로 양쪽 경계가 같은 거리에 있는 정규분포 곡선이다.",
+    "solutionImageCaption": "같은 양쪽 꼬리 확률에서 평균은 두 경계의 중점 6이고, 분산의 상수배 법칙으로 분산은 4이다. 정답은 평균 6, 분산 4인 정규분포이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -418,7 +438,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본평균의 정규분포에서 평균 양쪽의 두 구간을 칠한 그림.",
+    "solutionImageCaption": "표본평균의 표준편차를 구한 뒤 평균 양쪽의 서로 다른 표 값을 더한다. 정답은 0.8185이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -502,7 +526,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심을 맞춘 두 구간으로 길이의 비 1대 4를 비교한 예시이다.",
+    "solutionImageCaption": "예: 중심을 맞춘 짧은 구간(길이 l)과 4배 긴 구간(길이 4l)의 반폭을 1과 4로 두면 길이비도 1대 4이다. 신뢰구간 길이는 표본 크기의 제곱근에 반비례하므로 표본 크기비는 16이다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -628,7 +656,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 평균을 중심으로 좌우 대칭인 구간을 칠해 놓았다.",
+    "solutionImageCaption": "예: 두 표준화 구간의 반폭을 각각 1로 두면 중앙확률이 같다. 일반적으로 두 표준화 반폭을 같게 두어 곱을 구한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -670,7 +702,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 가운데 점 B가 45이고, 점 A와 C가 B에서 같은 거리에 있는 모습.",
+    "solutionImageCaption": "점 B는 표본평균 45분이고, 점 A와 C는 B에서 오차한계 5.16분(표준오차 2분의 2.58배)씩 떨어진 신뢰구간의 양 끝이다. 정답은 39.84분 이상 50.16분 이하이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -712,7 +748,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 95퍼센트 신뢰구간의 양 끝값을 수직선에 표시했다.",
+    "solutionImageCaption": "주어진 하한에서 신뢰구간의 중심을 복원해 상한 198.88그램을 얻는다. 정답은 396.64이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -754,7 +794,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 3, 5, 6을 놓고 3과 6 사이에 두 배 관계를 표시했다.",
+    "solutionImageCaption": "표본평균의 표준편차가 3이므로 모집단 표준편차는 6이고 평균은 5이다. 분산과 평균의 제곱을 더한다. 정답은 61이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -796,7 +840,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 평균을 중심으로 같은 크기의 양쪽 꼬리 영역을 표시했다.",
+    "solutionImageCaption": "표본평균의 표준편차는 3이고 양쪽 바깥 확률의 합은 0.05이므로 각 꼬리는 0.025이다. 표에서 중앙 면적 0.475에 해당하는 경계는 2이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -838,7 +886,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 오른쪽에서 0.5 이상인 꼬리와 1 이상인 꼬리가 겹쳐 있다.",
+    "solutionImageCaption": "표준화하면 두 경계는 각각 1과 0.5이다. 두 오른쪽 꼬리확률은 각각 0.5−0.3413과 0.5−0.1915이므로 합을 구한다. 정답은 0.4672이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -882,7 +934,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균이 다른 두 정규곡선이 교점의 가로좌표 10에서 만나며, 각 평균과 교점 사이의 넓이를 칠했다.",
+    "solutionImageCaption": "같은 표준편차의 두 곡선은 교점에서 두 평균까지의 거리가 같다. 각 중앙 쪽 넓이는 0.4987이므로 표준화한 거리는 3, 평균은 −5와 25이다. 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -993,7 +1049,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 5
+    "standardUnitOrder": 5,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점수의 정규분포에서 기준점 오른쪽 꼬리 영역.",
+    "solutionImageCaption": "기준점 이상인 오른쪽 꼬리 면적과 전체 인원에 대한 비율 관계. 정답은 190명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1030,6 +1090,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "standardUnitOrder": 6
+    "standardUnitOrder": 6,
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_확률과통계/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 실제 값을 1000배한 눈금에서 95퍼센트와 99퍼센트 신뢰구간의 끝값을 표시했다.",
+    "solutionImageCaption": "눈금은 실제 값의 1000배이다. 두 구간의 실제 중심은 10이며, 95퍼센트 구간으로 표본 크기는 100, 99퍼센트 구간 끝의 실제 합은 20이다. 정답은 130이다.",
+    "solutionImageSize": "full"
   }
 ];

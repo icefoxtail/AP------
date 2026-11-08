@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수와 두 점을 지나는 할선.",
+    "solutionImageCaption": "y=s(x)는 두 점 A, B를 잇는 할선이고, 그 기울기가 주어진 구간의 평균변화율이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -113,7 +117,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 일차함수의 그래프.",
+    "solutionImageCaption": "부정적분을 미분하면 피적분함수가 된다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -449,7 +457,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 이차함수의 그래프.",
+    "solutionImageCaption": "양변을 미분하면 f'(x)=3x-1이고, f(0)>0 조건으로 f(x)=3/2 x^2-x+1이 정해진다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -553,7 +565,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 그래프와 시간축 위아래의 두 영역.",
+    "solutionImageCaption": "속도를 시각 t에 대한 그래프로 나타내면 t=2에서 부호가 바뀐다. 두 구간의 넓이를 합해 이동거리를 구한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -603,7 +619,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 일차함수의 그래프.",
+    "solutionImageCaption": "a=-1을 구한 뒤 양변을 두 번 미분하면 일차함수 f(x)=6x-2를 얻는다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
