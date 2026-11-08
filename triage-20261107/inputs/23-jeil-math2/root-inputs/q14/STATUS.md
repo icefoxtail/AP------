@@ -16,3 +16,10 @@ Question-specific limitations:
 This is a time-interval signed-displacement helper, not the piecewise velocity graph. The spans show −1,−5/3,+7/3 over [0,1], [1,2], [2,3]; physical time and displacement units must remain distinct. Total distance uses absolute areas, not their signed sum. Time-axis labeling, fraction-label display and sign placement are unvalidated. Any earlier formula-boundary readability approval does not approve this new picture.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 마지막 적분은 $\dfrac73$이므로
+- Span label correction: exact original span from=B, to=C, label='-5/3'; label now '두번째'.
+- Span label correction: exact original span from=C, to=D, label='+7/3'; label now '세번째'.

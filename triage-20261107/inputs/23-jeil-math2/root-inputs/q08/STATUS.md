@@ -16,3 +16,8 @@ Question-specific limitations:
 This number-line helper covers only statement ㄹ, marking the three cases a=−4,2,8. It does not illustrate statements ㄱ/ㄴ/ㄷ, the even-function counterexample, the integral direction rule, or equal shaded areas. It is not a complete visualization of all four statements, and no OPEN closure is claimed.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 가능한 값의 합은 $-4+2+8=6$

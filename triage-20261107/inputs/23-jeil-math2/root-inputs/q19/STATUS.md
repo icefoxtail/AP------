@@ -16,3 +16,8 @@ Question-specific limitations:
 The number line shows only the candidate inequality 15<16<20 for q=5,p=4. It does not draw f or g, the removable point x=0 after cancellation, or a proof that q=1,2,3,4 are impossible. The two-row/within relationship and displayed labels are unvalidated. This partial parameter helper does not resolve the original rational-domain visualization question.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $15<16<20$

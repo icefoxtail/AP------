@@ -16,3 +16,8 @@ Question-specific limitations:
 The number line shows a=(1−√13)/2, 1, b=(1+√13)/2. It does not draw the quartic, derivative sign changes, or f′(2). Exact radical values are authored but number-line acceptance, ordering and rendered radical typography have not been validated. The plot is an extrema-location helper, not a completed derivative-condition visualization.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $s=1$이고, 이때 $p=-3$이다.

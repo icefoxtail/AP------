@@ -16,3 +16,8 @@ Question-specific limitations:
 The new representation is the number-line set k≤−2, rather than the derivative-sign curve for positive x. The final maximum −2 appears directly as the closed endpoint and in alt, so displayed answer handling remains unreviewed. Preserve the historical compressed derivative-framing problem; it was a technical issue, not an upload denial, and this plan has not established a fix.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $k\le-2$이다.

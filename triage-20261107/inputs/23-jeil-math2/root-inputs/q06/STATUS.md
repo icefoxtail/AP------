@@ -16,3 +16,8 @@ Question-specific limitations:
 The current draft is the parameter number line −22<k<5, not the cubic or its three roots. The final count 26 is in publish.caption. Preserve the older cubic framing/compression problem; changing the representation has not been rendered and does not prove that failure fixed. The derivation of two positive and one negative root remains in the source solution.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $-22<k<5$이고
