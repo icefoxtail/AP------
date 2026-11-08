@@ -59,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 곱미분의 첫째 항 1과 둘째 항 10을 수직선에 표시한다.",
+    "solutionImageCaption": "두 곱미분 항을 따로 계산해 합친다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -89,7 +93,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 영점 −4, 0, 4와 부호 변화 여부를 나타낸 수직선.",
+    "solutionImageCaption": "도함수의 부호로 함수의 증가와 극값을 판정한다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -149,7 +157,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: f′(x)=4x³−32의 그래프와 −1과 0 사이의 x축 아래 영역을 표시한다.",
+    "solutionImageCaption": "적분 구간을 0에서 −1로 거꾸로 잡아 함수값 변화 33을 구한다. 정답은 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -177,7 +189,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 함수의 곡선과 세 교점, 교점 사이에 색칠한 두 영역을 표시한다.",
+    "solutionImageCaption": "0<x<2에서는 f가, 2<x<4에서는 g가 위에 있고 두 영역의 넓이는 각각 4이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -205,7 +221,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 곡선과 극댓점 (0,4), 극솟점 (2,−8)을 표시한다.",
+    "solutionImageCaption": "극댓값과 극솟값을 기준으로 교점 수를 비교한다. 정답은 k>7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -233,7 +253,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: h(x)의 임계점 0, 2와 x≥0에서 감소·증가 구간을 수직선에 표시한다.",
+    "solutionImageCaption": "h(x)=5x³−15x²+k+10이라 두면 x=2에서 최솟값을 갖는다. 정답은 k>10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -261,7 +285,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 시각 0, 4/3, 2와 속도가 양수·음수인 구간을 표시한다.",
+    "solutionImageCaption": "속도의 부호가 처음 바뀌는 시각은 4/3이다. 이때 가속도를 구한다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -317,7 +345,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수와 접선을 그리고 접점 (−2,20)과 다른 교점 (4,56), 두 그래프 사이 영역을 표시한다.",
+    "solutionImageCaption": "예: a=2, t=−2일 때 접점 P(−2,20)과 다른 교점 Q(4,56) 사이의 영역을 본다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -345,7 +377,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 y=−8x³+2x와 [1,2]에서 x축 아래에 놓인 색칠 영역을 표시한다.",
+    "solutionImageCaption": "아래끝이 x인 적분을 미분해 도함수 그래프를 얻는다. 정답은 −27이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -373,7 +409,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: g(x)=|F(x)|의 그래프와 세 영점, 내부 봉우리 두 곳을 표시한다.",
+    "solutionImageCaption": "절댓값에 따라 적분 함수의 음수 부분이 위로 접힌다. 정답은 8/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -401,7 +441,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 0, a, 2, b, 4의 순서만 표시하며 점 사이 간격은 비례하지 않는다.",
+    "solutionImageCaption": "두 근이 2를 사이에 둔 순서를 이용해 양·음의 넓이를 합친다. 정답은 −32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -429,7 +473,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: g의 그래프는 원점에서 이어지고, 오른쪽 조각에 극솟점과 x=3의 영점이 있다.",
+    "solutionImageCaption": "원점에서 미분가능하게 이어지고 x=3에서 다시 0을 지난다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -489,7 +537,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 두 만남을 만드는 k의 열린구간을 표시한다.",
+    "solutionImageCaption": "t³−2t²−4t=k에서 좌변은 처음 값 0에서 최솟값 −8까지 감소한 뒤 증가한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -517,7 +569,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: a=4, a=5, a=6~9일 때 가능한 정수 b 범위를 세 행으로 표시한다.",
+    "solutionImageCaption": "a=6, 7, 8, 9는 각각 9개씩 센다. 정답은 51이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -541,7 +597,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 [−2,0]의 삼차함수 그래프와 두 끝점, 내부 극점을 표시한다.",
+    "solutionImageCaption": "끝점과 내부 극점의 함수값을 비교한다. 정답은 −5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -595,7 +655,10 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q21-solution.svg"
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 [0,3]의 삼차함수와 내부 극대·극소 및 양 끝점을 표시한다.",
+    "solutionImageCaption": "내부 극댓값과 구간 전체의 최댓값을 구별한다. 정답은 극댓값 4, 최댓값 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -647,6 +710,10 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프에 극댓점 M과 극솟점 (1,−8), 원점을 표시한다.",
+    "solutionImageCaption": "M은 극댓점이다. 도함수의 대칭축과 극솟값 −8로 두 극점의 위치를 구한다. 정답은 100이다.",
+    "solutionImageSize": "full"
   }
 ];
