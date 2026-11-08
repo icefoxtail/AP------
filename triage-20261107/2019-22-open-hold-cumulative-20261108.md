@@ -669,3 +669,37 @@ FIGURE 입력 3종 Q02, Q08, Q09, Q10, Q11, Q18, Q22. 원문·기존 자산 확�
 - 현재 별도 HOLD status: 0. Legacy 그림 HOLD 이력: 2021 순천여고 고2 Q09·Q15 2건(OPEN 집계 안에 포함).
 - 콘텐츠만 차단된 `CONTENT` status: 2020 매산고 고1 Q14, 2021 제일고 고1 Q11, 2건 (OPEN 집계 외).
 - 원격 3종 검사: 표 OPEN QID 259개 + prose-only Q17 1개 + 금당고 사용자 예외 Q5개 및 CONTENT-only Q2개 모두 해당 `root-inputs/qNN` 폴더/3종이 없음. 로컬 미커밋 drafts는 별도이며 branch 0/3 표시와 혼동하지 않는다.
+
+
+## 추가 스냅샷: 2026-11-08
+
+- 원격 작업 브랜치 `codex/svg-triage-20261107`의 읽기 기준 HEAD: [`ade13f98c7b8de28692b47c517ae7c38080ab68c`](https://github.com/icefoxtail/AP------/commit/ade13f98c7b8de28692b47c517ae7c38080ab68c). 아래는 이 SHA에서 지정된 경로들의 디렉터리 목록만 읽어 확인했다. `item.json / plan.json / publish.json`의 내용은 열지 않았다.
+- 앞선 인벤토리 본문의 고1 41 + 고2 수학II 218 OPEN 집계와 0/3 표기는 당시 스냅샷으로 그대로 보존한다. 아래 ROOT 추가 초안 15개는 별도 최신 상태이며 이전 OPEN 수치를 덮어쓰거나 재판정하지 않는다.
+- 아래 15개 각각에 `item.json`, `plan.json`, `publish.json` 파일명이 모두 존재한다(3/3). 각 폴더의 `STATUS.md`도 목록에 있었으나 내용을 읽지 않았다. 정적 검사 NOT_RUN, 공식 렌더·검증 NOT_RUN, 현재 소유자와 누적 시도 UNKNOWN, 미인계다. 내용·정답·수학 타당성·엔진 지원에 대한 판정은 포함하지 않는다.
+
+| 시험지 | QID/입력 폴더 | item.json | plan.json | publish.json | 소유/누적 시도 | 검사·렌더·인계 |
+|---|---|---:|---:|---:|---|---|
+| 2020 효천고 고1 | [Q14](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-hyocheon-h1/root-inputs/q14) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 효천고 고1 | [Q19](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-hyocheon-h1/root-inputs/q19) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산고 고1 | [Q18](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesan-h1/root-inputs/q18) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산여고 고1 | [Q02](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesangirls-h1/root-inputs/q02) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산여고 고1 | [Q04](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesangirls-h1/root-inputs/q04) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산여고 고1 | [Q05](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesangirls-h1/root-inputs/q05) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산여고 고1 | [Q06](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesangirls-h1/root-inputs/q06) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 매산여고 고1 | [Q12](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-maesangirls-h1/root-inputs/q12) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 순천여고 고1 | [Q18](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-suncheongirls-h1/root-inputs/q18) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2020 순천여고 고1 | [Q23](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/20-suncheongirls-h1/root-inputs/q23) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2022 금당고 고1 | [Q09](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/22-geumdang-h1/root-inputs/q09) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2019 팔마고 고1 | [Q02](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/19-palma-h1/root-inputs/q02) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2019 팔마고 고1 | [Q09](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/19-palma-h1/root-inputs/q09) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2019 팔마고 고1 | [Q10](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/19-palma-h1/root-inputs/q10) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+| 2019 팔마고 고1 | [Q16](https://github.com/icefoxtail/AP------/tree/codex/svg-triage-20261107/triage-20261107/inputs/19-palma-h1/root-inputs/q16) | 있음 | 있음 | 있음 | UNKNOWN | NOT_RUN; NOT_RUN; 미인계 |
+
+### 2020 순천여고 고1 Q09: 별도 원문 수정 이력
+
+- 이 항목은 위 15개 draft 존재 확인과 별도다. [PR #1509](https://github.com/icefoxtail/AP------/pull/1509)는 2026-11-08에 merge됐고 main merge commit은 [`b410dfffa26e2bf72bbb705de3dddffe53a52d7b`](https://github.com/icefoxtail/AP------/commit/b410dfffa26e2bf72bbb705de3dddffe53a52d7b)다. 현재 main은 이후 [`0b39545e58cb061080507f7d0a60af64e144d56e`](https://github.com/icefoxtail/AP------/commit/0b39545e58cb061080507f7d0a60af64e144d56e)까지 전진했다.
+- PR 기록상 시험지·정답/해설 PDF에서 Q09 정답 ③ 및 (f^{-1}(2)=3)을 확인하고, 원문 JS의 Q09 정답·역함수 해설·difficultyReason과 해설 SVG 대응표의 y=2 행(x=4→3)을 일치시켰다. PDF SHA256: `e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042`.
+- 기록된 검증: `node --check`·VM runtime parsing PASS; 문항 순서 및 변경 허용 필드 외 보호 값/나머지 22문항 불변 PASS; 원본 해설·수학 검산·SVG XML/표 비교·raw bytes·줄바꿈 보존 PASS. 접근성 보완 후 SVG 언어 계약 검사 PASS 및 관련 단위 테스트 12/12 PASS.
+- 구별할 미실행/미확인: 전체 저장소 CI와 학생 화면 수동 검증은 PR 기록에서 NOT_RUN, 최신 main head CI 결과는 미확인이다. PR은 기존 4칸 source-blob binding을 바꾸지 않았다고 기록한다. 이후 main의 `0b395...` snapshot-registration commit은 4칸/검증 인덱스 파일을 변경했다. 이 부록은 해당 인덱스 행의 현재 내용을 대조하지 않았으므로, Q09 수정 자체를 pending으로 보지는 않되 차기 4칸 인덱스 rebuild/검증이 필요해지면 Q09 binding 확인을 조건부 pending으로 분리한다. 현재 인덱스가 이미 갱신됐다고도, 누락됐다고도 단정하지 않는다.
+- 앞선 OPEN/CONTENT-OPEN 표의 Q09 행은 당시 판정 기록으로 보존한다. 이 append만으로 원문·그림·판정표/입력 3종을 수정하거나 handoff하지 않았다.
+
