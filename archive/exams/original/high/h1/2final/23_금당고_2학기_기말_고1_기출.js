@@ -684,11 +684,11 @@ window.questionBank = [
     "answer": "$3$",
     "solution": "[키포인트] $y=\\sqrt{x+3}$의 값을 새로운 변수로 두면 교점 문제를 이차방정식의 음이 아닌 해의 개수로 바꿀 수 있다.\n조건 정리: $u=\\sqrt{x+3}\\ge0$로 두면 $x=u^2-3$이다.\n풀이 방향: 교점 조건 $\\sqrt{x+3}=x+k$를 $u$에 대한 이차방정식으로 바꾸고 $k=2,3,4$를 각각 조사한다.\n정석 풀이: $u=\\sqrt{x+3}$라 두면 $u=u^2-3+k$이므로 $u^2-u+(k-3)=0$이고 $u\\ge0$이어야 한다. $k=2$일 때 $u^2-u-1=0$의 두 근 중 하나만 양수이므로 $f(2)=1$이다. $k=3$일 때 $u(u-1)=0$에서 $u=0,1$ 두 값이 모두 가능하므로 $f(3)=2$이다. $k=4$일 때 $u^2-u+1=0$은 판별식이 $1-4=-3<0$이므로 실근이 없어 $f(4)=0$이다. 따라서 $f(2)+f(3)+f(4)=1+2+0=3$이다.\n따라서 구하는 값은 $3$이다.",
 
-    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 세 평행 직선의 교점 개수를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(x+3)와 기울기가 1인 세 직선의 교점을 비교한 그래프.",
 
-    "solutionImageCaption": "k=2,3,4에서 각각 1,2,0개의 교점이 생기는 구조를 확인한다.",
+    "solutionImageCaption": "u=√(x+3)로 치환하면 세 경우의 교점 개수는 차례로 1개, 2개, 0개이다. 정답은 3이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
@@ -720,6 +720,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 두 열을 잇는 일대일대응 h의 한 예로, 2는 2에, 3은 7에, 5는 3에, 7은 5에 대응한다.",
+    "solutionImageCaption": "h(5)와 h(7)은 3과 5를 나누어 가지므로 두 함수값의 합은 8이다. 정답은 8이다.",
+    "solutionImageSize": "full"
   }
 ];

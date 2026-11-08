@@ -192,7 +192,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B는 두 유리함수의 점근선 교점이며 y=x에 대하여 대칭이다. A에서 y=x-2에 내린 수선이 보인다.",
+    "solutionImageCaption": "A와 B는 y=x에 대하여 대칭이고, g는 f의 역함수이다. A에서 y=x-2까지의 수직거리를 나타낸다. 정답은 6√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -258,7 +262,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 시작점 (0,0)의 무리함수와 오른쪽으로 2, 위로 1만큼 옮긴 시작점 (2,1)의 그래프.",
+    "solutionImageCaption": "y=√(-2x)를 오른쪽으로 2, 위로 1만큼 옮기면 주어진 함수가 된다. 그래프의 시작점은 (0,0)에서 (2,1)로 이동한다. 정답은 ㄴ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -517,7 +525,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 두 점에서 만나는 두 무리함수와 공통 정의역의 양 끝 좌표.",
+    "solutionImageCaption": "예: 공통 정의역의 양 끝에서 만나는 경우를 두 곡선으로 나타냈다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -582,7 +594,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 가지와 무리함수 가지, 높이 3, 2, -3인 수평선이 있다. x=1에서 점 (1,4)는 무리함수 가지에 속하고, 유리함수 가지는 그 점에 가까워지기만 한다.",
+    "solutionImageCaption": "x=1에서 포함되는 가지를 확인하고, 높이 3과 -3인 수평선의 교점 x좌표를 더한다. 정답은 24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
