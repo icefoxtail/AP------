@@ -56,7 +56,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 x축의 교점 두 개, 꼭짓점을 표시한 그래프.",
+    "solutionImageCaption": "포물선이 x축 이하인 구간은 두 근 사이이고, 근은 x=1을 중심으로 대칭이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -84,13 +88,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 유리함수를 상수항과 분수항으로 나누면 점근선을 바로 읽을 수 있다.\n$\\dfrac{2x-3}{x-1}=2-\\dfrac1{x-1}$이므로 점근선은 $x=1$, $y=2$이다.\n따라서 $(a,b)=(1,2)$이고 $b-a=2-1=1$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q03-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q3-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 두 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수와 두 점근선, 점근선의 교점을 나타낸 그래프.",
 
-    "solutionImageCaption": "점근선 x=1, y=2의 교점 (1,2)를 표시한다.",
+    "solutionImageCaption": "두 점근선이 만나는 위치에서 좌표를 읽어 차를 계산한다. 정답은 ①이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -122,7 +126,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행이동 전후 무리함수 그래프와 두 시작점을 나타낸 그림.",
+    "solutionImageCaption": "f(x)=√(2x), g(x)=√(2x+1)−1이다. g는 f를 왼쪽으로 1/2, 아래로 1만큼 옮긴 그래프이다(시작점 (0,0)에서 (−1/2,−1)로 이동). 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -349,11 +357,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 같은 $x=n$에서 두 함수값의 차를 구하면 선분의 길이가 된다.\n$f(n)=\\dfrac4n-\\dfrac4{n+1}=4\\left(\\dfrac1n-\\dfrac1{n+1}\\right)$이다.\n따라서\n$f(1)+\\cdots+f(5)=4\\left(1-\\dfrac16\\right)=\\dfrac{10}{3}$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "두 반비례 함수와 수직 선분을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 두 유리함수 그래프와 x=2에서의 세로 선분.",
 
-    "solutionImageCaption": "n=1,…,5에서 4/n과 4/(n+1)의 차를 시각적으로 확인한다.",
+    "solutionImageCaption": "예: n=2일 때 직선 x=2가 두 그래프와 만나는 점을 P, Q라 하면 선분 PQ의 길이가 f(2)이다. 이 길이를 n=1부터 5까지 더한다. 정답은 ④이다.",
 
     "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q12.png",
@@ -388,13 +396,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 무리함수 그래프의 끝점과 진행 방향으로 $a,b,c$의 부호를 판단한다.\n그림의 끝점은 $(3,-1)$이므로 $c=-1\\lt0$이고 $-\\dfrac{b}{a}=3$이다.\n그래프가 왼쪽으로 뻗으므로 정의역이 $x\\le3$인 형태여서 $a\\lt0$이다.\n$-\\dfrac{b}{a}=3$과 $a\\lt0$에서 $b=-3a\\gt0$이다.\n따라서 $\\dfrac{|a|}{a}=-1$, $\\dfrac{|b|}{b}=1$, $\\dfrac{|c|}{c}=-1$이므로 합은 $-1$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점과 부호를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 끝점 (3,−1)에서 왼쪽으로 뻗는 무리함수 그래프.",
 
-    "solutionImageCaption": "대표식 y=√(−2x+6)−1의 끝점과 x절편으로 계수 부호를 확인한다.",
+    "solutionImageCaption": "예: 끝점과 그래프가 뻗는 방향에서 근호 안 계수와 바깥 상수의 부호를 판단한다. 정답은 ②이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q13.png",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
@@ -427,11 +435,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 수직점근선에서는 분모가 $0$이 된다.\n점근선이 $x=4$이므로 $2-f(4)=0$, 즉 $f(4)=2$이다.\n일차함수 $f$는 두 점 $(1,5)$, $(4,2)$를 지나므로 기울기는 $\\dfrac{2-5}{4-1}=-1$이다.\n따라서 $f(3)=5-1\\times(3-1)=3$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q14-solution-v2.svg",
 
-    "solutionImageAlt": "변환된 유리함수의 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 두 좌표점을 지나는 일차함수와 수평 기준선.",
 
-    "solutionImageCaption": "f(x)=−x+6에서 y=−1+7/(x−4)로 정리해 점근선을 확인한다.",
+    "solutionImageCaption": "분모가 0이 되는 x=4에서 f(4)=2를 얻고, 주어진 다른 점과 함께 일차함수를 정한다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
@@ -494,11 +502,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 주어진 식을 $y$에 대하여 정리하여 유리함수의 점근선을 찾는다.\n$\\dfrac1x+\\dfrac1y=\\dfrac14$에서 $4x+4y=xy$이므로\n$y=\\dfrac{4x}{x-4}=4+\\dfrac{16}{x-4}$이다.\n따라서 점근선은 $x=4$, $y=4$이므로 $a=b=4$이다.\n따라서 $a+b=8$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q16-solution-v2.svg",
 
-    "solutionImageAlt": "렌즈 방정식을 유리함수로 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 양의 거리 구간의 유리함수 가지와 수직·수평 점근선.",
 
-    "solutionImageCaption": "y=4+16/(x−4)로 정리해 점근선 x=4, y=4를 확인한다.",
+    "solutionImageCaption": "양의 거리 조건을 만족하는 가지에서 두 점근선을 확인한다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q16.png",
@@ -533,11 +541,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 점의 $x$좌표가 같으므로 세로 길이를 식으로 나타낸 뒤 완전제곱을 이용한다.\n$a\\gt1$이므로 $P$의 $y$좌표는 $\\dfrac1{a-1}\\gt0$, $Q$의 $y$좌표는 $-4a\\lt0$이다. 따라서\n$PQ=\\dfrac1{a-1}+4a$이다.\n$t=a-1\\gt0$이라 두면 $PQ=\\dfrac1t+4t+4$이다.\n$4t+\\dfrac1t-4=\\dfrac{(2t-1)^2}{t}\\ge0$이므로 $4t+\\dfrac1t\\ge4$이다.\n등호는 $2t-1=0$, 즉 $t=\\dfrac12$일 때 성립한다.\n따라서 $PQ$의 최솟값은 $4+4=8$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q17-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 직선 사이의 최단 선분을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수와 직선 위 두 점, 같은 x좌표의 세로 선분.",
 
-    "solutionImageCaption": "a=3/2일 때 P=(3/2,2), Q=(3/2,−6)로 PQ=8임을 확인한다.",
+    "solutionImageCaption": "예: a=3/2일 때 P(3/2, 2), Q(3/2, −6)이고 선분 PQ는 두 그래프 사이의 세로 거리이다. 일반적인 a에 대한 길이식을 정리해 최솟값을 구한다. 정답은 ④이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
@@ -696,11 +704,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 역함수의 그래프는 원래 그래프를 직선 $y=x$에 대하여 대칭이동한 것이므로 점근선의 역할이 서로 바뀐다.\n그림에서 $f$의 점근선은 $x=2$, $y=1$이고 $f(1)=0$이다.\n따라서 역함수 $g$의 점근선은 $x=1$, $y=2$이고 $g(0)=1$이다.\n$g(x)=\\dfrac{ax+b}{x+c}$의 수평점근선은 $y=a$이므로 $a=2$이고, 수직점근선은 $x=-c$이므로 $c=-1$이다.\n또 $g(0)=\\dfrac{b}{c}=1$이므로 $b=-1$이다.\n따라서 $2a+b+c=4-1-1=2$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 역함수의 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 역함수의 그래프와 대칭축, 점근선, g(0)의 점을 나타낸 좌표 그림.",
 
-    "solutionImageCaption": "역함수 g=2+1/(x−1)의 점근선과 g(0)=1을 확인한다.",
+    "solutionImageCaption": "역함수의 점근선 x=1, y=2와 g(0)=1을 확인한다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q22.png",
@@ -735,11 +743,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 대응하는 두 점을 이용한다.\n$B(-1,7)$가 $y=f(x)$ 위에 있으므로 $B$를 $y=x$에 대하여 대칭이동한 점 $(7,-1)$은 $y=f^{-1}(x)$ 위에 있다. $A$는 두 그래프의 교점이므로 $y=x$ 위에 있고, $AB=AC$이며 $C$의 $x$좌표가 $A$보다 작다는 그림의 조건에 따라 $C=(7,-1)$이다.\n$A=(t,t)$라 하자. $BC$의 중점은 $(3,3)$이고 $BC$는 직선 $y=x$에 수직이다. $BC=8\\sqrt2$이고, $A$에서 $BC$까지의 높이는 $\\sqrt2(t-3)$이다.\n삼각형의 넓이가 $64$이므로 $\\dfrac12\\times8\\sqrt2\\times\\sqrt2(t-3)=64$에서 $8(t-3)=64$, 따라서 $t=11$이다.\n그러므로 $A=(11,11)$이고 $f(11)=11$이다. 또한 $B(-1,7)$이 그래프 위에 있으므로 $2a+b=7$, $f(11)=4a+b=11$이다.\n두 식을 빼면 $2a=4$이므로 $a=2$, $b=3$이다. 따라서 $a+b=5$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q23-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 그래프, y=x, 대응점 B와 C, 교점 A를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 함수와 역함수 그래프, 대칭축 y=x, 점 A·B·C와 삼각형을 나타낸 그림.",
 
-    "solutionImageCaption": "함수와 역함수의 그래프는 y=x에 대하여 대칭이고, A·B·C의 위치와 삼각형의 넓이를 확인한다.",
+    "solutionImageCaption": "g는 f의 역함수이다. B와 C는 대칭축 y=x에 대한 대응점이고, A는 교점이다. 삼각형의 구조를 확인한다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q23.png",
@@ -887,13 +895,13 @@ window.questionBank = [
     "answer": "$16$",
     "solution": "[키포인트] 먼저 $k$를 구한 뒤 주어진 구간에서 분모의 범위를 이용해 함수값의 범위를 찾는다.\n점 $(-2,-4)$를 지나므로 $-4=\\dfrac{k}{2}-3$에서 $k=-2$이다. 따라서\n$f(x)=-\\dfrac2{x+4}-3$이다.\n$-3\\le x\\le6$에서 $1\\le x+4\\le10$이다. 양수 $x+4$가 커질수록 $\\dfrac2{x+4}$는 작아지므로 $-\\dfrac2{x+4}-3$은 커진다.\n따라서 최솟값은 $x=-3$일 때 $m=-2-3=-5$이고, 최댓값은 $x=6$일 때 $M=-\\dfrac15-3=-\\dfrac{16}{5}$이다.\n그러므로 $M\\times m=\\left(-\\dfrac{16}{5}\\right)(-5)=16$이다.\n따라서 구하는 값은 $16$이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q28-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q28-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 구간 최댓값과 최솟값을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 주어진 구간에서 증가하는 유리함수와 양 끝의 함수값을 나타낸 그림.",
 
-    "solutionImageCaption": "f=−2/(x+4)−3을 −3≤x≤6에서 확인해 m=−5, M=−16/5를 읽는다.",
+    "solutionImageCaption": "주어진 구간에서 증가하므로 양 끝에서 최솟값과 최댓값을 갖는다. 정답은 16이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -920,11 +928,11 @@ window.questionBank = [
     "answer": "$0\\lt k\\lt\\dfrac12$",
     "solution": "[키포인트] 절댓값 때문에 $x\\lt0$과 $x\\ge0$으로 나누어 교점의 개수를 센다.\n$x\\lt0$이면 $x+|x|=0$이므로 그래프는 $y=0$이다. 직선 $y=x+k$와의 교점은 $x=-k$이고, 이 점이 $x\\lt0$에 있으려면 $k\\gt0$이어야 한다.\n$x\\ge0$이면 $y=\\sqrt{2x}$이므로 $\\sqrt{2x}=x+k$를 푼다. $t=\\sqrt{2x}\\ge0$이라 두면 $x=\\dfrac{t^2}{2}$이므로\n$t=\\dfrac{t^2}{2}+k$, 즉 $(t-1)^2=1-2k$이다.\n양의 서로 다른 두 해를 가지려면 $1-2k\\gt0$이고 작은 해 $1-\\sqrt{1-2k}$도 양수여야 한다. 이는 각각 $k\\lt\\dfrac12$, $k\\gt0$과 같다.\n따라서 $0\\lt k\\lt\\dfrac12$일 때 $x\\lt0$에서 한 점, $x\\gt0$에서 두 점을 만나 모두 서로 다른 세 교점이 생긴다.\n따라서 구하는 범위는 $0\\lt k\\lt\\dfrac12$이다.",
 
-    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q29-solution.svg",
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q29-solution-v2.svg",
 
-    "solutionImageAlt": "절댓값 무리함수의 두 가지 가지와 직선, 세 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 수평 가지와 무리함수 가지, 세 곳에서 만나는 직선.",
 
-    "solutionImageCaption": "x<0에서의 수평 가지와 x≥0에서의 무리함수 가지를 직선과 함께 그려 세 교점 조건을 확인한다.",
+    "solutionImageCaption": "예: k=1/4에서 직선은 왼쪽 가지와 P1에서, 오른쪽 가지와 P2, P3에서 만난다. 구하는 범위는 0<k<1/2이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",

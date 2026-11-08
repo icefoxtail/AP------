@@ -93,11 +93,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 식을 $y=-3+\\dfrac5{x+1}$로 고쳐 중심과 점근선을 읽고 각 보기를 확인한다.\n조건 정리: 그래프의 중심은 $(-1,-3)$이고 점근선은 $x=-1$, $y=-3$이다.\n풀이 방향: 점 대입, 대칭축, 평행이동, 사분면 통과 여부를 차례로 판정한다.\n정석 풀이: $x=-2$이면 $y=-8$이므로 ①은 옳다. 중심을 지나는 기울기 $1$인 대칭축은 $y+3=x+1$, 즉 $y=x-2$이므로 ③도 옳다. 또 $y=\\dfrac{3x+8}{x+1}=3+\\dfrac5{x+1}$은 주어진 그래프를 위로 $6$만큼 평행이동한 그래프이므로 ④도 옳다. 한편 $-1\\lt x\\lt0$이면 분자와 분모가 모두 양수이므로 $x\\lt0$, $y\\gt0$인 제2사분면 위의 점이 존재한다. 따라서 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q03-solution.svg",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q3-solution-v2.svg",
 
-    "solutionImageAlt": "좌표평면에 유리함수 y=−3+5/(x+1)의 두 갈래 곡선과 점근선 x=−1, y=−3, 중심 (−1,−3)이 그려져 있고, 오른쪽 곡선이 y축과 만나는 점 P가 표시되어 있다.",
+    "solutionImageAlt": "해설 그림: 유리함수와 위로 옮긴 그래프, 점근선과 대칭축, 점 (−2,−8)을 나타낸다.",
 
-    "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
+    "solutionImageCaption": "f(x)=(−3x+2)/(x+1)이다. 중심 (−1,−3)과 대칭축 y=x−2, 위로 6만큼 옮긴 y=f(x)+6의 그래프를 비교한다. 정답은 ⑤이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
@@ -134,11 +134,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 정의역, 그래프의 방향, 사분면, 역함수의 정의역을 각각 확인한다.\n조건 정리: $-2x+1\\ge0$이므로 정의역은 $x\\le\\dfrac12$이고, 함수값은 항상 $2$ 이하이다.\n풀이 방향: ㄱ~ㄹ을 하나씩 판정한다.\n정석 풀이: ㄱ은 정의역 조건에서 참이다. ㄴ의 $y=-\\sqrt{2x}$는 오른쪽으로 뻗는 그래프인데 주어진 함수는 왼쪽으로 뻗으므로 평행이동만으로 서로 겹칠 수 없어 거짓이다. $0\\lt x\\le\\dfrac12$에서는 함수값이 양수이므로 제4사분면을 지나지 않아 ㄷ은 참이다. 역함수는 $y=-\\dfrac12(x-2)^2+\\dfrac12$이지만 그 정의역은 원래 함수의 치역인 $x\\le2$이므로 ㄹ은 거짓이다. 따라서 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q04-solution.svg",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q4-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·절편·정의역을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 왼쪽으로 뻗는 함수, 그 역함수, 비교 함수와 y=x 대칭축 및 두 좌표점을 나타낸다.",
 
-    "solutionImageCaption": "끝점 (1/2,2), x절편 (−3/2,0), 역함수 정의역을 확인한다.",
+    "solutionImageCaption": "f는 주어진 함수, g는 f의 역함수, h(x)=−√(2x)이다. 곡선의 뻗는 방향과 정의역을 비교해 옳은 진술을 고른다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -175,11 +175,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 먼저 역함수를 구한 뒤 두 유리함수의 점근선 위치를 비교한다.\n조건 정리: $f(x)=3+\\dfrac7{x-2}$이다.\n풀이 방향: $x,y$를 바꾸어 $f^{-1}$을 구하고 평행이동량을 읽는다.\n정석 풀이: $x=\\dfrac{3y+1}{y-2}$에서 $xy-2x=3y+1$이므로 $y=\\dfrac{2x+1}{x-3}=2+\\dfrac7{x-3}$이다. 따라서 $f$의 그래프를 오른쪽으로 $1$만큼 옮기면 수직점근선이 $x=3$이 되고, 아래로 $1$만큼 옮기면 수평점근선이 $y=2$가 되어 역함수의 그래프와 일치한다. 그러므로 $a=1$, $b=-1$이고 $ab=-1$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q05-solution.svg",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q5-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 역함수의 점근선 이동을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 서로 역함수인 두 유리함수 그래프와 y=x 대칭축, 두 점근선의 교점을 나타낸다.",
 
-    "solutionImageCaption": "f와 f⁻¹의 점근선을 비교하여 오른쪽 1, 아래 1 이동을 확인한다.",
+    "solutionImageCaption": "역함수의 두 점근선 교점은 (2,3)과 (3,2)이다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -444,7 +444,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1부터 5까지의 다섯 함수값이 감소하며, x=3에서 함수값 6인 점을 색으로 강조했다.",
+    "solutionImageCaption": "예: 함수값을 9, 8, 6, 4, 2로 두면 가운데의 주어진 값과 엄격한 감소 조건을 확인할 수 있다. 6보다 큰 값 두 개와 작은 값 두 개를 각각 고르는 경우를 센다. 정답은 18개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -473,7 +477,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예로 택한 무리함수 그래프가 (2,−1)에서 시작해 오른쪽 아래로 뻗는다.",
+    "solutionImageCaption": "예: (a,b,c)=(−1,2,−1)로 두면 그래프가 제4사분면에 놓인다. 정답은 제4사분면이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -499,7 +507,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간에서 감소하는 무리함수 그래프와 양 끝점의 좌표.",
+    "solutionImageCaption": "최댓값 조건으로 왼쪽 끝 x=4를 정하고, 오른쪽 끝 x=10에서 최솟값을 읽는다. 정답은 −1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -635,11 +647,11 @@ window.questionBank = [
     "answer": "$k\\lt-2$ 또는 $k=-1$",
     "solution": "[키포인트] 근호의 값을 새로운 변수로 놓으면 교점 문제를 음이 아닌 근을 갖는 이차방정식 문제로 바꿀 수 있다.\n조건 정리: $t=\\sqrt{4x-8}$라 하면 $t\\ge0$이고 $x=\\dfrac{t^2+8}{4}$이다.\n풀이 방향: 직선의 식에 대입하여 $t$에 대한 이차방정식을 만든 뒤 음이 아닌 근의 개수가 정확히 $1$개가 되는 $k$를 찾는다.\n정석 풀이: 교점에서는 $t=x+k=\\dfrac{t^2+8}{4}+k$이므로 $t^2-4t+8+4k=0$이다. 즉 $(t-2)^2=-4(k+1)$이다. $k=-1$이면 $t=2$ 하나만 얻어 교점이 한 개이다. $k\\lt-1$이면 두 실근은 $t=2\\pm2\\sqrt{-k-1}$이다. 이 중 작은 근이 음수가 되어 하나만 유효하려면 $2-2\\sqrt{-k-1}\\lt0$, 즉 $k\\lt-2$여야 한다. $k=-2$에서는 작은 근이 $0$이므로 두 근이 모두 유효하여 교점이 두 개이다. 따라서 한 점에서 만나는 경우는 $k\\lt-2$ 또는 $k=-1$이다.\n따라서 구하는 범위는 $k\\lt-2$ 또는 $k=-1$이다.",
 
-    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 직선의 접점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수와 세 직선, 시작점과 접점 (3,2)를 나타낸 그래프.",
 
-    "solutionImageCaption": "y=√(4x−8)과 y=x−1이 T=(3,2)에서 한 점으로 만남을 확인한다.",
+    "solutionImageCaption": "예: k=−1에서는 접하고, k=−2에서는 두 점, k=−3에서는 한 점에서 만난다. 정답은 k<−2 또는 k=−1이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
@@ -671,9 +683,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=-1$, $b=-\\dfrac16$",
     "solution": "[키포인트] 부등식의 세 식을 함수로 나타내고, 유리함수의 표준형과 그래프를 이용해 아래 경계와 위 경계를 확인한다.\n\n함수로 나타내기\n$F(x)=\\dfrac{x-1}{x+1}$, $L_a(x)=ax+1$, $U_b(x)=bx+1$이라 두면 문제의 조건은 $L_a(x)\\le F(x)\\le U_b(x)$이다. 유리함수를 표준형으로 고치면\n$F(x)=\\dfrac{x-1}{x+1}=1-\\dfrac{2}{x+1}$이다.\n\n계수의 범위\n$1\\le x\\le3$이므로 $x>0$이다. 각 부등식에서 1을 빼고 양수 $x$로 나누면\n$a\\le-\\dfrac{2}{x(x+1)}\\le b$이다. 따라서 $g(x)=-\\dfrac{2}{x(x+1)}$라 둘 때, 모든 $x\\in[1,3]$에서 $a\\le g(x)$이고 $g(x)\\le b$여야 한다.\n\n그래프 확인\n$F(1)=0$, $F(3)=\\dfrac12$이다. 그래프에는 $1\\le x\\le3$에서 $y=F(x)$와 경계 직선 $y=-x+1$, $y=-\\dfrac{x}{6}+1$을 함께 그렸다. 아래 경계 직선은 $(1,0)$에서 $F$와 만나고, 위 경계 직선은 $(3,\\dfrac12)$에서 $F$와 만난다. 그림에서 두 직선 사이에 $F$의 그래프가 놓이는 것을 확인할 수 있다.\n\n최댓값과 최솟값\n구간 $[1,3]$에서 $x(x+1)$은 $2$에서 $12$까지 증가하므로 $g(x)=-\\dfrac{2}{x(x+1)}$는 $-1$에서 $-\\dfrac16$까지 증가한다. 그러므로 $g$의 최솟값은 $g(1)=-1$이고 최댓값은 $g(3)=-\\dfrac16$이다.\n모든 $x$에 대해 $a\\le g(x)$가 성립하려면 $a$는 최솟값 이하이어야 하므로, $a$의 최댓값은 $-1$이다. 모든 $x$에 대해 $g(x)\\le b$가 성립하려면 $b$는 최댓값 이상이어야 하므로, $b$의 최솟값은 $-\\dfrac16$이다. 실제 경계 직선은 각각 $y=-x+1$과 $y=-\\dfrac{x}{6}+1$이다.\n\n결론\n따라서 $a=-1$, $b=-\\dfrac16$이다.",
-    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "1≤x≤3에서 유리함수 y=(x−1)/(x+1)와 두 경계 직선, 끝점 (1,0), (3,1/2)를 나타낸 그래프",
-    "solutionImageCaption": "경계 직선은 각각 (1,0), (3,1/2)에서 곡선과 만난다.",
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 [1,3]에서 유리함수 F(x)와 아래 경계 직선 y=−x+1, 위 경계 직선 y=−x/6+1, 점근선 y=1, 두 끝점의 좌표를 나타낸다.",
+    "solutionImageCaption": "아래 경계 직선 y=−x+1, 위 경계 직선 y=−x/6+1이고 F는 두 선 사이에 놓인다. 정답은 a=−1, b=−1/6이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",

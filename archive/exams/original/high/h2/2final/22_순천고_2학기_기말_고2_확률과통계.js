@@ -121,7 +121,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "확률분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_순천고_2학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 10을 중심으로 대칭인 정규분포 곡선에서 5와 15의 바깥쪽 꼬리가 같은 음영으로 표시되어 있다.",
+    "solutionImageCaption": "평균 10에서 5와 15는 같은 거리이므로 5 이하와 15 이상의 꼬리 넓이가 같다. 그래서 5 이상일 확률은 15 이하일 확률과 같고 a/6=15이다. 정답은 90이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 4,
