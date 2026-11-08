@@ -1,0 +1,1423 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "990684b2efb3bd1126418dcf5ef5d754751af687",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "다음 수 중에서 절댓값이 가장 큰 수는?"
+          },
+          {
+            "term": "음수",
+            "src": "choices",
+            "quote": "-\\dfrac{13}{2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "절댓값이 가장 큰 수는?"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "가장 큰 값은 $7$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "각 수의 절댓값은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 값은 $7$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 절댓값들의 크기를 비교하여 최댓값을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "\\dfrac{13}{2},\\ 3,\\ 0,\\ \\dfrac{14}{"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 유리수들의 절댓값을 각각 구하고 비교하여 가장 큰 수를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "$10$, $29$"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "10$의 약수: $1,2,5,10$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 두 수가 서로소인 것은?"
+          },
+          {
+            "term": "공약수",
+            "src": "solution",
+            "quote": "공약수는 $1$뿐이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "서로소이고 정답은 ②이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "29$의 약수: $1,29$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수의 약수와 소인수를 비교하여 공약수를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "29$의 약수: $1,29$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 수의 약수를 구하고 공약수가 1뿐인 서로소인 쌍을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "3+3+3=3^3"
+          },
+          {
+            "term": "지수",
+            "src": "choices",
+            "quote": "4+4+4=2^6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 옳은 것은?"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "따라서 정답은 ⑤이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "=2^3\\times7",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "밑",
+            "src": "solution",
+            "quote": "2\\times2\\times2\\times7",
+            "evidenceType": "IMPLIED",
+            "justification": "반복되는 곱셈을 밑과 지수의 거듭제곱 꼴로 변환한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "2\\times2\\times2\\times7"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 수의 곱을 거듭제곱으로 올바르게 표현한 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "20=2^2\\times5"
+          },
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "소인수분해한 것이 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "소인수분해한 것이 옳지 않은 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "=2^3\\times13",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "104=8\\times13",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "104=2\\times3\\times17"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 자연수를 소인수분해하여 올바르지 않은 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "2^2\\times3^3$, $2^3\\times3\\times5^2$의"
+          },
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "두 수의 최대공약수는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공약수",
+            "src": "stem",
+            "quote": "공약수가 아닌 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 두 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "두 수 $2^2\\times3^3$, $2^3\\times3\\tim",
+            "evidenceType": "IMPLIED",
+            "justification": "소인수분해 형태에서 공통인 소인수의 최소 지수로 최대공약수를 구한다."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "공약수는 $12$의 약수이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "8$은 $12$의 약수가 아니다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소인수분해된 두 수의 최대공약수를 구하고 그 약수가 아닌 것을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "다음 중 정수는 몇 개인가?"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "\\dfrac{2}{3},\\quad 5,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수는 몇 개인가?"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "모두 $4$개이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "\\dfrac62=3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\dfrac62=3",
+            "evidenceType": "IMPLIED",
+            "justification": "분수를 기약분수로 약분하여 정수인지 판별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-8,\\quad -3.7"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 수들 중 정수인 것의 개수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "두 수의 최소공배수가 $12$일 때,"
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "2^2\\times5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공배수",
+            "src": "stem",
+            "quote": "이 두 수의 공배수가 아닌 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 이 두 수의"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "공배수는 모두 $12$의 배수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "2^2\\times5=20",
+            "evidenceType": "IMPLIED",
+            "justification": "보기의 거듭제곱 식을 계산하여 12의 배수인지 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "곱",
+            "src": "choices",
+            "quote": "2^2\\times3^2"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 수의 최소공배수가 12일 때 공배수는 12의 배수임을 이용하여 아닌 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "choices",
+            "quote": "-3$의 절댓값은 $2$이다."
+          },
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "음수끼리는 절댓값이 클수록 실제 값은 작다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 옳은 것은?"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "-5<-2"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "음수끼리는 절댓값이 클수록 실제 값은 작다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원점으로부터의 거리(절댓값)와 수직선 상의 위치 관계를 분석한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "|-5|>|-2|",
+            "evidenceType": "IMPLIED",
+            "justification": "음수에서의 절댓값과 부호의 관계를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "절댓값이 $2$이하인 정수는 $3$개다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "음수와 절댓값, 수직선에서의 대소 관계 성질을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "+2,\\quad -\\dfrac{5}{3},"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-\\dfrac{5}{3},\\quad +\\dfrac{3}{2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "가장 큰 수와 가장 작은 수의 합은?"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "=\\dfrac13"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "가장 큰 수는 $2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "가장 작은 수는 $-\\dfrac53$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 수는 $2$",
+            "evidenceType": "IMPLIED",
+            "justification": "양수와 음수들의 대소를 비교하여 최대와 최소를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "+2,\\quad -\\dfrac{5}{3}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 수들 중 가장 큰 수와 가장 작은 수의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5$이상 $20$이하의 자연수 중에서"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "5$ 이상 $20$ 이하의 소수는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "소수는 모두 몇 개인가?"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "소수는 모두 몇 개인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "5,7,11,13,17,19",
+            "evidenceType": "IMPLIED",
+            "justification": "1과 자기 자신만을 약수로 갖는 소수를 판별한다."
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "5,7,11,13,17,19",
+            "evidenceType": "IMPLIED",
+            "justification": "합성수인 합성 배수들을 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "5$이상 $20$이하의 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "5 이상 20 이하의 자연수 중 소수의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "어떤 수에서 $4$를 빼야 할 것을 더하였더니"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-3$이 되었다. 어떤 수를 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "어떤 수를 $x$라 하면"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "$x=-7$"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "x+4=-3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$x=-7$",
+            "evidenceType": "IMPLIED",
+            "justification": "상수항 4를 우변으로 이항하여 x의 값을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "어떤 수에서 $4$를 빼야 할 것을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "잘못된 덧셈/뺄셈 계산 결과를 일차방정식으로 풀어 어떤 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "연필 $24$개와 지우개 $40$개를"
+          },
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "똑같이 나누어 주려고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "따라서 $8$명이고 정답은 ③이다."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "\\gcd(24,40)=8"
+          }
+        ],
+        "method": [
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "\\gcd(24,40)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모델링",
+            "src": "stem",
+            "quote": "가능한 많은 친구에게 남김없이 똑같이 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "실생활 분배 문제를 최대공약수 문제로 모델링한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "공약수",
+            "src": "solution",
+            "quote": "\\gcd(24,40)=8"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연필과 지우개를 남김없이 똑같이 나누어 줄 수 있는 최대 인원수를 최대공약수로 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자연수 $24$, $60$, $\\square$의"
+          },
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수가 $4$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "들어갈 수 없는 수는?"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "\\square$ 안에 들어갈 수 없는 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공약수",
+            "src": "solution",
+            "quote": "\\gcd(12,\\square)=4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "\\gcd(24,60)=12",
+            "evidenceType": "IMPLIED",
+            "justification": "먼저 두 수의 최대공약수를 구한 후 세 번째 수와의 최대공약수 조건을 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "이므로 $12$는 들어갈 수 없다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 자연수의 최대공약수가 4가 되도록 네모 안에 들어갈 수 없는 수를 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "120$에 적당한 자연수를 곱하여"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "120=2^3\\times3\\times5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 수는?"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱해야 할 자연수 중에서 가장 작은 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "120\\times30=60^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "모든 지수가 짝수여야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "solution",
+            "quote": "모든 지수가 짝수여야 한다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "120을 소인수분해하여 지수가 모두 짝수가 되도록 곱해야 할 가장 작은 자연수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "-\\dfrac{2}{7}$의 역수와 $1.4$의 역수를"
+          },
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "-\\dfrac72"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱한 수는?"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "=-\\dfrac52"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "1.4=\\dfrac75$의 역수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "-\\dfrac72\\times\\dfrac57",
+            "evidenceType": "IMPLIED",
+            "justification": "분모와 분자의 7을 약분하여 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "=-\\dfrac52"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "음의 분수와 소수의 역수를 구하고 그 둘의 곱을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "(+\\dfrac{5}{2})-(+\\dfrac{5}{3})+(-\\"
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "\\dfrac52-\\dfrac53-\\dfrac13+\\dfrac32"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "\n$=2$\n"
+          },
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "를 계산하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "=\\left(\\dfrac52+\\dfrac32\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "분모가 2인 것과 3인 것을 묶어서 계산한다."
+          },
+          {
+            "term": "결합법칙",
+            "src": "solution",
+            "quote": "-\\left(\\dfrac53+\\dfrac13\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "연산 순서를 바꾸어 편리하게 결합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$=4-2$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수 덧셈과 뺄셈 식을 분모가 같은 것끼리 결합하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "톱니의 수가 각각 $30$개, $42$개인"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "210\\div30=7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "A의 회전 수는"
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "210\\div30=7"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "\\operatorname{lcm}(30,42)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "만큼의 톱니가 지나가야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 톱니 수의 공배수만큼 톱니가 회전해야 처음으로 다시 맞물린다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "210\\div30=7"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "맞물리는 두 톱니바퀴의 톱니 수의 최소공배수를 구하여 A의 회전 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "\\{(-2)^3-(-5)\\}\\div\\left(-\\dfrac{3}"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-2)^3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "를 계산한 값은?"
+          },
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "를 계산한 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "}{4^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 밑과 지수를 먼저 계산한다."
+          },
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "(-3)\\times\\left(-\\df",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈을 역수의 곱으로 변환한다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "=(-8+5)\\div\\left(-\\dfrac3{16}\\right)-5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "(-5)\\}\\div\\left(-\\dfrac{3}{4^2}\\right)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "거듭제곱과 나눗셈, 괄호가 포함된 유리수 혼합 계산의 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "100$일 동안 창호와 준혁이가 함께"
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "창호는 $4$일 주기로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "함께 도서관을 간 날은 총 몇 일인가?"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "창호 휴식일: $25$일"
+          }
+        ],
+        "method": [
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "준혁은 $5$일 주기로",
+            "evidenceType": "IMPLIED",
+            "justification": "4일과 5일 주기의 최소공배수 20일을 한 단위로 분석한다."
+          },
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "1$일부터 $100$일까지에서",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 일수에서 휴식일의 합집합을 제외하는 여사건 모델링을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "준혁 휴식일: $20$일"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 사람의 도서관 출석 주기의 최소공배수를 바탕으로 100일 동안 함께 도서관을 간 날수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-1)+(-1)^2+(-1)^3+\\cdots+(-1)^B=-1"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "A$는 정수이고, $B$는 $3$이상인 자연수이다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "B$는 $3$이상인 자연수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "A+B$의 값은?"
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "\n$AB=2"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "이 되려면 $B$는 홀수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "=8\\times12\\div4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "=8\\times12\\div4",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "(-1)+(-1)^2+\\cdots+(-1)^B=-1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "거듭제곱의 합 규칙과 혼합 계산 식으로부터 정수 A와 자연수 B를 구하여 A+B를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "4-\\dfrac13=\\dfrac{11}{3}"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "4$보다 $+\\dfrac{1}{3}$만큼 작은 수와"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "두 수 사이에 있는 정수의 개수를 구하여라."
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "두 수 사이에 있는 정수의 개수를 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "\\dfrac{11}{3",
+            "evidenceType": "IMPLIED",
+            "justification": "두 유리수의 대소를 파악하여 그 사이에 있는 정수를 판별한다."
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "3+\\dfrac32=\\dfrac92",
+            "evidenceType": "IMPLIED",
+            "justification": "수직선 상에서 두 수 사이의 정수 위치를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "4$보다 $+\\dfrac{1}{3}$만큼 작은 수와"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 조건의 두 유리수를 각각 구하고, 두 수 사이에 위치한 정수의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|a|=2$, $|b|=\\dfrac{2}{3}$, $|c|=6$일 때,"
+          },
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "2+\\dfrac23-(-6)=\\dfrac{26}{3}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "가장 큰 값과 가장 작은 값의 합을 구하시오."
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값\n\n$2+\\dfrac23-(-6)=\\dfrac{26}{3}$"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 값의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "a=2,\\quad b=\\dfrac23,\\quad c=-6",
+            "evidenceType": "IMPLIED",
+            "justification": "식의 값이 최대/최소가 되도록 각 문자의 부호를 결정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "a=-2,\\quad b=-\\dfrac",
+            "evidenceType": "IMPLIED",
+            "justification": "결정된 수들을 식에 대입하여 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "a+b-c$의 값 중에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값이 주어진 세 수의 부호를 조합하여 식의 최댓값과 최솟값을 구하고 그 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "조건을 모두 만족하는 자연수를 구하시오."
+          },
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "3$개의 소인수를 가지며, 세 소인수의 합은 $20$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "p+q=13"
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "소수 두 수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "49=7^2$과 서로소가 아니므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "소수 두 수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "7+p+q=20",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "200$이하이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건을 만족하는 소인수들의 합과 서로소 조건으로부터 자연수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 중에서 가장 작은 수를 구하시오."
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "5$로 나누면 $3$이 남으므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 수를 구하시오."
+          },
+          {
+            "term": "식의 값",
+            "src": "solution",
+            "quote": "2$를 더하면 $5$로 나누어떨어진다."
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "2$를 더하면 $10$으로",
+            "evidenceType": "IMPLIED",
+            "justification": "5, 7, 10의 최소공배수에서 2를 빼어 구한다."
+          },
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "2$를 더하면 $7$로 나누어떨어진다.",
+            "evidenceType": "IMPLIED",
+            "justification": "나누어떨어지는 수들의 공배수를 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "5$로 나누면 $3$이 남고,"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "동일한 부족분(2)을 갖는 나머지 조건으로부터 최소공배수를 이용하여 가장 작은 자연수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 24,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
