@@ -24,10 +24,10 @@
 | Q18 | FIGURE | 원문 그림에서 읽은 네 대응을 매핑 다이어그램에 표시하는 초안이다. 전체 함수식은 추정하지 않는다. sourceQuote 계약 패치는 격리; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
 | Q19 | FIGURE | 원문 상자는 그대로 두고, 한 번 변환할 때 1/2와 3이 번갈아 나타나는 초안이다. sourceQuote 계약 패치는 격리; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
 | Q20 | EXEMPT | 동전 조합과 서로 다른 금액의 수를 구분해 계산한다. |
-| Q21 | OPEN | 무리식·유리식의 열린 경계와 전체 치역을 한 그림에 정확히 담는 계약을 확인한다. |
+| Q21 | FIGURE | 무리함수·유리함수 조각의 열린 경계와 치역을 나타내는 격리 개선안 초안이다. 현재 엔진은 극점 경계 OPEN을 지원하지 않아 이 계획은 미검증·격리 상태; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
 | Q22 | EXEMPT | 자물쇠 자리별 숫자 배치 경우의 수를 계산한다. |
 | Q23 | FIGURE | 무리함수의 평행이동 후 x축 대칭 순서를 보인다. |
 | Q24 | EXEMPT | 주어진 원소 수를 집합의 분할로 계산한다. |
 | Q25 | EXEMPT | 두 사람의 포함 여부에 따른 배열 경우의 수를 계산한다. |
 
-입력 3종 Q04·05·10·11·15·17·18·19·23. Q13·21 OPEN. NOT_RENDERED.
+입력 3종 Q04·05·10·11·15·17·18·19·21·23. Q13 OPEN. NOT_RENDERED.

@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      "-4",
+      "10",
+      "-6",
+      "5"
+    ],
+    "curves": [
+      {
+        "id": "radical",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "-2",
+        "domain": {
+          "from": "-4",
+          "to": "6",
+          "toState": "CLOSED"
+        }
+      },
+      {
+        "id": "rational",
+        "kind": "RATIONAL",
+        "numerator": [
+          "13",
+          "-2"
+        ],
+        "denominator": [
+          "-6",
+          "1"
+        ],
+        "domain": {
+          "from": "6",
+          "to": "10",
+          "fromState": "OPEN"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: a=-1, b=-6, c=-2, d=13에서 두 부분의 치역이 나뉜다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예 a=-1,b=-6,c=-2,d=13. x≤6에서는 -√(6-x)-2, x>6에서는 -2+1/(x-6)",
+      "mappedTo": [
+        "radical",
+        "rational"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "첫 부분의 치역 y≤-2, 둘째 부분의 치역 y>-2; (6,-2)는 제곱근 곡선 소유이고 x=6은 유리함수 극점"
+  ],
+  "sourceQuote": "나머지 구간 $x>-\\dfrac6a$에서의 치역은"
+}
