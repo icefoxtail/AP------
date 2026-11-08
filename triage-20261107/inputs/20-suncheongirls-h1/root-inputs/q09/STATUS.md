@@ -1,0 +1,1 @@
+OPEN · NOT_RENDERED. 원문 시험 PDF 및 정답해설 PDF를 대조하고 PR #1509 main 병합의 정정된 Q09를 기준으로 작성한 3종 초안. 기존 원문 그림·정정된 해설 SVG와 이력 보존. 소유·누적 시도 UNKNOWN; 중복 확인 전 인계하지 않음. 공식 validator·렌더 NOT_RUN. sourceQuote 계약은 격리 엔진 개선안 적용 전 별도 확인 필요. 기존 4칸의 source blob 불일치와 그 후속 절차는 별도 기록을 따른다.
