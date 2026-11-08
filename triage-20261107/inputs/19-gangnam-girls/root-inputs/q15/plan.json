@@ -1,0 +1,143 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "Q",
+    "R1",
+    "R2"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "displayPoints": [
+    "O"
+  ],
+  "coordinateLabels": [],
+  "lineLabels": [
+    {
+      "nodeId": "Q",
+      "text": "x-y=0"
+    },
+    {
+      "nodeId": "R1",
+      "text": "x=0"
+    },
+    {
+      "nodeId": "R2",
+      "text": "y=0"
+    }
+  ],
+  "caption": "가로 x=a, 세로 y=b로 놓으면 q는 대각선, r은 두 좌표축이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p:a=b=0, q:a=b, r:ab=0; 좌표 x=a, y=b",
+      "mappedTo": [
+        "O",
+        "Q",
+        "R1",
+        "R2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q의 대각선과 r의 두 축의 공통점이 원점"
+  ],
+  "sourceQuote": "$4ab=0$이므로 $ab=0$과 같다."
+}
