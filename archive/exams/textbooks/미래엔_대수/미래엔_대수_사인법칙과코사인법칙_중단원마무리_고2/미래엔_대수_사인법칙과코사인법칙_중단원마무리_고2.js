@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=8\\sin A$일 때, 외접원의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n삼각형 $\\mathrm{ABC}$의 외접원의 반지름의 길이를 $R$라 할 때, 사인법칙에 의하여\n$$\\frac{a}{\\sin A} = 2R$$\n이 성립한다. 주어진 관계식 $a = 8\\sin A$를 변형하여 $2R$의 값을 도출하고 $R$를 구한다.\n\n[단계별 풀이]\n1단계 [사인법칙 관계식 대입]:\n주어진 식 $a = 8\\sin A$의 양변을 $\\sin A$로 나누면 ($0^\\circ < A < 180^\\circ$이므로 $\\sin A \\ne 0$):\n$$\\frac{a}{\\sin A} = 8$$\n\n2단계 [외접원 반지름 $R$ 계산]:\n사인법칙 $\\frac{a}{\\sin A} = 2R$이므로\n$$2R = 8 \\implies R = 4$$\n\n[오답 및 경계 점검]\n지름의 길이 $2R=8$과 반지름의 길이 $R=4$를 혼동하지 않도록 최종 질의 대상인 반지름 $R$를 정확히 계산한다.\n\n[결론]\n$4$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=4\\sqrt{3},\\, A=60^\\circ,\\, B=45^\\circ$일 때, 다음을 구하시오.\n⑴ $b$의 값\n⑵ 외접원의 반지름의 길이 $R$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $b = 4\\sqrt{2}$, ⑵ $R = 4$",
+    "solution": "[풀이 전략]\n삼각형 $\\mathrm{ABC}$에서 한 변의 길이와 마주 보는 각, 다른 한 각이 주어졌을 때 사인법칙을 적용한다:\n$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = 2R$$\n\n[단계별 풀이]\n1단계 [외접원 반지름 $R$ 계산 (⑵번 선행 풀이)]:\n$a = 4\\sqrt{3}, A = 60^\\circ$이므로\n$$2R = \\frac{a}{\\sin A} = \\frac{4\\sqrt{3}}{\\sin 60^\\circ} = \\frac{4\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 4\\sqrt{3} \\times \\frac{2}{\\sqrt{3}} = 8$$\n$$R = 4$$\n\n2단계 [변 $b$의 값 계산 (⑴번)]:\n사인법칙 $\\frac{b}{\\sin B} = 2R = 8$에서 $B = 45^\\circ$이므로:\n$$b = 8\\sin 45^\\circ = 8 \\times \\frac{\\sqrt{2}}{2} = 4\\sqrt{2}$$\n\n[오답 및 경계 점검]\n$\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$과 $\\sin 45^\\circ = \\frac{\\sqrt{2}}{2}$의 특수각 삼각비 대입 과정에서 번분수 계산 실수를 점검한다.\n\n[결론]\n⑴ $b = 4\\sqrt{2}$, ⑵ $R = 4$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 다음을 구하시오.\n⑴ $b=6,\\, c=3,\\, A=60^\\circ$일 때, $a$의 값\n⑵ $a=\\sqrt{7},\\, b=2,\\, c=3$일 때, $A$의 크기",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a = 3\\sqrt{3}$, ⑵ $A = 60^\\circ$",
+    "solution": "[풀이 전략]\n코사인법칙을 적용한다:\n- 두 변과 그 끼인각이 주어졌을 때: $a^2 = b^2 + c^2 - 2bc\\cos A$\n- 세 변의 길이가 주어졌을 때 각의 코사인: $\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}$\n\n[단계별 풀이]\n1단계 [⑴ $b=6, c=3, A=60^\\circ$일 때 $a$의 값]:\n코사인법칙에 의해\n$$a^2 = 6^2 + 3^2 - 2 \\times 6 \\times 3 \\times \\cos 60^\\circ$$\n$$\\cos 60^\\circ = \\frac{1}{2}\\text{이므로}\\quad a^2 = 36 + 9 - 36 \\times \\frac{1}{2} = 45 - 18 = 27$$\n$a > 0$이므로 $a = \\sqrt{27} = 3\\sqrt{3}$이다.\n\n2단계 [⑵ $a=\\sqrt{7}, b=2, c=3$일 때 $A$의 크기]:\n코사인법칙의 변형 공식에 대입하면:\n$$\\cos A = \\frac{2^2 + 3^2 - (\\sqrt{7})^2}{2 \\times 2 \\times 3} = \\frac{4 + 9 - 7}{12} = \\frac{6}{12} = \\frac{1}{2}$$\n삼각형의 내각에서 $0^\\circ < A < 180^\\circ$이므로\n$$A = 60^\\circ$$\n\n[오답 및 경계 점검]\n삼각형의 각도는 $0^\\circ$와 $180^\\circ$ 사이의 각이므로 $\\cos A = \\frac{1}{2}$을 만족하는 각은 유일하게 $60^\\circ$이다.\n\n[결론]\n⑴ $a = 3\\sqrt{3}$, ⑵ $A = 60^\\circ$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.\n⑴ $a=4,\\, c=\\sqrt{2},\\, B=135^\\circ$\n⑵ $b=6,\\, c=10,\\, A=150^\\circ$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2$, ⑵ $15$",
+    "solution": "[풀이 전략]\n삼각형의 두 변의 길이와 그 끼인각의 크기가 주어졌을 때 넓이 공식:\n$$S = \\frac{1}{2}ac\\sin B,\\quad S = \\frac{1}{2}bc\\sin A$$\n둔각에 대한 사인값은 $\\sin(180^\\circ - \\theta) = \\sin\\theta$를 이용한다.\n\n[단계별 풀이]\n1단계 [⑴ $a=4, c=\\sqrt{2}, B=135^\\circ$ 넓이 계산]:\n$$\\sin 135^\\circ = \\sin(180^\\circ - 45^\\circ) = \\sin 45^\\circ = \\frac{\\sqrt{2}}{2}$$\n$$S = \\frac{1}{2} \\times 4 \\times \\sqrt{2} \\times \\sin 135^\\circ = 2\\sqrt{2} \\times \\frac{\\sqrt{2}}{2} = 2$$\n\n2단계 [⑵ $b=6, c=10, A=150^\\circ$ 넓이 계산]:\n$$\\sin 150^\\circ = \\sin(180^\\circ - 30^\\circ) = \\sin 30^\\circ = \\frac{1}{2}$$\n$$S = \\frac{1}{2} \\times 6 \\times 10 \\times \\sin 150^\\circ = 30 \\times \\frac{1}{2} = 15$$\n\n[오답 및 경계 점검]\n둔각의 사인값은 양수이므로 부호 오류가 발생하지 않도록 주의한다.\n\n[결론]\n⑴ $2$, ⑵ $15$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $6$인 원에 내접하는 $\\triangle\\mathrm{ABC}$의 둘레의 길이가 $20$일 때, $\\sin A + \\sin B + \\sin C$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{5}{3}$",
+    "solution": "[풀이 전략]\n사인법칙에 의하여 각 변과 대각의 사인 사이에는\n$$\\sin A = \\frac{a}{2R},\\quad \\sin B = \\frac{b}{2R},\\quad \\sin C = \\frac{c}{2R}$$\n이 성립한다. 세 각의 사인값의 합은 삼각형 둘레의 길이를 외접원의 지름 $2R$로 나눈 값과 일치한다.\n\n[단계별 풀이]\n1단계 [둘레와 사인법칙의 관계식 수립]:\n삼각형 $\\mathrm{ABC}$의 둘레의 길이가 $20$이므로\n$$a + b + c = 20$$\n외접원의 반지름의 길이가 $R = 6$이므로 외접원의 지름은 $2R = 12$이다.\n\n2단계 [사인값의 합 계산]:\n$$\\begin{aligned}\n\\sin A + \\sin B + \\sin C &= \\frac{a}{2R} + \\frac{b}{2R} + \\frac{c}{2R} \\\\\n&= \\frac{a+b+c}{2R} \\\\\n&= \\frac{20}{2 \\times 6} = \\frac{20}{12} = \\frac{5}{3}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n삼각형 각 변의 길이를 개별적으로 구할 필요 없이, 둘레의 비를 이용하여 한 번에 합을 구하는 핵심 원리를 정확히 적용한다.\n\n[결론]\n$\\frac{5}{3}$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$의 외접원의 반지름의 길이가 $4$이고 $A=60^\\circ,\\, b=4\\sqrt{2}$일 때, $C$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$75^\\circ$",
+    "solution": "[풀이 전략]\n사인법칙 $\\frac{b}{\\sin B} = 2R$을 적용하여 각 $B$의 크기를 구한다. 이때 각 $B$가 가질 수 있는 값 중 삼각형의 내각의 합 조건($A+B < 180^\\circ$)을 만족하는 것을 선별한 뒤, $C = 180^\\circ - (A+B)$를 통해 각 $C$의 크기를 구한다.\n\n[단계별 풀이]\n1단계 [각 $B$의 크기 구하기]:\n외접원의 반지름이 $R = 4$, $b = 4\\sqrt{2}$이므로 사인법칙에 의해:\n$$\\frac{b}{\\sin B} = 2R \\implies \\frac{4\\sqrt{2}}{\\sin B} = 8 \\implies \\sin B = \\frac{4\\sqrt{2}}{8} = \\frac{\\sqrt{2}}{2}$$\n$0^\\circ < B < 180^\\circ$이므로 $B = 45^\\circ$ 또는 $B = 135^\\circ$이다.\n\n2단계 [삼각형 내각 조건 검토]:\n문제에서 $A = 60^\\circ$이므로:\n- 만약 $B = 135^\\circ$이면 $A + B = 60^\\circ + 135^\\circ = 195^\\circ > 180^\\circ$이 되어 삼각형이 성립하지 않는다.\n- 따라서 $B = 45^\\circ$이어야 한다.\n\n3단계 [각 $C$의 크기 계산]:\n삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로:\n$$C = 180^\\circ - (A + B) = 180^\\circ - (60^\\circ + 45^\\circ) = 180^\\circ - 105^\\circ = 75^\\circ$$\n\n[오답 및 경계 점검]\n사인값이 $\\frac{\\sqrt{2}}{2}$일 때 예각과 둔각 2개가 가능하지만, 삼각형의 다른 각 $A=60^\\circ$와의 합이 $180^\\circ$ 미만이어야 하므로 둔각 $135^\\circ$는 탈락한다는 점을 명확히 서술한다.\n\n[결론]\n$75^\\circ$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $80\\text{ m}$만큼 떨어져 있는 민호와 지아의 하늘에 떠 있는 드론에 대한 올려본각의 크기가 각각 $75^\\circ$와 $45^\\circ$일 때, 드론과 민호 사이의 거리를 구하시오. (단, 민호와 지아의 눈높이는 같다.)\n<img src=\"q7.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{80\\sqrt{6}}{3}\\text{ m}$",
+    "solution": "[풀이 전략]\n민호, 지아, 드론이 이루는 삼각형을 $\\triangle\\mathrm{MJD}$라 하자:\n- 민호 지점 $\\mathrm{M}$, 지아 지점 $\\mathrm{J}$, 드론 지점 $\\mathrm{D}$\n- $\\angle\\mathrm{DMJ} = 75^\\circ$, $\\angle\\mathrm{DJM} = 45^\\circ$, $\\overline{\\mathrm{MJ}} = 80\\text{ m}$\n삼각형의 내각의 합을 이용하여 $\\angle\\mathrm{MDJ}$를 구한 후, 사인법칙을 적용하여 드론과 민호 사이의 거리 $\\overline{\\mathrm{MD}}$를 구한다.\n\n[단계별 풀이]\n1단계 [드론 꼭짓점의 각 $\\angle\\mathrm{MDJ}$ 구하기]:\n$$\\angle\\mathrm{MDJ} = 180^\\circ - (75^\\circ + 45^\\circ) = 180^\\circ - 120^\\circ = 60^\\circ$$\n\n2단계 [사인법칙 적용하여 $\\overline{\\mathrm{MD}}$ 구하기]:\n$\\triangle\\mathrm{MJD}$에서 사인법칙에 의해:\n$$\\frac{\\overline{\\mathrm{MD}}}{\\sin 45^\\circ} = \\frac{\\overline{\\mathrm{MJ}}}{\\sin 60^\\circ}$$\n$$\\overline{\\mathrm{MD}} = \\overline{\\mathrm{MJ}} \\times \\frac{\\sin 45^\\circ}{\\sin 60^\\circ} = 80 \\times \\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{3}}{2}} = 80 \\times \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{80\\sqrt{6}}{3}\\text{ m}$$\n\n[오답 및 경계 점검]\n분모 유리화 $\\frac{80\\sqrt{2}}{\\sqrt{3}} = \\frac{80\\sqrt{6}}{3}$를 정확히 수행하고 단위를 기재한다.\n\n[결론]\n$\\frac{80\\sqrt{6}}{3}\\text{ m}$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 변의 길이가 $4,\\, 5,\\, 7$인 삼각형의 세 내각 중에서 크기가 가장 큰 내각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{5}$",
+    "solution": "[풀이 전략]\n삼각형에서 길이가 가장 긴 변의 대각이 크기가 가장 큰 내각이다.\n세 변의 길이가 $4, 5, 7$이므로 가장 긴 변의 길이는 $7$이며, 그 대각이 크기가 가장 큰 내각 $\\theta$이다.\n코사인법칙의 변형 공식을 적용하여 $\\cos\\theta$를 구한다.\n\n[단계별 풀이]\n1단계 [가장 큰 내각의 대변 확정]:\n세 변의 길이가 $a = 4, b = 5, c = 7$일 때, $c = 7$이 최대 변이므로 구하고자 하는 각 $\\theta$는 변 $c$의 대각이다.\n\n2단계 [코사인법칙 적용]:\n$$\\cos\\theta = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{4^2 + 5^2 - 7^2}{2 \\times 4 \\times 5}$$\n분자와 분모를 계산하면:\n$$\\cos\\theta = \\frac{16 + 25 - 49}{40} = \\frac{41 - 49}{40} = \\frac{-8}{40} = -\\frac{1}{5}$$\n\n[오답 및 경계 점검]\n$\\cos\\theta < 0$이므로 $\\theta$는 둔각($90^\\circ < \\theta < 180^\\circ$)이다. 실제로 $4^2 + 5^2 = 41 < 7^2 = 49$이므로 둔각삼각형임을 확인할 수 있다.\n\n[결론]\n$-\\frac{1}{5}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=5,\\, b=3,\\, C=120^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 반지름의 길이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7\\sqrt{3}}{3}$",
+    "solution": "[풀이 전략]\n1단계: 두 변 $a, b$와 끼인각 $C$가 주어졌으므로 코사인법칙을 이용하여 마주 보는 변 $c$의 길이를 구한다.\n2단계: 구한 변 $c$와 각 $C$에 대하여 사인법칙 $\\frac{c}{\\sin C} = 2R$을 적용하여 외접원의 반지름 $R$를 계산한다.\n\n[단계별 풀이]\n1단계 [코사인법칙으로 변 $c$의 길이 구하기]:\n$a = 5, b = 3, C = 120^\\circ$이므로\n$$c^2 = a^2 + b^2 - 2ab\\cos C = 5^2 + 3^2 - 2 \\times 5 \\times 3 \\times \\cos 120^\\circ$$\n$\\cos 120^\\circ = -\\frac{1}{2}$이므로\n$$c^2 = 25 + 9 - 30 \\times \\left(-\\frac{1}{2}\\right) = 34 + 15 = 49$$\n$c > 0$이므로 $c = 7$이다.\n\n2단계 [사인법칙으로 외접원 반지름 $R$ 구하기]:\n외접원의 반지름을 $R$라 하면 사인법칙에 의해:\n$$\\frac{c}{\\sin C} = 2R \\implies \\frac{7}{\\sin 120^\\circ} = 2R$$\n$\\sin 120^\\circ = \\frac{\\sqrt{3}}{2}$이므로\n$$2R = \\frac{7}{\\frac{\\sqrt{3}}{2}} = \\frac{14}{\\sqrt{3}} = \\frac{14\\sqrt{3}}{3} \\implies R = \\frac{7\\sqrt{3}}{3}$$\n\n[오답 및 경계 점검]\n서술형 채점 기준에 맞춰 코사인법칙을 통한 변 $c$ 도출 과정(50%)과 사인법칙을 통한 $R$ 계산 및 유리화(50%)를 단계별로 명확하게 구성한다.\n\n[결론]\n$\\frac{7\\sqrt{3}}{3}$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 만족시키는 $\\triangle\\mathrm{ABC}$는 어떤 삼각형인지 말하시오.\n⑴ $a\\sin^2 A = b\\sin^2 B$\n⑵ $\\sin A = \\cos B\\sin C$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=b$인 이등변삼각형, ⑵ $C=90^\\circ$인 직각삼각형",
+    "solution": "[풀이 전략]\n삼각형의 종류를 결정하는 항등식은 삼각함수(사인, 코사인)를 사인법칙과 코사인법칙을 이용하여 변의 길이($a, b, c, R$)에 관한 대수적 관계식으로 변환한 후 인수분해하여 해석한다:\n- $\\sin A = \\frac{a}{2R}, \\sin B = \\frac{b}{2R}, \\sin C = \\frac{c}{2R}$\n- $\\cos B = \\frac{a^2 + c^2 - b^2}{2ac}$\n\n[단계별 풀이]\n1단계 [⑴ $a\\sin^2 A = b\\sin^2 B$ 판정]:\n사인법칙 $\\sin A = \\frac{a}{2R}, \\sin B = \\frac{b}{2R}$을 대입하면:\n$$a\\left(\\frac{a}{2R}\\right)^2 = b\\left(\\frac{b}{2R}\\right)^2 \\implies \\frac{a^3}{4R^2} = \\frac{b^3}{4R^2} \\implies a^3 = b^3$$\n$a, b$는 양의 실수이므로 $a^3 - b^3 = (a-b)(a^2+ab+b^2) = 0$에서 $a^2+ab+b^2 > 0$이다.\n따라서 $a = b$이다.\n즉, $a=b$인 이등변삼각형이다.\n\n2단계 [⑵ $\\sin A = \\cos B\\sin C$ 판정]:\n사인법칙과 코사인법칙을 대입하면:\n$$\\frac{a}{2R} = \\frac{a^2 + c^2 - b^2}{2ac} \\times \\frac{c}{2R}$$\n양변에 $2R$을 곱하고 분모의 $c$를 약분하면:\n$$a = \\frac{a^2 + c^2 - b^2}{2a}$$\n양변에 $2a$를 곱하면:\n$$2a^2 = a^2 + c^2 - b^2 \\implies a^2 + b^2 = c^2$$\n피타고라스 정리에 의해 빗변의 길이가 $c$인 직각삼각형, 즉 $C = 90^\\circ$인 직각삼각형이다.\n\n[오답 및 경계 점검]\n직각삼각형의 경우 어느 각이 직각인지($C=90^\\circ$ 또는 빗변이 $c$), 이등변삼각형의 경우 어느 변의 길이가 같은지($a=b$)를 명확하게 지정해야 감점되지 않는다.\n\n[결론]\n⑴ $a=b$인 이등변삼각형, ⑵ $C=90^\\circ$인 직각삼각형"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 어느 선수가 축구 골대의 두 기둥 $\\mathrm{A}$와 $\\mathrm{B}$로부터 각각 $3\\text{ m}$와 $8\\text{ m}$ 떨어진 지점 $\\mathrm{P}$에 있다. 골대의 폭이 $7\\text{ m}$일 때, $\\angle\\mathrm{APB}$의 크기를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$60^\\circ$",
+    "solution": "[풀이 전략]\n점 $\\mathrm{P}$와 골대의 두 기둥 $\\mathrm{A}, \\mathrm{B}$가 이루는 삼각형 $\\triangle\\mathrm{PAB}$의 세 변의 길이는 $\\overline{\\mathrm{PA}}=3, \\overline{\\mathrm{PB}}=8, \\overline{\\mathrm{AB}}=7$이다.\n세 변의 길이를 알 때 한 각의 크기는 코사인법칙의 변형 공식을 사용하여 구한다.\n\n[단계별 풀이]\n1단계 [코사인법칙 공식 수립]:\n구하고자 하는 각 $\\angle\\mathrm{APB} = \\theta$라 하면 $\\triangle\\mathrm{PAB}$에서 마주 보는 변은 $\\overline{\\mathrm{AB}} = 7$이다.\n코사인법칙에 의해:\n$$\\cos\\theta = \\frac{\\overline{\\mathrm{PA}}^2 + \\overline{\\mathrm{PB}}^2 - \\overline{\\mathrm{AB}}^2}{2 \\times \\overline{\\mathrm{PA}} \\times \\overline{\\mathrm{PB}}}$$\n\n2단계 [$\\cos\\theta$ 계산 및 각도 확정]:\n$$\\cos\\theta = \\frac{3^2 + 8^2 - 7^2}{2 \\times 3 \\times 8} = \\frac{9 + 64 - 49}{48} = \\frac{24}{48} = \\frac{1}{2}$$\n$0^\\circ < \\theta < 180^\\circ$이므로\n$$\\theta = 60^\\circ$$\n\n[오답 및 경계 점검]\n$\\cos\\theta = \\frac{1}{2}$에서 삼각형 내각 범위에 해당하는 값은 $60^\\circ$뿐이므로 유일한 해임을 확인한다.\n\n[결론]\n$60^\\circ$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=6,\\, b=8,\\, \\sin(A+B)=\\frac{1}{2}$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n삼각형의 세 내각의 합 성질 $A+B+C = 180^\\circ$를 이용하여 $A+B = 180^\\circ - C$로 변환한다.\n삼각함수의 각변환 공식 $\\sin(180^\\circ - C) = \\sin C$를 적용하여 $\\sin C$의 값을 구한 후, 삼각형의 넓이 공식 $S = \\frac{1}{2}ab\\sin C$를 적용한다.\n\n[단계별 풀이]\n1단계 [$\\sin C$의 값 구하기]:\n$A + B + C = 180^\\circ$이므로 $A + B = 180^\\circ - C$이다.\n따라서\n$$\\sin(A+B) = \\sin(180^\\circ - C) = \\sin C = \\frac{1}{2}$$\n\n2단계 [삼각형의 넓이 계산]:\n두 변 $a = 6, b = 8$과 끼인각의 사인값 $\\sin C = \\frac{1}{2}$이므로 넓이 $S$는:\n$$S = \\frac{1}{2}ab\\sin C = \\frac{1}{2} \\times 6 \\times 8 \\times \\frac{1}{2} = 12$$\n\n[오답 및 경계 점검]\n$\\sin(A+B)$에서 직접 $A$와 $B$를 구할 필요 없이, 삼각형의 내각 합 성질에 의해 바로 끼인각 $C$의 사인값과 동일함을 직관적으로 도출할 수 있다.\n\n[결론]\n$12$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $2$인 원에 내접하는 $\\triangle\\mathrm{ABC}$에서 $B=60^\\circ,\\, C=45^\\circ$일 때, 변 $\\mathrm{BC}$의 길이를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{2} + \\sqrt{6}$",
+    "solution": "[풀이 전략]\n외접원의 반지름이 $R = 2$로 주어졌으므로, 사인법칙을 이용하여 두 변 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{AB}}$의 길이를 구한다.\n꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 수선의 발 $\\mathrm{H}$를 내리면 변 $\\mathrm{BC}$는 $\\overline{\\mathrm{BH}} + \\overline{\\mathrm{HC}}$의 합으로 분할되며, 각 직각삼각형에서 코사인 삼각비를 적용하여 계산한다.\n\n[단계별 풀이]\n1단계 [사인법칙으로 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{AB}}$ 구하기]:\n외접원의 지름은 $2R = 4$이다.\n- $\\frac{\\overline{\\mathrm{AC}}}{\\sin B} = 2R \\implies \\overline{\\mathrm{AC}} = 4\\sin 60^\\circ = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$\n- $\\frac{\\overline{\\mathrm{AB}}}{\\sin C} = 2R \\implies \\overline{\\mathrm{AB}} = 4\\sin 45^\\circ = 4 \\times \\frac{\\sqrt{2}}{2} = 2\\sqrt{2}$\n\n2단계 [수선의 발 $\\mathrm{H}$를 이용한 $\\overline{\\mathrm{BC}}$ 분할 계산]:\n꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하면:\n- $\\triangle\\mathrm{ABH}$에서 $\\overline{\\mathrm{BH}} = \\overline{\\mathrm{AB}}\\cos 60^\\circ = 2\\sqrt{2} \\times \\frac{1}{2} = \\sqrt{2}$\n- $\\triangle\\mathrm{ACH}$에서 $\\overline{\\mathrm{HC}} = \\overline{\\mathrm{AC}}\\cos 45^\\circ = 2\\sqrt{3} \\times \\frac{\\sqrt{2}}{2} = \\sqrt{6}$\n\n3단계 [변 $\\mathrm{BC}$의 길이 합산]:\n$$\\overline{\\mathrm{BC}} = \\overline{\\mathrm{BH}} + \\overline{\\mathrm{HC}} = \\sqrt{2} + \\sqrt{6}$$\n\n[오답 및 경계 점검]\n다른 방법으로 $A = 180^\\circ - (60^\\circ + 45^\\circ) = 75^\\circ$이므로 $\\overline{\\mathrm{BC}} = 2R\\sin 75^\\circ = 4 \\times \\frac{\\sqrt{6}+\\sqrt{2}}{4} = \\sqrt{6}+\\sqrt{2}$로 구해도 결과가 일치함을 확인할 수 있다.\n\n[결론]\n$\\sqrt{2} + \\sqrt{6}$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 두 직선 $y=3x$와 $y=x$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오.\n<img src=\"q14.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2\\sqrt{5}}{5}$",
+    "solution": "[풀이 전략]\n직선 위의 임의의 점을 잡아 삼각형을 구성한 뒤 코사인법칙을 적용한다.\n$x$축에 수직인 직선 $x=t$ ($t>0$)를 그어 두 직선과의 교점을 각각 $\\mathrm{P}(t, 3t)$, $\\mathrm{Q}(t, t)$라 하고, 원점 $\\mathrm{O}(0, 0)$과 함께 이루는 $\\triangle\\mathrm{OPQ}$의 세 변의 길이를 구하여 코사인법칙으로 $\\cos\\theta$를 계산한다.\n\n[단계별 풀이]\n1단계 [세 변의 길이 계산]:\n$x = t$ ($t > 0$)에 대하여:\n- 점 $\\mathrm{P}(t, 3t)$, 점 $\\mathrm{Q}(t, t)$\n- $\\overline{\\mathrm{OP}} = \\sqrt{t^2 + (3t)^2} = \\sqrt{10t^2} = \\sqrt{10}t$\n- $\\overline{\\mathrm{OQ}} = \\sqrt{t^2 + t^2} = \\sqrt{2t^2} = \\sqrt{2}t$\n- $\\overline{\\mathrm{PQ}} = 3t - t = 2t$\n\n2단계 [코사인법칙 적용]:\n$\\triangle\\mathrm{OPQ}$에서 $\\angle\\mathrm{POQ} = \\theta$이므로 코사인법칙에 의해:\n$$\\cos\\theta = \\frac{\\overline{\\mathrm{OP}}^2 + \\overline{\\mathrm{OQ}}^2 - \\overline{\\mathrm{PQ}}^2}{2 \\times \\overline{\\mathrm{OP}} \\times \\overline{\\mathrm{OQ}}}$$\n각 길이를 대입하면:\n$$\\cos\\theta = \\frac{10t^2 + 2t^2 - 4t^2}{2 \\times \\sqrt{10}t \\times \\sqrt{2}t} = \\frac{8t^2}{2\\sqrt{20}t^2} = \\frac{8}{4\\sqrt{5}} = \\frac{2}{\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$$\n\n[오답 및 경계 점검]\n$t$의 값에 관계없이 비례 관계가 유지되므로 편의상 $t=1$로 두고 $\\mathrm{P}(1, 3), \\mathrm{Q}(1, 1)$로 계산해도 무방하다. 분모 유리화를 누락하지 않는다.\n\n[결론]\n$\\frac{2\\sqrt{5}}{5}$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$이고 모선의 길이가 $12\\text{ cm}$인 원뿔이 있다. 원뿔의 밑면인 원의 둘레 위의 점 $\\mathrm{P}$에서 모선 $\\mathrm{OP}$의 중점 $\\mathrm{Q}$까지 원뿔의 표면을 따라 실을 감을 때, 감은 실의 길이의 최솟값을 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6\\sqrt{7}\\text{ cm}$",
+    "solution": "[풀이 전략]\n입체도형의 표면을 따라 이동하는 최단거리는 전개도 상에서 두 점을 잇는 선분의 길이이다.\n1. 원뿔의 옆면 전개도인 부채꼴의 중심각의 크기를 구한다.\n2. 부채꼴에서 시작점 $\\mathrm{P}$와 모선의 중점 $\\mathrm{Q}$가 이루는 삼각형에 코사인법칙을 적용하여 선분 $\\overline{\\mathrm{PQ}}$의 길이를 구한다.\n\n[단계별 풀이]\n1단계 [전개도 부채꼴의 중심각 $\\theta$ 구하기]:\n밑면의 반지름의 길이가 $r = 4\\text{ cm}$, 원뿔의 모선의 길이가 $R = 12\\text{ cm}$이다.\n부채꼴의 호의 길이는 밑면 원의 둘레의 길이와 같으므로:\n$$l = 2\\pi r = 2\\pi \\times 4 = 8\\pi\\text{ cm}$$\n부채꼴의 중심각의 크기를 $\\theta$라 하면 $l = R\\theta$이므로:\n$$8\\pi = 12\\theta \\implies \\theta = \\frac{8\\pi}{12} = \\frac{2}{3}\\pi\\; (120^\\circ)$$\n\n2단계 [코사인법칙으로 최단거리 $\\overline{\\mathrm{PQ}}$ 계산]:\n전개도에서 점 $\\mathrm{O}$를 중심으로 하는 부채꼴에 대하여:\n- $\\overline{\\mathrm{OP}} = 12\\text{ cm}$\n- 점 $\\mathrm{Q}$는 모선의 중점이므로 $\\overline{\\mathrm{OQ}} = \\frac{12}{2} = 6\\text{ cm}$\n- 두 모선이 이루는 중심각은 $\\angle\\mathrm{POQ} = \\frac{2}{3}\\pi$\n감은 실의 길이의 최솟값은 선분 $\\overline{\\mathrm{PQ}}$의 길이이므로 코사인법칙에 의해:\n$$\\overline{\\mathrm{PQ}}^2 = \\overline{\\mathrm{OP}}^2 + \\overline{\\mathrm{OQ}}^2 - 2\\overline{\\mathrm{OP}}\\,\\overline{\\mathrm{OQ}}\\cos\\frac{2}{3}\\pi$$\n$$\\cos\\frac{2}{3}\\pi = -\\frac{1}{2}\\text{이므로}$$\n$$\\overline{\\mathrm{PQ}}^2 = 12^2 + 6^2 - 2 \\times 12 \\times 6 \\times \\left(-\\frac{1}{2}\\right) = 144 + 36 + 72 = 252$$\n$\\overline{\\mathrm{PQ}} > 0$이므로\n$$\\overline{\\mathrm{PQ}} = \\sqrt{252} = \\sqrt{36 \\times 7} = 6\\sqrt{7}\\text{ cm}$$\n\n[오답 및 경계 점검]\n부채꼴의 중심각 계산에서 밑면 둘레와 호의 길이가 일치함을 정확히 이용해야 하며, $\\cos\\frac{2}{3}\\pi = -\\frac{1}{2}$ 부호에 주의한다.\n\n[결론]\n$6\\sqrt{7}\\text{ cm}$"
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -446,7 +446,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 원에 내접하는 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2,\\, \\overline{\\mathrm{BC}}=3,\\, \\overline{\\mathrm{CD}}=4,\\, \\overline{\\mathrm{AD}}=5$일 때, 사각형 $\\mathrm{ABCD}$의 넓이를 구하는 풀이 과정과 답을 쓰시오.\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{30}$",
+    "solution": "[풀이 전략]\n원에 내접하는 사각형의 마주 보는 두 대각의 크기의 합은 $180^\\circ$이다.\n1. 대각선 $\\mathrm{BD}$를 그어 $\\triangle\\mathrm{ABD}$와 $\\triangle\\mathrm{BCD}$에 각각 코사인법칙을 적용하여 $\\cos A$를 구한다.\n2. $\\sin A = \\sqrt{1-\\cos^2 A}$를 통해 사인값을 구한다.\n3. 사각형의 넓이를 두 삼각형의 넓이의 합으로 구한다.\n\n[단계별 풀이]\n1단계 [대각 조건 및 코사인법칙 적용]:\n사각형 $\\mathrm{ABCD}$가 원에 내접하므로\n$$C = 180^\\circ - A$$\n대각선 $\\mathrm{BD}$의 길이에 대하여:\n- $\\triangle\\mathrm{ABD}$에서: $\\overline{\\mathrm{BD}}^2 = 2^2 + 5^2 - 2 \\times 2 \\times 5 \\times \\cos A = 29 - 20\\cos A$\n- $\\triangle\\mathrm{BCD}$에서: $\\overline{\\mathrm{BD}}^2 = 3^2 + 4^2 - 2 \\times 3 \\times 4 \\times \\cos(180^\\circ - A) = 25 + 24\\cos A$\n\n2단계 [$\\cos A$ 및 $\\sin A$의 값 구하기]:\n두 식이 서로 같으므로:\n$$29 - 20\\cos A = 25 + 24\\cos A \\implies 44\\cos A = 4 \\implies \\cos A = \\frac{1}{11}$$\n$0^\\circ < A < 180^\\circ$에서 $\\sin A > 0$이므로:\n$$\\sin A = \\sqrt{1 - \\cos^2 A} = \\sqrt{1 - \\left(\\frac{1}{11}\\right)^2} = \\sqrt{\\frac{120}{121}} = \\frac{2\\sqrt{30}}{11}$$\n\n3단계 [사각형 $\\mathrm{ABCD}$의 넓이 계산]:\n$$\\sin C = \\sin(180^\\circ - A) = \\sin A = \\frac{2\\sqrt{30}}{11}$$\n사각형 $\\mathrm{ABCD}$의 넓이는 두 삼각형의 넓이의 합이다:\n$$\\begin{aligned}\n\\text{넓이} &= \\triangle\\mathrm{ABD} + \\triangle\\mathrm{BCD} \\\\\n&= \\frac{1}{2} \\times 2 \\times 5 \\times \\sin A + \\frac{1}{2} \\times 3 \\times 4 \\times \\sin C \\\\\n&= 5\\sin A + 6\\sin A = 11\\sin A \\\\\n&= 11 \\times \\frac{2\\sqrt{30}}{11} = 2\\sqrt{30}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n서술형 3단계 구조($\\cos A$ 도출 40%, $\\sin A$ 도출 20%, 사각형 넓이 계산 40%)를 완벽히 충족하며 브라마굽타(Brahmagupta) 공식 $\\sqrt{(s-a)(s-b)(s-c)(s-d)}$ ($s = \\frac{2+3+4+5}{2} = 7$)을 적용해도 $\\sqrt{5 \\times 4 \\times 3 \\times 2} = \\sqrt{120} = 2\\sqrt{30}$으로 결과가 정확히 일치함을 교차 검증할 수 있다.\n\n[결론]\n$2\\sqrt{30}$"
   }
 ];

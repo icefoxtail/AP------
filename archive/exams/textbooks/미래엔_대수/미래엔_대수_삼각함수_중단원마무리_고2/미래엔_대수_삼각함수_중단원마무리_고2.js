@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 각의 동경이 나타내는 일반각을 구하고, 제몇 사분면의 각인지 말하시오.\n⑴ $1004^\\circ$\n⑵ $-\\frac{16}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $360^\\circ \\times n + 284^\\circ$ ($n$은 정수), 제4사분면, ⑵ $2n\\pi + \\frac{2}{3}\\pi$ ($n$은 정수), 제2사분면",
+    "solution": "[풀이 전략]\n시초선 $\\mathrm{OX}$와 동경 $\\mathrm{OP}$가 나타내는 각 중 하나를 $\\alpha$라 할 때, 일반각은 정수 $n$에 대하여 $360^\\circ \\times n + \\alpha$ (육십분법) 또는 $2n\\pi + \\alpha$ (호도법) 꼴로 나타낸다. 여기서 $0^\\circ \\le \\alpha < 360^\\circ$ (또는 $0 \\le \\alpha < 2\\pi$)로 나타내어 동경이 위치하는 사분면을 판정한다.\n\n[단계별 풀이]\n1단계 [⑴ $1004^\\circ$의 일반각 및 사분면]:\n- $1004^\\circ = 360^\\circ \\times 2 + 284^\\circ$\n- 따라서 일반각은 $360^\\circ \\times n + 284^\\circ$ ($n$은 정수)이다.\n- $270^\\circ < 284^\\circ < 360^\\circ$이므로 동경은 제4사분면에 위치한다.\n\n2단계 [⑵ $-\\frac{16}{3}\\pi$의 일반각 및 사분면]:\n- $-\\frac{16}{3}\\pi = 2\\pi \\times (-3) + \\frac{2}{3}\\pi$\n- 따라서 일반각은 $2n\\pi + \\frac{2}{3}\\pi$ ($n$은 정수)이다.\n- $\\frac{\\pi}{2} < \\frac{2}{3}\\pi < \\pi$이므로 동경은 제2사분면에 위치한다.\n\n[오답 및 경계 점검]\n일반각 표현에서 회전수 $n$이 정수($n$은 정수)임을 반드시 명시해야 하며, $0 \\le \\alpha < 2\\pi$ (또는 $0^\\circ \\le \\alpha < 360^\\circ$) 범위의 기본 양각으로 환산하여 사분면을 정확히 판정한다.\n\n[결론]\n⑴ $360^\\circ \\times n + 284^\\circ$ ($n$은 정수), 제4사분면, ⑵ $2n\\pi + \\frac{2}{3}\\pi$ ($n$은 정수), 제2사분면"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 육십분법으로 나타낸 각은 호도법으로, 호도법으로 나타낸 각은 육십분법으로 나타내시오.\n⑴ $30^\\circ$\n⑵ $-135^\\circ$\n⑶ $\\frac{\\pi}{2}$\n⑷ $-\\frac{2}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\pi}{6}$, ⑵ $-\\frac{3}{4}\\pi$, ⑶ $90^\\circ$, ⑷ $-120^\\circ$",
+    "solution": "[풀이 전략]\n육십분법과 호도법 사이의 변환 공식:\n- $1^\\circ = \\frac{\\pi}{180}\\text{ rad}$\n- $1\\text{ rad} = \\frac{180^\\circ}{\\pi}$\n육십분법 각에는 $\\frac{\\pi}{180}$을 곱하고, 호도법 각에는 $\\frac{180^\\circ}{\\pi}$를 곱하여 상호 환산한다.\n\n[단계별 풀이]\n1단계 [⑴ $30^\\circ$ 호도법 변환]:\n$$30^\\circ = 30 \\times \\frac{\\pi}{180} = \\frac{\\pi}{6}$$\n\n2단계 [⑵ $-135^\\circ$ 호도법 변환]:\n$$-135^\\circ = -135 \\times \\frac{\\pi}{180} = -\\frac{3}{4}\\pi$$\n\n3단계 [⑶ $\\frac{\\pi}{2}$ 육십분법 변환]:\n$$\\frac{\\pi}{2} = \\frac{\\pi}{2} \\times \\frac{180^\\circ}{\\pi} = 90^\\circ$$\n\n4단계 [⑷ $-\\frac{2}{3}\\pi$ 육십분법 변환]:\n$$-\\frac{2}{3}\\pi = -\\frac{2}{3}\\pi \\times \\frac{180^\\circ}{\\pi} = -120^\\circ$$\n\n[오답 및 경계 점검]\n음의 부호가 붙은 각의 경우 변환 과정에서 음수 부호가 누락되지 않도록 주의한다.\n\n[결론]\n⑴ $\\frac{\\pi}{6}$, ⑵ $-\\frac{3}{4}\\pi$, ⑶ $90^\\circ$, ⑷ $-120^\\circ$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $10$이고 호의 길이가 $6\\pi$인 부채꼴의 중심각의 크기와 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "중심각의 크기: $\\frac{3}{5}\\pi$, 넓이: $30\\pi$",
+    "solution": "[풀이 전략]\n반지름의 길이가 $r$, 중심각의 크기가 $\\theta$ (라디안), 호의 길이가 $l$, 넓이가 $S$인 부채꼴에 대하여:\n- $l = r\\theta \\implies \\theta = \\frac{l}{r}$\n- $S = \\frac{1}{2} r l = \\frac{1}{2} r^2 \\theta$\n주어진 조건 $r=10, l=6\\pi$를 공식에 대입하여 $\\theta$와 $S$를 구한다.\n\n[단계별 풀이]\n1단계 [중심각의 크기 $\\theta$ 구하기]:\n호의 길이 공식 $l = r\\theta$에서\n$$6\\pi = 10\\theta \\implies \\theta = \\frac{6\\pi}{10} = \\frac{3}{5}\\pi$$\n\n2단계 [부채꼴의 넓이 $S$ 구하기]:\n넓이 공식 $S = \\frac{1}{2} r l$에 대입하면:\n$$S = \\frac{1}{2} \\times 10 \\times 6\\pi = 30\\pi$$\n\n[오답 및 경계 점검]\n$S = \\frac{1}{2} r^2 \\theta = \\frac{1}{2} \\times 10^2 \\times \\frac{3}{5}\\pi = 50 \\times \\frac{3}{5}\\pi = 30\\pi$로 계산해도 일치함을 교차 검증할 수 있다.\n\n[결론]\n중심각의 크기: $\\frac{3}{5}\\pi$, 넓이: $30\\pi$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-2,\\, 1)$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라 할 때, $\\sin\\theta,\\, \\cos\\theta,\\, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta = \\frac{\\sqrt{5}}{5}$, $\\cos\\theta = -\\frac{2\\sqrt{5}}{5}$, $\\tan\\theta = -\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n좌표평면 위의 원점 $\\mathrm{O}$와 점 $\\mathrm{P}(x, y)$에 대하여 동경 $\\mathrm{OP}$의 길이를 $r = \\sqrt{x^2+y^2}$라 할 때 삼각함수의 정의는 다음과 같다:\n- $\\sin\\theta = \\frac{y}{r}$\n- $\\cos\\theta = \\frac{x}{r}$\n- $\\tan\\theta = \\frac{y}{x}$ ($x \\ne 0$)\n\n[단계별 풀이]\n1단계 [동경의 길이 $r$ 계산]:\n점 $\\mathrm{P}(-2, 1)$에 대하여\n$$r = \\sqrt{(-2)^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$$\n\n2단계 [$\\sin\\theta, \\cos\\theta, \\tan\\theta$의 값 계산]:\n- $\\sin\\theta = \\frac{y}{r} = \\frac{1}{\\sqrt{5}} = \\frac{\\sqrt{5}}{5}$\n- $\\cos\\theta = \\frac{x}{r} = \\frac{-2}{\\sqrt{5}} = -\\frac{2\\sqrt{5}}{5}$\n- $\\tan\\theta = \\frac{y}{x} = \\frac{1}{-2} = -\\frac{1}{2}$\n\n[오답 및 경계 점검]\n점 $\\mathrm{P}(-2, 1)$은 제2사분면의 점이므로 $\\sin\\theta > 0$, $\\cos\\theta < 0$, $\\tan\\theta < 0$이어야 하며, 구한 값의 부호와 완벽히 일치한다. 분모의 유리화를 누락하지 않는다.\n\n[결론]\n$\\sin\\theta = \\frac{\\sqrt{5}}{5}$, $\\cos\\theta = -\\frac{2\\sqrt{5}}{5}$, $\\tan\\theta = -\\frac{1}{2}$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 삼각함수의 값을 구하시오.\n⑴ $\\sin\\frac{7}{6}\\pi$\n⑵ $\\cos\\left(-\\frac{5}{4}\\pi\\right)$\n⑶ $\\tan\\frac{10}{3}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-\\frac{1}{2}$, ⑵ $-\\frac{\\sqrt{2}}{2}$, ⑶ $\\sqrt{3}$",
+    "solution": "[풀이 전략]\n일반각의 삼각함수 성질 및 주기성/대칭성을 이용한다:\n- $\\sin(\\pi + \\theta) = -\\sin\\theta$\n- $\\cos(-\\theta) = \\cos\\theta$, $\\cos(\\pi + \\theta) = -\\cos\\theta$\n- $\\tan(n\\pi + \\theta) = \\tan\\theta$\n\n[단계별 풀이]\n1단계 [⑴ $\\sin\\frac{7}{6}\\pi$ 계산]:\n$$\\sin\\frac{7}{6}\\pi = \\sin\\left(\\pi + \\frac{\\pi}{6}\\right) = -\\sin\\frac{\\pi}{6} = -\\frac{1}{2}$$\n\n2단계 [⑵ $\\cos\\left(-\\frac{5}{4}\\pi\\right)$ 계산]:\n코사인은 우함수($\\cos(-\\theta) = \\cos\\theta$)이므로\n$$\\cos\\left(-\\frac{5}{4}\\pi\\right) = \\cos\\frac{5}{4}\\pi = \\cos\\left(\\pi + \\frac{\\pi}{4}\\right) = -\\cos\\frac{\\pi}{4} = -\\frac{\\sqrt{2}}{2}$$\n\n3단계 [⑶ $\\tan\\frac{10}{3}\\pi$ 계산]:\n탄젠트의 주기는 $\\pi$이므로\n$$\\tan\\frac{10}{3}\\pi = \\tan\\left(3\\pi + \\frac{\\pi}{3}\\right) = \\tan\\frac{\\pi}{3} = \\sqrt{3}$$\n\n[오답 및 경계 점검]\n각 동경이 위치하는 사분면을 확인한다:\n- $\\frac{7}{6}\\pi$는 제3사분면이므로 $\\sin$값은 음수이다.\n- $-\\frac{5}{4}\\pi$는 제2사분면 동경이므로 $\\cos$값은 음수이다.\n- $\\frac{10}{3}\\pi$는 제3사분면 동경이므로 $\\tan$값은 양수이다.\n\n[결론]\n⑴ $-\\frac{1}{2}$, ⑵ $-\\frac{\\sqrt{2}}{2}$, ⑶ $\\sqrt{3}$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$를 나타내는 동경과 각 $4\\theta$를 나타내는 동경이 일치할 때, 각 $\\theta$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2}{3}\\pi$",
+    "solution": "[풀이 전략]\n두 각 $\\alpha, \\beta$를 나타내는 동경이 일치할 조건:\n$$\\alpha - \\beta = 2n\\pi\\quad (n\\text{은 정수})$$\n주어진 두 동경 $\\theta$와 $4\\theta$의 차를 정수 회전수로 설정하고, 제한 범위 $\\frac{\\pi}{2} < \\theta < \\pi$를 만족하는 정수 $n$을 찾는다.\n\n[단계별 풀이]\n1단계 [동경 일치 조건식 세우기]:\n각 $\\theta$와 각 $4\\theta$를 나타내는 동경이 일치하므로\n$$4\\theta - \\theta = 2n\\pi\\quad (n\\text{은 정수})$$\n$$3\\theta = 2n\\pi \\implies \\theta = \\frac{2n\\pi}{3}$$\n\n2단계 [제한 조건에 맞는 $n$과 $\\theta$ 결정]:\n$\\frac{\\pi}{2} < \\theta < \\pi$이므로\n$$\\frac{\\pi}{2} < \\frac{2n\\pi}{3} < \\pi$$\n각 변을 $\\pi$로 나누고 $\\frac{3}{2}$을 곱하면:\n$$\\frac{3}{4} < n < \\frac{3}{2}$$\n$n$은 정수이므로 $n = 1$이다.\n따라서 구하는 각 $\\theta$의 크기는:\n$$\\theta = \\frac{2(1)\\pi}{3} = \\frac{2}{3}\\pi$$\n\n[오답 및 경계 점검]\n$n=0$이면 $\\theta=0$, $n=2$이면 $\\theta=\\frac{4}{3}\\pi$로 모두 $\\frac{\\pi}{2} < \\theta < \\pi$ 범위를 벗어나므로 오직 $n=1$일 때 $\\theta = \\frac{2}{3}\\pi$만이 유일한 해이다.\n\n[결론]\n$\\frac{2}{3}\\pi$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta\\cos\\theta < 0$과 $\\sin\\theta\\tan\\theta < 0$을 만족시키는 $\\theta$는 제몇 사분면의 각인지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제2사분면",
+    "solution": "[풀이 전략]\n사분면에 따른 삼각함수의 부호:\n- 제1사분면: all $(+)$\n- 제2사분면: $\\sin (+)$, $\\cos (-)$, $\\tan (-)$\n- 제3사분면: $\\tan (+)$, $\\sin (-)$, $\\cos (-)$\n- 제4사분면: $\\cos (+)$, $\\sin (-)$, $\\tan (-)$\n두 부등식의 조건을 각각 사분면으로 변환한 뒤 공통 영역을 찾는다.\n\n[단계별 풀이]\n1단계 [첫 번째 부등식 $\\sin\\theta\\cos\\theta < 0$ 해석]:\n$\\sin\\theta$와 $\\cos\\theta$의 부호가 서로 다르므로\n- $\\sin\\theta > 0, \\cos\\theta < 0 \\implies$ 제2사분면\n- $\\sin\\theta < 0, \\cos\\theta > 0 \\implies$ 제4사분면\n따라서 $\\theta$는 제2사분면 또는 제4사분면의 각이다.\n\n2단계 [두 번째 부등식 $\\sin\\theta\\tan\\theta < 0$ 해석]:\n$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$이므로\n$$\\sin\\theta\\tan\\theta = \\sin\\theta \\times \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{\\sin^2\\theta}{\\cos\\theta} < 0$$\n$\\sin\\theta \\ne 0$이므로 $\\sin^2\\theta > 0$이다. 따라서 분모인 $\\cos\\theta < 0$이어야 한다.\n$\\cos\\theta < 0$인 사분면은 제2사분면 또는 제3사분면이다.\n\n3단계 [공통 사분면 결정]:\n두 조건을 동시에 만족해야 하므로,\n(제2사분면 또는 제4사분면) $\\cap$ (제2사분면 또는 제3사분면) = 제2사분면.\n\n[오답 및 경계 점검]\n$\\sin\\theta\\tan\\theta < 0$에서 $\\sin\\theta$와 $\\tan\\theta$의 부호가 반대인 경우는 $\\sin\\theta>0, \\tan\\theta<0$ (제2사분면) 또는 $\\sin\\theta<0, \\tan\\theta>0$ (제3사분면)으로도 바로 파악할 수 있다.\n\n[결론]\n제2사분면"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\theta$가 제3사분면의 각이고 $\\tan\\theta = \\frac{3}{4}$일 때, $\\sin\\theta$와 $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta = -\\frac{3}{5}$, $\\cos\\theta = -\\frac{4}{5}$",
+    "solution": "[풀이 전략]\n삼각함수 사이의 관계식을 이용한다:\n- $1 + \\tan^2\\theta = \\frac{1}{\\cos^2\\theta}$\n- $\\sin\\theta = \\tan\\theta\\cos\\theta$\n$\\theta$가 제3사분면의 각이므로 $\\sin\\theta < 0, \\cos\\theta < 0$이다.\n\n[단계별 풀이]\n1단계 [$\\cos\\theta$의 값 계산]:\n$1 + \\tan^2\\theta = \\frac{1}{\\cos^2\\theta}$에서\n$$1 + \\left(\\frac{3}{4}\\right)^2 = 1 + \\frac{9}{16} = \\frac{25}{16} = \\frac{1}{\\cos^2\\theta} \\implies \\cos^2\\theta = \\frac{16}{25}$$\n$\\theta$가 제3사분면의 각이므로 $\\cos\\theta < 0$이다. 따라서\n$$\\cos\\theta = -\\frac{4}{5}$$\n\n2단계 [$\\sin\\theta$의 값 계산]:\n$$\\sin\\theta = \\tan\\theta \\times \\cos\\theta = \\frac{3}{4} \\times \\left(-\\frac{4}{5}\\right) = -\\frac{3}{5}$$\n\n[오답 및 경계 점검]\n$\\sin^2\\theta + \\cos^2\\theta = \\left(-\\frac{3}{5}\\right)^2 + \\left(-\\frac{4}{5}\\right)^2 = \\frac{9+16}{25} = 1$이 성립함을 확인한다. 제3사분면이므로 두 값 모두 반드시 음수여야 한다.\n\n[결론]\n$\\sin\\theta = -\\frac{3}{5}$, $\\cos\\theta = -\\frac{4}{5}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta + \\cos\\theta = \\frac{2}{3}$일 때, $\\sin^3\\theta + \\cos^3\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{23}{27}$",
+    "solution": "[풀이 전략]\n곱셈 공식의 변형과 삼각함수의 기본 항등식 $\\sin^2\\theta + \\cos^2\\theta = 1$을 결합한다:\n1. $(\\sin\\theta + \\cos\\theta)^2 = 1 + 2\\sin\\theta\\cos\\theta$를 통해 $\\sin\\theta\\cos\\theta$를 구한다.\n2. $\\sin^3\\theta + \\cos^3\\theta = (\\sin\\theta + \\cos\\theta)(\\sin^2\\theta - \\sin\\theta\\cos\\theta + \\cos^2\\theta) = (\\sin\\theta + \\cos\\theta)(1 - \\sin\\theta\\cos\\theta)$를 적용하여 값을 계산한다.\n\n[단계별 풀이]\n1단계 [$\\sin\\theta\\cos\\theta$의 값 구하기]:\n$\\sin\\theta + \\cos\\theta = \\frac{2}{3}$의 양변을 제곱하면:\n$$(\\sin\\theta + \\cos\\theta)^2 = \\sin^2\\theta + 2\\sin\\theta\\cos\\theta + \\cos^2\\theta = 1 + 2\\sin\\theta\\cos\\theta = \\frac{4}{9}$$\n$$2\\sin\\theta\\cos\\theta = \\frac{4}{9} - 1 = -\\frac{5}{9} \\implies \\sin\\theta\\cos\\theta = -\\frac{5}{18}$$\n\n2단계 [$\\sin^3\\theta + \\cos^3\\theta$ 계산]:\n인수분해 공식에 대입하면:\n$$\\begin{aligned}\n\\sin^3\\theta + \\cos^3\\theta &= (\\sin\\theta + \\cos\\theta)(\\sin^2\\theta - \\sin\\theta\\cos\\theta + \\cos^2\\theta) \\\\\n&= (\\sin\\theta + \\cos\\theta)(1 - \\sin\\theta\\cos\\theta) \\\\\n&= \\frac{2}{3} \\times \\left(1 - \\left(-\\frac{5}{18}\\right)\\right) \\\\\n&= \\frac{2}{3} \\times \\left(1 + \\frac{5}{18}\\right) \\\\\n&= \\frac{2}{3} \\times \\frac{23}{18} = \\frac{46}{54} = \\frac{23}{27}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n곱셈 공식 변형 $a^3+b^3 = (a+b)^3 - 3ab(a+b)$를 사용해도:\n$$\\left(\\frac{2}{3}\\right)^3 - 3\\left(-\\frac{5}{18}\\right)\\left(\\frac{2}{3}\\right) = \\frac{8}{27} + \\frac{5}{6} \\times \\frac{2}{3} = \\frac{8}{27} + \\frac{15}{27} = \\frac{23}{27}$$\n로 정확히 일치한다.\n\n[결론]\n$\\frac{23}{27}$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y=2\\sin\\left(x-\\frac{\\pi}{3}\\right)$\n⑵ $y=-\\cos\\left(6x+\\frac{\\pi}{2}\\right)+1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 주기: $2\\pi$, 최댓값: $2$, 최솟값: $-2$, ⑵ 주기: $\\frac{\\pi}{3}$, 최댓값: $2$, 최솟값: $0$",
+    "solution": "[풀이 전략]\n일반적인 삼각함수 $y = A\\sin(Bx-C)+D$ 또는 $y = A\\cos(Bx-C)+D$의 주기, 최댓값, 최솟값 공식:\n- 주기: $T = \\frac{2\\pi}{|B|}$\n- 최댓값: $M = |A| + D$\n- 최솟값: $m = -|A| + D$\n\n[단계별 풀이]\n1단계 [⑴ $y=2\\sin\\left(x-\\frac{\\pi}{3}\\right)$ 분석]:\n- $A = 2, B = 1, D = 0$\n- 주기: $T = \\frac{2\\pi}{|1|} = 2\\pi$\n- 최댓값: $M = |2| + 0 = 2$\n- 최솟값: $m = -|2| + 0 = -2$\n\n2단계 [⑵ $y=-\\cos\\left(6x+\\frac{\\pi}{2}\\right)+1$ 분석]:\n- $A = -1, B = 6, D = 1$\n- 주기: $T = \\frac{2\\pi}{|6|} = \\frac{2\\pi}{6} = \\frac{\\pi}{3}$\n- 최댓값: $M = |-1| + 1 = 1 + 1 = 2$\n- 최솟값: $m = -|-1| + 1 = -1 + 1 = 0$\n\n[오답 및 경계 점검]\n코사인 앞의 계수가 음수인 경우 최댓값은 $|A|+D$이므로 $+1+1=2$가 되며, 최솟값은 $-|A|+D = -1+1=0$이 된다. 주기는 $x$의 계수 $6$에 의해 $\\frac{2\\pi}{6}=\\frac{\\pi}{3}$로 줄어든다.\n\n[결론]\n⑴ 주기: $2\\pi$, 최댓값: $2$, 최솟값: $-2$, ⑵ 주기: $\\frac{\\pi}{3}$, 최댓값: $2$, 최솟값: $0$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=a\\cos(bx-c)$의 그래프가 다음 그림과 같을 때, 세 상수 $a,\\, b,\\, c$에 대하여 $abc$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a>0,\\, b>0,\\, 0<c<\\pi$)\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\pi$",
+    "solution": "[풀이 전략]\n주어진 그래프에서 진폭과 평행이동, 주기를 분석하여 상수 $a, b, c$를 순차적으로 결정한다:\n1. 최댓값과 최솟값으로부터 양수 $a$를 구한다.\n2. 최고점 사이의 거리를 통해 주기 $T$를 구하고, $b = \\frac{2\\pi}{T}$를 결정한다.\n3. 지나는 특정 점의 좌표를 대입하여 $0 < c < \\pi$ 범위의 상수 $c$를 확정한다.\n\n[단계별 풀이]\n1단계 [$a$의 값 구하기]:\n그래프에서 최댓값이 $2$, 최솟값이 $-2$이고 $a>0$이므로\n$$a = 2$$\n\n2단계 [$b$의 값 구하기]:\n그래프에서 최고점 $\\left(\\frac{\\pi}{2}, 2\\right)$에서 다음 최고점 $\\left(\\frac{5}{2}\\pi, 2\\right)$까지의 간격이 한 주기이므로:\n$$T = \\frac{5}{2}\\pi - \\frac{\\pi}{2} = 2\\pi$$\n$b>0$이므로 주기는 $\\frac{2\\pi}{b} = 2\\pi \\implies b = 1$이다.\n\n3단계 [$c$의 값 구하기]:\n함수식은 $y = 2\\cos(x-c)$이다.\n점 $\\left(\\frac{\\pi}{2}, 2\\right)$를 지나므로 대입하면:\n$$2\\cos\\left(\\frac{\\pi}{2}-c\\right) = 2 \\implies \\cos\\left(\\frac{\\pi}{2}-c\\right) = 1$$\n여기서 $\\cos\\left(\\frac{\\pi}{2}-c\\right) = \\sin c = 1$이다.\n$0 < c < \\pi$이므로 $c = \\frac{\\pi}{2}$이다.\n\n4단계 [$abc$의 값 계산]:\n$$abc = 2 \\times 1 \\times \\frac{\\pi}{2} = \\pi$$\n\n[오답 및 경계 점검]\n$c$의 범위 $0 < c < \\pi$를 만족하는지 확인한다. $c=\\frac{\\pi}{2}$일 때 $y = 2\\cos(x-\\frac{\\pi}{2}) = 2\\sin x$가 되어, $x=0$일 때 $y=0$, $x=\\frac{\\pi}{2}$일 때 $y=2$, $x=\\frac{3}{2}\\pi$일 때 $y=-2$로 그래프와 정확히 합치한다.\n\n[결론]\n$\\pi$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\tan\\theta = -\\frac{1}{3}$일 때, 다음 식의 값을 구하시오.\n$$\\frac{\\cos\\theta}{1+\\sin\\theta} + \\frac{\\cos(\\pi+\\theta)}{1+\\sin(\\pi+\\theta)}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{2}{3}$",
+    "solution": "[풀이 전략]\n각변환 공식을 적용하여 식을 단순화한다:\n- $\\cos(\\pi + \\theta) = -\\cos\\theta$\n- $\\sin(\\pi + \\theta) = -\\sin\\theta$\n식을 통분하여 삼각함수 사이의 관계식 $1-\\sin^2\\theta = \\cos^2\\theta$를 적용하면 탄젠트에 관한 식으로 정리된다.\n\n[단계별 풀이]\n1단계 [각변환 공식 적용]:\n주어진 식의 두 번째 항에 각변환을 적용하면:\n$$\\cos(\\pi+\\theta) = -\\cos\\theta,\\quad \\sin(\\pi+\\theta) = -\\sin\\theta$$\n따라서 준식은:\n$$\\frac{\\cos\\theta}{1+\\sin\\theta} + \\frac{-\\cos\\theta}{1-\\sin\\theta} = \\cos\\theta\\left(\\frac{1}{1+\\sin\\theta} - \\frac{1}{1-\\sin\\theta}\\right)$$\n\n2단계 [식의 통분 및 정리]:\n괄호 안을 통분하면:\n$$\\frac{1}{1+\\sin\\theta} - \\frac{1}{1-\\sin\\theta} = \\frac{(1-\\sin\\theta) - (1+\\sin\\theta)}{(1+\\sin\\theta)(1-\\sin\\theta)} = \\frac{-2\\sin\\theta}{1-\\sin^2\\theta}$$\n$1-\\sin^2\\theta = \\cos^2\\theta$이므로:\n$$\\cos\\theta \\times \\frac{-2\\sin\\theta}{\\cos^2\\theta} = \\frac{-2\\sin\\theta}{\\cos\\theta} = -2\\tan\\theta$$\n\n3단계 [$\\tan\\theta$의 값 대입]:\n$\\tan\\theta = -\\frac{1}{3}$이므로:\n$$-2\\tan\\theta = -2 \\times \\left(-\\frac{1}{3}\\right) = \\frac{2}{3}$$\n\n[오답 및 경계 점검]\n부호 실수가 잦은 부분이므로 통분 시 분자의 부호 변환($(1-\\sin\\theta) - (1+\\sin\\theta) = -2\\sin\\theta$)과 $-2\\tan\\theta$에 음수 값을 대입할 때 양수로 변하는 과정을 꼼꼼히 점검한다.\n\n[결론]\n$\\frac{2}{3}$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 \\le x < 2\\pi$일 때, 다음 방정식과 부등식을 푸시오.\n⑴ $\\tan\\frac{x}{2} - \\sqrt{3} = 0$\n⑵ $-\\frac{1}{2} < \\cos x \\le \\frac{\\sqrt{2}}{2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x = \\frac{2}{3}\\pi$, ⑵ $\\frac{\\pi}{4} \\le x < \\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi < x \\le \\frac{7}{4}\\pi$",
+    "solution": "[풀이 전략]\n삼각방정식과 삼각부등식 풀이:\n⑴ 각을 치환하여 $t = \\frac{x}{2}$로 두고 $t$의 범위를 구한 뒤 탄젠트의 특수각을 찾는다.\n⑵ 단위원 또는 코사인 함수의 그래프 $y=\\cos x$를 이용하여 주어진 두 경계값 사이의 $x$ 범위를 분할하여 도출한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\tan\\frac{x}{2} - \\sqrt{3} = 0$ 풀이]:\n- $\\tan\\frac{x}{2} = \\sqrt{3}$\n- $0 \\le x < 2\\pi$이므로 각 변을 $2$로 나누면 $0 \\le \\frac{x}{2} < \\pi$이다.\n- $0 \\le t < \\pi$에서 $\\tan t = \\sqrt{3}$을 만족하는 값은 $t = \\frac{\\pi}{3}$이다.\n- $\\frac{x}{2} = \\frac{\\pi}{3} \\implies x = \\frac{2}{3}\\pi$\n\n2단계 [⑵ $-\\frac{1}{2} < \\cos x \\le \\frac{\\sqrt{2}}{2}$ 풀이]:\n- $0 \\le x < 2\\pi$에서 $\\cos x = \\frac{\\sqrt{2}}{2}$인 해는 $x = \\frac{\\pi}{4}$ 또는 $x = \\frac{7}{4}\\pi$이다.\n- $\\cos x = -\\frac{1}{2}$인 해는 $x = \\frac{2}{3}\\pi$ 또는 $x = \\frac{4}{3}\\pi$이다.\n- $\\cos x \\le \\frac{\\sqrt{2}}{2}$를 만족하는 범위는 $\\frac{\\pi}{4} \\le x \\le \\frac{7}{4}\\pi$이다.\n- $\\cos x > -\\frac{1}{2}$를 만족하는 범위는 $0 \\le x < \\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi < x < 2\\pi$이다.\n- 두 부등식의 공통 범위를 구하면:\n$$\\frac{\\pi}{4} \\le x < \\frac{2}{3}\\pi\\quad \\text{또는}\\quad \\frac{4}{3}\\pi < x \\le \\frac{7}{4}\\pi$$\n\n[오답 및 경계 점검]\n등호 포함 여부를 반드시 확인해야 한다: $\\cos x \\le \\frac{\\sqrt{2}}{2}$는 등호 포함($\\le$), $\\cos x > -\\frac{1}{2}$는 등호 미포함($<$)이므로 최종 답안의 경계 표기에 각별히 유의한다.\n\n[결론]\n⑴ $x = \\frac{2}{3}\\pi$, ⑵ $\\frac{\\pi}{4} \\le x < \\frac{2}{3}\\pi$ 또는 $\\frac{4}{3}\\pi < x \\le \\frac{7}{4}\\pi$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "둘레의 길이가 $20$인 부채꼴 중에서 그 넓이가 최대인 부채꼴의 중심각의 크기를 호도법으로 나타내시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n부채꼴의 반지름의 길이를 $r$, 호의 길이를 $l$, 중심각의 크기를 $\\theta$라 하면:\n- 둘레의 길이: $2r + l = 20 \\implies l = 20 - 2r$ ($0 < r < 10$)\n- 넓이: $S = \\frac{1}{2}rl = \\frac{1}{2}r(20-2r) = 10r - r^2$\n$r$에 대한 이차함수의 최댓값을 구하고, 이때의 중심각 $\\theta = \\frac{l}{r}$을 계산한다.\n\n[단계별 풀이]\n1단계 [넓이 $S$의 이차함수 표준형 변형]:\n$$S = -r^2 + 10r = -(r-5)^2 + 25$$\n$0 < r < 10$이므로, $S$는 $r = 5$일 때 최댓값 $25$를 갖는다.\n\n2단계 [최대일 때의 호의 길이 $l$과 중심각 $\\theta$ 구하기]:\n$r = 5$일 때 호의 길이는\n$$l = 20 - 2(5) = 10$$\n따라서 구하는 부채꼴의 중심각의 크기 $\\theta$는:\n$$\\theta = \\frac{l}{r} = \\frac{10}{5} = 2$$\n\n[오답 및 경계 점검]\n둘레가 일정한 부채꼴의 넓이가 최대가 되는 중심각의 크기는 둘레의 값에 관계없이 항상 $\\theta = 2\\text{ rad}$가 성립한다는 일반적 수학 성질과 정확히 일치한다. 단위는 호도법이므로 $2$로 표기한다.\n\n[결론]\n$2$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 함수 $y=2\\sin\\frac{\\pi}{4}x$의 그래프와 $x$축으로 둘러싸인 부분에 직사각형 $\\mathrm{ABCD}$가 내접하고 있다. $\\overline{\\mathrm{BC}}=2$일 때, 직사각형 $\\mathrm{ABCD}$의 넓이를 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{2}$",
+    "solution": "[풀이 전략]\n함수 $y=2\\sin\\frac{\\pi}{4}x$의 주기성과 대칭성을 이용한다:\n1. 주기 $T = \\frac{2\\pi}{\\pi/4} = 8$이므로, $0 \\le x \\le 4$ 구간에서 사인 곡선은 $x = 2$에 대하여 선대칭이다.\n2. 직사각형의 밑변 $\\overline{\\mathrm{BC}}$가 $x$축 위에 내접하므로 두 점 $\\mathrm{B}, \\mathrm{C}$는 대칭축 $x=2$로부터 같은 거리만큼 떨어져 있다.\n3. 점 $\\mathrm{A}$의 $y$좌표를 구하여 직사각형의 세로 길이를 확정하고 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [주기와 대칭축 파악]:\n함수 $y=2\\sin\\frac{\\pi}{4}x$의 주기는\n$$T = \\frac{2\\pi}{\\frac{\\pi}{4}} = 8$$\n따라서 $x$축과 만나는 첫 번째 양의 볼록 구간은 $0 \\le x \\le 4$이며, 그 대칭축은 $x = 2$이다.\n\n2단계 [점 $\\mathrm{B}$와 $\\mathrm{C}$의 좌표 구하기]:\n선분 $\\mathrm{BC}$의 길이가 $2$이고 대칭축이 $x = 2$이므로:\n- 점 $\\mathrm{B}$의 $x$좌표: $2 - \\frac{2}{2} = 1$\n- 점 $\\mathrm{C}$의 $x$좌표: $2 + \\frac{2}{2} = 3$\n따라서 $\\mathrm{B}(1, 0), \\mathrm{C}(3, 0)$이다.\n\n3단계 [직사각형의 세로 $\\overline{\\mathrm{AB}}$ 및 넓이 계산]:\n점 $\\mathrm{A}$의 $x$좌표는 점 $\\mathrm{B}$와 같은 $x=1$이므로 $y$좌표는:\n$$y = 2\\sin\\left(\\frac{\\pi}{4} \\times 1\\right) = 2\\sin\\frac{\\pi}{4} = 2 \\times \\frac{\\sqrt{2}}{2} = \\sqrt{2}$$\n따라서 직사각형의 세로 길이는 $\\overline{\\mathrm{AB}} = \\sqrt{2}$이다.\n직사각형 $\\mathrm{ABCD}$의 넓이는:\n$$\\text{넓이} = \\overline{\\mathrm{BC}} \\times \\overline{\\mathrm{AB}} = 2 \\times \\sqrt{2} = 2\\sqrt{2}$$\n\n[오답 및 경계 점검]\n점 $\\mathrm{D}$의 좌표는 $(3, \\sqrt{2})$로 $x=3$을 대입하면 $2\\sin\\frac{3\\pi}{4} = 2\\times\\frac{\\sqrt{2}}{2} = \\sqrt{2}$가 되어 높이가 정확히 수평을 이룸을 확인할 수 있다.\n\n[결론]\n$2\\sqrt{2}$"
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\cos^2 x + \\sin x + 1$이 $x=a$에서 최댓값 $b$를 갖는다. 이때 $ab$의 값을 구하시오. (단, $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{3}{8}\\pi$",
+    "solution": "[풀이 전략]\n삼각함수의 항등식 $\\cos^2 x = 1 - \\sin^2 x$를 대입하여 $\\sin x$에 대한 이차함수 형태로 통일한다.\n$t = \\sin x$로 치환하고, 제한된 $x$의 범위 $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$에 따른 $t$의 범위를 설정한 후 이차함수의 최댓값과 그때의 $x$값을 구한다.\n\n[단계별 풀이]\n1단계 [$\\sin x$에 관한 이차함수로 정리]:\n$$y = \\cos^2 x + \\sin x + 1 = (1 - \\sin^2 x) + \\sin x + 1 = -\\sin^2 x + \\sin x + 2$$\n\n2단계 [치환 및 $t$의 범위 설정]:\n$\\sin x = t$로 치환하면, $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$에서 $t$의 범위는 $-1 \\le t \\le 1$이다.\n$$y = -t^2 + t + 2 = -\\left(t - \\frac{1}{2}\\right)^2 + \\frac{1}{4} + 2 = -\\left(t - \\frac{1}{2}\\right)^2 + \\frac{9}{4}$$\n\n3단계 [최댓값 $b$와 그때의 $x=a$ 구하기]:\n$t = \\frac{1}{2}$은 $-1 \\le t \\le 1$ 범위에 속하므로, $y$는 $t = \\frac{1}{2}$에서 최댓값 $b = \\frac{9}{4}$를 갖는다.\n$t = \\sin x = \\frac{1}{2}$에서 $-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}$이므로\n$$x = \\frac{\\pi}{6} \\implies a = \\frac{\\pi}{6}$$\n\n4단계 [$ab$의 값 계산]:\n$$ab = \\frac{\\pi}{6} \\times \\frac{9}{4} = \\frac{9\\pi}{24} = \\frac{3}{8}\\pi$$\n\n[오답 및 경계 점검]\n치환된 변수 $t$의 꼭짓점 위치($t=\\frac{1}{2}$)가 허용 범위 $[-1, 1]$ 안에 속하는지 반드시 확인해야 한다. 범위 내에 있으므로 꼭짓점에서 최댓값이 발생한다.\n\n[결론]\n$\\frac{3}{8}\\pi$"
   },
   {
     "id": 17,
@@ -458,9 +458,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -474,7 +474,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 부등식\n$$x^2 + 2\\sqrt{2}x\\cos\\theta - \\sin\\theta + 1 > 0$$\n이 성립하도록 하는 $\\theta$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오. (단, $0 \\le \\theta < 2\\pi$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{6}\\pi < \\theta < \\frac{11}{6}\\pi$",
+    "solution": "[풀이 전략]\n모든 실수 $x$에 대하여 이차부등식 $Ax^2 + Bx + C > 0$ ($A>0$)이 항상 성립할 필요충분조건은 판별식 $D < 0$이다.\n판별식을 $\\theta$에 관한 삼각부등식으로 정리하고, $\\cos^2\\theta = 1 - \\sin^2\\theta$를 대입하여 $\\sin\\theta$에 관한 부등식으로 변환한 뒤 $0 \\le \\theta < 2\\pi$에서 $\\theta$의 범위를 구한다.\n\n[단계별 풀이]\n1단계 [항상 성립할 판별식 조건 수립]:\n$x^2 + 2\\sqrt{2}x\\cos\\theta - \\sin\\theta + 1 > 0$의 최고차항 계수는 $1 > 0$이므로, 모든 실수 $x$에 대하여 항상 양수이려면 이차방정식의 판별식 $D/4 < 0$이어야 한다:\n$$\\frac{D}{4} = (\\sqrt{2}\\cos\\theta)^2 - 1 \\times (-\\sin\\theta + 1) < 0$$\n$$2\\cos^2\\theta + \\sin\\theta - 1 < 0$$\n\n2단계 [$\\sin\\theta$에 대한 부등식으로 변환]:\n$\\cos^2\\theta = 1 - \\sin^2\\theta$이므로 대입하면:\n$$2(1 - \\sin^2\\theta) + \\sin\\theta - 1 < 0$$\n$$2 - 2\\sin^2\\theta + \\sin\\theta - 1 < 0$$\n$$-2\\sin^2\\theta + \\sin\\theta + 1 < 0$$\n양변에 $-1$을 곱하면 부등호 방향이 바뀐다:\n$$2\\sin^2\\theta - \\sin\\theta - 1 > 0$$\n$$(2\\sin\\theta + 1)(\\sin\\theta - 1) > 0$$\n\n3단계 [삼각부등식의 해 도출]:\n부등식의 해는\n$$\\sin\\theta < -\\frac{1}{2}\\quad \\text{또는}\\quad \\sin\\theta > 1$$\n그런데 모든 실수 $\\theta$에 대하여 $\\sin\\theta \\le 1$이므로 $\\sin\\theta > 1$을 만족하는 $\\theta$는 존재하지 않는다.\n따라서\n$$\\sin\\theta < -\\frac{1}{2}$$\n\n4단계 [$0 \\le \\theta < 2\\pi$ 범위에서 $\\theta$의 범위 확정]:\n단위원 또는 사인 곡선 $y=\\sin\\theta$에서 $\\sin\\theta = -\\frac{1}{2}$인 각은 $\\theta = \\frac{7}{6}\\pi$ 또는 $\\theta = \\frac{11}{6}\\pi$이다.\n따라서 $\\sin\\theta < -\\frac{1}{2}$를 만족하는 $\\theta$의 범위는:\n$$\\frac{7}{6}\\pi < \\theta < \\frac{11}{6}\\pi$$\n\n[오답 및 경계 점검]\n부등호에 등호가 포함되어 있지 않으므로 경계값 $\\frac{7}{6}\\pi, \\frac{11}{6}\\pi$는 범위에서 제외된다. $\\sin\\theta > 1$은 실근이 존재하지 않으므로 과감히 소거해야 한다.\n\n[결론]\n$\\frac{7}{6}\\pi < \\theta < \\frac{11}{6}\\pi$"
   }
 ];
