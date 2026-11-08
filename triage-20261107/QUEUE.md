@@ -1,5 +1,5 @@
 # SVG 작업 대기열
-RENDERING 22-gangnam-girls
+READY_FOR_REVIEW codex/svg-review-22-gangnam-girls-20261108 23a03ac747edb5c94c829cbb991be90cd6269fe4
 
 마지막 ROOT 기록: 2026-11-07 15:19 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
 
