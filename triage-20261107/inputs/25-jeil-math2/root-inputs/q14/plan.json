@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "곡선 $y=9-x^2$과 $y$축",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "9-x^2",
+    "referenceLines": [
+      {
+        "id": "g",
+        "intersectionX": [
+          "-sqrt(3)",
+          "sqrt(3)"
+        ],
+        "y": "6"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "g",
+        "from": "0",
+        "to": "sqrt(3)",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "g",
+        "lower": "f",
+        "from": "sqrt(3)",
+        "to": "3",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "right",
+          "x": "3"
+        }
+      ]
+    }
+  },
+  "caption": "포물선과 수평선 사이 두 영역의 넓이 관계를 나타낸다."
+}
