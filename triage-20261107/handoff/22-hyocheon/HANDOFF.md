@@ -4,7 +4,7 @@
 - 원본 JS Git blob (latest main): `193acbc5bb7eea4a61e5369aa926201300b02ce3`
 - 시작점: `origin/main` `c380fe2eb7d7e958ed504b263f29726a106c244e`
 - 브랜치: `codex/svg-review-22-hyocheon-handoff-20261108`
-- 입력·triage 기준: `codex/svg-triage-20261107` HEAD `51b75ac0ef372d32a633b1e886ff9a71a85beecd`, QUEUE blob `8cf9ba6a2de98d2577c445539d20f2cc9a890baa`
+- 입력·triage 기준: `codex/svg-triage-20261107` HEAD `15d0fb3f7cd39f50b45ae2f7ad2118cd434b9294`, QUEUE blob `8cf9ba6a2de98d2577c445539d20f2cc9a890baa`
 - 핸드오프 콘텐츠 커밋 SHA: `c55bb4d7046b7084ff37b97df1d2f08860cbf124`
 
 상태표의 렌더 횟수는 이번 후보 attempt 기준이다. `UNKNOWN`은 기존 이력을 재구성하지 않았다는 뜻이다. 이 브랜치는 `triage-20261107/handoff/22-hyocheon/`만 포함하고, 원본 JS·`archive/assets/`·대기열 상태는 변경하지 않는다. PNG·로그·캡처는 넣지 않았다.
