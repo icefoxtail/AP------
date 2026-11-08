@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프와 두 임계점.",
+    "solutionImageCaption": "도함수는 -1과 1 사이에서 양수이므로 f는 그 구간에서 증가한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -55,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 점을 지나는 삼차함수 f의 그래프.",
+    "solutionImageCaption": "도함수를 적분해 f를 구하고 f(2)=6으로 상수를 정하면 f(-1)은 -9이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -83,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: x≥0에서 h(x)-8로 둔 함수 g와 두 임계점.",
+    "solutionImageCaption": "g(x)=h(x)-8의 그래프로 h의 최솟값이 8임을 확인한다. 따라서 a의 최댓값은 8이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 포물선과 x축 사이의 아래쪽 영역.",
+    "solutionImageCaption": "예: a=4로 두 근 사이의 아래쪽 영역을 나타냈다. 일반적인 넓이는 (a-1)³/6이므로 조건으로 a를 구한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -204,7 +220,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수와 역함수, y=x, 높이 6인 경계와 두 영역.",
+    "solutionImageCaption": "f와 역함수 g의 그래프는 y=x에 대칭이다. 두 적분 영역의 합은 직사각형의 넓이와 같아 12이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -260,7 +280,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 삼차함수의 두 임계점과 열린구간의 경계.",
+    "solutionImageCaption": "예: a=2인 경우 두 임계점이 모두 열린구간 안에 있다. 일반 조건은 임계점 두 개가 서로 다르고 구간 안에 놓이는 것이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -325,7 +349,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간에서 삼차함수 h의 끝점과 내부 최솟점.",
+    "solutionImageCaption": "x=au로 바꾸면 [-1,1]에서 h(u)의 최솟값을 비교할 수 있다. 최솟값을 대입하면 a는 2이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -381,7 +409,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 대칭인 예시 홀함수의 그래프.",
+    "solutionImageCaption": "예: 조건을 만족하는 홀함수의 한 예다. 홀함수의 대칭 구간 적분을 이용하면 구하는 값은 54이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -474,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 삼차함수 f가 x축을 통과하는 근과 접하는 근.",
+    "solutionImageCaption": "예: a=16일 때 중근에서는 f의 부호가 바뀌지 않고 단근에서는 바뀐다. 따라서 F의 극값 개수는 f의 부호 변화로 판단한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -526,7 +562,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 절댓값 함수 g의 두 극댓점.",
+    "solutionImageCaption": "예: k=0일 때 두 극댓값의 차를 살펴본다. 일반적으로 극댓값의 차 조건과 k의 범위를 함께 만족하는 정수는 10개다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -582,7 +622,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 f′를 g로 나타낸 이차 그래프와 x=1에서 높이 4인 점.",
+    "solutionImageCaption": "그림의 g(x)는 도함수 f′(x)=2x²−3x+5이다. g(1)=f′(1)=4이고 두 차분 몫의 계수 합은 −5이므로 극한은 −20이다. 정답은 −20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -603,9 +647,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{1}{4}$",
     "solution": "[키포인트] 절댓값 안의 식이 바뀌는 $x=\\frac12$에서 구간을 나누고, 위 함수에서 아래 함수를 빼 넓이를 적분한다.\n두 그래프의 교점은 $2x|x-\\frac12|=x$에서 $x=0,1$이고, $0\\le x\\le1$에서는 직선 $y=x$가 위에 있다.\n$0\\le x\\le\\frac12$에서 곡선은 $y=x-2x^2$이므로 두 그래프의 차는 $2x^2$이다.\n$\\frac12\\le x\\le1$에서 곡선은 $y=2x^2-x$이므로 두 그래프의 차는 $2x-2x^2$이다.\n따라서 넓이는 $\\int_0^{1/2}2x^2\\,dx+\\int_{1/2}^1(2x-2x^2)\\,dx=\\frac1{12}+\\frac16=\\frac14$이다.\n그러므로 구하는 넓이는 $\\frac14$이다.",
-    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "y=x와 y=2x|x-1/2| 사이의 영역을 x=1/2에서 나눈 해설 그래프",
-    "solutionImageCaption": "두 교점은 x=0,1이고 x=1/2에서 절댓값 식을 나누어 넓이를 적분한다.",
+    "solutionImage": "assets/images/23_팔마고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=x와 절댓값 곡선 사이의 두 영역 및 꺾임점.",
+    "solutionImageCaption": "곡선을 f(x)=2x|x−1/2|라 하자. x=1/2를 경계로 적분 구간을 나누어 직선과 곡선의 차를 적분한다. 넓이는 1/4이다. 정답은 1/4이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",

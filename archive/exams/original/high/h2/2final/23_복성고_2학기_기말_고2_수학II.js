@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수의 그래프와 초기 함수값을 나타낸 점.",
+    "solutionImageCaption": "부정적분으로 함수식을 구하고 초기 함수값으로 적분상수를 정한 뒤, 입력에 따른 함수의 변화를 살핀다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -111,7 +115,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 x축 사이에서 -2부터 2까지 이어지는 영역.",
+    "solutionImageCaption": "두 번째 적분의 방향을 바꾸면 x=1을 기준으로 구간을 이어 포물선과 x축 사이의 양의 넓이를 합한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -139,7 +147,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 삼차함수의 극대점과 극소점.",
+    "solutionImageCaption": "예: a=0인 그래프에서 극댓값이 나타나는 x좌표를 확인한다. 상수항 a를 더하면 그래프가 수직으로 이동하고 극댓값도 같은 만큼 변한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -167,7 +179,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: P와 Q의 속도 곡선과 두 부호 영역.",
+    "solutionImageCaption": "가로축은 시각 t, 세로축은 속도다. vP(t)와 vQ(t)는 각각 P와 Q의 속도를 나타내며, 속도 차의 부호 있는 넓이가 0이면 두 점의 위치가 같다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -195,7 +211,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수와 x축 사이에서 x축 위쪽과 아래쪽에 놓인 두 영역.",
+    "solutionImageCaption": "x축과 만나는 곳에서 구간을 나눈다. x축 아래쪽의 정적분은 부호를 바꾸어 두 영역의 넓이를 더한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -251,7 +271,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 함수값에 해당하는 점을 표시한 삼차함수 그래프.",
+    "solutionImageCaption": "적분으로 정의한 함수의 순간변화율은 원래 함수의 함숫값이다. 그림의 x=2 점이 그 값에 대응한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -461,9 +485,10 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "절댓값 함수와 포물선의 교점 x=-2, 1 및 두 그래프 사이 영역을 표시한 해설 그래프",
-    "solutionImageCaption": "교점 -2와 1 사이의 두 그래프 차를 구간별로 적분한다."
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 함수와 포물선, 두 교점과 절댓값 함수의 꺾임점 사이의 영역.",
+    "solutionImageCaption": "두 그래프의 교점은 x=-2와 x=1이고 절댓값 함수는 x=-1에서 식이 바뀐다. 꺾임점을 기준으로 위쪽 함수와 아래쪽 함수의 차를 적분해 넓이를 합한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -571,7 +596,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 두 직선 조각과 x축 위아래에 나뉜 세 영역.",
+    "solutionImageCaption": "그림의 g(x)는 원래 함수 f의 도함수다. x=1에서 식이 바뀌며, 부호 있는 넓이의 합이 양 끝점 함수값의 차를 나타낸다. 정답은 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -595,7 +624,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 입력값 2에서 함수 출력의 위치를 표시한 포물선.",
+    "solutionImageCaption": "항등식을 미분해 계수를 비교하여 함수를 정하고, 그래프에서 입력값 2의 출력 위치를 본다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
