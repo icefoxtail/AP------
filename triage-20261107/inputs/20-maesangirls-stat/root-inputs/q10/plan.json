@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "30",
+        "sd": "1.2",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "30",
+      "32.4"
+    ],
+    "shades": [
+      {
+        "from": "32.4",
+        "to": null
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "평균 30인 분포에서 문제의 경계와 음영 영역의 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 30인 분포에서 문제의 경계와 음영 영역의 관계",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "$32.4\\mathrm{kg}$ 이상",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 30인 분포에서 문제의 경계와 음영 영역의 관계"
+  ]
+}
