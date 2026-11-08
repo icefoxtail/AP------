@@ -10,8 +10,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -32,8 +32,8 @@ window.questionBank = [
       "$\\frac{\\sqrt[3]{9}}{\\sqrt[6]{27}} = \\sqrt[6]{3}$",
       "$\\left(\\sqrt[3]{7} \\times \\frac{1}{\\sqrt[4]{7}}\\right)^{12} = \\frac{1}{7}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[풀이 전략]\n거듭제곱근의 기본 성질을 하나씩 적용하여 각 선지의 참, 거짓을 판정한다:\n- $\\sqrt[n]{a} \\times \\sqrt[n]{b} = \\sqrt[n]{ab}$ ($a>0, b>0$)\n- $\\sqrt[m]{\\sqrt[n]{a}} = \\sqrt[mn]{a}$\n- 지수법칙 $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$\n\n[단계별 풀이]\n1단계 [선지 ① 검토]:\n$$\\sqrt{(-2)^2} = \\sqrt{4} = 2 \\ne -2$$\n따라서 거짓이다. (근호 안의 제곱은 항상 양의 제곱근으로 계산된다: $\\sqrt{a^2} = |a|$)\n\n2단계 [선지 ② 검토]:\n$$\\sqrt[3]{\\sqrt[4]{8}} = \\sqrt[3 \\times 4]{8} = \\sqrt[12]{2^3} = 2^{\\frac{3}{12}} = 2^{\\frac{1}{4}} = \\sqrt[4]{2} \\ne \\sqrt[12]{2}$$\n따라서 거짓이다.\n\n3단계 [선지 ③ 검토]:\n$$\\sqrt[3]{3} \\times \\sqrt{3} = 3^{\\frac{1}{3}} \\times 3^{\\frac{1}{2}} = 3^{\\frac{1}{3} + \\frac{1}{2}} = 3^{\\frac{5}{6}} = \\sqrt[6]{3^5} = \\sqrt[6]{243} \\ne \\sqrt[6]{3}$$\n따라서 거짓이다.\n\n4단계 [선지 ④ 검토]:\n$$\\frac{\\sqrt[3]{9}}{\\sqrt[6]{27}} = \\frac{\\sqrt[3]{3^2}}{\\sqrt[6]{3^3}} = \\frac{3^{\\frac{2}{3}}}{3^{\\frac{3}{6}}} = \\frac{3^{\\frac{2}{3}}}{3^{\\frac{1}{2}}} = 3^{\\frac{2}{3} - \\frac{1}{2}} = 3^{\\frac{4-3}{6}} = 3^{\\frac{1}{6}} = \\sqrt[6]{3}$$\n따라서 참이다.\n\n5단계 [선지 ⑤ 검토]:\n$$\\left(\\sqrt[3]{7} \\times \\frac{1}{\\sqrt[4]{7}}\\right)^{12} = \\left(7^{\\frac{1}{3}} \\times 7^{-\\frac{1}{4}}\\right)^{12} = (7^{\\frac{1}{3}})^{12} \\times (7^{-\\frac{1}{4}})^{12} = 7^4 \\times 7^{-3} = 7^{4-3} = 7^1 = 7 \\ne \\frac{1}{7}$$\n따라서 거짓이다.\n\n[오답 및 경계 점검]\n지수와 거듭제곱근의 변환 시 분수 지수의 분모가 거듭제곱근의 차수($n$)임을 정확히 확인한다.\n\n[결론]\n④"
   },
   {
     "id": 2,
@@ -44,8 +44,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\left(\\frac{1}{64}\\right)^{\\frac{1}{n}}$이 자연수가 되도록 하는 정수 $n$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1, -2, -3, -6$",
+    "solution": "[풀이 전략]\n주어진 식 $\\left(\\frac{1}{64}\\right)^{\\frac{1}{n}}$을 밑이 소수인 거듭제곱으로 나타낸다:\n$$\\frac{1}{64} = 64^{-1} = (2^6)^{-1} = 2^{-6}$$\n$$\\left(\\frac{1}{64}\\right)^{\\frac{1}{n}} = (2^{-6})^{\\frac{1}{n}} = 2^{-\\frac{6}{n}}$$\n$2^{-\\frac{6}{n}}$이 자연수가 되려면, 지수 $-\\frac{6}{n}$이 $0$ 이상의 정수가 되어야 한다.\n\n[단계별 풀이]\n1단계 [주어진 수를 밑이 $2$인 지수 꼴로 변형]:\n$$\\left(\\frac{1}{64}\\right)^{\\frac{1}{n}} = 2^{-\\frac{6}{n}}$$\n\n2단계 [자연수가 되기 위한 조건 도출]:\n밑이 $2$인 거듭제곱 $2^k$가 자연수가 되려면 지수 $k$는 $0$ 이상의 정수이어야 한다:\n$$-\\frac{6}{n} \\in \\{0, 1, 2, 3, 4, \\dots\\}$$\n그런데 분자가 $-6(\\ne 0)$이므로 $-\\frac{6}{n}$은 $0$이 될 수 없다.\n따라서 $-\\frac{6}{n}$은 **양의 정수**(자연수)여야 한다:\n$$-\\frac{6}{n} = m \\quad (m\\text{은 자연수})$$\n\n3단계 [정수 $n$의 값 결정]:\n$-\\frac{6}{n}$이 양의 정수가 되려면:\n1) $n$은 음의 정수여야 한다 ($n < 0$).\n2) $|n|$은 $6$의 양의 약수여야 한다 ($|n| \\in \\{1, 2, 3, 6\\}$).\n따라서 가능한 정수 $n$의 값은\n$$n = -1, -2, -3, -6$$\n이다.\n- $n=-1 \\implies 2^6 = 64$ (자연수)\n- $n=-2 \\implies 2^3 = 8$ (자연수)\n- $n=-3 \\implies 2^2 = 4$ (자연수)\n- $n=-6 \\implies 2^1 = 2$ (자연수)\n\n[오답 및 경계 점검]\n$n$이 양의 정수이면 지수가 음수가 되어 $2^{-\\frac{6}{n}} = \\frac{1}{2^{6/n}}$ 꼴의 분수가 되므로 자연수가 될 수 없다. 음의 부호를 반드시 챙겨야 한다.\n\n[결론]\n$-1, -2, -3, -6$"
   },
   {
     "id": 3,
@@ -72,8 +72,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "$9^a + 9^{-a} = 7$일 때, $\\frac{3^{3a} + 3^{-3a}}{3^a + 3^{-a}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n$9^a + 9^{-a} = (3^a)^2 + (3^{-a})^2$이므로 곱셈공식의 변형을 이용하여 $3^a + 3^{-a}$의 값을 먼저 구한다.\n그 후 세제곱의 곱셈공식 $x^3 + y^3 = (x+y)^3 - 3xy(x+y)$ 또는 인수분해 공식 $x^3 + y^3 = (x+y)(x^2 - xy + y^2)$를 적용하여 분수를 계산한다.\n\n[단계별 풀이]\n1단계 [$3^a + 3^{-a}$의 값 구하기]:\n$$(3^a + 3^{-a})^2 = (3^a)^2 + 2 \\times 3^a \\times 3^{-a} + (3^{-a})^2 = 9^a + 2 + 9^{-a}$$\n$9^a + 9^{-a} = 7$이므로\n$$(3^a + 3^{-a})^2 = 7 + 2 = 9$$\n$3^a > 0, 3^{-a} > 0$이므로 $3^a + 3^{-a} > 0$이다.\n$$3^a + 3^{-a} = 3$$\n\n2단계 [인수분해 공식을 이용한 식의 계산]:\n$x = 3^a, y = 3^{-a}$라 하면\n$$x^3 + y^3 = (x + y)(x^2 - xy + y^2)$$\n주어진 분수식에 대입하면\n$$\\frac{3^{3a} + 3^{-3a}}{3^a + 3^{-a}} = \\frac{(3^a + 3^{-a})(9^a - 1 + 9^{-a})}{3^a + 3^{-a}} = 9^a + 9^{-a} - 1$$\n$9^a + 9^{-a} = 7$이므로\n$$= 7 - 1 = 6$$\n\n3단계 [(별해) 세제곱 곱셈공식 변형을 이용한 계산]:\n$$3^{3a} + 3^{-3a} = (3^a + 3^{-a})^3 - 3(3^a + 3^{-a}) = 3^3 - 3 \\times 3 = 27 - 9 = 18$$\n따라서\n$$\\frac{3^{3a} + 3^{-3a}}{3^a + 3^{-a}} = \\frac{18}{3} = 6$$\n\n[오답 및 경계 점검]\n인수분해 공식을 활용하면 $3^a + 3^{-a}$가 약분되어 바로 $9^a + 9^{-a} - 1 = 7 - 1 = 6$으로 매우 빠르고 정확하게 풀 수 있다.\n\n[결론]\n$6$"
   },
   {
     "id": 4,
@@ -100,8 +100,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$의 값에 관계없이 로그가 정의될 수 있는 것을 보기에서 모두 고르시오.\n\n[보기]\nㄱ. $\\log_{a^2-a+2} (a^2+1)$\nㄴ. $\\log_{2|a|+1} (a^2+1)$\nㄷ. $\\log_{a^2+2} (a^2-2a+1)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ",
+    "solution": "[풀이 전략]\n로그 $\\log_A B$가 실수 $a$의 값에 관계없이 항상 정의되려면, 모든 실수 $a$에 대하여\n1) 밑 조건: $A > 0$이고 $A \\ne 1$\n2) 진수 조건: $B > 0$\n이 항상 성립해야 한다. 각 보기를 반례 또는 완전제곱식을 통해 판정한다.\n\n[단계별 풀이]\n1단계 [보기 ㄱ: $\\log_{a^2-a+2} (a^2+1)$ 검토]:\n- 밑: $A = a^2 - a + 2 = \\left(a - \\frac{1}{2}\\right)^2 + \\frac{7}{4}$\n  모든 실수 $a$에 대하여 $\\left(a - \\frac{1}{2}\\right)^2 \\ge 0$이므로\n  $A \\ge \\frac{7}{4} > 1$이다.\n  따라서 $A > 0$이고 $A \\ne 1$이 항상 성립한다.\n- 진수: $B = a^2 + 1 \\ge 1 > 0$이므로 모든 실수 $a$에 대하여 항상 양수이다.\n따라서 보기 ㄱ은 모든 실수 $a$에 대하여 항상 정의된다. (참)\n\n2단계 [보기 ㄴ: $\\log_{2|a|+1} (a^2+1)$ 검토]:\n- 밑: $A = 2|a| + 1$\n  $a = 0$일 때 $A = 2(0) + 1 = 1$이 되어 밑이 $1$이 된다.\n  밑은 $1$이 될 수 없으므로 $a=0$일 때 로그가 정의되지 않는다.\n따라서 보기 ㄴ은 거짓이다.\n\n3단계 [보기 ㄷ: $\\log_{a^2+2} (a^2-2a+1)$ 검토]:\n- 진수: $B = a^2 - 2a + 1 = (a - 1)^2$\n  $a = 1$일 때 $B = (1 - 1)^2 = 0$이 되어 진수가 $0$이 된다.\n  진수는 반드시 $0$보다 커야 하므로 $a=1$일 때 로그가 정의되지 않는다.\n따라서 보기 ㄷ은 거짓이다.\n\n[오답 및 경계 점검]\n- 밑 조건에서 $A \\ne 1$이어야 함을 반드시 체크해야 한다 (ㄴ에서 $a=0$일 때 위배).\n- 진수 조건에서 $B > 0$이어야 하므로 $0$이 되는 순간이 있는지를 반드시 체크해야 한다 (ㄷ에서 $a=1$일 때 위배).\n\n[결론]\nㄱ"
   },
   {
     "id": 5,
@@ -128,8 +128,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a^2 = b^3 = c^6$을 만족시키는 $1$이 아닌 세 양수 $a, b, c$에 대하여 $\\log_a b + \\log_b c + \\log_c ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{37}{6}$",
+    "solution": "[풀이 전략]\n$a^2 = b^3 = c^6 = k$ ($k>0, k\\ne 1$)로 두고 각 변수 $a, b, c$를 $k$의 거듭제곱으로 나타낸다:\n$$a = k^{\\frac{1}{2}}, \\quad b = k^{\\frac{1}{3}}, \\quad c = k^{\\frac{1}{6}}$$\n각각의 로그에 대입하여 $\\log_{k^m} k^n = \\frac{n}{m}$ 성질을 이용해 수치로 환산하여 합을 구한다.\n\n[단계별 풀이]\n1단계 [$a, b, c$를 $k$로 표현하기]:\n$a^2 = b^3 = c^6 = k$라 하면 $a, b, c$가 $1$이 아닌 양수이므로 $k>0, k\\ne 1$이다.\n$$a = k^{\\frac{1}{2}}, \\quad b = k^{\\frac{1}{3}}, \\quad c = k^{\\frac{1}{6}}$$\n\n2단계 [각 로그의 값 계산]:\n1) $\\log_a b$:\n$$\\log_a b = \\log_{k^{\\frac{1}{2}}} k^{\\frac{1}{3}} = \\frac{\\frac{1}{3}}{\\frac{1}{2}} = \\frac{2}{3}$$\n2) $\\log_b c$:\n$$\\log_b c = \\log_{k^{\\frac{1}{3}}} k^{\\frac{1}{6}} = \\frac{\\frac{1}{6}}{\\frac{1}{3}} = \\frac{3}{6} = \\frac{1}{2}$$\n3) $\\log_c ab$:\n$$ab = k^{\\frac{1}{2}} \\times k^{\\frac{1}{3}} = k^{\\frac{1}{2} + \\frac{1}{3}} = k^{\\frac{5}{6}}$$\n$$\\log_c ab = \\log_{k^{\\frac{1}{6}}} k^{\\frac{5}{6}} = \\frac{\\frac{5}{6}}{\\frac{1}{6}} = 5$$\n\n3단계 [세 값의 합 구하기]:\n$$\\log_a b + \\log_b c + \\log_c ab = \\frac{2}{3} + \\frac{1}{2} + 5$$\n분모를 $6$으로 통분하여 계산한다:\n$$= \\frac{4}{6} + \\frac{3}{6} + \\frac{30}{6} = \\frac{4 + 3 + 30}{6} = \\frac{37}{6}$$\n\n[오답 및 경계 점검]\n$\\log_c ab = \\log_c a + \\log_c b = \\frac{1/2}{1/6} + \\frac{1/3}{1/6} = 3 + 2 = 5$로 나누어 계산해도 결과가 완벽히 일치한다.\n\n[결론]\n$\\frac{37}{6}$"
   },
   {
     "id": 6,
@@ -156,8 +156,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -178,8 +178,8 @@ window.questionBank = [
       "$a + \\frac{1}{b}$",
       "$3a + \\frac{1}{b}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n주어진 조건 $\\log_2 5 = a$로부터 밑변환 공식을 이용하여 밑이 $5$인 로그로 변환한다:\n$$\\log_5 2 = \\frac{1}{\\log_2 5} = \\frac{1}{a}$$\n여기에 $\\log_5 3 = b$를 결합하고, $24$를 소인수분해($24 = 2^3 \\times 3$)하여 $\\log_5 24$를 $a, b$의 식으로 표현한다.\n\n[단계별 풀이]\n1단계 [$\\log_5 2$의 값 구하기]:\n역수 공식에 의해\n$$\\log_5 2 = \\frac{1}{\\log_2 5} = \\frac{1}{a}$$\n\n2단계 [$\\log_5 24$를 분해하기]:\n$24 = 2^3 \\times 3$이므로\n$$\\log_5 24 = \\log_5 (2^3 \\times 3) = \\log_5 2^3 + \\log_5 3 = 3\\log_5 2 + \\log_5 3$$\n\n3단계 [$a$와 $b$ 대입하기]:\n$\\log_5 2 = \\frac{1}{a}$, $\\log_5 3 = b$를 대입하면\n$$\\log_5 24 = 3 \\times \\frac{1}{a} + b = \\frac{3}{a} + b$$\n이는 선지 ②에 해당한다.\n\n[오답 및 경계 점검]\n선지 중 $\\frac{3}{a} + b$를 정확히 고른다 (선지 번호: ②).\n\n[결론]\n②"
   },
   {
     "id": 7,
@@ -190,8 +190,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2 - 4x + 2 = 0$의 두 근이 $\\log a$와 $\\log b$일 때, $\\log_a b + \\log_b a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n이차방정식 $x^2 - 4x + 2 = 0$의 두 근이 $\\log a, \\log b$이므로 근과 계수의 관계를 적용한다:\n$$\\log a + \\log b = 4, \\quad \\log a \\times \\log b = 2$$\n구하고자 하는 식 $\\log_a b + \\log_b a$에 상용로그로의 밑변환 공식을 적용한 뒤 곱셈공식 변형으로 계산한다.\n\n[단계별 풀이]\n1단계 [근과 계수의 관계 적용]:\n이차방정식 $x^2 - 4x + 2 = 0$에서\n$$\\log a + \\log b = 4$$\n$$\\log a \\log b = 2$$\n\n2단계 [밑변환 공식 적용]:\n$$\\log_a b + \\log_b a = \\frac{\\log b}{\\log a} + \\frac{\\log a}{\\log b}$$\n분모를 통분하면\n$$= \\frac{(\\log b)^2 + (\\log a)^2}{\\log a \\log b} = \\frac{(\\log a)^2 + (\\log b)^2}{\\log a \\log b}$$\n\n3단계 [곱셈공식 변형으로 분자 계산]:\n$$(\\log a)^2 + (\\log b)^2 = (\\log a + \\log b)^2 - 2\\log a \\log b$$\n여기에 $\\log a + \\log b = 4, \\log a \\log b = 2$를 대입하면\n$$= 4^2 - 2 \\times 2 = 16 - 4 = 12$$\n\n4단계 [최종 값 계산]:\n$$\\frac{(\\log a)^2 + (\\log b)^2}{\\log a \\log b} = \\frac{12}{2} = 6$$\n\n[오답 및 경계 점검]\n두 근의 합 $4 > 0$, 두 근의 곱 $2 > 0$이고 판별식 $D/4 = 4 - 2 = 2 > 0$이므로 서로 다른 두 양의 실근이 존재하여 모든 조건이 정상적으로 성립한다.\n\n[결론]\n$6$"
   },
   {
     "id": 8,
@@ -218,8 +218,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "지수함수 $f(x)=a^x$이 $2f(-1) + f(1) = 3$을 만족시킬 때, $f(-2) + f(2)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{17}{4}$",
+    "solution": "[풀이 전략]\n지수함수 $f(x)=a^x$ ($a>0, a\\ne 1$)에 대하여 주어진 관계식 $2f(-1) + f(1) = 3$을 $a$에 관한 방정식으로 변환하여 $a$의 값을 구한다.\n구한 $a$를 바탕으로 $f(-2) + f(2) = a^{-2} + a^2$를 계산한다.\n\n[단계별 풀이]\n1단계 [주어진 조건식을 $a$에 대한 방정식으로 세우기]:\n$f(-1) = a^{-1} = \\frac{1}{a}$, $f(1) = a^1 = a$이므로\n$$2f(-1) + f(1) = 2 \\times \\frac{1}{a} + a = \\frac{2}{a} + a = 3$$\n\n2단계 [이차방정식 풀기]:\n양변에 $a$를 곱하여 정리하면 ($a > 0$):\n$$2 + a^2 = 3a \\implies a^2 - 3a + 2 = 0$$\n$$(a - 1)(a - 2) = 0$$\n$$a = 1 \\quad \\text{또는} \\quad a = 2$$\n그런데 지수함수의 밑 조건은 $a > 0, a \\ne 1$이므로\n$$a = 2$$\n\n3단계 [$f(-2) + f(2)$의 값 계산]:\n$$f(-2) = 2^{-2} = \\frac{1}{2^2} = \\frac{1}{4}$$\n$$f(2) = 2^2 = 4$$\n따라서\n$$f(-2) + f(2) = \\frac{1}{4} + 4 = \\frac{1 + 16}{4} = \\frac{17}{4}$$\n\n[오답 및 경계 점검]\n지수함수 $f(x)=a^x$의 정의에서 밑 $a$는 반드시 $1$이 아니어야 하므로 $a=1$을 반드시 제외해야 한다.\n\n[결론]\n$\\frac{17}{4}$"
   },
   {
     "id": 9,
@@ -246,8 +246,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q09.png\" />\n함수 $y=3^{x-a}+b$의 그래프가 오른쪽 그림과 같을 때, 두 상수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1, b=-1$",
+    "solution": "[풀이 전략]\n함수 $y = 3^{x-a} + b$의 그래프 특징:\n1) 점근선: $x \\to -\\infty$일 때 $3^{x-a} \\to 0$이므로 점근선은 직선 $y = b$이다.\n2) 그래프가 지나는 특수점(절편 등)을 대입하여 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [점근선으로부터 $b$의 값 구하기]:\n함수 $y = 3^{x-a} + b$의 점근선은 직선 $y = b$이다.\n주어진 그래프에서 점근선이 직선 $y = -1$이므로\n$$b = -1$$\n따라서 함수의 식은 $y = 3^{x-a} - 1$이다.\n\n2단계 [그래프가 지나는 점으로부터 $a$의 값 구하기]:\n주어진 그래프에서 $x=-1$일 때 $y=0$인 점 $(-1, 0)$(또는 $y$절편 $(0, 2)$)을 지난다.\n점 $(-1, 0)$을 대입하면:\n$$0 = 3^{-1-a} - 1$$\n$$3^{-1-a} = 1 = 3^0$$\n밑이 같으므로 지수가 같다:\n$$-1 - a = 0 \\implies a = -1$$\n\n3단계 [검증]:\n$y$절편 점 $(0, 2)$를 대입하여 확인:\n$$y = 3^{0 - (-1)} - 1 = 3^1 - 1 = 3 - 1 = 2$$\n그래프와 완벽하게 일치한다.\n\n[오답 및 경계 점검]\n$3^{-1-a} = 1$에서 어떤 수의 $0$제곱이 $1$임을 이용하여 지수 $-1-a = 0$을 정확히 도출한다.\n\n[결론]\n$a=-1, b=-1$"
   },
   {
     "id": 10,
@@ -274,8 +274,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "정의역이 $\\{x \\mid -1 \\le x \\le 3\\}$인 함수 $y=\\left(\\frac{1}{2}\\right)^{1-x}+a$의 최댓값이 $-5$일 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-9$",
+    "solution": "[풀이 전략]\n함수 $y = \\left(\\frac{1}{2}\\right)^{1-x} + a$의 식을 밑이 $2$인 지수함수로 정리한다:\n$$\\left(\\frac{1}{2}\\right)^{1-x} = (2^{-1})^{1-x} = 2^{-(1-x)} = 2^{x-1}$$\n밑이 $2 > 1$이므로 이 함수는 $x$가 증가함에 따라 증가하는 **증가함수**이다.\n정의역 $[-1, 3]$에서 최댓값은 구간의 가장 큰 값인 $x=3$에서 발생한다.\n\n[단계별 풀이]\n1단계 [함수의 식을 증가함수 꼴로 정리]:\n$$y = \\left(\\frac{1}{2}\\right)^{1-x} + a = 2^{x-1} + a$$\n밑이 $2 > 1$이므로 증가함수이다.\n\n2단계 [최댓값 조건 적용]:\n정의역 $\\{-1 \\le x \\le 3\\}$에서 함수는 $x=3$일 때 최댓값을 갖는다:\n$$x = 3 \\implies y = 2^{3-1} + a = 2^2 + a = 4 + a$$\n\n3단계 [$a$의 값 구하기]:\n최댓값이 $-5$이므로\n$$4 + a = -5 \\implies a = -5 - 4 = -9$$\n\n[오답 및 경계 점검]\n밑을 $\\frac{1}{2}$로 보고 감소함수로 오해하여 $x=-1$에서 최댓값을 갖는다고 잘못 풀지 않도록, 지수에 음수 부호가 있을 때는 반드시 밑을 양의 지수 형태로 단순화하여 증감을 판정한다.\n\n[결론]\n$-9$"
   },
   {
     "id": 11,
@@ -302,8 +302,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\log_5 x$에 대하여 $f(b)-f(a)=3$일 때, $\\frac{b}{a}$의 값을 구하시오. (단, $a$와 $b$는 상수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$125$",
+    "solution": "[풀이 전략]\n로그함수 $f(x) = \\log_5 x$에 대하여 $f(b) - f(a)$를 로그의 뺄셈 성질 $\\log_5 b - \\log_5 a = \\log_5 \\frac{b}{a}$로 결합한 후, 로그의 정의를 적용하여 $\\frac{b}{a}$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [$f(b) - f(a)$를 단일 로그로 표현]:\n$$f(b) - f(a) = \\log_5 b - \\log_5 a = \\log_5 \\frac{b}{a}$$\n\n2단계 [주어진 조건 적용하여 $\\frac{b}{a}$ 구하기]:\n$f(b) - f(a) = 3$이므로\n$$\\log_5 \\frac{b}{a} = 3$$\n로그의 정의($\\log_A X = Y \\iff X = A^Y$)에 의해\n$$\\frac{b}{a} = 5^3 = 125$$\n\n[오답 및 경계 점검]\n진수 $a, b$가 양수이므로 $\\frac{b}{a} = 125 > 0$으로 조건을 완벽히 만족한다.\n\n[결론]\n$125$"
   },
   {
     "id": 12,
@@ -330,8 +330,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q12.png\" />\n오른쪽 그림은 함수 $y=\\log_2 x$의 그래프와 직선 $y=x$이다. 이때 $a+b+c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "[풀이 전략]\n직선 $y=x$는 $x$좌표와 $y$좌표를 서로 매개하는 역할을 한다.\n함수 $y=\\log_2 x$의 그래프의 $x$절편(점 $(1, 0)$)에서 출발하여 점선 화살표의 경로를 따라 좌표를 순차적으로 추적한다:\n- $x$절편: $a = 1$ ($\\log_2 1 = 0$)\n- $(1, 0) \\to (1, 1) \\to (b, 1) \\implies \\log_2 b = 1 \\implies b = 2$\n- $(2, 1) \\to (2, 2) \\to (c, 2) \\implies \\log_2 c = 2 \\implies c = 4$\n따라서 $a, b, c$의 값을 각각 구하고 합을 계산한다.\n\n[단계별 풀이]\n1단계 [첫 번째 점의 좌표 및 $a$ 구하기]:\n함수 $y=\\log_2 x$가 $x$축과 만나는 점의 $x$좌표는 $a$이다.\n$$\\log_2 a = 0 \\implies a = 2^0 = 1$$\n\n2단계 [$b$의 값 구하기]:\n점 $(a, 0) = (1, 0)$에서 $y$축에 평행하게 올라가 직선 $y=x$와 만나는 점은 $(1, 1)$이다.\n이 점에서 $x$축에 평행하게 오른쪽으로 이동하여 $y=\\log_2 x$와 만나는 점의 $x$좌표가 $b$이다.\n따라서 이 점의 $y$좌표는 $1$이므로\n$$\\log_2 b = 1 \\implies b = 2^1 = 2$$\n\n3단계 [$c$의 값 구하기]:\n점 $(b, 1) = (2, 1)$에서 $y$축에 평행하게 올라가 직선 $y=x$와 만나는 점은 $(2, 2)$이다.\n이 점에서 $x$축에 평행하게 오른쪽으로 이동하여 $y=\\log_2 x$와 만나는 점의 $x$좌표가 $c$이다.\n따라서 이 점의 $y$좌표는 $2$이므로\n$$\\log_2 c = 2 \\implies c = 2^2 = 4$$\n\n4단계 [$a+b+c$ 계산]:\n$$a + b + c = 1 + 2 + 4 = 7$$\n\n[오답 및 경계 점검]\n$a=1, b=2, c=4$일 때 각각 $\\log_2 1 = 0, \\log_2 2 = 1, \\log_2 4 = 2$로 직선 $y=x$의 좌표 $(1, 1), (2, 2)$와 완벽하게 부합하며, 그 합은 $7$이다.\n\n[결론]\n$7$"
   },
   {
     "id": 13,
@@ -358,8 +358,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\log_3 x$의 그래프를 평행이동 또는 대칭이동하여 완전히 겹쳐질 수 있는 그래프의 식을 보기에서 모두 고르시오.\n\n[보기]\nㄱ. $y=\\log_3 9x$\nㄴ. $y=\\log_3 x^2$\nㄷ. $y=\\log_3 \\frac{3}{x}$\nㄹ. $y=\\log_{\\frac{1}{3}} (9-x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ, ㄹ",
+    "solution": "[풀이 전략]\n함수 $y=\\log_3 x$의 그래프를 평행이동 또는 대칭이동하여 겹쳐질 수 있으려면:\n- 밑의 절댓값이 같아야 한다 (밑이 $3$ 또는 $\\frac{1}{3} = 3^{-1}$).\n- $x$의 계수의 절댓값이 $1$이어야 한다 (단, 계수의 상수는 로그의 덧셈/뺄셈을 통해 $y$축 평행이동 상수로 흡수 가능).\n- $x$에 곱해진 지수 승수가 $1$이어야 한다 ($x^2$ 등은 곡률이 변형되므로 겹칠 수 없음).\n\n[단계별 풀이]\n1단계 [보기 ㄱ 검토: $y=\\log_3 9x$]:\n$$y = \\log_3 9x = \\log_3 x + \\log_3 9 = \\log_3 x + 2$$\n이는 $y=\\log_3 x$의 그래프를 $y$축의 방향으로 $2$만큼 평행이동한 것이므로 완전히 겹쳐진다. (참)\n\n2단계 [보기 ㄴ 검토: $y=\\log_3 x^2$]:\n$$y = \\log_3 x^2 = 2\\log_3 |x|$$\n이 함수는 계수가 $2$배가 되어 그래프의 폭과 곡률이 변형되므로 평행이동이나 대칭이동만으로는 겹쳐질 수 없다. (거짓)\n\n3단계 [보기 ㄷ 검토: $y=\\log_3 \\frac{3}{x}$]:\n$$y = \\log_3 \\frac{3}{x} = \\log_3 3 - \\log_3 x = -\\log_3 x + 1$$\n이는 $y=\\log_3 x$를 $x$축에 대하여 대칭이동($y \\to -y$)한 후, $y$축 방향으로 $1$만큼 평행이동한 것이므로 완전히 겹쳐진다. (참)\n\n4단계 [보기 ㄹ 검토: $y=\\log_{\\frac{1}{3}} (9-x)$]:\n밑변환 성질에 의해\n$$y = \\log_{3^{-1}} (-(x - 9)) = -\\log_3 (-(x - 9))$$\n이는 $y=\\log_3 x$를 원점에 대하여 대칭이동($x \\to -x, y \\to -y$)한 후, $x$축 방향으로 $9$만큼 평행이동한 것이므로 완전히 겹쳐진다. (참)\n\n[오답 및 경계 점검]\n보기 ㄴ의 경우 정의역도 $x \\ne 0$으로 원함수($x>0$)와 다르며 곡률 자체가 다르므로 배제된다.\n\n[결론]\nㄱ, ㄷ, ㄹ"
   },
   {
     "id": 14,
@@ -386,8 +386,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 금융 상품에 $A$ 원을 투자할 때, $t$년 후의 이익금은 $A\\left(\\frac{4}{3}\\right)^{\\frac{t}{3}}$ 원이 된다고 한다. 처음 투자 금액이 $90$만 원이고 $t$년 후의 이익금이 $160$만 원일 때, $t$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n주어진 이익금 관계식에 처음 투자 금액 $A = 90$과 $t$년 후 이익금 $160$을 대입하여 지수방정식을 세우고 $t$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [방정식 세우기]:\n처음 투자 금액 $A = 90$만 원, $t$년 후의 이익금이 $160$만 원이므로\n$$90\\left(\\frac{4}{3}\\right)^{\\frac{t}{3}} = 160$$\n\n2단계 [지수식 정리]:\n양변을 $90$으로 나눈다:\n$$\\left(\\frac{4}{3}\\right)^{\\frac{t}{3}} = \\frac{160}{90} = \\frac{16}{9}$$\n\n3단계 [밑을 같게 맞추어 $t$ 구하기]:\n$\\frac{16}{9} = \\left(\\frac{4}{3}\\right)^2$이므로\n$$\\left(\\frac{4}{3}\\right)^{\\frac{t}{3}} = \\left(\\frac{4}{3}\\right)^2$$\n밑이 $\\frac{4}{3}$로 같으므로 지수가 같다:\n$$\\frac{t}{3} = 2 \\implies t = 6$$\n\n[오답 및 경계 점검]\n$t=6$을 대입하면 $90 \\times (4/3)^{6/3} = 90 \\times (4/3)^2 = 90 \\times (16/9) = 160$으로 정확히 일치한다.\n\n[결론]\n$6$"
   },
   {
     "id": 15,
@@ -414,8 +414,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1<a<b$인 두 실수 $a$와 $b$에 대하여\n$$\\frac{3a}{\\log_a b} = \\frac{b}{2\\log_b a} = \\frac{3a+b}{3}$$\n가 성립할 때, $\\log_a b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n주어진 연립등식의 값을 $k$ ($k \\ne 0$)라 두고 각 분자를 $k$와 로그의 식으로 표현한다.\n밑변환 공식을 이용하여 $\\log_a b$와 $\\log_b a = \\frac{1}{\\log_a b}$의 관계를 적용하여 $\\log_a b$에 대한 이차방정식을 세워 푼다.\n\n[단계별 풀이]\n1단계 [비례상수 $k$ 도입]:\n$$\\frac{3a}{\\log_a b} = \\frac{b}{2\\log_b a} = \\frac{3a+b}{3} = k$$\n각 식을 정리하면\n$$3a = k\\log_a b \\quad \\cdots \\text{①}$$\n$$b = 2k\\log_b a \\quad \\cdots \\text{②}$$\n$$3a + b = 3k \\quad \\cdots \\text{③}$$\n\n2단계 [①과 ②를 ③에 대입]:\n$$k\\log_a b + 2k\\log_b a = 3k$$\n$a, b$가 $1$보다 큰 서로 다른 실수이므로 $k \\ne 0$이다. 양변을 $k$로 나누면\n$$\\log_a b + 2\\log_b a = 3$$\n\n3단계 [$\\log_b a = \\frac{1}{\\log_a b}$ 대입 및 치환]:\n$\\log_a b = t$라 두면\n$$t + \\frac{2}{t} = 3$$\n양변에 $t$를 곱하여 정리하면:\n$$t^2 - 3t + 2 = 0$$\n$$(t - 1)(t - 2) = 0 \\implies t = 1 \\quad \\text{또는} \\quad t = 2$$\n\n4단계 [조건 $1 < a < b$를 만족하는 해 선별]:\n$1 < a < b$이므로 밑 $a > 1$에서 진수 $b > a$이다.\n따라서\n$$t = \\log_a b > \\log_a a = 1$$\n$t > 1$이어야 하므로 $t = 1$은 배제된다.\n따라서\n$$\\log_a b = 2$$\n\n[오답 및 경계 점검]\n$t=1$이면 $\\log_a b = 1 \\implies a = b$가 되어 조건 $a < b$에 모순이다. 따라서 $t=2$만 유일한 해이다.\n\n[결론]\n$2$"
   },
   {
     "id": 16,
@@ -442,8 +442,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -458,8 +458,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n두 실수 $x$와 $y$에 대하여 $45^x=27$이고 $5^y=3$일 때, $\\frac{3}{x} - \\frac{1}{y}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n주어진 지수식을 거듭제곱근/유리수 지수의 성질을 이용하여 $3$의 거듭제곱 형태로 표현한다:\n- $45^x = 27 = 3^3 \\implies 45 = 3^{\\frac{3}{x}}$\n- $5^y = 3 = 3^1 \\implies 5 = 3^{\\frac{1}{y}}$\n두 식의 나눗셈을 통하여 지수의 뺄셈 $\\frac{3}{x} - \\frac{1}{y}$를 유도한다.\n\n[단계별 풀이]\n1단계 [$45^x = 27$ 변형]:\n$$45^x = 3^3$$\n양변에 $\\frac{1}{x}$제곱을 하면\n$$45 = (3^3)^{\\frac{1}{x}} = 3^{\\frac{3}{x}} \\quad \\cdots \\text{①}$$\n\n2단계 [$5^y = 3$ 변형]:\n$$5^y = 3^1$$\n양변에 $\\frac{1}{y}$제곱을 하면\n$$5 = 3^{\\frac{1}{y}} \\quad \\cdots \\text{②}$$\n\n3단계 [두 식을 나누어 지수 뺄셈 유도]:\n①을 ②로 나누면:\n$$\\frac{45}{5} = \\frac{3^{\\frac{3}{x}}}{3^{\\frac{1}{y}}}$$\n좌변은 $\\frac{45}{5} = 9 = 3^2$이고, 우변은 지수법칙에 의해 $3^{\\frac{3}{x} - \\frac{1}{y}}$이므로\n$$9 = 3^2 = 3^{\\frac{3}{x} - \\frac{1}{y}}$$\n\n4단계 [지수 비교하여 답 구하기]:\n밑이 $3$으로 같으므로 지수가 같다:\n$$\\frac{3}{x} - \\frac{1}{y} = 2$$\n\n[오답 및 경계 점검]\n로그를 취하여 풀 수도 있다:\n$x = \\log_{45} 27 = \\frac{3}{\\log_3 45} \\implies \\frac{3}{x} = \\log_3 45$\n$y = \\log_5 3 = \\frac{1}{\\log_3 5} \\implies \\frac{1}{y} = \\log_3 5$\n$\\frac{3}{x} - \\frac{1}{y} = \\log_3 45 - \\log_3 5 = \\log_3 \\frac{45}{5} = \\log_3 9 = 2$.\n두 풀이의 결과가 완벽히 일치한다.\n\n[결론]\n$2$"
   },
   {
     "id": 17,
@@ -470,8 +470,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-01",
+    "standardUnit": "지수와 로그",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -486,8 +486,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n어떤 미술품의 가격이 매년 $2\\,\\%$씩 상승한다면 이 미술품의 가격이 현재 가격의 $2$배가 되는 것은 몇 년 후인지 구하시오. (단, $\\log 2=0.3010$, $\\log 1.02=0.0086$으로 계산한다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$35$년 후",
+    "solution": "[풀이 전략]\n현재 가격을 $a$원이라 할 때, 매년 $2\\,\\%$씩 상승하므로 $n$년 후의 가격은 $a(1 + 0.02)^n = a(1.02)^n$이다.\n현재 가격의 $2$배가 되는 조건식 $a(1.02)^n = 2a$를 세우고 양변에 상용로그를 취하여 $n$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [관계식 세우기]:\n현재 가격을 $a$ ($a>0$)원이라 하면, 매년 $2\\,\\%$씩 상승하므로 $n$년 후의 미술품 가격은\n$$a(1 + 0.02)^n = a(1.02)^n$$\n이 가격이 현재 가격의 $2$배가 되므로\n$$a(1.02)^n = 2a$$\n양변을 $a$로 나누면\n$$1.02^n = 2$$\n\n2단계 [양변에 상용로그 취하기]:\n$$\\log (1.02^n) = \\log 2$$\n$$n \\log 1.02 = \\log 2$$\n$$n = \\frac{\\log 2}{\\log 1.02}$$\n\n3단계 [주어진 상용로그 값을 대입하여 계산]:\n문제의 단서 조항에서 $\\log 2 = 0.3010, \\log 1.02 = 0.0086$이므로\n$$n = \\frac{0.3010}{0.0086} = \\frac{3010}{86}$$\n나눗셈을 수행하면:\n$$3010 \\div 86 = 35$$\n따라서 $35$년 후이다.\n\n[오답 및 경계 점검]\n$86 \\times 35 = 3010$으로 나누어떨어짐을 확인한다. 따라서 미술품 가격이 $2$배가 되는 것은 정확히 $35$년 후이다.\n\n[결론]\n$35$년 후"
   },
   {
     "id": 18,
@@ -498,8 +498,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -514,8 +514,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n함수 $y=2^x+2$의 그래프를 $x$축의 방향으로 $m$만큼 평행이동한 그래프가 함수 $y=\\log_2 8x$의 그래프를 $x$축의 방향으로 $2$만큼 평행이동한 그래프와 직선 $y=x$에 대하여 대칭일 때, $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n1) 함수 $y=2^x+2$를 $x$축 방향으로 $m$만큼 평행이동한 식을 구한다.\n2) 함수 $y=\\log_2 8x$를 $x$축 방향으로 $2$만큼 평행이동한 식을 구한다.\n3) 두 함수가 직선 $y=x$에 대하여 대칭이라는 것은 서로 역함수 관계임을 의미하므로, 한 함수의 역함수를 구하여 다른 함수와 일치하도록 $m$의 값을 정한다.\n\n[단계별 풀이]\n1단계 [첫 번째 함수의 평행이동]:\n$y = 2^x + 2$의 그래프를 $x$축 방향으로 $m$만큼 평행이동하면:\n$$y = 2^{x-m} + 2$$\n\n2단계 [두 번째 함수의 정리 및 평행이동]:\n$y = \\log_2 8x = \\log_2 x + \\log_2 8 = \\log_2 x + 3$\n이 그래프를 $x$축 방향으로 $2$만큼 평행이동하면:\n$$y = \\log_2 (x - 2) + 3 \\quad \\cdots \\text{①}$$\n\n3단계 [$y = 2^{x-m} + 2$의 역함수 구하기]:\n두 함수가 직선 $y=x$에 대하여 대칭이므로, $y = 2^{x-m} + 2$의 역함수가 ①과 일치해야 한다.\n$y = 2^{x-m} + 2$에서 $x$와 $y$를 바꾸면:\n$$x = 2^{y-m} + 2$$\n$$2^{y-m} = x - 2$$\n로그의 정의를 적용하면:\n$$y - m = \\log_2 (x - 2)$$\n$$y = \\log_2 (x - 2) + m$$\n\n4단계 [계수 비교하여 $m$ 구하기]:\n이 역함수가 ①의 $y = \\log_2 (x - 2) + 3$과 완전히 일치해야 하므로\n$$\\log_2 (x - 2) + m = \\log_2 (x - 2) + 3$$\n$$m = 3$$\n\n[오답 및 경계 점검]\n$y = \\log_2 8(x-2)$와 같이 $\\log_2 \\{8(x-2)\\} = \\log_2 (x-2) + 3$으로 $x$ 자리에 $x-2$를 대입하는 평행이동 원리를 정확히 적용한다.\n\n[결론]\n$3$"
   },
   {
     "id": 19,
@@ -526,8 +526,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "대단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -542,7 +542,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n연립부등식\n$$\\begin{cases} 4^{-x^2} > \\left(\\dfrac{1}{2}\\right)^{4x} \\\\ \\log_2 (x^2-2x+3) < \\log_2 2x \\end{cases}$$\n를 푸시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1 < x < 2$",
+    "solution": "[풀이 전략]\n연립부등식의 두 부등식을 각각 푼 후 공통 범위를 구한다:\n1) 지수부등식 $4^{-x^2} > \\left(\\frac{1}{2}\\right)^{4x}$:\n   밑을 $2$로 통일하여 지수부등식을 푼다.\n2) 로그부등식 $\\log_2 (x^2-2x+3) < \\log_2 2x$:\n   진수 조건을 먼저 확인한 후, 밑 $2>1$이므로 진수의 부등식을 푼다.\n\n[단계별 풀이]\n1단계 [첫 번째 부등식(지수부등식) 풀기]:\n$$4^{-x^2} > \\left(\\frac{1}{2}\\right)^{4x}$$\n밑을 $2$로 변환하면:\n$$(2^2)^{-x^2} > (2^{-1})^{4x} \\implies 2^{-2x^2} > 2^{-4x}$$\n밑 $2 > 1$이므로 지수의 대소 관계가 유지된다:\n$$-2x^2 > -4x$$\n양변을 $-2$로 나누면 부등호 방향이 바뀐다:\n$$x^2 < 2x \\implies x^2 - 2x < 0$$\n$$x(x - 2) < 0$$\n$$\\implies 0 < x < 2 \\quad \\cdots \\text{①}$$\n\n2단계 [두 번째 부등식(로그부등식)의 진수 조건]:\n- $x^2 - 2x + 3 = (x - 1)^2 + 2 > 0$: 모든 실수 $x$에 대하여 항상 성립한다.\n- $2x > 0 \\implies x > 0$\n따라서 진수 조건은 $x > 0$이다. $\\quad \\cdots$ ②\n\n3단계 [두 번째 부등식(로그부등식) 풀기]:\n$$\\log_2 (x^2 - 2x + 3) < \\log_2 2x$$\n밑 $2 > 1$이므로 진수의 부등호 방향이 유지된다:\n$$x^2 - 2x + 3 < 2x$$\n$$x^2 - 4x + 3 < 0$$\n$$(x - 1)(x - 3) < 0$$\n$$\\implies 1 < x < 3 \\quad \\cdots \\text{③}$$\n진수 조건(②: $x > 0$)과 ③의 공통 범위는 $1 < x < 3$이다.\n\n4단계 [연립부등식의 공통 해 구하기]:\n①의 범위 $0 < x < 2$와 로그부등식의 해 $1 < x < 3$의 공통 범위를 구하면:\n$$1 < x < 2$$\n\n[오답 및 경계 점검]\n진수 조건 $x^2 - 2x + 3 = (x-1)^2 + 2 \\ge 2 > 0$임을 확실히 점검하고, 두 부등식의 해의 교집합을 수직선 상에서 $1 < x < 2$로 정확히 구한다.\n\n[결론]\n$1 < x < 2$"
   }
 ];

@@ -10,7 +10,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 거듭제곱근 중에서 실수인 것을 모두 구하시오.\n⑴ $-27$의 세제곱근\n⑵ $1$의 네제곱근",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-3$, ⑵ $-1, 1$",
+    "solution": "[풀이 전략]\n실수 $a$의 $n$제곱근 중 실수인 것은 방정식 $x^n=a$의 실근이다.\n- $n$이 홀수일 때: 실수 $a$의 부호에 관계없이 실수인 것은 $\\sqrt[n]{a}$로 오직 $1$개 존재한다.\n- $n$이 짝수일 때: $a>0$이면 양의 실수와 음의 실수가 각각 $1$개씩 총 $2$개($\\pm\\sqrt[n]{a}$) 존재하고, $a<0$이면 실수인 것은 존재하지 않는다.\n\n[단계별 풀이]\n1단계 [⑴ $-27$의 세제곱근 중 실수 구하기]:\n$x^3 = -27$을 만족시키는 실수 $x$를 구한다.\n$-27 = (-3)^3$이고 $3$은 홀수이므로 실수인 세제곱근은 오직 $1$개이다:\n$$x = \\sqrt[3]{-27} = \\sqrt[3]{(-3)^3} = -3$$\n\n2단계 [⑵ $1$의 네제곱근 중 실수 구하기]:\n$x^4 = 1$을 만족시키는 실수 $x$를 구한다.\n$x^4 - 1 = (x^2 - 1)(x^2 + 1) = (x - 1)(x + 1)(x^2 + 1) = 0$\n여기서 $x^2 + 1 > 0$이므로 실근은 $x - 1 = 0$ 또는 $x + 1 = 0$이다.\n따라서 실수인 네제곱근은 $\\pm 1$, 즉 $-1, 1$이다.\n\n[오답 및 경계 점검]\n- 복소수 범위에서 $-27$의 세제곱근은 $3$개, $1$의 네제곱근은 $4$개이지만, 문제에서 '실수인 것'을 요구하였으므로 허근은 제외하고 실수만 답안으로 작성해야 한다.\n- 짝수 거듭제곱근은 양수와 음수 부호($\\pm$)를 모두 포함해야 하므로 $1$만 적는 실수를 주의한다.\n\n[결론]\n⑴ $-3$, ⑵ $-1, 1$"
   },
   {
     "id": 2,
@@ -38,7 +38,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\sqrt[4]{2} \\times \\sqrt[4]{8}$\n⑵ $\\frac{\\sqrt[3]{625}}{\\sqrt[3]{5}}$\n⑶ $(\\sqrt[6]{27})^2$\n⑷ $\\sqrt{\\sqrt[3]{729}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2$, ⑵ $5$, ⑶ $3$, ⑷ $3$",
+    "solution": "[풀이 전략]\n$a>0, b>0$이고 $m, n$이 $2$ 이상의 자연수일 때, 거듭제곱근의 기본 성질을 적용한다:\n- $\\sqrt[n]{a} \\times \\sqrt[n]{b} = \\sqrt[n]{ab}$\n- $\\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}} = \\sqrt[n]{\\frac{a}{b}}$\n- $(\\sqrt[n]{a})^m = \\sqrt[n]{a^m}$\n- $\\sqrt[m]{\\sqrt[n]{a}} = \\sqrt[mn]{a}$\n\n[단계별 풀이]\n1단계 [⑴ $\\sqrt[4]{2} \\times \\sqrt[4]{8}$ 계산]:\n$$\\sqrt[4]{2} \\times \\sqrt[4]{8} = \\sqrt[4]{2 \\times 8} = \\sqrt[4]{16} = \\sqrt[4]{2^4} = 2$$\n\n2단계 [⑵ $\\frac{\\sqrt[3]{625}}{\\sqrt[3]{5}}$ 계산]:\n$$\\frac{\\sqrt[3]{625}}{\\sqrt[3]{5}} = \\sqrt[3]{\\frac{625}{5}} = \\sqrt[3]{125} = \\sqrt[3]{5^3} = 5$$\n\n3단계 [⑶ $(\\sqrt[6]{27})^2$ 계산]:\n$$(\\sqrt[6]{27})^2 = \\sqrt[6]{27^2} = \\sqrt[6]{(3^3)^2} = \\sqrt[6]{3^6} = 3$$\n(또는 유리수 지수로 변환: $(27^{\\frac{1}{6}})^2 = 27^{\\frac{1}{3}} = (3^3)^{\\frac{1}{3}} = 3$)\n\n4단계 [⑷ $\\sqrt{\\sqrt[3]{729}}$ 계산]:\n$$\\sqrt{\\sqrt[3]{729}} = \\sqrt[2 \\times 3]{729} = \\sqrt[6]{729}$$\n$729 = 3^6$이므로\n$$\\sqrt[6]{3^6} = 3$$\n\n[오답 및 경계 점검]\n거듭제곱근의 곱셈과 나눗셈은 근호 안의 거듭제곱근의 지수(위첨자)가 같을 때만 근호 안의 수를 합쳐서 계산할 수 있다.\n\n[결론]\n⑴ $2$, ⑵ $5$, ⑶ $3$, ⑷ $3$"
   },
   {
     "id": 3,
@@ -66,7 +66,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $2^{\\frac{1}{5}} \\times 2^{0.3}$\n⑵ $5^{-\\frac{3}{2}} \\div 5^{-\\frac{5}{2}}$\n⑶ $(16^{\\sqrt{3}})^{\\frac{\\sqrt{3}}{6}}$\n⑷ $(2^{\\sqrt{3}} \\times 4)^{\\sqrt{3}-2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sqrt{2}$, ⑵ $5$, ⑶ $4$, ⑷ $\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n밑이 양수일 때 지수법칙을 적용하여 지수를 계산한다:\n- $a^r \\times a^s = a^{r+s}$\n- $a^r \\div a^s = a^{r-s}$\n- $(a^r)^s = a^{rs}$\n- $(ab)^r = a^r b^r$\n소수 지수는 분수로 바꾸고, 밑을 소인수분해하여 지수법칙을 적용한다.\n\n[단계별 풀이]\n1단계 [⑴ $2^{\\frac{1}{5}} \\times 2^{0.3}$ 계산]:\n$0.3 = \\frac{3}{10}$이므로\n$$2^{\\frac{1}{5}} \\times 2^{\\frac{3}{10}} = 2^{\\frac{1}{5} + \\frac{3}{10}} = 2^{\\frac{2}{10} + \\frac{3}{10}} = 2^{\\frac{5}{10}} = 2^{\\frac{1}{2}} = \\sqrt{2}$$\n\n2단계 [⑵ $5^{-\\frac{3}{2}} \\div 5^{-\\frac{5}{2}}$ 계산]:\n$$5^{-\\frac{3}{2}} \\div 5^{-\\frac{5}{2}} = 5^{-\\frac{3}{2} - \\left(-\\frac{5}{2}\\right)} = 5^{-\\frac{3}{2} + \\frac{5}{2}} = 5^{\\frac{2}{2}} = 5^1 = 5$$\n\n3단계 [⑶ $(16^{\\sqrt{3}})^{\\frac{\\sqrt{3}}{6}}$ 계산]:\n지수의 곱을 먼저 계산한다:\n$$\\sqrt{3} \\times \\frac{\\sqrt{3}}{6} = \\frac{3}{6} = \\frac{1}{2}$$\n따라서\n$$(16^{\\sqrt{3}})^{\\frac{\\sqrt{3}}{6}} = 16^{\\frac{1}{2}} = (4^2)^{\\frac{1}{2}} = 4$$\n\n4단계 [⑷ $(2^{\\sqrt{3}} \\times 4)^{\\sqrt{3}-2}$ 계산]:\n$4 = 2^2$이므로 괄호 안을 밑이 $2$인 거듭제곱으로 나타낸다:\n$$2^{\\sqrt{3}} \\times 4 = 2^{\\sqrt{3}} \\times 2^2 = 2^{\\sqrt{3}+2}$$\n여기에 지수 $\\sqrt{3}-2$를 곱하면 합차공식에 의해:\n$$(2^{\\sqrt{3}+2})^{\\sqrt{3}-2} = 2^{(\\sqrt{3}+2)(\\sqrt{3}-2)} = 2^{3 - 4} = 2^{-1} = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n나눗셈 지수법칙 $a^r \\div a^s = a^{r-s}$ 적용 시 음수 부호 빼기에서 $-(-5/2) = +5/2$로 부호 처리에 유의한다.\n\n[결론]\n⑴ $\\sqrt{2}$, ⑵ $5$, ⑶ $4$, ⑷ $\\frac{1}{2}$"
   },
   {
     "id": 4,
@@ -94,7 +94,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\log_{15} 3 + \\log_{15} 5$\n⑵ $\\log_3 54 - \\log_3 6$\n⑶ $\\log_{\\sqrt{5}} 5\\sqrt{5}$\n⑷ $\\log_6 3\\sqrt{2} - \\log_6 \\sqrt{3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1$, ⑵ $2$, ⑶ $3$, ⑷ $\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n로그의 기본 성질 ($a>0, a\\ne 1, x>0, y>0$):\n- $\\log_a xy = \\log_a x + \\log_a y$\n- $\\log_a \\frac{x}{y} = \\log_a x - \\log_a y$\n- $\\log_{a^n} x^m = \\frac{m}{n} \\log_a x$\n- $\\log_a a = 1$\n\n[단계별 풀이]\n1단계 [⑴ $\\log_{15} 3 + \\log_{15} 5$ 계산]:\n로그의 덧셈은 진수의 곱셈으로 결합한다:\n$$\\log_{15} 3 + \\log_{15} 5 = \\log_{15} (3 \\times 5) = \\log_{15} 15 = 1$$\n\n2단계 [⑵ $\\log_3 54 - \\log_3 6$ 계산]:\n로그의 뺄셈은 진수의 나눗셈으로 결합한다:\n$$\\log_3 54 - \\log_3 6 = \\log_3 \\frac{54}{6} = \\log_3 9 = \\log_3 (3^2) = 2$$\n\n3단계 [⑶ $\\log_{\\sqrt{5}} 5\\sqrt{5}$ 계산]:\n밑과 진수를 모두 $5$의 거듭제곱으로 나타낸다:\n- 밑: $\\sqrt{5} = 5^{\\frac{1}{2}}$\n- 진수: $5\\sqrt{5} = 5^1 \\times 5^{\\frac{1}{2}} = 5^{\\frac{3}{2}}$\n$$\\log_{\\sqrt{5}} 5\\sqrt{5} = \\log_{5^{\\frac{1}{2}}} 5^{\\frac{3}{2}} = \\frac{\\frac{3}{2}}{\\frac{1}{2}} \\log_5 5 = \\frac{3}{1} \\times 1 = 3$$\n\n4단계 [⑷ $\\log_6 3\\sqrt{2} - \\log_6 \\sqrt{3}$ 계산]:\n로그의 뺄셈을 진수의 나눗셈으로 변환한다:\n$$\\log_6 3\\sqrt{2} - \\log_6 \\sqrt{3} = \\log_6 \\frac{3\\sqrt{2}}{\\sqrt{3}} = \\log_6 (\\sqrt{3} \\times \\sqrt{2}) = \\log_6 \\sqrt{6} = \\log_6 6^{\\frac{1}{2}} = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n진수의 유리화 및 거듭제곱 표현을 정확히 점검하여 실수를 방지한다.\n\n[결론]\n⑴ $1$, ⑵ $2$, ⑶ $3$, ⑷ $\\frac{1}{2}$"
   },
   {
     "id": 5,
@@ -122,7 +122,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "상용로그표를 이용하여 다음 값을 구하시오.\n⑴ $\\log 236$\n⑵ $\\log 0.236$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2.3729$, ⑵ $-0.6271$",
+    "solution": "[풀이 전략]\n상용로그의 지표(정수 부분)와 가수(소수 부분):\n양수 $N$을 $N = a \\times 10^n$ ($1 \\le a < 10$, $n$은 정수) 꼴로 나타내면\n$$\\log N = \\log (a \\times 10^n) = n + \\log a$$\n상용로그표에서 $\\log 2.36 = 0.3729$를 찾아 적용한다.\n\n[단계별 풀이]\n1단계 [상용로그표에서 기본값 확인]:\n상용로그표에서 $2.3$의 행과 $6$의 열이 만나는 곳의 값은 $0.3729$이므로\n$$\\log 2.36 = 0.3729$$\n\n2단계 [⑴ $\\log 236$ 구하기]:\n$236 = 2.36 \\times 10^2$이므로\n$$\\log 236 = \\log (2.36 \\times 10^2) = \\log 10^2 + \\log 2.36 = 2 + 0.3729 = 2.3729$$\n\n3단계 [⑵ $\\log 0.236$ 구하기]:\n$0.236 = 2.36 \\times 10^{-1}$이므로\n$$\\log 0.236 = \\log (2.36 \\times 10^{-1}) = \\log 10^{-1} + \\log 2.36 = -1 + 0.3729 = -0.6271$$\n\n[오답 및 경계 점검]\n- $\\log 0.236$ 계산 시 $-1 + 0.3729$를 $-1.3729$로 오인하지 않도록 뺄셈($-1.0000 + 0.3729 = -0.6271$)을 정확히 수행한다.\n\n[결론]\n⑴ $2.3729$, ⑵ $-0.6271$"
   },
   {
     "id": 6,
@@ -150,7 +150,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n⑴ $\\sqrt[3]{189} + \\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}}$\n⑵ $\\sqrt[3]{48} - \\sqrt[4]{(-2)^4} \\times \\sqrt{\\sqrt[3]{36}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $4\\sqrt[3]{7}$, ⑵ $0$",
+    "solution": "[풀이 전략]\n거듭제곱근의 식을 간단히 하기 위해 근호 안의 수를 소인수분해하여 밖으로 뺄 수 있는 인수를 분리한다:\n- $\\sqrt[n]{a^n b} = a\\sqrt[n]{b}$ ($a>0, b>0$)\n동류근호끼리 묶어서 계수끼리 덧셈, 뺄셈을 수행한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\sqrt[3]{189} + \\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}}$ 계산]:\n- $189 = 27 \\times 7 = 3^3 \\times 7$이므로\n$$\\sqrt[3]{189} = \\sqrt[3]{3^3 \\times 7} = 3\\sqrt[3]{7}$$\n- $\\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}} = \\sqrt[3]{\\frac{42}{6}} = \\sqrt[3]{7}$\n따라서\n$$\\sqrt[3]{189} + \\frac{\\sqrt[3]{42}}{\\sqrt[3]{6}} = 3\\sqrt[3]{7} + \\sqrt[3]{7} = (3 + 1)\\sqrt[3]{7} = 4\\sqrt[3]{7}$$\n\n2단계 [⑵ $\\sqrt[3]{48} - \\sqrt[4]{(-2)^4} \\times \\sqrt{\\sqrt[3]{36}}$ 계산]:\n- $48 = 8 \\times 6 = 2^3 \\times 6$이므로\n$$\\sqrt[3]{48} = 2\\sqrt[3]{6}$$\n- $\\sqrt[4]{(-2)^4} = |-2| = 2$\n- $\\sqrt{\\sqrt[3]{36}} = \\sqrt[6]{36} = \\sqrt[6]{6^2} = 6^{\\frac{2}{6}} = 6^{\\frac{1}{3}} = \\sqrt[3]{6}$\n따라서\n$$\\sqrt[4]{(-2)^4} \\times \\sqrt{\\sqrt[3]{36}} = 2 \\times \\sqrt[3]{6} = 2\\sqrt[3]{6}$$\n전체 식을 계산하면\n$$\\sqrt[3]{48} - \\sqrt[4]{(-2)^4} \\times \\sqrt{\\sqrt[3]{36}} = 2\\sqrt[3]{6} - 2\\sqrt[3]{6} = 0$$\n\n[오답 및 경계 점검]\n$\\sqrt[4]{(-2)^4}$는 짝수 거듭제곱근이므로 근호 밖으로 나올 때 절댓값을 씌워 $+2$가 되어야 한다. $-2$로 잘못 풀면 부호 오류가 발생한다.\n\n[결론]\n⑴ $4\\sqrt[3]{7}$, ⑵ $0$"
   },
   {
     "id": 7,
@@ -178,7 +178,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{2} \\times \\sqrt[3]{2} \\times (\\sqrt[3]{2})^{-\\frac{9}{2}} = 2^k$을 만족시키는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2}{3}$",
+    "solution": "[풀이 전략]\n모든 거듭제곱근을 밑이 $2$인 유리수 지수 형태로 변환한 후, 지수법칙 $a^p \\times a^q = a^{p+q}$를 적용하여 지수를 하나로 합친다:\n- $\\sqrt{2} = 2^{\\frac{1}{2}}$\n- $\\sqrt[3]{2} = 2^{\\frac{1}{3}}$\n- $(\\sqrt[3]{2})^{-\\frac{9}{2}} = (2^{\\frac{1}{3}})^{-\\frac{9}{2}} = 2^{\\frac{1}{3} \\times \\left(-\\frac{9}{2}\\right)}$\n\n[단계별 풀이]\n1단계 [좌변의 각 인수를 밑이 $2$인 거듭제곱으로 표현]:\n$$\\sqrt{2} = 2^{\\frac{1}{2}}$$\n$$\\sqrt[3]{2} = 2^{\\frac{1}{3}}$$\n$$(\\sqrt[3]{2})^{-\\frac{9}{2}} = 2^{\\frac{1}{3} \\times \\left(-\\frac{9}{2}\\right)} = 2^{-\\frac{3}{2}}$$\n\n2단계 [좌변의 곱셈을 지수법칙으로 합산]:\n$$\\text{좌변} = 2^{\\frac{1}{2}} \\times 2^{\\frac{1}{3}} \\times 2^{-\\frac{3}{2}} = 2^{\\frac{1}{2} + \\frac{1}{3} - \\frac{3}{2}}$$\n지수를 통분하여 계산한다:\n$$\\frac{1}{2} - \\frac{3}{2} + \\frac{1}{3} = -1 + \\frac{1}{3} = -\\frac{2}{3}$$\n따라서 좌변은 $2^{-\\frac{2}{3}}$이다.\n\n3단계 [우변 $2^k$와 비교하여 $k$ 도출]:\n$$2^{-\\frac{2}{3}} = 2^k \\implies k = -\\frac{2}{3}$$\n\n[오답 및 경계 점검]\n분수의 덧셈과 뺄셈 시 $\\frac{1}{2} - \\frac{3}{2} = -\\frac{2}{2} = -1$로 먼저 정수화한 뒤 통분하면 계산 실수를 줄일 수 있다.\n\n[결론]\n$-\\frac{2}{3}$"
   },
   {
     "id": 8,
@@ -206,7 +206,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $x$에 대하여 $x^{\\frac{1}{2}} + x^{-\\frac{1}{2}} = 3$일 때, $x^2 + x^{-2}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$47$",
+    "solution": "[풀이 전략]\n곱셈공식의 변형을 이용하여 차수를 단계적으로 높인다:\n1) $(a + b)^2 = a^2 + b^2 + 2ab$에서 $a = x^{\\frac{1}{2}}, b = x^{-\\frac{1}{2}}$로 두면 $ab = x^0 = 1$이다.\n2) $x + x^{-1}$의 값을 구한 후, 다시 양변을 제곱하여 $x^2 + x^{-2}$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [$x^{\\frac{1}{2}} + x^{-\\frac{1}{2}} = 3$의 양변을 제곱하여 $x + x^{-1}$ 구하기]:\n$$(x^{\\frac{1}{2}} + x^{-\\frac{1}{2}})^2 = 3^2$$\n$$(x^{\\frac{1}{2}})^2 + 2(x^{\\frac{1}{2}})(x^{-\\frac{1}{2}}) + (x^{-\\frac{1}{2}})^2 = 9$$\n$$x + 2(1) + x^{-1} = 9$$\n$$x + x^{-1} = 7$$\n\n2단계 [$x + x^{-1} = 7$의 양변을 제곱하여 $x^2 + x^{-2}$ 구하기]:\n$$(x + x^{-1})^2 = 7^2$$\n$$x^2 + 2(x)(x^{-1}) + x^{-2} = 49$$\n$$x^2 + 2 + x^{-2} = 49$$\n$$x^2 + x^{-2} = 49 - 2 = 47$$\n\n[오답 및 경계 점검]\n제곱할 때 가운데 생기는 교차항 $2ab = 2$를 빠뜨리지 않고 우변으로 정확히 이항하는지 확인한다.\n\n[결론]\n$47$"
   },
   {
     "id": 9,
@@ -234,7 +234,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$에 대하여 $\\frac{2^a - 2^{-a}}{2^a + 2^{-a}} = \\frac{1}{2}$일 때, $4^a + 4^{-a}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{10}{3}$",
+    "solution": "[풀이 전략]\n주어진 분수식의 분모와 분자에 $2^a$를 곱하여 식을 밑이 $4$인 지수 꼴($4^a = (2^a)^2$)로 변형한다.\n$4^a$에 대한 일차방정식을 풀어 $4^a$의 값을 구한 뒤, $4^a + 4^{-a} = 4^a + \\frac{1}{4^a}$를 계산한다.\n\n[단계별 풀이]\n1단계 [주어진 식의 분모와 분자에 $2^a$ 곱하기]:\n$$\\frac{2^a - 2^{-a}}{2^a + 2^{-a}} = \\frac{2^a(2^a - 2^{-a})}{2^a(2^a + 2^{-a})} = \\frac{(2^a)^2 - 1}{(2^a)^2 + 1} = \\frac{4^a - 1}{4^a + 1}$$\n이 값이 $\\frac{1}{2}$이므로\n$$\\frac{4^a - 1}{4^a + 1} = \\frac{1}{2}$$\n\n2단계 [$4^a$의 값 구하기]:\n양변에 대각선으로 곱하면:\n$$2(4^a - 1) = 4^a + 1$$\n$$2 \\times 4^a - 2 = 4^a + 1$$\n$$2 \\times 4^a - 4^a = 1 + 2$$\n$$4^a = 3$$\n\n3단계 [$4^a + 4^{-a}$의 값 계산]:\n$4^{-a} = \\frac{1}{4^a} = \\frac{1}{3}$이므로\n$$4^a + 4^{-a} = 3 + \\frac{1}{3} = \\frac{9 + 1}{3} = \\frac{10}{3}$$\n\n[오답 및 경계 점검]\n$4^a = 3$은 밑이 $4$인 양수이므로 모순 없이 성립하며, $4^{-a} = 1/3$과의 합은 양수이다.\n\n[결론]\n$\\frac{10}{3}$"
   },
   {
     "id": 10,
@@ -262,7 +262,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_{x-1} (-x^2 + 6x - 5)$가 정의되도록 하는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n로그 $\\log_A B$가 정의되기 위한 필수 조건:\n1) 밑 조건: $A > 0$이고 $A \\ne 1$\n2) 진수 조건: $B > 0$\n두 조건을 동시에 만족시키는 $x$의 범위를 구하고, 그 범위에 속하는 정수 $x$의 개수를 센다.\n\n[단계별 풀이]\n1단계 [밑 조건 검토]:\n밑이 $x-1$이므로\n- $x - 1 > 0 \\implies x > 1$\n- $x - 1 \\ne 1 \\implies x \\ne 2$\n\n2단계 [진수 조건 검토]:\n진수가 $-x^2 + 6x - 5$이므로\n$$-x^2 + 6x - 5 > 0$$\n양변에 $-1$을 곱하여 부등호 방향을 바꾼다:\n$$x^2 - 6x + 5 < 0$$\n$$(x - 1)(x - 5) < 0$$\n$$\\implies 1 < x < 5$$\n\n3단계 [공통 범위 및 정수 $x$ 찾기]:\n밑 조건과 진수 조건을 동시에 만족하는 범위는\n$$1 < x < 5 \\quad \\text{이고} \\quad x \\ne 2$$\n이 범위에 속하는 정수 $x$는 $3, 4$뿐이다.\n따라서 정수 $x$의 개수는 $2$개이다.\n\n[오답 및 경계 점검]\n밑 조건에서 $x-1 \\ne 1$, 즉 $x \\ne 2$ 조건을 빠뜨리면 정수 $x$에 $2$를 포함시켜 $3$개로 답을 내는 실수를 범하기 쉽다.\n\n[결론]\n$2$"
   },
   {
     "id": 11,
@@ -290,7 +290,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "서술형",
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n다음을 모두 만족시키는 두 양수 $a$와 $b$에 대하여 $a^2+b^2$의 값을 구하는 풀이 과정과 답을 쓰시오.\n㈎ $\\log_2 a + \\log_2 b = 1$\n㈏ $\\log_2 \\left(1 + \\frac{1}{a}\\right) + \\log_2 \\left(1 + \\frac{1}{b}\\right) = 3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$165$",
+    "solution": "[풀이 전략]\n로그의 성질 $\\log_2 X + \\log_2 Y = \\log_2 XY$를 적용하여 진수의 곱으로 식을 단순화한다.\n조건 ㈎에서 $ab$의 값을 구하고, 조건 ㈏에서 식을 전개하여 $a+b$의 값을 도출한다.\n최종적으로 곱셈공식의 변형 $a^2 + b^2 = (a+b)^2 - 2ab$를 이용하여 값을 구한다.\n\n[단계별 풀이]\n1단계 [조건 ㈎로부터 $ab$의 값 도출]:\n$$\\log_2 a + \\log_2 b = 1$$\n$$\\log_2 (ab) = 1 \\implies ab = 2^1 = 2$$\n\n2단계 [조건 ㈏로부터 $a+b$의 값 도출]:\n$$\\log_2 \\left(1 + \\frac{1}{a}\\right) + \\log_2 \\left(1 + \\frac{1}{b}\\right) = 3$$\n로그의 덧셈 성질에 의해\n$$\\log_2 \\left\\{\\left(1 + \\frac{1}{a}\\right)\\left(1 + \\frac{1}{b}\\right)\\right\\} = 3$$\n$$\\left(1 + \\frac{1}{a}\\right)\\left(1 + \\frac{1}{b}\\right) = 2^3 = 8$$\n좌변의 괄호를 전개한다:\n$$1 + \\frac{1}{a} + \\frac{1}{b} + \\frac{1}{ab} = 8$$\n$$1 + \\frac{a+b}{ab} + \\frac{1}{ab} = 8$$\n$$1 + \\frac{a+b+1}{ab} = 8$$\n$ab = 2$를 대입하면\n$$1 + \\frac{a+b+1}{2} = 8$$\n$$\\frac{a+b+1}{2} = 7 \\implies a+b+1 = 14 \\implies a+b = 13$$\n\n3단계 [$a^2 + b^2$의 값 계산]:\n$$a^2 + b^2 = (a+b)^2 - 2ab = 13^2 - 2 \\times 2 = 169 - 4 = 165$$\n\n[오답 및 경계 점검]\n$a, b$는 양수이고 $a+b=13, ab=2$이므로 $t^2 - 13t + 2 = 0$의 판별식 $D = 169 - 8 > 0$으로 서로 다른 두 양의 실근이 존재하여 모든 조건이 완벽히 부합한다.\n\n[결론]\n$165$"
   },
   {
     "id": 12,
@@ -318,7 +318,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 값을 구하시오.\n⑴ $\\log_2 \\frac{2\\sqrt{3}}{9} + \\frac{1}{2}\\log_2 12 - \\log_2 \\frac{4}{3}$\n⑵ $\\log_2 9 \\times \\log_3 125 \\times \\log_5 1024$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $0$, ⑵ $60$",
+    "solution": "[풀이 전략]\n로그의 연산 성질과 밑의 변환 공식을 활용한다:\n⑴ 밑이 모두 $2$로 같으므로 계수를 진수의 지수로 올린 후 하나의 로그로 결합한다:\n$$\\log_a x + \\log_a y - \\log_a z = \\log_a \\frac{xy}{z}$$\n⑵ 밑의 변환 공식 $\\log_a b = \\frac{\\log c}{\\log a}$을 이용하여 상용로그 또는 임의의 밑으로 분해하여 약분한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\log_2 \\frac{2\\sqrt{3}}{9} + \\frac{1}{2}\\log_2 12 - \\log_2 \\frac{4}{3}$ 계산]:\n- $\\frac{1}{2}\\log_2 12 = \\log_2 12^{\\frac{1}{2}} = \\log_2 \\sqrt{12} = \\log_2 2\\sqrt{3}$\n진수들을 곱셈과 나눗셈으로 결합한다:\n$$\\log_2 \\left( \\frac{2\\sqrt{3}}{9} \\times 2\\sqrt{3} \\div \\frac{4}{3} \\right) = \\log_2 \\left( \\frac{2\\sqrt{3}}{9} \\times 2\\sqrt{3} \\times \\frac{3}{4} \\right)$$\n진수 부분만 계산하면:\n$$\\frac{(2\\sqrt{3}) \\times (2\\sqrt{3}) \\times 3}{9 \\times 4} = \\frac{12 \\times 3}{36} = \\frac{36}{36} = 1$$\n따라서\n$$\\log_2 1 = 0$$\n\n2단계 [⑵ $\\log_2 9 \\times \\log_3 125 \\times \\log_5 1024$ 계산]:\n각 로그의 진수를 소인수의 거듭제곱으로 나타낸다:\n- $\\log_2 9 = \\log_2 3^2 = 2\\log_2 3$\n- $\\log_3 125 = \\log_3 5^3 = 3\\log_3 5$\n- $\\log_5 1024 = \\log_5 2^{10} = 10\\log_5 2$\n세 식을 곱하면\n$$(2\\log_2 3) \\times (3\\log_3 5) \\times (10\\log_5 2) = (2 \\times 3 \\times 10) \\times (\\log_2 3 \\times \\log_3 5 \\times \\log_5 2)$$\n밑변환 공식에 의해 $\\log_2 3 \\times \\log_3 5 \\times \\log_5 2 = \\frac{\\log 3}{\\log 2} \\times \\frac{\\log 5}{\\log 3} \\times \\frac{\\log 2}{\\log 5} = 1$이므로\n$$= 60 \\times 1 = 60$$\n\n[오답 및 경계 점검]\n진수가 $1$일 때 로그의 값은 항상 $0$이다. $\\log_2 1 = 0$임을 확실히 점검한다.\n\n[결론]\n⑴ $0$, ⑵ $60$"
   },
   {
     "id": 13,
@@ -346,7 +346,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_5 2=a$이고 $\\log_5 3=b$일 때, 다음을 $a$와 $b$로 나타내시오.\n⑴ $\\log_5 36$\n⑵ $\\log_4 90$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2a+2b$, ⑵ $\\frac{a+2b+1}{2a}$",
+    "solution": "[풀이 전략]\n주어진 조건 $\\log_5 2 = a, \\log_5 3 = b$의 밑이 $5$이므로, 구하고자 하는 식을 모두 밑이 $5$인 로그로 통일한다.\n진수를 $2, 3, 5$의 소인수분해 형태로 표현한 후 로그의 덧셈 성질을 적용한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\log_5 36$을 $a, b$로 나타내기]:\n$36 = 2^2 \\times 3^2$이므로\n$$\\log_5 36 = \\log_5 (2^2 \\times 3^2) = \\log_5 2^2 + \\log_5 3^2 = 2\\log_5 2 + 2\\log_5 3$$\n$\\log_5 2 = a, \\log_5 3 = b$를 대입하면\n$$\\log_5 36 = 2a + 2b$$\n\n2단계 [⑵ $\\log_4 90$을 $a, b$로 나타내기]:\n밑이 $4$이므로 밑변환 공식으로 밑을 $5$로 바꾼다:\n$$\\log_4 90 = \\frac{\\log_5 90}{\\log_5 4}$$\n- 분모: $\\log_5 4 = \\log_5 2^2 = 2\\log_5 2 = 2a$\n- 분자: $90 = 2 \\times 3^2 \\times 5$이므로\n$$\\log_5 90 = \\log_5 (2 \\times 3^2 \\times 5) = \\log_5 2 + 2\\log_5 3 + \\log_5 5 = a + 2b + 1$$\n따라서\n$$\\log_4 90 = \\frac{a + 2b + 1}{2a}$$\n\n[오답 및 경계 점검]\n$\\log_5 5 = 1$을 놓치지 않도록 주의한다. 분모의 $2a$와 분자의 각 항은 공통인수가 없으므로 그대로 기약분수 형태로 둔다.\n\n[결론]\n⑴ $2a+2b$, ⑵ $\\frac{a+2b+1}{2a}$"
   },
   {
     "id": 14,
@@ -374,7 +374,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 용액의 수소 이온 농도가 $[\\mathrm{H}^+]\\ \\mathrm{mol/L}$일 때, 용액의 산성도를 나타내는 $\\mathrm{pH}$는\n$$\\mathrm{pH} = \\log \\frac{1}{[\\mathrm{H}^+]}$$\n이라고 한다. 수소 이온 농도가 $10^{-3.5}\\ \\mathrm{mol/L}$인 음료의 $\\mathrm{pH}$는 수소 이온 농도가 $10^{-5.0}\\ \\mathrm{mol/L}$인 음료의 $\\mathrm{pH}$의 몇 배인지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{10}$배 (또는 $0.7$배)",
+    "solution": "[풀이 전략]\n주어진 관계식 $\\mathrm{pH} = \\log \\frac{1}{[\\mathrm{H}^+]} = -\\log [\\mathrm{H}^+]$에 각 음료의 수소 이온 농도를 대입하여 각각의 $\\mathrm{pH}$를 구하고 배율을 계산한다.\n\n[단계별 풀이]\n1단계 [첫 번째 음료의 $\\mathrm{pH}$ 구하기]:\n수소 이온 농도 $[\\mathrm{H}^+] = 10^{-3.5}\\ \\mathrm{mol/L}$이므로\n$$\\mathrm{pH}_1 = \\log \\frac{1}{10^{-3.5}} = \\log 10^{3.5} = 3.5$$\n\n2단계 [두 번째 음료의 $\\mathrm{pH}$ 구하기]:\n수소 이온 농도 $[\\mathrm{H}^+] = 10^{-5.0}\\ \\mathrm{mol/L}$이므로\n$$\\mathrm{pH}_2 = \\log \\frac{1}{10^{-5.0}} = \\log 10^{5.0} = 5.0$$\n\n3단계 [배율 구하기]:\n첫 번째 음료의 $\\mathrm{pH}$는 두 번째 음료의 $\\mathrm{pH}$의\n$$\\frac{\\mathrm{pH}_1}{\\mathrm{pH}_2} = \\frac{3.5}{5.0} = \\frac{35}{50} = \\frac{7}{10} = 0.7$$\n따라서 $\\frac{7}{10}$배 (또는 $0.7$배)이다.\n\n[오답 및 경계 점검]\n'A는 B의 몇 배인가?'는 $\\frac{A}{B}$를 계산해야 한다. 분자와 분모의 순서를 바꾸지 않도록 주의한다.\n\n[결론]\n$\\frac{7}{10}$배 (또는 $0.7$배)"
   },
   {
     "id": 15,
@@ -402,7 +402,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $x$에 대하여 $x$의 세제곱근 중에서 실수인 것의 개수를 $f(x)$, $x$의 네제곱근 중에서 실수인 것의 개수를 $g(x)$라 하자.\n$|a| \\le 5$와 $|b| \\le 5$를 만족시키는 두 정수 $a$와 $b$에 대하여 $f(a)g(b)=2$를 만족시키는 순서쌍 $(a, b)$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$55$",
+    "solution": "[풀이 전략]\n거듭제곱근 중 실수인 것의 개수의 정의:\n- $x$의 세제곱근($n=3$, 홀수): 임의의 실수 $x$에 대하여 항상 오직 $1$개이므로 $f(x) = 1$이다.\n- $x$의 네제곱근($n=4$, 짝수):\n  - $x > 0$일 때 $2$개 ($g(x) = 2$)\n  - $x = 0$일 때 $1$개 ($g(x) = 1$)\n  - $x < 0$일 때 $0$개 ($g(x) = 0$)\n$f(a)g(b) = 2$가 성립하려면 $f(a)=1$이므로 반드시 $g(b)=2$이어야 한다.\n\n[단계별 풀이]\n1단계 [$f(a)$의 값 분석]:\n홀수 거듭제곱근 중 실수의 개수는 $a$의 값에 관계없이 항상 $1$이므로\n모든 정수 $a$에 대하여 $f(a) = 1$이다.\n\n2단계 [$g(b)$의 값 분석]:\n$f(a)g(b) = 2$에서 $f(a)=1$이므로\n$$1 \\times g(b) = 2 \\implies g(b) = 2$$\n짝수 거듭제곱근 중 실수의 개수가 $2$개가 되려면 $b > 0$이어야 한다.\n\n3단계 [조건을 만족하는 정수 $a, b$의 개수 구하기]:\n- $|a| \\le 5$인 정수 $a$:\n  $a \\in \\{-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5\\}$이므로 총 $11$개이다.\n- $|b| \\le 5$이고 $b > 0$인 정수 $b$:\n  $b \\in \\{1, 2, 3, 4, 5\\}$이므로 총 $5$개이다.\n\n4단계 [순서쌍 $(a, b)$의 총 개수]:\n곱의 법칙에 의해\n$$11 \\times 5 = 55\\text{개}$$\n\n[오답 및 경계 점검]\n$|a| \\le 5$를 만족시키는 정수는 $0$을 포함하여 $5 - (-5) + 1 = 11$개임을 정확히 센다.\n\n[결론]\n$55$"
   },
   {
     "id": 16,
@@ -430,7 +430,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 양수 $a, b, c$에 대하여\n$$ab=bc+ca,\\quad 5^a=7^b=k^c$$\n이 성립할 때, 양수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$35$",
+    "solution": "[풀이 전략]\n$5^a = 7^b = k^c = M$ ($M>0, M\\ne 1$)으로 놓으면\n$$5 = M^{\\frac{1}{a}}, \\quad 7 = M^{\\frac{1}{b}}, \\quad k = M^{\\frac{1}{c}}$$\n조건 $ab = bc + ca$의 양변을 $abc$로 나누면 지수들 사이의 관계식 $\\frac{1}{c} = \\frac{1}{a} + \\frac{1}{b}$를 얻을 수 있다.\n\n[단계별 풀이]\n1단계 [주어진 등식을 지수 분수 꼴로 정리]:\n$5^a = 7^b = k^c = M$ ($M>0$)이라 두면\n$$5 = M^{\\frac{1}{a}}, \\quad 7 = M^{\\frac{1}{b}}, \\quad k = M^{\\frac{1}{c}}$$\n\n2단계 [조건식 $ab = bc + ca$ 변형]:\n$a, b, c$가 모두 양수이므로 양변을 $abc$로 나누면\n$$\\frac{ab}{abc} = \\frac{bc}{abc} + \\frac{ca}{abc} \\implies \\frac{1}{c} = \\frac{1}{a} + \\frac{1}{b}$$\n\n3단계 [$k$의 값 도출]:\n$$5 \\times 7 = M^{\\frac{1}{a}} \\times M^{\\frac{1}{b}} = M^{\\frac{1}{a} + \\frac{1}{b}}$$\n$\\frac{1}{a} + \\frac{1}{b} = \\frac{1}{c}$이므로\n$$35 = M^{\\frac{1}{c}}$$\n그런데 $k = M^{\\frac{1}{c}}$이므로\n$$k = 35$$\n\n[오답 및 경계 점검]\n$ab = c(a+b)$에서 $\\frac{a+b}{ab} = \\frac{1}{c}$로 직접 $M^{\\frac{a+b}{ab}} = M^{\\frac{1}{c}} = k$임을 확인할 수도 있다.\n\n[결론]\n$35$"
   },
   {
     "id": 17,
@@ -458,7 +458,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q17.png\" />\n오른쪽 그림과 같은 $5$개의 칸에 $5$개의 수 $\\log_a 2$, $\\log_a 4$, $\\log_a 8$, $\\log_a 32$, $\\log_a 128$을 한 칸에 $1$개씩 적는다. 가로로 나열된 $3$개의 칸에 적힌 세 수의 합과 세로로 나열된 $3$개의 칸에 적힌 세 수의 합이 $15$로 서로 같을 때, $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2^{\\frac{2}{3}}$ (또는 $\\sqrt[3]{4}$)",
+    "solution": "[풀이 전략]\n주어진 $5$개의 수를 밑의 변환과 로그의 성질을 이용하여 $\\log_a 2$의 배수로 표현한다:\n$$\\log_a 2 = k \\quad (k>0)$$\n다섯 수는 각각 $k, 2k, 3k, 5k, 7k$가 된다.\n가로 세 수의 합과 세로 세 수의 합이 같다는 조건에서 정중앙의 공통 칸에 들어갈 수를 결정하고, 합이 $15$임을 이용하여 $k$의 값과 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [다섯 수를 $k = \\log_a 2$로 나타내기]:\n- $\\log_a 2 = k$\n- $\\log_a 4 = \\log_a 2^2 = 2k$\n- $\\log_a 8 = \\log_a 2^3 = 3k$\n- $\\log_a 32 = \\log_a 2^5 = 5k$\n- $\\log_a 128 = \\log_a 2^7 = 7k$\n다섯 수의 총합은\n$$k + 2k + 3k + 5k + 7k = 18k$$\n\n2단계 [중앙 칸에 적힐 수 결정]:\n십자형 그림에서 가로 세 수의 칸을 $A, B, C$, 세로 세 수의 칸을 $D, B, E$라 하면 중앙 칸 $B$는 공통으로 들어간다.\n$$A + B + C = D + B + E = 15$$\n양변에서 $B$를 빼면\n$$A + C = D + E$$\n남은 네 수의 합이 서로 같게 묶이려면, ${k, 2k, 3k, 5k, 7k}$ 중 한 수를 제외한 네 수의 합이 짝수여야 하고 둘씩 짝지어 합이 같아야 한다.\n- $k + 7k = 8k$, $3k + 5k = 8k$이므로 남은 네 수의 합이 각각 $8k$로 일치한다.\n따라서 중앙 칸 $B$에 들어가야 할 수는 제외된 수인 $2k$, 즉 $\\log_a 4$이다.\n\n3단계 [한 줄의 합으로부터 $k$ 및 $a$ 계산]:\n한 줄의 합은 $(A + C) + B = 8k + 2k = 10k$이다.\n이 합이 $15$이므로\n$$10k = 15 \\implies k = \\frac{15}{10} = \\frac{3}{2}$$\n$k = \\log_a 2$이므로\n$$\\log_a 2 = \\frac{3}{2} \\implies a^{\\frac{3}{2}} = 2$$\n양변을 $\\frac{2}{3}$제곱하면\n$$a = 2^{\\frac{2}{3}} = \\sqrt[3]{2^2} = \\sqrt[3]{4}$$\n\n[오답 및 경계 점검]\n$a^{\\frac{3}{2}} = 2$에서 $a = 2^{\\frac{2}{3}}$이 됨을 확인하고, $a>1$ 조건(밑 조건 및 $k>0$)과도 부합함을 검증한다.\n\n[결론]\n$2^{\\frac{2}{3}}$ (또는 $\\sqrt[3]{4}$)"
   },
   {
     "id": 18,
@@ -486,7 +486,7 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
+    "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "서술형",
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n$1$보다 큰 두 실수 $a$와 $b$에 대하여\n$$\\log_{\\sqrt{2}} a = \\log_4 ab$$\n가 성립할 때, $\\log_a b$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n밑이 $\\sqrt{2}$와 $4$로 서로 다르므로, 밑변환 공식 또는 거듭제곱 성질 $\\log_{a^n} b = \\frac{1}{n}\\log_a b$를 이용하여 두 로그의 밑을 $2$로 통일한다.\n$\\log_2 a$와 $\\log_2 b$ 사이의 관계식을 도출한 후, 구하고자 하는 $\\log_a b = \\frac{\\log_2 b}{\\log_2 a}$의 값을 계산한다.\n\n[단계별 풀이]\n1단계 [좌변과 우변의 밑을 $2$로 통일하기]:\n- 좌변:\n$$\\log_{\\sqrt{2}} a = \\log_{2^{\\frac{1}{2}}} a = \\frac{1}{\\frac{1}{2}} \\log_2 a = 2\\log_2 a$$\n- 우변:\n$$\\log_4 ab = \\log_{2^2} (ab) = \\frac{1}{2} \\log_2 (ab) = \\frac{1}{2}(\\log_2 a + \\log_2 b)$$\n\n2단계 [등식을 정리하여 $\\log_2 b$와 $\\log_2 a$의 관계식 구하기]:\n좌변과 우변이 같으므로\n$$2\\log_2 a = \\frac{1}{2}\\log_2 a + \\frac{1}{2}\\log_2 b$$\n양변에 $2$를 곱하면\n$$4\\log_2 a = \\log_2 a + \\log_2 b$$\n$$\\log_2 b = 3\\log_2 a$$\n\n3단계 [$\\log_a b$의 값 계산]:\n밑변환 공식에 의해\n$$\\log_a b = \\frac{\\log_2 b}{\\log_2 a}$$\n$\\log_2 b = 3\\log_2 a$를 대입하면 ($a>1$이므로 $\\log_2 a \\ne 0$)\n$$\\log_a b = \\frac{3\\log_2 a}{\\log_2 a} = 3$$\n\n[오답 및 경계 점검]\n$a>1, b>1$이므로 $\\log_2 a > 0, \\log_2 b > 0$이며, 분모가 $0$이 되지 않으므로 나눗셈이 적법하게 성립한다.\n\n[결론]\n$3$"
   }
 ];

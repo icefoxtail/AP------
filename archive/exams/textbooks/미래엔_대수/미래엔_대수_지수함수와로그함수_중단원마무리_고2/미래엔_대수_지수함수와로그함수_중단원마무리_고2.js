@@ -10,8 +10,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 각 함수에 대하여 그래프를 그리고, 점근선을 구하시오.\n⑴ $y=-5^x$\n⑵ $y=\\log_2 (-x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 풀이 참조, 점근선: $y=0$, ⑵ 풀이 참조, 점근선: $x=0$",
+    "solution": "[풀이 전략]\n기본 함수 $y=a^x$, $y=\\log_a x$의 그래프와 대칭이동의 성질을 적용한다.\n- ⑴ $y=-5^x$는 지수함수 $y=5^x$의 그래프를 $x$축에 대하여 대칭이동($y \\to -y$)한 것이다. 지수함수의 치역과 점근선의 위치를 파악한다.\n- ⑵ $y=\\log_2 (-x)$는 로그함수 $y=\\log_2 x$의 그래프를 $y$축에 대하여 대칭이동($x \\to -x$)한 것이다. 진수 조건을 통해 정의역과 점근선의 방정식을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $y=-5^x$의 그래프와 점근선]:\n기본 지수함수 $y=5^x$는 점 $(0, 1)$을 지나고 $x$축($y=0$)을 점근선으로 가지며 우상향하는 증가함수이다.\n$y=-5^x$는 이를 $x$축에 대하여 대칭이동한 것이므로, 점 $(0, -1)$을 지나고 제4사분면으로 감소하는 곡선이다.\n$x \\to \\infty$일 때 $y \\to -\\infty$, $x \\to -\\infty$일 때 $y \\to 0^-$으로 다가가므로, 점근선의 방정식은 $y=0$ ($x$축)이다.\n\n2단계 [⑵ $y=\\log_2 (-x)$의 그래프와 점근선]:\n진수 조건에 의해 $-x > 0 \\implies x < 0$이므로 정의되는 영역은 $y$축의 왼쪽(제2, 3사분면)이다.\n기본 로그함수 $y=\\log_2 x$의 그래프를 $y$축에 대하여 대칭이동한 것이므로, 점 $(-1, 0)$을 지나고 $x \\to 0^-$일 때 $y \\to -\\infty$로 발산하며 $x \\to -\\infty$일 때 $y \\to \\infty$로 완만하게 증가한다.\n따라서 그래프가 한없이 가까워지는 점근선의 방정식은 $x=0$ ($y$축)이다.\n\n[오답 및 경계 점검]\n- $y=-5^x$에서 음의 부호는 밑 $5$의 지수에 붙은 것이 아니라 함수값 전체에 붙은 $-(5^x)$이다. $5^{-x} = (1/5)^x$와 혼동하지 않도록 주의한다.\n- 로그함수의 점근선은 진수가 $0$이 되는 직선이므로 $-x=0 \\implies x=0$이다.\n\n[결론]\n⑴ 풀이 참조, 점근선: $y=0$, ⑵ 풀이 참조, 점근선: $x=0$"
   },
   {
     "id": 2,
@@ -38,8 +38,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 두 수의 대소를 비교하시오.\n⑴ $\\sqrt{2},\\ \\sqrt[5]{4}$\n⑵ $\\log_{\\frac{1}{3}} 6,\\ 2\\log_{\\frac{1}{3}} 2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sqrt{2} > \\sqrt[5]{4}$, ⑵ $\\log_{\\frac{1}{3}} 6 < 2\\log_{\\frac{1}{3}} 2$",
+    "solution": "[풀이 전략]\n밑을 통일한 후 지수함수와 로그함수의 단조증감 성질을 이용하여 대소를 비교한다.\n- 밑 $a>1$일 때: $x_1 < x_2 \\iff a^{x_1} < a^{x_2}$, $\\log_a x_1 < \\log_a x_2$ (증가함수)\n- 밑 $0<a<1$일 때: $x_1 < x_2 \\iff a^{x_1} > a^{x_2}$, $\\log_a x_1 > \\log_a x_2$ (감소함수)\n\n[단계별 풀이]\n1단계 [⑴ $\\sqrt{2}$와 $\\sqrt[5]{4}$의 밑 통일 및 지수 비교]:\n두 수를 밑이 $2$인 거듭제곱으로 나타낸다:\n$$\\sqrt{2} = 2^{\\frac{1}{2}} = 2^{\\frac{5}{10}}$$\n$$\\sqrt[5]{4} = \\sqrt[5]{2^2} = 2^{\\frac{2}{5}} = 2^{\\frac{4}{10}}$$\n지수함수 $y=2^x$는 밑이 $2>1$이므로 지수가 클수록 함숫값이 크다.\n$\\frac{5}{10} > \\frac{4}{10}$, 즉 $\\frac{1}{2} > \\frac{2}{5}$이므로:\n$$2^{\\frac{1}{2}} > 2^{\\frac{2}{5}} \\implies \\sqrt{2} > \\sqrt[5]{4}$$\n\n2단계 [⑵ $\\log_{\\frac{1}{3}} 6$과 $2\\log_{\\frac{1}{3}} 2$의 밑 통일 및 진수 비교]:\n로그의 성질에 의해 앞의 계수 $2$를 진수의 지수로 올린다:\n$$2\\log_{\\frac{1}{3}} 2 = \\log_{\\frac{1}{3}} (2^2) = \\log_{\\frac{1}{3}} 4$$\n로그함수 $y=\\log_{\\frac{1}{3}} x$는 밑이 $0 < \\frac{1}{3} < 1$이므로 진수가 클수록 함숫값은 작아지는 감소함수이다.\n진수를 비교하면 $6 > 4$이므로:\n$$\\log_{\\frac{1}{3}} 6 < \\log_{\\frac{1}{3}} 4 \\implies \\log_{\\frac{1}{3}} 6 < 2\\log_{\\frac{1}{3}} 2$$\n\n[오답 및 경계 점검]\n- 로그의 밑이 $0 < a < 1$일 때는 부등호 방향이 진수의 대소 관계와 반대로 바뀐다는 점에 유의한다.\n\n[결론]\n⑴ $\\sqrt{2} > \\sqrt[5]{4}$, ⑵ $\\log_{\\frac{1}{3}} 6 < 2\\log_{\\frac{1}{3}} 2$"
   },
   {
     "id": 3,
@@ -66,8 +66,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $3^{x-1}=81$\n⑵ $\\left(\\frac{3}{4}\\right)^{x^2} = \\left(\\frac{4}{3}\\right)^{2x-3}$\n⑶ $\\log_2 (x+1) = -3$\n⑷ $\\log(x+1) + \\log(x-1) = 0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=5$, ⑵ $x=-3$ 또는 $x=1$, ⑶ $x=-\\frac{7}{8}$, ⑷ $x=\\sqrt{2}$",
+    "solution": "[풀이 전략]\n- 지수방정식: 밑을 같게 맞추어 지수끼리 같다는 방정식을 세운다.\n- 로그방정식: 반드시 먼저 진수 조건(진수 $>0$)을 구한 후, 로그의 성질을 이용하여 로그를 풀고 조건을 만족하는 해를 선택한다.\n\n[단계별 풀이]\n1단계 [⑴ $3^{x-1}=81$]:\n$81 = 3^4$이므로 $3^{x-1} = 3^4$이다.\n밑이 $3$으로 같으므로 $x-1 = 4 \\implies x = 5$\n\n2단계 [⑵ $\\left(\\frac{3}{4}\\right)^{x^2} = \\left(\\frac{4}{3}\\right)^{2x-3}$]:\n$\\frac{4}{3} = \\left(\\frac{3}{4}\\right)^{-1}$이므로:\n$$\\left(\\frac{3}{4}\\right)^{x^2} = \\left(\\left(\\frac{3}{4}\\right)^{-1}\\right)^{2x-3} = \\left(\\frac{3}{4}\\right)^{-(2x-3)}$$\n밑이 $\\frac{3}{4}$로 같으므로 지수가 같다:\n$$x^2 = -2x + 3 \\implies x^2 + 2x - 3 = 0$$\n$$(x + 3)(x - 1) = 0 \\implies x = -3 \\quad \\text{또는} \\quad x = 1$$\n\n3단계 [⑶ $\\log_2 (x+1) = -3$]:\n진수 조건: $x+1 > 0 \\implies x > -1$\n로그의 정의에 의해:\n$$x+1 = 2^{-3} = \\frac{1}{8} \\implies x = \\frac{1}{8} - 1 = -\\frac{7}{8}$$\n$-\\frac{7}{8} > -1$이므로 진수 조건을 만족한다.\n\n4단계 [⑷ $\\log(x+1) + \\log(x-1) = 0$]:\n진수 조건: $x+1 > 0$이고 $x-1 > 0 \\implies x > 1$\n로그의 합을 진수의 곱으로 정리하면:\n$$\\log((x+1)(x-1)) = 0 \\implies \\log(x^2 - 1) = 0$$\n로그값이 $0$이므로 진수는 $1$이다:\n$$x^2 - 1 = 1 \\implies x^2 = 2 \\implies x = \\pm\\sqrt{2}$$\n진수 조건 $x > 1$에 의해 $x = \\sqrt{2}$만 해가 된다.\n\n[오답 및 경계 점검]\n- ⑷번에서 $x = -\\sqrt{2}$는 $x+1 < 0, x-1 < 0$이 되어 원래 식의 각 로그가 정의되지 않는 무연근이므로 반드시 배제해야 한다.\n\n[결론]\n⑴ $x=5$, ⑵ $x=-3$ 또는 $x=1$, ⑶ $x=-\\frac{7}{8}$, ⑷ $x=\\sqrt{2}$"
   },
   {
     "id": 4,
@@ -94,8 +94,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 부등식을 푸시오.\n⑴ $2^{x+1} \\le 16$\n⑵ $\\left(\\frac{1}{5}\\right)^{2x} > \\frac{1}{125}$\n⑶ $\\log_3(x+2) < 3$\n⑷ $\\log_{\\frac{1}{2}}(x-1) \\ge 3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x \\le 3$, ⑵ $x < \\frac{3}{2}$, ⑶ $-2 < x < 25$, ⑷ $1 < x \\le \\frac{9}{8}$",
+    "solution": "[풀이 전략]\n- 지수부등식: 밑이 $1$보다 크면 지수의 부등호 방향 유지, $0$과 $1$ 사이이면 지수의 부등호 방향 반대.\n- 로그부등식: 반드시 진수 조건($>0$)을 먼저 설정하고, 밑의 범위에 따라 부등호 방향을 결정한 후 공통 범위를 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $2^{x+1} \\le 16$]:\n$16 = 2^4$이므로 $2^{x+1} \\le 2^4$.\n밑이 $2>1$이므로:\n$$x+1 \\le 4 \\implies x \\le 3$$\n\n2단계 [⑵ $\\left(\\frac{1}{5}\\right)^{2x} > \\frac{1}{125}$]:\n$\\frac{1}{125} = \\left(\\frac{1}{5}\\right)^3$이므로 $\\left(\\frac{1}{5}\\right)^{2x} > \\left(\\frac{1}{5}\\right)^3$.\n밑이 $0 < \\frac{1}{5} < 1$이므로 부등호 방향이 바뀐다:\n$$2x < 3 \\implies x < \\frac{3}{2}$$\n\n3단계 [⑶ $\\log_3(x+2) < 3$]:\n- 진수 조건: $x+2 > 0 \\implies x > -2$ $\\quad \\cdots$ ①\n- 부등식 풀이: $3 = \\log_3 (3^3) = \\log_3 27$이므로 $\\log_3(x+2) < \\log_3 27$.\n밑이 $3>1$이므로:\n$$x+2 < 27 \\implies x < 25 \\quad \\cdots \\text{②}$$\n①과 ②의 공통 범위: $-2 < x < 25$\n\n4단계 [⑷ $\\log_{\\frac{1}{2}}(x-1) \\ge 3$]:\n- 진수 조건: $x-1 > 0 \\implies x > 1$ $\\quad \\cdots$ ①\n- 부등식 풀이: $3 = \\log_{\\frac{1}{2}} \\left(\\frac{1}{2}\\right)^3 = \\log_{\\frac{1}{2}} \\frac{1}{8}$이므로 $\\log_{\\frac{1}{2}}(x-1) \\ge \\log_{\\frac{1}{2}} \\frac{1}{8}$.\n밑이 $0 < \\frac{1}{2} < 1$이므로 부등호 방향이 반대로 바뀐다:\n$$x-1 \\le \\frac{1}{8} \\implies x \\le \\frac{9}{8} \\quad \\cdots \\text{②}$$\n①과 ②의 공통 범위: $1 < x \\le \\frac{9}{8}$\n\n[오답 및 경계 점검]\n- 로그부등식 ⑶, ⑷에서 진수 조건을 누락하여 각각 $x<25$, $x \\le 9/8$로만 작성하면 감점 또는 오답이 되므로 진수 양수 조건을 반드시 교집합해야 한다.\n\n[결론]\n⑴ $x \\le 3$, ⑵ $x < \\frac{3}{2}$, ⑶ $-2 < x < 25$, ⑷ $1 < x \\le \\frac{9}{8}$"
   },
   {
     "id": 5,
@@ -122,8 +122,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=2^x$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $m$만큼 평행이동한 그래프가 원점을 지날 때, $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{8}$",
+    "solution": "[풀이 전략]\n도형의 평행이동 공식($x \\to x-p, y \\to y-q$)을 함수식에 대입하여 평행이동된 식을 구한 후, 원점 $(0, 0)$의 좌표를 대입하여 상수 $m$을 구한다.\n\n[단계별 풀이]\n1단계 [평행이동한 함수의 식 구하기]:\n함수 $y=2^x$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $m$만큼 평행이동하면 $x$ 대신 $x-3$, $y$ 대신 $y-m$을 대입한다:\n$$y - m = 2^{x-3} \\implies y = 2^{x-3} + m$$\n\n2단계 [원점 대입하여 $m$ 계산]:\n이 그래프가 원점 $(0, 0)$을 지나므로 $x=0, y=0$을 대입한다:\n$$0 = 2^{0-3} + m$$\n$$0 = 2^{-3} + m$$\n$$2^{-3} = \\frac{1}{8}\\text{이므로} \\quad 0 = \\frac{1}{8} + m \\implies m = -\\frac{1}{8}$$\n\n[오답 및 경계 점검]\n- $2^{-3} = \\frac{1}{2^3} = \\frac{1}{8}$이므로 부호 계산 시 $m = -\\frac{1}{8}$이 된다.\n\n[결론]\n$-\\frac{1}{8}$"
   },
   {
     "id": 6,
@@ -150,8 +150,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\left(\\frac{1}{5}\\right)^{x-1}+k$의 그래프가 제$1$사분면을 지나지 않도록 하는 상수 $k$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "[풀이 전략]\n밑이 $0 < \\frac{1}{5} < 1$인 지수함수는 실수 전체에서 감소함수이다.\n그래프가 제$1$사분면($x>0, y>0$)을 지나지 않으려면 $x>0$인 모든 영역에서 $y \\le 0$이어야 한다.\n감소함수이므로 $x>0$에서의 최댓값은 $x \\to 0^+$일 때의 극한값, 즉 $y$절편이다. 따라서 $y$절편이 $0$ 이하이어야 한다.\n\n[단계별 풀이]\n1단계 [함수의 단조성 파악]:\n함수 $y = \\left(\\frac{1}{5}\\right)^{x-1} + k$에서 밑이 $\\frac{1}{5} < 1$이므로 $x$가 증가하면 $y$는 지속적으로 감소한다.\n\n2단계 [제1사분면을 지나지 않는 조건 설정]:\n감소함수가 $x>0$에서 양의 함숫값을 갖지 않으려면, $x=0$일 때의 함숫값($y$절편)이 $0$ 이하이어야 한다:\n$$y(0) \\le 0$$\n\n3단계 [$k$의 범위 도출]:\n$$y(0) = \\left(\\frac{1}{5}\\right)^{0-1} + k = \\left(\\frac{1}{5}\\right)^{-1} + k = 5 + k$$\n따라서\n$$5 + k \\le 0 \\implies k \\le -5$$\n그러므로 상수 $k$의 최댓값은 $-5$이다.\n\n[오답 및 경계 점검]\n- 원점 $(0, 0)$이나 축 위의 점은 사분면에 포함되지 않으므로 $y(0)=0$인 경우도 제1사분면을 지나지 않는다. 따라서 등호($\\le$)가 포함되어 최댓값은 $-5$가 된다.\n\n[결론]\n$-5$"
   },
   {
     "id": 7,
@@ -178,8 +178,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q07.png\" />\n오른쪽 그림과 같이 지수함수 $y=a^x\\ (0<a<1)$의 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$, 직선 $x=3$과 만나는 점을 $\\mathrm{B}$라 하자. 원점 $\\mathrm{O}$와 점 $\\mathrm{C}(3, 0)$에 대하여 $\\square\\mathrm{OCBA}$의 넓이가 $2$일 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{\\sqrt[3]{3}}$",
+    "solution": "[풀이 전략]\n점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{O}$의 좌표를 함수식을 통해 구한다.\n$\\overline{\\mathrm{OA}}$와 $\\overline{\\mathrm{CB}}$는 모두 $y$축에 평행하거나 $y$축 위에 있으므로 평행하다.\n따라서 사각형 $\\mathrm{OCBA}$는 사다리꼴이며, 사다리꼴의 넓이 공식을 세워 $a$에 대한 방정식을 푼다.\n\n[단계별 풀이]\n1단계 [각 점의 좌표 구하기]:\n- 원점: $\\mathrm{O}(0, 0)$, 점 $\\mathrm{C}$: $\\mathrm{C}(3, 0)$\n- 점 $\\mathrm{A}$: $y=a^x$의 $y$절편이므로 $x=0$을 대입하면 $y = a^0 = 1 \\implies \\mathrm{A}(0, 1)$\n- 점 $\\mathrm{B}$: $y=a^x$와 직선 $x=3$의 교점이므로 $x=3$을 대입하면 $y = a^3 \\implies \\mathrm{B}(3, a^3)$\n\n2단계 [사다리꼴 $\\mathrm{OCBA}$의 넓이 식 세우기]:\n$\\overline{\\mathrm{OA}}$와 $\\overline{\\mathrm{CB}}$가 평행하고 $x$축과 수직이다.\n- 밑변 $\\overline{\\mathrm{OA}} = 1 - 0 = 1$\n- 윗변 $\\overline{\\mathrm{CB}} = a^3 - 0 = a^3$\n- 높이 $\\overline{\\mathrm{OC}} = 3 - 0 = 3$\n사다리꼴의 넓이 $S$는:\n$$S = \\frac{1}{2} (\\overline{\\mathrm{OA}} + \\overline{\\mathrm{CB}}) \\times \\overline{\\mathrm{OC}} = \\frac{1}{2} (1 + a^3) \\times 3 = \\frac{3}{2}(1 + a^3)$$\n\n3단계 [$a$의 값 구하기]:\n넓이가 $2$이므로:\n$$\\frac{3}{2}(1 + a^3) = 2 \\implies 1 + a^3 = \\frac{4}{3}$$\n$$a^3 = \\frac{4}{3} - 1 = \\frac{1}{3}$$\n$a$는 실수이고 $0 < a < 1$이므로:\n$$a = \\sqrt[3]{\\frac{1}{3}} = \\frac{1}{\\sqrt[3]{3}} \\quad \\left(\\text{또는 } \\frac{\\sqrt[3]{9}}{3}\\right)$$\n\n[오답 및 경계 점검]\n- $a^3 = 1/3$에서 $0 < 1/\\sqrt[3]{3} < 1$이므로 문제의 조건 $0<a<1$을 완벽히 만족한다.\n\n[결론]\n$\\frac{1}{\\sqrt[3]{3}}$"
   },
   {
     "id": 8,
@@ -206,8 +206,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q08.png\" />\n함수 $y=\\log_3 (x+a)+b$의 그래프가 오른쪽 그림과 같을 때, 두 상수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3,\\; b=1$",
+    "solution": "[풀이 전략]\n로그함수 $y=\\log_3 (x+a)+b$의 그래프에서 다음 두 정보를 파악한다:\n1. 점근선의 방정식: 진수가 $0$이 되는 직선 $x+a=0 \\implies x=-a$\n2. 그래프가 지나는 특정한 점의 좌표를 대입하여 $b$를 구한다.\n\n[단계별 풀이]\n1단계 [점근선으로부터 $a$ 구하기]:\n주어진 그래프의 점근선은 직선 $x=-3$이다.\n함수 $y=\\log_3 (x+a)+b$의 점근선은 $x+a=0$, 즉 $x=-a$이므로:\n$$-a = -3 \\implies a = 3$$\n따라서 함수식은 $y = \\log_3 (x+3) + b$이다.\n\n2단계 [지나는 점으로부터 $b$ 구하기]:\n그래프가 점 $(0, 2)$를 지난다.\n$x=0, y=2$를 대입하면:\n$$2 = \\log_3 (0+3) + b$$\n$$2 = \\log_3 3 + b$$\n$\\log_3 3 = 1$이므로:\n$$2 = 1 + b \\implies b = 1$$\n\n3단계 [결과 확인]:\n$a=3, b=1$일 때 $y = \\log_3(x+3)+1$이다.\n점근선은 $x=-3$이고, $x=0$일 때 $y=\\log_3 3 + 1 = 2$, $x=-2$일 때 $y=\\log_3 1 + 1 = 1$로 그래프의 형태와 완벽히 일치한다.\n\n[오답 및 경계 점검]\n- 점근선의 방정식 $x=-a$에서 부호 실수를 주의한다.\n\n[결론]\n$a=3,\\; b=1$"
   },
   {
     "id": 9,
@@ -234,8 +234,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "정의역이 $\\{x \\mid -1 \\le x \\le 3\\}$일 때, 다음 함수의 최댓값과 최솟값을 구하시오.\n⑴ $y=\\left(\\frac{1}{2}\\right)^{-x+1}-4$\n⑵ $y=\\log_{\\frac{1}{3}}(2x+3)-1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 최댓값: $0$, 최솟값: $-\\frac{15}{4}$, ⑵ 최댓값: $-1$, 최솟값: $-3$",
+    "solution": "[풀이 전략]\n주어진 닫힌구간 $[-1, 3]$에서 각 함수의 밑을 확인하여 단조 증가 또는 단조 감소 함수임을 파악한 후, 양 끝값을 대입하여 최댓값과 최솟값을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $y=\\left(\\frac{1}{2}\\right)^{-x+1}-4$의 단조성 및 최댓값·최솟값]:\n지수식을 변형하면:\n$$y = \\left(2^{-1}\\right)^{-(x-1)} - 4 = 2^{x-1} - 4$$\n밑이 $2>1$이므로 이 함수는 $x$가 증가할 때 $y$도 증가하는 증가함수이다.\n- $x=3$일 때 최댓값을 갖는다:\n$$\\text{최댓값} = 2^{3-1} - 4 = 2^2 - 4 = 4 - 4 = 0$$\n- $x=-1$일 때 최솟값을 갖는다:\n$$\\text{최솟값} = 2^{-1-1} - 4 = 2^{-2} - 4 = \\frac{1}{4} - 4 = -\\frac{15}{4}$$\n\n2단계 [⑵ $y=\\log_{\\frac{1}{3}}(2x+3)-1$의 단조성 및 최댓값·최솟값]:\n진수 $u = 2x+3$은 $x$가 증가하면 증가하는 일차함수이다.\n$x \\in [-1, 3]$에서 $u$의 범위는:\n$x=-1$일 때 $u = 2(-1)+3 = 1$\n$x=3$일 때 $u = 2(3)+3 = 9$\n즉, $1 \\le u \\le 9$ (진수 조건 $u>0$ 만족)\n밑이 $0 < \\frac{1}{3} < 1$이므로 함수 $y = \\log_{\\frac{1}{3}} u - 1$은 $u$가 증가할수록 감소하는 감소함수이다.\n- 진수가 최소인 $u=1$ ($x=-1$)일 때 최댓값을 갖는다:\n$$\\text{최댓값} = \\log_{\\frac{1}{3}} 1 - 1 = 0 - 1 = -1$$\n- 진수가 최대인 $u=9$ ($x=3$)일 때 최솟값을 갖는다:\n$$\\text{최솟값} = \\log_{\\frac{1}{3}} 9 - 1 = \\log_{3^{-1}} (3^2) - 1 = -2 - 1 = -3$$\n\n[오답 및 경계 점검]\n- ⑴번에서 밑이 $\\frac{1}{2}$이지만 지수가 $-x+1$이므로 실제 밑은 $2$가 되어 증가함수가 된다는 점을 놓치지 않아야 한다.\n\n[결론]\n⑴ 최댓값: $0$, 최솟값: $-\\frac{15}{4}$, ⑵ 최댓값: $-1$, 최솟값: $-3$"
   },
   {
     "id": 10,
@@ -262,8 +262,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n함수 $y=\\log_a x+b\\ (a>1)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 두 점에서 만나고, 두 교점의 $x$좌표가 $1$과 $3$일 때, 두 상수 $a$와 $b$에 대하여 $ab$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{3}$",
+    "solution": "[풀이 전략]\n$a>1$일 때 로그함수 $y=\\log_a x+b$는 증가함수이므로, 원래 함수와 역함수의 교점은 직선 $y=x$ 위에만 존재한다.\n따라서 교점의 $x$좌표가 $1$과 $3$이면 두 교점의 좌표는 각각 $(1, 1)$, $(3, 3)$이다. 이를 함수식에 대입하여 $a$와 $b$를 구한다.\n\n[단계별 풀이]\n1단계 [교점의 좌표 결정]:\n밑이 $a>1$이므로 함수 $f(x) = \\log_a x+b$는 증가함수이다.\n증가함수와 그 역함수의 그래프의 교점은 직선 $y=x$ 위에 위치하므로, 두 교점의 $x$좌표가 $1$과 $3$이면 두 교점의 좌표는 각각 $(1, 1)$, $(3, 3)$이다.\n\n2단계 [점 $(1, 1)$을 대입하여 $b$ 구하기]:\n$f(1) = 1$이므로:\n$$\\log_a 1 + b = 1$$\n$\\log_a 1 = 0$이므로:\n$$b = 1$$\n\n3단계 [점 $(3, 3)$을 대입하여 $a$ 구하기]:\n$f(3) = 3$이고 $b=1$이므로:\n$$\\log_a 3 + 1 = 3 \\implies \\log_a 3 = 2$$\n로그의 정의에 의해:\n$$a^2 = 3$$\n$a>1$이므로:\n$$a = \\sqrt{3}$$\n\n4단계 [$ab$의 값 계산]:\n$$ab = \\sqrt{3} \\times 1 = \\sqrt{3}$$\n\n[오답 및 경계 점검]\n- $a^2=3$에서 $a>1$ 조건에 의해 음수 및 $1$ 이하의 값은 배제되고 $a=\\sqrt{3}$만 성립한다.\n\n[결론]\n$\\sqrt{3}$"
   },
   {
     "id": 11,
@@ -290,8 +290,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "화재가 발생한 건물의 온도는 시간에 따라 변한다. 어떤 건물의 초기 온도를 $T_0\\ ^\\circ\\mathrm{C}$, 화재가 발생한 지 $t$분 후의 온도를 $T\\ ^\\circ\\mathrm{C}$라 할 때, 다음이 성립한다고 한다.\n$$T=T_0+k\\log(8t+1)\\quad (\\text{단, } k\\text{는 상수})$$\n초기 온도가 $25\\ ^\\circ\\mathrm{C}$인 이 건물에서 화재가 발생한 지 $\\frac{9}{8}$분 후의 온도가 $235\\ ^\\circ\\mathrm{C}$이었을 때, 온도가 $445\\ ^\\circ\\mathrm{C}$가 되는 것은 화재가 발생한 지 몇 분 후인지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{99}{8}$분",
+    "solution": "[풀이 전략]\n주어진 조건 $T_0 = 25$와 $t = \\frac{9}{8}$일 때 $T = 235$를 대입하여 비례상수 $k$를 먼저 구한다.\n그 후 $T = 445$를 만족시키는 $t$의 값을 상용로그 방정식을 풀어 결정한다.\n\n[단계별 풀이]\n1단계 [상수 $k$의 값 구하기]:\n초기 온도 $T_0 = 25$이고, $t = \\frac{9}{8}$일 때 $T = 235$이므로 관계식에 대입한다:\n$$235 = 25 + k\\log\\left(8 \\times \\frac{9}{8} + 1\\right)$$\n$$235 - 25 = k\\log(9 + 1)$$\n$$210 = k\\log 10$$\n$\\log 10 = 1$이므로:\n$$k = 210$$\n따라서 건물의 온도 관계식은 다음과 같다:\n$$T = 25 + 210\\log(8t+1)$$\n\n2단계 [온도가 $445\\ ^\\circ\\mathrm{C}$가 되는 시간 $t$ 구하기]:\n$T = 445$를 대입한다:\n$$445 = 25 + 210\\log(8t+1)$$\n$$420 = 210\\log(8t+1)$$\n양변을 $210$으로 나눈다:\n$$\\log(8t+1) = \\frac{420}{210} = 2$$\n상용로그의 정의(밑 $10$)에 의해:\n$$8t + 1 = 10^2 = 100$$\n$$8t = 99 \\implies t = \\frac{99}{8}$$\n\n[오답 및 경계 점검]\n- $\\log(8t+1) = 2$에서 $8t+1 = 10^2 = 100$이 되는 상용로그 밑($10$)을 정확히 적용한다.\n\n[결론]\n$\\frac{99}{8}$분"
   },
   {
     "id": 12,
@@ -318,8 +318,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0<a<1$일 때, 정의역이 $\\{x \\mid -2 \\le x \\le 3\\}$인 두 함수 $f(x)=a^x$과 $g(x)=\\left(\\frac{1}{a^2}\\right)^x$에 대하여 $f(x)$의 최댓값을 $M$, $g(x)$의 최솟값을 $m$이라 하자. $Mm=\\frac{1}{4}$일 때, $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n$0<a<1$일 때 두 지수함수의 밑을 비교하여 각 함수의 증가/감소 상태를 판별한다.\n- $f(x) = a^x$: 밑 $0<a<1$이므로 감소함수\n- $g(x) = \\left(\\frac{1}{a^2}\\right)^x$: $0<a<1 \\implies a^2 < 1 \\implies \\frac{1}{a^2} > 1$이므로 증가함수\n이를 통해 최댓값 $M$과 최솟값 $m$을 $a$의 식으로 표현하고 방정식을 푼다.\n\n[단계별 풀이]\n1단계 [$f(x)$의 최댓값 $M$ 구하기]:\n$0<a<1$이므로 $f(x)=a^x$는 감소함수이다.\n정의역 $[-2, 3]$에서 최댓값은 $x=-2$일 때 갖는다:\n$$M = f(-2) = a^{-2}$$\n\n2단계 [$g(x)$의 최솟값 $m$ 구하기]:\n$0<a<1$에서 $0 < a^2 < 1$이므로 그 역수는 $\\frac{1}{a^2} > 1$이다.\n따라서 밑이 $1$보다 크므로 $g(x) = \\left(\\frac{1}{a^2}\\right)^x$는 증가함수이다.\n정의역 $[-2, 3]$에서 최솟값은 $x=-2$일 때 갖는다:\n$$m = g(-2) = \\left(\\frac{1}{a^2}\\right)^{-2} = \\left(a^{-2}\\right)^{-2} = a^4$$\n\n3단계 [$Mm = \\frac{1}{4}$을 이용하여 $a$ 구하기]:\n$$Mm = a^{-2} \\times a^4 = a^2$$\n문제에서 $Mm = \\frac{1}{4}$이므로:\n$$a^2 = \\frac{1}{4}$$\n$0<a<1$이므로:\n$$a = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n- $a^2 = 1/4$에서 $a>0$이므로 $a = 1/2$이며, $0 < 1/2 < 1$ 조건을 만족한다.\n\n[결론]\n$\\frac{1}{2}$"
   },
   {
     "id": 13,
@@ -346,8 +346,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q13.png\" />\n[서술형]\n다음 그림과 같이 두 함수 $y=\\log_2 \\sqrt{kx}$와 $y=\\log_4 \\frac{x}{k}$의 그래프가 직선 $y=1$과 만나는 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 하고, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$를 지나면서 $y$축에 평행한 두 직선이 다른 함수의 그래프와 만나는 점을 각각 $\\mathrm{R}$과 $\\mathrm{S}$라 하자. $\\overline{\\mathrm{PQ}}=6$일 때, 선분 $\\mathrm{RS}$의 길이를 구하는 풀이 과정과 답을 쓰시오. (단, $k>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{10}$",
+    "solution": "[풀이 전략]\n1. 점 $\\mathrm{P}$와 $\\mathrm{Q}$의 좌표를 $y=1$을 대입하여 $k$의 식으로 나타낸다.\n2. $\\overline{\\mathrm{PQ}} = 6$과 $k>0$ 조건을 이용하여 $k$의 값을 결정한다.\n3. 점 $\\mathrm{P}$의 $x$좌표를 $y = \\log_4 \\frac{x}{k}$에 대입하여 $\\mathrm{R}$의 좌표를 구하고, 점 $\\mathrm{Q}$의 $x$좌표를 $y = \\log_2 \\sqrt{kx}$에 대입하여 $\\mathrm{S}$의 좌표를 구한다.\n4. 두 점 사이의 거리 공식을 이용하여 선분 $\\mathrm{RS}$의 길이를 계산한다.\n\n[단계별 풀이]\n1단계 [점 $\\mathrm{P}, \\mathrm{Q}$의 $x$좌표 및 $k$의 값 구하기]:\n- 점 $\\mathrm{P}$: $\\log_2 \\sqrt{kx} = 1 \\implies \\sqrt{kx} = 2 \\implies kx = 4 \\implies x = \\frac{4}{k}$\n- 점 $\\mathrm{Q}$: $\\log_4 \\frac{x}{k} = 1 \\implies \\frac{x}{k} = 4 \\implies x = 4k$\n문제의 그림에서 점 $\\mathrm{Q}$가 점 $\\mathrm{P}$보다 오른쪽에 위치하므로 $4k > \\frac{4}{k}$이다.\n선분 $\\mathrm{PQ}$의 길이가 $6$이므로:\n$$\\overline{\\mathrm{PQ}} = 4k - \\frac{4}{k} = 6$$\n양변에 $k$를 곱하여 정리하면:\n$$4k^2 - 6k - 4 = 0 \\implies 2k^2 - 3k - 2 = 0$$\n$$(2k + 1)(k - 2) = 0$$\n$k>0$이므로:\n$$k = 2$$\n\n2단계 [점 $\\mathrm{P}, \\mathrm{Q}$의 좌표 확정]:\n$k=2$이므로:\n- 점 $\\mathrm{P}$의 $x$좌표: $\\frac{4}{2} = 2 \\implies \\mathrm{P}(2, 1)$\n- 점 $\\mathrm{Q}$의 $x$좌표: $4 \\times 2 = 8 \\implies \\mathrm{Q}(8, 1)$\n\n3단계 [점 $\\mathrm{R}, \\mathrm{S}$의 좌표 구하기]:\n- 점 $\\mathrm{R}$은 $x=2$를 지나고 다른 함수 $y = \\log_4 \\frac{x}{k} = \\log_4 \\frac{x}{2}$ 위의 점이므로:\n$$y = \\log_4 \\frac{2}{2} = \\log_4 1 = 0 \\implies \\mathrm{R}(2, 0)$$\n- 점 $\\mathrm{S}$는 $x=8$을 지나고 다른 함수 $y = \\log_2 \\sqrt{kx} = \\log_2 \\sqrt{2x}$ 위의 점이므로:\n$$y = \\log_2 \\sqrt{2 \\times 8} = \\log_2 \\sqrt{16} = \\log_2 4 = 2 \\implies \\mathrm{S}(8, 2)$$\n\n4단계 [선분 $\\mathrm{RS}$의 길이 계산]:\n$$\\overline{\\mathrm{RS}} = \\sqrt{(8 - 2)^2 + (2 - 0)^2} = \\sqrt{6^2 + 2^2} = \\sqrt{36 + 4} = \\sqrt{40} = 2\\sqrt{10}$$\n\n[오답 및 경계 점검]\n- 점 $\\mathrm{R}$과 점 $\\mathrm{S}$가 만나는 '다른 함수의 그래프'를 혼동하지 않고 각각 교차 대입해야 한다.\n\n[결론]\n$2\\sqrt{10}$"
   },
   {
     "id": 14,
@@ -374,8 +374,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 이차부등식\n$$x^2 - (3^a - 1)x + 3^a + 7 > 0$$\n이 성립하도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a < 2$",
+    "solution": "[풀이 전략]\n이차항의 계수가 $1>0$인 이차부등식이 모든 실수 $x$에 대하여 항상 성립하려면, 이차방정식 $x^2 - (3^a - 1)x + 3^a + 7 = 0$의 그래프가 $x$축과 만나지 않아야 한다.\n즉, 판별식 $D < 0$이어야 한다. 판별식 식에 $3^a = t (t>0)$로 치환하여 $t$에 대한 부등식을 푼 후 $a$의 범위를 구한다.\n\n[단계별 풀이]\n1단계 [판별식 $D < 0$ 조건 설정]:\n모든 실수 $x$에 대하여 $x^2 - (3^a - 1)x + 3^a + 7 > 0$이 항상 성립하려면 판별식 $D < 0$이어야 한다:\n$$D = (3^a - 1)^2 - 4(3^a + 7) < 0$$\n\n2단계 [치환을 통한 부등식 정리]:\n$3^a = t$라 두면, 지수의 성질에 의해 항상 $t > 0$이다.\n$$(t - 1)^2 - 4(t + 7) < 0$$\n전개하여 동류항을 정리하면:\n$$t^2 - 2t + 1 - 4t - 28 < 0$$\n$$t^2 - 6t - 27 < 0$$\n\n3단계 [$t$에 대한 인수분해 및 범위 도출]:\n$$(t + 3)(t - 9) < 0$$\n$t > 0$이므로 $t + 3 > 0$은 항상 양수이다.\n양변을 $t+3$으로 나누면:\n$$t - 9 < 0 \\implies t < 9$$\n따라서 $0 < t < 9$이다.\n\n4단계 [$a$의 범위 구하기]:\n$t = 3^a$이므로:\n$$3^a < 9 = 3^2$$\n밑이 $3>1$이므로 부등호 방향이 유지된다:\n$$a < 2$$\n\n[오답 및 경계 점검]\n- $3^a > 0$은 모든 실수 $a$에 대해 자동으로 성립하므로, $a$의 범위는 $a < 2$만 작성하면 된다.\n\n[결론]\n$a < 2$"
   },
   {
     "id": 15,
@@ -402,8 +402,8 @@ window.questionBank = [
     "category": "지수함수와 로그함수",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-01",
-    "standardUnit": "지수함수와 로그함수",
+    "standardUnitKey": "H22-A-03",
+    "standardUnit": "로그함수",
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q15.png\" />\n이차함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 부등식\n$$\\log_{\\frac{1}{4}} f(x) \\ge -1$$\n을 만족시키는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n1. 로그의 진수 조건: $f(x) > 0$\n2. 로그부등식 풀이: 밑이 $0 < \\frac{1}{4} < 1$이므로 $\\log_{\\frac{1}{4}} f(x) \\ge -1 \\implies f(x) \\le \\left(\\frac{1}{4}\\right)^{-1} = 4$.\n3. 그래프의 대칭성과 절편을 통해 $f(x)>0$과 $f(x) \\le 4$를 만족하는 $x$의 범위를 찾고, 그 안의 정수 $x$의 개수를 센다.\n\n[단계별 풀이]\n1단계 [진수 조건 구하기]:\n로그가 정의되려면 진수가 양수이어야 한다:\n$$f(x) > 0$$\n주어진 그림에서 이차함수 $y=f(x)$의 그래프는 아래로 볼록하며 $x$축과 두 점 $(2, 0), (4, 0)$에서 만난다.\n따라서 $f(x) > 0$을 만족하는 범위는:\n$$x < 2 \\quad \\text{또는} \\quad x > 4 \\quad \\cdots \\text{①}$$\n\n2단계 [부등식 풀이]:\n$$\\log_{\\frac{1}{4}} f(x) \\ge -1$$\n우변을 밑이 $\\frac{1}{4}$인 로그로 나타내면:\n$$-1 = \\log_{\\frac{1}{4}} \\left(\\frac{1}{4}\\right)^{-1} = \\log_{\\frac{1}{4}} 4$$\n따라서\n$$\\log_{\\frac{1}{4}} f(x) \\ge \\log_{\\frac{1}{4}} 4$$\n밑이 $0 < \\frac{1}{4} < 1$이므로 부등호 방향이 반대로 바뀐다:\n$$f(x) \\le 4$$\n\n3단계 [그래프에서 $f(x) \\le 4$의 $x$ 범위 구하기]:\n이차함수 $y=f(x)$의 대칭축은 $x=3$이고, 점 $(0, 4)$와 점 $(6, 4)$를 지난다.\n따라서 $f(x) \\le 4$를 만족시키는 $x$의 범위는:\n$$0 \\le x \\le 6 \\quad \\cdots \\text{②}$$\n\n4단계 [①과 ②의 공통 범위 및 정수 $x$ 개수 구하기]:\n①과 ②를 동시에 만족시키는 $x$의 범위는:\n$$0 \\le x < 2 \\quad \\text{또는} \\quad 4 < x \\le 6$$\n이를 만족시키는 정수 $x$는:\n$$x = 0, 1, 5, 6$$\n따라서 정수 $x$의 개수는 $4$이다.\n\n[오답 및 경계 점검]\n- $f(x)>0$의 진수 조건을 누락할 경우 $x=2, 3, 4$까지 포함되어 오답이 된다. 반드시 진수 조건을 교집합하여 $x=2, 3, 4$를 제외해야 한다.\n\n[결론]\n$4$"
   }
 ];
