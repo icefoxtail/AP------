@@ -18,7 +18,38 @@ def _real_root_rows(poly):
     return [((a+b)/2,int(multiplicity)) for (a,b),multiplicity in poly.intervals(eps=S.Rational(1,10**13))]
 
 
-def _fit_cubic_quartic(plan,coefficients):
+def _quadratic_field_root_rows(poly):
+    """Exact real roots when a polynomial splits into linear factors over its coefficient field."""
+    if poly.is_zero:return []
+    rows=[]
+    try:factors=poly.factor_list()[1]
+    except (NotImplementedError,ValueError,TypeError):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION') from None
+    if not factors or any(factor.degree()!=1 for factor,_ in factors):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION')
+    for factor,multiplicity in factors:
+        leading=factor.nth(1)
+        if leading==0:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION')
+        root=S.cancel(-factor.nth(0)/leading)
+        if root.is_real is not True:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION')
+        rows.append((root,int(multiplicity)))
+    return sorted(rows,key=lambda row:float(row[0]))
+
+
+def _quadratic_field_coefficients(values):
+    """Parse exact coefficients in one square-free Q(sqrt(r)); never approximate or mix fields."""
+    if not isinstance(values,list) or not values or any(not isinstance(value,str) or len(value)>64 for value in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
+    radicands={int(value) for text in values for value in re.findall(r'sqrt\((\d+)\)',text)}
+    if len(radicands)!=1:raise ValueError('INVALID_FRAMING_COEFFICIENTS')
+    radicand=next(iter(radicands))
+    if radicand<=1 or any(power!=1 for power in S.factorint(radicand).values()):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
+    radical=S.sqrt(radicand);field=S.QQ.algebraic_field(radical)
+    try:
+        coefficients=[pp_exact_value(text) for text in values]
+        for coefficient in coefficients:field.from_sympy(coefficient)
+    except (ValueError,TypeError,NotImplementedError):raise ValueError('INVALID_FRAMING_COEFFICIENTS') from None
+    return radical,coefficients
+
+
+def _fit_cubic_quartic(plan,coefficients,radical=None):
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:
         raise ValueError('CUBIC_QUARTIC_REQUIRES_ALL_REALS_SOURCE_DOMAIN')
     original_domain=plan.get('domain')
@@ -27,18 +58,21 @@ def _fit_cubic_quartic(plan,coefficients):
         raise ValueError('INVALID_CUBIC_QUARTIC_DRAW_INTERVAL')
     if not isinstance(original_viewport,list) or len(original_viewport)!=4 or not all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in original_viewport) or not original_viewport[0]<original_viewport[1] or not original_viewport[2]<original_viewport[3]:
         raise ValueError('INVALID_CUBIC_QUARTIC_VIEWPORT')
-    polynomial=S.Poly(sum(S.Rational(c.numerator,c.denominator)*_x**i for i,c in enumerate(coefficients)),_x)
+    expression=sum(S.sympify(c)*_x**i for i,c in enumerate(coefficients))
+    polynomial=S.Poly(expression,_x,**({'extension':radical} if radical is not None else {}))
     degree=polynomial.degree()
     if degree not in (3,4):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_DEGREE')
-    root_intervals=[] if polynomial.is_zero else list(polynomial.intervals(eps=S.Rational(1,10**13)))
-    roots=[((a+b)/2,int(multiplicity)) for (a,b),multiplicity in root_intervals]
+    algebraic=radical is not None
+    root_intervals=[] if algebraic or polynomial.is_zero else list(polynomial.intervals(eps=S.Rational(1,10**13)))
+    roots=_quadratic_field_root_rows(polynomial) if algebraic else [((a+b)/2,int(multiplicity)) for (a,b),multiplicity in root_intervals]
     # Repeated real roots are exact: even multiplicity touches the x-axis (a local extremum on the axis), odd multiplicity crosses with a
     # flattening. A repeated root of degree<=4 is a root of a rational quadratic factor, so its isolating interval is tight; a wider interval
     # would mean the touch point is not representable and the graph is refused instead of drawn at a guessed location.
     for (left,right),multiplicity in root_intervals:
         if multiplicity>=2 and right-left>REPEATED_ROOT_MAX_ISOLATION_WIDTH:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT_IMPRECISE')
-    critical=_real_root_rows(polynomial.diff())
-    inflections=[row for row in _real_root_rows(polynomial.diff().diff()) if row[1]%2==1]
+    critical=_quadratic_field_root_rows(polynomial.diff()) if algebraic else _real_root_rows(polynomial.diff())
+    inflection_rows=_quadratic_field_root_rows(polynomial.diff().diff()) if algebraic else _real_root_rows(polynomial.diff().diff())
+    inflections=[row for row in inflection_rows if row[1]%2==1]
     groups=[]
     def add_feature(exact_x,role,multiplicity_key,multiplicity):
         feature_x=float(exact_x);feature_y=float(polynomial.eval(exact_x))
@@ -134,6 +168,9 @@ def _fit_cubic_quartic(plan,coefficients):
     features=[*math_features,*tail_features]
     feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'EXACT_MULTIPLICITY','tangencyPolicy':'TOUCHES_AXIS_EVEN_CROSSES_ODD','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions,**({'overviewWindowPolicy':'FEATURE_BAND'} if window_policy else {})}
+    if algebraic and 'regions' in plan:
+        rows=piecewise_polynomial_regions(plan,[coefficients],[(None,None)],[],{})
+        fitted['graphRegionFeatures']={'regions':rows}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 # ---- graphPlan.hideLabels / graphPlan.formulaTex of a single rational or square-root curve (G18a) ---------------------------------------------------------
@@ -247,7 +284,7 @@ def _with_label_options(plan,result):
     return {**result,'graphPlan':fitted}
 
 def _fit_overview_family(plan):
-    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) a multi-curve figure shades its own regions
+    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve') and not (plan.get('family')=='polynomial' and isinstance(plan.get('coefficients'),list) and any(isinstance(value,str) and 'sqrt' in value for value in plan['coefficients'])):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) multi-curve regions plus exact Q(sqrt(r)) cubic regions
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
@@ -265,7 +302,14 @@ def _fit_overview_family(plan):
     if plan.get('family')=='multi-curve':return fit_multi_curve(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
     values=plan.get('coefficients')
-    if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
+    if not isinstance(values,list) or not 1<=len(values)<=5:raise ValueError('INVALID_FRAMING_COEFFICIENTS')
+    if any(isinstance(value,str) and 'sqrt' in value for value in values):
+        radical,c=_quadratic_field_coefficients(values)
+        if 'applicationAxes' in plan:raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
+        while len(c)>1 and c[-1]==0:c.pop()
+        if len(c)!=4:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_DEGREE')
+        return _fit_cubic_quartic(plan,c,radical=radical)
+    if any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
     try:c=[Fraction(v) for v in values]
     except (ValueError,ZeroDivisionError):raise ValueError('INVALID_FRAMING_COEFFICIENTS') from None
     while len(c)>1 and c[-1]==0:c.pop()
@@ -1792,6 +1836,20 @@ def pp_poly_roots(coefficients):
     values=[_pp_norm(value) for value in coefficients]
     while len(values)>3 and values[-1]==0:values.pop()
     if len(values)<=3:return pp_quadratic_roots(*(values+[S.Integer(0)]*(3-len(values))))
+    radical_atoms={atom for value in values for atom in value.atoms(S.Pow) if atom.exp==S.Rational(1,2) and atom.base.is_Integer and atom.base>1}
+    if radical_atoms:
+        radicands={int(atom.base) for atom in radical_atoms}
+        if len(radicands)!=1:raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+        radicand=next(iter(radicands))
+        if any(power!=1 for power in S.factorint(radicand).values()):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+        radical=S.sqrt(radicand);field=S.QQ.algebraic_field(radical)
+        try:
+            for value in values:field.from_sympy(value)
+            poly=S.Poly(sum(value*_PP_X**index for index,value in enumerate(values)),_PP_X,extension=radical)
+            if poly.degree()!=3:raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+            roots=[root for root,_ in _quadratic_field_root_rows(poly)]
+        except (ValueError,TypeError,NotImplementedError):raise ValueError('PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM') from None
+        return sorted(roots,key=lambda value:float(value))
     if any(pp_radicand(value) is not None for value in values):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
     poly=S.Poly(sum(value*_PP_X**index for index,value in enumerate(values)),_PP_X,domain='QQ')
     found=[]
