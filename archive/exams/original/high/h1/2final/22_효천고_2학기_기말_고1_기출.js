@@ -61,7 +61,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 유리함수 그래프가 대각선 y=x에 대하여 서로 대응하는 좌표평면.",
+    "solutionImageCaption": "원함수와 역함수의 그래프를 y=x를 기준으로 비교하고, 두 그래프의 점근선도 서로 대응함을 확인한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -120,11 +124,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] $y=\\dfrac{a}{x-p}+q$ 꼴의 쌍곡선은 중심 $(p,q)$을 지나고 기울기가 $\\pm1$인 두 직선에 대하여 대칭이다.\n조건 정리: $y=\\dfrac{2-5x}{x-1}=-5-\\dfrac{3}{x-1}$이다. 따라서 그래프의 중심은 $(1,-5)$이다.\n풀이 방향: 중심을 지나며 기울기가 $1,-1$인 두 대칭축을 구해 주어진 두 직선과 비교한다.\n정석 풀이: 기울기가 $1$인 대칭축은 $y+5=x-1$, 즉 $y=x-6$이다. 기울기가 $-1$인 대칭축은 $y+5=-(x-1)$, 즉 $y=-x-4$이다. 주어진 직선 $y=-x+a$, $y=x+b$와 비교하면 $a=-4$, $b=-6$이다. 따라서 $a+b=-10$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q04-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q4-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 부분 그래프에서 유리함수의 두 가지와 중심을 지나는 두 대각선 대칭축을 나타낸다.",
 
-    "solutionImageCaption": "중심 (1,−5)과 대칭축 y=x−6, y=−x−4를 확인한다.",
+    "solutionImageCaption": "부분 그래프에서 점근선이 만나는 중심을 지나는 기울기 1과 −1의 두 직선이 대칭축이다. 주어진 두 직선과 비교한다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -159,11 +163,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 역함수의 그래프 위 점 $(u,v)$는 원래 함수의 그래프 위 점 $(v,u)$와 서로 대응한다.\n조건 정리: 역함수의 그래프가 $(5,3)$을 지나므로 원래 함수 $y=\\sqrt{a+x}$는 $(3,5)$를 지난다.\n풀이 방향: 원래 함수에 $x=3$, $y=5$를 대입하여 $a$를 구한다.\n정석 풀이: $5=\\sqrt{a+3}$이다. 양변을 제곱하면 $25=a+3$이므로 $a=22$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q05-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q5-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 역함수 대응점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 화면에 표시된 두 부분 그래프에서 원함수 f의 P(3,5)와 역함수 g의 Q(5,3)가 직선 y=x에 대칭으로 대응한다.",
 
-    "solutionImageCaption": "역함수의 점 (5,3)은 원래 함수의 점 (3,5)에 대응하고 a=22이다.",
+    "solutionImageCaption": "부분 그래프에서 역함수의 점 (5,3)은 원함수의 점 (3,5)에 대응한다. 이 점을 원함수에 대입해 상수를 구한다. 정답은 ⑤이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -416,7 +420,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 k=3에서 원함수 f와 역함수 g의 그래프가 y=x에 대칭이고, 교점 P와 Q가 대각선 위에 있다. 각 함수 이름은 자기 곡선 위의 점을 지시선으로 가리킨다.",
+    "solutionImageCaption": "예: k=3일 때 두 곡선의 교점은 y=x 위에 있으므로 f(x)=x를 풀어 확인할 수 있다. 다른 k에서도 정의역과 서로 다른 두 근의 조건을 함께 살핀다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -475,11 +483,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] 두 그래프의 제4사분면 통과 여부는 $x\\gt0$에서 함수값의 부호를 직접 조사하면 정확히 판정할 수 있다.\n조건 정리: 첫 함수는 $y=\\dfrac{x+3k-2}{3(x+4)}$, 둘째 함수는 $y=\\dfrac{2x+k}{x+1}$로 쓸 수 있다.\n풀이 방향: 첫 그래프가 네 사분면을 모두 지나는 조건과 둘째 그래프가 제4사분면을 지나지 않는 조건을 각각 구한 뒤 교집합을 취한다.\n정석 풀이: 첫 함수에서 $x>0$이면 분모 $3(x+4)$는 양수이다. 제4사분면의 점이 있으려면 $x+3k-2<0$인 양수 $x$가 있어야 하므로 $k<\\dfrac23$이다. 이 조건이면 $x>2-3k$에서 분자와 분모가 모두 양수이므로 제1사분면의 점이 있고, $0<x<2-3k$에서 분자는 음수이므로 제4사분면의 점도 있다. 또한 $k<\\dfrac23$이므로 $3k-2<0$이다. $x<-4$에서는 분자와 분모가 모두 음수이므로 제2사분면의 점이 있고, $-4<x<0$에서는 분자는 음수이고 분모는 양수이므로 제3사분면의 점이 있다. 따라서 첫 그래프가 모든 사분면을 지나는 조건은 $k<\\dfrac23$이다. 둘째 함수에서 $x>0$이면 분모 $x+1$은 양수이다. 제4사분면을 지나지 않으려면 모든 $x>0$에서 $2x+k\\ge0$이어야 하므로 $k\\ge0$이다. 두 조건의 교집합은 $0\\le k<\\dfrac23$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q15-solution-v2.svg",
 
-    "solutionImageAlt": "두 유리함수의 사분면 조건을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 예시에서 두 유리함수의 그래프를 비교한다. 양의 x에서 첫 그래프는 x축 아래를 지나고 둘째 그래프는 x축 위에 놓인다.",
 
-    "solutionImageCaption": "대표값 k=1/3에서 첫 그래프는 네 사분면, 둘째 그래프는 제4사분면을 지나지 않는다.",
+    "solutionImageCaption": "예: k=1/2에서 파란 그래프는 제4사분면을 지나고 주황 그래프는 지나지 않는다. x>0에서 각 함수값의 부호를 조사해 가능한 k의 범위를 구한다. 정답은 ①이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -514,11 +522,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "answer": "②",
     "solution": "[키포인트] 원함수와 역함수 위의 점을 각각 $k=x+y^2$, $k=x^2+y$의 꼴로 바꾸면 삼각형과 만날 수 있는 $k$의 범위를 비교할 수 있다.\n조건 정리: $f(x)=\\sqrt{k-x}$이므로 원함수 위의 점 $(x,y)$는 $k=x+y^2$를 만족하고, 역함수는 $y=k-x^2$이므로 그 위의 점은 $k=x^2+y$를 만족한다.\n풀이 방향: 먼저 역함수가 삼각형과 만날 수 있는 $k$의 최대를 구한 뒤, 그 최대값에서 원함수도 삼각형과 실제로 만나는지 확인한다.\n정석 풀이: 삼각형 $ABC$의 모든 점은 $1\\le x\\le5$, $1\\le y\\le6$이므로 역함수 위의 점에서는 $k=x^2+y\\le25+6=31$이다. 점 $C(5,6)$에서는 실제로 $x^2+y=31$이므로 역함수에 대해서는 $k=31$이 가능하다. 이제 $k=31$일 때 원함수도 삼각형과 만나야 한다. 변 $AC$ 위의 점을 $(x,y)=(1+4t,3+3t)$ $(0\\le t\\le1)$로 놓으면 $x+y^2=10+22t+9t^2$이다. $10+22t+9t^2=31$을 풀면 $t=\\dfrac{-11+\\sqrt{310}}9$이고 이는 $0\\lt t\\lt1$을 만족한다. 따라서 변 $AC$ 위에 $x+y^2=31$인 점이 존재하므로 원함수도 삼각형과 만난다. 따라서 가능한 $k$의 최댓값은 $31$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q16-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수·역함수와 삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 원함수 f, 역함수 g의 그래프. g는 꼭짓점 C를 지나고 f는 변 AC와 만난다.",
 
-    "solutionImageCaption": "k=31에서 원함수·역함수와 삼각형의 만남을 확인한다.",
+    "solutionImageCaption": "삼각형 위의 점은 x≤5, y≤6이므로 역함수 위의 점에서 k=x²+y는 꼭짓점 C(5,6)에서 가장 크다. 이때 원함수도 변 AC와 만나므로 두 곡선이 모두 삼각형과 만나는 k의 최댓값은 31이다. 정답은 ②이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -582,10 +590,10 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "choices": [],
     "answer": "정의역 $\\{x\\mid x\\le3\\}$, 치역 $\\{y\\mid y\\ge-1\\}$",
     "solution": "[키포인트] 무리함수에서는 근호 안이 $0$ 이상이어야 하며, 제곱근의 값은 항상 $0$ 이상이라는 두 사실을 각각 정의역과 치역에 사용한다.\n조건 정리: $y=\\sqrt{6-2x}-1$이다.\n풀이 방향: 근호 내부 조건으로 정의역을 구하고, 제곱근의 최솟값으로 치역을 구한다.\n정석 풀이: 함수가 정의되려면 $6-2x\\ge0$이어야 하므로 $x\\le3$이다. 따라서 정의역은 $\\{x\\mid x\\le3\\}$이다. 한편 $\\sqrt{6-2x}\\ge0$이므로 $y=\\sqrt{6-2x}-1\\ge-1$이다. 실제로 $x=3$이면 $y=-1$이므로 최솟값 $-1$이 포함되고, $x$가 작아질수록 근호의 값은 제한 없이 커질 수 있다. 따라서 치역은 $\\{y\\mid y\\ge-1\\}$이다.\n따라서 구하는 정의역은 $\\{x\\mid x\\le3\\}$, 치역은 $\\{y\\mid y\\ge-1\\}$이다.",
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "무리함수 y=√(6−2x)−1의 그래프가 끝점 V(3,−1)에서 시작해 왼쪽 위로 뻗는 모습과 함께 정의역 x≤3, 치역 y≥−1을 표시한다.",
-    "solutionImageCaption": "끝점 (3,−1), 정의역 x≤3, 치역 y≥−1을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=√(6−2x)−1의 그래프에서 근호 경계의 닫힌 끝점과 왼쪽 위로 뻗는 가지를 나타낸 그림.",
+    "solutionImageCaption": "근호 안이 0이 되는 끝점을 기준으로 곡선이 뻗는 방향과 그에 따른 함수값의 범위를 확인한다. 구하는 정의역은 x≤3, 치역은 y≥−1이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -688,11 +696,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "answer": "$3$",
     "solution": "[키포인트] $f(f(x))=x$는 $f$가 자기 자신의 역함수라는 뜻이고, $y=f(x)$와 $y=x$의 교점은 $f(x)=x$의 두 근으로 결정된다.\n조건 정리: $f(x)=\\dfrac{ax+b}{x-2}$이고 모든 허용되는 $x$에 대해 $f(f(x))=x$이다. 두 고정점 사이의 거리는 $2\\sqrt6$이다.\n풀이 방향: 먼저 합성함수 조건으로 $a$를 구하고, 고정점 방정식의 두 근의 차로 $b$를 정한 뒤 $f(5)$를 계산한다.\n정석 풀이: 합성하면 $f(f(x))=\\dfrac{(a^2+b)x+b(a-2)}{(a-2)x+b+4}$이다. 이것이 항등적으로 $x$와 같으려면 $((a^2+b)x+b(a-2))=x((a-2)x+b+4)$가 성립해야 한다. 오른쪽의 $x^2$항 계수는 $a-2$이므로 $a=2$이다. 따라서 $f(x)=\\dfrac{2x+b}{x-2}$이다. 이제 $f(x)=x$에서 $2x+b=x(x-2)$이므로 $x^2-4x-b=0$이다. 두 근을 $\\alpha,\\beta$라 하면 교점은 $(\\alpha,\\alpha)$, $(\\beta,\\beta)$이고 두 점 사이의 거리는 $\\sqrt{(\\alpha-\\beta)^2+(\\alpha-\\beta)^2}=\\sqrt2|\\alpha-\\beta|$이다. 이것이 $2\\sqrt6$이므로 $|\\alpha-\\beta|=2\\sqrt3$이다. 이차방정식의 두 근의 차의 제곱은 판별식과 같아 $(\\alpha-\\beta)^2=16+4b=12$이므로 $b=-1$이다. 따라서 $f(5)=\\dfrac{10-1}{5-2}=3$이다.\n따라서 구하는 값은 $3$이다.",
 
-    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 자기역함수의 고정점과 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 부분 그래프에서 유리함수와 직선 y=x, 그 직선 위의 두 고정점을 나타낸다.",
 
-    "solutionImageCaption": "f=2+3/(x−2)의 중심·대칭축과 두 고정점을 확인한다.",
+    "solutionImageCaption": "부분 그래프에서 자기역함수는 y=x에 대칭이다. 두 교점 사이의 거리로 계수를 구한 뒤 함수값을 계산한다. 구하는 값은 3이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",

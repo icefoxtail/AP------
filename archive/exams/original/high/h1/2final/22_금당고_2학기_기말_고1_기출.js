@@ -72,7 +72,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P를 지나는 무리함수 그래프와 시작점을 표시한 좌표 그림.",
+    "solutionImageCaption": "f(−1)=2이므로 그래프는 (−1,2)를 지난다. 이 점을 식에 대입해 상수를 구한다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -197,7 +201,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 그 역함수 그래프, 서로 교환되는 점근선 및 대칭축 y=x.",
+    "solutionImageCaption": "두 번째 곡선은 주어진 함수의 역함수이며, 두 그래프는 y=x에 대해 대칭이다. 점근선 x=2, y=3과 x=3, y=2가 서로 대응한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -411,10 +419,10 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "집합 A의 그래프와 원점을 지나는 직선의 교점 및 경계 기울기 그래프",
-    "solutionImageCaption": "경계 기울기에서 접하고, 교점이 없는 범위는 -1≤m<-3+2√2",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 구간으로 나뉜 함수 그래프와 원점을 지나는 직선을 비교한 예시.",
+    "solutionImageCaption": "예: m=−1/2인 직선은 세 구간의 그래프와 만나지 않는다. 경계에서 가능한 기울기를 조사한다. 정답은 ①이다.",
+    "solutionImageSize": "medium",
     "level": "상",
     "category": "두 그래프의 교점",
     "originalCategory": "집합",
@@ -509,7 +517,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: u=t³으로 놓은 4/u의 감소 그래프와 구간 1≤u≤8의 양 끝점 (1,4), (8,1/2)을 나타낸 좌표 그림.",
+    "solutionImageCaption": "t=x−2로 두면 1≤t≤2이고 a≤4/t³, b≥4/t³이다. u=t³으로 보면 4/u는 1≤u≤8에서 감소하므로 최댓값 4, 최솟값 1/2이다. 그림의 가로축은 u=t³이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -575,13 +587,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 교점의 $y$좌표와 $w=\\sqrt{x-2t}$를 이용해 근호의 정의 조건을 보존한 채, 두 번째 교점이 생기는 $t$의 범위를 정확히 구한다.\n조건 정리: 유리함수에서 $x=\\dfrac{y}{y-2}$이고, 무리함수에서 $w=y+t\\ge0$, $x=w^2+2t$이다. 따라서 $t=w-y$이다.\n풀이 방향: $R(y)=\\dfrac{2(y^2-y-1)}{y-2}$로 놓아 $(w+1)^2=R(y)$를 얻고, $w\\ge0$에서 허용되는 $y$의 구간과 그때의 $t$값을 조사한다.\n정석 풀이: 대입하면 $(w+1)^2=R(y)$이다. $w\\ge0$이므로 $R(y)\\ge1$이어야 하고, $R(y)-1=\\dfrac{y(2y-3)}{y-2}$이므로 허용되는 $y$는 $0\\le y\\le\\dfrac32$ 또는 $y\\gt2$이다. 이때 $T(y)=\\sqrt{R(y)}-1-y=t$이다. 각 허용 구간에서 $y_2\\gt y_1$이면 $R(y_2)-R(y_1)\\lt2(y_2-y_1)$이고 $\\sqrt{R(y_2)}+\\sqrt{R(y_1)}\\ge2$이므로 $T(y_2)\\lt T(y_1)$, 즉 $T$는 감소한다. $y\\gt2$에서는 $y$가 $2$의 오른쪽에 가까워질 때 $T(y)$가 한없이 커지고 $y$가 커질수록 한없이 작아지므로 모든 실수 $t$에 대해 교점이 정확히 하나 생긴다. 따라서 서로 다른 두 교점이 되려면 $0\\le y\\le\\dfrac32$에서 교점이 하나 더 생겨야 한다. 이 구간에서는 $(y+1)^2-R(y)=\\dfrac{y(y^2-2y-1)}{y-2}\\ge0$이므로 $0\\le w\\le y$, 따라서 $-\\dfrac32\\le t=w-y\\le0$이다. $y=0$에서 $t=0$, $y=\\dfrac32$에서 $t=-\\dfrac32$이고 $T$가 감소하므로 이 구간의 $t$값은 정확히 $[-\\dfrac32,0]$이다. 따라서 $M=0$, $m=-\\dfrac32$이고 $M-2m=3$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q17-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 무리함수의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수와 무리함수의 그래프가 두 점에서 만나는 예시.",
 
-    "solutionImageCaption": "대표값 t=0에서 두 교점과 −3/2≤t≤0 범위를 확인한다.",
+    "solutionImageCaption": "예: t=0에서 두 그래프는 (0,0)과 (3+2√2,1+√2)에서 만난다. 두 번째 교점이 가능한 매개변수 범위를 조사한다. 정답은 ⑤이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -589,9 +601,9 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "양의 정수 n=9에서 두 그래프가 (3,3)에서 접하는 좌표 그래프",
-    "solutionImageCaption": "양의 정수 n=9일 때 두 그래프는 (3,3)에서 접하여 교점이 하나이다.",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 네 곡선을 색으로 구분해 푸른색·주황색 쌍은 두 점에서 만나고 초록색·분홍색 쌍은 한 점 (3,3)에서 접하는 모습을 나타낸 좌표 그림.",
+    "solutionImageCaption": "예: 푸른색·주황색 곡선은 두 점에서 만나고, 초록색·분홍색 곡선은 (3,3)에서 접한다. 교점 개수의 경계 사례를 비교한다. 정답은 9이다.",
     "solutionImageSize": "full",
     "level": "상",
     "category": "두 그래프의 교점",
@@ -665,9 +677,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$72$",
     "solution": "[키포인트] 공통 원소 하나와 대칭차집합의 원소들을 분리해 합 조건을 하나의 정수식으로 바꾼 뒤 가능한 경우를 빠짐없이 나열한다.\n조건 정리: $A\\cap B=\\{c\\}$, $S=(A-B)\\cup(B-A)$라 하면 $|S|=2$ 또는 3이고 $A\\cup B=\\{c\\}\\cup S$이다.\n풀이 방향: 전체집합 원소의 합 $55$를 이용해 $c+5\\sum S=55$를 얻고, $|S|=2,3$을 각각 조사한 뒤 $S$의 원소를 $A-B$와 $B-A$에 배분한다.\n정석 풀이: $A^C\\cap B^C$의 원소 합은 $55-c-\\sum S$이므로 조건 (가)에서 $55-c-\\sum S=4\\sum S$, 즉 $c+5\\sum S=55$이다. 따라서 $c$는 5의 배수여야 하므로 $c=5$ 또는 $10$이다. $|S|=2$일 때 가능한 경우는 $(5,\\{1,9\\})$, $(5,\\{2,8\\})$, $(5,\\{3,7\\})$, $(5,\\{4,6\\})$, $(10,\\{1,8\\})$, $(10,\\{2,7\\})$, $(10,\\{3,6\\})$, $(10,\\{4,5\\})$의 8개이다. 각 $S$의 두 원소는 각각 $A-B$ 또는 $B-A$에 들어가므로 한 경우마다 $2^2=4$가지, 모두 $8\\times4=32$가지이다. $|S|=3$일 때 가능한 경우는 $(5,\\{1,2,7\\})$, $(5,\\{1,3,6\\})$, $(10,\\{1,2,6\\})$, $(10,\\{1,3,5\\})$, $(10,\\{2,3,4\\})$의 5개이다. 한 경우마다 배분 방법은 $2^3=8$가지이므로 $5\\times8=40$가지이다. 따라서 전체 순서쌍은 $32+40=72$개이다.\n[시각자료 읽기] 왼쪽 패널은 대칭차집합 원소 두 개를 A−B와 B−A에 배분하는 32가지, 오른쪽 패널은 세 개를 배분하는 40가지이다.\n따라서 구하는 순서쌍의 개수는 $72$개이다.",
-    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "c+5ΣS=55에서 |S|=2의 실제 8개 후보와 |S|=3의 실제 5개 후보를 나누어 표시한 경우표",
-    "solutionImageCaption": "|S|=2: 8×2²=32, |S|=3: 5×2³=40, 최종 32+40=72를 보여 주는 문항 전용 경우 분류표",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 벤다이어그램 예시에서 공통 원소, 대칭차집합 원소, 두 집합 바깥을 구분한다.",
+    "solutionImageCaption": "예: 공통 원소 c와 대칭차 S를 분리하고 c+5ΣS=55를 이용해 |S|=2,3인 경우를 나누어 센다. 정답은 72개이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
@@ -700,6 +712,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=1/2, y=1을 갖는 유리함수 그래프와, 이 그래프에 각각 두 점에서 접하는 큰 원·작은 원 및 네 접점을 나타낸 좌표 그림.",
+    "solutionImageCaption": "예: k=√10에서 평행이동한 XY=1과 두 접원을 비교한다. 두 중심 방향에서 접하는 원의 반지름 제곱 차는 4이므로 넓이 차는 4π이다. 정답은 4π이다.",
+    "solutionImageSize": "full"
   }
 ];

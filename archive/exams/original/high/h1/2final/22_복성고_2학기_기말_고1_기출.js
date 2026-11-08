@@ -185,7 +185,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안에서 서로 겹치지 않는 두 진리집합 P와 Q.",
+    "solutionImageCaption": "q가 참인 원소는 p가 거짓이므로 두 진리집합 P, Q는 서로소이다. 따라서 항상 옳은 것은 ㄴ, ㄷ이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -213,10 +217,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 무리함수는 정의역·치역·특정 점 대입·평행이동량을 각각 확인하면 선지를 빠르게 판정할 수 있다.\n조건 정리: $2x+3\\ge0$이므로 정의역은 $x\\ge-\\dfrac32$이고, $-\\sqrt{2x+3}\\le0$이므로 치역은 $y\\le2$이다.\n풀이 방향: 각 선택지의 핵심 조건을 직접 확인한다.\n정석 풀이: ①의 정의역 $x\\ge\\dfrac32$는 틀리고, ②의 치역 $y\\ge2$도 틀리다. $x=3$을 대입하면 $y=-\\sqrt9+2=-1$이므로 그래프는 $(3,-1)$을 지나 ③은 참이다. 따라서 제4사분면을 지나지 않는다는 ④는 거짓이다. 또한 $y=-\\sqrt{2x}$에서 근호 안의 $2x$를 $2x+3=2(x+\\dfrac32)$로 바꾸려면 $x$축 방향 이동량은 $-\\dfrac32$이므로 ⑤도 거짓이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "정의역의 끝점 V(−3/2,2)에서 시작해 오른쪽 아래로 내려가는 무리함수 y=−√(2x+3)+2의 그래프와 그 위의 점 P(3,−1)을 표시한 좌표평면이다. x≥−3/2, y≤2임을 보여 준다.",
-    "solutionImageCaption": "끝점 (−3/2,2), 정의역 x≥−3/2, 치역 y≤2와 점 (3,−1)을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (−3/2,2)에서 오른쪽 아래로 뻗는 무리함수 y=−√(2x+3)+2의 그래프와 그 위의 점 (3,−1)을 나타낸 좌표평면.",
+    "solutionImageCaption": "근호 안이 0이 되는 끝점 (−3/2,2)에서 오른쪽 아래로 뻗고, 점 (3,−1)을 지난다. 정의역은 x≥−3/2, 치역은 y≤2이므로 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -340,7 +344,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 b의 좌표평면에 두 대각선 b=a, b=−a와 두 세로선 a=−1, a=1, 원점, 점 (1,1), a=1 직선의 s 표시를 나타낸 그림.",
+    "solutionImageCaption": "가로축 a, 세로축 b에서 p의 해집합은 두 직선 b=a와 b=−a의 합집합이고, q의 해집합은 원점뿐이다. (1,1)은 p를 만족하지만 q를 만족하지 않는 반례이다. r의 해집합은 a=±1인 두 직선이고, s의 해집합은 그중 a=1인 직선이다. 따라서 옳은 것은 ㄱ, ㄴ, ㄹ의 3개이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -444,7 +452,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: t>0에서 열린 시작점 (0,−3)에서 증가하며 수평점근선 y=2에 가까워지는 유리함수 f(t)=(2t−3)/(t+1)의 그래프.",
+    "solutionImageCaption": "t>0에서 f(t)=(2t−3)/(t+1)=2−5/(t+1)는 증가하고, t=0의 열린 점 (0,−3)에서 출발해 y=2에 한없이 가까워진다. 따라서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -636,7 +648,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(4−2x)와 서로 평행한 네 직선이 각각 한 점, 두 점, 접점, 만나지 않는 모습을 보여 주는 좌표평면.",
+    "solutionImageCaption": "예: 아래에서부터 k=3/2, 9/4, 5/2, 3인 직선의 순서로 교점 개수를 비교한다. k=3/2와 k=5/2에서는 한 점에서 만나고, k=9/4에서는 두 점에서 만나며, k=3에서는 만나지 않는다. (1) 2≤k<5/2, (2) k<2 또는 k=5/2, (3) k>5/2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -699,6 +715,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB=2인 반원 위의 예시 점 P와, PA·PB의 중점 M,N, 직각 표시, 선분 AN과 BM을 나타낸 그림.",
+    "solutionImageCaption": "예: 반원 위의 점 P에서 ∠APB=90°이고 M,N이 각각 PA,PB의 중점이다. PA, PB를 수직인 두 축으로 두고 중점까지의 거리를 계산하면 AN·BM의 최댓값은 5/2이다.",
+    "solutionImageSize": "full"
   }
 ];

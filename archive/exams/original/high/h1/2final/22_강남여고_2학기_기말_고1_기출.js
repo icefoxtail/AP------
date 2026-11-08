@@ -98,7 +98,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직점근선 x=2, 수평점근선 y=-3과 x절편 (1,0)을 나타낸 유리함수 그래프.",
+    "solutionImageCaption": "수직점근선에서 a, 수평점근선에서 b를 읽고 x절편을 분자에 대입해 c를 구한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -158,9 +162,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 차집합을 여집합과 교집합으로 바꾸면 식을 한 번에 정리할 수 있다.\n조건 정리: $A-B=A\\cap B^C$이다.\n풀이 방향: 분배법칙으로 $A$를 묶은 뒤 보기의 식과 비교한다.\n정석 풀이: $(A-B)\\cup(A\\cap C)=(A\\cap B^C)\\cup(A\\cap C)=A\\cap(B^C\\cup C)$이다. 한편 $A-(B-C)=A-(B\\cap C^C)=A\\cap(B\\cap C^C)^C=A\\cap(B^C\\cup C)$이다. 따라서 두 집합은 서로 같다.\n[시각자료 읽기] 왼쪽 식을 A∩(Bᶜ∪C)로 정리한 결과가 A−(B−C)의 전개와 같으므로 두 식은 같은 집합이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "문항의 실제 식 (A−B)∪(A∩C)가 A∩(Bᶜ∪C)를 거쳐 A−(B−C)와 같아지는 변형 흐름",
-    "solutionImageCaption": "세 집합 연산식의 차집합·분배법칙 변형과 다섯 번째 보기 A−(B−C)의 일치를 표시한 도식",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 A, B, C에서 A-B와 A∩C의 합집합을 색칠한 벤다이어그램.",
+    "solutionImageCaption": "A에서 B를 뺀 영역과 A와 C의 공통 영역을 합쳐 보고 보기의 집합과 비교한다. 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
@@ -196,7 +200,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 안에서 진리집합 P와 Q가 서로 떨어져 있는 벤다이어그램.",
+    "solutionImageCaption": "p가 참일 때 q는 거짓이므로 P와 Q는 서로소이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -321,7 +329,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 1, 2, 3, 4가 함수 f를 통해 집합 Y의 서로 다른 원소에 대응하는 그림.",
+    "solutionImageCaption": "f(1)=7을 먼저 연결하고 남은 값 중 차가 3인 두 값을 찾은 뒤 마지막 값을 연결한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -351,9 +363,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 증가함수와 그 역함수의 공통점은 직선 $y=x$ 위에서 찾는다.\n조건 정리: $f(x)=\\sqrt{x-1}+1$의 정의역은 $x\\ge1$이고 함수는 증가한다.\n풀이 방향: 교점에서 $f(x)=x$를 만족시키는 $x$를 구한다.\n정석 풀이: $x=\\sqrt{x-1}+1$에서 $x-1=\\sqrt{x-1}$이다. $t=x-1\\ge0$이라 두면 $t=\\sqrt t$이고, 양변을 제곱하면 $t^2=t$, 즉 $t(t-1)=0$이다. 원래 식을 확인하면 $t=0,1$이 모두 가능하므로 교점은 $(1,1)$, $(2,2)$이다. 두 점 사이의 거리는 $\\sqrt{(2-1)^2+(2-1)^2}=\\sqrt2$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "무리함수와 역함수의 두 교점을 나타낸 해설 그래프",
-    "solutionImageCaption": "y=x 위의 교점 A=(1,1), B=(2,2)와 AB=√2를 확인한다.",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 f와 그 역함수 g가 점선 y=x에 대칭이고 두 점 A(1,1), B(2,2)에서 만나는 그래프.",
+    "solutionImageCaption": "증가하는 원함수와 역함수의 공통점은 y=x 위에서 찾는다. 두 교점의 좌표 차로 거리를 계산한다. 정답은 ②이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
@@ -454,7 +466,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 f의 첫 함숫값 0과 1이 유리수 집합 Q에 들어 있어 두 값 모두 유리수임을 나타낸 그림.",
+    "solutionImageCaption": "가능한 첫 값 0과 1은 모두 유리수이므로 f를 다시 적용하면 둘 다 1이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -485,11 +501,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 유리함수를 평행이동된 $y=\\dfrac1x$의 꼴로 바꾸면 점근선과 대칭축을 바로 읽을 수 있다.\n조건 정리: $y=\\dfrac{x-1}{x-2}=1+\\dfrac1{x-2}$이므로 중심은 $(2,1)$이다.\n풀이 방향: ㄱ은 실제 사분면을 확인하고, ㄴ·ㄷ은 중심과 대칭축으로 판단한다.\n정석 풀이: $x\\lt0$이면 분자와 분모가 모두 음수이므로 $y\\gt0$이어서 제2사분면을 지난다. 또 $1\\lt x\\lt2$이면 분자는 양수, 분모는 음수이므로 $y\\lt0$이어서 제4사분면도 지난다. 따라서 ㄱ은 거짓이다. 점근선은 $x=2$, $y=1$이므로 ㄴ은 참이다. $y-1=\\dfrac1{x-2}$의 두 대칭축은 $y-1=\\pm(x-2)$, 즉 $y=x-1$, $y=-x+3$이므로 ㄷ도 참이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q15-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프와 두 점근선 x=2, y=1, 그 교점 (2,1)을 지나는 두 대칭축 y=x−1, y=−x+3을 나타낸 그림.",
 
-    "solutionImageCaption": "중심 (2,1)과 대칭축 y=x−1, y=−x+3을 확인한다.",
+    "solutionImageCaption": "유리함수를 1+1/(x−2)로 바꾸면 중심과 두 대칭축을 확인할 수 있다. 정답은 ③이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
@@ -592,11 +608,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 같은 $x=k$에서 두 그래프의 세로 방향 거리는 두 함수값의 차이다.\n조건 정리: $P_k=(k,\\sqrt{k+1})$, $Q_k=(k,\\sqrt{k})$이므로 $\\overline{P_kQ_k}=\\sqrt{k+1}-\\sqrt{k}$이다.\n풀이 방향: $k=1$부터 31까지 더해 연속해서 소거되는 항을 정리한다.\n정석 풀이: 구하는 합은 $(\\sqrt2-1)+(\\sqrt3-\\sqrt2)+\\cdots+(\\sqrt{32}-\\sqrt{31})$이다. 중간의 근호항이 모두 소거되어 $\\sqrt{32}-1=4\\sqrt2-1$이 남는다. 따라서 $a=-1$, $b=4$이므로 $ab=-4$이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q18-solution-v2.svg",
 
-    "solutionImageAlt": "두 무리함수의 세로 차를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 두 무리함수 y=√(x+1), y=√x의 그래프와 x=1, 2에서 두 곡선 사이의 세로 선분을 나타낸 그림.",
 
-    "solutionImageCaption": "Pₖ=(k,√(k+1)), Qₖ=(k,√k)로 두고 망원합을 확인한다.",
+    "solutionImageCaption": "예: k=1, 2일 때 세로 길이는 각각 √2−1, √3−√2이다. 연속된 항을 더하면 중간 근호항이 소거된다. 정답은 ②이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -667,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프와 직선 y=x가 해설에서 얻은 유일한 고정점 T에서 접하는 그림.",
+    "solutionImageCaption": "곡선은 f(x)=(3x-4)/(x+7)이다. 해설에서 얻은 a=7에서 유일한 실근 k=-2가 고정점 T로 나타난다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -720,11 +740,11 @@ window.questionBank = [
     "answer": "$a=16$, $f^{-1}(x)=\\dfrac{x^2}{2}+4x$, 정의역 $\\{x\\mid x\\ge-4\\}$",
     "solution": "[키포인트] 원점을 지난다는 조건으로 $a$를 먼저 정하고, 원래 함수의 치역을 역함수의 정의역으로 사용한다.\n조건 정리: $f(0)=0$이고 무리함수의 값은 $-4$ 이상이다.\n풀이 방향: $a$를 구한 뒤 $y=\\sqrt{2x+16}-4$에서 $x$를 $y$로 나타내고 두 문자를 바꾼다.\n정석 풀이: $f(0)=\\sqrt a-4=0$이므로 $a=16$이다. $y=\\sqrt{2x+16}-4$에서 $y+4=\\sqrt{2x+16}$이므로 $y\\ge-4$이다. 양변을 제곱하면 $(y+4)^2=2x+16$이고, 정리하면 $x=\\dfrac{y^2}{2}+4y$이다. 따라서 $f^{-1}(x)=\\dfrac{x^2}{2}+4x$이고 역함수의 정의역은 $\\{x\\mid x\\ge-4\\}$이다.\n따라서 $a=16$, $f^{-1}(x)=\\dfrac{x^2}{2}+4x$, 정의역은 $\\{x\\mid x\\ge-4\\}$이다.",
 
-    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 역함수의 그래프를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 무리함수 f와 역함수 g가 직선 y=x에 대칭인 그래프.",
 
-    "solutionImageCaption": "a=16일 때 f=√(2x+16)−4, 역함수의 정의역 x≥−4를 확인한다.",
+    "solutionImageCaption": "원점을 지나는 조건으로 a를 정하고 원함수의 치역을 역함수의 정의역에 대응시킨다. 구하는 값은 a=16, 역함수 y=x²/2+4x, 정의역 x≥−4이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",

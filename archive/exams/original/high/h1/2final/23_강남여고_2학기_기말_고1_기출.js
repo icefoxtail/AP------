@@ -61,7 +61,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=f(x) 위의 점 P(−1, f(−1))와 포물선 y=g(x)를 함께 나타낸 그래프.",
+    "solutionImageCaption": "점 P가 f(−1)을 나타내고, 이 값을 g의 입력으로 사용한다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -92,7 +96,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수, 역함수, y=x와 서로 좌표를 바꾼 대응점을 나타낸 그래프.",
+    "solutionImageCaption": "f⁻¹(4)=2를 f(2)=4로 바꾸어 원함수의 식에 대입한다. 정답은 a=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -152,9 +160,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $y=\\dfrac{k}{x}$의 정의역과 치역에서는 $0$이 제외된다.\n조건 정리: $k\\gt0$이면 그래프는 제1, 3사분면에 있고 두 점근선은 좌표축이다.\n풀이 방향: 각 설명을 유리함수의 기본 성질과 비교한다.\n정석 풀이: $x$와 $y$를 바꾸어도 $xy=k$이므로 역함수는 자기 자신이고 ①은 옳다. 점근선은 $x=0$, $y=0$이므로 ②도 옳고, $k\\gt0$이므로 그래프는 제1, 3사분면에 있어 ③도 옳다. 하지만 $x=0$에서는 함수가 정의되지 않고 $y=0$도 함수값으로 나오지 않으므로 정의역과 치역은 각각 $\\mathbb{R}\\setminus\\{0\\}$이다. 따라서 ④가 옳지 않다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "양의 반비례 함수의 두 가지 그래프 가지를 나타낸 해설 그래프",
-    "solutionImageCaption": "k>0이면 그래프가 제1, 3사분면에 있고 두 좌표축이 점근선이다.",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫째와 셋째 사분면에서 좌표축에 가까워지는 양의 반비례 그래프.",
+    "solutionImageCaption": "예: k=1인 경우 그래프는 제1·3사분면에 있고 두 좌표축을 점근선으로 한다. 정답은 ④이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
@@ -388,7 +396,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 구간으로 이어진 함수 그래프에서 f(3)=2, f(2)=1을 점과 점선 보조선으로 표시한 그림.",
+    "solutionImageCaption": "a=3이면 그래프에서 f(3)=2이고, 이 값 2를 다시 입력하면 f(2)=1이다. 정답은 a=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -483,7 +495,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 역함수 g와 변환된 역함수 h의 두 직선 그래프.",
+    "solutionImageCaption": "예: f(x)=2x+1이면 g(x)=(x−1)/2이고, 변환된 역함수는 h(x)=g(x)/4−3/4이다. 정답은 a+b=−1/2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -514,7 +530,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 오른쪽 조각과 서로 다른 왼쪽 직선 조각을 비교한 그래프.",
+    "solutionImageCaption": "예: 왼쪽 조각이 y=x이면 일대일이고, y=−x+4이면 오른쪽 조각과 치역이 겹친다. 따라서 조건은 a<1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -583,7 +603,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 y=x 위에서 반복 함수값이 순환하는 예시 경로.",
+    "solutionImageCaption": "예: a=2에서 f를 세 번 적용하면 2→1/2→−1→2로 돌아온다. 따라서 P=(f(a),f(a))는 문제의 점 C에 해당한다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -613,11 +637,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 접선 조건은 직선과 무리함수의 교점 방정식이 중근을 갖는다는 뜻으로 처리한다.\n조건 정리: $A=(-a,0)$, $B=(0,2a)$이다. 접점 C에서는 $2\\sqrt{a(x+a)}=2x+b$가 한 해만 갖는다.\n풀이 방향: 양변을 제곱해 얻은 이차방정식의 판별식을 $0$으로 두어 $b$와 접점 좌표를 구한다.\n정석 풀이: 제곱하면 $(2x+b)^2=4a(x+a)$이므로 $x^2+(b-a)x+\\dfrac{b^2-4a^2}{4}=0$이다. 접하므로 판별식이 $0$이고, $(b-a)^2-(b^2-4a^2)=a(5a-2b)=0$이다. $a\\gt0$이므로 $b=\\dfrac52a$이다. 중근은 $x_C=-\\dfrac{b-a}{2}=-\\dfrac{3a}{4}$이고 $y_C=2x_C+b=a$이다. 삼각형 $ABC$의 넓이는 좌표를 이용하면 $\\dfrac{a^2}{4}$이므로 $\\dfrac{a^2}{4}=\\dfrac14$에서 $a=1$이다. 따라서 $b=\\dfrac52$이고 $b-a=\\dfrac32$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q19-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 접선 및 삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수와 접선, 두 축과 접점으로 이루어진 삼각형.",
 
-    "solutionImageCaption": "a=1, b=5/2에서 접점 C=(−3/4,1)과 넓이 1/4을 확인한다.",
+    "solutionImageCaption": "예: a=1, b=5/2일 때 접점과 삼각형을 확인한다. 접선 조건으로 b를 a에 대한 식으로 구하고 넓이를 이용한다. 정답은 b−a=3/2이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -655,13 +679,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $g$의 그래프는 $f$의 그래프를 오른쪽으로 $2$만큼 평행이동한 것이므로 같은 높이에서 두 그래프 사이의 가로 거리는 항상 $2$이다.\n조건 정리: $A=(6/t,t)$, $B=(2+6/t,t)$이다. B와 같은 $x$좌표를 갖는 C의 $y$좌표를 구한다.\n풀이 방향: C의 높이를 구한 뒤, 두 곡선 사이의 일정한 가로폭 $2$와 두 수평선 사이 높이를 이용해 넓이를 계산한다.\n정석 풀이: $x_B=2+\\dfrac6t$이므로 $y_C=f(x_B)=\\dfrac{6}{2+6/t}=\\dfrac{3t}{t+3}$이다. $g$는 $f$를 오른쪽으로 $2$만큼 옮긴 그래프이므로 $y_C$에서 점 D는 C보다 오른쪽으로 정확히 $2$만큼 떨어져 있다. 따라서 AB와 CD 사이에서 두 곡선의 수평 간격은 항상 $2$이고, 둘러싸인 부분의 넓이는 $2\\left(t-\\dfrac{3t}{t+3}\\right)=8$이다. 즉 $\\dfrac{2t^2}{t+3}=8$이므로 $t^2-4t-12=0$, $(t-6)(t+2)=0$이다. $t\\gt0$이므로 $t=6$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "평행이동한 두 유리함수와 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 2만큼 평행이동한 두 유리함수와 두 높이에서 같은 폭을 갖는 선분.",
 
-    "solutionImageCaption": "t=6에서 A,B,C,D와 둘러싸인 넓이 8을 확인한다.",
+    "solutionImageCaption": "예: t=3에서 위쪽 가로 폭과 아래쪽 가로 폭은 모두 2이다. 이 폭과 높이 차로 넓이를 구한다. 정답은 t=6이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -690,7 +714,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선과 그 역함수의 그래프가 y=x에 대해 대칭인 예시.",
+    "solutionImageCaption": "예: 기울기 3인 직선과 기울기 1/3인 역함수는 y=x에 대하여 대칭이다. 식에서 x와 y를 바꾸어 계수를 비교한다. 정답은 a=−4, b=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -716,13 +744,13 @@ window.questionBank = [
     "answer": "최솟값 $1$, 최댓값 $7$",
     "solution": "[키포인트] 유리함수 그래프의 점근선과 원점 통과 조건으로 $a,b,c$를 먼저 결정한다.\n조건 정리: 그림의 수직 점근선은 $x=2$, 수평 점근선은 $y=3$이고 그래프는 원점을 지난다.\n풀이 방향: 유리함수의 계수를 구한 뒤 무리함수의 단조성을 이용해 구간 양 끝에서 최솟값과 최댓값을 구한다.\n정석 풀이: $y=\\dfrac{ax+b}{x+c}$의 수직 점근선이 $x=2$이므로 $-c=2$, 즉 $c=-2$이다. 수평 점근선이 $y=3$이므로 $a=3$이다. 원점을 지나므로 $b=0$이다. 따라서 무리함수는 $y=\\sqrt{3x}-2$이다. 이 함수는 $x$가 커질수록 증가하므로 $3\\le x\\le27$에서 최솟값은 $x=3$일 때 $\\sqrt9-2=1$, 최댓값은 $x=27$일 때 $\\sqrt{81}-2=7$이다.\n따라서 최솟값은 $1$, 최댓값은 $7$이다.",
 
-    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수에서 유도한 무리함수의 범위를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 주어진 닫힌 구간에서 증가하는 무리함수 그래프.",
 
-    "solutionImageCaption": "g=√(3x)−2의 구간 [3,27]에서 최솟값 1, 최댓값 7을 확인한다.",
+    "solutionImageCaption": "함수 y=√(3x)−2는 주어진 구간에서 증가하므로 양 끝에서 최솟값과 최댓값을 얻는다. 정답은 최솟값 1, 최댓값 7이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -752,7 +780,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위쪽의 1~6 격자점과 곡선 위 경계점 P.",
+    "solutionImageCaption": "판별식이 음수인 조건을 b>a²/4로 바꾸어 격자점을 센다. 곡선 위 P는 a=6일 때의 높이가 주사위 눈 범위를 넘음을 보여 주며 유효한 눈의 순서쌍은 아니다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -775,9 +807,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$-1\\le a\\le\\dfrac12$",
     "solution": "[키포인트] 교점의 $y$값을 새로운 변수로 두면 가능한 $a$의 범위를 한 변수의 식으로 나타낼 수 있다.\n조건 정리: 교점에서 $t=\\sqrt{3x-3}\\ge0$이라 두면 $x=\\dfrac{t^2+3}{3}$이고 $t=ax+1$이다.\n풀이 방향: $a$를 $t$의 식으로 나타낸 뒤 상한과 하한을 완전제곱식으로 증명한다.\n정석 풀이: $t=ax+1$에 $x=\\dfrac{t^2+3}{3}$을 대입하면 $a=\\dfrac{3(t-1)}{t^2+3}$이다. $t\\ge0$에서 $a+1=\\dfrac{t(t+3)}{t^2+3}\\ge0$이므로 $a\\ge-1$이다. 또 $\\dfrac12-a=\\dfrac{(t-3)^2}{2(t^2+3)}\\ge0$이므로 $a\\le\\dfrac12$이다. $t=0$일 때 $a=-1$, $t=3$일 때 $a=\\dfrac12$가 실제로 가능하므로 두 끝값을 모두 포함한다.\n따라서 구하는 범위는 $-1\\le a\\le\\dfrac12$이다.",
-    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q24-solution.svg",
-    "solutionImageAlt": "무리함수와 기울기 경계 직선을 나타낸 해설 그래프",
-    "solutionImageCaption": "끝점 조건과 접하는 경계 직선의 기울기 −1, 1/2를 표시한다.",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수와 같은 점을 지나는 기울기가 다른 두 직선의 예시.",
+    "solutionImageCaption": "예: 기울기 −1/2인 직선은 곡선과 만나고 3/4인 직선은 만나지 않는다. 가능한 교점의 높이를 두어 기울기의 범위를 정한다. 정답은 −1≤a≤1/2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
