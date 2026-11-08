@@ -1,0 +1,50 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "10",
+        "sd": "3",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "5",
+      "10",
+      "15"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "5"
+      },
+      {
+        "from": "15",
+        "to": null
+      }
+    ]
+  },
+  "caption": "두 사건에서 각각 빠지는 바깥 꼬리가 평균을 중심으로 대칭이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 두 확률의 여사건에 대응하는 왼쪽 5 이하와 대칭인 오른쪽 꼬리",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "$\\mathrm{N}(10, 3^2)$",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source2",
+      "condition": "$\\mathrm{P}(X \\ge 5)$",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "두 사건의 여사건을 이루는 대칭 꼬리의 면적이 같다."
+  ]
+}
