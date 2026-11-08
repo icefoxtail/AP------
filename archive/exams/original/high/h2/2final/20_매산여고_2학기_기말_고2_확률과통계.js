@@ -408,7 +408,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 320인 정규분포 곡선에서 312의 오른쪽 꼬리 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "만족 학생 수를 평균 320, 표준편차 8인 정규분포로 근사한다. 312는 평균보다 표준편차 하나 작은 경계이므로 오른쪽 꼬리 확률을 구한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -525,7 +529,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 8인 정규분포 곡선에서 4와 16 사이의 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "평균 8, 표준편차 4인 정규분포에서 두 경계를 표준화하면 각각 −1과 2이다. 대칭성을 이용해 두 구간의 넓이를 더한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -583,7 +591,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 30, 표준편차 1.2인 정규분포 곡선에서 32.4 이상의 오른쪽 꼬리가 음영으로 표시되어 있다.",
+    "solutionImageCaption": "수확량 32.4킬로그램은 평균보다 표준편차 두 배만큼 크다. 표준정규분포의 오른쪽 꼬리 비율을 전체 나무 수에 적용한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -761,7 +773,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 240인 정규분포 곡선에서 228과 264 사이의 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "소수가 나온 횟수를 평균 240, 표준편차 12인 정규분포로 근사한다. 두 경계는 표준화하면 −1과 2가 되고, 대칭성과 표의 넓이를 이용한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1000,7 +1016,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 50, 표준편차 5인 앞면 횟수의 정규곡선에서 60 이상의 오른쪽 꼬리가 색칠되어 있고, 경계 60의 표준화 눈금은 2이다.",
+    "solutionImageCaption": "총점 180점 이상은 앞면 60회 이상과 같으므로, 앞면 횟수의 정규근사에서 오른쪽 꼬리를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1273,7 +1293,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −2부터 −1까지와 1부터 2까지의 대칭인 두 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "두 확률의 왼쪽 경계는 표준화하면 모두 −2이다. 표준정규곡선의 대칭성과 양의 밀도에 따라 오른쪽 경계도 같아야 한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

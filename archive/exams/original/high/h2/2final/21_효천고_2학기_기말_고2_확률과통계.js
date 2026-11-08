@@ -160,7 +160,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 70을 중심으로 65와 75 사이의 영역을 칠한 정규곡선.",
+    "solutionImageCaption": "평균 70에서 65와 75는 각각 한 표준편차만큼 떨어진 경계다. 두 경계 사이의 대칭 영역을 정규곡선에 나타냈다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -240,7 +244,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 450인 정규곡선에서 540부터 오른쪽 꼬리를 칠한 그림.",
+    "solutionImageCaption": "540은 평균 450보다 1.5표준편차 큰 경계다. 경계 오른쪽의 꼬리 영역을 나타냈다. 정답은 0.0668이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -440,7 +448,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "모집단과 표본"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -1/3과 4/3 사이의 영역을 칠한 그림. 눈금은 소수 근삿값 -0.333과 1.333으로 표시했다.",
+    "solutionImageCaption": "표준화한 두 경계는 a=-1/3, b=4/3이며, 그림의 눈금에는 소수 근삿값 -0.333과 1.333으로 표시했다. 표준정규곡선에서 그 사이의 영역을 나타냈다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -480,7 +492,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "모집단과 표본"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 500인 표본평균의 정규곡선에서 498과 502 사이를 칠한 그림.",
+    "solutionImageCaption": "그림은 평균 500을 중심으로 498부터 502까지의 영역을 나타낸다. 두 경계는 표준화하면 -2와 2에 대응한다. 정답은 64이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -760,7 +776,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "모집단과 표본"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 34인 표본평균의 정규곡선에서 35.5 오른쪽 꼬리를 칠한 그림.",
+    "solutionImageCaption": "모집단 평균은 34이고, 표준편차 5인 모집단에서 25개를 뽑은 표본평균의 표준편차는 1이다. 35.5는 평균보다 1.5만큼 큰 경계다. 정답은 0.0668이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -868,7 +888,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "이항분포"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 12인 정규근사곡선에서 15 이하와 18 이상인 두 영역을 칠한 그림.",
+    "solutionImageCaption": "정규근사 분포의 평균은 12, 표준편차는 3이다. 실근 조건에 해당하는 영역은 15 이하와 18 이상이다. 정답은 0.8641이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -904,7 +928,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "기댓값과 분산"
-    ]
+    ],
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 500인 합계의 정규곡선에서 520 오른쪽 꼬리를 칠한 그림.",
+    "solutionImageCaption": "200회 합의 평균은 500, 표준편차는 10이다. 520은 평균에서 2표준편차 오른쪽 경계다. 정답은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
