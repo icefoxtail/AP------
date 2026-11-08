@@ -1,0 +1,20 @@
+{
+ "capability":"construction-spike-v1",
+ "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+  {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+  {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+  {"id":"C","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"5"}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"L0","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"Lp","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"5"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"Lm","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"-5"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"}
+ ]},
+ "axisTickValues":{"x":[],"y":[]},"displayLines":["L0","Lp","Lm"],"displayCircles":["K"],"displaySegments":[{"id":"diameter","refs":["A","B"]}],"displayPoints":["A","B","C"],"coordinateLabels":["A","B","C"],
+ "lineLabels":[{"nodeId":"L0","text":"2x-y=0"},{"nodeId":"Lp","text":"2x-y+5=0"},{"nodeId":"Lm","text":"2x-y-5=0"}],
+ "caption":"k=0인 직선은 두 점에서 만나고, k=±5는 접하는 경계이다.",
+ "sourceConditions":[{"id":"c1","condition":"지름 양 끝점 (0,4), (2,0), 직선 2x-y+k=0","mappedTo":["A","B","L0","Lp","Lm"]}],
+ "newVisualInformation":["중심 (1,2), 반지름 √5; 두 교점 조건은 -5<k<5"],
+ "sourceQuote":"중심은 두 점의 중점인 $(1,2)$이고"
+}

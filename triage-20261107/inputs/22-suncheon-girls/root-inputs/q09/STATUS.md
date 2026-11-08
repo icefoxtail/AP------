@@ -1,0 +1,1 @@
+BRANCH DRAFT. ROOT 작성 입력 3종을 작업 브랜치에 보존한 미검증 초안이다. 원문 및 기존 SVG는 보존. 기존 해설 한 줄에 x-y+k라고 된 표기와 원문 2x-y+k의 차이를 별도 CONTENT 이력으로 기록; 계산/정답은 원문 기준이다. 소유·시도 UNKNOWN. validator·렌더 NOT_RUN, 구현자 미인계. 직전 승인 심사 거절된 별도 작업을 우회하지 않는다. 기존 OPEN_CONTENT 원장 상태를 바꾸지 않으며 READY_FOR_RENDER가 아니다. 구현자 중단 지시를 유지하여 인계하지 않는다.
