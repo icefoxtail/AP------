@@ -11,3 +11,10 @@ ROOT가 원문·정답·해설을 직접 읽어 작성한 JSON 3종을 정확한
 시험지 22문항의 triage 기준은 FIGURE 12(Q01·02·03·06·07·09·11·13·16·18·20·21), OPEN 10(Q04·05·08·10·12·14·15·17·19·22)이다. 현재 main 원장 blob a849eed70c877f0710fa4360ec988634ebf74533에는 이 시험지 항목이 없으므로 위 OPEN을 main 원장 확정 분류로 쓰지 않는다. main에 참조된 Q04·10·15·19·21·22 SVG 6개는 모두 기존 구형 자산이며 새 엔진 완료 마커는 확인되지 않았다. Q04·10·15·19·22 원문 PNG와 PR #534의 기존 승인·출고 이력은 보존한다.
 
 기존 12문항 입력 48개 파일과 판정표·원장·큐·원문·SVG는 변경하지 않는다. 이번 10세트는 입력 누락을 채우는 초안이며 OPEN 해소나 시험지 구현 완료를 뜻하지 않는다. 과거 12문항 인계에 이번 10문항은 포함되지 않았다. 현재 확인 가능한 작업 현황·원격 입력·open PR·대화 이력에서 이 10문항의 중복 작성이나 업로드 심사 거절은 찾지 못했다. 외부 현재 소유·잠금·누적 시도는 UNKNOWN이며 부재나 0으로 추정하지 않는다. Q17 기술 실패 및 Q14·19·22 가독성 이력과 다른 건의 거절을 보존한다. 최신 지시상 구현 담당은 중단 상태이므로 인계·렌더·재시도를 하지 않는다.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $x=4$에서는 $f'(4)=0$이지만
+- Span label correction: exact original span from=A, to=B, label="f'<0"; label now '도함수 음수'.
+- Span label correction: exact original span from=B, to=C, label="f'>0"; label now '도함수 양수'.
