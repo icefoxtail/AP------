@@ -22,7 +22,7 @@
 | Q16 | EXEMPT | 두 고정점 금지를 포함배제로 계산한다. |
 | Q17 | FIGURE | 유한 정의역 조각함수의 대응점을 정확히 표시하는 초안이다. 한 예시 a=4를 그림에 표시하고, 가능한 a 전체는 캡션에 기록한다. set-diagram sourceQuote 계약 수정안은 아직 격리 상태; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
 | Q18 | FIGURE | 원문 그림에서 읽은 네 대응을 매핑 다이어그램에 표시하는 초안이다. 전체 함수식은 추정하지 않는다. sourceQuote 계약 패치는 격리; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
-| Q19 | OPEN | 원문 변환 상자와 2주기 구조를 답 노출 없이 표현할 엔진 계약을 확인한다. |
+| Q19 | FIGURE | 원문 상자는 그대로 두고, 한 번 변환할 때 1/2와 3이 번갈아 나타나는 초안이다. sourceQuote 계약 패치는 격리; validator/renderer NOT_RUN, 소유·시도 UNKNOWN, 미인계. |
 | Q20 | EXEMPT | 동전 조합과 서로 다른 금액의 수를 구분해 계산한다. |
 | Q21 | OPEN | 무리식·유리식의 열린 경계와 전체 치역을 한 그림에 정확히 담는 계약을 확인한다. |
 | Q22 | EXEMPT | 자물쇠 자리별 숫자 배치 경우의 수를 계산한다. |
@@ -30,4 +30,4 @@
 | Q24 | EXEMPT | 주어진 원소 수를 집합의 분할로 계산한다. |
 | Q25 | EXEMPT | 두 사람의 포함 여부에 따른 배열 경우의 수를 계산한다. |
 
-입력 3종 Q04·05·10·11·17·18·23. Q13·15·19·21 OPEN. NOT_RENDERED.
+입력 3종 Q04·05·10·11·17·18·19·23. Q13·15·21 OPEN. NOT_RENDERED.

@@ -1,0 +1,68 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "변환 전",
+        "elements": [
+          "1/2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "변환 후",
+        "elements": [
+          "1/2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "T",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "상자를 한 번 통과할 때마다 두 값이 번갈아 나타난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "T(x)=(x+1)/(3x-1), T(1/2)=3, T(3)=1/2",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "처음 값과 한 번 변환한 값의 2주기"
+  ],
+  "sourceQuote": "두 번 변환하면 처음 값으로 돌아온다."
+}
