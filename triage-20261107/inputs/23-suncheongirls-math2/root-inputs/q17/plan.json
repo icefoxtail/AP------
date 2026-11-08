@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "두 점 $A(0,2)$, $B(4,-2)$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "4",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "2+4*x+2*x^2-x^3",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "M",
+        "x": "2",
+        "y": "10"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "-14"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "-14",
+        "2",
+        "10"
+      ]
+    }
+  },
+  "caption": "교점 조건을 a=h(x)로 바꾸어 닫힌 구간의 함수값 범위를 본다."
+}
