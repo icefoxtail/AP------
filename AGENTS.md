@@ -11,6 +11,7 @@
 
 ## 모든 작업 공통
 
+- **목표·방법 재검토:** 사용자의 결과·명시 고정 요구와 제안된 실행 방법을 구분한다. 방법을 정답으로 전제하지 말고 실제 근거로 더 나은 선택을 검토한다. 이유: 사용자는 기술적 작업 설계까지 책임질 필요가 없다. 자세한 절차는 [공통 판단 계약](docs/agents/outcome-method-review.md)을 따른다.
 - **학생 결과 우선:** 문항·정답·해설·이미지/SVG 검수는 현행 JS와 실제 자산으로 학생이 문제를 풀고 해설을 이해할 수 있는지, 수학·교육적 정확도를 우선 판단한다. 원본은 필요할 때 사실·출처를 대조하는 근거이지 동일성 자체가 합격 기준은 아니다. 차이는 실제 내용·자산, 승인 범위와 정해진 교정·검수 근거로 판단하며, 승인된 교정·생성본은 원본과 다르다는 이유만으로 되돌리지 않는다.
 - **해시와 검수 유지:** SHA·해시는 버전·출처·검증 대상을 잇는 근거로 유지하되 승인된 변경으로 값이 바뀔 수 있으므로, 차이만으로 오류를 확정하지 않는다. 각 영역의 승인·보호 필드·무결성·필수 자산 요구를 지킨다. 실제 오류·필수 자산 누락은 검수 범위에 두고, 검증·검수·보안 기준은 삭제·우회·완화하지 않는다.
 - 이유: 모든 라인이 기계적 동일성보다 학생이 실제로 풀고 이해할 수 있는 정확한 결과를 우선 판단하도록 하기 위해서다.
@@ -38,6 +39,7 @@
 
 | 작업 | 먼저 읽을 문서 |
 | --- | --- |
+| 작업 지시서 작성·방법 검토 (모든 작업자 공통) | [공통 판단 계약](docs/agents/outcome-method-review.md) |
 | 시험지 제작·검수 (CREATE·R1·R2·R3, Codex·ROOT) | [docs/agents/exam-pipeline.md](docs/agents/exam-pipeline.md) |
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
