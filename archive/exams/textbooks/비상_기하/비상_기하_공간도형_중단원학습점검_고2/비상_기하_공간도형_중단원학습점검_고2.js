@@ -24,10 +24,10 @@ window.questionBank = [
       "중단원 학습 점검"
     ],
     "wide": false,
-    "content": "<img src=\"q01.png\" />\n\n오른쪽 직육면체에 대하여 다음 보기 중 한 평면을 결정할 수 있는 것을 모두 고르시오.\n\n<보기>\nㄱ. 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{G}$\nㄴ. 직선 $\\mathrm{AE}$와 점 $\\mathrm{H}$\nㄷ. 두 직선 $\\mathrm{AD}, \\mathrm{CG}$\nㄹ. 두 직선 $\\mathrm{BF}, \\mathrm{DH}$",
+    "content": "<img src=\"q01.png\" />\n\n오른쪽 직육면체에 대하여 다음 보기 중 한 평면을 결정할 수 있는 것을 모두 고르시오.\n\n<보기>\nㄱ. 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{G}$\nㄴ. 직선 $\\mathrm{AB}$와 점 $\\mathrm{H}$\nㄷ. 두 직선 $\\mathrm{AD}, \\mathrm{CG}$\nㄹ. 두 직선 $\\mathrm{BF}, \\mathrm{DH}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄹ",
+    "solution": "[풀이 전략]\n공간에서 평면이 하나로 결정되기 위한 네 가지 기본 조건을 적용한다.\n1. 한 직선 위에 있지 않은 서로 다른 세 점\n2. 한 직선과 그 직선 위에 있지 않은 한 점\n3. 한 점에서 만나는 두 직선\n4. 서로 평행한 두 직선\n\n[단계별 풀이]\n1단계 [보기 분석]:\nㄱ. 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{G}$는 직육면체에서 한 직선 위에 있지 않은 서로 다른 세 점이므로 한 평면을 결정한다. (참)\nㄴ. 직선 $\\mathrm{AB}$와 점 $\\mathrm{H}$에서 점 $\\mathrm{H}$는 직선 $\\mathrm{AB}$ 위에 있지 않은 점이므로 한 직선과 그 직선 밖의 한 점에 의해 한 평면(대각단면 평면 $\\mathrm{ABGH}$)을 결정한다. (참)\nㄷ. 두 직선 $\\mathrm{AD}$와 $\\mathrm{CG}$는 직육면체에서 만나지도 않고 평행하지도 않은 꼬인 위치에 있다. 꼬인 위치에 있는 두 직선은 한 평면을 결정할 수 없다. (거짓)\nㄹ. 두 직선 $\\mathrm{BF}$와 $\\mathrm{DH}$는 직육면체의 서로 마주보는 모서리로서 서로 평행하다 ($\\mathrm{BF} \\parallel \\mathrm{DH}$). 평행한 두 직선은 한 평면(평면 $\\mathrm{BFHD}$)을 결정한다. (참)\n\n2단계 [종합]:\n따라서 한 평면을 결정할 수 있는 것은 ㄱ, ㄴ, ㄹ이다.\n\n[오답 및 경계 점검]\nㄷ에서 두 직선이 공간에서 만나지 않는다고 해서 평행한 것은 아니며, 꼬인 위치에 있을 수 있음에 유의해야 한다.\n\n[결론]\n한 평면을 결정할 수 있는 것은 ㄱ, ㄴ, ㄹ이다."
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q02.png\" />\n\n오른쪽 그림과 같은 정오각기둥에서 모서리 $\\mathrm{AF}$와 꼬인 위치에 있는 모서리의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "6",
+    "solution": "[풀이 전략]\n공간에서 두 직선이 만나지도 않고 평행하지도 않을 때 두 직선은 꼬인 위치에 있다고 한다. 정오각기둥의 15개 모서리 중 모서리 $\\mathrm{AF}$와 만나는 모서리 및 평행한 모서리를 제외하여 꼬인 위치에 있는 모서리를 센다.\n\n[단계별 풀이]\n1단계 [모서리 분류]:\n정오각기둥의 모서리는 윗면 5개, 아랫면 5개, 옆면 5개로 총 15개이다.\n모서리 $\\mathrm{AF}$는 윗면 꼭짓점 $\\mathrm{A}$와 아랫면 꼭짓점 $\\mathrm{F}$를 잇는 옆면 모서리이다.\n\n2단계 [만나거나 평행한 모서리 제외]:\n1. 모서리 $\\mathrm{AF}$와 만나는 모서리:\n   - 점 $\\mathrm{A}$에서 만남: $\\mathrm{AB}, \\mathrm{AE}$ (2개)\n   - 점 $\\mathrm{F}$에서 만남: $\\mathrm{FG}, \\mathrm{FJ}$ (2개)\n2. 모서리 $\\mathrm{AF}$와 평행한 모서리:\n   - 옆면의 다른 모서리: $\\mathrm{BG}, \\mathrm{CH}, \\mathrm{DI}, \\mathrm{EJ}$ (4개)\n\n3단계 [꼬인 위치의 모서리 계수]:\n1. 윗면 $\\mathrm{ABCDE}$의 모서리 중: $\\mathrm{BC}, \\mathrm{CD}, \\mathrm{DE}$ (3개)\n2. 아랫면 $\\mathrm{FGHIJ}$의 모서리 중: $\\mathrm{GH}, \\mathrm{HI}, \\mathrm{IJ}$ (3개)\n3. 옆면 모서리 중에서는 남아있는 모서리가 없다.\n따라서 꼬인 위치에 있는 모서리는 총 $3 + 3 = 6$개이다.\n\n[오답 및 경계 점검]\n평행한 옆면 모서리 4개를 꼬인 위치로 오인하지 않도록 주의한다.\n\n[결론]\n모서리 $\\mathrm{AF}$와 꼬인 위치에 있는 모서리의 개수는 $6$이다."
   },
   {
     "id": 3,
@@ -80,10 +80,10 @@ window.questionBank = [
       "중단원 학습 점검"
     ],
     "wide": false,
-    "content": "선분 $\\mathrm{AB}$의 평면 $\\alpha$ 위로의 정사영을 선분 $\\mathrm{A'B'}$이라고 하자. 직선 $\\mathrm{AE}$와 평면 $\\alpha$가 이루는 각의 크기가 $30^\\circ$이고 $\\overline{\\mathrm{A'B'}}=6$일 때, 선분 $\\mathrm{AB}$의 길이를 구하시오.",
+    "content": "선분 $\\mathrm{AB}$의 평면 $\\alpha$ 위로의 정사영을 선분 $\\mathrm{A'B'}$이라고 하자. 직선 $\\mathrm{AB}$와 평면 $\\alpha$가 이루는 각의 크기가 $30^\\circ$이고 $\\overline{\\mathrm{A'B'}}=6$일 때, 선분 $\\mathrm{AB}$의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4\\sqrt{3}",
+    "solution": "[풀이 전략]\n선분 $\\mathrm{AB}$와 평면 $\\alpha$가 이루는 각의 크기가 $\\theta$일 때, 평면 $\\alpha$ 위로의 정사영의 길이를 $\\overline{\\mathrm{A'B'}}$이라 하면\n$$\\overline{\\mathrm{A'B'}} = \\overline{\\mathrm{AB}} \\cos\\theta$$\n가 성립함을 이용한다.\n\n[단계별 풀이]\n1단계 [공식 적용]:\n직선 $\\mathrm{AB}$와 평면 $\\alpha$가 이루는 각의 크기가 $30^\\circ$이므로\n$$\\overline{\\mathrm{A'B'}} = \\overline{\\mathrm{AB}} \\cos 30^\\circ$$\n이다.\n\n2단계 [선분 $\\mathrm{AB}$의 길이 계산]:\n주어진 조건에서 $\\overline{\\mathrm{A'B'}}=6$이므로\n$$6 = \\overline{\\mathrm{AB}} \\times \\frac{\\sqrt{3}}{2}$$\n$$\\overline{\\mathrm{AB}} = \\frac{12}{\\sqrt{3}} = 4\\sqrt{3}$$\n이다.\n\n[오답 및 경계 점검]\n정사영의 길이는 항상 원래 선분의 길이보다 작거나 같아야 하므로 $\\overline{\\mathrm{AB}} \\ge \\overline{\\mathrm{A'B'}}$인지 확인한다. $4\\sqrt{3} = \\sqrt{48} > 6 = \\sqrt{36}$이므로 정합한다.\n\n[결론]\n선분 $\\mathrm{AB}$의 길이는 $4\\sqrt{3}$이다."
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q04.png\" />\n\n오른쪽 그림과 같은 직육면체에서 다섯 개의 꼭짓점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{G}, \\mathrm{H}$ 중 서로 다른 세 점에 의하여 결정되는 평면의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "7",
+    "solution": "[풀이 전략]\n서로 다른 세 점에 의하여 결정되는 평면의 개수를 구할 때는 전체 점 중에서 3개를 택하는 조합의 수에서 동일한 평면을 공유하는 점들의 중복 조합을 보정하여 센다.\n\n[단계별 풀이]\n1단계 [전체 세 점의 조합 수]:\n다섯 개의 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{G}, \\mathrm{H}$에서 서로 다른 3점을 택하는 경우의 수는\n$$\\binom{5}{3} = \\frac{5 \\times 4 \\times 3}{3 \\times 2 \\times 1} = 10$$\n이다.\n\n2단계 [공평면(한 평면 위의 네 점) 점검]:\n직육면체에서 $\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{HG}}$이고 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{HG}}$이므로 사각형 $\\mathrm{ABGH}$는 직사각형이며 한 평면(대각단면 평면) 위에 있다.\n따라서 네 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{G}, \\mathrm{H}$ 중 임의의 3점을 택하는 $\\binom{4}{3} = 4$가지 조합\n$$\\{\\mathrm{A, B, G}\\}, \\{\\mathrm{A, B, H}\\}, \\{\\mathrm{A, G, H}\\}, \\{\\mathrm{B, G, H}\\}$$\n는 모두 동일한 평면 $\\mathrm{ABGH}$ 하나만을 결정한다.\n\n3단계 [서로 다른 평면의 개수 계산]:\n- 평면 $\\mathrm{ABC}$ (윗면 $\\mathrm{ABCD}$): 1개\n- 평면 $\\mathrm{ABGH}$ (네 점 $\\mathrm{A, B, G, H}$가 이루는 대각단면): 1개\n- 점 $\\mathrm{C}$를 포함하고 남은 두 점을 택하는 평면들:\n  - 평면 $\\mathrm{ACG}$ (대각단면 $\\mathrm{ACGE}$): 1개\n  - 평면 $\\mathrm{ACH}$: 1개\n  - 평면 $\\mathrm{BCG}$ (옆면 $\\mathrm{BCGF}$): 1개\n  - 평면 $\\mathrm{BCH}$ (대각단면 $\\mathrm{BCHE}$): 1개\n  - 평면 $\\mathrm{CGH}$ (뒷면 $\\mathrm{CDHG}$): 1개\n따라서 서로 다른 평면의 총 개수는\n$$10 - 4 + 1 = 7$$\n이다.\n\n[오답 및 경계 점검]\n점 $\\mathrm{A, B, G, H}$ 네 점이 한 평면 위에 존재함을 놓쳐 10개로 계산하는 실수를 방지해야 한다.\n\n[결론]\n결정되는 서로 다른 평면의 개수는 $7$이다."
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "서로 다른 두 직선 $l, m$과 서로 다른 두 평면 $\\alpha, \\beta$에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n\n<보기>\nㄱ. $l \\perp \\alpha$, $l \\perp \\beta$이면 $\\alpha \\parallel \\beta$이다.\nㄴ. $l \\parallel \\alpha$, $\\alpha \\perp \\beta$이면 $l \\perp \\beta$이다.\nㄷ. $l \\perp \\alpha$, $m \\parallel \\alpha$이면 $l \\perp m$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "[풀이 전략]\n공간에서 직선과 평면의 위치 관계에 대한 기본 명제의 참, 거짓을 공간 기하의 성질과 반례를 통해 판별한다.\n\n[단계별 풀이]\n1단계 [보기 분석]:\nㄱ. $l \\perp \\alpha$이고 $l \\perp \\beta$이면, 한 직선 $l$에 동시에 수직인 서로 다른 두 평면 $\\alpha, \\beta$는 서로 평행하다 ($\\alpha \\parallel \\beta$). (참)\nㄴ. $l \\parallel \\alpha$이고 $\\alpha \\perp \\beta$일 때, 반례를 들 수 있다. 방의 바닥 평면을 $\\alpha$, 벽 평면을 $\\beta$라 하면 $\\alpha \\perp \\beta$이다. 이때 천장 모서리 중 벽 $\\beta$와 평행한 직선 $l$을 잡으면, $l \\parallel \\alpha$이지만 $l \\parallel \\beta$가 되어 $l \\perp \\beta$가 아니다. 따라서 거짓이다. (거짓)\nㄷ. $l \\perp \\alpha$이고 $m \\parallel \\alpha$이면:\n    $m \\parallel \\alpha$이므로 평면 $\\alpha$ 위에 직선 $m$과 평행한 직선 $m'$을 그을 수 있다.\n    직선 $l$은 평면 $\\alpha$ 위의 모든 직선과 수직이므로 $l \\perp m'$이다.\n    $m \\parallel m'$이므로 $l \\perp m$이다. (참)\n\n2단계 [종합]:\n따라서 옳은 것은 ㄱ, ㄷ이다.\n\n[오답 및 경계 점검]\nㄴ에서 공간의 수직/평행 관계는 2차원 평면에서의 추론(삼단논법)을 그대로 적용할 수 없음을 명확한 직육면체 모델로 검증한다.\n\n[결론]\n옳은 것은 ㄱ, ㄷ이다."
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q06.png\" />\n\n오른쪽 그림과 같이 모든 모서리의 길이가 $2$인 정사각뿔 $\\mathrm{A-BCDE}$가 있다. $\\overline{\\mathrm{CD}}, \\overline{\\mathrm{DE}}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라고 할 때, 직선 $\\mathrm{AE}$와 직선 $\\mathrm{MN}$이 이루는 각의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "45^\\circ",
+    "solution": "[풀이 전략]\n공간에서 꼬인 위치에 있는 두 직선이 이루는 각은 한 직선을 평행이동하여 다른 직선과 한 점에서 만나도록 한 후 그 교각의 크기를 구한다.\n\n[단계별 풀이]\n1단계 [평행이동]:\n정사각뿔 $\\mathrm{A-BCDE}$의 밑면은 정사각형 $\\mathrm{BCDE}$이다.\n삼각형 $\\mathrm{CDE}$에서 점 $\\mathrm{M}, \\mathrm{N}$은 각각 선분 $\\mathrm{CD}, \\mathrm{DE}$의 중점이므로 중점연결정리에 의해\n$$\\overline{\\mathrm{MN}} \\parallel \\overline{\\mathrm{CE}}$$\n이다.\n따라서 직선 $\\mathrm{AE}$와 직선 $\\mathrm{MN}$이 이루는 각의 크기는 직선 $\\mathrm{AE}$와 직선 $\\mathrm{CE}$가 이루는 각 $\\angle\\mathrm{AEC}$의 크기와 같다.\n\n2단계 [삼각형 $\\mathrm{ACE}$의 세 변의 길이 확인]:\n정사각뿔의 모든 모서리의 길이가 $2$이므로:\n- $\\overline{\\mathrm{AE}} = 2$\n- $\\overline{\\mathrm{AC}} = 2$\n- $\\overline{\\mathrm{CE}}$는 한 변의 길이가 $2$인 정사각형 $\\mathrm{BCDE}$의 대각선이므로\n  $$\\overline{\\mathrm{CE}} = \\sqrt{2^2 + 2^2} = 2\\sqrt{2}$$\n이다.\n\n3단계 [각의 크기 결정]:\n삼각형 $\\mathrm{ACE}$에서\n$$\\overline{\\mathrm{AE}}^2 + \\overline{\\mathrm{AC}}^2 = 2^2 + 2^2 = 4 + 4 = 8 = (2\\sqrt{2})^2 = \\overline{\\mathrm{CE}}^2$$\n이 성립하므로, 피타고라스 정리의 역에 의해 삼각형 $\\mathrm{ACE}$는 $\\angle\\mathrm{CAE} = 90^\\circ$인 직각이등변삼각형이다.\n따라서\n$$\\angle\\mathrm{AEC} = 45^\\circ$$\n이다.\n\n[오답 및 경계 점검]\n두 직선이 이루는 각은 $0^\\circ$ 이상 $90^\\circ$ 이하의 예각으로 답해야 하며, $45^\\circ$는 예각 범위에 부합한다.\n\n[결론]\n직선 $\\mathrm{AE}$와 직선 $\\mathrm{MN}$이 이루는 각의 크기는 $45^\\circ$이다."
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q07.png\" />\n\n오른쪽 그림과 같이 어느 직선 도로에서 건물로 들어가는 진입로가 있다. 도로와 진입로는 서로 수직이고, 진입로의 길이는 $100\\,\\mathrm{m}$이다. 직선 도로의 옆에 있는 학교의 위치를 $\\mathrm{A}$, 진입로의 입구를 $\\mathrm{B}$, 건물의 위치를 $\\mathrm{C}$, 건물의 꼭대기를 $\\mathrm{P}$라고 할 때, $\\overline{\\mathrm{AB}}=200\\,\\mathrm{m}$, $\\angle\\mathrm{PAB}=60^\\circ$이다. 이 건물의 높이를 구하시오. (단, 직선 $\\mathrm{PC}$는 지면과 수직이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "100\\sqrt{11}\\,\\mathrm{m}",
+    "solution": "[풀이 전략]\n삼수선의 정리를 적용하여 공간의 직각삼각형을 파악하고 피타고라스 정리와 삼각비를 단계적으로 사용한다.\n\n[단계별 풀이]\n1단계 [삼수선의 정리 적용]:\n- 조건에서 건물은 지면과 수직이므로 $\\mathrm{PC} \\perp \\text{지면}$이다.\n- 도로 위의 선분 $\\mathrm{AB}$와 진입로 $\\mathrm{BC}$는 서로 수직이므로 $\\mathrm{CB} \\perp \\mathrm{AB}$이다.\n- 삼수선의 정리에 의해 $\\mathrm{PB} \\perp \\mathrm{AB}$가 성립한다.\n따라서 삼각형 $\\mathrm{PAB}$는 $\\angle\\mathrm{PBA} = 90^\\circ$인 직각삼각형이다.\n\n2단계 [선분 $\\mathrm{PB}$의 길이 계산]:\n직각삼각형 $\\mathrm{PAB}$에서 $\\angle\\mathrm{PAB} = 60^\\circ$, $\\overline{\\mathrm{AB}} = 200\\,\\mathrm{m}$이므로\n$$\\overline{\\mathrm{PB}} = \\overline{\\mathrm{AB}} \\tan 60^\\circ = 200\\sqrt{3}\\,\\mathrm{m}$$\n이다.\n\n3단계 [건물의 높이 $\\overline{\\mathrm{PC}}$ 계산]:\n삼각형 $\\mathrm{PCB}$에서 $\\mathrm{PC} \\perp \\text{지면}$이므로 $\\angle\\mathrm{PCB} = 90^\\circ$인 직각삼각형이다.\n진입로의 길이 $\\overline{\\mathrm{BC}} = 100\\,\\mathrm{m}$이므로 피타고라스 정리에 의해\n$$\\overline{\\mathrm{PC}}^2 = \\overline{\\mathrm{PB}}^2 - \\overline{\\mathrm{BC}}^2 = (200\\sqrt{3})^2 - 100^2 = 120000 - 10000 = 110000$$\n$$\\overline{\\mathrm{PC}} = \\sqrt{110000} = 100\\sqrt{11}\\,\\mathrm{m}$$\n이다.\n\n[오답 및 경계 점검]\n$\\overline{\\mathrm{PB}}^2 - \\overline{\\mathrm{BC}}^2$ 계산 시 빗변이 $\\mathrm{PB}$임을 삼수선의 정리로부터 정확히 인지해야 한다.\n\n[결론]\n건물의 높이는 $100\\sqrt{11}\\,\\mathrm{m}$이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q08.png\" />\n\n오른쪽 그림과 같이 세 모서리 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$가 서로 수직이고, $\\overline{\\mathrm{OA}}=\\sqrt{2}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}=2$인 사면체가 있다. 꼭짓점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라고 할 때, 선분 $\\mathrm{AH}$의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2",
+    "solution": "[풀이 전략]\n서로 직교하는 세 모서리 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$를 좌표축으로 설정하거나 삼수선의 정리를 활용하여 $\\overline{\\mathrm{AH}}$의 길이를 구한다.\n\n[단계별 풀이]\n1단계 [삼수선의 정리 적용]:\n- 모서리 $\\mathrm{OA}$는 $\\mathrm{OB}$와 $\\mathrm{OC}$에 각각 수직이므로 $\\mathrm{OA} \\perp \\text{평면 } \\mathrm{OBC}$이다.\n- 밑면 삼각형 $\\mathrm{OBC}$는 $\\angle\\mathrm{BOC} = 90^\\circ$, $\\overline{\\mathrm{OB}} = \\overline{\\mathrm{OC}} = 2$인 직각이등변삼각형이다.\n- 점 $\\mathrm{O}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{M}$이라고 하자.\n- 삼수선의 정리에 의해 $\\mathrm{AM} \\perp \\mathrm{BC}$이므로, 꼭짓점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 발 $\\mathrm{H}$는 점 $\\mathrm{M}$과 일치한다 ($\\mathrm{H} = \\mathrm{M}$).\n\n2단계 [선분 $\\mathrm{OM}$의 길이 계산]:\n직각이등변삼각형 $\\mathrm{OBC}$에서 점 $\\mathrm{M}$은 빗변 $\\mathrm{BC}$의 중점이다.\n$$\\overline{\\mathrm{BC}} = \\sqrt{2^2 + 2^2} = 2\\sqrt{2}$$\n$$\\overline{\\mathrm{OM}} = \\frac{1}{2}\\overline{\\mathrm{BC}} = \\sqrt{2}$$\n이다.\n\n3단계 [선분 $\\mathrm{AH}$의 길이 계산]:\n삼각형 $\\mathrm{AOM}$은 $\\angle\\mathrm{AOM} = 90^\\circ$인 직각삼각형이다.\n피타고라스 정리에 의해\n$$\\overline{\\mathrm{AH}} = \\sqrt{\\overline{\\mathrm{OA}}^2 + \\overline{\\mathrm{OM}}^2} = \\sqrt{(\\sqrt{2})^2 + (\\sqrt{2})^2} = \\sqrt{2 + 2} = \\sqrt{4} = 2$$\n이다.\n\n[오답 및 경계 점검]\n점 $\\mathrm{O}$에서 $\\mathrm{BC}$에 내린 수선의 발 $\\mathrm{M}$과 점 $\\mathrm{A}$에서 내린 수선의 발 $\\mathrm{H}$가 삼수선의 정리로 인해 동일한 점이 됨을 확인한다.\n\n[결론]\n선분 $\\mathrm{AH}$의 길이는 $2$이다."
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q09.png\" />\n\n오른쪽 그림과 같이 한 모서리의 길이가 $2$인 정육면체에서 $\\overline{\\mathrm{AD}}, \\overline{\\mathrm{BC}}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라고 하자. 평면 $\\mathrm{MNGH}$와 평면 $\\mathrm{EFGH}$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{2\\sqrt{5}}{5}",
+    "solution": "[풀이 전략]\n두 평면이 이루는 각(이면각)의 크기를 구하기 위해 두 평면의 교선에 수직인 두 반직선이 이루는 각을 찾고 직각삼각형에서 삼각비를 계산한다.\n\n[단계별 풀이]\n1단계 [교선과 이면각의 정의 확인]:\n정육면체에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EH}}$이고 $\\mathrm{M}$은 $\\overline{\\mathrm{AD}}$의 중점이므로, 평면 $\\mathrm{MNGH}$와 밑면 평면 $\\mathrm{EFGH}$의 교선은 직선 $\\mathrm{GH}$이다.\n- 정사각형 $\\mathrm{EFGH}$에서 $\\overline{\\mathrm{EH}} \\perp \\overline{\\mathrm{GH}}$이다.\n- 정사각형 $\\mathrm{ADHE}$에서 $\\mathrm{DH} \\perp \\mathrm{GH}$, $\\mathrm{AD} \\perp \\mathrm{GH}$이므로 평면 $\\mathrm{ADHE} \\perp \\overline{\\mathrm{GH}}$이다.\n- 선분 $\\mathrm{MH}$는 평면 $\\mathrm{ADHE}$ 위에 있으므로 $\\overline{\\mathrm{MH}} \\perp \\overline{\\mathrm{GH}}$이다.\n따라서 두 평면 $\\mathrm{MNGH}$와 $\\mathrm{EFGH}$가 이루는 각 $\\theta$는 평면 $\\mathrm{ADHE}$ 상의 각인 $\\angle\\mathrm{MHE}$이다.\n\n2단계 [면 $\\mathrm{ADHE}$ 상에서의 길이 계산]:\n정육면체의 한 모서리의 길이는 $2$이므로:\n- 정사각형 $\\mathrm{ADHE}$에서 $\\overline{\\mathrm{EH}} = 2$, $\\overline{\\mathrm{DH}} = 2$이다.\n- 점 $\\mathrm{M}$은 $\\overline{\\mathrm{AD}}$의 중점이므로, 점 $\\mathrm{M}$에서 선분 $\\mathrm{EH}$에 내린 수선의 발을 $\\mathrm{K}$라 하면\n  $$\\overline{\\mathrm{MK}} = 2, \\quad \\overline{\\mathrm{HK}} = 1$$\n이다.\n\n3단계 [빗변 $\\overline{\\mathrm{MH}}$ 및 $\\sin\\theta$ 계산]:\n직각삼각형 $\\mathrm{MKH}$에서\n$$\\overline{\\mathrm{MH}} = \\sqrt{\\overline{\\mathrm{MK}}^2 + \\overline{\\mathrm{HK}}^2} = \\sqrt{2^2 + 1^2} = \\sqrt{5}$$\n이다.\n따라서\n$$\\sin\\theta = \\frac{\\overline{\\mathrm{MK}}}{\\overline{\\mathrm{MH}}} = \\frac{2}{\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$$\n이다.\n\n[오답 및 경계 점검]\n문제에서 구하는 값이 $\\cos\\theta$가 아니라 $\\sin\\theta$임에 주의한다 ($\\cos\\theta = \\frac{1}{\\sqrt{5}}$, $\\sin\\theta = \\frac{2}{\\sqrt{5}}$).\n\n[결론]\n$\\sin\\theta$의 값은 $\\frac{2\\sqrt{5}}{5}$이다."
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q10.png\" />\n\n다음 그림과 같이 두 평면 $\\alpha, \\beta$가 이루는 각의 크기는 $30^\\circ$이고, 평면 $\\alpha$ 위에 있는 도형 $\\mathrm{A}$의 평면 $\\beta$ 위로의 정사영을 $\\mathrm{B}$라고 하자. 도형 $\\mathrm{B}$는 한 변의 길이가 $2$이고 한 각의 크기가 $60^\\circ$인 마름모일 때, 도형 $\\mathrm{A}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4",
+    "solution": "[풀이 전략]\n평면 $\\alpha$ 위의 도형 $\\mathrm{A}$의 평면 $\\beta$ 위로의 정사영을 $\\mathrm{B}$라 하고 두 평면이 이루는 각의 크기를 $\\theta$라 하면\n$$S_{\\mathrm{B}} = S_{\\mathrm{A}} \\cos\\theta$$\n가 성립함을 이용한다.\n\n[단계별 풀이]\n1단계 [도형 $\\mathrm{B}$의 넓이 계산]:\n도형 $\\mathrm{B}$는 한 변의 길이가 $2$이고 한 내각의 크기가 $60^\\circ$인 마름모이다.\n마름모는 한 변의 길이가 $2$인 정삼각형 2개를 붙여놓은 도형이므로\n$$S_{\\mathrm{B}} = 2 \\times 2 \\times \\sin 60^\\circ = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$$\n이다.\n\n2단계 [도형 $\\mathrm{A}$의 넓이 계산]:\n두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $30^\\circ$이므로\n$$S_{\\mathrm{B}} = S_{\\mathrm{A}} \\cos 30^\\circ$$\n$$2\\sqrt{3} = S_{\\mathrm{A}} \\times \\frac{\\sqrt{3}}{2}$$\n$$S_{\\mathrm{A}} = \\frac{2\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 2\\sqrt{3} \\times \\frac{2}{\\sqrt{3}} = 4$$\n이다.\n\n[오답 및 경계 점검]\n정사영 도형의 넓이 $S_{\\mathrm{B}}$가 원래 도형의 넓이 $S_{\\mathrm{A}}$에 $\\cos 30^\\circ$를 곱한 것인지 역으로 곱하지 않았는지 확인한다 ($2\\sqrt{3} < 4$이므로 정합).\n\n[결론]\n도형 $\\mathrm{A}$의 넓이는 $4$이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q11.png\" />\n\n오른쪽 그림과 같이 한 모서리의 길이가 $2$인 정육면체에서 선분 $\\mathrm{BF}$의 중점을 $\\mathrm{M}$이라고 하자. 선분 $\\mathrm{MH}$와 평면 $\\mathrm{AEHD}$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{\\sqrt{5}}{3}",
+    "solution": "[풀이 전략]\n직선과 평면이 이루는 각은 직선 위의 한 점에서 평면에 내린 수선의 발과 교점을 연결한 직선이 원래 직선과 이루는 각의 크기이다. 정육면체의 대칭성을 활용하여 직각삼각형을 구성하고 코사인 값을 구한다.\n\n[단계별 풀이]\n1단계 [정사영의 위치 파악]:\n정육면체에서 모서리 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{FE}}$는 평면 $\\mathrm{AEHD}$에 수직이다.\n선분 $\\overline{\\mathrm{BF}}$의 중점 $\\mathrm{M}$에서 평면 $\\mathrm{AEHD}$에 내린 수선의 발은 모서리 $\\overline{\\mathrm{AE}}$의 중점 $\\mathrm{M'}$이다.\n점 $\\mathrm{H}$는 이미 평면 $\\mathrm{AEHD}$ 위의 점이므로, 선분 $\\mathrm{MH}$의 평면 $\\mathrm{AEHD}$ 위로의 정사영은 선분 $\\mathrm{M'H}$이다.\n따라서 선분 $\\mathrm{MH}$와 평면 $\\mathrm{AEHD}$가 이루는 각 $\\theta$는 직각삼각형 $\\mathrm{MM'H}$ ($\\angle\\mathrm{MM'H} = 90^\\circ$)에서 $\\angle\\mathrm{MHM'}$이다.\n\n2단계 [변의 길이 계산]:\n한 모서리의 길이가 $2$이므로:\n- $\\overline{\\mathrm{MM'}} = 2$ (정육면체의 모서리 길이)\n- 점 $\\mathrm{M'}$은 $\\overline{\\mathrm{AE}}$의 중점이므로 정사각형 $\\mathrm{AEHD}$에서\n  $$\\overline{\\mathrm{M'E}} = 1, \\quad \\overline{\\mathrm{EH}} = 2$$\n  $$\\overline{\\mathrm{M'H}} = \\sqrt{\\overline{\\mathrm{M'E}}^2 + \\overline{\\mathrm{EH}}^2} = \\sqrt{1^2 + 2^2} = \\sqrt{5}$$\n- 빗변 $\\overline{\\mathrm{MH}}$의 길이는 피타고라스 정리에 의해\n  $$\\overline{\\mathrm{MH}} = \\sqrt{\\overline{\\mathrm{MM'}}^2 + \\overline{\\mathrm{M'H}}^2} = \\sqrt{2^2 + (\\sqrt{5})^2} = \\sqrt{4 + 5} = \\sqrt{9} = 3$$\n이다.\n\n3단계 [$\\cos\\theta$ 계산]:\n직각삼각형 $\\mathrm{MM'H}$에서\n$$\\cos\\theta = \\frac{\\overline{\\mathrm{M'H}}}{\\overline{\\mathrm{MH}}} = \\frac{\\sqrt{5}}{3}$$\n이다.\n\n[오답 및 경계 점검]\n정사영 $\\mathrm{M'}$이 선분 $\\mathrm{AE}$의 중점임을 확인하고 삼각비 정의 $\\cos\\theta = \\frac{\\text{밑변}}{\\text{빗변}}$을 엄격히 적용한다.\n\n[결론]\n$\\cos\\theta$의 값은 $\\frac{\\sqrt{5}}{3}$이다."
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q12.png\" />\n\n오른쪽 그림은 밑면이 정사각형인 직육면체를 밑면과 이루는 각의 크기가 $45^\\circ$인 평면으로 자른 것이다. 단면인 $\\square\\mathrm{PQRS}$의 넓이가 $8\\sqrt{2}$일 때, 밑면의 한 변의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2\\sqrt{2}",
+    "solution": "[풀이 전략]\n단면 $\\square\\mathrm{PQRS}$의 밑면 위로의 정사영이 바로 밑면인 정사각형 그 자체임을 인지하고 정사영 넓이 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [정사영 관계 파악]:\n밑면이 정사각형인 직육면체를 평면으로 자른 단면 $\\square\\mathrm{PQRS}$를 밑면 위로 정사영하면 밑면인 정사각형 $\\square\\mathrm{ABCD}$가 된다.\n밑면의 한 변의 길이를 $a$ ($a > 0$)라 하면 밑면의 넓이는 $S' = a^2$이다.\n\n2단계 [정사영 넓이 공식 적용]:\n단면과 밑면이 이루는 각의 크기가 $45^\\circ$이고 단면의 넓이가 $S = 8\\sqrt{2}$이므로\n$$S' = S \\cos 45^\\circ$$\n$$a^2 = 8\\sqrt{2} \\times \\frac{\\sqrt{2}}{2} = 8\\sqrt{2} \\times \\frac{1}{\\sqrt{2}} = 8$$\n이다.\n\n3단계 [한 변의 길이 결정]:\n$a^2 = 8$이고 $a > 0$이므로\n$$a = \\sqrt{8} = 2\\sqrt{2}$$\n이다.\n\n[오답 및 경계 점검]\n$S'$와 $S$의 위치를 바꾸어 $8\\sqrt{2} = a^2 \\cos 45^\\circ$로 잘못 세우지 않도록 주의한다. 정사영된 밑면이 단면보다 작아야 하므로 $a^2 = 8 < 8\\sqrt{2}$로 올바르다.\n\n[결론]\n밑면의 한 변의 길이는 $2\\sqrt{2}$이다."
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q13.png\" />\n\n오른쪽 그림과 같은 삼각뿔에서 모서리 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$는 각각 서로 수직이다. 점 $\\mathrm{A}$에서 모서리 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{P}$, 점 $\\mathrm{B}$에서 모서리 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{Q}$라고 하자. 두 직선 $\\mathrm{AP}, \\mathrm{BQ}$의 교점을 $\\mathrm{H}$라고 할 때, 선분 $\\mathrm{OH}$는 면 $\\mathrm{ABC}$와 수직임을 증명하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "[풀이 전략]\n삼수선의 정리를 단계적으로 적용하여 직선이 평면 위의 서로 다른 두 교차선과 각각 수직임을 증명함으로써 평면과 직선의 수직을 유도한다.\n\n[단계별 풀이]\n1단계 [직선 $\\mathrm{OA}$와 평면 $\\mathrm{OBC}$의 수직성]:\n모서리 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$가 서로 수직이므로:\n- $\\mathrm{OA} \\perp \\mathrm{OB}$, $\\mathrm{OA} \\perp \\mathrm{OC}$이다.\n- 따라서 직선 $\\mathrm{OA}$는 평면 $\\mathrm{OBC}$ 위의 교차하는 두 직선과 수직이므로 $\\mathrm{OA} \\perp \\text{평면 } \\mathrm{OBC}$이다.\n- 선분 $\\mathrm{BC}$는 평면 $\\mathrm{OBC}$ 위에 있으므로 $\\mathrm{OA} \\perp \\mathrm{BC}$이다.\n\n2단계 [선분 $\\mathrm{OH}$와 직선 $\\mathrm{BC}$의 수직성]:\n- 조건에서 점 $\\mathrm{A}$에서 $\\mathrm{BC}$에 내린 수선의 발이 $\\mathrm{P}$이므로 $\\mathrm{AP} \\perp \\mathrm{BC}$이다.\n- 1단계에서 $\\mathrm{OA} \\perp \\mathrm{BC}$이고 $\\mathrm{AP} \\perp \\mathrm{BC}$이므로, 직선 $\\mathrm{BC}$는 평면 $\\mathrm{OAP}$ 위의 두 교차선 $\\mathrm{OA}, \\mathrm{AP}$와 각각 수직이다.\n- 따라서 $\\mathrm{BC} \\perp \\text{평면 } \\mathrm{OAP}$이다.\n- 점 $\\mathrm{H}$는 선분 $\\mathrm{AP}$ 위의 점이므로 직선 $\\mathrm{OH}$는 평면 $\\mathrm{OAP}$ 위에 있다.\n- 그러므로 $\\mathrm{OH} \\perp \\mathrm{BC}$이다.\n\n3단계 [선분 $\\mathrm{OH}$와 직선 $\\mathrm{AC}$의 수직성]:\n- 같은 방법으로, $\\mathrm{OB} \\perp \\mathrm{OA}$이고 $\\mathrm{OB} \\perp \\mathrm{OC}$이므로 $\\mathrm{OB} \\perp \\text{평면 } \\mathrm{OAC}$이다.\n- 선분 $\\mathrm{AC}$는 평면 $\\mathrm{OAC}$ 위에 있으므로 $\\mathrm{OB} \\perp \\mathrm{AC}$이다.\n- 조건에서 $\\mathrm{BQ} \\perp \\mathrm{AC}$이므로, 직선 $\\mathrm{AC}$는 평면 $\\mathrm{OBQ}$ 위의 교차하는 두 직선 $\\mathrm{OB}, \\mathrm{BQ}$와 각각 수직이다.\n- 따라서 $\\mathrm{AC} \\perp \\text{평면 } \\mathrm{OBQ}$이다.\n- 점 $\\mathrm{H}$는 선분 $\\mathrm{BQ}$ 위의 점이므로 직선 $\\mathrm{OH}$는 평면 $\\mathrm{OBQ}$ 위에 있다.\n- 그러므로 $\\mathrm{OH} \\perp \\mathrm{AC}$이다.\n\n4단계 [종합 및 증명 완성]:\n- 2단계와 3단계에 의하여 직선 $\\mathrm{OH}$는 평면 $\\mathrm{ABC}$ 위의 한 점 $\\mathrm{C}$에서 만나는 두 직선 $\\mathrm{BC}$와 $\\mathrm{AC}$에 각각 수직이다.\n- 따라서 직선 $\\mathrm{OH}$는 평면 $\\mathrm{ABC}$와 수직이다 ($\\overline{\\mathrm{OH}} \\perp \\text{면 } \\mathrm{ABC}$).\n\n[오답 및 경계 점검]\n한 평면 위의 두 직선에 수직임을 보일 때, 두 직선이 평행하지 않고 교차하는 두 직선(여기서는 $\\mathrm{BC}$와 $\\mathrm{AC}$)이어야 평면 전체에 대한 수직성이 보장됨을 명시한다.\n\n[결론]\n상기 과정에 의하여 선분 $\\mathrm{OH}$는 면 $\\mathrm{ABC}$와 수직임이 증명된다."
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q14.png\" />\n\n다음 그림과 같이 두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $60^\\circ$이고, 평면 $\\alpha$ 위의 선분 $\\mathrm{AB}$가 두 평면의 교선과 이루는 각의 크기는 $30^\\circ$이다. $\\overline{\\mathrm{AB}}=8$일 때, 선분 $\\mathrm{AB}$의 평면 $\\beta$ 위로의 정사영의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "2\\sqrt{13}",
+    "solution": "[풀이 전략]\n선분 $\\mathrm{AB}$를 두 평면의 교선에 평행한 성분과 교선에 수직인 성분으로 분해하여 각각의 정사영 길이를 구한 뒤 피타고라스 정리를 적용한다.\n\n[단계별 풀이]\n1단계 [선분의 성분 분해]:\n두 평면 $\\alpha, \\beta$의 교선을 $l$이라 하자.\n평면 $\\alpha$ 위의 선분 $\\mathrm{AB}$는 교선 $l$과 $30^\\circ$의 각을 이루고 $\\overline{\\mathrm{AB}} = 8$이다.\n- 교선 $l$에 평행한 방향의 성분의 길이:\n  $$L_{\\parallel} = 8 \\cos 30^\\circ = 8 \\times \\frac{\\sqrt{3}}{2} = 4\\sqrt{3}$$\n- 평면 $\\alpha$ 상에서 교선 $l$에 수직인 방향의 성분의 길이:\n  $$L_{\\perp} = 8 \\sin 30^\\circ = 8 \\times \\frac{1}{2} = 4$$\n\n2단계 [평면 $\\beta$ 위로의 정사영]:\n- 교선에 평행한 성분 $L_{\\parallel}$은 평면 $\\beta$와도 평행하므로 정사영 시 길이가 보존된다:\n  $$L'_{\\parallel} = L_{\\parallel} = 4\\sqrt{3}$$\n- 교선에 수직인 성분 $L_{\\perp}$은 평면 $\\beta$와 두 평면이 이루는 이면각인 $60^\\circ$의 각을 이루므로, 평면 $\\beta$ 위로의 정사영의 길이는\n  $$L'_{\\perp} = L_{\\perp} \\cos 60^\\circ = 4 \\times \\frac{1}{2} = 2$$\n이다.\n\n3단계 [정사영의 전체 길이 계산]:\n교선 방향과 이에 수직인 방향은 서로 직교하므로, 피타고라스 정리에 의해 선분 $\\mathrm{AB}$의 평면 $\\beta$ 위로의 정사영의 길이는\n$$L' = \\sqrt{(L'_{\\parallel})^2 + (L'_{\\perp})^2} = \\sqrt{(4\\sqrt{3})^2 + 2^2} = \\sqrt{48 + 4} = \\sqrt{52} = 2\\sqrt{13}$$\n이다.\n\n[오답 및 경계 점검]\n단순히 $\\overline{\\mathrm{AB}} \\cos 60^\\circ$를 취하는 오류를 범하지 않아야 하며, 교선과의 각도 $30^\\circ$에 따른 3차원 직교 분해를 정확히 수행해야 한다.\n\n[결론]\n선분 $\\mathrm{AB}$의 평면 $\\beta$ 위로의 정사영의 길이는 $2\\sqrt{13}$이다."
   },
   {
     "id": 15,
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q15.png\" />\n\n다음 그림과 같이 밑면의 반지름의 길이가 $4$, 높이가 $14$인 원기둥의 한 모선이 평면 $\\alpha$와 $30^\\circ$의 각을 이루고 있다. 이 원기둥의 평면 $\\alpha$ 위로의 정사영의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "8\\pi+56\\sqrt{3}",
+    "solution": "[풀이 전략]\n원기둥의 정사영 도형은 두 밑면 원의 정사영(합쳐서 타원 1개)과 옆면의 정사영(직사각형)의 합으로 구성됨을 공간 기하학적으로 분석하여 넓이를 구한다.\n\n[단계별 풀이]\n1단계 [모선 및 밑면과 평면 $\\alpha$ 사이의 각도 분석]:\n원기둥의 모선이 평면 $\\alpha$와 이루는 각이 $30^\\circ$이다.\n원기둥의 밑면은 모선과 수직이므로, 밑면의 평면과 평면 $\\alpha$가 이루는 각 $\\theta$는\n$$\\theta = 90^\\circ - 30^\\circ = 60^\\circ$$\n이다.\n\n2단계 [밑면 원의 정사영 넓이 계산]:\n밑면의 반지름의 길이가 $4$이므로 밑면 원의 넓이는\n$$S_{\\text{밑면}} = \\pi \\times 4^2 = 16\\pi$$\n이다.\n밑면 원의 평면 $\\alpha$ 위로의 정사영은 타원이 되며 그 넓이는\n$$S'_{\\text{밑면}} = 16\\pi \\cos 60^\\circ = 16\\pi \\times \\frac{1}{2} = 8\\pi$$\n이다.\n원기둥의 양 끝에 있는 두 반타원의 정사영 넓이의 합은 완전한 타원 1개의 넓이인 $8\\pi$와 같다.\n\n3단계 [옆면의 정사영 넓이 계산]:\n원기둥의 옆면의 외곽선은 평행한 두 모선으로 결정된다.\n- 두 모선 사이의 거리는 밑면 원의 지름인 $2 \\times 4 = 8$이다 (이 폭은 평면 $\\alpha$와 평행하여 축소되지 않는다).\n- 높이(모선의 길이)는 $14$이고 모선이 평면 $\\alpha$와 $30^\\circ$의 각을 이루므로, 모선의 평면 $\\alpha$ 위로의 정사영의 길이는\n  $$14 \\cos 30^\\circ = 14 \\times \\frac{\\sqrt{3}}{2} = 7\\sqrt{3}$$\n이다.\n따라서 옆면의 정사영은 가로가 $8$, 세로가 $7\\sqrt{3}$인 직사각형이 되며 넓이는\n$$S'_{\\text{옆면}} = 8 \\times 7\\sqrt{3} = 56\\sqrt{3}$$\n이다.\n\n4단계 [전체 정사영의 넓이 합산]:\n원기둥 전체의 정사영 넓이는 양 끝의 반타원 2개(타원 1개)와 중앙의 직사각형의 합이므로\n$$S' = 8\\pi + 56\\sqrt{3}$$\n이다.\n\n[오답 및 경계 점검]\n타원의 넓이가 $8\\pi$이고 직사각형의 넓이가 $56\\sqrt{3}$임을 분리하여 정확히 합산한다.\n\n[결론]\n원기둥의 평면 $\\alpha$ 위로의 정사영의 넓이는 $8\\pi + 56\\sqrt{3}$이다."
   }
 ];

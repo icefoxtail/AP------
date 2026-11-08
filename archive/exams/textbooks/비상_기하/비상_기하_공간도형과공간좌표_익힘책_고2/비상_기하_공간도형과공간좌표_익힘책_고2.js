@@ -32,8 +32,8 @@ window.questionBank = [
       "9",
       "10"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n정육각기둥의 18개 모서리 중 모서리 $\\mathrm{AB}$와 한 점에서 만나는 모서리 및 평행한 모서리를 체계적으로 제외하여 꼬인 위치에 있는 모서리를 센다.\n\n[단계별 풀이]\n1단계 [모서리 분류]:\n정육각기둥은 밑면 정육각형 모서리 6개씩 2개(12개)와 옆면 모서리 6개로 총 18개의 모서리를 갖는다.\n모서리 $\\mathrm{AB}$는 윗면 $\\mathrm{ABCDEF}$의 한 모서리이다.\n\n2단계 [만나거나 평행한 모서리 제외]:\n1. 윗면 $\\mathrm{ABCDEF}$의 모서리 중:\n   - 점 $\\mathrm{A}, \\mathrm{B}$에서 만남: $\\mathrm{FA}, \\mathrm{BC}$\n   - 평행함: $\\mathrm{ED}$ (정육각형의 마주보는 변)\n   - 동일 평면 상에서 연장선이 만남: $\\mathrm{CD}, \\mathrm{EF}$\n   따라서 윗면 모서리 중에는 꼬인 위치에 있는 모서리가 없다.\n2. 아랫면 $\\mathrm{GHIJKL}$의 모서리 중:\n   - $\\mathrm{AB}$와 평행함: $\\mathrm{GH}, \\mathrm{KJ}$ (2개)\n   - 꼬인 위치: $\\mathrm{HI}, \\mathrm{IJ}, \\mathrm{KL}, \\mathrm{LG}$ (4개)\n3. 옆면 모서리($\\mathrm{AG}, \\mathrm{BH}, \\mathrm{CI}, \\mathrm{DJ}, \\mathrm{EK}, \\mathrm{FL}$) 6개 중:\n   - 점 $\\mathrm{A}, \\mathrm{B}$에서 만남: $\\mathrm{AG}, \\mathrm{BH}$ (2개)\n   - 꼬인 위치: $\\mathrm{CI}, \\mathrm{DJ}, \\mathrm{EK}, \\mathrm{FL}$ (4개)\n\n3단계 [종합 계수]:\n꼬인 위치에 있는 모서리는 아랫면의 4개와 옆면의 4개로 총\n$$4 + 4 = 8$$\n개이다.\n\n[오답 및 경계 점검]\n아랫면에서 $\\mathrm{KJ}$가 $\\mathrm{AB}$와 평행함을 정육각형의 기하학적 대칭성으로 정확히 인지해야 한다.\n\n[결론]\n정답은 ③(8)이다."
   },
   {
     "id": 2,
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q02.png\" />\n\n오른쪽 그림과 같은 사각뿔의 꼭짓점으로 만들 수 있는 서로 다른 평면의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "7",
+    "solution": "[풀이 전략]\n사각뿔의 꼭짓점 5개에서 3개를 택하는 조합 중에서 밑면 4점이 이루는 공평면 중복을 보정하여 서로 다른 평면의 개수를 센다.\n\n[단계별 풀이]\n1단계 [전체 세 점의 조합 수]:\n사각뿔의 꼭짓점은 꼭대기 점 1개와 밑면 사각형의 꼭짓점 4개로 총 5개이다.\n서로 다른 3개의 점을 택하는 경우의 수는\n$$\\binom{5}{3} = 10$$\n이다.\n\n2단계 [밑면의 중복 점검]:\n밑면의 네 꼭짓점은 한 평면 위에 있으므로, 이 4개의 점 중 3개를 택하는\n$$\\binom{4}{3} = 4$$\n가지 조합은 모두 밑면 평면 1개만을 결정한다.\n\n3단계 [서로 다른 평면의 개수 계산]:\n- 밑면 평면: 1개\n- 옆면 삼각형 평면(꼭대기 점과 밑면의 모서리 2점): 4개\n- 꼭대기 점과 밑면의 대각선 2점으로 결정되는 대각단면 평면: 2개\n따라서 서로 다른 평면의 총 개수는\n$$1 + 4 + 2 = 7 \\quad (\\text{또는 } 10 - 4 + 1 = 7)$$\n이다.\n\n[오답 및 경계 점검]\n밑면의 4점이 한 평면 위에 있으므로 4개의 조합이 1개의 평면으로 통합됨을 확인한다.\n\n[결론]\n서로 다른 평면의 개수는 $7$이다."
   },
   {
     "id": 3,
@@ -94,8 +94,8 @@ window.questionBank = [
       "ㄴ, ㄹ",
       "ㄷ, ㄹ"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n정육면체에서 두 직선이 이루는 각의 크기를 구하기 위해 직선을 평행이동하여 한 점에서 만나게 하고 세 변의 길이 관계나 정삼각형 구성을 확인한다.\n\n[단계별 풀이]\n1단계 [보기 분석]:\n정육면체의 한 모서리의 길이를 $1$이라 하자.\n- ㄱ. 직선 $\\mathrm{AD}$와 직선 $\\mathrm{DG}$:\n  모서리 $\\mathrm{AD}$는 옆면 $\\mathrm{CDHG}$에 수직이므로 그 평면 위의 선분 $\\mathrm{DG}$와 수직이다. 따라서 이루는 각은 $90^\\circ$이다. (ㄱ 거짓)\n- ㄴ. 직선 $\\mathrm{BG}$와 직선 $\\mathrm{DG}$:\n  두 선분 $\\mathrm{BG}$와 $\\mathrm{DG}$는 점 $\\mathrm{G}$에서 만난다.\n  정육면체에서 $\\overline{\\mathrm{BG}} = \\sqrt{2}, \\overline{\\mathrm{DG}} = \\sqrt{2}, \\overline{\\mathrm{BD}} = \\sqrt{2}$이므로 삼각형 $\\mathrm{BGD}$는 세 변의 길이가 같은 정삼각형이다.\n  따라서 $\\angle\\mathrm{BGD} = 60^\\circ$이다. (ㄴ 참)\n- ㄷ. 직선 $\\mathrm{AF}$와 직선 $\\mathrm{BG}$:\n  선분 $\\mathrm{BG}$와 평행한 선분은 뒷면/옆면의 $\\mathrm{AH}$이다 ($\\overline{\\mathrm{BG}} \\parallel \\overline{\\mathrm{AH}}$).\n  따라서 두 직선이 이루는 각은 $\\angle\\mathrm{FAH}$의 크기와 같다.\n  삼각형 $\\mathrm{AFH}$의 세 변은 모두 정육면체의 면 대각선이므로 $\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AH}} = \\overline{\\mathrm{FH}} = \\sqrt{2}$인 정삼각형이다.\n  따라서 $\\angle\\mathrm{FAH} = 60^\\circ$이다. (ㄷ 참)\n- ㄹ. 직선 $\\mathrm{AF}$와 직선 $\\mathrm{BH}$:\n  선분 $\\mathrm{BH}$는 정육면체의 대각선이고 $\\mathrm{AF}$는 면 대각선이다. 공간좌표에서 벡터 내적을 구하면 $\\vec{\\mathrm{AF}} \\cdot \\vec{\\mathrm{BH}} = 0$이므로 두 직선은 직교($90^\\circ$)한다. (ㄹ 거짓)\n\n2단계 [종합]:\n두 직선이 이루는 각의 크기가 $60^\\circ$인 것은 ㄴ, ㄷ이다.\n\n[오답 및 경계 점검]\nㄷ에서 면 대각선 3개가 연결되어 정삼각형 $\\triangle\\mathrm{AFH}$를 형성함을 평행이동을 통해 직관적으로 확인할 수 있다.\n\n[결론]\n정답은 ③(ㄴ, ㄷ)이다."
   },
   {
     "id": 4,
@@ -122,8 +122,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q04.png\" />\n\n오른쪽 그림과 같이 정사면체 $\\mathrm{ABCD}$의 두 모서리 $\\mathrm{AB}, \\mathrm{CD}$의 중점을 각각 $\\mathrm{E}, \\mathrm{F}$라고 할 때, 다음 보기 중 옳은 것을 모두 고르시오.\n\n<보기>\nㄱ. $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{BF}}$\nㄴ. $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$\nㄷ. $\\overline{\\mathrm{CD}} \\perp \\overline{\\mathrm{ED}}$\nㄹ. $\\overline{\\mathrm{CD}} \\perp \\overline{\\mathrm{EF}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄴ, ㄹ",
+    "solution": "[풀이 전략]\n정사면체의 대칭성과 이등변삼각형의 성질 및 삼수선의 정리를 적용하여 참, 거짓을 판별한다.\n\n[단계별 풀이]\n1단계 [보기 분석]:\n정사면체 $\\mathrm{ABCD}$의 한 모서리의 길이를 $a$라 하자.\n- ㄱ. $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{BF}}$:\n  점 $\\mathrm{F}$는 $\\mathrm{CD}$의 중점이므로 $\\triangle\\mathrm{BCD}$에서 $\\overline{\\mathrm{BF}} = \\frac{\\sqrt{3}}{2}a$이다.\n  삼각형 $\\mathrm{ABF}$에서 $\\overline{\\mathrm{AF}} = \\overline{\\mathrm{BF}} = \\frac{\\sqrt{3}}{2}a$, $\\overline{\\mathrm{AB}} = a$인 이등변삼각형이다.\n  점 $\\mathrm{E}$가 $\\mathrm{AB}$의 중점이므로 $\\mathrm{EF} \\perp \\mathrm{AB}$이지, $\\mathrm{AB} \\perp \\mathrm{BF}$가 아니다. (ㄱ 거짓)\n- ㄴ. $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$:\n  정삼각형 $\\mathrm{ACD}$에서 $\\mathrm{AF} \\perp \\mathrm{CD}$이고, 정삼각형 $\\mathrm{BCD}$에서 $\\mathrm{BF} \\perp \\mathrm{CD}$이다.\n  따라서 직선 $\\mathrm{CD}$는 평면 $\\mathrm{ABF}$ 위의 교차하는 두 직선 $\\mathrm{AF}, \\mathrm{BF}$와 수직이므로 $\\mathrm{CD} \\perp \\text{평면 } \\mathrm{ABF}$이다.\n  선분 $\\mathrm{AB}$는 평면 $\\mathrm{ABF}$ 위에 있으므로 $\\mathrm{CD} \\perp \\mathrm{AB}$이다. (ㄴ 참)\n- ㄷ. $\\overline{\\mathrm{CD}} \\perp \\overline{\\mathrm{ED}}$:\n  삼각형 $\\mathrm{CDE}$는 $\\overline{\\mathrm{CE}} = \\overline{\\mathrm{DE}} = \\frac{\\sqrt{3}}{2}a$, $\\overline{\\mathrm{CD}} = a$인 이등변삼각형이다.\n  $\\mathrm{F}$가 $\\mathrm{CD}$의 중점이므로 $\\mathrm{EF} \\perp \\mathrm{CD}$이지, $\\mathrm{CD} \\perp \\mathrm{ED}$가 아니다. (ㄷ 거짓)\n- ㄹ. $\\overline{\\mathrm{CD}} \\perp \\overline{\\mathrm{EF}}$:\n  이등변삼각형 $\\mathrm{CDE}$에서 점 $\\mathrm{F}$는 밑변 $\\mathrm{CD}$의 중점이므로 $\\mathrm{EF} \\perp \\mathrm{CD}$이다. (ㄹ 참)\n\n2단계 [종합]:\n따라서 옳은 것은 ㄴ, ㄹ이다.\n\n[오답 및 경계 점검]\n정사면체의 꼬인 위치에 있는 두 모서리는 항상 서로 수직이라는 정사면체의 핵심 성질(ㄴ)을 확실히 기억한다.\n\n[결론]\n옳은 것은 ㄴ, ㄹ이다."
   },
   {
     "id": 5,
@@ -150,8 +150,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q05.png\" />\n\n오른쪽 그림과 같은 정육면체에서 직선 $\\mathrm{AG}$는 직선 $\\mathrm{BD}$와 수직임을 증명하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "[풀이 전략]\n직육면체(정육면체)에서 직선이 평면 위의 두 교차선과 각각 수직이면 그 평면 전체와 수직임을 이용하여 선분 $\\mathrm{AG}$와 $\\mathrm{BD}$의 수직성을 증명한다.\n\n[단계별 풀이]\n1단계 [밑면의 대각선 수직성]:\n정육면체에서 사각형 $\\mathrm{ABCD}$는 정사각형이므로 두 대각선은 서로 수직이다.\n따라서\n$$\\mathrm{BD} \\perp \\mathrm{AC}$$\n이다.\n\n2단계 [옆면 모서리와의 수직성]:\n모서리 $\\mathrm{CG}$는 밑면 정사각형 $\\mathrm{ABCD}$와 수직이다.\n선분 $\\mathrm{BD}$는 밑면 $\\mathrm{ABCD}$ 위에 있으므로\n$$\\mathrm{BD} \\perp \\mathrm{CG}$$\n이다.\n\n3단계 [직선과 평면의 수직성 및 결론]:\n- 직선 $\\mathrm{BD}$는 평면 $\\mathrm{ACGE}$ 위의 교차하는 두 직선 $\\mathrm{AC}$와 $\\mathrm{CG}$에 각각 수직이다.\n- 따라서 직선 $\\mathrm{BD}$는 평면 $\\mathrm{ACGE}$와 수직이다 ($\\mathrm{BD} \\perp \\text{평면 } \\mathrm{ACGE}$).\n- 선분 $\\mathrm{AG}$는 평면 $\\mathrm{ACGE}$ 위에 있으므로, 직선 $\\mathrm{BD}$는 직선 $\\mathrm{AG}$와 수직이다.\n즉, 직선 $\\mathrm{AG}$는 직선 $\\mathrm{BD}$와 수직이다 ($\\mathrm{AG} \\perp \\mathrm{BD}$).\n\n[오답 및 경계 점검]\n공간에서 두 직선이 만나지 않더라도 방향벡터가 직교하면 두 직선은 수직이라고 정의됨을 명시한다.\n\n[결론]\n상기 과정에 의하여 직선 $\\mathrm{AG}$는 직선 $\\mathrm{BD}$와 수직임이 증명된다."
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q06.png\" />\n\n오른쪽 그림과 같은 정육면체에서 선분 $\\mathrm{FG}$의 중점을 $\\mathrm{M}$이라고 하자. 직선 $\\mathrm{DF}$와 직선 $\\mathrm{HM}$이 이루는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{\\sqrt{15}}{5}",
+    "solution": "[풀이 전략]\n정육면체를 공간좌표계에 배치하고 두 직선의 방향벡터의 내적 공식을 적용하여 코사인 값을 구한다.\n\n[단계별 풀이]\n1단계 [좌표계 설정]:\n정육면체의 한 모서리의 길이를 $2$라 하자.\n점 $\\mathrm{H}$를 원점 $\\mathrm{H}(0, 0, 0)$으로 두고, 모서리 $\\mathrm{HE}, \\mathrm{HG}, \\mathrm{HD}$를 각각 $x$축, $y$축, $z$축의 양의 방향으로 설정한다:\n$$\\mathrm{H}(0, 0, 0), \\quad \\mathrm{E}(2, 0, 0), \\quad \\mathrm{G}(0, 2, 0), \\quad \\mathrm{D}(0, 0, 2)$$\n$$\\mathrm{F}(2, 2, 0), \\quad \\mathrm{A}(2, 0, 2), \\quad \\mathrm{B}(2, 2, 2), \\quad \\mathrm{C}(0, 2, 2)$$\n\n2단계 [점 $\\mathrm{M}$과 방향벡터 설정]:\n- 점 $\\mathrm{M}$은 선분 $\\mathrm{FG}$의 중점이므로\n  $$\\mathrm{M}\\left(\\frac{2+0}{2}, \\frac{2+2}{2}, 0\\right) = (1, 2, 0)$$\n  이다.\n- 직선 $\\mathrm{HM}$의 방향벡터:\n  $$\\vec{u}_1 = \\vec{\\mathrm{HM}} = (1, 2, 0)$$\n  크기: $|\\vec{u}_1| = \\sqrt{1^2 + 2^2 + 0^2} = \\sqrt{5}$\n- 직선 $\\mathrm{DF}$의 방향벡터:\n  $$\\vec{u}_2 = \\vec{\\mathrm{DF}} = (2-0, 2-0, 0-2) = (2, 2, -2)$$\n  계수를 간단히 하여 $\\vec{v}_2 = (1, 1, -1)$이라 두면\n  크기: $|\\vec{v}_2| = \\sqrt{1^2 + 1^2 + (-1)^2} = \\sqrt{3}$\n\n3단계 [두 직선이 이루는 각 $\\theta$의 코사인 계산]:\n$$\\vec{u}_1 \\cdot \\vec{v}_2 = (1)(1) + (2)(1) + (0)(-1) = 1 + 2 + 0 = 3$$\n따라서\n$$\\cos\\theta = \\frac{|\\vec{u}_1 \\cdot \\vec{v}_2|}{|\\vec{u}_1||\\vec{v}_2|} = \\frac{3}{\\sqrt{5}\\sqrt{3}} = \\frac{\\sqrt{3}}{\\sqrt{5}} = \\frac{\\sqrt{15}}{5}$$\n이다.\n\n[오답 및 경계 점검]\n두 직선이 이루는 각은 $0^\\circ \\le \\theta \\le 90^\\circ$이므로 $\\cos\\theta \\ge 0$이어야 하며, 내적에 절댓값을 씌워 양수 값을 취한다.\n\n[결론]\n$\\cos\\theta$의 값은 $\\frac{\\sqrt{15}}{5}$이다."
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q07.png\" />\n\n오른쪽 그림과 같이 평면 $\\alpha$ 위에 있는 직각삼각형 $\\mathrm{ABC}$와 변 $\\mathrm{AC}$를 교선으로 하고 평면 $\\alpha$에 수직인 직각삼각형 $\\mathrm{DAC}$가 있다. 직선 $\\mathrm{BD}$와 직선 $\\mathrm{CD}$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta$의 값을 구하시오. (단, $0^\\circ < \\theta < 90^\\circ$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{\\sqrt{15}}{4}",
+    "solution": "[풀이 전략]\n평면 $\\alpha$ 위의 직각삼각형 $\\mathrm{ABC}$와 평면 $\\alpha$에 수직인 직각삼각형 $\\mathrm{DAC}$의 변의 길이를 삼각비로 나타내고, 삼수선의 정리로 직각삼각형 $\\mathrm{DAB}$를 구성한 뒤 삼각형 $\\mathrm{BCD}$에서 코사인법칙과 삼각함수 항등식을 적용한다.\n\n[단계별 풀이]\n1단계 [삼각형의 각과 변의 비 설정]:\n- 평면 $\\alpha$ 위의 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{BAC} = 90^\\circ$, $\\angle\\mathrm{BCA} = 45^\\circ$이므로 삼각형 $\\mathrm{ABC}$는 직각이등변삼각형이다.\n- 직각삼각형 $\\mathrm{DAC}$는 변 $\\mathrm{AC}$를 교선으로 하여 평면 $\\alpha$에 수직이고 $\\angle\\mathrm{DAC} = 90^\\circ$, $\\angle\\mathrm{ACD} = 30^\\circ$이다.\n- 계산의 편의를 위해 $\\overline{\\mathrm{DA}} = 1$이라 하자.\n  - $\\triangle\\mathrm{DAC}$에서 $\\angle\\mathrm{DAC} = 90^\\circ, \\angle\\mathrm{ACD} = 30^\\circ$이므로\n    $$\\overline{\\mathrm{AC}} = \\frac{\\overline{\\mathrm{DA}}}{\\tan 30^\\circ} = \\sqrt{3}, \\quad \\overline{\\mathrm{CD}} = \\frac{\\overline{\\mathrm{DA}}}{\\sin 30^\\circ} = 2$$\n  - $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{BAC} = 90^\\circ$인 직각이등변삼각형이므로\n    $$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} = \\sqrt{3}, \\quad \\overline{\\mathrm{BC}} = \\sqrt{(\\sqrt{3})^2 + (\\sqrt{3})^2} = \\sqrt{6}$$\n\n2단계 [선분 $\\mathrm{BD}$의 길이 계산]:\n$\\mathrm{DA} \\perp \\text{평면 } \\alpha$이고 선분 $\\mathrm{AB}$는 평면 $\\alpha$ 위에 있으므로 $\\mathrm{DA} \\perp \\mathrm{AB}$이다.\n삼각형 $\\mathrm{DAB}$는 $\\angle\\mathrm{DAB} = 90^\\circ$인 직각삼각형이므로\n$$\\overline{\\mathrm{BD}} = \\sqrt{\\overline{\\mathrm{DA}}^2 + \\overline{\\mathrm{AB}}^2} = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$$\n이다.\n\n3단계 [삼각형 $\\mathrm{BCD}$에서 $\\sin\\theta$ 계산]:\n삼각형 $\\mathrm{BCD}$의 세 변의 길이는\n$$\\overline{\\mathrm{BD}} = 2, \\quad \\overline{\\mathrm{CD}} = 2, \\quad \\overline{\\mathrm{BC}} = \\sqrt{6}$$\n이다.\n직선 $\\mathrm{BD}$와 직선 $\\mathrm{CD}$가 이루는 각 $\\theta$는 $\\angle\\mathrm{BDC}$이다.\n코사인법칙에 의해\n$$\\overline{\\mathrm{BC}}^2 = \\overline{\\mathrm{BD}}^2 + \\overline{\\mathrm{CD}}^2 - 2 \\overline{\\mathrm{BD}} \\cdot \\overline{\\mathrm{CD}} \\cos\\theta$$\n$$6 = 2^2 + 2^2 - 2(2)(2) \\cos\\theta$$\n$$6 = 8 - 8\\cos\\theta \\implies 8\\cos\\theta = 2 \\implies \\cos\\theta = \\frac{1}{4}$$\n$0^\\circ < \\theta < 90^\\circ$이므로\n$$\\sin\\theta = \\sqrt{1 - \\cos^2\\theta} = \\sqrt{1 - \\left(\\frac{1}{4}\\right)^2} = \\sqrt{\\frac{15}{16}} = \\frac{\\sqrt{15}}{4}$$\n이다.\n\n[오답 및 경계 점검]\n구하는 값이 $\\cos\\theta$가 아닌 $\\sin\\theta$임을 확인하고 $\\sin\\theta = \\frac{\\sqrt{15}}{4}$를 도출한다.\n\n[결론]\n$\\sin\\theta$의 값은 $\\frac{\\sqrt{15}}{4}$이다."
   },
   {
     "id": 8,
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q08.png\" />\n\n오른쪽 그림과 같은 사면체에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}=4$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AD}}=2\\sqrt{2}$이다. 선분 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라고 할 때, 다음 물음에 답하시오.\n⑴ $\\triangle\\mathrm{AMD}$의 넓이를 구하시오.\n⑵ 사면체 $\\mathrm{A-BCD}$의 부피를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $2\\sqrt{6}$  ⑵ $\\frac{8\\sqrt{3}}{3}$",
+    "solution": "[풀이 전략]\n사면체의 면들의 이등변삼각형 성질을 이용하여 선분 $\\mathrm{BC}$가 평면 $\\mathrm{AMD}$와 수직임을 보이고, $\\triangle\\mathrm{AMD}$의 넓이와 사면체의 부피를 분할 계산한다.\n\n[단계별 풀이]\n1단계 [⑴ 삼각형 $\\mathrm{AMD}$의 넓이 계산]:\n- $\\triangle\\mathrm{ABC}$는 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} = 4, \\overline{\\mathrm{BC}} = 2\\sqrt{2}$인 이등변삼각형이다.\n  점 $\\mathrm{M}$이 $\\mathrm{BC}$의 중점이므로 $\\mathrm{AM} \\perp \\mathrm{BC}$이고 $\\overline{\\mathrm{BM}} = \\sqrt{2}$이다.\n  $$\\overline{\\mathrm{AM}} = \\sqrt{4^2 - (\\sqrt{2})^2} = \\sqrt{16 - 2} = \\sqrt{14}$$\n- $\\triangle\\mathrm{DBC}$도 $\\overline{\\mathrm{DB}} = \\overline{\\mathrm{DC}} = 4, \\overline{\\mathrm{BC}} = 2\\sqrt{2}$인 이등변삼각형이다.\n  점 $\\mathrm{M}$이 $\\mathrm{BC}$의 중점이므로 $\\mathrm{DM} \\perp \\mathrm{BC}$이고 $\\overline{\\mathrm{DM}} = \\sqrt{14}$이다.\n- 삼각형 $\\mathrm{AMD}$는 $\\overline{\\mathrm{AM}} = \\sqrt{14}, \\overline{\\mathrm{DM}} = \\sqrt{14}, \\overline{\\mathrm{AD}} = 2\\sqrt{2}$인 이등변삼각형이다.\n  선분 $\\mathrm{AD}$의 중점을 $\\mathrm{N}$이라 하면 $\\mathrm{MN} \\perp \\mathrm{AD}$이고 $\\overline{\\mathrm{AN}} = \\sqrt{2}$이다.\n  $$\\overline{\\mathrm{MN}} = \\sqrt{(\\sqrt{14})^2 - (\\sqrt{2})^2} = \\sqrt{14 - 2} = \\sqrt{12} = 2\\sqrt{3}$$\n  따라서 삼각형 $\\mathrm{AMD}$의 넓이는\n  $$S_{\\triangle\\mathrm{AMD}} = \\frac{1}{2} \\times \\overline{\\mathrm{AD}} \\times \\overline{\\mathrm{MN}} = \\frac{1}{2} \\times 2\\sqrt{2} \\times 2\\sqrt{3} = 2\\sqrt{6}$$\n  이다.\n\n2단계 [⑵ 사면체 $\\mathrm{A-BCD}$의 부피 계산]:\n- $\\mathrm{BC} \\perp \\mathrm{AM}$이고 $\\mathrm{BC} \\perp \\mathrm{DM}$이므로 직선 $\\mathrm{BC}$는 평면 $\\mathrm{AMD}$와 수직이다 ($\\mathrm{BC} \\perp \\text{평면 } \\mathrm{AMD}$).\n- 사면체 $\\mathrm{A-BCD}$의 부피 $V$는 평면 $\\mathrm{AMD}$를 밑면으로 하고 꼭짓점이 $\\mathrm{B}, \\mathrm{C}$인 두 사면체의 부피의 합이다:\n  $$V = \\frac{1}{3} \\times S_{\\triangle\\mathrm{AMD}} \\times \\overline{\\mathrm{BM}} + \\frac{1}{3} \\times S_{\\triangle\\mathrm{AMD}} \\times \\overline{\\mathrm{CM}} = \\frac{1}{3} \\times S_{\\triangle\\mathrm{AMD}} \\times \\overline{\\mathrm{BC}}$$\n  $$V = \\frac{1}{3} \\times 2\\sqrt{6} \\times 2\\sqrt{2} = \\frac{4\\sqrt{12}}{3} = \\frac{8\\sqrt{3}}{3}$$\n  이다.\n\n[오답 및 경계 점검]\n$\\mathrm{BC}$가 평면 $\\mathrm{AMD}$에 수직임을 파악하면 높이를 복잡하게 삼수선으로 유도하지 않고 두 삼각뿔의 합으로 직접 정확히 계산할 수 있다.\n\n[결론]\n⑴ $2\\sqrt{6}$, ⑵ $\\frac{8\\sqrt{3}}{3}$이다."
   },
   {
     "id": 9,
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q09.png\" />\n\n오른쪽 그림과 같은 정육면체에서 선분 $\\mathrm{CD}$의 중점을 $\\mathrm{M}$이라고 하자. 평면 $\\mathrm{BGM}$과 평면 $\\mathrm{ABCD}$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{\\sqrt{6}}{6}",
+    "solution": "[풀이 전략]\n평면 $\\mathrm{BGM}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영이 $\\triangle\\mathrm{BCM}$임을 이용하여 정사영 넓이 공식 $\\cos\\theta = \\frac{S'}{S}$를 적용한다.\n\n[단계별 풀이]\n1단계 [정사영 삼각형 파악]:\n정육면체에서 꼭짓점 $\\mathrm{G}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 꼭짓점 $\\mathrm{C}$이다.\n점 $\\mathrm{B}$와 점 $\\mathrm{M}$은 이미 평면 $\\mathrm{ABCD}$ 위의 점이다.\n따라서 삼각형 $\\mathrm{BGM}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 삼각형 $\\mathrm{BCM}$이다.\n\n2단계 [정사영 삼각형 $\\triangle\\mathrm{BCM}$의 넓이]:\n정육면체의 한 모서리의 길이를 $2$라 하자:\n- 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}} = 2$이다.\n- 점 $\\mathrm{M}$은 $\\overline{\\mathrm{CD}}$의 중점이므로 $\\overline{\\mathrm{CM}} = 1$이다.\n- $\\angle\\mathrm{BCM} = 90^\\circ$이므로\n  $$S' = S_{\\triangle\\mathrm{BCM}} = \\frac{1}{2} \\times 2 \\times 1 = 1$$\n  이다.\n\n3단계 [원래 삼각형 $\\triangle\\mathrm{BGM}$의 넓이]:\n정육면체의 좌표에서 $\\mathrm{C}(0, 0, 0), \\mathrm{B}(2, 0, 0), \\mathrm{M}(0, 1, 0), \\mathrm{G}(0, 0, -2)$로 둘 수 있다.\n- $\\overline{\\mathrm{BM}} = \\sqrt{2^2 + 1^2} = \\sqrt{5}$\n- $\\overline{\\mathrm{GM}} = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$\n- $\\overline{\\mathrm{BG}} = \\sqrt{2^2 + (-2)^2} = \\sqrt{8} = 2\\sqrt{2}$\n삼각형 $\\mathrm{BGM}$은 $\\overline{\\mathrm{BM}} = \\overline{\\mathrm{GM}} = \\sqrt{5}$인 이등변삼각형이므로 밑변 $\\mathrm{BG}$에 대한 높이 $h$는\n$$h = \\sqrt{(\\sqrt{5})^2 - (\\sqrt{2})^2} = \\sqrt{5 - 2} = \\sqrt{3}$$\n이다.\n따라서 넓이는\n$$S = S_{\\triangle\\mathrm{BGM}} = \\frac{1}{2} \\times 2\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$$\n이다.\n\n4단계 [$\\cos\\theta$ 계산]:\n$$S' = S \\cos\\theta \\implies 1 = \\sqrt{6} \\cos\\theta \\implies \\cos\\theta = \\frac{1}{\\sqrt{6}} = \\frac{\\sqrt{6}}{6}$$\n이다.\n\n[오답 및 경계 점검]\n정사영 넓이와 원래 넓이의 비를 통해 두 평면이 이루는 이면각의 코사인 값을 간결하고 무결하게 도출한다.\n\n[결론]\n$\\cos\\theta$의 값은 $\\frac{\\sqrt{6}}{6}$이다."
   },
   {
     "id": 10,
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q10.png\" />\n\n오른쪽 그림과 같이 직사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{BD}$를 접는 선으로 하여 접었더니 꼭짓점 $\\mathrm{A}$의 평면 $\\mathrm{BCD}$ 위로의 정사영 $\\mathrm{H}$가 선분 $\\mathrm{CD}$를 $4:3$으로 내분하는 점과 일치하였다. 평면 $\\mathrm{ABD}$와 평면 $\\mathrm{BCD}$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{3}{7}",
+    "solution": "[풀이 전략]\n꼭짓점 $\\mathrm{A}$의 평면 $\\mathrm{BCD}$ 위로의 정사영이 $\\mathrm{H}$이므로 삼각형 $\\mathrm{ABD}$의 평면 $\\mathrm{BCD}$ 위로의 정사영은 삼각형 $\\mathrm{HBD}$이다. 정사영 넓이 공식 $\\cos\\theta = \\frac{S_{\\triangle\\mathrm{HBD}}}{S_{\\triangle\\mathrm{ABD}}}$를 적용한다.\n\n[단계별 풀이]\n1단계 [정사영 삼각형의 확인]:\n선분 $\\mathrm{BD}$는 접는 선으로 두 평면 $\\mathrm{ABD}$와 $\\mathrm{BCD}$의 교선이다.\n점 $\\mathrm{A}$의 평면 $\\mathrm{BCD}$ 위로의 정사영이 $\\mathrm{H}$이므로, 삼각형 $\\mathrm{ABD}$의 평면 $\\mathrm{BCD}$ 위로의 정사영은 삼각형 $\\mathrm{HBD}$이다.\n따라서 두 평면이 이루는 각 $\\theta$에 대하여\n$$\\cos\\theta = \\frac{S_{\\triangle\\mathrm{HBD}}}{S_{\\triangle\\mathrm{ABD}}}$$\n가 성립한다.\n\n2단계 [넓이의 비 계산]:\n- 원래 직사각형 $\\mathrm{ABCD}$에서 대각선 $\\mathrm{BD}$에 의해 이등분되므로\n  $$S_{\\triangle\\mathrm{ABD}} = S_{\\triangle\\mathrm{BCD}}$$\n  이다.\n- 점 $\\mathrm{H}$는 선분 $\\mathrm{CD}$를 $4:3$으로 내분하는 점이므로 $\\overline{\\mathrm{HD}} = \\frac{3}{4+3}\\overline{\\mathrm{CD}} = \\frac{3}{7}\\overline{\\mathrm{CD}}$이다.\n- 삼각형 $\\mathrm{HBD}$와 삼각형 $\\mathrm{BCD}$는 꼭짓점 $\\mathrm{B}$를 공유하고 밑변이 각각 선분 $\\mathrm{HD}$와 $\\mathrm{CD}$이므로\n  $$\\frac{S_{\\triangle\\mathrm{HBD}}}{S_{\\triangle\\mathrm{BCD}}} = \\frac{\\overline{\\mathrm{HD}}}{\\overline{\\mathrm{CD}}} = \\frac{3}{7}$$\n  이다.\n\n3단계 [$\\cos\\theta$ 산출]:\n$$S_{\\triangle\\mathrm{ABD}} = S_{\\triangle\\mathrm{BCD}}$$\n이므로\n$$\\cos\\theta = \\frac{S_{\\triangle\\mathrm{HBD}}}{S_{\\triangle\\mathrm{ABD}}} = \\frac{S_{\\triangle\\mathrm{HBD}}}{S_{\\triangle\\mathrm{BCD}}} = \\frac{3}{7}$$\n이다.\n\n[오답 및 경계 점검]\n정사영 넓이 공식을 활용하여 복잡한 삼수선 길이 계산 없이 밑변의 분할비로부터 즉시 $\\cos\\theta = \\frac{3}{7}$이 도출됨을 확인한다.\n\n[결론]\n$\\cos\\theta$의 값은 $\\frac{3}{7}$이다."
   },
   {
     "id": 11,
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q11.png\" />\n\n다음 그림과 같이 밑면의 반지름의 길이가 $2$, 모선 $\\mathrm{AC}$의 길이가 $5$인 원뿔과 평면 $\\alpha$가 있다. 원뿔의 모선 $\\mathrm{AB}$가 평면 $\\alpha$와 평행할 때, 이 원뿔의 밑면의 평면 $\\alpha$ 위로의 정사영의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{8}{5}\\pi",
+    "solution": "[풀이 전략]\n원뿔의 밑면과 모선이 이루는 각의 기하학적 성질을 파악하고, 모선이 평면 $\\alpha$와 평행할 때 밑면 평면과 평면 $\\alpha$가 이루는 각의 코사인을 구하여 정사영 넓이 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [밑면 원의 넓이 계산]:\n원뿔의 밑면의 반지름의 길이가 $r = 2$이므로 밑면 원의 넓이는\n$$S = \\pi \\times 2^2 = 4\\pi$$\n이다.\n\n2단계 [밑면과 평면 $\\alpha$가 이루는 각 $\\theta$ 분석]:\n- 원뿔의 꼭짓점을 $\\mathrm{A}$, 밑면의 중심을 $\\mathrm{O}$, 지름의 양 끝점을 $\\mathrm{B}, \\mathrm{C}$라 하자.\n  모선 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} = 5$, 반지름 $\\overline{\\mathrm{OB}} = 2$이다.\n- 직각삼각형 $\\mathrm{AOB}$에서 모선 $\\mathrm{AB}$와 밑면이 이루는 각을 $\\angle\\mathrm{ABO}$라 하면\n  $$\\cos(\\angle\\mathrm{ABO}) = \\frac{\\overline{\\mathrm{OB}}}{\\overline{\\mathrm{AB}}} = \\frac{2}{5}$$\n  이다.\n- 모선 $\\mathrm{AB}$가 평면 $\\alpha$와 평행하므로, 밑면의 평면과 평면 $\\alpha$가 이루는 이면각의 크기 $\\theta$는 모선 $\\mathrm{AB}$와 밑면이 이루는 각의 크기와 같다.\n  $$\\cos\\theta = \\frac{2}{5}$$\n\n3단계 [정사영의 넓이 계산]:\n정사영 넓이 공식에 의해\n$$S' = S \\cos\\theta = 4\\pi \\times \\frac{2}{5} = \\frac{8}{5}\\pi$$\n이다.\n\n[오답 및 경계 점검]\n정사영된 타원의 넓이가 원래 원의 넓이 $4\\pi$보다 작고 $\\frac{8}{5}\\pi$로 정합함을 확인한다.\n\n[결론]\n원뿔의 밑면의 평면 $\\alpha$ 위로의 정사영의 넓이는 $\\frac{8}{5}\\pi$이다."
   },
   {
     "id": 12,
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $\\mathrm{A}(2, -3, 6)$을 $x$축에 대하여 대칭이동한 후, 다시 $zx$평면에 대하여 대칭이동한 점의 좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(2, -3, -6)",
+    "solution": "[풀이 전략]\n좌표공간에서 점의 대칭이동 규칙을 순차적으로 적용한다.\n1. $x$축 대칭: $x$는 유지, $y, z$의 부호 반대\n2. $zx$평면 대칭: $y$의 부호만 반대\n\n[단계별 풀이]\n1단계 [1차 $x$축 대칭이동]:\n점 $\\mathrm{A}(2, -3, 6)$을 $x$축에 대하여 대칭이동하면 $y$와 $z$의 부호가 바뀌므로\n$$(2, 3, -6)$$\n이다.\n\n2단계 [2차 $zx$평면 대칭이동]:\n점 $(2, 3, -6)$을 다시 $zx$평면에 대하여 대칭이동하면 $y$의 부호만 바뀌므로\n$$(2, -3, -6)$$\n이다.\n\n[오답 및 경계 점검]\n$x$축 대칭과 $zx$평면 대칭의 합성 결과는 최종적으로 $z$좌표의 부호만 바뀐 것과 같음을 점검한다 ($(2, -3, 6) \\to (2, -3, -6)$).\n\n[결론]\n구하는 점의 좌표는 $(2, -3, -6)$이다."
   },
   {
     "id": 13,
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $\\mathrm{P}(2, 3, 4)$에서 $x$축, $y$축, $z$축에 내린 수선의 발을 각각 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$라고 할 때, 네 점 $\\mathrm{O}, \\mathrm{A}, \\mathrm{B}, \\mathrm{C}$를 꼭짓점으로 하는 사면체의 부피를 구하시오. (단, $\\mathrm{O}$는 원점)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "4",
+    "solution": "[풀이 전략]\n점 $\\mathrm{P}$에서 각 좌표축에 내린 수선의 발의 좌표를 구하고, 서로 직교하는 세 축으로 형성된 직각삼각뿔(사면체)의 부피 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [수선의 발 좌표 구하기]:\n점 $\\mathrm{P}(2, 3, 4)$에서\n- $x$축에 내린 수선의 발: $\\mathrm{A}(2, 0, 0)$\n- $y$축에 내린 수선의 발: $\\mathrm{B}(0, 3, 0)$\n- $z$축에 내린 수선의 발: $\\mathrm{C}(0, 0, 4)$\n이다.\n\n2단계 [사면체 $\\mathrm{O-ABC}$의 부피 계산]:\n원점 $\\mathrm{O}(0, 0, 0)$에 대하여 세 선분 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$는 각각 $x$축, $y$축, $z$축 위에 있으므로 서로 수직이다:\n$$\\overline{\\mathrm{OA}} = 2, \\quad \\overline{\\mathrm{OB}} = 3, \\quad \\overline{\\mathrm{OC}} = 4$$\n따라서 사면체 $\\mathrm{O-ABC}$의 부피 $V$는\n$$V = \\frac{1}{6} \\times \\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{OB}} \\times \\overline{\\mathrm{OC}} = \\frac{1}{6} \\times 2 \\times 3 \\times 4 = 4$$\n이다.\n\n[오답 및 경계 점검]\n사각뿔 부피 $\\frac{1}{3}$과 직각삼각형 넓이 $\\frac{1}{2}$의 곱으로 사면체의 부피 계수가 $\\frac{1}{6}$임을 확인한다.\n\n[결론]\n사면체의 부피는 $4$이다."
   },
   {
     "id": 14,
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $\\mathrm{A}(-1, 2, 1)$, $\\mathrm{B}(a, 4, 4)$에 대하여 $\\overline{\\mathrm{AB}}=7$일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "5",
+    "solution": "[풀이 전략]\n좌표공간에서 두 점 사이의 거리 공식을 세우고 양수 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [두 점 사이의 거리 공식 작성]:\n두 점 $\\mathrm{A}(-1, 2, 1)$, $\\mathrm{B}(a, 4, 4)$에 대하여\n$$\\overline{\\mathrm{AB}}^2 = \\{a - (-1)\\}^2 + (4 - 2)^2 + (4 - 1)^2 = (a+1)^2 + 2^2 + 3^2 = (a+1)^2 + 13$$\n이다.\n\n2단계 [방정식 풀이]:\n조건에서 $\\overline{\\mathrm{AB}} = 7$이므로 $\\overline{\\mathrm{AB}}^2 = 49$이다.\n$$(a+1)^2 + 13 = 49$$\n$$(a+1)^2 = 36$$\n$$a + 1 = \\pm 6$$\n$$a = 5 \\text{ 또는 } a = -7$$\n이다.\n\n3단계 [양수 조건 적용]:\n문제에서 $a$는 양수이므로\n$$a = 5$$\n이다.\n\n[오답 및 경계 점검]\n$a=5$일 때 $\\overline{\\mathrm{AB}} = \\sqrt{6^2 + 2^2 + 3^2} = \\sqrt{36 + 4 + 9} = \\sqrt{49} = 7$로 정확히 성립함을 확인한다.\n\n[결론]\n양수 $a$의 값은 $5$이다."
   },
   {
     "id": 15,
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "$zx$평면 위의 점 $\\mathrm{P}$에서 세 점 $\\mathrm{A}(2, 1, 1)$, $\\mathrm{B}(1, -1, -1)$, $\\mathrm{C}(0, 0, -2)$까지의 거리가 모두 같을 때, 점 $\\mathrm{P}$의 좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\left(-\\frac{5}{2}, 0, 2\\right)",
+    "solution": "[풀이 전략]\n$zx$평면 위의 점 $\\mathrm{P}$를 $(x, 0, z)$로 설정하고, 세 점으로부터의 거리의 제곱이 같다는 연립방정식을 세워 푼다.\n\n[단계별 풀이]\n1단계 [점 $\\mathrm{P}$의 좌표 및 거리 공식 작성]:\n점 $\\mathrm{P}$는 $zx$평면 위의 점이므로 $y = 0$이다. 점 $\\mathrm{P}$의 좌표를\n$$\\mathrm{P}(x, 0, z)$$\n라 하자.\n세 점 $\\mathrm{A}(2, 1, 1), \\mathrm{B}(1, -1, -1), \\mathrm{C}(0, 0, -2)$에 대하여:\n- $\\overline{\\mathrm{PA}}^2 = (x-2)^2 + (0-1)^2 + (z-1)^2 = x^2 - 4x + 4 + 1 + z^2 - 2z + 1 = x^2 + z^2 - 4x - 2z + 6$\n- $\\overline{\\mathrm{PB}}^2 = (x-1)^2 + \\{0-(-1)\\}^2 + \\{z-(-1)\\}^2 = x^2 - 2x + 1 + 1 + z^2 + 2z + 1 = x^2 + z^2 - 2x + 2z + 3$\n- $\\overline{\\mathrm{PC}}^2 = (x-0)^2 + 0^2 + (z+2)^2 = x^2 + z^2 + 4z + 4$\n\n2단계 [연립방정식 풀이]:\n1. $\\overline{\\mathrm{PB}}^2 = \\overline{\\mathrm{PC}}^2$:\n   $$-2x + 2z + 3 = 4z + 4 \\implies -2x - 2z = 1 \\implies 2x + 2z = -1 \\quad \\cdots \\text{ (1)}$$\n2. $\\overline{\\mathrm{PA}}^2 = \\overline{\\mathrm{PC}}^2$:\n   $$-4x - 2z + 6 = 4z + 4 \\implies -4x - 6z = -2 \\implies 2x + 3z = 1 \\quad \\cdots \\text{ (2)}$$\n\n(2)식에서 (1)식을 변끼리 빼면\n$$(2x + 3z) - (2x + 2z) = 1 - (-1) \\implies z = 2$$\n이다.\n$z = 2$를 (1)식에 대입하면\n$$2x + 2(2) = -1 \\implies 2x + 4 = -1 \\implies 2x = -5 \\implies x = -\\frac{5}{2}$$\n이다.\n\n3단계 [결론]:\n따라서 점 $\\mathrm{P}$의 좌표는 $\\left(-\\frac{5}{2}, 0, 2\\right)$이다.\n\n[오답 및 경계 점검]\n$x = -\\frac{5}{2}, z = 2$를 대입하여\n$\\overline{\\mathrm{PA}}^2 = \\frac{81}{4} + 1 + 1 = \\frac{89}{4}$,\n$\\overline{\\mathrm{PB}}^2 = \\frac{49}{4} + 1 + 9 = \\frac{89}{4}$,\n$\\overline{\\mathrm{PC}}^2 = \\frac{25}{4} + 0 + 16 = \\frac{89}{4}$\n로 모두 일치함을 확인한다.\n\n[결론]\n점 $\\mathrm{P}$의 좌표는 $\\left(-\\frac{5}{2}, 0, 2\\right)$이다."
   },
   {
     "id": 16,
@@ -458,8 +458,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $\\mathrm{A}(2, 1, a)$를 $y$축에 대하여 대칭이동한 점을 $\\mathrm{B}$라 하고, 점 $\\mathrm{A}$를 $xy$평면에 대하여 대칭이동한 점을 $\\mathrm{C}$라고 하자. 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$를 지나는 원의 반지름의 길이가 $3$일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\sqrt{5}",
+    "solution": "[풀이 전략]\n점 $\\mathrm{A}$의 대칭이동 점 $\\mathrm{B}, \\mathrm{C}$의 좌표를 구하고, 세 점이 하나의 평면 $y = 1$ 위에 있음을 파악하여 직각삼각형의 외접원 반지름 성질을 적용한다.\n\n[단계별 풀이]\n1단계 [대칭점의 좌표 구하기]:\n- 점 $\\mathrm{A}(2, 1, a)$를 $y$축에 대하여 대칭이동한 점:\n  $$\\mathrm{B}(-2, 1, -a)$$\n- 점 $\\mathrm{A}(2, 1, a)$를 $xy$평면에 대하여 대칭이동한 점:\n  $$\\mathrm{C}(2, 1, -a)$$\n\n2단계 [세 점의 기하학적 배치 파악]:\n세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$는 모두 $y$좌표가 $1$로 동일하므로 평면 $y = 1$ 위에 위치한다.\n- 선분 $\\mathrm{AC}$는 $x = 2$ 위에 있고 길이는\n  $$\\overline{\\mathrm{AC}} = |a - (-a)| = 2a \\quad (\\because a > 0)$$\n- 선분 $\\mathrm{BC}$는 $z = -a$ 위에 있고 길이는\n  $$\\overline{\\mathrm{BC}} = |2 - (-2)| = 4$$\n두 선분 $\\mathrm{AC}$와 $\\mathrm{BC}$는 서로 수직이므로 삼각형 $\\mathrm{ABC}$는 $\\angle\\mathrm{C} = 90^\\circ$인 직각삼각형이다.\n\n3단계 [외접원 반지름과 $a$의 값]:\n직각삼각형의 외접원의 빗변은 선분 $\\mathrm{AB}$이고, 외접원의 지름은 $\\overline{\\mathrm{AB}}$이다.\n원의 반지름의 길이가 $3$이므로 지름은 $\\overline{\\mathrm{AB}} = 6$이다.\n피타고라스 정리에 의해\n$$\\overline{\\mathrm{AB}}^2 = \\overline{\\mathrm{AC}}^2 + \\overline{\\mathrm{BC}}^2$$\n$$6^2 = (2a)^2 + 4^2$$\n$$36 = 4a^2 + 16$$\n$$4a^2 = 20 \\implies a^2 = 5$$\n$a$는 양수이므로 $a = \\sqrt{5}$이다.\n\n[오답 및 경계 점검]\n$a>0$ 조건으로부터 음의 제곱근을 배제하고 $a=\\sqrt{5}$를 확정한다.\n\n[결론]\n양수 $a$의 값은 $\\sqrt{5}$이다."
   },
   {
     "id": 17,
@@ -486,8 +486,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $\\mathrm{A}(1, 2, 4)$, $\\mathrm{B}(2, 5, 3)$과 $zx$평면 위의 점 $\\mathrm{P}$, $xy$평면 위의 점 $\\mathrm{Q}$에 대하여 $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PQ}}+\\overline{\\mathrm{QB}}$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "3\\sqrt{11}",
+    "solution": "[풀이 전략]\n대칭이동을 이용하여 최단거리를 구한다. $zx$평면 및 $xy$평면에 대하여 각각 대칭이동한 두 점 사이의 거리를 계산한다.\n\n[단계별 풀이]\n1단계 [대칭점의 설정]:\n점 $\\mathrm{P}$는 $zx$평면($y=0$) 위의 점이고, 점 $\\mathrm{Q}$는 $xy$평면($z=0$) 위의 점이다.\n- 점 $\\mathrm{A}(1, 2, 4)$를 $zx$평면에 대하여 대칭이동한 점을 $\\mathrm{A'}$이라 하면\n  $$\\mathrm{A'}(1, -2, 4)$$\n  이고, 임의의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AP}} = \\overline{\\mathrm{A'P}}$이다.\n- 점 $\\mathrm{B}(2, 5, 3)$을 $xy$평면에 대하여 대칭이동한 점을 $\\mathrm{B'}$이라 하면\n  $$\\mathrm{B'}(2, 5, -3)$$\n  이고, 임의의 점 $\\mathrm{Q}$에 대하여 $\\overline{\\mathrm{QB}} = \\overline{\\mathrm{QB'}}$이다.\n\n2단계 [최솟값 계산]:\n따라서\n$$\\overline{\\mathrm{AP}} + \\overline{\\mathrm{PQ}} + \\overline{\\mathrm{QB}} = \\overline{\\mathrm{A'P}} + \\overline{\\mathrm{PQ}} + \\overline{\\mathrm{QB'}} \\ge \\overline{\\mathrm{A'B'}}$$\n가 성립하며, 등호는 점 $\\mathrm{P}, \\mathrm{Q}$가 선분 $\\mathrm{A'B'}$ 위에 차례로 위치할 때 성립한다.\n최솟값은 두 점 $\\mathrm{A'}, \\mathrm{B'}$ 사이의 거리이다:\n$$\\overline{\\mathrm{A'B'}} = \\sqrt{(2 - 1)^2 + \\{5 - (-2)\\}^2 + (-3 - 4)^2}$$\n$$= \\sqrt{1^2 + 7^2 + (-7)^2} = \\sqrt{1 + 49 + 49} = \\sqrt{99} = 3\\sqrt{11}$$\n이다.\n\n[오답 및 경계 점검]\n두 번의 대칭이동($y$좌표 부호 반대, $z$좌표 부호 반대)을 정확히 분리 적용함을 확인한다.\n\n[결론]\n최솟값은 $3\\sqrt{11}$이다."
   },
   {
     "id": 18,
@@ -520,8 +520,8 @@ window.questionBank = [
       "10",
       "11"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n선분의 중점 좌표 공식을 적용하여 미지수 $a, b$를 구하고 그 합을 구한다.\n\n[단계별 풀이]\n1단계 [중점 공식 적용]:\n세 점 $\\mathrm{A}(1, 4, 2), \\mathrm{B}(3, a, 6), \\mathrm{C}(5, -6, b)$에 대하여 점 $\\mathrm{B}$가 선분 $\\mathrm{AC}$의 중점이므로\n$$\\mathrm{B}\\left(\\frac{1+5}{2}, \\frac{4+(-6)}{2}, \\frac{2+b}{2}\\right) = \\mathrm{B}(3, -1, 6)$$\n이어야 한다.\n\n2단계 [미지수 $a, b$ 계산]:\n- $y$좌표: $a = \\frac{4-6}{2} = -1$\n- $z$좌표: $\\frac{2+b}{2} = 6 \\implies 2+b = 12 \\implies b = 10$\n\n3단계 [$a+b$ 계산]:\n$$a + b = -1 + 10 = 9$$\n이다.\n\n[오답 및 경계 점검]\n선택지 `['7', '8', '9', '10', '11']` 중 $9$는 ③번에 해당함을 확인한다.\n\n[결론]\n정답은 ③(9)이다."
   },
   {
     "id": 19,
@@ -548,8 +548,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q19.png\" />\n\n오른쪽 그림과 같이 세 점 $\\mathrm{A}(1, 1, 0), \\mathrm{B}(3, 2, 3), \\mathrm{C}(2, 6, 6)$과 점 $\\mathrm{D}$를 꼭짓점으로 하는 평행사변형 $\\mathrm{ABCD}$에서 선분 $\\mathrm{CD}$의 중점을 $\\mathrm{M}$이라고 하자. 이때 두 직선 $\\mathrm{AM}$과 $\\mathrm{BD}$의 교점 $\\mathrm{P}$의 좌표를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(1, 4, 3)",
+    "solution": "[풀이 전략]\n평행사변형의 성질로 점 $\\mathrm{D}$의 좌표를 구하고, 삼각형 $\\mathrm{ACD}$의 무게중심이 두 중선의 교점인 점 $\\mathrm{P}$가 됨을 기하학적으로 파악하여 좌표를 신속하고 정확하게 구한다.\n\n[단계별 풀이]\n1단계 [점 $\\mathrm{D}$의 좌표 구하기]:\n평행사변형 $\\mathrm{ABCD}$에서 대각선 $\\mathrm{AC}$와 $\\mathrm{BD}$의 중점은 일치한다.\n$$\\mathrm{D} = \\mathrm{A} + \\mathrm{C} - \\mathrm{B}$$\n세 점 $\\mathrm{A}(1, 1, 0), \\mathrm{B}(3, 2, 3), \\mathrm{C}(2, 6, 6)$을 대입하면:\n- $x = 1 + 2 - 3 = 0$\n- $y = 1 + 6 - 2 = 5$\n- $z = 0 + 6 - 3 = 3$\n따라서 $\\mathrm{D}(0, 5, 3)$이다.\n\n2단계 [교점 $\\mathrm{P}$의 기하학적 성질 확인]:\n- 대각선 $\\mathrm{AC}$와 $\\mathrm{BD}$의 교점을 $\\mathrm{O}$라 하면, $\\mathrm{O}$는 $\\mathrm{AC}$의 중점이자 $\\mathrm{BD}$의 중점이다.\n- 삼각형 $\\mathrm{ACD}$에서 선분 $\\mathrm{DO}$는 변 $\\mathrm{AC}$에 대한 중선이다.\n- 선분 $\\mathrm{AM}$은 변 $\\mathrm{CD}$에 대한 중선이다.\n- 두 중선 $\\mathrm{DO}$와 $\\mathrm{AM}$의 교점이 바로 $\\mathrm{P}$이므로, 점 $\\mathrm{P}$는 삼각형 $\\mathrm{ACD}$의 무게중심이다!\n\n3단계 [무게중심 $\\mathrm{P}$의 좌표 계산]:\n삼각형 $\\mathrm{ACD}$의 세 꼭짓점 $\\mathrm{A}(1, 1, 0), \\mathrm{C}(2, 6, 6), \\mathrm{D}(0, 5, 3)$에 대하여\n$$x = \\frac{1 + 2 + 0}{3} = \\frac{3}{3} = 1$$\n$$y = \\frac{1 + 6 + 5}{3} = \\frac{12}{3} = 4$$\n$$z = \\frac{0 + 6 + 3}{3} = \\frac{9}{3} = 3$$\n따라서 점 $\\mathrm{P}$의 좌표는 $(1, 4, 3)$이다.\n\n[오답 및 경계 점검]\n선분 $\\mathrm{BD}$를 $2:1$로 내분하는 점 공식을 적용해도 $\\left(\\frac{2(0)+1(3)}{3}, \\frac{2(5)+1(2)}{3}, \\frac{2(3)+1(3)}{3}\\right) = (1, 4, 3)$으로 완벽히 일치함을 확인한다.\n\n[결론]\n점 $\\mathrm{P}$의 좌표는 $(1, 4, 3)$이다."
   },
   {
     "id": 20,
@@ -576,8 +576,8 @@ window.questionBank = [
     "wide": false,
     "content": "구 $(x+2)^2+(y-4)^2+(z+1)^2=5$와 중심이 같고, 원점을 지나는 구의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(x+2)^2+(y-4)^2+(z+1)^2=21",
+    "solution": "[풀이 전략]\n주어진 구의 방정식을 통해 중심의 좌표를 파악하고, 중심과 원점 사이의 거리를 새로운 구의 반지름으로 설정하여 구의 방정식을 작성한다.\n\n[단계별 풀이]\n1단계 [구의 중심 구하기]:\n주어진 구 $(x+2)^2+(y-4)^2+(z+1)^2=5$의 중심의 좌표는\n$$(-2, 4, -1)$$\n이다.\n\n2단계 [반지름의 제곱 계산]:\n새로운 구는 중심이 $(-2, 4, -1)$이고 원점 $\\mathrm{O}(0, 0, 0)$을 지나므로, 반지름 $R$의 제곱은\n$$R^2 = \\{0 - (-2)\\}^2 + (0 - 4)^2 + \\{0 - (-1)\\}^2 = 2^2 + (-4)^2 + 1^2 = 4 + 16 + 1 = 21$$\n이다.\n\n3단계 [구의 방정식 작성]:\n따라서 구하는 구의 방정식은\n$$(x+2)^2 + (y-4)^2 + (z+1)^2 = 21$$\n이다.\n\n[오답 및 경계 점검]\n중심의 부호가 $(x+2)^2, (y-4)^2, (z+1)^2$로 바르게 유지되고 우변에 $R^2 = 21$이 위치함을 확인한다.\n\n[결론]\n구의 방정식은 $(x+2)^2+(y-4)^2+(z+1)^2=21$이다."
   },
   {
     "id": 21,
@@ -604,8 +604,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $\\mathrm{P}(-2, 0, 5)$를 점 $\\mathrm{A}(4, 4, -3)$에 대하여 대칭이동한 점을 $\\mathrm{Q}$라고 할 때, 두 점 $\\mathrm{A}, \\mathrm{Q}$를 지름의 양 끝점으로 하는 구의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(x-7)^2+(y-6)^2+(z+7)^2=29",
+    "solution": "[풀이 전략]\n점 대칭의 정의를 이용하여 점 $\\mathrm{Q}$의 좌표를 구하고, 두 점 $\\mathrm{A}, \\mathrm{Q}$의 중점과 거리를 통해 구의 방정식을 작성한다.\n\n[단계별 풀이]\n1단계 [점 $\\mathrm{Q}$의 좌표 구하기]:\n점 $\\mathrm{P}(-2, 0, 5)$를 점 $\\mathrm{A}(4, 4, -3)$에 대하여 대칭이동한 점을 $\\mathrm{Q}(x, y, z)$라고 하면, 점 $\\mathrm{A}$는 선분 $\\mathrm{PQ}$의 중점이다:\n$$\\frac{-2 + x}{2} = 4 \\implies x = 8 + 2 = 10$$\n$$\\frac{0 + y}{2} = 4 \\implies y = 8$$\n$$\\frac{5 + z}{2} = -3 \\implies z = -6 - 5 = -11$$\n따라서 $\\mathrm{Q}(10, 8, -11)$이다.\n\n2단계 [구의 중심과 반지름 계산]:\n두 점 $\\mathrm{A}(4, 4, -3)$과 $\\mathrm{Q}(10, 8, -11)$을 지름의 양 끝점으로 하므로:\n- 구의 중심 $\\mathrm{C}$는 선분 $\\mathrm{AQ}$의 중점이다:\n  $$\\mathrm{C}\\left(\\frac{4+10}{2}, \\frac{4+8}{2}, \\frac{-3+(-11)}{2}\\right) = (7, 6, -7)$$\n- 지름 $\\overline{\\mathrm{AQ}}$의 길이의 제곱:\n  $$\\overline{\\mathrm{AQ}}^2 = (10 - 4)^2 + (8 - 4)^2 + \\{-11 - (-3)\\}^2 = 6^2 + 4^2 + (-8)^2 = 36 + 16 + 64 = 116$$\n- 반지름 $r$의 제곱:\n  $$r^2 = \\frac{1}{4}\\overline{\\mathrm{AQ}}^2 = \\frac{116}{4} = 29$$\n\n3단계 [구의 방정식 작성]:\n따라서 구하는 구의 방정식은\n$$(x-7)^2 + (y-6)^2 + (z+7)^2 = 29$$\n이다.\n\n[오답 및 경계 점검]\n점 $\\mathrm{A}(4, 4, -3)$을 대입하면 $(4-7)^2 + (4-6)^2 + (-3+7)^2 = 9 + 4 + 16 = 29$로 양 끝점이 구 위에 존재함을 확인한다.\n\n[결론]\n구의 방정식은 $(x-7)^2+(y-6)^2+(z+7)^2=29$이다."
   },
   {
     "id": 22,
@@ -632,8 +632,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $\\mathrm{A}(-1, 2, 1)$과 구 $(x-1)^2+(y-1)^2+(z+1)^2=4$ 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AP}}$의 최댓값과 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "최댓값: 5, 최솟값: 1",
+    "solution": "[풀이 전략]\n구 밖의 한 점 $\\mathrm{A}$에서 구 위의 점 $\\mathrm{P}$까지의 거리의 최댓값과 최솟값은 점 $\\mathrm{A}$와 구의 중심 사이의 거리 $d$에 구의 반지름 $r$을 더하거나 빼어 구한다.\n$$\\text{최댓값} = d + r, \\quad \\text{최솟값} = d - r$$\n\n[단계별 풀이]\n1단계 [구의 중심과 반지름 확인]:\n주어진 구 $(x-1)^2+(y-1)^2+(z+1)^2=4$에서\n- 중심: $\\mathrm{C}(1, 1, -1)$\n- 반지름: $r = \\sqrt{4} = 2$\n이다.\n\n2단계 [점 $\\mathrm{A}$와 중심 $\\mathrm{C}$ 사이의 거리 $d$ 계산]:\n점 $\\mathrm{A}(-1, 2, 1)$과 중심 $\\mathrm{C}(1, 1, -1)$ 사이의 거리 $d$는\n$$d = \\overline{\\mathrm{AC}} = \\sqrt{\\{1 - (-1)\\}^2 + (1 - 2)^2 + (-1 - 1)^2} = \\sqrt{2^2 + (-1)^2 + (-2)^2} = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3$$\n이다.\n\n3단계 [최댓값과 최솟값 계산]:\n- 최댓값:\n  $$d + r = 3 + 2 = 5$$\n- 최솟값:\n  $$d - r = 3 - 2 = 1$$\n이다.\n\n[오답 및 경계 점검]\n$d > r$ ($3 > 2$)이므로 점 $\\mathrm{A}$가 구의 외부에 위치하여 최솟값이 $d - r = 1$로 양수가 됨을 확인한다.\n\n[결론]\n최댓값은 $5$, 최솟값은 $1$이다."
   },
   {
     "id": 23,
@@ -660,8 +660,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $\\mathrm{A}(3, 0, 0)$, $\\mathrm{B}(0, 6, 3)$에 대하여 $\\overline{\\mathrm{PB}}=2\\overline{\\mathrm{PA}}$를 만족시키는 점 $\\mathrm{P}$가 그리는 도형의 부피를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "64\\sqrt{6}\\pi",
+    "solution": "[풀이 전략]\n공간에서 두 정점으로부터 거리의 비가 일정한 점들의 자취는 아폴로니오스의 구(Apollonius Sphere)를 이룸을 이용한다. 내분점과 외분점을 지름의 양 끝점으로 하는 구의 반지름을 구하여 구의 부피 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [거리 비의 분석]:\n조건 $\\overline{\\mathrm{PB}} = 2\\overline{\\mathrm{PA}}$는\n$$\\overline{\\mathrm{PA}} : \\overline{\\mathrm{PB}} = 1 : 2$$\n를 의미한다.\n따라서 점 $\\mathrm{P}$가 그리는 도형은 선분 $\\mathrm{AB}$를 $1:2$로 내분하는 점 $\\mathrm{N}$과 $1:2$로 외분하는 점 $\\mathrm{M}$을 지름의 양 끝점으로 하는 구이다.\n\n2단계 [내분점 $\\mathrm{N}$과 외분점 $\\mathrm{M}$ 계산]:\n두 점 $\\mathrm{A}(3, 0, 0), \\mathrm{B}(0, 6, 3)$에 대하여:\n- $1:2$ 내분점 $\\mathrm{N}$:\n  $$\\mathrm{N}\\left(\\frac{1(0) + 2(3)}{1+2}, \\frac{1(6) + 2(0)}{1+2}, \\frac{1(3) + 2(0)}{1+2}\\right) = \\left(\\frac{6}{3}, \\frac{6}{3}, \\frac{3}{3}\\right) = (2, 2, 1)$$\n- $1:2$ 외분점 $\\mathrm{M}$:\n  $$\\mathrm{M}\\left(\\frac{1(0) - 2(3)}{1-2}, \\frac{1(6) - 2(0)}{1-2}, \\frac{1(3) - 2(0)}{1-2}\\right) = \\left(\\frac{-6}{-1}, \\frac{6}{-1}, \\frac{3}{-1}\\right) = (6, -6, -3)$$\n\n3단계 [구의 지름과 반지름 계산]:\n지름 $\\overline{\\mathrm{MN}}$의 길이는\n$$\\overline{\\mathrm{MN}} = \\sqrt{(6 - 2)^2 + (-6 - 2)^2 + (-3 - 1)^2} = \\sqrt{4^2 + (-8)^2 + (-4)^2}$$\n$$= \\sqrt{16 + 64 + 16} = \\sqrt{96} = 4\\sqrt{6}$$\n이다.\n따라서 구의 반지름 $R$은\n$$R = \\frac{1}{2}\\overline{\\mathrm{MN}} = 2\\sqrt{6}$$\n이다.\n\n4단계 [구의 부피 계산]:\n반지름이 $R = 2\\sqrt{6}$인 구의 부피 $V$는\n$$V = \\frac{4}{3}\\pi R^3 = \\frac{4}{3}\\pi (2\\sqrt{6})^3 = \\frac{4}{3}\\pi \\times 8 \\times 6\\sqrt{6} = 64\\sqrt{6}\\pi$$\n이다.\n\n[오답 및 경계 점검]\n부피 공식 $\\frac{4}{3}\\pi R^3$에서 $R^3 = 48\\sqrt{6}$을 곱하여 $\\frac{4}{3} \\times 48\\sqrt{6}\\pi = 64\\sqrt{6}\\pi$가 됨을 점검한다.\n\n[결론]\n도형의 부피는 $64\\sqrt{6}\\pi$이다."
   },
   {
     "id": 24,
@@ -688,8 +688,8 @@ window.questionBank = [
     "wide": false,
     "content": "구 $x^2+y^2+z^2-6x-2y+4z-11=0$을 $yz$평면으로 자른 단면을 밑면으로 하고, 구에 내접하는 원뿔의 부피의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{128}{3}\\pi",
+    "solution": "[풀이 전략]\n구의 표준형을 구하고 $yz$평면($x=0$)에 의해 잘린 단면 원의 넓이를 밑면 넓이로 고정한 뒤, 구의 중심을 지나는 축 상에서 꼭짓점까지의 최대 높이를 산출하여 원뿔의 최대 부피를 구한다.\n\n[단계별 풀이]\n1단계 [구의 표준형 변형]:\n주어진 방정식 $x^2+y^2+z^2-6x-2y+4z-11=0$을 완전제곱식으로 변형한다:\n$$(x-3)^2 + (y-1)^2 + (z+2)^2 - 9 - 1 - 4 - 11 = 0$$\n$$(x-3)^2 + (y-1)^2 + (z+2)^2 = 25 = 5^2$$\n따라서 구의 중심은 $\\mathrm{C}(3, 1, -2)$이고 반지름은 $R = 5$이다.\n\n2단계 [단면 원(원뿔의 밑면)의 넓이 계산]:\n$yz$평면의 방정식은 $x = 0$이다.\n중심 $\\mathrm{C}(3, 1, -2)$에서 $yz$평면까지의 거리는\n$$d = |3| = 3$$\n이다.\n단면 원의 반지름을 $r$이라 하면 피타고라스 정리에 의해\n$$r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = 4$$\n이다.\n따라서 단면 원(원뿔의 밑면)의 넓이는\n$$S = \\pi r^2 = 16\\pi$$\n이다.\n\n3단계 [원뿔의 최대 높이 및 최대 부피 계산]:\n원뿔의 꼭짓점은 구면 위의 점이어야 한다. 밑면이 $x = 0$에 위치하므로 꼭짓점이 $x$축의 양의 방향으로 가장 멀리 있을 때 높이가 최대가 된다.\n구의 중심의 $x$좌표가 $3$이고 구의 반지름이 $5$이므로, 구면 위의 점의 $x$좌표의 최댓값은 $3 + 5 = 8$이다.\n따라서 원뿔의 최대 높이는\n$$h = d + R = 3 + 5 = 8$$\n이다.\n그러므로 원뿔의 부피의 최댓값은\n$$V = \\frac{1}{3} \\times S \\times h = \\frac{1}{3} \\times 16\\pi \\times 8 = \\frac{128}{3}\\pi$$\n이다.\n\n[오답 및 경계 점검]\n높이가 최대일 때는 중심을 지나 밑면에 수직인 직선의 반대편 극점까지의 거리 $d + R = 3 + 5 = 8$이 됨을 명확히 확인한다.\n\n[결론]\n원뿔의 부피의 최댓값은 $\\frac{128}{3}\\pi$이다."
   },
   {
     "id": 25,
@@ -716,7 +716,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 개의 구\n$$S_1: x^2+y^2+z^2=25$$\n$$S_2: x^2+y^2+z^2-4x-8y-8z+11=0$$\n이 만나서 생기는 원 위의 한 점을 $\\mathrm{P}$, 두 구 $S_1, S_2$의 중심을 각각 $\\mathrm{C}_1, \\mathrm{C}_2$라고 하자. $\\angle\\mathrm{PC}_1\\mathrm{C}_2=\\theta$일 때, $\\sin\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "\\frac{4}{5}",
+    "solution": "[풀이 전략]\n두 구의 중심과 반지름, 중심 사이의 거리를 구하여 삼각형 $\\mathrm{PC}_1\\mathrm{C}_2$를 구성하고 이등변삼각형의 수선의 성질을 적용하여 $\\sin\\theta$를 구한다.\n\n[단계별 풀이]\n1단계 [두 구의 중심과 반지름 구하기]:\n- 구 $S_1: x^2+y^2+z^2 = 25$:\n  중심 $\\mathrm{C}_1(0, 0, 0)$, 반지름 $R_1 = 5$\n- 구 $S_2: x^2+y^2+z^2-4x-8y-8z+11=0$:\n  $$(x-2)^2 + (y-4)^2 + (z-4)^2 - 4 - 16 - 16 + 11 = 0$$\n  $$(x-2)^2 + (y-4)^2 + (z-4)^2 = 25 = 5^2$$\n  중심 $\\mathrm{C}_2(2, 4, 4)$, 반지름 $R_2 = 5$\n\n2단계 [삼각형 $\\mathrm{PC}_1\\mathrm{C}_2$의 세 변의 길이]:\n두 구의 중심 사이의 거리 $\\overline{\\mathrm{C}_1\\mathrm{C}_2}$는\n$$\\overline{\\mathrm{C}_1\\mathrm{C}_2} = \\sqrt{(2-0)^2 + (4-0)^2 + (4-0)^2} = \\sqrt{4 + 16 + 16} = \\sqrt{36} = 6$$\n이다.\n점 $\\mathrm{P}$는 두 구의 교선인 원 위의 점이므로 두 구면 위에 모두 존재한다:\n$$\\overline{\\mathrm{C}_1\\mathrm{P}} = R_1 = 5, \\quad \\overline{\\mathrm{C}_2\\mathrm{P}} = R_2 = 5$$\n따라서 삼각형 $\\mathrm{PC}_1\\mathrm{C}_2$는\n$$\\overline{\\mathrm{C}_1\\mathrm{P}} = 5, \\quad \\overline{\\mathrm{C}_2\\mathrm{P}} = 5, \\quad \\overline{\\mathrm{C}_1\\mathrm{C}_2} = 6$$\n인 이등변삼각형이다!\n\n3단계 [$\\sin\\theta$ 계산]:\n$\\theta = \\angle\\mathrm{PC}_1\\mathrm{C}_2$이다.\n점 $\\mathrm{P}$에서 밑변 $\\mathrm{C}_1\\mathrm{C}_2$에 내린 수선의 발을 $\\mathrm{H}$라 하면, 삼각형 $\\mathrm{PC}_1\\mathrm{C}_2$가 이등변삼각형이므로 $\\mathrm{H}$는 선분 $\\mathrm{C}_1\\mathrm{C}_2$의 중점이다.\n$$\\overline{\\mathrm{C}_1\\mathrm{H}} = \\frac{6}{2} = 3$$\n직각삼각형 $\\mathrm{PC}_1\\mathrm{H}$에서 피타고라스 정리에 의해 높이 $\\overline{\\mathrm{PH}}$는\n$$\\overline{\\mathrm{PH}} = \\sqrt{\\overline{\\mathrm{C}_1\\mathrm{P}}^2 - \\overline{\\mathrm{C}_1\\mathrm{H}}^2} = \\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4$$\n이다.\n따라서\n$$\\sin\\theta = \\frac{\\overline{\\mathrm{PH}}}{\\overline{\\mathrm{C}_1\\mathrm{P}}} = \\frac{4}{5}$$\n이다.\n\n[오답 및 경계 점검]\n$3, 4, 5$ 직각삼각형에서 빗변이 $5$, 대변이 $4$이므로 $\\sin\\theta = \\frac{4}{5}$가 됨을 즉시 검산할 수 있다.\n\n[결론]\n$\\sin\\theta$의 값은 $\\frac{4}{5}$이다."
   }
 ];
