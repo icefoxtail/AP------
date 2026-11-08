@@ -1,1 +1,217 @@
-{"capability":"construction-spike-v1","mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[{"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},{"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},{"id":"P","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"5"},"dy":{"kind":"integer","value":"2"}},"outputType":"POINT","factRole":"CONCLUSION"},{"id":"A","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"9"},"dy":{"kind":"integer","value":"2"}},"outputType":"POINT","factRole":"CONCLUSION"},{"id":"B","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"5"},"dy":{"kind":"integer","value":"5"}},"outputType":"POINT","factRole":"CONCLUSION"},{"id":"C","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"6"},"dy":{"kind":"integer","value":"3"}},"outputType":"POINT","factRole":"CONCLUSION"},{"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"CONCLUSION"}]},"axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["K"],"displaySegments":[{"id":"PA","refs":["P","A"]},{"id":"AB","refs":["A","B"]},{"id":"BP","refs":["B","P"]}],"displayPoints":["P","A","B","C"],"pointNames":{"P":"O′","A":"A′","B":"B′"},"coordinateLabels":["P","A","B","C"],"caption":"평행이동한 삼각형의 내심 C=(6,3), 내접원의 반지름은 1이다.","sourceConditions":[{"id":"c1","condition":"원래 O=(0,0), A=(4,0), B=(0,3), 평행이동은 (5,2)","mappedTo":["P","A","B"]},{"id":"c2","condition":"이동한 3-4-5 직각삼각형의 내심 (6,3), 반지름 1","mappedTo":["C","K"]}],"newVisualInformation":["평행이동한 세 꼭짓점과 내심·내접원을 표시한다.","좌표 라벨이 가까우면 지시선으로 조정한다."],"sourceQuote":"$(x-6)^2+(y-3)^2=1$이다."}
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "pointNames": {
+    "P": "O′",
+    "A": "A′",
+    "B": "B′"
+  },
+  "coordinateLabels": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "평행이동한 삼각형의 내심 C=(6,3), 내접원의 반지름은 1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 O=(0,0), A=(4,0), B=(0,3), 평행이동은 (5,2)",
+      "mappedTo": [
+        "P",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이동한 3-4-5 직각삼각형의 내심 (6,3), 반지름 1",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 세 꼭짓점과 내심·내접원을 표시한다.",
+    "좌표 라벨이 가까우면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$(x-6)^2+(y-3)^2=1$이다."
+}
