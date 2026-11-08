@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "상대변위 0",
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "name": "출발점"
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "name": "첫재회"
+          },
+          {
+            "id": "C",
+            "value": "3",
+            "name": "다음재회"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "재회 시각"
+  },
+  "caption": "D(t)=t²(t−2)(t−3)/4, t≥0. t=0은 출발 순간이므로 첫 재회는 t=2, 다음 재회는 t=3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "상대변위 D(t)=∫₀ᵗ(vA(u)−vB(u))du=t²(t−2)(t−3)/4이고 시각은 t≥0이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "t=0은 출발 순간으로 제외하며 양의 영점 2,3 중 첫 재회는 t=2이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 t≥0에서 상대변위가 0인 시각만 표시한다. D(t)의 전체 사차 곡선은 그리지 않으며 상대속도 0을 재회로 보지 않는다.",
+    "사용자가 이해에 도움 되는 시각화를 요청한 취지를 반영해 출발과 두 재회 시각을 구분한다."
+  ]
+}

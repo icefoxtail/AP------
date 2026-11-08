@@ -1,0 +1,73 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "출발후",
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "A",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "5",
+            "hideName": true
+          }
+        ],
+        "within": 1,
+        "band": false,
+        "label": "만남시각"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "출발 후 만남 시각"
+  },
+  "caption": "상대 위치 차 D(t)=x₁−x₂=t(t−2)(t−5), 원래 시간 범위는 t≥0이다. 출발 시각 t=0은 동시에 원점에 있는 시각이므로 출발 후 시각 t>0에서 제외한다. 첫 만남은 t=2이고, 그때 점 P의 속도는 31이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 x₁−x₂=t(t−2)(t−5)이고 t≥0이다.",
+      "mappedTo": [
+        "caption",
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 점은 t=0에서 동시에 출발하므로, 출발 후 만남을 찾을 때 t=0을 제외하면 근은 2와 5이며 첫 시각은 2이다.",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c3",
+      "condition": "x₁′(2)=9·2²−6·2+7=31이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 상대 위치가 같은 시각 0, 2, 5를 표시하고 t>0 행으로 출발 시각 0을 제외해 첫 이후 만남 t=2를 구분한다.",
+    "입체·함수 그래프를 대신 만들지 않고 시간과 근만 정확히 나타낸다."
+  ]
+}

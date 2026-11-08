@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "v",
+    "axisVariable": "t",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "8",
+          "-4",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "3"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "3",
+          "4"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-20",
+          "4",
+          "0"
+        ],
+        "domain": [
+          "4",
+          "6"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "6",
+          "8"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "36",
+          "-4",
+          "0"
+        ],
+        "domain": [
+          "8",
+          "9"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ]
+  },
+  "caption": "원문의 속도 v(t)를 0≤t≤9에서 나타낸다. 속도의 부호는 t=2와 t=5에서 바뀐다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 순서상 좌표는 (0,0),(1,4),(2,0),(3,−4),(4,−4),(5,0),(6,4),(8,4),(9,0)이다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "인접한 원문 점을 잇는 직선 중 같은 기울기를 갖는 연속 구간을 합치면 [0,1], [1,3], [3,4], [4,6], [6,8], [8,9]의 여섯 선분이 된다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c3",
+      "condition": "원문 시간 구간은 닫힌 구간 0≤t≤9이고 속도는 그 바깥에서 정의하지 않는다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 주어진 아홉 점을 순서대로 연결하는 여섯 개의 정확한 선분만 나타낸다. 두 collinear run은 원래 점을 통과하는 한 직선으로 표현한다.",
+    "수평선과 만나는 시각 t=2,5에서 속도의 부호 변화가 보인다. 별도의 velocity 값이나 외삽 구간은 추가하지 않는다.",
+    "사용자 사유: 이해를 돕는 도식과 리더 전략을 위한 시각적 보조."
+  ]
+}

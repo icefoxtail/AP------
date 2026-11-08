@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2+2*x+1",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "V",
+        "x": -1,
+        "y": 0,
+        "marker": "NONE"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "tangent",
+        "slope": "4",
+        "intercept": "0",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "곡선 y=f(x)=(x+1)^2와 점 (1,4)에서의 접선 y=4x를 함께 나타낸다. 접점은 (1,4)이고 접선의 기울기는 f′(1)=4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선은 모든 x에서 y=x^2+2x+1=(x+1)^2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=2x+2이므로 x=1에서 기울기 4이다. 접점 (1,4)을 지나는 접선은 y−4=4(x−1), 즉 y=4x이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 포물선과 실제 접점 좌표, 그 점의 접선 y=4x를 한 도식에 표시한다.",
+    "이해에 도움이 되는 함수 시각 자료를 준비한다."
+  ],
+  "sourceQuote": "1. 곡선 $y=x^2+2x+1$ 위의 점 $(1, 4)$에서 접하는 접선의 방정식을 구하시오. [3.6점]"
+}

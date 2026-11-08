@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-14",
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3+3*x^2-14",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": -10
+      },
+      {
+        "id": "N",
+        "x": 0,
+        "y": -14
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "극솟값 조건으로 a=−14가 된 f(x)=x³+3x²−14의 그래프를 표시한다. 도함수는 3x(x+2)이고, 극댓점 M=(−2,−10), 극솟점 N=(0,−14)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=3x(x+2)이므로 x=−2에서 극대, x=0에서 극소이다. 원문에서 극솟값 −14이므로 a=f(0)=−14이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a=−14를 대입한 그래프의 실제 극댓점은 (−2,−10), 극솟점은 (0,−14)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 극솟값으로 a를 정한 다음, 원함수의 두 실제 극값 좌표를 함께 확인한다.",
+    "사용자 사유: 이해에 도움이 되는 함수 도식이며 좌표 라벨은 coordinateLeader로 연결한다."
+  ],
+  "sourceQuote": "6. 함수 $f(x)=x^3+3x^2+a$이 극솟값 -14를 가질 때, 상수 $a$의 값은? [4.2점]"
+}

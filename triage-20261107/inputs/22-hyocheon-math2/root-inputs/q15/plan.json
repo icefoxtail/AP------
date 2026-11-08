@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "11",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-6*x^2+11*x-6",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "3",
+        "intercept": "-6",
+        "intersectionX": [
+          "0",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -6
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "id": "M",
+        "x": "2-sqrt(3)/3",
+        "y": "2*sqrt(3)/9",
+        "marker": "NONE"
+      },
+      {
+        "id": "N",
+        "x": "2+sqrt(3)/3",
+        "y": "-2*sqrt(3)/9",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "C",
+    "B"
+  ],
+  "caption": "f(x)=(x−2)³−(x−2)는 (2,0)을 중심으로 점대칭이며 g(x)=3x−6은 직선이다. 두 함수 각각의 [0,4] 부호 있는 정적분은 0이어서 a=3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최고차항 계수 1인 삼차함수 f(1)=0, f(2−x)=−f(2+x), ∫_0^4(f(x)−g(x))dx=0, g(x)=ax−6 (a>0).",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 삼차곡선과 g의 직선 y=3x−6을 서로 다른 그래프로 나타내고, 공통 점 (2,0)은 점대칭 중심으로 표시한다.",
+    "극값 좌표는 정확한 √3 표현으로만 계산해 숨은 검수 점으로 남기며, 근사 점을 만들지 않는다.",
+    "두 함수의 [0,4] 부호 있는 정적분은 각각 0이고 a=3이다.",
+    "사용자 요청에 따라 함수 그래프가 풀이 이해에 도움이 되도록 준비한다."
+  ]
+}

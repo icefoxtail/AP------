@@ -1,0 +1,102 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "한 극값",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "세 극값",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "보기",
+        "band": false,
+        "within": 2,
+        "points": [
+          {
+            "id": "A",
+            "value": "-5"
+          },
+          {
+            "id": "B",
+            "value": "-3"
+          },
+          {
+            "id": "C",
+            "value": "-1"
+          },
+          {
+            "id": "D",
+            "value": "2"
+          },
+          {
+            "id": "E",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "한 극값 조건과 보기값"
+  },
+  "caption": "F' (x)=x^3-3*x+a. F has one extremum when a<=-2 or a>=2; -2<a<2 gives three. Among -5,-3,-1,2,4, only a=-1 is in the three-extrema interval, so the answer is ③.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "F' (x)=f(x)=x^3-3*x+a, so F extrema occur exactly where f changes sign.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "f' (x)=3*(x-1)*(x+1), with local maximum a+2 at x=-1 and local minimum a-2 at x=1. The one-extremum parameter set is (-infinity,-2] union [2,infinity); the three-extrema set is (-2,2).",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "numberLine.rows[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Among the five source choices, only a=-1 lies in (-2,2).",
+      "mappedTo": [
+        "numberLine.rows[2]",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A parameter number line gives the exact one-extremum and three-extrema regions, then classifies the five source choices against the open three-extrema interval. The point at a=-1 is the only choice inside it; the endpoints a=-2 and a=2 remain included in the one-extremum set."
+  ]
+}

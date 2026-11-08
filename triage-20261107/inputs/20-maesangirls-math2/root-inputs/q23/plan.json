@@ -1,0 +1,153 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(x^2-1)-2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1.7320508075688772,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": -2
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "D",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "E",
+        "x": 1.7320508075688772,
+        "y": 0
+      },
+      {
+        "id": "F",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "id": "G",
+        "x": -2,
+        "y": 1
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-sqrt(3)",
+        "0"
+      ],
+      "E": [
+        "sqrt(3)",
+        "0"
+      ]
+    },
+    "regions": [
+      {
+        "id": "negativePart",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "sqrt(3)",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "positivePart",
+        "upper": "f",
+        "lower": "axis",
+        "from": "sqrt(3)",
+        "to": "3",
+        "fill": "MEDIUM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "caption": "A=∫ from −2 to 0 f=−2이므로 f(x)=|x²−1|−2이다. [0,3]에서 √3을 경계로 음수 구간과 양수 구간을 분리해 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=∫ from −2 to 0 f(x)dx라 두면 f=|x²−1|+A이고, 짝함수성으로 A=2+2A이므로 A=−2이다.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k≥1이고 ∫ from 0 to k f(x)dx=4/3일 때 x=√3에서 부호가 바뀌며 k=3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 식을 세 개의 연속 다항 조각으로 정확하게 나타내고, x=−1과 x=1의 모서리를 보존한다.",
+    "[0,3]의 음수 기여와 양수 기여를 x=√3에서 나눠 색칠해 정적분이 부호 있는 넓이의 합임을 드러낸다."
+  ],
+  "sourceQuote": "A=∫₋₂⁰f(x)dx라 두면\nf(x)=|x²−1|+A\n이다.\n짝함수이므로\nA=∫₀²f(x)dx\n=∫₀¹(1−x²+A)dx+∫₁²(x²−1+A)dx\n=(2/3+A)+(4/3+A)\n=2+2A\n이다.\n따라서\nA=−2\n이고 f(x)=|x²−1|−2이다.\nk≥1이므로\n∫₀ᵏf(x)dx=∫₀¹(−x²−1)dx+∫₁ᵏ(x²−3)dx\n=k³/3−3k+4/3\n이다.\n이를 4/3과 같게 두면\nk³/3−3k=0\nk(k²−9)=0\n이다.\nk≥1에서\nk=3\n이다."
+}

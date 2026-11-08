@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "9",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3+6x^2+9x-2",
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -4,
+        "y": -6
+      },
+      {
+        "id": "M",
+        "x": -3,
+        "y": -2
+      },
+      {
+        "id": "N",
+        "x": -1,
+        "y": -6
+      },
+      {
+        "id": "R",
+        "x": 0,
+        "y": -2
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "high",
+        "y": "-2",
+        "intersectionX": [
+          "-3",
+          "0"
+        ]
+      },
+      {
+        "id": "low",
+        "y": "-6",
+        "intersectionX": [
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "L",
+    "M",
+    "N",
+    "R"
+  ],
+  "caption": "h의 극대는 (−3,−2), 극소는 (−1,−6)이다. −6<a<−2일 때 수평선 y=a와 그래프는 세 점에서 만나며, 경계 a=−6,−2는 제외된다. 가능한 정수 a는 −5,−4,−3으로 3개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "방정식은 h(x)=a이고 h(x)=x^3+6x^2+9x−2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h′(x)=3(x+3)(x+1), h(−3)=−2는 극대, h(−1)=−6은 극소이다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "서로 다른 세 실근은 −6<a<−2일 때뿐이며 경계 등호는 중근을 만든다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 수평선은 실제 경계 높이 y=−2, y=−6이다. 각 경계에서는 서로 다른 교점이 두 개뿐이고, 두 높이 사이의 수평선은 세 번 교차한다.",
+    "극대·극소와 경계선 교점 좌표를 정확히 표시해 열린 범위와 경계 제외를 구분한다. 축 눈금 0은 별도로 만들지 않는다."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 4,
+        "y": -32
+      },
+      {
+        "id": "R",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "6"
+      ],
+      "y": [
+        "-32"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "H(t)"
+    },
+    "referenceLines": [
+      {
+        "id": "a",
+        "y": "-32",
+        "intersectionX": [
+          "4"
+        ]
+      }
+    ],
+    "curveColor": "BLUE"
+  },
+  "coordinateLeader": [
+    "M",
+    "R"
+  ],
+  "caption": "H(t)=t³−6t², 원래 허용 범위는 t>0이다. 그림은 선택한 표시 구간 0<t≤6만 보이며 t>6은 생략했다. H(6)=0이고 t=4에서 최솟값 −32이므로 y=a=−32는 양의 시간에서 한 번만 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 속도의 일치 조건은 H(t)=a, H(t)=t³−6t²이며 원문의 시간 범위는 t>0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설은 H′(t)=3t(t−4), H(4)=−32, H(6)=0을 준다. 6은 원문 정의역의 끝이 아니라 표시 구간 끝이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "y=−32는 t=4에서 한 번만 만난다. t>6의 꼬리는 H′(t)>0인 증가 구간이므로 추가 교점은 없다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 보조 삼차식 H(t)=t³−6t²를 0<t≤6의 유한 표시 구간에서만 그린다. t=0은 원문에서 제외되어 열린 점이며, 6은 원문 정의역 경계가 아니라 표시창 경계다.",
+    "t>6은 그림에서 생략했다. 해설의 H(6)=0과 t>4에서의 증가로 생략된 꼬리가 y=−32에 다시 닿지 않음을 설명한다."
+  ],
+  "sourceQuote": "두 속도가 같은 조건은 t^3-6t^2=a, t>0이다.\np(t)=t^3-6t^2라 두면 p'(t)=3t(t-4).\n\np는 0<t<4에서 감소하고 t>4에서 증가하며, p(4)=-32, p(6)=0이다.\n수평선 y=a가 양의 t에서 한 번만 만나는 가장 작은 정수 높이는 최솟값 a=-32이다.\n따라서 정답은 ③이다."
+}

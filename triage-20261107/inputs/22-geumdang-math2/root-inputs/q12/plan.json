@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*(x+2)^2",
+    "functionName": "d",
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -3,
+        "y": 3
+      },
+      {
+        "id": "M",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 1,
+        "y": 27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "M",
+    "Q"
+  ],
+  "caption": "이 그림은 원함수 f가 아니라 도함수 d(x)=f′(x)=3(x+2)²의 그래프이다. f의 정의역과 d의 정의역은 R이며, 문제의 검토 구간은 [−3,1]이다. 구간 끝점 P=(−3,3), Q=(1,27)와 구간 안에서 0에 닿는 점 M=(−2,0)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=12에서 f′(x)=3x²+12x+12=3(x+2)². 그래프의 대상은 f가 아닌 도함수 d(x)=f′(x)이다. 도함수 자체의 정의역은 R이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "문제의 판단 구간은 [−3,1]이며 양 끝을 포함한다. d(−3)=3, d(−2)=0, d(1)=27이다. d(x)≥0이고 내부점 x=−2에서만 0에 닿는다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 그래프를 f 그래프와 구분하여 표시하고, 문제의 닫힌구간과 도함수가 내부에서 0에 닿는 점을 정확한 좌표로 나타낸다.",
+    "사용자 사유: 이해에 도움이 되는 함수 도식이며 좌표 라벨은 coordinateLeader로 연결한다."
+  ],
+  "sourceQuote": "12. 함수 $f(x)=x^3+6x^2+kx-1$이 닫힌구간 $[-3, 1]$에서 증가하도록 하는 상수 $k$의 최솟값은? [4.8점]"
+}

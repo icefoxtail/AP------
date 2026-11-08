@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "시각 t",
+      "y": "위치 x(t)"
+    },
+    "requiredPoints": [
+      {
+        "id": "S",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -2
+      },
+      {
+        "id": "P",
+        "x": 6,
+        "y": 14
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "V",
+    "P"
+  ],
+  "caption": "실제 시간 정의역 t≥0에서 위치 x(t)=t²−4t+2를 그린다. x(6)=14이며, 별도 미분식 v(t)=x′(t)=2t−4에서 속도 v(6)=8이다. 그래프는 위치만 그려 속도와 축을 섞지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "시각 t≥0에서 위치 x(t)=t^2-4t+2이며 t=6에서 위치는 x(6)=14이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.axisVariable",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "v(t)=x'(t)=2t-4, v(6)=8; 위치 그래프와 속도를 같은 축에 섞지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "위치-시간 그래프만 그리며 수평축은 시각 t, 수직축은 위치 x(t)로 구분한다. 점 P는 (6,14)이며 속도 v(t)=2t−4와 v(6)=8은 별도 문장으로 제시한다.",
+    "곡선은 원래의 반직선 정의역 t≥0에서만 그린다. 자동 프레이밍으로 화면에 유한 구간이 보이더라도 정의역을 [0,6]으로 제한하지 않는다.",
+    "사용자 사유: 함수 그래프가 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "$x(t)=t^2-4t+2$에서 $v(t)=x'(t)=2t-4$입니다.\n$t=6$을 대입하면 $v(6)=12-4=8$입니다."
+}

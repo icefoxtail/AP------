@@ -1,0 +1,133 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-2/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-1",
+          "1/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-2/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-1",
+          "1/3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "x": "1",
+        "y": "10/3"
+      },
+      {
+        "x": "2",
+        "y": "8/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "sampleNote": "a=-2/3",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 3.3333333333333335
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 2.6666666666666665
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "1",
+        "10/3"
+      ],
+      "C": [
+        "2",
+        "8/3"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "min",
+        "y": "8/3",
+        "intersectionX": [
+          "2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "경계 예 a=−2/3에서 h(x)=max(f(x),g(x))를 그렸다. 두 함수가 x=0,1,2에서 만나며 h의 최솟값은 (2,8/3)에서 8/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "h(x)=1/2{f(x)+g(x)+|f(x)−g(x)|}=max(f(x),g(x)).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.functionName"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "최솟값이 8/3이 되는 a의 최댓값은 a=−2/3이며 이때 g(x)=4−2x/3이다.",
+      "mappedTo": [
+        "graphPlan.sampleNote",
+        "graphPlan.pieces",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f−g=x(x−1)(x−2)/3이므로 가지 경계는 x=0,1,2이고 h(2)=8/3이 최솟값이다.",
+      "mappedTo": [
+        "graphPlan.breakpoints",
+        "graphPlan.requiredPoints",
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "최댓값 매개변수의 실제 경계 사례 a=−2/3에서 상부 포락선 h=max(f,g)를 정확한 네 조각으로 보인다.",
+    "세 교점 x=0,1,2는 true-point coordinate leader로 표시하고 y=8/3 수평선을 그려 유일한 최솟점과 일치시킨다."
+  ]
+}

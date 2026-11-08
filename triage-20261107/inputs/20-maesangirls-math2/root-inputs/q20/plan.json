@@ -1,0 +1,96 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "54/5",
+      "0",
+      "-2/5"
+    ],
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "t",
+      "y": "f(t)"
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5.5,
+      5.5,
+      -28,
+      28
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": -20.6
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 22.6
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "-103/5"
+      ],
+      "B": [
+        "3",
+        "113/5"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "외분점의 y좌표는 f(t)=(−2t³+54t+5)/5이다. t=−3에서 극솟값 −103/5, t=3에서 극댓값 113/5이다. 그래프는 실제 f만 나타내며 P,Q,R의 상대적인 세로 순서를 고정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=t에서 P_y=2t³+1, Q_y=9t+1이고, PR:RQ=6:1의 외분점 공식으로 f(t)=(6Q_y−P_y)/(6−1)=(−2t³+54t+5)/5이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.axisVariable",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(t)=(54−6t²)/5이고 임계점은 t=−3,3이며 f(−3)=−103/5, f(3)=113/5이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문제의 t에는 별도 제한이 없으므로 f의 source domain은 모든 실수이다. 그래프의 유한 domain은 표시용 프레임일 뿐이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.domain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 삼차함수 f(t)와 임계점의 좌표를 나타내어 t=3의 극댓값을 읽을 수 있게 한다.",
+    "sourceDomain은 모든 실수이며 [-5,5]는 표시 프레임이다. 이 그림은 P,Q,R의 배치도가 아니다.",
+    "6:1 외분 관계를 유도식에만 사용하며, t 변화에 따라 바뀔 수 있는 P,Q,R의 세로 순서를 고정해 그리지 않는다.",
+    "정확한 극값 분수는 exactCoordinates와 캡션에 보존한다. 좌표점은 지시선으로 계획한다.",
+    "사용자 사유: 실제 함수 개형이 이해를 돕고 리더의 풀이 계획을 보조하므로, source에 의해 정해진 f(t)만 그린다."
+  ]
+}

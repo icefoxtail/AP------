@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "1≤a≤4",
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "허용값"
+  },
+  "caption": "허용되는 자연수 a는 1, 2, 3, 4이고 합은 10이다. 경계 사례 a=4에서는 h(x)=g(x)−f(x)=x(x−4)² (x>0)이며 x=4에서 0에 닿는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "h(x)=g(x)−f(x)=x(x−a)²+12−3a이고 정의역은 x>0이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "자연수 a는 양수이므로 x=a가 정의역에 있고 h(a)=12−3a이다. 전체 x>0에서 h(x)≥0일 필요충분조건은 a≤4이므로 허용 자연수는 1부터 4까지이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "경계값 a=4에서는 h(x)=x(x−4)²가 되어 x=4에서 0을 갖는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "허용되는 자연수 매개변수 1, 2, 3, 4를 수직선에 표시한다.",
+    "전체 x>0 반직선의 3차함수 그래프는 그리지 않으며, 경계 예시 a=4의 정확한 식과 접촉점은 캡션으로 구분한다."
+  ]
+}

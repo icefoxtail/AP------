@@ -1,0 +1,150 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-x",
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "1",
+              "-1"
+            ]
+          }
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "formula": "-x^2+x",
+        "intersectionX": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -6
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": -0.5773502691896257,
+        "y": 0.38490017945975047
+      },
+      {
+        "id": "E",
+        "x": 0.5773502691896257,
+        "y": -0.38490017945975047
+      },
+      {
+        "id": "F",
+        "x": 0.5,
+        "y": 0.25
+      }
+    ],
+    "exactCoordinates": {
+      "D": [
+        "-sqrt(3)/3",
+        "2*sqrt(3)/9"
+      ],
+      "E": [
+        "sqrt(3)/3",
+        "-2*sqrt(3)/9"
+      ],
+      "F": [
+        "1/2",
+        "1/4"
+      ]
+    },
+    "regions": [
+      {
+        "id": "leftArea",
+        "upper": "f",
+        "lower": "g",
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "rightArea",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "MEDIUM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "caption": "교점은 x=−2, 0, 1이고 위쪽 곡선은 x=0에서 바뀐다. 두 색칠 영역의 넓이는 8/3과 5/12이므로 합은 37/12이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선은 y=x³−x와 y=−x²+x이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "교점 −2, 0, 1로 나뉘며 위·아래가 바뀌는 두 구간의 넓이를 더한다.",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선을 구별해 표시하고 세 교점을 정확히 찍는다.",
+    "각 교점 구간에서 위·아래 경계를 바꾸어 두 넓이를 따로 색칠한다."
+  ],
+  "sourceQuote": "두 곡선의 교점을 구한다.\nx³−x=−x²+x\nx³+x²−2x=0\nx(x²+x−2)=0\nx(x+2)(x−1)=0\n따라서 교점의 x좌표는 −2,0,1이다.\n두 곡선의 차를\nD(x)=(x³−x)−(−x²+x)=x³+x²−2x\n로 둔다.\n−2<x<0에서 D(−1)=2>0이므로 첫째 곡선이 위에 있다.\n0<x<1에서 D(1/2)=−5/8<0이므로 둘째 곡선이 위에 있다.\n넓이는\n∫₋₂⁰D(x)dx−∫₀¹D(x)dx\n=[x⁴/4+x³/3−x²]₋₂⁰−[x⁴/4+x³/3−x²]₀¹\n=8/3+5/12\n=37/12\n이다.\n그러므로 정답은 ⑤이다."
+}

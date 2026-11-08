@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "p",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용 p",
+        "pieces": [
+          {
+            "lo": { "value": "0", "state": "OPEN" },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "경계 해",
+        "within": 1,
+        "band": false,
+        "points": [
+          { "id": "O", "value": "0", "hideName": true, "showValue": true, "style": "HOLLOW" },
+          { "id": "P", "value": "2", "hideName": true, "showValue": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "양수 p 안에 있는 최종 해 p=2"
+  },
+  "caption": "후보를 정한 뒤 p=2이다. F(x)=f(x)−f(0)=x⁴−20x³/3+12x²+5x/3이므로 f(2)−f(0)=F(2)=14. 절대 높이 f(0)은 정해지지 않으므로 g의 전체 곡선은 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p>0이고 g의 미분가능성으로 f′(0)=f′(p); |f′(0)|=f′(p+1)=5/3이며 f와 g가 모두 극댓값을 갖는다.",
+      "mappedTo": ["numberLine.rows[0]", "caption"]
+    },
+    {
+      "id": "c2",
+      "condition": "조건을 적용하면 f′(x)=4x(x−2)(x−3)+5/3, F(x)=f(x)−f(0)=x⁴−20x³/3+12x²+5x/3이고 극댓값 차 14로 p=2이다.",
+      "mappedTo": ["numberLine.rows[1]", "caption"]
+    },
+    {
+      "id": "c3",
+      "condition": "f(0)은 문제 조건으로 정해지지 않으며 목표는 차 f(2)−f(0)이므로 임의 상수나 절대 높이를 추가하지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 명시된 p>0 조건과 해설로 결정된 p=2만 표시한다. 0은 제외되는 경계이고 2는 양수 범위 안의 해이다.",
+    "이는 풀이 후 p=2인 관계도이지 g 그래프가 아니다. 정규화된 차 함수 F와 목표값은 캡션에 정확히 쓰고, 미정 상수 f(0)을 지어내거나 곡선을 근사하지 않는다."
+  ]
+}

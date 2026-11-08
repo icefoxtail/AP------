@@ -1,0 +1,101 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "경계",
+        "points": [
+          {
+            "id": "A",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "O",
+            "label": "-"
+          },
+          {
+            "from": "O",
+            "to": "B",
+            "label": "+"
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "f'+",
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "f'-",
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수 부호"
+  },
+  "caption": "f′의 부호는 x<−1에서 +, −1<x<0에서 −, 0<x<1에서 +, x>1에서 −이다. 따라서 f의 증감은 차례로 증가, 감소, 증가, 감소이며 f(0)=0이다. 이 보조 도식은 구간별 부호와 증감만 나타낸다. 원본 도함수 그림에서 x=±1의 점값은 공란이고 좌우 극한이 달라, 이 초안은 x=±1에서 f′이 존재한다고 하지 않으며 정지점으로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 해설에서 f′의 부호는 x<−1에서 +, −1<x<0에서 −, 0<x<1에서 +, x>1에서 −이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문은 연속함수 f가 원점을 지나도록 요구하므로 f(0)=0이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "원본 Q08 PNG의 답 선택 그림은 원본 그대로 유지하고, 이 입력은 이를 다시 그리지 않는다.",
+      "mappedTo": "newVisualInformation"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 부호 +, −, +, −와 그에 대응하는 원함수의 증가·감소만 수직선으로 보조한다.",
+    "원점 통과 조건 f(0)=0을 캡션에 보존한다.",
+    "원본 Q08 PNG와 그 안의 모든 답 선택 그림은 그대로 유지하며 재작성하거나 다시 그리지 않는다.",
+    "원함수의 식, 실제 곡선의 높이와 개형을 새로 가정하지 않는다.",
+    "사용자 사유: 함수 시각화가 이해를 돕고 리더의 풀이 전략을 보조하되, 알 수 없는 정보를 꾸며내지 않는다."
+  ]
+}

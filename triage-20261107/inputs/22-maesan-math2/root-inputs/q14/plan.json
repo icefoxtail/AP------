@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "3",
+          "-4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-4*x^3+3*x^2-x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 8
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": "positive-area",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0",
+        "fill": "BLUE",
+        "label": "5/2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "O"
+  ],
+  "caption": "원래 f(x)=−4x³+3x²−x와 [−1,0]의 양의 넓이 5/2를 보인다. f⁻¹ 곡선은 표시하지 않는다. ∫₀⁸|f⁻¹(x)|dx=8−5/2=11/2이므로 ㄴ의 13/2는 거짓이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=M=3일 때 원래 다항함수 f(x)=−4x³+3x²−x이며 f(−1)=8, f(0)=0이다.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "∫₋₁⁰ f(x)dx=5/2는 원래 곡선과 x축 사이의 양의 넓이다.",
+      "mappedTo": "graphPlan.regions"
+    },
+    {
+      "id": "c3",
+      "condition": "역함수 넓이 관계로 ∫₀⁸|f⁻¹(x)|dx=8−5/2=11/2이며, 이 시각화는 역함수 곡선을 그리지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 원래 다항함수 f와 그 [−1,0] 양의 넓이 5/2만 그린다.",
+    "f⁻¹의 그래프는 근사하거나 그리지 않는다. 캡션은 역함수 넓이 관계의 계산만 설명한다.",
+    "기존 해설 SVG q12/q18는 수정하지 않았다."
+  ]
+}

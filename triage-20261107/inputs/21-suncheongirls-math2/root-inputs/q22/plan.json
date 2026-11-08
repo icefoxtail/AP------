@@ -1,0 +1,93 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-8",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -20,
+      100
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "A",
+        "x": -2,
+        "y": -12
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -12
+      },
+      {
+        "id": "P",
+        "x": 3,
+        "y": 13
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "A",
+    "B",
+    "P"
+  ],
+  "caption": "y축 대칭 사차함수 f(x)=x⁴−8x²+4의 극댓점 M=(0,4), 극솟점 A=(−2,−12), B=(2,−12), 요청된 점 P=(3,13)을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y축 대칭, 최고차항 계수 1, f(0)=4이므로 f(x)=x^4+ax^2+4이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(2)=0에서 a=-8이며 f″(0)<0, f″(±2)>0이므로 (0,4)는 극댓점이고 (±2,-12)는 극솟점이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f(3)=81-72+4=13이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 대칭성과 세 실제 극점을 충실히 표시하고, 물은 f(3) 좌표를 함께 표시한다. 영점 좌표를 근사해 쓰지 않는다."
+  ],
+  "sourceQuote": "[서술형2] 최고차항의 계수가 $1$인 사차함수 $f(x)$의 그래프가 $y$축에 대칭이다.\n이 그래프가 $(0,4)$에서 극댓값을 갖고 $x=-2$, $x=2$에서 극솟값을 갖는다.\n$f(x)$를 구하고 $f(3)$의 값을 구하는 과정을 서술하시오. [총 7점] (함수식 2점, 과정 5점)"
+}

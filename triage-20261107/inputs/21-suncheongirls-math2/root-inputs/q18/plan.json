@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "0",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -18,
+      26
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-3*x^2+6",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "원문 해설의 해석으로 얻은 보조식 H=x³-3x²+6은 (0,6)에서 극대, (2,2)에서 극소를 갖는다. 2<n<6이므로 n=3,4,5이고 합은 12. 이 곡선은 해설의 표기 해석을 따른 것이며 원문의 미분 표기를 수정하거나 동치라고 단정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 해설은 g(x)=f(x), h(x)=f(x)-f(0)으로 해석하여 H(x)=g(x)+h(x)=x^3-3x^2+6을 사용한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설의 보조식 H는 x=0에서 극댓값 6, x=2에서 극솟값 2를 가지며, 따라서 해설 조건은 2<n<6이고 정수 n은 3,4,5이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문은 h(x)=integral_0^x (d/dx)f(t)dt라고 쓰고 해설은 integral_0^x f'(t)dt로 계산한다. 이 표기 차이는 그대로 보존하며 고치거나 동치라고 주장하지 않는다.",
+      "mappedTo": [
+        "caption",
+        "newVisualInformation"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 보조 삼차식과 해설이 사용하는 극값 (0,6),(2,2)를 실제 점에 좌표 labels/leaders로 표시한다.",
+    "그래프는 원문 해설의 표기 해석에만 근거하며 원문의 미분 표기를 교정하지 않는다. n의 범위와 정수 후보는 caption에 둔다."
+  ]
+}

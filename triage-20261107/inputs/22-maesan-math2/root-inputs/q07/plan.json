@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "j",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "적분값",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "-10", "name": "첫째", "showValue": true },
+          { "id": "B", "value": "10", "name": "둘째", "showValue": true },
+          { "id": "C", "value": "30", "name": "셋째", "showValue": true },
+          { "id": "D", "value": "50", "name": "넷째", "showValue": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "네 구간의 부호 있는 적분값"
+  },
+  "caption": "첫째–넷째 점은 차례로 ∫₀⁴f=−10, ∫₄⁸f=10, ∫₈¹²f=30, ∫₁₂¹⁶f=50을 나타낸다. 증가함수 조건으로 [12,16]에서 f>0이므로 마지막 부호 있는 적분값 50이 기하적 넓이이다. 점은 구간별 적분값이며 f의 그래프가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 실수 x에서 f(x+4)=f(x)+5이고 ∫₀⁸f(x)dx=0이므로 ∫₀⁴f=−10, ∫₄⁸f=10, ∫₈¹²f=30, ∫₁₂¹⁶f=50이다.",
+      "mappedTo": ["numberLine.rows[0]", "caption"]
+    },
+    {
+      "id": "c2",
+      "condition": "f는 증가하고 f(12)=f(0)+15≥15/2>0이므로 [12,16]에서 f>0이며 넓이는 ∫₁₂¹⁶f=50이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "네 점은 원문에서 정확히 정해지는 네 연속 구간의 부호 있는 적분값만 나타낸다. 함수 f의 모양이나 임의의 함수값은 그리지 않는다.",
+    "마지막 구간의 함수값 양수 조건을 밝혀 부호 있는 적분값 50이 넓이와 같음을 구분한다."
+  ]
+}

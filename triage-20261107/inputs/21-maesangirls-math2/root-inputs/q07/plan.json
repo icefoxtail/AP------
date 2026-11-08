@@ -1,0 +1,117 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "0",
+          "8",
+          "-1"
+        ],
+        "intersectionX": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "referenceLines": [],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 16
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "D",
+        "x": 2,
+        "y": 12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "R1",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "32/3"
+      },
+      {
+        "id": "R2",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "4",
+        "fill": "MEDIUM",
+        "label": "32/3"
+      }
+    ],
+    "functionName": "f",
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "두 포물선 사이 전체 넓이는 64/3이고, x=2에서 나뉜 두 영역의 넓이는 각각 32/3이다. 교점은 (0,0), (4,16)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선은 f(x)=x^2, g(x)=-x^2+8x이며 교점은 (0,0), (4,16)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "둘 사이의 세로 차는 -2x^2+8x이다. 전체 넓이는 64/3이고, x=2를 경계로 각 넓이가 32/3이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 실제 이차곡선을 함께 그려 둘러싸인 영역을 보이고, x=2 경계로 색을 나누어 넓이 이등분을 나타낸다.",
+    "두 곡선의 꼭짓점과 교점 및 분할선 양끝의 실제 좌표를 기록한다."
+  ],
+  "sourceQuote": "두 곡선 사이의 세로 길이는 $(-x^2+8x)-x^2=-2x^2+8x$이다. 교점은 $x=0,4$이다.\n전체 넓이는\n$\\displaystyle\\int_0^4(-2x^2+8x)\\,dx=[-\\frac23x^3+4x^2]_0^4=\\frac{64}{3}$\n이므로 반쪽 넓이는 $\\frac{32}{3}$이다.\n$x=a$의 왼쪽 넓이가 절반이 되도록 하면\n$-\\frac23a^3+4a^2=\\frac{32}{3}$\n$a=2$를 대입하면 등식이 성립한다. 넓이는 $0<x<4$에서 계속 증가하므로 이 값이 유일하다.\n따라서 $a=2$이다."
+}

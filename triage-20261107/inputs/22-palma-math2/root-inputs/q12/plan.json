@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisVariable": "t",
+    "axisTitles": {
+      "y": "위치 x(t)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "9/4"
+      },
+      {
+        "id": "Z",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "V",
+    "Z"
+  ],
+  "caption": "위치 x(t)=2+t−t²의 그래프는 실제 시간 범위 t≥0에서만 그린다. 시작점은 (0,2)이고 원점을 지나는 시각은 t=2이다. 방정식의 다른 근 t=−1은 시간 범위 밖이므로 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초기 위치 2와 속도 v(t)=1−2t로부터 x(t)=2+t−t^2이고 시간은 t≥0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.axisVariable",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x(t)=0의 근은 t=−1,2이며 t=−1은 t≥0에 속하지 않는다.",
+      "mappedTo": [
+        "graphPlan.pieces[0].domain",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "위치 곡선은 닫힌 시작점 (0,2)부터 시간 t≥0에서만 표시한다. (2,0)은 원점을 통과하는 유효 시각이고, 음의 시간 쪽 가지나 근 t=−1은 그리지 않는다.",
+    "이차함수의 꼭짓점 (1/2,9/4)과 두 실제 좌표점에 지시선을 붙이고 축 눈금 0은 별도 표기하지 않는다."
+  ]
+}

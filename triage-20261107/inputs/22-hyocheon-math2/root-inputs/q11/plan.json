@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3x^2+1",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": "3/2",
+        "y": "31/4"
+      },
+      {
+        "id": "V",
+        "x": 0,
+        "y": 1,
+        "marker": "NONE"
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "3/2",
+        "31/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "example-area",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3/2",
+        "fill": "BLUE",
+        "label": "넓이 23/8"
+      }
+    ]
+  },
+  "caption": "예시 h=1/2에서 [1,3/2]의 넓이는 23/8이다. 일반 h>0에 대해 S(h)/h의 h→0+ 극한은 4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3x^2+1, x축, x=1, x=1+h (h>0)로 둘러싸인 넓이를 S(h)라 하고 lim_{h→0+} S(h)/h를 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "색칠 구간은 설명용 예시 h=1/2에 해당하는 [1,3/2]이며 이때 넓이는 23/8이다.",
+    "일반적인 h→0+에서 S(h)/h의 극한은 4이다.",
+    "사용자 요청에 따라 함수 그래프가 풀이 이해에 도움이 되도록 준비한다."
+  ],
+  "coordinateLeader": [
+    "A",
+    "B"
+  ]
+}

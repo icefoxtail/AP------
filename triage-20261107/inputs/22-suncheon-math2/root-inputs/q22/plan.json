@@ -1,0 +1,164 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-x+5",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -1
+      },
+      {
+        "id": "Emax",
+        "x": "-sqrt(3)/3",
+        "y": "5+2*sqrt(3)/9",
+        "marker": "NONE"
+      },
+      {
+        "id": "T2",
+        "x": -1,
+        "y": 5
+      },
+      {
+        "id": "T1",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "Emin",
+        "x": "sqrt(3)/3",
+        "y": "5-2*sqrt(3)/9",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 11
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "region-A",
+        "upper": "f",
+        "lower": "l1",
+        "from": "-2",
+        "to": "1",
+        "fill": "WARM",
+        "label": "27/4"
+      },
+      {
+        "id": "region-B",
+        "upper": "l2",
+        "lower": "f",
+        "from": "-1",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "27/4"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "l1",
+        "pieces": [
+          {
+            "coefficients": [
+              "3",
+              "2"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "formula": "2*x+3",
+        "intersectionX": [
+          "-2",
+          "1"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "l2",
+        "pieces": [
+          {
+            "coefficients": [
+              "7",
+              "2"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "formula": "2*x+7",
+        "intersectionX": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "T2",
+    "T1",
+    "B"
+  ],
+  "caption": "곡선 y=f(x)=x³−x+5에 기울기 2인 접선 l₁:y=2x+3, l₂:y=2x+7을 함께 표시한다. 접점은 (1,5),(−1,5), 각 접선과 곡선의 다른 교점은 (−2,−1),(2,11)이다. 두 음영은 A=[−2,1]의 f와 l₁ 사이 영역, B=[−1,2]의 l₂와 f 사이 영역을 각각 표시하며 넓이는 A=B=27/4이다. 네 점은 평행사변형을 이루고 그 넓이는 S=12이다. 이 그래프는 평행사변형의 변 윤곽을 따로 그리지 않으며, 2A+2B−S=15를 결과로 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x^3-x+5; tangency with slope 2 occurs at x=±1, with contacts (-1,5),(1,5) and lines l1:y=2x+3, l2:y=2x+7.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The other intersections are (-2,-1) and (2,11); the two separate curve-line areas are A=B=27/4.",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The four points form a parallelogram of area S=12; 2A+2B-S=15.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Show the exact source cubic with both rational tangent lines and the four exact contact/other-intersection coordinates.",
+    "Separate the two source area regions: A lies between f and l1 on [−2,1], and B lies between l2 and f on [−1,2]; each is exactly 27/4. The four parallelogram vertices and S=12 are preserved, while the polygon outline itself remains unplotted.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "[접선 두 개] $f(x)=x^3-x+5$이므로 $f'(x)=3x^2-1$. 기울기가 2이면 $3x^2-1=2$, $x=\\pm1$. $f(1)=f(-1)=5$이다.\n$x=1$의 접선은 $l_1:y=2x+3$, $x=-1$의 접선은 $l_2:y=2x+7$이다(이름은 서로 바뀌어도 넓이 합은 같다).\n$f(x)-(2x+3)=(x-1)^2(x+2)$이므로 접선 $l_1$과의 교점은 $x=-2,1$. 둘러싸인 넓이 $A=\\int_{-2}^1(x-1)^2(x+2)dx=\\frac{27}{4}$.\n$f(x)-(2x+7)=(x+1)^2(x-2)$이므로 $l_2$와의 교점은 $x=-1,2$. 넓이 $B=\\int_{-1}^2(2-x)(x+1)^2dx=\\frac{27}{4}$.\n네 교점의 좌표는 $(-2,-1),(1,5),(-1,5),(2,11)$이다. 두 접선은 기울기가 같으므로 평행하다. 따라서 네 점을 이으면 평행사변형이 된다.\n[삼각형으로 넓이 구하기] $y=5$ 위의 두 점 $(-1,5),(1,5)$를 이은 선분의 길이는 $2$이다. 이 선분을 공통 밑변으로 하여 아래쪽 꼭짓점 $(-2,-1)$까지의 높이는 $5-(-1)=6$, 위쪽 꼭짓점 $(2,11)$까지의 높이는 $11-5=6$이다. 따라서 두 삼각형의 넓이 합은 $S=\\frac12\\cdot2\\cdot6+\\frac12\\cdot2\\cdot6=12$이다. 밑변과 높이만으로 넓이를 구했다.\n따라서 $2A+2B-S=2\\cdot\\frac{27}{4}+2\\cdot\\frac{27}{4}-12=27-12=\\boxed{15}$.\n[검산] $A,B$는 절댓값 넓이이고 $S$는 네 점을 꼭짓점으로 하는 사각형의 넓이로, 중복된 접점은 별도 꼭짓점으로 세지 않는다."
+}

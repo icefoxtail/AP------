@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "-12",
+          "3"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      0,
+      6
+    ],
+    "functionName": "v",
+    "axisVariable": "t",
+    "referenceLines": [
+      {
+        "id": "level6",
+        "y": "6",
+        "intersectionX": [
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -21
+      },
+      {
+        "id": "P",
+        "x": 5,
+        "y": 6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "t≥0에서 속도 v(t)=3t²−12t−9를 그리고, y=6과의 유일한 교점은 (5,6), 꼭짓점은 (2,−21)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위치 x(t)=t^3−6t^2−9t에서 속도 v(t)=3t^2−12t−9이고, 시각은 t≥0이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t≥0에서 곡선의 닫힌 시작점과 꼭짓점 (2,−21), y=6과의 유일한 교점 (5,6)을 함께 보인다.",
+    "사용자 요청에 따라 함수 그래프가 풀이 이해에 도움이 되도록 준비한다."
+  ],
+  "coordinateLeader": [
+    "V",
+    "P"
+  ]
+}

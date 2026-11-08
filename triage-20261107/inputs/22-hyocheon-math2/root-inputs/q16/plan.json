@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-1",
+    "functionName": "d",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "negative-integrand",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "WARM",
+        "label": "기하적 넓이 2/3"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "피적분함수 d(x)=f(x)−xg(x)=x²−1은 [0,1]에서 x축 아래에 있다. 부호 있는 정적분은 −2/3이고 색칠한 기하적 넓이는 2/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=3x^2−1, g(x)=2x이며, 피적분함수는 f(x)−xg(x)=x^2−1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "피적분함수 d(x)=f(x)−xg(x)=x^2−1 자체를 나타낸다. 2x^2는 xg(x)라는 곱의 항이지 g(x)가 아니다.",
+    "[0,1]에서 d≤0이므로 색칠한 기하적 넓이는 2/3, 부호 있는 정적분값은 −2/3이다.",
+    "사용자 요청에 따라 함수 그래프가 풀이 이해에 도움이 되도록 준비한다."
+  ]
+}

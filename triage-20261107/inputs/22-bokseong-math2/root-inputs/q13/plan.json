@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11/6",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-4*x+11/6",
+    "functionName": "g",
+    "sampleNote": "k=1 illustration",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 2,
+        "y": "-13/6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": []
+  },
+  "coordinateLeader": [
+    "M"
+  ],
+  "caption": "그림의 g₁(x)=x²−4x+11/6 및 M=(2,−13/6)은 k=1일 때의 설명용 예시일 뿐이며, 원문은 k>0만 주어 실제 세로 크기나 g(2)의 수치를 정하지 않는다. 일반적으로 g′(x)=f(x+1)−f(x)=2k(x−2)이고 k>0이므로 g는 x=2에서 최솟값을 갖는다. 따라서 원문에서 확정되는 것은 최솟값을 얻는 입력 x=2이며, 표시된 예시의 y좌표를 실제 값으로 읽지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The source graph is f(t)=k(t-1)(t-4) for an unspecified k>0; no numerical vertical scale is given.",
+      "mappedTo": [
+        "caption",
+        "newVisualInformation"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g'(x)=f(x+1)-f(x)=2k(x-2), so the minimum occurs at x=2 for every k>0.",
+      "mappedTo": [
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The displayed parabola g_1(x)=x^2-4x+11/6 and M=(2,-13/6) illustrate only the k=1 case.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "graphPlan.sampleNote",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=1로 놓은 g₁의 포물선은 설명용 예시이며, 원문에서 주어지지 않은 실제 k 또는 실제 g의 최솟값 높이를 주장하지 않는다.",
+    "일반 k>0에서 최솟값이 x=2에서 얻어진다는 수평 위치만 원문 결과로 보존한다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "그림의 포물선은 $x=1,4$에서 $x$축과 만나므로 양의 상수 $k$에 대해 $$f(t)=k(t-1)(t-4)$$로 나타낼 수 있습니다. 적분구간의 양 끝이 모두 변수이므로 미적분의 기본정리로 $$g'(x)=f(x+1)-f(x).$$ $$=k\\{x(x-3)-(x-1)(x-4)\\}=k(2x-4).$$ $k>0$이므로 $x<2$에서 $g'(x)<0$, $x>2$에서 $g'(x)>0$입니다. 따라서 $g(x)$는 $x=2$에서 최솟값을 가지므로 정답은 $$\\boxed{g(2)}$$인 ②입니다. ①·③·④·⑤는 감소에서 증가로 바뀌는 지점이 아닙니다."
+}

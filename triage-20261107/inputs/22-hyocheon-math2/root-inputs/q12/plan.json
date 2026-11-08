@@ -1,0 +1,71 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "H(x)",
+        "elements": [
+          "8",
+          "13"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "H",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "H(0)=8, H(3)=13이므로 H(3)−H(0)=5이고 f(3)=1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "H(x)=(x³−1)f(x)로 두면 적분 안의 합은 H′(x)이다.",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "경계 대응은 x=0에서 H(0)=8, x=3에서 H(3)=13이며 두 H값의 차는 5이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 열을 x의 경계값과 H(x)의 값으로 분리해 x=0,3과 H(0)=8,H(3)=13을 혼동하지 않게 한다. 차이 5는 캡션에 적고 두 점을 함수 그래프처럼 잇지 않는다.",
+    "사용자가 이해에 도움 되는 시각화를 요청한 취지를 반영해 경계 대응만 그린다."
+  ]
+}

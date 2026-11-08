@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-x^2+6*x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "whole-parabola-area",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "6",
+        "fill": "BLUE",
+        "label": "전체 넓이 36"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "V",
+    "B"
+  ],
+  "caption": "b=6−m이고 b³=108이다. [0,6]의 전체 넓이 36만 색칠했으며, 이등분선과 반쪽 넓이 18의 색칠은 표시하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=−x²+6x와 x축으로 둘러싸인 도형의 넓이를 직선 y=mx가 이등분하고 (6−m)^3을 구한다.",
+      "mappedTo": [
+        "graphPlan",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 포물선과 x축 사이 전체 넓이 36만 정확히 색칠한다; 검수된 해에서 b=6−m, b³=108이고 각 반쪽 넓이는 18이다.",
+    "직선 y=mx와 실제 두 반쪽 영역은 표현하지 않는다. b=∛108의 정밀한 교점을 현재 exact graph contract에 바인딩할 수 없어 임의 근사나 가짜 경계를 만들지 않는다.",
+    "원래 solution SVG q16_solution.svg는 보존하며 수정하지 않는다."
+  ]
+}

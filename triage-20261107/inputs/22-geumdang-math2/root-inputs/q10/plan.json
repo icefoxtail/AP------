@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-2",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x^3-2*x^2",
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": -32
+      },
+      {
+        "id": "V",
+        "x": 0.4444444444444444,
+        "y": -0.13168724279835392
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0.6666666666666666,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 16
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "4/9",
+        "-32/243"
+      ],
+      "C": [
+        "2/3",
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "피적분함수 g(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "V",
+    "C"
+  ],
+  "caption": "대칭구간 [−2,2]에서 f(x)=3x−2이고, 실제 피적분함수는 g(x)=x²f(x)=3x³−2x²이다. 홀수항 3x³의 적분은 상쇄되어 ∫₋₂²g(x)dx=−32/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 적분 조건으로 f(x)=ax+b에서 a=3, b=−2를 얻는다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "적분 대상은 f 자체가 아니라 x^2f(x)=3x^3−2x^2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "대칭구간 [-2,2]에서 3x^3은 홀함수라 적분이 0이고, -2x^2의 적분은 -32/3이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그래프는 원문 적분의 실제 피적분함수 g(x)=x²f(x)를 나타내며 f(x)로 잘못 표기하지 않는다.",
+    "닫힌 적분구간의 양끝, 내부 두 정지점, 추가 영점을 표시해 곡선의 부호·극값을 읽을 수 있게 했다.",
+    "사용자 요청 취지에 따라 적분식과 대칭구간의 관계를 이해하는 데 도움이 되는 함수 도식을 준비했다."
+  ]
+}

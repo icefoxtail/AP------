@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3-3*x^2+5",
+    "referenceLines": [],
+    "referenceCurves": [],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 5
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "P",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "33/4"
+      }
+    ],
+    "functionName": "g",
+    "axisTitles": {
+      "x": "x",
+      "y": "y=g(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "한 주기 0≤x≤3만 부분도로 표시한다. 양 끝은 모두 높이 5로 이어지고, 한 주기 넓이는 33/4이므로 8주기 적분은 66이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "극한 조건, 연속 주기 조건, 극값의 곱을 적용하면 f(x)=x^3-3x^2+5이고 f(0)=f(3)=5이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g(x)=f(x) (0≤x<3)이고 g(x+3)=g(x)이다. g의 전체 정의역은 실수 전체이지만, 이 그림은 한 주기 [0,3]만 나타낸다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "∫_0^3 f(x)dx=33/4 and 24=8·3, so ∫_0^24g(x)dx=8·33/4=66.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼차식의 한 주기 구간만 표시하고 주기함수 전체를 나타내는 그래프라고 하지 않는다.",
+    "주기의 양 끝 좌표가 모두 (height 5)로 같고, 한 주기 넓이 33/4가 여덟 번 더해져 66임을 표시한다."
+  ],
+  "sourceQuote": "삼차함수를 $f(x)=ax^3+bx^2+cx+d$라 두자.\n$\\displaystyle\\lim_{x\\to0}\\frac{f(x)-5}{x}=0$에서 $d=5,c=0$이다.\n주기 $3$인 함수가 경계에서도 연속이므로 $f(3)=f(0)=5$이다.\n$27a+9b+5=5$에서 $b=-3a$이다.\n따라서 $f(x)=ax^3-3ax^2+5$이고\n$f'(x)=3ax(x-2)$이다. 두 극값은 $f(0)=5$, $f(2)=5-4a$이므로\n$5(5-4a)=5$에서 $a=1$이다.\n$f(x)=x^3-3x^2+5$이다.\n주기가 $3$이고 $24=8\\cdot3$이므로\n$\\displaystyle\\int_0^{24}g(x)\\,dx=8\\int_0^3f(x)\\,dx$\n$=8[\\frac14x^4-x^3+5x]_0^3=66$이다."
+}

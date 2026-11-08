@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "5",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-2*x^2+5*x+3",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": []
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "y=f(x)=x³−2x²+5x+3의 그래프에서 A=(0,3), B=(1,7)이다. 도함수 f′(x)=3x²−4x+5를 적분해 얻은 함수에 f(0)=3을 적용하면 상수항은 3이고, k=f(1)=7이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f'(t)=3t^2-4t+5 and the graph passes through (0,3).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The antiderivative with f(0)=3 is x^3-2x^2+5x+3, so f(1)=7.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수에서 원함수로 복원하고 주어진 점으로 적분상수를 정하는 관계를 실제 곡선과 두 정확한 점으로 표시한다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "모든 $t$에서 접선 기울기가 $f'(t)=3t^2-4t+5$이므로 원시함수는 $$f(x)=x^3-2x^2+5x+C.$$ 그래프가 $(0,3)$을 지나므로 $f(0)=C=3$입니다. 따라서 $$k=f(1)=1-2+5+3=\\boxed7.$$ ①~④는 적분상수를 정하는 조건 또는 $x=1$ 대입을 빠뜨린 값입니다."
+}

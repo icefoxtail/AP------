@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "formula": "x^3+3x^2-12",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": -8
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": -12
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "L",
+    "M",
+    "R"
+  ],
+  "caption": "닫힌 구간 [-2,2]에서 f의 최댓값은 8, 최솟값은 −12이므로 합은 −4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "문항은 닫힌구간 [-2,2]에서 f(x)=x^3+3x^2−12의 최댓값과 최솟값을 묻는다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3x(x+2)이므로 후보는 x=−2,0,2이고 함숫값은 각각 −8,−12,8이다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프는 실제로 제한된 닫힌구간 [-2,2]에만 그리며, 양 끝점과 내부 임계점의 좌표를 모두 표시한다.",
+    "사용자 요청에 따라 최댓값과 최솟값을 구간 안의 점들에서 비교하는 데 도움이 되는 정확한 함수 그래프를 준비한다."
+  ]
+}

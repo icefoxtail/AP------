@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "-2",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^4-4*x^3-2*x^2+12*x",
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": -9
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 7
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": -9
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "zero",
+        "y": "0",
+        "intersectionX": [
+          "1-sqrt(7)",
+          "0",
+          "2",
+          "1+sqrt(7)"
+        ]
+      },
+      {
+        "id": "seven",
+        "y": "7",
+        "intersectionX": [
+          "1-2*sqrt(2)",
+          "1",
+          "1+2*sqrt(2)"
+        ]
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "p(x), k"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "caption": "p′(x)=4(x+1)(x−1)(x−3), 따라서 A=(−1,−9), B=(1,7), C=(3,−9)는 실제 극점이고 O=(0,0)이다. y=0의 네 교점 x=1−√7, 0, 2, 1+√7 및 y=7의 세 서로 다른 교점 x=1−2√2, 1, 1+2√2를 정확히 표시한다. 수평선 y=k가 0<k<7일 때 음의 교점 1개와 양의 교점 3개를 가지며, 정수 k는 1,2,3,4,5,6으로 6개다. k=0은 0이 근이고 k=7은 x=1에서 중근이므로 제외된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p(x)=x^4-4x^3-2x^2+12x, p'(x)=4(x+1)(x-1)(x-3), p(-1)=-9, p(1)=7, p(3)=-9, p(0)=0.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p(x)=0의 정확한 근은 1-√7,0,2,1+√7이며 p(x)=7의 서로 다른 근은 1-2√2, 1(중근),1+2√2이다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "0<k<7이면 음수 근 하나와 양수 근 세 개가 존재하고 가능한 정수는 1 through 6; k=0 및 k=7은 제외된다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 quartic 곡선의 세 극점과 y=0, y=7 수평 레벨의 교점을 정확식으로 제시해 k의 경계를 읽게 한다.",
+    "매개변수 정수 k=1,…,6의 개별 교점은 추정 좌표로 찍지 않는다. 개수 조건은 정확한 극값 레벨과 곡선의 단조 구간으로 설명한다.",
+    "사용자 요청 취지에 따라 함수 도식으로 근 개수 변화를 보조하고, 극점 좌표 라벨은 coordinateLeader를 사용한다."
+  ],
+  "sourceQuote": "사차방정식 $x^4-4x^3-2x^2+12x-k=0$의 서로 다른 네 근 $\\alpha,\\beta,\\gamma,\\delta$에 대하여 $\\alpha<0<\\beta<\\gamma<\\delta$일 때, 모든 정수 $k$의 개수를 구하면? [4.3점]"
+}

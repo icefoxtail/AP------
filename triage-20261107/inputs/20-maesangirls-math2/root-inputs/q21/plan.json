@@ -1,0 +1,69 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-4",
+      "5",
+      "2"
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -3,
+      2,
+      -10,
+      34
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "id": "Q",
+        "x": -1,
+        "y": 10
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "P",
+    "Q"
+  ],
+  "caption": "f(x)=2x³+5x²−4x+3에서 주어진 점 P=(1,6)과 계산점 Q=(−1,10)을 표시한다. f의 정의역은 실수 전체이며, 유한 표시 영역은 엔진의 자동 배치에 따른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선의 기울기에서 f′(x)=6x²+10x−4이며, 적분하면 f(x)=2x³+5x²−4x+C이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "점 (1,6)으로 C=3을 정하고 f(−1)=10을 얻는다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 요청에 따라 적분으로 복원한 함수와 원문 점 및 요청된 계산점을 그래프로 보조한다."
+  ],
+  "sourceQuote": "[주관식3 (서술형)] 점 $(1,6)$을 지나는 곡선 $y=f(x)$ 위의 임의의 점 $(x,y)$에서 접하는 접선의 기울기가 $6x^2+10x-4$일 때, 다음 물음에 답하시오. [7점](부분점수 있음.)\n1) 함수 $f(x)$의 도함수 $f'(x)$를 구하여라. (2점)\n2) 함수 $f(x)$를 구하여라. (4점)\n3) $f(-1)$의 값을 구하여라. (1점)"
+}

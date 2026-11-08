@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "a",
+        "elements": [
+          "-9/4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "f(a)",
+        "elements": [
+          "-9"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "f(a)+10",
+        "elements": [
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "대입",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      },
+      {
+        "name": "10 더하기",
+        "from": "Y",
+        "to": "Z",
+        "color": "GREEN"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "-9/4",
+          "-9",
+          "1"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "caption": "a=−9/4를 f(x)=3x+a에 대입하면 f(a)=−9, f(a)+10=1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 번 미분하여 f(x)=3x+a를 얻고 x=1의 조건으로 a=−9/4, b=3/2, c=−1/4이다.",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "계수 a를 대입하여 f(a)=3a+a=−9, f(a)+10=1이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "관계도는 도출된 계수 a=−9/4를 입력해 f(a)=−9를 얻고 10을 더해 1이 되는 계산 관계만 나타낸다. a는 x의 임의값이 아니라 도출한 계수다.",
+    "함수식과 계산의 관계가 이해에 도움 되는 시각화를 요청한 취지를 반영했다."
+  ]
+}

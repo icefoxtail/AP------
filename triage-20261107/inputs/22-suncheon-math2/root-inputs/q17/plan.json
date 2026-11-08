@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "위치순서",
+        "points": [
+          {
+            "id": "u"
+          },
+          {
+            "id": "v"
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "w"
+          },
+          {
+            "id": "z"
+          }
+        ],
+        "order": [
+          "u",
+          "v",
+          "O",
+          "w",
+          "z"
+        ],
+        "band": false
+      }
+    ]
+  },
+  "caption": "u=α, v=β, w=γ, z=s. f(x)=C(x−α)²(x−s), C>0이므로 α는 이중근 접점이고 β와 γ는 모두 α와 s 사이여서 f(β), f(γ)<0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α<β<0<γ이며 f(α)f(β)f(γ)=0이고, f(x)+xf′(x)=0의 세 실근은 α, β, γ이다.",
+      "mappedTo": "numberLine.rows[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "해설에서 공통근 r은 f의 중근이며 f(x)=C(x−r)²(x−s), C>0로 얻고 r=α, s>0임을 보인다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "α<β<0<γ<s이고 β,γ에서 f는 음수이며 f의 서로 다른 실근은 α,s 두 개다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 α, β, 0, γ, s의 순서만 나타내며 기호점 간 간격이나 수치 좌표를 뜻하지 않는다.",
+    "α는 이중근 접점, s는 나머지 단순근이다. β와 γ는 모두 α와 s 사이에 있어 f(β), f(γ)<0이다."
+  ]
+}

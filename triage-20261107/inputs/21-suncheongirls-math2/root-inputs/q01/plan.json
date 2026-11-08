@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-12*x",
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 16
+      },
+      {
+        "id": "m",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "p(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m"
+  ],
+  "caption": "p(x)=x³−12x의 극댓점 M=(−2,16), 극솟점 m=(2,−16)을 나타낸다. y=−k가 세 서로 다른 교점을 갖는 조건은 −16<−k<16, 즉 −16<k<16이다. 정수 끝값은 −15와 15이므로 합은 0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p(x)=x^3-12x이고 p′(x)=3x^2-12=3(x-2)(x+2)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p(-2)=16은 극댓값, p(2)=-16은 극솟값이므로 p(x)=-k가 서로 다른 세 실근을 갖는 조건은 -16<-k<16, 곧 -16<k<16이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "정수 k는 -15부터 15까지이므로 n+m=0이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 방정식은 그래프 y=p(x)와 수평선 y=-k의 교점 조건으로 설명한다. 좌표 라벨은 실제 극점에만 둔다."
+  ],
+  "sourceQuote": "방정식 $x^3-12x+k=0$이 서로 다른 세 실근을 갖도록 하는 정수 $k$의 최댓값을 $m$, 최솟값을 $n$이라 할 때, $n+m$의 값은? [3.6점]"
+}

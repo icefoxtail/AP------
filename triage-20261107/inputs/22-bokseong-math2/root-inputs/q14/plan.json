@@ -1,0 +1,184 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/4",
+          "-3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x*(1-x)/4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "3/16"
+      },
+      {
+        "id": "L",
+        "x": "3/4",
+        "y": "-27/256",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "lower",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "0",
+              "0",
+              "-1",
+              "1"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "1"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "formula": "x^4-x^3",
+        "intersectionX": [
+          "0",
+          "1"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "upper",
+        "name": "h",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "1",
+              "0",
+              "0",
+              "-1"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "1"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "formula": "-x^4+x",
+        "intersectionX": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "lowerHalf",
+        "upper": "f",
+        "lower": "lower",
+        "from": "0",
+        "to": "1",
+        "fill": "WARM",
+        "label": "7/40"
+      },
+      {
+        "id": "upperHalf",
+        "upper": "upper",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "BLUE",
+        "label": "7/40"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "V"
+  ],
+  "caption": "부분도는 x∈[0,1]에서 아래 y=x⁴−x³, 가운데 f(x)=3x(1−x)/4, 위 y=−x⁴+x의 세 원문 곡선을 모두 정확히 나타낸다. 양끝은 (0,0),(1,0)이고 전체 위·아래 영역의 넓이는 7/20이다. 가운데 곡선은 a=3/4로 결정된 뒤의 모습이며, 아래쪽과 가운데 사이 및 가운데와 위쪽 사이는 각각 7/40이다. 현재 정확도구의 코드 검사상 위 사차곡선의 미분식 1−4x³은 지원되는 정확근 형식으로 풀 수 없는 기약 3차식을 포함하므로 이 초안의 실제 입력 검수는 미실행 상태이며, 곡선이나 근을 근사 또는 생략하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The three exact curves are x^4-x^3, -x^4+x, and a*x*(1-x); the meeting endpoints are (0,0) and (1,0).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The total region area is 7/20, each half after inserting the middle curve is 7/40, and solving gives a=3/4.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The drawn graph is the exact solved curve a=3/4, not the unsolved parameter family.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "[0,1] 부분도에서 원문 세 곡선과 정확한 두 끝점, 이등분 영역 두 개를 함께 보존한다.",
+    "전체 넓이 7/20, 각 반쪽 7/40, 풀이 뒤 얻는 a=3/4를 분명히 구분한다.",
+    "원문에 없는 곡선 간격·근사값·음영 경계는 추가하지 않는다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "두 곡선은 $x=0,1$에서 만나고 이 구간에서 위쪽은 $y=-x^4+x$, 아래쪽은 $y=x^4-x^3$입니다. 전체 넓이는 $$S=\\int_0^1[(-x^4+x)-(x^4-x^3)]dx=\\int_0^1(-2x^4+x^3+x)dx=\\frac7{20}.$$ 가운데 곡선 $y=ax(1-x)$ 아래쪽과 아래 곡선 사이 넓이는 $$S_1=\\int_0^1[ax(1-x)-(x^4-x^3)]dx=\\frac a6+\\frac1{20}.$$ 넓이를 이등분하므로 $S_1=S/2=7/40$이고 $$\\frac a6+\\frac1{20}=\\frac7{40}\\Rightarrow a=\\frac34.$$ 따라서 $$f(1/2)=\\frac34\\cdot\\frac12\\cdot\\frac12=\\boxed{\\frac3{16}}.$$ ②~⑤는 전체 넓이와 반쪽 넓이를 동일하게 만든 $a$를 대입한 값이 아닙니다."
+}

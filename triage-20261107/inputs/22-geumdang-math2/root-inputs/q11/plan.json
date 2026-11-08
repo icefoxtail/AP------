@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "만남 배수",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "13",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "만남에 해당하는 정수 k"
+  },
+  "caption": "둘레 36cm인 정사각형을 P와 Q가 반대 방향으로 움직이므로 만남 조건은 sP(t)+sQ(t)=5t²+7t=36k이다. 이 합은 t≥0에서 엄격히 증가하고, 0<t≤9에서 k=1,2,…,13이 각각 한 번씩 성립한다. 출발 순간 t=0은 제외하고 t=9는 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변 9cm인 정사각형의 둘레는 36cm이고, 원본 그림의 화살표대로 두 점은 반대 방향으로 진행한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "속력을 적분해 두 이동거리의 합을 구하면 sP(t)+sQ(t)=5t^2+7t이며, 다시 만날 조건은 이 합이 36k가 되는 것이다.",
+      "mappedTo": [
+        "numberLine",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "0<t≤9에서 합은 0보다 크고 468 이하로 엄격히 증가하므로 가능한 정수 배수는 k=1,…,13이며 각 k는 정확히 한 번이다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "출발 순간 t=0은 “출발한 후”의 만남 횟수에서 제외되며 9초 시각은 포함된다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 실제 만남 시각을 임의로 찍지 않고, 정확한 정수 배수 k=1,…,13을 정수 점으로 나타낸다.",
+    "반대방향 이동에서 두 이동거리의 합이 둘레의 정수배가 된다는 조건과 t=0 제외, t=9 포함은 캡션에 명시했다.",
+    "원문 Q11 정사각형 이미지와 화살표는 보존하며 수정하지 않는다. 사용자 요청 취지에 따라 관계 이해를 돕는 자료를 준비했다."
+  ]
+}

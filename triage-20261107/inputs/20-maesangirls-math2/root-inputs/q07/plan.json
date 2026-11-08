@@ -1,0 +1,69 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "9",
+      "-6",
+      "1"
+    ],
+    "domain": [
+      -0.5,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4,
+      -5,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 1,
+        "y": 7
+      },
+      {
+        "id": "m",
+        "x": 3,
+        "y": 3
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m"
+  ],
+  "caption": "f(x)=x³−6x²+9x+3의 극댓점 M=(1,7), 극솟점 m=(3,3)을 표시한다. f의 정의역은 실수 전체이며, 유한 표시 영역은 엔진의 자동 배치에 따른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=3에서 극솟값 3이라는 두 조건 f′(3)=0, f(3)=3에서 a=−6, b=9를 얻는다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x−1)(x−3)이므로 x=1에서 극댓값 7, x=3에서 극솟값 3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 요청에 따라 계수를 결정한 삼차함수와 풀이의 두 극점을 그래프로 보조한다. 표시 창은 모든 실수 정의역을 대신하지 않는다."
+  ],
+  "sourceQuote": "함수 $f(x)=x^3+ax^2+bx+3$은 $x=3$에서 극솟값 $3$을 가진다. 이때, 함수 $f(x)$의 극댓값을 $k$라 하면, $a+b+k$를 구하면? (단, $a,b,k$는 상수) [3.8점]"
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "n",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "가능한 n",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "label": "불가능한 n",
+        "pieces": [
+          {
+            "lo": {
+              "value": "8",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "자연수 n의 허용 범위"
+  },
+  "caption": "For natural n>=1, the condition reduces to f(n)=-n*(n-8)*(n+2)>=0, hence 1<=n<=8 and there are 8 values; n>8 fails. At n=8, f_8(x)=2*x^3-30*x^2+96*x+128=2*(x-8)^2*(x+1)>=0 for x>=0, touching zero at x=8. This figure shows the n sets only, not a representative cubic graph.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The source asks for natural n and requires f(x)>=0 for all x>=0; f' (x)=6*(x-2)*(x-n).",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "For n>2, the local minimum occurs at x=n and f(n)=-n*(n-8)*(n+2); for natural n, this is nonnegative exactly through n=8. The separate n=1,2 cases are also valid.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "numberLine.rows[1]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "n=8 is inclusive and f_8(x)=2*(x-8)^2*(x+1) touches zero at x=8; every natural n>8 fails.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "numberLine.rows[1]",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "The exact natural-number set [1,8] is shown as eight integer marks, followed by the open ray n>8. No half-line cubic graph is substituted for the source family or drawn as if its domain were all real x."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "지면거리",
+        "points": [
+          {
+            "id": "s",
+            "between": [
+              "0",
+              "x"
+            ]
+          },
+          {
+            "id": "x"
+          }
+        ],
+        "order": [
+          "s",
+          "x"
+        ],
+        "spans": [
+          {
+            "from": "s",
+            "to": "x",
+            "label": "x-s",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "지면 거리"
+  },
+  "caption": "원문 해설의 기호를 그대로 쓰면 s=1.5t, x는 가로등 바로 밑에서 그림자 끝까지의 거리, x-s는 보행자의 그림자 길이다. 닮음식 5/x=2/(x-s)에서 x=(5/3)s이고 dx/dt=5/2 m/s이므로 정답은 ⑤이다. 수직선은 s와 x의 상징적 순서와 x-s만 표시하고, 원점 0은 숫자 점으로 그리지 않는다. 높이와 닮음 삼각형은 재현하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 해설은 s를 보행자가 t초 동안 걸은 거리로 두고, x를 가로등 바로 밑에서 그림자 끝까지의 거리, x-s를 보행자와 그림자 끝 사이 거리로 정의한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원문 해설의 닮음식은 5/x=2/(x-s)이고, x=(5/3)s, dx/dt=5/2 m/s이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "발문은 보행자를 진우라고 하고 그림자 끝은 민기라고 부른다. q9.png는 필기 겹침 source-image HOLD로 기록되어 있다. 이름을 통일하거나 그림을 고치지 않는다.",
+      "mappedTo": "PRESERVED_SOURCE_TEXT_AND_IMAGE_HOLD"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 원문 해설의 거리 관계 0<s<x와 x-s를 표시하며 수치 위치나 비례 길이를 임의로 정하지 않는다.",
+    "닮음 삼각형·가로등 높이·사람 높이는 별도 도형으로 재구성하지 않는다. source image HOLD와 진우/민기 불일치는 유지한다."
+  ]
+}

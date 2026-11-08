@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "6",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-2*x^3+6*x^2",
+    "referenceLines": [],
+    "referenceCurves": [],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 8
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "R",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "27/2"
+      }
+    ],
+    "functionName": "f",
+    "axisTitles": {
+      "x": "x",
+      "y": "f의 도함수"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "그림은 f(x)가 아니라 도함수 y=f′(x)=−2x³+6x²이다. x=0,3에서 x축과 만나고 0≤x≤3의 넓이는 27/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=∫_x^1(2t^3-6t^2)dt이므로 f'(x)=-(2x^3-6x^2)=-2x^3+6x^2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "도함수 곡선은 x=0에서 접하고 x=3에서 x축을 가로지른다. 0≤x≤3에서 y=f'(x)≥0이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "∫_0^3(-2x^3+6x^2)dx=27/2이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "함수 f가 아니라 도함수 f′의 그래프임을 축 이름과 캡션에 명시한다.",
+    "실제로 둘러싸인 부분 [0,3]만 채우며 적분으로 확인된 넓이 27/2를 표시한다."
+  ],
+  "sourceQuote": "1) 적분의 아래끝이 $x$이므로 미분할 때 부호가 붙는다.\n$f'(x)=-(2x^3-6x^2)=-2x^3+6x^2$\n\n2) $f'(x)=-2x^2(x-3)$이다. $x<3$에서 양수이고 $x>3$에서 음수이므로 $x=3$에서 극댓값을 갖는다.\n$f(3)=\\displaystyle\\int_3^1(2t^3-6t^2)\\,dt=12$\n\n3) $f'(x)$는 $x=0,3$에서 $x$축과 만나고 $0\\le x\\le3$에서 음수는 아니다.\n$\\displaystyle\\text{넓이}=\\int_0^3(-2x^3+6x^2)\\,dx=[-\\frac12x^4+2x^3]_0^3=\\frac{27}{2}$이다."
+}

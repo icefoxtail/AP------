@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "vessel",
+      "kind": "CONE",
+      "radius": 12,
+      "height": 9,
+      "orientation": "APEX_DOWN",
+      "axis": true
+    }
+  ],
+  "section": {
+    "solid": "vessel",
+    "kind": "LEVEL",
+    "at": "1/3"
+  },
+  "dims": [
+    { "solid": "vessel", "radius": "top", "label": "12" },
+    { "solid": "vessel", "height": true, "label": "9" },
+    { "solid": "vessel", "radius": "level", "label": "4" },
+    { "solid": "vessel", "level": true, "label": "3" }
+  ],
+  "solidCaption": {
+    "text": "수면 높이 3cm, 반지름 4cm"
+  },
+  "caption": "이 그림은 t=3초인 한 사례이다. 닮음비로 h=t, r=4t/3이고 V(t)=16πt³/27, dV/dt=16πt²/9이므로 h=3cm일 때 dV/dt=16πcm³/s이다. 전체 그릇은 높이 9cm, 윗면 반지름 12cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔 그릇의 높이는 9cm, 밑면 반지름은 12cm이며 물도 같은 원뿔꼴이다. 따라서 r/h=12/9=4/3이다.",
+      "mappedTo": ["solids", "dims"]
+    },
+    {
+      "id": "c2",
+      "condition": "수면 상승률이 1cm/s이고 처음 비어 있으므로 h=t, r=4t/3; 물 부피는 V(t)=16πt³/27, 변화율은 dV/dt=16πt²/9이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "수면 높이 h=3cm일 때 t=3이며 dV/dt=16πcm³/s이다.",
+      "mappedTo": ["section", "dims", "caption"]
+    }
+  ],
+  "newVisualInformation": [
+    "APEX_DOWN 원뿔과 LEVEL section at=1/3은 높이 9cm 중 아래 꼭짓점부터 수면까지 3cm인 정확한 t=3 사례이며, 작은 물 원뿔의 반지름은 4cm이다.",
+    "그림은 모든 t의 시간 변화를 뜻하지 않는다. 일반식과 변화율은 캡션에 정확히 쓰고, 임의의 시간 사례를 더하지 않는다."
+  ]
+}

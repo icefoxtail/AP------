@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "8",
+          "6",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-x^4+6*x^2+8*x+3",
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": 27
+      },
+      {
+        "id": "A",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "g(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "O",
+    "M",
+    "A"
+  ],
+  "caption": "증감표 조건으로 a=2이다. g(x)=(x+1)³(3−x)=−x⁴+6x²+8x+3의 정지변곡점 O=(−1,0), 극댓점 M=(2,27), 영점 A=(3,0)을 나타낸다. g′=f이므로 [−1,3]에서 g의 총변화는 |27−0|+|0−27|=54이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 표와 최고차항 계수에서 f(x)=-4(x+1)^2(x-a)이고 g′(x)=f(x)이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "g(-1)=0, g(3)=0 조건에서 a=2이며 g(x)=∫_-1^x f(t)dt=(x+1)^3(3-x)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "g(-1)=0, g(2)=27, g(3)=0이고 ∫_-1^3|g′(x)|dx=54이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "f와 g를 혼동하지 않도록 g의 그래프를 나타내고, 총변화 계산에 필요한 g(-1), g(2), g(3)을 표시한다. 원문 증감표 이미지로 주어진 f의 표는 변경하지 않는다."
+  ],
+  "sourceQuote": "[서술형3] 최고차항의 계수가 $-4$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_{-1}^x f(t)\\,dt$라 할 때, 다음 물음에 답하시오. (단, $a$는 $-1<a<3$인 상수이고 $b$는 상수이다.)\n[증감표는 원본 이미지 참조]\n위의 증감표를 활용하여 상수 $a$와 $\\displaystyle\\int_{-1}^3|g'(x)|\\,dx$의 값을 각각 구하고 그 과정을 서술하시오. [총 7점] (각 값 2점, 과정 5점)"
+}

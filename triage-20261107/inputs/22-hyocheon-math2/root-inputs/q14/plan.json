@@ -1,0 +1,206 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-6",
+          "9",
+          "-3"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "18",
+          "-15",
+          "3"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-36",
+          "21",
+          "-3"
+        ],
+        "domain": [
+          "3",
+          "4"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "60",
+          "-27",
+          "3"
+        ],
+        "domain": [
+          "4",
+          "5"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-90",
+          "33",
+          "-3"
+        ],
+        "domain": [
+          "5",
+          "6"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "126",
+          "-39",
+          "3"
+        ],
+        "domain": [
+          "6",
+          "7"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-168",
+          "45",
+          "-3"
+        ],
+        "domain": [
+          "7",
+          "15/2"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "v1",
+        "x": 0.5,
+        "y": -0.75
+      },
+      {
+        "id": "v2",
+        "x": 1.5,
+        "y": 0.75
+      },
+      {
+        "id": "v3",
+        "x": 2.5,
+        "y": -0.75
+      },
+      {
+        "id": "v4",
+        "x": 3.5,
+        "y": 0.75
+      },
+      {
+        "id": "v5",
+        "x": 4.5,
+        "y": -0.75
+      },
+      {
+        "id": "v6",
+        "x": 5.5,
+        "y": 0.75
+      },
+      {
+        "id": "v7",
+        "x": 6.5,
+        "y": -0.75
+      },
+      {
+        "id": "v8",
+        "x": 7.5,
+        "y": 0.75
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "15/2"
+      ],
+      "y": [
+        "-3/4",
+        "3/4"
+      ]
+    },
+    "functionName": "f",
+    "xWindow": [
+      0,
+      7.5
+    ]
+  },
+  "caption": "홀수 단위구간 기여는 −1/2, 짝수 단위구간 기여는 +1/2이다. [0,7]의 합은 −1/2이고 마지막 [7,15/2]의 기여는 +1/4이므로 정적분은 −1/4이다. 그림은 적분구간 [0,15/2]만 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각 정수 구간 n−1≤x<n에서 u=x−(n−1)이고, 홀수 n은 3u(u−1), 짝수 n은 −3u(u−1)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "적분 구간은 [0,15/2]이며 7부터 15/2까지는 n=8 구간의 일부다.",
+      "mappedTo": "graphPlan.xWindow"
+    }
+  ],
+  "newVisualInformation": [
+    "8개의 단위구간 조각은 각 원문 식으로 계산했다. 모든 조각의 꼭짓점은 requiredPoints에 포함되고, 각 정수 경계의 함수값은 0이다.",
+    "정적분은 [0,7]에서 −1/2, [7,15/2]에서 +1/4, 합 −1/4이다.",
+    "사용자 요청 사유: 풀이 이해에 도움이 되는 함수 그래프를 준비한다.",
+    "표시 창 [0,15/2]는 적분 구간일 뿐 함수의 전체 정의역 끝점이라고 주장하지 않는다. 범위 밖 그래프는 추정하거나 연장하지 않는다."
+  ],
+  "sourceQuote": "각 정수 구간을 $u=x-(n-1)$로 옮기면 $0\\le u<1$이다.",
+  "coordinateLeader": [
+    "O"
+  ]
+}

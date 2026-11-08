@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "시간(초)",
+      "y": "속도"
+    },
+    "regions": [
+      {
+        "id": "negative-first",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1",
+        "fill": "WARM",
+        "label": "넓이 1"
+      },
+      {
+        "id": "negative-second",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "2",
+        "fill": "WARM",
+        "label": "넓이 1"
+      },
+      {
+        "id": "positive-third",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "fill": "BLUE",
+        "label": "넓이 1"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "0≤t≤3에서 세 삼각형 넓이는 각각 1이므로 이동거리는 3이다. 부호 있는 변위는 −1이어서 이동거리와 구별된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 속도 그래프의 선분은 (0,0)→(1,−2)→(2,0)→(3,2)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이동거리는 속도 그래프와 시간축 사이의 넓이의 절댓값을 합산한다.",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "두 음의 삼각형은 각각 넓이 1, 한 양의 삼각형도 넓이 1이다. 절댓값 넓이 합은 이동거리 3이고, 부호 있는 합은 변위 −1이다.",
+    "사용자 요청 사유: 풀이 이해에 도움이 되는 함수 그래프를 준비한다.",
+    "기존 q4.png는 원본 그림으로 보존한다. 새 도식은 출처 그래프를 정확한 선분으로만 재표현한다."
+  ],
+  "sourceQuote": "이동거리는 속도 그래프와 시간축 사이의 넓이를 절댓값으로 더한다. 변위와 구별해야 한다."
+}

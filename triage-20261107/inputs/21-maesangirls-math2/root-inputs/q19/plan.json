@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-2*x^2-x+2",
+    "referenceLines": [
+      {
+        "id": "T",
+        "slope": "3",
+        "intercept": "-6",
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "referenceCurves": [],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -12
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": "(2-sqrt(7))/3",
+        "y": "(20+14*sqrt(7))/27",
+        "marker": "NONE"
+      },
+      {
+        "id": "D",
+        "x": "(2+sqrt(7))/3",
+        "y": "(20-14*sqrt(7))/27",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "R",
+        "upper": "f",
+        "lower": "T",
+        "from": "-2",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "64/3"
+      }
+    ],
+    "functionName": "f",
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "곡선 y=x^3−2x^2−x+2의 (2,0)에서 접선은 y=3x−6이다. 두 그래프는 (-2,-12), (2,0)에서 만나며 그 사이 넓이는 64/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f'(x)=3x^2-4x-1이고 f'(2)=3, f(2)=0이므로 점 (2,0)의 실제 접선은 y=3x-6이다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)-(3x-6)=(x-2)^2(x+2)이고 교점은 x=-2,2, 좌표는 (-2,-12),(2,0)이다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 교점 사이에서 곡선은 접선 위에 있고 넓이는 64/3이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼차함수와 실제 접선을 함께 그리고 두 교점 사이의 한정 영역만 채운다.",
+    "곡선의 두 극값은 정확한 근호 좌표를 보존하되 혼잡을 줄이기 위해 점 표시는 생략한다."
+  ],
+  "sourceQuote": "곡선 위의 $(2,0)$에서 접선의 기울기는\n$y'=3x^2-4x-1$, 따라서 $y'(2)=3$이다.\n접선은 $y=3(x-2)=3x-6$이다.\n곡선과 접선의 차는\n$(x^3-2x^2-x+2)-(3x-6)=(x-2)^2(x+2)$\n이므로 두 그래프는 $x=-2,2$에서 만난다. $[-2,2]$에서 곡선이 접선 위에 있으므로\n$\\displaystyle\\text{넓이}=\\int_{-2}^{2}(x-2)^2(x+2)\\,dx$\n$=[\\frac14x^4-\\frac23x^3-2x^2+8x]_{-2}^{2}=\\frac{64}{3}$이다."
+}

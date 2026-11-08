@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-2*x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "negative",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "WARM",
+        "label": "4/3"
+      },
+      {
+        "id": "positive",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "fill": "BLUE",
+        "label": "4/3"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "V",
+    "B",
+    "C"
+  ],
+  "caption": "y=f′(x)=x²−2x에서 [0,2]의 음의 넓이 4/3과 [2,3]의 양의 넓이 4/3이 상쇄되어 f(3)=f(0)=1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 도함수 그래프는 f'(x)=x^2-2x이고 점 (0,0),(1,-1),(2,0),(3,3)을 지난다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "[0,2]의 음의 부호 있는 넓이 -4/3과 [2,3]의 양의 넓이 4/3이 상쇄된다.",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q3.png 참조는 덮어쓰지 않으며, 이 초안은 도함수의 관련 점과 정적분 구간을 정확히 표시한다. 로컬 작업공간에는 원본 PNG가 없어 이미지 바이트 검증은 NOT_RUN.",
+    "두 구간의 넓이는 각각 4/3이며 부호 있는 정적분의 합은 0이다.",
+    "사용자 사유: 함수 그래프가 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "$f(3)-f(0)=\\int_0^3(x^2-2x)\\,dx=[x^3/3-x^2]_0^3=9-9=0$입니다."
+}

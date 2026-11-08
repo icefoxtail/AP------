@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-sqrt(5)",
+        "y": "-4*sqrt(5)"
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": "sqrt(5)",
+        "y": "4*sqrt(5)"
+      },
+      {
+        "id": "M",
+        "x": "-sqrt(3)/3",
+        "y": "2*sqrt(3)/9",
+        "marker": "NONE"
+      },
+      {
+        "id": "N",
+        "x": "sqrt(3)/3",
+        "y": "-2*sqrt(3)/9",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "secant",
+        "slope": "4",
+        "intercept": "0",
+        "intersectionX": [
+          "-sqrt(5)",
+          "0",
+          "sqrt(5)"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "left",
+        "upper": "f",
+        "lower": "secant",
+        "from": "-sqrt(5)",
+        "to": "0",
+        "fill": "WARM",
+        "label": "25/4"
+      },
+      {
+        "id": "right",
+        "upper": "secant",
+        "lower": "f",
+        "from": "0",
+        "to": "sqrt(5)",
+        "fill": "BLUE",
+        "label": "25/4"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "L",
+    "O",
+    "R"
+  ],
+  "caption": "f(x)=x³−x와 y=4x의 정확한 교점은 (−√5,−4√5),(0,0),(√5,4√5)이다. 두 곡선 사이 두 영역은 원점 대칭이고 각 넓이는 25/4이므로 S(4)=25/2이다. x축과 f가 둘러싼 두 영역의 합은 S=1/2이어서 비는 25이다. 극대·극소 좌표도 정확히 입력했지만 보조 라벨은 생략했다. 자동 프레이밍의 라벨·가독성은 아직 검수하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=x^3-x and y=4x intersect where x(x^2-5)=0, so the exact x coordinates are -sqrt(5),0,sqrt(5).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The two bounded regions are origin-symmetric and each has area 25/4; S(4)=25/2. The x-axis regions have total S=1/2, giving ratio 25.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The main cubic extrema are (-sqrt(3)/3,2*sqrt(3)/9) and (sqrt(3)/3,-2*sqrt(3)/9). Automatic-framing readability remains HOLD and visual review remains NOT_REVIEWED.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원곡선, y=4x, 세 정확한 교점, 두 부호가 다른 유계 영역을 나타낸다. 교점 라벨은 지시선으로 연결하고 극값 좌표는 정확한 값으로 보존한다.",
+    "자동 프레이밍 가독성 HOLD 및 시각검수 NOT_REVIEWED를 유지한다. 사용자 요청의 이해용 함수 도식 사유를 기록한다."
+  ],
+  "sourceQuote": "[서술형1] 삼차함수 $f(x)=x^3-x$에 대하여 곡선 $y=f(x)$와 $x$축으로 둘러싸인 두 부분의 넓이의 합을 $S$라 하자. 곡선 $y=f(x)$와 직선 $y=mx$ ($m>0$)로 둘러싸인 두 부분의 넓이의 합을 $S(m)$이라 할 때, $\\frac{S(m)}{S}=25$를 만족시키는 상수 $m$값을 구하는 과정을 서술하시오. [10.0점]"
+}

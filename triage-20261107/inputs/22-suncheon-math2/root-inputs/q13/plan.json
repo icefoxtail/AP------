@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "-3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3-3*x^2-2*x^3",
+    "requiredPoints": [
+      {
+        "id": "m",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "접점 t",
+      "y": "K(t)"
+    }
+  },
+  "coordinateLeader": [
+    "m",
+    "M"
+  ],
+  "caption": "접점 매개변수 t에서 점 (−1,k)를 지나는 접선의 높이는 K(t)=3−3t²−2t³이다. 이 그래프의 가로 좌표 x는 접점 매개변수 t를 뜻한다. K의 극솟점 (−1,2)와 극댓점 (0,3) 사이에서 2<k<3일 때 서로 다른 세 접점이 생기므로 세 접선을 그을 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=x³−3x의 접점 x=t에서 접선이 (−1,k)를 지나려면 k=3−3t²−2t³이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "K′(t)=−6t(t+1), K(−1)=2는 극솟값, K(0)=3은 극댓값이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "2<k<3일 때 k=K(t)가 서로 다른 세 실근을 가져 세 개의 서로 다른 접점이 생긴다. 경계 k=2,3에서는 중근이 생긴다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 이해에 도움이 되는 함수 도식은 그래프로 보조한다."
+  ],
+  "sourceQuote": "13. 점 $(-1, k)$에서 곡선 $y=x^3-3x$에 서로 다른 세 개의 접선을 그을 수 있을 때, 다음 중 실수 $k$의 값의 범위가 $\\alpha < k < \\beta$일 때, $\\alpha+\\beta$의 값은? [4.6점]"
+}

@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "접촉 순서",
+        "points": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          },
+          {
+            "id": "c"
+          },
+          {
+            "id": "d"
+          },
+          {
+            "id": "e"
+          }
+        ],
+        "order": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "band": false
+      }
+    ]
+  },
+  "caption": "0≤t≤20에서 v는 양수로 출발한다. a는 첫 접촉에서 부호가 유지되고 b,c,d에서 +→−→+→−로 세 번 바뀐다. e는 끝부분 접촉으로 부호가 유지된다. a~e는 사건의 순서일 뿐 실제 시각이나 간격이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤t≤20인 속도 그래프는 양수로 출발하고 끝부분에 마지막 접촉이 있으나, 내부 사건 시각의 수치는 주어지지 않는다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "첫 영점 접촉에서는 양의 부호를 유지하고, 그 뒤 세 교차에서 +→−, −→+, +→−가 일어난다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "끝부분의 마지막 접촉에서도 부호가 바뀌지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "a,b,c,d,e는 원본 속도 그래프의 다섯 접촉·교차 사건을 순서대로 표시한 상징점이다. 각 점의 배치 간격은 시각 간격을 뜻하지 않는다.",
+    "처음 접촉과 마지막 접촉을 제외하면 세 교차에서만 운동 방향이 바뀐다."
+  ]
+}

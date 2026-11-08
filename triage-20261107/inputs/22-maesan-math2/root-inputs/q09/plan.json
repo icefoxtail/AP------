@@ -1,0 +1,120 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "-2",
+          "0",
+          "1/4"
+        ]
+      },
+      {
+        "coefficients": [
+          "9/4",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "7",
+          "0",
+          "-2",
+          "0",
+          "1/4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "5/4"
+      },
+      {
+        "x": "1",
+        "y": "21/4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 1.25
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": 5.25
+      },
+      {
+        "id": "D",
+        "x": 2,
+        "y": 3
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "-1",
+        "5/4"
+      ],
+      "C": [
+        "1",
+        "21/4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "f의 연속 조각은 x=−1,1에서 만난다. 실제 극솟점은 (−2,−1)과 (2,3), 극댓점은 (1,21/4)이며 모든 극솟값의 곱은 −3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=x³−4x (|x|>1), f′(x)=2x+2 (|x|<1), f(0)=9/4.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "연속 조건과 f(0)=9/4로 f는 x≤−1에서 x⁴/4−2x²+3, −1≤x≤1에서 x²+2x+9/4, x≥1에서 x⁴/4−2x²+7이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "극솟점은 (−2,−1),(2,3)이고 x=1에서 극댓값 21/4이다. 절점에서 f′ 값을 정하지 않는다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "연속인 세 조각과 두 연결점의 함수값을 한 좌표평면에 보이며, 각 핵심 좌표는 실제 점에서 뻗는 지시선으로 표시한다.",
+    "원문은 x=±1에서 도함수를 정의하지 않는다. 이 그림은 f의 연속성과 극값만 보이고, 경계의 도함수 값은 표시하지 않는다."
+  ]
+}

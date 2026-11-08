@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "x≥-2",
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합"
+  },
+  "caption": "F(u)=−u³−4u+3은 감소함수이므로 F(g(x))≤F(f(x))는 g(x)≥f(x)와 같다. g(x)−f(x)=(x+2)(x²−x+1)이고 x²−x+1=(x−1/2)²+3/4>0이므로 해는 x≥−2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "F(u)=−u³−4u+3은 F′(u)=−3u²−4<0이므로 감소한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "감소함수에서 F(g(x))≤F(f(x))는 g(x)≥f(x)와 동치다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "g(x)−f(x)=(x+2)(x²−x+1)이며 두 번째 인수는 항상 양수이므로 해집합은 x≥−2이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 닫힌 끝점 −2를 포함하는 정확한 해집합 x≥−2만 표시한다.",
+    "원문에 정의되지 않은 별도 함수 F 그래프는 만들지 않는다."
+  ]
+}

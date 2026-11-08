@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "오른쪽",
+        "band": false,
+        "points": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "x"
+          }
+        ],
+        "order": [
+          "a",
+          "x"
+        ],
+        "spans": [
+          {
+            "from": "a",
+            "to": "x",
+            "label": "x-a"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "a의 오른쪽에서 x 접근"
+  },
+  "caption": "연속성과 f(a)=10으로 S(x)/(x−a)는 10에 접근한다. 따라서 2S(x)/(x−a)의 오른쪽 극한은 20이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 x≥a에서 연속이고 f(x)≥0이며 f(a)=10이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "S(x)는 t=a에서 t=x까지 y=f(t)와 t축 사이의 넓이이므로 S(x)=∫_a^x f(t)dt이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "x는 a의 오른쪽에서 접근하고 2S(x)/(x−a)의 극한은 20이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "값 없는 a,x 기호점은 a<x의 순서와 상징 폭 x−a만 나타낸다. 함수의 구체적 곡선이나 좌표는 추정하지 않는다.",
+    "캡션은 연속성으로 평균 높이가 f(a)=10에 접근한다는 관계와 그 두 배 극한을 적는다."
+  ]
+}

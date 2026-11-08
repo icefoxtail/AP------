@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "12/7"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "12*x^2/7-4*x+4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "7/6",
+        "y": "5/3"
+      },
+      {
+        "id": "P",
+        "x": 7,
+        "y": 60
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "integralArea",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "WARM",
+        "label": "2"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "V",
+    "P"
+  ],
+  "caption": "자기참조 정적분의 해 I=∫₁²f(t)dt=2를 대입한 정확한 함수는 f(x)=12x²/7−4x+4이다. 함수의 꼭짓점은 (7/6,5/3)이며, x=7에서 P=(7,60)이다. x∈[1,2]의 양의 곡선 아래 넓이는 2이다. P가 멀리 있어 한 프레임에서 작은 적분영역이 읽히는지는 아직 검토하지 않았다. 그래프 전 구간과 좌표는 수치적으로 늘리거나 생략하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Let I=integral_1^2 f(t)dt. The equation implies I=4-3I+I^2, so I=2.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Substituting I=2 gives f(x)=12*x^2/7-4*x+4 and f(7)=60.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The solved integral from 1 to 2 is 2 and the graph is positive over that interval.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "[1,2]의 적분영역을 별도 색으로 표시하고, 멀리 떨어진 정확한 점 (7,60)도 동일한 전체 좌표계에 둔다.",
+    "멀리 떨어진 점 때문에 영역의 최종 가독성이 낮을 수 있어, 어떤 부분도 검토 완료로 표시하지 않는다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "(1) $I=\\int_1^2 f(t)dt$라고 놓으면 주어진 식은 $$f(x)=\\frac{12}{7}x^2-2Ix+I^2$$입니다. 양변을 1부터 2까지 적분하면 $$I=\\frac{12}{7}\\left[\\frac{x^3}{3}\\right]_1^2-2I\\left[\\frac{x^2}{2}\\right]_1^2+I^2(2-1).$$ $$I=4-3I+I^2\\quad\\Rightarrow\\quad I^2-4I+4=0\\quad\\Rightarrow\\quad\\boxed{I=2}.$$ (2) 이를 원래 함수식에 대입하면 $$f(x)=\\frac{12}{7}x^2-4x+4.$$ 따라서 $$f(7)=\\frac{12}{7}\\cdot49-28+4=84-24=\\boxed{60}.$$"
+}

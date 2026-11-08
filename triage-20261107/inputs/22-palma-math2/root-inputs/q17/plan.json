@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "0",
+      "-2",
+      "0",
+      "1/4"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      0,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 2
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "M",
+    "B"
+  ],
+  "caption": "h(x)=¼(x²−4)²+2. h(x)=a의 교점 수는 a<2일 때 0, a=2일 때 2, 2<a<6일 때 4, a=6일 때 3, a>6일 때 2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=¼x⁴−2x²+x+6, g(x)=x+a이며 1≤a≤12인 정수에 대한 서로 다른 교점 수 k(a)의 합을 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "h(x)=f(x)−x=¼(x²−4)²+2를 ALL_REALS에서 표시한다.",
+    "정확한 임계 높이는 h(−2)=h(2)=2와 h(0)=6이다; 매개변수 a의 예시값이나 보조 수평선을 추가하지 않는다.",
+    "교점 수는 a<2일 때 0, a=2일 때 2, 2<a<6일 때 4, a=6일 때 3, a>6일 때 2이다. 원문에서 1≤a≤12 정수의 합은 29이다."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "극값 하나",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2*sqrt(6)",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "허용되는 a 범위"
+  },
+  "caption": "극값 하나 조건은 2<a≤2√6이다. 경계 a=2√6에서 a²의 최댓값은 24이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>2이며 g(x)의 극값이 하나인 범위를 찾는다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "a=2√6 경계에서는 Q의 중근이 부호를 바꾸지 않아 극값이 하나이고, 그보다 크면 극값이 셋이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 허용되는 a 범위와 양끝 포함 여부만 나타낸다. 경계값 a=2√6은 포함되므로 a²=24가 달성되는 최댓값이다.",
+    "임의의 a 예시나 추정 그래프를 추가하지 않고 사용자가 이해에 도움 되는 시각화를 요청한 취지를 반영한다."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-9",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -30,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 5
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=x³−3x²−9x의 극댓값은 5, 극솟값은 −27이며 그 합은 −22이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=∫_0^x(3t^2−6t−9)dt이고 극댓값과 극솟값의 합을 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 극점 M=(−1,5), N=(3,−27)을 정확히 표시해 극댓값과 극솟값의 합 −22를 확인한다.",
+    "사용자 요청에 따라 함수 그래프가 풀이 이해에 도움이 되도록 준비한다."
+  ],
+  "coordinateLeader": [
+    "M",
+    "N"
+  ]
+}

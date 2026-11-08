@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "정수 k",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "-4", "hideName": true, "showValue": true },
+          { "id": "B", "value": "-3", "hideName": true, "showValue": true },
+          { "id": "C", "value": "-2", "hideName": true, "showValue": true },
+          { "id": "D", "value": "-1", "hideName": true, "showValue": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "네 실근을 만드는 정수 k"
+  },
+  "caption": "g(x)=x³−8x²+16x−16/x (x≠0)이다. 표시한 네 정수 k=−4,−3,−2,−1에서 x<0 가지와 x>0 가지가 각각 한 번·세 번 만나 총 네 서로 다른 실근을 갖는다. 합은 −10이다. 점은 해당 정수들만 나타내며, x=0이 제외된 g의 전체 유리함수 곡선은 이 그림에 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최고차항 계수가 1이고 f(0)=f′(0)=0, x=2에서 극댓값 16이므로 f(x)=x²(x−4)²이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "x≠0에서 g(x)=(f(x)−16)/x=x³−8x²+16x−16/x이며 x<0 가지는 수평선과 한 번 만난다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "양의 가지의 극댓값은 0, 극솟값은 −5와 −4 사이이므로 네 실근을 만드는 정수 k는 −4,−3,−2,−1이며 합은 −10이다.",
+      "mappedTo": ["numberLine.rows[0]", "caption"]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 요구된 모든 정수 k만 이산 점으로 나타낸다. 네 값 사이의 모든 실수 k가 조건을 만족한다고 표시하지 않는다.",
+    "정확한 함수식과 x≠0 정의역은 캡션에 보존하고, 현재 그래프 계약으로 완전한 유리함수 곡선을 그릴 수 없어 곡선을 꾸며 넣지 않는다."
+  ]
+}

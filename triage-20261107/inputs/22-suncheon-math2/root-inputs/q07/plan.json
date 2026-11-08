@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "0",
+          "4",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x^4+4*x^3+5",
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 4
+      },
+      {
+        "id": "S",
+        "x": 0,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "S"
+  ],
+  "caption": "고정된 p(x)=3x⁴+4x³+5의 전역 최솟값은 (−1,4)에서 4이다. 따라서 p(x)≥a가 모든 실수 x에서 성립하는 조건은 a≤4이고, 가능한 a의 최댓값은 4이다. (0,5)는 정지변곡점이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 모든 실수 x에서 3x⁴+4x³+5≥a가 성립하도록 하는 a의 최댓값을 묻는다.",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "p′(x)=12x²(x+1); 전역 최솟값은 p(−1)=4이며 p(0)=5는 정지변곡점이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "p(x)≥a가 모든 실수 x에서 성립하려면 a≤4이고 최댓값은 4이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 이해에 도움이 되는 함수 도식은 그래프로 보조한다."
+  ],
+  "sourceQuote": "7. 모든 실수 $x$에 대하여 부등식 $3x^4+4x^3+5 \\ge a$가 성립하도록 하는 실수 $a$의 최댓값은? [3.5점]"
+}

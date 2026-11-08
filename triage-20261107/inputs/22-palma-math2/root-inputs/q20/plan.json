@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "가능한 a의 범위"
+  },
+  "caption": "도함수의 서로 다른 두 근은 x∈(−2,1) 안에 있어야 한다. 허용되는 a는 (−1,0)∪(3,4)이고 네 경계는 모두 제외된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=3x^2+2ax+a의 서로 다른 두 근이 모두 열린구간 (−2,1) 안에 있어야 한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "모든 조건을 교집합으로 묶은 a의 범위는 (−1,0)∪(3,4)이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c3",
+      "condition": "a=−1,0,3,4는 모두 허용되지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "공통 수직선 위에 두 개의 열린 구간만 표시하여 네 경계값을 제외한다.",
+    "도함수 근 두 개가 x∈(−2,1)에 엄격히 들어와야 한다는 조건은 캡션으로 보존하고, x의 근 위치를 추측해 그리지 않는다."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용 k",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "양수 k의 허용 범위"
+  },
+  "caption": "k>0일 때 g′(x)=6x(x−k)이므로 0<x<k에서 감소하고 x>k에서 증가한다. 따라서 x≥0에서 최솟값은 g(k)=8−k³이다. 8−k³≥0이므로 0<k≤2이고 최댓값은 k=2이다. 경계 k=2에서는 g(0)=8, g(2)=0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥0에서 g(x)=2x^3−3kx^2+8이고 k>0이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "g′(x)=6x(x−k)이므로 g는 (0,k)에서 감소하고 (k,∞)에서 증가하며 최솟값은 8−k^3이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "8−k^3≥0과 k>0이 결합하여 0<k≤2이며 경계 k=2에서 g(0)=8,g(2)=0이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 허용되는 매개변수 k의 정확한 범위 (0,2]를 나타내며, 닫힌 오른쪽 끝점 k=2가 경계 사례임을 분명히 표시한다.",
+    "현재 지원된 함수 그래프 경로는 제한된 반직선 x≥0 위의 삼차함수를 그대로 표현하지 못하므로 g의 곡선을 그리지 않는다. 대신 도함수 부호와 최솟값 식을 캡션에 적어 일반적인 k의 단조성을 정확히 설명한다."
+  ]
+}

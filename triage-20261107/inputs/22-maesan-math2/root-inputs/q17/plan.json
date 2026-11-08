@@ -1,0 +1,48 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "경계",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "-3", "hideName": true, "showValue": true },
+          { "id": "B", "value": "-2", "hideName": true, "showValue": true },
+          { "id": "C", "value": "-1", "hideName": true, "showValue": true },
+          { "id": "D", "value": "1", "hideName": true, "showValue": true }
+        ],
+        "spans": [
+          { "from": "C", "to": "B", "style": "ARROW", "side": "ABOVE" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정적분 경계와 역방향"
+  },
+  "caption": "B=α=−2, C=−1이다. 화살표 C→B는 ∫₋₁⁻²의 실제 적분 방향이며, 그 정적분은 경계 역순을 포함한 부호 있는 값 +1/6이다. 목표 피적분함수는 x²+2x−3=(x+3)(x−1)이고 [−3,1]에서 x축 아래이므로 ∫₋₃¹=−32/3, 기하적 넓이는 32/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+ax+b=(x+1)(x−α), α=−2, a=3, b=2이며 원래 적분의 순서는 −1에서 α=−2로 향한다.",
+      "mappedTo": ["numberLine.rows[0].spans", "caption"]
+    },
+    {
+      "id": "c2",
+      "condition": "∫₋₁⁻²(x²+3x+2)dx=+1/6은 상한이 하한보다 작은 부호 있는 정적분이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "구하는 피적분함수는 x²+bx−a=x²+2x−3이며 [−3,1]에서 음수이다. 부호 있는 적분은 −32/3이고, 기하적 넓이만 별도로 취하면 32/3이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "표시된 수직선은 실제 수치 경계 −3, α=−2, −1, 1만 사용한다.",
+    "number-line ARROW span은 from=C(−1), to=B(−2)로 두어 실제 왼쪽 방향 −1→−2를 그린다. 이를 양의 길이 또는 전방 적분으로 바꾸지 않는다.",
+    "요청 적분의 부호 −32/3과 기하적 넓이 32/3을 캡션에서 분리한다."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "0",
+          "-6",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x^3-6*x^2+10",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 10
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": -1,
+        "y": 2,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "level1",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        },
+        {
+          "id": "level2",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=2"
+        },
+        {
+          "id": "level3",
+          "slope": "0",
+          "intercept": "3",
+          "label": "y=3"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N",
+    "C"
+  ],
+  "caption": "원문 조건을 푼 결과 a=2를 대입한 예시 f(x)=2x³−6x²+10이다. 극댓점은 (0,10), 극솟점은 (2,2)이다. 수평선 y=1은 1점, y=2는 극솟점 (2,2)에 접하면서 x=−1에서도 만나 서로 다른 2점, y=3은 3점에서 만난다. y=1,3의 비폐쇄형 삼차 교점 좌표는 근삿값이나 임의의 식으로 만들지 않고 수평선만 표시한다. 그림은 풀이 뒤의 a=2 예시이며 미지수 a 전체의 곡선족은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "For the solved example a=2, f(x)=2x^3-6x^2+10 and f' has critical points x=0,2 with local maximum (0,10) and local minimum (2,2).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "The horizontal levels y=1,2,3 have respectively 1,2,3 distinct intersections. At y=2 the exact intersections are x=-1 and x=2; no non-closed roots at y=1 or y=3 are asserted.",
+      "mappedTo": [
+        "graphPlan.overlays",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The displayed a=2 is a solved example satisfying the original condition, not a general parameter graph.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해결값 a=2의 정확한 삼차함수와 두 극값, y=1,2,3 수평선을 표시해 교점 수 증가를 보여준다.",
+    "정확히 알려진 y=2 교점만 표시하며 다른 두 높이의 비폐쇄형 근은 임의로 만들지 않는다. 기존 SVG/history를 보존한다."
+  ],
+  "sourceQuote": "[단답형1] 삼차함수 $f(x)=2x^3-3ax^2+2a^2+a$와 실수 $t$에 대하여 곡선 $y=f(x)$와 직선 $y=t$가 만나는 점의 개수를 $g(t)$라 하자. $g(1) < g(2) < g(3)$이 성립하도록 하는 양수 $a$의 값을 구하시오. [5.0점]"
+}

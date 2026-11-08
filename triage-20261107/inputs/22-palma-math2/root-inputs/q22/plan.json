@@ -1,0 +1,47 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 1,
+      "height": 2
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "r"
+    },
+    {
+      "height": true,
+      "label": "2r",
+      "side": "RIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "최적 비례도"
+  },
+  "caption": "겉넓이 2πr²+2πrh=k가 일정할 때 부피 최대 조건은 h=2r이므로 반지름:높이=1:2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥의 겉넓이는 2πr^2+2πrh=k로 일정하다.",
+      "mappedTo": "solids"
+    },
+    {
+      "id": "c2",
+      "condition": "부피 최대 조건은 r^2=k/(6π)이며 이를 겉넓이 식에 대입하면 h=2r이다.",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "따라서 반지름:높이=1:2이다.",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "최적 사례 하나만을 반지름 r, 높이 2r로 나타낸 비례도이며, 그림 내부의 단위 비율은 절대 길이나 k의 수치를 뜻하지 않는다.",
+    "모든 원기둥이 이 비율이라는 일반화는 하지 않는다."
+  ],
+  "sourceQuote": "서술형 3. 어느 박람회에 원기둥을 직접 만들어 보는 체험관이 있다. 이 체험관에서는 겉넓이가 $k$로 일정하면서 부피가 최대인 원기둥을 만드는 행사를 열었다. 이때, 부피가 최대인 원기둥의 밑면의 반지름의 길이와 높이의 비를 가장 작은 자연수의 비로 나타내고, 그 풀이과정을 서술하시오. [7.0점]"
+}

@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-490",
+          "189",
+          "-24",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-7)^2*(x-10)",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "id": "N",
+        "x": 9,
+        "y": -4
+      },
+      {
+        "id": "R",
+        "x": 10,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "pos2",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=2"
+        },
+        {
+          "id": "neg2",
+          "slope": "0",
+          "intercept": "-2",
+          "label": "y=-2"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N",
+    "R"
+  ],
+  "caption": "주어진 조건을 만족하는 정확한 예시 함수는 f(x)=(x−7)²(x−10)이다. (7,0)은 극댓점이자 이중근, (9,−4)는 극솟점, (10,0)은 단순근이다. 예시 높이 y=2는 그래프와 1점, y=−2는 3점에서 만나 합계 4점이다. 이 두 수준은 교점 개수를 보여 주는 예시일 뿐, 일반 조건의 입력값으로 오인하지 않는다. f(15)=320은 식에 직접 대입한 정답이며, (15,320)은 진단 구간과 멀어 극값·수평선이 납작해질 수 있어 그래프 좌표로 강제하지 않고 캡션에만 둔다. 비폐쇄형 교점 좌표는 만들지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The solved exact function is (x-7)^2(x-10)=x^3-24x^2+189x-490, with local maximum (7,0), local minimum (9,-4), and simple root (10,0).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Illustrative y=2 has 1 intersection because it is above the local maximum; illustrative y=-2 has 3 intersections because it lies strictly between -4 and 0. No exact roots for these levels are asserted.",
+      "mappedTo": [
+        "graphPlan.overlays",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The source asks for f(15), which is 320. The distant point (15,320) is intentionally not required because it could compress the root/extremum/level view; this is an unrendered draft choice, not a visual review conclusion.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 근과 극값, 제시된 문제조건을 대표하는 ±2 수준선을 표시한다. ±2는 이해를 돕는 예시임을 명시하며 개별 비폐쇄형 근은 표시하지 않는다.",
+    "원문 답 f(15)=320은 설명에 남기고 먼 점을 그리지 않아 곡선의 진단 구간을 유지한다. 실제 렌더 및 가독성 검수는 미실행이다."
+  ],
+  "sourceQuote": "[서술형2] 최고차항의 계수가 1인 삼차함수 $f(x)$가 다음 조건을 만족시킨다.\n\n(가) $f(10)=0$, $f'(10)>0$\n(나) 함수 $f(x)$는 음수인 극솟값을 갖는다.\n(다) $x$에 대한 방정식 $|f(x)|=t$의 서로 다른 실근의 개수가 4인 $t$값의 범위는 $0 < t < 4$이다.\n\n$f(15)$의 값을 구하는 과정을 서술하시오. [10.0점]"
+}

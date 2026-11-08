@@ -1,0 +1,122 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-8",
+          "0",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-32",
+          "4",
+          "6"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "S",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": "2*sqrt(3)/3",
+        "y": "-32*sqrt(3)/9"
+      },
+      {
+        "id": "J",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 34
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "시간 t",
+      "y": "속도 v"
+    },
+    "regions": [
+      {
+        "id": "negative",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "WARM",
+        "label": "8"
+      },
+      {
+        "id": "positive",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "fill": "BLUE",
+        "label": "16"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "S",
+    "V",
+    "J",
+    "C"
+  ],
+  "caption": "0≤t≤3에서 v는 [0,2]에서 음수라 이동거리 8, [2,3]에서 양수라 이동거리 16이다. 합은 24이며 두 구간을 각각 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤t≤2에서 v(t)=2t^3-8t; t≥2에서 a(t)=12t+4이고 v(2)=0이므로 v(t)=6t^2+4t-32.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이동거리는 속도의 절댓값을 적분해 8+16=24이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도 곡선의 두 구간은 (2,0)에서 이어지며, [0,2]의 음의 영역과 [2,3]의 양의 영역을 따로 채운다.",
+    "시간과 속도의 축을 분리하고 주어진 유한 구간 [0,3]만 표시한다.",
+    "사용자 사유: 함수 그래프가 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "전체 거리는 $8+16=24$이므로 정답은 ⑤입니다."
+}

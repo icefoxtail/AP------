@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-12",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "2x^3-3x^2-12x+6",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 13
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": -14
+      },
+      {
+        "id": "D",
+        "x": 4,
+        "y": 38
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "닫힌구간 [−2,4]에서 f의 내부 극대는 (−1,13), 내부 극소는 (2,−14)이고, 양 끝값은 2와 38이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌구간 [−2,4]에서 f(x)=2x³−3x²−12x+k+3이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "구간의 끝점과 임계점에서 최댓값 38 조건을 적용하면 k=3이고, f의 최솟값은 −14이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 내부 임계점과 닫힌구간의 양 끝점을 같은 정확한 곡선 위에서 비교한다.",
+    "양 끝의 닫힌 점은 원문 구간의 실제 끝점이다."
+  ],
+  "sourceQuote": "상수항을 제외한 함수를 h(x)라 두면\nh(x)=2x³−3x²−12x\nh′(x)=6(x−2)(x+1)\n이다.\n끝점과 임계점에서 값을 계산하면\nh(−2)=−4,\nh(−1)=7,\nh(2)=−20,\nh(4)=32\n이다.\n따라서 f의 최댓값은 32+k+3=k+35이고,\nk+35=38\nk=3\n이다.\n최솟값은 x=2에서\n−20+3+3=−14\n이다.\n그러므로 정답은 ②이다."
+}

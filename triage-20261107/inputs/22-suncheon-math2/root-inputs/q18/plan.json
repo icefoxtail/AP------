@@ -1,0 +1,166 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "u: ㄱ의 C=0 대표"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "0",
+            "-2/3",
+            "1/4"
+          ],
+          "domain": [
+            -1,
+            3
+          ],
+          "viewport": [
+            -1,
+            3,
+            -1.8,
+            2.5
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": 1,
+              "y": -0.4166666666666667
+            },
+            {
+              "id": "M",
+              "x": 2,
+              "y": -1.3333333333333333
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "1",
+              "-5/12"
+            ],
+            "M": [
+              "2",
+              "-4/3"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "coordinateLeader": [
+          "P",
+          "M"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "v: ㄷ의 C=0 정규화 예"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "1/4",
+            "-1/2",
+            "1/4"
+          ],
+          "domain": [
+            -0.5,
+            1.5
+          ],
+          "viewport": [
+            -0.5,
+            1.5,
+            -0.03,
+            0.17
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "H",
+              "x": 0.5,
+              "y": 0.015625
+            },
+            {
+              "id": "B",
+              "x": 1,
+              "y": 0
+            }
+          ],
+          "exactCoordinates": {
+            "A": [
+              "0",
+              "0"
+            ],
+            "H": [
+              "1/2",
+              "1/64"
+            ],
+            "B": [
+              "1",
+              "0"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "coordinateLeader": [
+          "A",
+          "H",
+          "B"
+        ]
+      }
+    }
+  ],
+  "caption": "두 패널은 원시함수 F의 사례를 각각 C=0으로 수직 이동해 그린 대표다. 위 u(x)=x⁴/4−2x³/3은 ㄱ에서 t=1 높이 C−5/12, 최소 C−4/3를 나타낸다. 높이 차는 11/12로 일정해 두 교점이 생기며, 그림은 C=0이다. 아래 v(x)=x²(x−1)²/4는 ㄷ의 b=0,1인 등최솟값 형태를 C=0으로 정규화한 예일 뿐 일반 함수 높이가 0이라는 뜻은 아니다. 이 예에서 v′(2)=f(2)=3.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ㄱ의 f(x)=x²(x−2)는 F(x)=x⁴/4−2x³/3+C를 가진다. F(1)=C−5/12, F(2)=C−4/3이므로 높이 차는 11/12이고, 두 교점이 생긴다. 위 패널 u는 수직 이동 상수 C=0인 대표다.",
+      "mappedTo": [
+        "panels[0].plan.graphPlan",
+        "panels[0].caption",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "ㄷ에서 두 극솟점의 x좌표가 0,1이면 F(x)=x²(x−1)²/4+C이고 가운데 x=1/2에서 극댓값을 가진다. 아래 패널 v는 C=0인 정규화 대표다.",
+      "mappedTo": "panels[1].plan.graphPlan"
+    },
+    {
+      "id": "c3",
+      "condition": "아래 패널은 수직이동 상수 C=0인 예이며 v′(x)=f(x)=x(x−1)(x−1/2)이므로 f(2)=3.",
+      "mappedTo": [
+        "panels[1].caption",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "위 패널 u는 ㄱ의 F를 C=0으로 수직 이동해 그린 대표이며 점 (1,−5/12), 최소점 (2,−4/3)을 표시한다. F에 임의의 상수 C를 더하면 두 높이는 함께 C만큼 이동한다. degree-4 reference line 입력은 지원되지 않아 y=−5/12 선과 다른 교점을 그리지 않았다.",
+    "아래 패널 v는 ㄷ의 등최솟값 형태 F=x²(x−1)²/4+C에서 C=0을 고른 정규화 예다. 아래 그림의 최소 높이 0은 그 정규화 선택일 뿐 일반 값이 아니다. 두 패널은 서로 다른 함수 사례이며 같은 곡선/변수로 합치지 않는다."
+  ]
+}

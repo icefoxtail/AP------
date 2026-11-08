@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2+2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "line",
+        "slope": "-1",
+        "intercept": "2",
+        "intersectionX": [
+          "-1",
+          "0"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "bounded-area",
+        "upper": "line",
+        "lower": "f",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": "1",
+      "y": "4"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "모든 실수에서 정의된 y=x²+2와 y=−x+2를 그리고 두 교점 사이 [−1,0]의 넓이 1/6만 표시한다. (−1,3), (0,2)는 각각 coordinateLeader로 좌표를 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선은 y=x²+2이고 직선은 y=−x+2이다. 두 식은 x²+2=−x+2에서 x=−1,0일 때 만난다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "구간 (−1,0)에서 직선이 포물선 위에 있고 두 그래프 사이의 넓이만 닫힌 수평 범위 [−1,0]에 채운다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "넓이는 ∫[−1,0](−x−x²)dx=1/6이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원문 그래프의 교점과 그 사이의 실제 넓이 영역을 정확히 표시한다.",
+    "사용자 요청: 풀이 이해에 도움이 되는 함수 도식은 그래프로 보조한다.",
+    "기존 소면적 가독성 프레이밍 상태는 HOLD로 보존한다. 입력에는 y/x 축척비 4:1과 교점 좌표의 coordinateLeader를 지정해 표시 크기를 넉넉히 의도했지만, 실제 가독성은 검수 전이며 통과했다고 주장하지 않는다."
+  ],
+  "sourceQuote": "6. 곡선 $y=x^2+2$와 직선 $y=-x+2$로 둘러싸인 도형의 넓이가 $\\frac{q}{p}$일 때 $p+q$의 값은? [3.7점]"
+}

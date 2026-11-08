@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-3*x^2+5*x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1.6666666666666667,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0.8333333333333334,
+        "y": 2.0833333333333335
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "5/3",
+        "0"
+      ],
+      "V": [
+        "5/6",
+        "25/12"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "O",
+    "A",
+    "V"
+  ],
+  "caption": "f(x)=−3x²+5x의 그래프에서 O=(0,0), A=(5/3,0), 꼭짓점 V=(5/6,25/12)를 표시한다. 원문의 적분은 대칭구간 [−2,2]의 부호 있는 정적분으로 −16이며, 5x의 홀함수 항은 상쇄된다. 이는 무부호 넓이와 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 구간을 정리하면 ∫_1^4f+∫_-2^1f-∫_2^4f=∫_-2^2f이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=-3x^2+5x의 홀함수 항 5x는 대칭구간 적분에서 0이고, ∫_-2^2(-3x^2)dx=-16이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f(x)=0의 근은 0과 5/3이고, 실제 극댓점은 (5/6,25/12)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 함수의 두 영점과 꼭짓점을 표시해 부호가 바뀌는 위치를 보조한다. 그래프에는 음영 영역이나 무부호 넓이로 읽힐 표식을 추가하지 않는다."
+  ],
+  "sourceQuote": "함수 $f(x)=-3x^2+5x$에 대하여 $\\displaystyle\\int_1^4 f(x)\\,dx+\\displaystyle\\int_{-2}^1 f(x)\\,dx-\\displaystyle\\int_2^4 f(x)\\,dx$의 값은? [3.6점]"
+}

@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-6*x^2+9*x",
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "id": "M",
+        "x": 1,
+        "y": 4,
+        "marker": "NONE"
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": 0,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "first-area",
+        "upper": "f",
+        "lower": "g",
+        "from": "0",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "첫째 영역"
+      },
+      {
+        "id": "second-area",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "4",
+        "fill": "WARM",
+        "label": "둘째 영역"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "a=3이면 y=x(x−3)²과 y=x는 (0,0),(2,2),(4,4)에서 만나며 [0,2]와 [2,4]의 두 넓이가 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=x(x−a)^2과 직선 y=x로 둘러싸인 두 도형의 넓이가 같고 a>0이다.",
+      "mappedTo": [
+        "graphPlan",
+        "graphPlan.referenceLines",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해에서 나온 a=3을 원래 두 곡선에 직접 대입한다: f(x)=x(x−3)², g(x)=x.",
+    "정확한 교점 x=0,2,4에 따라 [0,2]에서는 f가 위, [2,4]에서는 g가 위이며 두 영역을 서로 다른 색으로 표시한다.",
+    "국소 극점 (1,4),(3,0)은 실제 곡선 위의 검수점으로 숨김 처리한다."
+  ]
+}

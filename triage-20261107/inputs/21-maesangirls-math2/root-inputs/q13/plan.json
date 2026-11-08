@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x^2-2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -2
+      },
+      {
+        "id": "A",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 10
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 25
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "V",
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "극한 조건은 (2/3)f′(x)=ax를 뜻하고 두 함수값 조건에서 a=4, C=−2를 얻으므로 f(x)=3x²−2이다. 실제 전역 최솟점은 V=(0,−2)이며 원문의 조건점 A=(−1,1), B=(2,10)과 질문한 점 C=(3,25)를 함께 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "lim_{h→0}(f(x+2h)-f(x))/(3h)=(2/3)f'(x)=ax이므로 f(x)=3a/4*x^2+C이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "f(2)=10 및 f(-1)=1에서 a=4, C=-2, 따라서 f(x)=3x^2-2 및 f(3)=25이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "실제 전역 최솟점은 x=0에서 (0,-2)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자의 함수 도식 요청에 따라 조건점과 실제 전역 최소점을 표시하여 결정된 이차함수의 형태를 보조한다.",
+    "각 좌표는 coordinateLeader로 연결하며 원문의 기존 시각 메타데이터는 수정하지 않는다."
+  ],
+  "sourceQuote": "다항함수 $f(x)$가 다음 조건을 만족시킬 때, $f(3)$의 값을 구하면? [4.1점]\n(가) $\\displaystyle\\lim_{h\\to0}\\dfrac{f(x+2h)-f(x)}{3h}=ax$\n(나) $f(2)=10$, $f(-1)=1$"
+}

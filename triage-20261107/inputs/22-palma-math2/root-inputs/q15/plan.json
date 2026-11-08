@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "구간",
+        "band": false,
+        "points": [
+          {
+            "id": "u"
+          },
+          {
+            "id": "v"
+          }
+        ],
+        "order": [
+          "u",
+          "v"
+        ],
+        "spans": [
+          {
+            "from": "u",
+            "to": "v",
+            "label": "구간 폭"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "[1,1+1/n]의 상징 폭"
+  },
+  "caption": "P(x)=x³−2x²+3x+5이고 P(1)=7이다. 그림의 u=1, v=1+1/n이므로 구간 [1,1+1/n]의 폭은 1/n이다. 평균 높이는 7에 접근하고, 2배 극한은 14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(x)=x^3−2x^2+3x+5이고 P(1)=7이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "적분 구간은 [1,1+1/n]이며 길이는 1/n이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c3",
+      "condition": "2n∫_1^(1+1/n)P(x)dx는 2배한 짧은 구간의 평균값으로서 n→∞일 때 2P(1)=14에 접근한다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "두 기호점은 [1,1+1/n]의 양 끝을 나타내며 그림에는 절대 위치가 아니라 폭 1/n만 표시한다.",
+    "P(1)=7을 캡션에 연결해 2n 계수와 구간 폭 1/n의 곱에서 2배 평균값으로 이어지는 관계를 설명한다.",
+    "n의 임의 수치 예시, 두 끝점의 임의 좌표 또는 P의 미제시 그래프는 추가하지 않는다."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-12",
+          "3"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "functionName": "v",
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "시각 t",
+      "y": "속도 v(t)"
+    },
+    "requiredPoints": [
+      {
+        "id": "S",
+        "x": 0,
+        "y": 9
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "S",
+    "V"
+  ],
+  "caption": "위치는 x(t)=t³−6t²+9t이고, 속도는 v(t)=x′(t)=3t²−12t+9이다. 시각 t≥0에서 속도만 그리며, t=2에서 v(2)=−3이다. 원문은 물리 단위를 따로 지정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 P의 위치는 시각 t에서 x(t)=t^3−6t^2+9t이며 실제 시간 범위는 t≥0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.axisVariable",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "속도 v(t)=x′(t)=3t^2−12t+9이고 t=2에서 v(2)=−3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문은 위치, 시각, 속력의 물리 단위를 별도로 명시하지 않는다.",
+      "mappedTo": [
+        "graphPlan.axisTitles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도 그래프는 실제 반직선 정의역 t≥0에서 그리며 시작점 (0,9)와 최솟점 (2,−3)을 표시한다.",
+    "위치 x(t)와 속도 v(t), 시각 t의 역할을 나누어 적었다. 단위가 주어지지 않아 임의의 단위를 덧붙이지 않는다.",
+    "사용자 요청 취지에 따라 함수 관계를 이해하는 데 도움이 되는 시각 자료를 준비했다. 이 도식은 위치 곡선 자체를 그린 것으로 주장하지 않는다."
+  ]
+}

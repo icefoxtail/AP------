@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "x 순서",
+        "points": [
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          }
+        ],
+        "order": [
+          "O",
+          "a",
+          "b"
+        ],
+        "spans": [
+          {
+            "from": "O",
+            "to": "a",
+            "label": "+"
+          },
+          {
+            "from": "a",
+            "to": "b",
+            "label": "-"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "h값 순서",
+        "points": [
+          {
+            "id": "d"
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "c"
+          }
+        ],
+        "order": [
+          "d",
+          "O",
+          "c"
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "x 임계점·h값의 순서"
+  },
+  "caption": "임계 x행: a=α,b=β, 0<α<β; h′는 x<0에서 −, (0,α)에서 +, (α,β)에서 −, x>β에서 +. h값 행: h(b)=d=h(β)=S1−S2<0=h(0)<c=h(α)=h(a)=S1, S1<S2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0<α<β이며 f−g는 x=0,α,β에서 0이고 구간별 부호는 왼쪽부터 −,+,−,+이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "h(0)=0, h(α)=S1, h(β)=S1−S2이고 S1<S2이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+      "첫 행은 임계 x점과 내부 구간의 h′ 부호를, 둘째 행은 h값 순서만 나타낸다. x행에서 a=α,b=β이고 h(a)=c=S1,h(b)=d=S1−S2이다. 두 행 사이의 위치·거리 대응은 없으며 상징점 간 배치는 순서만 의미한다.",
+      "a,b,c,d는 수치가 아닌 상징점이며 number-line 엔진의 임시 배치좌표는 실제 값이 아니다. 원본 그래프의 불명확한 선 모양을 직선이라고 확정하지 않고 곡선을 그리지 않는다."
+  ]
+}

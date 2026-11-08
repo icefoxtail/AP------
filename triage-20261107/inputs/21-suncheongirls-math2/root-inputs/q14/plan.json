@@ -1,0 +1,98 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "적분구간",
+        "hideSetLabel": true
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "within": 1,
+        "label": "분할점",
+        "points": [
+          {
+            "id": "A",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "C",
+            "label": "한주기",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "왼쪽",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "오른쪽",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "적분 구간과 분할"
+  },
+  "caption": "주기 4이므로 원문 해설에서 ∫_-4^0g=4이다. 같은 해설은 ∫_-2^0g=15/4, ∫_0^2g=1/4를 계산하므로 ∫_-4^2g=4+1/4=17/4이고 정답은 ③이다. 수직선 span에는 한주기·왼쪽·오른쪽만 적고, 정확한 적분값은 이 캡션에 둔다. f의 미지 곡선이나 면적 모양은 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 g(x+4)=g(x)로 주기 4를 명시하고, 전체 적분 구간은 [-4,2]이다.",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "원문 해설은 ∫_-2^0g=15/4, ∫_0^2g=1/4, 따라서 ∫_-4^2g=17/4라고 계산한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "f의 그래프 형태나 곡선 위치는 주어지지 않으므로 수직선에는 구간과 출처의 적분값만 표시한다.",
+      "mappedTo": "newVisualInformation"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 전체 구간 [-4,2], 주기 4의 한 주기 [-4,0], 해설에 나온 두 세부 적분구간을 표시한다. span 이름은 한주기·왼쪽·오른쪽이며 적분값은 캡션에 둔다.",
+    "f 또는 g의 곡선·부호 모양이나 주기 내 위치는 추정하지 않는다."
+  ]
+}

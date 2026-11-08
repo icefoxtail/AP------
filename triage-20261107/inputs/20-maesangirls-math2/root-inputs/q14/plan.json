@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "12",
+          "-9",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -5
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": -1
+      },
+      {
+        "id": "D",
+        "x": 2.5,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 3,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "시간 t",
+      "y": "위치"
+    },
+    "exactCoordinates": {
+      "D": [
+        "5/2",
+        "0"
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "caption": "원문 시간영역은 t≥0이며, 그림은 그중 정확한 표시 구간 [0,3]만 보인다. 위치는 t=1에서 원점에 접하고 t=5/2에서 다시 원점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 P는 위치 A(−5)에서 출발하고 실제 시각은 t≥0이다. 속도 v(t)=6(t−1)(t−2)의 적분으로 위치 x(t)=−5+2t³−9t²+12t를 얻는다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "그래프는 t≥0 중 정확한 부분 구간 [0,3]만 표시한다. 이 표시 창의 끝 t=3은 운동의 끝이나 원문의 정의역 경계가 아니다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "x(t)=(t−1)²(2t−5)=0에서 허용되는 도달 시각은 1과 5/2이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호 변화로 t=1은 위치의 국소 극대, t=2는 국소 극소임을 보이고, 중근 원점 도달과 실제 통과를 구별한다.",
+    "원문 정의역 t≥0과 표시 구간 [0,3]을 캡션에서 분리해 밝힌다."
+  ],
+  "sourceQuote": "속도를 적분해 위치를 구한다.\nx(t)=−5+∫₀ᵗ6(s−1)(s−2)ds\n=−5+2t³−9t²+12t\n이다.\n위치가 원점일 때는\n2t³−9t²+12t−5=0\n(t−1)²(2t−5)=0\n이다.\nt≥0이므로 두 시각은\na=1,\nb=5/2\n이다.\n따라서\na+b=1+5/2=7/2\n이다.\n그러므로 정답은 ①이다."
+}

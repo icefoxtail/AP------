@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "영점시각",
+        "points": [
+          {
+            "id": "a",
+            "between": [
+              "0",
+              "b"
+            ]
+          },
+          {
+            "id": "b"
+          },
+          {
+            "id": "c"
+          }
+        ],
+        "order": [
+          "a",
+          "b",
+          "c"
+        ],
+        "spans": [
+          {
+            "from": "a",
+            "to": "b",
+            "label": "극소 시각",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "영점과 시간순서"
+  },
+  "caption": "원문 해설에서 x(t)=0인 시각은 a,b이고 둘 다 0<t<c에 있다. a<t<b에서는 위치 그래프가 최솟값을 지나므로 기울기는 음수에서 양수로 바뀌며 방향은 한 번 바뀐다. 따라서 ㄱ만 참이고 정답은 ①이다. 표시한 것은 출처에 있는 기호의 순서뿐이며 최소 시각, 위치, 높이, 곡선 모양은 정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 0<t<c에서 x(t)=0인 시각이 a,b라고 하며, 원문 해설도 두 영점이 그 범위 안에 있다고 적는다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문 해설은 a<t<b에서 위치 그래프가 최솟값을 지나며 기울기가 음수에서 양수로 바뀐다고 설명한다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원본 위치 그래프의 실제 시각 좌표, 최솟값 시각·높이와 곡선 좌표는 제공된 수치가 아니므로 그림으로 만들지 않는다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "기호 점 0,a,b,c의 순서와 a,b 영점, a와 b 사이에 놓이는 극소 시각 범위만 표시한다.",
+    "a와 b 사이의 span은 최소 시각의 위치 범위만 가리키며 정확한 위치·높이·모양은 가정하지 않는다."
+  ]
+}

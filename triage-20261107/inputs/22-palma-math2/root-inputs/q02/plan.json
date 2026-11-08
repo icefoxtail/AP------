@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-12",
+          "3"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisVariable": "t",
+    "functionName": "v",
+    "nameLabel": {
+      "at": "END",
+      "side": "ABOVE"
+    },
+    "axisTitles": {
+      "y": "속도"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 9
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      },
+      {
+        "id": "T",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "V",
+    "T"
+  ],
+  "caption": "속도 v(t)=3t²−12t+9의 그래프에서 t=3의 점은 (3,0)이다. 가속도는 별도 함수 a(t)=6t−12이며 a(3)=6이므로 v(3)+a(3)=6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위치 x(t)=t^3−6t^2+9t이고 운동 시간은 t≥0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.axisVariable"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "속도 v(t)=3t^2−12t+9, 가속도 a(t)=6t−12이며 t=3에서 v(3)=0, a(3)=6이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선은 속도 v(t)만 표시한다. 가로축 변수는 시간 t, 세로축 제목은 속도로 구분하고, 단위가 다른 가속도는 별도 세로축 곡선으로 겹쳐 그리지 않고 식과 값으로 적는다.",
+    "곡선은 실제 정의 범위 t≥0에서만 그리며, 시각 t=3의 좌표 (3,0)과 이차함수의 꼭짓점 (2,−3)을 좌표 지시선으로 표시한다."
+  ]
+}

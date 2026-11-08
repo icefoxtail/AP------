@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-12*x",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 16
+      },
+      {
+        "id": "m",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m"
+  ],
+  "caption": "홀함수 조건에서 정해지는 f(x)=x³−12x를 그린다. 극댓점 (−2,16), 극솟점 (2,−16)이므로 수평선 y=n이 서로 다른 세 점에서 만나는 범위는 −16<n<16이다. 자연수 n은 1부터 15까지이므로 개수는 15이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "홀함수·최고차항 조건과 직선 y=f(2)와의 교점 조건에서 p=−12이므로 f(x)=x³−12x이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x−2)(x+2)이므로 극댓점은 (−2,16), 극솟점은 (2,−16)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "방정식 f(x)=n이 서로 다른 세 실근을 갖는 조건은 −16<n<16이고 자연수는 1,…,15이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 이해에 도움이 되는 함수 도식은 그래프로 보조한다."
+  ],
+  "sourceQuote": "12. 최고차항의 계수가 1인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, 방정식 $f(x)=n$이 서로 다른 3개의 실근을 갖도록 하는 모든 자연수 $n$의 개수는? [4.6점]\n\n(가) 모든 실수 $x$에 대하여 $f(-x)=-f(x)$이다.\n(나) 곡선 $y=f(x)$와 직선 $y=f(2)$는 서로 다른 두 점에서 만나고, $f(2)<0$이다."
+}

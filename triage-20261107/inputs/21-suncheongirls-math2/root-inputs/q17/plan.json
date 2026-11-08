@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -10,
+      15
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "m",
+        "x": 2,
+        "y": -3
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m"
+  ],
+  "caption": "f(x)=x³−3x²+1의 그래프에서 극댓점 M=(0,1), 극솟점 m=(2,−3)을 표시한다. F′(2)=∫₀²f(t)dt=−2이므로 물은 접선의 기울기는 −2이다. 정확한 좌표를 확인할 수 없는 x절편이나 넓이 영역은 별도로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 극점 x좌표는 0과 2이고 f(0)=1이므로 최고차항 계수 1인 삼차함수는 f(x)=x^3-3x^2+1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "F′(x)=∫_0^x f(t)dt이고 F′(2)=∫_0^2(t^3-3t^2+1)dt=-2이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 다항식과 원문에서 확인되는 두 극점을 표시한다. 원문에 없는 근 근삿값이나 음영 적분 영역은 입력하지 않는다."
+  ],
+  "sourceQuote": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $F(x)=\\displaystyle\\int_0^x(x-t)f(t),dt$라 하자. 함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 함수 $y=F(x)$의 그래프 위의 점 $(2,F(2))$에서의 접선의 기울기는? [4.5점]"
+}

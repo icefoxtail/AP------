@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-6",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "2*x^3-6*x-4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "m",
+        "x": 1,
+        "y": -8
+      },
+      {
+        "id": "P",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "tangent",
+          "slope": "18",
+          "intercept": "-36"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "m",
+    "P"
+  ],
+  "caption": "조건에서 a=6, C=−4이므로 f(x)=2x³−6x−4이다. 실제 극댓점 M=(−1,0), 극솟점 m=(1,−8), 접점 P=(2,0)을 나타낸다. f′(2)=18이므로 접선은 y=18x−36이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선 기울기 조건에서 f′(x)=6x^2-a이고 f(x)=2x^3-ax+C이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "극한 조건은 f(2)=0 및 f′(2)=24-a=3a를 주므로 a=6, C=-4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "최종 함수의 f′(x)=6x^2-6은 x=-1,1에서 0이며 f(-1)=0, f(1)=-8이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "f(2)=0이고 f′(2)=18이므로 x=2에서 접선은 y=18x-36이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "최종 함수의 실제 극값과 점 P를 좌표 리더로 표시하고, 도함수에서 얻은 참 접선 y=18x−36을 그래프 위에 그린다."
+  ],
+  "sourceQuote": "다항함수 $f(x)$가 다음 조건을 만족시킬 때 $f(0)$의 값은? (단, $a$는 상수이다.) [3.9점]\n(가) 곡선 위의 점 $(t,f(t))$에서 접선의 기울기는 $6t^2-a$이다.\n(나) $\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)}{x-2}=3a$"
+}

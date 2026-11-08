@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-18",
+          "-24",
+          "-6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": -2,
+        "y": 6
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": -18
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "positive-derivative-integral",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-3",
+        "to": "-1",
+        "fill": "BLUE",
+        "label": "정적분값 8"
+      },
+      {
+        "id": "negative-derivative-integral",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-1",
+        "to": "0",
+        "fill": "WARM",
+        "label": "정적분값 −8"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "V",
+    "C"
+  ],
+  "caption": "그리는 곡선은 f′(x)=−6(x+3)(x+1)이다. [−3,−1]의 부호 있는 적분은 8, [−1,0]의 부호 있는 적분은 −8이다. f와 g의 그래프는 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림과 해설로부터 f′(x)=−6(x+3)(x+1), 영점 −3과 a=−1, 꼭짓점 (−2,6)이 결정된다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정적분의 정확한 경계는 [−3,−1]과 [−1,0]이며 각각 부호 있는 적분 8, −8이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 적분의 integrand f(x)+g(x)는 [−1,2]에서 −16이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "도식은 원문에 주어진 도함수 f′ 그래프만 표시한다. 원문에 별도로 정의된 f, g의 그래프는 추가로 만들지 않는다.",
+    "음의 영역은 적분 경계 x=0에서 f′(0)=−18로 끝난다.",
+    "f′의 근은 −3과 −1이고 꼭짓점은 (−2,6)이다. [−3,−1]은 위쪽 넓이 8, [−1,0]은 아래쪽 부호 있는 넓이 −8이다.",
+    "함수 그래프가 풀이를 이해하는 데 도움이 되는 문항이라 정확한 원문 도함수를 준비한다."
+  ],
+  "sourceQuote": "f'(x)=-6(x+3)(x+1)"
+}

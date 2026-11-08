@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^4-3x^2-4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": -1.224744871391589,
+        "y": -6.25
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": -4
+      },
+      {
+        "id": "D",
+        "x": 1.224744871391589,
+        "y": -6.25
+      },
+      {
+        "id": "E",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "B": [
+        "-sqrt(6)/2",
+        "-25/4"
+      ],
+      "D": [
+        "sqrt(6)/2",
+        "-25/4"
+      ]
+    },
+    "regions": [
+      {
+        "id": "boundedArea",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-2",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "caption": "−2≤x≤2에서 f(x)=(x²−4)(x²+1)≤0이다. 두 근과 세 임계점을 표시하고, x축과 f 사이의 유한한 영역을 음영 처리한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 최고차항 계수가 1인 짝함수이고 g는 최고차항 계수가 1인 홀함수이며, 세 극한·도함수 조건으로 f=x⁴−3x²−4와 g=x를 결정한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=(x²−4)(x²+1)이므로 x축과 둘러싸인 도형은 −2≤x≤2에서 f가 음수인 한 영역이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x축과 f의 정확한 교점은 −2와 2이고, 내부의 두 국소 최솟점 및 중앙 국소 최댓점을 함께 보여 준다.",
+    "음영은 x축과 f가 둘러싸는 닫힌 유한 영역 하나만 나타낸다."
+  ],
+  "sourceQuote": "f,g의 차수를 각각 m,n이라 하면 최고차항의 비에서\n(m/n)x^(m−n−3)→4\n이다.\n주어진 극한이 0이 아닌 유한한 값이므로\nm−n−3=0,\nm/n=4\n이다.\n따라서\nm−n=3,\nm=4n\n이다.\n이를 대입하면\n4n−n=3\n3n=3\nn=1\nm=4\n이다.\nf는 최고차항 계수 1인 짝함수, g는 최고차항 계수 1인 홀함수이므로\nf(x)=x⁴+ax²+b,\ng(x)=x\n로 둔다.\nlimₓ→₀ f(x)g(x)/x=f(0)=b=−4\n이고\nf′(1)=4+2a=−2\n에서 a=−3이다.\n따라서\nf(x)=x⁴−3x²−4=(x²−4)(x²+1)\n이다.\n−2<x<2에서 f(x)<0이므로 넓이는\n−∫₋₂²f(x)dx\n=−[x⁵/5−x³−4x]₋₂²\n=96/5\n이다."
+}

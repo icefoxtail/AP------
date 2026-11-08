@@ -1,0 +1,93 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-6",
+      "0",
+      "6",
+      "2"
+    ],
+    "domain": [
+      -3.5,
+      1.5
+    ],
+    "viewport": [
+      -3.5,
+      1.5,
+      -7,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -2,
+        "y": 2
+      },
+      {
+        "id": "N",
+        "x": 0,
+        "y": -6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "y": "H"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "k",
+          "slope": "0",
+          "intercept": "36-14*sqrt(7)"
+        }
+      ],
+      "points": [
+        {
+          "id": "R",
+          "curveX": "-sqrt(7)",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "H(x)=2x³+6x²−6과 y=k, k=36−14√7을 나타낸다. H의 극대·극소는 (−2,2),(0,−6)이다. 한 교점은 x=−√7이고, 조건에 맞는 α,β는 각각 (−2,−1),(0,1)에 있어 α+β=−3+√7이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "u(x)≠0일 때 원래 식은 H(x)=k로 정리되며 H(x)=2x³+6x²−6이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays.lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "H′(x)=6x(x+2), H(−2)=2, H(0)=−6이다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "조건을 만족하는 합은 s=−3+√7이고, k=36−14√7이며 남은 H(x)=k 근은 −√7이다.",
+      "mappedTo": [
+        "graphPlan.overlays",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도식은 원래 절댓값 함수가 아니라 해설에서 도입한 H와 정확한 높이 y=k를 나타낸다.",
+    "표시된 점은 해설의 정확한 근 x=−√7이다. α,β의 개별 좌표는 소수로 대체하지 않고 원 해설의 구간과 정확한 합으로 나타낸다."
+  ],
+  "sourceQuote": "H(x)=2x^3+6x^2-6이라 두면 H(α)=H(β)=k이다.\nH'(x)=6x(x+2), H(-2)=2, H(0)=-6이다."
+}

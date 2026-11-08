@@ -1,0 +1,74 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "구간",
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "O",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "대칭구간",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "대칭 적분구간"
+  },
+  "caption": "g(x)=x²f(x)는 홀함수이므로 g′(x)는 짝함수다. 따라서 (x³+x)g′(x)는 홀함수여서 대칭구간 적분은 0이다. 주어진 식에서 −3∫₋₂²g′(x)dx=20이고, 미적분의 기본정리와 g의 홀함수성으로 g(2)=−10/3, g(−2)=10/3이다. 따라서 12g(−2)=40이다. 이 수직선은 적분 경계와 대칭 중심만 나타내며 실제 g의 곡선은 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 홀함수이고 g(x)=x²f(x)이므로 g도 홀함수이며 g′은 짝함수이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "(x³+x)g′(x)는 홀함수이므로 대칭구간 [-2,2]에서 그 적분은 0이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 적분값은 20이고 −3∫₋₂²g′(x)dx=20이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c4",
+      "condition": "기본정리와 g(−2)=−g(2)에서 g(2)=−10/3, g(−2)=10/3이며 12g(−2)=40이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 대칭 적분 구간 [−2,2]와 중심 0만 나타낸다.",
+    "정확한 끝점 함수값 g(−2)=10/3, g(2)=−10/3과 답 40은 캡션에 둔다.",
+    "실제 g의 곡선은 주어진 조건으로 유일하게 정해지지 않으므로 임의 곡선을 그리지 않는다.",
+    "사용자 사유: 함수 관계와 대칭 적분을 시각적으로 이해하고 리더 풀이 계획을 보조하되, 미정인 곡선은 생략한다."
+  ]
+}

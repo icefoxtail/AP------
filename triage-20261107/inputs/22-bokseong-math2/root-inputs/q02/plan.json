@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-12",
+          "9",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-2*x^3+9*x^2-12*x+7",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N"
+  ],
+  "caption": "극댓값 3 조건으로 a=7을 정한 함수 f(x)=−2x³+9x²−12x+7을 나타낸다. 극소점은 (1,2), 극대점은 (2,3)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f(x)=−2x³+9x²−12x+a이며 극댓값이 3이라고 한다. f′(x)=−6(x−1)(x−2)이므로 x=2가 극대 위치이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(2)=a−4=3에서 a=7이고, f(1)=2, f(2)=3이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 a=7로 정해진 정확한 삼차함수와 실제 극소점 (1,2), 극대점 (2,3)을 표시한다.",
+    "사용자 요청에 따라 풀이 이해에 도움이 되는 함수 그래프를 준비한다."
+  ],
+  "sourceQuote": "2. 함수 $f(x)=-2x^3+9x^2-12x+a$의 극댓값이 3일 때, 함수 $f(x)$의 극솟값은? (단, $a$는 상수) [3.6점]"
+}

@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "referenceLines": [
+      {
+        "id": "level2",
+        "y": "2",
+        "intersectionX": [
+          "1-sqrt(3)",
+          "sqrt(3)-1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -0.7320508075688772,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 0.7320508075688772,
+        "y": 2
+      },
+      {
+        "id": "K",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "exactCoordinates": {
+      "A": [
+        "1-sqrt(3)",
+        "2"
+      ],
+      "B": [
+        "sqrt(3)-1",
+        "2"
+      ],
+      "K": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "caption": "일반 ㄱ은 m<(M+m)/2<M인 중간 높이가 세 단조 구간을 만나 세 교점을 만든다. ㄴ은 y=f(b)의 접점 1개와 다른 교점 1개, 범위 밖 높이 y=2f(a)−f(b)의 교점 1개로 총 세 교점이다. M,m은 일반 높이로 둔다. ㄷ의 실제 반례 h=f(|x|)=x²(|x|+3)에서는 y=2가 x=±(√3−1)에서 만나 두 근만 생긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ㄷ은 f(|x|)가 미분가능해도 방정식의 서로 다른 실근이 네 개가 된다는 주장이 거짓인지 묻는다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "해설의 반례는 f(x)=x²(x+3), f(|x|)=x²(|x|+3)이며 높이 2에서 서로 다른 실근은 두 개다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "일반 ㄱ에서는 (M+m)/2가 m과 M 사이에 있어 세 교점을 갖고, ㄴ에서는 극값 높이의 접점과 다른 교점 및 범위 밖 반사 높이의 한 교점이 생긴다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "두 cubic pieces는 h(x)=x²(|x|+3)을 정확히 표현하고 x=0에서 연결된다. 점 K=(0,0)과 y=2 교점 A=(1−√3,2), B=(√3−1,2)를 정확한 지시선으로 표시한다.",
+    "일반 ㄱ·ㄴ의 M,m 수치는 지정하지 않았다. 세 교점 논리는 caption에 두고, 그래프는 ㄷ에 명시된 반례 하나만 그려 일반 곡선처럼 보이지 않게 했다."
+  ],
+  "coordinateLeader": [
+    "A",
+    "B",
+    "K"
+  ]
+}

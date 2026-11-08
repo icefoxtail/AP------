@@ -1,0 +1,202 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "36/25"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5/6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "p",
+    "curveColor": "BLUE",
+    "referenceCurves": [
+      {
+        "id": "gcurve",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      },
+      {
+        "id": "roof",
+        "name": "r",
+        "pieces": [
+          {
+            "coefficients": [
+              "1"
+            ]
+          }
+        ],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "1"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "intersectionX": [
+          "5/6"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "T",
+        "x": "5/6",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "O": [
+        "0",
+        "0"
+      ],
+      "T": [
+        "5/6",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "R0",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "R1",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "right",
+          "from": "R0",
+          "to": "R1"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "roof",
+        "lower": "f",
+        "from": "0",
+        "to": "5/6",
+        "fill": "LIGHT",
+        "label": "S1"
+      },
+      {
+        "id": "S2a",
+        "upper": "f",
+        "lower": "gcurve",
+        "from": "0",
+        "to": "5/6",
+        "fill": "MEDIUM",
+        "label": "S2"
+      },
+      {
+        "id": "S2b",
+        "upper": "roof",
+        "lower": "gcurve",
+        "from": "5/6",
+        "to": "1",
+        "fill": "MEDIUM",
+        "label": "S2"
+      },
+      {
+        "id": "S3",
+        "upper": "gcurve",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S3"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "T"
+  ],
+  "caption": "단위정사각형 안의 위쪽 경계 u(x)=min((36/25)x²,1)은 0≤x≤5/6에서 원래 포물선 y=(36/25)x², 5/6≤x≤1에서 정사각형 윗변 y=1이다. p는 포물선의 정사각형 내부 조각만, g=x²/3은 아래 곡선만 나타낸다. x>5/6의 포물선 연장은 정사각형 밖이어서 생략했다. S1=5/9, S2=(415+233)/1944=1/3, S3=1/9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 단위정사각형의 경계는 x=0, x=1, y=0, y=1이며 두 곡선은 y=kx²와 y=x²/3이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.referenceCurves",
+        "graphPlan.overlays",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k=36/25이므로 y=kx²은 x=5/6에서 y=1과 만난다. 단위정사각형 내부의 위쪽 경계는 그때까지 포물선이며 이후 윗변 y=1이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "S1=5/9, S2=1/3, S3=1/9이며 S2는 포물선과 아래 곡선 사이 구간 및 윗변과 아래 곡선 사이 구간을 잇는 하나의 가운데 영역이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 포물선은 y=1과 닿는 x=5/6까지만 표시한다. 이후 단위정사각형 안의 위쪽 경계는 포물선 연장이 아니라 정사각형 윗변 y=1이며, x>5/6의 원래 포물선 연장은 정사각형 밖이어서 그리지 않는다.",
+    "S2의 연결된 가운데 영역은 x=5/6에서만 표현 조각을 나누며, 실제 경계는 포물선에서 정사각형 윗변으로 이어진다. 정확한 조각 넓이는 415/1944과 233/1944이고 합은 1/3이다.",
+    "정사각형의 네 경계는 좌·하 축, 유한 정의구간 경계 x=1의 오른쪽 변, 그리고 정의구간 [0,1]을 가진 y=1 윗변으로 표시한다."
+  ],
+  "sourceQuote": "그림과 같이 네 점 $(0,0),(0,1),(1,0),(1,1)$을 꼭짓점으로 하는 정사각형 내부를 두 곡선 $y=kx^2$, $y=\\dfrac{1}{3}x^2$로 나누는 세 부분의 넓이를 각각 $S_1,S_2,S_3$이라 하자. $S_1,S_2,S_3$이 이 순서대로 등차수열을 이룰 때, 양수 $k$의 값은? [4.5점]"
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-6",
+          "-3/2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3-(3/2)*x^2-6*x+2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": -1,
+        "y": 5.5
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -8
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "11/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "M",
+    "B"
+  ],
+  "caption": "풀이에서 정해지는 a=2의 사례를 그린다. 닫힌구간 [−2,2]에서 f(−2)=0, f(−1)=11/2, f(2)=−8이므로 최솟값은 오른쪽 끝점 x=2에서 −8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 닫힌구간 [−2,2]의 최솟값을 묻는다. a=2이면 f(x)=x³−(3/2)x²−6x+2이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x+1)(x−2)이므로 후보는 x=−2,−1,2이고 함수값은 각각 0, 11/2, −8이다. 최솟값은 끝점 x=2에서 −8이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 지시: 이해에 도움이 되는 함수 도식은 그래프로 보조한다."
+  ],
+  "sourceQuote": "1. 닫힌구간 $[-2, 2]$에서 함수 $f(x)=x^3-\\frac{3}{2}x^2-6x+a$의 최솟값이 $-8$일 때, $a$의 값은? (단, $a$는 상수이다.) [3.0점]"
+}

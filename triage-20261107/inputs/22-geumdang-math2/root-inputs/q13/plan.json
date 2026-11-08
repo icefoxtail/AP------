@@ -1,0 +1,89 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "정수 보기",
+        "within": 1,
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "5"
+          },
+          {
+            "id": "B",
+            "value": "6"
+          },
+          {
+            "id": "C",
+            "value": "7"
+          },
+          {
+            "id": "D",
+            "value": "8"
+          },
+          {
+            "id": "E",
+            "value": "9"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "일반 조건과 정수 보기"
+  },
+  "caption": "hₐ(x)=f(x)−g(x)=(x−1)³+a+1은 x≥−1에서 증가하고 최솟값 hₐ(−1)=a−7을 갖는다. 따라서 일반적인 엄격 부등식 조건은 a>7이다. 예시 a=8에서는 h₈(x)=(x−1)³+9이고 최솟값은 h₈(−1)=1이다. 원문 정수 보기 중 조건을 만족하는 최솟값은 a=8이며, 연속 경계 a=7은 허용되지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)−g(x)=(x−1)^3+a+1이며 x≥−1에서 증가하므로 최솟값은 경계 x=−1에서 a−7이다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "그래프가 항상 엄격히 위에 있어야 하므로 a−7>0, 즉 실수 조건은 a>7이며 경계 a=7은 제외된다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "예시 a=8에서는 h_8(x)=(x−1)^3+9이고 h_8(−1)=1이다. 이는 일반 경계 a=7이나 일반 조건 자체와 혼동하지 않는다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c4",
+      "condition": "원문은 정수 a의 최솟값을 묻고 보기 5,6,7,8,9에서 조건을 만족하는 가장 작은 정수는 8이다.",
+      "mappedTo": [
+        "numberLine.rows[1]",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선의 열린 경계 7은 일반 실수 조건 a>7의 제외점을 나타내고, 별도 정수 보기 행은 5,6,7,8,9를 그 조건에 분류한다.",
+    "a=8은 정수 보기 중 최솟값이며 연속 조건의 경계값이 아니다. a=8의 함수 예시는 h₈(x)=(x−1)³+9, 경계 최솟값은 1로 캡션에 따로 밝혔다.",
+    "원래 반직선의 삼차함수 그래프를 ALL_REALS 도메인으로 바꾸지 않고 정확한 경계·증가 조건을 수직선으로 표현했다."
+  ]
+}

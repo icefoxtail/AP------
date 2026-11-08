@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "운동방향",
+        "band": false,
+        "points": [
+          {
+            "id": "d"
+          },
+          {
+            "id": "e"
+          }
+        ],
+        "order": [
+          "d",
+          "e"
+        ],
+        "spans": [
+          {
+            "from": "d",
+            "to": "e",
+            "label": "반대방향"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "극소 시점의 순서"
+  },
+  "caption": "d<t<e에서 f는 증가하고 g는 감소한다. 교점은 t=0,b,e이며 0<t<10의 두 교점은 b,e이다. 원본 곡선과 a에서의 곡률은 재구성하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(a)=f′(d)=0이고 g′(a)=g′(e)=0이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c2",
+      "condition": "f는 t=d에서 극소, g는 t=e에서 극소이며 d<e이다. 따라서 d<t<e에서 f′>0, g′<0이다.",
+      "mappedTo": "numberLine"
+    },
+    {
+      "id": "c3",
+      "condition": "위치 그래프 f와 g는 t=0,b,e에서 만나고, 열린구간 0<t<10에서는 b,e에서 만난다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c4",
+      "condition": "원본 풀이의 t=a 가속도 부호 판단은 도형의 매끄러운 극대와 그림에서 읽는 아래로 굽음에 근거한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 명시된 d<e 순서만 표시하고, 그 사이의 운동방향이 서로 반대임을 캡션형 구간표기로 나타낸다.",
+    "교점 b,e와 t=0 사실은 문장으로 보존하되, 미제공 시간좌표나 두 위치 곡선은 그리지 않는다.",
+    "매끄러운 극대라는 사실만으로 f″(a)<0 또는 g″(a)<0을 도출하지 않는다. 원본 풀이의 가속도 판단은 그림 의존 정보로 남긴다."
+  ]
+}

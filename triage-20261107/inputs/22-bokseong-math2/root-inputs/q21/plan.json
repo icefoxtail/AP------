@@ -1,0 +1,53 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 4
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "2"
+    },
+    {
+      "height": true,
+      "label": "4",
+      "side": "RIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "겉넓이 24*pi의 최적 닫힌 원기둥"
+  },
+  "caption": "With fixed closed-cylinder surface area 2*pi*r^2+2*pi*r*h=24*pi, the maximum-volume case is r=2 and h=4, so Vmax=16*pi. This is the optimum for the stated surface area, not a universal cylinder ratio.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The source specifies a closed cylinder with surface area 2*pi*r^2+2*pi*r*h=24*pi.",
+      "mappedTo": [
+        "solids",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Solving for h gives h=(12-r^2)/r on 0<r<sqrt(12); V=pi*(12*r-r^3).",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "V increases for 0<r<2 and decreases for 2<r<sqrt(12), so the single optimal example is r=2,h=4,V=16*pi.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Show one closed-cylinder optimum with exact labels r=2 and h=4, bound to the source fixed surface area 24*pi. The drawing is one optimal case only and does not imply a universal radius-to-height ratio."
+  ],
+  "sourceQuote": "[서술형 1]\n겉넓이가 $24\\pi$로 일정하면서 부피가 최대인 원기둥을 만드는 활동을 하려고 한다. 아래의 물음에 답하시오. [총 10.0점]\n\n(1) 원기둥의 부피($V$)를 밑면의 반지름의 길이($r$)를 이용한 식으로 나타내 보자. [4.0점]\n(2) 원기둥의 부피가 최대일 때 부피를 구하시오. [6.0점]"
+}

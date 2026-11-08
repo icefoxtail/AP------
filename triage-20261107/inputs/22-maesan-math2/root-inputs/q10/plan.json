@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-4*x",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "적분값 H(x)=∫_a^x f(t)dt=x²−4x는 x=0,4에서 0이다. a>0이므로 a=4이며 H는 원래 f가 아니라 적분값 함수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "H(x)=∫_a^x f(t)dt=x^2-4x; H(a)=0, a>0.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "H의 두 영점은 0,4이며 양수 조건으로 적분의 하한 a=4를 고른다.",
+    "H는 적분값 함수이고 원래 적분함수 f와 혼동하지 않도록 캡션에서 구분한다.",
+    "사용자 사유: 함수 그래프가 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "따라서 $a=0$ 또는 $a=4$인데 $a>0$이므로 $a=4$입니다."
+}

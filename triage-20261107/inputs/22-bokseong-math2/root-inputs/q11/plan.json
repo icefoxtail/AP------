@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-9",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^3-3*x^2-9*x+10",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 15
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -17
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": 15
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "pos15",
+        "y": "15",
+        "intersectionX": [
+          "-1",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "neg15",
+          "slope": "0",
+          "intercept": "-15",
+          "label": "y=-15"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "M",
+    "N",
+    "R"
+  ],
+  "caption": "t=15에서 |f(x)|=15는 f(x)=15 또는 f(x)=−15이다. y=15는 극대점 (−1,15)에서 접하고 x=5에서 다시 만나 서로 다른 교점이 2개이며, y=−15는 3개와 만난다. 합계 2+3=5개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³−3x²−9x+10이고 f′(x)=3(x+1)(x−3)이므로 극대점은 (−1,15), 극소점은 (3,−17)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "|f(x)|=15는 f=15 또는 f=−15이다. f=15의 서로 다른 해는 x=−1(접점, 중근)과 x=5이므로 2개다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "−17<−15<15이므로 수평선 y=−15는 삼차함수의 세 단조 가지와 만나 3개의 서로 다른 해를 준다. 개별 교점의 근삿값은 표시하지 않는다.",
+      "mappedTo": [
+        "graphPlan.overlays",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자 요청: 풀이 이해에 도움이 되는 함수 시각 자료를 그래프로 보조한다.",
+    "실수 전체의 정확한 삼차함수, 극대·극소 좌표, y=15의 정확한 교점과 y=−15 수평선을 표시한다. y=−15와의 세 교점은 정확한 식으로 그려지지만 좌표를 숫자 근삿값으로 만들지 않고 캡션에서만 3개로 센다."
+  ],
+  "sourceQuote": "11. 함수 $f(x)=x^3-3x^2-9x+10$에 대하여 $x$에 대한 방정식 $|f(x)|=t$의 서로 다른 실근의 개수가 5가 되도록 하는 실수 $t$의 값을 구하시오. [4.0점]"
+}

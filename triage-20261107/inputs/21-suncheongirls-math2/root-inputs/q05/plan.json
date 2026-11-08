@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "4",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-3*x^4+4*x^3",
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "A",
+        "x": 1.3333333333333333,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "4/3",
+        "0"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "p(x)"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "O",
+    "M",
+    "A"
+  ],
+  "caption": "p(x)=−3x⁴+4x³의 정지변곡점 O=(0,0), 전역 극댓점 M=(1,1), 다른 영점 A=(4/3,0)을 표시한다. 양끝에서 p(x)→−∞이므로 전역 최댓값은 1이고 조건은 k≥1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p(x)=-3x^4+4x^3이며 p′(x)=12x^2(1-x)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=0은 정지점이고 p(0)=0이며 x=1에서 증가에서 감소로 바뀌어 p(1)=1이 전역 최댓값이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "p(x)=x^3(4-3x)이므로 다른 영점은 x=4/3이고 양끝에서 p(x)는 -무한대로 간다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "전역 최댓값과 정지변곡점, 정확한 다른 영점을 표시한다. 증가·감소 방향과 양끝 거동은 캡션에 명시한다."
+  ],
+  "sourceQuote": "모든 실수 $x$에 대하여 부등식 $-3x^4+4x^3\\le k$가 성립하도록 하는 정수 $k$의 최솟값은? [3.9점]"
+}

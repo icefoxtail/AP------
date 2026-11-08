@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "27/4",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "7",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 번 만남을 만드는 허용 높이 a"
+  },
+  "caption": "허용 높이는 a=27/4와 a=7이다. 각 높이에 해당하는 양의 시각은 각각 (3/2,3), (2,7/2)여서 S=55/4, 4S=55이다. 이 그림은 t>0의 cubic P(t)를 그리지 않고 허용 a값만 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점은 출발 후 양수 시각에서 만나며, 만남 조건은 t>0에서 P(t)=a이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "접선 높이 a=7에서 양의 시각은 2,7/2이고 a=27/4에서 양의 시각은 3/2,3이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "S=7+27/4=55/4이므로 4S=55이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "수직선의 한 축은 허용되는 높이 a만 나타내며, 각 높이에 대응하는 양의 만남 시각은 캡션에 분리해 적는다.",
+    "실제 함수 프레이머는 열린 반직선 t>0의 삼차 sourceDomain을 지원하지 않으므로 P(t) 곡선을 그리지 않는다. 수직선은 이 cubic 전체나 모든 수평선 교점을 주장하지 않는다.",
+    "기존 해설 SVG q12_encounter_tangencies.svg와 원본·엔진 파일은 수정하지 않았다."
+  ]
+}

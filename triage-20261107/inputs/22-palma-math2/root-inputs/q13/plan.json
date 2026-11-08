@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "12",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "12*x-3*x^2",
+    "functionName": "d",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": 12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "target-integral",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "BLUE",
+        "label": "넓이 5"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "M"
+  ],
+  "caption": "도함수 d(x)=f′(x)=3x(4−x)의 [0,1] 넓이는 f(1)−f(0)=5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼차함수 f의 도함수 그래프는 x=0,4에서 영점이고, f의 극솟값은 0, 극댓값은 32이며 f(1)을 구한다.",
+      "mappedTo": [
+        "graphPlan",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 아래로 열린 도함수 그래프를 정확히 복원한다: f′(x)=3x(4−x).",
+    "∫₀⁴f′(x)dx=f(4)−f(0)=32로 계수 3을 정하고, [0,1]에서 ∫₀¹f′(x)dx=f(1)−f(0)=5를 표시한다.",
+    "좌표 라벨은 그래프 위의 실제 영점 (0,0), (4,0)과 꼭짓점 (2,12)에만 연결한다."
+  ]
+}

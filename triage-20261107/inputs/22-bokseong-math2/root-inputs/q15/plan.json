@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "5/3",
+          "-8/3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2*(x-1)*(x-5/3)",
+    "functionName": "f",
+    "sampleNote": "a=5/6",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": "5/3",
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "1-sqrt(6)/6",
+        "y": "-1/36+2*sqrt(6)/27",
+        "marker": "NONE"
+      },
+      {
+        "id": "N",
+        "x": "1+sqrt(6)/6",
+        "y": "-1/36-2*sqrt(6)/27",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "Aarea",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "WARM",
+        "label": "A"
+      },
+      {
+        "id": "Barea",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "5/3",
+        "fill": "BLUE",
+        "label": "B"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "O",
+    "A",
+    "B"
+  ],
+  "caption": "해결된 a=5/6을 대입한 f(x)=x²(x−1)(x−5/3)의 전구간 도식이다. x=0에서는 중근으로 x축에 접하고, x=1과 x=5/3에서는 x축을 통과한다. A는 [0,1]의 양의 영역, B는 [1,5/3]의 음의 영역이며 두 기하 넓이가 같아 부호 있는 적분이 0이다. M,N은 곡선의 정확한 내부 극값이지만 좌표 라벨은 생략했다. a=5/6은 입력 도식이 아니라 넓이 조건을 푼 결론이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "For a>1/2, the roots are 0 (double), 1, and 2a; signs are positive on (0,1) and negative on (1,2a).",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Equal geometric areas mean the signed integral from 0 to 2a is zero; solving gives a=5/6.",
+      "mappedTo": [
+        "graphPlan.sampleNote",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The displayed solved curve is x^2(x-1)(x-5/3), with the two sign regions separate.",
+      "mappedTo": [
+        "graphPlan.formula",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점인 이중근 (0,0)과 교차점 (1,0),(5/3,0)을 구별해 표시하고 A/B를 서로 다른 부호의 구간으로 나눈다.",
+    "a=5/6은 같은 넓이 조건에서 얻은 해이며, 그림은 해를 대입한 곡선이다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "$a>1/2$이므로 세 영점은 $0<1<2a$입니다. $f(x)=x^2(x-1)(x-2a)$는 $(0,1)$에서 양수, $(1,2a)$에서 음수입니다. 그림의 A와 B 넓이가 같다는 것은 부호를 포함한 정적분이 상쇄되어 $$\\int_0^{2a}x^2(x-1)(x-2a)dx=0$$이라는 뜻입니다. 전개하면 $x^4-(1+2a)x^3+2ax^2$이므로 $$\\left[\\frac{x^5}{5}-\\frac{(1+2a)x^4}{4}+\\frac{2ax^3}{3}\\right]_0^{2a}=\\frac{-4a^4(6a-5)}{15}=0.$$ $a>1/2$이므로 $a=0$은 제외하고 $$\\boxed{a=\\frac56}$$입니다. ②~⑤는 두 영역의 부호 있는 정적분을 0으로 만들지 못합니다."
+}

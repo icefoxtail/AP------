@@ -1,0 +1,154 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "-1",
+      "0",
+      "1/4"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1.5,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2.19736822693562,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": -1.4142135623730951,
+        "y": -1
+      },
+      {
+        "id": "D",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 1.4142135623730951,
+        "y": -1
+      },
+      {
+        "id": "F",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "G",
+        "x": 2.19736822693562,
+        "y": 1
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-sqrt(2+2*sqrt(2))",
+        "1"
+      ],
+      "B": [
+        "-2",
+        "0"
+      ],
+      "C": [
+        "-sqrt(2)",
+        "-1"
+      ],
+      "D": [
+        "0",
+        "0"
+      ],
+      "E": [
+        "sqrt(2)",
+        "-1"
+      ],
+      "F": [
+        "2",
+        "0"
+      ],
+      "G": [
+        "sqrt(2+2*sqrt(2))",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "upper",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        },
+        {
+          "id": "lower",
+          "slope": "0",
+          "intercept": "-1",
+          "label": "y=-1"
+        }
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "caption": "f(x)=x^4/4-x^2. The extrema are (0,0) and (±sqrt(2),-1). The exact levels y=1 and y=-1 meet f at x=±sqrt(2+2*sqrt(2)) and x=±sqrt(2), respectively, giving four distinct roots of |f(x)|=1. Therefore k=1.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The even quartic has exactly three distinct real zeros, so c=0; f(1)=a+b=-3/4 and f'(-1)=-4a-2b=1 give a=1/4,b=-1.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=x^4/4-x^2, with local maximum (0,0) and minima (±sqrt(2),-1).",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "The exact levels y=1 and y=-1 have intersections ±sqrt(2+2*sqrt(2)) and ±sqrt(2); these are four distinct roots of |f(x)|=1.",
+      "mappedTo": [
+        "graphPlan.overlays.lines",
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Show the source quartic with exact extrema, its three source zeros, and both exact horizontal levels y=1 and y=-1. Label the four solution roots with exact radical coordinates, including the nested radical sqrt(2+2*sqrt(2)); no approximate root label is published.",
+    "Coordinate-label leaders are ordered from left to right as A,B,C,D,E,F,G to keep the close exact points legible.",
+    "사용자 요청: 이해에 도움이 되는 함수 그래프 도식을 사용하고, 핵심 좌표의 지시선 순서를 정한다."
+  ],
+  "sourceQuote": "$f$는 짝함수이므로 0이 아닌 실근은 $\\pm r$로 짝지어집니다. 서로 다른 실근이 정확히 3개라면 가운데 근은 0이므로 $c=0$입니다. 조건에서 $$f(1)=a+b=-\\frac34,\\quad f'(-1)=-4a-2b=1.$$ 두 식을 풀면 $a=1/4$, $b=-1$이어서 $$f(x)=\\frac14x^4-x^2.$$ $f'(x)=x(x^2-2)$이므로 $x=0$에서 극대 0, $x=\\pm\\sqrt2$에서 극소 -1입니다. $|f(x)|=k$에서 $k>0$이면 $f(x)=k$는 2개 실근을 갖습니다. $f(x)=-k$는 $0<k<1$에서 4개, $k=1$에서 접점 2개, $k>1$에서 0개입니다. 따라서 전체 실근이 정확히 4개인 값은 $$\\boxed{k=1}$$로 ①입니다. ②~⑤는 $f(x)=-k$의 실근이 없어서 전체가 2개뿐입니다."
+}

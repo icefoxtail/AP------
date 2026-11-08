@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-2*x",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "below-axis",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "WARM",
+        "label": "4/3"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "O",
+    "V",
+    "A"
+  ],
+  "caption": "이 부분도는 원문의 곡선 y=x²−2x와 x축 아래 구간 [0,2]의 넓이 4/3만 표시한다. 원문 풀이에서 L=k+2>2, 두 그래프 사이 전체 넓이 L³/6, 이등분 조건 L³=16을 얻으므로 전체 넓이는 8/3이다. k=∛16−2인 직선의 기울기는 rational-coefficient graph plan에 정확히 담을 수 없어 직선과 전체 둘러싸인 영역은 그리지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x^2-2x와 y=kx는 x=0, L=k+2에서 만나며 L>2이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 그래프 사이 전체 넓이는 L^3/6이고, x축 아래 부분의 넓이는 4/3이다.",
+      "mappedTo": [
+        "graphPlan.sampleNote",
+        "graphPlan.regions",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "넓이를 이등분하므로 L^3=16; 따라서 전체 둘러싸인 넓이는 8/3이다.",
+      "mappedTo": [
+        "graphPlan.sampleNote",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 포물선 y=x^2-2x, x축과 만나는 점 (0,0), (2,0), 꼭짓점 (1,-1), 그리고 [0,2]에서 x축 아래 넓이 4/3을 정확히 표시한다.",
+    "선의 기울기는 k=∛16−2이므로 rational-coefficient piecewise-polynomial input에 정확히 넣을 수 없다. 도식에는 y=kx 직선과 두 그래프의 전체 둘러싸인 영역을 표시하지 않으며, 그 사실과 전체 넓이 L^3/6=8/3, L^3=16을 캡션에 보존한다.",
+    "사용자 사유: 함수 그래프가 풀이 이해에 도움이 되는 문항은 실제 곡선 도식으로 보조한다."
+  ],
+  "sourceQuote": "[그림 대신 교점·부호] 두 식 $x^2-2x=kx$에서 $x(x-(k+2))=0$이므로 교점의 $x$좌표는 $0,L=k+2$이다. $x$축이 둘러싸인 부분을 두 양의 넓이로 나누려면 $k>0$이어야 하고, 따라서 $L>2$이다.\n두 그래프 사이 전체 넓이는 $\\int_0^L(kx-(x^2-2x))dx=\\int_0^L x(L-x)dx=\\frac{L^3}{6}$.\n$x$축 아래에 있는 부분은 $0<x<2$에서 포물선과 축 사이의 넓이이므로 $\\int_0^2(2x-x^2)dx=[x^2-\\frac{x^3}{3}]_0^2=\\frac43$이다.\n축이 넓이를 이등분하므로 $\\frac12\\cdot\\frac{L^3}{6}=\\frac43$, 즉 $L^3=16$."
+}

@@ -1,0 +1,117 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "7/2",
+          "-14/3",
+          "7/4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "7*(x^4/4-2*x^3/3+x^2/2)",
+    "functionName": "u",
+    "curveColor": "BLUE",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0.5833333333333334
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0.5833333333333334
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "7/12"
+      ],
+      "M": [
+        "0",
+        "0"
+      ],
+      "B": [
+        "1",
+        "7/12"
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "alt",
+        "name": "v",
+        "color": "WARM",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "0",
+              "7/2",
+              "14/3",
+              "7/4"
+            ]
+          }
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "formula": "7*(x^4/4+2*x^3/3+x^2/2)",
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "M",
+    "B"
+  ],
+  "caption": "f는 두 후보 u(x)=7(x⁴/4−2x³/3+x²/2) 또는 v(x)=7(x⁴/4+2x³/3+x²/2) 중 하나다. u′=7x(x−1)², v′=7x(x+1)²이며 정지변곡점은 (1,7/12),(−1,7/12), 공통 극솟점은 (0,0)이다. ∫₀¹u=7/20, ∫₀¹v=161/60이므로 최댓값은 161/60이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′의 양의 최고차항과 두 서로 다른 실근, f′(0)=0, f′(1)f′(−1)=0으로 두 경우 f′=kx(x−1)² 또는 kx(x+1)²이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(0)=0, 불연속 높이는 0,7/12이며 두 경우 모두 k=7이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 후보의 적분값은 각각 7/20,161/60이므로 더 큰 값은 161/60이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "두 수학적으로 가능한 함수 후보를 모두 함께 그리며 u와 v 이름 및 색으로 구별한다. source function f가 어느 하나로 정해진 것으로 표시하지 않는다.",
+    "u의 stationary inflection (1,7/12), v의 stationary inflection (−1,7/12), 두 곡선의 공통 minimum (0,0)은 true-point coordinate leader로 표시한다.",
+    "정적분 비교를 캡션에 보존해 v 후보에서 최댓값 161/60이 나온다는 점을 밝힌다."
+  ]
+}

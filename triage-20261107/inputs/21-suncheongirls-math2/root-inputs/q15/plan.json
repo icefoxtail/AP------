@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-4/3",
+          "2/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "formula": "(2/3)*x^2-(4/3)*x-2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -2.6666666666666665
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": -2,
+        "y": 3.3333333333333335
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1",
+        "-8/3"
+      ],
+      "E": [
+        "-2",
+        "10/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "3"
+      ],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "L",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-2",
+        "to": "-1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "R",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-1",
+        "to": "3",
+        "fill": "MEDIUM"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "V",
+    "B",
+    "E"
+  ],
+  "caption": "보조 차 함수 h=f−g=(2/3)(x+1)(x−3)을 나타낸다. 표시된 두 영역은 h의 부호를 나누며, 원문에서 요구한 적분값은 −∫ from −2 to 3 h(x)dx=50/9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 두 곡선의 교점 x좌표는 −1,3이고 f(0)=0, g(0)=2이므로 h=f−g=(2/3)(x+1)(x−3)이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "h는 x=−1에서 0을 지나고 x=3에서 0을 지나며, h>0 on (−∞,−1), h<0 on (−1,3).",
+      "mappedTo": "graphPlan.regions"
+    },
+    {
+      "id": "c3",
+      "condition": "원문의 integrand는 g−f=−h이므로 ∫ from −2 to 3 (g−f)dx=50/9이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 해설에서 결정한 차 함수 h=f−g만 나타내며, 원문에서 식이 주어지지 않은 f와 g의 두 곡선을 만들어 그리지 않는다.",
+    "원본 곡선과 빗금 그림은 source-image HOLD 그대로 보존되며 이 보조 그림으로 교체하지 않는다. 두 음영은 h의 부호 조각이므로 요구된 g−f 적분은 그 부호를 뒤집어 계산한다."
+  ],
+  "sourceQuote": "h(x)=k(x+1)(x-3)."
+}

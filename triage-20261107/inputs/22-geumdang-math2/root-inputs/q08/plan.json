@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3+3*x-3",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 11
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "low",
+        "y": "1",
+        "intersectionX": [
+          "1"
+        ]
+      },
+      {
+        "id": "high",
+        "y": "11",
+        "intersectionX": [
+          "2"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "verticalPart",
+        "upper": "f",
+        "lower": "low",
+        "from": "1",
+        "to": "2",
+        "fill": "WARM",
+        "label": "17/4"
+      },
+      {
+        "id": "horizontalPart",
+        "upper": "high",
+        "lower": "f",
+        "from": "1",
+        "to": "2",
+        "fill": "BLUE",
+        "label": "23/4"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "이 부분도는 원래 곡선 f(x)=x³+3x−3의 x∈[1,2] 구간만 나타낸다. (1,1)과 (2,11) 사이에서 직사각형 [1,2]×[1,11]의 세로 쪽 부분 넓이는 17/4, 그 여집합은 23/4이며 직사각형 자체의 넓이는 10이다. ∫₁²f=1+17/4=21/4이고, 역함수 적분은 원점 기준 가로 띠 10과 수평 쪽 부분 23/4를 합쳐 63/4이므로 두 적분의 합은 21이다. 일반 삼차 역함수 곡선은 그리지 않는다. 원점 기준 띠와 x=1,2 세로 경계선은 별도 도형으로 표시하지 않고 캡션과 구간으로 설명한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "The displayed curve is the exact restriction f(x)=x^3+3x-3 on [1,2], with f(1)=1 and f(2)=11; f is strictly increasing.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "In [1,2]×[1,11], the area below f and above y=1 is 17/4; its complementary area above f and below y=11 is 23/4, totaling rectangle area 10.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "The origin-based strips are 1 for ∫f and 10 for ∫g; therefore ∫₁²f=21/4, ∫₁¹¹g=63/4, and the sum is 21. No general cubic inverse expression is asserted or drawn.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자가 요청한 풀이 이해용 함수 도식으로 정확한 원래 곡선의 적분 구간, 끝점, 직사각형 내부의 세로·가로 면적 분할을 나타낸다.",
+    "역함수 g를 별도의 삼차식처럼 만들지 않는다. 원점 기준 띠와 세로 경계선은 입력에서 별도 도형으로 표현하지 않아 캡션으로 설명하며, 시각화는 부분 도식이다."
+  ],
+  "sourceQuote": "8. 함수 $f(x)=x^3+3x-3$의 역함수를 $g(x)$라고 할 때,\n\n$$\\int_{1}^{2} f(x)dx + \\int_{1}^{11} g(x)dx$$\n\n의 값은? [4.2점]"
+}

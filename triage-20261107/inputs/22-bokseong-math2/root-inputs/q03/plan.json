@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "3*x^2+4*x",
+    "functionName": "v",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 20
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [],
+    "axisTitles": {
+      "x": "시간 t",
+      "y": "속도 v"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "V"
+  ],
+  "caption": "속도 곡선 v(t)=3t²+4t는 실제 시간 t≥0 중 계산점 t=2까지의 부분도 [0,2]만 표시한다. 점 A=(0,0), V=(2,20)이다. 가속도는 별도 함수 a(t)=6t+4이며 a(2)=16이다. 따라서 t=2에서 속도 20과 가속도 16의 합은 36이다. 서로 다른 양인 속도와 가속도를 같은 세로축에 겹쳐 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x(t)=t^3+2t^2-5이므로 v(t)=3t^2+4t; 실제 시간은 t>=0이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a(t)=6t+4이며 t=2에서 v(2)=20, a(2)=16, 합은 36이다.",
+      "mappedTo": [
+        "caption",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도 v(t)만 [0,2]의 부분도에 표시하고, 가속도 a(t)는 별도 식과 계산값으로 구분해 같은 축에서 혼동되지 않게 한다.",
+    "사용자 사유: 풀이 이해에 도움이 되는 함수 관계를 그래프로 보조한다."
+  ],
+  "sourceQuote": "속도는 위치의 1차 도함수, 가속도는 위치의 2차 도함수입니다. $$x(t)=t^3+2t^2-5,\\quad v(t)=3t^2+4t,\\quad a(t)=6t+4.$$ $t=2$에서 $$v(2)=3\\cdot4+8=20,\\quad a(2)=12+4=16.$$ 합은 $20+16=\\boxed{36}$이므로 ②입니다. ①·③·④·⑤는 두 도함수의 대입 결과와 다릅니다."
+}
