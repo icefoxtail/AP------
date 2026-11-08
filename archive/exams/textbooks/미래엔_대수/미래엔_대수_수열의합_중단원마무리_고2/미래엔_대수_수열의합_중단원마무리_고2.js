@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 기호 $\\sum$를 사용하여 나타내시오.\n⑴ $2+7+12+\\cdots+42$\n⑵ $6+10+14+\\cdots+122$\n⑶ $\\frac{1}{1^3}+\\frac{1}{2^3}+\\frac{1}{3^3}+\\cdots+\\frac{1}{10^3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sum_{k=1}^9 (5k-3)$, ⑵ $\\sum_{k=1}^{30} (4k+2)$, ⑶ $\\sum_{k=1}^{10} \\frac{1}{k^3}$",
+    "solution": "[풀이 전략]\n합의 각 항의 규칙성을 관찰하여 제$k$항의 일반항 식을 세우고, 첫째항($k=1$)부터 마지막 항까지의 항수를 결정하여 $\\sum_{k=1}^n a_k$ 기호로 나타낸다.\n\n[단계별 풀이]\n1단계 [⑴ $2+7+12+\\cdots+42$]:\n- 첫째항이 $2$, 공차가 $5$인 등차수열이므로 제$k$항은 $2 + (k-1) \\times 5 = 5k - 3$이다.\n- 마지막 항이 $42$이므로 $5k - 3 = 42 \\implies 5k = 45 \\implies k = 9$.\n- 따라서 $\\sum_{k=1}^9 (5k-3)$이다.\n\n2단계 [⑵ $6+10+14+\\cdots+122$]:\n- 첫째항이 $6$, 공차가 $4$인 등차수열이므로 제$k$항은 $6 + (k-1) \\times 4 = 4k + 2$이다.\n- 마지막 항이 $122$이므로 $4k + 2 = 122 \\implies 4k = 120 \\implies k = 30$.\n- 따라서 $\\sum_{k=1}^{30} (4k+2)$이다.\n\n3단계 [⑶ $\\frac{1}{1^3}+\\frac{1}{2^3}+\\frac{1}{3^3}+\\cdots+\\frac{1}{10^3}$]:\n- 제$k$항은 $\\frac{1}{k^3}$이고 항수는 $1$부터 $10$까지 $10$개이다.\n- 따라서 $\\sum_{k=1}^{10} \\frac{1}{k^3}$이다.\n\n[오답 및 경계 점검]\n마지막 항 번호 $n$의 계산에서 $5k-3=42 \\implies k=9$, $4k+2=122 \\implies k=30$을 정확히 검산한다.\n\n[결론]\n⑴ $\\sum_{k=1}^9 (5k-3)$, ⑵ $\\sum_{k=1}^{30} (4k+2)$, ⑶ $\\sum_{k=1}^{10} \\frac{1}{k^3}$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{20} a_k = 10$이고 $\\sum_{k=1}^{20} b_k = 12$일 때, 다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{20} (2a_k - 5b_k)$\n⑵ $\\sum_{k=1}^{20} (a_k + 3b_k - 2)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-40$, ⑵ $6$",
+    "solution": "[풀이 전략]\n합의 기호 $\\sum$의 기본 성질을 적용한다:\n- $\\sum (p a_k + q b_k) = p \\sum a_k + q \\sum b_k$\n- $\\sum_{k=1}^n c = c n$\n\n[단계별 풀이]\n1단계 [⑴ $\\sum_{k=1}^{20} (2a_k - 5b_k)$ 계산]:\n$$\\sum_{k=1}^{20} (2a_k - 5b_k) = 2\\sum_{k=1}^{20} a_k - 5\\sum_{k=1}^{20} b_k$$\n주어진 값을 대입하면:\n$$2(10) - 5(12) = 20 - 60 = -40$$\n\n2단계 [⑵ $\\sum_{k=1}^{20} (a_k + 3b_k - 2)$ 계산]:\n$$\\sum_{k=1}^{20} (a_k + 3b_k - 2) = \\sum_{k=1}^{20} a_k + 3\\sum_{k=1}^{20} b_k - \\sum_{k=1}^{20} 2$$\n상수항의 합은 $2 \\times 20 = 40$이므로:\n$$10 + 3(12) - 40 = 10 + 36 - 40 = 6$$\n\n[오답 및 경계 점검]\n상수항 $-2$의 합을 $-2$로만 계산하는 실수가 없도록 항수 $20$을 곱해 $-40$으로 처리한다.\n\n[결론]\n⑴ $-40$, ⑵ $6$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{20} (3k-1)$\n⑵ $\\sum_{k=1}^{15} (k-1)(k+3)$\n⑶ $\\sum_{k=1}^{10} (k^3-k+10)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $610$, ⑵ $1435$, ⑶ $3070$",
+    "solution": "[풀이 전략]\n자연수 거듭제곱의 합 공식:\n- $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$\n- $\\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6}$\n- $\\sum_{k=1}^n k^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$\n\n[단계별 풀이]\n1단계 [⑴ $\\sum_{k=1}^{20} (3k-1)$]:\n$$\\sum_{k=1}^{20} (3k-1) = 3 \\times \\frac{20 \\times 21}{2} - 20 = 3 \\times 210 - 20 = 630 - 20 = 610$$\n\n2단계 [⑵ $\\sum_{k=1}^{15} (k-1)(k+3)$]:\n식 전개: $(k-1)(k+3) = k^2 + 2k - 3$.\n$$\\sum_{k=1}^{15} k^2 = \\frac{15 \\times 16 \\times 31}{6} = 5 \\times 8 \\times 31 = 1240$$\n$$\\sum_{k=1}^{15} 2k = 2 \\times \\frac{15 \\times 16}{2} = 240$$\n$$\\sum_{k=1}^{15} 3 = 3 \\times 15 = 45$$\n따라서\n$$1240 + 240 - 45 = 1435$$\n\n3단계 [⑶ $\\sum_{k=1}^{10} (k^3-k+10)$]:\n$$\\sum_{k=1}^{10} k^3 = \\left(\\frac{10 \\times 11}{2}\\right)^2 = 55^2 = 3025$$\n$$\\sum_{k=1}^{10} k = 55$$\n$$\\sum_{k=1}^{10} 10 = 10 \\times 10 = 100$$\n따라서\n$$3025 - 55 + 100 = 2970 + 100 = 3070$$\n\n[오답 및 경계 점검]\n거듭제곱 공식의 계산을 꼼꼼히 확인한다.\n\n[결론]\n⑴ $610$, ⑵ $1435$, ⑶ $3070$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{30} \\frac{1}{(k+1)(k+2)}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15}{32}$",
+    "solution": "[풀이 전략]\n부분분수 분해 공식을 적용한다:\n$$\\frac{1}{AB} = \\frac{1}{B-A}\\left(\\frac{1}{A} - \\frac{1}{B}\\right)$$\n$\\frac{1}{(k+1)(k+2)} = \\frac{1}{k+1} - \\frac{1}{k+2}$로 분해한 뒤 이웃하는 항들을 소거한다.\n\n[단계별 풀이]\n1단계 [부분분수 전개]:\n$$\\sum_{k=1}^{30} \\frac{1}{(k+1)(k+2)} = \\sum_{k=1}^{30} \\left(\\frac{1}{k+1} - \\frac{1}{k+2}\\right)$$\n\n2단계 [망원급수 합 계산]:\n$$\\begin{aligned}\n&= \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\dots + \\left(\\frac{1}{31} - \\frac{1}{32}\\right) \\\\\n&= \\frac{1}{2} - \\frac{1}{32} = \\frac{16 - 1}{32} = \\frac{15}{32}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n첫째항의 앞부분 $\\frac{1}{2}$과 마지막 항의 뒷부분 $\\frac{1}{32}$만 남고 중간 항들이 모두 상쇄됨을 확인한다.\n\n[결론]\n$\\frac{15}{32}$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 수열 $\\{a_n\\}$과 $\\{b_n\\}$에 대하여\n$$\\sum_{k=1}^{15} (b_k - a_k) = 7,\\quad \\sum_{k=1}^{15} (a_k + 2b_k) = 11$$\n일 때, $\\sum_{k=1}^{15} a_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n$A = \\sum_{k=1}^{15} a_k$, $B = \\sum_{k=1}^{15} b_k$라 두고 $\\sum$의 선형성을 이용하여 연립일차방정식을 세운 후 $A$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [연립방정식 수립]:\n- $\\sum_{k=1}^{15} (b_k - a_k) = B - A = 7 \\implies -A + B = 7$ (식 1)\n- $\\sum_{k=1}^{15} (a_k + 2b_k) = A + 2B = 11$ (식 2)\n\n2단계 [$A$의 값 계산]:\n식 1에서 $B = A + 7$. 이를 식 2에 대입하면:\n$$A + 2(A + 7) = 11$$\n$$3A + 14 = 11 \\implies 3A = -3 \\implies A = -1$$\n따라서 $\\sum_{k=1}^{15} a_k = -1$이다.\n\n[오답 및 경계 점검]\n$B = -1 + 7 = 6$이므로 $A+2B = -1 + 12 = 11$로 두 조건식을 모두 만족한다.\n\n[결론]\n$-1$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sum_{k=1}^{20} (2k+a) = 500$을 만족시키는 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n합의 기호 $\\sum$를 분리하여 공식에 대입한다:\n$$\\sum_{k=1}^{20} (2k+a) = 2\\sum_{k=1}^{20} k + \\sum_{k=1}^{20} a = 500$$\n\n[단계별 풀이]\n1단계 [좌변의 식 정리]:\n$$2 \\times \\frac{20 \\times 21}{2} + 20a = 420 + 20a$$\n\n2단계 [방정식 풀이]:\n$$420 + 20a = 500 \\implies 20a = 80 \\implies a = 4$$\n\n[오답 및 경계 점검]\n상수항 $a$의 합은 $a$가 아니라 $20a$임에 유의한다.\n\n[결론]\n$4$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2 - 4x - 3 = 0$의 두 근을 $\\alpha$와 $\\beta$라 할 때, $\\sum_{k=1}^7 (k+\\alpha)(k+\\beta)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$231$",
+    "solution": "[풀이 전략]\n근과 계수의 관계를 이용하여 $\\alpha + \\beta$와 $\\alpha\\beta$를 구하고, 전개식 $(k+\\alpha)(k+\\beta) = k^2 + (\\alpha+\\beta)k + \\alpha\\beta$에 대입하여 $\\sum$의 성질로 합을 계산한다.\n\n[단계별 풀이]\n1단계 [근과 계수의 관계]:\n이차방정식 $x^2 - 4x - 3 = 0$의 두 근이 $\\alpha, \\beta$이므로:\n$$\\alpha + \\beta = 4,\\quad \\alpha\\beta = -3$$\n\n2단계 [일반항 전개 및 합 계산]:\n$$(k+\\alpha)(k+\\beta) = k^2 + (\\alpha+\\beta)k + \\alpha\\beta = k^2 + 4k - 3$$\n$$\\begin{aligned}\n\\sum_{k=1}^7 (k^2 + 4k - 3) &= \\sum_{k=1}^7 k^2 + 4\\sum_{k=1}^7 k - \\sum_{k=1}^7 3 \\\\\n&= \\frac{7 \\times 8 \\times 15}{6} + 4 \\times \\frac{7 \\times 8}{2} - 3 \\times 7 \\\\\n&= 140 + 4 \\times 28 - 21 \\\\\n&= 140 + 112 - 21 = 231\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n$\\frac{7 \\times 8 \\times 15}{6} = 140$, $4 \\times 28 = 112$, $3 \\times 7 = 21$이므로 $140 + 112 - 21 = 231$로 정확하다.\n\n[결론]\n$231$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$1^2 \\times 2 + 2^2 \\times 3 + 3^2 \\times 4 + \\cdots + 8^2 \\times 9$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1500$",
+    "solution": "[풀이 전략]\n주어진 식의 제$k$항은 $k^2(k+1) = k^3 + k^2$이다.\n$k=1$부터 $k=8$까지의 합이므로 $\\sum_{k=1}^8 (k^3 + k^2)$를 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 및 $\\sum$ 표현]:\n$$1^2 \\times 2 + 2^2 \\times 3 + \\dots + 8^2 \\times 9 = \\sum_{k=1}^8 k^2(k+1) = \\sum_{k=1}^8 (k^3 + k^2)$$\n\n2단계 [거듭제곱 공식 대입]:\n- $\\sum_{k=1}^8 k^3 = \\left(\\frac{8 \\times 9}{2}\\right)^2 = 36^2 = 1296$\n- $\\sum_{k=1}^8 k^2 = \\frac{8 \\times 9 \\times 17}{6} = 4 \\times 3 \\times 17 = 204$\n\n3단계 [합산]:\n$$\\sum_{k=1}^8 (k^3 + k^2) = 1296 + 204 = 1500$$\n\n[오답 및 경계 점검]\n$k(k+1) = k^2+k$의 변형 또는 공식 $\\sum k^2(k+1)$의 연산을 정확히 확인한다.\n\n[결론]\n$1500$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "등식\n$$\\sum_{k=1}^5 \\frac{k^3}{k+1} + \\sum_{k=1}^5 \\frac{1}{k+1} = \\sum_{l=1}^m \\left( \\sum_{k=1}^l 1 \\right)$$\n을 만족시키는 자연수 $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n좌변의 두 시그마는 합치는 구간이 같으므로 통분하여 합치면 $\\frac{k^3+1}{k+1} = k^2 - k + 1$로 약분된다.\n우변의 내부 시그마는 $\\sum_{k=1}^l 1 = l$이므로 우변은 $\\sum_{l=1}^m l = \\frac{m(m+1)}{2}$이다.\n좌변과 우변의 값을 비교하여 자연수 $m$을 구한다.\n\n[단계별 풀이]\n1단계 [좌변의 식 계산]:\n$$\\sum_{k=1}^5 \\frac{k^3}{k+1} + \\sum_{k=1}^5 \\frac{1}{k+1} = \\sum_{k=1}^5 \\frac{k^3+1}{k+1}$$\n인수분해 공식 $k^3+1 = (k+1)(k^2-k+1)$에 의해:\n$$= \\sum_{k=1}^5 (k^2 - k + 1) = \\sum_{k=1}^5 k^2 - \\sum_{k=1}^5 k + \\sum_{k=1}^5 1$$\n$$= \\frac{5 \\times 6 \\times 11}{6} - \\frac{5 \\times 6}{2} + 5 = 55 - 15 + 5 = 45$$\n\n2단계 [우변의 식 계산]:\n$$\\sum_{k=1}^l 1 = l \\implies \\sum_{l=1}^m l = \\frac{m(m+1)}{2}$$\n\n3단계 [방정식 풀이]:\n$$\\frac{m(m+1)}{2} = 45 \\implies m(m+1) = 90$$\n$m$은 자연수이므로 $9 \\times 10 = 90$에서\n$$m = 9$$\n\n[오답 및 경계 점검]\n$m^2+m-90 = (m-9)(m+10) = 0$에서 $m>0$이므로 $m=9$이다.\n\n[결론]\n$9$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\frac{1}{1+\\sqrt{3}} + \\frac{1}{\\sqrt{3}+\\sqrt{5}} + \\frac{1}{\\sqrt{5}+\\sqrt{7}} + \\cdots + \\frac{1}{\\sqrt{79}+\\sqrt{81}}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n각 항의 분모를 유리화한다:\n$$\\frac{1}{\\sqrt{2k-1} + \\sqrt{2k+1}} = \\frac{\\sqrt{2k+1} - \\sqrt{2k-1}}{(2k+1) - (2k-1)} = \\frac{\\sqrt{2k+1} - \\sqrt{2k-1}}{2}$$\n이웃하는 항들을 소거하여 값을 구한다.\n\n[단계별 풀이]\n1단계 [일반항의 분모 유리화]:\n제$k$항은 $\\frac{1}{\\sqrt{2k-1} + \\sqrt{2k+1}}$이다.\n분모의 유리화를 위해 분모, 분자에 $\\sqrt{2k+1} - \\sqrt{2k-1}$을 곱하면:\n$$\\frac{\\sqrt{2k+1} - \\sqrt{2k-1}}{(\\sqrt{2k+1}+\\sqrt{2k-1})(\\sqrt{2k+1}-\\sqrt{2k-1})} = \\frac{\\sqrt{2k+1} - \\sqrt{2k-1}}{2}$$\n\n2단계 [소거법 적용]:\n주어진 식은 $k=1$부터 $k=40$까지의 합이다 (마지막 항 $2k+1 = 81 \\implies k = 40$):\n$$\\begin{aligned}\n\\text{준식} &= \\frac{1}{2} \\sum_{k=1}^{40} (\\sqrt{2k+1} - \\sqrt{2k-1}) \\\\\n&= \\frac{1}{2} [(\\sqrt{3} - 1) + (\\sqrt{5} - \\sqrt{3}) + \\dots + (\\sqrt{81} - \\sqrt{79})] \\\\\n&= \\frac{1}{2} (\\sqrt{81} - 1) = \\frac{1}{2} (9 - 1) = \\frac{1}{2} \\times 8 = 4\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n첫 항의 $-1$과 끝 항의 $\\sqrt{81} = 9$만 남는 구조를 확인한다.\n\n[결론]\n$4$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열\n$$\\frac{1}{1},\\quad \\frac{1}{1+2},\\quad \\frac{1}{1+2+3},\\quad \\frac{1}{1+2+3+4},\\quad \\cdots$$\n의 첫째항부터 제$n$항까지의 합이 $\\frac{20}{11}$일 때, 자연수 $n$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n주어진 수열의 제$k$항의 분모는 $1+2+\\dots+k = \\frac{k(k+1)}{2}$이다.\n따라서 일반항 $a_k = \\frac{2}{k(k+1)}$이 되며, 부분분수로 분해하여 첫째항부터 제$n$항까지의 합을 $n$에 대한 식으로 표현한 뒤 $n$을 구한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_k$ 도출]:\n$$a_k = \\frac{1}{1+2+\\dots+k} = \\frac{1}{\\frac{k(k+1)}{2}} = \\frac{2}{k(k+1)}$$\n\n2단계 [합 $S_n$ 계산]:\n부분분수 분해 $\\frac{2}{k(k+1)} = 2\\left(\\frac{1}{k} - \\frac{1}{k+1}\\right)$에 의해:\n$$\\begin{aligned}\nS_n &= \\sum_{k=1}^n \\frac{2}{k(k+1)} = 2 \\sum_{k=1}^n \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right) \\\\\n&= 2 \\left[\\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\dots + \\left(\\frac{1}{n} - \\frac{1}{n+1}\\right)\\right] \\\\\n&= 2\\left(1 - \\frac{1}{n+1}\\right) = 2 \\times \\frac{n}{n+1} = \\frac{2n}{n+1}\n\\end{aligned}$$\n\n3단계 [방정식 풀이]:\n$$S_n = \\frac{2n}{n+1} = \\frac{20}{11}$$\n양변을 $2$로 나누면:\n$$\\frac{n}{n+1} = \\frac{10}{11} \\implies 11n = 10(n+1) \\implies 11n = 10n + 10 \\implies n = 10$$\n\n[오답 및 경계 점검]\n$n=10$일 때 $S_{10} = \\frac{20}{11}$로 조건과 완벽히 일치한다.\n\n[결론]\n$10$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$에 대하여\n$$a_{11}=10,\\quad \\sum_{k=1}^{10} k a_k = \\sum_{k=1}^{10} k a_{k+1}$$\n일 때, $\\sum_{k=1}^{10} a_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$100$",
+    "solution": "[풀이 전략]\n주어진 항등식 $\\sum_{k=1}^{10} k a_k = \\sum_{k=1}^{10} k a_{k+1}$의 양변을 각각 전개하여 항별로 이항하고 정리하여 $\\sum_{k=1}^{10} a_k$와 $a_{11}$ 사이의 관계식을 도출한다.\n\n[단계별 풀이]\n1단계 [양변의 시그마 전개]:\n- 좌변:\n$$a_1 + 2a_2 + 3a_3 + \\dots + 10a_{10}$$\n- 우변:\n$$a_2 + 2a_3 + 3a_4 + \\dots + 9a_{10} + 10a_{11}$$\n\n2단계 [동류항 이항 및 정리]:\n좌변에서 우변의 항들을 빼면:\n$$(a_1 + 2a_2 + 3a_3 + \\dots + 10a_{10}) - (a_2 + 2a_3 + \\dots + 9a_{10} + 10a_{11}) = 0$$\n$$a_1 + (2-1)a_2 + (3-2)a_3 + \\dots + (10-9)a_{10} - 10a_{11} = 0$$\n$$a_1 + a_2 + a_3 + \\dots + a_{10} = 10a_{11}$$\n\n3단계 [값 계산]:\n문제에서 $a_{11} = 10$이므로:\n$$\\sum_{k=1}^{10} a_k = 10a_{11} = 10 \\times 10 = 100$$\n\n[오답 및 경계 점검]\n시그마 항 전개에서 인덱스 차이로 인해 정확히 계수가 모두 $1$이 되어 $\\sum_{k=1}^{10} a_k$가 남는 원리를 명확히 확인한다.\n\n[결론]\n$100$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=n^2+2n$일 때, 다음에 답하시오.\n⑴ 수열 $\\{a_n\\}$의 일반항을 구하시오.\n⑵ $\\sum_{k=1}^{30} \\frac{1}{a_k a_{k+1}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n = 2n+1$, ⑵ $\\frac{10}{63}$",
+    "solution": "[풀이 전략]\n⑴ 수열의 합 $S_n$과 일반항 사이의 관계:\n- $a_1 = S_1$\n- $a_n = S_n - S_{n-1}$ ($n \\ge 2$)\n⑵ ⑴에서 구한 일반항을 대입하여 부분분수 분해 후 소거하여 합을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ 일반항 $a_n$ 구하기]:\n- $n=1$일 때: $a_1 = S_1 = 1^2 + 2(1) = 3$\n- $n \\ge 2$일 때:\n$$\\begin{aligned}\na_n &= S_n - S_{n-1} = (n^2 + 2n) - \\{(n-1)^2 + 2(n-1)\\} \\\\\n&= (n^2 + 2n) - (n^2 - 2n + 1 + 2n - 2) \\\\\n&= (n^2 + 2n) - (n^2 - 1) = 2n + 1\n\\end{aligned}$$\n$2n+1$에 $n=1$을 대입하면 $2(1)+1 = 3 = a_1$이므로 모든 자연수 $n$에 대하여 $a_n = 2n+1$이다.\n\n2단계 [⑵ $\\sum_{k=1}^{30} \\frac{1}{a_k a_{k+1}}$ 계산]:\n$a_k = 2k+1, a_{k+1} = 2k+3$이므로:\n$$\\frac{1}{a_k a_{k+1}} = \\frac{1}{(2k+1)(2k+3)} = \\frac{1}{2}\\left(\\frac{1}{2k+1} - \\frac{1}{2k+3}\\right)$$\n합을 전개하면:\n$$\\begin{aligned}\n\\sum_{k=1}^{30} \\frac{1}{a_k a_{k+1}} &= \\frac{1}{2} \\sum_{k=1}^{30} \\left(\\frac{1}{2k+1} - \\frac{1}{2k+3}\\right) \\\\\n&= \\frac{1}{2} \\left[\\left(\\frac{1}{3} - \\frac{1}{5}\\right) + \\left(\\frac{1}{5} - \\frac{1}{7}\\right) + \\dots + \\left(\\frac{1}{61} - \\frac{1}{63}\\right)\\right] \\\\\n&= \\frac{1}{2} \\left(\\frac{1}{3} - \\frac{1}{63}\\right) = \\frac{1}{2} \\left(\\frac{21 - 1}{63}\\right) = \\frac{1}{2} \\times \\frac{20}{63} = \\frac{10}{63}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n부분분수 분해 계수 $\\frac{1}{(2k+3)-(2k+1)} = \\frac{1}{2}$이 누락되지 않도록 주의한다.\n\n[결론]\n⑴ $a_n = 2n+1$, ⑵ $\\frac{10}{63}$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 항이 양수이고 첫째항과 공차가 같은 등차수열 $\\{a_n\\}$이\n$$\\sum_{k=1}^8 \\frac{1}{\\sqrt{a_k}+\\sqrt{a_{k+1}}} = \\frac{1}{2}$$\n을 만족시킬 때, $a_5$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$80$",
+    "solution": "[풀이 전략]\n첫째항과 공차가 같은 등차수열 ${a_n}$을 $a_1 = d > 0$이라 하면, $a_n = d + (n-1)d = nd$이다.\n각 항의 분모를 유리화하여 망원급수 형태로 합을 계산하여 $d$를 구한 후 $a_5 = 5d$를 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 및 분모 유리화]:\n첫째항과 공차가 $d$로 같으므로:\n$$a_n = nd$$\n분모를 유리화하면:\n$$\\frac{1}{\\sqrt{a_k} + \\sqrt{a_{k+1}}} = \\frac{\\sqrt{a_{k+1}} - \\sqrt{a_k}}{a_{k+1} - a_k} = \\frac{\\sqrt{(k+1)d} - \\sqrt{kd}}{d} = \\frac{\\sqrt{d}(\\sqrt{k+1} - \\sqrt{k})}{d} = \\frac{\\sqrt{k+1} - \\sqrt{k}}{\\sqrt{d}}$$\n\n2단계 [시그마 합 전개 및 $d$ 도출]:\n$$\\sum_{k=1}^8 \\frac{1}{\\sqrt{a_k} + \\sqrt{a_{k+1}}} = \\frac{1}{\\sqrt{d}} \\sum_{k=1}^8 (\\sqrt{k+1} - \\sqrt{k})$$\n$$= \\frac{1}{\\sqrt{d}} [(\\sqrt{2}-1) + (\\sqrt{3}-\\sqrt{2}) + \\dots + (\\sqrt{9}-\\sqrt{8})] = \\frac{1}{\\sqrt{d}} (\\sqrt{9} - 1) = \\frac{3 - 1}{\\sqrt{d}} = \\frac{2}{\\sqrt{d}}$$\n주어진 합이 $\\frac{1}{2}$이므로:\n$$\\frac{2}{\\sqrt{d}} = \\frac{1}{2} \\implies \\sqrt{d} = 4 \\implies d = 16$$\n\n3단계 [$a_5$ 계산]:\n$$a_5 = 5d = 5 \\times 16 = 80$$\n\n[오답 및 경계 점검]\n$a_n = 16n$이므로 $\\sqrt{a_1} = 4, \\sqrt{a_9} = 12$, $\\frac{1}{16}(12-4) = \\frac{8}{16} = \\frac{1}{2}$로 조건과 정확히 일치한다.\n\n[결론]\n$80$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-07",
     "standardUnit": "수열의 합",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 7,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 일반항이\n$$a_n = \\log \\sqrt{\\frac{n}{n+1}}$$\n일 때, $\\sum_{k=1}^m a_k$의 값이 정수가 되도록 하는 $100$ 이하의 자연수 $m$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$99$",
+    "solution": "[풀이 전략]\n로그의 덧셈 성질을 이용하여 $\\sum_{k=1}^m a_k$를 하나의 로그 안의 곱으로 합친다.\n진수 부분에서 이웃하는 분수들이 소거되는 규칙을 찾아 정리하고, 그 값이 정수가 되도록 하는 $100$ 이하의 자연수 $m$을 구한다.\n\n[단계별 풀이]\n1단계 [시그마 합 전개]:\n$$a_k = \\log \\sqrt{\\frac{k}{k+1}} = \\frac{1}{2} \\log \\frac{k}{k+1}$$\n$$\\begin{aligned}\n\\sum_{k=1}^m a_k &= \\sum_{k=1}^m \\log \\sqrt{\\frac{k}{k+1}} \\\\\n&= \\log \\left(\\sqrt{\\frac{1}{2}} \\times \\sqrt{\\frac{2}{3}} \\times \\dots \\times \\sqrt{\\frac{m}{m+1}}\\right) \\\\\n&= \\log \\sqrt{\\frac{1}{2} \\times \\frac{2}{3} \\times \\dots \\times \\frac{m}{m+1}} \\\\\n&= \\log \\sqrt{\\frac{1}{m+1}} = \\log (m+1)^{-\\frac{1}{2}} = -\\frac{1}{2} \\log (m+1)\n\\end{aligned}$$\n\n2단계 [정수가 되는 조건 분석]:\n$-\\frac{1}{2} \\log (m+1) = p$ ($p$는 정수)라 두면:\n$$\\log (m+1) = -2p \\implies m+1 = 10^{-2p} = (10^2)^{-p}$$\n$m$은 자연수이므로 $m+1 \\ge 2$이다. 따라서 $-2p > 0 \\implies p < 0$이어야 한다.\n$-p$가 양의 정수일 때:\n- $-p = 1$일 때: $m+1 = 10^2 = 100 \\implies m = 99$\n- $-p = 2$일 때: $m+1 = 10^4 = 10000 \\implies m = 9999$\n\n3단계 [$100$ 이하의 자연수 $m$ 결정]:\n$m \\le 100$을 만족하는 자연수는\n$$m = 99$$\n\n[오답 및 경계 점검]\n$m=99$일 때 $\\sum_{k=1}^{99} a_k = -\\frac{1}{2}\\log 100 = -\\frac{1}{2}(2) = -1$로 정수가 성립함을 확인한다.\n\n[결론]\n$99$"
   }
 ];

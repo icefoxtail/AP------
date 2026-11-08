@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음과 같이 정의된 수열 $\\{a_n\\}$에서 $a_5$를 구하시오. (단, $n=1, 2, 3, \\cdots$)\n⑴ $a_1=-2,\\quad a_{n+1}=a_n+4$\n⑵ $a_1=24,\\quad a_{n+1}=-\\frac{1}{2}a_n$\n⑶ $a_1=1,\\quad a_{n+1}=a_n-n+1$\n⑷ $a_1=2,\\quad a_{n+1}=2a_n+3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $14$, ⑵ $\\frac{3}{2}$, ⑶ $-5$, ⑷ $77$",
+    "solution": "[풀이 전략]\n수열의 귀납적 정의에 따라 주어진 점화식에 $n=1, 2, 3, 4$를 차례로 대입하여 $a_2, a_3, a_4, a_5$의 값을 순서대로 구하거나 등차수열·등비수열의 일반항을 이용한다.\n\n[단계별 풀이]\n1단계 [⑴ $a_1=-2,\\quad a_{n+1}=a_n+4$]:\n- $a_{n+1}-a_n=4$이므로 수열 $\\{a_n\\}$은 첫째항이 $-2$, 공차가 $4$인 등차수열이다.\n- $a_5 = a_1 + 4d = -2 + 4 \\times 4 = -2 + 16 = 14$\n\n2단계 [⑵ $a_1=24,\\quad a_{n+1}=-\\frac{1}{2}a_n$]:\n- $\\frac{a_{n+1}}{a_n}=-\\frac{1}{2}$이므로 수열 $\\{a_n\\}$은 첫째항이 $24$, 공비가 $-\\frac{1}{2}$인 등비수열이다.\n- $a_5 = a_1 r^4 = 24 \\times \\left(-\\frac{1}{2}\\right)^4 = 24 \\times \\frac{1}{16} = \\frac{3}{2}$\n\n3단계 [⑶ $a_1=1,\\quad a_{n+1}=a_n-n+1$]:\n- $n=1$ 대입: $a_2 = a_1 - 1 + 1 = 1 - 1 + 1 = 1$\n- $n=2$ 대입: $a_3 = a_2 - 2 + 1 = 1 - 2 + 1 = 0$\n- $n=3$ 대입: $a_4 = a_3 - 3 + 1 = 0 - 3 + 1 = -2$\n- $n=4$ 대입: $a_5 = a_4 - 4 + 1 = -2 - 4 + 1 = -5$\n\n4단계 [⑷ $a_1=2,\\quad a_{n+1}=2a_n+3$]:\n- $n=1$ 대입: $a_2 = 2a_1 + 3 = 2(2) + 3 = 7$\n- $n=2$ 대입: $a_3 = 2a_2 + 3 = 2(7) + 3 = 17$\n- $n=3$ 대입: $a_4 = 2a_3 + 3 = 2(17) + 3 = 37$\n- $n=4$ 대입: $a_5 = 2a_4 + 3 = 2(37) + 3 = 77$\n\n[오답 및 경계 점검]\n⑶에서는 $n$에 대입하는 항의 번호가 $1, 2, 3, 4$로 변화하는 부분의 부호에 주의해야 한다. ⑷에서는 $2a_n+3$ 꼴에서 항 번호 계산 시 곱셈과 덧셈 순서를 틀리지 않도록 주의한다.\n\n[결론]\n⑴ $14$, ⑵ $\\frac{3}{2}$, ⑶ $-5$, ⑷ $77$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 모든 자연수 $n$에 대하여 등식\n$$1^3+2^3+3^3+\\cdots+n^3 = \\left\\{ \\frac{n(n+1)}{2} \\right\\}^2 \\quad \\cdots\\text{ ①}$$\n이 성립함을 수학적 귀납법으로 증명한 것이다. (가)~(라)에 알맞은 것을 구하시오.\n\n(i) $n=1$일 때\n$$(\\text{좌변}) = \\boxed{\\text{가}},\\quad (\\text{우변}) = \\boxed{\\text{나}}$$\n따라서 $n=1$일 때 ①이 성립한다.\n(ii) $n=\\boxed{\\text{다}}$일 때 ①이 성립한다고 가정하면\n$$1^3+2^3+3^3+\\cdots+k^3 = \\left\\{ \\frac{k(k+1)}{2} \\right\\}^2$$\n$n=k+1$일 때\n$$\\begin{aligned} 1^3+2^3+3^3+\\cdots+k^3+(k+1)^3 &= \\boxed{\\text{라}} + (k+1)^3 \\\\ &= \\left\\{ \\frac{(k+1)(k+2)}{2} \\right\\}^2 \\end{aligned}$$\n따라서 $n=k+1$일 때도 ①이 성립한다.\n(i)과 (ii)에 의하여 모든 자연수 $n$에 대하여 ①이 성립한다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "(가) $1$, (나) $1$, (다) $k$, (라) $\\left[ \\frac{k(k+1)}{2} \\right]^2$",
+    "solution": "[풀이 전략]\n수학적 귀납법의 논리적 흐름을 따른다.\n(i) $n=1$일 때 좌변과 우변의 값을 직접 계산하여 일치함을 보인다.\n(ii) $n=k$일 때 성립함을 가정한 식의 양변에 $(k+1)^3$을 더하여 $n=k+1$일 때의 우변 식을 유도한다.\n\n[단계별 풀이]\n1단계 [$n=1$일 때 기저 단계 확인]:\n- $(\\text{좌변}) = 1^3 = 1$이므로 (가)는 $1$이다.\n- $(\\text{우변}) = \\left\\{ \\frac{1 \\times (1+1)}{2} \\right\\}^2 = 1^2 = 1$이므로 (나)는 $1$이다.\n따라서 $n=1$일 때 등식 ①이 성립한다.\n\n2단계 [$n=k$ 가정]:\n- $n=k$일 때 등식 ①이 성립한다고 가정하면\n$$1^3+2^3+3^3+\\cdots+k^3 = \\left\\{ \\frac{k(k+1)}{2} \\right\\}^2$$\n이므로 (다)는 $k$이다.\n\n3단계 [$n=k+1$일 때 귀납 단계 증명]:\n- 좌변은\n$$1^3+2^3+3^3+\\cdots+k^3+(k+1)^3$$\n- 가정에 의해 $1^3+2^3+\\cdots+k^3 = \\left\\{ \\frac{k(k+1)}{2} \\right\\}^2$이므로,\n좌변은 $\\left[ \\frac{k(k+1)}{2} \\right]^2 + (k+1)^3$이 된다. 따라서 (라)는 $\\left[ \\frac{k(k+1)}{2} \\right]^2$이다.\n- 실제로 이를 정리하면\n$$\\begin{aligned}\n\\left[ \\frac{k(k+1)}{2} \\right]^2 + (k+1)^3 &= (k+1)^2 \\left( \\frac{k^2}{4} + k + 1 \\right) \\\\\n&= (k+1)^2 \\cdot \\frac{k^2+4k+4}{4} \\\\\n&= \\frac{(k+1)^2(k+2)^2}{4} = \\left\\{ \\frac{(k+1)(k+2)}{2} \\right\\}^2\n\\end{aligned}$$\n이 되어 $n=k+1$일 때도 등식이 성립한다.\n\n[오답 및 경계 점검]\n수학적 귀납법 증명 빈칸 완성에서 $n=k$ 가정을 적용하는 부분(라)에 $(k+1)^3$을 더하기 전의 $n=k$의 합 형태가 정확히 들어가는지 확인한다.\n\n[결론]\n(가) $1$, (나) $1$, (다) $k$, (라) $\\left[ \\frac{k(k+1)}{2} \\right]^2$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a_1=1,\\quad a_{n+1}=\\frac{n}{n+1}a_n\\;(n=1, 2, 3, \\cdots)$과 같이 정의된 수열 $\\{a_n\\}$에서 $a_{10}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{10}$",
+    "solution": "[풀이 전략]\n$a_{n+1} = \\frac{n}{n+1}a_n$의 형태는 변변 곱하는(축차곱) 꼴의 점화식이다. $n=1, 2, \\dots, 9$까지 대입한 뒤 좌변끼리, 우변끼리 모두 곱하여 소거한다.\n\n[단계별 풀이]\n1단계 [축차 대입]:\n주어진 점화식에 $n=1, 2, 3, \\cdots, 9$를 차례로 대입한다.\n$$\\begin{aligned}\na_2 &= \\frac{1}{2} a_1 \\\\\na_3 &= \\frac{2}{3} a_2 \\\\\na_4 &= \\frac{3}{4} a_3 \\\\\n&\\;\\vdots \\\\\na_{10} &= \\frac{9}{10} a_9\n\\end{aligned}$$\n\n2단계 [변변 곱하기 및 연쇄 소거]:\n위 $9$개의 식을 변변 곱한다.\n$$a_2 \\times a_3 \\times \\cdots \\times a_{10} = \\left( \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{3}{4} \\times \\cdots \\times \\frac{9}{10} \\right) (a_1 \\times a_2 \\times \\cdots \\times a_9)$$\n양변에서 공통인 $a_2 \\times a_3 \\times \\cdots \\times a_9$를 나누어 소거하면\n$$a_{10} = \\frac{1}{10} a_1$$\n\n3단계 [값 계산]:\n$a_1=1$이므로\n$$a_{10} = \\frac{1}{10} \\times 1 = \\frac{1}{10}$$\n\n[오답 및 경계 점검]\n축차곱 연쇄 소거 시 분자와 분모가 대각선 방향으로 상쇄되어 첫 항의 분자 $1$과 마지막 항의 분모 $10$만 남게 된다.\n\n[결론]\n$\\frac{1}{10}$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$이 다음을 모두 만족시킨다.\n\n(가) $a_3 = a_1 + 3$\n(나) $a_{n+1} = 2a_n\\;(n=1, 2, 3, \\cdots)$\n\n수열 $\\{a_n\\}$에서 처음으로 $200$ 이상이 되는 항은 제몇 항인지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제$9$항",
+    "solution": "[풀이 전략]\n조건 (나)를 통해 수열 $\\{a_n\\}$이 공비가 $2$인 등비수열임을 확인하고, 조건 (가)를 이용하여 첫째항 $a_1$을 구한다. 그 후 일반항 $a_n \\ge 200$이 되는 최소 자연수 $n$을 찾는다.\n\n[단계별 풀이]\n1단계 [공비와 일반항의 형태]:\n조건 (나)에서 $a_{n+1} = 2a_n$이므로 수열 $\\{a_n\\}$은 공비가 $r=2$인 등비수열이다.\n일반항: $a_n = a_1 \\cdot 2^{n-1}$\n제$3$항: $a_3 = a_1 \\cdot 2^2 = 4a_1$\n\n2단계 [첫째항 $a_1$ 결정]:\n조건 (가) $a_3 = a_1 + 3$에 대입하면\n$$4a_1 = a_1 + 3 \\implies 3a_1 = 3 \\implies a_1 = 1$$\n따라서 수열 $\\{a_n\\}$의 일반항은\n$$a_n = 2^{n-1}$$\n\n3단계 [부등식 해결]:\n처음으로 $200$ 이상이 되는 항을 찾기 위해 부등식을 세운다.\n$$a_n = 2^{n-1} \\ge 200$$\n$2$의 거듭제곱을 확인하면\n$2^6 = 64$, $2^7 = 128$, $2^8 = 256$\n따라서 $n-1 \\ge 8$이어야 하므로\n$$n \\ge 9$$\n즉, 처음으로 $200$ 이상이 되는 항은 제$9$항이다.\n\n[오답 및 경계 점검]\n$2^{n-1} \\ge 200$에서 지수가 $n$이 아니라 $n-1$임에 주의해야 한다. 지수가 $8$일 때 $256 \\ge 200$이므로 $n-1=8 \\implies n=9$이다.\n\n[결론]\n제$9$항"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여\n$$2a_{n+1} = a_n + a_{n+2}$$\n를 만족시킨다. $a_2=-4$이고 $a_4=2$일 때, $\\sum_{k=1}^{15} a_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$210$",
+    "solution": "[풀이 전략]\n모든 자연수 $n$에 대하여 $2a_{n+1} = a_n + a_{n+2}$를 만족하므로 수열 $\\{a_n\\}$은 등차수열이다. 주어진 두 항의 값을 이용해 첫째항과 공차를 구한 후 등차수열의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [수열의 종류 판정]:\n$2a_{n+1} = a_n + a_{n+2}$는 등차중항의 성질이므로 $\\{a_n\\}$은 공차가 $d$인 등차수열이다.\n\n2단계 [공차와 첫째항 계산]:\n$$a_4 - a_2 = 2d = 2 - (-4) = 6 \\implies d = 3$$\n$$a_1 = a_2 - d = -4 - 3 = -7$$\n일반항: $a_n = -7 + (n-1) \\times 3 = 3n - 10$\n\n3단계 [제$15$항까지의 합 계산]:\n첫째항부터 제$15$항까지의 합 $\\sum_{k=1}^{15} a_k$ 계산:\n$$\\begin{aligned}\n\\sum_{k=1}^{15} a_k &= \\frac{15\\{2a_1 + (15-1)d\\}}{2} \\\\\n&= \\frac{15\\{2(-7) + 14 \\times 3\\}}{2} \\\\\n&= \\frac{15(-14 + 42)}{2} = \\frac{15 \\times 28}{2} \\\\\n&= 15 \\times 14 = 210\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n마지막 항 $a_{15} = 3(15) - 10 = 35$를 이용해 $\\frac{15(-7 + 35)}{2} = \\frac{15 \\times 28}{2} = 210$으로 계산해도 결과가 정확히 일치한다.\n\n[결론]\n$210$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "$a_1=1$인 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여\n$$a_{n+1} = \\begin{cases} 2a_n & (a_n < 15) \\\\ a_n - 15 & (a_n \\ge 15) \\end{cases}$$\n를 만족시킨다. $\\sum_{k=1}^m a_k = 325$일 때, 자연수 $m$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$54$",
+    "solution": "[풀이 전략]\n점화식의 조건에 따라 첫째항부터 각 항을 직접 계산하여 수열의 주기성과 규칙성을 파악한다. 한 주기의 항의 합을 구한 뒤, 전체 합 $325$를 만들기 위해 필요한 항의 개수 $m$을 단계별로 추적한다.\n\n[단계별 풀이]\n1단계 [항의 나열과 주기성 발견]:\n각 항을 순서대로 계산한다 ($a_1=1$).\n- $a_1 = 1 < 15 \\implies a_2 = 2 \\times 1 = 2$\n- $a_2 = 2 < 15 \\implies a_3 = 2 \\times 2 = 4$\n- $a_3 = 4 < 15 \\implies a_4 = 2 \\times 4 = 8$\n- $a_4 = 8 < 15 \\implies a_5 = 2 \\times 8 = 16$\n- $a_5 = 16 \\ge 15 \\implies a_6 = 16 - 15 = 1$\n- $a_6 = 1 < 15 \\implies a_7 = 2 \\times 1 = 2$\n따라서 수열 $\\{a_n\\}$은 $1, 2, 4, 8, 16$의 $5$개 항이 반복되는 주기수열이다.\n\n2단계 [한 주기의 합과 몫 계산]:\n한 주기($5$개 항)의 합 계산:\n$$1 + 2 + 4 + 8 + 16 = 31$$\n목표 합 $325$를 주기 합 $31$로 나눈다.\n$$325 = 31 \\times 10 + 15$$\n즉, $10$개의 전체 주기(총 $5 \\times 10 = 50$개 항)의 합은\n$$\\sum_{k=1}^{50} a_k = 31 \\times 10 = 310$$\n\n3단계 [남은 합 $15$ 채우기 및 $m$ 결정]:\n제$51$항부터 다시 주기의 처음부터 순서대로 더해진다.\n$a_{51} = 1$\n$a_{51} + a_{52} = 1 + 2 = 3$\n$a_{51} + a_{52} + a_{53} = 1 + 2 + 4 = 7$\n$a_{51} + a_{52} + a_{53} + a_{54} = 1 + 2 + 4 + 8 = 15$\n따라서 제$54$항까지 더했을 때 합이 정확히 $310 + 15 = 325$가 된다.\n그러므로 자연수 $m$의 값은\n$$m = 50 + 4 = 54$$\n\n[오답 및 경계 점검]\n주기 $5$개의 합 $31$과 몫 $10$에서 $50$항 확보 후, 남은 나머지 $15$가 $1+2+4+8$의 정확히 $4$개 항으로 구성되는지 검산 완료했다.\n\n[결론]\n$54$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-08",
     "standardUnit": "수학적 귀납법",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 8,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -194,7 +194,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 수학적 귀납법으로 증명하시오.\n⑴ 모든 자연수 $n$에 대하여 $3^{2n}-1$은 $8$의 배수이다.\n⑵ $n \\ge 2$인 모든 자연수 $n$에 대하여\n$$1+\\frac{1}{2}+\\frac{1}{3}+\\cdots+\\frac{1}{n} > \\frac{2n}{n+1}$$\n이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "[풀이 전략]\n수학적 귀납법의 2단계 원리를 각각 엄밀하게 서술한다.\n⑴ $n=1$일 때 $8$의 배수임을 확인하고, $n=k$일 때 $3^{2k}-1=8m$으로 둔 후 $n=k+1$일 때의 식이 $8 \\times (\\text{정수})$ 형태로 정리됨을 증명한다.\n⑵ $n=2$일 때 부등식이 성립함을 보이고, $n=k$ 가정 후 양변에 $\\frac{1}{k+1}$을 더하여 목표 우변과의 차가 양수임을 보인다.\n\n[단계별 풀이]\n1단계 [⑴ 모든 자연수 $n$에 대하여 $3^{2n}-1$이 $8$의 배수임을 증명]:\n(i) $n=1$일 때\n$$3^{2 \\times 1} - 1 = 9 - 1 = 8$$\n이므로 $8$의 배수이다. 따라서 $n=1$일 때 성립한다.\n(ii) $n=k$일 때 $3^{2k}-1$이 $8$의 배수라고 가정하면, 자연수 $m$에 대하여\n$$3^{2k}-1 = 8m \\implies 3^{2k} = 8m + 1$$\n$n=k+1$일 때\n$$\\begin{aligned}\n3^{2(k+1)} - 1 &= 3^{2k+2} - 1 = 9 \\times 3^{2k} - 1 \\\\\n&= 9(8m+1) - 1 = 72m + 8 \\\\\n&= 8(9m+1)\n\\end{aligned}$$\n$9m+1$은 자연수이므로 $3^{2(k+1)}-1$도 $8$의 배수이다.\n따라서 $n=k+1$일 때도 성립한다.\n(i)과 (ii)에 의하여 모든 자연수 $n$에 대하여 $3^{2n}-1$은 $8$의 배수이다.\n\n2단계 [⑵ $n \\ge 2$인 모든 자연수 $n$에 대하여 $1+\\frac{1}{2}+\\frac{1}{3}+\\cdots+\\frac{1}{n} > \\frac{2n}{n+1}$임을 증명]:\n(i) $n=2$일 때\n$$(\\text{좌변}) = 1 + \\frac{1}{2} = \\frac{3}{2} = \\frac{9}{6}, \\quad (\\text{우변}) = \\frac{2 \\times 2}{2+1} = \\frac{4}{3} = \\frac{8}{6}$$\n$\\frac{9}{6} > \\frac{8}{6}$이므로 $n=2$일 때 성립한다.\n(ii) $n=k\\;(k \\ge 2)$일 때 부등식이 성립한다고 가정하면\n$$1+\\frac{1}{2}+\\frac{1}{3}+\\cdots+\\frac{1}{k} > \\frac{2k}{k+1}$$\n$n=k+1$일 때 양변에 $\\frac{1}{k+1}$을 더하면\n$$1+\\frac{1}{2}+\\frac{1}{3}+\\cdots+\\frac{1}{k}+\\frac{1}{k+1} > \\frac{2k}{k+1} + \\frac{1}{k+1} = \\frac{2k+1}{k+1}$$\n이때 $\\frac{2k+1}{k+1}$과 목표 우변 $\\frac{2(k+1)}{k+2}$의 차를 계산하면\n$$\\begin{aligned}\n\\frac{2k+1}{k+1} - \\frac{2(k+1)}{k+2} &= \\frac{(2k+1)(k+2) - 2(k+1)^2}{(k+1)(k+2)} \\\\\n&= \\frac{(2k^2+5k+2) - (2k^2+4k+2)}{(k+1)(k+2)} \\\\\n&= \\frac{k}{(k+1)(k+2)}\n\\end{aligned}$$\n$k \\ge 2$이므로 $\\frac{k}{(k+1)(k+2)} > 0$이다. 따라서\n$$1+\\frac{1}{2}+\\frac{1}{3}+\\cdots+\\frac{1}{k}+\\frac{1}{k+1} > \\frac{2(k+1)}{k+2}$$\n가 성립하여 $n=k+1$일 때도 부등식이 성립한다.\n(i)과 (ii)에 의하여 $n \\ge 2$인 모든 자연수 $n$에 대하여 주어진 부등식이 성립한다.\n\n[오답 및 경계 점검]\n부등식 증명에서는 귀납 가정의 부등식에 양변 동일한 항 $\\frac{1}{k+1}$을 더한 뒤, 중간 결과 $\\frac{2k+1}{k+1}$과 최종 목표 우변 $\\frac{2(k+1)}{k+2}$을 뺀 차가 양수임을 명확히 서술해야 감점이 없다.\n\n[결론]\n풀이 참조"
   }
 ];

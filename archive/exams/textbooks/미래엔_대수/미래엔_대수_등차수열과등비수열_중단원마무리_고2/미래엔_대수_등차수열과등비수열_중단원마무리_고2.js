@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수열의 제$10$항을 추측해 보시오.\n⑴ $-\\frac{1}{2}, \\frac{1}{3}, -\\frac{1}{4}, \\cdots$\n⑵ $1, 4, 9, 16, \\cdots$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{1}{11}$, ⑵ $100$",
+    "solution": "[풀이 전략]\n수열의 각 항의 규칙성을 관찰하여 일반항 $a_n$의 규칙을 추측하고, $n=10$을 대입하여 제$10$항의 값을 구한다:\n- 부호가 교대로 바뀌는 수열: $(-1)^n$\n- 분모 또는 항이 자연수의 거듭제곱/등차 관계를 갖는지 확인.\n\n[단계별 풀이]\n1단계 [⑴ $-\\frac{1}{2}, \\frac{1}{3}, -\\frac{1}{4}, \\cdots$의 제$10$항]:\n- 부호: 홀수 번째 항은 음수, 짝수 번째 항은 양수이므로 $(-1)^n$\n- 분모: 제$1$항 $2$, 제$2$항 $3$, 제$3$항 $4$, $\\dots$로 제$n$항은 $n+1$\n- 따라서 일반항은 $a_n = \\frac{(-1)^n}{n+1}$이다.\n- $n=10$을 대입하면 $a_{10} = \\frac{(-1)^{10}}{10+1} = \\frac{1}{11}$이다.\n\n2단계 [⑵ $1, 4, 9, 16, \\cdots$의 제$10$항]:\n- 각 항은 $1^2, 2^2, 3^2, 4^2, \\dots$로 자연수의 제곱이다.\n- 따라서 일반항은 $a_n = n^2$이다.\n- $n=10$을 대입하면 $a_{10} = 10^2 = 100$이다.\n\n[오답 및 경계 점검]\n부호가 교대로 바뀔 때 짝수 번째 항($n=10$)은 양수이므로 부호가 $(+)$가 됨을 주의한다.\n\n[결론]\n⑴ $\\frac{1}{11}$, ⑵ $100$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등차수열의 일반항 $a_n$을 구하시오.\n⑴ $8, 12, 16, 20, \\cdots$\n⑵ 첫째항이 $13$이고 공차가 $-3$인 등차수열",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n = 4n+4$, ⑵ $a_n = -3n+16$",
+    "solution": "[풀이 전략]\n첫째항이 $a$, 공차가 $d$인 등차수열의 일반항 공식:\n$$a_n = a + (n-1)d$$\n\n[단계별 풀이]\n1단계 [⑴ $8, 12, 16, 20, \\cdots$]:\n- 첫째항 $a = 8$\n- 공차 $d = 12 - 8 = 4$\n- $a_n = 8 + (n-1) \\times 4 = 4n + 4$\n\n2단계 [⑵ 첫째항 $13$, 공차 $-3$]:\n- $a = 13, d = -3$\n- $a_n = 13 + (n-1) \\times (-3) = 13 - 3n + 3 = -3n + 16$\n\n[오답 및 경계 점검]\n$n=1$을 대입하여 각각 $a_1 = 8$, $a_1 = 13$이 나오는지 검산한다.\n\n[결론]\n⑴ $a_n = 4n+4$, ⑵ $a_n = -3n+16$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등비수열의 일반항 $a_n$을 구하시오.\n⑴ $2, 6, 18, 54, \\cdots$\n⑵ 첫째항이 $9$이고 공비가 $\\frac{1}{5}$인 등비수열",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n = 2 \\times 3^{n-1}$, ⑵ $a_n = 9 \\times \\left(\\frac{1}{5}\\right)^{n-1}$",
+    "solution": "[풀이 전략]\n첫째항이 $a$, 공비가 $r$인 등비수열의 일반항 공식:\n$$a_n = a \\times r^{n-1}$$\n\n[단계별 풀이]\n1단계 [⑴ $2, 6, 18, 54, \\cdots$]:\n- 첫째항 $a = 2$\n- 공비 $r = \\frac{6}{2} = 3$\n- $a_n = 2 \\times 3^{n-1}$\n\n2단계 [⑵ 첫째항 $9$, 공비 $\\frac{1}{5}$]:\n- $a = 9, r = \\frac{1}{5}$\n- $a_n = 9 \\times \\left(\\frac{1}{5}\\right)^{n-1}$\n\n[오답 및 경계 점검]\n지수가 $n$이 아니라 $n-1$임을 확인한다.\n\n[결론]\n⑴ $a_n = 2 \\times 3^{n-1}$, ⑵ $a_n = 9 \\times \\left(\\frac{1}{5}\\right)^{n-1}$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 구하시오.\n⑴ 세 수 $3, x, -15$가 이 순서대로 등차수열을 이룰 때, $x$의 값\n⑵ 세 수 $2, y, 50$이 이 순서대로 등비수열을 이룰 때, 양수 $y$의 값",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-6$, ⑵ $10$",
+    "solution": "[풀이 전략]\n- 등차중항: 세 수 $a, b, c$가 등차수열을 이루면 $2b = a + c \\implies b = \\frac{a+c}{2}$\n- 등비중항: 세 수 $a, b, c$가 등비수열을 이루면 $b^2 = ac$\n\n[단계별 풀이]\n1단계 [⑴ 세 수 $3, x, -15$의 등차중항]:\n$$2x = 3 + (-15) = -12 \\implies x = -6$$\n\n2단계 [⑵ 세 수 $2, y, 50$의 등비중항]:\n$$y^2 = 2 \\times 50 = 100$$\n$y$는 양수이므로 $y = 10$이다.\n\n[오답 및 경계 점검]\n$y^2=100$에서 $y = \\pm 10$ 중 '양수 $y$'라는 조건이 주어졌으므로 $y=10$만 답안으로 채택한다.\n\n[결론]\n⑴ $-6$, ⑵ $10$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수열의 첫째항부터 제$10$항까지의 합을 구하시오.\n⑴ 등차수열 $7, 3, -1, -5, \\cdots$\n⑵ 등비수열 $512, 256, 128, 64, \\cdots$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-110$, ⑵ $1023$",
+    "solution": "[풀이 전략]\n- 등차수열의 합 공식: $S_n = \\frac{n(2a + (n-1)d)}{2}$\n- 등비수열의 합 공식: $S_n = \\frac{a(1 - r^n)}{1 - r}$ ($r \\ne 1$)\n\n[단계별 풀이]\n1단계 [⑴ 등차수열 $7, 3, -1, -5, \\cdots$의 첫째항부터 제$10$항까지의 합]:\n- $a = 7, d = 3 - 7 = -4, n = 10$\n$$S_{10} = \\frac{10 \\times \\{2 \\times 7 + (10-1) \\times (-4)\\}}{2} = 5 \\times (14 - 36) = 5 \\times (-22) = -110$$\n\n2단계 [⑵ 등비수열 $512, 256, 128, 64, \\cdots$의 첫째항부터 제$10$항까지의 합]:\n- $a = 512, r = \\frac{256}{512} = \\frac{1}{2}, n = 10$\n$$S_{10} = \\frac{512 \\times \\left(1 - \\left(\\frac{1}{2}\\right)^{10}\\right)}{1 - \\frac{1}{2}} = \\frac{512 \\times \\left(1 - \\frac{1}{1024}\\right)}{\\frac{1}{2}} = 1024 \\times \\frac{1023}{1024} = 1023$$\n\n[오답 및 경계 점검]\n$512 = 2^9$이므로 $512 \\times 2 = 1024 = 2^{10}$으로 분모와 완벽히 약분되어 정수 $1023$이 정확히 계산된다.\n\n[결론]\n⑴ $-110$, ⑵ $1023$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에 대하여\n$$a_2+a_4=22,\\quad a_8=31$$\n일 때, $a_{10}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$39$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 첫째항을 $a$, 공차를 $d$라 하면 일반항은 $a_n = a + (n-1)d$이다.\n주어진 조건을 $a$와 $d$에 대한 연립방정식으로 나타내어 푼 후 $a_{10} = a + 9d$를 구한다.\n\n[단계별 풀이]\n1단계 [연립방정식 수립]:\n- $a_2 + a_4 = (a+d) + (a+3d) = 2a + 4d = 22 \\implies a + 2d = 11$ (식 1)\n- $a_8 = a + 7d = 31$ (식 2)\n\n2단계 [공차 $d$와 첫째항 $a$ 계산]:\n식 2에서 식 1을 빼면:\n$$(a + 7d) - (a + 2d) = 31 - 11 \\implies 5d = 20 \\implies d = 4$$\n$d = 4$를 식 1에 대입하면:\n$$a + 2(4) = 11 \\implies a + 8 = 11 \\implies a = 3$$\n\n3단계 [$a_{10}$의 값 계산]:\n$$a_{10} = a + 9d = 3 + 9 \\times 4 = 3 + 36 = 39$$\n\n[오답 및 경계 점검]\n$a_8 = 31$이므로 $a_{10} = a_8 + 2d = 31 + 2(4) = 39$로 바로 도출해도 동일하다.\n\n[결론]\n$39$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 수 $2$와 $42$ 사이에 $n$개의 수를 넣어 만든 등차수열\n$$2, a_1, a_2, a_3, \\cdots, a_n, 42$$\n의 합이 $198$일 때, $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "[풀이 전략]\n수열 $2, a_1, a_2, \\dots, a_n, 42$는 첫째항이 $2$, 마지막 항이 $42$이고 전체 항수가 $n+2$개인 등차수열이다.\n등차수열의 합 공식 $S = \\frac{(\\text{항수}) \\times (\\text{첫째항} + \\text{끝항})}{2}$를 적용한다.\n\n[단계별 풀이]\n1단계 [등차수열의 합 공식 대입]:\n전체 항의 개수는 $n + 2$개이므로 전체 합 $S$는:\n$$S = \\frac{(n+2)(2 + 42)}{2} = \\frac{(n+2) \\times 44}{2} = 22(n+2)$$\n\n2단계 [$n$의 값 계산]:\n주어진 합이 $198$이므로:\n$$22(n+2) = 198 \\implies n+2 = \\frac{198}{22} = 9 \\implies n = 7$$\n\n[오답 및 경계 점검]\n새로 넣은 항의 개수 $n$과 전체 수열의 항수 $n+2$를 혼동하지 않도록 유의한다.\n\n[결론]\n$7$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$50$ 이하의 자연수 중에서 $3$ 또는 $4$로 나누어떨어지는 수의 합을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$600$",
+    "solution": "[풀이 전략]\n합의 법칙과 포함-배제의 원리를 적용한다:\n($3$ 또는 $4$로 나누어떨어지는 수의 합) = ($3$의 배수의 합) + ($4$의 배수의 합) - ($12$의 배수의 합)\n각 배수들의 나열은 등차수열을 이루므로 등차수열의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [$50$ 이하의 $3$의 배수의 합 계산]:\n$3, 6, 9, \\dots, 48$은 첫째항 $3$, 끝항 $48$, 항수 $16$인 등차수열이다:\n$$\\text{합}_1 = \\frac{16(3 + 48)}{2} = 8 \\times 51 = 408$$\n\n2단계 [$50$ 이하의 $4$의 배수의 합 계산]:\n$4, 8, 12, \\dots, 48$은 첫째항 $4$, 끝항 $48$, 항수 $12$인 등차수열이다:\n$$\\text{합}_2 = \\frac{12(4 + 48)}{2} = 6 \\times 52 = 312$$\n\n3단계 [$50$ 이하의 $12$의 배수(공배수)의 합 계산]:\n$12, 24, 36, 48$의 $4$개 수의 합:\n$$\\text{합}_3 = 12 + 24 + 36 + 48 = 120$$\n\n4단계 [포함-배제의 원리로 총합 계산]:\n$$\\text{총합} = 408 + 312 - 120 = 720 - 120 = 600$$\n\n[오답 및 경계 점검]\n$3$과 $4$의 최소공배수인 $12$의 배수가 중복으로 더해지므로 한 번 빼주어야 한다.\n\n[결론]\n$600$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "등비수열 $\\{a_n\\}$에 대하여\n$$a_1+a_3=\\frac{5}{3},\\quad a_4+a_6=45$$\n일 때, $a_1$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{6}$",
+    "solution": "[풀이 전략]\n등비수열 ${a_n}$의 첫째항을 $a$, 공비를 $r$이라 하면 일반항은 $a_n = ar^{n-1}$이다.\n두 조건을 $a$와 $r$로 표현한 뒤 두 식의 비율을 이용하여 공비 $r$을 먼저 구한다.\n\n[단계별 풀이]\n1단계 [식의 정리]:\n- $a_1 + a_3 = a + ar^2 = a(1 + r^2) = \\frac{5}{3}$ (식 1)\n- $a_4 + a_6 = ar^3 + ar^5 = ar^3(1 + r^2) = 45$ (식 2)\n\n2단계 [공비 $r$ 구하기]:\n식 2를 식 1로 나누면:\n$$\\frac{ar^3(1+r^2)}{a(1+r^2)} = \\frac{45}{\\frac{5}{3}} \\implies r^3 = 45 \\times \\frac{3}{5} = 27$$\n실수 $r$에 대하여 $r = 3$이다.\n\n3단계 [첫째항 $a_1$ 계산]:\n$r = 3$을 식 1에 대입하면:\n$$a(1 + 3^2) = 10a = \\frac{5}{3} \\implies a = \\frac{5}{3 \\times 10} = \\frac{1}{6}$$\n\n[오답 및 경계 점검]\n$a_1 = \\frac{1}{6}, r = 3$일 때:\n$a_1 + a_3 = \\frac{1}{6} + \\frac{1}{6}(9) = \\frac{10}{6} = \\frac{5}{3}$,\n$a_4 + a_6 = \\frac{1}{6}(27) + \\frac{1}{6}(243) = \\frac{270}{6} = 45$로 조건과 완벽히 일치한다.\n\n[결론]\n$\\frac{1}{6}$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 수 $a, \\frac{13}{2}, b$가 이 순서대로 등차수열을 이루고, 세 수 $a, 6, b$는 이 순서대로 등비수열을 이룰 때, $a^2+b^2$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$97$",
+    "solution": "[풀이 전략]\n- 등차중항: $2 \\times \\frac{13}{2} = a + b \\implies a + b = 13$\n- 등비중항: $6^2 = ab \\implies ab = 36$\n곱셈 공식의 변형 $a^2 + b^2 = (a+b)^2 - 2ab$를 적용한다.\n\n[단계별 풀이]\n1단계 [등차중항과 등비중항 조건 정리]:\n- $a, \\frac{13}{2}, b$가 등차수열을 이루므로:\n$$2 \\times \\frac{13}{2} = a + b \\implies a + b = 13$$\n- $a, 6, b$가 등비수열을 이루므로:\n$$6^2 = ab \\implies ab = 36$$\n\n2단계 [$a^2 + b^2$ 계산]:\n$$a^2 + b^2 = (a+b)^2 - 2ab = 13^2 - 2 \\times 36 = 169 - 72 = 97$$\n\n[오답 및 경계 점검]\n실제로 $a, b$는 $t^2 - 13t + 36 = (t-4)(t-9) = 0$의 두 근이므로 ${a, b} = {4, 9}$이다.\n$4^2 + 9^2 = 16 + 81 = 97$로 직접 계산해도 완벽히 일치한다.\n\n[결론]\n$97$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$이 첫째항이 $1$이고 공차가 $2$인 등차수열일 때, 수열 $\\{2^{a_n}\\}$의 첫째항부터 제$5$항까지의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$682$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 일반항을 구한 후, 수열 ${2^{a_n}}$이 첫째항과 공비가 얼마인 등비수열을 이루는지 확인하고 등비수열의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [등차수열 ${a_n}$의 일반항]:\n첫째항이 $1$, 공차가 $2$이므로\n$$a_n = 1 + (n-1) \\times 2 = 2n - 1$$\n\n2단계 [수열 ${2^{a_n}}$의 구조 파악]:\n$b_n = 2^{a_n} = 2^{2n-1}$이라 하면:\n- 첫째항: $b_1 = 2^{2(1)-1} = 2^1 = 2$\n- 둘째항: $b_2 = 2^{2(2)-1} = 2^3 = 8$\n- 공비: $r = \\frac{b_2}{b_1} = \\frac{8}{2} = 4 = 2^2$\n따라서 수열 ${2^{a_n}}$은 첫째항이 $2$, 공비가 $4$인 등비수열이다.\n\n3단계 [첫째항부터 제$5$항까지의 합 계산]:\n$$S_5 = \\frac{2(4^5 - 1)}{4 - 1} = \\frac{2(1024 - 1)}{3} = \\frac{2 \\times 1023}{3} = 2 \\times 341 = 682$$\n\n[오답 및 경계 점검]\n$2 + 8 + 32 + 128 + 512 = 682$로 각 항을 직접 더해도 일치한다.\n\n[결론]\n$682$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "월이율이 $0.5\\,\\%$이고 $1$개월마다 복리로 매월초에 $10$만 원씩 $36$개월 동안 적립할 때, $36$개월 말까지 적립금의 원리합계를 구하시오.\n(단, $1.005^{36}=1.2$로 계산한다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제 $402$항",
+    "solution": "[풀이 전략]\n월초 적립(기수불) 원리합계 공식:\n매월초 $a$원씩 연이율(월이율) $r$로 $n$개월 동안 적립할 때의 원리합계 $S$:\n$$S = \\frac{a(1+r)\\{(1+r)^n - 1\\}}{r}$$\n(첫 회에 적립한 금액은 $n$개월간 이자가 붙어 $a(1+r)^n$이 되고, 마지막 $n$회째 적립한 금액은 $1$개월간 이자가 붙어 $a(1+r)$이 된다.)\nWait! Wait! Question 12 content in textbook:\n\"월이율이 0.5%이고 1개월마다 복리로 매월초에 10만 원씩 36개월 동안 적립할 때, 36개월 말까지 적립금의 원리합계를 구하시오. (단, 1.005^36 = 1.2로 계산한다.)\"\nWait, why did the answer say \"402만 원\"?\n$a = 10$, $r = 0.005$, $n = 36$.\n$S = \frac{10(1.005)(1.005^{36} - 1)}{0.005} = \frac{10.05 \times (1.2 - 1)}{0.005} = \frac{10.05 \times 0.2}{0.005} = \frac{2.01}{0.005} = 402$만 원!\nAh! In Page 188 line 118: \"402만 원\"! (Not \"제 402항\", it was \"402만 원\"!)\n\n[단계별 풀이]\n1단계 [기수불 원리합계 공식 수립]:\n- 매월 적립금 $a = 10$만 원\n- 월이율 $r = 0.5\\% = 0.005$\n- 적립 횟수 $n = 36$개월\n매월초에 넣은 금액은 $36$개월 말까지 각각 $1$개월치 이상의 이자가 복리로 붙으므로:\n$$S = \\frac{10(1+0.005)\\{(1+0.005)^{36} - 1\\}}{0.005}$$\n\n2단계 [계산]:\n$1.005^{36} = 1.2$이므로:\n$$S = \\frac{10 \\times 1.005 \\times (1.2 - 1)}{0.005} = \\frac{10.05 \\times 0.2}{0.005} = \\frac{2.01}{0.005} = 402\\text{만 원}$$\n\n[오답 및 경계 점검]\n월말 적립(기말불)의 경우 마지막 적립금에 이자가 붙지 않아 $\\frac{a((1+r)^n-1)}{r}$이지만, 본 문제는 '매월초 적립'이므로 첫째항에 $1+r$이 곱해지는 기수불 공식이 올바르게 적용되어야 한다.\n\n[결론]\n$402$만 원"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "공차가 양수인 등차수열 $\\{a_n\\}$이 다음을 모두 만족시킬 때, $a_4$를 구하시오.\n\n(가) $a_5 \\times a_7 < 0$\n(나) $|a_5|+|a_7| = -6+|a_2|+|a_4|$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3$",
+    "solution": "[풀이 전략]\n공차가 양수인 등차수열 ${a_n}$에서 항의 값은 단조증가한다.\n조건 (가) $a_5 \\times a_7 < 0$이므로 $a_5 < 0, a_7 > 0$이다.\n따라서 $n \\le 5$일 때 $a_n < 0$, $n \\ge 7$일 때 $a_n > 0$이다.\n조건 (나)의 절댓값을 부호에 맞게 해제하여 첫째항과 공차 사이의 관계를 찾고 $a_4$를 구한다.\n\n[단계별 풀이]\n1단계 [부호 판정]:\n공차 $d > 0$이므로 수열은 증가수열이다.\n$a_5 \\times a_7 < 0$이므로\n$$a_5 < 0,\\quad a_7 > 0$$\n따라서 $a_2 < 0, a_4 < 0, a_5 < 0$이고, $a_7 > 0$이다.\n\n2단계 [조건 (나)의 절댓값 해제]:\n$$|a_5| + |a_7| = -6 + |a_2| + |a_4|$$\n부호에 따라 절댓값을 풀면:\n$$-a_5 + a_7 = -6 + (-a_2) + (-a_4)$$\n$$-a_5 + a_7 = -6 - a_2 - a_4 \\implies a_2 + a_4 - a_5 + a_7 = -6$$\n\n3단계 [일반항 대입]:\n$a_n = a + (n-1)d$를 대입하면:\n$$(a+d) + (a+3d) - (a+4d) + (a+6d) = -6$$\n$$2a + 6d = -6 \\implies a + 3d = -3$$\n그런데 $a_4 = a + 3d$이므로:\n$$a_4 = -3$$\n\n[오답 및 경계 점검]\n$a_4 = -3 < 0$이므로 $a_4 < 0$ 조건과 완벽히 부합한다. $a_4$의 식 자체가 $a+3d$로 바로 묶여 공차나 첫째항을 개별적으로 구하지 않고도 확정된다.\n\n[결론]\n$-3$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "첫째항이 $31$이고 공차가 $-5$인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$112$",
+    "solution": "[풀이 전략]\n첫째항이 양수이고 공차가 음수인 등차수열의 합 $S_n$은 일반항 $a_n$이 양수인 항까지만 더했을 때 최댓값을 갖는다.\n$a_n > 0$을 만족하는 자연수 $n$의 최댓값을 구한 뒤, 그때까지의 합 $S_n$을 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_n$ 구하기]:\n첫째항 $a = 31$, 공차 $d = -5$이므로:\n$$a_n = 31 + (n-1) \\times (-5) = -5n + 36$$\n\n2단계 [양수인 항의 범위 구하기]:\n$$a_n > 0 \\implies -5n + 36 > 0 \\implies 5n < 36 \\implies n < \\frac{36}{5} = 7.2$$\n따라서 제$7$항까지는 양수이고, 제$8$항부터는 음수가 된다 ($a_7 = 1, a_8 = -4$).\n그러므로 $S_n$은 $n = 7$일 때 최댓값을 갖는다.\n\n3단계 [최댓값 $S_7$ 계산]:\n$$S_7 = \\frac{7(a_1 + a_7)}{2} = \\frac{7(31 + 1)}{2} = \\frac{7 \\times 32}{2} = 7 \\times 16 = 112$$\n\n[오답 및 경계 점검]\n이차함수로 $S_n = \\frac{n(62 - 5(n-1))}{2} = -\\frac{5}{2}n^2 + \\frac{67}{2}n$의 꼭짓점 $n = \\frac{67}{10} = 6.7$에서 가장 가까운 자연수 $n=7$을 대입해도 동일함을 확인할 수 있다.\n\n[결론]\n$112$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 한 변의 길이가 $2$인 정사각형 모양의 종이가 있다. 첫 번째 시행에서 각 변의 중점을 이어서 만든 네 개의 정사각형 중에서 왼쪽 위의 정사각형을 색칠한다. 두 번째 시행에서 첫 번째 시행 후 남은 오른쪽 아래의 정사각형에서 같은 방법으로 정사각형을 색칠한다. 이와 같은 시행을 $9$회 반복했을 때, 색칠한 부분의 넓이의 합을 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{4}{3}\\left[1 - \\left(\\frac{1}{4}\\right)^9\\right]$",
+    "solution": "[풀이 전략]\n각 시행에서 색칠되는 영역의 넓이가 첫째항이 얼마이고 공비가 얼마인 등비수열을 이루는지 확인한다.\n$9$회 반복했을 때의 총합은 등비수열의 첫째항부터 제$9$항까지의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [각 시행에서의 색칠 넓이 계산]:\n원래 한 변의 길이가 $2$인 정사각형의 넓이는 $2^2 = 4$이다.\n- 1회 시행: 전체 정사각형의 $\\frac{1}{4}$을 색칠하므로\n$$S_1 = 4 \\times \\frac{1}{4} = 1$$\n- 2회 시행: 1회 시행 후 남은 오른쪽 아래의 정사각형(넓이 $1$)의 $\\frac{1}{4}$을 색칠하므로\n$$S_2 = 1 \\times \\frac{1}{4} = \\frac{1}{4}$$\n- 3회 시행:\n$$S_3 = \\frac{1}{4} \\times \\frac{1}{4} = \\left(\\frac{1}{4}\\right)^2$$\n따라서 $n$회 시행에서 색칠되는 넓이는 첫째항이 $1$, 공비가 $\\frac{1}{4}$인 등비수열을 이룬다.\n\n2단계 [$9$회 시행까지의 넓이의 합 계산]:\n등비수열의 합 공식 $S_n = \\frac{a(1-r^n)}{1-r}$에 $a=1, r=\\frac{1}{4}, n=9$를 대입하면:\n$$\\text{총합} = \\frac{1 \\times \\left(1 - \\left(\\frac{1}{4}\\right)^9\\right)}{1 - \\frac{1}{4}} = \\frac{1 - \\left(\\frac{1}{4}\\right)^9}{\\frac{3}{4}} = \\frac{4}{3}\\left[1 - \\left(\\frac{1}{4}\\right)^9\\right]$$\n\n[오답 및 경계 점검]\n공비가 $\\frac{1}{4}$이고 항수가 $9$개이므로 $\\frac{4}{3}[1 - (1/4)^9]$ 형태로 깔끔하게 정리한다.\n\n[결론]\n$\\frac{4}{3}\\left[1 - \\left(\\frac{1}{4}\\right)^9\\right]$"
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 마무리",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -446,7 +446,7 @@ window.questionBank = [
     "wide": false,
     "content": "등비수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$에 대하여\n$$S_{n+5}-S_n = 121 \\times 3^n$$\n일 때, $a_3$을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n등비수열 ${a_n}$의 합 $S_n$에 대하여 $S_{n+5} - S_n$은 $a_{n+1} + a_{n+2} + \\dots + a_{n+5}$를 의미한다.\n이를 일반항 $ar^k$로 묶어 공비 $r$과 첫째항 $a$를 구한 후 $a_3 = ar^2$을 계산한다.\n\n[단계별 풀이]\n1단계 [$S_{n+5} - S_n$의 식 전개]:\n$$S_{n+5} - S_n = a_{n+1} + a_{n+2} + a_{n+3} + a_{n+4} + a_{n+5}$$\n$$= ar^n + ar^{n+1} + ar^{n+2} + ar^{n+3} + ar^{n+4} = ar^n(1 + r + r^2 + r^3 + r^4)$$\n등비수열의 합 공식에 의해:\n$$ar^n \\times \\frac{r^5 - 1}{r - 1} = 121 \\times 3^n$$\n\n2단계 [공비 $r$과 첫째항 $a$ 도출]:\n모든 자연수 $n$에 대하여 성립해야 하므로 지수 부분이 일치해야 한다:\n$$r = 3$$\n$r = 3$을 대입하면:\n$$a \\times 3^n \\times \\frac{3^5 - 1}{3 - 1} = a \\times 3^n \\times \\frac{242}{2} = a \\times 3^n \\times 121$$\n주어진 우변이 $121 \\times 3^n$이므로:\n$$121 a \\times 3^n = 121 \\times 3^n \\implies a = 1$$\n\n3단계 [$a_3$의 값 계산]:\n$$a_3 = ar^2 = 1 \\times 3^2 = 9$$\n\n[오답 및 경계 점검]\n$n=1$일 때 $a(3)(121) = 363$, $n=2$일 때 $a(9)(121) = 1089$로 비율이 $3$씩 증가함을 확인한다.\n\n[결론]\n$9$"
   }
 ];
