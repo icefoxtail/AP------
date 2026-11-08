@@ -1,0 +1,371 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "선분 $AB$를 지름으로 하는 반원의 호 $AB$ 위에 점 $P$",
+  "sourceConditions": [
+    {
+      "id": "q20-c1",
+      "condition": "AB=4를 지름으로 하는 반원, 중심 O",
+      "mappedTo": "A,B,O,k"
+    },
+    {
+      "id": "q20-c2",
+      "condition": "호 AB 위의 점 P, ∠PAB=θ",
+      "mappedTo": "P"
+    },
+    {
+      "id": "q20-c3",
+      "condition": "중심이 A이고 반지름이 AP인 원과 선분 AB의 교점 Q",
+      "mappedTo": "Q,cA"
+    },
+    {
+      "id": "q20-c4",
+      "condition": "호 PB 위의 점 R, 호 PR : 호 RB = 3 : 2",
+      "mappedTo": "R"
+    },
+    {
+      "id": "q20-c5",
+      "condition": "O에서 선분 AP에 내린 수선의 발 H",
+      "mappedTo": "H"
+    }
+  ],
+  "newVisualInformation": [
+    "반원 위의 점 P, R, 선분 AB 위의 점 Q, O, 선분 AP 위의 수선의 발 H의 위치와 영역 S1과 부채꼴 ORB"
+  ],
+  "caption": "반원 위의 점 P와 R, 중심 A인 호 PQ, 수선의 발 H를 나타내고 호 PQ와 두 선분 PO, OQ로 둘러싸인 부분 S1을 칠하고 부채꼴 ORB를 나타낸 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineAP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPAB",
+        "refs": [
+          "P",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcS",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcPQ",
+        "circle": "cA",
+        "center": "A",
+        "from": "Q",
+        "to": "P",
+        "side": "MINOR",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "P",
+              "steps": [
+                {
+                  "to": "Q",
+                  "arc": {
+                    "center": "A",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                },
+                {
+                  "to": "P"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고3_미적분2_유사/q20.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q20-problem-result.json",
+    "statePath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q20-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q20-problem.svg"
+  }
+}

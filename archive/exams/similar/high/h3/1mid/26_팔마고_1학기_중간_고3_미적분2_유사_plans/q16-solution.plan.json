@@ -1,0 +1,392 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\angle PAB=\\frac\\pi2-\\theta=t$이다.",
+  "sourceConditions": [
+    {
+      "id": "q16s-c1",
+      "condition": "선분 AB는 지름이므로 ∠APB=π/2이고 ∠PAB=π/2−θ=t",
+      "mappedTo": "A,B,P"
+    },
+    {
+      "id": "q16s-c2",
+      "condition": "OQ=2tan t, BP=4sin t, PH=4sin t cos t",
+      "mappedTo": "Q,H,M"
+    }
+  ],
+  "newVisualInformation": [
+    "∠PAB=t와 ∠PBA=θ가 서로 여각이라는 관계와 직선 AP가 y축과 만나는 점 Q의 위치"
+  ],
+  "caption": "지름 AB에 대한 원주각 ∠APB는 직각이고 ∠PAB=t, ∠PBA=θ가 여각임을 나타낸 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yt",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Yb",
+          "Yt"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAP",
+          "yaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "xline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q",
+    "H",
+    "M",
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "hiddenPointNames": [
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "unmarkedPointNames": [
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sX",
+      "refs": [
+        "Xl",
+        "Xr"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sY",
+      "refs": [
+        "Yb",
+        "Yt"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPBA",
+        "refs": [
+          "P",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPAB",
+        "refs": [
+          "P",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "t",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tx",
+        "at": "Xr",
+        "text": "x",
+        "labelKind": "MATH",
+        "anchor": "S"
+      },
+      {
+        "id": "ty",
+        "at": "Yt",
+        "text": "y",
+        "labelKind": "MATH",
+        "anchor": "E"
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고3_미적분2_유사/q16-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q16-solution-result.json",
+    "statePath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q16-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q16-solution.svg"
+  }
+}
