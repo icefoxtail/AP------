@@ -16,6 +16,10 @@
   .apl-panel-inner { grid-template-columns: minmax(0, 1fr); }
   .apl-panel-inner > *, .apl-tabpanel, .apl-card, .apl-section { min-width: 0; }
   .apl-rich .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+  /* 진도 슬라이더의 최소 콘텐츠 너비가 좁은 휴대폰의 문서를 밀어내지 않게 합니다. */
+  .apl-ctl, .apl-ctl-head, .apl-presets { min-width: 0; box-sizing: border-box; }
+  .apl-ctl { max-width: calc(100vw - 28px); }
+  .apl-ctl .apl-range { min-width: 0; max-width: 100%; }
 }
 </style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
