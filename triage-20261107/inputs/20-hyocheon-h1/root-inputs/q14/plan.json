@@ -1,0 +1,15 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[-8,4,-5,6],"axisTickValues":{"x":["-2","1"],"y":["-4","3"]},
+  "curves":[
+   {"id":"left","kind":"RATIONAL","numerator":["-8","-4"],"denominator":["1","1"],"domain":["-8","-2"],"color":"BLUE","label":"y=(-4x-8)/(x+1)"},
+   {"id":"mid","kind":"Y_OF_X","coefficients":["3/2","5/4","1/4"],"domain":["-2","1"],"color":"WARM","label":"y=(x^2+5x+6)/4"},
+   {"id":"right","kind":"SQRT","radicand":["-2","2"],"offset":"3","domain":["1","4"],"color":"GREEN","label":"y=sqrt(2x-2)+3"}
+  ],
+  "overlays":{"points":[{"id":"A","x":"-2","y":"0","unnamed":true,"coordinates":true},{"id":"B","x":"-1","y":"1/2","unnamed":true,"coordinates":true},{"id":"C","x":"3","y":"5","unnamed":true,"coordinates":true}]}
+ },
+ "caption":"세 조각이 (-2,0), (1,3)에서 이어져 각 치역이 겹치지 않음을 본다.",
+ "sourceConditions":[{"id":"c1","condition":"g는 x<-2에서 유리함수, -2<=x<1에서 이차함수, x>=1에서 무리함수; g의 치역은 (-4,무한대)이고 일대일이다.","mappedTo":"PRESERVED_ARCHIVE_BANK"},{"id":"c2","condition":"가운데 이차식은 x²/4+5x/4+3/2이다.","mappedTo":["graphPlan"]}],
+ "newVisualInformation":["치역의 세 부분 (-4,0), [0,3), [3,무한대)와 역함수에 대응하는 두 점"]
+}
