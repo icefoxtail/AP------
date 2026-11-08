@@ -29,3 +29,17 @@ test('legacy and middle-school tab/answer behavior remains unchanged without opt
  const noSteps=fixture(false,undefined);noSteps.list[0].steps=undefined;assert.equal(noSteps._answerOpen(),true);
  const highNoSteps=fixture(true,undefined);highNoSteps.list[0].steps=undefined;assert.equal(highNoSteps._answerOpen(),false);
 });
+test('lesson navigation from a high-school problem opens the matching review figure',()=>{
+ const l=fixture();l.teach=true;l._announce=()=>{};l.setTab('problem');
+ assert.equal(l._problemPresenter(),true);assert.equal(l._answerOpen(),false);
+ l.next();assert.equal(l.tab,'review');assert.equal(l.s.step,1);assert.equal(l.s.x,2);assert.equal(l._answerOpen(),false);
+ l.next();assert.equal(l.s.step,2);l.next();assert.equal(l.s.step,3);assert.equal(l._answerOpen(),true);
+ l.setTab('problem');l.next();assert.equal(l.tab,'review');assert.equal(l.s.step,3);assert.equal(l.index,0);
+ l.setTab('problem');l.prev();assert.equal(l.tab,'review');assert.equal(l.s.step,3);
+});
+test('problem presenter routing leaves normal problem and middle-school navigation intact',()=>{
+ const normal=fixture();normal.teach=false;normal.setTab('problem');normal.next();
+ assert.equal(normal.tab,'problem');assert.equal(normal.s.step,1);assert.equal(normal._problemPresenter(),false);
+ const legacy=fixture(false);legacy.teach=true;legacy._announce=()=>{};legacy.setTab('problem');legacy.next();
+ assert.equal(legacy.tab,'problem');assert.equal(legacy.s.step,1);assert.equal(legacy._problemPresenter(),false);
+});

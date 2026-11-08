@@ -545,6 +545,14 @@ def prepare(spec):
         if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
     # (G18a) multi-curve-figure: the dashed asymptotes of its RATIONAL curves, one line per asymptote across the frame, named by curve (an asymptote on an axis is the axis and is not drawn).
     for mark in spec['displayFacts'].get('multiCurveMarks',[]):
+        if isinstance(mark,dict) and mark.get('kind')=='SOURCE_ENDPOINT':
+            # (G18a-5) source-domain ownership is independent from a branch's natural start dot. At a shared OPEN/CLOSED coordinate
+            # both circles are retained: the closed POINT is layered above this four-pixel open outline.
+            if (mark.get('state') not in ('OPEN','CLOSED') or not isinstance(mark.get('curve'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,15}',mark['curve'])
+                or mark.get('which') not in ('from','to') or any(isinstance(mark.get(key),bool) or not isinstance(mark.get(key),(int,float)) or not math.isfinite(mark[key]) for key in ('x','y'))):
+                raise ValueError('MULTI_CURVE_MARK_INVALID')
+            primitive({'id':'domain-endpoint-'+mark['curve']+'-'+mark['which'],'kind':'circle','at':vp.screen((mark['x'],mark['y'])),'radius':4.0,'token':'indicator','layer':65,'role':'source-domain-endpoint','state':mark['state'],'curve':mark['curve'],'endpoint':mark['which'],'fill':'#fff' if mark['state']=='OPEN' else '#111','stroke':'black','strokeWidth':1.0},'circle')
+            continue
         if isinstance(mark,dict) and mark.get('kind')=='ENDPOINT':
             # (G18a-4) the open (white) or closed (dark) dot at an end of an emphasised stretch
             if mark.get('state') not in ('OPEN','CLOSED') or not isinstance(mark.get('curve'),str) or not isinstance(mark.get('index'),int) or mark.get('which') not in ('from','to') or any(isinstance(mark.get(key),bool) or not isinstance(mark.get(key),(int,float)) for key in ('x','y')):raise ValueError('MULTI_CURVE_MARK_INVALID')

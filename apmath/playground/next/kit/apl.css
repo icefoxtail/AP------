@@ -724,6 +724,8 @@ body.apl {
   .apl-tape-bar { height: 22px; }
   .apl-formula-chip { padding: 5px 9px; font-size: var(--fs-xs); }
   .apl-presenter { max-width: calc(100% - 24px); bottom: 10px; }
+  /* Opted-in high-school labs: keep full-width explanations beside the two controls. */
+  .apl-staged .apl-presenter { width: calc(100% - 24px); }
   .apl-share { grid-template-columns: 1fr; justify-items: center; }
   .apl-hide-sm { display: none !important; }
   /* 모바일: 상태 배지(왼쪽)와 도구(오른쪽, 가로 막대)를 무대 아래 한 줄에 — 셸이 그 높이만큼 도형 배치에서 비워 둡니다. */
