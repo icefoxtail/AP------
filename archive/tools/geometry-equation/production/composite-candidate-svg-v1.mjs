@@ -80,6 +80,18 @@ export function compositePanels(plan){
     const g=p?.plan?.graphPlan,c=g?.pieces?.[0]?.coefficients;
     return p?.plan?.capability==='piecewise-polynomial-spike-v1'&&g?.family==='piecewise-polynomial'&&g.pieces.length===1&&Array.isArray(c)&&c.length===2&&c[1]!=='0'&&!(g.breakpoints?.length)&&g.overviewCanvasHeight===undefined&&g.compositeHeader===undefined;
   })))bad('LINEAR_STACK_INVALID');
+  // A multi-curve graph is accepted only as the exact two-case stack that preserves each panel's own graph model and observer.
+  // It cannot be mixed with another panel family or generalized to a different panel count here.
+  const isMultiCurveCandidate=panel=>panel?.plan?.capability==='multi-curve-figure-v1'||panel?.plan?.graphPlan?.family==='multi-curve';
+  const multiCurveCandidates=plan.panels.map(isMultiCurveCandidate),multiCurveStack=multiCurveCandidates.some(Boolean);
+  if(multiCurveStack){
+    if(plan.chain!==undefined)bad('CHAIN');
+    if(plan.panels.length!==2)bad('COMPOSITE_MULTI_CURVE_PANEL_COUNT');
+    for(let index=0;index<plan.panels.length;index++){
+      const panel=plan.panels[index];
+      if(!multiCurveCandidates[index]||panel?.plan?.capability!=='multi-curve-figure-v1'||panel?.plan?.graphPlan?.family!=='multi-curve')bad('COMPOSITE_MULTI_CURVE_PANEL_MIXED_'+index);
+    }
+  }
   const setPanels=plan.panels.map(panel=>isSetPanel(panel?.plan)),setGrid=setPanels.some(Boolean);
   if(setGrid){
     if(plan.chain!==undefined)bad('CHAIN');
@@ -162,7 +174,7 @@ export function compositePanels(plan){
     if(solid&&(plan.chain!==SOLID_CAPABILITY||plan.panels.length!==1))bad('SOLID_PANEL_PLACEMENT_'+index);
     // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
     if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine','pointNames'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
-    if(!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1'].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
+    if(!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1',...(multiCurveStack?['multi-curve-figure-v1']:[])].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
     if(numberLine||solid)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);

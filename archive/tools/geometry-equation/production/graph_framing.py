@@ -3867,12 +3867,13 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
 MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
 MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','abs'},'RATIONAL':{'numerator','denominator','domain','abs'},'SQRT':{'radicand','amplitude','offset','domain','abs'}}
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
 MULTI_CURVE_EMPHASIS_KEYS={'from','to','color','fromState','toState'}
 MULTI_CURVE_EMPHASIS_STATES=('NONE','OPEN','CLOSED')
+MULTI_CURVE_DOMAIN_STATES=('NONE','OPEN','CLOSED')
 MULTI_CURVE_EMPHASIS_MAX=3
 MULTI_CURVE_EMPHASIS_COLOR='WARM'
 MULTI_CURVE_HIDE_LABELS=('formula','asymptotes','start')
@@ -4041,6 +4042,9 @@ def _mc_free_curve(entry,ident,kind,window,look):
         if curve['amplitude']==0:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
     curve['intervalGiven']='domain' in entry
     curve['abs']=_mc_abs_flag(entry,ident)
+    raw_states=entry.get('domainStates',['NONE','NONE'])
+    if not isinstance(raw_states,list) or len(raw_states)!=2 or any(state not in MULTI_CURVE_DOMAIN_STATES for state in raw_states):raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+ident)
+    curve['domainStates']=tuple(raw_states)
     if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
     return curve
 
@@ -4078,7 +4082,16 @@ def multi_curve_source(plan):
     raw=plan.get('curves')
     minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
     if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
-    raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
+    normalized=[]
+    for entry in raw:
+        domain=entry.get('domain') if isinstance(entry,dict) else None
+        if isinstance(domain,dict):
+            if not {'from','to'}<=set(domain) or set(domain)-{'from','to','fromState','toState'}:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+str(entry.get('id','')))
+            states=[domain.get('fromState','NONE'),domain.get('toState','NONE')]
+            entry={**entry,'domain':[domain['from'],domain['to']]}
+            if states!=['NONE','NONE']:entry['domainStates']=states
+        normalized.append(entry)
+    raw=normalized
     window=_mc_window(plan)
     curves=[];ids=set();by_id={}
     for entry in raw:
@@ -4127,6 +4140,8 @@ def multi_curve_source(plan):
                 lo,hi=curve['interval']
                 if (curve['radicand'][1]>0 and lo<boundary) or (curve['radicand'][1]<0 and hi>boundary):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
                 if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                start_index=0 if curve['radicand'][1]>0 else 1
+                if curve['domainStates'][start_index]=='OPEN' and curve['interval'][start_index]==boundary:raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+ident)
             curves.append(curve);by_id[ident]=curve
             continue
         coefficients=_mc_coefficients(entry.get('coefficients'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4178,7 +4193,12 @@ def _mc_free_branches(curve,window):
     if curve['kind']=='RATIONAL':
         pole=-curve['denominator'][0]/curve['denominator'][1]
         if lo<pole<hi:return [{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
-        if pole in (lo,hi):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+        if pole==lo:
+            if curve.get('domainStates',('NONE','NONE'))[0]!='OPEN':raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            return [{'side':'RIGHT','xInterval':(lo,hi),'yInterval':None}]
+        if pole==hi:
+            if curve.get('domainStates',('NONE','NONE'))[1]!='OPEN':raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            return [{'side':'LEFT','xInterval':(lo,hi),'yInterval':None}]
     return [{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
 
 def _mc_bbox_points(curves,window=None):
@@ -4194,7 +4214,8 @@ def _mc_bbox_points(curves,window=None):
                 if lo<vertex<hi:points.append((float(vertex),float(c0+c1*vertex+c2*vertex*vertex)))
             elif kind=='RATIONAL':
                 pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
-                points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
+                # A pole that is an open source-domain end has no finite point to contribute to the frame.
+                if pole not in (lo,hi):points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
             else:
                 for edge in (lo,hi):
                     value=mc_value(curve,edge)
@@ -4227,13 +4248,14 @@ def _mc_row(curve):
         if kind=='X_OF_Y':row['branch']=curve['branch']
     else:
         row['interval']=[_mc_text(value) for value in curve['interval']]
+        if curve.get('domainStates',('NONE','NONE'))!=('NONE','NONE'):row['domainStates']=list(curve['domainStates'])
         if kind in ('LINE','Y_OF_X'):row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
         elif kind=='RATIONAL':
             row['numerator']=[_mc_text(value) for value in curve['numerator']];row['denominator']=[_mc_text(value) for value in curve['denominator']]
             pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
             if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
-            row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<pole<hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
+            row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<=pole<=hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
         else:
             row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
             boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']
@@ -4377,7 +4399,10 @@ def fit_multi_curve(plan):
         if 'label' in curve['look'] and entry.get('label')!=curve['look']['label']:entry={**entry,'label':curve['look']['label']}
         # the draw interval of a curve the author left to the window (or an inverse's image) is written down, so the observer reads the same interval the engine draws
         if 'domain' not in entry:entry={**entry,'domain':[_mc_text(value) for value in curve['interval']]}
-        elif isinstance(entry['domain'],dict):entry={**entry,'domain':[entry['domain']['from'],entry['domain']['to']]}
+        elif isinstance(entry['domain'],dict):
+            domain=entry['domain'];states=[domain.get('fromState','NONE'),domain.get('toState','NONE')]
+            entry={**entry,'domain':[domain['from'],domain['to']]}
+            if states!=['NONE','NONE']:entry['domainStates']=states
         labelled.append(entry)
     fitted['curves']=labelled
     fitted.update({'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':MULTI_CURVE_OVERVIEW_POLICY,

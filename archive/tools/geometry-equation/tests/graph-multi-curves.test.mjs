@@ -134,6 +134,8 @@ test('the independent observer passes the model SVG and rejects a changed invent
   const passed=await observe(framed,built.result.svg,built.result.transform);
   assert.equal(passed.status,'OK',JSON.stringify(passed.result));assert.equal(passed.result.status,'PASS',JSON.stringify(passed.result));
   assert.equal(passed.result.curveCount,4);assert.equal(passed.result.branchCount,6);
+  // Byte baseline captured from the unchanged standalone multi-curve renderer before source-domain endpoint support was added.
+  assert.equal(crypto.createHash('sha256').update(built.result.svg).digest('hex'),'11235c0d521d4684bca9a019cdd7d8e878278b5cc9dff35ad79a98392b231cf3');
   const outDir=path.join(repo,'.tmp/wave-b-20261026');fs.mkdirSync(outDir,{recursive:true});
   fs.writeFileSync(path.join(outDir,'q10-model.svg'),built.result.svg);
   const modelSvg=built.result.svg;
