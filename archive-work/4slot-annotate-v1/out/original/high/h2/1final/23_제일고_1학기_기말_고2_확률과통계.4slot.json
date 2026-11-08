@@ -1,0 +1,1190 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/23_제일고_1학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "28d2ae2f991401f5dfc13fd9e3ca7b8b8e4f1d8c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$와 모두 배반인 사건"
+          },
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "A\\cup B$의 여집합에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "사건 $C$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "공집합이 아닌 부분집합의 개수를 센다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "A\\cup B=\\{1,2,3,4,6,9\\}$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "C\\ne\\varnothing$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 사건과 모두 배반인 사건은 합집합의 여집합의 공집합이 아닌 부분집합임을 이용하여 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A$ 학생만 이길 확률은?"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "A, B, C$ 3명의 학생이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "학생만 이길 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $3^3=27$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "A$만 이기는 경우의 수를 비교한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "세 사람은 각각 가위, 바위, 보 중 하나를 낸다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "가위바위보의 전체 경우의 수 중 특정 학생 1명만 이기는 경우를 세어 확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$가 서로 독립이고"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(B)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "독립사건의 곱셈 공식을 이용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "P(A\\cap B)=P(A)P(B)$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "P(A)=\\dfrac{3}{5}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 사건이 독립일 때 교집합의 확률이 각 확률의 곱과 같음을 이용하여 B의 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부확률이므로 분모를 전체 학생"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "학생 400명의 수학 여행지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "그 학생이 1학년일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "울릉도 선호 학생 $110$명으로 잡는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "\\dfrac{82}{110}=\\dfrac{41}{55}$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "울릉도를 선호한다는 조건이 주어졌으므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분할 표에서 주어진 조건을 표본공간으로 제한하여 조건부확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "A,B,C$ 세 사람의 상대적 순서만 보면 된다"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "6명이 일렬로 입장하려고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "먼저 입장할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭적으로 같으므로 그 확률은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "A$, $B$, $C$인 경우는 대칭적으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "A$가 $B$와 $C$보다 먼저"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 사람의 상대적 순서에 대칭성을 적용하여 특정 한 사람이 가장 먼저 올 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "P(A)=0.3$, $P(B)=0.5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "P(B\\mid A)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "조건부확률은 $P(B\\mid A)=\\dfrac{P(A\\cap B",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "\\dfrac{0.2}{0.3}=\\dfrac{2}{3}$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "P(A\\cap B)=0.2$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 교집합과 기준 사건의 확률로부터 조건부확률의 정의식을 적용하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "표적을 맞힐 확률이 각각"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "화살을 한 번씩 쏠 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "두 선수만 표적을 맞힐 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "세 가지로 나누어 더한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "A,B$만 맞힐 확률은 $\\dfrac{5}{6}\\times\\df",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "\\dfrac{5}{6}$, $\\dfrac{4}{5}$, $\\df"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "독립시행에서 두 선수만 표적을 맞히는 세 배반사건의 확률을 곱의 법칙과 합의 법칙으로 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "검은 공 4개, 흰 공 3개가"
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "네 번째 검은 공이 6번째에 나온다는 뜻이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "꺼낸 공의 개수가 6일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "경우의 수는 ${}_{5}C_{3}=10$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "전체 경우의 수는 ${}_{7}C_{4}=35$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "위치",
+            "src": "solution",
+            "quote": "7개의 위치 중 검은 공 4개의 위치를"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "마지막 검은 공의 위치를 고정하고 앞선 시행의 조합 수를 계산하여 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "\\dfrac{1}{4}\\le P(A)\\le\\dfrac{3}{4}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "M+m$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "P(B)$의 최댓값을 $M$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 $m$이라 할 때",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률이므로 $P(B)\\le1$ 조건도 함께 고려해야 한다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 확률의 합 관계식과 확률의 기본 범위 0 이상 1 이하를 결합하여 최댓값과 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "보기 중 서로 독립인 사건만을"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "사건을 $A$, 소수의 눈이 나오는 사건을 $B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "교집합 확률과 각 확률의 곱을 비교한다"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "P(X\\cap Y)=P(X)P(Y)$를 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "A\\cap B=\\{2,3\\}$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "6의 약수의 눈이 나오는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 사건의 확률과 교집합의 확률을 계산하여 독립 판정 공식으로 독립 여부를 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "남학생이 서로 이웃하지 않게 배정될"
+          },
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "남학생이 앉을 4개의 좌석이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "배정될 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "이웃하지 않는 위치 조합을 세면 된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "서로 이웃하지 않는 경우를 센다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "바로 옆이나 바로 앞뒤에 있을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이웃하지 않는 좌석 배치의 유효 조합을 찾고 전체 조합 수로 나누어 확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 모양의 탁자에"
+          },
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "남자와 여자가 이웃하여 앉을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "앉을 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "남자가 앉을 4개의 자리를 고르는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "전체 경우의 수는 ${}_{8}C_{4}=70$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "회전체",
+            "src": "stem",
+            "quote": "회전하여 일치하는 경우는 모두 같은 것으로 본다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정사각형 탁자의 각 변에 남녀가 한 쌍씩 앉는 자리 조합을 세어 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "70%, 30%가 생산되고"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "불량품이라는 조건이 주어졌으므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "그 제품이 $A$공장에서 생산된 제품일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "A$공장 불량품 비율과 전체 불량품 비율을 구해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "0.035+0.009=0.044",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "백분율",
+            "src": "stem",
+            "quote": "불량률은 각각 5%, 3%라고 한다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 불량품 발생 확률을 구하고 베이즈 정리로 A공장에서 생산되었을 사후확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "흰 공 3개와 검은 공 3개가 들어 있고"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "B$상자에 넣은 다음 $B$상자에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "그 공이 모두 흰 공일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "흰 공의 개수에 따라 경우를 나누어 계산한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "A$에서 흰 공을 $k$개 옮길 확률은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "임의로 2개의 공을 동시에 꺼내어"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 상자에서 옮긴 흰 공의 개수에 따라 세 경우로 나누어 전확률 공식을 적용해 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $ABCD$의 꼭짓점 $A$에서 출발하여"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "정사각형 둘레 길이 $4$의 배수가 되면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A$로 다시 돌아올 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "5번 중 2만큼 움직인 횟수를",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_{5}C_{3}\\left(\\dfrac{2}{3}\\right)^3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "6의 약수의 눈이 나오면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "5회 독립시행 후 이동 거리의 합이 둘레의 배수가 되는 사건을 독립시행의 확률로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "1학년은 남학생의 비율이 60%"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "남학생이라는 조건부확률 식을 세운다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1학년 학생은 몇 명인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "3x=0.6x+96$, $2.4x=96$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "미지수",
+            "src": "solution",
+            "quote": "1학년 학생 수를 $x$명이라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "백분율",
+            "src": "stem",
+            "quote": "2학년은 남학생의 비율이 40%"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건부확률 식을 세워 일차방정식을 풀고 1학년 학생 수를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "적어도 한 개씩 포함될 확률은?"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "임의로 10개의 풍선을 고를 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "포함될 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "세 색의 개수 조합을 중복조합으로 센다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "r,b,y$가 양의 정수이므로 경우의 수는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "solution",
+            "quote": "같은 색 풍선을 구별하지 않으므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구별되지 않는 풍선 선택의 전체와 양의 정수해 조건을 중복조합으로 세어 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간 $S$의 임의의 두 사건"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A, B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "항상 참인 명제만 골라낸다"
+          }
+        ],
+        "method": [
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "확률의 기본 성질과 합사건 공식으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "P(A)+P(B)-P(A\\cap B)=P(A\\cup B)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "각 명제를 확률의 기본 성질과"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률의 덧셈정리와 여사건의 성질, 포함관계를 활용하여 각 보기가 항상 참인지 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연속",
+            "src": "stem",
+            "quote": "연속하여 두 게임을 이기면"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A$가 이길 확률은 $\\dfrac{1}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A$가 승리할 확률은 얼마인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "그 뒤 가능한 경우를 나누어 계산한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "11}{27}$이다. 처음 둘째 게임에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "남은 경기 흐름만 센다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 게임 패배 조건 아래 승리 규칙을 만족하는 가능한 경기 경로들을 분류하여 확률을 합산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=x^2-8x+15$에 대하여"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "한 개의 주사위를 두 번 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "f(a)f(b)=0$이 성립할 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건은 두 번 모두 $3,5$가 아닌",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "f(x)=x^2-8x+15=(x-3)(x-5)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "solution",
+            "quote": "주사위 눈이 적어도 한 번 나오면 된다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이차식의 근이 되는 눈이 적어도 한 번 나오는 사건을 여사건을 이용하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "두 사건은 서로 배반이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(A)$를 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "드모르간 법칙으로 $P(A\\cap B)$를 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "P(A)=P(A\\cap B)+P(A\\cap B^C)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "여집합",
+            "src": "stem",
+            "quote": "P(A^C\\cup B^C)=\\dfrac{4}{5}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "드모르간 법칙으로 교집합의 확률을 구하고 사건 A를 두 배반부분으로 분할하여 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "작은 수부터 크기 순서대로 $a,b,c$"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "구하는 조건부확률은 $\\dfrac{10}{20}=\\dfrac{1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "c-a\\ge8$일 확률을 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "a$를 기준으로 가능한 $(b,c)$의 개수를 세어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "b-a\\ge5$인 경우를 센다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 10까지의 자연수가"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "크기 순 정렬된 세 수의 차 부등식을 만족하는 경우를 기준별로 세어 조건부확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "규칙",
+            "src": "stem",
+            "quote": "인간 제로’라는 게임의 규칙이다"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "B$조는 $0,1,2,3$ 중 하나를 임의로 외친다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A$조가 이길 확률을 구하는 과정을"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건으로 $A$조가 한 번 이길 확률을 구하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "게임을 2번 해서 $A$조가 2번 모두 이길 확률은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "외친 수와 일어난 사람 수가 같으면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "일어난 인원수의 이항분포와 외친 수의 일치 확률을 여사건으로 구하고 2회 독립시행 결과를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 23,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
