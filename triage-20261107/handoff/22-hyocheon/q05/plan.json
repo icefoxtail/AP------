@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "역함수의 그래프 위 점 $(u,v)$는 원래 함수의 그래프 위 점 $(v,u)$와 서로 대응한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      15,
+      0,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "22",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "15"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabels": [
+          "start"
+        ]
+      },
+      {
+        "id": "g",
+        "color": "WARM",
+        "label": "y=g(x)",
+        "domain": [
+          "sqrt(22)",
+          "sqrt(37)"
+        ],
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-22",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "14"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5"
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "표시된 부분 그래프에서 원함수와 역함수의 대응점 P(3,5), Q(5,3)가 대각선 y=x에 대칭임을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "역함수 위의 (5,3)에 대응하는 원함수 위 점은 (3,5)이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "원함수는 y=√(a+x)이고 대응점 조건으로 정해진 그래프의 일부를 그린다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 대응점이 원함수와 역함수의 그래프에서 서로 좌표를 바꾸며 y=x에 대칭으로 놓임을 부분 그래프에서 보여 준다."
+  ],
+  "accessibilityDescription": "화면에 잘린 부분 그래프에서 원함수 f의 점 P(3,5)와 역함수 g의 점 Q(5,3)가 y=x에 대하여 좌표를 바꾸며 대응한다."
+}
