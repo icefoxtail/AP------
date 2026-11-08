@@ -10,6 +10,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<style>
+/* 긴 수식이 모바일 패널 그리드의 최소 너비를 밀어 전체 페이지를 가로로 확장하지 않게 합니다. 수식 자체는 스크롤로 모두 읽을 수 있습니다. */
+@media (max-width: 859px) {
+  .apl-panel-inner { grid-template-columns: minmax(0, 1fr); }
+  .apl-panel-inner > *, .apl-tabpanel, .apl-card, .apl-section { min-width: 0; }
+  .apl-rich .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+}
+</style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
