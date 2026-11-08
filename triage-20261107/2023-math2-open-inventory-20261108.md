@@ -117,3 +117,11 @@ Q18 상태 및 후속 검증기록: https://github.com/icefoxtail/AP------/blob/
 - 매산고: https://github.com/icefoxtail/AP------/blob/codex/svg-triage-20261107/triage-20261107/23-maesan-math2.md
 - 매산여고: https://github.com/icefoxtail/AP------/blob/codex/svg-triage-20261107/triage-20261107/23-maesangirls-math2.md
 - 팔마고: https://github.com/icefoxtail/AP------/blob/codex/svg-triage-20261107/triage-20261107/23-palma-math2.md
+
+## 후속 스냅샷 갱신: 순천여고 Q07
+
+기준: 2026-11-08 06:18:48 UTC, commit 0af4cbdf406321a26c808e2872df16cb75f7c8ae (https://github.com/icefoxtail/AP------/commit/0af4cbdf406321a26c808e2872df16cb75f7c8ae). 이 후속 업데이트 때 확인한 대상 브랜치 HEAD도 같은 SHA다.
+
+이 commit은 순천여고 판정표와 Q07 STATUS에서 Q07을 OPEN에서 FIGURE로 정리했다. 기존 Q07의 3종 입력 파일은 보존했고, 가독성 우려는 지시선·라벨 배치 조정으로 남겼다. Q07은 여전히 NOT_RENDERED이며 공식 검증은 NOT_RUN이다.
+
+이 보고서 본문의 90 OPEN은 작성 당시 스냅샷으로 유지한다. Q07 이력을 반영한 현재 OPEN 수는 89건으로 스냅샷보다 1건 적다. 순천여고는 Q11·Q12·Q15·Q18·Q19·Q20의 6건, 다른 여섯 시험지는 합계 83건이다.
