@@ -155,8 +155,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function pcircle(c, rPx, stroke = '#38bdf8', fill = 'rgba(56,189,248,0.10)', width = 2.8, dash = [], partIdx = undefined) {
     withAlpha(lensAlpha(dash.length ? 'aux' : null), () => {
-      regCircle(c, Math.max(1, rPx));
-      BOARD.circle(c, Math.max(1, rPx), { color: stroke || null, fill: fill || null, width, dash: dashOf(dash), part: partOf(partIdx) });
+      const radius = Math.max(1, rPx);
+      // 자동 화면맞춤은 원의 중심만 기록하면 반지름이 잘립니다. 실제 원의 사방 경계를 함께 측정합니다.
+      if (BOARD._bbox) {
+        const center = BOARD._P(c);
+        BOARD.toS(center.x - radius, center.y - radius);
+        BOARD.toS(center.x + radius, center.y + radius);
+      }
+      regCircle(c, radius);
+      BOARD.circle(c, radius, { color: stroke || null, fill: fill || null, width, dash: dashOf(dash), part: partOf(partIdx) });
     });
   }
 
