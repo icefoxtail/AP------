@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "alpha",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "beta",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 근의 범위 -3≤α<-2와 2≤β<3을 수직선 두 줄로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 근의 범위 -3≤α<-2와 2≤β<3을 수직선 두 줄로 나타낸다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "최대는 α=-3, β=2에서 얻는다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$\\alpha\\in[-3,-2)$이다."
+}

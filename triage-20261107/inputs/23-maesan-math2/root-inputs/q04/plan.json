@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "0",
+      "-9",
+      "2"
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -24,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 5
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -22
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -15
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3
+      ],
+      "y": []
+    }
+  },
+  "caption": "복원한 f(x)=2x³−9x²+5와 f(1),f(2)를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "복원한 f(x)=2x³−9x²+5와 f(1),f(2)를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "극대·극소 좌표와 주어진 점을 함께 나타낸다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$C=5$이다."
+}

@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1",
+      "-1/2",
+      "1/16"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -1,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": -2,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "최대가 되는 A=1에서 f(x)=x²(x−4)²를 16으로 나눈 그래프를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최대가 되는 A=1에서 f(x)=x²(x−4)²를 16으로 나눈 그래프를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "세로값은 실제 함수의 1/16이다. 실제 f(-2)=144는 그림의 9에 대응한다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$A=1$이면"
+}

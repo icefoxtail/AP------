@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "-4",
+      "3"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.3,
+      4.3,
+      -7,
+      31
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "2/3",
+        "y": "-16/3"
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": -5
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 28
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "k=-4일 때 속도 v(t)=3t²−4t−4를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=-4일 때 속도 v(t)=3t²−4t−4를 나타낸다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "표시 구간은 t≥0의 일부이며 1부터 4까지 부호 있는 넓이가 위치 변화량이다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "따라서 $k=-4$이다."
+}

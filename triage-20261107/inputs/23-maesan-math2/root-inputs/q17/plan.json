@@ -1,0 +1,72 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "8",
+      "6",
+      "1"
+    ],
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -5,
+      1,
+      -5,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -4,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "-2-2*sqrt(3)/3",
+        "y": "16*sqrt(3)/9"
+      },
+      {
+        "id": "N",
+        "x": "-2+2*sqrt(3)/3",
+        "y": "-16*sqrt(3)/9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -4,
+        -2
+      ],
+      "y": []
+    }
+  },
+  "caption": "두 곡선의 차 h(x)=f(x)+12x²=x(x+2)(x+4)를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 곡선의 차 h(x)=f(x)+12x²=x(x+2)(x+4)를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "[-4,-2]와 [-2,0]의 부호 있는 넓이의 절댓값이 각각 4이다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$u=x+2$로 두면 $f(x)+12x^2=u^3-4u$이다."
+}

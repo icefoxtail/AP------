@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "0",
+      "-3",
+      "2"
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.2,
+      3.2,
+      0,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "M",
+        "x": 1,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1
+      ],
+      "y": []
+    }
+  },
+  "caption": "f(x)=2x³−3x²+2에서 x≥0인 범위를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=2x³−3x²+2에서 x≥0인 범위를 살핀다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟점은 (1,1)이며 왼쪽 음수 영역은 표시상 여백이다.",
+    "사용자 지시: 함수·유리함수·그래프가 이해에 도움을 주어 계획했다. 밀집 라벨은 지시선으로 조정한다."
+  ],
+  "sourceQuote": "최솟값은 $1$이다."
+}
