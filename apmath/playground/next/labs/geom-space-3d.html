@@ -77,13 +77,13 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           "첫 번째 수선: 평면 밖의 점 P에서 바닥 평면 α에 내린 수선 PO ⊥ α (길이 4)",
           "두 번째 수선: 수선의 발 O에서 바닥 직선 l에 내린 수선 OH ⊥ l (길이 3)",
-          "세 번째 수선(결론): PH ⊥ l (길이 5) ⇒ 직각삼각형 PHA를 이용할 수 있다"
+          "삼수선으로 PH ⊥ l. PH²=4²+3²=25이고 PA=7이므로 AH=√(49−25)=2√6이다."
         ],
         textbook: () => ({
           steps: `① ${tex('\\overline{PO} \\perp \\alpha')} 이므로 ${tex('\\overline{PO} \\perp l')}, 또한 가정에 의해 ${tex('\\overline{OH} \\perp l')}<br/>
 ② 직선 ${tex('l')}이 평면 ${tex('POH')} 위의 두 직선 ${tex('PO, OH')}와 수직이므로 ${tex('l \\perp \\text{평면 } POH')}<br/>
 ③ 따라서 평면 ${tex('POH')}에 포함된 직선 ${tex('PH')}도 직선 ${tex('l')}과 수직(${tex('\\overline{PH} \\perp l')})이다.<br/>
-④ 두 직각삼각형 ${tex('\\triangle POH, \\triangle PHA')}에서 피타고라스 정리를 차례로 적용하여 ${tex('\\overline{PH}')}, ${tex('\\overline{AH}')}의 길이를 구한다.`,
+④ 직각삼각형 ${tex('POH')}에서 ${tex('PH^2=4^2+3^2=25')}, 따라서 ${tex('PH=5')}. 직각삼각형 ${tex('PHA')}에서 ${tex('AH=\\sqrt{7^2-5^2}=\\sqrt{24}=2\\sqrt6')}이다.`,
           warning: "주의: 어느 각이 90°인지 먼저 찾아야 직각삼각형을 이용해 길이에 대한 식을 세울 수 있습니다."
         }),
         shortcut: () => ({
@@ -145,12 +145,12 @@ window.addEventListener('DOMContentLoaded', function () {
           warning: "주의: 꼬인 위치에 있는 두 직선이 이루는 각 α를 코사인법칙으로 직접 구하려면 삼각형을 새로 만들어 세 변의 길이를 모두 구해야 하므로 계산이 길어집니다."
         }),
         shortcut: () => ({
-          steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=\\frac{EG}{AG}=\\frac{1}{\\sqrt2}')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=\\frac{3}{5}')}.<br/>
+          steps: `① 실제 공간 좌표에서 ${tex('EF=(3,0,0), EG=(3,4,0), AG=(3,4,-5)')}로 둘 수 있다. 길이는 ${tex('EF=3, EG=5, AG=5\\sqrt2')}. ${tex('AG')}의 밑면 정사영은 ${tex('EG')}이므로 ${tex('\\cos\\beta=\\frac{EG}{AG}=\\frac{1}{\\sqrt2}')}; 밑면에서 ${tex('EF,EG')}의 각은 ${tex('\\cos\\gamma=EF/EG=\\frac{3}{5}')}.<br/>
 ② 화면에 그려진 각은 실제 공간에서의 각과 다르게 보일 수 있다. 각의 크기는 EG/AG, EF/EG와 같은 길이의 비(또는 벡터의 내적)로 구한다.<br/>
 ③ 두 비를 곱하면 <strong>[이 직육면체에서 성립하는 세 각 α, β, γ의 관계]</strong>:<br/>
 &nbsp;&nbsp;<strong class="text-amber-300">${tex('\\cos\\alpha = \\dfrac{\\overline{EF}}{\\overline{AG}} = \\underbrace{\\dfrac{\\overline{EG}}{\\overline{AG}}}_{\\cos\\beta} \\times \\underbrace{\\dfrac{\\overline{EF}}{\\overline{EG}}}_{\\cos\\gamma} = \\cos\\beta \\cdot \\cos\\gamma')}</strong><br/>
 ④ ${tex('\\cos\\alpha=\\dfrac{EF}{AG}=\\dfrac{3}{5\\sqrt2}=\\dfrac{EG}{AG}\\cdot\\dfrac{EF}{EG}=\\cos\\beta\\cos\\gamma')}.`,
-          highlight: "이 문제에서는 AG의 성분이 (3, 4, 5)이고 EF가 한 좌표축과 평행하므로 cos α = cos β · cos γ가 성립합니다. 어떤 세 각에나 쓸 수 있는 공식은 아닙니다."
+          highlight: "이 문제에서는 AG의 성분이 (3, 4, −5)이고 EF가 한 좌표축과 평행하므로 cos α = cos β · cos γ가 성립합니다. 어떤 세 각에나 쓸 수 있는 공식은 아닙니다."
         })
       }
     };
@@ -169,6 +169,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const rad=d=>d*Math.PI/180;
     const deg=r=>r*180/Math.PI;
     const regularAngle=Math.acos(1/3);
+    const isRegularAngle = (theta) => theta === regularAngle;
     // Coordinates are mathematical units: X width, Y height, Z depth.
     function geometry(m=state.mode){
       if(m===1){ // 한 모서리 6인 정사면체: 밑면 BCD를 아래에 두고(CD가 뒤, B가 앞) 꼭대기 A가 위. M은 CD의 중점, N은 AB의 중점
@@ -254,7 +255,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const edges=[[A,C],[A,D],[B,C],[B,D]];
       edges.forEach(([p,q])=>draw3DLine(p,q,'rgba(226,232,240,.56)',1.8,false,false,0,'shape'));
       if(!state.steps[1]){draw3DLine(A,B,'rgba(226,232,240,.56)',1.8,false,false,0,'shape');draw3DLine(C,D,'rgba(226,232,240,.56)',1.8,false,false,0,'shape');}
-      if(PROB){ // 문제 그림: 주어진 한 모서리 길이 6, 중점 M·N (MN의 길이와 θ는 묻는 값이라 그리지 않습니다)
+      if(PROB || !state.steps[1]){ // 문제 그림과 0단계: 주어진 한 모서리 길이 6, 중점 M·N (MN의 길이와 θ는 묻는 값이라 그리지 않습니다)
         draw3DLine(M,N,'rgba(226,232,240,.75)',1.6,true,false,0,'shape');
         draw3DPoint(M,5,'#e2e8f0','M',{x:10,y:8},0,'shape');draw3DPoint(N,5,'#e2e8f0','N',{x:-18,y:-6},0,'shape');
         lenLabel(A,C,'6','#fde68a',-9,-9);
@@ -294,22 +295,22 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DRightAngle(H,P,A,.5,'#fbbf24',3,'perp');
         drawBottomTapeBanner(r,`PA² = PO² + OH² + AH² = ${state.h2.toFixed(1)}² + 3² + (2√6)² | PH = ${Math.hypot(state.h2,3).toFixed(2)}`);
       }
-      if(PROB){ // 문제 그림: 주어진 PO=4, OH=3, PA=7 과 두 직각. 구하는 AH(=2√6)는 그리지 않습니다.
+      if(PROB || !state.steps[1]){ // 문제 그림과 0단계: 주어진 PO=4, OH=3, PA=7 과 두 직각. 구하는 AH(=2√6)는 그리지 않습니다.
         draw3DLine(P,O,'#f472b6',3,false,false,0,'perp');draw3DRightAngle(O,P,H,.5,'#f472b6',0,'perp');
         draw3DLine(O,H,'#38bdf8',3,false,false,0,'perp');draw3DRightAngle(H,O,A,.5,'#38bdf8',0,'perp');
         draw3DLine(P,A,'#34d399',2.6,false,false,0,'projection');
         draw3DPoint(O,5,'#f472b6','O',{x:-22,y:14},0,'perp');draw3DPoint(H,5,'#38bdf8','H',{x:9,y:-11},0,'perp');
-        lenLabel(P,O,'PO = 4','#f472b6',-34,0);lenLabel(O,H,'OH = 3','#38bdf8',0,15);lenLabel(P,A,'PA = 7','#34d399',24,-12);
+        lenLabel(P,O,`PO = ${state.h2.toFixed(1)}`,'#f472b6',-34,0);lenLabel(O,H,'OH = 3','#38bdf8',0,15);lenLabel(P,A,Math.abs(state.h2-4)<1e-10?'PA = 7':`PA ≈ ${Math.hypot(state.h2,Math.sqrt(33)).toFixed(2)}`,'#34d399',24,-12);
       }
       draw3DPoint(P,6,'#fbbf24',`P (PO=${state.h2.toFixed(1)})`,{x:-40,y:-15},1,'perp',{problemLabel:'P'});
-      draw3DPoint(A,5,'#34d399','A (AH=2√6)',{x:10,y:12},3,'projection',{problemLabel:'A'});
+      draw3DPoint(A,5,'#34d399',state.steps[3]?'A (AH=2√6)':'A',{x:10,y:12},3,'projection',{problemLabel:'A'});
     }
     function renderMode3(r,{M,B,C,D,A,G}){
-      const θ=state.theta3,cos=Math.cos(θ),isRegular=Math.abs(θ-regularAngle)<1e-7;
+      const θ=state.theta3,cos=Math.cos(θ),isRegular=isRegularAngle(θ);
       draw3DPolygon([D,B,C],'rgba(56,189,248,.14)','#38bdf8',2,0,'shape');
       draw3DPolygon([A,B,C],'rgba(244,114,182,.16)','#f472b6',2,0,'shape');
       draw3DLine(A,D,'rgba(255,255,255,.5)',1.7,false,false,0,'shape'); // 숨은 모서리는 SP.solid 가 자동으로 점선
-      if(PROB){ // 문제 그림: 한 모서리 6, 꼭짓점 A에서 밑면 DBC에 내린 수선의 발 G (cosθ와 h는 묻는 값)
+      if(PROB || !state.steps[1]){ // 문제 그림과 0단계: 한 모서리 6, 꼭짓점 A에서 밑면 DBC에 내린 수선의 발 G (cosθ와 h는 묻는 값)
         draw3DLine(A,G,'#34d399',2.2,true,false,0,'projection');draw3DPoint(G,5,'#34d399','G',{x:10,y:16},0,'projection');
         lenLabel(B,C,'6','#fde68a',-10,0);
       }
@@ -317,15 +318,15 @@ window.addEventListener('DOMContentLoaded', function () {
       if(state.steps[2]){
         draw3DLine(A,M,'#f472b6',3.3,false,true,2,'perp');draw3DLine(D,M,'#38bdf8',3.3,false,true,2,'perp');
         draw3DRightAngle(M,A,B,.52,'#f472b6',2,'perp');draw3DRightAngle(M,D,B,.52,'#38bdf8',2,'perp');
-        draw3DAngleArc(M,D,A,.9,'#fde047',NARROW()?'θ':`θ ${deg(θ).toFixed(1)}°`,2,'perp'); // 좁은 화면: 값은 위의 칩에 있으므로 θ만
+        draw3DAngleArc(M,D,A,.9,'#fde047',NARROW()?'θ':`θ ≈ ${deg(θ).toFixed(1)}°`,2,'perp'); // 좁은 화면: 값은 위의 칩에 있으므로 θ만
       }
       if(state.steps[3]){
         draw3DPolygon([A,G,M],'rgba(251,191,36,.20)',null,1,3,'projection');
         draw3DLine(A,G,'#34d399',3.4,true,true,3,'projection');
-        draw3DRightAngle(G,A,M,.5,'#34d399',3,'projection');
-        draw3DPoint(G,5,'#34d399',isRegular?'G (무게중심)':'G (정사영)',{x:10,y:20},3,'projection');
-        drawBottomTapeBanner(r,`θ = ${deg(θ).toFixed(1)}° | h = ${(3*Math.sqrt(3)*Math.sin(θ)).toFixed(3)} | ${isRegular?'정사면체 조건':'접힌 두 면의 각도 조절 중'}`,{
-          fraction:{before:'cos θ =',num:isRegular?'1':(cos<0?'-GM':'GM'),den:isRegular?'3':'AM',after:isRegular?'≈ 0.333':`= ${cos.toFixed(3)}`}});
+        if(norm(sub(G,M))>1e-10)draw3DRightAngle(G,A,M,.5,'#34d399',3,'projection');
+        draw3DPoint(G,5,'#34d399',isRegular?'G (무게중심)':norm(sub(G,M))<1e-10?'G = M':'G (정사영)',{x:10,y:20},3,'projection');
+        drawBottomTapeBanner(r,`θ ≈ ${deg(θ).toFixed(1)}° | h ≈ ${(3*Math.sqrt(3)*Math.sin(θ)).toFixed(3)} | ${isRegular?'정사면체 조건':'접힌 두 면의 각도 조절 중'}`,{
+          fraction:{before:'cos θ =',num:isRegular?'1':(cos<0?'-GM':'GM'),den:isRegular?'3':'AM',after:isRegular?'≈ 0.333':`≈ ${cos.toFixed(3)}`}});
       }
       [['A',A],['B',B],['C',C],['D',D]].forEach(([label,p])=>draw3DPoint(p,5,label==='A'?'#f472b6':'#d1fae5',label,label==='B'?{x:9,y:12}:label==='C'?{x:-18,y:-8}:{x:8,y:-12},1,'shape'));
     }
@@ -336,7 +337,7 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DLine(E,G,'#38bdf8',3.3,false,true,2,'projection');draw3DLine(E,F,'#34d399',3.5,false,true,2,'projection');
         draw3DRightAngle(F,E,G,.46,'#34d399',2,'perp');
         // [표시 보강] β = 대각선 AG가 밑면(정사영 EG)과 이루는 각 ∠AGE (cos β = EG/AG = 1/√2)
-        draw3DAngleArc(G,A,E,B&&B.W<520?.45:.5,'#38bdf8',angLabel('β',angDeg(G,A,E)),2,'projection');
+        draw3DAngleArc(G,A,E,NARROW()?.45:.5,'#38bdf8',angLabel('β',angDeg(G,A,E)),2,'projection');
       }
       if(state.steps[3]){
         draw3DPolygon([A,E,G],'rgba(251,191,36,.18)',null,1,3,'perp');
@@ -346,12 +347,12 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DRightAngle(F,A,G,.52,'#34d399',3,'perp');
         // [표시 보강] γ = 밑면에서 EG와 EF(∥ HG)가 이루는 각, α = AG와 EF(∥ HG)가 이루는 각 — 세 각 β, γ, α 를 G에서 서로 다른 색 호와 값으로 표시
         draw3DLine(G,H,'#a78bfa',2.6,true,false,3,'perp');
-        draw3DAngleArc(G,E,H,B&&B.W<520?1.7:1.25,'#a78bfa',angLabel('γ',angDeg(G,E,H)),3,'perp');
-        draw3DAngleArc(G,A,H,B&&B.W<520?1.7:2.2,'#fbbf24',angLabel('α',angDeg(G,A,H)),3,'perp');
+        draw3DAngleArc(G,E,H,NARROW()?1.7:1.25,'#a78bfa',angLabel('γ',angDeg(G,E,H)),3,'perp');
+        draw3DAngleArc(G,A,H,NARROW()?1.7:2.2,'#fbbf24',angLabel('α',angDeg(G,A,H)),3,'perp');
         drawBottomTapeBanner(r,'cos α = cos β × cos γ  |  cos β = 1/√2, cos γ = 3/5',{
           fraction:{before:'cos α =',num:'3',den:'5√2',after:'≈ 0.424'}});
       }
-      if(PROB){ // 문제 그림: 가로·세로·높이 3, 4, 5 와 대각선 AG, EG (세 각 β, γ, α 의 값은 묻는 값)
+      if(PROB || !state.steps[1]){ // 문제 그림과 0단계: 가로·세로·높이 3, 4, 5 와 대각선 AG, EG (세 각 β, γ, α 의 값은 묻는 값)
         draw3DLine(A,G,'#fbbf24',3,false,false,0,'shape');draw3DLine(E,G,'#38bdf8',2.6,false,false,0,'projection');
         lenLabel(E,F,'3','#fde68a',0,-11);lenLabel(E,H,'4','#fde68a',-12,12);lenLabel(A,E,'5','#fde68a',-11,0);
       }
@@ -364,7 +365,7 @@ window.addEventListener('DOMContentLoaded', function () {
      ====================================================================== */
   const RENDER = { 1: renderMode1, 2: renderMode2, 3: renderMode3, 4: renderMode4 };
   const R2D = 180 / Math.PI, REG_DEG = Math.acos(1 / 3) * R2D;
-  const thetaOf = (d) => (Math.abs(d - REG_DEG) < 0.3 ? Math.acos(1 / 3) : d / R2D);
+  const thetaOf = (d) => (d === REG_DEG ? regularAngle : d / R2D);
   function sync(s, m) {
     state.mode = m;
     state.h2 = s.h2;
@@ -380,8 +381,8 @@ window.addEventListener('DOMContentLoaded', function () {
     top: { yaw: 0, pitch: 84 },
     front: { yaw: 0, pitch: 5 }
   });
-  const TITLES = ['꼬인 위치와 정사면체의 마주 보는 모서리(90°)', '삼수선의 정리 킬러', '이면각과 정사면체(cos θ = 1/3)', '직육면체 대각선과 세 각의 관계'];
-  const SHORT = ['꼬인 위치 90°', '삼수선의 정리', '이면각 1/3', '대각선과 세 각'];
+  const TITLES = ['꼬인 위치와 정사면체의 마주 보는 모서리', '삼수선의 정리 킬러', '이면각과 정사면체', '직육면체 대각선과 세 각의 관계'];
+  const SHORT = ['꼬인 두 모서리', '삼수선의 정리', '정사면체 이면각', '대각선과 세 각'];
   const QUESTIONS = [
     '꼬인 위치의 두 모서리가 수직인지, 그림의 겉모습이 아니라 무엇으로 판정할까?',
     '수선 PO, OH를 그으면 PH ⟂ l이 왜 성립할까?',
@@ -407,11 +408,11 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     if (m === 3) {
       const d = state.theta3 * R2D, c = Math.cos(state.theta3), h = 3 * Math.sqrt(3) * Math.sin(state.theta3);
-      const reg = Math.abs(state.theta3 - regularAngle) < 1e-7;
+      const reg = isRegularAngle(state.theta3);
       return [
         { label: '교선에 수직인 선분 AM = DM의 길이', value: '3√3 ≈ 5.20', color: 'rose' },
-        { label: '이면각 θ와 cos θ', value: `${d.toFixed(1)}° | cosθ = ${c.toFixed(3)}`, color: 'amber' },
-        { label: '꼭짓점 A의 높이 h = AM sin θ', value: `h = ${h.toFixed(3)}`, color: 'green', note: reg ? '정사면체일 때 2√6' : '이면각이 변하는 경우', wide: true }
+        { label: '이면각 θ와 cos θ', value: `θ ≈ ${d.toFixed(1)}° | cosθ ${reg ? "= 1/3" : "≈ " + c.toFixed(3)}`, color: 'amber' },
+        { label: '꼭짓점 A의 높이 h = AM sin θ', value: reg ? "h = 2√6" : `h ≈ ${h.toFixed(3)}`, color: 'green', note: reg ? '정사면체일 때 2√6' : '이면각이 변하는 경우', wide: true }
       ];
     }
     return [
@@ -424,8 +425,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (m === 1) return [{ tex: '\\overline{CD} \\perp \\triangle ABM \\implies \\overline{AB} \\perp \\overline{CD}', answer: true }, { tex: '\\theta = 90^\\circ', color: 'amber', answer: true }];
     if (m === 2) return [{ tex: '\\overline{PO} \\perp \\alpha, \\; \\overline{OH} \\perp l \\implies \\overline{PH} \\perp l' }, { tex: `\\overline{PA} = ${Math.hypot(Math.hypot(state.h2, 3), Math.sqrt(24)).toFixed(2)}`, color: 'green' }];
     if (m === 3) {
-      const reg = Math.abs(state.theta3 - regularAngle) < 1e-7;
-      return [{ tex: reg ? '\\cos\\theta = \\dfrac{1}{3}' : '\\cos\\theta = ' + Math.cos(state.theta3).toFixed(3) }, { tex: `\\theta = ${(state.theta3 * R2D).toFixed(1)}^\\circ`, color: 'amber' }];
+      const reg = isRegularAngle(state.theta3);
+      return [{ tex: reg ? '\\cos\\theta = \\dfrac{1}{3}' : '\\cos\\theta \\approx ' + Math.cos(state.theta3).toFixed(3) }, { tex: `\\theta \\approx ${(state.theta3 * R2D).toFixed(1)}^\\circ`, color: 'amber' }];
     }
     return [{ tex: '\\cos\\alpha = \\cos\\beta \\times \\cos\\gamma' }, { tex: '\\cos\\alpha = \\dfrac{3}{5\\sqrt{2}}', color: 'amber' }];
   }
@@ -458,7 +459,8 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: d.steps,
       problem: { tag: d.tag, time: d.targetTime, text: d.question, answer: d.answerBadge, snap: () => ({ h2: 4.0, th: REG_DEG, ...CAMS(m).iso }) },
       solution: { standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 핵심 성질을 이용한 풀이', quickTag: '10초 컷', standard: d.textbook, quick: d.shortcut },
-      view: (s) => {
+      view: (s, lab = window.lab) => {
+        s = fixedState(s, m, lab);
         sync(s, m);
         return {
           chips: chips(m).map((c) => ({ ...c, answer: true })), // 칩은 모두 풀이 식·답이라 문제 탭에서는 숨깁니다
@@ -471,9 +473,9 @@ window.addEventListener('DOMContentLoaded', function () {
         B = b;
         PROB = !!lab && lab.tab === 'problem';
         // 문제 탭: 풀이 단계·강조를 끄고, 문제에 주어진 값(PO=4, 정사면체)만 고정합니다
-        const s = APLab.problemState(lab, s0, m === 2 ? { h2: 4.0 } : m === 3 ? { th: REG_DEG } : {});
+        const s = APLab.problemState(lab, fixedState(s0, m, lab));
         sync(s, m);
-        SP = APLab.space(b, cam(s), { problem: PROB });
+        SP = fittedSpace(b, cam(s), { problem: PROB });
         const g = geometry(m);
         // 겨냥도: 입체의 면 목록을 알려 주면 뒷면의 모서리를 자동으로 점선으로 그립니다
         if (m === 1 || m === 3) SP.solid(APLab.solidFaces.tetra(g.A, g.B, g.C, g.D));
@@ -526,7 +528,7 @@ window.addEventListener('DOMContentLoaded', function () {
     sc.vary.next();
     if (sc.vary.onNext) sc.vary.onNext(lab.s);
     lab.s.revealed = false;
-    lab.setStep(1);
+    lab.setStep(0);
     try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
     lab.invalidate(true);
   });
@@ -615,17 +617,17 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw5Cube(s, tab, selName, mode) {
     // mode: 'explore' | 'review' | 'problem'
     const L = lists5(selName);
-    const stp = (i) => (mode === 'explore' ? true : mode === 'review' ? s.step >= i : false);
+    const stp = (i) => mode !== 'problem' && s.step >= i;
     const filt = mode === 'explore' ? s.rel5 : 'all';
     const dim = (k) => filt !== 'all' && filt !== k;
     // 수직인 면(노랑)
-    if ((mode === 'explore' && (filt === 'all' || filt === 'perp')) || (mode === 'review' && stp(3))) {
+    if (stp(3) && (mode !== 'explore' || filt === 'all' || filt === 'perp')) {
       FACES5[eAxis(selName)].forEach((f) => SP.poly(f.map((n) => CUBE[n]), { fill: 'amber', fillAlpha: 0.24, color: null }));
     }
     CUBE_EDGES.forEach((e) => {
       const r = rel5(selName, e);
       if (r === 'sel') return;
-      const on = mode === 'explore' ? !dim(r) : mode === 'review' ? (r === 'meet' && stp(1)) || (r === 'par' && stp(2)) || (r === 'skew' && stp(3)) : false;
+      const on = (mode !== 'explore' || !dim(r)) && ((r === 'meet' && stp(1)) || (r === 'par' && stp(2)) || (r === 'skew' && stp(3)));
       const col = on ? REL5[r].col : 'ink';
       SP.line(CUBE[e[0]], CUBE[e[1]], { color: col, alpha: on ? 0.95 : mode === 'explore' && dim(r) ? 0.2 : 0.5, width: on ? 3.4 : 1.7 });
     });
@@ -636,7 +638,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // 꼬인 두 직선 AB, CG: AB를 축으로 도는 판(각 phi)과 CG의 교점
   function skewInfo(s) {
     const e = V(1, 0, 0), n0 = V(0, 0, 1), m0 = cross(e, n0), ph = rad(s.phi), n = add(mul(n0, Math.cos(ph)), mul(m0, Math.sin(ph)));
-    const dm = V(0, -1, 0), N = cross(e, n), W = 1.9, dn = dot(N, dm), par = Math.abs(dn) < 1e-6;
+    const dm = V(0, -1, 0), N = cross(e, n), W = 1.9, dn = dot(N, dm), par = Math.abs(dn) < 1e-12;
     const t = par ? 0 : dot(N, sub(CUBE.A, CUBE.C)) / dn, X = add(CUBE.C, mul(dm, t));
     return { e, n, W, par, X, inside: !par && Math.abs(dot(sub(X, CUBE.A), n)) <= W && Math.abs(X.y) <= 2.1 };
   }
@@ -644,10 +646,10 @@ window.addEventListener('DOMContentLoaded', function () {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, mode = tab;
     const s = APLab.problemState(lab, s0, {});
-    SP = APLab.space(b, camOf(s), { problem: PROB });
+    SP = fittedSpace(b, camOf(s), { problem: PROB });
     const k = tab === 'explore' ? s.k5 : 'cube';
     if (k === 'pts') {
-      const E2 = V(0, 0.949, 0.316), R = add(V(s.ru, 0.3, 0), mul(E2, s.rv)), coll = Math.abs(s.rv) < 1e-9, P0 = V(-1.9, 0.3, 0), Q0 = V(1.9, 0.3, 0);
+      const E2 = unit(V(0, 3, 1)), R = add(V(s.ru, 0.3, 0), mul(E2, s.rv)), coll = Math.abs(s.rv) < 1e-9, P0 = V(-1.9, 0.3, 0), Q0 = V(1.9, 0.3, 0);
       const fit = [V(-3.0, 0.3, 0), V(3.0, 0.3, 0), V(0, 3.0, 0.9), V(0, -2.0, -0.6), V(0, 0.3, 2.2), V(0, 0.3, -2.2)];
       const body = () => {
         if (!coll) {
@@ -704,14 +706,14 @@ window.addEventListener('DOMContentLoaded', function () {
       SP.fitDrawing(CUBE_V.map((q) => CUBE[q]), body, FITO);
       body();
       // 모서리 누르기: 이번 프레임의 화면 위치를 기억해 둡니다
-      if (tab === 'explore') {
-        draw5._hit = CUBE_EDGES.map((q, i) => ({ i, a: b.toS(SP.P(CUBE[q[0]])), c: b.toS(SP.P(CUBE[q[1]])) }));
-        if (!draw5._bound) {
-          draw5._bound = true;
+      if (tab === 'explore' && !b.thumb) {
+        b._cubeHit = CUBE_EDGES.map((q, i) => ({ i, a: b.toS(SP.P(CUBE[q[0]])), c: b.toS(SP.P(CUBE[q[1]])) }));
+        if (!b._cubeBound) {
+          b._cubeBound = true;
           onTap(b.canvas, (pt) => {
-            if (!LAB || LAB.tab !== 'explore' || LAB.s.k5 !== 'cube' || LAB.scene.id !== 'mode5' || !draw5._hit) return;
+            if (!LAB || LAB.tab !== 'explore' || LAB.s.k5 !== 'cube' || LAB.scene.id !== 'mode5' || !b._cubeHit) return;
             let best = null, bd = 18;
-            draw5._hit.forEach((h) => {
+            b._cubeHit.forEach((h) => {
               const dx = h.c.x - h.a.x, dy = h.c.y - h.a.y, L2 = dx * dx + dy * dy || 1;
               const tt = clamp(((pt.x - h.a.x) * dx + (pt.y - h.a.y) * dy) / L2, 0, 1);
               const d = Math.hypot(pt.x - (h.a.x + dx * tt), pt.y - (h.a.y + dy * tt));
@@ -752,7 +754,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return [
           `$${e}$와 한 점에서 만나는 모서리(빨강): ${L.meet.join(', ')} → ${L.meet.length}개`,
           `$${e}$와 평행한 모서리(파랑): ${L.par.join(', ')} → ${L.par.length}개`,
-          `나머지 ${L.skew.length}개(${L.skew.join(', ')})는 꼬인 위치(초록), $${e}$에 수직인 면(노랑)은 ${L.perp.join(', ')} → ${L.perp.length}개`
+          `나머지 ${L.skew.length}개(${L.skew.join(', ')})는 꼬인 위치(초록), $${e}$에 수직인 면(노랑)은 ${L.perp.join(', ')} → ${L.perp.length}개. 따라서 $${v.expr}=${v.ans.tex}$`
         ];
       },
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text5(var5.cur())}</div>`,
@@ -778,8 +780,8 @@ window.addEventListener('DOMContentLoaded', function () {
           highlight: '개수만 묻는 문제는 모서리 이름을 하나씩 세지 말고 4·3·4·2를 바로 씁니다. 이름을 나열해야 하는 서술형에서만 하나씩 적습니다.'
         })
       },
-      view: (s) => {
-        const k = s.k5, tab = LAB ? LAB.tab : 'explore';
+      view: (s, lab = window.lab) => {
+        const k = s.k5, tab = lab?.tab || 'explore';
         const sel = tab === 'explore' ? eName(CUBE_EDGES[s.sel5 % 12]) : var5.cur().edge, L = lists5(sel);
         if (k === 'pts' && tab === 'explore') {
           const coll = Math.abs(s.rv) < 1e-9;
@@ -827,8 +829,8 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ======================== 장면 6 · 직선과 평면이 이루는 각 (정사각뿔의 그림자) ======================== */
   // 밑면 한 변 2k, 옆모서리 l 인 정사각뿔. B가 앞왼쪽 꼭짓점, 밑면은 y=0, 꼭짓점 A는 (0, h, 0)
   function pyrGeo(k, l) {
-    const h2 = l * l - 2 * k * k, ok = h2 > 1e-9, h = ok ? Math.sqrt(h2) : 0;
-    return { k, l, h, h2, ok, A: V(0, h, 0), B: V(-k, 0, k), C: V(k, 0, k), D: V(k, 0, -k), E: V(-k, 0, -k), O: V(0, 0, 0), BO: k * Math.SQRT2 };
+    const h2 = l * l - 2 * k * k, degenerate = l === k * Math.SQRT2, ok = !degenerate && h2 > 0, h = ok ? Math.sqrt(h2) : 0;
+    return { k, l, h, h2, ok, degenerate, A: V(0, h, 0), B: V(-k, 0, k), C: V(k, 0, k), D: V(k, 0, -k), E: V(-k, 0, -k), O: V(0, 0, 0), BO: k * Math.SQRT2 };
   }
   // 한 꼭짓점에서 만나는 두 모서리가 화면에서 거의 한 직선으로 겹쳐 보이지 않는 시점(yaw 20~35°, pitch 15~28°) 중 가장 여유 있는 것
   function pyrMinAngle(k, l, yaw, pit) {
@@ -861,9 +863,9 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw6(b, s0, v, lab) {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, s = APLab.problemState(lab, s0, {}), vr = var6.cur();
-    SP = APLab.space(b, camOf(s), { problem: PROB });
+    SP = fittedSpace(b, camOf(s), { problem: PROB });
     const g = tab === 'explore' ? pyrGeo(3, s.lat) : vr.g, k = g.k;
-    const st = (i) => (tab === 'explore' ? true : tab === 'review' ? s.step >= i : false);
+    const st = (i) => (tab !== 'problem' && s.step >= i);
     const hFit = tab === 'explore' ? Math.sqrt(49 - 2 * k * k) : g.h;
     const fit = [g.B, g.C, g.D, g.E, V(0, hFit, 0)];
     if (g.ok) SP.solid(pyrFaces(g));
@@ -895,8 +897,8 @@ window.addEventListener('DOMContentLoaded', function () {
         // 뿔이 서지 못하는 경우: AB를 밑면 위에 눕혀도 BO에 못 미칩니다
         const dir = unit(sub(g.O, g.B)), tip = add(g.B, mul(dir, g.l));
         SP.line(g.B, tip, { color: 'rose', width: 4, glow: true, hide: false });
-        SP.point(tip, { r: 5, color: 'rose', label: '닿지 못함', dx: 8, dy: -13, size: 12.5 });
-        SP.point(g.O, { r: 4.5, color: 'violet', label: 'O', dx: 9, dy: 13, size: 14 });
+        SP.point(tip, { r: 5, color: 'rose', label: g.degenerate ? 'A = O (높이 0)' : '닿지 못함', dx: 8, dy: -13, size: 12.5 });
+        if (!g.degenerate) SP.point(g.O, { r: 4.5, color: 'violet', label: 'O', dx: 9, dy: 13, size: 14 });
       }
       [['B', g.B], ['C', g.C], ['D', g.D], ['E', g.E]].forEach(([n, p]) => vLabel(p, n, g.O, n === 'B' ? 'rose' : 'ink'));
     };
@@ -947,8 +949,8 @@ window.addEventListener('DOMContentLoaded', function () {
           };
         }
       },
-      view: (s) => {
-        const tab6 = LAB ? LAB.tab : 'explore';
+      view: (s, lab = window.lab) => {
+        const tab6 = lab.tab;
         if (tab6 !== 'explore') { const v = var6.cur(); return { chips: [{ tex: v.ask === 'cos' ? `\\cos\\theta=\\dfrac{BO}{AB}=${v.ans.tex}` : `\\sin\\theta=\\dfrac{AO}{AB}=${v.ans.tex}`, color: 'amber', answer: true }] }; }
         const g = pyrGeo(3, s.lat), th = g.ok ? deg(Math.acos(g.BO / g.l)) : 0;
         return {
@@ -1022,13 +1024,13 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw7(b, s0, v, lab) {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, s = APLab.problemState(lab, s0, {}), vr = var7.cur();
-    SP = APLab.space(b, camOf(s), { problem: PROB });
+    SP = fittedSpace(b, camOf(s), { problem: PROB });
     const key = tab === 'explore' ? s.pair7 : vr.key;
     const ps = key === 'P' ? (tab === 'explore' ? [6, 5] : vr.c) : [6, 5];
     const t0 = geo7(key, 0, ps);
     const t = tab === 'explore' ? s.t7 : tab === 'review' ? (s.step >= 2 ? t0.sp.tr : 0) : 0;
     const g = geo7(key, t, ps), P = g.pts, sp = g.sp;
-    const st = (i) => (tab === 'explore' ? true : tab === 'review' ? s.step >= i : false);
+    const st = (i) => (tab !== 'problem' && s.step >= i);
     const center = g.pyr ? g.g.O : CUBE.O;
     if (g.pyr) SP.solid(pyrFaces(g.g)); else SP.solid(APLab.solidFaces.prism(...CUBE_SOLID()));
     const verts = g.pyr ? ['A', 'B', 'C', 'D', 'E'] : CUBE_V;
@@ -1101,16 +1103,16 @@ window.addEventListener('DOMContentLoaded', function () {
         standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 평행한 모서리로 바꾸기', quickTag: '10초 컷',
         standard: () => {
           const v = var7.cur(), s3 = steps7(v);
-          return { steps: `① ${s3[0].replace(/\$/g, '')}<br/>② ${s3[1]}<br/>③ ${s3[2]}`.replace(/\$([^$]+)\$/g, (m, a) => tex(a)), warning: '두 직선이 이루는 각은 항상 0°보다 크고 90° 이하인 <b>예각(또는 직각)</b>입니다. 삼각형에서 둔각이 나오면 그 보각을 택합니다.' };
+          return { steps: `① ${s3[0].replace(/\$/g, '')}<br/>② ${s3[1]}<br/>③ ${s3[2]}`.replace(/\$([^$]+)\$/g, (m, a) => tex(a)), warning: '두 직선이 이루는 각은 항상 0° 이상 90° 이하(평행하면 0°)인 각입니다. 삼각형에서 둔각이 나오면 그 보각을 택합니다.' };
         },
         quick: () => {
           const v = var7.cur();
-          const q = { A: '면의 대각선끼리는 정삼각형을 이루어 60°가 됩니다(꼬인 위치의 면 대각선).', B: '정육면체의 두 공간대각선이 이루는 예각은 항상 $\\cos\\theta=\\dfrac13$ 입니다.', C: '모서리와 면의 대각선(꼬인 위치)은 45°입니다.', D: '모서리와 공간대각선이 이루는 각은 항상 $\\cos\\theta=\\dfrac{1}{\\sqrt3}$ 입니다.', P: '옆모서리 AB와 밑면의 모서리 CD(=BE와 평행)가 이루는 각은 이등변삼각형 ABE의 밑각입니다. $\\cos\\theta=\\dfrac{\\text{밑변의 절반}}{\\text{옆모서리}}$' }[v.key];
+          const q = { A: '이 문제의 AC∥EG이므로 △BEG를 봅니다. 세 변이 같은 면 대각선이라 정삼각형의 각 60°입니다.', B: '정육면체의 두 공간대각선이 이루는 예각은 항상 $\\cos\\theta=\\dfrac13$ 입니다.', C: '이 문제의 AB∥EF를 이용하면 직각이등변삼각형 EFG의 밑각 45°입니다.', D: '모서리와 공간대각선이 이루는 각은 항상 $\\cos\\theta=\\dfrac{1}{\\sqrt3}$ 입니다.', P: '옆모서리 AB와 밑면의 모서리 CD(=BE와 평행)가 이루는 각은 이등변삼각형 ABE의 밑각입니다. $\\cos\\theta=\\dfrac{\\text{밑변의 절반}}{\\text{옆모서리}}$' }[v.key];
           return { steps: q.replace(/\$([^$]+)\$/g, (m, a) => tex(a)), highlight: '꼬인 두 직선은 평행한 모서리를 이용해 한 점에서 만나게 옮긴 뒤, 만들어진 삼각형의 각으로 구합니다.' };
         }
       },
-      view: (s) => {
-        const tab = LAB ? LAB.tab : 'explore', key = s.pair7, g = geo7(key, s.t7), meets = !!g.X;
+      view: (s, lab = window.lab) => {
+        const tab = lab.tab, key = s.pair7, g = geo7(key, s.t7), meets = !!g.X;
         if (tab !== 'explore') { const vv = var7.cur(); return { chips: [{ tex: (vv.ask === 'deg' ? `\\theta=${vv.ans.tex}` : `\\cos\\theta=${vv.ans.tex}`), color: 'amber', answer: true }] }; }
         const ans7 = { A: '\\theta=60^\\circ', B: '\\cos\\theta=\\dfrac13', C: '\\theta=45^\\circ', D: '\\cos\\theta=\\dfrac{\\sqrt3}{3}', P: `\\cos\\theta=${fracOf(6, 10).tex}` }[key];
         return {
@@ -1150,14 +1152,13 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw8(b, s0, v, lab) {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, s = APLab.problemState(lab, s0, {}), vr = var8.cur();
-    SP = APLab.space(b, camOf(s), { problem: PROB });
-    const st = (i) => (tab === 'explore' ? true : tab === 'review' ? s.step >= i : false);
+    SP = fittedSpace(b, camOf(s), { problem: PROB });
+    const st = (i) => (tab !== 'problem' && s.step >= i);
     const ex = tab === 'explore', X1 = V(1, 0, 0);
     let H, O, P;
     if (ex && s.st8 === 3) { H = V(0, 0, 0); O = V(0, 0, OZ3); P = V(0, s.h8, s.pz8); }
     else if (ex) { P = V(s.px8, s.h8, s.pz8); O = V(s.px8, 0, s.pz8); H = V(s.px8, 0, 0); }
-    else if (tab === 'problem') { H = V(0, 0, 0); O = V(0, 0, 3); P = V(0, 2.7, 1.4); } // 문제 그림은 개념도: P를 O·H 어느 쪽 바로 위에도 두지 않아 답(수선의 발)이 그림에서 드러나지 않게
-    else ({ H, O, P } = vr.geo);
+    else ({ H, O, P } = vr.geo); // 문제 그림도 주어진 세 길이를 그대로 만족합니다. 결론 표시는 마지막 단계에서 공개합니다.
     const fit = ex ? [V(-3.2, 0, 0), V(3.2, 0, 0), V(0, 4.2, 1.2), V(0, 0, 3.7), V(0, 0, -1.2)] : [V(-3.2, 0, 0), V(3.2, 0, 0), P, O, H, V(0, 0, -1.2), V(0, 0, O.z + 1.2)];
     const foot = vr.foot, hi = tab === 'review' && st(3);
     const body = () => {
@@ -1173,8 +1174,8 @@ window.addEventListener('DOMContentLoaded', function () {
         SP.right(H, O, add(H, X1), { color: 'sky', size: 13 });
         SP.right(H, P, add(H, X1), { color: 'amber', size: 17 });
         const ang = angDeg(O, P, H);
-        if (s.st8 !== 3 || Math.abs(ang - 90) < 0.5) SP.right(O, P, H, { color: 'rose', size: 13 });
-        if (s.st8 === 3 && Math.abs(P.z - OZ3) > 0.01) {
+        if (s.st8 !== 3 || Math.abs(P.z - O.z) <= 1e-10) SP.right(O, P, H, { color: 'rose', size: 13 });
+        if (s.st8 === 3 && Math.abs(P.z - OZ3) > 1e-10) {
           const F = V(0, 0, P.z);
           SP.line(P, F, { color: 'rose', alpha: 0.7, width: 1.8, dash: [4, 5], hide: false });
           SP.point(F, { r: 4.5, color: 'rose', label: 'O′', toward: SP.P(P), size: 13, dim: false });
@@ -1272,15 +1273,15 @@ window.addEventListener('DOMContentLoaded', function () {
           return { steps: `세 변 ${other}, ${hyp}가 ${tex(`${v.tri[0]},\\ ${v.tri[1]},\\ ${v.tri[2]}`)}(피타고라스 수)이므로 가장 긴 변 ${hyp}의 맞은편 꼭짓점 <strong class="text-amber-300">${v.foot}</strong>에서 직각입니다. 직선 ${tex('l')}에 ${tex('PH, OH')}가 모두 수직이므로 이 직각이 곧 ${tex(`P${v.foot}\\perp\\alpha`)}입니다.`, highlight: '직각삼각형 POH에서 직각이 있는 꼭짓점이 수선의 발입니다. (H에 직각이면 PH⊥α, O에 직각이면 PO⊥α)' };
         }
       },
-      view: (s) => {
-        const tab = LAB ? LAB.tab : 'explore';
+      view: (s, lab = window.lab) => {
+        const tab = lab.tab;
         if (tab !== 'explore') {
           const v = var8.cur();
           return { chips: [{ tex: `\\text{수선의 발}=${v.foot}`, color: 'violet', answer: true }] };
         }
         let H, O, P;
         if (s.st8 === 3) { H = V(0, 0, 0); O = V(0, 0, OZ3); P = V(0, s.h8, s.pz8); } else { P = V(s.px8, s.h8, s.pz8); O = V(s.px8, 0, s.pz8); H = V(s.px8, 0, 0); }
-        const poh = angDeg(O, P, H), ok3 = Math.abs(poh - 90) < 0.5, poa = Math.abs(P.z - O.z) < 0.01;
+        const poh = angDeg(O, P, H), ok3 = Math.abs(P.z - O.z) <= 1e-10, poa = ok3;
         if (s.st8 === 3) return {
           chips: [{ tex: chipTex[3], color: ok3 ? 'green' : 'rose' }],
           status: { tone: ok3 ? 'ok' : 'bad', text: ok3 ? 'PO ⟂ OH 성립 → PO ⟂ α 성립' : 'PO ⟂ OH가 아니면 PO ⟂ α가 깨져요(반례)' },
@@ -1333,9 +1334,9 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw9(b, s0, v, lab) {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, s = APLab.problemState(lab, s0, {}), vr = var9.cur();
-    SP = APLab.space(b, camOf(s), { problem: PROB });
+    SP = fittedSpace(b, camOf(s), { problem: PROB });
     const ex = tab === 'explore', a = ex ? s.a9 : vr.a, bb = ex ? s.b9 : vr.b, g = ex ? geo9(a, bb) : vr.geo;
-    const st = (i) => (ex ? true : tab === 'review' ? s.step >= i : false);
+    const st = (i) => (tab !== 'problem' && s.step >= i);
     const fit = [V(-0.8, 0, 0), V(3.7, 0, 0), V(3.7, 0, 3.4), V(-0.8, 0, 3.4), V(-0.8, 3.7, 0), V(3.7, 3.7, 0)];
     const X1 = V(1, 0, 0), G = V(0.45, 0, 0);
     const body = () => {
@@ -1443,8 +1444,8 @@ window.addEventListener('DOMContentLoaded', function () {
           return { steps: `수직인 두 평면에서는 <strong class="text-amber-300">${tex('\\tan\\theta=\\dfrac{\\tan b}{\\sin a}')}</strong> (${tex('a')}: ${tex('l')}과 ${tex('PA')}의 각, ${tex('b')}: ${tex('l')}과 ${tex('PB')}의 각)입니다. ${tex(`\\tan\\theta=\\dfrac{\\tan ${v.b}^\\circ}{\\sin ${v.a}^\\circ}`)}이므로 ${tex(`\\cos^2\\theta=\\dfrac{1}{1+\\tan^2\\theta}=${v.ans.tex}`)}.`, highlight: 'BK = tan b, KM = sin a (PK = 1) — 삼수선 그림에서 나오는 두 길이의 비가 곧 tan θ 입니다.' };
         }
       },
-      view: (s) => {
-        const tab = LAB ? LAB.tab : 'explore';
+      view: (s, lab = window.lab) => {
+        const tab = lab.tab;
         if (tab !== 'explore') { const v = var9.cur(); return { chips: [{ tex: `\\cos^2\\theta=${v.ans.tex}`, color: 'amber', answer: true }] }; }
         const ta = Math.tan(rad(s.b9)) / Math.sin(rad(s.a9)), th = Math.atan(ta), c2 = 1 / (1 + ta * ta);
         const clean = A9.includes(s.a9) && A9.includes(s.b9);
@@ -1465,8 +1466,103 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
+  // Geometry-first high-school scenes: given figure at 0; conclusions appear with their construction.
+  function fixedState(s, m, lab = window.lab) {
+    return lab && lab.tab !== 'explore' ? { ...s, ...(m === 2 ? { h2: 4 } : m === 3 ? { th: REG_DEG } : {}) } : s;
+  }
+  function fittedSpace(b, camera, opts) {
+    const sp = APLab.space(b, camera, opts), fit = sp.fitDrawing;
+    sp.fitDrawing = (points, paint, options) => {
+      if (b.W - b.insets.left - b.insets.right < 64 || b.H - b.insets.top - b.insets.bottom < 64) return sp;
+      // A previous collapsed layout must not turn pixel-label offsets into enormous world coordinates.
+      b.setFocus(sp.fit(points, 0.5), false);
+      return fit(points, paint, options);
+    };
+    return sp;
+  }
+  examData[1].hint = '두 모서리가 화면에서 이루는 각 대신, CD의 중점 M에서 생기는 두 정삼각형의 중선을 살펴보세요. 핵심 단면으로 돌린 뒤 수직 관계를 증명합니다.';
+  examData[2].hint = 'PO와 OH를 차례로 보고, 직선 l에 수직인 평면을 찾으세요. 높이를 바꾸는 탐구에서는 PA도 함께 바뀌며, 정리·문제는 주어진 길이로 돌아갑니다.';
+  examData[3].hint = '교선 BC에 수직인 단면을 보세요. 두 정삼각형을 접으면 AD와 높이가 어떻게 달라질까요? 정사면체가 되는 위치는 별도로 맞출 수 있습니다.';
+  examData[4].hint = 'AG를 밑면에 내린 그림자 EG를 먼저 찾으세요. AG → EG → EF 방향의 길이 비를 차례로 연결하면 불필요한 코사인법칙 계산을 줄일 수 있습니다.';
+  examData[1].steps[2] = 'CD는 평면 ABM에 수직이므로 AB와의 각은 $90^\\circ$. 이등변삼각형 ABM의 중선 MN은 AB에도 수직입니다. 따라서 공통수선 MN이 최단거리이고 $MN=\\sqrt{27-9}=3\\sqrt2$입니다.';
+  examData[3].steps[2] = 'A에서 밑면에 내린 수선의 발 G는 정삼각형 DBC의 외심이자 무게중심입니다. $GM=DM/3$이므로 $\\cos\\theta=1/3$, $AG=\\sqrt{AM^2-GM^2}=2\\sqrt6$입니다.';
+  const quick3 = examData[3].shortcut;
+  examData[3].shortcut = () => { const q = quick3(); q.steps += `<br/>높이도 같은 직각삼각형에서 ${tex('AG=\\sqrt{AM^2-GM^2}=\\sqrt{27-3}=2\\sqrt6')}입니다.`; return q; };
+  const standard4 = examData[4].textbook;
+  examData[4].textbook = () => { const q = standard4(); q.steps += `<br/>${tex('\\cos\\alpha=(AB^2+AG^2-BG^2)/(2AB\\cdot AG)=3/(5\\sqrt2)')}. 정사영 EG로 ${tex('\\cos\\beta=EG/AG=1/\\sqrt2')}, 밑면에서 ${tex('\\cos\\gamma=EF/EG=3/5')}도 얻습니다.`; return q; };
+  examData[4].steps = ['주어진 세 모서리의 길이로 AG의 길이를 구하고, EF와 평행한 GH를 확인합니다.', 'AG의 밑면 정사영 EG를 그립니다. $\\cos\\beta=EG/AG$이며, 밑면에서는 $\\cos\\gamma=GH/EG$입니다.', '두 비의 EG가 약분됩니다. $\\cos\\alpha=GH/AG=(EG/AG)(GH/EG)=3/(5\\sqrt2)$입니다.'];
+
+  function exploreSteps(m, s) {
+    if (m === 2) return ['P의 수선의 발 O와 직선 l 위의 발 H를 잇습니다. PO와 OH가 놓인 평면은 l에 수직입니다.', `현재 $PO=${s.h2}$, $OH=3$이므로 $PH=\\sqrt{${s.h2}^2+9}\\approx${Math.hypot(s.h2,3).toFixed(3)}$입니다.`, `삼수선으로 $PH\\perp l$. 탐구에서 고정한 $AH=2\\sqrt6$를 쓰면 $PA=\\sqrt{${s.h2}^2+33}\\approx${Math.hypot(s.h2,Math.sqrt(33)).toFixed(3)}$입니다. PO=4인 문제 조건에서는 이 관계를 거꾸로 사용합니다.`];
+    if (m === 3) {
+      const t = thetaOf(s.th), reg = isRegularAngle(t), c = Math.cos(t), h = 3*Math.sqrt(3)*Math.sin(t);
+      return ['BC의 중점 M을 잡습니다. 두 정삼각형의 중선 AM, DM은 접는 동안에도 BC에 수직입니다.', `$AM=DM=3\\sqrt3$이고 현재 두 반평면의 각 $\\theta\\approx${deg(t).toFixed(3)}^\\circ$입니다. AD는 접은 각에 따라 달라집니다.`, reg ? examData[3].steps[2] : `현재 G는 A의 정사영이며 일반적으로 무게중심이 아닙니다. 부호 있는 M→D 방향 성분은 $AM\\cos\\theta$, $\\cos\\theta\\approx${c.toFixed(4)}$, 높이 $AG=AM\\sin\\theta\\approx${h.toFixed(4)}$입니다.`];
+    }
+    if (m === 5) {
+      if (s.k5 === 'pts') return ['P와 Q를 잇는 직선부터 고정합니다. 세 번째 점 R가 이 직선 위에 있는지 확인합니다.', `현재 R에서 PQ까지 거리 $|v|=${Math.abs(s.rv).toFixed(3)}$. ${Math.abs(s.rv)<1e-9?'세 점이 한 직선 위라 그 직선을 축으로 평면을 돌릴 수 있습니다.':'직선 PQ 밖의 점 R가 방향을 정하므로 세 점이 평면 하나를 정합니다.'}`, Math.abs(s.rv)<1e-9?'R가 P 또는 Q와 겹쳐도 독립인 조건은 늘지 않습니다. PQ를 포함하는 평면은 무수히 많습니다.':'두 방향 PQ, PR가 평행하지 않으므로 그 두 방향이 생성하는 평면은 유일합니다.'];
+      if (s.k5 === 'skew') { const g=skewInfo(s); return ['AB를 포함하는 평면을 AB를 축으로 돌립니다. CG와 AB의 교점·평행 여부는 바뀌지 않습니다.', g.par?'현재 평면과 CG는 평행하고 만나지 않습니다.':'현재 CG는 무한히 펼친 평면과 한 점에서 만납니다. 화면의 유한한 판 밖에 교점이 있을 수도 있습니다.', 'AB와 CG는 평행하지도 만나지도 않는 꼬인 두 직선입니다. 한 평면 안의 두 직선은 만나거나 평행하므로 두 직선을 동시에 포함하는 평면은 없습니다.']; }
+      const e=CUBE_EDGES[s.sel5%12],n=eName(e),l=lists5(n);
+      return [`${n}의 양 끝점에서 만나는 다른 모서리를 셉니다: ${l.meet.join(', ')}.`, `같은 방향으로 뻗은 모서리: ${l.par.join(', ')}. 자기 자신 ${n}은 제외합니다.`, `남은 꼬인 모서리 ${l.skew.join(', ')}. ${n}에 수직인 면은 ${l.perp.join(', ')}입니다.`];
+    }
+    if (m === 6) { const g=pyrGeo(3,s.lat); return ['정사각형 밑면의 중심 O는 두 대각선의 교점입니다. 꼭짓점 A가 밑면 위에 서면 AO가 밑면에 수직입니다.', g.ok?'AB의 정사영은 BO입니다. 따라서 직선과 평면의 각은 ∠ABO이며, $BO=3\\sqrt2$입니다.':g.degenerate?'$AB=BO=3\\sqrt2$인 경계에서는 A가 O와 겹쳐 높이가 0인 평면 도형으로 퇴화합니다.':'$AB\\lt BO$이면 $AO^2=AB^2-BO^2\\lt0$이므로 이 옆모서리로 정사각뿔을 만들 수 없습니다.', g.ok?`현재 $AB=${s.lat}$, $AO=\\sqrt{AB^2-18}\\approx${g.h.toFixed(4)}$, $\\cos\\theta=BO/AB\\approx${(g.BO/g.l).toFixed(4)}$입니다.`:g.degenerate?'퇴화한 평면 그림에서 AB와 밑면의 각은 0°이나 입체 정사각뿔은 아닙니다.':'불가능한 길이 상태에서는 입체의 높이와 각의 값을 정의하지 않습니다.']; }
+    if (m === 7) { const g=geo7(s.pair7,s.t7),v={key:s.pair7,c:[6,5],ans:fracOf(6,10)},ss=steps7(v); return [ss[0],`분홍 직선을 ${Math.round(s.t7*100)}% 평행이동했습니다. ${g.X?'현재 두 직선이 한 점에서 만납니다.':'현재 두 직선은 꼬인 위치라 평행이동을 더하거나 원위치로 돌아가 만나는 위치를 확인합니다.'}`, `${ss[2]} 두 방향벡터가 변하지 않으므로 이동 중에도 두 직선의 작은 각은 $\\theta\\approx${g.th.toFixed(3)}^\\circ$로 같습니다.`]; }
+    if (m === 8) { const ok=Math.abs(s.pz8-OZ3)<=1e-10; return s.st8===3?['PH와 OH가 모두 l에 수직인 상태에서 P를 움직입니다. 이것만으로 PO가 평면 α에 수직인지는 결정되지 않습니다.', `현재 $\\angle POH\\approx${angDeg(V(0,0,OZ3),V(0,s.h8,s.pz8),V(0,0,0)).toFixed(3)}^\\circ$. ${ok?'PO와 OH가 수직입니다.':'PO와 OH가 수직이 아닙니다.'}`,ok?'PO는 OH와 l에 모두 수직이므로 평면 α에 수직입니다. O가 수선의 발입니다.':'추가 조건 PO⊥OH가 빠진 반례입니다. 실제 수선의 발은 P의 높이 좌표만 0으로 만든 O′이며 O와 다릅니다.']:['PO가 평면 α에 수직이므로 l의 방향에도 수직입니다. H는 O에서 l에 내린 수선의 발입니다.', `현재 $PO=${s.h8}$, $OH=${s.pz8}$. $PH^2=PO^2+OH^2$이므로 $PH\\approx${Math.hypot(s.h8,s.pz8).toFixed(3)}$입니다.`,s.st8===1?'l은 평면 POH의 두 독립 방향 PO, OH에 수직이므로 PH에도 수직입니다.':'l은 PO 방향과 PH에 모두 수직이므로 이들이 만드는 평면의 OH 방향에도 수직입니다.']; }
+    if (m === 9) { const g=geo9(s.a9,s.b9),km=norm(sub(g.M,g.K)),bk=norm(sub(g.B,g.K)),c2=km*km/(km*km+bk*bk);return ['서로 수직인 두 평면에서 B의 바닥 수선의 발 K는 교선 l 위에 놓입니다.', 'K에서 PA에 내린 수선 KM을 긋습니다. 삼수선으로 BM도 PA에 수직이므로 이면각을 ∠BMK로 바꿉니다.', `그림의 $PK=2$이므로 $BK=2\\tan ${s.b9}^\\circ$, $KM=2\\sin ${s.a9}^\\circ$. 공통 배율 2가 약분되어 $\\tan\\theta=\\tan b/\\sin a$, $\\cos^2\\theta\\approx${c2.toFixed(5)}$입니다.`]; }
+    return examData[m].steps;
+  }
+  const PART_HINTS = {
+    1:['마주 보는 두 모서리의 위치 확인','정삼각형의 중선으로 두 수직 관계 확인','공통수선이 왜 최단거리인지 연결'],
+    2:['바닥으로 내린 수선','직선 l로 내린 수선','두 직각삼각형의 제곱 관계'],
+    3:['교선의 중점 찾기','교선에 수직인 단면','정사영과 높이의 비'],
+    4:['공간 대각선','밑면의 정사영','연속된 길이 비의 약분']
+  };
+  function upgradeSpace(sc) {
+    const m=Number(sc.id.slice(4)), oldSteps=sc.steps, oldView=sc.view, oldGuide=sc.guide;
+    sc.guide=(s,lab=window.lab)=>lab.tab==='explore'?(typeof oldGuide==='function'?oldGuide(s,lab):oldGuide):'문제의 주어진 도형에서 출발해, 단계마다 필요한 보조선의 이유와 관계식을 확인하세요.';
+    sc.steps=(s,lab=window.lab)=>lab && lab.tab==='explore' && lab.scene?.id===sc.id?exploreSteps(m,s):(typeof oldSteps==='function'?oldSteps(s,lab):oldSteps);
+    sc.view=(s,lab=window.lab)=>{
+      const v=oldView(s,lab), stage=s.step||0;
+      if (m<=4) {
+        const st=fixedState(s,m,lab);sync(st,m);
+        v.parts=PART_HINTS[m].map((desc,i)=>({id:i+1,name:`${i+1}단계`,desc,color:PART_COLORS[i]}));
+        if(stage<3){
+          const all=readouts(st,m);
+          v.readouts=m===1?all.slice(0,stage>=2?2:1):m===2?[all[0],{...all[2],note:undefined}]:m===3?[{label:'주어진 정삼각형의 한 변',value:'6',color:'sky'},...(stage>=2?[all[0]]:[]),...(lab.tab==='explore'?[{label:'현재 접은 각',value:`θ ≈ ${st.th.toFixed(3)}°`,color:'amber'}]:[])]:[{...all[0],note:undefined}];
+        }
+      }
+      if(lab.tab!=='explore' && m>=5) v.readouts=[];
+      if(stage<3){
+        // Solution chips follow the same stage as their justification; inputs stay in readouts.
+        if(!(m===5 && lab.tab==='explore' && s.k5==='pts' && stage>=2))
+          v.chips=m===7 && lab.tab==='explore'?(v.chips||[]).filter(c=>!c.answer):[];
+        if(lab.tab==='explore' && m===5 && s.k5==='cube')v.readouts=[{label:'고른 모서리',value:eName(CUBE_EDGES[s.sel5%12]),color:'ink'}];
+        if(lab.tab==='explore' && m===5 && s.k5==='pts' && stage<2)v.readouts=(v.readouts||[]).slice(0,2);
+        if(lab.tab==='explore' && m===5 && s.k5==='skew')v.readouts=(v.readouts||[]).slice(0,2).map(r=>({...r,note:undefined}));
+        if(lab.tab==='explore' && m===6)v.readouts=[{label:'옆모서리 AB',value:`${s.lat}`,color:'rose'},{label:'밑면 한 변',value:'6',color:'sky'}];
+        if(lab.tab==='explore' && m===7)v.readouts=(v.readouts||[]).slice(0,2);
+        if(lab.tab==='explore' && m===8){
+          v.readouts=s.st8===3?[{label:'현재 P의 높이 / 깊이',value:`${s.h8} / ${s.pz8}`,color:'rose'},...(stage>=2?(v.readouts||[]).slice(0,2):[])]: (v.readouts||[]).slice(0,stage>=2?2:1);
+          v.status={tone:'info',text:s.st8===3?'PH와 OH를 l에 수직으로 둔 채 P를 움직여 보세요':s.st8===1?'주어진 조건: PO ⟂ α, OH ⟂ l':'주어진 조건: PO ⟂ α, PH ⟂ l'};
+        }
+        if(lab.tab==='explore' && m===9)v.readouts=(v.readouts||[]).slice(0,1);
+        if(lab.tab==='explore' && m===6)v.status={tone:'info',text:`옆모서리 ${s.lat} · 입체가 가능한 길이를 비교하세요`};
+        if(lab.tab==='explore' && m===9)v.status={tone:'info',text:`a = ${s.a9}°, b = ${s.b9}°`};
+      }
+      if(m===6 && lab.tab==='explore') {
+        const g=pyrGeo(3,s.lat);
+        if(!g.ok){v.status={tone:'warn',text:g.degenerate?'높이 0인 퇴화 경계':'길이 조건을 만족하는 정사각뿔 없음'};v.alert={tone:'warn',text:g.degenerate?'AB = BO이므로 A가 O와 겹칩니다. 입체의 높이는 0이며, AB < BO인 불가능 상태와 구별합니다.':'AB < BO이므로 AO² = AB² − BO²가 음수가 됩니다. 이 길이로는 입체를 만들 수 없습니다.'};v.readouts=[{label:'옆모서리 AB',value:`${s.lat}`,color:'rose'},{label:'높이 AO',value:g.degenerate?'0 (퇴화)':'정의되지 않음',color:'amber'}];}
+      }
+      return v;
+    };
+    if(m===3){const p=sc.presets;sc.presets=s=>[{group:'조건',label:'정사면체로 맞추기',apply:st=>{st.th=REG_DEG},on:st=>st.th===REG_DEG},...p(s)];}
+    if(m===5)sc.notes='꼬인 모서리를 셀 때 자기 자신·만나는 모서리·평행한 모서리를 먼저 제외합니다. 직선에 수직인 면은 그 직선의 방향이 면의 법선 방향과 같은 면입니다.';
+    return sc;
+  }
+
   APLab.createLab({
     id: 'geom-space',
+    stagedReveal: true,
     title: '공간도형 3D',
     courseName: '기하',
     unit: '공간도형과 공간좌표',
@@ -1497,7 +1593,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { lens: 'all', k5: 'pts', ru: 0.8, rv: 1.7, sel5: 0, rel5: 'all', pair7: 'A', st8: 1, px8: 0.4, pz8: 2.2 },
     persist: ['lens', 'k5', 'sel5', 'rel5', 'pair7', 'st8'],
-    scenes: [...[1, 2, 3, 4].map(sceneOf), scene5(), scene6(), scene7(), scene8(), scene9()]
+    scenes: [...[1, 2, 3, 4].map(sceneOf), scene5(), scene6(), scene7(), scene8(), scene9()].map(upgradeSpace)
   });
 });
 </script>
