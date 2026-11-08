@@ -46,7 +46,11 @@ window.questionBank = [
     "sourceQid": 1,
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 항등함수와 상수함수의 두 그래프와 같은 입력의 대응점.",
+    "solutionImageCaption": "항등함수의 출력은 입력과 같고 상수함수의 출력은 항상 일정하다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -142,7 +146,11 @@ window.questionBank = [
     "sourceQid": 3,
     "sourceOrdinal": 3,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수와 역함수의 그래프에서 서로 바뀐 대응점.",
+    "solutionImageCaption": "함수와 역함수의 그래프는 대각선에 대하여 대칭이다. 대응점 (3,1)과 (1,3)에서 입력과 출력이 바뀐다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -186,13 +194,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "무리함수 그래프: x≤1이고 끝점 (1,−3), 치역은 y≤−3.",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 그래프의 닫힌 끝점과 왼쪽 아래로 이어지는 가지.",
     "questionUid": "qid_v1_5e2cbbbc5e0984b65fb5e26eb0b4225f490674f41bdd9de7cb0630de96b11cd1",
     "sourceQid": 4,
     "sourceOrdinal": 4,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImageCaption": "끝점은 (1,−3)이고 그래프는 왼쪽 아래로 이어져 정의역과 치역의 경계를 보인다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   
 },
   {
@@ -384,7 +394,11 @@ window.questionBank = [
     "sourceQid": 8,
     "sourceOrdinal": 8,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 접합점 양쪽에서 증가하는 절댓값 함수의 예시 그래프.",
+    "solutionImageCaption": "예: 매개변수가 1일 때는 접합점 양쪽에서 그래프가 모두 증가한다. 매개변수에 따라 두 기울기의 부호와 0 여부를 확인한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -528,13 +542,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "유리함수 그래프: 점근선 x=1, y=2. 0<x<1에서 그래프는 x축 아래에 있다.",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프의 두 가지와 제4사분면에 있는 점을 가리키는 지시선.",
     "questionUid": "qid_v1_d98584574053fd83433eec076740afdd6f11fa824903118f3fa0afac10ad35ff",
     "sourceQid": 11,
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImageCaption": "좌표축을 기준으로 그래프가 제4사분면을 지남을 확인한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   
 },
   {
@@ -554,7 +570,7 @@ window.questionBank = [
       "유리함수와 무리함수 그래프"
     ],
     "image": "assets/images/19_팔마고_2학기_기말_고1_기출/q12.png",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q12.png",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q12-solution-v2.svg",
     "answer": "②",
     "solution": "그림에서 수직점근선은 $x=1$이다. 분모가 0이 되는 곳이 수직점근선이므로\n$-a=1$\n$a=-1$이다.\n$\\dfrac{bx+c}{x+a}=b+\\dfrac{c-ab}{x+a}$이다. $x$가 양쪽으로 멀리 갈수록 $|x+a|$가 커져 나머지 항의 절댓값 $\\left|\\dfrac{c-ab}{x+a}\\right|$은 0에 가까워진다. 따라서 그래프가 $y=b$에 가까워지므로 수평점근선은 $y=b$이다.\n그림의 수평점근선은 $y=6$이므로 $b=6$이다.\n또 그림의 $y$절편은 3이다. $x=0$을 넣으면 $y=\\dfrac ca=3$이므로\n$c=3a=-3$이다.\n\n이 값을 새 함수에 넣으면\n$y=\\sqrt{cx+b}+a$\n$=\\sqrt{-3x+6}-1$이다.\n제곱근 안이 음이 아니어야 하므로\n$-3x+6\\ge0$\n$x\\le2$이다.\n경계 $x=2$에서 $y=-1$이므로 그래프의 끝점은 $(2,-1)$이다. $x=0$에서는 $y=\\sqrt6-1>0$이고, $x$가 왼쪽으로 갈수록 $-3x+6$이 커져 그래프도 위로 올라간다.\n이 모양과 끝점을 만족하는 것은 ②이다.",
     "level": "상",
@@ -584,7 +600,10 @@ window.questionBank = [
     "sourceQid": 12,
     "sourceOrdinal": 12,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3},
+    "solutionImageAlt": "해설 그림: 유리함수와 계수를 이용해 만든 무리함수의 그래프.",
+    "solutionImageCaption": "파란 곡선 f(x)는 주어진 유리함수이고, 주황 곡선 g(x)는 구한 계수로 만든 무리함수이다. 점근선과 절편으로 계수를 찾아 g의 끝점을 확인한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -953,13 +972,15 @@ window.questionBank = [
     "crossConceptKeys": ["CC_RATIONAL_RADICAL_GRAPH_INTERSECTION"],
     "conditionKeys": ["COND_RANGE","COND_NONZERO"],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "k=0인 대표 그래프에서 두 함수의 두 교점을 보이고, 일반 k의 범위는 해설의 단조성 분석으로 구한다.",
+    "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수의 두 가지와 두 점에서 만나는 제곱근 함수.",
     "questionUid": "qid_v1_86031550ca03f8dfe935dac6f44fbd362f33b5007435acf85246cf66d73d3344",
     "sourceQid": 20,
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "solutionImageCaption": "예: 매개변수가 0일 때 두 그래프는 유리함수의 양쪽 가지와 각각 한 번씩 만난다. 교점 개수는 정의역 경계에서 판단한다. 정답은 −2 이상 1 이하이다.",
+    "solutionImageSize": "full"
   
 },
   {

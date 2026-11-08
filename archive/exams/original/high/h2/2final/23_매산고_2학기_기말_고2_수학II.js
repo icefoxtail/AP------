@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수의 오른쪽 가지가 수평 점근선에 가까워진다.",
+    "solutionImageCaption": "그림은 f(x)=2/(x+1)+2의 그래프이다. x가 커질수록 f(x)의 값이 수평 점근선에 가까워진다. 정답은 2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 2까지 양수인 포물선과 x축 사이의 영역이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=3x^2+2일 때, 0부터 2까지 f(x)와 x축 사이의 영역을 적분으로 계산한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -139,7 +147,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극대와 극소가 각각 점으로 표시되어 증가와 감소가 바뀌는 모습을 보여 준다.",
+    "solutionImageCaption": "도함수의 부호가 양에서 음으로 바뀌는 곳에서 극댓값을 찾고, 임계점 두 곳의 함수값을 비교한다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -167,7 +179,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=f(x)의 포물선이 표시되어 있다.",
+    "solutionImageCaption": "미적분의 기본정리로 f를 구하고 입력 1에서의 함숫값을 읽는다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -195,7 +211,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위 두 점을 잇는 할선과 그에 평행한 접선이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=x^2-4x+2이다. s는 두 점 A, B를 잇는 할선이고, t는 s와 평행한 접선이며 P는 그 접점이다. 평균변화율은 s의 기울기와 같고, 접선 t의 기울기가 미분계수이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -223,7 +243,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 함수 조각이 x=3에서 같은 점과 같은 기울기로 이어지는 모습이 표시되어 있다.",
+    "solutionImageCaption": "x=3에서 두 조각의 함수값과 좌우 기울기가 일치하도록 조건을 적용한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -307,7 +331,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선의 교점 사이에 두 그래프가 둘러싼 영역이 표시되어 있다.",
+    "solutionImageCaption": "두 곡선의 교점을 구하고 그 사이에서 위 포물선과 아래 직선 사이의 넓이를 적분한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -427,7 +455,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: g의 포물선이 y축 대칭이고 두 근이 좌우 대칭으로 표시되어 있다.",
+    "solutionImageCaption": "g의 포물선이 y축 대칭임을 보이고, 두 근의 대칭으로 f의 접점 위치를 정한다. 정답은 16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -449,7 +481,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-APPLICATION_OF_CALCULUS",
     "subUnit": "미분·적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 조건으로 정해진 이차함수 위에서 입력 1과 3에 대응하는 점이 좌표와 함께 표시되어 있다.",
+    "solutionImageCaption": "주어진 등식을 미분해 f를 구하고 추가 조건으로 계수를 정한 뒤 입력 3의 함숫값을 읽는다. 점 A, B는 입력 1, 3에 대응하는 점이다. 정답은 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=f(x) 곡선과 x축 사이의 부호가 다른 두 음영 영역.",
+    "solutionImageCaption": "피적분함수의 그래프에서 x축 위와 아래 부분은 정적분에 서로 다른 부호로 기여한다. 원시함수의 끝값 차를 계산한다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -55,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극대점과 극소점 및 x축과의 교차를 나타낸 그래프.",
+    "solutionImageCaption": "도함수의 부호로 극대점과 극소점을 찾고 함수값의 부호를 비교해 교점 수를 센다. 정답은 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -83,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 그래프와 점 A(0,2)를 나타낸 그림.",
+    "solutionImageCaption": "적분과 미분의 관계로 함수를 정하고 초기값을 적용한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -111,7 +123,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간에 따라 높이가 처음 지면에서 출발해 다시 지면에 닿는 포물선 그래프.",
+    "solutionImageCaption": "높이식은 t=8에서 다시 0이 된다. 속도는 높이의 도함수이므로 그 시각의 기울기를 계산한다. 정답은 −40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -139,7 +155,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: y축 대칭인 위로 열린 포물선과 좌우 대칭 구간의 음영 영역.",
+    "solutionImageCaption": "예: 짝함수의 y축 대칭으로 좌우 구간의 적분값이 같다. 구간을 뒤집는 성질과 나누는 성질도 함께 확인한다. 정답은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -167,7 +187,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 f(x)=3x²−2x−2의 그래프와 y절편 (0,-2).",
+    "solutionImageCaption": "x=2를 대입해 a=2를 구하고 양변을 미분하면 f(x)=3x²−2x−2이다. 그래프의 y절편은 (0,−2)이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -195,7 +219,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 포물선 그래프가 x축과 -1, 3에서 만나고 x=1에서 꼭짓점을 이룬다.",
+    "solutionImageCaption": "도함수 g=f′는 x=−1에서 음수에서 양수로 바뀌어 원래 함수가 극소를 갖는다. 극솟값 조건으로 a를 구한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -223,7 +251,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 곡선과 -1부터 1까지 x축 위에 놓인 음영 영역.",
+    "solutionImageCaption": "도함수의 정적분은 f(1)−f(−1)이다. 주어진 한 점의 함수값에 변화량을 더한다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -251,7 +283,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 차함수 h(x)=x³−4x와 x축 사이의 두 음영 영역 및 세 영점.",
+    "solutionImageCaption": "두 곡선의 차 h(x)=x³−4x로 교점을 찾는다. 두 구간의 넓이를 합한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -279,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 직선 v(t)가 t=2에서 시간축을 지나며 앞뒤 구간에서 부호가 달라진다.",
+    "solutionImageCaption": "속도가 0이 되는 t=2에서 이동 방향이 바뀐다. 속도의 절댓값을 두 구간에서 각각 적분한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -377,7 +417,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정적분 조건으로 결정된 삼차함수의 그래프.",
+    "solutionImageCaption": "적분 조건에서 상수를 구해 함수에 대입한다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -405,7 +449,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 도함수 그래프의 극대점·극소점과 x축 교점을 나타낸 그림.",
+    "solutionImageCaption": "예: a=0일 때 f의 세 근에서 원시함수의 극값을 살핀다. 정수 a의 범위를 센다. 정답은 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -461,7 +509,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f와 g의 근 및 극점 위치를 비교한 그래프.",
+    "solutionImageCaption": "곱의 근과 중복도, x=2의 극댓값 조건으로 g를 정한다. 이를 이용해 f′(0)을 계산한다. 정답은 −15/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -492,9 +544,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "선분 AB와의 교점 조건에서 얻은 a=h(x)의 0≤x≤4 그래프",
-    "solutionImageCaption": "h(2)=10이 최댓값, h(4)=-14가 최솟값이므로 정수 a의 범위는 -14≤a≤10이다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x≤4에서 y=2+4x+2x²−x³의 그래프와 좌표 (0,2), (2,10), (4,−14).",
+    "solutionImageCaption": "선분과의 교점 조건을 a=h(x)로 나타낸다. [0,4]에서 h의 최댓값과 최솟값을 이용해 M+m을 구한다. 정답은 −4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -611,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 포물선이 x=1에서 x축에 접하고 나머지 구간에서는 x축 위에 놓인다.",
+    "solutionImageCaption": "예: a=1일 때 도함수는 x=1에서 0이지만 함수는 엄밀히 증가한다. 정답은 a≥1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -633,7 +689,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프가 (1,8)에서 극대, (3,4)에서 극소를 이룬다.",
+    "solutionImageCaption": "두 극한 조건으로 계수를 차례로 결정한다. 정답은 f(x)=x³−6x²+9x+4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -656,9 +716,9 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "절댓값 적분을 t=x에서 두 구간으로 나누는 해설 도식",
-    "solutionImageCaption": "t=x에서 |x-t|의 식을 나누면 f(x)=x³/3−2x+8/3이고 f'(1)=-1이다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 열린 구간에서 도함수 그래프의 모양을 나타낸 그림.",
+    "solutionImageCaption": "그림의 g(x)는 도함수 f′(x)=x²−2 (0<x<2)이다. 적분을 나누어 얻은 이 식에서 x=1의 값을 확인한다. 정답은 −1이다.",
     "solutionImageSize": "full"
   }
 ];
