@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "9",
+      "-3",
+      "1/4"
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.4,
+      6.4,
+      -1,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 2,
+        "y": 8
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        6
+      ],
+      "y": []
+    }
+  },
+  "caption": "상자 부피 V=x(12−2x)²를 16으로 나눈 그래프를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "상자 부피 V=x(12−2x)²를 16으로 나눈 그래프를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림 세로값은 실제 부피의 1/16이며 실제 상자의 범위는 0<x<6이다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "$x=2$에서 최대이며"
+}

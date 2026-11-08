@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "12",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "4",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=2일 때 정적분 구간 [-2,2]를 나누어 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2일 때 정적분 구간 [-2,2]를 나누어 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 -2x+4의 두 구간 적분은 각각 12와 4이다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "$a=2$이다."
+}

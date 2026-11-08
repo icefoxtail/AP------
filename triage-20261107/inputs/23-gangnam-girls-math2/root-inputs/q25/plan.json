@@ -1,0 +1,73 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "1",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "D",
+            "value": "5",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "7",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "-2",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "8",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "적분 구간 -3,0,1,5와 세 부분의 적분값을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 구간 -3,0,1,5와 세 부분의 적분값을 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "[-3,0]은 7, [0,1]은 -2, [1,5]는 8이다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "구하는 값은 $\\int_{-3}^0(f(x)-4x)\\,dx=7-(-18)=25$이다."
+}

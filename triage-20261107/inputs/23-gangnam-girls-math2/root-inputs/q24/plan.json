@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5/4",
+      "0",
+      "-3/2",
+      "1/4"
+    ],
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      -8,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": "5/4"
+      },
+      {
+        "id": "N",
+        "x": 4,
+        "y": "-27/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "복원한 f=x³−6x²+5를 4로 나눈 그래프의 극점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "복원한 f=x³−6x²+5를 4로 나눈 그래프의 극점을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 세로값은 실제 f의 1/4이다. 실제 극대 5와 극소 -27은 5/4와 -27/4로 보인다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "극솟값 $-27$이다."
+}

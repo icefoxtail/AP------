@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3/2",
+        "y": "-9/4"
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 10
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "S",
+        "slope": "5",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "2"
+        ]
+      },
+      {
+        "id": "T",
+        "slope": "5",
+        "intercept": "-1",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f=x²+3x에서 할선 y=5x와 평행한 접선 y=5x−1을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=x²+3x에서 할선 y=5x와 평행한 접선 y=5x−1을 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 평균값 정리 구간은 [0,2], 접점은 x=1이다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "$c=1$이다."
+}

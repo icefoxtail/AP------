@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "-3",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "+2",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원본 그림의 -3,1,4를 기준으로 부호 있는 적분을 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 그림의 -3,1,4를 기준으로 부호 있는 적분을 나눈다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽은 -A=-3, 오른쪽은 B=2이며 실제 곡선식은 정하지 않는다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "$\\int_{-3}^4f(x)\\,dx=-3+2=-1$이다."
+}

@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "15",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "17",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "6개",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "4개",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "양수 a의 경계 15와 17을 수직선에 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "양수 a의 경계 15와 17을 수직선에 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "0<a<15에서 교점 6개, 15<a<17에서 4개이며 a=17에서 3개이다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "극솟값에서 접하는 근을 포함해 $2$개"
+}

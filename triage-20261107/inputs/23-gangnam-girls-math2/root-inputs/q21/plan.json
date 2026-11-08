@@ -1,0 +1,85 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-5",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "-3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "-2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "E",
+            "value": "3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "C",
+            "label": "-20",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "label": "6",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "label": "14",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "홀함수 적분에서 쓰는 구간 -5,-3,-2,2,3,5를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "홀함수 적분에서 쓰는 구간 -5,-3,-2,2,3,5를 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "[-5,-2] 적분은 -20, [2,3]은 6, [3,5]는 14다.",
+    "사용자 지시: 함수·그래프 이해에 도움을 주어 계획한다. 밀집 라벨에는 지시선을 활용한다."
+  ],
+  "sourceQuote": "구하는 적분값은 $14+32=46$"
+}
