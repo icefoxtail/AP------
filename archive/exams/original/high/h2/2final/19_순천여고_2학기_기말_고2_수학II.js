@@ -402,7 +402,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "438f74b181a23233c02f0a4eb140a57739850994cc085a90d727d1a3f6dccac4"
+    "solutionSha256": "438f74b181a23233c02f0a4eb140a57739850994cc085a90d727d1a3f6dccac4",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 도함수 포물선이 x=-1에서 x축에 접하고 그 아래로 내려가지 않는 모습.",
+    "solutionImageCaption": "예: a=1일 때 도함수 f'(x)=(x+1)^2의 그래프는 x=-1에서 x축에 접하고 항상 0 이상이다. 정답은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -602,7 +606,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "118211072c86f4da5372d71e7c65eacc109689cb0316db15824a9b8ea15e0ef7"
+    "solutionSha256": "118211072c86f4da5372d71e7c65eacc109689cb0316db15824a9b8ea15e0ef7",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 대칭인 삼차곡선이 x축과 만나는 세 영점과 x축 위아래의 두 영역을 나타낸 그림.",
+    "solutionImageCaption": "적분 조건으로 f(x)=x^3-4x를 얻고, 홀함수 조건에 따라 그래프는 원점 대칭이다. 두 영역의 넓이가 같으므로 한쪽 넓이를 두 배 한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

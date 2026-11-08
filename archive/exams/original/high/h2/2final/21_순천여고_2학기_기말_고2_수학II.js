@@ -311,7 +311,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간 축과 속도 축, 시각 0과 1에서 시간 축을 지나는 속도 그래프, 축 아래와 위의 색칠 영역, 시각 2의 점이 보인다.",
+    "solutionImageCaption": "시각 1에서 속도가 음수에서 양수로 바뀌며, 두 색칠 영역의 넓이 합은 3이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -632,7 +636,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_순천여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우 대칭인 그래프가 가운데에서 뾰족한 모양으로 이어지고 양쪽 끝은 높이 1인 수평선이다. 적분 구간의 네 넓이가 색칠되어 있다.",
+    "solutionImageCaption": "그래프는 가운데에서 뾰족한 모양이고 양끝은 높이 1이다. 색칠 영역의 넓이를 더하면 적분값은 3이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

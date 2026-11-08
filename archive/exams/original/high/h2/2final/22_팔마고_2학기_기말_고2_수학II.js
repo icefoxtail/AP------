@@ -255,7 +255,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축과 두 점에서 만나며, 두 교점 사이의 곡선 아래쪽 영역이 음영 처리되어 있다.",
+    "solutionImageCaption": "두 영점 사이에서 곡선은 x축 아래에 놓인다. 곡선과 x축 사이의 넓이는 정적분의 부호를 바꾸어 구한다. 정답은 9/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -364,7 +368,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널에 위로 열린 포물선 그래프가 하나씩 있고, 각각 a=0과 a=6에서 한 점으로 x축에 닿는다.",
+    "solutionImageCaption": "각 패널은 a=0 또는 a=6인 경계에서의 도함수 그래프이다. 두 경계에서 도함수는 한 점에서만 0이고 나머지에서는 양수이다. 정답은 7개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -997,7 +1005,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 그래프가 2초까지 상승하고 2초부터 10초까지 수평으로 이어진 뒤 13초에 0으로 내려오며, 그래프 아래 전체가 음영 처리되어 있다. 가로축은 t, 세로축은 v이다.",
+    "solutionImageCaption": "가로축 t는 출발 후 시각이고 세로축 v는 엘리베이터의 속도이다. 속도 그래프 아래 넓이는 가속·등속·감속 구간의 삼각형과 직사각형 넓이를 더해 구한다. 정답은 63m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

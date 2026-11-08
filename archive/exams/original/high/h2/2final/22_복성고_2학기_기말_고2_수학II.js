@@ -257,7 +257,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 곡선이 t=0과 t=3에서 시간축을 지나며, t=0부터 3까지의 곡선 아래 영역과 t=3부터 4까지의 시간축 아래 영역이 서로 다른 음영으로 표시되어 있다. 꼭짓점과 t=4의 끝점에도 좌표가 붙어 있다.",
+    "solutionImageCaption": "속도 v(t)=-t²+3t의 그래프에서 t=0부터 3까지는 시간축 위쪽, t=3부터 4까지는 아래쪽 영역이다. 위치 변화량은 위쪽 넓이에서 아래쪽 넓이를 빼어 구한다. 정답은 8/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -372,7 +376,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선 두 개가 한 그림에 있다. 하나는 원점에서, 다른 하나는 x축의 왼쪽 한 점에서 x축에 접한다.",
+    "solutionImageCaption": "a=0이면 도함수 그래프는 y=x²이고, a=1이면 y=(x+1)²이다. 두 경우 모두 도함수는 음수가 되지 않고 한 점에서만 0이므로 원래 함수는 엄격히 증가한다. 정답은 0≤a≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

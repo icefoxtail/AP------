@@ -360,7 +360,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 x축 사이의 두 영역 S_1, S_2가 색으로 구분되어 있다.",
+    "solutionImageCaption": "곡선 y=x^2-2x와 x축 사이를 x=0에서 나누어 위쪽 S_1과 아래쪽 S_2를 각각 양수 넓이로 더한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -400,7 +404,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극댓점에 접하는 수평선과 오른쪽의 다른 교점이 표시되어 있다.",
+    "solutionImageCaption": "h(x)=x(x-3)^2의 그래프와 직선 y=4는 x=1에서 접하고 x=4에서 다시 만난다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
