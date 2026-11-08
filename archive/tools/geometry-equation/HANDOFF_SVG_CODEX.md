@@ -6,9 +6,9 @@
 Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동시 실행은 이 문서를 따른다.
 그림의 수학·교육 기준은 기존 정본을 따른다. 이 문서 작성은 생산·게시·검수 완료가 아니다.
 
-## 현재 1차 검수 호출 — Claude 시험지 handoff
+## 현재 1차 검수 호출 — READY_FOR_REVIEW → Claude
 
-현재 Codex 검수 호출은 [`ops/svg-m1/briefs/codex-firstpass-claude-handoff.md`](ops/svg-m1/briefs/codex-firstpass-claude-handoff.md)를 따른다. 최신 사용자 지시가 이 문서의 과거 독립 2차 검수·reviewer branch 문구와 다르면 현재 호출을 우선한다. Codex는 요청된 시험지 문항을 1차 검수하고 가능한 문제를 직접 수리하며, 모든 문항에 상태가 붙으면 OPEN이 남아도 시험지 단위 handoff를 Claude에 즉시 보낸다. Claude가 최종 검수와 main 반영을 맡는다.
+현재 Codex 검수 호출은 [`ops/svg-m1/briefs/codex-firstpass-claude-handoff.md`](ops/svg-m1/briefs/codex-firstpass-claude-handoff.md)를 따른다. QUEUE의 `READY_FOR_REVIEW` 한 줄만 인수하고 즉시 `REVIEWING <시험지키>`로 push한 뒤, 구현자와 같은 브랜치에서 Luna Xtreme High 1차 검수·수리를 한다. READY 줄이 없으면 10분 간격으로 다시 확인한다. 자동 2차 검수, qNN 전용 브랜치, main 병합은 하지 않는다. 시험지 전체 문항에 PASS/FIXED/OPEN 상태가 붙으면 미해결이 있어도 같은 시험지 브랜치에 handoff 폴더를 push하고 해당 QUEUE 줄을 `CLAUDE_HANDOFF <브랜치> <SHA>`로 바꾼다. Claude가 최종 검수와 main 반영을 맡는다.
 
 ## 1. 시작 전에 읽을 것
 
@@ -24,7 +24,7 @@ Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동�
 
 - **ROOT(관리자 Astra medium)**: 시험지와 정확한 문항별 배정을 확정하고, 원문·실제 문제 그림·해설·정답 및 현재 자산을 직접 확인한다. 질문별 run 경로와 쓰기 허용 파일을 지정하고, 전역 렌더 큐와 시도 예산을 관리한다. 최종 SVG와 PNG를 모두 직접 확인하고 독립 검수 결과를 수납한 뒤 게시·원장·Git을 책임진다.
 - **Luna 제작자**: 서로 다른 `gpt-6-luna` high 인스턴스 여러 명이 맡는다. 각 인스턴스에는 겹치지 않는 정확한 문항과 그 문항의 쓰기 경로만 배정한다. 제작자는 packet의 발문·정답·해설과 실제 원본 그림을 직접 읽고, 소유한 run 안에서 item·plan·publish 초안을 작성하고 해당 문항 지적만 수리한다. 엔진, 시험지 JS, 공유 원장, 공용 파일, 다른 문항 run은 변경하지 않는다. 허용 경로 밖 변경이 필요하면 경로·이유·재현 근거를 ROOT에 보고한다.
-- **1차 검수자**: 최신 호출의 정확한 QID를 맡아 원문·정답·해설·실제 SVG/after·alt/caption을 독립 확인한다. 허용된 범위의 candidate 결함은 공식 절차로 직접 수리하고, 수리가 불가능하면 구체 이유와 마지막 입력을 OPEN/NOT_RUN로 기록한다. 자동 2차 검수로 보내거나 구현자에게 수리를 반송하지 않는다. 모든 QID를 시험지 단위 Claude handoff에 수납한 뒤 Claude가 최종 검수한다.
+- **1차 검수자**: QUEUE에서 `READY_FOR_REVIEW`로 인계된 시험지의 정확한 QID를 맡아 원문·정답·해설·실제 SVG/PNG·alt/caption을 직접 확인한다. 공식 렌더와 수리는 같은 시험지 브랜치에서 잠금 아래 수행하고, 수리가 불가능하면 OPEN 사유를 기록해 다음 문항으로 간다. 시험지 전체 문항 상태가 붙으면 같은 브랜치에 Claude handoff를 만든다. 별도 2차 검수자는 자동 배정하지 않는다.
 - 별도 인스턴스에는 필요한 원문·필수 조건·정확한 문항·경로·쓰기 허용 목록을 명시한다. 사용자 지시 없는 재위임은 금지한다. DeepSeek/OpenCode를 호출하지 않으며, 모델을 사용할 수 없으면 정확한 실패 사유를 ROOT에 보고하고 대체하지 않는다.
 - **엔진 업그레이드·진단**: `gpt-6.1-sol` high가 엔진 업그레이드와 공백 진단, 어려운 문항·배치 차단 분석을 맡는다. 관리자 추론 수준 Astra medium은 유지하며, 난도·범위·실패 횟수를 근거로 Astra에 자동 승격하지 않는다. 담당 변경은 사용자의 별도 지시가 있어야 한다. Astra가 이전에 완료한 진단은 역사 기록으로 보존하고 현행 담당 배정으로 해석하지 않는다. 제작자의 개별 plan·그림 수리 역할과 혼동하지 않는다.
 
@@ -66,10 +66,10 @@ Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동�
 2. 원본과 packet의 문항 수·발문·이미지 참조를 대조해 분모 누락을 막고 중간값과 쓰기 경로를 정한다.
 3. ROOT가 GRAPH / GEOMETRY / PROBABILITY 형태와 시험지별 분모를 바탕으로 정확한 문항을 여러 Luna high 제작자에게 겹치지 않게 배정한다. 각 제작자는 자기 문항의 run만 소유한다.
 4. Luna 제작자는 원문 packet과 실제 원본 그림을 확인한 뒤 item·plan·publish를 작성한다. 계획이 끝나면 ROOT가 승인한 예산과 고유 revision으로 `render-request.json`을 준비한다. `.rendering`이 있는 동안 입력을 수정하지 않는다.
-5. ROOT만 전역 큐를 한 번에 하나씩 실행한다. `.tmp/svg-m1/runs/.../out/`의 실제 SVG와 PNG는 시각 QA용 임시 출력이며 Git에 넣지 않는다. 같은 출력 폴더 재렌더 전에 ROOT가 provenance 충돌을 방지하고 상태·오류·경로·시도 수를 기록한다.
+5. ROOT는 전역 렌더 잠금과 시험지 쓰기 소유를 관리한다. 할당된 1차 검수자는 해당 시험지의 item/plan/publish를 고치고 공식 renderer를 잠금 아래 실행할 수 있다. `.tmp/svg-m1/runs/.../out/`의 실제 SVG와 PNG는 시각 QA용 임시 출력이며 최종 official SVG는 Claude handoff 경로에 둔다. 같은 출력 폴더 재렌더 전에 기존 attempt를 보존하고 새 attempt 경로와 해시를 기록한다.
 6. 순서는 draft → ROOT 큐 → 실제 SVG·PNG → 독립 검수다. ROOT는 실제 SVG와 PNG를 원문·해설·정답에 직접 대조하며, 계획이나 제작자 보고만으로 PASS하지 않는다.
-7. Codex 1차 검수자는 배정된 QID를 원문·해설과 대조하고, 가능한 수리를 직접 수행한다. OPEN/NOT_RUN도 구체 사유와 마지막 입력으로 남긴다. 모든 시험지 문항에 상태가 붙으면 exam-level handoff를 Claude에 넘긴다. Claude의 최종 검수와 main 반영 전에는 Codex가 게시 승인으로 간주하지 않는다.
-8. 각 단계의 SVG·PNG·publish.json 세 SHA-256을 검수·게시 기록에 결속한다. 셋 중 하나가 바뀌면 영향 범위를 다시 확인하고 재검한다.
+7. QUEUE의 `READY_FOR_REVIEW` 줄은 ROOT가 `REVIEWING <시험지키>`로 바꾸고 push한 뒤, 1차 검수자는 같은 branch/SHA에서 작업한다. 1차 검수는 source/solution과 actual SVG/after/alt/caption 대조, 필요 시 공식 수리를 포함한다. 미해결은 구체 사유와 마지막 입력을 남기고 다음 문항으로 넘어간다. 자동 2차 검수를 기다리지 않는다.
+8. 모든 문항에 상태가 붙으면 same-branch handoff folder를 갱신하고 push한다. 원격 HEAD와 파일을 재확인한 뒤 queue row를 `CLAUDE_HANDOFF <branch> <SHA>`로 바꾼다. result가 있는 qNN의 SVG/result/plan/publish SHA를 결속하고, 미렌더 qNN은 마지막 입력 3종과 OPEN/NOT_RUN 사유를 포함한다. PNG·로그·캡처는 handoff Git에 넣지 않는다.
 9. 검증된 게시 경로에서만 실제 게시·표시 확인·관련 테스트·원장 갱신을 수행한다.
    승인된 묶음 안에서 처리된 시험지의 상태, 소요 시간과 잔여 사유를 기록한다.
 

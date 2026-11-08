@@ -20,7 +20,7 @@
 
 ### Codex 실행 경로 (2026-11-08, 사용자 지시)
 
-Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)과 그 문서가 연결한 `codex-firstpass-claude-handoff.md`를 따른다. 각 검수 요청은 배정된 시험지의 빠른 1차 검수·가능한 수리로 처리하고 자동 2차 재검수나 구현자 반송을 기다리지 않는다. 사용자 지정으로 서로 다른 qid를 병렬 검수할 수 있지만, q별 브랜치는 만들지 않는다. 시험지 전체 질문에 상태가 붙으면 미해결이 남아도 latest-main 기반 단일 시험지 handoff 브랜치와 `CLAUDE_HANDOFF` queue line으로 Claude에게 넘긴다. Codex는 main 병합·게시를 하지 않고 Claude가 최종 검수와 main 반영을 맡는다. 이유: 미해결 항목을 사유와 함께 빠르게 인계해 다음 라인이 지체 없이 이어가게 하기 위해서다.
+Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)의 `READY_FOR_REVIEW → REVIEWING → CLAUDE_HANDOFF` 호출을 따른다. 요청된 문항은 시험지당 한 번의 Luna Xtreme High 1차 검수·가능한 수리로 처리하며 자동 2차 검수나 구현자 반송을 기다리지 않는다. ROOT는 queue에서 READY_FOR_REVIEW 한 줄을 REVIEWING으로 바꾸고, 검수자는 구현자와 같은 시험지 브랜치에서 작업한다. 시험지 전체 문항에 PASS/FIXED/OPEN 상태가 붙으면 미해결이 남아도 같은 브랜치에 handoff 폴더를 push하고 원격 SHA로 CLAUDE_HANDOFF 줄을 갱신한다. Codex는 main 병합·게시를 하지 않고 Claude가 최종 검수와 main 반영을 맡는다. 이유: 미해결 항목을 사유와 마지막 입력과 함께 빠르게 인계하기 위해서다.
 
 아래 공통 프롬프트에서는 현재 그림 품질 기준만 유지한다. 그 안의 과거 모델·역할·실행 명령은 Codex에 적용하지 않으며, Codex의 환경·역할·게시 명령은 전용 계약이 우선한다. Windows 이식 도구와 관련 실행 검증은 완료했다. 현재 승인된 10개 시험지 묶음은 제작·독립 검수·로컬 게시를 마쳤다. main 병합 상태는 Codex 인계 문서의 PR에서 확인한다. run의 중간 SVG·PNG는 `.tmp`의 임시 QA 자료이며 Git에 넣지 않고, 검수된 최종 운영 SVG만 `archive/assets/images`에 게시한다. 승인된 10개 시험지의 제작·검수 후 평면·입체·그래프·확률 등 검수 통과 대표 그림 여러 장(기본 4~6개)을 모아 사용자에게 먼저 보여준다. 필수 CI 녹색을 확인한 뒤 main 병합·원격 readback·실제 학생 페이지 QA 결과를 보고하고 멈춘다. 다음 묶음이나 G14는 별도 사용자 지시 전 시작하지 않는다.
 
