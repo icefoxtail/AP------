@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "3/4",
+        "y": "-9/8"
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "L",
+        "slope": "3",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=3일 때 포물선 y=2x²−3x와 직선 y=3x를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=3일 때 포물선 y=2x²−3x와 직선 y=3x를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선은 x=0,3에서 만난다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$a=3$이다."
+}

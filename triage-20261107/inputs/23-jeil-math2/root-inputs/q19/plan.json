@@ -1,0 +1,47 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "15",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "20",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "예시",
+        "points": [
+          {
+            "id": "A",
+            "value": "16",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "q=5의 예에서 3q<p²<4q인 15<16<20을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "q=5의 예에서 3q<p²<4q인 15<16<20을 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "p=4, q=5가 조건을 만족하는 하나의 최소 예다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$15<16<20$"
+}

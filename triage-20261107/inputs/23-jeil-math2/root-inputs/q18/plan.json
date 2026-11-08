@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "9/2",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "9"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "4/3",
+        "y": "-32/27"
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        3,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "a=3, k=9/2에서 두 다항식 조각을 접합한 그래프를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=3, k=9/2에서 두 다항식 조각을 접합한 그래프를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 조각은 (3,9)에서 이어지며 S1은 [3,4], S2는 [0,2]에 해당한다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$a=3$이고 $k=9"
+}

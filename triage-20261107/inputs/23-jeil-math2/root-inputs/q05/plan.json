@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-10",
+      "6"
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.2,
+      3.2,
+      -5,
+      25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "5/6",
+        "y": "-25/6"
+      },
+      {
+        "id": "A",
+        "x": "5/3",
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2
+      ],
+      "y": []
+    }
+  },
+  "caption": "v=6t²−10t가 t=5/3에서 부호를 바꾸는 모습을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "v=6t²−10t가 t=5/3에서 부호를 바꾸는 모습을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "운동의 시각은 t≥0이고 해당 시각의 가속도는 10이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "실제 운동 중 방향이 바뀌는 시각은"
+}

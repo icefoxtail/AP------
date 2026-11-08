@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "-1",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "-5/3",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "+7/3",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "t=0,1,2,3으로 나누어 부호 있는 속도 적분을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=0,1,2,3으로 나누어 부호 있는 속도 적분을 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "각 변위는 -1,-5/3,+7/3이며 이동거리는 절댓값을 더한다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "마지막 적분은 $\\dfrac73$이므로"
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-10",
+      "3"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -7,
+      35
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "5/3",
+        "y": "-16/3"
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 11
+      },
+      {
+        "id": "R",
+        "x": "1/3",
+        "y": 0
+      },
+      {
+        "id": "S",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        3,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "f′(x)=3x²−10x+3과 f′(4)=11을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f′(x)=3x²−10x+3과 f′(4)=11을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "중심 4의 짧은 대칭구간 적분은 극한에서 2f′(4)=22가 된다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$f'(4)=11$이다."
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 16
+      },
+      {
+        "id": "A",
+        "x": "-4*sqrt(3)/3",
+        "y": "32/3"
+      },
+      {
+        "id": "B",
+        "x": "4*sqrt(3)/3",
+        "y": "32/3"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "32/3",
+        "intersectionX": [
+          "-4*sqrt(3)/3",
+          "4*sqrt(3)/3"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "포물선 y=16−x²와 y=32/3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=16−x²와 y=32/3을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 사용하는 부분은 0≤x≤4이며 그 밖은 보조 그래프다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$k=\\dfrac{32}{3}$이다."
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "2",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 24
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        1
+      ],
+      "y": []
+    }
+  },
+  "caption": "g(x)=x⁴+2x²의 최솟값 0을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=x⁴+2x²의 최솟값 0을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 최댓값은 18-k이며 두 극값을 비교한다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$g(x)=x^4+2x^2\\ge0$"
+}

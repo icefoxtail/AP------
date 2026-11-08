@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-3/4",
+      "1/8"
+    ],
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -3,
+      6,
+      -2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "a=32일 때 F(x)=x³−6x²+32를 8로 나눈 그래프를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=32일 때 F(x)=x³−6x²+32를 8로 나눈 그래프를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 세로값은 실제 F의 1/8이며 x=4 중근에서 부호가 바뀌지 않는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$a=32$이면"
+}

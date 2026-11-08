@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "20",
+      "-5/2"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.3,
+      4.3,
+      -2,
+      45
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 4,
+        "y": 40
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "제동 후 이동거리 x(t)=−5t²/2+20t의 꼭짓점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "제동 후 이동거리 x(t)=−5t²/2+20t의 꼭짓점을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "물리적 범위는 0≤t≤4이며 정지할 때 이동거리는 40m이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$t=4$초에 멈춘다."
+}
