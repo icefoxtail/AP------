@@ -1,0 +1,103 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(x+3)"
+      },
+      {
+        "id": "k2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=x+2"
+      },
+      {
+        "id": "k3",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "y=x+3"
+      },
+      {
+        "id": "k4",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "VIOLET",
+        "label": "y=x+4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "1",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "세 평행선과 무리함수의 교점 수를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=sqrt(x+3), y=x+k, k=2,3,4",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "무리함수 시작점과 세 평행선의 교점 개수 차이"
+  ]
+}
