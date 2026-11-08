@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
+  "sourceGitBlobSha": "fdb7f3a0c676955cb86c74258bbf28baf1b40d0b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "합의 기호 $\\sum$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "를 계산한 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$k=2,3,4,5$를 차례로 넣어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "각 항을 더한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "아래끝부터 위끝까지"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합의 기호 시그마의 정의에 따라 변수에 자연수 값들을 대입하여 각 항의 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에서"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이는?"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "확장된 사인법칙",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "$\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$B=60^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대변의 길이와 대각의 크기로부터 사인법칙을 적용하여 외접원의 반지름을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_3=5$, $a_5+a_9=26$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_{14}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_{14}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차중항",
+            "src": "solution",
+            "quote": "두 항의 평균으로 $a_7$을 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "$a_7-a_3=(7-3)d$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "$a_{14}=a_3+(14-3)d$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$13-5=4d$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "등차중항 성질로 중앙항을 구하고 두 항의 차로부터 공차를 얻어 제14항을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "든 수열<b"
+          },
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "이 순서대로 등비수열이 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$x_4$의 값으로 알맞은 것은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x_4$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "공비를 $r$라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$(r^4)^2=16$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$1\\cdot r^8=16$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$r^4>0$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫째항과 마지막 항 사이의 거듭제곱 관계로부터 공비의 거듭제곱을 구하여 특정 항을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "최소 이동 횟수를 $a_n$이라 하면"
+          },
+          {
+            "term": "점화식",
+            "src": "solution",
+            "quote": "$a_n=a_{n-1}+1+a_"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_6$의 값으로 알맞은 것은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_6$의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀납적정의",
+            "src": "solution",
+            "quote": "최소 $a_{n-1}$번이 든다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "필요한 최소 이동 횟수를",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로 다른 $n$개의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "하노이 탑 문제에서 n개의 원판을 옮기는 단계를 분할하여 수열의 인접한 항 사이의 점화식을 세우고 제6항을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제$n$항까지의 합 $S_n$"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "S_n=3n^2-5n+7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a_1+a_{10}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_1+a_{10}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "$n\\ge2$에서는 $a_n=S_n-S_{n-1}$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$a_{10}=S_{10}-S_9$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "3-5+7",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "첫째항",
+            "src": "solution",
+            "quote": "첫째항은 첫 부분합이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합의 식으로부터 첫째항과 일반항을 구하고 특정 두 항의 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": " 등차수열 "
+          },
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차가 $d$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A+B+C$의 값으로 옳은 것은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$A+B+C$의 값으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "새 등차수열의 공차는 이웃한 두 항의 차로 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a_3-a_1=(a_1+2d)-a_1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항",
+            "src": "solution",
+            "quote": "이웃한 항의 차는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원래 등차수열의 변형 수열들에서 인접한 두 항의 차를 계산하여 새 공차들을 구하고 합산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "1+2+3+\\cdots+50"
+          },
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "1+2+\\cdots+n=\\dfrac{n(n+1)}2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "분수의 차로 나타내면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "2\\left\\{(1-",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "분모를 바꾸면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "각 항의 분모를 바꾸면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분모의 자연수 합을 등차수열 합 공식으로 정리하고 부분분수로 분해하여 망원합으로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "등비수열의 합이므로"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등비수열의 합이므로"
+          },
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "첫 항이 $1.04$, 공비가 $1.04$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "적립금의 원리합계를 구한 것은?"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "만 원은 10년, 9년,"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "1.04^{10}=1.48",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "100(1.04+1.04^2+\\cdots+1.04^{10})",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "1.04^{10}=1.48"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "매년 초 적립하는 연금의 원리합계를 등비수열의 합 공식으로 모델링하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에서"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "$a=3$, $b=4$"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin(A+B)=\\dfrac14$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 ABC의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "3\\cdot4\\cdot\\dfrac14",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "$\\sin(A+B)=\\sin(\\pi-C)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "끼인각",
+            "src": "solution",
+            "quote": "변 $a,b$와 끼인각 $C$를"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형 내각의 합으로 두 각의 합의 사인을 대각의 사인으로 바꾼 후 넓이 공식을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제$n$항까지의 합 $S_n$"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "S_n=4n^2-31n+1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "$a_n=S_n-S_{n-1}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$n\\ge2$일 때는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "첫째항",
+            "src": "solution",
+            "quote": "첫째항은\n$a_1=S_1$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합의 식에 상수항이 있는 수열의 첫째항과 둘째항 이후의 일반항을 분리하여 보기의 성질들을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "여 부등식<"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "(가)의 값과 (나)의 값의 비를"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "(가)의 값과 (나)의 값의 비를"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "j=k-1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$k=1$인 항은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적귀납법",
+            "src": "stem",
+            "quote": "귀납적으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "2$ 이상인 모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수학적 귀납법을 이용한 부등식 증명 과정에서 빈칸에 들어갈 식을 유도하고 특정 값을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC가 있다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "}=3:1$"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이가 7일 때,"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이가 7일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 AC의 길이는?"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 AC의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "확장된 사인법칙에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$AC=x$라 두면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle A=\\dfrac\\pi3"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "변의 길이는 양수이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 변의 비와 끼인각으로부터 코사인법칙으로 대변을 표현하고 외접원 반지름과 사인법칙을 결합하여 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "두 수열 $"
+          },
+          {
+            "term": "점화식",
+            "src": "stem",
+            "quote": "a_{n+1}=a_n+b_n"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin\\dfrac{a_n}{2}\\pi"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a_{2026}+b_{2026}$"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_{2026}+b_{2026}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "쌍을 차례로 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(a_1,b_1)=(1,1)$을 넣어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열",
+            "src": "solution",
+            "quote": "(a_2,b_2)=(2,1)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연립 점화식에 초기값을 대입하여 나열하면서 주기와 규칙성을 찾아 특정 번째 항들의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "모든 양의 약수를"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "a_k=q"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "먼저 소인수분해한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "양의 약수의 개수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "각 소인수 거듭제곱을 조합한",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "모든 약수의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "양의 약수의 개수는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자연수를 소인수분해하여 지수로부터 양의 약수의 개수와 약수의 총합을 구하고 둘의 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "인 수열 $"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제$n$항까지의 합을 $S_n$"
+          },
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "공비가 $0$이 아닌 등비수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하시오. [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "곱수열은 공비가 $0$이 아닌",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$n=1$을 먼저 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$a_1+a_2=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "짝수항까지의 부분합 조건과 인접 항의 곱이 이루는 등비수열 조건으로부터 각 항을 결정하여 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "반원이 있다."
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "선분 AB를 지름으로 하는 반원"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "선분 AB의 중점을 O라 하고,"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "선분 OC와 평행한 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "반지름이 $2$이므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "반원의 중심을 원점으로 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직선의방정식",
+            "src": "solution",
+            "quote": "A$를 지나는 $AC$의 방정식은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "AC$의 기울기는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "\\angle CAB=30^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반원을 좌표평면에 올리고 주어진 특수각과 평행 조건을 직선의 방정식으로 나타내어 교점과 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": " 등차수열 "
+          },
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차가 자연수인 등차수열"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제$n$항까지의 합을 $S_n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_{k+5}$의 값을 구하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_{k+5}$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "등차중항",
+            "src": "solution",
+            "quote": "연속한 세 항은 가운데 항을 기준으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "첫째항은\n$a_1=a_{k+1}-kd$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "등차수열의 합 공식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "공차가 자연수인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 연속 항의 합으로부터 가운데 항을 결정하고 부분합 조건과 공차가 자연수라는 조건을 결합하여 특정 항을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "증명",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "1+\\dfrac12+\\dfrac13+\\dfrac14+\\cdots"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 부등식이 성립함을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "수학적 귀납법으로 증명하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적귀납법",
+            "src": "stem",
+            "quote": "수학적 귀납법으로 증명하시오.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가정",
+            "src": "solution",
+            "quote": "이라 가정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "\\dfrac96>\\dfrac86",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "n\\ge2$인 모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "초기값 n=2에서의 성립을 확인하고 n=k에서의 가정을 바탕으로 양변의 차를 비교하여 수학적 귀납법으로 증명한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형이 있다."
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형에 색칠하여"
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "합동인 2개의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "빗변의 길이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\sqrt{1^2+1^2}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "양끝에 남는 작은 삼각형의 각을 확인한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "첫 정사각형의 한 변을 $s$라 하자.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "정사각형의 한 변은 빗변에 수직이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각이등변삼각형에 내접하는 정사각형의 변의 길이를 닮음과 피타고라스 정리로 구하고 닮음비를 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC가 있다."
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos(\\angle BAC)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "외접원과 만나는 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": " 조건에서\n"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 현 $CB$를 보는 원주각이 같아",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "$CD=x,\\ CE=y$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "\\angle CED=A",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "같은 현 $CB$를 보는 원주각이 같아"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원주각의 성질을 이용하여 각의 일치를 확인하고 코사인법칙과 닮음을 연계하여 선분의 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 21,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
