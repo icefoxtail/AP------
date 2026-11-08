@@ -2877,7 +2877,7 @@ window.addEventListener('DOMContentLoaded', function () {
         group: '바로 가기',
         label: clampStep(s) >= 3 ? sn.label : (sn.neutralLabel || sn.label),
         set: { t: sn.t }, ms: 500,
-        on: (st) => Math.abs(st.t - sn.t) < 0.03
+        on: (st) => Math.abs(st.t - sn.t) < 1e-7
       })),
       steps: () => hintsOf().slice(1).map((h) => cv(arrow(h))),
       solution: {
