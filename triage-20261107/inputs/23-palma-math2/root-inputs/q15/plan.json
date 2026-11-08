@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "k 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "정수",
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "1",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "세 단조구간의 공통 치역"
+  },
+  "caption": "세 단조구간 공통 치역 -2≤k≤1을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 단조구간 공통 치역 -2≤k≤1을 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점을 포함하며 해당 정수는 -2,-1,0,1이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$-2\\le k\\le1$이다."
+}

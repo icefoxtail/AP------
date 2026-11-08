@@ -1,0 +1,96 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "F",
+            "value": "8",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "+1",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "0",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "0",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "label": "+2",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "label": "+2",
+            "style": "BRACE",
+            "side": "ABOVE"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "시간 구간별 위치변화"
+  },
+  "caption": "속도 그래프의 구간별 부호 있는 넓이를 분해한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도 그래프의 구간별 부호 있는 넓이를 분해한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "1+0+0+2+2=5이며 도식은 넓이의 합계이지 실제 속도 곡선은 아니다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "그래프에서 $0\\le t\\le1$의 삼각형 넓이는"
+}

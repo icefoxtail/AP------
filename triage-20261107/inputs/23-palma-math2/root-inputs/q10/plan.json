@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-4",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "f'<0",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "f'>0",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수의 부호와 극값"
+  },
+  "caption": "원문 도함수 그림의 영점 -4, 0, 4와 부호를 요약한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 도함수 그림의 영점 -4, 0, 4와 부호를 요약한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "-4 왼쪽은 양수, (-4,0)은 음수, (0,4)와 4 오른쪽은 양수이다. 4에서는 부호가 바뀌지 않는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$x=4$에서는 $f'(4)=0$이지만"
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "4",
+      "-4/3",
+      "1/9"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -1,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "id": "A",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3,
+        6
+      ],
+      "y": []
+    }
+  },
+  "caption": "계산한 g(x)=x²(x−6)²를 9로 나눈 그래프로 극점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계산한 g(x)=x²(x−6)²를 9로 나눈 그래프로 극점을 비교한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "세로값은 실제 g의 1/9이다. 따라서 그림의 극댓값 9는 실제 g의 81에 대응한다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$a>0$에서 $a=6$이고"
+}

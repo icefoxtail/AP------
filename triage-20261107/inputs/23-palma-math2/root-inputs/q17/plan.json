@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "referenceLines": [
+      {
+        "id": "L",
+        "y": "-3",
+        "intersectionX": [
+          "3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 3,
+        "y": -3
+      },
+      {
+        "id": "A",
+        "x": "3-sqrt(3)",
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": "3+sqrt(3)",
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3
+      ],
+      "y": [
+        -3
+      ]
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "M"
+  ],
+  "caption": "구한 a=3−√3, b=3+√3에서 f(x)=x²−6x+6과 접선 y=-3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "구한 a=3−√3, b=3+√3에서 f(x)=x²−6x+6과 접선 y=-3을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 근의 거리와 접점을 보여주며 S1,S2를 임의 축척 도형으로 나타내지 않는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "$a=3-\\sqrt3$, $b=3+\\sqrt3$이다."
+}

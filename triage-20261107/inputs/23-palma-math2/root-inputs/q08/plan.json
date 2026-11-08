@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "35",
+      "30",
+      "-5"
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -0.5,
+      7.5,
+      -5,
+      90
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 35
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 80
+      },
+      {
+        "id": "B",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3,
+        7
+      ],
+      "y": []
+    }
+  },
+  "caption": "높이 x(t)=-5t²+30t+35의 최고점 (3,80)과 지면 도착점 (7,0)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "높이 x(t)=-5t²+30t+35의 최고점 (3,80)과 지면 도착점 (7,0)을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "물리적 범위는 0≤t≤7이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "꼭짓점은 $t=3$이므로 최고 높이는"
+}

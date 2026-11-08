@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "0",
+      "1/2",
+      "-1/10"
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5.5,
+      -1,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "15/4",
+        "y": "3375/512"
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        5
+      ],
+      "y": []
+    }
+  },
+  "caption": "넓이 S(x)=x³(5−x)/2를 5로 나눈 그래프에서 최댓점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "넓이 S(x)=x³(5−x)/2를 5로 나눈 그래프에서 최댓점을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림 세로값은 실제 넓이의 1/5이고 문제의 범위는 0<x<5이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 점과 라벨은 필요하면 지시선으로 조정한다."
+  ],
+  "sourceQuote": "점 $P$의 $x$좌표는 $\\frac{15}{4}$이다."
+}
