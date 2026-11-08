@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      8,
+      -12,
+      0
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3"
+      ],
+      "y": [
+        "-8",
+        "-5",
+        "-2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "-1"
+        ],
+        "amplitude": "-1",
+        "offset": "-8",
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-sqrt(2-x)-8"
+      },
+      {
+        "id": "right",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-4",
+          "-2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "y=(-2x-4)/(x-1)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "-5",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 가지가 (2,-8)에서 이어지며 치역이 겹치지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=-4일 때 x<=2에서 -sqrt(2-x)-8, x>2에서 (-4-2x)/(x-1)",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "치역 (-무한대,-8]과 (-8,-2)의 경계 및 함수값 대응"
+  ]
+}

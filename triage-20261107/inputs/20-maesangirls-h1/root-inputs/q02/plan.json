@@ -1,0 +1,12 @@
+{
+ "capability":"set-diagram-figure-v1",
+ "diagram":{
+  "kind":"MAPPING",
+  "columns":[{"id":"X","name":"입력","elements":["0"]},{"id":"Y","name":"함숫값","elements":["1"]}],
+  "arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}}],
+  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
+ },
+ "caption":"곱셈 법칙과 양수 조건으로 얻은 0과 1의 대응을 나타낸다.",
+ "sourceConditions":[{"id":"c1","condition":"f(x+y)=f(x)f(y), f(x)>0; y=0을 대입하면 f(0)=1","mappedTo":["diagram"]}],
+ "newVisualInformation":["f(0)=1과 역함수의 대응 관계"]
+}
