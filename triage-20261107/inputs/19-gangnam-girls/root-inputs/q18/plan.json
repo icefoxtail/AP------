@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "-2",
+          "0",
+          "1/2",
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "함숫값",
+        "elements": [
+          "-2",
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원문 그래프에서 읽는 네 대응이다. 고정점과 역함수의 대응을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림에서 f(-2)=-2, f(0)=-1, f(1/2)=0, f(1)=1",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프에서 읽은 네 점의 대응. 전체 함수식을 추정하지 않는다."
+  ],
+  "sourceQuote": "문제의 그래프에서 $x=0$일 때의 함수값이"
+}
