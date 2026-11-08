@@ -2784,7 +2784,12 @@ window.addEventListener('DOMContentLoaded', function () {
       // 원본 그래픽의 1000×700 설계 좌표를 조금 여유 있게 표시하며, 탐구 탭과 다른 단원은 건드리지 않습니다.
       const mobileVariantClips = new Set(['bas-1', 'bas-3', 'bas-4', 'bas-6', 'bas-10', 'bas-11', 'adv-7', 'adv-8']);
       if (L.tab !== 'explore' && !sc.vary.isBase() && mobileVariantClips.has(sc.id) && window.matchMedia('(max-width: 859px)').matches) {
-        f = { x: [-70, 1070], y: [-70, 770] };
+        // 합성함수의 h 변형은 봉우리 높이 2h에 따라 원본 설계 좌표도 커집니다. 고정 프레임으로 다시 자르지 않습니다.
+        const h = (sc.id === 'bas-3' || sc.id === 'bas-4') ? Number(sc.vary.cur().h) : NaN;
+        if (Number.isFinite(h) && h > 0) {
+          const scale = (700 / 11.2) * 1.15;
+          f = { x: [-70, Math.max(1070, 300 + 2 * h * scale + 55)], y: [Math.min(-70, 546 - 2 * h * scale - 65), 770] };
+        } else f = { x: [-70, 1070], y: [-70, 770] };
       }
       if (f) L.board.setFocus(f, true);
       L.invalidate(true);
