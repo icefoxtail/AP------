@@ -29,3 +29,12 @@ ROOT가 작성한 최신 item.json, plan.json, publish.json의 바이트를 그�
 
 23 강남여고 고2 확률과통계 Q25. ROOT가 원문·정답·해설과 해당 기존 그림을 직접 확인해 계획했다. 기존 그림·소유·이력은 보존한다. 시험지 OPEN 전체를 함께 정리하는 로컬 초안이며 validator·원격 보존·인계 NOT_RUN.
 원문 해설 인용: $a+b=20$이다.
+
+
+## POINTS 행 최소 점 개수 수정
+
+기존 단일 중심점 A=10000는 바이트상 동일한 점 객체로 유지하고, 같은 신뢰구간의 실제 왼쪽 끝점 B=9608를 POINTS 행에 추가했다. B는 hideName:true, showValue:false이므로 이름·수치 라벨은 표시하지 않지만 실제 끝점 표식은 남는다. 임의의 더미 좌표를 만든 것이 아니다. 기존 SET 구간, 중심, caption, sourceConditions, newVisualInformation과 item/publish는 변경하지 않았다. 기존 1000배 눈금과 실제 단위로 나누어 읽는 설명을 유지했다.
+
+기존 number-line-v1.mjs L463은 POINTS 행에 최소 두 점을 요구한다. ROOT의 별도 입력 전용 검사 보고에서 수정된 Q16·Q17·Q25 모두 production expandNumberLineFigure 실행이 성공했다(검사 기준 main 44ac8c11b19816268bbc59f2abae5a43975964b9). 보존 단계에서 확인한 모듈 blob b412be712f0fd542fad59aee7443a08c7ae6dcb7은 해당 main과 보존 전 triage 9b87111967e0b45e2b4b8b266e9b829b08a54e6d에서 동일하다. L131–142는 hideName/showValue를, L463–476은 점 개수·허용 키를 다룬다.
+
+위 결과는 입력 함수의 제한된 확인이며 end-to-end 공식 validator·렌더·시각 검수·독립 수학 검수·학생 화면 검수·인계는 NOT_RUN이다. 기존 OPEN, 답 노출·행 정렬·배율·가독성 이력과 소유 UNKNOWN을 유지하며 READY·PUBLISHED 또는 시험지 제작 완료를 주장하지 않는다. 이전 STATUS 문장은 당시 확인 상태의 기록으로 그대로 보존했다.
