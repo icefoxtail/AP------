@@ -1,0 +1,1 @@
+BRANCH DRAFT. ROOT 작성 입력 3종을 작업 브랜치에 보존한 미검증 초안이다. 원문 및 기존 q19-solution.svg 보존. 소유·시도 UNKNOWN. 공식 validator·렌더 NOT_RUN, 구현자 미인계. 심사 거절된 다른 작업을 우회하지 않는다. 기존 OPEN_UNSUPPORTED 원장 상태를 바꾸지 않으며 READY_FOR_RENDER가 아니다.

@@ -1,0 +1,65 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "10"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 0,
+          "element": 0
+        },
+        "style": "DASHED"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "g=f의 역함수일 때 두 대응의 방향을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³+2에서 f(2)=10, g=f⁻¹",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "2를 f에 넣으면 10이고 10을 역함수에 넣으면 2이다."
+  ],
+  "sourceQuote": "양변에 $f$를 적용하면 $k=f(2)"
+}

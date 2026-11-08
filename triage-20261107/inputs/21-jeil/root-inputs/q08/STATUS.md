@@ -1,0 +1,1 @@
+BRANCH DRAFT. ROOT 작성 입력 3종을 작업 브랜치에 보존한 미검증 초안이다. 사용자 지시: 유리함수와 무리함수의 치역 연결 및 경계를 그림으로 설명. 기존 원문 보존, 소유·시도 UNKNOWN. 공식 validator·렌더 NOT_RUN, 구현자 미인계. 이미 거절된 별도 작업을 우회하지 않는다. 기존 OPEN_UNSUPPORTED 원장 상태를 바꾸지 않으며 READY_FOR_RENDER가 아니다.

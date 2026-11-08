@@ -1,0 +1,20 @@
+{
+ "capability":"construction-spike-v1",
+ "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+  {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"C","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"5"},"dy":{"kind":"integer","value":"2"}},"outputType":"POINT","factRole":"CONCLUSION"},
+  {"id":"D","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"-10"},"dy":{"kind":"integer","value":"3"}},"outputType":"POINT","factRole":"CONCLUSION"},
+  {"id":"X","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"0"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+  {"id":"Y","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+  {"id":"P","op":"PERPENDICULAR_FOOT","inputs":["D","X"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"Q","op":"PERPENDICULAR_FOOT","inputs":["D","Y"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+  {"id":"K1","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"CONCLUSION"},
+  {"id":"K2","op":"CIRCLE_CENTER_RADIUS","inputs":["D"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"CONCLUSION"}
+ ]},
+ "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["K1","K2"],"displaySegments":[{"id":"move","refs":["C","D"]},{"id":"radius1","refs":["D","P"]},{"id":"radius2","refs":["D","Q"]}],"displayPoints":["C","D","P","Q"],"coordinateLabels":["C","D","P","Q"],
+ "caption":"조건에서 구한 두 원의 중심과 이동 후 좌표축 접점을 나타낸다.",
+ "sourceConditions":[{"id":"c1","condition":"원 중심 (a,b), 반지름 a; 이동 벡터 (-10,3), 두 좌표축에 접함","mappedTo":["C","D","K1","K2","P","Q"]}],
+ "newVisualInformation":["a=5,b=2일 때 원래 중심 (5,2), 이동 중심 (-5,5), 반지름 5"],
+ "sourceQuote":"따라서 $b+3=a=5$이므로 $b=2$이다."
+}
