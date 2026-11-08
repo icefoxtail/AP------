@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "삼각형 $PBC$에서 $\\angle PBC=\\frac\\pi4$",
+  "sourceConditions": [
+    {
+      "id": "q07s-c1",
+      "condition": "직사각형 ABCD, AB=8, BC=6, ∠EBC=π/4",
+      "mappedTo": "A,B,C,D,E"
+    },
+    {
+      "id": "q07s-c2",
+      "condition": "θ=∠ACB, 삼각형 PBC에서 ∠EPC는 외각",
+      "mappedTo": "P"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 PBC에서 외각 ∠EPC가 두 내각 π/4와 θ의 합이라는 관계"
+  ],
+  "caption": "삼각형 PBC에서 ∠PBC는 π/4, ∠PCB는 θ이고 외각 ∠EPC는 두 내각의 합임을 나타낸 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAC",
+          "lineBE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPBC",
+        "refs": [
+          "P",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "π/4",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPCB",
+        "refs": [
+          "P",
+          "C",
+          "B"
+        ],
+        "value": 53,
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aEPC",
+        "refs": [
+          "E",
+          "P",
+          "C"
+        ],
+        "value": 98,
+        "label": "EPC",
+        "labelKind": "NAME",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고3_미적분2_유사/q7-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q07-solution-result.json",
+    "statePath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q07-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q07-solution.svg"
+  }
+}

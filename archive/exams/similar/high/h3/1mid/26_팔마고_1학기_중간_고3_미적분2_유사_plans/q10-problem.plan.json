@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "점 $P_n$이 원점 $O$에서 출발하여",
+  "sourceConditions": [
+    {
+      "id": "q10-c1",
+      "condition": "O에서 오른쪽으로 OP1=4, 이어서 위쪽 P1P2=2, 왼쪽 P2P3=1, 아래쪽 P3P4=1/2 순으로 이동",
+      "mappedTo": "O,P1,P2,P3,P4"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽, 위쪽, 왼쪽, 아래쪽 순서로 꺾이며 이동하는 점 P_n의 처음 네 번의 이동 경로"
+  ],
+  "caption": "원점 O에서 출발한 점이 오른쪽, 위쪽, 왼쪽, 아래쪽 순서로 이동 거리를 절반씩 줄이며 P₁, P₂, P₃, P₄로 꺾여 움직이는 경로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "P1": "P_1",
+    "P2": "P_2",
+    "P3": "P_3",
+    "P4": "P_4"
+  },
+  "displayPoints": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "P1"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P2",
+        "P3"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P3",
+        "P4"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고3_미적분2_유사/q10.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q10-problem-result.json",
+    "statePath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q10-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사_plans/engine_evidence/q10-problem.svg"
+  }
+}

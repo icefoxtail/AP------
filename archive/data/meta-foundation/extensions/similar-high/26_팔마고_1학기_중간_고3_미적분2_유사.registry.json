@@ -1,0 +1,515 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_팔마고_1학기_중간_고3_미적분2_유사",
+  "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-EXP-LOG-STANDARD-LIMIT-VALUE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "지수·로그 기본 극한을 이용한 극한값 계산",
+      "definition": "(e^x-1)/x→1, ln(1+x)/x→1을 이용해 지수·로그함수를 포함한 함수의 극한값을 구하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-013",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "지수함수와 로그함수의 미분",
+      "parentRpmL3": "지수함수의 미분",
+      "parentRpmL4": "e^x형",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "parentTemplateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM에는 지수·로그함수의 기본 극한 L4가 없고 지수함수의 미분(e^x형) L3 아래 가장 가까운 확장이 필요하다. Q3, Q22에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 3
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-STANDARD-LIMIT-PARAMETER-BY-CONTINUITY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "연속 조건과 기본 극한으로 미정계수 결정",
+      "definition": "연속인 함수의 정의식에서 영점의 중복도 조건으로 미정계수를 정하고 로그·삼각함수의 기본 극한으로 계수를 결정하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-016",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "지수함수와 로그함수의 미분",
+      "parentRpmL3": "로그함수의 미분",
+      "parentRpmL4": "합성함수",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "parentTemplateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM의 로그함수의 미분(합성함수) 아래에는 미정계수 결정 L4가 없다. Q18에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 18
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-TRIG-LIMIT-GEOMETRY-PARAMETERIZATION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "삼각함수의 극한을 이용한 도형의 길이·넓이 비의 극한",
+      "definition": "각을 매개변수로 도형의 길이·넓이를 삼각함수로 나타내고 sinθ/θ→1 등으로 극한값을 구하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-022",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "삼각함수의 미분",
+      "parentRpmL3": "tan 및 관련 함수의 미분",
+      "parentRpmL4": "복합 삼각함수",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "parentTemplateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM의 삼각함수의 미분 L4는 도함수 계산만 있고 도형의 극한 유형이 없다. Q16, Q20에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 16
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-SEQUENCE-LIMIT-GEOMETRY-PARAMETERIZATION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "자연수 매개변수 도형의 길이·반지름의 극한",
+      "definition": "자연수 n에 따라 정해지는 도형의 변의 길이로 반지름·길이를 n의 식으로 나타내고 유리화 등으로 극한값을 구하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-001",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "수열의 극한",
+      "parentRpmL3": "수열의 수렴과 발산",
+      "parentRpmL4": "극한값",
+      "parentProblemTypeKey": null,
+      "parentTemplateKey": null,
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM 수열의 극한 L4에는 도형 활용 유형이 없다. Q19에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 19
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-TRIG-ADDITION-THEOREM-GEOMETRY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "도형에서 삼각함수의 덧셈정리 이용",
+      "definition": "도형에서 각의 합·차 관계를 세우고 삼각함수의 덧셈정리로 값을 구하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-019",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "삼각함수의 미분",
+      "parentRpmL3": "sin·cos의 미분",
+      "parentRpmL4": "기본 미분",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "parentTemplateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM의 삼각함수의 미분 L4에는 덧셈정리 유형이 없다. Q7에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 7
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-L4-TRIG-EXP-PIECEWISE-DIFFERENTIABILITY",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "삼각·지수 조각함수의 미분가능 조건",
+      "definition": "sin·cos와 지수함수를 포함한 조각함수가 경계점에서 연속이고 좌우 미분계수가 같다는 조건으로 계수를 정하는 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-019",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "삼각함수의 미분",
+      "parentRpmL3": "sin·cos의 미분",
+      "parentRpmL4": "기본 미분",
+      "parentProblemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "parentTemplateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "canonical RPM의 sin·cos의 미분 L4에는 조각함수 미분가능 조건 유형이 없다. Q11에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 11
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-NATURAL-NUMBER-POWER-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "자연수의 거듭제곱의 합",
+      "definition": "1+2+…+n=n(n+1)/2, 1^2+2^2+…+n^2=n(n+1)(2n+1)/6 등 자연수의 합 공식으로 나열된 항의 합을 n의 식으로 나타내는 개념.",
+      "parentKey": "CC_SERIES_SUM",
+      "parentLabelKo": "급수의 합",
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "CC_SERIES_SUM은 Σ 기호로 나타낸 항의 총합 일반이며 자연수의 거듭제곱 합 공식을 구분하지 못한다. Q12(제곱의 합), Q13(짝수의 합)에서 사용.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 12
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "generatedProblemTypes": [
+    {
+      "key": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "급수의 합과 수렴 조건",
+      "definition": "부분합·무한등비급수의 합·급수의 수렴 조건(일반항의 극한이 0)·점화 관계로 주어진 수열의 급수를 이용해 합이나 극한값을 구하는 문제 유형.",
+      "parentRpmRecordId": "H2-CALC-RPM-011",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "급수",
+      "parentRpmL3": "급수의 성질",
+      "parentRpmL4": "급수 계산",
+      "parentKey": "H2-CALC-RPM-011",
+      "parentLabelKo": "수열의 극한/급수/급수의 성질",
+      "parentKind": "RPM_PRIMARY_RECORD",
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "2015 미적분 급수(H15-CALC-02)에는 canonical PT/TPL 바인딩이 없고(크로스워크 RPM_ONLY) 급수 문항 전체를 묶을 상위 유형이 필요하다.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 2
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedTemplates": [
+    {
+      "key": "EXT-TPL-SEQUENCE-LIMIT-GEOMETRIC-POWER-CASES",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "거듭제곱 항의 밑에 따라 경우를 나눈 극한 계산",
+      "definition": "x^n을 포함한 수열의 극한으로 정의된 함수에서 |x|<1, x=1, |x|>1의 경우로 나누어 각 경우의 함숫값을 계산한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-005",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "수열의 극한",
+      "parentRpmL3": "등비수열의 극한",
+      "parentRpmL4": "공비 조건",
+      "parentKey": "PT_LIMIT_VALUE_CALC",
+      "parentLabelKo": "함수의 극한값 계산",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "밑의 크기에 따른 경우 분류 → 경우별 극한 계산 → 합",
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q8: f(x)=lim (x^{n+1}+3)/(x^n+3)에서 x=-1/3, 1, 3의 함숫값을 경우별로 구함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 8
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-SEQUENCE-LIMIT-FROM-PARTIAL-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "부분합에서 일반항을 구한 뒤 극한 계산",
+      "definition": "부분합 S_n이 주어질 때 n≥2에서 a_n=S_n-S_{n-1}로 일반항을 구하고 a_n을 포함한 식의 극한을 계산한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-003",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "수열의 극한",
+      "parentRpmL3": "극한의 계산",
+      "parentRpmL4": "대수적 계산",
+      "parentKey": "PT_LIMIT_VALUE_CALC",
+      "parentLabelKo": "함수의 극한값 계산",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "합 공식으로 S_n 정리 → a_n=S_n-S_{n-1} → 극한 계산",
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q13: S_n=2n(2+4+…+2n)에서 a_n=6n^2-2n을 구해 a_n/n^2의 극한을 계산함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 13
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-GEOMETRIC-SERIES-SUM",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "무한등비급수의 합 직접 계산",
+      "definition": "항을 나열한 급수에서 첫째항과 공비를 읽고 공비의 절댓값이 1보다 작음을 확인한 뒤 합 a/(1-r)을 계산한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-009",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "급수",
+      "parentRpmL3": "등비급수",
+      "parentRpmL4": "무한등비급수",
+      "parentKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+      "parentLabelKo": "급수의 합과 수렴 조건",
+      "parentKind": "GENERATED_PROBLEM_TYPE",
+      "internalSkeleton": "첫째항·공비 판독 → |r|<1 확인 → 합 공식",
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q2: 첫째항 1/5, 공비 -2/5인 무한등비급수의 합을 구함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 2
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-SERIES-CONVERGENCE-TERM-LIMIT-ZERO",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "급수의 수렴 조건(일반항의 극한 0)을 이용한 극한·미정계수 결정",
+      "definition": "급수가 수렴하면 일반항이 0으로 수렴함을 이용해 수열의 점근 비나 미정계수를 구하고, 필요하면 부분분수 소거 등으로 급수의 합까지 계산한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-008",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "급수",
+      "parentRpmL3": "급수의 수렴과 발산",
+      "parentRpmL4": "수렴 조건",
+      "parentKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+      "parentLabelKo": "급수의 합과 수렴 조건",
+      "parentKind": "GENERATED_PROBLEM_TYPE",
+      "internalSkeleton": "수렴 조건 → 일반항의 극한 0 → 점근 비·미정계수 결정 → (필요시) 급수의 합",
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q6: 수렴 조건으로 p를 정하고 소거합으로 q를 구함. Q9: 수렴 조건으로 a_n/n^2의 극한을 구함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 6
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-GEOMETRIC-SERIES-FROM-GEOMETRIC-PATTERN",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "도형·좌표 규칙의 반복에서 등비급수 구성",
+      "definition": "점의 이동이나 대칭·교점 규칙을 반복하여 얻는 좌표·길이·넓이가 등비수열을 이루는 것을 찾아 무한등비급수의 합으로 극한값이나 합을 구한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-010",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "급수",
+      "parentRpmL3": "등비급수",
+      "parentRpmL4": "활용",
+      "parentKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+      "parentLabelKo": "급수의 합과 수렴 조건",
+      "parentKind": "GENERATED_PROBLEM_TYPE",
+      "internalSkeleton": "규칙 반복으로 항 나열 → 일반항 또는 공비 판독 → 무한등비급수의 합",
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q10: 이동 거리가 절반씩 줄어드는 점의 좌표를 등비급수로 구함. Q17: 대칭이동과 교점으로 만든 삼각형 넓이의 합을 구함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 10
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-SERIES-RECURRENCE-SUM-REDUCTION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "점화 관계로 급수의 항을 환원하여 합 계산",
+      "definition": "홀수항·짝수항이 이어지는 점화 관계에서 구하는 항의 차를 간단한 항으로 환원하고 등비급수의 합 조건과 연결해 급수의 합을 구한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-011",
+      "parentRpmL1": "수열의 극한",
+      "parentRpmL2": "급수",
+      "parentRpmL3": "급수의 성질",
+      "parentRpmL4": "급수 계산",
+      "parentKey": "EXT-PT-SERIES-SUM-AND-CONVERGENCE",
+      "parentLabelKo": "급수의 합과 수렴 조건",
+      "parentKind": "GENERATED_PROBLEM_TYPE",
+      "internalSkeleton": "점화 관계 정리 → 급수의 항을 홀수항으로 환원 → 등비급수의 합 조건 → 계산",
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q15: a_{2n+2}-3a_{2n}=2a_{2n+1}로 환원하고 홀수항의 합 조건으로 a_1을 구해 급수를 계산함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 15
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-EXP-LOG-STANDARD-LIMIT-COMBINATION",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "지수·로그 기본 극한을 조합한 극한값 계산",
+      "definition": "(e^x-1)/x→1, ln(1+x)/x→1 꼴이 되도록 식을 변형하고 치환하여 극한값을 구한다. 도형의 넓이 등에서 세운 식의 극한에도 적용한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-013",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "지수함수와 로그함수의 미분",
+      "parentRpmL3": "지수함수의 미분",
+      "parentRpmL4": "e^x형",
+      "parentKey": "PT_LIMIT_VALUE_CALC",
+      "parentLabelKo": "함수의 극한값 계산",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "식 변형 → 기본 극한 꼴 만들기(치환) → 극한값 계산",
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q3: (e^{6x}-1)/ln(1+2x)의 극한. Q22: ln(1+x)/x의 극한과 곡선에서 세운 삼각형 넓이의 극한.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 3
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-TPL-TRIG-ADDITION-EXTERIOR-ANGLE-VALUE",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "삼각형의 외각과 덧셈정리로 삼각함수 값 계산",
+      "definition": "도형에서 외각이 두 내각의 합임을 이용해 구하는 각을 두 각의 합으로 나타내고 삼각함수의 덧셈정리로 값을 계산한다.",
+      "parentRpmRecordId": "H2-CALC-RPM-019",
+      "parentRpmL1": "미분법",
+      "parentRpmL2": "삼각함수의 미분",
+      "parentRpmL3": "sin·cos의 미분",
+      "parentRpmL4": "기본 미분",
+      "parentKey": "PT_TRIGONOMETRIC_RELATION",
+      "parentLabelKo": "삼각함수 관계식",
+      "parentKind": "CANONICAL_PROBLEM_TYPE",
+      "internalSkeleton": "삼각비로 내각의 sin·cos 확보 → 외각=내각의 합 → 덧셈정리로 값 계산",
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "standardCourse": "미적분",
+      "curriculum": "2015",
+      "basis": "Q7: 직사각형에서 ∠EPC=π/4+θ로 놓고 cos(∠EPC)를 덧셈정리로 계산함.",
+      "firstUsed": {
+        "stem": "26_팔마고_1학기_중간_고3_미적분2_유사",
+        "qid": 7
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": []
+}

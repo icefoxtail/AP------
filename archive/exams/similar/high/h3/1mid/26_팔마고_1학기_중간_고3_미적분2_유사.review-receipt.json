@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2_유사",
+  "candidateJsPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.meta-q01-q22.json",
+  "candidateGitBlobSha1": "8026e8a362b582a2c58c71734b6942c42d14b27d",
+  "reviewTimestamp": "2026-11-08T18:50:00+00:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_OPEN_DEFECTS",
+  "blindFirstPass": {
+    "totalSolved": 22,
+    "answerMatches": 22,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/palma_review/blind_frozen.json (+blind_check.py sympy/numeric)",
+    "method": "Only student-visible content/choices/figures (blind_view.txt extraction omitted answer/solution/meta; figures Q7,Q10,Q16,Q20 rendered and viewed) were solved by hand and verified with sympy/numeric simulation, frozen to blind_frozen.json BEFORE reading stored answers/solutions; then compared. Q21/Q22 sub-answers compared by value.",
+    "disclosure": "Original exam statement text was read only after the freeze. Figure alt/caption text of solution images appeared in the first extraction (solutionImageAlt) for Q7,16,20 but answers were derived independently.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "①",
+      "3": "⑤",
+      "4": "②",
+      "5": "④",
+      "6": "④",
+      "7": "②",
+      "8": "⑤",
+      "9": "①",
+      "10": "③",
+      "11": "③",
+      "12": "②",
+      "13": "⑤",
+      "14": "④",
+      "15": "①",
+      "16": "④",
+      "17": "②",
+      "18": "③",
+      "19": "①",
+      "20": "⑤",
+      "21": "(1) n-16n^3 (2) 8n/(1+16n^2) (3) 16",
+      "22": "(2) 5 (3) 3(sqrt3-1)/2"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindAnswer": "③ (9)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "분자 이차항 계수 a-3=0, 극한=b/2=3 → a=3,b=6, a+b=9 (③)"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindAnswer": "① (1/7)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "첫째항 1/5, 공비 -2/5, 합=(1/5)/(7/5)=1/7 (①)"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindAnswer": "⑤ (3)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "(e^{6x}-1)/6x→1, 2x/ln(1+2x)→1, 계수 6/2=3 (⑤); sympy limit=3"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindAnswer": "② (11)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "몫의 미분 y'=(x²+6x+4)/(x+3)², 1+6+4=11 (②)"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindAnswer": "④ (1/8)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(4a_n-3)/5→1이므로 a_n→2, 분자분모를 n으로 나누면 1/(2·4)=1/8 (④)"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindAnswer": "④ (4)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "S_n=n(n+2), 일반항 극한 0에서 p=1, 항=2/n-2/(n+2) 소거합=3=q, p+q=4 (④); sympy 급수합 3"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindAnswer": "② (-sqrt2/10)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "AC=10, θ=∠ACB: cosθ=3/5, sinθ=4/5, ∠EPC=π/4+θ(외각), cos=-√2/10 (②); 좌표 수치 -0.14142 일치"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindAnswer": "⑤ (5)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "|x|<1→1, x=1→1, x=3→3 (분자분모를 3^n으로 나눔), 합 5 (⑤)"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindAnswer": "① (4)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "급수 수렴→a_n/(2n²)→3→a_n/n²→6, 극한=(6+6)/(-3+6)=4 (①)"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindAnswer": "③ (8/5)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "x=4-1+1/4-…=16/5, y=2-1/2+1/8-…=8/5, 차 8/5 (③); 200스텝 시뮬레이션 1.6"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindAnswer": "③ (9)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "연속 b=2, 우미분 a, 좌미분 6+1=7 → a=7, a+b=9 (③)"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindAnswer": "② (10)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "f'(0)=Σk²/Σk=(2n+1)/3=7 → n=10 (②); 열거 확인"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindAnswer": "⑤ (6)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "S_n=2n³+2n², a_n=S_n-S_{n-1}=6n²-2n, 극한 6 (⑤); 수치 5.99998"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindAnswer": "④ (8)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(가)→|a_n-8n|<2→a_n/n→8, (나) 유리화로 b_n/n→1, 극한 8 (④); 수치 8.000"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindAnswer": "① (6)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "a_{2n+2}-3a_{2n}=2a_{2n+1}, 홀수항 공비 1/3·합 9→a_1=6, 2(9-6)=6 (①); 수열 시뮬레이션 6.0"
+    },
+    {
+      "qid": 16,
+      "questionType": "객관식",
+      "blindAnswer": "④ (2)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "t=π/2-θ, HM=sin2t, OQ=2tan t, (sin2t-2tan t)/(-t³)→2 (④); 기하 직접 수치 2.0000"
+    },
+    {
+      "qid": 17,
+      "questionType": "객관식",
+      "blindAnswer": "② (32)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "A1(8,4),A2(4,8),A3(4,2): S1=24, 공비 1/4, 합 32 (②); 수치합 32.0"
+    },
+    {
+      "qid": 18,
+      "questionType": "객관식",
+      "blindAnswer": "③ (8)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "x=2에서 b=a, f(2)=2+aπ²/8=4 → a=16/π², 4f(0)=2a, π²f(0)=8 (③); sympy 8"
+    },
+    {
+      "qid": 19,
+      "questionType": "객관식",
+      "blindAnswer": "① (1)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "높이 3√(n²+2n), r=(4n-1)√(n²+2n)/(3n), r-4n/3→1 (①); 수치 0.99999"
+    },
+    {
+      "qid": 20,
+      "questionType": "객관식",
+      "blindAnswer": "⑤ (6/5)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "S1=8θcos²θ-2sin2θ, S2=8θ/5, OH=2sinθ → 6/5 (⑤); 수치 1.19999"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindAnswer": "(1) n-16n^3 (2) 8n/(1+16n^2) (3) 16",
+      "candidateAnswer": "(1) $n-16n^3$, (2) $\\frac{8n}{16n^2+1}$, (3) $16$",
+      "blindMatch": true,
+      "blindDerivation": "(1) c=n-16n³ (2) sinθ=8n/(1+16n²) (3) 2R/n³→16 (수치 일치)"
+    },
+    {
+      "qid": 22,
+      "questionType": "서술형",
+      "blindAnswer": "(2) 5 (3) 3(sqrt3-1)/2",
+      "candidateAnswer": "(1) $\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+x)}{x}=\\ln e=1$; (2) $5$; (3) $\\frac32(\\sqrt3-1)$",
+      "blindMatch": true,
+      "blindDerivation": "(1) ln 연속성으로 ln e=1 (2) 3+2=5 (3) S=½·3t(x_B-x_A), 극한 3(√3-1)/2≈1.098 (수치 일치)"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "22 vs 22",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal",
+    "answerDistribution": {
+      "①": 4,
+      "②": 4,
+      "③": 4,
+      "④": 4,
+      "⑤": 4
+    },
+    "notes": [
+      "Q1-Q18, Q21, Q22 keep original type/structure with changed numbers/conditions (Q8 changes the fraction form, Q10 adds four-direction rotation, Q12 weighted sum, Q16 midpoint of PH, Q17 area instead of length: same unit and skills)",
+      "Q19 drifts easier: original is a multi-condition quadrilateral (difficultyBucket 5) while the similar item is an isosceles-triangle inradius limit (bucket 4, 5-point still multi-step). Recorded as minor open observation.",
+      "Q20 simplifies S1/S2 regions (original: composite region with T, S2 annular) to sector-minus-triangle and sector; same skills (sector area, sinθ/θ limit). Recorded as minor open observation.",
+      "Q21/Q22: original figure/e-definition parts replaced by text-complete statements; Q22(1) now asks to show ln(1+x)/x→1 from the e limit (same step)"
+    ]
+  },
+  "mathReview": "22/22 solutions re-derived; all stored solutions logically correct; 2015 curriculum only (no L'Hopital/Taylor). Q18 solution lacked justification of (1-cos u)/u²→1/2 (fixed). MathJax render in engine.html exam and solution modes: 0 katex errors, 0 raw $, 7 problem images + 3 solution images load.",
+  "reviewerEdits": [
+    {
+      "qid": 18,
+      "file": "js+meta",
+      "change": "Solution: added the justification (1-cos u)/u² = sin²u/(u²(1+cos u)) → 1/2 for the step used to get π²/8. expectedSourceBlobSha1 in meta recomputed to match final JS blob."
+    }
+  ],
+  "metaReview": {
+    "requiredFields": "22/22 items filled (standardCourse,curriculum,curriculumKey,courseKey,standardUnitKey/Unit,subUnitKey/Unit,conceptClusterKey,RPM L1-L4+recordId,PT,TPL,crossConceptKeys,conditionKeys,integrationPattern,level,difficultyBucket,sourceQid,variationType,provenance)",
+    "jsMetaConsistency": "all compared fields identical (0 mismatches)",
+    "keyExistence": "all non-EXT keys exist exactly in canonical/crosswalks (0 missing); EXT keys defined in extension registry",
+    "newExtensionKeys": {
+      "EXT_PT": 1,
+      "EXT_TPL": 8,
+      "EXT_CROSS": 1,
+      "EXT_L4": 6,
+      "note": "every registry key is used by at least one item (EXT-L4 via rpmPrimary.generatedL4Key)"
+    },
+    "parents": "all parent RPM record ids and parent PT/TPL/CC keys exist in canonical; 5 EXT-TPL use EXT-PT-SERIES-SUM-AND-CONVERGENCE as parentKey (own registry key, whose parent is canonical H2-CALC-RPM-011) plus a canonical parentRpmRecordId",
+    "duplicates": "no EXT label/key duplicates canonical or other similar-high registries",
+    "expectedSourceBlobSha1": "updated to 8026e8a362b582a2c58c71734b6942c42d14b27d",
+    "levelBucketNote": "Q11 level 하→중 (bucket 1→2), Q19/Q20 bucket 5→4 judged independently by generator; accepted"
+  },
+  "visualReview": {
+    "rendered": "Q7,Q10,Q16,Q20 problem figures; Q7,Q16,Q20 solution figures rendered with rsvg and in engine.html",
+    "result": "figures match stems (Q7 AB=8 BC=6 CE=6 proportions; Q10 O-P1-P2-P3-P4 lengths 4,2,1,1/2 and directions; Q16 circle/A/B/P/Q/H/M and θ at B; Q20 P,Q beyond O,R arc 3:2,H, S1 shaded) with no answer leak; SVG white background, title/desc/role=img, no raw LaTeX; plans: 44 plans valid, sourceQuote 22-40 chars found in text, engineEvidence files exist",
+    "observation": "Q16 problem figure: θ label sits ~100px from arc at B (engine bisector placement) — readable, minor cosmetic only"
+  },
+  "harness": {
+    "draft": "node tools/harness/verify_similar_exam.mjs <stem> --phase=draft run: only the 22 known canonical-pack errors (course 미적분/curriculum 2015 not declared) reported; classified as tool/canonical limitation, not content defects",
+    "strict": "RUN (no --phase): GATE_FAIL with only the 22 canonical-pack course/curriculum errors; receipt checks passed (blob sha, 22/22 blind match, PASS-family status with RECEIPT_QUALIFIED_PASS and RECEIPT_OPEN_DEFECTS warnings only)"
+  },
+  "structural": {
+    "choicesDistinct": true,
+    "fiveChoices": true,
+    "answerDistribution": "4/4/4/4/4",
+    "pointsSum": 100
+  },
+  "NOT_RUN": [
+    "main_merge_master.py / main merge (out of scope; no push)",
+    "tools/run-tests.js full suite",
+    "mobile-width engine render"
+  ],
+  "defects": [
+    {
+      "qid": 18,
+      "kind": "solution-gap",
+      "severity": "minor",
+      "status": "VERIFIED_REPAIRED",
+      "note": "missing justification of (1-cos u)/u²→1/2"
+    },
+    {
+      "qid": 19,
+      "kind": "difficulty-drift",
+      "severity": "minor",
+      "status": "OPEN",
+      "note": "easier than original multi-condition quadrilateral (bucket 5→4); still a multi-step 5-point limit/geometry item"
+    },
+    {
+      "qid": 20,
+      "kind": "difficulty-drift",
+      "severity": "minor",
+      "status": "OPEN",
+      "note": "S1/S2 region definitions simplified vs original composite regions; same skills"
+    }
+  ],
+  "unresolvedDefects": [
+    {
+      "questionNo": 19,
+      "qid": "19",
+      "kind": "difficulty-drift",
+      "reason": "원본(사각형 다조건, bucket 5)보다 단순한 이등변삼각형 내접원 극한이라 난이도가 다소 낮아짐(학생이 풀 수는 있는 5점 다단계 문항)",
+      "severity": "minor",
+      "round": 1
+    },
+    {
+      "questionNo": 20,
+      "qid": "20",
+      "kind": "difficulty-drift",
+      "reason": "원본의 합성 영역 S1·S2(T점, 환형 영역)를 부채꼴-삼각형 단순 영역으로 바꿔 도형 해석 부담이 줄었으나 핵심 기능(부채꼴 넓이, sinθ/θ 극한)은 동일",
+      "severity": "minor",
+      "round": 1
+    }
+  ]
+}
