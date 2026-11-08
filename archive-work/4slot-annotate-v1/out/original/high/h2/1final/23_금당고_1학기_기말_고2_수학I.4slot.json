@@ -1,0 +1,965 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학I.js",
+  "sourceGitBlobSha": "3a50873a13e2a20d3578afd88fb03642ba98a720",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$에서"
+          },
+          {
+            "term": "특수각",
+            "src": "stem",
+            "quote": "C=120^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "끼인각",
+            "src": "solution",
+            "quote": "두 변과 그 끼인각으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "\\frac12 ab\\sin C",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "a=6$, $b=4"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 변의 길이와 그 끼인각의 크기로부터 삼각형의 넓이 공식을 적용하여 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "a_1 = 10$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일반항",
+            "src": "stem",
+            "quote": "a_{10}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "공차를 \\(d\\)라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "10+d=30+6d",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "\\frac{a_2}{a_3}=3"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫째항과 두 항의 비율식으로부터 공차를 구하고 등차수열의 일반항으로 제10항을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 4인 정육각형"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "변 $BC$의 중점을 $M$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $ME$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "정육각형의 중심을 원점으로 두고 꼭짓점 좌표를",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "(4+3)^2+(0+\\sqrt3)^2=49+3=52",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $ME$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정육각형을 좌표평면에 두고 중점과 꼭짓점의 좌표를 구해 두 점 사이의 거리를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$는 어떤 삼각형인가?"
+          },
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\sin A + \\sin B = \\sin C(\\cos A + \\"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직각삼각형",
+            "src": "choices",
+            "quote": "C=90^\\circ$인 직각삼각형"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "A+B=\\pi-C",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "\\cos\\frac{A-B}{2}>0\\)이고 약분하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 각이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형의 내각의 성질과 삼각함수의 변환 공식을 적용하여 삼각형이 직각삼각형임을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$의 넓이는?"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선 \\(AC\\)로 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "\\triangle ADC\\)의 넓이는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "특수각",
+            "src": "stem",
+            "quote": "\\angle \\mathrm{CDA}=120^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사각형을 대각선으로 분할하여 코사인법칙으로 대각선 길이를 구하고 두 삼각형의 넓이의 합으로 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시그마",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^n a_k"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "n^2 + n"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{10} k a_{2k}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "a_n=S_n-S_{n-1}=2n",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱합",
+            "src": "solution",
+            "quote": "4\\sum_{k=1}^{10}k^2=4\\cdot385",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "따라서 \\(a_{2k}=4k\\)이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수열의 합과 일반항의 관계식으로 일반항을 구하고 자연수 거듭제곱의 합 공식으로 시그마를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "y=\\sqrt{x}$의 그래프"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "사다리꼴이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{120} \\frac{1}{S_k}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "2(\\sqrt{k+1}-\\sqrt{k})",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "합은 망원합으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "단, $k$는 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사다리꼴의 넓이 식의 역수를 유리화하여 망원합 형태로 변형한 뒤 시그마를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 지점 $\\mathrm{A}$, $\\mathrm{B}$, $\\"
+          },
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "속력이 $10\\,\\mathrm{m/s}$인 모형 보트"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "PA=500\\sqrt3\\)m"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "직선 위에서 \\(B\\)를 원점으로 놓고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "x^2+h^2=700^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "두 지점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선 위의 지점들을 좌표로 나타내고 피타고라스 정리로 연립방정식을 세워 거리와 소요 시간을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "좌표평면 위의 두 원"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점 중 $x$좌표가 양수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{20} \\frac{1}{2k^2 a_k}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "\\frac12\\left(\\frac1{2k-1}-\\frac1{2k",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "망원합으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 원의 방정식을 연립하여 교점의 y좌표 수열을 구하고 부분분수로 분해하여 망원합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "각 자리의 숫자는 $1$ 또는 $0$이며"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "n$자리수의 자연수이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일반항",
+            "src": "stem",
+            "quote": "a_{40}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "공비 100인 등비수열의 합으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "공비 100",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "10+10^3+\\cdots+10^{39}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이웃한 숫자가 다른 자릿수의 규칙을 10의 거듭제곱의 합으로 표현하고 등비수열의 합 공식을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항이 $1$이고"
+          },
+          {
+            "term": "귀납적정의",
+            "src": "solution",
+            "quote": "점화식으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $m$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "a_2=-2\\), \\(a_3=7",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "이것이 101보다 크려면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점화식을 통해 초기 항들을 구하여 수열의 주기성과 반복성을 파악하고 부등식을 만족하는 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "귀납적정의",
+            "src": "stem",
+            "quote": "a_{n+1} = 4a_n + 2^{n+1}"
+          },
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "b_n=2\\cdot4^{n-1}\\)인 등비수열이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 <보기>에서 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "b_n=a_n+2^n\\)라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "\\sum_{k=1}^n2^k=2^{n+1}-2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "a_1 = 0"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수열의 점화식을 새로운 수열로 치환하여 등비수열로 유도하고 각 보기를 차례로 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "단위원",
+            "src": "solution",
+            "quote": "단위원 위 점 \\(P\\)와의 거리는"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "좌표평면 위의 10개의 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{10} ({M_k}^2 + {m_k}^2)"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값 \\(M_k=r_k+1\\)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값 \\(m_k=r_k-1\\)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "2(50+40)+2\\cdot10=200",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $PA_k$의 길이의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단위원과 점 사이의 거리의 최댓값과 최솟값을 반지름으로 나타내고 제곱의 합을 시그마로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "수학적귀납법",
+            "src": "stem",
+            "quote": "수학적 귀납법으로 증명한 것이다"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여 부등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "위의 과정에서 (가), (나), (다)에 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "가정",
+            "src": "stem",
+            "quote": "a_k > 1$이 성립한다고 가정하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "\\frac1{3k+2}+\\frac1{3k+4}>\\frac2{3k+3}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수학적 귀납법의 귀납적 단계에서 k일 때의 가정을 이용해 k+1일 때 부등식의 빈칸을 채운다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 각각 $D, E, F$"
+          },
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\sin A \\times \\sin(B+C) = \\frac{9}{25}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $EFP$의 넓이는 $\\frac{q}{p}$이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "\\sin A=\\frac35",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "전체 넓이를 분할하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=6"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내부 점에서의 수선의 길이를 활용해 전체 넓이를 분할하여 변의 길이를 찾고 사인 넓이 공식으로 삼각형 EFP의 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$에 내접하는 삼각형"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 $10$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$bc$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "확장된 사인법칙에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "200(1+\\cos A)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "a=16$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외접원의 반지름과 대변으로부터 사인법칙을 적용하여 두 변의 곱을 하나의 각의 삼각함수로 표현해 최댓값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항이 1인 수열"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|a_{n+1}| + |a_n| = 2n + 1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{10} a_k$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀납적정의",
+            "src": "solution",
+            "quote": "귀납적으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱합",
+            "src": "solution",
+            "quote": "1+2+\\cdots+51=1326",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 점화식을 분석하여 각 항의 절댓값을 구하고 합의 차이를 비교하여 음수 항을 식별한 뒤 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 $AOB$에 대하여"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $H$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $OPH$의 넓이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "내접",
+            "src": "solution",
+            "quote": "호에 내접 접하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "OH=\\cos\\theta=1/5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "원 \\(C\\)의 반지름을",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle AOB = \\theta"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부채꼴 내접원의 기하학적 성질과 삼각비를 활용해 접점과 수선의 발의 위치를 구하고 삼각형의 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 18,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
