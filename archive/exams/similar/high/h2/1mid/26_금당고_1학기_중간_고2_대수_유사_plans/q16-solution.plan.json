@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$\\tan\\theta=\\frac{x^2}{x}=x$.",
+  "caption": "곡선 y=x^2 (x>0) 위의 점 P와 원점 O를 잇는 동경 OP이다. tanθ는 직선 OP의 기울기이고 점 P의 좌표는 (√2, 2)이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -0.5,
+      4
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "sqrt(2)",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사/q16-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q16-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q16-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q16-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+      "ordinal": 16,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

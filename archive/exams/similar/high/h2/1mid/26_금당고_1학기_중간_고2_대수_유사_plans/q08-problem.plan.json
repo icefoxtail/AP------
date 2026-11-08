@@ -1,0 +1,62 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "sourceQuote": "함수 $y=2^x+1$의 그래프가 오른쪽 그림과 같다.",
+  "caption": "지수함수 y=2^x+1의 그래프 위의 두 점 P, Q이다. 점 P와 점 Q에서 x축과 y축에 각각 점선을 내려 두 점의 위치를 보였다.",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4.4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -3,
+      22
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3"
+        },
+        {
+          "id": "Q",
+          "curveX": "2"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gq",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사/q08-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q08-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q08-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q08-problem.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+      "ordinal": 8,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

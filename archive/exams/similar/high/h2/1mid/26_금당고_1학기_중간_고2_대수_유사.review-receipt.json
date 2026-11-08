@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_금당고_1학기_중간_고2_대수_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사.meta-q01-q21.json",
+  "candidateGitBlobSha1": "428704aa97177954bf024ec0310e338fcba2f498",
+  "reviewTimestamp": "2026-11-08T18:50:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "signOffNote": "21문항 블라인드 풀이 전부 일치. 해설 그림 UNSUPPORTED 5건(Q9,Q12,Q18,Q19,Q21)은 해설 글만으로 완결되어 시각 부채로 남김. 중복 확장 키 1건 교체(Q21). 엔진(engine.html) 실렌더는 이 환경에서 원본 시험지도 렌더 오류가 나 NOT_RUN; 대신 KaTeX 구문 검사와 rsvg PNG 직접 확인으로 대체.",
+  "blindFirstPass": {
+    "totalSolved": 21,
+    "answerMatches": 21,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/frozen_blind_answers.json (2026-11-08 비교 전 동결; Python/sympy 검산은 scratchpad/blind_solve.py, blind2.py)",
+    "method": "content/choices만 추출(정답·해설 필드 비출력)한 뒤 직접 풀이하고 Python/sympy로 검산. Q8은 발문 그림(q08-problem.svg)도 확인. 동결 후에야 저장된 정답·해설과 대조했다.",
+    "disclosure": "추출 단계에서 solutionImageAlt/Caption 문자열(Q3,Q5,Q8,Q16 해설 그림 설명)이 함께 보였으나 이는 해설 그림 설명이며 답 도출은 발문만으로 독립 수행했다.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "①",
+      "3": "①",
+      "4": "②",
+      "5": "⑤",
+      "6": "③",
+      "7": "①",
+      "8": "③",
+      "9": "②",
+      "10": "④",
+      "11": "⑤",
+      "12": "②",
+      "13": "④",
+      "14": "⑤",
+      "15": "③",
+      "16": "④",
+      "17": "④",
+      "18": "②",
+      "19": "①",
+      "20": "18",
+      "21": "70/3"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "Q1: a^9 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Q2: log5 150/6=log5 25=2 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Q3: (1/4)^x inverse base 1/4 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Q4: 19pi/6=3pi+pi/6 -> -1/2 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "Q5: [3,5] (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "Q6: -930=-3*360+150 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Q7: f=2,1,2,1,2,1,0 sum 9 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "Q8: a=3,b=5 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Q9: a=3,b=-3/2 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Q10: sc=-1/3, 1-2/9=7/9 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "Q11: 9pi/5 only (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Q12: r=7,theta=2 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Q13: a=4,b=9 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "Q14: 6 digits (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "Q15: |log3 a|<=3, min 1/27 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Q16: tan^2=2, x=sqrt2,y=2 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Q17: ㄱ T ㄴ T ㄷ F(9) (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Q18: reflect about x=-2, a=1/2,b=-3,c=-6, abc=9 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Q19: a=4, k=4,-8,-2 sum -6 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "18",
+      "candidateAnswer": "18",
+      "blindMatch": true,
+      "blindDerivation": "Q20: ordered pairs (a+1)(b+1)=6^k: 18 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "70/3",
+      "candidateAnswer": "70/3",
+      "blindMatch": true,
+      "blindDerivation": "Q21: k=2, u product 3/64, answer 2+64/3=70/3 (Python/sympy 검산, 학생 보이는 발문·보기만 사용)"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "21 vs 21",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "원본과 동일(3,3,3,3.2,3.3,3.5,4x6,5x4,5.2,5.5,5.5,5.8,8,12)",
+    "questionTypes": "객관식 19 + 서술형 2, 원본과 동일",
+    "levels": "원본 문항별 하(1-6)/중(7-12)/상(13-21)와 동일",
+    "answerValueCollisionWithOriginal": "없음(원본 Q20=13, Q21=83/2 vs 유사 18, 70/3 등 전 문항 수치·조건 변경)",
+    "notes": [
+      "Q3 (1/3)^x 역함수 → 4^{-x} 음의 지수로 한 단계 변형, 같은 유형",
+      "Q7 f(3..7) 5항 → f(2..8) 7항, -2n^2+9n → -n^2+8n-10",
+      "Q16 y=sqrt(x) → y=x^2, 같은 tan 방법",
+      "Q17 100→200, 원본 ㄷ 명제를 9개/10개 거짓 진술로 바꿔 복제 아님",
+      "Q18 점근선 x=4 → x=-2, 대칭 구조 동일, 부호가 양인 b 가능성 배제 논증 포함",
+      "Q19 k값 3개 합, 원본 구조 유지(a=4)",
+      "Q20/Q21 서술형 풀이구조 동일, 수치 변경"
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 3,
+    "note": "객관식 19문항, max-min=1"
+  },
+  "mathReview": "21문항 해설을 전부 다시 유도해 단계·경우 분류·유일성 확인: Q7 홀짝/부호 표, Q13 지수 합동(a=4,b=9), Q14 a범위(216~464)로 b 6자리 유일, Q18 b=3이면 f=g이므로 b=-3 유일, Q19 h=3일 때만 교점 3개(a=4, k=4,-8,-2), Q21 k=2만 두 양근(1/8,3/8). 오류 없음. 해설 어투·칠판형 구조 양호.",
+  "reviewerEdits": [
+    {
+      "qid": 21,
+      "file": "js+meta+registry",
+      "change": "새 확장 키 EXT-COND-EXACT-ROOT-COUNT를 삭제하고 canonical COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION(관계를 만족하는 입력 개수가 정확히 n)으로 교체. 이유: t의 개수가 정확히 2라는 조건이 canonical 정의와 일치해 중복. JS conditionKeys·메타 item·registryChanges·확장 레지스트리(generatedConditions, uidAssignments)와 expectedSourceBlobSha1, registrySha256 갱신."
+    },
+    {
+      "qid": 13,
+      "file": "meta+registry",
+      "change": "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE의 parent를 CC_SQUARE_NUMBER에서 더 가까운 CC_PRIME_FACTORIZATION_SQUARE(소인수분해를 이용한 제곱수 만들기)로 교체, basis 문구 수정. 키 자체는 k제곱수(k=3,4) 일반화와 지수 합동 연립이라 canonical과 다르다고 판단해 유지."
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "items": 21,
+      "requiredFieldsFilled": "504/504 (24 fields x 21; 빈 배열 crossConcept/condition 항목은 모두 근거 note 보유)",
+      "canonicalRpmL4Items": 18,
+      "extensionL4Items": 3,
+      "reusedExtensionKeys": 0,
+      "newExtensionKeys": 4,
+      "newExtensionKeysDetail": [
+        {
+          "key": "EXT-L4-ALG-EXPLOG-INVERSE-BASE",
+          "qid": 3,
+          "parent": "H2-M1-RPM-087",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (canonical 087 L4는 증가·감소뿐, 지수↔로그 역함수로 밑 결정 L4 없음; 기존 확장과 중복 없음)"
+        },
+        {
+          "key": "EXT-L4-ALG-SECTOR-FIXED-PERIMETER-MAX-AREA",
+          "qid": 12,
+          "parent": "H2-M1-RPM-096",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (경계 사례: canonical L4 '호도법'+CC_QUADRATIC_EXTREMA로도 설명 가능하나 둘레 고정 넓이 최대 최적화 구조가 결정 단계라 유지; 후속 정리에서 canonical 호도법으로 합쳐도 무방)"
+        },
+        {
+          "key": "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE",
+          "qid": 18,
+          "parent": "H2-M1-RPM-088",
+          "parentExistsInCanonicalCrosswalk": true,
+          "verdict": "KEEP (canonical 088 L4는 평행이동뿐, 점근선 기준 대칭 관계 L4 없음)"
+        },
+        {
+          "key": "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE",
+          "qid": 13,
+          "parent": "CC_PRIME_FACTORIZATION_SQUARE",
+          "parentExistsInCanonicalConcepts": true,
+          "verdict": "KEEP (canonical 제곱수 계열은 k=2 한정, k제곱수 일반화·지수 합동 연립은 없음; parent를 더 가까운 개념으로 교체)"
+        }
+      ],
+      "removedExtensionKeys": [
+        "EXT-COND-EXACT-ROOT-COUNT (-> canonical COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION)"
+      ],
+      "distinctCrossConceptKeys": 20,
+      "distinctConditionKeys": 8,
+      "allCrossConceptKeysExistInCanonical": "EXT 1개 제외 전부 canonical 실재",
+      "allConditionKeysExistInCanonical": true,
+      "allPtTplRegisteredInCanonicalPacksAndMatchCrosswalkRow": true,
+      "rpmRecordIdsExistAndL1toL3MatchCrosswalk": true,
+      "metaFieldsMatchJs": "23개 필드 x 21문항 전부 JS와 메타 after 일치(스크립트 검사)",
+      "aliasProposals": 0,
+      "evidenceDebt": 0
+    },
+    "notes": [
+      "PT/TPL은 크로스워크 레코드의 PT/TPL과 전 문항 정확히 일치해 SELF_CHECKED가 크로스워크 투영으로 뒷받침됨",
+      "Q5는 RPM-103(sin·cos 기본 그래프)로 두었으나 RPM-105(주기·진폭)로도 설명 가능한 경계 사례, 현행 유지",
+      "level/difficultyBucket은 원본 수준과 일치하고 서로 독립 근거(levelBasis/difficultyBasis) 보유"
+    ]
+  },
+  "visualReview": {
+    "plans": "42개 plan(21x2) 모두 유효 JSON, EXEMPT/UNSUPPORTED 사유 보유, ACTIVE 5개(q03-sol, q05-sol, q08-prob, q08-sol, q16-sol)는 engineEvidence로 정본 렌더러 산출물과 결속(harness 확인)",
+    "activeSvg": [
+      "q08 problem",
+      "q03 solution",
+      "q05 solution",
+      "q08 solution",
+      "q16 solution"
+    ],
+    "svgChecks": "5개 SVG 모두 role=img, title, desc, 흰 배경, raw LaTeX 없음; rsvg PNG로 직접 확인",
+    "q08ProblemFigure": "y=2^x+1 그래프, P·Q 점과 점선만 표시하고 a,b 값은 표시하지 않음(발문의 미지수라 정상). 보조 라벨 f(0)=2는 정답과 무관. 학생이 읽고 풀 수 있음.",
+    "unsupported": {
+      "q09-solution": "로그 그래프 표시 구간 고정(x=30 표시 불가), 글로 완결",
+      "q12-solution": "응용 축 계약 미지원 S=r(14-r) 그래프, 글로 완결",
+      "q18-solution": "같은 점근선 대칭 로그곡선 쌍 미지원, 글로 완결",
+      "q19-solution": "합성 지수 절댓값 그래프 미지원, 글로 완결",
+      "q21-solution": "두 지수곡선과 수직선 미지원, 글로 완결"
+    },
+    "visualDebtAssessment": "5건 모두 해설 문장·식만으로 풀이가 완결되고(독립 풀이로 확인) 발문에 그림이 필요한 문항은 없음. 학생 이해에 지장 없는 선택적 보조 그림 부재이므로 시각 부채로 기록.",
+    "engineRender": "NOT_RUN: headless Chrome에서 engine.html이 원본 26_금당고_1학기_중간_고2_대수.js조차 렌더 오류(apRenderError)로 실패해 환경 한계로 판단. 대체: KaTeX로 583개 수식 구문 검사 0오류, 식 밖 raw LaTeX 0건."
+  },
+  "harness": "node tools/harness/verify_similar_exam.mjs 26_금당고_1학기_중간_고2_대수_유사 (strict): GATE_PASS exit 0, 경고는 UNSUPPORTED 해설 그림 5건 VISUAL_DEBT_ACKNOWLEDGED와 RECEIPT_QUALIFIED_PASS뿐. 병합(main_merge_master)은 수행하지 않음.",
+  "unresolvedDefects": []
+}
