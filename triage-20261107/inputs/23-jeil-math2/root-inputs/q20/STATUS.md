@@ -16,3 +16,11 @@ Question-specific limitations:
 The displayed cubic is f/10: plotted maximum (−1,1) represents actual maximum 10, and plotted minimum (5,−49/5) represents actual minimum −98. The scale is declared in draft text but actual axis/formula unit consistency is unverified. This plots the recovered f, not the derivative graph stated in the question. SourceDomain ALL_REALS is retained, while domain/viewport are display limits only.
 
 Preservation base: codex/svg-triage-20261107 at 661c59ef28ddeda5a8273aa1e0a499994bb951f7. The containing commit supplies the preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Exact-coordinate representation correction
+
+ROOT의 최신 계획을 그대로 보존했다. requiredPoints의 분수·근호 문자열을 그리기용 유한 JSON 숫자로 바꾸고 graphPlan.exactCoordinates에 양 좌표의 원래 정확식을 함께 보존했다. 계수·함수·정의역·표시 범위·sourceQuote·다른 필드는 변경하지 않았다. 아래 숫자는 그리기용 좌표이며 정확 라벨을 근삿값으로 바꾼 것이 아니다.
+- N: exactCoordinates ["5", "-49/5"]; numeric drawing position [5.0, -9.8].
+
+phase2.mjs blob 983e492c0661b93ea7e8188fad33061a0d103b36 L791–809의 exactCoordinates 및 finite requiredPoints 규칙을 대조했다. 제한된 정적 대조에서 정확식 일치, 수치 오차의 절대 1e-9 및 상대 1e-9 기준, 곡선 위 점 오차 1e-8 기준을 확인했다. 이것은 공식 validator나 렌더·배치·학생 화면 검수가 아니다. 공식 validator / render / independent visual review / handoff: NOT_RUN. 기존 OPEN·HOLD·실패·가독성·답 노출·소유 UNKNOWN 이력은 유지하며 READY 또는 게시 완료를 주장하지 않는다.
