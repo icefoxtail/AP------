@@ -232,7 +232,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 9를 중심으로 한 정규분포 곡선에서 구간 k-3부터 k+1까지를 평균 양쪽 대칭으로 칠한 그림.",
+    "solutionImageCaption": "구간 [k-3, k+1]의 길이는 4로 고정되고, 구간의 중심이 평균 9에 놓일 때 확률이 최대가 된다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -250,9 +254,9 @@ window.questionBank = [
     "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q07.png",
     "solutionImageStatus": "asset_verified",
     "solutionImageSize": "full",
-    "solutionImageCaption": "문제의 표준정규분포표에서 z=2의 값을 확인한다.",
-    "solutionImageAlt": "표준정규분포표에서 z=1, 2, 3의 확률값.",
-    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q07.png",
+    "solutionImageCaption": "3시간을 180분으로 바꾸면 평균 210분보다 표준편차 두 배만큼 작다. 해당 확률은 표준화 값이 음수 2인 지점부터 오른쪽까지의 넓이이며, 대칭성을 이용해 구한다. 정답은 0.9772이다.",
+    "solutionImageAlt": "해설 그림: 평균 210분의 정규곡선에서 180분부터 오른쪽 끝까지 칠한 영역과 표준화 값.",
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q7-solution-v2.svg",
     "level": "하",
     "category": "확률분포",
     "originalCategory": "확률분포",
@@ -390,7 +394,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1.96부터 1.96까지 가운데 영역을 칠한 그림.",
+    "solutionImageCaption": "표본평균의 표준편차는 2를 표본 크기의 제곱근으로 나눈 값이다. 중앙 95%에 필요한 조건을 적용하면 표본 크기는 384.16 이상이므로 자연수 최솟값을 고른다. 정답은 385이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -484,9 +492,9 @@ window.questionBank = [
     "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13.png",
     "solutionImageStatus": "asset_verified",
     "solutionImageSize": "full",
-    "solutionImageCaption": "문제의 정규분포 그래프에서 중심 10과 1σ 구간을 확인한다.",
-    "solutionImageAlt": "평균 10과 표준편차 5를 읽는 정규분포 곡선과 구간 자료.",
-    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13.png",
+    "solutionImageCaption": "모집단의 중심 10을 기준으로, 표본평균 분포에서 9부터 12까지의 넓이를 읽는다. 정답은 0.8185이다.",
+    "solutionImageAlt": "해설 그림: 평균 10인 넓은 정규곡선과 더 좁은 표본평균 곡선, 표본평균 곡선 아래 9부터 12까지의 음영 영역.",
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13-solution-v2.svg",
     "level": "상",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
@@ -548,7 +556,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 바깥 경계 a와 b, 안쪽 경계 c와 d 사이를 서로 다른 진하기로 칠한 대칭 구간. 아래 z 줄에 a는 -1.65, d는 1.3.",
+    "solutionImageCaption": "90% 구간의 양끝 a와 b는 표준화하면 -1.65, 1.65이고, 안쪽 구간의 양끝 c와 d는 -1.3, 1.3이다. 가운데 넓이로 신뢰도를 정한다. 정답은 80이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -715,9 +727,9 @@ window.questionBank = [
     "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19.png",
     "solutionImageStatus": "asset_verified",
     "solutionImageSize": "full",
-    "solutionImageCaption": "문제에 제시된 표준정규분포표 값을 풀이에서 참조한다.",
-    "solutionImageAlt": "z=1, 2, 3에서의 표준정규분포표 값.",
-    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19.png",
+    "solutionImageCaption": "가능한 주사위 눈을 고르고, 성공 횟수의 평균과 분산으로 정규근사를 한다. 정답은 2-1: 3, 4, 5, 6; 2-2: 기댓값 48, 분산 16; 2-3: 0.8413이다.",
+    "solutionImageAlt": "해설 그림: 정규근사 곡선에서 44 경계부터 오른쪽을 칠하고 표준화 위치를 보인 그림.",
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19-solution-v2.svg",
     "level": "상",
     "category": "확률분포",
     "originalCategory": "확률분포",

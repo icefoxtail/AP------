@@ -704,7 +704,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본평균의 종 모양 정규분포 곡선은 평균 10을 중심으로 왼쪽 9와 오른쪽 a까지 회색으로 칠해져 있고, 아래 표준점수 눈금은 -2, 0, 2이다.",
+    "solutionImageCaption": "표본평균은 평균 10, 표준편차 0.5인 정규분포를 따른다. 표준화하면 9와 a는 평균에서 각각 표준점수 -2와 2에 놓이며, 두 경계 사이를 칠해 대칭 관계를 나타냈다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -921,7 +925,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 60점인 종 모양 정규분포 곡선에서 70점부터 80점까지의 영역이 회색으로 칠해져 있고, 아래 표준점수 눈금에는 0, 1, 2가 표시되어 있다.",
+    "solutionImageCaption": "시험 점수는 평균 60점, 표준편차 10점인 정규분포를 따른다. 70점과 80점은 표준화하면 각각 표준점수 1과 2에 대응하므로 그 사이 구간을 표시했다. 정답은 0.1359이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
