@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "중심 $(p,q)$을 지나고 기울기가 $\\pm1$인 두 직선에 대하여 대칭이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -9,
+      1
+    ],
+    "axisTickValues": {
+      "y": [],
+      "x": []
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "-5"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=(2-5x)/(x-1)"
+      },
+      {
+        "id": "d1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=x-6"
+      },
+      {
+        "id": "d2",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=-x-4"
+      }
+    ]
+  },
+  "caption": "부분 그래프에서 점근선이 만나는 중심을 지나는 기울기 1과 −1의 대칭축을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수는 y=−5−3/(x−1), 중심은 (1,−5)이다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "두 축은 중심을 지나며 기울기는 각각 1과 −1이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "중심과 두 대칭축이 만나는 관계를 그림으로 표시해 각각의 직선식이 나오는 이유를 보여 준다."
+  ],
+  "accessibilityDescription": "부분 그래프에서 유리함수의 점근선과 중심을 지나는 두 대각선 대칭축의 관계를 보여 준다."
+}

@@ -1,0 +1,134 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "원함수 위의 점 $(x,y)$는 $k=x+y^2$를 만족하고, 역함수는 $y=k-x^2$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      8,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4",
+        "5"
+      ],
+      "y": [
+        "1",
+        "3",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "31",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-5",
+          "15"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)",
+        "hideLabel": true
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "1"
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "6"
+        },
+        {
+          "id": "F1",
+          "x": "6",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "G1",
+          "x": "47/10",
+          "y": "891/100",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "fName",
+          "point": "F1",
+          "labelKind": "MATH",
+          "direction": "SE",
+          "text": "y=f(x)"
+        },
+        {
+          "id": "gName",
+          "point": "G1",
+          "labelKind": "MATH",
+          "direction": "E",
+          "text": "y=g(x)"
+        }
+      ]
+    }
+  },
+  "caption": "원함수와 역함수의 그래프가 삼각형과 만나는 위치를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형의 꼭짓점은 A(1,3), B(4,1), C(5,6)이다.",
+      "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=√(k−x)의 역함수는 y=k−x²이며 k의 최댓값에서 각각 삼각형을 만난다.",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c3",
+      "condition": "함수 이름 지시선은 각 곡선 위의 보조점에서 시작한다. 보조점은 곡선 위의 점 (6,5), (47/10,891/100)이다.",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.callouts"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선이 삼각형의 서로 다른 위치와 만나는 관계를 함께 보여 준다.",
+    "함수 이름 라벨을 각 곡선 위의 점에 지시선으로 연결해 곡선과 이름의 대응을 분명히 한다."
+  ],
+  "accessibilityDescription": "삼각형 ABC와 무리함수 f의 그래프, 역함수 g의 그래프가 있다. 역함수 g는 꼭짓점 C를 지나고 원함수 f는 변 AC와 만난다. 각 함수 이름은 지시선으로 자기 곡선 위의 점을 가리킨다."
+}
