@@ -308,7 +308,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (s.s2L2) { b.line([p, q], -1, { color: 'green', dash: [7, 5], width: 2, ref: 'l2' }); b.text([p - 4.4, q + 4.4], 'L₂', { color: 'green', size: 13, align: 'right', dx: -6 }); }
       drawRat(b, k, p, q, { color: 'sky', width: 3.4, glow: true, ref: 'curve' });
       const P0 = [p + u, q + v], Pc = [p - u, q - v], P1 = [p + v, q + u], P2 = [p - v, q - u];
-      if (s.s2C) { b.seg(P0, Pc, { color: 'rose', dash: [3, 4], width: 1.8, ref: 'pc' }); b.point(Pc, { r: 5, color: 'rose', label: 'P′', dx: 9, dy: -9, size: 13, ref: 'pc' }); }
+      if (s.s2C) { b.seg(P0, Pc, { color: 'rose', dash: [3, 4], width: 1.8, ref: 'pc' }); const q = b.toS(Pc); const inside = q.x >= 20 && q.x <= b.W - 46 && q.y >= 26 && q.y <= b.H - 24; b.point(Pc, { r: 5, color: 'rose', label: inside ? 'P′' : '', dx: 9, dy: -9, size: 13, ref: 'pc' }); }
       if (s.s2L1) { b.seg(P0, P1, { color: 'violet', dash: [3, 4], width: 1.8, ref: 'l1' }); b.point(P1, { r: 5, color: 'violet', label: 'P₁', dx: 9, dy: -9, size: 13, ref: 'l1' }); }
       if (s.s2L2) { b.seg(P0, P2, { color: 'green', dash: [3, 4], width: 1.8, ref: 'l2' }); b.point(P2, { r: 5, color: 'green', label: 'P₂', dx: 9, dy: -9, size: 13, ref: 'l2' }); }
       if (s.s2D) {
