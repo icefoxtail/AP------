@@ -28,13 +28,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 평행이동과 원점 대칭을 식에 차례로 적용한다.\n조건 정리: $x$축 방향으로 $3$만큼 평행이동한 뒤 원점 대칭을 한다.\n풀이 방향: 먼저 평행이동된 직선의 방정식을 구하고, 그 식에 $x\\mapsto -x$, $y\\mapsto -y$를 적용한다.\n정석 풀이: $x+3y-3=0$을 $x$축 방향으로 $3$만큼 평행이동하면 $x$ 대신 $x-3$을 대입하여 $(x-3)+3y-3=0$, 즉 $x+3y-6=0$이다. 이 직선을 원점에 대하여 대칭이동하면 $x,y$ 대신 각각 $-x,-y$를 대입하므로 $-x-3y-6=0$이다. 따라서 $x+3y+6=0$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "원래 직선 x+3y−3=0을 x축 방향으로 3만큼 옮긴 x+3y−6=0과, 이를 원점에 대칭이동한 x+3y+6=0을 세 직선으로 함께 그려 두 변환의 대응을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행한 세 직선 f, g, h를 한 좌표평면에 나타낸 그림. f는 원래 직선이고 g는 f를 x축 방향으로 평행이동한 직선, h는 g를 원점에 대하여 대칭이동한 직선이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "f는 원래 직선 x+3y−3=0, g는 f를 x축 방향으로 3만큼 평행이동한 x+3y−6=0, h는 g를 원점에 대하여 대칭이동한 직선이다. 따라서 정답은 x+3y+6=0이다."
   },
   {
     "id": 2,
@@ -160,7 +161,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선 y=-x와 y=x가 이루는 V자 그래프와 수평선 y=1, 두 교점 (-1,1), (1,1)을 나타낸 좌표 그림.",
+    "solutionImageCaption": "예: y=|x|에서는 서로 다른 두 입력 -1과 1이 모두 1에 대응하므로 일대일이 아니다. 각 보기의 일대일성과 치역을 확인하면 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -192,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: A rational curve approaching dashed vertical and horizontal asymptote lines.",
+    "solutionImageCaption": "유리함수 그래프가 수직점근선과 수평점근선에 가까워지는 모습을 보인다. 따라서 정답은 x=1,y=-2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -224,7 +233,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: A square-root graph with a closed right endpoint and a branch extending down and left.",
+    "solutionImageCaption": "제곱근의 값이 0 이상이므로 y=-√(-2x+4)+1은 1보다 클 수 없다. x가 작아질수록 그래프는 아래로 한없이 뻗는다. 따라서 치역은 y≤1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -352,13 +365,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 점근선 $x=a$, $y=2$와 $x$절편 $a-\\dfrac32$의 위치로 지나는 사분면을 판정한다.\n조건 정리: 그래프는 $y=\\dfrac3{x-a}+2$이고 두 가지는 중심 $(a,2)$을 기준으로 제1·제3 방향으로 놓인다.\n풀이 방향: $a\\le0$, $a=1$, $a\\ge2$로 나누어 사분면의 개수를 센다.\n정석 풀이: $a\\le0$이면 오른쪽 가지는 제1사분면을 지나고, 왼쪽 가지는 제2·제3사분면을 지나므로 $f(a)=3$이다. $a=1$이면 $x$절편이 $-\\dfrac12$이고 수직점근선이 양의 $x$축 쪽에 있어 네 사분면을 모두 지나므로 $f(1)=4$이다. $a\\ge2$이면 제1·제2·제4사분면을 지나므로 다시 $f(a)=3$이다. $-5$부터 $5$까지 $11$개의 정수 중 $a=1$만 값이 $4$이고 나머지 $10$개는 $3$이므로 합은 $10\\cdot3+4=34$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 사분면 통과를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프의 두 점근선과 x절편 P, 네 사분면을 나타낸 좌표 그림.",
 
-    "solutionImageCaption": "점근선 x=1, y=2와 x절편을 기준으로 매개변수 a에 따른 사분면 개수를 확인한다.",
+    "solutionImageCaption": "예: a=1일 때 점근선 x=1, y=2와 x절편 (-1/2,0)을 기준으로 두 가지가 네 사분면을 모두 지난다. 나머지 정수 a에서는 세 사분면을 지나므로 합은 34이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -394,13 +407,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 함수가 $|x|$에 대하여 대칭임을 이용해 $|f(x)|=n$의 해의 개수를 센다.\n조건 정리: $f(x)=\\sqrt{|x|+4}-4$이고 $\\sqrt{|x|+4}\\ge2$이다.\n풀이 방향: $|\\sqrt{|x|+4}-4|=n$에서 두 경우를 나누고 각 경우의 $x$의 개수를 센다.\n정석 풀이: $\\sqrt{|x|+4}=4+n$인 경우에는 모든 자연수 $n$에 대해 $|x|=(4+n)^2-4\\gt0$이므로 해가 $2$개이다. 또 $\\sqrt{|x|+4}=4-n$인 경우에는 $4-n\\ge2$, 즉 $n\\le2$일 때만 가능하다. $n=1$이면 $|x|=5$이므로 해가 $2$개 더 생겨 $g(1)=4$이다. $n=2$이면 $|x|=0$이므로 해가 $1$개 더 생겨 $g(2)=3$이다. $n\\ge3$이면 해가 $2$개뿐이다. 따라서 조건을 만족하는 자연수는 $n=2$뿐이다.\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "절댓값 무리함수와 수평선의 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y축에 대하여 대칭인 절댓값 무리함수 그래프와 수평선 y=1이 네 점 A, B, C, D에서 만나는 그림.",
 
-    "solutionImageCaption": "n=2에서 x=−32,0,32의 세 교점을 확인한다.",
+    "solutionImageCaption": "예: n=1일 때 수평선 y=1은 y=|f(x)|의 그래프와 네 점에서 만난다. 수평선의 높이에 따라 교점 수가 달라지며, g(n)=3을 만족하는 자연수는 하나뿐이다. 정답은 2이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -436,11 +449,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 곡선 부분은 원점을 중심으로 $90^\\circ$ 회전하면 서로 대응하므로, 곡선과 현 사이의 두 넓이가 서로 상쇄된다.\n조건 정리: 직선과 $x\\lt0$인 가지의 교점은 $A=(-4,-8)$, $x\\ge0$인 가지의 교점은 $B=(8,-4)$이고 두 가지는 원점 $O$에서 만난다.\n풀이 방향: 호 $AO$와 선분 $AO$ 사이의 넓이와 호 $OB$와 선분 $OB$ 사이의 넓이가 같음을 이용하여 전체 넓이를 $\\triangle AOB$의 넓이로 바꾼다.\n정석 풀이: $y=-\\dfrac12x^2$에 직선 $y=\\dfrac{x-20}{3}$을 대입하면 $x=-4$에서 만나므로 $A=(-4,-8)$이다. 또 $y=-\\sqrt{2x}$와 직선의 교점은 $x=8$이므로 $B=(8,-4)$이다. 곡선 $y=-\\dfrac12x^2$의 $A$에서 $O$까지의 부분을 원점을 중심으로 반시계방향 $90^\\circ$ 회전하면 곡선 $y=-\\sqrt{2x}$의 $O$에서 $B$까지의 부분이 되고, 선분 $AO$도 선분 $OB$로 옮겨진다. 따라서 두 곡선과 각각의 현 사이의 넓이는 같아 서로 더하고 빼는 양이 상쇄되므로, 구하는 넓이는 $\\triangle AOB$의 넓이와 같다. $OA$의 기울기는 $2$, $OB$의 기울기는 $-\\dfrac12$이므로 두 선분은 수직이고, $OA=OB=\\sqrt{80}=4\\sqrt5$이다. 따라서 넓이는 $\\dfrac12\\cdot4\\sqrt5\\cdot4\\sqrt5=40$이다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "조각 무리함수와 직선으로 둘러싸인 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 두 곡선과 직선 경계 y=(x-20)/3, 원점, 교점 좌표 (-4,-8), (8,-4), 두 곡선과 원점을 잇는 선분 사이의 색칠된 영역을 나타낸 좌표 그림.",
 
-    "solutionImageCaption": "A=(−4,−8), O=(0,0), B=(8,−4)와 넓이 40을 확인한다.",
+    "solutionImageCaption": "곡선과 각 현 사이의 두 넓이는 원점을 중심으로 90도 회전해 서로 같으므로 상쇄된다. 남는 도형은 원점과 좌표 (-4,-8), (8,-4)를 꼭짓점으로 하는 삼각형이다. 따라서 넓이는 40이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
@@ -661,7 +674,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: Two square-root curves cross at R(4,4), with points P and Q between the curves on the vertical slice x=7.",
+    "solutionImageCaption": "예: x=7에서 두 곡선 사이의 정수 y는 4와 5이다. 각 정수 x에서 두 곡선 사이의 격자점 수를 더해 나가면 조건을 만족하는 자연수 k는 68이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -714,6 +731,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x와 그 위의 두 점 (1,1), (-1,-1)이 원점 대칭으로 놓인 좌표 그림.",
+    "solutionImageCaption": "예: 원점이 아닌 y=x 위의 도착점은 (1,1)과 (−1,−1)처럼 원점 대칭으로 짝지어져 제1사분면과 제3사분면에 같은 수만큼 있다. 따라서 제1사분면에 있는 경우의 수는 그 절반인 6510이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -65,9 +65,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 유리함수를 $y=q+\\dfrac{r}{x-p}$ 꼴로 바꾸면 점근선과 대칭의 중심을 바로 확인할 수 있다.\n조건 정리: $\\dfrac{3x-1}{x-2}=3+\\dfrac5{x-2}$이다.\n풀이 방향: 각 보기의 정의역, 중심, 절편, 사분면 통과 여부를 차례로 확인한다.\n정석 풀이: 점근선은 $x=2$, $y=3$이므로 정의역은 $x\\ne2$이고 대칭의 중심은 $(2,3)$이다. $x$절편은 $3x-1=0$에서 $x=\\dfrac13$이므로 그래프는 $(\\dfrac13,0)$에서 $x$축과 만난다. 또한 $x=1$이면 $y=-2$이므로 제4사분면도 지난다. 따라서 옳은 것은 ④뿐이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "유리함수 y=3+5/(x−2)의 그래프와 점근선 x=2, y=3, 대칭의 중심 C(2,3), x축과 만나는 점 (1/3,0)을 표시한 좌표평면이다. 한쪽 가지가 제4사분면을 지남을 보여 준다.",
-    "solutionImageCaption": "y=3+5/(x−2)에서 점근선 x=2, y=3과 x절편을 확인한다.",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수의 두 가지 곡선, 점근선 교점 C, x절편 A와 곡선 위 점 B를 표시한 좌표평면.",
+    "solutionImageCaption": "수직·수평 점근선의 교점은 대칭의 중심이며, 절편과 한 점을 통해 각 가지가 지나는 사분면을 확인한다. 정답은 ④이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
@@ -232,7 +232,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 그래프 y=f(x)의 두 조각이 P에서 이어지고, 오른쪽 가지가 수평점근선 y=1에 가까워지는 좌표평면.",
+    "solutionImageCaption": "왼쪽 조각의 치역은 (−∞,−3], 오른쪽은 (−3,1)이므로 경계값은 한 조각만 포함한다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -263,7 +267,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 곡선 f(x), 수평 점근선 y=3, y=4 수평 점선과 구간 오른쪽 끝점 P를 표시한 예시 그래프.",
+    "solutionImageCaption": "예: k=9일 때 구간에서 함수는 감소하고 오른쪽 끝 함수값은 4보다 크다. 실제 조건에서는 이 끝값을 4와 비교한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -293,10 +301,10 @@ window.questionBank = [
     ],
     "answer": "②, ③",
     "solution": "[키포인트] 교점의 $y$좌표를 미지수로 두면 두 교점 조건이 이차방정식의 서로 다른 두 음이 아닌 근 조건으로 바뀐다.\n조건 정리: 곡선 위에서 $y=\\sqrt{2-x}\\ge0$이므로 $x=2-y^2$이다.\n풀이 방향: 직선식에 대입하여 $y$에 대한 이차방정식의 근 조건을 조사한다.\n정석 풀이: $y=-x+k$에 $x=2-y^2$을 대입하면 $y^2-y+k-2=0$이다. 서로 다른 두 실근을 가지려면 판별식 $1-4(k-2)=9-4k\\gt0$이므로 $k\\lt\\dfrac94$이다. 두 근의 합은 $1$이고 곱은 $k-2$이므로 두 근이 모두 음이 아니려면 $k\\ge2$이다. 따라서 $2\\le k\\lt\\dfrac94$이고, 보기에서 해당하는 값은 $2$, $\\dfrac{17}{8}$이다.\n따라서 정답은 ②, ③이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "무리함수 y=√(2−x)의 곡선과 직선 y=−x+17/8이 만나는 두 점 P, Q를 표시한 좌표평면이다. 두 교점이 생기는 k의 범위가 2≤k<9/4임을 보여 준다.",
-    "solutionImageCaption": "대표값 k=17/8에서 두 교점이 생기며 2≤k<9/4임을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 곡선과 기울기 −1인 직선이 서로 다른 두 점에서 만나는 예시 좌표평면.",
+    "solutionImageCaption": "예: k=35/16인 직선은 곡선과 두 점에서 만나며 두 교점의 y좌표가 모두 양수이다. 정답은 ②, ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -489,7 +497,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수의 두 절편과 점근선 교점이 한 직선 위에 놓인 그림.",
+    "solutionImageCaption": "예: 두 절편 A, B와 점근선 교점 C가 한 직선 위에 놓이면 두 선분의 기울기가 같다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -520,7 +532,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: (a,b)=(-3,4)에서 파란 곡선 y=f(x)와 주황 곡선 y=g(x+4)가 만나며 경계점을 표시한 그래프.",
+    "solutionImageCaption": "예: 왼쪽 조각의 치역은 경계값을 제외하고 오른쪽 조각은 그 값을 포함한다. 두 치역은 겹치지 않고 실수 전체를 덮는다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -661,7 +677,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 AOB에서 F가 O와 중점 M 사이에 놓인 예시. OF=b, FM=a/2−b, OM=a/2, 수선 AM=√3a/2와 선분 AF를 표시한 그림.",
+    "solutionImageCaption": "예: F가 M보다 O쪽에 있는 경우를 그리면 MF=a/2−b이다(반대쪽이어도 MF²는 같다). AM=√3a/2와 함께 AF²=AM²+MF²=a²−ab+b²를 얻는다. 정답은 3√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -685,10 +705,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$9$",
     "solution": "[키포인트] 같은 $x=k$에서 두 곡선의 세로 거리는 두 제곱근의 차이고, 이를 모두 더하면 중간 항이 소거된다.\n조건 정리: $P_k=(k,-\\sqrt{k})$, $Q_k=(k,-\\sqrt{k+2})$이다.\n풀이 방향: $\\overline{P_kQ_k}$를 구한 뒤 $k=1$부터 $47$까지 망원합을 만든다.\n정석 풀이: $Q_k$가 $P_k$보다 아래에 있으므로 $\\overline{P_kQ_k}=\\sqrt{k+2}-\\sqrt{k}$이다. 따라서 합은 $(\\sqrt3-1)+(\\sqrt4-\\sqrt2)+(\\sqrt5-\\sqrt3)+\\cdots+(\\sqrt{49}-\\sqrt{47})$이고 중간 항이 소거되어 $\\sqrt{48}+\\sqrt{49}-1-\\sqrt2$만 남는다. 이는 $4\\sqrt3+7-1-\\sqrt2=6-\\sqrt2+4\\sqrt3$이다. 따라서 $a=6$, $b=-1$, $c=4$이므로 $a+b+c=9$이다.\n따라서 구하는 값은 $9$이다.",
-    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "두 무리함수의 세로 차를 나타낸 해설 그래프",
-    "solutionImageCaption": "Pₖ=(k,−√k), Qₖ=(k,−√(k+2))의 망원합 구조를 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 무리함수 곡선 사이에서 x=1, 2, 3 위치의 세로 점선 구간과 각 끝점 P₁·Q₁, P₂·Q₂, P₃·Q₃를 표시한 그래프.",
+    "solutionImageCaption": "예: k=1, 2, 3에서 각 세로 길이는 √(k+2)−√k이다. 두 칸 간격으로 중간 항이 소거되고 끝 항만 남는다. 구하는 값은 9이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
