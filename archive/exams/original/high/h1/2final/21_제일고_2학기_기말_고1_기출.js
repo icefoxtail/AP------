@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: X의 원소 t가 f에 의해 Y의 원소 k로 가고, 역함수 g가 k를 다시 t로 되돌리는 대응 그림.",
+    "solutionImageCaption": "g를 f의 역함수로 두고 t=g(k)라 하면 f(t)=k이고 g(k)=t이다. 따라서 합성식은 g(k)와 같고 g(k)=2에서 k=f(2)이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -291,7 +295,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 제곱근 곡선과 유리함수 곡선, 닫힌 경계점, 함수값 4인 가로선, 수평 점근선 y=2를 나타낸 그래프.",
+    "solutionImageCaption": "두 조각의 치역 경계와 함수값 4의 교점을 확인한다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -393,7 +401,11 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
-    "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION"
+    "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 문자 순서 e<i<j<l<o<g에서 e로 시작하는 120개, i로 시작하는 120개 다음에 j로 시작하는 배열 중 jeilog와 jeilgo가 차례로 나오는 수형도.",
+    "solutionImageCaption": "순서는 e<i<j<l<o<g이다. e로 시작하는 120개와 i로 시작하는 120개 다음에 j로 시작하는 배열이 나오고, 그 첫 번째가 jeilog, 두 번째가 jeilgo이다(j 가지는 일부만 나타냄). 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -643,13 +655,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=5,\\ b=2$",
     "solution": "[키포인트] 평행이동한 원의 중심과 반지름을 먼저 구한 뒤 좌표축과의 접선 조건을 거리로 나타낸다.\n조건 정리: 원래 원의 중심은 $(a,b)$이고 반지름은 $a$이다. 평행이동 후 중심은 $(a-10,b+3)$이고 반지름은 그대로 $a$이다.\n풀이 방향: $x$축과 $y$축에 동시에 접하므로 중심에서 각 축까지의 거리가 모두 반지름 $a$와 같다.\n정석 풀이: $y$축까지의 거리는 $|a-10|$이므로 $|a-10|=a$이다. $a\\gt0$이므로 $10-a=a$가 되어 $a=5$이다. 또 $x$축까지의 거리는 $|b+3|$이고 $b\\gt0$이므로 $b+3\\gt0$이다. 따라서 $b+3=a=5$이므로 $b=2$이다.\n따라서 구하는 값은 $a=5$, $b=2$이다.",
-    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "중심 (5,2), 반지름 5인 원과 이를 (−10,3)만큼 평행이동한 중심 (−5,5), 반지름 5인 원을 함께 그린 그림. 이동한 원이 x축 접점 (−5,0)과 y축 접점 (0,5)에서 두 축에 동시에 접함을 보여준다.",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행이동 전후 원의 중심과 이동한 원이 두 좌표축에 닿는 모습을 나타낸 그림.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "이동한 원이 두 좌표축에 접하는 조건을 살핀다. 정답은 a=5, b=2이다."
   },
   {
     "id": 20,

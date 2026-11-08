@@ -160,7 +160,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 끝점에서 x축과 만나는 위로 열린 포물선과 구간 안의 꼭짓점.",
+    "solutionImageCaption": "양 끝에서 함수값이 0이고 꼭짓점에서 접선이 수평인 포물선을 본다. 정답은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -607,7 +611,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축에 한 점에서 접하는 모습.",
+    "solutionImageCaption": "경계 사례에서 도함수는 x=-1/3에서만 0이고 나머지에서는 양수여서 원함수가 전체에서 증가한다. 정답은 -1/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -839,7 +847,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프와 x=1의 접점.",
+    "solutionImageCaption": "a=5일 때 k(x)=f(x)−g(x)=x³−x²−x+1의 그래프이다(x≥0인 부분의 일부만 그렸다). x≥0에서 k(x)의 최솟값은 x=1에서 0이므로 a의 최댓값은 5이다. 정답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -893,7 +905,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 영점 사이에서 x축 아래에 놓인 포물선과 그 사이의 음수 영역.",
+    "solutionImageCaption": "조건을 정리하면 a=4이고 함수는 (x-1)(x-4)이다. 두 영점 사이에서 함수가 음수이므로 정적분도 음수이다. 정답은 -9/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1065,7 +1081,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간별 적분함수 F의 그래프와 x=0의 극솟점.",
+    "solutionImageCaption": "적분함수 F는 x=0에서 극솟값 -7/3을 갖고 보기 (가), (다)가 참이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1228,7 +1248,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 적분값 y=2x²−8x+6의 그래프가 x축과 만나는 두 점 (1,0), (3,0).",
+    "solutionImageCaption": "곡선은 적분값 y=∫ₐˣ f(t)dt=2x²−8x+6의 그래프이다. x=a에서 값이 0이므로 a는 1 또는 3이고, a>1이므로 a=3이다. 미분하면 f(x)=4x−8이므로 f(4)+a=11이다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

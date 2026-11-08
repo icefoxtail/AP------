@@ -609,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 7팀을 부전승 1팀, 같은 쪽 경기 2팀, 남은 4팀의 두 경기(2팀씩)로 나누는 과정을 나타낸 수형도.",
+    "solutionImageCaption": "부전승 팀 7가지, 같은 쪽 두 팀 15가지, 남은 네 팀을 두 쌍으로 나누는 3가지를 차례로 곱한다. 정답은 315이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

@@ -590,7 +590,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 x+1로 옮겨 16개 점을 나타낸다. 점선은 일직선 세 점을 빼는 경우의 한 예다.",
+    "solutionImageCaption": "가로축을 x+1로 옮겨 16개 점을 나타낸다. 점선은 일직선 세 점을 빼는 경우의 한 예다. 정답은 516이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -704,7 +708,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: u=a²>0으로 두면 (u-1)²=0의 해는 u=1이다.",
+    "solutionImageCaption": "u=a²>0으로 두면 (u-1)²=0의 해는 u=1이다. 따라서 정답은 √2/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
