@@ -36,7 +36,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 y=x³-3x+3의 곡선이 있고, 극대점 A는 (-1,5), 극소점 B는 (1,1)로 표시되어 있다.",
+    "solutionImageCaption": "도함수 f′(x)=3(x-1)(x+1)은 -1과 1 사이에서 음수이므로 함수는 그 구간에서 감소한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -221,7 +225,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선 y=x²-2와 아래로 열린 포물선 y=-x²-2x+2가 두 점에서 만나며, 두 곡선 사이가 음영 처리되어 있다.",
+    "solutionImageCaption": "x=-2와 x=1에서 만나는 두 곡선 중 구간 [-2,1]에서는 y=-x²-2x+2가 위에 있다. 넓이는 위쪽 곡선에서 아래쪽 곡선을 뺀 정적분으로 구한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

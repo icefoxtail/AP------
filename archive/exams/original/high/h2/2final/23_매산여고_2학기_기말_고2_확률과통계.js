@@ -224,7 +224,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규곡선에 평균 5의 점선과 4 및 5의 눈금이 있고, 4부터 오른쪽 꼬리 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 평균은 5이고 표준편차는 0.5이다. 4는 평균에서 표준편차 2만큼 왼쪽이므로 오른쪽 영역은 표준화하면 Z가 −2 이상이다. 정답은 ③ (0.9772)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -269,7 +273,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규곡선에 평균 60의 점선과 58, 60, 64의 눈금이 있고, 58부터 64까지의 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2이다. 58과 64는 평균 60에서 각각 표준편차 1만큼 왼쪽, 2만큼 오른쪽에 있어 표준화 구간은 −1부터 2까지이다. 정답은 ② (0.8185)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -584,7 +592,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규곡선에 평균 10의 점선과 9, 10, 12의 눈금이 있고, 9부터 12까지의 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차는 1이다. 9와 12는 평균 10에서 각각 표준편차 1만큼 왼쪽, 2만큼 오른쪽에 있어 표준화 구간은 −1부터 2까지이다. 정답은 ① (0.82)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -629,7 +641,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규근사 곡선에 평균 150의 점선과 150 및 165의 눈금이 있고, 165의 왼쪽 영역이 칠해져 있다.",
+    "solutionImageCaption": "이항분포를 평균 150, 표준편차 10인 정규분포로 근사한다. 경계 165는 평균에서 표준편차 1.5만큼 오른쪽이고, 왼쪽 영역을 읽는다. 정답은 ③ (약 0.9332)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -809,7 +825,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규근사 곡선에 평균 80의 점선과 73.4 및 80의 눈금이 있고, 73.4의 왼쪽 꼬리 영역이 칠해져 있다.",
+    "solutionImageCaption": "성공 횟수를 평균 80, 표준편차 4인 정규분포로 근사한다. 왼쪽 꼬리 경계 73.4를 정수 기준으로 바꾸어 최댓값을 정한다. 정답은 ② (73)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -969,6 +989,10 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규근사 곡선에 평균 6의 점선과 6 및 9의 눈금이 있고, 9부터 오른쪽 꼬리 영역이 칠해져 있다.",
+    "solutionImageCaption": "미탑승 인원을 평균 6, 표준편차 2.4인 정규분포로 근사한다. 대기 순번 3까지 좌석이 돌아오려면 미탑승 인원은 9명 이상이어야 하므로 오른쪽 꼬리 영역을 읽는다. 정답은 0.1이다.",
+    "solutionImageSize": "full"
   }
 ];
