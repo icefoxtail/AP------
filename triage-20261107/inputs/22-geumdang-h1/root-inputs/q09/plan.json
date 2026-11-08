@@ -1,0 +1,14 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[-2,6,-3,9],"axisTickValues":{"x":[],"y":[]},
+  "curves":[
+   {"id":"f","kind":"RATIONAL","numerator":["-4","3"],"denominator":["-2","1"],"domain":["-2","6"],"color":"BLUE","label":"y=(3x-4)/(x-2)"},
+   {"id":"sec","kind":"LINE","coefficients":["-1","2"],"domain":["1","3"],"style":"DASHED","hideLabel":true}
+  ],
+  "overlays":{"points":[{"id":"A","x":"1","y":"1","coordinates":true},{"id":"B","x":"3","y":"5","coordinates":true},{"id":"C","x":"2","y":"3","coordinates":true}]}
+ },
+ "caption":"두 점 (1,1), (3,5)의 중점은 점근선의 교점 (2,3)이다.",
+ "sourceConditions":[{"id":"c1","condition":"f(2-x)+f(2+x)=6, f(3)=5; 양쪽 식이 정의되는 x에서 대칭 조건을 비교한다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}],
+ "newVisualInformation":["주어진 점과 대응점, 중심 대칭 및 두 점근선"]
+}
