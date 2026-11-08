@@ -1,0 +1,67 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "72",
+        "sd": "2",
+        "label": "표본평균"
+      }
+    ],
+    "ticks": [
+      "71",
+      "72",
+      "75"
+    ],
+    "shades": [
+      {
+        "from": "71",
+        "to": "75"
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "평균 72인 정규곡선에서 문제의 경계와 음영 영역의 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 72인 정규곡선에서 문제의 경계와 음영 영역의 관계",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "수학 점수의 평균이",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "supplement0",
+      "condition": "평균이 $72$점",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "supplement1",
+      "condition": "표준편차가 $18$점",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "supplement2",
+      "condition": "$81$명을",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "supplement3",
+      "condition": " $75$점 이하",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "supplement_more",
+      "condition": "수학 점수의 평균이 $71$점 이상 $75$점 이하",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 72인 정규곡선에서 문제의 경계와 음영 영역의 관계"
+  ]
+}
