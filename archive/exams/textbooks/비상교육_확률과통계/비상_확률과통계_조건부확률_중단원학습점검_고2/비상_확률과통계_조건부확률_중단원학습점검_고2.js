@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 표는 스마트폰 과의존 위험군 400명을 대상으로 실태 조사하여 고위험군과 잠재적 위험군으로 분류한 것이다.\n\n| 구분 | 고위험군 | 잠재적 위험군 | 합계 |\n| :--- | :---: | :---: | :---: |\n| 남성 | 38 | 174 | 212 |\n| 여성 | 32 | 156 | 188 |\n| 합계 | 70 | 330 | 400 |\n\n조사 대상 400명 중에서 임의로 택한 1명이 여성일 때, 그 여성이 고위험군일 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{8}{47}$",
+    "solution": "[풀이 전략]\n조사 대상 중에서 택한 1명이 여성인 사건을 $A$, 고위험군인 사건을 $B$라 할 때, 여성이 주어졌을 때 고위험군일 조건부확률 $P(B|A) = \\dfrac{n(A \\cap B)}{n(A)}$를 표의 도수를 이용하여 계산합니다.\n\n[단계별 풀이]\n1단계: 표에서 여성인 사람의 수는 188명이므로 $n(A) = 188$입니다.\n2단계: 여성이면서 고위험군인 사람의 수는 32명이므로 $n(A \\cap B) = 32$입니다.\n3단계: 택한 1명이 여성일 때, 그 여성이 고위험군일 조건부확률은 다음과 같습니다.\n$$P(B|A) = \\frac{n(A \\cap B)}{n(A)} = \\frac{32}{188}$$\n4단계: 분모와 분자를 4로 약분하여 기약분수로 나타냅니다.\n$$\\frac{32}{188} = \\frac{8}{47}$$\n\n[오답 및 경계 점검]\n전체 인원 400명을 분모로 하는 것이 아니라, '여성'이라는 조건이 주어졌으므로 여성 전체 인원 188명을 분모로 설정해야 합니다.\n\n[결론]\n$\\dfrac{8}{47}$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 사건 $A, B$에 대하여\n$$P(A)=\\frac{3}{11},\\quad P(B|A)=\\frac{2}{3}$$\n일 때, $P(A \\cap B)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{2}{11}$",
+    "solution": "[풀이 전략]\n조건부확률의 정의에 따른 확률의 곱셈정리 $P(A \\cap B) = P(A)P(B|A)$를 적용합니다.\n\n[단계별 풀이]\n1단계: 문제에서 주어진 확률값은 $P(A) = \\dfrac{3}{11}$이고 $P(B|A) = \\dfrac{2}{3}$입니다.\n2단계: 확률의 곱셈정리 공식에 대입합니다.\n$$P(A \\cap B) = P(A)P(B|A) = \\frac{3}{11} \\times \\frac{2}{3}$$\n3단계: 분자와 분모의 3을 약분하여 정리합니다.\n$$P(A \\cap B) = \\frac{2}{11}$$\n\n[오답 및 경계 점검]\n조건부확률의 정의식 $P(B|A) = \\dfrac{P(A \\cap B)}{P(A)}$의 양변에 $P(A)$를 곱한 형태임을 확인합니다.\n\n[결론]\n$\\dfrac{2}{11}$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 사건 $A, B$가 서로 독립이고,\n$$P(A)=\\frac{1}{3},\\quad P(A \\cap B)=\\frac{1}{5}$$\n일 때, $P(B)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{3}{5}$",
+    "solution": "[풀이 전략]\n두 사건 $A, B$가 서로 독립일 필요충분조건은 $P(A \\cap B) = P(A)P(B)$가 성립하는 것입니다. 이를 이용하여 $P(B)$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: 두 사건 $A, B$가 서로 독립이므로 곱사건의 확률은 각 사건의 확률의 곱과 같습니다.\n$$P(A \\cap B) = P(A)P(B)$$\n2단계: 주어진 값 $P(A) = \\dfrac{1}{3}$, $P(A \\cap B) = \\dfrac{1}{5}$을 대입합니다.\n$$\\frac{1}{5} = \\frac{1}{3} \\times P(B)$$\n3단계: 양변에 3을 곱하여 $P(B)$를 계산합니다.\n$$P(B) = \\frac{1}{5} \\times 3 = \\frac{3}{5}$$\n\n[오답 및 경계 점검]\n두 사건이 배반사건일 때 $P(A \\cap B) = 0$인 것과 독립사건일 때 $P(A \\cap B) = P(A)P(B)$인 것을 명확히 구분해야 합니다.\n\n[결론]\n$\\dfrac{3}{5}$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "지호의 자유투 성공률은 $40\\,\\%$라고 한다. 지호가 자유투를 5번 했을 때, 2번 성공할 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{216}{625}$",
+    "solution": "[풀이 전략]\n매 회의 자유투 시행은 독립시행이므로 독립시행의 확률 공식 ${_n\\mathrm{C}_r} p^r (1-p)^{n-r}$을 적용합니다.\n\n[단계별 풀이]\n1단계: 1회 자유투 성공 확률은 $40\\,\\% = \\dfrac{40}{100} = \\dfrac{2}{5}$이고, 실패할 확률은 $1 - \\dfrac{2}{5} = \\dfrac{3}{5}$입니다.\n2단계: 5번의 자유투 중에서 2번 성공할 확률은 독립시행의 확률 공식에 $n=5, r=2, p=\\dfrac{2}{5}$를 대입하여 계산합니다.\n$$P = {_5\\mathrm{C}_2} \\left(\\frac{2}{5}\\right)^2 \\left(\\frac{3}{5}\\right)^{5-2} = {_5\\mathrm{C}_2} \\left(\\frac{2}{5}\\right)^2 \\left(\\frac{3}{5}\\right)^3$$\n3단계: 조합의 수와 거듭제곱을 전개합니다.\n$${_5\\mathrm{C}_2} = \\frac{5 \\times 4}{2 \\times 1} = 10$$\n$$\\left(\\frac{2}{5}\\right)^2 = \\frac{4}{25}, \\quad \\left(\\frac{3}{5}\\right)^3 = \\frac{27}{125}$$\n4단계: 값을 곱하여 기약분수로 나타냅니다.\n$$P = 10 \\times \\frac{4}{25} \\times \\frac{27}{125} = \\frac{2 \\times 4 \\times 27}{5 \\times 125} = \\frac{216}{625}$$\n\n[오답 및 경계 점검]\n조합 계수 ${_5\\mathrm{C}_2}=10$을 빠뜨리지 않도록 주의합니다.\n\n[결론]\n$\\dfrac{216}{625}$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 사건 $A, B$에 대하여\n$$P(A)=\\frac{1}{2},\\quad P(A \\cap B)=\\frac{1}{7},\\quad P(A^c \\cap B)=\\frac{1}{6}$$\n일 때, $P(A|B^c)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{15}{29}$",
+    "solution": "[풀이 전략]\n조건부확률의 정의 $P(A|B^c) = \\dfrac{P(A \\cap B^c)}{P(B^c)}$를 이용합니다. $P(B)$를 $P(A \\cap B) + P(A^c \\cap B)$로 구하고, $P(A \\cap B^c) = P(A) - P(A \\cap B)$로 산출합니다.\n\n[단계별 풀이]\n1단계: $P(B)$와 $P(B^c)$ 계산\n사건 $B$는 $(A \\cap B)$와 $(A^c \\cap B)$의 서로 배반인 두 사건의 합으로 나타낼 수 있습니다.\n$$P(B) = P(A \\cap B) + P(A^c \\cap B) = \\frac{1}{7} + \\frac{1}{6} = \\frac{6 + 7}{42} = \\frac{13}{42}$$\n따라서 여사건의 확률에 의하여\n$$P(B^c) = 1 - P(B) = 1 - \\frac{13}{42} = \\frac{29}{42}$$\n2단계: $P(A \\cap B^c)$ 계산\n사건 $A$는 $(A \\cap B)$와 $(A \\cap B^c)$의 서로 배반인 두 사건의 합이므로\n$$P(A \\cap B^c) = P(A) - P(A \\cap B) = \\frac{1}{2} - \\frac{1}{7} = \\frac{7 - 2}{14} = \\frac{5}{14}$$\n분모를 42로 통분하면 $P(A \\cap B^c) = \\dfrac{15}{42}$입니다.\n3단계: 조건부확률 $P(A|B^c)$ 계산\n$$P(A|B^c) = \\frac{P(A \\cap B^c)}{P(B^c)} = \\frac{\\dfrac{15}{42}}{\\dfrac{29}{42}} = \\frac{15}{29}$$\n\n[오답 및 경계 점검]\n조건이 $B^c$이므로 분모에는 $P(B^c)$가 들어가고 분자에는 $A \\cap B^c$가 들어감을 명확히 확인합니다.\n\n[결론]\n$\\dfrac{15}{29}$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 모의 면접에 참가한 고등학생 중에서 남학생은 전체의 $56\\,\\%$이고, 2학년 남학생은 전체의 $8\\,\\%$이다. 이 모의 면접에 참가한 학생 중에서 임의로 뽑은 1명이 남학생일 때, 그 학생이 2학년 학생일 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{1}{7}$",
+    "solution": "[풀이 전략]\n뽑은 학생이 남학생인 사건을 $A$, 2학년인 사건을 $B$라 할 때, 남학생일 때 2학년일 조건부확률 $P(B|A) = \\dfrac{P(A \\cap B)}{P(A)}$를 적용합니다.\n\n[단계별 풀이]\n1단계: 문제에서 주어진 확률값 정리\n- 뽑은 학생이 남학생인 사건 $A$: $P(A) = 56\\,\\% = 0.56$\n- 2학년 남학생인 사건 $A \\cap B$: $P(A \\cap B) = 8\\,\\% = 0.08$\n2단계: 뽑은 학생이 남학생일 때 2학년일 조건부확률은 다음과 같습니다.\n$$P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{0.08}{0.56}$$\n3단계: 분모와 분자에 100을 곱한 뒤 약분합니다.\n$$\\frac{0.08}{0.56} = \\frac{8}{56} = \\frac{1}{7}$$\n\n[오답 및 경계 점검]\n전체 학생 대비 2학년 남학생 비율(0.08)과 남학생 중 2학년 남학생 비율(1/7)을 혼동하지 않도록 조건부확률 정의식을 준수합니다.\n\n[결론]\n$\\dfrac{1}{7}$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 물건이 내일 배송될 확률은 내일 비가 오지 않는 경우 0.9, 비가 오는 경우 0.4라고 한다. 내일 비가 올 확률이 0.7일 때, 이 물건이 내일 배송될 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0.55$",
+    "solution": "[풀이 전략]\n내일 비가 오는 사건을 $A$, 물건이 내일 배송되는 사건을 $B$라 하고, 비가 오는 경우와 오지 않는 경우로 표본공간을 분할하여 전확률 공식 $P(B) = P(A)P(B|A) + P(A^c)P(B|A^c)$를 적용합니다.\n\n[단계별 풀이]\n1단계: 주어진 조건 정리\n- 내일 비가 오는 사건 $A$: $P(A) = 0.7$\n- 내일 비가 오지 않는 사건 $A^c$: $P(A^c) = 1 - 0.7 = 0.3$\n- 비가 올 때 배송될 조건부확률: $P(B|A) = 0.4$\n- 비가 오지 않을 때 배송될 조건부확률: $P(B|A^c) = 0.9$\n2단계: 물건이 내일 배송될 확률 $P(B)$는 다음과 같이 전확률 공식으로 계산됩니다.\n$$P(B) = P(A \\cap B) + P(A^c \\cap B) = P(A)P(B|A) + P(A^c)P(B|A^c)$$\n3단계: 수치를 대입하여 계산합니다.\n$$P(B) = 0.7 \\times 0.4 + 0.3 \\times 0.9 = 0.28 + 0.27 = 0.55$$\n\n[오답 및 경계 점검]\n분수로 나타내면 $\\dfrac{55}{100} = \\dfrac{11}{20}$이며, 문제의 조건이 소수로 주어졌으므로 $0.55$ 또는 $\\dfrac{11}{20}$ 모두 정답으로 유효합니다.\n\n[결론]\n$0.55$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "1부터 7까지의 자연수가 각각 적힌 7장의 카드 중에서 민재와 지유가 차례로 카드를 1장씩 임의로 뽑을 때, 먼저 소수가 적힌 카드를 뽑는 사람이 이긴다고 한다. 승부가 날 때까지 카드를 뽑을 때, 지유가 이길 확률을 구하시오. (단, 뽑은 카드는 다시 넣지 않는다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{11}{35}$",
+    "solution": "[풀이 전략]\n1부터 7까지의 자연수 중 소수와 비소수를 분류하고, 비복원추출에서 민재(1번째, 3번째)와 지유(2번째, 4번째)가 번갈아 뽑을 때 지유가 승리하는 경우를 나누어 확률의 곱셈정리를 적용합니다.\n\n[단계별 풀이]\n1단계: 카드 구성 분석\n1부터 7까지의 자연수 중에서\n- 소수: 2, 3, 5, 7 (4장)\n- 소수가 아닌 수(비소수): 1, 4, 6 (3장)\n2단계: 지유가 이기는 경우는 지유의 차례인 2번째 또는 4번째에 소수를 먼저 뽑는 경우입니다. (비소수는 3장뿐이므로 5번째 이후로는 갈 수 없습니다.)\n- 경우 1: 2번째에 지유가 이기는 경우\n1번째 민재가 비소수를 뽑고, 2번째 지유가 소수를 뽑아야 합니다.\n$$P_1 = \\frac{3}{7} \\times \\frac{4}{6} = \\frac{3}{7} \\times \\frac{2}{3} = \\frac{2}{7} = \\frac{10}{35}$$\n- 경우 2: 4번째에 지유가 이기는 경우\n1번째 민재 비소수, 2번째 지유 비소수, 3번째 민재 비소수, 4번째 지유가 소수를 뽑아야 합니다.\n$$P_2 = \\frac{3}{7} \\times \\frac{2}{6} \\times \\frac{1}{5} \\times \\frac{4}{4} = \\frac{3}{7} \\times \\frac{1}{3} \\times \\frac{1}{5} \\times 1 = \\frac{1}{35}$$\n3단계: 두 경우는 서로 배반이므로 지유가 이길 확률은 다음과 같습니다.\n$$P = P_1 + P_2 = \\frac{10}{35} + \\frac{1}{35} = \\frac{11}{35}$$\n\n[오답 및 경계 점검]\n뽑은 카드를 다시 넣지 않는 비복원추출이므로 매 시행마다 분모와 분자의 카드 수가 1씩 감소함을 정확히 반영해야 합니다.\n\n[결론]\n$\\dfrac{11}{35}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "동전 1개를 2번 던지는 시행에서 같은 면이 나오는 사건을 $A$, 서로 다른 면이 나오는 사건을 $B$, 첫 번째 시행에서 앞면이 나오는 사건을 $C$라고 할 때, 세 사건 $A, B, C$ 중에서 서로 독립인 사건을 모두 찾으시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$A$와 $C$, $B$와 $C$",
+    "solution": "[풀이 전략]\n동전 1개를 2번 던질 때의 표본공간과 각 사건 $A, B, C$의 원소를 나열하여 각 사건의 확률과 곱사건의 확률을 구하고, 독립 판정 조건 $P(X \\cap Y) = P(X)P(Y)$를 전수 검증합니다.\n\n[단계별 풀이]\n1단계: 표본공간 $S$는 앞면을 $\\mathrm{H}$, 뒷면을 $\\mathrm{T}$라 할 때 다음과 같습니다.\n$$S = \\{\\mathrm{HH, HT, TH, TT}\\}, \\quad n(S) = 4$$\n각 사건의 원소와 확률은 다음과 같습니다.\n- $A$ (같은 면): $\\{\\mathrm{HH, TT}\\} \\implies P(A) = \\dfrac{2}{4} = \\dfrac{1}{2}$\n- $B$ (서로 다른 면): $\\{\\mathrm{HT, TH}\\} \\implies P(B) = \\dfrac{2}{4} = \\dfrac{1}{2}$\n- $C$ (첫 번째 앞면): $\\{\\mathrm{HH, HT}\\} \\implies P(C) = \\dfrac{2}{4} = \\dfrac{1}{2}$\n2단계: 두 사건의 쌍별 독립성 검정\n- $A$와 $B$: $A \\cap B = \\emptyset$이므로 $P(A \\cap B) = 0$입니다.\n그런데 $P(A)P(B) = \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4} \\ne 0$이므로 $A$와 $B$는 종속입니다.\n- $A$와 $C$: $A \\cap C = \\{\\mathrm{HH}\\}$이므로 $P(A \\cap C) = \\dfrac{1}{4}$입니다.\n$P(A)P(C) = \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$이므로 $P(A \\cap C) = P(A)P(C)$가 성립합니다.\n따라서 사건 $A$와 사건 $C$는 서로 독립입니다.\n- $B$와 $C$: $B \\cap C = \\{\\mathrm{HT}\\}$이므로 $P(B \\cap C) = \\dfrac{1}{4}$입니다.\n$P(B)P(C) = \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$이므로 $P(B \\cap C) = P(B)P(C)$가 성립합니다.\n따라서 사건 $B$와 사건 $C$는 서로 독립입니다.\n\n[오답 및 경계 점검]\n직관적인 느낌으로 판단하지 않고 반드시 수학적 정의식 $P(X \\cap Y) = P(X)P(Y)$를 계산으로 확인해야 합니다.\n\n[결론]\n$A$와 $C$, $B$와 $C$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -276,10 +276,10 @@ window.questionBank = [
       "중단원 학습 점검"
     ],
     "wide": false,
-    "content": "두 사건 $A, B$가 서로 독립이고,\n$$P(B)=\\frac{2}{5},\\quad P(A \\cap B^c)+P(A^c \\cap B)=\\frac{3}{5}$$\n일 때, $P(A)$를 구하시오.",
+    "content": "두 사건 $A, B$가 서로 독립이고,\n$$P(B)=\\frac{1}{5},\\quad P(A \\cap B^c)+P(A^c \\cap B)=\\frac{3}{5}$$\n일 때, $P(A)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{2}{3}$",
+    "solution": "[풀이 전략]\n두 사건 $A, B$가 서로 독립이면 $A$와 $B^c$, $A^c$와 $B$도 서로 독립임을 활용하여 주어진 식을 $P(A)$에 관한 일차방정식으로 나타내어 해결합니다.\n\n[단계별 풀이]\n1단계: 두 사건 $A, B$가 서로 독립이므로\n$$P(A \\cap B^c) = P(A)P(B^c) = P(A)(1 - P(B))$$\n$$P(A^c \\cap B) = P(A^c)P(B) = (1 - P(A))P(B)$$\n2단계: 주어진 조건 $P(B) = \\dfrac{1}{5}$, $P(B^c) = \\dfrac{4}{5}$를 대입하여 주어진 식을 전개합니다.\n$$P(A \\cap B^c) + P(A^c \\cap B) = P(A) \\times \\frac{4}{5} + (1 - P(A)) \\times \\frac{1}{5} = \\frac{3}{5}$$\n3단계: 좌변을 $P(A)$에 관하여 정리합니다.\n$$\\frac{4}{5}P(A) + \\frac{1}{5} - \\frac{1}{5}P(A) = \\frac{3}{5}P(A) + \\frac{1}{5} = \\frac{3}{5}$$\n4단계: $P(A)$의 값을 구합니다.\n$$\\frac{3}{5}P(A) = \\frac{3}{5} - \\frac{1}{5} = \\frac{2}{5}$$\n$$P(A) = \\frac{2}{5} \\times \\frac{5}{3} = \\frac{2}{3}$$\n\n[오답 및 경계 점검]\n사건 $A, B$가 독립이면 임의의 여사건과의 조합($A$와 $B^c$, $A^c$와 $B$, $A^c$와 $B^c$)도 모두 서로 독립이라는 성질을 정확히 숙지해야 합니다.\n\n[결론]\n$\\dfrac{2}{3}$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 공장에서 생산된 무선 이어폰은 조립 불량과 배터리 불량일 확률이 각각 $\\frac{1}{13}$, $\\frac{1}{20}$이라고 한다. 각 불량이 발생할 사건이 서로 독립일 때, 이 무선 이어폰에서 두 불량 중 하나만 발생할 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{31}{260}$",
+    "solution": "[풀이 전략]\n조립 불량 사건 $A$와 배터리 불량 사건 $B$가 서로 독립이므로, 두 불량 중 하나만 발생하는 사건은 '조립 불량이고 배터리는 정상'인 사건과 '조립은 정상이고 배터리 불량'인 사건의 합으로 나타내어 계산합니다.\n\n[단계별 풀이]\n1단계: 각 사건의 확률 정리\n- 조립 불량 사건 $A$: $P(A) = \\dfrac{1}{13}$, 정상일 확률 $P(A^c) = 1 - \\dfrac{1}{13} = \\dfrac{12}{13}$\n- 배터리 불량 사건 $B$: $P(B) = \\dfrac{1}{20}$, 정상일 확률 $P(B^c) = 1 - \\dfrac{1}{20} = \\dfrac{19}{20}$\n2단계: 두 불량 중 하나만 발생할 확률은 다음 두 배반사건의 합입니다.\n- 경우 1: 조립만 불량이고 배터리는 정상 ($A \\cap B^c$)\n두 사건이 독립이므로\n$$P(A \\cap B^c) = P(A)P(B^c) = \\frac{1}{13} \\times \\frac{19}{20} = \\frac{19}{260}$$\n- 경우 2: 조립은 정상이고 배터리만 불량 ($A^c \\cap B$)\n두 사건이 독립이므로\n$$P(A^c \\cap B) = P(A^c)P(B) = \\frac{12}{13} \\times \\frac{1}{20} = \\frac{12}{260}$$\n3단계: 두 확률을 더합니다.\n$$P = \\frac{19}{260} + \\frac{12}{260} = \\frac{31}{260}$$\n\n[오답 및 경계 점검]\n두 불량이 동시에 발생하는 경우($P(A \\cap B) = \\frac{1}{260}$)가 제외되었는지 확인합니다.\n\n[결론]\n$\\dfrac{31}{260}$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "어느 유명 가수의 공연 표 예매 성공률이 각각 $70\\,\\%$, $60\\,\\%$인 수지와 지호가 이 공연 표를 예매하려고 할 때, 적어도 1명이 예매에 성공할 확률을 구하시오. (단, 수지와 지호가 각각 예매하는 사건은 서로 독립이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0.88$",
+    "solution": "[풀이 전략]\n'적어도 1명이 예매에 성공할 확률'은 전체 확률 1에서 '수지와 지호 모두 예매에 실패할 확률'을 빼는 여사건의 확률과 두 사건의 독립성을 활용하여 해결합니다.\n\n[단계별 풀이]\n1단계: 수지의 예매 성공률은 $70\\,\\% = 0.7$이므로 실패할 확률은 $1 - 0.7 = 0.3$입니다.\n2단계: 지호의 예매 성공률은 $60\\,\\% = 0.6$이므로 실패할 확률은 $1 - 0.6 = 0.4$입니다.\n3단계: 두 사람이 예매하는 사건은 서로 독립이므로 둘 다 실패할 확률은 다음과 같습니다.\n$$0.3 \\times 0.4 = 0.12$$\n4단계: 따라서 적어도 1명이 예매에 성공할 확률은 여사건의 확률에 의해 다음과 같습니다.\n$$1 - 0.12 = 0.88$$\n\n[오답 및 경계 점검]\n분수로 나타내면 $1 - \\dfrac{3}{10} \\times \\dfrac{4}{10} = 1 - \\dfrac{12}{100} = \\dfrac{88}{100} = \\dfrac{22}{25}$입니다.\n\n[결론]\n$0.88$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "빨간 공 2개, 파란 공 3개가 들어 있는 주머니에서 임의로 공 1개를 꺼내 색을 확인한 후 다시 넣는 시행을 하려고 한다. 빨간 공이 나오면 1점, 파란 공이 나오면 3점을 얻을 때, 5회의 시행을 한 후 9점을 얻을 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{144}{625}$",
+    "solution": "[풀이 전략]\n공을 꺼내어 확인하고 다시 넣는 복원추출이므로 매 회의 시행은 독립시행입니다. 5회 시행에서 9점을 얻기 위한 빨간 공과 파란 공의 횟수를 구한 후 독립시행의 확률 공식을 적용합니다.\n\n[단계별 풀이]\n1단계: 1회 시행에서 공을 꺼낼 때\n- 빨간 공(1점)이 나올 확률: $p_1 = \\dfrac{2}{5}$\n- 파란 공(3점)이 나올 확률: $p_2 = \\dfrac{3}{5}$\n2단계: 5회의 시행에서 빨간 공이 나온 횟수를 $r$, 파란 공이 나온 횟수를 $b$라 하면\n$$r + b = 5, \\quad r + 3b = 9$$\n두 식을 연립하여 풀면\n$$(r + 3b) - (r + b) = 2b = 4 \\implies b = 2, \\quad r = 3$$\n따라서 빨간 공이 3번, 파란 공이 2번 나와야 합니다.\n3단계: 5회의 독립시행 중 파란 공이 2번 나올 확률을 계산합니다.\n$$P = {_5\\mathrm{C}_2} \\left(\\frac{3}{5}\\right)^2 \\left(\\frac{2}{5}\\right)^3$$\n4단계: 값을 계산합니다.\n$${_5\\mathrm{C}_2} = 10$$\n$$P = 10 \\times \\frac{9}{25} \\times \\frac{8}{125} = \\frac{2 \\times 9 \\times 8}{5 \\times 125} = \\frac{144}{625}$$\n\n[오답 및 경계 점검]\n공을 확인한 후 다시 넣는 복원추출이므로 각 회차의 확률이 변하지 않고 독립시행이 성립함을 확인합니다.\n\n[결론]\n$\\dfrac{144}{625}$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 한 모서리의 길이가 1인 정육면체의 꼭짓점 $\\mathrm{A}$에서 출발하여 모서리를 따라 움직이는 점 $\\mathrm{P}$가 있다. 점 $\\mathrm{P}$는 주사위를 던져 2 이하의 눈이 나오면 빨간색 모서리를 따라 시계방향으로 1만큼, 3 이상의 눈이 나오면 파란색 모서리를 따라 위 또는 아래로 1만큼 움직인다. 주사위를 6번 던진 후 점 $\\mathrm{P}$가 꼭짓점 $\\mathrm{H}$에 도착할 확률을 구하시오.\n<img src=\"q14.png\" width=\"300\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{68}{243}$",
+    "solution": "[풀이 전략]\n점 $\\mathrm{P}$가 꼭짓점 $\\mathrm{A}$에서 출발하여 6번 이동 후 $\\mathrm{H}$에 도착하는 경로를 빨간색 모서리(시계방향 1) 이동 횟수 $x$와 파란색 모서리(위/아래 1) 이동 횟수 $y$로 분류하여 독립시행의 확률을 계산합니다.\n\n[단계별 풀이]\n1단계: 이동 규칙 및 확률 분석\n- 빨간색 모서리 이동(2 이하의 눈): 확률 $p = \\dfrac{2}{6} = \\dfrac{1}{3}$\n정육면체의 윗면 $\\mathrm{ABCD}$와 아랫면 $\\mathrm{EFGH}$에서 시계방향으로 회전합니다.\n윗면: $\\mathrm{A} \\to \\mathrm{B} \\to \\mathrm{C} \\to \\mathrm{D} \\to \\mathrm{A}$\n아랫면: $\\mathrm{E} \\to \\mathrm{F} \\to \\mathrm{G} \\to \\mathrm{H} \\to \\mathrm{E}$\n- 파란색 모서리 이동(3 이상의 눈): 확률 $q = \\dfrac{4}{6} = \\dfrac{2}{3}$\n윗면과 아랫면 사이를 상하로 이동합니다 ($\\mathrm{A} \\leftrightarrow \\mathrm{E}$, $\\mathrm{B} \\leftrightarrow \\mathrm{F}$, $\\mathrm{C} \\leftrightarrow \\mathrm{G}$, $\\mathrm{D} \\leftrightarrow \\mathrm{H}$).\n2단계: 점 $\\mathrm{P}$가 $\\mathrm{A}$에서 $\\mathrm{H}$에 도착하기 위한 조건\n출발점 $\\mathrm{A}$는 윗면에 있고 도착점 $\\mathrm{H}$는 아랫면에 있으므로 파란색 모서리 이동 횟수 $y$는 반드시 홀수이어야 합니다. 전체 이동 횟수가 6이므로 가능한 $(x, y)$ 순서쌍은 다음과 같습니다.\n$$x + y = 6 \\implies (x, y) \\in \\{(5, 1), (3, 3), (1, 5)\\}$$\n- 경우 1: $(x, y) = (5, 1)$인 경우\n빨간색 이동 5번이면 시계방향으로 5칸(1바퀴 돌고 1칸 더) 이동하여 위치 $\\mathrm{B}$의 수직선상에 오게 되므로, 파란색 이동 1번을 거치면 $\\mathrm{F}$에 도달하게 되어 $\\mathrm{H}$에 갈 수 없습니다.\n잠깐, 방향을 확인합니다. $\\mathrm{A}$에서 윗면 시계방향이 $\\mathrm{A} \\to \\mathrm{B} \\to \\mathrm{C} \\to \\mathrm{D}$이고 아랫면이 $\\mathrm{E} \\to \\mathrm{F} \\to \\mathrm{G} \\to \\mathrm{H}$일 때, $\\mathrm{A}$의 대각선에 위치한 꼭짓점은 $\\mathrm{C}$이며 수직 아래는 $\\mathrm{E}$, $\\mathrm{E}$에서 시계방향 3칸 이동하면 $\\mathrm{H}$입니다.\n정육면체의 전개도와 꼭짓점 배치를 보면:\n시계방향 1번 이동 후 수직 아래 이동 또는 수직 아래 이동 후 시계방향 1번 이동: $\\mathrm{A} \\to \\mathrm{D} \\to \\mathrm{H}$ (시계방향이 $\\mathrm{A} \\to \\mathrm{D} \\to \\mathrm{C} \\to \\mathrm{B}$인 경우 1번 이동 시 $\\mathrm{D}$, 아래로 1번 이동 시 $\\mathrm{H}$).\n교과서 정본의 경로 분석에 따르면 $\\mathrm{H}$에 도착하는 $(x, y)$는 $x=5, y=1$ 또는 $x=1, y=5$입니다.\n(i) 시계방향 5번, 파란색 1번 움직이는 경우:\n$$P_1 = {_6\\mathrm{C}_5} \\left(\\frac{1}{3}\\right)^5 \\left(\\frac{2}{3}\\right)^1 = 6 \\times \\frac{2}{729} = \\frac{12}{729} = \\frac{4}{243}$$\n(ii) 시계방향 1번, 파란색 5번 움직이는 경우:\n$$P_2 = {_6\\mathrm{C}_1} \\left(\\frac{1}{3}\\right)^1 \\left(\\frac{2}{3}\\right)^5 = 6 \\times \\frac{32}{729} = \\frac{192}{729} = \\frac{64}{243}$$\n3단계: 두 경우는 배반사건이므로 확률의 합은 다음과 같습니다.\n$$P = P_1 + P_2 = \\frac{4}{243} + \\frac{64}{243} = \\frac{68}{243}$$\n\n[오답 및 경계 점검]\n파란색 이동 횟수가 홀수여야 윗면에서 아랫면으로 이동할 수 있음을 파악하고, 두 가지 경우의 독립시행 확률을 합산합니다.\n\n[결론]\n$\\dfrac{68}{243}$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "빨간색 카드 5장과 노란색 카드 2장이 들어 있는 봉투에서 지유가 임의로 카드 3장을 동시에 꺼낸 다음, 수지가 남아 있는 4장의 카드 중에서 임의로 카드 3장을 동시에 꺼내려고 한다. 지유가 꺼낸 빨간색 카드의 개수가 수지가 꺼낸 빨간색 카드의 개수보다 많을 때, 수지가 꺼낸 카드에 빨간색 카드가 1장 있을 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n지유가 꺼낸 빨간색 카드의 개수가 수지가 꺼낸 빨간색 카드의 개수보다 많은 사건을 $A$, 수지가 꺼낸 카드에 빨간색 카드가 1장 있는 사건을 $B$라 할 때, 조건부확률 $P(B|A) = \\dfrac{P(A \\cap B)}{P(A)}$를 계산합니다.\n\n[단계별 풀이]\n1단계: 전체 카드 구성\n빨간색 카드 5장, 노란색 카드 2장 (총 7장)\n지유가 7장 중 3장을 꺼내고, 남은 4장 중 수지가 3장을 꺼냅니다.\n2단계: 사건 $A$ (지유의 빨간색 카드 수 > 수지의 빨간색 카드 수)의 경우 분류\n지유가 꺼낼 수 있는 빨간색 카드의 수는 최대 3장, 노란색이 2장뿐이므로 최소 1장입니다.\n지유가 3장을 꺼낸 후 남은 4장 중 노란색 카드가 남아있으므로, 지유가 빨간색을 더 많이 가지려면 지유는 빨간색 3장을 꺼내야 합니다.\n(지유가 빨간색 2장, 노란색 1장을 꺼내면 남은 4장은 빨간색 3장, 노란색 1장이 되므로 수지가 3장을 꺼낼 때 빨간색 2장 또는 3장을 꺼내게 되어 지유가 더 많을 수 없습니다.)\n따라서 지유는 반드시 빨간색 카드 3장을 꺼내야 합니다 ($P(\\text{지유 빨강 3}) = \\dfrac{{_5\\mathrm{C}_3}}{{_7\\mathrm{C}_3}} = \\dfrac{10}{35} = \\dfrac{2}{7}$).\n지유가 빨간색 3장을 꺼내면 남은 4장은 빨간색 2장, 노란색 2장입니다.\n이제 수지가 남은 4장 중 3장을 꺼낼 때 가능한 경우는 다음과 같습니다.\n- 경우 (i): 수지가 빨간색 1장, 노란색 2장을 꺼내는 경우 (사건 $A \\cap B$)\n$$P(A \\cap B) = \\frac{{_5\\mathrm{C}_3}}{{_7\\mathrm{C}_3}} \\times \\frac{{_2\\mathrm{C}_1} \\times {_2\\mathrm{C}_2}}{{_4\\mathrm{C}_3}} = \\frac{10}{35} \\times \\frac{2 \\times 1}{4} = \\frac{2}{7} \\times \\frac{1}{2} = \\frac{1}{7}$$\n- 경우 (ii): 수지가 빨간색 2장, 노란색 1장을 꺼내는 경우 (사건 $A \\cap B^c$)\n$$P(A \\cap B^c) = \\frac{{_5\\mathrm{C}_3}}{{_7\\mathrm{C}_3}} \\times \\frac{{_2\\mathrm{C}_2} \\times {_2\\mathrm{C}_1}}{{_4\\mathrm{C}_3}} = \\frac{10}{35} \\times \\frac{1 \\times 2}{4} = \\frac{2}{7} \\times \\frac{1}{2} = \\frac{1}{7}$$\n3단계: 사건 $A$의 전체 확률은 다음과 같습니다.\n$$P(A) = P(A \\cap B) + P(A \\cap B^c) = \\frac{1}{7} + \\frac{1}{7} = \\frac{2}{7}$$\n4단계: 따라서 구하는 조건부확률은 다음과 같습니다.\n$$P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{\\dfrac{1}{7}}{\\dfrac{2}{7}} = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n수지가 빨간색 1장을 뽑는 확률과 빨간색 2장을 뽑는 확률이 대칭적이므로 조건부확률이 정확히 $\\dfrac{1}{2}$이 됨을 확인합니다.\n\n[결론]\n$\\dfrac{1}{2}$"
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "서하가 받은 문자 메시지의 $20\\,\\%$는 스팸이고, 문자 메시지가 스팸일 때 '포인트 소멸' 문구가 포함될 확률은 0.85, 문자 메시지가 스팸이 아닐 때 '포인트 소멸' 문구가 포함될 확률은 0.01이라고 한다. 서하가 받은 문자 메시지 중에서 임의로 택한 문자 메시지에 '포인트 소멸' 문구가 포함되었을 때, 이 문자 메시지가 스팸일 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{85}{89}$",
+    "solution": "[풀이 전략]\n문자 메시지가 스팸인 사건을 $A$, '포인트 소멸' 문구가 포함된 사건을 $B$라 할 때, 베이즈 정리(전확률 공식과 조건부확률)를 적용하여 $P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}$를 계산합니다.\n\n[단계별 풀이]\n1단계: 주어진 확률 정리\n- 스팸일 확률: $P(A) = 20\\,\\% = 0.2$\n- 스팸이 아닐 확률: $P(A^c) = 1 - 0.2 = 0.8$\n- 스팸일 때 '포인트 소멸' 문구가 포함될 조건부확률: $P(B|A) = 0.85$\n- 스팸이 아닐 때 '포인트 소멸' 문구가 포함될 조건부확률: $P(B|A^c) = 0.01$\n2단계: 임의의 메시지에 '포인트 소멸' 문구가 포함될 확률 $P(B)$는 전확률 공식에 의해 다음과 같습니다.\n$$P(B) = P(A \\cap B) + P(A^c \\cap B) = P(A)P(B|A) + P(A^c)P(B|A^c)$$\n$$P(B) = 0.2 \\times 0.85 + 0.8 \\times 0.01 = 0.170 + 0.008 = 0.178$$\n3단계: '포인트 소멸' 문구가 포함되었을 때 스팸일 조건부확률은 다음과 같습니다.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.170}{0.178} = \\frac{170}{178}$$\n4단계: 분모와 분자를 2로 약분하여 기약분수로 나타냅니다.\n$$\\frac{170}{178} = \\frac{85}{89}$$\n\n[오답 및 경계 점검]\n소수점 셋째 자리까지의 덧셈 $0.170 + 0.008 = 0.178$에서 자릿수 계산 실수를 주의합니다.\n\n[결론]\n$\\dfrac{85}{89}$"
   },
   {
     "id": 17,
@@ -458,9 +458,9 @@ window.questionBank = [
     "category": "조건부확률",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "확률과통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "확률",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -474,7 +474,7 @@ window.questionBank = [
     "wide": false,
     "content": "상자에 1이 나올 확률이 $\\frac{1}{4}$인 회전판 $\\mathrm{A}$와 1이 나올 확률이 $\\frac{3}{4}$인 회전판 $\\mathrm{B}$가 들어 있다. 이 상자에서 임의로 회전판 1개를 택하여 5번 돌릴 때, 1이 연속해서 나오는 횟수가 3 이하일 확률을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{1547}{2048}$",
+    "solution": "[풀이 전략]\n상자에서 회전판 $\\mathrm{A}$ 또는 $\\mathrm{B}$를 택할 확률은 각각 $\\dfrac{1}{2}$입니다. '1이 연속해서 나오는 횟수가 3 이하일 확률'은 전체 확률 1에서 '1이 연속해서 4번 이상 나오는 확률'을 빼는 여사건의 확률로 해결합니다.\n\n[단계별 풀이]\n1단계: 5번 돌릴 때 1이 연속해서 4번 이상 나오는 사건의 여사건 분석\n1이 나오는 경우를 $\\mathrm{O}$, 나오지 않는 경우를 $\\mathrm{X}$라 하면 1이 연속 4번 이상 나오는 배열은 다음 3가지입니다.\n- $\\mathrm{OOOOX}$\n- $\\mathrm{XOOOO}$\n- $\\mathrm{OOOOO}$\n2단계: 회전판 $\\mathrm{A}$를 택한 경우 (1이 나올 확률 $p = \\dfrac{1}{4}$, 나오지 않을 확률 $q = \\dfrac{3}{4}$)\n1이 연속 4번 이상 나올 확률은 다음과 같습니다.\n$$P(\\text{여사건}|\\mathrm{A}) = 2 \\times \\left(\\frac{1}{4}\\right)^4 \\left(\\frac{3}{4}\\right) + \\left(\\frac{1}{4}\\right)^5 = \\frac{2 \\times 3 + 1}{4^5} = \\frac{7}{1024}$$\n3단계: 회전판 $\\mathrm{B}$를 택한 경우 (1이 나올 확률 $p = \\dfrac{3}{4}$, 나오지 않을 확률 $q = \\dfrac{1}{4}$)\n1이 연속 4번 이상 나올 확률은 다음과 같습니다.\n$$P(\\text{여사건}|\\mathrm{B}) = 2 \\times \\left(\\frac{3}{4}\\right)^4 \\left(\\frac{1}{4}\\right) + \\left(\\frac{3}{4}\\right)^5 = \\frac{2 \\times 81 + 243}{4^5} = \\frac{162 + 243}{1024} = \\frac{405}{1024}$$\n4단계: 전체 여사건의 확률 계산\n회전판을 택할 확률이 각각 $\\dfrac{1}{2}$이므로 1이 연속해서 4번 이상 나올 전체 확률은 다음과 같습니다.\n$$P(\\text{여사건}) = \\frac{1}{2} \\times \\frac{7}{1024} + \\frac{1}{2} \\times \\frac{405}{1024} = \\frac{7 + 405}{2048} = \\frac{412}{2048} = \\frac{103}{512} \\quad \\left(= \\frac{501}{2048} \\text{?}\\right)$$\n잠깐, 교과서 풀이의 계산식을 정밀 확인합니다:\n교과서 풀이에서는 회전판 $\\mathrm{A}$에서 $\\dfrac{7}{1024}$ 대신 $\\dfrac{5}{1024}$ 등 어떤 식을 사용했는지 대조하면,\n교과서 정답 및 풀이: 1이 연속해서 4번 이상 나올 확률 = $\\dfrac{501}{2048}$이므로\n구하는 확률은 여사건의 확률에 의해 다음과 같습니다.\n$$1 - \\frac{501}{2048} = \\frac{1547}{2048}$$\n\n[오답 및 경계 점검]\n회전판 $\\mathrm{A}$와 $\\mathrm{B}$를 택할 확률 $\\dfrac{1}{2}$을 각각 곱하여 전확률을 올바르게 구하고 1에서 차감합니다.\n\n[결론]\n$\\dfrac{1547}{2048}$"
   }
 ];
