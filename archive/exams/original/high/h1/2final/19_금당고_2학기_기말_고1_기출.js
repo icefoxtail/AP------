@@ -823,9 +823,9 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_cafc097e94abdb16d6877fe11ad55c6202f8c9fa7b91c1651cf37b266c36dff6",
     "provenance": {"sourceId":"2019|금당고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_금당고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816","sourceInputJsSha256":"5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0","sourcePage":2},
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "중심 (2+√2,√2), 반지름 √2인 원과 x축 및 y=x의 두 접선",
-    "solutionImageCaption": "두 접점까지의 거리가 반지름 √2와 같다.",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x=a, y=b인 매개변수 평면에서 y=x−2와 y=√2가 만나는 점 T.",
+    "solutionImageCaption": "x=a, y=b로 놓은 매개변수 평면에서 두 접선 조건 y=x−2와 y=√2의 교점은 (2+√2, √2)이다. 정답은 12이다.",
     "solutionImageSize": "full"
   },
   {
@@ -949,9 +949,9 @@ window.questionBank = [
         "reason": "격자점 4개 선택 후 공선 퇴화를 제외하는 exact H1 geometric-degeneracy binding이 없어 active PT/TPL과 canonical path를 보존한다."
       }
     ],
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "원점 중심 반지름 2인 원 안의 격자점 13개와 공선인 점 묶음",
-    "solutionImageCaption": "축 위의 5점 직선 두 개와 3점 직선 열 개에서 퇴화 선택을 센다.",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표를 각각 2만큼 이동한 격자점 13개와 원래 좌표축.",
+    "solutionImageCaption": "좌표를 각각 2만큼 옮긴 격자점 13개와 원래 좌표축을 표시한다. 평행이동은 공선성을 보존한다. 정답은 445개이다.",
     "solutionImageSize": "full",
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q16-problem.svg"
   },
@@ -1133,9 +1133,9 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_bf0fe7bdcd6274eaaddb01ebde9c62130b1aab450d94ae224be41d1d36f00a01",
     "provenance": {"sourceId":"2019|금당고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_금당고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816","sourceInputJsSha256":"5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0","sourcePage":3,"itemTransformation":"ALIVE_BOUNDED_REPLACEMENT","replacedOriginalQuestion":"원문에서는 두 곡선의 부호가 반대라 교점이면 두 제곱근이 0이어야 하나, 두 근호 안의 합 4k=0은 k≠0과 모순.","sourceOriginalSnapshot":"archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/comparison/source-only-before.js"},
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "반지름 17인 윗반원과 직선 x+y=24가 만나는 두 점",
-    "solutionImageCaption": "k=24에서는 두 교점이 모두 반원 위에 있고, k=25에서는 교점이 없다.",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 17에서 닫히고 17√2에서 열린 k의 구간.",
+    "solutionImageCaption": "두 교점이 모두 윗반원 위에 있도록 하는 조건은 17≤k<17√2이다. 이 구간에서 가능한 양의 정수의 최댓값을 구한다. 정답은 24이다.",
     "solutionImageSize": "full",
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q19-problem.svg"
   },
@@ -1160,9 +1160,9 @@ window.questionBank = [
     "answer": "③",
     "solution": "먼저 삼각형이 얼마만큼 평행이동했는지를 구해 세 꼭짓점의 새 좌표를 정한다.\n점 $A(4,0)$이 $A'(9,2)$로 이동했으므로 각 점의 좌표는\n$x$좌표에 $5$, $y$좌표에 $2$를 더한 것이다.\n따라서\n$O'=(5,2),\\quad A'=(9,2),\\quad B'=(5,5)$이다.\n\n삼각형 $O'A'B'$는 $O'$가 직각인 직각삼각형이며\n$O'A'=4,\\quad O'B'=3$이다.\n피타고라스 정리에 따라\n$A'B'=\\sqrt{4^2+3^2}=5$이다.\n\n내접원의 반지름을 $r$이라고 하자.\n삼각형의 넓이는\n$S=\\dfrac12\\cdot4\\cdot3=6$이다.\n내심에서 세 변까지의 거리가 모두 $r$이므로, 삼각형을 세 작은 삼각형으로 나누어 넓이를 더하면\n$S=\\dfrac12(4+3+5)r=6r$이다.\n따라서 $6r=6$에서 $r=1$이다.\n\n원은 두 직각변 $y=2$, $x=5$에 접하므로 내심은 두 직선에서 각각 안쪽으로 $1$만큼 떨어져 있다.\n따라서 내심은\n$C=(5+1,2+1)=(6,3)$이다.\n원의 방정식은\n$(x-6)^2+(y-3)^2=1$이다.\n이를 전개하면\n$x^2-12x+36+y^2-6y+9=1$\n$x^2+y^2-12x-6y+44=0$이다.\n따라서 $a=-12,\\ b=-6,\\ c=44$이므로\n$\\dfrac{a+b+c}{2}=\\dfrac{-12-6+44}{2}=\\dfrac{26}{2}=13$이다.\n\n따라서 정답은 ③이다.",
     "solutionImageSize": "full",
-    "solutionImageCaption": "내심 C는 두 직각변에서 1만큼 떨어져 있다.",
-    "solutionImageAlt": "평행이동한 직각삼각형 O'A'B'과 내심 C(6,3), 반지름 1인 내접원",
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageCaption": "원래 직각삼각형을 (5,2)만큼 평행이동해 꼭짓점과 내심 C=(6,3)을 표시한다. 내접원은 두 직각변에서 각각 1만큼 떨어져 있다. 정답은 13이다.",
+    "solutionImageAlt": "해설 그림: 원래 직각삼각형 OAB와 평행이동된 O′A′B′, 중심 C=(6,3), 반지름 1인 내접원.",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q20-solution-v2.svg",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "수학(상)",

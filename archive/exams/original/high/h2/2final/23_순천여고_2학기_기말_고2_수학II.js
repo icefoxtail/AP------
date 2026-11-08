@@ -350,9 +350,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q11-solution.svg",
-    "solutionImageAlt": "포물선 위 점 A와 원점 O, 수선의 발 H가 만드는 삼각형의 최대넓이 해설 도형",
-    "solutionImageCaption": "t=-x로 두면 넓이 S(t)=t²−t³/2이고 t=4/3에서 16/27로 최대가 된다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 넓이 함수의 그래프는 x=-2와 x=0에서 열린 끝을 갖고, 안쪽에서 한 번 최대가 된다.",
+    "solutionImageCaption": "s(x)는 점 A의 x좌표가 x일 때 삼각형 OAH의 넓이이다. x를 가로축으로 두면 x=-4/3에서 최대가 되고, 해설의 치환 t=-x에서는 이 점이 t=4/3에 해당하며 넓이는 16/27이다. 정답은 11이다.",
     "solutionImageSize": "full"
   },
   {
@@ -386,9 +386,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "image": "assets/images/23_순천여고_2학기_기말_고2_수학II/q12.png",
     "imageSize": "full",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q12-solution.svg",
-    "solutionImageAlt": "도함수의 영점 -3, 1, 4와 부호 변화를 정리한 해설 부호표",
-    "solutionImageCaption": "f는 x=-3,4에서 극대, x=1에서 극소이며 보기 ㄱ과 ㄷ이 참이다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 도함수의 영점 −3, 1, 4와 각 영점 사이 및 바깥 구간의 양수·음수 부호를 나타낸 수직선.",
+    "solutionImageCaption": "도함수가 양수인 구간에서는 f가 증가하고 음수인 구간에서는 감소하므로 극값과 보기의 조건을 판정한다. 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -481,7 +481,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수의 그래프가 x=1에서 유일한 최솟점에 이른 뒤 양쪽으로 증가한다.",
+    "solutionImageCaption": "사차함수의 최솟값 −3과 이차함수의 최댓값 9−k를 비교한다. 정답은 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -606,9 +610,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "a=3인 조각함수의 극댓점과 극솟점 -4√2를 표시한 해설 그래프",
-    "solutionImageCaption": "극댓값 존재로 a>0이고 오른쪽 조각의 극솟값 조건에서 a=3을 얻는다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 삼차 조각이 원점에서 이어지고, 왼쪽 조각에 극댓점, 오른쪽 조각에 극솟점이 표시된 그래프.",
+    "solutionImageCaption": "극댓값 조건으로 a>0을 얻고, a=3일 때 왼쪽 조각은 극대, 오른쪽 조각은 극소를 갖는다. 접합점에서는 극값이 생기지 않는다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -638,9 +642,9 @@ window.questionBank = [
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "실근 개수 함수 f(t)의 불연속점 -32, -5, 0과 g의 영점을 정리한 해설 도식",
-    "solutionImageCaption": "연속성을 위해 g(-32)=g(-5)=g(0)=0이고 g(-4)=28에서 g(-1)=31이 된다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 y=x³−6x²의 그래프에 극댓점 A, 극솟점 B, x=1에서의 점 C를 표시했다.",
+    "solutionImageCaption": "그림은 해설의 h(x)=x²(x−6)=x³−6x²의 그래프이다. 극값 0, −32와 x=1에서의 함숫값 −5가 f(t)의 불연속이 생기는 높이이므로 g의 세 근이 된다. 정답은 31이다.",
     "solutionImageSize": "full"
   },
   {
