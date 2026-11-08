@@ -1,0 +1,14 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[-4,10,0,10],"axisTickValues":{"x":["4"],"y":["1","5"]},
+  "curves":[
+   {"id":"left","kind":"SQRT","radicand":["4","-1"],"offset":"5","domain":["-4","4"],"color":"BLUE","label":"y=sqrt(4-x)+5"},
+   {"id":"right","kind":"RATIONAL","numerator":["1","1"],"denominator":["-3","1"],"domain":["4","10"],"color":"WARM","label":"y=(x+1)/(x-3)"}
+  ],
+  "overlays":{"points":[{"id":"P","x":"0","y":"7","unnamed":true,"coordinates":true}]}
+ },
+ "caption":"두 가지의 치역이 5에서 맞닿고 겹치지 않는 모습을 본다.",
+ "sourceConditions":[{"id":"c1","condition":"x<=4에서는 sqrt(4-x)+a, x>4에서는 (x+1)/(x-3); 전체 치역은 y>1이고 일대일이다.","mappedTo":"PRESERVED_ARCHIVE_BANK"},{"id":"c2","condition":"치역 및 일대일 조건으로 a=5이다.","mappedTo":["graphPlan"]}],
+ "newVisualInformation":["(-∞,4] 가지의 치역 [5,∞)와 (4,∞) 가지의 치역 (1,5)"]
+}
