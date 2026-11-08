@@ -1,1 +1,1 @@
-LOCAL DRAFT ONLY. 사용자 지시: 기존 구형 그림도 새 엔진 교체 대상으로 계획. 세로축은 f/100의 수치로 명시한 그래프이며 f 자체와 혼동 금지. 원문·기존 q16-solution.svg 및 OPEN_LAYOUT 이력 보존. 소유·시도 UNKNOWN; 공식 validator·렌더 NOT_RUN; 원격 미반영·미인계. 기존 승인 거절된 별도 작업 재시도 금지.
+BRANCH DRAFT. 3종 초안은 작업 브랜치에 보존됨. 사용자 지시: 기존 구형 그림도 새 엔진 교체 대상으로 계획. 세로축은 f/100의 수치로 명시한 그래프이며 f 자체와 혼동 금지. 원문·기존 q16-solution.svg 및 OPEN_LAYOUT 이력 보존. 소유·시도 UNKNOWN; 공식 validator·렌더 NOT_RUN; 구현자 미인계. 기존 승인 거절된 별도 작업 재시도 금지.
