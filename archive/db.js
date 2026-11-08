@@ -32,6 +32,37 @@ window.mainDB = {
       "primaryStandardCourse": "미적분"
     },
     {
+      "file": "similar/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2_유사.js",
+      "school": "팔마고",
+      "topic": "미적분2",
+      "grade": "고3",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "미적분",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-CALC-01",
+      "rangeStartUnit": "수열의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-CALC-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분",
+          "courseCode": "H15-CALC",
+          "rangeStartUnitKey": "H15-CALC-01",
+          "rangeStartUnit": "수열의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-CALC-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "미적분"
+    },
+    {
       "file": "original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
       "school": "강남여고",
       "topic": "",
@@ -784,6 +815,68 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사.js",
+      "school": "강남여고",
+      "topic": "대수",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사.js",
+      "school": "금당고",
+      "topic": "대수",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "contentType": "유형",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
     },
     {
       "file": "original/high/h1/2mid/26_강남여고_2학기_중간_고1_공통수학2.js",
