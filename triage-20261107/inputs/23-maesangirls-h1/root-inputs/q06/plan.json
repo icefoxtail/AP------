@@ -1,0 +1,18 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[-2,12,-2,12],"axisTickValues":{"x":[],"y":[]},
+  "curves":[
+   {"id":"f","kind":"RATIONAL","numerator":["1","2"],"denominator":["-8","1"],"domain":["-2","12"],"color":"BLUE","label":"y=(2x+1)/(x-8)"},
+   {"id":"g","inverseOf":"f","domain":["-2","12"],"color":"WARM","label":"y=(8x+1)/(x-2)"}
+  ],
+  "overlays":{
+   "lines":[{"id":"sym","slope":"1","intercept":"0","style":"DASHED","label":"y=x"},{"id":"line","slope":"1","intercept":"-2","style":"DASHED","label":"y=x-2"}],
+   "points":[{"id":"A","x":"8","y":"2"},{"id":"B","x":"2","y":"8"}],
+   "segments":[{"id":"AB","from":"A","to":"B"}]
+  }
+ },
+ "caption":"두 함수의 점근선 교점은 y=x에 대하여 대칭이다.",
+ "sourceConditions":[{"id":"c1","condition":"f(x)=(2x+1)/(x-k), k>4; A에서 y=x-2까지 거리 2sqrt(2)이므로 k=8","mappedTo":["graphPlan"]}],
+ "newVisualInformation":["두 함수의 중심 A=(8,2), B=(2,8)과 대칭선 및 거리 조건에 사용되는 직선"]
+}
