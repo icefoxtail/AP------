@@ -1,0 +1,104 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "-2",
+          "-1",
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "7",
+          "8"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "예: a=4일 때 각 정의역 원소의 함숫값이 Y에 들어간다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X={-2,-1,0,1,2}, Y={1,2,3,5,6,7,8}; 예시 a=4",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=4인 한 가지 예의 다섯 대응"
+  ],
+  "sourceQuote": "두 값은 차이가 $1$이므로 $Y$에서 연속한"
+}
