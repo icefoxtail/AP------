@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -60,
+      20
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "g(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -4
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "g(x)=x^3−3x^2의 극대점 A(0,0), 극소점 B(2,−4) 사이에 수평선 높이 k가 있을 때 세 실근이 되며, 범위는 −4<k<0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 방정식은 g(x)=k로 쓰이며 g(x)=x^3−3x^2이다. 정의역은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g′(x)=3x(x−2)에서 극대는 A(0,0), 극소는 B(2,−4)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "서로 다른 세 실근 조건은 극값 사이의 엄격한 수준 범위 −4<k<0이다. 특정 k의 수평선을 임의로 고정하지 않는다.",
+      "mappedTo": [
+        "caption",
+        "newVisualInformation"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 극값의 높이를 좌표로 보여 주어 움직이는 수평 수준 k가 들어가야 하는 열린 범위를 읽게 한다."
+  ]
+}

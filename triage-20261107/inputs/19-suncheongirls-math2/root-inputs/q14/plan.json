@@ -1,0 +1,92 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-6",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -12,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "p(t)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1.4142135623730951,
+        "y": 5.656854249492381
+      },
+      {
+        "id": "Q",
+        "x": 1.4142135623730951,
+        "y": -5.656854249492381
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-sqrt(2)",
+        "4*sqrt(2)"
+      ],
+      "Q": [
+        "sqrt(2)",
+        "-4*sqrt(2)"
+      ]
+    },
+    "axisVariable": "t"
+  },
+  "coordinateLeader": [
+    "P",
+    "Q"
+  ],
+  "caption": "p(t)=t^3−6t의 극대점 P(−√2,4√2), 극소점 Q(√2,−4√2)가 서로 다른 세 실근을 허용하는 매개변수 범위를 정한다: −4√2<a<4√2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "적분 조건은 p(t)+a=0으로 정리되며 p(t)=t^3−6t이고 p의 source domain은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p′(t)=3(t^2−2)에서 극대는 P(−√2,4√2), 극소는 Q(√2,−4√2)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "p(t)+a=0이 서로 다른 세 실근을 가지려면 a 범위는 −4√2<a<4√2이고, 경계 제외를 유지한다.",
+      "mappedTo": [
+        "caption",
+        "newVisualInformation"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 극값 좌표가 수준의 양 끝을 정하고 매개변수 범위가 엄격한 부등식임을 나타낸다."
+  ]
+}

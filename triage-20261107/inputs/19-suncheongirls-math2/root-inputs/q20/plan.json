@@ -1,0 +1,83 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -2,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "lines": [
+      {
+        "id": "tangent",
+        "slope": "2",
+        "intercept": "-6",
+        "through": [
+          "B"
+        ],
+        "tangentAt": "B"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "f(x)=x^2−4x+3은 x=1과 x=3에서 x축을 만난다. B(3,0)에서의 접선은 기울기 2인 y=2x−6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 극한 조건으로 f(x)=x^2−4x+3=(x−1)(x−3)이다. source domain은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "근은 A(1,0), B(3,0)이고 f′(3)=2이므로 B에서의 접선은 y=2x−6이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.lines",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 실근을 표시하고 x=3에서 곡선에 접하는 접선의 기울기 2를 함께 보인다."
+  ]
+}

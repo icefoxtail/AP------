@@ -1,0 +1,134 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3-2*x^2-3*x",
+    "functionName": "h",
+    "referenceLines": [
+      {
+        "id": "zero",
+        "y": "0",
+        "intersectionX": [
+          "-1",
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": -4
+      },
+      {
+        "id": "M",
+        "x": -0.5351837584879965,
+        "y": 0.8794197467431006
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "2/3-sqrt(13)/3",
+        "-70/27+26*sqrt(13)/27"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "h(x)"
+    },
+    "regions": [
+      {
+        "id": "positive-lobe",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0"
+      },
+      {
+        "id": "negative-lobe",
+        "upper": "axis",
+        "lower": "f",
+        "from": "0",
+        "to": "1"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "caption": "도식의 h(x)는 원문의 합 f(x)+g(x)=x³−2x²−3x이며, 차 f−g가 아니다. 닫힌 적분구간 [−1,1]에서 h는 x=−1,0에서 0이 되고 x=0을 기준으로 양·음의 기여를 만든다. 홀수항 x³−3x의 정적분은 0으로 상쇄되고, 짝수항 −2x²의 적분이 −4/3이므로 signed integral은 −4/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 해설은 g(x)=x(x−3), f(x)=x²(x−3)로 결정한다. 따라서 적분의 피적분함수 f(x)+g(x)=x³−2x²−3x이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula",
+        "graphPlan.functionName",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문에서 요구하는 적분구간은 닫힌 [-1,1]이다. h(−1)=0, h(0)=0, h(1)=−4이고, 내부 극점은 x=(2−sqrt(13))/3에서 h=−70/27+26*sqrt(13)/27이다.",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "coordinateLeader"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "h(x)=x³−3x−2x². 첫 두 항은 홀수함수라 대칭구간 [-1,1]에서 적분이 0이고 −2x² 적분은 −4/3이다. 두 음영은 부호를 구분할 뿐 unsigned area를 정답으로 대체하지 않는다.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.regions",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 요구한 합함수 f+g만 닫힌 적분구간에서 그려 f−g와 혼동하지 않도록 한다.",
+    "x축을 기준으로 양의 기여와 음의 기여를 따로 보이고, 질문의 signed integral이 −4/3임을 구분한다."
+  ]
+}

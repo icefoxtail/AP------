@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "0",
+      "4",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -6,
+      32
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": -4
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A"
+  ],
+  "caption": "실수 전체에서 함수 f(x)=x^4+4x^2−4의 그래프를 보고 극솟값 점 A(0,−4)를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 f(x)=x^4+4x^2−4이고 정의역은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=4x(x^2+2)이고 x^2+2>0이므로 x=0에서 f′의 부호가 음수에서 양수로 바뀌며 f(0)=−4이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그래프의 유일한 극소점 A(0,−4)에서 극솟값 −4를 읽는다."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "0",
+      "3",
+      "4"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -100,
+      150
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 5
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "실수 전체의 함수 f(x)=4x^3+3x^2−2 그래프에 P(1,5)를 표시한다. 원문 극한은 2(a+1)f(a)로 정리되어 a=1에서 20이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 적분 관계를 미분하고 상수 조건을 적용해 a=1 및 f(x)=4x^3+3x^2−2를 얻는다. f는 실수 전체의 다항함수이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=5이고 원문 극한은 2(a+1)f(a)이므로 a=1에서 값은 20이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "결정된 함수의 점 P(1,5)를 표시하고, 원문 끝점 변화율 극한의 평가점과 답 20을 연결한다."
+  ]
+}

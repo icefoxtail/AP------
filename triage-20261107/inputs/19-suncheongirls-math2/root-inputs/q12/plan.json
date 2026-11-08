@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        4
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "v"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "V"
+  ],
+  "caption": "원문 위치함수 x(t)=t^3/3−2t^2+4t−2의 실제 시각 t>0 가운데 유한 부분 0<t≤4에서 속도 v(t)=(t−2)^2만 그린다. V(2,0)에서 속도는 0이고 원함수의 위치는 x(2)=2/3이다. 원위치 곡선은 이 그림에 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 위치함수는 x(t)=t^3/3−2t^2+4t−2이며 실제 시간 정의역은 t>0이다. 이 그림은 원위치 곡선을 그리지 않는다.",
+      "mappedTo": [
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "속도는 v(t)=x′(t)=(t−2)^2이며 실제 속도 그래프의 표시 부분은 0<t≤4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisTitles"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "v(2)=0이며 속도는 0에 닿고 부호가 바뀌지 않는다. 원위치 곡선에서 x(2)=2/3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 시각 t, 세로축은 속도 v이다. 원래 t>0 정의역에서 정확한 유한 부분 0<t≤4만 그려 t=2의 속도 0과, 그 시각의 원위치 x(2)=2/3를 관계로 보여 준다."
+  ]
+}

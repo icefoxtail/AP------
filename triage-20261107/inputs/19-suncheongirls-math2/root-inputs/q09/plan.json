@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "s",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "지면순서",
+        "band": false,
+        "points": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          },
+          {
+            "id": "c"
+          }
+        ],
+        "order": [
+          "a",
+          "b",
+          "c"
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "가로등사람그림자끝"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 가로등 높이 3.4 m, 사람 키 1.7 m, 사람의 수평 속도 1.5 m/s를 준다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "해설은 x를 가로등에서 사람까지 거리, y를 그림자 길이로 놓고 두 직각삼각형의 닮음비 3.4/(x+y)=1.7/y를 세운다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 y=x와 dy/dt=dx/dt=1.5 m/s를 얻는다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c4",
+      "condition": "도식의 a, b, c는 가로등 밑, 사람, 그림자 끝의 지면상 순서만 나타내며 실제 수평 거리와 좌표는 주어지지 않는다. 출발순간 t=0에는 x=y=0이므로 a-b-c의 엄격한 순서 부분도와 닮음비는 t>0에서만 적용한다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지원된 number-line-figure-v1에서는 a, b, c의 지면상 순서만 표시한다. 이 표시는 수평 위치의 실제 간격이나 측정 길이를 뜻하지 않는다.",
+    "두 닮음삼각형의 실제 길이 도식은 생략하고, 원 해설의 정확한 닮음식과 y=x, dy/dt 관계를 캡션에 적는다. 임의의 수평 좌표나 삼각형 비율 그림은 만들지 않는다.",
+    "t=0에는 사람과 가로등 밑이 같은 지점이고 그림자 길이도 0이므로, a-b-c 순서 부분도는 출발 후 t>0에 한정한다."
+  ],
+  "caption": "가로등에서 사람까지의 거리를 x m, 그림자 길이를 y m라 두면, 가로등과 그림자 끝을 잇는 큰 삼각형과 사람과 그림자 끝을 잇는 작은 삼각형의 닮음비는 3.4/(x+y)=1.7/y이다. 따라서 y=x이고, dy/dt=dx/dt=1.5 m/s이다. 보조 선 그림은 출발 후 t>0에서의 지면 위 a(가로등 밑), b(사람), c(그림자 끝) 순서 부분도만 나타내며, 점 사이 간격은 축척이나 측정값이 아니다. 두 닮음삼각형의 실제 길이 도식은 이 계획에서 생략한다."
+}

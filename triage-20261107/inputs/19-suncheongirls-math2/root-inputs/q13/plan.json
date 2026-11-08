@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-6",
+      "0",
+      "12"
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -10,
+      110
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 6
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "실수 전체의 포물선 f(x)=12x^2−6에 점 P(1,6)을 표시해 f(1)=6을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 적분 관계를 두 번 미분하고 a=3을 얻어 f(x)=12x^2−6으로 정한다. 원문의 다항함수는 모든 실수에서 정의된다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "결정된 함수에서 f(1)=12−6=6이므로 P=(1,6)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에서 결정되는 함수의 포물선과 점 P(1,6)을 표시해 요구된 함숫값을 직접 읽는다."
+  ]
+}

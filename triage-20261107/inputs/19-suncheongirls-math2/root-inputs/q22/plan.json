@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -60,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "f(x)=x^3−3x^2+4=(x−2)^2(x+1)은 A(−1,0)에서 x축을 가로지르고 B(2,0)에서 닿는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 적분 관계와 이중근 조건으로 f(x)=x^3−3x^2+4=(x−2)^2(x+1)이다. source domain은 실수 전체이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=−1은 단순근이라 그래프가 축을 가로지르고, x=2는 중복도 2인 근이라 그래프가 축에 닿은 뒤 같은 쪽에 머문다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "근의 중복도를 그래프의 교차와 접촉으로 구분해 원문 함수 f(x)를 읽는다."
+  ]
+}

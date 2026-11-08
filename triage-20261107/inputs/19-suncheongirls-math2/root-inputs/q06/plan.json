@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "영점",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수영점"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 y=f′(x)의 그래프에서 함수 f의 증가·감소와 극대를 판정한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원본 그래프의 도함수 영점은 −1, 2, 4이며 부호는 차례로 −, +, −, +이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설은 x=2에서 f의 극대를, (2,3)에서 감소를 확인하고, (3,5)에 x=4가 포함되어 구간 전체에서 증가하지 않는다고 판정한다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "보조 수직선에는 원본 그래프의 영점 −1, 2, 4만 표시하고 부호열은 캡션에만 적는다.",
+    "원본 q6.png를 가리키는 source-bound item의 이미지 참조를 유지하며, 새 f′ 식이나 그래프 높이는 만들지 않는다."
+  ],
+  "caption": "원본 그래프에서 f′의 부호는 x<−1에서 음수, −1<x<2에서 양수, 2<x<4에서 음수, x>4에서 양수이다. x=2에서 f′의 부호가 양수에서 음수로 바뀌므로 f는 극대이고, (2,3)에서 감소한다. (3,5)에는 x=4가 들어 있어 그 구간 전체에서 증가하지 않는다. 보조 수직선은 영점 −1, 2, 4만 나타내며, f′의 식이나 높이는 정하지 않는다."
+}

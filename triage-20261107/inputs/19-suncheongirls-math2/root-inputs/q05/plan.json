@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "2",
+      "3"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -5,
+      60
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 2,
+        "y": 17
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "두 방향에서 x→2로 다가갈 때 적분 평균값의 극한은 연속함수 f의 f(2)=17이다. 그림은 고정 폭 사례를 추가하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수는 실수 전체에서 정의된 f(x)=3x^2+2x+1이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x→2 양측에서 (1/(x−2))∫₂ˣ f(t)dt는 연속성에 의해 f(2)=17로 수렴한다. 원문은 고정 폭의 대표 구간을 지정하지 않는다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P(2,17)의 함숫값만 표시해 양측 평균값 극한을 읽고, 임의의 고정 폭 구간은 시각화하지 않는다."
+  ]
+}
