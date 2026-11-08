@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 부정적분을 구하시오.\n⑴ $\\int (x^2-2x+3) dx$\n⑵ $\\int x(x+1)^2 dx - \\int x(x^2+1) dx$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\dfrac{1}{3}x^3-x^2+3x+C$  ⑵ $\\dfrac{2}{3}x^3+C$",
+    "solution": "[풀이 전략]\n다항함수의 부정적분 공식 $\\int x^n dx = \\dfrac{1}{n+1}x^{n+1}+C$와 부정적분의 선형성 $\\int \\{f(x) \\pm g(x)\\} dx = \\int f(x)dx \\pm \\int g(x)dx$를 적용하여 식을 전개 및 정리한 후 각 항별로 적분합니다. 이때 적분상수 $C$를 반드시 명시합니다.\n\n[단계별 풀이]\n⑴ 각 항별로 부정적분을 취합니다.\n$$\\int (x^2-2x+3) dx = \\frac{1}{3}x^3 - x^2 + 3x + C$$\n\n⑵ 피적분함수의 차를 하나의 적분 기호로 합쳐 피적분식을 먼저 전개하여 간단히 정리합니다.\n$$\\int x(x+1)^2 dx - \\int x(x^2+1) dx = \\int \\{x(x^2+2x+1) - (x^3+x)\\} dx$$\n피적분함수를 정리하면:\n$$x(x^2+2x+1) - (x^3+x) = x^3+2x^2+x - x^3 - x = 2x^2$$\n따라서 구하는 부정적분은:\n$$\\int 2x^2 dx = \\frac{2}{3}x^3 + C$$\n\n[오답 및 경계 점검]\n부정적분 결과에 적분상수 $C$를 빠뜨리지 않도록 유의해야 합니다. ⑵번의 경우 두 적분을 각각 전개하여 계산할 수도 있으나, 하나의 적분 기호로 합치면 삼차항과 일차항이 소거되어 계산 과정이 훨씬 간결해집니다.\n\n[결론]\n⑴ $\\dfrac{1}{3}x^3-x^2+3x+C$, ⑵ $\\dfrac{2}{3}x^3+C$ (단, $C$는 적분상수)"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 정적분의 값을 구하시오.\n⑴ $\\int_0^2 (3x^2+5) dx$\n⑵ $\\int_{-2}^1 (x+2)^2 dx - \\int_{-2}^1 (2x+1) dx$\n⑶ $\\int_{-1}^1 (2x^3-6x) dx + \\int_1^3 (2x^3-6x) dx$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $18$  ⑵ $9$  ⑶ $16$",
+    "solution": "[풀이 전략]\n정적분의 기본정리 $\\int_a^b f(x) dx = [F(x)]_a^b = F(b)-F(a)$와 정적분의 성질(피적분함수의 덧셈·뺄셈 및 적분구간의 연결 성질 $\\int_a^c f(x)dx + \\int_c^b f(x)dx = \\int_a^b f(x)dx$)을 적용하여 계산합니다.\n\n[단계별 풀이]\n⑴ 피적분함수의 부정적분을 구한 후 위끝과 아래끝을 대입합니다.\n$$\\int_0^2 (3x^2+5) dx = [x^3+5x]_0^2 = (2^3+5 \\cdot 2) - 0 = 8+10 = 18$$\n\n⑵ 두 정적분의 적분구간이 $[-2, 1]$로 서로 같으므로 피적분함수를 하나로 합칩니다.\n$$\\int_{-2}^1 (x+2)^2 dx - \\int_{-2}^1 (2x+1) dx = \\int_{-2}^1 \\{(x^2+4x+4) - (2x+1)\\} dx = \\int_{-2}^1 (x^2+2x+3) dx$$\n이제 정적분을 계산합니다.\n$$\\left[\\frac{1}{3}x^3 + x^2 + 3x\\right]_{-2}^1 = \\left(\\frac{1}{3}+1+3\\right) - \\left(-\\frac{8}{3}+4-6\\right) = \\frac{13}{3} - \\left(-\\frac{14}{3}\\right) = \\frac{27}{3} = 9$$\n\n⑶ 두 정적분의 피적분함수가 서로 같고 첫 번째 정적분의 위끝과 두 번째 정적분의 아래끝이 $1$로 일치하므로 적분구간을 하나로 합칩니다.\n$$\\int_{-1}^1 (2x^3-6x) dx + \\int_1^3 (2x^3-6x) dx = \\int_{-1}^3 (2x^3-6x) dx$$\n정적분을 계산하면:\n$$\\left[\\frac{1}{2}x^4 - 3x^2\\right]_{-1}^3 = \\left(\\frac{81}{2}-27\\right) - \\left(\\frac{1}{2}-3\\right) = \\frac{27}{2} - \\left(-\\frac{5}{2}\\right) = \\frac{32}{2} = 16$$\n\n[오답 및 경계 점검]\n⑶번에서 구간을 합치지 않고 각각 계산하면 계산량이 늘어나 부호 실수가 발생하기 쉽습니다. 구간의 연결 성질을 적극적으로 활용합니다.\n\n[결론]\n⑴ $18$, ⑵ $9$, ⑶ $16$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 $f'(x)=1+2x+3x^2+\\cdots+nx^{n-1}$을 만족시키고 $f(0)=5$, $f(1)=11$일 때, 자연수 $n$의 값을 구하시오. (단, $n \\ge 2$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n도함수 $f'(x)$가 다항식의 합으로 주어졌으므로 양변을 부정적분하여 함수 $f(x)$를 구합니다. 초기조건 $f(0)=5$를 대입하여 적분상수를 구한 후, $f(1)=11$을 이용하여 자연수 $n$의 값을 결정합니다.\n\n[단계별 풀이]\n1단계: $f'(x)$를 부정적분하여 $f(x)$를 구합니다.\n$$f(x) = \\int f'(x) dx = \\int (1+2x+3x^2+\\cdots+nx^{n-1}) dx = x + x^2 + x^3 + \\cdots + x^n + C$$\n\n2단계: $f(0)=5$이므로 $C=5$입니다.\n따라서 $f(x) = x + x^2 + x^3 + \\cdots + x^n + 5$입니다.\n\n3단계: $f(1)=11$을 대입합니다.\n$$f(1) = \\underbrace{1 + 1 + 1 + \\cdots + 1}_{n\\text{개}} + 5 = n + 5 = 11$$\n따라서 $n = 6$입니다.\n\n[오답 및 경계 점검]\n$x$부터 $x^n$까지의 항의 개수는 총 $n$개입니다. 1을 대입했을 때 $1$이 $n$번 더해지는 원리를 명확히 확인합니다.\n\n[결론]\n$6$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $(-2, 1)$을 지나는 곡선 $y=f(x)$ 위의 임의의 점 $(x, y)$에서의 접선의 기울기가 $6x^2+12x+5$일 때, $f(-1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n곡선 $y=f(x)$ 위의 임의의 점 $(x, y)$에서의 접선의 기울기는 도함수 $f'(x)$를 의미합니다. 따라서 $f'(x)=6x^2+12x+5$임을 알고, 이를 부정적분하여 $f(x)$의 일반식을 세운 뒤 점 $(-2, 1)$을 지난다는 조건으로 적분상수를 구합니다.\n\n[단계별 풀이]\n1단계: 접선의 기울기가 $f'(x)$이므로 $f'(x) = 6x^2+12x+5$입니다.\n양변을 부정적분하면:\n$$f(x) = \\int (6x^2+12x+5) dx = 2x^3 + 6x^2 + 5x + C$$\n\n2단계: 곡선이 점 $(-2, 1)$을 지나므로 $f(-2)=1$입니다.\n$$f(-2) = 2(-8) + 6(4) + 5(-2) + C = -16 + 24 - 10 + C = -2 + C = 1$$\n따라서 $C = 3$입니다.\n\n3단계: 완성된 함수식은 $f(x) = 2x^3 + 6x^2 + 5x + 3$입니다.\n구하는 값 $f(-1)$을 계산하면:\n$$f(-1) = 2(-1)^3 + 6(-1)^2 + 5(-1) + 3 = -2 + 6 - 5 + 3 = 2$$\n\n[오답 및 경계 점검]\n$f(-2)$ 대입 시 거듭제곱 부호 계산에서 $-16+24-10 = -2$가 되는 과정을 정확히 확인해야 적분상수 오기입을 방지할 수 있습니다.\n\n[결론]\n$2$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$에 대하여 $f'(x)=ax^2-ax$이고 함수 $f(x)$의 극댓값이 $6$, 극솟값이 $5$일 때, 함수 $f(x)$를 구하시오. (단, $a>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$f(x)=2x^3-3x^2+6$",
+    "solution": "[풀이 전략]\n$f'(x)=ax^2-ax=ax(x-1)$ ($a>0$)의 부호 변화를 조사하여 극대와 극소가 되는 $x$좌표를 찾습니다. $f(x)$를 부정적분하여 적분상수를 포함한 식을 세운 뒤, 극댓값 $6$과 극솟값 $5$를 적용하여 미지수 $a$와 적분상수를 결정합니다.\n\n[단계별 풀이]\n1단계: $f'(x)=0$을 만족하는 $x$를 구합니다.\n$$f'(x) = ax(x-1) = 0 \\implies x=0 \\text{ 또는 } x=1$$\n$a>0$이므로 $f'(x)$는 $x=0$ 좌우에서 양에서 음으로 바뀌어 극대이고, $x=1$ 좌우에서 음에서 양으로 바뀌어 극소입니다.\n\n2단계: $f(x)$를 부정적분합니다.\n$$f(x) = \\int (ax^2-ax) dx = \\frac{a}{3}x^3 - \\frac{a}{2}x^2 + C$$\n\n3단계: 극댓값이 $6$이므로 $f(0) = C = 6$입니다.\n극솟값이 $5$이므로 $f(1) = 5$입니다.\n$$f(1) = \\frac{a}{3} - \\frac{a}{2} + 6 = -\\frac{a}{6} + 6 = 5 \\implies \\frac{a}{6} = 1 \\implies a = 6$$\n\n4단계: $a=6, C=6$을 대입하면:\n$$f(x) = \\frac{6}{3}x^3 - \\frac{6}{2}x^2 + 6 = 2x^3 - 3x^2 + 6$$\n\n[오답 및 경계 점검]\n$a>0$ 조건에 의해 삼차함수의 최고차항 계수 $\\frac{a}{3}$가 양수이므로 $x=0$에서 극대, $x=1$에서 극소가 됨을 증감표를 통해 반드시 확인해야 합니다.\n\n[결론]\n$f(x)=2x^3-3x^2+6$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$의 한 부정적분을 $F(x)$라고 하면\n$$F(x)=x f(x)-3x^4+2x^3$$\n이 성립한다. $f(1)=6$일 때, $f(2)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$25$",
+    "solution": "[풀이 전략]\n부정적분 $F(x)$와 $f(x)$가 공존하는 항등식은 양변을 $x$에 대하여 미분하는 것이 표준 풀이법입니다. $\\frac{d}{dx} F(x) = f(x)$이고 우변의 $x f(x)$는 곱의 미분법을 적용하여 $f'(x)$를 구한 뒤, 다시 적분하여 $f(x)$를 구합니다.\n\n[단계별 풀이]\n1단계: $F(x) = x f(x) - 3x^4 + 2x^3$의 양변을 $x$에 대하여 미분합니다.\n$$f(x) = f(x) + x f'(x) - 12x^3 + 6x^2$$\n양변에서 $f(x)$를 소거하고 정리하면:\n$$x f'(x) = 12x^3 - 6x^2 \\implies f'(x) = 12x^2 - 6x$$\n\n2단계: $f'(x)$를 부정적분하여 $f(x)$를 구합니다.\n$$f(x) = \\int (12x^2-6x) dx = 4x^3 - 3x^2 + C$$\n\n3단계: $f(1)=6$을 이용하여 적분상수 $C$를 구합니다.\n$$f(1) = 4(1)^3 - 3(1)^2 + C = 1 + C = 6 \\implies C = 5$$\n따라서 $f(x) = 4x^3 - 3x^2 + 5$입니다.\n\n4단계: $f(2)$의 값을 계산합니다.\n$$f(2) = 4(2)^3 - 3(2)^2 + 5 = 4 \\cdot 8 - 3 \\cdot 4 + 5 = 32 - 12 + 5 = 25$$\n\n[오답 및 경계 점검]\n우변의 $x f(x)$를 미분할 때 곱의 미분법을 빠뜨려 $x f'(x)$만 쓰거나 $f'(x)$만 쓰는 실수를 하지 않도록 주의합니다.\n\n[결론]\n$25$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 다항함수 $f(x)$가\n$$\\int_a^x f(t) dt = 6x^2+x-1$$\n을 만족시킬 때, $f(a)$의 값을 구하시오. (단, $a>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n적분구간에 변수 $x$를 포함하는 등식 $\\int_a^x f(t) dt = 6x^2+x-1$이 주어지면 두 가지 원리를 적용합니다.\n1. 아래끝과 같은 $x=a$를 대입하여 좌변을 0으로 만들어 $a$의 값을 구합니다.\n2. 양변을 $x$에 대하여 미분하여 피적분함수 $f(x)$를 구합니다.\n\n[단계별 풀이]\n1단계: 주어진 등식의 양변에 $x=a$를 대입합니다.\n$$0 = 6a^2 + a - 1$$\n이차방정식을 인수분해하면:\n$$(2a+1)(3a-1) = 0 \\implies a = -\\frac{1}{2} \\text{ 또는 } a = \\frac{1}{3}$$\n문제 조건에서 $a>0$이므로 $a = \\frac{1}{3}$입니다.\n\n2단계: 주어진 등식의 양변을 $x$에 대하여 미분합니다.\n$$\\frac{d}{dx} \\int_a^x f(t) dt = \\frac{d}{dx} (6x^2+x-1) \\implies f(x) = 12x + 1$$\n\n3단계: $f(a) = f\\left(\\frac{1}{3}\\right)$의 값을 계산합니다.\n$$f\\left(\\frac{1}{3}\\right) = 12 \\cdot \\frac{1}{3} + 1 = 4 + 1 = 5$$\n\n[오답 및 경계 점검]\n$a$의 값으로 양수 조건을 확인하여 $-\\frac{1}{2}$을 배제하고 $\\frac{1}{3}$을 정확히 선택해야 합니다.\n\n[결론]\n$5$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "정적분 $\\int_0^1 (6a^2 x^2-16ax+5) dx$의 값이 최소가 되도록 하는 실수 $a$의 값과 그때 정적분의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2$, 그때 정적분의 값은 $-3$",
+    "solution": "[풀이 전략]\n적분변수가 $x$이므로 $a$를 상수로 취급하여 먼저 정적분을 계산하면 $a$에 대한 이차식이 얻어집니다. 이 이차식을 완전제곱식으로 변형하여 최솟값과 그때의 $a$를 구합니다.\n\n[단계별 풀이]\n1단계: 정적분을 $x$에 대하여 계산합니다.\n$$\\int_0^1 (6a^2 x^2 - 16ax + 5) dx = \\left[2a^2 x^3 - 8ax^2 + 5x\\right]_0^1 = 2a^2 - 8a + 5$$\n\n2단계: 얻어진 $a$에 대한 이차식을 표준형으로 변형합니다.\n$$2a^2 - 8a + 5 = 2(a^2 - 4a + 4) - 8 + 5 = 2(a-2)^2 - 3$$\n\n3단계: 실수 $a$에 대하여 $(a-2)^2 \\ge 0$이므로, $a=2$일 때 최솟값 $-3$을 갖습니다.\n\n[오답 및 경계 점검]\n피적분함수에 $a$와 $x$가 섞여 있을 때 적분변수가 $x$임을 명확히 인지하고 적분을 수행해야 합니다.\n\n[결론]\n$a=2$, 그때 정적분의 값은 $-3$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "닫힌구간 $[-3, 3]$에서 연속인 두 함수 $f(x)$, $g(x)$가\n$$\\int_{-3}^3 \\{f(x)-g(x)\\} dx = -3, \\quad \\int_{-3}^3 \\{2f(x)+3g(x)\\} dx = 4$$\n를 만족시킬 때, 정적분 $\\int_{-3}^3 \\{f(x)+g(x)\\} dx$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n정적분의 선형성에 의해 적분구간이 $[-3, 3]$으로 같으므로, $I_1 = \\int_{-3}^3 f(x) dx$, $I_2 = \\int_{-3}^3 g(x) dx$로 치환하여 $I_1, I_2$에 대한 연립일차방정식을 세워 풉니다.\n\n[단계별 풀이]\n1단계: $I_1 = \\int_{-3}^3 f(x) dx$, $I_2 = \\int_{-3}^3 g(x) dx$로 두면 주어진 조건식은 다음과 같습니다.\n$$I_1 - I_2 = -3 \\quad \\cdots\\text{㈀}$$\n$$2I_1 + 3I_2 = 4 \\quad \\cdots\\text{㈁}$$\n\n2단계: ㈀의 양변에 3을 곱하면 $3I_1 - 3I_2 = -9$입니다.\n이를 ㈁과 더하면:\n$$5I_1 = -5 \\implies I_1 = -1$$\n이를 ㈀에 대입하면 $-1 - I_2 = -3 \\implies I_2 = 2$입니다.\n\n3단계: 구하고자 하는 정적분의 값은:\n$$\\int_{-3}^3 \\{f(x)+g(x)\\} dx = I_1 + I_2 = -1 + 2 = 1$$\n\n[오답 및 경계 점검]\n함수 $f(x), g(x)$의 구체적인 식을 몰라도 정적분의 선형성만으로 완벽히 해결되는 문항입니다.\n\n[결론]\n$1$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$가\n$$\\int_{-1}^2 f(x) dx = 5, \\quad \\int_1^2 f(x) dx = 3, \\quad \\int_{-1}^4 f(x) dx = 9$$\n를 만족시킬 때, 정적분 $\\int_1^4 f(x) dx$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "[풀이 전략]\n정적분 구간의 분할과 결합 성질 $\\int_a^b f(x)dx = \\int_a^c f(x)dx + \\int_c^b f(x)dx$을 이용하여 주어진 구간의 정적분 값들을 조합하여 $\\int_1^4 f(x) dx$를 구합니다.\n\n[단계별 풀이]\n1단계: 주어진 조건은 다음과 같습니다.\n$$\\int_{-1}^2 f(x) dx = 5, \\quad \\int_1^2 f(x) dx = 3, \\quad \\int_{-1}^4 f(x) dx = 9$$\n\n2단계: $\\int_1^4 f(x) dx$를 구하기 위해 적분구간을 분할합니다.\n$$\\int_1^4 f(x) dx = \\int_1^2 f(x) dx + \\int_2^4 f(x) dx$$\n여기서 $\\int_2^4 f(x) dx$는 전체 구간 $[-1, 4]$에서 $[-1, 2]$를 뺀 것과 같습니다.\n$$\\int_2^4 f(x) dx = \\int_{-1}^4 f(x) dx - \\int_{-1}^2 f(x) dx = 9 - 5 = 4$$\n\n3단계: 따라서 구하는 정적분의 값은:\n$$\\int_1^4 f(x) dx = 3 + 4 = 7$$\n\n[오답 및 경계 점검]\n구간의 아래끝과 위끝 순서를 뒤바꾸어 부호 실수를 하지 않도록 각 구간의 덧셈 식을 정확히 검증합니다.\n\n[결론]\n$7$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "정적분 $\\int_{-1}^2 (x^2-|x|) dx$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n절댓값 기호 안의 식 $x$의 부호가 바뀌는 경계인 $x=0$을 기준으로 적분구간 $[-1, 2]$를 $[-1, 0]$과 $[0, 2]$의 두 구간으로 분할하여 절댓값을 해제한 후 각각 정적분합니다.\n\n[단계별 풀이]\n1단계: $x$의 부호에 따라 절댓값을 풉니다.\n- $-1 \\le x \\le 0$일 때, $|x| = -x$이므로 $x^2 - |x| = x^2 - (-x) = x^2 + x$\n- $0 \\le x \\le 2$일 때, $|x| = x$이므로 $x^2 - |x| = x^2 - x$\n\n2단계: 적분구간을 분할하여 계산합니다.\n$$\\int_{-1}^2 (x^2-|x|) dx = \\int_{-1}^0 (x^2+x) dx + \\int_0^2 (x^2-x) dx$$\n\n3단계: 각 정적분을 계산합니다.\n$$\\int_{-1}^0 (x^2+x) dx = \\left[\\frac{1}{3}x^3 + \\frac{1}{2}x^2\\right]_{-1}^0 = 0 - \\left(-\\frac{1}{3}+\\frac{1}{2}\\right) = -\\frac{1}{6}$$\n$$\\int_0^2 (x^2-x) dx = \\left[\\frac{1}{3}x^3 - \\frac{1}{2}x^2\\right]_0^2 = \\left(\\frac{8}{3}-2\\right) - 0 = \\frac{2}{3}$$\n\n4단계: 두 값을 더하면:\n$$-\\frac{1}{6} + \\frac{2}{3} = -\\frac{1}{6} + \\frac{4}{6} = \\frac{3}{6} = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n음수 구간 $[-1, 0]$에서 아래끝 $-1$ 대입 시 부호 계산 $-\\left(-\\frac{1}{3}+\\frac{1}{2}\\right) = -\\frac{1}{6}$을 신중히 처리해야 합니다.\n\n[결론]\n$\\dfrac{1}{2}$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-06",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 미분가능한 함수 $f(x)$의 도함수가\n$$f'(x) = \\begin{cases} x-3 & (x > 1) \\\\ -2x & (x < 1) \\end{cases}$$\n이고 $f(2)=-2$일 때, $f(-1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\dfrac{1}{2}$",
+    "solution": "[풀이 전략]\n도함수가 구간별로 주어졌으므로 각 구간에서 부정적분을 취하여 각각의 적분상수를 둡니다. $f(2)=-2$로 $x>1$ 구간의 적분상수를 결정하고, 모든 실수에서 미분가능하므로 $x=1$에서 연속이어야 한다는 조건을 이용하여 $x<1$ 구간의 적분상수를 결정합니다.\n\n[단계별 풀이]\n1단계: 구간별로 $f'(x)$를 부정적분합니다.\n$$f(x) = \\begin{cases} \\dfrac{1}{2}x^2 - 3x + C_1 & (x > 1) \\\\ -x^2 + C_2 & (x < 1) \\end{cases}$$\n\n2단계: $f(2)=-2$이므로 $x>1$ 구간의 식에 대입합니다.\n$$f(2) = \\frac{1}{2}(4) - 3(2) + C_1 = 2 - 6 + C_1 = -4 + C_1 = -2 \\implies C_1 = 2$$\n따라서 $x>1$일 때 $f(x) = \\frac{1}{2}x^2 - 3x + 2$입니다.\n\n3단계: 함수 $f(x)$가 모든 실수에서 미분가능하므로 $x=1$에서 연속입니다.\n$$\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} \\left(\\frac{1}{2}x^2 - 3x + 2\\right) = \\frac{1}{2} - 3 + 2 = -\\frac{1}{2}$$\n$$\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} (-x^2 + C_2) = -1 + C_2$$\n연속성에 의해 $-1 + C_2 = -\\frac{1}{2} \\implies C_2 = \\frac{1}{2}$입니다.\n(참고로 좌미분계수 $-2(1)=-2$와 우미분계수 $1-3=-2$가 일치하여 미분가능성도 만족합니다.)\n\n4단계: $f(-1)$을 구하기 위해 $x<1$ 구간의 식에 대입합니다.\n$$f(-1) = -(-1)^2 + C_2 = -1 + \\frac{1}{2} = -\\frac{1}{2}$$\n\n[오답 및 경계 점검]\n두 구간의 적분상수 $C_1, C_2$를 동일한 문자로 두면 심각한 오류가 발생합니다. 반드시 서로 다른 적분상수를 두고 연속성 조건을 통해 연결해야 합니다.\n\n[결론]\n$-\\dfrac{1}{2}$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가\n$$f(x)=4x^2+3x+\\int_0^1 t f(t) dt$$\n를 만족시킬 때, $f(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n등식에 포함된 정적분 $\\int_0^1 t f(t) dt$는 위끝과 아래끝이 모두 상수이므로 하나의 상수 $k$로 치환합니다. $f(x) = 4x^2+3x+k$로 둔 후 치환한 식에 다시 대입하여 $k$의 값을 구합니다.\n\n[단계별 풀이]\n1단계: 정적분 $\\int_0^1 t f(t) dt = k$ (상수)로 놓습니다.\n그러면 함수식은 $f(x) = 4x^2 + 3x + k$가 됩니다.\n\n2단계: $f(t) = 4t^2 + 3t + k$이므로 $t f(t) = 4t^3 + 3t^2 + kt$입니다.\n이를 치환식에 대입하여 계산합니다.\n$$k = \\int_0^1 (4t^3 + 3t^2 + kt) dt = \\left[t^4 + t^3 + \\frac{k}{2}t^2\\right]_0^1 = 1 + 1 + \\frac{k}{2} = 2 + \\frac{k}{2}$$\n\n3단계: $k$에 대한 일차방정식을 풉니다.\n$$k - \\frac{k}{2} = 2 \\implies \\frac{k}{2} = 2 \\implies k = 4$$\n따라서 함수식은 $f(x) = 4x^2 + 3x + 4$입니다.\n\n4단계: $f(1)$의 값을 구합니다.\n$$f(1) = 4(1)^2 + 3(1) + 4 = 4 + 3 + 4 = 11$$\n\n[오답 및 경계 점검]\n피적분함수가 $f(t)$가 아니라 $t f(t)$임에 주의하여 차수가 하나씩 높아진 $4t^3+3t^2+kt$를 정확히 적분해야 합니다.\n\n[결론]\n$11$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "부정적분과 정적분",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-03",
-    "standardUnit": "부정적분과 정적분",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-M1-07",
+    "standardUnit": "정적분",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "일차함수 $f(x)$와 다항함수 $g(x)$가 모든 실수 $x$에 대하여\n$$x f(x) = g(x) + \\int_0^x t f'(t) dt, \\quad f(x)g(x) = 2x^3+9x^2+9x$$\n를 만족시킬 때, $f(0)g(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$12$",
+    "solution": "[풀이 전략]\n첫 번째 등식 $x f(x) = g(x) + \\int_0^x t f'(t) dt$의 양변을 $x$에 대하여 미분하여 $g'(x) = f(x)$임을 이끌어냅니다. $f(x)$가 일차함수이므로 $g(x)$는 이차함수가 되며, 두 번째 곱의 식 $f(x)g(x)$의 인수분해를 통해 함수 $f(x), g(x)$를 확정합니다.\n\n[단계별 풀이]\n1단계: $x f(x) = g(x) + \\int_0^x t f'(t) dt$의 양변을 $x$에 대하여 미분합니다.\n$$\\frac{d}{dx} \\{x f(x)\\} = f(x) + x f'(x)$$\n$$\\frac{d}{dx} \\left\\{ g(x) + \\int_0^x t f'(t) dt \\right\\} = g'(x) + x f'(x)$$\n따라서 $f(x) + x f'(x) = g'(x) + x f'(x) \\implies g'(x) = f(x)$입니다.\n또한 원래 식에 $x=0$을 대입하면 $0 = g(0) + 0 \\implies g(0) = 0$입니다.\n\n2단계: $f(x)g(x) = 2x^3+9x^2+9x$를 인수분해합니다.\n$$2x^3+9x^2+9x = x(2x^2+9x+9) = x(2x+3)(x+3)$$\n$f(x)$는 일차함수이고 $g(x)$는 $g(0)=0$인 이차함수이며, $g'(x)=f(x)$를 만족해야 합니다.\n\n3단계: $g(0)=0$이므로 $g(x)$는 인수 $x$를 반드시 포함합니다.\n따라서 가능한 조합을 검토합니다.\n- 경우 1: $f(x) = 2x+3$이면 $g'(x) = 2x+3 \\implies g(x) = x^2+3x = x(x+3)$입니다. 이때 $f(x)g(x) = (2x+3)x(x+3) = 2x^3+9x^2+9x$로 정확히 일치합니다.\n- 경우 2: $f(x) = -2x-3$이면 $g(x) = -x^2-3x = -x(x+3)$이어도 곱은 동일합니다.\n\n4단계: 두 경우 모두에서 $f(0)g(1)$을 계산합니다.\n- 경우 1: $f(0) = 3$, $g(1) = 1^2 + 3(1) = 4 \\implies f(0)g(1) = 3 \\times 4 = 12$\n- 경우 2: $f(0) = -3$, $g(1) = -1 - 3 = -4 \\implies f(0)g(1) = (-3) \\times (-4) = 12$\n따라서 $f(0)g(1) = 12$입니다.\n\n[오답 및 경계 점검]\n$g'(x)=f(x)$ 관계와 $g(0)=0$ 조건을 통해 다항함수 곱의 인수들을 정확히 짝지어 주어야 합니다.\n\n[결론]\n$12$"
   }
 ];
