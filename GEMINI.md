@@ -1,6 +1,6 @@
 # Gemini / JS Archive 공통 메타 진입
 
-- GPT·Claude·Gemini·Codex 공통: [목표·방법 검토와 결과 검증 계약](docs/agents/outcome-method-review.md)을 먼저 적용한다. 사용자 목표·고정 요구와 제안된 수단을 구분하고, 실제 원시 자료·전문적 검증으로 더 나은 방법을 선택한다. 아래 메타/6단계 승인 경계는 변경하지 않는다.
+- GPT·Claude·Gemini·Codex 공통: [목표·방법 검토와 결과 검증 계약](docs/agents/outcome-method-review.md) 본문을 먼저 읽고 적용한다. 이미 읽은 판본은 재사용하고 접근 실패는 미적용으로 기록한다. 사용자 목표·고정 요구와 제안된 수단을 구분하고, 실제 원시 자료·전문적 검증으로 더 나은 방법을 선택한다. 아래 메타/6단계 승인 경계는 변경하지 않는다.
 
 - 이 저장소의 JS Archive 신규 학교 기출 CREATE/R1/R2/R3 메타 작업 시 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 먼저 읽는다.
 - 교육과정 내 실제 학생 풀이 → 표준단원/세부단원 → Primary RPM L1~L4 → CrossConcept/Condition/Integration은 의미 판정, PT/TPL은 기존 ACTIVE 정본을 조회하는 공식 Resolver 결과만 사용한다. PT/TPL 임의 추정/중복 생성, 인수분해 보조 개념에 의한 Primary 변경, 범위 밖 미분 풀이 금지.

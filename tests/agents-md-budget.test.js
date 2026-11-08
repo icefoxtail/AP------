@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-// The root AGENTS.md is loaded into every agent session, so it stays a short router: area-specific directions
+// Runtimes that discover the root AGENTS.md use it as a short router: area-specific directions
 // and campaign rules live in docs/agents/*.md; concise cross-line priorities may live in its common section.
 // This guards the budget, keeps dated directive sections out of the root, and checks both directions of the
 // routing (every route exists, every area doc is routed). Raise the budget only on an explicit user decision.
