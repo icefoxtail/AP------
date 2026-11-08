@@ -59,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직 점근선의 양쪽에 그래프 가지가 있고 오른쪽 가지에는 열린 점이 표시되어 있다.",
+    "solutionImageCaption": "제외값 -3과 3은 각각 수직점근선과 약분 가능한 구멍으로 나타난다. 약분하면 y=1/(x+3)이고, x=3의 열린 점이 구멍이다. 두 값의 합을 구하면 정답은 0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -119,7 +123,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 그래프에 극대점 (0,5), 조건점 P(1,-2), 극소점 (3,-22)가 표시되어 있다.",
+    "solutionImageCaption": "도함수를 적분해 삼차함수를 복원하고 f(1)=-2로 적분상수를 정한다. 따라서 정답은 -15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -275,7 +283,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 표시 구간 0부터 4까지에서 곡선은 경계점 (0,2)에서 시작해 x=1에서 낮아진 뒤 증가한다.",
+    "solutionImageCaption": "x≥0에서 경계점 (0,2)와 내부 극솟점 x=1을 비교한다(그림은 0≤x≤4만 표시하며 x=4는 표시 범위의 끝이다). 최솟값은 1이므로 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -303,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 시각 t, 세로축은 위치 x이며 곡선 위에 (0,0), (3,-27), (4,-24)가 표시되어 있다.",
+    "solutionImageCaption": "시각 3에서 방향이 바뀌므로 위치 변화량을 구간별로 더한다. 총 움직인 거리는 30이므로 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -363,7 +379,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -9와 9의 열린 끝점, 그 사이의 굵은 범위와 정수 후보 점들이 표시되어 있다.",
+    "solutionImageCaption": "조건에서 -9<a<9를 얻고 이 구간의 정수 a를 센다. 정답은 17개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -391,7 +411,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 곡선이 t=2에서 x축과 만나며, t=1부터 2까지의 음의 영역과 t=2부터 4까지의 양의 영역이 색으로 구분되어 있다.",
+    "solutionImageCaption": "속도는 t=2에서 음수에서 양수로 바뀐다. 1부터 4까지의 부호 있는 넓이를 합하면 정답은 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -410,9 +434,9 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^3+3ax^2+bx+c$의 도함수 $y=f'(x)$의 그래프가 그림과 같다. 함수 $f(x)$의 극댓값이 $29$일 때, $f(x)$의 극솟값을 구하라. (단, $a$, $b$, $c$는 상수이다.) [4.9점]",
     "image": "assets/images/23_매산고_2학기_기말_고2_수학II/q14.png",
-    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "도함수의 근과 부호를 이용하여 원함수의 극대와 극소를 읽는 해설 그래프",
-    "solutionImageCaption": "f′(x)=3(x+3)(x−1)에서 극대점은 x=-3, 극소점은 x=1이고, 극솟값은 -3이다.",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 두 x절편과 꼭짓점이 표시되어 있다.",
+    "solutionImageCaption": "그림은 도함수 y=f'(x)=3x^2+6x-9이다. 도함수의 근 -3과 1에서 원함수의 극대와 극소가 정해진다. 극소값은 -3이므로 정답은 -3이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "answer": "②",
@@ -505,9 +529,9 @@ window.questionBank = [
     "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 $f(4)=0$이고, 모든 실수 $x$에 대하여 $f(2-x)+f(2+x)=0$을 만족시킨다. 두 곡선 $y=f(x)$와 $y=-12x^2$로 둘러싸인 부분의 넓이를 구하시오. [5점]",
     "choices": [],
     "answer": "8",
-    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "세 교점에서 두 곡선이 만드는 두 영역을 표시한 해설 그래프",
-    "solutionImageCaption": "f(x)+12x²=x(x+2)(x+4)이고, 두 영역의 넓이는 각각 4이므로 전체 넓이는 8이다.",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선의 차 h(x)가 x=-4,-2,0에서 x축과 만나고, x축 위쪽 영역 S1과 아래쪽 영역 S2가 칠해져 있다.",
+    "solutionImageCaption": "두 곡선의 차 h(x)=f(x)+12x^2=x(x+2)(x+4)의 그래프와 x축 사이의 영역이 곧 두 곡선 사이의 넓이이다. x=-2에서 부호가 바뀌어 S1(위쪽)과 S2(아래쪽)로 나뉘고 각각 적분해 더한다. 넓이의 합은 8이므로 정답은 8이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "solution": "조건 정리: $f(2-x)+f(2+x)=0$은 점 $(2,0)$에 대하여 홀대칭임을 뜻한다.\n풀이 방향: 대칭을 이용해 $f(x)$를 구하고, 두 곡선의 교점을 찾아 구간별 넓이를 계산한다.\n정석 풀이: $u=x-2$로 두고 $h(u)=f(u+2)$라 하면 $h(-u)=-h(u)$이고 최고차항의 계수가 1인 삼차함수이므로 $h(u)=u^3+pu$이다. 따라서 $f(x)=(x-2)^3+p(x-2)$이다. 조건 $f(4)=0$을 대입하면 $8+2p=0$이므로 $p=-4$이고, $f(x)=(x-2)^3-4(x-2)=x(x-2)(x-4)$이다. 두 곡선의 교점은 $f(x)=-12x^2$에서 $x(x-2)(x-4)+12x^2=x(x+2)(x+4)=0$이므로 $x=-4,-2,0$이다. 따라서 넓이는 $\\displaystyle\\int_{-4}^{-2}\\{f(x)+12x^2\\}dx+\\int_{-2}^{0}\\{-12x^2-f(x)\\}dx$이다. $u=x+2$로 두면 $f(x)+12x^2=u^3-4u$이다. 첫 번째 영역의 넓이는\n$\\displaystyle\\int_{-4}^{-2}\\{f(x)+12x^2\\}dx=\\int_{-2}^{0}(u^3-4u)du=\\left[\\dfrac{u^4}{4}-2u^2\\right]_{-2}^{0}=4$이다.\n두 번째 영역의 넓이는\n$\\displaystyle\\int_{-2}^{0}\\{-12x^2-f(x)\\}dx=-\\int_{0}^{2}(u^3-4u)du=-\\left[\\dfrac{u^4}{4}-2u^2\\right]_{0}^{2}=4$이다.\n따라서 전체 넓이는 $4+4=8$이다.\n따라서 구하는 값은 $8$이다.",
@@ -536,7 +560,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 x=2를 기준으로 대칭인 사차곡선이 x=0,4에서 x축에 닿고, x=2에서 (2,16)에 이른다.",
+    "solutionImageCaption": "함수의 비음수 조건으로 0<A≤1을 얻는다. A=1에서 f(-2)의 최댓값 144를 얻으므로 정답은 144이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -560,7 +588,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 알파 수직선은 -3 이상 -2 미만, 베타 수직선은 2 이상 3 미만의 범위를 나타낸다.",
+    "solutionImageCaption": "두 근의 범위로 조건을 정리해 가능한 정수를 제한한다. 미분계수의 최댓값을 구하면 정답은 224이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -581,9 +613,9 @@ window.questionBank = [
     "content": "삼차함수 $f(x)$는 $f(0)=f(3)=0$, $f'(0)=0$, $f(x)$의 극댓값이 $16$이다. 상수 $a<3$에 대하여 함수 $g(x)=\\displaystyle\\int_a^x f(t)dt$라 하자. $|g(x)|$는 $x=k$에서만 미분 불가능할 때, $\\displaystyle\\int_a^4 g(x)dx$의 값을 구하시오. [10점]",
     "choices": [],
     "answer": "256/5",
-    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "a=0일 때의 g(x)=x^3(4-x) 그래프와 적분 구간을 나타낸 해설 그래프",
-    "solutionImageCaption": "a=0에서 g(x)=x^3(4-x)가 되고, |g(x)|의 미분 불가능점은 x=4 하나이며 적분값은 256/5이다.",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 곡선은 원점에서 완만하게 닿고 x=4에서 뾰족하게 꺾이며, 0부터 4까지의 아래 영역이 색칠되어 있다.",
+    "solutionImageCaption": "a가 0일 때 x=4에서 꺾이는 절댓값 그래프와 0부터 4까지의 영역을 나타낸다. 정답은 256/5이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "solution": "조건 정리: $f(0)=f(3)=0$, $f'(0)=0$이므로 $f(x)=mx^2(x-3)$ 꼴이다. 또 극댓값이 $16$이므로 계수 $m$를 정할 수 있다.\n풀이 방향: 먼저 $f(x)$와 $g(x)$를 구하고, $|g(x)|$가 한 점에서만 미분 불가능하다는 조건으로 $a$를 결정한 뒤 적분값을 계산한다.\n정석 풀이: $f(x)=mx^2(x-3)$라 두면 $f'(x)=3mx(x-2)$이므로 $x=2$에서 극값을 가진다. 극댓값이 $16$이므로 $f(2)=m\\cdot4\\cdot(-1)=-4m=16$, 따라서 $m=-4$이다. 그러므로 $f(x)=4x^2(3-x)$이다. 이제 $g(x)=\\displaystyle\\int_a^x4t^2(3-t)dt$이다. $x<3$에서는 $f(x)\\ge0$이므로 $g(x)$는 증가함수이다. 만약 $a\\ne0$이면 $g(a)=0$이고 $f(a)\\ne0$이어서 $|g(x)|$는 $x=a$에서 미분 불가능하다. 또한 $g(3)>0$이고 $x>3$에서는 $f(x)<0$이므로 감소하여 어떤 $x>3$에서 다시 0이 된다. 그러면 미분 불가능점이 두 개 생긴다. 따라서 미분 불가능점이 하나만 되려면 반드시 $a=0$이어야 한다. 이때 $g(x)=\\int_0^x4t^2(3-t)dt=4x^3-x^4=x^3(4-x)$이다. 따라서 $\\displaystyle\\int_a^4 g(x)dx=\\int_0^4(4x^3-x^4)dx=[x^4-\\frac{x^5}{5}]_0^4=256-\\frac{1024}{5}=\\frac{256}{5}$이다.\n따라서 구하는 값은 $\\dfrac{256}{5}$이다.",

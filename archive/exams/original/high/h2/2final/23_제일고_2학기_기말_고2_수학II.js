@@ -126,7 +126,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: x≥0에서 삼차함수의 감소와 증가, 최솟값 점을 나타낸 그래프.",
+    "solutionImageCaption": "x≥0에서 h(x)는 x=1에서 최솟값 −5를 갖는다. 따라서 a>5이고 정수 a의 최솟값은 6이다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -155,7 +159,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간에 따른 속도 그래프와 방향 전환 시각을 나타낸 그림.",
+    "solutionImageCaption": "속도는 t=5/3에서 부호가 바뀐다. 가속도 a(t)=12t−10을 대입하면 10이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -184,7 +192,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 삼차함수의 극대와 극소가 x축의 서로 다른 쪽에 놓인 그래프.",
+    "solutionImageCaption": "예: k=0일 때 p(x)=x³−3x²−9x+5는 극대와 극소가 x축의 서로 다른 쪽에 있어 세 실근을 갖는다. 일반 조건과 근의 부호를 적용하면 정수 k는 26개이다. 정답은 26이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -213,7 +225,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 직선 y=ax가 만나는 두 점과 두 그래프 사이의 색칠 영역.",
+    "solutionImageCaption": "직선과 포물선은 x=0과 x=(a+3)/2에서 만나고 그 사이 넓이는 (a+3)³/24이다. 이 값이 9이므로 a=3이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -242,7 +258,11 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 표시한 세 매개변수 값.",
+    "solutionImageCaption": "ㄱ, ㄴ, ㄹ은 참이고 ㄷ은 항상 참이 아니므로 옳은 것은 세 개이다. 정답은 3개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -304,7 +324,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 그래프가 원점에서 최솟값을 갖는 모습.",
+    "solutionImageCaption": "임의의 x₁, x₂에 대한 조건은 f의 최댓값이 g의 최솟값 이하라는 뜻이다. 18−k≤0이므로 최솟값은 18이다. 정답은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -333,7 +357,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: k=−2일 때 도함수 그래프가 x=0에서 x축에 닿고 x>0에서 음수인 모습.",
+    "solutionImageCaption": "모든 x>0에서 감소하려면 f′(x)가 양수가 되면 안 되고 k≤−2이다. 경계 k=−2에서 f′(x)=−x(x+4)이므로 x>0에서 f′(x)<0이다. 가능한 k의 최댓값은 −2이다. 정답은 −2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -395,7 +423,11 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 이차함수의 그래프와 x=4에서의 점.",
+    "solutionImageCaption": "f′(x)=3x²−10x+3이고 대칭구간 적분의 극한은 2f′(4)이다. f′(4)=11이므로 값은 22이다. 정답은 22이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -424,7 +456,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 식이 t=1에서 이어지고 t=2에서 x축을 지나는 조각별 속도 그래프.",
+    "solutionImageCaption": "속도의 부호 적분으로 위치는 −8/3, 이동거리는 5가 된다. 따라서 3a+b=−3이다. 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -453,7 +489,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 직선이 t=4에서 x축과 만나는 그래프.",
+    "solutionImageCaption": "속도는 4초에 0이 되어 멈추며 그때까지 이동한 거리가 필요한 최소 제동거리이다. 정답은 40m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -482,7 +522,11 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 그래프와 x=−1에서의 함수값 점.",
+    "solutionImageCaption": "적분 조건에서 a+b=−1, f(−1)=13/2를 얻는다. 따라서 20f(a+b)=130이다. 정답은 130이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -546,7 +590,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 아래의 진한 영역과 x=3부터 x=4까지의 연한 영역이 표시된 조각별 삼차함수 그래프.",
+    "solutionImageCaption": "연속 조건과 넓이 조건으로 a=3, k=9/2를 얻는다. x축 아래 진한 부분이 S₂, [3,4]의 연한 부분이 S₁이다. 따라서 k−a=3/2이다. 정답은 3/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -575,7 +623,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 열린 구간과 그 안팎의 세 예시 수.",
+    "solutionImageCaption": "처음 가능한 계수는 q=5, p=4이며 f(1)=1+4+5+1=11이다. 정답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -600,7 +652,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 포물선이 x=−1과 x=5에서 x축을 지나는 그래프.",
+    "solutionImageCaption": "도함수의 근으로 p=−6, q=−15를 얻고 극댓값 조건에서 r=2이다. 따라서 p+q+r=−19이다. 정답은 −19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -626,10 +682,11 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "포물선 y=16-x²와 수평선 y=32/3, 직선 x=4가 만드는 두 영역의 그래프",
-    "solutionImageCaption": "두 넓이가 같다는 조건은 0부터 4까지의 부호 있는 넓이 합이 0이라는 뜻이다.",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x≤4에서 포물선과 수평선 y=k, 세로선 x=4를 나타낸 그래프.",
+    "solutionImageCaption": "수평선 y=k가 포물선과 만나는 점을 기준으로 위쪽 부분과 아래쪽 부분의 넓이가 같다는 조건은 ∫₀⁴(16−x²−k)dx=0과 같다. 따라서 k=32/3이다. 정답은 32/3이다.",
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -654,7 +711,11 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 a, 1, b 순서로 놓인 도함수의 세 영점.",
+    "solutionImageCaption": "근의 합과 곱을 이용하면 f′(2)=−4이다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -679,6 +740,10 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "sourcePdf": "2023_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2023_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수가 한 점에서 x축을 지나고 다른 점에서 접하는 그래프.",
+    "solutionImageCaption": "경계 a=32에서 도함수는 x=4에서 부호를 바꾸지 않아 g는 한 번만 감소한 뒤 증가한다. 양수 a의 최솟값은 32이다. 정답은 32이다.",
+    "solutionImageSize": "full"
   }
 ];

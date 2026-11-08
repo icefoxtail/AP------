@@ -59,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 시각에 따른 속도 그래프가 원점을 지나 음수가 되었다가 다시 t축과 만나 양수로 바뀐다.",
+    "solutionImageCaption": "위치 함수를 미분해 얻은 속도 그래프에서 t>0일 때 속도의 부호가 바뀌는 곳을 살핀다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -87,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위의 양 끝점, 할선과 이에 평행한 접선이 표시되어 있다.",
+    "solutionImageCaption": "양 끝점을 잇는 할선과 평균값 정리를 만족하는 평행 접선을 비교한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -243,7 +251,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간에서 사차함수의 양 끝점과 내부 극점이 표시되어 있다.",
+    "solutionImageCaption": "양 끝점과 내부 극점의 함수값을 비교해 최댓값과 최솟값을 찾는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -340,9 +352,10 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q11-solution.svg",
-    "solutionImageAlt": "속도 그래프의 각 구간 넓이와 시각 2, 4, 6, 8에서의 위치를 표시한 해설 그림",
-    "solutionImageCaption": "부호 있는 넓이로 위치, 절댓값 넓이로 이동 거리를 계산한다."
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 그래프가 여섯 점을 잇는 선분으로 그려져 있고 시간과 속도 축이 표시되어 있다.",
+    "solutionImageCaption": "속도 그래프의 부호와 넓이로 운동 방향과 위치를 판단한다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -370,7 +383,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 극대점과 극소점, 원점이 표시되어 있다.",
+    "solutionImageCaption": "극댓값과 극솟값, 원점의 함수값으로 세 근의 위치를 판정한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -398,7 +415,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수의 일부와 원점을 지나는 기울기 1인 직선이 같은 눈금 간격으로 그려져 있다.",
+    "solutionImageCaption": "원함수와 기울기 1인 직선의 대칭으로 역함수 아래 넓이를 해석한다. 정답은 5/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -426,7 +447,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 매개변수를 2로 둔 예에서 삼차함수의 극소점과 극대점, 구간 경계가 표시되어 있다.",
+    "solutionImageCaption": "예: 매개변수가 2일 때 극소점은 주어진 구간 안에, 극대점은 그 오른쪽에 놓인다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -454,7 +479,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수가 x축에 접하는 점과 x축을 가로지르는 점, 극소점이 표시되어 있다.",
+    "solutionImageCaption": "예: 경계 사례에서 그래프가 x축에 접하는 중근과 한 단순근을 갖는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -516,7 +545,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수와 주어진 직선이 접하는 점, 다시 만나는 점, 두 번째 접선이 표시되어 있다.",
+    "solutionImageCaption": "예: 두 교점과 기울기 6인 두 번째 접선을 확인한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -544,7 +577,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 곡선과 극값에서 맞닿는 두 수평선이 표시되어 있다.",
+    "solutionImageCaption": "홀삼차함수의 대칭과 극값에서의 접촉으로 함수를 정한다. 정답은 -4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -572,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: t에 따라 일정하게 유지되다가 증가하는 함수의 그래프가 그려져 있다.",
+    "solutionImageCaption": "누적 최댓값 그래프 아래 넓이를 두 구간으로 나누어 적분한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

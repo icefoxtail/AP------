@@ -218,7 +218,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선과 원점을 지나는 할선, 한 점에서 접하는 평행한 접선이 함께 그려져 있다.",
+    "solutionImageCaption": "0과 2에서 함수값을 잇는 할선과 기울기 5의 접선을 비교한다. 접점에서 순간변화율은 평균변화율과 같다. 정답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -328,7 +332,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 시각에 따른 속도 포물선이 시작점과 양수 시각의 부호 전환점에서 시간축을 지난다.",
+    "solutionImageCaption": "속도의 부호가 양수에서 음수로 바뀌는 순간을 찾는다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -386,7 +394,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -3,-2,0,1,2,3과 각 구간의 증가·감소, 영점과 미정의점이 표시되어 있다.",
+    "solutionImageCaption": "원문 도함수 그래프의 부호를 수직선에 요약한다. 검은 점은 도함수가 0인 점, ×는 도함수가 정의되지 않는 점(구간 끝 포함)이다. 도함수의 부호가 바뀌는 두 지점에서 원함수의 극대와 극소를 판정한다. 정답은 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -498,7 +510,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 감소하는 직선 y=-2x+4와 두 좌표점이 표시되어 있다.",
+    "solutionImageCaption": "y=-2x+4 직선 그래프. 대칭구간에서 홀함수 부분은 상쇄되고 상수항의 적분은 8a가 된다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -552,7 +568,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로값을 실제 함수값의 4분의 1로 나타낸 삼차함수 그래프에 두 극점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "a=7일 때 f를 4로 나눈 그래프의 두 극점을 표시한다. 도함수의 영점으로 극대와 극소를 정하고 주어진 극댓값으로 상수항을 구한다. 정답은 -20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -671,7 +691,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 -3,1,4 경계로 두 적분 구간을 나누고 각각 -3과 +2를 표시했다.",
+    "solutionImageCaption": "두 구간의 부호 있는 적분값을 더하면 f의 적분은 -1이고, 2x의 적분은 7이다. 전체 적분값을 합한다. 정답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -730,7 +754,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프에 극대점 (-2,15), 극소점 (2,-17)과 y=15, y=-17인 두 수평선이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=x^3-12x-1의 극댓값은 15, 극솟값은 -17이다. |f(x)|=a는 f(x)=a 또는 f(x)=-a이다. 수평선 y=-17은 극솟값에서 접해 서로 다른 교점이 x=2, x=-4의 2개이고, y=17은 극댓값 15보다 위라 교점이 1개여서 합이 3개가 된다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -788,7 +816,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: x(cm)에 따른 부피의 16분의 1 그래프가 열린 양 끝과 꼭짓점 (2,8)로 표시되어 있다.",
+    "solutionImageCaption": "상자의 부피를 V(x)라 하면 허용 구간에서 부피는 x=2까지 증가한 뒤 감소하며, 세로값은 실제 부피의 16분의 1이다. 정답은 128 세제곱센티미터이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -967,7 +999,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 갈래 수형도에 n의 범위별 실근 수 3,2,1이 표시되어 있다.",
+    "solutionImageCaption": "n의 세 범위별 서로 다른 실근 수를 나눈다(화살표 오른쪽 수가 실근 수). n=1~3은 세 실근, n=4는 두 실근, n=5~10은 각각 한 실근이다. 정답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1025,7 +1061,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: S1과 S2로 표시된 두 영역, x=1 지점, 그리고 두 번째 영역의 오른쪽 경계가 보인다.",
+    "solutionImageCaption": "첫 넓이 S1은 1/4이며, 그 네 배와 두 번째 넓이를 같게 두어 a를 구한다. 정답은 √3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1142,7 +1182,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: A의 속도 곡선과 B의 속도 직선이 두 번 만나고, B는 2초부터 시작한다.",
+    "solutionImageCaption": "A가 발사된 순간을 시각 0으로 잡으면 곡선 vA(t)=t^2/40이고, B는 2초부터 시작하는 직선 vB(t)=9(t-2)/40이다. 속도가 같은 시각은 3초와 6초이고, 위치 조건까지 만족하는 시각은 6초이다. 정답은 249이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1198,7 +1242,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 -5,-3,-2,2,3,5와 구간 적분값 -20,6,14가 표시되어 있다.",
+    "solutionImageCaption": "홀함수 조건에서 대칭 구간의 적분은 0이고, 2부터 5까지 f의 적분은 20이다. 2부터 3까지의 값 6을 빼면 3부터 5까지는 14이며, 4x 항의 적분 32를 더한다. 정답은 46이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1302,7 +1350,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 P와 Q의 위치 14와 23이 표시되고, 두 점 사이를 거리로 연결했다.",
+    "solutionImageCaption": "속도가 같을 때 P와 Q의 위치는 각각 14와 23이고 그 차이를 잰다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1352,7 +1404,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 도함수 포물선이 x축을 0과 4에서 지나며 함수의 증가·감소·증가 구간을 보여 준다.",
+    "solutionImageCaption": "도함수의 두 영점과 부호 변화로 함수의 극점을 정하고 주어진 극댓값으로 상수항을 구한다. 정답은 a=-6, b=0, c=5, 극솟값 -27이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1400,6 +1456,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 수직선은 적분값 7,-2,8의 구간을, 아래 수직선은 선형항 적분 -18의 구간을 표시한다.",
+    "solutionImageCaption": "구간 가법성으로 얻은 적분값과 선형항의 적분을 나눈다. 정적분의 구간 가법성으로 f의 적분을 구하고 선형항 적분을 뺀다. 정답은 25이다.",
+    "solutionImageSize": "full"
   }
 ];
