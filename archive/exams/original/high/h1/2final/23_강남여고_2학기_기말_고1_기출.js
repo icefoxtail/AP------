@@ -607,7 +607,7 @@ window.questionBank = [
     "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 유리함수와 y=x 위에서 반복 함수값이 순환하는 예시 경로.",
     "solutionImageCaption": "예: a=2에서 f를 세 번 적용하면 2→1/2→−1→2로 돌아온다. 따라서 P=(f(a),f(a))는 문제의 점 C에 해당한다. 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
