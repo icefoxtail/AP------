@@ -1,0 +1,17 @@
+{
+ "capability":"set-diagram-figure-v1",
+ "diagram":{
+  "kind":"MAPPING",
+  "columns":[{"id":"X","name":"처음","elements":["z","w"]},{"id":"Y","name":"제곱","elements":["i","-i"]},{"id":"Z","name":"다시 제곱","elements":["-1"]}],
+  "arrows":[
+   {"from":{"column":0,"element":0},"to":{"column":1,"element":0}},
+   {"from":{"column":0,"element":1},"to":{"column":1,"element":1}},
+   {"from":{"column":1,"element":0},"to":{"column":2,"element":0}},
+   {"from":{"column":1,"element":1},"to":{"column":2,"element":0}}
+  ],
+  "arrowGroups":[{"name":"제곱","from":"X","to":"Y","color":"BLUE"},{"name":"제곱","from":"Y","to":"Z","color":"WARM"}]
+ },
+ "caption":"두 복소수를 각각 두 번 제곱하면 모두 -1이 된다.",
+ "sourceConditions":[{"id":"c1","condition":"z=(1+i)/sqrt(2), w=z-sqrt(2)=(-1+i)/sqrt(2); z²=i, w²=-i","mappedTo":["diagram"]}],
+ "newVisualInformation":["z와 w의 제곱을 두 번 적용하는 경로"]
+}
