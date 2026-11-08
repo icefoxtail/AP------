@@ -1,0 +1,13 @@
+{
+ "capability":"set-diagram-figure-v1",
+ "sourceQuote":"원래 식에 $(a,b)$를 넣으면",
+ "diagram":{
+  "kind":"MAPPING",
+  "columns":[{"id":"X","name":"입력","elements":["ab"]},{"id":"Y","name":"함숫값","elements":["ab"]}],
+  "arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}}],
+  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
+ },
+ "caption":"조건에서 얻은 입력 ab는 함수에 의해 자기 자신으로 대응된다.",
+ "sourceConditions":[{"id":"c1","condition":"f(a)=b, f(b)=a이고 주어진 함수식에서 f(ab)=ab","mappedTo":["diagram"]}],
+ "newVisualInformation":["조건에서 도출되는 고정점의 입력과 출력"]
+}
