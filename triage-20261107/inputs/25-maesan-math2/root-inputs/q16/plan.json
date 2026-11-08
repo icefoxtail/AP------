@@ -1,8 +1,75 @@
 {
- "capability":"polynomial-spike-v1",
- "graphPlan":{"family":"polynomial","coefficients":["0","0","2/5","-7/50","1/100"],"domain":[-1,11],"viewport":[-1,11,-6,9],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"A","x":0,"y":0},{"id":"B","x":4,"y":0},{"id":"C","x":8,"y":"-128/25"},{"id":"D","x":10,"y":0}],"axisTickValues":{"x":[0,4,8,10],"y":[]}},
- "caption":"세로값을 100으로 나눈 y=f(x)/100의 그래프에서 부호 구간을 본다.",
- "sourceConditions":[{"id":"c1","condition":"f(x)=x²(x−4)(x−10), 최고차항 계수 1; 그림은 y=f(x)/100","mappedTo":"graphPlan.coefficients"}],
- "newVisualInformation":["0은 이중근, 4와 10 사이에서 f<0, f(8)=−512; 표시 그래프의 세로값은 실제 함수값의 1/100"],
- "sourceQuote":"$f(x)=x^2(x-4)(x-10)$이다."
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "2/5",
+      "-7/50",
+      "1/100"
+    ],
+    "domain": [
+      -1,
+      11
+    ],
+    "viewport": [
+      -1,
+      11,
+      -6,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 8.0,
+        "y": -5.12
+      },
+      {
+        "id": "D",
+        "x": 10,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "y": []
+    },
+    "exactCoordinates": {
+      "C": [
+        "8",
+        "-128/25"
+      ]
+    }
+  },
+  "caption": "세로값을 100으로 나눈 y=f(x)/100의 그래프에서 부호 구간을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x²(x−4)(x−10), 최고차항 계수 1; 그림은 y=f(x)/100",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "0은 이중근, 4와 10 사이에서 f<0, f(8)=−512; 표시 그래프의 세로값은 실제 함수값의 1/100"
+  ],
+  "sourceQuote": "$f(x)=x^2(x-4)(x-10)$이다."
 }
