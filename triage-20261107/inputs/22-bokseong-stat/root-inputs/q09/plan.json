@@ -1,0 +1,56 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "75",
+        "sd": "7.5",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "60",
+      "75"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "60"
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "평균 75인 정규곡선에서 조건 경계와 음영 영역의 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 75인 정규곡선에서 조건 경계와 음영 영역의 관계",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "60명 이하",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source_extra0",
+      "condition": "25%인",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source_extra1",
+      "condition": "300명을",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source_extra2",
+      "condition": "연속성 보정은 하지 않는다",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 75인 정규곡선에서 조건 경계와 음영 영역의 관계"
+  ]
+}
