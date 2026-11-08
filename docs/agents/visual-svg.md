@@ -26,7 +26,7 @@ Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/
 
 ### 고1 2학기 기말 해설 SVG 진행 경로 (2026-11-08 사용자 지시)
 
-PC의 Claude 메인이 `codex exec`로 루나를 직접 부른다. 시험지 하나씩 ① 루나 구현(effort high, 공식 엔진 렌더) → ② 다른 실행의 루나 검수(effort xhigh, 원문·정답·해설 대조, 문제가 있으면 plan·publish를 고쳐 재렌더) → ③ Sonnet 최종 검수(기계 점검: ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음, alt에 정답 없음, caption 끝 정답 + PNG를 정답·해설과 대조) → ④ Claude 메인 반영 순서로 진행한다. 미해결 문항은 Sonnet 작업자가 고치고, 엔진 공백은 사유를 적어 OPEN으로 넘긴다. 최종 검수를 통과한 시험지가 5개 모이면 PR 하나로 게시·병합한다(CI 녹색 확인 후). 이 경로에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 이유: 구현은 지시가 분명하면 루나 high로 충분하고 검수는 xhigh가 결함을 잘 잡았으며, 시험지마다 PR·전체 검수를 반복하면 CI와 토큰이 낭비됐다.
+PC의 Claude 메인이 `codex exec`로 루나를 직접 부른다. 시험지 하나씩 ① 루나 구현(effort high, 공식 엔진 렌더) → ② 다른 실행의 루나 검수(effort xhigh, 원문·정답·해설 대조, 문제가 있으면 plan·publish를 고쳐 재렌더) → ③ Sonnet 최종 검수(기계 점검: ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음, alt에 정답 없음, caption 끝 정답, y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 `equalUnits:true` + PNG를 정답·해설과 대조) → ④ Claude 메인 반영 순서로 진행한다. 미해결 문항은 Sonnet 작업자가 고치고, 엔진 공백은 사유를 적어 OPEN으로 넘긴다. 최종 검수를 통과한 시험지가 5개 모이면 PR 하나로 게시·병합한다(CI 녹색 확인 후). 이 경로에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 이유: 구현은 지시가 분명하면 루나 high로 충분하고 검수는 xhigh가 결함을 잘 잡았으며, 시험지마다 PR·전체 검수를 반복하면 CI와 토큰이 낭비됐다. equalUnits 점검은 y=x 반복 경로 그림이 눈금 비 차이로 45°보다 가파르게 그려져 루나·Sonnet 검수를 모두 통과한 일을 사용자가 지적해 넣었다.
 
 ## 다른 AI 라인용 SVG 도형 엔진 작업 프롬프트 (2026-11-03, 사용자 지시)
 
