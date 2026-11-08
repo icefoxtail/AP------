@@ -2780,6 +2780,12 @@ window.addEventListener('DOMContentLoaded', function () {
       // 기울기가 큰 직선 그래프는 보이는 범위 끝까지 그려져 재는 범위가 수백 배로 커집니다(그림이 사라지고 눈금이 끝없이 이어짐). 그럴 땐 장면의 고정 범위를 씁니다.
       const wide = (r) => !r || !Array.isArray(r) || !(Math.abs(r[1] - r[0]) <= 200);
       if (f && (wide(f.x) || wide(f.y))) f = typeof sc.focus === 'function' ? sc.focus(L.s) : sc.focus;
+      // 모바일 새 문제에서는 기존 기본 문제의 확대 상태를 이어받으면 h=8 등의 꼭대기·좌표가 무대 밖으로 나갑니다.
+      // 원본 그래픽의 1000×700 설계 좌표를 조금 여유 있게 표시하며, 탐구 탭과 다른 단원은 건드리지 않습니다.
+      const mobileVariantClips = new Set(['bas-1', 'bas-3', 'bas-4', 'bas-6', 'bas-10', 'bas-11', 'adv-7', 'adv-8']);
+      if (L.tab !== 'explore' && !sc.vary.isBase() && mobileVariantClips.has(sc.id) && window.matchMedia('(max-width: 859px)').matches) {
+        f = { x: [-70, 1070], y: [-70, 770] };
+      }
       if (f) L.board.setFocus(f, true);
       L.invalidate(true);
     } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
