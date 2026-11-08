@@ -1,0 +1,10 @@
+{
+ "capability":"composite-panels-v1",
+ "panels":[
+  {"caption":{"math":"0<=x<=3","text":"한 주기"},"plan":{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","functionName":"g","pieces":[{"coefficients":["0","1","0"]},{"coefficients":["4","-3","0"]},{"coefficients":["0","-3","1"]}],"breakpoints":[{"x":"1","y":"1"},{"x":"2","y":"-2"}],"sourceDomain":{"kind":"INTERVAL","range":["0","3"],"states":["CLOSED","CLOSED"]},"requiredPoints":[{"id":"A","x":"1","y":"1"},{"id":"B","x":"2","y":"-2"},{"id":"U","x":"4/3","y":"0"}],"exactCoordinates":{"U":["4/3","0"]},"axisTickValues":{"x":[],"y":[]},"regions":[{"id":"P1","upper":"f","lower":"axis","from":"0","to":"4/3","fill":"BLUE"},{"id":"N1","upper":"axis","lower":"f","from":"4/3","to":"3","fill":"WARM"}]}}},
+  {"caption":{"math":"3<=x<=5","text":"반복 구간"},"plan":{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","functionName":"g","pieces":[{"coefficients":["-3","1","0"]},{"coefficients":["13","-3","0"]}],"breakpoints":[{"x":"4","y":"1"}],"sourceDomain":{"kind":"INTERVAL","range":["3","5"],"states":["CLOSED","CLOSED"]},"requiredPoints":[{"id":"C","x":"4","y":"1"},{"id":"V","x":"13/3","y":"0"}],"exactCoordinates":{"V":["13/3","0"]},"axisTickValues":{"x":[],"y":[]},"regions":[{"id":"P2","upper":"f","lower":"axis","from":"3","to":"13/3","fill":"BLUE"},{"id":"N2","upper":"axis","lower":"f","from":"13/3","to":"5","fill":"WARM"}]}}}
+ ],
+ "caption":"예: a=1로 정규화해 한 주기와 반복 구간에서 축 위와 아래의 넓이를 구분한다.",
+ "sourceConditions":[{"id":"c1","condition":"a>0, g(x)=f(x)/a; f는 주기 3이고 [3,5]에서 f(x)=f(x-3)이다.","mappedTo":["panels"]},{"id":"c2","condition":"0부터 5까지 |f(x)|의 정적분은 23이다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}],
+ "newVisualInformation":["a=1 정규화 예시의 한 주기와 반복 구간의 부호별 넓이"]
+}
