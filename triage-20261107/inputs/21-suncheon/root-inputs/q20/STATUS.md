@@ -3,3 +3,8 @@
 BRANCH DRAFT · NOT_RENDERED. 입력 3종을 작업 브랜치에 보존했다. 공식 validator·렌더·독립 그림 검수·학생 화면 확인은 NOT_RUN이며 READY_FOR_RENDER가 아니다. 원본 대진표 표현 확인 대기라는 기존 OPEN 이력을 보존하며, 이 초안으로 엔진 지원이나 검수 통과가 확인됐다고 주장하지 않는다. 현재 소유자·전체 누적 시도는 UNKNOWN이다.
 
 기존 Q02·Q08·Q09·Q10·Q11·Q18·Q22 입력과 main의 게시 SVG 7개, 원본 q20.png 및 원장·기존 이력을 변경하지 않는다. 지정 구현자 중단 지시에 따라 미인계이며, 거절된 작업을 우회하거나 재시도하지 않는다.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 부전승 팀 선택 → 부전승 팀과 같은 쪽의 1회전 두 팀 선택 → 남은 4팀을 두 쌍으로 분할한다.
