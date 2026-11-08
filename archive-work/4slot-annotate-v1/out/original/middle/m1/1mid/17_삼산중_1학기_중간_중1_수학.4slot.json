@@ -1,0 +1,1419 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+  "sourceGitBlobSha": "559db58665a8773f179d57acd9e1a0226387b11d",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1 \\quad 2 \\quad 3 \\quad 6 \\quad 9 "
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "다음 중 소수는 모두 몇 개인가?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "소수는 모두 몇 개인가?"
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "다음 중 소수는 모두 몇 개인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "소수는 모두 몇 개인가?",
+            "evidenceType": "IMPLIED",
+            "justification": "1과 자기 자신만을 약수로 갖는 수를 센다."
+          },
+          {
+            "term": "합성수",
+            "src": "stem",
+            "quote": "6 \\quad 9 \\quad 11 \\quad 15 \\quad 17$",
+            "evidenceType": "IMPLIED",
+            "justification": "약수가 3개 이상인 합성수를 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "1 \\quad 2 \\quad 3 \\quad 6"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 수들 중 1과 자기 자신만을 약수로 갖는 소수의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "80$을 소인수분해하면 $2^{\\square} \\times 5$"
+          },
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "80$을 소인수분해하면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "\\square$안에 들어갈 수는?"
+          },
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "2^{\\square} \\times 5$로 나타낼 수 있다."
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "2^{\\square} \\times 5$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "80$을 소인수분해하면",
+            "evidenceType": "IMPLIED",
+            "justification": "80을 소인수분해하여 2의 거듭제곱의 지수를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "밑",
+            "src": "stem",
+            "quote": "2^{\\square} \\times 5$로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자연수 80을 소인수분해하여 거듭제곱 꼴로 나타내고 지수 네모 안의 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "(+8)+(-5)"
+          },
+          {
+            "term": "음수",
+            "src": "choices",
+            "quote": "(-2)+(-5)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산 결과가 나머지 넷과 다른 것은?"
+          },
+          {
+            "term": "식의 값",
+            "src": "choices",
+            "quote": "(-3)+(+6)"
+          }
+        ],
+        "method": [
+          {
+            "term": "연산",
+            "src": "choices",
+            "quote": "(+8)+(-5)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부호",
+            "src": "choices",
+            "quote": "(-2)+(-5)",
+            "evidenceType": "IMPLIED",
+            "justification": "부호가 다른 두 정수와 같은 두 정수의 덧셈 부호 규칙을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "choices",
+            "quote": "(+8)+(-5)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 정수의 덧셈 식들의 계산 결과를 비교하여 다른 하나를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "\\mathrm{B} = 2^2 \\times 3 \\times 5 "
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "\\mathrm{A} = 2 \\times 3^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "다음 세 수 $\\mathrm{A, B, C}$의 최소공배수는?"
+          },
+          {
+            "term": "식의 값",
+            "src": "choices",
+            "quote": "2^2 \\times 3^2 \\times 5 \\times 7"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "choices",
+            "quote": "2^2 \\times 3^2 \\times 5 \\times 7",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "\\mathrm{C} = 2 \\times 3^2 \\times 5",
+            "evidenceType": "IMPLIED",
+            "justification": "각 소인수의 최고 지수를 취하여 최소공배수를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "2 \\times 3^2 \\times 5"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소인수분해된 세 수의 각 소인수의 최고 지수를 취하여 최소공배수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "다음 수직선의 화살표가 나타내는 수 중에서"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "-\\frac{7}{3}$을 나타내는 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "-\\frac{7}{3}$을 나타내는 것은?"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-\\frac{7}{3}$을 나타내는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "다음 수직선의 화살표가 나타내는 수 중에서",
+            "evidenceType": "IMPLIED",
+            "justification": "-7/3 = -2와 1/3임을 대분수로 변환하여 수직선 위치를 비교한다."
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "다음 수직선의 화살표가 나타내는 수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "다음 수직선의 화살표가"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직선 상에서 대분수 위치를 파악하여 음의 유리수 -7/3을 나타내는 화살표를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "네 사람이 정수카드를 펼쳐가며 초인종 게임을 하고 있다."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "바닥에 깔린 네 수의 합이 $0$ 또는 $3$이 되면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "네 번째 사람이 낸 카드가 다음 중 어떤 수일 때"
+          },
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "초인종을 누를 수 있을까?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "처음 세 명이 낸 카드는 $-4, 2, -1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "-4 + 2 - 1 + x = 0 또는 3의 일차방정식을 풀어 x를 구한다."
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "처음 세 명이 낸 카드는 $-4, 2, -1$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "-4, 2, -1$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "네 정수의 합이 0 또는 3이 되도록 하는 네 번째 정수 카드의 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값이 가장 큰 수를 $a$, 절댓값이 가장 작은 수를 $b$"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "-10, \\quad +4, \\quad -\\frac{8}{3},"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "a+b$의 값은?"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "절댓값이 가장 큰 수를 $a$,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "절댓값이 가장 작은 수를 $b$라 할 때,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "-10, \\quad +4, \\quad -\\frac{8}{3},",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값들의 크기를 비교하여 a와 b를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "-10, \\quad +4"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값이 가장 큰 수 a와 가장 작은 수 b를 구하여 그 합 a+b를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "그 카드에 적힌 수와의 곱이 $1$이 되는 수가"
+          },
+          {
+            "term": "역수",
+            "src": "stem",
+            "quote": "적힌 수와의 곱이 $1$이 되는 수가 적힌 카드를 찾아야 한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "빈 칸의 카드 중에서 음의 정수는?"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "카드 중에서 음의 정수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "choices",
+            "quote": "-\\frac{1}{4} \\times \\square",
+            "evidenceType": "IMPLIED",
+            "justification": "곱이 1이 되는 수는 서로 역수임을 적용한다."
+          },
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "-\\frac{3}{2} \\times \\square",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "choices",
+            "quote": "-4 \\times \\square"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "곱이 1이 되는 역수 관계로부터 빈칸의 수가 음의 정수인 카드를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "choices",
+            "quote": "\\frac{1}{2} \\times (-4) = -8"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "(-2)^3 = -8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 주어진 식을 바르게 계산한 것은?"
+          },
+          {
+            "term": "식의 값",
+            "src": "choices",
+            "quote": "3 \\div \\left(-\\frac{3}{2}\\right) = 2"
+          }
+        ],
+        "method": [
+          {
+            "term": "나눗셈",
+            "src": "choices",
+            "quote": "3 \\div \\left(-\\frac{3}{2}\\right) = 2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역수",
+            "src": "choices",
+            "quote": "3 \\div \\left(-\\frac{3}{2}\\right) = 2",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈을 역수의 곱으로 바꾸어 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "choices",
+            "quote": "(-2)^3 = -8"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수 곱셈, 나눗셈, 거듭제곱 계산식 중 올바르게 계산된 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "다음 식의 계산 순서가 옳은 것은?"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "\\frac{1}{2} \\underset{\\text{㉠}}{\\times}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "계산 순서가 옳은 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산 순서가 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "(-2) \\underset{\\text{㉢}}{\\times} 3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "3 \\underset{\\text{㉣}}{\\div} 2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "(-2) \\underset{\\text{㉢}}{\\times} 3"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "괄호, 곱셈, 나눗셈, 덧셈, 뺄셈이 포함된 혼합 계산의 올바른 연산 순서를 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "각 변에 주어진 정수의 합이 $5$가 되는 삼각형을 만든 것이다."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "정수의 합이 $5$가 되는 삼각형을 만든 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "빈 동그라미 안에 들어갈 숫자를 모두 더한 값은?"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "빈 동그라미 안에 들어갈 숫자를"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "각 변에 주어진 정수의 합이 $5$가 되는",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 합이 각각 5라는 조건으로 빈칸의 수를 구하는 방정식을 푼다."
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "각 변에 주어진 정수의 합이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "삼각형을 만든 것이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형 각 변의 정수 합이 5가 되도록 빈칸에 들어갈 숫자를 구하고 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "문자를 사용한 식에서 곱셈, 나눗셈 기호를 생략하여"
+          },
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "x \\times (-3) + 5 \\times y = 2xy"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "바르게 나타낸 것은?"
+          },
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "2 \\div x = \\frac{x}{2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "-3 \\times b \\times a \\times b = -3ab^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱셈, 나눗셈 기호를 생략하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "곱셈, 나눗셈 기호를 생략하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "문자식의 곱셈과 나눗셈 기호 생략 규칙을 올바르게 적용한 식을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "직육면체 모양의 나무토막을 남는 부분이 없이 잘라서"
+          },
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체 모양의 주사위를 여러 개 만들려고 한다."
+          },
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "1\\mathrm{cm}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "적당하지 않은 것은?"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "정육면체의 한 변의 길이로 적당하지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "120\\mathrm{cm}, 90\\mathrm{cm}, 105\\",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 길이의 공약수를 구하여 주사위의 한 변의 길이로 가능한지 판별한다."
+          },
+          {
+            "term": "공약수",
+            "src": "stem",
+            "quote": "남는 부분이 없이 잘라서",
+            "evidenceType": "IMPLIED",
+            "justification": "남김없이 자르려면 한 모서리가 세 수의 공약수여야 함을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "남는 부분이 없이 잘라서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직육면체 나무토막을 남김없이 잘라 만들 수 있는 정육면체의 한 변의 길이(공약수)가 아닌 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "a = 2, b = -1$일 때,"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "a = 2, b = -1$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "다음 식의 값은?"
+          },
+          {
+            "term": "일차식",
+            "src": "stem",
+            "quote": "3a - 2b"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "a = 2, b = -1$일 때,",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 수치를 일차식 3a - 2b에 대입한다."
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "3a - 2b",
+            "evidenceType": "IMPLIED",
+            "justification": "-2(-1) = +2로 음수의 곱셈 부호 규칙을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "a = 2, b = -1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정수 값을 문자에 대입하여 일차식 3a - 2b의 값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수는 $2 \\times 3^2$이고,"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수는 $2^3 \\times 3^2 \\times 5 \\ti"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "a+b+c$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "a+b+c$의 값은?"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "2 \\times 3^a \\times c, \\; 2^b \\time",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수의 소인수분해 식에서 지수를 비교하여 미지수를 구한다."
+          },
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "2^b \\times 3^2 \\times 7$",
+            "evidenceType": "IMPLIED",
+            "justification": "최대공약수와 최소공배수의 지수를 대조한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "2^3 \\times 3^2 \\times 5 \\times 7$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 수의 최대공약수와 최소공배수 소인수분해 식으로부터 지수 미지수 a, b, c를 구하여 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "2^2 \\times 3^2 \\times 7, \\quad 2^2 "
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "2^2 \\times 3^2 \\times 7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공약수",
+            "src": "stem",
+            "quote": "다음에 주어진 세 수의 공약수가 아닌 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "공약수가 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "2 \\times 3^2 \\times 5",
+            "evidenceType": "IMPLIED",
+            "justification": "세 수의 최대공약수를 구하여 그 약수가 아닌 것을 찾는다."
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "공약수가 아닌 것은?",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "밑",
+            "src": "stem",
+            "quote": "2^2 \\times 3^2"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소인수분해된 세 수의 최대공약수를 구하여 그 약수가 아닌 것을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "일곱 과목의 평균 점수를 구하는 식을 바르게 나타낸 것은?"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "국어 점수를 $a$, 중국어 점수를 $b$라고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차식",
+            "src": "choices",
+            "quote": "\\frac{430 + a + b}{7}"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "식을 바르게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "choices",
+            "quote": "\\frac{430 + a + b}{7}",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 과목의 합 430과 a, b의 합을 전체 과목 수 7로 나눈다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "choices",
+            "quote": "\\frac{430 + a + b}{7}",
+            "evidenceType": "IMPLIED",
+            "justification": "총점을 7로 나누어 평균 식을 완성한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "\\frac{430 + a + b}{7}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "미지수 a, b를 포함한 과목 점수들의 총합을 전체 과목 수 7로 나누어 평균 식을 바르게 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "공배수",
+            "src": "stem",
+            "quote": "10과 12의 공배수마다 반복된다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "2004년은 갑신년이었다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "갑신년이 되는 연도는 언제인가?"
+          },
+          {
+            "term": "최소공배수",
+            "src": "choices",
+            "quote": "2064년"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "10과 12의 공배수마다 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "10과 12의 최소공배수인 60년 뒤를 계산한다."
+          },
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "공배수마다 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "60갑자의 주기를 적용하여 연도를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "10과 12의 공배수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "십간(10)과 십이지(12)의 최소공배수인 60갑자 주기를 이용하여 다음 갑신년의 연도를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "이웃한 두 숫자의 합은 소수가 되어야 한다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1, 2, 3, \\cdots, n-1, n$ 까지의 숫자를 모두"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "소수 피라미드를 완성하여라."
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "첫 칸은 $1$, 마지막 칸은 $n$ 을 써야 한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이웃한 두 숫자의 합은 소수가 되어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "1, 2, 3, \\cdots, n-1, n$",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하도록 1부터 8까지의 순서를 배치한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "제 $n$번째 줄"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이웃한 두 숫자의 합이 소수가 되도록 1부터 n까지의 수를 배치하는 소수 피라미드를 완성한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "72의 약수를 구하기 위하여"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "2^2$</td><td>$2^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "빈 칸에 알맞은 숫자를 써 넣어라."
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "<td>$\\times$</td>"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "72의 약수를 구하기 위하여",
+            "evidenceType": "IMPLIED",
+            "justification": "72의 소인수분해 표에서 곱을 계산한다."
+          },
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "2^2$</td><td>$2^3$",
+            "evidenceType": "IMPLIED",
+            "justification": "밑과 지수의 거듭제곱 값들을 곱하여 빈칸을 채운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "밑",
+            "src": "stem",
+            "quote": "<td>$2^2$</td>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "72의 소인수분해 표에서 밑과 지수의 거듭제곱 값들을 곱하여 빈칸에 알맞은 수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "준호가 소인수분해 문제를 풀이한 것이다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "20을 소인수분해하여라."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "잘못된 내용을 모두 찾고 그 이유를 써라."
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "20을 소인수분해하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "20을 소인수분해하여라.",
+            "evidenceType": "IMPLIED",
+            "justification": "소인수분해는 소수만의 곱으로 나타내어야 함을 밝힌다."
+          },
+          {
+            "term": "합성수",
+            "src": "stem",
+            "quote": "20 = 3 \\times 6 + 2",
+            "evidenceType": "IMPLIED",
+            "justification": "합성수 6과 덧셈 +2가 포함된 식은 소인수분해가 아님을 설명한다."
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "20 = 3 \\times 6 + 2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "소인수분해 문제를 풀이한 것이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "소인수분해는 소수들의 곱으로만 나타내어야 함을 바탕으로 잘못된 풀이의 이유를 설명한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "\\frac{3}{8} + \\frac{4}{9}"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "72 \\times"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "계산하여라. [5점]"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "\\frac{3}{8} + \\frac{4}{9}"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "stem",
+            "quote": "덧셈에 대한 곱셈의 분배법칙을 사용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "stem",
+            "quote": "72 \\times \\left(\\frac{3}{8} + \\frac",
+            "evidenceType": "IMPLIED",
+            "justification": "72를 괄호 안의 각 분수에 곱하여 약분한 후 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱셈의 분배법칙을 사용하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "곱셈의 덧셈에 대한 분배법칙을 사용하여 자연수 72와 분수 덧셈의 곱을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "200번째까지 바둑돌을 늘어놓을 때,"
+          },
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "다음과 같은 규칙으로 늘어놓을 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "검은 색과 흰색은 각각 몇 개인가?"
+          },
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "200번째의 바둑돌은 무슨 색인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "나눗셈",
+            "src": "stem",
+            "quote": "200번째의 바둑돌은 무슨 색인가?",
+            "evidenceType": "IMPLIED",
+            "justification": "바둑돌의 반복되는 주기 패턴으로 200을 나누어 몫과 나머지를 구한다."
+          },
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "200번째의 바둑돌은",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지를 통해 색깔과 전체 개수를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "왼쪽에서 200번째의 바둑돌은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "바둑돌의 반복되는 주기 규칙을 찾아 나눗셈으로 200번째 돌의 색과 각각의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "네 정수의 절댓값은 각각 4보다 작다."
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "서로 다른 네 정수 $a, b, c, d$는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "네 정수를 각각 구하고 그 풀이과정을 써라."
+          },
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "네 정수를 각각 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위에서 $b$와 $d$사이의 거리는 4이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "b < d$ 이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "b + d = c$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "a$는 가장 왼쪽에 있다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값과 수직선 위 거리, 대소 관계 및 합 조건을 바탕으로 서로 다른 네 정수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 24,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
