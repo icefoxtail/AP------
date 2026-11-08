@@ -1,0 +1,57 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "sourceQuote": "$3\\le\\cos3x+4\\le5$.",
+  "caption": "y=cos 3x+4의 그래프는 y=cos 3x의 그래프를 y축의 방향으로 4만큼 평행이동한 것이며, 가장 높은 값은 5, 가장 낮은 값은 3이다.",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "3",
+      "4"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1,
+      1,
+      0,
+      6
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "hi",
+          "slope": "0",
+          "intercept": "5",
+          "style": "DASHED",
+          "labelAt": "START"
+        },
+        {
+          "id": "lo",
+          "slope": "0",
+          "intercept": "3",
+          "style": "DASHED",
+          "labelAt": "START"
+        }
+      ]
+    }
+  },
+  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사/q05-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q05-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+      "ordinal": 5,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

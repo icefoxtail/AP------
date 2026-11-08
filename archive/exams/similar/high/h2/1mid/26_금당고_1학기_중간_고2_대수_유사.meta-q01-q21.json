@@ -1,0 +1,2185 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_금당고_1학기_중간_고2_대수_유사-candidate-v1",
+  "examUid": "26_금당고_1학기_중간_고2_대수_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사.js",
+  "expectedSourceBlobSha1": "0897f2137f2b9b7688e2571c5eb286e7b6ed2fc8",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_금당고_1학기_중간_고2_대수_유사.registry.json",
+      "registrySha256": "b3359952617e130cc11ace95ef47195d768da0ccf7e18690e6c5cdf0e25891f7",
+      "keys": [
+        "EXT-L4-ALG-EXPLOG-INVERSE-BASE",
+        "EXT-L4-ALG-SECTOR-FIXED-PERIMETER-MAX-AREA",
+        "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE",
+        "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE",
+        "EXT-COND-EXACT-ROOT-COUNT"
+      ],
+      "details": {
+        "generatedL4": [
+          {
+            "key": "EXT-L4-ALG-EXPLOG-INVERSE-BASE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "지수함수의 역함수로 로그함수의 밑 결정",
+            "definition": "밑이 1보다 작거나 음의 지수로 주어진 지수함수 y=a^(px)를 y=(a^p)^x 꼴로 정리한 뒤 x와 y를 서로 바꾸어, 그 역함수인 로그함수의 밑(a^p)을 구하는 사고.",
+            "parentRpmRecordId": "H2-M1-RPM-087",
+            "parentRpmL1": "지수함수와 로그함수",
+            "parentRpmL2": "로그함수",
+            "parentRpmL3": "로그함수의 그래프",
+            "parentRpmL4": "증가·감소",
+            "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+            "parentTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+            "standardUnitKey": "H22-A-03",
+            "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "RPM H2-M1-RPM-087의 L4 \"증가·감소\"는 로그함수 그래프의 증감 판정이고, 지수함수와 로그함수가 역함수 관계임을 이용해 로그함수의 밑을 결정하는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_금당고_1학기_중간_고2_대수_유사",
+              "qid": 3
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-08",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-ALG-SECTOR-FIXED-PERIMETER-MAX-AREA",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "둘레가 일정한 부채꼴의 넓이 최대와 반지름·중심각 결정",
+            "definition": "호의 길이 rθ로 둘레 조건 2r+rθ=L을 세워 넓이 S=½r·rθ를 반지름 r에 대한 이차식으로 바꾸고, 꼭짓점에서 넓이가 최대가 되는 반지름과 그때의 중심각을 구하는 사고.",
+            "parentRpmRecordId": "H2-M1-RPM-096",
+            "parentRpmL1": "삼각함수",
+            "parentRpmL2": "삼각함수",
+            "parentRpmL3": "일반각과 호도법",
+            "parentRpmL4": "호도법",
+            "parentProblemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+            "parentTemplateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+            "standardUnitKey": "H22-A-04",
+            "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "RPM H2-M1-RPM-096의 L4 \"호도법\"은 호의 길이·넓이 공식 적용 수준이고, 둘레 조건 아래에서 넓이의 최대를 이차식으로 구하는 최적화 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_금당고_1학기_중간_고2_대수_유사",
+              "qid": 12
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-08",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "점근선에 대하여 대칭인 두 로그함수의 식 결정",
+            "definition": "두 로그함수 그래프가 같은 수직 점근선을 갖고, 같은 높이의 두 점이 점근선에서 같은 거리에 있다는 조건으로 한 곡선이 다른 곡선을 점근선에 대하여 대칭이동한 것임을 이용해 밑과 계수를 결정하는 사고.",
+            "parentRpmRecordId": "H2-M1-RPM-088",
+            "parentRpmL1": "지수함수와 로그함수",
+            "parentRpmL2": "로그함수",
+            "parentRpmL3": "로그함수의 그래프",
+            "parentRpmL4": "평행이동",
+            "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+            "parentTemplateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+            "standardUnitKey": "H22-A-03",
+            "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "RPM H2-M1-RPM-088의 L4 \"평행이동\"은 이동만 다루고, 점근선에 대한 대칭 관계를 높이 t의 교점 거리 조건으로 해석해 계수와 밑의 부호를 결정하는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_금당고_1학기_중간_고2_대수_유사",
+              "qid": 18
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-08",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedCrossConcepts": [
+          {
+            "key": "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "거듭제곱수 조건을 소인수 지수의 배수 조건으로 번역",
+            "definition": "자연수가 k제곱수(k제곱근이 자연수)가 될 조건을, 소인수분해에서 모든 소인수의 지수가 k의 배수라는 조건으로 바꾸고, 서로 다른 k의 조건이 겹칠 때 지수의 합동 조건을 연립해 최소 지수를 구하는 개념.",
+            "parentKey": "CC_SQUARE_NUMBER",
+            "parentLabelKo": "제곱수",
+            "standardUnitKey": "H22-A-01",
+            "subUnitKey": "H22-A-01-EXPONENT_LOG",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_SQUARE_NUMBER는 지수가 모두 짝수인 수(제곱수)만 다루고, 세제곱수·네제곱수처럼 k가 다른 거듭제곱수 조건을 지수의 배수 조건으로 연립하는 개념을 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_금당고_1학기_중간_고2_대수_유사",
+              "qid": 13
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-08",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedConditions": [
+          {
+            "key": "EXT-COND-EXACT-ROOT-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "방정식의 실수해 개수 정확 지정 조건",
+            "definition": "조건을 만족하는 실수 t(또는 변수)의 개수가 정확히 n개여야 한다는 조건으로, 치환한 이차방정식의 양의 근의 개수나 매개변수의 값을 판정하는 데 직접 영향을 주는 경우.",
+            "parentKey": "COND_EXACT_INTERSECTION_COUNT",
+            "parentLabelKo": "교점 개수 정확 지정 조건",
+            "standardUnitKey": "H22-A-02",
+            "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "COND_EXACT_INTERSECTION_COUNT는 두 도형·그래프의 교점 개수 지정이며, 두 점 사이의 거리 조건을 만족하는 실수 t의 개수를 지정하는 조건을 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "26_금당고_1학기_중간_고2_대수_유사",
+              "qid": 21
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-08",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-071"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "지수법칙",
+          "l4": "지수식 계산",
+          "recordId": "H2-M1-RPM-071",
+          "l3Label": "지수법칙",
+          "l4Label": "지수식 계산",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "지수식 계산",
+        "rpmPrimaryRecordId": "H2-M1-RPM-071",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "L3": "지수법칙",
+        "L4": "지수식 계산",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+        "crossConceptKeys": [
+          "CC_RATIONAL_EXPONENT"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "지수법칙",
+        "rpmL4": "지수식 계산",
+        "levelBasis": "지수법칙과 거듭제곱근의 유리수 지수 표현을 한 번씩 적용하는 직접 계산(사고 단계 2)",
+        "difficultyBasis": "지수법칙과 거듭제곱근의 유리수 지수 표현을 한 번씩 적용하는 직접 계산(사고 단계 2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 1,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 (b^3/a^2)^2·(a^4의 세제곱근)^3 → (a^3/b^2)^3·(b^3의 네제곱근)^8, 결과 b^6 → a^9",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "거듭제곱근을 유리수 지수로 바꾼 뒤 지수법칙으로 약분",
+      "variationNote": "원본 (b^3/a^2)^2·(a^4의 세제곱근)^3 → (a^3/b^2)^3·(b^3의 네제곱근)^8, 결과 b^6 → a^9",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q1 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-071로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-071",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=지수법칙>지수식 계산; PT/TPL(PT_H22A_01_EXPONENT_LAWS,TPL_H22A_01_EXPONENT_LAWS_071)이 크로스워크 H2-M1-RPM-071(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>지수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-076"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 성질",
+          "l4": "밑의 변환",
+          "recordId": "H2-M1-RPM-076",
+          "l3Label": "로그의 성질",
+          "l4Label": "밑의 변환",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 성질",
+        "rpmPrimaryL4": "밑의 변환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "L3": "로그의 성질",
+        "L4": "밑의 변환",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그의 성질",
+        "rpmL4": "밑의 변환",
+        "levelBasis": "밑의 변환 한 번과 로그의 곱·몫 성질로 끝나는 직접 계산(사고 단계 2)",
+        "difficultyBasis": "밑의 변환 한 번과 로그의 곱·몫 성질로 끝나는 직접 계산(사고 단계 2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 2,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 log_3 6+log_3 5-1/log_10 3 → log_5 10+log_5 15-1/log_6 5, 값 1 → 2",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "1/log_6 5 = log_5 6 (밑의 변환)로 밑을 통일한 뒤 곱·몫을 한 로그로 묶기",
+      "variationNote": "원본 log_3 6+log_3 5-1/log_10 3 → log_5 10+log_5 15-1/log_6 5, 값 1 → 2",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q2 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-076로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-076",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그의 성질>밑의 변환; PT/TPL(PT_H22A_01_LOG_PROPERTIES,TPL_H22A_01_LOG_PROPERTIES_076)이 크로스워크 H2-M1-RPM-076(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>로그",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-087"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "지수함수의 역함수로 로그함수의 밑 결정",
+          "recordId": "H2-M1-RPM-087",
+          "l3Label": "로그함수의 그래프",
+          "l4Label": "지수함수의 역함수로 로그함수의 밑 결정",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ALG-EXPLOG-INVERSE-BASE",
+          "parentRpmL4": "증가·감소",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-M1-RPM-087"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "지수함수의 역함수로 로그함수의 밑 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-087",
+        "rpmGeneratedL4Key": "EXT-L4-ALG-EXPLOG-INVERSE-BASE",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "L3": "로그함수의 그래프",
+        "L4": "지수함수의 역함수로 로그함수의 밑 결정",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [
+          "CC_INVERSE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "증가·감소",
+        "levelBasis": "지수함수와 로그함수가 역함수 관계라는 정의를 한 번 적용하고 음의 지수만 고치는 직접 계산(사고 단계 2)",
+        "difficultyBasis": "지수함수와 로그함수가 역함수 관계라는 정의를 한 번 적용하고 음의 지수만 고치는 직접 계산(사고 단계 2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 3,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 y=(1/3)^x의 역함수 밑 → y=4^{-x}의 역함수 밑(밑이 1보다 작은 꼴로 먼저 변형), 답 1/3 → 1/4",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "y=4^{-x}를 (1/4)^x로 고쳐 x, y를 바꾸면 밑이 1/4인 로그함수",
+      "variationNote": "원본 y=(1/3)^x의 역함수 밑 → y=4^{-x}의 역함수 밑(밑이 1보다 작은 꼴로 먼저 변형), 답 1/3 → 1/4",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q3 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-087로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-087",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/로그함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그함수의 그래프>증가·감소; PT/TPL(PT_FUNCTION_GRAPH_PROPERTIES,TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT)이 크로스워크 H2-M1-RPM-087(2022 대수, H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>로그함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-098"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 뜻",
+          "l4": "삼각함수 값",
+          "recordId": "H2-M1-RPM-098",
+          "l3Label": "삼각함수의 뜻",
+          "l4Label": "삼각함수 값",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 뜻",
+        "rpmPrimaryL4": "삼각함수 값",
+        "rpmPrimaryRecordId": "H2-M1-RPM-098",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "삼각함수의 뜻",
+        "L4": "삼각함수 값",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "crossConceptKeys": [
+          "CC_COTERMINAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "삼각함수의 뜻",
+        "rpmL4": "삼각함수 값",
+        "levelBasis": "동경 줄이기와 기준각 값을 한 번씩 쓰는 직접 계산(사고 단계 2)",
+        "difficultyBasis": "동경 줄이기와 기준각 값을 한 번씩 쓰는 직접 계산(사고 단계 2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 4,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 cos(13π/6) → sin(19π/6): 2π를 뺀 뒤 제3사분면 부호 판정이 추가됨, 값 √3/2 → -1/2",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "동경을 2π만큼 줄이고 제3사분면 부호와 기준각 π/6으로 값 결정",
+      "variationNote": "원본 cos(13π/6) → sin(19π/6): 2π를 뺀 뒤 제3사분면 부호 판정이 추가됨, 값 √3/2 → -1/2",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q4 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-098로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-098",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=삼각함수의 뜻>삼각함수 값; PT/TPL(PT_H22A_04_TRIG_DEFINITION,TPL_H22A_04_TRIG_DEFINITION_098)이 크로스워크 H2-M1-RPM-098(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "conceptClusterKey": "TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-103"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 그래프",
+          "l3": "기본 그래프",
+          "l4": "sin·cos",
+          "recordId": "H2-M1-RPM-103",
+          "l3Label": "기본 그래프",
+          "l4Label": "sin·cos",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 그래프",
+        "rpmPrimaryL3": "기본 그래프",
+        "rpmPrimaryL4": "sin·cos",
+        "rpmPrimaryRecordId": "H2-M1-RPM-103",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "L3": "기본 그래프",
+        "L4": "sin·cos",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "기본 그래프",
+        "rpmL4": "sin·cos",
+        "levelBasis": "코사인의 값의 범위와 y축 방향 평행이동 한 번을 쓰는 직접 계산(사고 단계 1~2)",
+        "difficultyBasis": "코사인의 값의 범위와 y축 방향 평행이동 한 번을 쓰는 직접 계산(사고 단계 1~2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 5,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 y=sin 2x+3 → y=cos 3x+4, 치역 [2,4] → [3,5]",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "crossConceptNote": "치역 판정(-1≤cos≤1과 평행이동)이 Primary 결정 단계 자체여서 Primary 밖에서 따로 쓰인 개념이 없다.",
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "-1≤cos 3x≤1에 평행이동 +4를 적용해 치역 결정",
+      "variationNote": "원본 y=sin 2x+3 → y=cos 3x+4, 치역 [2,4] → [3,5]",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q5 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-103로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-103",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=기본 그래프>sin·cos; PT/TPL(PT_FUNCTION_GRAPH_PROPERTIES,TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT)이 크로스워크 H2-M1-RPM-103(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_GRAPH)와 정확히 일치 → 삼각함수>삼각함수의 그래프",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-095"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "일반각과 호도법",
+          "l4": "일반각",
+          "recordId": "H2-M1-RPM-095",
+          "l3Label": "일반각과 호도법",
+          "l4Label": "일반각",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "일반각과 호도법",
+        "rpmPrimaryL4": "일반각",
+        "rpmPrimaryRecordId": "H2-M1-RPM-095",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "일반각과 호도법",
+        "L4": "일반각",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "일반각과 호도법",
+        "rpmL4": "일반각",
+        "levelBasis": "일반각의 정의를 음의 각에 한 번 적용하는 직접 계산(사고 단계 1~2)",
+        "difficultyBasis": "일반각의 정의를 음의 각에 한 번 적용하는 직접 계산(사고 단계 1~2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 6,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 740° → -930°(음의 각), α=20 → α=150",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "crossConceptNote": "일반각 표현이 Primary 자체이고 Primary 밖에서 따로 쓰인 개념이 없다."
+      },
+      "decisiveStep": "음의 각에 360°의 정수배를 더해 0≤α<360이 되도록 α를 결정",
+      "variationNote": "원본 740° → -930°(음의 각), α=20 → α=150",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q6 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-095로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-095",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=일반각과 호도법>일반각; PT/TPL(PT_H22A_04_ANGLE_RADIAN,TPL_H22A_04_ANGLE_RADIAN_095)이 크로스워크 H2-M1-RPM-095(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-068"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "거듭제곱근",
+          "l4": "실수 조건",
+          "recordId": "H2-M1-RPM-068",
+          "l3Label": "거듭제곱근",
+          "l4Label": "실수 조건",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "거듭제곱근",
+        "rpmPrimaryL4": "실수 조건",
+        "rpmPrimaryRecordId": "H2-M1-RPM-068",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "L3": "거듭제곱근",
+        "L4": "실수 조건",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "거듭제곱근",
+        "rpmL4": "실수 조건",
+        "levelBasis": "홀짝·부호 2중 분류를 n마다 적용하고 7개 값을 합산하는 경우 분류(사고 단계 3)",
+        "difficultyBasis": "홀짝·부호 2중 분류를 n마다 적용하고 7개 값을 합산하는 경우 분류(사고 단계 3)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 7,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 -2n^2+9n, n=3..7 → -n^2+8n-10, n=2..8(7개 항), 합 5 → 9",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "crossConceptNote": "홀짝과 부호에 따른 실근 개수 판정이 Primary(실수 조건)이고 근호 안의 수는 단순 대입이어서 별도 CrossConcept이 필요 없다."
+      },
+      "decisiveStep": "n의 홀짝과 -n^2+8n-10의 부호로 실수인 n제곱근의 개수를 경우별로 구해 합산",
+      "variationNote": "원본 -2n^2+9n, n=3..7 → -n^2+8n-10, n=2..8(7개 항), 합 5 → 9",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q7 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-068로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-068",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=거듭제곱근>실수 조건; PT/TPL(PT_H22A_01_ROOT_REAL,TPL_H22A_01_ROOT_REAL_068)이 크로스워크 H2-M1-RPM-068(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>지수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H2-M1-RPM-080",
+          "l3Label": "지수함수의 그래프",
+          "l4Label": "평행이동",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-M1-RPM-080",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "L3": "지수함수의 그래프",
+        "L4": "평행이동",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_POINT_ON_CURVE_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "지수함수의 그래프",
+        "rpmL4": "평행이동",
+        "levelBasis": "평행이동한 지수함수식에 점의 좌표를 한 번씩 대입(사고 단계 2)",
+        "difficultyBasis": "평행이동한 지수함수식에 점의 좌표를 한 번씩 대입(사고 단계 2)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 8,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 y=2^x(x=1→a, y=32→b, b-a) → y=2^x+1 위의 P(a,9), Q(2,b), a+b, 답 3 → 8",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "그래프 위의 점의 좌표를 y=2^x+1에 대입해 a(지수방정식)와 b(함숫값) 결정",
+      "variationNote": "원본 y=2^x(x=1→a, y=32→b, b-a) → y=2^x+1 위의 P(a,9), Q(2,b), a+b, 답 3 → 8",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q8 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-080로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-080",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=지수함수의 그래프>평행이동; PT/TPL(PT_FUNCTION_GRAPH_TRANSFORM,TPL_FUNCTION_GRAPH_TRANSLATION)이 크로스워크 H2-M1-RPM-080(2022 대수, H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>지수함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-088"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H2-M1-RPM-088",
+          "l3Label": "로그함수의 그래프",
+          "l4Label": "평행이동",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-M1-RPM-088",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "L3": "로그함수의 그래프",
+        "L4": "평행이동",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_ASYMPTOTE",
+          "CC_POINT_ON_CURVE_SUBSTITUTION",
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "평행이동",
+        "levelBasis": "점근선으로 a를 정하고 점을 대입한 뒤 밑이 다른 로그 계산 3/2를 거치는 3단계(사고 단계 3)",
+        "difficultyBasis": "점근선으로 a를 정하고 점을 대입한 뒤 밑이 다른 로그 계산 3/2를 거치는 3단계(사고 단계 3)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 9,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 y=log_4(x+a)+b, (6,0), x=-2 → y=log_9(x-a)+b, (30,0), x=3 (평행이동 방향·밑·로그 계산이 달라짐), 답 1/2 → 3/2",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "점근선 x=a에서 a 결정 후 점 (30,0)을 대입하고 log_9 27=3/2로 b 결정",
+      "variationNote": "원본 y=log_4(x+a)+b, (6,0), x=-2 → y=log_9(x-a)+b, (30,0), x=3 (평행이동 방향·밑·로그 계산이 달라짐), 답 1/2 → 3/2",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q9 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-088로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-088",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/로그함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그함수의 그래프>평행이동; PT/TPL(PT_FUNCTION_GRAPH_TRANSFORM,TPL_FUNCTION_GRAPH_TRANSLATION)이 크로스워크 H2-M1-RPM-088(2022 대수, H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>로그함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-100"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 성질",
+          "l4": "삼각함수 관계",
+          "recordId": "H2-M1-RPM-100",
+          "l3Label": "삼각함수의 성질",
+          "l4Label": "삼각함수 관계",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 성질",
+        "rpmPrimaryL4": "삼각함수 관계",
+        "rpmPrimaryRecordId": "H2-M1-RPM-100",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "삼각함수의 성질",
+        "L4": "삼각함수 관계",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_SUM_PRODUCT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "삼각함수의 성질",
+        "rpmL4": "삼각함수 관계",
+        "levelBasis": "합의 제곱으로 곱을 구하고 네제곱 합으로 변형하는 2단계 항등식 변형(사고 단계 3)",
+        "difficultyBasis": "합의 제곱으로 곱을 구하고 네제곱 합으로 변형하는 2단계 항등식 변형(사고 단계 3)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 10,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 sinθcosθ=-1/4(제2사분면) → sinθ+cosθ=√3/3(곱을 먼저 유도해야 함), 값 7/8 → 7/9",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "conditionNote": "풀이에서 결정적 영향을 주는 별도 조건 제한이 없다(정의역·밑 조건은 문제에 주어진 범위 안에서 자동으로 만족)."
+      },
+      "decisiveStep": "합의 제곱으로 sinθcosθ를 구한 뒤 네제곱의 합을 (제곱의 합)^2 - 2(곱)^2으로 변환",
+      "variationNote": "원본 sinθcosθ=-1/4(제2사분면) → sinθ+cosθ=√3/3(곱을 먼저 유도해야 함), 값 7/8 → 7/9",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q10 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-100로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-100",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=삼각함수의 성질>삼각함수 관계; PT/TPL(PT_H22A_04_TRIG_PROPERTIES,TPL_H22A_04_TRIG_PROPERTIES_100)이 크로스워크 H2-M1-RPM-100(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-098"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 뜻",
+          "l4": "삼각함수 값",
+          "recordId": "H2-M1-RPM-098",
+          "l3Label": "삼각함수의 뜻",
+          "l4Label": "삼각함수 값",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 뜻",
+        "rpmPrimaryL4": "삼각함수 값",
+        "rpmPrimaryRecordId": "H2-M1-RPM-098",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "삼각함수의 뜻",
+        "L4": "삼각함수 값",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "crossConceptKeys": [
+          "CC_QUADRANTS"
+        ],
+        "conditionKeys": [
+          "COND_NEGATIVE",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "삼각함수의 뜻",
+        "rpmL4": "삼각함수 값",
+        "levelBasis": "두 부호 조건을 연립해 사분면을 정하고 각 선택지를 사분면에 대응시키는 경우 분류(사고 단계 3)",
+        "difficultyBasis": "두 부호 조건을 연립해 사분면을 정하고 각 선택지를 사분면에 대응시키는 경우 분류(사고 단계 3)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 11,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 sinθ+cosθ<0, sinθcosθ>0(제3사분면) → sinθcosθ<0, cosθ-sinθ>0(제4사분면), 답 6π/5 → 9π/5",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "곱의 부호로 제2·4사분면 후보를 좁히고 cosθ-sinθ의 부호로 제4사분면 결정",
+      "variationNote": "원본 sinθ+cosθ<0, sinθcosθ>0(제3사분면) → sinθcosθ<0, cosθ-sinθ>0(제4사분면), 답 6π/5 → 9π/5",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q11 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-098로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-098",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=삼각함수의 뜻>삼각함수 값; PT/TPL(PT_H22A_04_TRIG_DEFINITION,TPL_H22A_04_TRIG_DEFINITION_098)이 크로스워크 H2-M1-RPM-098(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-096"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "일반각과 호도법",
+          "l4": "둘레가 일정한 부채꼴의 넓이 최대와 반지름·중심각 결정",
+          "recordId": "H2-M1-RPM-096",
+          "l3Label": "일반각과 호도법",
+          "l4Label": "둘레가 일정한 부채꼴의 넓이 최대와 반지름·중심각 결정",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ALG-SECTOR-FIXED-PERIMETER-MAX-AREA",
+          "parentRpmL4": "호도법",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-M1-RPM-096"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "일반각과 호도법",
+        "rpmPrimaryL4": "둘레가 일정한 부채꼴의 넓이 최대와 반지름·중심각 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-096",
+        "rpmGeneratedL4Key": "EXT-L4-ALG-SECTOR-FIXED-PERIMETER-MAX-AREA",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "일반각과 호도법",
+        "L4": "둘레가 일정한 부채꼴의 넓이 최대와 반지름·중심각 결정",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "일반각과 호도법",
+        "rpmL4": "호도법",
+        "levelBasis": "둘레 조건식 → 넓이 이차식 → 최대 → 중심각까지 4단계 연결(사고 단계 4)",
+        "difficultyBasis": "둘레 조건식 → 넓이 이차식 → 최대 → 중심각까지 4단계 연결(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 12,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 둘레 12, 최대일 때 중심각 θ(답 2) → 둘레 28, 최대일 때 r+θ(답 9): 반지름 소거 대신 이차함수 최대로 풀고 두 값을 모두 구함",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "호의 길이 rθ로 둘레 조건을 세워 넓이를 r에 대한 이차식으로 만들고 꼭짓점에서 최대",
+      "variationNote": "원본 둘레 12, 최대일 때 중심각 θ(답 2) → 둘레 28, 최대일 때 r+θ(답 9): 반지름 소거 대신 이차함수 최대로 풀고 두 값을 모두 구함",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q12 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-096로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-096",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=일반각과 호도법>호도법; PT/TPL(PT_H22A_04_ANGLE_RADIAN,TPL_H22A_04_ANGLE_RADIAN_096)이 크로스워크 H2-M1-RPM-096(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "거듭제곱근",
+          "l4": "n제곱근",
+          "recordId": "H2-M1-RPM-067",
+          "l3Label": "거듭제곱근",
+          "l4Label": "n제곱근",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "거듭제곱근",
+        "rpmPrimaryL4": "n제곱근",
+        "rpmPrimaryRecordId": "H2-M1-RPM-067",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "L3": "거듭제곱근",
+        "L4": "n제곱근",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION",
+          "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "거듭제곱근",
+        "rpmL4": "n제곱근",
+        "levelBasis": "소인수 지수 조건 4개를 두 소수에 대해 연립해 최소 지수를 찾는 다단계 추론(사고 단계 4)",
+        "difficultyBasis": "소인수 지수 조건 4개를 두 소수에 대해 연립해 최소 지수를 찾는 다단계 추론(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 13,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 √(n/3), 5제곱근(n/2) (지수 합동 mod2·mod5) → 3제곱근(n/2), 4제곱근(n/3) (mod3·mod4), 답 11 → 13",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "n을 2^a·3^b로 놓고 세제곱수·네제곱수 조건을 소인수 지수의 3의 배수·4의 배수 조건으로 바꿔 최소 a,b 결정",
+      "variationNote": "원본 √(n/3), 5제곱근(n/2) (지수 합동 mod2·mod5) → 3제곱근(n/2), 4제곱근(n/3) (mod3·mod4), 답 11 → 13",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q13 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-067로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-067",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=거듭제곱근>n제곱근; PT/TPL(PT_H22A_01_ROOT_REAL,TPL_H22A_01_ROOT_REAL_067)이 크로스워크 H2-M1-RPM-067(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>지수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-077"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "상용로그",
+          "l4": "상용로그표·자릿수",
+          "recordId": "H2-M1-RPM-077",
+          "l3Label": "상용로그",
+          "l4Label": "상용로그표·자릿수",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "상용로그",
+        "rpmPrimaryL4": "상용로그표·자릿수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-077",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "L3": "상용로그",
+        "L4": "상용로그표·자릿수",
+        "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+        "templateKey": "TPL_H22A_01_COMMON_LOG_077",
+        "crossConceptKeys": [
+          "CC_LOG_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "상용로그",
+        "rpmL4": "상용로그표·자릿수",
+        "levelBasis": "두 자릿수 조건을 로그 부등식으로 옮기고 한 변수의 범위를 다른 식에 대입해 가두는 다단계 추론(사고 단계 4)",
+        "difficultyBasis": "두 자릿수 조건을 로그 부등식으로 옮기고 한 변수의 범위를 다른 식에 대입해 가두는 다단계 추론(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 14,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 a^4가 7자리, ab^3이 13자리(답 4자리) → a^3이 8자리, ab^2이 14자리(답 6자리)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "자릿수 조건을 상용로그 부등식으로 바꾸고 log a의 범위를 이용해 log b의 범위를 결정",
+      "variationNote": "원본 a^4가 7자리, ab^3이 13자리(답 4자리) → a^3이 8자리, ab^2이 14자리(답 6자리)",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q14 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-077로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-077",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=상용로그>상용로그표·자릿수; PT/TPL(PT_H22A_01_COMMON_LOG,TPL_H22A_01_COMMON_LOG_077)이 크로스워크 H2-M1-RPM-077(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>로그",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-092"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그부등식",
+          "l4": "치환",
+          "recordId": "H2-M1-RPM-092",
+          "l3Label": "로그부등식",
+          "l4Label": "치환",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그부등식",
+        "rpmPrimaryL4": "치환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-092",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "L3": "로그부등식",
+        "L4": "치환",
+        "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+        "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_INEQUALITY_ALWAYS_TRUE",
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그부등식",
+        "rpmL4": "치환",
+        "levelBasis": "치환 → 이차부등식 항상 성립 조건(판별식) → 로그 부등식 환원의 다단계 추론(사고 단계 4)",
+        "difficultyBasis": "치환 → 이차부등식 항상 성립 조건(판별식) → 로그 부등식 환원의 다단계 추론(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 15,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 (log_2 x/a)(log_2 x^2/a)+2≥0 → (log_3 x/a)(log_3 x^3/a)+3≥0, 답 1/16 → 1/27",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "log_3 x를 t로 치환해 이차부등식으로 바꾸고 모든 실수 t에서 성립하도록 판별식 조건으로 log_3 a의 범위 결정",
+      "variationNote": "원본 (log_2 x/a)(log_2 x^2/a)+2≥0 → (log_3 x/a)(log_3 x^3/a)+3≥0, 답 1/16 → 1/27",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q15 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-092로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-092",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/로그함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그부등식>치환; PT/TPL(PT_H22A_03_LOG_INEQUALITY,TPL_H22A_03_LOG_INEQUALITY_092)이 크로스워크 H2-M1-RPM-092(2022 대수, H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>로그함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "conceptClusterKey": "TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-098"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 뜻",
+          "l4": "삼각함수 값",
+          "recordId": "H2-M1-RPM-098",
+          "l3Label": "삼각함수의 뜻",
+          "l4Label": "삼각함수 값",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 뜻",
+        "rpmPrimaryL4": "삼각함수 값",
+        "rpmPrimaryRecordId": "H2-M1-RPM-098",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "L3": "삼각함수의 뜻",
+        "L4": "삼각함수 값",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "crossConceptKeys": [
+          "CC_TRIGONOMETRIC_IDENTITY",
+          "CC_POINT_ON_CURVE_SUBSTITUTION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "삼각함수의 뜻",
+        "rpmL4": "삼각함수 값",
+        "levelBasis": "삼각함수 항등식으로 tanθ를 구하고 좌표 정의로 곡선 위 점에 연결하는 다단계 추론(사고 단계 4)",
+        "difficultyBasis": "삼각함수 항등식으로 tanθ를 구하고 좌표 정의로 곡선 위 점에 연결하는 다단계 추론(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 16,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 y=√x, 3cos²θ-sin²θ=2(답 √3) → y=x², 2sin²θ-cos²θ=1(답 2)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "삼각함수 조건에서 tanθ=√2를 구하고 점 P(x,x²)에서 tanθ=y/x=x로 연결해 좌표 결정",
+      "variationNote": "원본 y=√x, 3cos²θ-sin²θ=2(답 √3) → y=x², 2sin²θ-cos²θ=1(답 2)",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q16 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-098로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-098",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "삼각함수/삼각함수",
+          "삼각함수/삼각함수의 그래프"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=삼각함수의 뜻>삼각함수 값; PT/TPL(PT_H22A_04_TRIG_DEFINITION,TPL_H22A_04_TRIG_DEFINITION_098)이 크로스워크 H2-M1-RPM-098(2022 대수, H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC)와 정확히 일치 → 삼각함수>삼각함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-073"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 뜻",
+          "l4": "로그와 지수 관계",
+          "recordId": "H2-M1-RPM-073",
+          "l3Label": "로그의 뜻",
+          "l4Label": "로그와 지수 관계",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 뜻",
+        "rpmPrimaryL4": "로그와 지수 관계",
+        "rpmPrimaryRecordId": "H2-M1-RPM-073",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "L3": "로그의 뜻",
+        "L4": "로그와 지수 관계",
+        "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+        "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+        "crossConceptKeys": [
+          "CC_TRUTH_VALUE_JUDGMENT"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그의 뜻",
+        "rpmL4": "로그와 지수 관계",
+        "levelBasis": "세 명제를 각각 다른 방식(직접 나열·일반 논증·부등식 범위 계산)으로 판정하는 복합 판정(사고 단계 4)",
+        "difficultyBasis": "세 명제를 각각 다른 방식(직접 나열·일반 논증·부등식 범위 계산)으로 판정하는 복합 판정(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 17,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 x≤100, ㄱ n(A_3)=4 참·ㄴ 짝수 반례 거짓·ㄷ n(A_m)=1 개수 90 참(답 ㄱ,ㄷ) → x≤200, ㄱ n(A_4)=3 참·ㄴ 단조성 참·ㄷ n(A_m)=2 개수 10 거짓(답 ㄱ,ㄴ)",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "log_m x가 자연수 ⇔ x=m^k로 보고 ㄱ·ㄴ·ㄷ을 각각 거듭제곱 개수 비교와 부등식 범위로 판정",
+      "variationNote": "원본 x≤100, ㄱ n(A_3)=4 참·ㄴ 짝수 반례 거짓·ㄷ n(A_m)=1 개수 90 참(답 ㄱ,ㄷ) → x≤200, ㄱ n(A_4)=3 참·ㄴ 단조성 참·ㄷ n(A_m)=2 개수 10 거짓(답 ㄱ,ㄴ)",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q17 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-073로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-073",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그의 뜻>로그와 지수 관계; PT/TPL(PT_H22A_01_LOG_DEFINITION,TPL_H22A_01_LOG_DEFINITION_073)이 크로스워크 H2-M1-RPM-073(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>로그",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-088"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "점근선에 대하여 대칭인 두 로그함수의 식 결정",
+          "recordId": "H2-M1-RPM-088",
+          "l3Label": "로그함수의 그래프",
+          "l4Label": "점근선에 대하여 대칭인 두 로그함수의 식 결정",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE",
+          "parentRpmL4": "평행이동",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-M1-RPM-088"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "점근선에 대하여 대칭인 두 로그함수의 식 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-088",
+        "rpmGeneratedL4Key": "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "L3": "로그함수의 그래프",
+        "L4": "점근선에 대하여 대칭인 두 로그함수의 식 결정",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_LINE_SYMMETRY_REFLECTION",
+          "CC_ASYMPTOTE"
+        ],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그함수의 그래프",
+        "rpmL4": "평행이동",
+        "levelBasis": "점근선 → 높이 t의 교점 x좌표 → 모든 t에서의 항등 조건 → 서로 다른 함수 조건으로 부호 결정까지 5단계 연결(사고 단계 5)",
+        "difficultyBasis": "점근선 → 높이 t의 교점 x좌표 → 모든 t에서의 항등 조건 → 서로 다른 함수 조건으로 부호 결정까지 5단계 연결(사고 단계 5)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 18,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 f=log_2(3x-12), 점근선 x=4, 답 -18 → f=log_2(3x+6), 점근선 x=-2, 답 9",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "점근선에서 l과 c=2b를 구하고, 모든 t에서 PR=QR이면 g가 f를 x=-2에 대해 대칭이동한 함수(b=-3, a=1/2)임을 이용",
+      "variationNote": "원본 f=log_2(3x-12), 점근선 x=4, 답 -18 → f=log_2(3x+6), 점근선 x=-2, 답 9",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q18 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-088로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-088",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/로그함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그함수의 그래프>평행이동; PT/TPL(PT_FUNCTION_GRAPH_TRANSFORM,TPL_FUNCTION_GRAPH_TRANSLATION)이 크로스워크 H2-M1-RPM-088(2022 대수, H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>로그함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-086"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수함수의 활용",
+          "l4": "그래프 교점",
+          "recordId": "H2-M1-RPM-086",
+          "l3Label": "지수함수의 활용",
+          "l4Label": "그래프 교점",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수함수의 활용",
+        "rpmPrimaryL4": "그래프 교점",
+        "rpmPrimaryRecordId": "H2-M1-RPM-086",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "L3": "지수함수의 활용",
+        "L4": "그래프 교점",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_CURVE_GRAPH",
+          "CC_POINT_ON_CURVE_SUBSTITUTION"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "지수함수의 활용",
+        "rpmL4": "그래프 교점",
+        "levelBasis": "구간별 정의를 절댓값 지수로 통합 → 교점 개수 분류로 밑 결정 → 점 조건으로 k를 경우별로 구하는 다단계 합성(사고 단계 5)",
+        "difficultyBasis": "구간별 정의를 절댓값 지수로 통합 → 교점 개수 분류로 밑 결정 → 점 조건으로 k를 경우별로 구하는 다단계 합성(사고 단계 5)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 19,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 f=|x-k|-4, y=16, g(1)=16, a=2, 답 3 → f=|x-k|-3, y=64, g(-2)=64, a=4, 답 -6",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "g=a^{|f|}로 보고 |f|=h의 해의 개수가 3인 경우가 h=3뿐임을 이용해 a=4를 정한 뒤 g(-2)=64에서 k를 결정",
+      "variationNote": "원본 f=|x-k|-4, y=16, g(1)=16, a=2, 답 3 → f=|x-k|-3, y=64, g(-2)=64, a=4, 답 -6",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q19 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-086로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-086",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=지수함수의 활용>그래프 교점; PT/TPL(PT_FUNCTION_GRAPH_INTERSECTION,TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS)이 크로스워크 H2-M1-RPM-086(2022 대수, H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>지수함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "conceptClusterKey": "EXPONENT_LOG",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-076"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 성질",
+          "l4": "밑의 변환",
+          "recordId": "H2-M1-RPM-076",
+          "l3Label": "로그의 성질",
+          "l4Label": "밑의 변환",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 성질",
+        "rpmPrimaryL4": "밑의 변환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "L3": "로그의 성질",
+        "L4": "밑의 변환",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [
+          "CC_LOG_RULES",
+          "CC_DIVISOR_PROPERTY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "로그의 성질",
+        "rpmL4": "밑의 변환",
+        "levelBasis": "밑의 변환 → 로그의 합 → 곱이 6^k인 순서쌍을 범위·약수 쌍으로 분류해 합산하는 다단계 추론(사고 단계 4)",
+        "difficultyBasis": "밑의 변환 → 로그의 합 → 곱이 6^k인 순서쌍을 범위·약수 쌍으로 분류해 합산하는 다단계 추론(사고 단계 4)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 20,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 50 이하, 1/log_{a+1}10+3/log_{b+1}1000 → 40 이하, 1/log_{a+1}6+2/log_{b+1}36, 곱이 10의 거듭제곱 → 6의 거듭제곱, 답 13 → 18",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "밑의 변환으로 두 항을 합쳐 log_6((a+1)(b+1))로 만들고 곱이 6의 거듭제곱인 약수 쌍을 범위 안에서 세기",
+      "variationNote": "원본 50 이하, 1/log_{a+1}10+3/log_{b+1}1000 → 40 이하, 1/log_{a+1}6+2/log_{b+1}36, 곱이 10의 거듭제곱 → 6의 거듭제곱, 답 13 → 18",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q20 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-076로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "로그",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-076",
+        "candidateCountSubUnit": 2,
+        "candidateCountUnit": 2,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수",
+          "지수함수와 로그함수/로그"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=로그의 성질>밑의 변환; PT/TPL(PT_H22A_01_LOG_PROPERTIES,TPL_H22A_01_LOG_PROPERTIES_076)이 크로스워크 H2-M1-RPM-076(2022 대수, H22-A-01/H22-A-01-EXPONENT_LOG)와 정확히 일치 → 지수함수와 로그함수>로그",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수방정식",
+          "l4": "치환",
+          "recordId": "H2-M1-RPM-082",
+          "l3Label": "지수방정식",
+          "l4Label": "치환",
+          "l4Source": "CANONICAL"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수방정식",
+        "rpmPrimaryL4": "치환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-082",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "L3": "지수방정식",
+        "L4": "치환",
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT",
+          "CC_VIETAS_FORMULAS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-EXACT-ROOT-COUNT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "지수방정식",
+        "rpmL4": "치환",
+        "levelBasis": "치환 → 이차방정식 두 경우 → k별 양의 근 개수 판별 → 로그로 t의 합 p → 최종 값까지 6단계 이상 연결(사고 단계 6)",
+        "difficultyBasis": "치환 → 이차방정식 두 경우 → k별 양의 근 개수 판별 → 로그로 t의 합 p → 최종 값까지 6단계 이상 연결(사고 단계 6)",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_금당고_1학기_중간_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+          "sourceQid": 21,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-08",
+          "variationNote": "원본 f=3^x, g=3·9^x+(1/3)^k, 거리 7/27, 답 83/2 → f=2^x, g=2·4^x+(1/2)^k, 거리 5/32, 답 70/3",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original had problemTypeKey/templateKey null)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "decisiveStep": "u=2^t로 치환해 거리 조건을 이차방정식 두 가지(±5/32)로 바꾸고 양의 근의 개수가 2가 되는 k=2를 판별식·근의 곱 부호로 결정",
+      "variationNote": "원본 f=3^x, g=3·9^x+(1/3)^k, 거리 7/27, 답 83/2 → f=2^x, g=2·4^x+(1/2)^k, 거리 5/32, 답 70/3",
+      "reason": "금당고 1학기 중간 고2 대수 원본 Q21 1:1 유사문항 생성 후보; 유사문항 최종 풀이 기준 메타 재판정(원본 메타 복사 아님, 원본은 PT/TPL이 null이었으나 2022 대수 크로스워크 H2-M1-RPM-082로 Resolver 투영). 독립 검수 대기.",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "지수함수와 로그함수",
+        "L2": "지수함수",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-082",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "지수함수와 로그함수/지수함수"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=지수방정식>치환; PT/TPL(PT_H22A_02_EXP_EQUATION,TPL_H22A_02_EXP_EQUATION_082)이 크로스워크 H2-M1-RPM-082(2022 대수, H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION)와 정확히 일치 → 지수함수와 로그함수>지수함수",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-08",
+        "fieldChanges": []
+      }
+    }
+  ],
+  "evidenceRefs": []
+}

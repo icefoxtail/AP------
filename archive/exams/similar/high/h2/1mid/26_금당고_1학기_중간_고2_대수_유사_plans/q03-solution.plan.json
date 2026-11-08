@@ -1,0 +1,49 @@
+{
+  "capability": "exp-log-pair-spike-v1",
+  "sourceQuote": "$y=4^{-x}=\\left(\\frac14\\right)^x$이다.",
+  "caption": "y=(1/4)^x의 그래프와 그 역함수 y=log_{1/4} x의 그래프는 직선 y=x에 대하여 대칭이다.",
+  "graphPlan": {
+    "family": "exp-log-pair",
+    "curves": [
+      {
+        "id": "f",
+        "family": "exponential-affine",
+        "base": "1/4",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        }
+      },
+      {
+        "id": "g",
+        "family": "logarithmic-affine",
+        "base": "1/4",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "NATURAL_LOG_AFFINE"
+        }
+      }
+    ],
+    "identityLine": true
+  },
+  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사/q03-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사_plans/engine_evidence/q03-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+      "ordinal": 3,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}
