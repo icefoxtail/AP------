@@ -457,12 +457,14 @@ def _mc_row_y(row,x_value):
     """y of a frozen LINE / quadratic Y_OF_X / RATIONAL / SQRT row at x (a float), for the end dots of an emphasised stretch."""
     from graph_framing import pp_exact_float
     kind=row['kind']
-    if kind in ('LINE','Y_OF_X'):return sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
+    if kind in ('LINE','Y_OF_X'):value=sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
     if kind=='RATIONAL':
         n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
-        return (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
-    r=[pp_exact_float(value) for value in row['radicand']]
-    return pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
+        value=(n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    elif kind=='SQRT':
+        r=[pp_exact_float(value) for value in row['radicand']]
+        value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
+    return abs(value) if row.get('abs') else value
 
 def _mc_emphasis_parts(row,vp,sampling):
     """(G18a-4) the heavier coloured polyline over each emphasised stretch of a curve (tag EMPH_<id>_<n>) and its open / closed end dots."""
@@ -490,7 +492,20 @@ def _produce_multi_curve(plan,vp):
     from xml.sax.saxutils import escape
     features=plan.get('multiCurveFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='MULTI_CURVE_FEATURES_v1' or not isinstance(features.get('curves'),list):raise ValueError('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED')
-    parts=[];sampling=[];extras=[]
+    parts=[];sampling=[];extras=[];source_endpoint_rows=[];start_dot_rows=[]
+    for curve in features['curves']:
+        states=curve.get('domainStates',['NONE','NONE'])
+        if not isinstance(states,list) or len(states)!=2 or any(state not in ('NONE','OPEN','CLOSED') for state in states):raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+str(curve.get('id')))
+        if curve.get('kind') not in ('LINE','RATIONAL','SQRT') and states!=['NONE','NONE']:raise ValueError('MULTI_CURVE_DOMAIN_STATE_UNSUPPORTED:'+str(curve.get('id')))
+        if curve.get('kind') in ('LINE','RATIONAL','SQRT') and states!=['NONE','NONE']:
+            from graph_framing import pp_exact_float
+            lo,hi=curve.get('interval',[])
+            for which,state,value in (('from',states[0],lo),('to',states[1],hi)):
+                if state in ('OPEN','CLOSED'):
+                    if curve.get('kind')=='RATIONAL' and Fraction(value)==-Fraction(curve['denominator'][0])/Fraction(curve['denominator'][1]):continue
+                    x_value=pp_exact_float(value);y_value=_mc_row_y(curve,x_value)
+                    source_endpoint_rows.append((curve['id'],which,state,x_value,y_value))
+    open_endpoint_positions={(x_value,y_value) for _ident,_which,state,x_value,y_value in source_endpoint_rows if state=='OPEN'}
     region_fills,region_labels=_mc_region_parts(features,vp)
     for curve in features['curves']:
         ident=curve.get('id');stroke,look=_mc_look_attrs(curve)
@@ -521,8 +536,11 @@ def _produce_multi_curve(plan,vp):
                 y_value=pp_exact_float(asymptotes['horizontal']['y']);a,b=vp.screen((xmin,y_value)),vp.screen((xmax,y_value))
                 extras.append(f'<line id="asymptote-{escape(str(ident))}-h" data-role="asymptote" data-branch="ASYM_{escape(str(ident))}_H" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
             if curve['kind']=='SQRT' and (curve.get('start') or {}).get('drawn'):
-                cx,cy=vp.screen((pp_exact_float(curve['start']['x']),pp_exact_float(curve['start']['y'])))
-                extras.append(f'<circle id="curve-{escape(str(ident))}-start" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+                start=(pp_exact_float(curve['start']['x']),pp_exact_float(curve['start']['y']))
+                if start in open_endpoint_positions:start_dot_rows.append((ident,start))
+                else:
+                    cx,cy=vp.screen(start)
+                    extras.append(f'<circle id="curve-{escape(str(ident))}-start" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
             continue
         if curve.get('kind')!='X_OF_Y':raise ValueError('MULTI_CURVE_KIND_INVALID:'+str(ident))
         for branch in curve.get('branches') or []:
@@ -535,7 +553,17 @@ def _produce_multi_curve(plan,vp):
             sampling.append({'id':'curve-'+str(ident)+'-'+tag.lower(),**{key:value for key,value in result.items() if key!='branches'}})
             points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
             parts.append(f'<polyline id="curve-{escape(str(ident))}-{tag.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}_{tag}" points="{points}" fill="none" stroke={stroke}{look}/>')
-    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+extras+region_labels)+'</svg>'
+    marker_parts=[]
+    # Keep coincident ownership visible: the open marker is the outer ring and a closed owner (such as a natural square-root start)
+    # remains a smaller, filled dot on top. Their distinct IDs preserve independent ownership for the observer.
+    source_endpoint_rows.sort(key=lambda row:(row[2]!='OPEN',row[0],row[1]))
+    for ident,which,state,x_value,y_value in source_endpoint_rows:
+        cx,cy=vp.screen((x_value,y_value));radius=4.0
+        marker_parts.append(f'<circle id="domain-endpoint-{escape(str(ident))}-{which}" data-role="source-domain-endpoint" data-curve="{escape(str(ident))}" data-endpoint="{which}" data-state="{state}" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:g}" fill="{"#fff" if state=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
+    for ident,(x_value,y_value) in start_dot_rows:
+        cx,cy=vp.screen((x_value,y_value))
+        marker_parts.append(f'<circle id="curve-{escape(str(ident))}-start" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="2.4" fill="#111" stroke="black"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+extras+region_labels+marker_parts)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 def _produce_piecewise_polynomial(plan,vp):

@@ -4088,6 +4088,21 @@ def _mc_obs_free(entry,ident):
     curve['abs']=_mc_obs_abs(entry,ident)
     return curve
 
+def _mc_obs_domain(entry,ident):
+    """An exact draw interval and its optional source endpoint ownership, reconstructed independently from the curve plan."""
+    domain=entry.get('domain')
+    if isinstance(domain,dict):
+        if not {'from','to'}<=set(domain) or set(domain)-{'from','to','fromState','toState'}:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+        states=[domain.get('fromState','NONE'),domain.get('toState','NONE')]
+        domain=[domain['from'],domain['to']]
+    else:
+        states=entry.get('domainStates',['NONE','NONE'])
+    if not isinstance(states,list) or len(states)!=2 or any(state not in ('NONE','OPEN','CLOSED') for state in states):raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+ident)
+    if not isinstance(domain,list) or len(domain)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    lo,hi=(_mc_obs_fraction(value,'MULTI_CURVE_DOMAIN_INVALID:'+ident) for value in domain)
+    if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    return (lo,hi),tuple(states)
+
 def _mc_obs_abs(entry,ident):
     """(G18c) abs:true on a curve entry: the figure draws y=|f(x)| (read again from the plan, never from the frozen row)."""
     if 'abs' not in entry:return False
@@ -4285,7 +4300,16 @@ def multi_curve_audit(plan,svg,transform):
         raw=plan.get('curves')
         minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else 2
         if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
-        raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
+        normalized=[]
+        for entry in raw:
+            domain=entry.get('domain') if isinstance(entry,dict) else None
+            if isinstance(domain,dict):
+                if not {'from','to'}<=set(domain) or set(domain)-{'from','to','fromState','toState'}:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+str(entry.get('id','')))
+                states=[domain.get('fromState','NONE'),domain.get('toState','NONE')]
+                entry={**entry,'domain':[domain['from'],domain['to']]}
+                if states!=['NONE','NONE']:entry['domainStates']=states
+            normalized.append(entry)
+        raw=normalized
         curves=[];ids=set();by_id={}
         for entry in raw:
             if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
@@ -4304,10 +4328,8 @@ def multi_curve_audit(plan,svg,transform):
                     if lo<vertex<hi:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                     k=f0+f1*vertex+f2*vertex*vertex
                     definition={'kind':'SQRT','r':[-k/f2,1/f2],'a':Fraction(1 if lo>=vertex else -1),'o':vertex}
-                domain=entry.get('domain')
-                if not isinstance(domain,list) or len(domain)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
-                lo,hi=(_mc_obs_fraction(value,'MULTI_CURVE_DOMAIN_INVALID:'+ident) for value in domain)
-                if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                if 'domainStates' in entry:raise ValueError('MULTI_CURVE_DOMAIN_STATE_UNSUPPORTED:'+ident)
+                (lo,hi),_=_mc_obs_domain(entry,ident)
                 curve={'id':ident,'kind':definition['kind'],'inverse':True,'source':source,'interval':(lo,hi),'look':look,'entry':entry,**{key:value for key,value in definition.items() if key!='kind'}}
                 if definition['kind']=='Y_OF_X':curve['f']=tuple(float(value) for value in definition['coefficients'])
                 # an image-derived domain (square root <-> quadratic half, line) must be the image of the source's draw interval
@@ -4322,21 +4344,26 @@ def multi_curve_audit(plan,svg,transform):
                 continue
             if kind in MC_FREE_KINDS:
                 curve=_mc_obs_free(entry,ident);curve['look']=look;curve['inverse']=False;curve['entry']=entry
-                domain=entry.get('domain')
-                if not isinstance(domain,list) or len(domain)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
-                lo,hi=(_mc_obs_fraction(value,'MULTI_CURVE_DOMAIN_INVALID:'+ident) for value in domain)
-                if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                (lo,hi),curve['domainStates']=_mc_obs_domain(entry,ident)
                 curve['interval']=(lo,hi);branches=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
                 if kind=='RATIONAL':
                     pole=-curve['d'][0]/curve['d'][1]
                     if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
-                    elif pole in (lo,hi):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                    elif pole==lo:
+                        if curve['domainStates'][0]!='OPEN':raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                        branches=[{'side':'RIGHT','xInterval':(lo,hi),'yInterval':None}]
+                    elif pole==hi:
+                        if curve['domainStates'][1]!='OPEN':raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                        branches=[{'side':'LEFT','xInterval':(lo,hi),'yInterval':None}]
                 if kind=='SQRT':
                     boundary=-curve['r'][0]/curve['r'][1]
                     if (curve['r'][1]>0 and lo<boundary) or (curve['r'][1]<0 and hi>boundary):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                    start_index=0 if curve['r'][1]>0 else 1
+                    if curve['domainStates'][start_index]=='OPEN' and curve['interval'][start_index]==boundary:raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+ident)
                 curve['branches']=branches;curves.append(curve);by_id[ident]=curve
                 continue
             coefficients=entry.get('coefficients')
+            if 'domainStates' in entry:raise ValueError('MULTI_CURVE_DOMAIN_STATE_UNSUPPORTED:'+ident)
             if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
             c0,c1,c2=(_pp_coeff(value) for value in coefficients)
             if c2==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
@@ -4394,6 +4421,10 @@ def multi_curve_audit(plan,svg,transform):
                 if row.get(key)!=curve['look'].get(key):same=False
             if (row.get('inverseOf') or None)!=(curve['entry'].get('inverseOf') or None):same=False
             if bool(row.get('abs'))!=bool(curve.get('abs')):same=False
+            if curve['kind'] in MC_FREE_KINDS:
+                states=curve.get('domainStates',('NONE','NONE'))
+                if states!=('NONE','NONE') and row.get('domainStates')!=list(states):same=False
+                if states==('NONE','NONE') and 'domainStates' in row:same=False
             if not same:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
             rows=row.get('branches')
             if not isinstance(rows,list) or len(rows)!=len(curve['branches']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id']);continue
@@ -4565,7 +4596,7 @@ def multi_curve_audit(plan,svg,transform):
             if curve['kind']!='RATIONAL':continue
             lo,hi=curve['interval'];pole=-curve['d'][0]/curve['d'][1];horizontal=curve['n'][1]/curve['d'][1]
             if curve.get('abs'):horizontal=abs(horizontal)
-            if lo<pole<hi and pole!=0:wanted_lines['ASYM_'+curve['id']+'_V']=('V',float(pole))
+            if lo<=pole<=hi and pole!=0:wanted_lines['ASYM_'+curve['id']+'_V']=('V',float(pole))
             if horizontal!=0:wanted_lines['ASYM_'+curve['id']+'_H']=('H',float(horizontal))
             row=frozen.get(curve['id']) or {}
             drawn_v=bool((row.get('asymptotes') or {}).get('vertical',{}).get('drawn'));drawn_h=bool((row.get('asymptotes') or {}).get('horizontal',{}).get('drawn'))
@@ -4595,7 +4626,34 @@ def multi_curve_audit(plan,svg,transform):
             if node is None:continue
             try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
             except (TypeError,ValueError):errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident);continue
-            if abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35:errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident)
+            try:radius=float(node.get('r'))
+            except (TypeError,ValueError):radius=0.0
+            if abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35 or node.get('fill')!='#111' or not 0<radius<=5:errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident)
+        wanted_domain_dots={}
+        for curve in curves:
+            states=curve.get('domainStates',('NONE','NONE'))
+            if curve['kind'] not in MC_FREE_KINDS:continue
+            for which,state,value in (('from',states[0],curve['interval'][0]),('to',states[1],curve['interval'][1])):
+                if state in ('OPEN','CLOSED'):
+                    if curve['kind']=='RATIONAL' and value==-curve['d'][0]/curve['d'][1]:continue
+                    y_value=_mc_obs_y(curve,value)
+                    if y_value is None:errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_UNDEFINED:'+curve['id']);continue
+                    wanted_domain_dots['domain-endpoint-'+curve['id']+'-'+which]=(curve['id'],which,state,float(value),float(y_value))
+        domain_dot_rows={}
+        for node in root.iter():
+            if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='source-domain-endpoint':domain_dot_rows.setdefault(node.get('id'),[]).append(node)
+        if set(domain_dot_rows)!=set(wanted_domain_dots) or any(len(rows)!=1 for rows in domain_dot_rows.values()):errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_INVENTORY_MISMATCH')
+        for ident,(curve_id,which,state,want_x,want_y) in wanted_domain_dots.items():
+            rows=domain_dot_rows.get(ident) or []
+            if len(rows)!=1:continue
+            node=rows[0]
+            try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
+            except (TypeError,ValueError):errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_MISMATCH:'+ident);continue
+            try:radius=float(node.get('r'));stroke_width=float(node.get('stroke-width'))
+            except (TypeError,ValueError):radius=stroke_width=0.0
+            if (node.get('data-curve')!=curve_id or node.get('data-endpoint')!=which or node.get('data-state')!=state
+                or node.get('fill')!=('#111' if state=='CLOSED' else '#fff') or node.get('stroke')!='black' or abs(radius-4)>1e-6 or abs(stroke_width-1)>1e-6
+                or abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35):errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_MISMATCH:'+ident)
         errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features))   # (G18c) shaded regions
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
