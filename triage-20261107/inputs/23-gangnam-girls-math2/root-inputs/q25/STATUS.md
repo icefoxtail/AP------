@@ -16,3 +16,8 @@ Question-specific limitations:
 This number line shows integrals 7,−2,8 on [−3,0],[0,1],[1,5], not f values or interval lengths. It does not show the separate ∫4x=−18 contribution. Signed labels and interval-additivity explanation require visual/contract review. No arbitrary polynomial curve is inferred.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 구하는 값은 $\int_{-3}^0(f(x)-4x)\,dx=7-(-18)=25$이다.

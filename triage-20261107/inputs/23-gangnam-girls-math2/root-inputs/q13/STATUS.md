@@ -16,3 +16,10 @@ Question-specific limitations:
 The number line covers the open ranges 0<a<15 and 15<a<17, with boundary values 0,15,17 marked. It is not |f| or the pair f=±a. The exceptional a=15 count 5 and a>17 count 2 are not fully displayed; a=17 count 3 is stated in caption. Filled boundary markers must not imply that the span counts apply at their endpoints or that a=0 is admissible. Final a=17 is present as a displayed endpoint, so answer visibility remains unreviewed.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 극솟값에서 접하는 근을 포함해 $2$개
+- Span label correction: exact original span from=A, to=B, label='6개'; label now '여섯 개'.
+- Span label correction: exact original span from=B, to=C, label='4개'; label now '네 개'.

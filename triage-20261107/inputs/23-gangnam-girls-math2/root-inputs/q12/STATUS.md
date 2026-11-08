@@ -18,3 +18,8 @@ The number line summarizes signed source integrals −A=−3 and B=2. It deliber
 Source PNG used by ROOT: archive/assets/images/23_강남여고_2학기_기말_고2_수학II/q12.png, PR #1225 head 374cbb01ab00c364e4fb50e3b63d145c1aef5cd3, blob f1218fc86ef70db3ffeef4fef48e054b88c812d6, 22445 bytes. It is not present in checked main. Preserve the pending restoration and linkage instead of duplicating it.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $\int_{-3}^4f(x)\,dx=-3+2=-1$이다.

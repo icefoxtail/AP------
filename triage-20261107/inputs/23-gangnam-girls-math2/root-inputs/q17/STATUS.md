@@ -16,3 +16,8 @@ Question-specific limitations:
 The TREE is a three-case grouping of n=1..3, n=4, n=5..10. Its three leaves are not three roots or three possible n values. Root counts 3,2,1 are only in caption, not leaf labels. It does not visualize cubic vertical shifts, multiplicity at n=4 or all ten cases individually. Chart semantics and layout remain unvalidated.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $a_4=2$이다.

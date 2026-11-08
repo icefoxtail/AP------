@@ -16,3 +16,8 @@ Question-specific limitations:
 The helper uses the solved case a=2, shown directly in alt and endpoint values. It does not prove the equation for an arbitrary real a or illustrate reversed integral orientation when a<0. The displayed 12 and 4 are integrals of −2x+4 over [−2,0] and [0,2], not spatial lengths. No graph or separate odd-part cancellation is supplied; answer-label handling is unreviewed.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $a=2$이다.

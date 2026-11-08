@@ -18,3 +18,11 @@ This is a sign-summary number line, not a reconstructed derivative curve. At x=1
 Source PNG used by ROOT: archive/assets/images/23_강남여고_2학기_기말_고2_수학II/q7.png, PR #1225 head 374cbb01ab00c364e4fb50e3b63d145c1aef5cd3, blob 79bc8eff1a2f18a1fd237e6ac584adad94c08fac, 45066 bytes. It is not present in checked main. Preserve the pending restoration and linkage instead of duplicating it.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $x=1$은 극소점이다.
+- Span label correction: exact original span from=A, to=B, label="f'<0"; label now '도함수 음수'.
+- Span label correction: exact original span from=B, to=C, label="f'<0"; label now '도함수 음수'.
+- Span label correction: exact original span from=C, to=D, label="f'>0"; label now '도함수 양수'.

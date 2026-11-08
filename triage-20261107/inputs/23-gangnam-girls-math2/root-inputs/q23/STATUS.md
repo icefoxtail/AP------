@@ -16,3 +16,8 @@ Question-specific limitations:
 This is the position comparison at the derived nonnegative equal-speed time t=2, not the two velocity curves. The span label 9 is the final requested distance inside the figure, so answer-display review remains unresolved. The negative algebraic time −1/5 is excluded in the source solution but not explained by this helper.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 두 점 사이의 거리는 $|23-14|=9$이다.

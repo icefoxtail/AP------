@@ -16,3 +16,8 @@ Question-specific limitations:
 The number-line spans summarize given/derived signed integrals, not values of f or spatial areas of an invented curve. It does not explicitly show the symmetric cancellation on [−3,3] or the separate ∫4x=32 contribution. Overlapping braces and multiple signed interval labels need visual/contract checking.
 
 Preservation base: codex/svg-triage-20261107 at fbed1f65c7e03ca3df7655c2c80527aefad6ecd0. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 구하는 적분값은 $14+32=46$
