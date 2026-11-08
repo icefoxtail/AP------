@@ -38,7 +38,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 시각, 세로축이 속도인 그래프에서 직선이 위에서 아래로 내려가며 시간축과 만나고, 축 위와 아래에 두 영역이 색칠되어 있다.",
+    "solutionImageCaption": "속도는 시각 3/4에서 양수에서 음수로 바뀐다. 축 위와 아래의 부호 있는 넓이를 합해 출발 위치 2에 더한다. 정답은 -7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -116,7 +120,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED"
+    "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+    "solutionImage": "assets/images/21_매산여고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 위에 놓인 구간과 아래로 내려갔다 다시 x축에 닿는 포물선, 그리고 두 영역의 색칠.",
+    "solutionImageCaption": "포물선은 x=1과 x=3에서 x축을 만나고 x=1을 경계로 위아래가 바뀐다. 두 구간의 넓이를 양수로 합한다. 정답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

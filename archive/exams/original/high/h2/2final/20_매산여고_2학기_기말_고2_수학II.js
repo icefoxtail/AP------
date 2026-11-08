@@ -241,7 +241,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선이 각각 x축에 한 점에서 접하는 두 그래프.",
+    "solutionImageCaption": "예: 경계값 a=0에서는 f′(x)=3x²가 x=0에서만 0이고, a=6에서는 f′(x)=3(x+2)²가 x=−2에서만 0이다. 두 경우 모두 도함수는 음수가 되지 않으며 한 점에서만 0이므로 원래 함수는 엄밀히 증가한다. 정답은 0≤a≤6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -607,7 +611,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: y축 대칭인 곡선과 x축이 둘러싼 영역이 가운데 하나와 양옆 둘, 모두 세 부분으로 음영 처리되어 있다.",
+    "solutionImageCaption": "그래프는 y축 대칭이고 영점은 −3, −2, 2, 3이다. 오른쪽의 x축 위·아래 넓이를 절댓값으로 더한 뒤 짝함수의 대칭을 적용한다. 정답은 29/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -763,7 +771,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선이 x축과 두 점에서 만나고, 그 사이의 곡선 아래가 색으로 표시되어 있다.",
+    "solutionImageCaption": "곡선은 x=0과 x=2에서 x축과 만나고, 그 사이에서는 x축 위에 있다. 따라서 두 영점 사이의 곡선 아래 영역이 정적분의 값과 같다. 정답은 4/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

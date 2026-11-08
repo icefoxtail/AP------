@@ -233,7 +233,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선이 x축에 x=-1에서 접한다.",
+    "solutionImageCaption": "예: a=3일 때 y=f'(x)=3(x+1)^2의 그래프는 x=-1에서 x축에 접하고 음수가 되지 않는 경계 사례이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -746,7 +750,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 곡선이 x축과 (0,0), (1,0), (2,0)에서 만나며, 0과 1 사이의 축 위 영역과 1과 2 사이의 축 아래 영역이 옅게 칠해져 있다.",
+    "solutionImageCaption": "0과 1 사이에서는 곡선이 x축 위, 1과 2 사이에서는 아래에 있어 두 영역을 각각 양수의 넓이로 더한다. 정답은 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
