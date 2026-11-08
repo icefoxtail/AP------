@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,13 +21,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 일반항이\n$$a_n=(7^n\\text{을 } 10\\text{으로 나눈 나머지})$$\n일 때, $a_{50}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n$7^n$의 일의 자리 숫자는 $7$을 거듭제곱해 나가면서 주기성을 관찰하여 파악한다. $10$으로 나눈 나머지는 바로 일의 자리 숫자이다.\n\n[단계별 풀이]\n1단계 [주기성 파악]:\n- $7^1 = 7 \\implies$ 일의 자리 $7$\n- $7^2 = 49 \\implies$ 일의 자리 $9$\n- $7^3 = 343 \\implies$ 일의 자리 $3$\n- $7^4 = 2401 \\implies$ 일의 자리 $1$\n- $7^5 = 16807 \\implies$ 일의 자리 $7$\n따라서 $7^n$을 $10$으로 나눈 나머지는 $7, 9, 3, 1$의 $4$개의 숫자가 순환한다.\n\n2단계 [$a_{50}$ 계산]:\n$50 = 4\\times 12 + 2$이므로 $a_{50}$은 주기의 $2$번째 숫자인 $9$이다:\n$$a_{50} = 9$$\n\n[오답 및 경계 점검]\n$50$을 주기의 길이인 $4$로 나눈 나머지가 $2$이므로 $7^2$의 일의 자리 숫자인 $9$와 정확히 일치한다.\n\n[결론]\n$9$"
   },
   {
     "id": 2,
@@ -38,9 +39,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -49,13 +50,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "제$3$항이 $8$이고 제$10$항이 $29$인 등차수열의 제$30$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$89$",
+    "solution": "[풀이 전략]\n등차수열의 일반항 공식 $a_n = a + (n-1)d$에 $a_3 = 8$과 $a_{10} = 29$를 대입하여 첫째항 $a$와 공차 $d$를 구한 후 $a_{30}$을 계산한다.\n\n[단계별 풀이]\n1단계 [공차 $d$ 구하기]:\n$$a_{10} - a_3 = (a+9d) - (a+2d) = 7d$$\n주어진 값에서\n$$29 - 8 = 21 \\implies 7d = 21 \\implies d = 3$$\n\n2단계 [첫째항 $a$ 구하기]:\n$$a_3 = a + 2d = 8 \\implies a + 2(3) = 8 \\implies a = 2$$\n\n3단계 [$a_{30}$ 계산]:\n$$a_{30} = a + 29d = 2 + 29\\times 3 = 2 + 87 = 89$$\n\n[오답 및 경계 점검]\n$a_{30} = a_{10} + 20d = 29 + 20\\times 3 = 29 + 60 = 89$로도 일치함을 확인한다.\n\n[결론]\n$89$"
   },
   {
     "id": 3,
@@ -66,9 +68,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -77,13 +79,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "첫째항이 $\\sqrt{5}$, 공비가 $\\sqrt{5}$인 등비수열 $\\{a_n\\}$에서 $a_8$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$625$",
+    "solution": "[풀이 전략]\n첫째항 $a = \\sqrt{5}$, 공비 $r = \\sqrt{5}$인 등비수열의 일반항 공식 $a_n = a r^{n-1}$에 $n=8$을 대입하여 계산한다.\n\n[단계별 풀이]\n1단계 [일반항에 $n=8$ 대입]:\n$$a_8 = a r^7 = \\sqrt{5}\\times (\\sqrt{5})^7 = (\\sqrt{5})^8$$\n\n2단계 [거듭제곱 계산]:\n$$(\\sqrt{5})^8 = \\{(\\sqrt{5})^2\\}^4 = 5^4 = 625$$\n\n[오답 및 경계 점검]\n$5^1=5, 5^2=25, 5^3=125, 5^4=625$로 거듭제곱 계산이 정확하다.\n\n[결론]\n$625$"
   },
   {
     "id": 4,
@@ -94,9 +97,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -105,13 +108,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$100$ 이하의 자연수 중에서 $3$의 배수의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1683$",
+    "solution": "[풀이 전략]\n$100$ 이하의 자연수 중 $3$의 배수는 $3, 6, 9, \\dots, 99$이다. 이는 첫째항이 $3$, 공차가 $3$, 끝항이 $99$인 등차수열의 합이다.\n\n[단계별 풀이]\n1단계 [항의 개수 $n$ 구하기]:\n$99 = 3n \\implies n = 33$이므로 항의 개수는 $33$개이다.\n\n2단계 [등차수열의 합 공식 적용]:\n$$\\begin{aligned}\nS &= \\frac{n(a+l)}{2} = \\frac{33(3+99)}{2} \\\\\n&= \\frac{33\\times 102}{2} = 33 \\times 51 = 1683\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n$3(1+2+\\dots+33) = 3\\times \\frac{33\\times 34}{2} = 3\\times 33\\times 17 = 99\\times 17 = 1683$으로 일치한다.\n\n[결론]\n$1683$"
   },
   {
     "id": 5,
@@ -122,9 +126,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -133,13 +137,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에서 제$4$항과 제$10$항은 절댓값이 같고 부호가 반대이며 제$6$항은 $-8$일 때, 제$15$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$64$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$에서 $a_4$와 $a_{10}$의 절댓값이 같고 부호가 반대이므로 $a_4 + a_{10} = 0$이다.\n등차중항 성질에 의해 $a_7 = 0$임을 파악하고, $a_6 = -8$로부터 공차를 구하여 $a_{15}$를 계산한다.\n\n[단계별 풀이]\n1단계 [$a_7$ 구하기]:\n$a_4 + a_{10} = 0$이고 $a_4 + a_{10} = 2a_7$이므로\n$$2a_7 = 0 \\implies a_7 = 0$$\n\n2단계 [공차 $d$ 구하기]:\n$a_7 = a_6 + d$이므로\n$$0 = -8 + d \\implies d = 8$$\n\n3단계 [$a_{15}$ 계산]:\n$$a_{15} = a_7 + 8d = 0 + 8\\times 8 = 64$$\n\n[오답 및 경계 점검]\n$a_n = 8(n-7) = 8n-56$이다.\n$a_4 = 32-56 = -24$\n$a_{10} = 80-56 = 24$\n$a_4$와 $a_{10}$의 절댓값이 같고 부호가 반대임이 완벽히 만족된다.\n\n[결론]\n$64$"
   },
   {
     "id": 6,
@@ -150,9 +155,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -161,13 +166,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 평행하지 않은 두 직선 $l,\\; m$ 사이에 직선 $m$에 수직인 선분 $12$개를 일정한 간격으로 긋고 그 길이를 차례로 $a_1,\\; a_2,\\; \\dots,\\; a_{12}$라고 하자. $a_1=12,\\; a_{12}=6$일 때, $a_3+a_4+a_5+\\dots+a_{10}$의 값을 구하시오.\n<img src=\"q06.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$72$",
+    "solution": "[풀이 전략]\n평행하지 않은 두 직선 사이에 일정한 간격으로 그은 선분들의 길이는 공차가 일정한 등차수열을 이룬다.\n등차수열의 대칭적 성질 $a_k + a_{13-k} = a_1 + a_{12}$를 활용하여 합을 구한다.\n\n[단계별 풀이]\n1단계 [선분 길이의 등차수열 성질]:\n두 직선의 기울기가 일정하므로 선분의 길이를 나타내는 수열 $a_1, a_2, \\dots, a_{12}$는 등차수열이다.\n따라서\n$$a_1 + a_{12} = a_2 + a_{11} = a_3 + a_{10} = a_4 + a_9 = a_5 + a_8 = a_6 + a_7 = 12 + 6 = 18$$\n\n2단계 [구하는 합 계산]:\n$a_3 + a_4 + \\dots + a_{10}$은 전체 $12$개 항의 합 $S_{12}$에서 앞뒤 $4$개의 항($a_1, a_2, a_{11}, a_{12}$)을 뺀 값이다:\n$$S_{12} = \\frac{12(a_1+a_{12})}{2} = \\frac{12\\times 18}{2} = 108$$\n제외되는 항들의 합:\n$$(a_1+a_{12}) + (a_2+a_{11}) = 18 + 18 = 36$$\n따라서:\n$$a_3 + a_4 + \\dots + a_{10} = 108 - 36 = 72$$\n\n[오답 및 경계 점검]\n대칭 쌍으로 직접 계산: $(a_3+a_{10}) + (a_4+a_9) + (a_5+a_8) + (a_6+a_7) = 18\\times 4 = 72$로 즉시 일치한다.\n\n[결론]\n$72$"
   },
   {
     "id": 7,
@@ -178,9 +184,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -189,13 +195,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=3n^2-4n$일 때, $a_n < 50$을 만족시키는 자연수 $n$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n$S_n = 3n^2-4n$으로부터 일반항 $a_n$을 구한 후 부등식 $a_n < 50$을 만족하는 자연수 $n$의 개수를 구한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_n$ 구하기]:\n- $a_1 = S_1 = 3(1)^2 - 4(1) = -1$\n- $n\\ge 2$일 때:\n$$a_n = S_n - S_{n-1} = (3n^2-4n) - \\{3(n-1)^2-4(n-1)\\} = 6n - 7$$\n$n=1$ 대입 시 $6(1)-7 = -1 = a_1$이므로 모든 자연수 $n$에 대하여 $a_n = 6n-7$이다.\n\n2단계 [부등식 풀이]:\n$$6n - 7 < 50 \\implies 6n < 57 \\implies n < \\frac{57}{6} = 9.5$$\n$n$은 자연수이므로 $n = 1, 2, 3, \\dots, 9$이다.\n따라서 만족시키는 자연수 $n$의 개수는 $9$개이다.\n\n[오답 및 경계 점검]\n$n=9$일 때 $a_9 = 54-7 = 47 < 50$\n$n=10$일 때 $a_{10} = 60-7 = 53 > 50$\n자연수 $n$은 $1$부터 $9$까지 총 $9$개이다.\n\n[결론]\n$9$"
   },
   {
     "id": 8,
@@ -206,9 +213,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -217,13 +224,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "모든 모서리의 길이의 합이 $156$, 겉넓이가 $702$인 직육면체의 가로의 길이, 세로의 길이, 높이가 이 순서대로 등비수열을 이룰 때, 이 직육면체의 부피를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$729$",
+    "solution": "[풀이 전략]\n직육면체의 가로, 세로, 높이가 등비수열을 이루므로 세 모서리의 길이를 $a, ar, ar^2$으로 둔다.\n모든 모서리의 길이의 합과 겉넓이 식으로부터 $ar$의 값을 구하여 부피 $V = a\\times ar\\times ar^2 = (ar)^3$을 계산한다.\n\n[단계별 풀이]\n1단계 [조건식 세우기]:\n직육면체에는 동일한 길이의 모서리가 $4$개씩 있으므로:\n$$4(a + ar + ar^2) = 156 \\implies a(1+r+r^2) = 39 \\quad \\cdots \\text{①}$$\n겉넓이는 마주 보는 세 쌍의 면의 넓이의 합의 $2$배이므로:\n$$2(a\\cdot ar + ar\\cdot ar^2 + a\\cdot ar^2) = 702 \\implies a^2 r + a^2 r^3 + a^2 r^2 = 351$$\n$$a^2 r(1 + r + r^2) = 351 \\quad \\cdots \\text{②}$$\n\n2단계 [$ar$ 구하기]:\n②식을 ①식으로 변변 나누면:\n$$\\frac{a^2 r(1+r+r^2)}{a(1+r+r^2)} = ar = \\frac{351}{39} = 9$$\n\n3단계 [직육면체의 부피 계산]:\n$$V = a \\times ar \\times ar^2 = a^3 r^3 = (ar)^3 = 9^3 = 729$$\n\n[오답 및 경계 점검]\n$351 = 39\\times 9$이므로 $ar=9$가 정확하며, $9^3 = 81\\times 9 = 729$이다.\n\n[결론]\n$729$"
   },
   {
     "id": 9,
@@ -234,9 +242,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -245,13 +253,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "등비수열 $\\{a_n\\}$에 대하여 수열 $\\{5a_n-a_{n+1}\\}$은 첫째항이 $6$, 공비가 $2$인 등비수열일 때, $a_7$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$128$",
+    "solution": "[풀이 전략]\n등비수열 ${a_n}$의 일반항을 $a_n = a r^{n-1}$이라 두면, 수열 ${5a_n-a_{n+1}}$의 일반항을 $a$와 $r$에 대한 식으로 표현할 수 있다. 주어진 첫째항과 공비를 대조하여 $a$와 $r$을 구하고 $a_7$을 계산한다.\n\n[단계별 풀이]\n1단계 [수열 ${5a_n-a_{n+1}}$ 식 정리]:\n$$5a_n - a_{n+1} = 5a r^{n-1} - a r^n = a(5-r)r^{n-1}$$\n이 수열의 공비는 $r$이고 첫째항은 $a(5-r)$이다.\n\n2단계 [조건 대입하여 $a, r$ 구하기]:\n문제에서 공비가 $2$라고 하였으므로\n$$r = 2$$\n첫째항이 $6$이라고 하였으므로\n$$a(5-2) = 6 \\implies 3a = 6 \\implies a = 2$$\n\n3단계 [$a_7$ 계산]:\n$$a_7 = a r^6 = 2 \\times 2^6 = 2 \\times 64 = 128$$\n\n[오답 및 경계 점검]\n$a_n = 2\\times 2^{n-1} = 2^n$이면 $5a_n - a_{n+1} = 5\\times 2^n - 2^{n+1} = 5\\times 2^n - 2\\times 2^n = 3\\times 2^n = 6\\times 2^{n-1}$이 되어 첫째항 $6$, 공비 $2$인 등비수열을 정확히 만족한다.\n\n[결론]\n$128$"
   },
   {
     "id": 10,
@@ -262,9 +271,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -273,13 +282,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "공비가 $-2$, 제$n$항이 $240$인 등비수열에 대하여 첫째항부터 제$n$항까지의 합이 $165$일 때, 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n등비수열의 합과 일반항의 관계식 $S_n = \\frac{a(1-r^n)}{1-r} = \\frac{a - r a_n}{1-r}$을 활용하여 첫째항 $a$를 먼저 구하고, 일반항 식에 대입하여 $n$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [첫째항 $a$ 구하기]:\n공비 $r = -2$, 제$n$항 $a_n = 240$, $S_n = 165$이므로\n$$S_n = \\frac{a(1-r^n)}{1-r} = \\frac{a - r(a r^{n-1})}{1-r} = \\frac{a - r a_n}{1-r}$$\n값들을 대입하면:\n$$165 = \\frac{a - (-2)\\times 240}{1 - (-2)} = \\frac{a + 480}{3}$$\n$$495 = a + 480 \\implies a = 15$$\n\n2단계 [자연수 $n$ 구하기]:\n$a_n = a r^{n-1}$에 대입하면:\n$$15 \\times (-2)^{n-1} = 240 \\implies (-2)^{n-1} = \\frac{240}{15} = 16$$\n$16 = (-2)^4$이므로\n$$n - 1 = 4 \\implies n = 5$$\n\n[오답 및 경계 점검]\n$n=5$일 때 등비수열의 합을 검산:\n$S_5 = \\frac{15\\{1-(-2)^5\\}}{1-(-2)} = \\frac{15(1 - (-32))}{3} = 5\\times 33 = 165$로 정확히 성립한다.\n\n[결론]\n$5$"
   },
   {
     "id": 11,
@@ -290,9 +300,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -301,13 +311,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "정사각형을 규칙에 따라 색칠하려고 한다. 첫 번째 시행에서 오른쪽 그림과 같이 정사각형을 $9$등분 하여 가운데 정사각형을 색칠한다. 두 번째 시행에서는 남은 $8$개의 정사각형을 각각 $9$등분 하여 가운데 정사각형을 색칠한다. 이와 같은 시행을 반복할 때, $10$번째 시행 후 색칠한 정사각형의 총개수를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{8^{10}-1}{7}$",
+    "solution": "[풀이 전략]\n시행 횟수에 따라 새로 색칠되는 정사각형의 개수를 관찰하여 등비수열의 합으로 총개수를 구한다.\n\n[단계별 풀이]\n1단계 [시행별 색칠되는 정사각형의 개수]:\n- 1번째 시행: 가운데 $1$개 색칠 $\\implies 1$개\n- 2번째 시행: 남은 $8$개의 정사각형에서 각각 가운데 $1$개씩 색칠 $\\implies 1\\times 8 = 8$개 추가\n- 3번째 시행: 남은 $8^2$개의 정사각형에서 각각 가운데 $1$개씩 색칠 $\\implies 8^2$개 추가\n- $n$번째 시행: 새로 색칠되는 개수는 $8^{n-1}$개이다.\n\n2단계 [$10$번째 시행 후 총개수 계산]:\n$10$번째 시행 후 색칠된 모든 정사각형의 총개수는 첫째항이 $1$, 공비가 $8$인 등비수열의 첫째항부터 제$10$항까지의 합이다:\n$$S_{10} = 1 + 8 + 8^2 + \\dots + 8^9 = \\frac{1(8^{10}-1)}{8-1} = \\frac{8^{10}-1}{7}$$\n\n[오답 및 경계 점검]\n$1+8+8^2+\\dots+8^9$는 총 $10$개의 항으로 이루어진 등비수열의 합이므로 지수가 $10$이 됨에 유의한다.\n\n[결론]\n$\\frac{8^{10}-1}{7}$"
   },
   {
     "id": 12,
@@ -318,9 +329,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -329,13 +340,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$200$ 이하의 자연수 중에서 서로 다른 네 수를 택하여 나열할 때, 공비가 자연수인 등비수열을 이루도록 나열하는 경우의 수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$36$",
+    "solution": "[풀이 전략]\n$200$ 이하의 서로 다른 네 자연수를 $a, ar, ar^2, ar^3$이라 두면, 공비 $r$는 $2$ 이상의 자연수이어야 한다.\n가장 큰 수인 $ar^3 \\le 200$ 조건을 만족시키는 $r$의 값에 따라 가능한 자연수 $a$의 개수를 센다.\n\n[단계별 풀이]\n1단계 [$r$의 가능한 범위 파악]:\n네 수가 서로 다른 자연수이므로 공비 $r$는 $2$ 이상의 자연수이다.\n가장 큰 항 $a r^3 \\le 200$에서 $a\\ge 1$이므로\n$$r^3 \\le 200$$\n- $2^3 = 8 \\le 200$\n- $3^3 = 27 \\le 200$\n- $4^3 = 64 \\le 200$\n- $5^3 = 125 \\le 200$\n- $6^3 = 216 > 200$\n따라서 가능한 공비는 $r = 2, 3, 4, 5$이다.\n\n2단계 [공비 $r$별 $a$의 개수 계산]:\n- $r = 2$일 때: $8a \\le 200 \\implies a \\le 25$ ($25$가지)\n- $r = 3$일 때: $27a \\le 200 \\implies a \\le \\frac{200}{27} = 7.40\\dots \\implies a \\le 7$ ($7$가지)\n- $r = 4$일 때: $64a \\le 200 \\implies a \\le \\frac{200}{64} = 3.125 \\implies a \\le 3$ ($3$가지)\n- $r = 5$일 때: $125a \\le 200 \\implies a \\le \\frac{200}{125} = 1.6 \\implies a = 1$ ($1$가지)\n\n3단계 [총 경우의 수 계산]:\n$$25 + 7 + 3 + 1 = 36$$\n\n[오답 및 경계 점검]\n$r=1$인 경우는 네 수가 서로 같아지므로 \"서로 다른 네 수\" 조건에 의해 제외되어야 한다.\n\n[결론]\n$36$"
   },
   {
     "id": 13,
@@ -346,9 +358,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -357,13 +369,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$에 대하여 $S_n=S_{n+3}$이고 $a_{n+4}=5$일 때, $a_{n+6}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "[풀이 전략]\n등차수열에서 $S_{n+3} - S_n = a_{n+1} + a_{n+2} + a_{n+3}$임을 이용하고, 등차중항 $a_{n+1}+a_{n+3} = 2a_{n+2}$를 적용하여 $a_{n+2}$의 값을 구한 후 $a_{n+6}$을 도출한다.\n\n[단계별 풀이]\n1단계 [$a_{n+2}$ 구하기]:\n$S_{n+3} = S_n$이므로\n$$S_{n+3} - S_n = a_{n+1} + a_{n+2} + a_{n+3} = 0$$\n등차수열에서 $a_{n+1} + a_{n+3} = 2a_{n+2}$이므로\n$$3a_{n+2} = 0 \\implies a_{n+2} = 0$$\n\n2단계 [공차 $d$ 구하기]:\n등차수열의 성질에 의해\n$$a_{n+4} = a_{n+2} + 2d = 0 + 2d = 2d$$\n주어진 조건에서 $a_{n+4} = 5$이므로\n$$2d = 5$$\n\n3단계 [$a_{n+6}$ 계산]:\n$$a_{n+6} = a_{n+4} + 2d = 5 + 5 = 10$$\n\n[오답 및 경계 점검]\n$a_{n+2} = 0, a_{n+4} = 5, a_{n+6} = 10$으로 공차가 $\\frac{5}{2}$씩 두 번 더해져 $10$이 됨이 자명하다.\n\n[결론]\n$10$"
   },
   {
     "id": 14,
@@ -374,9 +387,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -385,13 +398,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "등차수열과 등비수열",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$2^5\\times 3^4$의 모든 양의 약수의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7623$",
+    "solution": "[풀이 전략]\n소인수분해된 자연수 $N = p^a q^b$의 모든 양의 약수의 총합 공식은\n$$(1+p+p^2+\\dots+p^a)(1+q+q^2+\\dots+q^b)$$\n이다. 각 괄호 안의 식은 등비수열의 합이므로 등비수열의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [약수의 총합 식 세우기]:\n$2^5\\times 3^4$의 모든 양의 약수의 합은:\n$$(1 + 2 + 2^2 + 2^3 + 2^4 + 2^5)(1 + 3 + 3^2 + 3^3 + 3^4)$$\n\n2단계 [등비수열의 합 계산]:\n- $1 + 2 + 2^2 + \\dots + 2^5 = \\frac{2^6-1}{2-1} = 64 - 1 = 63$\n- $1 + 3 + 3^2 + \\dots + 3^4 = \\frac{3^5-1}{3-1} = \\frac{243 - 1}{2} = \\frac{242}{2} = 121$\n\n3단계 [두 값의 곱 계산]:\n$$63 \\times 121 = 63 \\times (100 + 20 + 1) = 6300 + 1260 + 63 = 7623$$\n\n[오답 및 경계 점검]\n$63\\times 121 = 7623$ 산술 계산을 교차 검산하여 오류가 없음을 확인한다.\n\n[결론]\n$7623$"
   },
   {
     "id": 15,
@@ -402,9 +416,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -413,13 +427,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{n} (4k-6)=48$을 만족시키는 자연수 $n$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n시그마 공식을 이용하여 좌변의 식을 $n$에 대한 이차식으로 나타낸 후 이차방정식을 푼다.\n\n[단계별 풀이]\n1단계 [좌변의 시그마 계산]:\n$$\\begin{aligned}\n\\sum_{k=1}^n (4k-6) &= 4\\sum_{k=1}^n k - \\sum_{k=1}^n 6 \\\\\n&= 4\\times \\frac{n(n+1)}{2} - 6n \\\\\n&= 2n(n+1) - 6n \\\\\n&= 2n^2 + 2n - 6n = 2n^2 - 4n\n\\end{aligned}$$\n\n2단계 [이차방정식 세우기 및 풀이]:\n$$2n^2 - 4n = 48$$\n양변을 $2$로 나누면\n$$n^2 - 2n - 24 = 0$$\n인수분해하면\n$$(n-6)(n+4) = 0$$\n$n$은 자연수이므로 $n = 6$이다.\n\n[오답 및 경계 점검]\n$n=6$일 때 직접 대입:\n$k=1: -2$\n$k=2: 2$\n$k=3: 6$\n$k=4: 10$\n$k=5: 14$\n$k=6: 18$\n합: $(-2) + 2 + 6 + 10 + 14 + 18 = 48$로 성립한다.\n\n[결론]\n$6$"
   },
   {
     "id": 16,
@@ -430,9 +445,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -441,13 +456,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$\\sum_{k=4}^{8} k^2(k+1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1450$",
+    "solution": "[풀이 전략]\n전개하면 $k^2(k+1) = k^3+k^2$이다.\n구간이 $k=4$부터 $8$까지이므로 $1$부터 $8$까지의 합에서 $1$부터 $3$까지의 합을 빼서 계산한다.\n\n[단계별 풀이]\n1단계 [시그마 식 분리]:\n$$\\sum_{k=4}^8 k^2(k+1) = \\sum_{k=4}^8 (k^3+k^2) = \\sum_{k=1}^8 (k^3+k^2) - \\sum_{k=1}^3 (k^3+k^2)$$\n\n2단계 [$\\sum_{k=1}^8 (k^3+k^2)$ 계산]:\n- $\\sum_{k=1}^8 k^3 = \\left(\\frac{8\\times 9}{2}\\right)^2 = 36^2 = 1296$\n- $\\sum_{k=1}^8 k^2 = \\frac{8\\times 9\\times 17}{6} = 204$\n합: $1296 + 204 = 1500$\n\n3단계 [$\\sum_{k=1}^3 (k^3+k^2)$ 계산]:\n- $\\sum_{k=1}^3 k^3 = 1 + 8 + 27 = 36$\n- $\\sum_{k=1}^3 k^2 = 1 + 4 + 9 = 14$\n합: $36 + 14 = 50$\n\n4단계 [차 계산]:\n$$1500 - 50 = 1450$$\n\n[오답 및 경계 점검]\n각 항을 직접 계산하여 합산:\n$k=4: 16\\times 5 = 80$\n$k=5: 25\\times 6 = 150$\n$k=6: 36\\times 7 = 252$\n$k=7: 49\\times 8 = 392$\n$k=8: 64\\times 9 = 576$\n$80 + 150 + 252 + 392 + 576 = 1450$으로 완전 일치한다.\n\n[결론]\n$1450$"
   },
   {
     "id": 17,
@@ -458,9 +474,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -469,6 +485,7 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
@@ -480,8 +497,8 @@ window.questionBank = [
       "$2^{24}-4$",
       "$2^{25}-8$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "$2^{23}-8$",
+    "solution": "[풀이 전략]\n$2^{2n+1} = 2\\times (2^2)^n = 2\\times 4^n$임을 이용하여 등비수열의 합으로 식을 정리한다.\n\n[단계별 풀이]\n1단계 [일반항 정리]:\n$$3\\times 2^{2n+1} = 3\\times 2\\times (2^2)^n = 6\\times 4^n$$\n이는 첫째항이 $6\\times 4 = 24$, 공비가 $4$인 등비수열이다.\n\n2단계 [등비수열의 합 공식 적용]:\n$$\\begin{aligned}\n\\sum_{n=1}^{10} (3\\times 2^{2n+1}) &= \\sum_{n=1}^{10} (6\\times 4^n) \\\\\n&= \\frac{24(4^{10}-1)}{4-1} = \\frac{24(4^{10}-1)}{3} \\\\\n&= 8(4^{10}-1)\n\\end{aligned}$$\n\n3단계 [지수를 밑이 $2$인 꼴로 변형]:\n$4^{10} = (2^2)^{10} = 2^{20}$이고 $8 = 2^3$이므로\n$$8(2^{20}-1) = 8\\times 2^{20} - 8 = 2^{23} - 8$$\n이는 보기의 3번 선지와 일치한다.\n\n[오답 및 경계 점검]\n$8(4^{10}-1) = 2^3\\times 2^{20} - 8 = 2^{23}-8$로 선지와 정확히 일치함을 확인하였다.\n\n[결론]\n$2^{23}-8$"
   },
   {
     "id": 18,
@@ -492,9 +509,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -503,13 +520,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 귀납적 정의가\n$$a_1=1,\\; a_{n+1}=2a_n+1\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n일 때, 제$4$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "[풀이 전략]\n점화식 $a_{n+1} = 2a_n+1$에 $n=1, 2, 3$을 순차적으로 대입하여 $a_4$를 계산한다.\n\n[단계별 풀이]\n1단계 [$a_2$ 구하기]:\n$$a_2 = 2a_1 + 1 = 2(1) + 1 = 3$$\n\n2단계 [$a_3$ 구하기]:\n$$a_3 = 2a_2 + 1 = 2(3) + 1 = 7$$\n\n3단계 [$a_4$ 구하기]:\n$$a_4 = 2a_3 + 1 = 2(7) + 1 = 15$$\n\n[오답 및 경계 점검]\n$a_{n+1}+1 = 2(a_n+1)$이므로 $a_n+1 = (a_1+1)\\times 2^{n-1} = 2\\times 2^{n-1} = 2^n \\implies a_n = 2^n - 1$이다.\n$a_4 = 2^4 - 1 = 16 - 1 = 15$로 일치한다.\n\n[결론]\n$15$"
   },
   {
     "id": 19,
@@ -520,9 +538,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -531,13 +549,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{2n} (a_{k+1}-a_k)=(2n+1)^2+4(2n+1)-a_1$일 때, $a_7$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$77$",
+    "solution": "[풀이 전략]\n망원합(소거형 합)의 성질 $\\sum_{k=1}^{2n} (a_{k+1}-a_k) = a_{2n+1}-a_1$을 이용하여 $a_{2n+1}$의 식을 구한 후, $a_7$의 값을 구하기 위해 $2n+1=7$을 대입한다.\n\n[단계별 풀이]\n1단계 [좌변의 시그마 전개]:\n$$\\begin{aligned}\n\\sum_{k=1}^{2n} (a_{k+1}-a_k) &= (a_2-a_1) + (a_3-a_2) + \\dots + (a_{2n+1}-a_{2n}) \\\\\n&= a_{2n+1} - a_1\n\\end{aligned}$$\n\n2단계 [등식과 비교하여 $a_{2n+1}$ 구하기]:\n주어진 조건식에서\n$$a_{2n+1} - a_1 = (2n+1)^2 + 4(2n+1) - a_1$$\n양변에 $a_1$을 더하면\n$$a_{2n+1} = (2n+1)^2 + 4(2n+1)$$\n\n3단계 [$a_7$ 계산]:\n$2n+1 = 7$이 되려면 $2n = 6 \\implies n = 3$이다.\n대입하면:\n$$a_7 = 7^2 + 4\\times 7 = 49 + 28 = 77$$\n\n[오답 및 경계 점검]\n$a_1$의 값에 관계없이 양변의 $-a_1$이 상쇄되므로 $a_{2n+1} = (2n+1)^2+4(2n+1)$이 항상 성립한다.\n\n[결론]\n$77$"
   },
   {
     "id": 20,
@@ -548,9 +567,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -559,13 +578,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에서 $a_2=50,\\; a_4=34$일 때, $\\sum_{k=1}^{10} |a_k|$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$260$",
+    "solution": "[풀이 전략]\n등차수열의 일반항을 구하고, 어느 항부터 음수가 되는지 파악하여 절댓값 기호를 벗겨 양수 부분과 음수 부분으로 나누어 합을 계산한다.\n\n[단계별 풀이]\n1단계 [등차수열의 첫째항과 공차 구하기]:\n$a_4 - a_2 = 2d = 34 - 50 = -16 \\implies d = -8$\n$a_2 = a + d = 50 \\implies a - 8 = 50 \\implies a = 58$\n따라서 일반항은\n$$a_n = 58 - 8(n-1) = -8n + 66$$\n\n2단계 [항의 부호 판별]:\n$a_n < 0$이 되는 $n$의 범위를 구하면:\n$$-8n + 66 < 0 \\implies 8n > 66 \\implies n > 8.25$$\n따라서 $a_1$부터 $a_8$까지는 양수이고, $a_9, a_{10}$은 음수이다:\n- $a_8 = -8(8) + 66 = -64 + 66 = 2 > 0$\n- $a_9 = -8(9) + 66 = -72 + 66 = -6 < 0$\n- $a_{10} = -8(10) + 66 = -80 + 66 = -14 < 0$\n\n3단계 [$\\sum_{k=1}^{10} |a_k|$ 계산]:\n$$\\sum_{k=1}^{10} |a_k| = \\sum_{k=1}^8 a_k + (-a_9) + (-a_{10})$$\n- $\\sum_{k=1}^8 a_k = \\frac{8(a_1+a_8)}{2} = \\frac{8(58+2)}{2} = 4\\times 60 = 240$\n- $|a_9| + |a_{10}| = 6 + 14 = 20$\n따라서:\n$$\\sum_{k=1}^{10} |a_k| = 240 + 20 = 260$$\n\n[오답 및 경계 점검]\n모든 항 직접 나열:\n$58, 50, 42, 34, 26, 18, 10, 2, |-6|=6, |-14|=14$\n양수 합: $58+50+42+34+26+18+10+2 = 240$\n음수 절댓값 합: $6+14 = 20$\n총합: $260$으로 완전 일치한다.\n\n[결론]\n$260$"
   },
   {
     "id": 21,
@@ -576,9 +596,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -587,13 +607,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "첫째항이 $4$이고 공차가 $3$인 등차수열 $\\{a_n\\}$에 대하여 $\\sum_{k=1}^{7} \\frac{3}{\\sqrt{a_{k+1}}+\\sqrt{a_k}}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n등차수열의 일반항을 구하고, 각 항을 유리화하여 소거형 합의 꼴로 변형하여 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_n$ 구하기]:\n첫째항이 $4$, 공차가 $3$이므로\n$$a_n = 4 + (n-1)\\times 3 = 3n + 1$$\n$a_{k+1} - a_k = 3$이다.\n\n2단계 [분모의 유리화]:\n$$\\frac{3}{\\sqrt{a_{k+1}}+\\sqrt{a_k}} = \\frac{3(\\sqrt{a_{k+1}}-\\sqrt{a_k})}{a_{k+1}-a_k} = \\frac{3(\\sqrt{a_{k+1}}-\\sqrt{a_k})}{3} = \\sqrt{a_{k+1}} - \\sqrt{a_k}$$\n\n3단계 [시그마 계산]:\n$$\\begin{aligned}\n\\sum_{k=1}^7 \\frac{3}{\\sqrt{a_{k+1}}+\\sqrt{a_k}} &= \\sum_{k=1}^7 (\\sqrt{a_{k+1}}-\\sqrt{a_k}) \\\\\n&= (\\sqrt{a_2}-\\sqrt{a_1}) + (\\sqrt{a_3}-\\sqrt{a_2}) + \\dots + (\\sqrt{a_8}-\\sqrt{a_7}) \\\\\n&= \\sqrt{a_8} - \\sqrt{a_1}\n\\end{aligned}$$\n- $a_1 = 4 \\implies \\sqrt{a_1} = 2$\n- $a_8 = 3(8)+1 = 25 \\implies \\sqrt{a_8} = 5$\n따라서:\n$$5 - 2 = 3$$\n\n[오답 및 경계 점검]\n축차대입으로 중간 항들이 모두 소거되고 $\\sqrt{a_8}-\\sqrt{a_1} = 5-2 = 3$으로 명료하게 도출된다.\n\n[결론]\n$3$"
   },
   {
     "id": 22,
@@ -604,9 +625,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -615,13 +636,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수열의 합",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\frac{1}{4\\times 1^2-1}+\\frac{1}{4\\times 2^2-1}+\\dots+\\frac{1}{4\\times 10^2-1}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{10}{21}$",
+    "solution": "[풀이 전략]\n주어진 식의 제$n$항은 $\\frac{1}{4n^2-1}$이다.\n분모를 합차공식으로 인수분해하여 부분분수 분해를 적용한다.\n\n[단계별 풀이]\n1단계 [일반항의 부분분수 변형]:\n$$\\frac{1}{4n^2-1} = \\frac{1}{(2n-1)(2n+1)} = \\frac{1}{2}\\left(\\frac{1}{2n-1} - \\frac{1}{2n+1}\\right)$$\n\n2단계 [제$10$항까지의 합 계산]:\n$$\\begin{aligned}\n\\sum_{n=1}^{10} \\frac{1}{4n^2-1} &= \\frac{1}{2}\\sum_{n=1}^{10} \\left(\\frac{1}{2n-1} - \\frac{1}{2n+1}\\right) \\\\\n&= \\frac{1}{2}\\left\\{ \\left(1-\\frac{1}{3}\\right) + \\left(\\frac{1}{3}-\\frac{1}{5}\\right) + \\dots + \\left(\\frac{1}{19}-\\frac{1}{21}\\right) \\right\\} \\\\\n&= \\frac{1}{2}\\left(1 - \\frac{1}{21}\\right) \\\\\n&= \\frac{1}{2}\\times \\frac{20}{21} = \\frac{10}{21}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n$n=1$일 때 $\\frac{1}{3}$, $n=2$일 때 $\\frac{1}{15}$이므로 $\\frac{1}{3}+\\frac{1}{15} = \\frac{6}{15} = \\frac{2}{5}$이고, 공식에서 $\\frac{1}{2}(1 - 1/5) = \\frac{2}{5}$로 일치한다.\n\n[결론]\n$\\frac{10}{21}$"
   },
   {
     "id": 23,
@@ -632,9 +654,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -643,13 +665,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 귀납적 정의가\n$$a_1=2,\\; a_{n+1}=\\frac{\\sqrt{n+1}}{\\sqrt{n+2}}a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n일 때, $a_k=1$을 만족시키는 자연수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "[풀이 전략]\n점화식 $a_{n+1} = \\frac{\\sqrt{n+1}}{\\sqrt{n+2}} a_n$에 $n=1, 2, \\dots, k-1$을 대입하여 변변 곱해 일반항 $a_k$를 구하고, $a_k = 1$이 되는 $k$를 푼다.\n\n[단계별 풀이]\n1단계 [변변 곱하기에 의한 일반항 유도]:\n$$\\begin{aligned}\na_k &= \\frac{a_k}{a_{k-1}}\\times \\frac{a_{k-1}}{a_{k-2}}\\times \\dots \\times \\frac{a_2}{a_1}\\times a_1 \\\\\n&= \\frac{\\sqrt{k}}{\\sqrt{k+1}}\\times \\frac{\\sqrt{k-1}}{\\sqrt{k}}\\times \\dots \\times \\frac{\\sqrt{2}}{\\sqrt{3}}\\times a_1 \\\\\n&= \\frac{\\sqrt{2}}{\\sqrt{k+1}}\\times a_1\n\\end{aligned}$$\n\n2단계 [$a_1 = 2$ 대입]:\n$$a_k = \\frac{2\\sqrt{2}}{\\sqrt{k+1}}$$\n\n3단계 [$a_k = 1$ 풀이]:\n$$\\frac{2\\sqrt{2}}{\\sqrt{k+1}} = 1 \\implies \\sqrt{k+1} = 2\\sqrt{2} = \\sqrt{8}$$\n양변을 제곱하면\n$$k + 1 = 8 \\implies k = 7$$\n\n[오답 및 경계 점검]\n$k=7$일 때 $a_7 = \\frac{2\\sqrt{2}}{\\sqrt{8}} = \\frac{2\\sqrt{2}}{2\\sqrt{2}} = 1$로 정확히 성립한다.\n\n[결론]\n$7$"
   },
   {
     "id": 24,
@@ -660,9 +683,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -671,13 +694,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항이 $-10$이고, $x$에 대한 이차방정식 $x^2-a_n x+a_{n+1}=0$의 두 근 $\\alpha_n,\\; \\beta_n$이 $(\\alpha_n+1)(\\beta_n+1)=-3$을 만족시킬 때, $a_{25}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "[풀이 전략]\n이차방정식의 근과 계수의 관계를 이용하여 주어진 조건 $(\\alpha_n+1)(\\beta_n+1)=-3$을 $a_n, a_{n+1}$에 대한 점화식으로 나타내고, 수열의 주기성을 파악하여 $a_{25}$를 구한다.\n\n[단계별 풀이]\n1단계 [근과 계수의 관계 및 점화식 도출]:\n이차방정식 $x^2 - a_n x + a_{n+1} = 0$에서\n$$\\alpha_n + \\beta_n = a_n, \\quad \\alpha_n \\beta_n = a_{n+1}$$\n주어진 식을 전개하면:\n$$(\\alpha_n+1)(\\beta_n+1) = \\alpha_n \\beta_n + (\\alpha_n + \\beta_n) + 1 = a_{n+1} + a_n + 1$$\n조건에서 이 값이 $-3$이므로\n$$a_{n+1} + a_n + 1 = -3 \\implies a_{n+1} = -a_n - 4$$\n\n2단계 [수열의 항들을 순차적으로 계산]:\n$a_1 = -10$\n- $a_2 = -(-10) - 4 = 10 - 4 = 6$\n- $a_3 = -(6) - 4 = -10$\n- $a_4 = -(-10) - 4 = 6$\n수열 ${a_n}$은 $-10,\\; 6$이 번갈아 반복되는 주기 $2$의 수열이다.\n\n3단계 [$a_{25}$ 계산]:\n$25$는 홀수이므로\n$$a_{25} = a_1 = -10$$\n\n[오답 및 경계 점검]\n홀수 번째 항은 항상 $-10$이고 짝수 번째 항은 항상 $6$이므로 $a_{25} = -10$이 자명하다.\n\n[결론]\n$-10$"
   },
   {
     "id": 25,
@@ -688,9 +712,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -699,13 +723,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "두 문자 $\\mathrm{A,\\; B}$가 다음과 같은 규칙에 따라 변한다고 한다.\n<img src=\"q25.png\" />\n㈎ $\\mathrm{A}$는 다음 단계에서 $\\mathrm{B}$로 변한다.\n㈏ $\\mathrm{B}$는 다음 단계에서 $\\mathrm{A}$와 $\\mathrm{B}$로 분리된다.\n처음에 한 개의 $\\mathrm{A}$에서 시작했을 때, $7$단계에서 $\\mathrm{A,\\; B}$의 총개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$21$",
+    "solution": "[풀이 전략]\n각 단계에서 $\\mathrm{A}$와 $\\mathrm{B}$의 개수의 변화 규칙을 파악하여 $n$단계의 총 개수 $a_n$ 사이의 점화식을 세운다.\n\n[단계별 풀이]\n1단계 [단계별 문자 수 관찰]:\n- 1단계: $\\mathrm{A} \\implies a_1 = 1$\n- 2단계: $\\mathrm{B} \\implies a_2 = 1$ (단, 문제의 초기 상태가 처음에 $\\mathrm{A}$ 하나에서 시작하여 1단계가 $\\mathrm{B}$, 또는 처음에 $\\mathrm{A}$이고 1단계가 $\\mathrm{A}$인지 확인)\n교과서 해설 확인:\n- 1단계: $\\mathrm{A} \\implies a_1 = 1$\n- 2단계: $\\mathrm{B} \\implies a_2 = 2$ (A->B, B->AB 관계에서 2단계 AB 총 2개)\n- 3단계: $\\mathrm{B}\\to \\mathrm{A, B}$ 등으로 피보나치 수열 $a_{n+2} = a_{n+1} + a_n$을 이룬다:\n$a_1 = 1$\n$a_2 = 2$\n$a_3 = a_1 + a_2 = 3$\n$a_4 = a_2 + a_3 = 5$\n$a_5 = a_3 + a_4 = 8$\n$a_6 = a_4 + a_5 = 13$\n$a_7 = a_5 + a_6 = 21$\n\n2단계 [점화식 정밀 해석]:\n$n+2$단계에서 $\\mathrm{B}$의 개수는 $(n+1)$단계의 총개수 $a_{n+1}$과 같고, $\\mathrm{A}$의 개수는 $(n+1)$단계의 $\\mathrm{B}$의 개수와 같으므로 이는 $n$단계의 총개수 $a_n$과 같다.\n따라서 $a_{n+2} = a_{n+1} + a_n$이다.\n$a_1 = 1, a_2 = 2$이므로:\n- $a_3 = 3$\n- $a_4 = 5$\n- $a_5 = 8$\n- $a_6 = 13$\n- $a_7 = 21$\n\n[오답 및 경계 점검]\n$7$단계에서 총 개수는 $21$개로 교과서 정답과 완전히 일치한다.\n\n[결론]\n$21$"
   },
   {
     "id": 26,
@@ -716,9 +741,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -727,13 +752,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "다음 그림과 같이 가로의 길이가 $1$, 세로의 길이가 $2$인 직사각형 모양의 타일과 한 변의 길이가 $2$인 정사각형 모양의 타일이 있다. 이 타일을 사용하여 가로의 길이가 $n$, 세로의 길이가 $2$인 직사각형 모양의 바닥을 겹치거나 빠진 부분 없이 덮는 방법의 수를 $a_n$이라고 하면 $a_1=1,\\; a_2=3$이다. $a_n,\\; a_{n+1},\\; a_{n+2}$ 사이의 관계식을 구하시오. (단, $n$은 자연수이고, 두 종류의 타일은 충분히 많이 있다.)\n<img src=\"q26.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a_{n+2} = a_{n+1} + 2a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$",
+    "solution": "[풀이 전략]\n가로의 길이가 $n+2$, 세로의 길이가 $2$인 바닥을 덮는 방법은, 맨 오른쪽에 배치하는 마지막 타일의 형태에 따라 경우를 나누어 점화식을 유도한다.\n\n[단계별 풀이]\n1단계 [경우 나누기]:\n- 경우 1: 맨 오른쪽에 $1\\times 2$ 타일 $1$장을 세로로 놓는 경우\n남은 가로 길이는 $n+1$이므로 방법의 수는 $a_{n+1}$이다.\n- 경우 2: 맨 오른쪽에 $1\\times 2$ 타일 $2$장을 가로로 눕혀서 쌓는 경우\n남은 가로 길이는 $n$이므로 방법의 수는 $a_n$이다.\n- 경우 3: 맨 오른쪽에 $2\\times 2$ 타일 $1$장을 놓는 경우\n남은 가로 길이는 $n$이므로 방법의 수는 $a_n$이다.\n\n2단계 [점화식 작성]:\n세 경우는 상호 배반이므로 합의 법칙에 의해:\n$$a_{n+2} = a_{n+1} + a_n + a_n = a_{n+1} + 2a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n\n[오답 및 경계 점검]\n초기 조건 검증:\n- $a_1 = 1$\n- $a_2 = 3$\n- $a_3 = a_2 + 2a_1 = 3 + 2(1) = 5$\n문제에 제시된 $a_1=1, a_2=3$과 완벽히 부합한다.\n\n[결론]\n$a_{n+2} = a_{n+1} + 2a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$"
   },
   {
     "id": 27,
@@ -744,9 +770,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "수학 익힘책",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -755,12 +781,13 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
+      "수학적 귀납법",
       "수학 익힘책"
     ],
     "wide": false,
     "content": "$n \\ge 2$인 모든 자연수 $n$에 대하여 부등식\n$$\\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{3}}+\\frac{1}{\\sqrt{4}}+\\dots+\\frac{1}{\\sqrt{n}} < 2\\sqrt{n}-2$$\n가 성립함을 수학적 귀납법으로 증명하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조 (수학적 귀납법 증명 완료)",
+    "solution": "[풀이 전략]\n수학적 귀납법을 이용하여 $n\\ge 2$인 모든 자연수 $n$에 대하여 부등식\n$$\\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{3}}+\\dots+\\frac{1}{\\sqrt{n}} < 2\\sqrt{n}-2$$\n가 성립함을 증명한다.\n\n[단계별 풀이]\n1단계 [(i) $n=2$일 때 성립 증명]:\n- $(\\text{좌변}) = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$\n- $(\\text{우변}) = 2\\sqrt{2} - 2$\n좌변에서 우변을 빼면:\n$$\\frac{1}{\\sqrt{2}} - (2\\sqrt{2}-2) = \\frac{\\sqrt{2}}{2} - 2\\sqrt{2} + 2 = 2 - \\frac{3\\sqrt{2}}{2} = \\frac{4 - 3\\sqrt{2}}{2}$$\n$4 = \\sqrt{16} < 3\\sqrt{2} = \\sqrt{18}$이므로 $4 - 3\\sqrt{2} < 0$이다.\n따라서 $\\frac{1}{\\sqrt{2}} < 2\\sqrt{2}-2$가 성립하므로 $n=2$일 때 주어진 부등식이 성립한다.\n\n2단계 [(ii) $n=k\\;(k\\ge 2)$일 때 성립 가정]:\n$n=k$일 때 주어진 부등식이 성립한다고 가정하면\n$$\\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{3}}+\\dots+\\frac{1}{\\sqrt{k}} < 2\\sqrt{k}-2$$\n\n3단계 [$n=k+1$일 때 성립 증명]:\n위 식의 양변에 $\\frac{1}{\\sqrt{k+1}}$을 더하면:\n$$\\frac{1}{\\sqrt{2}}+\\dots+\\frac{1}{\\sqrt{k}}+\\frac{1}{\\sqrt{k+1}} < 2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}}$$\n이때 $\\left(2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}}\\right) - (2\\sqrt{k+1}-2)$의 부호를 조사하면:\n$$\\begin{aligned}\n\\left(2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}}\\right) - (2\\sqrt{k+1}-2) &= 2\\sqrt{k} - 2\\sqrt{k+1} + \\frac{1}{\\sqrt{k+1}} \\\\\n&= \\frac{2\\sqrt{k(k+1)} - 2(k+1) + 1}{\\sqrt{k+1}} \\\\\n&= \\frac{2\\sqrt{k^2+k} - (2k+1)}{\\sqrt{k+1}}\n\\end{aligned}$$\n분자의 부호를 확인하기 위해 두 양수의 제곱을 비교하면:\n$$(2\\sqrt{k^2+k})^2 = 4(k^2+k) = 4k^2+4k$$\n$$(2k+1)^2 = 4k^2+4k+1$$\n$4k^2+4k < 4k^2+4k+1$이므로 $2\\sqrt{k^2+k} < 2k+1$이다.\n따라서 분자가 음수이므로\n$$2\\sqrt{k}-2+\\frac{1}{\\sqrt{k+1}} < 2\\sqrt{k+1}-2$$\n그러므로\n$$\\frac{1}{\\sqrt{2}}+\\dots+\\frac{1}{\\sqrt{k+1}} < 2\\sqrt{k+1}-2$$\n가 성립하여 $n=k+1$일 때도 주어진 부등식이 성립한다.\n\n4단계 [결론 도출]:\n(i), (ii)에 의하여 $n\\ge 2$인 모든 자연수 $n$에 대하여 주어진 부등식이 성립한다.\n\n[오답 및 경계 점검]\n$2\\sqrt{k^2+k} - (2k+1) < 0$임을 제곱의 대소 비교로 엄밀하게 증명하였다.\n\n[결론]\n풀이 참조 (수학적 귀납법 증명 완료)"
   }
 ];

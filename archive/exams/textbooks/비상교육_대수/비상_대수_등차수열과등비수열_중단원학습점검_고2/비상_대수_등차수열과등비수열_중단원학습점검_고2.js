@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -27,8 +27,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수열의 일반항 $a_n$을 구하시오.\n⑴ $\\frac{1}{4},\\; \\frac{1}{9},\\; \\frac{1}{16},\\; \\frac{1}{25},\\; \\dots$\n⑵ $1\\times 2,\\; 3\\times 4,\\; 5\\times 6,\\; 7\\times 8,\\; \\dots$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n = \\frac{1}{(n+1)^2}$, ⑵ $a_n = (2n-1)\\times 2n$",
+    "solution": "[풀이 전략]\n각 항의 규칙성을 관찰하여 $n$번째 항인 일반항 $a_n$의 식을 도출한다.\n⑴ 분자는 모두 $1$이고, 분모는 $4=2^2, 9=3^2, 16=4^2, 25=5^2, \\dots$로 각 항 번호 $n$에 $1$을 더한 수의 제곱이다.\n⑵ 각 항이 두 수의 곱으로 이루어져 있으며, 앞의 수는 $1, 3, 5, 7, \\dots$로 홀수이고 뒤의 수는 $2, 4, 6, 8, \\dots$로 짝수이다.\n\n[단계별 풀이]\n1단계 [⑴ $\\frac{1}{4},\\; \\frac{1}{9},\\; \\frac{1}{16},\\; \\frac{1}{25},\\; \\dots$ 일반항 구하기]:\n- 첫째항: $\\frac{1}{2^2} = \\frac{1}{(1+1)^2}$\n- 둘째항: $\\frac{1}{3^2} = \\frac{1}{(2+1)^2}$\n- 셋째항: $\\frac{1}{4^2} = \\frac{1}{(3+1)^2}$\n따라서 제$n$항은 $a_n = \\frac{1}{(n+1)^2}$이다.\n\n2단계 [⑵ $1\\times 2,\\; 3\\times 4,\\; 5\\times 6,\\; 7\\times 8,\\; \\dots$ 일반항 구하기]:\n- 앞의 수들의 수열: $1, 3, 5, 7, \\dots$는 첫째항이 $1$, 공차가 $2$인 등차수열이므로 $1 + (n-1)\\times 2 = 2n-1$이다.\n- 뒤의 수들의 수열: $2, 4, 6, 8, \\dots$는 첫째항이 $2$, 공차가 $2$인 등차수열이므로 $2 + (n-1)\\times 2 = 2n$이다.\n따라서 제$n$항은 $a_n = (2n-1)\\times 2n$ (또는 $4n^2-2n$)이다.\n\n[오답 및 경계 점검]\n$n=1$을 각각 대입하여 첫째항이 올바르게 도출되는지 확인한다:\n⑴ $a_1 = \\frac{1}{(1+1)^2} = \\frac{1}{4}$\n⑵ $a_1 = (2\\times 1 - 1)\\times (2\\times 1) = 1\\times 2 = 2$\n\n[결론]\n⑴ $a_n = \\frac{1}{(n+1)^2}$, ⑵ $a_n = (2n-1)\\times 2n$"
   },
   {
     "id": 2,
@@ -39,9 +39,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -56,8 +56,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수열의 일반항 $a_n$을 구하시오.\n⑴ 첫째항이 $-5$, 공차가 $3$인 등차수열\n⑵ 등차수열 $3,\\; 1,\\; -1,\\; -3,\\; \\dots$\n⑶ 첫째항이 $3$, 공비가 $-\\frac{1}{2}$인 등비수열\n⑷ 등비수열 $\\frac{1}{9},\\; \\frac{1}{3},\\; 1,\\; 3,\\; \\dots$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a_n = 3n-8$, ⑵ $a_n = -2n+5$, ⑶ $a_n = 3\\left(-\\frac{1}{2}\\right)^{n-1}$, ⑷ $a_n = \\frac{1}{9}\\times 3^{n-1}$",
+    "solution": "[풀이 전략]\n등차수열의 일반항 공식: $a_n = a + (n-1)d$ (첫째항 $a$, 공차 $d$)\n등비수열의 일반항 공식: $a_n = a r^{n-1}$ (첫째항 $a$, 공비 $r$)\n\n[단계별 풀이]\n1단계 [⑴ 첫째항 $-5$, 공차 $3$인 등차수열]:\n$$a_n = -5 + (n-1)\\times 3 = 3n - 8$$\n\n2단계 [⑵ 등차수열 $3,\\; 1,\\; -1,\\; -3,\\; \\dots$]:\n첫째항 $a=3$, 공차 $d = 1 - 3 = -2$이므로\n$$a_n = 3 + (n-1)\\times (-2) = -2n + 5$$\n\n3단계 [⑶ 첫째항 $3$, 공비 $-\\frac{1}{2}$인 등비수열]:\n$$a_n = 3\\left(-\\frac{1}{2}\\right)^{n-1}$$\n\n4단계 [⑷ 등비수열 $\\frac{1}{9},\\; \\frac{1}{3},\\; 1,\\; 3,\\; \\dots$]:\n첫째항 $a=\\frac{1}{9}$, 공비 $r = \\frac{1/3}{1/9} = 3$이므로\n$$a_n = \\frac{1}{9}\\times 3^{n-1} = 3^{-2}\\times 3^{n-1} = 3^{n-3}$$\n\n[오답 및 경계 점검]\n등비수열의 공비가 음수일 때는 반드시 괄호를 씌워 거듭제곱을 표시해야 부호 혼동이 없다.\n\n[결론]\n⑴ $a_n = 3n-8$, ⑵ $a_n = -2n+5$, ⑶ $a_n = 3\\left(-\\frac{1}{2}\\right)^{n-1}$, ⑷ $a_n = \\frac{1}{9}\\times 3^{n-1}$"
   },
   {
     "id": 3,
@@ -68,9 +68,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -85,8 +85,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수열의 첫째항부터 제$10$항까지의 합을 구하시오.\n⑴ 첫째항이 $-1$이고 공차가 $6$인 등차수열\n⑵ 등차수열 $8,\\; 4,\\; 0,\\; -4,\\; \\dots$\n⑶ 첫째항이 $7$이고 공비가 $-\\frac{1}{2}$인 등비수열\n⑷ 등비수열 $6,\\; 12,\\; 24,\\; 48,\\; \\dots$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $260$, ⑵ $-100$, ⑶ $\\frac{14}{3}\\left(1 - \\frac{1}{2^{10}}\\right)$, ⑷ $6138$",
+    "solution": "[풀이 전략]\n등차수열의 합 공식: $S_n = \\frac{n(2a + (n-1)d)}{2}$\n등비수열의 합 공식: $S_n = \\frac{a(1-r^n)}{1-r} = \\frac{a(r^n-1)}{r-1}\\; (r\\ne 1)$\n\n[단계별 풀이]\n1단계 [⑴ $a=-1, d=6, n=10$]:\n$$S_{10} = \\frac{10\\{2\\times(-1) + 9\\times 6\\}}{2} = 5(-2 + 54) = 5\\times 52 = 260$$\n\n2단계 [⑵ $a=8, d=-4, n=10$]:\n$$S_{10} = \\frac{10\\{2\\times 8 + 9\\times(-4)\\}}{2} = 5(16 - 36) = 5\\times(-20) = -100$$\n\n3단계 [⑶ $a=7, r=-\\frac{1}{2}, n=10$]:\n$$S_{10} = \\frac{7\\left\\{1 - \\left(-\\frac{1}{2}\\right)^{10}\\right\\}}{1 - \\left(-\\frac{1}{2}\\right)} = \\frac{7\\left(1 - \\frac{1}{2^{10}}\\right)}{\\frac{3}{2}} = \\frac{14}{3}\\left(1 - \\frac{1}{2^{10}}\\right)$$\n\n4단계 [⑷ $a=6, r=2, n=10$]:\n$$S_{10} = \\frac{6(2^{10}-1)}{2-1} = 6(1024 - 1) = 6\\times 1023 = 6138$$\n\n[오답 및 경계 점검]\n⑶에서 $(-1/2)^{10} = 1/2^{10}$이므로 $1 - 1/1024 = 1023/1024$이며, $\\frac{14}{3}\\times \\frac{1023}{1024} = \\frac{14\\times 341}{1024} = \\frac{2387}{512}$로 계산될 수도 있으나 교과서 정답 표기인 $\\frac{14}{3}\\left(1 - \\frac{1}{2^{10}}\\right)$와 완전히 동치이다.\n\n[결론]\n⑴ $260$, ⑵ $-100$, ⑶ $\\frac{14}{3}\\left(1 - \\frac{1}{2^{10}}\\right)$, ⑷ $6138$"
   },
   {
     "id": 4,
@@ -97,9 +97,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -114,8 +114,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=2n^2-n$일 때, 일반항 $a_n$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a_n = 4n-3$",
+    "solution": "[풀이 전략]\n수열의 합과 일반항 사이의 관계식을 이용한다:\n- $a_1 = S_1$\n- $a_n = S_n - S_{n-1}\\; (n\\ge 2)$\n$n=1$일 때의 값이 일치하는지 확인하여 하나의 식으로 통합한다.\n\n[단계별 풀이]\n1단계 [$a_1$ 구하기]:\n$$a_1 = S_1 = 2\\times 1^2 - 1 = 1$$\n\n2단계 [$n\\ge 2$일 때 $a_n$ 구하기]:\n$$\\begin{aligned}\na_n &= S_n - S_{n-1} \\\\\n&= (2n^2 - n) - \\{2(n-1)^2 - (n-1)\\} \\\\\n&= (2n^2 - n) - \\{2(n^2 - 2n + 1) - n + 1\\} \\\\\n&= (2n^2 - n) - (2n^2 - 5n + 3) \\\\\n&= 4n - 3\n\\end{aligned}$$\n\n3단계 [$n=1$ 대입하여 확인]:\n$4n-3$에 $n=1$을 대입하면 $4(1)-3 = 1 = a_1$이므로, $a_n = 4n-3$은 모든 자연수 $n$에 대하여 성립한다.\n\n[오답 및 경계 점검]\n$S_n = An^2+Bn$ 꼴의 상수항이 없는 이차식이므로 첫째항부터 등차수열을 이루며, 공차는 $2A = 4$, 첫째항은 $A+B = 1$이므로 공식 $a_n = 4n-3$과 바로 합치된다.\n\n[결론]\n$a_n = 4n-3$"
   },
   {
     "id": 5,
@@ -126,9 +126,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -143,8 +143,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$에서 $a_7-a_5=-4,\\; a_6=-5$일 때, $a_8$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-9$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 공차를 $d$라고 할 때, $a_7 - a_5 = 2d$임을 이용하여 공차 $d$를 구하고, $a_8 = a_6 + 2d$를 이용하여 $a_8$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [공차 $d$ 구하기]:\n등차수열의 일반항 성질에 의해\n$$a_7 - a_5 = (a_1 + 6d) - (a_1 + 4d) = 2d$$\n주어진 조건에서 $a_7 - a_5 = -4$이므로\n$$2d = -4 \\implies d = -2$$\n\n2단계 [$a_8$의 값 계산하기]:\n$a_6 = -5$이므로\n$$a_8 = a_6 + 2d = -5 + 2\\times(-2) = -5 - 4 = -9$$\n\n[오답 및 경계 점검]\n첫째항 $a$를 구해보면 $a_6 = a + 5(-2) = a - 10 = -5 \\implies a = 5$이다.\n$a_8 = 5 + 7(-2) = 5 - 14 = -9$로 계산해도 정확히 일치한다.\n\n[결론]\n$-9$"
   },
   {
     "id": 6,
@@ -155,9 +155,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 수 $-7$과 $11$ 사이에 $8$개의 수를 넣어 만든 수열\n$$-7,\\; x_1,\\; x_2,\\; x_3,\\; x_4,\\; x_5,\\; x_6,\\; x_7,\\; x_8,\\; 11$$\n이 이 순서대로 등차수열이 되도록 하는 $x_4$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n수열 $-7,\\; x_1,\\; x_2,\\; \\dots,\\; x_8,\\; 11$은 $-7$부터 $11$까지 총 $10$개의 항으로 이루어진 등차수열이다.\n첫째항을 $b_1 = -7$, 제$10$항을 $b_{10} = 11$로 두고 공차를 구한다.\n\n[단계별 풀이]\n1단계 [공차 $d$ 구하기]:\n수열을 ${b_n}$이라 하면\n- $b_1 = -7$\n- $b_{10} = 11$\n등차수열의 일반항에 의해 $b_{10} = b_1 + 9d$이므로\n$$-7 + 9d = 11 \\implies 9d = 18 \\implies d = 2$$\n\n2단계 [$x_4$의 값 구하기]:\n$x_4$는 수열 ${b_n}$의 제$5$항($b_5$)에 해당한다:\n$$x_4 = b_5 = b_1 + 4d = -7 + 4\\times 2 = -7 + 8 = 1$$\n\n[오답 및 경계 점검]\n전체 수열을 나열하여 점검:\n$$-7, -5, -3, -1, 1, 3, 5, 7, 9, 11$$\n$x_1=-5, x_2=-3, x_3=-1, x_4=1, x_5=3, x_6=5, x_7=7, x_8=9$로 $x_4=1$이 정확함을 확인할 수 있다.\n\n[결론]\n$1$"
   },
   {
     "id": 7,
@@ -184,9 +184,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -201,8 +201,8 @@ window.questionBank = [
     "wide": false,
     "content": "직각삼각형의 세 변의 길이가 등차수열을 이루고 가장 짧은 변의 길이가 $9$일 때, 빗변의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "[풀이 전략]\n직각삼각형의 세 변의 길이가 공차가 $d>0$인 등차수열을 이루므로, 세 변의 길이를 $9,\\; 9+d,\\; 9+2d$로 나타낼 수 있다.\n빗변의 길이는 가장 긴 변인 $9+2d$이므로 피타고라스 정리와 삼각형의 성립 조건을 이용하여 $d$를 구한다.\n\n[단계별 풀이]\n1단계 [삼각형의 성립 조건]:\n가장 긴 변 $9+2d$는 나머지 두 변의 합보다 작아야 하므로\n$$9 + (9+d) > 9+2d \\implies 18+d > 9+2d \\implies d < 9$$\n$d>0$이므로 $0 < d < 9$이다.\n\n2단계 [피타고라스 정리 적용]:\n빗변이 $9+2d$이므로\n$$(9+2d)^2 = 9^2 + (9+d)^2$$\n양변을 전개하면\n$$81 + 36d + 4d^2 = 81 + 81 + 18d + d^2$$\n동류항을 정리하면\n$$3d^2 + 18d - 81 = 0 \\implies d^2 + 6d - 27 = 0$$\n인수분해하면\n$$(d+9)(d-3) = 0$$\n$d>0$이므로 $d = 3$이다.\n\n3단계 [빗변의 길이 구하기]:\n빗변의 길이는\n$$9 + 2d = 9 + 2\\times 3 = 15$$\n\n[오답 및 경계 점검]\n세 변의 길이는 $9, 12, 15$이며, $9:12:15 = 3:4:5$로 유명한 피타고라스 수와 일치하고 $9^2 + 12^2 = 81 + 144 = 225 = 15^2$이 성립한다.\n\n[결론]\n$15$"
   },
   {
     "id": 8,
@@ -213,9 +213,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -230,8 +230,8 @@ window.questionBank = [
     "wide": false,
     "content": "첫째항부터 제$3$항까지의 합이 첫째항부터 제$10$항까지의 합과 같은 등차수열의 첫째항부터 제$13$항까지의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 첫째항을 $a$, 공차를 $d$라 할 때, 등차수열의 합 공식 $S_n = \\frac{n(2a+(n-1)d)}{2}$을 이용하여 $S_3 = S_{10}$ 조건으로부터 $a$와 $d$의 관계식을 구하고, $S_{13}$을 계산한다.\n\n[단계별 풀이]\n1단계 [$S_3 = S_{10}$으로부터 $a$와 $d$의 관계식 도출]:\n$$S_3 = \\frac{3(2a+2d)}{2} = 3(a+d)$$\n$$S_{10} = \\frac{10(2a+9d)}{2} = 5(2a+9d) = 10a + 45d$$\n$S_3 = S_{10}$이므로\n$$3a + 3d = 10a + 45d \\implies 7a = -42d \\implies a = -6d$$\n\n2단계 [$S_{13}$의 값 계산]:\n$$S_{13} = \\frac{13(2a+12d)}{2} = 13(a+6d)$$\n$a = -6d$를 대입하면\n$$S_{13} = 13(-6d + 6d) = 13\\times 0 = 0$$\n\n[오답 및 경계 점검]\n등차수열에서 $S_m = S_n$ ($m\\ne n$)이면 $S_{m+n} = 0$이 항상 성립한다는 일반적인 성질($S_3 = S_{10} \\implies S_{13} = 0$)로도 검증된다.\n\n[결론]\n$0$"
   },
   {
     "id": 9,
@@ -242,9 +242,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -259,8 +259,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$에 대하여 $S_{2n}-S_n=9n^2+n$이라고 할 때, $a_7$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$40$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 합의 성질을 이용한다.\n$S_{2n} - S_n = a_{n+1} + a_{n+2} + \\dots + a_{2n}$이다.\n$n=1$과 $n=2$를 대입하여 두 항의 관계식을 세워 첫째항 $a$와 공차 $d$를 구한다.\n\n[단계별 풀이]\n1단계 [$n=1$ 대입]:\n$$S_2 - S_1 = a_2 = 9(1)^2 + 1 = 10$$\n따라서 $a + d = 10$이다. $\\cdots$ ①\n\n2단계 [$n=2$ 대입]:\n$$S_4 - S_2 = a_3 + a_4 = 9(2)^2 + 2 = 36 + 2 = 38$$\n등차수열의 일반항으로 나타내면\n$$(a+2d) + (a+3d) = 2a + 5d = 38$$\n$\\cdots$ ②\n\n3단계 [연립방정식 풀이]:\n①식에 $2$를 곱하면 $2a + 2d = 20$이다.\n②식에서 빼면\n$$(2a + 5d) - (2a + 2d) = 38 - 20 \\implies 3d = 18 \\implies d = 6$$\n①식에 $d=6$을 대입하면 $a = 4$이다.\n\n4단계 [$a_7$ 계산]:\n$$a_7 = a + 6d = 4 + 6\\times 6 = 4 + 36 = 40$$\n\n[오답 및 경계 점검]\n$S_n = \\frac{n(2\\times 4 + (n-1)\\times 6)}{2} = \\frac{n(6n+2)}{2} = 3n^2 + n$이다.\n$S_{2n} - S_n = \\{3(2n)^2 + 2n\\} - (3n^2 + n) = 12n^2 + 2n - 3n^2 - n = 9n^2 + n$으로 주어진 조건식과 완벽히 일치한다.\n\n[결론]\n$40$"
   },
   {
     "id": 10,
@@ -271,9 +271,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -288,8 +288,8 @@ window.questionBank = [
     "wide": false,
     "content": "첫째항이 $a$, 공비가 $r$인 등비수열 $\\{a_n\\}$에서 $a_1:a_3=1:4$이고 $a_2=-6$일 때, $a_6$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-96$",
+    "solution": "[풀이 전략]\n등비수열 ${a_n}$의 일반항 $a_n = a r^{n-1}$에 대하여 $a_1 : a_3 = 1 : 4$를 이용하여 공비의 제곱 $r^2$을 구하고, $a_2 = ar = -6$을 이용하여 $a_6$을 계산한다.\n\n[단계별 풀이]\n1단계 [$r^2$ 구하기]:\n$a_1 = a$, $a_3 = ar^2$이므로\n$$a_1 : a_3 = a : ar^2 = 1 : r^2 = 1 : 4$$\n따라서 $r^2 = 4$이다.\n\n2단계 [$a_6$ 구하기]:\n$$a_6 = a r^5 = (ar) \\times (r^2)^2$$\n$a_2 = ar = -6$이고 $r^2 = 4$이므로\n$$a_6 = -6 \\times 4^2 = -6 \\times 16 = -96$$\n\n[오답 및 경계 점검]\n$r^2 = 4$에서 $r = 2$ 또는 $r = -2$이다.\n- $r = 2$이면 $a = -3$, $a_6 = -3 \\times 2^5 = -3\\times 32 = -96$\n- $r = -2$이면 $a = 3$, $a_6 = 3 \\times (-2)^5 = 3\\times (-32) = -96$\n공비의 부호와 상관없이 $a_6$의 값은 항상 $-96$으로 일정하다.\n\n[결론]\n$-96$"
   },
   {
     "id": 11,
@@ -300,9 +300,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -317,8 +317,8 @@ window.questionBank = [
     "wide": false,
     "content": "등차수열 $\\{a_n\\}$의 공차가 $0$이 아니고, 세 항 $a_3,\\; a_6,\\; a_{10}$이 이 순서대로 등비수열을 이룰 때, $\\frac{a_4}{a_2}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{5}{4}$",
+    "solution": "[풀이 전략]\n등차수열 ${a_n}$의 첫째항을 $a$, 공차를 $d\\ne 0$이라 할 때, 세 항 $a_3, a_6, a_{10}$이 등비수열을 이루므로 등비중항의 성질 $a_6^2 = a_3 a_{10}$을 적용하여 $a$와 $d$의 비를 구한다.\n\n[단계별 풀이]\n1단계 [등비중항 관계식 세우기]:\n- $a_3 = a + 2d$\n- $a_6 = a + 5d$\n- $a_{10} = a + 9d$\n등비수열을 이루므로\n$$(a+5d)^2 = (a+2d)(a+9d)$$\n\n2단계 [식 전개 및 $a$와 $d$의 관계 도출]:\n$$a^2 + 10ad + 25d^2 = a^2 + 11ad + 18d^2$$\n양변에서 $a^2$을 소거하고 정리하면\n$$ad = 7d^2$$\n$d\\ne 0$이므로 양변을 $d$로 나누면\n$$a = 7d$$\n\n3단계 [$\\frac{a_4}{a_2}$의 값 계산]:\n$$\\frac{a_4}{a_2} = \\frac{a+3d}{a+d} = \\frac{7d+3d}{7d+d} = \\frac{10d}{8d} = \\frac{5}{4}$$\n\n[오답 및 경계 점검]\n$a=7, d=1$이라 두면 $a_3 = 9, a_6 = 12, a_{10} = 16$이 되어 $9, 12, 16$은 공비가 $\\frac{4}{3}$인 등비수열을 이룬다. 이때 $a_4 = 10, a_2 = 8$이므로 $\\frac{a_4}{a_2} = \\frac{10}{8} = \\frac{5}{4}$로 정확히 성립한다.\n\n[결론]\n$\\frac{5}{4}$"
   },
   {
     "id": 12,
@@ -329,9 +329,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "등비수열 $\\{a_n\\}$에서\n$$a_1+a_2+a_3+a_4+a_5=4$$\n$$a_6+a_7+a_8+a_9+a_{10}=12$$\n일 때, $a_1+a_2+a_3+\\dots+a_{15}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$52$",
+    "solution": "[풀이 전략]\n등비수열의 성질을 이용한다.\n등비수열에서 같은 개수씩 연속된 항들의 합 역시 일정한 공비를 갖는 등비수열을 이룬다.\n즉, $A_1 = a_1+\\dots+a_5$, $A_2 = a_6+\\dots+a_{10}$, $A_3 = a_{11}+\\dots+a_{15}$는 공비가 $r^5$인 등비수열을 이룬다.\n\n[단계별 풀이]\n1단계 [등비수열 묶음의 비 구하기]:\n- $A_1 = a_1 + a_2 + a_3 + a_4 + a_5 = 4$\n- $A_2 = a_6 + a_7 + a_8 + a_9 + a_{10} = r^5(a_1 + a_2 + a_3 + a_4 + a_5) = 4r^5 = 12$\n따라서 $r^5 = 3$이다.\n\n2단계 [$A_3$ 구하기]:\n$$A_3 = a_{11} + a_{12} + a_{13} + a_{14} + a_{15} = r^5 A_2 = 3 \\times 12 = 36$$\n\n3단계 [제$15$항까지의 총합 계산]:\n$$a_1 + a_2 + \\dots + a_{15} = A_1 + A_2 + A_3 = 4 + 12 + 36 = 52$$\n\n[오답 및 경계 점검]\n공식 $S_{15} = \\frac{a(r^{15}-1)}{r-1} = \\frac{a(r^5-1)(r^{10}+r^5+1)}{r-1} = S_5(r^{10}+r^5+1) = 4(3^2 + 3 + 1) = 4(9+3+1) = 4\\times 13 = 52$로도 완전하게 검증된다.\n\n[결론]\n$52$"
   },
   {
     "id": 13,
@@ -358,9 +358,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -375,8 +375,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림의 빈칸을 보기의 숫자 카드로 모두 채우려고 한다. 각 행과 각 열에 나열된 수가 순서대로 등비수열이 되도록 할 때, 보기 중 필요 없는 카드를 고르시오.\n<img src=\"q13.png\" />\n[보기] $1,\\; 2,\\; 6,\\; 8,\\; 9,\\; 12,\\; 36$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n$3\\times 3$ 격자판에서 각 행과 열에 나열된 세 수가 순서대로 등비수열을 이루므로 등비중항의 성질 $b^2 = ac$를 연쇄적으로 적용한다.\n빈칸을 다음과 같이 설정한다:\n$$\\begin{matrix} a & 3 & b \\\\ c & d & 18 \\\\ 4 & e & f \\end{matrix}$$\n\n[단계별 풀이]\n1단계 [1행 및 1열, 3열 분석]:\n- 1행: $a, 3, b$가 등비수열이므로 $3^2 = ab \\implies ab = 9$\n보기의 카드 중 곱해서 $9$가 되는 쌍은 $(1, 9)$ 또는 $(9, 1)$이다.\n- 1열: $a, c, 4$가 등비수열이므로 $c^2 = 4a$\n보기의 수 중 $c^2$이 $4a$의 배수가 되는 완전제곱수는:\n만약 $a=1$이면 $c^2 = 4 \\implies c = 2$이다.\n만약 $a=9$이면 $c^2 = 36 \\implies c = 6$이다.\n- 2행: $c, d, 18$이 등비수열이므로 $d^2 = 18c$\n만약 $c=6$이면 $d^2 = 108$이 되어 정수 카드가 불가능하다.\n따라서 $c=2$이어야 하며, $a=1, b=9$로 확정된다.\n\n2단계 [나머지 수들 결정]:\n- $c=2$이므로 $d^2 = 18\\times 2 = 36 \\implies d = 6$\n- 2열: $3, d, e$에서 $d=6$이므로 $6^2 = 3e \\implies 36 = 3e \\implies e = 12$\n- 3행: $4, e, f$에서 $e=12$이므로 $12^2 = 4f \\implies 144 = 4f \\implies f = 36$\n- 3열 점검: $b=9$, 2행 3열 $18$, $f=36$은 $9, 18, 36$으로 공비가 $2$인 등비수열을 이룬다.\n\n3단계 [필요 없는 카드 확인]:\n사용된 숫자 카드는 $a=1, c=2, d=6, b=9, e=12, f=36$이다.\n보기의 카드 $[1, 2, 6, 8, 9, 12, 36]$ 중에서 사용되지 않은 카드는 $8$이다.\n\n[오답 및 경계 점검]\n격자판 완성:\n1행: $1, 3, 9$ (공비 3)\n2행: $2, 6, 18$ (공비 3)\n3행: $4, 12, 36$ (공비 3)\n1열: $1, 2, 4$ (공비 2)\n2열: $3, 6, 12$ (공비 2)\n3열: $9, 18, 36$ (공비 2)\n모든 행과 열이 완벽히 등비수열을 이룬다.\n\n[결론]\n$8$"
   },
   {
     "id": 14,
@@ -387,9 +387,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -404,8 +404,8 @@ window.questionBank = [
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n=3\\times 2^{n+1}-6$일 때, $a_2+a_4+a_6+a_8$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1020$",
+    "solution": "[풀이 전략]\n$S_n = 3\\times 2^{n+1}-6$에서 $a_n = S_n - S_{n-1}$을 구하여 일반항을 파악한 후, 짝수 번째 항들로 이루어진 수열 $a_2, a_4, a_6, a_8$의 합을 등비수열의 합 공식을 적용하여 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_n$ 구하기]:\n- $a_1 = S_1 = 3\\times 2^2 - 6 = 12 - 6 = 6$\n- $n\\ge 2$일 때:\n$$\\begin{aligned}\na_n &= S_n - S_{n-1} \\\\\n&= (3\\times 2^{n+1} - 6) - (3\\times 2^n - 6) \\\\\n&= 3\\times 2^{n+1} - 3\\times 2^n \\\\\n&= 3\\times 2^n(2 - 1) = 3\\times 2^n\n\\end{aligned}$$\n$n=1$을 대입하면 $3\\times 2^1 = 6 = a_1$이므로 모든 자연수 $n$에 대하여 $a_n = 3\\times 2^n$이다.\n\n2단계 [$a_2, a_4, a_6, a_8$의 합 구하기]:\n$a_{2k} = 3\\times 2^{2k} = 3\\times 4^k = 12\\times 4^{k-1}$\n이는 첫째항이 $a_2 = 12$, 공비가 $4$인 등비수열이다.\n구하는 값은 제$4$항까지의 합이므로:\n$$\\sum_{k=1}^4 a_{2k} = \\frac{12(4^4 - 1)}{4 - 1} = \\frac{12(256 - 1)}{3} = 4\\times 255 = 1020$$\n\n[오답 및 경계 점검]\n각 항을 직접 계산하여 합산:\n$a_2 = 3\\times 4 = 12$\n$a_4 = 3\\times 16 = 48$\n$a_6 = 3\\times 64 = 192$\n$a_8 = 3\\times 256 = 768$\n$12 + 48 + 192 + 768 = 60 + 960 = 1020$으로 완전 일치한다.\n\n[결론]\n$1020$"
   },
   {
     "id": 15,
@@ -416,9 +416,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -433,8 +433,8 @@ window.questionBank = [
     "wide": false,
     "content": "월 이율이 $0.4\\,\\%$이고, $1$개월마다 복리로 매월 초에 $10$만 원씩 $24$개월 동안 적립할 때, $24$개월째 말의 적립금의 원리합계를 구하시오. (단, $1.004^{24}=1.10$으로 계산한다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$251\\text{만 원}$",
+    "solution": "[풀이 전략]\n월이율 $r = 0.004$, 매월 초에 $a = 10$만 원씩 $n = 24$개월 동안 적립하는 기수불(매기 초 적립) 복리 적금의 원리합계를 구한다.\n제$k$회차에 적립한 금액은 $(25-k)$개월 동안 이자가 붙는다.\n총 원리합계 공식:\n$$S = \\frac{a(1+r)\\{(1+r)^n - 1\\}}{r}$$\n\n[단계별 풀이]\n1단계 [적립금별 원리합계 파악]:\n- 1회차(1개월 초): $10(1+0.004)^{24}$\n- 2회차(2개월 초): $10(1+0.004)^{23}$\n- $\\dots$\n- 24회차(24개월 초): $10(1+0.004)^1$\n이는 첫째항이 $10(1.004)$, 공비가 $1.004$인 등비수열의 $24$개 항의 합이다.\n\n2단계 [등비수열 합 공식 적용 및 계산]:\n$$S = \\frac{10\\times 1.004\\{(1.004)^{24} - 1\\}}{1.004 - 1}$$\n조건에서 $1.004^{24} = 1.10$이므로\n$$S = \\frac{10\\times 1.004\\times(1.10 - 1)}{0.004} = \\frac{10.04\\times 0.10}{0.004} = \\frac{1.004}{0.004} = 251$$\n\n[오답 및 경계 점검]\n기말불(매월 말 적립)과의 차이에 유의한다. 매월 초에 적립하므로 마지막 $24$회차 적립금에도 $1$개월치 이자($1.004$)가 붙어 분자에 $1.004$가 곱해져야 한다.\n\n[결론]\n$251\\text{만 원}$"
   },
   {
     "id": 16,
@@ -445,9 +445,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -462,8 +462,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림은 두 곡선 $y=x^2+ax+b,\\; y=x^2$의 교점에서 오른쪽 방향으로 두 곡선 사이에 $y$축과 평행한 선분 $10$개를 일정한 간격으로 그은 것이다. 선분의 길이를 왼쪽부터 차례로 $l_1,\\; l_2,\\; l_3,\\; \\dots,\\; l_{10}$이라고 하면 $l_1=3,\\; l_{10}=15$이다. $l_1+l_2+l_3+\\dots+l_{10}$의 값을 구하시오. (단, $a,\\; b$는 실수, $a>0$)\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$90$",
+    "solution": "[풀이 전략]\n선분의 길이는 위쪽 곡선의 $y$좌표에서 아래쪽 곡선의 $y$좌표를 뺀 값이다.\n$l(x) = (x^2+ax+b) - x^2 = ax+b$는 $x$에 대한 일차식이다.\n$x$좌표들이 일정한 간격을 이루므로 등차수열을 이루고, 일차식 $l(x)$의 값들 역시 등차수열을 이룬다.\n\n[단계별 풀이]\n1단계 [선분의 길이의 식 도출]:\n선분이 그어지는 점의 $x$좌표를 왼쪽부터 $x_1, x_2, \\dots, x_{10}$이라 하자.\n선분의 길이는\n$$l_n = (x_n^2 + ax_n + b) - x_n^2 = ax_n + b$$\n$x_n$이 공차 $d$인 등차수열이므로\n$$l_{n+1} - l_n = (ax_{n+1}+b) - (ax_n+b) = a(x_{n+1}-x_n) = ad$$\n따라서 수열 ${l_n}$은 공차가 $ad$인 등차수열이다.\n\n2단계 [등차수열의 합 공식 적용]:\n수열 ${l_n}$의 첫째항 $l_1 = 3$, 제$10$항 $l_{10} = 15$이므로\n$$l_1 + l_2 + \\dots + l_{10} = \\frac{10(l_1 + l_{10})}{2} = \\frac{10(3 + 15)}{2} = 5\\times 18 = 90$$\n\n[오답 및 경계 점검]\n공차 $ad = \\frac{15 - 3}{9} = \\frac{12}{9} = \\frac{4}{3}$이며, 등차수열의 합 $\\frac{10\\{2(3) + 9(4/3)\\}}{2} = 5(6 + 12) = 90$으로 일치한다.\n\n[결론]\n$90$"
   },
   {
     "id": 17,
@@ -474,9 +474,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
+    "standardUnitKey": "H22-A-06",
     "standardUnit": "등차수열과 등비수열",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 6,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -491,7 +491,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 한 모서리의 길이가 $4$인 정육면체가 있다. [그림 1]은 이 정육면체의 각 모서리를 수직이등분하여 분리된 정육면체들을 나타낸 것이다. [그림 2]는 [그림 1]의 정육면체들의 각 모서리를 수직이등분하여 분리된 정육면체들을 나타낸 것이다. 이와 같은 시행을 계속해 나갈 때, $10$회 시행 후 분리된 모든 정육면체들의 겉넓이의 합을 $a\\times 2^b$이라고 하자. 자연수 $a,\\; b$의 값을 구하시오. (단, $a$는 $2$와 서로소이다.)\n<img src=\"q17.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3, b=15$",
+    "solution": "[풀이 전략]\n각 시행마다 정육면체의 모서리를 수직이등분하면:\n- 한 모서리의 길이는 이전 단계의 $\\frac{1}{2}$배가 된다.\n- 정육면체의 개수는 이전 단계의 $2^3 = 8$배가 된다.\n이를 바탕으로 $n$회 시행 후의 모든 정육면체의 겉넓이의 합을 수열로 표현한다.\n\n[단계별 풀이]\n1단계 [한 모서리의 길이와 개수의 규칙성]:\n- 초기 상태: 모서리 길이 $4$, 개수 $1$개\n- 1회 시행 후: 모서리 길이 $4\\times \\frac{1}{2} = 2$, 개수 $8^1 = 8$개\n- 2회 시행 후: 모서리 길이 $4\\left(\\frac{1}{2}\\right)^2$, 개수 $8^2$개\n- $n$회 시행 후: 모서리 길이 $4\\left(\\frac{1}{2}\\right)^n$, 개수 $8^n$개\n\n2단계 [$n$회 시행 후 겉넓이의 합 $S_n$ 구하기]:\n한 정육면체의 겉넓이는 $6\\times (\\text{모서리 길이})^2$이므로\n$$S_n = 8^n \\times 6\\left\\{4\\left(\\frac{1}{2}\\right)^n\\right\\}^2 = 8^n \\times 6\\times 16\\times \\left(\\frac{1}{4}\\right)^n$$\n지수를 밑이 $2$인 꼴로 정리하면\n$$S_n = (2^3)^n \\times 96 \\times (2^{-2})^n = 96 \\times 2^{3n - 2n} = 96 \\times 2^n$$\n$96 = 3\\times 32 = 3\\times 2^5$이므로\n$$S_n = 3\\times 2^5 \\times 2^n = 3\\times 2^{n+5}$$\n\n3단계 [$10$회 시행 후 $a, b$ 구하기]:\n$n=10$을 대입하면\n$$S_{10} = 3\\times 2^{10+5} = 3\\times 2^{15}$$\n문제에서 $S_{10} = a\\times 2^b$이고 $a$는 $2$와 서로소인 자연수이므로\n$$a = 3, \\quad b = 15$$\n\n[오답 및 경계 점검]\n초기 겉넓이 $6\\times 4^2 = 96$에서 모서리가 $1/2$배 되면 개별 겉넓이는 $1/4$배가 되지만 개수가 $8$배로 늘어나므로, 전체 겉넓이는 매 시행마다 $8\\times(1/4) = 2$배씩 증가하는 등비수열($96\\times 2^n$)을 이룬다. $10$회 후에는 $96\\times 2^{10} = 3\\times 2^{15}$가 됨이 명백하다.\n\n[결론]\n$a=3, b=15$"
   }
 ];

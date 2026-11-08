@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -21,14 +21,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "다음 수열의 합을 기호 $\\sum$를 사용하여 나타내시오.\n⑴ $4+7+10+\\dots+61$\n⑵ $\\frac{1}{3}+\\frac{1}{3^2}+\\frac{1}{3^3}+\\dots+\\frac{1}{3^{10}}$\n⑶ $\\frac{1}{1\\times 2}+\\frac{3}{2\\times 3}+\\frac{5}{3\\times 4}+\\dots+\\frac{29}{15\\times 16}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sum_{k=1}^{20} (3k+1)$, ⑵ $\\sum_{k=1}^{10} \\frac{1}{3^k}$, ⑶ $\\sum_{k=1}^{15} \\frac{2k-1}{k(k+1)}$",
+    "solution": "[풀이 전략]\n합의 기호 $\\sum$를 사용하여 나타내기 위해 각 수열의 일반항(제$k$항)과 항의 개수(끝 번호)를 파악한다.\n\n[단계별 풀이]\n1단계 [⑴ $4+7+10+\\dots+61$]:\n첫째항이 $4$, 공차가 $3$인 등차수열이므로 제$k$항은 $4 + (k-1)\\times 3 = 3k+1$이다.\n마지막 항 $61$은 $3k+1 = 61 \\implies 3k = 60 \\implies k = 20$이다.\n따라서 $\\sum_{k=1}^{20} (3k+1)$이다.\n\n2단계 [⑵ $\\frac{1}{3}+\\frac{1}{3^2}+\\frac{1}{3^3}+\\dots+\\frac{1}{3^{10}}$]:\n첫째항이 $\\frac{1}{3}$, 공비가 $\\frac{1}{3}$인 등비수열로 제$k$항은 $\\frac{1}{3^k}$ (또는 $(\\frac{1}{3})^k$)이다.\n마지막 항은 $k=10$이므로 $\\sum_{k=1}^{10} \\frac{1}{3^k}$이다.\n\n3단계 [⑶ $\\frac{1}{1\\times 2}+\\frac{3}{2\\times 3}+\\frac{5}{3\\times 4}+\\dots+\\frac{29}{15\\times 16}$]:\n- 분자: $1, 3, 5, \\dots, 29$는 공차가 $2$인 홀수 수열이므로 제$k$항은 $2k-1$이다. 마지막 분자 $29 = 2k-1 \\implies k = 15$.\n- 분모: $1\\times 2, 2\\times 3, \\dots, 15\\times 16$이므로 제$k$항은 $k(k+1)$이다.\n따라서 $\\sum_{k=1}^{15} \\frac{2k-1}{k(k+1)}$이다.\n\n[오답 및 경계 점검]\n$k=1$과 마지막 $k$ 값을 각각 대입하여 수열의 첫째항과 끝항이 정확히 일치하는지 확인한다.\n\n[결론]\n⑴ $\\sum_{k=1}^{20} (3k+1)$, ⑵ $\\sum_{k=1}^{10} \\frac{1}{3^k}$, ⑶ $\\sum_{k=1}^{15} \\frac{2k-1}{k(k+1)}$"
   },
   {
     "id": 2,
@@ -39,9 +39,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -50,14 +50,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{10} a_k=5,\\; \\sum_{k=1}^{10} b_k=-10$일 때, 다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{10} (2a_k-b_k)$\n⑵ $\\sum_{k=1}^{10} (3a_k+b_k+1)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $20$, ⑵ $15$",
+    "solution": "[풀이 전략]\n$\\sum$의 선형성(합과 차, 실수의 곱 성질)을 이용한다:\n- $\\sum (c a_k) = c \\sum a_k$\n- $\\sum (a_k \\pm b_k) = \\sum a_k \\pm \\sum b_k$\n- $\\sum_{k=1}^n c = c n$\n\n[단계별 풀이]\n1단계 [⑴ $\\sum_{k=1}^{10} (2a_k-b_k)$ 계산]:\n$$\\sum_{k=1}^{10} (2a_k-b_k) = 2\\sum_{k=1}^{10} a_k - \\sum_{k=1}^{10} b_k$$\n주어진 조건 $\\sum a_k = 5, \\sum b_k = -10$을 대입하면:\n$$2\\times 5 - (-10) = 10 + 10 = 20$$\n\n2단계 [⑵ $\\sum_{k=1}^{10} (3a_k+b_k+1)$ 계산]:\n$$\\sum_{k=1}^{10} (3a_k+b_k+1) = 3\\sum_{k=1}^{10} a_k + \\sum_{k=1}^{10} b_k + \\sum_{k=1}^{10} 1$$\n상수항 $1$이 $10$번 더해지므로 $\\sum_{k=1}^{10} 1 = 1\\times 10 = 10$이다:\n$$3\\times 5 + (-10) + 10 = 15 - 10 + 10 = 15$$\n\n[오답 및 경계 점검]\n상수항의 $\\sum$ 계산에서 $\\sum_{k=1}^{10} 1 = 1$로 잘못 계산하지 않도록 항의 개수 $10$을 곱해주는 것을 반드시 확인한다.\n\n[결론]\n⑴ $20$, ⑵ $15$"
   },
   {
     "id": 3,
@@ -68,9 +68,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -79,14 +79,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{10} (4k+6)$\n⑵ $\\sum_{k=1}^{8} (k+1)(k-1)$\n⑶ $\\sum_{k=1}^{6} (k^3+3)+\\sum_{k=1}^{6} (2k^3-2)$\n⑷ $\\sum_{k=1}^{5} (k^2+2)+\\sum_{k=6}^{11} (k^2+2)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $280$, ⑵ $196$, ⑶ $1329$, ⑷ $528$",
+    "solution": "[풀이 전략]\n자연수의 거듭제곱의 합 공식을 적용한다:\n- $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$\n- $\\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6}$\n- $\\sum_{k=1}^n k^3 = \\left\\{\\frac{n(n+1)}{2}\\right\\}^2$\n\n[단계별 풀이]\n1단계 [⑴ $\\sum_{k=1}^{10} (4k+6)$]:\n$$4\\times \\frac{10\\times 11}{2} + 6\\times 10 = 4\\times 55 + 60 = 220 + 60 = 280$$\n\n2단계 [⑵ $\\sum_{k=1}^{8} (k+1)(k-1) = \\sum_{k=1}^{8} (k^2-1)$]:\n$$\\frac{8\\times 9\\times 17}{6} - 1\\times 8 = 12\\times 17 - 8 = 204 - 8 = 196$$\n\n3단계 [⑶ $\\sum_{k=1}^{6} (k^3+3)+\\sum_{k=1}^{6} (2k^3-2)$]:\n두 시그마를 합치면 $\\sum_{k=1}^{6} (3k^3 + 1)$이다:\n$$3\\left(\\frac{6\\times 7}{2}\\right)^2 + 1\\times 6 = 3\\times 21^2 + 6 = 3\\times 441 + 6 = 1323 + 6 = 1329$$\n\n4단계 [⑷ $\\sum_{k=1}^{5} (k^2+2)+\\sum_{k=6}^{11} (k^2+2)$]:\n$1$부터 $5$까지와 $6$부터 $11$까지를 합치면 $\\sum_{k=1}^{11} (k^2+2)$이다:\n$$\\frac{11\\times 12\\times 23}{6} + 2\\times 11 = 22\\times 23 + 22 = 506 + 22 = 528$$\n\n[오답 및 경계 점검]\n⑶과 ⑷는 각각 시그마의 성질을 이용하여 식을 하나로 합친 후 계산하면 복잡한 중간 계산을 획기적으로 줄일 수 있다.\n\n[결론]\n⑴ $280$, ⑵ $196$, ⑶ $1329$, ⑷ $528$"
   },
   {
     "id": 4,
@@ -97,9 +97,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -108,14 +108,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$a_1=0,\\; a_{n+1}=a_n^2+1\\;(n=1,\\; 2,\\; 3,\\; \\dots)$로 정의된 수열 $\\{a_n\\}$의 제$5$항을 구하려고 한다. 다음 빈칸에 알맞은 수를 써넣으시오.\n$a_1=0$\n$a_2=a_1^2+1=\\Box$\n$a_3=a_2^2+1=\\Box$\n$a_4=a_3^2+1=\\Box$\n$a_5=a_4^2+1=\\Box$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1, 2, 5, 26$",
+    "solution": "[풀이 전략]\n귀납적으로 정의된 수열 ${a_n}$의 점화식 $a_{n+1} = a_n^2+1$에 $n=1, 2, 3, 4$를 차례로 대입하여 각 항을 순차적으로 구한다.\n\n[단계별 풀이]\n1단계 [$a_2$ 구하기]:\n$n=1$ 대입:\n$$a_2 = a_1^2 + 1 = 0^2 + 1 = 1$$\n\n2단계 [$a_3$ 구하기]:\n$n=2$ 대입:\n$$a_3 = a_2^2 + 1 = 1^2 + 1 = 2$$\n\n3단계 [$a_4$ 구하기]:\n$n=3$ 대입:\n$$a_4 = a_3^2 + 1 = 2^2 + 1 = 5$$\n\n4단계 [$a_5$ 구하기]:\n$n=4$ 대입:\n$$a_5 = a_4^2 + 1 = 5^2 + 1 = 26$$\n\n[오답 및 경계 점검]\n순차 대입 과정에서 이전 항의 계산값이 다음 항의 밑수로 들어가므로 제곱 계산에 오류가 없는지 단계별로 점검한다.\n\n[결론]\n$1, 2, 5, 26$"
   },
   {
     "id": 5,
@@ -126,9 +126,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -137,14 +137,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{10} (2^k-k)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1991$",
+    "solution": "[풀이 전략]\n시그마를 등비수열의 합과 자연수의 거듭제곱의 합으로 분리하여 계산한다:\n$$\\sum_{k=1}^{10} (2^k - k) = \\sum_{k=1}^{10} 2^k - \\sum_{k=1}^{10} k$$\n\n[단계별 풀이]\n1단계 [등비수열의 합 $\\sum_{k=1}^{10} 2^k$ 계산]:\n첫째항이 $2$, 공비가 $2$, 항수가 $10$이므로\n$$\\sum_{k=1}^{10} 2^k = \\frac{2(2^{10}-1)}{2-1} = 2(1024 - 1) = 2\\times 1023 = 2046$$\n\n2단계 [자연수의 합 $\\sum_{k=1}^{10} k$ 계산]:\n$$\\sum_{k=1}^{10} k = \\frac{10\\times 11}{2} = 55$$\n\n3단계 [두 값의 차 계산]:\n$$\\sum_{k=1}^{10} (2^k - k) = 2046 - 55 = 1991$$\n\n[오답 및 경계 점검]\n등비수열 $\\sum_{k=1}^{10} 2^k$의 첫째항은 $2^1 = 2$이며, $2^0 = 1$이 아니므로 공식에 $a=2$를 정확히 대입해야 한다.\n\n[결론]\n$1991$"
   },
   {
     "id": 6,
@@ -155,9 +155,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,14 +166,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{6} \\left[ \\sum_{i=1}^{k} ki \\right]$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$266$",
+    "solution": "[풀이 전략]\n안쪽 시그마 $\\sum_{i=1}^k ki$에서 $k$는 $i$에 대해 상수이므로 시그마 앞으로 묶어내어 먼저 계산하고, 그 결과를 바깥쪽 시그마에 대입하여 계산한다.\n\n[단계별 풀이]\n1단계 [안쪽 시그마 계산]:\n$$\\sum_{i=1}^k ki = k\\sum_{i=1}^k i = k\\times \\frac{k(k+1)}{2} = \\frac{k^3+k^2}{2}$$\n\n2단계 [바깥쪽 시그마 계산]:\n$$\\sum_{k=1}^6 \\left[ \\sum_{i=1}^k ki \\right] = \\sum_{k=1}^6 \\frac{k^3+k^2}{2} = \\frac{1}{2}\\left( \\sum_{k=1}^6 k^3 + \\sum_{k=1}^6 k^2 \\right)$$\n\n3단계 [공식 적용 및 연산]:\n- $\\sum_{k=1}^6 k^3 = \\left(\\frac{6\\times 7}{2}\\right)^2 = 21^2 = 441$\n- $\\sum_{k=1}^6 k^2 = \\frac{6\\times 7\\times 13}{6} = 91$\n두 값의 합:\n$$441 + 91 = 532$$\n따라서 구하는 식의 값은:\n$$\\frac{1}{2}\\times 532 = 266$$\n\n[오답 및 경계 점검]\n$k$별로 전개하여 검산:\n$k=1: 1$\n$k=2: 2(1+2) = 6$\n$k=3: 3(1+2+3) = 18$\n$k=4: 4(1+2+3+4) = 40$\n$k=5: 5(1+2+3+4+5) = 75$\n$k=6: 6(1+2+3+4+5+6) = 126$\n$1 + 6 + 18 + 40 + 75 + 126 = 266$으로 정확히 일치한다.\n\n[결론]\n$266$"
   },
   {
     "id": 7,
@@ -184,9 +184,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -195,14 +195,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$에 대하여 $\\sum_{k=1}^{10} (a_{2k-1}+a_{2k})=5$일 때, $\\sum_{k=1}^{20} (2a_k-1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-10$",
+    "solution": "[풀이 전략]\n주어진 조건 $\\sum_{k=1}^{10} (a_{2k-1}+a_{2k})$를 전개하면 수열 ${a_n}$의 첫째항부터 제$20$항까지의 합 $\\sum_{n=1}^{20} a_n$이 됨을 이용한다.\n\n[단계별 풀이]\n1단계 [조건식 전개]:\n$$\\begin{aligned}\n\\sum_{k=1}^{10} (a_{2k-1}+a_{2k}) &= (a_1+a_2) + (a_3+a_4) + \\dots + (a_{19}+a_{20}) \\\\\n&= \\sum_{k=1}^{20} a_k = 5\n\\end{aligned}$$\n\n2단계 [구하는 식 계산]:\n$$\\sum_{k=1}^{20} (2a_k-1) = 2\\sum_{k=1}^{20} a_k - \\sum_{k=1}^{20} 1$$\n$\\sum_{k=1}^{20} a_k = 5$이고 $\\sum_{k=1}^{20} 1 = 1\\times 20 = 20$이므로\n$$2\\times 5 - 20 = 10 - 20 = -10$$\n\n[오답 및 경계 점검]\n상수항 $1$이 $20$번 더해져 빼지므로 $-20$을 빼는 것에 주의한다.\n\n[결론]\n$-10$"
   },
   {
     "id": 8,
@@ -213,9 +213,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -224,14 +224,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{20} a_k=40,\\; \\sum_{k=1}^{20} a_k^2=160$일 때,\n$$\\sum_{k=1}^{20} (a_k-1)\\sum_{k=1}^{20} (a_k+1)-\\sum_{k=1}^{20} (a_k-1)(a_k+1)$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1060$",
+    "solution": "[풀이 전략]\n시그마의 성질을 이용하여 각 항을 $\\sum a_k$와 $\\sum a_k^2$으로 전개하여 계산한다.\n앞의 두 시그마는 각각 독립된 합의 곱이고, 뒤의 시그마는 곱한 식을 전개한 후의 합이다.\n\n[단계별 풀이]\n1단계 [앞의 곱 계산]:\n- $\\sum_{k=1}^{20} (a_k-1) = \\sum_{k=1}^{20} a_k - \\sum_{k=1}^{20} 1 = 40 - 20 = 20$\n- $\\sum_{k=1}^{20} (a_k+1) = \\sum_{k=1}^{20} a_k + \\sum_{k=1}^{20} 1 = 40 + 20 = 60$\n따라서 앞부분의 값은:\n$$20 \\times 60 = 1200$$\n\n2단계 [뒤의 식 계산]:\n$(a_k-1)(a_k+1) = a_k^2 - 1$이므로\n$$\\sum_{k=1}^{20} (a_k-1)(a_k+1) = \\sum_{k=1}^{20} (a_k^2-1) = \\sum_{k=1}^{20} a_k^2 - \\sum_{k=1}^{20} 1$$\n조건에서 $\\sum a_k^2 = 160$이므로\n$$160 - 20 = 140$$\n\n3단계 [전체 식의 값 구하기]:\n$$1200 - 140 = 1060$$\n\n[오답 및 경계 점검]\n$\\sum (a_k-1)(a_k+1)$과 $\\sum (a_k-1) \\times \\sum (a_k+1)$은 서로 다른 연산(내적 대 일반 곱)임을 명확히 구분해야 한다.\n\n[결론]\n$1060$"
   },
   {
     "id": 9,
@@ -242,9 +242,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -253,14 +253,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=2}^{20} \\frac{k^3}{k-1} - \\sum_{k=2}^{20} \\frac{1}{k-1}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3097$",
+    "solution": "[풀이 전략]\n시그마의 구간이 $k=2$부터 $20$까지로 동일하므로 두 시그마를 합친 후 인수분해를 통해 분모를 약분하여 다항식 꼴로 바꾼다.\n\n[단계별 풀이]\n1단계 [시그마 식 합치기 및 약분]:\n$$\\sum_{k=2}^{20} \\frac{k^3}{k-1} - \\sum_{k=2}^{20} \\frac{1}{k-1} = \\sum_{k=2}^{20} \\frac{k^3-1}{k-1}$$\n$k^3-1 = (k-1)(k^2+k+1)$이므로\n$$\\frac{k^3-1}{k-1} = k^2+k+1$$\n따라서 구하는 식은 $\\sum_{k=2}^{20} (k^2+k+1)$이다.\n\n2단계 [구간을 $k=1$부터로 조정하여 계산]:\n$$\\sum_{k=2}^{20} (k^2+k+1) = \\sum_{k=1}^{20} (k^2+k+1) - (1^2+1+1)$$\n- $\\sum_{k=1}^{20} k^2 = \\frac{20\\times 21\\times 41}{6} = 2870$\n- $\\sum_{k=1}^{20} k = \\frac{20\\times 21}{2} = 210$\n- $\\sum_{k=1}^{20} 1 = 20$\n합:\n$$2870 + 210 + 20 = 3100$$\n$k=1$일 때의 값은 $1+1+1 = 3$이므로\n$$3100 - 3 = 3097$$\n\n[오답 및 경계 점검]\n시그마의 시작 번호가 $k=2$임에 유의하여 $k=1$일 때의 값 $3$을 정확히 빼주어야 한다.\n\n[결론]\n$3097$"
   },
   {
     "id": 10,
@@ -271,9 +271,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -282,14 +282,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$\\sum_{k=1}^{n} a_k=n^2-11n$일 때, $\\sum_{k=1}^{10} ka_{2k}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$880$",
+    "solution": "[풀이 전략]\n$S_n = \\sum_{k=1}^n a_k = n^2-11n$으로부터 일반항 $a_n$을 구하고, $a_{2k}$를 대입하여 $\\sum_{k=1}^{10} k a_{2k}$를 계산한다.\n\n[단계별 풀이]\n1단계 [일반항 $a_n$ 구하기]:\n- $a_1 = S_1 = 1^2 - 11(1) = -10$\n- $n\\ge 2$일 때:\n$$\\begin{aligned}\na_n &= S_n - S_{n-1} \\\\\n&= (n^2-11n) - \\{(n-1)^2-11(n-1)\\} \\\\\n&= (n^2-11n) - (n^2-13n+12) \\\\\n&= 2n - 12\n\\end{aligned}$$\n$n=1$을 대입하면 $2(1)-12 = -10 = a_1$이므로 모든 자연수 $n$에 대하여 $a_n = 2n-12$이다.\n\n2단계 [$a_{2k}$ 구하기]:\n$$a_{2k} = 2(2k) - 12 = 4k - 12$$\n\n3단계 [$\\sum_{k=1}^{10} k a_{2k}$ 계산]:\n$$\\sum_{k=1}^{10} k(4k-12) = \\sum_{k=1}^{10} (4k^2-12k) = 4\\sum_{k=1}^{10} k^2 - 12\\sum_{k=1}^{10} k$$\n- $\\sum_{k=1}^{10} k^2 = \\frac{10\\times 11\\times 21}{6} = 385$\n- $\\sum_{k=1}^{10} k = 55$\n대입하면:\n$$4\\times 385 - 12\\times 55 = 1540 - 660 = 880$$\n\n[오답 및 경계 점검]\n$4(385) - 12(55) = 20(77 - 33) = 20\\times 44 = 880$으로 산술 계산을 교차 검산한다.\n\n[결론]\n$880$"
   },
   {
     "id": 11,
@@ -300,9 +300,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -311,14 +311,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "이차방정식 $x^2-7x-5=0$의 두 근을 $\\alpha,\\; \\beta$라고 할 때, $\\sum_{k=1}^{5} (k+\\alpha)(k+\\beta)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$135$",
+    "solution": "[풀이 전략]\n이차방정식의 근과 계수의 관계를 이용하여 $\\alpha+\\beta$와 $\\alpha\\beta$를 구하고, 식 $(k+\\alpha)(k+\\beta) = k^2+(\\alpha+\\beta)k+\\alpha\\beta$에 대입하여 $\\sum$ 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [근과 계수의 관계]:\n이차방정식 $x^2-7x-5=0$의 두 근이 $\\alpha, \\beta$이므로\n$$\\alpha + \\beta = 7, \\quad \\alpha\\beta = -5$$\n\n2단계 [피합성식 전개]:\n$$(k+\\alpha)(k+\\beta) = k^2 + (\\alpha+\\beta)k + \\alpha\\beta = k^2 + 7k - 5$$\n\n3단계 [$\\sum_{k=1}^5$ 계산]:\n$$\\sum_{k=1}^5 (k^2+7k-5) = \\sum_{k=1}^5 k^2 + 7\\sum_{k=1}^5 k - \\sum_{k=1}^5 5$$\n- $\\sum_{k=1}^5 k^2 = \\frac{5\\times 6\\times 11}{6} = 55$\n- $\\sum_{k=1}^5 k = \\frac{5\\times 6}{2} = 15$\n- $\\sum_{k=1}^5 5 = 5\\times 5 = 25$\n따라서:\n$$55 + 7\\times 15 - 25 = 55 + 105 - 25 = 135$$\n\n[오답 및 경계 점검]\n$k=1, 2, 3, 4, 5$일 때 $k^2+7k-5$의 값을 각각 계산:\n$k=1: 1+7-5 = 3$\n$k=2: 4+14-5 = 13$\n$k=3: 9+21-5 = 25$\n$k=4: 16+28-5 = 39$\n$k=5: 25+35-5 = 55$\n$3 + 13 + 25 + 39 + 55 = 135$로 완전 일치한다.\n\n[결론]\n$135$"
   },
   {
     "id": 12,
@@ -329,9 +329,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -340,14 +340,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n⑴ $\\sum_{k=1}^{50} \\frac{1}{(2k+1)^2-1}$\n⑵ $\\sum_{k=2}^{99} \\frac{2}{\\sqrt{k-1}+\\sqrt{k+1}}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{25}{102}$, ⑵ $9+3\\sqrt{11}-\\sqrt{2}$",
+    "solution": "[풀이 전략]\n⑴ 분모가 인수분해되므로 부분분수 분해 $\\frac{1}{AB} = \\frac{1}{B-A}\\left(\\frac{1}{A}-\\frac{1}{B}\\right)$를 이용하여 소거형 합을 계산한다.\n⑵ 분모를 유리화하여 이웃한 항들이 상쇄되는 꼴로 변형하여 계산한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\sum_{k=1}^{50} \\frac{1}{(2k+1)^2-1}$]:\n분모를 인수분해하면:\n$$(2k+1)^2 - 1 = \\{(2k+1)-1\\}\\{(2k+1)+1\\} = 2k(2k+2) = 4k(k+1)$$\n따라서:\n$$\\sum_{k=1}^{50} \\frac{1}{4k(k+1)} = \\frac{1}{4}\\sum_{k=1}^{50} \\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)$$\n축차대입으로 소거하면:\n$$\\frac{1}{4}\\left\\{ \\left(1-\\frac{1}{2}\\right) + \\left(\\frac{1}{2}-\\frac{1}{3}\\right) + \\dots + \\left(\\frac{1}{50}-\\frac{1}{51}\\right) \\right\\} = \\frac{1}{4}\\left(1 - \\frac{1}{51}\\right) = \\frac{1}{4}\\times \\frac{50}{51} = \\frac{25}{102}$$\n\n2단계 [⑵ $\\sum_{k=2}^{99} \\frac{2}{\\sqrt{k-1}+\\sqrt{k+1}}$]:\n분모를 유리화하면:\n$$\\frac{2(\\sqrt{k+1}-\\sqrt{k-1})}{(\\sqrt{k+1}+\\sqrt{k-1})(\\sqrt{k+1}-\\sqrt{k-1})} = \\frac{2(\\sqrt{k+1}-\\sqrt{k-1})}{(k+1)-(k-1)} = \\sqrt{k+1}-\\sqrt{k-1}$$\n$k=2$부터 $99$까지 나열하여 소거:\n- $k=2: \\sqrt{3}-\\sqrt{1}$\n- $k=3: \\sqrt{4}-\\sqrt{2}$\n- $k=4: \\sqrt{5}-\\sqrt{3}$\n- $\\dots$\n- $k=98: \\sqrt{99}-\\sqrt{97}$\n- $k=99: \\sqrt{100}-\\sqrt{98}$\n두 칸 건너 소거되므로 앞에 $-\\sqrt{1}, -\\sqrt{2}$가 남고, 뒤에 $\\sqrt{99}, \\sqrt{100}$이 남는다:\n$$-\\sqrt{1} - \\sqrt{2} + \\sqrt{99} + \\sqrt{100} = -1 - \\sqrt{2} + 3\\sqrt{11} + 10 = 9 + 3\\sqrt{11} - \\sqrt{2}$$\n\n[오답 및 경계 점검]\n⑵에서 소거 간격이 $2$칸이므로 앞뒤로 각각 $2$개씩 항이 남음을 주의해야 한다.\n\n[결론]\n⑴ $\\frac{25}{102}$, ⑵ $9+3\\sqrt{11}-\\sqrt{2}$"
   },
   {
     "id": 13,
@@ -358,9 +358,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -369,14 +369,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "수열 $\\{a_n\\}$의 귀납적 정의가\n$$a_1=1,\\; a_{n+1}=\\frac{n+1}{n}a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n일 때, 제$5$항을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n$a_{n+1} = f(n) a_n$ 꼴의 점화식이므로 $n=1, 2, 3, 4$를 대입하여 양변을 변변 곱하거나 순차적으로 대입하여 계산한다.\n\n[단계별 풀이]\n1단계 [순차 대입]:\n- $n=1: a_2 = \\frac{2}{1} a_1 = 2\\times 1 = 2$\n- $n=2: a_3 = \\frac{3}{2} a_2 = \\frac{3}{2}\\times 2 = 3$\n- $n=3: a_4 = \\frac{4}{3} a_3 = \\frac{4}{3}\\times 3 = 4$\n- $n=4: a_5 = \\frac{5}{4} a_4 = \\frac{5}{4}\\times 4 = 5$\n\n2단계 [변변 곱하기에 의한 일반항 확인]:\n$$a_n = \\frac{n}{n-1}\\times \\frac{n-1}{n-2}\\times \\dots \\times \\frac{2}{1}\\times a_1 = n a_1 = n$$\n따라서 $a_n = n$이므로 $a_5 = 5$이다.\n\n[오답 및 경계 점검]\n일반항이 $a_n = n$임을 명확히 확인하였다.\n\n[결론]\n$5$"
   },
   {
     "id": 14,
@@ -387,9 +387,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -398,14 +398,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "평면 위에 서로 다른 $n$개의 직선이 있다. $n$개의 직선이 서로 만나 생길 수 있는 교점의 최대 개수를 $a_n$이라고 하면 $a_1=0,\\; a_2=1,\\; a_3=3$이다. 이때 $a_n$과 $a_{n+1}$ 사이의 관계식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a_{n+1} = a_n + n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$",
+    "solution": "[풀이 전략]\n평면 위에 $n$개의 직선이 있을 때, 교점의 개수가 최대가 되려면 어느 두 직선도 평행하지 않고 어느 세 직선도 한 점에서 만나지 않아야 한다.\n새로운 $(n+1)$번째 직선을 추가할 때 기존의 $n$개의 직선과 만나는 교점의 개수를 파악하여 점화식을 세운다.\n\n[단계별 풀이]\n1단계 [추가되는 교점 수 분석]:\n이미 $n$개의 직선이 있을 때, 기존의 어떤 직선과도 평행하지 않고 기존의 어떤 교점도 지나지 않는 $(n+1)$번째 직선을 하나 추가한다.\n이 새로운 직선은 기존의 $n$개의 직선과 각각 한 번씩 만나므로 정확히 $n$개의 새로운 교점이 추가된다.\n\n2단계 [관계식(점화식) 작성]:\n따라서 $(n+1)$개의 직선으로 생기는 최대 교점의 수 $a_{n+1}$은 기존의 $a_n$에 $n$을 더한 것과 같다:\n$$a_{n+1} = a_n + n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n\n[오답 및 경계 점검]\n주어진 초기 조건과 대조:\n- $a_1 = 0$\n- $a_2 = a_1 + 1 = 0 + 1 = 1$\n- $a_3 = a_2 + 2 = 1 + 2 = 3$\n문제의 조건 $a_1=0, a_2=1, a_3=3$과 완벽히 일치한다.\n\n[결론]\n$a_{n+1} = a_n + n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$"
   },
   {
     "id": 15,
@@ -416,9 +416,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -427,14 +427,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "다음은 모든 자연수 $n$에 대하여 $4^n+1$을 $3$으로 나누었을 때의 나머지가 $2$임을 수학적 귀납법으로 증명하는 과정이다. 빈칸 ㉠, ㉡, ㉢에 알맞은 것을 써넣으시오.\n\n[증명]\n(i) $n=1$일 때, $4^1+1=5$를 $3$으로 나누었을 때의 나머지는 ㉠이다.\n(ii) $n=k$일 때, $4^k+1$을 $3$으로 나누었을 때의 나머지가 $2$라고 가정하면\n$$4^k+1=3m+2\\; (m\\text{은 자연수})$$\n이므로 $4^k=\\text{㉡}$이다.\n$n=k+1$일 때,\n$$4^{k+1}+1=4(\\text{㉡})+1=3(\\text{㉢})+2$$\n이므로 $4^{k+1}+1$을 $3$으로 나누었을 때의 나머지도 $2$이다.\n(i), (ii)에서 모든 자연수 $n$에 대하여 $4^n+1$을 $3$으로 나누었을 때의 나머지는 $2$이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "㉠ $2$, ㉡ $3m+1$, ㉢ $4m+1$",
+    "solution": "[풀이 전략]\n수학적 귀납법 증명 빈칸 채우기 문제이다.\n(i) $n=1$일 때 직접 나눗셈의 나머지를 구한다.\n(ii) $n=k$일 때의 가정식으로부터 $4^k$의 식을 표현하고, 이를 $n=k+1$일 때 대입하여 $3\\times(\\text{몫}) + 2$ 꼴로 묶는다.\n\n[단계별 풀이]\n1단계 [㉠ 구하기]:\n$n=1$일 때:\n$$4^1 + 1 = 5 = 3\\times 1 + 2$$\n따라서 $5$를 $3$으로 나눈 나머지는 $2$이므로 ㉠ $= 2$이다.\n\n2단계 [㉡ 구하기]:\n$4^k + 1 = 3m + 2$이므로 양변에서 $1$을 빼면\n$$4^k = 3m + 1$$\n따라서 ㉡ $= 3m+1$이다.\n\n3단계 [㉢ 구하기]:\n$n=k+1$일 때:\n$$\\begin{aligned}\n4^{k+1} + 1 &= 4\\times 4^k + 1 \\\\\n&= 4(3m+1) + 1 \\\\\n&= 12m + 4 + 1 \\\\\n&= 12m + 5 \\\\\n&= 3(4m+1) + 2\n\\end{aligned}$$\n따라서 $3(\\text{㉢}) + 2$에서 ㉢ $= 4m+1$이다.\n\n[오답 및 경계 점검]\n$3(4m+1)+2 = 12m+3+2 = 12m+5 = 4(3m+1)+1$로 항등적으로 완벽히 일치한다.\n\n[결론]\n㉠ $2$, ㉡ $3m+1$, ㉢ $4m+1$"
   },
   {
     "id": 16,
@@ -445,9 +445,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-07",
+    "standardUnit": "수열의 합",
+    "standardUnitOrder": 7,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -456,14 +456,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수열의 합",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "자연수 $n$에 대하여 직선 $y=x+a_n$이 원 $(x-3n)^2+(y-n^2+3n)^2=9n$을 이등분할 때, $\\sum_{k=1}^{5} ka_k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-105$",
+    "solution": "[풀이 전략]\n직선이 원의 넓이를 이등분하려면 반드시 원의 중심을 지나야 한다.\n원의 중심의 좌표를 구하고 직선의 방정식에 대입하여 $a_n$의 일반항을 구한 후 $\\sum_{k=1}^5 k a_k$를 계산한다.\n\n[단계별 풀이]\n1단계 [원의 중심 구하기]:\n원 $(x-3n)^2 + (y-n^2+3n)^2 = 9n$의 중심의 좌표는\n$$(3n,\\; n^2-3n)$$\n이다.\n\n2단계 [직선에 대입하여 $a_n$ 구하기]:\n직선 $y = x + a_n$이 중심 $(3n, n^2-3n)$을 지나므로\n$$n^2 - 3n = 3n + a_n \\implies a_n = n^2 - 6n$$\n\n3단계 [$\\sum_{k=1}^5 k a_k$ 계산]:\n$$k a_k = k(k^2-6k) = k^3 - 6k^2$$\n$$\\sum_{k=1}^5 (k^3-6k^2) = \\sum_{k=1}^5 k^3 - 6\\sum_{k=1}^5 k^2$$\n- $\\sum_{k=1}^5 k^3 = \\left(\\frac{5\\times 6}{2}\\right)^2 = 15^2 = 225$\n- $\\sum_{k=1}^5 k^2 = \\frac{5\\times 6\\times 11}{6} = 55$\n따라서:\n$$225 - 6\\times 55 = 225 - 330 = -105$$\n\n[오답 및 경계 점검]\n$k=1, 2, 3, 4, 5$일 때 $k^3-6k^2$ 직접 계산:\n$k=1: 1 - 6 = -5$\n$k=2: 8 - 24 = -16$\n$k=3: 27 - 54 = -27$\n$k=4: 64 - 96 = -32$\n$k=5: 125 - 150 = -25$\n$(-5) + (-16) + (-27) + (-32) + (-25) = -105$로 완전 일치한다.\n\n[결론]\n$-105$"
   },
   {
     "id": 17,
@@ -474,9 +474,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -485,14 +485,14 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "$500$원짜리 동전의 앞면을 [앞], 뒷면을 [뒤]라고 할 때, 똑같은 동전 $n$개를 뒷면이 이웃하지 않도록 한 줄로 배열하려고 한다. 예를 들어 동전 $4$개를 배열할 때 [앞, 뒤, 앞, 앞]은 가능하지만 [앞, 뒤, 뒤, 앞]은 가능하지 않다. 동전 $n$개를 배열하는 방법의 수를 $a_n$이라고 할 때, $a_n,\\; a_{n+1},\\; a_{n+2}$ 사이의 관계식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a_{n+2} = a_{n+1} + a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$",
+    "solution": "[풀이 전략]\n뒷면이 이웃하지 않도록 동전 $n+2$개를 배열할 때, 맨 첫 번째 동전이 앞면인지 뒷면인지에 따라 경우를 나누어 점화식을 유도한다.\n\n[단계별 풀이]\n1단계 [첫 번째 동전이 [앞]인 경우]:\n첫 번째 동전이 [앞]이면, 나머지 $(n+1)$개의 동전은 뒷면이 이웃하지 않도록 자유롭게 배열하면 되므로 그 방법의 수는 $a_{n+1}$이다.\n\n2단계 [첫 번째 동전이 [뒤]인 경우]:\n뒷면이 이웃할 수 없으므로 두 번째 동전은 반드시 [앞]이어야 한다.\n따라서 처음 두 동전은 [뒤, 앞]으로 고정되고, 나머지 $n$개의 동전을 뒷면이 이웃하지 않도록 배열하면 되므로 그 방법의 수는 $a_n$이다.\n\n3단계 [관계식 도출]:\n1단계와 2단계의 사건은 상호 배반이므로 합의 법칙에 의해:\n$$a_{n+2} = a_{n+1} + a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$$\n\n[오답 및 경계 점검]\n초기 몇 항을 나열하여 확인:\n- $n=1$: [앞], [뒤] $\\implies a_1 = 2$\n- $n=2$: [앞, 앞], [앞, 뒤], [뒤, 앞] $\\implies a_2 = 3$\n- $n=3$: [앞, 앞, 앞], [앞, 앞, 뒤], [앞, 뒤, 앞], [뒤, 앞, 앞], [뒤, 앞, 뒤] $\\implies a_3 = 5$\n$a_3 = a_2 + a_1 = 3 + 2 = 5$가 성립하며 피보나치 수열 관계식과 일치한다.\n\n[결론]\n$a_{n+2} = a_{n+1} + a_n\\; (n=1,\\; 2,\\; 3,\\; \\dots)$"
   },
   {
     "id": 18,
@@ -503,9 +503,9 @@ window.questionBank = [
     "category": "수열",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-03",
-    "standardUnit": "수열의 합과 수학적 귀납법",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-A-08",
+    "standardUnit": "수학적 귀납법",
+    "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -514,13 +514,13 @@ window.questionBank = [
       "고2",
       "대수",
       "수열",
-      "수열의 합과 수학적 귀납법",
+      "수학적 귀납법",
       "중단원 학습 점검"
     ],
     "wide": false,
     "content": "모든 자연수 $n$에 대하여 다음 등식이 성립함을 수학적 귀납법으로 증명하시오.\n$$1^2+2^2+3^2+\\dots+n^2=\\frac{n(n+1)(2n+1)}{6}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조 (수학적 귀납법 증명 완료)",
+    "solution": "[풀이 전략]\n수학적 귀납법을 이용하여 모든 자연수 $n$에 대하여 주어진 등식\n$$1^2+2^2+3^2+\\dots+n^2 = \\frac{n(n+1)(2n+1)}{6}$$\n이 성립함을 $2$단계로 증명한다:\n(i) $n=1$일 때 성립함을 보인다.\n(ii) $n=k$일 때 성립한다고 가정하고, 양변에 $(k+1)^2$을 더하여 $n=k+1$일 때도 성립함을 이끌어낸다.\n\n[단계별 풀이]\n1단계 [(i) $n=1$일 때 성립 증명]:\n- $(\\text{좌변}) = 1^2 = 1$\n- $(\\text{우변}) = \\frac{1\\times(1+1)\\times(2\\times 1 + 1)}{6} = \\frac{1\\times 2\\times 3}{6} = 1$\n좌변과 우변의 값이 같으므로 $n=1$일 때 주어진 등식이 성립한다.\n\n2단계 [(ii) $n=k$일 때 성립 가정]:\n$n=k$일 때 주어진 등식이 성립한다고 가정하면\n$$1^2+2^2+3^2+\\dots+k^2 = \\frac{k(k+1)(2k+1)}{6}$$\n\n3단계 [$n=k+1$일 때 성립 증명]:\n위 식의 양변에 $(k+1)^2$을 더하면:\n$$\\begin{aligned}\n1^2+2^2+\\dots+k^2+(k+1)^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n&= \\frac{k+1}{6} \\{k(2k+1) + 6(k+1)\\} \\\\\n&= \\frac{k+1}{6} (2k^2 + k + 6k + 6) \\\\\n&= \\frac{k+1}{6} (2k^2 + 7k + 6) \\\\\n&= \\frac{k+1}{6} (k+2)(2k+3) \\\\\n&= \\frac{(k+1)\\{(k+1)+1\\}\\{2(k+1)+1\\}}{6}\n\\end{aligned}$$\n따라서 $n=k+1$일 때도 주어진 등식이 성립한다.\n\n4단계 [결론 도출]:\n(i), (ii)에 의하여 모든 자연수 $n$에 대하여 주어진 등식이 성립한다.\n\n[오답 및 경계 점검]\n$2k^2+7k+6 = (k+2)(2k+3)$의 인수분해를 통해 우변의 $n$ 자리에 $k+1$이 대입된 형태가 정확히 나타남을 확인한다.\n\n[결론]\n풀이 참조 (수학적 귀납법 증명 완료)"
   }
 ];
