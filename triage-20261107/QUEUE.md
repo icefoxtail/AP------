@@ -1,4 +1,5 @@
 # SVG 작업 대기열
+RENDERING 22-gangnam-girls
 
 마지막 ROOT 기록: 2026-11-07 15:19 UTC. 저장소: `icefoxtail/AP------`. 입력·판정 원본 브랜치: `codex/svg-triage-20261107`.
 
