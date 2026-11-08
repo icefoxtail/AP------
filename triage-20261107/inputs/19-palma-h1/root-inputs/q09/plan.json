@@ -1,0 +1,12 @@
+{
+ "capability":"set-diagram-figure-v1",
+ "diagram":{
+  "kind":"MAPPING",
+  "columns":[{"id":"X","name":"입력","elements":["c","d"]},{"id":"Y","name":"함숫값","elements":["b","c"]}],
+  "arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}},{"from":{"column":0,"element":1},"to":{"column":1,"element":1}}],
+  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
+ },
+ "caption":"원문 그래프에서 읽은 두 대응을 역방향으로 추적한다.",
+ "sourceConditions":[{"id":"c1","condition":"원문 그래프의 점선에서 f(c)=b, f(d)=c","mappedTo":["diagram"]}],
+ "newVisualInformation":["역함수를 적용할 때의 두 대응"]
+}
