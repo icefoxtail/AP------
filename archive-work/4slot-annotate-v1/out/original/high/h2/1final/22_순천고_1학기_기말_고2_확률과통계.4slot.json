@@ -1,0 +1,1105 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/22_순천고_1학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "9a18d41b5a1fbe5cddee5aea79c48f3da14f6bdd",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간 $S=\\{2, 4, 6, 8, 10, 12, 14, 16\\}$에"
+          },
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "A$와 $C$는 배반사건이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "사건 $C$의 개수는? [3.8점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "부분집합의 개수는 $2^2=4$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "B^c$와 $C$가 배반이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "공집합도 사건에 포함합니다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "배반사건의 조건을 여집합과 차집합의 포함관계로 해석하여 가능한 부분집합의 개수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "필기구를 선택하려고 한다"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "선택할 확률을 $p$라고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "35p$의 값은? [3.8점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $\\binom73=35$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "유리한 경우의 수는 $\\binom31\\binom42",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "\\binom31\\binom42=3\\cdot6=18$입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "35p$의 값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체에서 세 개를 고르는 조합과 각 종류별로 선택하는 조합의 수를 곱하여 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$에 대하여"
+          },
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "P(A|B)=\\dfrac{1}{2}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "P(B|A)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "P(A\\cap B)=P(A\\mid B)P(B)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "\\dfrac{3/10}{2/5}=\\dfrac3{10}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "P(A)=\\dfrac{2}{5}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건부확률의 곱셈정리로 교집합의 확률을 구한 뒤 다른 조건부확률 공식에 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "A학교 학생 4명, B학교 학생 6명이"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "이 시행에서 B학교 학생만"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "B학교 학생만 뽑힐 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "추가로 모두 B학교를 뽑을 조건부확률은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 단계를 곱하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "2명을 동시에 뽑았을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 단계에서 같은 학교 학생을 뽑고 연속하여 추가 추첨에서 같은 학교 학생을 뽑을 조건부확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "5의 약수의 눈이 나오는 사건을 $A$라"
+          },
+          {
+            "term": "독립",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$가 서로 독립이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(B)$는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "독립이므로 $P(A\\cap B)=P(A)P(B)$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "5의 약수인 주사위 눈은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "P(A \\cap B)=\\dfrac{1}{6}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "독립사건의 정의에 따라 교집합 확률이 두 사건 확률의 곱과 같음을 이용하여 P(B)를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$에 대하여"
+          },
+          {
+            "term": "여집합",
+            "src": "stem",
+            "quote": "P(A^c \\cup B^c)=\\dfrac{4}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(A \\cup B)$는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "드모르간 법칙에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "P(A)=\\dfrac{2}{5}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "드모르간 법칙으로 교집합의 확률을 구하고 확률의 덧셈정리를 적용하여 합집합의 확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 1인 정사각형 4개를"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "9개의 꼭짓점 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "선분의 길이가 유리수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $\\binom92=36$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "선분 길이는 $\\sqrt{a^2+b^2}$입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "유리수 길이의 선분은 $18$개이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "격자점 좌표 차이에 따른 선분 길이를 피타고라스 정리로 분류하여 가로 세로 평행선분만 유리수임을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "상대를 이길 확률은 각각 $\\dfrac{2}{3}$"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "A팀이 B 팀을 이겼을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A 팀이 최종 우승할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "B가 세 번째 승을 얻기 전에",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "A 우승은 그 여사건이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "3번을 먼저 이기는 팀이"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A가 이미 1승을 거둔 상태에서 B가 먼저 3승을 거둘 여사건의 확률을 계산하여 A의 최종 우승 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간을 $S$"
+          },
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "일어나지 않는 사건을 $\\varnothing$이라"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A$, $B$에 대하여 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "확률은 언제나 $0\\le P(A)\\le1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "곱도 $0\\le P(A)P(B)\\le1$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A$, $B$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 확률의 기본 성질인 0 이상 1 이하의 범위를 확인하여 두 확률의 곱의 범위를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선 $ax+by=-1$, $3x-6y=2$가"
+          },
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "서로 수직일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "서로 수직일 확률은? [4.2점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기의 곱이 $-1$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "가능한 순서쌍은 $(a,b)=(2,1),(4,2),(6,3)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 눈의 수를 차례로 $a$, $b$라 하자"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 직선이 수직일 조건인 기울기의 곱이 -1임을 주사위 눈 a, b의 비례식으로 바꾸어 경우의 수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체 모양의 상자를 던져"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "이 상자를 3번 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "세 번째 나온 수가 홀수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "서로 배타적이므로 확률을 더하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "각 시행은 독립이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "세 번째 나온 수가 홀수일 확률은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합이 6이 되는 배타적 경우의 확률을 구하고 독립시행으로 세 번째 홀수가 나올 확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간 $S=\\{1, 2, 3, 4, 5, 6\\}$의"
+          },
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$가 서로 배반사건이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$를 선택하는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "|A|=1$일 때 $|B|=1,2,3,4,5$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "\\binom61\\left(\\binom51+\\binom52+\\bi",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "0 < P(A) \\le P(B)$가 되도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "배반사건 원소 개수의 부등식 조건에 따라 집합 A의 크기별로 가능한 집합 B의 조합을 나누어 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "백분율",
+            "src": "stem",
+            "quote": "전체 학생의 90%가 찬성하고"
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "임의로 선택한 한 학생이"
+          },
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "남학생이 있었을 때, 이 학생이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "수학여행 실시에 찬성하였을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(찬성\\mid 남학생)=\\dfrac{P(찬성\\cap 남학생)}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "남학생의 비율은 $1-0.4=0.6$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "전체 학생을 1이라고 두면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "백분율",
+            "src": "stem",
+            "quote": "전체 학생의 40%가 여학생이었고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 전체 및 교집합 백분율로부터 남학생 중 찬성자의 조건부확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표평면",
+            "src": "stem",
+            "quote": "좌표평면 위의 점 P에 대하여"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "선분 OP의 길이가 5일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "선분 OP의 길이가 5일 확률은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "원점에서 거리가 5이므로 피타고라스 정리를 적용해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "독립시행 확률을 각각 구하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "시행을 5번 할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이동 횟수의 좌표에 피타고라스 정리를 적용하여 거리가 5가 되는 이동 횟수를 찾고 독립시행 확률을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 9까지 자연수가 하나씩"
+          },
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "3개의 공을 동시에 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "홀수 합인 경우는 $\\binom51\\binom42+\\binom53",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "곱이 3의 배수가 아니려면 3의 배수인",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "p$, $q$는 서로소인 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 수의 합이 홀수가 되는 조합에서 3의 배수가 전혀 포함되지 않는 여사건을 제외하여 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 A에서 시작하여 주사위를 던져"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위를 던진 횟수가 7회 이하로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "P지점을 통과했을 확률은 $\\dfrac{q}{p}$이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "오른쪽으로 4칸, 위쪽으로 2칸을 이동해야 합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(P통과\\mid7회이하종료)=",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "p$와 $q$는 서로소인 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "종료 횟수가 7 이하인 경로들의 확률과 그중 P를 통과하는 경로의 확률을 각각 구하여 조건부확률을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "임의로 2개의 공을 동시에 꺼내어"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "B에서 검은 공 2개를 옮긴 확률은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "p-q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "B에서 A로 돌아오는 흰 공의 수를 $k$라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 확률의 곱은 $8/33$입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "흰 공의 개수가 홀수일 확률이"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 단계별로 이동하는 흰 공의 개수에 따라 상태를 분류하고 확률의 곱과 합을 이용하여 최종 홀수일 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "8이상의 자연수 $n$에 대하여"
+          },
+          {
+            "term": "독립",
+            "src": "stem",
+            "quote": "두 사건 A와 B가 서로 독립이 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{20} a_k$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "$a_k=10+2(k-1)$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "\\sum_{k=1}^{20}a_k=\\dfrac{20}{2}(10+48)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "solution",
+            "quote": "이는 $n$이 짝수일 때에만 성립합니다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 사건이 독립일 조건을 대수적으로 정리하여 n이 10 이상의 짝수임을 밝히고 등차수열의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "5의 약수의 눈이 나오는 사건을 $A$라 할 때"
+          },
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "주사위를 5번 던지는 시행에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(A)$를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "A가 일어나는 특정 두 위치를 정하는 방법은 $\\binom52=",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "자리를 고르는 방법은 $\\binom{100}{r}$가지입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "p$와 $q$는 서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주사위 한 번 시행의 확률을 구하고 이를 바탕으로 n회 독립시행 확률 공식을 각각 세워 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A$, $B$에 대하여"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P(A)=\\dfrac{5}{6}$, $P(B)=\\dfrac{1}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "M-m$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\le1$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값은 $M=1/4$입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "P(A\\cap B)\\le\\min\\{P(A),P(B)\\}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교집합 확률의 상한은 작은 사건의 확률이고 하한은 덧셈정리의 합이 1 이하인 조건으로부터 각각 최댓값과 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "X$에서 $X$로의 모든 함수 $f$ 중에서"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "(f \\circ f)(1) \\ge 4$를 만족시킬 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "함수 $f$의 치역이 $X$일 확률은"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "|E|=5\\cdot3\\cdot6^4=19440$입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응해야 하므로 $4!=24$가지입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "p$와 $q$는 서로소인 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합성함수 부등식 조건을 만족하는 전체 함수 수와 치역이 정의역 전체인 일대일대응 함수 수를 세어 조건부확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 21,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
