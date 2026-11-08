@@ -1,6 +1,6 @@
 """Independent final-polyline observer. Does not import producer/sampler helpers.
 
-Scope: rational-coefficient degree <=4 polynomial, rational with denominator
+Scope: rational-coefficient degree <=4 polynomial plus exactly split Q(sqrt(r)) cubics, rational with denominator
 degree <=2, sqrt of a positive-slope affine polynomial. Uses conservative
 second-derivative bounds; sqrt boundary uses its exact secant envelope.
 """
@@ -14,12 +14,54 @@ x = S.Symbol('x', real=True)
 
 def polynomial(values, limit):
     if not isinstance(values,list) or not 1<=len(values)<=limit+1: raise ValueError('UNSUPPORTED_POLYNOMIAL_DEGREE')
+    if any(isinstance(value,str) and 'sqrt' in value for value in values):
+        if limit!=4 or any(not isinstance(value,str) or len(value)>64 for value in values):raise ValueError('INVALID_COEFFICIENT')
+        radicands={int(value) for text in values for value in re.findall(r'sqrt\((\d+)\)',text)}
+        if len(radicands)!=1:raise ValueError('INVALID_COEFFICIENT')
+        radicand=next(iter(radicands))
+        if radicand<=1 or any(power!=1 for power in S.factorint(radicand).values()):raise ValueError('INVALID_COEFFICIENT')
+        radical=S.sqrt(radicand);field=S.QQ.algebraic_field(radical)
+        try:
+            coefficients=[_pp_exact(value) for value in values]
+            for coefficient in coefficients:field.from_sympy(coefficient)
+            result=S.Poly(sum(coefficient*x**i for i,coefficient in enumerate(coefficients)),x,extension=radical)
+        except (ValueError,TypeError,NotImplementedError):raise ValueError('INVALID_COEFFICIENT') from None
+        if result.degree()!=3 or any(factor.degree()!=1 for poly in (result,result.diff(),result.diff().diff()) for factor,_ in poly.factor_list()[1]):raise ValueError('UNSUPPORTED_ALGEBRAIC_POLYNOMIAL_FACTORISATION')
+        return result
     if any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values): raise ValueError('INVALID_COEFFICIENT')
     if any('/' in value and int(value.split('/',1)[1])==0 for value in values):raise ValueError('INVALID_COEFFICIENT')
     return S.Poly(sum(S.Rational(v)*x**i for i,v in enumerate(values)),x)
 
 def real_roots(poly,lo,hi):
     if poly.is_zero: return []
+    if getattr(poly.domain,'is_AlgebraicField',False):
+        try:
+            factors=poly.factor_list()[1]
+            if any(factor.degree()!=1 for factor,_ in factors):raise ValueError
+            roots=[(S.cancel(-factor.nth(0)/factor.nth(1)),int(multiplicity)) for factor,multiplicity in factors]
+            if any(root.is_real is not True for root,_ in roots):raise ValueError
+        except (ValueError,TypeError,NotImplementedError):raise ValueError('UNSUPPORTED_ALGEBRAIC_POLYNOMIAL_FACTORISATION') from None
+        return [(float(root),multiplicity) for root,multiplicity in sorted(roots,key=lambda row:float(row[0])) if float(root)>=lo and float(root)<=hi]
+    if poly.domain==S.EX:
+        # Display-frame crossings are not source features. For a q(sqrt(r)) curve their exact cubic roots need not remain in that
+        # field after subtracting an arbitrary viewport level, so isolate those clipping cuts numerically at high precision only.
+        radical_atoms={atom for value in poly.all_coeffs() for atom in S.sympify(value).atoms(S.Pow) if atom.exp==S.Rational(1,2) and atom.base.is_Integer and atom.base>1}
+        radicands={int(atom.base) for atom in radical_atoms}
+        if len(radicands)==1:
+            radicand=next(iter(radicands))
+            if all(power==1 for power in S.factorint(radicand).values()):
+                radical=S.sqrt(radicand);field=S.QQ.algebraic_field(radical)
+                try:
+                    for value in poly.all_coeffs():field.from_sympy(S.sympify(value))
+                    exact=S.Poly(poly.as_expr(),x,extension=radical)
+                    roots=[]
+                    for root in exact.nroots(n=60,maxsteps=500):
+                        real,imag=S.re(root),S.im(root)
+                        if abs(S.N(imag,60))<S.Float('1e-45',60):
+                            value=float(S.N(real,30))
+                            if lo<=value<=hi:roots.append((value,1))
+                    return sorted(roots)
+                except (ValueError,TypeError,NotImplementedError):raise ValueError('UNSUPPORTED_ALGEBRAIC_CLIPPING_ROOTS') from None
     # Exact rational root isolation, retaining multiplicity and clustered roots.
     return [(float((a+b)/2),multiplicity) for (a,b),multiplicity in poly.intervals(eps=S.Rational(1,10**14)) if float(b)>=lo and float(a)<=hi]
 
@@ -4869,8 +4911,21 @@ def _audit_family(plan,svg,transform):
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
     else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
+    region_observations=[]
+    if plan.get('family')=='polynomial':
+        region_features=plan.get('graphRegionFeatures');declared_regions=plan.get('regions') or []
+        frozen_regions=region_features.get('regions') if isinstance(region_features,dict) else None
+        frozen_ids=[row.get('id') for row in frozen_regions if isinstance(row,dict)] if isinstance(frozen_regions,list) else []
+        declared_ids=[row.get('id') for row in declared_regions if isinstance(row,dict)]
+        if declared_regions and (not isinstance(frozen_regions,list) or not frozen_regions or any(region_id not in frozen_ids for region_id in declared_ids)):errors.append('GRAPH_REGION_INVENTORY_REQUIRED')
+        elif 'graphRegionFeatures' in plan and not isinstance(region_features,dict):errors.append('GRAPH_REGION_INVENTORY_REQUIRED')
+        else:
+            region_errors,region_observations=graph_region_audit(plan,svg,transform,[poly],[(None,None)],[],region_features if isinstance(region_features,dict) else {},root)
+            errors.extend(region_errors)
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
-    return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+    result={'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+    if plan.get('regions') or (plan.get('family')=='polynomial' and getattr(poly.domain,'is_AlgebraicField',False)):result['regions']=region_observations
+    return result
 
 AXIS_TITLE_OBSERVER_PATTERN=r'[가-힣A-Za-z0-9 ()·/.,%-]{1,10}'
 AXIS_TITLE_MAX_DISTANCE_PX=60.0
