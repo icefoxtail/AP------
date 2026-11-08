@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "status": "GENERATED_ACTIVE_CREATE_SCOPE",
+  "scope": "26_강남여고_1학기_중간_고2_대수_유사",
+  "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+  "rpmLockPolicy": "UNCHANGED",
+  "authorityRefs": {
+    "rpm": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "ptTpl": "archive/data/meta-foundation/canonical/packs/",
+    "condition": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "crossConcept": "archive/data/meta-foundation/canonical/concepts/"
+  },
+  "generatedL4": [
+    {
+      "key": "EXT-L4-EXPONENTIAL-GRAPH-REGION-LATTICE-POINT-COUNT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "지수함수 그래프와 직선으로 둘러싸인 영역 안의 격자점 개수",
+      "definition": "지수함수의 그래프와 좌표축, x=k로 둘러싸인 영역에서 x좌표가 정수인 직선마다 곡선의 높이(근호·지수 값의 크기)를 평가해 정수 y좌표의 개수를 세어 더하는 유형.",
+      "parentRpmRecordId": "H2-M1-RPM-079",
+      "parentRpmL1": "지수함수와 로그함수",
+      "parentRpmL2": "지수함수",
+      "parentRpmL3": "지수함수의 그래프",
+      "parentRpmL4": "증가·감소",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "parentTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "RPM 'H2-M1-RPM-079 증가·감소'는 지수함수의 증가·감소 판단이며, 곡선 아래 영역에서 정수 y를 세어 합하는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 16
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedCrossConcepts": [
+    {
+      "key": "EXT-CROSS-REAL-ROOT-PARITY-SIGN",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "홀수·짝수 거듭제곱근의 실수값과 부호 구분",
+      "definition": "실수 범위에서 n이 홀수이면 음수의 n제곱근도 실수이고 값이 하나이며, n이 짝수이면 n제곱근 기호는 음이 아닌 값만 나타낸다는 구분을 이용해 근호식의 값이나 참·거짓을 판정하는 개념.",
+      "parentKey": "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
+      "parentLabelKo": "제곱근과 절댓값",
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_RADICAL_SQUARE_ABSOLUTE_VALUE는 제곱근 √(a²)=|a|만 다루며, 홀수 거듭제곱근의 음수 실수값과 짝수 거듭제곱근의 비음수 값 구분을 포함하지 않는다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 1
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-EXPONENTIAL-GROWTH-FACTOR-MODEL",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "지수 모델에서 일정 시간 증가 배율로 시간 상수 결정",
+      "definition": "f(x)=k·b^{x/a} 꼴의 증가 모델에서 일정한 시간 동안의 증가 배율 f(x+t)/f(x)=b^{t/a}를 세워 시간 상수 a를 구하고 다른 배율에 걸리는 시간을 구하는 개념.",
+      "parentKey": "CC_HALF_LIFE_MODEL",
+      "parentLabelKo": "반감기 모델",
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_HALF_LIFE_MODEL은 방사성 붕괴의 반감기(지수 감소) 공식만 다루며 증가 배율로 시간 상수를 정하는 증가 모델을 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 18
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-RADIAN-SECTOR-ARC-AREA",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "호도법에서 부채꼴의 호의 길이 rθ와 넓이 ½r²θ",
+      "definition": "중심각 θ(라디안), 반지름 r인 부채꼴의 호의 길이 l=rθ와 넓이 S=½r²θ를 이용해 도형의 둘레나 넓이 조건을 r, θ의 식으로 세우는 개념.",
+      "parentKey": "CC_CIRCLE_SECTOR_AREA",
+      "parentLabelKo": "부채꼴의 넓이",
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_CIRCLE_SECTOR_AREA는 중심각을 도(°)로 쓰는 넓이 공식 πr²×(x/360)만 다루며 호도법의 호의 길이 rθ와 넓이 ½r²θ를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 19
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    },
+    {
+      "key": "EXT-CROSS-ANGLE-FRACTION-QUADRANT-CASE-SPLIT",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "labelKo": "각의 분수배(θ/k)의 사분면을 나머지에 따른 경우로 분류",
+      "definition": "각 θ가 속한 사분면의 일반각 범위 2nπ+α<θ<2nπ+β를 k로 나눈 뒤 정수 n을 k로 나눈 나머지에 따라 경우를 나누어 θ/k가 놓일 수 있는 사분면을 모두 구하는 개념.",
+      "parentKey": "CC_COTERMINAL_ANGLES",
+      "parentLabelKo": "동경과 일반각",
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "standardCourse": "대수",
+      "curriculum": "2022",
+      "basis": "CC_COTERMINAL_ANGLES는 동경의 위치와 2nπ 주기성 일반을 다루며 각을 k로 나눈 뒤 정수 n의 나머지로 경우를 분류하는 구조를 구분하지 못한다.",
+      "firstUsed": {
+        "stem": "26_강남여고_1학기_중간_고2_대수_유사",
+        "qid": 22
+      },
+      "provenance": {
+        "sourceExam": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "generator": "claude-similar-high-gen",
+        "createdAt": "2026-11-08",
+        "reviewRequired": true
+      },
+      "aliases": []
+    }
+  ],
+  "generatedConditions": [],
+  "reusedGeneratedKeys": [],
+  "aliasProposals": [],
+  "noStudentRelease": true
+}

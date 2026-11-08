@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "선분 $OA$를 $3:1$로 내분하는 점을 $P$라 하고",
+  "sourceConditions": [
+    {
+      "id": "q19-c1",
+      "condition": "중심이 O이고 반지름이 r인 부채꼴 OAB, 선분 OA를 3:1로 내분하는 점 P, 중심이 O이고 반지름이 OP인 원이 선분 OB와 만나는 점 Q",
+      "mappedTo": "O,A,B,P,Q"
+    },
+    {
+      "id": "q19-c2",
+      "condition": "호 AB, 호 PQ와 두 선분 AP, BQ로 둘러싸인 부분",
+      "mappedTo": "arc AB, arc PQ, AP, BQ"
+    }
+  ],
+  "newVisualInformation": [
+    "부채꼴 OAB와 내분점 P, 점 Q, 호 AB와 호 PQ 및 선분 AP, BQ로 둘러싸인 부분"
+  ],
+  "caption": "중심이 O인 부채꼴 OAB에서 선분 OA, OB 위의 점 P, Q와 호 AB, 호 PQ, 선분 AP, BQ로 둘러싸인 부분(색칠)을 나타낸 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleA",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleP",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "oa-ob",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      },
+      {
+        "id": "op-oq",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "Q"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "op-len",
+        "sourceConditionId": "q19-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "p-on-circle",
+        "sourceConditionId": "q19-c1",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circleP",
+          "Q"
+        ]
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "seg-PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "seg-QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circleA",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcPQ",
+        "circle": "circleP",
+        "center": "O",
+        "from": "P",
+        "to": "Q",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "Q"
+                },
+                {
+                  "to": "P",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고2_대수_유사/q19.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q19-problem.svg"
+  }
+}
