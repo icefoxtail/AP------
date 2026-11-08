@@ -1,0 +1,44 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "80",
+        "sd": "4",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "73.4",
+        "text": "b"
+      },
+      "80"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "b"
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "발아 개수의 정규근사에서 왼쪽 꼬리와 경계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "b는 왼쪽 꼬리 면적이 0.05인 정규근사의 실수 경계이며, k는 b 이하의 정수이다.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "7. 발아율이 $80\\%$인 어떤 씨앗을 $100$개 심었을 때",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "발아 개수의 정규근사에서 왼쪽 꼬리와 경계"
+  ]
+}
