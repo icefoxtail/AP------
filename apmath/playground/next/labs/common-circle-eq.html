@@ -20,6 +20,14 @@
   .apl-ctl, .apl-ctl-head, .apl-presets { min-width: 0; box-sizing: border-box; }
   .apl-ctl { max-width: calc(100vw - 28px); }
   .apl-ctl .apl-range { min-width: 0; max-width: 100%; }
+  /* 모바일의 긴 액션 버튼이 부모 그리드의 최소 폭을 늘리지 않도록,
+     긴 텍스트는 버튼 안에서 줄바꿈하고 칩/액션 영역은 패널 폭 안으로 제한합니다. */
+  .apl-controls { min-width: 0; max-width: 100%; grid-template-columns: minmax(0, 1fr); }
+  .apl-controls > *, .apl-controls .apl-actions-row, .apl-controls .apl-presets { min-width: 0; max-width: 100%; }
+  .apl-controls .apl-actions-row .apl-btn {
+    min-width: 0; max-width: 100%; white-space: normal;
+    overflow-wrap: anywhere; text-align: center;
+  }
 }
 </style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
