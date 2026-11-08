@@ -1,0 +1,21 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "sourceQuote":"주어진 범위를 만족하는 합은",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[0,4,0,4],"axisTickValues":{"x":["1","2","3"],"y":["1","2","3"]},
+  "curves":[
+   {"id":"s3","kind":"LINE","coefficients":["3","-1"],"domain":["0","3"],"color":"BLUE","label":"y=3-x"},
+   {"id":"s4","kind":"LINE","coefficients":["4","-1"],"domain":["0","4"],"color":"WARM","label":"y=4-x"}
+  ],
+  "overlays":{"points":[
+   {"id":"A","x":"1","y":"2","unnamed":true,"coordinates":true},
+   {"id":"B","x":"2","y":"1","unnamed":true,"coordinates":true},
+   {"id":"C","x":"1","y":"3","unnamed":true,"coordinates":true},
+   {"id":"D","x":"2","y":"2","unnamed":true,"coordinates":true},
+   {"id":"E","x":"3","y":"1","unnamed":true,"coordinates":true}
+  ]}
+ },
+ "caption":"x+y=3과 x+y=4 위에서 두 좌표가 자연수인 점을 살펴본다.",
+ "sourceConditions":[{"id":"c1","condition":"x,y는 자연수이고 3<=x+y<=4","mappedTo":["graphPlan"]}],
+ "newVisualInformation":["두 경계 직선 위의 자연수 좌표점"]
+}
