@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)g(x)=(x-1)^2(x-2)^2(x-3)^2$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9/2",
+          "-15/2",
+          "7/2",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "8",
+              "-16",
+              "10",
+              "-2"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        },
+        "intersectionX": [
+          "1",
+          "7/3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "5/3",
+        "y": "-16/27"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "4/3",
+        "y": "-8/27"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "조건에서 정한 두 함수의 영점과 극값 위치를 비교한다."
+}
