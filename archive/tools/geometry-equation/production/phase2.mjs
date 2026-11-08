@@ -760,7 +760,12 @@ function specForFamily(plan,model,id){
   if(plan.capability==='multi-curve-figure-v1')return multiCurveSpec(plan,id);
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
-    const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
+    const hasAdditiveCoefficient=value=>/[+-]/.test(value.startsWith('-')?value.slice(1):value);
+    const expr=terms.map(({c,i},index)=>{
+      if(hasAdditiveCoefficient(c)){const coefficient='('+c+')';return (index?'+':'')+(i?coefficient+'*x'+(i>1?'^'+i:''):coefficient);}
+      const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c,coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;
+      return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);
+    }).join('');
     const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),cubicBand=degree>=3&&p.overviewHeaderBand===true&&p.plotHeightLimit!==undefined,canvas=degree>=3?(cubicBand?CUBIC_COMPOSITE_PANEL_CANVAS:GRAPH_OVERVIEW_CANVAS):p.plotCanvas!==undefined?equalUnitCanvas(p):p.compositeHeader!==undefined?COMPOSITE_PANEL_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
     // compositeHeader {formula:'CAPTION',sharedLines:[line IDs]} is set by composite-candidate-svg-v1 for a three-panel stack, never by an author: the
     // composite typesets the formula in the panel's caption row and the shared line equations once above the stack, so the panel leaves them out.
@@ -772,7 +777,11 @@ function specForFamily(plan,model,id){
     // Degree>=3 formula: an unparenthesised coefficient keeps a fraction stacked above the fraction bar (x^3-3/4*x-1/4 reads
     // x^3 - (3/4)x - 1/4); the sampling expression above stays fully parenthesised.
     const displayTerms=(degree>=3?[...p.coefficients.map((coefficient,index)=>({coefficient,index})).filter(({coefficient})=>coefficient!=='0').reverse()]:[]);
-    const cubicDisplay=displayTerms.map(({coefficient,index},position)=>{const negative=coefficient.startsWith('-'),magnitude=negative?coefficient.slice(1):coefficient,body=index===0?magnitude:(magnitude==='1'?'':magnitude+'*')+'x'+(index>1?'^'+index:'');return (position===0?(negative?'-':''):negative?'-':'+')+body}).join('');
+    const cubicDisplay=displayTerms.map(({coefficient,index},position)=>{
+      if(hasAdditiveCoefficient(coefficient)){const term='('+coefficient+')'+(index?'*x'+(index>1?'^'+index:''):'');return (position?'+':'')+term;}
+      const negative=coefficient.startsWith('-'),magnitude=negative?coefficient.slice(1):coefficient,body=index===0?magnitude:(magnitude==='1'?'':magnitude+'*')+'x'+(index>1?'^'+index:'');
+      return (position===0?(negative?'-':''):negative?'-':'+')+body;
+    }).join('');
     const displayedExpression=degree>=3?cubicDisplay:quadraticVertexNotation(p.coefficients)?.expression??expr;
     if(p.tickLabelCallouts!==undefined){
       const q13Quadratic=p.family==='polynomial'&&p.coefficients.join(',')==='-1/2,3,1/2'&&p.overviewCanvasHeight===600&&(p.requiredPoints||[]).some(point=>point.x===-3&&point.y===-5);

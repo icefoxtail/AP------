@@ -76,6 +76,31 @@ test('Q(sqrt(6)) cubic factors, freezes both bounded x-axis regions and passes t
   assert.equal(report.status,'PASS',JSON.stringify(report.errors));
   assert.deepEqual(report.regions.map(row=>row.id),['S1','S2']);
 
+  const withoutInventory={...graphPlan};delete withoutInventory.graphRegionFeatures;
+  const missingInventories=[
+    withoutInventory,
+    {...graphPlan,graphRegionFeatures:null},
+    {...graphPlan,graphRegionFeatures:{}},
+    {...graphPlan,graphRegionFeatures:{regions:null}},
+    {...graphPlan,graphRegionFeatures:{regions:[]}},
+    {...graphPlan,graphRegionFeatures:{regions:[graphPlan.graphRegionFeatures.regions[0]]}}
+  ];
+  for(const missing of missingInventories){
+    const rejected=await observe(missing,model);
+    assert.equal(rejected.status,'FAIL',JSON.stringify(rejected.errors));
+    assert.ok(rejected.errors.includes('GRAPH_REGION_INVENTORY_REQUIRED'),JSON.stringify(rejected.errors));
+  }
+
+  for(const stripped of [
+    {...graphPlan,regions:[],graphRegionFeatures:{regions:[]}},
+    (()=>{const plan={...graphPlan};delete plan.regions;delete plan.graphRegionFeatures;return plan;})()
+  ]){
+    const unregistered=await observe(stripped,model);
+    assert.equal(unregistered.status,'FAIL',JSON.stringify(unregistered.errors));
+    assert.ok(unregistered.errors.includes('GRAPH_REGION_UNDECLARED:region-S1'),JSON.stringify(unregistered.errors));
+    assert.ok(unregistered.errors.includes('GRAPH_REGION_UNDECLARED:region-S2'),JSON.stringify(unregistered.errors));
+  }
+
   const spec=specFor({capability:'polynomial-spike-v1',caption:'두 영역을 색칠한다.',graphPlan},model,'radical-cubic-fixture');
   const s1=spec.objects.find(row=>row.id==='region-S1'),s2=spec.objects.find(row=>row.id==='region-S2');
   assert.equal(s1.kind,'GRAPH_REGION');assert.equal(s2.kind,'GRAPH_REGION');
@@ -99,11 +124,26 @@ test('the exact-field path is generic across square-free radicands',async()=>{
   assert.equal((await observe(graphPlan,model)).status,'PASS');
 });
 
+test('additive Q(sqrt(6)) coefficients stay grouped in the sampling expression and displayed cubic formula',async()=>{
+  const scaled={...q23,coefficients:['6+sqrt(6)','-1-sqrt(6)','-6-sqrt(6)','1+sqrt(6)']};
+  const response=await frame(scaled);
+  assert.equal(response.status,'OK',JSON.stringify(response.result));
+  const {graphPlan}=response.result,model=await graph(graphPlan);
+  const report=await observe(graphPlan,model);
+  assert.equal(report.status,'PASS',JSON.stringify(report.errors));
+  const spec=specFor({capability:'polynomial-spike-v1',caption:'Q(sqrt(6)) scalar multiple',graphPlan},model,'radical-cubic-scaled-fixture');
+  const functionGraph=spec.objects.find(row=>row.id==='f'),formula=spec.objects.find(row=>row.id==='formula');
+  assert.equal(functionGraph.expression,'(1+sqrt(6))*x^3+(-6-sqrt(6))*x^2+(-1-sqrt(6))*x+(6+sqrt(6))');
+  assert.equal(formula.text,'y=(1+sqrt(6))*x^3+(-6-sqrt(6))*x^2+(-1-sqrt(6))*x+(6+sqrt(6))');
+});
+
 test('unsupported fields and cubics that do not split over their coefficient field remain rejected',async()=>{
   const cases=[
     [{...base,coefficients:['sqrt(2)+sqrt(3)','0','0','1']},'INVALID_FRAMING_COEFFICIENTS'],
     [{...base,coefficients:['sqrt(2)','0','0','1']},'UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION'],
     [{...base,coefficients:['sqrt(3)','0','0','1']},'UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION'],
+    // The source (x^2-1)(x-sqrt(2)) splits over Q(sqrt(2)), but its derivative does not.
+    [{...base,coefficients:['sqrt(2)','-1','-sqrt(2)','1']},'UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_FACTORISATION'],
     [{...base,coefficients:['0','sqrt(6)','-1','-sqrt(6)','1']},'UNSUPPORTED_CUBIC_QUARTIC_ALGEBRAIC_DEGREE']
   ];
   for(const [graphPlan,code] of cases){

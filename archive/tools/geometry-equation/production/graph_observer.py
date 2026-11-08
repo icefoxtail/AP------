@@ -4912,11 +4912,15 @@ def _audit_family(plan,svg,transform):
     else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     region_observations=[]
-    if plan.get('family')=='polynomial' and plan.get('regions'):
-        region_features=plan.get('graphRegionFeatures')
-        if not isinstance(region_features,dict):errors.append('GRAPH_REGION_INVENTORY_REQUIRED')
+    if plan.get('family')=='polynomial':
+        region_features=plan.get('graphRegionFeatures');declared_regions=plan.get('regions') or []
+        frozen_regions=region_features.get('regions') if isinstance(region_features,dict) else None
+        frozen_ids=[row.get('id') for row in frozen_regions if isinstance(row,dict)] if isinstance(frozen_regions,list) else []
+        declared_ids=[row.get('id') for row in declared_regions if isinstance(row,dict)]
+        if declared_regions and (not isinstance(frozen_regions,list) or not frozen_regions or any(region_id not in frozen_ids for region_id in declared_ids)):errors.append('GRAPH_REGION_INVENTORY_REQUIRED')
+        elif 'graphRegionFeatures' in plan and not isinstance(region_features,dict):errors.append('GRAPH_REGION_INVENTORY_REQUIRED')
         else:
-            region_errors,region_observations=graph_region_audit(plan,svg,transform,[poly],[(None,None)],[],region_features,root)
+            region_errors,region_observations=graph_region_audit(plan,svg,transform,[poly],[(None,None)],[],region_features if isinstance(region_features,dict) else {},root)
             errors.extend(region_errors)
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     result={'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
