@@ -2293,7 +2293,7 @@ function htmlApprox(){
       if (tab === 'explore') {
         drawRoots(b, {
           t:s.rst,grid:s.grid,roots:level(s)>=1,sinRoots:level(s)>=1,cosRoots:level(s)>=2,axes:level(s)>=1, lines: [{ t: s.rst }],
-          handle: (w) => { s.rst = snapT(clampX(w.y, -1.15, 1.15)); }
+          handle: (w) => { s.rst = clampX(w.y, -1.15, 1.15); }
         });
         return;
       }
@@ -2317,7 +2317,7 @@ function htmlApprox(){
         focus: RS_BOX,
         enter: (s) => { s.rst = 0.5; },
         controls: ['rst'],
-        presets: () => [[0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),
+        presets: () => [[0, '$t=0 '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [Math.sqrt(3)/2, '$t=\\dfrac{\\sqrt3}{2}, [-1, '$t=-1$']].map(([t, l]) => ({ group: '정확한 특수값 t', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [-Math.sqrt(3)/2, '$t=-\\dfrac{\\sqrt3}{2}, [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [1, '$t=1, [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),], [0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => nearExact(st.rst,t) })),
         steps: () => steps8(var8.cur()),
         reviewTop: reviewTopOf(() => text8(var8.cur())),
         vary: var8,
@@ -2573,8 +2573,8 @@ function htmlApprox(){
       snc: { value: 1, min: -1, max: 1, step: .5, color: 'amber', label: '$c$ (위아래 이동)', hint: '중심선 $y=c$가 움직입니다', format: (v) => 'c = ' + String(v).replace('-', '−') },
       snt: { value: 3 * PI / 4, min: 0, max: TAU, step: 'any', color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't ' + (nearExact(v/(PI/12),Math.round(v/(PI/12))) ? '= '+piTextOf(v) : '≈ '+v.toFixed(3)) },
       cvt: { value: PI / 3, min: 0, max: TAU - .001, step: 'any', color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ: '+degText(v) },
-      twk: { value: .5, min: .1, max: Math.SQRT1_2, step: 'any', color: 'rose', label: '평행선의 높이 $k$', hint: '$k=\\tfrac12$일 때 기출형', format: (v) => 'k ≈ ' + v.toFixed(4) },
-      rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't ≈ ' + v.toFixed(4).replace('-', '−') }
+      twk: { value: .5, min: .1, max: Math.SQRT1_2, step: 'any', color: 'rose', label: '평행선의 높이 $k$', hint: '슬라이더는 자유조작, 아래 특수값 버튼으로 정확한 위치 선택', format: (v) => 'k ' + (nearExact(v,.5) ? '= 1/2' : nearExact(v,Math.SQRT1_2) ? '= √2/2' : '≈ ' + v.toFixed(4)) },
+      rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '슬라이더·노란 점은 자유조작, 아래 특수값 버튼은 정확한 값', format: (v) => 't ' + tTxt(v) }
     },
     state: INIT,
     scenes: SCENES.map(sceneOf).concat(EXT_SCENES)
