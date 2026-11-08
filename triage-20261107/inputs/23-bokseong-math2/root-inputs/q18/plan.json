@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-sqrt(2)",
+        "y": "4*sqrt(2)"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(2)",
+        "y": "-4*sqrt(2)"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "up",
+        "y": "4*sqrt(2)",
+        "intersectionX": [
+          "-sqrt(2)",
+          "2*sqrt(2)"
+        ]
+      },
+      {
+        "id": "down",
+        "y": "-4*sqrt(2)",
+        "intersectionX": [
+          "-2*sqrt(2)",
+          "sqrt(2)"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=x³−6x와 y=±4√2를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³−6x와 y=±4√2를 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 수평선은 각각 극값에서 접하며 나머지 교점 하나씩을 갖는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$f(x)=x^3-6x$이다."
+}

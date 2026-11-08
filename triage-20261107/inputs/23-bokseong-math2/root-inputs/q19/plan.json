@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "12",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 8
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 24
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        2
+      ],
+      "y": [
+        8
+      ]
+    }
+  },
+  "caption": "누적 최댓값 g(t)는 -2≤t≤0에서 8, 0≤t≤2에서 -t³+12t+8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "누적 최댓값 g(t)는 -2≤t≤0에서 8, 0≤t≤2에서 -t³+12t+8이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 식의 표시 범위는 문제에서 적분하는 [-2,2]이고 그 밖은 도식의 연장이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$g(t)=8$이다."
+}

@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-7",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "7",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "f'>0",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "f'<0",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "f'>0",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "label": "f'<0",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수 부호 변화"
+  },
+  "caption": "원본 도함수 그림의 다섯 영점과 부호를 정리한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 도함수 그림의 다섯 영점과 부호를 정리한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "바깥쪽 부호는 왼쪽 음수, 오른쪽 양수이며 함수식을 만들어내지 않는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$f'(x)=0$인 점은 $x=-7,-3,-2,2,7$"
+}

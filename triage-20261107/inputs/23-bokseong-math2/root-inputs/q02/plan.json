@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-8",
+      "3"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4.5,
+      -7,
+      17
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "4/3",
+        "y": "-16/3"
+      },
+      {
+        "id": "A",
+        "x": "8/3",
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3
+      ],
+      "y": []
+    }
+  },
+  "caption": "v(t)=3t²−8t의 부호가 t=8/3에서 바뀐다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "v(t)=3t²−8t의 부호가 t=8/3에서 바뀐다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t≥0 중 표시 범위에서 운동 방향을 읽는다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$v(t)=x'(t)=3t^2-8t=t(3t-8)$이다."
+}

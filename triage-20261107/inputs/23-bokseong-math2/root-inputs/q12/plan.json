@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-12",
+      "-3",
+      "2"
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -25,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -1,
+        "y": 7
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "N",
+        "x": 2,
+        "y": -20
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        2
+      ],
+      "y": []
+    }
+  },
+  "caption": "g(x)=2x³−3x²−12x의 극값과 g(0)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=2x³−3x²−12x의 극값과 g(0)을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 음근과 한 양근을 가지는 수평선 높이는 0<k<7이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$x=-1$에서 극댓값 $g(-1)=7$"
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "1",
+      "0",
+      "1"
+    ],
+    "domain": [
+      0,
+      1
+    ],
+    "viewport": [
+      -0.2,
+      2.2,
+      -0.2,
+      2.2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2
+      ],
+      "y": []
+    }
+  },
+  "caption": "f(x)=x³+x의 0≤x≤1 부분과 (0,0),(1,2)를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³+x의 0≤x≤1 부분과 (0,0),(1,2)를 보인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 적분은 가로 2, 세로 1인 직사각형의 넓이 2에서 원함수 적분 3/4를 뺀다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$f(0)=0$, $f(1)=2$"
+}

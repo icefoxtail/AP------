@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 19
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "C",
+        "x": "-1/2",
+        "y": "11/2"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "sec",
+        "slope": "-6",
+        "intercept": "7",
+        "intersectionX": [
+          "-2",
+          "1"
+        ]
+      },
+      {
+        "id": "tan",
+        "slope": "-6",
+        "intercept": "5/2",
+        "intersectionX": [
+          "-1/2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=2x²−4x+3에서 할선과 평행한 접선의 접점은 c=-1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=2x²−4x+3에서 할선과 평행한 접선의 접점은 c=-1/2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "할선 y=-6x+7과 접선 y=-6x+5/2는 서로 평행하다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "따라서 $c=-\\dfrac12$이다."
+}

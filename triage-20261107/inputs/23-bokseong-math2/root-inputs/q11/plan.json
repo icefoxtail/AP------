@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "8",
+            "hideName": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "A",
+            "to": "B",
+            "label": "+2",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "label": "-2",
+            "style": "BRACE",
+            "side": "BELOW"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "label": "+3",
+            "style": "BRACE",
+            "side": "ABOVE"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "label": "+2",
+            "style": "BRACE",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "시간 구간별 변위"
+  },
+  "caption": "속도 그래프에서 시간 구간별 부호 있는 넓이를 정리한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속도 그래프에서 시간 구간별 부호 있는 넓이를 정리한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 변위는 +2,-2,+3,+2이고 이동 거리는 절댓값 넓이를 더한다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$x(8)=5$이다."
+}

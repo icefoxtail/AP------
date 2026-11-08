@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-19",
+          "22",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "sec",
+        "slope": "2",
+        "intercept": "-3",
+        "intersectionX": [
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "tan",
+        "slope": "6",
+        "intercept": "-19",
+        "intersectionX": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "구한 f(x)=x³−8x²+22x−19와 두 접선 관련 직선을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "구한 f(x)=x³−8x²+22x−19와 두 접선 관련 직선을 표시한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 직선은 x=2에서 접하고 x=4에서 만나며, x=4의 접선은 y=6x-19이다.",
+    "사용자 지시: 함수·그래프가 이해에 도움이 되어 계획했다. 밀집한 점과 라벨은 지시선을 활용한다."
+  ],
+  "sourceQuote": "$a=4$이다."
+}
