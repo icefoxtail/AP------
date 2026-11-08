@@ -107,6 +107,40 @@ test('a composed cuboid passes its independent observer; hidden edges are dashed
   assert.equal((composed.svg.match(/data-vis="hidden"/g)||[]).length>=3,true);
   assert.match(composed.svg,/data-solid-figure="solid-figure-v1"/);
 });
+test('a rectangular prism parses positive rational-string dimensions and passes its independent observer',async()=>{
+  const cases=[
+    [cuboid({base:{kind:'RECT',width:'1/3',depth:4},height:2}),[0,1],1/3],
+    [cuboid({base:{kind:'RECT',width:4,depth:'4/3'},height:2}),[1,2],4/3],
+    [cuboid({height:'10/3'}),[0,4],10/3],
+    [cuboid({base:{kind:'RECT',width:3,depth:4},height:5}),[0,1],3],
+  ];
+  for(const [spec,[a,b],expected] of cases){
+    const solid=solveSolidFigure(figure({solids:[spec]})).solids[0];
+    const length=Math.hypot(...solid.vertices[a].p.map((x,i)=>x-solid.vertices[b].p[i]));
+    assert.ok(Math.abs(length-expected)<1e-6,`${length} ≈ ${expected}`);
+  }
+  const plan=figure({solids:[cuboid({base:{kind:'RECT',width:'1/3',depth:'4/3'},height:'10/3'})]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  assert.equal((await audit(plan,composed.svg)).status,'PASS');
+});
+test('rational strings are rejected outside PRISM rectangular-base dimensions and when malformed or non-positive',()=>{
+  const invalid=['not-a-fraction','1//3','0/3','-1/3','1/-3','1/0',' 1/3','9007199254740992/3'];
+  for(const field of ['width','depth','height'])for(const value of invalid){
+    const base={kind:'RECT',width:4,depth:3},spec={kind:'PRISM',base,height:2,names:{base:'FGHE',top:'BCDA'}};
+    if(field==='width'||field==='depth')base[field]=value;else spec.height=value;
+    assert.throws(()=>solveSolidFigure(figure({solids:[spec]})),code('SOLID_PARAM_INVALID'),`${field}=${value}`);
+  }
+  for(const solid of [
+    {kind:'PYRAMID',base:{kind:'RECT',width:'1/3',depth:3},height:4},
+    {kind:'PYRAMID',base:{kind:'RECT',width:4,depth:3},height:'1/3'},
+    {kind:'FRUSTUM',base:{kind:'RECT',width:4,depth:3},height:'1/3',topScale:0.5},
+    {kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[3,0],[3,2]]},height:'1/3'},
+    {kind:'CYLINDER',radius:2,height:'1/3'},
+    {kind:'SPHERE',radius:'1/3'},
+  ])assert.throws(()=>solveSolidFigure(figure({solids:[solid]})),code('SOLID_PARAM_INVALID'));
+});
 test('a pyramid height keeps its dashed axis inside and moves the dimension line (and length) outside the silhouette',async()=>{
   const plan=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'RECT',width:5,depth:5},height:9,names:'ABCDE'}],dims:[{edge:'AB'},{height:true}]});
   const composed=await panel(plan);

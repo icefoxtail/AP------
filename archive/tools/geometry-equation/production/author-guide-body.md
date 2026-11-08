@@ -466,7 +466,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 | kind | 필수 매개변수 | 비고 |
 |---|---|---|
-| `PRISM` | `base`, `height` | `base`는 `{kind:"RECT",width,depth}`, `{kind:"REGULAR",n:3~8,side}`(첫 변이 앞쪽 수평), `{kind:"POLYGON",points:[[u,v]..],plane?}`(점 8개 이하의 단순 다각형, 오목해도 됨). `plane:"XZ"`이면 다각형이 앞면(x, 높이)이고 `height`만큼 뒤로 밀린다: 직육면체 일부를 비스듬히 잘라 낸 입체(사다리꼴 기둥)를 이렇게 쓴다 |
+| `PRISM` | `base`, `height` | `base`는 `{kind:"RECT",width,depth}`, `{kind:"REGULAR",n:3~8,side}`(첫 변이 앞쪽 수평), `{kind:"POLYGON",points:[[u,v]..],plane?}`(점 8개 이하의 단순 다각형, 오목해도 됨). `plane:"XZ"`이면 다각형이 앞면(x, 높이)이고 `height`만큼 뒤로 밀린다: 직육면체 일부를 비스듬히 잘라 낸 입체(사다리꼴 기둥)를 이렇게 쓴다. `RECT` 밑면의 `PRISM`에 한해 `width`, `depth`, `height`는 `N/D` 분수 문자열도 받는다(`N`과 `D`는 각각 1부터 9,007,199,254,740,991까지의 양의 안전 정수이며 공백·부호는 없다). 분수는 부동소수점으로 변환되므로 산술·렌더링은 근사이고 모델 좌표는 `r6`으로 반올림한다 |
 | `PYRAMID` | `base`, `height` | 밑면은 볼록해야 한다. 꼭짓점은 밑면 중심 위, `apex:[x,y]`로 옮길 수 있다 |
 | `FRUSTUM` | `base`, `height`, `topScale`(0~1) | 각뿔대. 위 밑면은 아래를 `topScale`배 한 닮은꼴 |
 | `CYLINDER` / `CONE` | `radius`, `height` | 원뿔은 `orientation:"APEX_DOWN"`이면 꼭짓점이 밑면에 닿는 그릇이 된다(꼭대기의 큰 원이 입구). `inside:"s1"`이면 원기둥 `s1` 안에 같은 축으로 놓인다 |

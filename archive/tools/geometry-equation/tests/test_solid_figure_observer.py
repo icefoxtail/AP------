@@ -81,6 +81,23 @@ class DepthTest(unittest.TestCase):
             if votes: hidden.append(O.vname(solid, a) + O.vname(solid, b))
         self.assertEqual(sorted(hidden), ['EA', 'FE', 'HE'])   # an edge is named by its two vertices in index order
 
+    def test_prism_rect_fraction_dimensions_are_parsed_as_approximate_floats(self):
+        solid = O.build_solid({'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': '1/3', 'depth': '4/3'}, 'height': '10/3', 'names': UNNAMED})
+        points = [point for _, point in solid['verts']]
+        self.assertAlmostEqual(math.dist(points[0], points[1]), 1 / 3, places=6)
+        self.assertAlmostEqual(math.dist(points[1], points[2]), 4 / 3, places=6)
+        self.assertAlmostEqual(math.dist(points[0], points[4]), 10 / 3, places=6)
+
+    def test_prism_rect_fraction_dimensions_reject_malformed_and_non_positive_values(self):
+        bad = ('nope', '1//3', '0/3', '-1/3', '1/-3', '1/0', ' 1/3', '9007199254740992/3')
+        for field in ('width', 'depth', 'height'):
+            for value in bad:
+                spec = {'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}
+                if field in ('width', 'depth'): spec['base'][field] = value
+                else: spec['height'] = value
+                with self.subTest(field=field, value=value), self.assertRaisesRegex(ValueError, '^SOLID_PARAM_INVALID$'):
+                    O.build_solid(spec)
+
     def test_round_solid_ray_test(self):
         cyl = O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 5, 'id': 's1'})
         front = (2 * math.cos(O.YAW - math.pi / 2), 2 * math.sin(O.YAW - math.pi / 2), 0.0)   # on the circle, facing the viewer

@@ -375,6 +375,8 @@
 ```
 
 - `LINE`: `coefficients:[c0,c1]` = `y=c0+c1*x`. `RATIONAL`: `numerator:[a0,a1]`, `denominator:[d0,d1]` = `y=(a0+a1*x)/(d0+d1*x)`(분모의 x 계수는 0이 아니고, 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE`). 극점이 `domain` 안에 있으면 두 쪽이 각각 가지(`CURVE_<id>_L`/`_R`)로 그려지고, 축 위가 아닌 점근선마다 점선 한 줄과 `x=p`·`y=q` 글자가 나온다. `SQRT`: `radicand:[c0,c1]`, `amplitude`(기본 1, 음수 가능), `offset`(기본 0) = `y=offset+amplitude*sqrt(c0+c1*x)`. 시작점에 검은 점과 좌표가 나온다.
+
+- 유리함수의 극점이 정의역 끝점이면 그 끝점은 반드시 열린 끝점(fromState 또는 toState가 OPEN)이어야 한다. 이때 해당 쪽의 한 가지(from이면 CURVE_<id>_R, to이면 CURVE_<id>_L)만 그리고, 극점에는 유한한 끝점 표시를 그리지 않는다. 닫힌 극점 끝점은 거부하며, 정의역 내부 극점은 기존처럼 LEFT/RIGHT 두 가지로 나눈다.
 - 이런 곡선은 모양만으로 틀이 정해지지 않으므로 **창** `graphPlan.viewport:[xmin,xmax,ymin,ymax]`를 준다(틀은 이 창에 여백을 둘러 만들고, 곡선은 틀 위·아래에서 잘린다). `domain`을 생략하면 창의 x 범위(`SQRT`는 근호가 0인 점에서 창 끝까지)를 쓴다. 창이 없으면 `MULTI_CURVE_WINDOW_REQUIRED:<id>`.
 - `inverseOf:"<앞에 나온 곡선 id>"`는 그 곡선을 `y=x`에 대칭한 곡선이다. 엔진이 정확히 계산하며 `RATIONAL`→`RATIONAL`, `LINE`→`LINE`, `SQRT`→이차곡선 반쪽, 꼭짓점 한쪽만 쓴 이차곡선(`Y_OF_X`)→`SQRT`가 된다. 정의역(`domain`)을 생략하면 원 곡선의 치역(또는 창)을 쓴다. 독립 관측기는 그려진 모든 점을 `y=x`로 뒤집어 원 곡선 위에 있는지 확인한다. 지원하지 않으면 `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`. `y=x` 직선은 `LINE`(점선 `style:"DASHED"`)으로 그린다.
 - 곡선마다 고를 수 있는 모양: `color`(`BLUE|WARM|GREEN|ROSE|VIOLET`), `weight`(`"BOLD"`는 다른 곡선보다 굵게), `style`(`"SOLID"|"DASHED"`), `label`(그 곡선 식 또는 `f(x)` 같은 이름. 새 종류는 `-\frac{8}{x-1}-4` 같은 TeX도 되고 엔진이 ASCII 수식으로 바꿔 그린다), `hideLabel:true`(식 글자를 안 씀), `hideLabels`(`"formula"` 식, `"asymptotes"` 점근선 값 글자, `"start"` 시작점 좌표 중 골라서). 점근선 값이 정답이면 `hideLabels:["asymptotes"]`로 숨긴다. 새 종류는 `label`이 없으면 자동으로 `y=...` 식 글자를 쓴다.

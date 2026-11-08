@@ -74,11 +74,30 @@ def _poly_names(kind, n, names):
     return base, top, apex
 
 
-def base_polygon(base):
+def _prism_rect_dimension(value):
+    """Read a PRISM/RECT positive N/D input as a float, matching the producer's domain."""
+    if isinstance(value, str):
+        match = re.fullmatch(r'(\d+)/(\d+)', value)
+        if not match: raise ValueError('SOLID_PARAM_INVALID')
+        numerator, denominator = (int(part) for part in match.groups())
+        if denominator == 0 or numerator > 2**53 - 1 or denominator > 2**53 - 1:
+            raise ValueError('SOLID_PARAM_INVALID')
+        try: value = float(numerator) / float(denominator)
+        except OverflowError: raise ValueError('SOLID_PARAM_INVALID') from None
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError('SOLID_PARAM_INVALID')
+    value = float(value)
+    if not math.isfinite(value) or not 0 < value <= 1000:
+        raise ValueError('SOLID_PARAM_INVALID')
+    return value
+
+
+def base_polygon(base, allow_prism_rect_fractions=False):
     plane = base.get('plane', 'XY')
     kind = base.get('kind')
     if kind == 'RECT':
-        w, d = float(base['width']), float(base['depth'])
+        dimension = _prism_rect_dimension if allow_prism_rect_fractions else float
+        w, d = dimension(base['width']), dimension(base['depth'])
         pts = [(0.0, 0.0), (w, 0.0), (w, d), (0.0, d)]
     elif kind == 'REGULAR':
         n, side = int(base['n']), float(base['side'])
@@ -98,8 +117,11 @@ def build_solid(spec):
     if kind == 'REGULAR_POLYHEDRON': return build_regular(spec)
     if kind == 'BIPYRAMID': return build_bipyramid(spec)
     if kind in ('PRISM', 'PYRAMID', 'FRUSTUM'):
-        pts, plane = base_polygon(spec['base'])
-        n, h = len(pts), float(spec['height'])
+        base = spec['base']
+        allow_prism_rect_fractions = kind == 'PRISM' and isinstance(base, dict) and base.get('kind') == 'RECT'
+        pts, plane = base_polygon(base, allow_prism_rect_fractions)
+        height = _prism_rect_dimension if allow_prism_rect_fractions else float
+        n, h = len(pts), height(spec['height'])
         lift = (lambda p, e=0.0: (p[0], p[1], e)) if plane == 'XY' else (lambda p, e=0.0: (p[0], e, p[1]))
         bottom = [lift(p) for p in pts]
         cx = sum(p[0] for p in pts) / n

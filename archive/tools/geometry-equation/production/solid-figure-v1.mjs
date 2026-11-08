@@ -25,6 +25,19 @@ const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(k
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const finite=x=>Number.isFinite(x);
 const pos=(x,code)=>{if(typeof x!=='number'||!finite(x)||!(x>0)||x>1000)bad(code);return x;};
+// Only a PRISM over a RECT may spell its three dimensions as positive integer fractions. They
+// become floating-point values here; the model remains approximate and rounds coordinates via r6.
+const prismFraction=/^(\d+)\/(\d+)$/;
+const prismRectPos=(x,code)=>{
+  if(typeof x==='string'){
+    const m=prismFraction.exec(x);
+    if(!m)bad(code);
+    const numerator=Number(m[1]),denominator=Number(m[2]);
+    if(!Number.isSafeInteger(numerator)||!Number.isSafeInteger(denominator))bad(code);
+    x=numerator/denominator;
+  }
+  return pos(x,code);
+};
 
 // --- projection -------------------------------------------------------------------------------------------------------------------------------
 export const YAW_DEG=28,PITCH_DEG=20;
@@ -77,14 +90,15 @@ function isConvex(points){
   }
   return true;
 }
-function basePolygon(base){
+function basePolygon(base,allowPrismRectFractions=false){
   if(!isPlain(base))bad('SOLID_BASE_INVALID');
   onlyKeys(base,['kind','width','depth','n','side','points','plane'],'SOLID_BASE_INVALID');
   const plane=base.plane??'XY';
   if(plane!=='XY'&&plane!=='XZ')bad('SOLID_BASE_INVALID');
   let points;
   if(base.kind==='RECT'){
-    const w=pos(base.width,'SOLID_PARAM_INVALID'),d=pos(base.depth,'SOLID_PARAM_INVALID');
+    const dimension=allowPrismRectFractions?prismRectPos:pos;
+    const w=dimension(base.width,'SOLID_PARAM_INVALID'),d=dimension(base.depth,'SOLID_PARAM_INVALID');
     points=[[0,0],[w,0],[w,d],[0,d]];
   }else if(base.kind==='REGULAR'){
     const n=base.n;
@@ -126,8 +140,9 @@ function buildPolyhedron(spec){
   if(kind==='BIPYRAMID')return buildBipyramid(spec);
   const allowed={PRISM:['id','kind','base','height','names','count','cuts'],PYRAMID:['id','kind','base','height','apex','names','count','cuts'],FRUSTUM:['id','kind','base','height','topScale','foot','names','count','cuts']}[kind];
   onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
-  const {points,plane}=basePolygon(spec.base);
-  const n=points.length,height=pos(spec.height,'SOLID_PARAM_INVALID');
+  const allowPrismRectFractions=kind==='PRISM'&&spec.base?.kind==='RECT';
+  const {points,plane}=basePolygon(spec.base,allowPrismRectFractions);
+  const n=points.length,height=(allowPrismRectFractions?prismRectPos:pos)(spec.height,'SOLID_PARAM_INVALID');
   let bottom,top,apex=null,E;
   const lift=(p,extra=0)=>plane==='XY'?[p[0],p[1],extra]:[p[0],extra,p[1]];
   if(kind==='PRISM'){
