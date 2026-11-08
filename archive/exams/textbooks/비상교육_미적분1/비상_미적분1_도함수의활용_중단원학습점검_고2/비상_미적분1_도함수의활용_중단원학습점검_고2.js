@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=x^3-3x^2+4$ 위의 점 $(1, 2)$에서의 접선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=-3x+5$",
+    "solution": "[풀이 전략]\n곡선 $y=f(x)$ 위의 점 $(x_1, y_1)$에서의 접선의 방정식은 $y - y_1 = f'(x_1)(x - x_1)$이다. 도함수를 구하여 점 $(1, 2)$에서의 접선의 기울기를 구한 후 직선의 방정식을 작성한다.\n\n[단계별 풀이]\n1단계 [도함수 및 접선의 기울기 구하기]:\n$f(x) = x^3 - 3x^2 + 4$라 하면\n$$f'(x) = 3x^2 - 6x$$\n점 $(1, 2)$에서의 접선의 기울기는\n$$f'(1) = 3(1)^2 - 6(1) = 3 - 6 = -3$$\n\n2단계 [접선의 방정식 작성]:\n기울기가 $-3$이고 점 $(1, 2)$를 지나는 직선의 방정식은\n$$y - 2 = -3(x - 1)$$\n$$y = -3x + 3 + 2 = -3x + 5$$\n\n[오답 및 경계 점검]\n$x=1$ 대입 시 $y = -3(1)+5 = 2$로 주어점 $(1, 2)$를 정확히 지난다.\n\n[결론]\n$y=-3x+5$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "수&#8203;직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 위치 $x$가 $x=2t^3-5t$일 때, $t=1$에서 점 $\\mathrm{P}$의 속도와 가속도를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "속도: $1$, 가속도: $12$",
+    "solution": "[풀이 전략]\n시각 $t$에서의 속도 $v(t)$는 위치 $x(t)$를 $t$에 대하여 한 번 미분한 것이고, 가속도 $a(t)$는 속도 $v(t)$를 한 번 더 미분한 것이다.\n\n[단계별 풀이]\n1단계 [속도 함수 구하기 및 $t=1$에서의 속도]:\n위치 $x = 2t^3 - 5t$이므로\n$$v(t) = \\frac{dx}{dt} = 6t^2 - 5$$\n$t=1$에서의 속도는\n$$v(1) = 6(1)^2 - 5 = 1$$\n\n2단계 [가속도 함수 구하기 및 $t=1$에서의 가속도]:\n가속도는 속도를 $t$에 대하여 미분하므로\n$$a(t) = \\frac{dv}{dt} = 12t$$\n$t=1$에서의 가속도는\n$$a(1) = 12(1) = 12$$\n\n[오답 및 경계 점검]\n단위가 문제에 주어지지 않았으므로 수치 $1$과 $12$를 각각 속도와 가속도로 명확히 구분하여 서술한다.\n\n[결론]\n속도: $1$, 가속도: $12$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $(0, 2)$에서 곡선 $y=-x^3+x+4$에 그은 접선과 $x$축, $y$축으로 둘러싸인 부분의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n곡선 밖의 점 $(0, 2)$에서 그은 접선이므로 접점의 좌표를 $(t, f(t))$로 설정하고 접선의 방정식을 세운 후 점 $(0, 2)$를 대입하여 $t$를 구한다. 구해진 접선의 $x$절편과 $y$절편을 구하여 삼각형의 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [접점 설정 및 접선의 방정식]:\n$f(x) = -x^3 + x + 4$라 하면 $f'(x) = -3x^2 + 1$이다.\n접점의 좌표를 $(t, -t^3+t+4)$라 하면 접선의 방정식은\n$$y - (-t^3+t+4) = (-3t^2+1)(x - t)$$\n$$y = (-3t^2+1)x + 2t^3 + 4$$\n\n2단계 [점 $(0, 2)$를 대입하여 $t$ 구하기]:\n이 접선이 점 $(0, 2)$를 지나므로\n$$2 = (-3t^2+1)(0) + 2t^3 + 4$$\n$$2t^3 + 4 = 2 \\implies 2t^3 = -2 \\implies t^3 = -1$$\n$t$는 실수이므로\n$$t = -1$$\n\n3단계 [접선의 방정식 및 절편 구하기]:\n$t=-1$을 접선의 방정식에 대입하면 기울기는 $-3(-1)^2+1 = -2$이므로\n$$y = -2x + 2$$\n- $x$절편: $0 = -2x + 2 \\implies x = 1$\n- $y$절편: $y = 2$\n\n4단계 [둘러싸인 도형의 넓이 계산]:\n접선과 $x$축, $y$축으로 둘러싸인 도형은 직각삼각형이므로\n$$\\text{넓이} = \\frac{1}{2} \\times 1 \\times 2 = 1$$\n\n[오답 및 경계 점검]\n$t^3=-1$의 실근은 $t=-1$뿐이다. $t=-1$일 때 접점은 $(-1, 4)$이고 접선 $y=-2x+2$가 실제로 점 $(0, 2)$와 점 $(-1, 4)$를 지남을 검산할 수 있다.\n\n[결론]\n$1$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 곡선\n$$f(x)=x^3+ax+b, \\quad g(x)=cx^2+1$$\n이 점 $(1, 2)$에서 만나고 이 점에서 공통인 접선을 가질 때, 실수 $a, b, c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1, b=2, c=1$",
+    "solution": "[풀이 전략]\n두 곡선이 점 $(1, 2)$에서 만나므로 $f(1)=2, g(1)=2$이고, 공통 접선을 가지므로 그 점에서의 미분계수가 같다($f'(1)=g'(1)$). 세 조건을 연립하여 $a, b, c$를 구한다.\n\n[단계별 풀이]\n1단계 [함숫값 조건 적용]:\n점 $(1, 2)$를 지나므로\n- $f(1) = 1^3 + a(1) + b = 2 \\implies a + b = 1 \\quad \\cdots\\text{①}$\n- $g(1) = c(1)^2 + 1 = 2 \\implies c + 1 = 2 \\implies c = 1$\n\n2단계 [도함수 및 공통 접선 조건]:\n각각의 도함수는\n$$f'(x) = 3x^2 + a, \\quad g'(x) = 2cx$$\n$x=1$에서의 접선의 기울기가 같아야 하므로\n$$f'(1) = g'(1) \\implies 3(1)^2 + a = 2c(1)$$\n$$3 + a = 2c$$\n\n3단계 [$a, b, c$ 계산]:\n$c=1$을 대입하면\n$$3 + a = 2(1) \\implies a = -1$$\n$a=-1$을 ①에 대입하면\n$$-1 + b = 1 \\implies b = 2$$\n\n[오답 및 경계 점검]\n$f(x) = x^3 - x + 2$, $g(x) = x^2 + 1$일 때, $f(1)=2, g(1)=2$이고 $f'(1) = 3-1=2, g'(1) = 2(1)=2$로 공통접선 $y = 2x$를 공유함을 확인할 수 있다.\n\n[결론]\n$a=-1, b=2, c=1$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^3+x+1$에 대하여 닫힌구간 $[-1, a]$에서 평균값 정리를 만족시키는 실수 $c$의 값이 $1$일 때, 실수 $a$의 값을 구하시오. (단, $a>1$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n닫힌구간 $[-1, a]$에서 평균값 정리를 만족하는 식 $\\frac{f(a)-f(-1)}{a-(-1)} = f'(c)$를 세우고 $c=1$을 대입하여 $a$에 관한 방정식을 풀어 $a>1$인 값을 취한다.\n\n[단계별 풀이]\n1단계 [평균변화율 계산]:\n$f(x) = x^3 + x + 1$이므로\n$f(-1) = (-1)^3 + (-1) + 1 = -1$\n$f(a) = a^3 + a + 1$\n구간 $[-1, a]$에서의 평균변화율은\n$$\\frac{f(a)-f(-1)}{a - (-1)} = \\frac{(a^3+a+1) - (-1)}{a + 1} = \\frac{a^3+a+2}{a+1}$$\n분자를 조립제법으로 인수분해하면 $a^3+a+2 = (a+1)(a^2-a+2)$이므로\n$$\\frac{(a+1)(a^2-a+2)}{a+1} = a^2 - a + 2$$\n\n2단계 [미분계수 $f'(1)$ 계산]:\n$f'(x) = 3x^2 + 1$이므로 $c=1$에서의 미분계수는\n$$f'(1) = 3(1)^2 + 1 = 4$$\n\n3단계 [방정식 풀이]:\n평균값 정리에 의해\n$$a^2 - a + 2 = 4 \\implies a^2 - a - 2 = 0$$\n$$(a - 2)(a + 1) = 0$$\n조건에서 $a > 1$이므로\n$$a = 2$$\n\n[오답 및 경계 점검]\n$a=-1$은 구간의 시작점과 같아져 구간 $[-1, a]$가 형성되지 않으므로 $a>1$ 조건에 부합하는 유일한 해는 $a=2$이다.\n\n[결론]\n$2$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)=x^3+ax^2+3x+1$이 구간 $(-\\infty, \\infty)$에서 증가하도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3 \\le a \\le 3$",
+    "solution": "[풀이 전략]\n삼차함수 $f(x)$가 실수 전체의 집합에서 증가하려면 모든 실수 $x$에 대하여 $f'(x) \\ge 0$이어야 한다. 이차방정식 $f'(x)=0$의 판별식 $D \\le 0$ 조건을 적용한다.\n\n[단계별 풀이]\n1단계 [도함수 구하기]:\n$f(x) = x^3 + ax^2 + 3x + 1$이므로\n$$f'(x) = 3x^2 + 2ax + 3$$\n\n2단계 [증가 조건과 판별식]:\n$f(x)$가 구간 $(-\\infty, \\infty)$에서 증가하려면 최고차항의 계수가 $3 > 0$이므로 모든 실수 $x$에 대하여 $f'(x) \\ge 0$이어야 한다.\n이차방정식 $3x^2 + 2ax + 3 = 0$의 판별식을 $D$라 할 때, 그래프가 $x$축보다 항상 위쪽에 있거나 접해야 하므로\n$$\\frac{D}{4} = a^2 - 3 \\times 3 = a^2 - 9 \\le 0$$\n\n3단계 [부등식 풀이]:\n$$a^2 - 9 \\le 0 \\implies (a+3)(a-3) \\le 0$$\n따라서\n$$-3 \\le a \\le 3$$\n\n[오답 및 경계 점검]\n함수가 증가할 때 도함수가 $0$이 되는 점이 순간적으로 존재하는 것은 허용되므로 판별식에 반드시 등호($D \\le 0$)가 포함되어야 한다.\n\n[결론]\n$-3 \\le a \\le 3$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림은 최고차항의 계수가 $-1$인 삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프이다. 함수 $f(x)$의 극댓값이 $7$일 때, 함수 $f(x)$의 극솟값을 구하시오.\n<img src=\"q07.png\" width=\"280\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n도함수의 그래프 $y=f'(x)$가 $x$축과 만나는 점을 통해 $f'(x)$의 식을 세운다. 부호 변화를 관찰하여 극대점과 극소점의 위치를 파악하고 극댓값 조건을 적용해 함수식을 완성한 후 극솟값을 구한다.\n\n[단계별 풀이]\n1단계 [도함수 $f'(x)$ 식 구하기]:\n삼차함수 $f(x)$의 최고차항의 계수가 $-1$이므로 도함수 $f'(x)$는 최고차항의 계수가 $3 \\times (-1) = -3$인 이차함수이다.\n그래프에서 $y=f'(x)$는 원점 $(0, 0)$과 $(2, 0)$을 지나므로\n$$f'(x) = -3x(x - 2) = -3x^2 + 6x$$\n\n2단계 [극대와 극소의 위치 판정]:\n- $x < 0$에서 $f'(x) < 0$\n- $0 < x < 2$에서 $f'(x) > 0$\n- $x > 2$에서 $f'(x) < 0$\n따라서 $f(x)$는 $x=2$에서 극대이고, $x=0$에서 극소이다.\n\n3단계 [극댓값 조건을 통한 $f(x)$ 결정]:\n$f'(x) = -3x^2 + 6x$이므로 $f(x) = -x^3 + 3x^2 + C$ ($C$는 상수)이다.\n$x=2$에서 극댓값이 $7$이므로\n$$f(2) = -(2)^3 + 3(2)^2 + C = -8 + 12 + C = 4 + C = 7 \\implies C = 3$$\n따라서\n$$f(x) = -x^3 + 3x^2 + 3$$\n\n4단계 [극솟값 계산]:\n함수 $f(x)$는 $x=0$에서 극소이므로 구하는 극솟값은\n$$f(0) = C = 3$$\n\n[오답 및 경계 점검]\n도함수의 부호가 음에서 양으로 바뀔 때 극소, 양에서 음으로 바뀔 때 극대이다. $x=0$에서 극솟값 $3$, $x=2$에서 극댓값 $7$로 $3 < 7$임이 정상적으로 부합한다.\n\n[결론]\n$3$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "닫힌구간 $[0, 3]$에서 함수 $f(x)=2x^3-3x^2+a$의 최솟값이 $5$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n도함수를 구하여 구간 내의 극값을 조사하고 양 끝점의 함숫값과 비교하여 최솟값을 표현한 뒤 주어진 값 $5$와 같다고 놓아 $a$를 구한다.\n\n[단계별 풀이]\n1단계 [도함수 및 극값 조사]:\n$f(x) = 2x^3 - 3x^2 + a$이므로\n$$f'(x) = 6x^2 - 6x = 6x(x - 1)$$\n$f'(x) = 0$에서 $x = 0$ 또는 $x = 1$이다.\n닫힌구간 $[0, 3]$에 속하는 임계점은 $x = 0, 1$이다.\n\n2단계 [함숫값 비교]:\n- $f(0) = a$\n- $f(1) = 2(1)^3 - 3(1)^2 + a = a - 1$\n- $f(3) = 2(3)^3 - 3(3)^2 + a = 54 - 27 + a = a + 27$\n\n3단계 [최솟값 결정 및 $a$ 계산]:\n구간 $[0, 3]$에서 $a - 1 < a < a + 27$이므로 최솟값은 $x=1$에서의 함숫값 $f(1) = a - 1$이다.\n이 최솟값이 $5$이므로\n$$a - 1 = 5 \\implies a = 6$$\n\n[오답 및 경계 점검]\n$a=6$일 때 $f(0)=6, f(1)=5, f(3)=33$이 되어 최솟값이 정확히 $5$임을 확인할 수 있다.\n\n[결론]\n$6$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 곡선 $y=x^3+4x^2, y=-2x^2-9x+k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-4 < k < 0$",
+    "solution": "[풀이 전략]\n두 곡선의 교점의 $x$좌표는 연립방정식의 실근이다. $k$를 분리하여 삼차함수 $h(x) = k$ 꼴로 변형한 후, $y=h(x)$의 그래프의 극댓값과 극솟값을 구하여 $y=k$와 서로 다른 세 점에서 만날 조건을 세운다.\n\n[단계별 풀이]\n1단계 [방정식 정리 및 함수 정의]:\n$$x^3 + 4x^2 = -2x^2 - 9x + k \\implies x^3 + 6x^2 + 9x = k$$\n$h(x) = x^3 + 6x^2 + 9x$라 하자.\n\n2단계 [도함수 및 극값 계산]:\n$$h'(x) = 3x^2 + 12x + 9 = 3(x^2 + 4x + 3) = 3(x + 3)(x + 1)$$\n$h'(x) = 0$에서 $x = -3$ 또는 $x = -1$이다.\n증감표를 작성하면:\n- $x = -3$에서 극댓값: $h(-3) = (-3)^3 + 6(-3)^2 + 9(-3) = -27 + 54 - 27 = 0$\n- $x = -1$에서 극솟값: $h(-1) = (-1)^3 + 6(-1)^2 + 9(-1) = -1 + 6 - 9 = -4$\n\n3단계 [서로 다른 세 실근을 갖는 $k$의 범위]:\n곡선 $y=h(x)$와 직선 $y=k$가 서로 다른 세 점에서 만나려면 $k$의 값이 극솟값과 극댓값 사이에 있어야 한다.\n$$\\text{극솟값} < k < \\text{극댓값}$$\n$$-4 < k < 0$$\n\n[오답 및 경계 점검]\n$k=0$ 또는 $k=-4$이면 접하여 실근이 $2$개가 되고, $k>0$ 또는 $k<-4$이면 실근이 $1$개뿐이다. 서로 다른 세 실근이므로 등호가 포함되지 않는다.\n\n[결론]\n$-4 < k < 0$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x \\ge 0$일 때, 두 함수\n$$f(x)=3x^3+8x^2-18x+k, \\quad g(x)=x^3-x^2+6x+1$$\n에 대하여 부등식 $f(x)>g(x)$가 성립하도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k > 14$",
+    "solution": "[풀이 전략]\n$f(x) - g(x) > 0$으로 이항하여 새로운 함수 $h(x) = f(x) - g(x)$를 정의한다. $x \\ge 0$에서 $h(x)$의 최솟값이 $0$보다 크도록 $k$의 범위를 설정한다.\n\n[단계별 풀이]\n1단계 [차의 함수 $h(x)$ 정의]:\n$$h(x) = f(x) - g(x) = (3x^3+8x^2-18x+k) - (x^3-x^2+6x+1)$$\n$$h(x) = 2x^3 + 9x^2 - 24x + k - 1$$\n\n2단계 [도함수 및 증감 조사]:\n$$h'(x) = 6x^2 + 18x - 24 = 6(x^2 + 3x - 4) = 6(x + 4)(x - 1)$$\n$x \\ge 0$의 범위에서 $h'(x) = 0$이 되는 점은 $x = 1$이다.\n- $0 \\le x < 1$에서 $h'(x) < 0$ (감소)\n- $x > 1$에서 $h'(x) > 0$ (증가)\n따라서 $h(x)$는 $x = 1$에서 유일한 극소이자 최솟값을 갖는다.\n\n3단계 [최솟값 계산 및 부등식 풀이]:\n$$h(1) = 2(1)^3 + 9(1)^2 - 24(1) + k - 1 = 2 + 9 - 24 + k - 1 = k - 14$$\n$x \\ge 0$인 모든 실수에 대하여 $h(x) > 0$이 성립하려면 최솟값이 양수이어야 하므로\n$$h(1) > 0 \\implies k - 14 > 0 \\implies k > 14$$\n\n[오답 및 경계 점검]\n$x=0$에서의 값 $h(0) = k - 1$은 $x=1$에서의 최솟값 $k-14$보다 크다. 따라서 $k > 14$이면 $x=0$을 포함한 $x \\ge 0$ 전체에서 $h(x) \\ge k-14 > 0$이 성립한다.\n\n[결론]\n$k > 14$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "수&#8203;직선 위를 움직이는 두 점 $\\mathrm{P}, \\mathrm{Q}$의 시각 $t$에서의 위치가 각각\n$$x_{\\mathrm{P}}(t)=\\frac{2}{3}t^3+18t-20, \\quad x_{\\mathrm{Q}}(t)=6t^2-7$$\n일 때, 두 점 $\\mathrm{P}, \\mathrm{Q}$의 속도가 같아지는 순간의 두 점 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n두 점 $\\mathrm{P}, \\mathrm{Q}$의 속도는 각각 위치 함수를 시간에 대해 미분하여 구한다. 두 속도가 같아지는 시각 $t$를 구한 후 그 시각에서의 두 점의 위치 좌표의 차의 절댓값으로 거리를 구한다.\n\n[단계별 풀이]\n1단계 [두 점의 속도 함수 구하기]:\n- $v_{\\mathrm{P}}(t) = x_{\\mathrm{P}}'(t) = 2t^2 + 18$\n- $v_{\\mathrm{Q}}(t) = x_{\\mathrm{Q}}'(t) = 12t$\n\n2단계 [속도가 같아지는 시각 $t$ 구하기]:\n$$v_{\\mathrm{P}}(t) = v_{\\mathrm{Q}}(t) \\implies 2t^2 + 18 = 12t$$\n$$2t^2 - 12t + 18 = 0 \\implies 2(t^2 - 6t + 9) = 0 \\implies 2(t - 3)^2 = 0$$\n따라서 두 점의 속도가 같아지는 시각은 $t = 3$이다.\n\n3단계 [$t=3$에서의 두 점의 위치 계산]:\n$$x_{\\mathrm{P}}(3) = \\frac{2}{3}(3)^3 + 18(3) - 20 = \\frac{2}{3}(27) + 54 - 20 = 18 + 54 - 20 = 52$$\n$$x_{\\mathrm{Q}}(3) = 6(3)^2 - 7 = 6(9) - 7 = 54 - 7 = 47$$\n\n4단계 [두 점 사이의 거리 계산]:\n$$\\text{거리} = |x_{\\mathrm{P}}(3) - x_{\\mathrm{Q}}(3)| = |52 - 47| = 5$$\n\n[오답 및 경계 점검]\n거리는 항상 $0$ 이상인 절댓값 개념이므로 좌표의 차 $|52 - 47| = 5$로 올바르게 계산한다.\n\n[결론]\n$5$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^4-4x^3-ax^2$이 극댓값을 갖기 위한 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{9}{2} < a < 0$ 또는 $a > 0$",
+    "solution": "[풀이 전략]\n최고차항의 계수가 양수인 사차함수가 극댓값을 가지려면 도함수 $f'(x)=0$이 서로 다른 세 실근을 가져야 한다. $f'(x)$에서 공통인수를 묶어낸 후 남은 이차방정식이 $0$이 아닌 서로 다른 두 실근을 가질 조건을 세운다.\n\n[단계별 풀이]\n1단계 [도함수 인수분해]:\n$f(x) = x^4 - 4x^3 - ax^2$이므로\n$$f'(x) = 4x^3 - 12x^2 - 2ax = 2x(2x^2 - 6x - a)$$\n\n2단계 [서로 다른 세 실근을 가질 조건]:\n방정식 $f'(x) = 0$이 서로 다른 세 실근을 가지려면\n이차방정식 $2x^2 - 6x - a = 0$이 $0$이 아닌 서로 다른 두 실근을 가져야 한다.\n- (i) 서로 다른 두 실근 조건: 판별식 $D > 0$\n$$\\frac{D}{4} = (-3)^2 - 2(-a) = 9 + 2a > 0 \\implies 2a > -9 \\implies a > -\\frac{9}{2}$$\n- (ii) $0$이 근이 아니어야 하는 조건:\n$x = 0$을 대입했을 때 등식이 성립하지 않아야 하므로\n$$2(0)^2 - 6(0) - a \\ne 0 \\implies -a \\ne 0 \\implies a \\ne 0$$\n\n3단계 [종합 범위 도출]:\n(i)과 (ii)를 동시에 만족해야 하므로\n$$-\\frac{9}{2} < a < 0 \\quad\\text{또는}\\quad a > 0$$\n\n[오답 및 경계 점검]\n$a=0$일 때 $f'(x) = 4x^2(x-3)$이 되어 $x=0$에서 중근을 가져 극값을 갖지 않고 $x=3$에서 극솟값만 갖게 되므로 $a=0$을 반드시 제외해야 한다.\n\n[결론]\n$-\\frac{9}{2} < a < 0$ 또는 $a > 0$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=2x^3-3x^2-12x+4$에 대하여 방정식 $|f(x)|-k=0$이 서로 다른 $5$개의 실근을 갖도록 하는 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n방정식 $|f(x)| = k$의 실근의 개수는 함수 $y=|f(x)|$의 그래프와 직선 $y=k$의 교점의 개수와 같다. $f(x)$의 증감을 파악하여 극값과 절편을 구한 후 $y=|f(x)|$의 그래프를 그려 교점이 $5$개가 되는 $k$의 값을 찾는다.\n\n[단계별 풀이]\n1단계 [함수 $f(x)$의 극값 구하기]:\n$f(x) = 2x^3 - 3x^2 - 12x + 4$이므로\n$$f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 6(x - 2)(x + 1)$$\n$f'(x) = 0$에서 $x = -1$ 또는 $x = 2$이다.\n- $x = -1$에서 극댓값:\n$$f(-1) = 2(-1)^3 - 3(-1)^2 - 12(-1) + 4 = -2 - 3 + 12 + 4 = 11$$\n- $x = 2$에서 극솟값:\n$$f(2) = 2(2)^3 - 3(2)^2 - 12(2) + 4 = 16 - 12 - 24 + 4 = -16$$\n- $y$절편: $f(0) = 4$\n\n2단계 [함수 $y=|f(x)|$의 그래프 개형]:\n$f(-1) = 11 > 0$, $f(2) = -16 < 0$이므로 $f(x)=0$은 서로 다른 세 실근을 갖는다.\n$y = |f(x)|$의 그래프는 $x$축 아랫부분을 꺾어 올린 것이므로:\n- 세 실근에서 $y=0$으로 $x$축과 만난다.\n- 점 $(-1, 11)$은 원래의 극대로 높이가 $11$이다.\n- 점 $(2, -16)$은 꺾여 올라가 점 $(2, 16)$에서 높이 $16$인 극대가 된다.\n\n3단계 [직선 $y=k$와의 교점 개수 판정]:\n$k$의 값의 변화에 따른 교점의 개수는:\n- $k > 16$: $2$개\n- $k = 16$: $3$개 (점 $(2, 16)$에서 접함)\n- $11 < k < 16$: $4$개\n- $k = 11$: 점 $(-1, 11)$에서 접하고 다른 네 지점을 통과하므로 정확히 $1 + 4 = 5$개!\n- $0 < k < 11$: $6$개\n- $k = 0$: $3$개\n따라서 서로 다른 $5$개의 실근을 갖도록 하는 실수 $k$의 값은 $11$이다.\n\n[오답 및 경계 점검]\n높이가 서로 다른 두 극대 봉우리($11$과 $16$) 중 낮은 봉우리의 꼭짓점을 직선이 지날 때 교점이 정확히 $5$개가 됨을 그래프로 완벽히 검산할 수 있다.\n\n[결론]\n$11$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "도함수의 활용",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
+    "standardUnitKey": "H22-M1-05",
     "standardUnit": "도함수의 활용",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "구간 단속제란 특정 지점이 아닌 구간의 시작 지점과 종료 지점에 단속 카메라를 설치하여 자동차의 구간 평균속도를 측정한 후 제한 속도 준수 여부를 판정하는 방식이다. 제한 속도가 $80\\text{ km/h}$인 도로에서 $15\\text{ km}$ 구간에 대해 구간 단속을 실시하고 있다. 어느 자동차가 이 구간을 통과하는 데 $10$분 걸렸을 때, 이 자동차의 속도가 제한 속도를 초과한 순간이 있었는지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "[풀이 전략]\n시작 지점부터 통과 시간 $10$분($\\frac{1}{6}$시간) 동안의 평균속도를 계산하고, 평균값 정리를 적용하여 그 구간 내에 순간속도가 평균속도와 같아지는 순간이 적어도 한 번 존재함을 보인다.\n\n[단계별 풀이]\n1단계 [구간의 평균속도 계산]:\n구간의 거리는 $15\\text{ km}$이고 걸린 시간은 $10\\text{분} = \\frac{10}{60}\\text{시간} = \\frac{1}{6}\\text{시간}$이다.\n이 구간을 통과하는 자동차의 평균속도는\n$$\\frac{15\\text{ km}}{\\frac{1}{6}\\text{시간}} = 15 \\times 6 = 90\\text{ km/h}$$\n\n2단계 [평균값 정리 적용]:\n시작 지점을 통과한 지 $t$시간 후의 자동차의 위치를 $s(t)$라 하자.\n자동차의 위치 함수 $s(t)$는 닫힌구간 $[0, \\frac{1}{6}]$에서 연속이고 열린구간 $(0, \\frac{1}{6})$에서 미분가능하다.\n평균값 정리에 의하여\n$$s'(c) = \\frac{s(\\frac{1}{6}) - s(0)}{\\frac{1}{6} - 0} = 90$$\n을 만족시키는 $c$가 열린구간 $(0, \\frac{1}{6})$에 적어도 하나 존재한다.\n\n3단계 [결론 도출]:\n자동차의 순간속도 $s'(t)$가 $90\\text{ km/h}$인 순간이 적어도 한 번 존재하며, 도로의 제한 속도는 $80\\text{ km/h}$이므로\n$$90\\text{ km/h} > 80\\text{ km/h}$$\n따라서 이 자동차의 속도가 제한 속도를 초과한 순간이 있었다.\n\n[오답 및 경계 점검]\n평균속도가 $90\\text{ km/h}$로 제한 속도 $80\\text{ km/h}$를 넘으므로, 평균값 정리에 의해 순간속도가 평균속도와 정확히 일치하는 시점이 반드시 존재하여 제한 속도를 초과한 순간이 있었음을 논리적으로 엄밀하게 증명하였다.\n\n[결론]\n풀이 참조"
   }
 ];
