@@ -16,3 +16,8 @@ Question-specific limitations:
 The number line shows the derived parameter interval −9<a<9; it does not draw the family of derivative curves or the absent parallel tangent. The final integer count 17 is in publish.caption. This is a partial explanation helper, not a verified replacement for all the original geometric teaching objectives.
 
 Preservation base: codex/svg-triage-20261107 at acb2c7c35e0e7bd9b79645e93fcd65c5b1d52ae1. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $a^2<81$이다.

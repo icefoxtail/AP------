@@ -16,3 +16,8 @@ Question-specific limitations:
 The two number-line rows show the root ranges α∈[−3,−2), β∈[2,3). They do not show the full derivative-sign chart or independently demonstrate that only k=−4,1 satisfy both conditions. Row labels are authored as alpha and beta; their accepted contract and displayed form are unverified. The exact included/excluded boundaries and both rows require visual checking.
 
 Preservation base: codex/svg-triage-20261107 at acb2c7c35e0e7bd9b79645e93fcd65c5b1d52ae1. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $\alpha\in[-3,-2)$이다.

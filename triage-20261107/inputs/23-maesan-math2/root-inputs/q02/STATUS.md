@@ -16,3 +16,8 @@ Question-specific limitations:
 The draft is a number-line helper marking excluded x-values −3 and 3 with CROSS and HOLLOW markers. It is not a graph of the rational function, a vertical asymptote, or the removable hole at (3,1/6). Marker distinctions and caption may explain the two discontinuities, but the prior rational-curve contract question is not resolved by this draft.
 
 Preservation base: codex/svg-triage-20261107 at acb2c7c35e0e7bd9b79645e93fcd65c5b1d52ae1. The containing commit identifies this saved revision; remote readback is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 원래 함수가 정의되지 않고
