@@ -1,0 +1,1037 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
+  "sourceGitBlobSha": "6e3805a14a4daefffd4bcd759441eb038858ee1a",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "antigravity-5h-batch",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "공간좌표",
+            "src": "stem",
+            "quote": "점 $P(3,2,-4)$에 대하여"
+          },
+          {
+            "term": "대칭",
+            "src": "stem",
+            "quote": "$xy$평면에 대하여 대칭인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점의 좌표를 구하면? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$xy$평면에 대한 대칭에서는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$z$좌표의 부호만 바뀐다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "(3,2,-4)\\mapsto(3,2,4)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "공간좌표에서 xy평면에 대한 대칭이동은 z좌표의 부호만 바뀜을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $\\dfrac{12+x}{3}=\\dfrac{2-y}{2}$의"
+          },
+          {
+            "term": "방향벡터",
+            "src": "stem",
+            "quote": "방향벡터를 구하면? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "직선의 방향벡터는 $(3,-2)$이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "매개변수",
+            "src": "solution",
+            "quote": "공통인 값을 $t$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "x=3t-12,\\qquad y=2-2t",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "(3,-2)$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선 방정식을 매개변수로 놓고 증가율을 비교하여 방향벡터를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{45}+\\dfrac{y^2}{20}=1$의"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "두 초점을 $F,F'$이라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $FF'$의 길이는? [4.1점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "c^2=a^2-b^2=45-20=25",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "FF'=2c=10",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "a^2=45$, $b^2=20$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "타원의 장축 방향과 계수를 확인하고 c^2=a^2-b^2 공식으로 초점 거리를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{1"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선 중 하나의 기울기가 $5$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값은? [4.1점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "y=\\pm\\dfrac{4}{a}x",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "\\dfrac{4}{a}=5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "a>0$이므로 조건을 만족한다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "쌍곡선의 점근선 방정식 기울기를 미지수 a로 표현하고 조건에 맞는 양수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평면벡터",
+            "src": "stem",
+            "quote": "두 평면벡터 $\\vec a,\\vec b$가"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "이루는 각의 크기가 $60^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "\\vec a\\cdot\\vec b$를 구하면? [4.2점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "두 벡터의 내적은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "=6\\times5\\times\\dfrac12=15",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|\\vec a|=6,|\\vec b|=5$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 평면벡터의 크기와 끼인각을 내적의 정의 공식에 대입하여 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\vec a\\parallel\\vec b$를 만족시키도록"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "두 벡터 $\\vec a=(-15,x),\\vec b=(5,-2)$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "x$의 값을 구하면? [4.2점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "대응 성분의 비를 같게 둔다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "\\dfrac{-15}{5}=\\dfrac{x}{-2}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "(-3)(-2)=x"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 평면벡터가 평행할 때 대응 성분의 비율이 같음을 이용하여 x를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "좌표평면에 두 직선"
+          },
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "이루는 예각의 크기를 $\\theta$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인함수",
+            "src": "stem",
+            "quote": "\\cos\\theta$의 값은? [4.3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "방향벡터",
+            "src": "solution",
+            "quote": "방향벡터를 $\\vec u=(2,1)$로 잡는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "\\cos\\theta=\\dfrac{\\vec u\\cdot\\vec v",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "x-2y-5=0,3x-y-1=0$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 직선의 방향벡터를 구하고 내적 공식으로 두 직선이 이루는 예각의 코사인을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "구 $x^2+y^2+z^2+2x-2y+6z-k=0$가"
+          },
+          {
+            "term": "공간좌표",
+            "src": "stem",
+            "quote": "$yz$평면에 접하도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값을 구하면? [4.3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(x+1)^2+(y-1)^2+(z+3)^2=k+11",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "중심에서 평면까지의 거리는 $|-1|=1$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중심",
+            "src": "solution",
+            "quote": "중심은 $(-1,1,-3)$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구의 방정식을 표준형으로 정리하여 중심을 구하고 접촉 거리 조건으로 k를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내적",
+            "src": "stem",
+            "quote": "\\overrightarrow{AP}\\cdot\\overrighta"
+          },
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "점 $P$가 그리는 도형의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이를 구하면? [4.4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "원",
+            "src": "solution",
+            "quote": "P$는 지름이 $AB$인 원 위를 움직인다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "AB=\\sqrt{(4-0)^2+(2-5)^2}=5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "\\angle APB=90^\\circ$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내적이 0인 조건으로부터 점 P의 자취가 지름을 AB로 하는 원임을 파악하여 둘레를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "지름의 양 끝 점으로 하는 구가"
+          },
+          {
+            "term": "단면",
+            "src": "solution",
+            "quote": "단면 원의 반지름을 $\\rho$라 하면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "도형의 넓이를 구하면? [4.4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "구의 중심은 지름의 양 끝점의 중점이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "\\rho^2=r^2-3^2=11-9=2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "xz$평면까지의 거리는 중심의 $y$좌표인 $3$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름의 양 끝점의 중점으로 구의 중심과 반지름을 구하고 평면까지의 거리로 단면 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $3$인 정육면체에서"
+          },
+          {
+            "term": "내분점",
+            "src": "stem",
+            "quote": "선분 $DF$를 $1:2$로 내분하는 점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $PEF$의 넓이를 구하면? [4.5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공간좌표",
+            "src": "solution",
+            "quote": "E=(0,0,0),\\ F=(3,0,0),\\ D=(0,3,3)$으로 놓는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "점 $P$에서 직선 $EF$까지의 거리는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "EF=3$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정육면체를 좌표공간에 배치하고 내분점과 직선 사이의 거리로 삼각형의 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{64}"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "점 $P$에서의 접선의 $x$절편을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "x$절편에서는 $y=0$이므로\n$x=-5\\sqrt2"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "8x+5y-40=0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "매개변수",
+            "src": "solution",
+            "quote": "u=\\dfrac{x}{5},\\ v=\\dfrac{y}{8}$로 두면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "u+v=-\\sqrt2$일 때 최대이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "타원 위의 점을 매개화하여 직선과의 거리가 최대인 점을 구하고 해당 점의 접선 절편을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $4$인 정사면체 $ABCD$에서"
+          },
+          {
+            "term": "정사영",
+            "src": "stem",
+            "quote": "평면 $ABM$ 위로의 정사영의 넓이를 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[ABC]\\cos\\phi=4\\sqrt3\\times\\dfrac{\\"
+          }
+        ],
+        "method": [
+          {
+            "term": "이면각",
+            "src": "solution",
+            "quote": "NC$와 $NM$의 각이 이면각이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인함수",
+            "src": "solution",
+            "quote": "\\cos\\phi=\\dfrac{4\\sqrt3/3}{2\\sqrt2}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "모서리 $CD$의 중점을 $M$이라고 할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정사면체에서 두 면 사이의 이면각의 코사인을 구하고 정사영 넓이 공식을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "공간좌표",
+            "src": "solution",
+            "quote": "교선 $l$을 $x$축으로 두고 $\\alpha$를 $xz$평면"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기가 각각 $60^\\circ,45^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인함수",
+            "src": "stem",
+            "quote": "\\cos^2\\theta$의 값을 구하면? [4.6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사영",
+            "src": "solution",
+            "quote": "정사영 넓이는 원래 넓이에 $\\cos\\theta$를 곱한 값이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[PA'B]=\\dfrac12\\cdot\\dfrac12\\cdot\\d",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "각각 서로 수직인 두 평면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직인 두 평면에 삼각형과 그 정사영을 설정하여 정사영 넓이 비로 이면각 코사인 제곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "삼각형 $OAB$는 한 변의 길이가 $1$인 정삼각형이고"
+          },
+          {
+            "term": "위치벡터",
+            "src": "stem",
+            "quote": "점 $X$에 대한 위치벡터 $\\vec x$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "|\\overrightarrow{OA}-\\vec x|=\\sqrt{31}"
+          }
+        ],
+        "method": [
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "\\vec x\\cdot\\overrightarrow{OB}=\\dfr",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "\\vec x=(3,3\\sqrt3)$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "k,l$은 실수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "좌표 성분으로 위치벡터의 내적 식을 세워 성분을 구하고 두 벡터의 차의 크기를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $4$인 정육면체 $ABCD-EFGH$가 있다"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "선분 $AD$의 중점이 $M$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "30\\cos\\theta$의 값을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사영",
+            "src": "solution",
+            "quote": "M$을 밑면 $EFGH$에 정사영한 점은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "M'$과 $EG$ 사이의 거리는 $\\sqrt2$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "교선 $EG$에 수직인 단면에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정육면체의 꼭짓점을 좌표화하여 점의 정사영과 교선까지의 거리로부터 이면각의 코사인을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "초점이 $F$인 포물선 $y^2=4x$ 위에"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "삼각형 $AFB$의 무게중심의 $x$좌표가 $4$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "\\overline{AF}\\times\\overline{BF}$의 "
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "AF=\\sqrt{(a-1)^2+(\\pm2\\sqrt a)^2}=a+1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "서로 다른 자연수 $a,b>1$이고 $a+b=11$이므로 곱 $ab$는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 점 $A,B$의 $x$좌표는 $1$보다 큰 자연수이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "포물선의 정의에 따른 초점 거리 공식과 무게중심의 합 조건을 이용하여 곱의 최댓값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "내적",
+            "src": "stem",
+            "quote": "\\overrightarrow{OP}\\cdot\\overrighta"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 점 $A,B$는 직선 $l$을 지난다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABP$의 넓이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "단위벡터",
+            "src": "solution",
+            "quote": "\\vec e=\\dfrac{\\overrightarrow{OP}}5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "P$와 $AB$ 사이의 거리는 $|5-(-3)|=8$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "AB\\perp OP$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단위벡터에 대한 정사영 내적으로 점과 직선 사이 거리를 구하고 삼각형의 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "삼각형 $ABD$에서 $\\angle ABD=90^\\circ$이므로"
+          },
+          {
+            "term": "이면각",
+            "src": "stem",
+            "quote": "사면체 내부에 놓인 이면각의 크기는 $60^\\circ$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인함수",
+            "src": "stem",
+            "quote": "\\cos\\theta$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "BD^2=AD^2-AB^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "V=\\dfrac13\\cdot[ABD]\\cdot3=8\\sqrt3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "solution",
+            "quote": "직선 $AD$와 평면 $DBC$가 이루는 예각을 $\\theta$라 하면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각 조건과 이면각으로 꼭짓점들을 좌표화하여 사면체 부피와 밑넓이로부터 직선과 평면의 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "선분 $AB$를 지름으로 하는 반원 위의 한 점을 $P$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "선분 $AB$의 중점을 $O$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최솟값과 최댓값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "f(t)=\\overrightarrow{AQ}\\cdot\\overr",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "8\\sqrt3\\sin\\left(t-\\dfrac{\\pi}{3}\\right)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값은 $-24$, 최댓값은 $8\\sqrt3-12$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반원 위의 점들을 삼각함수로 매개화하여 내적을 삼각함수 합성으로 나타내고 범위를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 20,
+    "allTermsInDict": true,
+    "allQuotesVerbatim": true,
+    "allMethodsEvidenced": true,
+    "warningsDismissed": []
+  }
+}
