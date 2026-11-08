@@ -1,18 +1,104 @@
 {
- "capability":"set-diagram-figure-v1",
- "diagram":{
-  "kind":"MAPPING",
-  "columns":[{"id":"X","name":"X","elements":["1","2","3","4","5"]},{"id":"Y","name":"X","elements":["1","2","3","4","5"]}],
-  "arrows":[
-   {"from":{"column":0,"element":0},"to":{"column":1,"element":1}},
-   {"from":{"column":0,"element":1},"to":{"column":1,"element":0}},
-   {"from":{"column":0,"element":2},"to":{"column":1,"element":3}},
-   {"from":{"column":0,"element":3},"to":{"column":1,"element":2}},
-   {"from":{"column":0,"element":4},"to":{"column":1,"element":4}}
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "예: 맞바꿈 두 쌍과 고정점 한 개를 가진 자기 역함수를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=f⁻¹인 경우 f(f(x))=x이며, 예시로 1↔2, 3↔4, 5는 고정한다.",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
   ],
-  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
- },
- "caption":"예: 맞바꿈 두 쌍과 고정점 한 개를 가진 자기 역함수를 나타낸다.",
- "sourceConditions":[{"id":"c1","condition":"f=f⁻¹인 경우 f(f(x))=x이며, 예시로 1↔2, 3↔4, 5는 고정한다.","mappedTo":["diagram"]}],
- "newVisualInformation":["두 원소의 맞바꿈과 고정점이 함께 있는 한 예시"]
+  "newVisualInformation": [
+    "두 원소의 맞바꿈과 고정점이 함께 있는 한 예시"
+  ],
+  "sourceQuote": "맞바꿈이 하나이면 서로 바꿀 두 원소를 고르는"
 }

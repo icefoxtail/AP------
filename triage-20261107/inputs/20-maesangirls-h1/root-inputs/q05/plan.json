@@ -1,17 +1,92 @@
 {
- "capability":"set-diagram-figure-v1",
- "diagram":{
-  "kind":"MAPPING",
-  "columns":[{"id":"X","name":"X","elements":["1","2","3","4"]},{"id":"Y","name":"X","elements":["1","2","3","4"]}],
-  "arrows":[
-   {"from":{"column":0,"element":0},"to":{"column":1,"element":3}},
-   {"from":{"column":0,"element":1},"to":{"column":1,"element":1}},
-   {"from":{"column":0,"element":2},"to":{"column":1,"element":0}},
-   {"from":{"column":0,"element":3},"to":{"column":1,"element":2}}
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원문의 네 점을 함수 대응으로 바꾸어 같은 집합에서 반복할 때의 순환을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그래프의 점 (1,4),(2,2),(3,1),(4,3)",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
   ],
-  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"}]
- },
- "caption":"원문의 네 점을 함수 대응으로 바꾸어 같은 집합에서 반복할 때의 순환을 본다.",
- "sourceConditions":[{"id":"c1","condition":"원문 그래프의 점 (1,4),(2,2),(3,1),(4,3)","mappedTo":["diagram"]}],
- "newVisualInformation":["1→4→3→1의 세 단계 순환과 2의 고정"]
+  "newVisualInformation": [
+    "1→4→3→1의 세 단계 순환과 2의 고정"
+  ],
+  "sourceQuote": "실제로 함수를 세 번 차례로 적용하면"
 }

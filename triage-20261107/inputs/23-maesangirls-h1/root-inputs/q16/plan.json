@@ -1,13 +1,69 @@
 {
- "capability":"multi-curve-figure-v1",
- "graphPlan":{
-  "family":"multi-curve","viewport":[-4,4,-9,9],"axisTickValues":{"x":["-3","3"],"y":["-6","6"]},
-  "curves":[
-   {"id":"f","kind":"SQRT","radicand":["72","24"],"amplitude":"-1","offset":"6","domain":["-3","4"],"color":"BLUE","label":"y=-sqrt(24x+72)+6"},
-   {"id":"g","kind":"SQRT","radicand":["72","-24"],"offset":"-6","domain":["-4","3"],"color":"WARM","label":"y=sqrt(72-24x)-6"}
-  ]
- },
- "caption":"k=24일 때 두 그래프는 공통 정의역의 양 끝에서 만난다.",
- "sourceConditions":[{"id":"c1","condition":"y=-sqrt(kx+3k)+6, y=sqrt(-kx+3k)-6; 최대 경계 k=24","mappedTo":["graphPlan"]}],
- "newVisualInformation":["k=24에서 서로 다른 교점 (-3,6), (3,-6)"]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -9,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "-6",
+        "6"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "72",
+          "24"
+        ],
+        "amplitude": "-1",
+        "offset": "6",
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=-sqrt(24x+72)+6"
+      },
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "72",
+          "-24"
+        ],
+        "offset": "-6",
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=sqrt(72-24x)-6"
+      }
+    ]
+  },
+  "caption": "k=24일 때 두 그래프는 공통 정의역의 양 끝에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-sqrt(kx+3k)+6, y=sqrt(-kx+3k)-6; 최대 경계 k=24",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=24에서 서로 다른 교점 (-3,6), (3,-6)"
+  ],
+  "sourceQuote": "두 제곱근을 각각 새로운 문자로 두면"
 }

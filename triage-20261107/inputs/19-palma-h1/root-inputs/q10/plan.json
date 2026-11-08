@@ -1,15 +1,79 @@
 {
- "capability":"set-diagram-figure-v1",
- "diagram":{
-  "kind":"MAPPING",
-  "columns":[{"id":"X","name":"시작","elements":["3"]},{"id":"Y","name":"한 번","elements":["2"]},{"id":"Z","name":"두 번","elements":["1"]}],
-  "arrows":[
-   {"from":{"column":0,"element":0},"to":{"column":1,"element":0}},
-   {"from":{"column":1,"element":0},"to":{"column":2,"element":0}}
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "시작",
+        "elements": [
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "한 번",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "두 번",
+        "elements": [
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      },
+      {
+        "name": "f",
+        "from": "Y",
+        "to": "Z",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "원문의 대응에서 3에 함수를 두 번 적용하는 순서를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 대응 f(1)=3, f(2)=1, f(3)=2",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
   ],
-  "arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"},{"name":"f","from":"Y","to":"Z","color":"WARM"}]
- },
- "caption":"원문의 대응에서 3에 함수를 두 번 적용하는 순서를 나타낸다.",
- "sourceConditions":[{"id":"c1","condition":"원문 대응 f(1)=3, f(2)=1, f(3)=2","mappedTo":["diagram"]}],
- "newVisualInformation":["3에서 시작하여 2, 1을 거쳐 다시 3으로 돌아오는 순환"]
+  "newVisualInformation": [
+    "3에서 시작하여 2, 1을 거쳐 다시 3으로 돌아오는 순환"
+  ],
+  "sourceQuote": "의 주기 3이 반복된다."
 }

@@ -1,12 +1,68 @@
 {
- "capability":"set-diagram-figure-v1",
- "diagram":{
-  "kind":"MAPPING",
-  "columns":[{"id":"X","name":"입력","elements":["0","1"]},{"id":"Y","name":"h의 값","elements":["19","25"]}],
-  "arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}},{"from":{"column":0,"element":1},"to":{"column":1,"element":1}}],
-  "arrowGroups":[{"name":"h","from":"X","to":"Y","color":"BLUE"}]
- },
- "caption":"합성 관계에서 구한 h의 두 입력과 출력을 대응시킨다.",
- "sourceConditions":[{"id":"c1","condition":"g⁻¹(h(f(x)))=x; 따라서 h(f(x))=g(x), h(t)=6t+19","mappedTo":["diagram"]}],
- "newVisualInformation":["h(0)=19와 h(1)=25의 입력-출력 대응"]
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "입력",
+        "elements": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "h의 값",
+        "elements": [
+          "19",
+          "25"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "h",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "합성 관계에서 구한 h의 두 입력과 출력을 대응시킨다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g⁻¹(h(f(x)))=x; 따라서 h(f(x))=g(x), h(t)=6t+19",
+      "mappedTo": [
+        "diagram"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "h(0)=19와 h(1)=25의 입력-출력 대응"
+  ],
+  "sourceQuote": "양변에 $g$를 적용하면"
 }

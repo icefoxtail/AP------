@@ -1,19 +1,136 @@
 {
- "capability":"multi-curve-figure-v1",
- "graphPlan":{
-  "family":"multi-curve","viewport":[-14,8,-3,6],"axisTickValues":{"x":["-3","2"],"y":["-1","2","4"]},
-  "curves":[
-   {"id":"left","kind":"SQRT","radicand":["-3","-1"],"offset":"-1","domain":["-14","-3"],"color":"BLUE","label":"y=sqrt(-x-3)-1"},
-   {"id":"mid","kind":"LINE","coefficients":["2","1"],"domain":["-3","2"],"color":"WARM","label":"y=x+2"},
-   {"id":"right","kind":"SQRT","radicand":["-2","1"],"amplitude":"-1","offset":"4","domain":["2","8"],"color":"GREEN","label":"y=-sqrt(x-2)+4"},
-   {"id":"horiz","kind":"LINE","coefficients":["2","0"],"domain":["-14","8"],"style":"DASHED","label":"y=2"}
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -14,
+      8,
+      -3,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "-3",
+          "-1"
+        ],
+        "offset": "-1",
+        "domain": [
+          "-14",
+          "-3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(-x-3)-1"
+      },
+      {
+        "id": "mid",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=x+2"
+      },
+      {
+        "id": "right",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "4",
+        "domain": [
+          "2",
+          "8"
+        ],
+        "color": "GREEN",
+        "label": "y=-sqrt(x-2)+4"
+      },
+      {
+        "id": "horiz",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-14",
+          "8"
+        ],
+        "style": "DASHED",
+        "label": "y=2"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "vert",
+          "x": "2",
+          "style": "DASHED",
+          "label": "x=2"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-12",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "예: t=2에서 수평선은 세 조각과 각각 만나고 수직선은 양의 함수값에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 x<=-3에서 sqrt(-x-3)-1, -3<x<2에서 x+2, x>=2에서 -sqrt(x-2)+4이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g(t)는 x=t에서 양의 교점 수, h(t)는 y=t와의 교점 수이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ],
-  "overlays":{
-   "lines":[{"id":"vert","x":"2","style":"DASHED","label":"x=2"}],
-   "points":[{"id":"A","x":"-12","y":"2","unnamed":true,"coordinates":true},{"id":"B","x":"0","y":"2","unnamed":true,"coordinates":true},{"id":"C","x":"6","y":"2","unnamed":true,"coordinates":true}]
-  }
- },
- "caption":"예: t=2에서 수평선은 세 조각과 각각 만나고 수직선은 양의 함수값에서 만난다.",
- "sourceConditions":[{"id":"c1","condition":"f는 x<=-3에서 sqrt(-x-3)-1, -3<x<2에서 x+2, x>=2에서 -sqrt(x-2)+4이다.","mappedTo":["graphPlan"]},{"id":"c2","condition":"g(t)는 x=t에서 양의 교점 수, h(t)는 y=t와의 교점 수이다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}],
- "newVisualInformation":["예시 t=2의 수평 교점 세 개와 양의 수직 교점"]
+  "newVisualInformation": [
+    "예시 t=2의 수평 교점 세 개와 양의 수직 교점"
+  ],
+  "sourceQuote": "수평선 교점 수를 위해 세 조각의 치역을 먼저 확인한다."
 }

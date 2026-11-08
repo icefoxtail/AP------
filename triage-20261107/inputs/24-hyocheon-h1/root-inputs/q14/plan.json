@@ -1,13 +1,79 @@
 {
- "capability":"multi-curve-figure-v1",
- "graphPlan":{
-  "family":"multi-curve",
-  "viewport":[-4,6,-1,10],
-  "axisTickValues":{"x":["1","2"],"y":["3"]},
-  "curves":[{"id":"f","kind":"RATIONAL","numerator":["3","-3"],"denominator":["-2","1"],"domain":["-4","6"],"abs":true,"color":"BLUE","label":"y=abs(-3/(x-2)-3)"}],
-  "overlays":{"points":[{"id":"A","x":"1","y":"0","unnamed":true,"coordinates":true},{"id":"B","x":"3/2","y":"3","unnamed":true,"coordinates":true}]}
- },
- "caption":"절댓값 유리함수의 세 가지와 y=0, y=3에서의 교점 수를 비교한다.",
- "sourceConditions":[{"id":"c1","condition":"x≠2, f(x)=|-3/(x-2)-3|","mappedTo":["graphPlan"]},{"id":"c2","condition":"보기 ㄱ~ㄹ에서 수평선과 (2,8)을 지나는 직선의 교점 수를 판정한다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}],
- "newVisualInformation":["수직점근선 x=2, 수평점근선 y=3, 접힌 점 (1,0), y=3과의 교점 (3/2,3)"]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "-3"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "abs": true,
+        "color": "BLUE",
+        "label": "y=abs(-3/(x-2)-3)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3/2",
+          "y": "3",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "절댓값 유리함수의 세 가지와 y=0, y=3에서의 교점 수를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≠2, f(x)=|-3/(x-2)-3|",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "보기 ㄱ~ㄹ에서 수평선과 (2,8)을 지나는 직선의 교점 수를 판정한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "수직점근선 x=2, 수평점근선 y=3, 접힌 점 (1,0), y=3과의 교점 (3/2,3)"
+  ],
+  "sourceQuote": "먼저 절댓값 안을 하나의 분수로 정리한다."
 }
