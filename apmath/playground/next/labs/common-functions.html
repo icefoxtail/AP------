@@ -2789,7 +2789,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (Number.isFinite(h) && h > 0) {
           const scale = (700 / 11.2) * 1.15;
           f = { x: [-70, Math.max(1070, 300 + 2 * h * scale + 55)], y: [Math.min(-70, 546 - 2 * h * scale - 65), 770] };
-        } else f = { x: [-70, 1070], y: [-70, 770] };
+        } else f = { x: [-70, 1070], y: [sc.id === 'bas-10' ? -210 : -70, 770] };
       }
       if (f) L.board.setFocus(f, true);
       L.invalidate(true);
