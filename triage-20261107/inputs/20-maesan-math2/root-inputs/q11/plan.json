@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "영점",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "도함수영점"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 y=f′(x)가 우함수이고, 도함수 그래프를 제시한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원 해설의 x절편은 −3,−1,1,3이고, 그 사이와 바깥의 도함수 부호는 차례로 −,+,−,+,−이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원 해설은 도함수 부호가 바뀌는 네 점에서 f가 극값을 갖는다고 한다. 보조 수직선은 원본 그림을 대체하지 않는다.",
+      "mappedTo": [
+        "numberLine",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사용자가 요청한 함수 관계 시각화 취지에 따라 도함수의 네 영점만 보조 수직선에 표시한다. 구간별 부호는 캡션에 적고 수직선에는 그리지 않는다.",
+    "원본 q11.png는 source-bound item에서 그대로 보존하며, 보조 그림은 새 함수식이나 그래프 높이를 주장하지 않는다."
+  ],
+  "caption": "원문에서 y=f′(x)는 우함수이고, 원본 q11.png는 그대로 보존한다. 보조 수직선에는 원 해설의 영점 −3,−1,1,3만 표시하며, 구간 부호 −,+,−,+,−는 이 캡션에만 적는다. 이 관계에서 f는 네 점에서 극값을 가지며, 새 함수식이나 곡선 높이는 정하지 않는다."
+}

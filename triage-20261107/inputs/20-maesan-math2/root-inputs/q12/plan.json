@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허용범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수포함범위"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 도함수는 f′(x)=3x²+2ax−a²+2a이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원 해설은 D=8a(2a−3)≤0에서 0≤a≤3/2를 얻는다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "허용 구간에 포함된 정수는 0,1 두 개이다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 일반적인 매개변수 a의 허용 구간 [0,3/2]와 그 구간에 든 정수 0,1을 표시한다.",
+    "경계 0과 3/2는 해설에서 도출된 정확한 구간 끝이며, 임의의 고정 예시를 일반 조건처럼 제시하지 않는다."
+  ],
+  "caption": "f′(x)=3x²+2ax−a²+2a의 판별식은 D=8a(2a−3)이다. 극값이 없을 조건은 D≤0이므로 0≤a≤3/2이다. 이 구간의 정수 a는 0과 1로 두 개이다."
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "a"
+          },
+          {
+            "id": "c"
+          },
+          {
+            "id": "b"
+          }
+        ],
+        "order": [
+          "a",
+          "c",
+          "b"
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "구간내부점"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 해설은 [x+1,x+3]에 평균값정리를 적용해 x+1<c_x<x+3을 얻는다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x가 무한대로 갈 때 c_x도 무한대로 가므로 f′(c_x)는 10에 수렴한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c3",
+      "condition": "원 해설의 관계식은 f(x+3)−f(x+1)=2f′(c_x)이며 극한은 20이다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "세 기호점은 x+1<c_x<x+3의 순서 관계만 나타내며, 고정된 좌표나 간격을 뜻하지 않는다.",
+    "특정한 함수 f나 평균값정리의 점 c_x를 임의로 정하지 않고, x가 커질 때 구간과 중간점이 오른쪽으로 이동하는 관계만 표현한다."
+  ],
+  "caption": "각 x에서 평균값정리로 어떤 c_x∈(x+1,x+3)가 존재한다. 수직선 기호점은 a=x+1,c=c_x,b=x+3으로 대응하며 a<c<b 순서만 나타낸다. 따라서 x→∞이면 c_x→∞이고 f′(c_x)→10이다. f(x+3)−f(x+1)=2f′(c_x)이므로 구하는 극한은 20이다. 점 사이 간격은 수치 비율을 뜻하지 않으며 특정 c_x나 f 그래프를 정하지 않는다."
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "-12",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -1,
+        4
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3-12x-10",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -26
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "원문의 닫힌 구간 [-1,4]를 유지해 자동으로 맞춘 그림에 두 끝점과 극값을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 [-1,4]에서 f(x)=x^3−12x+a의 최댓값이 6이라고 한다. 해설에서 a=−10을 얻는다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain",
+        "graphPlan.formula",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "닫힌 구간의 끝점과 내부 임계점에서 f(−1)=1, f(2)=−26, f(4)=6이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "구간 안 임계점 x=2와 양 끝점의 값을 함께 놓아 최댓값 조건과 최솟값을 비교한다."
+  ]
+}

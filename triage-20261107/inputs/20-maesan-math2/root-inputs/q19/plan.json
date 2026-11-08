@@ -1,0 +1,110 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-3",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "C",
+        "x": -1.7320508075688772,
+        "y": 0
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 1.7320508075688772,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "C": [
+        "-sqrt(3)",
+        "0"
+      ],
+      "O": [
+        "0",
+        "0"
+      ],
+      "D": [
+        "sqrt(3)",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -20,
+      20
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D"
+  ],
+  "caption": "p(x)=x³−3x의 정확한 삼차곡선은 실수 전체에서 정의된다. 극대점은 (−1,2), 극소점은 (1,−2)이며, y=a/2가 세 실근을 만들 수 있는 계수 범위는 −4≤a≤4이다. 양 끝에서는 한 근이 중근이므로 서로 다른 근은 2개이며, 세 실근은 중복도를 포함해 센다. a=0일 때 근은 −√3,0,√3이고 절댓값 합은 2√3이다. 최댓값 M=4, 최솟값 m=2√3이므로 M+m=4+2√3. 이 그림에는 수평선을 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2x^3-6x-a=0은 p(x)=x^3-3x=a/2와 같고 p의 전체 실수 그래프를 나타낸다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "p(-1)=2, p(1)=-2, 따라서 −4<=a<=4에서 세 실근을 중복도 포함해 갖고 경계에서는 중근이 있다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "a=0에서 근 −sqrt(3),0,sqrt(3)이고 절댓값 합 2sqrt(3); 경계에서 최대 4이므로 M+m=4+2sqrt(3).",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.exactCoordinates",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이 부분도에서는 수평선 y=a/2를 추가하지 않는다. 삼차곡선과 극값·근의 정확한 위치를 표시하고 수평선 교점 수, 중근 경계, M+m은 캡션으로 설명한다.",
+    "원문 p의 정의역은 실수 전체다. display window는 자동이며 정해진 수치 범위가 렌더된다고 주장하지 않는다."
+  ],
+  "sourceQuote": "$p(-1)=2$, $p(1)=-2$이므로 세 실근을 갖는 범위는 $-4\\le a\\le4$이다."
+}

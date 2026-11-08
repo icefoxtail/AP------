@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "-8",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 3,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "caption": "원문 정의역은 실수 전체이며 f의 세 조각을 정확히 나타낸다. 정의의 비엄격 부등식에 따라 정수 극대는 0, 1, 3이다. 실제로 0<x<2의 모든 점은 각각 극대이자 극소이고, x=2는 오른쪽에서 값이 커져 극대가 아니며 극소이다. 경계 x=0,2에서 함수값은 모두 0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x (x<0), f(x)=0 (0<=x<2), f(x)=-x^2+6x-8 (x>=2), 정의역은 실수 전체.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정의의 비엄격 부등식을 쓰면 정수 극대는 0,1,3이며 모든 0<x<2는 극대이자 극소이고 x=2는 극대가 아니다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=0,2의 실제 함수값을 포함해 전체 조각을 보이며, 수평 구간의 모든 내부점이 국소 극대와 극소임을 캡션에서 구별한다.",
+    "x=2에서 오른쪽 조각은 증가하므로 이 점은 국소 극대가 아니라 국소 극소다. 곡선은 원문 piecewise 정의 그대로이고 인위적 봉우리나 결합선을 추가하지 않는다."
+  ],
+  "sourceQuote": "따라서 답은 $0,1,3$이다."
+}

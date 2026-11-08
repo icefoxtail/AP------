@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coefficients": [
+      "3",
+      "9",
+      "-6",
+      "1"
+    ],
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -15,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 7
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 3
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B"
+  ],
+  "caption": "원문 함수의 실수 전체 정의역을 유지하고, 자동으로 맞춘 그림에 두 극값을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 f(x)=x^3+ax^2+bx+3이며 x=3에서 극솟값 3을 갖는다. 해설에서 f′(3)=0, f(3)=3, f″(3)>0으로 a=−6, b=9를 얻어 f(x)=x^3−6x^2+9x+3으로 정한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f′(x)=3(x−1)(x−3)에서 x=1은 극대, x=3은 극소이며 f(1)=7, f(3)=3이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 영점 두 곳을 극대점 A(1,7), 극소점 B(3,3)으로 읽는다."
+  ]
+}

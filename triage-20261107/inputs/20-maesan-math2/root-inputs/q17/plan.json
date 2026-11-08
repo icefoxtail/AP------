@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coefficients": [
+      "-43/8",
+      "45/2",
+      "-69/4",
+      "9/2",
+      "-3/8"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -60,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": -2
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": 4
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "실수 전체의 정의역을 유지한 자동 맞춤 그림에 대칭축과 세 극값을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 사차함수는 최고차항 계수가 음수이고 직선 x=3에 대칭이며 x=1에서 극댓값 4를 갖는다. 해설은 x=5에서 같은 극댓값, x=3에서 극솟값 −2를 유도한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "전개한 다항식은 −3/8 x^4+9/2 x^3−69/4 x^2+45/2 x−43/8이다.",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 대칭 극댓값 A(1,4), C(5,4)와 중앙 극솟값 B(3,−2)를 한 그래프에서 비교한다."
+  ]
+}

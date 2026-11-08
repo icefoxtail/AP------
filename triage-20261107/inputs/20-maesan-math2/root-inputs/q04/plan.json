@@ -1,0 +1,77 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coefficients": [
+      "0",
+      "-6",
+      "3"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -5,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        4
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "t",
+      "y": "x"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 2,
+        "y": 0
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "원문 시간영역 t≥0을 유지하며, 자동으로 맞춘 그림에는 유한한 일부 [0,4]를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위치 함수는 x(t)=3t²−6t이고 실제 시간은 t≥0이다. 그림은 이 원문 시간영역의 유한한 부분 [0,4]만 표시한다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "graphPlan.axisVariable",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "t=2일 때 x(2)=0이고 v(2)=x′(2)=6이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "newVisualInformation",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P(2,0)에서의 접선 기울기는 6이며, 이는 시각 t=2의 속도이다."
+  ]
+}

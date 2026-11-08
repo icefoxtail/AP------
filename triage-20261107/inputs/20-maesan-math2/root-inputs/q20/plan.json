@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "12",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-12",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "abs(2*abs(2*x-4)-4)",
+    "functionName": "g",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "D",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 4,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinateLeader": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "caption": "g(x)=f(f(x))=|2|2x−4|−4|의 실제 조각만 실수 전체에서 정확히 그린다. g(0),…,g(4)는 4,0,4,0,4이다. 원문 조건의 사차함수 h는 이 다섯 점을 지나는 보간 다항식이고 h′(4)=64/3이다. h 곡선은 이 그림에 그리지 않으며 64/3은 g의 도함숫값이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=|2x-4|, g=f∘f이며 g(x)=|2|2x-4|-4|의 네 선형 조각을 표시한다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g의 정수점 값은 (0,4),(1,0),(2,4),(3,0),(4,4)이다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "h는 동일한 정수점 사이 평균변화율과 h(4)=g(4)를 만족하는 사차함수이며 h′(4)=64/3. h 곡선은 그리지 않고 g′(4)와 구별한다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 합성함수 g의 네 piecewise-linear 조각과 정수점만 표시한다. 모든 실수 정의역을 유지하고 실제 조각 외의 곡선을 만들지 않는다.",
+    "h는 정수점 사이 평균변화율 조건으로 결정되는 별도 사차 보간함수다. 도식에는 h를 넣지 않고 h′(4)=64/3만 설명하며 이를 g의 도함수로 오인하지 않게 명시한다."
+  ],
+  "sourceQuote": "정수점에서 $g(0),g(1),g(2),g(3),g(4)$는 차례로 $4,0,4,0,4$이다."
+}

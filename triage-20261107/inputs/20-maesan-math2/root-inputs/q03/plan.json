@@ -1,0 +1,76 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coefficients": [
+      "7",
+      "-3",
+      "1"
+    ],
+    "domain": [
+      -2,
+      7
+    ],
+    "viewport": [
+      -2,
+      7,
+      0,
+      65
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 4,
+        "y": 11
+      }
+    ],
+    "lines": [
+      {
+        "id": "tangent",
+        "slope": "5",
+        "intercept": "-9",
+        "through": [
+          "P"
+        ],
+        "tangentAt": "P"
+      }
+    ]
+  },
+  "coordinateLeader": [
+    "P"
+  ],
+  "caption": "실수 전체의 정의역을 유지한 자동 맞춤 그림에 x=4의 점과 접선을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "미적분의 기본정리로 원문의 f(x)=d/dx∫₀ˣ(t²−3t+7)dt가 x²−3x+7이 된다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=4에서 f(4)=11, f′(4)=5이므로 접선은 y=5x−9이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.lines",
+        "coordinateLeader"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 기울기 5가 원문 극한값과 같음을 점 P(4,11)에서 확인한다."
+  ]
+}
