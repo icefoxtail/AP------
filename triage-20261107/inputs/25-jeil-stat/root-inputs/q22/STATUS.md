@@ -1,3 +1,8 @@
 # 25 제일고 고2 확률과통계 Q22
 원문 발문과 정답·해설을 직접 확인했다. 원문 문제 이미지는 없고 해설의 확률분포표는 HTML 표다. 카드를 먼저 고르고 흰 구슬 수로 나뉘는 수형도로 풀이의 조건부확률과 합산을 명확히 한다. 기존 HTML 표와 기존 산출물은 유지한다. 엔진 stat-chart TREE의 깊이·가지 확률 합 계약에 맞춰 작성한 ROOT 초안이다. 학생 이해에 수형도가 도움이 된다는 사용자 지시를 반영했다.
 BRANCH DRAFT. 입력 3종을 작업 브랜치에 보존했다. 확인한 main 원장은 전체 23문항 중 PUBLISHED 10, EXEMPT 12, Q22만 OPEN_LAYOUT이다. Q22는 원문 이미지 참조와 canonical 자산 폴더의 그림이 없으며 기존 원격 입력도 없었다. 원문·기존 산출물·원장의 판정·검수 이력은 변경하지 않았다. 현재 외부 로컬 소유와 누적 시도는 UNKNOWN, 공식 validator·렌더 NOT_RUN이며 READY_FOR_RENDER가 아니다. 지정 구현자 중단 지시를 유지하여 미인계 상태로 둔다. 다른 작업의 심사 거절을 우회하거나 재시도하지 않는다.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 각 카드가 선택될 확률을 곱해 더하면
