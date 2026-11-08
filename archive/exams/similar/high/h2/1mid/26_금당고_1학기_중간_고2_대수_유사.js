@@ -1170,7 +1170,7 @@ window.questionBank = [
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER",
-      "EXT-COND-EXACT-ROOT-COUNT"
+      "COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION"
     ],
     "integrationPattern": "DEEP_COMPOSITE",
     "rpmPrimaryL1": "지수함수와 로그함수",

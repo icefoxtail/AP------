@@ -109,13 +109,13 @@
       "canonicalRpmPromotion": false,
       "labelKo": "거듭제곱수 조건을 소인수 지수의 배수 조건으로 번역",
       "definition": "자연수가 k제곱수(k제곱근이 자연수)가 될 조건을, 소인수분해에서 모든 소인수의 지수가 k의 배수라는 조건으로 바꾸고, 서로 다른 k의 조건이 겹칠 때 지수의 합동 조건을 연립해 최소 지수를 구하는 개념.",
-      "parentKey": "CC_SQUARE_NUMBER",
-      "parentLabelKo": "제곱수",
+      "parentKey": "CC_PRIME_FACTORIZATION_SQUARE",
+      "parentLabelKo": "소인수분해를 이용한 제곱수 만들기",
       "standardUnitKey": "H22-A-01",
       "subUnitKey": "H22-A-01-EXPONENT_LOG",
       "standardCourse": "대수",
       "curriculum": "2022",
-      "basis": "CC_SQUARE_NUMBER는 지수가 모두 짝수인 수(제곱수)만 다루고, 세제곱수·네제곱수처럼 k가 다른 거듭제곱수 조건을 지수의 배수 조건으로 연립하는 개념을 구분하지 못한다.",
+      "basis": "CC_PRIME_FACTORIZATION_SQUARE는 모든 소인수의 지수가 짝수가 되도록 하는 제곱수 만들기만 다루고, 세제곱수·네제곱수처럼 k가 다른 거듭제곱수 조건을 지수의 배수 조건으로 연립해 최소 지수를 구하는 개념을 구분하지 못한다.",
       "firstUsed": {
         "stem": "26_금당고_1학기_중간_고2_대수_유사",
         "qid": 13
@@ -129,33 +129,7 @@
       "aliases": []
     }
   ],
-  "generatedConditions": [
-    {
-      "key": "EXT-COND-EXACT-ROOT-COUNT",
-      "status": "GENERATED_ACTIVE",
-      "canonicalRpmPromotion": false,
-      "labelKo": "방정식의 실수해 개수 정확 지정 조건",
-      "definition": "조건을 만족하는 실수 t(또는 변수)의 개수가 정확히 n개여야 한다는 조건으로, 치환한 이차방정식의 양의 근의 개수나 매개변수의 값을 판정하는 데 직접 영향을 주는 경우.",
-      "parentKey": "COND_EXACT_INTERSECTION_COUNT",
-      "parentLabelKo": "교점 개수 정확 지정 조건",
-      "standardUnitKey": "H22-A-02",
-      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-      "standardCourse": "대수",
-      "curriculum": "2022",
-      "basis": "COND_EXACT_INTERSECTION_COUNT는 두 도형·그래프의 교점 개수 지정이며, 두 점 사이의 거리 조건을 만족하는 실수 t의 개수를 지정하는 조건을 구분하지 못한다.",
-      "firstUsed": {
-        "stem": "26_금당고_1학기_중간_고2_대수_유사",
-        "qid": 21
-      },
-      "provenance": {
-        "sourceExam": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
-        "generator": "claude-similar-high-gen",
-        "createdAt": "2026-11-08",
-        "reviewRequired": true
-      },
-      "aliases": []
-    }
-  ],
+  "generatedConditions": [],
   "reusedGeneratedKeys": [],
   "aliasProposals": [],
   "uidAssignments": [
@@ -185,13 +159,6 @@
       "qid": 18,
       "generatedKeys": [
         "EXT-L4-ALG-LOG-GRAPH-MIRROR-ABOUT-ASYMPTOTE"
-      ]
-    },
-    {
-      "stem": "26_금당고_1학기_중간_고2_대수_유사",
-      "qid": 21,
-      "generatedKeys": [
-        "EXT-COND-EXACT-ROOT-COUNT"
       ]
     }
   ],
