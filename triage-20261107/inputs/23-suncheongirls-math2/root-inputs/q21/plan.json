@@ -1,0 +1,41 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "항상 $f(x_1)<f(x_2)$",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "3",
+        "6",
+        "12"
+      ]
+    }
+  },
+  "caption": "예: 경계에서 도함수가 x축에 접하며 음수가 되지 않는 관계를 보여 준다."
+}
