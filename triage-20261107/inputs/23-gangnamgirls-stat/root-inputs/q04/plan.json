@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$f(x)=kx \\, (0 \\le x \\le 3)$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2/9"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "2/3"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "0",
+        "to": "3"
+      }
+    ]
+  },
+  "caption": "확률밀도함수의 전체 면적이 1인 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률밀도함수의 전체 면적이 1인 관계.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "확률밀도함수의 전체 면적이 1인 관계."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "120",
+        "sd": "10",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "110",
+      "120",
+      "130"
+    ],
+    "shades": [
+      {
+        "from": "110",
+        "to": "120"
+      },
+      {
+        "from": "120",
+        "to": "130"
+      }
+    ],
+    "zAxis": true,
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.3413"
+      },
+      {
+        "shade": 1,
+        "text": "0.3413"
+      }
+    ]
+  },
+  "caption": "정규근사 후 평균 양쪽의 표준정규 면적을 합하는 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정규근사 후 평균 양쪽의 표준정규 면적을 합하는 관계.",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "$P(110 \\le X \\le 130)$",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "정규근사 후 평균 양쪽의 표준정규 면적을 합하는 관계."
+  ]
+}
