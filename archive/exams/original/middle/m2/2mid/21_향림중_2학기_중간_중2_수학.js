@@ -346,6 +346,7 @@ window.examData = {
 };
 
 window.examTitle = window.examData.title;
+window.examData.questions =
 window.questionBank = [
   {
     "id": 1,
