@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "12",
+        "sd": "3",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "12",
+      "15",
+      "18"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "15"
+      },
+      {
+        "from": "18",
+        "to": null
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "평균 12인 분포에서 주어진 경계와 음영 영역의 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 12인 분포에서 주어진 경계와 음영 영역의 관계",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "source",
+      "condition": "$t^2 - 2Xt + 33X - 270 = 0$",
+      "mappedTo": "chart"
+    },
+    {
+      "id": "extra0",
+      "condition": "$B\\left(48, \\frac{1}{4}\\right)$",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 12인 분포에서 주어진 경계와 음영 영역의 관계"
+  ]
+}
