@@ -2574,7 +2574,7 @@ function htmlApprox(){
       snt: { value: 3 * PI / 4, min: 0, max: TAU, step: 'any', color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't ' + (nearExact(v/(PI/12),Math.round(v/(PI/12))) ? '= '+piTextOf(v) : '≈ '+v.toFixed(3)) },
       cvt: { value: PI / 3, min: 0, max: TAU - .001, step: 'any', color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ: '+degText(v) },
       twk: { value: .5, min: .1, max: Math.SQRT1_2, step: 'any', color: 'rose', label: '평행선의 높이 $k$', hint: '슬라이더는 자유조작, 아래 특수값 버튼으로 정확한 위치 선택', format: (v) => 'k ' + (nearExact(v,.5) ? '= 1/2' : nearExact(v,Math.SQRT1_2) ? '= √2/2' : '≈ ' + v.toFixed(4)) },
-      rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '슬라이더·노란 점은 자유조작, 아래 특수값 버튼은 정확한 값', format: (v) => 't ' + tTxt(v) }
+      rst: { value: .5, min: -1.15, max: 1.15, step: 'any', color: 'amber', label: '수평선 높이 $y=t$', hint: '슬라이더·노란 점은 자유조작, 아래 특수값 버튼은 정확한 값', format: (v) => { const vals = [[0,'0'],[.5,'1/2'],[-.5,'−1/2'],[Math.SQRT1_2,'√2/2'],[-Math.SQRT1_2,'−√2/2'],[Math.sqrt(3)/2,'√3/2'],[-Math.sqrt(3)/2,'−√3/2'],[1,'1'],[-1,'−1']]; const hit = vals.find(([n]) => Math.abs(n - v) < 1e-9); return hit ? 't = ' + hit[1] : 't ≈ ' + v.toFixed(4).replace('-', '−'); } }
     },
     state: INIT,
     scenes: SCENES.map(sceneOf).concat(EXT_SCENES)
