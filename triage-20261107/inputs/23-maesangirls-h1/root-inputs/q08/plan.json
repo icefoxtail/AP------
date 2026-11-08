@@ -1,0 +1,13 @@
+{
+ "capability":"multi-curve-figure-v1",
+ "graphPlan":{
+  "family":"multi-curve","viewport":[-4,3,-1,5],"axisTickValues":{"x":["2"],"y":["1"]},
+  "curves":[
+   {"id":"g","kind":"SQRT","radicand":["0","-2"],"domain":["-4","0"],"color":"WARM","label":"y=sqrt(-2x)"},
+   {"id":"f","kind":"SQRT","radicand":["4","-2"],"offset":"1","domain":["-4","2"],"color":"BLUE","label":"y=sqrt(4-2x)+1"}
+  ]
+ },
+ "caption":"원래 무리함수의 시작점과 평행이동한 그래프의 시작점을 비교한다.",
+ "sourceConditions":[{"id":"c1","condition":"y=sqrt(4-2x)+1, y=sqrt(-2x)","mappedTo":["graphPlan"]}],
+ "newVisualInformation":["시작점 (0,0)에서 (2,1)로의 평행이동과 정의역·치역"]
+}
