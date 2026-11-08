@@ -18,9 +18,9 @@
 
 해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인의 기존 현황·공통 품질 기준은 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 읽는다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`다. Claude 실행 방식과 Codex 실행 방식을 혼용하지 않는다.
 
-### Codex 실행 경로 (2026-11-04, 사용자 지시)
+### Codex 실행 경로 (2026-11-08, 사용자 지시)
 
-Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)을 먼저 읽는다. 현재 관리자는 Astra medium이며, ROOT가 원문과 실제 문제 그림을 확인해 시험지와 정확한 문항별로 쓰기 경로가 겹치지 않게 배정한다. 제작은 서로 다른 `gpt-6-luna` high 인스턴스 여러 명이 맡고, 각 제작자는 배정된 문항의 원문·해설·실제 그림을 읽어 자기 run 안에서만 초안과 지적 수리를 한다. 별도 `gpt-6-luna` xhigh가 실제 렌더된 SVG·PNG와 alt·caption을 독립 검수하고, 바뀐 해시만 재검한다. ROOT는 모든 최종 SVG와 PNG를 직접 확인하고 전체 렌더 큐·게시·원장·Git을 책임진다. 엔진 업그레이드·엔진 공백 진단·어려운 문항이나 배치 차단은 `gpt-6.1-sol` high가 맡는다. 어려움·범위·실패 횟수에 따라 Astra로 자동 승격하지 않으며, 담당을 바꾸려면 사용자의 별도 지시가 필요하다. 기존 Astra 완료 진단은 과거 이력으로 보존한다. 관리자 추론 수준은 Astra medium으로 유지한다. 이 라인에서는 DeepSeek·OpenCode를 사용하지 않으며 모델 연결 실패를 조용히 대체하지 않는다. 이유: 현재 담당을 분명히 하면서 기존 완료 기록과 별도 사용자 승인 경계를 보존하기 위해서다.
+Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)과 그 문서가 연결한 `codex-firstpass-claude-handoff.md`를 따른다. 각 검수 요청은 배정된 시험지의 빠른 1차 검수·가능한 수리로 처리하고 자동 2차 재검수나 구현자 반송을 기다리지 않는다. 사용자 지정으로 서로 다른 qid를 병렬 검수할 수 있지만, q별 브랜치는 만들지 않는다. 시험지 전체 질문에 상태가 붙으면 미해결이 남아도 latest-main 기반 단일 시험지 handoff 브랜치와 `CLAUDE_HANDOFF` queue line으로 Claude에게 넘긴다. Codex는 main 병합·게시를 하지 않고 Claude가 최종 검수와 main 반영을 맡는다. 이유: 미해결 항목을 사유와 함께 빠르게 인계해 다음 라인이 지체 없이 이어가게 하기 위해서다.
 
 아래 공통 프롬프트에서는 현재 그림 품질 기준만 유지한다. 그 안의 과거 모델·역할·실행 명령은 Codex에 적용하지 않으며, Codex의 환경·역할·게시 명령은 전용 계약이 우선한다. Windows 이식 도구와 관련 실행 검증은 완료했다. 현재 승인된 10개 시험지 묶음은 제작·독립 검수·로컬 게시를 마쳤다. main 병합 상태는 Codex 인계 문서의 PR에서 확인한다. run의 중간 SVG·PNG는 `.tmp`의 임시 QA 자료이며 Git에 넣지 않고, 검수된 최종 운영 SVG만 `archive/assets/images`에 게시한다. 승인된 10개 시험지의 제작·검수 후 평면·입체·그래프·확률 등 검수 통과 대표 그림 여러 장(기본 4~6개)을 모아 사용자에게 먼저 보여준다. 필수 CI 녹색을 확인한 뒤 main 병합·원격 readback·실제 학생 페이지 QA 결과를 보고하고 멈춘다. 다음 묶음이나 G14는 별도 사용자 지시 전 시작하지 않는다.
 

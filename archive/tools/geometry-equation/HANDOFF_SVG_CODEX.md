@@ -6,6 +6,10 @@
 Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동시 실행은 이 문서를 따른다.
 그림의 수학·교육 기준은 기존 정본을 따른다. 이 문서 작성은 생산·게시·검수 완료가 아니다.
 
+## 현재 1차 검수 호출 — Claude 시험지 handoff
+
+현재 Codex 검수 호출은 [`ops/svg-m1/briefs/codex-firstpass-claude-handoff.md`](ops/svg-m1/briefs/codex-firstpass-claude-handoff.md)를 따른다. 최신 사용자 지시가 이 문서의 과거 독립 2차 검수·reviewer branch 문구와 다르면 현재 호출을 우선한다. Codex는 요청된 시험지 문항을 1차 검수하고 가능한 문제를 직접 수리하며, 모든 문항에 상태가 붙으면 OPEN이 남아도 시험지 단위 handoff를 Claude에 즉시 보낸다. Claude가 최종 검수와 main 반영을 맡는다.
+
 ## 1. 시작 전에 읽을 것
 
 - 저장소 루트 `AGENTS.md`, `docs/agents/visual-svg.md`, `docs/agents/common.md`, `archive/AGENTS.md`.
@@ -20,7 +24,7 @@ Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동�
 
 - **ROOT(관리자 Astra medium)**: 시험지와 정확한 문항별 배정을 확정하고, 원문·실제 문제 그림·해설·정답 및 현재 자산을 직접 확인한다. 질문별 run 경로와 쓰기 허용 파일을 지정하고, 전역 렌더 큐와 시도 예산을 관리한다. 최종 SVG와 PNG를 모두 직접 확인하고 독립 검수 결과를 수납한 뒤 게시·원장·Git을 책임진다.
 - **Luna 제작자**: 서로 다른 `gpt-6-luna` high 인스턴스 여러 명이 맡는다. 각 인스턴스에는 겹치지 않는 정확한 문항과 그 문항의 쓰기 경로만 배정한다. 제작자는 packet의 발문·정답·해설과 실제 원본 그림을 직접 읽고, 소유한 run 안에서 item·plan·publish 초안을 작성하고 해당 문항 지적만 수리한다. 엔진, 시험지 JS, 공유 원장, 공용 파일, 다른 문항 run은 변경하지 않는다. 허용 경로 밖 변경이 필요하면 경로·이유·재현 근거를 ROOT에 보고한다.
-- **독립 검수자**: 별도 `gpt-6-luna` xhigh 인스턴스가 실제 SVG·PNG, 원문·정답·해설 및 alt·caption을 독립 검수한다. 최초 배정분 전체를 확인하고, 이후에는 바뀐 해시의 문항만 재검한다. 검수자는 원문 읽기, 해시 계산, 독립 수학 계산과 실제 그림 확인을 수행한다. 허용된 검수 결과물 외 파일 수정, 그림 수리, 렌더, 테스트 실행, 게시와 Git은 맡지 않는다.
+- **1차 검수자**: 최신 호출의 정확한 QID를 맡아 원문·정답·해설·실제 SVG/after·alt/caption을 독립 확인한다. 허용된 범위의 candidate 결함은 공식 절차로 직접 수리하고, 수리가 불가능하면 구체 이유와 마지막 입력을 OPEN/NOT_RUN로 기록한다. 자동 2차 검수로 보내거나 구현자에게 수리를 반송하지 않는다. 모든 QID를 시험지 단위 Claude handoff에 수납한 뒤 Claude가 최종 검수한다.
 - 별도 인스턴스에는 필요한 원문·필수 조건·정확한 문항·경로·쓰기 허용 목록을 명시한다. 사용자 지시 없는 재위임은 금지한다. DeepSeek/OpenCode를 호출하지 않으며, 모델을 사용할 수 없으면 정확한 실패 사유를 ROOT에 보고하고 대체하지 않는다.
 - **엔진 업그레이드·진단**: `gpt-6.1-sol` high가 엔진 업그레이드와 공백 진단, 어려운 문항·배치 차단 분석을 맡는다. 관리자 추론 수준 Astra medium은 유지하며, 난도·범위·실패 횟수를 근거로 Astra에 자동 승격하지 않는다. 담당 변경은 사용자의 별도 지시가 있어야 한다. Astra가 이전에 완료한 진단은 역사 기록으로 보존하고 현행 담당 배정으로 해석하지 않는다. 제작자의 개별 plan·그림 수리 역할과 혼동하지 않는다.
 
@@ -64,7 +68,7 @@ Claude용 `HANDOFF_SVG_ENGINE.md`는 유지한다. Codex의 모델·역할·동�
 4. Luna 제작자는 원문 packet과 실제 원본 그림을 확인한 뒤 item·plan·publish를 작성한다. 계획이 끝나면 ROOT가 승인한 예산과 고유 revision으로 `render-request.json`을 준비한다. `.rendering`이 있는 동안 입력을 수정하지 않는다.
 5. ROOT만 전역 큐를 한 번에 하나씩 실행한다. `.tmp/svg-m1/runs/.../out/`의 실제 SVG와 PNG는 시각 QA용 임시 출력이며 Git에 넣지 않는다. 같은 출력 폴더 재렌더 전에 ROOT가 provenance 충돌을 방지하고 상태·오류·경로·시도 수를 기록한다.
 6. 순서는 draft → ROOT 큐 → 실제 SVG·PNG → 독립 검수다. ROOT는 실제 SVG와 PNG를 원문·해설·정답에 직접 대조하며, 계획이나 제작자 보고만으로 PASS하지 않는다.
-7. 별도 Luna xhigh가 실제 SVG·PNG와 alt·caption을 독립 검수한다. FAIL은 같은 문항 소유 Luna에게 구체적으로 돌려주고, 실제 렌더 후 바뀐 문항만 같은 xhigh가 재검한다. PASS는 게시 필요조건이며 최종 게시 여부는 ROOT가 판단한다.
+7. Codex 1차 검수자는 배정된 QID를 원문·해설과 대조하고, 가능한 수리를 직접 수행한다. OPEN/NOT_RUN도 구체 사유와 마지막 입력으로 남긴다. 모든 시험지 문항에 상태가 붙으면 exam-level handoff를 Claude에 넘긴다. Claude의 최종 검수와 main 반영 전에는 Codex가 게시 승인으로 간주하지 않는다.
 8. 각 단계의 SVG·PNG·publish.json 세 SHA-256을 검수·게시 기록에 결속한다. 셋 중 하나가 바뀌면 영향 범위를 다시 확인하고 재검한다.
 9. 검증된 게시 경로에서만 실제 게시·표시 확인·관련 테스트·원장 갱신을 수행한다.
    승인된 묶음 안에서 처리된 시험지의 상태, 소요 시간과 잔여 사유를 기록한다.
