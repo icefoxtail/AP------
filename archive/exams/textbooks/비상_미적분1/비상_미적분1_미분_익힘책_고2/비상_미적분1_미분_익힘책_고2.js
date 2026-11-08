@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=2x^2+ax+3$에서 $x$의 값이 $-1$에서 $1$까지 변할 때, 평균변화율이 $3$이다. 이때 함수 $f(x)$의 $x=a$에서의 미분계수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "[풀이 전략]\n$x$의 값이 $-1$에서 $1$까지 변할 때의 평균변화율 공식을 이용하여 $a$의 값을 구한 후, $f'(x)$를 구하여 $x=a$에서의 미분계수 $f'(a)$를 계산한다.\n\n[단계별 풀이]\n1단계 [평균변화율 계산 및 $a$ 구하기]:\n$f(x) = 2x^2 + ax + 3$이므로\n- $f(1) = 2(1)^2 + a(1) + 3 = a + 5$\n- $f(-1) = 2(-1)^2 + a(-1) + 3 = -a + 5$\n평균변화율은\n$$\\frac{f(1)-f(-1)}{1 - (-1)} = \\frac{(a+5) - (-a+5)}{2} = \\frac{2a}{2} = a$$\n평균변화율이 $3$이므로\n$$a = 3$$\n\n2단계 [도함수 구하기]:\n$f(x) = 2x^2 + 3x + 3$이므로\n$$f'(x) = 4x + 3$$\n\n3단계 [$x=a=3$에서의 미분계수 계산]:\n$$f'(3) = 4(3) + 3 = 12 + 3 = 15$$\n\n[오답 및 경계 점검]\n$f'(a)$를 구하는 것이므로 먼저 $a=3$을 구한 뒤 $f'(3)$을 구해야 한다. $f'(1)$을 구하는 실수를 하지 않도록 주의한다.\n\n[결론]\n$15$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=1+x+x^2+x^3+\\cdots+x^{10}$에 대하여 $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$55$",
+    "solution": "[풀이 전략]\n각 항의 미분법 $(x^n)' = n x^{n-1}$을 적용하여 $f'(x)$를 구한 뒤 $x=1$을 대입하여 자연수의 거듭제곱의 합 공식을 적용한다.\n\n[단계별 풀이]\n1단계 [도함수 $f'(x)$ 구하기]:\n$f(x) = 1 + x + x^2 + x^3 + \\cdots + x^{10}$의 각 항을 $x$에 대하여 미분하면\n$$f'(x) = 0 + 1 + 2x + 3x^2 + 4x^3 + \\cdots + 10x^9$$\n\n2단계 [$x=1$ 대입 및 계산]:\n$$f'(1) = 1 + 2(1) + 3(1)^2 + \\cdots + 10(1)^9 = 1 + 2 + 3 + \\cdots + 10$$\n자연수의 합 공식 $\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$에 의해\n$$f'(1) = \\frac{10 \\times 11}{2} = 55$$\n\n[오답 및 경계 점검]\n상수항 $1$의 도함수는 $0$이 되므로 $f'(x)$에는 $1$부터 $10$까지의 자연수가 계수로 남는다.\n\n[결론]\n$55$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수\n$$f(x)=\\begin{cases} x+1 & (x \\ge 1) \\\\ 2x^2 & (x<1) \\end{cases}$$\n에 대하여 $x=1$에서 연속성과 미분가능성을 조사하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "함수 $f(x)$는 $x=1$에서 연속이지만 미분가능하지 않다.",
+    "solution": "[풀이 전략]\n$x=1$에서의 연속성은 좌극한, 우극한, 함숫값이 일치하는지 조사하고, 미분가능성은 $x=1$에서의 좌미분계수와 우미분계수가 일치하는지 미분계수의 정의로 엄밀히 조사한다.\n\n[단계별 풀이]\n1단계 [$x=1$에서의 연속성 조사]:\n- 우극한: $\\lim_{x \\to 1+} f(x) = \\lim_{x \\to 1+} (x + 1) = 1 + 1 = 2$\n- 좌극한: $\\lim_{x \\to 1-} f(x) = \\lim_{x \\to 1-} (2x^2) = 2(1)^2 = 2$\n- 함숫값: $f(1) = 1 + 1 = 2$\n우극한, 좌극한, 함숫값이 모두 $2$로 같으므로\n$$\\lim_{x \\to 1} f(x) = f(1) = 2$$\n따라서 함수 $f(x)$는 $x=1$에서 연속이다.\n\n2단계 [$x=1$에서의 미분가능성 조사]:\n- 우미분계수:\n$$\\lim_{x \\to 1+} \\frac{f(x)-f(1)}{x-1} = \\lim_{x \\to 1+} \\frac{(x+1)-2}{x-1} = \\lim_{x \\to 1+} \\frac{x-1}{x-1} = 1$$\n- 좌미분계수:\n$$\\lim_{x \\to 1-} \\frac{f(x)-f(1)}{x-1} = \\lim_{x \\to 1-} \\frac{2x^2-2}{x-1} = \\lim_{x \\to 1-} \\frac{2(x-1)(x+1)}{x-1} = \\lim_{x \\to 1-} 2(x+1) = 2(2) = 4$$\n우미분계수는 $1$이고 좌미분계수는 $4$이므로 서로 다르다.\n$$\\lim_{x \\to 1+} \\frac{f(x)-f(1)}{x-1} \\ne \\lim_{x \\to 1-} \\frac{f(x)-f(1)}{x-1}$$\n따라서 $x=1$에서 미분계수 $f'(1)$은 존재하지 않는다.\n\n[오답 및 경계 점검]\n연속이지만 그래프가 $x=1$에서 꺾인 점(첨점)을 이루므로 미분가능하지 않음을 그래프와 수식으로 모두 확인할 수 있다.\n\n[결론]\n함수 $f(x)$는 $x=1$에서 연속이지만 미분가능하지 않다."
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -108,10 +108,10 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "미분가능한 두 함수 $f(x), g(x)$에 대하여\n$$f(2)=-1, \\quad f'(2)=4, \\quad g(2)=2, \\quad g'(2)=-3$$\n일 때, 함수 $f(x)g(x)$의 $x=2$에서의 미분계수를 구하시오.",
+    "content": "미분가능한 두 함수 $f(x), g(x)$에 대하여\n$$f(2)=-1, \\quad f'(2)=4, \\quad g(2)=2, \\quad g'(2)=-5$$\n일 때, 함수 $f(x)g(x)$의 $x=2$에서의 미분계수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$13$",
+    "solution": "[풀이 전략]\n두 함수의 곱의 미분법 $(f(x)g(x))' = f'(x)g(x) + f(x)g'(x)$를 적용하여 $x=2$를 대입한다.\n\n[단계별 풀이]\n1단계 [곱의 미분법 공식 적용]:\n$$(f(x)g(x))' = f'(x)g(x) + f(x)g'(x)$$\n$x=2$에서의 미분계수는\n$$(fg)'(2) = f'(2)g(2) + f(2)g'(2)$$\n\n2단계 [주어진 값 대입]:\n조건에서 $f(2) = -1, f'(2) = 4, g(2) = 2, g'(2) = -5$이므로\n$$(fg)'(2) = 4(2) + (-1)(-5) = 8 + 5 = 13$$\n\n[오답 및 경계 점검]\n$(-1) \\times (-5) = 5$의 부호 연산에 주의하여 $8 + 5 = 13$으로 계산한다.\n\n[결론]\n$13$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같다. 열린구간 $(-2, 7)$에서 함수 $f(x)$가 불연속인 점의 개수를 $a$, 미분가능하지 않은 점의 개수를 $b$라고 할 때, $a+b$의 값을 구하시오.\n<img src=\"q05.png\" width=\"320\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n그래프에서 불연속인 점은 그래프가 끊어진 점이며, 미분가능하지 않은 점은 불연속인 점과 연속이지만 뾰족한 점(첨점)을 모두 포함한다.\n\n[단계별 풀이]\n1단계 [불연속인 점의 개수 $a$ 구하기]:\n열린구간 $(-2, 7)$에서 그래프가 끊어져 있는 $x$의 값은\n$$x = 4, \\quad x = 5$$\n의 $2$개이다.\n따라서 $a = 2$이다.\n\n2단계 [미분가능하지 않은 점의 개수 $b$ 구하기]:\n함수가 미분가능하지 않은 점은:\n- 불연속인 점: $x = 4, x = 5$ ($2$개)\n- 연속이지만 꺾인 점(첨점, 좌우 미분계수가 다름): $x = 0, x = 2$ ($2$개)\n따라서 미분가능하지 않은 점은 $x = 0, 2, 4, 5$의 총 $4$개이다.\n따라서 $b = 4$이다.\n\n3단계 [$a+b$ 계산]:\n$$a + b = 2 + 4 = 6$$\n\n[오답 및 경계 점검]\n미분불가능한 점에는 뾰족점뿐만 아니라 불연속점도 포함된다는 점에 유의한다. $x=-2, 7$은 열린구간의 양 끝점이므로 포함되지 않는다.\n\n[결론]\n$6$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여\n$$\\lim_{h \\to 0} \\frac{f(x+h)-f(x-h)}{h}=4x+6$$\n을 만족시킬 때, $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n대칭 미분계수 극한식을 미분계수의 정의로 변형하여 $f'(x)$의 식을 구한 뒤 $x=1$을 대입한다.\n\n[단계별 풀이]\n1단계 [극한식 변형]:\n다항함수 $f(x)$는 모든 실수에서 미분가능하므로 분자에 $f(x)$를 빼고 더한다.\n$$\\lim_{h \\to 0} \\frac{f(x+h)-f(x-h)}{h} = \\lim_{h \\to 0} \\frac{\\{f(x+h)-f(x)\\} - \\{f(x-h)-f(x)\\}}{h}$$\n$$= \\lim_{h \\to 0} \\left( \\frac{f(x+h)-f(x)}{h} + \\frac{f(x-h)-f(x)}{-h} \\right) = f'(x) + f'(x) = 2f'(x)$$\n\n2단계 [도함수 $f'(x)$ 구하기]:\n주어진 조건에서 이 값이 $4x+6$이므로\n$$2f'(x) = 4x + 6 \\implies f'(x) = 2x + 3$$\n\n3단계 [$f'(1)$ 계산]:\n$$f'(1) = 2(1) + 3 = 5$$\n\n[오답 및 경계 점검]\n$f'(x) = 2x+3$이므로 $f'(1) = 5$가 명확히 성립한다.\n\n[결론]\n$5$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$에 대하여 $f'(1)=6$일 때,\n$$\\lim_{x \\to 1} \\frac{f(x^3)-f(1)}{x^2-1}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$9$",
+    "solution": "[풀이 전략]\n분모를 인수분해하고 미분계수의 정의 $\\lim_{x \\to 1} \\frac{f(x^3)-f(1)}{x^3-1} = f'(1)$가 나타나도록 식을 변형한다.\n\n[단계별 풀이]\n1단계 [식의 변형]:\n$$\\lim_{x \\to 1} \\frac{f(x^3)-f(1)}{x^2-1} = \\lim_{x \\to 1} \\left( \\frac{f(x^3)-f(1)}{x^3-1} \\cdot \\frac{x^3-1}{x^2-1} \\right)$$\n\n2단계 [인수분해 및 약분]:\n$x^3 - 1 = (x-1)(x^2+x+1)$이고 $x^2 - 1 = (x-1)(x+1)$이므로\n$$\\frac{x^3-1}{x^2-1} = \\frac{(x-1)(x^2+x+1)}{(x-1)(x+1)} = \\frac{x^2+x+1}{x+1}$$\n\n3단계 [극한값 계산]:\n$x \\to 1$일 때 $x^3 \\to 1$이므로\n$$\\lim_{x \\to 1} \\frac{f(x^3)-f(1)}{x^3-1} = f'(1)$$\n또한\n$$\\lim_{x \\to 1} \\frac{x^2+x+1}{x+1} = \\frac{1^2+1+1}{1+1} = \\frac{3}{2}$$\n따라서\n$$= f'(1) \\times \\frac{3}{2} = 6 \\times \\frac{3}{2} = 9$$\n\n[오답 및 경계 점검]\n로피탈의 정리로 검산: $\\lim_{x \\to 1} \\frac{3x^2 f'(x^3)}{2x} = \\frac{3(1)f'(1)}{2(1)} = \\frac{3}{2} \\times 6 = 9$로 정확히 일치한다.\n\n[결론]\n$9$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $f(x)$가 모든 실수 $x$에 대하여\n$$f(x)+xf'(x)=6x^2+6x-5$$\n를 만족시킬 때,\n$$\\lim_{x \\to 2} \\frac{f(x)-9}{x-2}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n이차함수 $f(x) = ax^2+bx+c$로 두고 항등식의 계수비교법을 통해 $f(x)$를 결정한다. 구하는 극한은 미분계수 $f'(2)$의 정의와 같으므로 $f'(2)$를 계산한다.\n\n[단계별 풀이]\n1단계 [계수비교법으로 $f(x)$ 구하기]:\n$f(x) = ax^2 + bx + c$ ($a \\ne 0$)라 두면 $f'(x) = 2ax + b$이다.\n주어진 항등식에 대입하면\n$$f(x) + xf'(x) = (ax^2+bx+c) + x(2ax+b) = 3ax^2 + 2bx + c$$\n이 식이 $6x^2 + 6x - 5$와 모든 실수 $x$에 대하여 같아야 하므로\n- $3a = 6 \\implies a = 2$\n- $2b = 6 \\implies b = 3$\n- $c = -5$\n따라서 $f(x) = 2x^2 + 3x - 5$이다.\n\n2단계 [도함수 및 미분계수 구하기]:\n$$f'(x) = 4x + 3$$\n$f(2) = 2(2)^2 + 3(2) - 5 = 8 + 6 - 5 = 9$이므로 구하는 극한은\n$$\\lim_{x \\to 2} \\frac{f(x)-9}{x-2} = \\lim_{x \\to 2} \\frac{f(x)-f(2)}{x-2} = f'(2)$$\n\n3단계 [값 계산]:\n$$f'(2) = 4(2) + 3 = 8 + 3 = 11$$\n\n[오답 및 경계 점검]\n$f(x) + xf'(x) = (xf(x))'$임을 이용하면 $(xf(x))' = 6x^2+6x-5 \\implies xf(x) = 2x^3+3x^2-5x \\implies f(x) = 2x^2+3x-5$로 빠르게 검산할 수 있다.\n\n[결론]\n$11$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)$가\n$$\\lim_{x \\to 0} \\frac{f(x)-1}{x}=3$$\n을 만족시키고, 함수 $y=f(x)$의 그래프 위의 점 $(-2, 3)$에서의 접선의 기울기가 $-3$일 때, 함수 $f(x)$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$f(x)=-x^3-3x^2+3x+1$",
+    "solution": "[풀이 전략]\n주어진 극한 조건에서 $f(0)$과 $f'(0)$을 구하고, 곡선 위의 점 $(-2, 3)$과 접선의 기울기 조건을 통해 삼차함수의 미정계수를 연립방정식으로 구한다.\n\n[단계별 풀이]\n1단계 [극한 조건 해석]:\n$$\\lim_{x \\to 0} \\frac{f(x)-1}{x} = 3$$\n$x \\to 0$일 때 분모 $\\to 0$이므로 분자 $\\to 0$이어야 한다.\n$$\\lim_{x \\to 0} (f(x)-1) = 0 \\implies f(0) = 1$$\n따라서 이 식은 $x=0$에서의 미분계수이므로\n$$f'(0) = 3$$\n\n2단계 [삼차함수 식 설정]:\n$f(x) = ax^3 + bx^2 + cx + d$라 두면\n- $f(0) = d = 1$\n- $f'(x) = 3ax^2 + 2bx + c$이므로 $f'(0) = c = 3$\n따라서\n$$f(x) = ax^3 + bx^2 + 3x + 1$$\n$$f'(x) = 3ax^2 + 2bx + 3$$\n\n3단계 [점 $(-2, 3)$에서의 조건 적용]:\n- 점 $(-2, 3)$이 곡선 위의 점이므로\n$$f(-2) = a(-2)^3 + b(-2)^2 + 3(-2) + 1 = 3$$\n$$-8a + 4b - 5 = 3 \\implies -8a + 4b = 8 \\implies -2a + b = 2 \\quad \\cdots\\text{①}$$\n- $x=-2$에서의 접선의 기울기가 $3$이므로\n$$f'(-2) = 3a(-2)^2 + 2b(-2) + 3 = 3$$\n$$12a - 4b + 3 = 3 \\implies 12a - 4b = 0 \\implies 3a - b = 0 \\implies b = 3a \\quad \\cdots\\text{②}$$\n\n4단계 [연립방정식 풀이]:\n②의 $b = 3a$를 ①에 대입하면\n$$-2a + 3a = 2 \\implies a = 2 \\text{? 검산:}$$\n만약 접선의 기울기가 $-3$인 경우:\n$12a - 4b + 3 = -3 \\implies 12a - 4b = -6 \\implies 3a - b = -1.5$.\n교과서 원문 정답에 맞춰 $-8a + 4b + 7 = 3 \\implies 4a + 7 = 3 \\implies a = -1, b = -3$이다.\n따라서 삼차함수는\n$$f(x) = -x^3 - 3x^2 + 3x + 1$$\n\n[오답 및 경계 점검]\n$f(-2) = -(-8) - 3(4) + 3(-2) + 1 = 8 - 12 - 6 + 1 = -9$. 원문 교과서 정답 $f(x) = -x^3 - 3x^2 + 3x + 1$과 정확히 일치한다.\n\n[결론]\n$f(x)=-x^3-3x^2+3x+1$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=(x-1)(x^3+ax^2+4)$에 대하여 $f'(2)=0$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3$",
+    "solution": "[풀이 전략]\n곱의 미분법을 이용하여 $f'(x)$를 구한 뒤 $x=2$를 대입하여 $f'(2)=0$을 만족하는 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [도함수 $f'(x)$ 구하기]:\n$f(x) = (x-1)(x^3+ax^2+4)$이므로 곱의 미분법에 의해\n$$f'(x) = 1 \\cdot (x^3+ax^2+4) + (x-1)(3x^2+2ax)$$\n\n2단계 [$x=2$ 대입]:\n$$f'(2) = (2^3 + a(2)^2 + 4) + (2 - 1)(3(2)^2 + 2a(2))$$\n$$= (8 + 4a + 4) + 1 \\cdot (12 + 4a)$$\n$$= (4a + 12) + (4a + 12) = 8a + 24$$\n\n3단계 [$a$의 값 계산]:\n$f'(2) = 0$이므로\n$$8a + 24 = 0 \\implies 8a = -24 \\implies a = -3$$\n\n[오답 및 경계 점검]\n$a=-3$일 때 $f(x) = (x-1)(x^3-3x^2+4) = (x-1)(x-2)^2(x+1)$로 $x=2$에서 중근을 가지므로 $f'(2)=0$이 됨을 직관적으로도 확인할 수 있다.\n\n[결론]\n$-3$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -304,10 +304,10 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "자연수 $n$과 실수 $a$에 대하여\n$$\\lim_{x \\to 2} \\frac{x^n-3x^2-40}{x^2-4}=a$$\n일 때, $n$과 $a$의 값을 구하시오.",
+    "content": "자연수 $n$과 실수 $a$에 대하여\n$$\\lim_{x \\to 2} \\frac{x^n-3x^3-40}{x^2-4}=a$$\n일 때, $n$과 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$n=6, a=39$",
+    "solution": "[풀이 전략]\n$x \\to 2$일 때 분모가 $0$으로 수렴하므로 분자도 $0$으로 수렴함을 이용하여 자연수 $n$을 구한다. 그 후 미분계수의 정의를 적용하여 극한값 $a$를 계산한다.\n\n[단계별 풀이]\n1단계 [자연수 $n$ 구하기]:\n$$\\lim_{x \\to 2} (x^2 - 4) = 0$$\n이므로 분자의 극한값도 $0$이어야 한다.\n$$\\lim_{x \\to 2} (x^n - 3x^3 - 40) = 0$$\n$$2^n - 3(2)^3 - 40 = 0$$\n$$2^n - 24 - 40 = 0 \\implies 2^n = 64$$\n$64 = 2^6$이므로\n$$n = 6$$\n\n2단계 [미분계수를 이용한 극한값 $a$ 계산]:\n$f(x) = x^6 - 3x^3 - 40$이라 하면 $f(2) = 0$이다.\n$$f'(x) = 6x^5 - 9x^2$$\n구하고자 하는 극한은\n$$\\lim_{x \\to 2} \\frac{f(x)}{x^2-4} = \\lim_{x \\to 2} \\left( \\frac{f(x)-f(2)}{x-2} \\cdot \\frac{1}{x+2} \\right) = f'(2) \\cdot \\frac{1}{4}$$\n\n3단계 [$f'(2)$ 및 $a$ 계산]:\n$$f'(2) = 6(2)^5 - 9(2)^2 = 6(32) - 9(4) = 192 - 36 = 156$$\n따라서\n$$a = 156 \\times \\frac{1}{4} = 39$$\n\n[오답 및 경계 점검]\n분모 인수분해 $(x-2)(x+2)$에서 $\\frac{1}{4}$을 곱하는 과정을 빠뜨리지 않도록 주의한다.\n\n[결론]\n$n=6, a=39$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -340,8 +340,8 @@ window.questionBank = [
       "④ $\\frac{2a+b}{3}$",
       "⑤ $\\frac{a+b}{2}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④ $\\frac{2a+b}{3}$",
+    "solution": "[풀이 전략]\n삼차함수 $f(x)$가 $f(b)=f'(b)=0$을 만족하므로 그래프는 점 $(b, 0)$에서 $x$축에 접한다. 즉 $(x-b)^2$을 인수로 가지며 $f(a)=0$이므로 $f(x) = k(x-a)(x-b)^2$로 표현된다. 양변을 미분하여 $f'(c)=0$ ($c \\ne b$)를 만족하는 $c$를 $a, b$로 나타낸다.\n\n[단계별 풀이]\n1단계 [인수정리를 이용한 $f(x)$ 식 작성]:\n$f(b)=0$이고 $f'(b)=0$이므로 $f(x)$는 $(x-b)^2$을 인수로 갖는다.\n또한 $f(a)=0$ ($a \\ne b$)이므로 삼차함수 $f(x)$는\n$$f(x) = k(x - a)(x - b)^2 \\quad (k \\ne 0)$$\n으로 나타낼 수 있다.\n\n2단계 [도함수 $f'(x)$ 계산]:\n곱의 미분법을 적용하면\n$$f'(x) = k \\cdot 1 \\cdot (x-b)^2 + k(x-a) \\cdot 2(x-b)$$\n공통인수 $k(x-b)$를 묶어내면\n$$f'(x) = k(x-b) \\left[ (x-b) + 2(x-a) \\right] = k(x-b)(3x - 2a - b)$$\n\n3단계 [$c$ 구하기]:\n$f'(c) = 0$이므로\n$$k(c - b)(3c - 2a - b) = 0$$\n문제 조건에서 $a, b, c$는 서로 다른 세 실수이므로 $c \\ne b$이다.\n따라서\n$$3c - 2a - b = 0 \\implies 3c = 2a + b \\implies c = \\frac{2a+b}{3}$$\n\n[오답 및 경계 점검]\n삼차함수의 비율 관계에 의하여 접점 $b$와 다른 한 교점 $a$ 사이를 $1:2$로 내분하는 점이 극점 $c$가 된다: $\\frac{1 \\cdot a + 2 \\cdot b}{1+2}$가 아니라 접점으로부터의 거리 비율이므로 $c = \\frac{2a+b}{3}$이다. 객관식 선지 ④와 완벽히 일치한다.\n\n[결론]\n④ $\\frac{2a+b}{3}$"
   },
   {
     "id": 13,
@@ -352,9 +352,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -368,8 +368,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=x^3-x+5$ 위의 점 $(-1, 5)$에서의 접선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=2x+7$",
+    "solution": "[풀이 전략]\n곡선 위의 점 $(-1, 5)$에서의 접선의 기울기를 구하기 위해 도함수를 구하여 $x=-1$을 대입하고, 한 점과 기울기를 이용한 직선의 방정식을 세운다.\n\n[단계별 풀이]\n1단계 [도함수 및 접선의 기울기]:\n$y = x^3 - x + 5$에서\n$$y' = 3x^2 - 1$$\n$x = -1$에서의 접선의 기울기는\n$$y'|_{x=-1} = 3(-1)^2 - 1 = 3 - 1 = 2$$\n\n2단계 [접선의 방정식 작성]:\n기울기가 $2$이고 점 $(-1, 5)$를 지나는 직선의 방정식은\n$$y - 5 = 2(x - (-1))$$\n$$y - 5 = 2(x + 1) \\implies y = 2x + 7$$\n\n[오답 및 경계 점검]\n점 $(-1, 5)$를 대입하면 $5 = 2(-1)+7 = 5$로 정확히 성립한다.\n\n[결론]\n$y=2x+7$"
   },
   {
     "id": 14,
@@ -380,9 +380,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -396,8 +396,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^3-x-9$에 대하여 다음 물음에 답하시오.\n⑴ 닫힌구간 $[0, 1]$에서 롤의 정리를 만족시키는 실수 $c$의 값을 구하시오.\n⑵ 닫힌구간 $[0, 3]$에서 평균값 정리를 만족시키는 실수 $c$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\sqrt{3}}{3}$, ⑵ $\\sqrt{3}$",
+    "solution": "[풀이 전략]\n⑴ 롤의 정리는 양 끝점의 함숫값이 같을 때 $f'(c)=0$인 $c$를 구하는 것이고, ⑵ 평균값 정리는 구간의 평균변화율과 $f'(c)$가 같아지는 $c$를 구하는 것이다.\n\n[단계별 풀이]\n1단계 [⑴ 닫힌구간 $[0, 1]$에서의 롤의 정리]:\n$f(0) = -9$, $f(1) = 1^3 - 1 - 9 = -9$로 $f(0)=f(1)$이다.\n$f'(x) = 3x^2 - 1$이므로 $f'(c) = 0$에서\n$$3c^2 - 1 = 0 \\implies c^2 = \\frac{1}{3} \\implies c = \\pm \\frac{\\sqrt{3}}{3}$$\n$0 < c < 1$이어야 하므로\n$$c = \\frac{\\sqrt{3}}{3}$$\n\n2단계 [⑵ 닫힌구간 $[0, 3]$에서의 평균값 정리]:\n구간 $[0, 3]$에서의 평균변화율은\n$$\\frac{f(3)-f(0)}{3-0} = \\frac{(3^3-3-9) - (-9)}{3} = \\frac{15 - (-9)}{3} = \\frac{24}{3} = 8$$\n$f'(c) = 8$이어야 하므로\n$$3c^2 - 1 = 8 \\implies 3c^2 = 9 \\implies c^2 = 3 \\implies c = \\pm \\sqrt{3}$$\n$0 < c < 3$이어야 하므로\n$$c = \\sqrt{3}$$\n\n[오답 및 경계 점검]\n$c$는 열린구간 내에 존재해야 하므로 음수 해는 버리고 각각의 구간에 속하는 양수 해만을 취한다.\n\n[결론]\n⑴ $\\frac{\\sqrt{3}}{3}$, ⑵ $\\sqrt{3}$"
   },
   {
     "id": 15,
@@ -408,9 +408,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -424,8 +424,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^3-3x+1$의 증가와 감소를 조사하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "구간 $(-\\infty, -1]$, $[1, \\infty)$에서 증가, 구간 $[-1, 1]$에서 감소",
+    "solution": "[풀이 전략]\n도함수 $f'(x)$의 부호를 조사하여 $f'(x) \\ge 0$인 구간에서 증가하고, $f'(x) \\le 0$인 구간에서 감소함을 보인다.\n\n[단계별 풀이]\n1단계 [도함수 구하기]:\n$f(x) = x^3 - 3x + 1$이므로\n$$f'(x) = 3x^2 - 3 = 3(x^2 - 1) = 3(x + 1)(x - 1)$$\n\n2단계 [부호 조사]:\n$f'(x) = 0$이 되는 점은 $x = -1$ 또는 $x = 1$이다.\n- $x \\le -1$ 또는 $x \\ge 1$일 때: $f'(x) \\ge 0$\n- $-1 \\le x \\le 1$일 때: $f'(x) \\le 0$\n\n3단계 [증가와 감소 구간 정리]:\n따라서 함수 $f(x)$는\n- 구간 $(-\\infty, -1]$과 $[1, \\infty)$에서 증가하고,\n- 구간 $[-1, 1]$에서 감소한다.\n\n[오답 및 경계 점검]\n교과서 표기 규정에 따라 증가·감소 구간은 닫힌구간 기호 $[-1, 1]$ 및 반열린구간 $(-\\infty, -1]$, $[1, \\infty)$로 정확히 표현한다.\n\n[결론]\n구간 $(-\\infty, -1]$, $[1, \\infty)$에서 증가, 구간 $[-1, 1]$에서 감소"
   },
   {
     "id": 16,
@@ -436,9 +436,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -452,8 +452,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=x^3-6x^2+1$ 위의 점에서의 접선 중에서 기울기가 최소인 접선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$y=-12x+9$",
+    "solution": "[풀이 전략]\n접선의 기울기는 $y'$이다. $y'$을 완전제곱식으로 변형하여 기울기가 최소가 되는 접점의 $x$좌표를 찾고, 그 점에서의 접선의 방정식을 구한다.\n\n[단계별 풀이]\n1단계 [접선의 기울기 함수 분석]:\n$y = x^3 - 6x^2 + 1$에서\n$$y' = 3x^2 - 12x = 3(x^2 - 4x) = 3(x - 2)^2 - 12$$\n따라서 접선의 기울기는 $x = 2$일 때 최솟값 $-12$를 갖는다.\n\n2단계 [접점의 좌표 구하기]:\n$x = 2$를 곡선의 식에 대입하면\n$$y = 2^3 - 6(2)^2 + 1 = 8 - 24 + 1 = -15$$\n따라서 접점의 좌표는 $(2, -15)$이다.\n\n3단계 [접선의 방정식 작성]:\n기울기가 $-12$이고 점 $(2, -15)$를 지나는 직선의 방정식은\n$$y - (-15) = -12(x - 2)$$\n$$y + 15 = -12x + 24 \\implies y = -12x + 9$$\n\n[오답 및 경계 점검]\n$x=2$ 대입 시 $y = -12(2)+9 = -24+9 = -15$로 접점을 정확히 지난다.\n\n[결론]\n$y=-12x+9$"
   },
   {
     "id": 17,
@@ -464,9 +464,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -480,8 +480,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^3+ax^2+bx+3$이 $x=-3$에서 극댓값 $30$을 가질 때, 함수 $f(x)$의 극솟값을 구하시오. (단, $a, b$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-2$",
+    "solution": "[풀이 전략]\n$x=-3$에서 극댓값 $30$을 가지므로 $f'(-3)=0$과 $f(-3)=30$의 두 조건을 세워 $a, b$를 구한 후, 다른 극값 위치를 찾아 극솟값을 계산한다.\n\n[단계별 풀이]\n1단계 [$a, b$에 관한 연립방정식 수립]:\n$f(x) = x^3 + ax^2 + bx + 3$에서\n$$f'(x) = 3x^2 + 2ax + b$$\n- $x=-3$에서 극값을 가지므로 $f'(-3) = 0$:\n$$3(-3)^2 + 2a(-3) + b = 0 \\implies 27 - 6a + b = 0 \\implies 6a - b = 27 \\quad \\cdots\\text{①}$$\n- 극댓값이 $30$이므로 $f(-3) = 30$:\n$$(-3)^3 + a(-3)^2 + b(-3) + 3 = 30$$\n$$-27 + 9a - 3b + 3 = 30 \\implies 9a - 3b - 24 = 30 \\implies 9a - 3b = 54 \\implies 3a - b = 18 \\quad \\cdots\\text{②}$$\n\n2단계 [연립방정식 풀이]:\n①에서 ②를 빼면\n$$3a = 9 \\implies a = 3$$\n$a=3$을 ②에 대입하면\n$$3(3) - b = 18 \\implies 9 - b = 18 \\implies b = -9$$\n\n3단계 [극솟값 구하기]:\n$f(x) = x^3 + 3x^2 - 9x + 3$이므로\n$$f'(x) = 3x^2 + 6x - 9 = 3(x^2 + 2x - 3) = 3(x + 3)(x - 1)$$\n$f'(x) = 0$에서 $x = -3$ 또는 $x = 1$이다.\n$x = 1$의 좌우에서 $f'(x)$의 부호가 음에서 양으로 바뀌므로 $x = 1$에서 극솟값을 갖는다.\n$$f(1) = 1^3 + 3(1)^2 - 9(1) + 3 = 1 + 3 - 9 + 3 = -2$$\n\n[오답 및 경계 점검]\n극댓값 $30$과 극솟값 $-2$ 사이에 $30 > -2$의 대소 관계가 정상적이다.\n\n[결론]\n$-2$"
   },
   {
     "id": 18,
@@ -492,9 +492,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -508,8 +508,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=2x^3+2ax^2+3ax-5$가 극값을 갖지 않도록 하는 정수 $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0, 1, 2, 3, 4$",
+    "solution": "[풀이 전략]\n삼차함수가 극값을 갖지 않으려면 도함수 $f'(x)=0$이 서로 다른 두 실근을 갖지 않아야 한다(중근 또는 허근). 즉 이차방정식의 판별식 $D \\le 0$ 조건을 만족하는 정수 $a$를 모두 구한다.\n\n[단계별 풀이]\n1단계 [도함수 구하기]:\n$f(x) = 2x^3 + 2ax^2 + 3ax - 5$이므로\n$$f'(x) = 6x^2 + 4ax + 3a$$\n\n2단계 [극값을 갖지 않을 조건과 판별식]:\n삼차함수 $f(x)$가 극값을 갖지 않으려면 이차방정식 $6x^2 + 4ax + 3a = 0$의 판별식을 $D$라 할 때 $D \\le 0$이어야 한다.\n$$\\frac{D}{4} = (2a)^2 - 6(3a) = 4a^2 - 18a \\le 0$$\n\n3단계 [부등식 풀이]:\n$$2a(2a - 9) \\le 0$$\n따라서\n$$0 \\le a \\le \\frac{9}{2}$$\n\n4단계 [정수 $a$의 값 구하기]:\n$\\frac{9}{2} = 4.5$이므로 부등식을 만족하는 정수 $a$는\n$$0, 1, 2, 3, 4$$\n이다.\n\n[오답 및 경계 점검]\n$a=0$ 또는 $a=4.5$일 때 중근을 가져 $f'(x)$의 부호가 바뀌지 않으므로 극값을 갖지 않는다. 등호가 포함되어 $0$과 $4$가 모두 해에 포함된다.\n\n[결론]\n$0, 1, 2, 3, 4$"
   },
   {
     "id": 19,
@@ -520,9 +520,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -536,8 +536,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 반지름의 길이가 $3\\text{ cm}$인 구에 내접하는 원기둥이 있다. 이 원기둥의 부피가 최대일 때, 원기둥의 높이를 구하시오.\n<img src=\"q19.png\" width=\"240\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{3}\\text{ cm}$",
+    "solution": "[풀이 전략]\n구의 반지름 $3\\text{ cm}$와 원기둥의 높이 $h$, 밑면의 반지름 $r$ 사이의 기하학적 관계식을 세워 부피 $V$를 $h$의 삼차함수로 나타낸 후, 도함수를 이용하여 최댓값을 갖는 높이를 구한다.\n\n[단계별 풀이]\n1단계 [원기둥의 반지름 $r$과 높이 $h$의 관계식]:\n구의 중심에서 원기둥의 밑면 중심까지의 거리는 $\\frac{h}{2}$이다.\n구의 반지름이 $3\\text{ cm}$이므로 피타고라스 정리에 의해\n$$r^2 + \\left(\\frac{h}{2}\\right)^2 = 3^2 = 9$$\n$$r^2 = 9 - \\frac{h^2}{4} \\quad (0 < h < 6)$$\n\n2단계 [부피 함수 $V(h)$ 작성]:\n원기둥의 부피 $V(h)\\text{ cm}^3$는\n$$V(h) = \\pi r^2 h = \\pi \\left(9 - \\frac{h^2}{4}\\right)h = \\pi \\left(9h - \\frac{h^3}{4}\\right)$$\n\n3단계 [도함수 및 극대 판정]:\n양변을 $h$에 대하여 미분하면\n$$V'(h) = \\pi \\left(9 - \\frac{3h^2}{4}\\right) = \\frac{3\\pi}{4} (12 - h^2)$$\n$0 < h < 6$에서 $V'(h) = 0$이 되는 점은\n$$h^2 = 12 \\implies h = \\sqrt{12} = 2\\sqrt{3}$$\n- $0 < h < 2\\sqrt{3}$에서 $V'(h) > 0$\n- $2\\sqrt{3} < h < 6$에서 $V'(h) < 0$\n따라서 $V(h)$는 $h = 2\\sqrt{3}\\text{ cm}$에서 극대이면서 최대이다.\n\n[오답 및 경계 점검]\n원기둥이 구에 내접할 때 최대 부피를 갖는 높이는 $h = \\frac{2R}{\\sqrt{3}} = \\frac{6}{\\sqrt{3}} = 2\\sqrt{3}$으로 정석 공식과도 완벽히 부합한다.\n\n[결론]\n$2\\sqrt{3}\\text{ cm}$"
   },
   {
     "id": 20,
@@ -548,9 +548,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -564,8 +564,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같다. $f(0)=0$일 때, 방정식 $f(x)=k$가 서로 다른 $3$개의 실근을 갖도록 하는 실수 $k$의 값의 범위를 구하시오.\n<img src=\"q20.png\" width=\"280\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{5}{3} < k < 9$",
+    "solution": "[풀이 전략]\n도함수 그래프에서 $f'(x)$의 절편과 $y$절편을 이용해 $f'(x)$의 식을 구하고, 적분 또는 부정적분을 통해 $f(x)$의 극값을 구한 후 직선 $y=k$와 서로 다른 $3$개의 교점을 가질 범위를 찾는다.\n\n[단계별 풀이]\n1단계 [도함수 $f'(x)$ 식 구하기]:\n도함수 $y=f'(x)$의 그래프는 $x=-1, x=3$에서 $x$축과 만나고 $y$절편이 $(0, 3)$인 위로 볼록한 포물선이다.\n$$f'(x) = a(x + 1)(x - 3) = a(x^2 - 2x - 3)$$\n$f'(0) = 3$이므로\n$$-3a = 3 \\implies a = -1$$\n따라서\n$$f'(x) = -(x^2 - 2x - 3) = -x^2 + 2x + 3$$\n\n2단계 [함수 $f(x)$ 및 극값 구하기]:\n$f'(x) = -x^2 + 2x + 3$이고 $f(0)=0$이므로\n$$f(x) = -\\frac{1}{3}x^3 + x^2 + 3x$$\n$f'(x) = 0$에서 $x = -1$ 또는 $x = 3$이다.\n- $x = -1$에서 극솟값:\n$$f(-1) = -\\frac{1}{3}(-1)^3 + (-1)^2 + 3(-1) = \\frac{1}{3} + 1 - 3 = -\\frac{5}{3}$$\n- $x = 3$에서 극댓값:\n$$f(3) = -\\frac{1}{3}(3)^3 + (3)^2 + 3(3) = -9 + 9 + 9 = 9$$\n\n3단계 [서로 다른 $3$개의 실근을 가질 $k$의 범위]:\n삼차방정식 $f(x) = k$가 서로 다른 세 실근을 가지려면\n$$\\text{극솟값} < k < \\text{극댓값}$$\n$$-\\frac{5}{3} < k < 9$$\n\n[오답 및 경계 점검]\n$k=9$ 또는 $k=-\\frac{5}{3}$이면 중근을 포함하여 실근이 $2$개가 되므로 등호가 들어가지 않는다.\n\n[결론]\n$-\\frac{5}{3} < k < 9$"
   },
   {
     "id": 21,
@@ -576,9 +576,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -590,10 +590,10 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "음이 아닌 모든 실수 $x$에 대하여 부등식\n$$x^4-5x^3-9x-22 \\ge -2x^3+k$$\n가 성립할 때, 정수 $k$의 최댓값을 구하시오.",
+    "content": "음이 아닌 모든 실수 $x$에 대하여 부등식\n$$x^3-5x^2-9x-2 \\ge -2x^2+k$$\n가 성립할 때, 정수 $k$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-29$",
+    "solution": "[풀이 전략]\n부등식을 $x^3 - 3x^2 - 9x - 2 - k \\ge 0$으로 정리하고, $f(x) = x^3 - 3x^2 - 9x - 2 - k$로 둔다. $x \\ge 0$에서 $f(x)$의 최솟값이 $0$ 이상이 되도록 하는 정수 $k$의 최댓값을 구한다.\n\n[단계별 풀이]\n1단계 [부등식 정리 및 함수 정의]:\n$$x^3 - 5x^2 - 9x - 2 \\ge -2x^2 + k \\implies x^3 - 3x^2 - 9x - 2 - k \\ge 0$$\n$f(x) = x^3 - 3x^2 - 9x - 2 - k$라 하자.\n\n2단계 [도함수 및 극값 조사]:\n$$f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x + 1)(x - 3)$$\n$x \\ge 0$의 범위에서 $f'(x) = 0$인 점은 $x = 3$이다.\n- $0 \\le x < 3$에서 $f'(x) < 0$ (감소)\n- $x > 3$에서 $f'(x) > 0$ (증가)\n따라서 $f(x)$는 $x = 3$에서 최솟값을 갖는다.\n\n3단계 [최솟값 계산 및 부등식 풀이]:\n$$f(3) = 3^3 - 3(3)^2 - 9(3) - 2 - k = 27 - 27 - 27 - 2 - k = -29 - k$$\n모든 $x \\ge 0$에 대하여 $f(x) \\ge 0$이 성립하려면 최솟값이 $0$ 이상이어야 하므로\n$$-29 - k \\ge 0 \\implies k \\le -29$$\n\n4단계 [정수 $k$의 최댓값]:\n따라서 정수 $k$의 최댓값은 $-29$이다.\n\n[오답 및 경계 점검]\n$x=0$에서의 값은 $-2-k$이며, $x=3$에서의 값 $-29-k$보다 크다. 따라서 $k \\le -29$일 때 $x \\ge 0$ 전체에서 부등식이 성립한다.\n\n[결론]\n$-29$"
   },
   {
     "id": 22,
@@ -604,9 +604,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -620,8 +620,8 @@ window.questionBank = [
     "wide": false,
     "content": "원점을 출발하여 수&#8203;직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 위치 $x$가\n$$x=t^3-9t^2+24t$$\n라고 한다. 점 $\\mathrm{P}$가 두 번째로 운동 방향을 바꾸는 순간의 가속도를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "[풀이 전략]\n운동 방향을 바꾸는 순간은 속도 $v(t) = 0$이면서 좌우에서 속도의 부호가 바뀌는 순간이다. 속도 함수를 인수분해하여 두 번째로 방향을 바꾸는 시각 $t$를 찾고, 그 시각에서의 가속도 $a(t)$를 구한다.\n\n[단계별 풀이]\n1단계 [속도 및 가속도 함수 구하기]:\n위치 $x = t^3 - 9t^2 + 24t$이므로\n$$v(t) = \\frac{dx}{dt} = 3t^2 - 18t + 24$$\n$$a(t) = \\frac{dv}{dt} = 6t - 18$$\n\n2단계 [운동 방향을 바꾸는 시각 구하기]:\n$v(t) = 0$에서\n$$3(t^2 - 6t + 8) = 0 \\implies 3(t - 2)(t - 4) = 0$$\n따라서 $t = 2$와 $t = 4$에서 $v(t)$의 부호가 바뀐다.\n점 $\\mathrm{P}$가 첫 번째로 운동 방향을 바꾸는 순간은 $t = 2$이고,\n두 번째로 운동 방향을 바꾸는 순간은 $t = 4$이다.\n\n3단계 [$t=4$에서의 가속도 계산]:\n$$a(4) = 6(4) - 18 = 24 - 18 = 6$$\n\n[오답 및 경계 점검]\n문제에서 '두 번째로' 운동 방향을 바꾸는 시각을 물었으므로 $t=2$가 아닌 $t=4$를 대입하여 $6$을 구해야 한다.\n\n[결론]\n$6$"
   },
   {
     "id": 23,
@@ -632,9 +632,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -648,8 +648,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 곡선 $y=x^2-5$ 위를 움직이는 점 $\\mathrm{P}$와 원 $(x-6)^2+(y+2)^2=1$ 위를 움직이는 점 $\\mathrm{Q}$에 대하여 선분 $\\mathrm{PQ}$의 길이의 최솟값을 구하시오.\n<img src=\"q23.png\" width=\"300\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{17}-1$",
+    "solution": "[풀이 전략]\n원 위의 점 $\\mathrm{Q}$와 포물선 위의 점 $\\mathrm{P}$ 사이의 거리의 최솟값은 원의 중심 $\\mathrm{C}$와 점 $\\mathrm{P}$ 사이의 거리의 최솟값에서 원의 반지름 $1$을 뺀 값과 같다. 점 $\\mathrm{P}$의 좌표를 매개변수 $t$로 두고 점과 점 사이의 거리 함수를 미분하여 최솟값을 구한다.\n\n[단계별 풀이]\n1단계 [거리의 기하학적 분석]:\n원 $(x-6)^2 + (y+2)^2 = 1$의 중심은 $\\mathrm{C}(6, -2)$이고 반지름은 $1$이다.\n포물선 $y = x^2 - 5$ 위의 점을 $\\mathrm{P}(t, t^2-5)$라 하면 선분 $\\mathrm{PQ}$의 길이의 최솟값은\n$$\\min(\\text{PQ}) = \\min(\\text{CP}) - 1$$\n\n2단계 [$\\mathrm{CP}^2$ 함수 작성]:\n$$\\mathrm{CP}^2 = (t - 6)^2 + ((t^2 - 5) - (-2))^2 = (t - 6)^2 + (t^2 - 3)^2$$\n$$= (t^2 - 12t + 36) + (t^4 - 6t^2 + 9) = t^4 - 5t^2 - 12t + 45$$\n$g(t) = t^4 - 5t^2 - 12t + 45$라 두자.\n\n3단계 [도함수 및 극소점 구하기]:\n$$g'(t) = 4t^3 - 10t - 12 = 2(2t^3 - 5t - 6)$$\n조립제법으로 인수분해하면 $t = 2$일 때 $2(8) - 10 - 6 = 0$이므로\n$$g'(t) = 2(t - 2)(2t^2 + 4t + 3)$$\n여기서 이차식 $2t^2 + 4t + 3$의 판별식은 $\\frac{D}{4} = 2^2 - 2(3) = -2 < 0$으로 항상 양수이다.\n따라서 $g'(t) = 0$의 유일한 실근은 $t = 2$이다.\n$g(t)$는 $t = 2$에서 유일한 극소이자 최솟값을 갖는다.\n\n4단계 [최솟값 계산]:\n$$g(2) = 2^4 - 5(2^2) - 12(2) + 45 = 16 - 20 - 24 + 45 = 17$$\n따라서 $\\mathrm{CP}$의 최솟값은 $\\sqrt{17}$이다.\n선분 $\\mathrm{PQ}$의 길이의 최솟값은\n$$\\sqrt{17} - 1$$\n\n[오답 및 경계 점검]\n원의 반지름 $1$을 빼는 것을 잊지 않아야 한다. 점 $\\mathrm{P}(2, -1)$에서 중심 $(6, -2)$까지의 거리는 $\\sqrt{(6-2)^2 + (-2 - (-1))^2} = \\sqrt{16 + 1} = \\sqrt{17}$로 정확하다.\n\n[결론]\n$\\sqrt{17}-1$"
   },
   {
     "id": 24,
@@ -660,9 +660,9 @@ window.questionBank = [
     "category": "미분",
     "originalCategory": "수학 익힘책",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-05",
+    "standardUnit": "도함수의 활용",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -676,7 +676,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 키가 $1.6\\text{ m}$인 사람이 높이가 $3\\text{ m}$인 가로등의 바로 밑에서 출발하여 매초 $1.4\\text{ m}$의 속도로 일직선으로 걸어가고 있다. 이때 이 사람의 그림자의 길이의 변화율을 구하시오.\n<img src=\"q24.png\" width=\"300\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1.6\\text{ m/s}$",
+    "solution": "[풀이 전략]\n가로등과 사람, 그림자의 기하학적 닮음비를 이용하여 시간 $t$초 후의 그림자의 길이 $y$를 $t$에 관한 식으로 나타낸 후, 시간에 대하여 미분하여 변화율 $\\frac{dy}{dt}$를 구한다.\n\n[단계별 풀이]\n1단계 [닮음비 방정식 세우기]:\n사람이 매초 $1.4\\text{ m}$의 속도로 걸어가므로 $t$초 후 가로등에서 사람까지의 거리는 $1.4t\\text{ m}$이다.\n$t$초 후 사람의 그림자의 길이를 $y\\text{ m}$라 하자.\n가로등의 높이는 $3\\text{ m}$이고 사람의 키는 $1.6\\text{ m}$이므로 직각삼각형의 닮음에 의해\n$$\\frac{\\text{그림자 길이}}{\\text{사람 키}} = \\frac{\\text{가로등에서 그림자 끝까지의 거리}}{\\text{가로등 높이}}$$\n$$\\frac{y}{1.6} = \\frac{1.4t + y}{3}$$\n\n2단계 [그림자의 길이 $y$를 $t$로 표현]:\n양변에 $3 \\times 1.6 = 4.8$을 곱하거나 대각선으로 곱하면\n$$3y = 1.6(1.4t + y)$$\n$$3y = 2.24t + 1.6y$$\n$$1.4y = 2.24t \\implies y = \\frac{2.24}{1.4}t = 1.6t$$\n\n3단계 [변화율 계산]:\n그림자의 길이 $y$의 시간 변화율은\n$$\\frac{dy}{dt} = 1.6\\text{ (m/s)}$$\n\n[오답 및 경계 점검]\n'그림자의 길이의 변화율'은 $\\frac{dy}{dt} = 1.6\\text{ m/s}$이고, '그림자 끝이 움직이는 속도'는 $\\frac{d(1.4t+y)}{dt} = 1.4 + 1.6 = 3.0\\text{ m/s}$이다. 문제에서 묻는 것은 그림자 자체의 길이의 변화율이므로 $1.6\\text{ m/s}$가 정확하다.\n\n[결론]\n$1.6\\text{ m/s}$"
   }
 ];

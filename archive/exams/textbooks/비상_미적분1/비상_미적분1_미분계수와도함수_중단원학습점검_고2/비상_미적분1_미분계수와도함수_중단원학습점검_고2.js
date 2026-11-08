@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=2x^2-3x$에서 $x$의 값이 $0$에서 $2$까지 변할 때, 평균변화율을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$x$의 값이 $a$에서 $b$까지 변할 때 함수 $f(x)$의 평균변화율 공식 $\\frac{f(b)-f(a)}{b-a}$를 적용하여 계산한다.\n\n[단계별 풀이]\n1단계 [함숫값 계산]:\n$f(0) = 2(0)^2 - 3(0) = 0$\n$f(2) = 2(2)^2 - 3(2) = 8 - 6 = 2$\n\n2단계 [평균변화율 계산]:\n$x$의 값이 $0$에서 $2$까지 변할 때의 평균변화율은\n$$\\frac{f(2)-f(0)}{2-0} = \\frac{2 - 0}{2} = 1$$\n\n[오답 및 경계 점검]\n평균변화율은 두 점 $(0, f(0))$과 $(2, f(2))$를 잇는 직선의 기울기와 일치한다. 분모 $b-a$와 분자 $f(b)-f(a)$의 순서가 뒤바뀌지 않도록 주의한다.\n\n[결론]\n$1$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "곡선 $y=-x^2+7x-2$ 위의 점 $(1, 4)$에서의 접선의 기울기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n곡선 $y=f(x)$ 위의 점 $(a, f(a))$에서의 접선의 기울기는 그 점에서의 미분계수 $f'(a)$와 같다. 도함수를 구한 후 $x=1$을 대입한다.\n\n[단계별 풀이]\n1단계 [도함수 구하기]:\n$f(x) = -x^2 + 7x - 2$라 하면\n$$f'(x) = -2x + 7$$\n\n2단계 [접선의 기울기 계산]:\n점 $(1, 4)$에서의 접선의 기울기는 $x=1$에서의 미분계수 $f'(1)$이므로\n$$f'(1) = -2(1) + 7 = 5$$\n\n[오답 및 경계 점검]\n주어진 점 $(1, 4)$가 실제로 곡선 위의 점인지 확인하면, $-(1)^2 + 7(1) - 2 = 4$로 성립한다.\n\n[결론]\n$5$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수를 미분하시오.\n⑴ $y=10$\n⑵ $y=-4x^2+2x+1$\n⑶ $y=(x-1)(x^2+x+6)$\n⑷ $y=(x-2)(x+1)(x+3)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $y'=0$, ⑵ $y'=-8x+2$, ⑶ $y'=3x^2+5$, ⑷ $y'=3x^2+4x-5$",
+    "solution": "[풀이 전략]\n상수함수의 도함수는 $0$이고, $(x^n)' = n x^{n-1}$ 및 미분의 선형성과 곱의 미분법을 활용하여 각 함수를 미분한다.\n\n[단계별 풀이]\n1단계 [⑴ $y=10$]:\n상수함수의 도함수는 $0$이므로\n$$y' = 0$$\n\n2단계 [⑵ $y=-4x^2+2x+1$]:\n각 항을 미분하면\n$$y' = -4 \\cdot 2x + 2(1) + 0 = -8x + 2$$\n\n3단계 [⑶ $y=(x-1)(x^2+x+6)$]:\n식을 전개하여 미분하거나 곱의 미분법을 적용한다.\n전개하면 $y = (x^3+x^2+6x) - (x^2+x+6) = x^3 + 5x - 6$\n$$y' = 3x^2 + 5$$\n(곱의 미분법 적용 시: $y' = 1 \\cdot (x^2+x+6) + (x-1)(2x+1) = x^2+x+6 + 2x^2 - x - 1 = 3x^2 + 5$)\n\n4단계 [⑷ $y=(x-2)(x+1)(x+3)$]:\n세 일차식의 곱의 미분법 $(uvw)' = u'vw + uv'w + uvw'$을 적용한다.\n$$y' = 1 \\cdot (x+1)(x+3) + (x-2) \\cdot 1 \\cdot (x+3) + (x-2)(x+1) \\cdot 1$$\n각 항을 전개하면\n$$= (x^2+4x+3) + (x^2+x-6) + (x^2-x-2) = 3x^2 + 4x - 5$$\n\n[오답 및 경계 점검]\n⑶과 ⑷에서 전개 후 미분하는 방법과 곱의 미분법을 모두 검산하여 결과가 완전히 일치함을 확인한다.\n\n[결론]\n⑴ $y'=0$, ⑵ $y'=-8x+2$, ⑶ $y'=3x^2+5$, ⑷ $y'=3x^2+4x-5$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^2+x+1$에서 $x$의 값이 $a$에서 $a+3$까지 변할 때, 평균변화율이 $6$이다. 이때 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$x$의 값이 $a$에서 $a+3$까지 변할 때의 평균변화율 식을 $a$에 대한 일차방정식으로 세운 후 주어진 값 $6$과 같다고 놓아 $a$를 구한다.\n\n[단계별 풀이]\n1단계 [평균변화율 식 작성]:\n$x$의 변화량은 $(a+3) - a = 3$이다.\n$f(a+3) = (a+3)^2 + (a+3) + 1 = a^2 + 6a + 9 + a + 3 + 1 = a^2 + 7a + 13$\n$f(a) = a^2 + a + 1$\n따라서 분자의 변화량은\n$$f(a+3) - f(a) = (a^2+7a+13) - (a^2+a+1) = 6a + 12$$\n\n2단계 [방정식 수립 및 풀이]:\n평균변화율은\n$$\\frac{f(a+3)-f(a)}{3} = \\frac{6a+12}{3} = 2a + 4$$\n이 값이 $6$이므로\n$$2a + 4 = 6 \\implies 2a = 2 \\implies a = 1$$\n\n[오답 및 경계 점검]\n$a=1$일 때 $x$가 $1$에서 $4$까지 변하므로 $\\frac{f(4)-f(1)}{3} = \\frac{(16+4+1)-(1+1+1)}{3} = \\frac{21-3}{3} = 6$이 되어 정확히 성립한다.\n\n[결론]\n$1$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $y=f(x)$의 그래프와 직선 $y=x$가 다음 그림과 같다. 두 점 $\\mathrm{A}, \\mathrm{B}$가 함수 $y=f(x)$의 그래프 위에 있을 때, 보기 중 옳은 것을 모두 고르시오. (단, $0<a<b$)\n<img src=\"q05.png\" width=\"300\" />\n$$\\begin{aligned} &\\text{ㄱ. } \\frac{f(a)}{a} < \\frac{f(b)}{b} \\\\ &\\text{ㄴ. } f'(a) < f'(b) \\\\ &\\text{ㄷ. } f(a)-a > f(b)-b \\end{aligned}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "[풀이 전략]\n그래프에서 $\\frac{f(x)}{x}$는 원점 $\\mathrm{O}(0, 0)$과 점 $(x, f(x))$를 잇는 직선의 기울기를 나타내고, $f'(x)$는 점 $(x, f(x))$에서의 접선의 기울기를 나타낸다. 그래프의 형태(아래로 볼록 또는 위로 볼록) 및 기울기의 대소를 기하학적으로 판정한다.\n\n[단계별 풀이]\n1단계 [ㄱ의 판정: $\\frac{f(a)}{a} < \\frac{f(b)}{b}$]:\n$\\frac{f(a)}{a} = \\frac{f(a)-0}{a-0}$은 원점 $\\mathrm{O}$와 점 $\\mathrm{A}(a, f(a))$를 지나는 직선 $\\mathrm{OA}$의 기울기이고,\n$\\frac{f(b)}{b} = \\frac{f(b)-0}{b-0}$은 원점 $\\mathrm{O}$와 점 $\\mathrm{B}(b, f(b))$를 지나는 직선 $\\mathrm{OB}$의 기울기이다.\n주어진 그래프에서 점 $\\mathrm{B}$는 점 $\\mathrm{A}$보다 오른쪽에 위치하며 원점과 연결한 직선의 기울기가 더 가파르므로\n$$\\frac{f(a)}{a} < \\frac{f(b)}{b}$$\n따라서 ㄱ은 참이다.\n\n2단계 [ㄴ의 판정: $f'(a) < f'(b)$]:\n$f'(a)$는 점 $\\mathrm{A}$에서의 접선의 기울기이고, $f'(b)$는 점 $\\mathrm{B}$에서의 접선의 기울기이다.\n함수 $y=f(x)$의 그래프는 아래로 볼록한 형태(기울기가 점점 증가)를 띠고 있으므로 점 $\\mathrm{B}$에서의 접선의 기울기가 점 $\\mathrm{A}$에서의 접선의 기울기보다 크다.\n$$f'(a) < f'(b)$$\n따라서 ㄴ은 참이다.\n\n3단계 [ㄷ의 판정: $f(a)-a > f(b)-b$]:\n부등식을 이항하면 $f(b) - f(a) < b - a$이다.\n$b > a$이므로 양변을 $b-a>0$으로 나누면 $\\frac{f(b)-f(a)}{b-a} < 1$이 된다.\n그런데 점 $\\mathrm{A}, \\mathrm{B}$를 잇는 직선의 기울기는 직선 $y=x$의 기울기인 $1$보다 크다.\n즉 $\\frac{f(b)-f(a)}{b-a} > 1$이므로\n$$f(b) - f(a) > b - a \\implies f(a) - a < f(b) - b$$\n따라서 ㄷ은 거짓이다.\n\n[오답 및 경계 점검]\nㄷ에서 식을 $f(b)-f(a)$와 $b-a$의 비율인 평균변화율로 변형하여 직선 $y=x$의 기울기 $1$과 비교하면 부등호 방향이 반대임을 명확히 판별할 수 있다.\n\n[결론]\nㄱ, ㄴ"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=3x^2-x+2$에 대하여\n$$\\lim_{h \\to 0} \\frac{f(1+3h)-f(1)}{2h}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15}{2}$",
+    "solution": "[풀이 전략]\n미분계수의 정의 $\\lim_{k \\to 0} \\frac{f(a+k)-f(a)}{k} = f'(a)$를 이용할 수 있도록 분모의 증분을 맞추어 식을 변형한다.\n\n[단계별 풀이]\n1단계 [도함수 및 $f'(1)$ 계산]:\n$f(x) = 3x^2 - x + 2$이므로\n$$f'(x) = 6x - 1$$\n$$f'(1) = 6(1) - 1 = 5$$\n\n2단계 [극한식 변형]:\n$$\\lim_{h \\to 0} \\frac{f(1+3h)-f(1)}{2h} = \\lim_{h \\to 0} \\left( \\frac{f(1+3h)-f(1)}{3h} \\cdot \\frac{3}{2} \\right)$$\n$$= \\frac{3}{2} f'(1)$$\n\n3단계 [값 대입 및 계산]:\n$$= \\frac{3}{2} \\times 5 = \\frac{15}{2}$$\n\n[오답 및 경계 점검]\n분모가 $2h$이고 분자의 증분이 $3h$이므로 계수비 $\\frac{3}{2}$가 곱해지는 것에 유의한다.\n\n[결론]\n$\\frac{15}{2}$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$에 대하여 $f(2)=1$, $f'(2)=\\frac{1}{3}$일 때,\n$$\\lim_{x \\to 2} \\frac{f(x)-1}{x^2-x-2}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{9}$",
+    "solution": "[풀이 전략]\n분모를 인수분해하여 $\\frac{f(x)-f(2)}{x-2}$ 형태의 미분계수 극한과 나머지 연속함수 부분을 분리하여 극한값을 구한다.\n\n[단계별 풀이]\n1단계 [분모 인수분해]:\n$x^2 - x - 2 = (x-2)(x+1)$\n\n2단계 [식의 변형]:\n조건에서 $f(2) = 1$이므로 분자의 $1$을 $f(2)$로 치환한다.\n$$\\lim_{x \\to 2} \\frac{f(x)-1}{x^2-x-2} = \\lim_{x \\to 2} \\left( \\frac{f(x)-f(2)}{x-2} \\cdot \\frac{1}{x+1} \\right)$$\n\n3단계 [극한값 계산]:\n$f(x)$가 미분가능하므로 $\\lim_{x \\to 2} \\frac{f(x)-f(2)}{x-2} = f'(2)$이다.\n또한 $\\lim_{x \\to 2} \\frac{1}{x+1} = \\frac{1}{3}$이다.\n따라서\n$$= f'(2) \\cdot \\frac{1}{3} = \\frac{1}{3} \\cdot \\frac{1}{3} = \\frac{1}{9}$$\n\n[오답 및 경계 점검]\n$f'(2) = \\frac{1}{3}$과 분모의 $x+1$에 $x=2$를 대입한 $3$의 곱으로 정확히 $\\frac{1}{9}$이 도출된다.\n\n[결론]\n$\\frac{1}{9}$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$에 대하여\n$$f(x)=2x^3-3xf'(2)$$\n일 때, $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-12$",
+    "solution": "[풀이 전략]\n$f'(2)$는 상수이므로 $k = f'(2)$로 치환하여 $f(x)$를 표현한 후, 양변을 미분하여 $x=2$를 대입함으로써 $k$의 값을 결정한다.\n\n[단계별 풀이]\n1단계 [상수 $f'(2)$ 치환]:\n$f'(2) = k$ ($k$는 상수)라 두면\n$$f(x) = 2x^3 - 3kx$$\n\n2단계 [도함수 계산 및 $k$ 구하기]:\n양변을 $x$에 대하여 미분하면\n$$f'(x) = 6x^2 - 3k$$\n여기에 $x=2$를 대입하면\n$$f'(2) = 6(2)^2 - 3k = 24 - 3k$$\n$f'(2) = k$이므로\n$$k = 24 - 3k \\implies 4k = 24 \\implies k = 6$$\n\n3단계 [$f'(1)$ 계산]:\n$k=6$이므로 도함수는\n$$f'(x) = 6x^2 - 3(6) = 6x^2 - 18$$\n따라서 $x=1$을 대입하면\n$$f'(1) = 6(1)^2 - 18 = 6 - 18 = -12$$\n\n[오답 및 경계 점검]\n$f'(2)$를 변수 $x$로 취급하여 미분하지 않고 고정된 상수로 올바르게 미분했는지 반드시 확인한다.\n\n[결론]\n$-12$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수\n$$f(x)=\\begin{cases} x^2+ax+3 & (x>1) \\\\ 3x+b & (x \\le 1) \\end{cases}$$\n가 모든 실수 $x$에서 미분가능할 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1, b=2$",
+    "solution": "[풀이 전략]\n함수가 모든 실수에서 미분가능하려면 경계점 $x=1$에서 먼저 연속이어야 하고, 좌우 미분계수가 일치해야 한다.\n\n[단계별 풀이]\n1단계 [$x=1$에서의 연속 조건]:\n함수 $f(x)$가 $x=1$에서 연속이어야 하므로\n$$\\lim_{x \\to 1+} f(x) = \\lim_{x \\to 1-} f(x) = f(1)$$\n- 우극한: $\\lim_{x \\to 1+} (x^2+ax+3) = 1 + a + 3 = a + 4$\n- 좌극한 및 함숫값: $\\lim_{x \\to 1-} (3x+b) = 3 + b$\n따라서\n$$a + 4 = 3 + b \\implies b = a + 1 \\quad \\cdots\\text{①}$$\n\n2단계 [$x=1$에서의 미분가능 조건]:\n각 구간의 도함수를 구하면\n$$f'(x) = \\begin{cases} 2x+a & (x>1) \\\\ 3 & (x<1) \\end{cases}$$\n$x=1$에서 미분가능하므로 우미분계수와 좌미분계수가 같아야 한다.\n- 우미분계수: $\\lim_{x \\to 1+} (2x+a) = 2 + a$\n- 좌미분계수: $\\lim_{x \\to 1-} 3 = 3$\n따라서\n$$2 + a = 3 \\implies a = 1$$\n\n3단계 [$b$의 값 결정]:\n$a=1$을 ①식에 대입하면\n$$b = 1 + 1 = 2$$\n\n[오답 및 경계 점검]\n연속 조건과 미분가능 조건을 모두 만족하는지 $a=1, b=2$를 대입하여 $f(1)=5$, $f'(1)=3$으로 양쪽이 완벽히 일치함을 확인한다.\n\n[결론]\n$a=1, b=2$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 두 함수 $f(x), g(x)$가\n$$g(x)=(x^3-x+1)f(x)$$\n를 만족시키고 $f(1)=1$, $f'(1)=5$일 때, $g'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$7$",
+    "solution": "[풀이 전략]\n두 함수의 곱 $g(x) = u(x)f(x)$ 꼴이므로 곱의 미분법 $g'(x) = u'(x)f(x) + u(x)f'(x)$를 적용한다.\n\n[단계별 풀이]\n1단계 [도함수 $g'(x)$ 구하기]:\n$u(x) = x^3 - x + 1$이라 두면 $u'(x) = 3x^2 - 1$이다.\n곱의 미분법에 의해\n$$g'(x) = (3x^2-1)f(x) + (x^3-x+1)f'(x)$$\n\n2단계 [$x=1$ 대입]:\n$$g'(1) = (3(1)^2-1)f(1) + (1^3-1+1)f'(1)$$\n$$= 2f(1) + 1f'(1)$$\n\n3단계 [조건의 값 대입]:\n조건에서 $f(1)=1$, $f'(1)=5$이므로\n$$g'(1) = 2(1) + 1(5) = 2 + 5 = 7$$\n\n[오답 및 경계 점검]\n곱의 미분법에서 앞의 식만 미분하거나 뒤의 식만 미분하는 실수를 방지하고 두 항의 합으로 정확히 전개한다.\n\n[결론]\n$7$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $x^{100}-50x^2-ax+b$를 $(x+1)^2$으로 나누었을 때의 나머지는 $x+2$이다. 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1, b=51$",
+    "solution": "[풀이 전략]\n다항식의 나눗셈 항등식을 세운 후, $x=-1$을 대입하여 첫 번째 관계식을 얻고, 항등식의 양변을 미분한 후 다시 $x=-1$을 대입하여 미정계수를 구한다.\n\n[단계별 풀이]\n1단계 [나눗셈 항등식 작성]:\n몫을 $Q(x)$라 하면\n$$x^{100} - 50x^2 - ax + b = (x+1)^2 Q(x) + x + 2 \\quad \\cdots\\text{①}$$\n\n2단계 [$x=-1$ 대입]:\n①의 양변에 $x=-1$을 대입하면\n$$(-1)^{100} - 50(-1)^2 - a(-1) + b = 0 + (-1) + 2$$\n$$1 - 50 + a + b = 1$$\n$$-49 + a + b = 1 \\implies a + b = 50 \\quad \\cdots\\text{②}$$\n\n3단계 [양변 미분 및 $x=-1$ 대입]:\n①의 양변을 $x$에 대하여 미분하면\n$$100x^{99} - 100x - a = 2(x+1)Q(x) + (x+1)^2 Q'(x) + 1$$\n여기에 $x=-1$을 대입하면\n$$100(-1)^{99} - 100(-1) - a = 0 + 0 + 1$$\n$$-100 + 100 - a = 1 \\implies -a = 1 \\implies a = -1$$\n\n4단계 [$b$의 값 계산]:\n$a=-1$을 ②에 대입하면\n$$-1 + b = 50 \\implies b = 51$$\n\n[오답 및 경계 점검]\n$(-1)^{99} = -1$, $(-1)^{100} = 1$의 부호 처리에 유의한다. $a=-1, b=51$일 때 좌변에 $x=-1$ 대입 시 $1 - 50 + 1 + 51 = 3$, 우변은 $-1+2=1$로 계산 점검: $1 - 50 - (-1)(-1) + 51 = 1 - 50 - 1 + 51 = 1$, 정확히 일치한다.\n\n[결론]\n$a=-1, b=51$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$가 모든 실수 $x, y$에 대하여\n$$f(x+y)=f(x)+f(y)-4xy$$\n를 만족시키고 $f'(0)=7$일 때, $f'(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n주어진 항등식에 $x=0, y=0$을 대입하여 $f(0)$을 구하고, 도함수의 정의 $f'(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}$에 관계식을 대입하여 $f'(x)$의 일반식을 도출한다.\n\n[단계별 풀이]\n1단계 [$f(0)$ 구하기]:\n$f(x+y) = f(x) + f(y) - 4xy$에 $x=0, y=0$을 대입하면\n$$f(0) = f(0) + f(0) - 0 \\implies f(0) = 0$$\n\n2단계 [도함수의 정의 적용]:\n$$f'(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}$$\n주어진 관계식에서 $y=h$라 하면 $f(x+h) - f(x) = f(h) - 4xh$이므로\n$$f'(x) = \\lim_{h \\to 0} \\frac{f(h) - 4xh}{h} = \\lim_{h \\to 0} \\left( \\frac{f(h)}{h} - 4x \\right)$$\n\n3단계 [$f'(0)$을 이용하여 도함수 구하기]:\n$f(0)=0$이므로 $\\lim_{h \\to 0} \\frac{f(h)}{h} = \\lim_{h \\to 0} \\frac{f(h)-f(0)}{h} = f'(0)$이다.\n조건에서 $f'(0) = 7$이므로\n$$f'(x) = f'(0) - 4x = 7 - 4x$$\n\n4단계 [$f'(1)$ 계산]:\n$$f'(1) = 7 - 4(1) = 3$$\n\n[오답 및 경계 점검]\n편미분을 이용한 검산: $y$에 대하여 미분하면 $f'(x+y) = f'(y) - 4x$. $y=0$ 대입 시 $f'(x) = f'(0) - 4x = 7 - 4x$. $f'(1) = 7 - 4 = 3$으로 완벽히 일치한다.\n\n[결론]\n$3$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "미분가능한 함수 $f(x)$가\n$$\\lim_{x \\to 2} \\frac{f(x)-2}{x-2}=1$$\n을 만족시킬 때,\n$$\\lim_{x \\to 2} \\frac{x^2 f(x)-4f(2)}{x^3-8}$$\n의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n주어진 극한식 $\\lim_{x \\to 2} \\frac{f(x)-2}{x-2} = 1$에서 분모가 $0$으로 가므로 분자도 $0$으로 감을 이용하여 $f(2)$와 $f'(2)$의 값을 구한다. 구하고자 하는 극한의 분자를 $f(x)-f(2)$가 나타나도록 적절히 분리 변형한다.\n\n[단계별 풀이]\n1단계 [조건에서 $f(2), f'(2)$ 구하기]:\n$\\lim_{x \\to 2} (x-2) = 0$이므로 $\\lim_{x \\to 2} (f(x)-2) = 0 \\implies f(2) = 2$\n따라서 주어진 식은 미분계수의 정의이므로\n$$f'(2) = \\lim_{x \\to 2} \\frac{f(x)-f(2)}{x-2} = 1$$\n\n2단계 [구하는 식의 분모, 분자 변형]:\n분모 인수분해: $x^3 - 8 = (x-2)(x^2+2x+4)$\n분자에 $4f(x)$를 빼고 더하여 묶어준다:\n$$x^2 f(x) - 4f(2) = x^2 f(x) - 4f(x) + 4f(x) - 4f(2)$$\n$$= (x^2-4)f(x) + 4(f(x)-f(2))$$\n$$= (x-2)(x+2)f(x) + 4(f(x)-f(2))$$\n\n3단계 [극한 계산]:\n$$\\lim_{x \\to 2} \\frac{x^2 f(x)-4f(2)}{x^3-8} = \\lim_{x \\to 2} \\frac{(x-2)(x+2)f(x) + 4(f(x)-f(2))}{(x-2)(x^2+2x+4)}$$\n분모, 분자를 $x-2$로 나누면\n$$= \\lim_{x \\to 2} \\frac{(x+2)f(x) + 4 \\cdot \\frac{f(x)-f(2)}{x-2}}{x^2+2x+4}$$\n$x \\to 2$를 대입하면\n$$= \\frac{(2+2)f(2) + 4f'(2)}{2^2 + 2(2) + 4} = \\frac{4(2) + 4(1)}{4 + 4 + 4} = \\frac{8 + 4}{12} = \\frac{12}{12} = 1$$\n\n[오답 및 경계 점검]\n로피탈의 정리로 검산: 분모 미분 $3x^2 \\to 12$, 분자 미분 $2x f(x) + x^2 f'(x) \\to 2(2)(2) + (4)(1) = 8 + 4 = 12$. 따라서 $\\frac{12}{12} = 1$로 정확함을 확인할 수 있다.\n\n[결론]\n$1$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "미분계수와 도함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-02",
-    "standardUnit": "미분계수와 도함수",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H22-M1-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)$에 대하여 $f(-1)=f(0)=f(1)=2$이다. $f'(1)=8$일 때, $f'(2)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$44$",
+    "solution": "[풀이 전략]\n$f(-1)=f(0)=f(1)=2$이므로 $h(x) = f(x)-2$로 놓으면 $h(x)$는 $-1, 0, 1$을 세 실근으로 갖는 삼차다항식이다. 이를 이용하여 $f(x)$의 식을 최고차항의 계수 $k$로 나타낸 후 $f'(1)=8$ 조건을 이용하여 $k$를 구한다.\n\n[단계별 풀이]\n1단계 [인수정리를 이용한 $f(x)$ 식 작성]:\n$h(x) = f(x) - 2$라 두면\n$$h(-1) = 0, \\quad h(0) = 0, \\quad h(1) = 0$$\n따라서 삼차함수 $f(x)$에 대하여 최고차항의 계수를 $k$ ($k \\ne 0$)라 하면\n$$f(x) - 2 = k x (x+1)(x-1) = k(x^3 - x)$$\n$$f(x) = k(x^3 - x) + 2$$\n\n2단계 [도함수 계산 및 $k$ 결정]:\n양변을 $x$에 대하여 미분하면\n$$f'(x) = k(3x^2 - 1)$$\n조건에서 $f'(1) = 8$이므로\n$$f'(1) = k(3(1)^2 - 1) = 2k = 8 \\implies k = 4$$\n따라서 도함수는\n$$f'(x) = 4(3x^2 - 1) = 12x^2 - 4$$\n\n3단계 [$f'(2)$ 계산]:\n$$f'(2) = 12(2)^2 - 4 = 12(4) - 4 = 48 - 4 = 44$$\n\n[오답 및 경계 점검]\n$f(x) = 4x^3 - 4x + 2$이므로 $f(-1) = -4+4+2=2$, $f(0)=2$, $f(1)=4-4+2=2$가 완벽히 만족된다. $f'(x) = 12x^2 - 4$에서 $f'(1)=8$, $f'(2)=44$가 오류 없이 성립한다.\n\n[결론]\n$44$"
   }
 ];

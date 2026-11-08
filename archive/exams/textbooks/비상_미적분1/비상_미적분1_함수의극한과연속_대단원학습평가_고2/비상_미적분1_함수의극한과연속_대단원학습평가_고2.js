@@ -10,8 +10,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$에 대하여\n$\\lim_{x \\to 2} f(x)=3, \\lim_{x \\to 2} g(x)=\\alpha$\n이고 $\\lim_{x \\to 2} f(x)g(x)=-6$일 때, 극한값 $\\lim_{x \\to 2} \\{3f(x)+2g(x)\\}$를 구하시오. (단, $\\alpha$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n두 함수 $f(x), g(x)$가 $x=2$에서 수렴하므로 함수의 극한의 곱셈 성질을 이용하여 $\\alpha$의 값을 구한 뒤, 극한의 선형성을 적용하여 구하고자 하는 식의 값을 계산한다.\n\n[단계별 풀이]\n1단계 [$\\alpha$의 값 구하기]:\n$\\lim_{x \\to 2} f(x) = 3$이고 $\\lim_{x \\to 2} g(x) = \\alpha$이므로\n$$\\lim_{x \\to 2} f(x)g(x) = \\left( \\lim_{x \\to 2} f(x) \\right) \\left( \\lim_{x \\to 2} g(x) \\right) = 3\\alpha$$\n조건에서 $\\lim_{x \\to 2} f(x)g(x) = -6$이므로\n$$3\\alpha = -6 \\implies \\alpha = -2$$\n\n2단계 [목표 극한값 계산]:\n$$\\begin{aligned}\n\\lim_{x \\to 2} \\{3f(x)+2g(x)\\} &= 3\\lim_{x \\to 2} f(x) + 2\\lim_{x \\to 2} g(x) \\\\\n&= 3(3) + 2(-2) \\\\\n&= 9 - 4 = 5\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n두 함수가 모두 수렴하므로 사칙연산의 기본 성질을 분리하여 적용하는 과정에 결함이 없다.\n\n[결론]\n$5$"
   },
   {
     "id": 2,
@@ -38,8 +38,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -60,8 +60,8 @@ window.questionBank = [
       "④ $\\lim_{x \\to \\infty} \\frac{2x^2-5x+7}{x^2+1}=2$",
       "⑤ $\\lim_{x \\to \\infty} (\\sqrt{x^2-2x}-x)=1$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[풀이 전략]\n각 선지의 극한식을 직접 계산하여 옳고 그름을 판정한다. 무한대에서의 무리식 꼴은 분자 유리화를 통해 최고차항의 계수 비를 정확히 비교한다.\n\n[단계별 풀이]\n1단계 [①~④ 선지 점검]:\n- ① $\\lim_{x \\to 1} (x^2-4x+1) = 1 - 4 + 1 = -2$ (참)\n- ② $\\lim_{x \\to 1} \\frac{3x^2-2x-1}{x-1} = \\lim_{x \\to 1} \\frac{(x-1)(3x+1)}{x-1} = \\lim_{x \\to 1} (3x+1) = 4$ (참)\n- ③ $\\lim_{x \\to 0} \\frac{1-\\sqrt{1-x}}{x} = \\lim_{x \\to 0} \\frac{1-(1-x)}{x(1+\\sqrt{1-x})} = \\lim_{x \\to 0} \\frac{x}{x(1+\\sqrt{1-x})} = \\frac{1}{1+1} = \\frac{1}{2}$ (참)\n- ④ $\\lim_{x \\to \\infty} \\frac{2x^2-5x+7}{x^2+1} = \\lim_{x \\to \\infty} \\frac{2 - \\frac{5}{x} + \\frac{7}{x^2}}{1 + \\frac{1}{x^2}} = 2$ (참)\n\n2단계 [⑤ 선지 점검]:\n$$\\begin{aligned}\n\\lim_{x \\to \\infty} (\\sqrt{x^2-2x}-x) &= \\lim_{x \\to \\infty} \\frac{(x^2-2x) - x^2}{\\sqrt{x^2-2x} + x} \\\\\n&= \\lim_{x \\to \\infty} \\frac{-2x}{\\sqrt{x^2-2x} + x} \\\\\n&= \\lim_{x \\to \\infty} \\frac{-2}{\\sqrt{1 - \\frac{2}{x}} + 1} = \\frac{-2}{1 + 1} = -1\n\\end{aligned}$$\n선지 ⑤에서는 극한값을 $1$이라 하였으므로 옳지 않다.\n\n따라서 옳지 않은 것은 ⑤이다.\n\n[오답 및 경계 점검]\n⑤에서 유리화 후 분자가 $-2x$이므로 분모의 최고차항 $x + x = 2x$와 비교하면 $-1$이 됨을 부호 실수 없이 확인했다.\n\n[결론]\n⑤"
   },
   {
     "id": 3,
@@ -72,8 +72,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=ax+b$가\n$\\lim_{x \\to 1} \\frac{(x^2+1)f(x)}{x^4-1}=2$\n를 만족시킬 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=4, b=-4$",
+    "solution": "[풀이 전략]\n분모 $x^4-1$을 인수분해하여 분자의 $x^2+1$과 약분하고, $x \\to 1$일 때 분모가 $0$으로 수렴하므로 분자도 $0$으로 수렴해야 함을 이용하여 $a, b$의 관계식을 세워 해결한다.\n\n[단계별 풀이]\n1단계 [식의 약분 및 정리]:\n$$x^4 - 1 = (x^2 + 1)(x^2 - 1) = (x^2 + 1)(x - 1)(x + 1)$$\n주어진 식에 대입하면\n$$\\lim_{x \\to 1} \\frac{(x^2+1)f(x)}{x^4-1} = \\lim_{x \\to 1} \\frac{(x^2+1)(ax+b)}{(x^2+1)(x-1)(x+1)} = \\lim_{x \\to 1} \\frac{ax+b}{(x-1)(x+1)} = 2$$\n\n2단계 [분모 $\\to 0$ 조건 적용]:\n$x \\to 1$일 때 (분모) $\\to (1-1)(1+1) = 0$이고 극한값이 존재하므로 (분자) $\\to 0$이어야 한다.\n$$a(1) + b = 0 \\implies a + b = 0 \\implies b = -a$$\n\n3단계 [대입 및 극한값 계산]:\n$b = -a$를 분자에 대입하면 $ax + b = a(x - 1)$이므로\n$$\\lim_{x \\to 1} \\frac{a(x-1)}{(x-1)(x+1)} = \\lim_{x \\to 1} \\frac{a}{x+1} = \\frac{a}{1+1} = \\frac{a}{2}$$\n이 극한값이 $2$이므로\n$$\\frac{a}{2} = 2 \\implies a = 4$$\n$$b = -a = -4$$\n\n[오답 및 경계 점검]\n$f(x) = 4x - 4$일 때 $\\lim_{x \\to 1} \\frac{4(x-1)}{(x-1)(x+1)} = \\frac{4}{2} = 2$가 되어 조건과 완벽히 일치한다.\n\n[결론]\n$a=4, b=-4$"
   },
   {
     "id": 4,
@@ -100,8 +100,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $a$에 대하여 원 $x^2+(y-a)^2=a^2$이 곡선 $y=-x^2+a$와 만나는 점 중 제1사분면 위의 점을 $\\mathrm{P}$라고 하자. 점 $\\mathrm{P}$에서 $y$축에 내린 수선의 발을 $\\mathrm{Q}$라 하고, 원의 중심을 $\\mathrm{C}$라고 할 때, 극한값 $\\lim_{a \\to 0+} \\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}$를 구하시오.\n<img src=\"q04.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n원과 포물선의 방정식을 연립하여 제1사분면 교점 $\\mathrm{P}$의 $y$좌표를 $a$에 대한 식으로 표현한다. $\\overline{\\mathrm{OQ}}$는 점 $\\mathrm{P}$의 $y$좌표이고 $\\overline{\\mathrm{OC}} = a$이므로, $\\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}}$의 $a \\to 0+$ 극한값을 유리화를 통해 구한다.\n\n[단계별 풀이]\n1단계 [교점 $\\mathrm{P}$의 $y$좌표 구하기]:\n곡선의 식 $y = -x^2 + a$에서 $x^2 = a - y$이다.\n이를 원의 방정식 $x^2 + (y-a)^2 = a^2$에 대입하면\n$$(a - y) + (y - a)^2 = a^2 \\implies a - y + y^2 - 2ay + a^2 = a^2$$\n$$y^2 - (2a + 1)y + a = 0$$\n근의 공식에 의하여\n$$y = \\frac{2a + 1 \\pm \\sqrt{(2a+1)^2 - 4a}}{2} = \\frac{2a + 1 \\pm \\sqrt{4a^2 + 1}}{2}$$\n점 $\\mathrm{P}$는 제1사분면의 교점이므로 $0 < y < a$이어야 한다. 따라서\n$$y = \\frac{2a + 1 - \\sqrt{4a^2 + 1}}{2}$$\n\n2단계 [선분의 길이 표현]:\n점 $\\mathrm{P}$에서 $y$축에 내린 수선의 발이 $\\mathrm{Q}$이므로\n$$\\overline{\\mathrm{OQ}} = y = \\frac{2a + 1 - \\sqrt{4a^2 + 1}}{2}$$\n원의 중심 $\\mathrm{C}(0, a)$이므로\n$$\\overline{\\mathrm{OC}} = a$$\n따라서\n$$\\frac{\\overline{\\mathrm{OQ}}}{\\overline{\\mathrm{OC}}} = \\frac{2a + 1 - \\sqrt{4a^2 + 1}}{2a}$$\n\n3단계 [유리화 및 극한값 계산]:\n$$\\begin{aligned}\n\\lim_{a \\to 0+} \\frac{2a + 1 - \\sqrt{4a^2 + 1}}{2a} &= \\lim_{a \\to 0+} \\frac{(2a+1)^2 - (4a^2+1)}{2a(2a+1+\\sqrt{4a^2+1})} \\\\\n&= \\lim_{a \\to 0+} \\frac{4a^2+4a+1 - 4a^2 - 1}{2a(2a+1+\\sqrt{4a^2+1})} \\\\\n&= \\lim_{a \\to 0+} \\frac{4a}{2a(2a+1+\\sqrt{4a^2+1})} \\\\\n&= \\lim_{a \\to 0+} \\frac{2}{2a+1+\\sqrt{4a^2+1}} \\\\\n&= \\frac{2}{0+1+\\sqrt{0+1}} = \\frac{2}{1+1} = 1\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n$a \\to 0+$일 때 $\\overline{\\mathrm{OQ}} \\approx a$가 되어 비율이 $1$로 수렴함을 로피탈 또는 근사 전개로도 확인할 수 있다.\n\n[결론]\n$1$"
   },
   {
     "id": 5,
@@ -128,8 +128,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 모든 실수 $x$에 대하여\n$-3x^2+2x \\le f(x) \\le x^2+2x$\n를 만족시킬 때, 극한값 $\\lim_{x \\to 0+} \\frac{\\{f(x)\\}^2}{3x^2-xf(x)}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n주어진 부등식의 각 변을 $x > 0$으로 나누어 함수의 극한의 대소 관계(조임정리)로 $\\lim_{x \\to 0+} \\frac{f(x)}{x}$를 구한 뒤, 구하는 식의 분모와 분자를 $x^2$으로 나누어 정리한다.\n\n[단계별 풀이]\n1단계 [$\\lim_{x \\to 0+} \\frac{f(x)}{x}$ 도출]:\n$x > 0$일 때 주어진 부등식의 각 변을 $x$로 나눈다.\n$$-3x + 2 \\le \\frac{f(x)}{x} \\le x + 2$$\n이때\n$$\\lim_{x \\to 0+} (-3x + 2) = 2, \\quad \\lim_{x \\to 0+} (x + 2) = 2$$\n따라서 함수의 극한의 대소 관계에 의하여\n$$\\lim_{x \\to 0+} \\frac{f(x)}{x} = 2$$\n\n2단계 [구하고자 하는 식 변형]:\n$$\\lim_{x \\to 0+} \\frac{\\{f(x)\\}^2}{3x^2 - xf(x)}$$\n분모와 분자를 $x^2$으로 나눈다.\n$$\\lim_{x \\to 0+} \\frac{\\left\\{ \\frac{f(x)}{x} \\right\\}^2}{3 - \\frac{f(x)}{x}}$$\n\n3단계 [극한값 계산]:\n$$\\frac{2^2}{3 - 2} = \\frac{4}{1} = 4$$\n\n[오답 및 경계 점검]\n$x \\to 0+$일 때 $f(x) \\approx 2x$이므로 분자는 $(2x)^2 = 4x^2$, 분모는 $3x^2 - x(2x) = x^2$이 되어 $\\frac{4x^2}{x^2} = 4$로 바로 검산된다.\n\n[결론]\n$4$"
   },
   {
     "id": 6,
@@ -156,9 +156,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -172,8 +172,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 $x=0$에서 연속인 함수를 모두 고르시오.\n[보기]\nㄱ. $f(x)=|x|$\nㄴ. $f(x)=\\frac{x}{x^2-x}$\nㄷ. $f(x)=\\begin{cases} \\frac{1}{x} & (x \\ne 0) \\\\ 1 & (x=0) \\end{cases}$\nㄹ. $f(x)=\\begin{cases} 2x & (x \\ge 0) \\\\ \\sqrt{-x} & (x < 0) \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄹ",
+    "solution": "[풀이 전략]\n각 보기에 대해 $x=0$에서의 함숫값과 좌우극한을 조사하여 $\\lim_{x \\to 0} f(x) = f(0)$이 성립하는지 판정한다.\n\n[단계별 풀이]\n1단계 [보기 ㄱ 점검]:\n$f(x) = |x|$:\n- 함숫값: $f(0) = 0$\n- 극한값: $\\lim_{x \\to 0+} x = 0$, $\\lim_{x \\to 0-} (-x) = 0 \\implies \\lim_{x \\to 0} |x| = 0$\n함숫값과 극한값이 일치하므로 $x=0$에서 연속이다. (참)\n\n2단계 [보기 ㄴ 점검]:\n$f(x) = \\frac{x}{x^2-x}$:\n$x=0$을 대입하면 분모가 $0$이 되어 $f(0)$의 값이 정의되지 않는다.\n따라서 $x=0$에서 불연속이다. (거짓)\n\n3단계 [보기 ㄷ 점검]:\n$f(x) = \\begin{cases} \\frac{1}{x} & (x \\ne 0) \\\\ 1 & (x=0) \\end{cases}$:\n$x \\to 0+$일 때 $\\frac{1}{x} \\to \\infty$, $x \\to 0-$일 때 $\\frac{1}{x} \\to -\\infty$로 발산하므로 극한값이 존재하지 않는다.\n따라서 $x=0$에서 불연속이다. (거짓)\n\n4단계 [보기 ㄹ 점검]:\n$f(x) = \\begin{cases} 2x & (x \\ge 0) \\\\ \\sqrt{-x} & (x < 0) \\end{cases}$:\n- 함숫값: $f(0) = 2(0) = 0$\n- 우극한: $\\lim_{x \\to 0+} 2x = 0$\n- 좌극한: $\\lim_{x \\to 0-} \\sqrt{-x} = \\sqrt{0} = 0$\n$\\lim_{x \\to 0} f(x) = f(0) = 0$이므로 $x=0$에서 연속이다. (참)\n\n따라서 $x=0$에서 연속인 함수는 ㄱ, ㄹ이다.\n\n[오답 및 경계 점검]\nㄴ은 $\\lim_{x \\to 0} \\frac{x}{x(x-1)} = -1$로 극한값은 존재하지만 $f(0)$이 정의되지 않아 연속이 아님에 유의해야 한다.\n\n[결론]\nㄱ, ㄹ"
   },
   {
     "id": 7,
@@ -184,9 +184,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -200,8 +200,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가\n$(x^2-1)f(x)=ax^3+bx^2-ax-b$\n를 만족시키고 $f(-1)=1, f(1)=2$일 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=\\frac{1}{2}, b=\\frac{3}{2}$",
+    "solution": "[풀이 전략]\n우변의 삼차식을 인수분해하여 $x^2-1$을 약분하고, $f(x)$가 모든 실수에서 연속이므로 $x=1, -1$에서의 함숫값이 극한값과 같음을 이용하여 $a, b$의 연립방정식을 푼다.\n\n[단계별 풀이]\n1단계 [우변의 식 인수분해]:\n$$ax^3 + bx^2 - ax - b = ax(x^2 - 1) + b(x^2 - 1) = (x^2 - 1)(ax + b)$$\n따라서 주어진 등식은\n$$(x^2 - 1)f(x) = (x^2 - 1)(ax + b)$$\n\n2단계 [$x \\ne \\pm 1$일 때 $f(x)$ 및 연속성 적용]:\n$x \\ne 1$이고 $x \\ne -1$일 때\n$$f(x) = ax + b$$\n함수 $f(x)$가 모든 실수에서 연속이므로\n$$f(-1) = \\lim_{x \\to -1} f(x) = -a + b$$\n$$f(1) = \\lim_{x \\to 1} f(x) = a + b$$\n\n3단계 [연립방정식 풀기]:\n조건 $f(-1) = 1, f(1) = 2$이므로\n$$-a + b = 1 \\quad \\cdots\\text{①}$$\n$$a + b = 2 \\quad \\cdots\\text{②}$$\n①과 ②를 변변 더하면\n$$2b = 3 \\implies b = \\frac{3}{2}$$\n$b = \\frac{3}{2}$를 ②에 대입하면\n$$a = 2 - \\frac{3}{2} = \\frac{1}{2}$$\n\n[오답 및 경계 점검]\n$f(x) = \\frac{1}{2}x + \\frac{3}{2}$일 때 $f(-1) = -\\frac{1}{2} + \\frac{3}{2} = 1$, $f(1) = \\frac{1}{2} + \\frac{3}{2} = 2$로 문제 조건과 완벽히 일치한다.\n\n[결론]\n$a=\\frac{1}{2}, b=\\frac{3}{2}$"
   },
   {
     "id": 8,
@@ -212,9 +212,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -228,8 +228,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\frac{3x-2}{x+2}$에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n[보기]\nㄱ. $f(x)$는 닫힌구간 $[-4, 0]$에서 최댓값을 갖지 않는다.\nㄴ. $f(x)$는 닫힌구간 $[-2, 0]$에서 최솟값을 갖는다.\nㄷ. $f(x)$는 닫힌구간 $[0, 2]$에서 최솟값을 갖는다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄷ",
+    "solution": "[풀이 전략]\n분수함수 $f(x) = \\frac{3x-2}{x+2} = 3 - \\frac{8}{x+2}$의 점근선 $x=-2, y=3$과 단조증가성을 파악하고, 각 닫힌구간에 점근선이 포함되는지 여부에 따라 최대·최소의 존재성을 판정한다.\n\n[단계별 풀이]\n1단계 [함수의 기본 형태 및 점근선]:\n$$f(x) = \\frac{3(x+2)-8}{x+2} = 3 - \\frac{8}{x+2}$$\n점근선은 $x = -2$와 $y = 3$이다. $x > -2$ 및 $x < -2$의 각 구간에서 $f(x)$는 증가함수이다.\n\n2단계 [보기 ㄱ 점검]:\n닫힌구간 $[-4, 0]$은 점근선 $x = -2$를 포함한다.\n$x \\to -2-$일 때 $f(x) \\to \\infty$, $x \\to -2+$일 때 $f(x) \\to -\\infty$이므로\n이 구간에서 $f(x)$는 최댓값과 최솟값을 모두 갖지 않는다. 따라서 보기 ㄱ은 참이다.\n\n3단계 [보기 ㄴ 점검]:\n닫힌구간 $[-2, 0]$에서 $x \\to -2+$일 때 $f(x) \\to -\\infty$이므로\n이 구간에서 최솟값은 존재하지 않는다. 따라서 보기 ㄴ은 거짓이다.\n\n4단계 [보기 ㄷ 점검]:\n닫힌구간 $[0, 2]$는 점근선 $x=-2$를 포함하지 않으므로 이 닫힌구간에서 $f(x)$는 연속이다.\n최대·최소 정리에 의해 반드시 최댓값과 최솟값을 갖는다.\n(실제로 $x=0$에서 최솟값 $f(0) = -1$, $x=2$에서 최댓값 $f(2) = 1$을 가짐)\n따라서 보기 ㄷ은 참이다.\n\n그러므로 옳은 것은 ㄱ, ㄷ이다.\n\n[오답 및 경계 점검]\n최대·최소 정리는 함수가 '닫힌구간에서 연속'일 때 성립하므로, 불연속점(점근선)을 포함하는 구간에서는 최대·최소가 존재하지 않을 수 있음을 정확히 적용했다.\n\n[결론]\nㄱ, ㄷ"
   },
   {
     "id": 9,
@@ -240,8 +240,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -256,8 +256,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$가\n$\\lim_{x \\to 1} \\frac{f(x)}{x-1}=2, \\lim_{x \\to \\infty} \\frac{f(x)-3x^2}{2x-1}=k$\n를 만족시킬 때, 다음 물음에 답하시오. (단, $k$는 실수)\n⑴ 함수 $f(x)$를 구하시오.\n⑵ 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $f(x)=3x^2-4x+1$, ⑵ $k=-2$",
+    "solution": "[풀이 전략]\n$\\lim_{x \\to \\infty} \\frac{f(x)-3x^2}{2x-1} = k$로부터 $f(x)$의 최고차항 및 차수를 결정하고, $\\lim_{x \\to 1} \\frac{f(x)}{x-1} = 2$를 통해 $f(1)=0$ 및 미정계수를 확정한다.\n\n[단계별 풀이]\n1단계 [다항함수 $f(x)$의 형태 결정]:\n$\\lim_{x \\to \\infty} \\frac{f(x)-3x^2}{2x-1} = k$ (실수)이므로 분자 $f(x)-3x^2$은 일차 이하의 다항식이어야 한다.\n따라서 $f(x)$는 최고차항의 계수가 $3$인 이차함수이다.\n$$f(x) = 3x^2 + ax + b \\quad (a, b\\text{는 실수})$$\n\n2단계 [$\\lim_{x \\to 1} \\frac{f(x)}{x-1}=2$ 조건 적용]:\n$x \\to 1$일 때 (분모) $\\to 0$이므로 (분자) $\\to 0$이어야 한다.\n$$f(1) = 3(1)^2 + a(1) + b = 0 \\implies 3 + a + b = 0 \\implies b = -a - 3$$\n이를 $f(x)$에 대입하여 인수분해하면\n$$f(x) = 3x^2 + ax - a - 3 = (x-1)(3x + a + 3)$$\n극한식에 대입:\n$$\\lim_{x \\to 1} \\frac{(x-1)(3x+a+3)}{x-1} = \\lim_{x \\to 1} (3x+a+3) = 6 + a = 2 \\implies a = -4$$\n따라서\n$$b = -(-4) - 3 = 1$$\n그러므로\n$$f(x) = 3x^2 - 4x + 1$$\n\n3단계 [실수 $k$의 값 계산]:\n$$f(x) - 3x^2 = -4x + 1$$\n이므로\n$$k = \\lim_{x \\to \\infty} \\frac{-4x+1}{2x-1} = \\lim_{x \\to \\infty} \\frac{-4 + \\frac{1}{x}}{2 - \\frac{1}{x}} = \\frac{-4}{2} = -2$$\n\n[오답 및 경계 점검]\n$f(1) = 3 - 4 + 1 = 0$, $f'(1) = 6(1) - 4 = 2$로 첫 번째 극한과 완벽히 일치하고, $k = \\frac{-4}{2} = -2$도 정확하다.\n\n[결론]\n⑴ $f(x)=3x^2-4x+1$, ⑵ $k=-2$"
   },
   {
     "id": 10,
@@ -268,8 +268,8 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
+    "standardUnitKey": "H22-M1-01",
+    "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -284,8 +284,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가\n$\\lim_{x \\to \\infty} f(x)=\\infty$\n$\\lim_{x \\to \\infty} \\{4f(x)-2g(x)\\}=1$\n을 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} \\frac{3g(x)-f(x)}{5f(x)}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$\\lim_{x \\to \\infty} f(x) = \\infty$이므로, 주어진 극한식 $4f(x)-2g(x)$의 양변을 $f(x)$로 나누어 $\\lim_{x \\to \\infty} \\frac{g(x)}{f(x)}$의 값을 구한 뒤, 구하는 식의 분모와 분자를 $f(x)$로 나누어 대입한다.\n\n[단계별 풀이]\n1단계 [$\\lim_{x \\to \\infty} \\frac{g(x)}{f(x)}$ 도출]:\n조건에서 $\\lim_{x \\to \\infty} \\{4f(x)-2g(x)\\} = 1$이고 $\\lim_{x \\to \\infty} f(x) = \\infty$이므로\n$$\\lim_{x \\to \\infty} \\frac{4f(x)-2g(x)}{f(x)} = \\lim_{x \\to \\infty} \\frac{1}{f(x)} = 0$$\n좌변을 정리하면\n$$\\lim_{x \\to \\infty} \\left( 4 - 2\\cdot \\frac{g(x)}{f(x)} \\right) = 0 \\implies 4 - 2\\lim_{x \\to \\infty} \\frac{g(x)}{f(x)} = 0$$\n따라서\n$$\\lim_{x \\to \\infty} \\frac{g(x)}{f(x)} = 2$$\n\n2단계 [구하고자 하는 극한식 계산]:\n$$\\lim_{x \\to \\infty} \\frac{3g(x)-f(x)}{5f(x)}$$\n분모와 분자를 $f(x)$로 나눈다.\n$$\\lim_{x \\to \\infty} \\frac{3\\cdot \\frac{g(x)}{f(x)} - 1}{5}$$\n$\\lim_{x \\to \\infty} \\frac{g(x)}{f(x)} = 2$를 대입하면\n$$= \\frac{3(2) - 1}{5} = \\frac{6 - 1}{5} = \\frac{5}{5} = 1$$\n\n[오답 및 경계 점검]\n$g(x) = 2f(x) - \\frac{1}{2}$로 두고 대입하면 $\\frac{3(2f(x)-1/2)-f(x)}{5f(x)} = \\frac{5f(x)-3/2}{5f(x)} \\to 1$로 동일한 결과가 도출된다.\n\n[결론]\n$1$"
   },
   {
     "id": 11,
@@ -296,9 +296,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수\n$f(x)=3x-8, g(x)=x^2+ax+9$\n에 대하여 함수 $\\frac{f(x)}{g(x)}$가 모든 실수 $x$에서 연속일 때, 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-6 < a < 6$",
+    "solution": "[풀이 전략]\n두 다항함수 $f(x), g(x)$는 모든 실수에서 연속이므로, 몫 함수 $\\frac{f(x)}{g(x)}$가 모든 실수에서 연속이 되려면 분모 $g(x) \\ne 0$이어야 한다. 즉 이차방정식 $g(x)=0$이 실근을 갖지 않아야 하므로 판별식 $D < 0$을 적용한다.\n\n[단계별 풀이]\n1단계 [연속 조건 설정]:\n함수 $\\frac{f(x)}{g(x)} = \\frac{3x-8}{x^2+ax+9}$가 모든 실수 $x$에서 연속이려면 모든 실수 $x$에 대하여\n$$g(x) = x^2 + ax + 9 \\ne 0$$\n이어야 한다.\n\n2단계 [이차방정식의 실근 조건 판별]:\n이차방정식 $x^2 + ax + 9 = 0$이 실근을 갖지 않아야 하므로 판별식을 $D$라 할 때\n$$D < 0$$\n이어야 한다.\n\n3단계 [부등식 풀기]:\n$$D = a^2 - 4(1)(9) = a^2 - 36 < 0$$\n$$(a + 6)(a - 6) < 0$$\n따라서 실수 $a$의 값의 범위는\n$$-6 < a < 6$$\n\n[오답 및 경계 점검]\n$a = \\pm 6$일 때는 중근을 가져 한 점에서 불연속이 되므로 등호가 포함되지 않은 열린 범위 $-6 < a < 6$이 정확하다.\n\n[결론]\n$-6 < a < 6$"
   },
   {
     "id": 12,
@@ -324,9 +324,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -340,8 +340,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같다. 모든 실수 $x$에서 함수\n$g(x)=(x-a)f(x)$\n가 연속일 때, 실수 $a$의 값을 구하시오.\n<img src=\"q12.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n그래프에서 $f(x)$가 불연속인 점 $x=1$에서 곱함수 $g(x)=(x-a)f(x)$가 연속이 되도록 좌우극한과 함숫값을 비교하여 일치시키는 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [그래프에서 $x=1$ 부근의 $f(x)$ 값 읽기]:\n주어진 그래프로부터:\n- 우극한: $\\lim_{x \\to 1+} f(x) = 1$\n- 좌극한: $\\lim_{x \\to 1-} f(x) = 2$\n- 함숫값: $f(1) = 2$\n따라서 $f(x)$는 $x=1$에서 불연속이다.\n\n2단계 [$g(x)$의 $x=1$에서 좌우극한 및 함숫값 계산]:\n$g(x) = (x-a)f(x)$에서\n- 우극한: $\\lim_{x \\to 1+} g(x) = (1 - a) \\times 1 = 1 - a$\n- 좌극한: $\\lim_{x \\to 1-} g(x) = (1 - a) \\times 2 = 2(1 - a)$\n- 함숫값: $g(1) = (1 - a)f(1) = (1 - a) \\times 2 = 2(1 - a)$\n\n3단계 [연속 조건 적용 및 $a$ 결정]:\n$g(x)$가 $x=1$에서 연속이려면 우극한과 좌극한이 같아야 하므로\n$$1 - a = 2(1 - a) \\implies 1 - a = 2 - 2a \\implies a = 1$$\n\n[오답 및 경계 점검]\n$x=1$에서 $f(x)$의 좌우극한이 서로 다르므로 연속함수 $x-a$가 $x=1$에서 $0$이 되어야만 곱이 연속이 될 수 있다. 따라서 $1-a=0 \\implies a=1$이 명백하다.\n\n[결론]\n$1$"
   },
   {
     "id": 13,
@@ -352,9 +352,9 @@ window.questionBank = [
     "category": "함수의 극한과 연속",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
-    "standardUnit": "함수의 극한과 연속",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -368,7 +368,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$가\n$f(-1)=a, f(1)=a-4$\n를 만족시킨다. 방정식 $f(x)=x^3$이 열린구간 $(-1, 1)$에서 반드시 실근을 갖도록 하는 정수 $a$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "[풀이 전략]\n방정식 $f(x) = x^3$을 $g(x) = f(x) - x^3 = 0$으로 변형한다. $g(x)$는 연속함수이므로 열린구간 $(-1, 1)$에서 반드시 실근을 가지려면 사잇값 정리에 의해 $g(-1)g(1) < 0$이어야 함을 이용하여 정수 $a$의 개수를 구한다.\n\n[단계별 풀이]\n1단계 [보조함수 $g(x)$의 설정 및 연속성]:\n$$g(x) = f(x) - x^3$$\n$f(x)$와 $x^3$은 모두 연속함수이므로 $g(x)$도 닫힌구간 $[-1, 1]$에서 연속이다.\n\n2단계 [구간 양 끝점에서의 함숫값 계산]:\n- $x = -1$일 때:\n$$g(-1) = f(-1) - (-1)^3 = a - (-1) = a + 1$$\n- $x = 1$일 때:\n$$g(1) = f(1) - 1^3 = (a - 4) - 1 = a - 5$$\n\n3단계 [사잇값 정리 조건 적용]:\n방정식 $g(x) = 0$이 열린구간 $(-1, 1)$에서 반드시 실근을 가지려면 사잇값 정리에 의하여\n$$g(-1)g(1) < 0$$\n이어야 한다.\n$$(a + 1)(a - 5) < 0$$\n따라서 $a$의 값의 범위는\n$$-1 < a < 5$$\n\n4단계 [정수 $a$의 개수 구하기]:\n범위 $-1 < a < 5$에 속하는 정수 $a$는\n$$0, 1, 2, 3, 4$$\n로 총 $5$개이다.\n\n[오답 및 경계 점검]\n$a=-1$ 또는 $a=5$일 때는 $g(-1)=0$ 또는 $g(1)=0$이 되어 실근이 열린구간 $(-1, 1)$ 내부가 아닌 끝점에 존재하게 되므로 등호가 제외된 $5$개가 정확하다.\n\n[결론]\n$5$"
   }
 ];

@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수가 $x=3$에서 연속인지 불연속인지 판정하시오.\n⑴ $f(x)=\\frac{2}{x+1}$\n⑵ $f(x)=\\begin{cases} x+1 & (x \\ne 3) \\\\ -2 & (x=3) \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 연속, ⑵ 불연속",
+    "solution": "[풀이 전략]\n함수 $f(x)$가 $x=a$에서 연속일 조건인 (1) $f(a)$가 정의되고, (2) $\\lim_{x \\to a} f(x)$가 존재하며, (3) $\\lim_{x \\to a} f(x) = f(a)$임을 각각 확인한다.\n\n[단계별 풀이]\n1단계 [⑴ $f(x)=\\frac{2}{x+1}$의 $x=3$에서 연속성]:\n- 함숫값: $f(3) = \\frac{2}{3+1} = \\frac{2}{4} = \\frac{1}{2}$\n- 극한값: $\\lim_{x \\to 3} \\frac{2}{x+1} = \\frac{2}{3+1} = \\frac{1}{2}$\n- $\\lim_{x \\to 3} f(x) = f(3) = \\frac{1}{2}$이므로 $x=3$에서 연속이다.\n\n2단계 [⑵ $f(x)=\\begin{cases} x+1 & (x \\ne 3) \\\\ -2 & (x=3) \\end{cases}$의 $x=3$에서 연속성]:\n- 함숫값: $f(3) = -2$\n- 극한값: $\\lim_{x \\to 3} f(x) = \\lim_{x \\to 3} (x+1) = 3 + 1 = 4$\n- $\\lim_{x \\to 3} f(x) \\ne f(3)$이므로 $x=3$에서 불연속이다.\n\n[오답 및 경계 점검]\n⑵에서는 극한값($4$)과 함숫값($-2$)이 모두 존재하지만 서로 일치하지 않으므로 불연속이다.\n\n[결론]\n⑴ 연속, ⑵ 불연속"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수가 연속인 구간을 구하시오.\n⑴ $f(x)=x^2+x+3$\n⑵ $f(x)=\\sqrt{2x-4}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(-\\infty, \\infty)$, ⑵ $[2, \\infty)$",
+    "solution": "[풀이 전략]\n⑴ 다항함수는 실수 전체의 구간에서 연속임을 이용한다.\n⑵ 무리함수 $\\sqrt{g(x)}$는 근호 안의 식 $g(x) \\ge 0$인 실수 범위에서 연속임을 이용한다.\n\n[단계별 풀이]\n1단계 [⑴ $f(x)=x^2+x+3$이 연속인 구간]:\n$f(x)$는 이차함수(다항함수)이므로 모든 실수 $x$에서 연속이다.\n따라서 연속인 구간은 $(-\\infty, \\infty)$이다.\n\n2단계 [⑵ $f(x)=\\sqrt{2x-4}$가 연속인 구간]:\n무리함수 $f(x)=\\sqrt{2x-4}$는 근호 안의 식이 $0$ 이상인 범위에서 정의되고 연속이다.\n$$2x - 4 \\ge 0 \\implies 2x \\ge 4 \\implies x \\ge 2$$\n따라서 연속인 구간은 $[2, \\infty)$이다.\n\n[오답 및 경계 점검]\n구간 표기법에서 $x \\ge 2$는 닫힌 구간과 무한대 기호를 사용하여 $[2, \\infty)$로 정확히 표현한다.\n\n[결론]\n⑴ $(-\\infty, \\infty)$, ⑵ $[2, \\infty)$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)=x^2+1, g(x)=x^2-2x-3$에 대하여 다음 함수의 연속성을 조사하시오.\n⑴ $\\frac{f(x)}{g(x)}$\n⑵ $\\frac{g(x)}{f(x)}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x \\ne -1, x \\ne 3$인 모든 실수 $x$에서 연속이다., ⑵ 모든 실수 $x$에서 연속이다.",
+    "solution": "[풀이 전략]\n두 연속함수 $f(x), g(x)$에 대하여 몫 함수 $\\frac{f(x)}{g(x)}$는 분모가 $0$이 아닌 모든 실수 $x$에서 연속이라는 연속함수의 성질을 적용한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\frac{f(x)}{g(x)}$의 연속성 조사]:\n$$g(x) = x^2 - 2x - 3 = (x-3)(x+1)$$\n$g(x) = 0$이 되는 $x$는 $x = -1$ 또는 $x = 3$이다.\n따라서 분모가 $0$이 아닌 $x \\ne -1, x \\ne 3$인 모든 실수 $x$에서 연속이다.\n\n2단계 [⑵ $\\frac{g(x)}{f(x)}$의 연속성 조사]:\n$$f(x) = x^2 + 1$$\n모든 실수 $x$에 대하여 $x^2 \\ge 0$이므로\n$$f(x) = x^2 + 1 \\ge 1 > 0$$\n즉, 분모 $f(x)$는 모든 실수에서 결코 $0$이 되지 않는다.\n따라서 $\\frac{g(x)}{f(x)}$는 모든 실수 $x$에서 연속이다.\n\n[오답 및 경계 점검]\n실수 범위에서 $x^2+1=0$의 실근이 존재하지 않으므로 ⑵는 분모 제한 조건 없이 실수 전체에서 온전히 연속이다.\n\n[결론]\n⑴ $x \\ne -1, x \\ne 3$인 모든 실수 $x$에서 연속이다., ⑵ 모든 실수 $x$에서 연속이다."
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 구간에서 함수의 최댓값과 최솟값을 구하시오.\n⑴ $f(x)=x^2+2x-5 \\quad [-4, 1]$\n⑵ $f(x)=\\sqrt{x-2} \\quad [3, 6]$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 최댓값: $3$, 최솟값: $-6$, ⑵ 최댓값: $2$, 최솟값: $1$",
+    "solution": "[풀이 전략]\n닫힌구간에서 연속인 함수는 최대·최소 정리에 의해 반드시 최댓값과 최솟값을 갖는다.\n⑴ 이차함수의 꼭짓점과 구간 양 끝점에서의 함숫값을 비교한다.\n⑵ 무리함수의 단조증가성을 이용하여 양 끝점에서의 값을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $f(x)=x^2+2x-5$ on $[-4, 1]$]:\n- 표준형 변형: $f(x) = (x+1)^2 - 6$\n- 꼭짓점 $x = -1$은 구간 $[-4, 1]$에 포함되므로\n  최솟값은 $f(-1) = -6$이다.\n- 양 끝점의 함숫값:\n  $f(-4) = (-4+1)^2 - 6 = 9 - 6 = 3$\n  $f(1) = (1+1)^2 - 6 = 4 - 6 = -2$\n- 따라서 최댓값은 $3$, 최솟값은 $-6$이다.\n\n2단계 [⑵ $f(x)=\\sqrt{x-2}$ on $[3, 6]$]:\n- $f(x)=\\sqrt{x-2}$는 구간 $[3, 6]$에서 $x$의 값이 증가할 때 $y$의 값도 증가하는 단조증가함수이다.\n- $x = 3$일 때 최솟값: $f(3) = \\sqrt{3-2} = 1$\n- $x = 6$일 때 최댓값: $f(6) = \\sqrt{6-2} = \\sqrt{4} = 2$\n- 따라서 최댓값은 $2$, 최솟값은 $1$이다.\n\n[오답 및 경계 점검]\n이차함수의 축 $x=-1$이 구간 $[-4, 1]$ 내부에 존재하므로 꼭짓점이 최솟값이 되며, 축에서 더 먼 끝점 $x=-4$에서 최댓값이 됨을 확인했다.\n\n[결론]\n⑴ 최댓값: $3$, 최솟값: $-6$, ⑵ 최댓값: $2$, 최솟값: $1$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 다음 그림과 같다. 보기 중 옳은 것을 모두 고르시오.\n<img src=\"q05.png\" />\n[보기]\nㄱ. $\\lim_{x \\to 1} f(x)=4$\nㄴ. $\\lim_{x \\to 0} f(x)=f(0)$\nㄷ. 열린구간 $(0, 5)$에서 $f(x)$가 불연속인 $x$의 값은 $2$개이다.\nㄹ. 열린구간 $(0, 5)$에서 $f(x)$의 극한값이 존재하지 않는 $x$의 값은 $2$개이다.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄹ",
+    "solution": "[풀이 전략]\n그래프를 통해 열린구간 $(0, 5)$에서의 한쪽 극한, 양쪽 극한의 존재성, 함숫값 및 연속성 여부를 점별로 확인한다.\n\n[단계별 풀이]\n1단계 [보기 ㄱ 점검]:\n$x \\to 1$일 때 좌극한과 우극한이 모두 $4$이므로\n$$\\lim_{x \\to 1} f(x) = 4$$\n따라서 보기 ㄱ은 참이다.\n\n2단계 [보기 ㄴ 점검]:\n$x=0$에서 그래프는 연속으로 연결되어 있으므로\n$$\\lim_{x \\to 0} f(x) = f(0)$$\n따라서 보기 ㄴ은 참이다.\n\n3단계 [보기 ㄷ 점검]:\n열린구간 $(0, 5)$에서 그래프가 끊어져 있는 $x$의 값(불연속점)을 조사한다.\n- $x=1$: 극한값은 $4$이나 함숫값 $f(1)$이 정의되지 않거나 불일치하여 불연속\n- $x=3$: 우극한과 좌극한이 달라 불연속\n- $x=4$: 우극한과 좌극한이 달라 불연속\n따라서 불연속인 $x$의 값은 $1, 3, 4$의 $3$개이다. 그러므로 보기 ㄷ은 거짓이다.\n\n4단계 [보기 ㄹ 점검]:\n열린구간 $(0, 5)$에서 극한값 $\\lim f(x)$가 존재하지 않는 $x$의 값을 조사한다.\n- $x=3$: 좌극한과 우극한이 다르므로 극한값 없음\n- $x=4$: 좌극한과 우극한이 다르므로 극한값 없음\n($x=1$에서는 $\\lim_{x \\to 1} f(x)=4$로 극한값이 존재함)\n따라서 극한값이 존재하지 않는 $x$의 값은 $3, 4$의 $2$개이다. 그러므로 보기 ㄹ은 참이다.\n\n따라서 옳은 것은 ㄱ, ㄴ, ㄹ이다.\n\n[오답 및 경계 점검]\n$x=1$에서는 극한값은 존재하지만 불연속이므로, 불연속점의 개수($3$개)와 극한값이 없는 점의 개수($2$개)의 구분을 명확히 해야 한다.\n\n[결론]\nㄱ, ㄴ, ㄹ"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} \\frac{x^2+ax+b}{x-2} & (x > 2) \\\\ 3 & (x \\le 2) \\end{cases}$이 모든 실수 $x$에서 연속일 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1, b=-2$",
+    "solution": "[풀이 전략]\n함수 $f(x)$가 모든 실수에서 연속이 되려면 경계점 $x=2$에서 연속이어야 하므로, $\\lim_{x \\to 2+} f(x) = f(2) = 3$이어야 함을 이용하여 $a, b$를 구한다.\n\n[단계별 풀이]\n1단계 [연속 조건 설정]:\n함수 $f(x)$가 $x=2$에서 연속이므로\n$$\\lim_{x \\to 2+} \\frac{x^2+ax+b}{x-2} = f(2) = 3$$\n\n2단계 [분모 $\\to 0$ 조건으로 $b$ 소거]:\n$x \\to 2+$일 때 (분모) $\\to 0$이고 극한값이 $3$으로 존재하므로 (분자) $\\to 0$이어야 한다.\n$$2^2 + 2a + b = 0 \\implies 4 + 2a + b = 0 \\implies b = -2a - 4$$\n\n3단계 [분자에 대입하여 극한값 계산]:\n$$x^2 + ax + (-2a - 4) = x^2 - 4 + a(x - 2) = (x - 2)(x + 2 + a)$$\n극한식에 대입하면\n$$\\lim_{x \\to 2+} \\frac{(x - 2)(x + a + 2)}{x - 2} = \\lim_{x \\to 2+} (x + a + 2) = 2 + a + 2 = a + 4$$\n\n4단계 [$a, b$의 값 결정]:\n$$a + 4 = 3 \\implies a = -1$$\n$$b = -2(-1) - 4 = 2 - 4 = -2$$\n\n[오답 및 경계 점검]\n$x^2-x-2 = (x-2)(x+1)$이므로 $x \\to 2$일 때 극한값은 $2+1=3$이 되어 $f(2)=3$과 정확히 일치한다.\n\n[결론]\n$a=-1, b=-2$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 함수\n$f(x)=\\begin{cases} 3x^2-1 & (x \\ge a) \\\\ 2-5x & (x < a) \\end{cases}$\n가 연속일 때, 모든 실수 $a$의 값의 곱을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n함수 $f(x)$가 모든 실수에서 연속이 되려면 경계점 $x=a$에서 연속이어야 하므로, 우극한과 함숫값 $3a^2-1$이 좌극한 $2-5a$와 같아야 한다. 이로부터 $a$에 대한 이차방정식을 세우고 근과 계수의 관계를 적용한다.\n\n[단계별 풀이]\n1단계 [경계점 $x=a$에서 연속 조건]:\n함수 $f(x)$가 $x=a$에서 연속이어야 하므로\n$$\\lim_{x \\to a+} f(x) = \\lim_{x \\to a-} f(x) = f(a)$$\n- 우극한 및 함숫값: $3a^2 - 1$\n- 좌극한: $2 - 5a$\n\n2단계 [이차방정식 세우기]:\n$$3a^2 - 1 = 2 - 5a \\implies 3a^2 + 5a - 3 = 0$$\n\n3단계 [실근 판정 및 근과 계수의 관계]:\n이차방정식 $3a^2 + 5a - 3 = 0$의 판별식 $D$를 확인하면\n$$D = 5^2 - 4(3)(-3) = 25 + 36 = 61 > 0$$\n이므로 서로 다른 두 실근이 존재한다.\n근과 계수의 관계에 의하여 모든 실수 $a$의 값의 곱은\n$$\\frac{\\text{상수항}}{\\text{이차항 계수}} = \\frac{-3}{3} = -1$$\n\n[오답 및 경계 점검]\n실근이 존재하는지 판별식 $D > 0$을 반드시 먼저 확인한 후 근과 계수의 관계를 적용해야 감점이 없다. $D=61>0$이므로 완벽히 성립한다.\n\n[결론]\n$-1$"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x \\ge 2$인 모든 실수 $x$에서 연속인 함수 $f(x)$가\n$(x-3)f(x)=\\sqrt{x+a}-1$\n을 만족시킬 때, $f(3)$의 값을 구하시오. (단, $a$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "[풀이 전략]\n$x \\ne 3$일 때 $f(x) = \\frac{\\sqrt{x+a}-1}{x-3}$이다. $f(x)$가 $x=3$에서 연속이므로 $f(3) = \\lim_{x \\to 3} f(x)$임을 이용하여 먼저 분모 $\\to 0$ 조건으로 $a$를 구하고, 유리화를 통해 극한값 $f(3)$을 계산한다.\n\n[단계별 풀이]\n1단계 [상수 $a$의 값 구하기]:\n$f(x)$는 $x=3$에서 연속이므로 극한값 $\\lim_{x \\to 3} \\frac{\\sqrt{x+a}-1}{x-3}$이 존재해야 한다.\n$x \\to 3$일 때 (분모) $\\to 0$이므로 (분자) $\\to 0$이어야 한다.\n$$\\sqrt{3+a} - 1 = 0 \\implies \\sqrt{3+a} = 1 \\implies 3 + a = 1 \\implies a = -2$$\n\n2단계 [유리화를 통한 $f(3)$ 계산]:\n$a = -2$이므로\n$$\\begin{aligned}\nf(3) &= \\lim_{x \\to 3} \\frac{\\sqrt{x-2}-1}{x-3} \\\\\n&= \\lim_{x \\to 3} \\frac{(\\sqrt{x-2}-1)(\\sqrt{x-2}+1)}{(x-3)(\\sqrt{x-2}+1)} \\\\\n&= \\lim_{x \\to 3} \\frac{(x-2)-1}{(x-3)(\\sqrt{x-2}+1)} \\\\\n&= \\lim_{x \\to 3} \\frac{x-3}{(x-3)(\\sqrt{x-2}+1)} \\\\\n&= \\lim_{x \\to 3} \\frac{1}{\\sqrt{x-2}+1} = \\frac{1}{\\sqrt{3-2}+1} = \\frac{1}{1+1} = \\frac{1}{2}\n\\end{aligned}$$\n\n[오답 및 경계 점검]\n$a=-2$일 때 $x ge 2$ 범위에서 근호 안 $x-2 ge 0$이 되어 함수가 정상적으로 정의되며, $f(3)=\frac{1}{2}$이 도출된다.\n\n[결론]\n$\\frac{1}{2}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x \\ge 0$인 모든 실수 $x$에서 연속인 함수 $f(x)$가\n$\\lim_{x \\to 1} \\frac{(\\sqrt{x}-1)f(x)}{x^3-1}=5$\n를 만족시킬 때, $f(1)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "[풀이 전략]\n$f(x)$가 $x=1$에서 연속이므로 $\\lim_{x \\to 1} f(x) = f(1)$이다. 분모의 $x^3-1$을 인수분해하여 분자의 $\\sqrt{x}-1$과 약분되는 인수를 분리한 뒤 극한값을 적용한다.\n\n[단계별 풀이]\n1단계 [분모 인수분해]:\n$$x^3 - 1 = (x - 1)(x^2 + x + 1) = (\\sqrt{x} - 1)(\\sqrt{x} + 1)(x^2 + x + 1)$$\n\n2단계 [식의 약분 및 정리]:\n$$\\begin{aligned}\n\\lim_{x \\to 1} \\frac{(\\sqrt{x}-1)f(x)}{x^3-1} &= \\lim_{x \\to 1} \\frac{(\\sqrt{x}-1)f(x)}{(\\sqrt{x}-1)(\\sqrt{x}+1)(x^2+x+1)} \\\\\n&= \\lim_{x \\to 1} \\frac{f(x)}{(\\sqrt{x}+1)(x^2+x+1)}\n\\end{aligned}$$\n\n3단계 [연속성 적용 및 $f(1)$ 계산]:\n$f(x)$가 $x=1$에서 연속이므로 $\\lim_{x \\to 1} f(x) = f(1)$이다.\n$$\\frac{f(1)}{(\\sqrt{1}+1)(1^2+1+1)} = \\frac{f(1)}{2 \\times 3} = \\frac{f(1)}{6}$$\n주어진 조건에 의해 이 극한값이 $5$이므로\n$$\\frac{f(1)}{6} = 5 \\implies f(1) = 30$$\n\n[오답 및 경계 점검]\n$x=1$ 대입 시 분모의 나머지 인수는 $(\\sqrt{1}+1)(1+1+1) = 2 \\times 3 = 6$이 확실하므로 계산이 정확하다.\n\n[결론]\n$30$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가 각각 $x=a$에서 연속일 때, 다음 보기 중 $x=a$에서 반드시 연속인 함수를 모두 고르시오.\n[보기]\nㄱ. $2f(x)-g(x)$\nㄴ. $\\{f(x)\\}^2$\nㄷ. $\\frac{f(x)}{g(x)}$\nㄹ. $\\frac{2}{\\{f(x)\\}^2+1}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄹ",
+    "solution": "[풀이 전략]\n두 함수가 $x=a$에서 연속일 때, 연속함수의 성질에 의해 실수배, 합, 차, 곱은 항상 연속이다. 나눗셈의 경우 분모가 $0$이 되지 않는다는 보장이 있어야 연속임을 주의하여 각 보기를 판정한다.\n\n[단계별 풀이]\n1단계 [보기 ㄱ 점검]:\n$f(x)$와 $g(x)$가 연속이므로 연속함수의 실수배와 차에 의해 $2f(x)-g(x)$는 $x=a$에서 반드시 연속이다. (참)\n\n2단계 [보기 ㄴ 점검]:\n$\\{f(x)\\}^2 = f(x) \\times f(x)$이므로 연속함수의 곱에 의해 $x=a$에서 반드시 연속이다. (참)\n\n3단계 [보기 ㄷ 점검]:\n분수 함수 $\\frac{f(x)}{g(x)}$는 분모의 함숫값 $g(a) = 0$인 경우 함수 자체가 정의되지 않아 불연속이 될 수 있다.\n(반례: $f(x)=1, g(x)=x-a$이면 $g(a)=0$이 되어 $x=a$에서 불연속)\n따라서 반드시 연속이라고 할 수 없다. (거짓)\n\n4단계 [보기 ㄹ 점검]:\n실수 전체에서 $\\{f(x)\\}^2 \\ge 0$이므로 분모는\n$$\\{f(x)\\}^2 + 1 \\ge 0 + 1 = 1 > 0$$\n즉, 분모는 어떠한 경우에도 $0$이 되지 않는다.\n따라서 연속함수의 나눗셈 성질에 의해 $\\frac{2}{\\{f(x)\\}^2+1}$은 $x=a$에서 반드시 연속이다. (참)\n\n따라서 반드시 연속인 함수는 ㄱ, ㄴ, ㄹ이다.\n\n[오답 및 경계 점검]\n분수 꼴에서 분모의 $0$ 가능성을 배제할 수 있는 식($\\{f(x)\\}^2+1 \\ge 1$)은 안전하게 연속임을 정확히 짚었다.\n\n[결론]\nㄱ, ㄴ, ㄹ"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "닫힌구간 $[1, 3]$에서 함수 $f(x)=\\frac{a}{|x-4|}$의 최댓값이 $8$일 때, 양수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n닫힌구간 $[1, 3]$에서 $|x-4|$를 절댓값 기호를 벗겨 정리한 뒤, 분수함수의 단조성을 분석하여 분모가 최소가 되는 점에서 전체 식이 최댓값을 가짐을 이용한다.\n\n[단계별 풀이]\n1단계 [함수식 정리]:\n$x \\in [1, 3]$에서 $x - 4 < 0$이므로\n$$|x - 4| = -(x - 4) = 4 - x$$\n따라서 $f(x) = \\frac{a}{4 - x}$ ($a > 0$)이다.\n\n2단계 [분모의 범위 및 최댓값 위치 파악]:\n$1 \\le x \\le 3$에서 각 변에 $-1$을 곱하고 $4$를 더하면\n$$-3 \\le -x \\le -1 \\implies 1 \\le 4 - x \\le 3$$\n분자 $a > 0$가 일정하므로, 분모 $4 - x$가 최소일 때 $f(x)$는 최댓값을 갖는다.\n분모 $4 - x$의 최솟값은 $x = 3$일 때 $4 - 3 = 1$이다.\n\n3단계 [최댓값 조건 적용]:\n따라서 $f(x)$의 최댓값은 $f(3)$이다.\n$$f(3) = \\frac{a}{4 - 3} = \\frac{a}{1} = a$$\n최댓값이 $8$이므로\n$$a = 8$$\n\n[오답 및 경계 점검]\n$a=8$일 때 $f(1) = \\frac{8}{3}$, $f(3) = 8$로 최솟값은 $\\frac{8}{3}$, 최댓값은 $8$이 됨을 쉽게 검산할 수 있다.\n\n[결론]\n$8$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "방정식 $2x^3-3x^2-x+1=0$은 서로 다른 세 실근을 갖는다. 다음 보기 중 이 실근이 존재하는 구간을 모두 고르시오.\n[보기]\nㄱ. $(-1, 0)$\nㄴ. $(0, 1)$\nㄷ. $(1, 2)$\nㄹ. $(2, 3)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ, ㄷ",
+    "solution": "[풀이 전략]\n$f(x) = 2x^3 - 3x^2 - x + 1$로 두면 다항함수이므로 모든 실수에서 연속이다. 사잇값 정리에 의해 구간의 양 끝점에서의 함숫값의 곱이 음수($f(a)f(b) < 0$)이면 열린구간 $(a, b)$에서 적어도 하나의 실근을 가짐을 이용한다.\n\n[단계별 풀이]\n1단계 [각 정수에서의 함숫값 계산]:\n- $f(-1) = 2(-1)^3 - 3(-1)^2 - (-1) + 1 = -2 - 3 + 1 + 1 = -3 < 0$\n- $f(0) = 1 > 0$\n- $f(1) = 2(1)^3 - 3(1)^2 - 1 + 1 = 2 - 3 - 1 + 1 = -1 < 0$\n- $f(2) = 2(2)^3 - 3(2)^2 - 2 + 1 = 16 - 12 - 2 + 1 = 3 > 0$\n- $f(3) = 2(3)^3 - 3(3)^2 - 3 + 1 = 54 - 27 - 3 + 1 = 25 > 0$\n\n2단계 [각 구간별 부호 변화 조사]:\n- ㄱ. $(-1, 0)$: $f(-1) < 0$이고 $f(0) > 0$이므로 $f(-1)f(0) < 0$이다. 따라서 실근이 존재한다.\n- ㄴ. $(0, 1)$: $f(0) > 0$이고 $f(1) < 0$이므로 $f(0)f(1) < 0$이다. 따라서 실근이 존재한다.\n- ㄷ. $(1, 2)$: $f(1) < 0$이고 $f(2) > 0$이므로 $f(1)f(2) < 0$이다. 따라서 실근이 존재한다.\n- ㄹ. $(2, 3)$: $f(2) > 0$이고 $f(3) > 0$이므로 사잇값 정리로 실근 존재를 확정할 수 없다.\n\n3단계 [결론 도출]:\n주어진 삼차방정식은 최대 $3$개의 실근을 가지며, 구간 $(-1, 0)$, $(0, 1)$, $(1, 2)$에서 각각 실근이 하나씩 존재하므로 세 실근이 존재하는 구간은 ㄱ, ㄴ, ㄷ이다.\n\n[오답 및 경계 점검]\n삼차방정식의 서로 다른 세 실근이 세 구간에 하나씩 완벽하게 분포함을 부호 변화를 통해 명확히 증명했다.\n\n[결론]\nㄱ, ㄴ, ㄷ"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수\n$f(x)=x^2+ax+b$\n$g(x)=\\begin{cases} x^2 & (|x| < 1) \\\\ 2 & (|x| \\ge 1) \\end{cases}$\n에 대하여 함수 $f(x)g(x)$가 모든 실수 $x$에서 연속일 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=0, b=-1$",
+    "solution": "[풀이 전략]\n$f(x)$는 다항함수이므로 연속이고, $g(x)$는 $|x|=1$, 즉 $x=1$과 $x=-1$에서 불연속일 수 있다. 곱함수 $f(x)g(x)$가 모든 실수에서 연속이 되려면 $x=1$과 $x=-1$에서 연속 조건을 만족해야 하므로 좌우극한과 함숫값을 일치시킨다.\n\n[단계별 풀이]\n1단계 [$x=1$에서의 연속 조건]:\n- 우극한: $\\lim_{x \\to 1+} f(x)g(x) = f(1) \\times 2 = 2(1 + a + b)$\n- 좌극한: $\\lim_{x \\to 1-} f(x)g(x) = f(1) \\times 1^2 = 1 + a + b$\n- 함숫값: $f(1)g(1) = f(1) \\times 2 = 2(1 + a + b)$\n$x=1$에서 연속이어야 하므로\n$$2(1 + a + b) = 1 + a + b \\implies 1 + a + b = 0 \\implies a + b = -1 \\quad \\cdots\\text{①}$$\n\n2단계 [$x=-1$에서의 연속 조건]:\n- 우극한: $\\lim_{x \\to -1+} f(x)g(x) = f(-1) \\times (-1)^2 = 1 - a + b$\n- 좌극한: $\\lim_{x \\to -1-} f(x)g(x) = f(-1) \\times 2 = 2(1 - a + b)$\n- 함숫값: $f(-1)g(-1) = f(-1) \\times 2 = 2(1 - a + b)$\n$x=-1$에서 연속이어야 하므로\n$$2(1 - a + b) = 1 - a + b \\implies 1 - a + b = 0 \\implies a - b = 1 \\quad \\cdots\\text{②}$$\n\n3단계 [연립방정식 풀이]:\n①과 ②를 더하면\n$$2a = 0 \\implies a = 0$$\n$a=0$을 ①에 대입하면\n$$b = -1$$\n\n[오답 및 경계 점검]\n$g(x)$가 불연속인 두 점 $x=1, -1$에서 연속함수 $f(x)$가 $f(1)=0, f(-1)=0$을 만족해야 불연속을 상쇄하고 연속이 된다. $f(x) = x^2 - 1$이면 $f(1)=0, f(-1)=0$이므로 $a=0, b=-1$이 정확함을 검산할 수 있다.\n\n[결론]\n$a=0, b=-1$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-02",
     "standardUnit": "함수의 연속",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에서 연속인 함수 $f(x)$에 대하여\n$f(-3)f(-1) < 0, f(1)f(3) < 0$\n이고 $f(1)=-1$이다. 방정식 $f(x)=0$이 열린구간 $(-3, 3)$에서 오직 두 개의 실근을 가질 때, 두 함수 $y=f(x), y=-2x^3$의 그래프가 $-1 < x < 1$에서 적어도 하나의 교점을 가짐을 보이시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "풀이 참조",
+    "solution": "[풀이 전략]\n$g(x) = f(x) - (-2x^3) = f(x) + 2x^3$으로 정의한다. $g(x)$가 닫힌구간 $[-1, 1]$에서 연속임을 밝히고, $g(-1)$과 $g(1)$의 부호가 서로 반대($g(-1)g(1) < 0$)임을 사잇값 정리로 보여 $-1 < x < 1$에서 $g(x)=0$, 즉 $f(x)=-2x^3$의 실근이 존재함을 증명한다.\n\n[단계별 풀이]\n1단계 [보조함수 $g(x)$의 설정 및 연속성]:\n$g(x) = f(x) - (-2x^3) = f(x) + 2x^3$이라 하자.\n$f(x)$와 $2x^3$은 모든 실수에서 연속이므로 $g(x)$도 닫힌구간 $[-1, 1]$에서 연속이다.\n\n2단계 [$g(1)$의 부호]:\n조건에서 $f(1) = -1$이므로\n$$g(1) = f(1) + 2(1)^3 = -1 + 2 = 1 > 0$$\n\n3단계 [$f(-1)$의 부호 분석 및 $g(-1)$의 부호]:\n방정식 $f(x)=0$은 열린구간 $(-3, 3)$에서 오직 두 개의 실근만을 갖는다.\n- $f(-3)f(-1) < 0$이므로 사잇값 정리에 의해 열린구간 $(-3, -1)$에 적어도 하나의 실근이 존재한다.\n- $f(1)f(3) < 0$이므로 사잇값 정리에 의해 열린구간 $(1, 3)$에 적어도 하나의 실근이 존재한다.\n이미 두 실근의 위치가 $(-3, -1)$과 $(1, 3)$에 하나씩 존재하므로, 열린구간 $[-1, 1]$에는 $f(x)=0$의 실근이 존재할 수 없다.\n따라서 구간 $[-1, 1]$에서 연속함수 $f(x)$는 부호가 일정해야 한다.\n$f(1) = -1 < 0$이므로 구간 $[-1, 1]$의 모든 $x$에 대하여 $f(x) < 0$이다.\n따라서\n$$f(-1) < 0$$\n이로부터\n$$g(-1) = f(-1) + 2(-1)^3 = f(-1) - 2 < 0 - 2 = -2 < 0$$\n을 얻는다.\n\n4단계 [사잇값 정리 적용]:\n$g(-1) < 0$이고 $g(1) > 0$이므로\n$$g(-1)g(1) < 0$$\n따라서 사잇값 정리에 의하여 $g(c) = 0$, 즉\n$$f(c) = -2c^3$$\n인 $c$가 열린구간 $(-1, 1)$에 적어도 하나 존재한다.\n그러므로 두 함수 $y=f(x)$와 $y=-2x^3$의 그래프는 $-1 < x < 1$에서 적어도 하나의 교점을 갖는다.\n\n[오답 및 경계 점검]\n$(-3, 3)$에서 실근이 오직 $2$개뿐이라는 조건을 이용하여 $[-1, 1]$ 구간에서 $f(x)$가 $0$이 될 수 없음을 추론하고, 이를 통해 $f(-1)<0$임을 논리적으로 결함 없이 유도했다.\n\n[결론]\n풀이 참조"
   }
 ];
