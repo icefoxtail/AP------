@@ -1,0 +1,9 @@
+{
+ "capability":"piecewise-polynomial-spike-v1",
+ "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","-12","0","3"]},{"coefficients":["0","-6","0","1"]}],"breakpoints":[{"x":"0","y":"0"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":"-2*sqrt(3)/3","y":"16*sqrt(3)/3"},{"id":"B","x":"sqrt(2)","y":"-4*sqrt(2)"}],"axisTickValues":{"x":[],"y":[]}},
+ "coordinateLeader":["A","B"],
+ "caption":"a=3일 때 두 조각의 극값을 나타내며 접합점 0은 극값이 아니다.",
+ "sourceConditions":[{"id":"c1","condition":"a=3일 때 x<0에서 f(x)=3x³−12x, x≥0에서 f(x)=x³−6x","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"오른쪽 극솟값 -4√2","mappedTo":"graphPlan.requiredPoints"}],
+ "newVisualInformation":["a=3으로 구한 뒤의 그래프이며, 극댓점은 (-2√3/3,16√3/3), 극솟점은 (√2,-4√2)이다.","밀집한 좌표는 지시선을 이용하고 겹치면 구현 단계에서 배치를 조정한다."],
+ "sourceQuote":"$a^3=27$이고 $a>0$이므로 $a=3$이다."
+}
