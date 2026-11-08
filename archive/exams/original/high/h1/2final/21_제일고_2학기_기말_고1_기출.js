@@ -65,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: k=4인 예시 그래프이다. 좌표평면에서 경계점 (3/2, 5)를 지나는 두 직선 조각이 모두 오른쪽 위로 뻗고, 왼쪽 조각의 기울기는 2, 오른쪽 조각의 기울기는 6이다.",
+    "solutionImageCaption": "예: k=4이면 x<3/2에서 기울기 2, x≥3/2에서 기울기 6으로 두 조각의 기울기가 모두 양수라 일대일이 된다. 두 기울기의 부호가 같아야 하므로 k−2>0이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -130,11 +134,11 @@ window.questionBank = [
     "answer": "③, ④, ⑤",
     "solution": "[키포인트] 유리함수를 $y=\\dfrac{a}{x-p}+q$ 꼴로 바꾸면 점근선과 대칭축을 확인하기 쉽다.\n조건 정리: $f(x)=2-\\dfrac5{x+3}$이므로 중심은 $(-3,2)$이다.\n풀이 방향: 각 보기를 그래프의 절편, 점근선, 사분면, 대칭축, 평행이동 관점에서 확인한다.\n정석 풀이: ① $x$절편은 $2x+1=0$에서 $x=-\\dfrac12$이므로 거짓이다. ② 점근선은 $x=-3$, $y=2$이므로 거짓이다. ③ $x\\gt0$이면 분자와 분모가 모두 양수여서 $f(x)\\gt0$이므로 제4사분면을 지나지 않아 참이다. ④ 중심 $(-3,2)$을 지나는 기울기 $-1$인 직선은 $y-2=-(x+3)$, 즉 $y=-x-1$이므로 대칭축이 되어 참이다. ⑤ $y=\\dfrac{x-6}{x-1}=1-\\dfrac5{x-1}$도 계수가 $-\\dfrac5{x-p}$인 같은 모양의 그래프이므로 평행이동하여 겹칠 수 있어 참이다.\n따라서 정답은 ③, ④, ⑤이다.",
 
-    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q04-solution.svg",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q4-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=2−5/(x+3)의 두 곡선 가지와 점근선 x=−3, y=2, 중심 (−3,2), x절편 (−1/2,0)을 표시한 그림. 그래프가 제4사분면을 지나지 않음을 보여준다.",
+    "solutionImageAlt": "해설 그림: 파란색과 주황색 유리함수 곡선, 점선 점근선과 대칭축이 보인다. 중심 표시 C가 점근선 교점에 놓여 있다.",
 
-    "solutionImageCaption": "y=2−5/(x+3)에서 점근선 x=−3, y=2와 중심을 확인한다.",
+    "solutionImageCaption": "점근선과 대칭축을 확인하고 두 그래프의 평행이동 관계를 이용한다. 정답: ③, ④, ⑤.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
@@ -171,11 +175,11 @@ window.questionBank = [
     "answer": "②, ④, ⑤",
     "solution": "[키포인트] 정의역·치역, 특정 점, 역함수, 구간 최댓값을 각각 직접 확인한다.\n조건 정리: $y=-2\\sqrt{1-x}+3$이므로 $x\\le1$이고 $y\\le3$이다.\n풀이 방향: 각 보기를 원래 함수의 식에 대입하거나 역함수를 직접 구해 판정한다.\n정석 풀이: ① 정의역은 $x\\le1$이므로 거짓이다. ② $x=-\\dfrac54$이면 $4-4x=9$이므로 $y=-3+3=0$이라서 참이다. ③ $y\\lt0$이 되려면 $x\\lt-\\dfrac54$이므로 이때 $x\\lt0$이고 제3사분면만 해당하여 거짓이다. ④ $y=-2\\sqrt{1-x}+3$에서 $x=1-\\dfrac14(y-3)^2$이고 원래 치역이 $y\\le3$이므로 역함수는 $y=-\\dfrac14(x-3)^2+1\\ (x\\le3)$이어서 참이다. ⑤ 이 함수는 정의역에서 증가하므로 $-6\\le x\\le0$에서 최댓값은 $f(0)=-2+3=1$로 참이다.\n따라서 정답은 ②, ④, ⑤이다.",
 
-    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q05-solution.svg",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q5-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점과 x절편을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 파란 곡선은 f, 주황 곡선은 역함수 g이고, 두 곡선이 y=x 점선에 대해 대칭을 이룬다. 각 그래프의 끝점과 절편이 표시되어 있다.",
 
-    "solutionImageCaption": "끝점 (1,3)과 x절편 (−5/4,0)을 이용해 정의역·치역·구간 최댓값을 확인한다.",
+    "solutionImageCaption": "파란 곡선은 f, 주황 곡선은 역함수 g이다. 끝점과 절편의 대응, 정의역과 치역을 비교한다. 옳은 것은 ②, ④, ⑤.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -213,7 +217,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=f(x), 점선 y=x, 점선 y=-1이 있는 좌표평면에서 점선 계단이 -1에서 시작해 -1/2, -1/3, -1/4로 y=x에 가까워지며 이어진다. 각 점 곁에 -1, -1/2, -1/3, -1/4가 적혀 있다.",
+    "solutionImageCaption": "예: x=-1을 반복 입력하면 -1→-1/2→-1/3→-1/4로 이어진다. 그림의 점 곁에 이 값들을 적었다. fⁿ(x)=x/(1−nx)이므로 2021회 합성한 식의 계수 합은 −2020이다. 정답: −2020.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -246,7 +254,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 유리함수의 점근선과 주황색 목표 곡선이 함께 있는 좌표평면이다.",
+    "solutionImageCaption": "예: a=−1, b=−1, c=2로 두면 목표 곡선은 x=1−y²의 아래쪽 가지이다. 정답: 제3사분면.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -311,7 +323,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간의 파란 유리함수 곡선이 주황색 위 경계 직선과 초록색 아래 경계 직선 사이에 놓이고, 양 끝에서 각각 맞닿는다.",
+    "solutionImageCaption": "2/[x(x−1)]은 구간 양 끝에서 1과 1/10을 가지므로 최소 차는 9/10이다. 정답: 9/10.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -600,7 +616,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선에 점선 대칭축 x=−3과 높이 y=2가 표시되어 있다. L과 R은 같은 높이에서 축의 양쪽에 놓인다.",
+    "solutionImageCaption": "축을 중심으로 길이 2인 구간을 두면 양 끝의 높이가 같아진다. 이때 f(2)=−4이다. 정답: −4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -656,7 +676,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 함수 곡선과 점선 계단이 있다. x=3에서 g(3)=2이고, 이 값 2를 f에 넣으면 f(2)=1/5이다.",
+    "solutionImageCaption": "예: x=3이면 g(3)=2이고, 이를 f에 대입하면 f(2)=1/5이다. 역함숫값을 구할 때 f(g(x))=1/7에서 g(x)=4를 얻으므로 x=9이다. 정답: 9.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -710,6 +734,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 조각함수 그래프에 y=x와 y=3의 점선이 겹쳐 있고, 고정점과 같은 높이의 원상 위치들이 좌표와 함께 표시되어 있다.",
+    "solutionImageCaption": "고정점 0과 3의 높이에 해당하는 원상은 −3, 0, 1, 3, 4이다. 그 합은 5이다. 정답: 5.",
+    "solutionImageSize": "full"
   }
 ];

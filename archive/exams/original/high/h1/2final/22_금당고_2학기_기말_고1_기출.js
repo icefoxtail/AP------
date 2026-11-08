@@ -519,9 +519,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: u=t³으로 놓은 4/u의 감소 그래프와 구간 1≤u≤8의 양 끝점 (1,4), (8,1/2)을 나타낸 좌표 그림.",
-    "solutionImageCaption": "t=x−2로 두면 1≤t≤2이고 a≤4/t³, b≥4/t³이다. u=t³으로 보면 4/u는 1≤u≤8에서 감소하므로 최댓값 4, 최솟값 1/2이다. 그림의 가로축은 u=t³이다. 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "해설 그림: 한 좌표평면에 유리함수 y=(x+2)/(x-2)의 그래프와, 그 아래의 포물선 y=(1/2)(x-2)^2+1(a=1/2), 위의 포물선 y=4(x-2)^2+1(b=4)을 그린 그림. 세로 점선 x=3, x=4로 구간 3≤x≤4를 표시했고, 위 포물선과는 점 (3,5)에서, 아래 포물선과는 점 (4,3)에서 만난다.",
+    "solutionImageCaption": "t=x-2로 두면 1≤t≤2이고 a≤4/t³, b≥4/t³이다. 곧 부등식의 양 끝 식 중 아래 포물선은 y=(1/2)(x-2)²+1, 위 포물선은 y=4(x-2)²+1로 놓을 수 있다. 가운데 유리함수 y=(x+2)/(x-2)는 3≤x≤4에서 두 포물선 사이에 있고, 아래 포물선(a=1/2)은 x=4에서, 위 포물선(b=4)은 x=3에서 유리함수와 만난다. 따라서 a의 최댓값은 1/2, b의 최솟값은 4이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -602,8 +602,8 @@ window.questionBank = [
   {
     "id": 18,
     "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q18-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 네 곡선을 색으로 구분해 푸른색·주황색 쌍은 두 점에서 만나고 초록색·분홍색 쌍은 한 점 (3,3)에서 접하는 모습을 나타낸 좌표 그림.",
-    "solutionImageCaption": "예: 푸른색·주황색 곡선은 두 점에서 만나고, 초록색·분홍색 곡선은 (3,3)에서 접한다. 교점 개수의 경계 사례를 비교한다. 정답은 9이다.",
+    "solutionImageAlt": "해설 그림: 집합 A의 포물선 A1·A2와 집합 B의 무리함수 곡선 B1·B2를 그린 좌표 그림. A1과 B1은 두 점에서 만나고, A2와 B2는 점 (3,3)에서 접한다.",
+    "solutionImageCaption": "예: A는 포물선 y=(x²+n)/6, B는 곡선 y=√(6x−n)이다. A1·B1은 n=8일 때로 두 점에서 만나고, A2·B2는 n=9일 때로 (3,3)에서 한 점만 만난다. 두 식을 빼면 x=y이므로 x²−6x+n=0이 중근을 가져야 교점이 1개다. 정답은 9이다.",
     "solutionImageSize": "full",
     "level": "상",
     "category": "두 그래프의 교점",

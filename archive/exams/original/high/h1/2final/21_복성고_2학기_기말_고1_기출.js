@@ -56,7 +56,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수와 일차함수의 그래프에 각각 표시한 함수값과 좌표축 보조선.",
+    "solutionImageCaption": "먼저 f(-2)=1을 읽고 그 출력을 g의 입력으로 넣으면 g(1)=4이다. 정답은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -83,10 +87,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 분모가 $0$이 되는 값이 수직점근선이고, 분자와 분모의 최고차항 계수의 비가 수평점근선이다.\\n정석 풀이: $2x-3=0$에서 $x=\\dfrac32$이므로 $a=\\dfrac32$이다. 또한 최고차항 계수의 비는 $\\dfrac{-4}{2}=-2$이므로 $b=-2$이다. 따라서 $ab=\\dfrac32\\cdot(-2)=-3$이다.\\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "쌍곡선 y=−2+1/(x−3/2)의 두 점근선 x=3/2, y=−2와 x절편 P(2,0)를 좌표평면에 표시한다.",
-    "solutionImageCaption": "점근선 x=3/2, y=−2를 읽어 ab=−3을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 점근선과 그 주변으로 뻗는 유리함수 그래프.",
+    "solutionImageCaption": "분모가 0이 되는 x값은 3/2이고 최고차항 계수의 비는 -2이므로 ab=-3이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -118,13 +122,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 근호 안은 $0$ 이상이어야 하고, $\\sqrt{4-2x}\\ge0$이다.\\n정석 풀이: $4-2x\\ge0$에서 $x\\le2$이므로 정의역은 $\\{x\\mid x\\le2\\}$이다. 또한 $-\\sqrt{4-2x}\\le0$이므로 $y=-\\sqrt{4-2x}+4\\le4$이고, $x$가 작아질수록 $y$는 아래로 제한 없이 작아진다. 따라서 치역은 $\\{y\\mid y\\le4\\}$이다.\\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q04-solution.svg",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q4-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수 y=−√(4−2x)+4의 그래프가 끝점 V(2,4)에서 시작해 왼쪽 아래로 뻗고, x절편 (−6,0)과 정의역 x≤2, 치역 y≤4를 표시한다.",
+    "solutionImageAlt": "해설 그림: 끝점에서 왼쪽 아래 방향으로 뻗는 무리함수 그래프.",
 
-    "solutionImageCaption": "끝점 (2,4)와 정의역 x≤2, 치역 y≤4를 확인한다.",
+    "solutionImageCaption": "근호가 0 이상인 x의 방향과 끝점에서 함수값이 내려가는 방향을 읽으면 정의역은 x≤2, 치역은 y≤4이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -300,13 +304,13 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 그래프에서 수직점근선, 수평점근선, $x$절편을 읽는다.\\n정석 풀이: 수직점근선이 $x=2$이므로 $-c=2$, 즉 $c=-2$이다. 수평점근선이 $y=-3$이므로 $a=-3$이다. 그래프가 $(1,0)$을 지나므로 $-3+b=0$에서 $b=3$이다. 따라서 $f(4)=\\dfrac{-12+3}{4-2}=-\\dfrac92$이고, $cf(4)=(-2)\\left(-\\dfrac92\\right)=9$이다.\\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q10-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=−3−3/(x−2)의 그래프에 수직점근선 x=2와 수평점근선 y=−3, x절편 (1,0), x=4에서의 점 f(4)를 표시하고 c=−2, cf(4)=9를 보여 준다.",
+    "solutionImageAlt": "해설 그림: 수직·수평점근선과 x절편 (1,0)이 표시된 유리함수 그래프, x=4에서 그래프까지 내린 점선 수선.",
 
-    "solutionImageCaption": "점근선 x=2, y=−3과 x절편, cf(4)=9를 확인한다.",
+    "solutionImageCaption": "점근선과 x절편으로 f를 정한 뒤 x=4에서 내린 수선으로 f(4)를 읽으면 c=-2와 곱해 9이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "image": "assets/images/21_복성고_2학기_기말_고1_기출/q10.png",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
@@ -339,11 +343,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 근호를 새로운 변수로 치환하면 교점 조건을 이차방정식의 서로 다른 두 해 조건으로 바꿀 수 있다.\\n조건 정리: $t=\\sqrt{4-2x}$라 두면 $t\\ge0$이고 $x=2-\\dfrac{t^2}{2}$이다. 직선 $y=-x+k$와의 교점에서는 $t=-x+k$이므로 $t=-\\left(2-\\dfrac{t^2}{2}\\right)+k$이다.\\n정석 풀이: 식을 정리하면 $t^2-2t+2k-4=0$, 즉 $(t-1)^2=5-2k$이다. 서로 다른 두 교점이 되려면 서로 다른 두 개의 $t\\ge0$이 필요하다. 두 해는 $t=1\\pm\\sqrt{5-2k}$이므로, 서로 달라야 하여 $5-2k\\gt0$, 즉 $k\\lt\\dfrac52$이다. 또 작은 해도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$에서 $k\\ge2$이다. 따라서 $2\\le k\\lt\\dfrac52$이므로 $\\alpha=2$, $\\beta=\\dfrac52$이다. 그러므로 $\\alpha\\beta=5$이다.\\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수 y=√(4−2x)와 직선 y=−x+9/4가 만나는 두 점 P, Q를 표시하고, 두 교점이 생기는 k의 범위 2≤k<5/2를 제시한다.",
+    "solutionImageAlt": "해설 그림: 무리함수 곡선과 기울기가 음수인 직선이 서로 다른 두 점에서 만나는 예시.",
 
-    "solutionImageCaption": "2≤k<5/2에서 두 교점이 생기며 대표값 k=9/4를 확인한다.",
+    "solutionImageCaption": "예: k=9/4이면 두 교점의 치환값 t=1±√(1/2)는 서로 다르고 모두 0 이상이다. 가능한 범위는 2≤k<5/2이므로 αβ=5이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -377,11 +381,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] $f$는 증가함수이므로, $f$의 그래프와 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있어야 한다.\\n조건 정리: 평행이동한 함수는 $f(x)=2\\sqrt{x-a}+3$이다. 두 그래프의 공통점을 $(p,q)$라 하면 $q=f(p)$이고 $p=f(q)$이다. $f$는 증가함수이므로 $p\\lt q$이면 $f(p)\\lt f(q)$, 즉 $q\\lt p$가 되어 모순이고, $p\\gt q$인 경우도 같은 방법으로 모순이다. 따라서 $p=q$이다.\\n정석 풀이: 접점은 $y=x$ 위에 있으므로 $f(x)=x$를 만족한다. $2\\sqrt{x-a}+3=x$에서 $x\\ge3$이고 $2\\sqrt{x-a}=x-3$이다. 양변을 제곱하면 $4(x-a)=(x-3)^2$이므로 $x^2-10x+(9+4a)=0$이다. 두 그래프가 서로 접할 때에는 두 교점이 하나로 합쳐지므로 이 이차방정식이 중근을 가져야 한다. 따라서 판별식이 $0$이어서 $(-10)^2-4(9+4a)=0$이다. 즉 $100-36-16a=0$에서 $a=4$이다. 이때 중근은 $x=5$이고 원래 식도 만족한다.\\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 역함수의 접점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=x 위의 한 점에서 만나는 무리함수 f(파랑)와 그 역함수 f⁻¹(주황) 그래프. 역함수 곡선은 y=x 위쪽, f는 아래쪽에 있고 y=f⁻¹(x) 라벨은 주황 곡선에 붙어 있다.",
 
-    "solutionImageCaption": "a=4일 때 두 그래프의 접점 T=(5,5)를 확인한다.",
+    "solutionImageCaption": "증가함수와 역함수의 공통점은 y=x 위에 있고 접할 때 한 점으로 만난다. 접점 조건을 대입하면 a=4이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
@@ -415,7 +419,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프와 y=x 사이를 점선으로 오가는 반복 경로. 각 단계의 값 2, 1/3, −1/2, −3, 2가 표시되어 있다.",
+    "solutionImageCaption": "함숫값을 u라고 두어 다음 입력으로 옮기면 2→1/3→−1/2→−3→2의 주기가 생긴다. 24항의 합은 -7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -499,7 +507,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 이차함수 그래프와 꼭짓점.",
+    "solutionImageCaption": "u=2x−1로 치환하면 g(u)=−(u−4)²/2+5이므로 최댓값은 u=4에서 5이고 a+b=9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -527,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: a=−1일 때 x≤3인 무리함수 조각(파랑)이 점 (3,−2)에서 끝나고, x>3인 유리함수 조각(주황)이 그 위에서 시작해 점근선 y=−1에 가까워지는 그래프.",
+    "solutionImageCaption": "예: a의 최솟값인 a=−1일 때의 그래프이다. x≤3인 조각의 치역은 y≤−2이고, x>3인 조각 f(x)=−1+(a−1)/(x−1)의 치역은 (a−3)/2<y<−1이다. 전체가 일대일이려면 두 치역이 겹치지 않아야 하므로 (a−3)/2≥−2, 즉 a≥−1이다. a=−1이면 f(5)=−3/2이므로 af(5)=3/2이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -555,7 +571,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 조각함수의 두 구간 그래프, y=x와 만나는 고정점 및 같은 높이에 놓인 점들.",
+    "solutionImageCaption": "고정점의 함수값은 -3과 3이다. 이 값들을 만드는 입력은 -3, 0, 2, 3이므로 가장 큰 값은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -662,11 +682,11 @@ window.questionBank = [
     "answer": "(1) $B=(t,\\sqrt{t})$, $C=(9t,3\\sqrt{t})$ / (2) $8$",
     "solution": "[키포인트] $A$를 지나는 수직선과 수평선의 좌표를 각각 고정하여 $B,C$를 구한다.\\n조건 정리: $A=(t,3\\sqrt t)$이고 $B,C$는 모두 $y=\\sqrt x$ 위의 점이다.\\n정석 풀이: (1) $x$축에 수직인 직선은 $x=t$이므로 $B=(t,\\sqrt t)$이다. $y$축에 수직인 직선은 $y=3\\sqrt t$이므로 $3\\sqrt t=\\sqrt x$에서 $x=9t$, 따라서 $C=(9t,3\\sqrt t)$이다. (2) $\\overline{AB}=2\\sqrt t$, $\\overline{AC}=8t$이다. $\\overline{AB}:\\overline{AC}=1:4$이므로 $\\dfrac{2\\sqrt t}{8t}=\\dfrac14$에서 $\\sqrt t=1$, 즉 $t=1$이다. 따라서 넓이는 $\\dfrac12\\cdot2\\cdot8=8$이다.\\n따라서 구하는 값은 (1) $B=(t,\\sqrt t)$, $C=(9t,3\\sqrt t)$, (2) $8$이다.",
 
-    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "두 무리함수와 직각삼각형을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 두 무리함수 그래프와 점 A, B, C가 만드는 직각삼각형.",
 
-    "solutionImageCaption": "t=1일 때 A=(1,3), B=(1,1), C=(9,3)이고 넓이는 8이다.",
+    "solutionImageCaption": "예: t=1일 때 A=(1,3), B=(1,1), C=(9,3)이다. 일반적으로 B=(t,√t), C=(9t,3√t)이고, 두 소문항의 답은 이 좌표식과 넓이 8이다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",

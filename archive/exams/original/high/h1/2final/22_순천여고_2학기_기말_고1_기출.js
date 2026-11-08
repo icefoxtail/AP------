@@ -119,7 +119,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 정의역의 왼쪽 끝에서 오른쪽 끝으로 증가하는 무리함수와 최솟값·최댓값 수평선.",
+    "solutionImageCaption": "증가하는 그래프는 왼쪽 끝 x=0에서 최솟값 3, 오른쪽 끝 x=a에서 최댓값 5를 갖는다. 두 값을 함수식에 차례로 대입해 상수를 구한다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -152,7 +156,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직점근선과 수평점근선, x절편을 표시한 유리함수 그래프.",
+    "solutionImageCaption": "수직점근선 x=3과 수평점근선 y=2에서 두 상수를 정하고, x절편 (1,0)을 식에 대입해 나머지 상수를 구한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -210,9 +218,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $y=-2+\\dfrac{k}{x+1}$로 바꾸면 두 점근선과 각 사분면에서의 위치를 바로 판단할 수 있다.\n조건 정리: $k$는 자연수이고 수직점근선은 $x=-1$, 수평점근선은 $y=-2$이다.\n풀이 방향: 제1사분면을 지나는 조건을 먼저 구하면 나머지 세 사분면은 함께 확인할 수 있다.\n정석 풀이: $k\\gt0$이면 $x\\lt-1$에서 항상 $y\\lt-2$이므로 제3사분면을 지나고, 충분히 큰 양의 $x$에서는 $-2\\lt y\\lt0$이므로 제4사분면을 지난다. $-1\\lt x\\lt0$에서는 $y$가 매우 큰 양수가 되므로 제2사분면도 지난다. 제1사분면을 지나려면 $x\\gt0$에서 $y\\gt0$인 값이 있어야 하는데 $x=0$에서의 값이 $k-2$이므로 $k\\gt2$여야 한다. 따라서 가장 작은 자연수는 3이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "유리함수 y=−2+3/(x+1)의 그래프와 점근선 x=−1, y=−2를 그려, k=3일 때 그래프가 제1·2·3·4사분면을 모두 지남을 보여 준다.",
-    "solutionImageCaption": "k=3일 때 점근선 x=−1, y=−2를 기준으로 네 사분면 통과를 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 점근선을 공유하는 두 유리함수 그래프를 비교한 예시.",
+    "solutionImageCaption": "예: k=2이면 그래프가 제1사분면을 지나지 않지만, k=4이면 네 사분면을 모두 지난다. 제1사분면을 지나는 조건을 확인해 가장 작은 자연수를 찾는다. 정답은 ③이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
@@ -245,9 +253,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 그래프의 교점에 대한 이차방정식이 실근을 갖지 않게 한다.\n조건 정리: 유리함수의 정의역에서 $x=2$는 제외되지만 교점 방정식에 $x=2$는 해가 되지 않는다.\n풀이 방향: 두 식을 같게 놓아 이차방정식을 만든 뒤 판별식을 음수로 둔다.\n정석 풀이: $\\dfrac{x}{x-2}=-2x+k$를 정리하면 $2x^2-(k+3)x+2k=0$이다. 판별식은 $D=(k+3)^2-16k=k^2-10k+9=(k-1)(k-9)$이다. 만나지 않으려면 $D\\lt0$이므로 $1\\lt k\\lt9$이다. 따라서 가능한 정수 중 최댓값은 8이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "유리함수와 직선이 만나지 않는 모습을 나타낸 해설 그래프",
-    "solutionImageCaption": "k=8일 때 판별식 D=(k−1)(k−9)<0이므로 두 그래프가 만나지 않음을 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 만나지 않는 직선, 두 점에서 만나는 직선을 함께 그린 예시.",
+    "solutionImageCaption": "예: k=5인 직선은 그래프와 만나지 않고, k=10인 직선은 두 점에서 만난다. 두 식을 같게 놓아 만든 이차방정식의 판별식이 음수인 k의 범위를 찾는다. 정답은 ③이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
@@ -354,7 +362,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 대각선 사이를 오가며 세 번 반복해 돌아오는 경로를 그린 예시.",
+    "solutionImageCaption": "예: 함수 그래프와 y=x를 오가며 세 번 적용하면 시작점으로 돌아온다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -387,7 +399,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수와 역함수의 그래프, y=x 대칭선, 서로 대응하는 네 점을 표시한 그림.",
+    "solutionImageCaption": "원함수의 끝점과 x절편을 y=x에 대칭시켜 역함수의 끝점과 대응점을 얻는다. 이 점들을 역함수 식에 대입해 계수를 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -417,7 +433,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 이어지는 두 이차함수 조각과 각 조각의 꼭짓점을 표시한 그래프.",
+    "solutionImageCaption": "절댓값의 기준 x=2에서 식을 나누면 왼쪽 조각은 최댓값 1, 오른쪽 조각은 최솟값 −9를 갖는다. 두 극값을 더해 전체 최댓값과 최솟값의 합을 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -445,9 +465,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 위쪽과 아래쪽의 같은 높이 띠를 짝지어 가로 길이의 합을 본다.\n조건 정리: 두 그래프는 $(\\dfrac9a,0)$에서 만나고 $y$축에서는 각각 $(0,-3)$, $(0,3)$을 지난다.\n풀이 방향: $0\\le t\\le3$에서 높이 $y=t$인 위쪽 띠와 $y=-t$인 아래쪽 띠의 가로 길이를 더한다.\n정석 풀이: $y=t$에서 $y=\\sqrt{9-ax}$와 만나는 점의 $x$좌표는 $\\dfrac{9-t^2}{a}$이다. $y=-t$에서 $y=\\sqrt{ax}-3$과 만나는 점의 $x$좌표는 $\\dfrac{(3-t)^2}{a}$이다. 두 띠의 가로 길이의 합은 $\\dfrac{9-t^2+(3-t)^2}{a}=\\dfrac{18-6t}{a}$로, $t=0$에서 $\\dfrac{18}{a}$이고 $t=3$에서 0까지 일정하게 줄어든다. 따라서 두 부분을 같은 높이끼리 붙인 넓이는 밑변 3, 높이 $\\dfrac{18}{a}$인 삼각형의 넓이와 같아 $\\dfrac12\\times3\\times\\dfrac{18}{a}=\\dfrac{27}{a}$이다. 이것이 $\\dfrac92$이므로 $a=6$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "두 무리함수와 넓이를 나타낸 해설 그래프",
-    "solutionImageCaption": "a=6에서 두 그래프의 교점 (3/2,0)과 y축 절편을 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 무리함수와 y축으로 둘러싸인 영역에서 같은 높이의 위아래 띠를 표시한 예시.",
+    "solutionImageCaption": "예: a=3일 때 높이 1의 위쪽 띠와 높이 −1의 아래쪽 띠를 짝지어 가로 길이의 합을 살핀다. 같은 높이끼리 붙여 넓이를 삼각형으로 바꾸고 주어진 넓이 9/2를 이용한다. 정답은 ①이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
@@ -512,7 +532,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 고정점 (−1,1)을 지나는 직선과 무리함수 곡선의 교점 예시.",
+    "solutionImageCaption": "예: 고정점 (−1,1)을 지나는 기울기 1/2인 직선이 곡선과 (3,3)에서 만난다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -535,9 +559,9 @@ window.questionBank = [
     "choices": [],
     "answer": "⑤",
     "solution": "[키포인트] $OD=x$를 이용해 직각삼각형 $OPD$, $APD$의 길이를 차례로 구한다.\n조건 정리: $AB=4$이므로 $OA=OP=2$이고 $0\\le x=OD\\le2$이다.\n풀이 방향: 먼저 피타고라스 정리로 $PD$를 구한 뒤 $AD=AO-DO$와 함께 $AP$를 구한다.\n정석 풀이: 직각삼각형 $OPD$에서 $PD^2=OP^2-OD^2=4-x^2$이므로 $PD=\\sqrt{4-x^2}$이다. 또 $AD=AO-DO=2-x$이다. 따라서 직각삼각형 $APD$에서 $AP^2=(2-x)^2+(4-x^2)=8-4x=4(2-x)$이므로 $f(x)=AP=2\\sqrt{2-x}$이다. 이 함수는 $0\\le x\\le2$에서 감소하고 아래로 굽으며 $x=2$에서 0이 된다. 원본 보기 중 이 모양에 해당하는 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "반원의 거리 함수 개형을 나타낸 해설 그래프",
-    "solutionImageCaption": "f(x)=2√(2−x), 0≤x≤2의 감소 개형과 끝점을 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반원 위의 점 P에서 지름 AB에 수선을 내려 만든 두 직각삼각형과 길이 표시.",
+    "solutionImageCaption": "예: P의 한 위치에서 OD=x이면 AD=2−x이고 OP=2이다. 직각삼각형 OPD에서 PD를 구한 뒤 APD에 다시 피타고라스 정리를 적용해 f(x)의 개형을 찾는다. 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_순천여고_2학기_기말_고1_기출/q17.png",
     "imageSize": "tall",
@@ -604,7 +628,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 각자의 구간에서 증가하는 무리함수와 감소하는 유리함수, 그리고 대응하는 끝점들을 표시한 그림.",
+    "solutionImageCaption": "파란 그래프의 출력값이 주황 그래프의 입력값이 되어 합성함수의 감소를 보여 준다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -632,9 +660,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $P,Q,R$의 좌표를 구하면 $PQ$와 $PR$의 길이가 같아져 넓이 문제가 한 변수의 최솟값 문제로 바뀐다.\n조건 정리: $a\\gt1$이므로 $a-1\\gt0$이다.\n풀이 방향: 세 점의 좌표를 구해 두 직각변의 길이를 나타내고 $t=a-1$로 치환한다.\n정석 풀이: $P=(a,\\dfrac1{a-1})$, $Q=(a,-a)$이다. $P$에서 그은 수평선 $y=\\dfrac1{a-1}$과 $y=-x$의 교점은 $R=(-\\dfrac1{a-1},\\dfrac1{a-1})$이다. 따라서 $PQ=PR=a+\\dfrac1{a-1}$. $t=a-1\\gt0$이라 두면 이 길이는 $t+1+\\dfrac1t\\ge3$이고 등호는 $t=1$일 때 성립한다. 따라서 삼각형의 최소 넓이는 $\\dfrac12\\times3\\times3=\\dfrac92$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "유리함수·직선과 삼각형을 나타낸 해설 그래프",
-    "solutionImageCaption": "a=2에서 P=(2,1), Q=(2,−2), R=(−1,1)과 최소 넓이 9/2를 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수와 직선 위의 세 점 P, Q, R이 만드는 직각삼각형을 색칠한 예시.",
+    "solutionImageCaption": "예: a=3일 때 두 직각변의 길이가 같은 삼각형을 보인다. 최소 넓이는 9/2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
@@ -662,9 +690,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=2,\\ b=-1,\\ c=-2$",
     "solution": "[키포인트] 평행이동은 $x$를 $x-2$로 바꾸고 함숫값에서 1을 뺀 뒤, $x$축 대칭으로 전체 부호를 바꾼다.\n조건 정리: 원래 함수는 $y=\\sqrt{ax+b}+c$이다.\n풀이 방향: 세 변환을 순서대로 식에 반영한 후 목표 함수와 근호 안, 바깥 상수를 비교한다.\n정석 풀이: 오른쪽으로 2만큼 평행이동하면 $y=\\sqrt{a(x-2)+b}+c$이고, 아래로 1만큼 옮기면 $y=\\sqrt{a(x-2)+b}+c-1$이다. 이를 $x$축에 대하여 대칭이동하면 $y=-\\sqrt{a(x-2)+b}-c+1$이다. 이것이 $-\\sqrt{2x-5}+3$과 같으므로 $a=2$, $-2a+b=-5$, $-c+1=3$이다. 따라서 $b=-1$, $c=-2$이다.\n따라서 구하는 값은 $a=2$, $b=-1$, $c=-2$이다.",
-    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "평행이동·대칭된 무리함수 그래프",
-    "solutionImageCaption": "변환 결과 y=−√(2x−5)+3과 계수 a,b,c를 확인한다.",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 무리함수 그래프와 x축에 대칭인 그래프를 함께 그린 그림.",
+    "solutionImageCaption": "주어진 결과 그래프를 x축에 대칭시킨 뒤 평행이동을 거꾸로 적용해 근호 안과 바깥 상수를 비교한다. 구하는 상수는 a=2, b=−1, c=−2이다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
@@ -694,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 제2사분면의 점 P에서 두 축에 내린 수선의 발 Q, R과 고정점 A, 세 거리를 표시한 그림.",
+    "solutionImageCaption": "예: P=(−5,5/2)에서는 PA가 두 수선의 길이 PQ와 PR의 합과 같다. 이 거리 조건을 좌표식으로 정리해 점 P가 그리는 도형과 그 대칭축을 찾는다. 도형의 방정식은 (x+2)(y−1)=−9/2 (x<−2)이고 대칭축은 y=−x−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -719,6 +751,10 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3과 y=4를 가진 유리함수 조각의 그래프. y축에서 눈금 2와 점근선 y=4 사이의 구간이 굵게 표시되어 있다.",
+    "solutionImageCaption": "파란 유리함수 조각의 치역은 y>4이다. y축의 굵은 선분은 근호 조각이 2≤x≤3에서 채워야 할 치역 2≤y≤4이고, 점선 y=2는 그 아래 끝이다. 근호 조각이 증가하면 f(2)=2, f(3)=4, 감소하면 f(2)=4, f(3)=2가 되도록 a, b를 정한다. 정답은 (a,b)=(12,−20), (−12,40)이다.",
+    "solutionImageSize": "full"
   }
 ];

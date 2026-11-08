@@ -685,7 +685,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 유리함수 그래프와 직선 y=x가 해설에서 얻은 유일한 고정점 T에서 접하는 그림.",
+    "solutionImageAlt": "해설 그림: 유리함수 그래프 y=f(x)와 직선 y=x가 해설에서 얻은 유일한 고정점 T에서 접하는 그림.",
     "solutionImageCaption": "곡선은 f(x)=(3x-4)/(x+7)이다. 해설에서 얻은 a=7에서 유일한 실근 k=-2가 고정점 T로 나타난다. 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
