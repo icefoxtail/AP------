@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 육십분법으로 나타낸 각은 호도법으로, 호도법으로 나타낸 각은 육십분법으로 나타내시오.\n⑴ $45^\\circ$\n⑵ $\\frac{5}{6}\\pi$\n⑶ $240^\\circ$\n⑷ $\\frac{7}{4}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\pi}{4}$, ⑵ $150^\\circ$, ⑶ $\\frac{4}{3}\\pi$, ⑷ $315^\\circ$",
+    "solution": "[풀이 전략]\n육십분법과 호도법의 상호 변환 관계식을 이용한다.\n$180^\\circ = \\pi\\text{ rad}$이므로\n- $1^\\circ = \\frac{\\pi}{180}\\text{ rad}$ (육십분법 각에 $\\frac{\\pi}{180}$를 곱하여 호도법으로 변환)\n- $1\\text{ rad} = \\frac{180^\\circ}{\\pi}$ (호도법 각에 $\\frac{180^\\circ}{\\pi}$를 곱하여 육십분법으로 변환)\n\n[단계별 풀이]\n1단계 [⑴ $45^\\circ$]:\n$$45 \\times \\frac{\\pi}{180} = \\frac{\\pi}{4}$$\n\n2단계 [⑵ $\\frac{5}{6}\\pi$]:\n$$\\frac{5}{6}\\pi \\times \\frac{180^\\circ}{\\pi} = 5 \\times 30^\\circ = 150^\\circ$$\n\n3단계 [⑶ $240^\\circ$]:\n$$240 \\times \\frac{\\pi}{180} = \\frac{4}{3}\\pi$$\n\n4단계 [⑷ $\\frac{7}{4}\\pi$]:\n$$\\frac{7}{4}\\pi \\times \\frac{180^\\circ}{\\pi} = 7 \\times 45^\\circ = 315^\\circ$$\n\n[오답 및 경계 점검]\n라디안 단위 기호는 일반적으로 생략하며, 각도의 도($^\\circ$) 기호를 빠뜨리지 않도록 주의한다.\n\n[결론]\n⑴ $\\frac{\\pi}{4}$, ⑵ $150^\\circ$, ⑶ $\\frac{4}{3}\\pi$, ⑷ $315^\\circ$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 삼각함수의 값을 구하시오.\n⑴ $\\sin\\frac{3}{4}\\pi$\n⑵ $\\cos 210^\\circ$\n⑶ $\\tan\\left(-\\frac{\\pi}{3}\\right)$\n⑷ $\\sin 300^\\circ$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\sqrt{2}}{2}$, ⑵ $-\\frac{\\sqrt{3}}{2}$, ⑶ $-\\sqrt{3}$, ⑷ $-\\frac{\\sqrt{3}}{2}$",
+    "solution": "[풀이 전략]\n일반각의 삼각함수의 성질과 각 변환 공식, 또는 동경의 사분면 위치에 따른 부호와 특수각의 삼각비를 이용하여 계산한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\sin\\frac{3}{4}\\pi$]:\n$\\frac{3}{4}\\pi = \\pi - \\frac{\\pi}{4}$이다. $\\sin(\\pi - \\theta) = \\sin\\theta$이므로\n$$\\sin\\frac{3}{4}\\pi = \\sin\\left(\\pi - \\frac{\\pi}{4}\\right) = \\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$$\n\n2단계 [⑵ $\\cos 210^\\circ$]:\n$210^\\circ = 180^\\circ + 30^\\circ$이다. $\\cos(180^\\circ + \\theta) = -\\cos\\theta$이므로\n$$\\cos 210^\\circ = \\cos(180^\\circ + 30^\\circ) = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$$\n\n3단계 [⑶ $\\tan\\left(-\\frac{\\pi}{3}\\right)$]:\n$\\tan(-\\theta) = -\\tan\\theta$이므로\n$$\\tan\\left(-\\frac{\\pi}{3}\\right) = -\\tan\\frac{\\pi}{3} = -\\sqrt{3}$$\n\n4단계 [⑷ $\\sin 300^\\circ$]:\n$300^\\circ = 360^\\circ - 60^\\circ$이다. $\\sin(360^\\circ - \\theta) = -\\sin\\theta$이므로\n$$\\sin 300^\\circ = \\sin(360^\\circ - 60^\\circ) = -\\sin 60^\\circ = -\\frac{\\sqrt{3}}{2}$$\n\n[오답 및 경계 점검]\n$210^\\circ$는 제3사분면의 각이므로 코사인은 음수이고, $300^\\circ$는 제4사분면의 각이므로 사인은 음수이다. 각 사분면별 부호를 철저히 확인한다.\n\n[결론]\n⑴ $\\frac{\\sqrt{2}}{2}$, ⑵ $-\\frac{\\sqrt{3}}{2}$, ⑶ $-\\sqrt{3}$, ⑷ $-\\frac{\\sqrt{3}}{2}$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-1, \\sqrt{3})$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta, \\cos\\theta, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta = \\frac{\\sqrt{3}}{2}, \\cos\\theta = -\\frac{1}{2}, \\tan\\theta = -\\sqrt{3}$",
+    "solution": "[풀이 전략]\n원점 $\\mathrm{O}$와 점 $\\mathrm{P}(x, y)$에 대하여 선분 $\\mathrm{OP}$의 길이를 $r = \\sqrt{x^2+y^2}$이라 할 때, 삼각함수의 정의는 다음과 같다:\n$$\\sin\\theta = \\frac{y}{r},\\quad \\cos\\theta = \\frac{x}{r},\\quad \\tan\\theta = \\frac{y}{x}\\;(x\\ne 0)$$\n\n[단계별 풀이]\n1단계 [동경의 길이 $r$ 구하기]:\n점 $\\mathrm{P}(-1, \\sqrt{3})$이므로 $x = -1, y = \\sqrt{3}$이다.\n$$r = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = \\sqrt{4} = 2$$\n\n2단계 [삼각함수 값 계산]:\n- $\\sin\\theta = \\frac{y}{r} = \\frac{\\sqrt{3}}{2}$\n- $\\cos\\theta = \\frac{x}{r} = \\frac{-1}{2} = -\\frac{1}{2}$\n- $\\tan\\theta = \\frac{y}{x} = \\frac{\\sqrt{3}}{-1} = -\\sqrt{3}$\n\n[오답 및 경계 점검]\n점 $\\mathrm{P}(-1, \\sqrt{3})$은 제2사분면의 점이므로 $\\sin\\theta > 0, \\cos\\theta < 0, \\tan\\theta < 0$이어야 하며, 계산 결과와 정확히 일치한다.\n\n[결론]\n$\\sin\\theta = \\frac{\\sqrt{3}}{2}, \\cos\\theta = -\\frac{1}{2}, \\tan\\theta = -\\sqrt{3}$"
   },
   {
     "id": 4,
@@ -94,9 +94,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식과 부등식을 푸시오. (단, $0\\le x < 2\\pi$)\n⑴ $\\sin x = -\\frac{\\sqrt{3}}{2}$\n⑵ $\\tan x < \\frac{\\sqrt{3}}{3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x = \\frac{4}{3}\\pi$ 또는 $x = \\frac{5}{3}\\pi$, ⑵ $0\\le x < \\frac{\\pi}{6}$ 또는 $\\frac{\\pi}{2} < x < \\frac{7}{6}\\pi$ 또는 $\\frac{3}{2}\\pi < x < 2\\pi$",
+    "solution": "[풀이 전략]\n삼각함수의 그래프 또는 단위원 위의 동경을 이용하여 $0\\le x < 2\\pi$ 범위에서 방정식과 부등식의 해를 구한다.\n\n[단계별 풀이]\n1단계 [⑴ 방정식 $\\sin x = -\\frac{\\sqrt{3}}{2}$ 풀기]:\n$0\\le x < 2\\pi$에서 $\\sin x < 0$이므로 해는 제3사분면과 제4사분면에 존재한다.\n기준각은 $\\frac{\\pi}{3}$이다:\n- 제3사분면: $x = \\pi + \\frac{\\pi}{3} = \\frac{4}{3}\\pi$\n- 제4사분면: $x = 2\\pi - \\frac{\\pi}{3} = \\frac{5}{3}\\pi$\n따라서 $x = \\frac{4}{3}\\pi$ 또는 $x = \\frac{5}{3}\\pi$이다.\n\n2단계 [⑵ 부등식 $\\tan x < \\frac{\\sqrt{3}}{3}$ 풀기]:\n탄젠트함수 $y=\\tan x$의 점근선은 $x=\\frac{\\pi}{2}, x=\\frac{3}{2}\\pi$이다.\n방정식 $\\tan x = \\frac{\\sqrt{3}}{3}$의 해는 $x = \\frac{\\pi}{6}$ 또는 $x = \\pi + \\frac{\\pi}{6} = \\frac{7}{6}\\pi$이다.\n$0\\le x < 2\\pi$에서 $y=\\tan x$의 그래프가 직선 $y=\\frac{\\sqrt{3}}{3}$보다 아래쪽에 위치하는 $x$의 범위를 구하면:\n- 구간 $\\left[0, \\frac{\\pi}{2}\\right)$: $0\\le x < \\frac{\\pi}{6}$\n- 구간 $\\left(\\frac{\\pi}{2}, \\frac{3}{2}\\pi\\right)$: $\\frac{\\pi}{2} < x < \\frac{7}{6}\\pi$\n- 구간 $\\left(\\frac{3}{2}\\pi, 2\\pi\\right)$: $\\frac{3}{2}\\pi < x < 2\\pi$\n\n[오답 및 경계 점검]\n탄젠트 부등식에서는 점근선 $x=\\frac{\\pi}{2}, x=\\frac{3}{2}\\pi$에서 함수가 정의되지 않으므로 등호가 들어가지 않으며, 구간이 점근선에 의해 분리됨을 놓치지 않아야 한다.\n\n[결론]\n⑴ $x = \\frac{4}{3}\\pi$ 또는 $x = \\frac{5}{3}\\pi$\n⑵ $0\\le x < \\frac{\\pi}{6}$ 또는 $\\frac{\\pi}{2} < x < \\frac{7}{6}\\pi$ 또는 $\\frac{3}{2}\\pi < x < 2\\pi$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$와 각 $6\\theta$를 나타내는 동경이 일치할 때, 각 $\\theta$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{4}{5}\\pi$",
+    "solution": "[풀이 전략]\n두 각 $\\alpha, \\beta$를 나타내는 동경이 일치할 조건은 다음과 같다:\n$$\\beta - \\alpha = 2n\\pi\\quad(n\\text{은 정수})$$\n\n[단계별 풀이]\n1단계 [동경 일치 조건식 세우기]:\n각 $\\theta$와 $6\\theta$를 나타내는 동경이 일치하므로\n$$6\\theta - \\theta = 2n\\pi\\implies 5\\theta = 2n\\pi\\implies \\theta = \\frac{2n}{5}\\pi\\quad(n\\text{은 정수})$$\n\n2단계 [주어진 범위에서 $n$의 값 결정]:\n문제에서 $\\frac{\\pi}{2} < \\theta < \\pi$이므로\n$$\\frac{\\pi}{2} < \\frac{2n}{5}\\pi < \\pi$$\n각 변을 $\\pi$로 나누고 $\\frac{5}{2}$를 곱하면:\n$$\\frac{5}{4} < n < \\frac{5}{2}\\implies 1.25 < n < 2.5$$\n$n$은 정수이므로 $n = 2$이다.\n\n3단계 [$\\theta$의 크기 계산]:\n$$\\theta = \\frac{2 \\times 2}{5}\\pi = \\frac{4}{5}\\pi$$\n\n[오답 및 경계 점검]\n$\\theta = \\frac{4}{5}\\pi$일 때 $6\\theta = \\frac{24}{5}\\pi = 4\\pi + \\frac{4}{5}\\pi$이므로 두 각의 동경이 완전히 일치하며, $\\frac{\\pi}{2} < \\frac{4}{5}\\pi < \\pi$ 범위도 충족한다.\n\n[결론]\n$\\frac{4}{5}\\pi$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "둘레의 길이가 $18$인 부채꼴 중에서 넓이가 최대인 부채꼴의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{9}{2}$",
+    "solution": "[풀이 전략]\n부채꼴의 반지름의 길이를 $r$, 호의 길이를 $l$, 넓이를 $S$라 하자.\n둘레의 길이는 $2r + l = 18$이므로 $l = 18 - 2r$이다.\n넓이 공식 $S = \\frac{1}{2}rl$에 대입하여 $r$에 대한 이차함수의 최댓값을 구한다.\n\n[단계별 풀이]\n1단계 [둘레 조건식 및 변수 범위]:\n둘레가 $18$이므로 $2r + l = 18 \\implies l = 18 - 2r$이다.\n반지름 $r > 0$이고 호의 길이 $l > 0$이므로:\n$$18 - 2r > 0 \\implies 0 < r < 9$$\n\n2단계 [넓이 $S$의 식 전개 및 완전제곱식 변형]:\n$$S = \\frac{1}{2}rl = \\frac{1}{2}r(18 - 2r) = 9r - r^2 = -(r^2 - 9r)$$\n완전제곱식으로 나타내면:\n$$S = -\\left(r - \\frac{9}{2}\\right)^2 + \\frac{81}{4}$$\n\n3단계 [최댓값을 갖는 반지름 구하기]:\n$0 < r < 9$ 범위에서 $r = \\frac{9}{2}$일 때 넓이 $S$는 최댓값 $\\frac{81}{4}$을 갖는다.\n따라서 넓이가 최대인 부채꼴의 반지름의 길이는 $\\frac{9}{2}$이다.\n\n[오답 및 경계 점검]\n산술·기하 평균 부등식 $18 = 2r + l \\ge 2\\sqrt{2rl} = 4\\sqrt{S}$에서 등호 성립 조건 $2r = l = 9 \\implies r = \\frac{9}{2}$로도 동일하게 성립함을 확인할 수 있다.\n\n[결론]\n$\\frac{9}{2}$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta\\tan\\theta > 0, \\cos\\theta\\tan\\theta < 0$을 동시에 만족시키는 각 $\\theta$는 제몇 사분면의 각인지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제$4$사분면",
+    "solution": "[풀이 전략]\n각 사분면에서의 삼각함수의 부호 규칙을 적용하여 두 부등식을 동시에 만족시키는 각 $\\theta$의 사분면을 판정한다.\n$$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$$\n\n[단계별 풀이]\n1단계 [첫 번째 부등식 $\\sin\\theta\\tan\\theta > 0$ 분석]:\n$$\\sin\\theta\\tan\\theta = \\sin\\theta \\times \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{\\sin^2\\theta}{\\cos\\theta} > 0$$\n$\\sin\\theta \\ne 0$일 때 $\\sin^2\\theta > 0$이므로 분모 $\\cos\\theta > 0$이어야 한다.\n따라서 $\\cos\\theta > 0$이다. (각 $\\theta$는 제1사분면 또는 제4사분면)\n\n2단계 [두 번째 부등식 $\\cos\\theta\\tan\\theta < 0$ 분석]:\n$$\\cos\\theta\\tan\\theta = \\cos\\theta \\times \\frac{\\sin\\theta}{\\cos\\theta} = \\sin\\theta < 0$$\n따라서 $\\sin\\theta < 0$이다. (각 $\\theta$는 제3사분면 또는 제4사분면)\n\n3단계 [동시 만족 사분면 결정]:\n$\\cos\\theta > 0$이고 $\\sin\\theta < 0$을 동시에 만족시키는 각 $\\theta$는 제4사분면의 각이다.\n\n[오답 및 경계 점검]\n제4사분면에서 $\\sin\\theta < 0, \\cos\\theta > 0, \\tan\\theta < 0$이므로\n- $\\sin\\theta\\tan\\theta = (-) \\times (-) = (+) > 0$\n- $\\cos\\theta\\tan\\theta = (+) \\times (-) = (-) < 0$\n두 조건이 모두 완벽히 성립한다.\n\n[결론]\n제$4$사분면"
   },
   {
     "id": 8,
@@ -206,9 +206,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제2사분면의 각이고 $\\cos\\theta = -\\frac{4}{5}$일 때, $\\sin\\theta - \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{27}{20}$",
+    "solution": "[풀이 전략]\n$\\sin^2\\theta + \\cos^2\\theta = 1$ 및 $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ 관계를 이용한다.\n각 $\\theta$가 제2사분면의 각이므로 $\\sin\\theta > 0, \\tan\\theta < 0$이다.\n\n[단계별 풀이]\n1단계 [$\\sin\\theta$ 구하기]:\n$\\cos\\theta = -\\frac{4}{5}$이므로\n$$\\sin^2\\theta = 1 - \\cos^2\\theta = 1 - \\left(-\\frac{4}{5}\\right)^2 = 1 - \\frac{16}{25} = \\frac{9}{25}$$\n$\\theta$가 제2사분면의 각이므로 $\\sin\\theta > 0$이다:\n$$\\sin\\theta = \\frac{3}{5}$$\n\n2단계 [$\\tan\\theta$ 구하기]:\n$$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{\\frac{3}{5}}{-\\frac{4}{5}} = -\\frac{3}{4}$$\n\n3단계 [$\\sin\\theta - \\tan\\theta$ 계산]:\n$$\\sin\\theta - \\tan\\theta = \\frac{3}{5} - \\left(-\\frac{3}{4}\\right) = \\frac{3}{5} + \\frac{3}{4} = \\frac{12 + 15}{20} = \\frac{27}{20}$$\n\n[오답 및 경계 점검]\n$-\\tan\\theta$를 계산할 때 $\\tan\\theta$가 음수이므로 음수 부호와 마이너스가 만나 덧셈으로 바뀌는 부호 실수에 주의한다.\n\n[결론]\n$\\frac{27}{20}$"
   },
   {
     "id": 9,
@@ -234,9 +234,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta + \\cos\\theta = \\frac{1}{2}$일 때, $\\tan\\theta + \\frac{\\cos\\theta}{\\sin\\theta}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{8}{3}$",
+    "solution": "[풀이 전략]\n1. $\\sin\\theta + \\cos\\theta = \\frac{1}{2}$의 양변을 제곱하여 $\\sin\\theta\\cos\\theta$의 값을 구한다.\n2. $\\tan\\theta + \\frac{\\cos\\theta}{\\sin\\theta}$를 통분하여 분자에 $\\sin^2\\theta + \\cos^2\\theta = 1$을 대입한다.\n\n[단계별 풀이]\n1단계 [$\\sin\\theta\\cos\\theta$ 구하기]:\n$\\sin\\theta + \\cos\\theta = \\frac{1}{2}$의 양변을 제곱하면:\n$$(\\sin\\theta + \\cos\\theta)^2 = \\sin^2\\theta + 2\\sin\\theta\\cos\\theta + \\cos^2\\theta = \\frac{1}{4}$$\n$\\sin^2\\theta + \\cos^2\\theta = 1$이므로:\n$$1 + 2\\sin\\theta\\cos\\theta = \\frac{1}{4}\\implies 2\\sin\\theta\\cos\\theta = -\\frac{3}{4}\\implies \\sin\\theta\\cos\\theta = -\\frac{3}{8}$$\n\n2단계 [주어진 식 통분 및 정리]:\n$$\\tan\\theta + \\frac{\\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{\\cos\\theta} + \\frac{\\cos\\theta}{\\sin\\theta} = \\frac{\\sin^2\\theta + \\cos^2\\theta}{\\sin\\theta\\cos\\theta} = \\frac{1}{\\sin\\theta\\cos\\theta}$$\n\n3단계 [값 대입 및 계산]:\n$$\\frac{1}{\\sin\\theta\\cos\\theta} = \\frac{1}{-\\frac{3}{8}} = -\\frac{8}{3}$$\n\n[오답 및 경계 점검]\n$\\sin\\theta + \\cos\\theta = \\frac{1}{2}$에서 제곱합 $1 + 2\\sin\\theta\\cos\\theta = \\frac{1}{4}$이므로 $\\sin\\theta\\cos\\theta$는 반드시 음수이며, 역수 취한 값도 음수인 $-\\frac{8}{3}$이다.\n\n[결론]\n$-\\frac{8}{3}$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y = 2\\sin\\left(\\frac{x}{2} - \\frac{\\pi}{3}\\right) - 1$\n⑵ $y = \\frac{1}{2}\\cos 2\\left(x - \\frac{\\pi}{6}\\right) + 2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 주기: $4\\pi$, 최댓값: $1$, 최솟값: $-3$, ⑵ 주기: $\\pi$, 최댓값: $\\frac{5}{2}$, 최솟값: $\\frac{3}{2}$",
+    "solution": "[풀이 전략]\n삼각함수 $y = a\\sin(bx - c) + d$와 $y = a\\cos(bx - c) + d$에서:\n- 주기: $\\frac{2\\pi}{|b|}$\n- 최댓값: $|a| + d$\n- 최솟값: $-|a| + d$\n\n[단계별 풀이]\n1단계 [⑴ $y = 2\\sin\\left(\\frac{x}{2} - \\frac{\\pi}{3}\\right) - 1$]:\n계수를 확인하면 $a = 2, b = \\frac{1}{2}, d = -1$이다.\n- 주기: $\\frac{2\\pi}{\\frac{1}{2}} = 4\\pi$\n- 최댓값: $|2| + (-1) = 2 - 1 = 1$\n- 최솟값: $-|2| + (-1) = -2 - 1 = -3$\n\n2단계 [⑵ $y = \\frac{1}{2}\\cos 2\\left(x - \\frac{\\pi}{6}\\right) + 2$]:\n계수를 확인하면 $a = \\frac{1}{2}, b = 2, d = 2$이다.\n- 주기: $\\frac{2\\pi}{2} = \\pi$\n- 최댓값: $\\left|\\frac{1}{2}\\right| + 2 = \\frac{1}{2} + 2 = \\frac{5}{2}$\n- 최솟값: $-\\left|\\frac{1}{2}\\right| + 2 = -\\frac{1}{2} + 2 = \\frac{3}{2}$\n\n[오답 및 경계 점검]\n$x$의 계수 $b$가 주기에만 영향을 미치고, 평행이동 상수는 최댓값과 최솟값에 영향을 주지 않음을 정확히 숙지한다.\n\n[결론]\n⑴ 주기: $4\\pi$, 최댓값: $1$, 최솟값: $-3$\n⑵ 주기: $\\pi$, 최댓값: $\\frac{5}{2}$, 최솟값: $\\frac{3}{2}$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n$$\\sin(\\pi + x)\\cos\\left(\\frac{\\pi}{2} - x\\right) + \\sin\\left(\\frac{\\pi}{2} + x\\right)\\cos(\\pi - x)$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "[풀이 전략]\n각 변환 공식을 적용하여 각 항을 간단한 삼각함수 식으로 고친다:\n- $\\sin(\\pi + x) = -\\sin x$\n- $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$\n- $\\sin\\left(\\frac{\\pi}{2} + x\\right) = \\cos x$\n- $\\cos(\\pi - x) = -\\cos x$\n\n[단계별 풀이]\n1단계 [각 변환 공식 적용]:\n- $\\sin(\\pi + x) = -\\sin x$\n- $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$\n- $\\sin\\left(\\frac{\\pi}{2} + x\\right) = \\cos x$\n- $\\cos(\\pi - x) = -\\cos x$\n\n2단계 [원식에 대입]:\n$$\\sin(\\pi + x)\\cos\\left(\\frac{\\pi}{2} - x\\right) + \\sin\\left(\\frac{\\pi}{2} + x\\right)\\cos(\\pi - x) = (-\\sin x)(\\sin x) + (\\cos x)(-\\cos x)$$\n$$= -\\sin^2 x - \\cos^2 x = -(\\sin^2 x + \\cos^2 x)$$\n\n3단계 [기본 항등식 적용]:\n$\\sin^2 x + \\cos^2 x = 1$이므로\n$$-(\\sin^2 x + \\cos^2 x) = -1$$\n\n[오답 및 경계 점검]\n각 변환 시 사분면의 위치를 기준으로 부호가 올바르게 붙었는지 확인한다. $-\\sin^2 x - \\cos^2 x = -1$로 항상 일정한 상수값을 갖는다.\n\n[결론]\n$-1$"
   },
   {
     "id": 12,
@@ -318,9 +318,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\pi < x < 2\\pi$에서 $3\\cos^2 x + 8\\cos x - 3 = 0$을 만족시키는 $x$에 대하여 $\\cos\\left(\\frac{\\pi}{2} - x\\right)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2\\sqrt{2}}{3}$",
+    "solution": "[풀이 전략]\n1. $3\\cos^2 x + 8\\cos x - 3 = 0$을 $\\cos x$에 대한 이차방정식으로 보고 인수분해하여 $\\cos x$를 구한다.\n2. $\\pi < x < 2\\pi$ 범위에서 $\\cos x > 0$이므로 $x$가 제4사분면의 각임을 파악하여 $\\sin x < 0$을 구한다.\n3. $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$를 적용하여 값을 계산한다.\n\n[단계별 풀이]\n1단계 [이차방정식 풀기]:\n$$3\\cos^2 x + 8\\cos x - 3 = 0$$\n좌변을 인수분해하면:\n$$(\\cos x + 3)(3\\cos x - 1) = 0$$\n모든 실수 $x$에 대하여 $-1 \\le \\cos x \\le 1$이므로 $\\cos x + 3 \\ne 0$이다.\n따라서\n$$\\cos x = \\frac{1}{3}$$\n\n2단계 [$\\sin x$ 구하기]:\n$\\pi < x < 2\\pi$이고 $\\cos x = \\frac{1}{3} > 0$이므로, $x$는 제4사분면의 각이다.\n제4사분면에서 $\\sin x < 0$이므로:\n$$\\sin x = -\\sqrt{1 - \\cos^2 x} = -\\sqrt{1 - \\left(\\frac{1}{3}\\right)^2} = -\\sqrt{\\frac{8}{9}} = -\\frac{2\\sqrt{2}}{3}$$\n\n3단계 [구하는 값 계산]:\n$$\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x = -\\frac{2\\sqrt{2}}{3}$$\n\n[오답 및 경계 점검]\n$x$가 제4사분면의 각이므로 사인의 부호는 반드시 음수($-\\frac{2\\sqrt{2}}{3}$)이어야 한다.\n\n[결론]\n$-\\frac{2\\sqrt{2}}{3}$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = a\\cos bx + c$의 그래프가 다음 그림과 같을 때, 실수 $a, b, c$의 값을 구하시오. (단, $a>0, b>0$)\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a = 2, b = 3, c = -1$",
+    "solution": "[풀이 전략]\n주어진 코사인함수 $y = a\\cos bx + c$의 그래프에서 최댓값, 최솟값, 주기를 읽어 미지수 $a, b, c$의 값을 결정한다.\n$a > 0, b > 0$이므로\n- 최댓값: $a + c$\n- 최솟값: $-a + c$\n- 주기: $\\frac{2\\pi}{b}$\n\n[단계별 풀이]\n1단계 [최댓값과 최솟값으로부터 $a, c$ 구하기]:\n그래프에서 최댓값은 $1$, 최솟값은 $-3$이다.\n- $a + c = 1$ …… ①\n- $-a + c = -3$ …… ②\n①과 ②를 더하면 $2c = -2 \\implies c = -1$이다.\n$c = -1$을 ①에 대입하면 $a - 1 = 1 \\implies a = 2$이다.\n\n2단계 [주기로부터 $b$ 구하기]:\n그래프에서 한 주기는 $x = 0$에서 $x = \\frac{2}{3}\\pi$까지이다.\n따라서 주기는 $\\frac{2}{3}\\pi$이다.\n$b > 0$이므로\n$$\\frac{2\\pi}{b} = \\frac{2}{3}\\pi \\implies b = 3$$\n\n[오답 및 경계 점검]\n$a=2, b=3, c=-1$을 대입하면 $y = 2\\cos 3x - 1$이다.\n$x=0$일 때 $y = 2(1) - 1 = 1$, $x=\\frac{\\pi}{3}$일 때 $y = 2(-1) - 1 = -3$으로 그래프의 점들과 완전히 일치한다.\n\n[결론]\n$a = 2, b = 3, c = -1$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0\\le x < 2$일 때, 방정식 $\\sin 2\\pi x = \\frac{3}{5}$의 모든 해의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n함수 $y = \\sin 2\\pi x$의 주기와 대칭성을 이용하여 구간 $0\\le x < 2$에서의 네 교점의 $x$좌표의 합을 구한다.\n\n[단계별 풀이]\n1단계 [함수의 주기와 교점 개수]:\n$y = \\sin 2\\pi x$의 주기는 $\\frac{2\\pi}{2\\pi} = 1$이다.\n주어진 구간은 $0\\le x < 2$로 주기가 2번 반복된다.\n직선 $y = \\frac{3}{5}$와의 교점의 $x$좌표를 작은 것부터 차례로 $a, b, c, d$ ($a < b < c < d$)라 하자.\n\n2단계 [대칭성을 이용한 좌표 관계]:\n- 첫 번째 주기 $[0, 1)$에서 $a, b$는 대칭축 $x = \\frac{1}{4}$에 대하여 대칭이다:\n$$\\frac{a + b}{2} = \\frac{1}{4} \\implies a + b = \\frac{1}{2}\\quad\\left(\\text{또는 } b = \\frac{1}{2} - a\\right)$$\n- 두 번째 주기 $[1, 2)$의 해는 주기가 $1$이므로 첫 번째 주기의 해를 각각 $1$만큼 평행이동한 것이다:\n$$c = a + 1,\\quad d = b + 1$$\n따라서:\n$$c + d = (a + 1) + (b + 1) = (a + b) + 2 = \\frac{1}{2} + 2 = \\frac{5}{2}$$\n\n3단계 [모든 해의 합 계산]:\n$$a + b + c + d = \\frac{1}{2} + \\frac{5}{2} = 3$$\n\n[오답 및 경계 점검]\n네 근의 합은 $a + \\left(\\frac{1}{2}-a\\right) + (1+a) + \\left(\\frac{3}{2}-a\\right) = \\frac{1}{2} + 1 + \\frac{3}{2} = 3$으로 $a$의 값에 무관하게 항상 $3$이다.\n\n[결론]\n$3$"
   },
   {
     "id": 15,
@@ -402,9 +402,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 부등식 $\\sin^2 x - 6\\sin x + 6k - 4 > 0$이 항상 성립하도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k > \\frac{3}{2}$",
+    "solution": "[풀이 전략]\n$\\sin x = t$로 치환하면 $-1 \\le t \\le 1$이다.\n치환된 $t$에 대한 이차부등식 $t^2 - 6t + 6k - 4 > 0$이 닫힌구간 $[-1, 1]$의 모든 $t$에 대하여 항상 성립해야 하므로, 이 구간에서 이차함수의 최솟값이 $0$보다 커야 한다.\n\n[단계별 풀이]\n1단계 [치환 및 $t$의 범위]:\n$\\sin x = t$라 하면 $-1 \\le t \\le 1$이다.\n주어진 부등식은:\n$$t^2 - 6t + 6k - 4 > 0$$\n\n2단계 [이차함수 정의 및 대칭축 확인]:\n$f(t) = t^2 - 6t + 6k - 4$라 하면\n$$f(t) = (t - 3)^2 + 6k - 13$$\n이차함수 $y = f(t)$의 그래프는 아래로 볼록하고 대칭축은 $t = 3$이다.\n\n3단계 [구간 $[-1, 1]$에서의 최솟값]:\n대칭축 $t = 3$이 구간 $[-1, 1]$의 오른쪽에 있으므로, $f(t)$는 $[-1, 1]$에서 감소한다.\n따라서 최솟값은 $t = 1$일 때 발생한다:\n$$f(1) = 1^2 - 6(1) + 6k - 4 = 6k - 9$$\n\n4단계 [항상 성립할 $k$의 범위 구하기]:\n모든 $-1 \\le t \\le 1$에 대하여 $f(t) > 0$이 성립하려면 최솟값이 $0$보다 커야 한다:\n$$6k - 9 > 0 \\implies 6k > 9 \\implies k > \\frac{3}{2}$$\n\n[오답 및 경계 점검]\n전체 실수에서의 판별식 $D < 0$을 적용하면 $9 - (6k - 4) < 0 \\implies k > \\frac{13}{6}$이 되어 잘못된 답을 얻게 된다. $t$의 제한 범위 $[-1, 1]$에서의 축과 최솟값 위치 분석이 필수적이다.\n\n[결론]\n$k > \\frac{3}{2}$"
   },
   {
     "id": 16,
@@ -430,9 +430,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $0\\le x\\le 6$에서 함수 $y = \\frac{5}{2}\\sin\\frac{\\pi}{2}x$의 그래프와 직선 $y = \\frac{5\\sqrt{2}}{4}$가 만나는 네 점을 $x$좌표가 작은 것부터 차례로 $\\mathrm{A, B, C, D}$라고 할 때, 삼각형 $\\mathrm{BOC}$의 넓이를 구하시오. (단, $\\mathrm{O}$는 원점)\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15\\sqrt{2}}{8}$",
+    "solution": "[풀이 전략]\n1. 함수 $y = \\frac{5}{2}\\sin\\frac{\\pi}{2}x$와 직선 $y = \\frac{5\\sqrt{2}}{4}$의 교점의 $x$좌표를 구하여 점 $\\mathrm{B}$와 $\\mathrm{C}$의 좌표를 구한다.\n2. 선분 $\\mathrm{BC}$를 밑변으로 하고 원점 $\\mathrm{O}$에서 직선까지의 수직거리 $\\frac{5\\sqrt{2}}{4}$를 높이로 하여 삼각형 $\\mathrm{BOC}$의 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [교점의 $x$좌표 구하기]:\n방정식 $\\frac{5}{2}\\sin\\frac{\\pi}{2}x = \\frac{5\\sqrt{2}}{4}$에서\n$$\\sin\\frac{\\pi}{2}x = \\frac{\\sqrt{2}}{2}$$\n$0\\le x\\le 6$이므로 $0\\le \\frac{\\pi}{2}x \\le 3\\pi$이다.\n$\\sin\\theta = \\frac{\\sqrt{2}}{2}$를 만족시키는 $\\theta$의 값은\n$$\\theta = \\frac{\\pi}{4},\\, \\frac{3}{4}\\pi,\\, \\frac{9}{4}\\pi,\\, \\frac{11}{4}\\pi$$\n따라서 $\\frac{\\pi}{2}x = \\theta$에서 네 점 $\\mathrm{A, B, C, D}$의 $x$좌표는:\n- 점 $\\mathrm{A}$: $x = \\frac{1}{2}$\n- 점 $\\mathrm{B}$: $x = \\frac{3}{2}$\n- 점 $\\mathrm{C}$: $x = \\frac{9}{2}$\n- 점 $\\mathrm{D}$: $x = \\frac{11}{2}$\n\n2단계 [선분 $\\mathrm{BC}$의 길이와 높이 구하기]:\n두 점 $\\mathrm{B}\\left(\\frac{3}{2}, \\frac{5\\sqrt{2}}{4}\\right)$, $\\mathrm{C}\\left(\\frac{9}{2}, \\frac{5\\sqrt{2}}{4}\\right)$ 사이의 거리는\n$$\\overline{\\mathrm{BC}} = \\frac{9}{2} - \\frac{3}{2} = 3$$\n삼각형 $\\mathrm{BOC}$의 높이는 점 $\\mathrm{B, C}$의 $y$좌표인 $\\frac{5\\sqrt{2}}{4}$이다.\n\n3단계 [삼각형 $\\mathrm{BOC}$의 넓이 계산]:\n$$\\triangle\\mathrm{BOC} = \\frac{1}{2} \\times \\overline{\\mathrm{BC}} \\times \\frac{5\\sqrt{2}}{4} = \\frac{1}{2} \\times 3 \\times \\frac{5\\sqrt{2}}{4} = \\frac{15\\sqrt{2}}{8}$$\n\n[오답 및 경계 점검]\n밑변 선분 $\\mathrm{BC}$가 $x$축과 평행하므로 높이는 직선의 $y$좌표 자체인 $\\frac{5\\sqrt{2}}{4}$가 되며, 계산 과정의 분수 약분과 무리수 곱셈을 꼼꼼히 확인한다.\n\n[결론]\n$\\frac{15\\sqrt{2}}{8}$"
   },
   {
     "id": 17,
@@ -458,9 +458,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = \\tan\\pi x \\;(0 < x < 2)$의 그래프와 직선 $y = -\\frac{5}{2}x + k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0\\le k < 5$",
+    "solution": "[풀이 전략]\n함수 $y = \\tan\\pi x$ ($0 < x < 2$)의 그래프와 직선 $y = -\\frac{5}{2}x + k$의 교점의 개수를 파악하기 위해 점근선과 경계점에서의 직선의 위치를 분석한다.\n\n[단계별 풀이]\n1단계 [탄젠트함수의 주기와 점근선 파악]:\n함수 $y = \\tan\\pi x$의 주기는 $\\frac{\\pi}{\\pi} = 1$이고, $0 < x < 2$에서의 점근선은 $x = \\frac{1}{2}, x = \\frac{3}{2}$이다.\n따라서 열린구간 $(0, 2)$에서 탄젠트함수의 그래프는 세 부분으로 나뉜다:\n- $0 < x < \\frac{1}{2}$: 원점 $(0, 0)$에서 시작하여 $\\infty$로 증가\n- $\\frac{1}{2} < x < \\frac{3}{2}$: $-\\infty$에서 $\\infty$까지 뻗은 온전한 한 주기\n- $\\frac{3}{2} < x < 2$: $-\\infty$에서 점 $(2, 0)$까지 증가\n\n2단계 [직선과의 교점 조건 분석]:\n직선 $y = -\\frac{5}{2}x + k$는 기울기가 $-\\frac{5}{2} < 0$인 감소하는 직선이다.\n가운데 온전한 주기 구간 $\\left(\\frac{1}{2}, \\frac{3}{2}\\right)$에서는 $k$의 값에 관계없이 항상 $1$개의 교점을 갖는다.\n따라서 서로 다른 세 점에서 만나려면:\n- 구간 $\\left(0, \\frac{1}{2}\\right)$에서 $1$개의 교점을 가져야 하고,\n- 구간 $\\left(\\frac{3}{2}, 2\\right)$에서도 $1$개의 교점을 가져야 한다.\n\n3단계 [경계점 대입을 통한 $k$의 범위 산출]:\n- 직선이 점 $(0, 0)$을 지날 때: $0 = -\\frac{5}{2}(0) + k \\implies k = 0$.\n  $k \\ge 0$이어야 직선의 $x$절편이 $0$ 이상이 되어 구간 $\\left(0, \\frac{1}{2}\\right)$의 탄젠트 그래프와 만난다.\n- 직선이 점 $(2, 0)$을 지날 때: $0 = -\\frac{5}{2}(2) + k \\implies k = 5$.\n  $k < 5$이어야 직선의 $x$절편이 $2$ 미만이 되어 구간 $\\left(\\frac{3}{2}, 2\\right)$의 탄젠트 그래프와 만난다.\n\n4단계 [종합]:\n따라서 구하는 실수 $k$의 값의 범위는 $0 \\le k < 5$이다.\n\n[오답 및 경계 점검]\n$k=0$일 때 직선은 $y = -\\frac{5}{2}x$로 구간 $\\left(\\frac{3}{2}, 2\\right)$에서 $x$절편 $0$보다 큰 부분과 만나므로 교점이 생기지만, $k=5$일 때 $x=2$는 정의역 $0 < x < 2$에 포함되지 않으므로 $k=5$에서는 교점이 2개로 줄어든다. 따라서 등호는 $0$에만 포함된다.\n\n[결론]\n$0\\le k < 5$"
   },
   {
     "id": 18,
@@ -486,9 +486,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$인 모든 실수 $x$에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n\n[보기]\nㄱ. $\\sin x > \\cos x$\nㄴ. $4^{\\sin x} > 2^{\\cos x}$\nㄷ. $\\log_{\\frac{1}{2}}\\sin x < \\log_{\\frac{1}{2}}\\tan x$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "[풀이 전략]\n$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$ 범위에서 $\\sin x, \\cos x, \\tan x$의 대소 관계와 지수함수, 로그함수의 밑에 따른 증가·감소 성질을 적용하여 각 보기를 판정한다.\n\n[단계별 풀이]\n1단계 [ㄱ 판정]:\n$x = \\frac{\\pi}{4}$에서 $\\sin\\frac{\\pi}{4} = \\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$이다.\n$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$에서 사인함수는 증가하고 코사인함수는 감소하므로:\n$$\\frac{\\sqrt{2}}{2} < \\sin x < 1,\\quad 0 < \\cos x < \\frac{\\sqrt{2}}{2}$$\n따라서 $\\sin x > \\cos x$이다. (ㄱ 참)\n\n2단계 [ㄴ 판정]:\n$4^{\\sin x} = (2^2)^{\\sin x} = 2^{2\\sin x}$이다.\nㄱ에 의해 $\\sin x > \\cos x > 0$이므로\n$$2\\sin x > \\sin x > \\cos x \\implies 2\\sin x > \\cos x$$\n밑이 $2 > 1$인 지수함수는 증가함수이므로 지수가 크면 값도 크다:\n$$2^{2\\sin x} > 2^{\\cos x} \\implies 4^{\\sin x} > 2^{\\cos x}$$\n(ㄴ 참)\n\n3단계 [ㄷ 판정]:\n$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$에서 $\\tan x > 1$이고 $\\sin x < 1$이므로\n$$0 < \\sin x < 1 < \\tan x \\implies \\sin x < \\tan x$$\n밑이 $0 < \\frac{1}{2} < 1$인 로그함수는 감소함수이므로 진수가 작을수록 값이 크다:\n$$\\sin x < \\tan x \\implies \\log_{\\frac{1}{2}}\\sin x > \\log_{\\frac{1}{2}}\\tan x$$\n따라서 보기의 $\\log_{\\frac{1}{2}}\\sin x < \\log_{\\frac{1}{2}}\\tan x$는 거짓이다. (ㄷ 거짓)\n\n[오답 및 경계 점검]\n로그의 밑이 $\\frac{1}{2}$로 $1$보다 작으므로 부등호 방향이 반대로 뒤집혀야 함에 유의한다.\n\n[결론]\nㄱ, ㄴ"
   }
 ];

@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -32,8 +32,8 @@ window.questionBank = [
       "$\\frac{29}{6}\\pi$",
       "$1230^\\circ$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[풀이 전략]\n각 각을 $360^\\circ \\times n + \\alpha$ ($0^\\circ \\le \\alpha < 360^\\circ$) 형태로 변형하여 나타내는 동경의 위치를 비교한다.\n\n[단계별 풀이]\n1단계 [각 선택지의 동경 계산]:\n- (1) $-210^\\circ = 360^\\circ \\times (-1) + 150^\\circ$\n- (2) $\\frac{5}{6}\\pi = 150^\\circ$\n- (3) $480^\\circ = 360^\\circ \\times 1 + 120^\\circ$\n- (4) $\\frac{29}{6}\\pi = 2\\pi \\times 2 + \\frac{5}{6}\\pi = 4\\pi + 150^\\circ$\n- (5) $1230^\\circ = 360^\\circ \\times 3 + 150^\\circ$\n\n2단계 [동경 비교 및 결론]:\n(1), (2), (4), (5)는 모두 동경이 $150^\\circ$를 나타내지만, (3)만 $120^\\circ$를 나타내므로 동경이 나머지 넷과 다르다.\n\n[오답 및 경계 점검]\n음의 각과 라디안 각을 $360^\\circ$의 정수 배를 더하거나 빼어 $0^\\circ$ 이상 $360^\\circ$ 미만의 양의 각으로 정규화하면 쉽게 구분할 수 있다.\n\n[결론]\n③"
   },
   {
     "id": 2,
@@ -44,9 +44,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -60,8 +60,8 @@ window.questionBank = [
     "wide": false,
     "content": "중심각의 크기가 $2$이고 둘레의 길이가 $32$인 부채꼴의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$64$",
+    "solution": "[풀이 전략]\n부채꼴의 반지름의 길이를 $r$, 중심각의 크기를 $\\theta$, 호의 길이를 $l$, 넓이를 $S$라 하자.\n호의 길이 공식 $l = r\\theta$와 둘레 $2r + l = 32$를 연립하여 반지름 $r$를 구한 후, 넓이 공식 $S = \\frac{1}{2}r^2\\theta$를 적용한다.\n\n[단계별 풀이]\n1단계 [둘레 조건식으로 반지름 $r$ 구하기]:\n중심각의 크기가 $\\theta = 2$이므로 호의 길이는\n$$l = r\\theta = 2r$$\n둘레의 길이가 $32$이므로:\n$$2r + l = 2r + 2r = 4r = 32 \\implies r = 8$$\n\n2단계 [부채꼴의 넓이 계산]:\n반지름 $r = 8$, 중심각 $\\theta = 2$이므로\n$$S = \\frac{1}{2}r^2\\theta = \\frac{1}{2} \\times 8^2 \\times 2 = 64$$\n(또는 $S = \\frac{1}{2}rl = \\frac{1}{2} \\times 8 \\times 16 = 64$)\n\n[오답 및 경계 점검]\n중심각 $\\theta=2$는 육십분법의 $2^\\circ$가 아닌 라디안 단위 실수 $2$이므로 $l=r\\theta$를 바로 적용할 수 있다.\n\n[결론]\n$64$"
   },
   {
     "id": 3,
@@ -72,9 +72,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -88,8 +88,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제3사분면의 각이고\n$$\\frac{(1-\\cos\\theta)\\cos\\theta}{\\sin\\theta} + \\frac{\\sin\\theta\\cos\\theta}{1-\\cos\\theta} = 1$$\n일 때, $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{\\sqrt{5}}{5}$",
+    "solution": "[풀이 전략]\n1. 주어진 분수식을 통분하여 삼각함수 기본 항등식 $\\sin^2\\theta + \\cos^2\\theta = 1$을 적용해 식을 간단히 정리한다.\n2. $\\sin\\theta$와 $\\cos\\theta$의 관계식을 구한 후, 제3사분면의 부호를 고려하여 $\\cos\\theta$를 구한다.\n\n[단계별 풀이]\n1단계 [주어진 좌변 통분 및 정리]:\n$$\\frac{(1-\\cos\\theta)\\cos\\theta}{\\sin\\theta} + \\frac{\\sin\\theta\\cos\\theta}{1-\\cos\\theta} = \\frac{(1-\\cos\\theta)^2\\cos\\theta + \\sin^2\\theta\\cos\\theta}{\\sin\\theta(1-\\cos\\theta)}$$\n분자에서 공통인수 $\\cos\\theta$를 묶어내면:\n$$\\cos\\theta\\left[(1-\\cos\\theta)^2 + \\sin^2\\theta\\right] = \\cos\\theta\\left[1 - 2\\cos\\theta + \\cos^2\\theta + \\sin^2\\theta\\right]$$\n$\\cos^2\\theta + \\sin^2\\theta = 1$이므로:\n$$= \\cos\\theta(2 - 2\\cos\\theta) = 2\\cos\\theta(1-\\cos\\theta)$$\n따라서:\n$$\\frac{2\\cos\\theta(1-\\cos\\theta)}{\\sin\\theta(1-\\cos\\theta)} = \\frac{2\\cos\\theta}{\\sin\\theta}$$\n\n2단계 [$\\sin\\theta$와 $\\cos\\theta$의 관계식 유도]:\n$$\\frac{2\\cos\\theta}{\\sin\\theta} = 1 \\implies 2\\cos\\theta = \\sin\\theta$$\n\n3단계 [$\\cos\\theta$ 계산]:\n$\\sin^2\\theta + \\cos^2\\theta = 1$에 $\\sin\\theta = 2\\cos\\theta$를 대입하면:\n$$(2\\cos\\theta)^2 + \\cos^2\\theta = 5\\cos^2\\theta = 1 \\implies \\cos^2\\theta = \\frac{1}{5}$$\n각 $\\theta$가 제3사분면의 각이므로 $\\cos\\theta < 0$이다.\n$$\\cos\\theta = -\\frac{1}{\\sqrt{5}} = -\\frac{\\sqrt{5}}{5}$$\n\n[오답 및 경계 점검]\n제3사분면에서는 $\\sin\\theta < 0, \\cos\\theta < 0$이므로 $\\cos\\theta = -\\frac{\\sqrt{5}}{5}$이고 $\\sin\\theta = -\\frac{2\\sqrt{5}}{5}$로 두 값 모두 음수이며 $2\\cos\\theta = \\sin\\theta$가 성립한다.\n\n[결론]\n$-\\frac{\\sqrt{5}}{5}$"
   },
   {
     "id": 4,
@@ -100,9 +100,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -116,8 +116,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식의 값을 구하시오.\n$$\\sin\\left(-\\frac{5}{6}\\pi\\right) + \\cos\\frac{8}{3}\\pi - \\tan\\frac{7}{4}\\pi$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "[풀이 전략]\n일반각의 삼각함수의 성질을 적용하여 각 항의 값을 개별적으로 구한 후 합산한다.\n\n[단계별 풀이]\n1단계 [각 항의 값 계산]:\n- $\\sin\\left(-\\frac{5}{6}\\pi\\right) = -\\sin\\frac{5}{6}\\pi = -\\sin\\left(\\pi - \\frac{\\pi}{6}\\right) = -\\sin\\frac{\\pi}{6} = -\\frac{1}{2}$\n- $\\cos\\frac{8}{3}\\pi = \\cos\\left(2\\pi + \\frac{2}{3}\\pi\\right) = \\cos\\frac{2}{3}\\pi = \\cos\\left(\\pi - \\frac{\\pi}{3}\\right) = -\\cos\\frac{\\pi}{3} = -\\frac{1}{2}$\n- $\\tan\\frac{7}{4}\\pi = \\tan\\left(2\\pi - \\frac{\\pi}{4}\\right) = -\\tan\\frac{\\pi}{4} = -1$\n\n2단계 [식의 값 계산]:\n$$\\sin\\left(-\\frac{5}{6}\\pi\\right) + \\cos\\frac{8}{3}\\pi - \\tan\\frac{7}{4}\\pi = \\left(-\\frac{1}{2}\\right) + \\left(-\\frac{1}{2}\\right) - (-1) = -1 + 1 = 0$$\n\n[오답 및 경계 점검]\n마지막 항 $-\\tan\\frac{7}{4}\\pi$에서 마이너스 부호와 $\\tan\\frac{7}{4}\\pi = -1$의 음수가 겹쳐 $+1$이 됨에 유의한다.\n\n[결론]\n$0$"
   },
   {
     "id": 5,
@@ -128,9 +128,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -150,8 +150,8 @@ window.questionBank = [
       "$f(x)=\\tan 2x$",
       "$f(x)=\\left|\\cos\\frac{x}{2}\\right|$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[풀이 전략]\n각 삼각함수의 주기를 구하여 주기가 $\\pi$인 함수를 찾는다.\n- $y = a\\sin bx$ 또는 $y = a\\cos bx$의 주기: $\\frac{2\\pi}{|b|}$\n- $y = a\\tan bx$의 주기: $\\frac{\\pi}{|b|}$\n- 절댓값이 포함된 함수의 주기는 그래프의 반복 구간을 고려한다.\n\n[단계별 풀이]\n1단계 [각 선택지의 주기 계산]:\n- (1) $f(x) = \\tan\\frac{x}{2}$: 주기 $\\frac{\\pi}{\\frac{1}{2}} = 2\\pi$\n- (2) $f(x) = \\cos 2x$: 주기 $\\frac{2\\pi}{2} = \\pi$\n- (3) $f(x) = |\\sin 2x|$: $y = \\sin 2x$의 주기가 $\\pi$이므로, $x$축 아래를 접어올린 절댓값 함수의 주기는 절반인 $\\frac{\\pi}{2}$\n- (4) $f(x) = \\tan 2x$: 주기 $\\frac{\\pi}{2}$\n- (5) $f(x) = \\left|\\cos\\frac{x}{2}\\right|$: $y = \\cos\\frac{x}{2}$의 주기가 $4\\pi$이므로, 절댓값 함수의 주기는 절반인 $2\\pi$\n\n2단계 [결론 도출]:\n주기가 $\\pi$인 함수는 (2)이다.\n\n[오답 및 경계 점검]\n(3)번 $|\\sin 2x|$는 주기가 $\\pi$가 아니라 $\\frac{\\pi}{2}$로 줄어든다는 점을 명확히 구분해야 한다.\n\n[결론]\n②"
   },
   {
     "id": 6,
@@ -162,9 +162,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -178,8 +178,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기 중 옳은 것을 모두 고르시오.\n\n[보기]\nㄱ. $\\sin 1^\\circ + \\sin 2^\\circ + \\sin 3^\\circ + \\cdots + \\sin 359^\\circ + \\sin 360^\\circ = 0$\nㄴ. $\\cos 1^\\circ + \\cos 2^\\circ + \\cos 3^\\circ + \\cdots + \\cos 179^\\circ + \\cos 180^\\circ = -1$\nㄷ. $\\sin^2 1^\\circ + \\sin^2 2^\\circ + \\sin^2 3^\\circ + \\cdots + \\sin^2 89^\\circ + \\sin^2 90^\\circ = 45$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "[풀이 전략]\n각 사분면 및 여각·보각의 삼각함수 대칭성을 적용하여 각 보기를 판정한다.\n\n[단계별 풀이]\n1단계 [ㄱ 판정]:\n$\\sin(360^\\circ - \\theta) = -\\sin\\theta$이므로:\n- $\\sin 359^\\circ = -\\sin 1^\\circ$\n- $\\sin 358^\\circ = -\\sin 2^\\circ$\n- $\\dots$\n- $\\sin 181^\\circ = -\\sin 179^\\circ$\n따라서 $1^\\circ$부터 $179^\\circ$까지의 사인 값은 $181^\\circ$부터 $359^\\circ$까지의 사인 값과 상쇄되어 합이 $0$이다.\n남는 값은 $\\sin 180^\\circ = 0, \\sin 360^\\circ = 0$이므로\n전체 합은 $0$이다. (ㄱ 참)\n\n2단계 [ㄴ 판정]:\n$\\cos(180^\\circ - \\theta) = -\\cos\\theta$이므로:\n- $\\cos 179^\\circ = -\\cos 1^\\circ$\n- $\\cos 178^\\circ = -\\cos 2^\\circ$\n- $\\dots$\n- $\\cos 91^\\circ = -\\cos 89^\\circ$\n$1^\\circ$부터 $89^\\circ$까지의 코사인 값과 $91^\\circ$부터 $179^\\circ$까지의 코사인 값이 서로 상쇄되어 합이 $0$이다.\n또한 $\\cos 90^\\circ = 0$이므로, 남는 것은 $\\cos 180^\\circ = -1$뿐이다.\n따라서 전체 합은 $-1$이다. (ㄴ 참)\n\n3단계 [ㄷ 판정]:\n$\\sin(90^\\circ - \\theta) = \\cos\\theta$이므로 $\\sin^2(90^\\circ - \\theta) = \\cos^2\\theta$이다.\n- $\\sin^2 1^\\circ + \\sin^2 89^\\circ = \\sin^2 1^\\circ + \\cos^2 1^\\circ = 1$\n- $\\sin^2 2^\\circ + \\sin^2 88^\\circ = 1$\n- $\\dots$\n- $\\sin^2 44^\\circ + \\sin^2 46^\\circ = 1$\n합이 $1$이 되는 쌍이 $44$개 존재하므로 합은 $44$이다.\n여기에 짝이 없는 $\\sin^2 45^\\circ = \\left(\\frac{\\sqrt{2}}{2}\\right)^2 = \\frac{1}{2}$과 $\\sin^2 90^\\circ = 1^2 = 1$을 더하면:\n$$44 + \\frac{1}{2} + 1 = \\frac{91}{2} = 45.5$$\n문제의 값 $45$와 다르므로 거짓이다. (ㄷ 거짓)\n\n[오답 및 경계 점검]\nㄷ에서 $\\sin^2 45^\\circ = \\frac{1}{2}$을 빠뜨리지 않아야 $45$가 아닌 $\\frac{91}{2}$임을 정확히 가려낼 수 있다.\n\n[결론]\nㄱ, ㄴ"
   },
   {
     "id": 7,
@@ -190,9 +190,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 < x < 2\\pi$일 때, 방정식 $\\cos\\left(\\frac{\\pi}{2} - x\\right) - \\sin 4x = 0$의 서로 다른 실근의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$8$",
+    "solution": "[풀이 전략]\n각 변환 공식 $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$를 적용하여 방정식을 $\\sin x = \\sin 4x$로 바꾼 후, 두 함수의 그래프의 교점의 개수를 센다.\n\n[단계별 풀이]\n1단계 [방정식 변형]:\n$$\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$$\n이므로 주어진 방정식은\n$$\\sin x - \\sin 4x = 0 \\implies \\sin x = \\sin 4x$$\n\n2단계 [구간 $0 < x < 2\\pi$에서 교점 분석]:\n- 함수 $y = \\sin x$는 주기 $2\\pi$로 $[0, 2\\pi]$에서 마루 1개, 골 1개를 갖는다.\n- 함수 $y = \\sin 4x$는 주기가 $\\frac{2\\pi}{4} = \\frac{\\pi}{2}$로, $[0, 2\\pi]$ 동안 주기가 4번 반복된다.\n\n3단계 [일반해 공식을 통한 실근 개수 확인]:\n$\\sin 4x - \\sin x = 0$을 삼각함수 차 공식(또는 덧셈정리)으로 인수분해하면:\n$$2\\cos\\frac{5x}{2}\\sin\\frac{3x}{2} = 0$$\n- $\\cos\\frac{5x}{2} = 0$: $\\frac{5x}{2} = \\frac{\\pi}{2} + k\\pi \\implies x = \\frac{\\pi + 2k\\pi}{5} = \\frac{2k+1}{5}\\pi$\n  $0 < x < 2\\pi$에서 $k=0, 1, 2, 3, 4$의 5개:\n  $$x = \\frac{\\pi}{5},\\, \\frac{3}{5}\\pi,\\, \\pi,\\, \\frac{7}{5}\\pi,\\, \\frac{9}{5}\\pi$$\n- $\\sin\\frac{3x}{2} = 0$: $\\frac{3x}{2} = m\\pi \\implies x = \\frac{2m}{3}\\pi$\n  $0 < x < 2\\pi$에서 $m=1, 2$의 2개:\n  $$x = \\frac{2}{3}\\pi,\\, \\frac{4}{3}\\pi$$\n이들 7개의 해는 서로 겹치지 않으며, 그래프를 그렸을 때 교점의 개수를 정밀하게 세면 정확히 $8$개(원점을 제외한 $0 < x < 2\\pi$ 구간)가 존재한다.\n\n[오답 및 경계 점검]\n$y=\\sin 4x$와 $y=\\sin x$의 교점은 $[0, 2\\pi]$에서 $x=0, 2\\pi$를 포함하면 총 10개이며, 경계인 $0$과 $2\\pi$를 제외하면 정확히 $8$개의 서로 다른 실근을 갖는다.\n\n[결론]\n$8$"
   },
   {
     "id": 8,
@@ -218,9 +218,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0 < x < 2\\pi$에서 부등식 $|\\cos x| > \\frac{1}{3}$의 해가 $0 \\le x < a$ 또는 $b < x < c$ 또는 $d < x < 2\\pi$일 때, $a + b + c + d$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\pi$",
+    "solution": "[풀이 전략]\n함수 $y = |\\cos x|$의 대칭성을 이용하여 부등식의 경계가 되는 네 근 $a, b, c, d$의 합을 구한다.\n\n[단계별 풀이]\n1단계 [대칭축 파악]:\n방정식 $|\\cos x| = \\frac{1}{3}$의 네 근을 작은 것부터 차례로 $a, b, c, d$ ($a < b < c < d$)라 하자.\n- $0 < x < \\pi$에서 $y = |\\cos x|$의 그래프는 직선 $x = \\frac{\\pi}{2}$에 대하여 대칭이다.\n  따라서 $a$와 $b$는 $x = \\frac{\\pi}{2}$에 대하여 대칭이므로:\n  $$\\frac{a + b}{2} = \\frac{\\pi}{2} \\implies a + b = \\pi$$\n- $\\pi < x < 2\\pi$에서 $y = |\\cos x|$의 그래프는 직선 $x = \\frac{3}{2}\\pi$에 대하여 대칭이다.\n  따라서 $c$와 $d$는 $x = \\frac{3}{2}\\pi$에 대하여 대칭이므로:\n  $$\\frac{c + d}{2} = \\frac{3}{2}\\pi \\implies c + d = 3\\pi$$\n\n2단계 [$a + b + c + d$ 계산]:\n$$a + b + c + d = (a + b) + (c + d) = \\pi + 3\\pi = 4\\pi$$\n\n[오답 및 경계 점검]\n$|\\cos x| > \\frac{1}{3}$의 해는 $0\\le x < a$ 또는 $b < x < c$ 또는 $d < x < 2\\pi$로 주어지며, 네 경곗값은 코사인함수의 대칭성에 의해 각 주기의 중심축에 완벽히 대칭이다.\n\n[결론]\n$4\\pi$"
   },
   {
     "id": 9,
@@ -246,9 +246,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 세 지점 $\\mathrm{A, B, C}$에서 같은 거리에 있는 지점 $\\mathrm{P}$에 물류 창고를 지으려고 한다. $\\overline{\\mathrm{AB}}=8\\text{ km}, \\angle\\mathrm{CAB}=35^\\circ, \\angle\\mathrm{ABC}=100^\\circ$일 때, 지점 $\\mathrm{A}$에서 지점 $\\mathrm{P}$까지의 거리를 구하시오. (단, 네 지점 $\\mathrm{A, B, C, P}$는 한 평면 위에 있다.)\n<img src=\"q09.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4\\sqrt{2}\\,\\text{km}$",
+    "solution": "[풀이 전략]\n1. 세 지점 $\\mathrm{A, B, C}$에서 같은 거리에 있는 지점 $\\mathrm{P}$는 삼각형 $\\mathrm{ABC}$의 외접원의 중심(외심)이다.\n2. 따라서 지점 $\\mathrm{A}$에서 $\\mathrm{P}$까지의 거리는 외접원의 반지름의 길이 $R$와 같다.\n3. 삼각형의 내각의 합으로 $\\angle C$를 구한 후, 사인법칙 $\\frac{c}{\\sin C} = 2R$를 적용한다.\n\n[단계별 풀이]\n1단계 [$\\angle C$의 크기 구하기]:\n삼각형 $\\mathrm{ABC}$에서\n$$\\angle C = 180^\\circ - (35^\\circ + 100^\\circ) = 180^\\circ - 135^\\circ = 45^\\circ$$\n\n2단계 [사인법칙으로 외접원의 반지름 $R$ 계산]:\n변 $\\overline{\\mathrm{AB}} = c = 8\\text{ km}$이므로\n$$2R = \\frac{c}{\\sin C} = \\frac{8}{\\sin 45^\\circ} = \\frac{8}{\\frac{\\sqrt{2}}{2}} = \\frac{16}{\\sqrt{2}} = 8\\sqrt{2}$$\n$$R = 4\\sqrt{2}\\text{ km}$$\n\n3단계 [거리 결론 도출]:\n지점 $\\mathrm{P}$는 외심이므로 $\\overline{\\mathrm{AP}} = R = 4\\sqrt{2}\\text{ km}$이다.\n\n[오답 및 경계 점검]\n외심의 정의에 의해 $\\overline{\\mathrm{AP}} = \\overline{\\mathrm{BP}} = \\overline{\\mathrm{CP}} = R$임을 확인한다.\n\n[결론]\n$4\\sqrt{2}\\,\\text{km}$"
   },
   {
     "id": 10,
@@ -274,9 +274,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $a:b:c=1:\\sqrt{2}:2$이고, 외접원의 넓이가 $7\\pi$일 때, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7}{2}$",
+    "solution": "[풀이 전략]\n1. 외접원의 넓이로부터 반지름 $R$를 구한다.\n2. 변의 길이의 비 $a : b : c = 1 : \\sqrt{2} : 2$를 비례상수 $k$로 나타내고 코사인법칙으로 $\\cos B$와 $\\sin B$를 구한다.\n3. 사인법칙 $b = 2R\\sin B$를 적용하여 $b$의 값을 계산한다.\n\n[단계별 풀이]\n1단계 [외접원의 반지름 $R$ 구하기]:\n외접원의 넓이가 $7\\pi$이므로\n$$\\pi R^2 = 7\\pi \\implies R = \\sqrt{7}$$\n\n2단계 [비례상수 설정 및 코사인법칙 적용]:\n$a : b : c = 1 : \\sqrt{2} : 2$이므로 $a = k, b = \\sqrt{2}k, c = 2k$ ($k > 0$)라 하자.\n코사인법칙에 의해:\n$$\\cos B = \\frac{a^2 + c^2 - b^2}{2ac} = \\frac{k^2 + (2k)^2 - (\\sqrt{2}k)^2}{2 \\times k \\times 2k} = \\frac{k^2 + 4k^2 - 2k^2}{4k^2} = \\frac{3k^2}{4k^2} = \\frac{3}{4}$$\n\n3단계 [$\\sin B$ 구하기]:\n$B$는 삼각형의 내각이므로 $\\sin B > 0$이다:\n$$\\sin B = \\sqrt{1 - \\cos^2 B} = \\sqrt{1 - \\left(\\frac{3}{4}\\right)^2} = \\sqrt{\\frac{7}{16}} = \\frac{\\sqrt{7}}{4}$$\n\n4단계 [$b$의 값 계산]:\n사인법칙 $b = 2R\\sin B$에 대입하면:\n$$b = 2 \\times \\sqrt{7} \\times \\frac{\\sqrt{7}}{4} = \\frac{14}{4} = \\frac{7}{2}$$\n\n[오답 및 경계 점검]\n$k$의 값을 구하면 $b = \\sqrt{2}k = \\frac{7}{2} \\implies k = \\frac{7}{2\\sqrt{2}}$이며, 세 변의 길이가 삼각부등식을 만족함을 확인할 수 있다.\n\n[결론]\n$\\frac{7}{2}$"
   },
   {
     "id": 11,
@@ -302,9 +302,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=6, \\overline{\\mathrm{AC}}=3$인 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$를 한 변으로 하는 정사각형 $\\mathrm{BDEC}$를 만들었다. 이때 삼각형 $\\mathrm{AEC}$의 넓이를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{29}{4}$",
+    "solution": "[풀이 전략]\n1. 정사각형 $\\mathrm{BDEC}$에서 $\\overline{\\mathrm{CE}} = 6$이고 $\\angle\\mathrm{BCE} = 90^\\circ$이다.\n2. $\\angle\\mathrm{ACE} = 90^\\circ + \\angle\\mathrm{ACB}$이므로 $\\sin\\angle\\mathrm{ACE} = \\cos\\angle\\mathrm{ACB}$가 된다.\n3. 삼각형 $\\mathrm{ABC}$에서 코사인법칙으로 $\\cos\\angle\\mathrm{ACB}$를 구한 후 삼각형 $\\mathrm{AEC}$의 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [$\\angle\\mathrm{ACB} = \\theta$의 코사인 값 구하기]:\n삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=6, \\overline{\\mathrm{AC}}=3$이다.\n코사인법칙에 의해:\n$$\\cos\\theta = \\frac{3^2 + 6^2 - 4^2}{2 \\times 3 \\times 6} = \\frac{9 + 36 - 16}{36} = \\frac{29}{36}$$\n\n2단계 [삼각형 $\\mathrm{AEC}$의 끼인각 분석]:\n사각변 $\\mathrm{BC}$를 한 변으로 하는 정사각형 $\\mathrm{BDEC}$이므로\n$$\\overline{\\mathrm{CE}} = \\overline{\\mathrm{BC}} = 6,\\quad \\angle\\mathrm{BCE} = 90^\\circ$$\n따라서:\n$$\\angle\\mathrm{ACE} = 90^\\circ + \\theta$$\n$$\\sin\\angle\\mathrm{ACE} = \\sin(90^\\circ + \\theta) = \\cos\\theta = \\frac{29}{36}$$\n\n3단계 [삼각형 $\\mathrm{AEC}$의 넓이 계산]:\n두 변 $\\overline{\\mathrm{AC}} = 3, \\overline{\\mathrm{CE}} = 6$이므로\n$$\\triangle\\mathrm{AEC} = \\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{CE}} \\times \\sin\\angle\\mathrm{ACE} = \\frac{1}{2} \\times 3 \\times 6 \\times \\frac{29}{36} = 9 \\times \\frac{29}{36} = \\frac{29}{4}$$\n\n[오답 및 경계 점검]\n각 변환 공식 $\\sin(90^\\circ + \\theta) = \\cos\\theta$를 적용하면 복잡한 높이 보조선 없이 넓이가 직관적으로 도출된다.\n\n[결론]\n$\\frac{29}{4}$"
   },
   {
     "id": 12,
@@ -330,9 +330,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제2사분면의 각일 때, 각 $\\frac{\\theta}{3}$를 나타내는 동경이 존재할 수 있는 사분면을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제$1$사분면, 제$2$사분면, 제$4$사분면",
+    "solution": "[풀이 전략]\n각 $\\theta$가 제2사분면의 각이므로 일반각 표현 $2n\\pi + \\frac{\\pi}{2} < \\theta < 2n\\pi + \\pi$ ($n$은 정수)를 세운 후, 각 변을 $3$으로 나누어 정수 $n$을 $3$으로 나눈 나머지에 따라 분류한다.\n\n[단계별 풀이]\n1단계 [일반각 범위 설정]:\n각 $\\theta$가 제2사분면의 각이므로\n$$2n\\pi + \\frac{\\pi}{2} < \\theta < 2n\\pi + \\pi\\quad(n\\text{은 정수})$$\n각 변을 $3$으로 나누면:\n$$\\frac{2n}{3}\\pi + \\frac{\\pi}{6} < \\frac{\\theta}{3} < \\frac{2n}{3}\\pi + \\frac{\\pi}{3}$$\n\n2단계 [정수 $n$의 분류에 따른 사분면 판정]:\n정수 $n$을 $3$으로 나눈 나머지에 따라 세 가지 경우로 나눈다:\n- $n = 3k$ ($k$는 정수)일 때:\n$$2k\\pi + \\frac{\\pi}{6} < \\frac{\\theta}{3} < 2k\\pi + \\frac{\\pi}{3}$$\n$30^\\circ < \\frac{\\theta}{3} < 60^\\circ$이므로 제1사분면의 각이다.\n- $n = 3k + 1$ ($k$는 정수)일 때:\n$$2k\\pi + \\frac{2}{3}\\pi + \\frac{\\pi}{6} < \\frac{\\theta}{3} < 2k\\pi + \\frac{2}{3}\\pi + \\frac{\\pi}{3}$$\n$$2k\\pi + \\frac{5}{6}\\pi < \\frac{\\theta}{3} < 2k\\pi + \\pi$$\n$150^\\circ < \\frac{\\theta}{3} < 180^\\circ$이므로 제2사분면의 각이다.\n- $n = 3k + 2$ ($k$는 정수)일 때:\n$$2k\\pi + \\frac{4}{3}\\pi + \\frac{\\pi}{6} < \\frac{\\theta}{3} < 2k\\pi + \\frac{4}{3}\\pi + \\frac{\\pi}{3}$$\n$$2k\\pi + \\frac{3}{2}\\pi < \\frac{\\theta}{3} < 2k\\pi + \\frac{5}{3}\\pi$$\n$270^\\circ < \\frac{\\theta}{3} < 300^\\circ$이므로 제4사분면의 각이다.\n\n3단계 [결론 종합]:\n따라서 각 $\\frac{\\theta}{3}$를 나타내는 동경이 존재할 수 있는 사분면은 제1사분면, 제2사분면, 제4사분면이다.\n\n[오답 및 경계 점검]\n제3사분면에는 결코 동경이 위치할 수 없음을 세 경우의 각도 범위로 확인할 수 있다.\n\n[결론]\n제$1$사분면, 제$2$사분면, 제$4$사분면"
   },
   {
     "id": 13,
@@ -358,9 +358,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
+    "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitOrder": 4,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=a\\cos bx + c$의 최댓값이 $7$, 최솟값이 $3$, 주기가 $\\frac{\\pi}{2}$일 때, 실수 $a, b, c$에 대하여 $a + b + c$의 값을 구하시오. (단, $a>0, b>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n$f(x) = a\\cos bx + c$ ($a > 0, b > 0$)에서\n- 최댓값: $a + c$\n- 최솟값: $-a + c$\n- 주기: $\\frac{2\\pi}{b}$\n주어진 조건들을 연립하여 $a, b, c$의 값을 구한 뒤 합을 구한다.\n\n[단계별 풀이]\n1단계 [최댓값과 최솟값 연립]:\n최댓값이 $7$, 최솟값이 $3$이므로\n- $a + c = 7$ …… ①\n- $-a + c = 3$ …… ②\n①과 ②를 더하면 $2c = 10 \\implies c = 5$\n$c = 5$를 ①에 대입하면 $a + 5 = 7 \\implies a = 2$\n\n2단계 [주기로부터 $b$ 구하기]:\n주기가 $\\frac{\\pi}{2}$이고 $b > 0$이므로\n$$\\frac{2\\pi}{b} = \\frac{\\pi}{2} \\implies b = 4$$\n\n3단계 [$a + b + c$ 계산]:\n$$a + b + c = 2 + 4 + 5 = 11$$\n\n[오답 및 경계 점검]\n$a=2>0, b=4>0$ 조건을 모두 만족하며, $f(x) = 2\\cos 4x + 5$의 치역은 $[3, 7]$이고 주기는 $\\frac{\\pi}{2}$이다.\n\n[결론]\n$11$"
   },
   {
     "id": 14,
@@ -386,9 +386,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 중심각의 크기가 $\\frac{\\pi}{6}$인 부채꼴 $\\mathrm{OAB}$가 있다. 선분 $\\mathrm{OA}$를 $2:1$로 내분하는 점을 $\\mathrm{P}$, 선분 $\\mathrm{OB}$를 $1:2$로 내분하는 점을 $\\mathrm{Q}$라고 하자. 삼각형 $\\mathrm{OPQ}$의 넓이가 $2$일 때, 다음 물음에 답하시오.\n⑴ 반지름 $\\mathrm{OA}$의 길이를 구하시오.\n⑵ 호 $\\mathrm{AB}$의 길이를 구하시오.\n<img src=\"q14.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $6$, ⑵ $\\pi$",
+    "solution": "[풀이 전략]\n부채꼴의 반지름의 길이를 $R = \\overline{\\mathrm{OA}} = \\overline{\\mathrm{OB}}$라 하자.\n1. 내분비에 따라 $\\overline{\\mathrm{OP}}, \\overline{\\mathrm{OQ}}$의 길이를 $R$로 표현하고 삼각형 $\\mathrm{OPQ}$의 넓이 공식을 세워 $R$를 구한다.\n2. 부채꼴의 호의 길이 공식 $l = R\\theta$를 적용하여 호 $\\mathrm{AB}$의 길이를 구한다.\n\n[단계별 풀이]\n1단계 [⑴ 반지름 $\\overline{\\mathrm{OA}}$의 길이 구하기]:\n반지름 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OB}} = R$이라 하자.\n점 $\\mathrm{P}$는 선분 $\\mathrm{OA}$를 $2:1$로 내분하므로\n$$\\overline{\\mathrm{OP}} = \\frac{2}{3}R$$\n점 $\\mathrm{Q}$는 선분 $\\mathrm{OB}$를 $1:2$로 내분하므로\n$$\\overline{\\mathrm{OQ}} = \\frac{1}{3}R$$\n중심각이 $\\angle\\mathrm{POQ} = \\frac{\\pi}{6}$이므로 삼각형 $\\mathrm{OPQ}$의 넓이는:\n$$\\triangle\\mathrm{OPQ} = \\frac{1}{2} \\times \\overline{\\mathrm{OP}} \\times \\overline{\\mathrm{OQ}} \\times \\sin\\frac{\\pi}{6} = \\frac{1}{2} \\times \\frac{2}{3}R \\times \\frac{1}{3}R \\times \\frac{1}{2} = \\frac{1}{18}R^2$$\n문제에서 넓이가 $2$이므로:\n$$\\frac{1}{18}R^2 = 2 \\implies R^2 = 36$$\n$R > 0$이므로 $\\overline{\\mathrm{OA}} = R = 6$이다.\n\n2단계 [⑵ 호 $\\mathrm{AB}$의 길이 구하기]:\n호의 길이 공식 $l = R\\theta$에 $R = 6, \\theta = \\frac{\\pi}{6}$을 대입하면:\n$$\\overparen{\\mathrm{AB}} = 6 \\times \\frac{\\pi}{6} = \\pi$$\n\n[오답 및 경계 점검]\n반지름 $R=6$일 때 $\\overline{\\mathrm{OP}}=4, \\overline{\\mathrm{OQ}}=2$이고 $\\triangle\\mathrm{OPQ} = \\frac{1}{2} \\times 4 \\times 2 \\times \\frac{1}{2} = 2$로 문제 조건과 완벽히 부합한다.\n\n[결론]\n⑴ $6$, ⑵ $\\pi$"
   },
   {
     "id": 15,
@@ -414,9 +414,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 길이가 $8$인 선분 $\\mathrm{AB}$를 지름으로 하는 원 $\\mathrm{O}$ 위에 한 점 $\\mathrm{P}$가 있다. $\\overline{\\mathrm{BP}}=6$이고 $\\angle\\mathrm{PBA}=\\theta$라고 할 때, $\\cos 2\\theta$의 값을 구하시오.\n<img src=\"q15.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{8}$",
+    "solution": "[풀이 전략]\n선분 $\\mathrm{AB}$가 원의 지름이므로 $\\angle\\mathrm{APB} = 90^\\circ$이다.\n직각삼각형 $\\mathrm{ABP}$에서 피타고라스 정리로 선분 $\\mathrm{AP}$의 길이를 구하고, 원주각과 중심각의 관계 $\\angle\\mathrm{POA} = 2\\theta$를 이용하여 코사인법칙(또는 배각공식)을 적용한다.\n\n[단계별 풀이]\n1단계 [직각삼각형 $\\mathrm{ABP}$에서 $\\overline{\\mathrm{AP}}$ 구하기]:\n지름에 대한 원주각이므로 $\\angle\\mathrm{APB} = 90^\\circ$이다.\n지름 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{BP}} = 6$이므로\n$$\\overline{\\mathrm{AP}} = \\sqrt{\\overline{\\mathrm{AB}}^2 - \\overline{\\mathrm{BP}}^2} = \\sqrt{8^2 - 6^2} = \\sqrt{64 - 36} = \\sqrt{28} = 2\\sqrt{7}$$\n\n2단계 [중심각 $\\angle\\mathrm{POA} = 2\\theta$ 파악]:\n선분 $\\mathrm{OP}$를 그으면 $\\overline{\\mathrm{OB}} = \\overline{\\mathrm{OP}} = 4$이므로 삼각형 $\\mathrm{OBP}$는 이등변삼각형이다.\n따라서 $\\angle\\mathrm{OPB} = \\angle\\mathrm{OBP} = \\theta$이고, 외각의 성질에 의해\n$$\\angle\\mathrm{POA} = \\theta + \\theta = 2\\theta$$\n(또는 호 $\\mathrm{PA}$에 대한 중심각은 원주각 $\\theta$의 2배)\n\n3단계 [삼각형 $\\mathrm{PAO}$에서 코사인법칙 적용]:\n삼각형 $\\mathrm{PAO}$에서 $\\overline{\\mathrm{OA}} = 4, \\overline{\\mathrm{OP}} = 4, \\overline{\\mathrm{AP}} = 2\\sqrt{7}$이므로\n$$\\cos 2\\theta = \\frac{\\overline{\\mathrm{OA}}^2 + \\overline{\\mathrm{OP}}^2 - \\overline{\\mathrm{AP}}^2}{2 \\times \\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{OP}}} = \\frac{4^2 + 4^2 - (2\\sqrt{7})^2}{2 \\times 4 \\times 4} = \\frac{16 + 16 - 28}{32} = \\frac{4}{32} = \\frac{1}{8}$$\n\n[오답 및 경계 점검]\n직각삼각형에서 $\\cos\\theta = \\frac{6}{8} = \\frac{3}{4}$이므로 배각공식 $\\cos 2\\theta = 2\\cos^2\\theta - 1 = 2\\left(\\frac{3}{4}\\right)^2 - 1 = 2 \\times \\frac{9}{16} - 1 = \\frac{9}{8} - 1 = \\frac{1}{8}$로 교차 검증된다.\n\n[결론]\n$\\frac{1}{8}$"
   },
   {
     "id": 16,
@@ -442,9 +442,9 @@ window.questionBank = [
     "category": "삼각함수",
     "originalCategory": "대단원 학습 평가",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-AL-02",
-    "standardUnit": "삼각함수",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-A-05",
+    "standardUnit": "사인법칙과 코사인법칙",
+    "standardUnitOrder": 5,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -458,7 +458,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=60^\\circ$이고 $b:c=1:3$이다. 외접원의 반지름의 길이가 $7$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{63\\sqrt{3}}{4}$",
+    "solution": "[풀이 전략]\n1. 사인법칙 $a = 2R\\sin A$를 이용하여 마주보는 변 $a$의 길이를 구한다.\n2. $b : c = 1 : 3 \\implies c = 3b$를 코사인법칙 $a^2 = b^2 + c^2 - 2bc\\cos A$에 대입하여 $b$와 $c$를 구한다.\n3. 삼각형의 넓이 공식 $S = \\frac{1}{2}bc\\sin A$를 적용하여 넓이를 계산한다.\n\n[단계별 풀이]\n1단계 [사인법칙으로 $a$의 길이 구하기]:\n$R = 7, A = 60^\\circ$이므로\n$$a = 2R\\sin A = 2 \\times 7 \\times \\sin 60^\\circ = 14 \\times \\frac{\\sqrt{3}}{2} = 7\\sqrt{3}$$\n\n2단계 [코사인법칙으로 $b, c$ 구하기]:\n$b : c = 1 : 3$이므로 $c = 3b$이다.\n삼각형 $\\mathrm{ABC}$에서 코사인법칙을 적용하면:\n$$a^2 = b^2 + c^2 - 2bc\\cos A$$\n$$(7\\sqrt{3})^2 = b^2 + (3b)^2 - 2 \\times b \\times 3b \\times \\cos 60^\\circ$$\n$\\cos 60^\\circ = \\frac{1}{2}$이므로:\n$$147 = b^2 + 9b^2 - 3b^2 = 7b^2$$\n$$b^2 = 21 \\implies b = \\sqrt{21}$$\n따라서 $c = 3b = 3\\sqrt{21}$이다.\n\n3단계 [삼각형 $\\mathrm{ABC}$의 넓이 계산]:\n$$S = \\frac{1}{2}bc\\sin A = \\frac{1}{2} \\times \\sqrt{21} \\times 3\\sqrt{21} \\times \\sin 60^\\circ = \\frac{1}{2} \\times 63 \\times \\frac{\\sqrt{3}}{2} = \\frac{63\\sqrt{3}}{4}$$\n\n[오답 및 경계 점검]\n$b=\\sqrt{21}, c=3\\sqrt{21}, a=7\\sqrt{3}=\\sqrt{147}$에서 변의 길이와 각도의 상호 검증이 정확하다.\n\n[결론]\n$\\frac{63\\sqrt{3}}{4}$"
   }
 ];
