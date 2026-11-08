@@ -298,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 72점인 표본평균 정규곡선에서 71점부터 75점까지의 영역이 칠해져 있고, 표준화 눈금은 -0.5부터 1.5까지이다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2점이다. 71점부터 75점 사이의 넓이는 약 0.62이다. 정답은 약 0.62이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -338,7 +342,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 40분인 표본평균 정규곡선에서 평균부터 44분까지의 오른쪽 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2분이고, 모표준편차는 10분이다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -486,7 +494,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 44점인 점수 정규곡선에서 60점 오른쪽 꼬리가 칠해져 있고, 표준화 경계는 0.8이다.",
+    "solutionImageCaption": "60점은 평균보다 0.8 표준편차 높은 값이다. 오른쪽 꼬리 비율은 약 0.2119이므로 1000명 중 약 212명이 합격한다. 정답은 약 212명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -640,7 +652,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 70킬로그램인 몸무게 정규곡선에서 60킬로그램부터 85킬로그램까지의 영역이 칠해져 있고, 표준화 눈금은 -1부터 1.5까지이다.",
+    "solutionImageCaption": "60킬로그램과 85킬로그램의 표준화 값은 -1과 1.5이고, 두 구간의 넓이를 더하면 0.7745이다. 정답은 0.7745이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -747,6 +763,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 0인 표준정규곡선에서 표준화 경계 -1.6의 왼쪽 꼬리가 칠해져 있다.",
+    "solutionImageCaption": "표준정규분포표에서 1.6까지의 넓이는 0.45이므로 왼쪽 꼬리 넓이는 0.05이다. 이에 따라 평균은 4.6이다. 정답은 4.6이다.",
+    "solutionImageSize": "full"
   }
 ];

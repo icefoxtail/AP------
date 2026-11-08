@@ -198,7 +198,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 z=1.5보다 큰 오른쪽 꼬리 영역이 색칠되어 있다.",
+    "solutionImageCaption": "점수 X를 표준화해 평균 0, 표준편차 1인 분포에서 상위 꼬리를 살핀다. 표의 넓이를 상위 비율과 비교해 표준점수 경계를 정한다. 정답은 88점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -238,7 +242,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "정규분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 44점인 정규분포에서 60점 오른쪽 꼬리가 색칠되어 있고, 표준점수 0.8과 꼬리 넓이가 표시되어 있다.",
+    "solutionImageCaption": "60점은 평균에서 0.8 표준편차 위에 있다. 표의 넓이를 오른쪽 절반에서 빼고 그 비율을 응시자 수에 적용한다. 정답은 약 210명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -360,7 +368,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "이항분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 75인 정규분포에서 60 이하의 왼쪽 꼬리가 색칠되어 있으며 표준화 값은 -2이다.",
+    "solutionImageCaption": "안경 착용자 수를 정규근사하면 평균은 75, 표준편차는 7.5이다. 연속성 보정 없이 60을 표준화해 왼쪽 꼬리 확률을 읽는다. 정답은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -770,7 +782,11 @@ window.questionBank = [
       "고2",
       "확률과 통계",
       "이항분포"
-    ]
+    ],
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 90인 정규분포에서 102 이상에 해당하는 오른쪽 꼬리가 색칠되어 있으며 표준화 값은 2이다.",
+    "solutionImageCaption": "A 공장 제품 수를 정규근사하면 평균은 90, 표준편차는 6이다. 연속성 보정 없이 102를 표준화해 오른쪽 꼬리 확률을 구한다. 정답은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -203,7 +203,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 80, 표준편차 4인 정규곡선에서 76과 80 사이가 색칠되어 있고, 표준화 눈금은 -1부터 0까지이다.",
+    "solutionImageCaption": "만족 학생 수를 평균 80, 표준편차 4인 정규분포로 근사하면 76명부터 80명은 표준화 눈금 -1부터 0에 해당한다. 정답은 0.34이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -287,7 +291,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_INTEGER"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 80, 표준편차 4인 정규곡선의 왼쪽 꼬리가 73.4에서부터 색칠되어 있고, 경계는 표준화 눈금 -1.65에 해당한다.",
+    "solutionImageCaption": "발아 개수의 정규근사에서 왼쪽 꼬리 0.05의 경계는 73.4이다. 이 경계 이하의 정수 최댓값을 구한다. 정답은 73이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -330,7 +338,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 -2부터 -1까지와 1부터 2까지의 대칭인 두 구간이 색칠되어 있다.",
+    "solutionImageCaption": "표준정규곡선에서 -2부터 -1까지와 1부터 2까지의 구간은 서로 대칭이므로 넓이가 같다. 정답은 34이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -621,7 +633,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 20인 표본평균 정규곡선에서 19 이하와 21 이상의 양쪽 꼬리가 색칠되어 있고, 두 경계의 표준화 눈금은 -2.5와 2.5이다.",
+    "solutionImageCaption": "표본평균 분포의 평균은 20, 표준편차는 0.4이고, 중단 조건의 경계 19와 21은 평균에서 각각 2.5 표준편차 떨어져 있다. 정답은 9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -757,7 +773,11 @@ window.questionBank = [
     "crossConceptKeys": [
       "CC_COMBINATORICS_COUNTING"
     ],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 1100, 표준편차 27.5인 정규곡선에서 1045부터 오른쪽 꼬리까지가 색칠되어 있고, 1045의 표준화 값은 -2이다.",
+    "solutionImageCaption": "만나는 횟수를 평균 1100, 표준편차 27.5인 정규분포로 근사한다. 1045는 표준화 값 -2이므로 구하는 영역은 -2 오른쪽의 넓이이다. 정답은 0.9772이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
