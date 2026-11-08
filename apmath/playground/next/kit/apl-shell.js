@@ -216,6 +216,9 @@
       const prev = this.scene;
       this.index = i;
       const sc = this.scene;
+      // Set the destination tab before measuring its geometry; otherwise the previous
+      // scene's review/problem renderer can supply an unrelated focus box.
+      if (!opts.keepTab || !this._tabAvailable(this.tab)) this.tab = 'explore';
       this.board.kind = sc.boardKind || (this.def.board || {}).kind || 'cartesian'; // 장면별 좌표계(선택): 한 실험실에 수학 좌표 장면과 도형 좌표 장면을 함께 둘 때
       this.s.part = null;
       this.s.revealed = false;
@@ -233,7 +236,6 @@
       if (!focus && (sc.autoFit || bd.autoFit)) focus = this._measureFocus(sc);
       if (focus) this.board.setFocus(focus, !opts.keepView);
       if (opts.params) this._applyParams(opts.params);
-      if (!opts.keepTab || !this._tabAvailable(this.tab)) this.tab = 'explore';
       this._timerStop();
       this._buildRail();
       this._buildPanel();

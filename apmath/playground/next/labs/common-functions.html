@@ -1002,11 +1002,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const arrow = (v) => (typeof v === 'string' ? bold(arrowOnly(v)) : Array.isArray(v) ? v.map(arrow) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, arrow(x)])) : v);
   // 자동 맞춤 중에는 좌표에 따라 범위가 늘어나므로, 범위에 넣지 않을 계산은 등록 없이 화면 좌표만 구합니다.
   const scr = (x, y) => { const bb = BOARD._bbox; BOARD._bbox = null; const r = BOARD.toS(x, y); BOARD._bbox = bb; return r; };
-  const snapT = (num) => {
-    const p = curProb();
-    for (const sn of p.snaps) if (Math.abs(num - sn.t) < 0.022) return sn.t;
-    return num;
-  };
+  // 정확한 경계값은 아래 프리셋 버튼으로 선택합니다.
+  // 자유 조작 중에는 근처의 값으로 자동 보정하지 않아 슬라이더와 그림이 같은 실수값을 나타냅니다.
 
     // TX, TY: 같은 모양을 옮겨 그리는 변형(bas-15·16)에서만 0이 아닙니다(drawBasicScene 래퍼가 정하고 돌려놓음).
     let TX = 0, TY = 0;
@@ -1213,7 +1210,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const dxp = (w.x - prev.x) * B.k, dyp = (w.y - prev.y) * B.k;
           DRAG.raw = Math.max(0, Math.min(1, DRAG.raw + (dxp - dyp * 0.65) / Math.max(200, B.W * 0.6)));
           DRAG.w = w;
-          S.t = snapT(DRAG.raw);
+          S.t = DRAG.raw;
         }
       });
     } else B.point(p, { ...o, r: 5 });
@@ -2780,6 +2777,17 @@ window.addEventListener('DOMContentLoaded', function () {
       // 기울기가 큰 직선 그래프는 보이는 범위 끝까지 그려져 재는 범위가 수백 배로 커집니다(그림이 사라지고 눈금이 끝없이 이어짐). 그럴 땐 장면의 고정 범위를 씁니다.
       const wide = (r) => !r || !Array.isArray(r) || !(Math.abs(r[1] - r[0]) <= 200);
       if (f && (wide(f.x) || wide(f.y))) f = typeof sc.focus === 'function' ? sc.focus(L.s) : sc.focus;
+      // 모바일 새 문제에서는 기존 기본 문제의 확대 상태를 이어받으면 h=8 등의 꼭대기·좌표가 무대 밖으로 나갑니다.
+      // 원본 그래픽의 1000×700 설계 좌표를 조금 여유 있게 표시하며, 탐구 탭과 다른 단원은 건드리지 않습니다.
+      const mobileVariantClips = new Set(['bas-1', 'bas-3', 'bas-4', 'bas-6', 'bas-10', 'bas-11', 'adv-7', 'adv-8']);
+      if (L.tab !== 'explore' && !sc.vary.isBase() && mobileVariantClips.has(sc.id) && window.matchMedia('(max-width: 859px)').matches) {
+        // 합성함수의 h 변형은 봉우리 높이 2h에 따라 원본 설계 좌표도 커집니다. 고정 프레임으로 다시 자르지 않습니다.
+        const h = (sc.id === 'bas-3' || sc.id === 'bas-4') ? Number(sc.vary.cur().h) : NaN;
+        if (Number.isFinite(h) && h > 0) {
+          const scale = (700 / 11.2) * 1.15;
+          f = { x: [-70, Math.max(1070, 300 + 2 * h * scale + 55)], y: [Math.min(-70, 546 - 2 * h * scale - 65), 770] };
+        } else f = { x: [-70, 1070], y: [sc.id === 'bas-10' ? -210 : -70, 770] };
+      }
       if (f) L.board.setFocus(f, true);
       L.invalidate(true);
     } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
@@ -2834,8 +2842,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const params = {
     t: { value: 0.5, min: 0, max: 1, step: 0.005, color: 'amber', label: '도형 조작',
-      format: (v, s) => { state.auxStep = clampStep(s); return getParamReadout(pOf(window.lab && window.lab.scene.id), v); },
-      onInput: (s) => { s.t = snapT(s.t); } }
+      format: (v, s) => { state.auxStep = clampStep(s); return getParamReadout(pOf(window.lab && window.lab.scene.id), v); } }
   };
 
   function sceneOf(p, idx) {
@@ -2870,7 +2877,7 @@ window.addEventListener('DOMContentLoaded', function () {
         group: '바로 가기',
         label: clampStep(s) >= 3 ? sn.label : (sn.neutralLabel || sn.label),
         set: { t: sn.t }, ms: 500,
-        on: (st) => Math.abs(st.t - sn.t) < 0.03
+        on: (st) => Math.abs(st.t - sn.t) < 1e-7
       })),
       steps: () => hintsOf().slice(1).map((h) => cv(arrow(h))),
       solution: {
