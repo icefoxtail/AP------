@@ -1,0 +1,38 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1",
+      "0",
+      "1"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "-1",
+        "to": "1"
+      }
+    ]
+  },
+  "caption": "예시 a=b=4일 때 같은 중앙확률의 표준정규구간을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "예시 a=b=4일 때 같은 중앙확률의 표준정규구간을 표시한다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "예시는 가능한 한 경우일 뿐이다. 일반적으로 표준화 반폭 b/4와 4/a가 같다.",
+    "사용자 지시: 분포·신뢰구간 관계가 이해에 도움이 되어 계획했다. 밀집 라벨에는 지시선을 활용한다."
+  ]
+}

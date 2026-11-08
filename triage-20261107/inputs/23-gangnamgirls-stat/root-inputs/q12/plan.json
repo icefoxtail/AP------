@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "길이 l",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "길이 4l",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 신뢰구간의 중심을 맞춘 예시로 길이 1:4를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 신뢰구간의 중심을 맞춘 예시로 길이 1:4를 비교한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "이는 상대 길이만 나타내는 예시이며 실제 두 표본평균이 같다고 가정하지 않는다.",
+    "사용자 지시: 분포·신뢰구간 관계가 이해에 도움이 되어 계획했다. 밀집 라벨에는 지시선을 활용한다."
+  ]
+}
