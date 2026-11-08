@@ -10,7 +10,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 조사하시오.\n⑴ $\\lim_{x \\to \\infty} \\left( 1+\\frac{2}{x} \\right)$\n⑵ $\\lim_{x \\to -1} \\frac{3}{(x+1)^2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1$, ⑵ $\\infty$",
+    "solution": "[풀이 전략]\n⑴ $x \\to \\infty$일 때 $\\frac{2}{x} \\to 0$임을 이용하여 수렴하는 극한값을 구한다.\n⑵ $x \\to -1$일 때 분모 $(x+1)^2 \\to 0+$이고 분자가 양의 상수 $3$이므로 양의 무한대로 발산함을 조사한다.\n\n[단계별 풀이]\n1단계 [⑴ $x \\to \\infty$일 때의 극한]:\n$x$의 값이 한없이 커질 때 $\\frac{2}{x}$의 값은 $0$에 한없이 가까워지므로\n$$\\lim_{x \\to \\infty} \\left( 1+\\frac{2}{x} \\right) = 1 + 0 = 1$$\n따라서 $1$에 수렴한다.\n\n2단계 [⑵ $x \\to -1$일 때의 극한]:\n$x \\to -1$일 때 $x+1 \\to 0$이므로 분모 $(x+1)^2$은 항상 양수이면서 $0$에 한없이 가까워진다.\n분자는 양의 상수 $3$이므로 $\\frac{3}{(x+1)^2}$의 값은 한없이 커진다.\n$$\\lim_{x \\to -1} \\frac{3}{(x+1)^2} = \\infty$$\n따라서 양의 무한대로 발산한다.\n\n[오답 및 경계 점검]\n⑵에서 $(x+1)^2$은 $x \\ne -1$인 모든 실수에서 항상 양수이므로 좌극한과 우극한 모두 양의 무한대로 발산한다.\n\n[결론]\n⑴ $1$, ⑵ $\\infty$"
   },
   {
     "id": 2,
@@ -38,7 +38,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} x^2+1 & (x \\ge 2) \\\\ -x^2+2 & (x < 2) \\end{cases}$에서 다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 2+} f(x)$\n⑵ $\\lim_{x \\to 2-} f(x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $5$, ⑵ $-2$",
+    "solution": "[풀이 전략]\n구간별로 다르게 정의된 함수에서 우극한은 $x > 2$인 범위의 함수식을 적용하고, 좌극한은 $x < 2$인 범위의 함수식을 적용하여 계산한다.\n\n[단계별 풀이]\n1단계 [⑴ 우극한 $\\lim_{x \\to 2+} f(x)$ 계산]:\n$x > 2$일 때 $f(x) = x^2+1$이므로\n$$\\lim_{x \\to 2+} f(x) = \\lim_{x \\to 2+} (x^2+1) = 2^2+1 = 5$$\n\n2단계 [⑵ 좌극한 $\\lim_{x \\to 2-} f(x)$ 계산]:\n$x < 2$일 때 $f(x) = -x^2+2$이므로\n$$\\lim_{x \\to 2-} f(x) = \\lim_{x \\to 2-} (-x^2+2) = -(2)^2+2 = -4+2 = -2$$\n\n[오답 및 경계 점검]\n우극한과 좌극한의 값이 서로 다르므로($5 \\ne -2$), $\\lim_{x \\to 2} f(x)$는 존재하지 않는다. 본 문제에서는 각각의 한쪽 극한을 묻고 있으므로 부호에 유의하여 답한다.\n\n[결론]\n⑴ $5$, ⑵ $-2$"
   },
   {
     "id": 3,
@@ -66,7 +66,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x), g(x)$가\n$\\lim_{x \\to 1} f(x)=2, \\lim_{x \\to 1} g(x)=3$\n을 만족시킬 때, 다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 1} \\{3f(x)+g(x)\\}$\n⑵ $\\lim_{x \\to 1} \\{f(x)-2g(x)\\}$\n⑶ $\\lim_{x \\to 1} 2f(x)g(x)$\n⑷ $\\lim_{x \\to 1} \\frac{f(x)}{g(x)}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $9$, ⑵ $-4$, ⑶ $12$, ⑷ $\\frac{2}{3}$",
+    "solution": "[풀이 전략]\n두 함수 $f(x), g(x)$가 모두 $x=1$에서 수렴하므로 함수의 극한에 대한 기본 성질(선형성, 곱셈, 나눗셈)을 적용하여 각각 계산한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\lim_{x \\to 1} \\{3f(x)+g(x)\\}$]:\n$$\\lim_{x \\to 1} \\{3f(x)+g(x)\\} = 3\\lim_{x \\to 1} f(x) + \\lim_{x \\to 1} g(x) = 3(2) + 3 = 6 + 3 = 9$$\n\n2단계 [⑵ $\\lim_{x \\to 1} \\{f(x)-2g(x)\\}$]:\n$$\\lim_{x \\to 1} \\{f(x)-2g(x)\\} = \\lim_{x \\to 1} f(x) - 2\\lim_{x \\to 1} g(x) = 2 - 2(3) = 2 - 6 = -4$$\n\n3단계 [⑶ $\\lim_{x \\to 1} 2f(x)g(x)$]:\n$$\\lim_{x \\to 1} 2f(x)g(x) = 2 \\left(\\lim_{x \\to 1} f(x)\\right) \\left(\\lim_{x \\to 1} g(x)\\right) = 2 \\times 2 \\times 3 = 12$$\n\n4단계 [⑷ $\\lim_{x \\to 1} \\frac{f(x)}{g(x)}$]:\n$\\lim_{x \\to 1} g(x) = 3 \\ne 0$이므로\n$$\\lim_{x \\to 1} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to 1} f(x)}{\\lim_{x \\to 1} g(x)} = \\frac{2}{3}$$\n\n[오답 및 경계 점검]\n분수 꼴의 극한에서는 분모의 극한값이 $0$이 아님을 확인해야 한다. 여기서는 $3 \\ne 0$이므로 나눗셈 성질을 온전히 적용할 수 있다.\n\n[결론]\n⑴ $9$, ⑵ $-4$, ⑶ $12$, ⑷ $\\frac{2}{3}$"
   },
   {
     "id": 4,
@@ -94,7 +94,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to 2} \\frac{x^2-5x+6}{|x-2|}$을 조사하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "존재하지 않는다.",
+    "solution": "[풀이 전략]\n절댓값 기호 $|x-2|$를 포함한 식이므로 $x \\to 2+$ (우극한)와 $x \\to 2-$ (좌극한)로 나누어 절댓값을 해제한 뒤, 각각의 극한값을 조사하여 일치 여부를 판정한다.\n\n[단계별 풀이]\n1단계 [분자 인수분해]:\n$$x^2 - 5x + 6 = (x-2)(x-3)$$\n\n2단계 [우극한 조사 ($x \\to 2+$)]:\n$x > 2$일 때 $|x-2| = x-2$이므로\n$$\\lim_{x \\to 2+} \\frac{x^2-5x+6}{|x-2|} = \\lim_{x \\to 2+} \\frac{(x-2)(x-3)}{x-2} = \\lim_{x \\to 2+} (x-3) = 2 - 3 = -1$$\n\n3단계 [좌극한 조사 ($x \\to 2-$)]:\n$x < 2$일 때 $|x-2| = -(x-2)$이므로\n$$\\lim_{x \\to 2-} \\frac{x^2-5x+6}{|x-2|} = \\lim_{x \\to 2-} \\frac{(x-2)(x-3)}{-(x-2)} = \\lim_{x \\to 2-} -(x-3) = -(2 - 3) = 1$$\n\n4단계 [극한값 존재 여부 판정]:\n$$\\lim_{x \\to 2+} \\frac{x^2-5x+6}{|x-2|} = -1, \\quad \\lim_{x \\to 2-} \\frac{x^2-5x+6}{|x-2|} = 1$$\n우극한과 좌극한의 값이 서로 다르므로 극한값 $\\lim_{x \\to 2} \\frac{x^2-5x+6}{|x-2|}$은 존재하지 않는다.\n\n[오답 및 경계 점검]\n절댓값 식의 좌우 극한 계산 시 부호 반전을 빠뜨리면 $-1$로 수렴한다고 잘못 판단하기 쉬우므로 반드시 좌극한의 음의 부호를 엄밀하게 확인한다.\n\n[결론]\n존재하지 않는다."
   },
   {
     "id": 5,
@@ -122,7 +122,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases} -x^2+4 & (x \\ge 1) \\\\ 2x+a & (x < 1) \\end{cases}$에서 극한값 $\\lim_{x \\to 1} f(x)$가 존재할 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략]\n$x=1$에서 극한값 $\\lim_{x \\to 1} f(x)$가 존재하기 위한 필요충분조건은 우극한과 좌극한이 모두 존재하고 그 값이 서로 같아야 함을 이용한다.\n\n[단계별 풀이]\n1단계 [우극한 계산]:\n$x \\ge 1$일 때 $f(x) = -x^2+4$이므로\n$$\\lim_{x \\to 1+} f(x) = \\lim_{x \\to 1+} (-x^2+4) = -1^2 + 4 = 3$$\n\n2단계 [좌극한 계산]:\n$x < 1$일 때 $f(x) = 2x+a$이므로\n$$\\lim_{x \\to 1-} f(x) = \\lim_{x \\to 1-} (2x+a) = 2(1) + a = 2 + a$$\n\n3단계 [극한값 존재 조건 적용]:\n극한값 $\\lim_{x \\to 1} f(x)$가 존재하려면 우극한과 좌극한이 같아야 하므로\n$$3 = 2 + a \\implies a = 1$$\n\n[오답 및 경계 점검]\n$a=1$일 때 우극한과 좌극한이 모두 $3$으로 일치하므로 $\\lim_{x \\to 1} f(x) = 3$으로 극한값이 온전히 존재함을 확인했다.\n\n[결론]\n$1$"
   },
   {
     "id": 6,
@@ -150,7 +150,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $y=f(x), y=g(x)$의 그래프가 다음 그림과 같을 때, 보기 중 극한값이 존재하는 것을 모두 고르시오.\n<img src=\"q06.png\" />\n[보기]\nㄱ. $\\lim_{x \\to 2} \\{f(x)+g(x)\\}$\nㄴ. $\\lim_{x \\to 2} \\{f(x)-g(x)\\}$\nㄷ. $\\lim_{x \\to 2} f(x)g(x)$\nㄹ. $\\lim_{x \\to 2} \\frac{f(x)}{g(x)}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄷ, ㄹ",
+    "solution": "[풀이 전략]\n주어진 그래프로부터 $x=2$에서의 $f(x)$와 $g(x)$의 우극한과 좌극한을 각각 읽어낸 후, 각 보기에 대해 우극한과 좌극한을 비교하여 일치하는 것을 고른다.\n\n[단계별 풀이]\n1단계 [그래프에서 $x \\to 2$의 한쪽 극한 읽기]:\n- $f(x)$: $\\lim_{x \\to 2+} f(x) = 0$, $\\lim_{x \\to 2-} f(x) = 0$ (즉 $\\lim_{x \\to 2} f(x) = 0$)\n- $g(x)$: $\\lim_{x \\to 2+} g(x) = 2$, $\\lim_{x \\to 2-} g(x) = 1$\n\n2단계 [보기 ㄱ 점검]:\n- 우극한: $\\lim_{x \\to 2+} \\{f(x)+g(x)\\} = 0 + 2 = 2$\n- 좌극한: $\\lim_{x \\to 2-} \\{f(x)+g(x)\\} = 0 + 1 = 1$\n우극한 $\\ne$ 좌극한이므로 극한값이 존재하지 않는다. (거짓)\n\n3단계 [보기 ㄴ 점검]:\n- 우극한: $\\lim_{x \\to 2+} \\{f(x)-g(x)\\} = 0 - 2 = -2$\n- 좌극한: $\\lim_{x \\to 2-} \\{f(x)-g(x)\\} = 0 - 1 = -1$\n우극한 $\\ne$ 좌극한이므로 극한값이 존재하지 않는다. (거짓)\n\n4단계 [보기 ㄷ 점검]:\n- 우극한: $\\lim_{x \\to 2+} f(x)g(x) = 0 \\times 2 = 0$\n- 좌극한: $\\lim_{x \\to 2-} f(x)g(x) = 0 \\times 1 = 0$\n우극한과 좌극한이 모두 $0$으로 같으므로 $\\lim_{x \\to 2} f(x)g(x) = 0$으로 존재한다. (참)\n\n5단계 [보기 ㄹ 점검]:\n- 우극한: $\\lim_{x \\to 2+} \\frac{f(x)}{g(x)} = \\frac{0}{2} = 0$\n- 좌극한: $\\lim_{x \\to 2-} \\frac{f(x)}{g(x)} = \\frac{0}{1} = 0$\n분모의 극한이 모두 $0$이 아니며, 우극한과 좌극한이 모두 $0$으로 같으므로 $\\lim_{x \\to 2} \\frac{f(x)}{g(x)} = 0$으로 존재한다. (참)\n\n따라서 극한값이 존재하는 것은 ㄷ, ㄹ이다.\n\n[오답 및 경계 점검]\n$g(x)$의 극한값이 $x=2$에서 존재하지 않더라도, $\\lim_{x \\to 2} f(x) = 0$이므로 곱셈과 나눗셈($g(x) \\ne 0$ 부근)에서는 좌우극한이 모두 $0$으로 수렴할 수 있음을 정확히 분석했다.\n\n[결론]\nㄷ, ㄹ"
   },
   {
     "id": 7,
@@ -178,7 +178,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 2} \\frac{x-2}{x^2-x-2}$\n⑵ $\\lim_{x \\to 9} \\frac{x-9}{\\sqrt{x}-3}$\n⑶ $\\lim_{x \\to -2} (x+2)\\left( 1-\\frac{3}{x+2} \\right)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{1}{3}$, ⑵ $6$, ⑶ $-3$",
+    "solution": "[풀이 전략]\n모두 $\\frac{0}{0}$ 꼴의 부정형 극한이므로, 인수분해, 유리화, 통분을 통해 $0$이 되는 인수를 약분하여 소거한 뒤 대입하여 극한값을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\lim_{x \\to 2} \\frac{x-2}{x^2-x-2}$]:\n- 분모를 인수분해하면 $x^2-x-2 = (x-2)(x+1)$\n$$\\lim_{x \\to 2} \\frac{x-2}{(x-2)(x+1)} = \\lim_{x \\to 2} \\frac{1}{x+1} = \\frac{1}{2+1} = \\frac{1}{3}$$\n\n2단계 [⑵ $\\lim_{x \\to 9} \\frac{x-9}{\\sqrt{x}-3}$]:\n- 분자를 유리화하거나 분자를 합차 공식으로 변형: $x-9 = (\\sqrt{x}-3)(\\sqrt{x}+3)$\n$$\\lim_{x \\to 9} \\frac{(\\sqrt{x}-3)(\\sqrt{x}+3)}{\\sqrt{x}-3} = \\lim_{x \\to 9} (\\sqrt{x}+3) = \\sqrt{9}+3 = 3+3 = 6$$\n\n3단계 [⑶ $\\lim_{x \\to -2} (x+2)\\left( 1-\\frac{3}{x+2} \\right)$]:\n- 괄호 안의 식을 통분: $1 - \\frac{3}{x+2} = \\frac{x+2-3}{x+2} = \\frac{x-1}{x+2}$\n$$\\lim_{x \\to -2} (x+2) \\cdot \\frac{x-1}{x+2} = \\lim_{x \\to -2} (x-1) = -2 - 1 = -3$$\n\n[오답 및 경계 점검]\n부정형의 원인이 되는 $(x-2)$, $(\\sqrt{x}-3)$, $(x+2)$의 인수가 완전히 소거된 후 남은 식에 값을 대입하므로 계산 오류가 없다.\n\n[결론]\n⑴ $\\frac{1}{3}$, ⑵ $6$, ⑶ $-3$"
   },
   {
     "id": 8,
@@ -206,7 +206,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to -\\infty} \\frac{x-1}{|x|+3}$\n⑵ $\\lim_{x \\to \\infty} \\frac{3x+1}{\\sqrt{x^2+1}-2}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-1$, ⑵ $3$",
+    "solution": "[풀이 전략]\n무한대에서의 극한을 구한다.\n⑴ $x \\to -\\infty$이므로 $x < 0$에서 $|x| = -x$임을 적용하여 최고차항의 계수 비를 구한다.\n⑵ 분모와 분자를 최고차항인 $x$로 나누어 극한값을 구한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\lim_{x \\to -\\infty} \\frac{x-1}{|x|+3}$]:\n$x \\to -\\infty$이므로 $x < 0$이고 $|x| = -x$이다.\n$$\\lim_{x \\to -\\infty} \\frac{x-1}{-x+3}$$\n분모와 분자를 $x$로 나누면\n$$\\lim_{x \\to -\\infty} \\frac{1 - \\frac{1}{x}}{-1 + \\frac{3}{x}} = \\frac{1 - 0}{-1 + 0} = -1$$\n\n2단계 [⑵ $\\lim_{x \\to \\infty} \\frac{3x+1}{\\sqrt{x^2+1}-2}$]:\n$x > 0$이므로 분모와 분자를 $x$로 나눈다 (근호 안으로 들어가면 $x^2$으로 나눈다).\n$$\\lim_{x \\to \\infty} \\frac{3 + \\frac{1}{x}}{\\sqrt{1 + \\frac{1}{x^2}} - \\frac{2}{x}} = \\frac{3 + 0}{\\sqrt{1 + 0} - 0} = \\frac{3}{1} = 3$$\n\n[오답 및 경계 점검]\n⑴에서 $x \\to -\\infty$일 때 $|x| = -x$로 부호가 바뀐다는 점을 놓치면 $+1$로 오답이 나오기 쉬우므로 주의한다.\n\n[결론]\n⑴ $-1$, ⑵ $3$"
   },
   {
     "id": 9,
@@ -234,7 +234,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\lim_{x \\to \\infty} (\\sqrt{x^2+ax+4}-\\sqrt{x^2+x+2})=5$일 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$11$",
+    "solution": "[풀이 전략]\n$\\infty - \\infty$ 꼴의 무리식 극한이므로 분자를 유리화하여 분수 꼴로 변형한 뒤, 분모와 분자를 $x$로 나누어 최고차항의 계수 비교를 통해 $a$의 값을 구한다.\n\n[단계별 풀이]\n1단계 [분자 유리화]:\n$$\\begin{aligned}\n\\lim_{x \\to \\infty} (\\sqrt{x^2+ax+4} - \\sqrt{x^2+x+2}) &= \\lim_{x \\to \\infty} \\frac{(x^2+ax+4) - (x^2+x+2)}{\\sqrt{x^2+ax+4} + \\sqrt{x^2+x+2}} \\\\\n&= \\lim_{x \\to \\infty} \\frac{(a-1)x + 2}{\\sqrt{x^2+ax+4} + \\sqrt{x^2+x+2}}\n\\end{aligned}$$\n\n2단계 [분모, 분자를 $x$로 나누어 극한값 계산]:\n$x > 0$이므로\n$$\\lim_{x \\to \\infty} \\frac{(a-1) + \\frac{2}{x}}{\\sqrt{1 + \\frac{a}{x} + \\frac{4}{x^2}} + \\sqrt{1 + \\frac{1}{x} + \\frac{2}{x^2}}} = \\frac{a-1}{\\sqrt{1} + \\sqrt{1}} = \\frac{a-1}{2}$$\n\n3단계 [방정식 풀기]:\n극한값이 $5$이므로\n$$\\frac{a-1}{2} = 5 \\implies a-1 = 10 \\implies a = 11$$\n\n[오답 및 경계 점검]\n$a=11$을 대입하면 분자의 일차항 계수가 $10$이고 분모는 $\\sqrt{x^2} + \\sqrt{x^2} \\to 2x$이므로 $\\frac{10x}{2x} = 5$가 되어 조건과 정확히 일치한다.\n\n[결론]\n$11$"
   },
   {
     "id": 10,
@@ -262,7 +262,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$에 대하여 $\\lim_{x \\to \\infty} \\frac{f(x)}{x}$의 값이 존재할 때, 극한값 $\\lim_{x \\to \\infty} \\frac{3x^2+2f(x)}{x^2-f(x)}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "[풀이 전략]\n주어진 조건 $\\lim_{x \\to \\infty} \\frac{f(x)}{x} = L$ (상수)의 형태를 이용하기 위해, 구하고자 하는 극한식의 분모와 분자를 최고차항인 $x^2$으로 나누어 정리한다.\n\n[단계별 풀이]\n1단계 [분모와 분자를 $x^2$으로 나누기]:\n$$\\lim_{x \\to \\infty} \\frac{3x^2+2f(x)}{x^2-f(x)} = \\lim_{x \\to \\infty} \\frac{3 + 2\\cdot \\frac{f(x)}{x^2}}{1 - \\frac{f(x)}{x^2}}$$\n\n2단계 [$\\lim_{x \\to \\infty} \\frac{f(x)}{x^2}$의 값 분석]:\n$$\\frac{f(x)}{x^2} = \\frac{f(x)}{x} \\cdot \\frac{1}{x}$$\n- 조건에서 $\\lim_{x \\to \\infty} \\frac{f(x)}{x} = L$ (실수)로 수렴하고, $\\lim_{x \\to \\infty} \\frac{1}{x} = 0$이므로\n$$\\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = \\left( \\lim_{x \\to \\infty} \\frac{f(x)}{x} \\right) \\left( \\lim_{x \\to \\infty} \\frac{1}{x} \\right) = L \\times 0 = 0$$\n\n3단계 [극한값 계산]:\n따라서 구하는 극한값은\n$$\\frac{3 + 2(0)}{1 - 0} = \\frac{3}{1} = 3$$\n\n[오답 및 경계 점검]\n$\\lim_{x \\to \\infty} \\frac{f(x)}{x}$가 수렴한다는 것은 $f(x)$가 기껏해야 일차 이하의 증가 속도를 가짐을 뜻하므로, 이차항 $x^2$에 비해 $f(x)$는 무시되어 최고차항의 계수 비인 $\\frac{3}{1}=3$이 도출된다.\n\n[결론]\n$3$"
   },
   {
     "id": 11,
@@ -290,7 +290,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식이 성립하도록 하는 실수 $a, b$의 값을 구하시오.\n⑴ $\\lim_{x \\to 1} \\frac{ax^2+bx-1}{x-1}=2$\n⑵ $\\lim_{x \\to 4} \\frac{ax+b}{\\sqrt{x+1}-\\sqrt{5}}=\\sqrt{5}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=1, b=0$, ⑵ $a=\\frac{1}{2}, b=-2$",
+    "solution": "[풀이 전략]\n분수 꼴의 극한값이 존재하고 분모가 $0$에 수렴할 때 분자도 반드시 $0$에 수렴해야 한다는 성질을 이용하여 미정계수 사이의 관계식을 도출한 후 대입하여 인수분해 또는 유리화로 극한값을 완성한다.\n\n[단계별 풀이]\n1단계 [⑴ $\\lim_{x \\to 1} \\frac{ax^2+bx-1}{x-1}=2$]:\n- $x \\to 1$일 때 (분모) $\\to 0$이고 극한값이 존재하므로 (분자) $\\to 0$이어야 한다.\n$$a(1)^2 + b(1) - 1 = 0 \\implies a + b - 1 = 0 \\implies b = 1 - a$$\n- 분자에 대입하여 인수분해:\n$$ax^2 + (1-a)x - 1 = (x-1)(ax+1)$$\n- 극한식에 대입:\n$$\\lim_{x \\to 1} \\frac{(x-1)(ax+1)}{x-1} = \\lim_{x \\to 1} (ax+1) = a + 1$$\n- $a + 1 = 2 \\implies a = 1$\n- $b = 1 - a = 1 - 1 = 0$\n\n2단계 [⑵ $\\lim_{x \\to 4} \\frac{ax+b}{\\sqrt{x+1}-\\sqrt{5}}=\\sqrt{5}$]:\n- $x \\to 4$일 때 (분모) $\\to \\sqrt{5}-\\sqrt{5}=0$이고 극한값이 존재하므로 (분자) $\\to 0$이어야 한다.\n$$4a + b = 0 \\implies b = -4a$$\n- 분자에 대입: $ax + b = a(x-4)$\n- 분모를 유리화:\n$$\\begin{aligned}\n\\lim_{x \\to 4} \\frac{a(x-4)}{\\sqrt{x+1}-\\sqrt{5}} &= \\lim_{x \\to 4} \\frac{a(x-4)(\\sqrt{x+1}+\\sqrt{5})}{(x+1)-5} \\\\\n&= \\lim_{x \\to 4} \\frac{a(x-4)(\\sqrt{x+1}+\\sqrt{5})}{x-4} \\\\\n&= a(\\sqrt{4+1}+\\sqrt{5}) = a(2\\sqrt{5}) = 2\\sqrt{5}a\n\\end{aligned}$$\n- $2\\sqrt{5}a = \\sqrt{5} \\implies a = \\frac{1}{2}$\n- $b = -4a = -4\\left(\\frac{1}{2}\\right) = -2$\n\n[오답 및 경계 점검]\n⑴ $x=1$ 대입 시 $\\frac{x^2-1}{x-1} = x+1 \\to 2$, ⑵ $x=4$ 대입 시 $\\frac{\\frac{1}{2}(x-4)}{\\sqrt{x+1}-\\sqrt{5}} \\to \\sqrt{5}$로 모두 완벽히 성립한다.\n\n[결론]\n⑴ $a=1, b=0$, ⑵ $a=\\frac{1}{2}, b=-2$"
   },
   {
     "id": 12,
@@ -318,7 +318,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)$가 모든 양의 실수 $x$에 대하여\n$2x^2-x < (x+1)f(x) < 2x^2+x$\n를 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} \\frac{\\{f(x)\\}^2}{2x^2-x+1}$을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n부등식의 각 변을 $x(x+1)$로 나누어 함수의 극한의 대소 관계(조임정리, 샌드위치 정리)를 통해 $\\lim_{x \\to \\infty} \\frac{f(x)}{x}$의 극한값을 먼저 구한 뒤, 목표 극한식을 $\\frac{f(x)}{x}$에 대한 형태로 변형하여 계산한다.\n\n[단계별 풀이]\n1단계 [부등식 변형 및 $\\lim_{x \\to \\infty} \\frac{f(x)}{x}$ 도출]:\n모든 양의 실수 $x$에 대하여 $x(x+1) > 0$이므로 주어진 부등식의 각 변을 $x(x+1)$로 나눈다.\n$$\\frac{2x^2-x}{x(x+1)} < \\frac{f(x)}{x} < \\frac{2x^2+x}{x(x+1)}$$\n이때\n$$\\lim_{x \\to \\infty} \\frac{2x^2-x}{x^2+x} = 2, \\quad \\lim_{x \\to \\infty} \\frac{2x^2+x}{x^2+x} = 2$$\n따라서 함수의 극한의 대소 관계에 의하여\n$$\\lim_{x \\to \\infty} \\frac{f(x)}{x} = 2$$\n\n2단계 [구하고자 하는 극한식 변형]:\n$$\\lim_{x \\to \\infty} \\frac{\\{f(x)\\}^2}{2x^2-x+1}$$\n분모와 분자를 $x^2$으로 나눈다.\n$$\\lim_{x \\to \\infty} \\frac{\\left\\{ \\frac{f(x)}{x} \\right\\}^2}{2 - \\frac{1}{x} + \\frac{1}{x^2}}$$\n\n3단계 [값 계산]:\n$$\\frac{2^2}{2 - 0 + 0} = \\frac{4}{2} = 2$$\n\n[오답 및 경계 점검]\n$f(x) \\approx 2x$의 거동을 보이므로 $\\{f(x)\\}^2 \\approx 4x^2$이고, 분모는 $2x^2$이므로 극한값은 $\\frac{4}{2} = 2$가 됨을 직관적으로도 검산할 수 있다.\n\n[결론]\n$2$"
   },
   {
     "id": 13,
@@ -346,7 +346,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 두 점 $\\mathrm{A}(0, t)\\,(t > 0)$, $\\mathrm{B}(-1, 0)$을 지나는 직선과 원 $x^2+y^2=1$의 교점 중에서 $\\mathrm{B}$가 아닌 점을 $\\mathrm{P}$라고 하자. 점 $\\mathrm{P}$에서 $x$축에 내린 수선의 발을 $\\mathrm{H}$라고 할 때, 극한값 $\\lim_{t \\to \\infty} (\\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{PH}})$를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략]\n두 점 $\\mathrm{A}, \\mathrm{B}$를 지나는 직선의 방정식을 $t$로 나타내고, 원과의 교점 $\\mathrm{P}$의 좌표를 구한다. 점 $\\mathrm{P}$의 $y$좌표가 곧 선분 $\\overline{\\mathrm{PH}}$의 길이이므로, $\\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{PH}}$를 $t$에 대한 식으로 표현한 후 $t \\to \\infty$의 극한값을 구한다.\n\n[단계별 풀이]\n1단계 [직선의 방정식 구하기]:\n두 점 $\\mathrm{A}(0, t)$, $\\mathrm{B}(-1, 0)$을 지나는 직선의 기울기는 $\\frac{t - 0}{0 - (-1)} = t$이고 $y$절편이 $t$이므로\n$$y = tx + t$$\n\n2단계 [교점 $\\mathrm{P}$의 좌표 구하기]:\n$x = \\frac{y-t}{t}$를 원의 방정식 $x^2+y^2=1$에 대입한다.\n$$\\left(\\frac{y}{t}-1\\right)^2 + y^2 = 1 \\implies \\frac{y^2}{t^2} - \\frac{2y}{t} + 1 + y^2 = 1$$\n$$\\left(\\frac{1+t^2}{t^2}\\right)y^2 - \\frac{2}{t}y = 0$$\n점 $\\mathrm{P}$는 점 $\\mathrm{B}(-1, 0)$이 아니므로 $y \\ne 0$이다. 따라서\n$$y = \\frac{\\frac{2}{t}}{\\frac{1+t^2}{t^2}} = \\frac{2t}{t^2+1}$$\n점 $\\mathrm{P}$에서 $x$축에 내린 수선의 발이 $\\mathrm{H}$이므로\n$$\\overline{\\mathrm{PH}} = y = \\frac{2t}{t^2+1}$$\n\n3단계 [선분 곱 및 극한값 계산]:\n점 $\\mathrm{A}(0, t)$이므로 $\\overline{\\mathrm{OA}} = t$이다.\n$$\\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{PH}} = t \\times \\frac{2t}{t^2+1} = \\frac{2t^2}{t^2+1}$$\n$t \\to \\infty$일 때의 극한값:\n$$\\lim_{t \\to \\infty} (\\overline{\\mathrm{OA}} \\times \\overline{\\mathrm{PH}}) = \\lim_{t \\to \\infty} \\frac{2t^2}{t^2+1} = \\lim_{t \\to \\infty} \\frac{2}{1 + \\frac{1}{t^2}} = 2$$\n\n[오답 및 경계 점검]\n$t \\to \\infty$일 때 직선은 $y$축에 평행해져 점 $\\mathrm{P}$는 점 $(0, 1)$에 가까워지고, $\\overline{\\mathrm{PH}} \\approx \\frac{2}{t}$가 되어 $t \\times \\frac{2}{t} \\to 2$로 수렴함을 기하학적으로도 확인할 수 있다.\n\n[결론]\n$2$"
   },
   {
     "id": 14,
@@ -374,7 +374,7 @@ window.questionBank = [
     "category": "함수의 극한",
     "originalCategory": "중단원 학습 점검",
     "standardCourse": "미적분1",
-    "standardUnitKey": "H22-MC1-01",
+    "standardUnitKey": "H22-M1-01",
     "standardUnit": "함수의 극한",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -390,7 +390,7 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $g(x)$에 대하여 $\\lim_{x \\to 2} \\frac{g(x)-x^2}{x-2}$의 값이 존재하고, 다항함수 $f(x)$가\n$f(x)+(x-2)^2=(x-2)g(x)$\n를 만족시킬 때, 극한값 $\\lim_{x \\to 2} \\frac{f(x)g(x)}{x^2-4}$를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "[풀이 전략]\n$\\lim_{x \\to 2} \\frac{g(x)-x^2}{x-2}$가 존재하므로 분모가 $0$으로 갈 때 분자도 $0$으로 감을 이용하여 $g(2)$의 값을 구한다. 주어진 등식에서 $f(x)$를 $x-2$로 묶어낸 뒤, 구하고자 하는 극한식의 $(x-2)$ 인수를 소거하여 극한값을 계산한다.\n\n[단계별 풀이]\n1단계 [$g(2)$의 값 구하기]:\n다항함수 $g(x)$에 대하여 $\\lim_{x \\to 2} \\frac{g(x)-x^2}{x-2}$의 값이 존재하고, $x \\to 2$일 때 분모 $\\to 0$이므로 분자 $\\to 0$이어야 한다.\n$$\\lim_{x \\to 2} (g(x) - x^2) = 0 \\implies g(2) - 2^2 = 0 \\implies g(2) = 4$$\n\n2단계 [$f(x)$ 정리하기]:\n주어진 조건 $f(x) + (x-2)^2 = (x-2)g(x)$에서\n$$f(x) = (x-2)g(x) - (x-2)^2 = (x-2)\\{g(x) - (x-2)\\}$$\n\n3단계 [목표 극한식에 대입 및 소거]:\n구하고자 하는 극한식은\n$$\\lim_{x \\to 2} \\frac{f(x)g(x)}{x^2-4} = \\lim_{x \\to 2} \\frac{(x-2)\\{g(x) - (x-2)\\}g(x)}{(x-2)(x+2)}$$\n분모와 분자의 공통인수 $(x-2)$를 약분하면\n$$= \\lim_{x \\to 2} \\frac{\\{g(x) - (x-2)\\}g(x)}{x+2}$$\n\n4단계 [극한값 계산]:\n$g(x)$는 다항함수이므로 연속이고 $g(2) = 4$이다. $x=2$를 대입하면\n$$= \\frac{\\{g(2) - (2-2)\\}g(2)}{2+2} = \\frac{\\{4 - 0\\} \\times 4}{4} = \\frac{16}{4} = 4$$\n\n[오답 및 경계 점검]\n$f(x) = (x-2)\\{g(x)-(x-2)\\}$이므로 $f(2)=0$이고 $f'(2) = g(2) = 4$이다.\n로피탈 또는 미분계수의 정의로 보아도 $\\lim_{x \\to 2} \\frac{f(x)}{x-2} = 4$, $\\lim_{x \\to 2} \\frac{g(x)}{x+2} = \\frac{4}{4}=1$이므로 $4 \\times 1 = 4$로 일치한다.\n\n[결론]\n$4$"
   }
 ];
