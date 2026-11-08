@@ -16,3 +16,8 @@ Question-specific limitations:
 This is a signed-area/time-interval helper, not a velocity-curve reconstruction. Areas +2,−2,+3,+2 must retain their source meaning; total distance uses absolute areas. The source q11.png is referenced inline in content HTML, not through the image field. Preserve that PNG, legacy q11-solution.svg, and prior formula-boundary readability evidence without claiming this new figure passed.
 
 Preservation base: codex/svg-triage-20261107 at 30d317abccff0b0fff9af85893dc86e6b4568b20. The containing commit supplies the final preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $x(8)=5$이다.

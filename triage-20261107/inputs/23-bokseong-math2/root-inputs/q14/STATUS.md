@@ -16,3 +16,8 @@ Question-specific limitations:
 The draft is a number-line interval 1<a<3, not a family of cubic curves or a visualization of both extremum conditions. It exposes the final interval directly in alt, so answer-exposure review is unresolved. Prior triage framing failure remains preserved and is not claimed fixed. Independently, runtime-bridge-receipt.json at main a39c397e11dbafa13fd27e58cd129bd3ee074c5e records this source ordinal 14 as sourceStatus HOLD with reasons source_release, taxonomy, course_namespace_invalid, assignment_missing, canonical_parent_missing. This metadata release HOLD is not an SVG upload denial; no metadata, source fingerprint, approval, or release gate is changed.
 
 Preservation base: codex/svg-triage-20261107 at 30d317abccff0b0fff9af85893dc86e6b4568b20. The containing commit supplies the final preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: 따라서 $1<a<3$이다.

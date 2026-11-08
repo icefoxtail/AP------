@@ -16,3 +16,8 @@ Question-specific limitations:
 The draft is the closed number-line interval [−6,7], not a visualization of the derivative minimum's parameter cases. The final answer range is directly exposed in alt and the interval. Answer-exposure review and the case-split teaching objective remain unresolved.
 
 Preservation base: codex/svg-triage-20261107 at 30d317abccff0b0fff9af85893dc86e6b4568b20. The containing commit supplies the final preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $-6\le k\le7$이다.

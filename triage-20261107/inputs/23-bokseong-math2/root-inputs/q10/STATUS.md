@@ -16,3 +16,12 @@ Question-specific limitations:
 This is a derivative-sign number line, not a reconstruction of the source f′ curve or an invented f. Retain the source domain (−8,8), critical-value ordering, and signs; outer intervals are explained in text rather than fully drawn. Source q10.png and legacy q10-solution.svg remain unchanged. No new-engine SVG was found for Q10 in the checked main/triage/PR #1520 paths.
 
 Preservation base: codex/svg-triage-20261107 at 30d317abccff0b0fff9af85893dc86e6b4568b20. The containing commit supplies the final preserved revision; remote content verification is reported separately after the ref update.
+
+
+## Local schema-correction preparation (formal validator, render, review, and handoff: NOT_RUN)
+
+- Exact removed sourceQuote text: $f'(x)=0$인 점은 $x=-7,-3,-2,2,7$
+- Span label correction: exact original span from=A, to=B, label="f'>0"; label now '도함수 양수'.
+- Span label correction: exact original span from=B, to=C, label="f'<0"; label now '도함수 음수'.
+- Span label correction: exact original span from=C, to=D, label="f'>0"; label now '도함수 양수'.
+- Span label correction: exact original span from=D, to=E, label="f'<0"; label now '도함수 음수'.
