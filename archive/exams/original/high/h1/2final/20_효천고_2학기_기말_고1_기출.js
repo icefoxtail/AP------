@@ -43,7 +43,11 @@ window.questionBank = [
     "sourceQid": 1,
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 함수 그래프에 점 (1,2)와 (2,2)를 표시해 합성 입력과 출력의 흐름을 나타낸다.",
+    "solutionImageCaption": "예: 입력 1을 g에 넣으면 출력 2가 되고, 그 값을 f의 입력으로 넣는다. 두 점은 g(1)=2와 f(2)=2를 보여 준다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -89,7 +93,11 @@ window.questionBank = [
     "sourceQid": 2,
     "sourceOrdinal": 2,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원함수와 역함수의 직선, y=x, 그리고 서로 대응하는 점 (0,1)과 (1,0)을 나타낸다.",
+    "solutionImageCaption": "예: y=f(x)는 원함수 y=3x+1, y=g(x)는 그 역함수이다. 원함수의 점 (0,1)은 역함수에서 (1,0)으로 바뀌고, 두 직선은 y=x에 대하여 대칭이다. 정답은 y=(x−1)/3인 ④이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -135,7 +143,11 @@ window.questionBank = [
     "sourceQid": 3,
     "sourceOrdinal": 3,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 f(x)의 두 가지와 점근선, 곡선 위의 예시 좌표 (-2,8/3)를 나타낸다.",
+    "solutionImageCaption": "예: 곡선 위 좌표 (-2,8/3)와 두 점근선을 함께 살핀다. 그래프는 수직점근선과 수평점근선에 가까워진다. 정답은 x=1, y=3인 ②이다.",
+    "solutionImageSize": "medium"
   
   },
   {
@@ -227,7 +239,11 @@ window.questionBank = [
     "sourceQid": 5,
     "sourceOrdinal": 5,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (2,3)에서 시작해 왼쪽 아래로 뻗으며, 곡선 위 예시 좌표 (−1,3−√6)를 표시한다.",
+    "solutionImageCaption": "예: x=−1일 때 y=3−√6이고, 끝점은 (2,3)이다. 곡선이 왼쪽으로 뻗으면서 y값은 3 이하로 유지된다. 정답은 치역 y≤3인 ⑤이다.",
+    "solutionImageSize": "medium"
   
   },
   {
@@ -489,9 +505,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "두 점 A, B와 유리함수 위의 점 P 및 삼각형을 나타낸 좌표 그래프",
-    "solutionImageCaption": "x=3일 때 점 P가 움직이는 곡선 위에 놓여 넓이의 최솟값이 생긴다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 곡선과 수평점근선 y=1, 좌표점 (−2,3), (2,1), (3,2), 삼각형과 두 고정점을 잇는 점선을 나타낸다.",
+    "solutionImageCaption": "점 (3,2)에서 삼각형의 넓이가 최소가 된다. 점선은 (−2,3), (2,1)을 지나는 직선의 연장이고, 곡선은 y=1에 가까워진다. 정답은 3인 ③이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
     "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
@@ -539,9 +555,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "무리함수 그래프와 k=7/4 및 k=3인 직선을 함께 나타낸 그래프",
-    "solutionImageCaption": "k=7/4에서는 접하고 k=3에서는 한 점에서 만나 교점이 하나이다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수와 k=7/4, k=2, k=3인 세 직선, 접점과 두 교점을 나타낸다.",
+    "solutionImageCaption": "예: k=7/4에서는 접하고, k=2에서는 x=2와 x=3에서 두 번 만나며, k=3에서는 한 번 만난다. 치환 u=√(x−2)로 정리하면 경계값은 α=7/4, β=2이다. 정답은 αβ=7/2인 ③이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
@@ -589,9 +605,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "두 무리함수의 그래프와 경계 x=-4, x=4를 나타낸 좌표 그래프",
-    "solutionImageCaption": "x와 -x에서 두 그래프 사이의 세로 길이를 짝지으면 합이 8로 일정하다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 무리함수 그래프와 구간 경계 x=−4, x=4, x=−1과 x=1에서의 세로 높이를 나타낸다.",
+    "solutionImageCaption": "예: x=−1과 x=1에서 두 그래프 사이의 높이를 짝지으면 그 합은 8이다. 같은 관계를 구간 [−4,4]에 적용해 넓이를 구한다. 넓이는 32이며 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
     "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
@@ -832,9 +848,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "k=2일 때 절댓값 유리함수와 y=2의 교점을 나타낸 그래프",
-    "solutionImageCaption": "수평선 y=2는 x=1에서 한 번만 만난다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 유리함수의 두 가지와 수평선 y=2, 교점의 x좌표, 수직점근선 x=2를 나타낸다.",
+    "solutionImageCaption": "g(0)=1은 x=0에서 한 번 만나는 데서 확인한다. k=2일 때 y=2는 (1,2)에서 한 번만 만나므로 조건이 성립한다. 정답은 f(4)=4인 ④이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
@@ -937,7 +953,11 @@ window.questionBank = [
     "sourceQid": 20,
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
-    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3},
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 합성함수와 역함수의 그래프, 대칭선 y=x, 대응하는 점 (1,3)과 (3,1)을 나타낸다.",
+    "solutionImageCaption": "예: 합성함수 h=f∘g와 역함수 j=h⁻¹의 점 (1,3), (3,1)은 y=x 대칭이다. 정의역과 치역도 바뀐다. 정답은 역함수 y=((x−1)²−1)/3, 정의역 x≥1이다.",
+    "solutionImageSize": "full"
   
   },
   {
@@ -964,9 +984,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "수직점근선 x=-a와 수평점근선 y=c를 표시한 유리함수 그래프",
-    "solutionImageCaption": "b<0이므로 왼쪽 가지는 y=c 위, 오른쪽 가지는 y=c 아래에 놓인다.",
+    "solutionImage": "assets/images/20_효천고_2학기_기말_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시 무리함수의 왼쪽 가지와 유리함수의 두 가지, 양의 위치에 놓인 수직·수평 점근선을 나타낸다.",
+    "solutionImageCaption": "예: a=−1, b=−1, c=2이면 f(x)=−√(2−x), g(x)=2−1/(x−1)이다. 유리함수의 두 가지는 y=2를 기준으로 왼쪽은 위, 오른쪽은 아래에 놓인다. 정답은 a<0, b<0, c>0이다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
