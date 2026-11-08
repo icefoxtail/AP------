@@ -318,7 +318,9 @@ window.addEventListener('DOMContentLoaded', function () {
         b.point([p - r, q - sg * r], { r: 5.5, hollow: true, color: 'amber', label: 'B', dx: 9, dy: -9, size: 13, ref: 'dist' });
       }
       b.point([p, q], { r: 5.5, color: 'violet', label: 'C', dx: -10, dy: 14, align: 'right', size: 13 });
-      b.handle('P', P0, { color: 'amber', r: 7, label: 'P', dx: 10, dy: -10, size: 13, ariaLabel: '곡선 위의 점 P (끌어서 이동)', drag: (w) => { let uu = clamp(w.x - p, -7, 7); if (Math.abs(uu) < 0.3) uu = uu < 0 ? -0.3 : 0.3; s.s2u = uu; } });
+      const pScreen = b.toS(P0);
+      const pLabelInside = pScreen.x >= 16 && pScreen.x <= b.W - 34 && pScreen.y >= 25 && pScreen.y <= b.H - 25;
+      b.handle('P', P0, { color: 'amber', r: 7, label: pLabelInside ? 'P' : '', dx: 10, dy: -10, size: 13, ariaLabel: '곡선 위의 점 P (끌어서 이동)', drag: (w) => { let uu = clamp(w.x - p, -7, 7); if (Math.abs(uu) < 0.3) uu = uu < 0 ? -0.3 : 0.3; s.s2u = uu; } });
       return;
     }
     const v = var2.cur(), st = stepOf(lab, s), r = Math.sqrt(v.k);
