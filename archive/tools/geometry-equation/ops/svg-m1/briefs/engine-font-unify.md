@@ -24,3 +24,8 @@
 ## 거절·검사
 - 새 오류 코드 없음. 축 이름 관측: 한글 없는 이름은 `data-text`가 없고 수식 글리프 코드가 글자와 일치해야 하며(`AXIS_TITLE_TEXT_MISMATCH`), 한글 있는 이름은 기존 TEXT 검사 그대로. 검사 완화 없음.
 - 기존 테스트 변경: `test_graph_g18b_callouts` 한계 문구를 `(1234567890,12345678)`(21자)로(MATH 20자까지 허용으로 바뀐 한계), `tests/e30-fixtures/q6-axis-scale-names.json`의 svg를 새 엔진으로 다시 만든 것으로 교체(y(km)가 수식 글꼴이 됨; plan·frame 그대로).
+
+## 이전 증거와의 호환 (독립 검토 지적, 2026-11-09)
+- 영향 받는 저장 증거: 골든 `item62j`와 유사문항 `archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/q07-problem`(axisTitles `t`·`v`). 이전 엔진이 만든 평문(data-text) 축 이름 SVG를 새 `axis_titles_audit`로 다시 감사하면 `AXIS_TITLE_TEXT_MISMATCH`가 난다(직접 확인: q07 증거 state·svg로 재감사 → x·y 두 건).
+- 그 증거를 재감사하는 경로는 없다: `tools/harness/verify_similar_exam.mjs`는 증거의 `resultPath` 상태(ARCHIVE_BOUND)·`capability`·생성 SVG 바이트가 첨부 자산과 같은지만 보고 관측기를 다시 돌리지 않는다. CI(`geometry-publication-tests.yml`)의 python·node 테스트는 저장소 고정 fixture(`tests/e30-fixtures`, 새 엔진 출력으로 교체함)만 쓴다. 따라서 이번 변경으로 게시 자산·유사문항 JS·CI가 깨지지 않는다.
+- 호환이 끊기는 곳: 이전 엔진 출력 SVG를 새 관측기로 수동 재감사할 때만. 같은 plan을 새 엔진으로 다시 그리면 통과(결과는 PR 코멘트). 게시된 자산은 건드리지 않았다.

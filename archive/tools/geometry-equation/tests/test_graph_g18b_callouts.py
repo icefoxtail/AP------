@@ -32,6 +32,9 @@ class CalloutTexts(unittest.TestCase):
     def test_old_limits_stay(self):
         self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'극대극대극대극대극대극'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
         self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'(1234567890,12345678)'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
+        # a plain-text (TEXT) callout that carries a comma keeps its 14-character limit (14 passes, 15 is refused); EXT-20261109-b only widened MATH to 20
+        self.assertIsNone(refused(SQRT,[{'id':'c1','point':'V','text':'극'*13+',','labelKind':'TEXT'}]))
+        self.assertEqual(refused(SQRT,[{'id':'c1','point':'V','text':'극'*14+',','labelKind':'TEXT'}]),'OVERLAY_CALLOUT_TEXT_INVALID:c1')
 
     def test_up_to_six_callouts(self):
         six=[{'id':'c'+str(i),'point':'V','text':'a'} for i in range(6)]
