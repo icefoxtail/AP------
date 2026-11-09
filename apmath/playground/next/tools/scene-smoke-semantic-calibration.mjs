@@ -13,7 +13,12 @@ export function deriveSparseFigureContract(f) {
     'g8-pythagoras/py1-rot'].includes(key);
   const out = { applicable, key, contours: [], nodes: [], unknown: [], modelFacts: [] };
   if (!applicable) return out;
-  if (f.tab !== 'explore' || f.step !== 0 || f.playing) out.unknown.push('Only the original unplayed explore state is derived by this experiment.');
+  // The shell initializes a scene with review steps at cursor 1. py1-rot keeps
+  // that cursor while its explore renderer shows the original full triangle;
+  // it is not an animation-progress value. The six other sparse initial models
+  // below explicitly enter at cursor 0. Accept only each observed initial state.
+  const initialCursor = key === 'g8-pythagoras/py1-rot' ? 1 : 0;
+  if (f.tab !== 'explore' || f.step !== initialCursor || f.playing !== false) out.unknown.push('Only the completely observed original unplayed explore state is derived by this experiment.');
   const finite = x => typeof x === 'number' && Number.isFinite(x);
   const a = f.projection;
   if (!a || !['xx', 'xy', 'yx', 'yy', 'ox', 'oy'].every(k => finite(a[k]))) {
@@ -34,6 +39,7 @@ export function deriveSparseFigureContract(f) {
       y: -(p.y * cp - (p.x * sy + p.z * cy) * sp) }) };
   };
   if (f.unit === 'alg-sequence') {
+    if (f.id === 'br-tree' && s.br_level !== 0) out.unknown.push('Only the original root before branching is derived.');
     const area = f.area;
     if (!area || ![area.w, area.h].every(finite)) { out.unknown.push('Usable design area is unavailable.'); return out; }
     const isBranch = f.id === 'br-tree', value = isBranch ? s.br_t : s.type8_targetA4;
@@ -192,7 +198,7 @@ export function evaluateSmokeSemanticCalibration(f, existingInitialContract = nu
 
 /** Browser collector: observes actual glyphs, fraction bars and Board projection. */
 export function captureSmokeCalibrationFrame() {
-  const lab = window.lab, b = lab.board, c = b.ctx, glyphs = [], fractionBars = [], rawBoxes = [];
+  const lab = window.lab, b = lab.board, c = b.ctx, glyphs = [], fractionBars = [], rawBoxes = [], annotations = [], draws = [];
   const saved = {}, stack = []; let path = [];
   const map = (x, y) => { const t = c.getTransform(); return { x: (t.a * x + t.c * y + t.e) * b.W / b.canvas.width,
     y: (t.b * x + t.d * y + t.f) * b.H / b.canvas.height }; };
@@ -204,7 +210,7 @@ export function captureSmokeCalibrationFrame() {
       const pad = name === 'strokeText' ? this.lineWidth / 2 : 0;
       const points = [x - m.actualBoundingBoxLeft * sw - pad, x + m.actualBoundingBoxRight * sw + pad]
         .flatMap(xx => [y - m.actualBoundingBoxAscent - pad, y + m.actualBoundingBoxDescent + pad].map(yy => map(xx, yy)));
-      glyphs.push({ kind: name, text: String(value), parentText: stack.at(-1)?.text || null,
+      glyphs.push({ kind: name, text: String(value), parentText: stack.at(-1)?.text || null, invocationId: stack.at(-1)?.id ?? null,
         x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
         y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) });
     }
@@ -216,7 +222,7 @@ export function captureSmokeCalibrationFrame() {
     if (!b._bbox && stack.at(-1)?.fraction && opacity(this.strokeStyle) > .01 && path.length === 2) {
       const t = this.getTransform(), padX = this.lineWidth / 2 * Math.hypot(t.a, t.c) * b.W / b.canvas.width,
         padY = this.lineWidth / 2 * Math.hypot(t.b, t.d) * b.H / b.canvas.height;
-      fractionBars.push({ kind: 'fraction-bar', text: stack.at(-1).text,
+      fractionBars.push({ kind: 'fraction-bar', text: stack.at(-1).text, invocationId: stack.at(-1).id,
         x0: Math.min(...path.map(p => p.x)) - padX, x1: Math.max(...path.map(p => p.x)) + padX,
         y0: Math.min(...path.map(p => p.y)) - padY, y1: Math.max(...path.map(p => p.y)) + padY });
     }
@@ -227,7 +233,7 @@ export function captureSmokeCalibrationFrame() {
   wrap('fillRect', original => function (x, y, w, h) {
     if (!b._bbox && stack.at(-1)?.fraction && opacity(this.fillStyle) > .01) {
       const points = [x, x + w].flatMap(xx => [y, y + h].map(yy => map(xx, yy)));
-      fractionBars.push({ kind: 'fraction-bar-fill', text: stack.at(-1).text,
+      fractionBars.push({ kind: 'fraction-bar-fill', text: stack.at(-1).text, invocationId: stack.at(-1).id,
         x0: Math.min(...points.map(p => p.x)), x1: Math.max(...points.map(p => p.x)),
         y0: Math.min(...points.map(p => p.y)), y1: Math.max(...points.map(p => p.y)) });
     }
@@ -235,17 +241,42 @@ export function captureSmokeCalibrationFrame() {
   });
   const originalText = b._text;
   b._text = function (x, y, str, o = {}, screen) {
+    const parts = this._fracSplit?.(String(str));
+    const invocation = { id: annotations.length + 1, text: String(str), screen: !!screen,
+      fraction: Boolean(parts), expectedFractionBars: parts ? parts.filter(part => part.t === undefined).length : 0,
+      expectedGlyphs: (parts ? parts.flatMap(part => part.t === undefined ? [part.n, part.d] : [part.t]) : [String(str)]).filter(text => text.trim()),
+      ignored: !!(this._bbox || this.thumb), completed: false };
+    annotations.push(invocation);
     if (str != null && str !== '' && !screen && !this._bbox) {
       const size = (o.size || 13) * this.fs * this._ts(); c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
       const w = c.measureText(String(str)).width; c.restore(); const al = o.align || 'center', bl = o.baseline || 'alphabetic';
       const x0 = x + (al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0);
       const y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * .8);
-      rawBoxes.push({ text: String(str), x0, x1: x0 + w, y0, y1: y0 + size });
+      rawBoxes.push({ text: String(str), invocationId: invocation.id, x0, x1: x0 + w, y0, y1: y0 + size });
     }
-    stack.push({ text: String(str), fraction: Boolean(this._fracSplit?.(String(str))) });
-    try { return originalText.apply(this, arguments); } finally { stack.pop(); }
+    stack.push(invocation);
+    try { const value = originalText.apply(this, arguments); invocation.completed = true; return value; }
+    catch (error) { invocation.error = String(error?.message || error); throw error; }
+    finally { stack.pop(); }
   };
-  try { lab.render(); } finally { b._text = originalText; for (const [name, fn] of Object.entries(saved)) c[name] = fn; }
+  const originalShapes = {};
+  // The selected-face contract uses observed projected vertices in addition to
+  // the model and pixels. This hook observes the same final render as the text.
+  for (const name of ['path', 'point']) if (typeof b[name] === 'function') {
+    originalShapes[name] = b[name];
+    b[name] = function (value, options = {}) {
+      if (!this._bbox && !this.thumb && ['p2-6-base-face', 'p2-6-common-vertex'].includes(options.ref)) {
+        const points = (name === 'path' ? value : [value]).map(p => this.toS(p.x, p.y));
+        draws.push({ method: name, ref: options.ref, points });
+      }
+      return originalShapes[name].apply(this, arguments);
+    };
+  }
+  try { lab.render(); } finally {
+    b._text = originalText;
+    for (const [name, fn] of Object.entries(saved)) c[name] = fn;
+    for (const [name, fn] of Object.entries(originalShapes)) b[name] = fn;
+  }
   const canvas = b.canvas, rect = canvas.getBoundingClientRect(), rgba = c.getImageData(0, 0, canvas.width, canvas.height).data;
   const step = Math.min(31, Math.max(1, Math.round(canvas.width * canvas.height / 20360)));
   let ink = 0; for (let k = 3; k < rgba.length; k += 4 * step) if (rgba[k] > 30) ink++;
@@ -259,7 +290,7 @@ export function captureSmokeCalibrationFrame() {
     canvas: { width: canvas.width, height: canvas.height, cssWidth: b.W, cssHeight: b.H,
       rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height } },
     viewport: { width: window.innerWidth, height: window.innerHeight }, rgba,
-    glyphs, fractionBars, glyphCaptureComplete: true, fractionBarCaptureComplete: true,
+    glyphs, fractionBars, rawBoxes, annotations, draws, annotationCaptureComplete: true, glyphCaptureComplete: true, fractionBarCaptureComplete: true,
     legacy: { ink, samplingStep: step, clipped: rawBoxes.filter(q => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2).map(q => q.text.slice(0, 20)) } };
 }
 

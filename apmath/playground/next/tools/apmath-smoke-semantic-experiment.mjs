@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { createScreenshotGuard } from './browser-screenshot-guard.mjs';
 import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame } from './scene-smoke-semantic-calibration.mjs';
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
+import { adjudicateSmokeMeasurement } from './scene-smoke-measurement-gate.mjs';
 
 const argv = process.argv.slice(2), arg = name => { const i = argv.indexOf(name); if (i < 0 || !argv[i + 1]) throw Error(`Required ${name}`); return argv[i + 1]; };
 const root = path.resolve(arg('--root')), base = arg('--base-url').replace(/\/?$/, '/'), out = path.resolve(arg('--out'));
@@ -19,7 +20,7 @@ const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8'
 if (git('rev-parse', 'HEAD') !== expected) throw Error('Checkout does not match the requested immutable source');
 fs.mkdirSync(out, { recursive: true });
 const toolsDir = path.dirname(fileURLToPath(import.meta.url));
-const experimentSource = ['apmath-smoke-semantic-experiment.mjs', 'scene-smoke-semantic-calibration.mjs', 'middle-initial-figure-contracts.mjs', 'browser-screenshot-guard.mjs']
+const experimentSource = ['apmath-smoke-semantic-experiment.mjs', 'scene-smoke-semantic-calibration.mjs', 'scene-smoke-measurement-gate.mjs', 'middle-initial-figure-contracts.mjs', 'browser-screenshot-guard.mjs']
   .map(file => ({ file, sha256: sha(fs.readFileSync(path.join(toolsDir, file))) }));
 const legacyPath = 'apmath/playground/next/tools/scene-smoke.mjs';
 const legacySha = sha(fs.readFileSync(path.join(root, legacyPath)));
@@ -74,12 +75,17 @@ const observe = new Function(`return function observe() {
   ${evaluateSmokeSemanticCalibration.toString()}
   ${captureSmokeCalibrationFrame.toString()}
   ${sampleInitialFigure.toString()}
+  ${adjudicateSmokeMeasurement.toString()}
   const frame = captureSmokeCalibrationFrame();
-  const result = evaluateSmokeSemanticCalibration(frame, sampleInitialFigure());
+  const previousDraws=window.__initialFigureDraws;let initial;
+  try { window.__initialFigureDraws=frame.draws;initial=sampleInitialFigure(); }
+  finally { if(previousDraws===undefined)delete window.__initialFigureDraws;else window.__initialFigureDraws=previousDraws; }
+  const result = evaluateSmokeSemanticCalibration(frame, initial);
+  const measurementGate=adjudicateSmokeMeasurement(frame,result);
   const primitiveState = Object.fromEntries(Object.entries(frame.state).filter(([,v]) => v == null || ['number','string','boolean'].includes(typeof v)));
   const {rgba, state, ...observation} = frame;
   window.__apmExperimentLatest = {image: lab.board.ctx.getImageData(0,0,lab.board.canvas.width,lab.board.canvas.height),glyphs:frame.glyphs};
-  return {result, observation:{...observation,state:primitiveState}, canvasDataURL:lab.board.canvas.toDataURL('image/png')};
+  return {result, measurementGate, observation:{...observation,state:primitiveState}, canvasDataURL:lab.board.canvas.toDataURL('image/png')};
 }`)();
 const sequence = new Function(`return async function sequence({targets,stopAt=null}) {
   const observe = ${observe.toString()}; const rows=[];
@@ -156,7 +162,10 @@ async function viewport(session, row, name, context) {
   row.canvasFrozenDuringCapture = sha(Buffer.from(after.png.split(',')[1], 'base64')) === row.canvasCapture.sha256; delete after.png;
   row.stateAfterCapture = after; if (!row.canvasFrozenDuringCapture) throw Error('Screenshot captured a different canvas state');
 }
-function assertPositive(row, where) { if (row.result.status !== 'PASS') report.failures.push({ where, reason: 'positive-semantic-not-pass', status: row.result.status, failures: row.result.failures, unknown: row.result.unknown }); }
+function assertPositive(row, where) {
+  if (row.result.status !== 'PASS') report.failures.push({ where, reason: 'positive-semantic-not-pass', status: row.result.status, failures: row.result.failures, unknown: row.result.unknown });
+  if(row.measurementGate.status!=='PASS')report.failures.push({where,reason:'positive-invocation-bound-gate-not-pass',gate:row.measurementGate});
+}
 async function runNegative(session, unit, id, run, kinds, baselineSha) {
   await session.page.evaluate(() => { window.__apmExperimentBaseline = window.__apmExperimentLatest; });
   for (const kind of kinds) {
@@ -165,6 +174,7 @@ async function runNegative(session, unit, id, run, kinds, baselineSha) {
       const row = { unit, id, run: run.id, mutation: kind, ...await session.page.evaluate(negativeObserve, { kind }) };
       saveCanvas(row, `${tag}-canvas.png`); await viewport(session, row, `${tag}-page.png`, { unit, id, mutation: kind, run: run.id });
       if (row.result.status !== 'FAIL' || !row.result.failures.length) report.failures.push({ where: tag, reason: 'negative-control-was-not-hard-fail', status: row.result.status });
+      if(row.measurementGate.status!=='FAIL')report.failures.push({where:tag,reason:'negative-invocation-bound-gate-did-not-fail',gate:row.measurementGate});
       if (['core-hidden-with-auxiliary-frame', 'leaf-contours-and-region-hidden'].includes(kind) && row.result.legacy.ink < 200)
         report.failures.push({ where: tag, reason: 'auxiliary-ink-control-did-not-cross-original-200' });
       report.negative.push(row);

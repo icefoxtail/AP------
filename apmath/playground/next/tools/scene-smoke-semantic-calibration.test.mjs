@@ -48,15 +48,44 @@ test('unsupported model state is UNKNOWN, never a sparse-scene exemption', () =>
   assert.ok(deriveSparseFigureContract(f).unknown.length);
 });
 
-test('CSS-scaled tiny triangle fails while all internal canvas ink and legacy values stay identical', () => {
-  const f = plain(); Object.assign(f, { unit: 'g8-pythagoras', id: 'py1-rot', state: { pyWa: 6, pyWb: 8, pyRot: 0 },
+function visibleInitialTriangle() {
+  const f = plain(); Object.assign(f, { unit: 'g8-pythagoras', id: 'py1-rot', step: 1, state: { pyWa: 6, pyWb: 8, pyRot: 0 },
     projection: { xx: 25, xy: 0, yx: 0, yy: 25, ox: 50, oy: 235 } });
   const points = [[50, 35], [200, 235], [50, 235]];
   const distance = (x, y, a, b) => { const dx = b[0] - a[0], dy = b[1] - a[1], t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy)));
     return Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy); };
   for (let y = 0; y < 300; y++) for (let x = 0; x < 320; x++)
     if (points.some((p, i) => distance(x, y, p, points[(i + 1) % 3]) < 1.7)) f.rgba.set([240, 240, 240, 255], (y * 320 + x) * 4);
-  f.legacy = ink(f); assert.ok(f.legacy.ink >= 200); assert.equal(evaluateSmokeSemanticCalibration(f).status, 'PASS');
+  f.legacy = ink(f); return f;
+}
+
+test('py1-rot uses the actual initial review cursor 1 while remaining an unplayed explore figure', () => {
+  const f = visibleInitialTriangle(), before = evaluateSmokeSemanticCalibration(f);
+  assert.equal(before.status, 'PASS'); assert.equal(before.checks.length, 3);
+  assert.ok(before.checks.every(c => c.pass), 'all three original triangle sides are required');
+  for (const patch of [{ step: 0 }, { step: 2 }, { tab: 'review' }, { tab: 'problem' }, { playing: true }, { playing: undefined }, { playing: null }]) {
+    const changed = evaluateSmokeSemanticCalibration({ ...f, ...patch });
+    assert.equal(changed.status, 'UNKNOWN', JSON.stringify(patch));
+    assert.ok(changed.unknown.some(x => x.includes('original unplayed explore')));
+    assert.deepEqual(changed.legacy, before.legacy, 'the legacy result is never overridden');
+    const missingCore = evaluateSmokeSemanticCalibration({ ...f, ...patch, rgba: rgba(320, 300) });
+    assert.equal(missingCore.status, 'FAIL', 'a wrong cursor must not suppress a genuinely missing original figure');
+  }
+});
+
+test('branch-tree requires the separately observed initial branching level, even when shell cursor is zero', () => {
+  const f = plain(); Object.assign(f, { unit: 'alg-sequence', id: 'br-tree', nodeTextWidth: 20,
+    state: { br_t: 5, br_m: 0, br_level: 0 } });
+  assert.deepEqual(deriveSparseFigureContract(f).unknown, []);
+  for (const level of [1, 4, undefined, null]) {
+    const out = deriveSparseFigureContract({ ...f, state: { ...f.state, br_level: level } });
+    assert.ok(out.unknown.some(reason => reason.includes('before branching')));
+  }
+  for (const playing of [undefined, null]) assert.ok(deriveSparseFigureContract({ ...f, playing }).unknown.length);
+});
+
+test('CSS-scaled tiny triangle fails while all internal canvas ink and legacy values stay identical', () => {
+  const f = visibleInitialTriangle(); assert.ok(f.legacy.ink >= 200); assert.equal(evaluateSmokeSemanticCalibration(f).status, 'PASS');
   const tiny = { ...f, canvas: { ...f.canvas, rect: { left: 0, top: 0, width: 9.6, height: 9 } } };
   const r = evaluateSmokeSemanticCalibration(tiny); assert.equal(r.status, 'FAIL');
   assert.deepEqual(r.legacy, evaluateSmokeSemanticCalibration(f).legacy);
@@ -298,4 +327,64 @@ test('immutable 80 browser fixtures calibrate actual contours; missing old obser
   for (const r of records) assert.equal(r.failures.length, 0, `${r.phase}/${r.unit}/${r.id}/${r.view}: ${r.failures.join(', ')}`);
   assert.equal(representatives.size, 7); assert.equal(negative.length, 49);
   t.diagnostic('80 SHA-bound real Chromium fixtures, 49 destructive negative images, original FAIL values retained; all final calibration statuses remain UNKNOWN until complete new browser observation.');
+});
+
+const experimentFixtureRoot = process.env.APMATH_SMOKE_EXPERIMENT_FIXTURE_ROOT;
+test('complete actual Chromium observations retain 540 destructive failures and the original legacy results', { skip: !experimentFixtureRoot }, t => {
+  const records = [], expected = {
+    baseline: { report: 'e5c0b149707252ca30e10894014ddefda97c344182b674623cc1277f8a78c3cc',
+      source: 'd69709250e06005f6e4d8fc4cea15667bc5d3ded', negative: 245, critical: 0, legacyFailedPrimary: 9 },
+    candidate: { report: 'e1d368515b880641f36be54b8f684edff23d9756ddda8d745254f1345f6bfdbb',
+      source: '9bf1bb63bdc32dfa25195fb784c69d5c6290ddb6', negative: 295, critical: 40, legacyFailedPrimary: 15 }
+  };
+  for (const [phase, binding] of Object.entries(expected)) {
+    const reportBytes = fs.readFileSync(path.join(experimentFixtureRoot, `${phase}-report`, 'actual/report.json'));
+    assert.equal(sha(reportBytes), binding.report, 'immutable complete-observation report');
+    const report = JSON.parse(reportBytes); assert.equal(report.source.head, binding.source);
+    assert.equal(report.positive.length, 40); assert.equal(report.replays.length, 40);
+    assert.equal(report.negative.length, binding.negative); assert.equal(report.critical.length, binding.critical);
+    assert.equal(report.infrastructureErrors.length, 0);
+    assert.ok(report.sources.every(s => s.status === 200 && s.match && s.actualSha256 === s.gitBlobSha256));
+    assert.equal(report.positive.filter(row => row.result.legacy.status === 'FAIL').length, binding.legacyFailedPrimary);
+    for (const kind of ['positive', 'replays', 'negative', 'critical']) for (const row of report[kind]) {
+      const capture = row.canvasCapture;
+      const bytes = fs.readFileSync(path.join(experimentFixtureRoot, `${phase}-canvas`, capture.file));
+      assert.equal(sha(bytes), capture.sha256); assert.equal(bytes.length, capture.bytes);
+      const png = decodePng(bytes), f = { ...row.observation, rgba: png.data };
+      assert.equal(png.width, f.canvas.width); assert.equal(png.height, f.canvas.height);
+      assert.equal(f.glyphCaptureComplete, true); assert.equal(f.fractionBarCaptureComplete, true);
+      // These source-bound browser results already ran the independent F01/F3/
+      // tangent function. Replay that required result as a separate input; do
+      // not pretend a saved tangent frame recaptures its unrecorded model API.
+      const current = evaluateSmokeSemanticCalibration(f, row.result.existingInitialContract);
+      assert.deepEqual(current.legacy, row.result.legacy, 'all original ink and clipping results are retained verbatim');
+      assert.equal(current.gateOverride, false);
+      assert.equal(current.status, kind === 'negative' ? 'FAIL' : 'PASS', `${phase}/${row.unit}/${row.id}/${row.run}/${kind}/${row.mutation || ''}`);
+      if (f.id === 'py1-rot' && kind !== 'negative') {
+        assert.equal(f.tab, 'explore'); assert.equal(f.step, 1); assert.equal(f.playing, false);
+        assert.equal(row.result.status, 'UNKNOWN', 'the original experiment records the cursor assumption error');
+        assert.equal(row.result.failures.length, 0); assert.equal(row.result.unknown.length, 1);
+        assert.ok(current.checks.every(c => c.visible === 25 && c.pass));
+        assert.equal(evaluateSmokeSemanticCalibration({ ...f, step: 0 }).status, 'UNKNOWN', 'an unobserved cursor is not silently accepted');
+      } else {
+        assert.equal(current.status, row.result.status, 'no other semantic verdict changes');
+        assert.deepEqual(current.failures, row.result.failures);
+      }
+      if (kind === 'negative' && row.mutation === 'core-hidden-with-auxiliary-frame')
+        assert.ok(current.legacy.ink >= 200, 'ample auxiliary ink cannot substitute for the original figure');
+      records.push({ phase, kind, unit: row.unit, id: row.id, run: row.run, mutation: row.mutation || null,
+        source: binding.source, reportSha256: binding.report, canvasSha256: capture.sha256,
+        originalSemanticStatus: row.result.status, status: current.status, failures: current.failures,
+        legacy: current.legacy, existingContractFromImmutableBrowserObservation: !!row.result.existingInitialContract?.applicable });
+    }
+  }
+  assert.equal(records.length, 740);
+  assert.equal(records.filter(r => r.kind === 'negative' && r.status === 'FAIL').length, 540);
+  assert.equal(records.filter(r => r.kind !== 'negative' && r.status === 'PASS').length, 200);
+  assert.equal(records.filter(r => r.originalSemanticStatus !== r.status).length, 20, 'only py1-rot primary/replay in two phases changes UNKNOWN to PASS');
+  if (process.env.APMATH_SMOKE_EXPERIMENT_REEVALUATION_OUT) fs.writeFileSync(process.env.APMATH_SMOKE_EXPERIMENT_REEVALUATION_OUT,
+    JSON.stringify({ purpose: 'OFFLINE_REEVALUATION_OF_IMMUTABLE_ACTUAL_FRAMES_NOT_A_NEW_BROWSER_RUN',
+      sourceRunId: 42646572588, qualityVerdict: 'NOT_ASSERTED', records,
+      limitation: 'Source-bound actual PNG and full observation replay; existing critical contract results were recorded in Chromium. The corrected cursor still requires a fresh live collector run.' }, null, 2) + '\n');
+  t.diagnostic('740 SHA-bound actual frames: 200 positive/replay/critical PASS, 540 destructive FAIL, original baseline 9 and candidate 15 primary legacy failures unchanged. This is an offline reevaluation, not a new browser run or student-quality verdict.');
 });
