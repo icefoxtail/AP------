@@ -282,7 +282,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_31d2b9daed0f9f794eeb7dc6770dfc398826eced"
+    "questionUidProvisional": "qid_candidate_31d2b9daed0f9f794eeb7dc6770dfc398826eced",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 −1부터 0까지와 0부터 1.5까지의 두 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "표준화하면 주어진 구간은 표준점수 −1부터 1.5까지이다. 대칭을 이용해 −1부터 0까지의 넓이와 0부터 1.5까지의 넓이를 더한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -329,7 +333,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_0df770b53110165fa6fc534ce0a624f2c453c2f8"
+    "questionUidProvisional": "qid_candidate_0df770b53110165fa6fc534ce0a624f2c453c2f8",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 30인 정규곡선에서 28보다 작은 왼쪽 꼬리 영역이 음영으로 표시되어 있다.",
+    "solutionImageCaption": "28회는 평균보다 표준편차 한 단위 낮은 기준이다. 대칭을 이용해 왼쪽 꼬리 확률을 구한다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -376,7 +384,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_6b687aa2db399e9bac569595ac798a312d66ad24"
+    "questionUidProvisional": "qid_candidate_6b687aa2db399e9bac569595ac798a312d66ad24",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 45인 표본평균 정규곡선에서 41부터 미지의 기준 a까지의 영역을 표시했다. 아래 표준화 눈금은 왼쪽 끝에서 −2, 평균에서 0, a에서 1이다.",
+    "solutionImageCaption": "표본평균의 표준편차는 2이고, 왼쪽 경계 41은 표준점수 −2이다. 주어진 면적을 더해 오른쪽 경계가 평균보다 표준편차 하나만큼 위에 있음을 확인한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -470,7 +482,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_338b59608bd2a39d643ad3012343e81182b7e16c"
+    "questionUidProvisional": "qid_candidate_338b59608bd2a39d643ad3012343e81182b7e16c",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에서 2.58보다 큰 오른쪽 꼬리 영역이 음영으로 표시되어 있고, 넓이가 0.5−0.4950으로 적혀 있다.",
+    "solutionImageCaption": "신뢰구간의 반길이에서 표본평균의 표준편차를 구한 뒤 기준값을 표준화하면 2.58이다. 오른쪽 꼬리 확률을 구한 다음 1000배 한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -711,7 +727,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_c2261ceadd8baf99ff466bae5d1c5a6c31cb5802"
+    "questionUidProvisional": "qid_candidate_c2261ceadd8baf99ff466bae5d1c5a6c31cb5802",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사건 A의 발생 횟수에 대한 정규근사 곡선에서 870 이하가 음영으로 표시되어 있다. 표준화 눈금에는 평균에서 0이 표시되어 있다.",
+    "solutionImageCaption": "사건 A의 발생 횟수에서 870 이하의 누적 영역을 나타낸다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 16,
@@ -763,7 +783,11 @@ window.questionBank = [
     "replacementReason": "Original PDF p3 q16 says sample 100 from finite population 200, with no replacement specification; finite population correction changes exact k. Generated with-replacement independent-draw condition makes unique answer 21. Not source-exact.",
     "replacementStage": "MASTER_REPAIR_R2_TO_R3",
     "sourceProvenance": "SUPERVISOR_AUDITED_REPAIR_2026-10-19; source PDF 1ewzasSeHdqRMBS7NP2d2JuyFKfgivMq2 p3; with-replacement independent model condition retained from reviewed correction.",
-    "repairReason": "최종 학생 발문은 100회의 복원추출과 독립성을 명시한다. MASTER 수리 내용을 현재 학생 JS revision에 다시 결속했다."
+    "repairReason": "최종 학생 발문은 100회의 복원추출과 독립성을 명시한다. MASTER 수리 내용을 현재 학생 JS revision에 다시 결속했다.",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 4인 표본평균 정규곡선에서 k 오른쪽 꼬리를 음영으로 표시했고, 표준화 눈금은 평균에서 0, k에서 2이다.",
+    "solutionImageCaption": "표본평균의 평균과 표준편차는 각각 4와 0.1이다. 오른쪽 꼬리확률 0.0228은 표준점수 2에 해당하므로 k의 위치를 정한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -810,7 +834,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_ae5acc0d5a2f18ae6ae486929f255735bb5b1670"
+    "questionUidProvisional": "qid_candidate_ae5acc0d5a2f18ae6ae486929f255735bb5b1670",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선에 −1.5부터 0까지의 구간과 1.5 오른쪽 꼬리가 음영으로 구분되어 있고, 구하는 경계 a가 눈금으로 표시되어 있다.",
+    "solutionImageCaption": "X의 구간을 표준화하면 −1.5부터 0까지이고 그 넓이는 0.4332이다. Y의 오른쪽 꼬리 0.0668에 대응하는 위치가 1.5이며, 구하는 경계는 표준화축에서 a로 표시했다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -859,7 +887,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_6d4ee8b572fb9b2de68f1a6b3389ac68e4aa864c"
+    "questionUidProvisional": "qid_candidate_6d4ee8b572fb9b2de68f1a6b3389ac68e4aa864c",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 번째로 작은 값 2, 3, 4의 도수가 각각 6, 6, 3이고 평균 위치가 점선으로 표시되어 있다.",
+    "solutionImageCaption": "두 번째로 작은 값의 분포와 평균 위치를 나타낸다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 19,
@@ -1007,7 +1039,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_67ec8e1979aca8607e7de42d6661282fa2a6db01"
+    "questionUidProvisional": "qid_candidate_67ec8e1979aca8607e7de42d6661282fa2a6db01",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로는 첫째 눈 a, 세로는 둘째 눈 b인 표에서 b<2a인 칸을 음영으로 표시했다.",
+    "solutionImageCaption": "두 주사위 결과 가운데 b<2a인 순서쌍을 음영으로 표시한다. 정답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1089,7 +1125,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "DIRECT_ACTIVE",
-    "questionUidProvisional": "qid_candidate_1578399c952a16fba8c07279f21f51a3fa62c1cf"
+    "questionUidProvisional": "qid_candidate_1578399c952a16fba8c07279f21f51a3fa62c1cf",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 평균 120, 표준편차 8인 곡선에서 108 이하가 음영이고 표준화값은 −1.5이다. 아래쪽은 평균 40, 표준편차 6인 곡선에서 49 이하가 음영이고 표준화값은 1.5이다.",
+    "solutionImageCaption": "한 상자의 무게를 표준화해 불량 확률을 구한다. 이어 불량 상자 수의 평균과 표준편차를 구하고 49를 표준화해 누적확률을 읽는다. 정답은 0.9이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 24,
@@ -1135,12 +1175,14 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "metaLookupStatus": "R1_RPM_L4_COVERAGE_GAP_ACTIVE_PT_TPL_REUSED",
     "questionUidProvisional": "qid_candidate_67d0bacf80e9b65a9d656b862272829e3b8b8fe1",
-    "solutionImage": "assets/solutions/22_효천고_2학기_기말_고2_확률과통계/q24-solution.svg",
-    "solutionImageAlt": "확률밀도함수 g의 꺾은선 그래프에서 4/7부터 3까지의 확률 넓이를 표시한 그림",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: g(y)의 밀도곡선에서 4/7부터 1까지와 1부터 3까지의 그래프 아래 두 영역이 서로 다른 옅은 음영으로 표시되어 있다.",
     "sourceMode": "ALIVE_REPLACEMENT",
     "replacementReason": "Original PDF p4 q24 has x∈[0,5] but f(x+5),g(-x) undefined on much of domain and printed a>k contradicts density normalization a=4/35<k=2/7. R2 had already corrected domain and inequality; provenance explicitly marks this non-source-exact replacement.",
     "replacementStage": "R2_EXISTING_REPAIR_MASTER_PROVENANCE_REBIND",
     "sourceProvenance": "SUPERVISOR_AUDITED_REPAIR_2026-10-19; source PDF 1ewzasSeHdqRMBS7NP2d2JuyFKfgivMq2 p4; support and a<k correction retained from reviewed correction.",
-    "repairReason": "원문의 적분 범위에서 f(x+5), g(-x)가 정의되지 않고 a>k는 정규화 결과와 모순된다. 현재 학생 JS의 [-5,0], a<k 수정과 해설을 MASTER ledger 근거에 결속했다."
+    "repairReason": "원문의 적분 범위에서 f(x+5), g(-x)가 정의되지 않고 a>k는 정규화 결과와 모순된다. 현재 학생 JS의 [-5,0], a<k 수정과 해설을 MASTER ledger 근거에 결속했다.",
+    "solutionImageCaption": "좌우 대응식에서 얻은 g(y)의 그래프를 그리고, 구간 4/7부터 1까지와 1부터 3까지의 넓이를 더한다. 두 부분은 사다리꼴과 직사각형 영역이다. 정답은 521이다.",
+    "solutionImageSize": "full"
   }
 ];

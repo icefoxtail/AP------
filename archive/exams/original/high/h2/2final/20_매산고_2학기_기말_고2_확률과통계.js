@@ -78,7 +78,11 @@ window.questionBank = [
       "객관식",
       "정규분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 2의 눈금이 표시되고, z=2 왼쪽 영역이 칠해져 있다.",
+    "solutionImageCaption": "평균에서 경계까지 표준화하면 z=2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -213,7 +217,11 @@ window.questionBank = [
       "객관식",
       "확률변수와 확률분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 모양의 확률밀도 그래프에서 x=4인 곡선 위의 점 P와 x=4부터 6까지 곡선 아래 오른쪽 영역을 나타낸 그림.",
+    "solutionImageCaption": "x=4인 곡선 위의 점을 P라 하고, x=4부터 6까지의 오른쪽 넓이를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -293,7 +301,11 @@ window.questionBank = [
       "객관식",
       "이항분포"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 2의 눈금이 표시되고, z=2 오른쪽 꼬리 부분이 칠해져 있다.",
+    "solutionImageCaption": "두 주사위가 모두 짝수일 확률로 이항분포를 세우고 정규화 기준 2의 오른쪽 꼬리를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -373,7 +385,11 @@ window.questionBank = [
       "객관식",
       "모평균 추정"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에서 −1.96과 1.96 사이의 가운데 영역이 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차에 1.96을 곱해 신뢰 한계의 거리를 구한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -466,7 +482,11 @@ window.questionBank = [
       "sourcePdfDriveId": "1AhcZQDLPr7l8u3vXy5id8GZmDZHaUC6M",
       "sourcePdfPage": 3,
       "sourceFidelity": "EDITORIAL_ASSUMPTION_ADDED"
-    }
+    },
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번의 시행에서 고리 적중은 +5점이고 그 밖은 2점 손실인 두 갈래 수형도이며, 가지 확률은 각각 5분의 1과 5분의 4이다.",
+    "solutionImageCaption": "한 회의 점수별 확률로 100회 성공 횟수의 이항모형을 세운다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -508,7 +528,11 @@ window.questionBank = [
       "객관식",
       "모집단과 표본"
     ],
-    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP"
+    "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에 0과 1.4의 눈금이 표시되고, z=1.4 오른쪽 꼬리 부분이 칠해져 있다.",
+    "solutionImageCaption": "표본평균을 표준화하면 경계가 1.4가 되며, 표의 오른쪽 꼬리 확률에 맞추어 최소 표본크기를 정한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -597,9 +621,9 @@ window.questionBank = [
       "정규분포"
     ],
     "metaSource": "RPM_PRIMARY_2015_H2_LOOKUP",
-    "solutionImage": "assets/solutions/q14-solution.svg",
-    "solutionImageAlt": "중심 C(2, 1.5), 반지름 2.5인 원에서 a>0, b>0인 반원호를 강조한 좌표 그림",
-    "solutionImageCaption": "A(4,0)과 B(0,3)을 잇는 지름에 대응하는 제1사분면 반원호",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축에서 A(4, 0), B(0, 3), 중심 C(2, 1.5)를 표시하고, AB를 지름으로 하는 제1사분면 반원호를 파란색으로 나타낸 그림.",
+    "solutionImageCaption": "중심 C와 지름 AB, 양의 좌표 조건의 제1사분면 반원호를 나타낸다. 정답은 5π/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -702,7 +726,11 @@ window.questionBank = [
       "단답형",
       "정규분포"
     ],
-    "metaSource": "ALIVE_REPLACEMENT_RPM_EXACT_BINDING_PENDING"
+    "metaSource": "ALIVE_REPLACEMENT_RPM_EXACT_BINDING_PENDING",
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: u축에서 -3부터 3까지의 점과 대칭인 구간을 나타내는 세 개의 괄호가 있다.",
+    "solutionImageCaption": "대칭 구간의 확률을 차례로 A, B, C로 나타내고 가운데 구간 전체를 합한 뒤 여사건을 취한다. 정답은 19/36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -783,6 +811,10 @@ window.questionBank = [
       "sourcePdfDriveId": "1AhcZQDLPr7l8u3vXy5id8GZmDZHaUC6M",
       "sourcePdfPage": 6,
       "sourceFidelity": "EDITORIAL_ALIVE_NOT_ORIGINAL"
-    }
+    },
+    "solutionImage": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규곡선의 z축에서 −1.8과 1.8 사이의 가운데 영역이 칠해져 있다.",
+    "solutionImageCaption": "길이 조건으로 허용되는 대칭 경계 z=±1.8과 그 사이 영역을 확인한다. 정답은 93%이다.",
+    "solutionImageSize": "full"
   }
 ];
