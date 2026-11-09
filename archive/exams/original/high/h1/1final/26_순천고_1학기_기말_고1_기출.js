@@ -279,7 +279,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM",
     "subUnit": "연립방정식과 연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 열량의 상한 30과 단백질의 하한 b를 세 수직선에서 비교한 그림.",
+    "solutionImageCaption": "식품 A의 무게를 x g라 하고 단백질 조건의 하한을 b라 두었다. 열량 조건은 x≤30이고 단백질 조건은 x≥b이므로 공통 범위는 b≤x≤30이다. 단백질 부등식을 풀면 b=20이므로 정답은 20 g이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -310,7 +314,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-SYSTEM",
     "subUnit": "연립방정식과 연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫째 부등식과 둘째 부등식의 해를 같은 눈금의 수직선에 겹쳐 공통 범위의 정수점을 표시한 그림.",
+    "solutionImageCaption": "예: a=−16일 때 두 부등식의 공통 범위와 정수해를 표시했다. 정수해의 합이 −7이 되려면 가장 작은 정수해가 −4여야 하므로 아래 경계는 −5 이상 −4 미만이다. 따라서 −17≤a<−14이고 정답은 −15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -342,9 +350,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q11-solution-fig.svg",
-    "solutionImageAlt": "a=4일 때 y=4x²-8x-12의 -3≤x≤4에서 최댓값은 왼쪽 끝점 A(-3,48)이고, 직선 y=4x-12와는 x=0, 3에서 만난다.",
-    "solutionImageCaption": "a=4일 때 y=4x²-8x-12의 -3≤x≤4에서 최댓값은 왼쪽 끝점 A(-3,48)이고, 직선 y=4x-12와는 x=0, 3에서 만난다.",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 y=f(x)와 주황 직선 y=4x−12가 만나는 두 점, 포물선의 구간 양 끝점과 높이 안내선을 표시한 그림.",
+    "solutionImageCaption": "두 교점의 x좌표를 이용하면 f(x)=ax²−2ax−12이다. a>0일 때 구간의 양 끝값을 비교하면 f(−3)>f(4)이므로 f(−3)=48에서 a=4를 얻는다. 이를 f(6)에 대입하면 정답은 84이다.",
     "solutionImageSize": "full"
   },
   {
@@ -407,7 +415,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: a=−1인 예에서 첫째와 둘째 부등식의 해집합을 같은 눈금으로 비교하고 공통 범위를 표시한 수직선.",
+    "solutionImageCaption": "예: a=−1일 때 두 해집합의 공통 범위가 3<x<5가 되는 모습을 표시했다. 일반적으로 −a≤3이어야 하고, 왼쪽에 추가 구간이 생기지 않으려면 a≤0이어야 하므로 −3≤a≤0이다. 따라서 M=0, m=−3이고 정답은 −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -470,9 +482,9 @@ window.questionBank = [
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q15-solution-fig.svg",
-    "solutionImageAlt": "n≥5일 때 해는 3<x<n이고 자연수해는 4, 5, …, n-1이다. n=7이면 자연수해가 4, 5, 6의 3개로 조건의 최대 개수이다.",
-    "solutionImageCaption": "n≥5일 때 해는 3<x<n이고 자연수해는 4, 5, …, n-1이다. n=7이면 자연수해가 4, 5, 6의 3개로 조건의 최대 개수이다.",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: n=7인 예에서 열린 구간 3<x<n 안에 자연수 4, 5, 6이 놓인 수직선.",
+    "solutionImageCaption": "예: n=7일 때 3<x<n의 자연수해는 3개이다. n=1인 경우도 포함하면 가능한 n은 1, 5, 6, 7이므로 정답은 19이다.",
     "solutionImageSize": "full"
   },
   {
@@ -505,9 +517,10 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "포물선 y=(x−2)²−1의 꼭짓점 (2,−1)과 x=0, x=4에서 같은 값 3이 되는 점 (0,3), (4,3)을 표시해, a가 2와 4를 지날 때 최댓값·최솟값이 달라지는 기준을 보여 준다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=(x−2)²−1의 꼭짓점 (2,−1)과 같은 높이의 두 점 (0,3), (4,3)을 표시한 그림.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "구간의 오른쪽 끝 a가 2와 4를 지날 때 최대·최소를 나누어 비교한다. 조건을 만족하는 두 a의 합이므로 정답은 4−√3+√7이다."
   },
   {
     "id": 17,
@@ -532,7 +545,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 절댓값 합의 꺾은선과 주황 수평선 y=9, 교점에서 x축으로 내린 점선이 표시된 그림.",
+    "solutionImageCaption": "절댓값의 기준점 −1과 2에서 식이 달라지고, 가운데 구간의 함수값은 3이다. y=9 이하인 부분의 x범위는 −4≤x≤5이므로 양 끝을 포함해 정수를 센다. 정답은 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -557,7 +574,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 파란 직사각형과 주황 대각선, 가로 64와 세로 48 및 대각선 80을 표시한 그림.",
+    "solutionImageCaption": "직사각형의 대각선은 원의 지름이므로 길이가 80이다. 가로와 세로를 4k, 3k라 두면 대각선은 5k이므로 k=16이고, 가로 64와 세로 48을 곱한다. 정답은 3072이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -584,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=f(x)와 주황 y=g(x)의 교점과 영점, 두 조건이 겹치는 x범위의 연한 초록 영역을 표시한 그림.",
+    "solutionImageCaption": "예: 원문과 같은 영점과 교점의 x좌표를 갖는 두 포물선으로 위치 관계를 표시했다. f(x)>0인 범위와 g(x)>f(x)인 범위를 겹치면 −5<x<−3이다. 이 구간의 정수는 하나이므로 정답은 −4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -610,9 +635,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q20-solution-fig.svg",
-    "solutionImageAlt": "하루 이익 P(x)=-50(x-20)²+45000은 0≤x≤50에서 x=20일 때 45000원으로 최대이고, x=0에서 25000원, x=50에서 0원이 된다.",
-    "solutionImageCaption": "하루 이익 P(x)=-50(x-20)²+45000은 0≤x≤50에서 x=20일 때 45000원으로 최대이고, x=0에서 25000원, x=50에서 0원이 된다.",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가격 인상 횟수 x에 따른 하루 이익 포물선과 꼭짓점 V(20,45000)을 표시한 그림.",
+    "solutionImageCaption": "x는 5원 인상 횟수, y는 하루 이익(원)이다. 0≤x≤50에서 x=20일 때 이익이 최대이므로 정답은 400원이다.",
     "solutionImageSize": "full"
   },
   {
