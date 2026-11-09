@@ -50,7 +50,8 @@ const elementText=(raw,max,code)=>{
   if(math&&/[<>]/.test(text))bad('SET_ELEMENT_TEXT_UNSUPPORTED');
   return {text,math};
 };
-const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9]$/.test(text);
+// (EXT-20261109-c) one font: a name or element without Korean letters (A, 10, AB, g(0), f(x)) is math like every other letter and number of the figure
+const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,6}$/.test(text);
 
 // --- set expressions: ∪ ∩ - and a postfix complement (ᶜ, ^c, ^C), with U the universal set --------------------------------
 function parseShade(raw,setIds){

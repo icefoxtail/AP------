@@ -29,6 +29,9 @@
 - **글꼴 통일(사용자 최우선 지시):** 한글 없는 축 이름(`y`·`g(y)`·`y(km)`)·곡선 이름(`f(x)`)·지시선 글자는 수식 글꼴, 한글이 있으면 한글 글꼴. 전수 조사표와 남은 TEXT 라벨은 `ops/svg-m1/briefs/engine-font-unify.md`. 골든 `item62j`의 y축 이름만 글꼴이 바뀜(나머지 글 조각·선 바이트 동일).
 - **곡선 이름 변수 `nameVariable`**(구간별 다항): `g(y)`(골든 `item130ext1probdensity`). 남은 것: 유리함수 조각 구간 불연속(`PIECEWISE_DISCONTINUITY_UNDECLARED`, 24 효천 고1 Q14)은 패밀리 확장 필요. 지시서 `ops/svg-m1/briefs/engine-callout-math-namevariable.md`.
 
+### 2026-11-09 엔진 확장 회차 c(브랜치 engine/ext-20261109-c)
+- 지시선 글자의 그리스 문자·`′`·`√`도 수식 글꼴(수식 파서 `√`·`′`, 관측기 글리프 대조 보강, 골든 `item132ext3greek`). 대응도·벤다이어그램의 집합·원소 이름(`A`, `10`, `AB`, `f(x)`)도 수식 글꼴(`set-diagram-v1.mjs` `labelMath`). 통계 패널 영어 라벨과 구간 불연속 선언(유리 조각)은 남음(`briefs/engine-font-unify.md` 3회차 표). 렌더 중 `WORKER_TIMEOUT`이 나면 `GEOMETRY_WORKER_TIMEOUT_MS=90000`.
+
 ### 2026-11-02~03 세션: 25·24 2학기 기말 묶음 ①~④ 끝 (사용자 지시 "고2 각 과목별까지")
 - **끝낸 묶음:** ① 25 중2 + 24 중1·중2, ② 25·24 중3(#1230), ③ 25·24 고1(11개 시험지), ④ 25·24 고2 수학II·확률과통계(11개). ③④는 22개 시험지 중 16개 CLOSED, 해설 그림 PUBLISHED 303·EXEMPT 192·OPEN 6. 1~4차로 나눠 게시했다(검수 FAIL은 엔진을 넓힌 뒤 다시 그림).
 - **엔진 묶음(모두 이 PR):** G17 대응도 부호 있는 수·열 원소 수 차이·화살표 이름/색·합성 경로, 벤 서로소·3단 포함(item112g17) / G18a 음수 계수 유리함수 틀, multi-curve에 유리·무리·직선·역함수(inverseOf), hideLabels·formulaTex, 구간 강조(item113g18a) / G19 정규분포 문제 표 값 라벨(source TABLE), 좁은 꼬리 지시선 라벨, 정규곡선 합성 패널, σ 비 10, 수직선 소수(item114g19) / G18b 등축척 equalUnits, 무리함수 overlay 직선·점, callout 6개·√·그리스 문자, multi-curve 라벨을 자기 곡선·점근선 옆에(item115g18b) / G18c multi-curve 영역 색칠(between·under·halfPlane)·절댓값 곡선·axisScale 틀과 분수 눈금·callout 지시선 축 통과·셋째 곡선 라벨 탐색·라벨 탐색 가속 12s→0.6s(item116g18c). 정답지 표본 합집합 44개: 기존 39개 main과 바이트 동일, 새 5개 렌더 통과.

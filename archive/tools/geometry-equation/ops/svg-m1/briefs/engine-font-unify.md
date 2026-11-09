@@ -29,3 +29,13 @@
 - 영향 받는 저장 증거: 골든 `item62j`와 유사문항 `archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/q07-problem`(axisTitles `t`·`v`). 이전 엔진이 만든 평문(data-text) 축 이름 SVG를 새 `axis_titles_audit`로 다시 감사하면 `AXIS_TITLE_TEXT_MISMATCH`가 난다(직접 확인: q07 증거 state·svg로 재감사 → x·y 두 건).
 - 그 증거를 재감사하는 경로는 없다: `tools/harness/verify_similar_exam.mjs`는 증거의 `resultPath` 상태(ARCHIVE_BOUND)·`capability`·생성 SVG 바이트가 첨부 자산과 같은지만 보고 관측기를 다시 돌리지 않는다. CI(`geometry-publication-tests.yml`)의 python·node 테스트는 저장소 고정 fixture(`tests/e30-fixtures`, 새 엔진 출력으로 교체함)만 쓴다. 따라서 이번 변경으로 게시 자산·유사문항 JS·CI가 깨지지 않는다.
 - 호환이 끊기는 곳: 이전 엔진 출력 SVG를 새 관측기로 수동 재감사할 때만. 같은 plan을 새 엔진으로 다시 그리면 통과(결과는 PR 코멘트). 게시된 자산은 건드리지 않았다.
+
+## 3회차(EXT-20261109-c) 처리 현황
+| 행 | 처리 |
+|---|---|
+| 지시선 속 그리스 문자·`′`·`√` | **고침**: 수식 파서가 `√`(`√3`·`√x`·`√(x-2)`)와 `′`를 읽고(`math_expression.py`), 틀·관측기 기본 종류는 한글만 TEXT. 관측기 글리프 대조(`_ov_label_codes`)가 그리스 이탤릭 코드(`1D6FC`…)와 근호(피제수 뒤 U+221A)를 안다. 골든 `item132ext3greek` |
+| 대응도·벤다이어그램 집합·원소 이름(COORDINATE/EQUATION: `node-*`, `column-name-*`, `element-*`, `set-name-*`) | **고침**: `set-diagram-v1.mjs` `labelMath`가 한글 없는 `[A-Za-z0-9()]{1,6}`(A, 10, AB, g(0), f(x))를 수식 글꼴로. 관측기는 data-text/data-tex 어느 쪽이든 글자를 읽으므로 변경 없음 |
+| 평면도형 `planeMarks` 라벨 | 확인: `labelKind` 기본이 이미 MATH이고 TEXT는 작성자가 명시한 한글·단위·도형 기호·자모 라벨뿐이라 코드 변경 없음(옛 해설 그림의 TEXT는 기본값이 MATH가 되기 전 출력) |
+| 통계 패널(`stat-chart-v1.mjs`) 제목·범례·변수 이름 | **남음**: 한글 없는 영어 라벨(x, y, A, B)만 해당. 관측기 `stat_chart_observer.py`가 라벨마다 `data-text`를 단정(제목·범례·시리즈 이름·열쇠·변수 이름)해 함께 고쳐야 하며 대상이 작아 다음 묶음으로 |
+| 구간 불연속 선언(24 효천 고1 Q14, 유리 조각) | **남음**: 구간별 다항 패밀리가 유리함수 조각을 갖지 않는다. 패밀리 확장 설계가 먼저 필요 |
+| 그래프 틀 단계 10초 제한 | `GEOMETRY_WORKER_TIMEOUT_MS`(밀리초)로 늘릴 수 있다(기본 10000, 부하가 큰 PC에서 파이썬 첫 import가 7초 넘어 WORKER_TIMEOUT이 났다) |

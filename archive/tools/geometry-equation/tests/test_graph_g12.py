@@ -57,7 +57,13 @@ class Framing(unittest.TestCase):
         # EXT-20261109-b: no Korean letters and no Greek/prime/root sign = math (a coordinate pair too); Korean or those signs = plain text
         plan=with_overlays(callouts=[{'id':'c1','point':'A','text':'(1,0)'},{'id':'c2','point':'A','text':'극대'},{'id':'c3','point':'A','text':'u=√3'}])
         rows={row['id']:row['labelKind'] for row in fit_overview(plan)['graphPlan']['overlaysFeatures']['callouts']}
-        self.assertEqual(rows,{'c1':'MATH','c2':'TEXT','c3':'TEXT'})
+        self.assertEqual(rows,{'c1':'MATH','c2':'TEXT','c3':'MATH'})   # EXT-20261109-c: Greek letters, the prime and the root sign are math too
+    def test_glyph_codes_of_greek_letters_and_the_root_sign(self):
+        # EXT-20261109-c: MathJax draws a Greek letter as its italic code and the radicand before the radical U+221A (sqrt(...) brackets are not drawn)
+        first=lambda text:[max(c,key=lambda h:int(h,16)) for c in _ov_label_codes(text)]
+        self.assertEqual(first('γ'),['1D6FE']);self.assertEqual(first('α+β'),['1D6FC','2B','1D6FD'])
+        self.assertEqual(first('u=√3'),['1D462','3D','33','221A']);self.assertEqual(first('y=√(x-2)'),['1D466','3D','1D465','2212','32','221A'])
+        self.assertEqual(first('2√3'),['32','33','221A']);self.assertEqual(first('A′'),['1D434','2032'])
     def test_a_bad_callout_is_refused_with_its_code(self):
         bad=lambda *entries:refused(with_overlays(callouts=list(entries)))
         self.assertEqual(bad({'id':'c','point':'Z','text':'a'}),'OVERLAY_CALLOUT_POINT_UNKNOWN:c')

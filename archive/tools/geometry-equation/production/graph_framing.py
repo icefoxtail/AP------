@@ -2824,7 +2824,7 @@ OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'name
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}'   # (G18b) a plain-text callout may carry commas (a coordinate pair), Greek letters and a prime
 OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
-OVERLAY_CALLOUT_MATH_PATTERN=re.compile(r'[0-9A-Za-z=+*/().^ ,_-]{1,20}')   # (EXT-20261109-b) a MATH callout may carry a comma (a coordinate pair), a subscript (A_1) and a bracketed fraction ((x+2)/(x-2)), up to 20 characters
+OVERLAY_CALLOUT_MATH_PATTERN=re.compile(r'[0-9A-Za-zαβγδθπ′√=+*/().^ ,_-]{1,20}')   # (EXT-20261109-b) a MATH callout may carry a comma (a coordinate pair), a subscript (A_1) and a bracketed fraction ((x+2)/(x-2)), up to 20 characters
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -3477,7 +3477,7 @@ def _overlay_callouts(plan,rows,claim,by_point):
         kind=entry.get('labelKind')
         if kind is not None and kind not in ('TEXT','MATH'):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if not isinstance(text,str) or text!=text.strip() or not text:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
-        if kind is None:kind='TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in 'αβγθ′√') else 'MATH'
+        if kind is None:kind='TEXT' if re.search('[가-힣]',text) else 'MATH'
         if kind=='TEXT' and re.fullmatch(OVERLAY_CALLOUT_TEXT_PATTERN if any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if kind=='MATH' and OVERLAY_CALLOUT_MATH_PATTERN.fullmatch(text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         row={'id':ident,'point':ref,'dot':dot,'at':at,'text':text,'labelKind':kind}

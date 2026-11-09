@@ -1,0 +1,87 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "f(x)",
+    "elements": [
+     "10",
+     "25",
+     "1",
+     "2"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "AB",
+    "elements": [
+     "a",
+     "b",
+     "10",
+     "3"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   }
+  ],
+  "highlight": {
+   "elements": [
+    {
+     "column": 1,
+     "element": 2
+    }
+   ]
+  }
+ },
+ "caption": "집합 이름 f(x), AB와 원소 10, 25가 수식 글꼴로 쓰인 대응도.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "regression plan: Latin names and two-digit elements",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": "치역 {0,1,3}에 바탕을 칠하고 공역의 2는 비워 둠"
+}

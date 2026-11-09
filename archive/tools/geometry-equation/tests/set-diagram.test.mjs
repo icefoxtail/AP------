@@ -71,7 +71,7 @@ test('the engine derives every atomic region and the truth of the set expression
   assert.equal(solveDiagram({...map2,arrows:[...map2.arrows,{from:{column:0,element:0},to:{column:1,element:2}}]}).isFunction,false);
   const signed=solveDiagram(mapSigned);
   assert.deepEqual(signed.columns[0].elements.map(e=>[e.text,e.math,e.tex??null]),[['\u22122',true,'-2'],['\u22121',true,'-1'],['0',true,null],['1/2',true,'1/2'],['\u221a2',true,'\\sqrt{2}']]);
-  assert.equal(solveDiagram({...mapSigned,columns:[{id:'X',elements:['12','가나']},{id:'Y',elements:['ab']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]}).columns[0].elements[0].math,false);
+  assert.deepEqual(solveDiagram({...mapSigned,columns:[{id:'X',elements:['12','가나']},{id:'Y',elements:['ab']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]}).columns[0].elements.map(e=>e.math),[true,false]);   // EXT-20261109-c: 12 has no Korean letters so it is math like -2 and 0; 가나 stays text
   const uneven=solveDiagram(mapUneven),layout=setDiagramSpec(plan(mapUneven),uneven).layout;
   assert.deepEqual(setDiagramSize(uneven),{width:460,height:50+8*34+44+24});
   assert.equal(layout.columns[0].ry,layout.columns[1].ry);assert.equal(layout.columns[0].cy,layout.columns[1].cy);

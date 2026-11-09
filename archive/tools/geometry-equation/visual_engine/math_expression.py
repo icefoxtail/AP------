@@ -10,7 +10,7 @@ FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')|{'logb'}
 VECTOR_NAME=re.compile(r'[a-z]|[A-Z]{2}')
-TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°])')
+TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°√])')
 
 @dataclass(frozen=True)
 class Expr:
@@ -22,7 +22,7 @@ class Parser:
     def __init__(self,source):
         if not isinstance(source,str) or not source.strip() or len(source)>2048 or '\\' in source:
             raise ValueError('UNRESOLVED_EXPRESSION')
-        source=source.strip().replace('−','-')
+        source=source.strip().replace('−','-').replace('′',"'")   # U+2032 is the prime
         self.tokens=[];end=0
         while end<len(source):
             hit=TOKEN.match(source,end)
@@ -49,6 +49,15 @@ class Parser:
             self.expect(')')
             left=self.node('tuple' if len(rows)>1 else 'group',args=rows)
         elif token[0].isdigit():left=self.node('number',token)
+        elif token=='√':
+            # (EXT-20261109-c) the root sign as typed: √3, √x, √(x-2) is sqrt of the number, the letter or the bracketed expression that follows it
+            nxt=self.take()
+            if nxt=='(':
+                arg=self.expr(0,depth+1);self.expect(')')
+            elif nxt[0].isdigit():arg=self.node('number',nxt)
+            elif nxt.isalpha() and nxt!='EOF' and nxt not in FUNCTIONS:arg=self.node('symbol',nxt)
+            else:raise ValueError('UNEXPECTED_MATH_TOKEN:'+nxt)
+            left=self.node('call',args=(self.node('symbol','sqrt'),arg))
         elif token=='vec' and self.peek()=='(':
             # (G3) a vector name: vec(a) is the vector a (one lower-case letter), vec(AB) the vector from point A to point B (two capital letters); nothing else is accepted.
             self.take();name=self.take()
@@ -78,7 +87,7 @@ class Parser:
                 if base.value in FUNCTIONS and len(args)!=1:raise ValueError('FUNCTION_ARITY')
                 left=self.node('call',args=(left,*args));continue
             powers={'=':5,'<':5,'>':5,'<=':5,'>=':5,'!=':5,'+':10,'-':10,'*':20,'/':20,'^':30}
-            implicit=op=='(' or (op!='EOF' and (op[0].isdigit() or op.isalpha()))
+            implicit=op=='(' or op=='√' or (op!='EOF' and (op[0].isdigit() or op.isalpha()))
             priority=20 if implicit else powers.get(op,-1)
             if priority<bp:break
             if implicit:kind='implicit'
