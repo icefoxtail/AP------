@@ -51,7 +51,8 @@ const elementText=(raw,max,code)=>{
   return {text,math};
 };
 // (EXT-20261109-c) one font: a name or element without Korean letters (A, 10, AB, g(0), f(x)) is math like every other letter and number of the figure
-const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,6}$/.test(text);
+// (EXT-20261109-g) up to 8 characters, the length cleanText allows a name: f(f(x)) (7) used to fall back to the thin plain-text face
+const labelMath=text=>!HANGUL.test(text)&&/^[A-Za-z0-9()]{1,8}$/.test(text);
 
 // --- set expressions: ∪ ∩ - and a postfix complement (ᶜ, ^c, ^C), with U the universal set --------------------------------
 function parseShade(raw,setIds){

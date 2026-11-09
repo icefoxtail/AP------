@@ -1941,7 +1941,7 @@ def piecewise_polynomial_audit(plan,svg,transform):
         for line in lines:
             # Horizontal {y} or slanted {slope,intercept}: m*x+c with m=0 for the horizontal one.
             slanted='slope' in line
-            if slanted and (set(line)-{'id','intersectionX','labelIntersections','slope','intercept'} or 'intercept' not in line):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+            if slanted and (set(line)-{'id','intersectionX','labelIntersections','slope','intercept','hideLabel'} or 'intercept' not in line):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
             m=_pp_coeff(line['slope']) if slanted else S.Integer(0)
             level=_pp_coeff(line['intercept'] if slanted else line['y']);roots=[]
             if slanted and m==0:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO')

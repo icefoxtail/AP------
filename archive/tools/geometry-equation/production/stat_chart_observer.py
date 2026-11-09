@@ -15,7 +15,7 @@ NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.02
 LABEL_TOL = 1.5
 CAPABILITY = 'stat-chart-figure-v1'
-FILL = {'bar': '#ececec', 'barHi': '#b5b5b5', 'barHi2': '#8e8e8e', 'cell': '#fff', 'cellHi': '#c9c9c9', 'cellHi2': '#9b9b9b'}
+FILL = {'slotCount': '#fff', 'slotFixed': '#d9d9d9', 'bar': '#ececec', 'barHi': '#b5b5b5', 'barHi2': '#8e8e8e', 'cell': '#fff', 'cellHi': '#c9c9c9', 'cellHi2': '#9b9b9b'}
 DICE_NAME_TEXT = re.compile('^[\uac00-\ud7a3][\uac00-\ud7a3 ]{0,7}$')
 BRANCH_WIDTH, BRANCH_WIDTH_HI = 1.4, 3.0      # this observer's own copy of the stroke widths of a branch and of a branch on a highlighted path
 UNKNOWN_BAR_FRACTION = 0.4        # this observer's own copy of how high a dotted unknown-class outline stands: this fraction of the plot (axis start to axis top)
@@ -2228,7 +2228,68 @@ def audit_normal(chart, doc):
     return {'curves': len(curves), 'ticks': len(ticks), 'shades': [round(s['area'], 4) for s in shades], 'drawnAreas': {str(j): round(v, 4) for j, v in drawn_area.items()}}
 
 
-AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
+def audit_slots(chart, doc):
+    """(EXT-20261109-g) A row of boxes, each a count (white) or a fixed letter (grey), an optional title above, the rule's sign between two neighbouring count boxes. Everything is read back from the plan."""
+    if set(chart) - {'kind', 'slots', 'join'}: fail('SC_PLAN_INVALID')
+    join = chart.get('join', 'TIMES')
+    if join not in ('TIMES', 'PLUS'): fail('STAT_SLOTS_JOIN_INVALID')
+    raw = chart.get('slots')
+    if not isinstance(raw, list) or not 2 <= len(raw) <= 8: fail('STAT_SLOTS_INVALID')
+    slots = []
+    for r in raw:
+        if not isinstance(r, dict) or set(r) - {'fixed', 'count', 'title'} or ('fixed' in r) == ('count' in r): fail('STAT_SLOTS_INVALID')
+        title = r.get('title')
+        if title is not None and (not isinstance(title, str) or not 1 <= len(title) <= 4 or re.search(r'[\x00-\x1f<>&"\\]', title)): fail('STAT_SLOTS_TITLE_INVALID')
+        if 'fixed' in r:
+            if not isinstance(r['fixed'], str) or not re.fullmatch(r'[A-Za-z0-9]{1,3}', r['fixed']): fail('STAT_SLOTS_FIXED_INVALID')
+            slots.append(('FIXED', r['fixed'], title))
+        else:
+            if not isinstance(r['count'], str) or not re.fullmatch(r'[1-9][0-9]{0,3}', r['count']): fail('STAT_SLOTS_COUNT_INVALID')
+            slots.append(('COUNT', r['count'], title))
+    if not any(kind == 'COUNT' for kind, _, _ in slots): fail('STAT_SLOTS_NO_COUNT')
+    rects = sorted(doc.role('rect', 'slot'), key=lambda e: num(e, 'x'))
+    if len(rects) != len(slots): doc.err('SC_SLOT_COUNT'); return {'slots': len(rects)}
+    width, height, y0 = num(rects[0], 'width'), num(rects[0], 'height'), num(rects[0], 'y')
+    pitch = num(rects[1], 'x') - num(rects[0], 'x')
+    if pitch <= width + 8: doc.err('SC_SLOT_PITCH')
+    sign_want = set()
+    for i, (rect, (kind, text, title)) in enumerate(zip(rects, slots)):
+        if rect.get('data-index') != str(i) or rect.get('data-kind') != kind: doc.err('SC_SLOT_KIND:%d' % i)
+        if abs(num(rect, 'width') - width) > TOL or abs(num(rect, 'height') - height) > TOL or abs(num(rect, 'y') - y0) > TOL: doc.err('SC_SLOT_SIZE:%d' % i)
+        if abs(num(rect, 'x') - (num(rects[0], 'x') + i * pitch)) > TOL: doc.err('SC_SLOT_PITCH:%d' % i)
+        if (rect.get('fill') or '').lower() != FILL['slotFixed' if kind == 'FIXED' else 'slotCount']: doc.err('SC_SLOT_FILL:%d' % i)
+        cx, cy = num(rect, 'x') + width / 2, y0 + height / 2
+        owned = doc.owners.get(rect.get('id'), [])
+        values = [l for l in owned if l.get('data-label-role') == 'slot-value']
+        if len(values) != 1 or values[0].get('data-tex') != text: doc.err('SC_SLOT_VALUE:%d' % i)
+        elif abs(centre(values[0])[0] - cx) > LABEL_TOL or abs(centre(values[0])[1] - cy) > LABEL_TOL: doc.err('SC_SLOT_VALUE_PLACE:%d' % i)
+        titles = [l for l in owned if l.get('data-label-role') == 'slot-title']
+        if title is None:
+            if titles: doc.err('SC_SLOT_TITLE_UNEXPECTED:%d' % i)
+        elif len(titles) != 1 or label_shown(titles[0]) != title: doc.err('SC_SLOT_TITLE:%d' % i)
+        else:
+            bx, by, bw, bh = box_of(titles[0])
+            if abs(bx + bw / 2 - cx) > LABEL_TOL or by + bh > y0: doc.err('SC_SLOT_TITLE_PLACE:%d' % i)
+        if any(l.get('data-label-role') not in ('slot-value', 'slot-title', 'slot-sign') for l in owned): doc.err('SC_SLOT_LABEL_ROLE:%d' % i)
+        if i + 1 < len(slots) and kind == 'COUNT' and slots[i + 1][0] == 'COUNT': sign_want.add(i)
+    signs = doc.label_role('slot-sign')
+    got = {}
+    for label in signs:
+        m = re.fullmatch(r'slot-([0-9]+)', label.get('data-owner') or '')
+        if not m: doc.err('SC_SLOT_SIGN_OWNER'); continue
+        got[int(m.group(1))] = label
+    if len(got) != len(signs) or set(got) != sign_want: doc.err('SC_SLOT_SIGNS')
+    want_tex = '\\times' if join == 'TIMES' else '+'
+    for i, label in got.items():
+        if label.get('data-tex') != want_tex: doc.err('SC_SLOT_SIGN_TEX:%d' % i)
+        if i < len(rects) - 1:
+            mid = (num(rects[i], 'x') + width + num(rects[i + 1], 'x')) / 2
+            if abs(centre(label)[0] - mid) > LABEL_TOL or abs(centre(label)[1] - (y0 + height / 2)) > LABEL_TOL: doc.err('SC_SLOT_SIGN_PLACE:%d' % i)
+    if len([l for l in doc.labels if l.get('data-label-role') not in ('slot-value', 'slot-title', 'slot-sign')]): doc.err('SC_SLOT_LABEL_EXTRA')
+    return {'slots': len(slots), 'counts': [t for k, t, _ in slots if k == 'COUNT'], 'join': join}
+
+
+AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'SLOTS': audit_slots, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
 def audit(chart, svg, compact=False):

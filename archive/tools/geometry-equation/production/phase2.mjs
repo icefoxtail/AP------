@@ -1179,7 +1179,7 @@ function piecewisePolynomialSpec(plan,id){
     objects.push({id:lineId,kind:'LINE',coefficients:[slope,-1,level]});
     const surdSlope=slanted&&String(line.slope).includes('sqrt'),surdIntercept=slanted&&String(line.intercept).includes('sqrt');
     const slopeText=!slanted?'':line.slope==='1'?'x':line.slope==='-1'?'-x':(surdSlope?'('+line.slope+')':line.slope)+'*x',interceptText=!slanted?levelText:line.intercept==='0'?'':surdIntercept?'+('+line.intercept+')':line.intercept.startsWith('-')?line.intercept:'+'+line.intercept;
-    lineLabels.push(labelId);objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});
+    if(line.hideLabel!==true){lineLabels.push(labelId);objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});}
     for(const [k,point] of row.points.entries()){
       // A crossing that is also a marked key point is drawn once, as that key point (framing names it in keyPoint).
       if(point.keyPoint!==undefined){if(!required.some(other=>other.id===point.keyPoint))throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');continue;}
@@ -2052,7 +2052,7 @@ function surdLineEquationText(sa,sb,sc,form){
     return '+'+par(s)+'*'+sym;
   };
   const join=parts=>{const t=parts.join('');return t.startsWith('+')?t.slice(1):t;};
-  const constOf=s=>{if(surdIsRational(s)){const [n,d]=s.p;if(n===0n)return '';return (n<0n?'-':'+')+ratText([n<0n?-n:n,d]);}return '+('+surdText(s)+')';};
+  const constOf=s=>{if(surdIsRational(s)){const [n,d]=s.p;if(n===0n)return '';return (n<0n?'-':'+')+ratText([n<0n?-n:n,d]);}const text=surdText(s);return /^-[^+-]*$/.test(text)||/^[^+-]*$/.test(text)?(text.startsWith('-')?text:'+'+text):'+('+text+')';};   // (EXT-20261109-g) a single surd term takes no brackets: y=x-sqrt(10), y=x+sqrt(10); a sum keeps them: y=x+(3-2*sqrt(3))
   if(form==='GENERAL')return join([termOf(sa,'x'),termOf(sb,'y'),constOf(sc)])+'=0';
   if(!surdIsRational(sb))throw Error('LINE_LABEL_COEFFICIENT_NOT_RATIONAL');
   if(sb.p[0]===0n)throw Error('LINE_LABEL_SLOPE_FORM_NEEDS_NONVERTICAL_LINE');
@@ -2100,10 +2100,34 @@ function unwrapParentheses(text){
   let depth=0;for(let i=0;i<text.length;i++){if(text[i]==='(')depth++;else if(text[i]===')'&&--depth===0&&i<text.length-1)return text;}
   return text.slice(1,-1);
 }
-function scalarExpression(v){
+// (EXT-20261109-g) the exact tree SymPy hands over writes -1-sqrt(10) as add(-1, mul(-1, sqrt(10))): the sign of a term is moved out of the product (mul by -1 -> neg, mul by -k -> neg of k*...,
+// mul by 1 -> the factor) and a negated term of a sum is a subtraction (add(a, neg(b)) -> sub(a, b); sub(a, neg(b)) -> add(a, b)), so the label reads -1-sqrt(10), (0,-sqrt(10)) and never -1+(-1sqrt(10)).
+const isLiteral=(v,n)=>v?.kind==='integer'&&v.value===String(n);
+const negativeInteger=v=>v?.kind==='integer'&&/^-[0-9]+$/.test(v.value);
+function tidyScalar(v){
+  if(v?.kind!=='expression'||!Array.isArray(v.args))return v;
+  const a=v.args.map(tidyScalar),neg=x=>({kind:'expression',op:'neg',args:[x]}),make=(op,args)=>({kind:'expression',op,args});
+  if(v.op==='mul'&&a.length===2){
+    const [x,y]=a;
+    if(isLiteral(x,1))return y;if(isLiteral(y,1))return x;
+    if(isLiteral(x,-1))return y.kind==='expression'&&y.op==='neg'?y.args[0]:neg(y);if(isLiteral(y,-1))return x.kind==='expression'&&x.op==='neg'?x.args[0]:neg(x);
+    if(negativeInteger(x))return neg(make('mul',[{kind:'integer',value:x.value.slice(1)},y]));
+    if(negativeInteger(y))return neg(make('mul',[x,{kind:'integer',value:y.value.slice(1)}]));
+    if(y.kind==='expression'&&y.op==='neg')return neg(make('mul',[x,y.args[0]]));
+    if(x.kind==='expression'&&x.op==='neg')return neg(make('mul',[x.args[0],y]));
+  }
+  if((v.op==='add'||v.op==='sub')&&a.length===2){
+    const [x,y]=a;
+    const negated=y.kind==='expression'&&y.op==='neg'?y.args[0]:negativeInteger(y)?{kind:'integer',value:y.value.slice(1)}:null;
+    if(negated)return make(v.op==='add'?'sub':'add',[x,negated]);
+  }
+  return {...v,args:a};
+}
+export function scalarExpression(v){return scalarText(tidyScalar(v));}
+function scalarText(v){
   if(v.kind==='integer')return v.value;if(v.kind==='rational')return '('+v.numerator+'/'+v.denominator+')';
   if(v.kind==='constant')return v.name;
-  if(v.kind==='expression'){const a=v.args.map(scalarExpression);if(v.op==='sqrt')return 'sqrt('+a[0]+')';if(v.op==='neg')return '-('+a[0]+')';const ops={add:'+',sub:'-',mul:'*',div:'/',pow:'^'};if(ops[v.op])return '('+a.join(ops[v.op])+')';}
+  if(v.kind==='expression'){const a=v.args.map(scalarText);if(v.op==='sqrt')return 'sqrt('+a[0]+')';if(v.op==='neg')return v.args[0].kind==='expression'&&['mul','div'].includes(v.args[0].op)?'-'+unwrapParentheses(a[0]):v.args[0].kind==='expression'&&['add','sub'].includes(v.args[0].op)?'-'+a[0]:'-'+(a[0].startsWith('-')?'('+a[0]+')':a[0]);const ops={add:'+',sub:'-',mul:'*',div:'/',pow:'^'};if(v.op==='pow'&&v.args[0].kind==='expression'&&v.args[0].op==='neg')a[0]='('+a[0]+')';if(v.op==='sub'&&v.args[1].kind==='expression'&&['mul','div'].includes(v.args[1].op))a[1]=unwrapParentheses(a[1]);if(ops[v.op])return '('+a.join(ops[v.op])+')';}
   throw Error('UNSUPPORTED_SCALAR_NOTATION');
 }
 async function workerGraphAudit(graphPlan,svg,transform){const {aspectPolicy,...frame}=transform;return (await pythonWorker({graphPlan,svg,transform:frame},{script:fileURLToPath(new URL('graph-observer-worker.py',import.meta.url))})).result;}
