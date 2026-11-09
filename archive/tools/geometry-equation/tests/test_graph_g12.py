@@ -15,7 +15,7 @@ TESTS=Path(__file__).resolve().parent
 sys.path.insert(0,str(TESTS.parent/'production'))
 sys.path.insert(0,str(TESTS.parent))
 from graph_framing import fit_overview,_overlay_length_row
-from graph_observer import audit,_ov_length_codes,_ov_label_codes,GRAPH_COLOR_LINES,GRAPH_COLOR_LINE_WIDTH
+from graph_observer import audit,_ov_length_codes,_ov_label_codes,_axis_title_mixed_head,GRAPH_COLOR_LINES,GRAPH_COLOR_LINE_WIDTH
 from visual_engine.palette import PALETTE,COLORED_SEGMENT_WIDTH
 
 FIXTURES=TESTS/'g12-fixtures'
@@ -64,6 +64,9 @@ class Framing(unittest.TestCase):
         self.assertEqual(first('γ'),['1D6FE']);self.assertEqual(first('α+β'),['1D6FC','2B','1D6FD'])
         self.assertEqual(first('u=√3'),['1D462','3D','33','221A']);self.assertEqual(first('y=√(x-2)'),['1D466','3D','1D465','2212','32','221A'])
         self.assertEqual(first('2√3'),['32','33','221A']);self.assertEqual(first('A′'),['1D434','2032'])
+    def test_the_observer_reads_the_variable_of_a_mixed_axis_title(self):
+        # EXT-20261109-d: the same shape rule as the engine (a variable then Korean); anything else has no math part
+        self.assertEqual([_axis_title_mixed_head(t) for t in ('x(분)','t(초)','x축','시간(분)','y(km)','y')],['x','t','x',None,None,None])
     def test_a_bad_callout_is_refused_with_its_code(self):
         bad=lambda *entries:refused(with_overlays(callouts=list(entries)))
         self.assertEqual(bad({'id':'c','point':'Z','text':'a'}),'OVERLAY_CALLOUT_POINT_UNKNOWN:c')

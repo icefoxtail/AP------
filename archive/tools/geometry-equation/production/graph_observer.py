@@ -4984,6 +4984,11 @@ AXIS_TITLE_UNIT_OBSERVER_PATTERN=r'(.*?)\s*\((km/h|m/s|km|cm|mm|kg|min|mL|m|g|s|
 def _axis_title_is_math(text):
     """(EXT-20261109-b) a title without Korean letters is typeset as math like every other letter and number of the figure; one with Korean letters stays plain text."""
     return re.search('[가-힣]',text) is None and re.fullmatch(AXIS_TITLE_MATH_OBSERVER_PATTERN,text) is not None
+AXIS_TITLE_MIXED_OBSERVER_PATTERN=r'([A-Za-z][A-Za-z0-9]{0,2})\s*([(\[]?[가-힣][가-힣 ()·%]*)'
+def _axis_title_mixed_head(text):
+    """(EXT-20261109-d) the variable of a title that is a variable followed by Korean (x(분)): drawn in the math face, the Korean part stays plain text; None otherwise."""
+    hit=re.fullmatch(AXIS_TITLE_MIXED_OBSERVER_PATTERN,text)
+    return hit.group(1) if hit else None
 def _axis_title_codes(text):
     """The glyph codes of a math axis title: the letters, digits and brackets of its text (upright for a unit in brackets, whose / is a drawn glyph)."""
     unit=re.fullmatch(AXIS_TITLE_UNIT_OBSERVER_PATTERN,text)
@@ -5010,6 +5015,9 @@ def axis_titles_audit(plan,svg,transform):
             if _axis_title_is_math(text):
                 want=_axis_title_codes(text);got=_ov_glyph_codes(node)
                 if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
+            elif _axis_title_mixed_head(text) is not None:
+                want=_ov_label_codes(_axis_title_mixed_head(text));got=_ov_glyph_codes(node)
+                if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
             elif node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
             box=_region_label_box(groups,label_id)
             if box is None:errors.append('AXIS_TITLE_BOX_UNREADABLE:'+axis);continue

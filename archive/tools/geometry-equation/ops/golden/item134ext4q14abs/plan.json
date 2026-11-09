@@ -1,0 +1,96 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -2.5,
+   5,
+   -0.6,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "3",
+     "-3"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "abs": true,
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "h",
+    "kind": "LINE",
+    "coefficients": [
+     "2",
+     "0"
+    ],
+    "domain": [
+     "-2",
+     "9/2"
+    ],
+    "style": "DASHED",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "-1",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "x": "7/5",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "V",
+     "x": "1",
+     "y": "0",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cP",
+     "point": "P",
+     "text": "(-1,2)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cV",
+     "point": "V",
+     "text": "(1,0)",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "y=|-3/(x-2)-3|의 그래프: 수직점근선 x=2, 수평점근선 y=3이고 x=1에서 x축에 닿는다. 직선 y=2와는 x=-1, x=7/5에서 만난다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=|-3/(x-2)-3|, x≠2",
+   "mappedTo": [
+    "graphPlan.curves"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점근선과 y=2와의 교점"
+ ]
+}
