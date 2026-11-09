@@ -248,12 +248,12 @@ test('a rectangle joined to a semicircle multiplies the whole sum by prism heigh
 // coordinate checks do not claim native font rendering or screenshot PASS.
 const boardScope = { window: { APLab: { clamp: (v, lo, hi) => Math.max(lo, Math.min(hi, v)) } } };
 vm.runInNewContext(fs.readFileSync(path.join(labDir, '../../kit/apl-board.js'), 'utf8'), boardScope);
-function drawJoinedSolid({ width = 390, height = 410.75, progress, top = 'cyl', mode = 'surf' }) {
+function drawJoinedSolid({ width = 390, height = 410.75, progress, top = 'cyl', mode = 'surf', tab = 'review', viewportWidth = width < 560 ? 390 : 1440 }) {
   const unit = loadUnit(), sc = unit.scenes.find(scene => scene.id === 'sv5-6');
-  unit.window.innerWidth = width < 560 ? 390 : 1440;
+  unit.window.innerWidth = viewportWidth;
   const s = unit.state(sc);
-  Object.assign(s, { svTop: top, svMode: mode, s56T: progress, step: 4, playing: false });
-  Object.assign(unit.lab, { tab: 'review', scene: sc, s });
+  Object.assign(s, { svTop: top, svMode: mode, s56T: progress, step: tab === 'review' ? 4 : 0, playing: false });
+  Object.assign(unit.lab, { tab, scene: sc, s });
   const b = Object.create(boardScope.window.APLab.Board.prototype), points = [], labels = [];
   const remember = (x, y) => { if (Number.isFinite(x) && Number.isFinite(y)) points.push({ x, y }); };
   const context = new Proxy({ moveTo: remember, lineTo: remember }, { get: (target, key) => target[key] || (() => {}) });
@@ -290,6 +290,26 @@ test('joined-solid radius and visible geometry stay on the mobile stage through 
       `all visible solid geometry stays in the fit at ${progress}`);
   }
 });
+
+// Frozen canvas sizes and state from the four paper/board failures in
+// run42587770474. Theme colors share the same geometry for each size.
+for (const [name, width, height, viewportWidth] of [
+  ['desktop', 1039, 600.875, 1440],
+  ['landscape tablet', 683, 436.875, 1024]
+]) {
+  test(`joined-solid visible tile rows and names fit during the ${name} inquiry transition`, () => {
+    const { points, labels, b } = drawJoinedSolid({ width, height, viewportWidth, progress: 0.58, tab: 'explore' });
+    assert.equal(labels.filter(label => label.text === '옆면').length, 2, 'both box and cylinder sides remain named');
+    assert.equal(labels.filter(label => label.text === '윗면').length, 2, 'both box and cylinder tops remain named');
+    for (const label of labels) {
+      assert.ok(label.x0 >= 0 && label.x1 <= b.W && label.y0 >= 0 && label.y1 <= b.H,
+        `${label.text}: ${JSON.stringify(label)} within ${b.W} × ${b.H}`);
+    }
+    assert.ok(points.length > 30, 'solid and tile geometry remain drawn');
+    assert.ok(points.every(p => p.x >= 0 && p.x <= b.W && p.y >= 0 && p.y <= b.H),
+      'the complete visible solid and tile rows stay within the stage');
+  });
+}
 
 test('joined-solid initial and settled fits retain each top shape and its numerical area and volume', () => {
   const expected = { cyl: [256 + 18 * Math.PI, 256 + 27 * Math.PI],

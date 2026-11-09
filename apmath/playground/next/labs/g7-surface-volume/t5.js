@@ -731,10 +731,12 @@
       const volParts = !C.problem && !surfMode && C.tab !== 'explore' ? [{ v: vnum(M.vBox), fill: 'sky', label: `상자 ${plainVal(M.vBox)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(M.vTop), fill: 'green', label: `${TOP56[M.top]} ${plainVal(M.vTop)}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }] : null;
       const rowTop = bbx.y1 + 0.8, rowsReg = rows ? [{ x: -rows.total / 2, y: rowTop }, { x: rows.total / 2, y: rowTop + rows.height + (C.tab === 'explore' ? 0.5 : 3.0) }] : volParts ? [{ x: -3, y: rowTop }, { x: 3, y: rowTop + 2.4 }] : [];
       const blend = (narrow || C.tab === 'explore') && rows ? ease(lin01(te, 0, 0.15)) : 0, showSolid = !((narrow || C.tab === 'explore') && rows && te > 0.15);
+      const showRows = rows && te > (narrow ? 0.15 : 0.01);
       const fitPad=blend>0?26:30, fitOpt={l:fitPad,r:(C.tab==='explore'&&window.innerWidth>=700&&b.W>=560?245:fitPad),t:30,b:30};
       // 조각 줄로 넘어가는 중에도 아직 보이는 입체는 화면 맞춤에 포함합니다.
       const fitPts=showSolid?pts:[], mix=(p0,q0)=>p0+(q0-p0)*blend;
-      const fitExtra=blend>0?[{x:mix(bbx.x0,rowsReg[0].x),y:mix(bbx.y0,rowTop)},{x:mix(bbx.x1,rowsReg[1].x),y:mix(bbx.y1,rowsReg[1].y)}]:narrow&&rows?[]:rowsReg;
+      // 조각은 가로로만 펼쳐지므로, 보이기 시작한 줄은 이름표 여백까지 전체 높이를 맞춥니다.
+      const fitExtra=showRows?rowsReg:blend>0?[{x:mix(bbx.x0,rowsReg[0].x),y:mix(bbx.y0,rowTop)},{x:mix(bbx.x1,rowsReg[1].x),y:mix(bbx.y1,rowsReg[1].y)}]:narrow&&rows?[]:rowsReg;
       D.fit(fitPts,fitExtra,fitOpt);
       if(showSolid&&!C.thumb){
         // 바깥 높이와 끝점 밖 반지름 글자까지 맞춥니다. 이미 들어가면 배치를 유지합니다.
@@ -771,7 +773,7 @@
           D.height(ytopC, add3(ytopC, v3(0, M.hc * sc, 0)), `높이 ${M.hc}`, { color: 'amber', side: { x: -1, y: 0 }, right: false });
         }
       }
-      if (rows && te > (narrow ? 0.15 : 0.01)) {
+      if (showRows) {
         slideTiles(rows, te);
         drawRows(D, rows, 0, rowTop);
         if (te > 0.95 && C.tab !== 'explore') totalText(D, rows, rowTop, `겉넓이 = 면 넓이의 합 = ${plainVal(M.surf)}`, 64);
