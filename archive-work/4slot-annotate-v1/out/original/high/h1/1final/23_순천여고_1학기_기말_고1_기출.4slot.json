@@ -1,0 +1,1194 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceArchiveFile": "original/high/h1/1final/23_순천여고_1학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "3253a4a6d057ff485d951e5466bdd55b4c58e275",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "codex-5hour-batch-order-510",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "수직선 위의 두 점 $A(a)$, $B(1)$에 대하여",
+            "term": "수직선"
+          },
+          {
+            "src": "stem",
+            "quote": "두 점 사이의 거리가 $4$일 때,",
+            "term": "거리"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "모든 $a$값의 합은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "절댓값으로 나타낸다.",
+            "term": "절댓값",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "절댓값이 $4$라는 것은",
+            "term": "방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 방정식을 풀어 미지수 a 계산"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "두 점 $A(a)$, $B(1)$ 사이의 거리가 $4$이므로",
+            "term": "좌표"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직선 위 두 점 사이의 거리 공식과 절댓값 성질을 이용한 방정식 풀이"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "두 점 $A(6,5)$, $B(-2,1)$을 지나는",
+            "term": "좌표"
+          },
+          {
+            "src": "stem",
+            "quote": "지나는 직선이 $(a,3)$을 지날 때,",
+            "term": "직선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "직선의 기울기를 먼저 구한 뒤,",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "따라서 직선의 방정식은",
+            "term": "직선의방정식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "이 직선이 $(a,3)$을 지나므로",
+            "term": "대입"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 점으로 직선의 방정식을 구한 후 주어진 점의 좌표 대입"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "대칭이동한 점을 각각 $P$, $Q$, $R$이라고 할 때,",
+            "term": "대칭이동"
+          },
+          {
+            "src": "stem",
+            "quote": "원점에 대하여 대칭이동한 점을",
+            "term": "원점"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "삼각형 $PQR$의 넓이는?",
+            "term": "삼각형"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "점 $P$에서 직선 $QR$까지의 거리는",
+            "term": "거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "삼각형 $PQR$의 넓이는",
+            "term": "넓이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "$QR$은 세로 방향 선분이고 길이는",
+            "term": "선분"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "좌표축 및 원점 대칭이동으로 각 꼭짓점 좌표를 구한 뒤 삼각형의 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "두 직선 $y=(a-4)x+a-1$,",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "만나는 점이 없게 하도록 하는",
+            "term": "교점"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "상수 $a$의 값들의 합은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "기울기는 같고 $y$절편은 달라야 한다.",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "인수분해하면 $(a-5)(a+1)=0$이므로",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "절편은 달라 만나지 않는다.",
+            "term": "절편"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 직선이 평행할 조건을 세워 이차방정식을 풀고 일치하는 경우 제외"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "원 $x^2+y^2-6x+4y-3=0$의",
+            "term": "원"
+          },
+          {
+            "src": "stem",
+            "quote": "중심을 $(a,b)$라 하고 반지름을 $r$이라고",
+            "term": "반지름"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a+b+r$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "원의 방정식은 완전제곱식으로 고치면",
+            "term": "완전제곱식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "표준형 (x−3)²+(y+2)²=4²와 비교하면",
+            "term": "표준형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "그러므로 중심은 $(3,-2)$,",
+            "term": "중심"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원의 일반형을 완전제곱식으로 변형하여 중심 좌표와 반지름 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "$x$축과 $y$축에 동시에 접하는 두 원이 있다.",
+            "term": "접선"
+          },
+          {
+            "src": "stem",
+            "quote": "점 $(2,1)$을 지나고",
+            "term": "좌표"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "이 두 원의 반지름의 길이의 합은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "중심 $(r,r)$에서 점 $(2,1)$까지의 거리가",
+            "term": "거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "정리하면 $r^2-6r+5=0$, 즉 $(r-1)(r-5)=0$이다.",
+            "term": "이차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름에 대한 이차방정식을 세워 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "두 축에 모두 접하는 원의 반지름을 $r$이라 하면",
+            "term": "반지름"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양 축에 접하는 원의 방정식을 설정하고 지나는 점을 대입하여 반지름의 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "부등식 $x^2+2ax-a+6\\ge0$이",
+            "term": "부등식"
+          },
+          {
+            "src": "stem",
+            "quote": "모든 실수 $x$에서 성립하도록 하는",
+            "term": "실수"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "실수 $a$의 최댓값은?",
+            "term": "최댓값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "따라서 판별식이 $0$ 이하이어야 한다.",
+            "term": "판별식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "인수분해하면 $(a+3)(a-2)\\le0$이므로",
+            "term": "인수분해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "이 그래프가 모든 실수에서 $0$ 이상이 되려면",
+            "term": "그래프"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "항상 성립하는 이차부등식의 판별식 조건을 세워 인수분해로 범위 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "두 점 $A(1,-2)$, $B(2,2)$에서 같은 거리에 있고",
+            "term": "등거리"
+          },
+          {
+            "src": "stem",
+            "quote": "직선 $y=x+1$ 위에 있는 점 $P(\\alpha,\\beta)$일 때,",
+            "term": "직선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$\\alpha+\\beta$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "두 점에서 같은 거리에 있다는 조건은 두 거리의 제곱이 같다는",
+            "term": "거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "여기에 $\\beta=\\alpha+1$을 대입한다.",
+            "term": "대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "점 $P(\\alpha,\\beta)$가 직선 $y=x+1$ 위에 있으므로",
+            "term": "좌표"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선 위의 점 조건을 대입하고 두 점 사이의 거리 공식으로 좌표 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=2x+1$을 $y$축에 대하여 대칭이동한",
+            "term": "대칭이동"
+          },
+          {
+            "src": "stem",
+            "quote": "$(x-a)^2+(y-3)^2=9$와 만나는 두 점을 $A$, $B$라고",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "상수 $a$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "따라서 $AB$는 지름이고,",
+            "term": "지름",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "직선 $AB$는 원의 중심을 지나야 한다.",
+            "term": "중심",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 가장 긴 현인 지름이 원의 중심을 통과함"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "중심 (a,3)을 대입해 a를 결정한다.",
+            "term": "대입"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y축 대칭 직선을 구하고 원의 현의 길이가 지름과 같음을 이용하여 중심 대입"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-x^2+x+3=0$의",
+            "term": "삼차방정식"
+          },
+          {
+            "src": "stem",
+            "quote": "서로 다른 두 허근을 $\\alpha$, $\\beta$라 할 때,",
+            "term": "허근"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$\\alpha\\overline{\\beta}+\\overline{\\alpha}\\beta$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "실수 계수 방정식의 허근은 켤레복소수로 짝을 이룬다.",
+            "term": "켤레복소수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=2^2-2\\cdot3=-2$이다.",
+            "term": "곱셈공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "따라서 $\\alpha+\\beta=2$, $\\alpha\\beta=3$이다.",
+            "term": "근과계수의관계"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼차방정식을 인수분해하여 이차방정식의 허근을 찾고 근과 계수의 관계 및 곱셈공식 활용"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "선분 $AB$를 $2:1$로 내분하는 점을 $C$라고",
+            "term": "내분"
+          },
+          {
+            "src": "stem",
+            "quote": "직선 $AB$에 수직이고 점 $C$를 지날 때,",
+            "term": "수선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a+b$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "직선 $AB$의 기울기는 $\\dfrac{-3-3}{2-(-1)}=-2$이다.",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "점 $C(1,-1)$을 지나고 기울기가 $\\dfrac12$인 직선은",
+            "term": "직선의방정식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선 $ax+by-3=0$은 직선 $AB$에 수직이므로",
+            "term": "직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내분점 좌표와 수직인 두 직선의 기울기 곱 성질로 직선의 방정식 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $x+2y-5=0$을",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "평행이동한 직선이 원 $(x-1)^2+(y-2)^2=5$와",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "정수 $k$의 개수는?",
+            "term": "정수"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "평행이동 후의 직선을 구할 때는",
+            "term": "평행이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "중심에서 직선까지의 거리는",
+            "term": "점과직선사이의거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선이 원과 만나려면",
+            "term": "반지름"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행이동한 직선과 원의 중심 사이 거리가 반지름 이하인 부등식을 풀어 정수 개수 카운트"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "원점 $O(0,0)$과 직선 $k(x+y)-2x+4y+3=0$ 사이의 거리는",
+            "term": "원점"
+          },
+          {
+            "src": "stem",
+            "quote": "$k=a$일 때 최댓값 $b$를 갖는다.",
+            "term": "최댓값"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$\\dfrac{a^2}{b^2}$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "원점과 이 직선 사이의 거리는",
+            "term": "점과직선사이의거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "완전제곱식으로 고치면 $2(k+1)^2+18$이다.",
+            "term": "완전제곱식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "$(k-2)x+(k+4)y+3=0$이다.",
+            "term": "직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점과 직선 사이 거리 공식을 세우고 분모의 이차식을 완전제곱식으로 변형하여 최대 거리 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $BC$에 평행한 직선이 직선 $AC$와",
+            "term": "평행"
+          },
+          {
+            "src": "stem",
+            "quote": "삼각형 $ABC$와 삼각형 $ADE$의 넓이의 비가 $9:1$이",
+            "term": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "모든 점 $D$의 $x$좌표의 곱은?",
+            "term": "곱"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "직선 $BC$의 기울기는",
+            "term": "기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "삼각형 $ABC$의 넓이는 밑변 $AB=6$,",
+            "term": "넓이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "두 직선의 교점을 $E$라 하면",
+            "term": "교점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행선의 성질로 교점 좌표와 삼각형 넓이를 미지수 d로 표현하여 넓이비 방정식 풀이"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이가 최대가 되도록",
+            "term": "넓이"
+          },
+          {
+            "src": "stem",
+            "quote": "원 위에 점 $C$를 잡을 때,",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$ab$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "stem",
+            "quote": "점 $C$에서의 접선의 방정식은 $ax-y+b=0$이다.",
+            "term": "접선의방정식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "원의 중심 $(0,0)$에서 직선까지의 거리가 반지름 $5$와 같아야 한다.",
+            "term": "점과직선사이의거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선 $AB$와 평행한 접선 중에서",
+            "term": "평행"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "밑변에 평행한 원의 접선을 구하여 중심과의 거리 조건으로 미지수를 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=mx$ $(m>0)$이 직선 $4x+3y+20=0$과",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "원점 $O$와 점 $P$를 지름의 양 끝점으로 하는 원을 $C$라 하자.",
+            "term": "원"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "원 $C$의 넓이의 최솟값을 $S$라 하자. $mS$의 값은?",
+            "term": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "원점에서 그 직선에 내린 수선의 발을 $P$로",
+            "term": "수선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "거리 공식에 의해",
+            "term": "점과직선사이의거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "이 직선에 수직이고 원점을 지나는 직선의 기울기는 $\\dfrac34$이다.",
+            "term": "기울기"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원점과 직선 사이의 최단거리인 수선의 발을 지름 끝점으로 잡아 최소 원 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "좌표평면 위에 세 점 $A(1,4)$, $B(3,-4)$, $C(7,0)$이 있다.",
+            "term": "좌표"
+          },
+          {
+            "src": "stem",
+            "quote": "$BP\\perp CP$일 때,",
+            "term": "수선"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$AQ+QP$의 최솟값은?",
+            "term": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "대칭이동을 이용하여 직선거리 문제로 바꿀 수 있다.",
+            "term": "대칭이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "점 $A'(-1,4)$에서 점 $P(3,0)$까지의 직선거리이다.",
+            "term": "최단거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선 $BP$는 $x$축에 수직인 직선이어야 한다.",
+            "term": "직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직 조건으로 점 P의 위치를 확정한 뒤 y축 대칭이동으로 선분 합의 최솟값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "원 $x^2+y^2=5$에 그은 접선이 서로 수직일 때,",
+            "term": "접선"
+          },
+          {
+            "src": "stem",
+            "quote": "점 $P$는 제1사분면에 위치하고 원 밖의 점이다.",
+            "term": "사분면"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "접선의 기울기의 합은?",
+            "term": "합"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "한 변의 길이가 $\\sqrt5$인 정사각형이다.",
+            "term": "정사각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이차방정식의 근과 계수의 관계에 의해",
+            "term": "근과계수의관계",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "반지름은 접선에 수직이므로",
+            "term": "수선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직인 접선과 반지름이 이루는 정사각형 성질로 점 P를 구하고 접선 기울기의 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "직선 $y=2x$를",
+            "term": "직선"
+          },
+          {
+            "src": "stem",
+            "quote": "평행이동하면 $y=2x+6$과 일치한다.",
+            "term": "평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a^2+b^2$의 최솟값은?",
+            "term": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "점 $(a,b)$까지의 거리의 제곱이다.",
+            "term": "거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "이를 $-2a+b=6$에 대입하면",
+            "term": "대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선에 수직이고 원점을 지나는 직선의 기울기는",
+            "term": "기울기"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행이동 조건식으로 직선을 정의하고 원점에서 직선까지 최단거리의 제곱 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2$ $(a>0)$의 그래프와",
+            "term": "이차함수"
+          },
+          {
+            "src": "stem",
+            "quote": "삼각형 $ACB$의 넓이가 $9$일 때,",
+            "term": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$\\alpha^3+\\beta^3$의 값은?",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "이차방정식의 근과 계수의 관계에 의해",
+            "term": "근과계수의관계",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)$를 이용하면",
+            "term": "곱셈공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "두 점 $A$, $B$는 모두 직선 $y=2x+4$ 위에 있으므로",
+            "term": "직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교점의 x좌표 차로 삼각형 넓이를 표현하고 근과 계수의 관계 및 곱셈공식으로 값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "원점을 지나고 점 $(4,3)$에서",
+            "term": "원점"
+          },
+          {
+            "src": "stem",
+            "quote": "거리가 $3$인",
+            "term": "거리"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "직선의 방정식을 모두 구하시오.",
+            "term": "직선의방정식"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "점과 직선 사이의 거리 공식을 사용한다.",
+            "term": "점과직선사이의거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "정리하면 $7a^2-24a=0$, 즉 $a(7a-24)=0$이다.",
+            "term": "이차방정식",
+            "evidenceType": "IMPLIED",
+            "justification": "거리에 관한 이차방정식을 인수분해하여 기울기 결정"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "원점을 지나는 직선 중에서",
+            "term": "직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원점을 지나는 직선을 설정하고 점과 직선 사이의 거리 공식으로 기울기를 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "(1) 삼각형 $OAB$의 무게중심 $G$의 좌표를",
+            "term": "무게중심"
+          },
+          {
+            "src": "stem",
+            "quote": "(2) 선분 $AB$ 위의 점 $D$와 선분 $OA$ 위의 점 $E$에 대하여",
+            "term": "선분"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$GD+DE+EG$의 최솟값을 구하는",
+            "term": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "대칭이동으로 직선거리 문제로 바꿀 수 있다.",
+            "term": "대칭이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "선분을 거치는 최단거리 문제는",
+            "term": "최단거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선 $AB$의 방정식은 $x+y=3$이다.",
+            "term": "직선의방정식"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형의 무게중심을 구하고 각 선분에 대한 대칭이동을 통해 최단거리 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "src": "stem",
+            "quote": "두 이차함수 $y=\\dfrac13x^2+1$, $y=-(x-2)^2+5$의 그래프와",
+            "term": "이차함수"
+          },
+          {
+            "src": "stem",
+            "quote": "사각형 $PAQB$의 넓이가 $t=a$일 때",
+            "term": "넓이"
+          }
+        ],
+        "goal": [
+          {
+            "src": "stem",
+            "quote": "$a$, $b$의 값을 각각 구하시오. [7점]",
+            "term": "값"
+          }
+        ],
+        "method": [
+          {
+            "src": "solution",
+            "quote": "완전제곱식으로 고치면 $S=-2\\left(t-\\dfrac32\\right)^2+\\dfrac92$이다.",
+            "term": "완전제곱식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "src": "solution",
+            "quote": "사각형의 넓이를 이차식으로 나타내어 최댓값을 찾는다.",
+            "term": "최댓값",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "src": "solution",
+            "quote": "직선 $x=t$가 위쪽 그래프",
+            "term": "그래프"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 곡선 사이의 세로 선분 길이를 이용해 사각형 넓이를 t의 이차함수로 나타내고 최댓값 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "totalItems": 23,
+    "validItems": 23,
+    "allSlotsFilled": true,
+    "allQuotesFound": true,
+    "zeroRetirements": true
+  }
+}
