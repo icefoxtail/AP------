@@ -526,9 +526,11 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     if (c.mode) { renderPeri(b, c, outlineOnly); return; }
     const ox = dx * mv;
     if (mv > 0.01) { outline(b, shiftP(M.outer, dx), 'muted', 1.8, { dash: [6, 5], alpha: 0.75 * mv }); drawCtx(dx, 0.45 * mv); }
-    fillEO(b, [M.outer], 'ink', 0.1 * (1 - hi));
-    fillEO(b, remPolys, 'sky', 0.44 * hi + 0.16 * res);
-    M.cuts.forEach((g) => fillEO(b, g.polys.map((p) => shiftP(p, ox)), 'amber', 0.6 * hi));
+    // [2.0 수정] 파낼 부분의 윤곽과 남은 면은 문제의 기본 도형입니다.
+    // 진행률 0에서도 구별되며, 재생은 같은 도형을 강조하고 옆으로 옮깁니다.
+    fillEO(b, [M.outer], 'ink', 0.04 * (1 - hi));
+    fillEO(b, remPolys, 'sky', 0.22 + 0.22 * hi + 0.16 * res);
+    M.cuts.forEach((g) => fillEO(b, g.polys.map((p) => shiftP(p, ox)), 'amber', 0.12 + 0.48 * hi));
     M.over.forEach((o) => {
       const a = hi * (1 - mv);
       fillEO(b, o.polys, o.color, (o.alpha || 0.2) * 0.55 * a);
@@ -537,7 +539,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     outline(b, M.outer, 'ink', 2.6);
     drawCtx(0, 0.9);
     if (mv > 0.02) flat.forEach((p) => outline(b, p, 'amber', 2, { dash: [6, 4], alpha: 0.9 * hi }));
-    M.cuts.forEach((g) => g.polys.forEach((p) => outline(b, shiftP(p, ox), 'amber', 2.4, { alpha: hi })));
+    M.cuts.forEach((g) => g.polys.forEach((p) => outline(b, shiftP(p, ox), 'amber', 2.4, { alpha: 0.8 + 0.2 * hi })));
     drawFig(b, c);
     M.part.forEach((it) => drawItem(b, it, ox, whenA(c, it.when)));
     const cp = M.cap;

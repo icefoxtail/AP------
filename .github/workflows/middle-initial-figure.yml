@@ -1,0 +1,81 @@
+name: Middle initial figure
+
+on:
+  push:
+    branches: ['fix/apmath-middle-initial-figure-20261109*']
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apmath/playground/next/labs/g7-*/**'
+      - 'apmath/playground/next/labs/g7-*.html'
+      - 'apmath/playground/next/labs/g8-*/**'
+      - 'apmath/playground/next/labs/g8-*.html'
+      - 'apmath/playground/next/labs/g9-*/**'
+      - 'apmath/playground/next/labs/g9-*.html'
+      - 'apmath/playground/next/kit/**'
+      - 'apmath/playground/next/tools/middle-initial-*'
+      - '.github/workflows/middle-initial-figure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    outputs:
+      units: ${{ steps.inventory.outputs.units }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: apmath/playground
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: inventory
+        run: echo "units=$(node apmath/playground/next/tools/middle-initial-figure-audit.mjs --list-units)" >> "$GITHUB_OUTPUT"
+      - name: Initial figure regression contracts
+        run: node --test apmath/playground/next/tools/middle-initial-*.test.mjs
+  browser:
+    needs: inventory
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: ${{ fromJSON(needs.inventory.outputs.units) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install real Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/initial-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/initial-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Observe unmodified main baseline
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || '5472d9b0f2b2deba067126baf54a0479037654ab' }}
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          git worktree add --detach "$RUNNER_TEMP/initial-baseline" "$BASE_SHA"
+          node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root "$RUNNER_TEMP/initial-baseline" --units "$UNIT" --out "$RUNNER_TEMP/initial-evidence/before" --baseline-observe
+      - name: Verify all initial scenes at five viewports
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/initial-browser/node_modules
+          UNIT: ${{ matrix.unit }}
+        run: node apmath/playground/next/tools/middle-initial-figure-audit.mjs --root . --units "$UNIT" --out "$RUNNER_TEMP/initial-evidence/after"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: middle-initial-${{ github.run_id }}-${{ matrix.unit }}
+          path: ${{ runner.temp }}/initial-evidence/
+          retention-days: 14

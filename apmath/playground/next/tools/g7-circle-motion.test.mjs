@@ -97,6 +97,31 @@ function lengthValue(text) {
 }
 const movingReadout = (lab) => call(lab.scene.view, lab.s, lab).readouts.find((readout) => /지나간 길이|굴러간 거리/.test(readout.label));
 
+await test('cut-out scenes show every original cut boundary before playback and after reset', async () => {
+  const lab = await load();
+  const cutScenes = lab.list.filter((scene) => scene.csPfx === 'f1');
+  assert.ok(cutScenes.length > 0);
+  for (const { id } of cutScenes) {
+    const scene = lab.go(id), model = scene.csModel(lab.s);
+    const original = lab.board.path, paths = [];
+    lab.board.path = function (points, options) { paths.push({ points, options }); return original.call(this, points, options); };
+    const samePath = (a, b, dx = 0) => a.length === b.length && a.every((p, i) => Math.abs(p.x - b[i].x - dx) < 1e-8 && Math.abs(p.y - b[i].y) < 1e-8);
+    const visibleCuts = (dx = 0) => model.cuts.every((cut) => cut.polys.every((poly) => paths.some(({ points, options }) => samePath(points, poly, dx) && options.close && (options.alpha ?? 1) >= 0.75)));
+    try {
+      assert.equal(lab.s[scene.csKeys.kt], 0);
+      lab.draw();
+      assert.ok(visibleCuts(), `${id}: the given cut-out boundaries cannot depend on playback`);
+      assert.equal(lab.s.revealed, false, 'showing the given figure does not reveal the answer');
+      lab.s[scene.csKeys.kt] = 1; paths.length = 0; lab.draw();
+      assert.ok(visibleCuts((model.box[2] - model.box[0]) * 1.3), `${id}: the cut pieces still travel horizontally`);
+      call(scene.actions, lab.s).find((action) => action.id === 'reset').run(lab.s, lab);
+      paths.length = 0; lab.draw();
+      assert.equal(lab.s[scene.csKeys.kt], 0);
+      assert.ok(visibleCuts(), `${id}: resetting keeps the original figure visible`);
+    } finally { lab.board.path = original; }
+  }
+});
+
 await test('continuous motion reports the actual angle/distance, including just before completion', async () => {
   const lab = await load();
   for (const radius of [2, 6, 12]) {
