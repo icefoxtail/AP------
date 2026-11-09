@@ -1,0 +1,93 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "w",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "n 일정",
+        "points": [
+          {
+            "id": "p"
+          },
+          {
+            "id": "q"
+          }
+        ],
+        "order": [
+          "p",
+          "q"
+        ],
+        "spans": [
+          {
+            "from": "p",
+            "to": "q",
+            "style": "ARROW",
+            "label": "폭 증가"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "신뢰도 일정",
+        "points": [
+          {
+            "id": "r"
+          },
+          {
+            "id": "s"
+          }
+        ],
+        "order": [
+          "r",
+          "s"
+        ],
+        "spans": [
+          {
+            "from": "r",
+            "to": "s",
+            "style": "ARROW",
+            "label": "폭 증가"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "구간 길이 w의 증가 방향"
+  },
+  "caption": "p→q는 n 고정에서 낮은→높은 신뢰도의 폭, r→s는 신뢰도 고정에서 큰→작은 표본의 폭을 나타낸다. 신뢰구간 길이 W=2zσ/√n이다. n이 일정하면 신뢰도 α가 커져 z가 커질수록 W가 커지고, 신뢰도가 일정하면 n이 작아질수록 W가 커진다. ㄴ은 두 변화가 모두 W를 키우므로 거짓이다. ㄷ은 n 감소와 α 감소가 반대 효과라 크기를 모르면 방향을 정할 수 없으므로 거짓이다. 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "신뢰구간 길이 b−a는 2zσ/√n 꼴이다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "n이 일정할 때 신뢰도 α가 커지면 z가 커져 폭이 커진다.",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "신뢰도가 일정할 때 n이 작아지면 폭이 커진다.",
+      "mappedTo": [
+        "numberLine.rows[1]",
+        "caption"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "n 감소와 α 감소는 폭에 반대 방향으로 작용하므로, 크기 없이 합친 변화 방향을 결정할 수 없다.",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "두 수직선 행은 같은 구간 길이 w축에서 각각 한 조건을 고정한 채 폭의 변화 방향만 보여 준다. 점은 수치 자료가 아닌 순서 관계이며, 임의의 신뢰구간 폭이나 표본값을 만들지 않는다.",
+    "신뢰도 증가에서는 z가 커져 W가 증가한다. 표본 크기 감소에서도 1/√n이 커져 W가 증가한다. 두 효과가 동시에 반대 방향으로 바뀌는 ㄷ은 크기 비교 없이는 방향을 보장할 수 없다.",
+    "요청 사유: 신뢰도와 표본 크기가 신뢰구간 길이에 미치는 서로 다른 방향 효과를 한눈에 비교하면 선택지 판단을 이해하는 데 도움이 된다."
+  ]
+}

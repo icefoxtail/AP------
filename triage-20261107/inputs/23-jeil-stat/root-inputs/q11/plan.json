@@ -1,0 +1,39 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [],
+    "shade": "A∩Bᶜ"
+  },
+  "caption": "음영은 A∩Bᶜ의 집합 영역만 표시한다. 벤 다이어그램의 넓이와 겹침 모양은 확률값이나 독립성을 나타내지 않는다. 원문 해설이 제시한 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문은 사건 A,B가 독립이고 A≠∅, B≠∅라고만 한다. 보기 ㄴ의 집합 부분은 A∩Bᶜ이다.",
+      "mappedTo": [
+        "diagram.shade",
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문 해설은 ㄴ, ㄷ을 참이라고 하여 답 ④를 제시한다. 이 Venn 그림은 집합 영역만 나타내며 확률값이나 독립성의 증명을 나타내지 않는다.",
+      "mappedTo": [
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A 안이면서 B 밖인 A∩Bᶜ의 위치만 음영으로 확인할 수 있다. 원문에 확률값이 없으므로 영역 크기는 확률로 읽지 않는다. A,B가 비어 있지 않다는 조건만으로 양의 확률이 보장되지 않으며, P(A)=0 또는 P(B)=0이면 해당 조건부확률은 정의되지 않을 수 있다. 이 그림은 이 CONTENT 주의를 해결하거나 원문을 수정하지 않는다."
+  ]
+}

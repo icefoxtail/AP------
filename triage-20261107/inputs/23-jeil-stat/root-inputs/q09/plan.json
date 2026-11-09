@@ -1,0 +1,59 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A 0승",
+          "p": "1/81"
+        },
+        {
+          "label": "A 1승",
+          "p": "8/81"
+        },
+        {
+          "label": "A 2승",
+          "p": "24/81"
+        },
+        {
+          "label": "A 3승",
+          "p": "32/81"
+        },
+        {
+          "label": "A 4승",
+          "p": "16/81"
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      [
+        "A 2승"
+      ],
+      [
+        "A 3승"
+      ],
+      [
+        "A 4승"
+      ]
+    ]
+  },
+  "caption": "한쪽이 3승에 도달하면 경기는 끝난다. 이 수형도는 남은 최대 네 경기의 가상 결과에서 A의 승수 분포만 나타내며, 조기 종료 뒤 결과는 실제 경기 진행이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A가 첫 경기를 이겨 이미 1승이므로 남은 승리 2회가 필요하다.",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "한 경기에서 A가 이길 확률은 2/3, B가 이길 확률은 1/3이며 비기는 경우는 없다.",
+      "mappedTo": "chart.root.children.p"
+    }
+  ],
+  "newVisualInformation": [
+    "잠재 네 경기에서 A가 k승할 확률은 C(4,k)(2/3)^k(1/3)^(4-k)이며, k=0,1,2,3,4의 확률은 각각 1/81, 8/81, 24/81, 32/81, 16/81이다.",
+    "시리즈는 한쪽이 3승에 이르면 종료된다. 조기 종료 뒤의 잠재 결과는 실제로 치르는 경기가 아니라 계산 도구이며, A가 2승 이상인 사건으로 최종 우승 확률을 구한다."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "w",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "n=81",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "n=225",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "w는 구간 길이 L"
+  },
+  "caption": "같은 신뢰도에서 L∝1/√n이다. 원문 n=81, L=10에서 L=6을 목표로 하면 6/10=9/√n, 따라서 n=225이다. 이 수직선은 구간 길이 L의 값만 비교하며 모평균 m의 위치나 중심을 나타내지 않는다. 정답은 ⑤(225)이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "같은 신뢰도에서 신뢰구간 길이 L은 1/√n에 비례한다.",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "c2",
+      "condition": "원문 조건은 n=81, L=10이며 같은 신뢰도로 목표 길이 L=6을 만드는 n을 묻는다.",
+      "mappedTo": [
+        "numberLine.rows",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 SET 행은 하나의 w축에서 신뢰구간 길이 L의 수치만 비교한다. [0,10]과 [0,6]은 실제 구간의 끝점이나 모평균 m의 구간 위치가 아니다.",
+    "원문은 실제 모평균 추정 중심을 주지 않는다. 이 그림은 m=0 또는 두 표본의 관측 중심이 같다고 말하지 않는다.",
+    "길이 10과 6은 원문 수치이고 n=225는 해설에서 유도한 값이다. 같은 신뢰도 관계 6/10=9/√n에서 √n=15이다.",
+    "요청 사유: 같은 신뢰도에서 표본 크기와 신뢰구간 길이의 반비례 관계를 수직선으로 비교하면 풀이를 이해하는 데 도움이 된다."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A 농장",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "오분류",
+              "p": "1/50"
+            },
+            {
+              "label": "정분류",
+              "p": "49/50"
+            }
+          ]
+        },
+        {
+          "label": "B 농장",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "오분류",
+              "p": "3/100"
+            },
+            {
+              "label": "정분류",
+              "p": "97/100"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      [
+        "A 농장",
+        "오분류"
+      ],
+      [
+        "B 농장",
+        "오분류"
+      ]
+    ]
+  },
+  "caption": "농장을 먼저 고르고 각 농장의 조건부 오분류율로 나눈 뒤, 두 오분류 경로 중 A 경로의 비율을 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "제품이 A 농장에서 생산될 확률은 0.6, B 농장일 확률은 0.4이다.",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "오분류 확률은 A 농장 제품에서 0.02, B 농장 제품에서 0.03이다.",
+      "mappedTo": "chart.root.children.children"
+    }
+  ],
+  "newVisualInformation": [
+    "나무의 두 단계는 농장 선택 후 해당 농장의 조건부 분류 결과를 나타낸다.",
+    "A 오분류 경로와 B 오분류 경로의 결합확률은 각각 (3/5)(1/50)=3/250이다. 두 경로의 합은 3/125이며, 주어진 오분류 조건에서 A의 사후확률은 1/2이다."
+  ]
+}

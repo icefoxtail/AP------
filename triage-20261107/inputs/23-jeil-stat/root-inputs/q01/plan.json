@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "r",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "회전 지수",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "0",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "B",
+            "value": "1",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "C",
+            "value": "2",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "D",
+            "value": "3",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "여섯 회전 지수"
+  },
+  "caption": "r=0,1,2,3,4,5는 각각 0°, 60°, 120°, 180°, 240°, 300°인 여섯 회전을 뜻하며, 회전하여 겹치는 칠하기만 같은 것으로 본다. 중앙 색은 7가지 중에서 고르고, 둘레의 나머지 6색은 원순열로 배열하므로 (6−1)!=120가지이다. 따라서 7×120=840이다. 반사는 같은 것으로 보지 않는다. 이 보조 수직선은 회전 지수만 나타내며, 실제 일곱 정육각형 배치는 원문 그림을 유지한다. 정답은 840이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 그림은 합동인 정육각형 7개(가운데 1개와 둘레 6개)로 이루어지고 7가지 색을 각 면에 다르게 칠한다.",
+      "mappedTo": [
+        "PRESERVED_ARCHIVE_BANK",
+        "caption"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "회전하여 일치하는 칠하기만 같은 것으로 본다. 여섯 회전은 60r° (r=0,1,2,3,4,5)이며 반사는 동치 조건에 없다.",
+      "mappedTo": [
+        "numberLine.rows[0].points",
+        "caption"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "중앙 색 선택은 7가지이고, 둘레 여섯 색의 원순열은 (6−1)!=120가지이므로 전체는 7×120=840이다.",
+      "mappedTo": [
+        "caption",
+        "PRESERVED_ARCHIVE_BANK"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선은 실제 모양을 재현하지 않고 60도 간격의 여섯 회전 지수만 표시한다. 중앙 색 선택 7가지와 둘레 원순열 120가지는 캡션에 정확한 계수로 설명하며, 원문의 정육각형 이미지는 보존한다."
+  ]
+}
