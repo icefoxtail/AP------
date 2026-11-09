@@ -1,0 +1,161 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "삼수선 정리에 의해 $PH\\perp BC$이다.",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -6,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "C",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          8,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          8,
+          6
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "B",
+          "C",
+          "A"
+        ],
+        "extent": {
+          "center": [
+            0,
+            3.6,
+            0
+          ],
+          "u": [
+            7.5,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            5.6,
+            0
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "H",
+        "to": "B",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "C",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "role": "ACCENT"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "role": "ACCENT"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "role": "ACCENT"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α 위의 이등변삼각형 ABC(AB=AC=10, BC=12), BC의 중점 H, 평면에 수직인 PA=6. 직각삼각형 PAH에서 PH가 점 P와 BC 사이의 거리이다.",
+  "sourceConditions": [
+    "평면 α 위의 이등변삼각형 ABC",
+    "PA는 평면 α에 수직, PA=6"
+  ],
+  "newVisualInformation": [
+    "BC의 중점 H, AH=8, 직각 PA⊥AH, AH⊥BC, PH⊥BC"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q14-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q14-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 14,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

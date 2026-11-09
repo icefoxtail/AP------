@@ -1,0 +1,77 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "$(x+2)^2-2(y-3)^2=4$",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "-2",
+      "3"
+    ],
+    "aSquared": "4",
+    "bSquared": "2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "-2",
+      "y": "3",
+      "coordinates": true
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "side": -1,
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true
+    }
+  ],
+  "caption": "쌍곡선 (x+2)^2/4-(y-3)^2/2=1의 중심 C(-2,3), 두 꼭짓점 A(0,3), B(-4,3)와 점근선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차곡선 x^2-2y^2+4x+12y-18=0을 완전제곱으로 정리하면 (x+2)^2/4-(y-3)^2/2=1이다.",
+      "mappedTo": [
+        "conic"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심, 꼭짓점, 점근선의 위치가 보인다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q03-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q03-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 3,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

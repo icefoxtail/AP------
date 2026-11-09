@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "그러므로 $\\overline{OQ}\\times\\overline{OR}=7",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "21",
+    "bSquared": "7",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "7",
+      "y": "0"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "2",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "slope": "-1/2",
+      "intercept": "7/2",
+      "tangent": true,
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "caption": "타원 위의 점 P(3,2)에서의 접선 l이 x축과 만나는 점 Q(7,0), P를 지나고 l에 수직인 직선이 x축과 만나는 점 R(2,0)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 x^2/21+y^2/7=1 위의 점 P(3,2)에서의 접선 l과 x축의 교점 Q",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P를 지나고 l에 수직인 직선과 x축의 교점 R",
+      "mappedTo": [
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Q(7,0), R(2,0)과 OQ=7, OR=2"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q20-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q20-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 20,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

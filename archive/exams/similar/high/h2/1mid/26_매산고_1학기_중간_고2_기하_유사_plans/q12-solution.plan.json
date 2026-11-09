@@ -1,0 +1,131 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "따라서 정사영의 넓이는 $36\\sqrt2\\times",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "N",
+      "to": "C",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "D",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "M",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "N",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "N",
+          "C"
+        ]
+      },
+      {
+        "at": "M",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "N",
+          "M",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "\\varphi"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "N",
+      "to": "M"
+    },
+    {
+      "from": "B",
+      "to": "M"
+    }
+  ],
+  "caption": "정사면체 ABCD에서 AB의 중점 N, CD의 중점 M. NM⊥CD, BM⊥CD이므로 두 평면 NCD, BCD가 이루는 각은 ∠NMB=φ이다.",
+  "sourceConditions": [
+    "한 모서리의 길이가 12인 정사면체 ABCD",
+    "AB의 중점 N, CD의 중점 M"
+  ],
+  "newVisualInformation": [
+    "NM=6√2, BM=6√3, 이면각 φ=∠NMB와 삼각형 NCD"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q12-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 12,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

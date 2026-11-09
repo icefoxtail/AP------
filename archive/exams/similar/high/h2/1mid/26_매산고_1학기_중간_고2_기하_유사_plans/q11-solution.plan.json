@@ -1,0 +1,81 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "타원의 중심은 $(-3,2)$이다.",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "1",
+      "axis": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "-3",
+        "2"
+      ],
+      "aSquared": "9",
+      "bSquared": "4",
+      "major": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "curve": "c1",
+      "x": "9",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "c2"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "curve": "c1",
+      "label": "l"
+    }
+  ],
+  "caption": "포물선 y^2=4x, 중심이 C(-3,2)인 타원과 포물선 위의 점 P(9,6)에서의 접선 l. 접선이 타원의 중심 C를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y^2=4x 위의 점에서의 접선이 타원 (x+3)^2/9+(y-2)^2/4=1의 넓이를 이등분한다.",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P(9,6), 타원의 중심 C(-3,2), 접선이 C를 지남"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q11-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q11-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q11-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q11-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 11,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

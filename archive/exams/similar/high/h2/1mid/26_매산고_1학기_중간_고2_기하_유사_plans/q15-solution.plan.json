@@ -1,0 +1,117 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 $BC=\\dfrac23\\times4p=\\dfrac{8p}{3}$",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "9",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "C",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "B",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C",
+      "label": "8"
+    },
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "12",
+      "dashed": true
+    }
+  ],
+  "caption": "p=3일 때 포물선 y^2=12x에서 정삼각형 ABF(한 변 12)와 선분 BF 위의 점 C: BC=8, CF=4",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p=3일 때 포물선 y^2=12x 위의 점 A(9,6√3), 준선 x=-3, 초점 F(3,0)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=AF=BF=12, BC=8, CF=4",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 ABF와 BC:CF=2:1"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q15-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q15-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 15,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

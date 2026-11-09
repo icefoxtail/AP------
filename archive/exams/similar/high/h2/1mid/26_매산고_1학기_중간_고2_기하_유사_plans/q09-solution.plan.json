@@ -1,0 +1,65 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "이 직선은 점근선 $y=\\sqrt3x$에 평행하므로 접선이 아니다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "1",
+    "bSquared": "3",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true
+    },
+    {
+      "id": "k1",
+      "slope": "sqrt(3)",
+      "intercept": "2",
+      "label": "l"
+    }
+  ],
+  "caption": "쌍곡선 x^2-y^2/3=1과 점근선 y=±√3x, 점근선 y=√3x와 평행한 직선 l: y=√3x+2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2-y^2/3=1의 접선이 될 수 없는 직선을 찾는다.",
+      "mappedTo": [
+        "conic",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점근선과 평행한 직선은 쌍곡선과 한 점에서만 만나 접선이 아니다."
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q09-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q09-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 9,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

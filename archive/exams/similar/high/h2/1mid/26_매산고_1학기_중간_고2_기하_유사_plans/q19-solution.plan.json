@@ -1,0 +1,173 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "$m\\perp l$이라는 조건이 있어야 $m$이 $\\beta$ 위의",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "M",
+        "at": [
+          0,
+          0,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "N",
+        "at": [
+          0,
+          "-3/2",
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "X",
+        "at": [
+          1.5,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "point": "O",
+        "extent": {
+          "center": [
+            0.7,
+            0,
+            1.1
+          ],
+          "u": [
+            1.9,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            1.1
+          ]
+        }
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "O",
+        "fill": "WARM",
+        "extent": {
+          "center": [
+            0.7,
+            -0.95,
+            0
+          ],
+          "u": [
+            1.9,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0.95,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "O",
+          "M"
+        ]
+      },
+      {
+        "id": "n",
+        "name": "n",
+        "through": [
+          "O",
+          "N"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "M",
+          "X"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "N",
+          "X"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "M",
+          "N"
+        ]
+      }
+    ]
+  },
+  "caption": "교선 l 위의 점 O에서 α 위의 m⊥l, β 위의 n⊥l을 그으면 m⊥n이므로 m은 β 위의 서로 만나는 두 직선 l, n에 수직이다.",
+  "sourceConditions": [
+    "서로 수직인 두 평면 α, β의 교선 l",
+    "α 위의 직선 m, β 위의 직선 n"
+  ],
+  "newVisualInformation": [
+    "m⊥l, n⊥l, m⊥n의 세 직각 표시"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q19-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q19-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 19,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

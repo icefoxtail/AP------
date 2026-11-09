@@ -1,0 +1,73 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "(가)는 $a^2mn$, (나)는 $a^2m^2+b^2-n^2$이다.",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "4",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "S",
+      "kind": "POINT",
+      "x": "-9/5",
+      "y": "8/5"
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "x": "9/5",
+      "y": "-8/5"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "slope": "1/2",
+      "intercept": "5/2",
+      "tangent": true,
+      "label": "l_1"
+    },
+    {
+      "id": "t2",
+      "slope": "1/2",
+      "intercept": "-5/2",
+      "tangent": true,
+      "label": "l_2"
+    }
+  ],
+  "caption": "대표 예 a=3, b=2, m=1/2: 타원 x^2/9+y^2/4=1에 접하는 기울기 1/2인 두 접선 l_1: y=x/2+5/2, l_2: y=x/2-5/2와 접점 S, T",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 x^2/a^2+y^2/b^2=1에 접하고 기울기가 m인 직선 (대표 예 a=3, b=2, m=1/2)",
+      "mappedTo": [
+        "conic",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기울기가 같은 접선이 n=±sqrt(a^2m^2+b^2)=±5/2로 두 개임"
+  ],
+  "assetPath": "assets/images/26_매산고_1학기_중간_고2_기하_유사/q17-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사_plans/engine_evidence/q17-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "ordinal": 17,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 입력에서만 결정된다."
+    }
+  }
+}

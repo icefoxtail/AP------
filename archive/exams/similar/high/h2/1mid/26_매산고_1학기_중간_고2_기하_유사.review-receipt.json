@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_매산고_1학기_중간_고2_기하_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사.meta-q01-q21.json",
+  "candidateGitBlobSha1": "bcf2a039bc3672e3f4bce860c10f01ee2dd3c39e",
+  "reviewTimestamp": "2026-11-09T19:02:07+00:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 21,
+    "answerMatches": 21,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "/tmp/rev_mae/blind_frozen_v1.json (작업 폴더 밖, 미커밋; 저장 정답·해설·원본을 열기 전에 동결한 최초 판본)",
+    "freezeFileSha1": "be8554f0172e36f1a393d275472ec71b8dc6ff14",
+    "method": "학생에게 보이는 필드(발문·보기·문제 그림 PNG)만으로 python/sympy/numpy 로 21문항을 풀어 동결한 뒤, 저장된 answer/solution/meta 와 원본을 열어 대조: 객관식 15/15, 단답·서술 6/6 일치. Q21은 c를 2<c<30 범위에서 스캔해 삼각형 PQF 둘레 28 조건의 해가 c=5,7 뿐임을 독립 확인.",
+    "disclosure": "완전한 블라인드에서 Q1만 예외: 파일 앞부분 덤프(head)에 Q1 answer(③)와 해설이 노출됨(자명한 문항). 나머지 20문항은 저장 정답·해설·원본 정답을 보기 전에 동결. 동결 후 Q18 항목의 괄호 메모('그림 확인 필요')만 그림 확인 뒤 지운 사본을 /tmp/rev_mae/blind_frozen.json 에 따로 두었으나(sha1 0e0bfb867e34211975adb59ec2e6c14fee8e68cb) 답은 동일. 생성자 메모(Q4·Q10·Q19 형식 차이)는 지시문으로만 전달받았고 정답은 아님.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "⑤",
+      "3": "④",
+      "4": "②",
+      "5": "①",
+      "6": "③",
+      "7": "②",
+      "8": "⑤",
+      "9": "①",
+      "10": "③",
+      "11": "④",
+      "12": "④",
+      "13": "⑤",
+      "14": "①",
+      "15": "②",
+      "16": "x=3, y=x-1",
+      "17": "(가) a^2 m n, (나) a^2m^2+b^2-n^2",
+      "18": "3√41 (좌표 가정 A원점,B x축,P=(4,0,0), Q=(6,3,6); 그림 확인 필요)",
+      "19": "3) 잘못, m⊥l 추가",
+      "20": "14",
+      "21": "12 (c=5,7)"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "조건별 자취 판정: 합 일정=타원, 차 일정=쌍곡선, 정점·정직선 등거리=포물선, 정점 거리 3=원(타원 특수형), 두 정점 등거리=수직이등분선(직선) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 2,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "한 직선 위의 서로 다른 세 점은 그 직선을 포함하는 평면이 무수히 많아 하나로 결정되지 않음, 나머지 4개는 결정 조건 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 3,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "x^2+4x-2(y^2-6y)=18 -> (x+2)^2-2(y-3)^2=4 -> 쌍곡선 (sympy로 전개 확인) -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 4,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "BC⊥AB,BF 이므로 BC⊥평면 ABFE, BC⊥CD,CG 이므로 BC⊥평면 CDHG, ABCD·BCGF는 BC 포함, ADHE·EFGH는 평행 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 5,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "y=2x+n, 접선 조건 n^2=a^2m^2-b^2=5*4-11=9, n=±3, 보기 중 3 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 6,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "6x+3y=21 (접선 공식 2x/7+3y/21=1), y=-2x+7, a+b=5 -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 7,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "c^2=16-7=9, 중심(-1,k), 초점 (2,k), |6-4k+4|/5=2 -> |10-4k|=10, k=0,5, 합 5 -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 8,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "정사각뿔 밑면 중심 O, AO=2√2, VA=2√3, cosθ=AO/VA=√6/3 -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 9,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "접선 조건 n^2=m^2-3(m^2>3): ②③④⑤ 모두 성립, ①은 m=√3 점근선과 평행(n=2)이라 접선 아님 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 10,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ 평행한 두 평면에 한 수선은 다른 평면에도 수선(참), ㄴ 한 평면과 평행한 두 직선은 평행·교차·꼬임 가능(거짓), ㄷ 수선을 포함하는 평면은 수직(참) -> ③",
+      "candidateAnswer": "③"
+    },
+    {
+      "qid": 11,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "넓이 이등분 접선은 타원 중심(-3,2)을 지남, by=2(x+a) 에 대입 b=a-3, b^2=4a -> a=9,b=6 (1사분면), 81+36=117 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 12,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "S[NCD]=36√2 (NC=ND=6√3, NM=6√2), 이면각 코사인 cos∠NMB=√6/3, 정사영 넓이 24√3; 투영점(BG 중점)으로 직접 계산해도 24√3 일치 -> ④",
+      "candidateAnswer": "④"
+    },
+    {
+      "qid": 13,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "접선 4x-y=15, 점근선과 교점 (5,5),(3,-3), 삼각형 O,(5,5),(3,-3) 넓이 15 (=ab) -> ⑤",
+      "candidateAnswer": "⑤"
+    },
+    {
+      "qid": 14,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "H=BC 중점, AH=√(100-36)=8, 삼수선 정리로 PH⊥BC, PH=√(36+64)=10 -> ①",
+      "candidateAnswer": "①"
+    },
+    {
+      "qid": 15,
+      "questionType": "객관식",
+      "blindFrozenAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "AB=AF=BF 정삼각형, A x좌표 3p, BF 위 C: t=1/3 로 BC=8p/3, CF=4p/3, BC+2CF=16p/3=16 -> p=3, 한 변 12, 넓이 36√3 (sympy) -> ②",
+      "candidateAnswer": "②"
+    },
+    {
+      "qid": 16,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "x=3, y=x-1",
+      "blindMatch": true,
+      "blindDerivation": "x=3 은 꼭짓점 접선, 기울기형 n^2=9m^2-8 에 n=2-3m 대입 -> m=1, y=x-1; 두 접선 x=3, y=x-1",
+      "candidateAnswer": "$x=3$, $y=x-1$"
+    },
+    {
+      "qid": 17,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "(가) a^2 m n, (나) a^2m^2+b^2-n^2",
+      "blindMatch": true,
+      "blindDerivation": "대입해 (b^2+a^2m^2)x^2+2a^2mn x+a^2(n^2-b^2)=0 -> (가)=a^2mn, D/4=a^2b^2(a^2m^2+b^2-n^2) (sympy 전개 확인) -> (나)=a^2m^2+b^2-n^2",
+      "candidateAnswer": "(가) $a^2mn$, (나) $a^2m^2+b^2-n^2$"
+    },
+    {
+      "qid": 18,
+      "questionType": "단답형",
+      "blindFrozenAnswer": "3√41 (좌표 가정 A원점,B x축,P=(4,0,0), Q=(6,3,6); 그림 확인 필요)",
+      "blindMatch": true,
+      "blindDerivation": "좌표 A(0,0,0) B(6,0,0) P(4,0,0) C(6,6,0) Q(6,3,6) (그림의 라벨과 일치 확인), CP×CQ=(-36,12,6), 넓이=|.|/2=3√41",
+      "candidateAnswer": "$3\\sqrt{41}$"
+    },
+    {
+      "qid": 19,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "3) 잘못, m⊥l 추가",
+      "blindMatch": true,
+      "blindDerivation": "1) m⊥β이면 m⊥l 참, 2) 수직한 두 평면에서 α 위 점의 β 수선은 α 위 -> 참, 3) m이 l에 수직이라는 조건이 없으면 거짓 -> 3번, m⊥l 추가 (m⊥l, n⊥l, m⊥n 으로 m⊥β)",
+      "candidateAnswer": "3번, $m\\perp l$ 조건 추가"
+    },
+    {
+      "qid": 20,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "14",
+      "blindMatch": true,
+      "blindDerivation": "P(3,2) 타원 위, 접선 x+2y=7 -> Q(7,0), 수직선 y=2x-4 -> R(2,0), OQ*OR=14",
+      "candidateAnswer": "14"
+    },
+    {
+      "qid": 21,
+      "questionType": "서술형",
+      "blindFrozenAnswer": "12 (c=5,7)",
+      "blindMatch": true,
+      "blindDerivation": "a=2, P 오른쪽 가지: PF'-PF=4; 이등변 두 경우 PF=FF'=2c / PF'=FF'=2c; Q는 PF' 위 두 번째 교점. 수치 스캔(2<c<30)으로 둘레 28 이 되는 c=5,7 뿐 확인 -> 합 12",
+      "candidateAnswer": "12"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "21 vs 21",
+    "pointsSum": "100 vs 100 (3.8x4, 4.2x2, 4.5x6, 4.8x3, 5x3, 6x2, 8; 발문 [n점] 표기와 score 필드 일치)",
+    "questionTypes": "문항별 객관식 1~15 / 단답형 16~18 / 서술형 19~21 구성과 단원 배치가 원본과 1:1 대응",
+    "notes": [
+      "Q1: 원본 '이차곡선이 아닌 것'(삼수선) -> 자취 조건 5개를 이차곡선 정의와 대응시켜 직선(수직이등분선)을 찾는 형태. 같은 판별형, 난이도 하 유지.",
+      "Q2/Q3/Q5/Q6/Q7/Q9/Q11/Q13/Q14/Q15/Q16/Q17/Q20/Q21: 같은 유형·같은 풀이 구조에서 수치·곡선 종류만 변경, 정답값이 모두 원본과 다름(암기 불가). 정답 위치가 원본과 같은 문항은 Q2·Q5·Q9뿐이며 값은 다르다.",
+      "Q4: 원본 'AB와 수직인 평면을 모두 고르면'(복수 정답 ②④) -> 단일 정답 5지 '평면을 모두 나열한 것은?' 으로 형식 변환(BC와 수직인 평면 ABFE·CDHG). 같은 직선-평면 수직 판정 개념, 단일 정답 5지로 더 명확해져 허용.",
+      "Q10: 원본 세 직선·세 평면(ㄱ 참, ㄴ·ㄷ 거짓) -> 두 직선·두 평면(ㄱ·ㄷ 참, ㄴ 거짓). 원본보다 약간 쉬운 표준 정리 판정이나 중 난이도 범위 안이라 허용.",
+      "Q12: 원본 정사면체 삼각형 GBC의 평면 ACD 정사영 -> 삼각형 NCD의 평면 BCD 정사영. 이면각+넓이 구조 동일, 원본보다 조금 단순하나 상 난이도의 다단계 풀이 유지.",
+      "Q19: 원본은 삼수선 정리 3명제 중 잘못된 것 찾기(3번, PO⊥OH 추가) -> 서로 수직인 두 평면의 성질 3명제 중 잘못된 것 찾기(3번, m⊥l 추가). 1점(찾기)+2점(수정)+3점(이유) 채점 구조와 '3번·수직 조건 추가' 답 구조는 같으나 소재가 삼수선 정리에서 평면의 수직으로 바뀜. 같은 공간도형 단원·같은 난이도라 허용하되 정보로 기록(삼수선 정리는 Q14에서 별도 출제).",
+      "Q8: 원본 '모든 모서리 같은 정사각뿔' -> 옆모서리 2√3, 밑변 4. θ 표시가 문제 그림에 없지만 발문이 θ를 'VA와 평면 ABCD가 이루는 각'으로 정의하고, 표시하면 수선의 발 O 위치가 드러나므로 허용(해설 그림에는 θ 표시)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 3,
+    "②": 3,
+    "③": 3,
+    "④": 3,
+    "⑤": 3,
+    "note": "객관식 1~15 균등"
+  },
+  "mathReview": "21문항 전수 블라인드 독립 풀이 후 저장된 해설을 끝까지 읽어 논리·중간 계산·교육과정(2022 기하: 이차곡선·평면과 직선·공간도형) 확인. 정답 불일치 0건, 해설 오류 0건, 보기 5지 유일 정답. Q9 ① m^2=3 이면 접하지 않고 한 점에서만 만남(점근선 평행) 확인, Q11 a=1 은 4사분면이라 제외, Q15 p=3 으로 BC+2CF=16, Q18 그림 라벨(AP:PB=2:1, FG 중점)과 좌표 일치, Q21 c=5,7 은 직선 PF' 이 왼쪽 가지와 만남(둘레 28, 점근선 기울기 비교)까지 해설이 확인. 발문 모호성 없음.",
+  "reviewerEdits": [
+    {
+      "qid": [
+        4,
+        8,
+        12,
+        13,
+        15,
+        18,
+        19
+      ],
+      "kind": "layout",
+      "before": "문제 그림 imageSize 미지정(자동 150px 높이, 입체 도형 꼭짓점 라벨이 약 7px)",
+      "after": "JS에 \"imageSize\": \"full\" 추가(최대 240px 높이, 가로 100%)",
+      "reason": "PC 시험지에서 문제 그림 라벨이 너무 작아 학생이 점 이름을 읽기 어려움. 같은 학년 기존 유사 시험지(강남여고 대수 Q19 등)도 imageSize full 사용. 페이지 배치 확인(PC 1280, 휴대폰 390)에서 잘림·겹침 없음."
+    },
+    {
+      "qid": "meta",
+      "kind": "hash-binding",
+      "before": "expectedSourceBlobSha1 0eb6d0c243707c9ec4f3ff0e926dcd6c04c5bcfd",
+      "after": "bcf2a039bc3672e3f4bce860c10f01ee2dd3c39e",
+      "reason": "JS 수정에 따른 해시 결속 갱신(git hash-object)"
+    }
+  ],
+  "metaReview": {
+    "jsMetaConsistency": "JS 21문항의 level/difficultyBucket/단원·소단원/개념군/PT/TPL/crossConceptKeys/conditionKeys/integrationPattern/rpm 라벨/sourceQid/variationType 이 meta after 와 완전 일치(불일치 0). expectedSourceBlobSha1 = 최종 JS blob. 확장 registry sha256 = meta registryChanges.registrySha256.",
+    "keyExistence": "PT 21/21, TPL 21/21 은 canonical packs/*/taxonomy.json 에서 직접 조회해 실재, canonical CC 키 17종은 canonical/concepts 실재, COND_POSITIVE 는 condition_registry 실재, RPM 레코드 H2-GEO-RPM-039~056 12종은 crosswalks/rpm-primary-v1.0/high2-geometry.json 에서 실재하며 문항별 rpmPrimaryL1~L3 가 크로스워크 경로와 일치(비확장 문항의 L4 도 일치).",
+    "extensionKeys": "새 확장 키 7개(EXT-L4 5, EXT-CROSS 2): EXT-L4-GEO-CONIC-LOCUS-DEFINITION-IDENTIFY(Q1,parent H2-GEO-RPM-039), EXT-L4-GEO-PLANE-DETERMINATION-CONDITION(Q2,053), EXT-L4-GEO-CONIC-GENERAL-FORM-IDENTIFY(Q3,045), EXT-L4-GEO-LINE-PLANE-ANGLE-PERPENDICULAR-FOOT(Q8,055), EXT-L4-GEO-PLANE-PERPENDICULAR-PROPERTY(Q19,053), EXT-CROSS-ELLIPSE-CENTER-AREA-BISECT(Q11,parent CC_ELLIPSE), EXT-CROSS-HYPERBOLA-BRANCH-FOCAL-DIFFERENCE(Q21,parent CC_HYPERBOLA). 모두 parent 가 실재 canonical, 다른 similar-high registry 10개와 key·labelKo 중복 없음, 정의가 해당 문항 풀이와 일치, 미사용 확장 0. EXT-CROSS 2개는 canonical CC 에 '중심 대칭 넓이 이등분'·'두 가지 거리 차'에 해당하는 키가 없음을 concepts 전수 검색으로 확인. EXT-L4 중 Q8·Q19 는 canonical L4('거리·각','평행·수직')로도 부분 포괄되나 더 구체적 사고(수선의 발로 각 구하기, 두 평면 수직 성질)를 분리하며 중복 키는 아니라 허용(정보).",
+    "coverage": "필수 필드 23종 x 21문항 누락 0(conditionKeys 는 해당 없음 시 []). PT/TPL/standardUnit/subUnit/conceptCluster/rpm L1~L4/integrationPattern/level/difficultyBucket/sourceQid/variationType/provenance/levelBasis/difficultyBasis/parentAssignment 21/21. crossConceptKeys 21/21(총 55개 사용, 확장 2개 포함 2회). conditionKeys 사용 5/21(Q7·Q11·Q15·Q17·Q21 COND_POSITIVE). generated L4 사용 5/21. 새 확장 키 7개(parent 실재 7/7, 재사용 확장 0), EVIDENCE_DEBT 0.",
+    "semanticSpotCheck": "Q9 CASE_BRANCH(점근선 평행 경우 분리), Q16 TPL_GEO_TANGENT_FROM_OUTSIDE_POINT, Q20 TPL_GEO_TANGENT_ORTHOGONAL, Q21 CASE_BRANCH+EXT-CROSS 가 최종 풀이 경로와 일치. Q18 은 해설이 좌표 없이 길이·코사인으로 푸는 공간도형 거리 문항이라 가장 가까운 canonical 인 삼수선 정리/거리·각(H2-GEO-RPM-055)을 쓴 것으로 허용."
+  },
+  "visualReview": {
+    "problemFigures": "문제 그림 7개(Q4,Q8,Q12,Q13,Q15,Q18,Q19)를 PNG 로 직접 확인: 점 라벨·음영이 발문과 일치, 정답 누설 없음(Q13 색칠 삼각형에 수치 없음, Q15 길이 표시 없음, Q18 값 없이 6·N·직각만, Q19 m 이 l 에 수직이 아닌 모양). Q13 점근선 y=±x 라벨 위치 정확. Q8 은 θ 미표시(발문 정의로 충분, 허용).",
+    "solutionFigures": "해설 그림 18개를 PNG 로 직접 확인. 모든 그림의 그림값(Q3 A(0,3) B(-4,3) C(-2,3), Q5 접점 ±(10/3,11/3), Q6 y=-2x+7, Q8 2√3·2√2·2·θ, Q11 P(9,6), Q12 6√2·6√3·φ, Q13 A(5,5) B(3,-3), Q15 12·8·4·12, Q18 2√10·3√5·7, Q20 Q(7,0) R(2,0), Q21 14·10 및 Q 의 위치)이 해설·정답과 일치. 일부 그림은 선 이름(l1,l2)만 있고 방정식은 해설 본문이 재기재.",
+    "planAudit": "plan 42개(문제 21 + 해설 21) 모두 유효 JSON. EXEMPT 17개(문제 14, 해설 3)는 모두 사유 기재, 그림이 붙은 25개 plan 은 capability(solid-figure-v1 12개·ellipse-figure-v1 13개)·sourceQuote(12~40자, 대상 본문에 실재)·한국어 caption·assetPath(JS 필드와 일치)·engineEvidence(result/state/svg 존재) 모두 충족. 자산 25개 모두 engine_evidence svg 와 바이트 동일, result status 전부 ARCHIVE_BOUND. render-plan.mjs 로 plan 5개(Q4 문제, Q15 문제, Q7·Q18·Q21 해설)를 다시 렌더해 바이트 동일 재현 확인.",
+    "svgSpec": "SVG 25개 모두 엔진 산출물: <text> 없는 글리프 외곽선 라벨(data-font-px 20~28, 11px 이상), raw LaTeX 0, 순백 배경. 입체 composite 11개 SVG 는 엔진 구조상 루트에 role=img·title·desc 가 없고 alt/caption 은 JS imageAlt·solutionImageAlt·plan caption 이 담당(운영 중인 composite SVG 483개와 동일 구조, 손편집 금지 규칙에 따라 그대로 둠).",
+    "renderCheck": "engine.html?data=exams/similar/high/h2/1mid/<stem>.js&mode=exam|sol|ans 를 Chrome 으로 PC(1280)·휴대폰(390) 폭에서 열어 시험지·해설지·정답표 6화면 확인: 이미지 25/18/18개 모두 로드 성공, 가로 넘침 0, katex 오류 0, 정답표 21행 일치. 외부 이미지 호스트(img.wangjiedu.com)는 미게시라 로컬 자산으로 대체 라우팅해 확인했다.",
+    "debtNotes": "해설 그림은 엔진이 라벨 위치를 자동 배치해 수동 조정 불가(손편집 금지)."
+  },
+  "harness": {
+    "draftPhase": "node tools/harness/verify_similar_exam.mjs 26_매산고_1학기_중간_고2_기하_유사 --phase=draft : GATE_FAIL 81건(exit 1). 전량 도구 한계로 분류: (a) HARNESS_CAPABILITY_LIMIT 25건 + 같은 plan 의 'no actual engine input' 25건 = ellipse-figure-v1·solid-figure-v1 의 입력 계약이 하네스에 없음; (b) 'engine output/status/candidate asset mismatch' 11건 = solid-figure plan 의 state 가 composite-panels-v1 로 래핑되어 capability 문자열이 달라 보이는 하네스 비교 한계(자산 바이트·ARCHIVE_BOUND 는 실제로 일치함을 별도 확인); (c) composite SVG 5개의 role=img 부재 5건 + 도형 원시요소 1개 5건 = 엔진 composite 가 패널을 <image data:URI> 로 포함해 하네스가 내부를 보지 못함; (d) 점 라벨 누락 10건(Q8 V, Q12 N, Q15 A·B·C·F, Q18 P·Q·C·N) = 라벨이 글리프 외곽선이라 하네스가 복호하지 못함. 위 라벨은 모두 렌더 PNG 로 실제 존재를 확인. 실제 결함 0건. 도구는 수정하지 않음.",
+    "strict": "영수증 발급 뒤 node tools/harness/verify_similar_exam.mjs 26_매산고_1학기_중간_고2_기하_유사 (strict) 재실행: 영수증 관련 오류 0건(blob 결속·블라인드 21/21·답 일치·PASS 계열 서명 모두 통과, RECEIPT_QUALIFIED_PASS 경고 1건), 나머지 GATE_FAIL 81건은 draft 와 동일한 도구 한계 81건 그대로(exit 1). 따라서 정식 하네스 출고 게이트는 이 도구 한계가 해소되기 전에는 통과 불가이며, 운영병합 전 도구 지원(ellipse/solid capability 입력 계약, composite SVG 판독) 또는 사용자 판단이 필요하다."
+  },
+  "NOT_RUN": [
+    "main_merge_master.py 운영병합(지시상 commit/push 금지)",
+    "실제 인쇄·PDF 출력 확인(화면 렌더만 확인)",
+    "학생 배포 사이트에서의 이미지 호스트 로딩(미게시 자산)"
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 18,
+      "qid_ref": "26_매산고_1학기_중간_고2_기하_유사#18",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림에서 CP=2√10 치수 라벨이 변 CP 보다 정육면체 모서리 BC 쪽에 붙어 보여 오독 소지. 캡션과 해설 본문이 CP=2√10, CQ=3√5, PQ=7 을 재기재하므로 풀이 이해에는 지장 없음. 엔진 자동 배치라 조정 불가.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 7,
+      "qid_ref": "26_매산고_1학기_중간_고2_기하_유사#7",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림에서 초점 점과 'F2' 라벨이 겹쳐 보임. 좌표·거리는 해설 본문에 재기재.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 9,
+      "qid_ref": "26_매산고_1학기_중간_고2_기하_유사#9",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림에 점근선·직선 l 의 방정식 라벨이 없고 O 라벨이 다른 그림보다 큼. 방정식은 해설 본문에 있음.",
+      "severity": "low",
+      "round": 1
+    },
+    {
+      "qid": 5,
+      "qid_ref": "26_매산고_1학기_중간_고2_기하_유사#5",
+      "kind": "visual-solution-figure",
+      "reason": "해설 그림의 두 접선이 l1, l2 로만 표시되어 y절편 ±3 이 그림에서 직접 읽히지 않음. 해설 본문과 캡션이 y=2x±3 을 명시.",
+      "severity": "low",
+      "round": 1
+    }
+  ],
+  "summary": "블라인드 21/21 일치, JS 수정은 문제 그림 크기(imageSize full) 7곳, 메타 정합·확장 키 7개 검수 통과, 소형 해설 그림 부채 4건(모두 low)만 잔존. 하네스 draft 81건 FAIL 은 전량 도구 한계로 분류."
+}
