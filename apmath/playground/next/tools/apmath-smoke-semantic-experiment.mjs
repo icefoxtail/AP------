@@ -7,7 +7,7 @@ import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { createScreenshotGuard } from './browser-screenshot-guard.mjs';
-import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame } from './scene-smoke-semantic-calibration.mjs';
+import { deriveSparseFigureContract, evaluateSmokeSemanticCalibration, captureSmokeCalibrationFrame, isObservedAxisDecoration } from './scene-smoke-semantic-calibration.mjs';
 import { sampleInitialFigure } from './middle-initial-figure-contracts.mjs';
 import { adjudicateSmokeMeasurement } from './scene-smoke-measurement-gate.mjs';
 
@@ -71,6 +71,7 @@ const drain = async () => { while (pending.size) await Promise.allSettled([...pe
 // The collector itself installs temporary Canvas hooks only after the actual
 // app/Board exists. Its embedded dependencies are the four hashed local modules.
 const observe = new Function(`return function observe() {
+  ${isObservedAxisDecoration.toString()}
   ${deriveSparseFigureContract.toString()}
   ${evaluateSmokeSemanticCalibration.toString()}
   ${captureSmokeCalibrationFrame.toString()}

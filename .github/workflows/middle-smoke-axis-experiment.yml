@@ -1,0 +1,70 @@
+name: Middle smoke axis observation experiment
+
+on:
+  push:
+    branches: ['audit/apmath-axis-observation-20261109']
+    paths:
+      - '.github/workflows/middle-smoke-axis-experiment.yml'
+      - 'apmath/playground/next/tools/*smoke*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: middle-smoke-axis-observation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            .github/workflows
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare Chromium and immutable product
+        env:
+          PRODUCT_SOURCE: c45901b8e4d375b7aa73ff291f9cd2af1908f1b1
+        run: |
+          npm install --prefix "$RUNNER_TEMP/axis-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/axis-browser/node_modules/.bin/playwright" install --with-deps chromium
+          git fetch --depth=1 --no-tags origin "$PRODUCT_SOURCE"
+          git worktree add --detach "$RUNNER_TEMP/axis-product" "$PRODUCT_SOURCE"
+          mkdir -p "$RUNNER_TEMP/axis-evidence"
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/axis-product" > "$RUNNER_TEMP/axis-evidence/server.log" 2>&1 &
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js > /dev/null
+      - name: Fail-closed annotation controls
+        run: |
+          node --test apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs apmath/playground/next/tools/scene-smoke-orchestration.test.mjs 2>&1 | tee "$RUNNER_TEMP/axis-evidence/unit.log"
+      - name: Every lab and all five original smoke environments
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/axis-browser/node_modules
+        run: |
+          node apmath/playground/next/tools/scene-smoke.mjs http://127.0.0.1:8765/apmath/playground/next/labs/ --report "$RUNNER_TEMP/axis-evidence/full-smoke-report.json" 2>&1 | tee "$RUNNER_TEMP/axis-evidence/full-smoke.log"
+      - name: Actual axis provenance and missing-label controls
+        if: ${{ !cancelled() }}
+        env:
+          NODE_PATH: ${{ runner.temp }}/axis-browser/node_modules
+        run: |
+          node apmath/playground/next/tools/apmath-smoke-axis-experiment.mjs --root "$RUNNER_TEMP/axis-product" --expected-sha c45901b8e4d375b7aa73ff291f9cd2af1908f1b1 --base-url http://127.0.0.1:8765/apmath/playground/next/labs/ --out "$RUNNER_TEMP/axis-evidence/actual" 2>&1 | tee "$RUNNER_TEMP/axis-evidence/experiment.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-axis-${{ github.run_id }}-all
+          path: ${{ runner.temp }}/axis-evidence
+          retention-days: 14
