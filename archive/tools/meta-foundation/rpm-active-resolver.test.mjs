@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { objectSha } from '../pipeline-core/canonical.mjs';
-import { loadActiveMetaRegistry } from './active-registry.mjs';
+import { loadActiveMetaRegistry, validateActiveMetaFields } from './active-registry.mjs';
 import {
   buildDecisionIsolatedInput,
   activeCandidateKeysForScope,
@@ -80,6 +80,13 @@ function makeCandidate(resolution) {
     difficultyBucket: 2, difficultyConfidence: 'medium', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL',
   };
 }
+
+test('explicit UNKNOWN legacy compatibility still counts as a complete new difficulty assessment', () => {
+  const candidate = { ...makeCandidate(rowFor('H1-RPM-001')), legacyLevelCompatibility: 'UNKNOWN' };
+  const validation = validateActiveMetaFields(candidate, registry, { requireFields: true });
+  assert.equal(validation.status, 'VALIDATED');
+  assert.equal(validation.difficultyComplete, true);
+});
 
 function makeRelational(resolution) {
   const evidence = {

@@ -1,25 +1,30 @@
 {
   "schemaVersion": "meta-foundation-pack-v1",
   "packId": "INTEGRAL_CALCULUS",
-  "packVersion": "1.0.0",
+  "packVersion": "1.1.0",
   "canonicalStatus": "ACTIVE",
   "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
   "ownerPack": "INTEGRAL_CALCULUS",
   "curricula": [
-    "2015"
+    "2015",
+    "2022"
   ],
   "standardCourses": [
-    "수학II"
+    "수학II",
+    "미적분I"
   ],
   "ownedStandardUnitDomains": [
     "H15-M2-07",
     "H15-M2-08",
-    "H15-M2-09"
+    "H15-M2-09",
+    "H22-M1-06",
+    "H22-M1-07",
+    "H22-M1-08"
   ],
-  "activeItemEvidenceCount": 135,
+  "activeItemEvidenceCount": 186,
   "problemTypeCount": 5,
   "templateCount": 15,
-  "bindingCount": 5,
+  "bindingCount": 11,
   "aliasCount": 0,
   "productionJsMutation": false,
   "crossConceptReferenceCount": 63,
@@ -29,7 +34,8 @@
     "Reduced to 5 L3 / 15 L4 by separating CrossConcept, Condition, and integrationPattern axes.",
     "Latest-main rebase reuses CC_DIFFERENTIABILITY, CC_INVERSE_FUNCTION, CC_TANGENCY and CC_ABSOLUTE_VALUE_FUNCTION; eight additional FUNCTION concepts are promoted.",
     "23 팔마고 q7 is retained as SUPPLEMENTARY_OUTSIDE_CORE and excluded from the default automatic pool.",
-    "No production exam JS is modified."
+    "No production exam JS is modified.",
+    "2022 미적분Ⅰ 교과서 51문항에 대해 기존 Integral Calculus PT/TPL 연결을 unit-direct 바인딩으로 확장."
   ],
   "promotionReviewDisposition": "INTEGRAL_CALCULUS_STAGE6_PROMOTION_READY"
 }
