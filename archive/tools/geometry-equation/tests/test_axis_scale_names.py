@@ -50,6 +50,11 @@ class AxisScaleFraming(unittest.TestCase):
             transform=produce(plan)['transform'];self.assertAlmostEqual(transform['sy']/transform['sx'],ratio,places=9)
     def test_without_the_field_nothing_changes(self):
         plan=fitted(plan_with(axisScale=None));self.assertEqual(plan['axisRatio'],1.0);self.assertNotIn('axisScale',plan)
+    def test_name_variable_is_one_letter_other_than_the_function_name(self):
+        # EXT-20261109-b: g(y) for a density of y
+        self.assertEqual(fitted(plan_with(functionName='g',nameVariable='y'))['nameVariable'],'y')
+        for bad in ('yy','Y','g',1):
+            self.assertEqual(refused(plan_with(functionName='g',nameVariable=bad)),'PIECEWISE_POLY_NAME_VARIABLE_INVALID')
     def test_the_field_is_checked(self):
         for scale in ({'x':1},{'y':1},{'x':1,'y':2,'z':3},{'x':True,'y':2},{'x':0,'y':2},{'x':-1,'y':2},{'x':1,'y':'abc'},{'x':1,'y':1.5},{'x':'1/0','y':2},[1,2],'1:12',{'x':'1e3','y':1}):
             self.assertEqual(refused(plan_with(axisScale=scale)),'INVALID_AXIS_SCALE',scale)

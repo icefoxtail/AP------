@@ -15,7 +15,7 @@ TESTS=Path(__file__).resolve().parent
 sys.path.insert(0,str(TESTS.parent/'production'))
 sys.path.insert(0,str(TESTS.parent))
 from graph_framing import fit_overview,_overlay_length_row
-from graph_observer import audit,_ov_length_codes,GRAPH_COLOR_LINES,GRAPH_COLOR_LINE_WIDTH
+from graph_observer import audit,_ov_length_codes,_ov_label_codes,GRAPH_COLOR_LINES,GRAPH_COLOR_LINE_WIDTH
 from visual_engine.palette import PALETTE,COLORED_SEGMENT_WIDTH
 
 FIXTURES=TESTS/'g12-fixtures'
@@ -42,11 +42,27 @@ class Framing(unittest.TestCase):
         self.assertEqual((rows['c1']['dot'],rows['c1']['labelKind'],rows['c1']['direction']),('A','MATH','W'))
         self.assertEqual((rows['c2']['dot'],rows['c2']['labelKind'],'direction' in rows['c2']),('required-point-1','TEXT',False))
         self.assertAlmostEqual(rows['c2']['at'][0],-6**.5/3,places=9)
+    def test_a_math_callout_may_carry_a_comma_a_subscript_and_a_bracketed_fraction(self):
+        # EXT-20261109-b: up to 20 characters; a comma (coordinate pair), A_1 and (x+2)/(x-2) are typeset as math, not refused
+        plan=with_overlays(callouts=[{'id':'c1','point':'A','text':'(3,2/5)','labelKind':'MATH'},{'id':'c2','point':'A','text':'A_1'},{'id':'c3','point':'A','text':'y=(x+2)/(x-2)'}])
+        rows={row['id']:row for row in fit_overview(plan)['graphPlan']['overlaysFeatures']['callouts']}
+        self.assertEqual([rows[i]['labelKind'] for i in ('c1','c2','c3')],['MATH','MATH','MATH'])
+        self.assertEqual(rows['c1']['text'],'(3,2/5)')
+    def test_glyph_codes_skip_only_the_brackets_that_wrap_a_whole_fraction_operand(self):
+        # EXT-20261109-b: (x+2)/(x-2) draws x+2 over x-2 (no brackets); a bracket that is part of an operand is drawn
+        count=lambda text:len(_ov_label_codes(text))
+        self.assertEqual([count('y=(x+2)/(x-2)'),count('1/(x-2)'),count('A_1'),count('(3,5)')],[8,4,2,5])
+        self.assertEqual([count('2(x+1)/3'),count('2*(x+1)/3'),count('x/(x-1)^2'),count('-(x+1)/3')],[7,7,7,7])
+    def test_default_label_kinds_follow_the_font_rule(self):
+        # EXT-20261109-b: no Korean letters and no Greek/prime/root sign = math (a coordinate pair too); Korean or those signs = plain text
+        plan=with_overlays(callouts=[{'id':'c1','point':'A','text':'(1,0)'},{'id':'c2','point':'A','text':'극대'},{'id':'c3','point':'A','text':'u=√3'}])
+        rows={row['id']:row['labelKind'] for row in fit_overview(plan)['graphPlan']['overlaysFeatures']['callouts']}
+        self.assertEqual(rows,{'c1':'MATH','c2':'TEXT','c3':'TEXT'})
     def test_a_bad_callout_is_refused_with_its_code(self):
         bad=lambda *entries:refused(with_overlays(callouts=list(entries)))
         self.assertEqual(bad({'id':'c','point':'Z','text':'a'}),'OVERLAY_CALLOUT_POINT_UNKNOWN:c')
         self.assertEqual(bad({'id':'c','point':'A','text':'a','direction':'UP'}),'OVERLAY_CALLOUT_DIRECTION_INVALID:c')
-        self.assertEqual(bad({'id':'c','point':'A','text':'x'*13}),'OVERLAY_CALLOUT_TEXT_INVALID:c')
+        self.assertEqual(bad({'id':'c','point':'A','text':'x'*21}),'OVERLAY_CALLOUT_TEXT_INVALID:c')
         self.assertEqual(bad({'id':'c','point':'A','text':'극대극대극대극대극대극'}),'OVERLAY_CALLOUT_TEXT_INVALID:c')
         self.assertEqual(bad({'id':'c','point':'A','text':'a','extra':1}),'OVERLAY_CALLOUT_INVALID:c')
         self.assertEqual(bad({'id':'c','point':'A','text':'a'},{'id':'c','point':'A','text':'b'}),'OVERLAY_ID_DUPLICATE:callout:c')

@@ -2704,12 +2704,39 @@ def _pp_coeff_coefficients(values):
     if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
     return [_ov_reader(item) for item in values]
 
+def _ov_drop_fraction_brackets(text):
+    """(EXT-20261109-b) The brackets that wrap a whole numerator or denominator are not drawn: (x+2)/(x-2) is x+2 over x-2. Kept: a bracket that is only part of an
+    operand (2(x+1)/3, 2*(x+1)/3, x/(x-1)^2, -(x+1)/3, x^(2)/3)."""
+    def match(open_at):
+        depth=0
+        for index in range(open_at,len(text)):
+            depth+=(text[index]=='(')-(text[index]==')')
+            if depth==0:return index
+        return None
+    drop=set()
+    for at,ch in enumerate(text):
+        if ch!='/':continue
+        if at+1<len(text) and text[at+1]=='(':
+            close=match(at+1)
+            if close is not None and not (close+1<len(text) and text[close+1]=='^'):drop|={at+1,close}
+        if at>0 and text[at-1]==')':
+            close=at-1;depth=0;open_at=None
+            for index in range(close,-1,-1):
+                depth+=(text[index]==')')-(text[index]=='(')
+                if depth==0:open_at=index;break
+            if open_at is None:continue
+            before=text[open_at-1] if open_at>0 else ''
+            before2=text[open_at-2] if open_at>1 else ''
+            binary_minus=before=='-' and (before2.isalnum() or before2==')')
+            if before=='' or before in '=+,(' or binary_minus:drop|={open_at,close}
+    return ''.join(ch for index,ch in enumerate(text) if index not in drop)
+
 def _ov_label_codes(text):
     """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a free equation text: letters are themselves or their italic math code, - is the minus
     sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own."""
     out=[]
-    for ch in text.replace(' ',''):
-        if ch in '*/^':continue
+    for ch in _ov_drop_fraction_brackets(text.replace(' ','')):
+        if ch in '*/^_':continue
         if ch=='-':out.append({'2212','2D'})
         elif 'a'<=ch<='z':out.append({format(ord(ch),'X'),format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X')})
         elif 'A'<=ch<='Z':out.append({format(ord(ch),'X'),format(0x1D434+ord(ch)-65,'X')})
@@ -3111,7 +3138,7 @@ def _ov_expected(plan):
     for entry in raw.get('names',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_NAME_INVALID')
         ident=entry.get('id');text=entry.get('text')
-        math_kind=entry.get('labelKind','TEXT')
+        math_kind=entry.get('labelKind') or ('MATH' if 'curveX' in entry and isinstance(text,str) and re.fullmatch(r'[A-Za-z0-9 ()]{1,10}',text) else 'TEXT')
         if math_kind not in ('TEXT','MATH'):raise ValueError('OVERLAY_NAME_INVALID')
         pattern=OV_NAME_PATTERN if math_kind=='TEXT' else r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
         if not isinstance(ident,str) or ident in seen_names or not isinstance(text,str) or text!=text.strip() or not re.fullmatch(pattern,text):raise ValueError('OVERLAY_NAME_INVALID')
@@ -3146,8 +3173,8 @@ def _ov_expected(plan):
         ident=entry.get('id');text=entry.get('text');ref=entry.get('point')
         if not isinstance(ident,str) or ident in seen_callouts or not isinstance(ref,str) or not isinstance(text,str) or text!=text.strip() or not text:raise ValueError('OVERLAY_CALLOUT_INVALID')
         seen_callouts.add(ident)
-        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in ',αβγθ′√') else 'MATH')
-        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' if any(mark in text for mark in ',αβγθ′√') else OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,12}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
+        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in 'αβγθ′√') else 'MATH')
+        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' if any(mark in text for mark in ',αβγθ′√') else OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+*/().^ ,_-]{1,20}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
         if ref in points:dot=ref;at=(float(S.N(points[ref][0],30)),float(S.N(points[ref][1],30)))
         else:
             index=next((i for i,point in enumerate(required_rows) if isinstance(point,dict) and point.get('id')==ref),None)
@@ -4930,6 +4957,17 @@ def _audit_family(plan,svg,transform):
 AXIS_TITLE_OBSERVER_PATTERN=r'[가-힣A-Za-z0-9 ()·/.,%-]{1,10}'
 AXIS_TITLE_MAX_DISTANCE_PX=60.0
 
+AXIS_TITLE_MATH_OBSERVER_PATTERN=r'[A-Za-z0-9 ()/.,-]{1,10}'
+AXIS_TITLE_UNIT_OBSERVER_PATTERN=r'(.*?)\s*\((km/h|m/s|km|cm|mm|kg|min|mL|m|g|s|h|L)\)'
+def _axis_title_is_math(text):
+    """(EXT-20261109-b) a title without Korean letters is typeset as math like every other letter and number of the figure; one with Korean letters stays plain text."""
+    return re.search('[가-힣]',text) is None and re.fullmatch(AXIS_TITLE_MATH_OBSERVER_PATTERN,text) is not None
+def _axis_title_codes(text):
+    """The glyph codes of a math axis title: the letters, digits and brackets of its text (upright for a unit in brackets, whose / is a drawn glyph)."""
+    unit=re.fullmatch(AXIS_TITLE_UNIT_OBSERVER_PATTERN,text)
+    if unit is not None and unit.group(1):return _ov_label_codes(unit.group(1))+[{'28'}]+[{format(ord(ch),'X')} for ch in unit.group(2)]+[{'29'}]
+    return _ov_label_codes(text)
+
 def axis_titles_audit(plan,svg,transform):
     """graphPlan.axisTitles: the plan's own check of the titles, then (in a composed figure) each title is a plain-text label of the axis it names,
     its text read from the group, standing at the end of that axis."""
@@ -4947,7 +4985,10 @@ def axis_titles_audit(plan,svg,transform):
             label_id='axis-'+axis;node=groups.get(label_id)
             if node is None:errors.append('AXIS_TITLE_MISSING:'+axis);continue
             # a plain-text label: the text on its group, no math glyph codes, no TeX
-            if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
+            if _axis_title_is_math(text):
+                want=_axis_title_codes(text);got=_ov_glyph_codes(node)
+                if node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
+            elif node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
             box=_region_label_box(groups,label_id)
             if box is None:errors.append('AXIS_TITLE_BOX_UNREADABLE:'+axis);continue
             end=(ox+xmax*sx,oy) if axis=='x' else (ox,oy-ymax*sy)
@@ -5004,6 +5045,16 @@ def curve_name_audit(plan,svg,transform):
     """(G12-4) graphPlan.axisVariable and graphPlan.nameLabel of a discontinuous function, read from the final SVG: the horizontal axis is named with the letter, f's name is
     f(letter), g's name (when it has no text of its own) is g(letter), and f's name stands where nameLabel says (along its curve, on its side of it)."""
     variable=plan.get('axisVariable');place=plan.get('nameLabel')
+    name_variable=plan.get('nameVariable')
+    if name_variable is not None and plan.get('family')=='piecewise-polynomial' and variable is None and place is None:
+        # (EXT-20261109-b) the function's name beside its curve (and in its header) is written with the plan's letter: g(y)
+        if not isinstance(name_variable,str) or not re.fullmatch(r'[a-z]',name_variable) or plan.get('functionName') in (None,name_variable):return {'status':'UNSUPPORTED','errors':['PIECEWISE_POLY_NAME_VARIABLE_INVALID']}
+        if 'data-label-kind' not in svg or plan.get('formula') is not None:return None
+        try:
+            root=ET.fromstring(svg);node=next((n for n in root.iter() if n.tag.split('}')[-1]=='g' and n.get('id')=='main-curve-name'),None)
+        except ET.ParseError:return {'status':'UNSUPPORTED','errors':['CURVE_NAME_SOURCE_INVALID']}
+        if node is None or _ov_glyph_codes(node)!=_letter_codes(plan['functionName']+'('+name_variable+')'):return {'status':'FAIL','errors':['NAME_VARIABLE_NAME_MISMATCH:'+str(plan['functionName'])]}
+        return {'status':'PASS','errors':[]}
     if (variable is None and place is None) or 'data-label-kind' not in svg:return None
     errors=[]
     try:

@@ -1066,7 +1066,9 @@ function piecewisePolynomialSpec(plan,id){
   const functionName=p.functionName;
   if(functionName!==undefined&&(typeof functionName!=='string'||!/^[a-hj-wz]$/.test(functionName)))throw Error('PIECEWISE_POLY_FUNCTION_NAME_INVALID');
   if(p.sampleNote!==undefined&&(typeof p.sampleNote!=='string'||!/^[0-9A-Za-z=+\-*/(). ]{1,32}$/.test(p.sampleNote)||!p.sampleNote.trim()))throw Error('PIECEWISE_POLY_SAMPLE_NOTE_INVALID');
-  const headerText=p.formula!==undefined?(functionName?functionName+'(x)':'y')+'='+p.formula:null;
+  const nameVariable=p.nameVariable??'x';
+  if(typeof nameVariable!=='string'||!/^[a-z]$/.test(nameVariable)||nameVariable===functionName)throw Error('PIECEWISE_POLY_NAME_VARIABLE_INVALID');
+  const headerText=p.formula!==undefined?(functionName?functionName+'('+nameVariable+')':'y')+'='+p.formula:null;
   const headerPx=headerText===null?0:80,canvas={width:512,height:plot.height+64+headerPx,panel:0,topInset:headerPx};
   const spanX=v[1]-v[0],spanY=v[3]-v[2],clampY=y=>Math.max(v[2]+spanY*.06,Math.min(v[3]-spanY*.06,y));
   const evalCoefficients=(values,x)=>values.reduce((sum,c,index)=>sum+exactValue(c)*x**index,0);
@@ -1094,7 +1096,7 @@ function piecewisePolynomialSpec(plan,id){
   if(headerPx)objects.push({id:'formula',kind:'EQUATION_LABEL',text:headerText,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]});
   if(headerText===null&&functionName!==undefined){
     const x=v[0]+spanX*.16,row=anchorOnRows(features.pieces,x);
-    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'(x)',at:[x,clampY(evalCoefficients(row.coefficients,x)-spanY*.14)],math:true,priority:0});
+    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'('+nameVariable+')',at:[x,clampY(evalCoefficients(row.coefficients,x)-spanY*.14)],math:true,priority:0});
   }
   // A sample-value note the author writes for a parameter case (for example "a=2"), shown inside the plot instead of only in the caption.
   if(p.sampleNote!==undefined)objects.push({id:'sample-note',kind:'GRAPH_ANNOTATION',text:p.sampleNote,at:[v[0]+spanX*.10,v[3]-spanY*.10],math:true,priority:0});

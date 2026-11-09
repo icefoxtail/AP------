@@ -1604,7 +1604,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand','curveColor'}
+PIECEWISE_POLY_FIELDS={'nameVariable','family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand','curveColor'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2101,6 +2101,8 @@ def piecewise_polynomial_regions(plan,pieces,intervals,refs,line_specs):
 def fit_piecewise_polynomial(plan):
     if 'curveColor' in plan:curve_color_name(plan['curveColor'])
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
+    # nameVariable (EXT-20261109-b): the letter the function's name is written with, g(y) for a density of y; one lowercase letter that is not the function's own name
+    if 'nameVariable' in plan and (not isinstance(plan['nameVariable'],str) or not re.fullmatch(r'[a-z]',plan['nameVariable']) or plan['nameVariable']==plan.get('functionName')):raise ValueError('PIECEWISE_POLY_NAME_VARIABLE_INVALID')
     if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
     lo,hi,states=source
@@ -2822,6 +2824,7 @@ OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'name
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}'   # (G18b) a plain-text callout may carry commas (a coordinate pair), Greek letters and a prime
 OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
+OVERLAY_CALLOUT_MATH_PATTERN=re.compile(r'[0-9A-Za-z=+*/().^ ,_-]{1,20}')   # (EXT-20261109-b) a MATH callout may carry a comma (a coordinate pair), a subscript (A_1) and a bracketed fraction ((x+2)/(x-2)), up to 20 characters
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -3408,7 +3411,8 @@ def _overlay_names(plan,rows,claim,lines,segments,by_point):
         ident=_overlay_id(entry.get('id'),'name');claim('name:'+ident)
         text=entry.get('text')
         # labelKind MATH (E31): the equation of the drawn curve written beside it at curveX (y=2x-3/2), typeset as math; the default TEXT is a plain name.
-        kind=entry.get('labelKind','TEXT')
+        # EXT-20261109-b: a name without Korean letters beside the drawn curve (f(x), v(t), g) is math like every other letter of the figure; Korean names stay plain text.
+        kind=entry.get('labelKind') or ('MATH' if 'curveX' in entry and isinstance(entry.get('text'),str) and re.fullmatch(r'[A-Za-z0-9 ()]{1,10}',entry['text']) else 'TEXT')
         if kind not in ('TEXT','MATH') or ('labelValues' in entry and kind!='MATH'):_overlay_fail('OVERLAY_NAME_INVALID',ident)
         from linear_text import TEXT_PATTERN
         if kind=='MATH':
@@ -3473,9 +3477,9 @@ def _overlay_callouts(plan,rows,claim,by_point):
         kind=entry.get('labelKind')
         if kind is not None and kind not in ('TEXT','MATH'):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if not isinstance(text,str) or text!=text.strip() or not text:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
-        if kind is None:kind='TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else 'MATH'
+        if kind is None:kind='TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in 'αβγθ′√') else 'MATH'
         if kind=='TEXT' and re.fullmatch(OVERLAY_CALLOUT_TEXT_PATTERN if any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
-        if kind=='MATH' and (TEXT_PATTERN.fullmatch(text) is None or len(text)>12):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if kind=='MATH' and OVERLAY_CALLOUT_MATH_PATTERN.fullmatch(text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         row={'id':ident,'point':ref,'dot':dot,'at':at,'text':text,'labelKind':kind}
         if 'direction' in entry:
             if entry['direction'] not in OVERLAY_CALLOUT_DIRECTIONS:_overlay_fail('OVERLAY_CALLOUT_DIRECTION_INVALID',ident)
