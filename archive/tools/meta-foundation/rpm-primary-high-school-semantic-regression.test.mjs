@@ -100,3 +100,23 @@ test('H3 semantic routing remains FINAL when no H3 compatibility crosswalk exist
   assert.equal(result.projectionStatus, 'PROJECTION_UNMATERIALIZED');
   assert.equal(result.projectionReasonCode, 'CROSSWALK_COMPATIBILITY_ROUTE_UNAVAILABLE');
 });
+
+test('2022 calculus function-equation and derivative-calculation routes bind to their exact subunits', () => {
+  const crosswalk = JSON.parse(fs.readFileSync(path.join(crosswalkRoot, 'high2-math2-calculus1.json'), 'utf8'));
+  const functionEquation = crosswalk.records.find(record => record.id === 'H2-M2-RPM-099');
+  const derivativeCalculation = crosswalk.records.find(record => record.id === 'H2-M2-RPM-064');
+
+  assert.deepEqual(functionEquation.rpmPath, {
+    majorUnit: '미분', midUnit: '미분계수와 도함수', l3: '도함수', l4: '도함수 계산',
+  });
+  assert.equal(functionEquation.subUnitKey, 'H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION');
+  assert.equal(functionEquation.mappingStatus, 'DIRECT_ACTIVE');
+  assert.equal(functionEquation.bindingStatus, 'ACTIVE');
+  assert.equal(functionEquation.problemTypeKey, 'PT_FUNCTIONAL_EQUATION');
+  assert.equal(functionEquation.templateKey, 'TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT');
+
+  assert.deepEqual(derivativeCalculation.rpmPath, functionEquation.rpmPath);
+  assert.equal(derivativeCalculation.subUnitKey, 'H22-M1-04-DERIVATIVE_CALCULATION');
+  assert.equal(derivativeCalculation.mappingStatus, 'DIRECT_ACTIVE');
+  assert.equal(derivativeCalculation.bindingStatus, 'ACTIVE');
+});
